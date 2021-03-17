@@ -1112,20 +1112,23 @@ InitializeBoxes:
 	pop bc
 	dec b
 	jr nz, .name_loop
-	call CloseSRAM
 
-	ld hl, BillsPC_DefaultBoxThemes
-	ld de, wBillsPC_BoxThemes
+	ld de, BillsPC_DefaultBoxThemes
+	ld hl, sNewBox1Theme
 .theme_loop
-	ld a, [hli]
+	ld a, [de]
+	inc de
 	inc a
 	jr z, .done
 	dec a
-	ld [de], a
-	inc de
+	ld [hl], a
+	ld bc, sNewBox2 - sNewBox1
+	add hl, bc
 	jr .theme_loop
 
 .done
+	call CloseSRAM
+
 	; In case we reset the game mid-flush and then chose to start a new game,
 	; ensure that all entries are allocated properly.
 	jp FlushStorageSystem
@@ -1134,6 +1137,34 @@ InitializeBoxes:
 	rawchar "Box @"
 
 INCLUDE "data/default_box_themes.asm"
+
+GetBoxTheme:
+; Returns box b's theme in a.
+	ld c, 0
+	jr CopyBoxTheme
+
+SetBoxTheme:
+; Sets box b's theme to a.
+	ld c, 1
+	; fallthrough
+CopyBoxTheme:
+	push af
+	ld a, BANK(sNewBox1)
+	call GetSRAMBank
+	ld hl, sNewBox1Theme
+	ld a, b
+	dec a
+	push bc
+	ld bc, sNewBox2 - sNewBox1
+	rst AddNTimes
+	pop bc
+	pop af
+	dec c
+	jr z, .set_theme
+	ld a, [hl]
+.set_theme
+	ld [hl], a
+	jp CloseSRAM
 
 GetBoxName:
 ; Writes name of box b to string buffer 1.

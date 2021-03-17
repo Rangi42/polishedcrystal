@@ -969,13 +969,10 @@ _CGB_PokedexUnownMode:
 	jp _CGB_FinishLayout
 
 _CGB_BillsPC:
-	; a = wBillsPC_BoxThemes[wCurBox]
-	ld hl, wBillsPC_BoxThemes
+	; Get box theme
 	ld a, [wCurBox]
-	ld d, 0
-	ld e, a
-	add hl, de
-	ld a, [hl]
+	ld b, a
+	farcall GetBoxTheme
 BillsPC_PreviewTheme:
 	; hl = BillsPC_ThemePals + a * 6 * 2
 	add a

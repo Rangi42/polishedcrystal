@@ -2992,14 +2992,11 @@ BillsPC_Theme:
 	cp B_BUTTON
 	jr z, .refresh_theme ; revert back to what it used to be
 
-	; wBillsPC_BoxThemes[wCurBox] = [wScrollingMenuCursorPosition]
-	ld hl, wBillsPC_BoxThemes
+	; [sNewBox[wCurBox]Theme] = [wScrollingMenuCursorPosition]
 	ld a, [wCurBox]
-	ld d, 0
-	ld e, a
-	add hl, de
+	ld b, a
 	ld a, [wScrollingMenuCursorPosition]
-	ld [hl], a
+	farcall SetBoxTheme
 
 .refresh_theme
 	jp BillsPC_RefreshTheme

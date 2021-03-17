@@ -94,6 +94,7 @@ newbox: MACRO
 \1Entries::        ds MONS_PER_BOX
 \1Banks::          flag_array MONS_PER_BOX
 \1Name::           ds BOX_NAME_LENGTH
+\1Theme::          db
 ENDM
 
 party_struct: MACRO

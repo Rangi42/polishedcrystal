@@ -928,10 +928,7 @@ wStoneTableAddress:: dw
 wBattleTowerCurStreak:: dw
 wBattleTowerTopStreak:: dw
 
-wBillsPC_BoxThemes:: ds NUM_BOXES
-wBillsPC_BoxThemesEnd::
-
-	ds 2
+	ds 18 ; unused
 
 wMapObjects::
 wPlayerObject:: map_object wPlayer
