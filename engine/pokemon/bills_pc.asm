@@ -784,7 +784,7 @@ ChecksumTempMon:
 	; boxmon struct + 3 extra bytes (normally placed after OT)
 	ld bc, wEncodedTempMon
 	ld hl, 127
-	lb de, BOXMON_STRUCT_LENGTH + 3, 0
+	lb de, wEncodedTempMonNick - wEncodedTempMon, 0
 	call .DoChecksum
 
 	; nickname + OT. This skips e=36 (boxstruct+4) due to a double-increase.
