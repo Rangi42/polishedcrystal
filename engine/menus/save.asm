@@ -685,11 +685,11 @@ VerifyGameVersion:
 	ld de, .SaveUpgradeScreen
 	rst PlaceString
 	ld de, wStringBuffer1
-	hlcoord 14, 10
+	hlcoord 14, 11
 	lb bc, PRINTNUM_LEADINGZEROS | 2, 5
 	call PrintNum
 	ld de, wStringBuffer2
-	hlcoord 14, 11
+	hlcoord 14, 13
 	lb bc, PRINTNUM_LEADINGZEROS | 2, 5
 	call PrintNum
 
@@ -701,6 +701,7 @@ VerifyGameVersion:
 	db    "Your save file does"
 	next1 "not match the game"
 	next1 "version of this ROM."
+	next1 ""
 	next1 "If your save is old,"
 	next1 "please consult the"
 	next1 "documentation for"
@@ -709,6 +710,7 @@ VerifyGameVersion:
 	next1 "upgrade your save."
 	next1 ""
 	next1 "Game version:"
+	next1 ""
 	next1 "Save version:"
 	done
 
