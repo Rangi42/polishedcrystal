@@ -642,24 +642,28 @@ MoveMonWOMailSaveText:
 
 VerifyGameVersion:
 ; Verify that the current game version matches the one in the save file.
-	; Write game and save version to strbuf for the update screen if applicable.
+	; [wStringBuffer1:2] = SAVE_VERSION; hl = wStringBuffer1
 	ld hl, wStringBuffer1
-	ld de, wStringBuffer2
-	ld [hl], HIGH(SAVE_VERSION)
-	inc hl
+	ld a, HIGH(SAVE_VERSION)
+	ld [hli], a
 	ld a, LOW(SAVE_VERSION)
 	ld [hld], a
+
+	; [wStringBuffer2:2] = [sSaveVersion:2]; de = wStringBuffer2
 	ld a, BANK(sSaveVersion)
 	call GetSRAMBank
+	ld de, wStringBuffer2 + 1
 	push hl
-	ld hl, sSaveVersion
-	ld de, wStringBuffer2
-	ld bc, 2
-	push de
-	rst CopyBytes
-	call CloseSRAM
-	pop de
+	ld hl, sSaveVersion + 1
+	ld a, [hld]
+	ld [de], a
+	dec de
+	ld a, [hl]
+	ld [de], a
 	pop hl
+	call CloseSRAM
+
+	; needs upgrade if [hl:2] != [de:2]
 	ld a, [de]
 	cp [hl]
 	jr nz, .needs_upgrade
@@ -687,19 +691,19 @@ VerifyGameVersion:
 	halt
 	jr .infinite_loop
 
-.SaveUpgradeScreen
-	db    "Your save is too old"
-	next1 "or too new for this"
-	next1 "version of the game"
-	next1 "to run. If too old,"
+.SaveUpgradeScreen:
+	db    "Your save file does"
+	next1 "not match the game"
+	next1 "version of this ROM."
+	next1 "If your save is old,"
 	next1 "please consult the"
 	next1 "documentation for"
-	next1 "this release for"
-	next1 "save upgrading"
-	next1 "instructions."
+	next1 "this game release"
+	next1 "for instructions to"
+	next1 "upgrade your save."
 	next1 ""
-	next1 "Game Version:"
-	next1 "Save Version:"
+	next1 "Game version:"
+	next1 "Save version:"
 	done
 
 SaveCurrentVersion:

@@ -57,7 +57,7 @@ _SafeCopyTilemapAtOnce::
 	swap a
 	or 5
 	ldh [hBGMapMode], a ; bit 7 = skip attr map
-	ld a, 1 << 7 | 7 ; execute actual vblank 7
+	ld a, 1 << 7 | 7 ; execute actual VBlank7
 	ldh [hVBlank], a
 	call UpdateSound
 	call DelayFrame
