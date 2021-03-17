@@ -80,7 +80,7 @@ CheckSavefileIsValid:
 
 .backup
 	set #savefile, 2
-	set #2, .invalid 
+	set #2, .invalid
 	set #address, BackupCheckPointers
 	; fallthrough
 .check_1
