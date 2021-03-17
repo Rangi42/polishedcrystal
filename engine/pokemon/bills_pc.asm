@@ -787,7 +787,7 @@ ChecksumTempMon:
 	lb de, wEncodedTempMonNick - wEncodedTempMon, 0
 	call .DoChecksum
 
-	; nickname + OT. This skips e=36 (boxstruct+4) due to a double-increase.
+	; nickname + OT. This skips one CRC multiplier due to a double-increase.
 	; Counterintuitive but harmless.
 	ld bc, wEncodedTempMonNick
 	ld d, $80 | (wEncodedTempMonEnd - wEncodedTempMonNick)
