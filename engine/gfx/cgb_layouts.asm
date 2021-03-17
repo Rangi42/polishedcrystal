@@ -972,6 +972,7 @@ _CGB_BillsPC:
 	; Get box theme
 	ld a, [wCurBox]
 	ld b, a
+	inc b
 	farcall GetBoxTheme
 BillsPC_PreviewTheme:
 	; hl = BillsPC_ThemePals + a * 6 * 2

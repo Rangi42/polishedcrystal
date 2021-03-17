@@ -2995,6 +2995,7 @@ BillsPC_Theme:
 	; [sNewBox[wCurBox]Theme] = [wScrollingMenuCursorPosition]
 	ld a, [wCurBox]
 	ld b, a
+	inc b
 	ld a, [wScrollingMenuCursorPosition]
 	farcall SetBoxTheme
 
