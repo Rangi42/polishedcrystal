@@ -904,13 +904,13 @@ DecodeTempMon:
 	; Shift data past PP to leave room for PP data.
 	ld hl, wEncodedTempMonLevel
 	ld de, wTempMonLevel
-	lb bc, NUM_MOVES, wEncodedTempMonPPUps - wEncodedTempMonLevel
+	lb bc, NUM_MOVES, wEncodedTempMonLevel - wEncodedTempMonPPUps
 .reverse_copybytes_loop
 	ld a, [hld]
 	ld [de], a
 	dec de
 	dec c
-	jr nz, .inner_loop
+	jr nz, .reverse_copybytes_loop
 
 	; Write PP Up data.
 	ld a, [hl]
@@ -950,6 +950,10 @@ DecodeTempMon:
 	ld a, [wTempMonLevel]
 	ld [wCurPartyLevel], a
 	predef CalcPkmnStats
+
+	; Reset status condition
+	xor a
+	ld [wTempMonStatus], a
 
 	; Set HP to full
 	ld hl, wTempMonMaxHP
