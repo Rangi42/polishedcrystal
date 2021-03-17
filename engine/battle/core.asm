@@ -7142,7 +7142,7 @@ GetNewBaseExp:
 	add hl, bc
 	add hl, bc
 	ld a, BANK(EvosAttacksPointers)
-	call GetFarHalfword
+	call GetFarWord
 
 	ld a, BANK(EvosAttacks)
 	call GetFarByte

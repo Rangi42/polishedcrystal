@@ -1436,7 +1436,7 @@ StdScript:
 	ld b, a
 	inc hl
 	ld a, BANK(StdScripts)
-	jp GetFarHalfword
+	jp GetFarWord
 
 SkipTwoScriptBytes:
 	call GetScriptByte

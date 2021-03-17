@@ -686,7 +686,7 @@ PokedexShow2:
 	ld b, a
 	inc hl
 	ld a, BANK(PokedexDataPointerTable)
-	call GetFarHalfword
+	call GetFarWord
 	ld a, b
 	push af
 	push hl
@@ -709,7 +709,7 @@ endr
 ;	bit POKEDEX_UNITS, a
 ;	jr z, .imperial
 ;	ld a, d
-;	call GetFarHalfword
+;	call GetFarWord
 ;	jr .load
 ;.imperial
 ;	inc hl

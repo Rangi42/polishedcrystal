@@ -1124,7 +1124,7 @@ RandomPhoneMon:
 	inc hl
 	ld [wTrainerGroupBank], a
 	ld a, BANK(TrainerGroups)
-	call GetFarHalfword
+	call GetFarWord
 
 .skip_trainer
 	dec e

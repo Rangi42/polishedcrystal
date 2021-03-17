@@ -245,7 +245,7 @@ GetSpeciesWeight::
 	push af
 	inc hl
 	ld a, BANK(PokedexDataPointerTable)
-	call GetFarHalfword
+	call GetFarWord
 	pop de
 
 .skip_species
@@ -261,7 +261,7 @@ GetSpeciesWeight::
 	inc hl
 
 	; get weight
-	jp GetFarHalfword
+	jp GetFarWord
 
 HeavyBallMultiplier:
 ; subtract 20 from base catch rate if weight < 102.4 kg
@@ -372,7 +372,7 @@ MoonBallMultiplier:
 	add hl, bc
 	add hl, bc
 	ld a, BANK(EvosAttacksPointers)
-	call GetFarHalfword
+	call GetFarWord
 	pop bc
 
 	push bc

@@ -158,7 +158,7 @@ endr
 	push af
 	inc hl
 	ld a, BANK(FrontPicPointers)
-	call GetFarHalfword
+	call GetFarWord
 	pop bc
 	ret
 
@@ -282,7 +282,7 @@ endr
 	push af
 	inc hl
 	ld a, BANK(BackPicPointers)
-	call GetFarHalfword
+	call GetFarWord
 	pop af
 	call FarDecompress
 	ld hl, wDecompressScratch
@@ -321,7 +321,7 @@ GetTrainerPic:
 	push af
 	inc hl
 	ld a, BANK(TrainerPicPointers)
-	call GetFarHalfword
+	call GetFarWord
 	pop af
 _Decompress7x7Pic:
 	call FarDecompress
@@ -357,7 +357,7 @@ GetPaintingPic:
 	push af
 	inc hl
 	ld a, BANK(PaintingPicPointers)
-	call GetFarHalfword
+	call GetFarWord
 	pop af
 	jr _Decompress7x7Pic
 
