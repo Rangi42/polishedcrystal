@@ -478,7 +478,10 @@ CheckPrimarySaveFile:
 	call GetSRAMBank
 	ld a, [sCheckValue1]
 	cp SAVE_CHECK_VALUE_1
+	jr z, .yes
+	cp SAVE_CHECK_VALUE_1_OLD
 	jr nz, .nope
+.yes
 	ld a, [sCheckValue2]
 	cp SAVE_CHECK_VALUE_2
 	jr nz, .nope
@@ -500,7 +503,10 @@ CheckBackupSaveFile:
 	call GetSRAMBank
 	ld a, [sBackupCheckValue1]
 	cp SAVE_CHECK_VALUE_1
+	jr z, .yes
+	cp SAVE_CHECK_VALUE_1_OLD
 	jr nz, .nope
+.yes
 	ld a, [sBackupCheckValue2]
 	cp SAVE_CHECK_VALUE_2
 	jr nz, .nope
