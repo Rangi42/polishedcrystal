@@ -79,7 +79,7 @@ savemon_struct: MACRO
 \1Extra::          ds 3 ; superfluous OT name bytes
 \1Nick::           ds MON_NAME_LENGTH - 1
 \1OT::             ds PLAYER_NAME_LENGTH - 1
-\1EncodeEnd::
+\1End::
 ENDM
 
 pokedb: MACRO
@@ -141,7 +141,7 @@ party_struct: MACRO
 \1Speed::          dw
 \1SpclAtk::        dw
 \1SpclDef::        dw
-\1StatsEnd::
+\1End::
 ENDM
 
 battle_struct: MACRO

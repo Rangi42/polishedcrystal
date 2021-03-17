@@ -736,7 +736,7 @@ EncodeTempMon:
 
 	; Convert nickname/OT characters into reversible 7bit.
 	ld hl, wEncodedTempMonNick
-	ld b, wEncodedTempMonEncodeEnd - wEncodedTempMonNick
+	ld b, wEncodedTempMonEnd - wEncodedTempMonNick
 .charmap_loop
 	ld a, [hl]
 	ld c, $fa
@@ -769,7 +769,7 @@ ChecksumTempMon:
 	; nickname + OT. This skips e=36 (boxstruct+4) due to a double-increase.
 	; Counterintuitive but harmless.
 	ld bc, wEncodedTempMonNick
-	ld d, $80 | (wEncodedTempMonEncodeEnd - wEncodedTempMonNick)
+	ld d, $80 | (wEncodedTempMonEnd - wEncodedTempMonNick)
 	call .DoChecksum
 
 	; Compare and write the result
@@ -780,7 +780,7 @@ ChecksumTempMon:
 	; The padding being nonzero is also counted as invalid.
 	ld b, 0 ; used for checksum error detection
 	ld hl, wEncodedTempMonNick
-	ld c, wEncodedTempMonEncodeEnd - wEncodedTempMonNick
+	ld c, wEncodedTempMonEnd - wEncodedTempMonNick
 .WriteChecksum:
 	ld a, [hl]
 	and $7f
@@ -834,7 +834,7 @@ DecodeTempMon:
 
 	; Reverse the 7bit character encoding back to its original state.
 	ld hl, wEncodedTempMonNick
-	ld b, wEncodedTempMonEncodeEnd - wEncodedTempMonNick
+	ld b, wEncodedTempMonEnd - wEncodedTempMonNick
 .charmap_loop
 	ld a, [hl]
 	or $80

@@ -3727,7 +3727,7 @@ endr
 	ld [de], a
 	ld hl, wBattleMonLevel
 	ld de, wTempMonLevel
-	ld bc, wTempMonStatsEnd - wTempMonLevel
+	ld bc, wTempMonEnd - wTempMonLevel
 	rst CopyBytes
 	ld a, [wCurBattleMon]
 	ld hl, wPartyMon1Species
