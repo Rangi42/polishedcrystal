@@ -127,7 +127,7 @@ MON_SPD                rw
 MON_SAT                rw
 MON_SDF                rw
 PARTYMON_STRUCT_LENGTH EQU _RS
-rsset BOXMON_STRUCT_LENGTH
+rsset BOXMON_STRUCT_LENGTH - 3 ; replaces 4 PP bytes with 1 PP Ups byte
 MON_EXTRA              rb 3
 MON_NICK               rb MON_NAME_LENGTH - 1
 MON_OT                 rb PLAYER_NAME_LENGTH - 1
@@ -178,8 +178,8 @@ PARTY_LENGTH EQU 6
 
 ; boxes
 MONS_PER_BOX  EQU 20
-NUM_BOXES     EQU 15
-MONDB_ENTRIES EQU (20 * 15 + 14) / 2
+MONDB_ENTRIES EQU 166
+NUM_BOXES     EQU (MONDB_ENTRIES * 2 - 10) / 20 ; min slack 10
 
 ; hall of fame
 HOF_MON_LENGTH EQU 1 + 2 + 2 + 1 + (MON_NAME_LENGTH - 1) ; species, id, dvs, level, nick

@@ -66,7 +66,7 @@ savemon_struct: MACRO
 \1IsEgg::
 \1ExtSpecies::
 \1Form::           db
-\1PP::             ds NUM_MOVES
+\1PPUps::          db
 \1Happiness::      db
 \1PokerusStatus::  db
 \1CaughtData::

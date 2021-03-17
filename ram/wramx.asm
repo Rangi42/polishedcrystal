@@ -931,7 +931,7 @@ wBattleTowerTopStreak:: dw
 wBillsPC_BoxThemes:: ds NUM_BOXES
 wBillsPC_BoxThemesEnd::
 
-	ds 3
+	ds 2
 
 wMapObjects::
 wPlayerObject:: map_object wPlayer

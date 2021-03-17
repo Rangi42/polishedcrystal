@@ -14,4 +14,5 @@ BillsPC_DefaultBoxThemes:
 	db THEME_ICE
 	db THEME_GHOST
 	db THEME_DRAGON
+	db THEME_DARK
 	db -1 ; end

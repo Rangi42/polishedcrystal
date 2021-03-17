@@ -718,13 +718,34 @@ OpenStorageDB:
 EncodeTempMon:
 ; Encodes wTempMon to prepare for storage. This assumes ordering and sizes of
 ; party struct, nickname and OT(+extra) in wTempMon doesn't change.
-	; Shift things around to the encoded format, before doing actual encoding.
-	; Box struct is merely just a shorter party struct, so we don't need to
-	; touch it.
+	; Convert 4 PP bytes to 1 PP Up byte.
+	ld hl, wTempMonPP
+	ld b, NUM_MOVES
+	ld d, h
+	ld e, l
+.loop
+	ld a, [de]
+	and %11000000
+	or [hl]
+	ld [hl], a
+	inc de
+	srl [hl]
+	srl [hl]
+	dec b
+	jr nz, .loop
+
+	; Shift everything after PP Ups backwards.
+	ld hl, wTempMonHappiness
+	ld de, wEncodedTempMonHappiness
+	ld bc, wEncodedTempMonExtra - wEncodedTempMonHappiness
+	rst CopyBytes
+
+	; Move Extra bytes.
 	ld hl, wTempMonOT + PLAYER_NAME_LENGTH
-	ld de, wEncodedTempMonExtra
 	ld bc, 3
 	rst CopyBytes
+
+	; Move name-related bytes.
 	ld hl, wTempMonNickname
 	ld de, wEncodedTempMonNick
 	ld bc, MON_NAME_LENGTH
@@ -879,6 +900,30 @@ DecodeTempMon:
 	ld de, wTempMonNickname + MON_NAME_LENGTH - 1
 	ld c, MON_NAME_LENGTH - 1
 	jr nz, .outer_loop
+
+	; Shift data past PP to leave room for PP data.
+	ld hl, wEncodedTempMonLevel
+	ld de, wTempMonLevel
+	lb bc, NUM_MOVES, wEncodedTempMonPPUps - wEncodedTempMonLevel
+.reverse_copybytes_loop
+	ld a, [hld]
+	ld [de], a
+	dec de
+	dec c
+	jr nz, .inner_loop
+
+	; Write PP Up data.
+	ld a, [hl]
+.pp_loop
+	push af
+	and %11000000
+	ld [de], a
+	pop af
+	add a
+	add a
+	dec de
+	dec b
+	jr nz, .pp_loop
 
 	pop af
 	jr z, .set_partymon_data
