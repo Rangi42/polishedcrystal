@@ -931,17 +931,17 @@ DecodeTempMon:
 	jr nz, .pp_loop
 
 	pop af
-	jr z, .set_partymon_data
+	jr z, SetTempPartyMonData
 
 	ld hl, BadEggData
 	ld de, wTempMon
 	ld b, $42
 	call CopyRLE
-	call .set_partymon_data
+	call SetTempPartyMonData
 	scf
 	ret
 
-.set_partymon_data
+SetTempPartyMonData:
 	; Calculate stats
 	ld a, [wTempMonSpecies]
 	ld [wCurSpecies], a
