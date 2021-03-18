@@ -198,10 +198,7 @@ LoadStorageSystem:
 	ld de, sNewBox1
 	call CopyStorageSystem
 
-	; We may have reset the game mid-flush. This would lead to not all entries
-	; having been successfully allocated which are in use. To ensure that we
-	; don't enter the game in such a state and overwriting used entries, flush
-	; the storage system here.
+	; Initialize allocation information.
 	farjp FlushStorageSystem
 
 SaveStorageSystem:
