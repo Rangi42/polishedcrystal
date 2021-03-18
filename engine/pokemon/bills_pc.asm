@@ -1106,14 +1106,12 @@ InitializeBoxes:
 	sub d
 	sub 10
 	add "0" + 10
-	ld [hl], a
 	jr c, .next
 	ld [hl], "1" ; no-optimize *hl++|*hl-- = N
 	inc hl
 	sub 10
-	ld [hl], a
 .next
-	inc hl
+	ld [hli], a
 	ld [hl], "@"
 	pop hl
 	ld c, sNewBox2 - sNewBox1Name
