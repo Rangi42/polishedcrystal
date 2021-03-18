@@ -1733,22 +1733,11 @@ MPLPlaceString:
 	ret
 
 MPTilemap:
-db $00, $01, $02, $03, $04, $05, $06, $00, $01, $02, $03, $04, $05, $06, $00, $01, $02, $03, $04, $05
-db $07, $08, $09, $1e, $1d, $07, $08, $0a, $1e, $1d, $0b, $0c, $0d, $1e, $1d, $0e, $0f, $10, $1e, $1e
-db "    ", $1f, "    ", $1f, "    ", $1f, $1b, $1c, "   "
-db "    ", $1f, "    ", $1f, "    ", $1f, "     "
-
+INCBIN "gfx/music_player/music_player.tilemap"
 ChannelsOnTilemaps:
-	db $07, $08, $09
-	db $07, $08, $0a
-	db $0b, $0c, $0d
-	db $0e, $0f, $10
-
+INCBIN "gfx/music_player/channels_on.tilemap"
 ChannelsOffTilemaps:
-	db $11, $12, $13
-	db $11, $12, $14
-	db $15, $16, $17
-	db $18, $19, $1a
+INCBIN "gfx/music_player/channels_off.tilemap"
 
 NoteOAM:
 	; y, x, tile id, OAM attributes
