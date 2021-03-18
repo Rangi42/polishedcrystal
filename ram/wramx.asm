@@ -1189,7 +1189,7 @@ wEventFlags:: flag_array NUM_EVENTS
 
 wCurBox:: db
 
-	ds 180 ; unused
+	ds 126 ; unused
 
 wCelebiEvent:: db
 
@@ -1409,6 +1409,8 @@ wBreedMon2Nickname:: ds MON_NAME_LENGTH
 wBreedMon2OT:: ds PLAYER_NAME_LENGTH
 wBreedMon2Extra:: ds 3
 wBreedMon2Stats:: oldbox_struct wBreedMon2
+
+	ds 54 ; unused
 
 wBugContestSecondPartySpecies:: db
 wContestMon:: party_struct wContestMon
