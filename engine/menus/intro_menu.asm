@@ -116,6 +116,12 @@ ResetWRAM:
 	xor a
 	rst ByteFill
 
+	; Fill party species array with terminators.
+	ld hl, wPartySpecies
+	ld bc, PARTY_LENGTH + 1
+	dec a ; ld a, -1
+	rst ByteFill
+
 	call Random
 	ldh a, [rLY]
 	ldh [hSecondsBackup], a
