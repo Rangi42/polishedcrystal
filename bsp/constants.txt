@@ -25,13 +25,12 @@
 	define sLinkBattleRecord,     0x3266
 	define sByteBeforeHallOfFame, 0x32bf
 	define sBoxMons1,             0x4000
-	define sBoxMons1UsedEntries,  0x5fe4
+	define sBoxMons1UsedEntries,  0x5fc6
 	define sBoxMons2,             0x6000
-	define sBoxMons2UsedEntries,  0x7fe4
+	define sBoxMons2UsedEntries,  0x7fc6
 
 ; game data offsets
 	define PLAYER_NAME_OFFSET,                 0x003
-	define BOX_THEMES_OFFSET,                  0x207
 	define ITEMS_OFFSET,                       0x38d
 	define MEDICINE_OFFSET,                    0x425
 	define BALLS_OFFSET,                       0x471

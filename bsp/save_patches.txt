@@ -1,6 +1,6 @@
 ConvertToNewbox:
 	set #a, #zero ; [0, 14)
-	set #temp, 28
+	set #temp, 57
 	seek sBoxMons1UsedEntries
 	fillbyte #temp, #zero
 	seek sBoxMons2UsedEntries
@@ -199,6 +199,12 @@ ConvertToNewbox:
 	call GetGameDataPointer
 	seek #result
 	fillbyte 126, #zero
+
+; clear wEggMon (removed as part of newbox)
+	set #1, EGG_MON_NICK_OFFSET
+	call GetGameDataPointer
+	seek #result
+	fillbyte 54, #zero
 	return
 
 .newbox_outer_loop

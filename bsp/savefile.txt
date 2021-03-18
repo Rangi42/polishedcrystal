@@ -90,7 +90,7 @@ CheckSavefileIsValid:
 	readbyte #1
 	ifeq #1, 97, .get_build
 	ifne #build, 7, .not_build_6
-	decrement #build ; special case for v6 since it shares the same check value addresses as v7 but sCheckValue1 = 99
+	decrement #build ; special case for v6 since it shares the same check value addresses as v7 except sCheckValue1 == 99
 .not_build_6
 	gethalfwordinc #temp, #address ; skip sSaveVersion
 	ifeq #1, 99, .check_2
