@@ -75,7 +75,7 @@ GENDER_UNKNOWN EQU %1111
 	const EGG_DRAGON        ; e
 	const EGG_NONE          ; f (Undiscovered)
 
-; party_struct members (see macros/wram.asm)
+; breed_struct and party_struct members (see macros/wram.asm)
 rsreset
 MON_SPECIES            rb
 MON_ITEM               rb
@@ -114,7 +114,7 @@ MON_CAUGHTBALL EQU MON_CAUGHTGENDER
 MON_CAUGHTLEVEL        rb
 MON_CAUGHTLOCATION     rb
 MON_LEVEL              rb
-BOXMON_STRUCT_LENGTH EQU _RS
+BREEDMON_STRUCT_LENGTH EQU _RS
 MON_STATUS             rb
                        rb_skip
 MON_HP                 rw

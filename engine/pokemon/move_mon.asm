@@ -713,7 +713,7 @@ RetrieveBreedmon:
 	ld a, [hl]
 	ld [wCurForm], a
 	pop hl
-	ld bc, BOXMON_STRUCT_LENGTH
+	ld bc, BREEDMON_STRUCT_LENGTH
 	rst CopyBytes
 	call GetBaseData
 	call GetLastPartyMon
@@ -800,7 +800,7 @@ _DepositBreedmon:
 	ld hl, wPartyMon1Species
 	ld bc, PARTYMON_STRUCT_LENGTH
 	rst AddNTimes
-	ld bc, BOXMON_STRUCT_LENGTH
+	ld bc, BREEDMON_STRUCT_LENGTH
 	rst CopyBytes
 	xor a
 	ld [wPokemonWithdrawDepositParameter], a

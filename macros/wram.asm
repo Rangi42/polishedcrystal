@@ -2,7 +2,7 @@ flag_array: MACRO
 	ds ((\1) + 7) / 8
 ENDM
 
-oldbox_struct: MACRO
+breed_struct: MACRO
 \1Species::        db
 \1Item::           db
 \1Moves::          ds NUM_MOVES
@@ -37,7 +37,6 @@ oldbox_struct: MACRO
 \1CaughtLevel::    db
 \1CaughtLocation:: db
 \1Level::          db
-\1End::
 ENDM
 
 savemon_struct: MACRO
@@ -97,40 +96,7 @@ newbox: MACRO
 ENDM
 
 party_struct: MACRO
-\1Species::        db
-\1Item::           db
-\1Moves::          ds NUM_MOVES
-\1ID::             dw
-\1Exp::            ds 3
-\1EVs::
-\1HPEV::           db
-\1AtkEV::          db
-\1DefEV::          db
-\1SpdEV::          db
-\1SatEV::          db
-\1SdfEV::          db
-\1DVs::
-\1HPAtkDV::        db
-\1DefSpdDV::       db
-\1SatSdfDV::       db
-\1Personality::
-\1Shiny::
-\1Ability::
-\1Nature::         db
-\1Gender::
-\1IsEgg::
-\1ExtSpecies::
-\1Form::           db
-\1PP::             ds NUM_MOVES
-\1Happiness::      db
-\1PokerusStatus::  db
-\1CaughtData::
-\1CaughtGender::
-\1CaughtTime::
-\1CaughtBall::     db
-\1CaughtLevel::    db
-\1CaughtLocation:: db
-\1Level::          db
+	breed_struct \1
 \1Status::         db
 \1Unused::         db
 \1HP::             dw
