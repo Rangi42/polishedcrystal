@@ -40,7 +40,7 @@ PatchSavefile:
 
 .latest_build
 	print .latest_build_string
-	exit 0
+	exit 1
 
 .future_build
 	bufstring .future_build_string_1
@@ -57,7 +57,7 @@ PatchSavefile:
 	exit 1
 
 .latest_build_string
-	string "The savefile already corresponds to the current build of Polished Crystal. No patching is necessary. Redownload if instructed to."
+	string "The savefile already corresponds to the current build of Polished Crystal. No patching is necessary."
 .future_build_string_1
 	string "The savefile indicates it corresponds to build "
 .future_build_string_2
@@ -87,42 +87,27 @@ CheckSavefileIsValid:
 	gethalfwordinc #build, #address
 	gethalfwordinc #temp, #address
 	seek #temp
-	set #1, #temp
-	readbyte #3
-	ifeq #3, 97, .check_value_97
+	readbyte #1
+	ifeq #1, 97, .get_build
 	ifne #build, 7, .not_build_6
-	set #build, 6 ; specific to v6 since it shares all other check pointers with v7, except sCheckValue1 == 99
+	decrement #build ; special case for v6 since it shares the same check value addresses as v7 but sCheckValue1 = 99
 .not_build_6
-	ifeq #3, 99, .check_value_99
+	gethalfwordinc #temp, #address ; skip sSaveVersion
+	ifeq #1, 99, .check_2
 .check_1_cont
 	ifeq #build, #zero, #2
-	add #address, 4
+	getwordinc #temp, #address ; add #address, 4
 	jump .check_1
 
-.check_value_99
-	gethalfwordinc #temp, #address
-	ifeq #build, 6, .get_build
-	jump .check_2
-.check_value_97
+.get_build
 	gethalfwordinc #temp, #address
 	ifeq #temp, #zero, .check_1_cont ; if this is true, a value was 97 when it shouldn't have been
-.get_build
 	seek #temp
 	getfilehalfword #build
 	shiftright #temp, #build, 8
 	shiftleft #build, 8
 	or #build, #temp
 	and #build, 0xffff
-	ifeq #build, 2, .build_7 ; edge case where v6 with sSaveVersion 0002 is actually v7, could theoretically cause conflicts but odds are tiny
-	ifeq #3, 97, .check_2
-	set #build, 6
-	jump .check_2
-
-.build_7
-	set #build, 7 ; hotfix in case someone got the trial version of newbox
-	writehalfword 0x0700
-	seek #1
-	writebyte 97
 .check_2
 	gethalfwordinc #temp, #address
 	seek #temp
