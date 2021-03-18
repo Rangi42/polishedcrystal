@@ -21,7 +21,7 @@
 	define sChecksum,             0x2d0d
 	define sCheckValue2,          0x2d0f
 	define sNewBox1,              0x2d10
-	define sBackupNewBox1,        0x2ef0
+	define sBackupNewBox1,        0x2f20
 	define sLinkBattleRecord,     0x3266
 	define sByteBeforeHallOfFame, 0x32bf
 	define sBoxMons1,             0x4000
@@ -52,7 +52,7 @@
 
 ; SRAM sizes
 	define GAME_DATA_SIZE,  0xb7b
-	define BOX_SIZE,        0x410
+	define BOX_SIZE,        0x3d4
 
 ; struct lengths
 	define PARTYMON_STRUCT_LENGTH, 48
