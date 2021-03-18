@@ -926,13 +926,15 @@ DecodeTempMon:
 	pop af
 	jr z, SetTempPartyMonData
 
-	ld hl, BadEggData
+	ld hl, BadEggRLE
 	ld de, wTempMon
 	ld b, $42
 	call CopyRLE
 	call SetTempPartyMonData
 	scf
 	ret
+
+INCLUDE "data/pc/bad_egg.asm"
 
 SetTempPartyMonData:
 	; Calculate stats
@@ -980,28 +982,6 @@ SetTempPartyMonData:
 	farcall RestoreTempPP
 	or 1
 	ret
-
-BadEggData:
-	db UNOWN, 1 ; $c6
-	db $00, 1
-	db HIDDEN_POWER, 1 ; $ed
-	db $00, 17
-	db ABILITY_1 | QUIRKY, 1 ; $38
-	db MALE | IS_EGG_MASK | UNOWN_QUESTION_FORM, 1 ; $68
-	db $00, 9
-	db EGG_LEVEL, 1 ; $01
-	db $00, 16
-	db "B", 1 ; $81
-	db "a", 1 ; $a0
-	db "d", 1 ; $a3
-	db " ", 1 ; $7f
-	db "E", 1 ; $84
-	db "g", 2 ; $a6
-	db "@", 4 ; $53
-	db "?", 1 ; $9e
-	db "@", 7 ; $53
-	db $00, 3
-	db $42 ; end
 
 EnsureStorageSpace:
 ; Returns z if we have at least a unallocated pokedb entries left. This exists
@@ -1114,7 +1094,7 @@ InitializeBoxes:
 .Box:
 	rawchar "Box @"
 
-INCLUDE "data/default_box_themes.asm"
+INCLUDE "data/pc/default_box_themes.asm"
 
 GetBoxTheme:
 ; Returns box b's theme in a.

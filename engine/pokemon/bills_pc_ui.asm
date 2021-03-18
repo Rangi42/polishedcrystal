@@ -3057,7 +3057,7 @@ endr
 .current_theme
 	farjp _CGB_BillsPC
 
-INCLUDE "data/bills_pc_theme_names.asm"
+INCLUDE "data/pc/theme_names.asm"
 
 BillsPC_GetCursorFromTo:
 ; Returns source (held mon) in de and destination (cursor location) in bc.
