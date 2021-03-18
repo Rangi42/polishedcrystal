@@ -39,6 +39,58 @@ breed_struct: MACRO
 \1Level::          db
 ENDM
 
+party_struct: MACRO
+	breed_struct \1
+\1Status::         db
+\1Unused::         db
+\1HP::             dw
+\1MaxHP::          dw
+\1Stats:: ; big endian
+\1Attack::         dw
+\1Defense::        dw
+\1Speed::          dw
+\1SpclAtk::        dw
+\1SpclDef::        dw
+\1End::
+ENDM
+
+battle_struct: MACRO
+\1Species::        db
+\1Item::           db
+\1Moves::          ds NUM_MOVES
+; Mon capture assumes personality comes after DVs
+\1DVs::
+\1HPAtkDV::        db
+\1DefSpdDV::       db
+\1SatSdfDV::       db
+\1Personality::
+\1Shiny::
+\1Ability::
+\1Nature::         db
+\1Gender::
+\1IsEgg::
+\1ExtSpecies::
+\1Form::           db
+\1PP::             ds NUM_MOVES
+\1Happiness::      db
+\1Level::          db
+\1Status::         db
+\1Unused::         db
+\1HP::             dw
+\1MaxHP::          dw
+\1Stats:: ; big endian
+\1Attack::         dw
+\1Defense::        dw
+\1Speed::          dw
+\1SpclAtk::        dw
+\1SpclDef::        dw
+\1StatsEnd::
+\1Type::
+\1Type1::          db
+\1Type2::          db
+\1StructEnd::
+ENDM
+
 savemon_struct: MACRO
 \1Species::        db
 \1Item::           db
@@ -95,58 +147,6 @@ newbox: MACRO
 \1Theme::   db
 ENDM
 
-party_struct: MACRO
-	breed_struct \1
-\1Status::         db
-\1Unused::         db
-\1HP::             dw
-\1MaxHP::          dw
-\1Stats:: ; big endian
-\1Attack::         dw
-\1Defense::        dw
-\1Speed::          dw
-\1SpclAtk::        dw
-\1SpclDef::        dw
-\1End::
-ENDM
-
-battle_struct: MACRO
-\1Species::        db
-\1Item::           db
-\1Moves::          ds NUM_MOVES
-; Mon capture assumes personality comes after DVs
-\1DVs::
-\1HPAtkDV::        db
-\1DefSpdDV::       db
-\1SatSdfDV::       db
-\1Personality::
-\1Shiny::
-\1Ability::
-\1Nature::         db
-\1Gender::
-\1IsEgg::
-\1ExtSpecies::
-\1Form::           db
-\1PP::             ds NUM_MOVES
-\1Happiness::      db
-\1Level::          db
-\1Status::         db
-\1Unused::         db
-\1HP::             dw
-\1MaxHP::          dw
-\1Stats:: ; big endian
-\1Attack::         dw
-\1Defense::        dw
-\1Speed::          dw
-\1SpclAtk::        dw
-\1SpclDef::        dw
-\1StatsEnd::
-\1Type::
-\1Type1::          db
-\1Type2::          db
-\1StructEnd::
-ENDM
-
 map_connection_struct: MACRO
 \1ConnectedMapGroup::       db
 \1ConnectedMapNumber::      db
@@ -160,7 +160,6 @@ map_connection_struct: MACRO
 ENDM
 
 channel_struct: MACRO
-; Addreses are wChannel1 (c101).
 \1MusicID::           dw
 \1MusicBank::         db
 \1Flags::             db ; 0:on/off 1:subroutine 3:sfx 4:noise 5:rest
