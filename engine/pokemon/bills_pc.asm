@@ -1071,6 +1071,31 @@ InitializeBoxes:
 	dec b
 	jr nz, .name_loop
 
+	; Sanity check backup boxes. We want to leave them alone for the most part
+	; in case the player chose to start a new game, at least until they save.
+	; However, if this is a brand new game, the SRAM might be filled with
+	; garbage data. Ensure that box slots don't reference entries past
+	; MONDB_ENTRIES since that would lead to odd behaviour when trying to check
+	; flags in FlushStorageSystem (which needs to care about both active and
+	; backup boxes).
+	ld b, NUM_BOXES
+	ld hl, sBackupNewBox1Entries
+.outer_backup_loop
+	ld c, MONS_PER_BOX
+.inner_backup_loop
+	ld a, [hl]
+	cp MONDB_ENTRIES + 1
+	jr c, .valid_entry
+	xor a
+.valid_entry
+	ld [hli], a
+	dec c
+	jr nz, .inner_backup_loop
+	ld de, sBackupNewBox2 - sBackupNewBox1 - MONS_PER_BOX
+	add hl, de
+	dec b
+	jr nz, .outer_backup_loop
+
 	ld de, BillsPC_DefaultBoxThemes
 	ld hl, sNewBox1Theme
 .theme_loop
