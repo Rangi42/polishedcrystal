@@ -1491,6 +1491,15 @@ wPokeAnimBitmaskBuffer:: db
 wPokeAnimStructEnd::
 
 
+SECTION "Used Storage", WRAMX
+
+wPokeDB1UsedEntries:: flag_array MONDB_ENTRIES
+wPokeDB1UsedEntriesEnd::
+
+wPokeDB2UsedEntries:: flag_array MONDB_ENTRIES
+wPokeDB2UsedEntriesEnd::
+
+
 SECTION "Sound Stack", WRAMX
 
 wSoundEngineBackup:: ds wChannelsEnd - wMusic

@@ -136,7 +136,6 @@ pokedb: MACRO
 \1Mons::
 \1Mon1::        savemon_struct \1Mon1
 \1Mon2::        ds SAVEMON_STRUCT_LENGTH * (MONDB_ENTRIES - 1)
-\1UsedEntries:: flag_array MONDB_ENTRIES
 \1End::
 ENDM
 

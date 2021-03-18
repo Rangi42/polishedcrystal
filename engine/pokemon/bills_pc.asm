@@ -403,15 +403,18 @@ NewStoragePointer:
 FlushStorageSystem:
 ; Frees up orphaned pokedb entries and reallocates used entries. Beware of soft-
 ; resets and make sure this process completes before loading up a game.
+	ld a, BANK(wPokeDB1UsedEntries)
+	call StackCallInWRAMBankA
+.Function:
 	push hl
 	push de
 	push bc
 
 	; Clear used pokedb entries.
-	ld a, BANK(sBoxMons1)
-	call .ClearEntries
-	ld a, BANK(sBoxMons2)
-	call .ClearEntries
+	xor a
+	ld hl, wPokeDB1UsedEntries
+	ld bc, wPokeDB2UsedEntriesEnd - wPokeDB1UsedEntries
+	rst ByteFill
 
 	; Now, set flags as per box usage.
 	ld b, 1
@@ -428,17 +431,7 @@ FlushStorageSystem:
 	inc b
 	cp NUM_BOXES * 2 ; current + backup
 	jr nz, .outer_loop
-	call CloseSRAM
 	jp PopBCDEHL
-
-.ClearEntries:
-; Clears current pokedb allocations for storage bank a
-	call GetSRAMBank
-	xor a
-	ld hl, sBoxMons1UsedEntries
-	ld bc, sBoxMons1End - sBoxMons1UsedEntries
-	rst ByteFill
-	ret
 
 GetStorageBoxPointer:
 ; Returns the pokedb bank+entry in de for box b, slot c.
@@ -1040,12 +1033,14 @@ CheckFreeDatabaseEntries:
 	; fallthrough
 _CheckFreeDatabaseEntries:
 	; Now, count used entries.
-	ld a, BANK(sBoxMons1)
+	ld a, BANK(wPokeDB1UsedEntries)
+	call StackCallInWRAMBankA
+.Function:
+	ld hl, wPokeDB1UsedEntries
 	call .CountEntries
 	push bc
-	ld a, BANK(sBoxMons2)
+	ld hl, wPokeDB2UsedEntries
 	call .CountEntries
-	call CloseSRAM
 	pop bc
 	add c
 	ret nc
@@ -1053,8 +1048,6 @@ _CheckFreeDatabaseEntries:
 	ret
 
 .CountEntries:
-	call GetSRAMBank
-	ld hl, sBoxMons1UsedEntries
 	ld b, (MONDB_ENTRIES + 7) / 8
 	call CountSetBits
 	cpl
@@ -1359,12 +1352,22 @@ StorageFlagAction:
 	push bc
 	ld b, a
 
-	call OpenStorageDB
+	call .do_it
+	; Stack call doesn't preserve flags.
+	and a
+	jp PopBCDEHL
 
+.do_it
+	ld a, BANK(wPokeDB1UsedEntries)
+	call StackCallInWRAMBankA
+.Function:
+	ld a, d
+	dec a
+	ld hl, wPokeDB1UsedEntries
+	jr z, .got_entries
+	ld hl, wPokeDB2UsedEntries
+.got_entries
 	ld c, e
 	dec c
-	ld hl, sBoxMons1UsedEntries
 	ld d, 0
-	predef FlagPredef
-	call CloseSRAM
-	jp PopBCDEHL
+	predef_jump FlagPredef
