@@ -2510,7 +2510,7 @@ _LeftWithDayCareLadyText::
 SECTION "_LeftWithDayCareManText", ROMX
 _LeftWithDayCareManText::
 	text "It's "
-	text_ram wBreedMon1
+	text_ram wBreedMon1Nickname
 	line "that was left with"
 	cont "the Day-Care Man."
 	done

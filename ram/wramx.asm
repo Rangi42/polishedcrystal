@@ -1387,11 +1387,10 @@ wDayCareMan::
 ; bit 0: monster 1 in daycare
 	db
 
-wBreedMon1::
 wBreedMon1Nickname:: ds MON_NAME_LENGTH
 wBreedMon1OT:: ds PLAYER_NAME_LENGTH
 wBreedMon1Extra:: ds 3
-wBreedMon1Stats:: breed_struct wBreedMon1
+wBreedMon1:: breed_struct wBreedMon1
 
 wDayCareLady::
 ; bit 7: active
@@ -1404,11 +1403,10 @@ wBreedMotherOrNonDitto::
 ; nz: no
 	db
 
-wBreedMon2::
 wBreedMon2Nickname:: ds MON_NAME_LENGTH
 wBreedMon2OT:: ds PLAYER_NAME_LENGTH
 wBreedMon2Extra:: ds 3
-wBreedMon2Stats:: breed_struct wBreedMon2
+wBreedMon2:: breed_struct wBreedMon2
 
 	ds 54 ; unused
 

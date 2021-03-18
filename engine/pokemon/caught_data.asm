@@ -92,7 +92,7 @@ CheckPartyFullAfterContest:
 	ld [wCurPartyMon], a
 	ld hl, wContestMon
 	ld de, wTempMon
-	ld bc, BREEDMON_STRUCT_LENGTH
+	ld bc, PARTYMON_STRUCT_LENGTH
 	rst CopyBytes
 	ld hl, wPlayerName
 	ld de, wTempMonOT
