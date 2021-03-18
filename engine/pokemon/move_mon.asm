@@ -528,7 +528,7 @@ FillPP:
 	pop bc
 	ret
 
-AddTempmonToParty:
+AddTempMonToParty:
 	ld hl, wPartyCount
 	ld a, [hl]
 	cp PARTY_LENGTH

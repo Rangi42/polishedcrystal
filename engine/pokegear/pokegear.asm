@@ -260,7 +260,7 @@ InitPokegearTilemap:
 	dw .Radio
 
 .Clock:
-	ld de, ClockTilemapRLE
+	ld hl, ClockTilemapRLE
 	call Pokegear_LoadTilemapRLE
 	hlcoord 12, 1
 	ld de, .switch
@@ -287,14 +287,14 @@ InitPokegearTilemap:
 	jp PokegearMap_UpdateLandmarkName
 
 .Radio:
-	ld de, RadioTilemapRLE
+	ld hl, RadioTilemapRLE
 	call Pokegear_LoadTilemapRLE
 	hlcoord 0, 12
 	lb bc, 4, 18
 	jp Textbox
 
 .Phone:
-	ld de, PhoneTilemapRLE
+	ld hl, PhoneTilemapRLE
 	call Pokegear_LoadTilemapRLE
 	hlcoord 0, 12
 	lb bc, 4, 18
@@ -1286,23 +1286,10 @@ DeleteSpriteAnimStruct2ToEnd:
 
 Pokegear_LoadTilemapRLE:
 	; Format: repeat count, tile ID
-	; Terminated with $FF
-	hlcoord 0, 0
-.loop
-	ld a, [de]
-	cp $ff
-	ret z
-	ld b, a
-	inc de
-	ld a, [de]
-	ld c, a
-	inc de
-	ld a, b
-.load
-	ld [hli], a
-	dec c
-	jr nz, .load
-	jr .loop
+	; Terminated with $ff
+	decoord 0, 0
+	ld b, $ff
+	jp CopyRLE
 
 PokegearText_WhomToCall:
 	; Whom do you want to call?

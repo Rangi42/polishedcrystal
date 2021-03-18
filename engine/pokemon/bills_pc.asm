@@ -933,7 +933,10 @@ DecodeTempMon:
 	pop af
 	jr z, .set_partymon_data
 
-	call SetBadEgg
+	ld hl, BadEggData
+	ld de, wTempMon
+	ld b, $42
+	call CopyRLE
 	call .set_partymon_data
 	scf
 	ret
@@ -985,52 +988,27 @@ DecodeTempMon:
 	or 1
 	ret
 
-SetBadEgg:
-	; Load failsafe data into the TempMon pokémon struct
-	ld hl, wTempMon
-	ld bc, BOXMON_STRUCT_LENGTH
-	ld a, 1
-	rst ByteFill
-
-	; Set data that can't be 1 to other things
-
-	; No held item.
-	xor a
-	ld hl, wTempMonItem
-	ld [hl], a
-
-	; No duplicate moves.
-	ld hl, wTempMonMoves + 1
-	ld bc, NUM_MOVES - 1
-	rst ByteFill
-
-	; More sensible personality data.
-	ld hl, wTempMonPersonality
-	ld [hl], ABILITY_1 | QUIRKY ; no-optimize *hl++|*hl-- = N
-	inc hl
-	ld [hl], MALE | IS_EGG_MASK | 1
-	ld hl, wTempMonHappiness ; egg cycles
-	ld [hl], 255
-
-	; 0 EXP.
-	ld hl, wTempMonExp
-	ld c, 3
-	rst ByteFill
-
-	; Set nickname fields
-	ld hl, wTempMonNickname
-	ld de, .BadEgg
-	call CopyName2
-
-	; Dummy OT name.
-	ld hl, wTempMonOT
-	ld a, "?"
-	ld [hli], a
-	ld [hl], "@"
-	ret
-
-.BadEgg:
-	rawchar "Bad Egg@"
+BadEggData:
+	db UNOWN, 1 ; $c6
+	db $00, 1
+	db HIDDEN_POWER, 1 ; $ed
+	db $00, 17
+	db ABILITY_1 | QUIRKY, 1 ; $38
+	db MALE | IS_EGG_MASK | UNOWN_QUESTION_FORM, 1 ; $68
+	db $00, 9
+	db EGG_LEVEL, 1 ; $01
+	db $00, 16
+	db "B", 1 ; $81
+	db "a", 1 ; $a0
+	db "d", 1 ; $a3
+	db " ", 1 ; $7f
+	db "E", 1 ; $84
+	db "g", 2 ; $a6
+	db "@", 4 ; $53
+	db "?", 1 ; $9e
+	db "@", 7 ; $53
+	db $00, 3
+	db $42 ; end
 
 EnsureStorageSpace:
 ; Returns z if we have at least a unallocated pokedb entries left. This exists
