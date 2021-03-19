@@ -605,4 +605,3 @@ ChangeGyaradosForm:
 	writebyte #result
 .done
 	return
-

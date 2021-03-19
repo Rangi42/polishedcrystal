@@ -72,4 +72,3 @@ BackupCheckPointers:
 
 	dh 0
 	dh sBackupCheckValue1_v0, 0, sBackupCheckValue2_v0, sBackupChecksum_v0
-
