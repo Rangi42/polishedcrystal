@@ -93,13 +93,13 @@ PrintBuild4VersionCheck:
 .build4_2_string
 	string "* 4.2 (21 December 2019): "
 .build4_3_string
-	string "* 4.3 (24 December 2019): Removed Pikablu guy from Noisy forest, "
+	string "* 4.3 (24 December 2019): Removed Pikablu guy from Noisy Forest, "
 .build4_4_string
-	string "* 4.4 (4 January 2020): Can now fly to Yellow Forest/Cerulean Cape, "
+	string "* 4.4 (4 January 2020): Can now Fly to Yellow Forest and Cerulean Cape, "
 .build4_5_string
 	string "* 4.5 (2 February 2020): "
 .build4_instruction_1
-	string "Compare your national dex order to the links provided, and check if Softboiled and Milk Drink are still in game or have been replaced with Fresh Snack (or if Shell Smash is in-game.)"
+	string "Compare your National Dex order to the links provided, and check if Softboiled and Milk Drink are still in game or have been replaced with Fresh Snack (or if Shell Smash is in the game.)"
 .build4_instruction_2
 	string "Then, select the option that corresponds to the build number based on the info above. If you are unsure, select 4.3, or go to the Polished Crystal Discord server and ask for help in #questions."
 .build4_0_dex_link
@@ -113,7 +113,7 @@ PrintBuild4VersionCheck:
 .build4_fresh_snack_shell_smash
 	string "Softboiled and Milk Drink replaced with Fresh Snack, Shell Smash added, "
 .build4_national_dex
-	string "national dex matches this list "
+	string "National Dex matches this list "
 .build4_0_dex:
 	string "(no Shuckle): "
 .build4_1_dex:
