@@ -58,7 +58,7 @@ gfx/misc.o
 
 
 .SUFFIXES:
-.PHONY: clean tidy crystal faithful nortc debug monochrome freespace tools
+.PHONY: clean tidy crystal faithful nortc debug monochrome freespace tools bsp
 .SECONDEXPANSION:
 .PRECIOUS: %.2bpp %.1bpp
 .SECONDARY:
@@ -84,12 +84,14 @@ clean: tidy
 	find data/tilesets -name '*_collision.bin' -delete
 
 tidy:
-	rm -f $(crystal_obj) $(wildcard $(NAME)-*.gbc) $(wildcard $(NAME)-*.map) $(wildcard $(NAME)-*.sym)
+	rm -f $(crystal_obj) $(wildcard $(NAME)-*.gbc) $(wildcard $(NAME)-*.map) $(wildcard $(NAME)-*.sym) $(wildcard $(NAME)-*.bsp)
 	$(MAKE) clean -C tools/
 
 freespace: ROM_NAME = $(NAME)-$(VERSION)
-freespace: crystal
+freespace: crystal tools/bankends
 	tools/bankends $(ROM_NAME).map > bank_ends.txt
+
+bsp: $(NAME)-$(VERSION).bsp
 
 
 define DEP
@@ -108,6 +110,10 @@ endif
 	$(RGBDS_DIR)rgblink $(RGBLINK_FLAGS) -o $@ $^
 	$(RGBDS_DIR)rgbfix $(RGBFIX_FLAGS) $@
 	tools/bankends -q $(ROM_NAME).map
+
+.bsp: tools/bspcomp
+%.bsp: bsp/patch.txt
+	pushd bsp; ../tools/bspcomp patch.txt ../$@; popd
 
 
 gfx/battle/lyra_back.2bpp: rgbgfx += -h
