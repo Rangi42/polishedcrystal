@@ -10,7 +10,8 @@ tools := \
 	pokemon_animation \
 	pokemon_animation_graphics \
 	gfx \
-	bankends
+	bankends \
+	bspcomp
 
 all: $(tools)
 	@:
@@ -21,6 +22,9 @@ clean:
 lzcomp: CFLAGS += -flto -Wno-strict-overflow -Wno-sign-compare
 lzcomp: $(wildcard lz/*.c) $(wildcard lz/*.h)
 	$(CC) $(CFLAGS) -o $@ lz/*.c
+
+bspcomp: bsp/bspcomp.c
+	$(CC) $(CFLAGS) -o $@ $^
 
 bankends: bankends.c parsemap.o
 	$(CC) $(CFLAGS) -o $@ $^

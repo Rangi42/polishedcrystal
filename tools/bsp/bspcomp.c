@@ -644,7 +644,7 @@ char * get_string_argument (const char * argument) {
   if (result[length] != '"') error_exit(1, "unquoted string");
   result[length] = 0;
   char * pos = result;
-  while (pos = strstr(pos, "\"\"")) {
+  while ((pos = strstr(pos, "\"\""))) {
     pos ++;
     memmove(pos, pos + 1, strlen(pos));
   }
@@ -798,7 +798,7 @@ void bit_shift_command (int bit_shift_type, char ** arguments) {
     }
   free(argument);
   if (shift_type) buffer[buffer_length ++] = shift_count;
-  append_data_to_script(buffer, buffer_length);
+  append_data_to_script((char *) buffer, buffer_length);
 }
 
 void one_argument_one_byte_argument (int opcode_byte, char ** arguments) {
@@ -926,7 +926,7 @@ void standard_command (unsigned char opcode_byte, unsigned char expected_variabl
     free(argument);
   }
   *buffer = opcode_byte;
-  append_data_to_script(buffer, current - buffer);
+  append_data_to_script((char *) buffer, current - buffer);
   free(buffer);
 }
 
@@ -953,6 +953,7 @@ void data_command (int width, char ** arguments) {
         break;
       case 1:
         error_exit(1, "variables are not allowed in data commands");
+        // fallthrough
       case 2:
         if (width != 4) error_exit(1, "references are not allowed in data commands narrower than 32 bits");
         memset(buffer, 0, 4);
@@ -963,7 +964,7 @@ void data_command (int width, char ** arguments) {
   }
 }
 
-void hexdata_command (int _, char ** arguments) {
+void hexdata_command (__attribute__((unused)) int _, char ** arguments) {
   char * buffer;
   unsigned argument_number, length, pos;
   for (argument_number = 0; arguments[argument_number]; argument_number ++) {
@@ -978,7 +979,7 @@ void hexdata_command (int _, char ** arguments) {
   }
 }
 
-void define_command (int _, char ** arguments) {
+void define_command (__attribute__((unused)) int _, char ** arguments) {
   if (count_parameters(arguments) != 2) error_exit(1, "command expects 2 argument(s), got %u", count_parameters(arguments));
   if (!validate_label(*arguments)) error_exit(1, "'%s' is not a valid symbol name", *arguments);
   struct argument * argument = get_argument(arguments[1]);
@@ -1002,7 +1003,7 @@ void include_command (int is_binary, char ** arguments) {
   free(filename);
 }
 
-void string_command (int _, char ** arguments) {
+void string_command (__attribute__((unused)) int _, char ** arguments) {
   char * string;
   for (; *arguments; arguments ++) {
     string = get_string_argument(*arguments);
@@ -1011,7 +1012,7 @@ void string_command (int _, char ** arguments) {
   }
 }
 
-void align_command (int _, char ** arguments) {
+void align_command (__attribute__((unused)) int _, char ** arguments) {
   if (count_parameters(arguments) != 1) error_exit(1, "command expects 1 argument(s), got %u", count_parameters(arguments));
   struct argument * argument = get_argument(*arguments);
   if (argument -> kind || !(argument -> value)) error_exit(1, "the argument to align must be a non-zero number (got: %s)", *arguments);
