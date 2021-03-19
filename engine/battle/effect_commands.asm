@@ -3642,6 +3642,10 @@ BattleCommand_clearmissdamage:
 	and a
 	ret z
 
+	ld a, BATTLE_VARS_SUBSTATUS3
+	call GetBattleVarAddr
+	res SUBSTATUS_IN_LOOP, [hl]
+
 	jp ResetDamage
 
 HitSelfInConfusion:
