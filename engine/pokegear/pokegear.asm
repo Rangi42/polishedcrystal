@@ -1288,7 +1288,6 @@ Pokegear_LoadTilemapRLE:
 	; Format: repeat count, tile ID
 	; Terminated with $ff
 	decoord 0, 0
-	ld b, $ff
 	jp CopyRLE
 
 PokegearText_WhomToCall:

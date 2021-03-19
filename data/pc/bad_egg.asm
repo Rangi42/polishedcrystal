@@ -18,4 +18,4 @@ BadEggRLE:
 	db "?", 1 ; $9e
 	db "@", 7 ; $53
 	db $00, 3
-	db $42 ; end
+	db $ff ; end

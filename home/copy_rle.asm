@@ -1,11 +1,12 @@
 CopyRLE::
 ; Copy bytes from hl to de
 ; Format: value, count
-; Terminated with b
+; Terminated with $ff
 .loop
 	ld a, [hli]
-	cp b
+	inc a
 	ret z
+	dec a
 	ld c, [hl]
 	inc hl
 .load

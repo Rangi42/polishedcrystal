@@ -928,7 +928,6 @@ DecodeTempMon:
 
 	ld hl, BadEggRLE
 	ld de, wTempMon
-	ld b, $42
 	call CopyRLE
 	call SetTempPartyMonData
 	scf
