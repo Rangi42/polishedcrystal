@@ -112,7 +112,7 @@ endif
 	tools/bankends -q $(ROM_NAME).map
 
 .bsp: tools/bspcomp
-%.bsp: bsp/patch.txt
+%.bsp: $(wildcard bsp/*.txt)
 	pushd bsp; ../tools/bspcomp patch.txt ../$@; popd
 
 
