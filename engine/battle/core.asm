@@ -7520,8 +7520,7 @@ DropPlayerSub:
 	push af
 	ld a, [wBattleMonSpecies]
 	ld [wCurPartySpecies], a
-	ld hl, wBattleMonForm
-	predef GetVariant
+	call GetBattleMonVariant
 	ld de, vTiles2 tile $31
 	predef GetBackpic
 	pop af
@@ -7556,8 +7555,7 @@ DropEnemySub:
 	ld a, [wEnemyMonSpecies]
 	ld [wCurSpecies], a
 	ld [wCurPartySpecies], a
-	ld hl, wEnemyMonForm
-	predef GetVariant
+	call GetEnemyMonVariant
 	call GetBaseData
 	ld de, vTiles2
 	predef FrontpicPredef
