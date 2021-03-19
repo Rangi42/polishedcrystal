@@ -82,10 +82,10 @@ clean: tidy
 	find gfx \( -name '*.[12]bpp' -o -name '*.2bpp.vram[012]' -o -name '*.2bpp.vram[012]p' \) -delete
 	find gfx/pokemon -mindepth 1 \( -name 'bitmask.asm' -o -name 'frames.asm' -o -name 'front.animated.tilemap' -o -name 'front.dimensions' \) -delete
 	find data/tilesets -name '*_collision.bin' -delete
+	$(MAKE) clean -C tools/
 
 tidy:
 	rm -f $(crystal_obj) $(wildcard $(NAME)-*.gbc) $(wildcard $(NAME)-*.map) $(wildcard $(NAME)-*.sym) $(wildcard $(NAME)-*.bsp)
-	$(MAKE) clean -C tools/
 
 freespace: ROM_NAME = $(NAME)-$(VERSION)
 freespace: crystal tools/bankends
