@@ -2,7 +2,7 @@ flag_array: MACRO
 	ds ((\1) + 7) / 8
 ENDM
 
-box_struct: MACRO
+breed_struct: MACRO
 \1Species::        db
 \1Item::           db
 \1Moves::          ds NUM_MOVES
@@ -37,11 +37,10 @@ box_struct: MACRO
 \1CaughtLevel::    db
 \1CaughtLocation:: db
 \1Level::          db
-\1End::
 ENDM
 
 party_struct: MACRO
-	box_struct \1
+	breed_struct \1
 \1Status::         db
 \1Unused::         db
 \1HP::             dw
@@ -52,7 +51,7 @@ party_struct: MACRO
 \1Speed::          dw
 \1SpclAtk::        dw
 \1SpclDef::        dw
-\1StatsEnd::
+\1End::
 ENDM
 
 battle_struct: MACRO
@@ -92,16 +91,59 @@ battle_struct: MACRO
 \1StructEnd::
 ENDM
 
-box: MACRO
-\1Count::           db
-\1Species::         ds MONS_PER_BOX + 1
+savemon_struct: MACRO
+\1Species::        db
+\1Item::           db
+\1Moves::          ds NUM_MOVES
+\1ID::             dw
+\1Exp::            ds 3
+\1EVs::
+\1HPEV::           db
+\1AtkEV::          db
+\1DefEV::          db
+\1SpdEV::          db
+\1SatEV::          db
+\1SdfEV::          db
+\1DVs::
+\1HPAtkDV::        db
+\1DefSpdDV::       db
+\1SatSdfDV::       db
+\1Personality::
+\1Shiny::
+\1Ability::
+\1Nature::         db
+\1Gender::
+\1IsEgg::
+\1ExtSpecies::
+\1Form::           db
+\1PPUps::          db
+\1Happiness::      db
+\1PokerusStatus::  db
+\1CaughtData::
+\1CaughtGender::
+\1CaughtTime::
+\1CaughtBall::     db
+\1CaughtLevel::    db
+\1CaughtLocation:: db
+\1Level::          db
+\1Extra::          ds 3 ; superfluous OT name bytes
+\1Nickname::       ds MON_NAME_LENGTH - 1
+\1OT::             ds PLAYER_NAME_LENGTH - 1
+\1End::
+ENDM
+
+pokedb: MACRO
 \1Mons::
-\1Mon1::            box_struct \1Mon1
-\1Mon2::            ds BOXMON_STRUCT_LENGTH * (MONS_PER_BOX - 1)
-\1MonOTs::          ds NAME_LENGTH * MONS_PER_BOX
-\1MonNicknames::    ds MON_NAME_LENGTH * MONS_PER_BOX
-\1MonNicknamesEnd::
-\1End::             dw ; padding
+\1Mon1::        savemon_struct \1Mon1
+\1Mon2::        ds SAVEMON_STRUCT_LENGTH * (MONDB_ENTRIES - 1)
+\1End::
+ENDM
+
+newbox: MACRO
+\1Entries:: ds MONS_PER_BOX
+\1Banks::   flag_array MONS_PER_BOX
+\1Name::    ds BOX_NAME_LENGTH
+\1Theme::   db
 ENDM
 
 map_connection_struct: MACRO

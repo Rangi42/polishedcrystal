@@ -452,7 +452,8 @@ Special_DayCareManOutside:
 	text_end
 
 DayCare_GiveEgg:
-	ld a, [wEggMonLevel]
+	call DayCare_GenerateEgg
+	ld a, [wTempMonLevel]
 	ld [wCurPartyLevel], a
 	ld hl, wPartyCount
 	ld a, [hl]
@@ -464,7 +465,7 @@ DayCare_GiveEgg:
 	ld c, a
 	ld b, 0
 	add hl, bc
-	ld a, [wEggMonSpecies]
+	ld a, [wTempMonSpecies]
 	ld [hli], a
 	ld [wCurSpecies], a
 	ld [wCurPartySpecies], a
@@ -472,77 +473,32 @@ DayCare_GiveEgg:
 	; Red Gyarados' Eggs should be plain
 	cp MAGIKARP
 	jr nz, .not_red_magikarp
-	ld a, [wEggMonForm]
+	ld a, [wTempMonForm]
 	and SPECIESFORM_MASK
 	cp GYARADOS_RED_FORM
 	jr c, .not_red_magikarp
-	ld a, [wEggMonForm]
+	ld a, [wTempMonForm]
 	and $ff - SPECIESFORM_MASK
 	or PLAIN_FORM
-	ld [wEggMonForm], a
+	ld [wTempMonForm], a
 .not_red_magikarp
 
 	ld [hl], -1
 
-	ld hl, wPartyMonNicknames
-	ld bc, MON_NAME_LENGTH
-	call DayCare_GetCurrentPartyMember
-	ld hl, wEggMonNickname
-	rst CopyBytes
-
-	ld hl, wPartyMonOTs
-	ld bc, NAME_LENGTH
-	call DayCare_GetCurrentPartyMember
-	ld hl, wEggMonOT
-	rst CopyBytes
-
-	ld hl, wPartyMon1
-	ld bc, PARTYMON_STRUCT_LENGTH
-	call DayCare_GetCurrentPartyMember
-	ld hl, wEggMon
-	ld bc, wEggMonEnd - wEggMon
-	rst CopyBytes
-
-	ld a, [wEggMonForm]
-	ld [wCurForm], a
-	call GetBaseData
+	; Party count is already increased since before.
 	ld a, [wPartyCount]
-	dec a
-	ld hl, wPartyMon1
-	ld bc, PARTYMON_STRUCT_LENGTH
-	rst AddNTimes
-	ld b, h
-	ld c, l
-	ld hl, MON_ID + 1
-	add hl, bc
-	push hl
-	ld hl, MON_MAXHP
-	add hl, bc
-	ld d, h
-	ld e, l
-	pop hl
-	push bc
-	ld b, FALSE
-	predef CalcPkmnStats
-	pop bc
-	ld hl, MON_HP
-	add hl, bc
+	ld [wTempMonSlot], a
 	xor a
-	ld [hli], a
-	ld [hl], a
+	ld [wTempMonBox], a
+
+	; Recalculates stats and sets other partymon stuff.
+	farcall SetTempPartyMonData
+	farcall UpdateStorageBoxMonFromTemp
 	and a
 	ret
 
 .PartyFull:
 	scf
-	ret
-
-DayCare_GetCurrentPartyMember:
-	ld a, [wPartyCount]
-	dec a
-	rst AddNTimes
-	ld d, h
-	ld e, l
 	ret
 
 CheckParentItem:
@@ -660,7 +616,7 @@ InheritDV:
 	ld a, e
 	push de
 	push hl
-	ld de, wEggMonDVs
+	ld de, wTempMonDVs
 	; halve A; 0-1: first byte, 2-3: second, 4-5: third
 	srl a ; sets carry if a is odd, maintained thorough the loop
 	inc a
@@ -711,16 +667,9 @@ DayCare_InitBreeding:
 	cp 150
 	jr c, .loop
 	ld [wStepsToEgg], a
-	xor a
-	ld hl, wEggMon
-	ld bc, wEggMonEnd - wEggMon
-	rst ByteFill
-	ld hl, wEggMonNickname
-	ld bc, MON_NAME_LENGTH
-	rst ByteFill
-	ld hl, wEggMonOT
-	ld bc, NAME_LENGTH
-	rst ByteFill
+	ret
+
+DayCare_GenerateEgg:
 	ld a, [wBreedMon1Species]
 	ld [wCurPartySpecies], a
 	ld a, [wBreedMon1Gender]
@@ -773,7 +722,15 @@ DayCare_InitBreeding:
 .GotEggSpecies:
 	ld [wCurPartySpecies], a
 	ld [wCurSpecies], a
-	ld [wEggMonSpecies], a
+
+	; Clear tempmon struct
+	xor a
+	ld hl, wTempMon
+	ld bc, PARTYMON_STRUCT_LENGTH + MON_NAME_LENGTH + PLAYER_NAME_LENGTH + 3
+	rst ByteFill
+
+	ld a, [wCurPartySpecies]
+	ld [wTempMonSpecies], a
 
 	; Form inheritance: from the mother or non-Ditto. If both
 	; parents share species, pick at random.
@@ -787,43 +744,43 @@ DayCare_InitBreeding:
 	call GetBaseData
 
 	; Set name and item
-	ld hl, wEggMonNickname
+	ld hl, wTempMonNickname
 	ld de, .String_EGG
 	call CopyName2
 	ld hl, wPlayerName
-	ld de, wEggMonOT
+	ld de, wTempMonOT
 	ld bc, NAME_LENGTH
 	rst CopyBytes
 	xor a
-	ld [wEggMonItem], a
+	ld [wTempMonItem], a
 
 	; Set moves for the egg
 	call InitEggMoves
 
 	; Set OTID to the player
-	ld hl, wEggMonID
+	ld hl, wTempMonID
 	ld a, [wPlayerID]
 	ld [hli], a
 	ld a, [wPlayerID + 1]
 	ld [hl], a
 
 	; Zero EXP
-	ld hl, wEggMonExp
+	ld hl, wTempMonExp
 	xor a
 	ld [hli], a
 	ld [hli], a
 	ld [hl], a
 
 	; Zero EVs
-	ld b, wEggMonDVs - wEggMonEVs
-	ld hl, wEggMonEVs
+	ld b, wTempMonDVs - wTempMonEVs
+	ld hl, wTempMonEVs
 .loop2
 	ld [hli], a
 	dec b
 	jr nz, .loop2
 
 	; Set random DVs
-	ld hl, wEggMonDVs
+	ld hl, wTempMonDVs
 	call Random
 	ld [hli], a
 	call Random
@@ -861,8 +818,8 @@ DayCare_InitBreeding:
 
 	; Zero the personality data
 	xor a
-	ld [wEggMonPersonality], a
-	ld [wEggMonPersonality + 1], a
+	ld [wTempMonPersonality], a
+	ld [wTempMonPersonality + 1], a
 
 	; Do Ability
 	; Ability Capsules greatly boosts HA rate of child: it makes it
@@ -925,7 +882,7 @@ DayCare_InitBreeding:
 .hidden_ability
 	ld a, HIDDEN_ABILITY
 .got_ability
-	ld hl, wEggMonAbility
+	ld hl, wTempMonAbility
 	or [hl]
 	ld [hl], a
 
@@ -943,7 +900,7 @@ DayCare_InitBreeding:
 	ld a, NUM_NATURES
 	call RandomRange
 .got_nature
-	ld hl, wEggMonNature
+	ld hl, wTempMonNature
 	or [hl]
 	ld [hl], a
 
@@ -997,13 +954,13 @@ DayCare_InitBreeding:
 	cp c
 	jr nc, .not_shiny
 	ld a, SHINY_MASK
-	ld hl, wEggMonShiny
+	ld hl, wTempMonShiny
 	or [hl]
 	ld [hl], a
 .not_shiny
 
 	; Gender
-	ld a, [wEggMonSpecies]
+	ld a, [wTempMonSpecies]
 	ld c, a
 	ld a, [wCurForm]
 	ld b, a
@@ -1015,7 +972,7 @@ DayCare_InitBreeding:
 	; a = carry (rnd(0..7) < c) ? FEMALE : MALE (0)
 	sbc a
 	and FEMALE
-	ld hl, wEggMonGender
+	ld hl, wTempMonGender
 	or [hl]
 	ld [hl], a
 
@@ -1032,15 +989,15 @@ DayCare_InitBreeding:
 	ld hl, wBreedMon1CaughtBall
 	call .inherit_mother_unless_samespecies
 	ld a, [hl]
-	ld [wEggMonCaughtBall], a
+	ld [wTempMonCaughtBall], a
 
 	; PP, egg cycles, level
 	ld hl, wStringBuffer1
 	ld de, wMonOrItemNameBuffer
 	ld bc, NAME_LENGTH
 	rst CopyBytes
-	ld hl, wEggMonMoves
-	ld de, wEggMonPP
+	ld hl, wTempMonMoves
+	ld de, wTempMonPP
 	predef FillPP
 	ld hl, wMonOrItemNameBuffer
 	ld de, wStringBuffer1
@@ -1053,14 +1010,14 @@ DayCare_InitBreeding:
 	add a
 	add a
 	add b
-	ld hl, wEggMonHappiness
+	ld hl, wTempMonHappiness
 	ld [hli], a
 	xor a
 	ld [hli], a
 	ld [hli], a
 	ld [hl], a
 	ld a, [wCurPartyLevel]
-	ld [wEggMonLevel], a
+	ld [wTempMonLevel], a
 	ret
 
 .inherit_mother_unless_samespecies

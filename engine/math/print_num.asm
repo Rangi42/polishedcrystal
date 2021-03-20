@@ -3,6 +3,7 @@ _PrintNum::
 ; High nibble of c denotes decimal point location.
 ; Works on up to 1-8 digits and up to 4 bytes (up to 99999999).
 ; The higher b nibble has some flags:
+; Bit 4: For each number printed, add a text delay (used for text_decimal)
 ; Bit 5: Print a pokedollar sign before the number itself
 ; Bit 6: Left-aligned number instead of right-aligned
 ; Bit 7: Print leading zeros
@@ -23,7 +24,7 @@ _PrintNum::
 	push hl
 	ld c, 4
 	ld a, b
-	and $1f
+	and $f
 	ld b, a
 .loop
 	ld a, b
@@ -83,7 +84,7 @@ endr
 	; Store maximum string length in the lower b nibble instead of c.
 	; Use c as a loop counter instead. This simplifies code a bit.
 	ld a, b
-	and $e0
+	and $f0
 	add c
 	ld b, a
 	ld c, 8
@@ -161,12 +162,16 @@ PrintHLNum:
 	push af
 	ld a, "¥"
 	ld [hli], a
+	bit PRINTNUM_DELAY_F, b
+	call nz, .printnum_delay
 	pop af
 
 .got_number
 	add "0"
 .got_value
 	ld [hli], a
+	bit PRINTNUM_DELAY_F, b
+	call nz, .printnum_delay
 	ldh a, [hPrintNum + 4]
 	and a
 	ret z
@@ -176,3 +181,9 @@ PrintHLNum:
 	ld a, "."
 	ld [hli], a
 	ret
+.printnum_delay
+	push hl
+	push de
+	push bc
+	call PrintLetterDelay
+	jp PopBCDEHL

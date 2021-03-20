@@ -208,11 +208,15 @@ LoadMoveMenuMonIcon:
 	push bc
 
 	depixel 3, 4, 2, 4
+	push de
+	ld hl, wTempMonForm
+	jr _InitScreenMonIcon
 InitScreenMonIcon:
 	push de
 
 	ld a, MON_FORM ; aka MON_IS_EGG
 	call GetPartyParamLocation
+_InitScreenMonIcon:
 	ld a, [hl]
 	and SPECIESFORM_MASK
 	ld [wCurIconForm], a
@@ -388,8 +392,11 @@ GetIcon_a:
 ; Load icon graphics into VRAM starting from tile a.
 	ld l, a
 	ld h, 0
-
+	; fallthrough
 GetIcon:
+	ld c, 8
+	; fallthrough
+DoGetIcon:
 ; Load icon graphics into VRAM starting from tile hl.
 
 ; One tile is 16 bytes long.
@@ -402,12 +409,47 @@ endr
 	push hl
 
 	push hl
+	ld a, c
+	push af
 	call LoadOverworldMonIcon
+	pop af
+	ld c, a
 	ld h, d
 	ld l, e
 	pop de
-
 	call DecompressRequest2bpp
+	pop hl
+	ret
+
+GetStorageIcon_a:
+; Load frame 1 icon graphics into VRAM starting from tile a
+	ld l, a ; no-optimize hl|bc|de = a * 16 (rept)
+	ld h, 0
+rept 4
+	add hl, hl
+endr
+	ld de, vTiles0
+	add hl, de
+	; fallthrough
+GetStorageIcon:
+	push hl
+
+	push hl
+	ld a, 4
+	push af
+	call LoadOverworldMonIcon
+	pop af
+	ld c, a
+	ld h, d
+	ld l, e
+	pop de
+	push de
+	push bc
+	call FarDecompressWRA6InB
+	pop bc
+	pop hl
+	ld de, wDecompressScratch
+	farcall BillsPC_SafeRequest2bppInWRA6
 	pop hl
 	ret
 

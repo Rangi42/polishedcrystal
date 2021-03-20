@@ -1,0 +1,90 @@
+; size constants
+	define BANK_SIZE,    0x4000
+	define BANKS,          0x80
+	define ROM_SIZE,   0x200000
+	define HASH_SIZE,        20
+	define SAVE_SIZE,    0x8000
+
+; SRAM pointers
+	define sPartyMail,            0x0600
+	define sMailbox,              0x0835
+	define sBackupMailbox,        0x0a0c
+	define sSaveVersion,          0x0be2
+	define sBackupOptions,        0x1200
+	define sBackupCheckValue1,    0x1207
+	define sBackupGameData,       0x1208
+	define sBackupChecksum,       0x1f0d
+	define sBackupCheckValue2,    0x1f0f
+	define sOptions,              0x2000
+	define sCheckValue1,          0x2007
+	define sGameData,             0x2008
+	define sChecksum,             0x2d0d
+	define sCheckValue2,          0x2d0f
+	define sNewBox1,              0x2d10
+	define sBackupNewBox1,        0x2f20
+	define sLinkBattleRecord,     0x3266
+	define sByteBeforeHallOfFame, 0x32bf
+	define sBoxMons1,             0x4000
+	define sBoxMons1UsedEntries,  0x5fc6
+	define sBoxMons2,             0x6000
+	define sBoxMons2UsedEntries,  0x7fc6
+
+; game data offsets
+	define PLAYER_NAME_OFFSET,                 0x003
+	define ITEMS_OFFSET,                       0x38d
+	define MEDICINE_OFFSET,                    0x425
+	define BALLS_OFFSET,                       0x471
+	define BERRIES_OFFSET,                     0x4a5
+	define PC_ITEMS_OFFSET,                    0x4e5
+	define BOX_NAMES_OFFSET,                   0x6e1
+	define MAP_GROUP_OFFSET,                   0x834
+	define PARTY_COUNT_OFFSET,                 0x856
+	define PARTY_MON_OT_OFFSET,                0x97e
+	define POKEDEX_CAUGHT_OFFSET,              0xa0b
+	define DAYCARE_MAN_OFFSET,                 0xa6a
+	define BREED_MON_1_NICK_OFFSET,            0xa6b
+	define BREED_MON_1_OT_OFFSET,              0xa76
+	define DAYCARE_LADY_OFFSET,                0xaa1
+	define BREED_MON_2_NICK_OFFSET,            0xaa4
+	define BREED_MON_2_OT_OFFSET,              0Xaaf
+	define EGG_MON_NICK_OFFSET,                0xada
+	define MAGIKARP_RECORD_HOLDER_NAME_OFFSET, 0xb6b
+
+; SRAM sizes
+	define GAME_DATA_SIZE,  0xb7b
+	define BOX_SIZE,        0x3d4
+
+; struct lengths
+	define PARTYMON_STRUCT_LENGTH, 48
+	define BOXMON_STRUCT_LENGTH,   32
+	define NAME_LENGTH,            11
+	define BOX_NAME_LENGTH,         9
+	define PLAYER_NAME_LENGTH,      8
+
+; pokemon struct offsets
+	define MOVES_OFFSET,            2
+	define FORM_OFFSET,            21
+	define PP_OFFSET,              22
+	define CAUGHTBALL_OFFSET,      28
+
+; pokemon struct constants
+	define NUM_MOVES,     4
+	define PP_MASK,    0x3f
+	define PP_UP_MASK, 0xc0
+	define FORM_MASK,  0x1f
+
+; pokemon constants
+	define GYARADOS,     0x82
+
+; move constants
+	define RAGE,         0x63
+	define SELFDESTRUCT, 0x78 ; becomes Trick Room
+	define FRESH_SNACK,  0x87
+	define EXPLOSION,    0x99
+	define FACADE,       0xab
+	define MILK_DRINK,   0xd0 ; becomes Shell Smash
+	define RETURN,       0xd8
+
+; event flags
+	define EVENT_GOT_SHUCKIE,                            74
+	define EVENT_MANIA_TOOK_SHUCKIE_OR_LET_YOU_KEEP_HIM, 75

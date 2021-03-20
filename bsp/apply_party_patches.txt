@@ -1,0 +1,93 @@
+ApplyPartyPatches:
+	; #1: callback, will receive party pointer, nickname pointer, OT pointer, location (0 = party, 1 = box, 2 = daycare)
+	push #e
+	push #d
+	push #c
+	push #b
+	push #a
+	set #a, #1
+	set #1, 5
+	call GetGameDataOffsetConstant
+	set #1, #result
+	call GetGameDataPointer
+	seek #result
+	readbyte #temp
+	add #1, #result, 8
+	add #2, #result, 0x16a
+	add #3, #result, 0x128
+	set #4, #zero
+	callnz #temp, .apply_to_list
+	set #1, 6
+	call GetGameDataOffsetConstant
+	set #1, #result
+	call GetGameDataPointer
+	seek #result
+	readbyte #temp
+	shiftleft #temp, 31 ; nonzero if bit 0 is set
+	callnz #temp, .daycare_mon
+	set #1, 7
+	call GetGameDataOffsetConstant
+	set #1, #result
+	call GetGameDataPointer
+	seek #result
+	readbyte #temp
+	shiftleft #temp, 31
+	; there are two extra bytes for the daycare lady we need to skip
+	; (#1 should end up on sBreedmon2, not sBreedmon2Item)
+	readhalfword #result ; move file pointer ahead
+	pos #result
+	callnz #temp, .daycare_mon
+	set #b, sBox1_v6
+	call .boxes
+	set #b, sBox8_v6
+	call .boxes
+	pop #a
+	pop #b
+	pop #c
+	pop #d
+	pop #e
+	return
+
+.boxes
+	set #c, 7
+.box_loop
+	seek #b
+	readbyte #temp
+	add #1, #b, 22
+	add #2, #b, 882
+	add #3, #b, 662
+	set #4, 1
+	callnz #temp, .apply_to_list
+	add #b, BOX_SIZE_v6
+	decrement #c
+	jumpnz #c, .box_loop
+	return
+
+.daycare_mon
+	add #1, #result, 23
+	add #2, #result, 1
+	add #3, #result, 12
+	set #4, 2
+	rotateleft #temp, 1
+.apply_to_list
+	set #d, #temp
+	set #e, #4
+.loop
+	push #3
+	push #2
+	push #1
+	set #4, #e
+	call #a
+	pop #1
+	set #4, PARTYMON_STRUCT_LENGTH
+	jumpz #e, .length_OK
+	set #4, BOXMON_STRUCT_LENGTH
+.length_OK
+	add #1, #4
+	pop #2
+	add #2, NAME_LENGTH
+	pop #3
+	add #3, NAME_LENGTH
+	decrement #d
+	jumpnz #d, .loop
+	return

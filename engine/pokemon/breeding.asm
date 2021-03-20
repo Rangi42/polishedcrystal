@@ -488,14 +488,14 @@ InitEggMoves:
 ; reversed inheritance priority
 
 	; Default level 1 moves
-	ld de, wEggMonMoves
+	ld de, wTempMonMoves
 	xor a
 	ld [wBuffer1], a
 	; c = species
-	ld a, [wEggMonSpecies]
+	ld a, [wTempMonSpecies]
 	ld c, a
 	; b = form
-	ld a, [wEggMonForm]
+	ld a, [wTempMonForm]
 	and SPECIESFORM_MASK
 	ld b, a
 	predef FillMoves
@@ -547,8 +547,8 @@ InitEggMoves:
 	call .GetEggMoves
 
 	; Done, fill PP
-	ld hl, wEggMonMoves
-	ld de, wEggMonPP
+	ld hl, wTempMonMoves
+	ld de, wTempMonPP
 	predef_jump FillPP
 
 .GetEggMoves:
@@ -570,10 +570,10 @@ InitEggMoves:
 InheritLevelMove:
 ; If move d is part of the level up moveset, inherit that move
 	; c = species
-	ld a, [wEggMonSpecies]
+	ld a, [wTempMonSpecies]
 	ld c, a
 	; b = form
-	ld a, [wEggMonForm]
+	ld a, [wTempMonForm]
 	and SPECIESFORM_MASK
 	ld b, a
 	; bc = index
@@ -606,10 +606,10 @@ InheritLevelMove:
 InheritEggMove:
 ; If move d is an egg move, inherit that move
 	; c = species
-	ld a, [wEggMonSpecies]
+	ld a, [wTempMonSpecies]
 	ld c, a
 	; b = form
-	ld a, [wEggMonForm]
+	ld a, [wTempMonForm]
 	and SPECIESFORM_MASK
 	ld b, a
 	; bc = index
@@ -632,7 +632,7 @@ InheritEggMove:
 	jr .loop
 
 InheritMove:
-	ld hl, wEggMonMoves
+	ld hl, wTempMonMoves
 	ld b, NUM_MOVES
 .loop
 	ld a, [hli]
@@ -646,8 +646,8 @@ InheritMove:
 	; shift moves
 	push de
 	ld bc, 3
-	ld hl, wEggMonMoves + 1
-	ld de, wEggMonMoves
+	ld hl, wTempMonMoves + 1
+	ld de, wTempMonMoves
 	rst CopyBytes
 	pop de
 .got_move_byte

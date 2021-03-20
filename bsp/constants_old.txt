@@ -1,0 +1,132 @@
+; SRAM pointers
+	define sBackupCheckValue1_v0,   0x1208
+	define sBackupGameData_v0,      0x1209
+	define sBackupPlayerData_v0,    0x1209
+	define sBackupMapData_v0,       0x1a15
+	define sBackupPokemonData_v0,   0x1a44
+	define sBackupGameDataEnd_v0,   0x1d68
+	define sBackupChecksum_v0,      0x1ef2
+	define sBackupCheckValue2_v0,   0x1ef4
+	define sCheckValue1_v0,         0x2008
+	define sGameData_v0,            0x2009
+	define sPlayerData_v0,          0x2009
+	define sChecksum_v0,            0x2cf2
+	define sCheckValue2_v0,         0x2cf4
+
+	define sBackupMapData_v1,       0x19fb
+	define sBackupPokemonData_v1,   0x1a2a
+	define sBackupGameDataEnd_v1,   0x1d4f
+	define sBackupChecksum_v1,      0x1ed9
+	define sBackupCheckValue2_v1,   0x1edb
+	define sMapData_v1,             0x27fb
+	define sPokemonData_v1,         0x282a
+	define sGameDataEnd_v1,         0x2b4f
+	define sChecksum_v1,            0x2cd9
+	define sCheckValue2_v1,         0x2cdb
+	define sBox_v1,                 0x2cdc
+
+	define sBackupMapData_v2,       0x1a11
+	define sBackupPokemonData_v2,   0x1a40
+	define sBackupGameDataEnd_v2,   0x1d65
+	define sBackupChecksum_v2,      0x1eef
+	define sBackupCheckValue2_v2,   0x1ef1
+	define sMapData_v2,             0x2811
+	define sPokemonData_v2,         0x2840
+	define sGameDataEnd_v2,         0x2b65
+	define sChecksum_v2,            0x2cef
+	define sCheckValue2_v2,         0x2cf1
+
+	define sBackupMapData_v3,       0x1a31
+	define sBackupPokemonData_v3,   0x1a60
+	define sBackupGameDataEnd_v3,   0x1d85
+	define sBackupChecksum_v3,      0x1f0f
+	define sBackupCheckValue2_v3,   0x1f11
+	define sMapData_v3,             0x2831
+	define sPokemonData_v3,         0x2860
+	define sGameDataEnd_v3,         0x2b85
+	define sChecksum_v3,            0x2d0f
+	define sCheckValue2_v3,         0x2d11
+
+	define sBackupMapData_v4,       0x1a2f
+	define sBackupPokemonData_v4,   0x1a5e
+	define sBackupGameDataEnd_v4,   0x1d83
+	define sBackupChecksum_v4,      0x1f0d
+	define sBackupCheckValue2_v4,   0x1f0f
+	define sMapData_v4,             0x282f
+	define sPokemonData_v4,         0x285e
+	define sGameDataEnd_v4,         0x2b83
+	define sChecksum_v4,            0x2d0d
+	define sCheckValue2_v4,         0x2d0f
+
+	define sBackupChecksum_v5,      0x1f0c
+	define sBackupCheckValue2_v5,   0x1f0e
+	define sChecksum_v5,            0x2d0c
+	define sCheckValue2_v5,         0x2d0e
+
+	define sSaveVersion_v6,         0x0be2
+	define sBox_v6,                 0x2d10
+	define sBox1_v6,                0x4000
+	define sBox1MonOT_v6,           0x4296
+	define sBox1MonNicknames_v6,    0x4372
+	define sBox8_v6,                0x6000
+	define sBox8MonOT_v6,           0x6296
+	define sBox8MonNicknames_v6,    0x6372
+
+; SRAM sizes
+	define GAME_DATA_SIZE_v0,        0xb5f
+	define GAME_DATA_SIZE_v1,        0xb46
+	define GAME_DATA_SIZE_v2,        0xb5c
+	define GAME_DATA_SIZE_v3,        0xb7c
+	define GAME_DATA_SIZE_v4,        0xb7a
+
+; game data offsets
+	define NUM_ITEMS_OFFSET_v0,      0x387
+	define KEY_ITEMS_OFFSET_v0,      0x4ac
+	define REG_KEY_ITEMS_v0,         0xb5b
+
+	define ITEMS_OFFSET_v1,          0x38c
+	define MEDICINE_OFFSET_v1,       0x41a
+	define BALLS_OFFSET_v1,          0x458
+	define BERRIES_OFFSET_v1,        0x486
+	define NUM_PC_ITEMS_OFFSET_v1,   0x4af
+	define PC_ITEMS_OFFSET_v1,       0x4b0
+	define REG_KEY_ITEM_FLAGS_v1,    0xb41
+	define PARTY_COUNT_OFFSET_v1,    0x821
+	define DAYCARE_MAN_OFFSET_v1,    0xa38
+	define DAYCARE_LADY_OFFSET_v1,   0xa6f
+
+	define ITEMS_OFFSET_v2,          0x38c
+	define MEDICINE_OFFSET_v2,       0x41a
+	define BALLS_OFFSET_v2,          0x466
+	define BERRIES_OFFSET_v2,        0x49a
+	define PC_ITEMS_OFFSET_v2,       0x4c6
+	define PARTY_COUNT_OFFSET_v2,    0x837
+	define DAYCARE_MAN_OFFSET_v2,    0xa4e
+	define DAYCARE_LADY_OFFSET_v2,   0xa85
+
+	define ITEMS_OFFSET_v3,          0x38c
+	define MEDICINE_OFFSET_v3,       0x42e
+	define BALLS_OFFSET_v3,          0x47a
+	define BERRIES_OFFSET_v3,        0x4ae
+	define PC_ITEMS_OFFSET_v3,       0x4e6
+	define PARTY_COUNT_OFFSET_v3,    0x857
+	define DAYCARE_MAN_OFFSET_v3,    0xa6e
+	define DAYCARE_LADY_OFFSET_v3,   0xaa5
+
+	define ITEMS_OFFSET_v4,          0x38c
+	define MEDICINE_OFFSET_v4,       0x424
+	define BALLS_OFFSET_v4,          0x470
+	define BERRIES_OFFSET_v4,        0x4a4
+	define PC_ITEMS_OFFSET_v4,       0x4e4
+	define EVENT_FLAGS_OFFSET_v4,    0x5bf
+	define PARTY_COUNT_OFFSET_v4,    0x855
+	define DAYCARE_MAN_OFFSET_v4,    0xa6c
+	define DAYCARE_LADY_OFFSET_v4,   0xaa3
+
+	define MAP_FROM_CONT_OFFSET_v5,  0x35d
+
+; removed event flags
+	define EVENT_NOISY_FOREST_PIKABLU_GUY, 2027
+
+; old data sizes
+	define BOX_SIZE_v6, 0x450

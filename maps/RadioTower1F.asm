@@ -68,10 +68,11 @@ RadioTower1FLuckyNumberManScript:
 	closetext
 	applymovement RADIOTOWER1F_FELICITY, RadioTower1FLuckyNumberManReturnToPlayerMovement
 	opentext
-	ifequal 1, .FirstPlace
-	ifequal 2, .SecondPlace
+	ifequal 5, .FirstPlace
+	ifequal 4, .SecondPlace
 	ifequal 3, .ThirdPlace
-	ifequal 4, .FourthPlace
+	ifequal 2, .FourthPlace
+	ifequal 1, .FifthPlace
 	jumpopenedtext RadioTower1FLuckyNumberManNoneOfYourIDNumbersMatchText
 
 .FirstPlace:
@@ -114,6 +115,17 @@ RadioTower1FLuckyNumberManScript:
 	promptbutton
 	giveitem PP_UP
 	iffalse_jumpopenedtext RadioTower1FLuckyNumberManNoRoomForYourPrizeText
+	itemnotify
+	setflag ENGINE_LUCKY_NUMBER_SHOW
+	jumpthisopenedtext
+
+.FifthPlace:
+	writetext WonFifthPlaceText
+	playsound SFX_3RD_PLACE
+	waitsfx
+	promptbutton
+	giveitem RARE_CANDY
+	iffalse_jumpopenedtext RadioTower1FLuckyNumberManComeAgainText
 	itemnotify
 	setflag ENGINE_LUCKY_NUMBER_SHOW
 	jumpthisopenedtext
@@ -322,6 +334,16 @@ WonFourthPlaceText:
 
 	para "You've won fourth"
 	line "prize, a PP Up."
+	done
+
+WonFifthPlaceText:
+	text "Ooh, you've"
+	line "matched the last"
+	cont "number."
+
+	para "You've won fifth"
+	line "prize, a"
+	cont "Rare Candy."
 	done
 
 RadioTower1FLuckyNumberManNoneOfYourIDNumbersMatchText:

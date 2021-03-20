@@ -7,10 +7,7 @@ wDefaultSpawnpoint:: db
 
 UNION
 ; mon buffer
-wBufferMonNickname:: ds MON_NAME_LENGTH
-wBufferMonOT:: ds NAME_LENGTH
-wBufferMon:: party_struct wBufferMon
-	ds 8
+	ds 78
 wMonOrItemNameBuffer:: ds NAME_LENGTH
 
 NEXTU
@@ -73,10 +70,6 @@ wRadioText:: ds 2 * SCREEN_WIDTH
 wRadioTextEnd::
 
 NEXTU
-; lucky number show
-wLuckyNumberDigitsBuffer:: ds 5
-
-NEXTU
 ; movement buffer data
 wMovementBufferCount:: db
 wMovementBufferObject:: db
@@ -109,16 +102,6 @@ wSwitchMonBuffer:: ds 48
 NEXTU
 ; giving pokemon mail
 wMonMailMessageBuffer:: ds MAIL_MSG_LENGTH + 1
-
-NEXTU
-; bill's pc
-UNION
-wBoxNameBuffer:: ds BOX_NAME_LENGTH
-NEXTU
-	ds 1
-wBillsPCTempListIndex:: db
-wBillsPCTempBoxCount:: db
-ENDU
 
 NEXTU
 ; prof. oak's pc
@@ -405,8 +388,6 @@ wMailboxItems:: ds MAILBOX_CAPACITY
 wMailboxEnd:: db
 ENDU
 
-	ds 5 ; unused
-
 wCurIconMonHasItemOrMail:: db
 
 wCurKeyItem::
@@ -447,8 +428,6 @@ wSpriteFlags::
 
 wHandlePlayerStep:: db
 
-	ds 1
-
 wPartyMenuActionText:: db
 
 wItemAttributeParamBuffer:: db
@@ -486,11 +465,20 @@ wBGMapAnchor:: dw
 
 wOldTileset:: db
 
+UNION
 wTempMon:: party_struct wTempMon
-wTempMonOT:: ds NAME_LENGTH
 wTempMonNickname:: ds MON_NAME_LENGTH
+wTempMonOT:: ds PLAYER_NAME_LENGTH
+wTempMonExtra:: ds 3
+NEXTU
+wEncodedTempMon:: savemon_struct wEncodedTempMon
+ENDU
 
-	ds 41 ; unused
+; Points towards box + slot if using GetStorageBoxMon. Slot set to 0 if empty.
+wTempMonBox:: db
+wTempMonSlot:: db
+
+	ds 39 ; unused
 
 wOverworldMapAnchor:: dw
 wMetatileStandingY:: db
@@ -744,9 +732,27 @@ wOTPartyMon4:: party_struct wOTPartyMon4
 wOTPartyMon5:: party_struct wOTPartyMon5
 wOTPartyMon6:: party_struct wOTPartyMon6
 
-wOTPartyMonsEnd::
-wOTPartyMonOTs:: ds NAME_LENGTH * PARTY_LENGTH
-wOTPartyMonNicknames:: ds MON_NAME_LENGTH * PARTY_LENGTH ; make sure this is always available!
+wOTPartyMonOTs::
+wOTPartyMon1OT:: ds PLAYER_NAME_LENGTH
+wOTPartyMon1Extra:: ds 3
+wOTPartyMon2OT:: ds PLAYER_NAME_LENGTH
+wOTPartyMon2Extra:: ds 3
+wOTPartyMon3OT:: ds PLAYER_NAME_LENGTH
+wOTPartyMon3Extra:: ds 3
+wOTPartyMon4OT:: ds PLAYER_NAME_LENGTH
+wOTPartyMon4Extra:: ds 3
+wOTPartyMon5OT:: ds PLAYER_NAME_LENGTH
+wOTPartyMon5Extra:: ds 3
+wOTPartyMon6OT:: ds PLAYER_NAME_LENGTH
+wOTPartyMon6Extra:: ds 3
+
+wOTPartyMonNicknames::
+wOTPartyMon1Nickname:: ds MON_NAME_LENGTH
+wOTPartyMon2Nickname:: ds MON_NAME_LENGTH
+wOTPartyMon3Nickname:: ds MON_NAME_LENGTH
+wOTPartyMon4Nickname:: ds MON_NAME_LENGTH
+wOTPartyMon5Nickname:: ds MON_NAME_LENGTH
+wOTPartyMon6Nickname:: ds MON_NAME_LENGTH
 wOTPartyDataEnd::
 
 NEXTU
@@ -922,7 +928,7 @@ wStoneTableAddress:: dw
 wBattleTowerCurStreak:: dw
 wBattleTowerTopStreak:: dw
 
-	ds 18
+	ds 18 ; unused
 
 wMapObjects::
 wPlayerObject:: map_object wPlayer
@@ -1182,8 +1188,8 @@ wErinFightCount::    db
 wEventFlags:: flag_array NUM_EVENTS
 
 wCurBox:: db
-wBoxNames:: ds BOX_NAME_LENGTH * NUM_BOXES
-wBoxNamesEnd::
+
+	ds 126 ; unused
 
 wCelebiEvent:: db
 
@@ -1337,9 +1343,27 @@ wPartyMon4:: party_struct wPartyMon4
 wPartyMon5:: party_struct wPartyMon5
 wPartyMon6:: party_struct wPartyMon6
 
-wPartyMonOTs:: ds NAME_LENGTH * PARTY_LENGTH
+wPartyMonOTs::
+wPartyMon1OT:: ds PLAYER_NAME_LENGTH
+wPartyMon1Extra:: ds 3
+wPartyMon2OT:: ds PLAYER_NAME_LENGTH
+wPartyMon2Extra:: ds 3
+wPartyMon3OT:: ds PLAYER_NAME_LENGTH
+wPartyMon3Extra:: ds 3
+wPartyMon4OT:: ds PLAYER_NAME_LENGTH
+wPartyMon4Extra:: ds 3
+wPartyMon5OT:: ds PLAYER_NAME_LENGTH
+wPartyMon5Extra:: ds 3
+wPartyMon6OT:: ds PLAYER_NAME_LENGTH
+wPartyMon6Extra:: ds 3
 
-wPartyMonNicknames:: ds MON_NAME_LENGTH * PARTY_LENGTH
+wPartyMonNicknames::
+wPartyMon1Nickname:: ds MON_NAME_LENGTH
+wPartyMon2Nickname:: ds MON_NAME_LENGTH
+wPartyMon3Nickname:: ds MON_NAME_LENGTH
+wPartyMon4Nickname:: ds MON_NAME_LENGTH
+wPartyMon5Nickname:: ds MON_NAME_LENGTH
+wPartyMon6Nickname:: ds MON_NAME_LENGTH
 wPartyMonNicknamesEnd::
 
 	ds 9 ; unused
@@ -1363,10 +1387,10 @@ wDayCareMan::
 ; bit 0: monster 1 in daycare
 	db
 
-wBreedMon1::
 wBreedMon1Nickname:: ds MON_NAME_LENGTH
-wBreedMon1OT:: ds NAME_LENGTH
-wBreedMon1Stats:: box_struct wBreedMon1
+wBreedMon1OT:: ds PLAYER_NAME_LENGTH
+wBreedMon1Extra:: ds 3
+wBreedMon1:: breed_struct wBreedMon1
 
 wDayCareLady::
 ; bit 7: active
@@ -1379,14 +1403,12 @@ wBreedMotherOrNonDitto::
 ; nz: no
 	db
 
-wBreedMon2::
 wBreedMon2Nickname:: ds MON_NAME_LENGTH
-wBreedMon2OT:: ds NAME_LENGTH
-wBreedMon2Stats:: box_struct wBreedMon2
+wBreedMon2OT:: ds PLAYER_NAME_LENGTH
+wBreedMon2Extra:: ds 3
+wBreedMon2:: breed_struct wBreedMon2
 
-wEggMonNickname:: ds MON_NAME_LENGTH
-wEggMonOT:: ds NAME_LENGTH
-wEggMon:: box_struct wEggMon
+	ds 54 ; unused
 
 wBugContestSecondPartySpecies:: db
 wContestMon:: party_struct wContestMon
@@ -1467,6 +1489,15 @@ wPokeAnimBitmaskCurBit:: db
 wPokeAnimBitmaskBuffer:: db
 	ds 8
 wPokeAnimStructEnd::
+
+
+SECTION "Used Storage", WRAMX
+
+wPokeDB1UsedEntries:: flag_array MONDB_ENTRIES
+wPokeDB1UsedEntriesEnd::
+
+wPokeDB2UsedEntries:: flag_array MONDB_ENTRIES
+wPokeDB2UsedEntriesEnd::
 
 
 SECTION "Sound Stack", WRAMX

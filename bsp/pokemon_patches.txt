@@ -1,0 +1,63 @@
+AdjustPokemonIndexes:
+	set #1, .mon_callback
+	call ApplyPartyPatches
+
+	; modify party species
+	set #1, 5
+	call GetGameDataOffsetConstant
+	set #1, #result
+	call GetGameDataPointer
+	increment #result
+	seek #result
+.party_species_loop
+	call .species_adjust
+	getfilebyte #temp
+	ifne #temp, 0xff, .party_species_loop
+
+	; modify box species
+	set #1, sBox1_v6
+	call .box_species
+
+	set #1, sBox8_v6
+	call .box_species
+
+	; modify pokedex flags
+	seek 0x2a16 ; TODO: replace literal
+	set #1, 256
+	set #2, #r0
+	call ShiftFlags
+
+	seekfwd 32
+	set #1, 256
+	set #2, #r0
+	jump ShiftFlags
+
+; box species adjustments
+.box_species
+	set #length, 7
+	increment #1 ; point to sBoxSpecies
+.box_outer_loop
+	retz #length
+	seek #1
+.box_inner_loop
+	call .species_adjust
+	getfilebyte #temp
+	ifne #temp, 0xff, .box_inner_loop
+	decrement #length
+	add #1, 0x450
+	jump .box_outer_loop
+
+.mon_callback
+	seek #1
+.species_adjust
+	getfilebyte #result
+	set #address, #r0
+.index_loop
+	gethalfwordinc #temp, #address ; get offset index upper bound
+	ifeq #temp, 0xffff, .done_loop
+	gethalfwordinc #offset, #address ; get offset
+	ifgt #result, #temp, .index_loop
+	add #result, #offset
+.done_loop
+	writebyte #result
+	return

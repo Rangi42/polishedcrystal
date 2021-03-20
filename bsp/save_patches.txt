@@ -1,0 +1,274 @@
+ConvertToNewbox:
+	set #a, #zero ; [0, 14)
+	set #temp, 57
+	seek sBoxMons1UsedEntries
+	fillbyte #temp, #zero
+	seek sBoxMons2UsedEntries
+	fillbyte #temp, #zero
+
+.box_outer_loop
+	set #source, sBox1_v6
+	iflt #a, 7, .got_source
+	set #source, sBox8_v6
+.got_source
+	remainder #temp, #a, 7
+	mulacum #source, #temp, BOX_SIZE_v6
+	seek #source ; we are now at sBox#Count
+	readbyte #b ; box count, we are now at sBox#Species
+
+	set #length, #zero
+	set #2, sBox_v6
+.copy_temp_loop
+	ifge #length, #b, .done_temp_loop
+	add #1, #source, 22  ; we are now at sBox#Mon1
+	mulacum #1, #length, 32
+	set #3, 22 ; mon struct up to PP
+	call CopyFrom1To2
+
+; condense 4 PP bytes into one byte for PP Ups
+	seek #1
+	readword #temp
+	pos #1
+	and #temp, 0xC0C0C0C0
+.pp_up_loop
+	shiftright #temp, 6
+	or #3, #temp ; #3 is already set to zero thanks to CopyFrom1To2
+	ifne #temp, #zero, .pp_up_loop
+	seek #2
+	writebyte #3
+	increment #2
+	set #3, 6 ; remainder of mon struct
+	call CopyFrom1To2
+
+; set aside hyper training bytes
+	push #2
+	add #2, 3
+; copy nick
+	add #1, 828
+	mulacum #1, #length, -21 ; offset from box mon n + 1 to nickname n
+	set #3, 10
+	call CopyFrom1To2
+; copy OT
+	subtract #1, 230 ; offset from nickname n+1 to OT n
+	set #3, 7
+	call CopyFrom1To2
+	increment #1 ; skip excess terminator byte (always 0x53)
+	set #4, #2
+; copy hyper training bytes
+	pop #2
+	set #3, 3
+	call CopyFrom1To2
+	set #2, #4
+	increment #length
+	jump .copy_temp_loop
+
+.done_temp_loop
+	seek sBoxMons1UsedEntries
+	iflt #a, 7, .got_entries
+	seek sBoxMons2UsedEntries
+.got_entries
+	remainder #1, #a, 7
+	multiply #1, 20
+	add #length, #1, #b
+	set #2, 1
+.set_flags_loop
+	ifge #1, #length, .done_flags_loop
+	push #1
+	call FlagAction
+	pop #1
+	increment #1
+	jump .set_flags_loop
+
+.done_flags_loop
+	set #1, sBox_v6
+	seek #1
+	set #length, #b
+; begin calculating 16-bit checksum for each box pokemon
+.encode_outer_loop
+	jumpz #length, .done_encode_loop
+	set #2, #zero
+	set #result, 127
+.mon_struct_loop
+	increment #2
+	readbyte #3
+	mulacum #result, #3, #2
+	iflt #2, 32, .mon_struct_loop
+; convert nickname/OT chars to 7-bit, accounting for special chars
+	increment #2 ; one multiplier (33) is skipped upon checksum calculation
+	pushpos
+.nickname_ot_loop
+	increment #2
+	getfilebyte #3
+	set #temp, 0xfa
+	ifeq #3, 0x7f, .replace
+	increment #temp
+	ifeq #3, 0x53, .replace
+	increment #temp
+	jumpnz #3, .remove_bit
+.replace
+	set #3, #temp
+.remove_bit
+	and #3, 0x7f
+	writebyte #3
+	mulacum #result, #3, #2
+	iflt #2, 50, .nickname_ot_loop
+; write checksum for each 16 lower bits (starting with MSB) into encoded nickname/OT chars
+	poppos
+	rotateleft #result, -15
+	set #2, 16
+.write_checksum_loop
+	getfilebyte #3
+	shiftleft #temp, #result, 7
+	or #3, #temp
+	writebyte #3
+	rotateleft #result, 1
+	decrement #2
+	jumpnz #2, .write_checksum_loop
+	readbyte #temp ; skip the 17th byte in nick+OT
+	decrement #length
+	jump .encode_outer_loop
+
+.done_encode_loop
+; copy all of temp back to pokedb (#1 is already set to sBox_v6)
+	remainder #temp, #a, 7
+	multiply #temp, BOX_SIZE
+	add #2, sBoxMons1, #temp
+	iflt #a, 7, .got_target
+	add #2, sBoxMons2, #temp
+.got_target
+	multiply #3, #b, 49
+	call CopyFrom1To2
+
+; clear out bytes from last pokedb entry to next box (or used entry flags)
+	increment #a
+	set #1, sBoxMons2UsedEntries
+	ifeq #a, 14, .next
+	set #1, sBoxMons1UsedEntries
+	ifeq #a, 7, .next
+	set #1, sBox1_v6
+	iflt #a, 7, .got_source_2
+	set #1, sBox8_v6
+.got_source_2
+	remainder #temp, #a, 7
+	mulacum #1, #temp, BOX_SIZE_v6
+.next
+	subtract #1, #2
+	seek #2
+	fillbyte #1, #zero
+	iflt #a, 14, .box_outer_loop
+
+; we can now fill sBackupNewBox with newbox
+	set #a, #zero
+	set #target, sBackupNewBox1
+	set #source, sBoxMons1UsedEntries
+	call .newbox_outer_loop
+
+	; #a = 7, #target = sBackupNewBox8
+	set #source, sBoxMons2UsedEntries
+	call .newbox_outer_loop
+
+; add boxes 15 and 16
+	seek #target ; sBackupNewBox15
+	set #1, 0x1B ; our exit condition, since box 15 has default theme 0x1B and box 16 has default theme 0x1C
+	set #2, .box15
+	set #3, 6
+.add_box_loop
+	fillbyte 23, #zero ; clear out box 15/16
+	writedata #2, #3
+	add #2, #3
+	fillbyte 3, #zero
+	writebyte #1
+	increment #1
+	iflt #1, 0x1D, .add_box_loop
+
+; shift link battle/HOF/battle tower data to end of box names
+	set #1, 3499
+	set #2, 292
+	call ShiftSaveDataBack
+	decrement #2
+	fillbyte #2, #zero
+
+; copy backup new box into active new box
+	set #1, sBackupNewBox1
+	set #2, sNewBox1
+	subtract #3, sBackupNewBox1, sNewBox1
+	call CopyFrom1To2
+
+; clear old box names
+	set #1, BOX_NAMES_OFFSET
+	call GetGameDataPointer
+	seek #result
+	fillbyte 126, #zero
+
+; clear wEggMon (removed as part of newbox)
+	set #1, EGG_MON_NICK_OFFSET
+	call GetGameDataPointer
+	seek #result
+	fillbyte 54, #zero
+	return
+
+.newbox_outer_loop
+	set #length, #zero
+.copy_flags_loop
+	seek #source
+	remainder #1, #a, 7
+	multiply #1, 20
+	add #1, #length
+	set #2, #source ; we know #source > 2
+	push #1
+	call FlagAction
+	pop #1
+	increment #1
+	seek #target
+	jumpz #result, .got_value ; write 0 if flag is cleared
+	set #result, #1
+.got_value
+	writebyte #result
+	increment #target
+	increment #length
+	iflt #length, 20, .copy_flags_loop
+
+; set sram bank (0 for box1-7, 1 for box8-14)
+	set #temp, #zero
+	iflt #a, 7, .sram_bank_2
+	decrement #temp
+.sram_bank_2
+	fillbyte 3, #temp
+	add #target, 3 ; target now points at box name
+
+	set #1, BOX_NAMES_OFFSET
+	call GetGameDataPointer
+	set #3, 9
+	multiply #1, #a, #3
+	add #1, #result
+	set #2, #target
+	add #target, #3
+	call CopyFrom1To2
+
+	set #1, .default_themes
+	add #1, #a
+	getbyte #temp, #1
+	writebyte #temp
+	increment #target
+	increment #a
+	remainder #temp, #a, 7
+	jumpnz #temp, .newbox_outer_loop
+	return
+
+.box15
+	db 0x81, 0xae, 0xb7, 0xe1, 0xe5, 0x53 ; "Box15@"
+
+.box16
+	db 0x81, 0xae, 0xb7, 0xe1, 0xe6, 0x53 ; "Box16@"
+
+.default_themes
+	db 0x17, 0x15, 0x16, 0x18, 0x0D, 0x19, 0x0C, 0x0E, 0x12, 0x0F, 0x10, 0x11, 0x1A, 0x13
+
+ChangeCheckValue:
+	set #temp, sCheckValue1
+	ifeq #savefile, 1, .next
+	set #temp, sBackupCheckValue1
+.next
+	seek #temp
+	writebyte 0x61
+	return

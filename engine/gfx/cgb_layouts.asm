@@ -969,53 +969,84 @@ _CGB_PokedexUnownMode:
 	jp _CGB_FinishLayout
 
 _CGB_BillsPC:
+	; Get box theme
+	ld a, [wCurBox]
+	ld b, a
+	inc b
+	farcall GetBoxTheme
+BillsPC_PreviewTheme:
+	; hl = BillsPC_ThemePals + a * 6 * 2
+	add a
+	add a
+	ld e, a
+	ld d, 0
+	ld hl, BillsPC_ThemePals
+	add hl, de
+	add hl, de
+	add hl, de
 	ld de, wBGPals1
-	ld hl, .MenuPalette
-	call LoadHLPaletteIntoDE
+	ld c, 1 * 2
+	call LoadCPaletteBytesFromHLIntoDE
+	push hl
+	ld hl, GenderAndExpBarPals
+	ld c, 2 * 2
+	call LoadCPaletteBytesFromHLIntoDE
+	push de
+	ld hl, PokerusAndShinyPals
+	ld de, wBillsPC_PokerusShinyPal
+	ld c, 2 * 2
+	call LoadCPaletteBytesFromHLIntoDE
 
-	ld a, [wCurPartySpecies]
+	; Prevents flickering shiny+pokerus background
+	ld hl, wBGPals1 palette 0
+	ld de, wBGPals1 palette 3
+	ld c, 1 * 2
+	call LoadCPaletteBytesFromHLIntoDE
+	pop de
+	pop hl
+	ld c, 5 * 2
+	call LoadCPaletteBytesFromHLIntoDE
+	ld a, [wBillsPC_ApplyThemePals]
 	and a
-	jr nz, .GetMonPalette
-	ld hl, .OrangePalette
+	jr nz, .apply_pals
+	ld de, wOBPals1 palette 1
+	ld hl, .CursorPal
+	push hl
 	call LoadHLPaletteIntoDE
-	jr .Resume
+	pop hl
+	call LoadHLPaletteIntoDE
+	ld hl, .PackPal
+	ld de, wOBPals1 palette 4
+	jp LoadHLPaletteIntoDE
 
-.GetMonPalette:
-	ld bc, wTempMonPersonality
-	call GetPlayerOrMonPalettePointer
-	call LoadPalette_White_Col1_Col2_Black
-	call VaryBGPal1ByTempMonDVs
+.apply_pals
+	farjp BillsPC_SetPals
 
-.Resume:
-	call WipeAttrMap
-
-	hlcoord 1, 4, wAttrMap
-	lb bc, 7, 7
-	ld a, $1
-	call FillBoxWithByte
-
-	call InitPartyMenuOBPals
-
-	jp _CGB_FinishLayout
-
-.MenuPalette:
+.CursorPal:
+; Coloring is fixed up later.
 if !DEF(MONOCHROME)
 	RGB 31, 31, 31
-	RGB 31, 20, 10
-	RGB 26, 10, 06
+	RGB 31, 31, 31
+	RGB 00, 00, 00
 	RGB 00, 00, 00
 else
-	MONOCHROME_RGB_FOUR
+	RGB_MONOCHROME_WHITE
+	RGB_MONOCHROME_WHITE
+	RGB_MONOCHROME_BLACK
+	RGB_MONOCHROME_BLACK
 endc
 
-.OrangePalette:
+.PackPal:
 if !DEF(MONOCHROME)
-	RGB 31, 15, 00
-	RGB 23, 12, 00
-	RGB 15, 07, 00
+	RGB 31, 31, 31
+	RGB 31, 31, 31
+	RGB 07, 19, 07
 	RGB 00, 00, 00
 else
-	MONOCHROME_RGB_FOUR
+	RGB_MONOCHROME_WHITE
+	RGB_MONOCHROME_WHITE
+	RGB_MONOCHROME_DARK
+	RGB_MONOCHROME_BLACK
 endc
 
 _CGB_UnownPuzzle:

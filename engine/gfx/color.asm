@@ -234,11 +234,12 @@ LoadMailPalettes:
 	jp ApplyAttrMap
 
 LoadHLPaletteIntoDE:
+	ld c, $8
+LoadCPaletteBytesFromHLIntoDE:
 	ldh a, [rSVBK]
 	push af
 	ld a, $5
 	ldh [rSVBK], a
-	ld c, $8
 .loop
 	ld a, [hli]
 	ld [de], a
@@ -418,6 +419,16 @@ ApplyPartyMenuHPPals:
 	lb bc, 2, 8
 	ld a, e
 	jp FillBoxWithByte
+
+SetPartyMenuPal:
+; Writes mon icon color a to palette in de
+	ld hl, PartyMenuOBPals
+	ld bc, 1 palettes
+	push bc
+	rst AddNTimes
+	pop bc
+	ld bc, 1 palettes
+	jp FarCopyColorWRAM
 
 InitPartyMenuOBPals:
 	ld hl, PartyMenuOBPals

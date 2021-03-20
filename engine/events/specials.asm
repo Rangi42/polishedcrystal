@@ -474,60 +474,13 @@ RespawnRoamingSuicune:
 	ret
 
 BillBoxSwitchCheck:
-	ld a, [wCurBox]
-	cp NUM_BOXES - 1
-	jr nz, .notbox14
-	ld a, -1
-.notbox14
-	inc a
-.billboxloop
-	inc a
-	ld c, a
-	push af
-	farcall GetBoxCountWithC
-	cp MONS_PER_BOX
-	jr nz, .foundspace
-	pop af
-	dec a
-	cp NUM_BOXES - 1
-	jr nz, .notlastbox
-	ld a, -1
-.notlastbox
-	inc a
-	ld c, a
-	ld a, [wCurBox]
-	cp c
-	ld a, c
-	jr nz, .billboxloop
-	xor a
+; Returns 0 if our storage system box-wise is completely full, 1 otherwise.
+	farcall NewStorageBoxPointer
+	ld b, 1
+	jr nc, .ok
+	jr nz, .ok
+	dec b
+.ok
+	ld a, b
 	ldh [hScriptVar], a
 	ret
-
-.foundspace
-	pop af
-	dec a
-	ldh [hScriptVar], a
-	ld [wTempScriptBuffer], a
-	ret
-
-BillBoxSwitch:
-	; back up wMisc to wDecompressScratch
-	ld hl, wMisc
-	ld de, wDecompressScratch
-	ld bc, (wMiscEnd - wMisc)
-	ld a, BANK(wDecompressScratch)
-	call FarCopyWRAM
-	; change boxes (overwrites wMisc)
-	ld a, [wTempScriptBuffer]
-	ld e, a
-	farcall ChangeBoxSaveGame
-	; a = carry (didn't save) ? FALSE : TRUE
-	sbc a
-	inc a
-	ldh [hScriptVar], a
-	; restore wMisc from wDecompressScratch
-	ld hl, wDecompressScratch
-	ld de, wMisc
-	ld bc, (wMiscEnd - wMisc)
-	ld a, BANK(wDecompressScratch)
-	jp FarCopyWRAM

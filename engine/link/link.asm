@@ -1619,7 +1619,7 @@ LinkTrade:
 
 	xor a ; REMOVE_PARTY
 	ld [wPokemonWithdrawDepositParameter], a
-	predef RemoveMonFromPartyOrBox
+	predef RemoveMonFromParty
 	ld a, [wPartyCount]
 	dec a
 	ld [wCurPartyMon], a
@@ -1663,7 +1663,7 @@ LinkTrade:
 	ld de, wTempMonSpecies
 	ld bc, PARTYMON_STRUCT_LENGTH
 	rst CopyBytes
-	farcall AddTempmonToParty
+	farcall AddTempMonToParty
 	ld a, [wPartyCount]
 	dec a
 	ld [wCurPartyMon], a

@@ -193,9 +193,12 @@ BillPhoneScript2:
 BillPhoneScriptCheckForBoxes:
 	special BillBoxSwitchCheck
 	ifequal 0, BillPhoneWholePCFull
-	farwritetext BillWantNextBox
-	special BillBoxSwitch
+	farwritetext BillFlushBySaving
+	yesorno
+	iffalse .rejected
+	special Special_TryQuickSave
 	iftrue .hang_up
+.rejected
 	farwritetext BillCallMeToSwitch
 .hang_up
 	farwritetext BillThankYouText

@@ -48,8 +48,10 @@ sMailbox9Backup::  mailmsg sMailbox9Backup
 sMailbox10Backup:: mailmsg sMailbox10Backup
 
 sSaveVersion:: dw
+sUpgradeStep:: db
+sWritingBackup:: db ; 1 if we're saving, anything else if not.
 
-	ds 162
+	ds 160
 
 sRTCStatusFlags:: ds 8
 sLuckyNumberDay:: db
@@ -100,10 +102,40 @@ sCheckValue2:: db ; loaded with 127, used to check save corruption
 
 SECTION "Active Box", SRAM
 
-sBox:: box sBox
+sNewBox1:: newbox sNewBox1
+sNewBox2:: newbox sNewBox2
+sNewBox3:: newbox sNewBox3
+sNewBox4:: newbox sNewBox4
+sNewBox5:: newbox sNewBox5
+sNewBox6:: newbox sNewBox6
+sNewBox7:: newbox sNewBox7
+sNewBox8:: newbox sNewBox8
+sNewBox9:: newbox sNewBox9
+sNewBox10:: newbox sNewBox10
+sNewBox11:: newbox sNewBox11
+sNewBox12:: newbox sNewBox12
+sNewBox13:: newbox sNewBox13
+sNewBox14:: newbox sNewBox14
+sNewBox15:: newbox sNewBox15
+sNewBox16:: newbox sNewBox16
+sNewBoxEnd::
 
-	ds $f4
-
+sBackupNewBox1:: newbox sBackupNewBox1
+sBackupNewBox2:: newbox sBackupNewBox2
+sBackupNewBox3:: newbox sBackupNewBox3
+sBackupNewBox4:: newbox sBackupNewBox4
+sBackupNewBox5:: newbox sBackupNewBox5
+sBackupNewBox6:: newbox sBackupNewBox6
+sBackupNewBox7:: newbox sBackupNewBox7
+sBackupNewBox8:: newbox sBackupNewBox8
+sBackupNewBox9:: newbox sBackupNewBox9
+sBackupNewBox10:: newbox sBackupNewBox10
+sBackupNewBox11:: newbox sBackupNewBox11
+sBackupNewBox12:: newbox sBackupNewBox12
+sBackupNewBox13:: newbox sBackupNewBox13
+sBackupNewBox14:: newbox sBackupNewBox14
+sBackupNewBox15:: newbox sBackupNewBox15
+sBackupNewBox16:: newbox sBackupNewBox16
 
 SECTION "Link Battle Data", SRAM
 
@@ -195,21 +227,9 @@ sBT_OTMonParties:: ds BATTLETOWER_PARTYDATA_SIZE * BATTLETOWER_SAVEDPARTIES
 
 SECTION "Boxes 1-7",  SRAM
 
-sBox1::  box sBox1
-sBox2::  box sBox2
-sBox3::  box sBox3
-sBox4::  box sBox4
-sBox5::  box sBox5
-sBox6::  box sBox6
-sBox7::  box sBox7
+sBoxMons1:: pokedb sBoxMons1
 
 
 SECTION "Boxes 8-14", SRAM
 
-sBox8::  box sBox8
-sBox9::  box sBox9
-sBox10:: box sBox10
-sBox11:: box sBox11
-sBox12:: box sBox12
-sBox13:: box sBox13
-sBox14:: box sBox14
+sBoxMons2:: pokedb sBoxMons2

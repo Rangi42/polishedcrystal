@@ -1,0 +1,166 @@
+AdjustItemIndexes:
+	; #1: offset pointer table
+	gethalfwordinc #temp, #1
+	ifeq #temp, 0xffff, .error_pointer
+	getwordinc #r0, #1
+	iflt #temp, #build, AdjustItemIndexes
+
+	set #1, #zero
+	call .get_pocket
+
+	set #1, 1
+	call .get_pocket
+
+	set #1, 2
+	call .get_pocket
+
+	set #1, 3
+	call .get_pocket
+	
+	set #1, 4
+	call .get_pocket
+
+	set #1, .mon_callback
+	jump ApplyPartyPatches
+
+.get_pocket
+	call GetGameDataOffsetConstant
+	set #1, #result
+	call GetGameDataPointer
+	seek #result
+.pocket_loop
+	set #address, #r0
+	call .index_loop
+	seekfwd 1
+	ifne #result, 0xff, .pocket_loop
+	return
+
+.mon_callback
+	increment #1
+	seek #1
+	set #address, #r0
+.index_loop
+	getfilebyte #result
+	getbyteinc #temp, #address
+	getbyteinc #offset, #address
+	jumpz #temp, .done_loop
+	ifgt #result, #temp, .index_loop
+	add #result, #offset
+.done_loop
+	writebyte #result
+	return
+
+.error_pointer
+	bufstring .error_string_pointer_1
+	bufnumber #build
+	bufstring .error_string_pointer_2
+	printbuf
+	exit 1
+
+.error_string_pointer_1
+	string "ERROR: Incoming build number "
+.error_string_pointer_2
+	string " out of range for GetItemIndexAdjustment"
+
+ResizePockets:
+	; #r0: version number
+	; #1:  item pocket offset
+	; #2:  medicine pocket offset
+	; #3:  balls pocket offset
+	; #4:  berries pocket offset
+	; shift forward if offset is positive, shift backwards if offset is negative
+	push #curbuild
+	set #curbuild, #r0
+	jumpz #4, .balls
+	push #1
+	set #1, 4
+	call GetGameDataOffsetConstant
+	set #1, #result
+	call GetGameDataPointer
+	decrement #result
+	set #1, #4
+	call ShiftPocketBytes
+	pop #1
+
+.balls
+	jumpz #3, .medicine
+	push #1
+	set #1, 3
+	call GetGameDataOffsetConstant
+	set #1, #result
+	call GetGameDataPointer
+	decrement #result
+	set #1, #3
+	call ShiftPocketBytes
+	pop #1
+
+.medicine
+	jumpz #2, .items
+	push #1
+	set #1, 2
+	call GetGameDataOffsetConstant
+	set #1, #result
+	call GetGameDataPointer
+	decrement #result
+	set #1, #2
+	call ShiftPocketBytes
+	pop #1
+
+.items
+	jumpz #1, .done
+	push #1
+	set #1, 1
+	call GetGameDataOffsetConstant
+	set #1, #result
+	call GetGameDataPointer
+	decrement #result
+	pop #1
+	call ShiftPocketBytes
+.done
+	pop #curbuild
+	return
+
+ShiftPocketBytes:
+	push #1
+	push #2
+	ifgt #1, 0x7fff, .shift_back
+; .shift_forward
+	push #3
+	seek #result
+	set #3, #result
+	set #2, #1
+	shiftleft #2, 1
+	set #1, 0x3fff
+	ifeq #savefile, 1, .continue_shift_forward
+	set #1, 0x1fff
+.continue_shift_forward
+	subtract #1, #3
+	subtract #1, #2
+	call ShiftSaveDataForward
+	seek #result
+	writehalfword #zero
+	pop #3
+	jump .done_shift
+
+.shift_back
+; TODO: Warn the player if they're overwriting data
+	xor #1, 0xffff
+	increment #1
+	set #2, #1
+	shiftleft #2, 1
+	subtract #result, #2
+	decrement #result
+	seek #result
+	writebyte 0xff ; ensure that pocket still has a terminator
+	increment #result
+	set #1, 0x3fff
+	ifeq #savefile, 1, .continue_shift_back
+	set #1, 0x1fff
+.continue_shift_back
+	subtract #1, #result
+	subtract #1, #2
+	call ShiftSaveDataBack
+.done_shift
+	pop #2
+	pop #1
+	return

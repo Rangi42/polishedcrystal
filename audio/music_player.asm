@@ -108,6 +108,11 @@ endc
 MusicPlayer::
 	call ClearTileMap
 
+	ld a, LOW(LCDMusicPlayer)
+	ldh [hFunctionTargetLo], a
+	ld a, HIGH(LCDMusicPlayer)
+	ldh [hFunctionTargetHi], a
+
 ; Load palette
 	ld hl, rIE
 	set LCD_STAT, [hl]

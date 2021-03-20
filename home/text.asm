@@ -52,6 +52,7 @@ Textbox::
 	call TextboxBorder
 	pop hl
 	pop bc
+	; fallthrough
 TextboxPalette::
 ; Fill text box width c height b at hl with pal 7
 	ld de, wAttrMap - wTileMap
@@ -63,50 +64,56 @@ TextboxPalette::
 	ld a, PAL_BG_TEXT
 	jr FillBoxWithByte
 
+TextBoxCharacters:
+	rawchar "┌─┐" ; top
+	rawchar "│ │" ; middle
+	rawchar "└─┘" ; bottom
+
 TextboxBorder::
+	ld de, TextBoxCharacters
+	; fallthrough
+CreateBoxBorders::
 	; Top
+	call .PlaceRow
+	jr .row
+
+.row_loop
+	dec de
+	dec de
+	dec de
+.row
+	call .PlaceRow
+	dec b
+	jr nz, .row_loop
+
+	; Bottom row (fallthrough)
+
+.PlaceRow:
 	push hl
-	ld a, "┌"
+	ld a, [de]
+	inc de
 	ld [hli], a
-	inc a ; "─"
+	ld a, [de]
+	inc de
 	call .PlaceChars
-	inc a ; "┐"
+	ld a, [de]
+	inc de
 	ld [hl], a
 	pop hl
-
-	; Middle
-	ld de, SCREEN_WIDTH
-	add hl, de
-.row
-	push hl
-	ld a, "│"
-	ld [hli], a
-	ld a, " "
-	call .PlaceChars
-	ld [hl], "│"
-	pop hl
-
-	ld de, SCREEN_WIDTH
-	add hl, de
-	dec b
-	jr nz, .row
-
-	; Bottom
-	ld a, "└"
-	ld [hli], a
-	ld a, "─"
-	call .PlaceChars
-	ld [hl], "┘"
-
+	push bc
+	ld bc, SCREEN_WIDTH
+	add hl, bc
+	pop bc
 	ret
 
 .PlaceChars:
 ; Place char a c times.
-	ld d, c
+	push bc
 .loop
 	ld [hli], a
-	dec d
+	dec c
 	jr nz, .loop
+	pop bc
 	ret
 
 PrintText::
@@ -525,7 +532,7 @@ TextCommand_DECIMAL::
 	ld a, b
 	and $f0
 	swap a
-	set PRINTNUM_LEFTALIGN_F, a
+	or PRINTNUM_DELAY | PRINTNUM_LEFTALIGN
 	ld b, a
 	call PrintNum
 FinishString:

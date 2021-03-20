@@ -75,14 +75,13 @@ GENDER_UNKNOWN EQU %1111
 	const EGG_DRAGON        ; e
 	const EGG_NONE          ; f (Undiscovered)
 
-; party_struct members (see macros/wram.asm)
+; breed_struct and party_struct members (see macros/wram.asm)
 rsreset
 MON_SPECIES            rb
 MON_ITEM               rb
 MON_MOVES              rb NUM_MOVES
 MON_ID                 rw
 MON_EXP                rb 3
-
 MON_EVS                rb NUM_STATS
 rsset MON_EVS
 MON_HP_EV              rb
@@ -115,7 +114,7 @@ MON_CAUGHTBALL EQU MON_CAUGHTGENDER
 MON_CAUGHTLEVEL        rb
 MON_CAUGHTLOCATION     rb
 MON_LEVEL              rb
-BOXMON_STRUCT_LENGTH EQU _RS
+BREEDMON_STRUCT_LENGTH EQU _RS
 MON_STATUS             rb
                        rb_skip
 MON_HP                 rw
@@ -128,6 +127,53 @@ MON_SPD                rw
 MON_SAT                rw
 MON_SDF                rw
 PARTYMON_STRUCT_LENGTH EQU _RS
+
+; savemon_struct members (see macros/wram.asm)
+rsreset
+SAVEMON_SPECIES            rb
+SAVEMON_ITEM               rb
+SAVEMON_MOVES              rb NUM_MOVES
+SAVEMON_ID                 rw
+SAVEMON_EXP                rb 3
+SAVEMON_EVS                rb NUM_STATS
+rsset SAVEMON_EVS
+SAVEMON_HP_EV              rb
+SAVEMON_ATK_EV             rb
+SAVEMON_DEF_EV             rb
+SAVEMON_SPD_EV             rb
+SAVEMON_SAT_EV             rb
+SAVEMON_SDF_EV             rb
+SAVEMON_DVS                rb NUM_STATS / 2
+rsset SAVEMON_DVS
+SAVEMON_HP_ATK_DV          rb
+SAVEMON_DEF_SPD_DV         rb
+SAVEMON_SAT_SDF_DV         rb
+SAVEMON_PERSONALITY        rw
+SAVEMON_SHINY      EQU SAVEMON_PERSONALITY
+SAVEMON_ABILITY    EQU SAVEMON_PERSONALITY
+SAVEMON_NATURE     EQU SAVEMON_PERSONALITY
+SAVEMON_GENDER     EQU SAVEMON_PERSONALITY + 1
+SAVEMON_IS_EGG     EQU SAVEMON_PERSONALITY + 1
+SAVEMON_EXTSPECIES EQU SAVEMON_PERSONALITY + 1
+SAVEMON_FORM       EQU SAVEMON_PERSONALITY + 1
+; savemon_struct is identical to party_struct before this point
+SAVEMON_PP_UPS             rb
+; savemon_struct is shifted from party_struct beyond this point
+SAVEMON_HAPPINESS          rb
+SAVEMON_PKRUS              rb
+SAVEMON_CAUGHTDATA         rb 3
+rsset SAVEMON_CAUGHTDATA
+SAVEMON_CAUGHTGENDER       rb
+SAVEMON_CAUGHTTIME EQU SAVEMON_CAUGHTGENDER
+SAVEMON_CAUGHTBALL EQU SAVEMON_CAUGHTGENDER
+SAVEMON_CAUGHTLEVEL        rb
+SAVEMON_CAUGHTLOCATION     rb
+SAVEMON_LEVEL              rb
+; savemon_struct is different from party_struct beyond this point
+SAVEMON_EXTRA              rb 3
+SAVEMON_NICKNAME           rb MON_NAME_LENGTH - 1
+SAVEMON_OT                 rb PLAYER_NAME_LENGTH - 1
+SAVEMON_STRUCT_LENGTH EQU _RS
 
 ; personality
 
@@ -173,8 +219,10 @@ HYPER_TRAINING_MASK EQU %11111100
 PARTY_LENGTH EQU 6
 
 ; boxes
-MONS_PER_BOX EQU 20
-NUM_BOXES    EQU 14
+MONS_PER_BOX    EQU 20
+MONDB_ENTRIES   EQU 167
+MIN_MONDB_SLACK EQU 10
+NUM_BOXES       EQU (MONDB_ENTRIES * 2 - MIN_MONDB_SLACK) / MONS_PER_BOX ; 16
 
 ; hall of fame
 HOF_MON_LENGTH EQU 1 + 2 + 2 + 1 + (MON_NAME_LENGTH - 1) ; species, id, dvs, level, nick

@@ -58,7 +58,7 @@ gfx/misc.o
 
 
 .SUFFIXES:
-.PHONY: clean tidy crystal faithful nortc debug monochrome freespace tools
+.PHONY: clean tidy crystal faithful nortc debug monochrome freespace tools bsp
 .SECONDEXPANSION:
 .PRECIOUS: %.2bpp %.1bpp
 .SECONDARY:
@@ -82,14 +82,16 @@ clean: tidy
 	find gfx \( -name '*.[12]bpp' -o -name '*.2bpp.vram[012]' -o -name '*.2bpp.vram[012]p' \) -delete
 	find gfx/pokemon -mindepth 1 \( -name 'bitmask.asm' -o -name 'frames.asm' -o -name 'front.animated.tilemap' -o -name 'front.dimensions' \) -delete
 	find data/tilesets -name '*_collision.bin' -delete
-
-tidy:
-	rm -f $(crystal_obj) $(wildcard $(NAME)-*.gbc) $(wildcard $(NAME)-*.map) $(wildcard $(NAME)-*.sym)
 	$(MAKE) clean -C tools/
 
+tidy:
+	rm -f $(crystal_obj) $(wildcard $(NAME)-*.gbc) $(wildcard $(NAME)-*.map) $(wildcard $(NAME)-*.sym) $(wildcard $(NAME)-*.bsp)
+
 freespace: ROM_NAME = $(NAME)-$(VERSION)
-freespace: crystal
+freespace: crystal tools/bankends
 	tools/bankends $(ROM_NAME).map > bank_ends.txt
+
+bsp: $(NAME)-$(VERSION).bsp
 
 
 define DEP
@@ -108,6 +110,10 @@ endif
 	$(RGBDS_DIR)rgblink $(RGBLINK_FLAGS) -o $@ $^
 	$(RGBDS_DIR)rgbfix $(RGBFIX_FLAGS) $@
 	tools/bankends -q $(ROM_NAME).map
+
+.bsp: tools/bspcomp
+%.bsp: $(wildcard bsp/*.txt)
+	cd bsp; ../tools/bspcomp patch.txt ../$@; cd ..
 
 
 gfx/battle/lyra_back.2bpp: rgbgfx += -h
@@ -162,6 +168,8 @@ gfx/pokegear/pokegear.2bpp: tools/gfx += --trim-whitespace
 gfx/pokegear/pokegear_sprites.2bpp: tools/gfx += --trim-whitespace
 
 gfx/pokemon/%/back.2bpp: rgbgfx += -h
+
+gfx/pc/obj.2bpp: gfx/pc/modes.2bpp gfx/pc/bags.2bpp ; cat $^ > $@
 
 gfx/slots/slots_1.2bpp: tools/gfx += --trim-whitespace
 gfx/slots/slots_2.2bpp: tools/gfx += --interleave --png=$<

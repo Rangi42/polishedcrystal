@@ -33,6 +33,10 @@ DoAnimFrame:
 	dw AnimSeq_IntroSuicuneAway   ; SPRITE_ANIM_SEQ_SUICUNE_AWAY
 	dw AnimSeq_Celebi             ; SPRITE_ANIM_SEQ_CELEBI
 	dw AnimSeq_MaxStatSparkle     ; SPRITE_ANIM_SEQ_MAX_STAT_SPARKLE
+	dw AnimSeq_PcCursor           ; SPRITE_ANIM_SEQ_PC_CURSOR
+	dw AnimSeq_PcQuick            ; SPRITE_ANIM_SEQ_PC_QUICK
+	dw AnimSeq_PcMode             ; SPRITE_ANIM_SEQ_PC_MODE
+	dw AnimSeq_PcPack             ; SPRITE_ANIM_SEQ_PC_PACK
 
 AnimSeq_PartyMon:
 	ld a, [wMenuCursorY]
@@ -588,6 +592,153 @@ AnimSeq_MaxStatSparkle:
 	ld d, 16
 	call Cosine
 	ld hl, SPRITEANIMSTRUCT_XOFFSET
+	add hl, bc
+	ld [hl], a
+	ret
+
+AnimSeq_PcCursor:
+	push de
+	push bc
+	farcall BillsPC_GetCursorSlot
+	farcall BillsPC_GetXYFromStorageBox
+	pop bc
+	ld hl, SPRITEANIMSTRUCT_XOFFSET
+	add hl, bc
+	ld [hl], d
+	ld hl, SPRITEANIMSTRUCT_YOFFSET
+	add hl, bc
+	ld [hl], e
+	pop de
+
+	; Check for static cursor
+	ld a, [wBillsPC_CursorAnimFlag]
+	and a
+	ret z
+
+	; If we're picking up, the PC UI handles this flag.
+	cp PCANIM_PICKUP
+	jr c, .not_picking
+	sub PCANIM_PICKUP - 1
+	add [hl]
+	ld [hl], a
+	ret
+.not_picking
+	cp PCANIM_ANIMATE / 2 + 1
+	jr c, .dont_bop
+	inc [hl]
+	inc [hl]
+.dont_bop
+	dec a
+	ld [wBillsPC_CursorAnimFlag], a
+	ret nz
+	ld a, PCANIM_ANIMATE
+	ld [wBillsPC_CursorAnimFlag], a
+	ret
+
+AnimSeq_PcQuick:
+	; Moves a storage system mini from one destination to another.
+	push de
+
+	; Check if the animation has concluded
+	ld hl, wBillsPC_QuickFrames
+	inc [hl]
+	dec [hl]
+	jr z, .finish_anim
+	dec [hl]
+
+	; Handle x movement.
+	ld a, [wBillsPC_QuickFromX]
+	ld d, a
+	ld a, [wBillsPC_QuickToX]
+	ld e, a
+	ld hl, SPRITEANIMSTRUCT_XOFFSET
+	call .ShiftPos
+	ld a, [wBillsPC_QuickFromY]
+	ld d, a
+	ld a, [wBillsPC_QuickToY]
+	ld e, a
+	ld hl, SPRITEANIMSTRUCT_YOFFSET
+	call .ShiftPos
+	jr .done
+
+.finish_anim
+	farcall BillsPC_FinishQuickAnim
+	; fallthrough
+.done
+	pop de
+	ret
+
+.ShiftPos:
+	; Set sprite position depending on movement frame.
+	push hl
+	push bc
+
+	; Compute the difference between the coordinates
+	ld a, d
+	sub e
+
+	; Load the result into bc. This sets b to $ff if we got a negative result.
+	ld c, a
+	sbc a
+	ld b, a
+
+	; Multiply by the frame number.
+	xor a
+	ld h, a
+	ld l, a
+	ld a, [wBillsPC_QuickFrames]
+	inc a
+.loop
+	dec a
+	jr z, .got_multiplier
+	add hl, bc
+	jr .loop
+.got_multiplier
+	; Divide by 8 and put 8bit result in a.
+	ld a, l
+	sra h
+	rra
+	sra h
+	rra
+	sra h
+	rra
+
+	; Get resulting coordinate.
+	add e
+
+	; Write to sprite anim coord.
+	pop bc
+	pop hl
+	add hl, bc
+	ld [hl], a
+	ret
+
+AnimSeq_PcMode:
+	ld a, [wBillsPC_CursorMode]
+	ld h, a
+	add h
+	add h
+	ld hl, SPRITEANIMSTRUCT_TILE_ID
+	add hl, bc
+	ld [hl], a
+	ret
+
+AnimSeq_PcPack:
+	; Display male or female pack
+	ld a, [wPlayerGender]
+	add a
+	add a
+	ld hl, SPRITEANIMSTRUCT_TILE_ID
+	add hl, bc
+	ld [hl], a
+
+	; Hide pack outside Item mode
+	farcall BillsPC_CheckBagDisplay
+	ld a, $80 ; move it out of view
+	jr nz, .got_pack_y
+	xor a
+.got_pack_y
+	ld hl, SPRITEANIMSTRUCT_YOFFSET
 	add hl, bc
 	ld [hl], a
 	ret

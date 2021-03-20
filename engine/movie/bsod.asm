@@ -62,6 +62,12 @@ BSOD:
 	dec a ; a == ERR_VERSION_MISMATCH?
 	ld de, BSOD_VersionMismatch
 	jr z, .done
+	dec a ; a == ERR_OLDBOX?
+	ld de, BSOD_OldBox
+	jr z, .done
+	dec a ; a == ERR_NEWBOX?
+	ld de, BSOD_NewBox
+	jr z, .done
 	ld de, BSOD_UnknownError
 .done
 	hlcoord 1, 14
@@ -143,6 +149,12 @@ BSOD_OldBTState:
 
 BSOD_VersionMismatch:
 	db "Version mismatch@"
+
+BSOD_OldBox:
+	db "Old PC box storage@"
+
+BSOD_NewBox:
+	db "Fatal PC box error@"
 
 BSOD_UnknownError:
 	db "Unknown error@"

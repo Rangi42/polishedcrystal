@@ -3727,7 +3727,7 @@ endr
 	ld [de], a
 	ld hl, wBattleMonLevel
 	ld de, wTempMonLevel
-	ld bc, wTempMonStatsEnd - wTempMonLevel
+	ld bc, wTempMonEnd - wTempMonLevel
 	rst CopyBytes
 	ld a, [wCurBattleMon]
 	ld hl, wPartyMon1Species
@@ -4348,12 +4348,7 @@ Battle_StatsScreen:
 	ld bc, $31 tiles
 	rst CopyBytes
 	call EnableLCD
-	call ClearSprites
-	call LowVolume
-	xor a ; PARTYMON
-	ld [wMonType], a
-	farcall StatsScreenInit
-	call MaxVolume
+	farcall OpenPartyStats
 	call DisableLCD
 	ld hl, vTiles0
 	ld de, vTiles2 tile $31

@@ -7,10 +7,8 @@ CopyPkmnOrEggToTempMon:
 	ld hl, wOTPartyMon1IsEgg
 	cp OTPARTYMON
 	jr z, .got_addr
-	ld hl, sBoxMon1IsEgg
-	ld bc, BOXMON_STRUCT_LENGTH
-	ld a, BANK(sBoxMon1IsEgg)
-	call GetSRAMBank
+	ld a, ERR_OLDBOX
+	jp Crash
 .got_addr
 	ld a, [wCurPartyMon]
 	rst AddNTimes
@@ -39,8 +37,8 @@ _CopyPkmnToTempMon:
 	ld bc, PARTYMON_STRUCT_LENGTH
 	cp OTPARTYMON
 	jr z, .copywholestruct
-	ld bc, BOXMON_STRUCT_LENGTH
-	farjp CopyBoxmonToTempMon
+	ld a, ERR_OLDBOX
+	jp Crash
 
 .copywholestruct
 	ld a, [wCurPartyMon]
@@ -48,65 +46,6 @@ _CopyPkmnToTempMon:
 	ld de, wTempMon
 	ld bc, PARTYMON_STRUCT_LENGTH
 	rst CopyBytes
-	ret
-
-CalcBufferMonStats:
-	ld bc, wBufferMon
-	ld hl, wBufferMonOT
-	jr _TempMonStatsCalculation
-
-CalcTempmonStats:
-	ld bc, wTempMon
-_TempMonStatsCalculation:
-	push hl
-	ld hl, MON_LEVEL
-	add hl, bc
-	ld a, [hl]
-	ld [wCurPartyLevel], a
-	pop hl
-	ld de, PLAYER_NAME_LENGTH
-	add hl, de
-	ld a, [hl]
-	and HYPER_TRAINING_MASK
-	ld hl, MON_MAXHP
-	add hl, bc
-	ld d, h
-	ld e, l
-	ld hl, MON_EVS - 1
-	add hl, bc
-	push bc
-	inc a
-	ld b, a
-	predef CalcPkmnStats
-	pop bc
-	ld hl, MON_HP
-	add hl, bc
-	ld d, h
-	ld e, l
-	ld hl, MON_IS_EGG
-	add hl, bc
-	bit MON_IS_EGG_F, [hl]
-	jr z, .not_egg
-	xor a
-	ld [de], a
-	inc de
-	ld [de], a
-	jr .zero_status
-
-.not_egg
-	push bc
-	ld hl, MON_MAXHP
-	add hl, bc
-	ld bc, 2
-	rst CopyBytes
-	pop bc
-
-.zero_status
-	ld hl, MON_STATUS
-	add hl, bc
-	xor a
-	ld [hli], a
-	ld [hl], a
 	ret
 
 GetPkmnSpecies:
@@ -139,11 +78,8 @@ GetPkmnSpecies:
 	ret
 
 .boxmon
-	ld a, BANK(sBoxSpecies)
-	call GetSRAMBank
-	ld hl, sBoxSpecies
-	call .done
-	jp CloseSRAM
+	ld a, ERR_OLDBOX
+	jp Crash
 
 .breedmon
 	ld a, [wBreedMon1Species]
@@ -179,12 +115,8 @@ GetPkmnForm:
 	ret
 
 .boxmon
-	ld a, BANK(sBoxSpecies)
-	call GetSRAMBank
-	ld hl, sBoxMon1Form
-	ld bc, BOXMON_STRUCT_LENGTH
-	call .getnthmon
-	jp CloseSRAM
+	ld a, ERR_OLDBOX
+	jp Crash
 
 .breedmon
 	ld a, [wBreedMon1Form]

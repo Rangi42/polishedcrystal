@@ -39,6 +39,8 @@ jobs:
         mv polishedcrystal-3.0.0-beta.gbc build/polishedcrystal-3.0.0-faithful-debug-beta.gbc
         mv polishedcrystal-3.0.0-beta.sym build/polishedcrystal-3.0.0-faithful-debug-beta.sym
         make tidy
+        make bsp
+        mv polishedcrystal-3.0.0-beta.bsp build/polishedcrystal-3.0.0-beta.bsp
         popd
     - name: Delete old release
       id: delete_release
@@ -145,3 +147,13 @@ jobs:
         asset_path: ./polishedcrystal/build/polishedcrystal-3.0.0-faithful-debug-beta.sym
         asset_name: polishedcrystal-3.0.0-beta-${{ env.SHORT_SHA }}-faithful-debug.sym
         asset_content_type: text/plain
+    - name: Upload BSP
+      id: upload-bsp
+      uses: actions/upload-release-asset@v1.0.1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        upload_url: ${{ steps.create_release.outputs.upload_url }}
+        asset_path: ./polishedcrystal/build/polishedcrystal-3.0.0-beta.bsp
+        asset_name: polishedcrystal-3.0.0-beta-${{ env.SHORT_SHA }}.bsp
+        asset_content_type: application/octet-stream

@@ -1,0 +1,61 @@
+ReplaceMove:
+	; replaces old move with new move that target Pokemon doesn't already know
+	; #r0: move replace table
+	set #1, .mon_callback
+	jump ApplyPartyPatches
+
+.mon_callback
+	push #1
+	add #1, MOVES_OFFSET
+	seek #1
+	set #2, #zero
+	set #address, #r0
+	set #length, NUM_MOVES
+	increment #length ; #length decrements at the start of the loop
+	getbyteinc #result, #address
+	call .find_move_loop
+	pop #1
+	ifgt #2, NUM_MOVES, .done
+
+	; sets PP, if people really wanna use a save patcher as a max ether then so be it
+	decrement #address ; address points to PP byte
+	add #1, PP_OFFSET
+	add #1, #2
+	decrement #1
+	seek #1
+	getfilebyte #1
+	and #1, PP_UP_MASK
+	rotateleft #1, -6
+	getbyte #result, #address
+	divide #temp, #result, 5
+	multiply #temp, #1
+	add #result, #temp
+	rotateleft #1, 6
+	add #result, #1
+	writebyte #result
+.done
+	return
+	
+.find_move_loop
+	increment #2
+	decrement #length
+	retz #length ; target move not found
+	readbyte #temp
+	ifne #result, #temp, .find_move_loop
+
+	seekback 1
+	pushpos
+.replace_move_loop
+	seek #1
+	set #length, NUM_MOVES
+	getbyteinc #result, #address
+	increment #address
+.inner_loop
+	readbyte #temp
+	ifeq #temp, #result, .replace_move_loop
+	decrement #length
+	jumpnz #length, .inner_loop
+
+	poppos
+	writebyte #result
+	return

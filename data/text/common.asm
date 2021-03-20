@@ -2510,7 +2510,7 @@ _LeftWithDayCareLadyText::
 SECTION "_LeftWithDayCareManText", ROMX
 _LeftWithDayCareManText::
 	text "It's "
-	text_ram wBreedMon1
+	text_ram wBreedMon1Nickname
 	line "that was left with"
 	cont "the Day-Care Man."
 	done
@@ -2729,7 +2729,7 @@ _LuckyNumberMatchPartyText::
 	line "with the ID number"
 
 	para "of "
-	text_ram wStringBuffer1
+	text_decimal wTempMonID, 2, 5
 	text " in"
 	line "your party."
 	prompt
@@ -2742,9 +2742,11 @@ _LuckyNumberMatchPCText::
 	line "with the ID number"
 
 	para "of "
-	text_ram wStringBuffer1
-	text " in"
-	line "your PC Box."
+	text_decimal wTempMonID, 2, 5
+	text " in Box"
+	line "“"
+	text_ram wStringBuffer2
+	text "”."
 	prompt
 
 SECTION "_CaughtAskNicknameText", ROMX
@@ -4168,11 +4170,20 @@ Text_Waitbutton_2::
 	text_promptbutton
 	text_end
 
+SECTION "_BallCurBoxFullText", ROMX
+_BallCurBoxFullText::
+	text ""
+	text_ram wStringBuffer1
+	text " is full."
+	prompt
+
 SECTION "_BallSentToPCText", ROMX
 _BallSentToPCText::
 	text_ram wMonOrItemNameBuffer
 	text " was"
-	line "sent to Bill's PC."
+	line "sent to "
+	text_ram wStringBuffer1
+	text "."
 	prompt
 
 SECTION "_NewDexDataText", ROMX
@@ -4313,11 +4324,18 @@ _BallDontBeAThiefText::
 	text "Don't be a thief!"
 	prompt
 
-SECTION "_BallBoxFullText", ROMX
-_BallBoxFullText::
-	text "The #mon Box"
+SECTION "_BallStorageFullText", ROMX
+_BallStorageFullText::
+	text "The storage system"
 	line "is full. That"
 	cont "can't be used now."
+	prompt
+
+SECTION "_BallDatabaseFullText", ROMX
+_BallDatabaseFullText::
+	text "The PC database is"
+	line "overtaxed. Please"
+	cont "save the game."
 	prompt
 
 SECTION "Text_MonIsHiddenFromBall", ROMX

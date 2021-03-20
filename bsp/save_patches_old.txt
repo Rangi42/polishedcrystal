@@ -1,0 +1,607 @@
+CreateKeyItemBitflags:
+	; create space for key item flags 
+	; will involve (temporarily) overwriting the first four bytes of key item data
+	set #1, KEY_ITEMS_OFFSET_v0
+	call GetGameDataPointer
+	seek #result
+	readword #temp
+	push #temp
+
+	set #1, NUM_ITEMS_OFFSET_v0
+	call GetGameDataPointer
+	set #3, #result
+	set #2, 4
+	set #1, 291
+	call ShiftSaveDataForward
+
+	; we want to preserve location of NUM_ITEMS_OFFSET_v0
+	; (will be location of key item flags)
+	seek #result
+	push #result
+	writeword #zero
+	set #1, KEY_ITEMS_OFFSET_v0
+	call GetGameDataPointer
+	seek #result
+	pop #result
+	seekfwd 4
+
+	; we first need to check the first four key item bytes that were overwritten
+	pop #temp
+.key_items_loop_1
+	and #1, #temp, 0xff
+	call .loop_common_get
+	jumpz #1, .key_items_loop_1 ; quietly ignore invalid/obsolete indexes
+	ifeq #1, 0xff, .done_loop
+	decrement #1 ; loop_common_get returns a valid index from 1-1c, we want 0-1b now
+	push #temp
+	call .loop_common_set
+	pop #temp
+	shiftright #temp, 8
+	jumpnz #temp, .key_items_loop_1
+
+	; now we can check the remaining key items
+.key_items_loop_2
+	readbyte #1
+	call .loop_common_get
+	jumpz #1, .key_items_loop_2
+	ifeq #1, 0xff, .done_loop
+	decrement #1
+	call .loop_common_set
+	jump .key_items_loop_2
+
+.done_loop
+	; shift data from NumPCItems to before RegisteredItems
+	set #1, NUM_PC_ITEMS_OFFSET_v1
+	call GetGameDataPointer
+	seek #result
+	set #2, 26
+	set #1, 1682
+	call ShiftSaveDataBack 
+
+	; update registered items, quietly clear items that are out of range (i.e. Repel)
+	set #1, REG_KEY_ITEM_FLAGS_v1
+	call GetGameDataPointer
+	seek #result
+	writebyte #zero ; clear wRegisteredItemFlags
+	pushpos
+
+	set #1, REG_KEY_ITEMS_v0
+	call GetGameDataPointer
+	seek #result
+
+	set #temp, 4
+.registered_loop
+	getfilebyte #1
+	call .loop_common_get
+	jumpz #1, .clear
+	ifeq #1, 0xff, .clear
+	decrement #1
+.clear
+	writebyte #1
+	decrement #temp
+	jumpnz #temp, .registered_loop
+
+	; shift data from RegisteredItems to end of save bank
+	; (obviously needs to check which bank is being affected)
+	poppos
+	set #2, 25
+	set #1, 5275
+	ifeq #savefile, 1, ShiftSaveDataBack
+	set #1, 667
+	call ShiftSaveDataBack
+
+	; we don't care about overwriting game data with box data
+	; if we're loading from a backup anyway
+	seek sBox_v1
+	set #1, 4899
+	jump ShiftSaveDataBack
+
+; ==== common key item loop functions ====
+.loop_common_get
+; gets the appropriate adjusted flag value for key item loops
+; returns #1 with the result (0xff if terminator is reached)
+	ifeq #1, 0xff, .continue
+	ifeq #1, 0x5b, .zero ; ignore EXP_SHARE key item
+	ifle #1, 0x54, .zero
+	ifge #1, 0x72, .zero
+	ifle #1, 0x5a, .sub0x54
+	ifge #1, 0x70, .sub0x54
+	decrement #1 ; subtract #temp, 0x55
+.sub0x54
+	subtract #1, 0x54
+	return
+.zero
+	set #1, #zero
+.continue
+	return
+
+.loop_common_set
+; sets the appropriate key item flag
+	pushpos
+	seek #result
+	push #result
+	set #2, 1
+	call FlagAction
+	pop #result
+	poppos
+	return
+
+; ==== resize pockets ====
+; positive differences shift forward, negative differences shift backwards
+; #r0: OLD build number
+; #1:  item pocket size difference
+; #2:  medicine pocket size difference
+; #3:  balls pocket size difference
+; #4:  berries pocket size difference
+; exits with error if build number is out of expected range
+ResizePocketsToBuild4:
+	set #address, .pocket_patch_table
+.patch_loop
+	gethalfwordinc #r0, #address
+	ifeq #r0, 0xffff, .error
+	ifge #r0, #build, .got_patch
+	add #address, 8
+	jump .patch_loop
+.got_patch
+	gethalfwordinc #1, #address
+	gethalfwordinc #2, #address
+	gethalfwordinc #3, #address
+	gethalfword    #4, #address
+	jump ResizePockets
+
+.error
+	print .error_string
+	exit 1
+
+.pocket_patch_table
+	; highest build, items, medicine, balls, berries
+	dh 1
+	dh 5, 7, 3, 11
+
+	dh 2
+	dh 5, 0, 0, 10
+
+	dh 3
+	dh -5, 0, 0, 4
+
+	dh -1
+
+.error_string
+	string "ERROR: Incoming build number out of range for ResizePocketsByBuild"
+
+; ==== fix item indexes ====
+; #curbuild used as build number
+; #1: offset table
+AdjustItemIndexesToBuild4:
+	; note: this function can be generalized for any build,
+	; but you'd need to modify the ItemIndexOffsets tables for each update
+	ifne #curbuild, 4, .error ; debug statement
+	set #1, .pointer_table
+	jump AdjustItemIndexes
+
+.error
+	bufstring .error_string_build_1
+	bufnumber #curbuild
+	bufstring .error_string_build_2
+	printbuf
+	exit 1
+
+.pointer_table
+	; highest build, index offset table
+	dh 0
+	dw ItemIndexOffsets_Build0ToBuild4
+
+	dh 1
+	dw ItemIndexOffsets_Build1ToBuild4
+
+	dh 2
+	dw ItemIndexOffsets_Build2ToBuild4
+
+	dh 3
+	dw ItemIndexOffsets_Build3ToBuild4
+
+	dh -1
+	
+.error_string_build_1
+	string "ERROR: Invalid curbuild number "
+.error_string_build_2
+	string " for AdjustItemIndexesBuild4"
+
+AdjustMonCaughtBallData:
+	set #1, .ball_adjust_callback
+	jump ApplyPartyPatches
+
+.ball_adjust_callback
+	add #1, CAUGHTBALL_OFFSET
+	seek #1
+	getfilebyte #temp
+	and #result, #temp, 0x1f ; CAUGHTBALL_MASK
+	iflt #result, 0x17, .done
+	ifgt #result, 0x18, .done
+	increment #result
+	and #temp, 0xe0 ; ~CAUGHTBALL_MASK
+	add #result, #temp
+	writebyte #result
+.done
+	return
+
+ReplaceSelfDestruct:
+	; priority for replacement moves are Explosion -> Return -> Facade -> Rage (stored little-endian)
+	set #r0, .move_replace_table
+	jump ReplaceMove
+
+.move_replace_table
+	db SELFDESTRUCT ; move to replace
+	; move to replace with, base PP
+	db EXPLOSION, 5
+	db RETURN,   20
+	db FACADE,   20
+	db RAGE,     20
+
+ReplaceMilkDrink:
+	; without hacking, no mon should have both Softboiled (Fresh Snack) and Milk Drink
+	set #r0, .move_replace_table
+	jump ReplaceMove
+
+.move_replace_table
+	db MILK_DRINK ; move to replace
+	; move to replace with, base PP
+	db FRESH_SNACK, 10
+	db FRESH_SNACK, 10
+	db FRESH_SNACK, 10
+	db FRESH_SNACK, 10
+
+AdjustMonAndMoveIndexesPostBuild4:
+	set #curbuild, 4 ; we're technically not at build 5 yet
+	iflt #build, 4, .build4_0
+	call PrintBuild4VersionCheck ; old/misc.txt
+	jumptable #result
+	dw .build4_0
+	dw .build4_1
+	dw .build4_2
+	dw .build4_3
+	dw AdjustRhyperiorIndex ; build4_4
+	dw DoNothing ; build4_5
+	
+.build4_0
+	call AdjustShuckleAndEeveelutionIndexes
+.build4_1
+	call ReplaceMilkDrink
+.build4_2
+	call RemovePikabluGuyFlag
+.build4_3
+	call CeruleanCapeYellowForestSpawnFlags
+	; fallthrough
+AdjustRhyperiorIndex:
+	set #r0, .mon_adjust_table
+	jump AdjustPokemonIndexes
+
+.mon_adjust_table
+	; upper bound, offset
+	; terminated by -1
+	dh 0xae, 0 ; MAGNEZONE
+	dh 0xb5, 1 ; BELLOSSOM
+	dh 0xb6, -7 ; RHYPERIOR
+	dh -1
+
+AdjustShuckleAndEeveelutionIndexes:
+	set #r0, .mon_adjust_table
+	call AdjustPokemonIndexes
+
+	seek 0x2a16 ; TODO: replace literal
+	set #1, 210
+	set #2, #zero
+	call FlagAction
+
+	seekfwd 32
+	set #1, 210
+	set #2, #zero
+	jump FlagAction
+
+.mon_adjust_table
+	dh 0xc0, 0 ; UMBREON
+	dh 0xc2, 59 ; LEAFEON/GLACEON
+	dh 0xd4, -2 ; SCIZOR
+	dh 0xe9, -1 ; PORYGON2
+	dh 0xfb, 0 ; CELEBI
+	dh 0xfc, 2 ; SYLVEON
+	dh 0xfd, -20 ; PORYGON_Z
+	dh -1
+
+RemovePikabluGuyFlag:
+	set #1, EVENT_FLAGS_OFFSET_v4
+	call GetGameDataPointer
+	seek #result
+
+	set #1, 2192
+	set #2, .flag_adjust_table
+	jump ShiftFlags
+
+.flag_adjust_table
+	dh 2027, 0
+	dh 2191, -1
+	dh -1
+
+CeruleanCapeYellowForestSpawnFlags:
+	seek sMapData_v4 ; same as Visited Spawns offset
+	ifeq #savefile, 1, .done
+	seek sBackupMapData_v4
+.done
+	set #1, 29
+	set #2, .flag_adjust_table
+	jump ShiftFlags
+
+.flag_adjust_table
+	dh 6, 0
+	dh 24, 1
+	dh 27, 2
+	dh 28, -21
+	dh 29, -3
+	dh -1
+
+RemoveExtraOptionsByte:
+	seek sCheckValue1 ; new check value location
+	set #1, 8183
+	ifeq #savefile, 1, .done
+	seek sBackupCheckValue1
+	set #1, 3575
+.done
+	set #2, 1
+	jump ShiftSaveDataBack
+
+ResetInitialOptions:
+	seek sCheckValue1
+	ifeq #savefile, 1, .done
+	seek sBackupCheckValue1
+.done
+	seekback 1 ; initial options 2
+	writebyte 0x80 ; 0b10000000
+	print .reset_options_string
+	return
+
+.reset_options_string
+	string "*** New initial options were added 1 March 2020. You will therefore be asked to reset your in-game options. ***"
+
+AdjustVariableSprites:
+	set #curbuild, 5
+	set #1, MAP_FROM_CONT_OFFSET_v5
+	call GetGameDataPointer
+	set #3, #result
+	set #1, 7321
+	ifeq #savefile, 1, .done
+	set #1, 2713
+.done
+	set #2, 1
+	call ShiftSaveDataForward
+	seek #result
+	writebyte #zero
+	return
+
+LegendaryDogStatus:
+	set #1, POKEDEX_CAUGHT_OFFSET
+	call GetGameDataPointer
+	seek #result
+
+	set #1, 323
+	set #2, 3
+	call ShiftSaveDataBack
+	writebyte #zero
+
+	set #1, 10
+	decrement #2
+	call ShiftSaveDataBack
+	writebyte #zero
+	
+	set #1, 10
+	decrement #2
+	call ShiftSaveDataBack
+	writebyte #zero
+	return
+
+UpdateCharset:
+	seek sSaveVersion_v6
+	writehalfword 0x0100
+	set #length, NAME_LENGTH
+	set #3, #zero
+
+	; player name
+	set #1, PLAYER_NAME_OFFSET
+	set #2, #length
+	increment #3
+	call .fix_wram
+
+	; rival name, backup name, trendy phrase
+	multiply #2, #length, 3
+	decrement #3
+	call .fix_wram
+
+	; box names
+	set #1, BOX_NAMES_OFFSET
+	multiply #2, BOX_NAME_LENGTH, 14 ; handles box names
+	call .fix_wram
+
+	; party mon OT
+	set #1, PARTY_MON_OT_OFFSET
+	multiply #2, #length, 6 ; handles party mon OT and nicknames
+	push #2
+	increment #3
+	call .fix_wram
+
+	; party mon nicknames
+	pop #2
+	decrement #3
+	call .replace_loop ; we don't need to seek game data
+
+	; breed mon 1 nick
+	set #1, BREED_MON_1_NICK_OFFSET
+	set #2, #length
+	call .fix_wram
+
+	; breed mon 1 OT
+	set #2, #length
+	increment #3
+	call .replace_loop
+
+	; breed mon 2 nick
+	set #1, BREED_MON_2_NICK_OFFSET
+	set #2, #length
+	decrement #3
+	call .fix_wram
+
+	; breed mon 2 OT
+	set #2, #length
+	increment #3
+	call .replace_loop
+
+	; magikarp record holder OT
+	set #1, MAGIKARP_RECORD_HOLDER_NAME_OFFSET
+	set #2, #length
+	decrement #3
+	call .fix_wram
+
+	set #a, 41 ; message and author
+	set #b, 6  ; bytes in mailbox struct that contains no chars
+
+	seek sPartyMail
+	set #1, 12 ; party mail + backup party mail
+	set #2, #a
+	set #4, #b
+	call .fix_sram_loop
+
+	seek sMailbox
+	set #1, 10
+	set #2, #a
+	set #4, #b
+	call .fix_sram_loop
+
+	seek sBackupMailbox
+	set #1, 10
+	set #2, #a
+	set #4, #b
+	call .fix_sram_loop
+
+	seek sLinkBattleRecord
+	set #1, 5
+	set #2, #length
+	decrement #2 ; NAME_LENGTH - 1
+	set #4, 8
+	call .fix_sram_loop
+
+	; hall of fame nicknames
+	seek sByteBeforeHallOfFame ; literally, the byte right before sHallOfFame
+	set #a, 30
+.hof_loop
+	seekfwd 8 ; go from end to mon 1 nickname
+	set #1, 6
+	set #2, #length
+	decrement #2 ; MON_NAME_LENGTH - 1
+	set #4, #1
+	call .fix_sram_loop
+	decrement #a
+	jumpnz #a, .hof_loop
+
+	set #a, 7
+	set #b, 220
+	set #c, 884
+
+	increment #3
+	seek sBox1MonOT_v6
+	set #1, #a
+	set #2, #b
+	set #4, #c
+	call .fix_sram_loop
+
+	seek sBox8MonOT_v6
+	set #1, #a
+	set #2, #b
+	set #4, #c
+	call .fix_sram_loop
+
+	decrement #3
+	seek sBox1MonNicknames_v6
+	set #1, #a
+	set #2, #b
+	set #4, #c
+	call .fix_sram_loop
+
+	seek sBox8MonNicknames_v6
+	set #1, #a
+	set #2, #b
+	set #4, #c
+.fix_sram_loop
+	; #1: count
+	; #2: # of bytes to search
+	; #3: set hyper training bytes?
+	; #4: # of bytes to skip
+	push #2
+	call .replace_loop
+	pop #2
+	decrement #1
+	retz #1
+	seekfwd #4
+	jump .fix_sram_loop
+
+.fix_wram
+	; #1: offset
+	; #2: # of bytes to search
+	; #3: set hyper training bytes?
+	call GetGameDataPointer
+	seek #result
+.replace_loop
+	retz #2
+	decrement #2
+	remainder #temp, #2, #length
+	set #result, #zero
+	ifgt #temp, 2, .no_hyper_training
+	jumpnz #3, .write
+.no_hyper_training
+	getfilebyte #result
+	set #address, .ngrams
+	getbyteinc #temp, #address
+.ngram_loop
+	ifeq #result, #temp, .replace_ngram
+	getbyteinc #temp, #address
+	jumpnz #temp, .ngram_loop
+	ifne #result, 0x50, .write
+	set #result, 0x53
+.write
+	writebyte #result
+	jump .replace_loop
+
+.replace_ngram
+	set #temp, .Masuda
+	iflt #result, 0x30, .got_name
+	jumpz #3, .write ; Kenya nickname is stored as "Kenya@R<and>y@<NULL>"
+	set #temp, .Randy
+.got_name
+	seekback 1
+	writedata #temp, 7
+	subtract #2, 5
+	jump .replace_loop
+
+.ngrams
+	db 0x22, 0x2f, 0x37, 0x3f, 0x41, 0
+.Masuda
+	db 0x8c, 0xa0, 0xb2, 0xb4, 0xa3, 0xa0, 0x53
+.Randy
+	db 0x91, 0xa0, 0xad, 0xa3, 0xb8, 0x53, 0x53
+
+ChangeGyaradosForm:
+	set #curbuild, 6
+	set #1, .mon_callback
+	call ApplyPartyPatches
+
+.mon_callback
+	seek #1
+	getfilebyte #temp
+	ifne #temp, GYARADOS, .done
+	add #1, FORM_OFFSET
+	seek #1
+	getfilebyte #result
+	and #temp, #result, FORM_MASK
+	ifne #temp, 0x0f, .done
+	increment #result
+	increment #result ; form increases from 0x0f to 0x11
+	writebyte #result
+.done
+	return
