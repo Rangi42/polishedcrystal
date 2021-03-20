@@ -15,7 +15,7 @@ PatchSavefile:
 	printbuf
 	menu #result, YesNoMenu
 	jumpnz #result, .refused
-	; call PokecenterCheck
+	call PokecenterCheck
 	set #address, SavePatches
 .loop
 	gethalfwordinc #curbuild, #address
@@ -67,7 +67,7 @@ PatchSavefile:
 .savefile_build_string_1
 	string "The savefile corresponds to build "
 .savefile_build_string_2
-	string ". Patch to the current build?"
+	string ". Patch to the current build? (WARNING: It is strongly recommended that you save your game on the first floor of a Pokemon Center before patching.)"
 .done_string
 	string "The savefile was patched successfully."
 

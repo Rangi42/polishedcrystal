@@ -1,3 +1,6 @@
+; Many of the included functions were originally developed by the RainbowDevs team at Pokemon Prism.
+; A wholehearted thank you also goes out to aaaaaa123456789 (aka ax6) for developing bsp and the Prism patch.
+
 ; version info
 	define CURRENT_BUILD, 7
 
@@ -40,7 +43,7 @@
 	include "item_patches.txt"
 	include "move_patches.txt"
 	include "apply_party_patches.txt"
-	; include "pokecenter_check.txt"
+	include "pokecenter_check.txt"
 
 	include "sram_offsets.txt"
 	include "pocket_offsets.txt"

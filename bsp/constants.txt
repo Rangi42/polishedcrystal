@@ -37,6 +37,7 @@
 	define BERRIES_OFFSET,                     0x4a5
 	define PC_ITEMS_OFFSET,                    0x4e5
 	define BOX_NAMES_OFFSET,                   0x6e1
+	define MAP_GROUP_OFFSET,                   0x834
 	define PARTY_COUNT_OFFSET,                 0x856
 	define PARTY_MON_OT_OFFSET,                0x97e
 	define POKEDEX_CAUGHT_OFFSET,              0xa0b
