@@ -69,21 +69,21 @@ CheckBreedmonCompatibility:
 	ld a, [wBreedMon2Species]
 	ld [wCurSpecies], a
 	ld a, [wBreedMon2Form]
-	and BASEMON_MASK
+	and SPECIESFORM_MASK
 	ld [wCurForm], a
 	call GetBaseData
 	ld a, [wBaseEggGroups]
-	cp NO_EGGS * $11
+	cp EGG_NONE * $11
 	jr z, .Incompatible
 
 	ld a, [wBreedMon1Species]
 	ld [wCurSpecies], a
 	ld a, [wBreedMon1Form]
-	and BASEMON_MASK
+	and SPECIESFORM_MASK
 	ld [wCurForm], a
 	call GetBaseData
 	ld a, [wBaseEggGroups]
-	cp NO_EGGS * $11
+	cp EGG_NONE * $11
 	jr z, .Incompatible
 
 ; Ditto is automatically compatible with everything.
@@ -93,7 +93,7 @@ CheckBreedmonCompatibility:
 	jr z, .Compatible
 	ld [wCurSpecies], a
 	ld a, [wBreedMon2Form]
-	and BASEMON_MASK
+	and SPECIESFORM_MASK
 	ld [wCurForm], a
 	call GetBaseData
 	ld a, [wBaseEggGroups]
@@ -110,7 +110,7 @@ CheckBreedmonCompatibility:
 	jr z, .Compatible
 	ld [wCurSpecies], a
 	ld a, [wBreedMon1Form]
-	and BASEMON_MASK
+	and SPECIESFORM_MASK
 	ld [wCurForm], a
 	push bc
 	call GetBaseData
@@ -308,7 +308,7 @@ HatchEggs:
 	ld a, MON_FORM
 	call GetPartyParamLocation
 	ld a, [hl]
-	and BASEMON_MASK
+	and SPECIESFORM_MASK
 	ld [wCurForm], a
 
 	ld a, [wCurPartyMon]
@@ -367,7 +367,7 @@ HatchEggs:
 	ld a, [wPlayerID + 1]
 	ld [hl], a
 	ld a, [wCurPartyMon]
-	ld hl, wPartyMonOT
+	ld hl, wPartyMonOTs
 	ld bc, NAME_LENGTH
 	rst AddNTimes
 	ld d, h
@@ -488,15 +488,15 @@ InitEggMoves:
 ; reversed inheritance priority
 
 	; Default level 1 moves
-	ld de, wEggMonMoves
+	ld de, wTempMonMoves
 	xor a
 	ld [wBuffer1], a
 	; c = species
-	ld a, [wEggMonSpecies]
+	ld a, [wTempMonSpecies]
 	ld c, a
 	; b = form
-	ld a, [wEggMonForm]
-	and BASEMON_MASK
+	ld a, [wTempMonForm]
+	and SPECIESFORM_MASK
 	ld b, a
 	predef FillMoves
 
@@ -547,8 +547,8 @@ InitEggMoves:
 	call .GetEggMoves
 
 	; Done, fill PP
-	ld hl, wEggMonMoves
-	ld de, wEggMonPP
+	ld hl, wTempMonMoves
+	ld de, wTempMonPP
 	predef_jump FillPP
 
 .GetEggMoves:
@@ -570,11 +570,11 @@ InitEggMoves:
 InheritLevelMove:
 ; If move d is part of the level up moveset, inherit that move
 	; c = species
-	ld a, [wEggMonSpecies]
+	ld a, [wTempMonSpecies]
 	ld c, a
 	; b = form
-	ld a, [wEggMonForm]
-	and BASEMON_MASK
+	ld a, [wTempMonForm]
+	and SPECIESFORM_MASK
 	ld b, a
 	; bc = index
 	call GetSpeciesAndFormIndex
@@ -583,7 +583,7 @@ InheritLevelMove:
 	add hl, bc
 	add hl, bc
 	ld a, BANK(EvosAttacksPointers)
-	call GetFarHalfword
+	call GetFarWord
 .loop
 	ld a, BANK(EvosAttacks)
 	call GetFarByte
@@ -606,11 +606,11 @@ InheritLevelMove:
 InheritEggMove:
 ; If move d is an egg move, inherit that move
 	; c = species
-	ld a, [wEggMonSpecies]
+	ld a, [wTempMonSpecies]
 	ld c, a
 	; b = form
-	ld a, [wEggMonForm]
-	and BASEMON_MASK
+	ld a, [wTempMonForm]
+	and SPECIESFORM_MASK
 	ld b, a
 	; bc = index
 	call GetSpeciesAndFormIndex
@@ -619,7 +619,7 @@ InheritEggMove:
 	add hl, bc
 	add hl, bc
 	ld a, BANK(EggMovePointers)
-	call GetFarHalfword
+	call GetFarWord
 .loop
 	ld a, BANK(EggMoves)
 	call GetFarByte
@@ -632,7 +632,7 @@ InheritEggMove:
 	jr .loop
 
 InheritMove:
-	ld hl, wEggMonMoves
+	ld hl, wTempMonMoves
 	ld b, NUM_MOVES
 .loop
 	ld a, [hli]
@@ -646,8 +646,8 @@ InheritMove:
 	; shift moves
 	push de
 	ld bc, 3
-	ld hl, wEggMonMoves + 1
-	ld de, wEggMonMoves
+	ld hl, wTempMonMoves + 1
+	ld de, wTempMonMoves
 	rst CopyBytes
 	pop de
 .got_move_byte
@@ -905,7 +905,7 @@ Special_DayCareMon1:
 	bit 0, a
 	jr z, DayCareMonCursor
 	call ButtonSound
-	ld hl, wBreedMon2Nick
+	ld hl, wBreedMon2Nickname
 	call DayCareMonCompatibilityText
 	jp PrintText
 
@@ -918,7 +918,7 @@ Special_DayCareMon2:
 	bit 0, a
 	jr z, DayCareMonCursor
 	call ButtonSound
-	ld hl, wBreedMon1Nick
+	ld hl, wBreedMon1Nickname
 	call DayCareMonCompatibilityText
 	jp PrintText
 

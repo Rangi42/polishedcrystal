@@ -57,7 +57,7 @@ Script_BattleRoomLoop:
 	waitsfx
 	specialsound
 	waitbutton
-	ifequal BTCHALLENGE_WON, Script_BeatenAllTrainers
+	ifequal BTCHALLENGE_WON, Script_BeatenAllTowerTrainers
 	ifequal BTCHALLENGE_TYCOON, .WarnAboutTycoon
 .AskNextBattle:
 	writethistext
@@ -121,29 +121,14 @@ Script_LostBattleTower:
 	setval BATTLETOWER_LOST_CHALLENGE
 	special Special_BattleTower_SetChallengeState
 	sjump Script_ReturnToBattleTowerLobby
-	warpfacing UP, BATTLE_TOWER_1F, 10, 8
-	end
 
-Script_BeatenAllTrainers:
+Script_BeatenAllTowerTrainers:
 	setval BATTLETOWER_WON_CHALLENGE
 	special Special_BattleTower_SetChallengeState
 	; fallthrough
 Script_ReturnToBattleTowerLobby:
 	warpfacing UP, BATTLE_TOWER_1F, 10, 8
 	end
-
-Script_BeatenAllTrainers2:
-	opentext
-	writethistext
-		text "Congratulations!"
-
-		para "You've beaten all"
-		line "the trainers!"
-
-		para "For that, you get"
-		line "this great prize!"
-		prompt
-	endtext
 
 MovementData_BattleTowerBattleRoomPlayerWalksIn:
 	step_up

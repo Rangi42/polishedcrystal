@@ -1,3 +1,4 @@
+Footprints:
 INCBIN "gfx/footprints/bulbasaur.1bpp"
 INCBIN "gfx/footprints/ivysaur.1bpp"
 INCBIN "gfx/footprints/venusaur.1bpp"

@@ -37,7 +37,7 @@ BattleCommand_sketch:
 ; Fail if move is invalid or is Struggle.
 	and a
 	jr z, .fail
-	cp STRUGGLE
+	inc a ; cp STRUGGLE
 	jr z, .fail
 ; Fail if user already knows that move
 	ld c, NUM_MOVES

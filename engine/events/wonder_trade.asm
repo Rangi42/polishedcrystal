@@ -109,7 +109,7 @@ DoWonderTrade:
 	call GetTradeMonName
 	call CopyTradeName
 
-	ld hl, wPartyMonOT
+	ld hl, wPartyMonOTs
 	ld bc, NAME_LENGTH
 	call Trade_GetAttributeOfCurrentPartymon
 	ld de, wPlayerTrademonOTName
@@ -158,7 +158,7 @@ DoWonderTrade:
 	xor a
 	ld [wMonType], a
 	ld [wPokemonWithdrawDepositParameter], a
-	predef RemoveMonFromPartyOrBox
+	predef RemoveMonFromParty
 
 	call GetWonderTradeOTForm
 	ld [wCurForm], a
@@ -207,7 +207,7 @@ DoWonderTrade:
 	ld de, wOTTrademonSenderName
 	call CopyTradeOT
 
-	ld hl, wPartyMonOT
+	ld hl, wPartyMonOTs
 	ld bc, NAME_LENGTH
 	call Trade_GetAttributeOfLastPartymon
 	ld hl, wOTTrademonOTName
@@ -357,7 +357,7 @@ GetGSBallPichu:
 	call GetTradeMonName
 	call CopyTradeName
 
-	ld hl, wPartyMonOT
+	ld hl, wPartyMonOTs
 	ld bc, NAME_LENGTH
 	call Trade_GetAttributeOfCurrentPartymon
 	ld de, wPlayerTrademonOTName
@@ -404,7 +404,7 @@ GetGSBallPichu:
 	xor a
 	ld [wMonType], a
 	ld [wPokemonWithdrawDepositParameter], a
-	predef RemoveMonFromPartyOrBox
+	predef RemoveMonFromParty
 	predef TryAddMonToParty
 
 	ld b, MALE
@@ -445,7 +445,7 @@ GetGSBallPichu:
 	ld de, wOTTrademonSenderName
 	call CopyTradeOT
 
-	ld hl, wPartyMonOT
+	ld hl, wPartyMonOTs
 	ld bc, NAME_LENGTH
 	call Trade_GetAttributeOfLastPartymon
 	ld hl, wOTTrademonOTName

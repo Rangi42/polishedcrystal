@@ -108,13 +108,14 @@ SECTION "vblank", ROM0[$0040]
 ItemIsMail::
 ; Returns carry if item d is a mail.
 	ld a, d
+ItemIsMail_a::
 	cp FLOWER_MAIL
 	ccf
 	ret
 
 
 SECTION "lcd", ROM0[$0048]
-	jp LCD
+	jr hLCDInterruptFunction
 
 GetMemCGBLayout::
 	xor a ; CGB_RAM

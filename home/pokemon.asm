@@ -87,16 +87,13 @@ _PrepMonFrontpic:
 
 PrintLevel::
 ; Print wTempMonLevel at hl
-
-	ld a, [wTempMonLevel]
-	ld [hl], "<LV>"
-	inc hl
-
+	ld a, "<LV>"
+	ld [hli], a
 ; How many digits?
 	ld c, 2
+	ld a, [wTempMonLevel]
 	cp 100
 	jr c, Print8BitNumRightAlign
-
 ; 3-digit numbers overwrite the :L.
 	dec hl
 	inc c
@@ -118,11 +115,11 @@ GetBaseData::
 	ld b, a
 	call GetSpeciesAndFormIndex
 	dec bc
-	ld a, BASEMON_STRUCT_LENGTH
+	ld a, BASE_DATA_SIZE
 	ld hl, BaseData
 	rst AddNTimes
 	ld de, wCurBaseData
-	ld bc, BASEMON_STRUCT_LENGTH
+	ld bc, BASE_DATA_SIZE
 	ld a, BANK(BaseData)
 	call FarCopyBytes
 	jp PopBCDEHL
@@ -178,7 +175,7 @@ GetAbility::
 
 	inc hl
 	ld a, [hld]
-	and BASEMON_MASK
+	and SPECIESFORM_MASK
 	ld b, a
 
 	push hl
@@ -187,8 +184,8 @@ GetAbility::
 	push hl
 	call GetSpeciesAndFormIndex
 	dec bc
-	ld a, BASEMON_STRUCT_LENGTH
-	ld hl, BASEMON_ABILITIES
+	ld a, BASE_DATA_SIZE
+	ld hl, BaseData + BASE_ABILITIES
 	rst AddNTimes
 	pop bc
 
@@ -222,8 +219,8 @@ GetGenderRatio::
 	push bc
 	call GetSpeciesAndFormIndex
 	dec bc
-	ld a, BASEMON_STRUCT_LENGTH
-	ld hl, BASEMON_GENDER
+	ld a, BASE_DATA_SIZE
+	ld hl, BaseData + BASE_GENDER
 	rst AddNTimes
 	pop bc
 	ld a, [hl]
@@ -233,11 +230,10 @@ GetGenderRatio::
 	ld c, a
 	ret
 
-GetCurNick::
+GetCurNickname::
 	ld a, [wCurPartyMon]
 	ld hl, wPartyMonNicknames
-
-GetNick::
+GetNickname::
 ; Get nickname a from list hl.
 	ld de, wStringBuffer1
 	push hl
@@ -305,7 +301,7 @@ _GetSpeciesAndFormIndexFinal:
 
 _GetSpeciesAndFormIndexHelper:
 	ld a, b
-	and BASEMON_MASK
+	and SPECIESFORM_MASK
 	jr z, .normal ; NO_FORM?
 	cp PLAIN_FORM
 	jr z, .normal ; species index isn't >255 and form is plain
@@ -320,7 +316,7 @@ _GetSpeciesAndFormIndexHelper:
 	jr nz, .next
 
 	; If form mask is 0, only verify extspecies
-	ld a, BASEMON_MASK
+	ld a, SPECIESFORM_MASK
 	and [hl]
 	jr z, .next ; Should never happen
 	cp EXTSPECIES_MASK

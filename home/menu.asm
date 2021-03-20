@@ -195,11 +195,11 @@ ClearWholeMenuBox::
 	jp ClearBox
 
 PushWindow_MenuBoxCoordToTile::
-	coord bc, 0, 0
+	bccoord 0, 0
 	jr PushWindow_MenuBoxCoordToAbsolute
 
 PushWindow_MenuBoxCoordToAttr::
-	coord bc, 0, 0, wAttrMap
+	bccoord 0, 0, wAttrMap
 
 ; fallthrough
 PushWindow_MenuBoxCoordToAbsolute:

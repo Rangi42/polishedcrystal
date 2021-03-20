@@ -172,7 +172,7 @@ CheckPokeItem::
 	jr c, .close_sram_return
 	xor a
 	ld [wPokemonWithdrawDepositParameter], a
-	predef RemoveMonFromPartyOrBox
+	predef RemoveMonFromParty
 	ld a, $1
 
 .close_sram_return
@@ -209,7 +209,7 @@ GivePokeItem::
 	rst CopyBytes
 	pop af
 	push af
-	ld hl, wPartyMonOT
+	ld hl, wPartyMonOTs
 	ld bc, NAME_LENGTH
 	rst AddNTimes
 	ld bc, NAME_LENGTH - 1

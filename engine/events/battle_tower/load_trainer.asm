@@ -48,7 +48,7 @@ PopulateBattleTowerTeam:
 
 	; Now append the list of mons according to chosen sets
 	ld hl, wBT_OTMonParty
-	ld b, BATTLETOWER_NROFPKMNS
+	ld b, BATTLETOWER_PARTY_LENGTH
 .generate_loop
 	push bc
 	ld a, [hli]
@@ -73,9 +73,9 @@ PopulateBattleTowerTeam:
 	ld a, BANK(sBT_OTMonParties)
 	call GetSRAMBank
 	ld de, wBT_OTMonParty
-	ld b, BATTLETOWER_NROFPKMNS
+	ld b, BATTLETOWER_PARTY_LENGTH
 .repeat_outer_loop
-	ld c, BATTLETOWER_NROFPKMNS * BATTLETOWER_SAVEDPARTIES
+	ld c, BATTLETOWER_PARTY_LENGTH * BATTLETOWER_SAVEDPARTIES
 	ld hl, sBT_OTMonParties
 .repeat_loop
 	; Check if set is identical
@@ -311,21 +311,21 @@ BT_GetSetTable:
 
 	; Store which sets to use.
 	ld c, [hl]
-	ld b, BATTLETOWER_NROFPKMNS
+	ld b, BATTLETOWER_PARTY_LENGTH
 	ld hl, wBT_OTMonParty
 .add_loop
 	ld a, c
 	and %11
 	ld [hli], a
-	ld [hl], -1 ; pick a random number within a set
-	inc hl
+	ld a, -1 ; pick a random number within a set
+	ld [hli], a
 	srl c
 	srl c
 	dec b
 	jr nz, .add_loop
 
 	; Now shuffle the team. The - 1 is intentional, we iterate one less.
-	ld c, BATTLETOWER_NROFPKMNS
+	ld c, BATTLETOWER_PARTY_LENGTH
 
 .shuffle_loop
 	; This is intentional. We iterate one less than the amount of mons.

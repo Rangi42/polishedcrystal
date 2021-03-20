@@ -236,7 +236,7 @@ TrainerPokemaniacBrent1:
 PokemaniacBrent1Script:
 	loadvar VAR_CALLERID, PHONE_POKEMANIAC_BRENT
 	opentext
-	checkflag ENGINE_BRENT
+	checkflag ENGINE_BRENT_READY_FOR_REMATCH
 	iftrue UnknownScript_0x19d0cf
 	checkcellnum PHONE_POKEMANIAC_BRENT
 	iftrue UnknownScript_0x19d138
@@ -280,7 +280,7 @@ UnknownScript_0x19d0cf:
 	startbattle
 	reloadmapafterbattle
 	loadmem wBrentFightCount, 1
-	clearflag ENGINE_BRENT
+	clearflag ENGINE_BRENT_READY_FOR_REMATCH
 	end
 
 .LoadFight1:
@@ -288,7 +288,7 @@ UnknownScript_0x19d0cf:
 	startbattle
 	reloadmapafterbattle
 	loadmem wBrentFightCount, 2
-	clearflag ENGINE_BRENT
+	clearflag ENGINE_BRENT_READY_FOR_REMATCH
 	end
 
 .LoadFight2:
@@ -296,14 +296,14 @@ UnknownScript_0x19d0cf:
 	startbattle
 	reloadmapafterbattle
 	loadmem wBrentFightCount, 3
-	clearflag ENGINE_BRENT
+	clearflag ENGINE_BRENT_READY_FOR_REMATCH
 	end
 
 .LoadFight3:
 	loadtrainer POKEMANIAC, BRENT4
 	startbattle
 	reloadmapafterbattle
-	clearflag ENGINE_BRENT
+	clearflag ENGINE_BRENT_READY_FOR_REMATCH
 	end
 
 UnknownScript_0x19d12c:
@@ -359,7 +359,7 @@ TrainerPicnickerTiffany1:
 PicnickerTiffany1Script:
 	loadvar VAR_CALLERID, PHONE_PICNICKER_TIFFANY
 	opentext
-	checkflag ENGINE_TIFFANY
+	checkflag ENGINE_TIFFANY_READY_FOR_REMATCH
 	iftrue UnknownScript_0x19d1c1
 	checkflag ENGINE_TIFFANY_HAS_PINK_BOW
 	iftrue UnknownScript_0x19d21e
@@ -407,7 +407,7 @@ UnknownScript_0x19d1c1:
 	startbattle
 	reloadmapafterbattle
 	loadmem wTiffanyFightCount, 1
-	clearflag ENGINE_TIFFANY
+	clearflag ENGINE_TIFFANY_READY_FOR_REMATCH
 	end
 
 .LoadFight1:
@@ -415,7 +415,7 @@ UnknownScript_0x19d1c1:
 	startbattle
 	reloadmapafterbattle
 	loadmem wTiffanyFightCount, 2
-	clearflag ENGINE_TIFFANY
+	clearflag ENGINE_TIFFANY_READY_FOR_REMATCH
 	end
 
 .LoadFight2:
@@ -423,14 +423,14 @@ UnknownScript_0x19d1c1:
 	startbattle
 	reloadmapafterbattle
 	loadmem wTiffanyFightCount, 3
-	clearflag ENGINE_TIFFANY
+	clearflag ENGINE_TIFFANY_READY_FOR_REMATCH
 	end
 
 .LoadFight3:
 	loadtrainer PICNICKER, TIFFANY4
 	startbattle
 	reloadmapafterbattle
-	clearflag ENGINE_TIFFANY
+	clearflag ENGINE_TIFFANY_READY_FOR_REMATCH
 	end
 
 UnknownScript_0x19d21e:

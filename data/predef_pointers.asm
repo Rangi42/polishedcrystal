@@ -6,7 +6,6 @@ PredefPointers::
 	add_predef ComputeHPBarPixels
 	add_predef FillPP
 	add_predef TryAddMonToParty
-	add_predef SentGetPkmnIntoFromBox
 	add_predef AnimateHPBar
 	add_predef CalcPkmnStats
 	add_predef CalcPkmnStatC
@@ -37,4 +36,4 @@ PredefPointers::
 	add_predef SubtractHPFromUser
 	add_predef GetUserItemAfterUnnerve
 	add_predef ChangeHappiness
-	add_predef RemoveMonFromPartyOrBox
+	add_predef RemoveMonFromParty

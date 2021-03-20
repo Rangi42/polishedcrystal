@@ -1,4 +1,6 @@
 ; nature constants
+; NatureNames indexes (see data/natures.asm)
+; NatureIndicators indexes (see data/natures.asm)
 	const_def
 	const HARDY
 	const LONELY
@@ -48,3 +50,4 @@ NAT_SDEF_UP_ATK_DOWN  EQU CALM
 NAT_SDEF_UP_DEF_DOWN  EQU GENTLE
 NAT_SDEF_UP_SPD_DOWN  EQU SASSY
 NAT_SDEF_UP_SATK_DOWN EQU CAREFUL
+NAT_NEUTRAL           EQU QUIRKY

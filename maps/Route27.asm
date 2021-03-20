@@ -192,7 +192,7 @@ TrainerBird_keeperJose1:
 Bird_keeperJose1Script:
 	loadvar VAR_CALLERID, PHONE_BIRDKEEPER_JOSE
 	opentext
-	checkflag ENGINE_JOSE
+	checkflag ENGINE_JOSE_READY_FOR_REMATCH
 	iftrue UnknownScript_0x1a08ff
 	checkflag ENGINE_JOSE_HAS_STAR_PIECE
 	iftrue UnknownScript_0x1a0945
@@ -234,7 +234,7 @@ UnknownScript_0x1a08ff:
 	startbattle
 	reloadmapafterbattle
 	loadmem wJoseFightCount, 1
-	clearflag ENGINE_JOSE
+	clearflag ENGINE_JOSE_READY_FOR_REMATCH
 	end
 
 .LoadFight1:
@@ -242,14 +242,14 @@ UnknownScript_0x1a08ff:
 	startbattle
 	reloadmapafterbattle
 	loadmem wJoseFightCount, 2
-	clearflag ENGINE_JOSE
+	clearflag ENGINE_JOSE_READY_FOR_REMATCH
 	end
 
 .LoadFight2:
 	loadtrainer BIRD_KEEPER, JOSE3
 	startbattle
 	reloadmapafterbattle
-	clearflag ENGINE_JOSE
+	clearflag ENGINE_JOSE_READY_FOR_REMATCH
 	end
 
 UnknownScript_0x1a0945:
@@ -329,7 +329,7 @@ TrainerCooltrainerfReena:
 CooltrainerfReena1Script:
 	loadvar VAR_CALLERID, PHONE_COOLTRAINERF_REENA
 	opentext
-	checkflag ENGINE_REENA
+	checkflag ENGINE_REENA_READY_FOR_REMATCH
 	iftrue UnknownScript_0x1a09e9
 	checkcellnum PHONE_COOLTRAINERF_REENA
 	iftrue UnknownScript_0x1a0a3b
@@ -369,7 +369,7 @@ UnknownScript_0x1a09e9:
 	startbattle
 	reloadmapafterbattle
 	loadmem wReenaFightCount, 1
-	clearflag ENGINE_REENA
+	clearflag ENGINE_REENA_READY_FOR_REMATCH
 	end
 
 .LoadFight1:
@@ -377,14 +377,14 @@ UnknownScript_0x1a09e9:
 	startbattle
 	reloadmapafterbattle
 	loadmem wReenaFightCount, 2
-	clearflag ENGINE_REENA
+	clearflag ENGINE_REENA_READY_FOR_REMATCH
 	end
 
 .LoadFight2:
 	loadtrainer COOLTRAINERF, REENA3
 	startbattle
 	reloadmapafterbattle
-	clearflag ENGINE_REENA
+	clearflag ENGINE_REENA_READY_FOR_REMATCH
 	end
 
 UnknownScript_0x1a0a2f:

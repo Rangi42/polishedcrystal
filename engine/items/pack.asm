@@ -618,7 +618,7 @@ GiveItem:
 	push af
 	ld a, [wPackJumptableIndex]
 	push af
-	call GetCurNick
+	call GetCurNickname
 	ld hl, wStringBuffer1
 	ld de, wMonOrItemNameBuffer
 	ld bc, MON_NAME_LENGTH
@@ -1311,7 +1311,7 @@ DrawPackGFX:
 .loop
 	dec b
 	jr nz, .normal_insert
-	ld [hl], $1
+	ld [hl], $1 ; no-optimize *hl++|*hl-- = N
 	inc hl
 	jr .insert_ok
 .normal_insert

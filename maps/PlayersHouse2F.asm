@@ -219,7 +219,7 @@ endr
 	loadmem wPartyMon1DVs+0, $ff
 	loadmem wPartyMon1DVs+1, $ff
 	loadmem wPartyMon1DVs+2, $ff
-	loadmem wPartyMon1Personality, ABILITY_2 | MODEST
+	loadmem wPartyMon1Personality, ABILITY_2 | NAT_SATK_UP_ATK_DOWN
 	loadmem wPartyMon1Stats+0, HIGH(999)
 	loadmem wPartyMon1Stats+1, LOW(999)
 	loadmem wPartyMon1Stats+2, HIGH(999)

@@ -1,6 +1,6 @@
 BattleTower1F_MapScriptHeader:
 	def_scene_scripts
-	scene_script BattleTower1FTrigger0
+	scene_script BattleTower1FContinueChallenge
 
 	def_callbacks
 
@@ -13,11 +13,11 @@ BattleTower1F_MapScriptHeader:
 	def_coord_events
 
 	def_bg_events
-	bg_event 11,  7, BGEVENT_READ, MapBattleTower1FSignpost0Script
-	bg_event  9,  7, BGEVENT_READ, MapBattleTower1FSignpost1Script
+	bg_event 11,  7, BGEVENT_READ, BattleTower1FRulesScript
+	bg_event  9,  7, BGEVENT_JUMPTEXT, BattleTower1FStreakText
 
 	def_object_events
-	object_event 10,  7, SPRITE_RECEPTIONIST, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, ReceptionistScript_BattleTower, -1
+	object_event 10,  7, SPRITE_RECEPTIONIST, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, BattleTower1FReceptionistScript, -1
 	pc_nurse_event  6,  8
 	object_event 14,  8, SPRITE_CLERK, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_COMMAND, pokemart, MARTTYPE_BP, MART_BT_1, -1
 	object_event 16,  8, SPRITE_CLERK, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_COMMAND, pokemart, MARTTYPE_BP, MART_BT_2, -1
@@ -30,8 +30,8 @@ BattleTower1F_MapScriptHeader:
 	object_const_def
 	const BATTLETOWER1F_RECEPTIONIST
 
-BattleTower1FTrigger0:
-; Triggers (usefully) if we're in an ongoing battle tower run.
+BattleTower1FContinueChallenge:
+; Triggers (usefully) if we're in an ongoing Battle Tower run.
 	; Only trigger this once.
 	setscene 1
 
@@ -43,8 +43,8 @@ BattleTower1FTrigger0:
 	ifequal BATTLETOWER_WON_CHALLENGE, .WonChallenge
 	end
 
-.ResumeChallenge
-	; We saved inbetween rounds. Resume Battle Tower challenge.
+.ResumeChallenge:
+	; We saved in-between rounds. Resume Battle Tower challenge.
 	opentext
 	writethistext
 		text "We've been waiting"
@@ -53,7 +53,7 @@ BattleTower1FTrigger0:
 
 	; Schedule script for running. This prevents odd issues that a regular jump
 	; causes for scene scripts. This is NOT a true jump, so "end" is necessary.
-	prioritysjump Script_ReturnToBattleChallenge
+	prioritysjump Script_ReturnToBattleTowerChallenge
 	end
 
 .LeftWithoutSaving:
@@ -61,6 +61,7 @@ BattleTower1FTrigger0:
 	; This counts as a battle loss, and will reset the winstreak.
 	prioritysjump .LeftWithoutSaving2
 	end
+
 .LeftWithoutSaving2:
 	opentext
 	writethistext
@@ -87,6 +88,7 @@ BattleTower1FTrigger0:
 .WonChallenge:
 	prioritysjump .WonChallenge2
 	end
+
 .WonChallenge2:
 	opentext
 	writethistext
@@ -112,7 +114,7 @@ BattleTower1FTrigger0:
 	waitbutton
 	endtext
 
-MapBattleTower1FSignpost0Script:
+BattleTower1FRulesScript:
 	opentext
 	writethistext
 		text "Battle Tower rules"
@@ -139,17 +141,16 @@ MapBattleTower1FSignpost0Script:
 		cont "to battle."
 		done
 
-MapBattleTower1FSignpost1Script:
-	jumpthistext
-		text "Streak: "
-		text_decimal wBattleTowerCurStreak, 2, 5
-		text " wins"
-		line "Record: "
-		text_decimal wBattleTowerTopStreak, 2, 5
-		text " wins"
-		done
+BattleTower1FStreakText:
+	text "Streak: "
+	text_decimal wBattleTowerCurStreak, 2, 5
+	text " wins"
+	line "Record: "
+	text_decimal wBattleTowerTopStreak, 2, 5
+	text " wins"
+	done
 
-ReceptionistScript_BattleTower:
+BattleTower1FReceptionistScript:
 	opentext
 	writethistext
 		text "Battle Tower"
@@ -209,7 +210,7 @@ ReceptionistScript_BattleTower:
 	; fallthrough
 .BattleTowerMenu:
 	; Setscene here in case the player aborted a quicksave prompted by challenge
-	setscene $1
+	setscene 1
 	writethistext
 		text "Want to go into a"
 		line "Battle Room?"
@@ -244,14 +245,14 @@ ReceptionistScript_BattleTower:
 	; Done here to ensure it's saved in case the player resets later.
 	; The scene script running after the player saves but before the
 	; challenge starts is harmless since there's no challenge prepared.
-	setscene $0
+	setscene 0
 	special Special_TryQuickSave
 	iffalse .BattleTowerMenu
 
 	; Initializes opponent trainers and stores player mon choices in SRAM
 	special Special_BattleTower_BeginChallenge
 	; fallthrough
-Script_ReturnToBattleChallenge:
+Script_ReturnToBattleTowerChallenge:
 	; From this point onwards, resetting the game should count as a streak loss
 	setval BATTLETOWER_CHALLENGE_IN_PROGRESS
 	special Special_BattleTower_SetChallengeState
@@ -266,14 +267,24 @@ Script_ReturnToBattleChallenge:
 
 	musicfadeout MUSIC_NONE, 8
 	follow BATTLETOWER1F_RECEPTIONIST, PLAYER
-	applymovement BATTLETOWER1F_RECEPTIONIST, MovementData_BattleTower1FWalkToElevator
+	applymovement BATTLETOWER1F_RECEPTIONIST, .WalkToElevator
+	stopfollow
 	special Special_BattleTower_MaxVolume
 	warpsound
 	disappear BATTLETOWER1F_RECEPTIONIST
-	stopfollow
 	applyonemovement PLAYER, step_up
 	warpcheck
 	end
+
+.WalkToElevator:
+	step_up
+	step_up
+	step_up
+	step_up
+	step_up
+	step_up
+	step_up
+	step_end
 
 BattleTowerPharmacistScript:
 	faceplayer
@@ -335,24 +346,6 @@ BattleTowerTutorTrickScript:
 		line "can use Trick too!"
 		cont "Isn't it devious?"
 		done
-
-MovementData_BattleTower1FWalkToElevator:
-	step_up
-	step_up
-	step_up
-	step_up
-	step_up
-	step_up
-	step_up
-	step_end
-
-Text_WeveBeenWaitingForYou:
-	text "We've been waiting"
-	line "for you. This way"
-
-	para "to a Battle Room,"
-	line "please."
-	done
 
 Text_BattleTowerCooltrainerF:
 	text "There are lots of"

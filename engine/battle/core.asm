@@ -481,7 +481,7 @@ ParsePlayerAction:
 	call FarCopyColorWRAM
 	call SetPalettes
 	ld a, [wCurPlayerMove]
-	cp STRUGGLE
+	inc a ; cp STRUGGLE
 	call nz, PlayClickSFX
 	ld a, $1
 	ldh [hBGMapMode], a
@@ -538,9 +538,8 @@ TryEnemyFlee:
 	jr nz, .Stay
 
 	ld a, [wTempEnemyMonSpecies]
-	ld de, 1
 	ld hl, AlwaysFleeMons
-	call IsInArray
+	call IsInByteArray
 	jr c, .Flee
 
 	call BattleRandom
@@ -550,9 +549,8 @@ TryEnemyFlee:
 
 	push bc
 	ld a, [wTempEnemyMonSpecies]
-	ld de, 1
 	ld hl, OftenFleeMons
-	call IsInArray
+	call IsInByteArray
 	pop bc
 	jr c, .Flee
 
@@ -561,9 +559,8 @@ TryEnemyFlee:
 	jr nc, .Stay
 
 	ld a, [wTempEnemyMonSpecies]
-	ld de, 1
 	ld hl, SometimesFleeMons
-	call IsInArray
+	call IsInByteArray
 	jr c, .Flee
 
 .Stay:
@@ -643,8 +640,8 @@ GetMovePriority:
 	ld a, BATTLE_VARS_MOVE
 	call GetBattleVar
 
-	ld de, 2
 	ld hl, MovePriorities
+	ld de, 2
 	call IsInArray
 	inc a
 	jr z, .got_priority
@@ -1138,15 +1135,16 @@ SendInUserPkmn:
 	call GetBattleVarAddr
 	res SUBSTATUS_ENDURE, [hl]
 	res SUBSTATUS_PROTECT, [hl]
-	inc hl ; substatus2
+	inc hl
+	; substatus2
 	ld a, 1 << SUBSTATUS_LOCK_ON ; only flag here that should be preserved
 	and [hl]
-	ld [hl], a
-	inc hl ; substatus3
+	ld [hli], a
+	; substatus3
 	ld a, 1 << SUBSTATUS_CONFUSED ; only flag here that should be preserved
 	and [hl]
-	ld [hl], a
-	inc hl ; substatus4
+	ld [hli], a
+	; substatus4
 	ld a, ~(1 << SUBSTATUS_RAGE | 1 << SUBSTATUS_FLINCHED | 1 << SUBSTATUS_CURLED)
 	and [hl]
 	ld [hl], a
@@ -1282,9 +1280,9 @@ endr
 	call SkipNames
 	ldh a, [hBattleTurn]
 	and a
-	ld de, wBattleMonNick
+	ld de, wBattleMonNickname
 	jr z, .got_battle_nick
-	ld de, wEnemyMonNick
+	ld de, wEnemyMonNickname
 .got_battle_nick
 	ld bc, MON_NAME_LENGTH
 	rst CopyBytes
@@ -2315,10 +2313,10 @@ AddBattleMoneyToAccount:
 	ld a, [hl]
 	sbc LOW(9999999 / $10000)
 	ret c
-	ld [hl], LOW(9999999 / $10000)
-	inc hl
-	ld [hl], LOW(9999999 / $100)
-	inc hl
+	ld a, LOW(9999999 / $10000)
+	ld [hli], a
+	ld a, LOW(9999999 / $100)
+	ld [hli], a
 	ld [hl], LOW(9999999)
 	ret
 
@@ -2377,8 +2375,7 @@ IsBossTrainer:
 IsBossTrainerCommon:
 	push de
 	ld a, [wOtherTrainerClass]
-	ld de, $1
-	call IsInArray
+	call IsInByteArray
 	pop de
 	ret
 
@@ -2760,7 +2757,7 @@ OfferSwitch:
 	ld a, [wEnemySwitchTarget]
 	dec a
 	call SkipNames
-	ld de, wEnemyMonNick
+	ld de, wEnemyMonNickname
 	ld bc, MON_NAME_LENGTH
 	rst CopyBytes
 
@@ -3643,10 +3640,15 @@ DrawPlayerHUD:
 	xor a
 	ldh [hBGMapMode], a
 
-	; Clear the area
 	farcall ClearPlayerHUD
 
-	farcall DrawPlayerHUDBorder
+	; DrawPlayerHUDBorder
+	hlcoord 19, 11
+	ld [hl], "<XPEND>"
+	hlcoord 10, 11
+	ld a, "<XP1>"
+	ld [hli], a
+	ld [hl], "<XP2>"
 
 	call PrintPlayerHUD
 
@@ -3673,8 +3675,8 @@ DrawPlayerHUD:
 	; Status icon
 	farcall LoadPlayerStatusIcon
 	hlcoord 12, 8
-	ld [hl], $55
-	inc hl
+	ld a, $55
+	ld [hli], a
 	ld [hl], $56
 	jp FinishBattleAnim
 
@@ -3701,9 +3703,9 @@ CheckDanger:
 	ret
 
 PrintPlayerHUD:
-	ld de, wBattleMonNick
+	ld de, wBattleMonNickname
 	hlcoord 11, 7
-	ld a, [wBattleMonNick + MON_NAME_LENGTH - 2]
+	ld a, [wBattleMonNickname + MON_NAME_LENGTH - 2]
 	cp "@"
 	jr z, .short_name
 	dec hl ; hlcoord 10, 7
@@ -3725,7 +3727,7 @@ endr
 	ld [de], a
 	ld hl, wBattleMonLevel
 	ld de, wTempMonLevel
-	ld bc, wTempMonStatsEnd - wTempMonLevel
+	ld bc, wTempMonEnd - wTempMonLevel
 	rst CopyBytes
 	ld a, [wCurBattleMon]
 	ld hl, wPartyMon1Species
@@ -3790,7 +3792,7 @@ DrawEnemyHUD:
 	ld [wCurPartySpecies], a
 	call GetEnemyMonVariant
 	call GetBaseData
-	ld de, wEnemyMonNick
+	ld de, wEnemyMonNickname
 	hlcoord 1, 0
 	rst PlaceString
 	ld h, b
@@ -3900,8 +3902,8 @@ endr
 
 	farcall LoadEnemyStatusIcon
 	hlcoord 2, 1
-	ld [hl], $57
-	inc hl
+	ld a, $57
+	ld [hli], a
 	ld [hl], $58
 	jp FinishBattleAnim
 
@@ -4346,12 +4348,7 @@ Battle_StatsScreen:
 	ld bc, $31 tiles
 	rst CopyBytes
 	call EnableLCD
-	call ClearSprites
-	call LowVolume
-	xor a ; PARTYMON
-	ld [wMonType], a
-	farcall StatsScreenInit
-	call MaxVolume
+	farcall OpenPartyStats
 	call DisableLCD
 	ld hl, vTiles0
 	ld de, vTiles2 tile $31
@@ -5269,10 +5266,9 @@ MoveInfoBox:
 
 .PrintPP:
 	hlcoord 2, 11
-rept 2
-	ld [hl], "<BOLDP>"
-	inc hl
-endr
+	ld a, "<BOLDP>"
+	ld [hli], a
+	ld [hli], a
 	inc hl
 	push hl
 	ld de, wStringBuffer1
@@ -5281,8 +5277,8 @@ endr
 	pop hl
 	inc hl
 	inc hl
-	ld [hl], "/"
-	inc hl
+	ld a, "/"
+	ld [hli], a
 	ld de, wNamedObjectIndexBuffer
 	lb bc, 1, 2
 	jp PrintNum
@@ -5610,22 +5606,18 @@ LinkBattleSendReceiveAction:
 	and a
 	jr nz, .switch
 	ld a, [wCurPlayerMove]
-	ld b, BATTLEACTION_STRUGGLE
-	cp STRUGGLE
-	jr z, .struggle
+	inc a ; cp STRUGGLE
+	ld a, BATTLEACTION_STRUGGLE
+	jr z, .use_move
 	ld a, [wCurMoveNum]
-	jr .use_move
+.use_move
+	and $0f
+	ret
 
 .switch
 	ld a, [wPlayerSwitchTarget]
 	add BATTLEACTION_SWITCH1 - 1
 	jr .use_move
-
-.struggle
-	ld a, b
-.use_move
-	and $0f
-	ret
 
 LoadEnemyMon:
 ; Initialize wildmon data
@@ -5718,9 +5710,9 @@ endc
 
 	; If we're headbutting trees, some monsters enter battle asleep
 	call CheckSleepingTreeMon
-	; a = carry ? SLP & 3 (asleep for 3 turns) : 0 (no status)
+	; a = carry ? TREEMON_SLEEP_TURNS : 0
 	sbc a
-	and SLP & 3
+	and TREEMON_SLEEP_TURNS
 	ld hl, wOTPartyMon1Status
 	ld [hli], a
 
@@ -5780,9 +5772,8 @@ ApplyLegendaryDVs:
 
 	push hl
 	ld a, [wCurPartySpecies]
-	ld de, 1
 	ld hl, LegendaryMons
-	call IsInArray
+	call IsInByteArray
 	pop hl
 	jr nc, .done
 
@@ -5859,8 +5850,7 @@ CheckSleepingTreeMon:
 
 .Check:
 	ld a, [wTempEnemyMonSpecies]
-	ld de, 1 ; length of species id
-	call IsInArray
+	call IsInByteArray
 ; If it's a match, the opponent is asleep
 	ret c
 
@@ -5960,10 +5950,9 @@ CheckUnownLetter:
 	ld l, a
 
 	push de
-	ld a, b
-	ld de, 1
 	push bc
-	call IsInArray
+	ld a, b
+	call IsInByteArray
 	pop bc
 	pop de
 
@@ -6373,7 +6362,7 @@ GiveExperiencePoints:
 	ld [wStringBuffer2], a
 	ld a, [wCurPartyMon]
 	ld hl, wPartyMonNicknames
-	call GetNick
+	call GetNickname
 	ld hl, Text_PkmnGainedExpPoint
 	call BattleTextbox
 	ld a, [wStringBuffer2 + 2]
@@ -6991,7 +6980,7 @@ AnimateExpBar:
 	ld c, $40
 	call .LoopBarAnimation
 	call PrintPlayerHUD
-	ld hl, wBattleMonNick
+	ld hl, wBattleMonNickname
 	ld de, wStringBuffer1
 	ld bc, MON_NAME_LENGTH
 	rst CopyBytes
@@ -7095,8 +7084,8 @@ GetNewBaseExp:
 ; exceptions: Chansey, Blissey
 	ld a, MON_SPECIES
 	call OTPartyAttr
-	ld de, 3
 	ld hl, NewBaseExpExceptions
+	ld de, 3
 	call IsInArray
 	jr nc, .calc_base_exp
 	inc hl
@@ -7139,7 +7128,7 @@ GetNewBaseExp:
 	; b = form
 	ld a, MON_FORM
 	call OTPartyAttr
-	and BASEMON_MASK
+	and SPECIESFORM_MASK
 	ld b, a
 	; bc = index
 	call GetSpeciesAndFormIndex
@@ -7148,7 +7137,7 @@ GetNewBaseExp:
 	add hl, bc
 	add hl, bc
 	ld a, BANK(EvosAttacksPointers)
-	call GetFarHalfword
+	call GetFarWord
 
 	ld a, BANK(EvosAttacks)
 	call GetFarByte
@@ -7158,9 +7147,8 @@ GetNewBaseExp:
 	jr .stage_1_or_nonevolver
 
 .not_basic
-	ld de, 1
 	ld hl, LegendaryMons
-	call IsInArray
+	call IsInByteArray
 	jr c, .legendary
 	farcall GetPreEvolution
 .legendary
@@ -8225,10 +8213,10 @@ AddLastBattleToLinkRecord:
 .CheckOverflow:
 	dec hl
 	ld a, [hli]
-	cp HIGH(9999)
+	cp HIGH(MAX_LINK_RECORD)
 	ret c
 	ld a, [hl]
-	cp LOW(9999)
+	cp LOW(MAX_LINK_RECORD)
 	ret
 
 .FindOpponentAndAppendRecord:

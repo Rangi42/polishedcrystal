@@ -79,20 +79,15 @@ ResetWRAM_NotPlus:
 
 	ld [wCurBox], a
 
-	call SetDefaultBoxNames
-
-	ld a, BANK(sBoxCount)
-	call GetSRAMBank
-	ld hl, sBoxCount
-	call _ResetWRAM_InitList
+	farcall InitializeBoxes
 	call CloseSRAM
 
-START_MONEY EQU 3000
 	ld hl, wMoney
-	ld [hl], LOW(START_MONEY / $10000)
-	inc hl
-	ld [hl], LOW(START_MONEY / $100)
-	inc hl
+	xor a
+	assert START_MONEY < $10000
+	ld [hli], a
+	ld a, HIGH(START_MONEY)
+	ld [hli], a
 	ld [hl], LOW(START_MONEY)
 	ret
 
@@ -107,22 +102,24 @@ ResetWRAM:
 	xor a
 	rst ByteFill
 
-	; erase wGameData, but keep Money, wCurBox, wBoxNames, and wBattlePoints
+	; erase wGameData, but keep wMoney and wBattlePoints
 	ld hl, wGameData
 	ld bc, wMoney - wGameData
 	xor a
 	rst ByteFill
 	ld hl, wMoneyEnd
-	ld bc, wCurBox - wMoneyEnd
-	xor a
-	rst ByteFill
-	ld hl, wBoxNamesEnd
-	ld bc, wBattlePoints - wBoxNamesEnd
+	ld bc, wBattlePoints - wMoneyEnd
 	xor a
 	rst ByteFill
 	ld hl, wBattlePointsEnd
 	ld bc, wGameDataEnd - wBattlePointsEnd
 	xor a
+	rst ByteFill
+
+	; Fill party species array with terminators.
+	ld hl, wPartySpecies
+	ld bc, PARTY_LENGTH + 1
+	dec a ; ld a, -1
 	rst ByteFill
 
 	call Random
@@ -214,13 +211,13 @@ endr
 
 	ld [wWhichMomItem], a
 
-START_ITEM_TRIGGER_BALANCE EQU 2300
 	ld hl, wMomItemTriggerBalance
-	ld [hl], LOW(START_ITEM_TRIGGER_BALANCE / $10000)
-	inc hl
-	ld [hl], LOW(START_ITEM_TRIGGER_BALANCE / $100)
-	inc hl
-	ld [hl], LOW(START_ITEM_TRIGGER_BALANCE)
+	xor a
+	assert MOM_MONEY < $10000
+	ld [hli], a
+	ld a, HIGH(MOM_MONEY)
+	ld [hli], a
+	ld [hl], LOW(MOM_MONEY)
 
 	call InitializeNPCNames
 
@@ -237,38 +234,6 @@ _ResetWRAM_InitList:
 	dec a
 	ld [hl], a
 	ret
-
-SetDefaultBoxNames:
-	ld hl, wBoxNames
-	ld c, 0
-.loop
-	push hl
-	ld de, .Box
-	call CopyName2
-	dec hl
-	ld a, c
-	inc a
-	cp 10
-	jr c, .less
-	sub 10
-	ld [hl], "1"
-	inc hl
-
-.less
-	add "0"
-	ld [hli], a
-	ld [hl], "@"
-	pop hl
-	ld de, 9
-	add hl, de
-	inc c
-	ld a, c
-	cp NUM_BOXES
-	jr c, .loop
-	ret
-
-.Box:
-	db "Box@"
 
 InitializeMagikarpHouse:
 	ld hl, wBestMagikarpLengthMmHi
@@ -438,7 +403,7 @@ FinishContinueFunction:
 	xor a
 	ld [wDontPlayMapMusicOnReload], a
 	ld [wLinkMode], a
-	ld hl, wGameTimerPause
+	ld hl, wGameTimerPaused
 	set 0, [hl]
 	res 7, [hl]
 	ld hl, wEnteredMapFromContinue
@@ -592,8 +557,8 @@ Continue_DisplayGameTime:
 	ld de, wGameTimeHours
 	lb bc, 2, 3
 	call PrintNum
-	ld [hl], ":"
-	inc hl
+	ld a, ":"
+	ld [hli], a
 	ld de, wGameTimeMinutes
 	lb bc, PRINTNUM_LEADINGZEROS | 1, 2
 	jp PrintNum

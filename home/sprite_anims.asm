@@ -8,8 +8,8 @@ ClearSpriteAnims::
 	ld hl, wSpriteAnimDict
 	ld bc, wSpriteAnimsEnd - wSpriteAnimDict
 .loop
-	ld [hl], $0
-	inc hl
+	xor a
+	ld [hli], a
 	dec bc
 	ld a, c
 	or b

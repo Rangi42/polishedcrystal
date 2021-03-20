@@ -15,7 +15,7 @@ Pokémon Polished Crystal would never have been finished without the help of man
 * luckytyphlosion for performance optimizations to the game engine, and a 60FPS overworld.
 * The TPP Anniversary Crystal 251 dev team for making their code publically usable (specifically: the Move Relearner, automatic box switching, Gen VI money loss, and caught data stats page code).
 * Sanqui for the music player with piano roll visualization.
-* ax6 for porting the xorshift+ PRNG from Prism.
+* ax6 for porting the xorshift+ PRNG from Prism as well as developing bsp and related patching functions originally for Prism.
 * MeroMero for the in-battle color inversion code, Smeargle color code, and some move animations.
 * kroc for the no-RTC code.
 * VictoriaLacroix for the Running Shoes routine.

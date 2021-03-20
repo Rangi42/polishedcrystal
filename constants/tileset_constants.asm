@@ -1,3 +1,4 @@
+; Tilesets indexes (see data/tilesets.asm)
 	const_def 1
 	const TILESET_JOHTO_TRADITIONAL    ; 01
 	const TILESET_JOHTO_MODERN         ; 02
@@ -42,7 +43,16 @@
 	const TILESET_ALPH_WORD_ROOM       ; 29
 	const TILESET_POKEMON_MANSION      ; 2a
 	const TILESET_BATTLE_FACTORY       ; 2b
+NUM_TILESETS EQU const_value - 1
 
+; wTileset struct size
+TILESET_LENGTH EQU 20
+
+; roof length (see gfx/tilesets/roofs)
+ROOF_LENGTH EQU 9
+
+; bg palette values
+; TilesetBGPalette indexes (see gfx/tilesets/bg_tiles.pal)
 	const_def
 	const PAL_BG_GRAY   ; 0
 	const PAL_BG_RED    ; 1
@@ -52,13 +62,3 @@
 	const PAL_BG_BROWN  ; 5
 	const PAL_BG_ROOF   ; 6
 	const PAL_BG_TEXT   ; 7
-
-	const_def $80
-	const PAL_BG_PRIORITY_GRAY   ; 80
-	const PAL_BG_PRIORITY_RED    ; 81
-	const PAL_BG_PRIORITY_GREEN  ; 82
-	const PAL_BG_PRIORITY_WATER  ; 83
-	const PAL_BG_PRIORITY_YELLOW ; 84
-	const PAL_BG_PRIORITY_BROWN  ; 85
-	const PAL_BG_PRIORITY_ROOF   ; 86
-	const PAL_BG_PRIORITY_TEXT   ; 87

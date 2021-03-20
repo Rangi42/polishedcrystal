@@ -69,7 +69,7 @@ TrainerPicnickerErin1:
 PicnickerErin1Script:
 	loadvar VAR_CALLERID, PHONE_PICNICKER_ERIN
 	opentext
-	checkflag ENGINE_ERIN
+	checkflag ENGINE_ERIN_READY_FOR_REMATCH
 	iftrue UnknownScript_0x1a96da
 	checkcellnum PHONE_PICNICKER_ERIN
 	iftrue Route46NumberAcceptedF
@@ -109,7 +109,7 @@ UnknownScript_0x1a96da:
 	startbattle
 	reloadmapafterbattle
 	loadmem wErinFightCount, 1
-	clearflag ENGINE_ERIN
+	clearflag ENGINE_ERIN_READY_FOR_REMATCH
 	end
 
 .LoadFight1:
@@ -117,14 +117,14 @@ UnknownScript_0x1a96da:
 	startbattle
 	reloadmapafterbattle
 	loadmem wErinFightCount, 2
-	clearflag ENGINE_ERIN
+	clearflag ENGINE_ERIN_READY_FOR_REMATCH
 	end
 
 .LoadFight2:
 	loadtrainer PICNICKER, ERIN3
 	startbattle
 	reloadmapafterbattle
-	clearflag ENGINE_ERIN
+	clearflag ENGINE_ERIN_READY_FOR_REMATCH
 	checkevent EVENT_ERIN_CALCIUM
 	iftrue UnknownScript_0x1a973b
 	checkevent EVENT_GOT_CALCIUM_FROM_ERIN

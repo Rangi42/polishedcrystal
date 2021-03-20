@@ -367,7 +367,7 @@ RunSceneScript:
 
 	ld a, [wMapScriptsBank]
 	ld b, a
-	call GetFarHalfword
+	call GetFarWord
 	ld a, b
 	call GetFarByte
 	cp end_command
@@ -498,12 +498,12 @@ TryObjectEvent:
 	ld a, [hl]
 	and %00001111
 
-	cp NUM_OBJECTTYPES
+	cp NUM_OBJECT_TYPES
 	ret nc
 
 	call StackJumpTable
 
-.pointers:
+ObjectEventTypeArray:
 	dw .script   ; OBJECTTYPE_SCRIPT
 	dw .itemball ; OBJECTTYPE_ITEMBALL
 	dw .trainer  ; OBJECTTYPE_TRAINER
@@ -585,10 +585,10 @@ TryBGEvent:
 .IsBGEvent:
 	ld a, [wCurBGEventType]
 	cp BGEVENT_ITEM
-	jp nc, .itemifset
+	jp nc, BGEventJumptable.itemifset
 	call StackJumpTable
 
-.signs
+BGEventJumptable:
 	dw .read     ; BGEVENT_READ
 	dw .up       ; BGEVENT_UP
 	dw .down     ; BGEVENT_DOWN
@@ -706,7 +706,7 @@ CheckBGEventFlag:
 	ld l, a
 	push hl
 	ld a, [wMapScriptsBank]
-	call GetFarHalfword
+	call GetFarWord
 	ld e, l
 	ld d, h
 	ld b, CHECK_FLAG
@@ -721,12 +721,12 @@ INCLUDE "engine/events/hidden_item.asm"
 PlayerMovement:
 	farcall DoPlayerMovement
 	ld a, c
-	ld hl, .pointers
+	ld hl, PlayerMovementPointers
 	call JumpTable
 	ld a, c
 	ret
 
-.pointers
+PlayerMovementPointers:
 	dw .zero
 	dw .one
 	dw .two
@@ -1039,8 +1039,8 @@ LoadScriptBDE::
 	and a
 	ret nz
 ; Set the flag
-	ld [hl], 1
-	inc hl
+	inc a ; 1
+	ld [hli], a
 ; Load the script pointer b:de into (wMapReentryScriptBank):(wMapReentryScriptAddress)
 	ld [hl], b
 	inc hl

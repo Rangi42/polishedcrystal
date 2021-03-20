@@ -55,11 +55,11 @@ ChangeHappiness:
 
 	push de
 	ld a, [de]
-	cp 100
+	cp HAPPINESS_THRESHOLD_1
 	ld e, 0
 	jr c, .ok
 	inc e
-	cp 200
+	cp HAPPINESS_THRESHOLD_2
 	jr c, .ok
 	inc e
 
@@ -72,7 +72,7 @@ ChangeHappiness:
 	ld d, 0
 	add hl, de
 	ld a, [hl]
-	cp 100
+	cp $64 ; why not $80?
 	pop de
 
 	ld a, [de]
@@ -135,7 +135,7 @@ GetExtraHappiness:
 	ld hl, wPartyMon1CaughtBall
 	call GetPartyLocation
 	ld a, [hl]
-	and CAUGHTBALL_MASK
+	and CAUGHT_BALL_MASK
 	cp LUXURY_BALL
 	jr nz, .no_luxury_ball
 
@@ -253,7 +253,7 @@ DayCareStep::
 	ret nz
 	dec hl
 	ld a, [hl]
-	cp ($500000 / $10000) - 1 ; max daycare exp
+	cp (MAX_DAY_CARE_EXP / $10000) - 1
 	ret nc
 	inc [hl]
 	ret

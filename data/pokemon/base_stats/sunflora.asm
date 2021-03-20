@@ -7,9 +7,9 @@ else
 endc
 
 if DEF(FAITHFUL)
-	db GRASS, GRASS
+	db GRASS, GRASS ; type
 else
-	db GRASS, FIRE
+	db GRASS, FIRE ; type
 endc
 if DEF(FAITHFUL)
 	db 120 ; catch rate
@@ -23,15 +23,15 @@ else
 endc
 	db NO_ITEM ; item 1
 	db NO_ITEM ; item 2
-	dn FEMALE_50, 3 ; gender, step cycles to hatch
+	dn GENDER_F50, 3 ; gender ratio, step cycles to hatch
 	INCBIN "gfx/pokemon/sunflora/front.dimensions"
 	abilities_for SUNFLORA, CHLOROPHYLL, SOLAR_POWER, EARLY_BIRD
-	db MEDIUM_SLOW ; growth rate
-	dn PLANT, PLANT ; egg groups
+	db GROWTH_MEDIUM_SLOW ; growth rate
+	dn EGG_PLANT, EGG_PLANT ; egg groups
 
 	ev_yield   0,   0,   0,   0,   2,   0
-	;         hp, atk, def, spd, sat, sdf
+	;         hp  atk  def  spd  sat  sdf
 
-	; tmhm
+	; tm/hm learnset
 	tmhm CURSE, TOXIC, HIDDEN_POWER, SUNNY_DAY, HYPER_BEAM, LIGHT_SCREEN, PROTECT, GIGA_DRAIN, SAFEGUARD, SOLAR_BEAM, RETURN, DOUBLE_TEAM, FLAMETHROWER, SLUDGE_BOMB, FIRE_BLAST, SUBSTITUTE, FACADE, REST, ATTRACT, ENERGY_BALL, GIGA_IMPACT, FLASH, SWORDS_DANCE, CUT, DEFENSE_CURL, DOUBLE_EDGE, EARTH_POWER, ENDURE, ROLLOUT, SEED_BOMB, SLEEP_TALK, SWAGGER
 	; end

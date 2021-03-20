@@ -1,20 +1,20 @@
 	db 130,  85,  80,  60,  85,  95 ; 535 BST
 	;   hp  atk  def  spd  sat  sdf
 
-	db WATER, ICE
+	db WATER, ICE ; type
 	db 45 ; catch rate
 	db 219 ; base exp
 	db ALWAYS_ITEM_2 ; item 1
 	db MYSTIC_WATER ; item 2
-	dn FEMALE_50, 7 ; gender, step cycles to hatch
+	dn GENDER_F50, 7 ; gender ratio, step cycles to hatch
 	INCBIN "gfx/pokemon/lapras/front.dimensions"
 	abilities_for LAPRAS, WATER_ABSORB, SHELL_ARMOR, HYDRATION
-	db SLOW ; growth rate
-	dn MONSTER, AMPHIBIAN ; egg groups
+	db GROWTH_SLOW ; growth rate
+	dn EGG_MONSTER, EGG_WATER_1 ; egg groups
 
 	ev_yield   2,   0,   0,   0,   0,   0
-	;         hp, atk, def, spd, sat, sdf
+	;         hp  atk  def  spd  sat  sdf
 
-	; tmhm
+	; tm/hm learnset
 	tmhm CURSE, ROAR, TOXIC, HAIL, HIDDEN_POWER, ICE_BEAM, BLIZZARD, HYPER_BEAM, PROTECT, RAIN_DANCE, SAFEGUARD, BULLDOZE, SOLAR_BEAM, IRON_TAIL, THUNDERBOLT, THUNDER, RETURN, PSYCHIC, ROCK_SMASH, DOUBLE_TEAM, SUBSTITUTE, FACADE, REST, ATTRACT, DRAGON_PULSE, WATER_PULSE, AVALANCHE, GIGA_IMPACT, SURF, STRENGTH, WHIRLPOOL, WATERFALL, AQUA_TAIL, BODY_SLAM, DOUBLE_EDGE, DREAM_EATER, ENDURE, HEADBUTT, HYPER_VOICE, ICY_WIND, IRON_HEAD, SLEEP_TALK, SWAGGER, ZAP_CANNON, ZEN_HEADBUTT
 	; end

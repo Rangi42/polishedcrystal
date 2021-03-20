@@ -26,7 +26,7 @@ SpecialsPointers::
 	add_special ContestDropOffMons
 	add_special ContestReturnMons
 	add_special Special_GiveParkBalls
-	add_special Special_CheckMagikarpLength
+	add_special CheckMagikarpLength
 	add_special Special_MagikarpHouseSign
 	add_special HealParty
 	add_special PokemonCenterPC
@@ -72,7 +72,7 @@ SpecialsPointers::
 	add_special ToggleMaptileDecorations
 	add_special ToggleDecorationsVisibility
 	add_special SpecialGiveShuckie
-	add_special SpecialReturnShuckie
+	add_special ReturnShuckie
 	add_special TeachShuckiePoisonJab
 	add_special Special_BillsGrandfather
 	add_special SpecialCheckPokerus
@@ -94,8 +94,8 @@ SpecialsPointers::
 	add_special MapCallbackSprites_LoadUsedSpritesGFX
 	add_special PlaySlowCry
 	add_special SpecialSnorlaxAwake
-	add_special Special_YoungerHaircutBrother
 	add_special Special_OlderHaircutBrother
+	add_special Special_YoungerHaircutBrother
 	add_special Special_DaisyMassage
 	add_special PlayCurMonCry
 	add_special ProfOaksPCBoot
@@ -146,7 +146,6 @@ SpecialsPointers::
 	add_special GiveMystriEgg
 	add_special Special_ReiBlessing
 	add_special BillBoxSwitchCheck
-	add_special BillBoxSwitch
 	add_special HealPartyEvenForNuzlocke
 	add_special SaveMusic
 	add_special RestoreMusic

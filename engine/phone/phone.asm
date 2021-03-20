@@ -331,7 +331,7 @@ MakePhoneCallFromPokegear:
 	ld hl, PHONE_CONTACT_SCRIPT1_BANK
 	add hl, de
 	ld b, [hl]
-	ld hl, PHONE_CONTACT_SCRIPT1_ADDR_LO
+	ld hl, PHONE_CONTACT_SCRIPT1_ADDR
 	add hl, de
 	ld a, [hli]
 	ld h, [hl]
@@ -430,8 +430,8 @@ Phone_TextboxWithName:
 	push bc
 	call Phone_CallerTextbox
 	hlcoord 1, 1
-	ld [hl], "<PHONE>"
-	inc hl
+	ld a, "<PHONE>"
+	ld [hli], a
 	inc hl
 	ld d, h
 	ld e, l

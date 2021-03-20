@@ -1,5 +1,4 @@
-; move effects
-; TODO: remove unused effects
+; MoveEffectsPointers indexes (see data/moves/effects_pointers.asm)
 	const_def
 	const EFFECT_NORMAL_HIT
 	const EFFECT_PRIORITY_HIT
@@ -155,3 +154,4 @@
 	const EFFECT_LOW_KICK
 	const EFFECT_BRICK_BREAK
 	const EFFECT_TRICK_ROOM
+NUM_MOVE_EFECTS EQU const_value

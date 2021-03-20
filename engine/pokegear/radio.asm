@@ -686,7 +686,7 @@ PokedexShow2:
 	ld b, a
 	inc hl
 	ld a, BANK(PokedexDataPointerTable)
-	call GetFarHalfword
+	call GetFarWord
 	ld a, b
 	push af
 	push hl
@@ -709,7 +709,7 @@ endr
 ;	bit POKEDEX_UNITS, a
 ;	jr z, .imperial
 ;	ld a, d
-;	call GetFarHalfword
+;	call GetFarWord
 ;	jr .load
 ;.imperial
 ;	inc hl
@@ -774,10 +774,10 @@ CopyDexEntryPart1:
 	ld bc, SCREEN_WIDTH - 1
 	call FarCopyBytes
 	ld hl, wPokedexShowPointerAddr
-	ld [hl], "<START>"
-	inc hl
-	ld [hl], "<LINE>"
-	inc hl
+	ld a, "<START>"
+	ld [hli], a
+	ld a, "<LINE>"
+	ld [hli], a
 .loop
 	ld a, [hli]
 	cp "@"
@@ -1128,9 +1128,8 @@ PeoplePlaces4: ; People
 .ok
 	pop af
 	ld c, a
-	ld de, 1
 	push bc
-	call IsInArray
+	call IsInByteArray
 	pop bc
 	jr c, PeoplePlaces4
 	push bc

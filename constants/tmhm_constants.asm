@@ -1,3 +1,8 @@
+; tm/hm/tutor ids
+; indexes for:
+; - TMHMMoves (see data/moves/tmhm_moves.asm)
+	const_def
+
 add_tm: MACRO
 if !DEF(TM01)
 TM01 = const_value
@@ -6,20 +11,6 @@ endc
 	const TM_\1
 	enum \1_TMNUM
 ENDM
-
-add_hm: MACRO
-if !DEF(HM01)
-HM01 = const_value
-endc
-	const HM_\1
-	enum \1_TMNUM
-ENDM
-
-add_mt: MACRO
-	enum \1_TMNUM
-ENDM
-
-	const_def
 
 	add_tm DYNAMICPUNCH ; $00
 	add_tm DRAGON_CLAW  ; $01
@@ -102,6 +93,14 @@ endc
 	add_tm SWORDS_DANCE ; $4a
 NUM_TMS = const_value - TM01
 
+add_hm: MACRO
+if !DEF(HM01)
+HM01 = const_value
+endc
+	const HM_\1
+	enum \1_TMNUM
+ENDM
+
 	add_hm CUT          ; $4b
 	add_hm FLY          ; $4c
 	add_hm SURF         ; $4d
@@ -109,6 +108,13 @@ NUM_TMS = const_value - TM01
 	add_hm WHIRLPOOL    ; $4f
 	add_hm WATERFALL    ; $50
 NUM_HMS = const_value - HM01
+
+add_mt: MACRO
+if !DEF(MT01)
+MT01 = const_value
+endc
+	enum \1_TMNUM
+ENDM
 
 	add_mt AGILITY      ; $51
 	add_mt AQUA_TAIL    ; $52
@@ -141,5 +147,6 @@ NUM_HMS = const_value - HM01
 	add_mt TRICK_ROOM   ; $6d
 	add_mt ZAP_CANNON   ; $6e
 	add_mt ZEN_HEADBUTT ; $6f
+NUM_MTS = const_value - MT01
 
 NUM_TM_HM_TUTOR EQU __enum__ - 1

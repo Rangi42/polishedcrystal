@@ -1,9 +1,29 @@
 NatureNames:
-	dw .Hardy,  .Lonely, .Brave,   .Adamant, .Naughty
-	dw .Bold,   .Docile, .Relaxed, .Impish,  .Lax
-	dw .Timid,  .Hasty,  .Serious, .Jolly,   .Naive
-	dw .Modest, .Mild,   .Quiet,   .Bashful, .Rash
-	dw .Calm,   .Gentle, .Sassy,   .Careful, .Quirky
+	dw .Hardy
+	dw .Lonely
+	dw .Brave
+	dw .Adamant
+	dw .Naughty
+	dw .Bold
+	dw .Docile
+	dw .Relaxed
+	dw .Impish
+	dw .Lax
+	dw .Timid
+	dw .Hasty
+	dw .Serious
+	dw .Jolly
+	dw .Naive
+	dw .Modest
+	dw .Mild
+	dw .Quiet
+	dw .Bashful
+	dw .Rash
+	dw .Calm
+	dw .Gentle
+	dw .Sassy
+	dw .Careful
+	dw .Quirky
 	dw .NoNature
 
 .Hardy:    db "Hardy@"
@@ -34,11 +54,31 @@ NatureNames:
 .NoNature: db "---@"
 
 NatureIndicators:
-	dw .HardyInd,  .LonelyInd, .BraveInd,   .AdamantInd, .NaughtyInd
-	dw .BoldInd,   .DocileInd, .RelaxedInd, .ImpishInd,  .LaxInd
-	dw .TimidInd,  .HastyInd,  .SeriousInd, .JollyInd,   .NaiveInd
-	dw .ModestInd, .MildInd,   .QuietInd,   .BashfulInd, .RashInd
-	dw .CalmInd,   .GentleInd, .SassyInd,   .CarefulInd, .QuirkyInd
+	dw .HardyInd
+	dw .LonelyInd
+	dw .BraveInd
+	dw .AdamantInd
+	dw .NaughtyInd
+	dw .BoldInd
+	dw .DocileInd
+	dw .RelaxedInd
+	dw .ImpishInd
+	dw .LaxInd
+	dw .TimidInd
+	dw .HastyInd
+	dw .SeriousInd
+	dw .JollyInd
+	dw .NaiveInd
+	dw .ModestInd
+	dw .MildInd
+	dw .QuietInd
+	dw .BashfulInd
+	dw .RashInd
+	dw .CalmInd
+	dw .GentleInd
+	dw .SassyInd
+	dw .CarefulInd
+	dw .QuirkyInd
 	dw .NoNatureInd
 
 .SassyInd:   db "<NEXT>" ; fallthrough

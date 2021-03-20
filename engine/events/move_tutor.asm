@@ -41,14 +41,14 @@ CheckCanLearnMoveTutorMove:
 	ld a, MON_FORM
 	call GetPartyParamLocation
 	ld a, [hl]
-	and BASEMON_MASK
+	and SPECIESFORM_MASK
 	ld [wCurForm], a
 	predef CanLearnTMHMMove
 
 	push bc
 	ld a, [wCurPartyMon]
 	ld hl, wPartyMonNicknames
-	call GetNick
+	call GetNickname
 	pop bc
 
 	ld a, c

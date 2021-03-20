@@ -385,7 +385,7 @@ GetItemAttr:
 	ld a, [wCurItem]
 	dec a
 	ld c, a
-	ld a, NUM_ITEMATTRS
+	ld a, ITEMATTR_STRUCT_LENGTH
 	rst AddNTimes
 	ld a, BANK(ItemAttributes)
 	call GetFarByte
@@ -409,7 +409,7 @@ GetKeyItemAttr:
 	ld a, [wCurKeyItem]
 	dec a
 	ld c, a
-	ld a, NUM_KEYITEMATTRS
+	ld a, KEYITEMATTR_STRUCT_LENGTH
 	rst AddNTimes
 	ld a, BANK(KeyItemAttributes)
 	call GetFarByte

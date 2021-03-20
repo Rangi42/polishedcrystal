@@ -749,7 +749,7 @@ Script_trainertext:
 	call GetScriptByte
 	ld c, a
 	ld b, 0
-	ld hl, wWalkingX
+	ld hl, wSeenTextPointer
 	add hl, bc
 	add hl, bc
 	ld a, [hli]
@@ -1436,7 +1436,7 @@ StdScript:
 	ld b, a
 	inc hl
 	ld a, BANK(StdScripts)
-	jp GetFarHalfword
+	jp GetFarWord
 
 SkipTwoScriptBytes:
 	call GetScriptByte
@@ -1913,8 +1913,7 @@ Script_checkpoke:
 	ldh [hScriptVar], a
 	call GetScriptByte
 	ld hl, wPartySpecies
-	ld de, 1
-	call IsInArray
+	call IsInByteArray
 	ret nc
 	ld a, TRUE
 	ldh [hScriptVar], a
@@ -2339,10 +2338,10 @@ Script_endall:
 	jp StopScript
 
 Script_halloffame:
-	ld hl, wGameTimerPause
+	ld hl, wGameTimerPaused
 	res 0, [hl]
 	farcall HallOfFame
-	ld hl, wGameTimerPause
+	ld hl, wGameTimerPaused
 	set 0, [hl]
 	jr ReturnFromCredits
 

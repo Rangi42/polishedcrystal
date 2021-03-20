@@ -62,13 +62,16 @@ endr
 	ld de, .Nickname
 	call CopyName2
 
-; OT.
+; OT and Extra.
 	ld a, [wPartyCount]
 	dec a
-	ld hl, wPartyMonOT
+	ld hl, wPartyMonOTs
 	call SkipNames
-	ld de, .OT
-	call CopyName2
+	ld d, h
+	ld e, l
+	ld hl, .OTAndExtra
+	ld bc, PLAYER_NAME_LENGTH + 3
+	rst CopyBytes
 
 	ld a, TRUE
 	ldh [hScriptVar], a
@@ -79,7 +82,9 @@ endr
 	ldh [hScriptVar], a
 	ret
 
-.OT:
-	rawchar "Mr.<PK><MN>@"
+.OTAndExtra:
+	rawchar "Mr.<PK><MN>@@@"
+	db 0, 0, 0
+
 .Nickname:
 	rawchar "Masuda@"

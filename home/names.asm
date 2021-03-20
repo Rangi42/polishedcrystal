@@ -3,8 +3,8 @@ NamesPointers::
 	dba MoveNames
 	dba ApricornNames
 	dba ItemNames
-	dbw 0, wPartyMonOT
-	dbw 0, wOTPartyMonOT
+	dbw 0, wPartyMonOTs
+	dbw 0, wOTPartyMonOTs
 	dba TrainerClassNames
 	dba KeyItemNames
 
@@ -17,7 +17,7 @@ GetName::
 	push af
 
 	ld a, [wNamedObjectTypeBuffer]
-	cp PKMN_NAME
+	cp MON_NAME
 	jr nz, .NotPokeName
 
 	ld a, [wCurSpecies]

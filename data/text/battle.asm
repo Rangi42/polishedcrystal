@@ -18,19 +18,19 @@ BattleText_PlayerPickedUpPayDayMoney:
 WildPokemonAppearedText:
 	text "A wild "
 LegendaryAppearedText:
-	text_ram wEnemyMonNick
+	text_ram wEnemyMonNickname
 	line "appeared!"
 	prompt
 
 HookedPokemonAttackedText:
 	text "The hooked"
 	line ""
-	text_ram wEnemyMonNick
+	text_ram wEnemyMonNickname
 	cont "attacked!"
 	prompt
 
 PokemonFellFromTreeText:
-	text_ram wEnemyMonNick
+	text_ram wEnemyMonNickname
 	text " fell"
 	line "out of the tree!"
 	prompt
@@ -48,13 +48,13 @@ WantToBattleText::
 BattleText_WildFled:
 	text "Wild "
 BattleText_LegendaryFled:
-	text_ram wEnemyMonNick
+	text_ram wEnemyMonNickname
 	line "fled!"
 	prompt
 
 BattleText_EnemyFled:
 	text "The foe "
-	text_ram wEnemyMonNick
+	text_ram wEnemyMonNickname
 	line "fled!"
 	prompt
 
@@ -313,7 +313,7 @@ BattleText_TheHailStopped:
 
 BattleText_EnemyPkmnFainted:
 	text "The foe "
-	text_ram wEnemyMonNick
+	text_ram wEnemyMonNickname
 	line "fainted!"
 	prompt
 
@@ -354,7 +354,7 @@ SentAllToMomText:
 	prompt
 
 BattleText_PkmnFainted:
-	text_ram wBattleMonNick
+	text_ram wBattleMonNickname
 	line "fainted!"
 	prompt
 
@@ -371,7 +371,7 @@ BattleText_EnemyIsAboutToUseWillPlayerSwitchPkmn:
 	text "<ENEMY>"
 	line "is about to use"
 	cont ""
-	text_ram wEnemyMonNick
+	text_ram wEnemyMonNickname
 	text "."
 
 	para "Will you switch"
@@ -382,7 +382,7 @@ BattleText_EnemyAreAboutToUseWillPlayerSwitchPkmn:
 	text "<ENEMY>"
 	line "are about to use"
 	cont ""
-	text_ram wEnemyMonNick
+	text_ram wEnemyMonNickname
 	text "."
 
 	para "Will you switch"
@@ -411,7 +411,7 @@ BattleText_EnemySentOut:
 	text "<ENEMY>"
 	line "sent out"
 	cont ""
-	text_ram wEnemyMonNick
+	text_ram wEnemyMonNickname
 	text "!"
 	done
 
@@ -478,17 +478,17 @@ BattleText_ItemsCantBeUsedHere:
 	prompt
 
 BattleText_PkmnIsAlreadyOut:
-	text_ram wBattleMonNick
+	text_ram wBattleMonNickname
 	line "is already out."
 	prompt
 
 BattleText_PkmnCantBeRecalled:
-	text_ram wBattleMonNick
+	text_ram wBattleMonNickname
 	line "can't be recalled!"
 	prompt
 
 BattleText_PkmnCantBeRecalledAbility:
-	text_ram wEnemyMonNick
+	text_ram wEnemyMonNickname
 	text "'s"
 	line ""
 	text_ram wStringBuffer1
@@ -530,7 +530,7 @@ BattleText_TheMoveIsDisabled:
 	prompt
 
 BattleText_PkmnHasNoMovesLeft:
-	text_ram wBattleMonNick
+	text_ram wBattleMonNickname
 	line "has no moves left!"
 	done
 
@@ -550,13 +550,13 @@ BattleText_StringBuffer1GrewToLevel:
 
 BattleText_WildPkmnIsEating:
 	text "Wild "
-	text_ram wEnemyMonNick
+	text_ram wEnemyMonNickname
 	line "is eating!"
 	prompt
 
 BattleText_WildPkmnIsAngry:
 	text "Wild "
-	text_ram wEnemyMonNick
+	text_ram wEnemyMonNickname
 	line "is angry!"
 	prompt
 
@@ -744,37 +744,37 @@ UsedMoveInsteadText:
 	done
 
 LoafingAroundText:
-	text_ram wBattleMonNick
+	text_ram wBattleMonNickname
 	text " is"
 	line "loafing around."
 	prompt
 
 BeganToNapText:
-	text_ram wBattleMonNick
+	text_ram wBattleMonNickname
 	text " began"
 	line "to nap!"
 	prompt
 
 WontObeyText:
-	text_ram wBattleMonNick
+	text_ram wBattleMonNickname
 	text " won't"
 	line "obey!"
 	prompt
 
 TurnedAwayText:
-	text_ram wBattleMonNick
+	text_ram wBattleMonNickname
 	text " turned"
 	line "away!"
 	prompt
 
 IgnoredOrdersText:
-	text_ram wBattleMonNick
+	text_ram wBattleMonNickname
 	text " ignored"
 	line "orders!"
 	prompt
 
 IgnoredSleepingText:
-	text_ram wBattleMonNick
+	text_ram wBattleMonNickname
 	text " ignored"
 	line "orders…sleeping!"
 	prompt
@@ -1550,7 +1550,7 @@ BattleText_EnemyWithdrew::
 	text "<ENEMY>"
 	line "withdrew"
 	cont ""
-	text_ram wEnemyMonNick
+	text_ram wEnemyMonNickname
 	text "!"
 	prompt
 

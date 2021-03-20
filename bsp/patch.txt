@@ -1,0 +1,52 @@
+; Many of the included functions were originally developed by the RainbowDevs team at Pokemon Prism.
+; A wholehearted thank you also goes out to aaaaaa123456789 (aka ax6) for developing bsp and the Prism patch.
+
+; version info
+	define CURRENT_BUILD, 7
+
+; variables
+	define zero,       0
+	define r0,       100
+	define r1,       101
+	define a,        201
+	define b,        202
+	define c,        203
+	define d,        204
+	define e,        205
+	define patch,    241
+	define message,  242
+	define savefile, 243
+	define build,    244
+	define curbuild, 245
+	define lowseed,  246
+	define highseed, 247
+	define source,   248
+	define target,   249
+	define address,  250
+	define banks,    251
+	define length,   252
+	define offset,   253
+	define temp,     254
+	define result,   255
+
+	include "constants.txt"
+	include "constants_old.txt"
+
+	include "main.txt"
+	include "savefile.txt"
+	include "save_patches.txt"
+	include "save_patches_old.txt"
+	include "save_patch_list.txt"
+	include "save_patch_utils.txt"
+
+	include "pokemon_patches.txt"
+	include "item_patches.txt"
+	include "move_patches.txt"
+	include "apply_party_patches.txt"
+	include "pokecenter_check.txt"
+
+	include "sram_offsets.txt"
+	include "pocket_offsets.txt"
+	include "item_index_offsets.txt"
+
+	include "misc.txt"

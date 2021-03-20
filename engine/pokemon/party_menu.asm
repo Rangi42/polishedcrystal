@@ -166,14 +166,7 @@ BT_PartySelect:
 	prompt
 
 .Stats:
-	call LoadStandardMenuHeader
-	call ClearSprites
-	xor a ; PARTYMON
-	ld [wMonType], a
-	call LowVolume
-	predef StatsScreenInit
-	call MaxVolume
-	call ExitMenu
+	farcall OpenPartyStats
 	jp .loop
 
 .Moves:
@@ -263,9 +256,8 @@ BT_CheckEnterState:
 	ld hl, wPartyMon1Species
 	call GetPartyLocation
 	ld a, [hl]
-	ld de, 1
 	ld hl, UberMons
-	call IsInArray
+	call IsInByteArray
 	jr c, .banned
 	pop af
 
@@ -421,7 +413,7 @@ PlacePartyNicknames:
 	push hl
 	ld hl, wPartyMonNicknames
 	ld a, b
-	call GetNick
+	call GetNickname
 	pop hl
 	rst PlaceString
 	pop hl
@@ -645,7 +637,7 @@ PlacePartyMonTMHMCompatibility:
 	ld bc, PARTYMON_STRUCT_LENGTH
 	rst AddNTimes
 	ld a, [hl]
-	and BASEMON_MASK
+	and SPECIESFORM_MASK
 	ld [wCurForm], a
 	predef CanLearnTMHMMove
 	pop hl
@@ -706,7 +698,7 @@ PlacePartyMonEvoStoneCompatibility:
 	ld bc, PARTYMON_STRUCT_LENGTH
 	rst AddNTimes
 	ld a, [hl]
-	and BASEMON_MASK
+	and SPECIESFORM_MASK
 	ld b, a
 	; c = species
 	ld c, e
@@ -1148,7 +1140,7 @@ YouHaveNoPKMNString:
 PrintPartyMenuActionText:
 	ld a, [wCurPartyMon]
 	ld hl, wPartyMonNicknames
-	call GetNick
+	call GetNickname
 	ld a, [wPartyMenuActionText]
 	and $f
 	ld hl, .MenuActionTexts

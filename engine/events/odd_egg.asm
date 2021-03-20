@@ -80,7 +80,7 @@ AddEggMonToParty:
 	ld bc, PARTYMON_STRUCT_LENGTH
 	rst CopyBytes
 
-	ld hl, wPartyMonOT
+	ld hl, wPartyMonOTs
 	ld bc, NAME_LENGTH
 	ld a, [wTempPartyCount]
 .loop3
@@ -95,8 +95,8 @@ AddEggMonToParty:
 	rst CopyBytes
 	ld h, d
 	ld l, e
-	ld [hl], "@"
-	inc hl
+	ld a, "@"
+	ld [hli], a
 	xor a
 	ld [hli], a
 	ld [hli], a

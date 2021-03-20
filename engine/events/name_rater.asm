@@ -19,7 +19,7 @@ NameRater:
 	bit MON_IS_EGG_F, [hl]
 	jr nz, .egg
 ; ... or a Pokemon you got from a trade.
-	call GetCurNick
+	call GetCurNickname
 	ld a, [wInitialOptions]
 	bit TRADED_AS_OT_OPT, a
 	jr nz, .no_name_lock
@@ -66,7 +66,7 @@ NameRater:
 
 .samename
 	push hl
-	call GetCurNick
+	call GetCurNickname
 	ld hl, NameRaterDoneText
 	call PrintText
 	pop hl
@@ -88,7 +88,7 @@ NameRater:
 
 CheckIfMonIsYourOT:
 ; Checks to see if the partymon loaded in [wCurPartyMon] has the different OT as you.  Returns carry if not.
-	ld hl, wPartyMonOT
+	ld hl, wPartyMonOTs
 	ld bc, NAME_LENGTH
 	ld a, [wCurPartyMon]
 	rst AddNTimes

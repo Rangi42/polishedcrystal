@@ -7,9 +7,9 @@ else
 endc
 
 if DEF(FAITHFUL)
-	db NORMAL, FLYING
+	db NORMAL, FLYING ; type
 else
-	db FLYING, FIGHTING
+	db FLYING, FIGHTING ; type
 endc
 	db 45 ; catch rate
 if DEF(FAITHFUL)
@@ -19,15 +19,15 @@ else
 endc
 	db NO_ITEM ; item 1
 	db STICK ; item 2
-	dn FEMALE_50, 3 ; gender, step cycles to hatch
+	dn GENDER_F50, 3 ; gender ratio, step cycles to hatch
 	INCBIN "gfx/pokemon/farfetch_d/front.dimensions"
 	abilities_for FARFETCH_D, KEEN_EYE, INNER_FOCUS, DEFIANT
-	db MEDIUM_FAST ; growth rate
-	dn AVIAN, FIELD ; egg groups
+	db GROWTH_MEDIUM_FAST ; growth rate
+	dn EGG_FLYING, EGG_GROUND ; egg groups
 
 	ev_yield   0,   1,   0,   0,   0,   0
-	;         hp, atk, def, spd, sat, sdf
+	;         hp  atk  def  spd  sat  sdf
 
-	; tmhm
+	; tm/hm learnset
 	tmhm CURSE, TOXIC, HIDDEN_POWER, SUNNY_DAY, PROTECT, IRON_TAIL, RETURN, ROCK_SMASH, DOUBLE_TEAM, SWIFT, AERIAL_ACE, SUBSTITUTE, FACADE, REST, ATTRACT, THIEF, STEEL_WING, ROOST, FALSE_SWIPE, ACROBATICS, POISON_JAB, U_TURN, SWORDS_DANCE, CUT, FLY, SURF, STRENGTH, BODY_SLAM, DOUBLE_EDGE, ENDURE, HEADBUTT, KNOCK_OFF, SLEEP_TALK, SWAGGER
 	; end

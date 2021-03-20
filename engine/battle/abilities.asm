@@ -232,9 +232,8 @@ IntimidateAbility:
 	push af
 	farcall BufferAbility
 	pop af
-	ld de, 1
 	ld hl, NoIntimidateAbilities
-	call IsInArray
+	call IsInByteArray
 	jr nc, .intimidate_ok
 	call DisableAnimations
 	call ShowAbilityActivation
@@ -416,9 +415,8 @@ ForewarnAbility:
 	push af
 	push hl
 	; Check for special cases
-	ld de, 1
 	ld hl, DynamicPowerMoves
-	call IsInArray
+	call IsInByteArray
 	pop hl
 	pop bc
 	jr nc, .not_special
@@ -831,8 +829,7 @@ CheckNullificationAbilities:
 	ld a, BATTLE_VARS_MOVE
 	call GetBattleVar
 	ld hl, SoundMoves
-	ld de, 1
-	call IsInArray
+	call IsInByteArray
 	jr c, .ability_ok
 	ret
 
@@ -1618,9 +1615,8 @@ INCLUDE "data/moves/punching_moves.asm"
 MoveBoostAbility:
 	ld a, BATTLE_VARS_MOVE
 	call GetBattleVar
-	ld de, 1
 	push bc
-	call IsInArray
+	call IsInByteArray
 	pop bc
 	ret nc
 	ld a, b
@@ -1647,7 +1643,7 @@ RecklessAbility:
 ; 120% damage for (Hi) Jump Kick and recoil moves except for Struggle
 	ld a, BATTLE_VARS_MOVE
 	call GetBattleVar
-	cp STRUGGLE
+	inc a ; cp STRUGGLE
 	ret z
 	ld a, BATTLE_VARS_MOVE_EFFECT
 	call GetBattleVar
@@ -1808,11 +1804,10 @@ _GetOpponentAbilityAfterMoldBreaker::
 	cp MOLD_BREAKER
 	ld a, b
 	jr nz, .end
-	ld de, 1
 	push hl
 	push bc
 	ld hl, MoldBreakerSuppressedAbilities
-	call IsInArray
+	call IsInByteArray
 	pop bc
 	pop hl
 	ld a, b
@@ -1943,7 +1938,7 @@ RunPostBattleAbilities::
 	ld [wNamedObjectIndexBuffer], a
 	call GetPokemonName
 	ld hl, wStringBuffer1
-	ld de, wBattleMonNick
+	ld de, wBattleMonNickname
 	ld bc, MON_NAME_LENGTH
 	rst CopyBytes
 	ld b, PICKUP

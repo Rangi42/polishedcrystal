@@ -126,7 +126,7 @@ LoadTrainer_continue::
 	ld hl, MAPOBJECT_SCRIPT_POINTER
 	add hl, bc
 	ld a, [wSeenTrainerBank]
-	call GetFarHalfword
+	call GetFarWord
 	ld de, wTempTrainer
 	pop af
 	push af

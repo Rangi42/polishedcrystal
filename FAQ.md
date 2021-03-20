@@ -32,7 +32,7 @@ If you have a question about playing Polished Crystal, or think you've found a b
 
 The [nightly 3.0.0 beta release](https://github.com/Rangi42/polishedcrystal/releases/tag/v3.0.0-beta-nightly) provides .gbc files and .sym files. You only need a .gbc file to play; they're ROMs, not patches. I recommend playing `polishedcrystal-3.0.0-beta-xxxxxxxx.gbc`, or `polishedcrystal-3.0.0-beta-xxxxxxxx-faithful.gbc` if you want a more faithful canon experience, without changes to Pokémon base stats or types.
 
-Don't download the debug ROMs; they're for beta testing, not start-to-finish playthroughs. Although if you want to help test for bugs, get a debug ROM, talk to your room's radio to unlock many things, and hold A+B to wak through walls.
+Don't download the debug ROMs; they're for beta testing, not start-to-finish playthroughs. Although if you want to help test for bugs, get a debug ROM, talk to your room's radio to unlock many things, and hold A+B to walk through walls.
 
 Remember the commit hash at the end of the nightly filename to identify which code is running.
 

@@ -498,10 +498,10 @@ TradeAnim_TubeAnimJumptable:
 .Three:
 	call TradeAnim_BlankTileMap
 	hlcoord 9, 3
-	ld [hl], $5c
-	inc hl
+	ld a, $5c
+	ld [hli], a
 	ld bc, 10
-	ld a, $5d
+	inc a ; $5d
 	rst ByteFill
 	hlcoord 3, 2
 	jr TradeAnim_CopyTradeGameBoyTilemap
@@ -1009,13 +1009,13 @@ TradeAnim_AnimateTrademonInTube:
 
 .InitTimer:
 	call .JumptableNext
-	ld hl, SPRITEANIMSTRUCT_0C
+	ld hl, SPRITEANIMSTRUCT_VAR1
 	add hl, bc
 	ld [hl], $80
 	ret
 
 .WaitTimer1:
-	ld hl, SPRITEANIMSTRUCT_0C
+	ld hl, SPRITEANIMSTRUCT_VAR1
 	add hl, bc
 	ld a, [hl]
 	dec [hl]
@@ -1069,13 +1069,13 @@ TradeAnim_AnimateTrademonInTube:
 	ret
 .done_move_left
 	call .JumptableNext
-	ld hl, SPRITEANIMSTRUCT_0C
+	ld hl, SPRITEANIMSTRUCT_VAR1
 	add hl, bc
 	ld [hl], $80
 	ret
 
 .WaitTimer2:
-	ld hl, SPRITEANIMSTRUCT_0C
+	ld hl, SPRITEANIMSTRUCT_VAR1
 	add hl, bc
 	ld a, [hl]
 	dec [hl]
@@ -1240,7 +1240,7 @@ LinkTradeAnim_LoadTradeMonData:
 	ld [hli], a
 	inc de
 	ld a, [de]
-	and BASEMON_MASK
+	and SPECIESFORM_MASK
 	ld [hl], a
 	ret
 

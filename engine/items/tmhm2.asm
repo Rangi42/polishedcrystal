@@ -209,8 +209,8 @@ TMHM_DisplayPocketItems:
 	push af
 	sub NUM_TMS
 	ld [wd265], a
-	ld [hl], "H"
-	inc hl
+	ld a, "H"
+	ld [hli], a
 	ld de, wd265
 	lb bc, PRINTNUM_LEFTALIGN | 1, 2
 	call PrintNum
@@ -403,7 +403,7 @@ ChooseMonToLearnTMHM_NoRefresh:
 	farcall InitPartyMenuGFX
 	ld a, [wPutativeTMHMMove]
 	and a
-	ld a, PARTYMENUACTION_TEACH_TM
+	ld a, PARTYMENUACTION_TEACH_TMHM
 	jr nz, .got_text
 	ld a, PARTYMENUACTION_MOVE_RELEARNER
 .got_text
@@ -448,14 +448,14 @@ TeachTMHM:
 	ld a, MON_FORM
 	call GetPartyParamLocation
 	ld a, [hl]
-	and BASEMON_MASK
+	and SPECIESFORM_MASK
 	ld [wCurForm], a
 	predef CanLearnTMHMMove
 
 	push bc
 	ld a, [wCurPartyMon]
 	ld hl, wPartyMonNicknames
-	call GetNick
+	call GetNickname
 	pop bc
 
 	ld a, c

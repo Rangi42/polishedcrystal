@@ -35,20 +35,23 @@ SpecialGiveShuckie:
 	dec a
 	ld hl, wPartyMonNicknames
 	call SkipNames
-	ld de, SpecialShuckieNick
+	ld de, SpecialShuckleNickname
 	call CopyName2
 
-; OT.
+; OT and Extra.
 	ld a, [wPartyCount]
 	dec a
-	ld hl, wPartyMonOT
+	ld hl, wPartyMonOTs
 	call SkipNames
-	ld de, SpecialShuckieOT
-	call CopyName2
+	ld d, h
+	ld e, l
+	ld hl, SpecialShuckleOTAndExtra
+	ld bc, PLAYER_NAME_LENGTH + 3
+	rst CopyBytes
 
 ; Engine flag for this event.
 	ld hl, wDailyFlags
-	set 5, [hl] ; ENGINE_SHUCKIE_GIVEN
+	set 5, [hl] ; ENGINE_GOT_SHUCKIE_TODAY
 	ld a, TRUE
 	ldh [hScriptVar], a
 	ret
@@ -65,7 +68,7 @@ _GetLastPartyMonAttribute:
 	rst AddNTimes
 	ret
 
-SpecialReturnShuckie:
+ReturnShuckie:
 	farcall SelectMonFromParty
 	jr c, .refused
 
@@ -88,9 +91,9 @@ SpecialReturnShuckie:
 
 ; OT
 	ld a, [wCurPartyMon]
-	ld hl, wPartyMonOT
+	ld hl, wPartyMonOTs
 	call SkipNames
-	ld de, SpecialShuckieOT
+	ld de, SpecialShuckleOTAndExtra
 .CheckOT:
 	ld a, [de]
 	cp [hl]
@@ -112,9 +115,7 @@ SpecialReturnShuckie:
 	cp 150
 	ld a, $3
 	jr nc, .HappyToStayWithYou
-	xor a ; take from pc
-	ld [wPokemonWithdrawDepositParameter], a
-	predef RemoveMonFromPartyOrBox
+	predef RemoveMonFromParty
 	ld a, $2
 .HappyToStayWithYou:
 	ldh [hScriptVar], a
@@ -135,7 +136,9 @@ SpecialReturnShuckie:
 	ldh [hScriptVar], a
 	ret
 
-SpecialShuckieOT:
-	rawchar "Kirk@"
-SpecialShuckieNick:
+SpecialShuckleOTAndExtra:
+	rawchar "Kirk@@@@"
+	db 0, 0, 0
+
+SpecialShuckleNickname:
 	rawchar "Shuckie@"

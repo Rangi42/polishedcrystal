@@ -34,7 +34,7 @@ TrainerSailorHuey1:
 SailorHuey1Script:
 	loadvar VAR_CALLERID, PHONE_SAILOR_HUEY
 	opentext
-	checkflag ENGINE_HUEY
+	checkflag ENGINE_HUEY_READY_FOR_REMATCH
 	iftrue UnknownScript_0x5afc7
 	checkcellnum PHONE_SAILOR_HUEY
 	iftrue UnknownScript_0x5b05f
@@ -76,7 +76,7 @@ UnknownScript_0x5afc7:
 	startbattle
 	reloadmapafterbattle
 	loadmem wHueyFightCount, 1
-	clearflag ENGINE_HUEY
+	clearflag ENGINE_HUEY_READY_FOR_REMATCH
 	end
 
 .LoadFight1:
@@ -84,7 +84,7 @@ UnknownScript_0x5afc7:
 	startbattle
 	reloadmapafterbattle
 	loadmem wHueyFightCount, 2
-	clearflag ENGINE_HUEY
+	clearflag ENGINE_HUEY_READY_FOR_REMATCH
 	end
 
 .LoadFight2:
@@ -92,14 +92,14 @@ UnknownScript_0x5afc7:
 	startbattle
 	reloadmapafterbattle
 	loadmem wHueyFightCount, 3
-	clearflag ENGINE_HUEY
+	clearflag ENGINE_HUEY_READY_FOR_REMATCH
 	end
 
 .LoadFight3:
 	loadtrainer SAILOR, HUEY4
 	startbattle
 	reloadmapafterbattle
-	clearflag ENGINE_HUEY
+	clearflag ENGINE_HUEY_READY_FOR_REMATCH
 	checkevent EVENT_HUEY_PROTEIN
 	iftrue UnknownScript_0x5b03f
 	checkevent EVENT_GOT_PROTEIN_FROM_HUEY

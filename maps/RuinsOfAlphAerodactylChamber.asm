@@ -68,7 +68,7 @@ MapRuinsofAlphAerodactylChamberSignpost2Script:
 .PuzzleComplete:
 	setevent EVENT_RUINS_OF_ALPH_INNER_CHAMBER_TOURISTS
 	setevent EVENT_SOLVED_AERODACTYL_PUZZLE
-	setflag ENGINE_UNLOCKED_UNOWNS_3
+	setflag ENGINE_UNLOCKED_UNOWNS_R_TO_W
 	setmapscene RUINS_OF_ALPH_INNER_CHAMBER, $1
 	earthquake 30
 	showemote EMOTE_SHOCK, PLAYER, 15

@@ -45,7 +45,7 @@ MagikarpLengthRaterScript:
 	iffalse .ClearedRocketHideout
 	writetext MagikarpLengthRaterText_YouHaveAMagikarp
 	waitbutton
-	special Special_CheckMagikarpLength
+	special CheckMagikarpLength
 	iffalse_jumpopenedtext MagikarpLengthRaterText_NotMagikarp
 	ifequal $1, .Refused
 	ifequal $2, .TooShort

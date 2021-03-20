@@ -1,21 +1,32 @@
-; item attributes
+; item_attributes struct members (see data/items/attributes.asm)
+rsreset
+ITEMATTR_PRICE       rw
+rsset ITEMATTR_PRICE
+ITEMATTR_PRICE_LO    rb
+ITEMATTR_PRICE_HI    rb
+ITEMATTR_EFFECT      rb
+ITEMATTR_PARAM       rb
+ITEMATTR_POCKET      rb
+ITEMATTR_HELP        rb
+ITEMATTR_STRUCT_LENGTH EQU _RS
+
+; key_item_attribute struct members (see data/items/attributes.asm)
+rsreset
+KEYITEMATTR_PERMISSIONS rb
+KEYITEMATTR_HELP        rb
+KEYITEMATTR_STRUCT_LENGTH EQU _RS
+
+; item menu types
+; UseItem.dw indexes (see engine/items/pack.asm)
+; UseRegisteredItem.SwitchTo indexes (see engine/overworld/select_menu.asm)
 	const_def
-	const ITEMATTR_PRICE
-	const ITEMATTR_PRICE_HI
-	const ITEMATTR_EFFECT
-	const ITEMATTR_PARAM
-	const ITEMATTR_POCKET
-	const ITEMATTR_HELP
-NUM_ITEMATTRS EQU const_value
+	const ITEMMENU_NOUSE   ; 0
+	const_skip 3
+	const ITEMMENU_CURRENT ; 4
+	const ITEMMENU_PARTY   ; 5
+	const ITEMMENU_CLOSE   ; 6
 
-; key item attributes
-	const_def
-	const KEYITEMATTR_PERMISSIONS
-	const KEYITEMATTR_HELP
-NUM_KEYITEMATTRS EQU const_value
-
-
-; pockets
+; item types / pack pockets
 	const_def 1
 	const ITEM     ; 1
 	const MEDICINE ; 2
@@ -23,27 +34,21 @@ NUM_KEYITEMATTRS EQU const_value
 	const TM_HM    ; 4
 	const BERRIES  ; 5
 	const KEY_ITEM ; 6
+NUM_POCKETS EQU const_value
 
-; bag pocket sizes
 MAX_ITEMS     EQU 75
 MAX_MEDICINE  EQU 37
 MAX_BALLS     EQU 25
 MAX_BERRIES   EQU 31
 MAX_PC_ITEMS  EQU 40
 
-
-; item menu
-ITEMMENU_NOUSE   EQU 0
-ITEMMENU_CURRENT EQU 4
-ITEMMENU_PARTY   EQU 5
-ITEMMENU_CLOSE   EQU 6
-
+MAX_ITEM_STACK EQU 99
 
 ; mail
-MAIL_STRUCT_LENGTH EQU $2f
-MAILBOX_CAPACITY   EQU 10
+MAIL_LINE_LENGTH   EQU $10
 MAIL_MSG_LENGTH    EQU $20
-
+MAILBOX_CAPACITY   EQU 10
+MAIL_STRUCT_LENGTH EQU $2f ; mailmsg struct
 
 ; held item effects
 	const_def
@@ -145,62 +150,3 @@ MAIL_MSG_LENGTH    EQU $20
 	const HELD_UTILITY_UMBRELLA
 	const HELD_BERSERK_GENE
 	const HELD_NO_BUG_BITE
-
-; mart types
-	const_def
-	const MARTTYPE_STANDARD
-	const MARTTYPE_BITTER
-	const MARTTYPE_BARGAIN
-	const MARTTYPE_PHARMACY
-	const MARTTYPE_ROOFTOP
-	const MARTTYPE_SILPH
-	const MARTTYPE_ADVENTURER
-	const MARTTYPE_INFORMAL
-	const MARTTYPE_BAZAAR
-	const MARTTYPE_TM
-	const MARTTYPE_BLUECARD
-	const MARTTYPE_BP
-
-
-; marts
-	const_def
-	const MART_CHERRYGROVE
-	const MART_CHERRYGROVE_DEX
-	const MART_VIOLET
-	const MART_AZALEA
-	const MART_GOLDENROD_2F_1
-	const MART_GOLDENROD_2F_2
-	const MART_GOLDENROD_2F_2_EEVEE
-	const MART_GOLDENROD_3F
-	const MART_GOLDENROD_4F
-	const MART_GOLDENROD_5F_TM
-	const MART_GOLDENROD_HARBOR
-	const MART_UNDERGROUND
-	const MART_ECRUTEAK
-	const MART_OLIVINE
-	const MART_CIANWOOD
-	const MART_YELLOW_FOREST
-	const MART_MAHOGANY_1
-	const MART_MAHOGANY_2
-	const MART_BLACKTHORN
-	const MART_INDIGO_PLATEAU
-	const MART_VIRIDIAN
-	const MART_PEWTER
-	const MART_MT_MOON
-	const MART_CERULEAN
-	const MART_LAVENDER
-	const MART_VERMILION
-	const MART_CELADON_2F_1
-	const MART_CELADON_2F_2
-	const MART_CELADON_3F_TM
-	const MART_CELADON_4F
-	const MART_CELADON_5F_1
-	const MART_CELADON_5F_2
-	const MART_SAFFRON
-	const MART_SILPH_CO
-	const MART_FUCHSIA
-	const MART_SHAMOUTI_1
-	const MART_SHAMOUTI_2
-	const MART_BT_1
-	const MART_BT_2
-	const MART_BT_3
