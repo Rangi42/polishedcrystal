@@ -113,7 +113,7 @@ endif
 
 .bsp: tools/bspcomp
 %.bsp: $(wildcard bsp/*.txt)
-	pushd bsp; ../tools/bspcomp patch.txt ../$@; popd
+	cd bsp; ../tools/bspcomp patch.txt ../$@; cd ..
 
 
 gfx/battle/lyra_back.2bpp: rgbgfx += -h
