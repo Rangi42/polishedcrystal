@@ -12,7 +12,7 @@ GoldenrodPokecomCenterOffice_MapScriptHeader:
 	def_bg_events
 	bg_event  3,  2, BGEVENT_JUMPTEXT, RangiComputerText
 	bg_event  6,  2, BGEVENT_JUMPTEXT, LunaComputerText
-	bg_event  9,  2, BGEVENT_JUMPTEXT, FredComputerText
+	bg_event  9,  2, BGEVENT_JUMPTEXT, FredrikComputerText
 	bg_event  9,  5, BGEVENT_JUMPTEXT, UnattendedComputerText
 	bg_event  6,  5, BGEVENT_JUMPTEXT, AizawaComputerText
 	bg_event  4,  2, BGEVENT_READ, RangiKeyboardScript
@@ -20,7 +20,7 @@ GoldenrodPokecomCenterOffice_MapScriptHeader:
 	def_object_events
 	object_event  4,  4, SPRITE_SCIENTIST_F, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, PAL_NPC_PURPLE, OBJECTTYPE_COMMAND, jumptextfaceplayer, AdminRangiText, -1
 	object_event  7,  3, SPRITE_BATTLE_GIRL, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_COMMAND, jumptextfaceplayer, AdminLunaText, -1
-	object_event 10,  3, SPRITE_COOL_DUDE, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_COMMAND, jumptextfaceplayer, AdminFredText, -1
+	object_event 10,  3, SPRITE_COOL_DUDE, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_COMMAND, jumptextfaceplayer, AdminFredrikText, -1
 	object_event  7,  6, SPRITE_PHARMACIST, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_COMMAND, jumptextfaceplayer, AdminAizawaText, -1
 
 	object_const_def
@@ -58,8 +58,8 @@ AdminLunaText:
 	cont "here in Goldenrod!"
 	done
 
-AdminFredText:
-	text "Fred: Bill's PC"
+AdminFredrikText:
+	text "Fredrik: Bill's PC"
 	line "Storage System"
 	cont "is open-source,"
 
@@ -108,7 +108,7 @@ LunaComputerText:
 	line "on the screen."
 	done
 
-FredComputerText:
+FredrikComputerText:
 	text "A dozen windows"
 	line "are open at once,"
 
