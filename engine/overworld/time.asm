@@ -197,13 +197,9 @@ Special_SampleKenjiBreakCountdown:
 	ret
 
 StartBugContestTimer:
-if DEF(NO_RTC)
-	ld a, 20 * NO_RTC_SPEEDUP
-else
-	ld a, 20
-endc
+	ld a, BUG_CONTEST_MINUTES
 	ld [wBugContestMinsRemaining], a
-	xor a
+	xor a ; BUG_CONTEST_SECONDS
 	ld [wBugContestSecsRemaining], a
 	call UpdateTime
 	ld hl, wBugContestStartTime

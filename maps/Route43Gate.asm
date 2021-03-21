@@ -1,3 +1,5 @@
+ROUTE43GATE_TOLL EQU 1000
+
 Route43Gate_MapScriptHeader:
 	def_scene_scripts
 	scene_script Route43GateTrigger0
@@ -45,17 +47,17 @@ RocketScript_Southbound:
 	opentext
 	writetext RocketText_TollFee
 	promptbutton
-	checkmoney $0, 999
+	checkmoney $0, ROUTE43GATE_TOLL - 1
 	ifequal $0, RocketScript_TollSouth
 	sjump RocketScript_YoureBrokeSouth
 
 RocketScript_TollSouth:
-	takemoney $0, 1000
+	takemoney $0, ROUTE43GATE_TOLL
 	writetext RocketText_ThankYou
 	sjump RocketScript_ShakeDownSouth
 
 RocketScript_YoureBrokeSouth:
-	takemoney $0, 1000
+	takemoney $0, ROUTE43GATE_TOLL
 	writetext RocketText_AllYouGot
 	sjump RocketScript_ShakeDownSouth
 
@@ -77,17 +79,17 @@ RocketScript_Northbound:
 	opentext
 	writetext RocketText_TollFee
 	promptbutton
-	checkmoney $0, 999
+	checkmoney $0, ROUTE43GATE_TOLL - 1
 	ifequal $0, RocketScript_TollNorth
 	sjump RocketScript_YoureBrokeNorth
 
 RocketScript_TollNorth:
-	takemoney $0, 1000
+	takemoney $0, ROUTE43GATE_TOLL
 	writetext RocketText_ThankYou
 	sjump RocketScript_ShakeDownNorth
 
 RocketScript_YoureBrokeNorth:
-	takemoney $0, 1000
+	takemoney $0, ROUTE43GATE_TOLL
 	writetext RocketText_AllYouGot
 	sjump RocketScript_ShakeDownNorth
 
@@ -177,7 +179,7 @@ RocketText_TollFee:
 	text "Hold it there,"
 	line "kiddo!"
 
-	para "The toll is ¥1000"
+	para "The toll is ¥{d:ROUTE43GATE_TOLL}"
 	line "to go through."
 	done
 

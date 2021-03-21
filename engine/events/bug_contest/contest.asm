@@ -1,4 +1,3 @@
-
 ContestDropOffMons:
 	ld hl, wPartyMon1HP
 	ld a, [hli]
@@ -45,7 +44,7 @@ ContestReturnMons:
 Special_GiveParkBalls:
 	xor a
 	ld [wContestMon], a
-	ld a, 20
+	ld a, BUG_CONTEST_BALLS
 	ld [wParkBallsRemaining], a
 	jp StartBugContestTimer
 

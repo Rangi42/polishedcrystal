@@ -406,7 +406,7 @@ SchoolboyJackTradeMonText:
 
 	para "For example…"
 
-	para "There are 75 kinds" ; NUM_TMS
+	para "There are {d:NUM_TMS} kinds"
 	line "of TMs."
 
 	para "Traded #mon"

@@ -224,7 +224,7 @@ Route35NationalParkGateOfficer1GiveParkBallsText:
 
 Route35NationalParkGatePlayerReceivedParkBallsText:
 	text "<PLAYER> received"
-	line "20 Park Balls."
+	line "{d:BUG_CONTEST_BALLS} Park Balls."
 	done
 
 Route35NationalParkGateOfficer1ExplainsRulesText:
@@ -233,11 +233,7 @@ Route35NationalParkGateOfficer1ExplainsRulesText:
 	cont "est bug #mon"
 	cont "is the winner."
 
-if DEF(NO_RTC)
-	para "You have 120"
-else
-	para "You have 20"
-endc
+	para "You have {d:BUG_CONTEST_MINUTES}"
 	line "minutes."
 
 	para "If you run out of"
