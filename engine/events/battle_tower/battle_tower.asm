@@ -50,7 +50,10 @@ RunBattleTowerTrainer:
 
 	; Convert total winstreak to determine next battle number
 	inc a
-	ld hl, wBattleTowerCurStreak + 1
+	push af
+	call BT_GetCurStreakAddr
+	pop af
+	inc hl
 	add [hl]
 	ld [wStringBuffer3 + 1], a
 	dec hl
@@ -102,8 +105,9 @@ Special_BattleTower_CommitChallengeResult:
 
 .bp_done
 	; Now, handle streak. Append defeated trainers to current winstreak.
+	call BT_GetBothStreakAddr
+	inc hl
 	call BT_GetCurTrainer
-	ld hl, wBattleTowerCurStreak + 1
 	add [hl]
 	ld [hld], a
 	ld a, [hl]
@@ -111,7 +115,6 @@ Special_BattleTower_CommitChallengeResult:
 	ld [hl], a
 
 	; If this is a new record, update it.
-	ld de, wBattleTowerTopStreak
 	ld a, [de]
 	cp [hl]
 	ld a, [hli]
@@ -149,8 +152,8 @@ Special_BattleTower_CommitChallengeResult:
 	ret
 
 .reset_streak
+	call BT_GetCurStreakAddr
 	xor a
-	ld hl, wBattleTowerCurStreak
 	ld [hli], a
 	ld [hl], a
 	ldh [hScriptVar], a
@@ -472,6 +475,17 @@ Special_BattleTower_BeginChallenge:
 	ld [de], a
 .close_sram
 	jp CloseSRAM
+
+BT_GetBothStreakAddr:
+; Sets hl to the streak address for the current battle mode and de to the top.
+; Closes SRAM.
+	call BT_GetCurStreakAddr
+	call BT_GetBattleMode
+	cp BATTLETOWER_RENTALMODE
+	ld de, wBattleFactoryTopStreak
+	ret z
+	ld de, wBattleTowerTopStreak
+	ret
 
 BT_GetCurStreakAddr:
 ; Sets hl to the streak address for the current battle mode.

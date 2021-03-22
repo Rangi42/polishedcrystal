@@ -564,6 +564,7 @@ BT_GetSetTable:
 
 BT_GetPointsForTrainer:
 ; Returns BP reward that the given trainer in a gives from the table below.
+; TOWER
 ; Challenge run 1: 1, 2, 2, 3, 3, 4, 5, 20 total
 ; Challenge run 2: 2, 3, 3, 4, 4, 5, 6, 27 total
 ; Challenge run 3: 3, 4, 4, 5, 5, 6, 7, 34 total (Tycoon run)
@@ -572,26 +573,60 @@ BT_GetPointsForTrainer:
 ; Challenge run 6: 6, 7, 7, 8, 8, 8, 8, 52 total (Tycoon run)
 ; Challenge run 7: 7, 8, 8, 8, 8, 8, 8, 55 total
 ; Challenge run 8: 8, 8, 8, 8, 8, 8, 8, 56 total
+
+; FACTORY
+; Challenge run 1: 1, 1, 1, 2, 2, 2, 3, 12 total
+; Challenge run 2: 2, 2, 2, 3, 3, 3, 4, 19 total
+; Challenge run 3: 3, 3, 3, 4, 4, 4, 5, 26 total (Tycoon run)
+; Challenge run 4: 4, 4, 4, 5, 5, 5, 6, 33 total
+; Challenge run 5: 5, 5, 5, 6, 6, 6, 7, 40 total
+; Challenge run 6: 6, 6, 6, 7, 7, 7, 8, 47 total (Tycoon run)
+; Challenge run 7: 7, 7, 7, 8, 8, 8, 8, 53 total
+; Challenge run 8: 8, 8, 8, 8, 8, 8, 8, 56 total
 ; Challenge runs after 8 award the same as run 8.
+; Rental selection tier takes the one from trainer 4, and adds 1
+; for every 7 swaps (including picking the initial 3).
 	; a is dealt with later
 	ld b, a
+	push hl
+	farcall BT_GetCurStreakAddr
 
 	; If our current streak exceeds 255, just return 8.
-	ld a, [wBattleTowerCurStreak]
+	ld a, [hli]
 	and a
+	ld a, [hl]
+	pop hl
 	jr nz, .overflow
 
 	; Calculate (current challenge trainer + current streak) / 7.
 	; This effectively gives us challenge run in b and current trainer in a.
-	ld a, [wBattleTowerCurStreak + 1]
 	add b
 	jr c, .overflow
 	ld c, 7
 	call SimpleDivide
-
-	inc a ; Current trainer (1-7)
+	ld c, a
 	inc b ; Current challenge run (1-36, 37+ means 255+ wins, handled above)
+	inc c ; Current trainer (1-7)
 
+	push hl
+	farcall BT_GetBattleMode
+	pop hl
+	cp BATTLETOWER_RENTALMODE
+	ld a, c
+	jr nz, .not_rental
+
+	; In rental mode, every 3rd trainer increases the current set.
+	cp 4
+	jr c, .got_rental_bp
+	inc b
+	cp 7
+	jr c, .got_rental_bp
+	inc b
+.got_rental_bp
+	ld a, b
+	jr .got_bp
+
+.not_rental
 	; +1 for trainer 2-3, +2 for 4-5, +3 for 6, +4 for 7.
 	cp 7
 	jr nz, .no_extra
@@ -600,6 +635,7 @@ BT_GetPointsForTrainer:
 	srl a ; can't use rra since carry state is unknown
 	add b
 
+.got_bp
 	; Cap at 8
 	cp 9
 	ret c
@@ -609,25 +645,30 @@ BT_GetPointsForTrainer:
 
 BT_GetEVsForTrainer:
 ; Return EVs for given trainer in a. Value is (CurStreak + CurTrainer) * 16,
-; capped at 252.
+; capped at 252 in Battle Tower, and always 252 in Battle Factory.
 	ld b, a
+	push hl
+	farcall BT_GetBattleMode
+	pop hl
+	cp BATTLETOWER_RENTALMODE
+	jr z, .max
 
 	; If our current streak exceeds 255, just return 252.
 	ld a, [wBattleTowerCurStreak]
 	and a
-	jr nz, .overflow
+	jr nz, .max
 
 	ld a, [wBattleTowerCurStreak + 1]
 	add b
-	jr c, .overflow
+	jr c, .max
 	cp 16
-	jr nc, .overflow
+	jr nc, .max
 
 	; EVs = (current streak + current trainer) * 16
 	swap a
 	ret
 
-.overflow
+.max
 	ld a, 252
 	ret
 
