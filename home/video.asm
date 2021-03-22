@@ -143,11 +143,11 @@ UpdateBGMap::
 ; Update from a specific row
 ; does not update hBGMapHalf
 	dec a
-	coord bc, 0, 0
+	bccoord 0, 0
 	jr z, .DoCustomSourceTiles
 	dec a
 	ret nz
-	coord bc, 0, 0, wAttrMap
+	bccoord 0, 0, wAttrMap
 	ld a, 1
 	ldh [rVBK], a
 	call .DoCustomSourceTiles
@@ -330,13 +330,13 @@ endr
 .nextopaque
 rept 4
 	pop de
+	ld a, $ff
+	ld [hli], a
 	ld a, e
-	ld [hl], $ff
-	inc hl
+	ld [hli], a
+	ld a, $ff
 	ld [hli], a
 	ld a, d
-	ld [hl], $ff
-	inc hl
 	ld [hli], a
 endr
 	dec b

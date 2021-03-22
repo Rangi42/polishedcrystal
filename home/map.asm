@@ -288,9 +288,9 @@ ReadObjectEvents::
 ; Fill the remaining sprite IDs and y coords with 0 and -1, respectively.
 	ld bc, MAPOBJECT_LENGTH
 .loop
-	ld [hl],  0
+	ld [hl],  0 ; no-optimize *hl++|*hl-- = N
 	inc hl
-	ld [hl], -1
+	ld [hl], -1 ; no-optimize *hl++|*hl-- = N
 	dec hl
 	add hl, bc
 	dec a
@@ -549,7 +549,7 @@ ChangeMap::
 
 .Function:
 	push de
-	call FarDecompressAtB_D000
+	call FarDecompressInB
 	pop de
 
 	ld a, d

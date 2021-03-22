@@ -28,16 +28,16 @@ MountMoonSquare_MapScriptHeader:
 
 UnknownScript_0x77093:
 	setevent EVENT_MOUNT_MOON_SQUARE_HIDDEN_MOON_STONE
-	return
+	endcallback
 
 UnknownScript_0x77097:
 	disappear MOUNTMOONSQUARE_ROCK
-	return
+	endcallback
 
 ClefairyDance:
 	checkflag ENGINE_MT_MOON_SQUARE_CLEFAIRY
 	iftrue DoNothingScript
-	checkcode VAR_WEEKDAY
+	readvar VAR_WEEKDAY
 	ifnotequal MONDAY, DoNothingScript
 	checktime 1 << NITE
 	iffalse DoNothingScript

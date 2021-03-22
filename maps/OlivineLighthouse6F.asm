@@ -30,7 +30,7 @@ OlivineLighthouseJasmine:
 	checkevent EVENT_JASMINE_EXPLAINED_AMPHYS_SICKNESS
 	iftrue UnknownScript_0x60ba5
 	writetext JasmineCianwoodPharmacyText
-	buttonsound
+	promptbutton
 	setevent EVENT_JASMINE_EXPLAINED_AMPHYS_SICKNESS
 UnknownScript_0x60ba5:
 	jumpopenedtext JasmineGetSomeMedicineText
@@ -40,7 +40,7 @@ UnknownScript_0x60bab:
 	yesorno
 	iffalse UnknownScript_0x60c25
 	writetext PlayerHandedSecretpotionText
-	buttonsound
+	promptbutton
 	takekeyitem SECRETPOTION
 	writetext JasmineDontBeOffendedText
 	waitbutton
@@ -51,7 +51,7 @@ UnknownScript_0x60bab:
 	playmusic MUSIC_HEAL
 	writetext JasmineAmphyHowAreYouFeelingText
 	pause 60
-	buttonsound
+	promptbutton
 	closetext
 	special RestartMapMusic
 	cry AMPHAROS
@@ -64,7 +64,7 @@ UnknownScript_0x60bab:
 	showtextfaceplayer JasmineThankYouText
 	setevent EVENT_JASMINE_RETURNED_TO_GYM
 	clearevent EVENT_OLIVINE_GYM_JASMINE
-	checkcode VAR_FACING
+	readvar VAR_FACING
 	ifequal DOWN, UnknownScript_0x60c17
 	ifequal RIGHT, UnknownScript_0x60c1e
 	applymovement OLIVINELIGHTHOUSE6F_JASMINE, OlivineLighthouseJasmineLeavesUpMovement
@@ -95,9 +95,9 @@ OlivineLighthouseAmphy:
 	faceplayer
 	opentext
 	writetext AmphyPalPalooText
-	writebyte AMPHAROS
+	setval AMPHAROS
 	special PlaySlowCry
-	buttonsound
+	promptbutton
 	jumpopenedtext AmphyBreathingLaboredText
 
 UnknownScript_0x60c51:

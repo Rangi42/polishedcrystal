@@ -49,17 +49,17 @@ YellowForest_MapScriptHeader:
 
 YellowForestFlyPoint:
 	setflag ENGINE_FLYPOINT_YELLOW_FOREST
-	return
+	endcallback
 
 YellowForestTileScript:
 	checkscene
 	iftrue .underfoot
 	callasm YellowForest_OverheadBridgeAsm
-	return
+	endcallback
 
 .underfoot:
 	callasm YellowForest_UnderfootBridgeAsm
-	return
+	endcallback
 
 YellowForest_OverheadBridgeAsm:
 	changebridgeblock 32, 16, $9d, YELLOW_FOREST
@@ -141,7 +141,7 @@ YellowForestWalkerScript:
 	setevent EVENT_BEAT_WALKER
 	opentext
 	writetext YellowForestWalkerAfterText
-	buttonsound
+	promptbutton
 	verbosegivetmhm HM_FLY
 	setevent EVENT_GOT_HM02_FLY
 	writetext YellowForestWalkerFinalText
@@ -199,7 +199,7 @@ YellowBattleAfterBallScript:
 	opentext
 	writetext YellowForestYellowAfterText
 YellowTryGiveLightBallScript:
-	buttonsound
+	promptbutton
 	verbosegiveitem LIGHT_BALL
 	iffalse NoRoomForLightBallScript
 	setevent EVENT_GOT_LIGHT_BALL_FROM_YELLOW
@@ -224,7 +224,7 @@ YellowForestTutorSeedBombScript:
 	writetext Text_YellowForestTutorQuestion
 	yesorno
 	iffalse .TutorRefused
-	writebyte SEED_BOMB
+	setval SEED_BOMB
 	writetext ClearText
 	special Special_MoveTutor
 	ifequal $0, .TeachMove

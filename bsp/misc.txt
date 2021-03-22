@@ -1,0 +1,148 @@
+PrintBuild4VersionCheck:
+	set #temp, 0x0a ; newline
+	bufstring .build4_string
+	bufchar #temp
+	bufchar #temp
+
+	bufstring .horizontal_tab
+	bufstring .build4_0_string
+	bufstring .build4_softboiled_milk_drink
+	bufstring .build4_national_dex
+	bufstring .build4_0_dex
+	bufchar #temp
+	bufstring .horizontal_tab
+	bufstring .horizontal_tab
+	bufstring .build4_0_dex_link
+	bufchar #temp
+	bufchar #temp
+
+	bufstring .horizontal_tab
+	bufstring .build4_1_string
+	bufstring .build4_softboiled_milk_drink
+	bufstring .build4_national_dex
+	bufstring .build4_1_dex
+	bufchar #temp
+	bufstring .horizontal_tab
+	bufstring .horizontal_tab
+	bufstring .build4_1_dex_link
+	bufchar #temp
+	bufchar #temp
+
+	bufstring .horizontal_tab
+	bufstring .build4_2_string
+	bufstring .build4_fresh_snack_shell_smash
+	bufstring .build4_national_dex
+	bufstring .build4_2_dex
+	bufchar #temp
+	bufstring .horizontal_tab
+	bufstring .horizontal_tab
+	bufstring .build4_1_dex_link
+	bufchar #temp
+	bufchar #temp
+
+	bufstring .horizontal_tab
+	bufstring .build4_3_string
+	bufstring .build4_fresh_snack_shell_smash
+	bufstring .build4_national_dex
+	bufstring .build4_2_dex
+	bufchar #temp
+	bufstring .horizontal_tab
+	bufstring .horizontal_tab
+	bufstring .build4_1_dex_link
+	bufchar #temp
+	bufchar #temp
+
+	bufstring .horizontal_tab
+	bufstring .build4_4_string
+	bufstring .build4_fresh_snack_shell_smash
+	bufstring .build4_national_dex
+	bufstring .build4_2_dex
+	bufchar #temp
+	bufstring .horizontal_tab
+	bufstring .horizontal_tab
+	bufstring .build4_1_dex_link
+	bufchar #temp
+	bufchar #temp
+
+	bufstring .horizontal_tab
+	bufstring .build4_5_string
+	bufstring .build4_fresh_snack_shell_smash
+	bufstring .build4_national_dex
+	bufstring .build4_5_dex
+	bufchar #temp
+	bufstring .horizontal_tab
+	bufstring .horizontal_tab
+	bufstring .build4_5_dex_link
+	bufchar #temp
+	bufchar #temp
+
+	bufstring .build4_instruction_1
+	bufchar #temp
+	bufstring .build4_instruction_2
+	printbuf
+
+	menu #result, .subbuilds
+	return
+
+.build4_string
+	string "There are four possible versions of build 4:"
+.build4_0_string
+	string "* 4.0 (8 December 2019): "
+.build4_1_string
+	string "* 4.1 (16 December 2019): "
+.build4_2_string
+	string "* 4.2 (21 December 2019): "
+.build4_3_string
+	string "* 4.3 (24 December 2019): Removed Pikablu guy from Noisy Forest, "
+.build4_4_string
+	string "* 4.4 (4 January 2020): Can now Fly to Yellow Forest and Cerulean Cape, "
+.build4_5_string
+	string "* 4.5 (2 February 2020): "
+.build4_instruction_1
+	string "Compare your National Dex order to the links provided, and check if Softboiled and Milk Drink are still in game or have been replaced with Fresh Snack (or if Shell Smash is in the game.)"
+.build4_instruction_2
+	string "Then, select the option that corresponds to the build number based on the info above. If you are unsure, select 4.3, or go to the Polished Crystal Discord server and ask for help in #questions."
+.build4_0_dex_link
+	string "https://github.com/Rangi42/polishedcrystal/blob/c19d51791d045f2508a19c1a2c9b05a2bdf46208/constants/pokemon_constants.asm"
+.build4_1_dex_link
+	string "https://github.com/Rangi42/polishedcrystal/blob/d5d26b4d33438224579bbc0400d7a7dd954b2f19/constants/pokemon_constants.asm"
+.build4_5_dex_link
+	string "https://github.com/Rangi42/polishedcrystal/blob/5325cfb8e352011e20e83f90a439c7d15dc088cf/constants/pokemon_constants.asm"
+.build4_softboiled_milk_drink
+	string "Softboiled and Milk Drink still in game, "
+.build4_fresh_snack_shell_smash
+	string "Softboiled and Milk Drink replaced with Fresh Snack, Shell Smash added, "
+.build4_national_dex
+	string "National Dex matches this list "
+.build4_0_dex:
+	string "(no Shuckle): "
+.build4_1_dex:
+	string "(Shuckle added, Leafeon/Glaceon/Porygon-Z indexes moved): "
+.build4_2_dex:
+	string "(same as 4.1): "
+.build4_5_dex:
+	string "(Rhyperior index moved): "
+.horizontal_tab
+	string "    " ; note that these are hard spaces (0xff)
+
+.subbuilds
+	dw .zero
+	dw .one
+	dw .two
+	dw .three
+	dw .four
+	dw .five
+	dw -1
+
+.zero
+	string "4.0"
+.one
+	string "4.1"
+.two
+	string "4.2"
+.three
+	string "4.3"
+.four
+	string "4.4"
+.five
+	string "4.5"

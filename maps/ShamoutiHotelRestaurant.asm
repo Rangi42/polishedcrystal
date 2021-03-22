@@ -21,7 +21,7 @@ ShamoutiHotelRestaurant_MapScriptHeader:
 	const SHAMOUTIHOTELRESTAURANT_RECEPTIONIST
 
 ShamoutiHotelRestaurantTrigger0:
-	priorityjump ShamoutiHotelRestaurantChallengeScript
+	prioritysjump ShamoutiHotelRestaurantChallengeScript
 	end
 
 ShamoutiHotelRestaurantChallengeScript:
@@ -49,15 +49,15 @@ ShamoutiHotelRestaurantChallengeScript:
 
 .AlreadyAte:
 	writetext .AlreadyAteText
-	jump ShamoutiHotelRestaurantLeaveScript
+	sjump ShamoutiHotelRestaurantLeaveScript
 
 .NeverMind:
 	writetext .NeverMindText
-	jump ShamoutiHotelRestaurantLeaveScript
+	sjump ShamoutiHotelRestaurantLeaveScript
 
 .NotEnoughMoney:
 	writetext .NotEnoughMoneyText
-	jump ShamoutiHotelRestaurantLeaveScript
+	sjump ShamoutiHotelRestaurantLeaveScript
 
 .GreetingText:
 	text "Welcome to the"
@@ -107,7 +107,7 @@ ShamoutiHotelRestaurantLeavingTrigger1:
 	yesorno
 	iffalse .Staying
 	writetext .GoodbyeText
-	jump ShamoutiHotelRestaurantLeaveScript
+	sjump ShamoutiHotelRestaurantLeaveScript
 
 .Staying:
 	writetext ShamoutiHotelRestaurantReceptionistText

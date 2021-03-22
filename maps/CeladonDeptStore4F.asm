@@ -45,7 +45,7 @@ PosterClerkScript:
 	waitbutton
 	writetext MarillPosterSentText
 	waitbutton
-	jump .Start
+	sjump .Start
 
 .ClefairyPoster:
 	checkmoney $0, 4800
@@ -59,7 +59,7 @@ PosterClerkScript:
 	waitbutton
 	writetext ClefairyPosterSentText
 	waitbutton
-	jump .Start
+	sjump .Start
 
 .PikachuPoster:
 	checkmoney $0, 6400
@@ -73,17 +73,17 @@ PosterClerkScript:
 	waitbutton
 	writetext PikachuPosterSentText
 	waitbutton
-	jump .Start
+	sjump .Start
 
 .NotEnoughMoney:
 	writetext PosterClerkNoMoneyText
 	waitbutton
-	jump .Start
+	sjump .Start
 
 .AlreadyBought:
 	writetext PosterClerkAlreadyBoughtText
 	waitbutton
-	jump .Start
+	sjump .Start
 
 .MenuData:
 	db $40 ; flags

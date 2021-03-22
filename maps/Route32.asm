@@ -57,17 +57,17 @@ Route32_MapScriptHeader:
 
 Route32FlyPoint:
 	setflag ENGINE_FLYPOINT_UNION_CAVE
-	return
+	endcallback
 
 Route32Frieda:
-	checkcode VAR_WEEKDAY
+	readvar VAR_WEEKDAY
 	ifequal FRIDAY, .FriedaAppears
 	disappear ROUTE32_FRIEDA
-	return
+	endcallback
 
 .FriedaAppears:
 	appear ROUTE32_FRIEDA
-	return
+	endcallback
 
 Route32CooltrainermPetrieScript:
 	faceplayer
@@ -112,7 +112,7 @@ Route32CooltrainerMTrigger:
 .Beaten:
 	opentext
 	writetext .AfterText1
-	buttonsound
+	promptbutton
 	verbosegiveitem MIRACLE_SEED
 	iffalse_endtext
 	setevent EVENT_GOT_MIRACLE_SEED_FROM_ROUTE_32_LEADER
@@ -216,27 +216,27 @@ Route32LyraIntroducesHiddenGrottoes1:
 	applymovement ROUTE32_LYRA, Route32LyraIntroducesHiddenGrottoes_Left3
 	scall Route32LyraIntroducesHiddenGrottoesMainScript
 	applymovement ROUTE32_LYRA, Route32LyraIntroducesHiddenGrottoes_Left5
-	jump Route32LyraIntroducesHiddenGrottoesOutroScript
+	sjump Route32LyraIntroducesHiddenGrottoesOutroScript
 
 Route32LyraIntroducesHiddenGrottoes2:
 	scall Route32LyraIntroducesHiddenGrottoesIntroScript
 	applymovement ROUTE32_LYRA, Route32LyraIntroducesHiddenGrottoes_Left2
 	scall Route32LyraIntroducesHiddenGrottoesMainScript
 	applymovement ROUTE32_LYRA, Route32LyraIntroducesHiddenGrottoes_Left6
-	jump Route32LyraIntroducesHiddenGrottoesOutroScript
+	sjump Route32LyraIntroducesHiddenGrottoesOutroScript
 
 Route32LyraIntroducesHiddenGrottoes3:
 	scall Route32LyraIntroducesHiddenGrottoesIntroScript
 	applymovement ROUTE32_LYRA, Route32LyraIntroducesHiddenGrottoes_Left1
 	scall Route32LyraIntroducesHiddenGrottoesMainScript
 	applymovement ROUTE32_LYRA, Route32LyraIntroducesHiddenGrottoes_Left7
-	jump Route32LyraIntroducesHiddenGrottoesOutroScript
+	sjump Route32LyraIntroducesHiddenGrottoesOutroScript
 
 Route32LyraIntroducesHiddenGrottoes4:
 	scall Route32LyraIntroducesHiddenGrottoesIntroScript
 	scall Route32LyraIntroducesHiddenGrottoesMainScript
 	applymovement ROUTE32_LYRA, Route32LyraIntroducesHiddenGrottoes_Left8
-	jump Route32LyraIntroducesHiddenGrottoesOutroScript
+	sjump Route32LyraIntroducesHiddenGrottoesOutroScript
 
 Route32LyraIntroducesHiddenGrottoes_Left8:
 	step_left
@@ -273,11 +273,11 @@ Route32LyraIntroducesHiddenGrottoesMainScript:
 	playmusic MUSIC_LYRA_ENCOUNTER_HGSS
 	opentext
 	writetext .GreetingText
-	buttonsound
+	promptbutton
 	checkegg
 	iftrue .HaveEgg
 	writetext .NoEggText
-	jump .Continue
+	sjump .Continue
 .HaveEgg
 	writetext .HaveEggText
 .Continue
@@ -407,7 +407,7 @@ Route32LyraIntroducesHiddenGrottoesOutroScript:
 Route32WannaBuyASlowpokeTailScript:
 	turnobject ROUTE32_FISHER4, DOWN
 	turnobject PLAYER, UP
-	jump _OfferToSellSlowpokeTail
+	sjump _OfferToSellSlowpokeTail
 
 SlowpokeTailSalesmanScript:
 	faceplayer
@@ -428,7 +428,7 @@ Route32RoarTMGuyScript:
 	checkevent EVENT_GOT_TM05_ROAR
 	iftrue .AlreadyHaveRoar
 	writetext Text_RoarIntro
-	buttonsound
+	promptbutton
 	verbosegivetmhm TM_ROAR
 	setevent EVENT_GOT_TM05_ROAR
 .AlreadyHaveRoar:
@@ -456,21 +456,21 @@ TrainerFisherRalph1:
 	trainer FISHER, RALPH1, EVENT_BEAT_FISHER_RALPH, FisherRalph1SeenText, FisherRalph1BeatenText, 0, .Script
 
 .Script:
-	writecode VAR_CALLERID, PHONE_FISHER_RALPH
+	loadvar VAR_CALLERID, PHONE_FISHER_RALPH
 	opentext
-	checkflag ENGINE_RALPH
+	checkflag ENGINE_RALPH_READY_FOR_REMATCH
 	iftrue .Rematch
-	checkflag ENGINE_SPECIAL_WILDDATA
+	checkflag ENGINE_FISH_SWARM
 	iftrue .Swarm
 	checkcellnum PHONE_FISHER_RALPH
 	iftrue .NumberAccepted
 	checkevent EVENT_RALPH_ASKED_FOR_PHONE_NUMBER
 	iftrue .AskAgain
 	writetext FisherRalphAfterText
-	buttonsound
+	promptbutton
 	setevent EVENT_RALPH_ASKED_FOR_PHONE_NUMBER
 	callstd asknumber1m
-	jump .AskForNumber
+	sjump .AskForNumber
 
 .AskAgain:
 	callstd asknumber2m
@@ -478,14 +478,14 @@ TrainerFisherRalph1:
 	askforphonenumber PHONE_FISHER_RALPH
 	ifequal $1, .PhoneFull
 	ifequal $2, .NumberDeclined
-	trainertotext FISHER, RALPH1, $0
+	gettrainername FISHER, RALPH1, $0
 	callstd registerednumberm
 	jumpstd numberacceptedm
 
 .Rematch:
 	callstd rematchm
 	winlosstext FisherRalph1BeatenText, 0
-	copybytetovar wRalphFightCount
+	readmem wRalphFightCount
 	ifequal 4, .Fight4
 	ifequal 3, .Fight3
 	ifequal 2, .Fight2
@@ -507,39 +507,39 @@ TrainerFisherRalph1:
 	loadtrainer FISHER, RALPH1
 	startbattle
 	reloadmapafterbattle
-	loadvar wRalphFightCount, 1
-	clearflag ENGINE_RALPH
+	loadmem wRalphFightCount, 1
+	clearflag ENGINE_RALPH_READY_FOR_REMATCH
 	end
 
 .LoadFight1:
 	loadtrainer FISHER, RALPH2
 	startbattle
 	reloadmapafterbattle
-	loadvar wRalphFightCount, 2
-	clearflag ENGINE_RALPH
+	loadmem wRalphFightCount, 2
+	clearflag ENGINE_RALPH_READY_FOR_REMATCH
 	end
 
 .LoadFight2:
 	loadtrainer FISHER, RALPH3
 	startbattle
 	reloadmapafterbattle
-	loadvar wRalphFightCount, 3
-	clearflag ENGINE_RALPH
+	loadmem wRalphFightCount, 3
+	clearflag ENGINE_RALPH_READY_FOR_REMATCH
 	end
 
 .LoadFight3:
 	loadtrainer FISHER, RALPH4
 	startbattle
 	reloadmapafterbattle
-	loadvar wRalphFightCount, 4
-	clearflag ENGINE_RALPH
+	loadmem wRalphFightCount, 4
+	clearflag ENGINE_RALPH_READY_FOR_REMATCH
 	end
 
 .LoadFight4:
 	loadtrainer FISHER, RALPH5
 	startbattle
 	reloadmapafterbattle
-	clearflag ENGINE_RALPH
+	clearflag ENGINE_RALPH_READY_FOR_REMATCH
 	end
 
 .Swarm:
@@ -568,19 +568,19 @@ TrainerPicnickerLiz1:
 	trainer PICNICKER, LIZ1, EVENT_BEAT_PICNICKER_LIZ, PicnickerLiz1SeenText, PicnickerLiz1BeatenText, 0, .Script
 
 .Script:
-	writecode VAR_CALLERID, PHONE_PICNICKER_LIZ
+	loadvar VAR_CALLERID, PHONE_PICNICKER_LIZ
 	opentext
-	checkflag ENGINE_LIZ
+	checkflag ENGINE_LIZ_READY_FOR_REMATCH
 	iftrue .Rematch
 	checkcellnum PHONE_PICNICKER_LIZ
 	iftrue .NumberAccepted
 	checkevent EVENT_LIZ_ASKED_FOR_PHONE_NUMBER
 	iftrue .AskAgain
 	writetext PicnickerLiz1AfterText
-	buttonsound
+	promptbutton
 	setevent EVENT_LIZ_ASKED_FOR_PHONE_NUMBER
 	callstd asknumber1f
-	jump .AskForNumber
+	sjump .AskForNumber
 
 .AskAgain:
 	callstd asknumber2f
@@ -588,14 +588,14 @@ TrainerPicnickerLiz1:
 	askforphonenumber PHONE_PICNICKER_LIZ
 	ifequal $1, .PhoneFull
 	ifequal $2, .NumberDeclined
-	trainertotext PICNICKER, LIZ1, $0
+	gettrainername PICNICKER, LIZ1, $0
 	callstd registerednumberf
 	jumpstd numberacceptedf
 
 .Rematch:
 	callstd rematchf
 	winlosstext PicnickerLiz1BeatenText, 0
-	copybytetovar wLizFightCount
+	readmem wLizFightCount
 	ifequal 4, .Fight4
 	ifequal 3, .Fight3
 	ifequal 2, .Fight2
@@ -617,39 +617,39 @@ TrainerPicnickerLiz1:
 	loadtrainer PICNICKER, LIZ1
 	startbattle
 	reloadmapafterbattle
-	loadvar wLizFightCount, 1
-	clearflag ENGINE_LIZ
+	loadmem wLizFightCount, 1
+	clearflag ENGINE_LIZ_READY_FOR_REMATCH
 	end
 
 .LoadFight1:
 	loadtrainer PICNICKER, LIZ2
 	startbattle
 	reloadmapafterbattle
-	loadvar wLizFightCount, 2
-	clearflag ENGINE_LIZ
+	loadmem wLizFightCount, 2
+	clearflag ENGINE_LIZ_READY_FOR_REMATCH
 	end
 
 .LoadFight2:
 	loadtrainer PICNICKER, LIZ3
 	startbattle
 	reloadmapafterbattle
-	loadvar wLizFightCount, 3
-	clearflag ENGINE_LIZ
+	loadmem wLizFightCount, 3
+	clearflag ENGINE_LIZ_READY_FOR_REMATCH
 	end
 
 .LoadFight3:
 	loadtrainer PICNICKER, LIZ4
 	startbattle
 	reloadmapafterbattle
-	loadvar wLizFightCount, 4
-	clearflag ENGINE_LIZ
+	loadmem wLizFightCount, 4
+	clearflag ENGINE_LIZ_READY_FOR_REMATCH
 	end
 
 .LoadFight4:
 	loadtrainer PICNICKER, LIZ5
 	startbattle
 	reloadmapafterbattle
-	clearflag ENGINE_LIZ
+	clearflag ENGINE_LIZ_READY_FOR_REMATCH
 	end
 
 .NumberAccepted:
@@ -691,18 +691,18 @@ GenericTrainerBird_keeperPeter:
 FriedaScript:
 	checkevent EVENT_GOT_POISON_BARB_FROM_FRIEDA
 	iftrue_jumptextfaceplayer FriedaFridayText
-	checkcode VAR_WEEKDAY
+	readvar VAR_WEEKDAY
 	ifnotequal FRIDAY, .NotFriday
 	faceplayer
 	opentext
 	checkevent EVENT_MET_FRIEDA_OF_FRIDAY
 	iftrue .MetFrieda
 	writetext MeetFriedaText
-	buttonsound
+	promptbutton
 	setevent EVENT_MET_FRIEDA_OF_FRIDAY
 .MetFrieda:
 	writetext FriedaGivesGiftText
-	buttonsound
+	promptbutton
 	verbosegiveitem POISON_BARB
 	iffalse_endtext
 	setevent EVENT_GOT_POISON_BARB_FROM_FRIEDA

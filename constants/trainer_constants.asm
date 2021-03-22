@@ -1,11 +1,24 @@
+__trainer_class__ = 0
+
 trainerclass: MACRO
-	enum \1
-const_value = 1
+\1 EQU __trainer_class__
+__trainer_class__ = __trainer_class__ + 1
+	const_def 1
 ENDM
 
-; trainer groups
-	enum_start
-CHRIS EQU __enum__
+; trainer class ids
+; `trainerclass` indexes are for:
+; - TrainerClassNames (see data/trainers/class_names.asm)
+; - TrainerClassAttributes (see data/trainers/attributes.asm)
+; - TrainerClassDVsAndPersonality (see data/trainers/dvs.asm)
+; - TrainerGroups (see data/trainers/party_pointers.asm)
+; - TrainerEncounterMusic (see data/trainers/encounter_music.asm)
+; - TrainerPicPointers (see data/trainers/pic_pointers.asm)
+; - TrainerPalettes (see data/trainers/palettes.asm)
+; - BTTrainerClassSprites (see data/trainers/sprites.asm)
+; - BTTrainerClassGenders (see data/trainers/genders.asm)
+; trainer constants are indexes for the sub-tables of TrainerGroups (see data/trainers/parties.asm)
+CHRIS EQU __trainer_class__
 	trainerclass TRAINER_NONE ; 0
 	const PHONECONTACT_MOM
 	const PHONECONTACT_BIKESHOP
@@ -14,7 +27,7 @@ CHRIS EQU __enum__
 	const PHONECONTACT_LYRA
 	const PHONECONTACT_BUENA
 
-KRIS EQU __enum__
+KRIS EQU __trainer_class__
 	trainerclass CARRIE ; 1
 
 	trainerclass CAL ; 2
@@ -1095,4 +1108,4 @@ KRIS EQU __enum__
 
 	trainerclass SILHOUETTE ; 97
 
-NUM_TRAINER_CLASSES EQU __enum__
+NUM_TRAINER_CLASSES EQU __trainer_class__ - 1

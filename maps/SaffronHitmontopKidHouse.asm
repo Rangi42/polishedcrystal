@@ -75,7 +75,7 @@ SaffronHitmontopKidHouseTeacherScript:
 	checkevent EVENT_SHOWED_SAFFRON_KID_HITMONTOP
 	iffalse_jumpopenedtext .Text1
 	writetext .Text2
-	buttonsound
+	promptbutton
 	verbosegiveitem AIR_BALLOON
 	iffalse_endtext
 	setevent EVENT_GOT_AIR_BALLOON_FROM_SAFFRON

@@ -20,7 +20,6 @@ PlayBattleAnim:
 	ret
 
 _PlayBattleAnim:
-
 	ld c, 6
 	call DelayFrames
 
@@ -53,7 +52,6 @@ _PlayBattleAnim:
 	jp WaitSFX
 
 BattleAnimRunScript:
-
 	ld a, [wFXAnimIDHi]
 	and a
 	jr nz, .hi_byte
@@ -61,7 +59,7 @@ BattleAnimRunScript:
 	farcall CheckBattleEffects
 	jr c, .disabled
 
-	call BattleAnimClearHud
+	call BattleAnimClearHUD
 	call RunBattleAnimScript
 
 	call BattleAnimAssignPals
@@ -71,7 +69,7 @@ BattleAnimRunScript:
 	ldh [hSCX], a
 	ldh [hSCY], a
 	call DelayFrame
-	call BattleAnimRestoreHuds
+	call BattleAnimRestoreHUDs
 
 .disabled
 	ld a, [wNumHits]
@@ -96,7 +94,6 @@ BattleAnimRunScript:
 	jp BattleAnim_RevertPals
 
 RunBattleAnimScript:
-
 	call ClearBattleAnims
 
 .playframe
@@ -136,18 +133,16 @@ RunBattleAnimScript:
 
 	jp BattleAnim_ClearCGB_OAMFlags
 
-BattleAnimClearHud:
-
+BattleAnimClearHUD:
 	call DelayFrame
 	call WaitTop
-	call ClearActorHud
+	call ClearActorHUD
 	ld a, $1
 	ldh [hBGMapMode], a
 	call Delay2
 	jp WaitTop
 
-BattleAnimRestoreHuds:
-
+BattleAnimRestoreHUDs:
 	call DelayFrame
 	call WaitTop
 
@@ -167,7 +162,6 @@ BattleAnimRestoreHuds:
 	jp WaitTop
 
 BattleAnimRequestPals:
-
 	ldh a, [rBGP]
 	ld b, a
 	ld a, [wBGP]
@@ -181,11 +175,11 @@ BattleAnimRequestPals:
 	call nz, BattleAnim_SetOBPals
 	ret
 
-ClearActorHud:
-
+ClearActorHUD:
 	ldh a, [hBattleTurn]
 	and a
 	jr z, ClearPlayerHUD
+	; fallthrough
 
 ClearEnemyHUD:
 	hlcoord 0, 0
@@ -204,7 +198,6 @@ ClearPlayerHUD:
 	ret
 
 BattleAnim_ClearCGB_OAMFlags:
-
 	ld a, [wBattleAnimFlags]
 	bit 3, a
 	ret nz
@@ -594,11 +587,11 @@ BattleAnimCmd_ResetObp0:
 
 BattleAnimCmd_ClearObjs:
 	ld hl, wActiveAnimObjects
-	ld a, NUM_ANIM_OBJECTS * BATTLEANIMSTRUCT_LENGTH
+	ld e, NUM_ANIM_OBJECTS * BATTLEANIMSTRUCT_LENGTH
+	xor a
 .loop
-	ld [hl], $0
-	inc hl
-	dec a
+	ld [hli], a
+	dec e
 	jr nz, .loop
 	ret
 
@@ -661,7 +654,7 @@ BattleAnimCmd_IncObj:
 	ret
 
 .found
-	ld hl, BATTLEANIMSTRUCT_ANON_JT_INDEX
+	ld hl, BATTLEANIMSTRUCT_JUMPTABLE_INDEX
 	add hl, bc
 	inc [hl]
 	ret
@@ -712,7 +705,7 @@ BattleAnimCmd_SetObj:
 
 .found
 	call GetBattleAnimByte
-	ld hl, BATTLEANIMSTRUCT_ANON_JT_INDEX
+	ld hl, BATTLEANIMSTRUCT_JUMPTABLE_INDEX
 	add hl, bc
 	ld [hl], a
 	ret
@@ -901,7 +894,7 @@ GetSubstitutePic:
 
 	ld hl, SubstituteFrontpic
 	ld a, BANK(SubstituteFrontpic)
-	ld de, wTempTileMap
+	assert wTempTileMap == WRAM1_Begin
 	call FarDecompress
 	call .CopyPic
 	ld hl, vTiles2 tile $00
@@ -913,7 +906,7 @@ GetSubstitutePic:
 .player
 	ld hl, SubstituteBackpic
 	ld a, BANK(SubstituteBackpic)
-	ld de, wTempTileMap
+	assert wTempTileMap == WRAM1_Begin
 	call FarDecompress
 	call .CopyPic
 	ld hl, vTiles2 tile $31

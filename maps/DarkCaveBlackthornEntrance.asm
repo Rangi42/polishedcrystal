@@ -20,19 +20,21 @@ DarkCaveBlackthornEntrancePharmacistScript:
 	faceplayer
 	opentext
 	checkevent EVENT_GOT_BLACKGLASSES_IN_DARK_CAVE
-	iftrue UnknownScript_0x18c735
-	writetext DarkCaveBlackthornEntrancePharmacistText1
-	buttonsound
+	iftrue_jumpopenedtext .PharmacistText2
+	writetext .PharmacistText1
+	promptbutton
 	verbosegiveitem BLACKGLASSES
-	iffalse UnknownScript_0x18c739
+	iffalse_endtext
 	setevent EVENT_GOT_BLACKGLASSES_IN_DARK_CAVE
-UnknownScript_0x18c735:
-	writetext DarkCaveBlackthornEntrancePharmacistText2
-	waitbutton
-UnknownScript_0x18c739:
-	endtext
+	jumpthisopenedtext
 
-DarkCaveBlackthornEntrancePharmacistText1:
+.PharmacistText2:
+	text "BlackGlasses ups"
+	line "the power of Dark-"
+	cont "type moves."
+	done
+
+.PharmacistText1:
 	text "Whoa! You startled"
 	line "me there!"
 
@@ -52,10 +54,4 @@ DarkCaveBlackthornEntrancePharmacistText1:
 	line "pair of Black-"
 	cont "Glasses, so forget"
 	cont "you saw me, OK?"
-	done
-
-DarkCaveBlackthornEntrancePharmacistText2:
-	text "BlackGlasses ups"
-	line "the power of Dark-"
-	cont "type moves."
 	done

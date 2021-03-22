@@ -50,7 +50,7 @@ ShamoutiIslandVileplumeScript:
 	cry VILEPLUME
 	pause 15
 	closetext
-	writecode VAR_BATTLETYPE, BATTLETYPE_FORCEITEM
+	loadvar VAR_BATTLETYPE, BATTLETYPE_FORCEITEM
 	loadwildmon VILEPLUME, 60
 	startbattle
 	disappear SHAMOUTIISLAND_VILEPLUME
@@ -75,7 +75,7 @@ ShamoutiIslandYoungsterScript:
 	faceplayer
 	opentext
 	writetext .Text1
-	buttonsound
+	promptbutton
 	verbosegiveitem ODD_SOUVENIR
 	iffalse_endtext
 	setevent EVENT_GOT_ODD_SOUVENIR_FROM_PIKABLU_GUY

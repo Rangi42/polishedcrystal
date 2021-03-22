@@ -18,17 +18,19 @@ Route30BerryHousePokefanMScript:
 	faceplayer
 	opentext
 	checkevent EVENT_GOT_MULCH_FROM_ROUTE_30_HOUSE
-	iftrue UnknownScript_0x196d79
+	iftrue .GotMulch
 	writetext Route30BerrySpeechHouseMonEatBerriesText
-	buttonsound
+	promptbutton
 	verbosegiveitem MULCH
-	iffalse UnknownScript_0x196d7d
+	iffalse_endtext
 	setevent EVENT_GOT_MULCH_FROM_ROUTE_30_HOUSE
-UnknownScript_0x196d79:
-	writetext Route30BerrySpeechHouseCheckTreesText
-	waitbutton
-UnknownScript_0x196d7d:
-	endtext
+.GotMulch:
+	jumpthisopenedtext
+
+	text "I buy top-quality"
+	line "Mulch in Goldenrod"
+	cont "City."
+	done
 
 Route30BerrySpeechHouseMonEatBerriesText:
 	text "You know, #mon"
@@ -44,10 +46,4 @@ Route30BerrySpeechHouseMonEatBerriesText:
 
 	para "Here. I'll share"
 	line "some with you!"
-	done
-
-Route30BerrySpeechHouseCheckTreesText:
-	text "I buy top-quality"
-	line "Mulch in Goldenrod"
-	cont "City."
 	done

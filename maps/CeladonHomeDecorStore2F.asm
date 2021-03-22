@@ -42,7 +42,7 @@ CeladonHomeDecorStore2FClerkScript:
 	waitbutton
 	writetext PinkBedSentText
 	waitbutton
-	jump .Start
+	sjump .Start
 
 .PolkaDotBed:
 	checkmoney $0, 94000
@@ -56,7 +56,7 @@ CeladonHomeDecorStore2FClerkScript:
 	waitbutton
 	writetext PolkaDotBedSentText
 	waitbutton
-	jump .Start
+	sjump .Start
 
 .PikachuBed:
 	checkmoney $0, 126000
@@ -70,17 +70,17 @@ CeladonHomeDecorStore2FClerkScript:
 	waitbutton
 	writetext PikachuBedSentText
 	waitbutton
-	jump .Start
+	sjump .Start
 
 .NotEnoughMoney:
 	writetext CeladonHomeDecorStore2FNoMoneyText
 	waitbutton
-	jump .Start
+	sjump .Start
 
 .AlreadyBought:
 	writetext CeladonHomeDecorStore2FAlreadyBoughtText
 	waitbutton
-	jump .Start
+	sjump .Start
 
 .MenuData:
 	db $40 ; flags

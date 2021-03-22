@@ -6,7 +6,7 @@ else
 	;   hp  atk  def  spd  sat  sdf
 endc
 
-	db WATER, POISON
+	db WATER, POISON ; type
 	db 45 ; catch rate
 if DEF(FAITHFUL)
 	db 100 ; base exp
@@ -15,15 +15,15 @@ else
 endc
 	db NO_ITEM ; item 1
 	db POISON_BARB ; item 2
-	dn FEMALE_50, 3 ; gender, step cycles to hatch
+	dn GENDER_F50, 3 ; gender ratio, step cycles to hatch
 	INCBIN "gfx/pokemon/qwilfish/front.dimensions"
 	abilities_for QWILFISH, POISON_POINT, SWIFT_SWIM, INTIMIDATE
-	db MEDIUM_FAST ; growth rate
-	dn FISH, FISH ; egg groups
+	db GROWTH_MEDIUM_FAST ; growth rate
+	dn EGG_WATER_2, EGG_WATER_2 ; egg groups
 
 	ev_yield   0,   1,   0,   0,   0,   0
-	;         hp, atk, def, spd, sat, sdf
+	;         hp  atk  def  spd  sat  sdf
 
-	; tmhm
+	; tm/hm learnset
 	tmhm CURSE, TOXIC, HAIL, HIDDEN_POWER, ICE_BEAM, BLIZZARD, PROTECT, RAIN_DANCE, RETURN, SHADOW_BALL, DOUBLE_TEAM, SLUDGE_BOMB, SWIFT, SUBSTITUTE, FACADE, REST, ATTRACT, SCALD, WATER_PULSE, EXPLOSION, POISON_JAB, THUNDER_WAVE, GYRO_BALL, SWORDS_DANCE, SURF, WHIRLPOOL, WATERFALL, AQUA_TAIL, DEFENSE_CURL, DOUBLE_EDGE, ENDURE, HEADBUTT, ICY_WIND, ROLLOUT, SLEEP_TALK, SWAGGER
 	; end

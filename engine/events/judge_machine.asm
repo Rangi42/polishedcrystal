@@ -38,6 +38,13 @@ JudgeMachine:
 	call FadeToMenu
 	call JudgeSystem
 	call ExitAllMenus
+; hLCDInterruptFunction gets overridden for drawing the radar chart.
+; (It is not called as such because the LCD interrupt is disabled.)
+; This restores it to the LCDGeneric function.
+	ld a, LOW(LCDGeneric)
+	ldh [hFunctionTargetLo], a
+	ld a, HIGH(LCDGeneric)
+	ldh [hFunctionTargetHi], a
 	ld hl, NewsMachineContinueText
 	jr .continue
 
@@ -140,8 +147,8 @@ JudgeSystem::
 	ld d, h
 	ld e, l
 	hlcoord 0, 0
-	ld [hl], JUDGE_UP_DOWN_TILE
-	inc hl
+	ld a, JUDGE_UP_DOWN_TILE
+	ld [hli], a
 	rst PlaceString
 
 ; Place the level
@@ -190,10 +197,10 @@ JudgeSystem::
 	ld a, [wCurPartySpecies]
 	ld [wd265], a
 	hlcoord 1, 13
-	ld [hl], "№"
-	inc hl
-	ld [hl], "."
-	inc hl
+	ld a, "№"
+	ld [hli], a
+	ld a, "."
+	ld [hli], a
 	lb bc, PRINTNUM_LEADINGZEROS | 1, 3
 	ld de, wd265
 	call PrintNum
@@ -747,7 +754,7 @@ DrawLowRadarLine:
 ; For x from b to d, draw a point at (x, c)
 .loop
 	push de
-	call hFunction ; FillRadarUp/Down/Left/Right
+	call hLCDInterruptFunction ; FillRadarUp/Down/Left/Right
 	pop de
 
 ; Update D and y
@@ -802,7 +809,7 @@ DrawHighRadarLine:
 ; For y from c to e, draw a point at (b, y)
 .loop
 	push de
-	call hFunction ; FillRadarUp/Down/Left/Right
+	call hLCDInterruptFunction ; FillRadarUp/Down/Left/Right
 	pop de
 
 ; Update D and x
@@ -842,7 +849,7 @@ DrawHorizontalRadarLine:
 ; For x from b to d, draw a point at (x, c)
 .loop
 	push de
-	call hFunction ; FillRadarUp/Down/Left/Right
+	call hLCDInterruptFunction ; FillRadarUp/Down/Left/Right
 	pop de
 	inc b
 	ld a, d
@@ -864,7 +871,7 @@ DrawVerticalRadarLine:
 ; For y from c to e, draw a point at (b, y)
 .loop
 	push de
-	call hFunction ; FillRadarUp/Down/Left/Right
+	call hLCDInterruptFunction ; FillRadarUp/Down/Left/Right
 	pop de
 	inc c
 	ld a, e

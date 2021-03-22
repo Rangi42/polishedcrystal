@@ -32,17 +32,26 @@ SECTION "bank3", ROMX
 
 INCLUDE "engine/events/checktime.asm"
 INCLUDE "engine/events/specials.asm"
-INCLUDE "engine/math/print_num.asm"
 INCLUDE "engine/pokemon/health.asm"
 INCLUDE "engine/events/overworld.asm"
 INCLUDE "engine/items/items.asm"
 INCLUDE "engine/battle/anim_hp_bar.asm"
 INCLUDE "engine/pokemon/move_mon.asm"
-INCLUDE "engine/pokemon/bills_pc_top.asm"
 INCLUDE "engine/pokemon/breedmon_level_growth.asm"
 INCLUDE "engine/events/bug_contest/caught_mon.asm"
 INCLUDE "engine/events/bug_contest/display_stats.asm"
 INCLUDE "engine/items/item_effects.asm"
+
+
+SECTION "Print Number", ROMX
+
+INCLUDE "engine/math/print_num.asm"
+
+
+SECTION "Bills PC", ROMX
+
+INCLUDE "engine/pokemon/bills_pc.asm"
+INCLUDE "engine/pokemon/bills_pc_ui.asm"
 
 
 SECTION "Poke Ball Effects", ROMX
@@ -219,7 +228,7 @@ INCLUDE "engine/events/buena_menu.asm"
 
 SECTION "Collision Permissions", ROMX
 
-INCLUDE "data/collision_permissions.asm"
+INCLUDE "data/collision/collision_permissions.asm"
 
 
 SECTION "bank13", ROMX
@@ -257,7 +266,6 @@ INCLUDE "engine/pokemon/mon_stats.asm"
 INCLUDE "engine/pokemon/experience.asm"
 INCLUDE "engine/pokemon/switchpartymons.asm"
 INCLUDE "engine/gfx/load_pics.asm"
-INCLUDE "engine/pokemon/move_mon_wo_mail.asm"
 INCLUDE "data/pokemon/names.asm"
 INCLUDE "engine/pokemon/natures.asm"
 
@@ -421,7 +429,6 @@ SECTION "bank38", ROMX
 INCLUDE "engine/games/card_flip.asm"
 INCLUDE "engine/games/unown_puzzle.asm"
 ;INCLUDE "engine/games/memory_game.asm"
-INCLUDE "engine/pokemon/bills_pc.asm"
 INCLUDE "engine/gfx/fade.asm"
 
 

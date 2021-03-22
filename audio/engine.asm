@@ -112,7 +112,7 @@ _UpdateSound::
 	; turn vibrato off for now
 	ld hl, wChannel1Flags2 - wChannel1
 	add hl, bc
-	res SOUND_PITCH_WHEEL, [hl]
+	res SOUND_PITCH_SLIDE, [hl]
 	; get next note
 	call ParseMusic
 .continue_sound_update
@@ -230,7 +230,7 @@ UpdateChannels:
 .wChannel5:
 	ld hl, wChannel1NoteFlags - wChannel1
 	add hl, bc
-	bit NOTE_UNKN_3, [hl]
+	bit NOTE_PITCH_SWEEP, [hl]
 	jr z, .asm_e8159
 	ld a, [wSoundInput]
 	ldh [rNR10], a
@@ -354,10 +354,8 @@ UpdateChannels:
 	bit NOTE_NOISE_SAMPLING, [hl]
 	jr nz, .asm_e824d
 	bit NOTE_VIBRATO_OVERRIDE, [hl]
-	jr nz, .asm_e823a
-	ret
+	ret z
 
-.asm_e823a
 	ld a, [wCurTrackFrequency]
 	ldh [rNR33], a
 	ret
@@ -627,7 +625,7 @@ LoadNote:
 	; wait for pitch wheel to finish
 	ld hl, wChannel1Flags2 - wChannel1
 	add hl, bc
-	bit SOUND_PITCH_WHEEL, [hl]
+	bit SOUND_PITCH_SLIDE, [hl]
 	ret z
 	; get note duration
 	ld hl, wChannel1NoteDuration - wChannel1
@@ -666,7 +664,7 @@ LoadNote:
 	jr nc, .greater_than
 	ld hl, wChannel1Flags3 - wChannel1
 	add hl, bc
-	set SOUND_PITCH_WHEEL_DIR, [hl]
+	set SOUND_PITCH_SLIDE_DIR, [hl]
 	; get frequency
 	ld hl, wChannel1Frequency - wChannel1
 	add hl, bc
@@ -692,7 +690,7 @@ LoadNote:
 .greater_than
 	ld hl, wChannel1Flags3 - wChannel1
 	add hl, bc
-	res SOUND_PITCH_WHEEL_DIR, [hl]
+	res SOUND_PITCH_SLIDE_DIR, [hl]
 	; get frequency
 	ld hl, wChannel1Frequency - wChannel1
 	add hl, bc
@@ -753,7 +751,7 @@ HandleTrackVibrato:
 ; handle duty, cry pitch, and vibrato
 	ld hl, wChannel1Flags2 - wChannel1
 	add hl, bc
-	bit SOUND_DUTY, [hl] ; duty
+	bit SOUND_DUTY_LOOP, [hl] ; duty
 	jr z, .next
 	ld hl, wChannel1SFXDutyLoop - wChannel1
 	add hl, bc
@@ -769,7 +767,7 @@ HandleTrackVibrato:
 .next
 	ld hl, wChannel1Flags2 - wChannel1
 	add hl, bc
-	bit SOUND_CRY_PITCH, [hl]
+	bit SOUND_PITCH_OFFSET, [hl]
 	jr z, .vibrato
 	ld hl, wChannel1CryPitch - wChannel1
 	add hl, bc
@@ -869,7 +867,7 @@ ApplyPitchWheel:
 	; quit if pitch wheel inactive
 	ld hl, wChannel1Flags2 - wChannel1
 	add hl, bc
-	bit SOUND_PITCH_WHEEL, [hl]
+	bit SOUND_PITCH_SLIDE, [hl]
 	ret z
 	; de = Frequency
 	ld hl, wChannel1Frequency - wChannel1
@@ -880,7 +878,7 @@ ApplyPitchWheel:
 	; check whether pitch wheel is going up or down
 	ld hl, wChannel1Flags3 - wChannel1
 	add hl, bc
-	bit SOUND_PITCH_WHEEL_DIR, [hl]
+	bit SOUND_PITCH_SLIDE_DIR, [hl]
 	jr z, .decreasing
 	; frequency += [Channel*PitchWheelAmount]
 	ld hl, wChannel1PitchWheelAmount - wChannel1
@@ -962,10 +960,10 @@ ApplyPitchWheel:
 .finished_pitch_wheel
 	ld hl, wChannel1Flags2 - wChannel1
 	add hl, bc
-	res SOUND_PITCH_WHEEL, [hl]
+	res SOUND_PITCH_SLIDE, [hl]
 	ld hl, wChannel1Flags3 - wChannel1
 	add hl, bc
-	res SOUND_PITCH_WHEEL_DIR, [hl]
+	res SOUND_PITCH_SLIDE_DIR, [hl]
 	ret
 
 .continue_pitch_wheel
@@ -1638,7 +1636,7 @@ Music_SlidePitchTo:
 	ld [hl], d
 	ld hl, wChannel1Flags2 - wChannel1
 	add hl, bc
-	set SOUND_PITCH_WHEEL, [hl]
+	set SOUND_PITCH_SLIDE, [hl]
 	ret
 
 Music_Tone:
@@ -1646,7 +1644,7 @@ Music_Tone:
 ; params: 1 (dw)
 	ld hl, wChannel1Flags2 - wChannel1
 	add hl, bc
-	set SOUND_CRY_PITCH, [hl]
+	set SOUND_PITCH_OFFSET, [hl]
 	ld hl, wChannel1CryPitch + 1 - wChannel1
 	add hl, bc
 	call GetMusicByte
@@ -1660,7 +1658,7 @@ Music_SoundDuty:
 ; params: 1 (4 2-bit duty cycle arguments)
 	ld hl, wChannel1Flags2 - wChannel1
 	add hl, bc
-	set SOUND_DUTY, [hl] ; duty cycle
+	set SOUND_DUTY_LOOP, [hl] ; duty cycle
 	; sound duty sequence
 	call GetMusicByte
 	rrca
@@ -1757,7 +1755,7 @@ Music_SoundStatus:
 	ld [wSoundInput], a
 	ld hl, wChannel1NoteFlags - wChannel1
 	add hl, bc
-	set NOTE_UNKN_3, [hl]
+	set NOTE_PITCH_SWEEP, [hl]
 	ret
 
 Music_DutyCycle:
@@ -2278,7 +2276,7 @@ _PlayCryHeader::
 
 	ld hl, wChannel1Flags2 - wChannel1
 	add hl, bc
-	set SOUND_CRY_PITCH, [hl]
+	set SOUND_PITCH_OFFSET, [hl]
 
 	ld hl, wChannel1CryPitch - wChannel1
 	add hl, bc

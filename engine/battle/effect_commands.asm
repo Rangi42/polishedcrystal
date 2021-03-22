@@ -132,7 +132,7 @@ DoMove:
 	add hl, bc
 	add hl, bc
 	ld a, BANK(MoveEffectsPointers)
-	call GetFarHalfword
+	call GetFarWord
 
 	ld a, l
 	ld [wBattleScriptBufferLoc], a
@@ -157,7 +157,7 @@ DoMove:
 	pop bc
 
 	ld a, BANK(BattleCommandPointers)
-	call GetFarHalfword
+	call GetFarWord
 
 	call _hl_
 
@@ -503,8 +503,9 @@ IncreaseMetronomeCount:
 	ret
 .reset
 	; Struggle doesn't update last move set but does reset count
-	cp STRUGGLE
+	inc a ; cp STRUGGLE
 	jr z, .done_update_selected_move
+	dec a
 	ld [de], a
 .done_update_selected_move
 	xor a
@@ -987,8 +988,7 @@ BattleCommand_doturn:
 	ld a, BATTLE_VARS_MOVE_EFFECT
 	call GetBattleVar
 	ld hl, ContinuousMoves
-	ld de, 1
-	call IsInArray
+	call IsInByteArray
 
 	ld hl, HasNoPPLeftText
 	jr c, .print
@@ -1034,7 +1034,7 @@ BattleConsumePP:
 
 	ld a, BATTLE_VARS_MOVE
 	call GetBattleVar
-	cp STRUGGLE
+	inc a ; cp STRUGGLE
 	jr z, .end
 
 	ld a, BATTLE_VARS_SUBSTATUS3
@@ -1143,10 +1143,9 @@ BattleCommand_critical:
 .CheckCritical:
 	ld a, BATTLE_VARS_MOVE_ANIM
 	call GetBattleVar
-	ld de, 1
-	ld hl, CriticalHitMoves
 	push bc
-	call IsInArray
+	ld hl, CriticalHitMoves
+	call IsInByteArray
 	pop bc
 	jr nc, .ScopeLens
 
@@ -1210,7 +1209,7 @@ BattleCommand_stab:
 	; Struggle doesn't apply STAB or matchups
 	ld a, BATTLE_VARS_MOVE_ANIM
 	call GetBattleVar
-	cp STRUGGLE
+	inc a ; cp STRUGGLE
 	ret z
 
 	; Apply type matchups
@@ -1245,7 +1244,7 @@ BattleCommand_stab:
 	ld [wCurSpecies], a
 	ld a, MON_FORM
 	call TrueUserPartyAttr
-	and BASEMON_MASK
+	and SPECIESFORM_MASK
 	ld [wCurForm], a
 	call GetBaseData
 	ld hl, wBaseType
@@ -1443,12 +1442,11 @@ CheckTypeMatchup:
 
 _CheckTypeMatchup:
 	push hl
-	ld de, 1 ; IsInArray checks below use single-byte arrays
 ; Handle powder moves
 	ld a, BATTLE_VARS_MOVE_ANIM
 	call GetBattleVar
 	ld hl, PowderMoves
-	call IsInArray
+	call IsInByteArray
 	jr nc, .skip_powder
 	call GetOpponentItemAfterUnnerve
 	ld a, b
@@ -1476,11 +1474,11 @@ _CheckTypeMatchup:
 	ld c, [hl]
 	ld a, $10 ; 1.0
 	ld [wTypeMatchup], a
-	ld hl, InverseTypeMatchup
+	ld hl, InverseTypeMatchups
 	ld a, [wBattleType]
 	cp BATTLETYPE_INVERSE
 	jr z, .TypesLoop
-	ld hl, TypeMatchup
+	ld hl, TypeMatchups
 .TypesLoop:
 	ld a, [hli]
 	; terminator
@@ -1558,7 +1556,6 @@ _CheckTypeMatchup:
 	ret
 
 BattleCommand_checkpowder:
-	ld de, 1
 	ld a, BATTLE_VARS_MOVE_ANIM
 	call GetBattleVar
 	cp SING
@@ -1566,7 +1563,7 @@ BattleCommand_checkpowder:
 	cp THUNDER_WAVE
 	jr z, .twave
 	ld hl, PowderMoves
-	call IsInArray
+	call IsInByteArray
 	ret nc
 	jr BattleCommand_resettypematchup
 .sing
@@ -1623,6 +1620,13 @@ BattleCommand_damagevariation:
 	ret c
 
 .go
+if DEF(DEBUG)
+	push hl
+	ld hl, DealtXDamageText
+	call StdBattleTextbox
+	pop hl
+endc
+
 	; Start with the current (100%) damage.
 	xor a
 	ldh [hMultiplicand + 0], a
@@ -1706,7 +1710,7 @@ BattleCommand_checkhit:
 	ret z
 	ld a, BATTLE_VARS_MOVE_ANIM
 	call GetBattleVar
-	cp STRUGGLE
+	inc a ; cp STRUGGLE
 	ret z
 
 	; Immunity might be set already from Prankster
@@ -2218,8 +2222,7 @@ BattleCommand_moveanimnosub:
 	ld a, [wEnemyMonSpecies]
 .got_user_species
 	ld hl, FuryAttackUsers
-	ld de, 1
-	call IsInArray
+	call IsInByteArray
 	pop de
 	jr nc, .multihit
 	ld a, $2
@@ -2253,10 +2256,9 @@ StatUpDownAnim:
 	jr z, .got_user_species
 	ld a, [wEnemyMonSpecies]
 .got_user_species
-	ld hl, WithdrawUsers
-	ld de, 1
 	push af
-	call IsInArray
+	ld hl, WithdrawUsers
+	call IsInByteArray
 	jr nc, .not_withdraw
 	pop af
 	ld a, $1
@@ -2264,8 +2266,7 @@ StatUpDownAnim:
 .not_withdraw
 	pop af ; restore species to a
 	inc hl ; ld hl, HardenUsers
-	; ld de, 1
-	call IsInArray
+	call IsInByteArray
 	jr nc, .not_harden
 	ld a, $2
 	jr .got_kick_counter
@@ -2326,6 +2327,9 @@ BattleCommand_failuretext:
 	jp nz, EndMoveEffect
 
 .multihit
+	ld a, BATTLE_VARS_SUBSTATUS3
+	call GetBattleVarAddr
+	res SUBSTATUS_IN_LOOP, [hl]
 	call BattleCommand_raisesub
 	jp EndMoveEffect
 
@@ -2982,12 +2986,17 @@ BattleCommand_posthiteffects:
 	call nz, ConsumeOpponentItem
 
 .rocky_helmet_done
+	call GetTrueUserAbility
+	cp STENCH
+	ld c, 10
+	jr z, .do_flinch_up
 	call GetUserItem
 	push bc
 	call GetCurItemName
 	pop bc
 	ld a, b
 	cp HELD_FLINCH_UP
+.do_flinch_up
 	call z, .flinch_up
 	jp .checkfaint
 .flinch_up
@@ -3256,8 +3265,7 @@ EndMoveDamageChecks:
 	ld a, BATTLE_VARS_MOVE_ANIM
 	call GetBattleVar
 	ld hl, SoundMoves
-	ld de, 1
-	call IsInArray
+	call IsInByteArray
 	pop bc
 	ret nc
 
@@ -3337,7 +3345,7 @@ UnevolvedEviolite:
 	; b = form
 	ld a, MON_FORM
 	call OpponentPartyAttr
-	and BASEMON_MASK
+	and SPECIESFORM_MASK
 	ld b, a
 	; bc = index
 	call GetSpeciesAndFormIndex
@@ -3346,7 +3354,7 @@ UnevolvedEviolite:
 	add hl, bc
 	add hl, bc
 	ld a, BANK(EvosAttacksPointers)
-	call GetFarHalfword
+	call GetFarWord
 	ld a, BANK(EvosAttacks)
 	call GetFarByte
 	and a
@@ -4276,9 +4284,9 @@ SelfInflictDamageToSubstitute:
 
 	ld hl, wCurDamage
 	ld a, [hl]
-	ld [hl], 0
-	inc hl
 	and a
+	ld a, 0
+	ld [hli], a
 	jr nz, .broke
 
 	ld a, [de]
@@ -5513,8 +5521,8 @@ BattleCommand_charge:
 	jp EndMoveEffect
 
 .UsedText:
-	text_jump Text_BattleUser ; "[USER]"
-	start_asm
+	text_far Text_BattleUser ; "[USER]"
+	text_asm
 	ld a, BATTLE_VARS_MOVE_ANIM
 	call GetBattleVar
 
@@ -5532,17 +5540,17 @@ BattleCommand_charge:
 
 .SolarBeam:
 ; 'took in sunlight!'
-	text_jump _BattleTookSunlightText
+	text_far _BattleTookSunlightText
 	text_end
 
 .Fly:
 ; 'flew up high!'
-	text_jump _BattleFlewText
+	text_far _BattleFlewText
 	text_end
 
 .Dig:
 ; 'dug a hole!'
-	text_jump _BattleDugText
+	text_far _BattleDugText
 	text_end
 
 BattleCommand_traptarget:
@@ -5615,7 +5623,8 @@ BattleCommand_traptarget:
 BattleCommand_recoil:
 	ld a, BATTLE_VARS_MOVE_ANIM
 	call GetBattleVar
-	cp STRUGGLE
+	ld b, a
+	inc a ; cp STRUGGLE
 	jp z, .StruggleRecoil
 
 	; For all other moves, potentially disable
@@ -5644,7 +5653,6 @@ BattleCommand_recoil:
 .recoil_floor
 	call FloorBC
 	predef SubtractHPFromUser
-
 .recoil_text
 	ld hl, RecoilText
 	jp StdBattleTextbox
@@ -5881,7 +5889,7 @@ BattleCommand_heal:
 	call GetBattleVarAddr
 	ld a, [hl]
 	and a
-	ld [hl], REST_TURNS + 1
+	ld [hl], REST_SLEEP_TURNS + 1
 	ld hl, WentToSleepText
 	jr z, .no_status_to_heal
 	ld hl, RestedText
@@ -6045,8 +6053,7 @@ CheckSubstituteOpp:
 	ld a, BATTLE_VARS_MOVE_ANIM
 	call GetBattleVar
 	ld hl, SoundMoves
-	ld de, 1
-	call IsInArray
+	call IsInByteArray
 	pop hl
 	pop de
 	pop bc
@@ -6416,9 +6423,8 @@ GetUserItemAfterUnnerve::
 	ld a, [hl]
 	push de
 	push hl
-	ld de, 1
 	ld hl, EdibleBerries
-	call IsInArray
+	call IsInByteArray
 	pop hl
 	pop de
 	ret c
@@ -6440,10 +6446,10 @@ GetItemHeldEffect:
 	dec a
 	ld c, a
 	ld b, 0
-	ld a, NUM_ITEMATTRS
+	ld a, ITEMATTR_STRUCT_LENGTH
 	rst AddNTimes
 	ld a, BANK(ItemAttributes)
-	call GetFarHalfword
+	call GetFarWord
 	ld b, l
 	ld c, h
 	pop hl

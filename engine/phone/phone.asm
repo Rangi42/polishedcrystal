@@ -264,7 +264,7 @@ CheckSpecialPhoneCall::
 
 .script
 	pause 30
-	jump Script_ReceivePhoneCall
+	sjump Script_ReceivePhoneCall
 
 .DoSpecialPhoneCall:
 	ld a, [wSpecialPhoneCallID]
@@ -331,7 +331,7 @@ MakePhoneCallFromPokegear:
 	ld hl, PHONE_CONTACT_SCRIPT1_BANK
 	add hl, de
 	ld b, [hl]
-	ld hl, PHONE_CONTACT_SCRIPT1_ADDR_LO
+	ld hl, PHONE_CONTACT_SCRIPT1_ADDR
 	add hl, de
 	ld a, [hli]
 	ld h, [hl]
@@ -355,12 +355,12 @@ MakePhoneCallFromPokegear:
 	jp ExecuteCallbackScript
 
 LoadPhoneScriptBank:
-	ptcall wPhoneScriptBank
-	return
+	memcall wPhoneScriptBank
+	endcallback
 
 LoadOutOfAreaScript:
 	scall PhoneOutOfAreaScript
-	return
+	endcallback
 
 PhoneOutOfAreaScript:
 	farwritetext _PhoneOutOfAreaText
@@ -399,7 +399,7 @@ WrongNumber:
 Script_ReceivePhoneCall:
 	refreshscreen
 	callasm RingTwice_StartCall
-	ptcall wCallerContact + PHONE_CONTACT_SCRIPT2_BANK
+	memcall wCallerContact + PHONE_CONTACT_SCRIPT2_BANK
 	waitbutton
 	callasm HangUp
 	closetext
@@ -408,7 +408,7 @@ Script_ReceivePhoneCall:
 
 Script_SpecialBillCall::
 	callasm .LoadBillScript
-	jump Script_ReceivePhoneCall
+	sjump Script_ReceivePhoneCall
 
 .LoadBillScript:
 	ld e, PHONE_BILL
@@ -430,8 +430,8 @@ Phone_TextboxWithName:
 	push bc
 	call Phone_CallerTextbox
 	hlcoord 1, 1
-	ld [hl], "<PHONE>"
-	inc hl
+	ld a, "<PHONE>"
+	ld [hli], a
 	inc hl
 	ld d, h
 	ld e, l
@@ -525,7 +525,7 @@ HangUp_Beep:
 	jp PlaySFX
 
 PhoneClickText:
-	text_jump _PhoneClickText
+	text_far _PhoneClickText
 	text_end
 
 HangUp_BoopOn:
@@ -533,7 +533,7 @@ HangUp_BoopOn:
 	jp PrintText
 
 PhoneEllipseText:
-	text_jump _PhoneEllipseText
+	text_far _PhoneEllipseText
 	text_end
 
 Phone_StartRinging:

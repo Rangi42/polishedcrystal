@@ -1,220 +1,108 @@
 Special_CheckForLuckyNumberWinners:
+; Returns number of digits matching
 	xor a
 	ldh [hScriptVar], a
 	ld [wFoundMatchingIDInParty], a
-	ld a, [wPartyCount]
-	and a
-	ret z
-	ld d, a
-	ld hl, wPartyMon1ID
-	ld bc, wPartySpecies
-.PartyLoop:
-	push hl
-	ld bc, wPartyMon1IsEgg - wPartyMon1ID
-	add hl, bc
-	bit MON_IS_EGG_F, [hl]
-	pop hl
-	call z, .CompareLuckyNumberToMonID
-	ld bc, PARTYMON_STRUCT_LENGTH
-	add hl, bc
-	dec d
-	jr nz, .PartyLoop
-	ld a, BANK(sBox)
-	call GetSRAMBank
-	ld a, [sBoxCount]
-	and a
-	jr z, .SkipOpenBox
-	ld d, a
-	ld hl, sBoxMon1ID
-	ld bc, sBoxSpecies
-.OpenBoxLoop:
-	push hl
-	ld bc, wPartyMon1IsEgg - wPartyMon1ID
-	add hl, bc
-	bit MON_IS_EGG_F, [hl]
-	pop hl
-	jr nz, .SkipOpenBoxMon
-	call .CompareLuckyNumberToMonID
-	jr nc, .SkipOpenBoxMon
-	ld a, 1
-	ld [wFoundMatchingIDInParty], a
 
-.SkipOpenBoxMon:
-	ld bc, BOXMON_STRUCT_LENGTH
-	add hl, bc
-	dec d
-	jr nz, .OpenBoxLoop
-
-.SkipOpenBox:
-	call CloseSRAM
-	ld c, $0
-.BoxesLoop:
-	ld a, [wCurBox]
-	and $f
-	cp c
-	jr z, .SkipBox
-	ld hl, .BoxBankAddresses
-	ld b, 0
-	add hl, bc
-	add hl, bc
-	add hl, bc
-	ld a, [hli]
-	call GetSRAMBank
-	ld a, [hli]
-	ld h, [hl]
-	ld l, a ; hl now contains the address of the loaded box in SRAM
-	ld a, [hl]
-	and a
-	jr z, .SkipBox ; no mons in this box
-	push bc
-	ld b, h
-	ld c, l
-	inc bc
-	ld de, sBoxMon1ID - sBox
-	add hl, de
-	ld d, a
-.BoxNLoop:
-	push hl
-	ld bc, wPartyMon1IsEgg - wPartyMon1ID
-	add hl, bc
-	bit MON_IS_EGG_F, [hl]
-	pop hl
-	jr nz, .SkipBoxMon
-
-	call .CompareLuckyNumberToMonID ; sets hScriptVar and wCurPartySpecies appropriately
-	jr nc, .SkipBoxMon
-	ld a, 1
-	ld [wFoundMatchingIDInParty], a
-
-.SkipBoxMon:
-	ld bc, BOXMON_STRUCT_LENGTH
-	add hl, bc
-	dec d
-	jr nz, .BoxNLoop
-	pop bc
-
-.SkipBox:
-	inc c
-	ld a, c
-	cp NUM_BOXES
-	jr c, .BoxesLoop
-
-	call CloseSRAM
-	ldh a, [hScriptVar]
-	and a
-	ret z ; found nothing
-	ld a, [wFoundMatchingIDInParty]
-	and a
-	push af
-	ld a, [wCurPartySpecies]
-	ld [wNamedObjectIndexBuffer], a
-	call GetPokemonName
-	ld hl, .FoundPartymonText
-	pop af
-	jr z, .print
-	ld hl, .FoundBoxmonText
-
-.print
-	jp PrintText
-
-.CompareLuckyNumberToMonID:
-	push bc
-	push de
-	push hl
-	ld d, h
-	ld e, l
-	ld hl, wBuffer1
-	lb bc, PRINTNUM_LEADINGZEROS | 2, 5
-	call PrintNum
-	ld hl, wLuckyNumberDigitsBuffer
+	; Prepare lucky number buffer
+	ld hl, wStringBuffer1
 	ld de, wLuckyIDNumber
 	lb bc, PRINTNUM_LEADINGZEROS | 2, 5
 	call PrintNum
-	lb bc, 5, 0
-	ld hl, wLuckyNumberDigitsBuffer + 4
-	ld de, wBuffer1 + 4
+
+	ld b, NUM_BOXES
+.outer_loop
+	inc b
+	dec b
+	ld c, PARTY_LENGTH
+	jr z, .loop
+	ld c, MONS_PER_BOX
 .loop
+	farcall GetStorageBoxMon
+	jr z, .next
+
+	ld hl, wTempMonIsEgg
+	bit MON_IS_EGG_F, [hl]
+	jr nz, .next
+	ld de, wTempMonID
+	push bc
+	ld hl, wBuffer1
+	lb bc, PRINTNUM_LEADINGZEROS | 2, 5
+	call PrintNum
+	ld hl, wStringBuffer1 + 4
+	ld de, wBuffer1 + 4
+	ld b, 0
+.compare_loop
 	ld a, [de]
 	cp [hl]
-	jr nz, .done
+	jr nz, .compare_failed
+	inc b
 	dec de
 	dec hl
-	inc c
-	dec b
-	jr nz, .loop
-
-.done
-	pop hl
-	push hl
-	ld de, -6
-	add hl, de
-	ld a, [hl]
-	pop hl
-	pop de
-	push af
-	ld a, c
-	ld b, 1
+	ld a, b
 	cp 5
-	jr z, .okay
-	ld b, 2
-	cp 4
-	jr z, .okay
-	ld b, 3
-	cp 3
-	jr nc, .okay
-	ld b, 4
-	cp 2
-	jr nz, .nomatch
-
-.okay
-	inc b
+	jr nz, .compare_loop
+	; if we're here, all 5 digits match
+.compare_failed
+	ldh a, [hScriptVar]
+	and $f
+	cp b
+	ld a, b
+	pop bc
+	jr nc, .next
+	swap a
+	or b
+	swap a
+	ldh [hScriptVar], a
+	ld hl, wFoundMatchingIDInParty
+	ld [hl], c
+	cp 5
+	jr z, .done
+	jr nz, .next
+.next
+	dec c
+	jr nz, .loop
+	dec b
+	bit 7, b ; check for reaching -1
+	jr z, .outer_loop
+.done
 	ldh a, [hScriptVar]
 	and a
-	jr z, .bettermatch
-	cp b
-	jr c, .nomatch
+	ret z ; found nothing
 
-.bettermatch
-	dec b
-	ld a, b
+	; Get storage mon nickname
+	push af
+	swap a
+	and $f
+	ld b, a
+	ld a, [wFoundMatchingIDInParty]
+	ld c, a
+	farcall GetStorageBoxMon
+	pop af
+	and $f
 	ldh [hScriptVar], a
-	pop bc
-	ld a, b
-	ld [wCurPartySpecies], a
-	pop bc
-	scf
-	ret
 
-.nomatch
-	pop bc
-	pop bc
-	and a
-	ret
+	inc b
+	dec b
+	ld hl, .MatchInParty
+	jr z, .got_text
+	farcall GetBoxName
+	ld hl, wStringBuffer1
+	ld de, wStringBuffer2
+	ld bc, BOX_NAME_LENGTH
+	rst CopyBytes
+	ld hl, .MatchInStorage
+.got_text
+	jp PrintText
 
-.BoxBankAddresses:
-	dba sBox1
-	dba sBox2
-	dba sBox3
-	dba sBox4
-	dba sBox5
-	dba sBox6
-	dba sBox7
-	dba sBox8
-	dba sBox9
-	dba sBox10
-	dba sBox11
-	dba sBox12
-	dba sBox13
-	dba sBox14
-
-.FoundPartymonText:
+.MatchInParty:
 	; Congratulations! We have a match with the ID number of @  in your party.
-	text_jump _LuckyNumberMatchPartyText
+	text_far _LuckyNumberMatchPartyText
 	text_end
 
-.FoundBoxmonText:
+.MatchInStorage:
 	; Congratulations! We have a match with the ID number of @  in your PC BOX.
-	text_jump _LuckyNumberMatchPCText
+	text_far _LuckyNumberMatchPCText
 	text_end
 
 Special_PrintTodaysLuckyNumber:

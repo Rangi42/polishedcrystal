@@ -33,11 +33,11 @@ ApplyHPBarPals:
 	ret
 
 .Enemy:
-	ld de, wBGPals2 palette PAL_BATTLE_BG_PLAYER_HP + 2
+	ld de, wBGPals2 palette PAL_BATTLE_BG_ENEMY_HP + 2
 	jr .okay
 
 .Player:
-	ld de, wBGPals2 palette PAL_BATTLE_BG_ENEMY_HP + 2
+	ld de, wBGPals2 palette PAL_BATTLE_BG_PLAYER_HP + 2
 
 .okay
 	ld a, c
@@ -234,11 +234,12 @@ LoadMailPalettes:
 	jp ApplyAttrMap
 
 LoadHLPaletteIntoDE:
+	ld c, $8
+LoadCPaletteBytesFromHLIntoDE:
 	ldh a, [rSVBK]
 	push af
 	ld a, $5
 	ldh [rSVBK], a
-	ld c, $8
 .loop
 	ld a, [hli]
 	ld [de], a
@@ -419,6 +420,16 @@ ApplyPartyMenuHPPals:
 	ld a, e
 	jp FillBoxWithByte
 
+SetPartyMenuPal:
+; Writes mon icon color a to palette in de
+	ld hl, PartyMenuOBPals
+	ld bc, 1 palettes
+	push bc
+	rst AddNTimes
+	pop bc
+	ld bc, 1 palettes
+	jp FarCopyColorWRAM
+
 InitPartyMenuOBPals:
 	ld hl, PartyMenuOBPals
 	ld de, wOBPals1
@@ -505,7 +516,7 @@ GetMonPalettePointer:
 	; b = form
 	inc hl ; Form is in the byte after Shiny
 	ld a, [hl]
-	and BASEMON_MASK
+	and SPECIESFORM_MASK
 	ld b, a
 	; bc = index
 	call GetSpeciesAndFormIndex

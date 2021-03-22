@@ -19,10 +19,10 @@ Route18West_MapScriptHeader:
 
 Route18WestAlwaysOnBike:
 	setflag ENGINE_ALWAYS_ON_BIKE
-	return
+	endcallback
 
 Route18WestBikeCheckScript:
-	copybytetovar wPlayerState
+	readmem wPlayerState
 	ifequal PLAYER_BIKE, .done
 	showtext Route18WestBikeWarningText
 	applyonemovement PLAYER, step_down

@@ -45,7 +45,7 @@ FuchsiaCity_MapScriptHeader:
 
 FuchsiaCityFlyPoint:
 	setflag ENGINE_FLYPOINT_FUCHSIA
-	return
+	endcallback
 
 FuchsiaCityYoungsterText:
 	text "One of the Elite"

@@ -19,11 +19,11 @@ MagikarpLengthRaterScript:
 	faceplayer
 	opentext
 	checkevent EVENT_LAKE_OF_RAGE_ELIXIR_ON_STANDBY
-	iftrue UnknownScript_0x19a6fe
+	iftrue .GetReward
 	checkevent EVENT_LAKE_OF_RAGE_ASKED_FOR_MAGIKARP
-	iftrue UnknownScript_0x19a6e0
+	iftrue .AskedForMagikarp
 	checkevent EVENT_CLEARED_ROCKET_HIDEOUT
-	iftrue UnknownScript_0x19a6d7
+	iftrue .ClearedRocketHideout
 	checkevent EVENT_LAKE_OF_RAGE_EXPLAINED_WEIRD_MAGIKARP
 	iftrue_jumpopenedtext MagikarpLengthRaterText_MenInBlack
 	writetext MagikarpLengthRaterText_LakeOfRageHistory
@@ -32,42 +32,40 @@ MagikarpLengthRaterScript:
 	setevent EVENT_LAKE_OF_RAGE_EXPLAINED_WEIRD_MAGIKARP
 	end
 
-UnknownScript_0x19a6d7:
+.ClearedRocketHideout:
 	writetext MagikarpLengthRaterText_WorldsLargestMagikarp
 	waitbutton
 	closetext
 	setevent EVENT_LAKE_OF_RAGE_ASKED_FOR_MAGIKARP
 	end
 
-UnknownScript_0x19a6e0:
-	writebyte MAGIKARP
+.AskedForMagikarp:
+	setval MAGIKARP
 	special Special_FindThatSpecies
-	iffalse UnknownScript_0x19a6d7
+	iffalse .ClearedRocketHideout
 	writetext MagikarpLengthRaterText_YouHaveAMagikarp
 	waitbutton
-	special Special_CheckMagikarpLength
+	special CheckMagikarpLength
 	iffalse_jumpopenedtext MagikarpLengthRaterText_NotMagikarp
-	ifequal $1, UnknownScript_0x19a722
-	ifequal $2, UnknownScript_0x19a716
-	jump UnknownScript_0x19a6fe
-
-UnknownScript_0x19a6fe:
+	ifequal $1, .Refused
+	ifequal $2, .TooShort
+.GetReward:
 	writetext MagikarpLengthRaterText_Memento
-	buttonsound
+	promptbutton
 	verbosegiveitem ELIXIR
-	iffalse UnknownScript_0x19a711
+	iffalse .NoRoom
 	writetext MagikarpLengthRaterText_Bonus
 	waitbutton
 	closetext
 	clearevent EVENT_LAKE_OF_RAGE_ELIXIR_ON_STANDBY
 	end
 
-UnknownScript_0x19a711:
+.NoRoom:
 	closetext
 	setevent EVENT_LAKE_OF_RAGE_ELIXIR_ON_STANDBY
 	end
 
-UnknownScript_0x19a716:
+.TooShort:
 	jumpthisopenedtext
 
 	text "Wow! This one is"
@@ -80,7 +78,7 @@ UnknownScript_0x19a716:
 	line "before."
 	done
 
-UnknownScript_0x19a722:
+.Refused:
 	jumpthisopenedtext
 
 	text "Oh… So you didn't"

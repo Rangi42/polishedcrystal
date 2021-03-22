@@ -56,7 +56,7 @@ MurkySwampCherylScript:
 .Beaten
 	opentext
 	writetext .ItemText
-	buttonsound
+	promptbutton
 	verbosegiveitem POWER_WEIGHT
 	iffalse_endtext
 	writetext .GoodbyeText

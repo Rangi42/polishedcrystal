@@ -25,7 +25,7 @@ Colosseum_MapScriptHeader:
 	const COLOSSEUM_CHRIS2
 
 ColosseumTrigger0:
-	priorityjump ColosseumScript_Initialize
+	prioritysjump ColosseumScript_Initialize
 	end
 
 ColosseumScript_SetWhichChris:
@@ -33,16 +33,16 @@ ColosseumScript_SetWhichChris:
 	iffalse .Chris2
 	disappear COLOSSEUM_CHRIS2
 	appear COLOSSEUM_CHRIS1
-	return
+	endcallback
 
 .Chris2:
 	disappear COLOSSEUM_CHRIS1
 	appear COLOSSEUM_CHRIS2
-	return
+	endcallback
 
 ColosseumScript_InitializeCB:
 	setmapscene POKECENTER_2F, $2
-	return
+	endcallback
 
 ColosseumScript_Initialize:
 	setscene $1

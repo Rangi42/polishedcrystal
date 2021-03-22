@@ -189,7 +189,7 @@ BattleAnimOAMUpdate:
 	ret
 
 InitBattleAnimBuffer:
-	ld hl, BATTLEANIMSTRUCT_01
+	ld hl, BATTLEANIMSTRUCT_OAMFLAGS
 	add hl, bc
 	ld a, [hl]
 	and %10000000
@@ -200,7 +200,7 @@ InitBattleAnimBuffer:
 	add hl, bc
 	ld a, [hl]
 	ld [wBattleAnimTempPalette], a
-	ld hl, BATTLEANIMSTRUCT_02
+	ld hl, BATTLEANIMSTRUCT_FIX_Y
 	add hl, bc
 	ld a, [hl]
 	ld [wBattleAnimTemp1], a
@@ -219,7 +219,7 @@ InitBattleAnimBuffer:
 	ldh a, [hBattleTurn]
 	and a
 	ret z
-	ld hl, BATTLEANIMSTRUCT_01
+	ld hl, BATTLEANIMSTRUCT_OAMFLAGS
 	add hl, bc
 	ld a, [hl]
 	ld [wBattleAnimTempOAMFlags], a

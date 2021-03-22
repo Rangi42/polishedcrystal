@@ -125,7 +125,7 @@ EvolveAfterBattle_MasterLoop:
 	cp PICHU
 	jr nz, .not_spiky_eared_pichu
 	ld a, [wTempMonForm]
-	and BASEMON_MASK
+	and SPECIESFORM_MASK
 	cp 2
 	jp z, .dont_evolve_2
 
@@ -237,7 +237,7 @@ endr
 	ld a, [wTempMonLevel]
 	ld [wCurPartyLevel], a
 	ld a, [wTempMonForm]
-	and BASEMON_MASK
+	and SPECIESFORM_MASK
 	ld [wCurForm], a
 	ld a, $1
 	ld [wMonTriedToEvolve], a
@@ -248,7 +248,7 @@ endr
 	ld [wBuffer2], a
 	ld a, [wCurPartyMon]
 	ld hl, wPartyMonNicknames
-	call GetNick
+	call GetNickname
 	call CopyName1
 	ld hl, Text_WhatEvolving
 	call PrintText
@@ -301,7 +301,7 @@ endr
 	call ClearTileMap
 	call UpdateSpeciesNameIfNotNicknamed
 	ld a, [wTempMonForm]
-	and BASEMON_MASK
+	and SPECIESFORM_MASK
 	ld [wCurForm], a
 	call GetBaseData
 
@@ -407,7 +407,7 @@ _PlainFormOnEvolution:
 _ChangeFormOnEvolution:
 	ld b, a
 	ld a, [wTempMonForm]
-	and $ff - BASEMON_MASK
+	and $ff - SPECIESFORM_MASK
 	or b
 	ld [wTempMonForm], a
 	ret
@@ -478,22 +478,22 @@ IsMonHoldingEverstone:
 
 Text_CongratulationsYourPokemon:
 	; Congratulations! Your @ @
-	text_jump _CongratulationsYourPokemonText
+	text_far _CongratulationsYourPokemonText
 	text_end
 
 Text_EvolvedIntoPKMN:
 	; evolved into @ !
-	text_jump _EvolvedIntoText
+	text_far _EvolvedIntoText
 	text_end
 
 Text_StoppedEvolving:
 	; Huh? @ stopped evolving!
-	text_jump _StoppedEvolvingText
+	text_far _StoppedEvolvingText
 	text_end
 
 Text_WhatEvolving:
 	; What? @ is evolving!
-	text_jump _EvolvingText
+	text_far _EvolvingText
 	text_end
 
 LearnEvolutionMove:
@@ -758,7 +758,7 @@ GetPartyEvosAttacksPointer:
 	ld bc, PARTYMON_STRUCT_LENGTH
 	rst AddNTimes
 	ld a, [hl]
-	and BASEMON_MASK
+	and SPECIESFORM_MASK
 	ld b, a
 	; c = species
 	pop af

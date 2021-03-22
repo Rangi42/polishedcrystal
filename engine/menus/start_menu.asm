@@ -278,9 +278,7 @@ endr
 .DrawBugContestStatus:
 	ld hl, wStatusFlags2
 	bit 2, [hl] ; ENGINE_BUG_CONTEST_TIMER
-	jr nz, .contest
-	ret
-.contest
+	ret z
 	farjp StartMenu_PrintBugContestStatus
 
 StartMenu_Exit:
@@ -302,7 +300,7 @@ StartMenu_Quit:
 	ret
 
 .EndTheContestText:
-	text_jump _StartMenuContestEndText
+	text_far _StartMenuContestEndText
 	text_end
 
 StartMenu_Save:

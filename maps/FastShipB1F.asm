@@ -73,7 +73,7 @@ UnknownScript_0x7678d:
 	waitendtext
 
 UnknownScript_0x76799:
-	buttonsound
+	promptbutton
 	jumpopenedtext FastShipB1FOnDutySailorSawLittleGirlText
 
 GenericTrainerSailorJeff:

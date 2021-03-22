@@ -27,11 +27,11 @@ GoldenrodDeptStoreB1F_MapScriptHeader:
 UnknownScript_0x7d781:
 	checkevent EVENT_RECEIVED_CARD_KEY
 	iftrue UnknownScript_0x7d78a
-	jump UnknownScript_0x7d791
+	sjump UnknownScript_0x7d791
 
 UnknownScript_0x7d78a:
 	changeblock 16, 4, $d
-	jump UnknownScript_0x7d791
+	sjump UnknownScript_0x7d791
 
 UnknownScript_0x7d791:
 	checkevent EVENT_WAREHOUSE_LAYOUT_2
@@ -39,19 +39,19 @@ UnknownScript_0x7d791:
 	checkevent EVENT_WAREHOUSE_LAYOUT_3
 	iftrue .Layout3
 	changeblock 10, 8, $d
-	return
+	endcallback
 
 .Layout2:
 	changeblock 4, 10, $d
-	return
+	endcallback
 
 .Layout3:
 	changeblock 10, 12, $d
-	return
+	endcallback
 
 UnknownScript_0x7d7ac:
 	clearevent EVENT_WAREHOUSE_BLOCKED_OFF
-	return
+	endcallback
 
 GoldenrodDeptStoreB1FBlackBelt1Text:
 	text "Hey, kid! You're"

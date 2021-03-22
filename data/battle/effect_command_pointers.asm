@@ -1,21 +1,21 @@
 command: MACRO
-	enum \1_command
-\1 equs "db \1_command"
+	const \1_command
+\1 EQUS "db \1_command"
 	dw BattleCommand_\1
 ENDM
 
 commandx: MACRO
-	enum \1_command
-\1 equs "db \1_command,"
+	const \1_command
+\1 EQUS "db \1_command,"
 	dw BattleCommand_\1
 ENDM
 
 commandonly: MACRO
-	enum \1_command
-\1 equs "db \1_command"
+	const \1_command
+\1 EQUS "db \1_command"
 ENDM
 
-	enum_start 1
+	const_def 1
 
 BattleCommandPointers:
 	command checkturn
@@ -171,6 +171,6 @@ BattleCommandPointers:
 FIRST_MOVEARG_COMMAND EQU raisestat_command
 LAST_MOVEARG_COMMAND EQU loweroppstathit_command
 
-	enum_start -1, -1
+	const_def -1, -1
 	commandonly endmove
 	commandonly endturn

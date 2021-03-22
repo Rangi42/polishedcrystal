@@ -2,7 +2,7 @@ WiseTriosRoom_MapScriptHeader:
 	def_scene_scripts
 
 	def_callbacks
-	callback MAPCALLBACK_OBJECTS, UnknownScript_0x98574
+	callback MAPCALLBACK_OBJECTS, WiseTriosRoomCallback
 
 	def_warp_events
 	warp_event  7,  4, BELLCHIME_TRAIL, 1
@@ -30,26 +30,26 @@ WiseTriosRoom_MapScriptHeader:
 	const WISETRIOSROOM_ELDER5
 	const WISETRIOSROOM_ELDER6
 
-UnknownScript_0x98574:
+WiseTriosRoomCallback:
 	checkevent EVENT_FOUGHT_SUICUNE
-	iftrue UnknownScript_0x98593
+	iftrue .NoWiseTrio
 	checkevent EVENT_KOJI_ALLOWS_YOU_PASSAGE_TO_TIN_TOWER
-	iftrue UnknownScript_0x9858c
+	iftrue .WiseTrio2
 	checkkeyitem CLEAR_BELL
-	iftrue UnknownScript_0x9858c
+	iftrue .WiseTrio2
 	clearevent EVENT_WISE_TRIOS_ROOM_WISE_TRIO_1
 	setevent EVENT_WISE_TRIOS_ROOM_WISE_TRIO_2
-	return
+	endcallback
 
-UnknownScript_0x9858c:
+.WiseTrio2:
 	setevent EVENT_WISE_TRIOS_ROOM_WISE_TRIO_1
 	clearevent EVENT_WISE_TRIOS_ROOM_WISE_TRIO_2
-	return
+	endcallback
 
-UnknownScript_0x98593:
+.NoWiseTrio:
 	setevent EVENT_WISE_TRIOS_ROOM_WISE_TRIO_1
 	setevent EVENT_WISE_TRIOS_ROOM_WISE_TRIO_2
-	return
+	endcallback
 
 WiseTriosRoom_CannotEnterTinTowerScript:
 	turnobject WISETRIOSROOM_ELDER3, UP
@@ -86,7 +86,7 @@ ElderKojiScript:
 	showemote EMOTE_SHOCK, WISETRIOSROOM_ELDER6, 20
 	opentext
 	writetext SageKojiAfterBattleQuestionText
-	buttonsound
+	promptbutton
 	writetext SageKojiAfterBattleSpeechText
 	waitbutton
 	closetext

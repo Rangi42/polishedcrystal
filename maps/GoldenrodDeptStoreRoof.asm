@@ -29,24 +29,24 @@ GoldenrodDeptStoreRoof_MapScriptHeader:
 GoldenrodDeptStoreRoofCheckSaleChangeBlock:
 	checkflag ENGINE_GOLDENROD_DEPT_STORE_SALE_IS_ON
 	iftrue .ChangeBlock
-	return
+	endcallback
 
 .ChangeBlock:
 	changeblock 0, 2, $3f
 	changeblock 0, 4, $f
-	return
+	endcallback
 
 GoldenrodDeptStoreRoofCheckSaleChangeClerk:
 	checkflag ENGINE_GOLDENROD_DEPT_STORE_SALE_IS_ON
 	iftrue .ChangeClerk
 	setevent EVENT_GOLDENROD_SALE_OFF
 	clearevent EVENT_GOLDENROD_SALE_ON
-	return
+	endcallback
 
 .ChangeClerk:
 	clearevent EVENT_GOLDENROD_SALE_OFF
 	setevent EVENT_GOLDENROD_SALE_ON
-	return
+	endcallback
 
 GoldenrodDeptStoreRoofFisherScript:
 	faceplayer
@@ -61,7 +61,7 @@ GoldenrodDeptStoreRoofFisherScript:
 	writetext GotVoltorbDollText
 	playsound SFX_ITEM
 	pause 60
-	buttonsound
+	promptbutton
 	writetext VoltorbDollSentText
 	waitbutton
 .AlreadyGotVoltorbDoll
@@ -112,7 +112,7 @@ PokeDollVendingMachine:
 	waitbutton
 	writetext JigglypuffDollSentText
 	waitbutton
-	jump .Start
+	sjump .Start
 
 .DittoDoll:
 	checkmoney $0, 2400
@@ -126,7 +126,7 @@ PokeDollVendingMachine:
 	waitbutton
 	writetext DittoDollSentText
 	waitbutton
-	jump .Start
+	sjump .Start
 
 .MeowthDoll:
 	checkmoney $0, 2400
@@ -140,17 +140,17 @@ PokeDollVendingMachine:
 	waitbutton
 	writetext MeowthDollSentText
 	waitbutton
-	jump .Start
+	sjump .Start
 
 .NotEnoughMoney:
 	writetext PokeDollVendingMachineNoMoneyText
 	waitbutton
-	jump .Start
+	sjump .Start
 
 .AlreadyBought:
 	writetext PokeDollVendingMachineAlreadyBoughtText
 	waitbutton
-	jump .Start
+	sjump .Start
 
 .MenuData:
 	db $40 ; flags

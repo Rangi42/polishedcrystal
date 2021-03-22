@@ -33,7 +33,7 @@ GoldenrodBikeShopClerkScript:
 	yesorno
 	iffalse_jumpopenedtext GoldenrodBikeShopClerkRefusedText
 	writetext GoldenrodBikeShopClerkAgreedText
-	buttonsound
+	promptbutton
 	waitsfx
 	verbosegivekeyitem BICYCLE
 	setflag ENGINE_BIKE_SHOP_CALL_ENABLED

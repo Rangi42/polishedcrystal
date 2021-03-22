@@ -78,21 +78,21 @@ DanceTheaterSurfGuy:
 	faceplayer
 	opentext
 	writetext SurfGuyNeverLeftAScratchText
-	buttonsound
+	promptbutton
 	checkevent EVENT_GOT_HM03_SURF
 	iftrue_jumpopenedtext SurfGuyElegantKimonoGirlsText
 	checkevent EVENT_BEAT_KIMONO_GIRL_NAOKO
-	iffalse UnknownScript_0x994f3
+	iffalse .KimonoGirlsUndefeated
 	checkevent EVENT_BEAT_KIMONO_GIRL_SAYO
-	iffalse UnknownScript_0x994f3
+	iffalse .KimonoGirlsUndefeated
 	checkevent EVENT_BEAT_KIMONO_GIRL_ZUKI
-	iffalse UnknownScript_0x994f3
+	iffalse .KimonoGirlsUndefeated
 	checkevent EVENT_BEAT_KIMONO_GIRL_KUNI
-	iffalse UnknownScript_0x994f3
+	iffalse .KimonoGirlsUndefeated
 	checkevent EVENT_BEAT_KIMONO_GIRL_MIKI
-	iffalse UnknownScript_0x994f3
+	iffalse .KimonoGirlsUndefeated
 	writetext SurfGuyLikeADanceText
-	buttonsound
+	promptbutton
 	verbosegivetmhm HM_SURF
 	setevent EVENT_GOT_HM03_SURF
 	jumpthisopenedtext
@@ -104,7 +104,7 @@ DanceTheaterSurfGuy:
 	cont "across water."
 	done
 
-UnknownScript_0x994f3:
+.KimonoGirlsUndefeated:
 	checkflag ENGINE_PLAYER_IS_FEMALE
 	iftrue_jumpopenedtext SurfGuyLassieGiftText
 	jumpthisopenedtext

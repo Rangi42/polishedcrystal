@@ -74,11 +74,13 @@ Init::
 	ldh [rLCDC], a
 
 ; Clear WRAM bank 0
+; Can't use rst ByteFill since we haven't initialized sp yet,
+; and wStack is part of WRAM0.
 	ld hl, wRAM0Start
 	ld bc, wRAM0End - wRAM0Start
 .ByteFill:
-	ld [hl], 0
-	inc hl
+	xor a
+	ld [hli], a
 	dec bc
 	ld a, b
 	or c
@@ -106,6 +108,18 @@ Init::
 	call ClearVRAM
 	call ClearSprites
 	call ClearsScratch
+
+	; Write game version to WRAM.
+	ldh a, [rSVBK]
+	push af
+	ld a, BANK(wGameVersion)
+	ldh [rSVBK], a
+	ld a, HIGH(SAVE_VERSION)
+	ld [wGameVersion], a
+	ld a, LOW(SAVE_VERSION)
+	ld [wGameVersion + 1], a
+	pop af
+	ldh [rSVBK], a
 
 ; Initialize the RNG state. It can be initialized to anything but zero; this is just a simple way of doing it.
 	ld hl, wRNGState
@@ -139,6 +153,10 @@ Init::
 	ldh [hWX], a
 	ldh [rWX], a
 
+	farcall InitCGBPals
+
+	farcall InitSGBBorder
+
 	ld a, %11100011
 	; LCD on
 	; Win tilemap 1
@@ -160,10 +178,10 @@ Init::
 	ldh [hSingleRet], a
 	ld a, $c3 ; jp
 	ldh [hFunctionJump], a
-
-	farcall InitSGBBorder
-
-	farcall InitCGBPals
+	ld a, LOW(LCDGeneric)
+	ldh [hFunctionTargetLo], a
+	ld a, HIGH(LCDGeneric)
+	ldh [hFunctionTargetHi], a
 
 	ld a, HIGH(vBGMap1)
 	ldh [hBGMapAddress + 1], a

@@ -1,3 +1,9 @@
+; TypeNames indexes (see data/types/names.asm)
+; also used in:
+; - PokedexTypeSearchConversionTable (see data/types/search_types.asm)
+; - PokedexTypeSearchStrings (see data/types/search_strings.asm)
+; - TypeMatchups (see data/types/type_matchups.asm)
+; - InverseTypeMatchups (see data/types/type_matchups.asm)
 	const_def
 	; Type order matters for Hidden Power and non-PSS category
 	const NORMAL    ; 00
@@ -20,7 +26,9 @@ SPECIAL_TYPES EQU const_value
 	const DARK      ; 10
 	const FAIRY     ; 11
 	const UNKNOWN_T ; 12
+NUM_TYPES EQU const_value
 
+; categories
 	const_def
 	const PHYSICAL
 	const SPECIAL

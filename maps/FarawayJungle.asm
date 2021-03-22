@@ -25,7 +25,7 @@ FarawayJungleMew:
 	pause 15
 	closetext
 	loadwildmon MEW, 30
-	writecode VAR_BATTLETYPE, BATTLETYPE_LEGENDARY
+	loadvar VAR_BATTLETYPE, BATTLETYPE_LEGENDARY
 	startbattle
 	disappear FARAWAYJUNGLE_MEW
 	setevent EVENT_FARAWAY_JUNGLE_MEW

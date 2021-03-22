@@ -30,7 +30,7 @@ CeruleanGym_MapScriptHeader:
 	const CERULEANGYM_ROCKET
 
 CeruleanGymTrigger1:
-	priorityjump UnknownScript_0x1883de
+	prioritysjump UnknownScript_0x1883de
 CeruleanGymTrigger0:
 	end
 
@@ -83,26 +83,26 @@ CeruleanGymMistyScript:
 	playsound SFX_GET_BADGE
 	waitsfx
 	setflag ENGINE_CASCADEBADGE
-	checkcode VAR_BADGES
+	readvar VAR_BADGES
 	ifequal 9, .FirstBadge
 	ifequal 10, .SecondBadge
 	ifequal 12, .LyrasEgg
-	jump .FightDone
+	sjump .FightDone
 .FirstBadge:
 	specialphonecall SPECIALCALL_FIRSTBADGE
-	jump .FightDone
+	sjump .FightDone
 .SecondBadge:
 	checkevent EVENT_GOT_GS_BALL_FROM_POKECOM_CENTER
 	iftrue .FightDone
 	specialphonecall SPECIALCALL_SECONDBADGE
-	jump .FightDone
+	sjump .FightDone
 .LyrasEgg:
 	specialphonecall SPECIALCALL_LYRASEGG
 .FightDone:
 	checkevent EVENT_GOT_TM63_WATER_PULSE
 	iftrue_jumpopenedtext MistyFightDoneText
 	writetext MistyGiveTMText
-	buttonsound
+	promptbutton
 	verbosegivetmhm TM_WATER_PULSE
 	setevent EVENT_GOT_TM63_WATER_PULSE
 	jumpopenedtext MistyOutroText
@@ -188,7 +188,7 @@ CeruleanGymStatue2:
 	jumptext CeruleanGymNote2
 
 CeruleanGymStatue:
-	trainertotext MISTY, 1, $1
+	gettrainername MISTY, 1, $1
 	checkflag ENGINE_CASCADEBADGE
 	iftrue .Beaten
 	jumpstd gymstatue1

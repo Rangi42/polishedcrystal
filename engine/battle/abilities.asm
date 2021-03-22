@@ -232,9 +232,8 @@ IntimidateAbility:
 	push af
 	farcall BufferAbility
 	pop af
-	ld de, 1
 	ld hl, NoIntimidateAbilities
-	call IsInArray
+	call IsInByteArray
 	jr nc, .intimidate_ok
 	call DisableAnimations
 	call ShowAbilityActivation
@@ -416,9 +415,8 @@ ForewarnAbility:
 	push af
 	push hl
 	; Check for special cases
-	ld de, 1
 	ld hl, DynamicPowerMoves
-	call IsInArray
+	call IsInByteArray
 	pop hl
 	pop bc
 	jr nc, .not_special
@@ -576,23 +574,18 @@ RunFaintAbilities:
 	farcall GetFutureSightUser
 	ret nz
 	call GetTrueUserAbility
-	call .user_abilities
+	call _RunFaintUserAbilities
 	call GetOpponentAbilityAfterMoldBreaker
 	push af
 	call SwitchTurn
 	pop af
-	call .opponent_abilities
+	call _RunFaintOpponentAbilities
 	jp SwitchTurn
 
-.user_abilities
-	cp MOXIE
-	jp z, MoxieAbility
-	ret
-.opponent_abilities
+_RunFaintOpponentAbilities:
 	cp AFTERMATH
-	jp z, AftermathAbility
-	ret
-
+	ret nz
+	; fallthrough
 AftermathAbility:
 	; Damp protects against this
 	call GetOpponentAbility
@@ -836,8 +829,7 @@ CheckNullificationAbilities:
 	ld a, BATTLE_VARS_MOVE
 	call GetBattleVar
 	ld hl, SoundMoves
-	ld de, 1
-	call IsInArray
+	call IsInByteArray
 	jr c, .ability_ok
 	ret
 
@@ -924,10 +916,15 @@ JustifiedAbility:
 	cp DARK
 	ret nz
 	jr AttackUpAbility
+_RunFaintUserAbilities:
+	cp MOXIE
+	ret nz
+	; fallthrough
 MoxieAbility:
 	; Don't run if battle is over
 	farcall CheckAnyOtherAliveOpponentMons
 	ret z
+	; fallthrough
 SapSipperAbility:
 AttackUpAbility:
 	ld b, ATTACK
@@ -943,8 +940,7 @@ RattledAbility:
 	cp DARK
 	jr z, .ok
 	cp GHOST
-	jr z, .ok
-	ret
+	ret nz
 .ok
 	; fallthrough
 MotorDriveAbility:
@@ -1620,9 +1616,9 @@ MoveBoostAbility:
 	ld a, BATTLE_VARS_MOVE
 	call GetBattleVar
 	push bc
-	call IsInArray
+	call IsInByteArray
 	pop bc
-	ret c
+	ret nc
 	ld a, b
 	jp MultiplyAndDivide
 
@@ -1647,7 +1643,7 @@ RecklessAbility:
 ; 120% damage for (Hi) Jump Kick and recoil moves except for Struggle
 	ld a, BATTLE_VARS_MOVE
 	call GetBattleVar
-	cp STRUGGLE
+	inc a ; cp STRUGGLE
 	ret z
 	ld a, BATTLE_VARS_MOVE_EFFECT
 	call GetBattleVar
@@ -1808,11 +1804,10 @@ _GetOpponentAbilityAfterMoldBreaker::
 	cp MOLD_BREAKER
 	ld a, b
 	jr nz, .end
-	ld de, 1
 	push hl
 	push bc
 	ld hl, MoldBreakerSuppressedAbilities
-	call IsInArray
+	call IsInByteArray
 	pop bc
 	pop hl
 	ld a, b
@@ -1943,7 +1938,7 @@ RunPostBattleAbilities::
 	ld [wNamedObjectIndexBuffer], a
 	call GetPokemonName
 	ld hl, wStringBuffer1
-	ld de, wBattleMonNick
+	ld de, wBattleMonNickname
 	ld bc, MON_NAME_LENGTH
 	rst CopyBytes
 	ld b, PICKUP

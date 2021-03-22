@@ -632,7 +632,7 @@ Error_Cant_ExitMenu:
 	jr .infinite_loop ; no-optimize stub jump
 
 .Text_NoWindowsAvailableForPopping:
-	text_jump _WindowPoppingErrorText
+	text_far _WindowPoppingErrorText
 	text_end
 
 _InitVerticalMenuCursor::

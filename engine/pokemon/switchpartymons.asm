@@ -78,12 +78,12 @@ SwapMonAndMail:
 	ld bc, PARTYMON_STRUCT_LENGTH
 	rst CopyBytes
 	ld a, [wBuffer2]
-	ld hl, wPartyMonOT
+	ld hl, wPartyMonOTs
 	call SkipNames
 	push hl
 	call .CopyNameTowSwitchMonBuffer
 	ld a, [wBuffer3]
-	ld hl, wPartyMonOT
+	ld hl, wPartyMonOTs
 	call SkipNames
 	pop de
 	push hl

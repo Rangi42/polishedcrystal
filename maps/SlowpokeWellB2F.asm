@@ -20,7 +20,7 @@ SlowpokeWellB2FGymGuideScript:
 	faceplayer
 	opentext
 	writetext SlowpokeWellB2FGymGuideText
-	buttonsound
+	promptbutton
 	verbosegiveitem KINGS_ROCK
 	iffalse_endtext
 	setevent EVENT_GOT_KINGS_ROCK_IN_SLOWPOKE_WELL

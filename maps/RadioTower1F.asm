@@ -44,7 +44,7 @@ RadioTower1FLuckyNumberManScript:
 	setevent EVENT_INTRODUCED_FELICITY
 .introduced
 	writetext ExplainLuckyNumberShowText
-	buttonsound
+	promptbutton
 	special Special_CheckLuckyNumberShowFlag
 	iffalse .skip
 	special Special_ResetLuckyNumberShowFlag
@@ -53,32 +53,33 @@ RadioTower1FLuckyNumberManScript:
 	checkflag ENGINE_LUCKY_NUMBER_SHOW
 	iftrue_jumpopenedtext RadioTower1FLuckyNumberManComeAgainText
 	writetext RadioTower1FLuckyNumberManThisWeeksIdIsText
-	buttonsound
+	promptbutton
 	closetext
 	applymovement RADIOTOWER1F_FELICITY, RadioTower1FLuckyNumberManGoToPCMovement
 	opentext
 	writetext RadioTower1FLuckyNumberManCheckIfMatchText
-	buttonsound
+	promptbutton
 	waitsfx
 	writetext RadioTower1FLuckyNumberManDotDotDotText
 	playsound SFX_DEX_FANFARE_20_49
 	waitsfx
-	buttonsound
+	promptbutton
 	special Special_CheckForLuckyNumberWinners
 	closetext
 	applymovement RADIOTOWER1F_FELICITY, RadioTower1FLuckyNumberManReturnToPlayerMovement
 	opentext
-	ifequal 1, .FirstPlace
-	ifequal 2, .SecondPlace
+	ifequal 5, .FirstPlace
+	ifequal 4, .SecondPlace
 	ifequal 3, .ThirdPlace
-	ifequal 4, .FourthPlace
+	ifequal 2, .FourthPlace
+	ifequal 1, .FifthPlace
 	jumpopenedtext RadioTower1FLuckyNumberManNoneOfYourIDNumbersMatchText
 
 .FirstPlace:
 	writetext WonFirstPlaceText
 	playsound SFX_1ST_PLACE
 	waitsfx
-	buttonsound
+	promptbutton
 	giveitem MASTER_BALL
 	iffalse_jumpopenedtext RadioTower1FLuckyNumberManNoRoomForYourPrizeText
 	itemnotify
@@ -89,7 +90,7 @@ RadioTower1FLuckyNumberManScript:
 	writetext WonSecondPlaceText
 	playsound SFX_2ND_PLACE
 	waitsfx
-	buttonsound
+	promptbutton
 	giveitem BOTTLE_CAP
 	iffalse_jumpopenedtext RadioTower1FLuckyNumberManNoRoomForYourPrizeText
 	itemnotify
@@ -100,7 +101,7 @@ RadioTower1FLuckyNumberManScript:
 	writetext WonThirdPlaceText
 	playsound SFX_2ND_PLACE
 	waitsfx
-	buttonsound
+	promptbutton
 	giveitem PP_MAX
 	iffalse_jumpopenedtext RadioTower1FLuckyNumberManNoRoomForYourPrizeText
 	itemnotify
@@ -111,9 +112,20 @@ RadioTower1FLuckyNumberManScript:
 	writetext WonFourthPlaceText
 	playsound SFX_3RD_PLACE
 	waitsfx
-	buttonsound
+	promptbutton
 	giveitem PP_UP
 	iffalse_jumpopenedtext RadioTower1FLuckyNumberManNoRoomForYourPrizeText
+	itemnotify
+	setflag ENGINE_LUCKY_NUMBER_SHOW
+	jumpthisopenedtext
+
+.FifthPlace:
+	writetext WonFifthPlaceText
+	playsound SFX_3RD_PLACE
+	waitsfx
+	promptbutton
+	giveitem RARE_CANDY
+	iffalse_jumpopenedtext RadioTower1FLuckyNumberManComeAgainText
 	itemnotify
 	setflag ENGINE_LUCKY_NUMBER_SHOW
 	jumpthisopenedtext
@@ -134,35 +146,35 @@ RadioTower1FRadioCardWomanScript:
 	iffalse_jumpopenedtext RadioTower1FRadioCardWomanNotTakingQuizText
 	writetext RadioTower1FRadioCardWomanQuestion1Text
 	yesorno
-	iffalse UnknownScript_0x5ce42
+	iffalse .WrongAnswer
 	playsound SFX_ELEVATOR_END
 	waitsfx
 	writetext RadioTower1FRadioCardWomanQuestion2Text
 	yesorno
-	iffalse UnknownScript_0x5ce42
+	iffalse .WrongAnswer
 	playsound SFX_ELEVATOR_END
 	waitsfx
 	writetext RadioTower1FRadioCardWomanQuestion3Text
 	yesorno
-	iftrue UnknownScript_0x5ce42
+	iftrue .WrongAnswer
 	playsound SFX_ELEVATOR_END
 	waitsfx
 	writetext RadioTower1FRadioCardWomanQuestion4Text
 	yesorno
-	iftrue UnknownScript_0x5ce42
+	iftrue .WrongAnswer
 	playsound SFX_ELEVATOR_END
 	waitsfx
 	writetext RadioTower1FRadioCardWomanQuestion5Text
 	yesorno
-	iftrue UnknownScript_0x5ce42
+	iftrue .WrongAnswer
 	playsound SFX_ELEVATOR_END
 	waitsfx
 	writetext RadioTower1FRadioCardWomanYouWinText
-	buttonsound
-	stringtotext RadioCardText, $1
+	promptbutton
+	getstring .RadioCardText, $1
 	callstd receiveitem
 	writetext RadioTower1FPokegearIsARadioText
-	buttonsound
+	promptbutton
 	setflag ENGINE_RADIO_CARD
 	writetext RadioTower1FRadioCardWomanTuneInText
 	waitbutton
@@ -177,12 +189,19 @@ RadioTower1FRadioCardWomanScript:
 	disappear RADIOTOWER1F_WHITNEY
 	end
 
-RadioCardText:
+.RadioCardText:
 	db "Radio Card@"
 
-UnknownScript_0x5ce42:
+.WrongAnswer:
 	playsound SFX_WRONG
-	jumpopenedtext RadioTower1FRadioCardWomanWrongAnswerText
+	jumpthisopenedtext
+
+	text "Oh, dear."
+	line "Sorry, but you"
+
+	para "got it wrong."
+	line "Please try again!"
+	done
 
 GenericTrainerGruntM3:
 	generictrainer GRUNTM, 3, EVENT_BEAT_ROCKET_GRUNTM_3, GruntM3SeenText, GruntM3BeatenText
@@ -263,7 +282,7 @@ ExplainLuckyNumberShowText:
 RadioTower1FLuckyNumberManThisWeeksIdIsText:
 	text "This week's ID"
 	line "number is "
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text "."
 	done
 
@@ -315,6 +334,16 @@ WonFourthPlaceText:
 
 	para "You've won fourth"
 	line "prize, a PP Up."
+	done
+
+WonFifthPlaceText:
+	text "Ooh, you've"
+	line "matched the last"
+	cont "number."
+
+	para "You've won fifth"
+	line "prize, a"
+	cont "Rare Candy."
 	done
 
 RadioTower1FLuckyNumberManNoneOfYourIDNumbersMatchText:
@@ -413,14 +442,6 @@ RadioTower1FPokegearIsARadioText:
 RadioTower1FRadioCardWomanTuneInText:
 	text "Please tune in to"
 	line "our radio shows."
-	done
-
-RadioTower1FRadioCardWomanWrongAnswerText:
-	text "Oh, dear."
-	line "Sorry, but you"
-
-	para "got it wrong."
-	line "Please try again!"
 	done
 
 RadioTower1FRadioCardWomanNotTakingQuizText:

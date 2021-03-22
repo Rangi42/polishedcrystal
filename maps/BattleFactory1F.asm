@@ -1,6 +1,6 @@
 BattleFactory1F_MapScriptHeader:
 	def_scene_scripts
-	scene_script BattleFactory1FTrigger0
+	scene_script BattleFactory1FContinueChallenge
 
 	def_callbacks
 
@@ -12,17 +12,18 @@ BattleFactory1F_MapScriptHeader:
 	def_coord_events
 
 	def_bg_events
-	bg_event 11,  7, BGEVENT_READ, MapBattleFactory1FSignpost0Script
+	bg_event 14,  5, BGEVENT_READ, BattleFactory1FRulesScript
+	bg_event 10,  5, BGEVENT_JUMPTEXT, BattleFactory1FStreakText
 
 	def_object_events
-	object_event 10,  7, SPRITE_RECEPTIONIST, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, ReceptionistScript_BattleFactory, -1
-	pc_nurse_event  6, 6
+	object_event 12,  5, SPRITE_SCIENTIST, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, BattleFactory1FReceptionistScript, -1
+	pc_nurse_event  6,  6
 
 	object_const_def
 	const BATTLEFACTORY1F_RECEPTIONIST
 
-BattleFactory1FTrigger0:
-; Triggers (usefully) if we're in an ongoing battle factory run.
+BattleFactory1FContinueChallenge:
+; Triggers (usefully) if we're in an ongoing Battle Factory run.
 	; Only trigger this once.
 	setscene 1
 
@@ -34,8 +35,8 @@ BattleFactory1FTrigger0:
 	ifequal BATTLETOWER_WON_CHALLENGE, .WonChallenge
 	end
 
-.ResumeChallenge
-	; We saved inbetween rounds. Resume Battle Factory challenge.
+.ResumeChallenge:
+	; We saved in-between rounds. Resume Battle Factory challenge.
 	opentext
 	writethistext
 		text "We've been waiting"
@@ -44,13 +45,13 @@ BattleFactory1FTrigger0:
 
 	; Schedule script for running. This prevents odd issues that a regular jump
 	; causes for scene scripts. This is NOT a true jump, so "end" is necessary.
-	priorityjump Script_ReturnToRentalChallenge
+	prioritysjump Script_ReturnToRentalChallenge
 	end
 
 .LeftWithoutSaving:
 	; The player resetted the game in the middle of a battle.
 	; This counts as a battle loss, and will reset the winstreak.
-	priorityjump .LeftWithoutSaving2
+	prioritysjump .LeftWithoutSaving2
 	end
 .LeftWithoutSaving2:
 	opentext
@@ -68,15 +69,15 @@ BattleFactory1FTrigger0:
 		line "invalid."
 		done
 	waitbutton
-	jump Script_CommitBattleFactoryResult
+	sjump Script_CommitBattleFactoryResult
 
 .LostChallenge:
 	opentext
-	priorityjump Script_CommitBattleFactoryResult
+	prioritysjump Script_CommitBattleFactoryResult
 	end
 
 .WonChallenge:
-	priorityjump .WonChallenge2
+	prioritysjump .WonChallenge2
 	end
 .WonChallenge2:
 	opentext
@@ -89,7 +90,7 @@ BattleFactory1FTrigger0:
 		para "For that, you get"
 		line "this great prize!"
 		prompt
-	verbosegiveitem ABILITYPATCH
+	verbosegiveitem MINT_LEAF
 	; fallthrough
 Script_CommitBattleFactoryResult:
 	special Special_BattleTower_CommitChallengeResult
@@ -103,21 +104,12 @@ Script_CommitBattleFactoryResult:
 	waitbutton
 	endtext
 
-MapBattleFactory1FSignpost0Script:
+BattleFactory1FRulesScript:
 	opentext
 	writethistext
-		text "Streak: "
-		deciram wBattleFactoryCurStreak, 2, 5
-		text " wins"
-		line "Record: "
-		deciram wBattleFactoryTopStreak, 2, 5
-		text " wins"
-		done
-	waitbutton
-
-	writethistext
-		text "Battle rules"
-		line "are written here."
+		text "Battle Factory"
+		line "rules are written"
+		cont "here."
 
 		para "Read the rules?"
 		done
@@ -143,16 +135,25 @@ MapBattleFactory1FSignpost0Script:
 		cont "from your foe."
 		done
 
-ReceptionistScript_BattleFactory:
+BattleFactory1FStreakText:
+	text "Streak: "
+	text_decimal wBattleFactoryCurStreak, 2, 5
+	text " wins"
+	line "Record: "
+	text_decimal wBattleFactoryTopStreak, 2, 5
+	text " wins"
+	done
+
+BattleFactory1FReceptionistScript:
 	opentext
 	writethistext
 		text "Battle Factory"
 		line "welcomes you!"
 
-		para "I could show you"
-		line "to a Battle Room."
+		para "I can show you to"
+		line "the Battle Floor."
 		done
-	buttonsound
+	promptbutton
 	checkevent EVENT_BATTLE_FACTORY_INTRO
 	iftrue .Menu
 
@@ -177,13 +178,11 @@ ReceptionistScript_BattleFactory:
 		line "trainers gather"
 
 		para "from all over to"
-		line "hold battles in"
+		line "hold battles on"
+		cont "the Battle Floor."
 
-		para "specially designed"
-		line "Battle Rooms."
-
-		para "Each Room holds"
-		line "seven trainers."
+		para "Each challenge"
+		line "has 7 trainers."
 
 		para "Beat them all to"
 		line "get Battle Points."
@@ -222,7 +221,7 @@ ReceptionistScript_BattleFactory:
 
 	; Set this early in case the player leaves before picking their team.
 	; This prevents them from re-rolling without forfeiting a streak.
-	writebyte BATTLETOWER_CHALLENGE_IN_PROGRESS
+	setval BATTLETOWER_CHALLENGE_IN_PROGRESS
 	special Special_BattleTower_SetChallengeState
 	special Special_BattleTower_SetupRentalMode
 
@@ -247,7 +246,7 @@ ReceptionistScript_BattleFactory:
 		done
 	yesorno
 	iffalse .Rental_SelectMon
-	jump Script_CommitBattleFactoryResult
+	sjump Script_CommitBattleFactoryResult
 
 Script_PrepareForRentalBattle:
 	; Initializes opponent trainers and stores player mon choices in SRAM
@@ -255,32 +254,29 @@ Script_PrepareForRentalBattle:
 	; fallthrough
 Script_ReturnToRentalChallenge:
 	; From this point onwards, resetting the game should count as a streak loss
-	writebyte BATTLETOWER_CHALLENGE_IN_PROGRESS
+	setval BATTLETOWER_CHALLENGE_IN_PROGRESS
 	special Special_BattleTower_SetChallengeState
 
 	; Everything ready to go for challenge start
 	writethistext
 		text "Right this way to"
-		line "your Battle Room."
+		line "the Battle Floor."
 		done
 	waitbutton
 	closetext
 
 	musicfadeout MUSIC_NONE, 8
 	follow BATTLEFACTORY1F_RECEPTIONIST, PLAYER
-	applymovement BATTLEFACTORY1F_RECEPTIONIST, MovementData_BattleFactory1FWalkToElevator
+	applymovement BATTLEFACTORY1F_RECEPTIONIST, .WalkToHallway
+	stopfollow
 	special Special_BattleTower_MaxVolume
 	warpsound
 	disappear BATTLEFACTORY1F_RECEPTIONIST
-	stopfollow
 	applyonemovement PLAYER, step_up
 	warpcheck
 	end
 
-MovementData_BattleFactory1FWalkToElevator:
-	step_up
-	step_up
-	step_up
+.WalkToHallway:
 	step_up
 	step_up
 	step_up

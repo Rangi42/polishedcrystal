@@ -29,7 +29,7 @@ WarmBeachShackTutorBodySlamScript:
 	iffalse .NoSilverLeaf
 	yesorno
 	iffalse .TutorRefused
-	writebyte BODY_SLAM
+	setval BODY_SLAM
 	writetext ClearText
 	special Special_MoveTutor
 	ifequal $0, .TeachMove

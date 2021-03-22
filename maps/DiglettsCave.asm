@@ -23,7 +23,7 @@ DiglettsCave_MapScriptHeader:
 	object_event 25, 31, SPRITE_HIKER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 4, GenericTrainerHikerDent, -1
 	object_event 16, 21, SPRITE_BLACK_BELT, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 3, GenericTrainerBlackbeltInigo, -1
 	object_event  9, 20, SPRITE_ENGINEER, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 3, GenericTrainerEngineerSmith, -1
-	object_event 37, 13, SPRITE_HIKER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, PokefanMScript_0x74002Text, -1
+	object_event 37, 13, SPRITE_HIKER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, DiglettsCavePokefanMText, -1
 	object_event 20, 27, SPRITE_BATTLE_GIRL, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_COMMAND, jumptextfaceplayer, DiglettsCaveCooltrainerfText, -1
 	itemball_event 13, 28, RARE_BONE, 1, EVENT_DIGLETTS_CAVE_RARE_BONE
 
@@ -31,7 +31,7 @@ DiglettsCaveFossilManiacScript:
 	faceplayer
 	opentext
 	writetext .GreetingText
-	buttonsound
+	promptbutton
 	special Special_ChooseItem
 	iffalse_jumpopenedtext .NoItemText
 	special GetFossilManiacPrice
@@ -40,7 +40,7 @@ DiglettsCaveFossilManiacScript:
 	special PlaceMoneyTopRight
 	yesorno
 	iffalse_jumpopenedtext .NoItemText
-	copybytetovar wCurItem
+	readmem wCurItem
 	takeitem ITEM_FROM_MEM
 	waitsfx
 	playsound SFX_TRANSACTION
@@ -81,7 +81,7 @@ DiglettsCaveFossilManiacScript:
 
 	para "I'll give you"
 	line "¥"
-	deciram hMoneyTemp, 3, 7
+	text_decimal hMoneyTemp, 3, 7
 	text " for it."
 	cont "Whaddaya say?"
 	done
@@ -191,7 +191,7 @@ DiglettsCaveCooltrainerfText:
 	line "with a blue nose!"
 	done
 
-PokefanMScript_0x74002Text:
+DiglettsCavePokefanMText:
 if DEF(FAITHFUL)
 	text "A bunch of Diglett"
 	line "popped out of the"

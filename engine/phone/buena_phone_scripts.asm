@@ -1,16 +1,16 @@
 BuenaPhoneScript1:
 	checkflag ENGINE_ROCKETS_IN_RADIO_TOWER
 	iftrue BuenaPhoneScript_Rocket
-	checkcode VAR_HOUR
+	readvar VAR_HOUR
 	ifgreater 17, BuenaPhoneScript_AfterMidnight1
 	scall BuenaPhoneScript_CheckTimeOfDay1
-	jump BuenaPhoneScript_Random1
+	sjump BuenaPhoneScript_Random1
 
 BuenaPhoneScript2:
 	checkflag ENGINE_ROCKETS_IN_RADIO_TOWER
 	iftrue BuenaPhoneScript_Rocket
 	scall BuenaPhoneScript_CheckTimeOfDay2
-	jump BuenaPhoneScript_Random2
+	sjump BuenaPhoneScript_Random2
 
 BuenaPhoneScript_CheckTimeOfDay1:
 	checktime 1 << MORN
@@ -18,17 +18,17 @@ BuenaPhoneScript_CheckTimeOfDay1:
 	checktime 1 << DAY
 	iftrue .day
 	writetext BuenaPhoneNiteAnswerText
-	buttonsound
+	promptbutton
 	end
 
 .morn
 	writetext BuenaPhoneMorningAnswerText
-	buttonsound
+	promptbutton
 	end
 
 .day
 	writetext BuenaPhoneDayAnswerText
-	buttonsound
+	promptbutton
 	end
 
 BuenaPhoneScript_AfterMidnight1:
@@ -36,29 +36,29 @@ BuenaPhoneScript_AfterMidnight1:
 	end
 
 BuenaPhoneScript_CheckTimeOfDay2:
-	checkcode VAR_HOUR
+	readvar VAR_HOUR
 	ifgreater 17, BuenaPhoneScript_AfterMidnight2
 	checktime 1 << MORN
 	iftrue .morn
 	checktime 1 << DAY
 	iftrue .day
 	writetext BuenaPhoneNiteText
-	buttonsound
+	promptbutton
 	end
 
 .morn
 	writetext BuenaPhoneMorningText
-	buttonsound
+	promptbutton
 	end
 
 .day
 	writetext BuenaPhoneDayText
-	buttonsound
+	promptbutton
 	end
 
 BuenaPhoneScript_AfterMidnight2:
 	writetext BuenaPhoneMidnightText
-	buttonsound
+	promptbutton
 	end
 
 BuenaPhoneScript_Rocket:
@@ -69,7 +69,7 @@ BuenaPhoneScript_Random2:
 	checkevent EVENT_BEAT_ELITE_FOUR
 	iftrue .PostE4
 	random 11
-	jump .Jumptable
+	sjump .Jumptable
 
 .PostE4:
 	random 14
@@ -92,55 +92,55 @@ BuenaPhoneScript_Random2:
 
 .zero
 	writetext BuenaPhoneWentOutWithBenText
-	jump .finish
+	sjump .finish
 
 .one
 	writetext BuenaPhoneReceptionistText
-	jump .finish
+	sjump .finish
 
 .two
 	writetext BuenaPhoneLuckyNumberShowText
-	jump .finish
+	sjump .finish
 
 .three
 	writetext BuenaPhoneStressedFromWorkText
-	jump .finish
+	sjump .finish
 
 .four
 	writetext BuenaPhoneProfessorOakText
-	jump .finish
+	sjump .finish
 
 .five
 	writetext BuenaPhoneGotAColdText
-	jump .finish
+	sjump .finish
 
 .six
 	writetext BuenaPhoneRadioCardQuestionsText
-	jump .finish
+	sjump .finish
 
 .seven
 	writetext BuenaPhonePikachuFanClubText
-	jump .finish
+	sjump .finish
 
 .eight
 	writetext BuenaPhoneRadioTowerDirectorText
-	jump .finish
+	sjump .finish
 
 .nine
 	writetext BuenaPhoneWhenDoYouRelaxText
-	jump .finish
+	sjump .finish
 
 .ten
 	writetext BuenaPhoneStarterPokemonText
-	jump .finish
+	sjump .finish
 
 .eleven
 	writetext BuenaPhoneCompanyVacationText
-	jump .finish
+	sjump .finish
 
 .twelve
 	writetext BuenaPhoneBenAndFernText
-	jump .finish
+	sjump .finish
 
 .thirteen
 	writetext BuenaPhoneGoingShoppingText

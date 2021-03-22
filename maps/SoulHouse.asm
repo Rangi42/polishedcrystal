@@ -38,7 +38,7 @@ AgathaScript:
 	setevent EVENT_BEAT_AGATHA
 	opentext
 	writetext AgathaRewardText
-	buttonsound
+	promptbutton
 	verbosegivetmhm TM_SHADOW_CLAW
 	setevent EVENT_GOT_TM65_SHADOW_CLAW_FROM_AGATHA
 AgathaAfterScript:

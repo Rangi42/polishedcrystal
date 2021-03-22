@@ -46,7 +46,7 @@ DisplayCaughtContestMonStats:
 	ld [wTempMonLevel], a
 	call PrintLevel
 
-	ld de, wEnemyMonNick
+	ld de, wEnemyMonNickname
 	hlcoord 1, 8
 	rst PlaceString
 
@@ -85,5 +85,5 @@ DisplayCaughtContestMonStats:
 
 SwitchMonText:
 	; Switch #MON?
-	text_jump _ContestAskSwitchText
+	text_far _ContestAskSwitchText
 	text_end

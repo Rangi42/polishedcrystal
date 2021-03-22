@@ -4,7 +4,7 @@ MainMenu:
 	ld a, CGB_DIPLOMA
 	call GetCGBLayout
 	call SetPalettes
-	ld hl, wGameTimerPause
+	ld hl, wGameTimerPaused
 	res 0, [hl]
 	call MainMenu_GetWhichMenu
 	ld [wWhichIndexSet], a
@@ -173,13 +173,13 @@ endc
 
 	call UpdateTime
 	bccoord 1, 15
-	call Text_WeekDay
+	call TextCommand_DAY
 	decoord 4, 16
 	ldh a, [hHours]
 	ld c, a
 	farcall PrintHour
-	ld [hl], ":"
-	inc hl
+	ld a, ":"
+	ld [hli], a
 	ld de, hMinutes
 	lb bc, PRINTNUM_LEADINGZEROS | 1, 2
 	jp PrintNum

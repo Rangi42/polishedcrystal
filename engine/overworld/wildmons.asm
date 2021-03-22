@@ -257,9 +257,11 @@ ApplyMusicEffectOnEncounterRate::
 
 ApplyCleanseTagEffectOnEncounterRate::
 ; Cleanse Tag halves encounter rate.
+	ld a, [wPartyCount]
+	and a
+	ret z
 	ld hl, wPartyMon1Item
 	ld de, PARTYMON_STRUCT_LENGTH
-	ld a, [wPartyCount]
 	ld c, a
 .loop
 	ld a, [hl]
@@ -1062,7 +1064,7 @@ RandomPhoneRareWildMon:
 
 .SawRareMonText:
 	; I just saw some rare @  in @ . I'll call you if I see another rare #MON, OK?
-	text_jump _JustSawSomeRareMonText
+	text_far _JustSawSomeRareMonText
 	text_end
 
 RandomPhoneWildMon:
@@ -1122,7 +1124,7 @@ RandomPhoneMon:
 	inc hl
 	ld [wTrainerGroupBank], a
 	ld a, BANK(TrainerGroups)
-	call GetFarHalfword
+	call GetFarWord
 
 .skip_trainer
 	dec e
@@ -1234,7 +1236,13 @@ GetTimeOfDayNotEve:
 	ld a, [wTimeOfDay]
 	cp EVE
 	ret nz
-	dec a ; NITE
+	; Evening uses day encounters 60% of the time
+	; and night encounters 40%.
+	call Random
+	cp 60 percent
+	ld a, DAY
+	ret c
+	inc a ; NITE
 	ret
 
 JohtoGrassWildMons:

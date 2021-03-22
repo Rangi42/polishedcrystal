@@ -44,7 +44,7 @@ RunBattleTowerTrainer:
 	ld [hli], a
 	ld [hl], "@"
 	call BT_IncrementCurTrainer
-	cp BATTLETOWER_NROFTRAINERS
+	cp BATTLETOWER_STREAK_LENGTH
 	ld b, BTCHALLENGE_WON
 	jr z, .got_result
 
@@ -326,7 +326,7 @@ Special_BattleTower_BeginChallenge:
 	inc de
 	inc b
 	ld a, b
-	cp BATTLETOWER_NROFTRAINERS
+	cp BATTLETOWER_STREAK_LENGTH
 	jr nz, .outer_loop
 
 	; Replace the 7th trainer with Tycoon every 3rd run
@@ -336,7 +336,7 @@ Special_BattleTower_BeginChallenge:
 	ldh [hDividend], a
 	ld a, [hl]
 	ldh [hDividend + 1], a
-	ld a, BATTLETOWER_NROFTRAINERS * 3
+	ld a, BATTLETOWER_STREAK_LENGTH * 3
 	ldh [hDivisor], a
 	ld b, 2
 	call Divide
@@ -346,7 +346,7 @@ Special_BattleTower_BeginChallenge:
 	call GetSRAMBank
 	pop de
 	ldh a, [hRemainder]
-	cp BATTLETOWER_NROFTRAINERS * 2
+	cp BATTLETOWER_STREAK_LENGTH * 2
 	jr nz, .close_sram
 	dec de
 	ld a, BATTLETOWER_TYCOON
@@ -464,8 +464,8 @@ BT_SetPlayerOT:
 	call .CopyPartyData
 
 	; OT name struct
-	ld hl, wPartyMonOT
-	ld de, wOTPartyMonOT
+	ld hl, wPartyMonOTs
+	ld de, wOTPartyMonOTs
 	ld a, NAME_LENGTH
 	call .CopyPartyData
 

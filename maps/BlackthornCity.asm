@@ -43,17 +43,17 @@ BlackthornCity_MapScriptHeader:
 
 BlackthornCityFlypointCallback:
 	setflag ENGINE_FLYPOINT_BLACKTHORN
-	return
+	endcallback
 
 BlackthornCitySantosCallback:
-	checkcode VAR_WEEKDAY
+	readvar VAR_WEEKDAY
 	ifequal SATURDAY, .SantosAppears
 	disappear BLACKTHORNCITY_SANTOS
-	return
+	endcallback
 
 .SantosAppears:
 	appear BLACKTHORNCITY_SANTOS
-	return
+	endcallback
 
 BlackthornCitySignText:
 	text "Blackthorn City"
@@ -95,18 +95,18 @@ BlackthornCityTrainerTipsText:
 SantosScript:
 	checkevent EVENT_GOT_SPELL_TAG_FROM_SANTOS
 	iftrue_jumptextfaceplayer .SaturdayText
-	checkcode VAR_WEEKDAY
+	readvar VAR_WEEKDAY
 	ifnotequal SATURDAY, .NotSaturday
 	faceplayer
 	opentext
 	checkevent EVENT_MET_SANTOS_OF_SATURDAY
 	iftrue .MetSantos
 	writetext .MeetText
-	buttonsound
+	promptbutton
 	setevent EVENT_MET_SANTOS_OF_SATURDAY
 .MetSantos:
 	writetext .GivesGiftText
-	buttonsound
+	promptbutton
 	verbosegiveitem SPELL_TAG
 	iffalse_endtext
 	setevent EVENT_GOT_SPELL_TAG_FROM_SANTOS

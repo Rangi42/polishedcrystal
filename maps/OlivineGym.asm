@@ -43,7 +43,7 @@ OlivineGymJasmineScript:
 	checkevent EVENT_GOT_TM23_IRON_TAIL
 	iftrue_jumpopenedtext Jasmine_GoodLuck
 	writetext Jasmine_BadgeSpeech
-	buttonsound
+	promptbutton
 	verbosegivetmhm TM_IRON_TAIL
 	setevent EVENT_GOT_TM23_IRON_TAIL
 	jumpthisopenedtext
@@ -72,7 +72,7 @@ OlivineGymLassConnie:
 	trainer 0, 0, EVENT_SPOKE_TO_LASS_CONNIE, .SeenText, 0, 0, .Script
 
 .Script:
-	end_if_just_battled
+	endifjustbattled
 	checkevent EVENT_BEAT_JASMINE
 	iftrue_jumptextfaceplayer .AfterText
 	jumpthistextfaceplayer
@@ -106,7 +106,7 @@ OlivineGymGentlemanPreston:
 	trainer 0, 0, EVENT_SPOKE_TO_GENTLEMAN_PRESTON, .SeenText, 0, 0, .Script
 
 .Script:
-	end_if_just_battled
+	endifjustbattled
 	checkevent EVENT_BEAT_JASMINE
 	iftrue_jumptextfaceplayer .AfterText
 	jumpthistextfaceplayer
@@ -134,7 +134,7 @@ OlivineGymGentlemanPreston:
 	done
 
 OlivineGymStatue:
-	trainertotext JASMINE, 1, $1
+	gettrainername JASMINE, 1, $1
 	checkevent EVENT_JASMINE_RETURNED_TO_GYM
 	iftrue .Returned
 	jumpstd gymstatue0
@@ -143,7 +143,7 @@ OlivineGymStatue:
 	iftrue .Beaten
 	jumpstd gymstatue1
 .Beaten
-	checkcode VAR_BADGES
+	readvar VAR_BADGES
 	ifgreater 13, .LyraToo
 	jumpstd gymstatue2
 .LyraToo

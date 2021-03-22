@@ -45,26 +45,26 @@ CeladonGymErikaScript:
 	playsound SFX_GET_BADGE
 	waitsfx
 	setflag ENGINE_RAINBOWBADGE
-	checkcode VAR_BADGES
+	readvar VAR_BADGES
 	ifequal 9, .FirstBadge
 	ifequal 10, .SecondBadge
 	ifequal 12, .LyrasEgg
-	jump .FightDone
+	sjump .FightDone
 .FirstBadge:
 	specialphonecall SPECIALCALL_FIRSTBADGE
-	jump .FightDone
+	sjump .FightDone
 .SecondBadge:
 	checkevent EVENT_GOT_GS_BALL_FROM_POKECOM_CENTER
 	iftrue .FightDone
 	specialphonecall SPECIALCALL_SECONDBADGE
-	jump .FightDone
+	sjump .FightDone
 .LyrasEgg:
 	specialphonecall SPECIALCALL_LYRASEGG
 .FightDone:
 	checkevent EVENT_GOT_TM19_GIGA_DRAIN
 	iftrue_jumpopenedtext ErikaAfterBattleText
 	writetext ErikaExplainTMText
-	buttonsound
+	promptbutton
 	verbosegivetmhm TM_GIGA_DRAIN
 	setevent EVENT_GOT_TM19_GIGA_DRAIN
 	jumpopenedtext ErikaOutroText
@@ -122,7 +122,7 @@ GenericTrainerTwinsJoandzoe2:
 	done
 
 CeladonGymStatue:
-	trainertotext ERIKA, 1, $1
+	gettrainername ERIKA, 1, $1
 	checkflag ENGINE_RAINBOWBADGE
 	iftrue .Beaten
 	jumpstd gymstatue1

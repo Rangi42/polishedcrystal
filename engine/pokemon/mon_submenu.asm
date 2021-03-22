@@ -164,7 +164,7 @@ GetMonSubmenuItems:
 
 .skip2
 	ld a, [wBuffer1]
-	cp NUM_MON_SUBMENU_ITEMS
+	cp NUM_MONMENU_ITEMS
 	jr z, .ok2
 	ld a, MONMENU_CANCEL
 	call AddMonMenuItem
@@ -203,7 +203,7 @@ ResetMonSubmenu:
 	xor a
 	ld [wBuffer1], a
 	ld hl, wBuffer2
-	ld bc, NUM_MON_SUBMENU_ITEMS + 1
+	ld bc, NUM_MONMENU_ITEMS + 1
 	rst ByteFill
 	ret
 

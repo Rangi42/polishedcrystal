@@ -25,7 +25,7 @@ CeladonUniversityWestwoodsOfficeChildScript:
 	faceplayer
 	opentext
 	writetext .Text1
-	buttonsound
+	promptbutton
 	verbosegiveitem RAGECANDYBAR
 	iffalse_endtext
 	setevent EVENT_GOT_RAGECANDYBAR_IN_UNIVERSITY

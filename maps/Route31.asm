@@ -32,17 +32,17 @@ Route31_MapScriptHeader:
 Route31CheckMomCall:
 	checkevent EVENT_TALKED_TO_MOM_AFTER_MYSTERY_EGG_QUEST
 	iffalse .DoMomCall
-	return
+	endcallback
 
 .DoMomCall:
 	specialphonecall SPECIALCALL_WORRIED
-	return
+	endcallback
 
 TrainerCooltrainermFinch:
 	trainer 0, 0, EVENT_INTRODUCED_ROUTE_LEADERS, .IntroText, 0, 0, .Script
 
 .Script:
-	end_if_just_battled
+	endifjustbattled
 	checkevent EVENT_GOT_AIR_BALLOON_FROM_ROUTE_31_LEADER
 	iftrue_jumptextfaceplayer .AfterText2
 	faceplayer
@@ -72,7 +72,7 @@ TrainerCooltrainermFinch:
 	opentext
 .Beaten:
 	writetext .AfterText1
-	buttonsound
+	promptbutton
 	verbosegiveitem AIR_BALLOON
 	iffalse_endtext
 	setevent EVENT_GOT_AIR_BALLOON_FROM_ROUTE_31_LEADER
@@ -162,9 +162,9 @@ TrainerBug_catcherWade1:
 	trainer BUG_CATCHER, WADE1, EVENT_BEAT_BUG_CATCHER_WADE, Bug_catcherWade1SeenText, Bug_catcherWade1BeatenText, 0, .Script
 
 .Script:
-	writecode VAR_CALLERID, PHONE_BUG_CATCHER_WADE
+	loadvar VAR_CALLERID, PHONE_BUG_CATCHER_WADE
 	opentext
-	checkflag ENGINE_WADE
+	checkflag ENGINE_WADE_READY_FOR_REMATCH
 	iftrue .WadeRematch
 	checkflag ENGINE_WADE_HAS_ITEM
 	iftrue .WadeItem
@@ -176,7 +176,7 @@ TrainerBug_catcherWade1:
 	waitbutton
 	setevent EVENT_WADE_ASKED_FOR_PHONE_NUMBER
 	callstd asknumber1m
-	jump .Continue
+	sjump .Continue
 
 .AskAgain:
 	callstd asknumber2m
@@ -184,14 +184,14 @@ TrainerBug_catcherWade1:
 	askforphonenumber PHONE_BUG_CATCHER_WADE
 	ifequal $1, .PhoneFullSTD
 	ifequal $2, .DeclinedNumberSTD
-	trainertotext BUG_CATCHER, WADE1, $0
+	gettrainername BUG_CATCHER, WADE1, $0
 	callstd registerednumberm
 	jumpstd numberacceptedm
 
 .WadeRematch:
 	callstd rematchm
 	winlosstext Bug_catcherWade1BeatenText, 0
-	copybytetovar wWadeFightCount
+	readmem wWadeFightCount
 	ifequal 4, .Fight4
 	ifequal 3, .Fight3
 	ifequal 2, .Fight2
@@ -213,39 +213,39 @@ TrainerBug_catcherWade1:
 	loadtrainer BUG_CATCHER, WADE1
 	startbattle
 	reloadmapafterbattle
-	loadvar wWadeFightCount, 1
-	clearflag ENGINE_WADE
+	loadmem wWadeFightCount, 1
+	clearflag ENGINE_WADE_READY_FOR_REMATCH
 	end
 
 .LoadFight1:
 	loadtrainer BUG_CATCHER, WADE2
 	startbattle
 	reloadmapafterbattle
-	loadvar wWadeFightCount, 2
-	clearflag ENGINE_WADE
+	loadmem wWadeFightCount, 2
+	clearflag ENGINE_WADE_READY_FOR_REMATCH
 	end
 
 .LoadFight2:
 	loadtrainer BUG_CATCHER, WADE3
 	startbattle
 	reloadmapafterbattle
-	loadvar wWadeFightCount, 3
-	clearflag ENGINE_WADE
+	loadmem wWadeFightCount, 3
+	clearflag ENGINE_WADE_READY_FOR_REMATCH
 	end
 
 .LoadFight3:
 	loadtrainer BUG_CATCHER, WADE4
 	startbattle
 	reloadmapafterbattle
-	loadvar wWadeFightCount, 4
-	clearflag ENGINE_WADE
+	loadmem wWadeFightCount, 4
+	clearflag ENGINE_WADE_READY_FOR_REMATCH
 	end
 
 .LoadFight4:
 	loadtrainer BUG_CATCHER, WADE5
 	startbattle
 	reloadmapafterbattle
-	clearflag ENGINE_WADE
+	clearflag ENGINE_WADE_READY_FOR_REMATCH
 	end
 
 .WadeItem:
@@ -261,15 +261,15 @@ TrainerBug_catcherWade1:
 .OranBerry:
 	verbosegiveitem ORAN_BERRY
 	iffalse .PackFull
-	jump .Done
+	sjump .Done
 .PechaBerry:
 	verbosegiveitem PECHA_BERRY
 	iffalse .PackFull
-	jump .Done
+	sjump .Done
 .CheriBerry:
 	verbosegiveitem CHERI_BERRY
 	iffalse .PackFull
-	jump .Done
+	sjump .Done
 .PersimBerry:
 	verbosegiveitem PERSIM_BERRY
 	iffalse .PackFull
@@ -299,16 +299,16 @@ Route31MailRecipientScript:
 
 .TryGiveKenya:
 	writetext Text_Route31SleepyManGotMail
-	buttonsound
-	checkpokeitem ReceivedFarfetch_dMailText
+	promptbutton
+	checkpokemail ReceivedFarfetch_dMailText
 	ifequal $0, .WrongMail
 	ifequal $2, .Refused
 	ifequal $3, .NoMail
 	ifequal $4, .LastMon
 	writetext Text_Route31HandOverMailMon
-	buttonsound
+	promptbutton
 	writetext Text_Route31ReadingMail
-	buttonsound
+	promptbutton
 	setevent EVENT_GAVE_KENYA
 .TutorSleepTalk
 	writetext Text_Route31TutorSleepTalk
@@ -318,7 +318,7 @@ Route31MailRecipientScript:
 	writetext Text_Route31TutorQuestion
 	yesorno
 	iffalse .TutorRefused
-	writebyte SLEEP_TALK
+	setval SLEEP_TALK
 	writetext ClearText
 	special Special_MoveTutor
 	ifequal $0, .TeachMove

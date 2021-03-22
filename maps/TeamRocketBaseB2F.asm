@@ -23,28 +23,28 @@ TeamRocketBaseB2F_MapScriptHeader:
 	coord_event 12, 11, 2, RocketBaseLancesSideScript
 
 	def_bg_events
-	bg_event 14, 12, BGEVENT_IFNOTSET, MapTeamRocketBaseB2FSignpostPtr1
-	bg_event 15, 12, BGEVENT_IFNOTSET, MapTeamRocketBaseB2FSignpostPtr1
-	bg_event 17,  9, BGEVENT_READ, MapTeamRocketBaseB2FSignpost21Script
-	bg_event 16,  9, BGEVENT_READ, MapTeamRocketBaseB2FSignpost21Script
-	bg_event 15,  9, BGEVENT_READ, MapTeamRocketBaseB2FSignpost21Script
-	bg_event 14,  9, BGEVENT_READ, MapTeamRocketBaseB2FSignpost21Script
-	bg_event 13,  9, BGEVENT_READ, MapTeamRocketBaseB2FSignpost21Script
-	bg_event 12,  9, BGEVENT_READ, MapTeamRocketBaseB2FSignpost21Script
-	bg_event 12,  8, BGEVENT_READ, MapTeamRocketBaseB2FSignpost21Script
-	bg_event 12,  7, BGEVENT_READ, MapTeamRocketBaseB2FSignpost21Script
-	bg_event 12,  6, BGEVENT_READ, MapTeamRocketBaseB2FSignpost21Script
-	bg_event 12,  5, BGEVENT_READ, MapTeamRocketBaseB2FSignpost21Script
-	bg_event 12,  4, BGEVENT_READ, MapTeamRocketBaseB2FSignpost21Script
-	bg_event 13,  4, BGEVENT_READ, MapTeamRocketBaseB2FSignpost21Script
-	bg_event 14,  4, BGEVENT_READ, MapTeamRocketBaseB2FSignpost21Script
-	bg_event 15,  4, BGEVENT_READ, MapTeamRocketBaseB2FSignpost21Script
-	bg_event 16,  4, BGEVENT_READ, MapTeamRocketBaseB2FSignpost21Script
-	bg_event 17,  4, BGEVENT_READ, MapTeamRocketBaseB2FSignpost21Script
-	bg_event 17,  5, BGEVENT_READ, MapTeamRocketBaseB2FSignpost21Script
-	bg_event 17,  6, BGEVENT_READ, MapTeamRocketBaseB2FSignpost21Script
-	bg_event 17,  7, BGEVENT_READ, MapTeamRocketBaseB2FSignpost21Script
-	bg_event 17,  8, BGEVENT_READ, MapTeamRocketBaseB2FSignpost21Script
+	bg_event 14, 12, BGEVENT_IFNOTSET, TeamRocketBaseB2FLockedDoor
+	bg_event 15, 12, BGEVENT_IFNOTSET, TeamRocketBaseB2FLockedDoor
+	bg_event 17,  9, BGEVENT_READ, TeamRocketBaseB2FTransmitterScript
+	bg_event 16,  9, BGEVENT_READ, TeamRocketBaseB2FTransmitterScript
+	bg_event 15,  9, BGEVENT_READ, TeamRocketBaseB2FTransmitterScript
+	bg_event 14,  9, BGEVENT_READ, TeamRocketBaseB2FTransmitterScript
+	bg_event 13,  9, BGEVENT_READ, TeamRocketBaseB2FTransmitterScript
+	bg_event 12,  9, BGEVENT_READ, TeamRocketBaseB2FTransmitterScript
+	bg_event 12,  8, BGEVENT_READ, TeamRocketBaseB2FTransmitterScript
+	bg_event 12,  7, BGEVENT_READ, TeamRocketBaseB2FTransmitterScript
+	bg_event 12,  6, BGEVENT_READ, TeamRocketBaseB2FTransmitterScript
+	bg_event 12,  5, BGEVENT_READ, TeamRocketBaseB2FTransmitterScript
+	bg_event 12,  4, BGEVENT_READ, TeamRocketBaseB2FTransmitterScript
+	bg_event 13,  4, BGEVENT_READ, TeamRocketBaseB2FTransmitterScript
+	bg_event 14,  4, BGEVENT_READ, TeamRocketBaseB2FTransmitterScript
+	bg_event 15,  4, BGEVENT_READ, TeamRocketBaseB2FTransmitterScript
+	bg_event 16,  4, BGEVENT_READ, TeamRocketBaseB2FTransmitterScript
+	bg_event 17,  4, BGEVENT_READ, TeamRocketBaseB2FTransmitterScript
+	bg_event 17,  5, BGEVENT_READ, TeamRocketBaseB2FTransmitterScript
+	bg_event 17,  6, BGEVENT_READ, TeamRocketBaseB2FTransmitterScript
+	bg_event 17,  7, BGEVENT_READ, TeamRocketBaseB2FTransmitterScript
+	bg_event 17,  8, BGEVENT_READ, TeamRocketBaseB2FTransmitterScript
 	bg_event 26,  7, BGEVENT_ITEM + FULL_HEAL, EVENT_TEAM_ROCKET_BASE_B2F_HIDDEN_FULL_HEAL
 
 	def_object_events
@@ -81,15 +81,15 @@ TeamRocketBaseB2F_MapScriptHeader:
 TransmitterDoorCallback:
 	checkevent EVENT_OPENED_DOOR_TO_ROCKET_HIDEOUT_TRANSMITTER
 	iftrue .Change
-	return
+	endcallback
 
 .Change:
 	changeblock 14, 12, $7
-	return
+	endcallback
 
 RocketBaseBossFLeft:
 	moveobject TEAMROCKETBASEB2F_LANCE, 9, 13
-	jump RocketBaseBossFScript
+	sjump RocketBaseBossFScript
 
 RocketBaseBossFRight:
 	moveobject TEAMROCKETBASEB2F_ARIANA, 21, 16
@@ -179,13 +179,13 @@ LanceHealsScript:
 	showtext LanceHealsText2
 	setscene $1
 	setevent EVENT_LANCE_HEALED_YOU_IN_TEAM_ROCKET_BASE
-	checkcode VAR_FACING
-	ifequal RIGHT, UnknownScript_0x6d0be
+	readvar VAR_FACING
+	ifequal RIGHT, .FacingRight
 	applymovement TEAMROCKETBASEB2F_LANCE, RocketBaseLanceLeavesAfterHealMovement
 	disappear TEAMROCKETBASEB2F_LANCE
 	end
 
-UnknownScript_0x6d0be:
+.FacingRight:
 	applymovement TEAMROCKETBASEB2F_LANCE, RocketBaseLanceLeavesAfterHealRightMovement
 	disappear TEAMROCKETBASEB2F_LANCE
 	end
@@ -246,7 +246,7 @@ RocketElectrode1:
 	reloadmapafterbattle
 	special PlayMapMusic
 	applymovement PLAYER, RocketBasePlayerLeavesElectrodesMovement1
-	jump RocketBaseElectrodeScript
+	sjump RocketBaseElectrodeScript
 
 RocketElectrode2:
 	cry ELECTRODE
@@ -264,7 +264,7 @@ RocketElectrode2:
 	reloadmapafterbattle
 	special PlayMapMusic
 	applymovement PLAYER, RocketBasePlayerLeavesElectrodesMovement2
-	jump RocketBaseElectrodeScript
+	sjump RocketBaseElectrodeScript
 
 RocketElectrode3:
 	cry ELECTRODE
@@ -282,7 +282,7 @@ RocketElectrode3:
 	reloadmapafterbattle
 	special PlayMapMusic
 	applymovement PLAYER, RocketBasePlayerLeavesElectrodesMovement3
-	jump RocketBaseElectrodeScript
+	sjump RocketBaseElectrodeScript
 
 TeamRocketBaseB2FReloadMap:
 	reloadmapafterbattle
@@ -295,7 +295,7 @@ RocketBaseElectrodeScript:
 	turnobject PLAYER, RIGHT
 	opentext
 	writetext RocketBaseLanceElectrodeDoneText
-	buttonsound
+	promptbutton
 	verbosegivetmhm TM_THIEF
 	setevent EVENT_GOT_TM46_THIEF_FROM_LANCE
 	writetext RocketBaseLanceWhirlpoolText
@@ -320,14 +320,11 @@ RocketBaseElectrodeScript:
 	setevent EVENT_SECURITY_CAMERA_5
 	end
 
-MapTeamRocketBaseB2FSignpostPtr1:
+TeamRocketBaseB2FLockedDoor:
 	dw EVENT_OPENED_DOOR_TO_ROCKET_HIDEOUT_TRANSMITTER
 	opentext
 	checkevent EVENT_LEARNED_HAIL_GIOVANNI
-	iftrue UnknownScript_0x6d1e8
-	jumpopenedtext RocketBaseDoorNoPasswordText
-
-UnknownScript_0x6d1e8:
+	iffalse_jumpopenedtext RocketBaseDoorNoPasswordText
 	writetext RocketBaseDoorKnowPasswordText
 	waitbutton
 	playsound SFX_ENTER_DOOR
@@ -338,14 +335,28 @@ UnknownScript_0x6d1e8:
 	waitsfx
 	end
 
-MapTeamRocketBaseB2FSignpost21Script:
-	opentext
+TeamRocketBaseB2FTransmitterScript:
 	checkevent EVENT_CLEARED_ROCKET_HIDEOUT
-	iftrue UnknownScript_0x6d207
-	jumpopenedtext RocketBaseB2FTransmitterText
+	iftrue_jumptext .DeactivateTransmitterText
+	jumpthistext
 
-UnknownScript_0x6d207:
-	jumpopenedtext RocketBaseB2FDeactivateTransmitterText
+	text "It's the radio"
+	line "transmitter that's"
+
+	para "sending the"
+	line "sinister signal."
+
+	para "It's working at"
+	line "full capacity."
+	done
+
+.DeactivateTransmitterText:
+	text "The radio trans-"
+	line "mitter has finally"
+
+	para "stopped its evil"
+	line "broadcast."
+	done
 
 RocketBaseLanceLeavesAfterHealMovement:
 	step_right
@@ -809,23 +820,4 @@ RocketBaseDoorKnowPasswordText:
 	line "the password."
 
 	para "The door opened!"
-	done
-
-RocketBaseB2FTransmitterText:
-	text "It's the radio"
-	line "transmitter that's"
-
-	para "sending the"
-	line "sinister signal."
-
-	para "It's working at"
-	line "full capacity."
-	done
-
-RocketBaseB2FDeactivateTransmitterText:
-	text "The radio trans-"
-	line "mitter has finally"
-
-	para "stopped its evil"
-	line "broadcast."
 	done

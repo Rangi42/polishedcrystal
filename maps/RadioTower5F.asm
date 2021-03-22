@@ -56,7 +56,7 @@ Petrel1Script:
 	reloadmapafterbattle
 	opentext
 	writetext FakeDirectorTextAfter
-	buttonsound
+	promptbutton
 	verbosegivekeyitem BASEMENT_KEY
 	closetext
 	setevent EVENT_BEAT_PETREL_1
@@ -116,7 +116,7 @@ RadioTower5FRocketBossTrigger:
 	turnobject PLAYER, RIGHT
 	opentext
 	writetext RadioTower5FDirectorThankYouText
-	buttonsound
+	promptbutton
 	verbosegivekeyitem CLEAR_BELL
 	writetext RadioTower5FDirectorDescribeClearBellText
 	waitbutton

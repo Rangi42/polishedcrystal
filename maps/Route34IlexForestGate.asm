@@ -30,12 +30,12 @@ UnknownScript_0x62d2d:
 	iffalse UnknownScript_0x62d38
 	disappear ROUTE34ILEXFORESTGATE_TEACHER1
 	appear ROUTE34ILEXFORESTGATE_TEACHER2
-	return
+	endcallback
 
 UnknownScript_0x62d38:
 	disappear ROUTE34ILEXFORESTGATE_TEACHER2
 	appear ROUTE34ILEXFORESTGATE_TEACHER1
-	return
+	endcallback
 
 Route34IlexForestGateCelebiEvent:
 	checkevent EVENT_FOREST_IS_RESTLESS
@@ -60,7 +60,7 @@ Route34IlexForestGateTeacherScript:
 	faceplayer
 	opentext
 	writetext Route34IlexForestGateTeacherText
-	buttonsound
+	promptbutton
 	verbosegivetmhm TM_FALSE_SWIPE
 	setevent EVENT_GOT_TM54_FALSE_SWIPE
 	jumpthisopenedtext

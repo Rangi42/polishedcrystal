@@ -108,7 +108,7 @@ _CardFlip:
 
 .PlayWithThreeCoinsText:
 	; Play with three coins?
-	text_jump _CardFlipPlayWithThreeCoinsText
+	text_far _CardFlipPlayWithThreeCoinsText
 	text_end
 
 .DeductCoins:
@@ -146,7 +146,7 @@ _CardFlip:
 
 .NotEnoughCoinsText:
 	; Not enough coins…
-	text_jump _CardFlipNotEnoughCoinsText
+	text_far _CardFlipNotEnoughCoinsText
 	text_end
 
 .ChooseACard:
@@ -224,7 +224,7 @@ _CardFlip:
 
 .ChooseACardText:
 	; Choose a card.
-	text_jump _CardFlipChooseACardText
+	text_far _CardFlipChooseACardText
 	text_end
 
 .PlaceYourBet:
@@ -242,7 +242,7 @@ _CardFlip:
 
 .PlaceYourBetText:
 	; Place your bet.
-	text_jump _CardFlipPlaceYourBetText
+	text_far _CardFlipPlaceYourBetText
 	text_end
 
 .CheckTheCard:
@@ -307,12 +307,12 @@ _CardFlip:
 
 .PlayAgainText:
 	; Want to play again?
-	text_jump _CardFlipPlayAgainText
+	text_far _CardFlipPlayAgainText
 	text_end
 
 .CardsShuffledText:
 	; The cards have been shuffled.
-	text_jump _CardFlipShuffledText
+	text_far _CardFlipShuffledText
 	text_end
 
 .Quit:
@@ -1034,12 +1034,12 @@ CardFlip_CheckWinCondition:
 
 .Text_Yeah:
 	; Yeah!
-	text_jump _CardFlipYeahText
+	text_far _CardFlipYeahText
 	text_end
 
 .Text_Darn:
 	; Darn…
-	text_jump _CardFlipDarnText
+	text_far _CardFlipDarnText
 	text_end
 
 .AddCoinPlaySFX:

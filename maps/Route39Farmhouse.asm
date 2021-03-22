@@ -1,3 +1,6 @@
+ROUTE39FARMHOUSE_MILK_PRICE EQU 500
+ROUTE39FARMHOUSE_DOZEN_MILK_PRICE EQU 6000
+
 Route39Farmhouse_MapScriptHeader:
 	def_scene_scripts
 
@@ -38,22 +41,22 @@ FarmerMScript_SellMilk:
 	closewindow
 	ifequal $1, .Buy1
 	ifequal $2, .Buy12
-	jump .Cancel
+	sjump .Cancel
 
 .Buy1:
-	checkmoney $0, 500
+	checkmoney $0, ROUTE39FARMHOUSE_MILK_PRICE
 	ifequal $2, .NotEnoughMoney
 	giveitem MOOMOO_MILK
 	iffalse .BagFull
-	takemoney $0, 500
-	jump .Done
+	takemoney $0, ROUTE39FARMHOUSE_MILK_PRICE
+	sjump .Done
 
 .Buy12:
-	checkmoney $0, 6000
+	checkmoney $0, ROUTE39FARMHOUSE_DOZEN_MILK_PRICE
 	ifequal $2, .NotEnoughMoney
 	giveitem MOOMOO_MILK, 12
 	iffalse .BagFull
-	takemoney $0, 6000
+	takemoney $0, ROUTE39FARMHOUSE_DOZEN_MILK_PRICE
 
 .Done:
 	setflag ENGINE_BOUGHT_MOOMOO_MILK
@@ -61,7 +64,7 @@ FarmerMScript_SellMilk:
 	waitsfx
 	playsound SFX_TRANSACTION
 	writetext FarmerMText_GotMilk
-	buttonsound
+	promptbutton
 	itemnotify
 	endtext
 
@@ -84,8 +87,8 @@ FarmerMScript_SellMilk:
 .MenuData2:
 	db $80 ; flags
 	db 3 ; items
-	db "× 1    ¥500@"
-	db "×12   ¥6000@"
+	db "× 1    ¥{d:ROUTE39FARMHOUSE_MILK_PRICE}@"
+	db "×12   ¥{d:ROUTE39FARMHOUSE_DOZEN_MILK_PRICE}@"
 	db "Cancel@"
 
 .Milking:
@@ -102,7 +105,7 @@ PokefanF_AcrobaticsFarmer:
 
 .GiveAcrobatics:
 	writetext FarmerFText_HealedMiltank
-	buttonsound
+	promptbutton
 	verbosegivetmhm TM_ACROBATICS
 	setevent EVENT_GOT_TM62_ACROBATICS_FROM_MOOMOO_FARM
 .GotAcrobatics:

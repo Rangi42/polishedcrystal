@@ -26,10 +26,25 @@ SproutTower1F_MapScriptHeader:
 
 SproutTower1FGrannyScript:
 	checkunits
-	iftrue .metric
-	jumptextfaceplayer UnknownText_0x184649_Imperial
-.metric
-	jumptextfaceplayer UnknownText_0x184649_Metric
+	iftrue_jumptextfaceplayer .MetricText
+	jumpthistextfaceplayer
+
+	text "A Bellsprout over"
+	line "100 feet tall…"
+
+	para "People say that it"
+	line "became the center"
+	cont "pillar here."
+	done
+
+.MetricText:
+	text "A Bellsprout over"
+	line "30 meters tall…"
+
+	para "People say that it"
+	line "became the center"
+	cont "pillar here."
+	done
 
 GenericTrainerSageChow:
 	generictrainer SAGE, CHOW, EVENT_BEAT_SAGE_CHOW, SageChowSeenText, SageChowBeatenText
@@ -67,24 +82,6 @@ SproutTower1FSage2Text:
 
 	para "as a place for"
 	line "#mon training."
-	done
-
-UnknownText_0x184649_Imperial:
-	text "A Bellsprout over"
-	line "100 feet tall…"
-
-	para "People say that it"
-	line "became the center"
-	cont "pillar here."
-	done
-
-UnknownText_0x184649_Metric:
-	text "A Bellsprout over"
-	line "30 meters tall…"
-
-	para "People say that it"
-	line "became the center"
-	cont "pillar here."
 	done
 
 SproutTower1FTeacherText:

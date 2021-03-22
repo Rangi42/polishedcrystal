@@ -17,7 +17,7 @@ BluesHouse1F_MapScriptHeader:
 	object_event  2,  3, SPRITE_DAISY, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, DaisyScript, -1
 
 DaisyScript:
-	checkcode VAR_HOUR
+	readvar VAR_HOUR
 	ifequal 15, .Massage
 	checkflag ENGINE_TEA_IN_BLUES_HOUSE
 	iftrue .After
@@ -61,7 +61,7 @@ DaisyScript:
 	opentext
 	writetext .LooksContentText
 	special PlayCurMonCry
-	buttonsound
+	promptbutton
 	jumpthisopenedtext
 
 	text "Daisy: There you"
@@ -121,7 +121,7 @@ DaisyScript:
 	done
 
 .LooksContentText:
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text " looks"
 	line "content."
 	done

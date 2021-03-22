@@ -80,28 +80,28 @@ CeladonGameCornerFisherScript:
 	checkevent EVENT_GOT_COINS_FROM_GAMBLER_AT_CELADON
 	iftrue .FisherOffer
 	writetext CeladonGameCornerFisherText1
-	buttonsound
+	promptbutton
 	checkkeyitem COIN_CASE
-	iffalse UnknownScript_0x7217b
+	iffalse .NoCoinCase
 	checkcoins 49999
-	ifequal $0, UnknownScript_0x72184
-	stringtotext .coinname, $1
+	ifequal $0, .FullCoinCase
+	getstring .coinname, $1
 	callstd receiveitem
 	givecoins 18
 	setevent EVENT_GOT_COINS_FROM_GAMBLER_AT_CELADON
 .FisherOffer:
 	writetext FisherOfferText
 	yesorno
-	iffalse .UnknownScript_0x72169
+	iffalse .GotCoins
 	checkcoins 50
 	ifequal $2, .FisherNotEnough
 	takecoins 50
 	playsound SFX_TRANSACTION
 	scall MapCeladonGameCornerSignpost16Script
 	opentext
-.UnknownScript_0x72169:
+.GotCoins:
 	writetext CeladonGameCornerFisherText2
-	jump .FisherEnd
+	sjump .FisherEnd
 .FisherNotEnough:
 	writetext FisherNotEnoughText
 .FisherEnd:
@@ -113,14 +113,14 @@ CeladonGameCornerFisherScript:
 .coinname
 	db "Coin@"
 
-UnknownScript_0x7217b:
+.NoCoinCase:
 	writetext CeladonGameCornerFisherNoCoinCaseText
 	waitbutton
 	closetext
 	turnobject LAST_TALKED, LEFT
 	end
 
-UnknownScript_0x72184:
+.FullCoinCase:
 	writetext CeladonGameCornerFisherFullCoinCaseText
 	waitbutton
 	closetext
@@ -136,13 +136,13 @@ MapCeladonGameCornerSignpost35Script:
 	random $6
 	ifequal $0, MapCeladonGameCornerSignpost16Script
 	refreshscreen
-	writebyte $0
+	setval $0
 	special Special_SlotMachine
 	endtext
 
 MapCeladonGameCornerSignpost16Script:
 	refreshscreen
-	writebyte $1
+	setval $1
 	special Special_SlotMachine
 	endtext
 

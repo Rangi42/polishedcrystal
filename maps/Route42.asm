@@ -53,7 +53,7 @@ Route42LyraScript1:
 	appear ROUTE42_LYRA
 	waitsfx
 	applymovement ROUTE42_LYRA, MovementData_Route42LyraApproach1
-	jump Route42LyraScript
+	sjump Route42LyraScript
 
 Route42LyraScript2:
 	turnobject PLAYER, LEFT
@@ -64,7 +64,7 @@ Route42LyraScript2:
 	appear ROUTE42_LYRA
 	waitsfx
 	applymovement ROUTE42_LYRA, MovementData_Route42LyraApproach2
-	jump Route42LyraScript
+	sjump Route42LyraScript
 
 Route42LyraScript3:
 	turnobject PLAYER, LEFT
@@ -75,7 +75,7 @@ Route42LyraScript3:
 	appear ROUTE42_LYRA
 	waitsfx
 	applymovement ROUTE42_LYRA, MovementData_Route42LyraApproach3
-	jump Route42LyraScript
+	sjump Route42LyraScript
 
 Route42LyraScript4:
 	turnobject PLAYER, LEFT
@@ -84,7 +84,7 @@ Route42LyraScript4:
 	appear ROUTE42_LYRA
 	waitsfx
 	applymovement ROUTE42_LYRA, MovementData_Route42LyraApproach4
-	jump Route42LyraScript
+	sjump Route42LyraScript
 
 Route42LyraScript5:
 	turnobject PLAYER, UP
@@ -106,11 +106,11 @@ Route42LyraScript:
 	checkevent EVENT_GOT_CHIKORITA_FROM_ELM
 	iftrue .Chikorita
 	loadtrainer LYRA1, LYRA1_7
-	jump .AfterBattle
+	sjump .AfterBattle
 
 .Totodile:
 	loadtrainer LYRA1, LYRA1_8
-	jump .AfterBattle
+	sjump .AfterBattle
 
 .Chikorita:
 	loadtrainer LYRA1, LYRA1_9
@@ -122,7 +122,7 @@ Route42LyraScript:
 	playmusic MUSIC_LYRA_DEPARTURE_HGSS
 	opentext
 	writetext Route42LyraPresentText
-	buttonsound
+	promptbutton
 	verbosegivetmhm HM_WHIRLPOOL
 	setevent EVENT_GOT_HM05_WHIRLPOOL
 	writetext Route42LyraWhirlpoolText
@@ -133,7 +133,7 @@ Route42LyraScript:
 	checkevent EVENT_SAW_SUICUNE_ON_ROUTE_42
 	iftrue .NoSuicune
 	setscene $2
-	jump .Finish
+	sjump .Finish
 .NoSuicune
 	setscene $0
 .Finish
@@ -156,9 +156,9 @@ TrainerFisherTully1:
 	trainer FISHER, TULLY1, EVENT_BEAT_FISHER_TULLY, FisherTully1SeenText, FisherTully1BeatenText, 0, FisherTully1Script
 
 FisherTully1Script:
-	writecode VAR_CALLERID, PHONE_FISHER_TULLY
+	loadvar VAR_CALLERID, PHONE_FISHER_TULLY
 	opentext
-	checkflag ENGINE_TULLY
+	checkflag ENGINE_TULLY_READY_FOR_REMATCH
 	iftrue UnknownScript_0x1a927f
 	checkflag ENGINE_TULLY_HAS_WATER_STONE
 	iftrue UnknownScript_0x1a92dc
@@ -167,10 +167,10 @@ FisherTully1Script:
 	checkevent EVENT_TULLY_ASKED_FOR_PHONE_NUMBER
 	iftrue UnknownScript_0x1a9268
 	writetext FisherTullyAfterBattleText
-	buttonsound
+	promptbutton
 	setevent EVENT_TULLY_ASKED_FOR_PHONE_NUMBER
 	scall UnknownScript_0x1a92f1
-	jump UnknownScript_0x1a926b
+	sjump UnknownScript_0x1a926b
 
 UnknownScript_0x1a9268:
 	scall UnknownScript_0x1a92f5
@@ -178,14 +178,14 @@ UnknownScript_0x1a926b:
 	askforphonenumber PHONE_FISHER_TULLY
 	ifequal $1, UnknownScript_0x1a9305
 	ifequal $2, UnknownScript_0x1a9301
-	trainertotext FISHER, TULLY1, $0
+	gettrainername FISHER, TULLY1, $0
 	scall UnknownScript_0x1a92f9
-	jump UnknownScript_0x1a92fd
+	sjump UnknownScript_0x1a92fd
 
 UnknownScript_0x1a927f:
 	scall UnknownScript_0x1a9309
 	winlosstext FisherTully1BeatenText, 0
-	copybytetovar wTullyFightCount
+	readmem wTullyFightCount
 	ifequal 3, .Fight3
 	ifequal 2, .Fight2
 	ifequal 1, .Fight1
@@ -203,31 +203,31 @@ UnknownScript_0x1a927f:
 	loadtrainer FISHER, TULLY1
 	startbattle
 	reloadmapafterbattle
-	loadvar wTullyFightCount, 1
-	clearflag ENGINE_TULLY
+	loadmem wTullyFightCount, 1
+	clearflag ENGINE_TULLY_READY_FOR_REMATCH
 	end
 
 .LoadFight1:
 	loadtrainer FISHER, TULLY2
 	startbattle
 	reloadmapafterbattle
-	loadvar wTullyFightCount, 2
-	clearflag ENGINE_TULLY
+	loadmem wTullyFightCount, 2
+	clearflag ENGINE_TULLY_READY_FOR_REMATCH
 	end
 
 .LoadFight2:
 	loadtrainer FISHER, TULLY3
 	startbattle
 	reloadmapafterbattle
-	loadvar wTullyFightCount, 3
-	clearflag ENGINE_TULLY
+	loadmem wTullyFightCount, 3
+	clearflag ENGINE_TULLY_READY_FOR_REMATCH
 	end
 
 .LoadFight3:
 	loadtrainer FISHER, TULLY4
 	startbattle
 	reloadmapafterbattle
-	clearflag ENGINE_TULLY
+	clearflag ENGINE_TULLY_READY_FOR_REMATCH
 	end
 
 UnknownScript_0x1a92dc:
@@ -236,10 +236,10 @@ UnknownScript_0x1a92dc:
 	iffalse UnknownScript_0x1a92ee
 	clearflag ENGINE_TULLY_HAS_WATER_STONE
 	setevent EVENT_TULLY_GAVE_WATER_STONE
-	jump UnknownScript_0x1a92fd
+	sjump UnknownScript_0x1a92fd
 
 UnknownScript_0x1a92ee:
-	jump UnknownScript_0x1a9311
+	sjump UnknownScript_0x1a9311
 
 UnknownScript_0x1a92f1:
 	jumpstd asknumber1m

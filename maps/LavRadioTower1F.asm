@@ -26,30 +26,27 @@ LavRadioTower1FUpstairsScript:
 	checkevent EVENT_EXORCISED_LAV_RADIO_TOWER
 	iftrue .Exorcised
 	warpmod 1, HAUNTED_RADIO_TOWER_2F
-	return
+	endcallback
 
 .Exorcised:
 	warpmod 1, LAV_RADIO_TOWER_2F
-	return
+	endcallback
 
 LavRadioTower1FGentlemanScript:
 	faceplayer
 	opentext
 	checkflag ENGINE_EXPN_CARD
-	iftrue_jumpopenedtext .UnknownText_0x7f141
+	iftrue_jumpopenedtext .GotExpnCardText
 	checkevent EVENT_RESTORED_POWER_TO_KANTO
-	iftrue .UnknownScript_0x7ee80
-	jumpopenedtext LavRadioTower1FGentlemanText
-
-.UnknownScript_0x7ee80:
-	writetext LavRadioTower1FGentlemanText_ReturnedMachinePart
-	buttonsound
-	stringtotext .expncardname, $1
+	iffalse_jumpopenedtext .OffTheAirText
+	writetext .ReturnedMachinePartText
+	promptbutton
+	getstring .expncardname, $1
 	callstd receiveitem
 	setflag ENGINE_EXPN_CARD
 	jumpthisopenedtext
 
-.UnknownText_0x7f141:
+.GotExpnCardText:
 	text "With that thing,"
 	line "you can tune into"
 
@@ -57,6 +54,41 @@ LavRadioTower1FGentlemanScript:
 	line "here in Kanto."
 
 	para "Gahahahaha!"
+	done
+
+.OffTheAirText:
+	text "Oh, no, no, no!"
+
+	para "We've been off the"
+	line "air ever since the"
+
+	para "Power Plant shut"
+	line "down."
+
+	para "All my efforts to"
+	line "start this station"
+
+	para "would be wasted if"
+	line "I can't broadcast."
+
+	para "I'll be ruined!"
+	done
+
+.ReturnedMachinePartText:
+	text "Ah! So you're the"
+	line "<PLAYER> who solved"
+
+	para "the Power Plant's"
+	line "problem?"
+
+	para "Thanks to you, I"
+	line "never lost my job."
+
+	para "I tell you, you're"
+	line "a real lifesaver!"
+
+	para "Please take this"
+	line "as my thanks."
 	done
 
 .expncardname
@@ -118,41 +150,6 @@ LavRadioTower1FSuperNerd1Text:
 	para "They must be doing"
 	line "their best to put"
 	cont "on good shows."
-	done
-
-LavRadioTower1FGentlemanText:
-	text "Oh, no, no, no!"
-
-	para "We've been off the"
-	line "air ever since the"
-
-	para "Power Plant shut"
-	line "down."
-
-	para "All my efforts to"
-	line "start this station"
-
-	para "would be wasted if"
-	line "I can't broadcast."
-
-	para "I'll be ruined!"
-	done
-
-LavRadioTower1FGentlemanText_ReturnedMachinePart:
-	text "Ah! So you're the"
-	line "<PLAYER> who solved"
-
-	para "the Power Plant's"
-	line "problem?"
-
-	para "Thanks to you, I"
-	line "never lost my job."
-
-	para "I tell you, you're"
-	line "a real lifesaver!"
-
-	para "Please take this"
-	line "as my thanks."
 	done
 
 LavRadioTower1FSuperNerd2Text_GotExpnCard:

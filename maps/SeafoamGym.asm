@@ -96,26 +96,26 @@ SeafoamGymBlaineScript:
 	playsound SFX_GET_BADGE
 	waitsfx
 	setflag ENGINE_VOLCANOBADGE
-	checkcode VAR_BADGES
+	readvar VAR_BADGES
 	ifequal 9, .FirstBadge
 	ifequal 10, .SecondBadge
 	ifequal 12, .LyrasEgg
-	jump .FightDone
+	sjump .FightDone
 .FirstBadge:
 	specialphonecall SPECIALCALL_FIRSTBADGE
-	jump .FightDone
+	sjump .FightDone
 .SecondBadge:
 	checkevent EVENT_GOT_GS_BALL_FROM_POKECOM_CENTER
 	iftrue .FightDone
 	specialphonecall SPECIALCALL_SECONDBADGE
-	jump .FightDone
+	sjump .FightDone
 .LyrasEgg:
 	specialphonecall SPECIALCALL_LYRASEGG
 .FightDone:
 	checkevent EVENT_GOT_TM61_WILL_O_WISP
 	iftrue_jumpopenedtext BlaineFightDoneText
 	writetext BlaineAfterBattleText
-	buttonsound
+	promptbutton
 	verbosegivetmhm TM_WILL_O_WISP
 	setevent EVENT_GOT_TM61_WILL_O_WISP
 	jumpthisopenedtext

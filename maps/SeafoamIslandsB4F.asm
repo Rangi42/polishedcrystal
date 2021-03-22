@@ -31,7 +31,7 @@ SeafoamIslandsB4FLawrenceEncounterScript:
 	showemote EMOTE_SHOCK, PLAYER, 15
 	special Special_FadeOutMusic
 	pause 15
-	checkcode VAR_FACING
+	readvar VAR_FACING
 	ifequal UP, .up
 	ifequal DOWN, .down
 	ifequal LEFT, .left
@@ -43,7 +43,7 @@ SeafoamIslandsB4FLawrenceEncounterScript:
 	appear SEAFOAMISLANDSB4F_LAWRENCE
 	applymovement SEAFOAMISLANDSB4F_LAWRENCE, SeafoamIslandsB4FMovementData_LawrenceApproach
 	turnobject PLAYER, DOWN
-	jump .continue
+	sjump .continue
 .up
 	moveobject SEAFOAMISLANDSB4F_LAWRENCE_SURF, 17, 16
 	appear SEAFOAMISLANDSB4F_LAWRENCE_SURF
@@ -54,7 +54,7 @@ SeafoamIslandsB4FLawrenceEncounterScript:
 	applymovement SEAFOAMISLANDSB4F_LAWRENCE, SeafoamIslandsB4FMovementData_LawrenceApproach
 	turnobject SEAFOAMISLANDSB4F_LAWRENCE, RIGHT
 	turnobject PLAYER, LEFT
-	jump .continue
+	sjump .continue
 .down
 	moveobject SEAFOAMISLANDSB4F_LAWRENCE_SURF, 17, 16
 	appear SEAFOAMISLANDSB4F_LAWRENCE_SURF
@@ -66,7 +66,7 @@ SeafoamIslandsB4FLawrenceEncounterScript:
 	applymovement SEAFOAMISLANDSB4F_LAWRENCE, SeafoamIslandsB4FMovementData_LawrenceContinueDown
 	turnobject SEAFOAMISLANDSB4F_LAWRENCE, RIGHT
 	turnobject PLAYER, LEFT
-	jump .continue
+	sjump .continue
 .left
 	moveobject SEAFOAMISLANDSB4F_LAWRENCE_SURF, 18, 16
 	appear SEAFOAMISLANDSB4F_LAWRENCE_SURF
@@ -103,12 +103,12 @@ SeafoamIslandsArticuno:
 	pause 15
 	closetext
 	loadwildmon ARTICUNO, 65
-	writecode VAR_BATTLETYPE, BATTLETYPE_LEGENDARY
+	loadvar VAR_BATTLETYPE, BATTLETYPE_LEGENDARY
 	startbattle
 	disappear SEAFOAMISLANDSB4F_ARTICUNO
 	setevent EVENT_SEAFOAM_ISLANDS_ARTICUNO
 	reloadmapafterbattle
-	writebyte ARTICUNO
+	setval ARTICUNO
 	special SpecialMonCheck
 	iffalse .NoBlanche
 	setevent EVENT_CELADON_UNIVERSITY_BLANCHE
@@ -120,7 +120,7 @@ SeafoamIslandsArticuno:
 	iffalse .end
 	special SpecialBirdsCheck
 	iffalse .end
-	jump SeafoamIslandsB4FLawrenceEncounterScript
+	sjump SeafoamIslandsB4FLawrenceEncounterScript
 .end
 	end
 

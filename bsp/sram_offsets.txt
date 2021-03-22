@@ -1,0 +1,74 @@
+GameDataStartPointers:
+; version number, game data start, backup game data start
+	dh 4
+	dw sGameData_v0, sBackupGameData_v0
+
+	dh -1
+	dw sGameData, sBackupGameData
+
+GameDataSizes:
+; build number, game data size
+	dh 0
+	dh GAME_DATA_SIZE_v0
+
+	dh 1
+	dh GAME_DATA_SIZE_v1
+
+	dh 2
+	dh GAME_DATA_SIZE_v2
+
+	dh 3
+	dh GAME_DATA_SIZE_v3
+
+	dh 5
+	dh GAME_DATA_SIZE_v4
+
+	dh -1
+	dh GAME_DATA_SIZE
+
+CheckPointers:
+; stored in DESCENDING order, build 0 check pointers should be end of list
+; build number
+; check value 1, build number pointer (zero if skipped), check value 2, checksum
+	dh 7
+	dh sCheckValue1, sSaveVersion, sCheckValue2, sChecksum
+
+	dh 5
+	dh sCheckValue1, 0, sCheckValue2_v5, sChecksum_v5
+
+	dh 4
+	dh sCheckValue1_v0, 0, sCheckValue2_v4, sChecksum_v4
+
+	dh 3
+	dh sCheckValue1_v0, 0, sCheckValue2_v3, sChecksum_v3
+
+	dh 2
+	dh sCheckValue1_v0, 0, sCheckValue2_v2, sChecksum_v2
+
+	dh 1
+	dh sCheckValue1_v0, 0, sCheckValue2_v1, sChecksum_v1
+
+	dh 0
+	dh sCheckValue1_v0, 0, sCheckValue2_v0, sChecksum_v0
+
+BackupCheckPointers:
+	dh 7
+	dh sBackupCheckValue1, sSaveVersion, sBackupCheckValue2, sBackupChecksum
+
+	dh 5
+	dh sBackupCheckValue1, 0, sBackupCheckValue2_v5, sBackupChecksum_v5
+
+	dh 4
+	dh sBackupCheckValue1_v0, 0, sBackupCheckValue2_v4, sBackupChecksum_v4
+
+	dh 3
+	dh sBackupCheckValue1_v0, 0, sBackupCheckValue2_v3, sBackupChecksum_v3
+
+	dh 2
+	dh sBackupCheckValue1_v0, 0, sBackupCheckValue2_v2, sBackupChecksum_v2
+
+	dh 1
+	dh sBackupCheckValue1_v0, 0, sBackupCheckValue2_v1, sBackupChecksum_v1
+
+	dh 0
+	dh sBackupCheckValue1_v0, 0, sBackupCheckValue2_v0, sBackupChecksum_v0

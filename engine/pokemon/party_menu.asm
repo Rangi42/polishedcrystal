@@ -166,14 +166,7 @@ BT_PartySelect:
 	prompt
 
 .Stats:
-	call LoadStandardMenuHeader
-	call ClearSprites
-	xor a ; PARTYMON
-	ld [wMonType], a
-	call LowVolume
-	predef StatsScreenInit
-	call MaxVolume
-	call ExitMenu
+	farcall OpenPartyStats
 	jp .loop
 
 .Moves:
@@ -263,9 +256,8 @@ BT_CheckEnterState:
 	ld hl, wPartyMon1Species
 	call GetPartyLocation
 	ld a, [hl]
-	ld de, 1
 	ld hl, UberMons
-	call IsInArray
+	call IsInByteArray
 	jr c, .banned
 	pop af
 
@@ -421,7 +413,7 @@ PlacePartyNicknames:
 	push hl
 	ld hl, wPartyMonNicknames
 	ld a, b
-	call GetNick
+	call GetNickname
 	pop hl
 	rst PlaceString
 	pop hl
@@ -645,7 +637,7 @@ PlacePartyMonTMHMCompatibility:
 	ld bc, PARTYMON_STRUCT_LENGTH
 	rst AddNTimes
 	ld a, [hl]
-	and BASEMON_MASK
+	and SPECIESFORM_MASK
 	ld [wCurForm], a
 	predef CanLearnTMHMMove
 	pop hl
@@ -706,7 +698,7 @@ PlacePartyMonEvoStoneCompatibility:
 	ld bc, PARTYMON_STRUCT_LENGTH
 	rst AddNTimes
 	ld a, [hl]
-	and BASEMON_MASK
+	and SPECIESFORM_MASK
 	ld b, a
 	; c = species
 	ld c, e
@@ -1148,7 +1140,7 @@ YouHaveNoPKMNString:
 PrintPartyMenuActionText:
 	ld a, [wCurPartyMon]
 	ld hl, wPartyMonNicknames
-	call GetNick
+	call GetNickname
 	ld a, [wPartyMenuActionText]
 	and $f
 	ld hl, .MenuActionTexts
@@ -1168,52 +1160,52 @@ PrintPartyMenuActionText:
 
 .Text_RecoveredSomeHP:
 	; recovered @ HP!
-	text_jump _RecoveredSomeHPText
+	text_far _RecoveredSomeHPText
 	text_end
 
 .Text_CuredOfPoison:
 	; 's cured of poison.
-	text_jump _CuredOfPoisonText
+	text_far _CuredOfPoisonText
 	text_end
 
 .Text_RidOfParalysis:
 	; 's rid of paralysis.
-	text_jump _RidOfParalysisText
+	text_far _RidOfParalysisText
 	text_end
 
 .Text_BurnWasHealed:
 	; 's burn was healed.
-	text_jump _BurnWasHealedText
+	text_far _BurnWasHealedText
 	text_end
 
 .Text_Defrosted:
 	; was defrosted.
-	text_jump _WasDefrostedText
+	text_far _WasDefrostedText
 	text_end
 
 .Text_WokeUp:
 	; woke up.
-	text_jump _WokeUpText
+	text_far _WokeUpText
 	text_end
 
 .Text_HealthReturned:
 	; 's health returned.
-	text_jump _HealthReturnedText
+	text_far _HealthReturnedText
 	text_end
 
 .Text_Revitalized:
 	; is revitalized.
-	text_jump _RevitalizedText
+	text_far _RevitalizedText
 	text_end
 
 .Text_GrewToLevel:
 	; grew to level @ !@ @
-	text_jump _GrewToLevelText
+	text_far _GrewToLevelText
 	text_end
 
 .Text_CameToItsSenses:
 	; came to its senses.
-	text_jump _CameToItsSensesText
+	text_far _CameToItsSensesText
 	text_end
 
 .PrintText:

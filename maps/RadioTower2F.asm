@@ -1,3 +1,5 @@
+BLUE_CARD_POINT_CAP EQU 30
+
 RadioTower2F_MapScriptHeader:
 	def_scene_scripts
 
@@ -82,40 +84,40 @@ Buena:
 	faceplayer
 	opentext
 	checkevent EVENT_MET_BUENA
-	iffalse UnknownScript_0x5d800
+	iffalse .Introduction
 	checkflag ENGINE_BUENAS_PASSWORD_2
-	iftrue UnknownScript_0x5d82f
-	checkcode VAR_HOUR
-	ifless 18, UnknownScript_0x5d893
+	iftrue .PlayedAlready
+	readvar VAR_HOUR
+	ifless 18, .TooEarly
 	checkflag ENGINE_BUENAS_PASSWORD
-	iffalse UnknownScript_0x5d80a
+	iffalse .TuneIn
 	checkkeyitem BLUE_CARD
-	iffalse UnknownScript_0x5d86b
-	checkcode VAR_BLUECARDBALANCE
-	ifequal 30, UnknownScript_0x5d87f
+	iffalse .NoBlueCard
+	readvar VAR_BLUECARDBALANCE
+	ifequal BLUE_CARD_POINT_CAP, .BlueCardCapped0
 	playmusic MUSIC_BUENAS_PASSWORD
 	writetext RadioTower2FBuenaDoYouKnowPasswordText
 	special AskRememberPassword
-	iffalse UnknownScript_0x5d81e
+	iffalse .ForgotPassword
 	writetext RadioTower2FBuenaJoinTheShowText
 	waitbutton
 	closetext
 	turnobject RADIOTOWER2F_BUENA, RIGHT
-	checkcode VAR_FACING
-	ifnotequal RIGHT, UnknownScript_0x5d7be
+	readvar VAR_FACING
+	ifnotequal RIGHT, .DontNeedToMove
 	applymovement PLAYER, RadioTower2FPlayerWalksToMicrophoneMovement
-UnknownScript_0x5d7be:
+.DontNeedToMove:
 	turnobject PLAYER, RIGHT
 	showtext RadioTower2FBuenaEveryoneSayPasswordText
 	turnobject RADIOTOWER2F_BUENA, DOWN
 	refreshscreen
 	special SpecialBuenasPassword
 	closetext
-	iffalse UnknownScript_0x5d845
+	iffalse .WrongAnswer
 	showtext RadioTower2FBuenaCorrectAnswerText
-	checkcode VAR_BLUECARDBALANCE
-	addvar $1
-	writevarcode VAR_BLUECARDBALANCE
+	readvar VAR_BLUECARDBALANCE
+	addval $1
+	writevar VAR_BLUECARDBALANCE
 	waitsfx
 	playsound SFX_TRANSACTION
 	setflag ENGINE_BUENAS_PASSWORD_2
@@ -125,28 +127,28 @@ UnknownScript_0x5d7be:
 	special Special_FadeOutMusic
 	pause 20
 	special RestartMapMusic
-	checkcode VAR_BLUECARDBALANCE
-	ifequal $1e, UnknownScript_0x5d8a4
+	readvar VAR_BLUECARDBALANCE
+	ifequal BLUE_CARD_POINT_CAP, .BlueCardCapped1
 	end
 
-UnknownScript_0x5d800:
+.Introduction:
 	writetext RadioTower2FBuenaShowIntroductionText
-	buttonsound
+	promptbutton
 	setevent EVENT_MET_BUENA
 	verbosegivekeyitem BLUE_CARD
-UnknownScript_0x5d80a:
+.TuneIn:
 	writetext RadioTower2FBuenaTuneInToMyShowText
 	waitbutton
 	closetext
 	checkcellnum PHONE_BUENA
-	iftrue UnknownScript_0x5d81a
+	iftrue .Registered0
 	checkevent EVENT_BUENA_OFFERED_HER_PHONE_NUMBER
-	iftrue UnknownScript_0x5d8cc
-UnknownScript_0x5d81a:
+	iftrue .OfferedNumberBefore
+.Registered0:
 	turnobject RADIOTOWER2F_BUENA, RIGHT
 	end
 
-UnknownScript_0x5d81e:
+.ForgotPassword:
 	writetext RadioTower2FBuenaComeBackAfterListeningText
 	waitbutton
 	closetext
@@ -156,20 +158,20 @@ UnknownScript_0x5d81e:
 	special RestartMapMusic
 	end
 
-UnknownScript_0x5d82f:
+.PlayedAlready:
 	writetext RadioTower2FBuenaAlreadyPlayedText
 	waitbutton
 	closetext
 	checkcellnum PHONE_BUENA
-	iftrue UnknownScript_0x5d83f
+	iftrue .Registered1
 	checkevent EVENT_BUENA_OFFERED_HER_PHONE_NUMBER
-	iftrue UnknownScript_0x5d8cc
-UnknownScript_0x5d83f:
+	iftrue .OfferedNumberBefore
+.Registered1:
 	turnobject RADIOTOWER2F_BUENA, RIGHT
 	pause 10
 	end
 
-UnknownScript_0x5d845:
+.WrongAnswer:
 	setflag ENGINE_BUENAS_PASSWORD_2
 	showtext RadioTower2FBuenaDidYouForgetText
 	turnobject RADIOTOWER2F_BUENA, RIGHT
@@ -181,69 +183,69 @@ UnknownScript_0x5d845:
 	special RestartMapMusic
 	end
 
-UnknownScript_0x5d86b:
+.NoBlueCard:
 	writetext RadioTower2FBuenaNoBlueCardText
 	waitbutton
 	closetext
 	checkcellnum PHONE_BUENA
-	iftrue UnknownScript_0x5d87b
+	iftrue .Registered2
 	checkevent EVENT_BUENA_OFFERED_HER_PHONE_NUMBER_NO_BLUE_CARD
-	iftrue UnknownScript_0x5d8cc
-UnknownScript_0x5d87b:
+	iftrue .OfferedNumberBefore
+.Registered2:
 	turnobject RADIOTOWER2F_BUENA, RIGHT
 	end
 
-UnknownScript_0x5d87f:
+.BlueCardCapped0:
 	writetext RadioTower2FBuenaCardIsFullText
 	waitbutton
 	closetext
 	checkcellnum PHONE_BUENA
-	iftrue UnknownScript_0x5d88f
+	iftrue .Registered3
 	checkevent EVENT_BUENA_OFFERED_HER_PHONE_NUMBER_NO_BLUE_CARD
-	iftrue UnknownScript_0x5d8cc
-UnknownScript_0x5d88f:
+	iftrue .OfferedNumberBefore
+.Registered3:
 	turnobject RADIOTOWER2F_BUENA, RIGHT
 	end
 
-UnknownScript_0x5d893:
+.TooEarly:
 	writetext RadioTower2FBuenaTuneInAfterSixText
 	waitbutton
 	closetext
 	checkcellnum PHONE_BUENA
-	iftrue UnknownScript_0x5d8a3
+	iftrue .Registered4
 	checkevent EVENT_BUENA_OFFERED_HER_PHONE_NUMBER
-	iftrue UnknownScript_0x5d8cc
-UnknownScript_0x5d8a3:
+	iftrue .OfferedNumberBefore
+.Registered4:
 	end
 
-UnknownScript_0x5d8a4:
+.BlueCardCapped1:
 	checkcellnum PHONE_BUENA
-	iftrue UnknownScript_0x5d8fe
+	iftrue .HasNumber
 	pause 20
 	turnobject RADIOTOWER2F_BUENA, DOWN
 	pause 15
 	turnobject PLAYER, UP
 	pause 15
 	checkevent EVENT_BUENA_OFFERED_HER_PHONE_NUMBER_NO_BLUE_CARD
-	iftrue UnknownScript_0x5d8cc
+	iftrue .OfferedNumberBefore
 	showemote EMOTE_SHOCK, RADIOTOWER2F_BUENA, 15
 	setevent EVENT_BUENA_OFFERED_HER_PHONE_NUMBER_NO_BLUE_CARD
 	setevent EVENT_BUENA_OFFERED_HER_PHONE_NUMBER
 	opentext
 	writetext RadioTower2FBuenaOfferPhoneNumberText
-	jump UnknownScript_0x5d8d0
+	sjump .AskForNumber
 
-UnknownScript_0x5d8cc:
+.OfferedNumberBefore:
 	opentext
 	writetext RadioTower2FBuenaOfferNumberAgainText
-UnknownScript_0x5d8d0:
+.AskForNumber:
 	askforphonenumber PHONE_BUENA
-	ifequal $1, UnknownScript_0x5d8f6
-	ifequal $2, UnknownScript_0x5d8ed
+	ifequal $1, .PhoneFull
+	ifequal $2, .NumberDeclined
 	writetext RadioTower2FRegisteredBuenasNumberText
 	playsound SFX_REGISTER_PHONE_NUMBER
 	waitsfx
-	buttonsound
+	promptbutton
 	writetext RadioTower2FBuenaCallMeText
 	waitbutton
 	closetext
@@ -251,19 +253,19 @@ UnknownScript_0x5d8d0:
 	addcellnum PHONE_BUENA
 	end
 
-UnknownScript_0x5d8ed:
+.NumberDeclined:
 	writetext RadioTower2FBuenaSadRejectedText
 	waitbutton
 	closetext
 	turnobject RADIOTOWER2F_BUENA, RIGHT
 	end
 
-UnknownScript_0x5d8f6:
+.PhoneFull:
 	writetext RadioTower2FBuenaYourPhoneIsFullText
 	waitbutton
 	closetext
 	turnobject RADIOTOWER2F_BUENA, RIGHT
-UnknownScript_0x5d8fe:
+.HasNumber:
 	end
 
 RadioTowerBuenaPrizeReceptionist:
@@ -543,12 +545,12 @@ RadioTower2FBuenaOfferPhoneNumberText:
 	text "Buena: Oh! Your"
 	line "Blue Card reached"
 
-	para "30 points today!"
+	para "{d:BLUE_CARD_POINT_CAP} points today!"
 	line "That's so wild!"
 
 	para "Hmm… There isn't a"
 	line "prize for hitting"
-	cont "30 points, but…"
+	cont "{d:BLUE_CARD_POINT_CAP} points, but…"
 
 	para "You came by so"
 	line "often, <PLAYER>."

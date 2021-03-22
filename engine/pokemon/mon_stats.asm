@@ -134,7 +134,7 @@ MostStatNames:
 PrintStatDifferences:
 	ld a, [wTextboxFlags]
 	push af
-	set NO_LINE_SPACING, a
+	set NO_LINE_SPACING_F, a
 	ld [wTextboxFlags], a
 
 	; Figure out length of largest modifier (+x, +xx or +xxx)
@@ -329,12 +329,13 @@ GetShininess:
 	dec a
 	jr z, .PartyMon
 
-; 2: sBoxMon
-	ld hl, sBoxMon1Shiny
-	ld bc, BOXMON_STRUCT_LENGTH
+; 2: encountered oldbox code
 	dec a
-	jr z, .sBoxMon
+	jr nz, .other
+	ld a, ERR_OLDBOX
+	jp Crash
 
+.other
 ; 3: Other
 	ld hl, wTempMonShiny
 	dec a
@@ -347,31 +348,14 @@ GetShininess:
 ; Get our place in the party/box.
 
 .PartyMon:
-.sBoxMon
 	ld a, [wCurPartyMon]
 	rst AddNTimes
 
 .Shininess:
 
-; sBoxMon data is read directly from SRAM.
-	ld a, [wMonType]
-	cp BOXMON
-	ld a, 1
-	call z, GetSRAMBank
-
-; Shininess
+; Check the shininess value
 	ld a, [hl]
 	and SHINY_MASK
-	ld b, a
-
-; Close SRAM if we were dealing with a sBoxMon.
-	ld a, [wMonType]
-	cp BOXMON
-	call z, CloseSRAM
-
-; Check the shininess value
-	ld a, b
-	and a
 	ret
 
 GetGender:
@@ -400,12 +384,13 @@ GetGender:
 	dec a
 	jr z, .PartyMon
 
-; 2: sBoxMon
-	ld hl, sBoxMon1Gender
-	ld bc, BOXMON_STRUCT_LENGTH
+; 2: encountered oldbox code
 	dec a
-	jr z, .sBoxMon
+	jr nz, .other
+	ld a, ERR_OLDBOX
+	jp Crash
 
+.other
 ; 3: Other (used for breeding, possibly elsewhere)
 	ld hl, wTempMonGender
 	dec a
@@ -418,33 +403,21 @@ GetGender:
 ; Get our place in the party/box.
 
 .PartyMon:
-.sBoxMon
 	ld a, [wCurPartyMon]
 	rst AddNTimes
 
 .Gender:
 
-; sBoxMon data is read directly from SRAM.
-	ld a, [wMonType]
-	cp BOXMON
-	ld a, 1
-	call z, GetSRAMBank
-
 ; Gender and form are stored in the same byte
 	ld a, [hl]
 	ld b, a
-
-; Close SRAM if we were dealing with a sBoxMon.
-	ld a, [wMonType]
-	cp BOXMON
-	call z, CloseSRAM
 
 ; We need the gender ratio to do anything with this.
 	ld a, [wCurPartySpecies]
 	ld c, a
 	push bc ; b == gender|form
 	ld a, b
-	and BASEMON_MASK
+	and SPECIESFORM_MASK
 	ld b, a
 	call GetGenderRatio ; c = gender ratio
 	pop af ; a = gender|form
@@ -453,11 +426,11 @@ GetGender:
 
 ; Fixed values ignore the Personality gender value.
 	ld a, c
-	cp GENDERLESS
+	cp GENDER_UNKNOWN
 	jr z, .Genderless
-	and a ; cp ALL_MALE
+	and a ; cp GENDER_F0
 	jr z, .Male
-	cp ALL_FEMALE
+	cp GENDER_F100
 	jr z, .Female
 
 ; Otherwise, use the Personality gender value directly.

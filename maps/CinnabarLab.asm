@@ -42,13 +42,13 @@ CinnabarLab_MapScriptHeader:
 	const CINNABARLAB_KRIS
 
 CinnabarLabTrigger0:
-	priorityjump CinnabarLabStepDownScript
+	prioritysjump CinnabarLabStepDownScript
 	end
 
 CinnabarLabStepDownScript:
-	checkcode VAR_YCOORD
+	readvar VAR_YCOORD
 	ifnotequal $6, .Done
-	checkcode VAR_XCOORD
+	readvar VAR_XCOORD
 	ifnotequal $2, .Done
 	applyonemovement PLAYER, step_down
 .Done
@@ -122,7 +122,7 @@ CinnabarLabCelebiEventScript:
 	checkflag ENGINE_PLAYER_IS_FEMALE
 	iftrue .Female
 	appear CINNABARLAB_CHRIS
-	jump .Continue
+	sjump .Continue
 .Female
 	appear CINNABARLAB_KRIS
 .Continue

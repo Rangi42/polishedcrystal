@@ -95,7 +95,7 @@ PC_CheckPartyForPokemon:
 
 .MustHavePokemonToUse:
 	; Bzzzzt! You must have a #MON to use this!
-	text_jump _PokecenterPCCantUseText
+	text_far _PokecenterPCCantUseText
 	text_end
 
 BillsPC:
@@ -183,7 +183,7 @@ _PlayersHousePC:
 
 PlayersPCTurnOnText:
 	; turned on the PC.
-	text_jump _PlayersPCTurnOnText
+	text_far _PlayersPCTurnOnText
 	text_end
 
 _PlayersPC:
@@ -283,12 +283,31 @@ PC_DisplayTextWaitMenu:
 
 PlayersPCAskWhatDoText:
 	; What do you want to do?
-	text_jump _PlayersPCAskWhatDoText
+	text_far _PlayersPCAskWhatDoText
 	text_end
+
+ClearPCItemScreen:
+	call DisableSpriteUpdates
+	xor a
+	ldh [hBGMapMode], a
+	call ClearBGPalettes
+	call ClearSprites
+	hlcoord 0, 0
+	ld bc, SCREEN_HEIGHT * SCREEN_WIDTH
+	ld a, " "
+	rst ByteFill
+	hlcoord 0, 0
+	lb bc, 10, 18
+	call Textbox
+	hlcoord 0, 12
+	lb bc, 4, 18
+	call Textbox
+	call ApplyAttrAndTilemapInVBlank
+	jp SetPalettes ; load regular palettes?
 
 PlayerWithdrawItemMenu:
 	call LoadStandardMenuHeader
-	farcall ClearPCItemScreen
+	call ClearPCItemScreen
 .loop
 	call PCItemsJoypad
 	jr c, .quit
@@ -333,20 +352,20 @@ PlayerWithdrawItemMenu:
 	jp MenuTextboxBackup
 
 .HowManyText:
-	text_jump _PlayersPCHowManyWithdrawText
+	text_far _PlayersPCHowManyWithdrawText
 	text_end
 
 .WithdrewText:
-	text_jump _PlayersPCWithdrewItemsText
+	text_far _PlayersPCWithdrewItemsText
 	text_end
 
 .NoRoomText:
-	text_jump _PlayersPCNoRoomWithdrawText
+	text_far _PlayersPCNoRoomWithdrawText
 	text_end
 
 PlayerTossItemMenu:
 	call LoadStandardMenuHeader
-	farcall ClearPCItemScreen
+	call ClearPCItemScreen
 .loop
 	call PCItemsJoypad
 	jr c, .quit
@@ -404,7 +423,7 @@ PlayerDepositItemMenu:
 
 .NoItemsInBag:
 	; No items here!
-	text_jump _PlayersPCNoItemsText
+	text_far _PlayersPCNoItemsText
 	text_end
 
 .TryDepositItem:
@@ -485,19 +504,19 @@ PlayerDepositItemMenu:
 	ret
 
 .CantDepositItemText:
-	text_jump _PlayersPCCantDepositItemText
+	text_far _PlayersPCCantDepositItemText
 	text_end
 
 .HowManyText:
-	text_jump _PlayersPCHowManyDepositText
+	text_far _PlayersPCHowManyDepositText
 	text_end
 
 .DepositText:
-	text_jump _PlayersPCDepositItemsText
+	text_far _PlayersPCDepositItemsText
 	text_end
 
 .NoRoomText:
-	text_jump _PlayersPCNoRoomDepositText
+	text_far _PlayersPCNoRoomDepositText
 	text_end
 
 PlayerMailBoxMenu:
@@ -595,30 +614,30 @@ PC_DisplayText:
 
 PokeCenterPCText_BootedUpPC:
 	; turned on the PC.
-	text_jump _PokecenterPCTurnOnText
+	text_far _PokecenterPCTurnOnText
 	text_end
 
 PokeCenterPCText_AccessWhosePC:
 	; Access whose PC?
-	text_jump _PokecenterPCWhoseText
+	text_far _PokecenterPCWhoseText
 	text_end
 
 PokeCenterPCText_AccessedBillsPC:
 	; BILL's PC accessed. #MON Storage System opened.
-	text_jump _PokecenterBillsPCText
+	text_far _PokecenterBillsPCText
 	text_end
 
 PokeCenterPCText_AccessedOwnPC:
 	; Accessed own PC. Item Storage System opened.
-	text_jump _PokecenterPlayersPCText
+	text_far _PokecenterPlayersPCText
 	text_end
 
 PokeCenterPCText_AccessedOaksPC:
 	; PROF.OAK's PC accessed. #DEX Rating System opened.
-	text_jump _PokecenterOaksPCText
+	text_far _PokecenterOaksPCText
 	text_end
 
 PokeCenterPCText_LinkClosed:
 	; … Link closed…
-	text_jump _PokecenterPCOaksClosedText
+	text_far _PokecenterPCOaksClosedText
 	text_end

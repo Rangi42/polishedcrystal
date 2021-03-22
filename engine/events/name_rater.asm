@@ -19,7 +19,7 @@ NameRater:
 	bit MON_IS_EGG_F, [hl]
 	jr nz, .egg
 ; ... or a Pokemon you got from a trade.
-	call GetCurNick
+	call GetCurNickname
 	ld a, [wInitialOptions]
 	bit TRADED_AS_OT_OPT, a
 	jr nz, .no_name_lock
@@ -66,7 +66,7 @@ NameRater:
 
 .samename
 	push hl
-	call GetCurNick
+	call GetCurNickname
 	ld hl, NameRaterDoneText
 	call PrintText
 	pop hl
@@ -88,7 +88,7 @@ NameRater:
 
 CheckIfMonIsYourOT:
 ; Checks to see if the partymon loaded in [wCurPartyMon] has the different OT as you.  Returns carry if not.
-	ld hl, wPartyMonOT
+	ld hl, wPartyMonOTs
 	ld bc, NAME_LENGTH
 	ld a, [wCurPartyMon]
 	rst AddNTimes
@@ -190,54 +190,54 @@ NameRaterIntroText:
 	; Hello, hello! I'm the NAME RATER.
 	; I rate the names of #MON.
 	; Would you like me to rate names?
-	text_jump _NameRaterHelloText
+	text_far _NameRaterHelloText
 	text_end
 
 NameRaterWhichMonText:
 	; Which #MON's nickname should I rate for you?
-	text_jump _NameRaterWhichMonText
+	text_far _NameRaterWhichMonText
 	text_end
 
 NameRaterIsGoodText:
 	; Hm… @ … That's a fairly decent name.
 	; But, how about a slightly better nickname?
 	; Want me to give it a better name?
-	text_jump _NameRaterBetterNameText
+	text_far _NameRaterBetterNameText
 	text_end
 
 NameRaterWhichNameText:
 	; All right. What name should we give it, then?
-	text_jump _NameRaterWhatNameText
+	text_far _NameRaterWhatNameText
 	text_end
 
 NameRaterEvenBetterText:
 	; That's a better name than before! Well done!
-	text_jump _NameRaterFinishedText
+	text_far _NameRaterFinishedText
 	text_end
 
 NameRaterCancelText:
 	; OK, then. Come again sometime.
-	text_jump _NameRaterComeAgainText
+	text_far _NameRaterComeAgainText
 	text_end
 
 NameRaterTradedText:
 	; Hm… @ ? What a great name! It's perfect.
 	; Treat @ with loving care.
-	text_jump _NameRaterPerfectNameText
+	text_far _NameRaterPerfectNameText
 	text_end
 
 NameRaterEggText:
 	; Whoa… That's just an EGG.
-	text_jump _NameRaterEggText
+	text_far _NameRaterEggText
 	text_end
 
 NameRaterSameAsBeforeText:
 	; It might look the different as before,
 	; but this new name is much better! Well done!
-	text_jump _NameRaterSameNameText
+	text_far _NameRaterSameNameText
 	text_end
 
 NameRaterDoneText:
 	; All right. This #MON is now named @ .
-	text_jump _NameRaterNamedText
+	text_far _NameRaterNamedText
 	text_end

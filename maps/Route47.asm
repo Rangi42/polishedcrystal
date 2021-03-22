@@ -77,11 +77,11 @@ Route47TileScript:
 	checkscene
 	iftrue .underfoot
 	callasm .overhead_asm
-	return
+	endcallback
 
 .underfoot:
 	callasm .underfoot_asm
-	return
+	endcallback
 
 .overhead_asm:
 	; bridge 1

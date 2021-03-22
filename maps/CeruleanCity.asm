@@ -45,7 +45,7 @@ CeruleanCity_MapScriptHeader:
 
 CeruleanCityFlyPoint:
 	setflag ENGINE_FLYPOINT_CERULEAN
-	return
+	endcallback
 
 CeruleanCityCooltrainerMScript:
 	checkevent EVENT_RESTORED_POWER_TO_KANTO

@@ -3,8 +3,8 @@ AI_Redundant:
 ; Return z if the move is a good choice.
 ; Return nz if the move is a bad choice.
 	ld a, c
-	ld de, 3
 	ld hl, .Moves
+	ld de, 3
 	call IsInArray
 	jp nc, .NotRedundant
 	inc hl

@@ -333,7 +333,7 @@ LinkTimeout:
 
 .LinkTimeoutText:
 	; Too much time has elapsed. Please try again.
-	text_jump _LinkTimeoutText
+	text_far _LinkTimeoutText
 	text_end
 
 ExchangeBytes:
@@ -482,7 +482,7 @@ Link_PrepPartyData_Gen2:
 	ld bc, PARTY_LENGTH * PARTYMON_STRUCT_LENGTH
 	rst CopyBytes
 
-	ld hl, wPartyMonOT
+	ld hl, wPartyMonOTs
 	ld bc, PARTY_LENGTH * NAME_LENGTH
 	rst CopyBytes
 
@@ -1208,7 +1208,7 @@ LinkTrade_TradeStatsMenu:
 
 .Text_CantTradeLastMon:
 	; If you trade that #MON, you won't be able to battle.
-	text_jump _LinkTradeCantBattleText
+	text_far _LinkTradeCantBattleText
 	text_end
 
 .String_Stats_Trade:
@@ -1216,7 +1216,7 @@ LinkTrade_TradeStatsMenu:
 
 .Text_Abnormal:
 	; Your friend's @  appears to be abnormal!
-	text_jump _LinkAbnormalMonText
+	text_far _LinkAbnormalMonText
 	text_end
 
 ValidateOTTrademon:
@@ -1369,7 +1369,7 @@ LinkTrade:
 	ld [wNamedObjectIndexBuffer], a
 	call GetPokemonName
 	ld hl, wStringBuffer1
-	ld de, wBufferTrademonNick
+	ld de, wBufferTrademonNickname
 	ld bc, MON_NAME_LENGTH
 	rst CopyBytes
 	ld a, [wCurOTTradePartyMon]
@@ -1521,7 +1521,7 @@ LinkTrade:
 	push af
 ; OT name
 	ld a, [wCurTradePartyMon]
-	ld hl, wPartyMonOT
+	ld hl, wPartyMonOTs
 	call SkipNames
 	ld de, wPlayerTrademonOTName
 	ld bc, NAME_LENGTH
@@ -1576,7 +1576,7 @@ LinkTrade:
 	ld [wOTTrademonSpecies], a
 ; OT name
 	ld a, [wCurOTTradePartyMon]
-	ld hl, wOTPartyMonOT
+	ld hl, wOTPartyMonOTs
 	call SkipNames
 	ld de, wOTTrademonOTName
 	ld bc, NAME_LENGTH
@@ -1619,7 +1619,7 @@ LinkTrade:
 
 	xor a ; REMOVE_PARTY
 	ld [wPokemonWithdrawDepositParameter], a
-	predef RemoveMonFromPartyOrBox
+	predef RemoveMonFromParty
 	ld a, [wPartyCount]
 	dec a
 	ld [wCurPartyMon], a
@@ -1663,7 +1663,7 @@ LinkTrade:
 	ld de, wTempMonSpecies
 	ld bc, PARTYMON_STRUCT_LENGTH
 	rst CopyBytes
-	farcall AddTempmonToParty
+	farcall AddTempMonToParty
 	ld a, [wPartyCount]
 	dec a
 	ld [wCurPartyMon], a
@@ -1730,7 +1730,7 @@ LinkTrade:
 
 .TradeThisForThat:
 	; Trade @ for @ ?
-	text_jump _LinkAskTradeForText
+	text_far _LinkAskTradeForText
 	text_end
 
 .TradeCompleted:

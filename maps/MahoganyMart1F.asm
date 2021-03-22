@@ -29,18 +29,18 @@ MahoganyMart1F_MapScriptHeader:
 	const MAHOGANYMART1F_DRAGONITE
 
 MahoganyMart1FTrigger1:
-	priorityjump MahoganyMart1FLanceUncoversStaircaseScript
+	prioritysjump MahoganyMart1FLanceUncoversStaircaseScript
 MahoganyMart1FTrigger0:
 	end
 
 UnknownScript_0x6c35b:
 	checkevent EVENT_UNCOVERED_STAIRCASE_IN_MAHOGANY_MART
 	iftrue UnknownScript_0x6c362
-	return
+	endcallback
 
 UnknownScript_0x6c362:
 	changeblock 6, 2, $1e
-	return
+	endcallback
 
 MahoganyMart1FPharmacistScript:
 	checkevent EVENT_DECIDED_TO_HELP_LANCE

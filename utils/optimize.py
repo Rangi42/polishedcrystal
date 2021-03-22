@@ -276,7 +276,13 @@ patterns = {
 '*hl++|*hl-- = a': [
 	# Bad: ld [hl], a / inc|dec hl
 	# Good: ld [hli|hld], a
-	(lambda line1, prev: line1.code == 'ld a, [hl]'),
+	(lambda line1, prev: line1.code == 'ld [hl], a'),
+	(lambda line2, prev: line2.code in {'inc hl', 'dec hl'}),
+],
+'*hl++|*hl-- = N': [
+	# Bad: ld [hl], N / inc|dec hl (unless you can't use a)
+	# Good: ld a, N / ld [hli|hld], a
+	(lambda line1, prev: re.match(r'ld \[hl\], [^afbcdehl\[]', line1.code)),
 	(lambda line2, prev: line2.code in {'inc hl', 'dec hl'}),
 ],
 'a = *hl++|*hl--': [
@@ -321,6 +327,13 @@ patterns = {
 	(lambda line3, prev: (re.match(r'j[rp] ', line3.code) and ',' not in line3.code
 		and line3.code.split()[-1].strip() == prev[0].code.split(',')[1].strip())
 		or line3.code.rstrip(':') == prev[0].code.split(',')[1].strip()),
+],
+'Conditional return': [
+	# Bad: jr z|nz|c|nc, .skip / ret / .skip
+	# Good: ret nz|z|nc|c .bar
+	(lambda line1, prev: re.match(r'j[rp] n?[zc],', line1.code)),
+	(lambda line2, prev: line2.code == 'ret'),
+	(lambda line3, prev: line3.code.rstrip(':') == prev[0].code.split(',')[1].strip()),
 ],
 'Conditional fallthrough': [
 	# Bad: jr z|nz|c|nc, .foo / jr .bar / .foo: ...

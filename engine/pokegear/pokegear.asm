@@ -92,7 +92,7 @@ Pokegear_LoadGFX:
 	ld hl, TownMapGFX
 	ld de, vTiles2
 	ld a, BANK(TownMapGFX)
-	call FarDecompress
+	call FarDecompressToDE
 	ld hl, PokegearGFX
 	ld de, vTiles2 tile $40
 	ld a, BANK(PokegearGFX)
@@ -260,7 +260,7 @@ InitPokegearTilemap:
 	dw .Radio
 
 .Clock:
-	ld de, ClockTilemapRLE
+	ld hl, ClockTilemapRLE
 	call Pokegear_LoadTilemapRLE
 	hlcoord 12, 1
 	ld de, .switch
@@ -287,14 +287,14 @@ InitPokegearTilemap:
 	jp PokegearMap_UpdateLandmarkName
 
 .Radio:
-	ld de, RadioTilemapRLE
+	ld hl, RadioTilemapRLE
 	call Pokegear_LoadTilemapRLE
 	hlcoord 0, 12
 	lb bc, 4, 18
 	jp Textbox
 
 .Phone:
-	ld de, PhoneTilemapRLE
+	ld hl, PhoneTilemapRLE
 	call Pokegear_LoadTilemapRLE
 	hlcoord 0, 12
 	lb bc, 4, 18
@@ -457,7 +457,7 @@ Pokegear_UpdateClock:
 	jp PlaceWholeStringInBoxAtOnce
 
 .DayText:
-	text_jump _GearTodayText
+	text_far _GearTodayText
 	text_end
 
 PokegearMap_CheckRegion:
@@ -917,12 +917,12 @@ PokegearPhone_MakePhoneCall:
 
 .dotdotdot
 	;
-	text_jump _GearEllipseText
+	text_far _GearEllipseText
 	text_end
 
 .OutOfServiceArea:
 	; You're out of the service area.
-	text_jump _GearOutOfServiceText
+	text_far _GearOutOfServiceText
 	text_end
 
 PokegearPhone_FinishPhoneCall:
@@ -1286,37 +1286,23 @@ DeleteSpriteAnimStruct2ToEnd:
 
 Pokegear_LoadTilemapRLE:
 	; Format: repeat count, tile ID
-	; Terminated with $FF
-	hlcoord 0, 0
-.loop
-	ld a, [de]
-	cp $ff
-	ret z
-	ld b, a
-	inc de
-	ld a, [de]
-	ld c, a
-	inc de
-	ld a, b
-.load
-	ld [hli], a
-	dec c
-	jr nz, .load
-	jr .loop
+	; Terminated with $ff
+	decoord 0, 0
+	jp CopyRLE
 
 PokegearText_WhomToCall:
 	; Whom do you want to call?
-	text_jump _PokegearAskWhoCallText
+	text_far _PokegearAskWhoCallText
 	text_end
 
 PokegearText_PressAnyButtonToExit:
 	; Press any button to exit.
-	text_jump _PokegearPressButtonText
+	text_far _PokegearPressButtonText
 	text_end
 
 PokegearText_DeleteStoredNumber:
 	; Delete this stored phone number?
-	text_jump _PokegearAskDeleteText
+	text_far _PokegearAskDeleteText
 	text_end
 
 PokegearSpritesGFX:
@@ -1827,7 +1813,7 @@ PlayRadio:
 .PlayStation:
 	ld a, -1
 	ld [wEnemyTurnsTaken], a
-	ld hl, .StationPointers
+	ld hl, PlayRadioStationPointers
 	ld d, $0
 	add hl, de
 	add hl, de
@@ -1849,8 +1835,8 @@ PlayRadio:
 	ld [hl], "”"
 	jp ApplyTilemapInVBlank
 
-.StationPointers:
-	dw .OakOrPnP
+PlayRadioStationPointers:
+	dw LoadStation_PokemonChannel
 	dw LoadStation_OaksPokemonTalk
 	dw LoadStation_PokedexShow
 	dw LoadStation_PokemonMusic
@@ -1860,7 +1846,7 @@ PlayRadio:
 	dw LoadStation_LetsAllSing
 	dw LoadStation_RocketRadio
 
-.OakOrPnP:
+LoadStation_PokemonChannel:
 	call GetCurrentLandmark
 	cp KANTO_LANDMARK
 	jr nc, .kanto_or_orange
@@ -1870,7 +1856,7 @@ PlayRadio:
 	jp z, LoadStation_PokedexShow
 	jp LoadStation_OaksPokemonTalk
 
-.kanto_or_orange
+.kanto_or_orange:
 	jp LoadStation_PlacesAndPeople
 
 PokegearMap:

@@ -134,7 +134,7 @@ GetSprite::
 	dec a
 	ld c, a
 	ld b, 0
-	ld a, NUM_SPRITEHEADER_FIELDS
+	ld a, NUM_SPRITEDATA_FIELDS
 	rst AddNTimes
 	; load the address into de
 	ld a, [hli]
@@ -204,7 +204,7 @@ GetMonSprite:
 	ld a, [wBreedMon1Shiny]
 	ld d, a
 	ld a, [wBreedMon1Form]
-	and BASEMON_MASK
+	and SPECIESFORM_MASK
 	ld e, a
 	ld a, [wBreedMon1Species]
 	jr .Mon
@@ -213,7 +213,7 @@ GetMonSprite:
 	ld a, [wBreedMon2Shiny]
 	ld d, a
 	ld a, [wBreedMon2Form]
-	and BASEMON_MASK
+	and SPECIESFORM_MASK
 	ld e, a
 	ld a, [wBreedMon2Species]
 	jr .Mon
@@ -266,11 +266,11 @@ _GetSpritePalette::
 	call GetMonSprite
 	jr c, .is_pokemon
 
-	ld hl, SpriteHeaders + SPRITEHEADER_PALETTE
+	ld hl, SpriteHeaders + SPRITEDATA_PALETTE
 	dec a
 	ld c, a
 	ld b, 0
-	ld a, NUM_SPRITEHEADER_FIELDS
+	ld a, NUM_SPRITEDATA_FIELDS
 	rst AddNTimes
 	ld a, [hl]
 	ret
@@ -403,8 +403,8 @@ LoadEmote::
 	pop bc
 ; Get the address of the pointer to emote c.
 	ld a, c
-	ld bc, 3
-	ld hl, EmotesPointers
+	ld bc, EMOTE_LENGTH
+	ld hl, Emotes
 	rst AddNTimes
 ; load the emote pointer bank into b
 	ld b, [hl]

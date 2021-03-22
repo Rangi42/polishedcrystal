@@ -19,7 +19,7 @@ SeagallopFerryVermilionGate_MapScriptHeader:
 	const SEAGALLOPFERRYVERMILIONGATE_SAILOR
 
 SeagallopFerryVermilionGateTrigger1:
-	priorityjump SeagallopFerryVermilionGate_PlayerArrives
+	prioritysjump SeagallopFerryVermilionGate_PlayerArrives
 SeagallopFerryVermilionGateTrigger0:
 	end
 
@@ -86,7 +86,7 @@ SeagallopFerryVermilionGateSailorScript:
 	closewindow
 	ifequal $1, .use_orangeticket
 	ifequal $2, .use_mysticticket
-	jump .no_ferry
+	sjump .no_ferry
 
 .use_old_sea_map
 	writetext SeagallopFerryOldSeaMapQuestionText
@@ -104,7 +104,7 @@ SeagallopFerryVermilionGateSailorScript:
 	closewindow
 	ifequal $1, .use_mysticticket
 	ifequal $2, .use_old_sea_map
-	jump .no_ferry
+	sjump .no_ferry
 
 .use_orangeticket_or_old_sea_map
 	writetext SeagallopFerryWhichTicketText
@@ -113,7 +113,7 @@ SeagallopFerryVermilionGateSailorScript:
 	closewindow
 	ifequal $1, .use_orangeticket
 	ifequal $2, .use_old_sea_map
-	jump .no_ferry
+	sjump .no_ferry
 
 .have_three_tickets
 	writetext SeagallopFerryWhichTicketText

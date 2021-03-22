@@ -30,7 +30,7 @@ ManiaScript:
 	iffalse .partyfull
 	special TeachShuckiePoisonJab
 	writetext ManiaText_TakeCareOfShuckie
-	buttonsound
+	promptbutton
 	waitsfx
 	writetext ManiaText_GotShuckie
 	playsound SFX_KEY_ITEM
@@ -40,7 +40,7 @@ ManiaScript:
 	end
 
 .alreadyhaveshuckie
-	checkflag ENGINE_SHUCKIE_GIVEN
+	checkflag ENGINE_GOT_SHUCKIE_TODAY
 	iffalse .returnshuckie
 	jumpopenedtext ManiaText_TakeCareOfShuckie
 
@@ -54,7 +54,7 @@ ManiaScript:
 	writetext ManiaText_CanIHaveMyMonBack
 	yesorno
 	iffalse .refused
-	special SpecialReturnShuckie
+	special ReturnShuckie
 	ifequal $0, .wrong
 	ifequal $1, .refused
 	ifequal $3, .superhappy

@@ -45,27 +45,27 @@ WonderTrade::
 	jp ReturnToMapWithSpeechTextbox
 
 .Text_WonderTradeQuestion:
-	text_jump WonderTradeQuestionText
+	text_far WonderTradeQuestionText
 	text_end
 
 .Text_WonderTradePrompt:
-	text_jump WonderTradePromptText
+	text_far WonderTradePromptText
 	text_end
 
 ;.Text_WonderTradeCantTradeEgg:
-;	text_jump WonderTradeCantTradeEggText
+;	text_far WonderTradeCantTradeEggText
 ;	text_end
 
 .Text_WonderTradeConfirm:
-	text_jump WonderTradeConfirmText
+	text_far WonderTradeConfirmText
 	text_end
 
 .Text_WonderTradeSetup:
-	text_jump WonderTradeSetupText
+	text_far WonderTradeSetupText
 	text_end
 
 .Text_WonderTradeReady:
-	text_jump WonderTradeReadyText
+	text_far WonderTradeReadyText
 	text_end
 
 DoWonderTrade:
@@ -109,7 +109,7 @@ DoWonderTrade:
 	call GetTradeMonName
 	call CopyTradeName
 
-	ld hl, wPartyMonOT
+	ld hl, wPartyMonOTs
 	ld bc, NAME_LENGTH
 	call Trade_GetAttributeOfCurrentPartymon
 	ld de, wPlayerTrademonOTName
@@ -158,7 +158,7 @@ DoWonderTrade:
 	xor a
 	ld [wMonType], a
 	ld [wPokemonWithdrawDepositParameter], a
-	predef RemoveMonFromPartyOrBox
+	predef RemoveMonFromParty
 
 	call GetWonderTradeOTForm
 	ld [wCurForm], a
@@ -207,7 +207,7 @@ DoWonderTrade:
 	ld de, wOTTrademonSenderName
 	call CopyTradeOT
 
-	ld hl, wPartyMonOT
+	ld hl, wPartyMonOTs
 	ld bc, NAME_LENGTH
 	call Trade_GetAttributeOfLastPartymon
 	ld hl, wOTTrademonOTName
@@ -357,7 +357,7 @@ GetGSBallPichu:
 	call GetTradeMonName
 	call CopyTradeName
 
-	ld hl, wPartyMonOT
+	ld hl, wPartyMonOTs
 	ld bc, NAME_LENGTH
 	call Trade_GetAttributeOfCurrentPartymon
 	ld de, wPlayerTrademonOTName
@@ -404,7 +404,7 @@ GetGSBallPichu:
 	xor a
 	ld [wMonType], a
 	ld [wPokemonWithdrawDepositParameter], a
-	predef RemoveMonFromPartyOrBox
+	predef RemoveMonFromParty
 	predef TryAddMonToParty
 
 	ld b, MALE
@@ -445,7 +445,7 @@ GetGSBallPichu:
 	ld de, wOTTrademonSenderName
 	call CopyTradeOT
 
-	ld hl, wPartyMonOT
+	ld hl, wPartyMonOTs
 	ld bc, NAME_LENGTH
 	call Trade_GetAttributeOfLastPartymon
 	ld hl, wOTTrademonOTName

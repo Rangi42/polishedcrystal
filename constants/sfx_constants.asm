@@ -1,5 +1,5 @@
+; SFX indexes (see audio/sfx_pointers.asm)
 	const_def
-
 	const SFX_DEX_FANFARE_50_79           ; 00
 	const SFX_ITEM                        ; 01
 	const SFX_CAUGHT_MON                  ; 02
@@ -188,9 +188,9 @@
 	const SFX_TRAIN_ARRIVED               ; b9
 	const SFX_STOP_SLOT                   ; ba
 	const SFX_2_BOOPS                     ; bb
+; new to Crystal
 	const SFX_GLASS_TING                  ; bc
 	const SFX_GLASS_TING_2                ; bd
-
 	const SFX_INTRO_UNOWN_1               ; be
 	const SFX_INTRO_UNOWN_2               ; bf
 	const SFX_INTRO_UNOWN_3               ; c0
@@ -208,6 +208,6 @@
 	const SFX_TWO_PC_BEEPS                ; cc
 	const SFX_4_NOTE_DITTY                ; cd
 	const SFX_TWINKLE                     ; ce
-
 	const SFX_PUDDLE                      ; cf
 	const SFX_ABILITYSLIDEOUT             ; d0
+NUM_SFX EQU const_value

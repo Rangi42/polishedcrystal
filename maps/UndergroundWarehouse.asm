@@ -38,9 +38,9 @@ UndergroundWarehouseResetSwitches:
 	clearevent EVENT_SWITCH_12
 	clearevent EVENT_SWITCH_13
 	clearevent EVENT_SWITCH_14
-	writebyte $0
-	copyvartobyte wUndergroundSwitchPositions
-	return
+	setval $0
+	writemem wUndergroundSwitchPositions
+	endcallback
 
 GenericTrainerGruntM24:
 	generictrainer GRUNTM, 24, EVENT_BEAT_ROCKET_GRUNTM_24, GruntM24SeenText, GruntM24BeatenText
@@ -77,14 +77,14 @@ GoldenrodUndergroundWarehouseDirectorScript:
 	faceplayer
 	opentext
 	writetext DirectorIntroText
-	buttonsound
+	promptbutton
 	verbosegivekeyitem CARD_KEY
 	setevent EVENT_RECEIVED_CARD_KEY
 	setevent EVENT_WAREHOUSE_LAYOUT_1
 	clearevent EVENT_WAREHOUSE_LAYOUT_2
 	clearevent EVENT_WAREHOUSE_LAYOUT_3
 	writetext DirectorCardKeyText
-	buttonsound
+	promptbutton
 	jumpopenedtext DirectorAfterText
 
 GruntM24SeenText:

@@ -158,7 +158,7 @@ _CGB_FinishBattleScreenLayout:
 	push bc
 	hlcoord 0, 0, wAttrMap
 	ld bc, SCREEN_WIDTH * SCREEN_HEIGHT
-	ld a, PAL_BATTLE_BG_PLAYER_HP
+	ld a, PAL_BATTLE_BG_ENEMY_HP
 	rst ByteFill
 
 	hlcoord 0, 4, wAttrMap
@@ -173,12 +173,12 @@ _CGB_FinishBattleScreenLayout:
 
 	hlcoord 0, 0, wAttrMap
 	lb bc, 4, 10
-	ld a, PAL_BATTLE_BG_PLAYER_HP
+	ld a, PAL_BATTLE_BG_ENEMY_HP
 	call FillBoxWithByte
 
 	hlcoord 10, 7, wAttrMap
 	lb bc, 5, 10
-	ld a, PAL_BATTLE_BG_ENEMY_HP
+	ld a, PAL_BATTLE_BG_PLAYER_HP
 	call FillBoxWithByte
 
 	hlcoord 12, 11, wAttrMap
@@ -312,7 +312,7 @@ _CGB_StatsScreenHPPals:
 	ld hl, CaughtBallPals
 	ld bc, $4
 	ld a, [wTempMonCaughtBall]
-	and CAUGHTBALL_MASK
+	and CAUGHT_BALL_MASK
 	rst AddNTimes
 	ld de, wBGPals1 palette 7
 	call LoadPalette_White_Col1_Col2_Black
@@ -969,53 +969,84 @@ _CGB_PokedexUnownMode:
 	jp _CGB_FinishLayout
 
 _CGB_BillsPC:
+	; Get box theme
+	ld a, [wCurBox]
+	ld b, a
+	inc b
+	farcall GetBoxTheme
+BillsPC_PreviewTheme:
+	; hl = BillsPC_ThemePals + a * 6 * 2
+	add a
+	add a
+	ld e, a
+	ld d, 0
+	ld hl, BillsPC_ThemePals
+	add hl, de
+	add hl, de
+	add hl, de
 	ld de, wBGPals1
-	ld hl, .MenuPalette
-	call LoadHLPaletteIntoDE
+	ld c, 1 * 2
+	call LoadCPaletteBytesFromHLIntoDE
+	push hl
+	ld hl, GenderAndExpBarPals
+	ld c, 2 * 2
+	call LoadCPaletteBytesFromHLIntoDE
+	push de
+	ld hl, PokerusAndShinyPals
+	ld de, wBillsPC_PokerusShinyPal
+	ld c, 2 * 2
+	call LoadCPaletteBytesFromHLIntoDE
 
-	ld a, [wCurPartySpecies]
+	; Prevents flickering shiny+pokerus background
+	ld hl, wBGPals1 palette 0
+	ld de, wBGPals1 palette 3
+	ld c, 1 * 2
+	call LoadCPaletteBytesFromHLIntoDE
+	pop de
+	pop hl
+	ld c, 5 * 2
+	call LoadCPaletteBytesFromHLIntoDE
+	ld a, [wBillsPC_ApplyThemePals]
 	and a
-	jr nz, .GetMonPalette
-	ld hl, .OrangePalette
+	jr nz, .apply_pals
+	ld de, wOBPals1 palette 1
+	ld hl, .CursorPal
+	push hl
 	call LoadHLPaletteIntoDE
-	jr .Resume
+	pop hl
+	call LoadHLPaletteIntoDE
+	ld hl, .PackPal
+	ld de, wOBPals1 palette 4
+	jp LoadHLPaletteIntoDE
 
-.GetMonPalette:
-	ld bc, wTempMonPersonality
-	call GetPlayerOrMonPalettePointer
-	call LoadPalette_White_Col1_Col2_Black
-	call VaryBGPal1ByTempMonDVs
+.apply_pals
+	farjp BillsPC_SetPals
 
-.Resume:
-	call WipeAttrMap
-
-	hlcoord 1, 4, wAttrMap
-	lb bc, 7, 7
-	ld a, $1
-	call FillBoxWithByte
-
-	call InitPartyMenuOBPals
-
-	jp _CGB_FinishLayout
-
-.MenuPalette:
+.CursorPal:
+; Coloring is fixed up later.
 if !DEF(MONOCHROME)
 	RGB 31, 31, 31
-	RGB 31, 20, 10
-	RGB 26, 10, 06
+	RGB 31, 31, 31
+	RGB 00, 00, 00
 	RGB 00, 00, 00
 else
-	MONOCHROME_RGB_FOUR
+	RGB_MONOCHROME_WHITE
+	RGB_MONOCHROME_WHITE
+	RGB_MONOCHROME_BLACK
+	RGB_MONOCHROME_BLACK
 endc
 
-.OrangePalette:
+.PackPal:
 if !DEF(MONOCHROME)
-	RGB 31, 15, 00
-	RGB 23, 12, 00
-	RGB 15, 07, 00
+	RGB 31, 31, 31
+	RGB 31, 31, 31
+	RGB 07, 19, 07
 	RGB 00, 00, 00
 else
-	MONOCHROME_RGB_FOUR
+	RGB_MONOCHROME_WHITE
+	RGB_MONOCHROME_WHITE
+	RGB_MONOCHROME_DARK
+	RGB_MONOCHROME_BLACK
 endc
 
 _CGB_UnownPuzzle:
@@ -1213,22 +1244,22 @@ _CGB_JudgeSystem:
 
 	; up/down arrows
 	hlcoord 0, 0, wAttrMap
-	ld a, 1 | TILE_BANK
+	ld a, 1 | VRAM_BANK_1
 	ld [hli], a
 	; top row
 	ld bc, 17
 	ld a, 1
 	rst ByteFill
 	; gender icon
-	ld a, 6 | TILE_BANK
+	ld a, 6 | VRAM_BANK_1
 	ld [hli], a
 	; shiny icon and second row
-	ld a, 1 | TILE_BANK
+	ld a, 1 | VRAM_BANK_1
 	ld bc, 21
 	rst ByteFill
 	; left/right arrows
 	hlcoord 0, 2, wAttrMap
-	ld [hl], 0 | TILE_BANK
+	ld [hl], 0 | VRAM_BANK_1
 	; frontpic
 	hlcoord 0, 6, wAttrMap
 	lb bc, 7, 7
@@ -1237,15 +1268,15 @@ _CGB_JudgeSystem:
 	; chart
 	hlcoord 9, 4, wAttrMap
 	lb bc, 12, 8
-	ld a, 5 | TILE_BANK
+	ld a, 5 | VRAM_BANK_1
 	call FillBoxWithByte
 	hlcoord 8, 6, wAttrMap
 	lb bc, 8, 1
-	ld a, 5 | TILE_BANK
+	ld a, 5 | VRAM_BANK_1
 	call FillBoxWithByte
 	hlcoord 17, 6, wAttrMap
 	lb bc, 8, 1
-	ld a, 5 | TILE_BANK
+	ld a, 5 | VRAM_BANK_1
 	call FillBoxWithByte
 	; stat values
 	ld c, STAT_HP
@@ -1268,7 +1299,7 @@ _CGB_JudgeSystem:
 	call .FillStat
 	; heading
 	hlcoord 0, 3, wAttrMap
-	ld a, 0 | TILE_BANK
+	ld a, 0 | VRAM_BANK_1
 	ld bc, 11
 	rst ByteFill
 

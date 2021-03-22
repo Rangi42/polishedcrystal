@@ -14,7 +14,7 @@ RadioTower3F_MapScriptHeader:
 	def_bg_events
 	bg_event  3,  0, BGEVENT_JUMPTEXT, RadioTower3FPersonnelSignText
 	bg_event  9,  0, BGEVENT_JUMPTEXT, RadioTower3FPokemonMusicSignText
-	bg_event 14,  2, BGEVENT_UP, MapRadioTower3FSignpost2Script
+	bg_event 14,  2, BGEVENT_UP, CardKeySlotScript
 
 	def_object_events
 	object_event  7,  4, SPRITE_POKEMANIAC, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_COMMAND, jumptextfaceplayer, RadioTower3FSuperNerdText, EVENT_RADIO_TOWER_CIVILIANS_AFTER
@@ -28,12 +28,12 @@ RadioTower3F_MapScriptHeader:
 CardKeyShutterCallback:
 	checkevent EVENT_USED_THE_CARD_KEY_IN_THE_RADIO_TOWER
 	iftrue .Change
-	return
+	endcallback
 
 .Change:
 	changeblock 14, 2, $2a
 	changeblock 14, 4, $1
-	return
+	endcallback
 
 RadioTower3FGymGuideScript:
 	checkevent EVENT_CLEARED_RADIO_TOWER
@@ -44,7 +44,7 @@ RadioTower3FCooltrainerFScript:
 	checkevent EVENT_GOT_HEAT_ROCK_FROM_RADIO_TOWER
 	iftrue_jumptextfaceplayer RadioTower3FCooltrainerFYouWereMarvelousText
 	checkevent EVENT_CLEARED_RADIO_TOWER
-	iftrue UnknownScript_0x5e58a
+	iftrue .NoRockets
 	checkevent EVENT_USED_THE_CARD_KEY_IN_THE_RADIO_TOWER
 	iftrue_jumptextfaceplayer RadioTower3FCooltrainerFIsDirectorSafeText
 	jumpthistextfaceplayer
@@ -62,14 +62,14 @@ RadioTower3FCooltrainerFScript:
 	para "Please save him!"
 	done
 
-UnknownScript_0x5e58a:
+.NoRockets:
 	faceplayer
 	opentext
 	writetext RadioTower3FCooltrainerFYoureMyHeroText
-	buttonsound
+	promptbutton
 	verbosegiveitem HEAT_ROCK
 	iffalse_endtext
-	writetext RadioTower3FCooltrainerFItsSunnyDayText
+	writetext RadioTower3FCooltrainerFItsAHeatRockText
 	waitbutton
 	closetext
 	setevent EVENT_GOT_HEAT_ROCK_FROM_RADIO_TOWER
@@ -115,18 +115,18 @@ GenericTrainerRocketScientistMarc:
 	cont "I need from here."
 	done
 
-MapRadioTower3FSignpost2Script::
+CardKeySlotScript::
 	opentext
 	writetext RadioTower3FCardKeySlotText
 	waitbutton
 	checkevent EVENT_USED_THE_CARD_KEY_IN_THE_RADIO_TOWER
-	iftrue UnknownScript_0x5e603
+	iftrue .UsedCardKey
 	checkkeyitem CARD_KEY
-	iftrue UnknownScript_0x5e605
-UnknownScript_0x5e603:
+	iftrue .HaveCardKey
+.UsedCardKey:
 	endtext
 
-UnknownScript_0x5e605:
+.HaveCardKey:
 	writetext InsertedTheCardKeyText
 	waitbutton
 	setevent EVENT_USED_THE_CARD_KEY_IN_THE_RADIO_TOWER
@@ -186,7 +186,7 @@ RadioTower3FCooltrainerFYoureMyHeroText:
 	line "my appreciation."
 	done
 
-RadioTower3FCooltrainerFItsSunnyDayText:
+RadioTower3FCooltrainerFItsAHeatRockText:
 	text "It's a Heat Rock."
 	line "It makes the move"
 	cont "Sunny Day last"

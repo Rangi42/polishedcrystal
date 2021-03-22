@@ -48,9 +48,7 @@ Facings:
 	dw FacingArchTreeRight  ; FACING_ARCH_TREE_RIGHT
 	dw FacingSailboatTop    ; FACING_SAILBOAT_TOP
 	dw FacingSailboatBottom ; FACING_SAILBOAT_BOTTOM
-FacingsEnd: dw 0
-
-NUM_FACINGS EQU (FacingsEnd - Facings) / 2
+	dw 0
 
 ; Tables used as a reference to transform OAM data.
 

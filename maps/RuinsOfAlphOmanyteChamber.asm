@@ -28,7 +28,7 @@ RuinsofAlphOmanyteChamberTrigger0:
 	special SpecialOmanyteChamber
 	checkevent EVENT_WALL_OPENED_IN_OMANYTE_CHAMBER
 	iffalse .End
-	priorityjump RuinsOfAlphOmanyteChamberWallOpenScript
+	prioritysjump RuinsOfAlphOmanyteChamberWallOpenScript
 .End
 	end
 
@@ -39,12 +39,12 @@ RuinsofAlphOmanyteChamberHiddenDoorsCallback:
 .WallOpen:
 	checkevent EVENT_SOLVED_OMANYTE_PUZZLE
 	iffalse .FloorClosed
-	return
+	endcallback
 
 .FloorClosed:
 	changeblock 2, 2, $1
 	changeblock 4, 2, $2
-	return
+	endcallback
 
 RuinsOfAlphOmanyteChamberWallOpenScript:
 	pause 30
@@ -60,7 +60,7 @@ RuinsOfAlphOmanyteChamberWallOpenScript:
 
 MapRuinsofAlphOmanyteChamberSignpost2Script:
 	refreshscreen
-	writebyte $1
+	setval $1
 	special Special_UnownPuzzle
 	closetext
 	iftrue .PuzzleComplete
@@ -69,7 +69,7 @@ MapRuinsofAlphOmanyteChamberSignpost2Script:
 .PuzzleComplete:
 	setevent EVENT_RUINS_OF_ALPH_INNER_CHAMBER_TOURISTS
 	setevent EVENT_SOLVED_OMANYTE_PUZZLE
-	setflag ENGINE_UNLOCKED_UNOWNS_2
+	setflag ENGINE_UNLOCKED_UNOWNS_K_TO_Q
 	setmapscene RUINS_OF_ALPH_INNER_CHAMBER, $1
 	earthquake 30
 	showemote EMOTE_SHOCK, PLAYER, 15
@@ -99,12 +99,12 @@ MapRuinsofAlphOmanyteChamberSignpost4Script:
 	opentext
 	checkevent EVENT_RUINS_OF_ALPH_OUTSIDE_TOURIST_YOUNGSTERS
 	iftrue .unsolved
-	writetext UnusedText_0x58e70
-	jump .unownwords
+	writetext RuinsOfAlphChambersItsUnownText
+	sjump .unownwords
 .unsolved
 	writetext RuinsOfAlphAerodactylChamberWallPatternLeftText
 .unownwords
-	writebyte $2
+	setval $2
 	special Special_DisplayUnownWords
 	endtext
 

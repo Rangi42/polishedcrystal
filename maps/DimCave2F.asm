@@ -35,7 +35,7 @@ DimCave2FBouldersLand:
 	changeblock 14, 20, $c5
 	changeblock 26, 20, $ba
 .skip
-	return
+	endcallback
 
 GenericTrainerEngineerLang:
 	generictrainer ENGINEER, LANG, EVENT_BEAT_ENGINEER_LANG, .SeenText, .BeatenText

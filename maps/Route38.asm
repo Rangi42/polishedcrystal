@@ -46,9 +46,9 @@ TrainerLassDana1:
 	trainer LASS, DANA1, EVENT_BEAT_LASS_DANA, LassDana1SeenText, LassDana1BeatenText, 0, .script
 
 .script
-	writecode VAR_CALLERID, PHONE_LASS_DANA
+	loadvar VAR_CALLERID, PHONE_LASS_DANA
 	opentext
-	checkflag ENGINE_DANA
+	checkflag ENGINE_DANA_READY_FOR_REMATCH
 	iftrue .DanaRematch
 	checkflag ENGINE_DANA_HAS_THUNDERSTONE
 	iftrue .TryGiveThunderstone
@@ -57,10 +57,10 @@ TrainerLassDana1:
 	checkevent EVENT_DANA_ASKED_FOR_PHONE_NUMBER
 	iftrue .SecondTimeAsking
 	writetext LassDanaMoomooMilkText
-	buttonsound
+	promptbutton
 	setevent EVENT_DANA_ASKED_FOR_PHONE_NUMBER
 	callstd asknumber1f
-	jump .AskForPhoneNumber
+	sjump .AskForPhoneNumber
 
 .SecondTimeAsking:
 	callstd asknumber2f
@@ -68,14 +68,14 @@ TrainerLassDana1:
 	askforphonenumber PHONE_LASS_DANA
 	ifequal $1, .PhoneFull
 	ifequal $2, .DeclinedPhoneNumber
-	trainertotext LASS, DANA1, $0
+	gettrainername LASS, DANA1, $0
 	callstd registerednumberf
 	jumpstd numberacceptedf
 
 .DanaRematch:
 	callstd rematchf
 	winlosstext LassDana1BeatenText, 0
-	copybytetovar wDanaFightCount
+	readmem wDanaFightCount
 	ifequal 4, .Fight4
 	ifequal 3, .Fight3
 	ifequal 2, .Fight2
@@ -97,39 +97,39 @@ TrainerLassDana1:
 	loadtrainer LASS, DANA1
 	startbattle
 	reloadmapafterbattle
-	loadvar wDanaFightCount, 1
-	clearflag ENGINE_DANA
+	loadmem wDanaFightCount, 1
+	clearflag ENGINE_DANA_READY_FOR_REMATCH
 	end
 
 .LoadFight1:
 	loadtrainer LASS, DANA2
 	startbattle
 	reloadmapafterbattle
-	loadvar wDanaFightCount, 2
-	clearflag ENGINE_DANA
+	loadmem wDanaFightCount, 2
+	clearflag ENGINE_DANA_READY_FOR_REMATCH
 	end
 
 .LoadFight2:
 	loadtrainer LASS, DANA3
 	startbattle
 	reloadmapafterbattle
-	loadvar wDanaFightCount, 3
-	clearflag ENGINE_DANA
+	loadmem wDanaFightCount, 3
+	clearflag ENGINE_DANA_READY_FOR_REMATCH
 	end
 
 .LoadFight3:
 	loadtrainer LASS, DANA4
 	startbattle
 	reloadmapafterbattle
-	loadvar wDanaFightCount, 4
-	clearflag ENGINE_DANA
+	loadmem wDanaFightCount, 4
+	clearflag ENGINE_DANA_READY_FOR_REMATCH
 	end
 
 .LoadFight4:
 	loadtrainer LASS, DANA5
 	startbattle
 	reloadmapafterbattle
-	clearflag ENGINE_DANA
+	clearflag ENGINE_DANA_READY_FOR_REMATCH
 	end
 
 .TryGiveThunderstone:
@@ -156,19 +156,19 @@ TrainerSchoolboyChad1:
 	trainer SCHOOLBOY, CHAD1, EVENT_BEAT_SCHOOLBOY_CHAD, SchoolboyChad1SeenText, SchoolboyChad1BeatenText, 0, .script
 
 .script
-	writecode VAR_CALLERID, PHONE_SCHOOLBOY_CHAD
+	loadvar VAR_CALLERID, PHONE_SCHOOLBOY_CHAD
 	opentext
-	checkflag ENGINE_CHAD
+	checkflag ENGINE_CHAD_READY_FOR_REMATCH
 	iftrue .ChadRematch
 	checkcellnum PHONE_SCHOOLBOY_CHAD
 	iftrue .HaveChadsNumber
 	checkevent EVENT_CHAD_ASKED_FOR_PHONE_NUMBER
 	iftrue .SecondTimeAsking
 	writetext SchoolboyChadSoManyTestsText
-	buttonsound
+	promptbutton
 	setevent EVENT_CHAD_ASKED_FOR_PHONE_NUMBER
 	callstd asknumber1m
-	jump .AskToRegisterNumber
+	sjump .AskToRegisterNumber
 
 .SecondTimeAsking:
 	callstd asknumber2m
@@ -176,14 +176,14 @@ TrainerSchoolboyChad1:
 	askforphonenumber PHONE_SCHOOLBOY_CHAD
 	ifequal $1, .PhoneFull
 	ifequal $2, .SaidNo
-	trainertotext SCHOOLBOY, CHAD1, $0
+	gettrainername SCHOOLBOY, CHAD1, $0
 	callstd registerednumberm
 	jumpstd numberacceptedm
 
 .ChadRematch:
 	callstd rematchm
 	winlosstext SchoolboyChad1BeatenText, 0
-	copybytetovar wChadFightCount
+	readmem wChadFightCount
 	ifequal 4, .Fight4
 	ifequal 3, .Fight3
 	ifequal 2, .Fight2
@@ -205,39 +205,39 @@ TrainerSchoolboyChad1:
 	loadtrainer SCHOOLBOY, CHAD1
 	startbattle
 	reloadmapafterbattle
-	loadvar wChadFightCount, 1
-	clearflag ENGINE_CHAD
+	loadmem wChadFightCount, 1
+	clearflag ENGINE_CHAD_READY_FOR_REMATCH
 	end
 
 .LoadFight1:
 	loadtrainer SCHOOLBOY, CHAD2
 	startbattle
 	reloadmapafterbattle
-	loadvar wChadFightCount, 2
-	clearflag ENGINE_CHAD
+	loadmem wChadFightCount, 2
+	clearflag ENGINE_CHAD_READY_FOR_REMATCH
 	end
 
 .LoadFight2:
 	loadtrainer SCHOOLBOY, CHAD3
 	startbattle
 	reloadmapafterbattle
-	loadvar wChadFightCount, 3
-	clearflag ENGINE_CHAD
+	loadmem wChadFightCount, 3
+	clearflag ENGINE_CHAD_READY_FOR_REMATCH
 	end
 
 .LoadFight3:
 	loadtrainer SCHOOLBOY, CHAD4
 	startbattle
 	reloadmapafterbattle
-	loadvar wChadFightCount, 4
-	clearflag ENGINE_CHAD
+	loadmem wChadFightCount, 4
+	clearflag ENGINE_CHAD_READY_FOR_REMATCH
 	end
 
 .LoadFight4:
 	loadtrainer SCHOOLBOY, CHAD5
 	startbattle
 	reloadmapafterbattle
-	clearflag ENGINE_CHAD
+	clearflag ENGINE_CHAD_READY_FOR_REMATCH
 	end
 
 .HaveChadsNumber:

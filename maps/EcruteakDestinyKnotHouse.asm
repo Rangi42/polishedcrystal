@@ -14,7 +14,7 @@ EcruteakDestinyKnotHouse_MapScriptHeader:
 
 	def_object_events
 	object_event  5,  4, SPRITE_ACE_TRAINER_F, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, EcruteakDestinyKnotHouseCooltrainerFScript, -1
-	object_event  2,  3, SPRITE_RICH_BOY, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, OBJECTTYPE_COMMAND, trade, TRADE_WITH_HARI_FOR_DODUO, -1
+	object_event  2,  3, SPRITE_RICH_BOY, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, OBJECTTYPE_COMMAND, trade, NPC_TRADE_HARI, -1
 
 EcruteakDestinyKnotHouseCooltrainerFScript:
 	checkevent EVENT_GOT_DESTINY_KNOT_FROM_ECRUTEAK
@@ -22,7 +22,7 @@ EcruteakDestinyKnotHouseCooltrainerFScript:
 	faceplayer
 	opentext
 	writetext .Text1
-	buttonsound
+	promptbutton
 	special SpecialBeastsCheck
 	iffalse_jumpopenedtext .Text2
 	special SpecialBirdsCheck

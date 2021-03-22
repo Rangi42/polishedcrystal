@@ -1,0 +1,46 @@
+SavePatches:
+	; if build < (2 byte value), apply patches indicated by 4 byte pointer; 0 ends the list
+	; savebreak fixes (i.e. game data size changes) should usually be the first functions called per version
+	dh 1
+	dw CreateKeyItemBitflags ; explicit
+
+	dh 4
+	dw ResizePocketsToBuild4 ; explicit
+
+	dh 4
+	dw AdjustItemIndexesToBuild4 ; implicit
+
+	dh 4
+	dw AdjustMonCaughtBallData ; implicit
+
+	dh 4
+	dw ReplaceSelfDestruct ; implicit
+
+	dh 5 ; 4.1-4.5
+	dw AdjustMonAndMoveIndexesPostBuild4 ; implicit
+
+	dh 5
+	dw RemoveExtraOptionsByte ; explicit
+
+	dh 6 ; 5.1
+	dw ResetInitialOptions ; implicit
+
+	dh 6
+	dw AdjustVariableSprites ; explicit
+
+	dh 6
+	dw LegendaryDogStatus ; implicit
+
+	dh 7 ; 6.1
+	dw UpdateCharset ; implicit
+
+	dh 7 ; 6.2
+	dw ChangeGyaradosForm ; implicit
+
+	dh 7
+	dw ConvertToNewbox ; first build with version number
+
+	dh 7 ; 7.1
+	dw ChangeCheckValue ; implicit, only to convert check value to 97
+
+	dh 0

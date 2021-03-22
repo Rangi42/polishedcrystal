@@ -24,7 +24,7 @@ PalletTown_MapScriptHeader:
 
 PalletTownFlyPoint:
 	setflag ENGINE_FLYPOINT_PALLET
-	return
+	endcallback
 
 PalletTownTeacherText:
 	text "I'm raising #-"

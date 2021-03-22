@@ -26,7 +26,7 @@ VermilionPort_MapScriptHeader:
 	const VERMILIONPORT_SAILOR2
 
 VermilionPortTrigger1:
-	priorityjump UnknownScript_0x74da6
+	prioritysjump UnknownScript_0x74da6
 VermilionPortTrigger0:
 	end
 
@@ -89,7 +89,7 @@ VermilionPortWalkUpToShipScript:
 	iftrue UnknownScript_0x74e86
 	turnobject PLAYER, LEFT
 	opentext
-	checkcode VAR_WEEKDAY
+	readvar VAR_WEEKDAY
 	ifequal MONDAY, UnknownScript_0x74e72
 	ifequal TUESDAY, UnknownScript_0x74e72
 	ifequal THURSDAY, UnknownScript_0x74e7c
@@ -99,7 +99,7 @@ VermilionPortWalkUpToShipScript:
 	yesorno
 	iffalse VermilionPortNotRidingMoveAwayScript
 	writetext VermilionPortAskTicketText
-	buttonsound
+	promptbutton
 	checkkeyitem S_S_TICKET
 	iffalse UnknownScript_0x74e68
 	writetext VermilionPortSSTicketText
@@ -107,7 +107,7 @@ VermilionPortWalkUpToShipScript:
 	closetext
 	setevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_2
 	applymovement PLAYER, VermilionPortApproachFastShipMovement
-	jump VermilionPortSailorAtGangwayScript
+	sjump VermilionPortSailorAtGangwayScript
 
 UnknownScript_0x74e68:
 	writetext VermilionPortNoTicketText
@@ -148,7 +148,7 @@ VermilionPortSailorScript:
 	opentext
 	checkevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_1
 	iftrue VermilionPortAlreadyRodeScript
-	checkcode VAR_WEEKDAY
+	readvar VAR_WEEKDAY
 	ifequal MONDAY, UnknownScript_0x74eda
 	ifequal TUESDAY, UnknownScript_0x74eda
 	ifequal THURSDAY, UnknownScript_0x74ee0
@@ -158,7 +158,7 @@ VermilionPortSailorScript:
 	yesorno
 	iffalse VermilionPortNotRidingScript
 	writetext VermilionPortAskTicketText
-	buttonsound
+	promptbutton
 	checkkeyitem S_S_TICKET
 	iffalse UnknownScript_0x74ed4
 	writetext VermilionPortSSTicketText
@@ -166,7 +166,7 @@ VermilionPortSailorScript:
 	closetext
 	setevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_2
 	applymovement PLAYER, VermilionPortApproachFastShipRightMovement
-	jump VermilionPortSailorAtGangwayScript
+	sjump VermilionPortSailorAtGangwayScript
 
 UnknownScript_0x74ed4:
 	jumpopenedtext VermilionPortNoTicketText

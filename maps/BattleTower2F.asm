@@ -78,10 +78,10 @@ BattleTower2FCherylScript:
 	checkevent EVENT_BEAT_ELITE_FOUR
 	iftrue .Team2
 	loadtrainer CHERYL, 1
-	jump .StartBattle
+	sjump .StartBattle
 .Team2
 	loadtrainer CHERYL, 2
-	jump .StartBattle
+	sjump .StartBattle
 .Team3
 	loadtrainer CHERYL, 3
 .StartBattle
@@ -151,7 +151,7 @@ BattleTower2FRileyScript:
 	checkevent EVENT_BEAT_ELITE_FOUR_AGAIN
 	iftrue .Team2
 	loadtrainer RILEY, 1
-	jump .StartBattle
+	sjump .StartBattle
 .Team2
 	loadtrainer RILEY, 2
 .StartBattle
@@ -219,7 +219,7 @@ BattleTower2FBuckScript:
 	checkevent EVENT_BEAT_ELITE_FOUR_AGAIN
 	iftrue .Team2
 	loadtrainer BUCK, 1
-	jump .StartBattle
+	sjump .StartBattle
 .Team2
 	loadtrainer BUCK, 2
 .StartBattle
@@ -270,10 +270,10 @@ BattleTower2FMarleyScript:
 	checkevent EVENT_BEAT_ELITE_FOUR
 	iftrue .Team2
 	loadtrainer MARLEY, 1
-	jump .StartBattle
+	sjump .StartBattle
 .Team2
 	loadtrainer MARLEY, 2
-	jump .StartBattle
+	sjump .StartBattle
 .Team3
 	loadtrainer MARLEY, 3
 .StartBattle
@@ -328,7 +328,7 @@ BattleTower2FMiraScript:
 	checkevent EVENT_BEAT_ELITE_FOUR_AGAIN
 	iftrue .Team2
 	loadtrainer MIRA, 1
-	jump .StartBattle
+	sjump .StartBattle
 .Team2
 	loadtrainer MIRA, 2
 .StartBattle
@@ -390,7 +390,7 @@ BattleTower2FAnabelScript:
 	checkevent EVENT_BEAT_ELITE_FOUR_AGAIN
 	iftrue .Team2
 	loadtrainer ANABEL, 1
-	jump .StartBattle
+	sjump .StartBattle
 .Team2
 	loadtrainer ANABEL, 2
 .StartBattle

@@ -1,5 +1,5 @@
 SafariGameBattleScript::
-	writecode VAR_BATTLETYPE, BATTLETYPE_SAFARI
+	loadvar VAR_BATTLETYPE, BATTLETYPE_SAFARI
 	randomwildmon
 	startbattle
 	reloadmapafterbattle

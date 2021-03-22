@@ -31,27 +31,32 @@ RadioTower4FDJMaryScript:
 	faceplayer
 	opentext
 	checkevent EVENT_GOT_PINK_BOW_FROM_MARY
-	iftrue UnknownScript_0x5ebac
+	iftrue_jumpopenedtext RadioTower4FDJMaryText_After
 	checkevent EVENT_CLEARED_RADIO_TOWER
-	iftrue UnknownScript_0x5eb99
-	jumpopenedtext RadioTower4FDJMaryText
+	iftrue .ClearedRockets
+	jumpthisopenedtext
 
-UnknownScript_0x5eb99:
+	text "Mary: Why? Why do"
+	line "I have to suffer"
+	cont "through this?"
+
+	para "Meowth, help me!"
+	done
+
+.ClearedRockets:
 	writetext RadioTower4FDJMaryText_ClearedRockets
-	buttonsound
+	promptbutton
 	verbosegiveitem PINK_BOW
-	iffalse UnknownScript_0x5ebb0
-	writetext RadioTower4FDJMaryText_GivePinkBow
-	waitbutton
-	closetext
+	iffalse_endtext
 	setevent EVENT_GOT_PINK_BOW_FROM_MARY
-	end
+	jumpthisopenedtext
 
-UnknownScript_0x5ebac:
-	writetext RadioTower4FDJMaryText_After
-	waitbutton
-UnknownScript_0x5ebb0:
-	endtext
+	text "Mary: It's just"
+	line "right for #mon"
+
+	para "that know Fairy-"
+	line "type moves."
+	done
 
 GenericTrainerGruntM10:
 	generictrainer GRUNTM, 10, EVENT_BEAT_ROCKET_GRUNTM_10, GruntM10SeenText, GruntM10BeatenText
@@ -99,28 +104,12 @@ RadioTower4FFisherText:
 	line "broadcast there."
 	done
 
-RadioTower4FDJMaryText:
-	text "Mary: Why? Why do"
-	line "I have to suffer"
-	cont "through this?"
-
-	para "Meowth, help me!"
-	done
-
 RadioTower4FDJMaryText_ClearedRockets:
 	text "Mary: Oh! You're"
 	line "my little savior!"
 
 	para "Will you take this"
 	line "as my thanks?"
-	done
-
-RadioTower4FDJMaryText_GivePinkBow:
-	text "Mary: It's just"
-	line "right for #mon"
-
-	para "that know Fairy-"
-	line "type moves."
 	done
 
 RadioTower4FDJMaryText_After:

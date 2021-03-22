@@ -1,9 +1,6 @@
-	object_const_def
-	const BATTLEFACTORYHALLWAY_RECEPTIONIST
-
 BattleFactoryHallway_MapScriptHeader:
 	def_scene_scripts
-	scene_script BattleFactoryHallwayTrigger0
+	scene_script BattleFactoryHallwayFollowReceptionist
 
 	def_callbacks
 
@@ -20,41 +17,53 @@ BattleFactoryHallway_MapScriptHeader:
 	def_bg_events
 
 	def_object_events
-	object_event 11,  2, SPRITE_RECEPTIONIST, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, ObjectEvent, -1
+	object_event  4, 12, SPRITE_SCIENTIST, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, ObjectEvent, -1
 
-BattleFactoryHallwayTrigger0:
-	priorityjump .ChooseBattleRoom
+	object_const_def
+	const BATTLEFACTORYHALLWAY_RECEPTIONIST
+
+BattleFactoryHallwayFollowReceptionist:
+	prioritysjump .SwapPokemon
 	end
 
-.ChooseBattleRoom:
-	; TODO: base this on winstreak instead since level group is gone
+.SwapPokemon:
+	; TODO: swap a mon for your opponent's
 	follow BATTLEFACTORYHALLWAY_RECEPTIONIST, PLAYER
-	callasm .asm_load_battle_room
-	jump .WalkToChosenBattleRoom
-
-.asm_load_battle_room
-	ld a, 1
-	ldh [hScriptVar], a
-	ret
-
-; enter different rooms for different levels to battle against
-; at least it should look like that
-; because all warps lead to the same room
-.WalkToChosenBattleRoom: ; 0x9f5dc
-	applymovement BATTLEFACTORYHALLWAY_RECEPTIONIST, MovementData_BattleFactoryHallwayWalkTo1020Room
-	faceobject PLAYER, BATTLEFACTORYHALLWAY_RECEPTIONIST
-	showtext Text_PleaseStepThisWay
+	applymovement BATTLEFACTORYHALLWAY_RECEPTIONIST, .WalkIntoRoomMovement
 	stopfollow
+	faceobject PLAYER, BATTLEFACTORYHALLWAY_RECEPTIONIST
+	showtext .PleaseStepThisWayText
+	applymovement BATTLEFACTORYHALLWAY_RECEPTIONIST, .StepAbovePlayerMovement
+	follow BATTLEFACTORYHALLWAY_RECEPTIONIST, PLAYER
+	applymovement BATTLEFACTORYHALLWAY_RECEPTIONIST, .StepOntoFloorMovement
+	stopfollow
+	warpsound
+	disappear BATTLEFACTORYHALLWAY_RECEPTIONIST
 	applyonemovement PLAYER, step_up
 	warpcheck
 	end
 
-MovementData_BattleFactoryHallwayWalkTo1020Room:
-	step_right
-	step_right
-	step_right
-	step_right
+.WalkIntoRoomMovement:
+	step_up
+	step_up
+	step_up
 	step_up
 	step_right
 	turn_head_left
+	step_end
+
+.PleaseStepThisWayText:
+	text "Please step this"
+	line "way."
+	done
+
+.StepAbovePlayerMovement:
+	step_up
+	step_left
+	step_end
+
+.StepOntoFloorMovement:
+	step_up
+	step_up
+	step_up
 	step_end

@@ -18,7 +18,7 @@ Route16South_MapScriptHeader:
 
 Route16SouthAlwaysOnBikeCallback:
 	setflag ENGINE_ALWAYS_ON_BIKE
-	return
+	endcallback
 
 OfficerfJamieScript:
 	checktime 1 << NITE

@@ -1,3 +1,5 @@
+IsInByteArray::
+	ld de, 1
 IsInArray::
 ; Find value a for every de bytes in array hl.
 ; Return index in b, and carry if found.
@@ -5,10 +7,10 @@ IsInArray::
 	ld c, a
 .loop
 	ld a, [hl]
-	cp -1
-	ret z ; carry can never be set for "cp -1"
 	cp c
 	scf
+	ret z
+	cp -1 ; clears carry
 	ret z
 	inc b
 	add hl, de

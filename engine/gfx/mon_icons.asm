@@ -141,7 +141,7 @@ _GetMonIconPalette:
 	; b = form
 	inc hl ; Form is in the byte after Shiny
 	ld a, [hld]
-	and BASEMON_MASK
+	and SPECIESFORM_MASK
 	ld b, a
 
 	; check shininess at hl
@@ -208,13 +208,17 @@ LoadMoveMenuMonIcon:
 	push bc
 
 	depixel 3, 4, 2, 4
+	push de
+	ld hl, wTempMonForm
+	jr _InitScreenMonIcon
 InitScreenMonIcon:
 	push de
 
 	ld a, MON_FORM ; aka MON_IS_EGG
 	call GetPartyParamLocation
+_InitScreenMonIcon:
 	ld a, [hl]
-	and BASEMON_MASK
+	and SPECIESFORM_MASK
 	ld [wCurIconForm], a
 	bit MON_IS_EGG_F, [hl]
 	ld a, [wd265]
@@ -260,7 +264,7 @@ InitPartyMenuIcon:
 	ld a, [hl]
 	bit MON_IS_EGG_F, a
 	jr nz, .egg
-	and BASEMON_MASK
+	and SPECIESFORM_MASK
 	ld [wCurIconForm], a
 	ld hl, wPartySpecies
 	add hl, de
@@ -298,7 +302,7 @@ SetPartyMonIconAnimSpeed:
 	ld [hl], a
 	rlca
 	rlca
-	ld hl, SPRITEANIMSTRUCT_0D
+	ld hl, SPRITEANIMSTRUCT_VAR2
 	add hl, bc
 	ld [hl], a
 	ret
@@ -343,7 +347,7 @@ Fly_PrepMonIcon:
 	push de
 	ld a, MON_FORM
 	call GetPartyParamLocation
-	and BASEMON_MASK
+	and SPECIESFORM_MASK
 	ld [wCurIconForm], a
 	ld a, [wCurPartyMon]
 	ld hl, wPartySpecies
@@ -388,8 +392,11 @@ GetIcon_a:
 ; Load icon graphics into VRAM starting from tile a.
 	ld l, a
 	ld h, 0
-
+	; fallthrough
 GetIcon:
+	ld c, 8
+	; fallthrough
+DoGetIcon:
 ; Load icon graphics into VRAM starting from tile hl.
 
 ; One tile is 16 bytes long.
@@ -402,12 +409,47 @@ endr
 	push hl
 
 	push hl
+	ld a, c
+	push af
 	call LoadOverworldMonIcon
+	pop af
+	ld c, a
 	ld h, d
 	ld l, e
 	pop de
-
 	call DecompressRequest2bpp
+	pop hl
+	ret
+
+GetStorageIcon_a:
+; Load frame 1 icon graphics into VRAM starting from tile a
+	ld l, a ; no-optimize hl|bc|de = a * 16 (rept)
+	ld h, 0
+rept 4
+	add hl, hl
+endr
+	ld de, vTiles0
+	add hl, de
+	; fallthrough
+GetStorageIcon:
+	push hl
+
+	push hl
+	ld a, 4
+	push af
+	call LoadOverworldMonIcon
+	pop af
+	ld c, a
+	ld h, d
+	ld l, e
+	pop de
+	push de
+	push bc
+	call FarDecompressWRA6InB
+	pop bc
+	pop hl
+	ld de, wDecompressScratch
+	farcall BillsPC_SafeRequest2bppInWRA6
 	pop hl
 	ret
 

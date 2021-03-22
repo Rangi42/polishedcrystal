@@ -18,7 +18,7 @@ GourmetManiacScript:
 	faceplayer
 	opentext
 	writetext .GreetingText
-	buttonsound
+	promptbutton
 	special Special_ChooseItem
 	iffalse_jumpopenedtext .NoItemText
 	special GetGourmetManiacPrice
@@ -27,7 +27,7 @@ GourmetManiacScript:
 	special PlaceMoneyTopRight
 	yesorno
 	iffalse_jumpopenedtext .NoItemText
-	copybytetovar wCurItem
+	readmem wCurItem
 	takeitem ITEM_FROM_MEM
 	waitsfx
 	playsound SFX_TRANSACTION
@@ -62,7 +62,7 @@ GourmetManiacScript:
 
 	para "Would you accept"
 	line "¥"
-	deciram hMoneyTemp, 3, 7
+	text_decimal hMoneyTemp, 3, 7
 	text " for it?"
 	done
 

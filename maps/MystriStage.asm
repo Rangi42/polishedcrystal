@@ -121,7 +121,7 @@ MystriStageBeatCynthiaScript:
 	jumptextfaceplayer MystriStageCynthiaEggText
 
 MystriStageEggScript:
-	checkcode VAR_PARTYCOUNT
+	readvar VAR_PARTYCOUNT
 	ifequal PARTY_LENGTH, .PartyFull
 	special GiveMystriEgg
 	disappear MYSTRISTAGE_EGG

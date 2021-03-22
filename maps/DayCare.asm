@@ -26,20 +26,20 @@ DayCare_MapScriptHeader:
 	const DAYCARE_LYRA
 
 DayCareTrigger0:
-	priorityjump DayCare_MeetGrandma
+	prioritysjump DayCare_MeetGrandma
 	end
 
 DayCareEggCheckCallback:
-	checkflag ENGINE_DAYCARE_MAN_HAS_EGG
+	checkflag ENGINE_DAY_CARE_MAN_HAS_EGG
 	iftrue .PutDayCareManOutside
 	clearevent EVENT_DAYCARE_MAN_IN_DAYCARE
 	setevent EVENT_DAYCARE_MAN_ON_ROUTE_34
-	return
+	endcallback
 
 .PutDayCareManOutside:
 	setevent EVENT_DAYCARE_MAN_IN_DAYCARE
 	clearevent EVENT_DAYCARE_MAN_ON_ROUTE_34
-	return
+	endcallback
 
 DayCare_MeetGrandma:
 	follow DAYCARE_LYRA, PLAYER
@@ -51,7 +51,7 @@ DayCare_MeetGrandma:
 	checkflag ENGINE_PLAYER_IS_FEMALE
 	iftrue .IntroduceFemale
 	writetext DayCareLyraHelloText1
-	jump .Continue1
+	sjump .Continue1
 .IntroduceFemale:
 	writetext DayCareLyraHelloText2
 .Continue1:
@@ -62,7 +62,7 @@ DayCare_MeetGrandma:
 	checkflag ENGINE_PLAYER_IS_FEMALE
 	iftrue .ProtestFemale
 	writetext DayCareLyraProtestText1
-	jump .Continue2
+	sjump .Continue2
 .ProtestFemale:
 	writetext DayCareLyraProtestText2
 .Continue2:
@@ -95,8 +95,8 @@ DayCareManScript_Inside:
 	checkevent EVENT_GOT_ODD_EGG
 	iftrue .AlreadyHaveOddEgg
 	writetext DayCareManText_GiveOddEgg
-	buttonsound
-	checkcode VAR_PARTYCOUNT
+	promptbutton
+	readvar VAR_PARTYCOUNT
 	ifequal PARTY_LENGTH, .PartyFull
 	special GiveOddEgg
 	writetext DayCareText_GotOddEgg
@@ -116,26 +116,26 @@ DayCareManScript_Inside:
 DayCareLadyScript:
 	faceplayer
 	opentext
-	checkflag ENGINE_DAYCARE_MAN_HAS_EGG
+	checkflag ENGINE_DAY_CARE_MAN_HAS_EGG
 	iftrue_jumpopenedtext Text_GrampsLookingForYou
 	checkevent EVENT_LYRA_GAVE_AWAY_EGG
 	iffalse .NoLyrasEgg
 	checkevent EVENT_GOT_LYRAS_EGG
 	iftrue .NoLyrasEgg
 	writetext DayCareLadyText_GiveLyrasEgg
-	buttonsound
-	checkcode VAR_PARTYCOUNT
+	promptbutton
+	readvar VAR_PARTYCOUNT
 	ifequal PARTY_LENGTH, .PartyFull
 	checkevent EVENT_GOT_TOTODILE_FROM_ELM
 	iftrue .GiveCyndaquilEgg
 	checkevent EVENT_GOT_CHIKORITA_FROM_ELM
 	iftrue .GiveTotodileEgg
 	giveegg CHIKORITA, EGG_LEVEL
-	jump .GotLyrasEgg
+	sjump .GotLyrasEgg
 
 .GiveCyndaquilEgg:
 	giveegg CYNDAQUIL, EGG_LEVEL
-	jump .GotLyrasEgg
+	sjump .GotLyrasEgg
 
 .GiveTotodileEgg:
 	giveegg TOTODILE, EGG_LEVEL

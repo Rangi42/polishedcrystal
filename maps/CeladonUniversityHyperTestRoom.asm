@@ -62,7 +62,7 @@ CeladonUniversityHyperTestRoomWestwoodScript:
 	waitsfx
 	playsound SFX_ELEVATOR_END
 	writetext .CorrectText
-	buttonsound
+	promptbutton
 
 	writetext .Question2IntroText
 	waitbutton
@@ -78,7 +78,7 @@ CeladonUniversityHyperTestRoomWestwoodScript:
 	waitsfx
 	playsound SFX_ELEVATOR_END
 	writetext .CorrectText
-	buttonsound
+	promptbutton
 
 	writetext .Question3IntroText
 	waitbutton
@@ -90,7 +90,7 @@ CeladonUniversityHyperTestRoomWestwoodScript:
 	waitsfx
 	playsound SFX_ELEVATOR_END
 	writetext .CorrectText
-	buttonsound
+	promptbutton
 
 	writetext .Question4IntroText
 	waitbutton
@@ -102,7 +102,7 @@ CeladonUniversityHyperTestRoomWestwoodScript:
 	waitsfx
 	playsound SFX_ELEVATOR_END
 	writetext .CorrectText
-	buttonsound
+	promptbutton
 
 	writetext .Question5IntroText
 	waitbutton
@@ -114,7 +114,7 @@ CeladonUniversityHyperTestRoomWestwoodScript:
 	waitsfx
 	playsound SFX_ELEVATOR_END
 	writetext .CorrectText
-	buttonsound
+	promptbutton
 
 	writetext .Question6IntroText
 	waitbutton
@@ -126,21 +126,21 @@ CeladonUniversityHyperTestRoomWestwoodScript:
 	waitsfx
 	playsound SFX_ELEVATOR_END
 	writetext .CorrectText
-	buttonsound
+	promptbutton
 
 	setevent EVENT_PASSED_CELADON_HYPER_TEST
 .GiveMagikarp:
 	writetext .CongratulationsText
 	waitbutton
 
-	checkcode VAR_PARTYCOUNT
+	readvar VAR_PARTYCOUNT
 	ifequal 6, .PartyFull
 	writetext .ReceivedMagikarpText
 	playsound SFX_CAUGHT_MON
 	waitsfx
 	givepoke MAGIKARP, MAGIKARP_MASK_FORM, 10, EVIOLITE
 	special TeachMagikarpDragonRage
-	writebyte ULTRA_BALL
+	setval ULTRA_BALL
 	special SetLastPartyMonBall
 	setevent EVENT_GOT_DRAGON_RAGE_MAGIKARP
 	jumpopenedtext .TestOverText

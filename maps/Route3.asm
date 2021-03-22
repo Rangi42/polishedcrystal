@@ -36,7 +36,7 @@ Route3_MapScriptHeader:
 
 Route3FlyPoint:
 	setflag ENGINE_FLYPOINT_MT_MOON
-	return
+	endcallback
 
 GenericTrainerYoungsterRegis:
 	generictrainer YOUNGSTER, REGIS, EVENT_BEAT_YOUNGSTER_REGIS, .SeenText, .BeatenText

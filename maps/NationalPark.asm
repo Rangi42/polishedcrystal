@@ -41,7 +41,7 @@ NationalParkTeacher1Script:
 	checkevent EVENT_GOT_QUICK_CLAW
 	iftrue UnknownScript_0x5c01d
 	writetext NationalParkTeacher1Text
-	buttonsound
+	promptbutton
 	verbosegiveitem QUICK_CLAW
 	iffalse UnknownScript_0x5c021
 	setevent EVENT_GOT_QUICK_CLAW
@@ -105,19 +105,19 @@ TrainerSchoolboyJack1:
 	trainer SCHOOLBOY, JACK1, EVENT_BEAT_SCHOOLBOY_JACK, SchoolboyJack1SeenText, SchoolboyJack1BeatenText, 0, SchoolboyJack1Script
 
 SchoolboyJack1Script:
-	writecode VAR_CALLERID, PHONE_SCHOOLBOY_JACK
+	loadvar VAR_CALLERID, PHONE_SCHOOLBOY_JACK
 	opentext
-	checkflag ENGINE_JACK
+	checkflag ENGINE_JACK_READY_FOR_REMATCH
 	iftrue UnknownScript_0x5c088
 	checkcellnum PHONE_SCHOOLBOY_JACK
 	iftrue UnknownScript_0x5c108
 	checkevent EVENT_JACK_ASKED_FOR_PHONE_NUMBER
 	iftrue UnknownScript_0x5c071
 	writetext SchoolboyJackTradeMonText
-	buttonsound
+	promptbutton
 	setevent EVENT_JACK_ASKED_FOR_PHONE_NUMBER
 	scall UnknownScript_0x5c0fc
-	jump UnknownScript_0x5c074
+	sjump UnknownScript_0x5c074
 
 UnknownScript_0x5c071:
 	scall UnknownScript_0x5c100
@@ -125,14 +125,14 @@ UnknownScript_0x5c074:
 	askforphonenumber PHONE_SCHOOLBOY_JACK
 	ifequal $1, UnknownScript_0x5c110
 	ifequal $2, UnknownScript_0x5c10c
-	trainertotext SCHOOLBOY, JACK1, $0
+	gettrainername SCHOOLBOY, JACK1, $0
 	scall UnknownScript_0x5c104
-	jump UnknownScript_0x5c108
+	sjump UnknownScript_0x5c108
 
 UnknownScript_0x5c088:
 	scall UnknownScript_0x5c114
 	winlosstext SchoolboyJack1BeatenText, 0
-	copybytetovar wJackFightCount
+	readmem wJackFightCount
 	ifequal 4, .Fight4
 	ifequal 3, .Fight3
 	ifequal 2, .Fight2
@@ -154,39 +154,39 @@ UnknownScript_0x5c088:
 	loadtrainer SCHOOLBOY, JACK1
 	startbattle
 	reloadmapafterbattle
-	loadvar wJackFightCount, 1
-	clearflag ENGINE_JACK
+	loadmem wJackFightCount, 1
+	clearflag ENGINE_JACK_READY_FOR_REMATCH
 	end
 
 .LoadFight1:
 	loadtrainer SCHOOLBOY, JACK2
 	startbattle
 	reloadmapafterbattle
-	loadvar wJackFightCount, 2
-	clearflag ENGINE_JACK
+	loadmem wJackFightCount, 2
+	clearflag ENGINE_JACK_READY_FOR_REMATCH
 	end
 
 .LoadFight2:
 	loadtrainer SCHOOLBOY, JACK3
 	startbattle
 	reloadmapafterbattle
-	loadvar wJackFightCount, 3
-	clearflag ENGINE_JACK
+	loadmem wJackFightCount, 3
+	clearflag ENGINE_JACK_READY_FOR_REMATCH
 	end
 
 .LoadFight3:
 	loadtrainer SCHOOLBOY, JACK4
 	startbattle
 	reloadmapafterbattle
-	loadvar wJackFightCount, 4
-	clearflag ENGINE_JACK
+	loadmem wJackFightCount, 4
+	clearflag ENGINE_JACK_READY_FOR_REMATCH
 	end
 
 .LoadFight4:
 	loadtrainer SCHOOLBOY, JACK5
 	startbattle
 	reloadmapafterbattle
-	clearflag ENGINE_JACK
+	clearflag ENGINE_JACK_READY_FOR_REMATCH
 	end
 
 UnknownScript_0x5c0fc:
@@ -224,7 +224,7 @@ TrainerPokefanfBeverly1:
 	trainer POKEFANF, BEVERLY1, EVENT_BEAT_POKEFANF_BEVERLY, PokefanfBeverly1SeenText, PokefanfBeverly1BeatenText, 0, PokefanfBeverly1Script
 
 PokefanfBeverly1Script:
-	writecode VAR_CALLERID, PHONE_POKEFAN_BEVERLY
+	loadvar VAR_CALLERID, PHONE_POKEFAN_BEVERLY
 	opentext
 	checkflag ENGINE_BEVERLY_HAS_NUGGET
 	iftrue UnknownScript_0x5c177
@@ -235,10 +235,10 @@ PokefanfBeverly1Script:
 	checkevent EVENT_BEVERLY_ASKED_FOR_PHONE_NUMBER
 	iftrue UnknownScript_0x5c160
 	writetext PokefanBeverlyCuteMonText
-	buttonsound
+	promptbutton
 	setevent EVENT_BEVERLY_ASKED_FOR_PHONE_NUMBER
 	scall UnknownScript_0x5c18f
-	jump UnknownScript_0x5c163
+	sjump UnknownScript_0x5c163
 
 UnknownScript_0x5c160:
 	scall UnknownScript_0x5c193
@@ -246,19 +246,19 @@ UnknownScript_0x5c163:
 	askforphonenumber PHONE_POKEFAN_BEVERLY
 	ifequal $1, UnknownScript_0x5c1a3
 	ifequal $2, UnknownScript_0x5c19f
-	trainertotext POKEFANF, BEVERLY1, $0
+	gettrainername POKEFANF, BEVERLY1, $0
 	scall UnknownScript_0x5c197
-	jump UnknownScript_0x5c19b
+	sjump UnknownScript_0x5c19b
 
 UnknownScript_0x5c177:
 	scall UnknownScript_0x5c1a7
 	verbosegiveitem NUGGET
 	iffalse UnknownScript_0x5c186
 	clearflag ENGINE_BEVERLY_HAS_NUGGET
-	jump UnknownScript_0x5c19b
+	sjump UnknownScript_0x5c19b
 
 UnknownScript_0x5c186:
-	jump UnknownScript_0x5c1ab
+	sjump UnknownScript_0x5c1ab
 
 UnknownScript_0x5c189:
 	jumpopenedtext PokefanFBeverlyMarillFriendText
@@ -406,7 +406,7 @@ SchoolboyJackTradeMonText:
 
 	para "For example…"
 
-	para "There are 75 kinds" ; NUM_TMS
+	para "There are {d:NUM_TMS} kinds"
 	line "of TMs."
 
 	para "Traded #mon"

@@ -351,12 +351,8 @@ PokeBallEffect:
 	jr .room_in_party
 
 .check_room
-	ld a, BANK(sBoxCount)
-	call GetSRAMBank
-	ld a, [sBoxCount]
-	cp MONS_PER_BOX
-	call CloseSRAM
-	jp z, Ball_BoxIsFullMessage
+	farcall NewStorageBoxPointer
+	jp c, Ball_BoxIsFullMessage
 
 .room_in_party
 	xor a
@@ -454,7 +450,7 @@ PokeBallEffect:
 	ld [wCurSpecies], a
 	ld [wCurPartySpecies], a
 	ld a, [wOTPartyMon1Form]
-	and BASEMON_MASK
+	and SPECIESFORM_MASK
 	ld [wCurForm], a
 	call GetBaseData
 
@@ -528,11 +524,11 @@ PokeBallEffect:
 	rst CopyBytes
 	pop af
 	push af
-	ld hl, wPartyMonOT
+	ld hl, wPartyMonOTs
 	call SkipNames
 	ld d, h
 	ld e, l
-	ld hl, wOTPartyMonOT
+	ld hl, wOTPartyMonOTs
 	ld bc, NAME_LENGTH
 	rst CopyBytes
 	pop af
@@ -626,12 +622,8 @@ PokeBallEffect:
 
 	farcall SetBoxMonCaughtData
 
-	ld a, BANK(sBoxCount)
-	call GetSRAMBank
-
-	ld a, [sBoxCount]
-	cp MONS_PER_BOX
-	jr nz, .BoxNotFullYet
+	farcall NewStorageBoxPointer
+	jr nc, .BoxNotFullYet
 	ld hl, wBattleResult
 	set 7, [hl]
 .BoxNotFullYet:
@@ -640,9 +632,8 @@ PokeBallEffect:
 	jr nz, .SkipBoxMonFriendBall
 	; caught Pokemon become the first Pokemon in the box
 	ld a, FRIEND_BALL_HAPPINESS
-	ld [sBoxMon1Happiness], a
+	ld [wTempMonHappiness], a
 .SkipBoxMonFriendBall:
-	call CloseSRAM
 
 	ld a, [wInitialOptions]
 	bit NUZLOCKE_MODE, a
@@ -661,37 +652,55 @@ PokeBallEffect:
 .AlwaysNicknameBox:
 	xor a
 	ld [wCurPartyMon], a
-	ld a, BOXMON
+	ld a, TEMPMON
 	ld [wMonType], a
 	ld de, wMonOrItemNameBuffer
 	ld b, $0 ; pokemon
 	farcall NamingScreen
 
-	ld a, BANK(sBoxMonNicknames)
-	call GetSRAMBank
-
 	ld hl, wMonOrItemNameBuffer
-	ld de, sBoxMonNicknames
+	ld de, wTempMonNickname
 	ld bc, MON_NAME_LENGTH
 	rst CopyBytes
 
-	ld hl, sBoxMonNicknames
+	ld hl, wTempMonNickname
 	ld de, wStringBuffer1
 	call InitName
 
-	call CloseSRAM
-
 .SkipBoxMonNickname:
-	ld a, BANK(sBoxMonNicknames)
-	call GetSRAMBank
-
-	ld hl, sBoxMonNicknames
+	ld hl, wTempMonNickname
 	ld de, wMonOrItemNameBuffer
 	ld bc, MON_NAME_LENGTH
 	rst CopyBytes
 
-	call CloseSRAM
+	farcall UpdateStorageBoxMonFromTemp
 
+	; Switch current Box if it was full. We can check this by checking if
+	; the tempmon's box location matches the current box.
+	ld a, [wTempMonBox]
+	ld b, a
+	ld a, [wCurBox]
+	inc a
+	cp b
+	jr z, .curbox_not_full
+
+	push bc
+	ld b, a
+	farcall GetBoxName
+	ld hl, Text_CurBoxFull
+	call PrintText
+	pop bc
+
+	; Switch current box.
+	ld a, b
+	dec a
+	ld [wCurBox], a
+
+.curbox_not_full
+	ld a, [wCurBox]
+	inc a
+	ld b, a
+	farcall GetBoxName
 	ld hl, Text_SentToBillsPC
 	call PrintText
 
@@ -794,28 +803,28 @@ PokeBallEffect:
 
 Text_NoShake:
 	; Oh no! The #MON broke free!
-	text_jump _BallBrokeFreeText
+	text_far _BallBrokeFreeText
 	text_end
 
 Text_OneShake:
 	; Aww! It appeared to be caught!
-	text_jump _BallAppearedCaughtText
+	text_far _BallAppearedCaughtText
 	text_end
 
 Text_TwoShakes:
 	; Aargh! Almost had it!
-	text_jump _BallAlmostHadItText
+	text_far _BallAlmostHadItText
 	text_end
 
 Text_ThreeShakes:
 	; Shoot! It was so close too!
-	text_jump _BallSoCloseText
+	text_far _BallSoCloseText
 	text_end
 
 Text_GotchaMonWasCaught:
 	; Gotcha! @ was caught!@ @
-	text_jump Text_BallCaught
-	start_asm
+	text_far Text_BallCaught
+	text_asm
 	call WaitSFX
 	push bc
 	ld de, MUSIC_NONE
@@ -829,22 +838,26 @@ Text_GotchaMonWasCaught:
 
 TextJump_Waitbutton:
 	; @
-	text_jump Text_Waitbutton_2
+	text_far Text_Waitbutton_2
+	text_end
+
+Text_CurBoxFull:
+	text_far _BallCurBoxFullText
 	text_end
 
 Text_SentToBillsPC:
 	; was sent to BILL's PC.
-	text_jump _BallSentToPCText
+	text_far _BallSentToPCText
 	text_end
 
 Text_AddedToPokedex:
 	; 's data was newly added to the #DEX.@ @
-	text_jump _NewDexDataText
+	text_far _NewDexDataText
 	text_end
 
 Text_AskNicknameNewlyCaughtMon:
 	; Give a nickname to @ ?
-	text_jump _AskGiveNicknameText
+	text_far _AskGiveNicknameText
 	text_end
 
 ReturnToBattle_UseBall:
@@ -904,7 +917,7 @@ LowerEVBerry:
 	jp UseDisposableItem
 
 ItemHappinessRoseButStatFellText:
-	text_jump _ItemHappinessRoseButStatFellText
+	text_far _ItemHappinessRoseButStatFellText
 	text_end
 
 VitaminEffect:
@@ -939,7 +952,7 @@ VitaminEffect:
 
 ItemStatRoseText:
 	; 's @ rose.
-	text_jump _ItemStatRoseText
+	text_far _ItemStatRoseText
 	text_end
 
 SetUpEVModifier:
@@ -1412,12 +1425,12 @@ UseItem_GetBaseDataAndNickParameters:
 	ld a, MON_FORM
 	call GetPartyParamLocation
 	ld a, [hl]
-	and BASEMON_MASK
+	and SPECIESFORM_MASK
 	ld [wCurForm], a
 	call GetBaseData
 	ld a, [wCurPartyMon]
 	ld hl, wPartyMonNicknames
-	jp GetNick
+	jp GetNickname
 
 UseItem_GetHPParameter:
 	ld a, MON_HP
@@ -1729,7 +1742,7 @@ FreshSnackFunction:
 
 .Text_CantBeUsed:
 	; That can't be used on this #MON.
-	text_jump _ItemCantUseOnMonText
+	text_far _ItemCantUseOnMonText
 	text_end
 
 EscapeRope:
@@ -1758,7 +1771,7 @@ RepelEffect:
 
 TextJump_RepelUsedEarlierIsStillInEffect:
 	; The REPEL used earlier is still in effect.
-	text_jump Text_RepelUsedEarlierIsStillInEffect
+	text_far Text_RepelUsedEarlierIsStillInEffect
 	text_end
 
 PokeDoll:
@@ -1821,7 +1834,7 @@ BlueCard:
 	jp MenuTextboxWaitButton
 
 .bluecardtext
-	text_jump _BlueCardBalanceText
+	text_far _BlueCardBalanceText
 	text_end
 
 CoinCase:
@@ -1829,7 +1842,7 @@ CoinCase:
 	jp MenuTextboxWaitButton
 
 .coincasetext
-	text_jump _CoinCaseCountText
+	text_far _CoinCaseCountText
 	text_end
 
 ApricornBox:
@@ -2165,32 +2178,32 @@ RestorePP:
 
 RaiseThePPOfWhichMoveText:
 	; Raise the PP of which move?
-	text_jump Text_RaiseThePPOfWhichMove
+	text_far Text_RaiseThePPOfWhichMove
 	text_end
 
 RestoreThePPOfWhichMoveText:
 	; Restore the PP of which move?
-	text_jump Text_RestoreThePPOfWhichMove
+	text_far Text_RestoreThePPOfWhichMove
 	text_end
 
 PPIsMaxedOutText:
 	; 's PP is maxed out.
-	text_jump Text_PPIsMaxedOut
+	text_far Text_PPIsMaxedOut
 	text_end
 
 PPsIncreasedText:
 	; 's PP increased.
-	text_jump Text_PPsIncreased
+	text_far Text_PPsIncreased
 	text_end
 
 PPsMaximizedText:
 	; 's PP maximized.
-	text_jump Text_PPsMaximized
+	text_far Text_PPsMaximized
 	text_end
 
 PPRestoredText:
 	; PP was restored.
-	text_jump _PPRestoredText
+	text_far _PPRestoredText
 	text_end
 
 SquirtBottle:
@@ -2258,7 +2271,9 @@ WontHaveAnyEffect_NotUsedMessage:
 	jr ItemWasntUsedMessage
 
 Ball_BoxIsFullMessage:
-	ld hl, Ball_BoxIsFullText
+	ld hl, Ball_StorageFullText
+	jr z, ItemWasntUsedMessage
+	ld hl, Ball_DatabaseTaxedText
 	jr ItemWasntUsedMessage
 
 Ball_MonIsHiddenMessage:
@@ -2300,27 +2315,27 @@ Ball_ReplacePartyMonCaughtBall:
 	ld hl, wPartyMon1CaughtBall
 	call GetPartyLocation
 	ld a, [hl]
-	and CAUGHTBALL_MASK
+	and CAUGHT_BALL_MASK
 	cp b
 	jr z, AlreadyInThatBallMessage
 
 	ld a, [hl]
-	and $ff ^ CAUGHTBALL_MASK
+	and $ff ^ CAUGHT_BALL_MASK
 	add b
 	ld [hl], a
 	call UseDisposableItem
 
 	; wStringBuffer2 already contains the item name from GetItemName + CopyName1
-	call GetCurNick
+	call GetCurNickname
 	ld hl, BallReplacedText
 	jp PrintText
 
 BallReplacedText:
 	text "Put "
-	text_from_ram wStringBuffer1
+	text_ram wStringBuffer1
 	text " in"
 	line "the "
-	text_from_ram wStringBuffer2
+	text_ram wStringBuffer2
 	text "."
 	prompt
 
@@ -2351,66 +2366,71 @@ ItemNotUsed_ExitMenu:
 
 LooksBitterText:
 	; It looks bitter…
-	text_jump _ItemLooksBitterText
+	text_far _ItemLooksBitterText
 	text_end
 
 CantUseOnEggText:
 	; That can't be used on an EGG.
-	text_jump _ItemCantUseOnEggText
+	text_far _ItemCantUseOnEggText
 	text_end
 
 AlreadyInThatBallText:
-	text_jump AlreadyInThatBallTextData
+	text_far AlreadyInThatBallTextData
 	text_end
 
 IsntTheTimeText:
 	; OAK:  ! This isn't the time to use that!
-	text_jump _ItemOakWarningText
+	text_far _ItemOakWarningText
 	text_end
 
 WontHaveAnyEffectText:
 	; It won't have any effect.
-	text_jump _ItemWontHaveEffectText
+	text_far _ItemWontHaveEffectText
 	text_end
 
 BlockedTheBallText:
 	; The trainer blocked the BALL!
-	text_jump _BallBlockedText
+	text_far _BallBlockedText
 	text_end
 
 DontBeAThiefText:
 	; Don't be a thief!
-	text_jump _BallDontBeAThiefText
+	text_far _BallDontBeAThiefText
 	text_end
 
-Ball_BoxIsFullText:
+Ball_StorageFullText:
 	; The #MON BOX is full. That can't be used now.
-	text_jump _BallBoxFullText
+	text_far _BallStorageFullText
+	text_end
+
+Ball_DatabaseTaxedText:
+	; The #MON BOX is full. That can't be used now.
+	text_far _BallDatabaseFullText
 	text_end
 
 Ball_MonIsHiddenText:
 	; The #MON can't be seen!
-	text_jump Text_MonIsHiddenFromBall
+	text_far Text_MonIsHiddenFromBall
 	text_end
 
 Ball_MonCantBeCaughtText:
 	; The #MON can't be caught!
-	text_jump Text_MonCantBeCaught
+	text_far Text_MonCantBeCaught
 	text_end
 
 Ball_NuzlockeFailureText:
 	; You already encountered a #MON here.
-	text_jump Text_NuzlockeBallFailure
+	text_far Text_NuzlockeBallFailure
 	text_end
 
 Revive_NuzlockeFailureText:
 	; You can't revive #MON in NUZLOCKE mode!
-	text_jump Text_NuzlockeReviveFailure
+	text_far Text_NuzlockeReviveFailure
 	text_end
 
 UsedItemText:
 	; used the@ .
-	text_jump _ItemUsedText
+	text_far _ItemUsedText
 	text_end
 
 ApplyPPUp:
@@ -2496,6 +2516,18 @@ ComputeMaxPP:
 	pop bc
 	ret
 
+RestoreTempPP:
+	ld hl, wTempMonMoves
+	ld de, wTempMonPP
+	ld a, [wMenuCursorY]
+	push af
+	ld a, TEMPMON
+	ld [wMonType], a
+	call _RestoreAllPP
+	pop af
+	ld [wMenuCursorY], a
+	ret
+
 RestoreAllPP:
 	ld a, MON_PP
 	call GetPartyParamLocation
@@ -2504,8 +2536,11 @@ RestoreAllPP:
 	call GetPartyParamLocation
 	pop de
 	xor a ; PARTYMON
-	ld [wMenuCursorY], a
 	ld [wMonType], a
+	; fallthrough
+_RestoreAllPP:
+	xor a
+	ld [wMenuCursorY], a
 	ld c, NUM_MOVES
 .loop
 	ld a, [hli]
@@ -2701,7 +2736,7 @@ AbilityCap:
 ChangeAbilityToText:
 	text "Change ability to"
 	line ""
-	text_from_ram wStringBuffer1
+	text_ram wStringBuffer1
 	text "?"
 	done
 

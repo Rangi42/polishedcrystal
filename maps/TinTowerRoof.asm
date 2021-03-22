@@ -22,15 +22,15 @@ TinTowerRoofHoOh:
 	iftrue .NoAppear
 	checkkeyitem RAINBOW_WING
 	iftrue .Appear
-	jump .NoAppear
+	sjump .NoAppear
 
 .Appear:
 	appear TINTOWERROOF_HO_OH
-	return
+	endcallback
 
 .NoAppear:
 	disappear TINTOWERROOF_HO_OH
-	return
+	endcallback
 
 TinTowerHoOh:
 	faceplayer
@@ -40,7 +40,7 @@ TinTowerHoOh:
 	pause 15
 	closetext
 	setevent EVENT_FOUGHT_HO_OH
-	writecode VAR_BATTLETYPE, BATTLETYPE_LEGENDARY
+	loadvar VAR_BATTLETYPE, BATTLETYPE_LEGENDARY
 	loadwildmon HO_OH, 75
 	startbattle
 	disappear TINTOWERROOF_HO_OH

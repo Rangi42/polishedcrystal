@@ -1,6 +1,6 @@
 ; All other cases are neutral (1x).
 
-InverseTypeMatchup:
+InverseTypeMatchups:
 	;  attacker, defender,   *=
 	db NORMAL,    ROCK,      SUPER_EFFECTIVE
 	db NORMAL,    GHOST,     SUPER_EFFECTIVE

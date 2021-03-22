@@ -1,9 +1,9 @@
-Special_YoungerHaircutBrother:
-	ld hl, Data_YoungerHaircutBrother
-	jr MassageOrHaircut
-
 Special_OlderHaircutBrother:
 	ld hl, Data_OlderHaircutBrother
+	jr MassageOrHaircut
+
+Special_YoungerHaircutBrother:
+	ld hl, Data_YoungerHaircutBrother
 	jr MassageOrHaircut
 
 Special_DaisyMassage:
@@ -29,7 +29,7 @@ MassageOrHaircut:
 	pop hl
 	jr nz, .egg
 	push hl
-	call GetCurNick
+	call GetCurNickname
 	call CopyPokemonName_Buffer1_Buffer3
 	pop hl
 	call Random

@@ -26,7 +26,7 @@ KukuiScript:
 	checkevent EVENT_INTRODUCED_KUKUI
 	iftrue .Introduced
 	writetext .IntroText
-	jump .Question
+	sjump .Question
 .Introduced
 	writetext .RematchText
 .Question
@@ -40,7 +40,7 @@ KukuiScript:
 	checkevent EVENT_BEAT_ELITE_FOUR_AGAIN
 	iftrue .Rematch
 	loadtrainer KUKUI, 1
-	jump .StartBattle
+	sjump .StartBattle
 .Rematch
 	loadtrainer KUKUI, 2
 .StartBattle

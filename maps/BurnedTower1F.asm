@@ -32,7 +32,7 @@ BurnedTower1F_MapScriptHeader:
 	const BURNEDTOWER1F_SILVER
 
 BurnedTower1FTrigger0:
-	priorityjump BurnedTower1FEusineTriggerScript
+	prioritysjump BurnedTower1FEusineTriggerScript
 	end
 
 BurnedTower1FHoleAndLadder:
@@ -44,7 +44,7 @@ BurnedTower1FHoleAndLadder:
 	iftrue .Done
 	changeblock 4, 14, $9 ; ladder
 .Done:
-	return
+	endcallback
 
 BurnedTower1FEusineTriggerScript:
 	turnobject BURNEDTOWER1F_EUSINE, DOWN
@@ -75,7 +75,7 @@ BurnedTowerRivalBattleScript:
 	startbattle
 	dontrestartmapmusic
 	reloadmapafterbattle
-	jump .returnfrombattle
+	sjump .returnfrombattle
 
 .totodile
 	winlosstext BurnedTowerSilver_WinText, BurnedTowerSilver_LossText
@@ -84,7 +84,7 @@ BurnedTowerRivalBattleScript:
 	startbattle
 	dontrestartmapmusic
 	reloadmapafterbattle
-	jump .returnfrombattle
+	sjump .returnfrombattle
 
 .chikorita
 	winlosstext BurnedTowerSilver_WinText, BurnedTowerSilver_LossText
@@ -93,7 +93,7 @@ BurnedTowerRivalBattleScript:
 	startbattle
 	dontrestartmapmusic
 	reloadmapafterbattle
-	jump .returnfrombattle
+	sjump .returnfrombattle
 
 .returnfrombattle
 	special DeleteSavedMusic

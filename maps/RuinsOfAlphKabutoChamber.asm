@@ -29,7 +29,7 @@ RuinsOfAlphKabutoChamber_MapScriptHeader:
 RuinsofAlphKabutoChamberTrigger0:
 	checkevent EVENT_WALL_OPENED_IN_KABUTO_CHAMBER
 	iffalse .End
-	priorityjump RuinsofAlphKabutoChamberWallOpenScript
+	prioritysjump RuinsofAlphKabutoChamberWallOpenScript
 .End
 	end
 
@@ -40,12 +40,12 @@ RuinsofAlphKabutoChamberHiddenDoorsCallback:
 .WallOpen:
 	checkevent EVENT_SOLVED_KABUTO_PUZZLE
 	iffalse .FloorClosed
-	return
+	endcallback
 
 .FloorClosed:
 	changeblock 2, 2, $1
 	changeblock 4, 2, $2
-	return
+	endcallback
 
 RuinsofAlphKabutoChamberWallOpenScript:
 	pause 30
@@ -61,7 +61,7 @@ RuinsofAlphKabutoChamberWallOpenScript:
 
 MapRuinsofAlphKabutoChamberSignpost2Script:
 	refreshscreen
-	writebyte $0
+	setval $0
 	special Special_UnownPuzzle
 	closetext
 	iftrue .PuzzleComplete
@@ -70,7 +70,7 @@ MapRuinsofAlphKabutoChamberSignpost2Script:
 .PuzzleComplete:
 	setevent EVENT_RUINS_OF_ALPH_INNER_CHAMBER_TOURISTS
 	setevent EVENT_SOLVED_KABUTO_PUZZLE
-	setflag ENGINE_UNLOCKED_UNOWNS_1
+	setflag ENGINE_UNLOCKED_UNOWNS_A_TO_J
 	setevent EVENT_RUINS_OF_ALPH_KABUTO_CHAMBER_RECEPTIONIST
 	setmapscene RUINS_OF_ALPH_INNER_CHAMBER, $1
 	earthquake 30
@@ -88,7 +88,7 @@ MapRuinsofAlphKabutoChamberSignpost2Script:
 	end
 
 RuinsOfAlphKabutoChamberScientistScript:
-	checkcode VAR_UNOWNCOUNT
+	readvar VAR_UNOWNCOUNT
 	ifequal NUM_UNOWN, .AllUnownCaught
 	checkevent EVENT_WALL_OPENED_IN_KABUTO_CHAMBER
 	iftrue_jumptextfaceplayer RuinsOfAlphKabutoChamberScientistHoleText
@@ -97,7 +97,7 @@ RuinsOfAlphKabutoChamberScientistScript:
 	checkevent EVENT_SOLVED_KABUTO_PUZZLE
 	iffalse .PuzzleIncomplete
 	writetext RuinsOfAlphKabutoChamberScientistTremorText
-	buttonsound
+	promptbutton
 .PuzzleIncomplete:
 	writetext RuinsOfAlphKabutoChamberScientistCrypticText
 	waitbutton
@@ -122,12 +122,12 @@ MapRuinsofAlphKabutoChamberSignpost4Script:
 	opentext
 	checkevent EVENT_RUINS_OF_ALPH_OUTSIDE_TOURIST_YOUNGSTERS
 	iftrue .unsolved
-	writetext UnusedText_0x58e70
-	jump .unownwords
+	writetext RuinsOfAlphChambersItsUnownText
+	sjump .unownwords
 .unsolved
 	writetext RuinsOfAlphAerodactylChamberWallPatternLeftText
 .unownwords
-	writebyte $0
+	setval $0
 	special Special_DisplayUnownWords
 	endtext
 

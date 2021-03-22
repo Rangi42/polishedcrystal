@@ -32,14 +32,14 @@ Route40_MapScriptHeader:
 	const ROUTE40_MONICA
 
 MonicaCallback:
-	checkcode VAR_WEEKDAY
+	readvar VAR_WEEKDAY
 	ifequal MONDAY, .MonicaAppears
 	disappear ROUTE40_MONICA
-	return
+	endcallback
 
 .MonicaAppears:
 	appear ROUTE40_MONICA
-	return
+	endcallback
 
 GenericTrainerSwimmerfElaine:
 	generictrainer SWIMMERF, ELAINE, EVENT_BEAT_SWIMMERF_ELAINE, SwimmerfElaineSeenText, SwimmerfElaineBeatenText
@@ -97,7 +97,7 @@ Route40FisherScript:
 	iffalse .NoSilverLeaf
 	yesorno
 	iffalse .TutorRefused
-	writebyte KNOCK_OFF
+	setval KNOCK_OFF
 	writetext ClearText
 	special Special_MoveTutor
 	ifequal $0, .TeachMove
@@ -159,18 +159,18 @@ Route40FisherScript:
 MonicaScript:
 	checkevent EVENT_GOT_SHARP_BEAK_FROM_MONICA
 	iftrue_jumptextfaceplayer MonicaMondayText
-	checkcode VAR_WEEKDAY
+	readvar VAR_WEEKDAY
 	ifnotequal MONDAY, MonicaNotMondayScript
 	faceplayer
 	opentext
 	checkevent EVENT_MET_MONICA_OF_MONDAY
 	iftrue .MetMonica
 	writetext MeetMonicaText
-	buttonsound
+	promptbutton
 	setevent EVENT_MET_MONICA_OF_MONDAY
 .MetMonica:
 	writetext MonicaGivesGiftText
-	buttonsound
+	promptbutton
 	verbosegiveitem SHARP_BEAK
 	iffalse MonicaDoneScript
 	setevent EVENT_GOT_SHARP_BEAK_FROM_MONICA

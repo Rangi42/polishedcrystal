@@ -33,7 +33,7 @@ _DeleteSaveData:
 
 .Text_ClearAllSaveData:
 	; Clear all save data?
-	text_jump _ClearAllSaveDataText
+	text_far _ClearAllSaveDataText
 	text_end
 
 _ResetInitialOptions:
@@ -64,5 +64,5 @@ _ResetInitialOptions:
 
 .Text_ResetInitialOptions:
 	; Reset the initial game options?
-	text_jump ResetInitialOptionsText
+	text_far ResetInitialOptionsText
 	text_end

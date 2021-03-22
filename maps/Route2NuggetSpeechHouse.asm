@@ -20,7 +20,7 @@ Route2NuggetSpeechHouseFisherScript:
 	faceplayer
 	opentext
 	writetext .Text1
-	buttonsound
+	promptbutton
 	verbosegiveitem NUGGET
 	iffalse_endtext
 	setevent EVENT_GOT_NUGGET_FROM_GUY
