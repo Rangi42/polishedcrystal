@@ -38,56 +38,6 @@ _AddNTimes::
 	pop bc
 	ret
 
-ArrayIsUnique:
-; Check if any of the (single-byte) indexes referred to by hl is identical.
-; a is size of array, b is 1 if index value 0 should be ignored, 0 otherwise,
-; c is distance between array indexes. Returns z if all elements are unique,
-; otherwise nz. Preserves a, bc, de, hl.
-	push hl
-	push de
-	push bc
-	push af
-	and a
-	jr z, .done
-	dec a
-	jr z, .done
-
-	ld e, a
-.outer_loop
-	push hl
-	ld d, e
-	ld a, [hl]
-	bit 0, b
-	jr z, .inner_loop
-	and a
-	jr z, .next
-.inner_loop
-	push bc
-	ld b, 0
-	add hl, bc
-	pop bc
-	cp [hl]
-	jr z, .identical
-	dec d
-	jr nz, .inner_loop
-.next
-	pop hl
-	push bc
-	ld b, 0
-	add hl, bc
-	pop bc
-	dec e
-	jr nz, .outer_loop
-	jr .done
-.identical
-	pop hl
-	or 1
-	; fallthrough
-.done
-	pop bc
-	ld a, b
-	jp PopBCDEHL
-
 GetHourIntervalValue::
 	ldh a, [hHours]
 GetIntervalValue::

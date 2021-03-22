@@ -5,9 +5,9 @@ BattleFactory1F_MapScriptHeader:
 	def_callbacks
 
 	def_warp_events
-	warp_event 10, 13, BATTLE_TOWER_OUTSIDE, 3
-	warp_event 11, 13, BATTLE_TOWER_OUTSIDE, 4
-	warp_event 10,  0, BATTLE_FACTORY_HALLWAY, 1
+	warp_event 12, 11, BATTLE_TOWER_OUTSIDE, 3
+	warp_event 13, 11, BATTLE_TOWER_OUTSIDE, 4
+	warp_event 12,  1, BATTLE_FACTORY_HALLWAY, 1
 
 	def_coord_events
 
