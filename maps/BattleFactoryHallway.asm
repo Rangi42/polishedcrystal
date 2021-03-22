@@ -20,14 +20,41 @@ BattleFactoryHallway_MapScriptHeader:
 	const BATTLEFACTORYHALLWAY_RECEPTIONIST
 
 BattleFactoryHallwayFollowReceptionist:
-	prioritysjump .SwapPokemon
+	prioritysjump .StepIntoRoom
 	end
 
-.SwapPokemon:
-	; TODO: swap a mon for your opponent's
+.StepIntoRoom:
+	; First, step into the room properly, don't just linger at the entrance.
 	follow BATTLEFACTORYHALLWAY_RECEPTIONIST, PLAYER
 	applymovement BATTLEFACTORYHALLWAY_RECEPTIONIST, .WalkIntoRoomMovement
 	stopfollow
+	special Special_BattleTower_GenerateNextOpponent
+	; fallthrough
+.NextRentalBattle:
+	opentext
+	writethistext
+		text "I've researched the"
+		line "next opponent."
+		prompt
+
+	special Special_BattleTower_NextRentalBattle
+	iftrue .Continue
+
+	opentext
+	writethistext
+		text "Cancel your run?"
+		line "This counts as a"
+		cont "streak loss."
+		done
+	yesorno
+	closetext
+	iffalse .NextRentalBattle
+
+	; Player aborted the run.
+	special FadeOutPalettes
+	sjump Script_LostBattleFactory
+
+.Continue:
 	faceobject PLAYER, BATTLEFACTORYHALLWAY_RECEPTIONIST
 	showtext .PleaseStepThisWayText
 	applymovement BATTLEFACTORYHALLWAY_RECEPTIONIST, .StepAbovePlayerMovement

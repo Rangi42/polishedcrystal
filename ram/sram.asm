@@ -226,7 +226,10 @@ sBT_MonParty:: ds BATTLETOWER_PARTYDATA_SIZE
 ENDU
 
 ; Repeat prevention
-sBT_OTMonParties:: ds BATTLETOWER_PARTYDATA_SIZE * BATTLETOWER_SAVEDPARTIES
+sBT_OTMonParties::
+sBT_OTMonParty1:: ds BATTLETOWER_PARTYDATA_SIZE ; oldest
+sBT_OTMonParty2:: ds BATTLETOWER_PARTYDATA_SIZE ; trainer before prev
+sBT_OTMonParty3:: ds BATTLETOWER_PARTYDATA_SIZE ; previous trainer
 
 
 SECTION "Boxes 1-7",  SRAM

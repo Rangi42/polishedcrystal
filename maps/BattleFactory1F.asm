@@ -224,32 +224,10 @@ BattleFactory1FReceptionistScript:
 	setval BATTLETOWER_CHALLENGE_IN_PROGRESS
 	special Special_BattleTower_SetChallengeState
 	special Special_BattleTower_SetupRentalMode
-
-	writethistext
-		text "I will give you"
-		line "6 rental #mon."
-		prompt
-
-.Rental_SelectMon:
-	writethistext
-		text "Choose #mon"
-		line "to enter."
-		prompt
-
-	special Special_BattleTower_SelectParticipants
-	iftrue Script_PrepareForRentalBattle
-
-	writethistext
-		text "Cancel your run?"
-		line "This counts as a"
-		cont "streak loss."
-		done
-	yesorno
-	iffalse .Rental_SelectMon
-	sjump Script_CommitBattleFactoryResult
+	sjump Script_PrepareForRentalBattle
 
 Script_PrepareForRentalBattle:
-	; Initializes opponent trainers and stores player mon choices in SRAM
+	; Initializes opponent trainers
 	special Special_BattleTower_BeginChallenge
 	; fallthrough
 Script_ReturnToRentalChallenge:

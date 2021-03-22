@@ -132,6 +132,8 @@ SpecialsPointers::
 	add_special Special_BattleTower_CommitChallengeResult
 	add_special Special_BattleTower_GetChallengeState
 	add_special Special_BattleTower_SetChallengeState
+	add_special Special_BattleTower_GenerateNextOpponent
+	add_special Special_BattleTower_NextRentalBattle
 	add_special Special_BattleTower_SetupRentalMode
 	add_special Special_BattleTower_SelectParticipants
 	add_special Special_BattleTower_MaxVolume

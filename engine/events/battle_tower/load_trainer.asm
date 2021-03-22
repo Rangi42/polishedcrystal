@@ -123,7 +123,7 @@ NewRentalTeam:
 	jp BT_SetLevel
 
 PopulateBattleTowerTeam:
-; Prepares your and the opponent's parties for battle tower battle
+; Prepares your and the opponent's parties for battle tower battle.
 	; Populate wOTPartyMons with your selections. Used for legality
 	; checking, but works just as well here as a straightforward way
 	; to get the party in the correct order. Yes, we need to do this,
@@ -132,11 +132,12 @@ PopulateBattleTowerTeam:
 	farcall BT_GetBattleMode
 	cp BATTLETOWER_RENTALMODE
 	jr z, .rental
+
 	farcall BT_LoadPartySelections
 	farcall BT_SetPlayerOT
 
-	; Generate opponent set usage
-	call BT_GetSetTable
+	; Generate opponent trainer sets.
+	call GenerateOpponentTrainer
 	jr .copy_player_data
 
 .rental
@@ -165,12 +166,6 @@ PopulateBattleTowerTeam:
 	pop bc
 	dec b
 	jr nz, .rental_loop
-
-	; OT will just use group 2 mons
-	ld a, 2
-	ld [wBT_OTMonParty], a
-	ld [wBT_OTMonParty + 2], a
-	ld [wBT_OTMonParty + 4], a
 	; fallthrough
 .copy_player_data
 	; Now copy the OT data to the player party struct
@@ -178,6 +173,30 @@ PopulateBattleTowerTeam:
 	ld de, wPartyCount
 	ld bc, wPartyMonNicknamesEnd - wPartyCount
 	rst CopyBytes
+
+	; Now load opponent party data into OT.
+	xor a
+	ld [wOTPartyCount], a
+
+	ld hl, wBT_OTMonParty
+	ld b, BATTLETOWER_PARTY_LENGTH
+.loop
+	push bc
+	ld a, [hli]
+	ld b, a
+	ld a, [hli]
+	ld c, a
+	call BT_AppendOTMon
+	pop bc
+	dec b
+	jr nz, .loop
+
+	; Set everything to level 50, then we're done.
+	ld a, 50
+	jp BT_SetLevel
+
+GenerateOpponentTrainer:
+	call BT_GetSetTable
 
 .generate_team
 	; Now add the enemy trainer data
@@ -208,39 +227,32 @@ PopulateBattleTowerTeam:
 	farcall BT_LegalityCheck
 	jr nz, .generate_team
 
-	; Don't reuse recently seen mons.
+	; Don't reuse recently seen mons, or anything in the player rental team.
+	farcall BT_GetBattleMode
+	ld b, BATTLETOWER_PARTY_LENGTH
+	ld de, wBT_OTMonParty
+	cp BATTLETOWER_RENTALMODE
+	jr nz, .not_rental
+
+	; Check rental lineup.
+	push de
+	push bc
+	ld c, BATTLETOWER_PARTY_LENGTH * 2
+	ld hl, wBT_MonParty
+	call CheckSetRepeats
+	pop bc
+	pop de
+	jr c, .generate_team
+
+.not_rental
+	; Check previous trainers.
 	ld a, BANK(sBT_OTMonParties)
 	call GetSRAMBank
-	ld de, wBT_OTMonParty
-	ld b, BATTLETOWER_PARTY_LENGTH
-.repeat_outer_loop
 	ld c, BATTLETOWER_PARTY_LENGTH * BATTLETOWER_SAVEDPARTIES
 	ld hl, sBT_OTMonParties
-.repeat_loop
-	; Check if set is identical
-	ld a, [de]
-	cp [hl]
-	inc de
-	inc hl
-	jr nz, .next_repeat
-
-	; Set is identical. Check mon number.
-	ld a, [de]
-	cp [hl]
-
-	; If number is also identical, re-roll.
-	jr z, .generate_team
-.next_repeat
-	dec de
-	inc hl
-	dec c
-	jr nz, .repeat_loop
-
-	; Check next party slot
-	inc de
-	inc de
-	dec b
-	jr nz, .repeat_outer_loop
+	call CheckSetRepeats
+	call CloseSRAM
+	jr c, .generate_team
 
 	; Done with checks. Shift SRAM parties and store current party.
 	ld hl, sBT_OTMonParties + BATTLETOWER_PARTYDATA_SIZE
@@ -258,6 +270,50 @@ PopulateBattleTowerTeam:
 	; Set everything to level 50, then we're done.
 	ld a, 50
 	jp BT_SetLevel
+
+CheckSetRepeats:
+; Checks set repeats between de array length b and hl array length c.
+; Returns c if there was a repeat.
+	push hl
+	push bc
+.repeat_outer_loop
+	pop bc
+	pop hl
+	dec b
+	push hl
+	push bc
+.repeat_loop
+	; Check if set is identical
+	ld a, [de]
+	cp [hl]
+	inc de
+	inc hl
+	jr nz, .next_repeat
+
+	; Set is identical. Check mon number.
+	ld a, [de]
+	cp [hl]
+
+	; If number is also identical, we reached an identical set.
+	scf
+	jr z, .done
+
+.next_repeat
+	dec de
+	inc hl
+	dec c
+	jr nz, .repeat_loop
+
+	; Check next party slot
+	inc de
+	inc de
+	dec b
+	jr nz, .repeat_outer_loop
+	and a
+.done
+	pop bc
+	pop hl
+	ret
 
 BT_AppendOTMon:
 ; Appends mon c from set b to OT party. If c is -1, appends a random set b mon.

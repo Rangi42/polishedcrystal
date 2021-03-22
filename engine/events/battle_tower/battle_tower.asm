@@ -236,11 +236,80 @@ Special_BattleTower_SetupRentalMode:
 	call GetSRAMBank
 	xor a
 	ld [sBT_CurTrainer], a
+	jp CloseSRAM
+
+Special_BattleTower_GenerateNextOpponent:
+; Generates opponent team and, if this is the first battle, rental picks.
+	; If this is the first battle, generate a new rental team.
+	call BT_GetCurTrainer
+	and a
+	jr nz, .not_first_battle
+	farcall NewRentalTeam
+	jr .got_player_selections
+
+.not_first_battle
+	; Otherwise, copy last trainer into secondary party...
+	ld a, BANK(sBT_OTMonParties)
+	call GetSRAMBank
+
+	ld hl, sBT_OTMonParty3
+	ld de, wBT_SecondaryMonParty
+	ld bc, BATTLETOWER_PARTYDATA_SIZE
+	push bc
+	rst CopyBytes
+
+	; ...and copy current party stored in sram into player party.
+	ld hl, sBT_MonParty
+	ld de, sBT_MonParty
+	pop bc
+	rst CopyBytes
 	call CloseSRAM
 
-	; Give the player 6 rental mons
-	farcall NewRentalTeam
-	ret
+.got_player_selections
+	; Now, generate a new opponent party.
+	farjp GenerateOpponentTrainer
+
+Special_BattleTower_NextRentalBattle:
+	; Research text fluff.
+	ld hl, .ExpectThese3
+	call PrintText
+
+	ld hl, .NewRentalsText
+	call PrintText
+	jr Special_BattleTower_SelectParticipants
+
+.NewRentalsText:
+	text "We'll hold your"
+	line "#mon safe and"
+	cont "offer you 6 rental"
+	cont "#mon."
+
+	para "Choose #mon"
+	line "to enter."
+	prompt
+
+.ExpectThese3:
+	text "You can expect to"
+	line "see "
+	text_ram wOTPartyMonNicknames
+	text ","
+	cont ""
+	text_ram wOTPartyMonNicknames + MON_NAME_LENGTH
+	text " and"
+	cont ""
+	text_ram wOTPartyMonNicknames + MON_NAME_LENGTH * 2
+	text "."
+	prompt
+
+.ExpectThese2:
+	text "You can expect to"
+	line "see "
+	text_ram wOTPartyMonNicknames
+	text " and"
+	cont ""
+	text_ram wOTPartyMonNicknames + MON_NAME_LENGTH
+	text "."
+	prompt
 
 Special_BattleTower_SelectParticipants:
 	; Clear old BT participants selection
@@ -282,7 +351,7 @@ Special_BattleTower_BeginChallenge:
 	call BT_GetBattleMode
 	push af
 
-	; Commit party selection to SRAM in regular mode (Rental is already copied)
+	; Commit party selection to SRAM in regular mode. Blank it in rental mode.
 	ld a, BANK(sBT_PartySelections)
 	call GetSRAMBank
 	pop af
@@ -290,7 +359,14 @@ Special_BattleTower_BeginChallenge:
 	ld hl, wBT_PartySelections
 	ld de, sBT_PartySelections
 	ld bc, PARTY_LENGTH
+	push af
 	call nz, CopyBytes
+	ld bc, BATTLETOWER_PARTYDATA_SIZE
+	ld h, d
+	ld l, e
+	pop af
+	ld a, -1
+	call z, ByteFill
 
 	; Reset amount of battled trainers
 	xor a
