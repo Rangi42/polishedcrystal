@@ -122,6 +122,25 @@ NewRentalTeam:
 	ld a, 50
 	jp BT_SetLevel
 
+LoadOpponentParty:
+; Loads opponent party in wBT_OTMonParty to the OT party.
+	xor a
+	ld [wOTPartyCount], a
+
+	ld hl, wBT_OTMonParty
+	ld b, BATTLETOWER_PARTY_LENGTH
+.loop
+	push bc
+	ld a, [hli]
+	ld b, a
+	ld a, [hli]
+	ld c, a
+	call BT_AppendOTMon
+	pop bc
+	dec b
+	jr nz, .loop
+	ret
+
 PopulateBattleTowerTeam:
 ; Prepares your and the opponent's parties for battle tower battle.
 	; Populate wOTPartyMons with your selections. Used for legality
@@ -175,21 +194,7 @@ PopulateBattleTowerTeam:
 	rst CopyBytes
 
 	; Now load opponent party data into OT.
-	xor a
-	ld [wOTPartyCount], a
-
-	ld hl, wBT_OTMonParty
-	ld b, BATTLETOWER_PARTY_LENGTH
-.loop
-	push bc
-	ld a, [hli]
-	ld b, a
-	ld a, [hli]
-	ld c, a
-	call BT_AppendOTMon
-	pop bc
-	dec b
-	jr nz, .loop
+	call LoadOpponentParty
 
 	; Set everything to level 50, then we're done.
 	ld a, 50

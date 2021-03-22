@@ -273,6 +273,10 @@ Special_BattleTower_GenerateNextOpponent:
 	farjp GenerateOpponentTrainer
 
 Special_BattleTower_NextRentalBattle:
+	; Possibly redundant, but if we aborted an earlier party selection, we need
+	; to reload opponent party data.
+	farcall LoadOpponentParty
+
 	; Copy move name of first mon's first move, in case we want to reveal it.
 	ld a, [wOTPartyMon1Moves]
 	ld [wNamedObjectIndexBuffer], a
