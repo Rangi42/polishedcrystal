@@ -12,33 +12,33 @@ endc
 	db x
 ENDM
 
-	enum_start $fc
+	const_def $fc
 
-	enum delanim_command ; $fc
+	const delanim_command ; $fc
 delanim: MACRO ; used for oam
 	db delanim_command
 ENDM
 
-	enum dorepeat_command ; $fd
+	const dorepeat_command ; $fd
 dorepeat: MACRO
 	db dorepeat_command
 	db \1 ; #
 ENDM
 
-	enum setrepeat_command ; $fe
+	const setrepeat_command ; $fe
 setrepeat: MACRO
 	db setrepeat_command
 	db \1 ; #
 ENDM
 
-	enum endanim_command ; $ff
+	const endanim_command ; $ff
 endanim: MACRO
 	db endanim_command
 ENDM
 
-__enum__ = $fe
+const_value = $fe
 
-	enum dorestart_command ; $fe
+	const dorestart_command ; $fe
 dorestart: MACRO ; used for oam
 	db dorestart_command
 ENDM

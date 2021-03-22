@@ -1112,7 +1112,7 @@ PnP_Text3:
 
 PeoplePlaces4: ; People
 	call Random
-	cp NUM_TRAINER_CLASSES - 1
+	cp NUM_TRAINER_CLASSES
 	jr nc, PeoplePlaces4
 	inc a
 	push af

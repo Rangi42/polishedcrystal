@@ -158,7 +158,7 @@ else
 ChrisPalette:
 KrisPalette:
 Lyra1Palette:
-rept NUM_TRAINER_CLASSES
+rept NUM_TRAINER_CLASSES + 1
 	MONOCHROME_RGB_TWO
 endr
 endc
