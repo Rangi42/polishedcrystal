@@ -270,13 +270,39 @@ Special_BattleTower_GenerateNextOpponent:
 	farjp GenerateOpponentTrainer
 
 Special_BattleTower_NextRentalBattle:
-	; Research text fluff.
+	; Copy move name of first mon's first move, in case we want to reveal it.
+	ld a, [wOTPartyMon1Moves]
+	ld [wNamedObjectIndexBuffer], a
+	call GetMoveName
+
+	; Figure out how many details we want to reveal.
+	ld a, [wBattleFactoryCurStreak]
+	and a
+	jr nz, .most_common_type
+	ld a, [wBattleFactoryCurStreak + 1]
+	ld b, 7
+	sub b
 	ld hl, .ExpectThese3
+	jr c, .print
+	sub b
+	ld hl, .ExpectThese2
+	jr c, .print
+	sub b
+	ld hl, .ExactMonUsingMove
+	jr c, .print
+	sub b
+	ld hl, .SomeMonUsingMove
+	jr c, .print
+
+.most_common_type
+	; TODO: figure out most common type.
+	ld hl, .SomeMonUsingMove
+.print
 	call PrintText
 
 	ld hl, .NewRentalsText
 	call PrintText
-	jr Special_BattleTower_SelectParticipants
+	jp Special_BattleTower_SelectParticipants
 
 .NewRentalsText:
 	text "We'll hold your"
@@ -308,6 +334,23 @@ Special_BattleTower_NextRentalBattle:
 	text " and"
 	cont ""
 	text_ram wOTPartyMonNicknames + MON_NAME_LENGTH
+	text "."
+	prompt
+
+.ExactMonUsingMove:
+	text "You can expect to"
+	line "see a "
+	text_ram wOTPartyMonNicknames
+	cont "with "
+	text_ram wStringBuffer1
+	text "."
+	prompt
+
+.SomeMonUsingMove:
+	text "You can expect to"
+	line "see a #mon"
+	cont "with "
+	text_ram wStringBuffer1
 	text "."
 	prompt
 
