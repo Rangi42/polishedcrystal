@@ -175,7 +175,8 @@ _HandleStepType:
 	call StackJumpTable
 
 StepTypesJumptable:
-; These pointers use OBJECT_STEP_TYPE. See constants/map_object_constants.asm
+; entries correspond to STEP_TYPE_* constants (see constants/map_object_constants.asm)
+	table_width 2, StepTypesJumptable
 	dw StepFunction_Reset           ; STEP_TYPE_RESET
 	dw StepFunction_FromMovement    ; STEP_TYPE_FROM_MOVEMENT
 	dw StepFunction_NPCWalk         ; STEP_TYPE_NPC_WALK
@@ -200,6 +201,7 @@ StepTypesJumptable:
 	dw StepFunction_SkyfallTop      ; STEP_TYPE_SKYFALL_TOP
 	dw StepFunction_NPCStairs       ; STEP_TYPE_NPC_STAIRS
 	dw StepFunction_PlayerStairs    ; STEP_TYPE_PLAYER_STAIRS
+	assert_table_length NUM_STEP_TYPES
 
 CopyNextCoordsTileToStandingCoordsTile:
 	ld hl, OBJECT_NEXT_MAP_X
@@ -523,6 +525,8 @@ endr
 	call StackJumpTable
 
 .Pointers:
+; entries correspond to SPRITEMOVEFN_* constants (see constants/map_object_constants.asm)
+	table_width 2, StepFunction_FromMovement.Pointers
 	dw DoNothing                     ; SPRITEMOVEFN_00
 	dw .RandomWalkY                  ; SPRITEMOVEFN_RANDOM_WALK_Y
 	dw .RandomWalkX                  ; SPRITEMOVEFN_RANDOM_WALK_X
@@ -553,6 +557,7 @@ endr
 	dw .MovementArchTree             ; SPRITEMOVEFN_ARCH_TREE
 	dw .MovementSailboatTop          ; SPRITEMOVEFN_SAILBOAT_TOP
 	dw .MovementSailboatBottom       ; SPRITEMOVEFN_SAILBOAT_BOTTOM
+	assert_table_length NUM_SPRITEMOVEFN
 
 .RandomWalkY:
 	call Random

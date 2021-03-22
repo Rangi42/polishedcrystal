@@ -1,5 +1,7 @@
 SpriteAnimSeqData:
-	; frameset sequence, tile
+; entries correspond to SPRITE_ANIM_INDEX_* constants (see constants/sprite_anim_constants.asm)
+	table_width 3, SpriteAnimSeqData
+	; frameset, sequence, tile
 ; SPRITE_ANIM_INDEX_PARTY_MON
 	db SPRITE_ANIM_FRAMESET_PARTY_MON, SPRITE_ANIM_SEQ_PARTY_MON, $00
 ; SPRITE_ANIM_INDEX_NAMING_SCREEN_CURSOR
@@ -78,3 +80,4 @@ SpriteAnimSeqData:
 	db SPRITE_ANIM_FRAMESET_PC_MODE2, SPRITE_ANIM_SEQ_NULL, $00
 ; SPRITE_ANIM_INDEX_PC_PACK
 	db SPRITE_ANIM_FRAMESET_PC_PACK, SPRITE_ANIM_SEQ_PC_PACK, $00
+	assert_table_length NUM_SPRITE_ANIM_INDEXES

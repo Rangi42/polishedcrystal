@@ -54,6 +54,8 @@ RunScriptCommand:
 	call StackJumpTable
 
 ScriptCommandTable:
+; entries correspond to *_command constants (see macros/scripts/events.asm)
+	table_width 2, ScriptCommandTable
 	dw Script_scall                      ; 00
 	dw Script_farscall                   ; 01
 	dw Script_memcall                    ; 02
@@ -261,6 +263,7 @@ ScriptCommandTable:
 	dw Script_givebp                     ; cc
 	dw Script_takebp                     ; cd
 	dw Script_checkbp                    ; ce
+	assert_table_length NUM_EVENT_COMMANDS
 
 StartScript:
 	ld hl, wScriptFlags

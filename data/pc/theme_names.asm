@@ -1,4 +1,5 @@
 BillsPC_ThemeNames:
+	table_width 2, BillsPC_ThemeNames
 	dw .Standard
 	dw .Pro
 	dw .Mobile
@@ -29,6 +30,7 @@ BillsPC_ThemeNames:
 	dw .Dragon
 	dw .Dark
 	dw .Fairy
+	assert_table_length NUM_BILLS_PC_THEMES
 
 .Standard: db "Standard@"
 .Pro:      db "Pro@"

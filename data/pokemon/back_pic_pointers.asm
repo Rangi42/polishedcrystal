@@ -1,4 +1,5 @@
 BackPicPointers::
+	table_width 3, BackPicPointers
 	dba BulbasaurBackpic
 	dba IvysaurBackpic
 	dba VenusaurBackpic
@@ -253,6 +254,8 @@ BackPicPointers::
 	dba LeafeonBackpic
 	dba GlaceonBackpic
 	dba SylveonBackpic
+	assert_table_length NUM_POKEMON
+
 	dba EggPic
 
 	dba UnownBBackpic

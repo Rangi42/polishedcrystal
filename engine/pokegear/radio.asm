@@ -20,6 +20,8 @@ PlayRadioShow:
 	call StackJumpTable
 
 RadioJumptable:
+; entries correspond to constants/radio_constants.asm
+	table_width 2, RadioJumptable
 	dw OaksPkmnTalk1  ; $00
 	dw PokedexShow1 ; $01
 	dw BenMonMusic1  ; $02
@@ -31,6 +33,7 @@ RadioJumptable:
 	dw PokeFluteRadio ; $08
 	dw UnownRadio ; $09
 	dw EvolutionRadio ; $0a
+	assert_table_length NUM_RADIO_CHANNELS
 ; OaksPkmnTalk
 	dw OaksPkmnTalk2  ; $0b
 	dw OaksPkmnTalk3  ; $0c
@@ -116,6 +119,7 @@ RadioJumptable:
 	dw PokedexShow6 ; $55
 	dw PokedexShow7 ; $56
 	dw PokedexShow8 ; $57
+	assert_table_length NUM_RADIO_SEGMENTS
 
 NextRadioLine:
 	push af
@@ -330,7 +334,7 @@ OaksPkmnTalk8:
 	and $f
 	ld e, a
 	ld d, 0
-	ld hl, .Descriptors
+	ld hl, .Adverbs
 	add hl, de
 	add hl, de
 	ld a, [hli]
@@ -339,7 +343,7 @@ OaksPkmnTalk8:
 	ld a, OAKS_POKEMON_TALK_9
 	jp NextRadioLine
 
-.Descriptors:
+.Adverbs:
 	dw .sweetadorably
 	dw .wigglyslickly
 	dw .aptlynamed

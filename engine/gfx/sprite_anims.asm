@@ -5,6 +5,8 @@ DoAnimFrame:
 	call StackJumpTable
 
 .Jumptable:
+; entries correspond to SPRITE_ANIM_SEQ_* constants (see constants/sprite_anim_constants.asm)
+	table_width 2, DoAnimFrame.Jumptable
 	dw DoNothing                  ; SPRITE_ANIM_SEQ_NULL
 	dw AnimSeq_PartyMon           ; SPRITE_ANIM_SEQ_PARTY_MON
 	dw AnimSeq_PartyMonSwitch     ; SPRITE_ANIM_SEQ_PARTY_MON_SWITCH
@@ -37,6 +39,7 @@ DoAnimFrame:
 	dw AnimSeq_PcQuick            ; SPRITE_ANIM_SEQ_PC_QUICK
 	dw AnimSeq_PcMode             ; SPRITE_ANIM_SEQ_PC_MODE
 	dw AnimSeq_PcPack             ; SPRITE_ANIM_SEQ_PC_PACK
+	assert_table_length NUM_SPRITE_ANIM_SEQS
 
 AnimSeq_PartyMon:
 	ld a, [wMenuCursorY]

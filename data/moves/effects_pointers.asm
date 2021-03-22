@@ -1,4 +1,6 @@
 MoveEffectsPointers:
+; entries correspond to EFFECT_* constants
+	table_width 2, MoveEffectsPointers
 	dw NormalHit
 	dw NormalHit
 	dw NormalHit
@@ -153,3 +155,4 @@ MoveEffectsPointers:
 	dw LowKick
 	dw BrickBreak
 	dw TrickRoom
+	assert_table_length NUM_MOVE_EFECTS

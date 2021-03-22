@@ -1,11 +1,12 @@
 engine_flag: MACRO
+; location, bit
+; (all locations are in WRAM bank 1)
 	dwb \1 + (\2 / 8), 1 << (\2 % 8)
 ENDM
 
 EngineFlags:
-; All locations are in WRAM bank 1.
-
-	; location, bit
+; entries correspond to ENGINE_* constants
+	table_width 3, EngineFlags
 
 	; pokegear
 	engine_flag wPokegearFlags, 1 ; radio card ; $0
@@ -271,3 +272,5 @@ EngineFlags:
 	engine_flag wPokemonJournals, 32 ; mr.fuji
 
 	engine_flag wStatusFlags3, 0 ; judge machine
+
+	assert_table_length NUM_ENGINE_FLAGS

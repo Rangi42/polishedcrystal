@@ -1,4 +1,5 @@
 AbilityNames:
+	table_width 2, AbilityNames
 	dw NoAbility
 	dw Stench
 	dw Drizzle
@@ -144,6 +145,7 @@ AbilityNames:
 	dw NeutralizingGas
 	dw PastelVeil
 	dw QuickDraw
+	assert_table_length NUM_ABILITIES
 
 NoAbility:       rawchar "---@"
 Stench:          rawchar "Stench@"

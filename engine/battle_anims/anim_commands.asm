@@ -264,6 +264,8 @@ RunBattleAnimCommand:
 	call StackJumpTable
 
 BattleAnimCommands::
+; entries correspond to anim_* constants (see macros/scripts/battle_anims.asm)
+	table_width 2, BattleAnimCommands
 	dw BattleAnimCmd_StatLoop
 	dw BattleAnimCmd_Obj
 	dw BattleAnimCmd_1GFX
@@ -313,6 +315,7 @@ BattleAnimCommands::
 	dw BattleAnimCmd_Loop
 	dw BattleAnimCmd_Call
 	dw BattleAnimCmd_Ret
+	assert_table_length $100 - FIRST_BATTLE_ANIM_CMD
 
 BattleAnimCmd_E7:
 BattleAnimCmd_EA:

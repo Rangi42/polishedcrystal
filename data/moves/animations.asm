@@ -1,4 +1,6 @@
 BattleAnimations::
+; entries correspond to constants/move_constants.asm
+	table_width 2, BattleAnimations
 	dw BattleAnim_0
 	dw BattleAnim_Acrobatics
 	dw BattleAnim_KarateChop
@@ -255,6 +257,8 @@ BattleAnimations::
 	dw BattleAnim_PlayRough
 	dw BattleAnim_DisarmVoice
 	dw BattleAnim_Struggle
+	assert_table_length NUM_ATTACKS + 1
+	assert_table_length $100
 ; $100
 	dw BattleAnim_ThrowPokeBall
 	dw BattleAnim_SendOutMon
@@ -282,6 +286,7 @@ BattleAnimations::
 	dw BattleAnim_Sharpen
 	dw BattleAnim_StatUp
 	dw BattleAnim_StatDown
+	assert_table_length NUM_BATTLE_ANIMS + 1
 
 BattleAnim_0:
 	anim_ret

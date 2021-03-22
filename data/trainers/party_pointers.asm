@@ -1,6 +1,8 @@
 ; Each trainer class has its own group. See trainers.asm.
 
 TrainerGroups:
+; entries correspond to trainer classes (see constants/trainer_constants.asm)
+	table_width 3, TrainerGroups
 	dba CarrieGroup
 	dba CalGroup
 	dba FalknerGroup
@@ -146,3 +148,4 @@ TrainerGroups:
 	dba ImakuniGroup
 	dba LawrenceGroup
 	dba ReiGroup
+	assert_table_length NUM_TRAINER_CLASSES

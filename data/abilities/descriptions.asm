@@ -1,4 +1,5 @@
 AbilityDescriptions:
+	table_width 2, AbilityDescriptions
 	dw NoAbilityDescription
 	dw StenchDescription
 	dw DrizzleDescription
@@ -144,6 +145,7 @@ AbilityDescriptions:
 	dw NeutralizingGasDescription
 	dw PastelVeilDescription
 	dw QuickDrawDescription
+	assert_table_length NUM_ABILITIES
 
 NoAbilityDescription:
 	db    "Abilities are"

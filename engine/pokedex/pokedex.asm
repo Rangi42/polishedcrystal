@@ -1875,7 +1875,7 @@ Pokedex_PlaceTypeString:
 	ld e, a
 	ld d, 0
 	ld hl, PokedexTypeSearchStrings
-rept 9
+rept POKEDEX_TYPE_STRING_LENGTH
 	add hl, de
 endr
 	ld e, l

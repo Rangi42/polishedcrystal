@@ -814,6 +814,7 @@ INCLUDE "gfx/overworld/npc_sprites.pal"
 endc
 
 RoofPals:
+	table_width PAL_COLOR_SIZE * 2 * 3, RoofPals
 if DEF(HGSS)
 INCLUDE "gfx/tilesets/palettes/hgss/roof.pal"
 elif DEF(MONOCHROME)
@@ -821,6 +822,7 @@ INCLUDE "gfx/tilesets/palettes/monochrome/roof.pal"
 else
 INCLUDE "gfx/tilesets/roofs.pal"
 endc
+	assert_table_length NUM_MAP_GROUPS + 1
 
 OvercastRoofPals:
 if DEF(HGSS)

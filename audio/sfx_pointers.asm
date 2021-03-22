@@ -1,4 +1,5 @@
 SFX:
+	table_width 3, SFX
 	dba Sfx_DexFanfare5079
 	dba Sfx_Item
 	dba Sfx_CaughtMon
@@ -189,9 +190,6 @@ SFX:
 	dba Sfx_2Boops
 	dba Sfx_GlassTing
 	dba Sfx_GlassTing2
-
-; Crystal adds the following SFX:
-
 	dba Sfx_IntroUnown1
 	dba Sfx_IntroUnown2
 	dba Sfx_IntroUnown3
@@ -209,8 +207,6 @@ SFX:
 	dba Sfx_TwoPcBeeps
 	dba Sfx_4NoteDitty
 	dba Sfx_Twinkle
-
-; Polished Crystal adds the following SFX:
-
 	dba Sfx_Puddle
 	dba Sfx_AbilitySlideout
+	assert_table_length NUM_SFX

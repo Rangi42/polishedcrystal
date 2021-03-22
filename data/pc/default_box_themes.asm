@@ -1,4 +1,5 @@
 BillsPC_DefaultBoxThemes:
+	table_width 1, BillsPC_DefaultBoxThemes
 	db THEME_GRASS
 	db THEME_FIRE
 	db THEME_WATER
@@ -15,4 +16,5 @@ BillsPC_DefaultBoxThemes:
 	db THEME_GHOST
 	db THEME_DRAGON
 	db THEME_DARK
+	assert_table_length NUM_BOXES
 	db -1 ; end

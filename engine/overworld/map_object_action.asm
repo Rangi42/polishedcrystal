@@ -1,4 +1,7 @@
 ObjectActionPairPointers:
+; entries correspond to OBJECT_ACTION_* constants (see constants/map_object_constants.asm)
+	table_width 2 + 2, ObjectActionPairPointers
+	;  normal action,                  frozen action
 	dw SetFacingStanding,              SetFacingStanding          ; OBJECT_ACTION_00
 	dw SetFacingStandAction,           SetFacingCurrent           ; OBJECT_ACTION_STAND
 	dw SetFacingStepAction,            SetFacingCurrent           ; OBJECT_ACTION_STEP
@@ -25,6 +28,7 @@ ObjectActionPairPointers:
 	dw SetFacingRun,                   SetFacingCurrent           ; OBJECT_ACTION_RUN
 	dw SetFacingSailboatTop,           SetFacingSailboatTop       ; OBJECT_ACTION_SAILBOAT_TOP
 	dw SetFacingSailboatBottom,        SetFacingSailboatBottom    ; OBJECT_ACTION_SAILBOAT_BOTTOM
+	assert_table_length NUM_OBJECT_ACTIONS
 
 SetFacingStanding:
 	ld a, STANDING

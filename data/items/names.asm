@@ -1,4 +1,5 @@
 ItemNames::
+; use rawchar so VWF will work in the PC
 	rawchar "Park Ball@"
 	rawchar "Poké Ball@"
 	rawchar "Great Ball@"

@@ -1,10 +1,36 @@
 Characteristics:
-	dw .Chara_HP0,  .Chara_HP1,  .Chara_HP2,  .Chara_HP3,  .Chara_HP4
-	dw .Chara_ATK0, .Chara_ATK1, .Chara_ATK2, .Chara_ATK3, .Chara_ATK4
-	dw .Chara_DEF0, .Chara_DEF1, .Chara_DEF2, .Chara_DEF3, .Chara_DEF4
-	dw .Chara_SPA0, .Chara_SPA1, .Chara_SPA2, .Chara_SPA3, .Chara_SPA4
-	dw .Chara_SPD0, .Chara_SPD1, .Chara_SPD2, .Chara_SPD3, .Chara_SPD4
-	dw .Chara_SPE0, .Chara_SPE1, .Chara_SPE2, .Chara_SPE3, .Chara_SPE4
+	table_width 2, Characteristics
+	dw .Chara_HP0
+	dw .Chara_HP1
+	dw .Chara_HP2
+	dw .Chara_HP3
+	dw .Chara_HP4
+	dw .Chara_ATK0
+	dw .Chara_ATK1
+	dw .Chara_ATK2
+	dw .Chara_ATK3
+	dw .Chara_ATK4
+	dw .Chara_DEF0
+	dw .Chara_DEF1
+	dw .Chara_DEF2
+	dw .Chara_DEF3
+	dw .Chara_DEF4
+	dw .Chara_SPA0
+	dw .Chara_SPA1
+	dw .Chara_SPA2
+	dw .Chara_SPA3
+	dw .Chara_SPA4
+	dw .Chara_SPD0
+	dw .Chara_SPD1
+	dw .Chara_SPD2
+	dw .Chara_SPD3
+	dw .Chara_SPD4
+	dw .Chara_SPE0
+	dw .Chara_SPE1
+	dw .Chara_SPE2
+	dw .Chara_SPE3
+	dw .Chara_SPE4
+	assert_table_length NUM_STATS * 5
 
 .Chara_HP0:
 	db    "Loves to"

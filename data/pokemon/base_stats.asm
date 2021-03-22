@@ -35,10 +35,8 @@ endr
 ENDM
 
 BaseData::
-
-BaseData0::
+	table_width BASE_DATA_SIZE, BaseData
 INCLUDE "data/pokemon/base_stats/bulbasaur.asm"
-BaseData1::
 INCLUDE "data/pokemon/base_stats/ivysaur.asm"
 INCLUDE "data/pokemon/base_stats/venusaur.asm"
 INCLUDE "data/pokemon/base_stats/charmander.asm"
@@ -292,6 +290,8 @@ INCLUDE "data/pokemon/base_stats/celebi.asm"
 INCLUDE "data/pokemon/base_stats/leafeon.asm"
 INCLUDE "data/pokemon/base_stats/glaceon.asm"
 INCLUDE "data/pokemon/base_stats/sylveon.asm"
+	assert_table_length NUM_POKEMON
+
 INCLUDE "data/pokemon/base_stats/egg.asm"
 
 INCLUDE "data/pokemon/base_stats/gyarados.asm" ; red

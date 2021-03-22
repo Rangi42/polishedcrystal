@@ -1,5 +1,6 @@
 PokedexTypeSearchConversionTable:
 ; entries correspond with PokedexTypeSearchStrings (see data/types/search_strings.asm)
+	table_width 1, PokedexTypeSearchConversionTable
 	db NORMAL
 	db FIRE
 	db WATER
@@ -18,3 +19,4 @@ PokedexTypeSearchConversionTable:
 	db DARK
 	db STEEL
 	db FAIRY
+	assert_table_length NUM_TYPES - 1

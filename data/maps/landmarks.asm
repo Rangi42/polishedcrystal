@@ -4,6 +4,7 @@ landmark: MACRO
 ENDM
 
 Landmarks:
+	table_width 4, Landmarks
 	landmark   0,   0, SpecialMapName
 	landmark 148, 116, NewBarkTownName
 	landmark 128, 116, Route29Name
@@ -70,6 +71,7 @@ Landmarks:
 	landmark 110, 140, FastShipName
 	landmark 128,  44, SinjohRuinsName
 	landmark 128,  44, MystriStageName
+	assert_table_length KANTO_LANDMARK
 	landmark  60, 116, PalletTownName
 	landmark  60, 104, Route1Name
 	landmark  60,  92, ViridianCityName
@@ -148,6 +150,7 @@ Landmarks:
 	landmark  84, 124, ValenciaIslandName
 	landmark 144, 136, NavelRockName
 	landmark  32, 136, FarawayIslandName
+	assert_table_length NUM_LANDMARKS
 
 NewBarkTownName:       rawchar "New Bark¯Town@"
 CherrygroveCityName:   rawchar "Cherrygrove¯City@"

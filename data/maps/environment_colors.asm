@@ -1,4 +1,5 @@
 EnvironmentColorsPointers:
+	table_width 2, EnvironmentColorsPointers
 	dw .OutdoorColors ; unused
 	dw .OutdoorColors ; TOWN
 	dw .OutdoorColors ; ROUTE
@@ -7,6 +8,7 @@ EnvironmentColorsPointers:
 	dw .IsolatedColors ; ISOLATED
 	dw .IndoorColors ; GATE
 	dw .DungeonColors ; DUNGEON
+	assert_table_length NUM_ENVIRONMENTS + 1
 
 ; Valid indices: $00 - $2b
 .OutdoorColors:

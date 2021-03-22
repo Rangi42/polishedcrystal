@@ -9,6 +9,8 @@ _DoItemEffect::
 	call StackJumpTable
 
 ItemEffects:
+; entries correspond to item ids (see constants/item_constants.asm)
+	table_width 2, ItemEffects
 	dw PokeBallEffect     ; PARK_BALL
 	dw PokeBallEffect     ; POKE_BALL
 	dw PokeBallEffect     ; GREAT_BALL
@@ -264,6 +266,7 @@ ItemEffects:
 	dw IsntTheTimeMessage ; BLUESKY_MAIL
 	dw IsntTheTimeMessage ; MUSIC_MAIL
 	dw IsntTheTimeMessage ; MIRAGE_MAIL
+	assert_table_length NUM_ITEMS + 1 ; count PARK_BALL
 
 DoKeyItemEffect::
 	ld a, [wCurKeyItem]
@@ -277,6 +280,8 @@ DoKeyItemEffect::
 	call StackJumpTable
 
 KeyItemEffects:
+; entries correspond to key item ids (see constants/item_constants.asm)
+	table_width 2, KeyItemEffects
 	dw BikeFunction       ; BICYCLE
 	dw OldRod             ; OLD_ROD
 	dw GoodRod            ; GOOD_ROD
@@ -307,6 +312,7 @@ KeyItemEffects:
 	dw IsntTheTimeMessage ; SILPHSCOPE2
 	dw ApricornBox        ; APRICORN_BOX
 	dw TypeChart          ; TYPE_CHART
+	assert_table_length NUM_KEY_ITEMS
 
 PokeBallEffect:
 	; Replacing caught balls

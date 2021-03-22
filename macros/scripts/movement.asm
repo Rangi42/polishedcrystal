@@ -514,3 +514,5 @@ ENDM
 stairs_step_right: MACRO
 	db movement_stairs_step_right ; $65
 ENDM
+
+NUM_MOVEMENT_CMDS EQU const_value

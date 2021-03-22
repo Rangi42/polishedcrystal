@@ -210,24 +210,29 @@ UpdateChannels:
 	call StackJumpTable
 
 .Jumptable:
-	dw .wChannel1
-	dw .wChannel2
-	dw .wChannel3
-	dw .wChannel4
-; sfx ch ptrs are identical to music chs
-; ..except 5
-	dw .wChannel5
-	dw .wChannel6
-	dw .wChannel7
-	dw .wChannel8
+	table_width 2, UpdateChannels.Jumptable
+; music channels
+	dw .Channel1
+	dw .Channel2
+	dw .Channel3
+	dw .Channel4
+	assert_table_length NUM_MUSIC_CHANS
+; sfx channels
+; identical to music channels, except .Channel5 is not disabled by the low-HP danger sound
+; (instead, PlayDanger does not play the danger sound if sfx is playing)
+	dw .Channel5
+	dw .Channel6
+	dw .Channel7
+	dw .Channel8
+	assert_table_length NUM_CHANNELS
 
-.wChannel1:
+.Channel1:
 	ld a, [wLowHealthAlarm]
 	cp 255
-	jr z, .wChannel5
+	jr z, .Channel5
 	bit 7, a
 	ret nz
-.wChannel5:
+.Channel5:
 	ld hl, wChannel1NoteFlags - wChannel1
 	add hl, bc
 	bit NOTE_PITCH_SWEEP, [hl]
@@ -293,8 +298,8 @@ UpdateChannels:
 	ldh [rNR14], a
 	ret
 
-.wChannel2:
-.wChannel6:
+.Channel2:
+.Channel6:
 	ld hl, wChannel1NoteFlags - wChannel1
 	add hl, bc
 	bit NOTE_REST, [hl] ; rest
@@ -345,8 +350,8 @@ UpdateChannels:
 	ldh [rNR24], a
 	ret
 
-.wChannel3:
-.wChannel7:
+.Channel3:
+.Channel7:
 	ld hl, wChannel1NoteFlags - wChannel1
 	add hl, bc
 	bit NOTE_REST, [hl] ; rest
@@ -392,8 +397,8 @@ UpdateChannels:
 	ldh [rNR32], a
 	ret
 
-.wChannel4:
-.wChannel8:
+.Channel4:
+.Channel8:
 	ld hl, wChannel1NoteFlags - wChannel1
 	add hl, bc
 	bit NOTE_REST, [hl] ; rest
@@ -1298,8 +1303,8 @@ ParseMusicCommand:
 	call StackJumpTable
 
 MusicCommands:
-; pointer to each command in order
-	; octaves
+; entries correspond to audio constants (see macros/scripts/audio.asm)
+	table_width 2, MusicCommands
 	dw Music_Octave8 ; octave 8
 	dw Music_Octave7 ; octave 7
 	dw Music_Octave6 ; octave 6
@@ -1348,6 +1353,7 @@ MusicCommands:
 	dw Music_LoopChannel ; loop
 	dw Music_CallChannel ; call
 	dw Music_EndChannel ; return
+	assert_table_length $100 - FIRST_MUSIC_CMD
 
 MusicE2:
 MusicE7:
@@ -2683,16 +2689,19 @@ MonoOrStereoTracks:
 	db $11, $22, $44, $88
 
 ChannelPointers:
+	table_width 2, ChannelPointers
 ; music channels
 	dw wChannel1
 	dw wChannel2
 	dw wChannel3
 	dw wChannel4
+	assert_table_length NUM_MUSIC_CHANS
 ; sfx channels
 	dw wChannel5
 	dw wChannel6
 	dw wChannel7
 	dw wChannel8
+	assert_table_length NUM_CHANNELS
 
 ClearChannel:
 ; input: hl = beginning hw sound register (rNR10, rNR20, rNR30, rNR40)
