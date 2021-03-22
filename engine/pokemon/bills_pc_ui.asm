@@ -1002,6 +1002,10 @@ _GetCursorMon:
 	; refresh the pokepic and the palette in a single frame (decompression
 	; is unpredictable, but bpp copy can be relied upon).
 	ld a, [wTempMonSpecies]
+
+	; Replaced with EGG later for frontpic, but we might want to
+	; change form with GetVariant
+	ld [wCurPartySpecies], a
 	ld hl, wTempMonForm
 	ld de, vTiles2
 	push de
