@@ -15,17 +15,22 @@ BattleFactoryHallway_MapScriptHeader:
 	def_bg_events
 
 	def_object_events
+	object_event  5,  8, SPRITE_SCIENTIST, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, ObjectEvent, -1
 	object_event  4, 12, SPRITE_SCIENTIST, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, ObjectEvent, -1
 
 	object_const_def
 	const BATTLEFACTORYHALLWAY_RECEPTIONIST
+	const BATTLEFACTORYHALLWAY_LOBBY_RECEPTIONIST
 
 .SetScientistPosition:
+	disappear BATTLEFACTORYHALLWAY_RECEPTIONIST
+	disappear BATTLEFACTORYHALLWAY_LOBBY_RECEPTIONIST
 	readvar VAR_YCOORD
-	ifequal 13, .end
-	moveobject BATTLEFACTORYHALLWAY_RECEPTIONIST, 5, 8
-	turnobject BATTLEFACTORYHALLWAY_RECEPTIONIST, LEFT
-.end
+	ifequal 13, .lobby_arrival
+	appear BATTLEFACTORYHALLWAY_RECEPTIONIST
+	end
+.lobby_arrival
+	appear BATTLEFACTORYHALLWAY_LOBBY_RECEPTIONIST
 	end
 
 BattleFactoryHallwayFollowReceptionist:
@@ -110,11 +115,13 @@ BattleFactoryHallwayFollowReceptionist:
 
 .StepIntoRoom:
 	; First, step into the room properly, don't just linger at the entrance.
-	follow BATTLEFACTORYHALLWAY_RECEPTIONIST, PLAYER
-	applymovement BATTLEFACTORYHALLWAY_RECEPTIONIST, .WalkIntoRoomMovement
+	follow BATTLEFACTORYHALLWAY_LOBBY_RECEPTIONIST, PLAYER
+	applymovement BATTLEFACTORYHALLWAY_LOBBY_RECEPTIONIST, .WalkIntoRoomMovement
 	stopfollow
 	special Special_BattleTower_GenerateNextOpponent
 	turnobject PLAYER, RIGHT
+	disappear BATTLEFACTORYHALLWAY_LOBBY_RECEPTIONIST
+	appear BATTLEFACTORYHALLWAY_RECEPTIONIST
 	; fallthrough
 .NextRentalBattle:
 	opentext
