@@ -482,6 +482,12 @@ BT_AppendOTMon:
 	add hl, de
 	ld [hl], 255
 
+	; Clear status conditions
+	ld hl, MON_STATUS
+	add hl, de
+	xor a
+	ld [hl], a
+
 	; Set capture data
 	ld hl, MON_CAUGHTDATA
 	add hl, de
