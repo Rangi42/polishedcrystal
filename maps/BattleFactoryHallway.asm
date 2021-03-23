@@ -20,7 +20,16 @@ BattleFactoryHallway_MapScriptHeader:
 	const BATTLEFACTORYHALLWAY_RECEPTIONIST
 
 BattleFactoryHallwayFollowReceptionist:
+	readvar VAR_YCOORD
+	ifnotequal 13, .arrived_after_battle
 	prioritysjump .StepIntoRoom
+	end
+
+.arrived_after_battle
+	prioritysjump .WonBattle
+	end
+
+.WonBattle:
 	end
 
 .StepIntoRoom:
@@ -29,6 +38,7 @@ BattleFactoryHallwayFollowReceptionist:
 	applymovement BATTLEFACTORYHALLWAY_RECEPTIONIST, .WalkIntoRoomMovement
 	stopfollow
 	special Special_BattleTower_GenerateNextOpponent
+	turnobject PLAYER, RIGHT
 	; fallthrough
 .NextRentalBattle:
 	opentext
