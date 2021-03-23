@@ -1,5 +1,5 @@
 NPCTrades:
-; OT names have 3 characters less padding so the total struct is 32 bytes
+	table_width NPCTRADE_STRUCT_LENGTH, NPCTrades
 ; NPC_TRADE_MIKE in Goldenrod City
 	rawchar 0, ABRA,       MACHOP,     "Muscle@@@@@"
 	db $EE, $EE, $EE, HIDDEN_ABILITY | NAT_ATK_UP_SATK_DOWN,  FEMALE, LEVEL_BALL,   SITRUS_BERRY
@@ -40,3 +40,4 @@ NPCTrades:
 	db $EE, $EE, $EE, HIDDEN_ABILITY | NAT_SPD_UP_DEF_DOWN,   MALE,   FAST_BALL,    GOLD_LEAF
 	dw 43972
 	rawchar "Hari@@@@", $00
+	assert_table_length NUM_NPC_TRADES

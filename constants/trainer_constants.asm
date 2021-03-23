@@ -1096,6 +1096,8 @@ KRIS EQU __trainer_class__
 
 	trainerclass REI ; 91
 
+NUM_TRAINER_CLASSES EQU __trainer_class__ - 1
+
 	trainerclass OMASTAR_FOSSIL ; 92
 
 	trainerclass KABUTOPS_FOSSIL ; 93
@@ -1108,4 +1110,4 @@ KRIS EQU __trainer_class__
 
 	trainerclass SILHOUETTE ; 97
 
-NUM_TRAINER_CLASSES EQU __trainer_class__ - 1
+NUM_TRAINER_CLASS_PICS EQU __trainer_class__ - 1

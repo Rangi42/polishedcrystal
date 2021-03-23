@@ -34,7 +34,7 @@ GiveOddEgg:
 .done
 
 	ld hl, OddEggs
-	ld a, OddEgg2 - OddEgg1
+	ld a, PARTYMON_STRUCT_LENGTH + MON_NAME_LENGTH
 	rst AddNTimes
 	jr GiveEggMon
 

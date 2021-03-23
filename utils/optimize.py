@@ -137,6 +137,14 @@ patterns = {
 	(lambda line3, prev: line3.code.startswith('adc ')
 		and (not line3.code.startswith('adc [') or line3.code == 'adc [hl]')),
 ],
+'a = X - carry': [
+	# Bad: ld b, a / ld a, c|N / sbc 0
+	# Good: ld b, a / sbc c|N / add b
+	(lambda line1, prev: re.match(r'ld ([bcdehl]|\[hl\]), a', line1.code)),
+	(lambda line2, prev: line2.code.startswith('ld a,')
+		and (not line2.code.startswith('ld a, [') or line2.code == 'ld a, [hl]')),
+	(lambda line3, prev: re.match(r'sbc [%\$&]?0+$', line3.code)),
+],
 'a|b|c|d|e|h|l = z|nz|c|nc ? P : Q': [
 	# Bad: jr z|nz|c|nc, .p / ld a|b|c|d|e|h|l, Q / jr .ok / .p / (ld a|b|c|d|e|h|l, P | xor a) / (.ok | jr .ok)
 	# Good: ld a|b|c|d|e|h|l, Q / jr nz|z|nc|c, .ok / .p / (ld a|b|c|d|e|h|l, P | xor a) / .ok
@@ -190,17 +198,20 @@ patterns = {
 		and line6.code[3] == prev[0].code[3]),
 ],
 'hl|bc|de -= N': [
-	# Bad: ld a, l / sub N / ld l, a / ld a, h / sbc 0 / ld h, a (hl or bc or de)
-	# Good: ld a, l / sub N / ld l, a / jr nc, .noCarry / dec h / .noCarry
-	(lambda line1, prev: re.match(r'ld a, [lce]', line1.code)),
-	(lambda line2, prev: re.match(r'sub (?:a, )?(?:[^afbcdehl\[])', line2.code)),
-	(lambda line3, prev: re.match(r'ld [lce], a', line3.code)
-		and (lambda x: line3.code[3] == prev[0].code[6])(prev[1].code.replace('sub a,', 'sub')[4])),
-	(lambda line4, prev: re.match(r'ld a, [hbd]', line4.code)
-		and line4.code[6] == PAIRS[prev[0].code[6]]),
-	(lambda line5, prev: re.match(r'sbc [%\$&]?0+$', line5.code)),
-	(lambda line6, prev: re.match(r'ld [hbd], a', line6.code)
-		and line6.code[3] == PAIRS[prev[0].code[6]]),
+	# Bad: (ld a, l / sub N / ld l, a /) ld a, h / sbc 0 / ld h, a (hl or bc or de)
+	# Good: (ld a, l / sub N / ld l, a /) jr nc, .noCarry / dec h / .noCarry
+	(lambda line1, prev: re.match(r'ld a, [hlbcde]', line1.code)),
+	(lambda line2, prev: re.match(r'sbc [%\$&]?0+$', line2.code)),
+	(lambda line3, prev: re.match(r'ld [hlbcde], a', line3.code)
+		and line3.code[3] == prev[0].code[6]),
+],
+'b|c|d|e|h|l += carry': [
+	# Bad: ld a, h / adc 0 / ld h, a
+	# Good: jr nc, .noCarry / inc h / .noCarry
+	(lambda line1, prev: re.match(r'ld a, [hlbcde]', line1.code)),
+	(lambda line2, prev: re.match(r'adc [%\$&]?0+$', line2.code)),
+	(lambda line3, prev: re.match(r'ld [hlbcde], a', line3.code)
+		and line3.code[3] == prev[0].code[6]),
 ],
 'hl|bc|de = a * 16': [
 	# Bad: ld l, a / ld h, 0 / add hl, hl / add hl, hl / add hl, hl / add hl, hl

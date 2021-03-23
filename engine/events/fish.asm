@@ -11,7 +11,7 @@ Fish:
 	call GetFishGroupIndex
 
 	ld hl, FishGroups
-rept 8 ; size of dbbwww
+rept FISHGROUP_DATA_LENGTH
 	add hl, de
 endr
 	call .Fish

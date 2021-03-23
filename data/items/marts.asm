@@ -1,4 +1,5 @@
 Marts:
+	table_width 2, Marts
 	dw CherrygroveMart
 	dw CherrygroveMartAfterDex
 	dw VioletMart
@@ -39,7 +40,7 @@ Marts:
 	dw BattleTowerMart1
 	dw BattleTowerMart2
 	dw BattleTowerMart3
-MartsEnd:
+	assert_table_length NUM_MARTS
 
 CherrygroveMart:
 	db 4 ; # items

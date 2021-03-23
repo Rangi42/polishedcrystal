@@ -5,6 +5,9 @@ spawn: MACRO
 ENDM
 
 SpawnPoints:
+; entries correspond to SPAWN_* constants
+	table_width 4, SpawnPoints
+
 	spawn PLAYERS_HOUSE_2F,            3,  3
 
 	spawn PALLET_TOWN,                 5,  6
@@ -39,3 +42,5 @@ SpawnPoints:
 	spawn FAST_SHIP_CABINS_SW_SSW_NW,  6,  2
 
 	spawn N_A,                        -1, -1
+
+	assert_table_length NUM_SPAWNS + 1

@@ -8,6 +8,8 @@ phone: MACRO
 ENDM
 
 PhoneContacts:
+; entries correspond to PHONE_* constants
+	table_width PHONE_CONTACT_SIZE, PhoneContacts
 	phone TRAINER_NONE, PHONE_00,              N_A,                       %0000, UnusedPhoneScript,   %0000, UnusedPhoneScript
 	phone TRAINER_NONE, PHONECONTACT_MOM,      PLAYERS_HOUSE_1F,          %1111, MomPhoneScript,      %0000, UnusedPhoneScript
 	phone TRAINER_NONE, PHONECONTACT_BIKESHOP, OAKS_LAB,                  %0000, UnusedPhoneScript,   %0000, UnusedPhoneScript
@@ -46,3 +48,4 @@ PhoneContacts:
 	phone HIKER,        PARRY1,                ROUTE_45,                  %1111, ParryPhoneScript1,   %1111, ParryPhoneScript2
 	phone PICNICKER,    ERIN1,                 ROUTE_46,                  %1111, ErinPhoneScript1,    %1111, ErinPhoneScript2
 	phone TRAINER_NONE, PHONECONTACT_BUENA,    GOLDENROD_DEPT_STORE_ROOF, %1111, BuenaPhoneScript1,   %1111, BuenaPhoneScript2
+	assert_table_length NUM_PHONE_CONTACTS + 1

@@ -102,24 +102,24 @@ PokemonActionSubmenu:
 	ret
 
 .Actions:
-	dbw MONMENU_CUT,        MonMenu_Cut ; Cut
-	dbw MONMENU_FLY,        MonMenu_Fly ; Fly
-	dbw MONMENU_SURF,       MonMenu_Surf ; Surf
-	dbw MONMENU_STRENGTH,   MonMenu_Strength ; Strength
-	dbw MONMENU_FLASH,      MonMenu_Flash ; Flash
-	dbw MONMENU_WHIRLPOOL,  MonMenu_Whirlpool ; Whirlpool
-	dbw MONMENU_DIG,        MonMenu_Dig ; Dig
-	dbw MONMENU_TELEPORT,   MonMenu_Teleport ; Teleport
-	dbw MONMENU_FRESHSNACK, MonMenu_FreshSnack ; FreshSnack
-	dbw MONMENU_HEADBUTT,   MonMenu_Headbutt ; Headbutt
-	dbw MONMENU_WATERFALL,  MonMenu_Waterfall ; Waterfall
-	dbw MONMENU_ROCKSMASH,  MonMenu_RockSmash ; RockSmash
-	dbw MONMENU_STATS,      OpenPartyStats
-	dbw MONMENU_SWITCH,     SwitchPartyMons
-	dbw MONMENU_ITEM,       GiveTakePartyMonItem
-	dbw MONMENU_CANCEL,     CancelPokemonAction
-	dbw MONMENU_MOVE,       ManagePokemonMoves ; move
-	dbw MONMENU_MAIL,       MonMailAction ; mail
+	dbw MONMENUITEM_CUT,        MonMenu_Cut
+	dbw MONMENUITEM_FLY,        MonMenu_Fly
+	dbw MONMENUITEM_SURF,       MonMenu_Surf
+	dbw MONMENUITEM_STRENGTH,   MonMenu_Strength
+	dbw MONMENUITEM_FLASH,      MonMenu_Flash
+	dbw MONMENUITEM_WHIRLPOOL,  MonMenu_Whirlpool
+	dbw MONMENUITEM_DIG,        MonMenu_Dig
+	dbw MONMENUITEM_TELEPORT,   MonMenu_Teleport
+	dbw MONMENUITEM_FRESHSNACK, MonMenu_FreshSnack
+	dbw MONMENUITEM_HEADBUTT,   MonMenu_Headbutt
+	dbw MONMENUITEM_WATERFALL,  MonMenu_Waterfall
+	dbw MONMENUITEM_ROCKSMASH,  MonMenu_RockSmash
+	dbw MONMENUITEM_STATS,      OpenPartyStats
+	dbw MONMENUITEM_SWITCH,     SwitchPartyMons
+	dbw MONMENUITEM_ITEM,       GiveTakePartyMonItem
+	dbw MONMENUITEM_CANCEL,     CancelPokemonAction
+	dbw MONMENUITEM_MOVE,       ManagePokemonMoves
+	dbw MONMENUITEM_MAIL,       MonMailAction
 
 SwitchPartyMons:
 

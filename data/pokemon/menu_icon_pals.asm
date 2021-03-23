@@ -3,6 +3,7 @@ iconpal: MACRO
 ENDM
 
 MenuMonIconColors::
+	table_width 1, MenuMonIconColors
 	iconpal TEAL, GREEN ; BULBASAUR
 	iconpal TEAL, GREEN ; IVYSAUR
 	iconpal TEAL, GREEN ; VENUSAUR
@@ -257,6 +258,8 @@ MenuMonIconColors::
 	iconpal GREEN, BROWN ; LEAFEON
 	iconpal BLUE, BLUE ; GLACEON
 	iconpal PINK, BLUE ; SYLVEON
+	assert_table_length NUM_POKEMON
+
 	iconpal RED, BLUE ; EGG
 
 rept NUM_UNOWN - 1

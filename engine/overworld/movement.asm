@@ -1,4 +1,6 @@
 MovementPointers:
+; entries correspond to movement_* constants (see macros/scripts/movement.asm)
+	table_width 2, MovementPointers
 	dw Movement_turn_head_down        ; 00
 	dw Movement_turn_head_up          ; 01
 	dw Movement_turn_head_left        ; 02
@@ -101,6 +103,7 @@ MovementPointers:
 	dw Movement_stairs_step_up        ; 63
 	dw Movement_stairs_step_left      ; 64
 	dw Movement_stairs_step_right     ; 65
+	assert_table_length NUM_MOVEMENT_CMDS
 
 Movement_teleport_from:
 	ld hl, OBJECT_STEP_TYPE

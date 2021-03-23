@@ -1,5 +1,7 @@
 BattleAnimOAMData:
-; vtile offset (?), length, address
+; entries correspond to BATTLEANIMOAMSET_* constants
+	table_width 4, BattleAnimOAMData
+	; vtile offset, data length, data pointer
 	dbbw $00, 16, .OAMData_00 ; BATTLEANIMOAMSET_00
 	dbbw $04,  9, .OAMData_01 ; BATTLEANIMOAMSET_01
 	dbbw $08,  4, .OAMData_02 ; BATTLEANIMOAMSET_02
@@ -216,6 +218,7 @@ BattleAnimOAMData:
 	dbbw $00,  6, .OAMData_d5 ; BATTLEANIMOAMSET_D5
 	dbbw $00, 14, .OAMData_d6 ; BATTLEANIMOAMSET_D6
 	dbbw $00, 12, .OAMData_d7 ; BATTLEANIMOAMSET_D7
+	assert_table_length NUM_BATTLEANIMOAMSETS
 
 .OAMData_11:
 	dsprite  -1, 0,  -1, 4, $00, $0

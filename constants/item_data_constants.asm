@@ -34,7 +34,7 @@ KEYITEMATTR_STRUCT_LENGTH EQU _RS
 	const TM_HM    ; 4
 	const BERRIES  ; 5
 	const KEY_ITEM ; 6
-NUM_POCKETS EQU const_value
+NUM_POCKETS EQU const_value - 1
 
 MAX_ITEMS     EQU 75
 MAX_MEDICINE  EQU 37

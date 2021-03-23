@@ -134,8 +134,7 @@ STAT_SKIPTEXT  EQU 1 << STAT_SKIPTEXT_F
 	const BATTLE_VARS_LAST_COUNTER_MOVE_OPP
 	const BATTLE_VARS_LAST_MOVE
 	const BATTLE_VARS_LAST_MOVE_OPP
-assert const_value % 2 == 0
-NUM_BATTLE_VAR_LOCATION_PAIRS EQU const_value / 2
+NUM_BATTLE_VARS EQU const_value
 
 ; BattleVarLocations indexes (see home/battle_vars.asm)
 	const_def
@@ -169,6 +168,8 @@ NUM_BATTLE_VAR_LOCATION_PAIRS EQU const_value / 2
 	const ENEMY_COUNTER_MOVE
 	const PLAYER_LAST_MOVE
 	const ENEMY_LAST_MOVE
+assert const_value % 2 == 0
+NUM_BATTLE_VAR_LOCATION_PAIRS EQU const_value / 2
 
 ; status condition bit flags
 SLP EQU %111 ; 0-7 turns
@@ -307,6 +308,10 @@ QUICK_PACK   EQU 1 << QUICK_PACK_F
 	const WIN
 	const LOSE
 	const DRAW
+
+; link_battle_record struct
+LINK_BATTLE_RECORD_LENGTH EQU 2 + (NAME_LENGTH - 1) + 2 * 3
+NUM_LINK_BATTLE_RECORDS EQU 5
 
 ; $00 is used instead of $ff for DVs because $ff is the end-of-trainer marker
 ; ReadTrainerParty converts $00 to $ff when reading DVs

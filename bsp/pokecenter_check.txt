@@ -2,21 +2,14 @@ PokecenterCheck:
 	set #1, MAP_GROUP_OFFSET
 	call GetGameDataPointer
 	seek #result
-	bufnumber #result
-	bufchar 0x20
 	getfilehalfword #result
-	bufnumber #result
-	bufchar 0x20
 	set #address, .pokecenters
 .loop
 	gethalfwordinc #temp, #address
-	bufnumber #temp
-	bufchar 0x20
 	jumpz #temp, .not_in_pokecenter
 	ifne #temp, #result, .loop
 	return
 .not_in_pokecenter
-	printbuf
 	print .not_in_pokecenter_string
 	menu #result, YesNoMenu
 	retz #result

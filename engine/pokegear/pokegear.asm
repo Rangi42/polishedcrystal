@@ -1836,6 +1836,8 @@ PlayRadio:
 	jp ApplyTilemapInVBlank
 
 PlayRadioStationPointers:
+; entries correspond to MAPRADIO_* constants
+	table_width 2, PlayRadioStationPointers
 	dw LoadStation_PokemonChannel
 	dw LoadStation_OaksPokemonTalk
 	dw LoadStation_PokedexShow
@@ -1845,6 +1847,7 @@ PlayRadioStationPointers:
 	dw LoadStation_PlacesAndPeople
 	dw LoadStation_LetsAllSing
 	dw LoadStation_RocketRadio
+	assert_table_length NUM_MAP_RADIO_STATIONS
 
 LoadStation_PokemonChannel:
 	call GetCurrentLandmark

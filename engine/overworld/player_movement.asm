@@ -484,6 +484,8 @@ DoPlayerMovement::
 	ret
 
 .Steps:
+; entries correspond to STEP_* constants (see constants/map_object_constants.asm)
+	table_width 2, DoPlayerMovement.Steps
 	dw .SlowStep ; x0.5
 	dw .NormalStep ; x1
 	dw .FastStep ; x4
@@ -496,6 +498,7 @@ DoPlayerMovement::
 	dw .SpinStep
 	dw .Fast ; x2
 	dw .StairsStep
+	assert_table_length NUM_STEPS
 
 .SlowStep:
 	slow_step_down

@@ -9,7 +9,8 @@ LoadCGBLayout::
 	dec a
 	call StackJumpTable
 
-.Jumptable
+.Jumptable:
+	table_width 2, LoadCGBLayout.Jumptable
 	dw _CGB_BattleGrayscale
 	dw _CGB_BattleColors
 	dw _CGB_PokegearPals
@@ -37,6 +38,7 @@ LoadCGBLayout::
 	dw _CGB_PlayerOrMonFrontpicPals
 	dw _CGB_TrainerOrMonFrontpicPals
 	dw _CGB_JudgeSystem
+	assert_table_length NUM_CGB_LAYOUTS - 2 ; discount CGB_RAM and CGB_PARTY_MENU_HP_PALS
 
 _CGB_BattleGrayscale:
 	push bc

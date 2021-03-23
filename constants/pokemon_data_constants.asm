@@ -56,6 +56,7 @@ GENDER_UNKNOWN EQU %1111
 	const GROWTH_MEDIUM_SLOW
 	const GROWTH_FAST
 	const GROWTH_SLOW
+NUM_GROWTH_RATES EQU const_value
 
 ; wBaseEggGroups values
 	const_def 1
@@ -215,6 +216,8 @@ CAUGHT_BALL_MASK   EQU %00011111
 ; hyper training (stored at end of OT name)
 HYPER_TRAINING_MASK EQU %11111100
 
+MON_CRY_LENGTH EQU 6
+
 ; maximum number of party pokemon
 PARTY_LENGTH EQU 6
 
@@ -262,7 +265,7 @@ NUM_WATERMON EQU 3 ; data/wild/*_water.asm table size
 
 GRASS_WILDDATA_LENGTH EQU 2 + (1 + NUM_GRASSMON * 3) * 3
 WATER_WILDDATA_LENGTH EQU 2 + (1 + NUM_WATERMON * 3) * 1
-FISHGROUP_DATA_LENGTH EQU 1 + 2 * 3
+FISHGROUP_DATA_LENGTH EQU 2 + 2 * 3
 
 NUM_ROAMMON_MAPS EQU 16 ; RoamMaps table size (see data/wild/roammon_maps.asm)
 
@@ -309,7 +312,7 @@ NUM_TREEMON_SETS EQU const_value
 	const HAPPINESS_GAINLEVELATHOME   ; 13
 	const HAPPINESS_PHOTOGRAPH        ; 14
 	const HAPPINESS_BLESSING          ; 15
-NUM_HAPPINESS_CHANGES EQU const_value - 1
+NUM_HAPPINESS_CHANGES EQU const_value
 
 ; significant happiness values
 BASE_HAPPINESS        EQU 70

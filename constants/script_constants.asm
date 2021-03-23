@@ -183,7 +183,6 @@ NUM_FLOORS EQU const_value
 	const EMOTE_FISH
 NUM_EMOTES EQU const_value
 EMOTE_FROM_MEM EQU -1
-EMOTE_LENGTH EQU 3
 
 ; fruittree arguments
 ; FruitTreeItems indexes (see data/items/fruit_trees.asm)

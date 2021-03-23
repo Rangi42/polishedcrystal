@@ -14,16 +14,14 @@ wMusic::
 wMusicPlaying:: db ; nonzero if playing
 
 wChannels::
-wChannel1:: channel_struct wChannel1
-wChannel2:: channel_struct wChannel2
-wChannel3:: channel_struct wChannel3
-wChannel4:: channel_struct wChannel4
+for n, 1, NUM_MUSIC_CHANS + 1
+wChannel{d:n}:: channel_struct wChannel{d:n}
+endr
 
 wSFXChannels::
-wChannel5:: channel_struct wChannel5
-wChannel6:: channel_struct wChannel6
-wChannel7:: channel_struct wChannel7
-wChannel8:: channel_struct wChannel8
+for n, NUM_MUSIC_CHANS + 1, NUM_CHANNELS + 1
+wChannel{d:n}:: channel_struct wChannel{d:n}
+endr
 
 wCurTrackDuty:: db
 wCurTrackIntensity:: db
@@ -201,16 +199,9 @@ wSpriteAnimDict:: ds 10 * 2
 wSpriteAnimationStructs::
 ; Field  0: Index
 ; Fields 1-3: Loaded from SpriteAnimSeqData
-wSpriteAnim1::  sprite_anim_struct wSpriteAnim1
-wSpriteAnim2::  sprite_anim_struct wSpriteAnim2
-wSpriteAnim3::  sprite_anim_struct wSpriteAnim3
-wSpriteAnim4::  sprite_anim_struct wSpriteAnim4
-wSpriteAnim5::  sprite_anim_struct wSpriteAnim5
-wSpriteAnim6::  sprite_anim_struct wSpriteAnim6
-wSpriteAnim7::  sprite_anim_struct wSpriteAnim7
-wSpriteAnim8::  sprite_anim_struct wSpriteAnim8
-wSpriteAnim9::  sprite_anim_struct wSpriteAnim9
-wSpriteAnim10:: sprite_anim_struct wSpriteAnim10
+for n, 1, NUM_SPRITE_ANIM_STRUCTS + 1
+wSpriteAnim{d:n}:: sprite_anim_struct wSpriteAnim{d:n}
+endr
 wSpriteAnimationStructsEnd::
 
 wSpriteAnimCount:: db
@@ -275,46 +266,9 @@ wMusicPlayerWRAMEnd::
 SECTION "Sprites", WRAM0
 
 wVirtualOAM::
-wVirtualOAMSprite00:: sprite_oam_struct wVirtualOAMSprite00
-wVirtualOAMSprite01:: sprite_oam_struct wVirtualOAMSprite01
-wVirtualOAMSprite02:: sprite_oam_struct wVirtualOAMSprite02
-wVirtualOAMSprite03:: sprite_oam_struct wVirtualOAMSprite03
-wVirtualOAMSprite04:: sprite_oam_struct wVirtualOAMSprite04
-wVirtualOAMSprite05:: sprite_oam_struct wVirtualOAMSprite05
-wVirtualOAMSprite06:: sprite_oam_struct wVirtualOAMSprite06
-wVirtualOAMSprite07:: sprite_oam_struct wVirtualOAMSprite07
-wVirtualOAMSprite08:: sprite_oam_struct wVirtualOAMSprite08
-wVirtualOAMSprite09:: sprite_oam_struct wVirtualOAMSprite09
-wVirtualOAMSprite10:: sprite_oam_struct wVirtualOAMSprite10
-wVirtualOAMSprite11:: sprite_oam_struct wVirtualOAMSprite11
-wVirtualOAMSprite12:: sprite_oam_struct wVirtualOAMSprite12
-wVirtualOAMSprite13:: sprite_oam_struct wVirtualOAMSprite13
-wVirtualOAMSprite14:: sprite_oam_struct wVirtualOAMSprite14
-wVirtualOAMSprite15:: sprite_oam_struct wVirtualOAMSprite15
-wVirtualOAMSprite16:: sprite_oam_struct wVirtualOAMSprite16
-wVirtualOAMSprite17:: sprite_oam_struct wVirtualOAMSprite17
-wVirtualOAMSprite18:: sprite_oam_struct wVirtualOAMSprite18
-wVirtualOAMSprite19:: sprite_oam_struct wVirtualOAMSprite19
-wVirtualOAMSprite20:: sprite_oam_struct wVirtualOAMSprite20
-wVirtualOAMSprite21:: sprite_oam_struct wVirtualOAMSprite21
-wVirtualOAMSprite22:: sprite_oam_struct wVirtualOAMSprite22
-wVirtualOAMSprite23:: sprite_oam_struct wVirtualOAMSprite23
-wVirtualOAMSprite24:: sprite_oam_struct wVirtualOAMSprite24
-wVirtualOAMSprite25:: sprite_oam_struct wVirtualOAMSprite25
-wVirtualOAMSprite26:: sprite_oam_struct wVirtualOAMSprite26
-wVirtualOAMSprite27:: sprite_oam_struct wVirtualOAMSprite27
-wVirtualOAMSprite28:: sprite_oam_struct wVirtualOAMSprite28
-wVirtualOAMSprite29:: sprite_oam_struct wVirtualOAMSprite29
-wVirtualOAMSprite30:: sprite_oam_struct wVirtualOAMSprite30
-wVirtualOAMSprite31:: sprite_oam_struct wVirtualOAMSprite31
-wVirtualOAMSprite32:: sprite_oam_struct wVirtualOAMSprite32
-wVirtualOAMSprite33:: sprite_oam_struct wVirtualOAMSprite33
-wVirtualOAMSprite34:: sprite_oam_struct wVirtualOAMSprite34
-wVirtualOAMSprite35:: sprite_oam_struct wVirtualOAMSprite35
-wVirtualOAMSprite36:: sprite_oam_struct wVirtualOAMSprite36
-wVirtualOAMSprite37:: sprite_oam_struct wVirtualOAMSprite37
-wVirtualOAMSprite38:: sprite_oam_struct wVirtualOAMSprite38
-wVirtualOAMSprite39:: sprite_oam_struct wVirtualOAMSprite39
+for n, NUM_SPRITE_OAM_STRUCTS
+wVirtualOAMSprite{02d:n}:: sprite_oam_struct wVirtualOAMSprite{02d:n}
+endr
 wVirtualOAMEnd::
 
 
@@ -930,28 +884,19 @@ wLinkPartyEnd:: db ; older code doesn't check PartyCount
 UNION
 ; link player data
 wLinkPlayerData::
-wLinkPlayerPartyMon1:: party_struct wLinkPlayerPartyMon1
-wLinkPlayerPartyMon2:: party_struct wLinkPlayerPartyMon2
-wLinkPlayerPartyMon3:: party_struct wLinkPlayerPartyMon3
-wLinkPlayerPartyMon4:: party_struct wLinkPlayerPartyMon4
-wLinkPlayerPartyMon5:: party_struct wLinkPlayerPartyMon5
-wLinkPlayerPartyMon6:: party_struct wLinkPlayerPartyMon6
+for n, 1, PARTY_LENGTH + 1
+wLinkPlayerPartyMon{d:n}:: party_struct wLinkPlayerPartyMon{d:n}
+endr
 
 wLinkPlayerPartyMonOTs::
-wLinkPlayerPartyMon1OT:: ds NAME_LENGTH
-wLinkPlayerPartyMon2OT:: ds NAME_LENGTH
-wLinkPlayerPartyMon3OT:: ds NAME_LENGTH
-wLinkPlayerPartyMon4OT:: ds NAME_LENGTH
-wLinkPlayerPartyMon5OT:: ds NAME_LENGTH
-wLinkPlayerPartyMon6OT:: ds NAME_LENGTH
+for n, 1, PARTY_LENGTH + 1
+wLinkPlayerPartyMon{d:n}OT:: ds NAME_LENGTH
+endr
 
 wLinkPlayerPartyMonNicknames::
-wLinkPlayerPartyMon1Nickname:: ds MON_NAME_LENGTH
-wLinkPlayerPartyMon2Nickname:: ds MON_NAME_LENGTH
-wLinkPlayerPartyMon3Nickname:: ds MON_NAME_LENGTH
-wLinkPlayerPartyMon4Nickname:: ds MON_NAME_LENGTH
-wLinkPlayerPartyMon5Nickname:: ds MON_NAME_LENGTH
-wLinkPlayerPartyMon6Nickname:: ds MON_NAME_LENGTH
+for n, 1, PARTY_LENGTH + 1
+wLinkPlayerPartyMon{d:n}Nickname:: ds MON_NAME_LENGTH
+endr
 wLinkPlayerDataEnd::
 
 NEXTU

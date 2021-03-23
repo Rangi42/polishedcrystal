@@ -168,6 +168,8 @@ BattleCommandPointers:
 	commandx raiseoppstathit
 	commandx loweroppstathit
 
+NUM_EFFECT_COMMANDS EQU const_value - 1
+
 FIRST_MOVEARG_COMMAND EQU raisestat_command
 LAST_MOVEARG_COMMAND EQU loweroppstathit_command
 

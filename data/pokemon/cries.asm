@@ -5,6 +5,7 @@ ENDM
 
 PokemonCries::
 ; entries correspond to constants/pokemon_constants.asm
+	table_width MON_CRY_LENGTH, PokemonCries
 	mon_cry CRY_BULBASAUR,   $080,  $081 ; Bulbasaur
 	mon_cry CRY_BULBASAUR,   $020,  $100 ; Ivysaur
 	mon_cry CRY_BULBASAUR,   $000,  $140 ; Venusaur
@@ -259,4 +260,5 @@ PokemonCries::
 	mon_cry CRY_VENONAT,     $03d,  $160 ; Leafeon
 	mon_cry CRY_VENONAT,     $0b0,  $16f ; Glaceon
 	mon_cry CRY_VENONAT,     $0b0,  $16f ; Sylveon
+	assert_table_length NUM_POKEMON
 	mon_cry CRY_NIDORAN_M,      0,     0 ; Egg

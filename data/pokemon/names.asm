@@ -1,4 +1,5 @@
 PokemonNames::
+	table_width MON_NAME_LENGTH - 1, PokemonNames
 	rawchar "?????@@@@@"
 	rawchar "Bulbasaur@"
 	rawchar "Ivysaur@@@"
@@ -254,4 +255,5 @@ PokemonNames::
 	rawchar "Leafeon@@@"
 	rawchar "Glaceon@@@"
 	rawchar "Sylveon@@@"
+	assert_table_length NUM_POKEMON + 1
 	rawchar "Egg@@@@@@@"

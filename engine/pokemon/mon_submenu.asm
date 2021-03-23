@@ -53,7 +53,7 @@ MonMenuLoop:
 	jr nz, .select
 	bit 1, a ; B
 	jr z, .loop
-	ld a, MONMENU_CANCEL ; CANCEL
+	ld a, MONMENUITEM_CANCEL
 	ret
 
 .select
@@ -141,11 +141,11 @@ GetMonSubmenuItems:
 	jr nz, .loop
 
 .skip_moves
-	ld a, MONMENU_STATS
+	ld a, MONMENUITEM_STATS
 	call AddMonMenuItem
-	ld a, MONMENU_SWITCH
+	ld a, MONMENUITEM_SWITCH
 	call AddMonMenuItem
-	ld a, MONMENU_MOVE
+	ld a, MONMENUITEM_MOVE
 	call AddMonMenuItem
 	ld a, [wLinkMode]
 	and a
@@ -156,28 +156,28 @@ GetMonSubmenuItems:
 	ld d, [hl]
 	call ItemIsMail ; set carry if mail
 	pop hl
-	; a = carry ? MONMENU_MAIL : MONMENU_ITEM
+	; a = carry ? MONMENUITEM_MAIL : MONMENUITEM_ITEM
 	sbc a
-	and MONMENU_MAIL - MONMENU_ITEM
-	add MONMENU_ITEM
+	and MONMENUITEM_MAIL - MONMENUITEM_ITEM
+	add MONMENUITEM_ITEM
 	call AddMonMenuItem
 
 .skip2
 	ld a, [wBuffer1]
 	cp NUM_MONMENU_ITEMS
 	jr z, .ok2
-	ld a, MONMENU_CANCEL
+	ld a, MONMENUITEM_CANCEL
 	call AddMonMenuItem
 
 .ok2
 	jp TerminateMonSubmenu
 
 .egg
-	ld a, MONMENU_STATS
+	ld a, MONMENUITEM_STATS
 	call AddMonMenuItem
-	ld a, MONMENU_SWITCH
+	ld a, MONMENUITEM_SWITCH
 	call AddMonMenuItem
-	ld a, MONMENU_CANCEL
+	ld a, MONMENUITEM_CANCEL
 	call AddMonMenuItem
 	jp TerminateMonSubmenu
 

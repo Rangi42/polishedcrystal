@@ -4,6 +4,8 @@ sprite_movement_data: MACRO
 ENDM
 
 SpriteMovementData::
+; entries correspond to SPRITEMOVEDATA_* constants
+	table_width NUM_SPRITEMOVEDATA_FIELDS, SpriteMovementData
 	; function,                                              facing, action,                        flags1, flags2, palette flags
 	sprite_movement_data SPRITEMOVEFN_00,                    DOWN,   OBJECT_ACTION_STAND,           $02,    $00,    %0000 ; SPRITEMOVEDATA_00
 	sprite_movement_data SPRITEMOVEFN_STANDING,              DOWN,   OBJECT_ACTION_STAND,           $0c,    $00,    %0000 ; SPRITEMOVEDATA_STILL
@@ -49,3 +51,4 @@ SpriteMovementData::
 	sprite_movement_data SPRITEMOVEFN_ARCH_TREE,             RIGHT,  OBJECT_ACTION_ARCH_TREE,       $8e,    $02,    %0000 ; SPRITEMOVEDATA_ARCH_TREE_RIGHT
 	sprite_movement_data SPRITEMOVEFN_SAILBOAT_TOP,          DOWN,   OBJECT_ACTION_SAILBOAT_TOP,    $2e,    $02,    %1100 ; SPRITEMOVEDATA_SAILBOAT_TOP
 	sprite_movement_data SPRITEMOVEFN_SAILBOAT_BOTTOM,       DOWN,   OBJECT_ACTION_SAILBOAT_BOTTOM, $2e,    $01,    %1100 ; SPRITEMOVEDATA_SAILBOAT_BOTTOM
+	assert_table_length NUM_SPRITEMOVEDATA

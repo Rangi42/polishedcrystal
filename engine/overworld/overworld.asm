@@ -403,7 +403,7 @@ LoadEmote::
 	pop bc
 ; Get the address of the pointer to emote c.
 	ld a, c
-	ld bc, EMOTE_LENGTH
+	ld bc, 3
 	ld hl, Emotes
 	rst AddNTimes
 ; load the emote pointer bank into b

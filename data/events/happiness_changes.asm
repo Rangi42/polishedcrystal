@@ -1,4 +1,5 @@
 HappinessChanges:
+	table_width 3, HappinessChanges
 ; change if happiness < 100, change if happiness < 200, change otherwise
 	db  +5,  +3,  +2 ; Gained a level
 	db  +5,  +3,  +2 ; Vitamin
@@ -22,3 +23,4 @@ HappinessChanges:
 	db +10,  +6,  +4 ; Gained a level in the place where it was caught
 	db  +5,  +3,  +2 ; Took a photograph
 	db  +5,  +3,  +2 ; Received a blessing
+	assert_table_length NUM_HAPPINESS_CHANGES

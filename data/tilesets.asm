@@ -10,6 +10,8 @@ tileset: MACRO
 ENDM
 
 Tilesets::
+; entries correspond to TILESET_* constants (see constants/tileset_constants.asm)
+	table_width TILESET_LENGTH, Tilesets
 	tileset TilesetJohto1
 	tileset TilesetJohto2
 	tileset TilesetJohto3
@@ -53,6 +55,7 @@ Tilesets::
 	tileset TilesetAlph
 	tileset TilesetPokemonMansion
 	tileset TilesetBattleFactory
+	assert_table_length NUM_TILESETS
 
 
 SECTION "Tileset Data - johto_traditional", ROMX

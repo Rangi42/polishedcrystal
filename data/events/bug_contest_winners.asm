@@ -1,4 +1,5 @@
 BugContestantPointers:
+	table_width 2, BugContestantPointers
 	dw BugContestant_BugCatcherDon ; This reverts back to the player
 	dw BugContestant_BugCatcherDon
 	dw BugContestant_BugCatcherEd
@@ -10,6 +11,7 @@ BugContestantPointers:
 	dw BugContestant_BugCatcherJosh
 	dw BugContestant_SchoolboyJohnny
 	dw BugContestant_SchoolboyKipp
+	assert_table_length NUM_BUG_CONTESTANTS + 1
 
 BugContestant_BugCatcherDon:
 	db BUG_CATCHER, DON

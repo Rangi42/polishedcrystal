@@ -1,4 +1,5 @@
 BattleTowerTrainers:
+	table_width (NAME_LENGTH - 1) + 1, BattleTowerTrainers
 	rawchar "Yayoi@@@@@", ARTIST
 	rawchar "Sawyer@@@@", POKEMANIAC
 	rawchar "Santiago@@", FISHER
@@ -127,5 +128,6 @@ BattleTowerTrainers:
 	rawchar "Cramer@@@@", NURSE
 	rawchar "Mako@@@@@@", BREEDER
 	rawchar "Argo@@@@@@", BIRD_KEEPER
+	assert_table_length BATTLETOWER_NUM_TRAINERS
 ;BattleTowerTycoon:
 	rawchar "Palmer@@@@", TOWERTYCOON

@@ -1,4 +1,5 @@
 NatureNames:
+	table_width 2, NatureNames
 	dw .Hardy
 	dw .Lonely
 	dw .Brave
@@ -25,6 +26,7 @@ NatureNames:
 	dw .Careful
 	dw .Quirky
 	dw .NoNature
+	assert_table_length NUM_NATURES + 1
 
 .Hardy:    db "Hardy@"
 .Lonely:   db "Lonely@"
