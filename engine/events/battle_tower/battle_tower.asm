@@ -207,7 +207,9 @@ BT_GetChallengeState:
 	ret
 
 BT_GetBattleMode:
+	push hl
 	call BT_GetTowerStatus
+	pop hl
 	ret c
 	and BATTLETOWER_MODEMASK
 	ret
