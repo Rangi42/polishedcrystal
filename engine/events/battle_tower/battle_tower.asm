@@ -304,8 +304,87 @@ Special_BattleTower_NextRentalBattle:
 	jr c, .print
 
 .most_common_type
-	; TODO: figure out most common type.
-	ld hl, .SomeMonUsingMove
+	; Copy opponent typings into an array. If monotype, set the 2nd type to -1.
+	ld de, wBT_OpponentTypeArray
+	push de
+	ld b, 3
+.gettypes_loop
+	push de
+	ld hl, wOTPartyMon1Species
+	call .GetOTPartyLocation
+	ld a, [hl]
+	ld [wCurSpecies], a
+	ld hl, wOTPartyMon1Form
+	call .GetOTPartyLocation
+	ld [wCurForm], a
+	push bc
+	call GetBaseData
+	pop bc
+	ld hl, wBaseType
+	ld a, [hli]
+	pop de
+	ld [de], a
+	inc de
+	cp [hl]
+	ld a, [hl]
+	jr nz, .got_secondary
+	ld a, -1
+.got_secondary
+	ld [de], a
+	inc de
+	dec b
+	jr nz, .gettypes_loop
+
+	; Now we have the type list. Figure out the most common type.
+	pop de
+	lb hl, 0, 0 ; most common typing so far.
+	ld b, BATTLETOWER_PARTY_LENGTH * 2
+.outer_type_loop
+	push hl
+	ld h, d
+	ld l, e
+	ld c, 0
+	push bc
+	ld a, [de]
+.inner_type_loop
+	cp [hl]
+	jr nz, .not_same_type
+	inc c
+.not_same_type
+	inc hl
+	dec b
+	jr nz, .inner_type_loop
+
+	; Got all occurence of type a. Now check if this is more common than the
+	; current tracked most common type.
+	ld l, c
+	pop bc
+	ld c, a
+	ld a, l
+	pop hl
+
+	; Ignore the checked type if it's -1 (sentinel for ignored mono-type2).
+	inc c
+	jr z, .next
+	dec c
+	cp l
+	jr c, .next
+	ld h, c
+	ld l, a
+.next
+	dec b
+	jr nz, .outer_type_loop
+
+	; Now we have the most common type in h. If the "most common" type only
+	; occurs 1 time, the opponent has no preference. Tied types beyond that
+	; will result in the opponent preferring the earlier type in the party.
+	dec l
+	ld a, h
+	ld hl, .NoTypePreference
+	jr z, .print
+	ld [wNamedObjectIndexBuffer], a
+	farcall GetTypeName
+	ld hl, .PrefersType
 .print
 	call PrintText
 
@@ -322,7 +401,7 @@ Special_BattleTower_NextRentalBattle:
 	ld a, -1
 	ld [wBT_PartySelectCounter], a
 	farcall BT_SwapRentals
-	jr c, Special_BattleTower_NextRentalBattle
+	jp c, Special_BattleTower_NextRentalBattle
 
 	; TODO: Increase the swap counter after a swap.
 	; fallthrough
@@ -335,6 +414,14 @@ Special_BattleTower_NextRentalBattle:
 	ld hl, .NewRentalsText
 	call PrintText
 	jp Special_BattleTower_SelectParticipants
+
+.GetOTPartyLocation:
+	push bc
+	ld a, b
+	dec a
+	call GetPartyLocation
+	pop bc
+	ret
 
 .NewRentalsText:
 	text "We'll hold your"
@@ -390,6 +477,20 @@ Special_BattleTower_NextRentalBattle:
 	cont "with "
 	text_ram wStringBuffer1
 	text "."
+	prompt
+
+.NoTypePreference:
+	text "The foe doesn't"
+	line "have a type"
+	cont "preference."
+	prompt
+
+.PrefersType:
+	text "The foe favours"
+	line ""
+	text_ram wStringBuffer1
+	text "-type"
+	cont "#mon."
 	prompt
 
 Special_BattleTower_SelectParticipants:

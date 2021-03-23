@@ -307,6 +307,7 @@ NEXTU
 ; It's only moved here as part of battle initialization, mostly.
 ; Thus, it's OK for it to reuse other WRAM space.
 wBT_PartySelectCounter:: db
+wBT_OpponentTypeArray:: ; fits within a party length.
 wBT_PartySelections:: ds PARTY_LENGTH
 wBT_MonParty:: ds BATTLETOWER_PARTYDATA_SIZE
 wBT_SecondaryMonParty:: ds BATTLETOWER_PARTYDATA_SIZE ; last rental trainer
