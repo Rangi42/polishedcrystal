@@ -262,6 +262,8 @@ GenerateOpponentTrainer:
 	ld hl, wBT_OTMonParty
 	ld b, BATTLETOWER_PARTY_LENGTH
 .generate_loop
+	; Might have been opened if we ran into a failure condition.
+	call CloseSRAM
 	push bc
 	ld a, [hli]
 	ld b, a
@@ -305,7 +307,6 @@ GenerateOpponentTrainer:
 	ld c, BATTLETOWER_PARTY_LENGTH * BATTLETOWER_SAVEDPARTIES
 	ld hl, sBT_OTMonParties
 	call CheckSetRepeats
-	call CloseSRAM
 	jr c, .generate_team
 
 	; Done with checks. Shift SRAM parties and store current party.

@@ -309,6 +309,29 @@ Special_BattleTower_NextRentalBattle:
 .print
 	call PrintText
 
+	; Check if we're swapping or giving a new team.
+	call BT_GetCurTrainer
+	and a
+	jr z, .new_team
+	ld hl, .TradeBeforeBattle
+	call PrintText
+	call YesNoBox
+	jr c, .done_trade
+
+	; If the player aborts, repeat the entire dialog.
+	ld a, -1
+	ld [wBT_PartySelectCounter], a
+	farcall BT_SwapRentals
+	jr c, Special_BattleTower_NextRentalBattle
+
+	; TODO: Increase the swap counter after a swap.
+	; fallthrough
+.done_trade
+	ld a, 1
+	ldh [hScriptVar], a
+	ret
+
+.new_team
 	ld hl, .NewRentalsText
 	call PrintText
 	jp Special_BattleTower_SelectParticipants
@@ -322,6 +345,12 @@ Special_BattleTower_NextRentalBattle:
 	para "Choose #mon"
 	line "to enter."
 	prompt
+
+.TradeBeforeBattle:
+	text "Would you like to"
+	line "trade a #mon"
+	cont "before the battle?"
+	done
 
 .ExpectThese3:
 	text "You can expect to"
@@ -577,6 +606,12 @@ BT_SetPlayerOT:
 ; checking and to fix the party order according to player choices.
 	; Number of party mons
 	ld a, [wBT_PartySelectCounter]
+	jr _BT_SetPlayerOT
+
+BT_SetRentalOT:
+	ld a, 3
+	; fallthrough
+_BT_SetPlayerOT:
 	ld [wOTPartyCount], a
 
 	; The rest is iterated

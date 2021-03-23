@@ -84,6 +84,7 @@ BattleFactoryHallwayFollowReceptionist:
 	yesorno
 	iffalse .DontBattleNextOpponent
 	closetext
+	special Special_BattleTower_GenerateNextOpponent
 	sjump .NextRentalBattle
 
 .DontBattleNextOpponent:
