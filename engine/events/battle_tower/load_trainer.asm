@@ -26,9 +26,16 @@ NewRentalTeam:
 ; are guranteed to be legal together (the first 6 run into problems with
 ; Item Clause).
 	; First, figure out set selection.
-	ld a, 5 ; same as for trainer 6 (0-indexed).
-	call BT_GetPointsForTrainer
+	ld a, [wBattleFactorySwapCount]
+	ld c, 7
+	call SimpleDivide
+	ld b, a
 
+	ld a, 5 ; same as for trainer 6 (0-indexed).
+	push bc
+	call BT_GetPointsForTrainer
+	pop bc
+	add b
 	cp 9
 	jr c, .got_set_table
 	ld a, 8

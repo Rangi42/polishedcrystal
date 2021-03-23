@@ -123,6 +123,22 @@ Special_BattleTower_CommitChallengeResult:
 	inc de
 	ld a, [hl]
 	ld [de], a
+
+	; If we're in rental mode, also possibly update swap count.
+	call BT_GetBattleMode
+	cp BATTLETOWER_RENTALMODE
+	jr nz, .record_done
+	call BT_GetCurSwaps
+	ld b, a
+	ld a, [wBattleFactorySwapCount]
+	add b
+
+	; Cap at 99 (it's not really useful past 56 anyway).
+	cp 100
+	jr c, .got_swaps
+	ld a, 99
+.got_swaps
+	ld [wBattleFactorySwapCount], a
 	jr .record_done
 
 .no_new_hibyte_record
@@ -157,6 +173,13 @@ Special_BattleTower_CommitChallengeResult:
 	ld [hli], a
 	ld [hl], a
 	ldh [hScriptVar], a
+
+	; Also reset amount of performed Battle Factory swaps if applicable.
+	call BT_GetBattleMode
+	cp BATTLETOWER_RENTALMODE
+	ret nz
+	xor a
+	ld [wBattleFactorySwapCount], a
 	ret
 
 Special_BattleTower_GetChallengeState:
@@ -219,6 +242,9 @@ BT_SetTowerStatus:
 	ld [sBattleTowerChallengeState], a
 	jp CloseSRAM
 
+Special_BattleTower_SetupRentalMode:
+	ld a, BATTLETOWER_RENTALMODE
+	; fallthrough
 BT_SetBattleMode:
 	and BATTLETOWER_MODEMASK
 	ld c, a
@@ -228,18 +254,6 @@ BT_SetBattleMode:
 	and ~BATTLETOWER_MODEMASK
 	or c
 	jr BT_SetTowerStatus
-
-Special_BattleTower_SetupRentalMode:
-	ld a, BATTLETOWER_RENTALMODE
-	call BT_SetBattleMode
-
-	; Reset amount of battled trainers. Done in case we abort the initial
-	; selection, which should reset our winstreak and not award any BP.
-	ld a, BANK(sBT_CurTrainer)
-	call GetSRAMBank
-	xor a
-	ld [sBT_CurTrainer], a
-	jp CloseSRAM
 
 Special_BattleTower_GenerateNextOpponent:
 ; Generates opponent team and, if this is the first battle, rental picks.
@@ -403,7 +417,7 @@ Special_BattleTower_NextRentalBattle:
 	farcall BT_SwapRentals
 	jp c, Special_BattleTower_NextRentalBattle
 
-	; TODO: Increase the swap counter after a swap.
+	call BT_IncrementCurSwaps
 	; fallthrough
 .done_trade
 	ld a, 1
@@ -413,7 +427,11 @@ Special_BattleTower_NextRentalBattle:
 .new_team
 	ld hl, .NewRentalsText
 	call PrintText
-	jp Special_BattleTower_SelectParticipants
+	call Special_BattleTower_SelectParticipants
+	ret z
+
+	; The first swap is given for free.
+	jp BT_IncrementCurSwaps
 
 .GetOTPartyLocation:
 	push bc
@@ -552,7 +570,7 @@ Special_BattleTower_BeginChallenge:
 
 	; Reset amount of battled trainers
 	xor a
-	ld [sBT_CurTrainer], a
+	ld [sBT_CurTrainerAndSwap], a
 
 	; Blank previously used opponent Pokémon
 	ld a, -1
@@ -646,20 +664,46 @@ BT_LoadPartySelections:
 	rst CopyBytes
 	jp CloseSRAM
 
+BT_GetCurSwaps:
+; Returns amount of performed swaps so far.
+	ld a, BANK(sBT_CurTrainerAndSwap)
+	call GetSRAMBank
+	ld a, [sBT_CurTrainerAndSwap]
+	and BATTLETOWER_SWAPMASK
+	rrca
+	rrca
+	rrca
+	jp CloseSRAM
+
+BT_IncrementCurSwaps:
+; Increments amount of performed swaps so far and returns result in a.
+	ld a, BANK(sBT_CurTrainerAndSwap)
+	call GetSRAMBank
+	ld a, [sBT_CurTrainerAndSwap]
+	add 8
+	ld [sBT_CurTrainerAndSwap], a
+	and BATTLETOWER_SWAPMASK
+	rrca
+	rrca
+	rrca
+	jp CloseSRAM
+
 BT_GetCurTrainer:
 ; Returns beaten trainers so far in a.
-	ld a, BANK(sBT_CurTrainer)
+	ld a, BANK(sBT_CurTrainerAndSwap)
 	call GetSRAMBank
-	ld a, [sBT_CurTrainer]
+	ld a, [sBT_CurTrainerAndSwap]
+	and BATTLETOWER_TRAINERMASK
 	jp CloseSRAM
 
 BT_IncrementCurTrainer:
 ; Increments amount of beaten trainers so far and returns result in a.
-	ld a, BANK(sBT_CurTrainer)
+	ld a, BANK(sBT_CurTrainerAndSwap)
 	call GetSRAMBank
-	ld a, [sBT_CurTrainer]
+	ld a, [sBT_CurTrainerAndSwap]
 	inc a
-	ld [sBT_CurTrainer], a
+	ld [sBT_CurTrainerAndSwap], a
+	and BATTLETOWER_TRAINERMASK
 	jp CloseSRAM
 
 BT_GetCurTrainerIndex:

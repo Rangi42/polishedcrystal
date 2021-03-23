@@ -210,7 +210,7 @@ SECTION "SRAM Battle Tower", SRAM
 sBattleTowerChallengeState:: db ; current challenge progress status
 
 sBattleTower::
-sBT_CurTrainer:: db
+sBT_CurTrainerAndSwap:: db
 
 	ds 1 ; unused, may be 0-4 in old saves
 

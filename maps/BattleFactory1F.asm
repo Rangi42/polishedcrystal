@@ -142,6 +142,9 @@ BattleFactory1FStreakText:
 	line "Record: "
 	text_decimal wBattleFactoryTopStreak, 2, 5
 	text " wins"
+	cont "Swaps this run: "
+	text_decimal wBattleFactorySwapCount, 1, 2
+	text ""
 	done
 
 BattleFactory1FReceptionistScript:
@@ -224,9 +227,7 @@ BattleFactory1FReceptionistScript:
 	setval BATTLETOWER_CHALLENGE_IN_PROGRESS
 	special Special_BattleTower_SetChallengeState
 	special Special_BattleTower_SetupRentalMode
-	sjump Script_PrepareForRentalBattle
 
-Script_PrepareForRentalBattle:
 	; Initializes opponent trainers
 	special Special_BattleTower_BeginChallenge
 	; fallthrough
