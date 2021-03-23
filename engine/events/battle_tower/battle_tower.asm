@@ -427,11 +427,7 @@ Special_BattleTower_NextRentalBattle:
 .new_team
 	ld hl, .NewRentalsText
 	call PrintText
-	call Special_BattleTower_SelectParticipants
-	ret z
-
-	; The first swap is given for free.
-	jp BT_IncrementCurSwaps
+	jp Special_BattleTower_SelectParticipants
 
 .GetOTPartyLocation:
 	push bc

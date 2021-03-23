@@ -27,7 +27,7 @@ NewRentalTeam:
 ; Item Clause).
 	; First, figure out set selection.
 	ld a, [wBattleFactorySwapCount]
-	ld c, 7
+	ld c, 6
 	call SimpleDivide
 	ld b, a
 
@@ -663,7 +663,7 @@ BT_GetPointsForTrainer:
 ; Challenge run 8: 8, 8, 8, 8, 8, 8, 8, 56 total
 ; Challenge runs after 8 award the same as run 8.
 ; Rental selection tier takes the one from trainer 6, and adds 1
-; for every 7 swaps (including picking the initial 3).
+; for every 6 swaps with previous trainer's mon.
 	; a is dealt with later
 	ld b, a
 	push hl
