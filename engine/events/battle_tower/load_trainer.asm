@@ -155,23 +155,29 @@ NewRentalTeam:
 	inc de
 	dec c
 	jr nz, .outer_loop
+	ret
 
-	; Every set is distinct. Copy to party and set level.
+LoadRentalParty:
+; Loads the 6 player rental Pokémon in wBT_MonParty for party lineup.
+	ld hl, wBT_MonParty
+	ld b, PARTY_LENGTH
+	call LoadAnyParty
+
+	; Copy it to the player party.
 	ld hl, wOTPartyCount
 	ld de, wPartyCount
 	ld bc, wPartyMonNicknamesEnd - wPartyCount
 	rst CopyBytes
-
-	ld a, 50
-	jp BT_SetLevel
+	ret
 
 LoadOpponentParty:
 ; Loads opponent party in wBT_OTMonParty to the OT party.
-	xor a
-	ld [wOTPartyCount], a
-
 	ld hl, wBT_OTMonParty
 	ld b, BATTLETOWER_PARTY_LENGTH
+	; fallthrough
+LoadAnyParty:
+	xor a
+	ld [wOTPartyCount], a
 .loop
 	push bc
 	ld a, [hli]

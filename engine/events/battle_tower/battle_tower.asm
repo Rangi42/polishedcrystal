@@ -273,9 +273,11 @@ Special_BattleTower_GenerateNextOpponent:
 	farjp GenerateOpponentTrainer
 
 Special_BattleTower_NextRentalBattle:
-	; Possibly redundant, but if we aborted an earlier party selection, we need
-	; to reload opponent party data.
+	; Initialize (or re-initialize) player and opponent teams.
+	farcall LoadRentalParty
 	farcall LoadOpponentParty
+	ld a, 50
+	farcall BT_SetLevel
 
 	; Copy move name of first mon's first move, in case we want to reveal it.
 	ld a, [wOTPartyMon1Moves]
