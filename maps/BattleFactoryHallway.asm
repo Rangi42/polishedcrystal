@@ -54,6 +54,7 @@ BattleFactoryHallwayFollowReceptionist:
 	waitsfx
 	specialsound
 	waitbutton
+	special Special_BattleTower_GetBattleResult
 	ifequal BTCHALLENGE_WON, Script_BeatenAllFactoryTrainers
 	ifequal BTCHALLENGE_TYCOON, .WarnAboutHead
 .AskNextBattle:

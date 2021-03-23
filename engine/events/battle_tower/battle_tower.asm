@@ -9,6 +9,15 @@ Special_BattleTower_Battle:
 	ret nz
 	jr .loop
 
+Special_BattleTower_GetBattleResult:
+; Gets the last battle result.
+	ld a, [wOptions2]
+	push af
+	ld a, [wInBattleTowerBattle]
+	push af
+	call BT_GetCurTrainer
+	jr _RunBattleTowerTrainer
+
 RunBattleTowerTrainer:
 	ld a, [wOptions2]
 	push af
@@ -34,7 +43,7 @@ RunBattleTowerTrainer:
 	ld a, [wBattleResult]
 	and a
 	ld b, BTCHALLENGE_LOST
-	jr nz, .got_result
+	jr nz, _RunBattleTowerTrainer_GotResult
 
 	; Display awarded BP for the battle (saved after conclusion)
 	call BT_GetCurTrainer
@@ -44,9 +53,11 @@ RunBattleTowerTrainer:
 	ld [hli], a
 	ld [hl], "@"
 	call BT_IncrementCurTrainer
+	; fallthrough
+_RunBattleTowerTrainer:
 	cp BATTLETOWER_STREAK_LENGTH
 	ld b, BTCHALLENGE_WON
-	jr z, .got_result
+	jr z, _RunBattleTowerTrainer_GotResult
 
 	; Convert total winstreak to determine next battle number
 	inc a
@@ -65,10 +76,10 @@ RunBattleTowerTrainer:
 	call BT_GetCurTrainerIndex
 	cp BATTLETOWER_TYCOON
 	ld b, BTCHALLENGE_TYCOON
-	jr z, .got_result
+	jr z, _RunBattleTowerTrainer_GotResult
 	ld b, BTCHALLENGE_NEXT
 
-.got_result
+_RunBattleTowerTrainer_GotResult:
 	ld a, b
 	ldh [hScriptVar], a
 	pop af

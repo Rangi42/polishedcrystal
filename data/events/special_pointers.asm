@@ -129,6 +129,7 @@ SpecialsPointers::
 
 ; Battle Tower
 	add_special Special_BattleTower_Battle
+	add_special Special_BattleTower_GetBattleResult
 	add_special Special_BattleTower_CommitChallengeResult
 	add_special Special_BattleTower_GetChallengeState
 	add_special Special_BattleTower_SetChallengeState
