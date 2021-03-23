@@ -477,7 +477,13 @@ BT_AppendOTMon:
 	; Set capture data
 	ld hl, MON_CAUGHTDATA
 	add hl, de
-	ld a, POKE_BALL
+	ld a, [wTimeOfDay]
+	inc a
+	rrca
+	rrca
+	rrca
+	and CAUGHT_TIME_MASK
+	or POKE_BALL
 	ld [hli], a
 	ld a, 50
 	ld [hli], a
