@@ -754,6 +754,10 @@ TN_PrintToD:
 	db "Met/@"
 
 TN_PrintLocation:
+	farcall BT_GetBattleMode
+	cp BATTLETOWER_RENTALMODE
+	ld de, .battle_factory
+	jr z, .print
 	ld a, [wTempMonCaughtLocation]
 	and a
 	ret z
@@ -767,6 +771,9 @@ TN_PrintLocation:
 	hlcoord 3, 10
 	rst PlaceString
 	ret
+
+.battle_factory
+	db "Battle Factory@"
 
 .event
 	db "Event #mon@"
