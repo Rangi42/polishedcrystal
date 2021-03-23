@@ -111,6 +111,9 @@ AskOverwriteSaveFile:
 	ret
 
 CompareLoadedAndSavedPlayerID:
+	push hl
+	push de
+	push bc
 	ld a, BANK(sPlayerData)
 	call GetSRAMBank
 	ld hl, sPlayerData + (wPlayerID - wPlayerData)
@@ -120,10 +123,11 @@ CompareLoadedAndSavedPlayerID:
 	call CloseSRAM
 	ld a, [wPlayerID]
 	cp b
-	ret nz
+	jr nz, .done
 	ld a, [wPlayerID + 1]
 	cp c
-	ret
+.done
+	jp PopBCDEHL
 
 SavedTheGame:
 	call SaveGameData

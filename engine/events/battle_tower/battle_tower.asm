@@ -263,7 +263,7 @@ Special_BattleTower_GenerateNextOpponent:
 
 	; ...and copy current party stored in sram into player party.
 	ld hl, sBT_MonParty
-	ld de, sBT_MonParty
+	ld de, wBT_MonParty
 	pop bc
 	rst CopyBytes
 	call CloseSRAM

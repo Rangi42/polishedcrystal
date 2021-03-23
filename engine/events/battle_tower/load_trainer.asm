@@ -25,6 +25,50 @@ NewRentalTeam:
 ; Gives the player 6 rental Pokémon to choose from. The first 3
 ; are guranteed to be legal together (the first 6 run into problems with
 ; Item Clause).
+	; First, figure out set selection.
+	ld a, 5 ; same as for trainer 6 (0-indexed).
+	call BT_GetPointsForTrainer
+
+	cp 9
+	jr c, .got_set_table
+	ld a, 8
+.got_set_table
+	dec a
+	add a
+	ld hl, BattleTowerSetTable
+	ld b, 0
+	ld c, a
+	add hl, bc
+
+	; Add both tables to populate a team of 6.
+	ld a, [hli]
+	ld e, [hl]
+	ld d, a
+	ld c, 2
+	ld hl, wBT_MonParty
+	push hl
+.outer_add_loop
+	ld b, BATTLETOWER_PARTY_LENGTH
+.add_loop
+	ld a, d
+	and %11
+	ld [hli], a
+	ld a, -1 ; pick a random number within a set
+	ld [hli], a
+	srl d
+	srl d
+	dec b
+	jr nz, .add_loop
+	dec c
+	ld d, e
+	jr nz, .outer_add_loop
+
+	; Now, shuffle the tier composition as to not reveal what tiers each mon is.
+	ld c, PARTY_LENGTH
+	pop hl
+	call ShuffleSetSelections
+
+	; Group composition complete. Now generate the actual sets.
 .generate_team
 	xor a
 	ld [wOTPartyCount], a
@@ -33,17 +77,16 @@ NewRentalTeam:
 	ld b, BATTLETOWER_PARTY_LENGTH
 
 .generate_loop
-	; always pick from the same set
 	push bc
-	lb bc, 2, -1
+	ld a, [hli]
+	ld b, a
+
+	; Ignore set index, we want to pick a random mon.
+	ld c, -1
 	call BT_AppendOTMon
 
-	ld a, b
-	ld [hli], a
 	ld a, c
 	ld [hli], a
-	ld b, a
-	ld c, -1
 	pop bc
 	dec b
 	jr nz, .generate_loop
@@ -64,15 +107,15 @@ NewRentalTeam:
 
 .filler_loop
 	push bc
-	lb bc, 2, -1
+	ld a, [hli]
+	ld b, a
+
+	; Ignore set index, we want to pick a random mon.
+	ld c, -1
 	call BT_AppendOTMon
 
-	ld a, b
-	ld [hli], a
 	ld a, c
 	ld [hli], a
-	ld b, a
-	ld c, -1
 	pop bc
 	dec b
 	jr nz, .filler_loop
@@ -536,18 +579,21 @@ BT_GetSetTable:
 	dec b
 	jr nz, .add_loop
 
-	; Now shuffle the team. The - 1 is intentional, we iterate one less.
+	; Now shuffle the team.
 	ld c, BATTLETOWER_PARTY_LENGTH
-
+	ld hl, wBT_OTMonParty
+	; fallthrough
+ShuffleSetSelections:
+; Shuffles 16bit array in hl of length c.
 .shuffle_loop
 	; This is intentional. We iterate one less than the amount of mons.
 	dec c
 	ret z
 	ld b, 0
-	ld hl, wBT_OTMonParty
 	ld a, c
 	inc a
 	call RandomRange
+	push hl
 	push bc
 	add a ; each index is 2 bytes
 	ld c, a
@@ -559,13 +605,20 @@ BT_GetSetTable:
 	pop bc
 	add hl, bc
 	add hl, bc
+	call .SwapByte
+	inc de
+	inc hl
+	call .SwapByte
+	pop hl
+	jr .shuffle_loop
+
+.SwapByte:
 	ld a, [de]
 	ld b, [hl]
 	ld [hl], a
 	ld a, b
 	ld [de], a
-	dec c
-	jr nz, .shuffle_loop
+	ret
 
 BT_GetPointsForTrainer:
 ; Returns BP reward that the given trainer in a gives from the table below.
@@ -589,7 +642,7 @@ BT_GetPointsForTrainer:
 ; Challenge run 7: 7, 7, 7, 8, 8, 8, 8, 53 total
 ; Challenge run 8: 8, 8, 8, 8, 8, 8, 8, 56 total
 ; Challenge runs after 8 award the same as run 8.
-; Rental selection tier takes the one from trainer 4, and adds 1
+; Rental selection tier takes the one from trainer 6, and adds 1
 ; for every 7 swaps (including picking the initial 3).
 	; a is dealt with later
 	ld b, a
