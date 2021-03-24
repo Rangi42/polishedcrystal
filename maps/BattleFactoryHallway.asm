@@ -122,8 +122,8 @@ BattleFactoryHallwayFollowReceptionist:
 	stopfollow
 	special Special_BattleTower_GenerateNextOpponent
 	turnobject PLAYER, RIGHT
-	disappear BATTLEFACTORYHALLWAY_LOBBY_RECEPTIONIST
 	appear BATTLEFACTORYHALLWAY_RECEPTIONIST
+	disappear BATTLEFACTORYHALLWAY_LOBBY_RECEPTIONIST
 	; fallthrough
 .NextRentalBattle:
 	opentext
