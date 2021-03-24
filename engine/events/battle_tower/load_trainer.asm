@@ -252,8 +252,8 @@ PopulateBattleTowerTeam:
 	; Now load opponent party data into OT.
 	call LoadOpponentParty
 
-	; Set everything to level 50, then we're done.
-	ld a, 50
+	; Set everything to level BATTLETOWER_FORCED_LEVEL, then we're done.
+	ld a, BATTLETOWER_FORCED_LEVEL
 	jp BT_SetLevel
 
 GenerateOpponentTrainer:
@@ -329,8 +329,8 @@ GenerateOpponentTrainer:
 
 	call CloseSRAM
 
-	; Set everything to level 50, then we're done.
-	ld a, 50
+	; Set everything to level BATTLETOWER_FORCED_LEVEL, then we're done.
+	ld a, BATTLETOWER_FORCED_LEVEL
 	jp BT_SetLevel
 
 CheckSetRepeats:
@@ -499,7 +499,7 @@ BT_AppendOTMon:
 	and CAUGHT_TIME_MASK
 	or POKE_BALL
 	ld [hli], a
-	ld a, 50
+	ld a, BATTLETOWER_FORCED_LEVEL
 	ld [hli], a
 	ld a, BATTLE_TOWER
 	ld [hli], a

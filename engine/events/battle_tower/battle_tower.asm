@@ -75,7 +75,7 @@ _RunBattleTowerTrainer:
 	; Check if we're battling the Tycoon/Head/etc. If so, give a special msg.
 	call BT_GetCurTrainerIndex
 	cp BATTLETOWER_NUM_TRAINERS
-	ld b, BTCHALLENGE_TYCOON
+	ld b, BTCHALLENGE_FACILITYBRAIN
 	jr nc, _RunBattleTowerTrainer_GotResult
 	ld b, BTCHALLENGE_NEXT
 
@@ -303,7 +303,7 @@ Special_BattleTower_NextRentalBattle:
 	; Initialize (or re-initialize) player and opponent teams.
 	farcall LoadRentalParty
 	farcall LoadOpponentParty
-	ld a, 50
+	ld a, BATTLETOWER_FORCED_LEVEL
 	farcall BT_SetLevel
 
 	; Copy move name of first mon's first move, in case we want to reveal it.
@@ -640,7 +640,7 @@ Special_BattleTower_BeginChallenge:
 	cp BATTLETOWER_RENTALMODE
 	ld a, BATTLETOWER_FACTORYHEAD
 	jr z, .got_frontier_brain
-	ld a, BATTLETOWER_TYCOON
+	ld a, BATTLETOWER_TOWERTYCOON
 .got_frontier_brain
 	ld [de], a
 .close_sram
