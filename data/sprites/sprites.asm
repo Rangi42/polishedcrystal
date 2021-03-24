@@ -74,7 +74,7 @@ SpriteHeaders:
 	overworld_sprite FlannerySpriteGFX, WALKING_SPRITE, PAL_OW_RED
 	overworld_sprite MayleneSpriteGFX, WALKING_SPRITE, PAL_OW_RED
 	overworld_sprite SkylaSpriteGFX, WALKING_SPRITE, PAL_OW_RED
-	overworld_sprite ValerieSpriteGFX, WALKING_SPRITE, PAL_OW_RED
+	overworld_sprite ValerieSpriteGFX, WALKING_SPRITE, PAL_OW_PURPLE
 	overworld_sprite KukuiSpriteGFX, STANDING_SPRITE, PAL_OW_GREEN
 	overworld_sprite CaitlinSpriteGFX, WALKING_SPRITE, PAL_OW_RED
 	overworld_sprite DarachSpriteGFX, WALKING_SPRITE, PAL_OW_PURPLE
