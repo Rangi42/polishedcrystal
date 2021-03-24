@@ -119,6 +119,7 @@ _AIChooseMove:
 	ld a, 16
 	jr nz, .got_bt_level
 	ld a, [hl]
+	add 7
 	rra
 .got_bt_level
 	call .AddBattleTowerFlags
