@@ -660,8 +660,8 @@ LoadNote:
 	ld a, e
 	sub [hl]
 	ld e, a
-	ld a, d
-	sbc 0
+	sbc d
+	add e
 	ld d, a
 	ld hl, wChannel1PitchWheelTarget + 1 - wChannel1
 	add hl, bc
@@ -682,8 +682,8 @@ LoadNote:
 	ld a, [hl]
 	sub e
 	ld e, a
-	ld a, d
-	sbc 0
+	sbc d
+	add e
 	ld d, a
 	ld hl, wChannel1PitchWheelTarget + 1 - wChannel1
 	add hl, bc
@@ -708,8 +708,8 @@ LoadNote:
 	ld a, e
 	sub [hl]
 	ld e, a
-	ld a, d
-	sbc 0
+	sbc d
+	add e
 	ld d, a
 	; ????
 	ld hl, wChannel1PitchWheelTarget + 1 - wChannel1
@@ -932,8 +932,8 @@ ApplyPitchWheel:
 	ld e, [hl]
 	sub e
 	ld e, a
-	ld a, d
-	sbc 0
+	sbc d
+	add e
 	ld d, a
 	; [Channel*Field0x25] *= 2
 	; if rollover: Frequency -= 1
@@ -942,12 +942,9 @@ ApplyPitchWheel:
 	ld a, [hl]
 	add a
 	ld [hl], a
-	ld a, e
-	sbc 0
-	ld e, a
-	ld a, d
-	sbc 0
-	ld d, a
+	jr nc, .no_carry
+	dec de
+.no_carry
 	; Compare the dw at [Channel*PitchWheelTarget] to de.
 	; If frequency is lower, we're finished.
 	; Otherwise, load the frequency and set two flags.

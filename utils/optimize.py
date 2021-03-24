@@ -121,29 +121,22 @@ patterns = {
 	(lambda line2, prev: line2.code == 'srl a'),
 	(lambda line3, prev: line3.code == 'srl a'),
 ],
-'a = X + carry': [
-	# Bad: ld b, a / ld a, c|N / adc 0
-	# Good: ld b, a / adc c|N / sub b
+'a = X +/- carry': [
+	# Bad: ld b, a / ld a, c|N / adc|sbc 0
+	# Good: ld b, a / adc|sbc c|N / sub|add b
 	(lambda line1, prev: re.match(r'ld ([bcdehl]|\[hl\]), a', line1.code)),
 	(lambda line2, prev: line2.code.startswith('ld a,')
 		and (not line2.code.startswith('ld a, [') or line2.code == 'ld a, [hl]')),
-	(lambda line3, prev: re.match(r'adc [%\$&]?0+$', line3.code)),
+	(lambda line3, prev: re.match(r'(adc|sbc) [%\$&]?0+$', line3.code)),
 ],
-'a = carry + X': [
-	# Bad: ld b, a / ld a, 0 / adc c|N
-	# Good: ld b, a / adc c|N / sub b
+'a = carry +/- X': [
+	# Bad: ld b, a / ld a, 0 / adc|sbc c|N
+	# Good: ld b, a / adc|sbc c|N / sub|add b
 	(lambda line1, prev: re.match(r'ld ([bcdehl]|\[hl\]), a', line1.code)),
 	(lambda line2, prev: re.match(r'ld a, [%\$&]?0+$', line2.code)),
-	(lambda line3, prev: line3.code.startswith('adc ')
-		and (not line3.code.startswith('adc [') or line3.code == 'adc [hl]')),
-],
-'a = X - carry': [
-	# Bad: ld b, a / ld a, c|N / sbc 0
-	# Good: ld b, a / sbc c|N / add b
-	(lambda line1, prev: re.match(r'ld ([bcdehl]|\[hl\]), a', line1.code)),
-	(lambda line2, prev: line2.code.startswith('ld a,')
-		and (not line2.code.startswith('ld a, [') or line2.code == 'ld a, [hl]')),
-	(lambda line3, prev: re.match(r'sbc [%\$&]?0+$', line3.code)),
+	(lambda line3, prev: (line3.code.startswith('adc ') or line3.code.startswith('sbc '))
+		and ((not line3.code.startswith('adc [') and not line3.code.startswith('sbc ['))
+			or line3.code == 'adc [hl]' or line3.code == 'sbc [hl]')),
 ],
 'a|b|c|d|e|h|l = z|nz|c|nc ? P : Q': [
 	# Bad: jr z|nz|c|nc, .p / ld a|b|c|d|e|h|l, Q / jr .ok / .p / (ld a|b|c|d|e|h|l, P | xor a) / (.ok | jr .ok)

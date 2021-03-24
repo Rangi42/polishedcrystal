@@ -541,22 +541,21 @@ PokeAnim_ConvertAndApplyBitmask:
 	rst AddNTimes
 	ld a, [wBoxAlignment]
 	and a
-	jr nz, .go
 	ld a, [wPokeAnimBitmaskCurCol]
 	ld e, a
+	jr nz, .subtract
+	; hl += [wPokeAnimBitmaskCurCol]
 	ld d, 0
 	add hl, de
 	ret
 
-.go
-	ld a, [wPokeAnimBitmaskCurCol]
-	ld e, a
+.subtract
+	; hl -= [wPokeAnimBitmaskCurCol]
 	ld a, l
 	sub e
 	ld l, a
-	ld a, h
-	sbc 0
-	ld h, a
+	ret nc
+	dec h
 	ret
 
 .GetTilemap:
