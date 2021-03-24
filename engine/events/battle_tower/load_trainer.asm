@@ -300,7 +300,7 @@ GenerateOpponentTrainer:
 	; Check rental lineup.
 	push de
 	push bc
-	ld c, BATTLETOWER_PARTY_LENGTH * 2
+	ld c, PARTY_LENGTH
 	ld hl, wBT_MonParty
 	call CheckSetRepeats
 	pop bc
