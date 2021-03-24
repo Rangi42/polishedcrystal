@@ -1,16 +1,12 @@
 ; Battle Tower Pokemon proposed by Salamandar#8272 (Discord)
 ; organized by data/pokemon/dex_order_new.asm and sorted by tier
 
-; PAGE sets classification:
-; (P) = Poor
-; (A) = Average
-; (G) = Good
-; (E) = Excellent
-
 ; last update: 2021-02-12 21:00
 
 BattleTowerMons:
-	; Set 1: Poor
+
+; D tier sets
+
 	dpb PIDGEOT, MALE, BERSERK_GENE
 	db BRAVE_BIRD, EXTREMESPEED, ROOST, THIEF
 	db PERFECT_DVS
@@ -185,9 +181,10 @@ endc
 	db BTDVS_HP_ROCK
 	db ABIL_MAGCARGO_FLAME_BODY | NAT_SDEF_UP_ATK_DOWN
 
-	db -1
+	db -1 ; end
 
-	; Set 2: Average
+; C tier sets
+
 	dpb MEGANIUM, FEMALE, BIG_ROOT
 	db GIGA_DRAIN, PROTECT, LEECH_SEED, TOXIC
 	db PERFECT_DVS
@@ -737,9 +734,10 @@ endc
 	db PERFECT_DVS
 	db ABIL_BLASTOISE_TORRENT | NAT_DEF_UP_ATK_DOWN
 
-	db -1
+	db -1 ; end
 
-	; Set 3: Good
+; B tier sets
+
 	dpb MEGANIUM, MALE, LEFTOVERS
 	db PETAL_DANCE, MOONBLAST, HIDDEN_POWER, CALM_MIND
 	db BTDVS_HP_ROCK
@@ -1345,9 +1343,10 @@ endc
 	db PERFECT_DVS
 	db ABIL_TYRANITAR_SAND_STREAM | NAT_SDEF_UP_SATK_DOWN
 
-	db -1
+	db -1 ; end
 
-	; Set 4: Excellent
+; A tier sets
+
 	dpb FERALIGATR, MALE, LIFE_ORB
 	db WATERFALL, CRUNCH, ICE_PUNCH, DRAGON_DANCE
 	db PERFECT_DVS
@@ -1505,7 +1504,7 @@ else
 endc
 
 	dpb MAGNEZONE, GENDER_UNKNOWN, ASSAULT_VEST
-	db THUNDERBOLT, FLASH_CANNON, HIDDEN_POWER, EXPLOSION; HP Fire
+	db THUNDERBOLT, FLASH_CANNON, HIDDEN_POWER, EXPLOSION
 	db BTDVS_HP_FIRE
 if !DEF(FAITHFUL)
 	db ABIL_MAGNEZONE_LEVITATE | NAT_SATK_UP_ATK_DOWN
@@ -1824,4 +1823,4 @@ endc
 	db PERFECT_DVS
 	db ABIL_TYRANITAR_SAND_STREAM | NAT_SDEF_UP_SATK_DOWN
 
-	db -1
+	db -1 ; end

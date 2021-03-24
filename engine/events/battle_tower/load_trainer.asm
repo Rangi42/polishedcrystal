@@ -1,7 +1,7 @@
 BTMON_SIZE EQU 11 ; species + item + 4 moves + 3 DVs + 2 personality
 
 INCLUDE "data/battle_tower/classes.asm"
-INCLUDE "data/battle_tower/sets.asm"
+INCLUDE "data/battle_tower/tiers.asm"
 
 WriteBattleTowerTrainerName:
 ; Returns trainer class in a
@@ -25,7 +25,7 @@ NewRentalTeam:
 ; Gives the player 6 rental Pokémon to choose from. The first 3
 ; are guranteed to be legal together (the first 6 run into problems with
 ; Item Clause).
-	; First, figure out set selection.
+	; First, figure out tier selection.
 	ld a, [wBattleFactorySwapCount]
 	ld c, 6
 	call SimpleDivide
@@ -37,12 +37,12 @@ NewRentalTeam:
 	pop bc
 	add b
 	cp 9
-	jr c, .got_set_table
+	jr c, .got_tier_table
 	ld a, 8
-.got_set_table
+.got_tier_table
 	dec a
 	add a
-	ld hl, BattleTowerSetTable
+	ld hl, BattleTowerTierTable
 	ld b, 0
 	ld c, a
 	add hl, bc
@@ -60,7 +60,7 @@ NewRentalTeam:
 	ld a, d
 	and %11
 	ld [hli], a
-	ld a, -1 ; pick a random number within a set
+	ld a, -1 ; pick a random number within a tier group
 	ld [hli], a
 	srl d
 	srl d
@@ -73,7 +73,7 @@ NewRentalTeam:
 	; Now, shuffle the tier composition as to not reveal what tiers each mon is.
 	ld c, PARTY_LENGTH
 	pop hl
-	call ShuffleSetSelections
+	call ShuffleTierSelections
 
 	; Group composition complete. Now generate the actual sets.
 .generate_team
@@ -263,7 +263,7 @@ PopulateBattleTowerTeam:
 	jp BT_SetLevel
 
 GenerateOpponentTrainer:
-	call BT_GetSetTable
+	call BT_GetTierTable
 
 .generate_team
 	; Now add the enemy trainer data
@@ -392,12 +392,12 @@ BT_AppendOTMon:
 	ld hl, BattleTowerMons
 	ld a, b
 	push bc
-	call BT_GetTargetSet
+	call BT_GetTargetTier
 	pop bc
 	ld a, c
 	inc a
 	jr nz, .got_mon_index
-	call BT_GetSetSize
+	call BT_GetTierSize
 	call RandomRange
 	ld c, a
 
@@ -566,15 +566,15 @@ BT_AppendOTMon:
 	pop de
 	ret
 
-BT_GetSetTable:
-; Generates the appropriate set table given our current winstreak.
+BT_GetTierTable:
+; Generates the appropriate tier table given our current winstreak.
 ; Our current winstreak gives a certain amount of BP, but also serves
-; to determine what sets the opponent Trainer gets his/her Pokémon from.
-; This is read from BattleTowerSetTable.
+; to determine what tiers the opponent Trainer gets his/her Pokémon from.
+; This is read from BattleTowerTierTable.
 	farcall BT_GetCurTrainer
 	call BT_GetPointsForTrainer
 
-	; There's no set table beyond 8, so don't try to check beyond that.
+	; There's no tier table beyond 8, so don't try to check beyond that.
 	cp 9
 	jr c, .got_bp_amount
 	ld a, 8
@@ -583,12 +583,12 @@ BT_GetSetTable:
 	add a
 	ld c, a
 
-	; Select one of 2 set tables at random
-	ld hl, BattleTowerSetTable
+	; Select one of 2 tier tables at random
+	ld hl, BattleTowerTierTable
 	call Random
 	and 1
 
-	; Get the set
+	; Get the tier group
 	add c
 	add l
 	ld l, a
@@ -596,7 +596,7 @@ BT_GetSetTable:
 	sub l
 	ld h, a
 
-	; Store which sets to use.
+	; Store which tiers to use.
 	ld c, [hl]
 	ld b, BATTLETOWER_PARTY_LENGTH
 	ld hl, wBT_OTMonParty
@@ -604,7 +604,7 @@ BT_GetSetTable:
 	ld a, c
 	and %11
 	ld [hli], a
-	ld a, -1 ; pick a random number within a set
+	ld a, -1 ; pick a random number within a tier group
 	ld [hli], a
 	srl c
 	srl c
@@ -615,7 +615,7 @@ BT_GetSetTable:
 	ld c, BATTLETOWER_PARTY_LENGTH
 	ld hl, wBT_OTMonParty
 	; fallthrough
-ShuffleSetSelections:
+ShuffleTierSelections:
 ; Shuffles 16bit array in hl of length c.
 .shuffle_loop
 	; This is intentional. We iterate one less than the amount of mons.
@@ -705,7 +705,7 @@ BT_GetPointsForTrainer:
 	ld a, c
 	jr nz, .not_rental
 
-	; In rental mode, every 3rd trainer increases the current set.
+	; In rental mode, every 3rd trainer increases the current tier.
 	cp 4
 	jr c, .got_rental_bp
 	inc b
@@ -762,11 +762,11 @@ BT_GetEVsForTrainer:
 	ld a, 252
 	ret
 
-BT_GetTargetSet:
-; Set hl to target set a. If higher than the amount of sets, gives the last set.
-	cp BATTLETOWER_NUM_SETS
+BT_GetTargetTier:
+; Set hl to target tier a. If higher than the amount of tiers, gives the last tier.
+	cp BATTLETOWER_NUM_TIERS
 	jr c, .ok
-	ld a, BATTLETOWER_NUM_SETS - 1
+	ld a, BATTLETOWER_NUM_TIERS - 1
 .ok
 	inc a
 	ld hl, BattleTowerMons
@@ -785,8 +785,8 @@ BT_GetTargetSet:
 	inc hl
 	jr .loop
 
-BT_GetSetSize:
-; Return size of battle tower set in hl
+BT_GetTierSize:
+; Return size of battle tower tier in hl
 	ld bc, BTMON_SIZE
 	push hl
 	ld d, 0
