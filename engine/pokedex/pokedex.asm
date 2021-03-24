@@ -2116,7 +2116,7 @@ Pokedex_PutScrollbarOAM:
 	ld a, e
 	sub c
 	ld e, a ; no-optimize a = X +/- carry
-	ld a, d ; no-optimize hl|bc|de -= N
+	ld a, d ; no-optimize b|c|d|e|h|l -= carry
 	sbc 0
 	ld d, a
 	jr c, .asm_41341

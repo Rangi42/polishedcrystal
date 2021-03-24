@@ -190,21 +190,23 @@ patterns = {
 	(lambda line6, prev: re.match(r'ld [hbd], a', line6.code)
 		and line6.code[3] == prev[0].code[3]),
 ],
-'hl|bc|de -= N': [
-	# Bad: (ld a, l / sub N / ld l, a /) ld a, h / sbc 0 / ld h, a (hl or bc or de)
-	# Good: (ld a, l / sub N / ld l, a /) jr nc, .noCarry / dec h / .noCarry
-	(lambda line1, prev: re.match(r'ld a, [hlbcde]', line1.code)),
-	(lambda line2, prev: re.match(r'sbc [%\$&]?0+$', line2.code)),
-	(lambda line3, prev: re.match(r'ld [hlbcde], a', line3.code)
-		and line3.code[3] == prev[0].code[6]),
-],
 'b|c|d|e|h|l += carry': [
-	# Bad: ld a, h / adc 0 / ld h, a
+	# Bad: ld a, h|0 / adc 0|h / ld h, a
 	# Good: jr nc, .noCarry / inc h / .noCarry
-	(lambda line1, prev: re.match(r'ld a, [hlbcde]', line1.code)),
-	(lambda line2, prev: re.match(r'adc [%\$&]?0+$', line2.code)),
-	(lambda line3, prev: re.match(r'ld [hlbcde], a', line3.code)
-		and line3.code[3] == prev[0].code[6]),
+	(lambda line1, prev: re.match(r'ld a, (?:[bcdehl]|[%\$&]?0+$)', line1.code)),
+	(lambda line2, prev: re.match(r'adc (?:[bcdehl]|[%\$&]?0+$)', line2.code)),
+	(lambda line3, prev: re.match(r'ld [bcdehl], a', line3.code)
+		and (line3.code[3] == prev[0].code[6] or line3.code[3] == prev[1].code[4])
+		and (prev[0].code.endswith('0') or prev[1].code.endswith('0'))),
+],
+'b|c|d|e|h|l -= carry': [
+	# Bad: ld a, h|0 / sbc 0|h / ld h, a
+	# Good: jr nc, .noCarry / dec h / .noCarry
+	(lambda line1, prev: re.match(r'ld a, (?:[bcdehl]|[%\$&]?0+$)', line1.code)),
+	(lambda line2, prev: re.match(r'sbc (?:[bcdehl]|[%\$&]?0+$)', line2.code)),
+	(lambda line3, prev: re.match(r'ld [bcdehl], a', line3.code)
+		and (line3.code[3] == prev[0].code[6] or line3.code[3] == prev[1].code[4])
+		and (prev[0].code.endswith('0') or prev[1].code.endswith('0'))),
 ],
 'hl|bc|de = a * 16': [
 	# Bad: ld l, a / ld h, 0 / add hl, hl / add hl, hl / add hl, hl / add hl, hl
@@ -259,8 +261,8 @@ patterns = {
 'h,l|b,c|d,e = P,Q': [
 	# Bad: ld b, P / ld c, Q
 	# Good: lb bc, P, Q
-	(lambda line1, prev: re.match(r'ld [hlbcde], [^afbcdehl\[]', line1.code)),
-	(lambda line2, prev: re.match(r'ld [hlbcde], [^afbcdehl\[]', line2.code)
+	(lambda line1, prev: re.match(r'ld [bcdehl], [^afbcdehl\[]', line1.code)),
+	(lambda line2, prev: re.match(r'ld [bcdehl], [^afbcdehl\[]', line2.code)
 		and line2.code[3] == PAIRS[prev[0].code[3]]
 		and line2.context == prev[0].context),
 ],

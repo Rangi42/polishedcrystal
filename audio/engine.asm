@@ -902,12 +902,9 @@ ApplyPitchWheel:
 	add hl, bc
 	add [hl]
 	ld [hl], a
-	adc e
-	sub [hl]
-	ld e, a
-	adc d
-	sub e
-	ld d, a
+	jr nc, .no_increment
+	inc de
+.no_increment
 	; Compare the dw at [Channel*PitchWheelTarget] to de.
 	; If frequency is greater, we're finished.
 	; Otherwise, load the frequency and set two flags.
@@ -942,9 +939,9 @@ ApplyPitchWheel:
 	ld a, [hl]
 	add a
 	ld [hl], a
-	jr nc, .no_carry
+	jr nc, .no_decrement
 	dec de
-.no_carry
+.no_decrement
 	; Compare the dw at [Channel*PitchWheelTarget] to de.
 	; If frequency is lower, we're finished.
 	; Otherwise, load the frequency and set two flags.
