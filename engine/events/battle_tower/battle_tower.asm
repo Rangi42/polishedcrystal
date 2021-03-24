@@ -72,11 +72,11 @@ _RunBattleTowerTrainer:
 	adc 0
 	ld [wStringBuffer3], a
 
-	; Check if we're battling the Tycoon. If so, give a special msg.
+	; Check if we're battling the Tycoon/Head/etc. If so, give a special msg.
 	call BT_GetCurTrainerIndex
-	cp BATTLETOWER_TYCOON
+	cp BATTLETOWER_NUM_TRAINERS
 	ld b, BTCHALLENGE_TYCOON
-	jr z, _RunBattleTowerTrainer_GotResult
+	jr nc, _RunBattleTowerTrainer_GotResult
 	ld b, BTCHALLENGE_NEXT
 
 _RunBattleTowerTrainer_GotResult:
@@ -170,10 +170,10 @@ Special_BattleTower_CommitChallengeResult:
 	call BT_GetCurTrainer
 	dec a
 	call BT_GetTrainerIndex
-	cp BATTLETOWER_TYCOON
+	cp BATTLETOWER_NUM_TRAINERS
 	ld a, 0
 	ldh [hScriptVar], a
-	ret nz
+	ret c
 	inc a
 	ldh [hScriptVar], a
 	ret
@@ -634,7 +634,14 @@ Special_BattleTower_BeginChallenge:
 	cp BATTLETOWER_STREAK_LENGTH * 2
 	jr nz, .close_sram
 	dec de
+	push de
+	call BT_GetBattleMode
+	pop de
+	cp BATTLETOWER_RENTALMODE
+	ld a, BATTLETOWER_FACTORYHEAD
+	jr z, .got_frontier_brain
 	ld a, BATTLETOWER_TYCOON
+.got_frontier_brain
 	ld [de], a
 .close_sram
 	jp CloseSRAM

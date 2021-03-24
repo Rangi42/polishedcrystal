@@ -131,3 +131,4 @@ BattleTowerTrainers:
 	assert_table_length BATTLETOWER_NUM_TRAINERS
 ;BattleTowerTycoon:
 	rawchar "Palmer@@@@", TOWERTYCOON
+	rawchar "Thorton@@@", TOWERTYCOON ; should be factory head
