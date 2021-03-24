@@ -116,7 +116,7 @@ BattleFactory1FRulesScript:
 	yesorno
 	iffalse_endtext
 	jumpthisopenedtext
-		text "You are given 6"
+		text "You are given six"
 		line "rental #mon."
 
 		para "Three #mon may"
@@ -131,8 +131,8 @@ BattleFactory1FRulesScript:
 
 		para "After winning a"
 		line "battle, you may"
-		cont "swap a #mon"
-		cont "from your foe."
+		cont "trade a #mon"
+		cont "with the opponent."
 		done
 
 BattleFactory1FStreakText:
@@ -196,7 +196,7 @@ BattleFactory1FReceptionistScript:
 		para "save. If not, you"
 		line "won't be able to"
 
-		para "resume your Room"
+		para "resume your Floor"
 		line "challenge."
 		prompt
 	; fallthrough
@@ -204,8 +204,8 @@ BattleFactory1FReceptionistScript:
 	; Setscene here in case the player aborted a quicksave prompted by challenge
 	setscene $1
 	writethistext
-		text "Want to go into a"
-		line "Battle Room?"
+		text "Want to head onto"
+		line "the Battle Floor?"
 		done
 	loadmenu MenuDataHeader_BattleInfoCancel
 	verticalmenu
