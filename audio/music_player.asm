@@ -888,25 +888,29 @@ _DrawCh1_2_3:
 	push hl
 	call CheckChannelOn
 	ld a, 0
-	ld hl, NoteNames
 	jr c, .blank_note_name
 	call GetPitchAddr
 	ld a, [hl]
-	ld hl, NoteNames
-	call GetNthString
 .blank_note_name
+	add a
+	ld e, a
+	ld d, 0
+	ld hl, NoteNames
+	add hl, de
 	ld e, l
 	ld d, h
 	pop hl
+	ld a, [de]
+	ld [hli], a
+	inc de
+	ld a, [de]
+	ld [hli], a
 	push hl
-	rst PlaceString
 	call GetOctaveAddr
 	ld d, [hl]
 	ld a, "8"
 	sub d
 	pop hl
-	inc hl
-	inc hl
 	ld [hli], a
 
 	ld a, [wTmpCh]
