@@ -101,18 +101,35 @@ _AIChooseMove:
 .ApplyLayers:
 	ld hl, TrainerClassAttributes + TRNATTR_AI_MOVE_WEIGHTS
 
-	; If we have a battle in BattleTower just load the Attributes of the first wTrainerClass (Falkner)
-	; so we have always the same AI, regardless of the loaded class of trainer
+	; Battle Tower sets the AI flags differently.
 	ld a, [wInBattleTowerBattle]
 	bit 0, a
-	jr nz, .battle_tower_skip
+	jr z, .not_battle_tower
 
+	; Battle Tower always use max AI strength.
+	farcall BT_GetBattleMode
+	cp BATTLETOWER_RENTALMODE
+	ld a, 16
+	jr nz, .got_bt_level
+
+	; Early Battle Factory runs are easier.
+	farcall BT_GetCurStreakAddr
+	ld a, [hli]
+	and a
+	ld a, 16
+	jr nz, .got_bt_level
+	ld a, [hl]
+.got_bt_level
+	rra
+	call .AddBattleTowerFlags
+	jr .battle_tower_done
+
+.not_battle_tower
 	ld a, [wTrainerClass]
 	dec a
 	ld bc, 7 ; Trainer2AI - Trainer1AI
 	rst AddNTimes
 
-.battle_tower_skip
 	ld de, wAIFlags
 	ld bc, 2
 	ld a, BANK(TrainerClassAttributes)
@@ -121,6 +138,7 @@ _AIChooseMove:
 	; Add badge flags
 	call .AddBadgeFlags
 
+.battle_tower_done
 	; Aggressive overrides type matchups
 	ld hl, wAIFlags
 	lb bc, CHECK_FLAG, AI_AGGRESSIVE_F
@@ -181,6 +199,7 @@ endc
 	ld hl, wBadges
 	ld b, wBadgesEnd - wBadges
 	call CountSetBits
+.AddBattleTowerFlags:
 	ld hl, .BadgeAILayers
 .badge_loop
 	ld c, [hl]
