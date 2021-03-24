@@ -122,7 +122,7 @@ SECTION "SRAM Battle Tower", SRAM
 sBattleTowerChallengeState:: db ; current challenge progress status
 
 sBattleTower::
-sBT_CurTrainer:: db
+sBT_CurTrainerAndSwap:: db
 
 	ds 1 ; unused, may be 0-4 in old saves
 
@@ -131,10 +131,17 @@ sBTTrainers:: ds BATTLETOWER_STREAK_LENGTH
 
 	ds 1 ; unused, may be 0 or 2 in old saves
 
+UNION
 sBT_PartySelections:: ds PARTY_LENGTH
+NEXTU
+sBT_MonParty:: ds BATTLETOWER_PARTYDATA_SIZE
+ENDU
 
 ; Repeat prevention
-sBT_OTMonParties:: ds BATTLETOWER_PARTYDATA_SIZE * BATTLETOWER_SAVEDPARTIES
+sBT_OTMonParties::
+sBT_OTMonParty1:: ds BATTLETOWER_PARTYDATA_SIZE ; oldest
+sBT_OTMonParty2:: ds BATTLETOWER_PARTYDATA_SIZE ; trainer before prev
+sBT_OTMonParty3:: ds BATTLETOWER_PARTYDATA_SIZE ; previous trainer
 
 
 SECTION "Boxes 1-7",  SRAM

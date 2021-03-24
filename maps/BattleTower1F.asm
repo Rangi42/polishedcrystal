@@ -78,11 +78,11 @@ BattleTower1FContinueChallenge:
 		line "invalid."
 		done
 	waitbutton
-	sjump .CommitResult
+	sjump Script_CommitBattleTowerResult
 
 .LostChallenge:
 	opentext
-	prioritysjump .CommitResult
+	prioritysjump Script_CommitBattleTowerResult
 	end
 
 .WonChallenge:
@@ -102,7 +102,7 @@ BattleTower1FContinueChallenge:
 		prompt
 	verbosegiveitem ABILITYPATCH
 	; fallthrough
-.CommitResult:
+Script_CommitBattleTowerResult:
 	special Special_BattleTower_CommitChallengeResult
 	iffalse .WeHopeToServeYouAgain
 	setevent EVENT_BEAT_PALMER
@@ -215,8 +215,9 @@ BattleTower1FReceptionistScript:
 		text "Want to go into a"
 		line "Battle Room?"
 		done
-
-	special Special_BattleTower_MainMenu
+	loadmenu MenuDataHeader_BattleInfoCancel
+	verticalmenu
+	closewindow
 	ifequal $1, .Challenge
 	ifequal $2, .Explanation
 	writethistext
@@ -232,6 +233,11 @@ BattleTower1FReceptionistScript:
 		prompt
 	special Special_BattleTower_SelectParticipants
 	iffalse .BattleTowerMenu
+	scall Script_MustSaveBeforeBattle
+	iffalse .BattleTowerMenu
+	sjump Script_PrepareForBattle
+
+Script_MustSaveBeforeBattle:
 	writethistext
 		text "Before entering"
 		line "the Battle Room,"
@@ -240,15 +246,16 @@ BattleTower1FReceptionistScript:
 		line "be saved."
 		done
 	yesorno
-	iffalse .BattleTowerMenu
-
+	iffalse .End
 	; Done here to ensure it's saved in case the player resets later.
 	; The scene script running after the player saves but before the
 	; challenge starts is harmless since there's no challenge prepared.
 	setscene 0
 	special Special_TryQuickSave
-	iffalse .BattleTowerMenu
+.End:
+	end
 
+Script_PrepareForBattle:
 	; Initializes opponent trainers and stores player mon choices in SRAM
 	special Special_BattleTower_BeginChallenge
 	; fallthrough
@@ -285,6 +292,20 @@ Script_ReturnToBattleTowerChallenge:
 	step_up
 	step_up
 	step_end
+
+MenuDataHeader_BattleInfoCancel:
+	db $40 ; flags
+	db  4, 11 ; start coords
+	db 11, 19 ; end coords
+	dw MenuData2_BattleInfoCancel
+	db 1 ; default option
+
+MenuData2_BattleInfoCancel:
+	db $a0 ; flags
+	db 3
+	db "Battle@"
+	db "Info@"
+	db "Cancel@"
 
 BattleTowerPharmacistScript:
 	faceplayer

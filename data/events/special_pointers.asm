@@ -129,14 +129,17 @@ SpecialsPointers::
 
 ; Battle Tower
 	add_special Special_BattleTower_Battle
+	add_special Special_BattleTower_GetBattleResult
 	add_special Special_BattleTower_CommitChallengeResult
 	add_special Special_BattleTower_GetChallengeState
 	add_special Special_BattleTower_SetChallengeState
+	add_special Special_BattleTower_GenerateNextOpponent
+	add_special Special_BattleTower_NextRentalBattle
+	add_special Special_BattleTower_SetupRentalMode
 	add_special Special_BattleTower_SelectParticipants
 	add_special Special_BattleTower_MaxVolume
 	add_special Special_BattleTower_BeginChallenge
 	add_special Special_BattleTower_LoadOpponentTrainerAndPokemonsWithOTSprite
-	add_special Special_BattleTower_MainMenu
 
 ; Polished Crystal
 	add_special SaveOptions

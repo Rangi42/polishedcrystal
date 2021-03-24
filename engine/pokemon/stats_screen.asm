@@ -549,6 +549,16 @@ StatsScreen_LoadGFX:
 	ret
 
 .PlaceOTInfo:
+	; for rental mons, replace the whole thing with "Rental #mon"
+	farcall BT_GetBattleMode
+	cp BATTLETOWER_RENTALMODE
+	jr nz, .not_rental_mon
+	hlcoord 0, 15
+	ld de, .Rental_OT
+	rst PlaceString
+	ret
+
+.not_rental_mon
 	ld de, .OT_ID_str
 	hlcoord 0, 14
 	rst PlaceString
@@ -581,6 +591,10 @@ StatsScreen_LoadGFX:
 .OT_ID_str:
 	db   "OT/"
 	next "<ID>№.@"
+
+.Rental_OT:
+	db "Rental"
+	next1 "#mon@"
 
 .ExpPointStr:
 	db "Exp.Points@"
@@ -740,6 +754,10 @@ TN_PrintToD:
 	db "Met/@"
 
 TN_PrintLocation:
+	farcall BT_GetBattleMode
+	cp BATTLETOWER_RENTALMODE
+	ld de, .battle_factory
+	jr z, .print
 	ld a, [wTempMonCaughtLocation]
 	and a
 	ret z
@@ -753,6 +771,9 @@ TN_PrintLocation:
 	hlcoord 3, 10
 	rst PlaceString
 	ret
+
+.battle_factory
+	db "Battle Factory@"
 
 .event
 	db "Event #mon@"

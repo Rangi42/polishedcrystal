@@ -128,24 +128,10 @@ SwitchPartyMons:
 	cp 2
 	jr c, .DontSwitch
 
-	ld a, [wCurPartyMon]
-	inc a
-	ld [wSwitchMon], a
-
-	farcall HoldSwitchmonIcon
-	farcall InitPartyMenuNoCancel
-
 	ld a, 4
 	ld [wPartyMenuActionText], a
-	farcall WritePartyMenuTilemap
-	farcall PrintPartyMenuText
 
-	hlcoord 0, 1
-	ld bc, 20 * 2
-	ld a, [wSwitchMon]
-	dec a
-	rst AddNTimes
-	ld [hl], "▷"
+	farcall InitPartySwap
 	call ApplyTilemapInVBlank
 	call SetPalettes
 	call DelayFrame

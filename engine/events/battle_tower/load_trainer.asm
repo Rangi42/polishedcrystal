@@ -21,23 +21,242 @@ WriteBattleTowerTrainerName:
 	ld [wOtherTrainerClass], a
 	ret
 
+NewRentalTeam:
+; Gives the player 6 rental Pokémon to choose from. The first 3
+; are guranteed to be legal together (the first 6 run into problems with
+; Item Clause).
+	; First, figure out set selection.
+	ld a, [wBattleFactorySwapCount]
+	ld c, 6
+	call SimpleDivide
+	ld b, a
+
+	ld a, 5 ; same as for trainer 6 (0-indexed).
+	push bc
+	call BT_GetPointsForTrainer
+	pop bc
+	add b
+	cp 9
+	jr c, .got_set_table
+	ld a, 8
+.got_set_table
+	dec a
+	add a
+	ld hl, BattleTowerSetTable
+	ld b, 0
+	ld c, a
+	add hl, bc
+
+	; Add both tables to populate a team of 6.
+	ld a, [hli]
+	ld e, [hl]
+	ld d, a
+	ld c, 2
+	ld hl, wBT_MonParty
+	push hl
+.outer_add_loop
+	ld b, BATTLETOWER_PARTY_LENGTH
+.add_loop
+	ld a, d
+	and %11
+	ld [hli], a
+	ld a, -1 ; pick a random number within a set
+	ld [hli], a
+	srl d
+	srl d
+	dec b
+	jr nz, .add_loop
+	dec c
+	ld d, e
+	jr nz, .outer_add_loop
+
+	; Now, shuffle the tier composition as to not reveal what tiers each mon is.
+	ld c, PARTY_LENGTH
+	pop hl
+	call ShuffleSetSelections
+
+	; Group composition complete. Now generate the actual sets.
+.generate_team
+	xor a
+	ld [wOTPartyCount], a
+
+	ld hl, wBT_MonParty
+	ld b, BATTLETOWER_PARTY_LENGTH
+
+.generate_loop
+	push bc
+	ld a, [hli]
+	ld b, a
+
+	; Ignore set index, we want to pick a random mon.
+	ld c, -1
+	call BT_AppendOTMon
+
+	ld a, c
+	ld [hli], a
+	pop bc
+	dec b
+	jr nz, .generate_loop
+
+	; Check if the team is legal. Otherwise, generate a new team.
+	farcall BT_LegalityCheck
+	jr nz, .generate_team
+
+.generate_filler
+	; The picks are legal. Now, generate filler to fill up the rest
+	; of the party without checking for legality. We do, however, still
+	; want them to be distinct sets, checked later.
+	ld a, BATTLETOWER_PARTY_LENGTH
+	ld [wOTPartyCount], a
+
+	ld hl, wBT_MonParty + BATTLETOWER_PARTYDATA_SIZE
+	ld b, PARTY_LENGTH - BATTLETOWER_PARTY_LENGTH
+
+.filler_loop
+	push bc
+	ld a, [hli]
+	ld b, a
+
+	; Ignore set index, we want to pick a random mon.
+	ld c, -1
+	call BT_AppendOTMon
+
+	ld a, c
+	ld [hli], a
+	pop bc
+	dec b
+	jr nz, .filler_loop
+
+	; Now, verify that all sets are distinct. This does check both
+	; group + index, even if group is currently redundant. This is
+	; in case we generate mons from different groups in the future.
+	ld de, wBT_MonParty
+	ld a, [wOTPartyCount]
+	dec a
+	ld c, a
+.outer_loop
+	ld h, d
+	ld l, e
+	inc hl
+	inc hl
+	ld b, c
+.inner_loop
+	; Is group identical?
+	ld a, [de]
+	cp [hl]
+	inc de
+	inc hl
+	jr nz, .next
+
+	; Is set identical?
+	ld a, [de]
+	cp [hl]
+	jr z, .generate_filler
+
+.next
+	dec de
+	inc hl
+	dec b
+	jr nz, .inner_loop
+	inc de
+	inc de
+	dec c
+	jr nz, .outer_loop
+	ret
+
+LoadRentalParty:
+; Loads the 6 player rental Pokémon in wBT_MonParty for party lineup.
+	ld hl, wBT_MonParty
+	ld b, PARTY_LENGTH
+	call LoadAnyParty
+
+	; Copy it to the player party.
+	ld hl, wOTPartyCount
+	ld de, wPartyCount
+	ld bc, wPartyMonNicknamesEnd - wPartyCount
+	rst CopyBytes
+	ret
+
+LoadOpponentParty:
+; Loads opponent party in wBT_OTMonParty to the OT party.
+	ld hl, wBT_OTMonParty
+	ld b, BATTLETOWER_PARTY_LENGTH
+	; fallthrough
+LoadAnyParty:
+	xor a
+	ld [wOTPartyCount], a
+.loop
+	push bc
+	ld a, [hli]
+	ld b, a
+	ld a, [hli]
+	ld c, a
+	call BT_AppendOTMon
+	pop bc
+	dec b
+	jr nz, .loop
+	ret
+
 PopulateBattleTowerTeam:
-; Prepares your and the opponent's parties for battle tower battle
+; Prepares your and the opponent's parties for battle tower battle.
 	; Populate wOTPartyMons with your selections. Used for legality
 	; checking, but works just as well here as a straightforward way
 	; to get the party in the correct order. Yes, we need to do this,
 	; we can't abuse the fact that the legality checker already did
 	; this, or we run into trouble after the first battle.
+	farcall BT_GetBattleMode
+	cp BATTLETOWER_RENTALMODE
+	jr z, .rental
+
 	farcall BT_LoadPartySelections
 	farcall BT_SetPlayerOT
 
+	; Generate opponent trainer sets.
+	call GenerateOpponentTrainer
+	jr .copy_player_data
+
+.rental
+	; First, copy rental data from SRAM
+	ld a, BANK(sBT_MonParty)
+	call GetSRAMBank
+	ld hl, sBT_MonParty
+	ld de, wBT_MonParty
+	ld bc, BATTLETOWER_PARTYDATA_SIZE
+	rst CopyBytes
+	call CloseSRAM
+
+	; Now, add rental choices to OT party
+	xor a
+	ld [wOTPartyCount], a
+	ld hl, wBT_MonParty
+
+	ld b, BATTLETOWER_PARTY_LENGTH
+.rental_loop
+	push bc
+	ld a, [hli]
+	ld b, a
+	ld a, [hli]
+	ld c, a
+	call BT_AppendOTMon
+	pop bc
+	dec b
+	jr nz, .rental_loop
+	; fallthrough
+.copy_player_data
 	; Now copy the OT data to the player party struct
 	ld hl, wOTPartyCount
 	ld de, wPartyCount
 	ld bc, wPartyMonNicknamesEnd - wPartyCount
 	rst CopyBytes
 
-	; Generate opponent set usage
+	; Now load opponent party data into OT.
+	call LoadOpponentParty
+
+	; Set everything to level BATTLETOWER_FORCED_LEVEL, then we're done.
+	ld a, BATTLETOWER_FORCED_LEVEL
+	jp BT_SetLevel
+
+GenerateOpponentTrainer:
 	call BT_GetSetTable
 
 .generate_team
@@ -50,6 +269,8 @@ PopulateBattleTowerTeam:
 	ld hl, wBT_OTMonParty
 	ld b, BATTLETOWER_PARTY_LENGTH
 .generate_loop
+	; Might have been opened if we ran into a failure condition.
+	call CloseSRAM
 	push bc
 	ld a, [hli]
 	ld b, a
@@ -69,39 +290,31 @@ PopulateBattleTowerTeam:
 	farcall BT_LegalityCheck
 	jr nz, .generate_team
 
-	; Don't reuse recently seen mons.
+	; Don't reuse recently seen mons, or anything in the player rental team.
+	farcall BT_GetBattleMode
+	ld b, BATTLETOWER_PARTY_LENGTH
+	ld de, wBT_OTMonParty
+	cp BATTLETOWER_RENTALMODE
+	jr nz, .not_rental
+
+	; Check rental lineup.
+	push de
+	push bc
+	ld c, PARTY_LENGTH
+	ld hl, wBT_MonParty
+	call CheckSetRepeats
+	pop bc
+	pop de
+	jr c, .generate_team
+
+.not_rental
+	; Check previous trainers.
 	ld a, BANK(sBT_OTMonParties)
 	call GetSRAMBank
-	ld de, wBT_OTMonParty
-	ld b, BATTLETOWER_PARTY_LENGTH
-.repeat_outer_loop
 	ld c, BATTLETOWER_PARTY_LENGTH * BATTLETOWER_SAVEDPARTIES
 	ld hl, sBT_OTMonParties
-.repeat_loop
-	; Check if set is identical
-	ld a, [de]
-	cp [hl]
-	inc de
-	inc hl
-	jr nz, .next_repeat
-
-	; Set is identical. Check mon number.
-	ld a, [de]
-	cp [hl]
-
-	; If number is also identical, re-roll.
-	jr z, .generate_team
-.next_repeat
-	dec de
-	inc hl
-	dec c
-	jr nz, .repeat_loop
-
-	; Check next party slot
-	inc de
-	inc de
-	dec b
-	jr nz, .repeat_outer_loop
+	call CheckSetRepeats
+	jr c, .generate_team
 
 	; Done with checks. Shift SRAM parties and store current party.
 	ld hl, sBT_OTMonParties + BATTLETOWER_PARTYDATA_SIZE
@@ -116,9 +329,53 @@ PopulateBattleTowerTeam:
 
 	call CloseSRAM
 
-	; Set everything to level 50, then we're done.
-	ld a, 50
+	; Set everything to level BATTLETOWER_FORCED_LEVEL, then we're done.
+	ld a, BATTLETOWER_FORCED_LEVEL
 	jp BT_SetLevel
+
+CheckSetRepeats:
+; Checks set repeats between de array length b and hl array length c.
+; Returns c if there was a repeat.
+	push hl
+	push bc
+.repeat_outer_loop
+	pop bc
+	pop hl
+	dec b
+	push hl
+	push bc
+.repeat_loop
+	; Check if set is identical
+	ld a, [de]
+	cp [hl]
+	inc de
+	inc hl
+	jr nz, .next_repeat
+
+	; Set is identical. Check mon number.
+	ld a, [de]
+	cp [hl]
+
+	; If number is also identical, we reached an identical set.
+	scf
+	jr z, .done
+
+.next_repeat
+	dec de
+	inc hl
+	dec c
+	jr nz, .repeat_loop
+
+	; Check next party slot
+	inc de
+	inc de
+	dec b
+	jr nz, .repeat_outer_loop
+	and a
+.done
+	pop bc
+	pop hl
+	ret
 
 BT_AppendOTMon:
 ; Appends mon c from set b to OT party. If c is -1, appends a random set b mon.
@@ -218,10 +475,34 @@ BT_AppendOTMon:
 	call .Copy
 
 	; We're done copying the struct. Now generate the rest.
+	; Some of this might seem unnecessary, but is required to
+	; make the stats screen look good for rental mons.
 	; Happiness is always 255
 	ld hl, MON_HAPPINESS
 	add hl, de
 	ld [hl], 255
+
+	; Clear status conditions
+	ld hl, MON_STATUS
+	add hl, de
+	xor a
+	ld [hl], a
+
+	; Set capture data
+	ld hl, MON_CAUGHTDATA
+	add hl, de
+	ld a, [wTimeOfDay]
+	inc a
+	rrca
+	rrca
+	rrca
+	and CAUGHT_TIME_MASK
+	or POKE_BALL
+	ld [hli], a
+	ld a, BATTLETOWER_FORCED_LEVEL
+	ld [hli], a
+	ld a, BATTLE_TOWER
+	ld [hli], a
 
 	; Set EVs
 	farcall BT_GetCurTrainer
@@ -324,18 +605,21 @@ BT_GetSetTable:
 	dec b
 	jr nz, .add_loop
 
-	; Now shuffle the team. The - 1 is intentional, we iterate one less.
+	; Now shuffle the team.
 	ld c, BATTLETOWER_PARTY_LENGTH
-
+	ld hl, wBT_OTMonParty
+	; fallthrough
+ShuffleSetSelections:
+; Shuffles 16bit array in hl of length c.
 .shuffle_loop
 	; This is intentional. We iterate one less than the amount of mons.
 	dec c
 	ret z
 	ld b, 0
-	ld hl, wBT_OTMonParty
 	ld a, c
 	inc a
 	call RandomRange
+	push hl
 	push bc
 	add a ; each index is 2 bytes
 	ld c, a
@@ -347,16 +631,24 @@ BT_GetSetTable:
 	pop bc
 	add hl, bc
 	add hl, bc
+	call .SwapByte
+	inc de
+	inc hl
+	call .SwapByte
+	pop hl
+	jr .shuffle_loop
+
+.SwapByte:
 	ld a, [de]
 	ld b, [hl]
 	ld [hl], a
 	ld a, b
 	ld [de], a
-	dec c
-	jr nz, .shuffle_loop
+	ret
 
 BT_GetPointsForTrainer:
 ; Returns BP reward that the given trainer in a gives from the table below.
+; TOWER
 ; Challenge run 1: 1, 2, 2, 3, 3, 4, 5, 20 total
 ; Challenge run 2: 2, 3, 3, 4, 4, 5, 6, 27 total
 ; Challenge run 3: 3, 4, 4, 5, 5, 6, 7, 34 total (Tycoon run)
@@ -365,26 +657,60 @@ BT_GetPointsForTrainer:
 ; Challenge run 6: 6, 7, 7, 8, 8, 8, 8, 52 total (Tycoon run)
 ; Challenge run 7: 7, 8, 8, 8, 8, 8, 8, 55 total
 ; Challenge run 8: 8, 8, 8, 8, 8, 8, 8, 56 total
+
+; FACTORY
+; Challenge run 1: 1, 1, 1, 2, 2, 2, 3, 12 total
+; Challenge run 2: 2, 2, 2, 3, 3, 3, 4, 19 total
+; Challenge run 3: 3, 3, 3, 4, 4, 4, 5, 26 total (Tycoon run)
+; Challenge run 4: 4, 4, 4, 5, 5, 5, 6, 33 total
+; Challenge run 5: 5, 5, 5, 6, 6, 6, 7, 40 total
+; Challenge run 6: 6, 6, 6, 7, 7, 7, 8, 47 total (Tycoon run)
+; Challenge run 7: 7, 7, 7, 8, 8, 8, 8, 53 total
+; Challenge run 8: 8, 8, 8, 8, 8, 8, 8, 56 total
 ; Challenge runs after 8 award the same as run 8.
+; Rental selection tier takes the one from trainer 6, and adds 1
+; for every 6 swaps with previous trainer's mon.
 	; a is dealt with later
 	ld b, a
+	push hl
+	farcall BT_GetCurStreakAddr
 
 	; If our current streak exceeds 255, just return 8.
-	ld a, [wBattleTowerCurStreak]
+	ld a, [hli]
 	and a
+	ld a, [hl]
+	pop hl
 	jr nz, .overflow
 
 	; Calculate (current challenge trainer + current streak) / 7.
 	; This effectively gives us challenge run in b and current trainer in a.
-	ld a, [wBattleTowerCurStreak + 1]
 	add b
 	jr c, .overflow
 	ld c, 7
 	call SimpleDivide
-
-	inc a ; Current trainer (1-7)
+	ld c, a
 	inc b ; Current challenge run (1-36, 37+ means 255+ wins, handled above)
+	inc c ; Current trainer (1-7)
 
+	push hl
+	farcall BT_GetBattleMode
+	pop hl
+	cp BATTLETOWER_RENTALMODE
+	ld a, c
+	jr nz, .not_rental
+
+	; In rental mode, every 3rd trainer increases the current set.
+	cp 4
+	jr c, .got_rental_bp
+	inc b
+	cp 7
+	jr c, .got_rental_bp
+	inc b
+.got_rental_bp
+	ld a, b
+	jr .got_bp
+
+.not_rental
 	; +1 for trainer 2-3, +2 for 4-5, +3 for 6, +4 for 7.
 	cp 7
 	jr nz, .no_extra
@@ -393,6 +719,7 @@ BT_GetPointsForTrainer:
 	srl a ; can't use rra since carry state is unknown
 	add b
 
+.got_bp
 	; Cap at 8
 	cp 9
 	ret c
@@ -402,25 +729,30 @@ BT_GetPointsForTrainer:
 
 BT_GetEVsForTrainer:
 ; Return EVs for given trainer in a. Value is (CurStreak + CurTrainer) * 16,
-; capped at 252.
+; capped at 252 in Battle Tower, and always 252 in Battle Factory.
 	ld b, a
+	push hl
+	farcall BT_GetBattleMode
+	pop hl
+	cp BATTLETOWER_RENTALMODE
+	jr z, .max
 
 	; If our current streak exceeds 255, just return 252.
 	ld a, [wBattleTowerCurStreak]
 	and a
-	jr nz, .overflow
+	jr nz, .max
 
 	ld a, [wBattleTowerCurStreak + 1]
 	add b
-	jr c, .overflow
+	jr c, .max
 	cp 16
-	jr nc, .overflow
+	jr nc, .max
 
 	; EVs = (current streak + current trainer) * 16
 	swap a
 	ret
 
-.overflow
+.max
 	ld a, 252
 	ret
 
@@ -507,7 +839,10 @@ BT_SetLevel:
 	ld bc, wPartyMon1Exp - wPartyMon1Level
 	add hl, bc
 	push hl
+	push de
+	ld d, a ; needed for CalcExpAtLevel
 	farcall CalcExpAtLevel
+	pop de
 	pop hl
 	push hl
 	ldh a, [hProduct + 1]

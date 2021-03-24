@@ -9,6 +9,15 @@ Special_BattleTower_Battle:
 	ret nz
 	jr .loop
 
+Special_BattleTower_GetBattleResult:
+; Gets the last battle result.
+	ld a, [wOptions2]
+	push af
+	ld a, [wInBattleTowerBattle]
+	push af
+	call BT_GetCurTrainer
+	jr _RunBattleTowerTrainer
+
 RunBattleTowerTrainer:
 	ld a, [wOptions2]
 	push af
@@ -34,7 +43,7 @@ RunBattleTowerTrainer:
 	ld a, [wBattleResult]
 	and a
 	ld b, BTCHALLENGE_LOST
-	jr nz, .got_result
+	jr nz, _RunBattleTowerTrainer_GotResult
 
 	; Display awarded BP for the battle (saved after conclusion)
 	call BT_GetCurTrainer
@@ -44,13 +53,18 @@ RunBattleTowerTrainer:
 	ld [hli], a
 	ld [hl], "@"
 	call BT_IncrementCurTrainer
+	; fallthrough
+_RunBattleTowerTrainer:
 	cp BATTLETOWER_STREAK_LENGTH
 	ld b, BTCHALLENGE_WON
-	jr z, .got_result
+	jr z, _RunBattleTowerTrainer_GotResult
 
 	; Convert total winstreak to determine next battle number
 	inc a
-	ld hl, wBattleTowerCurStreak + 1
+	push af
+	call BT_GetCurStreakAddr
+	pop af
+	inc hl
 	add [hl]
 	ld [wStringBuffer3 + 1], a
 	dec hl
@@ -58,14 +72,14 @@ RunBattleTowerTrainer:
 	adc 0
 	ld [wStringBuffer3], a
 
-	; Check if we're battling the Tycoon. If so, give a special msg.
+	; Check if we're battling the Tycoon/Head/etc. If so, give a special msg.
 	call BT_GetCurTrainerIndex
-	cp BATTLETOWER_TYCOON
-	ld b, BTCHALLENGE_TYCOON
-	jr z, .got_result
+	cp BATTLETOWER_NUM_TRAINERS
+	ld b, BTCHALLENGE_FACILITYBRAIN
+	jr nc, _RunBattleTowerTrainer_GotResult
 	ld b, BTCHALLENGE_NEXT
 
-.got_result
+_RunBattleTowerTrainer_GotResult:
 	ld a, b
 	ldh [hScriptVar], a
 	pop af
@@ -102,8 +116,9 @@ Special_BattleTower_CommitChallengeResult:
 
 .bp_done
 	; Now, handle streak. Append defeated trainers to current winstreak.
+	call BT_GetBothStreakAddr
+	inc hl
 	call BT_GetCurTrainer
-	ld hl, wBattleTowerCurStreak + 1
 	add [hl]
 	ld [hld], a
 	ld a, [hl]
@@ -111,7 +126,6 @@ Special_BattleTower_CommitChallengeResult:
 	ld [hl], a
 
 	; If this is a new record, update it.
-	ld de, wBattleTowerTopStreak
 	ld a, [de]
 	cp [hl]
 	ld a, [hli]
@@ -120,6 +134,22 @@ Special_BattleTower_CommitChallengeResult:
 	inc de
 	ld a, [hl]
 	ld [de], a
+
+	; If we're in rental mode, also possibly update swap count.
+	call BT_GetBattleMode
+	cp BATTLETOWER_RENTALMODE
+	jr nz, .record_done
+	call BT_GetCurSwaps
+	ld b, a
+	ld a, [wBattleFactorySwapCount]
+	add b
+
+	; Cap at 99 (it's not really useful past 56 anyway).
+	cp 100
+	jr c, .got_swaps
+	ld a, 99
+.got_swaps
+	ld [wBattleFactorySwapCount], a
 	jr .record_done
 
 .no_new_hibyte_record
@@ -132,7 +162,7 @@ Special_BattleTower_CommitChallengeResult:
 
 .record_done
 	; Reset winstreak if we lost
-	call BT_GetTowerStatus
+	call BT_GetChallengeState
 	cp BATTLETOWER_WON_CHALLENGE
 	jr nz, .reset_streak
 
@@ -140,30 +170,52 @@ Special_BattleTower_CommitChallengeResult:
 	call BT_GetCurTrainer
 	dec a
 	call BT_GetTrainerIndex
-	cp BATTLETOWER_TYCOON
+	cp BATTLETOWER_NUM_TRAINERS
 	ld a, 0
 	ldh [hScriptVar], a
-	ret nz
+	ret c
 	inc a
 	ldh [hScriptVar], a
 	ret
 
 .reset_streak
+	call BT_GetCurStreakAddr
 	xor a
-	ld hl, wBattleTowerCurStreak
 	ld [hli], a
 	ld [hl], a
 	ldh [hScriptVar], a
+
+	; Also reset amount of performed Battle Factory swaps if applicable.
+	call BT_GetBattleMode
+	cp BATTLETOWER_RENTALMODE
+	ret nz
+	xor a
+	ld [wBattleFactorySwapCount], a
 	ret
 
 Special_BattleTower_GetChallengeState:
-	call BT_GetTowerStatus
+	call BT_GetChallengeState
 	and a
 	ldh [hScriptVar], a
 	ret
 
+BT_GetChallengeState:
+; Returns the current challenge state for Battle Tower, or zero if none.
+	call BT_GetTowerStatus
+	ret c
+	and BATTLETOWER_CHALLENGEMASK
+	ret
+
+BT_GetBattleMode:
+	push hl
+	call BT_GetTowerStatus
+	pop hl
+	ret c
+	and BATTLETOWER_MODEMASK
+	ret
+
 BT_GetTowerStatus:
-; Check tower challenge status. Returns:
+; Check tower status (challenge state + battle mode). Returns:
 ; z|c: The save isn't ours (a=0)
 ; z|nc: No ongoing challenge (a=0)
 ; nz|nc: Challenge ongoing, with status in a (a=1+)
@@ -187,12 +239,286 @@ Special_BattleTower_SetChallengeState:
 
 	; Otherwise, go ahead and write the challenge state
 	ldh a, [hScriptVar]
+	; fallthrough
+BT_SetChallengeState:
+	and BATTLETOWER_CHALLENGEMASK
+	ld c, a
+	call BT_GetTowerStatus
+	and ~BATTLETOWER_CHALLENGEMASK
+	or c
+	; fallthrough
+BT_SetTowerStatus:
 	ld c, a
 	ld a, BANK(sBattleTowerChallengeState)
 	call GetSRAMBank
 	ld a, c
 	ld [sBattleTowerChallengeState], a
 	jp CloseSRAM
+
+Special_BattleTower_SetupRentalMode:
+	ld a, BATTLETOWER_RENTALMODE
+	; fallthrough
+BT_SetBattleMode:
+	and BATTLETOWER_MODEMASK
+	ld c, a
+	push bc
+	call BT_GetTowerStatus
+	pop bc
+	and ~BATTLETOWER_MODEMASK
+	or c
+	jr BT_SetTowerStatus
+
+Special_BattleTower_GenerateNextOpponent:
+; Generates opponent team and, if this is the first battle, rental picks.
+	; If this is the first battle, generate a new rental team.
+	call BT_GetCurTrainer
+	and a
+	jr nz, .not_first_battle
+	farcall NewRentalTeam
+	jr .got_player_selections
+
+.not_first_battle
+	; Otherwise, copy last trainer into secondary party...
+	ld a, BANK(sBT_OTMonParties)
+	call GetSRAMBank
+
+	ld hl, sBT_OTMonParty3
+	ld de, wBT_SecondaryMonParty
+	ld bc, BATTLETOWER_PARTYDATA_SIZE
+	push bc
+	rst CopyBytes
+
+	; ...and copy current party stored in sram into player party.
+	ld hl, sBT_MonParty
+	ld de, wBT_MonParty
+	pop bc
+	rst CopyBytes
+	call CloseSRAM
+
+.got_player_selections
+	; Now, generate a new opponent party.
+	farjp GenerateOpponentTrainer
+
+Special_BattleTower_NextRentalBattle:
+	; Initialize (or re-initialize) player and opponent teams.
+	farcall LoadRentalParty
+	farcall LoadOpponentParty
+	ld a, BATTLETOWER_FORCED_LEVEL
+	farcall BT_SetLevel
+
+	; Copy move name of first mon's first move, in case we want to reveal it.
+	ld a, [wOTPartyMon1Moves]
+	ld [wNamedObjectIndexBuffer], a
+	call GetMoveName
+
+	; Figure out how many details we want to reveal.
+	ld a, [wBattleFactoryCurStreak]
+	and a
+	jr nz, .most_common_type
+	ld a, [wBattleFactoryCurStreak + 1]
+	ld b, 7
+	sub b
+	ld hl, .ExpectThese3
+	jr c, .print
+	sub b
+	ld hl, .ExpectThese2
+	jr c, .print
+	sub b
+	ld hl, .ExactMonUsingMove
+	jr c, .print
+	sub b
+	ld hl, .SomeMonUsingMove
+	jr c, .print
+
+.most_common_type
+	; Copy opponent typings into an array. If monotype, set the 2nd type to -1.
+	ld de, wBT_OpponentTypeArray
+	push de
+	ld b, 3
+.gettypes_loop
+	push de
+	ld hl, wOTPartyMon1Species
+	call .GetOTPartyLocation
+	ld a, [hl]
+	ld [wCurSpecies], a
+	ld hl, wOTPartyMon1Form
+	call .GetOTPartyLocation
+	ld [wCurForm], a
+	push bc
+	call GetBaseData
+	pop bc
+	ld hl, wBaseType
+	ld a, [hli]
+	pop de
+	ld [de], a
+	inc de
+	cp [hl]
+	ld a, [hl]
+	jr nz, .got_secondary
+	ld a, -1
+.got_secondary
+	ld [de], a
+	inc de
+	dec b
+	jr nz, .gettypes_loop
+
+	; Now we have the type list. Figure out the most common type.
+	pop de
+	lb hl, 0, 0 ; most common typing so far.
+	ld b, BATTLETOWER_PARTY_LENGTH * 2
+.outer_type_loop
+	push hl
+	ld h, d
+	ld l, e
+	ld c, 0
+	push bc
+	ld a, [de]
+.inner_type_loop
+	cp [hl]
+	jr nz, .not_same_type
+	inc c
+.not_same_type
+	inc hl
+	dec b
+	jr nz, .inner_type_loop
+
+	; Got all occurence of type a. Now check if this is more common than the
+	; current tracked most common type.
+	ld l, c
+	pop bc
+	ld c, a
+	ld a, l
+	pop hl
+
+	; Ignore the checked type if it's -1 (sentinel for ignored mono-type2).
+	inc c
+	jr z, .next
+	dec c
+	cp l
+	jr c, .next
+	ld h, c
+	ld l, a
+.next
+	dec b
+	jr nz, .outer_type_loop
+
+	; Now we have the most common type in h. If the "most common" type only
+	; occurs 1 time, the opponent has no preference. Tied types beyond that
+	; will result in the opponent preferring the earlier type in the party.
+	dec l
+	ld a, h
+	ld hl, .NoTypePreference
+	jr z, .print
+	ld [wNamedObjectIndexBuffer], a
+	farcall GetTypeName
+	ld hl, .PrefersType
+.print
+	call PrintText
+
+	; Check if we're swapping or giving a new team.
+	call BT_GetCurTrainer
+	and a
+	jr z, .new_team
+	ld hl, .TradeBeforeBattle
+	call PrintText
+	call YesNoBox
+	jr c, .done_trade
+
+	; If the player aborts, repeat the entire dialog.
+	ld a, -1
+	ld [wBT_PartySelectCounter], a
+	farcall BT_SwapRentals
+	jp c, Special_BattleTower_NextRentalBattle
+
+	call BT_IncrementCurSwaps
+	; fallthrough
+.done_trade
+	ld a, 1
+	ldh [hScriptVar], a
+	ret
+
+.new_team
+	ld hl, .NewRentalsText
+	call PrintText
+	jp Special_BattleTower_SelectParticipants
+
+.GetOTPartyLocation:
+	push bc
+	ld a, b
+	dec a
+	call GetPartyLocation
+	pop bc
+	ret
+
+.NewRentalsText:
+	text "We'll hold your"
+	line "#mon safe and"
+	cont "offer you 6 rental"
+	cont "#mon."
+
+	para "Choose #mon"
+	line "to enter."
+	prompt
+
+.TradeBeforeBattle:
+	text "Would you like to"
+	line "trade a #mon"
+	cont "before the battle?"
+	done
+
+.ExpectThese3:
+	text "You can expect to"
+	line "see "
+	text_ram wOTPartyMonNicknames
+	text ","
+	cont ""
+	text_ram wOTPartyMonNicknames + MON_NAME_LENGTH
+	text " and"
+	cont ""
+	text_ram wOTPartyMonNicknames + MON_NAME_LENGTH * 2
+	text "."
+	prompt
+
+.ExpectThese2:
+	text "You can expect to"
+	line "see "
+	text_ram wOTPartyMonNicknames
+	text " and"
+	cont ""
+	text_ram wOTPartyMonNicknames + MON_NAME_LENGTH
+	text "."
+	prompt
+
+.ExactMonUsingMove:
+	text "You can expect to"
+	line "see a "
+	text_ram wOTPartyMonNicknames
+	cont "with "
+	text_ram wStringBuffer1
+	text "."
+	prompt
+
+.SomeMonUsingMove:
+	text "You can expect to"
+	line "see a #mon"
+	cont "with "
+	text_ram wStringBuffer1
+	text "."
+	prompt
+
+.NoTypePreference:
+	text "The opponent"
+	line "doesn't have a"
+	cont "type preference."
+	prompt
+
+.PrefersType:
+	text "The opponent"
+	line "favors "
+	text_ram wStringBuffer1
+	text "-"
+	cont "type #mon."
+	prompt
 
 Special_BattleTower_SelectParticipants:
 	; Clear old BT participants selection
@@ -231,17 +557,29 @@ Special_BattleTower_MaxVolume:
 Special_BattleTower_BeginChallenge:
 ; Initializes Battle Tower challenge data.
 ; possible future idea: occasional special trainers (leaders/etc) after tycoon?
-	; Commit party selection to SRAM
+	call BT_GetBattleMode
+	push af
+
+	; Commit party selection to SRAM in regular mode. Blank it in rental mode.
 	ld a, BANK(sBT_PartySelections)
 	call GetSRAMBank
+	pop af
+	cp BATTLETOWER_RENTALMODE
 	ld hl, wBT_PartySelections
 	ld de, sBT_PartySelections
 	ld bc, PARTY_LENGTH
-	rst CopyBytes
+	push af
+	call nz, CopyBytes
+	ld bc, BATTLETOWER_PARTYDATA_SIZE
+	ld h, d
+	ld l, e
+	pop af
+	ld a, -1
+	call z, ByteFill
 
 	; Reset amount of battled trainers
 	xor a
-	ld [sBT_CurTrainer], a
+	ld [sBT_CurTrainerAndSwap], a
 
 	; Blank previously used opponent Pokémon
 	ld a, -1
@@ -278,23 +616,56 @@ Special_BattleTower_BeginChallenge:
 
 	; Replace the 7th trainer with Tycoon every 3rd run
 	push de
-	ld a, [wBattleTowerCurStreak]
+	call BT_GetCurStreakAddr
+	ld a, [hli]
 	ldh [hDividend], a
-	ld a, [wBattleTowerCurStreak + 1]
+	ld a, [hl]
 	ldh [hDividend + 1], a
 	ld a, BATTLETOWER_STREAK_LENGTH * 3
 	ldh [hDivisor], a
 	ld b, 2
 	call Divide
+
+	; GetCurStreakAddr closes SRAM, so reopen it.
+	ld a, BANK(sBTTrainers)
+	call GetSRAMBank
 	pop de
 	ldh a, [hRemainder]
 	cp BATTLETOWER_STREAK_LENGTH * 2
 	jr nz, .close_sram
 	dec de
-	ld a, BATTLETOWER_TYCOON
+	push de
+	call BT_GetBattleMode
+	pop de
+	cp BATTLETOWER_RENTALMODE
+	ld a, BATTLETOWER_FACTORYHEAD
+	jr z, .got_frontier_brain
+	ld a, BATTLETOWER_TOWERTYCOON
+.got_frontier_brain
 	ld [de], a
 .close_sram
 	jp CloseSRAM
+
+BT_GetBothStreakAddr:
+; Sets hl to the streak address for the current battle mode and de to the top.
+; Closes SRAM.
+	call BT_GetCurStreakAddr
+	call BT_GetBattleMode
+	cp BATTLETOWER_RENTALMODE
+	ld de, wBattleFactoryTopStreak
+	ret z
+	ld de, wBattleTowerTopStreak
+	ret
+
+BT_GetCurStreakAddr:
+; Sets hl to the streak address for the current battle mode.
+; Closes SRAM.
+	call BT_GetBattleMode
+	cp BATTLETOWER_RENTALMODE
+	ld hl, wBattleFactoryCurStreak
+	ret z
+	ld hl, wBattleTowerCurStreak
+	ret
 
 BT_LoadPartySelections:
 ; Loads party selections from SRAM
@@ -309,20 +680,46 @@ BT_LoadPartySelections:
 	rst CopyBytes
 	jp CloseSRAM
 
+BT_GetCurSwaps:
+; Returns amount of performed swaps so far.
+	ld a, BANK(sBT_CurTrainerAndSwap)
+	call GetSRAMBank
+	ld a, [sBT_CurTrainerAndSwap]
+	and BATTLETOWER_SWAPMASK
+	rrca
+	rrca
+	rrca
+	jp CloseSRAM
+
+BT_IncrementCurSwaps:
+; Increments amount of performed swaps so far and returns result in a.
+	ld a, BANK(sBT_CurTrainerAndSwap)
+	call GetSRAMBank
+	ld a, [sBT_CurTrainerAndSwap]
+	add 8
+	ld [sBT_CurTrainerAndSwap], a
+	and BATTLETOWER_SWAPMASK
+	rrca
+	rrca
+	rrca
+	jp CloseSRAM
+
 BT_GetCurTrainer:
 ; Returns beaten trainers so far in a.
-	ld a, BANK(sBT_CurTrainer)
+	ld a, BANK(sBT_CurTrainerAndSwap)
 	call GetSRAMBank
-	ld a, [sBT_CurTrainer]
+	ld a, [sBT_CurTrainerAndSwap]
+	and BATTLETOWER_TRAINERMASK
 	jp CloseSRAM
 
 BT_IncrementCurTrainer:
 ; Increments amount of beaten trainers so far and returns result in a.
-	ld a, BANK(sBT_CurTrainer)
+	ld a, BANK(sBT_CurTrainerAndSwap)
 	call GetSRAMBank
-	ld a, [sBT_CurTrainer]
+	ld a, [sBT_CurTrainerAndSwap]
 	inc a
-	ld [sBT_CurTrainer], a
+	ld [sBT_CurTrainerAndSwap], a
+	and BATTLETOWER_TRAINERMASK
 	jp CloseSRAM
 
 BT_GetCurTrainerIndex:
@@ -364,59 +761,18 @@ Special_BattleTower_LoadOpponentTrainerAndPokemonsWithOTSprite:
 
 INCLUDE "data/trainers/sprites.asm"
 
-Special_BattleTower_MainMenu:
-	ld a, $4
-	ldh [hScriptVar], a
-	ld hl, MenuDataHeader_ChallengeExplanationCancel
-	call LoadMenuHeader
-	call ChallengeExplanationCancelMenu
-	jp CloseWindow
-
-ChallengeExplanationCancelMenu:
-	call VerticalMenu
-	jr c, .Exit
-	ldh a, [hScriptVar]
-	cp $5
-	jr nz, .UsewMenuCursorY
-	ld a, [wMenuCursorY]
-	cp $3
-	ret z
-	jr c, .UsewMenuCursorY
-	dec a
-	jr .LoadToScriptVar
-
-.UsewMenuCursorY:
-	ld a, [wMenuCursorY]
-
-.LoadToScriptVar:
-	ldh [hScriptVar], a
-	ret
-
-.Exit:
-	ld a, $4
-	ldh [hScriptVar], a
-	ret
-
-MenuDataHeader_ChallengeExplanationCancel:
-	db $40 ; flags
-	db  0,  0 ; start coords
-	db  7, 14 ; end coords
-	dw MenuData2_ChallengeExplanationCancel
-	db 1 ; default option
-
-MenuData2_ChallengeExplanationCancel:
-	db $a0 ; flags
-	db 3
-	db "Challenge@"
-	db "Explanation@"
-	db "Cancel@"
-
 BT_SetPlayerOT:
 ; Interprets the selected party mons for entering and populates wOTParty
 ; with the chosen Pokémon from the player. Used for 2 things: legality
 ; checking and to fix the party order according to player choices.
 	; Number of party mons
 	ld a, [wBT_PartySelectCounter]
+	jr _BT_SetPlayerOT
+
+BT_SetRentalOT:
+	ld a, 3
+	; fallthrough
+_BT_SetPlayerOT:
 	ld [wOTPartyCount], a
 
 	; The rest is iterated
@@ -447,6 +803,21 @@ BT_SetPlayerOT:
 	ld de, wOTPartyMonOTs
 	ld a, NAME_LENGTH
 	call .CopyPartyData
+
+	; In rental mode, also copy party selection to SRAM
+	push bc
+	call BT_GetBattleMode
+	pop bc
+	cp BATTLETOWER_RENTALMODE
+	jr nz, .not_rental
+	ld a, BANK(sBT_MonParty)
+	call GetSRAMBank
+	ld hl, wBT_MonParty
+	ld de, sBT_MonParty
+	ld a, 2
+	call .CopyPartyData
+	call CloseSRAM
+.not_rental
 	pop de
 
 	inc c

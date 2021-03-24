@@ -307,8 +307,11 @@ NEXTU
 ; It's only moved here as part of battle initialization, mostly.
 ; Thus, it's OK for it to reuse other WRAM space.
 wBT_PartySelectCounter:: db
+wBT_OpponentTypeArray:: ; fits within a party length.
 wBT_PartySelections:: ds PARTY_LENGTH
-wBT_OTMonParty:: ds BATTLETOWER_PARTYDATA_SIZE
+wBT_MonParty:: ds BATTLETOWER_PARTYDATA_SIZE
+wBT_SecondaryMonParty:: ds BATTLETOWER_PARTYDATA_SIZE ; last rental trainer
+wBT_OTMonParty:: ds BATTLETOWER_PARTYDATA_SIZE ; also for starting rental setup
 ENDU
 
 wBattleMenuCursorBuffer:: dw
@@ -904,8 +907,11 @@ wStoneTableAddress:: dw
 
 wBattleTowerCurStreak:: dw
 wBattleTowerTopStreak:: dw
+wBattleFactoryCurStreak:: dw
+wBattleFactoryTopStreak:: dw
+wBattleFactorySwapCount:: db ; Amount of swaps performed.
 
-	ds 18 ; unused
+	ds 13 ; unused
 
 wMapObjects::
 wPlayerObject:: map_object wPlayer
@@ -1027,9 +1033,8 @@ wFarfetchdPosition:: db
 ; map triggers
 wAlways0SceneID:: db
 wAzaleaTownSceneID:: db
-wBattleTower1FSceneID:: db
-wBattleFactory1FSceneID:: db
-	ds 2 ; unused
+wBattleFacilitySceneID:: db
+	ds 3 ; unused
 wBattleTowerOutsideSceneID:: db
 wBellchimeTrailSceneID:: db
 wBrunosRoomSceneID:: db
