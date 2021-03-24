@@ -169,7 +169,7 @@ BT_SwapRentals:
 	farjp BT_SetRentalOT
 
 .MustSwapBetweenTeams:
-	text "You must swap <PK><MN>"
+	text "You must trade <PK><MN>"
 	line "between the teams!"
 	prompt
 
