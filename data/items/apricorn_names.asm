@@ -1,9 +1,11 @@
 ApricornNames::
-	db "?@"
-	db "Red Apricorn@"
-	db "Blu Apricorn@"
-	db "Ylw Apricorn@"
-	db "Grn Apricorn@"
-	db "Wht Apricorn@"
-	db "Blk Apricorn@"
-	db "Pnk Apricorn@"
+	list_start ApricornNames
+	li "?"
+	li "Red Apricorn"
+	li "Blu Apricorn"
+	li "Ylw Apricorn"
+	li "Grn Apricorn"
+	li "Wht Apricorn"
+	li "Blk Apricorn"
+	li "Pnk Apricorn"
+	assert_list_length NUM_APRICORNS + 1

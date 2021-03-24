@@ -16,6 +16,28 @@ x = \1
 		"{CURRENT_TABLE_START}: expected {d:x} entries, each {d:CURRENT_TABLE_WIDTH} bytes"
 ENDM
 
+list_start: MACRO
+list_index = 0
+if _NARG == 1
+REDEF CURRENT_LIST_START EQUS "\1"
+else
+REDEF CURRENT_LIST_START EQUS "._list_start\@"
+{CURRENT_LIST_START}:
+endc
+ENDM
+
+li: MACRO
+	assert !STRIN(\1, "@"), STRCAT("String terminator \"@\" in list entry: ", \1)
+	db \1, "@"
+list_index = list_index + 1
+ENDM
+
+assert_list_length: MACRO
+x = \1
+	assert x == list_index, \
+		"{CURRENT_LIST_START}: expected {d:x} entries, got {d:list_index}"
+ENDM
+
 def_grass_wildmons: MACRO
 ;\1: map id
 REDEF CURRENT_GRASS_WILDMONS_MAP EQUS "\1"
