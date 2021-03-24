@@ -39,12 +39,14 @@ VermilionCity_MapScriptHeader:
 	object_event 35, 18, SPRITE_BIG_SNORLAX, SPRITEMOVEDATA_SNORLAX, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, VermilionSnorlax, EVENT_VERMILION_CITY_SNORLAX
 	object_event 18, 31, SPRITE_LAWRENCE, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_LAWRENCE_VERMILION_CITY
 	object_event 18, 13, SPRITE_BATTLE_GIRL, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, PAL_NPC_RED, OBJECTTYPE_COMMAND, jumptextfaceplayer, VermilionCityTeacherText, -1
-	object_event 27, 13, SPRITE_GRAMPS, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, VermilionMachokeOwnerText, -1
+	object_event 27, 13, SPRITE_GRAMPS, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, VermilionMachokeOwnerScript, -1
 	pokemon_event 28, 13, MACHOKE, -1, -1, PAL_NPC_BLUE, VermilionMachokeText, -1
 	object_event 16, 20, SPRITE_ROCKER, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_COMMAND, jumptextfaceplayer, VermilionCitySuperNerdText, -1
-	object_event 32, 12, SPRITE_POKEMANIAC, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_COMMAND, jumptextfaceplayer, VermilionCitySuperNerd2Text, -1
+	object_event 32, 12, SPRITE_POKEMANIAC, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, VermilionCitySuperNerd2Script, -1
 	object_event 11,  9, SPRITE_SAILOR, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 3, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, VermilionCitySailorText, -1
 	object_event 31, 16, SPRITE_POKEFAN_M, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_PURPLE, OBJECTTYPE_SCRIPT, 0, VermilionGymBadgeGuy, -1
+	object_event 29, 10, SPRITE_OFFICER_F, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, VermilionCityOfficerFText, EVENT_RESTORED_POWER_TO_KANTO
+	object_event 30, 10, SPRITE_OFFICER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, VermilionCityOfficerText, EVENT_RESTORED_POWER_TO_KANTO
 	cuttree_event 13, 23, EVENT_VERMILION_CITY_CUT_TREE
 
 	object_const_def
@@ -166,6 +168,39 @@ VermilionGymBadgeGuy:
 	setevent EVENT_GOT_BOTTLE_CAP_FROM_VERMILION_GUY
 	jumpthisopenedtext
 
+VermilionMachokeOwnerScript:
+	checkevent EVENT_RESTORED_POWER_TO_KANTO
+	iftrue_jumptextfaceplayer VermilionMachokeOwnerText
+	jumpthistextfaceplayer
+
+	text "My #mon"
+	line "prepared the land"
+
+	para "to construct that"
+	line "huge building!"
+
+	para "It's quite a shame"
+	line "that the public"
+	cont "can't enter yet…"
+	done
+
+VermilionCitySuperNerd2Script:
+	checkevent EVENT_RESTORED_POWER_TO_KANTO
+	iftrue_jumptextfaceplayer VermilionCitySuperNerd2Text
+	jumpthistextfaceplayer
+
+	text "The Battle Factory"
+	line "is brand-new!"
+
+	para "But it draws a"
+	line "huge amount of"
+	cont "power…"
+
+	para "With the Power"
+	line "Plant offline,"
+	cont "it's useless!"
+	done
+
 VermilionCityBadgeGuyBattleEdgeText:
 	text "Having a variety"
 	line "of #mon types"
@@ -269,14 +304,32 @@ VermilionCitySuperNerdText:
 
 VermilionCitySuperNerd2Text:
 	text "The Battle Factory"
-	line "is brand-new!"
+	line "is brand-new, but"
 
-	para "But trainers are"
-	line "already arriving"
+	para "trainers are al-"
+	line "ready arriving"
 
 	para "from distant"
 	line "regions to take"
 	cont "its challenge!"
+	done
+
+VermilionCityOfficerFText:
+	text "The Power Plant's"
+	line "generator is shut"
+	cont "down, so it's not"
+
+	para "safe to open the"
+	line "Battle Factory."
+	done
+
+VermilionCityOfficerText:
+	text "Sorry, the Battle"
+	line "Factory is closed"
+
+	para "until the Power"
+	line "Plant is up and"
+	cont "running again."
 	done
 
 VermilionCitySailorText:
