@@ -245,7 +245,7 @@ ForceMapMusic:
 
 DecompressMetatiles:
 	call TilesetUnchanged
-	ret z
+	jr z, .done
 
 	assert wDecompressedMetatiles == WRAM1_Begin
 	ld hl, wTilesetBlocksBank
@@ -260,6 +260,11 @@ DecompressMetatiles:
 	assert wDecompressedCollisions == WRAM1_Begin
 	ld hl, wTilesetCollisionBank
 	ld c, BANK(wDecompressedCollisions)
+	call .Decompress
+
+.done
+	ld a, MAPCALLBACK_BLOCKS
+	jp RunMapCallback
 
 .Decompress:
 	ld a, [hli]
