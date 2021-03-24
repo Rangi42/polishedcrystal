@@ -507,17 +507,17 @@ Special_BattleTower_NextRentalBattle:
 	prompt
 
 .NoTypePreference:
-	text "The foe doesn't"
-	line "have a type"
-	cont "preference."
+	text "The opponent"
+	line "doesn't have a"
+	cont "type preference."
 	prompt
 
 .PrefersType:
-	text "The foe favours"
-	line ""
+	text "The opponent"
+	line "favors "
 	text_ram wStringBuffer1
-	text "-type"
-	cont "#mon."
+	text "-"
+	cont "type #mon."
 	prompt
 
 Special_BattleTower_SelectParticipants:
