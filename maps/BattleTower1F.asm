@@ -233,11 +233,6 @@ BattleTower1FReceptionistScript:
 		prompt
 	special Special_BattleTower_SelectParticipants
 	iffalse .BattleTowerMenu
-	scall Script_MustSaveBeforeBattle
-	iffalse .BattleTowerMenu
-	sjump Script_PrepareForBattle
-
-Script_MustSaveBeforeBattle:
 	writethistext
 		text "Before entering"
 		line "the Battle Room,"
@@ -246,16 +241,14 @@ Script_MustSaveBeforeBattle:
 		line "be saved."
 		done
 	yesorno
-	iffalse .End
+	iffalse .BattleTowerMenu
 	; Done here to ensure it's saved in case the player resets later.
 	; The scene script running after the player saves but before the
 	; challenge starts is harmless since there's no challenge prepared.
 	setscene 0
 	special Special_TryQuickSave
-.End:
-	end
+	iffalse .BattleTowerMenu
 
-Script_PrepareForBattle:
 	; Initializes opponent trainers and stores player mon choices in SRAM
 	special Special_BattleTower_BeginChallenge
 	; fallthrough

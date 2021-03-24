@@ -158,7 +158,7 @@ BattleFactory1FReceptionistScript:
 		done
 	promptbutton
 	checkevent EVENT_BATTLE_FACTORY_INTRO
-	iftrue .Menu
+	iftrue .BattleFactoryMenu
 
 	; only ask once, so set the flag regardless
 	setevent EVENT_BATTLE_FACTORY_INTRO
@@ -168,7 +168,7 @@ BattleFactory1FReceptionistScript:
 		cont "facility?"
 		done
 	yesorno
-	iffalse .Menu
+	iffalse .BattleFactoryMenu
 
 .Explanation:
 	writethistext
@@ -200,7 +200,7 @@ BattleFactory1FReceptionistScript:
 		line "challenge."
 		prompt
 	; fallthrough
-.Menu:
+.BattleFactoryMenu:
 	; Setscene here in case the player aborted a quicksave prompted by challenge
 	setscene $1
 	writethistext
@@ -219,8 +219,21 @@ BattleFactory1FReceptionistScript:
 	endtext
 
 .Challenge:
-	scall Script_MustSaveBeforeBattle
-	iffalse .Menu
+	writethistext
+		text "Before entering"
+		line "the Battle Floor,"
+
+		para "your progress will"
+		line "be saved."
+		done
+	yesorno
+	iffalse .BattleFactoryMenu
+	; Done here to ensure it's saved in case the player resets later.
+	; The scene script running after the player saves but before the
+	; challenge starts is harmless since there's no challenge prepared.
+	setscene 0
+	special Special_TryQuickSave
+	iffalse .BattleFactoryMenu
 
 	; Set this early in case the player leaves before picking their team.
 	; This prevents them from re-rolling without forfeiting a streak.
