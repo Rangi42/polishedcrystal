@@ -246,13 +246,13 @@ Script_MustSaveBeforeBattle:
 		line "be saved."
 		done
 	yesorno
-	iffalse_end
-
+	iffalse .End
 	; Done here to ensure it's saved in case the player resets later.
 	; The scene script running after the player saves but before the
 	; challenge starts is harmless since there's no challenge prepared.
 	setscene 0
 	special Special_TryQuickSave
+.End:
 	end
 
 Script_PrepareForBattle:
