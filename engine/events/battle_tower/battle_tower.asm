@@ -95,6 +95,9 @@ Special_BattleTower_CommitChallengeResult:
 ; Does not reset the challenge state, that is done by saving the game.
 ; This ensures that resetting the game doesn't annul this action.
 ; Returns true script-wise if we beat the Tycoon.
+	; Reload party data, which might have been replaced with rentals.
+	farcall LoadPokemonData
+
 	; Award BP depending on how many trainers we defeated.
 
 	; First byte is always zero (GiveBP wants a 2-byte parameter as input)
