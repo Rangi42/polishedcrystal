@@ -211,6 +211,12 @@ PopulateBattleTowerTeam:
 	farcall BT_LoadPartySelections
 	farcall BT_SetPlayerOT
 
+	; Now copy the OT data to the player party struct
+	ld hl, wOTPartyCount
+	ld de, wPartyCount
+	ld bc, wPartyMonNicknamesEnd - wPartyCount
+	rst CopyBytes
+
 	; Generate opponent trainer sets.
 	call GenerateOpponentTrainer
 	jr .copy_player_data
@@ -241,14 +247,14 @@ PopulateBattleTowerTeam:
 	pop bc
 	dec b
 	jr nz, .rental_loop
-	; fallthrough
-.copy_player_data
+
 	; Now copy the OT data to the player party struct
 	ld hl, wOTPartyCount
 	ld de, wPartyCount
 	ld bc, wPartyMonNicknamesEnd - wPartyCount
 	rst CopyBytes
-
+	; fallthrough
+.copy_player_data
 	; Now load opponent party data into OT.
 	call LoadOpponentParty
 
