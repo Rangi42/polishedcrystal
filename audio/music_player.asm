@@ -334,6 +334,11 @@ MusicPlayerLoop:
 	res 2, [hl] ; 8x8 sprites
 	ld hl, rIE
 	res LCD_STAT, [hl]
+
+	ld a, LOW(LCDGeneric)
+	ldh [hFunctionTargetLo], a
+	ld a, HIGH(LCDGeneric)
+	ldh [hFunctionTargetHi], a
 	ret
 
 .start:
