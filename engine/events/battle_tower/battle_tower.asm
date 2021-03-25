@@ -139,8 +139,7 @@ Special_BattleTower_CommitChallengeResult:
 	ld [de], a
 
 	; If we're in rental mode, also possibly update swap count.
-	call BT_GetBattleMode
-	cp BATTLETOWER_RENTALMODE
+	call BT_InRentalMode
 	jr nz, .record_done
 	call BT_GetCurSwaps
 	ld b, a
@@ -189,8 +188,7 @@ Special_BattleTower_CommitChallengeResult:
 	ldh [hScriptVar], a
 
 	; Also reset amount of performed Battle Factory swaps if applicable.
-	call BT_GetBattleMode
-	cp BATTLETOWER_RENTALMODE
+	call BT_InRentalMode
 	ret nz
 	xor a
 	ld [wBattleFactorySwapCount], a
@@ -207,6 +205,20 @@ BT_GetChallengeState:
 	call BT_GetTowerStatus
 	ret c
 	and BATTLETOWER_CHALLENGEMASK
+	ret
+
+BT_InRentalMode:
+; Returns z if we're in rental mode.
+	push de
+	push bc
+	call BT_GetBattleMode
+	pop bc
+	pop de
+	jr c, .not_rental_mode
+	cp BATTLETOWER_RENTALMODE
+	ret
+.not_rental_mode
+	or 1
 	ret
 
 BT_GetBattleMode:
@@ -637,10 +649,7 @@ Special_BattleTower_BeginChallenge:
 	cp BATTLETOWER_STREAK_LENGTH * 2
 	jr nz, .close_sram
 	dec de
-	push de
-	call BT_GetBattleMode
-	pop de
-	cp BATTLETOWER_RENTALMODE
+	call BT_InRentalMode
 	ld a, BATTLETOWER_FACTORYHEAD
 	jr z, .got_frontier_brain
 	ld a, BATTLETOWER_TOWERTYCOON
@@ -653,8 +662,7 @@ BT_GetBothStreakAddr:
 ; Sets hl to the streak address for the current battle mode and de to the top.
 ; Closes SRAM.
 	call BT_GetCurStreakAddr
-	call BT_GetBattleMode
-	cp BATTLETOWER_RENTALMODE
+	call BT_InRentalMode
 	ld de, wBattleFactoryTopStreak
 	ret z
 	ld de, wBattleTowerTopStreak
@@ -663,8 +671,7 @@ BT_GetBothStreakAddr:
 BT_GetCurStreakAddr:
 ; Sets hl to the streak address for the current battle mode.
 ; Closes SRAM.
-	call BT_GetBattleMode
-	cp BATTLETOWER_RENTALMODE
+	call BT_InRentalMode
 	ld hl, wBattleFactoryCurStreak
 	ret z
 	ld hl, wBattleTowerCurStreak
@@ -808,10 +815,7 @@ _BT_SetPlayerOT:
 	call .CopyPartyData
 
 	; In rental mode, also copy party selection to SRAM
-	push bc
-	call BT_GetBattleMode
-	pop bc
-	cp BATTLETOWER_RENTALMODE
+	call BT_InRentalMode
 	jr nz, .not_rental
 	ld a, BANK(sBT_MonParty)
 	call GetSRAMBank
@@ -914,6 +918,9 @@ BT_LegalityCheck:
 	jr z, .identical
 
 .species_not_identical
+	call BT_InRentalMode
+	jr z, .item_not_identical
+
 	ld a, MON_ITEM
 	call .GetPartyValue
 

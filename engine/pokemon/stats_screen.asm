@@ -550,8 +550,7 @@ StatsScreen_LoadGFX:
 
 .PlaceOTInfo:
 	; for rental mons, replace the whole thing with "Rental #mon"
-	farcall BT_GetBattleMode
-	cp BATTLETOWER_RENTALMODE
+	farcall BT_InRentalMode
 	jr nz, .not_rental_mon
 	hlcoord 0, 15
 	ld de, .Rental_OT
@@ -754,8 +753,7 @@ TN_PrintToD:
 	db "Met/@"
 
 TN_PrintLocation:
-	farcall BT_GetBattleMode
-	cp BATTLETOWER_RENTALMODE
+	farcall BT_InRentalMode
 	ld de, .battle_factory
 	jr z, .print
 	ld a, [wTempMonCaughtLocation]

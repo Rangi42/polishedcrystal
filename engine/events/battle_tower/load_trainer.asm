@@ -204,8 +204,7 @@ PopulateBattleTowerTeam:
 	; to get the party in the correct order. Yes, we need to do this,
 	; we can't abuse the fact that the legality checker already did
 	; this, or we run into trouble after the first battle.
-	farcall BT_GetBattleMode
-	cp BATTLETOWER_RENTALMODE
+	farcall BT_InRentalMode
 	jr z, .rental
 
 	farcall BT_LoadPartySelections
@@ -297,10 +296,9 @@ GenerateOpponentTrainer:
 	jr nz, .generate_team
 
 	; Don't reuse recently seen mons, or anything in the player rental team.
-	farcall BT_GetBattleMode
+	farcall BT_InRentalMode
 	ld b, BATTLETOWER_PARTY_LENGTH
 	ld de, wBT_OTMonParty
-	cp BATTLETOWER_RENTALMODE
 	jr nz, .not_rental
 
 	; Check rental lineup.
@@ -698,10 +696,7 @@ BT_GetPointsForTrainer:
 	inc b ; Current challenge run (1-36, 37+ means 255+ wins, handled above)
 	inc c ; Current trainer (1-7)
 
-	push hl
-	farcall BT_GetBattleMode
-	pop hl
-	cp BATTLETOWER_RENTALMODE
+	farcall BT_InRentalMode
 	ld a, c
 	jr nz, .not_rental
 
@@ -737,10 +732,7 @@ BT_GetEVsForTrainer:
 ; Return EVs for given trainer in a. Value is (CurStreak + CurTrainer) * 16,
 ; capped at 252 in Battle Tower, and always 252 in Battle Factory.
 	ld b, a
-	push hl
-	farcall BT_GetBattleMode
-	pop hl
-	cp BATTLETOWER_RENTALMODE
+	farcall BT_InRentalMode
 	jr z, .max
 
 	; If our current streak exceeds 255, just return 252.
