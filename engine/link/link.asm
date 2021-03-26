@@ -683,12 +683,12 @@ PlaceTradePartnerNamesAndParty:
 	hlcoord 4, 0
 	ld de, wPlayerName
 	rst PlaceString
-	ld a, $14
+	ld a, $13
 	ld [bc], a
 	hlcoord 4, 8
 	ld de, wOTPlayerName
 	rst PlaceString
-	ld a, $14
+	ld a, $13
 	ld [bc], a
 	hlcoord 7, 1
 	ld a, [wPartyCount]
@@ -964,7 +964,7 @@ LinkTradeMenu:
 	ld h, [hl]
 	ld l, a
 	ld a, [hl]
-	cp $1f
+	cp $16
 	jr nz, .not_currently_selected
 	ld a, [wCursorOffCharacter]
 	ld [hl], a
@@ -1016,15 +1016,15 @@ LinkTradeMenu:
 	ld c, a
 	add hl, bc
 	ld a, [hl]
-	cp $1f
+	cp $16
 	jr z, .cursor_already_there
 	ld [wCursorOffCharacter], a
-	ld [hl], $1f
+	ld [hl], $16
 	push hl
 	push bc
 	ld bc, MON_NAME_LENGTH
 	add hl, bc
-	ld [hl], $1f
+	ld [hl], $16
 	pop bc
 	pop hl
 .cursor_already_there
@@ -1745,11 +1745,11 @@ LinkTextbox::
 	push hl
 
 	push hl
-	ld a, $30
+	ld a, $20
 	ld [hli], a
-	inc a ; $31
+	inc a ; $21
 	call .fill_row
-	inc a ; $32
+	inc a ; $22
 	ld [hl], a
 	pop hl
 
@@ -1757,22 +1757,22 @@ LinkTextbox::
 	add hl, de
 .loop
 	push hl
-	ld a, $33
+	ld a, $23
 	ld [hli], a
 	ld a, " "
 	call .fill_row
-	ld [hl], $34
+	ld [hl], $24
 	pop hl
 	ld de, SCREEN_WIDTH
 	add hl, de
 	dec b
 	jr nz, .loop
 
-	ld a, $35
+	ld a, $25
 	ld [hli], a
-	inc a ; $36
+	inc a ; $26
 	call .fill_row
-	inc a ; $37
+	inc a ; $27
 	ld [hl], a
 
 	pop hl
@@ -1829,11 +1829,8 @@ PrintWaitingTextAndSyncAndExchangeNybble:
 LoadTradeScreenGFX:
 	ld hl, TradeScreenGFX
 	ld de, vTiles2
-	lb bc, BANK(TradeScreenGFX), 70
+	lb bc, BANK(TradeScreenGFX), 40
 	jp DecompressRequest2bpp
-
-TradeScreenGFX:
-INCBIN "gfx/trade/border.2bpp.lz"
 
 SetTradeRoomBGPals:
 	farcall LoadLinkTradePalette
