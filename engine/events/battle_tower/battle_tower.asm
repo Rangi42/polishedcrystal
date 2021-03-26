@@ -95,6 +95,18 @@ Special_BattleTower_CommitChallengeResult:
 ; Does not reset the challenge state, that is done by saving the game.
 ; This ensures that resetting the game doesn't annul this action.
 ; Returns true script-wise if we beat the Tycoon.
+	; After finishing, we want to clear the facility battle state.
+	call .do_it
+	push af
+	ld a, BANK(sBattleTowerChallengeState)
+	call GetSRAMBank
+	xor a
+	ld [sBattleTowerChallengeState], a
+	call CloseSRAM
+	pop af
+	ret
+
+.do_it
 	; Reload party data, which might have been replaced with rentals.
 	farcall LoadPokemonData
 
@@ -118,6 +130,22 @@ Special_BattleTower_CommitChallengeResult:
 	jr .bp_loop
 
 .bp_done
+	; If we're in rental mode, also possibly update swap count.
+	call BT_InRentalMode
+	jr nz, .check_record
+	call BT_GetCurSwaps
+	ld b, a
+	ld a, [wBattleFactorySwapCount]
+	add b
+
+	; Cap at 99 (it's not really useful past 56 anyway).
+	cp 100
+	jr c, .got_swaps
+	ld a, 99
+.got_swaps
+	ld [wBattleFactorySwapCount], a
+
+.check_record
 	; Now, handle streak. Append defeated trainers to current winstreak.
 	call BT_GetBothStreakAddr
 	inc hl
@@ -137,22 +165,6 @@ Special_BattleTower_CommitChallengeResult:
 	inc de
 	ld a, [hl]
 	ld [de], a
-
-	; If we're in rental mode, also possibly update swap count.
-	call BT_InRentalMode
-	jr nz, .record_done
-	call BT_GetCurSwaps
-	ld b, a
-	ld a, [wBattleFactorySwapCount]
-	add b
-
-	; Cap at 99 (it's not really useful past 56 anyway).
-	cp 100
-	jr c, .got_swaps
-	ld a, 99
-.got_swaps
-	ld [wBattleFactorySwapCount], a
-	jr .record_done
 
 .no_new_hibyte_record
 	inc de

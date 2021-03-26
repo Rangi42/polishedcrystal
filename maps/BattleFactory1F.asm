@@ -246,6 +246,7 @@ BattleFactory1FReceptionistScript:
 	; fallthrough
 Script_ReturnToRentalChallenge:
 	; From this point onwards, resetting the game should count as a streak loss
+	setscene 0
 	setval BATTLETOWER_CHALLENGE_IN_PROGRESS
 	special Special_BattleTower_SetChallengeState
 

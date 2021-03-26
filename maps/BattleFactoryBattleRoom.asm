@@ -53,6 +53,7 @@ Script_LostBattleFactory:
 	sjump Script_ReturnToBattleFactoryLobby
 
 Script_BeatenAllFactoryTrainers:
+	special FadeOutPalettes
 	setval BATTLETOWER_WON_CHALLENGE
 	special Special_BattleTower_SetChallengeState
 	; fallthrough

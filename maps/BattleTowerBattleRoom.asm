@@ -123,6 +123,7 @@ Script_LostBattleTower:
 	sjump Script_ReturnToBattleTowerLobby
 
 Script_BeatenAllTowerTrainers:
+	special FadeOutPalettes
 	setval BATTLETOWER_WON_CHALLENGE
 	special Special_BattleTower_SetChallengeState
 	; fallthrough
