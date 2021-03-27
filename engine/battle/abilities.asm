@@ -1041,6 +1041,7 @@ ApplySpeedAbilities:
 	cp QUICK_FEET
 	ret nz
 	ld a, BATTLE_VARS_STATUS
+	call GetBattleVar
 	and a
 	ret z
 	ln a, 3, 2 ; x1.5
