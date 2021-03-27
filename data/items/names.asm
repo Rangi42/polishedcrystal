@@ -255,7 +255,7 @@ endc
 	li "Old Amber"
 	li "Mulch"
 	li "Sweet Honey"
-	li "Mint"
+	li "Mint Leaf"
 	li "Flower Mail"
 	li "Surf Mail"
 	li "LiteBlueMail"
