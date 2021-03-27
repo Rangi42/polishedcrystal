@@ -234,7 +234,7 @@ endr
 	cp 3
 	jr z, .loop2
 
-	ld bc, 2 * NUM_GRASSMON
+	ld bc, 3 * NUM_GRASSMON
 	rst AddNTimes
 .loop3
 	; Choose one of the middle three Pokemon.
@@ -246,6 +246,7 @@ endr
 	jr nc, .loop3
 	ld e, a
 	ld d, 0
+	add hl, de
 	add hl, de
 	add hl, de
 	inc hl ; skip level
