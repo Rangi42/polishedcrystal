@@ -469,9 +469,21 @@ BT_AppendOTMon:
 	pop de
 	pop hl
 
+	; Look up 3 actual DV bytes from a 1-byte ID
+	ld a, [hli]
+	ld b, a
+	add a
+	add b
+	push hl
+	add LOW(BattleTower_DVSpreads)
+	ld l, a
+	adc HIGH(BattleTower_DVSpreads)
+	sub l
+	ld h, a
 	ld bc, 3
 	ld a, MON_DVS
 	call .Copy
+	pop hl
 
 	; The 2nd personality byte is specified as part of extspecies
 	ld bc, 1
@@ -895,3 +907,4 @@ BT_SetLevel:
 	jr .loop
 
 INCLUDE "data/battle_tower/parties.asm"
+INCLUDE "data/battle_tower/dvs.asm"
