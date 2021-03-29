@@ -101,6 +101,8 @@ FarChangeStat:
 	call GetOpponentAbilityAfterMoldBreaker
 	cp CLEAR_BODY
 	jr z, .ability_immune
+	cp WHITE_SMOKE
+	jr z, .ability_immune
 	cp HYPER_CUTTER
 	ld c, ATTACK
 	jr z, .ability_check

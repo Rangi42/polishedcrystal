@@ -66,6 +66,7 @@ AbilityNames:
 	dw Drought
 	dw ArenaTrap
 	dw VitalSpirit
+	dw WhiteSmoke
 	dw ShellArmor
 	dw TangledFeet
 	dw MotorDrive
@@ -213,6 +214,7 @@ RockHead:        rawchar "Rock Head@"
 Drought:         rawchar "Drought@"
 ArenaTrap:       rawchar "Arena Trap@"
 VitalSpirit:     rawchar "Vital Spirit@"
+WhiteSmoke:      rawchar "White Smoke@"
 ShellArmor:      rawchar "Shell Armor@"
 TangledFeet:     rawchar "Tangled Feet@"
 MotorDrive:      rawchar "Motor Drive@"
