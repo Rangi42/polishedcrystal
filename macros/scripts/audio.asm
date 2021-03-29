@@ -35,7 +35,7 @@ notetype: MACRO
 	db notetype_cmd
 	db \1 ; note_length
 	if _NARG >= 2
-	db \2 ; intensity
+		db \2 ; intensity
 	endc
 ENDM
 
@@ -72,11 +72,11 @@ ENDM
 	const sound_duty_cmd
 sound_duty: MACRO
 	db sound_duty_cmd
-if _NARG == 4
-	db \1 | (\2 << 2) | (\3 << 4) | (\4 << 6) ; duty sequence
-else
-	db \1 ; duty sequence byte
-endc
+	if _NARG == 4
+		db \1 | (\2 << 2) | (\3 << 4) | (\4 << 6) ; duty sequence
+	else
+		db \1 ; duty sequence byte
+	endc
 ENDM
 
 	const togglesfx_cmd

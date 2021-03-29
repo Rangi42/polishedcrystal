@@ -41,16 +41,16 @@ dbbwww: MACRO
 ENDM
 
 dn: MACRO
-rept _NARG / 2
-	db (\1) << 4 + (\2)
-	shift 2
-endr
+	rept _NARG / 2
+		db (\1) << 4 + (\2)
+		shift 2
+	endr
 ENDM
 
 dx: MACRO
-for x, 8 * ((\1) - 1), -1, -8
-	db LOW((\2) >> x)
-endr
+	for x, 8 * ((\1) - 1), -1, -8
+		db LOW((\2) >> x)
+	endr
 ENDM
 
 dt: MACRO ; three-byte (big-endian)
@@ -66,17 +66,17 @@ bigdw: MACRO ; big-endian word
 ENDM
 
 dba: MACRO ; dbw bank, address
-rept _NARG
-	dbw BANK(\1), \1
-	shift
-endr
+	rept _NARG
+		dbw BANK(\1), \1
+		shift
+	endr
 ENDM
 
 dab: MACRO ; dwb address, bank
-rept _NARG
-	dwb \1, BANK(\1)
-	shift
-endr
+	rept _NARG
+		dwb \1, BANK(\1)
+		shift
+	endr
 ENDM
 
 dbba: MACRO
@@ -90,11 +90,11 @@ dbbba: MACRO
 ENDM
 
 dbpixel: MACRO
-if _NARG >= 4
-	db \1 * 8 + \3, \2 * 8 + \4
-else
-	db \1 * 8, \2 * 8
-endc
+	if _NARG >= 4
+		db \1 * 8 + \3, \2 * 8 + \4
+	else
+		db \1 * 8, \2 * 8
+	endc
 ENDM
 
 dsprite: MACRO
@@ -102,60 +102,60 @@ dsprite: MACRO
 ENDM
 
 bcd: MACRO
-rept _NARG
-	dn ((\1) % 100) / 10, (\1) % 10
-	shift
-endr
+	rept _NARG
+		dn ((\1) % 100) / 10, (\1) % 10
+		shift
+	endr
 ENDM
 
 dp: MACRO ; db species, extspecies | form
-if _NARG == 2
-	db LOW(\1), HIGH(\1) << MON_EXTSPECIES_F | \2
-else
-	db LOW(\1), HIGH(\1) << MON_EXTSPECIES_F
-endc
+	if _NARG == 2
+		db LOW(\1), HIGH(\1) << MON_EXTSPECIES_F | \2
+	else
+		db LOW(\1), HIGH(\1) << MON_EXTSPECIES_F
+	endc
 ENDM
 
 dbp: MACRO
 	db \1
-if _NARG == 3
-	dp \2, \3
-else
-	dp \2
-endc
+	if _NARG == 3
+		dp \2, \3
+	else
+		dp \2
+	endc
 ENDM
 
 dpb: MACRO
-if _NARG == 3
-	dp \1, \2
-	shift
-else
-	dp \1
-endc
+	if _NARG == 3
+		dp \1, \2
+		shift
+	else
+		dp \1
+	endc
 	db \2
 ENDM
 
 dpw: MACRO
-if _NARG == 3
-	dp \1, \2
-	shift
-else
-	dp \1
-endc
+	if _NARG == 3
+		dp \1, \2
+		shift
+	else
+		dp \1
+	endc
 	dw \2
 ENDM
 
 
 genders: MACRO
 ; eight arguments, all MALE or FEMALE
-x = 0
-y = 1
-rept _NARG
-	if !STRCMP("\1", "FEMALE")
-x = x | y
-	endc
-y = y * 2
-	shift
-endr
+	def x = 0
+	def y = 1
+	rept _NARG
+		if !STRCMP("\1", "FEMALE")
+			def x = x | y
+		endc
+		def y = y * 2
+		shift
+	endr
 	db x
 ENDM

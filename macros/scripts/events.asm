@@ -191,22 +191,22 @@ ENDM
 giveitem: MACRO
 	db giveitem_command
 	db \1 ; item
-if _NARG == 2
-	db \2 ; quantity
-else
-	db 1
-endc
+	if _NARG == 2
+		db \2 ; quantity
+	else
+		db 1
+	endc
 ENDM
 
 	const takeitem_command
 takeitem: MACRO
 	db takeitem_command
 	db \1 ; item
-if _NARG == 2
-	db \2 ; quantity
-else
-	db 1
-endc
+	if _NARG == 2
+		db \2 ; quantity
+	else
+		db 1
+	endc
 ENDM
 
 	const checkitem_command
@@ -289,25 +289,25 @@ givepoke: MACRO
 	db givepoke_command
 	db \1 ; pokemon
 	if _NARG >= 3
-	db \2 ; form
-	db \3 ; level
+		db \2 ; form
+		db \3 ; level
 	else
-	db PLAIN_FORM
-	db \2 ; level
+		db PLAIN_FORM
+		db \2 ; level
 	endc
 	if _NARG >= 4
-	db \4 ; item
+		db \4 ; item
 	else
-	db NO_ITEM
+		db NO_ITEM
 	endc
 	if _NARG >= 5
-	db \5 ; trainer
-	if \5
-	dw \6 ; trainer_name_pointer
-	dw \7 ; pkmn_nickname
-	endc
+		db \5 ; trainer
+		if \5
+			dw \6 ; trainer_name_pointer
+			dw \7 ; pkmn_nickname
+		endc
 	else
-	db FALSE ; no trainer
+		db FALSE ; no trainer
 	endc
 ENDM
 
@@ -316,11 +316,11 @@ giveegg: MACRO
 	db giveegg_command
 	db \1 ; pkmn
 	if _NARG >= 3
-	db \2 ; form
-	db \3 ; level
+		db \2 ; form
+		db \3 ; level
 	else
-	db PLAIN_FORM
-	db \2 ; level
+		db PLAIN_FORM
+		db \2 ; level
 	endc
 ENDM
 
@@ -549,13 +549,13 @@ ENDM
 pokepic: MACRO
 	db pokepic_command
 	db \1 ; pokemon
-if \1 == 0
-	db -1 ; party mon
-elif _NARG == 2
-	db \2 ; form
-else
-	db 0
-endc
+	if \1 == 0
+		db -1 ; party mon
+	elif _NARG == 2
+		db \2 ; form
+	else
+		db 0
+	endc
 ENDM
 
 	const closepokepic_command
@@ -587,13 +587,13 @@ ENDM
 loadwildmon: MACRO
 	db loadwildmon_command
 	db \1 ; pokemon
-if _NARG == 3
-	db \2 ; form
-	db \3 ; level
-else
-	db 0  ; form
-	db \2 ; level
-endc
+	if _NARG == 3
+		db \2 ; form
+		db \3 ; level
+	else
+		db 0  ; form
+		db \2 ; level
+	endc
 ENDM
 
 	const loadtrainer_command
@@ -968,11 +968,11 @@ ENDM
 verbosegiveitem: MACRO
 	db verbosegiveitem_command
 	db \1 ; item
-if _NARG == 2
-	db \2 ; quantity
-else
-	db 1
-endc
+	if _NARG == 2
+		db \2 ; quantity
+	else
+		db 1
+	endc
 ENDM
 
 	const verbosegiveitemvar_command
@@ -1231,11 +1231,11 @@ ENDM
 giveapricorn: MACRO
 	db giveapricorn_command
 	db \1 ; apricorn
-if _NARG == 2
-	db \2 ; quantity
-else
-	db 1
-endc
+	if _NARG == 2
+		db \2 ; quantity
+	else
+		db 1
+	endc
 ENDM
 
 	const paintingpic_command

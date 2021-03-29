@@ -7,31 +7,31 @@ ENDM
 abilities_for: MACRO
 ; mon, ability1, ability2, hiddenability
 	db \2, \3, \4
-ABIL_\1_\4 = HIDDEN_ABILITY
-ABIL_\1_\3 = ABILITY_2
-ABIL_\1_\2 = ABILITY_1
+	def ABIL_\1_\4 = HIDDEN_ABILITY
+	def ABIL_\1_\3 = ABILITY_2
+	def ABIL_\1_\2 = ABILITY_1
 ENDM
 
 tmhm: MACRO
-; initialize bytes to 0
-for n, (NUM_TM_HM_TUTOR + 7) / 8
-_tm{d:n} = 0
-endr
-; set bits of bytes
-rept _NARG
-	if DEF(\1_TMNUM)
-n = (\1_TMNUM - 1) / 8
-i = (\1_TMNUM - 1) % 8
-_tm{d:n} = _tm{d:n} | (1 << i)
-	else
-		fail "\1 is not a TM, HM, or tutor move"
-	endc
-	shift
-endr
-; output bytes
-for n, (NUM_TM_HM_TUTOR + 7) / 8
-	db _tm{d:n}
-endr
+	; initialize bytes to 0
+	for n, (NUM_TM_HM_TUTOR + 7) / 8
+		def _tm{d:n} = 0
+	endr
+	; set bits of bytes
+	rept _NARG
+		if DEF(\1_TMNUM)
+			def n = (\1_TMNUM - 1) / 8
+			def i = (\1_TMNUM - 1) % 8
+			def _tm{d:n} = _tm{d:n} | (1 << i)
+		else
+			fail "\1 is not a TM, HM, or tutor move"
+		endc
+		shift
+	endr
+	; output bytes
+	for n, (NUM_TM_HM_TUTOR + 7) / 8
+		db _tm{d:n}
+	endr
 ENDM
 
 BaseData::
