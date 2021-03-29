@@ -1451,7 +1451,7 @@
 	dbp 10, DITTO
 	; nite
 	dbp 12, DROWZEE
-	dbp 11, RATTATA
+	dbp 11, RATTATA, ALOLAN_FORM
 	dbp 12, HOOTHOOT
 	dbp 10, ABRA
 	dbp 12, JIGGLYPUFF
@@ -1586,7 +1586,7 @@
 	dbp 15, TAUROS
 	; nite
 	dbp 16, MEOWTH
-	dbp 16, RATICATE
+	dbp 16, RATICATE, ALOLAN_FORM
 	dbp 15, ELEKID
 	dbp 16, NOCTOWL
 	dbp 18, MEOWTH
