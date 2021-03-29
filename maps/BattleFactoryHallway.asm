@@ -127,6 +127,7 @@ BattleFactoryHallwayFollowReceptionist:
 	; fallthrough
 .NextRentalBattle:
 	opentext
+.NextRentalBattle_AfterOpenText:
 	writethistext
 		text "I've researched the"
 		line "next opponent."
@@ -135,15 +136,14 @@ BattleFactoryHallwayFollowReceptionist:
 	special Special_BattleTower_NextRentalBattle
 	iftrue .Continue
 
-	opentext
 	writethistext
 		text "Cancel your run?"
 		line "This counts as a"
 		cont "streak loss."
 		done
 	yesorno
+	iffalse .NextRentalBattle_AfterOpenText
 	closetext
-	iffalse .NextRentalBattle
 
 	; Player aborted the run.
 	special FadeOutPalettes
@@ -151,7 +151,8 @@ BattleFactoryHallwayFollowReceptionist:
 
 .Continue:
 	faceobject PLAYER, BATTLEFACTORYHALLWAY_RECEPTIONIST
-	showtext .PleaseStepThisWayText
+	writetext .PleaseStepThisWayText
+	closetext
 	applymovement BATTLEFACTORYHALLWAY_RECEPTIONIST, .StepAbovePlayerMovement
 	follow BATTLEFACTORYHALLWAY_RECEPTIONIST, PLAYER
 	applymovement BATTLEFACTORYHALLWAY_RECEPTIONIST, .StepOntoFloorMovement
@@ -174,7 +175,7 @@ BattleFactoryHallwayFollowReceptionist:
 .PleaseStepThisWayText:
 	text "Please step this"
 	line "way."
-	done
+	prompt
 
 .StepAbovePlayerMovement:
 	step_up
