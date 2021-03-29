@@ -258,7 +258,6 @@ Script_ReturnToRentalChallenge:
 	waitbutton
 	closetext
 
-	musicfadeout MUSIC_NONE, 8
 	follow BATTLEFACTORY1F_RECEPTIONIST, PLAYER
 	applymovement BATTLEFACTORY1F_RECEPTIONIST, .WalkToHallway
 	stopfollow
