@@ -25,6 +25,7 @@ AI_Redundant:
 	dbw EFFECT_ENCORE,        .Encore
 	dbw EFFECT_SLEEP_TALK,    .SleepTalk
 	dbw EFFECT_MEAN_LOOK,     .MeanLook
+	dbw EFFECT_CURSE,         .Curse
 	dbw EFFECT_SPIKES,        .Spikes
 	dbw EFFECT_TOXIC_SPIKES,  .ToxicSpikes
 	dbw EFFECT_FORESIGHT,     .Foresight
@@ -167,6 +168,13 @@ AI_Redundant:
 	jr z, .Redundant
 	ld a, [wPlayerSubStatus1]
 	bit SUBSTATUS_IN_LOVE, a
+	ret
+
+.Curse:
+	call CheckIfUserIsGhostType
+	jr nz, .NotRedundant
+	ld a, [wPlayerSubStatus1]
+	bit SUBSTATUS_CURSE, a
 	ret
 
 .RainDance:
