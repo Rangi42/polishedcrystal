@@ -4360,6 +4360,47 @@ Battle_StatsScreen:
 	rst CopyBytes
 	jp EnableLCD
 
+AI_OpponentCanSwitch:
+	call CallOpponentTurn
+AI_UserCanSwitch:
+; Wrapper around UserCanSwitch that also checks if we have any non-fainted in
+; the party. Doesn't have a proper message for that case.
+	farcall CheckAnyOtherAliveMons
+	jr z, UserCanSwitch
+	or 1
+	ret
+
+UserCanSwitch:
+; Returns z if the user can switch, with the message in hl if they can't.
+	predef GetUserItemAfterUnnerve
+	ld a, b
+	cp HELD_SHED_SHELL
+	ret z
+	call CheckIfUserIsGhostType
+	ret z
+	farcall CheckIfTrappedByAbility
+	jr nz, .check_other_trapped
+	ld b, a
+	farcall BufferAbility
+	ld hl, BattleText_PkmnCantBeRecalledAbility
+	or 1
+	ret
+.check_other_trapped
+	ldh a, [hBattleTurn]
+	and a
+	ld a, [wPlayerWrapCount]
+	jr z, .got_wrap_count
+	ld a, [wEnemyWrapCount]
+.got_wrap_count
+	and a
+	ld hl, BattleText_PkmnCantBeRecalled
+	ret nz
+
+	ld a, BATTLE_VARS_SUBSTATUS2_OPP
+	call GetBattleVar
+	bit SUBSTATUS_CANT_RUN, a
+	ret
+
 TryPlayerSwitch:
 	ld a, [wCurBattleMon]
 	ld d, a
@@ -4372,30 +4413,8 @@ TryPlayerSwitch:
 
 .check_trapped
 	call SetPlayerTurn
-	predef GetUserItemAfterUnnerve
-	ld a, b
-	cp HELD_SHED_SHELL
+	call UserCanSwitch
 	jr z, .try_switch
-	call CheckIfUserIsGhostType
-	jr z, .try_switch
-	farcall CheckIfTrappedByAbility
-	jr nz, .check_other_trapped
-	call GetOpponentAbility
-	ld b, a
-	farcall BufferAbility
-	ld hl, BattleText_PkmnCantBeRecalledAbility
-	call StdBattleTextbox
-	jp BattleMenuPKMN_Loop
-
-.check_other_trapped
-	ld a, [wPlayerWrapCount]
-	and a
-	jr nz, .trapped
-	ld a, [wEnemySubStatus2]
-	bit SUBSTATUS_CANT_RUN, a
-	jr z, .try_switch
-
-.trapped
 	ld hl, BattleText_PkmnCantBeRecalled
 	call StdBattleTextbox
 	jp BattleMenuPKMN_Loop

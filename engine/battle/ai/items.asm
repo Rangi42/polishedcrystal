@@ -13,37 +13,9 @@ AI_MaybeSwitch:
 	and a
 	ret nz
 
-	farcall GetEnemyItem
-	ld a, b
-	cp HELD_SHED_SHELL
-	jr z, .can_switch
-
-	; check if we're trapped by an ability
-	ldh a, [hBattleTurn]
-	push af
-	call SetEnemyTurn
-	farcall CheckIfTrappedByAbility
-	pop bc
-	ld a, b
-	ldh [hBattleTurn], a
-	ret z
-	call SetEnemyTurn
-	push bc
-	call CheckIfUserIsGhostType
-	pop bc
-	ld a, b
-	ldh [hBattleTurn], a
-	jr z, .can_switch
-
-	ld a, [wPlayerSubStatus2]
-	bit SUBSTATUS_CANT_RUN, a
+	farcall AI_UserCanSwitch
 	ret nz
 
-	ld a, [wEnemyWrapCount]
-	and a
-	ret nz
-
-.can_switch
 	ld hl, TrainerClassAttributes + TRNATTR_AI_ITEM_SWITCH
 	ld a, [wInBattleTowerBattle] ; Load always the first wTrainerClass for BattleTower-Trainers
 	and a
