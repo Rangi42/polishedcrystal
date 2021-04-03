@@ -313,13 +313,14 @@ QUICK_PACK   EQU 1 << QUICK_PACK_F
 LINK_BATTLE_RECORD_LENGTH EQU 2 + (NAME_LENGTH - 1) + 2 * 3
 NUM_LINK_BATTLE_RECORDS EQU 5
 
+; used in data/trainers/dvs.asm
+PERFECT_DVS EQUS "$ff, $ff, $ff"
+
 ; $00 is used instead of $ff for DVs because $ff is the end-of-trainer marker
 ; ReadTrainerParty converts $00 to $ff when reading DVs
-; DV order: hp:atk, def:spe, sat:sdf
-PERFECT_DVS      EQUS "$ff, $ff, $ff"
+; DV order: hp:atk, def:spd, sat:sdf
 FAKE_PERFECT_DVS EQUS "$00, $00, $00"
 DVS_TRICK_ROOM   EQUS "$00, $f0, $00"
-BTDVS_TRICK_ROOM EQUS "$ff, $f0, $ff"
 
 ; Hidden Power DVs ($00 is converted to $ff in regular trainer sets)
 ; Chosen for stat importance: Speed > * > Atk
@@ -357,41 +358,4 @@ DVS_HP_PSYCHIC  EQUS "$00, $ee, $00"
 DVS_HP_ICE      EQUS "$00, $fe, $00"
 DVS_HP_DRAGON   EQUS "$00, $ef, $00"
 DVS_HP_DARK     EQUS "$fe, $00, $00"
-endc
-
-; Battle Tower Hidden Power DVs ($ff instead of $00)
-if DEF(FAITHFUL)
-BTDVS_HP_FIGHTING EQUS "$ff, $ee, $ee"
-BTDVS_HP_FLYING   EQUS "$ee, $ef, $ee"
-BTDVS_HP_POISON   EQUS "$ff, $ef, $ee"
-BTDVS_HP_GROUND   EQUS "$ff, $ff, $ee"
-BTDVS_HP_ROCK     EQUS "$ff, $ee, $fe"
-BTDVS_HP_BUG      EQUS "$fe, $ef, $fe"
-BTDVS_HP_GHOST    EQUS "$fe, $ff, $fe"
-BTDVS_HP_STEEL    EQUS "$ff, $ff, $fe"
-BTDVS_HP_FIRE     EQUS "$fe, $fe, $ef"
-BTDVS_HP_WATER    EQUS "$fe, $ef, $ef"
-BTDVS_HP_GRASS    EQUS "$fe, $ff, $ef"
-BTDVS_HP_ELECTRIC EQUS "$ff, $ff, $ef"
-BTDVS_HP_PSYCHIC  EQUS "$fe, $fe, $ff"
-BTDVS_HP_ICE      EQUS "$fe, $ef, $ff"
-BTDVS_HP_DRAGON   EQUS "$fe, $ff, $ff"
-BTDVS_HP_DARK     EQUS "$ff, $ff, $ff"
-else
-BTDVS_HP_FIGHTING EQUS "$ff, $ee, $ee"
-BTDVS_HP_FLYING   EQUS "$ff, $fe, $ee"
-BTDVS_HP_POISON   EQUS "$ff, $ef, $ee"
-BTDVS_HP_GROUND   EQUS "$ff, $ff, $ee"
-BTDVS_HP_ROCK     EQUS "$ff, $ee, $fe"
-BTDVS_HP_BUG      EQUS "$ff, $fe, $fe"
-BTDVS_HP_GHOST    EQUS "$ff, $ef, $fe"
-BTDVS_HP_STEEL    EQUS "$ff, $ff, $fe"
-BTDVS_HP_FIRE     EQUS "$ff, $ee, $ef"
-BTDVS_HP_WATER    EQUS "$ff, $fe, $ef"
-BTDVS_HP_GRASS    EQUS "$ff, $ef, $ef"
-BTDVS_HP_ELECTRIC EQUS "$ff, $ff, $ef"
-BTDVS_HP_PSYCHIC  EQUS "$ff, $ee, $ff"
-BTDVS_HP_ICE      EQUS "$ff, $fe, $ff"
-BTDVS_HP_DRAGON   EQUS "$ff, $ef, $ff"
-BTDVS_HP_DARK     EQUS "$fe, $ff, $ff"
 endc

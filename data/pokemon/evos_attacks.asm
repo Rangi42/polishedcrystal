@@ -2317,7 +2317,7 @@ ExeggutorPlainEvosAttacks:
 	db 47, PETAL_DANCE ; Leaf Storm → new move
 	db 0 ; no more level-up moves
 
-ExeggutorAlolanEvosAttacks::
+ExeggutorAlolanEvosAttacks:
 	db 0 ; no more evolutions
 	db 1, TACKLE ; Barrage → new move
 	db 1, HYPNOSIS

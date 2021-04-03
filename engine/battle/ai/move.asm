@@ -221,6 +221,7 @@ endc
 	db 0, AI_BASIC_F ; Avoid redundant actions; paralyzing a paralyzed foe/etc.
 	db 2, AI_TYPES_F ; We've mastered type matchups. Hop would be proud.
 	db 4, AI_STATUS_F ; Hypnosis vs Insomnia, etc.
+	db 6, AI_SETUP_F ; Use stat change moves intelligently.
 	db 8, AI_AGGRESSIVE_F ; Use most damaging move.
 	db 16, AI_SMART_F ; "Advanced" AI
 	db -1

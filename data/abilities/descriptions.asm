@@ -66,6 +66,7 @@ AbilityDescriptions:
 	dw DroughtDescription
 	dw ArenaTrapDescription
 	dw VitalSpiritDescription
+	dw WhiteSmokeDescription
 	dw ShellArmorDescription
 	dw TangledFeetDescription
 	dw MotorDriveDescription
@@ -255,6 +256,7 @@ SynchronizeDescription:
 	next1 "or Brn to foes.@"
 
 ClearBodyDescription:
+WhiteSmokeDescription:
 	db    "Prevents foes from"
 	next1 "lowering stats.@"
 

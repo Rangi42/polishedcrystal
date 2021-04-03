@@ -317,7 +317,7 @@ givepoke: MACRO
 			shift
 			dw \9 ; trainer_ot_pointer
 		endc
-		else
+	else
 		db FALSE ; no trainer
 	endc
 ENDM

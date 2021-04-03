@@ -44,14 +44,13 @@ endc
 .loop
 	ld hl, Text_WhatTimeIsIt
 	call PrintText
-	hlcoord 1, 7
-	lb bc, 2, 17
+	hlcoord 0, 7
+	lb bc, 2, 18
 	call Textbox
 	hlcoord 10, 7
 	ld [hl], "▲"
 	hlcoord 10, 10
 	ld [hl], "▼"
-	hlcoord 2, 9
 	call DisplayHourOClock
 	ld c, 10
 	call DelayFrames
@@ -163,7 +162,6 @@ SetHour:
 	ld a, " "
 	ld bc, 17
 	rst ByteFill
-	hlcoord 2, 9
 	call DisplayHourOClock
 	call ApplyTilemapInVBlank
 	and a
@@ -174,6 +172,9 @@ SetHour:
 	ret
 
 DisplayHourOClock:
+	hlcoord 1, 9
+	; fallthrough
+_DisplayHourOClock:
 	push hl
 	ld a, [wInitHourBuffer]
 	ld c, a
@@ -270,7 +271,7 @@ Text_WhatHrs:
 	text_far _OakTimeWhatHoursText
 	text_asm
 	hlcoord 1, 16
-	call DisplayHourOClock
+	call _DisplayHourOClock
 	ld hl, .QuestionMark
 	ret
 

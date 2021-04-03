@@ -85,7 +85,7 @@ clean: tidy
 	$(MAKE) clean -C tools/
 
 tidy:
-	rm -f $(crystal_obj) $(wildcard $(NAME)-*.gbc) $(wildcard $(NAME)-*.map) $(wildcard $(NAME)-*.sym) $(wildcard $(NAME)-*.bsp)
+	rm -f $(crystal_obj) $(wildcard $(NAME)-*.gbc) $(wildcard $(NAME)-*.map) $(wildcard $(NAME)-*.sym) $(wildcard $(NAME)-*.bsp) rgbdscheck.o
 
 freespace: ROM_NAME = $(NAME)-$(VERSION)
 freespace: crystal tools/bankends
@@ -94,8 +94,11 @@ freespace: crystal tools/bankends
 bsp: $(NAME)-$(VERSION).bsp
 
 
+rgbdscheck.o: rgbdscheck.asm
+	$(RGBDS_DIR)rgbasm -o $@ $<
+
 define DEP
-$1: $2 $$(shell tools/scan_includes $2)
+$1: $2 $$(shell tools/scan_includes $2) | rgbdscheck.o
 	$$(RGBDS_DIR)rgbasm $$(RGBASM_FLAGS) -L -o $$@ $$<
 endef
 

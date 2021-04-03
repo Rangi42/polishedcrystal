@@ -1,6 +1,6 @@
 GetModifiedCaptureRate:
 ; Modified capture rate uses the following formula:
-; (3M - 2H * b * r * s) / 3M
+; ((3M - 2H) * b * r * s) / 3M
 ; M: Max HP, H = Current HP, b = ball bonus
 ; r = base capture rate, s = status bonus
 ; Heavy Ball is special: it will interact directly with r, giving

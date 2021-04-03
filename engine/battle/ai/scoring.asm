@@ -1442,41 +1442,10 @@ endr
 	ret
 
 AI_Smart_Curse:
-	ld a, [wEnemyMonType1]
-	cp GHOST
-	jr z, .ghostcurse
-	ld a, [wEnemyMonType2]
-	cp GHOST
-	jr z, .ghostcurse
+; Don't bother with the non-Ghost version, the setup layer takes care of it.
+	call CheckIfUserIsGhostType
+	ret nz
 
-	call AICheckEnemyHalfHP
-	jr nc, .asm_38e93
-
-	ld a, [wEnemyAtkLevel]
-	cp $b
-	jr nc, .asm_38e93
-	cp $9
-	ret nc
-
-	ld a, [wBattleMonType1]
-	cp GHOST
-	jr z, .asm_38e92
-	call AI_80_20
-	ret c
-	dec [hl]
-	dec [hl]
-	ret
-
-.asm_38e90
-	inc [hl]
-	inc [hl]
-.asm_38e92
-	inc [hl]
-.asm_38e93
-	inc [hl]
-	ret
-
-.ghostcurse
 	ld a, [wPlayerSubStatus1]
 	bit SUBSTATUS_CURSE, a
 	jp nz, AIDiscourageMove
@@ -1484,39 +1453,25 @@ AI_Smart_Curse:
 	push hl
 	farcall CheckAnyOtherAliveEnemyMons
 	pop hl
-	jr nc, .asm_38eb0
+	jr z, .last_enemy
 
+	; Encourage the move a bit.
+	dec [hl]
+
+.last_enemy
 	push hl
-	call AICheckLastPlayerMon
+	farcall AI_OpponentCanSwitch
 	pop hl
-	jr nz, .asm_38e90
+	jr nz, .player_cant_switch
 
-	jr .asm_38eb7
+	; Discourage the move a bit.
+	inc [hl]
 
-.asm_38eb0
-	push hl
-	call AICheckLastPlayerMon
-	pop hl
-	jr z, .asm_38ecb
-
-.asm_38eb7
+.player_cant_switch
 	call AICheckEnemyQuarterHP
-	jp nc, .asm_38e90
-
-	call AICheckEnemyHalfHP
-	jr nc, .asm_38e92
-
-	call AICheckEnemyMaxHP
-	ret nc
-
-	ld a, [wPlayerTurnsTaken]
-	and a
-	ret nz
-
-.asm_38ecb
-	call AI_50_50
 	ret c
 
+	; AI has 1/4HP or less, so encourage the move.
 	dec [hl]
 	dec [hl]
 	ret
