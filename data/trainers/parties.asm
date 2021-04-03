@@ -10751,7 +10751,7 @@ LoreleiGroup:
 
 ; ================
 
-	; LORELEI
+	; LORELEI (team 2 rather than the last for the fighting dojo's benefit)
 	db "Lorelei@"
 	db TRAINERTYPE_ITEM | TRAINERTYPE_MOVES
 	; party
