@@ -67,48 +67,30 @@ ShamoutiPokeCenter1FIvyScript:
 	done
 
 .Bulbasaur:
-	setevent EVENT_GOT_BULBASAUR_FROM_IVY
 	writetext .ChoseKantoStarterText
 	promptbutton
 	waitsfx
-	readvar VAR_PARTYCOUNT
-	ifequal $6, .NoRoom
-	getmonname BULBASAUR, $0
-	writetext .ReceivedKantoStarterText
-	playsound SFX_CAUGHT_MON
-	waitsfx
-	promptbutton
 	givepoke BULBASAUR, NO_FORM, 10, SITRUS_BERRY
+	iffalse_jumpopenedtext .NoRoomText
+	setevent EVENT_GOT_BULBASAUR_FROM_IVY
 	sjump .Finish
 
 .Charmander:
-	setevent EVENT_GOT_CHARMANDER_FROM_IVY
 	writetext .ChoseKantoStarterText
 	promptbutton
 	waitsfx
-	readvar VAR_PARTYCOUNT
-	ifequal $6, .NoRoom
-	getmonname CHARMANDER, $0
-	writetext .ReceivedKantoStarterText
-	playsound SFX_CAUGHT_MON
-	waitsfx
-	promptbutton
 	givepoke CHARMANDER, NO_FORM, 10, SITRUS_BERRY
+	iffalse_jumpopenedtext .NoRoomText
+	setevent EVENT_GOT_CHARMANDER_FROM_IVY
 	sjump .Finish
 
 .Squirtle:
-	setevent EVENT_GOT_SQUIRTLE_FROM_IVY
 	writetext .ChoseKantoStarterText
 	promptbutton
 	waitsfx
-	readvar VAR_PARTYCOUNT
-	ifequal $6, .NoRoom
-	getmonname SQUIRTLE, $0
-	writetext .ReceivedKantoStarterText
-	playsound SFX_CAUGHT_MON
-	waitsfx
-	promptbutton
 	givepoke SQUIRTLE, NO_FORM, 10, SITRUS_BERRY
+	iffalse_jumpopenedtext .NoRoomText
+	setevent EVENT_GOT_SQUIRTLE_FROM_IVY
 .Finish:
 	writetext .GoodbyeText
 	waitbutton
@@ -129,12 +111,11 @@ ShamoutiPokeCenter1FIvyScript:
 	waitsfx
 	end
 
-.NoRoom:
-	jumpthisopenedtext
-
-	text "Ivy: Oh, there's no"
-	line "more room in your"
-	cont "party…"
+.NoRoomText:
+	text "Alas, it seems"
+	line "there's no room in"
+	cont "either your party"
+	cont "or your box…"
 	done
 
 .GreetingText:
@@ -189,13 +170,6 @@ ShamoutiPokeCenter1FIvyScript:
 	text "Ivy: I think"
 	line "that's a great"
 	cont "#mon too!"
-	done
-
-.ReceivedKantoStarterText:
-	text "<PLAYER> received"
-	line ""
-	text_ram wStringBuffer3
-	text "!"
 	done
 
 .GoodbyeText:

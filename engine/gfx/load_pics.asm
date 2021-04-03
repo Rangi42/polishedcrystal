@@ -325,7 +325,7 @@ GetTrainerPic:
 	ld a, [wTrainerClass]
 	and a
 	ret z
-	cp NUM_TRAINER_CLASSES + 1
+	cp NUM_TRAINER_CLASS_PICS + 1
 	ret nc
 	call ApplyTilemapInVBlank
 	xor a

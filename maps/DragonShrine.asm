@@ -186,24 +186,17 @@ DragonShrineElder1Script:
 	opentext
 	writetext DragonShrineTakeThisDratiniText
 	waitbutton
-	readvar VAR_PARTYCOUNT
-	ifequal 6, .PartyFull
-	writetext DragonShrinePlayerReceivedDratiniText
-	playsound SFX_CAUGHT_MON
-	waitsfx
-	givepoke DRATINI, NO_FORM, 15, SITRUS_BERRY
-	setval ULTRA_BALL
-	special SetLastPartyMonBall
 	checkevent EVENT_ANSWERED_DRAGON_MASTER_QUIZ_WRONG
 	iftrue .NoExtremeSpeed
-	special TeachDratiniExtremeSpeed
+	givepoke DRATINI, NO_FORM, 15, SITRUS_BERRY, ULTRA_BALL, EXTREMESPEED
+	sjump .FinishElderScript
 .NoExtremeSpeed
+	givepoke DRATINI, NO_FORM, 15, SITRUS_BERRY, ULTRA_BALL
+.FinishElderScript
+	iffalse_jumpopenedtext DragonShrinePartyAndBoxFullText
 	setevent EVENT_GOT_DRATINI
 	setevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_7
 	jumpopenedtext DragonShrineSymbolicDragonText
-
-.PartyFull:
-	jumpopenedtext DragonShrinePartyFullText
 
 DragonShrineQuestion1_MenuHeader:
 	db $40 ; flags
@@ -453,14 +446,9 @@ DragonShrineTakeThisDratiniText:
 	line "your worth."
 	done
 
-DragonShrinePlayerReceivedDratiniText:
-	text "<PLAYER> received"
-	line "Dratini!"
-	done
-
-DragonShrinePartyFullText:
-	text "Hm? Your #mon"
-	line "party is full."
+DragonShrinePartyAndBoxFullText:
+	text "Hm? Your party and"
+	line "box are both full."
 	done
 
 DragonShrineSymbolicDragonText:

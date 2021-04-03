@@ -164,36 +164,23 @@ HelixDomeAmberMenuDataHeader:
 	db "Cancel@"
 
 ResurrectHelixFossil:
-	readvar VAR_PARTYCOUNT
-	ifequal $6, NoRoomForFossilPokemon
 	takeitem HELIX_FOSSIL
 	scall ResurrectAFossilScript
-	writetext GotOmanyteText
-	playsound SFX_CAUGHT_MON
-	waitsfx
 	givepoke OMANYTE, 20
-	jumpopenedtext TakeGoodCareOfItText
+	sjump FinishResurrect
 
 ResurrectDomeFossil:
-	readvar VAR_PARTYCOUNT
-	ifequal $6, NoRoomForFossilPokemon
 	takeitem DOME_FOSSIL
 	scall ResurrectAFossilScript
-	writetext GotKabutoText
-	playsound SFX_CAUGHT_MON
-	waitsfx
 	givepoke KABUTO, 20
-	jumpopenedtext TakeGoodCareOfItText
+	sjump FinishResurrect
 
 ResurrectOldAmber:
-	readvar VAR_PARTYCOUNT
-	ifequal $6, NoRoomForFossilPokemon
 	takeitem OLD_AMBER
 	scall ResurrectAFossilScript
-	writetext GotAerodactylText
-	playsound SFX_CAUGHT_MON
-	waitsfx
 	givepoke AERODACTYL, 20
+FinishResurrect:
+	iffalse_jumpopenedtext NoRoomForFossilPokemonText
 	jumpopenedtext TakeGoodCareOfItText
 
 ResurrectAFossilScript:
@@ -216,9 +203,6 @@ ResurrectAFossilScript:
 	faceplayer
 	opentext
 	end
-
-NoRoomForFossilPokemon:
-	jumpopenedtext NoRoomForFossilPokemonText
 
 Museum1FReceptionistScript:
 	readvar VAR_FACING
@@ -381,22 +365,8 @@ ResurrectingPokemonText:
 NoRoomForFossilPokemonText:
 	text "Hey! You can't"
 	line "carry another"
-	cont "#mon."
-	done
-
-GotOmanyteText:
-	text "<PLAYER> received"
-	line "Omanyte."
-	done
-
-GotKabutoText:
-	text "<PLAYER> received"
-	line "Kabuto."
-	done
-
-GotAerodactylText:
-	text "<PLAYER> received"
-	line "Aerodactyl."
+	cont "#mon, and your"
+	cont "box is full, too!"
 	done
 
 TakeGoodCareOfItText:

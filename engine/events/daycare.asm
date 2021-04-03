@@ -703,8 +703,7 @@ DayCare_GenerateEgg:
 
 .GotMother:
 	ld [wCurPartySpecies], a
-	farcall GetPreEvolution
-	farcall GetPreEvolution
+	farcall GetBaseEvolution
 	ld a, EGG_LEVEL
 	ld [wCurPartyLevel], a
 

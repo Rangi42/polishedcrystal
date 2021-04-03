@@ -88,3 +88,10 @@ endr
 
 .Nickname:
 	rawchar "Masuda@"
+
+_GetLastPartyMonAttribute:
+	ld a, [wPartyCount]
+	dec a
+	ld bc, PARTYMON_STRUCT_LENGTH
+	rst AddNTimes
+	ret
