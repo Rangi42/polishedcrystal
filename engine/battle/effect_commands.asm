@@ -1366,7 +1366,7 @@ CheckAirborne_GotAbility:
 	pop de
 	ret z
 
-	; d=1 (inverse matchup checks) skips hardcoded immunity check
+	; d=1 (inverse matchup checks/ring target) skips hardcoded immunity check
 	ld a, d
 	and a
 	jr nz, .typecheck_done
@@ -1416,11 +1416,19 @@ CheckTypeMatchup:
 	jr nz, .done_ground_type
 
 	call SwitchTurn
-	ld a, [wBattleType]
-	cp BATTLETYPE_INVERSE
+
+	; Ring Target or Inverse battles bypass the type matchup check.
+	push bc
+	predef GetUserItemAfterUnnerve
+	ld a, b
+	pop bc
+	cp HELD_RING_TARGET
 	ld d, 1
 	jr z, .check_airborne
-	ld d, 0
+	ld a, [wBattleType]
+	cp BATTLETYPE_INVERSE
+	jr z, .check_airborne
+	dec d
 .check_airborne
 	call CheckAirborneAfterMoldBreaker
 	push af
