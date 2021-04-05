@@ -807,14 +807,14 @@ LinkMonStatsScreen:
 	ld a, [wMenuCursorY]
 	dec a
 	ld [wCurPartyMon], a
-	call LowVolume
-	predef StatsScreenInit
+	ld a, [wMonType]
+	push af
+	farcall OpenPartyStats
+	pop af
+	ld [wMonType], a
 	ld a, [wCurPartyMon]
 	inc a
 	ld [wMenuCursorY], a
-	call ClearScreen
-	call ClearBGPalettes
-	call MaxVolume
 	call LoadTradeScreenGFX
 	call Link_WaitBGMap
 	call InitTradeSpeciesList

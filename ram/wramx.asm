@@ -95,6 +95,11 @@ NEXTU
 wSwitchItemBuffer:: ds 2 ; may store 1 or 2 bytes
 
 NEXTU
+; Some trade stuff. Needs to be seperate from wSwitchMonBuffer.
+wCurTradePartyMon:: db
+wCurOTTradePartyMon:: db
+wBufferTrademonNickname:: ds MON_NAME_LENGTH
+
 ; switching pokemon in party
 ; may store NAME_LENGTH, PARTYMON_STRUCT_LENGTH, or MAIL_STRUCT_LENGTH bytes
 wSwitchMonBuffer:: ds 48
@@ -117,11 +122,6 @@ wNumOwnedDecoCategories:: db
 wOwnedDecoCategories:: ds 16
 ENDU
 
-NEXTU
-; trade
-wCurTradePartyMon:: db
-wCurOTTradePartyMon:: db
-wBufferTrademonNickname:: ds MON_NAME_LENGTH
 
 NEXTU
 ; link battle record data

@@ -915,6 +915,17 @@ PreparePartyTempMon:
 ; Switches curpartymon to tempmon box+slot
 	xor a
 	ld [wTempMonBox], a
+
+	; In the trade center, we might be looking at the OT party.
+	ld a, [wLinkMode]
+	cp LINK_TRADECENTER
+	jr nz, .got_box
+	ld a, [wMonType]
+	and a ; cp PARTYMON
+	jr z, .got_box
+	ld a, $80
+	ld [wTempMonBox], a
+.got_box
 	ld a, [wCurPartyMon]
 	inc a
 	ld [wTempMonSlot], a
