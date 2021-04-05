@@ -4366,7 +4366,7 @@ AI_UserCanSwitch:
 ; Wrapper around UserCanSwitch that also checks if we have any non-fainted in
 ; the party. Doesn't have a proper message for that case.
 	farcall CheckAnyOtherAliveMons
-	jr z, UserCanSwitch
+	jr nz, UserCanSwitch
 	or 1
 	ret
 
