@@ -326,6 +326,10 @@ AI_Smart:
 
 .smart_ai_table
 	dbw EFFECT_SLEEP,             AI_Smart_Sleep
+	dbw EFFECT_SPEED_UP,          AI_Smart_SpeedControl
+	dbw EFFECT_SPEED_UP_2,        AI_Smart_SpeedControl
+	dbw EFFECT_SPEED_DOWN,        AI_Smart_SpeedControl
+	dbw EFFECT_SPEED_DOWN_2,      AI_Smart_SpeedControl
 	dbw EFFECT_LEECH_HIT,         AI_Smart_LeechHit
 	dbw EFFECT_EXPLOSION,         AI_Smart_Explosion
 	dbw EFFECT_DREAM_EATER,       AI_Smart_DreamEater
@@ -2792,6 +2796,11 @@ endr
 	db EFFECT_EXPLOSION
 	db $ff
 
+AI_Smart_SpeedControl:
+; Discourage if we outspeed
+	call AICompareSpeed
+	ret nc
+	; fallthrough
 AIDiscourageMove:
 	ld a, [hl]
 	add 10
