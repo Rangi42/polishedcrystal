@@ -1,5 +1,6 @@
 CriticalHitMoves:
 	db KARATE_CHOP
+	db NIGHT_SLASH
 	db RAZOR_LEAF
 	db CRABHAMMER
 	db SLASH
