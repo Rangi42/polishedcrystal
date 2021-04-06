@@ -354,7 +354,7 @@ SleepHit:
 	supereffectivetext
 	postfainteffects
 	posthiteffects
-	sleeptarget
+	sleep
 	endmove
 
 FreezeHit:
@@ -809,7 +809,7 @@ Spore:
 	checkpowder
 	bounceback
 	checksafeguard
-	sleeptarget
+	sleep
 	endmove
 
 DoFreeze:

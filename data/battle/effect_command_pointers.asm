@@ -37,7 +37,7 @@ BattleCommandPointers:
 	command postfainteffects
 	command posthiteffects
 	command poisontarget
-	command sleeptarget
+	command sleep
 	command draintarget
 	command eatdream
 	command burntarget
