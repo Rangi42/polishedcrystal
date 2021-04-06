@@ -5217,8 +5217,9 @@ BattleCommand_forceswitch:
 	jr nz, .fail
 	ld a, [wBattleMode]
 	dec a
-	jr nz, .trainer
-	jr .wild
+	jr z, .wild
+	call CheckAnyOtherAliveOpponentMons
+	jr nz, .trainer_success
 
 .but_it_failed
 	ld a, ATKFAIL_GENERIC
@@ -5276,9 +5277,7 @@ BattleCommand_forceswitch:
 	ld hl, FledInFearText
 	jp StdBattleTextbox
 
-.trainer
-	call CheckAnyOtherAliveOpponentMons
-	jr z, .but_it_failed
+.trainer_success
 	call AnimateCurrentMove
 	ld c, 20
 	call DelayFrames
