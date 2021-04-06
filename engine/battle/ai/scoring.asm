@@ -621,7 +621,7 @@ AI_Smart_AccuracyDown:
 	call AICheckPlayerMaxHP
 	jr nc, .asm_389a0
 
-; ...and enemy's HP is above 50%...
+; ...and enemy's HP is below 50%...
 	call AICheckEnemyHalfHP
 	jr nc, .asm_389a0
 
@@ -2110,6 +2110,7 @@ AICheckPlayerHalfHP:
 	ret
 
 AICheckEnemyHalfHP:
+; Returns carry if enemy has more than 50%HP left.
 	push hl
 	push de
 	push bc
@@ -2753,13 +2754,13 @@ AI_Risky:
 	and a
 	jr z, .nextmove
 
-; Don't use risky moves at max hp.
+; Don't use risky moves at 50%+ HP.
 	ld a, [wEnemyMoveStruct + MOVE_EFFECT]
 	ld hl, .RiskyMoves
 	call IsInByteArray
 	jr nc, .checkko
 
-	call AICheckEnemyMaxHP
+	call AICheckEnemyHalfHP
 	jr c, .nextmove
 
 ; Else, 80% chance to exclude them.
