@@ -537,31 +537,9 @@ TryEnemyFlee:
 	call EnemyCanFlee
 	jr nz, .Stay
 
-	ld a, [wTempEnemyMonSpecies]
-	ld hl, AlwaysFleeMons
-	call IsInByteArray
-	jr c, .Flee
-
-	call BattleRandom
-	ld b, a
-	cp 1 + (50 percent)
-	jr nc, .Stay
-
-	push bc
-	ld a, [wTempEnemyMonSpecies]
-	ld hl, OftenFleeMons
-	call IsInByteArray
-	pop bc
-	jr c, .Flee
-
-	ld a, b
-	cp 1 + (10 percent)
-	jr nc, .Stay
-
-	ld a, [wTempEnemyMonSpecies]
-	ld hl, SometimesFleeMons
-	call IsInByteArray
-	jr c, .Flee
+	ld a, [wBattleType]
+	cp BATTLETYPE_ROAMING
+	jr z, .Flee
 
 .Stay:
 	xor a
@@ -619,8 +597,6 @@ EnemyCanFlee:
 	ld a, [wEnemyMonStatus]
 	and 1 << FRZ | SLP
 	ret
-
-INCLUDE "data/wild/flee_mons.asm"
 
 CompareMovePriority:
 ; Compare the priority of the player and enemy's moves.
