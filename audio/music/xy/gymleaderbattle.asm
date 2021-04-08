@@ -1,6 +1,6 @@
 ; Pokémon X/Y - Battle! Gym Leader
 ; Demixed by Pum
-; https://hax.iimarck.us/topic/6443/
+; https://hax.iimarckus.org/topic/6443/
 
 Music_GymLeaderBattleXY:
 	musicheader 4, 1, Music_GymLeaderBattleXY_Ch1

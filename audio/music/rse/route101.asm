@@ -1,7 +1,7 @@
 ; Pokémon R/S/E - Route 101
 ; Demixed by Mmmmmm
 ; https://pastebin.com/VstjfaGf
-; https://hax.iimarck.us/topic/6777/
+; https://hax.iimarckus.org/topic/6777/
 
 Music_Route101RSE:
 	musicheader 4, 1, Music_Route101RSE_Ch1

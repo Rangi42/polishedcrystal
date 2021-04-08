@@ -1,7 +1,7 @@
 ; Pokémon S/M - Battle! Elite Four
 ; Demixed by Mmmmmm
 ; https://pastebin.com/Q2MsZc9W
-; https://hax.iimarck.us/topic/6777/8/
+; https://hax.iimarckus.org/topic/6777/8/
 
 Music_EliteFourBattleSM:
 	musicheader 4, 1, Music_EliteFourBattleSM_Ch1

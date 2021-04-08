@@ -1,7 +1,7 @@
 ; Pokémon HG/SS - Summoning Dance
 ; Demixed by Mmmmmm
 ; https://pastebin.com/ANhCKGUS
-; https://hax.iimarck.us/topic/6777/3/
+; https://hax.iimarckus.org/topic/6777/3/
 
 Music_SummoningDanceHGSS:
 	musicheader 3, 1, Music_SummoningDanceHGSS_Ch1

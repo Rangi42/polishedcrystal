@@ -1,7 +1,7 @@
 ; Pokémon White 2 - White Treehollow
 ; Demixed by Mmmmmm
 ; https://pastebin.com/dN9gyXXX
-; https://hax.iimarck.us/topic/6777/4/
+; https://hax.iimarckus.org/topic/6777/4/
 
 Music_WhiteTreehollowWhite2:
 	musicheader 4, 1, Music_WhiteTreehollowWhite2_Ch1

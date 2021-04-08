@@ -1,7 +1,7 @@
 ; Pokémon R/S/E - Mount Chimney
 ; Demixed by Mmmmmm
 ; https://pastebin.com/Yivqb9Tq
-; https://hax.iimarck.us/topic/6777/4/
+; https://hax.iimarckus.org/topic/6777/4/
 
 Music_MountChimneyRSE:
 	musicheader 4, 1, Music_MountChimneyRSE_Ch1

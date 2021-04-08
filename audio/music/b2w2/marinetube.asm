@@ -1,7 +1,7 @@
 ; Pokémon B2/W2 - Marine Tube
 ; Demixed by Mmmmmm
 ; https://pastebin.com/nGD7xAga
-; https://hax.iimarck.us/topic/6777/
+; https://hax.iimarckus.org/topic/6777/
 
 Music_MarineTubeB2W2:
 	musicheader 4, 1, Music_MarineTubeB2W2_Ch1

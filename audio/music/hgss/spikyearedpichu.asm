@@ -1,7 +1,7 @@
 ; Pokémon HG/SS - Spiky-Eared Pichu
 ; Demixed by Mmmmmm
 ; https://pastebin.com/stpKurZA
-; https://hax.iimarck.us/topic/6777/3/
+; https://hax.iimarckus.org/topic/6777/3/
 
 Music_SpikyEaredPichuHGSS:
 	dbw $c0, Music_SpikyEaredPichuHGSS_Ch1
