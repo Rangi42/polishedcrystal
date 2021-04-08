@@ -24,7 +24,6 @@ The final, non-beta 3.0 release should include all of these.
 * Add hidden grottoes throughout Johto
 * Variety Channel with daily unique music
 * Separate radio channels for March and Lullaby, available every day
-* Send gift Pokémon to the PC if the party is full
 * Generate random team for Psychic Inver
 * Wild Ghosts and the SilphScope2
 * More location-unique wild moves (see [material/moves.txt](material/moves.txt))
