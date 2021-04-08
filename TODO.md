@@ -32,10 +32,7 @@ The final, non-beta 3.0 release should include all of these.
 * DVs to vary palettes for trainers' duplicate Pokémon (e.g. Clair's Dragonairs)
 * Complete Alolan and Galarian forms
    * Persian as a one-time trade from an Alolan tourist (you can breed it for more)
-   * Rattata/Raticate in Kanto
    * Grimer/Muk in Goldenrod City (Celadon's Muk are a sign of its pollution, Goldenrod's Alolan Muk would be a sign that they manage pollution better)
-   * Sandshrew/Sandslash and Vulpix/Ninetales in the Ice Path and/or Seafoam Islands
-   * Marowak, Exeggutor, and Raichu evolve while holding the Odd Souvenir
    * Ponyta/Rapidash on Shamouti Island
    * Corsola/Cursola in Scary Cave
    * Farfetch'd/Sirfetch'd instead of non-faithful Farfetch'd
