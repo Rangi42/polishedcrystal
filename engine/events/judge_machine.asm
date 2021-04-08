@@ -982,7 +982,6 @@ DrawRadarPointBC:
 	; hl += (x & $f8) + (y & $7)
 	ld a, b
 	and $f8
-	ld d, 0
 	ld e, a
 	ld a, c
 	and $7
