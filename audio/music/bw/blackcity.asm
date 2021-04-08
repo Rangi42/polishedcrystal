@@ -1,7 +1,7 @@
 ; Pokémon B/W - Black City
 ; Demixed by Mmmmmm
 ; https://pastebin.com/bqcvjdFi
-; https://hax.iimarck.us/topic/6777/9/
+; https://hax.iimarckus.org/topic/6777/9/
 
 Music_BlackCityBW:
 	musicheader 4, 1, Music_BlackCityBW_Ch1

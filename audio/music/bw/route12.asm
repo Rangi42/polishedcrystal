@@ -1,7 +1,7 @@
 ; Pokémon B/W - Route 12
 ; Demixed by Mmmmmm
 ; https://pastebin.com/JK83UjgF
-; https://hax.iimarck.us/topic/6777/2/
+; https://hax.iimarckus.org/topic/6777/2/
 
 Music_Route12BW:
 	musicheader 4, 1, Music_Route12BW_Ch1

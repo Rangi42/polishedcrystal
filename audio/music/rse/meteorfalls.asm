@@ -1,7 +1,7 @@
 ; Pokémon R/S/E - Meteor Falls
 ; Demixed by Mmmmmm
 ; https://pastebin.com/k2wCKcMC
-; https://hax.iimarck.us/topic/6777/
+; https://hax.iimarckus.org/topic/6777/
 
 Music_MeteorFallsRSE:
 	musicheader 3, 1, Music_MeteorFallsRSE_Ch1

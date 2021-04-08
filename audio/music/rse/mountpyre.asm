@@ -1,7 +1,7 @@
 ; Pokémon R/S/E - Mount Pyre / Shoal Cave
 ; Demixed by Mmmmmm
 ; https://pastebin.com/3iAgGV4u
-; https://hax.iimarck.us/topic/6777/
+; https://hax.iimarckus.org/topic/6777/
 
 Music_MountPyreRSE:
 	musicheader 4, 1, Music_MountPyreRSE_Ch1

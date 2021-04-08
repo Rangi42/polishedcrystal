@@ -1,7 +1,7 @@
 ; Pokémon HG/SS - Safari Zone Gate
 ; Demixed by Mmmmmm
 ; https://pastebin.com/KtZQwniZ
-; https://hax.iimarck.us/topic/6777/4/
+; https://hax.iimarckus.org/topic/6777/4/
 
 Music_SafariZoneGateHGSS:
 	musicheader 4, 1, Music_SafariZoneGateHGSS_Ch1

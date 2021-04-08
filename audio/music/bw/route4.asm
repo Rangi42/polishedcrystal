@@ -1,7 +1,7 @@
 ; Pokémon B/W - Route 4
 ; Demixed by Mmmmmm
 ; https://pastebin.com/QXeYDHeD
-; https://hax.iimarck.us/topic/6777/
+; https://hax.iimarckus.org/topic/6777/
 
 Music_Route4BW:
 	musicheader 4, 1, Music_Route4BW_Ch1

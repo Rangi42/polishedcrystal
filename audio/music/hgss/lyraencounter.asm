@@ -1,7 +1,7 @@
 ; Pokémon HG/SS - Encounter! Lyra
 ; Demixed by Mmmmmm
 ; https://pastebin.com/fL7d2CrB
-; https://hax.iimarck.us/topic/6777/3/
+; https://hax.iimarckus.org/topic/6777/3/
 
 Music_LyraEncounterHGSS:
 	musicheader 4, 1, Music_LyraEncounterHGSS_Ch1

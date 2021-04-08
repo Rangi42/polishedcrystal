@@ -1,7 +1,7 @@
 ; Pokémon D/P/Pt - Oreburgh Gate
 ; Demixed by Mmmmmm
 ; https://pastebin.com/xEactCTm
-; https://hax.iimarck.us/topic/6777/
+; https://hax.iimarckus.org/topic/6777/
 
 Music_OreburghGateDPPt:
 	dbw $80, Music_OreburghGateDPPt_Ch1

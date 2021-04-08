@@ -1,7 +1,7 @@
 ; Pokémon R/S/E - Battle! Gym Leader
 ; Demixed by Mmmmmm
 ; https://pastebin.com/3iAgGV4u
-; https://hax.iimarck.us/topic/6777/
+; https://hax.iimarckus.org/topic/6777/
 
 Music_GymLeaderBattleRSE:
 	dbw $c0, Music_GymLeaderBattleRSE_Ch1

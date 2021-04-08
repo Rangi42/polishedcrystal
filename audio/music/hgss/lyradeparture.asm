@@ -1,7 +1,7 @@
 ; Pokémon HG/SS - Encounter! Lyra (Departure)
 ; Demixed by Mmmmmm
 ; https://pastebin.com/0PPUz32D
-; https://hax.iimarck.us/topic/6777/3/
+; https://hax.iimarckus.org/topic/6777/3/
 
 Music_LyraDepartureHGSS:
 	musicheader 4, 1, Music_LyraDepartureHGSS_Ch1
