@@ -480,7 +480,7 @@ AutoSurfScript:
 	writevar VAR_MOVEMENT
 
 	special UpdatePlayerSprite
-	special PlayMapMusic
+	playmapmusic
 ; step into the water
 	special Special_SurfStartStep ; (slow_step_x, step_end)
 	applymovement PLAYER, wMovementBuffer ; PLAYER, MovementBuffer
@@ -1726,6 +1726,7 @@ BikeFunction:
 	jr .CannotUseBike
 
 .GetOnBike:
+	call PlayBikeMusic
 	ld hl, Script_GetOnBike
 	ld de, Script_GetOnBike_Register
 	call .CheckIfRegistered
@@ -1792,7 +1793,6 @@ Script_GetOnBike:
 FinishGettingOnBike:
 	closetext
 	special UpdatePlayerSprite
-	special PlayMapMusic
 	end
 
 Script_GetOnBike_Register:
@@ -1808,7 +1808,7 @@ Script_GetOffBike:
 FinishGettingOffBike:
 	closetext
 	special UpdatePlayerSprite
-	special PlayMapMusic
+	playmapmusic
 	end
 
 Script_GetOffBike_Register:

@@ -47,6 +47,56 @@ _LoadMusicByte::
 	rst Bankswitch
 	ret
 
+CheckSpecialMapMusic:
+; Returns z if the current map has a special music handler.
+	ld hl, SpecialMusicMaps
+	ld a, [wMapGroup]
+	ld b, a
+	ld a, [wMapNumber]
+	ld c, a
+.loop:
+	ld a, [hli]
+	and a
+	jr z, .ret_nz
+	cp b
+	jr nz, .wrong_group
+	ld a, [hli]
+	cp c
+	jr nz, .wrong_map
+	ret
+
+.ret_nz
+	or 1
+	ret
+
+.wrong_group:
+	inc hl
+.wrong_map:
+	inc hl
+	inc hl
+	jr .loop
+
+PlayBikeMusic:
+; Play bike music unless we're in a map with special music handling.
+	call CheckSpecialMapMusic
+	ret z
+	call .get_bike_music
+	jr PlayMusic
+
+.get_bike_music
+	call RegionCheck
+	ld a, e
+	ld de, MUSIC_BICYCLE_RB
+	cp KANTO_REGION
+	ret z
+	ld de, MUSIC_BICYCLE_RSE
+	cp ORANGE_REGION
+	ret z
+	ld de, MUSIC_BICYCLE
+	ld a, e
+	ld [wMapMusic], a
+	ret
+
 PlayMusicAfterDelay::
 	push de
 	ld de, MUSIC_NONE
@@ -356,28 +406,9 @@ RestartMapMusic::
 	jp PopAFBCDEHL
 
 GetMapMusic_MaybeSpecial::
-	ld hl, SpecialMusicMaps
-	ld a, [wMapGroup]
-	ld b, a
-	ld a, [wMapNumber]
-	ld c, a
-.loop:
-	ld a, [hli]
-	and a
-	jr z, GetPlayerStateMusic
-	cp b
-	jr nz, .wrong_group
-	ld a, [hli]
-	cp c
-	jr nz, .wrong_map
-	jp IndirectHL
-
-.wrong_group:
-	inc hl
-.wrong_map:
-	inc hl
-	inc hl
-	jr .loop
+	call CheckSpecialMapMusic
+	jp z, IndirectHL
+	jr GetPlayerStateMusic
 
 GetCyclingRoadMusic:
 	ld de, MUSIC_BICYCLE_XY
@@ -395,25 +426,11 @@ GetBugCatchingContestMusic:
 
 GetPlayerStateMusic:
 	ld a, [wPlayerState]
-	cp PLAYER_BIKE
-	jr z, .bike
 	cp PLAYER_SURF
 	jr z, .surf
 	cp PLAYER_SURF_PIKA
 	jr z, .surf_pikachu
 	jp GetMapMusic
-
-.bike:
-	call RegionCheck
-	ld a, e
-	ld de, MUSIC_BICYCLE_RB
-	cp KANTO_REGION
-	ret z
-	ld de, MUSIC_BICYCLE_RSE
-	cp ORANGE_REGION
-	ret z
-	ld de, MUSIC_BICYCLE
-	ret
 
 .surf:
 	call RegionCheck
