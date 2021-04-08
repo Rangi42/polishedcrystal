@@ -1949,7 +1949,7 @@ GetMapMusic::
 	push bc
 	ld de, MAP_MUSIC
 	call GetMapField
-	ld hl, SpecialMapMusic
+	ld hl, AlternateMusic
 .loop
 	ld a, [hli]
 	and a
