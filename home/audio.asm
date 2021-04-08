@@ -81,6 +81,8 @@ PlayBikeMusic:
 	call CheckSpecialMapMusic
 	ret z
 	call .get_bike_music
+	ld a, e
+	ld [wMapMusic], a
 	jr PlayMusic
 
 .get_bike_music
@@ -93,8 +95,6 @@ PlayBikeMusic:
 	cp ORANGE_REGION
 	ret z
 	ld de, MUSIC_BICYCLE
-	ld a, e
-	ld [wMapMusic], a
 	ret
 
 PlayMusicAfterDelay::
