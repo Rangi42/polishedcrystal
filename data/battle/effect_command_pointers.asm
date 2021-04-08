@@ -173,6 +173,6 @@ NUM_EFFECT_COMMANDS EQU const_value - 1
 FIRST_MOVEARG_COMMAND EQU raisestat_command
 LAST_MOVEARG_COMMAND EQU loweroppstathit_command
 
-	const_def -1, -1
+	const_def $ff, -1
 	commandonly endmove
 	commandonly endturn
