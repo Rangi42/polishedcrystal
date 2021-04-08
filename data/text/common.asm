@@ -2588,8 +2588,16 @@ MailMovedFromBoxText::
 	line "from the Mailbox."
 	prompt
 
-SECTION "Text_WasSentToBillsPC", ROMX
-Text_WasSentToBillsPC::
+SECTION "_ReceivedGiftMonText", ROMX
+_ReceivedGiftMonText::
+	text "<PLAYER> received"
+	line ""
+	text_ram wStringBuffer1
+	text "!"
+	done
+
+SECTION "_WasSentToBillsPCText", ROMX
+_WasSentToBillsPCText::
 	text_ram wStringBuffer1
 	text " was"
 	line "sent to Bill's PC."

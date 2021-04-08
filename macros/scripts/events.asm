@@ -287,12 +287,11 @@ ENDM
 	const givepoke_command
 givepoke: MACRO
 	db givepoke_command
-	db \1 ; pokemon
 	if _NARG >= 3
-		db \2 ; form
+		dp \1, \2 ; pokemon
 		db \3 ; level
 	else
-		db PLAIN_FORM
+		dp \1, PLAIN_FORM
 		db \2 ; level
 	endc
 	if _NARG >= 4
@@ -301,10 +300,22 @@ givepoke: MACRO
 		db NO_ITEM
 	endc
 	if _NARG >= 5
-		db \5 ; trainer
-		if \5
-			dw \6 ; trainer_name_pointer
-			dw \7 ; pkmn_nickname
+		db \5 ; ball
+	else
+		db POKE_BALL
+	endc
+	if _NARG >= 6
+		db \6 ; special move
+	else
+		db NO_MOVE
+	endc
+	if _NARG >= 7
+		db \7 ; trainer
+		if \7
+			dw \8 ; trainer_name_pointer
+			dw \9 ; pkmn_nickname
+			shift
+			dw \9 ; trainer_ot_pointer
 		endc
 	else
 		db FALSE ; no trainer

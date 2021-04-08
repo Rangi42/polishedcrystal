@@ -1998,6 +1998,8 @@ Script_checkphonecall:
 	ret
 
 Script_givepoke:
+; return 0 in hScriptVar if no room in party or box
+; return 1 if sent to party, return 2 if sent to box
 	call GetScriptByte
 	ld [wCurPartySpecies], a
 	call GetScriptByte
@@ -2007,6 +2009,10 @@ Script_givepoke:
 	call GetScriptByte
 	ld [wCurItem], a
 	call GetScriptByte
+	ld [wGiftMonBall], a
+	call GetScriptByte
+	ld [wCurPlayerMove], a
+	call GetScriptByte
 	and a
 	ld b, a
 	jr z, .ok
@@ -2014,10 +2020,9 @@ Script_givepoke:
 	ld e, [hl]
 	inc hl
 	ld d, [hl]
+rept 6
 	call GetScriptByte
-	call GetScriptByte
-	call GetScriptByte
-	call GetScriptByte
+endr
 .ok
 	farcall GivePoke
 	ld a, b

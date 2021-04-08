@@ -57,43 +57,29 @@ Oak:
 	writetext OakLabGiveStarterText
 	promptbutton
 	waitsfx
-	readvar VAR_PARTYCOUNT
-	ifequal $6, .PartyFull
 	checkevent EVENT_GOT_BULBASAUR_FROM_IVY
 	iftrue .Charmander
 	checkevent EVENT_GOT_CHARMANDER_FROM_IVY
 	iftrue .Squirtle
-	getmonname BULBASAUR, $0
-	writetext OakLabReceivedKantoStarterText
-	playsound SFX_CAUGHT_MON
-	waitsfx
-	promptbutton
 	givepoke BULBASAUR, NO_FORM, 10, SITRUS_BERRY
+	iffalse .PartyAndBoxFull
 	setevent EVENT_GOT_A_POKEMON_FROM_OAK
 	sjump .CheckBadges
 
 .Charmander:
-	getmonname CHARMANDER, $0
-	writetext OakLabReceivedKantoStarterText
-	playsound SFX_CAUGHT_MON
-	waitsfx
-	promptbutton
 	givepoke CHARMANDER, NO_FORM, 10, SITRUS_BERRY
+	iffalse .PartyAndBoxFull
 	setevent EVENT_GOT_A_POKEMON_FROM_OAK
 	sjump .CheckBadges
 
 .Squirtle:
-	getmonname SQUIRTLE, $0
-	writetext OakLabReceivedKantoStarterText
-	playsound SFX_CAUGHT_MON
-	waitsfx
-	promptbutton
 	givepoke SQUIRTLE, NO_FORM, 10, SITRUS_BERRY
+	iffalse .PartyAndBoxFull
 	setevent EVENT_GOT_A_POKEMON_FROM_OAK
 	sjump .CheckBadges
 
-.PartyFull:
-	writetext OakLabPartyFullText
+.PartyAndBoxFull:
+	writetext OakLabPartyAndBoxFullText
 	waitbutton
 .CheckBadges:
 	checkevent EVENT_OPENED_MT_SILVER
@@ -229,16 +215,10 @@ OakLabGiveStarterText:
 	cont "in Kanto or Johto."
 	done
 
-OakLabPartyFullText:
+OakLabPartyAndBoxFullText:
 	text "Hm, you don't have"
-	line "room for it."
-	done
-
-OakLabReceivedKantoStarterText:
-	text "<PLAYER> received"
-	line ""
-	text_ram wStringBuffer3
-	text "!"
+	line "room for it, and"
+	line "your box is full."
 	done
 
 OakLabDexCheckText:

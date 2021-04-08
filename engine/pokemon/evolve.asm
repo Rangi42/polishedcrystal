@@ -701,6 +701,13 @@ EvoFlagAction:
 	pop de
 	ret
 
+GetBaseEvolution:
+; Find the first mon in the evolution chain including wCurPartySpecies.
+
+; Return carry and the new species in wCurPartySpecies
+; if a base evolution is found.
+
+	call GetPreEvolution
 GetPreEvolution:
 ; Find the first mon to evolve into wCurPartySpecies.
 

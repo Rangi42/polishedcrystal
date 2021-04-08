@@ -203,8 +203,6 @@ GoldenrodGameCornerPrizeMonVendorScript:
 .abra
 	checkcoins 200
 	ifequal $2, GoldenrodGameCornerPrizeVendor_NotEnoughCoinsScript
-	readvar VAR_PARTYCOUNT
-	ifequal $6, GoldenrodGameCornerPrizeMonVendor_NoRoomForPrizeScript
 	getmonname ABRA, $0
 	scall GoldenrodGameCornerPrizeVendor_ConfirmPurchaseScript
 	iffalse_jumpopenedtext GoldenrodGameCornerPrizeVendorQuitText
@@ -212,17 +210,16 @@ GoldenrodGameCornerPrizeMonVendorScript:
 	playsound SFX_TRANSACTION
 	writetext GoldenrodGameCornerPrizeVendorHereYouGoText
 	waitbutton
+	givepoke ABRA, 5
+	iffalse_jumpopenedtext GoldenrodGameCornerPrizeVendorNoMoreRoomText
 	setval ABRA
 	special Special_GameCornerPrizeMonCheckDex
-	givepoke ABRA, 5
 	takecoins 200
 	sjump .loop
 
 .cubone
 	checkcoins 800
 	ifequal $2, GoldenrodGameCornerPrizeVendor_NotEnoughCoinsScript
-	readvar VAR_PARTYCOUNT
-	ifequal $6, GoldenrodGameCornerPrizeMonVendor_NoRoomForPrizeScript
 	getmonname CUBONE, $0
 	scall GoldenrodGameCornerPrizeVendor_ConfirmPurchaseScript
 	iffalse_jumpopenedtext GoldenrodGameCornerPrizeVendorQuitText
@@ -230,17 +227,16 @@ GoldenrodGameCornerPrizeMonVendorScript:
 	playsound SFX_TRANSACTION
 	writetext GoldenrodGameCornerPrizeVendorHereYouGoText
 	waitbutton
+	givepoke CUBONE, 10
+	iffalse_jumpopenedtext GoldenrodGameCornerPrizeVendorNoMoreRoomText
 	setval CUBONE
 	special Special_GameCornerPrizeMonCheckDex
-	givepoke CUBONE, 10
 	takecoins 800
 	sjump .loop
 
 .clefairy
 	checkcoins 1500
 	ifequal $2, GoldenrodGameCornerPrizeVendor_NotEnoughCoinsScript
-	readvar VAR_PARTYCOUNT
-	ifequal $6, GoldenrodGameCornerPrizeMonVendor_NoRoomForPrizeScript
 	getmonname CLEFAIRY, $0
 	scall GoldenrodGameCornerPrizeVendor_ConfirmPurchaseScript
 	iffalse_jumpopenedtext GoldenrodGameCornerPrizeVendorQuitText
@@ -248,9 +244,10 @@ GoldenrodGameCornerPrizeMonVendorScript:
 	playsound SFX_TRANSACTION
 	writetext GoldenrodGameCornerPrizeVendorHereYouGoText
 	waitbutton
+	givepoke CLEFAIRY, 15
+	iffalse_jumpopenedtext GoldenrodGameCornerPrizeVendorNoMoreRoomText
 	setval CLEFAIRY
 	special Special_GameCornerPrizeMonCheckDex
-	givepoke CLEFAIRY, 15
 	takecoins 1500
 	sjump .loop
 
@@ -350,8 +347,9 @@ GoldenrodGameCornerPrizeVendorNeedMoreCoinsText:
 	done
 
 GoldenrodGameCornerPrizeVendorNoMoreRoomText:
-	text "Sorry. You can't"
-	line "carry any more."
+	text "Oh, no. You can't"
+	line "carry any more and"
+	line "your box is full."
 	done
 
 GoldenrodGameCornerPrizeVendorQuitText:

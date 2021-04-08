@@ -399,6 +399,7 @@ wCurItem::
 	db
 wMartItemID::
 wCurItemQuantity::
+wGiftMonBall::
 	db
 
 wCurPartySpecies:: db

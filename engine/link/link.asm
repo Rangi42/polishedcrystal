@@ -1658,11 +1658,8 @@ LinkTrade:
 	ld a, [hl]
 	ld [wCurPartySpecies], a
 	ld hl, wOTPartyMon1Species
-	ld a, c
-	call GetPartyLocation
-	ld de, wTempMonSpecies
-	ld bc, PARTYMON_STRUCT_LENGTH
-	rst CopyBytes
+	ld b, $80
+	farcall CopyBetweenPartyAndTemp
 	farcall AddTempMonToParty
 	ld a, [wPartyCount]
 	dec a

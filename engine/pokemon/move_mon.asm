@@ -488,7 +488,6 @@ endr
 	pop bc
 	pop hl
 
-.next3
 	ld a, [wMonType]
 	and $f
 	jr nz, .done
@@ -560,9 +559,7 @@ AddTempMonToParty:
 	call SkipNames
 	ld d, h
 	ld e, l
-	ld hl, wOTPartyMonOTs
-	ld a, [wCurPartyMon]
-	call SkipNames
+	ld hl, wTempMonOT
 	ld bc, NAME_LENGTH
 	rst CopyBytes
 
@@ -572,9 +569,7 @@ AddTempMonToParty:
 	call SkipNames
 	ld d, h
 	ld e, l
-	ld hl, wOTPartyMonNicknames
-	ld a, [wCurPartyMon]
-	call SkipNames
+	ld hl, wTempMonNickname
 	ld bc, MON_NAME_LENGTH
 	rst CopyBytes
 
@@ -861,8 +856,7 @@ SentPkmnIntoBox:
 GiveEgg::
 	ld a, [wCurPartySpecies]
 	push af
-	farcall GetPreEvolution
-	farcall GetPreEvolution
+	farcall GetBaseEvolution
 	ld a, [wCurPartySpecies]
 	dec a
 
@@ -1390,35 +1384,6 @@ GetNatureStatMultiplier::
 GivePoke::
 	push de
 	push bc
-	xor a ; PARTYMON
-	ld [wMonType], a
-	predef TryAddMonToParty
-	jr nc, .failed
-	ld hl, wPartyMonNicknames
-	ld a, [wPartyCount]
-	dec a
-	ld [wCurPartyMon], a
-	call SkipNames
-	ld d, h
-	ld e, l
-	pop bc
-	ld a, b
-	ld b, 0
-	push bc
-	push de
-	push af
-	ld a, [wCurItem]
-	and a
-	jr z, .done
-	ld a, [wCurPartyMon]
-	ld hl, wPartyMon1Item
-	ld bc, PARTYMON_STRUCT_LENGTH
-	rst AddNTimes
-	ld a, [wCurItem]
-	ld [hl], a
-	jr .done
-
-.failed
 	ld a, [wCurPartySpecies]
 	ld [wEnemyMonSpecies], a
 	xor a
@@ -1428,164 +1393,212 @@ GivePoke::
 	ld [wMonType], a
 	ld [wBattleMode], a
 	predef TryAddMonToParty
-	call SentPkmnIntoBox
-	jp nc, .FailedToGiveMon
-	ld a, BOXMON
-	ld [wMonType], a
-	xor a
-	ld [wCurPartyMon], a
-	ld de, wMonOrItemNameBuffer
-	pop bc
-	ld a, b
-	ld b, 1
-	push bc
-	push de
-	push af
-	ld a, [wCurItem]
-	and a
-	jr z, .no_item
-	ld a, [wCurItem]
-	ld [wTempMonItem], a
-	farcall UpdateStorageBoxMonFromTemp
-.no_item
-	ld a, POKE_BALL
-	ld [wCurItem], a
+	lb bc, $81, 1
+	farcall CopyBetweenPartyAndTemp
 
-.done
+	ld hl, wTempMonItem
+	ld a, [wCurItem]
+	ld [hli], a
+	ld a, [wCurPlayerMove]
+	and a
+	jr z, .no_move
+	ld d, h
+	ld e, l
+	ld b, a
+	ld c, NUM_MOVES
+.move_loop
+	ld a, [de]
+	and a
+	jr z, .add_move
+	inc de
+	dec c
+	jr nz, .move_loop
+	ld d, h
+	ld e, l
+.add_move
+	ld a, b
+	ld [de], a
+	ld hl, Moves + MOVE_PP
+	call GetMoveProperty
+	ld hl, MON_PP - MON_MOVES
+	add hl, de
+	ld [hl], a
+
+.no_move
+	pop bc
+	pop hl
+	push bc
+	ld a, b
+	and a
+	jr nz, .trainer_data
+	ld a, [wGiftMonBall]
+	ld [wCurItem], a
+	ld hl, wTempMonCaughtData
+	farcall SetBoxmonOrEggmonCaughtData
+	call AddTempMonToParty
+	ld d, PARTYMON
+	jr nc, .added
+	call .SetUpBoxMon
+	jp c, .FailedToGiveMon
+	ld d, BOXMON
+.added
+	push de
 	ld a, [wCurPartySpecies]
 	ld [wd265], a
 	ld [wTempEnemyMonSpecies], a
 	call GetPokemonName
-	ld hl, wStringBuffer1
-	ld de, wMonOrItemNameBuffer
-	ld bc, MON_NAME_LENGTH
-	rst CopyBytes
-	pop af
-	and a
-	jp z, .wildmon
-	pop de
+	ld hl, wMonOrItemNameBuffer
+	ld de, wStringBuffer1
+	call CopyName2
+	ld hl, ReceivedGiftMonText
+	call PrintText
+	ld de, SFX_CAUGHT_MON
+	call PlaySFX
+	call WaitSFX
+	farcall GiveANickname_YesNo
 	pop bc
-	pop hl
+	jr c, .skip_nickname
 	push bc
-	push hl
-	ld a, [wScriptBank]
-	call GetFarWord
-	ld bc, MON_NAME_LENGTH
-	ld a, [wScriptBank]
-	call FarCopyBytes
-	pop hl
-	inc hl
-	inc hl
-	ld a, [wScriptBank]
-	call GetFarWord
-	pop bc
+	ld de, wTempMonNickname
 	ld a, b
 	and a
-	push de
-	push bc
-	jr nz, .send_to_box
-
-	push hl
-	ld a, [wCurPartyMon]
-	ld hl, wPartyMonOTs
+	jr nz, .got_nick
+	ld hl, wPartyMonNicknames
+	ld a, [wPartyCount]
+	dec a
 	call SkipNames
 	ld d, h
 	ld e, l
-	pop hl
-.otnameloop
-	ld a, [wScriptBank]
-	call GetFarByte
-	ld [de], a
-	inc hl
-	inc de
-	cp "@"
-	jr nz, .otnameloop
-	ld a, [wScriptBank]
-	call GetFarByte
-	ld b, a
-	push bc
-	ld a, [wCurPartyMon]
-	ld hl, wPartyMon1ID
-	ld bc, PARTYMON_STRUCT_LENGTH
-	rst AddNTimes
-	ld a, HIGH(01001)
-	ld [hli], a
-	ld [hl], LOW(01001)
-	pop bc
-	ld a, POKE_BALL
-	ld c, a
-	farcall SetGiftPartyMonCaughtData
-	jr .skip_nickname
-
-.send_to_box
-	ld de, wTempMonOT
-.loop
-	ld a, [wScriptBank]
-	call GetFarByte
-	ld [de], a
-	inc hl
-	inc de
-	cp "@"
-	jr nz, .loop
-	ld a, [wScriptBank]
-	call GetFarByte
-	ld b, a
-	ld a, POKE_BALL
-	ld c, a
-	ld hl, wTempMonID
-	call Random
-	ld [hli], a
-	call Random
-	ld [hl], a
-	farcall UpdateStorageBoxMonFromTemp
-	farcall SetGiftBoxMonCaughtData
-	jr .skip_nickname
-
-.wildmon
-	pop de
-	pop bc
-	push bc
+.got_nick
 	push de
-	ld a, b
-	and a
-	jr z, .party
-	farcall SetBoxMonCaughtData
-	jr .set_caught_data
-
-.party
-	ld a, POKE_BALL
-	ld [wCurItem], a
-	farcall SetCaughtData
-.set_caught_data
-	farcall GiveANickname_YesNo
+	call InitNickname
 	pop de
-	call nc, InitNickname
-
-.skip_nickname
+	ld hl, wStringBuffer1
+	call CopyName2
 	pop bc
+.skip_nickname
 	pop de
 	ld a, b
+	inc b
 	and a
 	ret z
-	ld hl, TextJump_WasSentToBillsPC
-	call PrintText
-	ld hl, wMonOrItemNameBuffer
+	push de
+	farcall UpdateStorageBoxMonFromTemp
+	pop de
+	ld a, d
+	and a
+	ld b, 2
+	ret nz
+	ld hl, WasSentToBillsPCText
+	jp PrintText
+
+.trainer_data
+	ld de, wTempMonForm
+	ld a, [wCurForm]
+	ld b, a
+	ld a, [de]
+	and !GENDER_MASK
+	or b
+	ld [de], a
+	push hl
+	ld a, [wScriptBank]
+	ld b, a
+	call GetFarWord
+	ld a, b
+	push bc
 	ld de, wTempMonNickname
 	ld bc, MON_NAME_LENGTH
-	rst CopyBytes
-	farcall UpdateStorageBoxMonFromTemp
-	ld b, $1
-	ret
-
-.FailedToGiveMon:
+	call FarCopyBytes
 	pop bc
-	pop de
-	ld b, $2
+	pop hl
+	inc hl
+	inc hl
+	push hl
+	push bc
+	ld a, b
+	call GetFarWord
+	ld a, b
+	ld de, wTempMonOT
+	ld bc, PLAYER_NAME_LENGTH
+	call FarCopyBytes
+	pop bc
+	pop hl
+	inc hl
+	inc hl
+	ld a, b
+	call GetFarWord
+	push hl
+	ld a, b
+	call GetFarWord
+	ld a, l
+	ld [wTempMonID], a
+	ld a, h
+	ld [wTempMonID+1], a
+	pop hl
+	inc hl
+	inc hl
+	ld a, b
+	call GetFarByte
+	ld b, a
+	ld a, [wGiftMonBall]
+	ld c, a
+	ld hl, wTempMonCaughtData
+	farcall SetGiftMonCaughtData
+	call AddTempMonToParty
+	ld b, PARTYMON
+	jr nc, .skip_nickname
+	call .SetUpBoxMon
+	ld b, d
+	jr nc, .skip_nickname
+
+.FailedToGiveMon
+	pop bc
+	ld b, 0
 	ret
 
-TextJump_WasSentToBillsPC:
-	; was sent to BILL's PC.
-	text_far Text_WasSentToBillsPC
+.SetUpBoxMon
+	farcall NewStorageBoxPointer
+	ret c
+	ld a, b
+	ld [wTempMonBox], a
+	ld a, c
+	ld [wTempMonSlot], a
+	ld a, [wCurPartySpecies]
+	dec a
+	call SetSeenAndCaughtMon
+	ld a, [wCurPartySpecies]
+	cp UNOWN
+	jr nz, .check_magikarp
+	farcall UpdateUnownDex
+	ld a, [wFirstUnownSeen]
+	and a
+	jr nz, .check_magikarp
+	ld a, [wTempMonForm]
+	and FORM_MASK
+	ld [wFirstUnownSeen], a
+.check_magikarp
+	ld a, [wCurPartySpecies]
+	cp MAGIKARP
+	jr nz, .done
+	ld a, [wFirstMagikarpSeen]
+	and a
+	jr nz, .done
+	ld a, [wTempMonForm]
+	and FORM_MASK
+	ld [wFirstMagikarpSeen], a
+.done
+	ld d, BOXMON
+	and a
+	ret
+
+ReceivedGiftMonText:
+	; <PLAYER> received @!
+	text_far _ReceivedGiftMonText
+	text_end
+
+WasSentToBillsPCText:
+	; @ was sent to Bill's PC.
+	text_far _WasSentToBillsPCText
 	text_end
 
 InitNickname:

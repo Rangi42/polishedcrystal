@@ -103,9 +103,6 @@ CeladonPrizeRoom_alreadyhavetm:
 CeladonPrizeRoom_notenoughcoins:
 	jumpopenedtext CeladonPrizeRoom_NotEnoughCoinsText
 
-CeladonPrizeRoom_notenoughroom:
-	jumpopenedtext CeladonPrizeRoom_NotEnoughRoomText
-
 CeladonPrizeRoom_TMMenuDataHeader:
 	db $40 ; flags
 	db 02, 00 ; start coords
@@ -142,8 +139,6 @@ CeladonGameCornerPokemonVendor:
 .mr__mime
 	checkcoins CELADONGAMECORNERPRIZEROOM_MR__MIME_COINS
 	ifequal $2, CeladonPrizeRoom_notenoughcoins
-	readvar VAR_PARTYCOUNT
-	ifequal $6, CeladonPrizeRoom_notenoughroom
 	getmonname MR__MIME, $0
 	scall CeladonPrizeRoom_askbuy
 	iffalse_jumpopenedtext CeladonPrizeRoom_ComeAgainText
@@ -151,17 +146,16 @@ CeladonGameCornerPokemonVendor:
 	playsound SFX_TRANSACTION
 	writetext CeladonPrizeRoom_HereYouGoText
 	waitbutton
+	givepoke MR__MIME, 10
+	iffalse_jumpopenedtext CeladonPrizeRoom_NotEnoughRoomText
 	setval MR__MIME
 	special Special_GameCornerPrizeMonCheckDex
-	givepoke MR__MIME, 10
 	takecoins CELADONGAMECORNERPRIZEROOM_MR__MIME_COINS
 	sjump .loop
 
 .eevee
 	checkcoins CELADONGAMECORNERPRIZEROOM_EEVEE_COINS
 	ifequal $2, CeladonPrizeRoom_notenoughcoins
-	readvar VAR_PARTYCOUNT
-	ifequal $6, CeladonPrizeRoom_notenoughroom
 	getmonname EEVEE, $0
 	scall CeladonPrizeRoom_askbuy
 	iffalse_jumpopenedtext CeladonPrizeRoom_ComeAgainText
@@ -169,17 +163,16 @@ CeladonGameCornerPokemonVendor:
 	playsound SFX_TRANSACTION
 	writetext CeladonPrizeRoom_HereYouGoText
 	waitbutton
+	givepoke EEVEE, 20
+	iffalse_jumpopenedtext CeladonPrizeRoom_NotEnoughRoomText
 	setval EEVEE
 	special Special_GameCornerPrizeMonCheckDex
-	givepoke EEVEE, 20
 	takecoins CELADONGAMECORNERPRIZEROOM_EEVEE_COINS
 	sjump .loop
 
 .porygon
 	checkcoins CELADONGAMECORNERPRIZEROOM_PORYGON_COINS
 	ifequal $2, CeladonPrizeRoom_notenoughcoins
-	readvar VAR_PARTYCOUNT
-	ifequal $6, CeladonPrizeRoom_notenoughroom
 	getmonname PORYGON, $0
 	scall CeladonPrizeRoom_askbuy
 	iffalse_jumpopenedtext CeladonPrizeRoom_ComeAgainText
@@ -187,9 +180,10 @@ CeladonGameCornerPokemonVendor:
 	playsound SFX_TRANSACTION
 	writetext CeladonPrizeRoom_HereYouGoText
 	waitbutton
+	givepoke PORYGON, 30
+	iffalse_jumpopenedtext CeladonPrizeRoom_NotEnoughRoomText
 	setval PORYGON
 	special Special_GameCornerPrizeMonCheckDex
-	givepoke PORYGON, 30
 	takecoins CELADONGAMECORNERPRIZEROOM_PORYGON_COINS
 	sjump .loop
 
@@ -267,8 +261,8 @@ CeladonPrizeRoom_NotEnoughCoinsText:
 	done
 
 CeladonPrizeRoom_NotEnoughRoomText:
-	text "You have no room"
-	line "for it."
+	text "Wait, no, you have"
+	line "no room for it."
 	done
 
 CeladonPrizeRoom_ComeAgainText:

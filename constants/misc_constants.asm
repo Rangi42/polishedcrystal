@@ -42,6 +42,9 @@ MAX_DAY_CARE_EXP EQU $500000
 ; hall of fame
 HOF_MASTER_COUNT EQU 200
 
+; Kirk ID
+KIRK_SHUCKIE_ID EQU 00518
+
 ; crash error codes
 	const_def
 	const ERR_RST_0

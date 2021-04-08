@@ -26,26 +26,27 @@ ManiaScript:
 	writetext ManiaText_AskLookAfterShuckie
 	yesorno
 	iffalse .refusetotakeshuckie
-	special SpecialGiveShuckie
-	iffalse .partyfull
-	special TeachShuckiePoisonJab
+	givepoke SHUCKLE, MALE | NO_FORM, 25, BERRY_JUICE, NET_BALL, POISON_JAB, TRUE, ShuckieName, ShuckieOTName, ShuckieOTIDAndCaughtGender
+	iffalse_jumpopenedtext ManiaText_PartyAndBoxFull
 	writetext ManiaText_TakeCareOfShuckie
 	promptbutton
 	waitsfx
 	writetext ManiaText_GotShuckie
 	playsound SFX_KEY_ITEM
 	waitsfx
+	ifequal 1, .shuckieinparty
+	writetext ManiaText_ShuckieSentToBillsPC
+	promptbutton
+.shuckieinparty
 	closetext
 	setevent EVENT_GOT_SHUCKIE
+	setflag ENGINE_GOT_SHUCKIE_TODAY
 	end
 
 .alreadyhaveshuckie
 	checkflag ENGINE_GOT_SHUCKIE_TODAY
 	iffalse .returnshuckie
 	jumpopenedtext ManiaText_TakeCareOfShuckie
-
-.partyfull
-	jumpopenedtext ManiaText_PartyFull
 
 .refusetotakeshuckie
 	jumpopenedtext ManiaText_IfHeComesBack
@@ -84,6 +85,16 @@ ManiaScript:
 .default_postevent
 	jumpopenedtext ManiaText_HappinessSpeech
 
+ShuckieName:
+	rawchar "Shuckie@"
+
+ShuckieOTName:
+	rawchar "Kirk@"
+
+ShuckieOTIDAndCaughtGender:
+	bigdw KIRK_SHUCKIE_ID
+	db MALE
+
 ManiaText_AskLookAfterShuckie:
 	text "I, I'm in shock!"
 
@@ -120,9 +131,14 @@ ManiaText_GotShuckie:
 	line "#mon."
 	done
 
-ManiaText_PartyFull:
+ManiaText_ShuckieSentToBillsPC:
+	text "The #mon was"
+	line "sent to Bill's PC."
+	done
+
+ManiaText_PartyAndBoxFull:
 	text "Your #mon party"
-	line "is full."
+	line "and box are full."
 	done
 
 ManiaText_IfHeComesBack:
