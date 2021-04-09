@@ -666,19 +666,23 @@ StatsScreen_LoadGFX:
 	farcall PrintTempMonStats
 
 	; Print Hyper Training statistics
-	ld hl, wTempMonOT + PLAYER_NAME_LENGTH
+	ld hl, wTempMonHyperTraining
 	ld a, [hl]
+
+	; Handle display one by one since Spcl.Atk/Spcl.Def/Speed is displayed in a
+	; different order.
 	hlcoord 0, 10
 	ld de, -4
-	call .CheckHyper
+	call .CheckHyper ; HP
 	ld de, SCREEN_WIDTH * 2
-	ld b, 5
-.hyper_loop
-	call .CheckHyper
-	dec b
-	jr nz, .hyper_loop
-	ret
-
+	call .CheckHyper ; Attack
+	call .CheckHyper ; Defense
+	rlca ; skips the speed one for now
+	call .CheckHyper ; Spcl.Atk
+	call .CheckHyper ; Spcl.Def
+	rlca
+	swap a
+	; fallthrough
 .CheckHyper:
 	rlca
 	jr nc, .no_hyper_star

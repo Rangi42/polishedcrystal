@@ -101,6 +101,7 @@ SpecialsPointers::
 	add_special InitRoamMons
 	add_special Special_FadeOutMusic
 	add_special Diploma
+	add_special Special_HyperTrain
 
 ; Crystal
 	add_special GiveOddEgg
