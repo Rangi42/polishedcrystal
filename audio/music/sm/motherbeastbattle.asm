@@ -1,7 +1,7 @@
 ; Pokémon S/M - Battle! Mother Beast
 ; Demixed by Mmmmmm
 ; https://pastebin.com/zWajMT3c
-; https://hax.iimarck.us/topic/6777/5/
+; https://hax.iimarckus.org/topic/6777/5/
 
 Music_MotherBeastBattleSM:
 	musicheader 4, 1, Music_MotherBeastBattleSM_Ch1

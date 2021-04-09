@@ -1,6 +1,6 @@
 ; Pokémon D/P/Pt - Battle! Gym Leader
 ; Demixed by Pum
-; https://hax.iimarck.us/topic/6443/
+; https://hax.iimarckus.org/topic/6443/
 
 Music_GymLeaderBattleBW:
 	musicheader 4, 1, GymLeaderBattleBW_Channel1

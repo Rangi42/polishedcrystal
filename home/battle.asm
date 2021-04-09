@@ -221,7 +221,6 @@ UpdateBattleMon::
 	ret
 
 UpdateEnemyMonInParty::
-; No wildmons.
 	ld a, [wCurOTMon]
 	ld hl, wOTPartyMon1Level
 	call GetPartyLocation

@@ -753,9 +753,7 @@ DrawLowRadarLine:
 
 ; For x from b to d, draw a point at (x, c)
 .loop
-	push de
 	call hLCDInterruptFunction ; FillRadarUp/Down/Left/Right
-	pop de
 
 ; Update D and y
 	ldh a, [hErr]
@@ -808,9 +806,7 @@ DrawHighRadarLine:
 
 ; For y from c to e, draw a point at (b, y)
 .loop
-	push de
 	call hLCDInterruptFunction ; FillRadarUp/Down/Left/Right
-	pop de
 
 ; Update D and x
 	ldh a, [hErr]
@@ -848,9 +844,7 @@ DrawHorizontalRadarLine:
 
 ; For x from b to d, draw a point at (x, c)
 .loop
-	push de
 	call hLCDInterruptFunction ; FillRadarUp/Down/Left/Right
-	pop de
 	inc b
 	ld a, d
 	cp b
@@ -870,9 +864,7 @@ DrawVerticalRadarLine:
 
 ; For y from c to e, draw a point at (b, y)
 .loop
-	push de
 	call hLCDInterruptFunction ; FillRadarUp/Down/Left/Right
-	pop de
 	inc c
 	ld a, e
 	cp c
@@ -892,6 +884,9 @@ FillRadarDown:
 _FillRadarVertical:
 ; Draw a vertical line from (b, c) to (b, y), where y = hl[b]
 
+	push de
+	push bc
+
 ; de = point on the diagonal axes
 	ld e, b
 	ld d, 0
@@ -899,8 +894,6 @@ _FillRadarVertical:
 	ld a, [hl]
 	ld e, a
 	ld d, b
-
-	push bc
 
 ; Ensure that y0 < y1 (c < e)
 	ld a, c
@@ -912,15 +905,14 @@ _FillRadarVertical:
 
 ; For y from c to e, draw a point at (b, y)
 .loop
-	push de
 	call DrawRadarPointBC
-	pop de
 	inc c
 	ld a, e
 	cp c
 	jr nc, .loop
 
 	pop bc
+	pop de
 	ret
 
 FillRadarLeft:
@@ -936,6 +928,9 @@ FillRadarRight:
 _FillRadarHorizontal:
 ; Draw a horizontal line from (b, c) to the vertical axis
 
+	push de
+	push bc
+
 ; de = point on the diagonal axes
 	ld a, c
 	sub 24
@@ -945,8 +940,6 @@ _FillRadarHorizontal:
 	ld a, [hl]
 	ld d, a
 	ld e, c
-
-	push bc
 
 ; Ensure that x0 < x1 (b < d)
 	ld a, b
@@ -958,27 +951,28 @@ _FillRadarHorizontal:
 
 ; For x from b to d, draw a point at (x, c)
 .loop
-	push de
 	call DrawRadarPointBC
-	pop de
 	inc b
 	ld a, d
 	cp b
 	jr nc, .loop
 
 	pop bc
+	pop de
 	ret
 
 DrawRadarPointBC:
 ; Draw a point at (b, c), where 0 <= b < 80 and 0 <= c < 96
 
-; Byte: wDecompressScratch + ((y & $f8) * 10 + (x & $f8) + (y & $7)) * 2
+	push de
+
+; Byte: wDecompressScratch + ((y & $f8) * 10 + (x & $f8) + (y & $7)) * 2 + 1
 	; hl = (y & $f8) * 10
 	ld a, c
 	and $f8
 	ld hl, .Times10
-	srl a
-	srl a
+	rrca
+	rrca
 	ld d, 0
 	ld e, a
 	add hl, de
@@ -988,47 +982,34 @@ DrawRadarPointBC:
 	; hl += (x & $f8) + (y & $7)
 	ld a, b
 	and $f8
-	ld d, 0
 	ld e, a
 	ld a, c
 	and $7
 	add e
 	ld e, a
 	add hl, de
-	; hl = wDecompressScratch + hl * 2
+	; hl = wDecompressScratch + hl * 2 + 1 (second byte of 8 pixels)
 	add hl, hl
-	ld de, wDecompressScratch
+	ld de, wDecompressScratch + 1
 	add hl, de
 
-; Bit: 7 - (x & $7)
-	ld a, b
-	and $7
-	cpl
-	add 7 + 1 ; a = 7 - a
+	pop de
 
-; Set the bit in the second byte: white -> dark, black -> black (no light hue)
-	inc hl
+; Set the (7 - (x & $7))th bit in the byte: white -> dark, black -> black (no light hue)
 	; $c6 | (a << 3) = the 'set {a}, [hl]' opcode
+	ld a, b
 	add a
 	add a
 	add a
-	or $c6
+	and $7 << 3
+	xor $c6 ^ ($7 << 3) ; this is 'xor $fe', so 'cpl / dec a' would also work
 	ldh [hBitwiseOpcode], a
 	jp hBitwiseOperation
 
 .Times10:
-	dw %0000000000 ; == %00000xxx * 10 ($00-07)
-	dw %0001010000 ; == %00001xxx * 10 ($08-0f)
-	dw %0010100000 ; == %00010xxx * 10 ($10-17)
-	dw %0011110000 ; == %00011xxx * 10 ($18-1f)
-	dw %0101000000 ; == %00100xxx * 10 ($20-27)
-	dw %0110010000 ; == %00101xxx * 10 ($28-2f)
-	dw %0111100000 ; == %00110xxx * 10 ($30-37)
-	dw %1000110000 ; == %00111xxx * 10 ($38-3f)
-	dw %1010000000 ; == %01000xxx * 10 ($40-47)
-	dw %1011010000 ; == %01001xxx * 10 ($48-4f)
-	dw %1100100000 ; == %01010xxx * 10 ($50-57)
-	dw %1101110000 ; == %01011xxx * 10 ($58-5f)
+for y, 0, 96, 8 ; enough values for all valid y coordinates (0 <= y < 96)
+	dw y * 10
+endr
 
 atk_y_coords: MACRO
 	db 47, 46, 46, 45, 45, 44, 43, 43, 42, 42, 41, 40, 40, 39, 39, 38, 37, 37, 36, 36

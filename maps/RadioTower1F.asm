@@ -117,7 +117,7 @@ RadioTower1FLuckyNumberManScript:
 	iffalse_jumpopenedtext RadioTower1FLuckyNumberManNoRoomForYourPrizeText
 	itemnotify
 	setflag ENGINE_LUCKY_NUMBER_SHOW
-	jumpthisopenedtext
+	jumpopenedtext RadioTower1FLuckyNumberManComeAgainText
 
 .FifthPlace:
 	writetext WonFifthPlaceText

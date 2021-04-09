@@ -1949,13 +1949,20 @@ GetMapMusic::
 	push bc
 	ld de, MAP_MUSIC
 	call GetMapField
-	ld hl, SpecialMapMusic
-.loop
-	ld a, [hli]
-	and a
-	jr z, .done
-	cp c
-	jr nz, .next
+	ld a, c
+	cp FIRST_ALT_MUSIC
+	jr c, .done
+	; hl = AlternateMusic + ~c * 5
+	cpl
+	ld c, a
+	add a
+	add a
+	add c
+	add LOW(AlternateMusic)
+	ld l, a
+	adc HIGH(AlternateMusic)
+	sub l
+	ld h, a
 	ld a, [hli]
 	ld e, a
 	ld a, [hli]
@@ -1968,19 +1975,12 @@ GetMapMusic::
 	inc hl
 .false
 	ld a, [hl]
-	ld c, a
 .done
-	ld e, c
+	ld e, a
 	ld d, 0
 	pop bc
 	pop hl
 	ret
-
-.next
-rept 5
-	inc hl
-endr
-	jr .loop
 
 GetMapTimeOfDay::
 	call GetPhoneServiceTimeOfDayByte

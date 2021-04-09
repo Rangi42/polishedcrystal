@@ -1,7 +1,7 @@
 ; Pokémon R/S/E - Ever Grande City
 ; Demixed by Mmmmmm
 ; https://pastebin.com/7JH4Hxft
-; https://hax.iimarck.us/topic/6777/
+; https://hax.iimarckus.org/topic/6777/
 
 Music_EverGrandeCityRSE:
 	musicheader 4, 1, Music_EverGrandeCityRSE_Ch1

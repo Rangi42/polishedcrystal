@@ -414,29 +414,18 @@ LoveBallMultiplier:
 	jp MultiplyAndDivide
 
 FastBallMultiplier:
-; multiply catch rate by 4 if enemy mon is in one of the three
-; FleeMons tables.
-	ld a, [wTempEnemyMonSpecies]
-	ld c, a
-	ld hl, FleeMons
-	ld d, 3
-
-.loop
-	ld a, BANK(FleeMons)
+; multiply catch rate by 4 if enemy mon has base speed 100+
+	ld a, [wOTPartyMon1Species]
+	dec a
+	ld hl, BaseData + BASE_SPD
+	ld bc, BASE_DATA_SIZE
+	rst AddNTimes
+	ld a, BANK(BaseData)
 	call GetFarByte
-
-	inc hl
-	cp -1
-	jr z, .next
-	cp c
-	jr nz, .loop
-
+	cp 100
+	ret c
 	ln a, 4, 1 ; x4
 	jp MultiplyAndDivide
-.next
-	dec d
-	jr nz, .loop
-	ret
 
 LevelBallMultiplier:
 ; multiply catch rate by 8 if player mon level / 4 > enemy mon level

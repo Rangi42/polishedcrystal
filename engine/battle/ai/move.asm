@@ -223,6 +223,7 @@ endc
 	db 4, AI_STATUS_F ; Hypnosis vs Insomnia, etc.
 	db 6, AI_SETUP_F ; Use stat change moves intelligently.
 	db 8, AI_AGGRESSIVE_F ; Use most damaging move.
+	db 8, AI_RISKY_F ; Use moves that KO the target.
 	db 16, AI_SMART_F ; "Advanced" AI
 	db -1
 

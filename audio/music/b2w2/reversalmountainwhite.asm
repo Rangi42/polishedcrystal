@@ -1,7 +1,7 @@
 ; Pokémon White 2 - Reversal Mountain
 ; Demixed by Mmmmmm
 ; https://pastebin.com/mUzX8S44
-; https://hax.iimarck.us/topic/6777/2/
+; https://hax.iimarckus.org/topic/6777/2/
 
 Music_ReversalMountainWhite2:
 	musicheader 4, 1, Music_ReversalMountainWhite2_Ch1

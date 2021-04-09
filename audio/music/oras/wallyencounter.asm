@@ -1,7 +1,7 @@
 ; Pokémon OR/AS - Encounter! Wally
 ; Demixed by Mmmmmm
 ; https://pastebin.com/b5C5P7NX
-; https://hax.iimarck.us/topic/6777/5/
+; https://hax.iimarckus.org/topic/6777/5/
 
 Music_WallyEncounterORAS:
 	musicheader 2, 1, Music_WallyEncounterORAS_Ch1

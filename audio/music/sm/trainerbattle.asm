@@ -1,7 +1,7 @@
 ; Pokémon S/M - Battle! Trainer
 ; Demixed by Mmmmmm
 ; https://pastebin.com/jFntMups
-; https://hax.iimarck.us/topic/6777/7/
+; https://hax.iimarckus.org/topic/6777/7/
 
 Music_TrainerBattleSM:
 	musicheader 4, 1, Music_TrainerBattleSM_Ch1

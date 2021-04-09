@@ -1366,7 +1366,7 @@ CheckAirborne_GotAbility:
 	pop de
 	ret z
 
-	; d=1 (inverse matchup checks) skips hardcoded immunity check
+	; d=1 (inverse matchup checks/ring target) skips hardcoded immunity check
 	ld a, d
 	and a
 	jr nz, .typecheck_done
@@ -1416,11 +1416,19 @@ CheckTypeMatchup:
 	jr nz, .done_ground_type
 
 	call SwitchTurn
-	ld a, [wBattleType]
-	cp BATTLETYPE_INVERSE
+
+	; Ring Target or Inverse battles bypass the type matchup check.
+	push bc
+	predef GetUserItemAfterUnnerve
+	ld a, b
+	pop bc
+	cp HELD_RING_TARGET
 	ld d, 1
 	jr z, .check_airborne
-	ld d, 0
+	ld a, [wBattleType]
+	cp BATTLETYPE_INVERSE
+	jr z, .check_airborne
+	dec d
 .check_airborne
 	call CheckAirborneAfterMoldBreaker
 	push af
@@ -4406,7 +4414,7 @@ PostStatus:
 	farcall UseOpponentHeldStatusHealingItem
 	farjp RunEnemyStatusHealAbilities
 
-BattleCommand_sleeptarget:
+BattleCommand_sleep:
 	ld a, [wTypeModifier]
 	and a
 	jp z, .failed_ineffective
@@ -4418,8 +4426,7 @@ BattleCommand_sleeptarget:
 
 	ld a, [wAttackMissed]
 	and a
-	ld hl, AttackMissedText
-	jr nz, .failed
+	jr nz, .failed_ineffective
 
 	call AnimateCurrentMove
 	ld c, 30
@@ -4614,59 +4621,6 @@ BattleCommand_poisontarget:
 	ld hl, WasPoisonedText
 	call StdBattleTextbox
 
-	jp PostStatusWithSynchronize
-
-CanPoisonTargetVerbose:
-	; different from CanPoisonTarget: common function for BC_(Poison|Toxic)
-	; which does move animations, prints text, etc, on failure.
-	; Returns nz on failure
-	ld hl, DoesntAffectText
-	ld a, [wTypeModifier]
-	and a
-	jp z, .failed
-
-	call CheckSubstituteOpp
-	ld hl, ButItFailedText
-	jr nz, .failed
-	ld a, [wAttackMissed]
-	and a
-	ld hl, AttackMissedText
-	jr nz, .failed
-
-	ld b, 1
-	call CanPoisonTarget
-	jr c, .ability_ok
-	jr nz, .failed
-	xor a
-	ret
-.ability_ok
-	farcall DisableAnimations
-	farcall ShowEnemyAbilityActivation
-	ld hl, DoesntAffectText
-.failed
-	push hl
-	call AnimateFailedMove
-	pop hl
-	call StdBattleTextbox
-	farcall EnableAnimations
-	or 1
-	ret
-
-BattleCommand_poison:
-	call CanPoisonTargetVerbose
-	ret nz
-ApplyPoison:
-	call AnimateCurrentMove
-	call PoisonOpponent
-	call RefreshBattleHuds
-	ld a, BATTLE_VARS_STATUS_OPP
-	call GetBattleVarAddr
-	bit TOX, [hl]
-	ld hl, WasPoisonedText
-	jr z, .text_ok
-	ld hl, BadlyPoisonedText
-.text_ok
-	call StdBattleTextbox
 	jp PostStatusWithSynchronize
 
 PoisonOpponent:
@@ -5039,55 +4993,73 @@ StatusProblemTable:
 	dbww 1 << PSN, ANIM_PSN, WasPoisonedText
 	dbww SLP, ANIM_SLP, FellAsleepText
 
+BattleCommand_poison:
+	ld a, 1 << PSN
+	; fallthrough (the part below is called by BC_toxic)
+_BattleCommand_poison:
+	ld hl, CanPoisonTarget
+	jr StatusTargetVerbose
+BattleCommand_paralyze:
+	ld a, 1 << PAR
+	ld hl, CanParalyzeTarget
+	jr StatusTargetVerbose
 BattleCommand_burn:
+	ld a, 1 << BRN
+	ld hl, CanBurnTarget
+	; fallthrough
+StatusTargetVerbose:
+; Returns z if we successfully inflicted a status problem.
+	push af
 	ld a, [wTypeModifier]
 	and a
 	jp z, .failed_ineffective
 
-	ld a, [wAttackMissed]
-	and a
-	ld hl, AttackMissedText
-	jr nz, .failed
-
 	ld b, 1
-	call CanBurnTarget
+	call _hl_
 	jr c, .ability_ok
 	jr nz, .failed
+
+	ld a, [wAttackMissed]
+	and a
+	jr nz, .failed_ineffective
 
 	call AnimateCurrentMove
 	ld c, 30
 	call DelayFrames
 	xor a
 	ld [wNumHits], a
-	ld de, ANIM_BRN
-	call PlayOpponentBattleAnim
-	ld a, $1
-	ldh [hBGMapMode], a
+
 	ld a, BATTLE_VARS_STATUS_OPP
 	call GetBattleVarAddr
-	set BRN, [hl]
+	pop af
+	ld [hl], a
+	call DisplayStatusProblem
 	call UpdateOpponentInParty
 	call UpdateBattleHuds
-	ld hl, WasBurnedText
-	call StdBattleTextbox
-	jp PostStatusWithSynchronize
+	call PostStatusWithSynchronize
+	xor a
+	ret
 
 .failed_ineffective
 	call AnimateFailedMove
-	jp FailText_CheckOpponentProtect
-
-.failed
-	push hl
-	call AnimateFailedMove
-	pop hl
-	jp StdBattleTextbox
+	call FailText_CheckOpponentProtect
+	jr .done
 
 .ability_ok
 	farcall DisableAnimations
 	farcall ShowEnemyAbilityActivation
+	ld hl, DoesntAffectText
+.failed
+	push hl
 	call AnimateFailedMove
-	call PrintDoesntAffect
-	farjp EnableAnimations
+	pop hl
+	call StdBattleTextbox
+	farcall EnableAnimations
+.done
+	pop af
+	; a contains the status problem we wanted to afflict. So this returns nz.
+	and a
+	ret
 
 BattleCommand_raisesubnoanim:
 	ld hl, GetMonBackpic
@@ -5245,8 +5217,9 @@ BattleCommand_forceswitch:
 	jr nz, .fail
 	ld a, [wBattleMode]
 	dec a
-	jr nz, .trainer
-	jr .wild
+	jr z, .wild
+	call CheckAnyOtherAliveOpponentMons
+	jr nz, .trainer_success
 
 .but_it_failed
 	ld a, ATKFAIL_GENERIC
@@ -5304,9 +5277,7 @@ BattleCommand_forceswitch:
 	ld hl, FledInFearText
 	jp StdBattleTextbox
 
-.trainer
-	call CheckAnyOtherAliveOpponentMons
-	jr z, .but_it_failed
+.trainer_success
 	call AnimateCurrentMove
 	ld c, 20
 	call DelayFrames
@@ -5780,56 +5751,6 @@ Confuse_CheckSwagger_ConfuseHit:
 	cp EFFECT_SWAGGER
 	ret z
 	jp PrintDidntAffect2
-
-BattleCommand_paralyze:
-	ld a, [wTypeModifier]
-	and a
-	jp z, .failed_ineffective
-
-	ld b, 1
-	call CanParalyzeTarget
-	jr c, .ability_ok
-	jr nz, .failed
-
-	ld a, [wAttackMissed]
-	and a
-	ld hl, AttackMissedText
-	jr nz, .failed
-
-	call AnimateCurrentMove
-	ld c, 30
-	call DelayFrames
-	xor a
-	ld [wNumHits], a
-	ld de, ANIM_PAR
-	call PlayOpponentBattleAnim
-	ld a, $1
-	ldh [hBGMapMode], a
-	ld a, BATTLE_VARS_STATUS_OPP
-	call GetBattleVarAddr
-	set PAR, [hl]
-	call UpdateOpponentInParty
-	call UpdateBattleHuds
-	ld hl, ParalyzedText
-	call StdBattleTextbox
-	jp PostStatusWithSynchronize
-
-.failed_ineffective
-	call AnimateFailedMove
-	jp FailText_CheckOpponentProtect
-
-.failed
-	push hl
-	call AnimateFailedMove
-	pop hl
-	jp StdBattleTextbox
-
-.ability_ok
-	farcall DisableAnimations
-	farcall ShowEnemyAbilityActivation
-	call AnimateFailedMove
-	call PrintDoesntAffect
-	farjp EnableAnimations
 
 BattleCommand_rechargenextturn:
 	ld a, BATTLE_VARS_SUBSTATUS3

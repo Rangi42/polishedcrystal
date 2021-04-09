@@ -1,7 +1,7 @@
 ; Pokémon X/Y - Scary House
 ; Demixed by Mmmmmm
 ; https://pastebin.com/Ycw1DGh3
-; https://hax.iimarck.us/topic/6777/9/
+; https://hax.iimarckus.org/topic/6777/9/
 
 Music_ScaryHouseXY:
 	musicheader 3, 1, Music_ScaryHouseXY_Ch1

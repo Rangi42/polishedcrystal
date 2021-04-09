@@ -1,15 +1,13 @@
 BattleCommand_toxic:
-	call CanPoisonTargetVerbose
+	ld a, 1 << PSN | 1 << TOX
+	call _BattleCommand_poison
 	ret nz
+
 	ldh a, [hBattleTurn]
 	and a
-	ld de, wEnemyToxicCount
+	ld hl, wEnemyToxicCount
 	jr z, .ok
-	ld de, wPlayerToxicCount
+	ld hl, wPlayerToxicCount
 .ok
-	xor a
-	ld [de], a
-	ld a, BATTLE_VARS_STATUS_OPP
-	call GetBattleVarAddr
-	set TOX, [hl]
-	jp ApplyPoison
+	ld [hl], 0
+	ret

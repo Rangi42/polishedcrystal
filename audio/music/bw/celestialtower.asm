@@ -1,7 +1,7 @@
 ; Pokémon B/W - Celestial Tower
 ; Demixed by Mmmmmm
 ; https://pastebin.com/GbzJ6dUH
-; https://hax.iimarck.us/topic/6777/9/
+; https://hax.iimarckus.org/topic/6777/9/
 
 Music_CelestialTowerBW_NoIntro:
 	musicheader 4, 1, Music_CelestialTowerBW_NoIntro_Ch1
