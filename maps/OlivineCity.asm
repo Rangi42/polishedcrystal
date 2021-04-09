@@ -29,6 +29,7 @@ OlivineCity_MapScriptHeader:
 	bg_event 34, 20, BGEVENT_JUMPTEXT, OlivineLighthouseSignText
 	bg_event  1, 21, BGEVENT_JUMPTEXT, OlivineCityBattleTowerSignText
 	bg_event 50, 27, BGEVENT_JUMPTEXT, OlivineCityPokeathlonDomeSignText
+	bg_event 10, 17, BGEVENT_JUMPTEXT, OlivineCityCafeSignText
 	bg_event 36, 14, BGEVENT_ITEM + RARE_CANDY, EVENT_OLIVINE_CITY_HIDDEN_RARE_CANDY
 	bg_event 47, 17, BGEVENT_ITEM + BIG_PEARL, EVENT_OLIVINE_CITY_HIDDEN_BIG_PEARL
 	bg_event 49, 29, BGEVENT_ITEM + SOFT_SAND, EVENT_OLIVINE_CITY_HIDDEN_SOFT_SAND
@@ -398,4 +399,8 @@ OlivineCityPokeathlonDomeSignText:
 	text "The #athlon"
 	line "Project Has"
 	cont "Started!"
+	done
+
+OlivineCityCafeSignText:
+	text "Olivine Café"
 	done

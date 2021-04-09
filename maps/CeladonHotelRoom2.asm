@@ -12,9 +12,9 @@ CeladonHotelRoom2_MapScriptHeader:
 	def_bg_events
 
 	def_object_events
-	object_event  3,  2, SPRITE_SUPER_NERD, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, CeladonHotelRoom2SuperNerdScript, -1
+	object_event  3,  2, SPRITE_POKEFAN_M, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_PURPLE, OBJECTTYPE_SCRIPT, 0, MrHyperScript, -1
 
-CeladonHotelRoom2SuperNerdScript:
+MrHyperScript:
 	faceplayer
 	opentext
 	checkevent EVENT_TALKED_TO_MR_HYPER
@@ -57,7 +57,7 @@ CeladonHotelRoom2SuperNerdScript:
 	line "#mon perform"
 	cont "Hyper Training!"
 
-	para "It allows #mon"
+	para "It lets a #mon"
 	line "that has maxed out"
 	cont "its effort become"
 	cont "even stronger!"

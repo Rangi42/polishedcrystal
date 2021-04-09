@@ -856,13 +856,13 @@ Special_HyperTrain:
 
 .MenuHeader:
 	db $40 ; flags
-	db 05, 00 ; start coords
+	db 04, 00 ; start coords
 	db 11, 19 ; end coords
 	dw .MenuData
 	db 1 ; default option
 
 .MenuData:
-	db $e0 ; flags
+	db $a0 ; flags
 	dn 3, 2 ; rows, columns
 	db 8 ; spacing
 	dba .Strings
