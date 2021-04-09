@@ -531,7 +531,7 @@ ENDM
 	map_const VIRIDIAN_FOREST_PEWTER_GATE,                 5,  4 ; 17
 	map_const ROUTE_1_VIRIDIAN_GATE,                       5,  4 ; 18
 	map_const ROUTE_16_NORTHWEST,                         11, 11 ; 19
-	map_const ROUTE_16_WEST,                              34, 11 ; 20
+	map_const ROUTE_16_WEST,                              34, 12 ; 20
 
 	newgroup                                                     ; 24
 	map_const ROUTE_26,                                   10, 54 ;  1

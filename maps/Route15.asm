@@ -4,8 +4,8 @@ Route15_MapScriptHeader:
 	def_callbacks
 
 	def_warp_events
-	warp_event  2,  4, ROUTE_15_FUCHSIA_GATE, 3
-	warp_event  2,  5, ROUTE_15_FUCHSIA_GATE, 4
+	warp_event  4,  4, ROUTE_15_FUCHSIA_GATE, 3
+	warp_event  4,  5, ROUTE_15_FUCHSIA_GATE, 4
 
 	def_coord_events
 

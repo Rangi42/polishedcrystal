@@ -5,8 +5,8 @@ Route18West_MapScriptHeader:
 	callback MAPCALLBACK_NEWMAP, Route18WestAlwaysOnBike
 
 	def_warp_events
-	warp_event 19,  6, ROUTE_18_GATE, 1
-	warp_event 19,  7, ROUTE_18_GATE, 2
+	warp_event 17,  6, ROUTE_18_GATE, 1
+	warp_event 17,  7, ROUTE_18_GATE, 2
 
 	def_coord_events
 	coord_event 12,  0, 0, Route18WestBikeCheckScript
