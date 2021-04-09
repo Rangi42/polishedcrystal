@@ -771,7 +771,8 @@ Special_HyperTrain:
 	ld a, MON_IS_EGG
 	call GetPartyParamLocation
 	bit MON_IS_EGG_F, [hl]
-	jr nz, .egg
+	ld hl, .TextCantTrainEgg
+	jr nz, .print_and_fail
 
 	call GetCurNickname
 	ld hl, .TrainWhichStat
@@ -844,9 +845,7 @@ Special_HyperTrain:
 
 .already_hyped
 	ld hl, .TextAlreadyHypedUp
-	jr .print_and_fail
-.egg
-	ld hl, .TextCantTrainEgg
+	; fallthrough
 .print_and_fail
 	call PrintText
 .nope
