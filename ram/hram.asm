@@ -169,9 +169,11 @@ UNION
 ; 1 - opponent trainer
 hBattleTurn:: db
 hBattlePalFadeMode:: db
+hTimeOfDayPalOffset:: db
 NEXTU
 hChartScreen:: db
-hChartCoord:: db
+hChartFillCoord:: db
+hChartLineCoord:: db
 ENDU
 
 hCGBPalUpdate:: db
@@ -193,8 +195,6 @@ hRequested1bpp::        db
 hRequestedVTileDest::   dw
 hRequestedVTileSource:: dw
 hRequestOpaque1bpp::    db
-
-hTimeOfDayPalOffset:: db
 
 UNION
 hTmpd:: db

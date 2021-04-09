@@ -752,6 +752,8 @@ DrawLowRadarLine:
 	ldh [hErr], a
 
 ; For x from b to d, draw a point at (x, c)
+	ld a, d
+	ldh [hChartLineCoord], a
 .loop
 	call hLCDInterruptFunction ; FillRadarUp/Down/Left/Right
 
@@ -773,7 +775,7 @@ DrawLowRadarLine:
 	ldh [hErr], a
 
 	inc b
-	ld a, d
+	ldh a, [hChartLineCoord]
 	cp b
 	jr nc, .loop
 	ret
@@ -805,6 +807,8 @@ DrawHighRadarLine:
 	ldh [hSingleOpcode], a
 
 ; For y from c to e, draw a point at (b, y)
+	ld a, e
+	ldh [hChartLineCoord], a
 .loop
 	call hLCDInterruptFunction ; FillRadarUp/Down/Left/Right
 
@@ -826,7 +830,7 @@ DrawHighRadarLine:
 	ldh [hErr], a
 
 	inc c
-	ld a, e
+	ldh a, [hChartLineCoord]
 	cp c
 	jr nc, .loop
 	ret
@@ -843,10 +847,12 @@ DrawHorizontalRadarLine:
 .x_sorted
 
 ; For x from b to d, draw a point at (x, c)
+	ld a, d
+	ldh [hChartLineCoord], a
 .loop
 	call hLCDInterruptFunction ; FillRadarUp/Down/Left/Right
 	inc b
-	ld a, d
+	ldh a, [hChartLineCoord]
 	cp b
 	jr nc, .loop
 	ret
@@ -863,10 +869,12 @@ DrawVerticalRadarLine:
 .y_sorted
 
 ; For y from c to e, draw a point at (b, y)
+	ld a, e
+	ldh [hChartLineCoord], a
 .loop
 	call hLCDInterruptFunction ; FillRadarUp/Down/Left/Right
 	inc c
-	ld a, e
+	ldh a, [hChartLineCoord]
 	cp c
 	jr nc, .loop
 	ret
@@ -884,7 +892,6 @@ FillRadarDown:
 _FillRadarVertical:
 ; Draw a vertical line from (b, c) to (b, y), where y = hl[b]
 
-	push de
 	push bc
 
 ; de = point on the diagonal axes
@@ -905,16 +912,15 @@ _FillRadarVertical:
 
 ; For y from c to e, draw a point at (b, y)
 	ld a, e
-	ldh [hChartCoord], a
+	ldh [hChartFillCoord], a
 .loop
 	call DrawRadarPointBC
 	inc c
-	ldh a, [hChartCoord]
+	ldh a, [hChartFillCoord]
 	cp c
 	jr nc, .loop
 
 	pop bc
-	pop de
 	ret
 
 FillRadarLeft:
@@ -930,7 +936,6 @@ FillRadarRight:
 _FillRadarHorizontal:
 ; Draw a horizontal line from (b, c) to the vertical axis
 
-	push de
 	push bc
 
 ; de = point on the diagonal axes
@@ -953,16 +958,15 @@ _FillRadarHorizontal:
 
 ; For x from b to d, draw a point at (x, c)
 	ld a, d
-	ldh [hChartCoord], a
+	ldh [hChartFillCoord], a
 .loop
 	call DrawRadarPointBC
 	inc b
-	ldh a, [hChartCoord]
+	ldh a, [hChartFillCoord]
 	cp b
 	jr nc, .loop
 
 	pop bc
-	pop de
 	ret
 
 DrawRadarPointBC:
