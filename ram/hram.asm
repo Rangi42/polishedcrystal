@@ -164,12 +164,15 @@ hRandomSub:: db
 
 hSecondsBackup:: db
 
-hChartScreen::
+UNION
 ; 0 - player
 ; 1 - opponent trainer
 hBattleTurn:: db
-
 hBattlePalFadeMode:: db
+NEXTU
+hChartScreen:: db
+hChartCoord:: db
+ENDU
 
 hCGBPalUpdate:: db
 hCGB::          db
