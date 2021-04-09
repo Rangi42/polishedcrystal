@@ -675,16 +675,17 @@ StatsScreen_LoadGFX:
 	ld de, -4
 	call .CheckHyper ; HP
 	ld de, SCREEN_WIDTH * 2
-	call .CheckHyper ; Attack
-	call .CheckHyper ; Defense
+	call .CheckHyper2 ; Attack + Defense
 	rlca ; skips the speed one for now
-	call .CheckHyper ; Spcl.Atk
-	call .CheckHyper ; Spcl.Def
-	rlca
+	call .CheckHyper2 ; Spcl.Atk + Spcl.Def
 	swap a
+	; Fall through. The first check will fail because at this point, bit 7 of a
+	; is never set. Bit 6 (checked in the 2nd run) is speed hyper training flag.
+.CheckHyper2:
+	call .CheckHyper
 	; fallthrough
 .CheckHyper:
-	rlca
+	add a
 	jr nc, .no_hyper_star
 	ld [hl], "★"
 .no_hyper_star
