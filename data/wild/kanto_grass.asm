@@ -192,83 +192,83 @@
 	map_id VICTORY_ROAD_1F
 	db 6 percent, 6 percent, 6 percent ; encounter rates: morn/day/nite
 	; morn
-	dbp 39, GRAVELER
-	dbp 38, RHYHORN
-	dbp 37, ONIX
-	dbp 38, GOLBAT
-	dbp 40, SANDSLASH
-	dbp 42, RHYDON
-	dbp 41, STEELIX
+	dbp 42, GRAVELER
+	dbp 41, RHYHORN
+	dbp 40, ONIX
+	dbp 41, GOLBAT
+	dbp 43, SANDSLASH
+	dbp 44, RHYDON
+	dbp 44, STEELIX
 	; day
-	dbp 39, GRAVELER
-	dbp 38, RHYHORN
-	dbp 37, ONIX
-	dbp 38, GOLBAT
-	dbp 40, SANDSLASH
-	dbp 42, RHYDON
-	dbp 41, STEELIX
+	dbp 42, GRAVELER
+	dbp 41, RHYHORN
+	dbp 40, ONIX
+	dbp 41, GOLBAT
+	dbp 43, SANDSLASH
+	dbp 44, RHYDON
+	dbp 44, STEELIX
 	; nite
-	dbp 39, GOLBAT
-	dbp 38, GRAVELER
-	dbp 37, ONIX
-	dbp 38, GRAVELER
-	dbp 40, HAUNTER
-	dbp 42, STEELIX
-	dbp 41, RHYDON
+	dbp 42, GOLBAT
+	dbp 41, GRAVELER
+	dbp 40, ONIX
+	dbp 41, GRAVELER
+	dbp 43, HAUNTER
+	dbp 44, STEELIX
+	dbp 44, RHYDON
 
 	map_id VICTORY_ROAD_2F
 	db 6 percent, 6 percent, 6 percent ; encounter rates: morn/day/nite
 	; morn
-	dbp 40, GRAVELER
-	dbp 39, RHYHORN
-	dbp 38, ONIX
-	dbp 39, GOLBAT
-	dbp 41, SANDSLASH
-	dbp 43, RHYDON
-	dbp 42, STEELIX
+	dbp 44, GRAVELER
+	dbp 43, RHYHORN
+	dbp 42, ONIX
+	dbp 43, GOLBAT
+	dbp 45, SANDSLASH
+	dbp 47, RHYDON
+	dbp 46, STEELIX
 	; day
-	dbp 40, GRAVELER
-	dbp 39, RHYHORN
-	dbp 38, ONIX
-	dbp 39, GOLBAT
-	dbp 41, SANDSLASH
-	dbp 43, RHYDON
-	dbp 42, STEELIX
+	dbp 44, GRAVELER
+	dbp 43, RHYHORN
+	dbp 42, ONIX
+	dbp 43, GOLBAT
+	dbp 45, SANDSLASH
+	dbp 47, RHYDON
+	dbp 46, STEELIX
 	; nite
-	dbp 40, GOLBAT
-	dbp 39, GRAVELER
-	dbp 38, ONIX
-	dbp 39, GRAVELER
-	dbp 41, HAUNTER
-	dbp 43, STEELIX
-	dbp 42, RHYDON
+	dbp 44, GOLBAT
+	dbp 43, GRAVELER
+	dbp 42, ONIX
+	dbp 43, GRAVELER
+	dbp 45, HAUNTER
+	dbp 47, STEELIX
+	dbp 46, RHYDON
 
 	map_id VICTORY_ROAD_3F
 	db 6 percent, 6 percent, 6 percent ; encounter rates: morn/day/nite
 	; morn
-	dbp 41, GRAVELER
-	dbp 40, RHYHORN
-	dbp 39, ONIX
-	dbp 40, GOLBAT
-	dbp 42, SANDSLASH
-	dbp 44, RHYDON
-	dbp 43, STEELIX
+	dbp 46, GRAVELER
+	dbp 45, RHYHORN
+	dbp 44, ONIX
+	dbp 45, GOLBAT
+	dbp 47, SANDSLASH
+	dbp 49, RHYDON
+	dbp 48, STEELIX
 	; day
-	dbp 41, GRAVELER
-	dbp 40, RHYHORN
-	dbp 39, ONIX
-	dbp 40, GOLBAT
-	dbp 42, SANDSLASH
-	dbp 44, RHYDON
-	dbp 43, STEELIX
+	dbp 46, GRAVELER
+	dbp 45, RHYHORN
+	dbp 44, ONIX
+	dbp 45, GOLBAT
+	dbp 47, SANDSLASH
+	dbp 49, RHYDON
+	dbp 48, STEELIX
 	; nite
-	dbp 41, GOLBAT
-	dbp 40, GRAVELER
-	dbp 39, ONIX
-	dbp 40, GRAVELER
-	dbp 42, HAUNTER
-	dbp 44, STEELIX
-	dbp 43, RHYDON
+	dbp 46, GOLBAT
+	dbp 45, GRAVELER
+	dbp 44, ONIX
+	dbp 45, GRAVELER
+	dbp 47, HAUNTER
+	dbp 49, STEELIX
+	dbp 48, RHYDON
 
 	map_id TOHJO_FALLS
 	db 4 percent, 4 percent, 4 percent ; encounter rates: morn/day/nite
@@ -1002,56 +1002,56 @@
 	map_id ROUTE_26
 	db 10 percent, 10 percent, 10 percent ; encounter rates: morn/day/nite
 	; morn
-	dbp 36, DODUO
-	dbp 36, SANDSLASH
-	dbp 39, PONYTA
+	dbp 37, DODUO
+	dbp 37, SANDSLASH
+	dbp 40, PONYTA
 	dbp 38, RATICATE
 	dbp 38, DODUO
-	dbp 38, ARBOK, ARBOK_KANTO_FORM
-	dbp 38, ARBOK, ARBOK_KANTO_FORM
+	dbp 39, ARBOK, ARBOK_KANTO_FORM
+	dbp 39, ARBOK, ARBOK_KANTO_FORM
 	; day
-	dbp 36, DODUO
-	dbp 36, SANDSLASH
-	dbp 39, PONYTA
+	dbp 37, DODUO
+	dbp 37, SANDSLASH
+	dbp 40, PONYTA
 	dbp 38, RATICATE
 	dbp 38, DODUO
-	dbp 38, ARBOK, ARBOK_KANTO_FORM
-	dbp 38, ARBOK, ARBOK_KANTO_FORM
+	dbp 39, ARBOK, ARBOK_KANTO_FORM
+	dbp 39, ARBOK, ARBOK_KANTO_FORM
 	; nite
-	dbp 36, NOCTOWL
-	dbp 36, RATICATE
-	dbp 39, NOCTOWL
+	dbp 37, NOCTOWL
+	dbp 37, RATICATE
+	dbp 40, NOCTOWL
 	dbp 38, RATICATE
 	dbp 38, QUAGSIRE
-	dbp 38, QUAGSIRE
-	dbp 38, QUAGSIRE
+	dbp 39, QUAGSIRE
+	dbp 39, QUAGSIRE
 
 	map_id ROUTE_27
 	db 10 percent, 10 percent, 10 percent ; encounter rates: morn/day/nite
 	; morn
-	dbp 35, DODUO
-	dbp 35, ARBOK, ARBOK_KANTO_FORM
-	dbp 37, RATICATE
-	dbp 37, DODUO
-	dbp 39, PONYTA
-	dbp 37, DODRIO
-	dbp 37, DODRIO
+	dbp 36, DODUO
+	dbp 36, ARBOK, ARBOK_KANTO_FORM
+	dbp 38, RATICATE
+	dbp 38, DODUO
+	dbp 40, PONYTA
+	dbp 38, DODRIO
+	dbp 39, DODRIO
 	; day
-	dbp 35, DODUO
-	dbp 35, ARBOK, ARBOK_KANTO_FORM
-	dbp 37, RATICATE
-	dbp 37, DODUO
-	dbp 39, PONYTA
-	dbp 37, DODRIO
-	dbp 37, DODRIO
+	dbp 36, DODUO
+	dbp 36, ARBOK, ARBOK_KANTO_FORM
+	dbp 38, RATICATE
+	dbp 38, DODUO
+	dbp 40, PONYTA
+	dbp 38, DODRIO
+	dbp 39, DODRIO
 	; nite
-	dbp 35, QUAGSIRE
-	dbp 35, NOCTOWL
-	dbp 37, RATICATE
-	dbp 37, QUAGSIRE
+	dbp 36, QUAGSIRE
+	dbp 36, NOCTOWL
+	dbp 38, RATICATE
+	dbp 38, QUAGSIRE
+	dbp 40, NOCTOWL
+	dbp 38, NOCTOWL
 	dbp 39, NOCTOWL
-	dbp 37, NOCTOWL
-	dbp 37, NOCTOWL
 
 	map_id ROUTE_28
 	db 10 percent, 10 percent, 10 percent ; encounter rates: morn/day/nite

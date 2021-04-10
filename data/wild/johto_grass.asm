@@ -408,56 +408,56 @@
 	map_id RUINS_OF_ALPH_ENTRANCE_CHAMBER
 	db 6 percent, 6 percent, 6 percent ; encounter rates: morn/day/nite
 	; morn
+	dbp 10, UNOWN
 	dbp 5, UNOWN
 	dbp 5, UNOWN
-	dbp 5, UNOWN
-	dbp 5, UNOWN
-	dbp 5, UNOWN
-	dbp 5, UNOWN
-	dbp 5, UNOWN
+	dbp 10, UNOWN
+	dbp 10, UNOWN
+	dbp 10, UNOWN
+	dbp 10, UNOWN
 	; day
+	dbp 10, UNOWN
 	dbp 5, UNOWN
 	dbp 5, UNOWN
-	dbp 5, UNOWN
-	dbp 5, UNOWN
-	dbp 5, UNOWN
-	dbp 5, UNOWN
-	dbp 5, UNOWN
+	dbp 10, UNOWN
+	dbp 10, UNOWN
+	dbp 10, UNOWN
+	dbp 15, UNOWN
 	; nite
-	dbp 5, UNOWN
-	dbp 5, UNOWN
-	dbp 5, UNOWN
-	dbp 5, UNOWN
-	dbp 5, UNOWN
-	dbp 5, UNOWN
-	dbp 5, UNOWN
+	dbp 10, UNOWN
+	dbp 10, UNOWN
+	dbp 10, UNOWN
+	dbp 10, UNOWN
+	dbp 10, UNOWN
+	dbp 10, UNOWN
+	dbp 15, UNOWN
 
 	map_id RUINS_OF_ALPH_INNER_CHAMBER
 	db 6 percent, 6 percent, 6 percent ; encounter rates: morn/day/nite
 	; morn
+	dbp 10, UNOWN
 	dbp 5, UNOWN
 	dbp 5, UNOWN
-	dbp 5, UNOWN
-	dbp 5, UNOWN
-	dbp 5, UNOWN
-	dbp 5, UNOWN
-	dbp 5, UNOWN
+	dbp 10, UNOWN
+	dbp 10, UNOWN
+	dbp 10, UNOWN
+	dbp 10, UNOWN
 	; day
+	dbp 10, UNOWN
 	dbp 5, UNOWN
 	dbp 5, UNOWN
-	dbp 5, UNOWN
-	dbp 5, UNOWN
-	dbp 5, UNOWN
-	dbp 5, UNOWN
-	dbp 5, UNOWN
+	dbp 10, UNOWN
+	dbp 10, UNOWN
+	dbp 10, UNOWN
+	dbp 15, UNOWN
 	; nite
-	dbp 5, UNOWN
-	dbp 5, UNOWN
-	dbp 5, UNOWN
-	dbp 5, UNOWN
-	dbp 5, UNOWN
-	dbp 5, UNOWN
-	dbp 5, UNOWN
+	dbp 10, UNOWN
+	dbp 10, UNOWN
+	dbp 10, UNOWN
+	dbp 10, UNOWN
+	dbp 10, UNOWN
+	dbp 10, UNOWN
+	dbp 15, UNOWN
 
 	map_id UNION_CAVE_1F
 	db 4 percent, 4 percent, 4 percent ; encounter rates: morn/day/nite
