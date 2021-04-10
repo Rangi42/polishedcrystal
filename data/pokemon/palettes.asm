@@ -587,6 +587,7 @@ INCLUDE "gfx/pokemon/zapdos_galarian/hgss/normal.pal"
 INCLUDE "gfx/pokemon/zapdos_galarian/hgss/shiny.pal"
 INCLUDE "gfx/pokemon/moltres_galarian/hgss/normal.pal"
 INCLUDE "gfx/pokemon/moltres_galarian/hgss/shiny.pal"
+	assert_table_length NUM_EXT_POKEMON + 1
 
 else
 	RGB 30,22,17, 16,14,19 ; 000
@@ -1163,5 +1164,6 @@ INCLUDE "gfx/pokemon/zapdos_galarian/normal.pal"
 INCLUDE "gfx/pokemon/zapdos_galarian/shiny.pal"
 INCLUDE "gfx/pokemon/moltres_galarian/normal.pal"
 INCLUDE "gfx/pokemon/moltres_galarian/shiny.pal"
+	assert_table_length NUM_EXT_POKEMON + 1
 
 endc

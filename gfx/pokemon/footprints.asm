@@ -257,3 +257,4 @@ INCBIN "gfx/footprints/glaceon.1bpp"
 INCBIN "gfx/footprints/sylveon.1bpp"
 	assert_table_length NUM_POKEMON
 INCBIN "gfx/footprints/egg.1bpp"
+	assert_table_length NUM_SPECIES

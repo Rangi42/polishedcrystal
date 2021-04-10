@@ -344,3 +344,5 @@ FramesPointers:
 	dw ArticunoGalarianFrames
 	dw ZapdosGalarianFrames
 	dw MoltresGalarianFrames
+
+	assert_table_length NUM_UNIQUE_POKEMON

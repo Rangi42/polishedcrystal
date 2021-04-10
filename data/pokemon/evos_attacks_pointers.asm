@@ -291,3 +291,4 @@ EvosAttacksPointers::
 	dw ArticunoGalarianEvosAttacks
 	dw ZapdosGalarianEvosAttacks
 	dw MoltresGalarianEvosAttacks
+	assert_table_length NUM_EXT_POKEMON

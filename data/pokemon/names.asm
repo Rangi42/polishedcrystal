@@ -257,3 +257,4 @@ PokemonNames::
 	rawchar "Sylveon@@@"
 	assert_table_length NUM_POKEMON + 1
 	rawchar "Egg@@@@@@@"
+	assert_table_length NUM_SPECIES + 1

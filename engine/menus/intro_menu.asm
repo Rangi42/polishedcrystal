@@ -542,11 +542,7 @@ Continue_DisplayPokedexNumCaught:
 	ret z
 	push hl
 	ld hl, wPokedexCaught
-IF NUM_POKEMON % 8
-	ld b, NUM_POKEMON / 8 + 1
-ELSE
-	ld b, NUM_POKEMON / 8
-ENDC
+	ld b, (NUM_POKEMON + 7) / 8
 	call CountSetBits
 	pop hl
 	ld de, wd265

@@ -291,3 +291,4 @@ endc
 	db NO_MOVE      ; ARTICUNO, GALARIAN_FORM
 	db NO_MOVE      ; ZAPDOS, GALARIAN_FORM
 	db NO_MOVE      ; MOLTRES, GALARIAN_FORM
+	assert_table_length NUM_EXT_POKEMON

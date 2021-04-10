@@ -323,3 +323,4 @@ INCLUDE "data/pokemon/base_stats/weezing_galarian.asm"
 INCLUDE "data/pokemon/base_stats/articuno_galarian.asm"
 INCLUDE "data/pokemon/base_stats/zapdos_galarian.asm"
 INCLUDE "data/pokemon/base_stats/moltres_galarian.asm"
+	assert_table_length NUM_EXT_POKEMON

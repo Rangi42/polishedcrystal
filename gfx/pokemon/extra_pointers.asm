@@ -344,3 +344,5 @@ AnimationExtraPointers:
 	dw ArticunoGalarianAnimationExtra
 	dw ZapdosGalarianAnimationExtra
 	dw MoltresGalarianAnimationExtra
+
+	assert_table_length NUM_UNIQUE_POKEMON

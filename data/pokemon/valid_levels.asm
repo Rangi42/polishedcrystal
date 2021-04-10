@@ -258,3 +258,4 @@ ValidPokemonLevels: ; for Wonder Trade
 	db  20, 100 ; Sylveon
 	assert_table_length NUM_POKEMON + 1
 	db 255, 255 ; Egg
+	assert_table_length NUM_SPECIES + 1
