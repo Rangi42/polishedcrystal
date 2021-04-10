@@ -474,7 +474,7 @@ endr
 	ld b, TRUE
 	push hl
 	push de
-	call CalcPkmnStats
+	predef CalcPkmnStats
 	pop hl
 	push bc
 	inc hl
@@ -634,8 +634,7 @@ RetrievePokemonFromDayCareMan:
 	ld a, [wBreedMon1Species]
 	ld [wCurPartySpecies], a
 	ld de, SFX_TRANSACTION
-	call PlaySFX
-	call WaitSFX
+	call PlayWaitSFX
 	call GetBreedMon1LevelGrowth
 	ld a, b
 	ld [wPrevPartyLevel], a
@@ -649,8 +648,7 @@ RetrievePokemonFromDayCareLady:
 	ld a, [wBreedMon2Species]
 	ld [wCurPartySpecies], a
 	ld de, SFX_TRANSACTION
-	call PlaySFX
-	call WaitSFX
+	call PlayWaitSFX
 	call GetBreedMon2LevelGrowth
 	ld a, b
 	ld [wPrevPartyLevel], a
@@ -731,7 +729,7 @@ RetrieveBreedmon:
 	call GetHyperTraining
 	inc a
 	ld b, a
-	call CalcPkmnStats
+	predef CalcPkmnStats
 	ld hl, wPartyMon1Moves
 	ld a, [wPartyCount]
 	dec a
@@ -853,120 +851,6 @@ SentPkmnIntoBox:
 	and a
 	ret
 
-GiveEgg::
-	ld a, [wCurPartySpecies]
-	push af
-	farcall GetBaseEvolution
-	ld a, [wCurPartySpecies]
-	dec a
-
-; TryAddMonToParty sets Seen and Caught flags
-; when it is successful.  This routine will make
-; sure that we aren't newly setting flags.
-	push af
-	call CheckCaughtMon
-	pop af
-	push bc
-	call CheckSeenMon
-	push bc
-
-	predef TryAddMonToParty
-
-	ld a, [wPartyCount]
-	dec a
-	ld hl, wPartyMon1IsEgg
-	call GetPartyLocation
-	ld a, [hl]
-	or IS_EGG_MASK
-	ld [hl], a
-
-; If we haven't caught this Pokemon before receiving
-; the Egg, reset the flag that was just set by
-; TryAddMonToParty.
-	pop bc
-	ld a, c
-	and a
-	jr nz, .skip_caught_flag
-	ld a, [wCurPartySpecies]
-	dec a
-	ld c, a
-	ld d, $0
-	ld hl, wPokedexCaught
-	ld b, RESET_FLAG
-	predef FlagPredef
-
-.skip_caught_flag
-; If we haven't seen this Pokemon before receiving
-; the Egg, reset the flag that was just set by
-; TryAddMonToParty.
-	pop bc
-	ld a, c
-	and a
-	jr nz, .skip_seen_flag
-	ld a, [wCurPartySpecies]
-	dec a
-	ld c, a
-	ld d, $0
-	ld hl, wPokedexSeen
-	ld b, RESET_FLAG
-	predef FlagPredef
-
-.skip_seen_flag
-	pop af
-	ld [wCurPartySpecies], a
-	ld a, [wPartyCount]
-	dec a
-	ld bc, PARTYMON_STRUCT_LENGTH
-	ld hl, wPartyMon1Species
-	rst AddNTimes
-	ld a, [wCurPartySpecies]
-	ld [hl], a
-	ld hl, wPartyCount
-	ld a, [hl]
-	ld b, 0
-	ld c, a
-	add hl, bc
-	ld a, [wCurPartySpecies]
-	ld [hl], a
-	ld a, [wPartyCount]
-	dec a
-	ld hl, wPartyMonNicknames
-	call SkipNames
-	ld de, String_Egg
-	call CopyName2
-	ld a, [wPartyCount]
-	dec a
-	ld hl, wPartyMon1Happiness
-	ld bc, PARTYMON_STRUCT_LENGTH
-	rst AddNTimes
-	ld a, [wMonStatusFlags]
-	bit 1, a
-	ld a, 1
-	jr nz, .got_init_happiness
-	ld a, [wBaseEggSteps]
-	and $f
-	inc a
-	ld b, a
-	add a
-	add a
-	add b
-
-.got_init_happiness
-	ld [hl], a
-	ld a, [wPartyCount]
-	dec a
-	ld hl, wPartyMon1HP
-	ld bc, PARTYMON_STRUCT_LENGTH
-	rst AddNTimes
-	xor a
-	ld [hli], a
-	ld [hl], a
-	and a
-	ret
-
-String_Egg:
-	db "Egg@"
-
 RemoveMonFromParty:
 ; Done by writing a null entry to the party slot.
 	ld b, 0
@@ -999,7 +883,7 @@ ComputeNPCTrademonStats:
 	ld a, MON_EVS - 1
 	call GetPartyParamLocation
 	ld b, TRUE
-	call CalcPkmnStats
+	predef CalcPkmnStats
 	pop de
 	ld a, MON_HP
 	call GetPartyParamLocation
@@ -1039,7 +923,7 @@ UpdatePkmnStats:
 	call GetHyperTraining
 	inc a
 	ld b, a
-	call CalcPkmnStats
+	predef CalcPkmnStats
 	ld a, MON_HP
 	call GetPartyParamLocation
 	pop bc
@@ -1430,31 +1314,65 @@ GivePoke::
 	push bc
 	ld a, b
 	and a
-	jr nz, .trainer_data
+	jp nz, .trainer_data
+	ld a, [wTempMonForm]
+	bit MON_IS_EGG_F, a
+	jr z, .not_egg
+	ld de, String_Egg
+	ld hl, wTempMonNickname
+	call CopyName2
+	ld hl, wTempMonHP
+	xor a
+	ld [hli], a
+	ld [hl], a
+	ld a, [wBaseEggSteps]
+	and $f
+	inc a
+	ld b, a
+	add a
+	add a
+	add b
+	ld [wTempMonHappiness], a
+.not_egg
+	ld de, wTempMonNickname
+	ld hl, wMonOrItemNameBuffer
+	call CopyName2
 	ld a, [wGiftMonBall]
 	ld [wCurItem], a
 	ld hl, wTempMonCaughtData
 	farcall SetBoxmonOrEggmonCaughtData
+.try_add
 	call AddTempMonToParty
 	ld d, PARTYMON
 	jr nc, .added
 	call .SetUpBoxMon
 	jp c, .FailedToGiveMon
 	ld d, BOXMON
+
 .added
 	push de
 	ld a, [wCurPartySpecies]
 	ld [wd265], a
-	ld [wTempEnemyMonSpecies], a
 	call GetPokemonName
-	ld hl, wMonOrItemNameBuffer
-	ld de, wStringBuffer1
-	call CopyName2
+	ld a, [wTempMonForm]
+	bit MON_IS_EGG_F, a
+	ld hl, ReceivedGiftEggText
+	jr nz, .received_egg
 	ld hl, ReceivedGiftMonText
+.received_egg
+	push af
 	call PrintText
+	pop af
+	push af
+	ld de, SFX_GET_EGG_FROM_DAYCARE_LADY
+	jr nz, .received_egg_sfx
 	ld de, SFX_CAUGHT_MON
-	call PlaySFX
-	call WaitSFX
+.received_egg_sfx
+	call PlayWaitSFX
+	pop af
+	pop bc
+	jr nz, .skip_nickname
+	push bc
 	farcall GiveANickname_YesNo
 	pop bc
 	jr c, .skip_nickname
@@ -1473,7 +1391,7 @@ GivePoke::
 	push de
 	call InitNickname
 	pop de
-	ld hl, wStringBuffer1
+	ld hl, wMonOrItemNameBuffer
 	call CopyName2
 	pop bc
 .skip_nickname
@@ -1489,7 +1407,21 @@ GivePoke::
 	and a
 	ld b, 2
 	ret nz
-	ld hl, WasSentToBillsPCText
+
+	farcall CurBoxFullCheck
+	jr z, .box_not_full
+	ld hl, GiftMonBoxFullText
+	push bc
+	call PrintText
+	pop bc
+.box_not_full
+	farcall GetBoxName
+	ld a, [wTempMonForm]
+	bit MON_IS_EGG_F, a
+	ld hl, GiftEggSentToPCText
+	jr nz, .egg_sent
+	ld hl, GiftMonSentToPCText
+.egg_sent
 	jp PrintText
 
 .trainer_data
@@ -1546,23 +1478,26 @@ GivePoke::
 	farcall SetGiftMonCaughtData
 	call AddTempMonToParty
 	ld b, PARTYMON
-	jr nc, .skip_nickname
+	jp nc, .skip_nickname
 	call .SetUpBoxMon
 	ld b, d
-	jr nc, .skip_nickname
+	jp nc, .skip_nickname
 
-.FailedToGiveMon
+.FailedToGiveMon:
 	pop bc
 	ld b, 0
 	ret
 
-.SetUpBoxMon
+.SetUpBoxMon:
 	farcall NewStorageBoxPointer
 	ret c
 	ld a, b
 	ld [wTempMonBox], a
 	ld a, c
 	ld [wTempMonSlot], a
+	ld a, [wTempMonForm]
+	bit MON_IS_EGG_F, a
+	jr nz, .done
 	ld a, [wCurPartySpecies]
 	dec a
 	call SetSeenAndCaughtMon
@@ -1591,15 +1526,33 @@ GivePoke::
 	and a
 	ret
 
+GiftMonBoxFullText:
+	; @ was full.
+	text_far _CurBoxFullText
+	text_end
+
 ReceivedGiftMonText:
 	; <PLAYER> received @!
 	text_far _ReceivedGiftMonText
 	text_end
 
-WasSentToBillsPCText:
-	; @ was sent to Bill's PC.
-	text_far _WasSentToBillsPCText
+GiftMonSentToPCText:
+	; @ was sent to <BOX>.
+	text_far _MonSentToPCText
 	text_end
+
+ReceivedGiftEggText:
+	; <PLAYER> received an egg!
+	text_far _ReceivedEggText
+	text_end
+
+GiftEggSentToPCText:
+	; The Egg was sent to <BOX>.
+	text_far _EggSentToPCText
+	text_end
+
+String_Egg:
+	rawchar "Egg@"
 
 InitNickname:
 	push de

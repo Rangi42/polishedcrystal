@@ -163,3 +163,5 @@ SpecialsPointers::
 	add_special Special_HiddenPowerGuru
 	add_special Special_GetOvercastIndex
 	add_special Special_SetCopycatPalette
+	add_special Special_CurBoxFullCheck
+	add_special GetCurBoxName

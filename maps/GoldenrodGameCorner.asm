@@ -164,9 +164,6 @@ GoldenrodGameCornerPrizeVendor_AlreadyHaveTMScript:
 GoldenrodGameCornerPrizeVendor_NotEnoughCoinsScript:
 	jumpopenedtext GoldenrodGameCornerPrizeVendorNeedMoreCoinsText
 
-GoldenrodGameCornerPrizeMonVendor_NoRoomForPrizeScript:
-	jumpopenedtext GoldenrodGameCornerPrizeVendorNoMoreRoomText
-
 GoldenrodGameCornerTMVendorMenuData:
 	db $40 ; flags
 	db 02, 00 ; start coords
@@ -349,7 +346,10 @@ GoldenrodGameCornerPrizeVendorNeedMoreCoinsText:
 GoldenrodGameCornerPrizeVendorNoMoreRoomText:
 	text "Oh, no. You can't"
 	line "carry any more and"
-	line "your box is full."
+	cont "your box is full."
+
+	para "I'll return your"
+	line "coins to you."
 	done
 
 GoldenrodGameCornerPrizeVendorQuitText:

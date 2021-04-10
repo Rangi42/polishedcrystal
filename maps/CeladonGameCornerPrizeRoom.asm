@@ -263,6 +263,9 @@ CeladonPrizeRoom_NotEnoughCoinsText:
 CeladonPrizeRoom_NotEnoughRoomText:
 	text "Wait, no, you have"
 	line "no room for it."
+
+	para "I'll return your"
+	line "coins back to you."
 	done
 
 CeladonPrizeRoom_ComeAgainText:

@@ -141,25 +141,21 @@ DragonsDenB1FSilverScript:
 	waitbutton
 	writetext .GiveEggText
 	promptbutton
-	readvar VAR_PARTYCOUNT
-	ifequal PARTY_LENGTH, .PartyFull
 	checkevent EVENT_GOT_TOTODILE_FROM_ELM
 	iftrue .GiveChikoritaEgg
 	checkevent EVENT_GOT_CHIKORITA_FROM_ELM
 	iftrue .GiveCyndaquilEgg
-	giveegg TOTODILE, EGG_LEVEL
+	giveegg TOTODILE
 	sjump .GotRivalsEgg
 
 .GiveChikoritaEgg:
-	giveegg CHIKORITA, EGG_LEVEL
+	giveegg CHIKORITA
 	sjump .GotRivalsEgg
 
 .GiveCyndaquilEgg:
-	giveegg CYNDAQUIL, EGG_LEVEL
+	giveegg CYNDAQUIL
 .GotRivalsEgg
-	farwritetext _ReceivedEggText ; in text/common_1.asm
-	playsound SFX_GET_EGG_FROM_DAYCARE_LADY
-	waitsfx
+	iffalse .PartyAndBoxFull 
 	writetext .DescribeEggText
 	waitbutton
 	closetext
@@ -169,8 +165,8 @@ DragonsDenB1FSilverScript:
 	special RestartMapMusic
 	end
 
-.PartyFull:
-	writetext .PartyFullText
+.PartyAndBoxFull:
+	writetext .PartyAndBoxFullText
 	waitbutton
 	closetext
 	special RestartMapMusic
@@ -211,9 +207,10 @@ DragonsDenB1FSilverScript:
 	line "my way."
 	done
 
-.PartyFullText:
+.PartyAndBoxFullText:
 	text "Humph. You don't"
 	line "have any room…"
+	cont "Even in your box…"
 	done
 
 .Training1Text:

@@ -1800,7 +1800,8 @@ _IllKeepItThanksText::
 SECTION "_NoRoomForEggText", ROMX
 _NoRoomForEggText::
 	text "You have no room"
-	line "in your party."
+	line "in your party"
+	cont "or your box."
 	cont "Come back later."
 	done
 
@@ -2592,15 +2593,16 @@ SECTION "_ReceivedGiftMonText", ROMX
 _ReceivedGiftMonText::
 	text "<PLAYER> received"
 	line ""
-	text_ram wStringBuffer1
+	text_ram wMonOrItemNameBuffer
 	text "!"
 	done
 
-SECTION "_WasSentToBillsPCText", ROMX
-_WasSentToBillsPCText::
+SECTION "_EggSentToPCText", ROMX
+_EggSentToPCText::
+	text "The Egg was sent"
+	line "to "
 	text_ram wStringBuffer1
-	text " was"
-	line "sent to Bill's PC."
+	text "."
 	prompt
 
 SECTION "_PCGottaHavePokemonText", ROMX
@@ -4178,15 +4180,15 @@ Text_Waitbutton_2::
 	text_promptbutton
 	text_end
 
-SECTION "_BallCurBoxFullText", ROMX
-_BallCurBoxFullText::
+SECTION "_CurBoxFullText", ROMX
+_CurBoxFullText::
 	text ""
 	text_ram wStringBuffer1
 	text " is full."
 	prompt
 
-SECTION "_BallSentToPCText", ROMX
-_BallSentToPCText::
+SECTION "_MonSentToPCText", ROMX
+_MonSentToPCText::
 	text_ram wMonOrItemNameBuffer
 	text " was"
 	line "sent to "

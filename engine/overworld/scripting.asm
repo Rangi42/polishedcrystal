@@ -2030,19 +2030,25 @@ endr
 	ret
 
 Script_giveegg:
-; if no room in the party, return 0 in hScriptVar; else, return 2
-	xor a ; PARTYMON
-	ldh [hScriptVar], a
-	ld [wMonType], a
+; return 0 in hScriptVar if no room in party or box
+; return 1 if sent to party, return 2 if sent to box
+	xor a
+	ld [wOTPartyCount], a
+	ld [wCurItem], a
+	ld [wCurPlayerMove], a
+	inc a
+	ld [wMonType], a  ; OTPARTYMON
+	ld [wBattleMode], a
+	ld [wCurPartyLevel], a ; EGG_LEVEL
+	ld a, POKE_BALL
+	ld [wGiftMonBall], a
 	call GetScriptByte
 	ld [wCurPartySpecies], a
+	ld [wEnemyMonSpecies], a
 	call GetScriptByte
 	ld [wCurForm], a
-	call GetScriptByte
-	ld [wCurPartyLevel], a
-	farcall GiveEgg
-	ret nc
-	ld a, 2
+	farcall GivePoke
+	ld a, b
 	ldh [hScriptVar], a
 	ret
 
