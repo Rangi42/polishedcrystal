@@ -4572,29 +4572,30 @@ CanStatusTarget:
 .already_statused
 	bit BRN, a
 	ld hl, AlreadyBurnedText
-	jr nz, .end
+	jr nz, .pop_and_end
 	bit PSN, a
 	ld hl, AlreadyPoisonedText
-	jr nz, .end
+	jr nz, .pop_and_end
 	bit PAR, a
 	ld hl, AlreadyParalyzedText
-	jr nz, .end
+	jr nz, .pop_and_end
 	; Shouldn't happen
 	bit FRZ, a
 	ld hl, AlreadyConfusedText ; no AlreadyFrozen
-	jr nz, .end
+	jr nz, .pop_and_end
 	ld hl, AlreadyAsleepText
-	jr .end
+	jr .pop_and_end
 .cant_type
 	ld hl, DoesntAffectText
 	pop de
-	jr .end
+	jr .pop_and_end
 .cant_item
 	call GetCurItemName
 	ld hl, ProtectedByText
 	; fallthrough
-.end
+.pop_and_end
 	pop af
+.end
 	or 1
 	ret
 .cant_ability
