@@ -12,76 +12,95 @@ CeladonHotelRoom2_MapScriptHeader:
 	def_bg_events
 
 	def_object_events
-	object_event  3,  2, SPRITE_SUPER_NERD, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, CeladonHotelRoom2SuperNerdScript, -1
+	object_event  3,  2, SPRITE_POKEFAN_M, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_PURPLE, OBJECTTYPE_SCRIPT, 0, MrHyperScript, -1
 
-CeladonHotelRoom2SuperNerdScript:
+MrHyperScript:
 	faceplayer
 	opentext
-	writetext .Text1
+	checkevent EVENT_TALKED_TO_MR_HYPER
+	iftrue .IntroDone
+	writetext .TextIntro
 	waitbutton
-	writetext .Text2
+	setevent EVENT_TALKED_TO_MR_HYPER
+	; fallthrough
+.IntroDone:
+	writetext .TextAskTrain
 	yesorno
-	iffalse_jumpopenedtext .Text5
+	iffalse_jumpopenedtext .TextComeBackAnytime
+.CheckBottleCaps:
 	checkitem BOTTLE_CAP
-	iffalse_jumpopenedtext .Text5
+	iffalse_jumpopenedtext .TextNoBottleCaps
+	writetext .TextTrainWho
+	waitbutton
+	special Special_HyperTrain
+	iffalse_jumpopenedtext .TextComeBackAnytime
 	takeitem BOTTLE_CAP
-	writetext .Text3
+	writetext .TextGotStronger
 	waitbutton
-	writetext .Text4
-	waitbutton
-	verbosegiveitem CHERISH_BALL
-	iftrue_endtext
-	giveitem BOTTLE_CAP
+	writetext .TextTrainSomeMore
+	yesorno
+	iftrue .CheckBottleCaps
 	jumpthisopenedtext
 
-	text "Drat. Maybe"
-	line "later?"
+.TextComeBackAnytime:
+	text "Come back anytime!"
+	line "Mr. Hyper will"
+	cont "always be hyped up"
+	cont "to see you!"
 	done
 
-.Text1:
-	text "I used to collect"
-	line "Poke Balls, but I"
-	cont "grew bored."
+.TextIntro:
+	text "I'm Mr. Hyper!"
+	line "Want to know why?"
 
-	para "Now I collect"
-	line "Bottle Caps!"
+	para "Because I can help"
+	line "#mon perform"
+	cont "Hyper Training!"
 
-	para "Will you help me"
-	line "increase my coll-"
-	cont "ection?"
+	para "It lets a #mon"
+	line "that has maxed out"
+	cont "its effort become"
+	cont "even stronger!"
 
-	para "I'll trade you a"
-	line "Cherish Ball for"
-	cont "a Bottle Cap."
+	para "This training will"
+	line "help them increase"
+	cont "their stats."
 
-	para "You can't buy them"
-	line "anywhere!"
+	para "If you want me to"
+	line "train up your"
+	cont "#mon, bring me"
+	cont "some Bottle Caps."
 	done
 
-.Text2:
-	text "Give away a"
-	line "Bottle Cap?"
+.TextAskTrain:
+	text "What do you say?"
+	line "Want to try my"
+	cont "Hyper Training?"
 	done
 
-.Text3:
-	text "<PLAYER> gave away"
-	line "the Bottle Cap."
-	done
-
-.Text4:
-	text "Ooh, yes, this is"
-	line "a rare specimen!"
-
-	para "I'll happily part"
-	line "with a Cherish"
-	cont "Ball for it."
-	done
-
-.Text5:
+.TextNoBottleCaps:
 	text "You don't have any"
 	line "Bottle Caps?"
 
 	para "I know Fishermen"
 	line "snag them some-"
 	cont "times…"
+	done
+
+.TextTrainWho:
+	text "Hyper Train which"
+	line "#mon?"
+	done
+
+.TextGotStronger:
+	text "All done! My Hyper"
+	line "training improved"
+	cont ""
+	text_ram wStringBuffer1
+	text "'s stats!"
+	done
+
+.TextTrainSomeMore:
+	text "Hyper Train more"
+	line "#mon?"
 	done

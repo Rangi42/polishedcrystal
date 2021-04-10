@@ -763,6 +763,148 @@ RetrieveBreedmon:
 	and a
 	ret
 
+Special_HyperTrain:
+	farcall SelectMonFromParty
+	jp c, .nope
+	ld a, MON_IS_EGG
+	call GetPartyParamLocation
+	bit MON_IS_EGG_F, [hl]
+	ld hl, .TextCantTrainEgg
+	jr nz, .print_and_fail
+
+	call GetCurNickname
+	ld hl, .TrainWhichStat
+	call PrintText
+
+	ld hl, .MenuHeader
+	call LoadMenuHeader
+	call _2DMenu
+	push af
+	call CloseWindow
+	pop af
+	jr c, .nope
+	ld a, [wMenuCursorY]
+	ld hl, wMenuCursorX
+	dec [hl]
+	jr z, .got_y
+	add 3
+.got_y
+	ld c, a
+	ld d, 1
+.loop
+	rrc d
+	dec a
+	jr nz, .loop
+
+	; Check if we've reached maximum effort on the stat
+	ld a, MON_EVS - 1
+	add c
+	call GetPartyParamLocation
+	cp 252
+	ld hl, .TextNotMaxEffort
+	jr c, .print_and_fail
+
+	ld a, [wCurPartyMon]
+	ld hl, wPartyMon1HyperTraining
+	call SkipNames
+	ld a, [hl]
+	and d
+	jr nz, .already_hyped
+	or d
+	or [hl]
+	ld [hl], a
+	ld b, a
+
+	; Recalculate stats.
+	push bc
+	ld a, MON_SPECIES
+	call GetPartyParamLocation
+	ld [wCurSpecies], a
+	ld a, MON_FORM
+	call GetPartyParamLocation
+	ld [wCurForm], a
+	call GetBaseData
+	pop bc
+
+	ld a, MON_LEVEL
+	call GetPartyParamLocation
+	ld [wCurPartyLevel], a
+
+	ld a, MON_MAXHP
+	call GetPartyParamLocation
+	push hl
+	ld a, MON_EVS - 1
+	call GetPartyParamLocation
+	pop de
+	predef CalcPkmnStats
+
+	ld a, 1
+	jr .return
+
+.already_hyped
+	ld hl, .TextAlreadyHypedUp
+	; fallthrough
+.print_and_fail
+	call PrintText
+.nope
+	xor a
+.return
+	ldh [hScriptVar], a
+	ret
+
+.MenuHeader:
+	db $40 ; flags
+	db 04, 00 ; start coords
+	db 11, 19 ; end coords
+	dw .MenuData
+	db 1 ; default option
+
+.MenuData:
+	db $a0 ; flags
+	dn 3, 2 ; rows, columns
+	db 8 ; spacing
+	dba .Strings
+	dbw BANK(.MenuData), 0
+
+.Strings:
+	db "HP@"
+	db "Speed@"
+	db "Attack@"
+	db "Spcl.Atk@"
+	db "Defense@"
+	db "Spcl.Def@"
+
+.TrainWhichStat:
+	text "Train which of"
+	line ""
+	text_ram wStringBuffer1
+	text "'s stats?"
+	done
+
+.TextCantTrainEgg:
+	text "An Egg? I get that"
+	line "you're hyped to"
+	cont "have it, but I"
+	cont "can't train it yet!"
+	prompt
+
+.TextNotMaxEffort:
+	text "Oh no… No, no, no!"
+	line ""
+	text_ram wStringBuffer1
+	text " hasn't"
+	cont "maxed their effort"
+	cont "in that stat!"
+	prompt
+
+.TextAlreadyHypedUp:
+	text "But "
+	text_ram wStringBuffer1
+	text " is"
+	line "already hyped up"
+	cont "in that stat!"
+	prompt
+
 GetLastPartyMon:
 	ld a, [wPartyCount]
 	dec a
@@ -1048,10 +1190,8 @@ CalcPkmnStatC:
 	dec c
 	jr nz, .hyper_training_loop
 	pop bc
-	jr nc, .not_hyper_trained
-	ld b, b ;  no-optimize nops (BGB breakpoint; should never run yet)
 	ld a, $f
-	jr .GotDV
+	jr c, .GotDV
 
 .not_hyper_trained
 	ld a, c

@@ -752,6 +752,8 @@ DrawLowRadarLine:
 	ldh [hErr], a
 
 ; For x from b to d, draw a point at (x, c)
+	ld a, d
+	ldh [hChartLineCoord], a
 .loop
 	call hLCDInterruptFunction ; FillRadarUp/Down/Left/Right
 
@@ -773,7 +775,7 @@ DrawLowRadarLine:
 	ldh [hErr], a
 
 	inc b
-	ld a, d
+	ldh a, [hChartLineCoord]
 	cp b
 	jr nc, .loop
 	ret
@@ -805,6 +807,8 @@ DrawHighRadarLine:
 	ldh [hSingleOpcode], a
 
 ; For y from c to e, draw a point at (b, y)
+	ld a, e
+	ldh [hChartLineCoord], a
 .loop
 	call hLCDInterruptFunction ; FillRadarUp/Down/Left/Right
 
@@ -826,7 +830,7 @@ DrawHighRadarLine:
 	ldh [hErr], a
 
 	inc c
-	ld a, e
+	ldh a, [hChartLineCoord]
 	cp c
 	jr nc, .loop
 	ret
@@ -843,10 +847,12 @@ DrawHorizontalRadarLine:
 .x_sorted
 
 ; For x from b to d, draw a point at (x, c)
+	ld a, d
+	ldh [hChartLineCoord], a
 .loop
 	call hLCDInterruptFunction ; FillRadarUp/Down/Left/Right
 	inc b
-	ld a, d
+	ldh a, [hChartLineCoord]
 	cp b
 	jr nc, .loop
 	ret
@@ -863,10 +869,12 @@ DrawVerticalRadarLine:
 .y_sorted
 
 ; For y from c to e, draw a point at (b, y)
+	ld a, e
+	ldh [hChartLineCoord], a
 .loop
 	call hLCDInterruptFunction ; FillRadarUp/Down/Left/Right
 	inc c
-	ld a, e
+	ldh a, [hChartLineCoord]
 	cp c
 	jr nc, .loop
 	ret
@@ -884,7 +892,6 @@ FillRadarDown:
 _FillRadarVertical:
 ; Draw a vertical line from (b, c) to (b, y), where y = hl[b]
 
-	push de
 	push bc
 
 ; de = point on the diagonal axes
@@ -904,15 +911,16 @@ _FillRadarVertical:
 .y_sorted
 
 ; For y from c to e, draw a point at (b, y)
+	ld a, e
+	ldh [hChartFillCoord], a
 .loop
 	call DrawRadarPointBC
 	inc c
-	ld a, e
+	ldh a, [hChartFillCoord]
 	cp c
 	jr nc, .loop
 
 	pop bc
-	pop de
 	ret
 
 FillRadarLeft:
@@ -928,7 +936,6 @@ FillRadarRight:
 _FillRadarHorizontal:
 ; Draw a horizontal line from (b, c) to the vertical axis
 
-	push de
 	push bc
 
 ; de = point on the diagonal axes
@@ -950,35 +957,33 @@ _FillRadarHorizontal:
 .x_sorted
 
 ; For x from b to d, draw a point at (x, c)
+	ld a, d
+	ldh [hChartFillCoord], a
 .loop
 	call DrawRadarPointBC
 	inc b
-	ld a, d
+	ldh a, [hChartFillCoord]
 	cp b
 	jr nc, .loop
 
 	pop bc
-	pop de
 	ret
 
 DrawRadarPointBC:
 ; Draw a point at (b, c), where 0 <= b < 80 and 0 <= c < 96
 
-	push de
-
 ; Byte: wDecompressScratch + ((y & $f8) * 10 + (x & $f8) + (y & $7)) * 2 + 1
 	; hl = (y & $f8) * 10
 	ld a, c
 	and $f8
-	ld hl, .Times10
-	rrca
-	rrca
-	ld d, 0
-	ld e, a
-	add hl, de
-	ld a, [hli]
-	ld h, [hl]
+	add a
 	ld l, a
+	ld h, 0
+	ld d, h
+	ld e, l
+	add hl, hl
+	add hl, hl
+	add hl, de
 	; hl += (x & $f8) + (y & $7)
 	ld a, b
 	and $f8
@@ -993,8 +998,6 @@ DrawRadarPointBC:
 	ld de, wDecompressScratch + 1
 	add hl, de
 
-	pop de
-
 ; Set the (7 - (x & $7))th bit in the byte: white -> dark, black -> black (no light hue)
 	; $c6 | (a << 3) = the 'set {a}, [hl]' opcode
 	ld a, b
@@ -1005,11 +1008,6 @@ DrawRadarPointBC:
 	xor $c6 ^ ($7 << 3) ; this is 'xor $fe', so 'cpl / dec a' would also work
 	ldh [hBitwiseOpcode], a
 	jp hBitwiseOperation
-
-.Times10:
-for y, 0, 96, 8 ; enough values for all valid y coordinates (0 <= y < 96)
-	dw y * 10
-endr
 
 atk_y_coords: MACRO
 	db 47, 46, 46, 45, 45, 44, 43, 43, 42, 42, 41, 40, 40, 39, 39, 38, 37, 37, 36, 36

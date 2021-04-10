@@ -473,7 +473,9 @@ UNION
 wTempMon:: party_struct wTempMon
 wTempMonNickname:: ds MON_NAME_LENGTH
 wTempMonOT:: ds PLAYER_NAME_LENGTH
-wTempMonExtra:: ds 3
+wTempMonExtra::
+wTempMonHyperTraining:: db
+	ds 2 ; the other 2 extra bytes
 NEXTU
 wEncodedTempMon:: savemon_struct wEncodedTempMon
 ENDU
@@ -1309,7 +1311,9 @@ endr
 wPartyMonOTs::
 for n, 1, PARTY_LENGTH + 1
 wPartyMon{d:n}OT:: ds PLAYER_NAME_LENGTH
-wPartyMon{d:n}Extra:: ds 3
+wPartyMon{d:n}Extra::
+wPartyMon{d:n}HyperTraining:: db
+	ds 2 ; the other 2 extra bytes
 endr
 
 wPartyMonNicknames::

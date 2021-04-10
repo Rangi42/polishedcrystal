@@ -4,8 +4,8 @@ Route11_MapScriptHeader:
 	def_callbacks
 
 	def_warp_events
-	warp_event 47,  8, ROUTE_11_GATE, 1
-	warp_event 47,  9, ROUTE_11_GATE, 2
+	warp_event 45,  8, ROUTE_11_GATE, 1
+	warp_event 45,  9, ROUTE_11_GATE, 2
 
 	def_coord_events
 
