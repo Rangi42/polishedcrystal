@@ -67,6 +67,9 @@ endr
 .box
 	farcall NewStorageBoxPointer
 	jr c, .NotGiven
+	ld a, [wCurPartySpecies]
+	dec a
+	call SetSeenAndCaughtMon
 	ld a, c
 	ld [wTempMonSlot], a
 	ld a, b
