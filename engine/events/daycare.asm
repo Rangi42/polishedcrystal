@@ -22,7 +22,7 @@
 
 Special_DayCareMan:
 	ld hl, wDayCareMan
-	bit 0, [hl]
+	bit DAYCAREMAN_HAS_MON_F, [hl]
 	jr nz, .AskWithdrawMon
 	ld hl, wDayCareMan
 	ld a, DAYCARETEXT_MAN_INTRO
@@ -32,7 +32,7 @@ Special_DayCareMan:
 	jr c, .print_text
 	farcall DepositMonWithDayCareMan
 	ld hl, wDayCareMan
-	set 0, [hl]
+	set DAYCAREMAN_HAS_MON_F, [hl]
 	call DayCare_DepositPokemonText
 	jp DayCare_InitBreeding
 
@@ -45,8 +45,8 @@ Special_DayCareMan:
 	farcall RetrievePokemonFromDayCareMan
 	call DayCare_TakeMoney_PlayCry
 	ld hl, wDayCareMan
-	res 0, [hl]
-	res 5, [hl]
+	res DAYCAREMAN_HAS_MON_F, [hl]
+	res DAYCAREMAN_MONS_COMPATIBLE_F, [hl]
 	jr .cancel
 
 .print_text
@@ -58,7 +58,7 @@ Special_DayCareMan:
 
 Special_DayCareLady:
 	ld hl, wDayCareLady
-	bit 0, [hl]
+	bit DAYCARELADY_HAS_MON_F, [hl]
 	jr nz, .AskWithdrawMon
 	ld hl, wDayCareLady
 	ld a, DAYCARETEXT_LADY_INTRO
@@ -68,7 +68,7 @@ Special_DayCareLady:
 	jr c, .print_text
 	farcall DepositMonWithDayCareLady
 	ld hl, wDayCareLady
-	set 0, [hl]
+	set DAYCARELADY_HAS_MON_F, [hl]
 	call DayCare_DepositPokemonText
 	jp DayCare_InitBreeding
 
@@ -81,9 +81,9 @@ Special_DayCareLady:
 	farcall RetrievePokemonFromDayCareLady
 	call DayCare_TakeMoney_PlayCry
 	ld hl, wDayCareLady
-	res 0, [hl]
+	res DAYCARELADY_HAS_MON_F, [hl]
 	ld hl, wDayCareMan
-	res 5, [hl]
+	res DAYCAREMAN_MONS_COMPATIBLE_F, [hl]
 	jr .cancel
 
 .print_text
@@ -94,11 +94,11 @@ Special_DayCareLady:
 	jp PrintDayCareText
 
 DayCareLadyIntroText:
-	bit 7, [hl]
+	bit DAYCARELADY_ACTIVE_F, [hl]
 	jr nz, DayCarePersonIntroText
 	inc a
 DayCareManIntroText:
-	set 7, [hl]
+	set DAYCAREMAN_ACTIVE_F, [hl]
 DayCarePersonIntroText:
 	call PrintDayCareText
 	jp YesNoBox
@@ -379,7 +379,7 @@ PrintDayCareText:
 
 Special_DayCareManOutside:
 	ld hl, wDayCareMan
-	bit 6, [hl]
+	bit DAYCAREMAN_HAS_EGG_F, [hl]
 	jr nz, .AskGiveEgg
 	ld hl, .NotYet
 	jp PrintText
@@ -394,19 +394,29 @@ Special_DayCareManOutside:
 	call PrintText
 	call YesNoBox
 	jr c, .Declined
-	ld a, [wPartyCount]
-	cp PARTY_LENGTH
-	jr nc, .PartyFull
 	call DayCare_GiveEgg
+	jr c, .PartyAndBoxFull
+	push af
 	ld hl, wDayCareMan
-	res 6, [hl]
+	res DAYCAREMAN_HAS_EGG_F, [hl]
 	call DayCare_InitBreeding
 	ld hl, .GotEggText
 	call PrintText
 	ld de, SFX_GET_EGG_FROM_DAYCARE_LADY
-	call PlaySFX
-	ld c, 120
-	call DelayFrames
+	call PlayWaitSFX
+	pop af
+	jr z, .done
+	farcall CurBoxFullCheck
+	jr z, .box_not_full
+	ld hl, .CurBoxFullText
+	push bc
+	call PrintText
+	pop bc
+.box_not_full
+	farcall GetBoxName
+	ld hl, .SentToPCText
+	call PrintText
+.done
 	ld hl, .TakeGoodCareOfItText
 	jr .Load0
 
@@ -419,8 +429,8 @@ Special_DayCareManOutside:
 	ldh [hScriptVar], a
 	ret
 
-.PartyFull:
-	ld hl, .PartyFullText
+.PartyAndBoxFull:
+	ld hl, .PartyAndBoxFullText
 	call PrintText
 	ld a, $1
 	ldh [hScriptVar], a
@@ -436,6 +446,16 @@ Special_DayCareManOutside:
 	text_far _ReceivedEggText
 	text_end
 
+.CurBoxFullText:
+	; @ was full.
+	text_far _CurBoxFullText
+	text_end
+
+.SentToPCText:
+	; The Egg was sent to @.
+	text_far _EggSentToPCText
+	text_end
+
 .TakeGoodCareOfItText:
 	; Take good care of it.
 	text_far _TakeGoodCareOfEggText
@@ -446,27 +466,18 @@ Special_DayCareManOutside:
 	text_far _IllKeepItThanksText
 	text_end
 
-.PartyFullText:
-	; You have no room in your party. Come back later.
+.PartyAndBoxFullText:
+	; You have no room in your party or your box. Come back later.
 	text_far _NoRoomForEggText
 	text_end
 
 DayCare_GiveEgg:
+; returns z if mon sent to party, nz if sent to box
+; returns c if no room in party or box 
 	call DayCare_GenerateEgg
 	ld a, [wTempMonLevel]
 	ld [wCurPartyLevel], a
-	ld hl, wPartyCount
-	ld a, [hl]
-	cp PARTY_LENGTH
-	jp nc, .PartyFull
-	inc a
-	ld [hl], a
-
-	ld c, a
-	ld b, 0
-	add hl, bc
 	ld a, [wTempMonSpecies]
-	ld [hli], a
 	ld [wCurSpecies], a
 	ld [wCurPartySpecies], a
 
@@ -482,22 +493,25 @@ DayCare_GiveEgg:
 	or PLAIN_FORM
 	ld [wTempMonForm], a
 .not_red_magikarp
-
-	ld [hl], -1
-
-	; Party count is already increased since before.
-	ld a, [wPartyCount]
-	ld [wTempMonSlot], a
-	xor a
-	ld [wTempMonBox], a
-
 	; Recalculates stats and sets other partymon stuff.
 	farcall SetTempPartyMonData
+	farcall AddTempMonToParty
+	ld a, 0
+	jr nc, .done
+	farcall NewStorageBoxPointer
+	jr c, .PartyAndBoxFull
+	ld a, c
+	ld [wTempMonSlot], a
+	ld a, b
+	ld [wTempMonBox], a
+	push af
 	farcall UpdateStorageBoxMonFromTemp
+	pop af
+.done
 	and a
 	ret
 
-.PartyFull:
+.PartyAndBoxFull:
 	scf
 	ret
 
@@ -651,17 +665,17 @@ InheritDV:
 
 DayCare_InitBreeding:
 	ld a, [wDayCareLady]
-	bit 0, a
+	bit DAYCARELADY_HAS_MON_F, a
 	ret z
 	ld a, [wDayCareMan]
-	bit 0, a
+	bit DAYCAREMAN_HAS_MON_F, a
 	ret z
 	call CheckBreedmonCompatibility
 	ld a, [wd265]
 	and a
 	ret z
 	ld hl, wDayCareMan
-	set 5, [hl]
+	set DAYCAREMAN_MONS_COMPATIBLE_F, [hl]
 .loop
 	call Random
 	cp 150
@@ -1035,4 +1049,4 @@ DayCare_GenerateEgg:
 	ret
 
 .String_EGG:
-	db "Egg@"
+	rawchar "Egg@"

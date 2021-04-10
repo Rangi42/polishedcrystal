@@ -121,18 +121,23 @@ MystriStageBeatCynthiaScript:
 	jumptextfaceplayer MystriStageCynthiaEggText
 
 MystriStageEggScript:
-	readvar VAR_PARTYCOUNT
-	ifequal PARTY_LENGTH, .PartyFull
 	special GiveMystriEgg
+	iffalse_jumptext MystriStageNoRoomText
 	disappear MYSTRISTAGE_EGG
 	opentext
 	writetext MystriStageEggText
 	playsound SFX_KEY_ITEM
 	waitsfx
 	waitendtext
-
-.PartyFull:
-	jumptext MystriStageNoRoomText
+	ifequal 1, .InParty
+	special Special_CurBoxFullCheck
+	iffalse .BoxNotFull
+	farwritetext _CurBoxFullText
+.BoxNotFull
+	special GetCurBoxName
+	farwritetext _EggSentToPCText
+.InParty
+	waitendtext
 
 MystriStageCynthiaIntroText:
 	text "My name is"
@@ -314,12 +319,13 @@ MystriStageCynthiaFinalText:
 
 MystriStageEggText:
 	text "<PLAYER> received"
-	line "Egg!"
+	line "a mysterious Egg!"
 	done
 
 MystriStageNoRoomText:
 	text "You don't have"
-	line "room for this!"
+	line "room for this,"
+	cont "even in your box!"
 	done
 
 MystriStageMovementData_CynthiaStepsUp:

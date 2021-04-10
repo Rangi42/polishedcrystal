@@ -35,7 +35,12 @@ ManiaScript:
 	playsound SFX_KEY_ITEM
 	waitsfx
 	ifequal 1, .shuckieinparty
-	writetext ManiaText_ShuckieSentToBillsPC
+	special Special_CurBoxFullCheck
+	iffalse .BoxNotFull
+	farwritetext _CurBoxFullText
+.BoxNotFull
+	special GetCurBoxName
+	writetext ManiaText_ShuckieSentToPC
 	promptbutton
 .shuckieinparty
 	closetext
@@ -131,9 +136,11 @@ ManiaText_GotShuckie:
 	line "#mon."
 	done
 
-ManiaText_ShuckieSentToBillsPC:
+ManiaText_ShuckieSentToPC:
 	text "The #mon was"
-	line "sent to Bill's PC."
+	line "sent to "
+	text_ram wStringBuffer1
+	text "."
 	done
 
 ManiaText_PartyAndBoxFull:

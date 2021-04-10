@@ -325,13 +325,10 @@ ENDM
 	const giveegg_command
 giveegg: MACRO
 	db giveegg_command
-	db \1 ; pkmn
-	if _NARG >= 3
-		db \2 ; form
-		db \3 ; level
+	if _NARG >= 2
+		dp \1, \2 | IS_EGG_MASK
 	else
-		db PLAIN_FORM
-		db \2 ; level
+		dp \1, PLAIN_FORM | IS_EGG_MASK
 	endc
 ENDM
 

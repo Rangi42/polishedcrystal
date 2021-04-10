@@ -240,6 +240,9 @@ PlaySFX::
 .done
 	jp PopAFBCDEHL
 
+PlayWaitSFX:
+	call PlaySFX
+	; fallthrough
 Script_waitsfx::
 WaitSFX::
 ; infinite loop until sfx is done playing

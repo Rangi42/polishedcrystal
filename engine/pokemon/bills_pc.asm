@@ -1148,6 +1148,12 @@ CopyBoxTheme:
 	ld [hl], a
 	jp CloseSRAM
 
+GetCurBoxName:
+; Writes name of current box to string buffer 1.
+	ld a, [wCurBox]
+	inc a
+	ld b, a
+	; fallthrough
 GetBoxName:
 ; Writes name of box b to string buffer 1.
 	ld c, 0
@@ -1375,3 +1381,37 @@ StorageFlagAction:
 	dec c
 	ld d, 0
 	predef_jump FlagPredef
+
+Special_CurBoxFullCheck:
+; Returns 0 if wTempMonBox = wCurBox
+; Returns 1 if wTempMonBox != wCurBox
+	call CurBoxFullCheck
+	ld a, TRUE
+	jr nz, .ok
+	dec a
+.ok
+	ldh [hScriptVar], a
+	ret
+
+CurBoxFullCheck:
+; Requires wTempMonBox to have sent mon box (returned in b)
+; Returns 0 if wTempMonBox = wCurBox (or wTempMonBox = 0)
+; Returns 1 if wTempMonBox != wCurBox
+;   Also returns name of old wCurBox in wStringBuffer1
+;   and sets wCurBox to wTempMonBox in this case
+	ld a, [wTempMonBox]
+	and a
+	ret z
+	ld b, a
+	ld a, [wCurBox]
+	inc a
+	cp b
+	ret z
+	push bc
+	call GetCurBoxName
+	pop bc
+	ld a, b
+	dec a
+	ld [wCurBox], a
+	or 1
+	ret

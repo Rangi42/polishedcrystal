@@ -33,91 +33,88 @@ GiveOddEgg:
 	jr .loop
 .done
 
+	; Get random gender (50/50)
+	call Random
+	ldh a, [hRandom]
+	cp $80
+	ld a, FEMALE
+	jr c, .got_gender
+	assert !MALE
+	xor a
+.got_gender
+	ld [wCurForm], a
 	ld hl, OddEggs
-	ld a, PARTYMON_STRUCT_LENGTH + MON_NAME_LENGTH
+	ld a, 10
 	rst AddNTimes
-	jr GiveEggMon
+	jr GiveSpecialEgg
 
 GiveMystriEgg::
 	ld hl, MystriEgg
 ; fallthrough
-GiveEggMon:
-	ld de, wOddEggSpecies
-	ld bc, PARTYMON_STRUCT_LENGTH + 2 * MON_NAME_LENGTH
+GiveSpecialEgg:
+	ld de, wTempMonSpecies
+	ld a, [hli]
+	ld [de], a
+	inc de
+	xor a ; item
+	ld [de], a
+	inc de
+	ld bc, NUM_MOVES
 	rst CopyBytes
-; fallthrough
-AddEggMonToParty:
-	ld hl, wPartyCount
-	ld a, [hl]
-	ld e, a
-	inc [hl]
-
-	ld bc, wPartySpecies
-	ld d, e
-.loop1
-	inc bc
-	dec d
-	jr nz, .loop1
-	ld a, e
-	ld [wCurPartyMon], a
-	ld [bc], a
-	inc bc
-	ld a, -1
-	ld [bc], a
-
-	ld hl, wPartyMon1Species
-	ld bc, PARTYMON_STRUCT_LENGTH
-	ld a, e
-	ld [wTempPartyCount], a
-.loop2
-	add hl, bc
-	dec a
-	and a
-	jr nz, .loop2
-	ld e, l
-	ld d, h
-	ld hl, wOddEggSpecies
-	ld bc, PARTYMON_STRUCT_LENGTH
+	call SwapHLDE
+	xor a
+	ld bc, MON_DVS - MON_ID
+	rst ByteFill
+	call SwapHLDE
+	ld bc, 4 ; DVs, ability
 	rst CopyBytes
-
-	ld hl, wPartyMonOTs
-	ld bc, NAME_LENGTH
-	ld a, [wTempPartyCount]
-.loop3
-	add hl, bc
-	dec a
-	and a
-	jr nz, .loop3
-	ld e, l
-	ld d, h
-	ld hl, wOddEggName
-	ld bc, PLAYER_NAME_LENGTH - 1
-	rst CopyBytes
-	ld h, d
-	ld l, e
-	ld a, "@"
+	ld a, [wCurForm]
+	or [hl]
+	ld [de], a
+	ld hl, wTempMonHappiness
+	ld a, 20
 	ld [hli], a
+	xor a
+rept MON_LEVEL - MON_PKRUS
+	ld [hli], a
+endr
+	ld a, EGG_LEVEL
+	ld [hl], a
+	ld hl, wTempMonNickname
+	ld de, .EggName
+	call CopyName2
+	ld hl, wTempMonOT
+	ld de, .EggName
+	call CopyName2
+	ld hl, wTempMonExtra
 	xor a
 	ld [hli], a
 	ld [hli], a
 	ld [hl], a
+	farcall SetTempPartyMonData
+	farcall AddTempMonToParty
+	jr c, .box
+	ld a, 1
+	jr .done
 
-	ld hl, wPartyMonNicknames
-	ld bc, MON_NAME_LENGTH
-	ld a, [wTempPartyCount]
-.loop4
-	add hl, bc
-	dec a
-	and a
-	jr nz, .loop4
-	ld e, l
-	ld d, h
-	ld hl, wOddEggName
-	ld bc, MON_NAME_LENGTH - 1
-	rst CopyBytes
-	ld a, "@"
-	ld [de], a
+.box
+	farcall NewStorageBoxPointer
+	jr c, .failed
+	ld a, c
+	ld [wTempMonSlot], a
+	ld a, b
+	ld [wTempMonBox], a
+	farcall UpdateStorageBoxMonFromTemp
+	ld a, 2
+	jr .done
 
-	jp CloseSRAM
+.failed
+	xor a
+.done
+	ldh [hScriptVar], a
+	ret
+
+.EggName:
+	rawchar "Egg@"
 
 INCLUDE "data/events/odd_eggs.asm"
