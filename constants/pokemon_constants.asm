@@ -383,52 +383,52 @@ FIRST_VARIANT_FORM_MON EQU const_value ; 134
 
 ; gyarados
 	ext_const_def NUM_MAGIKARP + 1
-	ext_const GYARADOS_RED_FORM ; 135 (11)
+	ext_const GYARADOS_RED_FORM ; 134 (11)
 
 ; mewtwo
 	ext_const_def 2
-	ext_const MEWTWO_ARMORED_FORM ; 136 (2)
+	ext_const MEWTWO_ARMORED_FORM ; 135 (2)
 
 ; alolan forms
 ALOLAN_FORM EQU 2
-	const_skip ; 137 rattata
-	const_skip ; 138 raticate
-	const_skip ; 139 sandshrew
-	const_skip ; 13a sandslash
-	const_skip ; 13b vulpix
-	const_skip ; 13c ninetales
-	const_skip ; 13d diglett
-	const_skip ; 13e dugtrio
-	const_skip ; 13f meowth
-	const_skip ; 140 persian
-	const_skip ; 141 geodude
-	const_skip ; 142 graveler
-	const_skip ; 143 golem
-	const_skip ; 144 grimer
-	const_skip ; 145 muk
-	const_skip ; 146 raichu
-	const_skip ; 147 exeggutor
-	const_skip ; 148 marowak
+	const_skip ; 136 rattata
+	const_skip ; 137 raticate
+	const_skip ; 138 sandshrew
+	const_skip ; 139 sandslash
+	const_skip ; 13a vulpix
+	const_skip ; 13b ninetales
+	const_skip ; 13c diglett
+	const_skip ; 13d dugtrio
+	const_skip ; 13e meowth
+	const_skip ; 13f persian
+	const_skip ; 140 geodude
+	const_skip ; 141 graveler
+	const_skip ; 142 golem
+	const_skip ; 143 grimer
+	const_skip ; 144 muk
+	const_skip ; 145 raichu
+	const_skip ; 146 exeggutor
+	const_skip ; 147 marowak
 
 ; galarian forms
 GALARIAN_FORM EQU 2
-	const_skip ; 149 ponyta
-	const_skip ; 14a rapidash
-	const_skip ; 14b slowpoke
-	const_skip ; 14c slowbro
-	const_skip ; 14d slowking
-	const_skip ; 14e weezing
-	const_skip ; 14f articuno
-	const_skip ; 150 zapdos
-	const_skip ; 151 moltres
+	const_skip ; 148 ponyta
+	const_skip ; 149 rapidash
+	const_skip ; 14a slowpoke
+	const_skip ; 14b slowbro
+	const_skip ; 14c slowking
+	const_skip ; 14d weezing
+	const_skip ; 14e articuno
+	const_skip ; 14f zapdos
+	const_skip ; 150 moltres
 
 NUM_VARIANT_FORMS EQU const_value - FIRST_VARIANT_FORM_MON ; 1d
 
-FIRST_EXT_MON EQU const_value ; 152
+FIRST_EXT_MON EQU const_value ; 151
 
 NUM_EXT_SPECIES EQU const_value - FIRST_EXT_MON ; 0
 
 ; these constants include EGG as a species
-NUM_UNIQUE_POKEMON EQU const_value - 1 ; 151
-NUM_EXT_POKEMON EQU NUM_UNIQUE_POKEMON - NUM_COSMETIC_FORMS ; 11d
-NUM_SPECIES EQU NUM_UNIQUE_POKEMON - NUM_COSMETIC_FORMS - NUM_VARIANT_FORMS ; 100
+NUM_UNIQUE_POKEMON EQU const_value - 1 ; 150
+NUM_EXT_POKEMON EQU NUM_UNIQUE_POKEMON - NUM_COSMETIC_FORMS ; 11c
+NUM_SPECIES EQU NUM_UNIQUE_POKEMON - NUM_COSMETIC_FORMS - NUM_VARIANT_FORMS ; ff
