@@ -54,17 +54,17 @@ KeyItems_JoypadLoop:
 	ldh [hBGMapMode], a
 	ld a, [w2DMenuFlags2]
 	bit 7, a
-	jp nz, KeyItems_ScrollPocket
+	jmp nz, KeyItems_ScrollPocket
 	ld a, b
 	ld [wMenuJoypad], a
 	bit A_BUTTON_F, a
-	jp nz, KeyItems_ChooseKeyItem
+	jmp nz, KeyItems_ChooseKeyItem
 	bit B_BUTTON_F, a
-	jp nz, KeyItems_ExitPack
+	jmp nz, KeyItems_ExitPack
 	bit D_RIGHT_F, a
-	jp nz, KeyItems_ExitPocket
+	jmp nz, KeyItems_ExitPocket
 	bit D_LEFT_F, a
-	jp nz, KeyItems_ExitPocket
+	jmp nz, KeyItems_ExitPocket
 KeyItems_ShowDescription:
 	call KeyItems_GetCurrentKeyItem
 	hlcoord 0, 12
@@ -75,11 +75,11 @@ KeyItems_ShowDescription:
 	jr nc, .Cancel
 	ld [wd265], a
 	farcall UpdateKeyItemIconAndDescription
-	jp KeyItems_JoypadLoop
+	jr KeyItems_JoypadLoop
 
 .Cancel:
 	farcall ClearKeyItemIcon
-	jp KeyItems_JoypadLoop
+	jr KeyItems_JoypadLoop
 
 KeyItems_ChooseKeyItem:
 	call KeyItems_PlaySFX_ReadText2
@@ -128,10 +128,10 @@ KeyItems_ScrollPocket:
 	ld hl, wKeyItemsPocketScrollPosition
 	ld a, [hl]
 	and a
-	jp z, KeyItems_JoypadLoop
+	jmp z, KeyItems_JoypadLoop
 	dec [hl]
 	call KeyItems_DisplayPocketItems
-	jp KeyItems_ShowDescription
+	jr KeyItems_ShowDescription
 
 .skip
 	call KeyItems_GetCurrentPocketPosition
@@ -140,7 +140,7 @@ KeyItems_ScrollPocket:
 	inc c
 	ld a, c
 	cp NUM_KEY_ITEMS + 1
-	jp nc, KeyItems_JoypadLoop
+	jmp nc, KeyItems_JoypadLoop
 	call InnerCheckKeyItems
 	jr z, .loop
 	dec b
@@ -148,7 +148,7 @@ KeyItems_ScrollPocket:
 	ld hl, wKeyItemsPocketScrollPosition
 	inc [hl]
 	call KeyItems_DisplayPocketItems
-	jp KeyItems_ShowDescription
+	jmp KeyItems_ShowDescription
 
 KeyItems_DisplayPocketItems:
 	hlcoord 5, 2
@@ -279,7 +279,7 @@ KeyItems_PlaySFX_ReadText2:
 CountKeyItems:
 	ld hl, wKeyItems
 	ld b, wKeyItemsEnd - wKeyItems
-	jp CountSetBits
+	jmp CountSetBits
 
 InnerCheckKeyItems:
 	and a

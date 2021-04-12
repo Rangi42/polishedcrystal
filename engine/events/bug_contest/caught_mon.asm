@@ -14,7 +14,7 @@ BugContest_SetCaughtContestMon:
 	ld [wd265], a
 	call GetPokemonName
 	ld hl, .caughttext
-	jp PrintText
+	jmp PrintText
 
 .generatestats
 	ld a, [wTempEnemyMonSpecies]
@@ -43,7 +43,7 @@ BugContest_SetCaughtContestMon:
 DisplayAlreadyCaughtText:
 	call GetPokemonName
 	ld hl, .AlreadyCaughtText
-	jp PrintText
+	jmp PrintText
 
 .AlreadyCaughtText:
 	; You already caught a @ .

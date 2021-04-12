@@ -28,8 +28,8 @@ BattleCommand_skillswap:
 	farcall RunActivationAbilitiesInner
 	call SwitchTurn
 	farcall RunActivationAbilitiesInner
-	jp SwitchTurn
+	jmp SwitchTurn
 
 .failed
 	call AnimateFailedMove
-	jp PrintButItFailed
+	jmp PrintButItFailed

@@ -91,7 +91,7 @@ endr
 ; For example, soft reset:
 	and A_BUTTON | B_BUTTON | SELECT | START
 	cp  A_BUTTON | B_BUTTON | SELECT | START
-	jp z, SoftReset
+	jmp z, SoftReset
 
 	ret
 
@@ -147,7 +147,7 @@ GetJoypad::
 	ldh [hJoyDown], a ; frame input
 
 .quit
-	jp PopAFBCDEHL
+	jmp PopAFBCDEHL
 
 .auto
 ; Use a predetermined input stream (used in the catching tutorial).
@@ -379,7 +379,7 @@ ButtonSound::
 
 .link
 	ld c, 65
-	jp DelayFrames
+	jmp DelayFrames
 
 .wait_input
 	ldh a, [hOAMUpdate]

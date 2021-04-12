@@ -5,7 +5,7 @@ GetSpritePalette::
 	push de
 	push bc
 	farcall _GetSpritePalette
-	jp PopBCDEHL
+	jmp PopBCDEHL
 
 GetSpriteVTile::
 	push hl
@@ -51,7 +51,7 @@ GetSpriteVTile::
 	jr nz, .using_vbk1
 	or $80
 .using_vbk1
-	jp PopBCDEHL
+	jmp PopBCDEHL
 
 GetPlayerStandingTile::
 	ld a, [wPlayerStandingTile]
@@ -209,7 +209,7 @@ ApplyDeletionToMapObject::
 
 DeleteObjectStruct::
 	call ApplyDeletionToMapObject
-	jp MaskObject
+	jmp MaskObject
 
 CopyPlayerObjectTemplate::
 	push hl

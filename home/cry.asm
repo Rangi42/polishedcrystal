@@ -4,7 +4,7 @@ PlayStereoCry::
 	ld [wStereoPanningMask], a
 	pop af
 	call _PlayCry
-	jp WaitSFX
+	jmp WaitSFX
 
 PlayStereoCry2::
 ; Don't wait for the cry to end.
@@ -17,7 +17,7 @@ PlayStereoCry2::
 
 PlayCry::
 	call PlayCry2
-	jp WaitSFX
+	jmp WaitSFX
 
 PlayCry2::
 ; Don't wait for the cry to end.
@@ -41,7 +41,7 @@ _PlayCry::
 	call PlayCryHeader
 
 .done
-	jp PopBCDEHL
+	jmp PopBCDEHL
 
 LoadCryHeader::
 ; Load cry header bc.

@@ -144,7 +144,7 @@ patterns = {
 	(lambda line1, prev: re.match(r'j[rp] n?[zc],', line1.code)),
 	(lambda line2, prev: re.match(r'ldh? [abcdehl],', line2.code)),
 	(lambda line3, prev: re.match(r'j[rp] ', line3.code) and ',' not in line3.code
-		and line3.code != 'jp hl'),
+		and line3.code != 'jm?p hl'),
 	(lambda line4, prev: line4.code.rstrip(':') == prev[0].code.split(',')[1].strip()),
 	(lambda line5, prev: re.match(r'ldh? [abcdehl],', line5.code)
 		or (line5.code in {'xor a', 'xor a, a'} and re.match(r'ldh? a,', prev[1].code))),
@@ -361,8 +361,8 @@ patterns = {
 'Pointless jumps': [
 	# Bad: jr|jp Foo / Foo: ...
 	# Good: fall through to Foo: ...
-	(lambda line1, prev: (line1.code.startswith('jr ') or line1.code.startswith('jp '))
-		and ',' not in line1.code),
+	(lambda line1, prev: (line1.code.startswith('jr ') or line1.code.startswith('jp ')
+		or line1.code.startswith('jmp ')) and ',' not in line1.code),
 	(lambda line2, prev: line2.code.rstrip(':') == prev[0].code[3:].strip()
 		and (line2.context == prev[0].context or line2.context == line2.code)),
 ],
@@ -398,7 +398,7 @@ patterns = {
 	# Bad: and|or X / jr|jp nz, .foo / ld P, 0
 	# Good: and|or X / jr|jp nz, .foo / ld P, a (if possible)
 	(lambda line1, prev: line1.code.startswith('and ') or line1.code.startswith('or ')),
-	(lambda line2, prev: re.match(r'j[rp] nz,', line2.code)),
+	(lambda line2, prev: re.match(r'(jr|jp|jmp) nz,', line2.code)),
 	(lambda line3, prev: re.match(r'ld .+, [%\$&]?0+$', line3.code)),
 ],
 'Inefficient prefix opcodes': [

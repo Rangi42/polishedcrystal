@@ -6,18 +6,18 @@ BattleCommand_sketch:
 	and a
 	jr z, .not_linked
 	call AnimateFailedMove
-	jp PrintNothingHappened
+	jmp PrintNothingHappened
 
 .not_linked
 	; If the opponent has a substitute up, fail.
 	call CheckSubstituteOpp
-	jp nz, .fail
+	jr nz, .fail
 
 	; If the user is transformed, fail.
 	ld a, BATTLE_VARS_SUBSTATUS2
 	call GetBattleVarAddr
 	bit SUBSTATUS_TRANSFORMED, [hl]
-	jp nz, .fail
+	jr nz, .fail
 
 	; Get the battle move structs.
 	ldh a, [hBattleTurn]
@@ -108,10 +108,10 @@ BattleCommand_sketch:
 	farcall SetDisableEncoreMoves
 
 	ld hl, SketchedText
-	jp StdBattleTextbox
+	jmp StdBattleTextbox
 
 .pop_hl_and_fail
 	pop hl
 .fail
 	call AnimateFailedMove
-	jp PrintDidntAffect
+	jmp PrintDidntAffect

@@ -197,7 +197,7 @@ DecoBedMenu:
 FindOwnedBeds:
 	ld hl, .beds
 	ld c, BEDS
-	jp FindOwnedDecosInCategory
+	jr FindOwnedDecosInCategory
 
 .beds:
 	db DECO_FEATHERY_BED ; 2
@@ -215,7 +215,7 @@ DecoCarpetMenu:
 FindOwnedCarpets:
 	ld hl, .carpets
 	ld c, CARPETS
-	jp FindOwnedDecosInCategory
+	jr FindOwnedDecosInCategory
 
 .carpets:
 	db DECO_RED_CARPET ; 7
@@ -233,7 +233,7 @@ DecoPlantMenu:
 FindOwnedPlants:
 	ld hl, .plants
 	ld c, PLANTS
-	jp FindOwnedDecosInCategory
+	jr FindOwnedDecosInCategory
 
 .plants:
 	db DECO_MAGNAPLANT ; c
@@ -250,7 +250,7 @@ DecoPosterMenu:
 FindOwnedPosters:
 	ld hl, .posters
 	ld c, POSTERS
-	jp FindOwnedDecosInCategory
+	jr FindOwnedDecosInCategory
 
 .posters:
 	db DECO_TOWN_MAP ; 10
@@ -268,7 +268,7 @@ DecoConsoleMenu:
 FindOwnedConsoles:
 	ld hl, .consoles
 	ld c, CONSOLES
-	jp FindOwnedDecosInCategory
+	jr FindOwnedDecosInCategory
 
 .consoles:
 	db DECO_SNES ; 15
@@ -286,7 +286,7 @@ DecoOrnamentMenu:
 FindOwnedOrnaments:
 	ld hl, .ornaments
 	ld c, DOLLS
-	jp FindOwnedDecosInCategory
+	jmp FindOwnedDecosInCategory
 
 .ornaments:
 	db DECO_PIKACHU_DOLL ; 1e
@@ -332,7 +332,7 @@ DecoBigDollMenu:
 FindOwnedBigDolls:
 	ld hl, .big_dolls
 	ld c, BIG_DOLLS
-	jp FindOwnedDecosInCategory
+	jmp FindOwnedDecosInCategory
 
 .big_dolls:
 	db DECO_BIG_SNORLAX_DOLL ; 1a
@@ -356,7 +356,7 @@ PopulateDecoCategoryMenu:
 	call LoadMenuHeader
 	call DoNthMenu
 	call nc, DoDecorationAction2
-	jp ExitMenu
+	jmp ExitMenu
 
 .beyond_eight
 	ld hl, wNumOwnedDecoCategories
@@ -377,11 +377,11 @@ PopulateDecoCategoryMenu:
 	ld a, [wMenuJoypad]
 	cp 2
 	call nz, DoDecorationAction2
-	jp ExitMenu
+	jmp ExitMenu
 
 .empty
 	ld hl, .NothingToChooseText
-	jp MenuTextboxBackup
+	jmp MenuTextboxBackup
 
 .NothingToChooseText:
 	; There's nothing to choose.
@@ -427,7 +427,7 @@ GetDecorationName:
 	call GetDecorationData
 	call GetDecoName
 	pop hl
-	jp CopyName2
+	jmp CopyName2
 
 DecorationMenuFunction:
 	ld a, [wMenuSelection]
@@ -478,7 +478,7 @@ DecorationFlagAction:
 	push bc
 	call GetDecorationFlag
 	pop bc
-	jp EventFlagAction
+	jmp EventFlagAction
 
 GetDecorationSprite:
 	ld a, c
@@ -598,51 +598,51 @@ DecoAction_nothing:
 
 DecoAction_setupbed:
 	ld hl, wDecoBed
-	jp DecoAction_TrySetItUp
+	jmp DecoAction_TrySetItUp
 
 DecoAction_putawaybed:
 	ld hl, wDecoBed
-	jp DecoAction_TryPutItAway
+	jmp DecoAction_TryPutItAway
 
 DecoAction_setupcarpet:
 	ld hl, wDecoCarpet
-	jp DecoAction_TrySetItUp
+	jmp DecoAction_TrySetItUp
 
 DecoAction_putawaycarpet:
 	ld hl, wDecoCarpet
-	jp DecoAction_TryPutItAway
+	jmp DecoAction_TryPutItAway
 
 DecoAction_setupplant:
 	ld hl, wDecoPlant
-	jp DecoAction_TrySetItUp
+	jmp DecoAction_TrySetItUp
 
 DecoAction_putawayplant:
 	ld hl, wDecoPlant
-	jp DecoAction_TryPutItAway
+	jmp DecoAction_TryPutItAway
 
 DecoAction_setupposter:
 	ld hl, wDecoPoster
-	jp DecoAction_TrySetItUp
+	jmp DecoAction_TrySetItUp
 
 DecoAction_putawayposter:
 	ld hl, wDecoPoster
-	jp DecoAction_TryPutItAway
+	jmp DecoAction_TryPutItAway
 
 DecoAction_setupconsole:
 	ld hl, wDecoConsole
-	jp DecoAction_TrySetItUp
+	jmp DecoAction_TrySetItUp
 
 DecoAction_putawayconsole:
 	ld hl, wDecoConsole
-	jp DecoAction_TryPutItAway
+	jmp DecoAction_TryPutItAway
 
 DecoAction_setupbigdoll:
 	ld hl, wDecoBigDoll
-	jp DecoAction_TrySetItUp
+	jmp DecoAction_TrySetItUp
 
 DecoAction_putawaybigdoll:
 	ld hl, wDecoBigDoll
-	jp DecoAction_TryPutItAway
+	jmp DecoAction_TryPutItAway
 
 DecoAction_TrySetItUp:
 	ld a, [hl]
@@ -869,7 +869,7 @@ QueryWhichSide:
 	ld a, [wBuffer2]
 	cp 1
 	ret z
-	jp SwapHLDE
+	jmp SwapHLDE
 
 WhichSideMenuHeader:
 	db MENU_BACKUP_TILES ; flags
@@ -909,11 +909,11 @@ GetDecorationName_c_de:
 	ld a, c
 	ld h, d
 	ld l, e
-	jp GetDecorationName
+	jmp GetDecorationName
 
 DecorationFlagAction_c:
 	ld a, c
-	jp DecorationFlagAction
+	jmp DecorationFlagAction
 
 GetDecorationName_c:
 	ld a, c
@@ -1078,7 +1078,7 @@ SetPosterVisibility:
 
 .ok
 	ld de, EVENT_PLAYERS_ROOM_POSTER
-	jp EventFlagAction
+	jmp EventFlagAction
 
 SetDecorationTile:
 	push af
@@ -1121,11 +1121,11 @@ ToggleDecorationsVisibility:
 .ok
 	ld [hl], a
 	ld b, RESET_FLAG
-	jp EventFlagAction
+	jmp EventFlagAction
 
 .hide
 	ld b, SET_FLAG
-	jp EventFlagAction
+	jmp EventFlagAction
 
 PadCoords_de:
 	ld a, d
@@ -1134,4 +1134,4 @@ PadCoords_de:
 	ld a, e
 	add 4
 	ld e, a
-	jp GetBlockLocation
+	jmp GetBlockLocation

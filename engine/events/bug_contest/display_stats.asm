@@ -74,7 +74,7 @@ DisplayCaughtContestMonStats:
 	call ApplyTilemapInVBlank
 	ld a, CGB_DIPLOMA
 	call GetCGBLayout
-	jp SetPalettes
+	jmp SetPalettes
 
 .Health:
 	db "Health@"

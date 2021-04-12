@@ -36,4 +36,4 @@ BattleCommand_selfdestruct:
 	farcall DrawPlayerHUD
 	farcall DrawEnemyHUD
 	call ApplyTilemapInVBlank
-	jp RefreshBattleHuds
+	jmp RefreshBattleHuds

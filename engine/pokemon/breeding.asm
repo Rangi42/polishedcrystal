@@ -13,7 +13,7 @@
 CheckBreedmonCompatibility:
 	call .CheckBreedingGroupCompatibility
 	ld c, INCOMPATIBLE
-	jp nc, .done
+	jr nc, .done
 	ld a, [wBreedMon1Species]
 	ld [wCurPartySpecies], a
 	ld a, [wBreedMon1Gender]
@@ -241,7 +241,7 @@ OverworldHatchEgg::
 	call HatchEggs
 	call ExitAllMenus
 	call RestartMapMusic
-	jp CloseText
+	jmp CloseText
 
 HatchEggs:
 	ld de, wPartySpecies
@@ -264,10 +264,10 @@ HatchEggs:
 	pop de
 	pop hl
 	push hl
-	jp z, .next
+	jmp z, .next
 	ld a, [hl]
 	and a
-	jp nz, .next
+	jmp nz, .next
 	ld [hl], $78
 
 	push de
@@ -422,7 +422,7 @@ HatchEggs:
 	ld de, PARTYMON_STRUCT_LENGTH
 	add hl, de
 	pop de
-	jp .loop
+	jmp .loop
 
 .Text_HatchEgg:
 	; Huh? @ @
@@ -702,7 +702,7 @@ Hatch_UpdateFrontpicBGMapCenter:
 	pop af
 	call Hatch_LoadFrontpicPal
 	call SetPalettes
-	jp ApplyAttrAndTilemapInVBlank
+	jmp ApplyAttrAndTilemapInVBlank
 
 EggHatch_DoAnimFrame:
 	push hl
@@ -710,7 +710,7 @@ EggHatch_DoAnimFrame:
 	push bc
 	farcall PlaySpriteAnimations
 	call DelayFrame
-	jp PopBCDEHL
+	jmp PopBCDEHL
 
 EggHatch_AnimationSequence:
 	ld a, [wd265]
@@ -806,7 +806,7 @@ Hatch_LoadFrontpicPal:
 	ld [wPlayerHPPal], a
 	ld c, FALSE
 	ld a, CGB_EVOLUTION
-	jp GetCGBLayout
+	jmp GetCGBLayout
 
 EggHatch_CrackShell:
 	ld a, [wFrameCounter]
@@ -827,7 +827,7 @@ EggHatch_CrackShell:
 	add hl, bc
 	ld [hl], $0
 	ld de, SFX_EGG_CRACK
-	jp PlaySFX
+	jmp PlaySFX
 
 EggHatchGFX:
 INCBIN "gfx/evo/egg_hatch.2bpp"
@@ -872,7 +872,7 @@ Hatch_InitShellFragments:
 .done
 	ld de, SFX_EGG_HATCH
 	call PlaySFX
-	jp EggHatch_DoAnimFrame
+	jmp EggHatch_DoAnimFrame
 
 .SpriteData:
 ; Probably OAM.
@@ -907,7 +907,7 @@ Special_DayCareMon1:
 	call ButtonSound
 	ld hl, wBreedMon2Nickname
 	call DayCareMonCompatibilityText
-	jp PrintText
+	jmp PrintText
 
 Special_DayCareMon2:
 	ld hl, DayCareMon2Text
@@ -920,10 +920,10 @@ Special_DayCareMon2:
 	call ButtonSound
 	ld hl, wBreedMon1Nickname
 	call DayCareMonCompatibilityText
-	jp PrintText
+	jmp PrintText
 
 DayCareMonCursor:
-	jp WaitPressAorB_BlinkCursor
+	jmp WaitPressAorB_BlinkCursor
 
 DayCareMon2Text:
 	; It's @ that was left with the DAY-CARE LADY.

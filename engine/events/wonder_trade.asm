@@ -42,7 +42,7 @@ WonderTrade::
 	call DisableSpriteUpdates
 	predef TradeAnimation
 
-	jp ReturnToMapWithSpeechTextbox
+	jmp ReturnToMapWithSpeechTextbox
 
 .Text_WonderTradeQuestion:
 	text_far WonderTradeQuestionText
@@ -83,7 +83,7 @@ DoWonderTrade:
 	jr nz, .random_trademon
 	; ...then receive a spiky-eared Pichu holding a GS Ball
 	call GetGSBallPichu
-	jp .compute_trademon_stats
+	jmp .compute_trademon_stats
 
 .random_trademon
 	ld a, NUM_POKEMON
@@ -335,7 +335,7 @@ endr
 	farcall GivePokerusToWonderTradeMon
 	pop af
 	ld [wCurPartyMon], a
-	jp PopAFBCDEHL
+	jmp PopAFBCDEHL
 
 .EggString:
 	rawchar "Egg@@@@@@@@"

@@ -255,14 +255,14 @@ BT_GetTowerStatus:
 	call GetSRAMBank
 	ld a, [hl]
 	and a
-	jp CloseSRAM
+	jmp CloseSRAM
 
 Special_BattleTower_SetChallengeState:
 	; Don't mess with BT state on a previously existing save.
 	; The game should never try this, so crash if it does.
 	call BT_GetTowerStatus
 	ld a, ERR_BT_STATE
-	jp c, Crash
+	jmp c, Crash
 
 	; Otherwise, go ahead and write the challenge state
 	ldh a, [hScriptVar]
@@ -280,7 +280,7 @@ BT_SetTowerStatus:
 	call GetSRAMBank
 	ld a, c
 	ld [sBattleTowerChallengeState], a
-	jp CloseSRAM
+	jmp CloseSRAM
 
 Special_BattleTower_SetupRentalMode:
 	ld a, BATTLETOWER_RENTALMODE
@@ -455,7 +455,7 @@ Special_BattleTower_NextRentalBattle:
 	ld a, -1
 	ld [wBT_PartySelectCounter], a
 	farcall BT_SwapRentals
-	jp c, Special_BattleTower_NextRentalBattle
+	jmp c, Special_BattleTower_NextRentalBattle
 
 	call BT_IncrementCurSwaps
 	; fallthrough
@@ -467,7 +467,7 @@ Special_BattleTower_NextRentalBattle:
 .new_team
 	ld hl, .NewRentalsText
 	call PrintText
-	jp Special_BattleTower_SelectParticipants
+	jmp Special_BattleTower_SelectParticipants
 
 .GetOTPartyLocation:
 	push bc
@@ -579,7 +579,7 @@ BT_CheckSaveOwnership:
 Special_BattleTower_MaxVolume:
 	xor a
 	ld [wMusicFade], a
-	jp MaxVolume
+	jmp MaxVolume
 
 Special_BattleTower_BeginChallenge:
 ; Initializes Battle Tower challenge data.
@@ -668,7 +668,7 @@ Special_BattleTower_BeginChallenge:
 .got_frontier_brain
 	ld [de], a
 .close_sram
-	jp CloseSRAM
+	jmp CloseSRAM
 
 BT_GetBothStreakAddr:
 ; Sets hl to the streak address for the current battle mode and de to the top.
@@ -700,7 +700,7 @@ BT_LoadPartySelections:
 	ld de, wBT_PartySelections
 	ld bc, PARTY_LENGTH
 	rst CopyBytes
-	jp CloseSRAM
+	jmp CloseSRAM
 
 BT_GetCurSwaps:
 ; Returns amount of performed swaps so far.
@@ -711,7 +711,7 @@ BT_GetCurSwaps:
 	rrca
 	rrca
 	rrca
-	jp CloseSRAM
+	jmp CloseSRAM
 
 BT_IncrementCurSwaps:
 ; Increments amount of performed swaps so far and returns result in a.
@@ -724,7 +724,7 @@ BT_IncrementCurSwaps:
 	rrca
 	rrca
 	rrca
-	jp CloseSRAM
+	jmp CloseSRAM
 
 BT_GetCurTrainer:
 ; Returns beaten trainers so far in a.
@@ -732,7 +732,7 @@ BT_GetCurTrainer:
 	call GetSRAMBank
 	ld a, [sBT_CurTrainerAndSwap]
 	and BATTLETOWER_TRAINERMASK
-	jp CloseSRAM
+	jmp CloseSRAM
 
 BT_IncrementCurTrainer:
 ; Increments amount of beaten trainers so far and returns result in a.
@@ -742,7 +742,7 @@ BT_IncrementCurTrainer:
 	inc a
 	ld [sBT_CurTrainerAndSwap], a
 	and BATTLETOWER_TRAINERMASK
-	jp CloseSRAM
+	jmp CloseSRAM
 
 BT_GetCurTrainerIndex:
 ; Get trainer index for current trainer
@@ -756,7 +756,7 @@ BT_GetTrainerIndex:
 	ld hl, sBTTrainers
 	add hl, bc
 	ld a, [hl]
-	jp CloseSRAM
+	jmp CloseSRAM
 
 Special_BattleTower_LoadOpponentTrainerAndPokemonsWithOTSprite:
 	call BT_GetCurTrainerIndex

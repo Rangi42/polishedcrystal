@@ -221,16 +221,16 @@ BuySellToss_UpdateQuantityDisplay:
 	ld a, [wMenuDataPointer + 1]
 	ld d, a
 	ld a, [wMenuDataBank]
-	jp FarCall_de
+	jmp FarCall_de
 
 DisplayPurchasePrice:
 	call BuySell_MultiplyPrice
-	jp BuySell_DisplaySubtotal
+	jmp BuySell_DisplaySubtotal
 
 DisplaySellingPrice:
 	call BuySell_MultiplyPrice
 	call Sell_HalvePrice
-	jp BuySell_DisplaySubtotal
+	jmp BuySell_DisplaySubtotal
 
 BuySell_MultiplyPrice:
 	xor a
@@ -265,7 +265,7 @@ BuySell_DisplaySubtotal:
 	call DisplayPurchasePriceCommon
 	lb bc, PRINTNUM_MONEY | 3, 7
 	call PrintNum
-	jp ApplyTilemapInVBlank
+	jmp ApplyTilemapInVBlank
 
 BTDisplayPurchaseCost:
 	call BuySell_MultiplyPrice
@@ -274,7 +274,7 @@ BTDisplayPurchaseCost:
 	call PrintNum
 	ld de, .BPString
 	rst PlaceString
-	jp ApplyTilemapInVBlank
+	jmp ApplyTilemapInVBlank
 
 .BPString:
 	db " BP@"

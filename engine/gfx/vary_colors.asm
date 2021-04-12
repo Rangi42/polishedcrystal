@@ -392,4 +392,4 @@ VaryBGPalByTempMonDVs:
 	ld b, a
 	call CopyDVsToColorVaryDVs
 	pop hl
-	jp VaryColorsByDVs
+	jmp VaryColorsByDVs

@@ -30,7 +30,7 @@ GetPartyNickname:
 ; copy text from wStringBuffer2 to wStringBuffer3
 	ld de, wStringBuffer2
 	ld hl, wStringBuffer3
-	jp CopyName2
+	jmp CopyName2
 
 CheckEngineFlag:
 ; Check engine flag de
@@ -139,7 +139,7 @@ FieldMovePokepicScript:
 
 FieldMoveFailed:
 	ld hl, .CantUseHere
-	jp MenuTextboxBackup
+	jmp MenuTextboxBackup
 
 .CantUseHere:
 	; Can't use that here.
@@ -277,7 +277,7 @@ CutDownGrass:
 	call BufferScreen
 	call GetMovementPermissions
 	call UpdateSprites
-	jp DelayFrame
+	jmp DelayFrame
 
 CheckOverworldTileArrays:
 	; Input: c contains the tile you're facing
@@ -343,7 +343,7 @@ CutDownTree:
 	call GetMovementPermissions
 	call UpdateSprites
 	call DelayFrame
-	jp LoadStandardFont
+	jmp LoadStandardFont
 
 OWFlash:
 	call .CheckUseFlash
@@ -372,7 +372,7 @@ OWFlash:
 
 UseFlash:
 	ld hl, Script_UseFlash
-	jp QueueScript
+	jmp QueueScript
 
 Script_UseFlash:
 	reloadmappart
@@ -726,7 +726,7 @@ FlyFunction:
 .ReturnFromFly:
 	farcall ReturnFromFly_SpawnOnlyPlayer
 	call DelayFrame
-	jp UpdatePlayerSprite
+	jmp UpdatePlayerSprite
 
 WaterfallFunction:
 	call .TryWaterfall
@@ -1067,7 +1067,7 @@ PrepareOverworldMove:
 	add hl, de
 	ld a, [hl]
 	ld [wBuffer6], a
-	jp GetPartyNickname
+	jmp GetPartyNickname
 
 Script_StrengthFromMenu:
 	reloadmappart
@@ -1702,7 +1702,7 @@ PutTheRodAway:
 	ld a, $1
 	ld [wPlayerAction], a
 	call UpdateSprites
-	jp UpdatePlayerSprite
+	jmp UpdatePlayerSprite
 
 CurItemToScriptVar:
 	ld a, [wCurItem]

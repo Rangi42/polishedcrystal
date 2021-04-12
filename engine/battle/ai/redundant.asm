@@ -6,9 +6,9 @@ AI_Redundant:
 	ld hl, .Moves
 	ld de, 3
 	call IsInArray
-	jp nc, .NotRedundant
+	jmp nc, .NotRedundant
 	inc hl
-	jp IndirectHL
+	jmp IndirectHL
 
 .Moves:
 	dbw EFFECT_DREAM_EATER,   .DreamEater

@@ -6,14 +6,14 @@ TossItem::
 	push de
 	push bc
 	farcall _TossItem
-	jp PopBCDEHL
+	jmp PopBCDEHL
 
 ReceiveItem::
 	push hl
 	push de
 	push bc
 	farcall _ReceiveItem
-	jp PopBCDEHL
+	jmp PopBCDEHL
 
 ReceiveTMHM::
 	ld a, [wCurTMHM]
@@ -30,7 +30,7 @@ CheckItem::
 	push de
 	push bc
 	farcall _CheckItem
-	jp PopBCDEHL
+	jmp PopBCDEHL
 
 CheckTMHM::
 	ld a, [wCurTMHM]
@@ -52,7 +52,7 @@ CountItem::
 	ld [wBuffer1], a
 	ld a, c
 	ld [wBuffer2], a
-	jp PopBCDEHL
+	jmp PopBCDEHL
 
 ReceiveKeyItem::
 	ld a, [wCurKeyItem]

@@ -90,7 +90,7 @@ LZ_LONG_HI       EQU %00000011
 	cp LZ_LONG
 	jr c, .short
 	cp LZ_END
-	jp z, SwapHLDE
+	jmp z, SwapHLDE
 
 .long
 ; The count is now 10 bits.
@@ -315,4 +315,4 @@ LZ_LONG_HI       EQU %00000011
 	inc de ; positive offset is two bytes
 .next
 	inc de
-	jp .Main
+	jmp .Main

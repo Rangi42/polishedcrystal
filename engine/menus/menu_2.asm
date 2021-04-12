@@ -50,7 +50,7 @@ _PlaceMenuQuantity:
 	ld [hli], a
 	ld de, wMenuSelectionQuantity
 	lb bc, 1, 2
-	jp PrintNum
+	jmp PrintNum
 
 PlaceMoneyTopRight:
 	ld hl, MoneyTopRightMenuHeader
@@ -74,7 +74,7 @@ PlaceMoneyDataHeader:
 	add hl, de
 	ld de, wMoney
 	lb bc, PRINTNUM_MONEY | 3, 7
-	jp PrintNum
+	jmp PrintNum
 
 MoneyTopRightMenuHeader:
 	db $40 ; flags
@@ -131,7 +131,7 @@ Special_DisplayCoinCaseBalance:
 	ld de, wCoins
 	lb bc, 2, 5
 	hlcoord 13, 1
-	jp PrintNum
+	jmp PrintNum
 
 Special_DisplayMoneyAndCoinBalance:
 	hlcoord 5, 0
@@ -150,7 +150,7 @@ Special_DisplayMoneyAndCoinBalance:
 	hlcoord 14, 3
 	ld de, wCoins
 	lb bc, 2, 5
-	jp PrintNum
+	jmp PrintNum
 
 MoneyString:
 	db "Money@"
@@ -160,7 +160,7 @@ CoinString:
 StartMenu_DrawBugContestStatusBox:
 	hlcoord 0, 0
 	lb bc, 5, 17
-	jp Textbox
+	jmp Textbox
 
 StartMenu_PrintBugContestStatus:
 	ld hl, wOptions1

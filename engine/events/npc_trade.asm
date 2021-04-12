@@ -45,7 +45,7 @@ NPCTrade::
 	ld a, TRADE_DIALOG_COMPLETE
 
 .done
-	jp PrintTradeText
+	jmp PrintTradeText
 
 .TradeAnimation:
 	call DisableSpriteUpdates
@@ -58,7 +58,7 @@ NPCTrade::
 	ld [wTradeDialog], a
 	pop af
 	ld [wJumptableIndex], a
-	jp ReturnToMapWithSpeechTextbox
+	jmp ReturnToMapWithSpeechTextbox
 
 TradeFlagAction:
 	ld hl, wTradeFlags
@@ -244,7 +244,7 @@ DoNPCTrade:
 	farcall ComputeNPCTrademonStats
 	pop af
 	ld [wCurPartyMon], a
-	jp PopAFBCDEHL
+	jmp PopAFBCDEHL
 
 GetTradeAttribute:
 	ld d, 0
@@ -376,7 +376,7 @@ PrintTradeText:
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
-	jp PrintText
+	jmp PrintText
 
 TradeTexts:
 ; intro

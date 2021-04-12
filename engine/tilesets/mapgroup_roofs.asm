@@ -17,7 +17,7 @@ LoadMapGroupRoof::
 	ld l, a
 	ld de, vTiles2 tile $0a
 	lb bc, BANK("Roof Graphics"), 9
-	jp DecompressRequest2bpp
+	jmp DecompressRequest2bpp
 
 .Roofs:
 	dw Roof0GFX ; far-ok

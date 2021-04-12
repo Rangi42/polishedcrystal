@@ -1,7 +1,7 @@
 AnimateHPBar:
 	call ApplyTilemapInVBlank
 	call _AnimateHPBar
-	jp ApplyTilemapInVBlank
+	jmp ApplyTilemapInVBlank
 
 _AnimateHPBar:
 ; Code in here treat the HP bar for update frequency as
@@ -260,7 +260,7 @@ HPBarAnim_BGMapUpdate:
 	xor a
 	ldh [rVBK], a
 	ei
-	jp DelayFrame
+	jmp DelayFrame
 
 .enemy_hp_bar
 	lb bc, $94, 0
@@ -297,4 +297,4 @@ HPBarAnim_BGMapUpdate:
 	ei
 	pop af
 	ldh [rSVBK], a
-	jp DelayFrame
+	jmp DelayFrame

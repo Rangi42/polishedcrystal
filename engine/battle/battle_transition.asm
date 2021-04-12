@@ -88,7 +88,7 @@ endc
 
 	pop af
 	ldh [hVBlank], a
-	jp DelayFrame
+	jmp DelayFrame
 
 .TrainerBattlePokeballTile:
 INCBIN "gfx/overworld/trainer_battle_pokeball_tile.2bpp"
@@ -199,6 +199,13 @@ StartTrainerBattle_Finish:
 	ld [wJumptableIndex], a
 	ret
 
+StartTrainerBattle_Flash:
+	ldh a, [hBattlePalFadeMode]
+	ld [wPalFadeMode], a
+	ld c, 10
+	call DoFadePalettes
+	; fallthrough
+
 StartTrainerBattle_NextScene:
 	ld hl, wJumptableIndex
 	inc [hl]
@@ -210,13 +217,6 @@ StartTrainerBattle_SetUpBGMap:
 	ld [wBattleTransitionCounter], a
 	ldh [hBGMapMode], a
 	ret
-
-StartTrainerBattle_Flash:
-	ldh a, [hBattlePalFadeMode]
-	ld [wPalFadeMode], a
-	ld c, 10
-	call DoFadePalettes
-	jp StartTrainerBattle_NextScene
 
 StartTrainerBattle_SetUpForWavyOutro:
 	farcall BattleStart_HideAllSpritesExceptBattleParticipants
@@ -322,7 +322,7 @@ endr
 	jr nc, .mod_3
 	add 3
 	ret z
-	jp DelayFrame
+	jmp DelayFrame
 
 .end
 	xor a
@@ -553,7 +553,7 @@ StartTrainerBattle_LoadPokeBallGraphics:
 	ldh [hCGBPalUpdate], a
 	call DelayFrame
 	call CopyTilemapAtOnce
-	jp StartTrainerBattle_NextScene
+	jmp StartTrainerBattle_NextScene
 
 .trainer_battle
 	; don't flash PAL_BG_GRAY, the poke ball palette
@@ -650,7 +650,7 @@ StartTrainerBattle_LoadPokeBallGraphics:
 	ldh [hCGBPalUpdate], a
 	call DelayFrame
 	call CopyTilemapAtOnce
-	jp StartTrainerBattle_NextScene
+	jmp StartTrainerBattle_NextScene
 
 .copypals
 	ld de, wBGPals1 palette PAL_BG_GRAY ; red poke ball, doesn't flash

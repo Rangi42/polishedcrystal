@@ -86,7 +86,7 @@ EnterMap:
 	ldh [hMapEntryMethod], a
 	ld a, MAPSTATUS_HANDLE
 	ld [wMapStatus], a
-	jp DeleteSavedMusic
+	jmp DeleteSavedMusic
 
 HandleMap:
 	call HandleMapTimeAndJoypad
@@ -111,7 +111,7 @@ MapEvents:
 	ret nz
 	call PlayerEvents
 	call DisableEvents
-	jp ScriptEvents
+	jmp ScriptEvents
 
 NextOverworldFrame:
 	; If we haven't already performed a delay outside DelayFrame as a result
@@ -162,7 +162,7 @@ NextOverworldFrame:
 	call z, DelayFrame
 	pop af
 	ldh [rVBK], a
-	jp PopBCDEHL
+	jmp PopBCDEHL
 
 HandleMapTimeAndJoypad:
 	ld a, [wMapEventStatus]
@@ -171,12 +171,12 @@ HandleMapTimeAndJoypad:
 
 	call UpdateTime
 	call GetJoypad
-	jp TimeOfDayPals
+	jmp TimeOfDayPals
 
 HandleMapObjects:
 	farcall HandleNPCStep ; engine/map_objects.asm
 	farcall _HandlePlayerStep
-	jp _CheckObjectEnteringVisibleRange
+	jmp _CheckObjectEnteringVisibleRange
 
 HandleMapBackground:
 	farcall _UpdateSprites
@@ -329,7 +329,7 @@ CheckTileEvent:
 	ld h, [hl]
 	ld l, a
 	ld a, [wMapScriptsBank]
-	jp CallScript
+	jmp CallScript
 
 CheckWildEncounterCooldown:
 	ld hl, wWildEncounterCooldown
@@ -520,7 +520,7 @@ ObjectEventTypeArray:
 	ld h, [hl]
 	ld l, a
 	ld a, [wMapScriptsBank]
-	jp CallScript
+	jmp CallScript
 
 .itemball:
 	ld hl, MAPOBJECT_RANGE
@@ -576,7 +576,7 @@ endr
 .callTemporaryScriptBuffer:
 	ld hl, wTempScriptBuffer
 	ld a, [wMapScriptsBank]
-	jp CallScript
+	jmp CallScript
 
 TryBGEvent:
 	call CheckFacingBGEvent
@@ -587,7 +587,7 @@ TryBGEvent:
 .IsBGEvent:
 	ld a, [wCurBGEventType]
 	cp BGEVENT_ITEM
-	jp nc, BGEventJumptable.itemifset
+	jmp nc, BGEventJumptable.itemifset
 	call StackJumpTable
 
 BGEventJumptable:
@@ -621,7 +621,7 @@ BGEventJumptable:
 	ld a, [wPlayerDirection]
 	and %1100
 	cp b
-	jp nz, .dontread
+	jmp nz, .dontread
 
 .read
 	call PlayTalkObject
@@ -645,7 +645,7 @@ BGEventJumptable:
 	call EventFlagAction
 	ld a, c
 	and a
-	jp nz, .dontread
+	jmp nz, .dontread
 	call PlayTalkObject
 	ld hl, wHiddenItemEvent
 	ld a, [wCurBGEventScriptAddr]

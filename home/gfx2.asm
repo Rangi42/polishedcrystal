@@ -19,11 +19,11 @@ HBlankCopy2bpp::
 	jr c, .innerLoop
 	cp HIGH(SRAM_Begin) ; is source past VRAM
 	jr nc, .innerLoop
-	jp VRAMToVRAMCopy
+	jmp VRAMToVRAMCopy
 .outerLoop
 	ldh a, [rLY]
 	cp $88
-	jp nc, ContinueHBlankCopy
+	jmp nc, ContinueHBlankCopy
 .innerLoop
 	pop bc
 	pop de
@@ -55,4 +55,4 @@ endr
 	dec a
 	ldh [hTilesPerCycle], a
 	jr nz, .outerLoop
-	jp DoneHBlankCopy
+	jmp DoneHBlankCopy

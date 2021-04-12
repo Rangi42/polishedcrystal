@@ -14,7 +14,7 @@ SelectTradeOrDayCareMon:
 	call SetPalettes
 	call DelayFrame
 	call PartyMenuSelect
-	jp ReturnToMapWithSpeechTextbox
+	jmp ReturnToMapWithSpeechTextbox
 
 BT_SwapRentals:
 	; Party selection is always 1-2-3, so prepare this.
@@ -41,7 +41,7 @@ BT_SwapRentals:
 	call SetPalettes
 	call DelayFrame
 	call PartyMenuSelect
-	jp c, .return
+	jmp c, .return
 	farcall FreezeMonIcons
 
 	call InitPartySwap
@@ -96,11 +96,11 @@ BT_SwapRentals:
 	jr z, .reset_and_print_error
 
 	call BT_ConfirmPartySelection
-	jp c, .return_to_loop
+	jmp c, .return_to_loop
 	dec a
-	jp nz, .return_to_loop
+	jmp nz, .return_to_loop
 	pop bc
-	jp .return
+	jmp .return
 
 .reset_and_print_error
 	push hl
@@ -120,7 +120,7 @@ BT_SwapRentals:
 .reset_switch
 	xor a
 	ld [wSwitchMon], a
-	jp .loop
+	jmp .loop
 
 .improper_swap
 	ld hl, .MustSwapBetweenTeams
@@ -131,10 +131,10 @@ BT_SwapRentals:
 	call PrintText
 	xor a
 	ld [wSwitchMon], a
-	jp .loop
+	jmp .loop
 
 .return
-	jp ReturnToMapWithSpeechTextbox
+	jmp ReturnToMapWithSpeechTextbox
 
 .SwitchPartyMons:
 	ld hl, wBT_MonParty
@@ -200,6 +200,7 @@ BT_PartySelect:
 
 	call BT_RemoveCurSelection
 	jr .loop
+
 .open_menu
 	call .Menu
 	jr c, .loop
@@ -211,13 +212,13 @@ BT_PartySelect:
 	dec a ; Enter
 	jr z, .Enter
 	dec a ; Stats
-	jp z, .Stats
+	jmp z, .Stats
 	dec a ; Moves
-	jp z, .Moves
+	jmp z, .Moves
 	jr .loop ; Cancel
 
 .return
-	jp ReturnToMapWithSpeechTextbox
+	jmp ReturnToMapWithSpeechTextbox
 
 .Menu:
 	; 3 menu headers; eggs (implicitly banned), banned, regular
@@ -226,23 +227,23 @@ BT_PartySelect:
 	call GetPartyParamLocation
 	bit MON_IS_EGG_F, [hl]
 	ld hl, .EggMenuHeader
-	jp nz, BT_DisplayMenu
+	jmp nz, BT_DisplayMenu
 
 	; Check if mon is banned
 	ld a, [wCurPartyMon]
 	call BT_CheckEnterState
 	ld hl, .MenuHeader
-	jp nc, BT_DisplayMenu
+	jmp nc, BT_DisplayMenu
 	ld hl, .BannedMenuHeader
-	jp BT_DisplayMenu
+	jmp BT_DisplayMenu
 
 .Enter:
 	call BT_AddCurSelection
 	ld hl, .too_many_mons_text
-	jp c, .print_error
+	jmp c, .print_error
 	ld a, [wBT_PartySelectCounter]
 	cp 3
-	jp nz, .loop
+	jr nz, .loop
 
 	; Entered 3 mons. Check legality, and if OK, prompt to enter those 3.
 	farcall BT_SetPlayerOT
@@ -255,10 +256,10 @@ BT_PartySelect:
 	jr z, .reset_and_print_error
 
 	call BT_ConfirmPartySelection
-	jp c, .loop
+	jmp c, .loop
 	dec a
-	jp nz, .loop
-	jp .return
+	jmp nz, .loop
+	jr .return
 
 .reset_and_print_error
 	push hl
@@ -268,11 +269,11 @@ BT_PartySelect:
 	call PrintText
 	xor a
 	ld [wBT_PartySelectCounter], a
-	jp .loop
+	jmp .loop
 
 .print_error
 	call PrintText
-	jp .loop
+	jmp .loop
 
 .too_many_mons_text
 	text "You may only enter"
@@ -281,7 +282,7 @@ BT_PartySelect:
 
 .Stats:
 	farcall OpenPartyStats
-	jp .loop
+	jmp .loop
 
 .Moves:
 	; For Eggs, "Moves" is actually the "Cancel" option
@@ -292,7 +293,7 @@ BT_PartySelect:
 	farcall ManagePokemonMoves
 
 .Cancel:
-	jp .loop
+	jmp .loop
 
 .EggMenuHeader:
 	db $00 ; flags
@@ -464,7 +465,7 @@ BT_CheckEnterState:
 	xor a
 	scf
 .return
-	jp PopBCDEHL
+	jmp PopBCDEHL
 
 BT_AddCurSelection:
 ; Adds wCurPartyMon to BT selection. Doesn't verify that the mon already
@@ -519,7 +520,7 @@ BT_RemoveCurSelection:
 .shift_loop
 	ld a, d
 	cp e
-	jp z, PopBCDEHL
+	jmp z, PopBCDEHL
 	ld a, [bc]
 	inc bc
 	ld [hli], a
@@ -531,12 +532,12 @@ InitPartyMenuLayout:
 	call InitPartyMenuWithCancel
 	call InitPartyMenuGFX
 	call WritePartyMenuTilemap
-	jp PrintPartyMenuText
+	jmp PrintPartyMenuText
 
 LoadPartyMenuGFX:
 	call LoadFontsBattleExtra
 	farcall InitPartyMenuPalettes ; engine/color.asm
-	jp ClearSpriteAnims2
+	jmp ClearSpriteAnims2
 
 WritePartyMenuTilemap:
 	ld hl, wOptions1
@@ -990,7 +991,7 @@ PlacePartyMonGender:
 	jr nz, .loop
 
 	ld a, CGB_PARTY_MENU
-	jp GetCGBLayout
+	jmp GetCGBLayout
 
 PlacePartyMonRemindable:
 	ld a, [wPartyCount]
@@ -1345,7 +1346,7 @@ PrintPartyMenuActionText:
 	ld a, [wPartyMenuActionText]
 	and $f
 	ld hl, .MenuActionTexts
-	jp .PrintText
+	jmp .PrintText
 
 .MenuActionTexts:
 	dw .Text_CuredOfPoison

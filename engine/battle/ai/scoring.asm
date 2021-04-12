@@ -240,7 +240,7 @@ AI_IsFixedDamageMove:
 	push bc
 	ld hl, .FixedDamageMoves
 	call IsInByteArray
-	jp PopBCDEHL
+	jmp PopBCDEHL
 
 .FixedDamageMoves:
 	db EFFECT_COUNTER
@@ -493,7 +493,7 @@ AI_Smart_EvasionUp:
 ; Dismiss this move if enemy's evasion can't raise anymore.
 	ld a, [wEnemyEvaLevel]
 	cp $d
-	jp nc, AIDiscourageMove
+	jmp nc, AIDiscourageMove
 
 ; If enemy's HP is full...
 	call AICheckEnemyMaxHP
@@ -944,7 +944,7 @@ AI_Smart_Fly:
 AI_Smart_TrickRoom:
 ; Greatly encourage this move if it would make us outspeed, discourage otherwise
 	call AICompareSpeed
-	jp c, AIDiscourageMove
+	jmp c, AIDiscourageMove
 
 	; Avoid obvious PP stall by only encouraging the move if setting TR up
 	ld a, [wTrickRoom]
@@ -1010,7 +1010,7 @@ AI_Smart_Substitute:
 
 	call AICheckEnemyHalfHP
 	ret c
-	jp AIDiscourageMove
+	jmp AIDiscourageMove
 
 AI_Smart_HyperBeam:
 	call AICheckEnemyHalfHP
@@ -1128,7 +1128,7 @@ AI_Smart_Encore:
 
 	ld a, [wLastPlayerMove]
 	and a
-	jp z, AIDiscourageMove
+	jmp z, AIDiscourageMove
 
 	call AIGetEnemyMove
 
@@ -1230,7 +1230,7 @@ AI_Smart_SleepTalk:
 	ld a, [wEnemyMonStatus]
 	and $7
 	cp b
-	jp c, AIDiscourageMove
+	jmp c, AIDiscourageMove
 
 	; encourage it a ton to override everything else
 	ld a, [hl]
@@ -1300,7 +1300,7 @@ AI_Smart_HealBell:
 	ld a, [wEnemyMonStatus]
 	and a
 	ret nz
-	jp AIDiscourageMove
+	jmp AIDiscourageMove
 
 AI_Smart_PriorityHit:
 	call AICompareSpeed
@@ -1309,7 +1309,7 @@ AI_Smart_PriorityHit:
 ; Dismiss this move if the player is flying or underground.
 	ld a, [wPlayerSubStatus3]
 	and 1 << SUBSTATUS_FLYING | 1 << SUBSTATUS_UNDERGROUND
-	jp nz, AIDiscourageMove
+	jmp nz, AIDiscourageMove
 
 ; Greatly encourage this move if it will KO the player.
 	ld a, $1
@@ -1370,10 +1370,10 @@ AI_Smart_MeanLook:
 	push hl
 	call AICheckLastPlayerMon
 	pop hl
-	jp z, AIDiscourageMove
+	jmp z, AIDiscourageMove
 
 	call CheckIfTargetIsGhostType
-	jp z, AIDiscourageMove
+	jmp z, AIDiscourageMove
 
 ; 80% chance to greatly encourage this move if the player is badly poisoned
 	ld a, [wBattleMonStatus]
@@ -1452,7 +1452,7 @@ AI_Smart_Curse:
 
 	ld a, [wPlayerSubStatus1]
 	bit SUBSTATUS_CURSE, a
-	jp nz, AIDiscourageMove
+	jmp nz, AIDiscourageMove
 
 	push hl
 	farcall CheckAnyOtherAliveEnemyMons
@@ -1853,7 +1853,7 @@ AI_Smart_Weather:
 	; Discourage if redundant
 	ld a, [wBattleWeather]
 	cp b
-	jp z, AIDiscourageMove
+	jmp z, AIDiscourageMove
 
 	; Encourage on neutral weather
 	dec [hl]
@@ -2126,7 +2126,7 @@ AICheckEnemyHalfHP:
 	cp c
 	ld a, [hl]
 	sbc b
-	jp PopBCDEHL
+	jmp PopBCDEHL
 
 AICheckEnemyQuarterHP:
 	push hl
@@ -2146,7 +2146,7 @@ AICheckEnemyQuarterHP:
 	cp c
 	ld a, [hl]
 	sbc b
-	jp PopBCDEHL
+	jmp PopBCDEHL
 
 AICheckPlayerQuarterHP:
 	push hl
@@ -2226,7 +2226,7 @@ AIHasMoveInArray:
 	scf
 
 .done
-	jp PopBCDEHL
+	jmp PopBCDEHL
 
 UsefulMoves:
 ; Moves that are usable all-around.
@@ -2726,7 +2726,7 @@ AI_Status:
 .nextmove
 	pop de
 	pop bc
-	jp .checkmove
+	jmp .checkmove
 
 AI_Risky:
 ; Use any move that will KO the target.
@@ -2815,7 +2815,7 @@ AIGetEnemyMove:
 	push bc
 	ld de, wEnemyMoveStruct
 	call GetFixedMoveStruct
-	jp PopBCDEHL
+	jmp PopBCDEHL
 
 AI_80_20:
 	call Random

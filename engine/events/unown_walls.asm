@@ -125,7 +125,7 @@ Special_DisplayUnownWords:
 	call ApplyAttrAndTilemapInVBlank
 	call JoyWaitAorB
 	call PlayClickSFX
-	jp CloseWindow
+	jmp CloseWindow
 
 .FillAttr:
 	ld a, [de]

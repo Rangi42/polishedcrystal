@@ -7,7 +7,7 @@ BattleCommand_curse:
 	ld b, ATTACK
 	call ForceRaiseStat
 	ld b, DEFENSE
-	jp ForceRaiseStat
+	jmp ForceRaiseStat
 
 .ghost
 	; Cut HP in half and put a curse on the opponent.
@@ -29,8 +29,8 @@ BattleCommand_curse:
 	predef SubtractHPFromUser
 	call UpdateUserInParty
 	ld hl, PutACurseText
-	jp StdBattleTextbox
+	jmp StdBattleTextbox
 
 .failed
 	call AnimateFailedMove
-	jp PrintButItFailed
+	jmp PrintButItFailed

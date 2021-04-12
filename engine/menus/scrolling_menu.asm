@@ -17,7 +17,7 @@ _InitScrollingMenuNoBGMapUpdate::
 	call ScrollingMenu_InitFlags
 	call ScrollingMenu_ValidateSwitchItem
 	call ScrollingMenu_InitDisplay
-	jp Place2DMenuCursor
+	jmp Place2DMenuCursor
 
 _ScrollingMenu::
 	call ScrollingMenuJoyAction
@@ -59,15 +59,15 @@ ScrollingMenuJoyAction:
 	rrca
 	jr c, .select
 	rrca
-	jp c, .start
+	jmp c, .start
 	rrca
-	jp c, .d_right
+	jmp c, .d_right
 	rrca
-	jp c, .d_left
+	jmp c, .d_left
 	rrca
-	jp c, .d_up
+	jmp c, .d_up
 	rrca
-	jp c, .d_down
+	jmp c, .d_down
 	jr ScrollingMenuJoyAction
 
 .a_button
@@ -79,7 +79,7 @@ ScrollingMenuJoyAction:
 	jr z, .dontCheckForCancel
 	ld a, [wMenuSelection]
 	inc a
-	jp nz, .unsetZeroFlag
+	jmp nz, .unsetZeroFlag
 .dontCheckForCancel
 	call PlaceHollowCursor
 	ld a, [wMenuSelection]
@@ -451,7 +451,7 @@ ScrollingMenu_UpdateDisplay:
 	ld d, h
 	ld e, l
 	ld hl, wMenuData_ScrollingMenuFunction1
-	jp FarPointerCall
+	jmp FarPointerCall
 
 ScrollingMenu_CancelString:
 	db "Cancel@"
@@ -485,7 +485,7 @@ ScrollingMenu_CallFunctions1and2:
 	ld e, l
 .noCarry
 	ld hl, wMenuData_ScrollingMenuFunction2
-	jp FarPointerCall
+	jmp FarPointerCall
 
 ScrollingMenu_PlaceCursor:
 	ld a, [wSwitchItem]
@@ -534,7 +534,7 @@ ScrollingMenu_CheckCallFunction3:
 	dec a
 	call ScrollingMenu_GetListItemCoordAndFunctionArgs
 	ld hl, wMenuData_ScrollingMenuFunction3
-	jp FarPointerCall
+	jmp FarPointerCall
 
 ScrollingMenu_GetListItemCoordAndFunctionArgs:
 	push bc

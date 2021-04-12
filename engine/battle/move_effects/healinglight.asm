@@ -54,9 +54,9 @@ BattleCommand_healweather:
 
 ; 'regained health!'
 	ld hl, RegainedHealthText
-	jp StdBattleTextbox
+	jmp StdBattleTextbox
 
 .full
 	call AnimateFailedMove
 	ld hl, HPIsFullText
-	jp StdBattleTextbox
+	jmp StdBattleTextbox

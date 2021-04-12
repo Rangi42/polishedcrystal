@@ -17,7 +17,7 @@ InitSound::
 	pop af
 	rst Bankswitch
 
-	jp PopAFBCDEHL
+	jmp PopAFBCDEHL
 
 UpdateSound::
 
@@ -36,7 +36,7 @@ UpdateSound::
 	pop af
 	rst Bankswitch
 
-	jp PopAFBCDEHL
+	jmp PopAFBCDEHL
 
 _LoadMusicByte::
 ; wCurMusicByte = [a:de]
@@ -132,7 +132,7 @@ PlayMusic::
 	pop af
 	rst Bankswitch
 
-	jp PopAFBCDEHL
+	jmp PopAFBCDEHL
 
 PlayMusic2::
 ; Stop playing music, then play music de.
@@ -157,7 +157,7 @@ PlayMusic2::
 	pop af
 	rst Bankswitch
 
-	jp PopAFBCDEHL
+	jmp PopAFBCDEHL
 
 PlayCryHeader::
 ; Play cry header de.
@@ -201,7 +201,7 @@ endr
 	pop af
 	rst Bankswitch
 
-	jp PopAFBCDEHL
+	jmp PopAFBCDEHL
 
 WaitPlaySFX::
 	call WaitSFX
@@ -238,7 +238,7 @@ PlaySFX::
 	rst Bankswitch
 
 .done
-	jp PopAFBCDEHL
+	jmp PopAFBCDEHL
 
 PlayWaitSFX:
 	call PlaySFX
@@ -352,7 +352,7 @@ FadeToMapMusic::
 	ld [wMapMusic], a
 
 .done
-	jp PopAFBCDEHL
+	jmp PopAFBCDEHL
 
 Script_playmapmusic::
 PlayMapMusic::
@@ -366,7 +366,7 @@ PlayMapMusic::
 	cp e
 	call nz, PlayMusicAfterDelay
 
-	jp PopAFBCDEHL
+	jmp PopAFBCDEHL
 
 PlayMapMusicBike::
 	push hl
@@ -379,12 +379,12 @@ PlayMapMusicBike::
 	call GetMapMusic_MaybeSpecial
 	call PlayMusicAfterDelay
 
-	jp PopAFBCDEHL
+	jmp PopAFBCDEHL
 
 TryRestartMapMusic::
 	ld a, [wDontPlayMapMusicOnReload]
 	and a
-	jp z, RestoreMusic
+	jmp z, RestoreMusic
 	xor a
 	ld [wMapMusic], a
 	ld de, MUSIC_NONE
@@ -406,11 +406,11 @@ RestartMapMusic::
 	ld e, a
 	ld d, 0
 	call PlayMusic
-	jp PopAFBCDEHL
+	jmp PopAFBCDEHL
 
 GetMapMusic_MaybeSpecial::
 	call CheckSpecialMapMusic
-	jp z, IndirectHL
+	jmp z, IndirectHL
 	jr GetPlayerStateMusic
 
 GetCyclingRoadMusic:
@@ -433,7 +433,7 @@ GetPlayerStateMusic:
 	jr z, .surf
 	cp PLAYER_SURF_PIKA
 	jr z, .surf_pikachu
-	jp GetMapMusic
+	jmp GetMapMusic
 
 .surf:
 	call RegionCheck

@@ -1,7 +1,7 @@
 CanLearnTMHMMove:
 	ld a, [wPutativeTMHMMove]
 	and a
-	jp z, GetForgottenMoves
+	jmp z, GetForgottenMoves
 
 	ld a, [wCurPartySpecies]
 	ld [wCurSpecies], a

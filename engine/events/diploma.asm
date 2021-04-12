@@ -50,7 +50,7 @@ _Diploma:
 	ld de, wGameTimeMinutes
 	lb bc, PRINTNUM_LEADINGZEROS | 1, 2
 	call PrintNum
-	jp WaitPressAorB_BlinkCursor
+	jmp WaitPressAorB_BlinkCursor
 
 .PlayerString:
 	db "Player@"

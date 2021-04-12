@@ -8,7 +8,7 @@ BattleCommand_spikes:
 	ld a, [hl]
 	and HAZARDS_SPIKES
 	cp HAZARDS_SPIKES
-	jp z, FailSpikes
+	jmp z, FailSpikes
 	ld a, HAZARDS_SPIKES / 3
 	add [hl]
 	ld [hl], a
@@ -16,7 +16,7 @@ BattleCommand_spikes:
 	call AnimateCurrentMove
 
 	ld hl, SpikesText
-	jp StdBattleTextbox
+	jmp StdBattleTextbox
 
 BattleCommand_toxicspikes:
 	ldh a, [hBattleTurn]
@@ -28,7 +28,7 @@ BattleCommand_toxicspikes:
 	ld a, [hl]
 	and HAZARDS_TOXIC_SPIKES
 	cp (HAZARDS_TOXIC_SPIKES / 3) * 2
-	jp z, FailSpikes
+	jmp z, FailSpikes
 	ld a, HAZARDS_TOXIC_SPIKES / 3
 	add [hl]
 	ld [hl], a
@@ -36,7 +36,7 @@ BattleCommand_toxicspikes:
 	call AnimateCurrentMove
 
 	ld hl, ToxicSpikesText
-	jp StdBattleTextbox
+	jmp StdBattleTextbox
 
 .failed
-	jp FailSpikes
+	jmp FailSpikes

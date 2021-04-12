@@ -96,7 +96,7 @@ UpdateCelebiPosition:
 	add hl, bc
 	ld a, [hl]
 	cp 8 * 10 + 2
-	jp nc, .FreezeCelebiPosition
+	jr nc, .FreezeCelebiPosition
 	ld hl, SPRITEANIMSTRUCT_YCOORD
 	add hl, bc
 	inc [hl]
@@ -166,20 +166,20 @@ UpdateCelebiPosition:
 	ld hl, SPRITEANIMSTRUCT_FRAMESET_ID
 	add hl, bc
 	ld a, SPRITE_ANIM_FRAMESET_CELEBI_RIGHT
-	jp ReinitSpriteAnimFrame
+	jmp ReinitSpriteAnimFrame
 
 .left
 	ld hl, SPRITEANIMSTRUCT_FRAMESET_ID
 	add hl, bc
 	ld a, SPRITE_ANIM_FRAMESET_CELEBI_LEFT
-	jp ReinitSpriteAnimFrame
+	jmp ReinitSpriteAnimFrame
 
 .FreezeCelebiPosition:
 	pop af
 	ld hl, SPRITEANIMSTRUCT_FRAMESET_ID
 	add hl, bc
 	ld a, SPRITE_ANIM_FRAMESET_CELEBI_LEFT
-	jp ReinitSpriteAnimFrame
+	jmp ReinitSpriteAnimFrame
 
 GetCelebiSpriteTile:
 	push hl

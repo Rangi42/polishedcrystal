@@ -7,7 +7,7 @@ ProfOaksPC:
 	ld hl, OakPCText4
 	call PrintText
 	call JoyWaitAorB
-	jp ExitMenu
+	jmp ExitMenu
 
 ProfOaksPCBoot:
 	ld hl, OakPCText2
@@ -15,7 +15,7 @@ ProfOaksPCBoot:
 	call Rate
 	call PlaySFX ; sfx loaded by previous Rate function call
 	call JoyWaitAorB
-	jp WaitSFX
+	jmp WaitSFX
 
 ProfOaksPCRating:
 	call Rate
@@ -25,7 +25,7 @@ ProfOaksPCRating:
 	pop de
 	call PlaySFX
 	call JoyWaitAorB
-	jp WaitSFX
+	jmp WaitSFX
 
 Rate:
 ; calculate Seen/Owned
@@ -66,7 +66,7 @@ Rate:
 	rst ByteFill
 	pop hl
 	lb bc, PRINTNUM_LEFTALIGN | 1, 3
-	jp PrintNum
+	jmp PrintNum
 
 FindOakRating:
 ; return sound effect in de

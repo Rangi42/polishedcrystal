@@ -13,7 +13,7 @@ UpdateTMHMIconAndDescriptionAndOwnership::
 	call ClearTMHMIcon
 .ok
 	farcall LoadTMHMIconPalette
-	jp SetPalettes
+	jmp SetPalettes
 
 UpdateItemIconAndDescriptionAndBagQuantity::
 	farcall UpdateItemDescriptionAndBagQuantity
@@ -26,7 +26,7 @@ _UpdateItemIcon:
 .has_icon
 	call _LoadItemOrKeyItemIcon
 	farcall LoadItemIconPalette
-	jp SetPalettes
+	jmp SetPalettes
 
 UpdateKeyItemIconAndDescription::
 	farcall UpdateKeyItemDescription
@@ -36,13 +36,13 @@ _UpdateKeyItemIcon:
 	dec a
 	call _LoadItemOrKeyItemIcon
 	farcall LoadKeyItemIconPalette
-	jp SetPalettes
+	jmp SetPalettes
 
 LoadApricornIconForOverworld:
 	ld hl, ApricornIcon
 	lb bc, BANK(ApricornIcon), 9
 	ld de, vTiles1 tile $6d
-	jp DecompressRequest2bpp
+	jmp DecompressRequest2bpp
 
 LoadKeyItemIconForOverworld::
 	ld hl, KeyItemIconPointers
@@ -64,12 +64,12 @@ _DecompressItemIconForOverworld:
 	pop bc
 	ld hl, vTiles1 tile $6d
 	ld de, wDecompressScratch
-	jp Request2bppInWRA6
+	jmp Request2bppInWRA6
 
 _LoadItemOrKeyItemIcon:
 	call _SetupLoadItemOrKeyItemIcon
 	ld de, vTiles2 tile $1e
-	jp DecompressRequest2bpp
+	jmp DecompressRequest2bpp
 
 _SetupLoadItemOrKeyItemIcon:
 	ld c, a
@@ -89,14 +89,14 @@ LoadTMHMIcon::
 	ld hl, TMHMIcon
 	lb bc, BANK(TMHMIcon), 9
 	ld de, vTiles2 tile $1e
-	jp DecompressRequest2bpp
+	jmp DecompressRequest2bpp
 
 ClearKeyItemIcon::
 ClearTMHMIcon::
 	ld hl, NoItemIcon
 	lb bc, BANK(NoItemIcon), 9
 	ld de, vTiles2 tile $1e
-	jp DecompressRequest2bpp
+	jmp DecompressRequest2bpp
 
 WhiteOutDecompressedItemIconCorners:
 	call RunFunctionInWRA6

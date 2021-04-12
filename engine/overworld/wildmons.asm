@@ -50,21 +50,21 @@ FindNest:
 	ld hl, wRoamMon2Species
 	call .RoamMon
 	ld hl, wRoamMon3Species
-	jp .RoamMon
+	jmp .RoamMon
 
 .kanto
 	decoord 0, 0
 	ld hl, KantoGrassWildMons
 	call .FindGrass
 	ld hl, KantoWaterWildMons
-	jp .FindWater
+	jmp .FindWater
 
 .orange
 	decoord 0, 0
 	ld hl, OrangeGrassWildMons
 	call .FindGrass
 	ld hl, OrangeWaterWildMons
-	jp .FindWater
+	jmp .FindWater
 
 .FindGrass:
 	ld a, [hl]
@@ -303,11 +303,11 @@ _ChooseWildEncounter:
 	push bc
 	call LoadWildMonDataPointer
 	pop bc
-	jp nc, .nowildbattle
+	jmp nc, .nowildbattle
 	push bc
 	call CheckEncounterRoamMon
 	pop bc
-	jp c, .startwildbattle
+	jmp c, .startwildbattle
 	xor a ; BATTLETYPE_NORMAL
 	ld [wBattleType], a
 
@@ -510,7 +510,7 @@ ApplyAbilityEffectsOnEncounterMon:
 	call GetLeadAbility
 	ret z
 	ld hl, .AbilityEffects
-	jp BattleJumptable
+	jmp BattleJumptable
 
 .AbilityEffects:
 	dbw ARENA_TRAP,    .ArenaTrap
@@ -850,7 +850,7 @@ UpdateRoamMons:
 	ld [wRoamMon3MapNumber], a
 
 .SkipSuicune:
-	jp _BackUpMapIndices
+	jmp _BackUpMapIndices
 
 .Update:
 	ld hl, RoamMaps
@@ -940,7 +940,7 @@ JumpRoamMons:
 	ld [wRoamMon3MapNumber], a
 .SkipSuicune:
 
-	jp _BackUpMapIndices
+	jmp _BackUpMapIndices
 
 JumpRoamMon:
 .loop

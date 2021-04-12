@@ -111,14 +111,14 @@ GameFreakPresentsInit:
 	ld a, 144
 	ldh [hWY], a
 	lb de, %11100100, %11100100
-	jp DmgToCgbObjPals
+	jmp DmgToCgbObjPals
 
 GameFreakPresentsEnd:
 	call ClearSpriteAnims
 	call ClearTileMap
 	call ClearSprites
 	ld c, 16
-	jp DelayFrames
+	jmp DelayFrames
 
 PlaceGameFreakPresents:
 	call StandardStackJumpTable
@@ -128,11 +128,6 @@ PlaceGameFreakPresents:
 	dw GameFreakPresents_PlaceGameFreak
 	dw GameFreakPresents_PlacePresents
 	dw GameFreakPresents_WaitForTimer
-
-GameFreakPresents_NextScene:
-	ld hl, wJumptableIndex
-	inc [hl]
-	ret
 
 GameFreakPresents_PlaceGameFreak:
 	ld hl, wIntroSceneTimer
@@ -144,19 +139,13 @@ GameFreakPresents_PlaceGameFreak:
 
 .PlaceGameFreak:
 	ld [hl], 0
-	ld hl, .GAME_FREAK
+	ld hl, Splash_GameFreakTiles
 	decoord 5, 10
-	ld bc, .end - .GAME_FREAK
+	ld bc, Splash_GameFreakTiles.end - Splash_GameFreakTiles
 	rst CopyBytes
 	call GameFreakPresents_NextScene
 	ld de, SFX_GAME_FREAK_PRESENTS
-	jp PlaySFX
-
-.GAME_FREAK:
-	;  G  A  M  E   _  F  R  E  A  K
-	db 0, 1, 2, 3, 13, 4, 5, 3, 1, 6
-.end
-	db "@"
+	jmp PlaySFX
 
 GameFreakPresents_PlacePresents:
 	ld hl, wIntroSceneTimer
@@ -168,16 +157,25 @@ GameFreakPresents_PlacePresents:
 
 .place_presents
 	ld [hl], 0
-	ld hl, .presents
+	ld hl, Splash_PresentsTiles
 	decoord 7, 11
-	ld bc, .end - .presents
+	ld bc, Splash_PresentsTiles.end - Splash_PresentsTiles
 	rst CopyBytes
-	jp GameFreakPresents_NextScene
+	; fallthrough
 
-.presents
+GameFreakPresents_NextScene:
+	ld hl, wJumptableIndex
+	inc [hl]
+	ret
+
+Splash_GameFreakTiles:
+	;  G  A  M  E   _  F  R  E  A  K
+	db 0, 1, 2, 3, 13, 4, 5, 3, 1, 6
+.end
+
+Splash_PresentsTiles:
 	db 7, 8, 9, 10, 11, 12
 .end
-	db "@"
 
 GameFreakPresents_WaitForTimer:
 	ld hl, wIntroSceneTimer
@@ -252,7 +250,7 @@ GameFreakLogo_Bounce:
 	sub 48
 	ld [hl], a
 	ld de, SFX_DITTO_BOUNCE
-	jp PlaySFX
+	jmp PlaySFX
 
 .done
 	ld hl, SPRITEANIMSTRUCT_JUMPTABLE_INDEX
@@ -262,7 +260,7 @@ GameFreakLogo_Bounce:
 	add hl, bc
 	ld [hl], 0
 	ld de, SFX_DITTO_POP_UP
-	jp PlaySFX
+	jmp PlaySFX
 
 GameFreakLogo_Ditto:
 	ld hl, SPRITEANIMSTRUCT_VAR2 ; frame count
@@ -281,7 +279,7 @@ GameFreakLogo_Ditto:
 	add hl, bc
 	ld [hl], 0
 	ld de, SFX_DITTO_TRANSFORM
-	jp PlaySFX
+	jmp PlaySFX
 
 GameFreakLogo_Transform:
 	ld hl, SPRITEANIMSTRUCT_VAR2
@@ -317,7 +315,7 @@ GameFreakLogo_Transform:
 	ld hl, SPRITEANIMSTRUCT_JUMPTABLE_INDEX
 	add hl, bc
 	inc [hl]
-	jp GameFreakPresents_NextScene
+	jmp GameFreakPresents_NextScene
 
 GameFreakLogoPalettes:
 ; Ditto's color as it turns into the Game Freak logo.

@@ -69,7 +69,7 @@ StatsScreen_WaitAnim:
 	jr nz, .try_anim
 	bit 5, [hl]
 	jr nz, .finish
-	jp DelayFrame
+	jmp DelayFrame
 
 .try_anim
 	farcall SetUpPokeAnim
@@ -80,13 +80,6 @@ StatsScreen_WaitAnim:
 	ld hl, wStatsScreenFlags
 	res 5, [hl]
 	farjp HDMATransferTileMapToWRAMBank3
-
-StatsScreen_SetJumptableIndex:
-	ld a, [wJumptableIndex]
-	and $80
-	or h
-	ld [wJumptableIndex], a
-	ret
 
 StatsScreen_Exit:
 	ld hl, wJumptableIndex
@@ -115,11 +108,11 @@ MonStatsInit:
 	ld hl, wStatsScreenFlags
 	set 4, [hl]
 	ld h, 3
-	jp StatsScreen_SetJumptableIndex
+	jr StatsScreen_SetJumptableIndex
 
 .egg
 	ld h, 1
-	jp StatsScreen_SetJumptableIndex
+	jr StatsScreen_SetJumptableIndex
 
 EggStatsInit:
 	ld a, [wCurPartySpecies]
@@ -138,17 +131,24 @@ EggStatsJoypad:
 	call StatsScreen_GetJoypad
 	jr nc, .check
 	ld h, 0
-	jp StatsScreen_SetJumptableIndex
+	jr StatsScreen_SetJumptableIndex
 
 .check
 	bit A_BUTTON_F, a
 	jr nz, .quit
 	and D_DOWN | D_UP | A_BUTTON | B_BUTTON
-	jp StatsScreen_JoypadAction
+	jmp StatsScreen_JoypadAction
 
 .quit
 	ld h, 5
-	jp StatsScreen_SetJumptableIndex
+	; fallthrough
+
+StatsScreen_SetJumptableIndex:
+	ld a, [wJumptableIndex]
+	and $80
+	or h
+	ld [wJumptableIndex], a
+	ret
 
 StatsScreen_LoadPage:
 	call StatsScreen_LoadGFX
@@ -163,11 +163,11 @@ MonStatsJoypad:
 	call StatsScreen_GetJoypad
 	jr nc, .next
 	ld h, 0
-	jp StatsScreen_SetJumptableIndex
+	jr StatsScreen_SetJumptableIndex
 
 .next
 	and D_DOWN | D_UP | D_LEFT | D_RIGHT | A_BUTTON | B_BUTTON
-	jp StatsScreen_JoypadAction
+	jmp StatsScreen_JoypadAction
 
 StatsScreen_GetJoypad:
 	call GetJoypad
@@ -182,7 +182,7 @@ StatsScreen_JoypadAction:
 	ld c, a
 	pop af
 	bit B_BUTTON_F, a
-	jp nz, .b_button
+	jmp nz, .b_button
 	bit D_LEFT_F, a
 	jr nz, .d_left
 	bit D_RIGHT_F, a
@@ -203,7 +203,7 @@ StatsScreen_JoypadAction:
 .load_mon
 	ret z
 	ld h, 0
-	jp StatsScreen_SetJumptableIndex
+	jr StatsScreen_SetJumptableIndex
 
 .a_button
 	ld a, c
@@ -231,11 +231,11 @@ StatsScreen_JoypadAction:
 	or c
 	ld [wStatsScreenFlags], a
 	ld h, 3
-	jp StatsScreen_SetJumptableIndex
+	jmp StatsScreen_SetJumptableIndex
 
 .b_button
 	ld h, 5
-	jp StatsScreen_SetJumptableIndex
+	jmp StatsScreen_SetJumptableIndex
 
 StatsScreen_InitUpperHalf:
 	call .PlaceHPBar
@@ -277,7 +277,7 @@ StatsScreen_InitUpperHalf:
 	call GetPokemonName
 	rst PlaceString
 	call StatsScreen_PlacePageSwitchArrows
-	jp StatsScreen_PlaceShinyIcon
+	jmp StatsScreen_PlaceShinyIcon
 
 .PlaceHPBar:
 	ld hl, wTempMonHP
@@ -293,7 +293,7 @@ StatsScreen_InitUpperHalf:
 	call SetHPPal
 	ld a, CGB_STATS_SCREEN_HP_PALS
 	call GetCGBLayout
-	jp DelayFrame
+	jmp DelayFrame
 
 .PlaceGenderChar:
 	push hl
@@ -379,7 +379,7 @@ StatsScreen_LoadGFX:
 	bit 4, [hl]
 	call nz, StatsScreen_PlaceFrontpic
 	ld b, 2
-	jp SafeCopyTilemapAtOnce
+	jmp SafeCopyTilemapAtOnce
 
 .ClearBox:
 	ld a, [wStatsScreenFlags]
@@ -389,7 +389,7 @@ StatsScreen_LoadGFX:
 	call StatsScreen_PlaceHorizontalDivider
 	hlcoord 0, 8
 	lb bc, 10, 20
-	jp ClearBox
+	jmp ClearBox
 
 .LoadPokeBall:
 	; draw border
@@ -636,7 +636,7 @@ StatsScreen_LoadGFX:
 	and a
 	ret z
 	ld [wd265], a
-	jp GetItemName
+	jmp GetItemName
 
 .Item:
 	db "Item@"
@@ -799,7 +799,7 @@ TN_PrintLV:
 ;	hlcoord 15, 9
 	ld de, wBuffer2
 	lb bc, PRINTNUM_LEFTALIGN | 1, 3
-	jp PrintNum
+	jmp PrintNum
 .hatched
 	ld de, .str_hatched
 	rst PlaceString
@@ -915,11 +915,11 @@ StatsScreen_PlaceFrontpic:
 	call StatsScreen_GetAnimationParam
 	jr nc, .no_cry
 	call .Animate
-	jp SetPalettes
+	jmp SetPalettes
 
 .no_cry
 	call .DontAnimate
-	jp SetPalettes
+	jmp SetPalettes
 
 .DontAnimate:
 	ld hl, wStatsScreenFlags
@@ -927,8 +927,8 @@ StatsScreen_PlaceFrontpic:
 	hlcoord 0, 0
 	ld a, [wCurPartySpecies]
 	cp UNOWN
-	jp z, PrepMonFrontpicFlipped
-	jp PrepMonFrontpic
+	jmp z, PrepMonFrontpicFlipped
+	jmp PrepMonFrontpic
 
 .Animate:
 	ld a, [wCurPartySpecies]
@@ -991,7 +991,7 @@ StatsScreen_LoadTextboxSpaceGFX:
 	call Get1bpp
 	pop af
 	ldh [rVBK], a
-	jp PopAFBCDEHL
+	jmp PopAFBCDEHL
 
 EggStatsScreen:
 	xor a
@@ -1031,7 +1031,7 @@ EggStatsScreen:
 	cp 6
 	ret nc
 	ld de, SFX_2_BOOPS
-	jp PlaySFX
+	jmp PlaySFX
 
 EggString:
 	db   "Egg"

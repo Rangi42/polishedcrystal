@@ -32,7 +32,7 @@ Special_MoveTutor:
 	ld a, -1
 .quit
 	ldh [hScriptVar], a
-	jp CloseSubmenu
+	jmp CloseSubmenu
 
 CheckCanLearnMoveTutorMove:
 	ld hl, .MenuDataHeader

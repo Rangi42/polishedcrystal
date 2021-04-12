@@ -77,11 +77,6 @@ TrainerCard:
 	dw TrainerCard_Page3_Joypad
 	dw TrainerCard_Quit
 
-TrainerCard_IncrementJumptable:
-	ld hl, wJumptableIndex
-	inc [hl]
-	ret
-
 TrainerCard_Quit:
 	ld hl, wJumptableIndex
 	set 7, [hl]
@@ -101,7 +96,12 @@ TrainerCard_Page1_LoadGFX:
 	call TrainerCard_LoadHeaderGFX
 
 	call TrainerCard_Page1_PrintDexCaught_GameTime
-	jp TrainerCard_IncrementJumptable
+	; fallthrough
+
+TrainerCard_IncrementJumptable:
+	ld hl, wJumptableIndex
+	inc [hl]
+	ret
 
 TrainerCard_Page1_Joypad:
 	call TrainerCard_Page1_PrintGameTime
@@ -140,7 +140,7 @@ TrainerCard_Page2_LoadGFX:
 
 	ld hl, TrainerCard_JohtoBadgesOAM
 	call TrainerCard_Page2_3_InitObjectsAndStrings
-	jp TrainerCard_IncrementJumptable
+	jr TrainerCard_IncrementJumptable
 
 TrainerCard_Page2_Joypad:
 	ld hl, TrainerCard_JohtoBadgesOAM
@@ -207,7 +207,7 @@ TrainerCard_Page3_LoadGFX:
 
 	ld hl, TrainerCard_KantoBadgesOAM
 	call TrainerCard_Page2_3_InitObjectsAndStrings
-	jp TrainerCard_IncrementJumptable
+	jmp TrainerCard_IncrementJumptable
 
 TrainerCard_Page3_Joypad:
 	ld hl, TrainerCard_KantoBadgesOAM
@@ -233,7 +233,7 @@ TrainerCard_Page3_Joypad:
 TrainerCard_LoadHeaderGFX:
 	ld hl, vTiles2 tile $29
 	lb bc, BANK(CardStatusGFX), $4 ; BANK(CardBadgesGFX)
-	jp Request2bpp
+	jmp Request2bpp
 
 TrainerCard_PrintBorder:
 	hlcoord 0, 0
@@ -335,7 +335,7 @@ TrainerCard_PrintTopHalfOfCard:
 	dec c
 .print_money
 	ld de, wMoney
-	jp PrintNum
+	jmp PrintNum
 
 .Top_Headings:
 	db "┐Name/<LNBRK>"
@@ -347,7 +347,7 @@ TrainerCard_PrintTopHalfOfCard:
 TrainerCardSetup_ClearBottomHalf:
 	hlcoord 1, 10
 	lb bc, 7, 18
-	jp ClearBox
+	jmp ClearBox
 
 TrainerCard_Page1_PrintDexCaught_GameTime:
 	hlcoord 2, 10
@@ -454,7 +454,7 @@ endr
 	xor a
 	ld [wTrainerCardBadgeFrameCounter], a
 	pop hl
-	jp TrainerCard_Page2_3_OAMUpdate
+	jr TrainerCard_Page2_3_OAMUpdate
 
 TrainerCard_Page2_3_PlaceLeadersFaces:
 	push de

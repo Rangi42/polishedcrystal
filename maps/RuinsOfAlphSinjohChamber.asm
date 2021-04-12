@@ -88,17 +88,17 @@ RuinsofAlphSinjohChamberSignpost:
 .PlayUnownSound1:
 	call SFXChannelsOff
 	ld de, SFX_INTRO_UNOWN_1
-	jp PlaySFX
+	jmp PlaySFX
 
 .PlayUnownSound2:
 	call SFXChannelsOff
 	ld de, SFX_INTRO_UNOWN_2
-	jp PlaySFX
+	jmp PlaySFX
 
 .PlayUnownSound3:
 	call SFXChannelsOff
 	ld de, SFX_INTRO_UNOWN_3
-	jp PlaySFX
+	jmp PlaySFX
 
 MovementData_WarpToSinjohRuins:
 	step_dig 32

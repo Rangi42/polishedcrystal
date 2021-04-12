@@ -64,7 +64,7 @@ OptionsMenu_LoadOptions:
 	call z, UpdateFrame
 	ld a, 1
 	ldh [hBGMapMode], a
-	jp ApplyTilemapInVBlank
+	jmp ApplyTilemapInVBlank
 
 StringOptions1:
 	db "Text Speed<LNBRK>"
@@ -538,7 +538,7 @@ Options_Typeface:
 	ld [hl], a
 	call .NonePressed
 	call ApplyTilemapInVBlank
-	jp LoadStandardFont
+	jmp LoadStandardFont
 
 .NonePressed:
 	ld b, 0

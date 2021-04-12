@@ -6,7 +6,7 @@ _UpdatePlayerSprite::
 	ldh [hUsedSpriteTile], a
 	ld hl, wSpriteFlags
 	res 5, [hl]
-	jp GetUsedSprite
+	jmp GetUsedSprite
 
 GetPlayerSprite:
 ; Get Chris or Kris's sprite.
@@ -70,7 +70,7 @@ RefreshSprites::
 	ldh [hUsedSpriteIndex], a
 	call ReloadSpriteIndex
 	call LoadOverworldGFX
-	jp PopBCDEHL
+	jmp PopBCDEHL
 
 ReloadSpriteIndex::
 ; Reloads sprites using hUsedSpriteIndex.
@@ -118,7 +118,7 @@ LoadOverworldGFX::
 	ld hl, OverworldEffectGFX
 	lb bc, BANK(OverworldEffectGFX), 17
 	ld de, vTiles0 tile $6f
-	jp DecompressRequest2bpp
+	jmp DecompressRequest2bpp
 
 SafeGetSprite:
 	push hl
@@ -418,7 +418,7 @@ LoadEmote::
 ; load the VRAM destination into de
 	ld de, vTiles0 tile $60
 ; load into vram0
-	jp DecompressRequest2bpp
+	jmp DecompressRequest2bpp
 
 EmotePalettes:
 INCLUDE "gfx/emotes/emotes.pal"

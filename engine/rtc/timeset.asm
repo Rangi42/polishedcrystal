@@ -251,7 +251,7 @@ PrintTwoDigitNumberRightAlign:
 	ld [hl], a
 	pop hl
 	lb bc, PRINTNUM_LEFTALIGN | 1, 2
-	jp PrintNum
+	jmp PrintNum
 
 Text_WokeUpOak:
 	; Zzz… Hm? Wha…? You woke me up! Will you check the clock for me?
@@ -513,7 +513,7 @@ Special_InitialSetDSTFlag:
 	ld [wDST], a
 	call ClearSpeechBox
 	ld hl, .Text
-	jp PlaceWholeStringInBoxAtOnce
+	jmp PlaceWholeStringInBoxAtOnce
 
 .Text:
 	text_asm
@@ -538,7 +538,7 @@ Special_InitialClearDSTFlag:
 	ld [wDST], a
 	call ClearSpeechBox
 	ld hl, .Text
-	jp PlaceWholeStringInBoxAtOnce
+	jmp PlaceWholeStringInBoxAtOnce
 
 .Text:
 	text_asm
@@ -570,7 +570,7 @@ PrintHour:
 	call AdjustHourForAMorPM
 	ld [wd265], a
 	ld de, wd265
-	jp PrintTwoDigitNumberRightAlign
+	jmp PrintTwoDigitNumberRightAlign
 
 GetTimeOfDayString:
 	ld a, c

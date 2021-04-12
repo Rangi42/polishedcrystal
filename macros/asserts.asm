@@ -63,3 +63,13 @@ end_water_wildmons: MACRO
 	assert WATER_WILDDATA_LENGTH == @ - CURRENT_WATER_WILDMONS_LABEL, \
 		"def_water_wildmons {CURRENT_WATER_WILDMONS_MAP}: expected {d:WATER_WILDDATA_LENGTH} bytes"
 ENDM
+
+jmp: MACRO
+	if _NARG == 1
+		;assert \1 - @ > 127 + 2 || \1 - @ < -128 + 2, "jp can be jr"
+		jp \1
+	else
+		;assert \2 - @ > 127 + 2 || \2 - @ < -128 + 2, "jp can be jr"
+		jp \1, \2
+	endc
+ENDM

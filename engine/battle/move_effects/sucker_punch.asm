@@ -14,4 +14,4 @@ BattleCommand_suckerpunch:
 .failed
 	call AnimateFailedMove
 	call TryPrintButItFailed
-	jp EndMoveEffect
+	jmp EndMoveEffect

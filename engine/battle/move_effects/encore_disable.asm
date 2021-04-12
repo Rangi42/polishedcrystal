@@ -96,8 +96,8 @@ DoEncoreDisable:
 	ld [de], a
 	call AnimateCurrentMove
 	call StdBattleTextbox
-	jp CheckOpponentMentalHerb
+	jmp CheckOpponentMentalHerb
 
 .failed
 	call AnimateFailedMove
-	jp PrintButItFailed
+	jmp PrintButItFailed

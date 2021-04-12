@@ -45,14 +45,14 @@ Pack:
 	call Pack_InitGFX
 	ld a, [wPackJumptableIndex]
 	ld [wJumptableIndex], a
-	jp Pack_InitColors
+	jmp Pack_InitColors
 
 .InitItemsPocket:
 	ld a, ITEM - 1
 	ld [wCurPocket], a
 	call ClearPocketList
 	call WaitBGMap_DrawPackGFX
-	jp Pack_JumptableNext
+	jmp Pack_JumptableNext
 
 .ItemsPocketMenu:
 	ld hl, ItemsPocketMenuDataHeader
@@ -67,14 +67,14 @@ Pack:
 	lb bc, $b, $3 ; Key Items, Medicine
 	call Pack_InterpretJoypad
 	ret c
-	jp .ItemMedsBallsBerries_LoadSubmenu
+	jmp .ItemMedsBallsBerries_LoadSubmenu
 
 .InitMedicinePocket:
 	ld a, MEDICINE - 1
 	ld [wCurPocket], a
 	call ClearPocketList
 	call WaitBGMap_DrawPackGFX
-	jp Pack_JumptableNext
+	jmp Pack_JumptableNext
 
 .MedicinePocketMenu:
 	ld hl, MedicinePocketMenuDataHeader
@@ -89,14 +89,14 @@ Pack:
 	lb bc, $1, $5 ; Items, Balls
 	call Pack_InterpretJoypad
 	ret c
-	jp .ItemMedsBallsBerries_LoadSubmenu
+	jmp .ItemMedsBallsBerries_LoadSubmenu
 
 .InitBallsPocket:
 	ld a, BALL - 1
 	ld [wCurPocket], a
 	call ClearPocketList
 	call WaitBGMap_DrawPackGFX
-	jp Pack_JumptableNext
+	jmp Pack_JumptableNext
 
 .BallsPocketMenu:
 	ld hl, BallsPocketMenuDataHeader
@@ -111,24 +111,24 @@ Pack:
 	lb bc, $3, $7 ; Medicine, TM/HM
 	call Pack_InterpretJoypad
 	ret c
-	jp .ItemMedsBallsBerries_LoadSubmenu
+	jmp .ItemMedsBallsBerries_LoadSubmenu
 
 .InitTMHMPocket:
 	ld a, TM_HM - 1
 	ld [wCurPocket], a
 	call ClearPocketList
 	call WaitBGMap_DrawPackGFX
-	jp Pack_JumptableNext
+	jmp Pack_JumptableNext
 
 .TMHMPocketMenu:
 	farcall TMHMPocket
 	lb bc, $5, $9 ; Balls, Berries
 	call Pack_InterpretJoypad
 	ret c
-	jp nz, PackSortMenu
+	jmp nz, PackSortMenu
 	ld hl, MenuDataHeader_Use
 	ld de, .Jumptable1
-	jp PackBuildMenu
+	jmp PackBuildMenu
 
 .Jumptable1:
 	dw .UseItem
@@ -151,14 +151,14 @@ Pack:
 	ldh [hBGMapMode], a
 	call Pack_InitGFX
 	call WaitBGMap_DrawPackGFX
-	jp Pack_InitColors
+	jmp Pack_InitColors
 
 .InitBerriesPocket:
 	ld a, BERRIES - 1
 	ld [wCurPocket], a
 	call ClearPocketList
 	call WaitBGMap_DrawPackGFX
-	jp Pack_JumptableNext
+	jmp Pack_JumptableNext
 
 .BerriesPocketMenu:
 	ld hl, BerriesPocketMenuDataHeader
@@ -180,14 +180,14 @@ Pack:
 	ld [wCurPocket], a
 	call ClearPocketList
 	call WaitBGMap_DrawPackGFX
-	jp Pack_JumptableNext
+	jmp Pack_JumptableNext
 
 .KeyItemsPocketMenu:
 	farcall KeyItemsPocket
 	lb bc, $9, $1 ; Berries, Items
 	call Pack_InterpretJoypad
 	ret c
-	jp KeyItems_LoadSubmenu
+	jmp KeyItems_LoadSubmenu
 
 .ItemMedsBallsBerries_LoadSubmenu:
 	jr nz, PackSortMenu
@@ -215,7 +215,7 @@ PackBuildMenu:
 PackMenuJump:
 	ld a, [wMenuCursorY]
 	dec a
-	jp JumpTable
+	jmp JumpTable
 
 PackSortMenu:
 	ld hl, Text_SortItemsHow
@@ -286,7 +286,7 @@ UseKeyItem:
 
 .Oak:
 	ld hl, Text_ThisIsntTheTime
-	jp Pack_PrintTextNoScroll
+	jmp Pack_PrintTextNoScroll
 
 .Current:
 	predef_jump DoKeyItemEffect
@@ -300,11 +300,11 @@ UseKeyItem:
 	ldh [hBGMapMode], a
 	call Pack_InitGFX
 	call WaitBGMap_DrawPackGFX
-	jp Pack_InitColors
+	jmp Pack_InitColors
 
 .NoPokemon:
 	ld hl, TextJump_YouDontHaveAPkmn
-	jp Pack_PrintTextNoScroll
+	jmp Pack_PrintTextNoScroll
 
 .Field:
 	predef DoKeyItemEffect
@@ -481,7 +481,7 @@ UseItem:
 
 .Oak:
 	ld hl, Text_ThisIsntTheTime
-	jp Pack_PrintTextNoScroll
+	jmp Pack_PrintTextNoScroll
 
 .Party:
 	ld a, [wPartyCount]
@@ -492,11 +492,11 @@ UseItem:
 	ldh [hBGMapMode], a
 	call Pack_InitGFX
 	call WaitBGMap_DrawPackGFX
-	jp Pack_InitColors
+	jmp Pack_InitColors
 
 .NoPokemon:
 	ld hl, TextJump_YouDontHaveAPkmn
-	jp Pack_PrintTextNoScroll
+	jmp Pack_PrintTextNoScroll
 
 .Field:
 	call DoItemEffect
@@ -528,7 +528,7 @@ TossMenu:
 	call TossItem
 	call Pack_GetItemName
 	ld hl, Text_ThrewAway
-	jp Pack_PrintTextNoScroll
+	jmp Pack_PrintTextNoScroll
 
 RegisterKeyItem:
 	farcall CheckSelectableKeyItem
@@ -560,7 +560,7 @@ RegisterKeyItem:
 	dec d
 	jr nz, .loop
 	ld hl, Text_NoEmptySlot
-	jp PrintText
+	jmp PrintText
 
 .found_empty_slot
 	ld a, [wCurKeyItem]
@@ -581,12 +581,12 @@ RegisterKeyItem:
 .cant_register
 	ld hl, Text_CantRegister
 .print
-	jp Pack_PrintTextNoScroll
+	jmp Pack_PrintTextNoScroll
 
 GiveItem:
 	ld a, [wPartyCount]
 	and a
-	jp z, .NoPokemon
+	jmp z, .NoPokemon
 	ld a, [wOptions1]
 	push af
 	res NO_TEXT_SCROLL, a
@@ -635,11 +635,11 @@ GiveItem:
 	ldh [hBGMapMode], a
 	call Pack_InitGFX
 	call WaitBGMap_DrawPackGFX
-	jp Pack_InitColors
+	jmp Pack_InitColors
 
 .NoPokemon:
 	ld hl, TextJump_YouDontHaveAPkmn
-	jp Pack_PrintTextNoScroll
+	jmp Pack_PrintTextNoScroll
 .Egg:
 	; An EGG can't hold an item.
 	text_far Text_AnEGGCantHoldAnItem
@@ -691,14 +691,14 @@ BattlePack:
 	call Pack_InitGFX
 	ld a, [wPackJumptableIndex]
 	ld [wJumptableIndex], a
-	jp Pack_InitColors
+	jmp Pack_InitColors
 
 .InitItemsPocket:
 	ld a, ITEM - 1
 	ld [wCurPocket], a
 	call ClearPocketList
 	call WaitBGMap_DrawPackGFX
-	jp Pack_JumptableNext
+	jmp Pack_JumptableNext
 
 .ItemsPocketMenu:
 	ld hl, ItemsPocketMenuDataHeader
@@ -713,14 +713,14 @@ BattlePack:
 	lb bc, $b, $3 ; Key Items, Medicine
 	call Pack_InterpretJoypad
 	ret c
-	jp ItemSubmenu
+	jmp ItemSubmenu
 
 .InitMedicinePocket:
 	ld a, MEDICINE - 1
 	ld [wCurPocket], a
 	call ClearPocketList
 	call WaitBGMap_DrawPackGFX
-	jp Pack_JumptableNext
+	jmp Pack_JumptableNext
 
 .MedicinePocketMenu:
 	ld hl, MedicinePocketMenuDataHeader
@@ -735,14 +735,14 @@ BattlePack:
 	lb bc, $1, $5 ; Items, Balls
 	call Pack_InterpretJoypad
 	ret c
-	jp ItemSubmenu
+	jmp ItemSubmenu
 
 .InitBallsPocket:
 	ld a, BALL - 1
 	ld [wCurPocket], a
 	call ClearPocketList
 	call WaitBGMap_DrawPackGFX
-	jp Pack_JumptableNext
+	jmp Pack_JumptableNext
 
 .BallsPocketMenu:
 	ld hl, BallsPocketMenuDataHeader
@@ -757,7 +757,7 @@ BattlePack:
 	lb bc, $3, $7 ; Medicine, TM/HM
 	call Pack_InterpretJoypad
 	ret c
-	jp ItemSubmenu
+	jmp ItemSubmenu
 
 .InitTMHMPocket:
 	ld a, TM_HM - 1
@@ -768,22 +768,22 @@ BattlePack:
 	call WaitBGMap_DrawPackGFX
 	ld hl, Text_PackEmptyString
 	call Pack_PrintTextNoScroll
-	jp Pack_JumptableNext
+	jmp Pack_JumptableNext
 
 .TMHMPocketMenu:
 	farcall TMHMPocket
 	lb bc, $5, $9 ; Balls, Berries
 	call Pack_InterpretJoypad
 	ret c
-	jp nz, PackSortMenu
-	jp KeyItemSubmenu.unusable
+	jmp nz, PackSortMenu
+	jmp KeyItemSubmenu.unusable
 
 .InitBerriesPocket:
 	ld a, BERRIES - 1
 	ld [wCurPocket], a
 	call ClearPocketList
 	call WaitBGMap_DrawPackGFX
-	jp Pack_JumptableNext
+	jmp Pack_JumptableNext
 
 .BerriesPocketMenu:
 	ld hl, BerriesPocketMenuDataHeader
@@ -809,7 +809,7 @@ BattlePack:
 	call WaitBGMap_DrawPackGFX
 	ld hl, Text_PackEmptyString
 	call Pack_PrintTextNoScroll
-	jp Pack_JumptableNext
+	jmp Pack_JumptableNext
 
 .KeyItemsPocketMenu:
 	farcall KeyItemsPocket
@@ -818,10 +818,10 @@ BattlePack:
 	ret c
 	farcall CheckKeyItemContext
 	ld a, [wItemAttributeParamBuffer]
-	jp KeyItemSubmenu
+	jmp KeyItemSubmenu
 
 ItemSubmenu:
-	jp nz, PackSortMenu
+	jmp nz, PackSortMenu
 	farcall CheckItemContext
 	ld a, [wItemAttributeParamBuffer]
 	and a
@@ -831,7 +831,7 @@ ItemSubmenu:
 	ld hl, MenuDataHeader_Quit
 	ld de, .UnusableJumptable
 .proceed
-	jp PackBuildMenu
+	jmp PackBuildMenu
 
 .UsableJumptable:
 	dw .Use
@@ -854,7 +854,7 @@ ItemSubmenu:
 
 .Oak:
 	ld hl, Text_ThisIsntTheTime
-	jp Pack_PrintTextNoScroll
+	jmp Pack_PrintTextNoScroll
 
 .Unused:
 	call DoItemEffect
@@ -872,7 +872,7 @@ ItemSubmenu:
 	ldh [hBGMapMode], a
 	call Pack_InitGFX
 	call WaitBGMap_DrawPackGFX
-	jp Pack_InitColors
+	jmp Pack_InitColors
 
 .ReturnToBattle:
 	call ClearBGPalettes
@@ -906,7 +906,7 @@ KeyItemSubmenu:
 	ld hl, MenuDataHeader_Quit
 	ld de, .UnusableJumptable
 .proceed
-	jp PackBuildMenu
+	jmp PackBuildMenu
 
 .UsableJumptable:
 	dw .Use
@@ -929,7 +929,7 @@ KeyItemSubmenu:
 
 .Oak:
 	ld hl, Text_ThisIsntTheTime
-	jp Pack_PrintTextNoScroll
+	jmp Pack_PrintTextNoScroll
 
 .Current:
 	predef DoKeyItemEffect
@@ -944,7 +944,7 @@ KeyItemSubmenu:
 	ldh [hBGMapMode], a
 	call Pack_InitGFX
 	call WaitBGMap_DrawPackGFX
-	jp Pack_InitColors
+	jmp Pack_InitColors
 
 .BattleOnly:
 	predef DoKeyItemEffect
@@ -989,7 +989,7 @@ DepositSellInitPackBuffers:
 	ld [wPackUsedItem], a
 	ld [wSwitchItem], a
 	call Pack_InitGFX
-	jp Pack_InitColors
+	jmp Pack_InitColors
 
 DepositSellPack:
 .loop
@@ -1092,7 +1092,7 @@ DepositSellPack:
 InitPocket:
 	ld [wCurPocket], a
 	call ClearPocketList
-	jp WaitBGMap_DrawPackGFX
+	jmp WaitBGMap_DrawPackGFX
 
 DepositSellTutorial_InterpretJoypad:
 	ld hl, wMenuJoypad
@@ -1255,7 +1255,7 @@ TutorialPack:
 	call InitPocket
 	pop hl
 	call CopyMenuHeader
-	jp ScrollingMenu
+	jmp ScrollingMenu
 
 Pack_JumptableNext:
 	ld hl, wJumptableIndex
@@ -1341,7 +1341,7 @@ DrawPackGFX:
 	ld l, a
 	ld de, vTiles2 tile $28
 	lb bc, BANK("Pack Graphics"), 25
-	jp DecompressRequest2bpp
+	jmp DecompressRequest2bpp
 
 .MaleGFX:
 	dw PackM0GFX ; far-ok
@@ -1486,7 +1486,7 @@ Pack_InitGFX:
 	lb bc, 4, SCREEN_WIDTH - 2
 	call Textbox
 	call EnableLCD
-	jp DrawPackGFX
+	jmp DrawPackGFX
 
 .PackLeftColumnTilemapString:
 	db $18, $19, $19, $19, $1a, 0 ; Background (blue if male, pink if female)
@@ -1505,24 +1505,24 @@ Pack_GetItemName:
 	ld a, [wCurItem]
 	ld [wNamedObjectIndexBuffer], a
 	call GetItemName
-	jp CopyName1
+	jmp CopyName1
 
 Pack_GetKeyItemName:
 	ld a, [wCurKeyItem]
 	ld [wNamedObjectIndexBuffer], a
 	call GetKeyItemName
-	jp CopyName1
+	jmp CopyName1
 
 ClearPocketList:
 	hlcoord 5, 2
 	lb bc, 10, SCREEN_WIDTH - 5
-	jp ClearBox
+	jmp ClearBox
 
 Pack_InitColors:
 	call ApplyTilemapInVBlank
 	ld a, CGB_PACKPALS
 	call GetCGBLayout
-	jp SetPalettes
+	jmp SetPalettes
 
 ItemsPocketMenuDataHeader:
 	db $40 ; flags
@@ -1754,7 +1754,7 @@ Special_ChooseItem::
 	call LoadStandardMenuHeader
 	call DepositSellInitPackBuffers
 	call .PickItem
-	jp ReturnToMapWithSpeechTextbox
+	jmp ReturnToMapWithSpeechTextbox
 
 .PickItem:
 	xor a ; ld a, FALSE

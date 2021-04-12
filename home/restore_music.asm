@@ -29,7 +29,7 @@ SaveMusic::
 	pop af
 	ldh [rSVBK], a
 
-	jp PopAFBCDEHL
+	jmp PopAFBCDEHL
 
 RestoreMusic::
 	push hl
@@ -70,7 +70,7 @@ RestoreMusic::
 	pop af
 	ldh [rSVBK], a
 
-	jp PopAFBCDEHL
+	jmp PopAFBCDEHL
 
 DeleteSavedMusic::
 	push af

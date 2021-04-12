@@ -32,7 +32,7 @@ BattleCommand_teleport:
 	call SetBattleDraw
 
 	ld hl, FledFromBattleText
-	jp StdBattleTextbox
+	jmp StdBattleTextbox
 
 .trainer_battle
 	call CheckAnyOtherAliveMons
@@ -41,8 +41,8 @@ BattleCommand_teleport:
 	ld c, 20
 	call DelayFrames
 	ld a, 1 << SWITCH_DEFERRED
-	jp SetDeferredSwitch
+	jmp SetDeferredSwitch
 
 .failed
 	call AnimateFailedMove
-	jp PrintButItFailed
+	jmp PrintButItFailed

@@ -46,4 +46,4 @@ BattleCommand_bugbite:
 	call StdBattleTextbox
 	call ConsumeOpponentItem
 	ld hl, NothingHappenedText
-	jp StdBattleTextbox
+	jmp StdBattleTextbox

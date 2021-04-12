@@ -24,7 +24,7 @@ BattleIntroSlidingPics:
 	ld a, %11100100
 	call DmgToCgbBGPals
 	lb de, %11100100, %11100100
-	jp DmgToCgbObjPals
+	jmp DmgToCgbObjPals
 
 .subfunction2
 	lb de, $90, $72

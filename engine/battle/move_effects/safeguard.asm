@@ -13,11 +13,11 @@ BattleCommand_safeguard:
 	ld [hl], a
 	call AnimateCurrentMove
 	ld hl, CoveredByVeilText
-	jp StdBattleTextbox
+	jmp StdBattleTextbox
 
 .failed
 	call AnimateFailedMove
-	jp PrintButItFailed
+	jmp PrintButItFailed
 
 SafeCheckSafeguard:
 	ldh a, [hBattleTurn]
@@ -40,4 +40,4 @@ BattleCommand_checksafeguard:
 	call BattleCommand_movedelay
 	ld hl, SafeguardProtectText
 	call StdBattleTextbox
-	jp EndMoveEffect
+	jmp EndMoveEffect

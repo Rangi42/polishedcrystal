@@ -20,7 +20,7 @@ rept 4
 	call LoadHLPaletteIntoDE
 endr
 	call InitPartyMenuOBPals
-	jp WipeAttrMap
+	jmp WipeAttrMap
 
 ApplyHPBarPals:
 	ld a, [wWhichHPBar]
@@ -70,7 +70,7 @@ ApplyHPBarPals:
 .done
 	lb bc, 2, 8
 	ld a, e
-	jp FillBoxWithByte
+	jmp FillBoxWithByte
 
 LoadPlayerStatusIconPalette:
 	ld a, [wPlayerSubStatus2]
@@ -83,7 +83,7 @@ LoadPlayerStatusIconPalette:
 	add hl, bc
 	ld de, wBGPals1 palette PAL_BATTLE_BG_STATUS + 2
 	ld bc, 2
-	jp FarCopyColorWRAM
+	jmp FarCopyColorWRAM
 
 LoadEnemyStatusIconPalette:
 	ld a, [wEnemySubStatus2]
@@ -96,7 +96,7 @@ LoadEnemyStatusIconPalette:
 	add hl, bc
 	ld de, wBGPals1 palette PAL_BATTLE_BG_STATUS + 4
 	ld bc, 2
-	jp FarCopyColorWRAM
+	jmp FarCopyColorWRAM
 
 LoadBattleCategoryAndTypePals:
 	ld a, [wPlayerMoveStruct + MOVE_CATEGORY]
@@ -130,7 +130,7 @@ LoadCategoryAndTypePals:
 	inc de
 	inc de
 	ld bc, 2
-	jp FarCopyColorWRAM
+	jmp FarCopyColorWRAM
 
 LoadKeyItemIconPalette:
 	ld a, [wCurKeyItem]
@@ -163,7 +163,7 @@ LoadIconPalette:
 	call FarCopyColorWRAM
 	ld hl, BlackPalette
 	ld bc, 2
-	jp FarCopyColorWRAM
+	jmp FarCopyColorWRAM
 
 LoadTMHMIconPalette:
 	ld a, [wNamedObjectIndexBuffer]
@@ -180,7 +180,7 @@ endr
 	call FarCopyColorWRAM
 	ld hl, BlackPalette
 	ld bc, 2
-	jp FarCopyColorWRAM
+	jmp FarCopyColorWRAM
 
 LoadStatsScreenPals:
 	ldh a, [rSVBK]
@@ -217,21 +217,6 @@ LoadStatsScreenPals:
 	call ApplyPals
 	ld a, $1
 	ret
-
-LoadMailPalettes:
-	ld l, e
-	ld h, 0
-	add hl, hl
-	add hl, hl
-	add hl, hl
-	ld de, MailPals
-	add hl, de
-	ld de, wBGPals1
-	ld bc, 1 palettes
-	call FarCopyColorWRAM
-	call ApplyPals
-	call WipeAttrMap
-	jp ApplyAttrMap
 
 LoadHLPaletteIntoDE:
 	ld c, $8
@@ -341,7 +326,7 @@ endc
 	pop af
 	ldh [rSVBK], a
 
-	jp PopAFBCDEHL
+	jmp PopAFBCDEHL
 
 WipeAttrMap:
 	hlcoord 0, 0, wAttrMap
@@ -354,7 +339,22 @@ ApplyPals:
 	ld hl, wBGPals1
 	ld de, wBGPals2
 	ld bc, 16 palettes
-	jp FarCopyColorWRAM
+	jmp FarCopyColorWRAM
+
+LoadMailPalettes:
+	ld l, e
+	ld h, 0
+	add hl, hl
+	add hl, hl
+	add hl, hl
+	ld de, MailPals
+	add hl, de
+	ld de, wBGPals1
+	ld bc, 1 palettes
+	call FarCopyColorWRAM
+	call ApplyPals
+	call WipeAttrMap
+	; fallthrough
 
 ApplyAttrMap:
 	ldh a, [rLCDC]
@@ -418,7 +418,7 @@ ApplyPartyMenuHPPals:
 .done
 	lb bc, 2, 8
 	ld a, e
-	jp FillBoxWithByte
+	jmp FillBoxWithByte
 
 SetPartyMenuPal:
 ; Writes mon icon color a to palette in de
@@ -428,20 +428,20 @@ SetPartyMenuPal:
 	rst AddNTimes
 	pop bc
 	ld bc, 1 palettes
-	jp FarCopyColorWRAM
+	jmp FarCopyColorWRAM
 
 InitPartyMenuOBPals:
 	ld hl, PartyMenuOBPals
 	ld de, wOBPals1
 	ld bc, 8 palettes
-	jp FarCopyColorWRAM
+	jmp FarCopyColorWRAM
 
 InitPokegearPalettes:
 ; This is needed because the regular palette is dark at night.
 	ld hl, PokegearOBPals
 	ld de, wOBPals1
 	ld bc, 2 palettes
-	jp FarCopyColorWRAM
+	jmp FarCopyColorWRAM
 
 GetBattlemonBackpicPalettePointer:
 	push de
@@ -551,7 +551,7 @@ LoadPokemonPalette:
 	; load palette in BG 7
 	ld de, wBGPals1 palette 7 + 2
 	ld bc, 4
-	jp FarCopyColorWRAM
+	jmp FarCopyColorWRAM
 
 LoadPartyMonPalette:
 	; bc = personality
@@ -578,7 +578,7 @@ LoadPartyMonPalette:
 	; vary colors by DVs
 	call CopyDVsToColorVaryDVs
 	ld hl, wBGPals1 palette PAL_BG_TEXT + 2
-	jp VaryColorsByDVs
+	jmp VaryColorsByDVs
 
 LoadTrainerPalette:
 	; a = class
@@ -588,7 +588,7 @@ LoadTrainerPalette:
 	; load palette in BG 7
 	ld de, wBGPals1 palette PAL_BG_TEXT + 2
 	ld bc, 4
-	jp FarCopyColorWRAM
+	jmp FarCopyColorWRAM
 
 LoadPaintingPalette:
 	; a = class
@@ -598,7 +598,7 @@ LoadPaintingPalette:
 	; load palette in BG 7
 	ld de, wBGPals1 palette PAL_BG_TEXT
 	ld bc, 8
-	jp FarCopyColorWRAM
+	jmp FarCopyColorWRAM
 
 InitCGBPals::
 	ld a, $1
@@ -791,7 +791,7 @@ LoadMapPals:
 .morn_day
 	ld de, wBGPals1 palette 6 + 2
 	ld bc, 4
-	jp FarCopyColorWRAM
+	jmp FarCopyColorWRAM
 
 INCLUDE "data/maps/environment_colors.asm"
 

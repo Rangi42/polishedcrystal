@@ -95,7 +95,7 @@ _AIChooseMove:
 	; Wildmons choose moves at random
 	ld a, [wBattleMode]
 	dec a
-	jp z, .DecrementScores
+	jmp z, .DecrementScores
 
 ; Apply AI scoring layers depending on the trainer class.
 .ApplyLayers:

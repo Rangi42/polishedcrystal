@@ -27,7 +27,7 @@ _DoFadePalettes::
 	and a
 	jr nz, .has_delay
 	call SetPalettes
-	jp .done
+	jmp .done
 
 .has_delay
 	ld a, [wPalFadeMode]
@@ -149,14 +149,14 @@ _DoFadePalettes::
 	ld a, [wPalFadeDelayFrames]
 	dec a
 	ld [wPalFadeDelayFrames], a
-	jp nz, .outer_loop
+	jmp nz, .outer_loop
 .done
 	pop bc
 	ld a, [wPalFadeMode]
 	bit PALFADE_FLASH_F, a
 	res PALFADE_FLASH_F, a
 	ld [wPalFadeMode], a
-	jp nz, .restart_dofade
+	jmp nz, .restart_dofade
 	pop de
 	pop hl
 	pop af
@@ -263,4 +263,4 @@ _DoFadePalettes::
 .delay_finished
 	ld c, b
 	ldh [hCGBPalUpdate], a
-	jp DelayFrames
+	jmp DelayFrames

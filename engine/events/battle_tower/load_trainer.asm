@@ -259,7 +259,7 @@ PopulateBattleTowerTeam:
 
 	; Set everything to level BATTLETOWER_FORCED_LEVEL, then we're done.
 	ld a, BATTLETOWER_FORCED_LEVEL
-	jp BT_SetLevel
+	jmp BT_SetLevel
 
 GenerateOpponentTrainer:
 	call BT_GetTierTable
@@ -335,7 +335,7 @@ GenerateOpponentTrainer:
 
 	; Set everything to level BATTLETOWER_FORCED_LEVEL, then we're done.
 	ld a, BATTLETOWER_FORCED_LEVEL
-	jp BT_SetLevel
+	jmp BT_SetLevel
 
 CheckSetRepeats:
 ; Checks set repeats between de array length b and hl array length c.

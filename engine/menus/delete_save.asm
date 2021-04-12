@@ -29,7 +29,7 @@ _DeleteSaveData:
 	ld bc, SRAM_End - SRAM_Begin
 	xor a
 	rst ByteFill
-	jp CloseSRAM
+	jmp CloseSRAM
 
 .Text_ClearAllSaveData:
 	; Clear all save data?
@@ -60,7 +60,7 @@ _ResetInitialOptions:
 	call GetSRAMBank
 	ld a, [wInitialOptions2]
 	ld [sOptions + wInitialOptions2 - wOptions], a ; sInitialOptions2
-	jp CloseSRAM
+	jmp CloseSRAM
 
 .Text_ResetInitialOptions:
 	; Reset the initial game options?

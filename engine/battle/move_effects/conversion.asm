@@ -65,7 +65,7 @@ BattleCommand_conversion:
 
 .fail
 	call AnimateFailedMove
-	jp PrintButItFailed
+	jmp PrintButItFailed
 
 .choose_move
 	push de
@@ -188,7 +188,7 @@ BattleCommand_conversion:
 	farcall GetTypeName
 	call AnimateCurrentMove
 	ld hl, TransformedTypeText
-	jp StdBattleTextbox
+	jmp StdBattleTextbox
 .invalid_selection
 	; If the player chose an invalid move, give an appropriate message.
 	; Otherwise, just loop back to move selection.
@@ -202,5 +202,5 @@ BattleCommand_conversion:
 	; skip move delay after the first selection
 	ldh a, [hBattleTurn]
 	and a
-	jp z, .player_choose_move
-	jp .choose_move
+	jmp z, .player_choose_move
+	jmp .choose_move

@@ -14,13 +14,13 @@ LoadBlindingFlashPalette::
 	ld de, wBGPals1 palette PAL_BG_TEXT
 	ld hl, BlindingFlashPalette
 	ld bc, 1 palettes
-	jp FarCopyColorWRAM
+	jmp FarCopyColorWRAM
 
 LoadLinkTradePalette:
 	ld de, wBGPals1 palette 2
 	ld hl, LinkTradePalette
 	ld bc, 6 palettes
-	jp FarCopyColorWRAM
+	jmp FarCopyColorWRAM
 
 LoadSpecialMapPalette:
 ; Load a special map, landmark, or tileset palette if one applies.
@@ -158,7 +158,7 @@ LoadSpecialMapOBPalette:
 	ld l, c
 	ld c, a
 	ld b, 0
-	jp FarCopyColorWRAM
+	jmp FarCopyColorWRAM
 
 .next
 rept 6

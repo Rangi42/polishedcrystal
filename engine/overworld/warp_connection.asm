@@ -37,13 +37,13 @@ EnterMapConnection:
 ; Return carry if a connection has been entered.
 	ld a, [wPlayerStepDirection]
 	and a
-	jp z, EnterSouthConnection
+	jmp z, EnterSouthConnection
 	dec a
-	jp z, EnterNorthConnection
+	jmp z, EnterNorthConnection
 	dec a
-	jp z, EnterWestConnection
+	jmp z, EnterWestConnection
 	dec a
-	jp z, EnterEastConnection
+	jmp z, EnterEastConnection
 	ret
 
 EnterWestConnection:
@@ -79,7 +79,7 @@ EnterWestConnection:
 	ld [wOverworldMapAnchor], a
 	ld a, h
 	ld [wOverworldMapAnchor + 1], a
-	jp EnteredConnection
+	jmp EnteredConnection
 
 EnterEastConnection:
 	ld a, [wEastConnectedMapGroup]
@@ -114,7 +114,7 @@ EnterEastConnection:
 	ld [wOverworldMapAnchor], a
 	ld a, h
 	ld [wOverworldMapAnchor + 1], a
-	jp EnteredConnection
+	jmp EnteredConnection
 
 EnterNorthConnection:
 	ld a, [wNorthConnectedMapGroup]
@@ -139,7 +139,7 @@ EnterNorthConnection:
 	ld [wOverworldMapAnchor], a
 	ld a, h
 	ld [wOverworldMapAnchor + 1], a
-	jp EnteredConnection
+	jmp EnteredConnection
 
 EnterSouthConnection:
 	ld a, [wSouthConnectedMapGroup]
@@ -308,7 +308,7 @@ LoadMapGraphics:
 
 LoadMapPalettes:
 	ld a, CGB_MAPPALS
-	jp GetCGBLayout
+	jmp GetCGBLayout
 
 RefreshMapSprites:
 	call ClearSprites

@@ -225,7 +225,7 @@ EcruteakPokeCenter1FBillScript:
 	ld a, BANK(sPartyMail)
 	call GetSRAMBank
 	rst CopyBytes
-	jp CloseSRAM
+	jmp CloseSRAM
 
 .EeveeMailOTID:
 	rawchar "Prof.Oak@@"

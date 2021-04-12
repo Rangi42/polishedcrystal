@@ -201,7 +201,7 @@ endc
 ; Play starting sound effect
 	call SFXChannelsOff
 	ld de, SFX_TITLE_SCREEN_ENTRANCE
-	jp PlaySFX
+	jmp PlaySFX
 
 SuicuneFrameIterator:
 	ld hl, wBGPals1 palette 0 + 2

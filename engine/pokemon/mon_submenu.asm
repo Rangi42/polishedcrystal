@@ -15,7 +15,7 @@ MonSubmenu:
 	call MonMenuLoop
 	ld [wMenuSelection], a
 
-	jp ExitMenu
+	jmp ExitMenu
 
 .MenuDataHeader:
 	db $40 ; tile backup
@@ -34,7 +34,7 @@ MonSubmenu:
 	sub b
 	inc a
 	ld [wMenuBorderTopCoord], a
-	jp MenuBox
+	jmp MenuBox
 
 MonMenuLoop:
 .loop
@@ -97,7 +97,7 @@ GetMonMenuString:
 	inc hl
 	ld a, [hl]
 	ld [wd265], a
-	jp GetMoveName
+	jmp GetMoveName
 
 .NotMove:
 	inc hl
@@ -165,12 +165,10 @@ GetMonSubmenuItems:
 .skip2
 	ld a, [wBuffer1]
 	cp NUM_MONMENU_ITEMS
-	jr z, .ok2
+	jr z, TerminateMonSubmenu
 	ld a, MONMENUITEM_CANCEL
 	call AddMonMenuItem
-
-.ok2
-	jp TerminateMonSubmenu
+	jr TerminateMonSubmenu
 
 .egg
 	ld a, MONMENUITEM_STATS
@@ -179,7 +177,7 @@ GetMonSubmenuItems:
 	call AddMonMenuItem
 	ld a, MONMENUITEM_CANCEL
 	call AddMonMenuItem
-	jp TerminateMonSubmenu
+	jr TerminateMonSubmenu
 
 IsFieldMove:
 	ld b, a

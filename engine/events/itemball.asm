@@ -41,7 +41,7 @@ FindItemInBallScript::
 	ld a, [wItemBallItemID]
 	call LoadItemIconForOverworld
 	farcall LoadItemIconPalette
-	jp PrintOverworldItemIcon
+	jmp PrintOverworldItemIcon
 
 FindKeyItemInBallScript::
 	callasm .ReceiveKeyItem
@@ -74,7 +74,7 @@ FindKeyItemInBallScript::
 	ld a, [wItemBallItemID]
 	call LoadKeyItemIconForOverworld
 	farcall LoadKeyItemIconPaletteForOverworld
-	jp PrintOverworldItemIcon
+	jmp PrintOverworldItemIcon
 
 FindTMHMInBallScript::
 	callasm .ReceiveTMHM
@@ -123,4 +123,4 @@ FindTMHMInBallScript::
 	ld a, [wItemBallItemID]
 	call LoadTMHMIconForOverworld
 	farcall LoadTMHMIconPalette
-	jp PrintOverworldItemIcon
+	jmp PrintOverworldItemIcon

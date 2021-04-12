@@ -66,14 +66,14 @@ YellowForest_OverheadBridgeAsm:
 	changebridgeblock 34, 16, $9e, YELLOW_FOREST
 	changebridgeblock 36, 16, $9e, YELLOW_FOREST
 	changebridgeblock 38, 16, $9f, YELLOW_FOREST
-	jp BufferScreen
+	jmp BufferScreen
 
 YellowForest_UnderfootBridgeAsm:
 	changebridgeblock 32, 16, $86, YELLOW_FOREST
 	changebridgeblock 34, 16, $97, YELLOW_FOREST
 	changebridgeblock 36, 16, $97, YELLOW_FOREST
 	changebridgeblock 38, 16, $87, YELLOW_FOREST
-	jp BufferScreen
+	jmp BufferScreen
 
 YellowForestBridgeOverheadTrigger:
 	callasm YellowForest_OverheadBridgeAsm
@@ -88,7 +88,7 @@ YellowForestBridgeUnderfootTrigger:
 YellowForest_FinishBridge:
 	ld [wWalkingOnBridge], a
 	ld [wYellowForestSceneID], a ; setscene a
-	jp GenericFinishBridge
+	jmp GenericFinishBridge
 
 GenericTrainerSchoolgirlSarah:
 	generictrainer SCHOOLGIRL, SARAH, EVENT_BEAT_SCHOOLGIRL_SARAH, SchoolgirlSarahSeenText, SchoolgirlSarahBeatenText

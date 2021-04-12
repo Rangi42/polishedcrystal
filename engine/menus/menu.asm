@@ -110,7 +110,7 @@ Place2DMenuItemStrings:
 	or h
 	ret z
 	ld a, [wMenuData_2DMenuFunctionBank]
-	jp FarCall_hl
+	jmp FarCall_hl
 
 Init2DMenuCursorPosition:
 	call GetMenuTextStartCoord
@@ -231,7 +231,7 @@ MenuJoypadLoop:
 	and b
 	jr z, .loop
 .done
-	jp Move2DMenuCursor
+	jmp Move2DMenuCursor
 
 .BGMap_OAM:
 	ldh a, [hOAMUpdate]
@@ -282,13 +282,13 @@ Menu_WasButtonPressed:
 _2DMenuInterpretJoypad:
 	call GetMenuJoypad
 	bit A_BUTTON_F, a
-	jp nz, .a_button
+	jmp nz, .a_button
 	bit B_BUTTON_F, a
-	jp nz, .b_button
+	jmp nz, .b_button
 	bit SELECT_F, a
-	jp nz, .select_button
+	jmp nz, .select_button
 	bit START_F, a
-	jp nz, .start_button
+	jmp nz, .start_button
 	bit D_RIGHT_F, a
 	jr nz, .d_right
 	bit D_LEFT_F, a
@@ -320,7 +320,7 @@ _2DMenuInterpretJoypad:
 	bit 5, a
 	jr nz, .wrap_around_down
 	bit 3, a
-	jp nz, .set_bit_7
+	jr nz, .set_bit_7
 	xor a
 	ret
 
@@ -343,7 +343,7 @@ _2DMenuInterpretJoypad:
 	bit 5, a
 	jr nz, .wrap_around_up
 	bit 2, a
-	jp nz, .set_bit_7
+	jr nz, .set_bit_7
 	xor a
 	ret
 
@@ -367,7 +367,7 @@ _2DMenuInterpretJoypad:
 	bit 4, a
 	jr nz, .wrap_around_left
 	bit 1, a
-	jp nz, .set_bit_7
+	jr nz, .set_bit_7
 	xor a
 	ret
 
@@ -391,7 +391,7 @@ _2DMenuInterpretJoypad:
 	bit 4, a
 	jr nz, .wrap_around_right
 	bit 0, a
-	jp nz, .set_bit_7
+	jr nz, .set_bit_7
 	xor a
 	ret
 
@@ -599,7 +599,7 @@ _ExitMenu::
 	call GetWindowStackTop
 	ld a, l
 	or h
-	jp z, Error_Cant_ExitMenu
+	jr z, Error_Cant_ExitMenu
 	ld a, l
 	ld [wWindowStackPointer], a
 	ld a, h

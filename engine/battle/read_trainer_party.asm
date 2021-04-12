@@ -182,7 +182,7 @@ endr
 ; moves?
 	ld a, [wOtherTrainerType]
 	bit TRNTYPE_MOVES, a
-	jp z, .not_moves
+	jr z, .not_moves
 
 	push hl
 	ld a, [wOTPartyCount]
@@ -300,7 +300,7 @@ endr
 	ld [hl], b
 	pop hl
 .no_stat_recalc
-	jp .loop2
+	jmp .loop2
 
 Battle_GetTrainerName::
 	ld a, [wInBattleTowerBattle]
@@ -308,7 +308,7 @@ Battle_GetTrainerName::
 	ld hl, wOTPlayerName
 	ld a, BANK(Battle_GetTrainerName) ; make FarCopyBytes act like CopyBytes
 	ld [wTrainerGroupBank], a
-	jp nz, CopyTrainerName
+	jr nz, CopyTrainerName
 
 	ld a, [wOtherTrainerID]
 	ld b, a

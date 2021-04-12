@@ -7,7 +7,7 @@ PushOAM::
 ForcePushOAM:
 	lb bc, 40 + 1, LOW(rDMA)
 	ld a, HIGH(wVirtualOAM)
-	jp hPushOAM
+	jmp hPushOAM
 
 DMATransfer::
 ; Return carry if the transfer is completed.
@@ -325,7 +325,7 @@ rept 4
 endr
 	dec b
 	jr nz, .next
-	jp WriteVTileSourceAndDestinationAndReturn
+	jmp WriteVTileSourceAndDestinationAndReturn
 
 .nextopaque
 rept 4

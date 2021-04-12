@@ -7,7 +7,7 @@ NAMINGSCREEN_UNDERLINE  EQU "″"
 _NamingScreen:
 	call DisableSpriteUpdates
 	call NamingScreen
-	jp ReturnToMapWithSpeechTextbox
+	jmp ReturnToMapWithSpeechTextbox
 
 NamingScreen:
 	ld hl, wNamingScreenDestinationPointer
@@ -39,7 +39,7 @@ NamingScreen:
 	ldh [hMapAnims], a
 	pop af
 	ld [wOptions1], a
-	jp ClearJoypad
+	jmp ClearJoypad
 
 .SetUpNamingScreen:
 	call ClearBGPalettes
@@ -54,7 +54,7 @@ NamingScreen:
 	call ApplyTilemapInVBlank
 	call WaitTop
 	call SetPalettes
-	jp NamingScreen_InitNameEntry
+	jmp NamingScreen_InitNameEntry
 
 .GetNamingScreenSetup:
 	ld a, [wNamingScreenType]
@@ -98,7 +98,7 @@ NamingScreen:
 	hlcoord 1, 4
 	ld [hl], "★"
 .not_shiny
-	jp .StoreMonIconParams
+	jmp .StoreMonIconParams
 
 .NicknameStrings:
 	db "'s@"
@@ -116,7 +116,7 @@ NamingScreen:
 	hlcoord 5, 2
 	ld de, .PlayerNameString
 	rst PlaceString
-	jp .StoreSpriteIconParams
+	jmp .StoreSpriteIconParams
 
 .PlayerNameString:
 	db "Your name?@"
@@ -128,7 +128,7 @@ NamingScreen:
 	hlcoord 5, 2
 	ld de, .RivalNameString
 	rst PlaceString
-	jp .StoreSpriteIconParams
+	jmp .StoreSpriteIconParams
 
 .RivalNameString:
 	db "Rival's name?@"
@@ -140,7 +140,7 @@ NamingScreen:
 	hlcoord 5, 2
 	ld de, .TrendyPhraseString
 	rst PlaceString
-	jp .StoreSpriteIconParams
+	jmp .StoreSpriteIconParams
 
 .TrendyPhraseString:
 	db "What's trendy?@"
@@ -163,7 +163,7 @@ NamingScreen:
 	hlcoord 5, 2
 	ld de, .BoxNameString
 	rst PlaceString
-	jp .StoreBoxIconParams
+	jmp .StoreBoxIconParams
 
 .BoxNameString:
 	db "Box name?@"
@@ -184,7 +184,7 @@ NamingScreen:
 	ld [hl], a
 	ld a, c
 	depixel 4, 4, 4, 0
-	jp _InitSpriteAnimStruct
+	jmp _InitSpriteAnimStruct
 
 .StoreMonIconParams:
 	ld a, MON_NAME_LENGTH - 1
@@ -446,7 +446,7 @@ NamingScreenJoypadLoop:
 	jr z, .ready
 	ld de, NameInputUpperQwerty
 .ready
-	jp NamingScreen_ApplyTextInputMode
+	jmp NamingScreen_ApplyTextInputMode
 
 .GetCursorPosition:
 	ld hl, wNamingScreenCursorObjectPointer
@@ -1103,7 +1103,7 @@ INCBIN "gfx/icons/mail2.2bpp.lz"
 	jr z, .ready
 	ld de, MailEntryQwerty_Lowercase
 .ready
-	jp .PlaceMailCharset
+	jmp .PlaceMailCharset
 
 ; called from engine/sprite_anims.asm
 
@@ -1284,5 +1284,5 @@ ComposeMail_GetCursorPosition:
 
 MailComposition_TryAddLastCharacter:
 	ld a, [wNamingScreenLastCharacter]
-	jp MailComposition_TryAddCharacter
+	jmp MailComposition_TryAddCharacter
 

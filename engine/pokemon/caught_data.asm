@@ -1,7 +1,7 @@
 CheckPartyFullAfterContest:
 	ld a, [wContestMon]
 	and a
-	jp z, .DidntCatchAnything
+	jmp z, .DidntCatchAnything
 	ld [wCurPartySpecies], a
 	ld [wCurSpecies], a
 	ld a, [wContestMonForm]
@@ -11,7 +11,7 @@ CheckPartyFullAfterContest:
 	ld hl, wPartyCount
 	ld a, [hl]
 	cp 6
-	jp nc, .TryAddToBox
+	jmp nc, .TryAddToBox
 	inc a
 	ld [hl], a
 	ld c, a
@@ -148,7 +148,7 @@ GiveANickname_YesNo:
 	jr nz, .AlwaysNickname
 	ld hl, TextJump_GiveANickname
 	call PrintText
-	jp YesNoBox
+	jmp YesNoBox
 
 .AlwaysNickname:
 	ld a, TRUE

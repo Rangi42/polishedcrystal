@@ -34,7 +34,7 @@ Special_DayCareMan:
 	ld hl, wDayCareMan
 	set DAYCAREMAN_HAS_MON_F, [hl]
 	call DayCare_DepositPokemonText
-	jp DayCare_InitBreeding
+	jmp DayCare_InitBreeding
 
 .AskWithdrawMon:
 	farcall GetBreedMon1LevelGrowth
@@ -54,7 +54,7 @@ Special_DayCareMan:
 
 .cancel
 	ld a, DAYCARETEXT_13
-	jp PrintDayCareText
+	jmp PrintDayCareText
 
 Special_DayCareLady:
 	ld hl, wDayCareLady
@@ -70,7 +70,7 @@ Special_DayCareLady:
 	ld hl, wDayCareLady
 	set DAYCARELADY_HAS_MON_F, [hl]
 	call DayCare_DepositPokemonText
-	jp DayCare_InitBreeding
+	jmp DayCare_InitBreeding
 
 .AskWithdrawMon:
 	farcall GetBreedMon2LevelGrowth
@@ -91,7 +91,7 @@ Special_DayCareLady:
 
 .cancel
 	ld a, DAYCARETEXT_13
-	jp PrintDayCareText
+	jmp PrintDayCareText
 
 DayCareLadyIntroText:
 	bit DAYCARELADY_ACTIVE_F, [hl]
@@ -101,7 +101,7 @@ DayCareManIntroText:
 	set DAYCAREMAN_ACTIVE_F, [hl]
 DayCarePersonIntroText:
 	call PrintDayCareText
-	jp YesNoBox
+	jmp YesNoBox
 
 DayCareAskDepositPokemon:
 	ld a, [wPartyCount]
@@ -163,7 +163,7 @@ DayCare_DepositPokemonText:
 	ld a, [wCurPartySpecies]
 	call PlayCry
 	ld a, DAYCARETEXT_COME_BACK_LATER
-	jp PrintDayCareText
+	jmp PrintDayCareText
 
 DayCare_AskWithdrawBreedMon:
 	ld a, [wStringBuffer2 + 1]
@@ -220,7 +220,18 @@ DayCare_TakeMoney_PlayCry:
 	ld a, [wCurPartySpecies]
 	call PlayCry
 	ld a, DAYCARETEXT_TOO_SOON
-	jp PrintDayCareText
+	; fallthrough
+
+PrintDayCareText:
+	ld e, a
+	ld d, 0
+	ld hl, DayCareTextTable
+	add hl, de
+	add hl, de
+	ld a, [hli]
+	ld h, [hl]
+	ld l, a
+	jmp PrintText
 
 GetPriceToRetrieveBreedmon:
 	ld a, b
@@ -244,18 +255,7 @@ GetPriceToRetrieveBreedmon:
 	ld [wStringBuffer2 + 4], a
 	ret
 
-PrintDayCareText:
-	ld e, a
-	ld d, 0
-	ld hl, .TextTable
-	add hl, de
-	add hl, de
-	ld a, [hli]
-	ld h, [hl]
-	ld l, a
-	jp PrintText
-
-.TextTable:
+DayCareTextTable:
 	dw .DayCareManIntro ; 00
 	dw .DayCareManOddEgg ; 01
 	dw .DayCareLadyIntro ; 02
@@ -382,7 +382,7 @@ Special_DayCareManOutside:
 	bit DAYCAREMAN_HAS_EGG_F, [hl]
 	jr nz, .AskGiveEgg
 	ld hl, .NotYet
-	jp PrintText
+	jmp PrintText
 
 .NotYet:
 	; Not yet…

@@ -99,4 +99,4 @@ BattleCommand_bounceback:
 	pop af
 	ld [hl], a
 	call UpdateMoveData
-	jp SwitchTurn
+	jmp SwitchTurn

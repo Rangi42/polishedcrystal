@@ -1,6 +1,6 @@
 PlaySpriteAnimationsAndDelayFrame:
 	call PlaySpriteAnimations
-	jp DelayFrame
+	jmp DelayFrame
 
 PlaySpriteAnimations:
 	push hl
@@ -12,7 +12,7 @@ PlaySpriteAnimations:
 	ld [wCurSpriteOAMAddr], a
 	call DoNextFrameForAllSprites
 
-	jp PopAFBCDEHL
+	jmp PopAFBCDEHL
 
 DoNextFrameForAllSprites:
 	ld hl, wSpriteAnimationStructs
@@ -503,7 +503,7 @@ AnimateEndOfExpBar:
 	inc d
 	dec c
 	jr nz, .loop
-	jp ClearSprites
+	jmp ClearSprites
 
 .AnimateFrame:
 	ld hl, wVirtualOAM

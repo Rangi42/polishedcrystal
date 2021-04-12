@@ -27,7 +27,7 @@ _AnimateTileset::
 	inc hl
 
 ; Function address
-	jp IndirectHL
+	jmp IndirectHL
 
 TilesetJohto1Anim::
 	dw vTiles2 tile $14, AnimateWaterTile
@@ -502,7 +502,7 @@ AnimateFountain:
 	ld l, a
 
 	ld sp, hl
-	jp WriteTileToDE
+	jmp WriteTileToDE
 
 .FountainTilePointers:
 	dw .FountainTile1
@@ -539,7 +539,7 @@ AnimateWaterTile:
 	ld h, a
 
 	ld sp, hl
-	jp WriteTileToDE
+	jmp WriteTileToDE
 
 .WaterTileFrames:
 INCBIN "gfx/tilesets/water/johto_water.2bpp"
@@ -561,7 +561,7 @@ AnimateRainPuddleTile:
 	ld h, a
 
 	ld sp, hl
-	jp WriteTileToDE
+	jmp WriteTileToDE
 
 .RainPuddleTileFrames:
 INCBIN "gfx/tilesets/rain/rain_puddle.2bpp"
@@ -583,7 +583,7 @@ AnimateRainWaterTile:
 	ld h, a
 
 	ld sp, hl
-	jp WriteTileToDE
+	jmp WriteTileToDE
 
 .RainWaterTileFrames:
 INCBIN "gfx/tilesets/rain/rain_water.2bpp"
@@ -607,7 +607,7 @@ AnimateKantoWaterTile:
 	ld h, a
 
 	ld sp, hl
-	jp WriteTileToDE
+	jmp WriteTileToDE
 
 .KantoWaterTileFrames:
 INCBIN "gfx/tilesets/water/kanto_water.2bpp"
@@ -638,7 +638,7 @@ AnimateFarawayWaterTile:
 	ld h, a
 
 	ld sp, hl
-	jp WriteTileToDE
+	jmp WriteTileToDE
 
 ForestTreeLeftAnimation:
 	ld a, [wCelebiEvent]
@@ -662,7 +662,7 @@ ForestTreeLeftAnimation:
 
 	ld sp, hl
 	ld hl, vTiles2 tile $50
-	jp WriteTile
+	jmp WriteTile
 
 ForestTreeRightAnimation:
 	ld a, [wCelebiEvent]
@@ -686,7 +686,7 @@ ForestTreeRightAnimation:
 
 	ld sp, hl
 	ld hl, vTiles2 tile $53
-	jp WriteTile
+	jmp WriteTile
 
 ForestTreeLeftAnimation2:
 	ld a, [wCelebiEvent]
@@ -711,7 +711,7 @@ ForestTreeLeftAnimation2:
 
 	ld sp, hl
 	ld hl, vTiles2 tile $50
-	jp WriteTile
+	jmp WriteTile
 
 ForestTreeRightAnimation2:
 	ld a, [wCelebiEvent]
@@ -736,7 +736,7 @@ ForestTreeRightAnimation2:
 
 	ld sp, hl
 	ld hl, vTiles2 tile $53
-	jp WriteTile
+	jmp WriteTile
 
 ForestTreeLeftFrames:
 INCBIN "gfx/tilesets/forest-tree/1.2bpp"
@@ -768,7 +768,7 @@ ForestTree2LeftAnimation:
 
 	ld sp, hl
 	ld hl, vTiles2 tile $5c
-	jp WriteTile
+	jmp WriteTile
 
 ForestTree2RightAnimation:
 	ld a, [wCelebiEvent]
@@ -792,7 +792,7 @@ ForestTree2RightAnimation:
 
 	ld sp, hl
 	ld hl, vTiles2 tile $5f
-	jp WriteTile
+	jmp WriteTile
 
 ForestTree2LeftAnimation2:
 	ld a, [wCelebiEvent]
@@ -817,7 +817,7 @@ ForestTree2LeftAnimation2:
 
 	ld sp, hl
 	ld hl, vTiles2 tile $5c
-	jp WriteTile
+	jmp WriteTile
 
 ForestTree2RightAnimation2:
 	ld a, [wCelebiEvent]
@@ -842,7 +842,7 @@ ForestTree2RightAnimation2:
 
 	ld sp, hl
 	ld hl, vTiles2 tile $5f
-	jp WriteTile
+	jmp WriteTile
 
 ForestTree2LeftFrames:
 INCBIN "gfx/tilesets/forest-tree-2/1.2bpp"
@@ -872,7 +872,7 @@ AnimateFlowerTile:
 
 	ld sp, hl
 	ld hl, vTiles2 tile $03
-	jp WriteTile
+	jmp WriteTile
 
 .FlowerTileFrames:
 INCBIN "gfx/tilesets/flower/1.2bpp"
@@ -898,7 +898,7 @@ AnimateKantoFlowerTile:
 
 	ld sp, hl
 	ld hl, vTiles2 tile $03
-	jp WriteTile
+	jmp WriteTile
 
 .KantoFlowerTileFrames:
 INCBIN "gfx/tilesets/kanto-flower/1.2bpp"
@@ -928,7 +928,7 @@ LavaBubbleAnim1:
 
 	ld sp, hl
 	ld hl, vTiles2 tile $5b
-	jp WriteTile
+	jmp WriteTile
 
 LavaBubbleAnim2:
 	ld hl, sp+$0
@@ -950,7 +950,7 @@ LavaBubbleAnim2:
 
 	ld sp, hl
 	ld hl, vTiles2 tile $38
-	jp WriteTile
+	jmp WriteTile
 
 LavaBubbleAnim3:
 	ld hl, sp+$0
@@ -974,7 +974,7 @@ LavaBubbleAnim3:
 
 	ld sp, hl
 	ld hl, vTiles2 tile $3d
-	jp WriteTile
+	jmp WriteTile
 
 LavaBubbleAnim4:
 	ld hl, sp+$0
@@ -996,7 +996,7 @@ LavaBubbleAnim4:
 
 	ld sp, hl
 	ld hl, vTiles2 tile $3c
-	jp WriteTile
+	jmp WriteTile
 
 LavaBubbleFrames:
 INCBIN "gfx/tilesets/lava/1.2bpp"
@@ -1036,7 +1036,7 @@ AnimateTowerPillarTile:
 	ld h, a
 
 	ld sp, hl
-	jp WriteTileToDE
+	jmp WriteTileToDE
 
 .TowerPillarTileFrameIndexes:
 	db $00, $10, $20, $30, $40, $30, $20, $10
@@ -1067,7 +1067,7 @@ AnimateWhirlpoolTile:
 	ld h, a
 
 	ld sp, hl
-	jp WriteTileToDE
+	jmp WriteTileToDE
 
 AnimateLCDTile:
 	ld hl, sp+$0
@@ -1087,7 +1087,7 @@ AnimateLCDTile:
 
 	ld sp, hl
 	ld hl, vTiles2 tile $6f
-	jp WriteTile
+	jmp WriteTile
 
 .LCDTileFrames:
 INCBIN "gfx/tilesets/lcd/1.2bpp"

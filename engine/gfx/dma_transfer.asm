@@ -8,7 +8,7 @@ HDMATransferTileMapToWRAMBank3::
 	xor a
 	ldh [rVBK], a
 	ld hl, wScratchTileMap
-	jp HDMATransferToWRAMBank3
+	jr HDMATransferToWRAMBank3
 
 HDMATransferAttrMapToWRAMBank3:
 	call CallInSafeGFXMode
@@ -20,7 +20,7 @@ HDMATransferAttrMapToWRAMBank3:
 	ld a, $1
 	ldh [rVBK], a
 	ld hl, wScratchAttrMap
-	jp HDMATransferToWRAMBank3
+	jr HDMATransferToWRAMBank3
 
 ReloadMapPart::
 	call CallInSafeGFXMode

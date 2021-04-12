@@ -9,7 +9,7 @@ ShowLinkBattleParticipants:
 	ld c, 150
 	call DelayFrames
 	call ClearTileMap
-	jp ClearSprites
+	jmp ClearSprites
 
 FindFirstAliveMonAndStartBattle:
 	xor a
@@ -128,7 +128,7 @@ PlayBattleMusic:
 .done
 	call PlayMusic
 
-	jp PopBCDEHL
+	jmp PopBCDEHL
 
 .loadfromarray
 	ld e, 3 ; d is already 0 from 'ld de, MUSIC_NONE'

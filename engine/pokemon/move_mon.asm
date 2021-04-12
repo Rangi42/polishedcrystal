@@ -210,7 +210,7 @@ endr
 	farcall GetTrainerEVsDVsAndPersonality
 	pop hl
 	push hl
-	jp .initializetrainermonstats
+	jmp .initializetrainermonstats
 
 .generateEVsDVsAndPersonality
 	xor a
@@ -257,7 +257,7 @@ endr
 	rst CopyBytes
 	pop de
 	pop bc
-	jp .initializetrainermonstats
+	jmp .initializetrainermonstats
 
 .random_dvs
 ; Random DVs
@@ -765,7 +765,7 @@ RetrieveBreedmon:
 
 Special_HyperTrain:
 	farcall SelectMonFromParty
-	jp c, .nope
+	jmp c, .nope
 	ld a, MON_IS_EGG
 	call GetPartyParamLocation
 	bit MON_IS_EGG_F, [hl]
@@ -1358,7 +1358,7 @@ CalcPkmnStatC:
 	ldh [hMultiplicand + 1], a
 	ldh a, [hQuotient + 2]
 	ldh [hMultiplicand + 2], a
-	jp PopBCDEHL
+	jmp PopBCDEHL
 
 GetNatureStatMultiplier::
 ; a points to Nature
@@ -1454,7 +1454,7 @@ GivePoke::
 	push bc
 	ld a, b
 	and a
-	jp nz, .trainer_data
+	jmp nz, .trainer_data
 	ld a, [wTempMonForm]
 	bit MON_IS_EGG_F, a
 	jr z, .not_egg
@@ -1486,7 +1486,7 @@ GivePoke::
 	ld d, PARTYMON
 	jr nc, .added
 	call .SetUpBoxMon
-	jp c, .FailedToGiveMon
+	jmp c, .FailedToGiveMon
 	ld d, BOXMON
 
 .added
@@ -1562,7 +1562,7 @@ GivePoke::
 	jr nz, .egg_sent
 	ld hl, GiftMonSentToPCText
 .egg_sent
-	jp PrintText
+	jmp PrintText
 
 .trainer_data
 	ld de, wTempMonForm
@@ -1618,10 +1618,10 @@ GivePoke::
 	farcall SetGiftMonCaughtData
 	call AddTempMonToParty
 	ld b, PARTYMON
-	jp nc, .skip_nickname
+	jmp nc, .skip_nickname
 	call .SetUpBoxMon
 	ld b, d
-	jp nc, .skip_nickname
+	jmp nc, .skip_nickname
 
 .FailedToGiveMon:
 	pop bc
@@ -1705,4 +1705,4 @@ InitNickname:
 	pop hl
 	ld de, wStringBuffer1
 	call InitName
-	jp ExitAllMenus
+	jmp ExitAllMenus

@@ -21,7 +21,7 @@ DrawPlayerHP:
 	ld e, a
 	ld a, 6
 	ld d, a
-	jp .fainted
+	jr .fainted
 
 .at_least_1_hp
 	ld a, [wTempMonMaxHP]
@@ -111,7 +111,7 @@ endr
 	ld de, wTempMonSpclDef
 	call .PrintStat
 	ld de, wTempMonSpeed
-	jp PrintNum
+	jmp PrintNum
 
 .PrintStat:
 	push hl
@@ -221,7 +221,7 @@ PrintStatDifferences:
 	pop bc
 	pop de
 	call .PrintStats
-	jp WaitPressAorB_BlinkCursor
+	jmp WaitPressAorB_BlinkCursor
 
 .PrintStatNames:
 	ld a, [wStringBuffer3 + 14]
@@ -333,7 +333,7 @@ GetShininess:
 	dec a
 	jr nz, .other
 	ld a, ERR_OLDBOX
-	jp Crash
+	jmp Crash
 
 .other
 ; 3: Other
@@ -388,7 +388,7 @@ GetGender:
 	dec a
 	jr nz, .other
 	ld a, ERR_OLDBOX
-	jp Crash
+	jmp Crash
 
 .other
 ; 3: Other (used for breeding, possibly elsewhere)

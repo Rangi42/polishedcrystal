@@ -60,18 +60,18 @@ BattleCommand_sleeptalk:
 .charging
 	call LoadMoveAnim
 	call UpdateMoveData
-	jp ResetTurn
+	jmp ResetTurn
 
 .fail
 	call AnimateFailedMove
-	jp TryPrintButItFailed
+	jmp TryPrintButItFailed
 
 .safely_check_has_usable_move
 	push hl
 	push de
 	push bc
 	call .check_has_usable_move
-	jp PopBCDEHL
+	jmp PopBCDEHL
 
 .check_has_usable_move
 	dec hl

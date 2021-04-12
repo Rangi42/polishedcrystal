@@ -136,13 +136,13 @@ EvolutionAnimation:
 	ret c
 
 	ld a, [wPlayerHPPal]
-	jp PlayCry
+	jmp PlayCry
 
 .GetColoredCGBLayout:
 	ld c, FALSE
 .GetCGBLayout:
 	ld a, CGB_EVOLUTION
-	jp GetCGBLayout
+	jmp GetCGBLayout
 
 .LoadFrontpic:
 	call GetBaseData ; [wCurForm] is already set
@@ -239,7 +239,7 @@ EvolutionAnimation:
 	call GetPartyLocation
 	ld b, h
 	ld c, l
-	jp CheckFaintedFrzSlp
+	jmp CheckFaintedFrzSlp
 
 .PlayEvolvedSFX:
 	ld a, [wEvolutionCanceled]
@@ -329,7 +329,7 @@ EvolutionAnimation:
 	dec c
 	jr nz, .loop6
 	pop bc
-	jp DelayFrame
+	jmp DelayFrame
 
 .GFX:
 INCBIN "gfx/evo/bubble_large.2bpp"

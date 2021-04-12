@@ -368,7 +368,7 @@ Special_MagikarpHouseSign:
 	ld [wMagikarpLengthMmLo], a
 	call PrintMagikarpLength
 	ld hl, .CurrentRecordtext
-	jp PrintText
+	jmp PrintText
 
 .CurrentRecordtext:
 	; "CURRENT RECORD"

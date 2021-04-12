@@ -30,7 +30,7 @@ GetCardPic:
 .ok
 	ld de, vTiles2 tile $00
 	lb bc, BANK("Trainer Card Pics"), 5 * 7
-	jp DecompressRequest2bpp
+	jmp DecompressRequest2bpp
 
 GetPlayerBackpic:
 	ld hl, ChrisBackpic
@@ -41,7 +41,7 @@ GetPlayerBackpic:
 .ok
 	ld de, vTiles2 tile $31
 	lb bc, BANK("Trainer Backpics"), 6 * 6
-	jp DecompressRequest2bpp
+	jmp DecompressRequest2bpp
 
 HOF_LoadTrainerFrontpic:
 	call ApplyTilemapInVBlank

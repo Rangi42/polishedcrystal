@@ -47,7 +47,7 @@ DisplayUsedMoveText:
 	ld hl, UsedMoveInsteadText
 .ok
 	call StdBattleTextbox
-	jp ApplyTilemapInVBlank
+	jmp ApplyTilemapInVBlank
 
 UpdateUsedMoves:
 ; append move a to wPlayerUsedMoves unless it has already been used

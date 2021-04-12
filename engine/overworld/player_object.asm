@@ -15,7 +15,7 @@ BlankScreen:
 	ld a, $7
 	rst ByteFill
 	call ApplyAttrAndTilemapInVBlank
-	jp SetPalettes
+	jmp SetPalettes
 
 SpawnPlayer:
 	ld a, -1
@@ -59,6 +59,17 @@ PlayerObjectTemplate:
 	def_object_events (no db)
 	object_event -4, -4, SPRITE_CHRIS, SPRITEMOVEDATA_PLAYER, 15, 15, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, 0, -1
 
+PlayerSpawn_ConvertCoords:
+	push bc
+	ld a, [wXCoord]
+	add 4
+	ld d, a
+	ld a, [wYCoord]
+	add 4
+	ld e, a
+	pop bc
+	; fallthrough
+
 CopyDECoordsToMapObject::
 	push de
 	ld a, b
@@ -71,17 +82,6 @@ CopyDECoordsToMapObject::
 	add hl, bc
 	ld [hl], e
 	ret
-
-PlayerSpawn_ConvertCoords:
-	push bc
-	ld a, [wXCoord]
-	add 4
-	ld d, a
-	ld a, [wYCoord]
-	add 4
-	ld e, a
-	pop bc
-	jp CopyDECoordsToMapObject
 
 WritePersonXY::
 	ld a, b
@@ -216,7 +216,7 @@ CopyMapObjectToObjectStruct:
 	ld a, [hl]
 	ld [wTempObjectCopyRadius], a
 
-	jp CopyTempObjectToObjectStruct
+	jmp CopyTempObjectToObjectStruct
 
 InitializeVisibleSprites:
 	ld bc, wMapObjects + MAPOBJECT_LENGTH
@@ -573,7 +573,7 @@ TrainerWalkToPlayer:
 	call .GetPathToPlayer
 	call DecrementMovementBufferCount
 	ld a, movement_step_end
-	jp AppendToMovementBuffer
+	jmp AppendToMovementBuffer
 
 .GetPathToPlayer:
 	push de
@@ -616,14 +616,14 @@ TrainerWalkToPlayer:
 	ld d, a
 
 	pop af
-	jp ComputePathToWalkToPlayer
+	jmp ComputePathToWalkToPlayer
 
 Special_SurfStartStep:
 	call InitMovementBuffer
 	call .GetMovementData
 	call AppendToMovementBuffer
 	ld a, movement_step_end
-	jp AppendToMovementBuffer
+	jmp AppendToMovementBuffer
 
 .GetMovementData:
 	ld a, [wPlayerDirection]
@@ -738,7 +738,12 @@ GetRelativeFacing::
 	add hl, bc
 	ld a, [hl]
 	cp NUM_OBJECT_STRUCTS
-	jr nc, .carry
+	jr c, .continue
+.carry
+	scf
+	ret
+
+.continue
 	ld d, a
 	ld a, e
 	call GetMapObject
@@ -748,14 +753,7 @@ GetRelativeFacing::
 	cp NUM_OBJECT_STRUCTS
 	jr nc, .carry
 	ld e, a
-	jp .GetFacing_e_relativeto_d
 
-.carry
-	scf
-	ret
-
-.GetFacing_e_relativeto_d:
-; Determines which way object e would have to turn to face object d.  Returns carry if it's impossible.
 ; load the coordinates of object d into bc
 	ld a, d
 	call GetObjectStruct

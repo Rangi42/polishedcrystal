@@ -129,4 +129,4 @@ _Divide::
 	ret
 .div0
 	ld a, ERR_DIV_ZERO
-	jp Crash
+	jmp Crash

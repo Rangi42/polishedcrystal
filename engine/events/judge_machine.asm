@@ -51,7 +51,7 @@ JudgeMachine:
 .cancel
 	ld hl, NewsMachineCancelText
 .done
-	jp PrintText
+	jmp PrintText
 
 NewsMachineOffText:
 	text "It's the #mon"
@@ -358,7 +358,7 @@ JudgeSystem::
 	ld a, [hl]
 	ld [wCurPartySpecies], a
 	call ClearSpriteAnims
-	jp .restart
+	jmp .restart
 
 .EVHeading:
 	db "Effort   @"
@@ -383,7 +383,7 @@ JudgeSystem::
 	add hl, de
 	pop de
 	lb bc, 2, 3
-	jp PrintNum
+	jmp PrintNum
 
 .HP:  db "HP@"
 .Atk: db "Atk@"
@@ -406,14 +406,14 @@ JudgeSystem::
 	rst PlaceString
 ; Render the chart when this returns (bc is on the stack)
 	ld b, 2
-	jp SafeCopyTilemapAtOnce
+	jmp SafeCopyTilemapAtOnce
 
 SparkleMaxStat:
 ; Show a sparkle sprite at (d, e) if a is 255
 	inc a
 	ret nz
 	ld a, SPRITE_ANIM_INDEX_MAX_STAT_SPARKLE
-	jp _InitSpriteAnimStruct
+	jmp _InitSpriteAnimStruct
 
 RenderEVChart:
 ; Read the EVs and round them up to the nearest 4
@@ -1007,7 +1007,7 @@ DrawRadarPointBC:
 	and $7 << 3
 	xor $c6 ^ ($7 << 3) ; this is 'xor $fe', so 'cpl / dec a' would also work
 	ldh [hBitwiseOpcode], a
-	jp hBitwiseOperation
+	jmp hBitwiseOperation
 
 atk_y_coords: MACRO
 	db 47, 46, 46, 45, 45, 44, 43, 43, 42, 42, 41, 40, 40, 39, 39, 38, 37, 37, 36, 36

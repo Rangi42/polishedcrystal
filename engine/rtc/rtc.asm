@@ -51,7 +51,7 @@ endc
 	xor a
 	ld [sRTCStatusFlags], a
 	; clean up
-	jp CloseSRAM
+	jmp CloseSRAM
 
 StartClock::
 	; read the current clock time into the cache in HRAM
@@ -82,7 +82,7 @@ else
 	res 6, a
 	ld [MBC3RTC], a
 	; remember to switch off the SRAM
-	jp CloseSRAM
+	jmp CloseSRAM
 endc
 
 _FixDays:
@@ -97,7 +97,7 @@ _FixDays:
 .set_bit_7
 	; Day count exceeds 16383
 	ld a, %10000000
-	jp RecordRTCStatus ; set bit 7 on sRTCStatusFlags
+	jmp RecordRTCStatus ; set bit 7 on sRTCStatusFlags
 
 ClockContinue:
 	call CheckRTCStatus

@@ -68,7 +68,7 @@ StartMenu::
 	call ExitMenu
 .ReturnEnd2:
 	call CloseText
-	jp UpdateTimePals
+	jmp UpdateTimePals
 
 .GetInput:
 ; Return carry on exit, and no-carry on selection.
@@ -118,7 +118,7 @@ StartMenu::
 	call .DrawBugContestStatus
 	call UpdateSprites
 	call FinishExitMenu
-	jp .Reopen
+	jmp .Reopen
 
 .MenuDataHeader:
 	db $40 ; tile backup
@@ -166,7 +166,7 @@ StartMenu::
 .OpenMenu:
 	ld a, [wMenuSelection]
 	call .GetMenuAccountTextPointer
-	jp IndirectHL
+	jmp IndirectHL
 
 .MenuString:
 	push de

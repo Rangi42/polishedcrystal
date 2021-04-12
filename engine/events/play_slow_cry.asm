@@ -25,4 +25,4 @@ PlaySlowCryA:
 	ld a, h
 	ld [wCryLength + 1], a
 	farcall _PlayCryHeader
-	jp WaitSFX
+	jmp WaitSFX

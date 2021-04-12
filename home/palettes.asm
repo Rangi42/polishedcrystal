@@ -90,7 +90,7 @@ DmgToCgbBGPals::
 	pop af
 	ldh [rSVBK], a
 
-	jp PopAFBCDEHL
+	jmp PopAFBCDEHL
 
 DmgToCgbObjPals::
 ; exists to forego reinserting cgb-converted image data
@@ -127,7 +127,7 @@ DmgToCgbObjPals::
 
 	pop af
 	ldh [rSVBK], a
-	jp PopBCDEHL
+	jmp PopBCDEHL
 
 DmgToCgbObjPal0::
 	ldh [rOBP0], a
@@ -153,7 +153,7 @@ DmgToCgbObjPal0::
 	pop af
 	ldh [rSVBK], a
 
-	jp PopAFBCDEHL
+	jmp PopAFBCDEHL
 
 DmgToCgbObjPal1::
 	ldh [rOBP1], a
@@ -179,7 +179,7 @@ DmgToCgbObjPal1::
 	pop af
 	ldh [rSVBK], a
 
-	jp PopAFBCDEHL
+	jmp PopAFBCDEHL
 
 CopyPals::
 ; copy c palettes in order b from de to hl
@@ -258,4 +258,4 @@ Special_ReloadSpritesNoPalettes::
 	ldh [rSVBK], a
 	ld a, 1
 	ldh [hCGBPalUpdate], a
-	jp DelayFrame
+	jmp DelayFrame

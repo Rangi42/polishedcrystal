@@ -36,7 +36,7 @@ _Displaypic:
 	lb bc, 7, 7
 	predef PlaceGraphic
 	ld b, 1
-	jp SafeCopyTilemapAtOnce
+	jmp SafeCopyTilemapAtOnce
 
 Trainerpic::
 	ld hl, PokepicMenuDataHeader
@@ -76,7 +76,7 @@ Paintingpic::
 	ld a, [wTrainerClass]
 	ld de, vTiles1
 	farcall GetPaintingPic
-	jp _Displaypic
+	jr _Displaypic
 
 ClosePokepic::
 	ld hl, PokepicMenuDataHeader

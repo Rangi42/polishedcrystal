@@ -38,6 +38,6 @@ GetLandmarkName::
 	dec c
 	jr nz, .copy
 
-	jp PopBCDEHL
+	jmp PopBCDEHL
 
 INCLUDE "data/maps/landmarks.asm"

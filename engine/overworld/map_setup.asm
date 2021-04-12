@@ -10,7 +10,7 @@ RunMapSetupScript::
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
-	jp ReadMapSetupScript
+	jmp ReadMapSetupScript
 
 INCLUDE "data/maps/setup_scripts.asm"
 
@@ -160,7 +160,7 @@ CheckUpdatePlayerSprite:
 	call .CheckSurfing2
 	ret nc
 .ok
-	jp UpdatePlayerSprite
+	jmp UpdatePlayerSprite
 
 .CheckBiking:
 	and a
@@ -221,7 +221,7 @@ CheckUpdatePlayerSprite:
 
 FadeOutMapMusic:
 	ld a, 6
-	jp SkipMusic
+	jmp SkipMusic
 
 ApplyMapPalettes:
 	farjp _UpdateTimePals
@@ -241,7 +241,7 @@ ForceMapMusic:
 	ld a, $88
 	ld [wMusicFade], a
 .notbiking
-	jp TryRestartMapMusic
+	jmp TryRestartMapMusic
 
 DecompressMetatiles:
 	call TilesetUnchanged
@@ -264,7 +264,7 @@ DecompressMetatiles:
 
 .done
 	ld a, MAPCALLBACK_BLOCKS
-	jp RunMapCallback
+	jmp RunMapCallback
 
 .Decompress:
 	ld a, [hli]
@@ -276,4 +276,4 @@ DecompressMetatiles:
 	call StackCallInWRAMBankA
 
 .FunctionD000
-	jp FarDecompressInB
+	jmp FarDecompressInB

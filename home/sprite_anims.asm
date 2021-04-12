@@ -22,4 +22,4 @@ ClearSpriteAnims2::
 	push bc
 	push af
 	call ClearSpriteAnims
-	jp PopAFBCDEHL
+	jmp PopAFBCDEHL

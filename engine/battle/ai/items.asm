@@ -27,11 +27,11 @@ AI_MaybeSwitch:
 	rst AddNTimes
 .ok
 	bit SWITCH_OFTEN_F, [hl]
-	jp nz, SwitchOften
+	jmp nz, SwitchOften
 	bit SWITCH_RARELY_F, [hl]
-	jp nz, SwitchRarely
+	jmp nz, SwitchRarely
 	bit SWITCH_SOMETIMES_F, [hl]
-	jp nz, SwitchSometimes
+	jmp nz, SwitchSometimes
 	ret
 
 SwitchOften:
@@ -67,7 +67,7 @@ SwitchOften:
 	inc a
 	; In register 'a' is the number (1-6) of the Pkmn to switch to
 	ld [wEnemySwitchMonIndex], a
-	jp AI_TrySwitch
+	jmp AI_TrySwitch
 
 SwitchRarely:
 	farcall AIWantsSwitchCheck
@@ -101,7 +101,7 @@ SwitchRarely:
 	and $f
 	inc a
 	ld [wEnemySwitchMonIndex], a
-	jp AI_TrySwitch
+	jmp AI_TrySwitch
 
 SwitchSometimes:
 	farcall AIWantsSwitchCheck
@@ -135,7 +135,7 @@ SwitchSometimes:
 	and $f
 	inc a
 	ld [wEnemySwitchMonIndex], a
-	jp AI_TrySwitch
+	jmp AI_TrySwitch
 
 AI_TryItem:
 	; items are not allowed in the BattleTower
@@ -266,25 +266,25 @@ AI_Items:
 
 .FullHeal:
 	call .Status
-	jp c, .DontUse
+	jmp c, .DontUse
 	call EnemyUsedFullHeal
-	jp .Use
+	jmp .Use
 
 .Status:
 	ld a, [wEnemyMonStatus]
 	and a
-	jp z, .DontUse
+	jmp z, .DontUse
 
 	ld a, [bc]
 	bit CONTEXT_USE_F, a
 	jr nz, .StatusCheckContext
 	ld a, [bc]
 	bit ALWAYS_USE_F, a
-	jp nz, .Use
+	jmp nz, .Use
 	call Random
 	cp -1 + 20 percent
-	jp c, .Use
-	jp .DontUse
+	jmp c, .Use
+	jmp .DontUse
 
 .StatusCheckContext:
 	ld a, [wEnemyMonStatus]
@@ -295,139 +295,139 @@ AI_Items:
 	jr c, .FailToxicCheck
 	call Random
 	cp 1 + 50 percent
-	jp c, .Use
+	jmp c, .Use
 .FailToxicCheck:
 	ld a, [wEnemyMonStatus]
 	and 1 << FRZ | SLP
-	jp z, .DontUse
-	jp .Use
+	jmp z, .DontUse
+	jmp .Use
 
 .FullRestore:
 	call .HealItem
-	jp nc, .UseFullRestore
+	jmp nc, .UseFullRestore
 	ld a, [bc]
 	bit CONTEXT_USE_F, a
-	jp z, .DontUse
+	jmp z, .DontUse
 	call .Status
-	jp c, .DontUse
+	jmp c, .DontUse
 
 .UseFullRestore:
 	call EnemyUsedFullRestore
-	jp .Use
+	jmp .Use
 
 .MaxPotion:
 	call .HealItem
-	jp c, .DontUse
+	jmp c, .DontUse
 	call EnemyUsedMaxPotion
-	jp .Use
+	jmp .Use
 
 .HealItem:
 	ld a, [bc]
 	bit CONTEXT_USE_F, a
 	jr nz, .CheckHalfOrQuarterHP
 	call AICheckEnemyHalfHP
-	jp c, .DontUse
+	jmp c, .DontUse
 	ld a, [bc]
 	bit UNKNOWN_USE_F, a
-	jp nz, .CheckQuarterHP
+	jmp nz, .CheckQuarterHP
 	call AICheckEnemyQuarterHP
-	jp nc, .UseHealItem
+	jmp nc, .UseHealItem
 	call Random
 	cp 1 + 50 percent
-	jp c, .UseHealItem
-	jp .DontUse
+	jmp c, .UseHealItem
+	jmp .DontUse
 
 .CheckQuarterHP:
 	call AICheckEnemyQuarterHP
-	jp c, .DontUse
+	jmp c, .DontUse
 	call Random
 	cp -1 + 20 percent
-	jp c, .DontUse
+	jmp c, .DontUse
 	jr .UseHealItem
 
 .CheckHalfOrQuarterHP:
 	call AICheckEnemyHalfHP
-	jp c, .DontUse
+	jmp c, .DontUse
 	call AICheckEnemyQuarterHP
-	jp nc, .UseHealItem
+	jmp nc, .UseHealItem
 	call Random
 	cp -1 + 20 percent
-	jp nc, .DontUse
+	jmp nc, .DontUse
 
 .UseHealItem:
-	jp .Use
+	jmp .Use
 
 .HyperPotion:
 	call .HealItem
-	jp c, .DontUse
+	jmp c, .DontUse
 	ld b, 120
 	call EnemyUsedHyperPotion
-	jp .Use
+	jmp .Use
 
 .SuperPotion:
 	call .HealItem
-	jp c, .DontUse
+	jmp c, .DontUse
 	ld b, 60
 	call EnemyUsedSuperPotion
-	jp .Use
+	jmp .Use
 
 .Potion:
 	call .HealItem
-	jp c, .DontUse
+	jmp c, .DontUse
 	ld b, 20
 	call EnemyUsedPotion
-	jp .Use
+	jmp .Use
 
 .GuardSpec:
 	call .XItem
-	jp c, .DontUse
+	jmp c, .DontUse
 	ld a, [wEnemyGuards]
 	and GUARD_MIST
-	jp nz, .DontUse
+	jmp nz, .DontUse
 	call EnemyUsedGuardSpec
-	jp .Use
+	jmp .Use
 
 .DireHit:
 	call .XItem
-	jp c, .DontUse
+	jmp c, .DontUse
 	call EnemyUsedDireHit
-	jp .Use
+	jmp .Use
 
 .XAttack:
 	call .XItem
 	ret c
 	ld a, X_ATTACK
-	jp EnemyUsedXItem
+	jmp EnemyUsedXItem
 
 .XDefend:
 	call .XItem
 	ret c
 	ld a, X_DEFEND
-	jp EnemyUsedXItem
+	jmp EnemyUsedXItem
 
 .XSpeed:
 	call .XItem
 	ret c
 	ld a, X_SPEED
-	jp EnemyUsedXItem
+	jmp EnemyUsedXItem
 
 .XSpclAtk:
 	call .XItem
 	ret c
 	ld a, X_SPCL_ATK
-	jp EnemyUsedXItem
+	jmp EnemyUsedXItem
 
 .XSpclDef:
 	call .XItem
 	ret c
 	ld a, X_SPCL_DEF
-	jp EnemyUsedXItem
+	jmp EnemyUsedXItem
 
 .XAccuracy:
 	call .XItem
 	ret c
 	ld a, X_ACCURACY
-	jp EnemyUsedXItem
+	jmp EnemyUsedXItem
 
 .XItem:
 	ld a, [wEnemyTurnsTaken]
@@ -483,7 +483,7 @@ EnemyUsedFullHeal:
 	call AIUsedItemSound
 	call AI_HealStatus
 	ld a, FULL_HEAL
-	jp PrintText_UsedItemOn_AND_AIUpdateHUD
+	jmp PrintText_UsedItemOn_AND_AIUpdateHUD
 
 EnemyUsedMaxPotion:
 	ld a, MAX_POTION
@@ -580,7 +580,7 @@ EnemyPotionFinish:
 	ld [wWhichHPBar], a
 	call AIUsedItemSound
 	farcall BattleAnimateHPBar
-	jp AIUpdateHUD
+	jmp AIUpdateHUD
 
 AI_TrySwitch:
 ; Determine whether the AI can switch based on how many Pokemon are still alive.
@@ -606,7 +606,7 @@ AI_TrySwitch:
 
 	ld a, d
 	cp 2
-	jp nc, AI_Switch
+	jmp nc, AI_Switch
 	and a
 	ret
 
@@ -641,14 +641,14 @@ EnemyUsedGuardSpec:
 	call PrintText
 	ld hl, MistText
 	call StdBattleTextbox
-	jp AIUpdateHUD
+	jmp AIUpdateHUD
 
 EnemyUsedDireHit:
 	call AIUsedItemSound
 	ld hl, wEnemySubStatus4
 	set SUBSTATUS_FOCUS_ENERGY, [hl]
 	ld a, DIRE_HIT
-	jp PrintText_UsedItemOn_AND_AIUpdateHUD
+	jmp PrintText_UsedItemOn_AND_AIUpdateHUD
 
 EnemyUsedXItem:
 	ld [wCurEnemyItem], a
@@ -682,14 +682,14 @@ EnemyUsedXItem:
 PrintText_UsedItemOn_AND_AIUpdateHUD:
 	ld [wCurEnemyItem], a
 	call PrintText_UsedItemOn
-	jp AIUpdateHUD
+	jmp AIUpdateHUD
 
 PrintText_UsedItemOn:
 	ld a, [wCurEnemyItem]
 	ld [wNamedObjectIndexBuffer], a
 	call PrintText_CopyItemName
 	ld hl, TextJump_EnemyUsedOn
-	jp PrintText
+	jmp PrintText
 
 PrintText_CopyItemName:
 	call GetItemName

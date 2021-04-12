@@ -26,7 +26,7 @@ AnimateDexSearchSlowpoke:
 	ld [wDexSearchSlowpokeFrame], a
 	call DoDexSearchSlowpokeFrame
 	ld c, 32
-	jp DelayFrames
+	jmp DelayFrames
 
 .FrameIDs:
 	; frame ID, duration
@@ -268,7 +268,7 @@ DisplayDexEntry:
 	inc de
 	pop af
 	hlcoord 2, 11
-	jp FarString
+	jmp FarString
 
 ; Metric conversion code by TPP Anniversary Crystal 251
 ; https://github.com/TwitchPlaysPokemon/tppcrystal251pub/blob/public/main.asm

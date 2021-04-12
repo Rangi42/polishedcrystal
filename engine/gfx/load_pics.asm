@@ -84,7 +84,7 @@ GetFrontpic:
 	call _GetFrontpic
 	pop af
 	ldh [rSVBK], a
-	jp CloseSRAM
+	jmp CloseSRAM
 
 PrepareFrontpic:
 	ld a, [wCurPartySpecies]
@@ -96,13 +96,13 @@ PrepareFrontpic:
 	call _PrepareFrontpic
 	pop af
 	ldh [rSVBK], a
-	jp CloseSRAM
+	jmp CloseSRAM
 
 GetPreparedFrontpic:
 	ld a, BANK(sScratch)
 	call GetSRAMBank
 	call _GetPreparedFrontpic
-	jp CloseSRAM
+	jmp CloseSRAM
 
 FrontpicPredef:
 	ld a, [wCurPartySpecies]
@@ -121,7 +121,7 @@ FrontpicPredef:
 	ldh [rVBK], a
 	pop af
 	ldh [rSVBK], a
-	jp CloseSRAM
+	jmp CloseSRAM
 
 _GetFrontpic:
 	call _PrepareFrontpic
@@ -246,7 +246,7 @@ GetAnimatedFrontpic:
 	ld a, [sScratch]
 	ld c, a
 .no_overflow
-	jp Get2bpp
+	jmp Get2bpp
 
 LoadFrontpicTiles:
 	ld hl, wDecompressScratch

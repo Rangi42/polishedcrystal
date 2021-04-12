@@ -51,7 +51,7 @@ DrawBattleHPBar::
 	ld [hl], a
 
 .done
-	jp PopBCDEHL
+	jmp PopBCDEHL
 
 PrepMonFrontpicFlipped::
 	xor a
@@ -103,7 +103,7 @@ Print8BitNumRightAlign::
 	ld [wd265], a
 	ld de, wd265
 	ld b, PRINTNUM_LEFTALIGN | 1
-	jp PrintNum
+	jmp PrintNum
 
 GetBaseData::
 	push hl
@@ -122,7 +122,7 @@ GetBaseData::
 	ld bc, BASE_DATA_SIZE
 	ld a, BANK(BaseData)
 	call FarCopyBytes
-	jp PopBCDEHL
+	jmp PopBCDEHL
 
 GetNature::
 ; 'b' contains the target Nature to check
@@ -159,7 +159,7 @@ GetLeadAbility::
 	ld hl, wPartyMon1Personality
 	call GetAbility
 	ld a, b
-	jp PopBCDEHL
+	jmp PopBCDEHL
 
 GetAbility::
 ; 'hl' contains the target personality to check (ability and form)
@@ -242,7 +242,7 @@ GetNickname::
 	call SkipNames
 	ld bc, MON_NAME_LENGTH
 	rst CopyBytes
-	jp PopBCDEHL
+	jmp PopBCDEHL
 
 ReverseExtSpecies:
 ; input: bc = extended species index

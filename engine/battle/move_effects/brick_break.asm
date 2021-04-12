@@ -19,4 +19,4 @@ BattleCommand_brickbreak:
 	and SCREENS_LIGHT_SCREEN
 	ret z
 	ld hl, BrokeLightScreenText
-	jp StdBattleTextbox
+	jmp StdBattleTextbox

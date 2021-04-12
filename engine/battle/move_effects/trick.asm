@@ -69,4 +69,4 @@ BattleCommand_trick:
 	farjp EnableAnimations
 .failed
 	call AnimateFailedMove
-	jp PrintButItFailed
+	jmp PrintButItFailed

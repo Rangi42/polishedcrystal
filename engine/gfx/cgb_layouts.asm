@@ -4,7 +4,7 @@ LoadCGBLayout::
 	ld a, [wMemCGBLayout]
 .not_ram
 	cp CGB_PARTY_MENU_HP_PALS
-	jp z, ApplyPartyMenuHPPals
+	jmp z, ApplyPartyMenuHPPals
 	call ResetBGPals
 	dec a
 	call StackJumpTable
@@ -52,7 +52,7 @@ rept 2
 	ld hl, DarkGrayPalette
 	call LoadHLPaletteIntoDE
 endr
-	jp _CGB_FinishBattleScreenLayout
+	jmp _CGB_FinishBattleScreenLayout
 
 _CGB_BattleColors:
 	push bc
@@ -240,7 +240,7 @@ _CGB_FinishBattleScreenLayout:
 	farcall SetAbilityOverlayAttributes
 
 .apply_attr_map
-	jp ApplyAttrMap
+	jmp ApplyAttrMap
 
 _CGB_PokegearPals:
 	ld hl, PokegearPals
@@ -354,7 +354,7 @@ _CGB_StatsScreenHPPals:
 	ld a, $7
 	call FillBoxWithByte
 
-	jp _CGB_FinishLayout
+	jmp _CGB_FinishLayout
 
 _CGB_Pokedex:
 	ld de, wBGPals1
@@ -390,7 +390,7 @@ _CGB_Pokedex:
 	ld bc, 1 palettes
 	call FarCopyColorWRAM
 
-	jp _CGB_FinishLayout
+	jmp _CGB_FinishLayout
 
 .GreenPicPalette:
 if !DEF(MONOCHROME)
@@ -470,7 +470,7 @@ _CGB_SlotMachine:
 	ld a, $7
 	rst ByteFill
 
-	jp _CGB_FinishLayout
+	jmp _CGB_FinishLayout
 
 _CGB_Diploma:
 	ld hl, DiplomaPals
@@ -483,7 +483,7 @@ _CGB_Diploma:
 	call LoadHLPaletteIntoDE
 
 	call WipeAttrMap
-	jp ApplyAttrMap
+	jmp ApplyAttrMap
 
 .DiplomaPalette
 if !DEF(MONOCHROME)
@@ -524,7 +524,7 @@ _CGB_PartyMenu:
 	lb bc, 11, 1
 	ld a, $4
 	call FillBoxWithByte
-	jp ApplyAttrMap
+	jmp ApplyAttrMap
 
 .PartyMenuBGPalette:
 if !DEF(MONOCHROME)
@@ -575,7 +575,7 @@ _CGB_Evolution:
 
 .got_palette
 	call WipeAttrMap
-	jp _CGB_FinishLayout
+	jmp _CGB_FinishLayout
 
 _CGB_MoveList:
 	hlcoord 0, 0, wAttrMap
@@ -610,7 +610,7 @@ _CGB_MoveList:
 	ld bc, 2
 	call FarCopyColorWRAM
 
-	jp _CGB_FinishLayout
+	jmp _CGB_FinishLayout
 
 _CGB_PokedexSearchOption:
 	ld de, wBGPals1
@@ -618,7 +618,7 @@ _CGB_PokedexSearchOption:
 	call LoadHLPaletteIntoDE
 
 	call WipeAttrMap
-	jp _CGB_FinishLayout
+	jmp _CGB_FinishLayout
 
 _CGB_BuyMenu:
 	ld a, [wMartType]
@@ -651,7 +651,7 @@ endr
 	ld a, $7
 	call FillBoxWithByte
 
-	jp _CGB_FinishLayout
+	jmp _CGB_FinishLayout
 
 _CGB_PackPals:
 ; pack pals
@@ -714,7 +714,7 @@ endr
 	ld a, $7
 	call FillBoxWithByte
 
-	jp _CGB_FinishLayout
+	jmp _CGB_FinishLayout
 
 _CGB_TrainerCard:
 	call LoadFirstTwoTrainerCardPals
@@ -742,7 +742,7 @@ _CGB_TrainerCard:
 	inc a ; crystal
 	ld [hl], a
 
-	jp _CGB_FinishLayout
+	jmp _CGB_FinishLayout
 
 _CGB_TrainerCard2:
 	call LoadFirstTwoTrainerCardPals
@@ -825,7 +825,7 @@ _CGB_TrainerCard2:
 	ld a, $7
 	call FillBoxWithByte
 
-	jp _CGB_FinishLayout
+	jmp _CGB_FinishLayout
 
 _CGB_TrainerCard3:
 	call LoadFirstTwoTrainerCardPals
@@ -908,7 +908,7 @@ _CGB_TrainerCard3:
 	ld a, $7
 	call FillBoxWithByte
 
-	jp _CGB_FinishLayout
+	jmp _CGB_FinishLayout
 
 LoadFirstTwoTrainerCardPals:
 	; trainer card
@@ -968,7 +968,7 @@ _CGB_PokedexUnownMode:
 
 	call InitPartyMenuOBPals
 
-	jp _CGB_FinishLayout
+	jmp _CGB_FinishLayout
 
 _CGB_BillsPC:
 	; Get box theme
@@ -1019,7 +1019,7 @@ BillsPC_PreviewTheme:
 	call LoadHLPaletteIntoDE
 	ld hl, .PackPal
 	ld de, wOBPals1 palette 4
-	jp LoadHLPaletteIntoDE
+	jmp LoadHLPaletteIntoDE
 
 .apply_pals
 	farjp BillsPC_SetPals
@@ -1083,7 +1083,7 @@ endc
 	ldh [rSVBK], a
 
 	call WipeAttrMap
-	jp ApplyAttrMap
+	jmp ApplyAttrMap
 
 .UnownPuzzlePalette:
 if !DEF(MONOCHROME)
@@ -1147,7 +1147,7 @@ _CGB_TradeTube:
 	ld hl, .TradeTubeBluePalette
 	call LoadHLPaletteIntoDE
 
-	jp WipeAttrMap
+	jmp WipeAttrMap
 
 .TradeTubeBluePalette:
 if !DEF(MONOCHROME)
@@ -1191,7 +1191,7 @@ _CGB_IntroPals:
 	call FillBoxWithByte
 
 	call ApplyAttrMap
-	jp ApplyPals
+	jmp ApplyPals
 
 .IntroGradientPalette:
 if !DEF(MONOCHROME)
@@ -1212,7 +1212,7 @@ _CGB_PlayerOrMonFrontpicPals:
 	call VaryBGPal0ByTempMonDVs
 	call WipeAttrMap
 	call ApplyAttrMap
-	jp ApplyPals
+	jmp ApplyPals
 
 _CGB_TrainerOrMonFrontpicPals:
 	ld de, wBGPals1
@@ -1223,7 +1223,7 @@ _CGB_TrainerOrMonFrontpicPals:
 	call VaryBGPal0ByTempMonDVs
 	call WipeAttrMap
 	call ApplyAttrMap
-	jp ApplyPals
+	jmp ApplyPals
 
 _CGB_JudgeSystem:
 	; gender icon

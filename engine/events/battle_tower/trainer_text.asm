@@ -67,7 +67,7 @@ BattleTowerText::
 	ld l, c
 	ld h, a
 	bccoord 1, 14
-	jp PlaceWholeStringInBoxAtOnce
+	jmp PlaceWholeStringInBoxAtOnce
 
 INCLUDE "data/trainers/genders.asm"
 

@@ -33,7 +33,7 @@ SetMenuMonIconColor:
 	ld a, [wd265]
 	ld [wCurPartySpecies], a
 	call GetMenuMonIconPalette
-	jp ProcessMenuMonIconColor
+	jmp ProcessMenuMonIconColor
 
 LoadFlyMonColor:
 	push hl
@@ -48,7 +48,7 @@ LoadFlyMonColor:
 	ld a, MON_SHINY
 	call GetPartyParamLocation
 	call GetMenuMonIconPalette
-	jp ProcessMenuMonIconColor
+	jmp ProcessMenuMonIconColor
 
 LoadPartyMenuMonIconColors:
 	push hl
@@ -126,7 +126,7 @@ ProcessMenuMonIconColor:
 	jr nz, .colorIcon
 
 .finish
-	jp PopAFBCDEHL
+	jmp PopAFBCDEHL
 
 GetOverworldMonIconPalette::
 	ld a, [wCurIcon]
@@ -174,7 +174,7 @@ LoadPartyMenuMonIcon:
 	call .SpawnItemIcon
 	call SetPartyMonIconAnimSpeed
 
-	jp PopBCDEHL
+	jmp PopBCDEHL
 
 .SpawnItemIcon:
 	ldh a, [hObjectStructIndexBuffer]
@@ -241,7 +241,7 @@ _InitScreenMonIcon:
 	add hl, bc
 	ld [hl], SPRITE_ANIM_SEQ_NULL
 
-	jp PopBCDEHL
+	jmp PopBCDEHL
 
 LoadTradeAnimationMonIcon:
 	call SetMenuMonIconColor
@@ -249,7 +249,7 @@ LoadTradeAnimationMonIcon:
 	ld [wCurIcon], a
 	ld a, $62
 	ld [wCurIconTile], a
-	jp GetMemIconGFX
+	jmp GetMemIconGFX
 
 InitPartyMenuIcon:
 	ld a, [wCurIconTile]
@@ -364,11 +364,11 @@ Fly_PrepMonIcon:
 PokegearFlyMap_GetMonIcon:
 ; Load species icon into VRAM at tile a
 	call Fly_PrepMonIcon
-	jp GetIconGFX
+	jmp GetIconGFX
 
 FlyFunction_GetMonIcon:
 	call Fly_PrepMonIcon
-	jp GetIcon_a
+	jmp GetIcon_a
 
 GetMemIconGFX:
 	ld a, [wCurIconTile]

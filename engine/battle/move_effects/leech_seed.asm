@@ -14,13 +14,13 @@ BattleCommand_leechseed:
 	set SUBSTATUS_LEECH_SEED, [hl]
 	call AnimateCurrentMove
 	ld hl, WasSeededText
-	jp StdBattleTextbox
+	jmp StdBattleTextbox
 
 .grass
 	call AnimateFailedMove
-	jp PrintDoesntAffect
+	jmp PrintDoesntAffect
 
 .evaded
 	call AnimateFailedMove
 	ld hl, EvadedText
-	jp StdBattleTextbox
+	jmp StdBattleTextbox

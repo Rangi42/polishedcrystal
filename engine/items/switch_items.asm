@@ -25,7 +25,7 @@ SwitchItemsInBag:
 	dec a
 	ld [wSwitchItem], a
 	call TryCombiningSwitchItems
-	jp c, CombineSwitchItems
+	jr c, CombineSwitchItems
 	ld a, [wScrollingMenuCursorPosition]
 	ld c, a
 	ld a, [wSwitchItem]
