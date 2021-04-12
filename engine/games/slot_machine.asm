@@ -768,16 +768,15 @@ Slots_StopReelIgnoreJoypad:
 ReelAction_StopReel1:
 	ld a, [wSlotBias]
 	cp SLOTS_NOMATCH
-	jr z, .NoBias
+	jr z, Slots_StopReel
 	ld hl, wReel1Slot09 - wReel1
 	add hl, bc
 	ld a, [hl]
 	and a
-	jr z, .NoBias
+	jr z, Slots_StopReel
 	dec [hl]
 	call .CheckForBias
 	ret nz
-.NoBias:
 	jr Slots_StopReel
 
 .CheckForBias:
@@ -800,21 +799,18 @@ ReelAction_StopReel2:
 	ld a, [wSlotBuildingMatch]
 	ld hl, wSlotBias
 	cp [hl]
-	jr z, .NoBias
+	jr z, Slots_StopReel
 .nope
 	ld a, [wSlotBias]
 	cp SLOTS_NOMATCH
-	jr z, .NoBias
+	jr z, Slots_StopReel
 	ld hl, wReel1Slot09 - wReel1
 	add hl, bc
 	ld a, [hl]
 	and a
-	jr z, .NoBias
+	jr z, Slots_StopReel
 	dec [hl]
 	ret
-
-.NoBias:
-	jr Slots_StopReel
 
 ReelAction_StopReel3:
 	call Slots_CheckMatchedAllThreeReels
