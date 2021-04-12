@@ -660,8 +660,8 @@ LoadNote:
 	ld a, e
 	sub [hl]
 	ld e, a
-	sbc d
-	add e
+	sbc a
+	add d
 	ld d, a
 	ld hl, wChannel1PitchWheelTarget + 1 - wChannel1
 	add hl, bc
@@ -682,8 +682,8 @@ LoadNote:
 	ld a, [hl]
 	sub e
 	ld e, a
-	sbc d
-	add e
+	sbc a
+	add d
 	ld d, a
 	ld hl, wChannel1PitchWheelTarget + 1 - wChannel1
 	add hl, bc
@@ -708,8 +708,8 @@ LoadNote:
 	ld a, e
 	sub [hl]
 	ld e, a
-	sbc d
-	add e
+	sbc a
+	add d
 	ld d, a
 	; ????
 	ld hl, wChannel1PitchWheelTarget + 1 - wChannel1
@@ -929,8 +929,8 @@ ApplyPitchWheel:
 	ld e, [hl]
 	sub e
 	ld e, a
-	sbc d
-	add e
+	sbc a
+	add d
 	ld d, a
 	; [Channel*Field0x25] *= 2
 	; if rollover: Frequency -= 1
