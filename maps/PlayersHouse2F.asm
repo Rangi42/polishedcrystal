@@ -119,7 +119,7 @@ endr
 	giveitem MINT_LEAF, 99
 	giveitem ODD_SOUVENIR, 10
 	giveitem ARMOR_SUIT, 1
-	; all decorations
+	; all decorations except Diploma
 for x, EVENT_DECO_BED_1, EVENT_DECO_BIG_LAPRAS_DOLL + 1
 	setevent x
 endr

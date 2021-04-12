@@ -7,6 +7,7 @@ DecorationNames:
 	li "Tropic Plant"
 	li "Jumbo Plant"
 	li "Town Map"
+	li "Diploma"
 	li "Super NES"
 	li "Nintendo 64"
 	li "GameCube"

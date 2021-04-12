@@ -254,9 +254,10 @@ FindOwnedPosters:
 
 .posters:
 	db DECO_TOWN_MAP ; 10
-	db DECO_PIKACHU_POSTER ; 11
-	db DECO_CLEFAIRY_POSTER ; 12
-	db DECO_MARILL_POSTER ; 13
+	db DECO_DIPLOMA ; 11
+	db DECO_PIKACHU_POSTER ; 12
+	db DECO_CLEFAIRY_POSTER ; 13
+	db DECO_MARILL_POSTER ; 14
 	db -1
 
 DecoConsoleMenu:
@@ -972,6 +973,7 @@ DecorationDesc_Poster:
 
 DecorationDesc_PosterPointers:
 	dbw DECO_TOWN_MAP, DecorationDesc_TownMapPoster
+	dbw DECO_DIPLOMA, DecorationDesc_Diploma
 	dbw DECO_PIKACHU_POSTER, DecorationDesc_PikachuPoster
 	dbw DECO_CLEFAIRY_POSTER, DecorationDesc_ClefairyPoster
 	dbw DECO_MARILL_POSTER, DecorationDesc_MarillPoster
@@ -983,6 +985,14 @@ DecorationDesc_TownMapPoster:
 	waitbutton
 	special Special_TownMap
 	closetext
+	end
+
+DecorationDesc_Diploma:
+	opentext
+	farwritetext DiplomaText
+	waitbutton
+	special Diploma
+	endtext
 	end
 
 DecorationDesc_PikachuPoster:

@@ -25,6 +25,7 @@ NUM_DECO_TYPES EQU const_value - 1
 	const TROPICPLANT
 	const JUMBOPLANT
 	const TOWN_MAP_POSTER
+	const DIPLOMA
 	const SUPER_NES
 	const NINTENDO_64
 	const GAMECUBE
@@ -97,6 +98,7 @@ ENDM
 ; FindOwnedPosters.posters values (see engine/overworld/decorations.asm)
 	const POSTERS
 	deco  TOWN_MAP
+	deco  DIPLOMA
 	deco  PIKACHU_POSTER
 	deco  CLEFAIRY_POSTER
 	deco  MARILL_POSTER
