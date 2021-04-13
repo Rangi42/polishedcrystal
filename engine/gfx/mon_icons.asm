@@ -33,7 +33,7 @@ SetMenuMonIconColor:
 	ld a, [wd265]
 	ld [wCurPartySpecies], a
 	call GetMenuMonIconPalette
-	jmp ProcessMenuMonIconColor
+	jr ProcessMenuMonIconColor
 
 LoadFlyMonColor:
 	push hl
@@ -48,7 +48,7 @@ LoadFlyMonColor:
 	ld a, MON_SHINY
 	call GetPartyParamLocation
 	call GetMenuMonIconPalette
-	jmp ProcessMenuMonIconColor
+	jr ProcessMenuMonIconColor
 
 LoadPartyMenuMonIconColors:
 	push hl
@@ -243,14 +243,6 @@ _InitScreenMonIcon:
 
 	jmp PopBCDEHL
 
-LoadTradeAnimationMonIcon:
-	call SetMenuMonIconColor
-	ld a, [wd265]
-	ld [wCurIcon], a
-	ld a, $62
-	ld [wCurIconTile], a
-	jmp GetMemIconGFX
-
 InitPartyMenuIcon:
 	ld a, [wCurIconTile]
 	push af
@@ -364,11 +356,19 @@ Fly_PrepMonIcon:
 PokegearFlyMap_GetMonIcon:
 ; Load species icon into VRAM at tile a
 	call Fly_PrepMonIcon
-	jmp GetIconGFX
+	jr GetIconGFX
 
 FlyFunction_GetMonIcon:
 	call Fly_PrepMonIcon
-	jmp GetIcon_a
+	jr GetIcon_a
+
+LoadTradeAnimationMonIcon:
+	call SetMenuMonIconColor
+	ld a, [wd265]
+	ld [wCurIcon], a
+	ld a, $62
+	ld [wCurIconTile], a
+	; fallthrough
 
 GetMemIconGFX:
 	ld a, [wCurIconTile]
@@ -383,10 +383,6 @@ GetIconGFX:
 	add 10
 	ld [wCurIconTile], a
 	ret
-
-HeldItemIcons:
-INCBIN "gfx/icons/mail.2bpp"
-INCBIN "gfx/icons/item.2bpp"
 
 GetIcon_a:
 ; Load icon graphics into VRAM starting from tile a.
@@ -531,3 +527,7 @@ HoldSwitchmonIcon:
 	dec e
 	jr nz, .loop
 	ret
+
+HeldItemIcons:
+INCBIN "gfx/icons/mail.2bpp"
+INCBIN "gfx/icons/item.2bpp"

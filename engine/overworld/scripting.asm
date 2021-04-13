@@ -1042,19 +1042,7 @@ Script_appear:
 	call _CopyObjectStruct
 	ldh a, [hMapObjectIndexBuffer]
 	ld b, 0 ; clear
-	jmp ApplyEventActionAppearDisappear
-
-Script_disappear:
-	call GetScriptByte
-	cp LAST_TALKED
-	jr nz, .ok
-	ldh a, [hLastTalked]
-.ok
-	call DeleteObjectStruct
-	ldh a, [hMapObjectIndexBuffer]
-	ld b, 1 ; set
-	call ApplyEventActionAppearDisappear
-	farjp _UpdateSprites
+	; fallthrough
 
 ApplyEventActionAppearDisappear:
 	push bc
@@ -1074,6 +1062,18 @@ ApplyEventActionAppearDisappear:
 	ret
 .okay
 	jmp EventFlagAction
+
+Script_disappear:
+	call GetScriptByte
+	cp LAST_TALKED
+	jr nz, .ok
+	ldh a, [hLastTalked]
+.ok
+	call DeleteObjectStruct
+	ldh a, [hMapObjectIndexBuffer]
+	ld b, 1 ; set
+	call ApplyEventActionAppearDisappear
+	farjp _UpdateSprites
 
 Script_follow:
 	call GetScriptByte
@@ -1225,7 +1225,7 @@ Script_catchtutorial:
 	farcall CatchTutorial
 	ld a, 1
 	ld [wDontPlayMapMusicOnReload], a
-	jmp Script_reloadmap
+	jr Script_reloadmap
 
 Script_reloadmapafterbattle:
 	farcall PostBattleTasks
@@ -1360,7 +1360,7 @@ Script_farsjump:
 	ld l, a
 	call GetScriptByte
 	ld h, a
-	jmp ScriptJump
+	jr ScriptJump
 
 Script_memjump:
 	call GetScriptByte
@@ -1372,19 +1372,19 @@ Script_memjump:
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
-	jmp ScriptJump
+	jr ScriptJump
 
 Script_iffalse:
 	ldh a, [hScriptVar]
 	and a
-	jmp nz, SkipTwoScriptBytes
+	jr nz, SkipTwoScriptBytes
 	jr Script_sjump
 
 Script_iftrue:
 	ldh a, [hScriptVar]
 	and a
 	jr nz, Script_sjump
-	jmp SkipTwoScriptBytes
+	jr SkipTwoScriptBytes
 
 Script_ifequal:
 	call GetScriptByte
@@ -1414,7 +1414,11 @@ Script_ifless:
 	ldh a, [hScriptVar]
 	cp b
 	jr c, Script_sjump
-	jr SkipTwoScriptBytes
+	; fallthrough
+
+SkipTwoScriptBytes:
+	call GetScriptByte
+	jmp GetScriptByte
 
 Script_jumpstd:
 	call StdScript
@@ -1440,10 +1444,6 @@ StdScript:
 	inc hl
 	ld a, BANK(StdScripts)
 	jmp GetFarWord
-
-SkipTwoScriptBytes:
-	call GetScriptByte
-	jmp GetScriptByte
 
 ScriptJump:
 	ld a, b
@@ -2090,7 +2090,7 @@ Script_setflag:
 	call GetScriptByte
 	ld d, a
 	ld b, SET_FLAG
-	jmp _EngineFlagAction
+	jr _EngineFlagAction
 
 Script_clearflag:
 	call GetScriptByte
@@ -2098,7 +2098,8 @@ Script_clearflag:
 	call GetScriptByte
 	ld d, a
 	ld b, RESET_FLAG
-	jmp _EngineFlagAction
+_EngineFlagAction:
+	farjp EngineFlagAction
 
 Script_checkflag:
 	call GetScriptByte
@@ -2114,9 +2115,6 @@ Script_checkflag:
 .false
 	ldh [hScriptVar], a
 	ret
-
-_EngineFlagAction:
-	farjp EngineFlagAction
 
 Script_wildoff:
 	ld hl, wStatusFlags
@@ -2242,7 +2240,7 @@ Script_newloadmap:
 
 Script_reloadend:
 	call Script_newloadmap
-	jmp Script_end
+	jr Script_end
 
 Script_showtextfaceplayer:
 	call Script_faceplayer

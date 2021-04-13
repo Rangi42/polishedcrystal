@@ -43,6 +43,9 @@ KeyItems_PocketLoop:
 	ld [wMenuCursorX], a
 	jr KeyItems_ShowDescription
 
+_KeyItems_Cancel:
+	farcall ClearKeyItemIcon
+	; fallthrough
 KeyItems_JoypadLoop:
 	call KeyItems_DisplayPocketItems
 	call DoMenuJoypadLoop
@@ -54,17 +57,17 @@ KeyItems_JoypadLoop:
 	ldh [hBGMapMode], a
 	ld a, [w2DMenuFlags2]
 	bit 7, a
-	jmp nz, KeyItems_ScrollPocket
+	jr nz, KeyItems_ScrollPocket
 	ld a, b
 	ld [wMenuJoypad], a
 	bit A_BUTTON_F, a
-	jmp nz, KeyItems_ChooseKeyItem
+	jr nz, KeyItems_ChooseKeyItem
 	bit B_BUTTON_F, a
-	jmp nz, KeyItems_ExitPack
+	jr nz, KeyItems_ExitPack
 	bit D_RIGHT_F, a
-	jmp nz, KeyItems_ExitPocket
+	jr nz, KeyItems_ExitPocket
 	bit D_LEFT_F, a
-	jmp nz, KeyItems_ExitPocket
+	jr nz, KeyItems_ExitPocket
 KeyItems_ShowDescription:
 	call KeyItems_GetCurrentKeyItem
 	hlcoord 0, 12
@@ -72,13 +75,9 @@ KeyItems_ShowDescription:
 	call Textbox
 	ld a, [wCurKeyItem]
 	cp NUM_KEY_ITEMS + 1
-	jr nc, .Cancel
+	jr nc, _KeyItems_Cancel
 	ld [wd265], a
 	farcall UpdateKeyItemIconAndDescription
-	jr KeyItems_JoypadLoop
-
-.Cancel:
-	farcall ClearKeyItemIcon
 	jr KeyItems_JoypadLoop
 
 KeyItems_ChooseKeyItem:

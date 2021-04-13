@@ -587,7 +587,7 @@ OaksPkmnTalk11:
 	hlcoord 9, 14
 	ld de, .pokemon_string
 	ld a, OAKS_POKEMON_TALK_12
-	jmp PlaceRadioString
+	jr PlaceRadioString
 
 .pokemon_string
 	db "#mon@"
@@ -599,7 +599,7 @@ OaksPkmnTalk12:
 	hlcoord 1, 16
 	ld de, .pokemon_channel_string
 	ld a, OAKS_POKEMON_TALK_13
-	jmp PlaceRadioString
+	jr PlaceRadioString
 
 .pokemon_channel_string
 	db "#mon Channel@"
@@ -611,7 +611,14 @@ OaksPkmnTalk13:
 	hlcoord 12, 16
 	ld de, EmptyString
 	ld a, OAKS_POKEMON_TALK_14
-	jmp PlaceRadioString
+	; fallthrough
+
+PlaceRadioString:
+	ld [wCurRadioLine], a
+	ld a, 100
+	ld [wRadioTextDelay], a
+	rst PlaceString
+	ret
 
 OaksPkmnTalk14:
 	ld hl, wRadioTextDelay
@@ -629,13 +636,6 @@ OaksPkmnTalk14:
 	ld [wCurRadioLine], a
 	ld a, 10
 	ld [wRadioTextDelay], a
-	ret
-
-PlaceRadioString:
-	ld [wCurRadioLine], a
-	ld a, 100
-	ld [wRadioTextDelay], a
-	rst PlaceString
 	ret
 
 CopyBottomLineToTopLine:
@@ -772,7 +772,7 @@ CopyDexEntry:
 	call CopyRadioTextToRAM
 	pop hl
 	pop af
-	jmp CopyDexEntryPart2
+	jr CopyDexEntryPart2
 
 CopyDexEntryPart1:
 	ld de, wPokedexShowPointerBank
@@ -1457,7 +1457,7 @@ EvolutionRadio:
 BuenasPassword1:
 ; Determine if we need to be here
 	call BuenasPasswordCheckTime
-	jmp nc, .PlayPassword
+	jr nc, .PlayPassword
 	ld a, [wNumRadioLinesPrinted]
 	and a
 	jmp z, BuenasPassword20

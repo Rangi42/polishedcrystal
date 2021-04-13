@@ -101,17 +101,17 @@ LearnMove:
 
 	ld a, [wBattleMode]
 	and a
-	jmp z, .learned
+	jr z, .learned
 
 	ld a, [wCurPartyMon]
 	ld b, a
 	ld a, [wCurBattleMon]
 	cp b
-	jmp nz, .learned
+	jr nz, .learned
 
 	ld a, [wPlayerSubStatus2]
 	bit SUBSTATUS_TRANSFORMED, a
-	jmp nz, .learned
+	jr nz, .learned
 
 	ld h, d
 	ld l, e
@@ -123,7 +123,7 @@ LearnMove:
 	ld de, wBattleMonPP
 	ld bc, NUM_MOVES
 	rst CopyBytes
-	jmp .learned
+	jr .learned
 
 .cancel
 	ld hl, Text_StopLearning ; Stop learning <MOVE>?

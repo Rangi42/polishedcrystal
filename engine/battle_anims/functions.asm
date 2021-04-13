@@ -499,7 +499,7 @@ BattleAnimFunction_08:
 	add hl, bc
 	ld a, [hl]
 	cp $80
-	jmp c, .SetCoords
+	jr c, .SetCoords
 	call BattleAnim_IncAnonJumptableIndex
 .one
 	call BattleAnim_IncAnonJumptableIndex
@@ -1526,7 +1526,7 @@ Functioncd961:
 	ld hl, BATTLEANIMSTRUCT_PARAM
 	add hl, bc
 	ld [hl], $0
-	jmp Functioncd99a
+	jr Functioncd99a
 
 Functioncd96e:
 	ld hl, BATTLEANIMSTRUCT_XCOORD
@@ -1693,7 +1693,7 @@ BattleAnimFunction_LeechSeed:
 	add hl, bc
 	ld a, [hl]
 	cp $20
-	jmp nc, Functioncda8d
+	jr nc, Functioncda8d
 
 	ld [hl], $40
 	ld a, BATTLEANIMFRAMESET_57
@@ -2203,14 +2203,8 @@ Functioncdced:
 	add hl, bc
 	ld a, [hl]
 	and a
-	jr z, .asm_cdcfa
+	jmp z, DeinitBattleAnimation
 	dec [hl]
-	jmp Functioncdcfe
-
-.asm_cdcfa
-	jmp DeinitBattleAnimation
-
-Functioncdcfe:
 	ld hl, BATTLEANIMSTRUCT_VAR2
 	add hl, bc
 	ld a, [hl]
@@ -3850,7 +3844,7 @@ BattleAnimFunction_4C:
 	add hl, bc
 	ld a, [hl]
 	inc [hl]
-	jmp Functionce6f1
+	jr Functionce6f1
 
 BattleAnimFunction_4F:
 	ld d, $18
@@ -3862,7 +3856,24 @@ BattleAnimFunction_4F:
 	ld hl, BATTLEANIMSTRUCT_PARAM
 	add hl, bc
 	add [hl]
-	jmp Functionce6f1
+	; fallthrough
+
+Functionce6f1:
+	push af
+	push de
+	call Sine
+	sra a
+	sra a
+	ld hl, BATTLEANIMSTRUCT_YOFFSET
+	add hl, bc
+	ld [hl], a
+	pop de
+	pop af
+	call Cosine
+	ld hl, BATTLEANIMSTRUCT_XOFFSET
+	add hl, bc
+	ld [hl], a
+	ret
 
 BattleAnimFunction_4D:
 	ld hl, BATTLEANIMSTRUCT_VAR1
@@ -3884,23 +3895,6 @@ BattleAnimFunction_4D:
 
 .asm_ce6ed
 	jmp DeinitBattleAnimation
-
-Functionce6f1:
-	push af
-	push de
-	call Sine
-	sra a
-	sra a
-	ld hl, BATTLEANIMSTRUCT_YOFFSET
-	add hl, bc
-	ld [hl], a
-	pop de
-	pop af
-	call Cosine
-	ld hl, BATTLEANIMSTRUCT_XOFFSET
-	add hl, bc
-	ld [hl], a
-	ret
 
 Functionce70a:
 	and $f

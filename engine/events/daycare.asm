@@ -163,7 +163,7 @@ DayCare_DepositPokemonText:
 	ld a, [wCurPartySpecies]
 	call PlayCry
 	ld a, DAYCARETEXT_COME_BACK_LATER
-	jmp PrintDayCareText
+	jr PrintDayCareText
 
 DayCare_AskWithdrawBreedMon:
 	ld a, [wStringBuffer2 + 1]

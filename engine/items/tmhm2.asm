@@ -67,9 +67,9 @@ TMHM_JoypadLoop:
 	bit START_F, a
 	jr nz, TMHM_SortMenu
 	bit A_BUTTON_F, a
-	jmp nz, TMHM_ChooseTMorHM
+	jr nz, TMHM_ChooseTMorHM
 	bit B_BUTTON_F, a
-	jmp nz, TMHM_ExitPack
+	jr nz, TMHM_ExitPack
 	and D_RIGHT | D_LEFT
 	ret nz
 TMHM_ShowTMMoveDescription:
@@ -135,9 +135,6 @@ TMHM_ExitPack:
 _TMHM_ExitPack:
 	ld a, $2
 	ld [wMenuJoypad], a
-	and a
-	ret
-
 TMHM_ExitPocket:
 	and a
 	ret

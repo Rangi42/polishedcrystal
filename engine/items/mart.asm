@@ -802,16 +802,16 @@ BTBuyMenuLoop:
 	call SpeechTextbox
 	ld a, [wMenuJoypad]
 	cp B_BUTTON
-	jmp z, MartMenuLoop_SetCarry
+	jr z, MartMenuLoop_SetCarry
 	call BTMartAskPurchaseQuantity
 	jr c, .cancel
 	call BTMartConfirmPurchase
 	jr c, .cancel
 	call BTMartCompareBP
-	jmp c, MartMenuLoop_InsufficientFunds
+	jr c, MartMenuLoop_InsufficientFunds
 	ld hl, wNumItems
 	call ReceiveItem
-	jmp nc, MartMenuLoop_InsufficientBagSpace
+	jr nc, MartMenuLoop_InsufficientBagSpace
 	call PlayTransactionSound
 	ld de, wBattlePoints
 	ld bc, hMoneyTemp + 1
@@ -1389,7 +1389,7 @@ SellMenu:
 	farcall DepositSellPack
 	ld a, [wPackUsedItem]
 	and a
-	jmp z, .quit
+	jr z, .quit
 	call .TryToSellItem
 	jr .loop
 

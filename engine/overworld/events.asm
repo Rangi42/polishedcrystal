@@ -176,7 +176,10 @@ HandleMapTimeAndJoypad:
 HandleMapObjects:
 	farcall HandleNPCStep ; engine/map_objects.asm
 	farcall _HandlePlayerStep
-	jmp _CheckObjectEnteringVisibleRange
+	ld hl, wPlayerStepFlags
+	bit PLAYERSTEP_STOP_F, [hl]
+	ret z
+	farjp CheckObjectEnteringVisibleRange
 
 HandleMapBackground:
 	farcall _UpdateSprites
@@ -201,12 +204,6 @@ CheckPlayerState:
 	ld a, MAPEVENTS_OFF
 	ld [wMapEventStatus], a
 	ret
-
-_CheckObjectEnteringVisibleRange:
-	ld hl, wPlayerStepFlags
-	bit PLAYERSTEP_STOP_F, [hl]
-	ret z
-	farjp CheckObjectEnteringVisibleRange
 
 PlayerEvents:
 	xor a
@@ -587,7 +584,7 @@ TryBGEvent:
 .IsBGEvent:
 	ld a, [wCurBGEventType]
 	cp BGEVENT_ITEM
-	jmp nc, BGEventJumptable.itemifset
+	jr nc, BGEventJumptable.itemifset
 	call StackJumpTable
 
 BGEventJumptable:
@@ -621,7 +618,7 @@ BGEventJumptable:
 	ld a, [wPlayerDirection]
 	and %1100
 	cp b
-	jmp nz, .dontread
+	jr nz, .dontread
 
 .read
 	call PlayTalkObject
@@ -645,7 +642,7 @@ BGEventJumptable:
 	call EventFlagAction
 	ld a, c
 	and a
-	jmp nz, .dontread
+	jr nz, .dontread
 	call PlayTalkObject
 	ld hl, wHiddenItemEvent
 	ld a, [wCurBGEventScriptAddr]

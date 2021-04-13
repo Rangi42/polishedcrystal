@@ -81,7 +81,7 @@ EvolveAfterBattle_MasterLoop:
 	cp EVOLVE_LEVEL
 	jmp z, .level
 	cp EVOLVE_HAPPINESS
-	jmp z, .happiness
+	jr z, .happiness
 
 ; EVOLVE_STAT
 	ld a, [wTempMonLevel]
@@ -134,7 +134,7 @@ EvolveAfterBattle_MasterLoop:
 	cp TR_ANYTIME
 	jmp z, .proceed
 	cp TR_MORNDAY
-	jmp z, .happiness_daylight
+	jr z, .happiness_daylight
 
 ; TR_EVENITE
 	ld a, [wTimeOfDay]
@@ -162,7 +162,7 @@ EvolveAfterBattle_MasterLoop:
 	and a
 	jmp nz, .dont_evolve_3
 	call ChangeFormOnItemEvolution
-	jmp .proceed
+	jr .proceed
 
 .holding
 	ld a, [hli]
@@ -172,7 +172,7 @@ EvolveAfterBattle_MasterLoop:
 	jmp nz, .dont_evolve_3
 	xor a
 	ld [wTempMonItem], a
-	jmp .proceed
+	jr .proceed
 
 .location
 	ld a, [wMapGroup]
@@ -186,7 +186,7 @@ EvolveAfterBattle_MasterLoop:
 	ld a, [hli]
 	cp b
 	jmp nz, .dont_evolve_3
-	jmp .proceed
+	jr .proceed
 
 .move
 	ld a, [hli]
@@ -197,7 +197,7 @@ EvolveAfterBattle_MasterLoop:
 rept NUM_MOVES
 	ld a, [hli]
 	cp b
-	jmp z, .move_proceed
+	jr z, .move_proceed
 endr
 	pop bc
 	pop hl
@@ -206,7 +206,7 @@ endr
 .move_proceed
 	pop bc
 	pop hl
-	jmp .proceed
+	jr .proceed
 
 .evs
 	ld a, [hli]
@@ -221,7 +221,7 @@ endr
 	pop hl
 	cp EVS_TO_EVOLVE
 	jmp c, .dont_evolve_3
-	jmp .proceed
+	jr .proceed
 
 .level
 	ld a, [hli]
@@ -611,11 +611,11 @@ FillMoves:
 .GetLevel:
 	ld a, [hli]
 	and a
-	jmp z, .done
+	jr z, .done
 	ld b, a
 	ld a, [wCurPartyLevel]
 	cp b
-	jmp c, .done
+	jr c, .done
 	ld a, [wEvolutionOldSpecies]
 	and a
 	jr z, .CheckMove

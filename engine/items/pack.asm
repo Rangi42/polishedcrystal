@@ -187,7 +187,7 @@ Pack:
 	lb bc, $9, $1 ; Berries, Items
 	call Pack_InterpretJoypad
 	ret c
-	jmp KeyItems_LoadSubmenu
+	jr KeyItems_LoadSubmenu
 
 .ItemMedsBallsBerries_LoadSubmenu:
 	jr nz, PackSortMenu
@@ -586,7 +586,7 @@ RegisterKeyItem:
 GiveItem:
 	ld a, [wPartyCount]
 	and a
-	jmp z, .NoPokemon
+	jr z, .NoPokemon
 	ld a, [wOptions1]
 	push af
 	res NO_TEXT_SCROLL, a
@@ -818,7 +818,7 @@ BattlePack:
 	ret c
 	farcall CheckKeyItemContext
 	ld a, [wItemAttributeParamBuffer]
-	jmp KeyItemSubmenu
+	jr KeyItemSubmenu
 
 ItemSubmenu:
 	jmp nz, PackSortMenu

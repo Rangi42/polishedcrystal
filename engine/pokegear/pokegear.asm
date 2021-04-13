@@ -339,7 +339,7 @@ Pokegear_FinishTilemap:
 	call nz, .PlaceRadioIcon
 	hlcoord 0, 0
 	ld a, $46
-	jmp .PlacePokegearCardIcon
+	jr .PlacePokegearCardIcon
 
 .PlaceMapIcon:
 	hlcoord 2, 0
@@ -510,7 +510,7 @@ PokegearMap_ContinueMap:
 	ld a, [hl]
 	and D_LEFT
 	jr nz, .left
-	jmp .DPad
+	jr .DPad
 
 .right
 	ld a, [wPokegearFlags]
@@ -1257,7 +1257,13 @@ Pokegear_SwitchPage:
 	ld [wJumptableIndex], a
 	ld a, b
 	ld [wPokegearCard], a
-	jmp DeleteSpriteAnimStruct2ToEnd
+	ld hl, wSpriteAnim2
+	ld bc, wSpriteAnimationStructsEnd - wSpriteAnim2
+	xor a
+	rst ByteFill
+	ld a, 2
+	ld [wSpriteAnimCount], a
+	ret
 
 ExitPokegearRadio_HandleMusic:
 	ld a, [wPokegearRadioMusicPlaying]
@@ -1273,15 +1279,6 @@ ExitPokegearRadio_HandleMusic:
 	call RestartMapMusic
 	xor a
 	ld [wPokegearRadioMusicPlaying], a
-	ret
-
-DeleteSpriteAnimStruct2ToEnd:
-	ld hl, wSpriteAnim2
-	ld bc, wSpriteAnimationStructsEnd - wSpriteAnim2
-	xor a
-	rst ByteFill
-	ld a, 2
-	ld [wSpriteAnimCount], a
 	ret
 
 Pokegear_LoadTilemapRLE:

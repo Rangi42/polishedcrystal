@@ -225,12 +225,30 @@ BuySellToss_UpdateQuantityDisplay:
 
 DisplayPurchasePrice:
 	call BuySell_MultiplyPrice
-	jmp BuySell_DisplaySubtotal
+	jr BuySell_DisplaySubtotal
 
 DisplaySellingPrice:
 	call BuySell_MultiplyPrice
-	call Sell_HalvePrice
-	jmp BuySell_DisplaySubtotal
+	; halve price
+	push hl
+	ld hl, hProduct + 1
+	ld a, [hl]
+	srl a
+	ld [hli], a
+	ld a, [hl]
+	rra
+	ld [hli], a
+	ld a, [hl]
+	rra
+	ld [hl], a
+	pop hl
+	; fallthrough
+
+BuySell_DisplaySubtotal:
+	call DisplayPurchasePriceCommon
+	lb bc, PRINTNUM_MONEY | 3, 7
+	call PrintNum
+	jmp ApplyTilemapInVBlank
 
 BuySell_MultiplyPrice:
 	xor a
@@ -245,27 +263,6 @@ BuySell_MultiplyPrice:
 	call Multiply
 	pop hl
 	ret
-
-Sell_HalvePrice:
-	push hl
-	ld hl, hProduct + 1
-	ld a, [hl]
-	srl a
-	ld [hli], a
-	ld a, [hl]
-	rra
-	ld [hli], a
-	ld a, [hl]
-	rra
-	ld [hl], a
-	pop hl
-	ret
-
-BuySell_DisplaySubtotal:
-	call DisplayPurchasePriceCommon
-	lb bc, PRINTNUM_MONEY | 3, 7
-	call PrintNum
-	jmp ApplyTilemapInVBlank
 
 BTDisplayPurchaseCost:
 	call BuySell_MultiplyPrice

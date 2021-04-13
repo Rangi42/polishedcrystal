@@ -96,11 +96,11 @@ BT_SwapRentals:
 	jr z, .reset_and_print_error
 
 	call BT_ConfirmPartySelection
-	jmp c, .return_to_loop
+	jr c, .return_to_loop
 	dec a
-	jmp nz, .return_to_loop
+	jr nz, .return_to_loop
 	pop bc
-	jmp .return
+	jr .return
 
 .reset_and_print_error
 	push hl
@@ -240,7 +240,7 @@ BT_PartySelect:
 .Enter:
 	call BT_AddCurSelection
 	ld hl, .too_many_mons_text
-	jmp c, .print_error
+	jr c, .print_error
 	ld a, [wBT_PartySelectCounter]
 	cp 3
 	jr nz, .loop
@@ -1345,8 +1345,23 @@ PrintPartyMenuActionText:
 	call GetNickname
 	ld a, [wPartyMenuActionText]
 	and $f
-	ld hl, .MenuActionTexts
-	jmp .PrintText
+	add a
+	add LOW(.MenuActionTexts)
+	ld l, a
+	adc HIGH(.MenuActionTexts)
+	sub l
+	ld h, a
+	ld a, [hli]
+	ld h, [hl]
+	ld l, a
+	ld a, [wOptions1]
+	push af
+	set NO_TEXT_SCROLL, a
+	ld [wOptions1], a
+	call PrintText
+	pop af
+	ld [wOptions1], a
+	ret
 
 .MenuActionTexts:
 	dw .Text_CuredOfPoison
@@ -1409,20 +1424,3 @@ PrintPartyMenuActionText:
 	; came to its senses.
 	text_far _CameToItsSensesText
 	text_end
-
-.PrintText:
-	ld e, a
-	ld d, 0
-	add hl, de
-	add hl, de
-	ld a, [hli]
-	ld h, [hl]
-	ld l, a
-	ld a, [wOptions1]
-	push af
-	set NO_TEXT_SCROLL, a
-	ld [wOptions1], a
-	call PrintText
-	pop af
-	ld [wOptions1], a
-	ret

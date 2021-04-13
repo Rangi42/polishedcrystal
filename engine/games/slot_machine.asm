@@ -560,7 +560,7 @@ InitReelTiles:
 	ld hl, wReel1SpinDistance - wReel1
 	add hl, bc
 	ld [hl], $0
-	jmp UpdateReelPositionAndOAM
+	jr UpdateReelPositionAndOAM
 
 Slots_SpinReels:
 	ld bc, wReel1
@@ -1153,7 +1153,7 @@ Slots_CheckMatchedFirstTwoReels:
 	call .CheckTopRow
 
 .one
-	jmp .CheckMiddleRow
+	jr .CheckMiddleRow
 
 .CheckBottomRow:
 	ld hl, wCurReelStopped
@@ -1242,7 +1242,7 @@ Slots_CheckMatchedAllThreeReels:
 	call .CheckBottomRow
 	call .CheckTopRow
 .one
-	jmp .CheckMiddleRow
+	jr .CheckMiddleRow
 
 .CheckBottomRow:
 	ld hl, wCurReelStopped

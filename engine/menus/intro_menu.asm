@@ -333,17 +333,18 @@ Continue:
 	jr z, .SpawnAfterE4
 	ld a, MAPSETUP_CONTINUE
 	ldh [hMapEntryMethod], a
-	jmp FinishContinueFunction
+	jr FinishContinueFunction
 
 .SpawnAfterE4:
 	ld a, SPAWN_NEW_BARK
 	ld [wDefaultSpawnpoint], a
 	call PostCreditsSpawn
-	jmp FinishContinueFunction
+	jr FinishContinueFunction
 
 SpawnAfterLeaf:
 	ld a, SPAWN_HOME
 	ld [wDefaultSpawnpoint], a
+	; fallthrough
 
 PostCreditsSpawn:
 	xor a
@@ -514,7 +515,7 @@ Continue_DisplayBadgesDexPlayerName:
 Continue_PrintGameTime:
 	decoord 9, 8, 0
 	add hl, de
-	jmp Continue_DisplayGameTime
+	jr Continue_DisplayGameTime
 
 Continue_UnknownGameTime:
 	decoord 9, 8, 0

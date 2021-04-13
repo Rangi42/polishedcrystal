@@ -46,7 +46,7 @@ HandleObjectAction_Stationary:
 	ld hl, OBJECT_FLAGS1
 	add hl, bc
 	bit INVISIBLE_F, [hl]
-	jmp nz, SetFacingStanding
+	jr nz, SetFacingStanding
 HandleObjectAction: ; use second column
 	ld de, ObjectActionPairPointers + 2
 	; fallthrough
@@ -1862,13 +1862,13 @@ GetMovementByte:
 	ld hl, wMovementDataPointer
 	jmp _GetMovementByte
 
-_GetMovementObject:
-	ld hl, GetMovementObject
-	jmp HandleMovementData
-
 GetMovementObject:
 	ld a, [wMovementObject]
 	ret
+
+_GetMovementObject:
+	ld hl, GetMovementObject
+	; fallthrough
 
 HandleMovementData:
 	call .StorePointer
@@ -2431,17 +2431,6 @@ RefreshPlayerSprite:
 	call .TryResetPlayerAction
 	farcall CheckWarpFacingDown
 	call c, SpawnInFacingDown
-	jmp .SpawnInCustomFacing
-
-.TryResetPlayerAction:
-	ld hl, wPlayerSpriteSetupFlags
-	bit PLAYERSPRITESETUP_RESET_ACTION_F, [hl]
-	ret z
-	xor a ; OBJECT_ACTION_00
-	ld [wPlayerAction], a
-	ret
-
-.SpawnInCustomFacing:
 	ld hl, wPlayerSpriteSetupFlags
 	bit PLAYERSPRITESETUP_CUSTOM_FACING_F, [hl]
 	ret z
@@ -2450,6 +2439,14 @@ RefreshPlayerSprite:
 	add a
 	add a
 	jr ContinueSpawnFacing
+
+.TryResetPlayerAction:
+	ld hl, wPlayerSpriteSetupFlags
+	bit PLAYERSPRITESETUP_RESET_ACTION_F, [hl]
+	ret z
+	xor a ; OBJECT_ACTION_00
+	ld [wPlayerAction], a
+	ret
 
 SpawnInFacingDown:
 	xor a ; DOWN
@@ -2732,7 +2729,7 @@ InitSprites:
 	ld c, PRIORITY_NORM
 	call .InitSpritesByPriority
 	ld c, PRIORITY_LOW
-	jmp .InitSpritesByPriority
+	jr .InitSpritesByPriority
 
 .DeterminePriorities:
 	xor a
@@ -2867,9 +2864,9 @@ InitSprites:
 	add hl, bc
 	ld a, [hl]
 	cp STANDING
-	jmp z, .done
+	jr z, .done
 	cp NUM_FACINGS
-	jmp nc, .done
+	jr nc, .done
 	ld l, a
 	ld h, 0
 	add hl, hl

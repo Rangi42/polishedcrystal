@@ -137,7 +137,7 @@ EggStatsJoypad:
 	bit A_BUTTON_F, a
 	jr nz, .quit
 	and D_DOWN | D_UP | A_BUTTON | B_BUTTON
-	jmp StatsScreen_JoypadAction
+	jr StatsScreen_JoypadAction
 
 .quit
 	ld h, 5
@@ -159,6 +159,12 @@ StatsScreen_LoadPage:
 	ld [wJumptableIndex], a
 	ret
 
+StatsScreen_GetJoypad:
+	call GetJoypad
+	ldh a, [hJoyPressed]
+	and a
+	ret
+
 MonStatsJoypad:
 	call StatsScreen_GetJoypad
 	jr nc, .next
@@ -167,13 +173,7 @@ MonStatsJoypad:
 
 .next
 	and D_DOWN | D_UP | D_LEFT | D_RIGHT | A_BUTTON | B_BUTTON
-	jmp StatsScreen_JoypadAction
-
-StatsScreen_GetJoypad:
-	call GetJoypad
-	ldh a, [hJoyPressed]
-	and a
-	ret
+	; fallthrough
 
 StatsScreen_JoypadAction:
 	push af
@@ -182,7 +182,7 @@ StatsScreen_JoypadAction:
 	ld c, a
 	pop af
 	bit B_BUTTON_F, a
-	jmp nz, .b_button
+	jr nz, .b_button
 	bit D_LEFT_F, a
 	jr nz, .d_left
 	bit D_RIGHT_F, a
@@ -277,7 +277,7 @@ StatsScreen_InitUpperHalf:
 	call GetPokemonName
 	rst PlaceString
 	call StatsScreen_PlacePageSwitchArrows
-	jmp StatsScreen_PlaceShinyIcon
+	jr StatsScreen_PlaceShinyIcon
 
 .PlaceHPBar:
 	ld hl, wTempMonHP

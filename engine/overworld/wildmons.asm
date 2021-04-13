@@ -57,14 +57,14 @@ FindNest:
 	ld hl, KantoGrassWildMons
 	call .FindGrass
 	ld hl, KantoWaterWildMons
-	jmp .FindWater
+	jr .FindWater
 
 .orange
 	decoord 0, 0
 	ld hl, OrangeGrassWildMons
 	call .FindGrass
 	ld hl, OrangeWaterWildMons
-	jmp .FindWater
+	jr .FindWater
 
 .FindGrass:
 	ld a, [hl]
@@ -850,7 +850,7 @@ UpdateRoamMons:
 	ld [wRoamMon3MapNumber], a
 
 .SkipSuicune:
-	jmp _BackUpMapIndices
+	jr _BackUpMapIndices
 
 .Update:
 	ld hl, RoamMaps
@@ -939,8 +939,18 @@ JumpRoamMons:
 	ld a, c
 	ld [wRoamMon3MapNumber], a
 .SkipSuicune:
+	; fallthrough
 
-	jmp _BackUpMapIndices
+_BackUpMapIndices:
+	ld a, [wRoamMons_CurMapNumber]
+	ld [wRoamMons_LastMapNumber], a
+	ld a, [wRoamMons_CurMapGroup]
+	ld [wRoamMons_LastMapGroup], a
+	ld a, [wMapNumber]
+	ld [wRoamMons_CurMapNumber], a
+	ld a, [wMapGroup]
+	ld [wRoamMons_CurMapGroup], a
+	ret
 
 JumpRoamMon:
 .loop
@@ -972,17 +982,6 @@ JumpRoamMon:
 	ld a, [hli]
 	ld b, a
 	ld c, [hl]
-	ret
-
-_BackUpMapIndices:
-	ld a, [wRoamMons_CurMapNumber]
-	ld [wRoamMons_LastMapNumber], a
-	ld a, [wRoamMons_CurMapGroup]
-	ld [wRoamMons_LastMapGroup], a
-	ld a, [wMapNumber]
-	ld [wRoamMons_CurMapNumber], a
-	ld a, [wMapGroup]
-	ld [wRoamMons_CurMapGroup], a
 	ret
 
 INCLUDE "data/wild/roammon_maps.asm"

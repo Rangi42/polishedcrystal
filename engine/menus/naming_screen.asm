@@ -140,7 +140,7 @@ NamingScreen:
 	hlcoord 5, 2
 	ld de, .TrendyPhraseString
 	rst PlaceString
-	jmp .StoreSpriteIconParams
+	jr .StoreSpriteIconParams
 
 .TrendyPhraseString:
 	db "What's trendy?@"
@@ -163,7 +163,7 @@ NamingScreen:
 	hlcoord 5, 2
 	ld de, .BoxNameString
 	rst PlaceString
-	jmp .StoreBoxIconParams
+	jr .StoreBoxIconParams
 
 .BoxNameString:
 	db "Box name?@"

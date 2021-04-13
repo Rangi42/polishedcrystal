@@ -823,6 +823,7 @@ IsOTTrademonEgg:
 	ld a, [wOTTrademonIsEgg]
 	bit MON_IS_EGG_F, a
 	ret
+
 ShowPlayerTrademonStats:
 	ld de, wPlayerTrademonIsEgg
 	ld a, [de]
@@ -839,7 +840,7 @@ ShowPlayerTrademonStats:
 	call TrademonStats_PrintOTName
 	ld de, wPlayerTrademonID
 	call TrademonStats_PrintTrademonID
-	jmp TrademonStats_WaitBGMap
+	jr TrademonStats_WaitBGMap
 
 ShowOTTrademonStats:
 	ld de, wOTTrademonIsEgg
@@ -857,7 +858,7 @@ ShowOTTrademonStats:
 	call TrademonStats_PrintOTName
 	ld de, wOTTrademonID
 	call TrademonStats_PrintTrademonID
-	jmp TrademonStats_WaitBGMap
+	jr TrademonStats_WaitBGMap
 
 TrademonStats_MonTemplate:
 	call WaitTop
@@ -868,15 +869,9 @@ TrademonStats_MonTemplate:
 	lb bc, $6, $d
 	call Textbox
 	hlcoord 4, 0
-	ld de, .OTMonData
+	ld de, TrademonStats_OTMonData
 	rst PlaceString
 	ret
-
-.OTMonData:
-	db   "─── №."
-	next ""
-	next "OT/"
-	next "<ID>№.@"
 
 TrademonStats_Egg:
 	call WaitTop
@@ -887,14 +882,9 @@ TrademonStats_Egg:
 	lb bc, $6, $d
 	call Textbox
 	hlcoord 4, 2
-	ld de, .EggData
+	ld de, TrademonStats_EggData
 	rst PlaceString
-	jmp TrademonStats_WaitBGMap
-
-.EggData:
-	db   "Egg"
-	next "OT/?????"
-	next "<ID>№.?????@"
+	; fallthrough
 
 TrademonStats_WaitBGMap:
 	call ApplyTilemapInVBlank
@@ -902,6 +892,17 @@ TrademonStats_WaitBGMap:
 	ld a, HIGH(vBGMap0)
 	ldh [hBGMapAddress + 1], a
 	ret
+
+TrademonStats_OTMonData:
+	db   "─── №."
+	next ""
+	next "OT/"
+	next "<ID>№.@"
+
+TrademonStats_EggData:
+	db   "Egg"
+	next "OT/?????"
+	next "<ID>№.?????@"
 
 TrademonStats_PrintSpeciesNumber:
 	hlcoord 10, 0

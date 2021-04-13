@@ -599,7 +599,7 @@ DecoAction_nothing:
 
 DecoAction_setupbed:
 	ld hl, wDecoBed
-	jmp DecoAction_TrySetItUp
+	jr DecoAction_TrySetItUp
 
 DecoAction_putawaybed:
 	ld hl, wDecoBed
@@ -607,7 +607,7 @@ DecoAction_putawaybed:
 
 DecoAction_setupcarpet:
 	ld hl, wDecoCarpet
-	jmp DecoAction_TrySetItUp
+	jr DecoAction_TrySetItUp
 
 DecoAction_putawaycarpet:
 	ld hl, wDecoCarpet
@@ -615,35 +615,35 @@ DecoAction_putawaycarpet:
 
 DecoAction_setupplant:
 	ld hl, wDecoPlant
-	jmp DecoAction_TrySetItUp
+	jr DecoAction_TrySetItUp
 
 DecoAction_putawayplant:
 	ld hl, wDecoPlant
-	jmp DecoAction_TryPutItAway
+	jr DecoAction_TryPutItAway
 
 DecoAction_setupposter:
 	ld hl, wDecoPoster
-	jmp DecoAction_TrySetItUp
+	jr DecoAction_TrySetItUp
 
 DecoAction_putawayposter:
 	ld hl, wDecoPoster
-	jmp DecoAction_TryPutItAway
+	jr DecoAction_TryPutItAway
 
 DecoAction_setupconsole:
 	ld hl, wDecoConsole
-	jmp DecoAction_TrySetItUp
+	jr DecoAction_TrySetItUp
 
 DecoAction_putawayconsole:
 	ld hl, wDecoConsole
-	jmp DecoAction_TryPutItAway
+	jr DecoAction_TryPutItAway
 
 DecoAction_setupbigdoll:
 	ld hl, wDecoBigDoll
-	jmp DecoAction_TrySetItUp
+	jr DecoAction_TrySetItUp
 
 DecoAction_putawaybigdoll:
 	ld hl, wDecoBigDoll
-	jmp DecoAction_TryPutItAway
+	jr DecoAction_TryPutItAway
 
 DecoAction_TrySetItUp:
 	ld a, [hl]

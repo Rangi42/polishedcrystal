@@ -242,7 +242,7 @@ TryGiveItemToPartymon:
 	call TossItemToGive
 	ld hl, MadeHoldText
 	call MenuTextboxBackup
-	jmp GivePartyItem
+	jr GivePartyItem
 
 .please_remove_mail
 	ld hl, PleaseRemoveMailText
@@ -1125,9 +1125,9 @@ MoveScreenLoop:
 	ld a, [wMoveScreenNumMoves]
 	dec a
 	cp 4
-	jmp c, .update_screen_cursor
+	jr c, .update_screen_cursor
 	ld a, 3
-	jmp .update_screen_cursor
+	jr .update_screen_cursor
 .species_right
 	ld a, [wTempMonSlot]
 	ld c, a
@@ -1150,7 +1150,7 @@ MoveScreenLoop:
 .pressed_left
 	ld a, [wMoveScreenMode]
 	and a
-	jmp z, .species_left
+	jr z, .species_left
 	ld a, [wMoveScreenCursor]
 	and a
 	jr z, .far_up

@@ -1254,11 +1254,6 @@ PersimBerry:
 	ld hl, ConfusedNoMoreText
 	jmp StdBattleTextbox
 
-RestoreHPEffect:
-	ld b, PARTYMENUACTION_HEALING_ITEM
-	ld hl, ItemRestoreHP
-	jmp UseItem_SelectMon_Loop
-
 EnergyPowder:
 	ld c, HAPPINESS_BITTERPOWDER
 	jr EnergyPowderEnergyRootCommon
@@ -1330,6 +1325,11 @@ UseItem_SelectMon2:
 	pop de
 	pop hl
 	jr UseItem_DoSelectMon
+
+RestoreHPEffect:
+	ld b, PARTYMENUACTION_HEALING_ITEM
+	ld hl, ItemRestoreHP
+	; fallthrough
 
 UseItem_SelectMon_Loop:
 	ld a, b
@@ -1530,7 +1530,7 @@ ContinueRevive:
 	ld [hl], d
 	inc hl
 	ld [hl], e
-	jmp LoadCurHPIntoBuffer5
+	jr LoadCurHPIntoBuffer5
 
 RemoveHP:
 	call UseItem_GetHPParameter
@@ -1546,7 +1546,7 @@ RemoveHP:
 	ld [hld], a
 	ld [hl], a
 .okay
-	jmp LoadCurHPIntoBuffer5
+	jr LoadCurHPIntoBuffer5
 
 IsMonFainted:
 	push de
@@ -2208,13 +2208,13 @@ BasementKey:
 SacredAsh:
 	ld a, [wInitialOptions]
 	bit NUZLOCKE_MODE, a
-	jmp nz, Revive_NuzlockeFailureMessage
+	jr nz, Revive_NuzlockeFailureMessage
 
 	farcall _SacredAsh
 	ld a, [wItemEffectSucceeded]
 	dec a
 	ret nz
-	jmp UseDisposableItem
+	jr UseDisposableItem
 
 Play_SFX_FULL_HEAL:
 	push de
@@ -2228,6 +2228,7 @@ UseItemText:
 	call PrintText
 	call Play_SFX_FULL_HEAL
 	call WaitPressAorB_BlinkCursor
+	; fallthrough
 UseDisposableItem:
 	ld hl, wNumItems
 	ld a, 1
@@ -2297,7 +2298,7 @@ ItemWasntUsedMessage:
 Ball_ReplacePartyMonCaughtBall:
 	ld b, PARTYMENUACTION_CHOOSE_POKEMON
 	call UseItem_SelectMon
-	jmp c, ItemNotUsed_ExitMenu
+	jr c, ItemNotUsed_ExitMenu
 
 	ld a, [wCurItem]
 	ld b, a

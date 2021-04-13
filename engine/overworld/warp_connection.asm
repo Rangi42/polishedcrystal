@@ -39,11 +39,11 @@ EnterMapConnection:
 	and a
 	jmp z, EnterSouthConnection
 	dec a
-	jmp z, EnterNorthConnection
+	jr z, EnterNorthConnection
 	dec a
-	jmp z, EnterWestConnection
+	jr z, EnterWestConnection
 	dec a
-	jmp z, EnterEastConnection
+	jr z, EnterEastConnection
 	ret
 
 EnterWestConnection:
@@ -63,8 +63,9 @@ EnterWestConnection:
 	ld h, [hl]
 	ld l, a
 	srl c
-	jr z, .skip_to_load
 	ld a, [wWestConnectedMapWidth]
+_FinishEastWestConnection:
+	jr z, .skip_to_load
 	add 6
 	ld e, a
 	ld d, 0
@@ -79,7 +80,8 @@ EnterWestConnection:
 	ld [wOverworldMapAnchor], a
 	ld a, h
 	ld [wOverworldMapAnchor + 1], a
-	jmp EnteredConnection
+	scf
+	ret
 
 EnterEastConnection:
 	ld a, [wEastConnectedMapGroup]
@@ -98,23 +100,8 @@ EnterEastConnection:
 	ld h, [hl]
 	ld l, a
 	srl c
-	jr z, .skip_to_load
 	ld a, [wEastConnectedMapWidth]
-	add 6
-	ld e, a
-	ld d, 0
-
-.loop
-	add hl, de
-	dec c
-	jr nz, .loop
-
-.skip_to_load
-	ld a, l
-	ld [wOverworldMapAnchor], a
-	ld a, h
-	ld [wOverworldMapAnchor + 1], a
-	jmp EnteredConnection
+	jr _FinishEastWestConnection
 
 EnterNorthConnection:
 	ld a, [wNorthConnectedMapGroup]
@@ -127,19 +114,8 @@ EnterNorthConnection:
 	ld hl, wXCoord
 	add [hl]
 	ld [hl], a
-	ld c, a
 	ld hl, wNorthConnectionWindow
-	ld a, [hli]
-	ld h, [hl]
-	ld l, a
-	ld b, 0
-	srl c
-	add hl, bc
-	ld a, l
-	ld [wOverworldMapAnchor], a
-	ld a, h
-	ld [wOverworldMapAnchor + 1], a
-	jmp EnteredConnection
+	jr _FinishNorthSouthConnection
 
 EnterSouthConnection:
 	ld a, [wSouthConnectedMapGroup]
@@ -152,8 +128,9 @@ EnterSouthConnection:
 	ld hl, wXCoord
 	add [hl]
 	ld [hl], a
-	ld c, a
 	ld hl, wSouthConnectionWindow
+_FinishNorthSouthConnection:
+	ld c, a
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
@@ -164,9 +141,6 @@ EnterSouthConnection:
 	ld [wOverworldMapAnchor], a
 	ld a, h
 	ld [wOverworldMapAnchor + 1], a
-	; fallthrough
-
-EnteredConnection:
 	scf
 	ret
 

@@ -849,14 +849,14 @@ LinkTradePartymonMenuLoop:
 	call LinkTradeMenu
 	ld a, d
 	and a
-	jmp z, LinkTradePartiesMenuMasterLoop
+	jr z, LinkTradePartiesMenuMasterLoop
 	bit A_BUTTON_F, a
 	jmp nz, LinkTrade_TradeStatsMenu
 	bit D_DOWN_F, a
 	jr z, .not_d_down
 	ld a, [wMenuCursorY]
 	dec a
-	jmp nz, LinkTradePartiesMenuMasterLoop
+	jr nz, LinkTradePartiesMenuMasterLoop
 	ld a, OTPARTYMON
 	ld [wMonType], a
 	call HideCursor
@@ -2152,13 +2152,7 @@ Special_CloseLink:
 	ld [wLinkMode], a
 	ld c, $3
 	call DelayFrames
-	jmp Link_ResetSerialRegistersAfterLinkClosure
-
-Special_FailedLinkToPast:
-	ld c, 40
-	call DelayFrames
-	ld a, $e
-	jmp Link_EnsureSync
+	; fallthrough
 
 Link_ResetSerialRegistersAfterLinkClosure:
 	ld c, 3
@@ -2171,6 +2165,12 @@ Link_ResetSerialRegistersAfterLinkClosure:
 	ldh [hSerialReceive], a
 	ldh [rSC], a
 	ret
+
+Special_FailedLinkToPast:
+	ld c, 40
+	call DelayFrames
+	ld a, $e
+	; fallthrough
 
 Link_EnsureSync:
 	add $d0
