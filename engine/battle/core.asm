@@ -7788,11 +7788,8 @@ HandleNuzlockeFlags:
 	ret z
 
 	; Get current landmark
-	ld a, [wMapGroup]
-	ld b, a
-	ld a, [wMapNumber]
-	ld c, a
-	call GetWorldMapLocation
+	call GetCurrentLandmark
+
 	; Use landmark as index into flag array
 	ld c, a
 	ld hl, wNuzlockeLandmarkFlags

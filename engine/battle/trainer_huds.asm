@@ -261,11 +261,7 @@ DoesNuzlockeModePreventCapture:
 	jr c, .no
 
 	; Is location already done?
-	ld a, [wMapGroup]
-	ld b, a
-	ld a, [wMapNumber]
-	ld c, a
-	call GetWorldMapLocation
+	call GetCurrentLandmark
 	ld c, a
 	ld hl, wNuzlockeLandmarkFlags
 	; Use landmark as index into flag array
