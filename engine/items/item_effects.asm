@@ -1541,11 +1541,10 @@ RemoveHP:
 	ld a, [hl]
 	sbc d
 	ld [hl], a
-	jr nc, .okay
+	jr nc, LoadCurHPIntoBuffer5
 	xor a
 	ld [hld], a
 	ld [hl], a
-.okay
 	jr LoadCurHPIntoBuffer5
 
 IsMonFainted:

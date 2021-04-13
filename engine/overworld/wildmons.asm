@@ -849,7 +849,7 @@ UpdateRoamMons:
 	ld a, c
 	ld [wRoamMon3MapNumber], a
 
-.SkipSuicune:
+.SkipSuicune: ; no-optimize stub jump
 	jr _BackUpMapIndices
 
 .Update:

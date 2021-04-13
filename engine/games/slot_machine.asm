@@ -1138,7 +1138,6 @@ Slots_CheckMatchedFirstTwoReels:
 	ret
 
 .Jumptable:
-
 	dw DoNothing
 	dw .one
 	dw .two
@@ -1147,12 +1146,10 @@ Slots_CheckMatchedFirstTwoReels:
 .three
 	call .CheckUpwardsDiag
 	call .CheckDownwardsDiag
-
 .two
 	call .CheckBottomRow
 	call .CheckTopRow
-
-.one
+.one ; no-optimize stub jump
 	jr .CheckMiddleRow
 
 .CheckBottomRow:
@@ -1229,7 +1226,6 @@ Slots_CheckMatchedAllThreeReels:
 	ret
 
 .Jumptable:
-
 	dw DoNothing
 	dw .one
 	dw .two
@@ -1241,7 +1237,7 @@ Slots_CheckMatchedAllThreeReels:
 .two
 	call .CheckBottomRow
 	call .CheckTopRow
-.one
+.one ; no-optimize stub jump
 	jr .CheckMiddleRow
 
 .CheckBottomRow:
