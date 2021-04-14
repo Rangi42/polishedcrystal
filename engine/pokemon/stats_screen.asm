@@ -61,7 +61,6 @@ StatsScreenPointerTable:
 	dw EggStatsJoypad
 	dw StatsScreen_LoadPage
 	dw MonStatsJoypad
-	dw StatsScreen_Exit
 
 StatsScreen_WaitAnim:
 	ld hl, wStatsScreenFlags
@@ -80,11 +79,6 @@ StatsScreen_WaitAnim:
 	ld hl, wStatsScreenFlags
 	res 5, [hl]
 	farjp HDMATransferTileMapToWRAMBank3
-
-StatsScreen_Exit:
-	ld hl, wJumptableIndex
-	set 7, [hl]
-	ret
 
 MonStatsInit:
 	ld hl, wStatsScreenFlags
@@ -140,7 +134,7 @@ EggStatsJoypad:
 	jr StatsScreen_JoypadAction
 
 .quit
-	ld h, 5
+	ld h, 1 << 7 ; exit
 	; fallthrough
 
 StatsScreen_SetJumptableIndex:
@@ -182,7 +176,7 @@ StatsScreen_JoypadAction:
 	ld c, a
 	pop af
 	bit B_BUTTON_F, a
-	jr nz, .b_button
+	jr nz, EggStatsJoypad.quit
 	bit D_LEFT_F, a
 	jr nz, .d_left
 	bit D_RIGHT_F, a
@@ -208,7 +202,7 @@ StatsScreen_JoypadAction:
 .a_button
 	ld a, c
 	cp $3
-	jr z, .b_button
+	jr z, EggStatsJoypad.quit
 .d_right
 	inc c
 	ld a, $3
@@ -231,11 +225,7 @@ StatsScreen_JoypadAction:
 	or c
 	ld [wStatsScreenFlags], a
 	ld h, 3
-	jmp StatsScreen_SetJumptableIndex
-
-.b_button
-	ld h, 5
-	jmp StatsScreen_SetJumptableIndex
+	jr StatsScreen_SetJumptableIndex
 
 StatsScreen_InitUpperHalf:
 	call .PlaceHPBar

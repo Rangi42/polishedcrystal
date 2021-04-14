@@ -103,7 +103,7 @@ _AIChooseMove:
 
 	; Battle Tower sets the AI flags differently.
 	ld a, [wInBattleTowerBattle]
-	bit 0, a
+	and a
 	jr z, .not_battle_tower
 
 	; Battle Tower always use max AI strength.

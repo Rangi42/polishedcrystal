@@ -379,7 +379,7 @@ BattleCommand_checkturn:
 
 	call HitConfusion
 	call CantMove
-	jmp EndTurn
+	jr EndTurn
 
 .not_confused
 	ld a, BATTLE_VARS_SUBSTATUS1
@@ -402,7 +402,7 @@ BattleCommand_checkturn:
 	ld hl, InfatuationText
 	call StdBattleTextbox
 	call CantMove
-	jmp EndTurn
+	jr EndTurn
 
 .not_infatuated
 	; Are we using a disabled move?
@@ -424,7 +424,7 @@ BattleCommand_checkturn:
 
 	call MoveDisabled
 	call CantMove
-	jmp EndTurn
+	jr EndTurn
 
 .not_disabled
 	ld a, BATTLE_VARS_STATUS
@@ -812,7 +812,7 @@ BattleCommand_checkobedience:
 
 .Print:
 	call StdBattleTextbox
-	jmp .EndDisobedience
+	jr .EndDisobedience
 
 .UseInstead:
 
@@ -1470,7 +1470,11 @@ _CheckTypeMatchup:
 	jmp z, .Immune
 	call GetOpponentAbilityAfterMoldBreaker
 	cp OVERCOAT
-	jmp z, .AbilImmune
+	jr nz, .skip_powder
+	ld a, 3
+	ld [wAttackMissed], a
+	jr .Immune
+
 .skip_powder
 	pop hl
 	push hl
@@ -1491,18 +1495,20 @@ _CheckTypeMatchup:
 	ld a, [hli]
 	; terminator
 	cp $ff
-	jr z, .End
+	jr z, .end
 	cp $fe
 	jr nz, .Next
 	; stuff beyond this point is ignored if the foe is identified or we have Scrappy
 	ld a, BATTLE_VARS_SUBSTATUS1_OPP
 	call GetBattleVar
 	bit SUBSTATUS_IDENTIFIED, a
-	jr nz, .End
+	jr nz, .end
 	call GetTrueUserAbility
 	cp SCRAPPY
-	jmp z, .End
-	jr .TypesLoop
+	jr nz, .TypesLoop
+.end
+	pop hl
+	ret
 
 .Next:
 	; attacking type
@@ -1551,15 +1557,9 @@ _CheckTypeMatchup:
 	ld a, b
 	cp HELD_RING_TARGET
 	jr z, .TypesLoop
-	jr .Immune
-.AbilImmune:
-	; most abilities are checked seperately, but Overcoat ends up here (powder)
-	ld a, 3
-	ld [wAttackMissed], a
 .Immune:
 	xor a
 	ld [wTypeMatchup], a
-.End:
 	pop hl
 	ret
 
@@ -2932,9 +2932,9 @@ BattleCommand_posthiteffects:
 	; Do Jaboca and Rowap berries, Rocky Helmet,
 	; Absorb Bulb, Snowball, Cell Battery, Luminous Moss
 	call HasUserFainted
-	jmp z, .rocky_helmet_done
+	jr z, .rocky_helmet_done
 	call GetFutureSightUser
-	jmp nz, .rocky_helmet_done
+	jr nz, .rocky_helmet_done
 	call GetOpponentItemAfterUnnerve
 	call GetCurItemName
 	ld a, b
@@ -3006,8 +3006,41 @@ BattleCommand_posthiteffects:
 	cp HELD_FLINCH_UP
 .do_flinch_up
 	call z, .flinch_up
-	jmp .checkfaint
-.flinch_up
+
+	; if we fainted, abort the rest of the move sequence
+	call HasUserFainted
+	jr nz, .check_parental_bond
+	call EndMoveEffect ; oops
+	xor a
+	ret
+
+.check_parental_bond
+	call HasOpponentFainted
+	ret z
+
+	call GetTrueUserAbility
+	cp PARENTAL_BOND
+	ret nz
+
+	; Multi-hit attacks have their own multihit code
+	ld a, BATTLE_VARS_SUBSTATUS3
+	call GetBattleVarAddr
+	bit SUBSTATUS_IN_LOOP, [hl]
+	ret nz
+
+	ld a, BATTLE_VARS_SUBSTATUS2
+	call GetBattleVarAddr
+	bit SUBSTATUS_IN_ABILITY, [hl]
+	res SUBSTATUS_IN_ABILITY, [hl]
+	jr nz, .resolve_berserk
+	set SUBSTATUS_IN_ABILITY, [hl]
+	ld b, checkhit_command
+	jmp SkipToBattleCommandBackwards
+
+.resolve_berserk
+	farjp ResolveOpponentBerserk
+
+.flinch_up:
 	; Ensure that the move doesn't already have a flinch rate.
 	call HasOpponentFainted
 	ret z
@@ -3036,39 +3069,6 @@ BattleCommand_posthiteffects:
 	cp c
 	call c, FlinchTarget
 	ret
-
-.checkfaint
-	; if we fainted, abort the rest of the move sequence
-	call HasUserFainted
-	jr nz, .check_parental_bond
-	call EndMoveEffect ; oops
-	xor a
-	ret
-.check_parental_bond
-	call HasOpponentFainted
-	ret z
-
-	call GetTrueUserAbility
-	cp PARENTAL_BOND
-	ret nz
-
-	; Multi-hit attacks have their own multihit code
-	ld a, BATTLE_VARS_SUBSTATUS3
-	call GetBattleVarAddr
-	bit SUBSTATUS_IN_LOOP, [hl]
-	ret nz
-
-	ld a, BATTLE_VARS_SUBSTATUS2
-	call GetBattleVarAddr
-	bit SUBSTATUS_IN_ABILITY, [hl]
-	res SUBSTATUS_IN_ABILITY, [hl]
-	jr nz, .resolve_berserk
-	set SUBSTATUS_IN_ABILITY, [hl]
-	ld b, checkhit_command
-	jmp SkipToBattleCommandBackwards
-
-.resolve_berserk
-	farjp ResolveOpponentBerserk
 
 CheckEndMoveEffects:
 ; Effects handled at move end skipped by Sheer Force negation except for rampage
@@ -3967,7 +3967,7 @@ BattleCommand_damagecalc:
 .done_defender_item
 	pop bc
 	call DamagePass3
-	jmp DamagePass4
+	jr DamagePass4
 
 DamagePass1:
 	; Minimum defense value is 1.
@@ -4270,7 +4270,7 @@ TakeDamage:
 	ld a, BATTLE_VARS_SUBSTATUS4_OPP
 	call GetBattleVar
 	bit SUBSTATUS_SUBSTITUTE, a
-	jmp nz, SelfInflictDamageToSubstitute
+	jr nz, SelfInflictDamageToSubstitute
 .mimic_sub_check
 	ld a, [hld]
 	ld c, a
@@ -4417,7 +4417,7 @@ PostStatus:
 BattleCommand_sleep:
 	ld a, [wTypeModifier]
 	and a
-	jmp z, .failed_ineffective
+	jr z, .failed_ineffective
 
 	ld b, 1
 	call CanSleepTarget
@@ -4728,7 +4728,7 @@ BattleCommand_burntarget:
 	ld a, BATTLE_VARS_STATUS_OPP
 	call GetBattleVarAddr
 	and a
-	jmp nz, Defrost
+	jr nz, Defrost
 	ld b, 1
 	call CanBurnTarget
 	ret nz
@@ -5013,7 +5013,7 @@ StatusTargetVerbose:
 	push af
 	ld a, [wTypeModifier]
 	and a
-	jmp z, .failed_ineffective
+	jr z, .failed_ineffective
 
 	ld b, 1
 	call _hl_
@@ -5597,7 +5597,7 @@ BattleCommand_recoil:
 	call GetBattleVar
 	ld b, a
 	inc a ; cp STRUGGLE
-	jmp z, .StruggleRecoil
+	jr z, .StruggleRecoil
 
 	; For all other moves, potentially disable
 	; recoil based on ability
@@ -5873,7 +5873,7 @@ BattleSideCopy:
 
 BattleEffect_ButItFailed:
 	call AnimateFailedMove
-	jmp PrintButItFailed
+	jr PrintButItFailed
 
 ClearLastMove:
 	ld a, BATTLE_VARS_LAST_COUNTER_MOVE
@@ -6331,7 +6331,7 @@ GetUserItem::
 .got_item
 	ld [wCurItem], a
 	ld b, a
-	jmp GetItemHeldEffect
+	jr GetItemHeldEffect
 
 GetOpponentItemAfterUnnerve:
 	call CallOpponentTurn
@@ -6417,7 +6417,7 @@ PlayDamageAnim:
 .player
 	ld [wNumHits], a
 
-	jmp PlayUserBattleAnim
+	jr PlayUserBattleAnim
 
 LoadMoveAnim:
 	xor a

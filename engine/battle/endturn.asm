@@ -143,7 +143,7 @@ HandleBetweenTurnEffects:
 	and a
 	jr nz, .player_set_mode
 	ld a, [wInBattleTowerBattle]
-	bit 0, a
+	and a
 	jr nz, .player_set_mode
 
 	; Obviously, if we're playing in Set mode, assume Set mode...

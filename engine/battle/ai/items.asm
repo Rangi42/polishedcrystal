@@ -27,11 +27,11 @@ AI_MaybeSwitch:
 	rst AddNTimes
 .ok
 	bit SWITCH_OFTEN_F, [hl]
-	jmp nz, SwitchOften
+	jr nz, SwitchOften
 	bit SWITCH_RARELY_F, [hl]
-	jmp nz, SwitchRarely
+	jr nz, SwitchRarely
 	bit SWITCH_SOMETIMES_F, [hl]
-	jmp nz, SwitchSometimes
+	jr nz, SwitchSometimes
 	ret
 
 SwitchOften:
@@ -304,13 +304,12 @@ AI_Items:
 
 .FullRestore:
 	call .HealItem
-	jmp nc, .UseFullRestore
+	jr nc, .UseFullRestore
 	ld a, [bc]
 	bit CONTEXT_USE_F, a
 	jmp z, .DontUse
 	call .Status
 	jmp c, .DontUse
-
 .UseFullRestore:
 	call EnemyUsedFullRestore
 	jmp .Use
@@ -329,13 +328,13 @@ AI_Items:
 	jmp c, .DontUse
 	ld a, [bc]
 	bit UNKNOWN_USE_F, a
-	jmp nz, .CheckQuarterHP
+	jr nz, .CheckQuarterHP
 	call AICheckEnemyQuarterHP
-	jmp nc, .UseHealItem
+	jmp nc, .Use
 	call Random
 	cp 1 + 50 percent
-	jmp c, .UseHealItem
-	jmp .DontUse
+	jmp nc, .DontUse
+	jmp .Use
 
 .CheckQuarterHP:
 	call AICheckEnemyQuarterHP
@@ -343,18 +342,16 @@ AI_Items:
 	call Random
 	cp -1 + 20 percent
 	jmp c, .DontUse
-	jr .UseHealItem
+	jmp .Use
 
 .CheckHalfOrQuarterHP:
 	call AICheckEnemyHalfHP
 	jmp c, .DontUse
 	call AICheckEnemyQuarterHP
-	jmp nc, .UseHealItem
+	jmp nc, .Use
 	call Random
 	cp -1 + 20 percent
 	jmp nc, .DontUse
-
-.UseHealItem:
 	jmp .Use
 
 .HyperPotion:
@@ -380,18 +377,18 @@ AI_Items:
 
 .GuardSpec:
 	call .XItem
-	jmp c, .DontUse
+	jr c, .DontUse
 	ld a, [wEnemyGuards]
 	and GUARD_MIST
-	jmp nz, .DontUse
+	jr nz, .DontUse
 	call EnemyUsedGuardSpec
-	jmp .Use
+	jr .Use
 
 .DireHit:
 	call .XItem
-	jmp c, .DontUse
+	jr c, .DontUse
 	call EnemyUsedDireHit
-	jmp .Use
+	jr .Use
 
 .XAttack:
 	call .XItem
@@ -606,7 +603,7 @@ AI_TrySwitch:
 
 	ld a, d
 	cp 2
-	jmp nc, AI_Switch
+	jr nc, AI_Switch
 	and a
 	ret
 
@@ -648,7 +645,13 @@ EnemyUsedDireHit:
 	ld hl, wEnemySubStatus4
 	set SUBSTATUS_FOCUS_ENERGY, [hl]
 	ld a, DIRE_HIT
-	jmp PrintText_UsedItemOn_AND_AIUpdateHUD
+	; fallthrough
+
+PrintText_UsedItemOn_AND_AIUpdateHUD:
+; a = ITEM_CONSTANT
+	ld [wCurEnemyItem], a
+	call PrintText_UsedItemOn
+	jmp AIUpdateHUD
 
 EnemyUsedXItem:
 	ld [wCurEnemyItem], a
@@ -676,13 +679,6 @@ EnemyUsedXItem:
 	ld [wCurEnemyItem], a
 	scf
 	ret
-
-; Parameter
-; a = ITEM_CONSTANT
-PrintText_UsedItemOn_AND_AIUpdateHUD:
-	ld [wCurEnemyItem], a
-	call PrintText_UsedItemOn
-	jmp AIUpdateHUD
 
 PrintText_UsedItemOn:
 	ld a, [wCurEnemyItem]

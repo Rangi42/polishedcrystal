@@ -131,7 +131,7 @@ BattleCommand_conversion:
 	; If we have a battle in BattleTower just load the Attributes of the first wTrainerClass (Falkner)
 	; so we have always the same AI, regardless of the loaded class of trainer
 	ld a, [wInBattleTowerBattle]
-	bit 0, a
+	and a
 	jr nz, .battle_tower_skip
 
 	ld a, [wTrainerClass]

@@ -1,6 +1,6 @@
 ReadTrainerParty:
 	ld a, [wInBattleTowerBattle]
-	bit 0, a
+	and a
 	ret nz
 
 	ld a, [wLinkMode]
@@ -304,7 +304,7 @@ endr
 
 Battle_GetTrainerName::
 	ld a, [wInBattleTowerBattle]
-	bit 0, a
+	and a
 	ld hl, wOTPlayerName
 	ld a, BANK(Battle_GetTrainerName) ; make FarCopyBytes act like CopyBytes
 	ld [wTrainerGroupBank], a
@@ -354,7 +354,7 @@ SetTrainerBattleLevel:
 	ld [wCurPartyLevel], a
 
 	ld a, [wInBattleTowerBattle]
-	bit 0, a
+	and a
 	ret nz
 
 	ld a, [wLinkMode]

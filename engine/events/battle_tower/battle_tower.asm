@@ -28,7 +28,7 @@ RunBattleTowerTrainer:
 
 	ld a, [wInBattleTowerBattle]
 	push af
-	or $1
+	ld a, TRUE
 	ld [wInBattleTowerBattle], a
 
 	xor a
@@ -86,7 +86,7 @@ _RunBattleTowerTrainer_GotResult:
 	ld [wInBattleTowerBattle], a
 	pop af
 	ld [wOptions2], a
-	ld a, $1
+	ld a, TRUE
 	ld [wBattleTowerBattleEnded], a
 	ret
 

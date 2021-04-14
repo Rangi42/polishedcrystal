@@ -98,7 +98,7 @@ DoBattle:
 	call SpikesDamageBoth ; for Air Balloon
 	call BoostGiovannisArmoredMewtwo
 	call RunBothActivationAbilities
-	jmp BattleTurn
+	jr BattleTurn
 
 WildFled_EnemyFled_LinkBattleCanceled:
 	call Call_LoadTempTileMapToTileMap
@@ -457,14 +457,14 @@ ParsePlayerAction:
 .using_move
 	ld a, [wBattleType]
 	cp BATTLETYPE_GHOST
-	jmp z, .lavender_ghost
+	jr z, .lavender_ghost
 
 	call SetPlayerTurn
 	call CheckLockedIn
 	jr nz, .locked_in
 	ld a, [wBattlePlayerAction]
 	cp $2
-	jmp z, .reset_rage
+	jr z, .reset_rage
 	and a
 	jr nz, .reset_bide
 	xor a
@@ -786,7 +786,7 @@ ResolveFaints:
 	jr nz, .draw2
 
 	ld a, [wInBattleTowerBattle]
-	bit 0, a
+	and a
 	jr z, .lost
 
 .draw2
@@ -1304,7 +1304,7 @@ endr
 	and a
 	jr nz, .enemy_extras_done
 	ld a, [wInBattleTowerBattle]
-	bit 0, a
+	and a
 	jr nz, .enemy_extras_done
 
 	ld a, [wCurSpecies]
@@ -1522,7 +1522,7 @@ StealLeppaBerry:
 	push bc
 	farcall ConsumeOpponentItem
 	pop bc
-	jmp LeppaRestorePP
+	jr LeppaRestorePP
 
 PreparePPRestore:
 	ldh a, [hBattleTurn]
@@ -2132,28 +2132,14 @@ WinTrainerBattle:
 	and a
 	ret nz
 
+	call BattleWinSlideInEnemyTrainerFrontpic
+	ld c, 40
+	call DelayFrames
+
 	ld a, [wInBattleTowerBattle]
-	bit 0, a
-	jr nz, .battle_tower
+	and a
+	jr z, .not_battle_tower
 
-	call BattleWinSlideInEnemyTrainerFrontpic
-	ld c, 40
-	call DelayFrames
-	ld a, [wBattleType]
-	cp BATTLETYPE_CANLOSE
-	jr nz, .skip_heal
-	farcall HealParty
-.skip_heal
-	ld a, [wMonStatusFlags]
-	bit 0, a
-	call z, PrintWinLossText
-
-	jmp .GiveMoney
-
-.battle_tower
-	call BattleWinSlideInEnemyTrainerFrontpic
-	ld c, 40
-	call DelayFrames
 	call EmptyBattleTextbox
 	ld c, $3
 	farcall BattleTowerText
@@ -2167,7 +2153,16 @@ WinTrainerBattle:
 	call ClearTileMap
 	jmp ClearBGPalettes
 
-.GiveMoney:
+.not_battle_tower
+	ld a, [wBattleType]
+	cp BATTLETYPE_CANLOSE
+	jr nz, .skip_heal
+	farcall HealParty
+.skip_heal
+	ld a, [wMonStatusFlags]
+	bit 0, a
+	call z, PrintWinLossText
+
 	ld a, [wAmuletCoin]
 	and a
 	call nz, .DoubleReward
@@ -2482,7 +2477,7 @@ LostBattle:
 	ld [wBattleEnded], a
 
 	ld a, [wInBattleTowerBattle]
-	bit 0, a
+	and a
 	jr nz, .battle_tower
 
 	ld hl, wLossTextPointer
@@ -2856,19 +2851,7 @@ NewEnemyMonStatus:
 	ld [wEnemyTurnsTaken], a
 	ld hl, wPlayerSubStatus2
 	res SUBSTATUS_CANT_RUN, [hl]
-	jmp ResetEnemyAbility
-
-ResetPlayerAbility:
-	push hl
-	ld hl, wBattleMonPersonality
-	ld a, [wBattleMonSpecies]
-	ld c, a
-	call GetAbility
-	pop hl
-	ld a, b
-	ld [wPlayerAbility], a
-	xor a
-	ret
+	; fallthrough
 
 ResetEnemyAbility:
 	push hl
@@ -2879,6 +2862,18 @@ ResetEnemyAbility:
 	pop hl
 	ld a, b
 	ld [wEnemyAbility], a
+	xor a
+	ret
+
+ResetPlayerAbility:
+	push hl
+	ld hl, wBattleMonPersonality
+	ld a, [wBattleMonSpecies]
+	ld c, a
+	call GetAbility
+	pop hl
+	ld a, b
+	ld [wPlayerAbility], a
 	xor a
 	ret
 
@@ -3823,7 +3818,7 @@ endr
 	ld c, a
 	ld e, a
 	ld d, HP_BAR_LENGTH
-	jmp .draw_bar
+	jr .draw_bar
 
 .not_fainted
 	xor a
@@ -3957,7 +3952,7 @@ BattleMenu:
 	ldh [hBGMapMode], a
 	ld a, [wBattleMenuCursorBuffer]
 	dec a
-	jmp z, BattleMenu_Fight ; $1
+	jr z, BattleMenu_Fight ; $1
 	dec a
 	jmp z, BattleMenu_PKMN ; $2
 	dec a
@@ -4076,11 +4071,11 @@ BattleMenu_SafariBall:
 
 	ld a, [wLinkMode]
 	and a
-	jmp nz, .ItemsCantBeUsed
+	jr nz, .ItemsCantBeUsed
 
 	ld a, [wInBattleTowerBattle]
 	and a
-	jmp nz, .ItemsCantBeUsed
+	jr nz, .ItemsCantBeUsed
 
 	call LoadStandardMenuHeader
 
@@ -4096,28 +4091,26 @@ BattleMenu_SafariBall:
 	ld a, [wBattlePlayerAction]
 	and a
 	jr z, .didnt_use_item
-	jr .got_item
+	jr .UseItem
 
 .tutorial
 	farcall TutorialPack
 	ld a, POKE_BALL
 	ld [wCurItem], a
 	call DoItemEffect
-	jr .got_item
+	jr .UseItem
 
 .safari
 	ld a, SAFARI_BALL
 	ld [wCurItem], a
 	call DoItemEffect
-	jr .got_item
+	jr .UseItem
 
 .contest
 	xor a ; PARK_BALL
 	ld [wCurItem], a
 	call DoItemEffect
-
-.got_item
-	jmp .UseItem
+	jr .UseItem
 
 .didnt_use_item
 	call ClearTileMap
@@ -4518,11 +4511,11 @@ CheckRunSpeed:
 
 	ld a, [wEnemySubStatus2]
 	bit SUBSTATUS_CANT_RUN, a
-	jmp nz, .cant_escape
+	jr nz, .cant_escape
 
 	ld a, [wPlayerWrapCount]
 	and a
-	jmp nz, .cant_escape
+	jr nz, .cant_escape
 
 	push hl
 	push de
@@ -4530,7 +4523,7 @@ CheckRunSpeed:
 	farcall CheckIfTrappedByAbility
 	pop de
 	pop hl
-	jmp z, .ability_prevents_escape
+	jr z, .ability_prevents_escape
 
 	ld a, [wNumFleeAttempts]
 	inc a
@@ -4574,14 +4567,14 @@ endr
 	call Divide
 	ldh a, [hQuotient + 1]
 	and a ; player can escape if result is greater than 255
-	jmp nz, .can_escape
+	jr nz, .can_escape
 	ld a, [wNumFleeAttempts]
 	ld c, a
 	ldh a, [hQuotient + 2]
 	jr .handleLoop
 .loop
 	add 30
-	jmp c, .can_escape
+	jr c, .can_escape
 .handleLoop
 	dec c
 	jr nz, .loop
@@ -5480,18 +5473,18 @@ ParseEnemyAction:
 	call Call_LoadTempTileMapToTileMap
 	ld a, [wBattleAction]
 	cp BATTLEACTION_STRUGGLE
-	jmp z, .struggle
+	jr z, .struggle
 	cp BATTLEACTION_SWITCH1
-	jmp nc, ResetVarsForSubstatusRage
+	jr nc, ResetVarsForSubstatusRage
 	ld [wCurEnemyMoveNum], a
 	ld c, a
 	ld a, [wEnemySubStatus3]
 	and 1 << SUBSTATUS_CHARGED | 1 << SUBSTATUS_RAMPAGE | 1 << SUBSTATUS_ROLLOUT
-	jmp nz, .skip_load
+	jr nz, .skip_load
 
 	call SetEnemyTurn
 	call CheckUsableMoves
-	jmp nz, .struggle
+	jr nz, .struggle
 
 	call SetEnemyTurn
 	ld a, [wCurEnemyMoveNum]
@@ -5501,19 +5494,22 @@ ParseEnemyAction:
 	ld b, 0
 	add hl, bc
 	ld a, [hl]
-	jmp .finish
+.finish
+	ld [wCurEnemyMove], a
+	ld [wCurEnemyMoveNum], a ; set move # to -1 to avoid disable issues
+	jr .skip_load
 
 .not_linked
 	call SetEnemyTurn
 	call CheckUsableMoves
-	jmp nz, .struggle
+	jr nz, .struggle
 
 	call SetEnemyTurn
 	ld a, [wCurEnemyMoveNum]
 	ld c, a
 	call SetChoiceLock
 	call CheckLockedIn
-	jmp nz, ResetVarsForSubstatusRage
+	jr nz, ResetVarsForSubstatusRage
 
 .skip_load
 	call SetEnemyTurn
@@ -5542,10 +5538,7 @@ ParseEnemyAction:
 
 .struggle
 	ld a, STRUGGLE
-.finish
-	ld [wCurEnemyMove], a
-	ld [wCurEnemyMoveNum], a ; set move # to -1 to avoid disable issues
-	jr .skip_load
+	jr .finish
 
 ResetVarsForSubstatusRage:
 	xor a
@@ -6246,7 +6239,7 @@ GiveExperiencePoints:
 	ret nz
 
 	ld a, [wInBattleTowerBattle]
-	bit 0, a
+	and a
 	ret nz
 
 	xor a
@@ -7365,7 +7358,34 @@ FillInExpBar:
 	push hl
 	call CalcExpBar
 	pop hl
-	jmp PlaceExpBar
+PlaceExpBar:
+	ld c, 7 ; number of tiles
+.loop1
+	ld a, b
+	sub $8
+	jr c, .next
+	ld b, a
+	ld a, "<FULLXP>"
+	ld [hli], a
+	dec c
+	ret z
+	jr .loop1
+
+.next
+	add $8
+	jr z, .loop2
+	add "<NOXP>"
+	jr .skip
+
+.loop2
+	ld a, "<NOXP>"
+
+.skip
+	ld [hli], a
+	ld a, "<NOXP>"
+	dec c
+	jr nz, .loop2
+	ret
 
 CalcExpBar:
 ; Calculate the percent exp between this level and the next
@@ -7464,35 +7484,6 @@ CalcExpBar:
 	cpl
 	add 56 + 1 ; a = 56 - a
 	ld b, a
-	ret
-
-PlaceExpBar:
-	ld c, 7 ; number of tiles
-.loop1
-	ld a, b
-	sub $8
-	jr c, .next
-	ld b, a
-	ld a, "<FULLXP>"
-	ld [hli], a
-	dec c
-	ret z
-	jr .loop1
-
-.next
-	add $8
-	jr z, .loop2
-	add "<NOXP>"
-	jr .skip
-
-.loop2
-	ld a, "<NOXP>"
-
-.skip
-	ld [hli], a
-	ld a, "<NOXP>"
-	dec c
-	jr nz, .loop2
 	ret
 
 GetMonBackpic:
@@ -7751,7 +7742,33 @@ InitEnemyWildmon:
 ExitBattle:
 	call .HandleEndOfBattle
 	call HandleNuzlockeFlags
-	jmp CleanUpBattleRAM
+	call BattleEnd_HandleRoamMons
+	xor a
+	ld [wLowHealthAlarm], a
+	ld [wBattleMode], a
+	ld [wBattleType], a
+	ld [wAttackMissed], a
+	ld [wTempWildMonSpecies], a
+	ld [wOtherTrainerClass], a
+	ld [wEnemyFleeing], a
+	ld [wNumFleeAttempts], a
+	ld [wPartyMenuCursor], a
+	ld [wKeyItemsPocketCursor], a
+	ld [wItemsPocketCursor], a
+	ld [wBattleMenuCursorBuffer], a
+	ld [wCurMoveNum], a
+	ld [wBallsPocketCursor], a
+	ld [wMenuScrollPosition], a
+	ld [wKeyItemsPocketScrollPosition], a
+	ld [wItemsPocketScrollPosition], a
+	ld [wBallsPocketScrollPosition], a
+	ld hl, wBattleSubStatusWRAM
+	ld b, wBattleSubStatusWRAMEnd - wBattleSubStatusWRAM
+.loop
+	ld [hli], a
+	dec b
+	jr nz, .loop
+	jmp WaitSFX
 
 .HandleEndOfBattle:
 	ld a, [wLinkMode]
@@ -7796,35 +7813,6 @@ HandleNuzlockeFlags:
 	ld b, SET_FLAG
 	predef_jump FlagPredef
 
-CleanUpBattleRAM:
-	call BattleEnd_HandleRoamMons
-	xor a
-	ld [wLowHealthAlarm], a
-	ld [wBattleMode], a
-	ld [wBattleType], a
-	ld [wAttackMissed], a
-	ld [wTempWildMonSpecies], a
-	ld [wOtherTrainerClass], a
-	ld [wEnemyFleeing], a
-	ld [wNumFleeAttempts], a
-	ld [wPartyMenuCursor], a
-	ld [wKeyItemsPocketCursor], a
-	ld [wItemsPocketCursor], a
-	ld [wBattleMenuCursorBuffer], a
-	ld [wCurMoveNum], a
-	ld [wBallsPocketCursor], a
-	ld [wMenuScrollPosition], a
-	ld [wKeyItemsPocketScrollPosition], a
-	ld [wItemsPocketScrollPosition], a
-	ld [wBallsPocketScrollPosition], a
-	ld hl, wBattleSubStatusWRAM
-	ld b, wBattleSubStatusWRAMEnd - wBattleSubStatusWRAM
-.loop
-	ld [hli], a
-	dec b
-	jr nz, .loop
-	jmp WaitSFX
-
 CheckPayDay:
 	ld hl, wPayDayMoney
 	ld a, [hli]
@@ -7854,7 +7842,7 @@ CheckPayDay:
 	ld hl, BattleText_PlayerPickedUpPayDayMoney
 	call StdBattleTextbox
 	ld a, [wInBattleTowerBattle]
-	bit 0, a
+	and a
 	ret z
 	call ClearTileMap
 	jmp ClearBGPalettes
@@ -8181,37 +8169,6 @@ AddLastBattleToLinkRecord:
 
 .done
 	call .StoreResult
-	jmp .FindOpponentAndAppendRecord
-
-.StoreResult:
-	ld a, [wBattleResult]
-	and $f
-	cp $1
-	ld bc, sLinkBattleWins + 1 - sLinkBattleResults
-	jr c, .okay
-	ld bc, sLinkBattleLosses + 1 - sLinkBattleResults
-	jr z, .okay
-	ld bc, sLinkBattleDraws + 1 - sLinkBattleResults
-.okay
-	add hl, bc
-	call .CheckOverflow
-	ret nc
-	inc [hl]
-	ret nz
-	dec hl
-	inc [hl]
-	ret
-
-.CheckOverflow:
-	dec hl
-	ld a, [hli]
-	cp HIGH(MAX_LINK_RECORD)
-	ret c
-	ld a, [hl]
-	cp LOW(MAX_LINK_RECORD)
-	ret
-
-.FindOpponentAndAppendRecord:
 	ld b, 5
 	ld hl, sLinkBattleRecord + 17
 	ld de, wLinkBattleRecordBuffer
@@ -8329,6 +8286,34 @@ AddLastBattleToLinkRecord:
 	inc e
 	ret
 
+.StoreResult:
+	ld a, [wBattleResult]
+	and $f
+	cp $1
+	ld bc, sLinkBattleWins + 1 - sLinkBattleResults
+	jr c, .okay
+	ld bc, sLinkBattleLosses + 1 - sLinkBattleResults
+	jr z, .okay
+	ld bc, sLinkBattleDraws + 1 - sLinkBattleResults
+.okay
+	add hl, bc
+	call .CheckOverflow
+	ret nc
+	inc [hl]
+	ret nz
+	dec hl
+	inc [hl]
+	ret
+
+.CheckOverflow:
+	dec hl
+	ld a, [hli]
+	cp HIGH(MAX_LINK_RECORD)
+	ret c
+	ld a, [hl]
+	cp LOW(MAX_LINK_RECORD)
+	ret
+
 InitBattleDisplay:
 	call .InitBackPic
 	hlcoord 0, 12
@@ -8388,7 +8373,7 @@ InitBattleDisplay:
 
 .InitBackPic:
 	call GetTrainerBackpic
-	jmp CopyBackpic
+	jr CopyBackpic
 
 GetTrainerBackpic:
 ; Load the player character's backpic (6x6) into VRAM starting from vTiles2 tile $31.
@@ -8571,7 +8556,7 @@ AutomaticRainWhenOvercast:
 	and a
 	ret nz
 	ld a, [wInBattleTowerBattle]
-	bit 0, a
+	and a
 	ret nz
 	call GetOvercastIndex
 	and a

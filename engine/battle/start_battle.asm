@@ -106,7 +106,7 @@ PlayBattleMusic:
 
 	ld de, MUSIC_TRAINER_BATTLE_BW
 	ld a, [wInBattleTowerBattle]
-	bit 0, a
+	and a
 	jr nz, .done
 
 	ld de, MUSIC_KANTO_GYM_LEADER_BATTLE
