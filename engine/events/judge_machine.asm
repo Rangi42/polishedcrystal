@@ -113,6 +113,7 @@ JudgeSystem::
 	ld a, [wCurPartyMon]
 	inc a
 	ld c, a
+	ld b, 1
 	farcall CopyBetweenPartyAndTemp
 
 ; Load the frontpic graphics
