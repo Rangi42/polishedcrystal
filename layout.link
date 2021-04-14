@@ -224,9 +224,10 @@ WRAM0
 	"Sprites"
 	org $c4a0
 	"Tilemap and Attrmap"
-	"Battle"
+	org $c770
+	"Misc 480"
 	org $c960
-	"Overworld Map"
+	"Misc 1300"
 	org $cee0
 	"Video"
 

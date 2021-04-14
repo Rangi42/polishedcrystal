@@ -292,43 +292,52 @@ wAttrMap::
 wAttrMapEnd::
 
 
-SECTION "Battle", WRAM0
+SECTION UNION "Misc 480", WRAM0
+; misc
 
-UNION
 wMisc:: ds (SCREEN_WIDTH + 4) * (SCREEN_HEIGHT + 2)
 wMiscEnd::
 
-NEXTU
+
+SECTION UNION "Misc 480", WRAM0
 ; odd egg
+
 wOddEgg:: party_struct wOddEgg
 wOddEggName:: ds MON_NAME_LENGTH
 wOddEggOTName:: ds MON_NAME_LENGTH
 
-NEXTU
+
+SECTION UNION "Misc 480", WRAM0
 ; hall of fame temp struct
+
 wHallOfFameTemp:: hall_of_fame wHallOfFameTemp
 
-NEXTU
+
+SECTION UNION "Misc 480", WRAM0
 ; timeset temp storage
+
 wTimeSetBuffer:: ds 20
 wInitHourBuffer:: ds 13
 wInitMinuteBuffer:: ds 17
 
-NEXTU
+
+SECTION UNION "Misc 480", WRAM0
 ; link patch lists
+
 wPlayerPatchLists:: ds 200
 wOTPatchLists:: ds 200
 
-NEXTU
+
+SECTION UNION "Misc 480", WRAM0
 ; link engine
+
 wLinkMisc:: ds 10
 wLinkPlayerFixedPartyMon1ID:: ds 3
 	ds 37
 
-NEXTU
+
+SECTION UNION "Misc 480", WRAM0
 ; battle
-	ds 1
-NEXTU
 
 wBattle::
 wEnemyMoveStruct::  move_struct wEnemyMoveStruct
@@ -498,9 +507,6 @@ wPlayerAtkLevel:: db
 wPlayerDefLevel:: db
 wPlayerSpdLevel:: db
 wPlayerSAtkLevel:: db
-
-UNION
-; battle subsection
 wPlayerSDefLevel:: db
 wPlayerAccLevel:: db
 wPlayerEvaLevel:: db
@@ -660,8 +666,11 @@ wAmuletCoin:: db
 wDVAndPersonalityBuffer:: ds 5
 wBattleEnd::
 
-NEXTU
+
+SECTION UNION "Misc 480", WRAM0
 ; trade
+	ds 172
+
 wTrademons::
 wPlayerTrademon:: trademon wPlayerTrademon
 wOTTrademon:: trademon wOTTrademon
@@ -680,8 +689,11 @@ wLinkTradeGetmonPersonality::
 wLinkTradeGetmonShiny:: db
 wLinkTradeGetmonForm:: db
 
-NEXTU
+
+SECTION UNION "Misc 480", WRAM0
 ; naming screen
+	ds 172
+
 wNamingScreenDestinationPointer:: dw
 wNamingScreenCurNameLength:: db
 wNamingScreenMaxNameLength:: db
@@ -690,8 +702,11 @@ wNamingScreenCursorObjectPointer:: dw
 wNamingScreenLastCharacter:: db
 wNamingScreenStringEntryCoord:: dw
 
-NEXTU
+
+SECTION UNION "Misc 480", WRAM0
 ; pokegear
+	ds 172
+
 wPokegearPhoneLoadNameBuffer:: db
 wPokegearPhoneCursorPosition:: db
 wPokegearPhoneScrollPosition:: db
@@ -705,8 +720,11 @@ wPokegearRadioChannelAddr:: dw
 wPokegearRadioMusicPlaying:: db
 wPokegearNumberBuffer:: db
 
-NEXTU
+
+SECTION UNION "Misc 480", WRAM0
 ; slot machine
+	ds 172
+
 wSlots::
 wReel1:: slot_reel wReel1
 wReel2:: slot_reel wReel2
@@ -729,8 +747,11 @@ wSlotsDataEnd::
 	ds 28
 wSlotsEnd::
 
-NEXTU
+
+SECTION UNION "Misc 480", WRAM0
 ; card flip
+	ds 172
+
 wCardFlip::
 wDeck:: ds 24
 wDeckEnd::
@@ -740,8 +761,11 @@ wDiscardPile:: ds 24
 wDiscardPileEnd::
 wCardFlipEnd::
 
-;NEXTU
+
+;SECTION UNION "Misc 480", WRAM0
 ;; memory game
+;	ds 172
+;
 ;wMemoryGame::
 ;wMemoryGameCards:: ds 9 * 5
 ;wMemoryGameCardsEnd::
@@ -756,14 +780,20 @@ wCardFlipEnd::
 ;wMemoryGameNumCardsMatched:: db
 ;wMemoryGameEnd::
 
-NEXTU
+
+SECTION UNION "Misc 480", WRAM0
 ; Unown puzzle
+	ds 172
+
 wUnownPuzzle::
 wPuzzlePieces:: ds 6 * 6
 wUnownPuzzleEnd::
 
-NEXTU
+
+SECTION UNION "Misc 480", WRAM0
 ; Pokedex
+	ds 172
+
 wPokedexDataStart::
 wPokedexOrder:: ds NUM_POKEMON - 1
 wPokedexOrderEnd:: ds 6
@@ -795,22 +825,24 @@ wDexMonShiny:: db
 wDexMonForm:: db
 wPokedexDataEnd::
 
-ENDU
 
-ENDU
-
-SECTION "Overworld Map", WRAM0
-
-UNION
+SECTION UNION "Misc 1300", WRAM0
 ; overworld map
-wOverworldMapBlocks:: ds $580 ; large enough for 45x20 NavelRockInside.ablk; (45+6)x(20+6) = 1326 < 1408
+
+; large enough for 45x20 NavelRockInside.ablk; (45+6)x(20+6) = 1326 < 1408
+; was originally only 1300 bytes
+wOverworldMapBlocks:: ds $580
 wOverworldMapBlocksEnd::
 
-NEXTU
+
+SECTION UNION "Misc 1300", WRAM0
 ; credits image
+
 wCreditsBlankFrame2bpp:: ds 8 * 8 * 2
 
-NEXTU
+
+SECTION UNION "Misc 1300", WRAM0
+; Bill's PC
 
 ; If you change ordering of this, remember to fix LCD hblank code too.
 ; Note that (as of when comment was written), hblank can't always keep up
@@ -869,13 +901,17 @@ wBillsPC_QuickFrames:: db
 
 wBillsPC_ApplyThemePals:: db ; used by _CGB_BillsPC
 
-NEXTU
+
+SECTION UNION "Misc 1300", WRAM0
 ; raw link data
+
 wLinkData:: ds 1300
 wLinkDataEnd::
 
-NEXTU
+
+SECTION UNION "Misc 1300", WRAM0
 ; link data members
+
 wLinkPlayerName:: ds NAME_LENGTH
 wLinkPartyCount:: db
 wLinkPartySpecies:: ds PARTY_LENGTH
@@ -905,9 +941,11 @@ wLinkPatchList1:: ds SERIAL_PATCH_LIST_LENGTH
 wLinkPatchList2:: ds SERIAL_PATCH_LIST_LENGTH
 ENDU
 
-NEXTU
+
+SECTION UNION "Misc 1300", WRAM0
 ; link mail data
 	ds 500
+
 wLinkPlayerMail::
 wLinkPlayerMailPreamble:: ds SERIAL_MAIL_PREAMBLE_LENGTH
 wLinkPlayerMailMessages:: ds (MAIL_MSG_LENGTH + 1) * PARTY_LENGTH
@@ -922,13 +960,13 @@ wOTPlayerMailPatchSet:: ds 103 + SERIAL_MAIL_PREAMBLE_LENGTH
 wLinkOTMailEnd::
 	ds 10
 
-NEXTU
+
+SECTION UNION "Misc 1300", WRAM0
 ; received link mail data
 	ds 500
+
 wLinkReceivedMail:: ds MAIL_STRUCT_LENGTH * PARTY_LENGTH
 wLinkReceivedMailEnd:: db
-
-ENDU
 
 
 SECTION "Video", WRAM0
