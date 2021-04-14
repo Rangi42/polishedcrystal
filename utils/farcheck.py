@@ -8,7 +8,7 @@ import re
 
 sym_rx = re.compile(r'^([0-9A-F]{2}):([0-9A-F]{4}) ([A-Z0-9_\.#@]+)', re.IGNORECASE)
 def_rx = re.compile(r'^\s*([A-Z_][A-Z0-9_\.#@]*):(?!\s*macro)', re.IGNORECASE)
-ref_rx = re.compile(r'^\s+(?:call|jp|jr|dw|dwb)\s+(?:(?:z|nz|c|nc)\s*,\s*)?([A-Z0-9_\.]+)', re.IGNORECASE)
+ref_rx = re.compile(r'^\s+(?:call|jmp|jp|jr|dw|dwb)\s+(?:(?:z|nz|c|nc)\s*,\s*)?([A-Z0-9_\.]+)', re.IGNORECASE)
 far_rx = re.compile(r'^\s+(?:farcall|farjp|callfar|callba|callab)\s+([A-Z0-9_\.]+)', re.IGNORECASE)
 ram_rx = re.compile(r'^[vswh][A-Z]')
 
