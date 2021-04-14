@@ -165,7 +165,7 @@ BT_SwapRentals:
 	ld [hl], a
 	ld a, b
 	ld [de], a
-	farcall _SwitchPartyMons
+	call _SwitchPartyMons
 	farjp BT_SetRentalOT
 
 .MustSwapBetweenTeams:

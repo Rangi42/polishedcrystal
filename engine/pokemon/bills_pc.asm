@@ -278,6 +278,7 @@ DoMailSwap:
 	call DoPartySwap
 	call CloseSRAM
 	jmp PopBCDEHL
+
 DoPartySwap:
 ; Swaps bc bytes between hl+d*bc and hl+e*bc
 	; Get pointers to swap

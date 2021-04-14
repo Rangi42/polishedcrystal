@@ -511,7 +511,7 @@ BillsPC_PrintBoxName:
 	ld a, [wCurBox]
 	ld b, a
 	inc b
-	farcall GetBoxName
+	call GetBoxName
 	ld hl, wStringBuffer1
 	ld d, h
 	ld e, l
@@ -2147,7 +2147,7 @@ BillsPC_GetStorageSpace:
 .loop
 	ld a, b
 	push bc
-	farcall EnsureStorageSpace
+	call EnsureStorageSpace
 	pop bc
 	ret z
 
@@ -2305,7 +2305,7 @@ BillsPC_MoveItem:
 
 .entries_not_full
 	; Mark current cursor slot for movement.
-	farcall GetStorageBoxMon
+	call GetStorageBoxMon
 	ld a, [wTempMonItem]
 	ld [wBillsPC_CursorItem], a
 	; fallthrough
@@ -2404,7 +2404,7 @@ _BillsPC_BagItem:
 	ret nz
 
 .entries_not_full
-	farcall GetStorageBoxMon
+	call GetStorageBoxMon
 	call .do_it
 	ld a, [wTempMonItem]
 	and a
@@ -2457,7 +2457,7 @@ BillsPC_UpdateStorage_CheckMewtwo:
 	ld b, a
 	push bc
 	farcall _UpdateMewtwoForm
-	farcall UpdateStorageBoxMonFromTemp
+	call UpdateStorageBoxMonFromTemp
 	pop bc
 	ld a, [wTempMonForm]
 	cp b
@@ -2668,7 +2668,7 @@ BillsPC_CanReleaseMon:
 ; 3: Can't release mon knowing HMs
 ; 4: Empty slot
 	; Is there even anything there?
-	farcall GetStorageBoxMon
+	call GetStorageBoxMon
 	ld a, 4
 	jr z, .done
 
@@ -2682,7 +2682,7 @@ BillsPC_CanReleaseMon:
 	push hl
 	push de
 	push bc
-	farcall CheckCurPartyMonFainted
+	call CheckCurPartyMonFainted
 	pop bc
 	pop de
 	pop hl
@@ -2728,7 +2728,7 @@ BillsPC_CanReleaseMon:
 	and a
 	ret
 
-BillsPC_MaybeRespawnBeast:
+RemoveStorageBoxMon_MaybeRespawn:
 ; Respawns a roaming beast if you're releasing your own beast.
 	push hl
 	push de
@@ -2771,7 +2771,8 @@ BillsPC_MaybeRespawnBeast:
 	jr nz, .done
 	farcall RespawnRoamingSuicune
 .done
-	jmp PopBCDEHL
+	call PopBCDEHL
+	jp RemoveStorageBoxMon
 
 BillsPC_ReleaseAll:
 	call BillsPC_HideModeIcon
@@ -2803,8 +2804,7 @@ BillsPC_ReleaseAll:
 	jr nz, .failed_release
 	inc d
 	push de
-	call BillsPC_MaybeRespawnBeast
-	farcall RemoveStorageBoxMon
+	call RemoveStorageBoxMon_MaybeRespawn
 	lb de, -1, -1
 	push bc
 	call BillsPC_MoveIconData
@@ -2905,8 +2905,7 @@ BillsPC_Release:
 	; Then release the mon.
 	call BillsPC_GetCursorSlot
 	push bc
-	call BillsPC_MaybeRespawnBeast
-	farcall RemoveStorageBoxMon
+	call RemoveStorageBoxMon_MaybeRespawn
 
 	; Print message and reload current cursor mon.
 	ld hl, .WasReleasedOutside
@@ -2970,7 +2969,7 @@ BillsPC_Rename:
 	ld a, [wCurBox]
 	inc a
 	ld b, a
-	farcall SetBoxName
+	call SetBoxName
 .abort
 	jmp BillsPC_ReturnFromTransistion
 
@@ -3000,7 +2999,7 @@ BillsPC_Theme:
 	ld b, a
 	inc b
 	ld a, [wScrollingMenuCursorPosition]
-	farcall SetBoxTheme
+	call SetBoxTheme
 
 .refresh_theme
 	jmp BillsPC_RefreshTheme
@@ -3099,7 +3098,7 @@ BillsPC_SwapStorage:
 	; Don't do anything if we're hovering over an empty slot or boxname.
 	dec a
 	jmp z, .abort
-	farcall GetStorageBoxMon
+	call GetStorageBoxMon
 	jmp z, .abort
 
 	; If we're moving to a Box, we might need to verify that we have the db
@@ -3208,29 +3207,22 @@ BillsPC_SwapStorage:
 	ld a, d
 	and $7f
 	ld d, a
-	or b
-	jr nz, .party_check_done
-
 	; If both mons are in the party, possibly transfer Mail.
-	push de
-	push bc
-	farcall SwapPartyMonMail
-	pop bc
-	pop de
+	or b
+	call z, SwapPartyMonMail
 
-.party_check_done
 	; Swap items.
 	push de
 	push bc
 	ld hl, wTempMonItem
 	ld b, d
 	ld c, e
-	farcall GetStorageBoxMon
+	call GetStorageBoxMon
 	ld e, [hl]
 	ld a, b
 	pop bc
 	push af
-	farcall GetStorageBoxMon
+	call GetStorageBoxMon
 	pop af
 	ld d, [hl]
 
@@ -3258,7 +3250,7 @@ BillsPC_SwapStorage:
 	pop hl
 	pop de
 	pop bc
-	farcall GetStorageBoxMon
+	call GetStorageBoxMon
 	ld [hl], d
 	call BillsPC_UpdateStorage_CheckMewtwo
 	xor a

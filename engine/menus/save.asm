@@ -170,7 +170,7 @@ SaveGameData::
 
 	call SaveChecksum
 	call WriteBackupSave
-	farcall SaveRTC ; should we move this?
+	call SaveRTC
 	call CloseSRAM ; just in case
 	pop af
 	ldh [hVBlank], a
