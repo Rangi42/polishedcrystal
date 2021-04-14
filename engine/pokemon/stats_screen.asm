@@ -17,7 +17,7 @@ StatsScreenInit:
 	call LoadFontsBattleExtra
 	ld hl, GFX_Stats
 	ld de, vTiles2 tile $31
-	lb bc, BANK(GFX_Stats), 41
+	lb bc, BANK(GFX_Stats), 42
 	call DecompressRequest2bpp
 	ld a, [wTempMonBox]
 	ld b, a
@@ -402,10 +402,10 @@ StatsScreen_LoadGFX:
 	hlcoord 8, 7
 	ld [hl], $35 ; bottom
 	; draw center
-	; index = $40 + [wTempMonCaughtBall]
+	; index = $41 + [wTempMonCaughtBall]
 	ld a, [wTempMonCaughtBall]
 	and CAUGHT_BALL_MASK
-	add $40
+	add $41
 	hlcoord 8, 6
 	ld [hl], a ; center
 	ret
@@ -685,9 +685,9 @@ StatsScreen_LoadGFX:
 	; fallthrough
 .CheckHyper:
 	rlca
-	jr nc, .no_hyper_star
-	ld [hl], "★"
-.no_hyper_star
+	jr nc, .no_hyper_training
+	ld [hl], $40 ; hyper training indicator
+.no_hyper_training
 	add hl, de
 	ret
 

@@ -77,6 +77,7 @@ SpriteAnimOAMData:
 	dbw $04, .OAMData_GameFreakLogo4_11  ; SPRITE_ANIM_OAMSET_GAMEFREAK_LOGO_10
 	dbw $00, .OAMData_GameFreakLogo4_11  ; SPRITE_ANIM_OAMSET_GAMEFREAK_LOGO_11
 	dbw $00, .OAMData_MaxStatSparkle     ; SPRITE_ANIM_OAMSET_MAX_STAT_SPARKLE
+	dbw $00, .OAMData_HyperTrainedStat   ; SPRITE_ANIM_OAMSET_HYPER_TRAINED_STAT
 	dbw $00, .OAMData_PcCursor           ; SPRITE_ANIM_OAMSET_PC_CURSOR
 	dbw $00, .OAMData_PcQuick            ; SPRITE_ANIM_OAMSET_PC_QUICK
 	dbw $00, .OAMData_PcMode             ; SPRITE_ANIM_OAMSET_PC_MODE
@@ -634,6 +635,10 @@ SpriteAnimOAMData:
 .OAMData_MaxStatSparkle:
 	db 1
 	dsprite  2,  0,  2,  0, $00, $0
+
+.OAMData_HyperTrainedStat:
+	db 1
+	dsprite  2,  0,  2,  0, $01, $1
 
 .OAMData_PcCursor:
 	db 9

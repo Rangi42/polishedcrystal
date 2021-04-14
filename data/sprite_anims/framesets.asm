@@ -50,6 +50,7 @@ SpriteAnimFrameData:
 	dw .Frameset_CelebiLeft
 	dw .Frameset_CelebiRight
 	dw .Frameset_MaxStatSparkle
+	dw .Frameset_HyperTrainedStat
 	dw .Frameset_PcCursor
 	dw .Frameset_PcQuick
 	dw .Frameset_PcMode
@@ -332,6 +333,10 @@ SpriteAnimFrameData:
 
 .Frameset_MaxStatSparkle:
 	frame SPRITE_ANIM_OAMSET_MAX_STAT_SPARKLE, 32
+	dorestart
+
+.Frameset_HyperTrainedStat:
+	frame SPRITE_ANIM_OAMSET_HYPER_TRAINED_STAT, 32
 	dorestart
 
 .Frameset_PcCursor:

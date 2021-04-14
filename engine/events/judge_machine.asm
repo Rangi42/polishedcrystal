@@ -110,12 +110,10 @@ JudgeSystem::
 	ldh [hBGMapMode], a
 
 ; Load the party struct into wTempMon
-	ld hl, wPartyMons
 	ld a, [wCurPartyMon]
-	call GetPartyLocation
-	ld de, wTempMon
-	ld bc, PARTYMON_STRUCT_LENGTH
-	rst CopyBytes
+	inc a
+	ld c, a
+	farcall CopyBetweenPartyAndTemp
 
 ; Load the frontpic graphics
 	ld hl, wTempMonForm
@@ -134,10 +132,10 @@ JudgeSystem::
 	xor a
 	ldh [rVBK], a
 
-; Load the max stat sparkle graphics
+; Load the max stat sparkle and hyper trained bottle cap graphics
 	ld hl, MaxStatSparkleGFX
 	ld de, vTiles0
-	ld bc, 1 tiles
+	ld bc, 2 tiles
 	rst CopyBytes
 
 ; Place the up/down arrows and nickname
@@ -410,10 +408,29 @@ JudgeSystem::
 
 SparkleMaxStat:
 ; Show a sparkle sprite at (d, e) if a is 255
+; Returns carry if the sprite is shown
 	inc a
 	ret nz
 	ld a, SPRITE_ANIM_INDEX_MAX_STAT_SPARKLE
-	jmp _InitSpriteAnimStruct
+	jr _InitSpriteAnimStruct_PreserveHL
+
+SparkleMaxStatOrShowBottleCap:
+; Show a sparkle sprite at (d, e) if a is 255,
+; or a bottle cap sprite if [hl] bit 7 is 1 (shifts [hl] regardless)
+; Returns carry if either sprite is shown
+	rlc [hl] ; sets carry if hyper trained
+	inc a ; sets z if if max stat; does not affect carry
+	ld a, SPRITE_ANIM_INDEX_MAX_STAT_SPARKLE
+	jr z, _InitSpriteAnimStruct_PreserveHL
+	assert SPRITE_ANIM_INDEX_MAX_STAT_SPARKLE + 1 == SPRITE_ANIM_INDEX_HYPER_TRAINED_STAT
+	inc a ; does not affect carry
+	ret nc
+_InitSpriteAnimStruct_PreserveHL:
+	push hl
+	call _InitSpriteAnimStruct
+	pop hl
+	scf
+	ret
 
 RenderEVChart:
 ; Read the EVs and round them up to the nearest 4
@@ -457,6 +474,9 @@ RenderEVChart:
 
 RenderIVChart:
 ; Read the IVs and scale them to 255 instead of 31
+	ld hl, wBuffer1
+	ld a, [wTempMonHyperTraining]
+	ld [hl], a
 ; HP
 	ld a, [wTempMonHPAtkDV]
 	and $f0
@@ -465,7 +485,7 @@ RenderIVChart:
 	or b
 	ldh [hChartHP], a
 	depixel 2, 12
-	call SparkleMaxStat
+	call SparkleMaxStatOrShowBottleCap
 ; Atk
 	ld a, [wTempMonHPAtkDV]
 	and $0f
@@ -474,7 +494,7 @@ RenderIVChart:
 	or b
 	ldh [hChartAtk], a
 	depixel 4, 17
-	call SparkleMaxStat
+	call SparkleMaxStatOrShowBottleCap
 ; Def
 	ld a, [wTempMonDefSpdDV]
 	and $f0
@@ -483,7 +503,7 @@ RenderIVChart:
 	or b
 	ldh [hChartDef], a
 	depixel 15, 17
-	call SparkleMaxStat
+	call SparkleMaxStatOrShowBottleCap
 ; Spd
 	ld a, [wTempMonDefSpdDV]
 	and $0f
@@ -492,7 +512,7 @@ RenderIVChart:
 	or b
 	ldh [hChartSpd], a
 	depixel 17, 12
-	call SparkleMaxStat
+	call SparkleMaxStatOrShowBottleCap
 ; SAt
 	ld a, [wTempMonSatSdfDV]
 	and $f0
@@ -501,7 +521,7 @@ RenderIVChart:
 	or b
 	ldh [hChartSat], a
 	depixel 4, 6
-	call SparkleMaxStat
+	call SparkleMaxStatOrShowBottleCap
 ; SDf
 	ld a, [wTempMonSatSdfDV]
 	and $0f
@@ -510,7 +530,7 @@ RenderIVChart:
 	or b
 	ldh [hChartSdf], a
 	depixel 15, 6
-	call SparkleMaxStat
+	call SparkleMaxStatOrShowBottleCap
 	; fallthrough
 
 RenderChart:

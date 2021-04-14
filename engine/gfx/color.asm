@@ -219,11 +219,11 @@ LoadStatsScreenPals:
 	ret
 
 LoadHLPaletteIntoDE:
-	ld c, $8
+	ld c, 1 palettes
 LoadCPaletteBytesFromHLIntoDE:
 	ldh a, [rSVBK]
 	push af
-	ld a, $5
+	ld a, BANK("GBC Video")
 	ldh [rSVBK], a
 .loop
 	ld a, [hli]
