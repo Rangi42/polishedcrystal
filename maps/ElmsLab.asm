@@ -216,11 +216,6 @@ CyndaquilPokeBallScript:
 	writetext ChoseStarterText
 	promptbutton
 	waitsfx
-	getmonname CYNDAQUIL, $0
-	writetext ReceivedStarterText
-	playsound SFX_CAUGHT_MON
-	waitsfx
-	promptbutton
 	givepoke CYNDAQUIL, NO_FORM, 5, ORAN_BERRY
 	writetext LyraChoosesStarterText
 	waitbutton
@@ -229,7 +224,7 @@ CyndaquilPokeBallScript:
 	pause 15
 	disappear ELMSLAB_POKE_BALL3
 	opentext
-	getmonname CHIKORITA, $0
+	getmonname CHIKORITA, STRING_BUFFER_3
 	writetext LyraReceivedStarterText
 	playsound SFX_CAUGHT_MON
 	waitsfx
@@ -261,11 +256,6 @@ TotodilePokeBallScript:
 	writetext ChoseStarterText
 	promptbutton
 	waitsfx
-	getmonname TOTODILE, $0
-	writetext ReceivedStarterText
-	playsound SFX_CAUGHT_MON
-	waitsfx
-	promptbutton
 	givepoke TOTODILE, NO_FORM, 5, ORAN_BERRY
 	writetext LyraChoosesStarterText
 	waitbutton
@@ -274,7 +264,7 @@ TotodilePokeBallScript:
 	pause 15
 	disappear ELMSLAB_POKE_BALL1
 	opentext
-	getmonname CYNDAQUIL, $0
+	getmonname CYNDAQUIL, STRING_BUFFER_3
 	writetext LyraReceivedStarterText
 	playsound SFX_CAUGHT_MON
 	waitsfx
@@ -304,11 +294,6 @@ ChikoritaPokeBallScript:
 	writetext ChoseStarterText
 	promptbutton
 	waitsfx
-	getmonname CHIKORITA, $0
-	writetext ReceivedStarterText
-	playsound SFX_CAUGHT_MON
-	waitsfx
-	promptbutton
 	givepoke CHIKORITA, NO_FORM, 5, ORAN_BERRY
 	writetext LyraChoosesStarterText
 	waitbutton
@@ -317,7 +302,7 @@ ChikoritaPokeBallScript:
 	pause 15
 	disappear ELMSLAB_POKE_BALL2
 	opentext
-	getmonname TOTODILE, $0
+	getmonname TOTODILE, STRING_BUFFER_3
 	writetext LyraReceivedStarterText
 	playsound SFX_CAUGHT_MON
 	waitsfx
