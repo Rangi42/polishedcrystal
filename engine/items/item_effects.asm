@@ -2284,12 +2284,15 @@ Ball_NuzlockeFailureMessage:
 	ret z
 	cp SAFARI_BALL
 	ret z
+	jr _ItemWasntUsedMessage
 
 ItemWasntUsedMessage:
 	; Item wasn't used.
+	call PrintText
+_ItemWasntUsedMessage:
 	ld a, $2
 	ld [wItemEffectSucceeded], a
-	jmp PrintText
+	ret
 
 Ball_ReplacePartyMonCaughtBall:
 	ld b, PARTYMENUACTION_CHOOSE_POKEMON
