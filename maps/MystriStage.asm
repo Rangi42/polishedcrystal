@@ -128,7 +128,6 @@ MystriStageEggScript:
 	writetext MystriStageEggText
 	playsound SFX_KEY_ITEM
 	waitsfx
-	waitendtext
 	ifequal 1, .InParty
 	special Special_CurBoxFullCheck
 	iffalse .BoxNotFull
