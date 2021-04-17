@@ -933,10 +933,11 @@ VitaminEffect:
 	call GetStatStringAndPlayFullHealSFX
 	ld hl, ItemStatRoseText
 	call PrintText
-
-	ld c, HAPPINESS_USEDITEM
-	predef ChangeHappiness
-	jmp UseDisposableItem
+	call UseDisposableItem
+	; fallthrough
+VitaminHappiness:
+	ld c, HAPPINESS_USEDVITAMIN
+	predef_jump ChangeHappiness
 
 ItemStatRoseText:
 	; 's @ rose.
@@ -1026,6 +1027,7 @@ RareCandy:
 	pop bc
 
 	call UpdatePkmnStats
+	call VitaminHappiness
 	farcall LevelUpHappinessMod
 
 	ld a, PARTYMENUTEXT_LEVEL_UP
@@ -1781,6 +1783,7 @@ GuardSpec:
 	or [hl]
 	ld [hl], a
 	call UseItemText
+	call XItemHappiness
 	ld hl, MistText
 	jmp StdBattleTextbox
 
@@ -1789,6 +1792,7 @@ DireHit:
 	bit SUBSTATUS_FOCUS_ENERGY, [hl]
 	jmp nz, WontHaveAnyEffect_NotUsedMessage
 	set SUBSTATUS_FOCUS_ENERGY, [hl]
+	call XItemHappiness
 	jmp UseItemText
 
 XItemEffect:
@@ -1809,7 +1813,8 @@ XItemEffect:
 	farcall GetStatRaiseMessage
 	or 1
 	farcall DoPrintStatChange
-
+	; fallthrough
+XItemHappiness:
 	ld a, [wCurBattleMon]
 	ld [wCurPartyMon], a
 	ld c, HAPPINESS_USEDXITEM
@@ -1990,6 +1995,7 @@ RestorePPEffect:
 	jr .loop2
 
 .do_ppup
+	call VitaminHappiness
 	ld c, 3 << 6
 	ld a, [wTempItem]
 	cp PP_MAX
