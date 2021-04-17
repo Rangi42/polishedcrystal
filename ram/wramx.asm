@@ -1250,7 +1250,7 @@ wPoisonStepCount:: db
 
 wPhoneList:: ds CONTACT_LIST_SIZE + 1
 
-wHappinessStepCount:: db
+	ds 1 ; unused
 
 wParkBallsRemaining::
 wSafariBallsRemaining:: db

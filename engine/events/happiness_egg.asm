@@ -149,38 +149,16 @@ GetExtraHappiness:
 
 StepHappiness::
 ; Raise the party's happiness by 1 point every other step cycle.
-
-	ld hl, wHappinessStepCount
-	ld a, [hl]
-	inc a
-	and 1
-	ld [hl], a
-	ret nz
-
-	ld de, wPartyCount
-	ld a, [de]
+	ld a, [wPartyCount]
+.loop
+	ld [wCurPartyMon], a
 	and a
 	ret z
-
-	ld c, a
-	ld hl, wPartyMon1Happiness
-.loop
-	push hl
-	ld de, wPartyMon1IsEgg - wPartyMon1Happiness
-	add hl, de
-	bit MON_IS_EGG_F, [hl]
-	pop hl
-	jr nz, .next
-	inc [hl]
-	jr nz, .next
-	dec [hl]
-
-.next
-	ld de, PARTYMON_STRUCT_LENGTH
-	add hl, de
-	dec c
-	jr nz, .loop
-	ret
+	ld c, HAPPINESS_STEP
+	predef ChangeHappiness
+	ld a, [wCurPartyMon]
+	dec a
+	jr .loop
 
 DayCareStep::
 
