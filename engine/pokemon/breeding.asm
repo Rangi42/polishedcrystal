@@ -185,17 +185,25 @@ DoEggStep::
 	pop hl
 	pop de
 	ld a, b
-	ld c, 1
+	ld c, 2
 	cp FLAME_BODY
 	jr z, .ability_ok
 	cp MAGMA_ARMOR
 	jr z, .ability_ok
 .ability_next
-	call .nextpartymon
+	call .NextPartyMon
 	jr .ability_loop
 .no_ability_bonus
-	ld c, 0
+	ld c, 1
 .ability_ok
+	ld a, OVAL_CHARM
+	ld [wCurKeyItem], a
+	push bc
+	call CheckKeyItem
+	pop bc
+	jr nc, .no_oval_charm
+	sla c
+.no_oval_charm
 	ld de, wPartySpecies
 	ld hl, wPartyMon1Happiness ; Egg cycles when not hatched
 .loop
@@ -211,13 +219,16 @@ DoEggStep::
 	pop de
 	pop hl
 	jr z, .next
-	dec [hl]
+	ld a, [hl]
+	sub c
+	ld [hl], 0
+	jr c, .hatch
 	jr z, .hatch
-	ld a, c
-	and a
-	jr z, .next
-	dec [hl]
-	jr nz, .next
+	; fallthrough
+.next
+	call .NextPartyMon
+	jr .loop
+
 .hatch
 	ld a, 1
 	and a
@@ -225,10 +236,7 @@ DoEggStep::
 	ld c, 0 ; TODO: check if this is needed (was done earlier)
 	ret
 
-.next
-	call .nextpartymon
-	jr .loop
-.nextpartymon
+.NextPartyMon:
 	push de
 	ld de, PARTYMON_STRUCT_LENGTH
 	add hl, de
