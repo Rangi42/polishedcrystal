@@ -2771,7 +2771,9 @@ RemoveStorageBoxMon_MaybeRespawn:
 	jr nz, .done
 	farcall RespawnRoamingSuicune
 .done
-	call PopBCDEHL
+	pop bc
+	pop de
+	pop hl
 	jp RemoveStorageBoxMon
 
 BillsPC_ReleaseAll:
