@@ -151,13 +151,13 @@ StepHappiness::
 ; Raise the party's happiness by 1 point every other step cycle.
 	ld a, [wPartyCount]
 .loop
-	ld [wCurPartyMon], a
 	and a
 	ret z
+	dec a
+	ld [wCurPartyMon], a
 	ld c, HAPPINESS_STEP
 	predef ChangeHappiness
 	ld a, [wCurPartyMon]
-	dec a
 	jr .loop
 
 DayCareStep::
