@@ -47,7 +47,7 @@ BattleCommandPointers:
 	command payday
 	command conversion
 	command resetstats
-	command forceswitch
+	command roar
 	command endloop
 	command flinchtarget
 	command recoil
