@@ -93,27 +93,23 @@ ResetWRAM_NotPlus:
 
 ResetWRAM:
 	ld hl, wVirtualOAM
-	ld bc, wOptions1 - wVirtualOAM
+	ld bc, wOptions3 - wVirtualOAM
 	xor a
 	rst ByteFill
 
 	ld hl, wRAM1Start
 	ld bc, wGameData - wRAM1Start
-	xor a
 	rst ByteFill
 
 	; erase wGameData, but keep wMoney and wBattlePoints
 	ld hl, wGameData
 	ld bc, wMoney - wGameData
-	xor a
 	rst ByteFill
 	ld hl, wMoneyEnd
 	ld bc, wBattlePoints - wMoneyEnd
-	xor a
 	rst ByteFill
 	ld hl, wBattlePointsEnd
 	ld bc, wGameDataEnd - wBattlePointsEnd
-	xor a
 	rst ByteFill
 
 	; Fill party species array with terminators.
