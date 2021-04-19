@@ -1311,7 +1311,7 @@ Roar:
 	hastarget
 	checkhit
 	bounceback
-	forceswitch
+	roar
 	endmove
 
 SkillSwap:

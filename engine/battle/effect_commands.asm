@@ -49,6 +49,7 @@ INCLUDE "engine/battle/move_effects/rage.asm"
 INCLUDE "engine/battle/move_effects/rapid_spin.asm"
 INCLUDE "engine/battle/move_effects/reflect_light_screen.asm"
 INCLUDE "engine/battle/move_effects/return.asm"
+INCLUDE "engine/battle/move_effects/roar.asm"
 INCLUDE "engine/battle/move_effects/rollout.asm"
 INCLUDE "engine/battle/move_effects/roost.asm"
 INCLUDE "engine/battle/move_effects/safeguard.asm"
@@ -5205,86 +5206,11 @@ SetBattleDraw:
 	ld [wBattleResult], a
 	ret
 
-BattleCommand_forceswitch:
-	ld a, [wBattleType]
-	cp BATTLETYPE_TRAP ; or BATTLETYPE_FORCEITEM, BATTLETYPE_RED_GYARADOS, BATTLETYPE_LEGENDARY
-	jr nc, .but_it_failed
-	call GetOpponentAbilityAfterMoldBreaker
-	cp SUCTION_CUPS
-	ld a, ATKFAIL_ABILITY
-	jr z, .fail
-	ld a, [wAttackMissed]
-	and a
-	jr nz, .fail
-	ld a, [wBattleMode]
-	dec a
-	jr z, .wild
-	call CheckAnyOtherAliveOpponentMons
-	jr nz, .trainer_success
-
-.but_it_failed
-	ld a, ATKFAIL_GENERIC
-.fail
-	ld [wAttackMissed], a
-	call AnimateFailedMove
-	jmp FailText_CheckOpponentProtect
-
-.wild
-	ld a, [wEnemyMonLevel]
-	ld b, a
-	ld a, [wBattleMonLevel]
-	ld c, a
-
-	ldh a, [hBattleTurn]
-	and a
-	jr z, .wild_got_party_vars
-
-	ld a, b
-	ld b, c
-	ld c, a
-
-.wild_got_party_vars
-	; b: opponent level, c: user level
-	ld a, c
-	cp b
-	jr nc, .wild_succeed
-
-	add b
-	ld c, a
-	inc c
-	jr nz, .random_loop_wild
-	dec c
-.random_loop_wild
-	call BattleRandom
-	cp c
-	jr nc, .random_loop_wild
-	srl b
-	srl b
-	cp b
-	jr c, .but_it_failed
-
-.wild_succeed
-	call UpdateBattleMonInParty
-	xor a
-	ld [wNumHits], a
-	inc a
-	ld [wBattleEnded], a
-	call SetBattleDraw
-	ld a, $1
-	ld [wKickCounter], a
-	call AnimateCurrentMove
-	ld c, 20
-	call DelayFrames
-	ld hl, FledInFearText
-	jmp StdBattleTextbox
-
-.trainer_success
-	call AnimateCurrentMove
-	ld c, 20
-	call DelayFrames
-	ld a, 1 << SWITCH_DEFERRED | 1 << SWITCH_TARGET | 1 << SWITCH_FORCED
+BattleCommand_switchout:
+	call CheckAnyOtherAliveMons
+	ret z
+	ld a, 1 << SWITCH_DEFERRED | 1 << SWITCH_PURSUIT
 	; fallthrough
-
 SetDeferredSwitch:
 	push af
 	ld a, [wDeferredSwitch]
@@ -6185,12 +6111,6 @@ DoCheckAnyOtherAliveMons:
 	dec d
 	jr nz, .loop
 	ret
-
-BattleCommand_switchout:
-	call CheckAnyOtherAliveMons
-	ret z
-	ld a, 1 << SWITCH_DEFERRED | 1 << SWITCH_PURSUIT
-	jmp SetDeferredSwitch
 
 BattleCommand_doubleminimizedamage:
 	ld a, BATTLE_VARS_SUBSTATUS2_OPP
