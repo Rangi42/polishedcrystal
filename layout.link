@@ -226,9 +226,9 @@ WRAM0
 	"Tilemap and Attrmap"
 	org $c770
 	"Misc 480"
-	org $c960
+	org $c950
 	"Misc 1300"
-	org $cee0
+	org $ced0
 	"Video"
 
 WRAMX $1
