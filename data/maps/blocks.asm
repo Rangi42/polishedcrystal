@@ -168,17 +168,17 @@ CeruleanPoliceStation_BlockData:
 CeruleanBerryPowderHouse_BlockData:
 CeruleanWaterShowSpeechHouse_BlockData:
 CeladonMansionRoofHouse_BlockData:
+VermilionHouseFishingSpeechHouse_BlockData:
 VermilionPollutionSpeechHouse_BlockData:
-VermilionSSAnneSpeechHouse_BlockData:
 MrPsychicsHouse_BlockData:
 PsychicInversHouse_BlockData:
 	INCBIN "maps/KantoHouse1.ablk.lz"
 
 SECTION "Route26DayofWeekSiblingsHouse_BlockData", ROMX
 Route26DayofWeekSiblingsHouse_BlockData:
-VermilionHouseFishingSpeechHouse_BlockData:
 VermilionMagnetTrainSpeechHouse_BlockData:
 VermilionHouseDiglettsCaveSpeechHouse_BlockData:
+VermilionSSAnneSpeechHouse_BlockData:
 LavenderNameRater_BlockData:
 SaffronHitmontopKidHouse_BlockData:
 SaffronOrreSpeechHouse_BlockData:
