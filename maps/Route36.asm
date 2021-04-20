@@ -146,7 +146,7 @@ Route36RockSmashGuyScript:
 Route36LassScript:
 	checkevent EVENT_FOUGHT_SUDOWOODO
 	iftrue_jumptextfaceplayer Route36LassText_ClearedSudowoodo
-	jumptextfaceplayer UnknownText_0x1945b8
+	jumptextfaceplayer Route36LassText_OddTree
 
 TrainerSchoolboyAlan1:
 	trainer SCHOOLBOY, ALAN1, EVENT_BEAT_SCHOOLBOY_ALAN, SchoolboyAlan1SeenText, SchoolboyAlan1BeatenText, 0, .Script
@@ -562,7 +562,7 @@ else
 endc
 	done
 
-UnknownText_0x1945b8:
+Route36LassText_OddTree:
 	text "An odd tree is"
 	line "blocking the way"
 	cont "to Goldenrod City."

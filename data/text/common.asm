@@ -4521,8 +4521,8 @@ WonderTradePromptText::
 ;	line "accept an Egg."
 ;	prompt
 
-;SECTION "UnknownText_0x613c8", ROMX
-;UnknownText_0x613c8::
+;SECTION "WonderTradeCantAcceptAbnormalMonText", ROMX
+;WonderTradeCantAcceptAbnormalMonText::
 ;	text "Sorry, but your"
 ;	line "#mon appears to"
 ;
