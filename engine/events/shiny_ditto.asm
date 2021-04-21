@@ -39,6 +39,7 @@ endr
 	ld [hli], a
 	ldh a, [hProduct + 3]
 	ld [hli], a
+	xor a
 rept MON_DVS - MON_EVS
 	ld [hli], a
 endr
@@ -67,13 +68,13 @@ endr
 .box
 	farcall NewStorageBoxPointer
 	jr c, .NotGiven
-	ld a, [wCurPartySpecies]
-	dec a
-	call SetSeenAndCaughtMon
 	ld a, c
 	ld [wTempMonSlot], a
 	ld a, b
 	ld [wTempMonBox], a
+	ld a, [wCurPartySpecies]
+	dec a
+	call SetSeenAndCaughtMon
 	farcall UpdateStorageBoxMonFromTemp
 	ld a, 2
 	jr .done

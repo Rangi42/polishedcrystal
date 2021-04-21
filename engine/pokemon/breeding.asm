@@ -221,7 +221,7 @@ DoEggStep::
 	jr z, .next
 	ld a, [hl]
 	sub c
-	ld [hl], 0
+	ld [hl], a
 	jr c, .hatch
 	jr z, .hatch
 	; fallthrough
