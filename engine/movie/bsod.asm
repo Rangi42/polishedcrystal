@@ -32,6 +32,10 @@ BSOD:
 	call Get1bpp
 
 	ld de, BSODMessage
+	call CheckVBA
+	jr z, .message
+	ld de, VBABSODMessage
+.message
 	hlcoord 1, 1
 	rst PlaceString
 
@@ -124,6 +128,17 @@ BSODMessage:
 	next1 "crash to the deve-"
 	next1 "loper, Rangi42, at"
 	next1 "tinyurl.com/pkpc3."
+	next  "Error:@"
+
+VBABSODMessage:
+	db    "      #mon"
+	next1 " Polished Crystal"
+	next  "       ERROR"
+	next1 "------------------"
+	next  "Please use a more"
+	next1 "accurate emulator,"
+	next1 "such as BGB, mGBA,"
+	next1 "or Gambatte."
 	next  "Error:@"
 
 BSOD_Rst0:

@@ -61,6 +61,7 @@ INCLUDE "home/battle.asm"
 INCLUDE "home/sprite_anims.asm"
 INCLUDE "home/audio.asm"
 INCLUDE "home/restore_music.asm"
+INCLUDE "home/vba.asm"
 
 ; data used within home
 INCLUDE "audio/alternate_music.asm"

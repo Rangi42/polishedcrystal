@@ -3340,9 +3340,11 @@ _WarnVBAText::
 	para "that may crash"
 	line "Polished Crystal."
 
-	para "Please use another"
-	line "emulator, such as"
-	cont "BGB or Gambatte."
+	para "Please use a more"
+	line "accurate emulator,"
+
+	para "such as BGB, mGBA,"
+	line "or Gambatte."
 	prompt
 
 SECTION "_ClockTimeMayBeWrongText", ROMX

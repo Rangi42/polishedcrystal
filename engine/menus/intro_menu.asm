@@ -56,7 +56,7 @@ NewGame:
 _NewGame_FinishSetup:
 	call ResetWRAM
 	call NewGame_ClearTileMapEtc
-	call CheckVBA
+	call WarnVBA
 	call SetInitialOptions
 	call ProfElmSpeech
 	call InitializeWorld
@@ -308,7 +308,7 @@ Continue:
 	call DelayFrames
 	call ConfirmContinue
 	jmp c, CloseWindow
-	call CheckVBA
+	call WarnVBA
 	call Continue_CheckRTC_RestartClock
 	jmp c, CloseWindow
 	call Continue_CheckEGO_ResetInitialOptions
@@ -361,12 +361,8 @@ ConfirmContinue:
 	scf
 	ret
 
-CheckVBA:
-	xor a
-	ldh [rSC], a ; no-optimize redundant loads (VBA loads this wrong)
-	ldh a, [rSC]
-	and %01111100
-	cp %01111100
+WarnVBA:
+	call CheckVBA
 	ret z
 	ld hl, .WarnVBAText
 	jmp PrintText
