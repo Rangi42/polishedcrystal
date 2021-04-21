@@ -2774,7 +2774,7 @@ RemoveStorageBoxMon_MaybeRespawn:
 	pop bc
 	pop de
 	pop hl
-	jp RemoveStorageBoxMon
+	jmp RemoveStorageBoxMon
 
 BillsPC_ReleaseAll:
 	call BillsPC_HideModeIcon
