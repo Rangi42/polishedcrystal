@@ -59,12 +59,20 @@ jobs:
         popd
     - name: Create new release
       id: create_release
-      uses: actions/create-release@v1.0.0
+      uses: actions/create-release@v1.1.4
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         tag_name: v3.0.0-beta-nightly
         release_name: 3.0.0 beta nightly
+        body: |
+          This is the current Polished Crystal 3.0.0 *beta* release. The assets all have an 8-character "commit hash" at the end to identify the exact code they're built from.
+          
+          The **.gbc** assets are ROMs. If you just want to play the game, download one (regular or `-faithful`) and load it in [BGB](https://bgb.bircd.org/), [mGBA](https://mgba.io/), [Gambatte](https://github.com/sinamas/gambatte), or another accurate Game Boy Color emulator (*not* VBA or VBA-M). Do *not* download a `-debug` ROM unless you want to help debug the game.
+          
+          The **.sym** assets are "symbol files". They're useful for debugging, or for [discovering cheat codes](https://github.com/pret/pokecrystal/wiki/Discovering-GameShark-cheat-codes), although cheats are *not* officially supported and may cause bugs or crashes.
+          
+          The **.bsp** asset is a [BSP](https://github.com/aaaaaa123456789/bsp) save file patch in case you need to upgrade a save file from an older 3.0.0 beta build, using a patcher like the one for [Pokémon Prism](http://pokemonprism.com/patcher.html).
         draft: false
         prerelease: true
     - name: Upload ROM

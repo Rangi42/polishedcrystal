@@ -1995,7 +1995,9 @@ RestorePPEffect:
 	jr .loop2
 
 .do_ppup
+	push hl
 	call VitaminHappiness
+	pop hl
 	ld c, 3 << 6
 	ld a, [wTempItem]
 	cp PP_MAX
