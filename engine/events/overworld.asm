@@ -345,6 +345,31 @@ CutDownTree:
 	call DelayFrame
 	jmp LoadStandardFont
 
+TryFlashOW::
+	ld a, [wTimeOfDayPalset]
+	cp DARKNESS_PALSET
+	jr nz, .quit
+	ld d, FLASH
+	call CheckPartyMove
+	jr c, .quit
+	call GetPartyNickname
+	ld a, BANK(AskFlashScript)
+	ld hl, AskFlashScript
+	call CallScript
+	scf
+	ret
+
+.quit
+	xor a
+	ret
+
+AskFlashScript:
+	opentext
+	farwritetext _AskFlashText
+	yesorno
+	iftrue Script_UseFlash
+	endtext
+
 OWFlash:
 	call .CheckUseFlash
 	and $7f

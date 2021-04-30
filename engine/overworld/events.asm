@@ -1070,6 +1070,8 @@ TryTileCollisionEvent:
 	cp COLL_HEADBUTT_TREE
 	jr z, .headbutt
 	farcall TrySurfOW
+	jr c, .done
+	farcall TryFlashOW
 	jr nc, .noevent
 .done
 	call PlayClickSFX

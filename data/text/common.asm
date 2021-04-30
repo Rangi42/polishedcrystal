@@ -2041,6 +2041,12 @@ _CutNothingText::
 	line "Cut here."
 	prompt
 
+SECTION "_AskFlashText", ROMX
+_AskFlashText::
+	text "It's pitch black."
+	line "Want to use Flash?"
+	done
+
 SECTION "_BlindingFlashText", ROMX
 _BlindingFlashText::
 	text "A blinding Flash"
