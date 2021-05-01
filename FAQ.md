@@ -40,7 +40,7 @@ The [2.2.0 release](https://github.com/Rangi42/polishedcrystal/releases/tag/v2.2
 
 This is the ROM you should use for patching 2.2.0:
 
-* Pokémon - Crystal Version (UE) (V1.0) [C][!].gbc  
+* Pokémon - Crystal Version (UE) (V1.0) [C][!].gbc
   (`md5: 9f2922b235a5eeb78d65594e82ef5dde`)
 
 It's identical to the one built by the [pokecrystal](https://github.com/pret/pokecrystal) project.
@@ -123,7 +123,9 @@ Their animations in battle still depend on the Pokémon using them, e.g. Chansey
 * Moltres is inside Cinnabar Volcano.
 * Raikou and Entei are roaming Johto after you awaken them.
 * Suicune is in the Bell Tower after you get the Clear Bell.
-* Lugia is in the Whirl Islands after you catch all three legendary birds and then get the Silver Wing in Victory Road.
+* Lugia is in the Whirl Islands after:
+  * (3.0.0-beta) you visit Shamouti Island and then get the Silver Wing there.
+  * (2.2.0) you catch all three legendary birds and then get the Silver Wing in Victory Road.
 * Ho-Oh is atop the Bell Tower after you catch all three legendary beasts and then get the Rainbow Wing in Bell Tower.
 * Mewtwo is in Cerulean Cave.
 * Mew is a secret; look around Cinnabar Island!
@@ -132,21 +134,27 @@ Their animations in battle still depend on the Pokémon using them, e.g. Chansey
 
 ### Where do I get this item?
 
-* Helix Fossil and Dome Fossil are in Quiet Cave.
+* Helix Fossil and Dome Fossil are:
+  * (3.0.0-beta) in Mt. Moon, or may appear from breakable rocks.
+  * (2.2.0) in Quiet Cave.
 * Old Amber is in Pewter City.
+  * (3.0.0-beta) Also may appear from breakable rocks.
 * Razor Claw is in Quiet Cave, or held by some wild Sneasel.
 * Razor Fang is in Victory Road, or held by some wild Gligar.
-* Electirizer is in Rock Tunnel, or held by some wild Electabuzz.
-* Magmarizer is on Cinnabar Island, or held by some wild Magmar.
-* Protector is in Mt. Mortar, or held by some wild Rhydon.
+* Electirizer is in Rock Tunnel, or held by some wild Electabuzz family.
+* Magmarizer is on Cinnabar Island, or held by some wild Magmar family.
+* Protector is in Mt. Mortar, or held by some wild Rhyhorn/Rhydon.
 * Up-Grade is given to you in Silph Co. after fixing the Power Plant generator.
 * Dubious Disc is in Celadon City.
-* King's Rock is in Slowpoke Well, or held by some wild Slowpoke/Slowbro and Poliwhirl.
-* Metal Coat is in the Goldenrod Dept. Store basement, or held by some wild Magnemite/Magneton and Steelix.
-* Dragon Scales are in Dragon's Den and Mount Mortar, or held by some wild Horsea/Seadra and Dratini/Dragonair.
+* King's Rock is in Slowpoke Well, or held by some wild Slowpoke family and Poliwhirl/Poliwrath/Politoed.
+* Metal Coat is in the Goldenrod Dept. Store basement, or held by some wild Magnemite family and Steelix.
+* Dragon Scale is in Mt. Mortar, or held by some wild Horsea family and Dratini family.
+  * (2.2.0) Also in Dragon's Den.
 * Dusk Stones are in Dark Cave, Quiet Cave, Cerulean Cave, and Mt. Moon. Bill's grandpa also gives you one.
+  * (3.0.0-beta) Also in Union Cave, Dim Cave, and Scary Cave. You can win one in Bug-Catching Contest in the evening.
 * Shiny Stones are in National Park, Cherrygrove Bay, and Mt. Moon. Bill's grandpa also gives you one.
-* Bill's grandpa gives you one of each evolution stone in Goldenrod City. Also, certain trainers will call you up to give you stones, just like in regular Crystal. The Celadon Dept. Store sells the Fire, Water, Thunder, and Leaf Stones.
+* Bill's grandpa lives in Goldenrod City and gives you one of each Evolution stone. Also, certain trainers will call you up to give you stones, just like in regular Crystal. The Celadon Dept. Store sells the Fire, Water, Thunder, and Leaf Stones.
+  * (3.0.0-beta) The Celadon Dept. Store also sells Ice Stones.
 
 
 ### Where do I get Silver/Gold Leaves?
@@ -154,6 +162,8 @@ Their animations in battle still depend on the Pokémon using them, e.g. Chansey
 Silver Leaves are like Shards in future generations: they can be given to Move Tutors to learn moves. Wild Oddish have a 50% chance of holding Silver Leaves, and there are some hidden on the ground in Ilex Forest.
 
 Gold Leaves can be given to the Move Maniac in Cianwood City to relearn moves. Wild Bellsprout have a 50% chance of holding Gold Leaves, and there are some hidden on the ground in Yellow Forest.
+
+(3.0.0-beta) Both Leaves may also drop from Headbutt trees.
 
 
 ### Where do I get this TM/HM?
