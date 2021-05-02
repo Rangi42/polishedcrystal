@@ -101,17 +101,15 @@ These changes have been made since the current 2.2.0 release. If you build the p
 * Add: Route 23 between Pokémon League Gate and Victory Road.
 * Add: Oak's lab looks different from Elm's lab.
 * Add: Grass-green for Faraway Island.
-* Add: TM prices from OR/AS.
-* Add: Update random Wonder Trade OT names.
 * Add: Respawn roaming beasts when released.
 * Add: Mr. Pokémon gives you a non-OT Ditto, not an Egg, for the Masuda breeding method.
 * Add: Use original Jynx sprite.
 * Add: Make overworld sprites darker at night.
 * Add: Goldenrod Dept. Store and Celadon Mansion roofs have a dark sky at night.
-* Add: Olivine Gym has its two trainers from HGSS.
+* Add: Olivine Gym has its two trainers from HG/SS.
 * Add: Unlock frame type 9.
 * Add: Choose a typeface/font.
-* Add: XY Bicycle music for Cycling Road.
+* Add: X/Y Bicycle music for Cycling Road.
 * Add: Prof.Oak gives you the Oval Charm for seeing all 254 Pokémon, and the Shiny Charm for catching all 254.
 * Add: Prof.Elm is in the intro.
 * Add: Cosplayer, Bug Maniac, Ruin Maniac, Lady, Baker, Tamer, Artist, Aroma Lady, Sightseer♂, and Sightseer♀ trainer classes.
@@ -119,7 +117,7 @@ These changes have been made since the current 2.2.0 release. If you build the p
 * Add: Show PC box quantity.
 * Add: Pokémon stats show caught Poké Ball.
 * Add: Nest, Net, Dive, Luxury, and Heal Balls.
-* Add: Cerulean Bike Shop from HGSS.
+* Add: Cerulean Bike Shop from HG/SS.
 * Add: Elite 4 rooms have floor arenas.
 * Add: Confirm gender selection.
 * Add: Colored party Pokémon icons.
@@ -134,7 +132,7 @@ These changes have been made since the current 2.2.0 release. If you build the p
 * Add: Final Lyra battle.
 * Add: Use a Ball on an already-caught Pokémon to change its Ball.
 * Add: Kurt makes Balls right away.
-* Add: Bug-Catching Contest prizes from HGSS.
+* Add: Bug-Catching Contest prizes from HG/SS.
 * Add: Hidden Grottoes.
 * Add: Unown ! and ?.
 * Add: In-battle symbol to show that Nuzlocke mode prevents capture.
@@ -171,7 +169,7 @@ These changes have been made since the current 2.2.0 release. If you build the p
 * Add: Show genders in party menu.
 * Add: Show weather icons during battle like Gen 5+.
 * Add: Vending machines have a 1/32 chance of giving an extra item.
-* Add: Cross whirlpools, don't remove them (like HGSS).
+* Add: Cross whirlpools, don't remove them (like HG/SS).
 * Add: Rename RageCandyBar to Cake of Rage.
 * Add: Rename Guard Spec. to Guard Stats.
 * Add: Rename Kay to Carrie (from Pokémon Stadium 2).
