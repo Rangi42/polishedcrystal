@@ -41,8 +41,8 @@
 	const PIDGEOT    ; 12
 	const RATTATA    ; 13
 	const RATICATE   ; 14
-	const MARILL     ; 15
-	const AZUMARILL  ; 16
+	const SPEAROW    ; 15
+	const FEAROW     ; 16
 	const EKANS      ; 17
 	const ARBOK      ; 18
 	const PIKACHU    ; 19
@@ -128,18 +128,18 @@
 	const MAROWAK    ; 69
 	const HITMONLEE  ; 6a
 	const HITMONCHAN ; 6b
-	const KOFFING    ; 6c
-	const WEEZING    ; 6d
-	const RHYHORN    ; 6e
-	const RHYDON     ; 6f
-	const CHANSEY    ; 70
-	const TANGELA    ; 71
-	const KANGASKHAN ; 72
-	const HORSEA     ; 73
-	const SEADRA     ; 74
-	const TOGEPI     ; 75
-	const TOGETIC    ; 76
-	const TOGEKISS   ; 77
+	const LICKITUNG  ; 6c
+	const KOFFING    ; 6d
+	const WEEZING    ; 6e
+	const RHYHORN    ; 6f
+	const RHYDON     ; 70
+	const CHANSEY    ; 71
+	const TANGELA    ; 72
+	const KANGASKHAN ; 73
+	const HORSEA     ; 74
+	const SEADRA     ; 75
+	const GOLDEEN    ; 76
+	const SEAKING    ; 77
 	const STARYU     ; 78
 	const STARMIE    ; 79
 	const MR__MIME   ; 7a
@@ -193,74 +193,74 @@
 	const CHINCHOU   ; aa
 	const LANTURN    ; ab
 	const PICHU      ; ac
-	const MUNCHLAX   ; ad
-	const MAGNEZONE  ; ae
-	const RHYPERIOR  ; af
-	const TANGROWTH  ; b0
+	const CLEFFA     ; ad
+	const IGGLYBUFF  ; ae
+	const TOGEPI     ; af
+	const TOGETIC    ; b0
 	const NATU       ; b1
 	const XATU       ; b2
 	const MAREEP     ; b3
 	const FLAAFFY    ; b4
 	const AMPHAROS   ; b5
 	const BELLOSSOM  ; b6
-	const SUDOWOODO  ; b7
-	const POLITOED   ; b8
-	const SUNKERN    ; b9
-	const SUNFLORA   ; ba
-	const YANMA      ; bb
-	const YANMEGA    ; bc
-	const WOOPER     ; bd
-	const QUAGSIRE   ; be
-	const ESPEON     ; bf
-	const UMBREON    ; c0
-	const MURKROW    ; c1
-	const HONCHKROW  ; c2
-	const SLOWKING   ; c3
-	const MISDREAVUS ; c4
-	const MISMAGIUS  ; c5
-	const UNOWN      ; c6
-	const WOBBUFFET  ; c7
-	const GIRAFARIG  ; c8
-	const PINECO     ; c9
-	const FORRETRESS ; ca
-	const DUNSPARCE  ; cb
-	const GLIGAR     ; cc
-	const GLISCOR    ; cd
-	const STEELIX    ; ce
-	const SNUBBULL   ; cf
-	const GRANBULL   ; d0
-	const QWILFISH   ; d1
-	const SCIZOR     ; d2
-	const SHUCKLE    ; d3
-	const HERACROSS  ; d4
-	const SNEASEL    ; d5
-	const WEAVILE    ; d6
-	const TEDDIURSA  ; d7
-	const URSARING   ; d8
-	const SLUGMA     ; d9
-	const MAGCARGO   ; da
-	const SWINUB     ; db
-	const PILOSWINE  ; dc
-	const MAMOSWINE  ; dd
+	const MARILL     ; b7
+	const AZUMARILL  ; b8
+	const SUDOWOODO  ; b9
+	const POLITOED   ; ba
+	const HOPPIP     ; bb
+	const SKIPLOOM   ; bc
+	const JUMPLUFF   ; bd
+	const AIPOM      ; be
+	const SUNKERN    ; bf
+	const SUNFLORA   ; c0
+	const YANMA      ; c1
+	const WOOPER     ; c2
+	const QUAGSIRE   ; c3
+	const ESPEON     ; c4
+	const UMBREON    ; c5
+	const MURKROW    ; c6
+	const SLOWKING   ; c7
+	const MISDREAVUS ; c8
+	const UNOWN      ; c9
+	const WOBBUFFET  ; ca
+	const GIRAFARIG  ; cb
+	const PINECO     ; cc
+	const FORRETRESS ; cd
+	const DUNSPARCE  ; ce
+	const GLIGAR     ; cf
+	const STEELIX    ; d0
+	const SNUBBULL   ; d1
+	const GRANBULL   ; d2
+	const QWILFISH   ; d3
+	const SCIZOR     ; d4
+	const SHUCKLE    ; d5
+	const HERACROSS  ; d6
+	const SNEASEL    ; d7
+	const TEDDIURSA  ; d8
+	const URSARING   ; d9
+	const SLUGMA     ; da
+	const MAGCARGO   ; db
+	const SWINUB     ; dc
+	const PILOSWINE  ; dd
 	const CORSOLA    ; de
 	const REMORAID   ; df
 	const OCTILLERY  ; e0
-	const MANTINE    ; e1
-	const SKARMORY   ; e2
-	const HOUNDOUR   ; e3
-	const HOUNDOOM   ; e4
-	const KINGDRA    ; e5
-	const PHANPY     ; e6
-	const DONPHAN    ; e7
-	const PORYGON2   ; e8
-	const PORYGON_Z  ; e9
-	const SMEARGLE   ; ea
-	const TYROGUE    ; eb
-	const HITMONTOP  ; ec
-	const ELEKID     ; ed
-	const ELECTIVIRE ; ee
-	const MAGBY      ; ef
-	const MAGMORTAR  ; f0
+	const DELIBIRD   ; e1
+	const MANTINE    ; e2
+	const SKARMORY   ; e3
+	const HOUNDOUR   ; e4
+	const HOUNDOOM   ; e5
+	const KINGDRA    ; e6
+	const PHANPY     ; e7
+	const DONPHAN    ; e8
+	const PORYGON2   ; e9
+	const STANTLER   ; ea
+	const SMEARGLE   ; eb
+	const TYROGUE    ; ec
+	const HITMONTOP  ; ed
+	const SMOOCHUM   ; ee
+	const ELEKID     ; ef
+	const MAGBY      ; f0
 	const MILTANK    ; f1
 	const BLISSEY    ; f2
 	const RAIKOU     ; f3
@@ -272,11 +272,26 @@
 	const LUGIA      ; f9
 	const HO_OH      ; fa
 	const CELEBI     ; fb
-	const LEAFEON    ; fc
-	const GLACEON    ; fd
-	const SYLVEON    ; fe
-NUM_POKEMON EQU const_value - 1 ; fe
+	const MISMAGIUS  ; fc
+	const HONCHKROW  ; fd
+	const MUNCHLAX   ; fe
 	const EGG        ; ff
+	const_skip       ; 100 is unused
+	const WEAVILE    ; 101
+	const MAGNEZONE  ; 102
+	const RHYPERIOR  ; 103
+	const TANGROWTH  ; 104
+	const ELECTIVIRE ; 105
+	const MAGMORTAR  ; 106
+	const TOGEKISS   ; 107
+	const YANMEGA    ; 108
+	const LEAFEON    ; 109
+	const GLACEON    ; 10a
+	const GLISCOR    ; 10b
+	const MAMOSWINE  ; 10c
+	const PORYGON_Z  ; 10d
+	const SYLVEON    ; 10e
+NUM_POKEMON EQU const_value - 1 ; 10e
 
 CANCEL EQU -1
 
@@ -306,121 +321,121 @@ ENDM
 NO_FORM EQU 0
 PLAIN_FORM EQU 1
 
-FIRST_COSMETIC_FORM_MON EQU const_value ; 100
+FIRST_COSMETIC_FORM_MON EQU const_value ; 10f
 
 ; unown
 	ext_const_def 1, UNOWN_A_FORM    ;     (01)
-	ext_const UNOWN_B_FORM           ; 100 (02)
-	ext_const UNOWN_C_FORM           ; 101 (03)
-	ext_const UNOWN_D_FORM           ; 102 (04)
-	ext_const UNOWN_E_FORM           ; 103 (05)
-	ext_const UNOWN_F_FORM           ; 104 (06)
-	ext_const UNOWN_G_FORM           ; 105 (07)
-	ext_const UNOWN_H_FORM           ; 106 (08)
-	ext_const UNOWN_I_FORM           ; 107 (09)
-	ext_const UNOWN_J_FORM           ; 108 (0a)
-	ext_const UNOWN_K_FORM           ; 109 (0b)
-	ext_const UNOWN_L_FORM           ; 10a (0c)
-	ext_const UNOWN_M_FORM           ; 10b (0d)
-	ext_const UNOWN_N_FORM           ; 10c (0e)
-	ext_const UNOWN_O_FORM           ; 10d (0f)
-	ext_const UNOWN_P_FORM           ; 10e (10)
-	ext_const UNOWN_Q_FORM           ; 10f (11)
-	ext_const UNOWN_R_FORM           ; 110 (12)
-	ext_const UNOWN_S_FORM           ; 111 (13)
-	ext_const UNOWN_T_FORM           ; 112 (14)
-	ext_const UNOWN_U_FORM           ; 113 (15)
-	ext_const UNOWN_V_FORM           ; 114 (16)
-	ext_const UNOWN_W_FORM           ; 115 (17)
-	ext_const UNOWN_X_FORM           ; 116 (18)
-	ext_const UNOWN_Y_FORM           ; 117 (19)
-	ext_const UNOWN_Z_FORM           ; 118 (1a)
-	ext_const UNOWN_EXCLAMATION_FORM ; 119 (1b)
-	ext_const UNOWN_QUESTION_FORM    ; 11a (1c)
+	ext_const UNOWN_B_FORM           ; 110 (02)
+	ext_const UNOWN_C_FORM           ; 111 (03)
+	ext_const UNOWN_D_FORM           ; 112 (04)
+	ext_const UNOWN_E_FORM           ; 113 (05)
+	ext_const UNOWN_F_FORM           ; 114 (06)
+	ext_const UNOWN_G_FORM           ; 115 (07)
+	ext_const UNOWN_H_FORM           ; 116 (08)
+	ext_const UNOWN_I_FORM           ; 117 (09)
+	ext_const UNOWN_J_FORM           ; 118 (0a)
+	ext_const UNOWN_K_FORM           ; 119 (0b)
+	ext_const UNOWN_L_FORM           ; 11a (0c)
+	ext_const UNOWN_M_FORM           ; 11b (0d)
+	ext_const UNOWN_N_FORM           ; 11c (0e)
+	ext_const UNOWN_O_FORM           ; 11d (0f)
+	ext_const UNOWN_P_FORM           ; 11e (10)
+	ext_const UNOWN_Q_FORM           ; 11f (11)
+	ext_const UNOWN_R_FORM           ; 120 (12)
+	ext_const UNOWN_S_FORM           ; 121 (13)
+	ext_const UNOWN_T_FORM           ; 122 (14)
+	ext_const UNOWN_U_FORM           ; 123 (15)
+	ext_const UNOWN_V_FORM           ; 124 (16)
+	ext_const UNOWN_W_FORM           ; 125 (17)
+	ext_const UNOWN_X_FORM           ; 126 (18)
+	ext_const UNOWN_Y_FORM           ; 127 (19)
+	ext_const UNOWN_Z_FORM           ; 128 (1a)
+	ext_const UNOWN_EXCLAMATION_FORM ; 129 (1b)
+	ext_const UNOWN_QUESTION_FORM    ; 12a (1c)
 NUM_UNOWN EQU ext_const_value - 1
 
 ; arbok
 	ext_const_def 1, ARBOK_JOHTO_FORM ; (1)
-	ext_const ARBOK_KANTO_FORM    ; 11b (2)
-	ext_const ARBOK_KOGA_FORM     ; 11c (3)
-	ext_const ARBOK_AGATHA_FORM   ; 11d (4)
-	ext_const ARBOK_ARIANA_FORM   ; 11e (5)
+	ext_const ARBOK_KANTO_FORM    ; 12b (2)
+	ext_const ARBOK_KOGA_FORM     ; 12c (3)
+	ext_const ARBOK_AGATHA_FORM   ; 12d (4)
+	ext_const ARBOK_ARIANA_FORM   ; 12e (5)
 
 ; pikachu
 	ext_const_def 2
-	ext_const PIKACHU_FLY_FORM    ; 11f (2)
-	ext_const PIKACHU_SURF_FORM   ; 120 (3)
-	ext_const PIKACHU_RED_FORM    ; 121 (4)
-	ext_const PIKACHU_YELLOW_FORM ; 122 (5)
-	ext_const PIKACHU_SPARK_FORM  ; 123 (6)
+	ext_const PIKACHU_FLY_FORM    ; 12f (2)
+	ext_const PIKACHU_SURF_FORM   ; 130 (3)
+	ext_const PIKACHU_RED_FORM    ; 131 (4)
+	ext_const PIKACHU_YELLOW_FORM ; 132 (5)
+	ext_const PIKACHU_SPARK_FORM  ; 133 (6)
 
 ; pichu
 	ext_const_def 2
-	ext_const PICHU_SPIKY_EARED_FORM ; 124 (2)
+	ext_const PICHU_SPIKY_EARED_FORM ; 134 (2)
 
 ; magikarp
 	ext_const_def 2
-	ext_const MAGIKARP_SKELLY_FORM   ; 125 (02)
-	ext_const MAGIKARP_CALICO1_FORM  ; 126 (03)
-	ext_const MAGIKARP_CALICO2_FORM  ; 127 (04)
-	ext_const MAGIKARP_CALICO3_FORM  ; 128 (05)
-	ext_const MAGIKARP_TWO_TONE_FORM ; 129 (06)
-	ext_const MAGIKARP_ORCA_FORM     ; 12a (07)
-	ext_const MAGIKARP_DAPPLES_FORM  ; 12b (08)
-	ext_const MAGIKARP_TIGER_FORM    ; 12c (09)
-	ext_const MAGIKARP_ZEBRA_FORM    ; 12d (0a)
-	ext_const MAGIKARP_STRIPE_FORM   ; 12e (0b)
-	ext_const MAGIKARP_BUBBLES_FORM  ; 12f (0c)
-	ext_const MAGIKARP_FOREHEAD_FORM ; 130 (0d)
-	ext_const MAGIKARP_MASK_FORM     ; 131 (0e)
-	ext_const MAGIKARP_SAUCY_FORM    ; 132 (0f)
-	ext_const MAGIKARP_RAINDROP_FORM ; 133 (10)
+	ext_const MAGIKARP_SKELLY_FORM   ; 135 (02)
+	ext_const MAGIKARP_CALICO1_FORM  ; 136 (03)
+	ext_const MAGIKARP_CALICO2_FORM  ; 137 (04)
+	ext_const MAGIKARP_CALICO3_FORM  ; 138 (05)
+	ext_const MAGIKARP_TWO_TONE_FORM ; 139 (06)
+	ext_const MAGIKARP_ORCA_FORM     ; 13a (07)
+	ext_const MAGIKARP_DAPPLES_FORM  ; 13b (08)
+	ext_const MAGIKARP_TIGER_FORM    ; 13c (09)
+	ext_const MAGIKARP_ZEBRA_FORM    ; 13d (0a)
+	ext_const MAGIKARP_STRIPE_FORM   ; 13e (0b)
+	ext_const MAGIKARP_BUBBLES_FORM  ; 13f (0c)
+	ext_const MAGIKARP_FOREHEAD_FORM ; 140 (0d)
+	ext_const MAGIKARP_MASK_FORM     ; 141 (0e)
+	ext_const MAGIKARP_SAUCY_FORM    ; 142 (0f)
+	ext_const MAGIKARP_RAINDROP_FORM ; 143 (10)
 NUM_MAGIKARP EQU ext_const_value - 1 ; 10
 
 NUM_COSMETIC_FORMS EQU const_value - FIRST_COSMETIC_FORM_MON ; 34
 
-FIRST_VARIANT_FORM_MON EQU const_value ; 134
+FIRST_VARIANT_FORM_MON EQU const_value ; 144
 
 ; gyarados
 	ext_const_def NUM_MAGIKARP + 1
-	ext_const GYARADOS_RED_FORM ; 134 (11)
+	ext_const GYARADOS_RED_FORM ; 144 (11)
 
 ; mewtwo
 	ext_const_def 2
-	ext_const MEWTWO_ARMORED_FORM ; 135 (2)
+	ext_const MEWTWO_ARMORED_FORM ; 145 (2)
 
 ; alolan forms
 ALOLAN_FORM EQU 2
-	const_skip ; 136 rattata
-	const_skip ; 137 raticate
-	const_skip ; 138 sandshrew
-	const_skip ; 139 sandslash
-	const_skip ; 13a vulpix
-	const_skip ; 13b ninetales
-	const_skip ; 13c diglett
-	const_skip ; 13d dugtrio
-	const_skip ; 13e meowth
-	const_skip ; 13f persian
-	const_skip ; 140 geodude
-	const_skip ; 141 graveler
-	const_skip ; 142 golem
-	const_skip ; 143 grimer
-	const_skip ; 144 muk
-	const_skip ; 145 raichu
-	const_skip ; 146 exeggutor
-	const_skip ; 147 marowak
+	const_skip ; 146 rattata
+	const_skip ; 147 raticate
+	const_skip ; 148 sandshrew
+	const_skip ; 149 sandslash
+	const_skip ; 14a vulpix
+	const_skip ; 14b ninetales
+	const_skip ; 14c diglett
+	const_skip ; 14d dugtrio
+	const_skip ; 14e meowth
+	const_skip ; 14f persian
+	const_skip ; 150 geodude
+	const_skip ; 151 graveler
+	const_skip ; 152 golem
+	const_skip ; 153 grimer
+	const_skip ; 154 muk
+	const_skip ; 155 raichu
+	const_skip ; 156 exeggutor
+	const_skip ; 157 marowak
 
 ; galarian forms
 GALARIAN_FORM EQU 2
-	const_skip ; 148 ponyta
-	const_skip ; 149 rapidash
-	const_skip ; 14a slowpoke
-	const_skip ; 14b slowbro
-	const_skip ; 14c slowking
-	const_skip ; 14d weezing
-	const_skip ; 14e articuno
-	const_skip ; 14f zapdos
-	const_skip ; 150 moltres
+	const_skip ; 158 ponyta
+	const_skip ; 159 rapidash
+	const_skip ; 15a slowpoke
+	const_skip ; 15b slowbro
+	const_skip ; 15c slowking
+	const_skip ; 15d weezing
+	const_skip ; 15e articuno
+	const_skip ; 15f zapdos
+	const_skip ; 160 moltres
 
 NUM_VARIANT_FORMS EQU const_value - FIRST_VARIANT_FORM_MON ; 1d
 
