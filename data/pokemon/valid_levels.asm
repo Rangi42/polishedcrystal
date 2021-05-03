@@ -22,8 +22,8 @@ ValidPokemonLevels: ; for Wonder Trade
 	db  36, 100 ; Pidgeot
 	db   1,  19 ; Rattata
 	db  20, 100 ; Raticate
-	db   1,  17 ; Marill
-	db  18, 100 ; Azumarill
+	db   1,  19 ; Spearow
+	db  20, 100 ; Fearow
 	db   1,  21 ; Ekans
 	db  22, 100 ; Arbok
 	db   1,  19 ; Pikachu
@@ -118,9 +118,8 @@ ValidPokemonLevels: ; for Wonder Trade
 	db  20, 100 ; Kangaskhan
 	db   1,  31 ; Horsea
 	db  32,  54 ; Seadra
-	db   1,  19 ; Togepi
-	db  20,  39 ; Togetic
-	db  40, 100 ; Togekiss
+	db   1,  32 ; Goldeen
+	db  33, 100 ; Seaking
 	db   1,  32 ; Staryu
 	db  33, 100 ; Starmie
 	db  20, 100 ; Mr. Mime
@@ -174,31 +173,34 @@ ValidPokemonLevels: ; for Wonder Trade
 	db   1,  26 ; Chinchou
 	db  27, 100 ; Lanturn
 	db   1,  19 ; Pichu
-	db   1,  19 ; Munchlax
-	db  50, 100 ; Magnezone
-	db  55, 100 ; Rhyperior
-	db  39, 100 ; Tangrowth
+	db   1,  19 ; Cleffa
+	db   1,  19 ; Igglybuff
+	db   1,  19 ; Togepi
+	db  20,  39 ; Togetic
 	db   1,  24 ; Natu
 	db  25, 100 ; Xatu
 	db   1,  14 ; Mareep
 	db  15,  29 ; Flaaffy
 	db  30, 100 ; Ampharos
 	db  32, 100 ; Bellossom
+	db   1,  17 ; Marill
+	db  18, 100 ; Azumarill
 	db  10, 100 ; Sudowoodo
 	db  36, 100 ; Politoed
+	db   1,  17 ; Hoppip
+	db  18,  26 ; Skiploom
+	db  27, 100 ; Jumpluff
+	db   1, 100 ; Aipom
 	db   1,  31 ; Sunkern
 	db  32, 100 ; Sunflora
 	db   1,  39 ; Yanma
-	db  40, 100 ; Yanmega
 	db   1,  19 ; Wooper
 	db  20, 100 ; Quagsire
 	db  20, 100 ; Espeon
 	db  20, 100 ; Umbreon
 	db   1,  39 ; Murkrow
-	db  40, 100 ; Honchkrow
 	db  37, 100 ; Slowking
 	db   1,  39 ; Misdreavus
-	db  40, 100 ; Mismagius
 	db 255, 255 ; Unown
 	db   1, 100 ; Wobbuffet
 	db   1, 100 ; Girafarig
@@ -206,7 +208,6 @@ ValidPokemonLevels: ; for Wonder Trade
 	db  31, 100 ; Forretress
 	db   1, 100 ; Dunsparce
 	db   1,  19 ; Gligar
-	db  20, 100 ; Gliscor
 	db  20, 100 ; Steelix
 	db   1,  22 ; Snubbull
 	db  23, 100 ; Granbull
@@ -215,17 +216,16 @@ ValidPokemonLevels: ; for Wonder Trade
 	db   1, 100 ; Shuckle
 	db  10, 100 ; Heracross
 	db   1,  39 ; Sneasel
-	db  40, 100 ; Weavile
 	db   1,  29 ; Teddiursa
 	db  30, 100 ; Ursaring
 	db   1,  37 ; Slugma
 	db  38, 100 ; Magcargo
 	db   1,  32 ; Swinub
 	db  33,  44 ; Piloswine
-	db  45, 100 ; Mamoswine
 	db   1, 100 ; Corsola
 	db   1,  24 ; Remoraid
 	db  25, 100 ; Octillery
+	db   1, 100 ; Delibird
 	db   1, 100 ; Mantine
 	db  10, 100 ; Skarmory
 	db   1,  23 ; Houndour
@@ -234,14 +234,13 @@ ValidPokemonLevels: ; for Wonder Trade
 	db   1,  24 ; Phanpy
 	db  25, 100 ; Donphan
 	db  20,  39 ; Porygon2
-	db  40, 100 ; Porygon-Z
+	db   1, 100 ; Stantler
 	db   1, 100 ; Smeargle
 	db   1,  19 ; Tyrogue
 	db  20, 100 ; Hitmontop
+	db   1,  19 ; Smoochum
 	db   1,  19 ; Elekid
-	db  47, 100 ; Electivire
 	db   1,  19 ; Magby
-	db  47, 100 ; Magmortar
 	db  20, 100 ; Miltank
 	db  20, 100 ; Blissey
 	db 255, 255 ; Raikou
@@ -253,9 +252,23 @@ ValidPokemonLevels: ; for Wonder Trade
 	db 255, 255 ; Lugia
 	db 255, 255 ; Ho-Oh
 	db 255, 255 ; Celebi
-	db  20, 100 ; Leafeon
-	db  20, 100 ; Glaceon
-	db  20, 100 ; Sylveon
+	db  40, 100 ; Mismagius
+	db  40, 100 ; Honchkrow
+	db   1,  19 ; Munchlax
 	assert_table_length NUM_POKEMON + 1
 	db 255, 255 ; Egg
+	db  40, 100 ; Weavile
+	db  50, 100 ; Magnezone
+	db  55, 100 ; Rhyperior
+	db  39, 100 ; Tangrowth
+	db  47, 100 ; Electivire
+	db  47, 100 ; Magmortar
+	db  40, 100 ; Togekiss
+	db  40, 100 ; Yanmega
+	db  20, 100 ; Leafeon
+	db  20, 100 ; Glaceon
+	db  20, 100 ; Gliscor
+	db  45, 100 ; Mamoswine
+	db  40, 100 ; Porygon-Z
+	db  20, 100 ; Sylveon
 	assert_table_length NUM_SPECIES + 1
