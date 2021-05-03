@@ -24,8 +24,8 @@ EvosAttacksPointers::
 	dw PidgeotEvosAttacks
 	dw RattataPlainEvosAttacks
 	dw RaticatePlainEvosAttacks
-	dw MarillEvosAttacks
-	dw AzumarillEvosAttacks
+	dw SpearowEvosAttacks
+	dw FearowEvosAttacks
 	dw EkansEvosAttacks
 	dw ArbokEvosAttacks
 	dw PikachuEvosAttacks
@@ -111,6 +111,7 @@ EvosAttacksPointers::
 	dw MarowakPlainEvosAttacks
 	dw HitmonleeEvosAttacks
 	dw HitmonchanEvosAttacks
+	dw LickitungEvosAttacks
 	dw KoffingEvosAttacks
 	dw WeezingPlainEvosAttacks
 	dw RhyhornEvosAttacks
@@ -120,9 +121,8 @@ EvosAttacksPointers::
 	dw KangaskhanEvosAttacks
 	dw HorseaEvosAttacks
 	dw SeadraEvosAttacks
-	dw TogepiEvosAttacks
-	dw TogeticEvosAttacks
-	dw TogekissEvosAttacks
+	dw GoldeenEvosAttacks
+	dw SeakingEvosAttacks
 	dw StaryuEvosAttacks
 	dw StarmieEvosAttacks
 	dw MrMimeEvosAttacks
@@ -176,31 +176,34 @@ EvosAttacksPointers::
 	dw ChinchouEvosAttacks
 	dw LanturnEvosAttacks
 	dw PichuEvosAttacks
-	dw MunchlaxEvosAttacks
-	dw MagnezoneEvosAttacks
-	dw RhyperiorEvosAttacks
-	dw TangrowthEvosAttacks
+	dw CleffaEvosAttacks
+	dw IgglybuffEvosAttacks
+	dw TogepiEvosAttacks
+	dw TogeticEvosAttacks
 	dw NatuEvosAttacks
 	dw XatuEvosAttacks
 	dw MareepEvosAttacks
 	dw FlaaffyEvosAttacks
 	dw AmpharosEvosAttacks
 	dw BellossomEvosAttacks
+	dw MarillEvosAttacks
+	dw AzumarillEvosAttacks
 	dw SudowoodoEvosAttacks
 	dw PolitoedEvosAttacks
+	dw HoppipEvosAttacks
+	dw SkiploomEvosAttacks
+	dw JumpluffEvosAttacks
+	dw AipomEvosAttacks
 	dw SunkernEvosAttacks
 	dw SunfloraEvosAttacks
 	dw YanmaEvosAttacks
-	dw YanmegaEvosAttacks
 	dw WooperEvosAttacks
 	dw QuagsireEvosAttacks
 	dw EspeonEvosAttacks
 	dw UmbreonEvosAttacks
 	dw MurkrowEvosAttacks
-	dw HonchkrowEvosAttacks
 	dw SlowkingPlainEvosAttacks
 	dw MisdreavusEvosAttacks
-	dw MismagiusEvosAttacks
 	dw UnownEvosAttacks
 	dw WobbuffetEvosAttacks
 	dw GirafarigEvosAttacks
@@ -208,7 +211,6 @@ EvosAttacksPointers::
 	dw ForretressEvosAttacks
 	dw DunsparceEvosAttacks
 	dw GligarEvosAttacks
-	dw GliscorEvosAttacks
 	dw SteelixEvosAttacks
 	dw SnubbullEvosAttacks
 	dw GranbullEvosAttacks
@@ -217,17 +219,16 @@ EvosAttacksPointers::
 	dw ShuckleEvosAttacks
 	dw HeracrossEvosAttacks
 	dw SneaselEvosAttacks
-	dw WeavileEvosAttacks
 	dw TeddiursaEvosAttacks
 	dw UrsaringEvosAttacks
 	dw SlugmaEvosAttacks
 	dw MagcargoEvosAttacks
 	dw SwinubEvosAttacks
 	dw PiloswineEvosAttacks
-	dw MamoswineEvosAttacks
 	dw CorsolaEvosAttacks
 	dw RemoraidEvosAttacks
 	dw OctilleryEvosAttacks
+	dw DelibirdEvosAttacks
 	dw MantineEvosAttacks
 	dw SkarmoryEvosAttacks
 	dw HoundourEvosAttacks
@@ -236,14 +237,13 @@ EvosAttacksPointers::
 	dw PhanpyEvosAttacks
 	dw DonphanEvosAttacks
 	dw Porygon2EvosAttacks
-	dw PorygonZEvosAttacks
+	dw StantlerEvosAttacks
 	dw SmeargleEvosAttacks
 	dw TyrogueEvosAttacks
 	dw HitmontopEvosAttacks
+	dw SmoochumEvosAttacks
 	dw ElekidEvosAttacks
-	dw ElectivireEvosAttacks
 	dw MagbyEvosAttacks
-	dw MagmortarEvosAttacks
 	dw MiltankEvosAttacks
 	dw BlisseyEvosAttacks
 	dw RaikouEvosAttacks
@@ -255,12 +255,25 @@ EvosAttacksPointers::
 	dw LugiaEvosAttacks
 	dw HoOhEvosAttacks
 	dw CelebiEvosAttacks
+	dw MismagiusEvosAttacks
+	dw HonchkrowEvosAttacks
+	dw MunchlaxEvosAttacks
+	dw EggEvosAttacks
+	dw EggEvosAttacks
+	dw WeavileEvosAttacks
+	dw MagnezoneEvosAttacks
+	dw RhyperiorEvosAttacks
+	dw TangrowthEvosAttacks
+	dw ElectivireEvosAttacks
+	dw MagmortarEvosAttacks
+	dw TogekissEvosAttacks
+	dw YanmegaEvosAttacks
 	dw LeafeonEvosAttacks
 	dw GlaceonEvosAttacks
+	dw GliscorEvosAttacks
+	dw MamoswineEvosAttacks
+	dw PorygonZEvosAttacks
 	dw SylveonEvosAttacks
-	assert_table_length NUM_POKEMON
-
-	dw EggEvosAttacks
 
 	dw GyaradosEvosAttacks
 	dw MewtwoEvosAttacks
