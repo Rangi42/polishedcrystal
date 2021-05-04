@@ -325,6 +325,24 @@ MewtwoArmoredIcon:: INCBIN "gfx/icons/mewtwo_armored.2bpp.lz"
 
 SECTION "Mon Icons 17", ROMX
 
+SpearowIcon::      INCBIN "gfx/icons/spearow.2bpp.lz"
+FearowIcon::       INCBIN "gfx/icons/fearow.2bpp.lz"
+LickitungIcon::    INCBIN "gfx/icons/lickitung.2bpp.lz"
+GoldeenIcon::      INCBIN "gfx/icons/goldeen.2bpp.lz"
+SeakingIcon::      INCBIN "gfx/icons/seaking.2bpp.lz"
+CleffaIcon::       INCBIN "gfx/icons/cleffa.2bpp.lz"
+IgglybuffIcon::    INCBIN "gfx/icons/igglybuff.2bpp.lz"
+HoppipIcon::       INCBIN "gfx/icons/hoppip.2bpp.lz"
+SkiploomIcon::     INCBIN "gfx/icons/skiploom.2bpp.lz"
+JumpluffIcon::     INCBIN "gfx/icons/jumpluff.2bpp.lz"
+AipomIcon::        INCBIN "gfx/icons/aipom.2bpp.lz"
+DelibirdIcon::     INCBIN "gfx/icons/delibird.2bpp.lz"
+StantlerIcon::     INCBIN "gfx/icons/stantler.2bpp.lz"
+SmoochumIcon::     INCBIN "gfx/icons/smoochum.2bpp.lz"
+
+
+SECTION "Mon Icons 18", ROMX
+
 UnownBIcon::       INCBIN "gfx/icons/unown_b.2bpp.lz"
 UnownCIcon::       INCBIN "gfx/icons/unown_c.2bpp.lz"
 UnownDIcon::       INCBIN "gfx/icons/unown_d.2bpp.lz"
@@ -343,7 +361,7 @@ UnownPIcon::       INCBIN "gfx/icons/unown_p.2bpp.lz"
 UnownQIcon::       INCBIN "gfx/icons/unown_q.2bpp.lz"
 
 
-SECTION "Mon Icons 18", ROMX
+SECTION "Mon Icons 19", ROMX
 
 UnownRIcon::       INCBIN "gfx/icons/unown_r.2bpp.lz"
 UnownSIcon::       INCBIN "gfx/icons/unown_s.2bpp.lz"

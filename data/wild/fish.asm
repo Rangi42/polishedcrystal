@@ -201,28 +201,28 @@ FishGroups:
 
 TimeFishGroups:
 	;  day              nite
-	dpbpb CORSOLA,    20,  STARYU,     20
-	dpbpb CORSOLA,    40,  STARYU,     40
-	dpbpb SHELLDER,   20,  SHELLDER,   20
-	dpbpb SHELLDER,   40,  SHELLDER,   40
-	dpbpb PSYDUCK,    20,  PSYDUCK,    20
-	dpbpb PSYDUCK,    40,  PSYDUCK,    40
-	dpbpb POLIWAG,    20,  POLIWAG,    20
-	dpbpb POLIWAG,    40,  POLIWAG,    40
-	dpbpb DRATINI,    20,  DRATINI,    20
-	dpbpb DRATINI,    40,  DRATINI,    40
-	dpbpb QWILFISH,   20,  QWILFISH,   20
-	dpbpb QWILFISH,   40,  QWILFISH,   40
-	dpbpb REMORAID,   20,  REMORAID,   20
-	dpbpb REMORAID,   40,  REMORAID,   40
-	dpbpb GYARADOS,   20,  GYARADOS,   20
-	dpbpb GYARADOS,   40,  GYARADOS,   40
-	dpbpb DRATINI,    10,  DRATINI,    10
-	dpbpb DRATINI,    10,  DRATINI,    10
-	dpbpb HORSEA,     20,  HORSEA,     20
-	dpbpb HORSEA,     40,  HORSEA,     40
-	dpbpb TENTACOOL,  20,  TENTACOOL,  20
-	dpbpb TENTACOOL,  40,  TENTACOOL,  40
+	db CORSOLA,    20,  STARYU,     20
+	db CORSOLA,    40,  STARYU,     40
+	db SHELLDER,   20,  SHELLDER,   20
+	db SHELLDER,   40,  SHELLDER,   40
+	db PSYDUCK,    20,  PSYDUCK,    20
+	db PSYDUCK,    40,  PSYDUCK,    40
+	db POLIWAG,    20,  POLIWAG,    20
+	db POLIWAG,    40,  POLIWAG,    40
+	db DRATINI,    20,  DRATINI,    20
+	db DRATINI,    40,  DRATINI,    40
+	db QWILFISH,   20,  QWILFISH,   20
+	db QWILFISH,   40,  QWILFISH,   40
+	db REMORAID,   20,  REMORAID,   20
+	db REMORAID,   40,  REMORAID,   40
+	db GYARADOS,   20,  GYARADOS,   20
+	db GYARADOS,   40,  GYARADOS,   40
+	db DRATINI,    10,  DRATINI,    10
+	db DRATINI,    10,  DRATINI,    10
+	db HORSEA,     20,  HORSEA,     20
+	db HORSEA,     40,  HORSEA,     40
+	db TENTACOOL,  20,  TENTACOOL,  20
+	db TENTACOOL,  40,  TENTACOOL,  40
 
 FishItems:
 	db PEARL
