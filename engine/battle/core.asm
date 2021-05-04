@@ -1634,8 +1634,6 @@ LeppaRestorePP:
 	pop af
 	ld [wMenuCursorY], a
 	ld a, [wTempPP]
-	and a
-	ret z
 	cp d
 	jr nc, .got_pp_to_restore
 	ld d, a

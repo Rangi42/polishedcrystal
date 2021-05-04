@@ -211,7 +211,7 @@ KeyItems_DisplayPocketItems:
 .not_registered
     pop hl
 
-	ld a, [wd265]
+	ld a, [wNamedObjectIndex]
 	call GetKeyItemName
 	pop hl
 	ld bc, 3
