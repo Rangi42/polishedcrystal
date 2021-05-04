@@ -409,7 +409,7 @@ BT_AppendOTMon:
 	; Now we can actually start adding data.
 	ld b, [hl]
 	ld a, b
-	ld [wNamedObjectIndexBuffer], a ; for later nickname setup
+	ld [wNamedObjectIndex], a ; for later nickname setup
 	push hl
 
 	; Add first species byte.

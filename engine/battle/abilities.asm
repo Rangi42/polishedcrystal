@@ -476,7 +476,7 @@ ForewarnAbility:
 	call DisableAnimations
 	call ShowAbilityActivation
 	pop af
-	ld [wNamedObjectIndexBuffer], a
+	ld [wNamedObjectIndex], a
 	call GetMoveName
 	ld hl, ForewarnText
 	call StdBattleTextbox
@@ -883,7 +883,7 @@ DampAbility:
 	; would be confusing
 	ld a, BATTLE_VARS_MOVE_OPP
 	call GetBattleVar
-	ld [wNamedObjectIndexBuffer], a
+	ld [wNamedObjectIndex], a
 	call GetMoveName
 	call DisableAnimations
 	call ShowAbilityActivation
@@ -1314,7 +1314,7 @@ RegainItemByAbility:
 	pop hl
 	pop af
 
-	ld [wNamedObjectIndexBuffer], a
+	ld [wNamedObjectIndex], a
 	push af
 	push hl
 	call GetItemName
@@ -1923,7 +1923,7 @@ RunPostBattleAbilities::
 	ld [hl], a
 	push bc
 	push de
-	ld [wNamedObjectIndexBuffer], a
+	ld [wNamedObjectIndex], a
 	call GetItemName
 	ld hl, wStringBuffer1
 	ld de, wStringBuffer2
@@ -1936,7 +1936,7 @@ RunPostBattleAbilities::
 	ld a, MON_SPECIES
 	call GetPartyParamLocation
 	ld a, [hl]
-	ld [wNamedObjectIndexBuffer], a
+	ld [wNamedObjectIndex], a
 	call GetPokemonName
 	ld hl, wStringBuffer1
 	ld de, wBattleMonNickname

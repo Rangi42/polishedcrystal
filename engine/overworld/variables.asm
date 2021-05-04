@@ -65,21 +65,21 @@ Var_CountCaughtMons:
 	ld hl, wPokedexCaught
 	ld b, wEndPokedexCaught - wPokedexCaught
 	call CountSetBits
-	ld a, [wd265]
+	ld a, [wNumSetBits]
 	jr _Var_loadstringbuffer2
 
 Var_CountSeenMons:
 	ld hl, wPokedexSeen
 	ld b, wEndPokedexSeen - wPokedexSeen
 	call CountSetBits
-	ld a, [wd265]
+	ld a, [wNumSetBits]
 	jr _Var_loadstringbuffer2
 
 Var_CountBadges:
 	ld hl, wBadges
 	ld b, wBadgesEnd - wBadges
 	call CountSetBits
-	ld a, [wd265]
+	ld a, [wNumSetBits]
 	jr _Var_loadstringbuffer2
 
 Var_PlayerFacing:
@@ -125,7 +125,7 @@ Var_CountPokemonJournals:
 	ld hl, wPokemonJournals
 	ld b, wPokemonJournalsEnd - wPokemonJournals
 	call CountSetBits
-	ld a, [wd265]
+	ld a, [wNumSetBits]
 	jr _Var_loadstringbuffer2
 
 Var_CountTrainerStars:

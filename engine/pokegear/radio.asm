@@ -252,7 +252,7 @@ endr
 	inc hl ; skip level
 	ld a, BANK(JohtoGrassWildMons)
 	call GetFarByte
-	ld [wNamedObjectIndexBuffer], a
+	ld [wNamedObjectIndex], a
 	ld [wCurPartySpecies], a
 	call GetPokemonName
 	ld hl, wStringBuffer1
@@ -319,7 +319,7 @@ OPT_OakText3:
 
 OaksPkmnTalk7:
 	ld a, [wCurPartySpecies]
-	ld [wNamedObjectIndexBuffer], a
+	ld [wNamedObjectIndex], a
 	call GetPokemonName
 	ld hl, OPT_MaryText1
 	ld a, OAKS_POKEMON_TALK_8
@@ -671,7 +671,7 @@ PokedexShow1:
 	inc c
 	ld a, c
 	ld [wCurPartySpecies], a
-	ld [wNamedObjectIndexBuffer], a
+	ld [wNamedObjectIndex], a
 	call GetPokemonName
 	ld hl, PokedexShowText
 	ld a, POKEDEX_SHOW_2
@@ -1586,7 +1586,7 @@ GetBuenasPassword:
 	ld l, c
 	add hl, de
 	ld a, [hl]
-	ld [wNamedObjectIndexBuffer], a
+	ld [wNamedObjectIndex], a
 	ret
 
 .RawString:

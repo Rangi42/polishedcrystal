@@ -107,7 +107,7 @@ HailHitsText:
 PerishCountText:
 	text "<USER>'s"
 	line "Perish count is "
-	text_decimal wd265, 1, 1
+	text_decimal wTextDecimalByte, 1, 1
 	text "!"
 	prompt
 
@@ -1346,7 +1346,7 @@ SafeguardProtectText:
 
 MagnitudeText:
 	text "Magnitude "
-	text_decimal wd265, 1, 2
+	text_decimal wTextDecimalByte, 1, 2
 	text "!"
 	prompt
 

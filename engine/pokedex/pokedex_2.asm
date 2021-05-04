@@ -79,7 +79,7 @@ DisplayDexEntry:
 	call GetPokemonName
 	hlcoord 9, 3
 	rst PlaceString ; mon species
-	ld a, [wd265]
+	ld a, [wTempSpecies]
 	ld b, a
 	call GetDexEntryPointer
 	ld a, b
@@ -95,11 +95,11 @@ DisplayDexEntry:
 	ld [hli], a
 	ld a, "."
 	ld [hli], a
-	ld de, wd265
+	ld de, wTempSpecies
 	lb bc, PRINTNUM_LEADINGZEROS | 1, 3
 	call PrintNum
 ; Check to see if we caught it.  Get out of here if we haven't.
-	ld a, [wd265]
+	ld a, [wTempSpecies]
 	dec a
 	call CheckCaughtMon
 	pop hl

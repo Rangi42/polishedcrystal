@@ -16,7 +16,7 @@ GetFirstPokemonHappiness:
 .done
 	ld bc, wPartyMon1Happiness - wPartyMon1Species
 	add hl, bc
-	ld [wd265], a
+	ld [wNamedObjectIndex], a
 	ld a, [hl]
 	ldh [hScriptVar], a
 	call GetPokemonName
@@ -24,7 +24,7 @@ GetFirstPokemonHappiness:
 
 CheckFirstMonIsEgg:
 	ld a, [wPartyMon1Species]
-	ld [wd265], a
+	ld [wNamedObjectIndex], a
 	ld a, [wPartyMon1IsEgg]
 	bit MON_IS_EGG_F, a
 	ld a, $1
@@ -188,7 +188,7 @@ DayCareStep::
 	ret nz
 
 	farcall CheckBreedmonCompatibility
-	ld a, [wd265]
+	ld a, [wBreedingCompatibility]
 	; Egg initialization shouldn't happen if incompatible, but just in case
 	and a
 	ret z

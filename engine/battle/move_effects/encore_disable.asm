@@ -42,7 +42,7 @@ DoEncoreDisable:
 	push bc
 	push af
 
-	ld [wNamedObjectIndexBuffer], a
+	ld [wNamedObjectIndex], a
 	call GetMoveName
 	; since abilities use strbuf1, copy to strbuf2 to not overwrite it
 	ld hl, wStringBuffer1

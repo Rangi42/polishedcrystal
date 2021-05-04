@@ -47,7 +47,7 @@ TryAddMonToParty:
 	ld bc, NAME_LENGTH
 	rst CopyBytes
 	ld a, [wCurPartySpecies]
-	ld [wd265], a
+	ld [wNamedObjectIndex], a
 	call GetPokemonName
 	ld a, [wMonType]
 	and $f
@@ -224,11 +224,11 @@ endr
 	push hl
 	jr z, .wildmon
 	ld a, [wCurPartySpecies]
-	ld [wd265], a
+	ld [wTempSpecies], a
 	dec a
 	push de
 	call CheckCaughtMon
-	ld a, [wd265]
+	ld a, [wTempSpecies]
 	dec a
 	call SetSeenAndCaughtMon
 	pop de
@@ -574,7 +574,7 @@ AddTempMonToParty:
 	rst CopyBytes
 
 	ld a, [wCurPartySpecies]
-	ld [wNamedObjectIndexBuffer], a
+	ld [wNamedObjectIndex], a
 
 	ld hl, wPartyMon1IsEgg
 	ld a, [wPartyCount]
@@ -963,7 +963,7 @@ SentPkmnIntoBox:
 	rst CopyBytes
 
 	ld a, [wCurPartySpecies]
-	ld [wd265], a
+	ld [wNamedObjectIndex], a
 	call GetPokemonName
 
 	ld hl, wStringBuffer1
@@ -1492,7 +1492,7 @@ GivePoke::
 .added
 	push de
 	ld a, [wCurPartySpecies]
-	ld [wd265], a
+	ld [wNamedObjectIndex], a
 	call GetPokemonName
 	ld a, [wTempMonForm]
 	bit MON_IS_EGG_F, a

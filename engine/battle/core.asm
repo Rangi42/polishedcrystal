@@ -1594,7 +1594,7 @@ GetNonfullPPMove:
 	farcall GetMaxPPOfMove
 	pop de
 	pop bc
-	ld a, [wd265]
+	ld a, [wTempPP]
 	cp e
 	jr nz, .got_nonfull_pp
 	inc bc
@@ -1633,24 +1633,22 @@ LeppaRestorePP:
 	pop bc
 	pop af
 	ld [wMenuCursorY], a
-	ld a, [wd265]
+	ld a, [wTempPP]
+	and a
+	ret z
 	cp d
 	jr nc, .got_pp_to_restore
 	ld d, a
 
 .got_pp_to_restore
 	; d: PP to restore, bc: memory offset of move
-	ld a, [wd265]
-	and a
-	ret z
-
 	call ItemRecoveryAnim
 	push bc
 	push de
 	ld hl, wTempMonMoves
 	add hl, bc
 	ld a, [hl]
-	ld [wNamedObjectIndexBuffer], a
+	ld [wNamedObjectIndex], a
 	call GetMoveName
 	ld hl, wStringBuffer1
 	ld de, wStringBuffer2
@@ -4484,7 +4482,7 @@ CheckRunSpeed:
 	push hl
 	push de
 	ld a, [wBattleMonItem]
-	ld [wd265], a
+	ld [wNamedObjectIndex], a
 	ld b, a
 	farcall GetItemHeldEffect
 	ld a, b
@@ -4881,7 +4879,7 @@ MoveSelectionScreen:
 
 .encore_or_gorilla_tactics
 	ld a, [wPlayerSelectedMove]
-	ld [wNamedObjectIndexBuffer], a
+	ld [wNamedObjectIndex], a
 	call GetMoveName
 
 	ld hl, BattleText_MonCanOnlyUseMove
@@ -4890,7 +4888,7 @@ MoveSelectionScreen:
 .choiced
 	; Load item into wStringBuffer1, move into wStringBuffer2
 	ld a, [wPlayerSelectedMove]
-	ld [wNamedObjectIndexBuffer], a
+	ld [wNamedObjectIndex], a
 	call GetMoveName
 
 	; The above places move name into buffer 1, now copy into 2
@@ -4901,7 +4899,7 @@ MoveSelectionScreen:
 
 	; now place item into wStringBuffer1
 	ld a, [wBattleMonItem]
-	ld [wNamedObjectIndexBuffer], a
+	ld [wNamedObjectIndex], a
 	call GetItemName
 
 	ld hl, BattleText_ItemOnlyAllowsMove
@@ -4909,7 +4907,7 @@ MoveSelectionScreen:
 
 .assault_vest
 	ld a, [wBattleMonItem]
-	ld [wNamedObjectIndexBuffer], a
+	ld [wNamedObjectIndex], a
 	call GetItemName
 
 	ld hl, BattleText_ItemPreventsStatusMoves
@@ -5190,8 +5188,8 @@ MoveInfoBox:
 	hlcoord 1, 10
 	cp 2
 	jr c, .no_power
-	ld [wd265], a
-	ld de, wd265
+	ld [wTextDecimalByte], a
+	ld de, wTextDecimalByte
 	lb bc, 1, 3
 	call PrintNum
 	jr .place_accuracy
@@ -5205,8 +5203,8 @@ MoveInfoBox:
 	hlcoord 6, 10
 	cp 2
 	jr c, .no_acc
-	ld [wd265], a
-	ld de, wd265
+	ld [wTextDecimalByte], a
+	ld de, wTextDecimalByte
 	lb bc, 1, 3
 	call PrintNum
 	jr .icons
@@ -5267,7 +5265,7 @@ MoveInfoBox:
 	inc hl
 	ld a, "/"
 	ld [hli], a
-	ld de, wNamedObjectIndexBuffer
+	ld de, wNamedObjectIndex
 	lb bc, 1, 2
 	jmp PrintNum
 
@@ -6484,8 +6482,8 @@ GiveExperiencePoints:
 	add hl, bc
 	ld a, [hl]
 	ld [wBattleMonLevel], a
-	xor a
-	ld [wd265], a
+	xor a ; FALSE
+	ld [wApplyStatLevelMultipliersToEnemy], a
 	call UpdatePlayerHUD
 	call EmptyBattleTextbox
 	call LoadTileMapToTempTileMap
@@ -6515,7 +6513,7 @@ GiveExperiencePoints:
 	xor a ; PARTYMON
 	ld [wMonType], a
 	ld a, [wCurSpecies]
-	ld [wd265], a
+	ld [wTempSpecies], a ; unused?
 	ld a, [wCurPartyLevel]
 	push af
 	ld c, a

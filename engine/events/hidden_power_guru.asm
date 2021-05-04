@@ -6,14 +6,14 @@ Special_HiddenPowerGuru:
 	bit MON_IS_EGG_F, [hl]
 	jr nz, .egg
 	ld a, [wCurPartySpecies]
-	ld [wNamedObjectIndexBuffer], a
+	ld [wNamedObjectIndex], a
 	call GetPokemonName
 	call CopyPokemonName_Buffer1_Buffer3
 	ld a, [wCurPartyMon]
 	ld hl, wPartyMon1DVs
 	call GetPartyLocation
 	farcall GetHiddenPowerType
-	ld [wNamedObjectIndexBuffer], a
+	ld [wNamedObjectIndex], a
 	farcall GetTypeName
 	ld a, 2
 .done

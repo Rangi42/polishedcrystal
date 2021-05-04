@@ -30,7 +30,7 @@ SetMenuMonIconColor:
 	push bc
 	push af
 
-	ld a, [wd265]
+	ld a, [wTempIconSpecies]
 	ld [wCurPartySpecies], a
 	call GetMenuMonIconPalette
 	jr ProcessMenuMonIconColor
@@ -221,11 +221,11 @@ _InitScreenMonIcon:
 	and SPECIESFORM_MASK
 	ld [wCurIconForm], a
 	bit MON_IS_EGG_F, [hl]
-	ld a, [wd265]
+	ld a, [wTempIconSpecies]
 	jr z, .got_species
 	ld a, EGG
 .got_species
-	ld [wd265], a
+	ld [wTempIconSpecies], a
 	ld [wCurIcon], a
 
 	dec hl ; MON_SHINY = MON_FORM - 1
@@ -347,7 +347,7 @@ Fly_PrepMonIcon:
 	ld d, 0
 	add hl, de
 	ld a, [hl]
-	ld [wd265], a
+	ld [wTempIconSpecies], a
 	ld [wCurIcon], a
 	pop de
 	ld a, e
@@ -364,7 +364,7 @@ FlyFunction_GetMonIcon:
 
 LoadTradeAnimationMonIcon:
 	call SetMenuMonIconColor
-	ld a, [wd265]
+	ld a, [wTempIconSpecies]
 	ld [wCurIcon], a
 	ld a, $62
 	ld [wCurIconTile], a

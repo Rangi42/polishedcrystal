@@ -632,7 +632,7 @@ EnemyUsedGuardSpec:
 	or [hl]
 	ld [hl], a
 	ld a, GUARD_SPEC
-	ld [wNamedObjectIndexBuffer], a
+	ld [wNamedObjectIndex], a
 	call PrintText_CopyItemName
 	ld hl, TextJump_EnemyUsed
 	call PrintText
@@ -682,7 +682,7 @@ EnemyUsedXItem:
 
 PrintText_UsedItemOn:
 	ld a, [wCurEnemyItem]
-	ld [wNamedObjectIndexBuffer], a
+	ld [wNamedObjectIndex], a
 	call PrintText_CopyItemName
 	ld hl, TextJump_EnemyUsedOn
 	jmp PrintText

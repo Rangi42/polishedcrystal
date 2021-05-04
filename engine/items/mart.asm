@@ -868,17 +868,17 @@ BTMartConfirmPurchase:
 
 TMMartConfirmPurchase:
 	ld a, [wCurTMHM]
-	ld [wd265], a
+	ld [wNamedObjectIndex], a
 	call GetTMHMName
 	call CopyName1
 
 	; off by one error?
-	ld a, [wd265]
+	ld a, [wNamedObjectIndex]
 	inc a
-	ld [wd265], a
+	ld [wTempTMHM], a
 
 	predef GetTMHMMove
-	ld a, [wd265]
+	ld a, [wTempTMHM]
 	ld [wPutativeTMHMMove], a
 	call GetMoveName
 

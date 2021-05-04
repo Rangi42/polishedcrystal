@@ -96,7 +96,7 @@ GetMonMenuString:
 	jr z, .NotMove
 	inc hl
 	ld a, [hl]
-	ld [wd265], a
+	ld [wNamedObjectIndex], a
 	jmp GetMoveName
 
 .NotMove:

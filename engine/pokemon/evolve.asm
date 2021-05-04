@@ -282,7 +282,7 @@ endr
 	ld [wCurSpecies], a
 	ld [wTempMonSpecies], a
 	ld [wBuffer2], a
-	ld [wd265], a
+	ld [wNamedObjectIndex], a
 	call GetPokemonName
 
 	push hl
@@ -345,11 +345,11 @@ endr
 	xor a
 	ld [wMonType], a
 	ld a, [wCurSpecies]
-	ld [wd265], a
+	ld [wTempSpecies], a
 	dec a
 	call SetSeenAndCaughtMon
 
-	ld a, [wd265]
+	ld a, [wTempSpecies]
 	cp UNOWN
 	jr nz, .skip_unown
 
@@ -431,7 +431,7 @@ ChangeFormOnItemEvolution:
 
 UpdateSpeciesNameIfNotNicknamed:
 	ld a, [wEvolutionOldSpecies]
-	ld [wd265], a
+	ld [wNamedObjectIndex], a
 	call GetPokemonName
 	ld hl, wStringBuffer1
 	ld de, wStringBuffer2
@@ -450,7 +450,7 @@ UpdateSpeciesNameIfNotNicknamed:
 	rst AddNTimes
 	push hl
 	ld a, [wCurSpecies]
-	ld [wd265], a
+	ld [wNamedObjectIndex], a
 	call GetPokemonName
 	ld hl, wStringBuffer1
 	pop de
@@ -498,7 +498,7 @@ Text_WhatEvolving:
 
 LearnEvolutionMove:
 	; c = species
-	ld a, [wd265]
+	ld a, [wTempSpecies]
 	ld [wCurPartySpecies], a
 	ld c, a
 	; b = form
@@ -529,7 +529,7 @@ LearnEvolutionMove:
 
 	ld a, d
 	ld [wPutativeTMHMMove], a
-	ld [wd265], a
+	ld [wNamedObjectIndex], a
 	call GetMoveName
 	call CopyName1
 	ld a, [wCurPartySpecies]
@@ -537,11 +537,11 @@ LearnEvolutionMove:
 	predef LearnMove
 	pop af
 	ld [wCurPartySpecies], a
-	ld [wd265], a
+	ld [wTempSpecies], a
 	ret
 
 LearnLevelMoves:
-	ld a, [wd265]
+	ld a, [wTempSpecies]
 	ld [wCurPartySpecies], a
 	call GetPartyEvosAttacksPointer
 
@@ -578,7 +578,7 @@ LearnLevelMoves:
 
 	ld a, d
 	ld [wPutativeTMHMMove], a
-	ld [wd265], a
+	ld [wNamedObjectIndex], a
 	call GetMoveName
 	call CopyName1
 	ld a, [wCurPartySpecies]
@@ -586,7 +586,7 @@ LearnLevelMoves:
 	predef LearnMove
 	pop af
 	ld [wCurPartySpecies], a
-	ld [wd265], a
+	ld [wTempSpecies], a
 .has_move
 	pop hl
 	jr .find_move

@@ -2,7 +2,7 @@ Special_CheckForLuckyNumberWinners:
 ; Returns number of digits matching
 	xor a
 	ldh [hScriptVar], a
-	ld [wFoundMatchingIDInParty], a
+	ld [wFoundMatchingID], a
 
 	; Prepare lucky number buffer
 	ld hl, wStringBuffer1
@@ -54,7 +54,7 @@ Special_CheckForLuckyNumberWinners:
 	or b
 	swap a
 	ldh [hScriptVar], a
-	ld hl, wFoundMatchingIDInParty
+	ld hl, wFoundMatchingID
 	ld [hl], c
 	cp 5
 	jr z, .done
@@ -75,7 +75,7 @@ Special_CheckForLuckyNumberWinners:
 	swap a
 	and $f
 	ld b, a
-	ld a, [wFoundMatchingIDInParty]
+	ld a, [wFoundMatchingID]
 	ld c, a
 	farcall GetStorageBoxMon
 	pop af

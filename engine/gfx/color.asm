@@ -166,7 +166,7 @@ LoadIconPalette:
 	jmp FarCopyColorWRAM
 
 LoadTMHMIconPalette:
-	ld a, [wNamedObjectIndexBuffer]
+	ld a, [wNamedObjectIndex]
 	ld hl, Moves + MOVE_TYPE
 	call GetMoveProperty
 	ld hl, TMHMTypeIconPals

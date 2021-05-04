@@ -232,7 +232,7 @@ StatsScreen_InitUpperHalf:
 	xor a
 	ldh [hBGMapMode], a
 	ld a, [wCurPartySpecies]
-	ld [wd265], a
+	ld [wTempSpecies], a
 	ld [wCurSpecies], a
 	ld c, a
 	ld a, [wCurForm]
@@ -263,7 +263,7 @@ StatsScreen_InitUpperHalf:
 	ld a, "/"
 	ld [hli], a
 	ld a, [wCurSpecies]
-	ld [wd265], a
+	ld [wNamedObjectIndex], a
 	call GetPokemonName
 	rst PlaceString
 	call StatsScreen_PlacePageSwitchArrows
@@ -357,7 +357,7 @@ StatsScreen_PlaceShinyIcon:
 
 StatsScreen_LoadGFX:
 	ld a, [wCurPartySpecies]
-	ld [wd265], a
+	ld [wTempSpecies], a
 	ld [wCurSpecies], a
 	xor a
 	ldh [hBGMapMode], a
@@ -625,7 +625,7 @@ StatsScreen_LoadGFX:
 	ld a, [wTempMonItem]
 	and a
 	ret z
-	ld [wd265], a
+	ld [wNamedObjectIndex], a
 	jmp GetItemName
 
 .Item:
