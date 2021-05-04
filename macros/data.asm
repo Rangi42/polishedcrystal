@@ -135,6 +135,17 @@ dpb: MACRO
 	db \2
 ENDM
 
+dbpb: MACRO
+	db \1
+	if _NARG == 4
+		dp \2, \3
+		shift
+	else
+		dp \2
+	endc
+	db \3
+ENDM
+
 dpw: MACRO
 	if _NARG == 3
 		dp \1, \2

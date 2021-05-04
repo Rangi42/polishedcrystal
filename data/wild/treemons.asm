@@ -14,113 +14,113 @@ TreeMons:
 
 ; Two tables each (normal, rare).
 ; Structure:
-;	db  %, species, level
+;	dbpb  %, species, level
 
 TreeMonSet_City:
 TreeMonSet_Canyon:
-	db 50, PIDGEY,     10
-	db 15, PIDGEY,     10
-	db 15, PIDGEY,     10
-	db 10, PIDGEY,     10
-	db  5, MEOWTH,     10
-	db  5, MEOWTH,     10
+	dbpb 50, PIDGEY,     10
+	dbpb 15, PIDGEY,     10
+	dbpb 15, PIDGEY,     10
+	dbpb 10, PIDGEY,     10
+	dbpb  5, MEOWTH,     10
+	dbpb  5, MEOWTH,     10
 	db -1
 	; rare
-	db 50, PIDGEY,     10
-	db 15, HERACROSS,  10
-	db 15, HERACROSS,  10
-	db 10, PIDGEY,     10
-	db  5, MEOWTH,     10
-	db  5, MEOWTH,     10
+	dbpb 50, PIDGEY,     10
+	dbpb 15, HERACROSS,  10
+	dbpb 15, HERACROSS,  10
+	dbpb 10, PIDGEY,     10
+	dbpb  5, MEOWTH,     10
+	dbpb  5, MEOWTH,     10
 	db -1
 
 TreeMonSet_Town:
-	db 50, PIDGEY,     10
-	db 15, EKANS,      10
-	db 15, EKANS,      10
-	db 10, PIDGEY,     10
-	db  5, MEOWTH,     10
-	db  5, MEOWTH,     10
+	dbpb 50, PIDGEY,     10
+	dbpb 15, EKANS,      10
+	dbpb 15, EKANS,      10
+	dbpb 10, PIDGEY,     10
+	dbpb  5, MEOWTH,     10
+	dbpb  5, MEOWTH,     10
 	db -1
 	; rare
-	db 50, PIDGEY,     10
-	db 15, HERACROSS,  10
-	db 15, HERACROSS,  10
-	db 10, PIDGEY,     10
-	db  5, MEOWTH,     10
-	db  5, MEOWTH,     10
+	dbpb 50, PIDGEY,     10
+	dbpb 15, HERACROSS,  10
+	dbpb 15, HERACROSS,  10
+	dbpb 10, PIDGEY,     10
+	dbpb  5, MEOWTH,     10
+	dbpb  5, MEOWTH,     10
 	db -1
 
 TreeMonSet_Route:
-	db 50, HOOTHOOT,   10
-	db 15, SPINARAK,   10
-	db 15, LEDYBA,     10
-	db 10, EXEGGCUTE,  10
-	db  5, EXEGGCUTE,  10
-	db  5, EXEGGCUTE,  10
+	dbpb 50, HOOTHOOT,   10
+	dbpb 15, SPINARAK,   10
+	dbpb 15, LEDYBA,     10
+	dbpb 10, EXEGGCUTE,  10
+	dbpb  5, EXEGGCUTE,  10
+	dbpb  5, EXEGGCUTE,  10
 	db -1
 	; rare
-	db 40, MURKROW,    10
-	db 20, PINECO,     10
-	db 20, PINECO,     10
-	db 10, EXEGGCUTE,  10
-	db  5, EXEGGCUTE,  10
-	db  5, EXEGGCUTE,  10
+	dbpb 40, MURKROW,    10
+	dbpb 20, PINECO,     10
+	dbpb 20, PINECO,     10
+	dbpb 10, EXEGGCUTE,  10
+	dbpb  5, EXEGGCUTE,  10
+	dbpb  5, EXEGGCUTE,  10
 	db -1
 
 TreeMonSet_Kanto:
-	db 50, HOOTHOOT,   10
-	db 15, EKANS,      10
-	db 15, HOOTHOOT,   10
-	db 10, EXEGGCUTE,  10
-	db  5, EXEGGCUTE,  10
-	db  5, EXEGGCUTE,  10
+	dbpb 50, HOOTHOOT,   10
+	dbpb 15, EKANS,      10
+	dbpb 15, HOOTHOOT,   10
+	dbpb 10, EXEGGCUTE,  10
+	dbpb  5, EXEGGCUTE,  10
+	dbpb  5, EXEGGCUTE,  10
 	db -1
 	; rare
-	db 40, MURKROW,    10
-	db 20, PINECO,     10
-	db 20, PINECO,     10
-	db 10, EXEGGCUTE,  10
-	db  5, EXEGGCUTE,  10
-	db  5, EXEGGCUTE,  10
+	dbpb 40, MURKROW,    10
+	dbpb 20, PINECO,     10
+	dbpb 20, PINECO,     10
+	dbpb 10, EXEGGCUTE,  10
+	dbpb  5, EXEGGCUTE,  10
+	dbpb  5, EXEGGCUTE,  10
 	db -1
 
 TreeMonSet_Lake:
-	db 50, HOOTHOOT,   10
-	db 15, VENONAT,    10
-	db 15, HOOTHOOT,   10
-	db 10, EXEGGCUTE,  10
-	db  5, EXEGGCUTE,  10
-	db  5, EXEGGCUTE,  10
+	dbpb 50, HOOTHOOT,   10
+	dbpb 15, VENONAT,    10
+	dbpb 15, HOOTHOOT,   10
+	dbpb 10, EXEGGCUTE,  10
+	dbpb  5, EXEGGCUTE,  10
+	dbpb  5, EXEGGCUTE,  10
 	db -1
 	; rare
-	db 50, HOOTHOOT,   10
-	db 15, PINECO,     10
-	db 15, PINECO,     10
-	db 10, EXEGGCUTE,  10
-	db  5, EXEGGCUTE,  10
-	db  5, EXEGGCUTE,  10
+	dbpb 50, HOOTHOOT,   10
+	dbpb 15, PINECO,     10
+	dbpb 15, PINECO,     10
+	dbpb 10, EXEGGCUTE,  10
+	dbpb  5, EXEGGCUTE,  10
+	dbpb  5, EXEGGCUTE,  10
 	db -1
 
 TreeMonSet_Forest:
-	db 50, HOOTHOOT,   10
-	db 15, PINECO,     10
-	db 15, PINECO,     10
-	db 10, NOCTOWL,    10
-	db  5, BUTTERFREE, 10
-	db  5, BEEDRILL,   10
+	dbpb 50, HOOTHOOT,   10
+	dbpb 15, PINECO,     10
+	dbpb 15, PINECO,     10
+	dbpb 10, NOCTOWL,    10
+	dbpb  5, BUTTERFREE, 10
+	dbpb  5, BEEDRILL,   10
 	db -1
 	; rare
-	db 50, HOOTHOOT,   10
-	db 15, CATERPIE,   10
-	db 15, WEEDLE,     10
-	db 10, HOOTHOOT,   10
-	db  5, METAPOD,    10
-	db  5, KAKUNA,     10
+	dbpb 50, HOOTHOOT,   10
+	dbpb 15, CATERPIE,   10
+	dbpb 15, WEEDLE,     10
+	dbpb 10, HOOTHOOT,   10
+	dbpb  5, METAPOD,    10
+	dbpb  5, KAKUNA,     10
 	db -1
 
 TreeMonSet_Rock:
-	db 70, KRABBY,     15
-	db 25, GEODUDE,    15
-	db  5, SHUCKLE,    15
+	dbpb 70, KRABBY,     15
+	dbpb 25, GEODUDE,    15
+	dbpb  5, SHUCKLE,    15
 	db -1
