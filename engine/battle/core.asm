@@ -1634,16 +1634,14 @@ LeppaRestorePP:
 	pop af
 	ld [wMenuCursorY], a
 	ld a, [wTempPP]
+	and a
+	ret z
 	cp d
 	jr nc, .got_pp_to_restore
 	ld d, a
 
 .got_pp_to_restore
 	; d: PP to restore, bc: memory offset of move
-	ld a, [wTempPP]
-	and a
-	ret z
-
 	call ItemRecoveryAnim
 	push bc
 	push de
