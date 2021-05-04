@@ -70,10 +70,10 @@ NamingScreen:
 
 .Pokemon:
 	ld a, [wCurPartySpecies]
-	ld [wd265], a
+	ld [wTempIconSpecies], a
 	farcall LoadNamingScreenMonIcon
 	ld a, [wCurPartySpecies]
-	ld [wd265], a
+	ld [wNamedObjectIndex], a
 	call GetPokemonName
 	hlcoord 5, 2
 	rst PlaceString

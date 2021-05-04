@@ -76,20 +76,20 @@ KeyItems_ShowDescription:
 	ld a, [wCurKeyItem]
 	cp NUM_KEY_ITEMS + 1
 	jr nc, _KeyItems_Cancel
-	ld [wd265], a
+	ld [wTempKeyItem], a ; unused?
 	farcall UpdateKeyItemIconAndDescription
 	jr KeyItems_JoypadLoop
 
 KeyItems_ChooseKeyItem:
 	call KeyItems_PlaySFX_ReadText2
-	call CountKeyItems ; This stores the count to wd265.
+	call CountKeyItems ; This stores the count to wNumSetBits.
 	ld a, [wMenuCursorY]
 	dec a
 	ld b, a
 	ld a, [wKeyItemsPocketScrollPosition]
 	add b
 	ld b, a
-	ld a, [wd265]
+	ld a, [wNumSetBits]
 	cp b
 	jr z, _KeyItems_ExitPack ; our cursor was hovering over CANCEL
 
@@ -164,7 +164,7 @@ KeyItems_DisplayPocketItems:
 	jr z, .loop2
 	ld b, a
 	ld a, c
-	ld [wd265], a
+	ld [wTempKeyItem], a
 	push hl
 	push de
 	push bc
@@ -174,7 +174,7 @@ KeyItems_DisplayPocketItems:
     push hl
     pop de
     push hl
-	ld a, [wd265]
+	ld a, [wTempKeyItem]
     and a
 	jr z, .not_registered
 	ld b, a

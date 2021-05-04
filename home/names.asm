@@ -21,7 +21,7 @@ GetName::
 	jr nz, .NotPokeName
 
 	ld a, [wCurSpecies]
-	ld [wNamedObjectIndexBuffer], a
+	ld [wNamedObjectIndex], a
 	call GetPokemonName
 	ld hl, MON_NAME_LENGTH
 	add hl, de
@@ -96,12 +96,12 @@ GetBasePokemonName::
 	ret
 
 GetPokemonName::
-; Get Pokemon name wNamedObjectIndexBuffer.
+; Get Pokemon name wNamedObjectIndex.
 	push hl
 
 ; Each name is ten characters
 	push bc
-	ld a, [wNamedObjectIndexBuffer]
+	ld a, [wNamedObjectIndex]
 	ld c, a
 	ld a, [wCurForm]
 	ld b, a
@@ -135,12 +135,12 @@ GetPokemonName::
 GetCurItemName::
 ; Get item name from item in CurItem
 	ld a, [wCurItem]
-	ld [wNamedObjectIndexBuffer], a
+	ld [wNamedObjectIndex], a
 GetItemName::
-; Get item name wNamedObjectIndexBuffer.
+; Get item name wNamedObjectIndex.
 	push hl
 	push bc
-	ld a, [wNamedObjectIndexBuffer]
+	ld a, [wNamedObjectIndex]
 	ld [wCurSpecies], a
 	ld a, ITEM_NAME
 	jr PutNameInBufferAndGetName
@@ -149,21 +149,21 @@ GetCurKeyItemName::
 ; Get item name from item in CurItem
 	ld a, [wCurKeyItem]
 	inc a
-	ld [wNamedObjectIndexBuffer], a
+	ld [wNamedObjectIndex], a
 GetKeyItemName::
-; Get key item item name wNamedObjectIndexBuffer.
+; Get key item item name wNamedObjectIndex.
 	push hl
 	push bc
-	ld a, [wNamedObjectIndexBuffer]
+	ld a, [wNamedObjectIndex]
 	ld [wCurSpecies], a
 	ld a, KEY_ITEM_NAME
 	jr PutNameInBufferAndGetName
 
 GetApricornName::
-; Get apricorn name wNamedObjectIndexBuffer.
+; Get apricorn name wNamedObjectIndex.
 	push hl
 	push bc
-	ld a, [wNamedObjectIndexBuffer]
+	ld a, [wNamedObjectIndex]
 	ld [wCurSpecies], a
 	ld a, APRICORN_NAME
 PutNameInBufferAndGetName::
@@ -184,7 +184,7 @@ GetMoveName::
 	ld a, MOVE_NAME
 	ld [wNamedObjectTypeBuffer], a
 
-	ld a, [wNamedObjectIndexBuffer] ; move id
+	ld a, [wNamedObjectIndex] ; move id
 	ld [wCurSpecies], a
 
 	call GetName

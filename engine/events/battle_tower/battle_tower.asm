@@ -335,7 +335,7 @@ Special_BattleTower_NextRentalBattle:
 
 	; Copy move name of first mon's first move, in case we want to reveal it.
 	ld a, [wOTPartyMon1Moves]
-	ld [wNamedObjectIndexBuffer], a
+	ld [wNamedObjectIndex], a
 	call GetMoveName
 
 	; Figure out how many details we want to reveal.
@@ -436,7 +436,7 @@ Special_BattleTower_NextRentalBattle:
 	ld a, h
 	ld hl, .NoTypePreference
 	jr z, .print
-	ld [wNamedObjectIndexBuffer], a
+	ld [wNamedObjectIndex], a
 	farcall GetTypeName
 	ld hl, .PrefersType
 .print

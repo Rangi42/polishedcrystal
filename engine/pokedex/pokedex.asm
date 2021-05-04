@@ -992,7 +992,7 @@ Pokedex_DrawMainScreenBG:
 	ld hl, wPokedexSeen
 	ld b, wEndPokedexSeen - wPokedexSeen
 	call CountSetBits
-	ld de, wd265
+	ld de, wNumSetBits
 	hlcoord 5, 12
 	lb bc, 1, 3
 	call PrintNum
@@ -1002,7 +1002,7 @@ Pokedex_DrawMainScreenBG:
 	ld hl, wPokedexCaught
 	ld b, wEndPokedexCaught - wPokedexCaught
 	call CountSetBits
-	ld de, wd265
+	ld de, wNumSetBits
 	hlcoord 5, 15
 	lb bc, 1, 3
 	call PrintNum
@@ -1517,7 +1517,8 @@ Pokedex_PrintListing:
 .loop
 	push af
 	ld a, [de]
-	ld [wd265], a
+	ld [wTempSpecies], a ; also sets wNamedObjectIndex
+	assert wTempSpecies = wNamedObjectIndex
 	push de
 	push hl
 	call .PrintEntry
@@ -1552,7 +1553,7 @@ Pokedex_PrintNumberIfOldMode:
 	push hl
 	ld de, -SCREEN_WIDTH
 	add hl, de
-	ld de, wd265
+	ld de, wTempSpecies
 	lb bc, PRINTNUM_LEADINGZEROS | 1, 3
 	call PrintNum
 	pop hl
@@ -1606,13 +1607,13 @@ Pokedex_GetSelectedMon:
 	ld hl, wPokedexDataStart
 	add hl, de
 	ld a, [hl]
-	ld [wd265], a
+	ld [wTempSpecies], a
 	ret
 
 Pokedex_CheckCaught:
 	push de
 	push hl
-	ld a, [wd265]
+	ld a, [wTempSpecies]
 	dec a
 	call CheckCaughtMon
 	pop hl
@@ -1622,7 +1623,7 @@ Pokedex_CheckCaught:
 Pokedex_CheckSeen:
 	push de
 	push hl
-	ld a, [wd265]
+	ld a, [wTempSpecies]
 	dec a
 	call CheckSeenMon
 	pop hl
@@ -1671,7 +1672,7 @@ Pokedex_OrderMonsByMode:
 	ld e, d
 .loopfindend
 	ld a, [hld]
-	ld [wd265], a
+	ld [wTempSpecies], a
 	call Pokedex_CheckSeen
 	jr nz, .foundend
 	dec d
@@ -1691,10 +1692,10 @@ Pokedex_ABCMode:
 .loop1abc
 	push bc
 	ld a, [de]
-	ld [wd265], a
+	ld [wTempSpecies], a
 	call Pokedex_CheckSeen
 	jr z, .skipabc
-	ld a, [wd265]
+	ld a, [wTempSpecies]
 	ld [hli], a
 	ld a, [wDexListingEnd]
 	inc a
@@ -1913,7 +1914,7 @@ Pokedex_SearchForMons:
 	ld a, [hl]
 	and a
 	jr z, .next_mon
-	ld [wd265], a
+	ld [wTempSpecies], a
 	ld [wCurSpecies], a
 	xor a
 	ld [wCurForm], a
@@ -1934,7 +1935,7 @@ Pokedex_SearchForMons:
 	jr nz, .next_mon
 
 .match_found
-	ld a, [wd265]
+	ld a, [wTempSpecies]
 	ld [de], a
 	inc de
 	ld a, [wDexSearchResultCount]
@@ -2322,7 +2323,7 @@ Pokedex_LoadSelectedMonTiles:
 .continue
 	ld [wCurForm], a
 	ld [wDexMonForm], a
-	ld a, [wd265]
+	ld a, [wTempSpecies]
 	ld [wCurPartySpecies], a
 	call GetBaseData
 	ld de, vTiles2
@@ -2346,7 +2347,7 @@ Pokedex_LoadCurrentFootprint:
 	call Pokedex_GetSelectedMon
 
 Pokedex_LoadAnyFootprint:
-	ld a, [wd265]
+	ld a, [wTempSpecies]
 	dec a
 	and ($ff ^ $07) ; $f8 ; $1f << 3
 	rrca
@@ -2355,7 +2356,7 @@ Pokedex_LoadAnyFootprint:
 	and %00011111
 	ld e, 0
 	ld d, a
-	ld a, [wd265]
+	ld a, [wTempSpecies]
 	dec a
 	and 7
 	swap a ; * $10
@@ -2465,7 +2466,7 @@ NewPokedexEntry:
 	call LoadFontsExtra
 	call Pokedex_LoadGFX2
 	call Pokedex_LoadAnyFootprint
-	ld a, [wd265]
+	ld a, [wTempSpecies]
 	ld [wCurPartySpecies], a
 	ld a, [wCurForm]
 	ld [wDexMonForm], a

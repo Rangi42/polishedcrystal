@@ -39,9 +39,9 @@ PrintMonTypes:
 	ret
 
 GetTypeName:
-; Copy the name of type [wNamedObjectIndexBuffer] to StringBuffer1.
+; Copy the name of type [wNamedObjectIndex] to StringBuffer1.
 
-	ld a, [wNamedObjectIndexBuffer]
+	ld a, [wNamedObjectIndex]
 	ld hl, TypeNames
 	ld e, a
 	ld d, 0

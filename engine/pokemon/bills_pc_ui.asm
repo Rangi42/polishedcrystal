@@ -1029,7 +1029,7 @@ _GetCursorMon:
 	ld [wStringBuffer2], a
 	call GetMonItemUnlessCursor
 	jr z, .delay_loop
-	ld [wNamedObjectIndexBuffer], a
+	ld [wNamedObjectIndex], a
 	call GetItemName
 	ld hl, wStringBuffer1
 	ld de, wStringBuffer2
@@ -1160,7 +1160,7 @@ _GetCursorMon:
 
 	; Species name
 	ld a, [wTempMonSpecies]
-	ld [wNamedObjectIndexBuffer], a
+	ld [wNamedObjectIndex], a
 	hlcoord 8, 1
 	ld a, "/"
 	ld [hli], a
@@ -2276,7 +2276,7 @@ BillsPC_MoveItem:
 
 	; Reload the item VWF string.
 	ld a, [wCurItem]
-	ld [wNamedObjectIndexBuffer], a
+	ld [wNamedObjectIndex], a
 	ld [wBillsPC_CursorItem], a
 	call GetItemName
 
@@ -2379,7 +2379,7 @@ BillsPC_BagItem:
 	pop bc
 	ret nz
 	ld a, b
-	ld [wNamedObjectIndexBuffer], a
+	ld [wNamedObjectIndex], a
 	call GetItemName
 	ld hl, BillsPC_MovedToPackText
 	; fallthrough
@@ -2821,7 +2821,7 @@ BillsPC_ReleaseAll:
 	jr .loop
 .releases_done
 	ld a, d
-	ld [wd265], a
+	ld [wTextDecimalByte], a
 	or e
 	ld hl, .NothingThere
 	jr z, .print
@@ -2866,7 +2866,7 @@ BillsPC_ReleaseAll:
 
 .ReleasedXMon:
 	text "Released "
-	text_decimal wd265, 1, 2
+	text_decimal wTextDecimalByte, 1, 2
 	text ""
 	line "#mon."
 	prompt

@@ -11,7 +11,7 @@ Special_MoveTutor:
 	and a
 	ld [wPutativeTMHMMove], a
 	jr z, .relearner
-	ld [wNamedObjectIndexBuffer], a
+	ld [wNamedObjectIndex], a
 	call GetMoveName
 	call CopyName1
 .relearner
@@ -96,7 +96,7 @@ CheckCanLearnMoveTutorMove:
 	jr z, .didnt_learn
 	ld a, [wMoveScreenSelectedMove]
 	ld [wPutativeTMHMMove], a
-	ld [wNamedObjectIndexBuffer], a
+	ld [wNamedObjectIndex], a
 	call GetMoveName
 	call CopyName1
 	predef LearnMove

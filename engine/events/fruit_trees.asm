@@ -122,7 +122,7 @@ PickApricornScript:
 
 .GetApricornName:
 	ldh a, [hScriptVar]
-	ld [wd265], a
+	ld [wNamedObjectIndex], a
 	call GetApricornName
 	ld de, wStringBuffer1
 	ld hl, wStringBuffer3

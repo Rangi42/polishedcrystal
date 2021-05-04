@@ -2,7 +2,7 @@ BugContest_SetCaughtContestMon:
 	ld a, [wContestMon]
 	and a
 	jr z, .firstcatch
-	ld [wd265], a
+	ld [wNamedObjectIndex], a
 	call DisplayAlreadyCaughtText
 	call DisplayCaughtContestMonStats
 	call YesNoBox
@@ -11,7 +11,7 @@ BugContest_SetCaughtContestMon:
 .firstcatch
 	call .generatestats
 	ld a, [wTempEnemyMonSpecies]
-	ld [wd265], a
+	ld [wNamedObjectIndex], a
 	call GetPokemonName
 	ld hl, .caughttext
 	jmp PrintText

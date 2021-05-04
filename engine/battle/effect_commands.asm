@@ -589,7 +589,7 @@ MoveDisabled:
 
 	ld a, BATTLE_VARS_MOVE
 	call GetBattleVar
-	ld [wNamedObjectIndexBuffer], a
+	ld [wNamedObjectIndex], a
 	call GetMoveName
 
 	ld hl, DisabledMoveText
@@ -4363,7 +4363,7 @@ UpdateMoveData:
 
 .not_null
 	ld [wCurMove], a
-	ld [wNamedObjectIndexBuffer], a
+	ld [wNamedObjectIndex], a
 
 	push hl
 	push de

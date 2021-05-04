@@ -30,7 +30,7 @@ LoadWildMonData:
 FindNest:
 ; Parameters:
 ; e: 0 = Johto, 1 = Kanto, 2 = Orange
-; wNamedObjectIndexBuffer: species
+; wNamedObjectIndex: species
 	hlcoord 0, 0
 	ld bc, SCREEN_WIDTH * SCREEN_HEIGHT
 	xor a
@@ -130,7 +130,7 @@ FindNest:
 	inc hl
 .ScanMapLoop:
 	push af
-	ld a, [wNamedObjectIndexBuffer]
+	ld a, [wNamedObjectIndex]
 	cp [hl]
 	inc hl
 	jr nz, .not_found
@@ -182,7 +182,7 @@ FindNest:
 	ld a, [hli]
 	inc hl ; skip wRoamMon#Level
 	ld b, a
-	ld a, [wNamedObjectIndexBuffer]
+	ld a, [wNamedObjectIndex]
 	cp b
 	ret nz
 	ld a, [hli]
@@ -1048,7 +1048,7 @@ RandomPhoneRareWildMon:
 	ld de, wStringBuffer1
 	call CopyName1
 	ld a, c
-	ld [wNamedObjectIndexBuffer], a
+	ld [wNamedObjectIndex], a
 	call GetPokemonName
 	ld hl, .SawRareMonText
 	call PrintText
@@ -1097,7 +1097,7 @@ RandomPhoneWildMon:
 	ld h, a
 	inc hl
 	ld a, [hli]
-	ld [wNamedObjectIndexBuffer], a
+	ld [wNamedObjectIndex], a
 	ld a, [hl]
 	ld [wCurForm], a
 	call GetPokemonName
@@ -1218,7 +1218,7 @@ RandomPhoneMon:
 	inc hl ; species
 	ld a, [wTrainerGroupBank]
 	call GetFarByte
-	ld [wNamedObjectIndexBuffer], a
+	ld [wNamedObjectIndex], a
 	call GetPokemonName
 	ld hl, wStringBuffer1
 	ld de, wStringBuffer4

@@ -678,29 +678,21 @@ wPutativeTMHMMove:: db
 wForgettingMove:: db
 wTotalBattleTurns:: db
 
-; TODO: apply imported wd265 labels to appropriate locations
-wNamedObjectIndexBuffer::
-wDeciramBuffer::
+wNamedObjectIndex::
+wTextDecimalByte::
 wTempByteValue::
 wNumSetBits::
-wTypeMatchup::
-wCurType::
 wTempSpecies::
 wTempIconSpecies::
+wTempKeyItem::
 wTempTMHM::
 wTempPP::
-wNextBoxOrPartyIndex::
 wChosenCableClubRoom::
 wBreedingCompatibility::
 wMoveGrammar::
 wApplyStatLevelMultipliersToEnemy::
 wUsePPUp::
-; TODO: which of our own wd265 labels override the above labels and vice versa?
-wCurKeyItemBuffer::
-wCurTMHMBuffer::
-wFoundMatchingIDInParty::
-wd265::
-; usually 1 byte, may be up to 3 in some cases for wNamedObjectIndexBuffer
+wFoundMatchingID::
 	ds 3
 
 wMonTriedToEvolve:: db
