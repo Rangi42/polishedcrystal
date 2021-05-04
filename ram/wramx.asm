@@ -682,6 +682,7 @@ wNamedObjectIndex::
 wTextDecimalByte::
 wTempByteValue::
 wNumSetBits::
+wTypeMatchup::
 wTempSpecies::
 wTempIconSpecies::
 wTempKeyItem::

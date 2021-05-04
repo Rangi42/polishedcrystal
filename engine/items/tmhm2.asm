@@ -358,9 +358,9 @@ AskTeachTMHM:
 	ld hl, wForgettingMove
 	set LEARNING_TM_F, [hl]
 	ld a, [wCurTMHM]
-	ld [wCurTMHMBuffer], a
+	ld [wTempTMHM], a
 	predef GetTMHMMove
-	ld a, [wCurTMHMBuffer]
+	ld a, [wTempTMHM]
 	ld [wPutativeTMHMMove], a
 	call GetMoveName
 	call CopyName1
