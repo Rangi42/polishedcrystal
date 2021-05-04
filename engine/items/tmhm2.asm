@@ -80,12 +80,12 @@ TMHM_ShowTMMoveDescription:
 	ld a, [wCurTMHM]
 	cp NUM_TMS + NUM_HMS + 1
 	jr nc, .Cancel
-	ld [wd265], a
+	ld [wTempTMHM], a
 	predef GetTMHMMove
 	farcall LoadTMHMIconPalette
 	call SetPalettes
-	ld a, [wd265]
-	ld [wCurSpecies], a
+	ld a, [wTempTMHM]
+	ld [wCurMove], a
 	hlcoord 1, 14
 	call PrintMoveDesc
 	farcall LoadTMHMIcon
@@ -101,14 +101,14 @@ TMHM_SortMenu:
 
 TMHM_ChooseTMorHM:
 	call TMHM_PlaySFX_ReadText2
-	call CountTMsHMs ; This stores the count to wd265.
+	call CountTMsHMs ; This stores the count to wNumSetBits.
 	ld a, [wMenuCursorY]
 	dec a
 	ld b, a
 	ld a, [wTMHMPocketScrollPosition]
 	add b
 	ld b, a
-	ld a, [wd265]
+	ld a, [wNumSetBits]
 	cp b
 	jr z, _TMHM_ExitPack ; our cursor was hovering over CANCEL
 TMHM_GetCurrentTMHM:
@@ -188,16 +188,16 @@ TMHM_DisplayPocketItems:
 	ld b, a
 	ld a, c
 	call TMHM_GetAlpha
-	ld [wd265], a
+	ld [wTempTMHM], a
 	push hl
 	push de
 	push bc
 	call TMHMPocket_GetCurrentLineCoord
 	push hl
-	ld a, [wd265]
+	ld a, [wTempTMHM]
 	cp NUM_TMS + 1
 	jr nc, .HM
-	ld de, wd265
+	ld de, wTempTMHM
 	lb bc, PRINTNUM_LEADINGZEROS | 1, 2
 	call PrintNum
 	jr .okay
@@ -205,17 +205,17 @@ TMHM_DisplayPocketItems:
 .HM:
 	push af
 	sub NUM_TMS
-	ld [wd265], a
+	ld [wTempTMHM], a
 	ld a, "H"
 	ld [hli], a
-	ld de, wd265
+	ld de, wTextDecimalByte
 	lb bc, PRINTNUM_LEFTALIGN | 1, 2
 	call PrintNum
 	pop af
-	ld [wd265], a
+	ld [wTempTMHM], a
 .okay
 	predef GetTMHMMove
-	ld a, [wd265]
+	ld a, [wTempTMHM]
 	ld [wPutativeTMHMMove], a
 	call GetMoveName
 	pop hl
@@ -492,11 +492,11 @@ TeachTMHM:
 	ret
 
 _GetTMHMName::
-; Get TM/HM name by item id wNamedObjectIndexBuffer.
+; Get TM/HM name by item id wNamedObjectIndex.
 	push hl
 	push de
 	push bc
-	ld a, [wNamedObjectIndexBuffer]
+	ld a, [wNamedObjectIndex]
 	push af
 
 ; TM/HM prefix
@@ -517,7 +517,7 @@ _GetTMHMName::
 	rst CopyBytes
 
 ; TM/HM number
-	ld a, [wNamedObjectIndexBuffer]
+	ld a, [wNamedObjectIndex]
 	ld c, a
 
 ; HM numbers start from 51, not 1
@@ -554,7 +554,7 @@ _GetTMHMName::
 	ld [de], a
 
 	pop af
-	ld [wNamedObjectIndexBuffer], a
+	ld [wNamedObjectIndex], a
 	pop bc
 	pop de
 	pop hl

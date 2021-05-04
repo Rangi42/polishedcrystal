@@ -1503,13 +1503,13 @@ Pack_InitGFX:
 
 Pack_GetItemName:
 	ld a, [wCurItem]
-	ld [wNamedObjectIndexBuffer], a
+	ld [wNamedObjectIndex], a
 	call GetItemName
 	jmp CopyName1
 
 Pack_GetKeyItemName:
 	ld a, [wCurKeyItem]
-	ld [wNamedObjectIndexBuffer], a
+	ld [wNamedObjectIndex], a
 	call GetKeyItemName
 	jmp CopyName1
 

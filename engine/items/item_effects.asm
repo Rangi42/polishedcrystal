@@ -1,6 +1,6 @@
 _DoItemEffect::
 	ld a, [wCurItem]
-	ld [wd265], a
+	ld [wNamedObjectIndex], a
 	call GetItemName
 	call CopyName1
 	ld a, 1
@@ -270,7 +270,7 @@ ItemEffects:
 
 DoKeyItemEffect::
 	ld a, [wCurKeyItem]
-	ld [wd265], a
+	ld [wNamedObjectIndex], a
 	call GetKeyItemName
 	call CopyName1
 	ld a, 1
@@ -425,7 +425,7 @@ PokeBallEffect:
 	push af
 	ld [wWildMon], a
 	ld [wCurPartySpecies], a
-	ld [wd265], a
+	ld [wTempSpecies], a
 	ld a, [wBattleType]
 	cp BATTLETYPE_TUTORIAL
 	jmp z, .FinishTutorial
@@ -460,7 +460,7 @@ PokeBallEffect:
 	pop af
 	ld [wWildMon], a
 	ld [wCurPartySpecies], a
-	ld [wd265], a
+	ld [wTempSpecies], a
 
 	push af
 	cp UNOWN
@@ -476,7 +476,7 @@ PokeBallEffect:
 
 	ld a, c
 	push af
-	ld a, [wd265]
+	ld a, [wTempSpecies]
 	dec a
 	call SetSeenAndCaughtMon
 	pop af
@@ -492,7 +492,7 @@ PokeBallEffect:
 	call ClearSprites
 
 	ld a, [wOTPartyMon1Species]
-	ld [wd265], a
+	ld [wTempSpecies], a
 	farcall NewPokedexEntry
 
 .skip_pokedex
@@ -582,7 +582,7 @@ PokeBallEffect:
 	jr nz, .AlwaysNickname
 
 	ld a, [wCurPartySpecies]
-	ld [wd265], a
+	ld [wNamedObjectIndex], a
 	call GetPokemonName
 
 	ld hl, Text_AskNicknameNewlyCaughtMon
@@ -643,7 +643,7 @@ PokeBallEffect:
 	jr nz, .AlwaysNicknameBox
 
 	ld a, [wCurPartySpecies]
-	ld [wd265], a
+	ld [wNamedObjectIndex], a
 	call GetPokemonName
 
 	ld hl, Text_AskNicknameNewlyCaughtMon
@@ -1411,7 +1411,7 @@ UseItem_GetBaseDataAndNickParameters:
 ; loads base data and nickname into memory
 	ld a, [wCurPartySpecies]
 	ld [wCurSpecies], a
-	ld [wd265], a
+	ld [wTempSpecies], a
 	ld a, MON_FORM
 	call GetPartyParamLocation
 	ld a, [hl]
@@ -1966,7 +1966,7 @@ RestorePPEffect:
 
 	push hl
 	ld a, [hl]
-	ld [wd265], a
+	ld [wNamedObjectIndex], a
 	call GetMoveName
 	call CopyName1
 	pop hl
@@ -2010,8 +2010,8 @@ RestorePPEffect:
 	ld a, [hl]
 	add 1 << 6 ; increase PP Up count by 1
 	ld [hl], a
-	ld a, $1
-	ld [wd265], a
+	ld a, TRUE
+	ld [wUsePPUp], a
 	call ApplyPPUp
 	pop bc
 	pop hl
@@ -2132,7 +2132,7 @@ RestorePP:
 	ld hl, wPartyMon1PP
 	ld bc, PARTYMON_STRUCT_LENGTH
 	call GetMthMoveOfNthPartymon
-	ld a, [wd265]
+	ld a, [wTempPP]
 	ld b, a
 	ld a, [hl]
 	and (1 << 6) - 1
@@ -2447,8 +2447,8 @@ ApplyPPUp:
 	ld a, b
 	cp NUM_MOVES + 1
 	ret z
-	ld a, [wd265]
-	dec a
+	ld a, [wUsePPUp]
+	dec a ; FALSE?
 	jr nz, .use
 	ld a, [wMenuCursorY]
 	inc a
@@ -2503,7 +2503,7 @@ ComputeMaxPP:
 .okay
 	add b
 	ld b, a
-	ld a, [wd265]
+	ld a, [wTempPP]
 	dec a
 	jr z, .NoPPUp
 	dec c
@@ -2551,9 +2551,9 @@ _RestoreAllPP:
 	pop bc
 	pop de
 	ld a, [de]
-	and 3 << 6
+	and PP_UP_MASK
 	ld b, a
-	ld a, [wd265]
+	ld a, [wTempPP]
 	add b
 	ld [de], a
 	inc de
@@ -2615,18 +2615,18 @@ GetMaxPPOfMove:
 .notwild
 	add hl, bc
 	ld a, [hl]
-	and 3 << 6
+	and PP_UP_MASK
 	pop bc
 
 	or b
 	ld hl, wStringBuffer1 + 1
 	ld [hl], a
 	xor a
-	ld [wd265], a
+	ld [wTempPP], a
 	call ComputeMaxPP
 	ld a, [hl]
-	and (1 << 6) - 1
-	ld [wd265], a
+	and PP_MASK
+	ld [wTempPP], a
 
 	pop af
 	ld [wStringBuffer1 + 1], a

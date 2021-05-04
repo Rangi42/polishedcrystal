@@ -172,7 +172,7 @@ AI_Types:
 	pop bc
 	pop hl
 
-	ld a, [wd265]
+	ld a, [wTypeMatchup]
 	and a
 	jr z, .immune
 
@@ -180,7 +180,7 @@ AI_Types:
 	call AI_IsFixedDamageMove
 	jr c, .checkmove
 
-	ld a, [wd265]
+	ld a, [wTypeMatchup]
 	cp $10 ; 1.0
 	jr z, .checkmove
 	jr c, .noteffective
@@ -416,9 +416,9 @@ AI_Smart_LeechHit:
 	pop hl
 
 ; 60% chance to discourage this move if not very effective.
-	ld a, [wd265]
+	ld a, [wTypeMatchup]
 	cp BASE_AI_SWITCH_SCORE
-	jr c, .asm_38815
+	jr c, .discourage
 
 ; Do nothing if effectiveness is neutral.
 	ret z
@@ -434,7 +434,7 @@ AI_Smart_LeechHit:
 	dec [hl]
 	ret
 
-.asm_38815
+.discourage
 	call Random
 	cp 100
 	ret c
@@ -1124,7 +1124,7 @@ AI_Smart_Counter:
 
 AI_Smart_Encore:
 	call AICompareSpeed
-	jr nc, .asm_38c81
+	jr nc, .discourage
 
 	ld a, [wLastPlayerMove]
 	and a
@@ -1134,7 +1134,7 @@ AI_Smart_Encore:
 
 	ld a, [wEnemyMoveStruct + MOVE_POWER]
 	and a
-	jr z, .asm_38c68
+	jr z, .weakmove
 
 	push hl
 	call SetPlayerTurn
@@ -1142,23 +1142,23 @@ AI_Smart_Encore:
 	call SetEnemyTurn
 
 	pop hl
-	ld a, [wd265]
+	ld a, [wTypeMatchup]
 	cp $a
-	jr nc, .asm_38c68
+	jr nc, .weakmove
 
 	and a
 	ret nz
-	jr .asm_38c78
+	jr .encourage
 
-.asm_38c68
+.weakmove
 	push hl
 	ld a, [wPlayerSelectedMove]
 	ld hl, .EncoreMoves
 	call IsInByteArray
 	pop hl
-	jr nc, .asm_38c81
+	jr nc, .discourage
 
-.asm_38c78
+.encourage
 	call Random
 	cp $46
 	ret c
@@ -1166,7 +1166,7 @@ AI_Smart_Encore:
 	dec [hl]
 	ret
 
-.asm_38c81
+.discourage
 	inc [hl]
 	inc [hl]
 	inc [hl]
@@ -2686,7 +2686,7 @@ AI_Status:
 	pop bc
 	pop de
 	pop hl
-	ld a, [wd265]
+	ld a, [wTypeMatchup]
 	and a
 	jr z, .pop_and_discourage
 

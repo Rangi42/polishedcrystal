@@ -566,7 +566,7 @@ GetDecoName:
 	; fallthrough
 .getpokename:
 	push bc
-	ld [wd265], a
+	ld [wNamedObjectIndex], a
 	call GetPokemonName
 	pop bc
 	jr .copy

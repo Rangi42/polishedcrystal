@@ -27,7 +27,7 @@ MoveDeletion:
 	jr c, .declined ; no moves -- should never happen
 	push af
 	ld a, [wMoveScreenSelectedMove]
-	ld [wd265], a
+	ld [wNamedObjectIndex], a
 	call GetMoveName
 	ld hl, .ConfirmDeleteText
 	call PrintText

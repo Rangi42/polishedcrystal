@@ -38,9 +38,9 @@ LearnMove:
 
 	push hl
 	push de
-	ld [wd265], a
-	ld b, a
+	ld [wNamedObjectIndex], a
 
+	ld b, a
 	ld a, [wPlayerDisableCount]
 	and a
 	jr z, .not_disabled

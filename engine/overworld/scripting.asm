@@ -656,12 +656,12 @@ TMHMPocketName:
 
 CurItemName:
 	ld a, [wCurItem]
-	ld [wd265], a
+	ld [wNamedObjectIndex], a
 	jmp GetItemName
 
 CurTMHMName:
 	ld a, [wCurTMHM]
-	ld [wd265], a
+	ld [wNamedObjectIndex], a
 	jmp GetTMHMName
 
 Script_pokemart:
@@ -1630,7 +1630,7 @@ Script_getmonname:
 	jr nz, .gotit
 	ldh a, [hScriptVar]
 .gotit
-	ld [wd265], a
+	ld [wNamedObjectIndex], a
 	call GetPokemonName
 	ld de, wStringBuffer1
 	; fallthrough
@@ -1654,7 +1654,7 @@ Script_getitemname:
 	jr nz, .ok
 	ldh a, [hScriptVar]
 .ok
-	ld [wd265], a
+	ld [wNamedObjectIndex], a
 	call GetItemName
 	ld de, wStringBuffer1
 	jr ConvertMemToText
@@ -2455,18 +2455,18 @@ Script_gettmhmname:
 	jr nz, .ok
 	ldh a, [hScriptVar]
 .ok
-	ld [wd265], a
+	ld [wNamedObjectIndex], a
 	call GetTMHMName
 	ld de, wStringBuffer1
 	call ConvertMemToText
 
 	; off by one error?
-	ld a, [wd265]
+	ld a, [wNamedObjectIndex]
 	inc a
-	ld [wd265], a
+	ld [wTempTMHM], a
 
 	predef GetTMHMMove
-	ld a, [wd265]
+	ld a, [wTempTMHM]
 	ld [wPutativeTMHMMove], a
 	call GetMoveName
 

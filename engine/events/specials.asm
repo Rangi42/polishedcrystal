@@ -34,7 +34,7 @@ Special_GameCornerPrizeMonCheckDex:
 	call SetSeenAndCaughtMon
 	call FadeToMenu
 	ldh a, [hScriptVar]
-	ld [wd265], a
+	ld [wNamedObjectIndex], a
 	farcall NewPokedexEntry
 	jmp ExitAllMenus
 

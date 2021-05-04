@@ -194,14 +194,14 @@ JudgeSystem::
 
 ; Place the Pokédex number
 	ld a, [wCurPartySpecies]
-	ld [wd265], a
+	ld [wTextDecimalByte], a
 	hlcoord 1, 13
 	ld a, "№"
 	ld [hli], a
 	ld a, "."
 	ld [hli], a
 	lb bc, PRINTNUM_LEADINGZEROS | 1, 3
-	ld de, wd265
+	ld de, wTextDecimalByte
 	call PrintNum
 
 ; Place the chart

@@ -721,7 +721,7 @@ PlaceTradePartnerNamesAndParty:
 .got_species
 	pop bc
 	pop hl
-	ld [wd265], a
+	ld [wNamedObjectIndex], a
 	push bc
 	push hl
 	push de
@@ -1182,7 +1182,7 @@ LinkTrade_TradeStatsMenu:
 	add hl, bc
 	ld a, [hl]
 .got_ot_species
-	ld [wd265], a
+	ld [wNamedObjectIndex], a
 	call GetPokemonName
 	hlcoord 0, 12
 	lb bc, 4, 18
@@ -1366,7 +1366,7 @@ LinkTrade:
 	add hl, bc
 	ld a, [hl]
 .got_party_species
-	ld [wNamedObjectIndexBuffer], a
+	ld [wNamedObjectIndex], a
 	call GetPokemonName
 	ld hl, wStringBuffer1
 	ld de, wBufferTrademonNickname
@@ -1385,7 +1385,7 @@ LinkTrade:
 	add hl, bc
 	ld a, [hl]
 .got_ot_species
-	ld [wd265], a
+	ld [wNamedObjectIndex], a
 	call GetPokemonName
 	ld hl, .TradeThisForThat
 	bccoord 1, 14
@@ -1884,13 +1884,13 @@ WaitForOtherPlayerToExit:
 Special_SetBitsForLinkTradeRequest:
 	ld a, LINK_TRADECENTER - 1
 	ld [wPlayerLinkAction], a
-	ld [wd265], a
+	ld [wChosenCableClubRoom], a
 	ret
 
 Special_SetBitsForBattleRequest:
 	ld a, LINK_COLOSSEUM - 1
 	ld [wPlayerLinkAction], a
-	ld [wd265], a
+	ld [wChosenCableClubRoom], a
 	ret
 
 Special_WaitForLinkedFriend:
@@ -2095,7 +2095,7 @@ Link_CheckCommunicationError:
 	ret
 
 Special_TryQuickSave:
-	ld a, [wd265]
+	ld a, [wChosenCableClubRoom]
 	push af
 	farcall Link_SaveGame
 	; a = carry ? FALSE (0) : TRUE
@@ -2103,11 +2103,11 @@ Special_TryQuickSave:
 	inc a
 	ldh [hScriptVar], a
 	pop af
-	ld [wd265], a
+	ld [wChosenCableClubRoom], a
 	ret
 
 Special_CheckBothSelectedSameRoom:
-	ld a, [wd265]
+	ld a, [wChosenCableClubRoom]
 	call Link_EnsureSync
 	push af
 	call LinkDataReceived
@@ -2115,10 +2115,10 @@ Special_CheckBothSelectedSameRoom:
 	call LinkDataReceived
 	pop af
 	ld b, a
-	ld a, [wd265]
+	ld a, [wChosenCableClubRoom]
 	cp b
 	jr nz, .fail
-	ld a, [wd265]
+	ld a, [wChosenCableClubRoom]
 	inc a
 	ld [wLinkMode], a
 	xor a

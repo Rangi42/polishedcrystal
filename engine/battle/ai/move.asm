@@ -376,7 +376,7 @@ AIDebug:
 	inc de
 	and a
 	jr z, .get_score
-	ld [wNamedObjectIndexBuffer], a
+	ld [wNamedObjectIndex], a
 	push hl
 	call GetMoveName
 	pop hl

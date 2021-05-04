@@ -448,7 +448,7 @@ DisplayHOFMon:
 	call Textbox
 	ld a, [wTempMonSpecies]
 	ld [wCurPartySpecies], a
-	ld [wd265], a
+	ld [wTextDecimalByte], a
 	ld hl, wTempMonForm
 	predef GetVariant
 	hlcoord 6, 5
@@ -461,7 +461,7 @@ DisplayHOFMon:
 	ld [hli], a
 	ld [hl], "."
 	hlcoord 3, 13
-	ld de, wd265
+	ld de, wTextDecimalByte
 	lb bc, PRINTNUM_LEADINGZEROS | 1, 3
 	call PrintNum
 	call GetBasePokemonName
