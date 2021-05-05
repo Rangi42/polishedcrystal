@@ -24,8 +24,8 @@ MenuMonIconColors::
 	iconpal BROWN, RED ; PIDGEOT
 	iconpal PURPLE, GRAY ; RATTATA
 	iconpal BROWN, RED ; RATICATE
-	iconpal peepee, poopoo ; SPEAROW
-	iconpal peepee, poopoo ; FEAROW
+	iconpal BROWN, PINK ; SPEAROW
+	iconpal BROWN, PINK ; FEAROW
 	iconpal PURPLE, BROWN ; EKANS
 	iconpal PURPLE, BROWN ; ARBOK
 	iconpal RED, BLUE ; PIKACHU
@@ -111,7 +111,7 @@ MenuMonIconColors::
 	iconpal BROWN, TEAL ; MAROWAK
 	iconpal BROWN, GREEN ; HITMONLEE
 	iconpal BROWN, BLUE ; HITMONCHAN
-	iconpal peepee, poopoo ; LICKITUNG
+	iconpal PINK, BROWN ; LICKITUNG
 	iconpal PURPLE, BLUE ; KOFFING
 	iconpal PURPLE, BLUE ; WEEZING
 	iconpal GRAY, RED ; RHYHORN
@@ -121,8 +121,8 @@ MenuMonIconColors::
 	iconpal BROWN, GRAY ; KANGASKHAN
 	iconpal BLUE, RED ; HORSEA
 	iconpal BLUE, PURPLE ; SEADRA
-	iconpal peepee, poopoo ; GOLDEEN
-	iconpal peepee, poopoo ; SEAKING
+	iconpal RED, BROWN ; GOLDEEN
+	iconpal RED, BROWN ; SEAKING
 	iconpal BROWN, BLUE ; STARYU
 	iconpal PURPLE, BLUE ; STARMIE
 	iconpal PINK, GREEN ; MR__MIME
@@ -176,8 +176,8 @@ MenuMonIconColors::
 	iconpal BLUE, TEAL ; CHINCHOU
 	iconpal BLUE, TEAL ; LANTURN
 	iconpal RED, BLUE ; PICHU
-	iconpal peepee, poopoo ; CLEFFA
-	iconpal peepee, poopoo ; IGGLYBUFF
+	iconpal RED, PINK ; CLEFFA
+	iconpal RED, PINK ; IGGLYBUFF
 	iconpal RED, BLUE ; TOGEPI
 	iconpal RED, BLUE ; TOGETIC
 	iconpal GREEN, RED ; NATU
@@ -190,10 +190,10 @@ MenuMonIconColors::
 	iconpal BLUE, BROWN ; AZUMARILL
 	iconpal GREEN, RED ; SUDOWOODO
 	iconpal GREEN, TEAL ; POLITOED
-	iconpal peepee, poopoo ; HOPPIP
-	iconpal peepee, poopoo ; SKIPLOOM
-	iconpal peepee, poopoo ; JUMPLUFF
-	iconpal peepee, poopoo ; AIPOM
+	iconpal RED, GREEN ; HOPPIP
+	iconpal GREEN, PURPLE ; SKIPLOOM
+	iconpal BLUE, PINK ; JUMPLUFF
+	iconpal PURPLE, RED ; AIPOM
 	iconpal GREEN, BROWN ; SUNKERN
 	iconpal GREEN, BROWN ; SUNFLORA
 	iconpal RED, BLUE ; YANMA
@@ -228,7 +228,7 @@ MenuMonIconColors::
 	iconpal PINK, BLUE ; CORSOLA
 	iconpal BLUE, GRAY ; REMORAID
 	iconpal RED, TEAL ; OCTILLERY
-	iconpal peepee, poopoo ; DELIBIRD
+	iconpal RED, PINK ; DELIBIRD
 	iconpal BLUE, BLUE ; MANTINE
 	iconpal GRAY, GREEN ; SKARMORY
 	iconpal RED, GRAY ; HOUNDOUR
@@ -237,11 +237,11 @@ MenuMonIconColors::
 	iconpal BLUE, GRAY ; PHANPY
 	iconpal GRAY, RED ; DONPHAN
 	iconpal BLUE, PURPLE ; PORYGON2
-	iconpal peepee, poopoo ; STANTLER
+	iconpal BROWN, GREEN ; STANTLER
 	iconpal BROWN, GREEN ; SMEARGLE
 	iconpal BROWN, BLUE ; TYROGUE
 	iconpal BROWN, BLUE ; HITMONTOP
-	iconpal peepee, poopoo ; SMOOCHUM
+	iconpal RED, PINK ; SMOOCHUM
 	iconpal BROWN, RED ; ELEKID
 	iconpal RED, BROWN ; MAGBY
 	iconpal PINK, BLUE ; MILTANK
@@ -259,6 +259,7 @@ MenuMonIconColors::
 	iconpal BLUE, PURPLE ; HONCHKROW
 	iconpal RED, BLUE ; MUNCHLAX
 	iconpal RED, BLUE ; EGG
+	iconpal RED, BLUE ; index $100
 	iconpal BLUE, RED ; WEAVILE
 	iconpal GRAY, BROWN ; MAGNEZONE
 	iconpal GRAY, RED ; RHYPERIOR
