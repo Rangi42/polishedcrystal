@@ -33,35 +33,36 @@ GetWeekday::
 	ret
 
 SetSeenAndCaughtMon::
-	push af
-	ld c, a
+	push bc
 	ld hl, wPokedexCaught
-	ld b, SET_FLAG
+	ld a, SET_FLAG
 	call PokedexFlagAction
-	pop af
+	pop bc
 	; fallthrough
 
 SetSeenMon::
-	ld c, a
 	ld hl, wPokedexSeen
-	ld b, SET_FLAG
+	ld a, SET_FLAG
 	jr PokedexFlagAction
 
 CheckCaughtMon::
-	ld c, a
 	ld hl, wPokedexCaught
-	ld b, CHECK_FLAG
+	ld a, CHECK_FLAG
 	jr PokedexFlagAction
 
 CheckSeenMon::
-	ld c, a
 	ld hl, wPokedexSeen
-	ld b, CHECK_FLAG
+	ld a, CHECK_FLAG
 	; fallthrough
 
 PokedexFlagAction::
-	ld d, 0
-	predef FlagPredef
+	push af
+	call GetPokedexNumber
+	pop af
+	ld d, b
+	ld b, a
+	ld e, c
+	call FlagAction
 	ld a, c
 	and a
 	ret

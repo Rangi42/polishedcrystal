@@ -722,11 +722,7 @@ TradeAnim_ShowGivemonData:
 	call TradeAnim_ShowGivemonFrontpic
 
 	ld a, [wPlayerTrademonSpecies]
-	call GetCryIndex
-	jr c, .skip_cry
-	ld e, c
-	ld d, b
-	call PlayCryHeader
+	call _PlayCry
 .skip_cry
 
 	jmp TradeAnim_AdvanceScriptPointer

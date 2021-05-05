@@ -77,15 +77,15 @@ endr
 GetCryIndex::
 	and a
 	jr z, .no
-	cp NUM_POKEMON + 1
-	jr nc, .no
+	inc a ; cp EGG
+	jr z, .no
 
+	dec a
 	ld c, a
+	dec c ; slightly faster than dec bc, since we know c != 0
 	ld a, [wCurForm]
+	call ConvertFormToExtendedSpecies
 	ld b, a
-	call GetExtendedSpeciesIndex
-	dec bc
-	ld a, c
 	and a
 	ret
 

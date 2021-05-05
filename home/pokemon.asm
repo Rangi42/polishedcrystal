@@ -244,34 +244,39 @@ GetNickname::
 	rst CopyBytes
 	jmp PopBCDEHL
 
-ReverseExtSpecies:
-; input: bc = extended species index
-; output: c = species, b = possible extspecies mask
-; keep in mind that we can't retain form data
-	bit 0, b
-	ret z
-	inc c ; extspecies $100 is bulbasaur ($01) with extspecies set
-	ld b, EXTSPECIES_MASK
-	ret
-
 GetPokedexNumber::
 ; input: c = species, b = form
-; output bc = pokedex number (extended index - 1 if 256+, otherwise just c)
-; this reflects how eggs don't have a pokédex number.
-	call GetExtendedSpeciesIndex
-	bit 0, b
-	ret z
-	dec bc
+; output bc = pokedex number ((256*b + c) - (2*b))
+; this reflects how c = $00 and c = $ff don't have a pokédex number.
+	ld a, b
+	call ConvertFormToExtendedSpecies
+	ld b, a
+	add a
+	cpl
+	ld e, a
+	ld d, $ff
+	inc de
+	add bc, de
 	ret
 
-GetExtendedSpeciesIndex::
-; input: c = species, b = form
-; output: bc = extended index
-	ld hl, ExtSpeciesTable - 1
-	call _GetSpeciesAndFormIndexHelper
-	ret c
-	ld bc, -ExtSpeciesTable
-	jr _GetSpeciesAndFormIndexFinal
+; unknown as of 5/5/21 if this is needed, but for now it's not future-proofed for 10bit
+; ConvertExtendedSpeciesToForm::
+; ; input: a = extended species index
+; ; output: a = possible extspecies mask
+; ; keep in mind that we can't retain form data
+	; and a
+	; ret z
+	; ld a, EXTSPECIES_MASK
+	; ret
+
+ConvertFormToExtendedSpecies::
+; input: a = form
+; output: a = extended index >> MON_EXTSPECIES_F
+	and EXTSPECIES_MASK
+	assert (EXTSPECIES_MASK > %00011111) && (EXTSPECIES_MASK & %00100000)
+	swap a
+	rra
+	ret
 
 GetCosmeticSpeciesAndFormIndex::
 ; input: c = species, b = form
