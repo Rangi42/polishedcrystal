@@ -2751,7 +2751,8 @@ CamperGroup:
 	db "Clark@"
 	db TRAINERTYPE_NICKNAME
 	; party
-	dbp 56, QUILAVA, "Campfire@"
+	dbp 56, QUILAVA
+		db "Campfire@"
 	db -1 ; end
 
 ; ================

@@ -2,36 +2,36 @@
 
 WithdrawUsers:
 ; Defense Curl += Withdraw
-	db SQUIRTLE
-	db WARTORTLE
-	db BLASTOISE
-	db SLOWBRO
-	db SHELLDER
-	db CLOYSTER
-	db OMANYTE
-	db OMASTAR
+	dp SQUIRTLE
+	dp WARTORTLE
+	dp BLASTOISE
+	dp SLOWBRO
+	dp SHELLDER
+	dp CLOYSTER
+	dp OMANYTE
+	dp OMASTAR
 	db -1
 
 HardenUsers:
 ; Defense Curl += Harden
-	db METAPOD
-	db KAKUNA
-	db GRIMER
-	db MUK
-	db ONIX
-	db STEELIX
-	db KRABBY
-	db KINGLER
-	db STARYU
-	db STARMIE
-	db KABUTO
-	db KABUTOPS
-	db HERACROSS
-	db GLIGAR
-	db GLISCOR
-	db SLUGMA
-	db MAGCARGO
-	db CORSOLA
-	db PUPITAR
-	db TYRANITAR
+	dp METAPOD
+	dp KAKUNA
+	dp GRIMER
+	dp MUK
+	dp ONIX
+	dp STEELIX
+	dp KRABBY
+	dp KINGLER
+	dp STARYU
+	dp STARMIE
+	dp KABUTO
+	dp KABUTOPS
+	dp HERACROSS
+	dp GLIGAR
+	dp SLUGMA
+	dp MAGCARGO
+	dp CORSOLA
+	dp PUPITAR
+	dp TYRANITAR
+	dp GLISCOR
 	db -1

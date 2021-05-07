@@ -113,6 +113,7 @@ PokemonCries::
 	mon_cry CRY_ODDISH,      $04f,  $0e0 ; Marowak
 	mon_cry CRY_GOLEM,       $080,  $140 ; Hitmonlee
 	mon_cry CRY_SEEL,        $0ee,  $140 ; Hitmonchan
+	mon_cry CRY_SEEL,        $000,  $100 ; Lickitung
 	mon_cry CRY_GOLEM,       $0e6,  $15d ; Koffing
 	mon_cry CRY_GOLEM,       $0ff,  $17f ; Weezing
 	mon_cry CRY_CHARMANDER,  $000,  $100 ; Rhyhorn
@@ -259,6 +260,7 @@ PokemonCries::
 	mon_cry CRY_HOOTHOOT,    $130,  $0e8 ; Mismagius
 	mon_cry CRY_MARILL,     -$01f,  $180 ; Honchkrow
 	mon_cry CRY_GRIMER,      $055,  $081 ; Munchlax
+	assert_table_length NUM_POKEMON
 	mon_cry CRY_NIDORAN_M,      0,     0 ; Egg
 	mon_cry CRY_NIDORAN_M,      0,     0 ; Index $100
 	mon_cry CRY_WOOPER,      $053,  $0af ; Weavile
@@ -275,5 +277,4 @@ PokemonCries::
 	mon_cry CRY_MAGCARGO,   -$109,  $100 ; Mamoswine
 	mon_cry CRY_GIRAFARIG,   $073,  $240 ; PorygonZ
 	mon_cry CRY_VENONAT,     $0b0,  $16f ; Sylveon
-	assert_table_length NUM_POKEMON
 	assert_table_length NUM_SPECIES

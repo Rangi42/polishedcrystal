@@ -254,6 +254,7 @@ FrontPicPointers::
 	dba MismagiusFrontpic
 	dba HonchkrowFrontpic
 	dba MunchlaxFrontpic
+	assert_table_length NUM_POKEMON
 	dba EggPic
 	dba EggPic
 	dba WeavileFrontpic
@@ -270,7 +271,7 @@ FrontPicPointers::
 	dba MamoswineFrontpic
 	dba PorygonZFrontpic
 	dba SylveonFrontpic
-	assert_table_length NUM_POKEMON
+	assert_table_length NUM_SPECIES
 
 	dba UnownBFrontpic
 	dba UnownCFrontpic

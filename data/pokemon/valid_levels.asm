@@ -109,6 +109,7 @@ ValidPokemonLevels: ; for Wonder Trade
 	db  28, 100 ; Marowak
 	db  20, 100 ; Hitmonlee
 	db  20, 100 ; Hitmonchan
+	db  10, 100 ; Lickitung
 	db   1,  34 ; Koffing
 	db  35, 100 ; Weezing
 	db   1,  41 ; Rhyhorn
@@ -256,6 +257,7 @@ ValidPokemonLevels: ; for Wonder Trade
 	db  40, 100 ; Honchkrow
 	db   1,  19 ; Munchlax
 	assert_table_length NUM_POKEMON + 1
+	db 255, 255 ; Egg
 	db 255, 255 ; Egg
 	db  40, 100 ; Weavile
 	db  50, 100 ; Magnezone

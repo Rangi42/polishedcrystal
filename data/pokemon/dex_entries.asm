@@ -429,6 +429,10 @@ SECTION "HitmonchanPokedexEntry", ROMX
 HitmonchanPokedexEntry::
 INCLUDE "data/pokemon/dex_entries/107.asm"
 
+SECTION "LickitungPokedexEntry", ROMX
+LickitungPokedexEntry::
+INCLUDE "data/pokemon/dex_entries/108.asm"
+
 SECTION "KoffingPokedexEntry", ROMX
 KoffingPokedexEntry::
 INCLUDE "data/pokemon/dex_entries/109.asm"

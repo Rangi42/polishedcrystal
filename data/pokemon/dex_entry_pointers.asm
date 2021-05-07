@@ -255,6 +255,7 @@ PokedexDataPointerTable:
 	dba MismagiusPokedexEntry
 	dba HonchkrowPokedexEntry
 	dba MunchlaxPokedexEntry
+	assert_table_length NUM_POKEMON
 	dba BulbasaurPokedexEntry ; egg
 	dba BulbasaurPokedexEntry ; index $100
 	dba WeavilePokedexEntry
@@ -271,4 +272,4 @@ PokedexDataPointerTable:
 	dba MamoswinePokedexEntry
 	dba PorygonZPokedexEntry
 	dba SylveonPokedexEntry
-	assert_table_length NUM_POKEMON
+	assert_table_length NUM_SPECIES

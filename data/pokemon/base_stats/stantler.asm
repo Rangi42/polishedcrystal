@@ -9,7 +9,7 @@
 	INCBIN "gfx/pokemon/stantler/front.dimensions"
 	abilities_for STANTLER, INTIMIDATE, FRISK, SAP_SIPPER
 	db GROWTH_SLOW ; growth rate
-	dn EGG_FIELD, EGG_FIELD ; egg groups
+	dn EGG_GROUND, EGG_GROUND ; egg groups
 
 	ev_yield   0,   1,   0,   0,   0,   0
 	;         hp  atk  def  spd  sat  sdf

@@ -408,6 +408,10 @@ CuboneEggMoves:
 	db IRON_HEAD
 	db $ff
 
+LickitungEggMoves:
+	db THRASH
+	db $ff
+
 KoffingEggMoves:
 	db PSYBEAM
 	db SCREECH

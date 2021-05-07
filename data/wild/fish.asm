@@ -200,29 +200,71 @@ FishGroups:
 	dbpb 100 percent,     REMORAID,   40
 
 TimeFishGroups:
-	;  day              nite
-	db CORSOLA,    20,  STARYU,     20
-	db CORSOLA,    40,  STARYU,     40
-	db SHELLDER,   20,  SHELLDER,   20
-	db SHELLDER,   40,  SHELLDER,   40
-	db PSYDUCK,    20,  PSYDUCK,    20
-	db PSYDUCK,    40,  PSYDUCK,    40
-	db POLIWAG,    20,  POLIWAG,    20
-	db POLIWAG,    40,  POLIWAG,    40
-	db DRATINI,    20,  DRATINI,    20
-	db DRATINI,    40,  DRATINI,    40
-	db QWILFISH,   20,  QWILFISH,   20
-	db QWILFISH,   40,  QWILFISH,   40
-	db REMORAID,   20,  REMORAID,   20
-	db REMORAID,   40,  REMORAID,   40
-	db GYARADOS,   20,  GYARADOS,   20
-	db GYARADOS,   40,  GYARADOS,   40
-	db DRATINI,    10,  DRATINI,    10
-	db DRATINI,    10,  DRATINI,    10
-	db HORSEA,     20,  HORSEA,     20
-	db HORSEA,     40,  HORSEA,     40
-	db TENTACOOL,  20,  TENTACOOL,  20
-	db TENTACOOL,  40,  TENTACOOL,  40
+	dpb CORSOLA,    20 ; day
+	dpb STARYU,     20 ; night
+
+	dpb CORSOLA,    40 ; day
+	dpb STARYU,     40 ; night
+
+	dpb SHELLDER,   20 ; day
+	dpb SHELLDER,   20 ; night
+
+	dpb SHELLDER,   40 ; day
+	dpb SHELLDER,   40 ; night
+
+	dpb PSYDUCK,    20 ; day
+	dpb PSYDUCK,    20 ; night
+
+	dpb PSYDUCK,    40 ; day
+	dpb PSYDUCK,    40 ; night
+
+	dpb POLIWAG,    20 ; day
+	dpb POLIWAG,    20 ; night
+
+	dpb POLIWAG,    40 ; day
+	dpb POLIWAG,    40 ; night
+
+	dpb DRATINI,    20 ; day
+	dpb DRATINI,    20 ; night
+
+	dpb DRATINI,    40 ; day
+	dpb DRATINI,    40 ; night
+
+	dpb QWILFISH,   20 ; day
+	dpb QWILFISH,   20 ; night
+
+	dpb QWILFISH,   40 ; day
+	dpb QWILFISH,   40 ; night
+
+	dpb REMORAID,   20 ; day
+	dpb REMORAID,   20 ; night
+
+	dpb REMORAID,   40 ; day
+	dpb REMORAID,   40 ; night
+
+	dpb GYARADOS,   20 ; day
+	dpb GYARADOS,   20 ; night
+
+	dpb GYARADOS,   40 ; dayman (ah-ah-ah!)
+	dpb GYARADOS,   40 ; fighter of the nightman (ah-ah-ah!)
+
+	dpb DRATINI,    10 ; day
+	dpb DRATINI,    10 ; night
+
+	dpb DRATINI,    10 ; day
+	dpb DRATINI,    10 ; night
+
+	dpb HORSEA,     20 ; day
+	dpb HORSEA,     20 ; night
+
+	dpb HORSEA,     40 ; day
+	dpb HORSEA,     40 ; night
+
+	dpb TENTACOOL,  20 ; day
+	dpb TENTACOOL,  20 ; night
+
+	dpb TENTACOOL,  40 ; day
+	dpb TENTACOOL,  40 ; night
 
 FishItems:
 	db PEARL

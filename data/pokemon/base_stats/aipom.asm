@@ -9,7 +9,7 @@
 	INCBIN "gfx/pokemon/aipom/front.dimensions"
 	abilities_for AIPOM, PICKUP, RUN_AWAY, SKILL_LINK
 	db GROWTH_FAST ; growth rate
-	dn EGG_FIELD, EGG_FIELD ; egg groups
+	dn EGG_GROUND, EGG_GROUND ; egg groups
 
 	ev_yield   0,   0,   0,   1,   0,   0
 	;         hp  atk  def  spd  sat  sdf

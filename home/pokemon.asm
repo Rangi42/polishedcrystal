@@ -245,33 +245,29 @@ GetNickname::
 	jmp PopBCDEHL
 
 GetPokedexNumber::
-; input: c = species, b = form
-; output bc = pokedex number ((256*b + c) - (2*b))
+; input: c = species, b = extspecies+form
+; output bc = de = pokedex number ((256*extspecies + c) - (2*extspecies))
 ; this reflects how c = $00 and c = $ff don't have a pokédex number.
+; assumes number of pokemon < $1000
 	ld a, b
 	call ConvertFormToExtendedSpecies
 	ld b, a
 	add a
 	cpl
-	ld e, a
-	ld d, $ff
-	inc de
-	add bc, de
+	inc a
+	add c
+	ld c, a
+	jr nc, .no_carry
+	dec b
+.no_carry
+	ld d, b
+	ld e, c
 	ret
-
-; unknown as of 5/5/21 if this is needed, but for now it's not future-proofed for 10bit
-; ConvertExtendedSpeciesToForm::
-; ; input: a = extended species index
-; ; output: a = possible extspecies mask
-; ; keep in mind that we can't retain form data
-	; and a
-	; ret z
-	; ld a, EXTSPECIES_MASK
-	; ret
 
 ConvertFormToExtendedSpecies::
 ; input: a = form
 ; output: a = extended index >> MON_EXTSPECIES_F
+; WARNING: this discards form data and only keeps extspecies
 	and EXTSPECIES_MASK
 	assert (EXTSPECIES_MASK > %00011111) && (EXTSPECIES_MASK & %00100000)
 	swap a
@@ -280,36 +276,46 @@ ConvertFormToExtendedSpecies::
 
 GetCosmeticSpeciesAndFormIndex::
 ; input: c = species, b = form
-; output: bc = extended index
-	ld hl, CosmeticSpeciesAndFormTable - 1
-	call _GetSpeciesAndFormIndexHelper
-	ret c
-	ld bc, -CosmeticSpeciesAndFormTable
-	jr _GetSpeciesAndFormIndexFinal
+; output: bc = extended index, carry if nothing found
+	ld hl, CosmeticSpeciesAndFormTable
+	jr _GetSpeciesAndFormIndex
 
 GetSpeciesAndFormIndex::
 ; input: c = species, b = form
-; output: bc = extended index
-	ld hl, VariantSpeciesAndFormTable - 1
-	call _GetSpeciesAndFormIndexHelper
-	ret c
-	ld bc, -VariantSpeciesAndFormTable
-_GetSpeciesAndFormIndexFinal:
-	add hl, bc
-	srl h
-	rr l
+; output: bc = extended index, carry if nothing found
+	ld hl, VariantSpeciesAndFormTable
+_GetSpeciesAndFormIndex::
+; input: c = species, b = form, hl = cosmetic/variant table
+; output: bc = extended index, carry if nothing found
+	push de
+	ld a, h
+	cpl
+	ld d, a
+	ld a, l
+	cpl
+	ld e, a
 	dec hl
-	inc h
-	ld b, h
-	ld c, l
+	call .helper
+	jr c, .final
+	pop de
+	and a
 	ret
 
-_GetSpeciesAndFormIndexHelper:
+.final:
+	add hl, de
+	srl h
+	rr l
+	ld de, REAL_NUM_POKEMON - 1
+	add hl, de
+	ld b, h
+	ld c, l
+	scf
+	pop de
+	ret
+
+.helper:
 	ld a, b
 	and SPECIESFORM_MASK
-	jr z, .normal ; NO_FORM?
-	cp PLAIN_FORM
-	jr z, .normal ; species index isn't >255 and form is plain
 	ld b, a
 .next
 	inc hl
@@ -323,24 +329,41 @@ _GetSpeciesAndFormIndexHelper:
 	; If form mask is 0, only verify extspecies
 	ld a, SPECIESFORM_MASK
 	and [hl]
-	jr z, .next ; Should never happen
+	jr nz, .not_null_speciesform
+
+	; Compare extspecies only
+	ld a, b
+	and EXTSPECIES_MASK
+	jr z, .found_index
+	jr .next
+
+.not_null_speciesform
 	cp EXTSPECIES_MASK
 	jr nz, .full_comparision
 
 	; Table index is extspecies only. If input form isn't, ignore it.
 	bit MON_EXTSPECIES_F, b
 	jr z, .next
+.found_index
 	inc hl ; makes sure we point at a proper index with final helper
+	scf
 	ret
 
 .full_comparision
 	ld a, [hli]
-	bit MON_EXTSPECIES_F, a
+	set MON_EXTSPECIES_F, a
 	cp b
 	jr nz, .loop
+	scf
 	ret
 
 .normal
+	; Converts species 1-254, extspecies to 256-509 (egg is 255)
+	bit MON_EXTSPECIES_F, b
 	ld b, 0
-	scf
+	jr z, .done
+	inc b
+	dec c
+.done
+	and a
 	ret

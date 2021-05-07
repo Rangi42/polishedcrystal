@@ -558,11 +558,45 @@ HoOhBackpic:              INCBIN "gfx/pokemon/ho_oh/back.2bpp.lz"
 
 
 SECTION "Pokemon Pics 28", ROMX
+SpearowFrontpic:          INCBIN "gfx/pokemon/spearow/front.animated.2bpp.lz"
+SpearowBackpic:           INCBIN "gfx/pokemon/spearow/back.2bpp.lz"
+FearowFrontpic:           INCBIN "gfx/pokemon/fearow/front.animated.2bpp.lz"
+FearowBackpic:            INCBIN "gfx/pokemon/fearow/back.2bpp.lz"
+LickitungFrontpic:        INCBIN "gfx/pokemon/lickitung/front.animated.2bpp.lz"
+LickitungBackpic:         INCBIN "gfx/pokemon/lickitung/back.2bpp.lz"
+GoldeenFrontpic:          INCBIN "gfx/pokemon/goldeen/front.animated.2bpp.lz"
+GoldeenBackpic:           INCBIN "gfx/pokemon/goldeen/back.2bpp.lz"
+SeakingFrontpic:          INCBIN "gfx/pokemon/seaking/front.animated.2bpp.lz"
+SeakingBackpic:           INCBIN "gfx/pokemon/seaking/back.2bpp.lz"
+CleffaFrontpic:           INCBIN "gfx/pokemon/cleffa/front.animated.2bpp.lz"
+CleffaBackpic:            INCBIN "gfx/pokemon/cleffa/back.2bpp.lz"
+IgglybuffFrontpic:        INCBIN "gfx/pokemon/igglybuff/front.animated.2bpp.lz"
+IgglybuffBackpic:         INCBIN "gfx/pokemon/igglybuff/back.2bpp.lz"
+HoppipFrontpic:           INCBIN "gfx/pokemon/hoppip/front.animated.2bpp.lz"
+HoppipBackpic:            INCBIN "gfx/pokemon/hoppip/back.2bpp.lz"
 
+
+SECTION "Pokemon Pics 29", ROMX
+SkiploomFrontpic:         INCBIN "gfx/pokemon/skiploom/front.animated.2bpp.lz"
+SkiploomBackpic:          INCBIN "gfx/pokemon/skiploom/back.2bpp.lz"
+JumpluffFrontpic:         INCBIN "gfx/pokemon/jumpluff/front.animated.2bpp.lz"
+JumpluffBackpic:          INCBIN "gfx/pokemon/jumpluff/back.2bpp.lz"
+AipomFrontpic:            INCBIN "gfx/pokemon/aipom/front.animated.2bpp.lz"
+AipomBackpic:             INCBIN "gfx/pokemon/aipom/back.2bpp.lz"
+DelibirdFrontpic:         INCBIN "gfx/pokemon/delibird/front.animated.2bpp.lz"
+DelibirdBackpic:          INCBIN "gfx/pokemon/delibird/back.2bpp.lz"
+StantlerFrontpic:         INCBIN "gfx/pokemon/stantler/front.animated.2bpp.lz"
+StantlerBackpic:          INCBIN "gfx/pokemon/stantler/back.2bpp.lz"
+SmoochumFrontpic:         INCBIN "gfx/pokemon/smoochum/front.animated.2bpp.lz"
+SmoochumBackpic:          INCBIN "gfx/pokemon/smoochum/back.2bpp.lz"
 CelebiFrontpic:           INCBIN "gfx/pokemon/celebi/front.animated.2bpp.lz"
 CelebiBackpic:            INCBIN "gfx/pokemon/celebi/back.2bpp.lz"
 LeafeonFrontpic:          INCBIN "gfx/pokemon/leafeon/front.animated.2bpp.lz"
 LeafeonBackpic:           INCBIN "gfx/pokemon/leafeon/back.2bpp.lz"
+
+
+SECTION "Pokemon Pics 30", ROMX
+
 GlaceonFrontpic:          INCBIN "gfx/pokemon/glaceon/front.animated.2bpp.lz"
 GlaceonBackpic:           INCBIN "gfx/pokemon/glaceon/back.2bpp.lz"
 SylveonFrontpic:          INCBIN "gfx/pokemon/sylveon/front.animated.2bpp.lz"

@@ -9,7 +9,7 @@
 	INCBIN "gfx/pokemon/skiploom/front.dimensions"
 	abilities_for SKIPLOOM, CHLOROPHYLL, LEAF_GUARD, INFILTRATOR
 	db GROWTH_MEDIUM_SLOW ; growth rate
-	dn EGG_FAIRY, EGG_GRASS ; egg groups
+	dn EGG_FAIRY, EGG_PLANT ; egg groups
 
 	ev_yield   0,   0,   0,   2,   0,   0
 	;         hp  atk  def  spd  sat  sdf

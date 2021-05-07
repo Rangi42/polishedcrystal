@@ -270,4 +270,4 @@ AlphabeticalPokedexOrder:
 	dp YANMEGA
 	dp ZAPDOS
 	dp ZUBAT
-	assert_table_length NUM_POKEMON
+	assert_table_length REAL_NUM_POKEMON

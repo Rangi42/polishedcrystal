@@ -146,6 +146,15 @@ dbpb: MACRO
 	db \3
 ENDM
 
+dbbp: MACRO
+	db \1, \2
+	if _NARG == 4
+		dp \2, \3
+	else
+		dp \2
+	endc
+ENDM
+
 dpw: MACRO
 	if _NARG == 3
 		dp \1, \2

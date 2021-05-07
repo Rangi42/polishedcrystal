@@ -258,6 +258,7 @@ MenuMonIconColors::
 	iconpal PURPLE, BROWN ; MISMAGIUS
 	iconpal BLUE, PURPLE ; HONCHKROW
 	iconpal RED, BLUE ; MUNCHLAX
+	assert_table_length NUM_POKEMON
 	iconpal RED, BLUE ; EGG
 	iconpal RED, BLUE ; index $100
 	iconpal BLUE, RED ; WEAVILE
@@ -274,7 +275,7 @@ MenuMonIconColors::
 	iconpal BROWN, GREEN ; MAMOSWINE
 	iconpal BLUE, PURPLE ; PORYGON_Z
 	iconpal PINK, BLUE ; SYLVEON
-	assert_table_length NUM_POKEMON
+	assert_table_length NUM_SPECIES
 
 rept NUM_UNOWN - 1
 	iconpal GRAY, BLUE

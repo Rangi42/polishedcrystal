@@ -275,6 +275,7 @@
 	const MISMAGIUS  ; fc
 	const HONCHKROW  ; fd
 	const MUNCHLAX   ; fe
+NUM_POKEMON EQU const_value - 1 ; fe
 	const EGG        ; ff
 	const_skip       ; 100 is unused
 	const WEAVILE    ; 101
@@ -291,7 +292,8 @@
 	const MAMOSWINE  ; 10c
 	const PORYGON_Z  ; 10d
 	const SYLVEON    ; 10e
-NUM_POKEMON EQU const_value - 1 ; 10e
+NUM_SPECIES EQU const_value - 1 ; 10e
+REAL_NUM_POKEMON EQU NUM_SPECIES - (2 * HIGH(NUM_SPECIES))
 
 CANCEL EQU -1
 
@@ -439,11 +441,6 @@ GALARIAN_FORM EQU 2
 
 NUM_VARIANT_FORMS EQU const_value - FIRST_VARIANT_FORM_MON ; 1d
 
-FIRST_EXT_MON EQU const_value ; 151
-
-NUM_EXT_SPECIES EQU const_value - FIRST_EXT_MON ; 0
-
-; these constants include EGG as a species
-NUM_UNIQUE_POKEMON EQU const_value - 1 ; 150
-NUM_EXT_POKEMON EQU NUM_UNIQUE_POKEMON - NUM_COSMETIC_FORMS ; 11c
-NUM_SPECIES EQU NUM_UNIQUE_POKEMON - NUM_COSMETIC_FORMS - NUM_VARIANT_FORMS ; ff
+; these constants include EGG and a dummy entry as species
+NUM_UNIQUE_POKEMON EQU const_value - 1 ; 160
+NUM_EXT_POKEMON EQU NUM_UNIQUE_POKEMON - NUM_COSMETIC_FORMS ; 12c

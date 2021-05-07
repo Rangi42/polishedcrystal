@@ -258,6 +258,7 @@ endc
 	db DAZZLINGLEAM ; MISMAGIUS
 	db NO_MOVE      ; HONCHKROW
 	db NO_MOVE      ; MUNCHLAX
+	assert_table_length NUM_POKEMON
 	db NO_MOVE      ; EGG
 	db NO_MOVE      ; index $100
 	db NO_MOVE      ; WEAVILE
@@ -274,7 +275,7 @@ endc
 	db NO_MOVE      ; MAMOSWINE
 	db NASTY_PLOT   ; PORYGON_Z
 	db DISARM_VOICE ; SYLVEON
-	assert_table_length NUM_POKEMON
+	assert_table_length NUM_SPECIES
 
 	db BITE         ; GYARADOS, GYARADOS_RED_FORM
 	db NO_MOVE      ; MEWTWO, MEWTWO_ARMORED_FORM

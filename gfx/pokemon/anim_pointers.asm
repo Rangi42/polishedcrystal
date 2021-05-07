@@ -254,6 +254,7 @@ AnimationPointers:
 	dw MismagiusAnimation
 	dw HonchkrowAnimation
 	dw MunchlaxAnimation
+	assert_table_length NUM_POKEMON
 	dw EggAnimation
 	dw EggAnimation
 	dw WeavileAnimation
@@ -270,7 +271,7 @@ AnimationPointers:
 	dw MamoswineAnimation
 	dw PorygonZAnimation
 	dw SylveonAnimation
-	assert_table_length NUM_POKEMON
+	assert_table_length NUM_SPECIES
 
 	dw UnownBAnimation
 	dw UnownCAnimation

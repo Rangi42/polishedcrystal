@@ -9,7 +9,7 @@
 	INCBIN "gfx/pokemon/hoppip/front.dimensions"
 	abilities_for HOPPIP, CHLOROPHYLL, LEAF_GUARD, INFILTRATOR
 	db GROWTH_MEDIUM_SLOW ; growth rate
-	dn EGG_FAIRY, EGG_GRASS ; egg groups
+	dn EGG_FAIRY, EGG_PLANT ; egg groups
 
 	ev_yield   0,   0,   0,   0,   0,   1
 	;         hp  atk  def  spd  sat  sdf

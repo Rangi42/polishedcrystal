@@ -556,7 +556,7 @@ INCLUDE "gfx/pokemon/porygon_z/hgss/normal.pal"
 INCLUDE "gfx/pokemon/porygon_z/hgss/shiny.pal"
 INCLUDE "gfx/pokemon/sylveon/hgss/normal.pal"
 INCLUDE "gfx/pokemon/sylveon/hgss/shiny.pal"
-	assert_table_length NUM_POKEMON + 1
+	assert_table_length NUM_SPECIES + 1
 
 INCLUDE "gfx/pokemon/gyarados_red/hgss/normal.pal"
 INCLUDE "gfx/pokemon/gyarados_red/hgss/shiny.pal"
@@ -1162,7 +1162,7 @@ INCLUDE "gfx/pokemon/porygon_z/normal.pal"
 INCLUDE "gfx/pokemon/porygon_z/shiny.pal"
 INCLUDE "gfx/pokemon/sylveon/normal.pal"
 INCLUDE "gfx/pokemon/sylveon/shiny.pal"
-	assert_table_length NUM_POKEMON + 1
+	assert_table_length NUM_SPECIES + 1
 
 INCLUDE "gfx/pokemon/gyarados_red/normal.pal"
 INCLUDE "gfx/pokemon/gyarados_red/shiny.pal"

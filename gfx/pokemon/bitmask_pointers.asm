@@ -254,6 +254,7 @@ BitmasksPointers:
 	dw MismagiusBitmasks
 	dw HonchkrowBitmasks
 	dw MunchlaxBitmasks
+	assert_table_length NUM_POKEMON
 	dw EggBitmasks
 	dw EggBitmasks
 	dw WeavileBitmasks
@@ -270,7 +271,7 @@ BitmasksPointers:
 	dw MamoswineBitmasks
 	dw PorygonZBitmasks
 	dw SylveonBitmasks
-	assert_table_length NUM_POKEMON
+	assert_table_length NUM_SPECIES
 
 	dw UnownBBitmasks
 	dw UnownCBitmasks

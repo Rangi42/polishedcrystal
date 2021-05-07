@@ -254,6 +254,7 @@ BackPicPointers::
 	dba MismagiusBackpic
 	dba HonchkrowBackpic
 	dba MunchlaxBackpic
+	assert_table_length NUM_POKEMON
 	dba EggPic
 	dba EggPic
 	dba WeavileBackpic
@@ -270,7 +271,7 @@ BackPicPointers::
 	dba MamoswineBackpic
 	dba PorygonZBackpic
 	dba SylveonBackpic
-	assert_table_length NUM_POKEMON
+	assert_table_length NUM_SPECIES
 
 	dba UnownBBackpic
 	dba UnownCBackpic

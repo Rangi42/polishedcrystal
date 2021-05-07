@@ -254,6 +254,7 @@ FramesPointers:
 	dw MismagiusFrames
 	dw HonchkrowFrames
 	dw MunchlaxFrames
+	assert_table_length NUM_POKEMON
 	dw EggFrames
 	dw EggFrames
 	dw WeavileFrames
@@ -270,7 +271,7 @@ FramesPointers:
 	dw MamoswineFrames
 	dw PorygonZFrames
 	dw SylveonFrames
-	assert_table_length NUM_POKEMON
+	assert_table_length NUM_SPECIES
 
 	dw UnownBFrames
 	dw UnownCFrames
