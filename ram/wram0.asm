@@ -795,8 +795,6 @@ SECTION UNION "Misc 480", WRAM0
 	ds 172
 
 wPokedexDataStart::
-wPokedexOrder:: ds NUM_POKEMON - 1
-wPokedexOrderEnd:: ds 6
 wPokedexMetadata::
 wDexListingScrollOffset:: dw ; offset of the first displayed entry from the start
 wDexListingCursor:: db ; Dex cursor
@@ -1029,7 +1027,7 @@ wCreditsLYOverride:: db
 NEXTU
 ; pokedex
 wPrevDexEntryJumptableIndex:: db
-wPrevDexEntryBackup:: db
+wPrevDexEntryBackup:: dw
 
 NEXTU
 ; pokegear

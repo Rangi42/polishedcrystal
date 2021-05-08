@@ -293,7 +293,7 @@ NUM_POKEMON EQU const_value - 1 ; fe
 	const PORYGON_Z  ; 10d
 	const SYLVEON    ; 10e
 NUM_SPECIES EQU const_value - 1 ; 10e
-REAL_NUM_POKEMON EQU NUM_SPECIES - (2 * HIGH(NUM_SPECIES))
+REAL_NUM_POKEMON EQU NUM_SPECIES - (2 * HIGH(NUM_SPECIES)) ; 10c
 
 CANCEL EQU -1
 
@@ -394,7 +394,7 @@ NUM_UNOWN EQU ext_const_value - 1
 	ext_const MAGIKARP_RAINDROP_FORM ; 143 (10)
 NUM_MAGIKARP EQU ext_const_value - 1 ; 10
 
-NUM_COSMETIC_FORMS EQU const_value - FIRST_COSMETIC_FORM_MON ; 34
+NUM_COSMETIC_FORMS EQU const_value - FIRST_COSMETIC_FORM_MON ; 35
 
 FIRST_VARIANT_FORM_MON EQU const_value ; 144
 
@@ -444,3 +444,6 @@ NUM_VARIANT_FORMS EQU const_value - FIRST_VARIANT_FORM_MON ; 1d
 ; these constants include EGG and a dummy entry as species
 NUM_UNIQUE_POKEMON EQU const_value - 1 ; 160
 NUM_EXT_POKEMON EQU NUM_UNIQUE_POKEMON - NUM_COSMETIC_FORMS ; 12c
+
+; this constant does not contain EGG/dummy entries
+REAL_NUM_EXT_POKEMON EQU REAL_NUM_POKEMON + NUM_VARIANT_FORMS

@@ -250,6 +250,7 @@ GetPokedexNumber::
 	call ConvertFormToExtendedSpecies
 	ld b, a
 	add a
+	jr z, .no_carry
 	cpl
 	inc a
 	add c

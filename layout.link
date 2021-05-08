@@ -246,7 +246,7 @@ WRAMX $2
 
 WRAMX $3
 	org $d000
-	"Metatiles"
+	"Metatiles and Pokedex Order"
 
 WRAMX $4
 	org $d000
