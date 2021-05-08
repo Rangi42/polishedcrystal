@@ -241,7 +241,7 @@ MenuMonIconColors::
 	iconpal BROWN, GREEN ; SMEARGLE
 	iconpal BROWN, BLUE ; TYROGUE
 	iconpal BROWN, BLUE ; HITMONTOP
-	iconpal RED, PINK ; SMOOCHUM
+	iconpal PURPLE, PINK ; SMOOCHUM
 	iconpal BROWN, RED ; ELEKID
 	iconpal RED, BROWN ; MAGBY
 	iconpal PINK, BLUE ; MILTANK
