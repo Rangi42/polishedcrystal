@@ -33,7 +33,7 @@ Rate:
 	call CountSetBits16
 	push bc
 	ld hl, wPokedexSeen
-	ld b, wEndPokedexSeen - wPokedexSeen
+	ld bc, wEndPokedexSeen - wPokedexSeen
 	call CountSetBits16
 
 ; print appropriate rating
@@ -56,13 +56,18 @@ Rate:
 
 .UpdateRatingBuffer:
 	push hl
+	push bc
 	ld a, "@"
 	ld bc, ITEM_NAME_LENGTH
 	rst ByteFill
-	ld de, wNumSetBits
+	ld hl, sp + 2
+	ld d, h
+	ld e, l
 	pop hl
 	lb bc, PRINTNUM_LEFTALIGN | 2, 3
-	jmp PrintNum
+	call PrintNum
+	pop bc
+	ret
 
 FindOakRating:
 ; get pokedex caught count in bc
@@ -70,7 +75,7 @@ FindOakRating:
 ; return text pointer in hl
 	ld a, [hli]
 	ld d, a
-	ld a, [hl]
+	ld a, [hli]
 	cp b
 	jr c, .next
 	jr nz, .match

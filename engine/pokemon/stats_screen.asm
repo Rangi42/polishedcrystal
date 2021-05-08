@@ -264,6 +264,8 @@ StatsScreen_InitUpperHalf:
 	ld [hli], a
 	ld a, [wCurSpecies]
 	ld [wNamedObjectIndex], a
+	ld a, [wCurForm]
+	ld [wNamedObjectIndex+1], a
 	call GetPokemonName
 	rst PlaceString
 	call StatsScreen_PlacePageSwitchArrows

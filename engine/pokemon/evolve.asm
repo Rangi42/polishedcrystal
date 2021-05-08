@@ -774,7 +774,6 @@ GetEvosAttacksPointer:
 ; input: b = form, c = species
 	; bc = index
 	call GetSpeciesAndFormIndex
-	dec bc
 	ld hl, EvosAttacksPointers
 	add hl, bc
 	add hl, bc

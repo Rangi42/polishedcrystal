@@ -831,7 +831,6 @@ GetMonAnimPointer:
 	ld hl, AnimationExtraPointers
 	ld a, BANK(AnimationExtraPointers)
 .extras
-	dec bc
 	add hl, bc
 	add hl, bc
 	ld [wPokeAnimPointerBank], a
@@ -844,7 +843,6 @@ GetMonAnimPointer:
 
 GetMonFramesPointer:
 	call GetMonAnimDataIndex
-	dec bc
 	ld hl, FramesPointers
 	add hl, bc
 	add hl, bc
@@ -859,13 +857,13 @@ GetMonFramesPointer:
 	; a = carry ? BANK(KantoFrames) : BANK(JohtoFrames)
 	assert BANK(KantoFrames) + 1 == BANK(JohtoFrames)
 	sbc a
+	add b
 	add BANK(JohtoFrames)
 	ld [wPokeAnimFramesBank], a
 	ret
 
 GetMonBitmaskPointer:
 	call GetMonAnimDataIndex
-	dec bc
 	ld hl, BitmasksPointers
 	add hl, bc
 	add hl, bc

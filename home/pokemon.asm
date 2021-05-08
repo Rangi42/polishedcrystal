@@ -114,7 +114,6 @@ GetBaseData::
 	ld a, [wCurForm]
 	ld b, a
 	call GetSpeciesAndFormIndex
-	dec bc
 	ld a, BASE_DATA_SIZE
 	ld hl, BaseData
 	rst AddNTimes
@@ -183,7 +182,6 @@ GetAbility::
 
 	push hl
 	call GetSpeciesAndFormIndex
-	dec bc
 	ld a, BASE_DATA_SIZE
 	ld hl, BaseData + BASE_ABILITIES
 	rst AddNTimes
@@ -218,7 +216,6 @@ GetGenderRatio::
 	push hl
 	push bc
 	call GetSpeciesAndFormIndex
-	dec bc
 	ld a, BASE_DATA_SIZE
 	ld hl, BaseData + BASE_GENDER
 	rst AddNTimes
@@ -257,7 +254,7 @@ GetPokedexNumber::
 	inc a
 	add c
 	ld c, a
-	jr nc, .no_carry
+	jr c, .no_carry
 	dec b
 .no_carry
 	ld d, b
@@ -354,16 +351,17 @@ _GetSpeciesAndFormIndex::
 	set MON_EXTSPECIES_F, a
 	cp b
 	jr nz, .loop
+	dec bc
 	scf
 	ret
 
 .normal
-	; Converts species 1-254, extspecies to 256-509 (egg is 255)
+	; Converts species 1-254 to 0-253, extspecies to 256-509 (egg is 255)
 	bit MON_EXTSPECIES_F, b
 	ld b, 0
 	jr z, .done
 	inc b
-	dec c
 .done
+	dec c
 	and a
 	ret

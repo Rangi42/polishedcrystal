@@ -522,6 +522,7 @@ GetMonPalettePointer:
 	call GetSpeciesAndFormIndex
 	ld h, b
 	ld l, c
+	inc hl
 	add hl, hl
 	add hl, hl
 	add hl, hl

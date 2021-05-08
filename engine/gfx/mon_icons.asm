@@ -9,6 +9,7 @@ LoadOverworldMonIcon:
 	ld b, a
 	; bc = index
 	call GetCosmeticSpeciesAndFormIndex
+	inc bc
 	ld hl, IconPointers
 	add hl, bc
 	add hl, bc
@@ -151,7 +152,6 @@ _GetMonIconPalette:
 
 	; bc = index
 	call GetCosmeticSpeciesAndFormIndex
-	dec bc
 	ld hl, MenuMonIconColors
 	add hl, bc
 	ld c, [hl]

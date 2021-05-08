@@ -172,7 +172,6 @@ GetFrontpicPointer:
 	ld b, a
 	; bc = index
 	call GetCosmeticSpeciesAndFormIndex
-	dec bc
 	ld hl, FrontPicPointers
 rept 3
 	add hl, bc

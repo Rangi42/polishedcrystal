@@ -866,6 +866,10 @@ Script_cry:
 	jr nz, .ok
 	ldh a, [hScriptVar]
 .ok
+	ld c, a
+	call GetScriptByte
+	ld [wCurForm], a
+	ld a, c
 	jmp PlayCry
 
 Script_setlasttalked:
