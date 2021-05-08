@@ -818,6 +818,7 @@ wBackupDexListingCursor:: db
 wBackupDexListingPage:: db
 wDexCurLocation:: db
 wPokedexStatus:: db
+wPokedexDisplayNumber:: dw
 wDexMonPersonality::
 wDexMonShiny:: db
 wDexMonForm:: db

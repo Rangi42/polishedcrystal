@@ -1523,6 +1523,16 @@ Script_readmem:
 	ldh [hScriptVar], a
 	ret
 
+Script_readmem16:
+	call Script_readmem
+	call GetScriptByte
+	ld l, a
+	call GetScriptByte
+	ld h, a
+	ld a, [hl]
+	ldh [hScriptVar+1], a
+	ret
+
 Script_writemem:
 	call GetScriptByte
 	ld l, a
@@ -1546,6 +1556,13 @@ Script_setval:
 	ldh [hScriptVar], a
 	ret
 
+Script_setmonval:
+Script_setval16:
+	call Script_setval
+	call GetScriptByte
+	ldh [hScriptVar+1], a
+	ret
+
 Script_addval:
 	call GetScriptByte
 	ld hl, hScriptVar
@@ -1553,54 +1570,44 @@ Script_addval:
 	ld [hl], a
 	ret
 
+Script_addval16:
+	call GetScriptByte
+	ld c, a
+	call GetScriptByte
+	ld b, a
+	ld hl, hScriptVar
+	ld a, [hli]
+	ld l, [hl]
+	ld a, h
+	add hl, bc
+	ld a, h
+	ldh [hScriptVar], a
+	ld a, l
+	ldh [hScriptVar+1], a
+
 Script_random:
 	call GetScriptByte
 	ldh [hScriptVar], a
 	and a
 	ret z
-
-	ld c, a
-	call .Divide256byC
-	and a
-	jr z, .no_restriction ; 256 % b == 0
-	ld b, a
-	xor a
-	sub b
-	ld b, a
-.loop
-	push bc
-	call Random
-	pop bc
-	ldh a, [hRandomAdd]
-	cp b
-	jr nc, .loop
-	jr .finish
-
-.no_restriction
-	push bc
-	call Random
-	pop bc
-	ldh a, [hRandomAdd]
-
-.finish
-	push af
-	ldh a, [hScriptVar]
-	ld c, a
-	pop af
-	call SimpleDivide
+	call RandomRange
 	ldh [hScriptVar], a
 	ret
 
-.Divide256byC:
-	xor a
+Script_random16:
+	call GetScriptByte
+	ldh [hScriptVar+1], a
+	ld c, a
+	call GetScriptByte
+	ldh [hScriptVar], a
 	ld b, a
-	sub c
-.mod_loop
-	inc b
-	sub c
-	jr nc, .mod_loop
-	dec b
-	add c
+	or c
+	ret z
+	call RandomRange16
+	ld b, a
+	ldh [hScriptVar], a
+	ld c, a
+	ldh [hScriptVar+1], a
 	ret
 
 Script_readvar:
@@ -1628,6 +1635,9 @@ GetVarAction:
 	ld c, a
 	farjp _GetVarAction
 
+Script_getmonname:
+	call GetScriptByte
+	
 Script_getmonname:
 	call GetScriptByte
 	and a

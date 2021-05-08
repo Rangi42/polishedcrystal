@@ -137,6 +137,17 @@ setval: MACRO
 	db \1 ; value
 ENDM
 
+	const setval16_command
+setval16: MACRO
+	db setval16_command
+	dw \1 ; value
+ENDM
+
+setmonval: MACRO ; pseudo-command for loading mons into hScriptVar
+	db setval16_command
+	dp \1 ; mon value
+ENDM
+
 	const addval_command
 addval: MACRO
 	db addval_command
@@ -149,10 +160,26 @@ random: MACRO
 	db \1 ; input
 ENDM
 
+	const random16_command
+random16: MACRO
+	db random16_command
+	dw \1 ; input
+ENDM
+
 	const readmem_command
 readmem: MACRO
 	db readmem_command
 	dw \1 ; address
+ENDM
+
+	const readmem16_command
+readmem16: MACRO
+	db readmem16_command
+	if _NARG == 2
+		dw \1, \2
+	else
+		dw \1, \1+1
+	endc
 ENDM
 
 	const writemem_command

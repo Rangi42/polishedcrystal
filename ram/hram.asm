@@ -4,7 +4,7 @@ HRAM_START::
 
 hPushOAM:: ds 5
 
-hScriptVar:: db
+hScriptVar:: dw
 
 hROMBankBackup:: db
 
@@ -208,7 +208,7 @@ ENDU
 
 hCrashCode:: db
 
-	ds 8
+	ds 7
 
 hAppendVWFText:: ds 4
 

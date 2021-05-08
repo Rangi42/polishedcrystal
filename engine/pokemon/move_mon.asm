@@ -1493,6 +1493,8 @@ GivePoke::
 	push de
 	ld a, [wCurPartySpecies]
 	ld [wNamedObjectIndex], a
+	ld a, [wCurForm]
+	ld [wNamedObjectIndex+1], a
 	call GetPokemonName
 	ld a, [wTempMonForm]
 	bit MON_IS_EGG_F, a

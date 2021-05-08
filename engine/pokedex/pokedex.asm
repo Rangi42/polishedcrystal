@@ -143,11 +143,7 @@ Pokedex_InitCursorPosition:
 	push hl
 	and a
 	add hl, de
-	jr z, .done
-	ld a, -1
-	cp NUM_POKEMON + 1
 	ld [hli], a
-	jr nc, .done
 	ld [hl], a
 
 ; and look for the entry in the list
@@ -940,9 +936,7 @@ Pokedex_NextOrPreviousDexEntry:
 	jr nc, .nope
 	call Pokedex_GetSelectedMon
 	call Pokedex_CheckSeen
-	jr z, .down
 
-.yep
 	scf
 	ret
 
