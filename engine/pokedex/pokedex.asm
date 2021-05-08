@@ -1606,15 +1606,18 @@ Pokedex_GetSelectedMon:
 	ld d, $0
 	ld hl, wPokedexDataStart
 	add hl, de
-	ld a, [hl]
+	ld a, [hli]
 	ld [wTempSpecies], a
 	ret
 
 Pokedex_CheckCaught:
 	push de
 	push hl
-	ld a, [wTempSpecies]
-	dec a
+	ld hl, wTempSpecies
+	ld a, [hli]
+	ld c, a
+	dec c
+	ld b, [hl]
 	call CheckCaughtMon
 	pop hl
 	pop de
@@ -1623,16 +1626,19 @@ Pokedex_CheckCaught:
 Pokedex_CheckSeen:
 	push de
 	push hl
-	ld a, [wTempSpecies]
-	dec a
+	ld hl, wTempSpecies
+	ld a, [hli]
+	ld c, a
+	dec c
+	ld b, [hl]
 	call CheckSeenMon
 	pop hl
 	pop de
 	ret
 
 Pokedex_OrderMonsByMode:
-	ld hl, wPokedexDataStart
-	ld bc, wPokedexMetadata - wPokedexDataStart
+	ld hl, wPokedexOrder
+	ld bc, wPokedexOrderEnd - wPokedexOrder
 	xor a
 	rst ByteFill
 	ld a, [wCurDexMode]
@@ -1645,13 +1651,15 @@ Pokedex_OrderMonsByMode:
 
 .NewMode:
 	ld de, NewPokedexOrder
-	ld hl, wPokedexDataStart
-	ld c, NUM_POKEMON
+	ld hl, wPokedexOrder
+	ld bc, NUM_POKEMON
 .loopnew
 	ld a, [de]
 	inc de
 	ld [hli], a
 	dec c
+	jr nz, .loopnew
+	dec b
 	jr nz, .loopnew
 	jr .FindLastSeen
 

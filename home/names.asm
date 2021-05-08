@@ -98,15 +98,6 @@ GetBasePokemonName::
 	pop hl
 	ret
 
-GetPokemonNameFromExtSpecies::
-; wNamedObjectIndex already is converted to species, (ext species >> MON_EXTSPECIES)
-	push hl
-	ld hl, wNamedObjectIndex
-	ld a, [hli]
-	ld h, [hl]
-	ld l, a
-	jr _GetPokemonName
-
 GetPokemonName::
 ; Get Pokemon name wNamedObjectIndex.
 	push hl
@@ -120,7 +111,6 @@ GetPokemonName::
 	ld d, a
 	ld h, d
 	ld l, e
-_GetPokemonName::
 	add hl, hl ; hl = hl * 2
 	add hl, hl ; hl = hl * 4
 	add hl, de ; hl = (hl*4) + hl

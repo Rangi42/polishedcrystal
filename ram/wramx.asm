@@ -1456,14 +1456,10 @@ SECTION "Sound Stack", WRAMX
 wSoundEngineBackup:: ds wChannelsEnd - wMusic
 
 
-SECTION "Metatiles and Pokedex Order", WRAMX
+SECTION "Metatiles", WRAMX
 
-UNION
 wDecompressedMetatiles:: ds 256 tiles
-NEXTU
-wPokedexOrder:: ds NUM_POKEMON - 1
-wPokedexOrderEnd:: ds 6
-ENDU
+
 
 SECTION "Attributes", WRAMX
 

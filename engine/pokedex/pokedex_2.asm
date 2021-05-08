@@ -80,9 +80,6 @@ DisplayDexEntry:
 	hlcoord 9, 3
 	rst PlaceString ; mon species
 	ld a, [wTempSpecies]
-	ld c, a
-	ld a, [wTempForm]
-	call ConvertFormToExtendedSpecies
 	ld b, a
 	call GetDexEntryPointer
 	ld a, b
@@ -93,26 +90,17 @@ DisplayDexEntry:
 	ld l, c
 	push de
 ; Print dex number
-	ld a, [wTempSpecies]
-	ld c, a
-	ld a, [wTempForm]
-	ld b, a
-	push bc
-	call GetPokedexNumber
-	push bc
-	ld hl, sp + 0
-	ld d, h
-	ld e, l
 	hlcoord 2, 8
 	ld a, "№"
 	ld [hli], a
 	ld a, "."
 	ld [hli], a
-	lb bc, PRINTNUM_LEADINGZEROS | 2, 3
+	ld de, wTempSpecies
+	lb bc, PRINTNUM_LEADINGZEROS | 1, 3
 	call PrintNum
 ; Check to see if we caught it.  Get out of here if we haven't.
-	pop bc
-	pop bc
+	ld a, [wTempSpecies]
+	dec a
 	call CheckCaughtMon
 	pop hl
 	pop bc
@@ -321,9 +309,13 @@ GetDexEntryPointer:
 ; return dex entry pointer b:de
 	push hl
 	ld hl, PokedexDataPointerTable
-	add hl, bc
-	add hl, bc
-	add hl, bc
+	ld a, b
+	dec a
+	ld d, 0
+	ld e, a
+	add hl, de
+	add hl, de
+	add hl, de
 	ld a, [hli]
 	ld b, a
 	ld a, [hli]
