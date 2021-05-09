@@ -3,9 +3,8 @@
 frame: MACRO
 	db \1
 	def x = \2
-	rept _NARG - 2
-		redef x = x | (1 << (\3 + 1))
-		shift
+	for i, 3, _NARG + 1
+		redef x = x | (1 << (\<i> + 1))
 	endr
 	db x
 ENDM

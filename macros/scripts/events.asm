@@ -341,8 +341,7 @@ givepoke: MACRO
 		if \7
 			dw \8 ; trainer_name_pointer
 			dw \9 ; pkmn_nickname
-			shift
-			dw \9 ; trainer_ot_pointer
+			dw \<10> ; trainer_ot_pointer
 		endc
 	else
 		db FALSE ; no trainer
