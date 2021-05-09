@@ -60,7 +60,7 @@ UnknownScript_0x185050:
 	checkevent EVENT_FOUGHT_SUICUNE
 	iftrue UnknownScript_0x185077
 	appear TINTOWER1F_SUICUNE
-	setval RAIKOU
+	setmonval RAIKOU
 	special SpecialMonCheck
 	iftrue UnknownScript_0x185065
 	appear TINTOWER1F_RAIKOU
@@ -69,7 +69,7 @@ UnknownScript_0x185050:
 UnknownScript_0x185065:
 	disappear TINTOWER1F_RAIKOU
 UnknownScript_0x185067:
-	setval ENTEI
+	setmonval ENTEI
 	special SpecialMonCheck
 	iftrue UnknownScript_0x185074
 	appear TINTOWER1F_ENTEI
@@ -98,7 +98,7 @@ TinTowerStairsCallback:
 SuicuneBattle:
 	applymovement PLAYER, TinTowerPlayerMovement1
 	pause 15
-	setval RAIKOU
+	setmonval RAIKOU
 	special SpecialMonCheck
 	iftrue .Next1 ; if player caught Raikou, he doesn't appear in Tin Tower
 	applymovement TINTOWER1F_RAIKOU, TinTowerRaikouMovement1
@@ -111,7 +111,7 @@ SuicuneBattle:
 	playsound SFX_EXIT_BUILDING
 	waitsfx
 .Next1:
-	setval ENTEI
+	setmonval ENTEI
 	special SpecialMonCheck
 	iftrue .Next2 ; if player caught Entei, he doesn't appear in Tin Tower
 	applymovement TINTOWER1F_ENTEI, TinTowerEnteiMovement1

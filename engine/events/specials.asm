@@ -26,34 +26,49 @@ Special_SetCopycatPalette:
 
 Special_GameCornerPrizeMonCheckDex:
 	ldh a, [hScriptVar]
-	dec a
+	ld b, a
+	ldh a, [hScriptVar+1]
+	ld c, a
+	push bc
 	call CheckCaughtMon
+	pop bc
 	ret nz
-	ldh a, [hScriptVar]
-	dec a
 	call SetSeenAndCaughtMon
 	call FadeToMenu
+	ld hl, wNamedObjectIndex
 	ldh a, [hScriptVar]
-	ld [wNamedObjectIndex], a
+	ld [hli], a
+	ldh a, [hScriptVar+1]
+	ld [hl], a
 	farcall NewPokedexEntry
 	jmp ExitAllMenus
 
 SpecialSeenMon:
 	ldh a, [hScriptVar]
-	dec a
+	ld b, a
+	ldh a, [hScriptVar+1]
+	ld c, a
 	jmp SetSeenMon
 
 Special_FindThatSpecies:
 	ldh a, [hScriptVar]
 	ld b, a
-	farcall _FindThatSpecies
+	ldh a, [hScriptVar+1]
+	ld c, a
+	push de ; being cautious
+	farcall FindThatSpecies
+	pop de
 	jr z, FoundNone
 	jr FoundOne
 
 Special_FindThatSpeciesYourTrainerID:
 	ldh a, [hScriptVar]
 	ld b, a
+	ldh a, [hScriptVar+1]
+	ld c, a
+	push de
 	farcall _FindThatSpeciesYourTrainerID
+	pop de
 	jr z, FoundNone
 	; fallthrough
 

@@ -57,7 +57,7 @@ MooMoo:
 	iftrue .HappyCow
 	opentext
 	writetext Text_WeakMoo
-	setval MILTANK
+	setmonval MILTANK
 	special PlaySlowCry
 	promptbutton
 	writetext Text_ItsCryIsWeak

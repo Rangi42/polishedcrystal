@@ -460,7 +460,7 @@ ENDM
 	const getmonname_command
 getmonname: MACRO
 	db getmonname_command
-	db \1 ; pokemon
+	dp \1 ; pokemon
 	db \2 ; memory
 ENDM
 
@@ -1079,11 +1079,6 @@ ENDM
 	const checksave_command
 checksave: MACRO
 	db checksave_command
-ENDM
-
-	const countseencaught_command
-countseencaught: MACRO
-	db countseencaught_command
 ENDM
 
 	const trainerpic_command

@@ -204,15 +204,15 @@ RandomRange16::
 .loop
 	call Random
 	ldh a, [hRandomAdd]
-	ld b, a
 	ld h, a
 	ldh a, [hRandomSub]
-	ld c, a
 	ld l, a
 	add hl, de
 	jr c, .loop
 
 	pop de
+	ld b, h
+	ld c, l
 	call Divide16
 	pop de
 	pop hl

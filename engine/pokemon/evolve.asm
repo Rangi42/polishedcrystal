@@ -709,16 +709,14 @@ GetBaseEvolution:
 
 	call GetPreEvolution
 GetPreEvolution:
-; Find the first mon to evolve into wCurPartySpecies.
+; Find the first mon to evolve into wCurPartySpecies+wCurForm.
 
-; Return carry and the new species in wCurPartySpecies
+; Return carry and the new species in wCurPartySpecies+wCurForm
 ; if a pre-evolution is found.
 
-	ld c, 0
+	ld bc, 0
 .loop ; For each Pokemon...
 	ld hl, EvosAttacksPointers
-	; this does not need to use the extended GetSpeciesAndFormIndex
-	ld b, 0
 	add hl, bc
 	add hl, bc
 	ld a, [hli]
@@ -736,16 +734,24 @@ GetPreEvolution:
 	inc hl
 	ld a, [wCurPartySpecies]
 	cp [hl]
+	inc hl
+	jr nz, .not_preevo
+	ld a, [wCurForm]
+	cp [hl]
 	jr z, .found_preevo
+.not_preevo
 	inc hl
 	ld a, [hl]
 	and a
 	jr nz, .loop2
 
 .no_evolve
-	inc c
+	inc bc
+	ld a, b
+	cp HIGH(NUM_SPECIES)
+	jr c, .loop
 	ld a, c
-	cp NUM_POKEMON
+	cp LOW(NUM_SPECIES)
 	jr c, .loop
 	and a
 	ret
@@ -754,6 +760,8 @@ GetPreEvolution:
 	inc c
 	ld a, c
 	ld [wCurPartySpecies], a
+	ld a, [hl] ; we're pointing to mon form
+	ld [wCurForm], a
 	scf
 	ret
 

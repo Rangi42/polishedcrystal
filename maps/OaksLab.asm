@@ -97,8 +97,9 @@ Oak:
 	special ProfOaksPCBoot
 	checkevent EVENT_GOT_OVAL_CHARM_FROM_OAK
 	iftrue .NoOvalCharm
-	readvar VAR_DEXSEEN
-	ifless NUM_POKEMON, .NoOvalCharm
+	setval16 NUM_SPECIES - 2
+	special CountSeen
+	iffalse .NoOvalCharm
 	writetext OakLabSeenAllText
 	promptbutton
 	verbosegivekeyitem OVAL_CHARM
@@ -108,8 +109,8 @@ Oak:
 .NoOvalCharm
 	checkevent EVENT_GOT_SHINY_CHARM_FROM_OAK
 	iftrue .NoShinyCharm
-	readvar VAR_DEXCAUGHT
-	ifless NUM_POKEMON, .NoShinyCharm
+	setval16 NUM_SPECIES - 2
+	special CountCaught
 	writetext OakLabCaughtAllText
 	promptbutton
 	verbosegivekeyitem SHINY_CHARM

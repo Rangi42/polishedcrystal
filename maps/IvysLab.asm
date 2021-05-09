@@ -204,7 +204,7 @@ IvysLabNidorinoScript:
 	iftrue .Healed
 	opentext
 	writetext .WeakCry
-	setval NIDORINO
+	setmonval NIDORINO
 	special PlaySlowCry
 	promptbutton
 	jumpthisopenedtext

@@ -110,8 +110,8 @@ wMonMailMessageBuffer:: ds MAIL_MSG_LENGTH + 1
 
 NEXTU
 ; prof. oak's pc
-wTempPokedexSeenCount:: db
-wTempPokedexCaughtCount:: db
+wTempPokedexSeenCount:: dw
+wTempPokedexCaughtCount:: dw
 
 NEXTU
 ; player's room pc
@@ -694,7 +694,9 @@ wMoveGrammar::
 wApplyStatLevelMultipliersToEnemy::
 wUsePPUp::
 wFoundMatchingID::
-	ds 3
+	db
+wTempForm::
+	ds 2
 
 wMonTriedToEvolve:: db
 

@@ -151,25 +151,25 @@ ElmCheckEverstone:
 	iftrue ElmGiveEverstoneScript
 	checkevent EVENT_TOLD_ELM_ABOUT_TOGEPI_OVER_THE_PHONE
 	iffalse ElmCheckTogepiEgg
-	setval TOGEPI
+	setmonval TOGEPI
 	special Special_FindThatSpeciesYourTrainerID
 	iftrue ShowElmTogepiScript
-	setval TOGETIC
+	setmonval TOGETIC
 	special Special_FindThatSpeciesYourTrainerID
 	iftrue ShowElmTogepiScript
-	setval TOGEKISS
+	setmonval TOGEKISS
 	special Special_FindThatSpeciesYourTrainerID
 	iftrue ShowElmTogepiScript
 	jumpopenedtext ElmThoughtEggHatchedText
 
 ElmEggHatchedScript:
-	setval TOGEPI
+	setmonval TOGEPI
 	special Special_FindThatSpeciesYourTrainerID
 	iftrue ShowElmTogepiScript
-	setval TOGETIC
+	setmonval TOGETIC
 	special Special_FindThatSpeciesYourTrainerID
 	iftrue ShowElmTogepiScript
-	setval TOGEKISS
+	setmonval TOGEKISS
 	special Special_FindThatSpeciesYourTrainerID
 	iftrue ShowElmTogepiScript
 	sjump ElmCheckGotEggAgain

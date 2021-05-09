@@ -200,7 +200,7 @@ Route10Zapdos:
 	setevent EVENT_ZAPDOS_GONE
 	setevent EVENT_ROUTE_10_ZAPDOS
 	reloadmapafterbattle
-	setval ZAPDOS
+	setmonval ZAPDOS
 	special SpecialMonCheck
 	iffalse .NoSpark
 	setevent EVENT_CELADON_UNIVERSITY_SPARK

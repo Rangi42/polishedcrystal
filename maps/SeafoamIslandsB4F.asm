@@ -108,7 +108,7 @@ SeafoamIslandsArticuno:
 	disappear SEAFOAMISLANDSB4F_ARTICUNO
 	setevent EVENT_SEAFOAM_ISLANDS_ARTICUNO
 	reloadmapafterbattle
-	setval ARTICUNO
+	setmonval ARTICUNO
 	special SpecialMonCheck
 	iffalse .NoBlanche
 	setevent EVENT_CELADON_UNIVERSITY_BLANCHE

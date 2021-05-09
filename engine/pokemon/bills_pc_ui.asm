@@ -1161,6 +1161,8 @@ _GetCursorMon:
 	; Species name
 	ld a, [wTempMonSpecies]
 	ld [wNamedObjectIndex], a
+	ld a, [wTempMonForm]
+	ld [wNamedObjectIndex+1], a
 	hlcoord 8, 1
 	ld a, "/"
 	ld [hli], a

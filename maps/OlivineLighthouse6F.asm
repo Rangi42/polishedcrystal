@@ -95,7 +95,7 @@ OlivineLighthouseAmphy:
 	faceplayer
 	opentext
 	writetext AmphyPalPalooText
-	setval AMPHAROS
+	setmonval AMPHAROS
 	special PlaySlowCry
 	promptbutton
 	jumpopenedtext AmphyBreathingLaboredText

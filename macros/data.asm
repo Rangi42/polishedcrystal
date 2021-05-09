@@ -149,9 +149,9 @@ ENDM
 dbbp: MACRO
 	db \1, \2
 	if _NARG == 4
-		dp \2, \3
+		dp \3, \4
 	else
-		dp \2
+		dp \3
 	endc
 ENDM
 

@@ -48,6 +48,8 @@ TryAddMonToParty:
 	rst CopyBytes
 	ld a, [wCurPartySpecies]
 	ld [wNamedObjectIndex], a
+	ld a, [wCurForm]
+	ld [wNamedObjectIndex+1], a
 	call GetPokemonName
 	ld a, [wMonType]
 	and $f
@@ -1493,7 +1495,7 @@ GivePoke::
 	push de
 	ld a, [wCurPartySpecies]
 	ld [wNamedObjectIndex], a
-	ld a, [wCurForm]
+	ld a, [wTempMonForm]
 	ld [wNamedObjectIndex+1], a
 	call GetPokemonName
 	ld a, [wTempMonForm]

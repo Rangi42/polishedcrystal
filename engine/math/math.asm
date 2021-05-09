@@ -190,7 +190,7 @@ _Divide16::
 	ld a, c
 	ldh [hDividend + 1], a
 	ld b, 2
-	predef Divide
+	call Divide
 	ld hl, hQuotient + 1
 	ld a, [hli]
 	ld d, a
