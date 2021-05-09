@@ -86,7 +86,6 @@ def_object_events: MACRO
 ENDM
 
 object_event: MACRO
-	def PERSON_EVENT_NARG = _NARG
 	db \3 ; sprite
 	db \2 + 4 ; y
 	db \1 + 4 ; x
@@ -94,25 +93,20 @@ object_event: MACRO
 	dn \5, \6 ; radius: y, x
 	db \7 ; clock_hour
 	db \8 ; clock_daytime
-	shift
-	dn \8, \9 ; color, persontype
-	shift
-	if \8 == OBJECTTYPE_COMMAND
-		db \9_command ; command id
+	dn \9, \<10> ; color, persontype
+	if \<10> == OBJECTTYPE_COMMAND
+		db \<11>_command ; command id
 	else
-		db \9 ; sight_range || cry id
+		db \<11> ; sight_range || cry id
 	endc
-	if PERSON_EVENT_NARG == 14
-		shift
-		db \9 ; itemball contents
-		shift
-		db \9 ; itemball quantity
+	if _NARG == 14
+		db \<12> ; itemball contents
+		db \<13> ; itemball quantity
+		dw \<14> ; event flag
 	else
-		shift
-		dw \9 ; pointer || byte, 0
+		dw \<12> ; pointer || byte, 0
+		dw \<13> ; event flag
 	endc
-	shift
-	dw \9 ; event flag
 	redef {_NUM_OBJECT_EVENTS} = {_NUM_OBJECT_EVENTS} + 1
 ENDM
 

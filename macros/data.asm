@@ -66,16 +66,14 @@ bigdw: MACRO ; big-endian word
 ENDM
 
 dba: MACRO ; dbw bank, address
-	rept _NARG
-		dbw BANK(\1), \1
-		shift
+	for i, 1, _NARG + 1
+		dbw BANK(\<i>), \<i>
 	endr
 ENDM
 
 dab: MACRO ; dwb address, bank
-	rept _NARG
-		dwb \1, BANK(\1)
-		shift
+	for i, 1, _NARG + 1
+		dwb \<i>, BANK(\<i>)
 	endr
 ENDM
 
@@ -102,9 +100,8 @@ dsprite: MACRO
 ENDM
 
 bcd: MACRO
-	rept _NARG
-		dn ((\1) % 100) / 10, (\1) % 10
-		shift
+	for i, 1, _NARG + 1
+		dn ((\<i>) % 100) / 10, (\<i>) % 10
 	endr
 ENDM
 
@@ -117,10 +114,11 @@ dp: MACRO ; db species, extspecies | form
 ENDM
 
 dbp: MACRO
-	db \1
 	if _NARG == 3
+		db \1
 		dp \2, \3
 	else
+		db \1
 		dp \2
 	endc
 ENDM
@@ -128,21 +126,21 @@ ENDM
 dpb: MACRO
 	if _NARG == 3
 		dp \1, \2
-		shift
+		db \3
 	else
 		dp \1
+		db \2
 	endc
-	db \2
 ENDM
 
 dpw: MACRO
 	if _NARG == 3
 		dp \1, \2
-		shift
+		dw \3
 	else
 		dp \1
+		dw \2
 	endc
-	dw \2
 ENDM
 
 
@@ -150,12 +148,11 @@ genders: MACRO
 ; eight arguments, all MALE or FEMALE
 	def x = 0
 	def y = 1
-	rept _NARG
-		if !STRCMP("\1", "FEMALE")
+	for i, 1, _NARG + 1
+		if !STRCMP("\<i>", "FEMALE")
 			def x = x | y
 		endc
 		def y = y * 2
-		shift
 	endr
 	db x
 ENDM
