@@ -1588,12 +1588,12 @@
 	dbp 16, PIDGEOTTO
 	; nite
 	dbp 13, SPINARAK
-	dbp 14, ARIADOS
+	dbp 15, STANTLER
 	dbp 14, HOOTHOOT
 	dbp 15, NOCTOWL
+	dbp 16, ARIADOS
 	dbp 15, HOUNDOUR
 	dbp 16, HOUNDOUR
-	dbp 16, ARIADOS
 	end_grass_wildmons
 
 	def_grass_wildmons ROUTE_38

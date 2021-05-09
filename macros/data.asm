@@ -137,11 +137,11 @@ dbpb: MACRO
 	db \1
 	if _NARG == 4
 		dp \2, \3
-		shift
+		db \4
 	else
 		dp \2
+		db \3
 	endc
-	db \3
 ENDM
 
 dbbp: MACRO

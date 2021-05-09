@@ -1553,36 +1553,36 @@ FishFunction:
 	cp STICKY_HOLD
 	jr nz, .fish_attempt2
 .fish_attempt1
+	push bc
 	push de
 	farcall Fish
 	ld a, d
 	and a
-	jr nz, .gotabite1
 	pop de
+	jr nz, .gotabite1
+	pop bc
 .fish_attempt2
 	farcall Fish
 	ld a, d
 	and a
 	jr nz, .gotabite2
-	ld a, e
-	and a
+	ld a, b
+	or c
 	jr z, .nonibble
 .gotanitem
-	ld a, e
+	ld a, c
 	ld [wCurItem], a
 	ld a, $5
 	ret
 
 .gotabite1
-	ld [wTempWildMonSpecies], a
-	ld a, e
-	pop de
-	ld e, a
-	ld a, [wTempWildMonSpecies]
+	pop de ; we no longer care about d
 .gotabite2
-	ld [wTempWildMonSpecies], a
-	ld a, e
 	ld [wCurPartyLevel], a
+	ld a, c
+	ld [wTempWildMonSpecies], a
+	ld a, b
+	ld [wCurForm], a
 	ld a, BATTLETYPE_FISH
 	ld [wBattleType], a
 	ld a, $2

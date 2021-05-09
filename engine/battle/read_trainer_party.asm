@@ -35,6 +35,9 @@ ReadTrainerParty:
 	call GetNextTrainerDataByte
 	ld [wCurPartySpecies], a
 
+	call GetNextTrainerDataByte
+	ld [wCurForm], a
+
 	ld a, OTPARTYMON
 	ld [wMonType], a
 
@@ -138,9 +141,6 @@ endr
 	ld e, l
 	pop hl
 
-	call GetNextTrainerDataByte
-	ld [de], a
-	inc de
 	call GetNextTrainerDataByte
 	ld [de], a
 
