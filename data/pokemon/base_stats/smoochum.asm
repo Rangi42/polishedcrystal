@@ -14,7 +14,7 @@ else
 	abilities_for SMOOCHUM, OBLIVIOUS, FILTER, HYDRATION
 endc
 	db GROWTH_MEDIUM_FAST ; growth rate
-	dn EGG_HUMANSHAPE, EGG_HUMANSHAPE ; egg groups
+	dn EGG_NONE, EGG_NONE ; egg groups
 
 	ev_yield   0,   0,   0,   0,   1,   0
 	;         hp  atk  def  spd  sat  sdf

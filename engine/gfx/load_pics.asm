@@ -295,7 +295,6 @@ GetBackpic:
 	push de
 	; bc = index
 	call GetCosmeticSpeciesAndFormIndex
-	dec bc
 	ld hl, BackPicPointers
 rept 3
 	add hl, bc

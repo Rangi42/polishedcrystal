@@ -58,23 +58,23 @@
 
 	def_water_wildmons MOUNT_MORTAR_1F_OUTSIDE
 	db 4 percent ; encounter rate
-	dbp 20, PSYDUCK
+	dbp 20, GOLDEEN
 	dbp 20, MARILL
-	dbp 20, GOLDUCK
+	dbp 20, SEAKING
 	end_water_wildmons
 
 	def_water_wildmons MOUNT_MORTAR_2F_INSIDE
 	db 2 percent ; encounter rate
-	dbp 20, PSYDUCK
+	dbp 20, GOLDEEN
 	dbp 25, MARILL
-	dbp 25, GOLDUCK
+	dbp 25, SEAKING
 	end_water_wildmons
 
 	def_water_wildmons MOUNT_MORTAR_B1F
 	db 2 percent ; encounter rate
-	dbp 15, PSYDUCK
+	dbp 15, GOLDEEN
 	dbp 20, MARILL
-	dbp 20, GOLDUCK
+	dbp 20, SEAKING
 	end_water_wildmons
 
 	def_water_wildmons WHIRL_ISLAND_SW
@@ -191,9 +191,9 @@
 
 	def_water_wildmons ROUTE_42
 	db 4 percent ; encounter rate
-	dbp 20, MAGIKARP
-	dbp 20, PSYDUCK
-	dbp 20, GOLDUCK
+	dbp 20, GOLDEEN
+	dbp 20, GOLDEEN
+	dbp 20, SEAKING
 	end_water_wildmons
 
 	def_water_wildmons ROUTE_43
