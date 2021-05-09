@@ -275,15 +275,16 @@ GetCosmeticSpeciesAndFormIndex::
 ; input: c = species, b = form
 ; output: bc = extended index, carry if nothing found
 	ld hl, CosmeticSpeciesAndFormTable
-	jr _GetSpeciesAndFormIndex
+	jr GetSpeciesAndFormIndexFromHL
 
 GetSpeciesAndFormIndex::
 ; input: c = species, b = form
 ; output: bc = extended index, carry if nothing found
 	ld hl, VariantSpeciesAndFormTable
-_GetSpeciesAndFormIndex::
+GetSpeciesAndFormIndexFromHL::
 ; input: c = species, b = form, hl = cosmetic/variant table
 ; output: bc = extended index, carry if nothing found
+; For custom hl, note that returned index is offset by species amount.
 	push de
 	ld a, h
 	cpl

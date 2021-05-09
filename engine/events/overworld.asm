@@ -128,7 +128,6 @@ CheckForSurfingPikachu:
 	ret
 
 FieldMovePokepicScript:
-	readmem wBuffer6
 	refreshscreen
 	pokepic 0
 	cry 0

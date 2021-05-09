@@ -512,15 +512,33 @@ Script_closewindow:
 	jmp UpdateSprites
 
 Script_pokepic:
+	; 1 or 2 parameters: 1 if the first is 0. Otherwise, first param is
+	; species, the second ext+form.
 	call GetScriptByte
-	and a
-	jr nz, .ok
-	ldh a, [hScriptVar]
-.ok
 	ld [wCurPartySpecies], a
+	call GetCurPartyMonSpeciesIfZero
+
+	; While we actually have species+form stored right now if zero, we need to
+	; handle color variation. Thus, notify Pokepic that we want a partymon.
+	ld a, -1
+	ld [wCurForm], a
+	jr z, .pokepic
 	call GetScriptByte
 	ld [wCurForm], a
+.pokepic
 	farjp Pokepic
+
+GetCurPartyMonSpeciesIfZero:
+	and a
+	ret nz
+	ld a, MON_SPECIES
+	call GetPartyParamLocation
+	ld [wCurPartySpecies], a
+	ld a, MON_FORM
+	call GetPartyParamLocation
+	ld [wCurForm], a
+	xor a
+	ret
 
 Script_closepokepic:
 	farjp ClosePokepic
@@ -863,15 +881,16 @@ Script_warpsound:
 	jmp PlaySFX
 
 Script_cry:
+	; 1 or 2 parameters: 1 if the first is 0. Otherwise, first param is
+	; species, the second ext+form.
 	call GetScriptByte
-	and a
-	jr nz, .ok
-	ldh a, [hScriptVar]
-.ok
-	ld c, a
+	ld [wCurPartySpecies], a
+	call GetCurPartyMonSpeciesIfZero
+	jr z, .playcry
 	call GetScriptByte
 	ld [wCurForm], a
-	ld a, c
+.playcry
+	ld a, [wCurPartySpecies]
 	jmp PlayCry
 
 Script_setlasttalked:

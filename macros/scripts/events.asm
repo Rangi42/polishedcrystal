@@ -583,7 +583,7 @@ ENDM
 pokepic: MACRO
 	db pokepic_command
 	if \1 == 0
-		db -1 ; party mon
+		db \1 ; party mon
 	elif _NARG == 2
 		dp \1, \2 ; form
 	else
@@ -857,7 +857,13 @@ ENDM
 	const cry_command
 cry: MACRO
 	db cry_command
-	dp \1, PLAIN_FORM ; cry_id
+	if \1 == 0
+		db \1 ; party mon
+	elif _NARG == 2
+		dp \1, \2 ; form
+	else
+		dp \1, PLAIN_FORM
+	endc
 ENDM
 
 	const playsound_command

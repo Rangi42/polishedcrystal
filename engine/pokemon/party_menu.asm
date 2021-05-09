@@ -415,16 +415,17 @@ BT_CheckEnterState:
 	push af
 	ld hl, wPartyMon1IsEgg
 	call GetPartyLocation
-	bit MON_IS_EGG_F, [hl]
+	ld b, [hl]
+	bit MON_IS_EGG_F, b
 	jr nz, .banned
 	pop af
 	push af
 	ld hl, wPartyMon1Species
 	call GetPartyLocation
-	ld a, [hl]
+	ld c, [hl]
 	ld hl, UberMons
-	call IsInByteArray
-	jr c, .banned
+	call GetSpeciesAndFormIndexFromHL
+	jr nc, .banned
 	pop af
 
 	; Check entry state. If we're rental-swapping, we want to display it a bit

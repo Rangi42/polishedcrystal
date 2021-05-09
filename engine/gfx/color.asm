@@ -547,6 +547,11 @@ endr
 LoadPokemonPalette:
 	; a = species
 	ld a, [wCurPartySpecies]
+
+	; This allows us to use the same function as with
+	; GetMonNormalOrShinyPalettePointer.
+	ld bc, wCurForm - 1
+
 	; hl = palette
 	call GetMonPalettePointer
 	; load palette in BG 7

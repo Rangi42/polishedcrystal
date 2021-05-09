@@ -1,6 +1,6 @@
 PokemonNames::
 	table_width MON_NAME_LENGTH - 1, PokemonNames
-	rawchar "?????@@@@@"
+	rawchar "?000?@@@@@"
 	rawchar "Bulbasaur@"
 	rawchar "Ivysaur@@@"
 	rawchar "Venusaur@@"
@@ -256,7 +256,7 @@ PokemonNames::
 	rawchar "Honchkrow@"
 	rawchar "Munchlax@@"
 	rawchar "Egg@@@@@@@"
-	rawchar "?????@@@@@"
+	rawchar "?256?@@@@@"
 	rawchar "Weavile@@@"
 	rawchar "Magnezone@"
 	rawchar "Rhyperior@"
