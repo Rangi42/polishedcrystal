@@ -5764,7 +5764,7 @@ ApplyLegendaryDVs:
 	ld hl, LegendaryMons
 	call GetSpeciesAndFormIndexFromHL
 	pop hl
-	jr c, .done
+	jr nc, .done
 
 .okay
 	push hl
@@ -7139,7 +7139,7 @@ GetNewBaseExp:
 	ld b, a
 	ld hl, LegendaryMons
 	call GetSpeciesAndFormIndexFromHL
-	jr nc, .legendary
+	jr c, .legendary
 	farcall GetPreEvolution
 .legendary
 	ld a, 9 ; stage 2 or legendary: *9/20 -> *0.45

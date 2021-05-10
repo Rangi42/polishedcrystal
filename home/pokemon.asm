@@ -273,17 +273,17 @@ ConvertFormToExtendedSpecies::
 
 GetCosmeticSpeciesAndFormIndex::
 ; input: c = species, b = form
-; output: bc = extended index, carry if nothing found
+; output: bc = extended index, carry if anything found
 	ld hl, CosmeticSpeciesAndFormTable
 	jr GetSpeciesAndFormIndexFromHL
 
 GetSpeciesAndFormIndex::
 ; input: c = species, b = form
-; output: bc = extended index, carry if nothing found
+; output: bc = extended index, carry if anything found
 	ld hl, VariantSpeciesAndFormTable
 GetSpeciesAndFormIndexFromHL::
 ; input: c = species, b = form, hl = cosmetic/variant table
-; output: bc = extended index, carry if nothing found
+; output: bc = extended index, carry if anything found
 ; For custom hl, note that returned index is offset by species amount.
 	push de
 	ld a, h
@@ -294,9 +294,8 @@ GetSpeciesAndFormIndexFromHL::
 	ld e, a
 	dec hl
 	call .helper
-	jr c, .final
+	jr nc, .final
 	pop de
-	and a
 	ret
 
 .final:
@@ -307,7 +306,7 @@ GetSpeciesAndFormIndexFromHL::
 	add hl, de
 	ld b, h
 	ld c, l
-	scf
+	and a
 	pop de
 	ret
 
@@ -344,7 +343,6 @@ GetSpeciesAndFormIndexFromHL::
 	jr z, .next
 .found_index
 	inc hl ; makes sure we point at a proper index with final helper
-	scf
 	ret
 
 .full_comparision
@@ -353,7 +351,6 @@ GetSpeciesAndFormIndexFromHL::
 	cp b
 	jr nz, .loop
 	dec bc
-	scf
 	ret
 
 .normal
@@ -364,5 +361,5 @@ GetSpeciesAndFormIndexFromHL::
 	inc b
 .done
 	dec c
-	and a
+	scf
 	ret

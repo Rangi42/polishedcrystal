@@ -425,7 +425,7 @@ BT_CheckEnterState:
 	ld c, [hl]
 	ld hl, UberMons
 	call GetSpeciesAndFormIndexFromHL
-	jr nc, .banned
+	jr c, .banned
 	pop af
 
 	; Check entry state. If we're rental-swapping, we want to display it a bit
