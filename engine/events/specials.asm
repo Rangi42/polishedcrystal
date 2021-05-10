@@ -52,9 +52,9 @@ SpecialSeenMon:
 
 Special_FindThatSpecies:
 	ldh a, [hScriptVar]
-	ld b, a
-	ldh a, [hScriptVar+1]
 	ld c, a
+	ldh a, [hScriptVar+1]
+	ld b, a
 	push de ; being cautious
 	farcall FindThatSpecies
 	pop de
@@ -63,9 +63,9 @@ Special_FindThatSpecies:
 
 Special_FindThatSpeciesYourTrainerID:
 	ldh a, [hScriptVar]
-	ld b, a
-	ldh a, [hScriptVar+1]
 	ld c, a
+	ldh a, [hScriptVar+1]
+	ld b, a
 	push de
 	farcall _FindThatSpeciesYourTrainerID
 	pop de

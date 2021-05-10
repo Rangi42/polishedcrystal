@@ -30,6 +30,14 @@ FindThatSpecies:
 	ld d, a
 	and a
 	ret z
+	ld a, b
+	and FORM_MASK
+	ld a, $80 ; use high bit to track if form matters
+	jr nz, .form_matters
+	xor a
+.form_matters
+	or d
+	ld d, a
 	inc e
 	ld hl, wPartyMon1Species
 .loop
@@ -38,11 +46,16 @@ FindThatSpecies:
 	ld de, MON_FORM - MON_SPECIES
 	add hl, de
 	pop de
-	cp b
+	cp c
 	jr nz, .next
 	ld a, [hl]
+	and SPECIESFORM_MASK
+	rl d
+	jr c, .check_form
 	and EXTSPECIES_MASK
-	cp c
+.check_form
+	rr d
+	cp b
 	jr nz, .next
 	and a
 	ret
@@ -50,6 +63,7 @@ FindThatSpecies:
 .next
 	inc e
 	ld a, d
+	and $f
 	cp e
 	ret z
 	push de
