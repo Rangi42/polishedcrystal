@@ -437,8 +437,8 @@ ArbokEvosAttacks:
 	db -1 ; no more level-up moves
 
 PikachuEvosAttacks:
-	dbbp EVOLVE_ITEM, THUNDERSTONE, RAICHU, PLAIN_FORM
-	dbbp EVOLVE_ITEM, ODD_SOUVENIR, RAICHU, ALOLAN_FORM
+	dbbp EVOLVE_ITEM, THUNDERSTONE, RAICHU
+	dbbp EVOLVE_ITEM, ODD_SOUVENIR, RAICHU
 	db -1 ; no more evolutions
 	db 1, THUNDERSHOCK
 	db 1, LEER ; Tail Whip → similar move
@@ -2280,8 +2280,8 @@ ElectrodeEvosAttacks:
 	db -1 ; no more level-up moves
 
 ExeggcuteEvosAttacks:
-	dbbp EVOLVE_ITEM, LEAF_STONE, EXEGGUTOR, PLAIN_FORM
-	dbbp EVOLVE_ITEM, ODD_SOUVENIR, EXEGGUTOR, ALOLAN_FORM
+	dbbp EVOLVE_ITEM, LEAF_STONE, EXEGGUTOR
+	dbbp EVOLVE_ITEM, ODD_SOUVENIR, EXEGGUTOR
 	db -1 ; no more evolutions
 	db 1, TACKLE ; Barrage → new move
 	db 1, HYPNOSIS
@@ -2325,8 +2325,8 @@ ExeggutorAlolanEvosAttacks:
 	db -1 ; no more level-up moves
 
 CuboneEvosAttacks:
-	dbbp EVOLVE_LEVEL, 28, MAROWAK, PLAIN_FORM
-	dbbp EVOLVE_ITEM, ODD_SOUVENIR, MAROWAK, ALOLAN_FORM
+	dbbp EVOLVE_LEVEL, 28, MAROWAK
+	dbbp EVOLVE_ITEM, ODD_SOUVENIR, MAROWAK
 	db -1 ; no more evolutions
 	db 1, GROWL
 	db 3, TACKLE ; Tail Whip → new move
