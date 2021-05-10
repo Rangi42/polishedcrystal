@@ -52,9 +52,9 @@ EvolveAfterBattle_MasterLoop:
 
 .loop
 	ld a, [hli]
-	and a
+	inc a
 	jr z, EvolveAfterBattle_MasterLoop
-
+	dec a
 	ld b, a
 
 	ld a, [wLinkMode]
@@ -546,14 +546,14 @@ LearnLevelMoves:
 
 .skip_evos
 	ld a, [hli]
-	and a
+	inc a
 	jr nz, .skip_evos
 
 .find_move
 	ld a, [hli]
-	and a
+	inc a
 	ret z
-
+	dec a
 	ld b, a
 	ld a, [wCurPartyLevel]
 	cp b
@@ -723,8 +723,9 @@ GetPreEvolution:
 	ld l, a
 .loop2 ; For each evolution...
 	ld a, [hli]
-	and a
+	inc a
 	jr z, .no_evolve ; If we jump, this Pokemon does not evolve into wCurPartySpecies.
+	dec a
 	cp EVOLVE_STAT ; This evolution type has the extra parameter of stat comparison.
 	jr nz, .not_tyrogue
 	inc hl
