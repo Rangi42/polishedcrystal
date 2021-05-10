@@ -87,22 +87,31 @@ _BugContestJudging:
 	call BugContest_JudgeContestants
 	ld a, [wBugContestThirdPlacePersonID]
 	call LoadContestantName
+	ld hl, wNamedObjectIndex
 	ld a, [wBugContestThirdPlaceMon]
-	ld [wNamedObjectIndex], a
+	ld [hli], a
+	ld a, [wBugContestThirdPlaceForm]
+	ld [hl], a
 	call GetPokemonName
 	ld hl, BugContest_ThirdPlaceText
 	call PrintText
 	ld a, [wBugContestSecondPlacePersonID]
 	call LoadContestantName
+	ld hl, wNamedObjectIndex
 	ld a, [wBugContestSecondPlaceMon]
-	ld [wNamedObjectIndex], a
+	ld [hli], a
+	ld a, [wBugContestSecondPlaceForm]
+	ld [hl], a
 	call GetPokemonName
 	ld hl, BugContest_SecondPlaceText
 	call PrintText
 	ld a, [wBugContestFirstPlacePersonID]
 	call LoadContestantName
+	ld hl, wNamedObjectIndex
 	ld a, [wBugContestFirstPlaceMon]
-	ld [wNamedObjectIndex], a
+	ld [hli], a
+	ld a, [wBugContestFirstPlaceForm]
+	ld [hl], a
 	call GetPokemonName
 	ld hl, BugContest_FirstPlaceText
 	call PrintText
@@ -243,6 +252,8 @@ BugContest_JudgeContestants:
 	ld [hli], a
 	ld a, [wContestMon]
 	ld [hli], a
+	ld a, [wContestForm]
+	ld [hli], a
 	ldh a, [hProduct]
 	ld [hli], a
 	ldh a, [hProduct + 1]
@@ -290,7 +301,7 @@ DetermineContestWinners:
 
 CopyTempContestant:
 	ld hl, wBugContestTempPersonID
-	ld bc, 4
+	ld bc, 5
 	rst CopyBytes
 	ret
 
@@ -317,10 +328,8 @@ ComputeAIContestantScores:
 	inc hl
 	inc hl
 .loop2
-	call Random
-	and 3
-	cp 3
-	jr z, .loop2
+	ld a, 3
+	call RandomRange
 	ld c, a
 	ld b, 0
 	add hl, bc
@@ -328,6 +337,8 @@ ComputeAIContestantScores:
 	add hl, bc
 	ld a, [hli]
 	ld [wBugContestTempMon], a
+	ld a, [hli]
+	ld [wBugContestTempForm], a
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a

@@ -237,6 +237,7 @@ ENDM
 bugcontestwinner: MACRO
 \1PersonID:: db
 \1Mon::      db
+\1Form::     db
 \1Score::    dw
 ENDM
 

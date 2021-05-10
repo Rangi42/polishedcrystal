@@ -16,6 +16,23 @@ IsInArray::
 	add hl, de
 	jr .loop
 
+IsInHalfwordArray_NextItem:
+	add hl, de
+IsInHalfwordArray::
+; Same as IsInArray, but for halfword values. The value is input in bc; index not returned.
+	ld a, [hli]
+	and [hl]
+	inc a
+	ret z
+	ld a, [hld]
+	cp b
+	jr nz, IsInHalfwordArray_NextItem
+	ld a, [hl]
+	cp c
+	jr nz, IsInHalfwordArray_NextItem
+	scf
+	ret
+
 SkipNames::
 ; Skip a names.
 	ld bc, NAME_LENGTH

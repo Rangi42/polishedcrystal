@@ -2226,15 +2226,21 @@ BattleCommand_moveanimnosub:
 	push de
 	ldh a, [hBattleTurn]
 	and a
-	ld a, [wBattleMonSpecies]
+	ld hl, wBattleMonSpecies
 	jr z, .got_user_species
-	ld a, [wEnemyMonSpecies]
+	ld hl, wEnemyMonSpecies
 .got_user_species
+	ld c, [hl]
+	assert wBattleMonForm - wBattleMonSpecies == wEnemyMonForm - wEnemyMonSpecies
+	ld de, wBattleMonForm - wBattleMonSpecies
+	add hl, de
+	ld b, [hl]
 	ld hl, FuryAttackUsers
-	call IsInByteArray
+	ld de, 2
+	call IsInHalfwordArray
 	pop de
 	jr nc, .multihit
-	ld a, $2
+	ld a, 2
 	ld [wKickCounter], a
 	jr .fury_attack
 
@@ -2255,29 +2261,29 @@ StatUpDownAnim:
 ; animation for the Pokémon that learned each one
 	ld a, BATTLE_VARS_MOVE_ANIM
 	call GetBattleVar
-	ld e, a
-	ld d, 0
 	cp DEFENSE_CURL
 	jr nz, .not_defense_curl
 	ldh a, [hBattleTurn]
 	and a
-	ld a, [wBattleMonSpecies]
+	ld hl, wBattleMonSpecies
 	jr z, .got_user_species
-	ld a, [wEnemyMonSpecies]
+	ld hl, wEnemyMonSpecies
 .got_user_species
-	push af
+	ld c, [hl]
+	assert wBattleMonForm - wBattleMonSpecies == wEnemyMonForm - wEnemyMonSpecies
+	ld de, wBattleMonForm - wBattleMonSpecies
+	add hl, de
+	ld b, [hl]
 	ld hl, WithdrawUsers
-	call IsInByteArray
-	jr nc, .not_withdraw
-	pop af
-	ld a, $1
-	jr .got_kick_counter
+	ld de, 2
+	call IsInHalfwordArray
+	ld a, 1
+	jr c, .got_kick_counter
 .not_withdraw
-	pop af ; restore species to a
 	inc hl ; ld hl, HardenUsers
-	call IsInByteArray
+	call IsInHalfwordArray
 	jr nc, .not_harden
-	ld a, $2
+	ld a, 2
 	jr .got_kick_counter
 .not_harden
 .not_defense_curl
