@@ -356,11 +356,9 @@ GetSpeciesAndFormIndexFromHL::
 
 .normal
 	; Converts species 1-254 to 0-253, extspecies to 256-509 (egg is 255)
-	bit MON_EXTSPECIES_F, b
-	ld b, 0
-	jr z, .done
-	inc b
-.done
+	ld a, b
+	call ConvertFormToExtendedSpecies
+	ld b, a
 	dec c
 	scf
 	ret
