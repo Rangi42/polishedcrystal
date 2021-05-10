@@ -358,7 +358,7 @@ MoonBallMultiplier:
 	ld a, [wTempEnemyMonSpecies]
 	ld c, a
 	; b = form
-	ld a, [wEnemyMonForm]
+	ld a, [wOTPartyMon1Form]
 	and SPECIESFORM_MASK
 	ld b, a
 	; bc = index
@@ -393,12 +393,28 @@ MoonBallMultiplier:
 
 LoveBallMultiplier:
 ; multiply catch rate by 8 if mons are of same species, different sex
+	push bc
 
 	; does species match?
-	ld a, [wTempEnemyMonSpecies]
+	ld a, MON_SPECIES
+	call TrueUserPartyAttr
+	ld bc, MON_FORM - MON_SPECIES
+	add hl, bc
 	ld c, a
-	ld a, [wTempBattleMonSpecies]
+	ld a, [hl]
+	and EXTSPECIES_MASK
+	ld b, a
+
+	ld a, MON_SPECIES
+	call OpponentPartyAttr
 	cp c
+	ld a, b
+	ld bc, MON_FORM - MON_SPECIES
+	add hl, bc
+	pop bc
+	ret nz
+	and EXTSPECIES_MASK
+	cp [hl]
 	ret nz
 
 	farcall CheckOppositeGender
