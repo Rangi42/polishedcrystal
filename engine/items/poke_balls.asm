@@ -131,17 +131,18 @@ CheckCriticalCapture:
 	ld hl, wPokedexCaught
 	ld bc, wEndPokedexCaught - wPokedexCaught
 	call CountSetBits16
-	inc bc
-	ld b, 5
-	jr z, .got_multiplier
-	dec a
-	ld b, 0
 	ld hl, .multipliers
+	ld d, 0
 .loop
-	cp [hl]
+	ld a, [hli]
+	cp b
+	ld a, [hli]
+	jr c, .next
+	jr nz, .got_multiplier
+	cp c
 	jr c, .got_multiplier
-	inc b
-	inc hl
+.next
+	inc d
 	jr .loop
 .got_multiplier
 	; Catch Charm doubles capture rate (Unverified for SwSh!)
@@ -149,37 +150,32 @@ CheckCriticalCapture:
 	push af
 	ld a, CATCH_CHARM
 	ld [wCurKeyItem], a
-	push hl
-	push de
-	push bc
 	call CheckKeyItem
-	pop bc
-	pop de
-	pop hl
 	ld a, $6
 	jr c, .catch_charm
 	add a
 .catch_charm
-	swap b
-	or b
+	swap d
+	or d
 	call MultiplyAndDivide
 	pop af
 	ld [wCurItem], a
 	ldh a, [hQuotient + 2]
-	ld b, a
+	ld d, a
 	call Random
-	cp b
+	cp d
 	ret
 
 .multipliers
-	; Taken from Prism. Vanilla numbers don't work since we only have 254 mons.
+	; Taken from Prism. Vanilla numbers don't work since we only have ~270 mons.
 	; Multiplier applies if we have less than that amount of mons.
-	db 31 ; x0
-	db 101 ; x0.5
-	db 151 ; x1
-	db 201 ; x1.5
-	db 231 ; x2
-	db 255 ; x2.5
+	; This probably should change as we add more mons to the game.
+	dw 30 ; x0
+	dw 100 ; x0.5
+	dw 150 ; x1
+	dw 200 ; x1.5
+	dw 250 ; x2
+	dw -1 ; x2.5
 
 CheckBallOverflow:
 ; Returns z if capture rate math is currently more than 24bit, which means

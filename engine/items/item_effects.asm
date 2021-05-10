@@ -455,6 +455,7 @@ PokeBallEffect:
 	ld a, [wOTPartyMon1Form]
 	and SPECIESFORM_MASK
 	ld [wCurForm], a
+	ld [wTempForm], a
 	call GetBaseData
 
 	pop af
@@ -476,8 +477,10 @@ PokeBallEffect:
 
 	ld a, c
 	push af
-	ld a, [wTempSpecies]
-	dec a
+	ld hl, wTempSpecies
+	ld a, [hli]
+	ld c, a
+	ld b, [hl]
 	call SetSeenAndCaughtMon
 	pop af
 	and a
@@ -493,6 +496,8 @@ PokeBallEffect:
 
 	ld a, [wOTPartyMon1Species]
 	ld [wTempSpecies], a
+	ld a, [wOTPartyMon1Form]
+	ld [wTempForm], a ; is any of this necessary?
 	farcall NewPokedexEntry
 
 .skip_pokedex
