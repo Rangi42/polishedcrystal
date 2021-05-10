@@ -295,6 +295,7 @@ GetSpeciesAndFormIndexFromHL::
 	dec hl
 	call .helper
 	jr nc, .final
+	ccf
 	pop de
 	ret
 
@@ -306,7 +307,7 @@ GetSpeciesAndFormIndexFromHL::
 	add hl, de
 	ld b, h
 	ld c, l
-	and a
+	scf
 	pop de
 	ret
 
