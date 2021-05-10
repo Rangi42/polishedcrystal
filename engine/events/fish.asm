@@ -23,6 +23,8 @@ endr
 ; Fish for monsters with rod b from encounter data in FishGroup at hl.
 ; Return monster bc at level d; or item bc if d = 0; or nothing if bc = 0 and d = 0.
 
+	ld e, b
+	ld d, 0
 	call Random
 	cp [hl]
 	jr c, .bite
@@ -35,8 +37,6 @@ endr
 	; 1: Good
 	; 2: Super
 	ld hl, FishItems
-	ld e, b
-	ld d, 0
 	add hl, de
 	ld c, [hl]
 	ld b, d ; ld b, 0
@@ -49,8 +49,6 @@ endr
 	; 2: Super
 	inc hl
 	inc hl
-	ld e, b
-	ld d, 0
 	add hl, de
 	add hl, de
 	ld a, [hli]
@@ -81,8 +79,8 @@ endr
 	ret
 
 .no_bite
-	ld bc, 0
-	ld d, c
+	ld b, d ; d already = 0
+	ld c, d
 	ret
 
 .TimeEncounter:

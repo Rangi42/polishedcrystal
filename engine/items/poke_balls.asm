@@ -129,9 +129,9 @@ CheckCriticalCapture:
 	ld [hl], a
 
 	ld hl, wPokedexCaught
-	ld b, wEndPokedexCaught - wPokedexCaught
-	call CountSetBits
-	inc a
+	ld bc, wEndPokedexCaught - wPokedexCaught
+	call CountSetBits16
+	inc bc
 	ld b, 5
 	jr z, .got_multiplier
 	dec a
@@ -367,7 +367,6 @@ MoonBallMultiplier:
 	ld b, a
 	; bc = index
 	call GetSpeciesAndFormIndex
-	dec bc
 	ld hl, EvosAttacksPointers
 	add hl, bc
 	add hl, bc

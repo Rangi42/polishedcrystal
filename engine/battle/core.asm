@@ -7106,7 +7106,7 @@ GetNewBaseExp:
 
 	ld a, [wCurSpecies]
 	ld [wCurPartySpecies], a
-
+	; wCurForm should already be set... right?
 	farcall GetPreEvolution
 	jr c, .not_basic
 
@@ -7115,13 +7115,10 @@ GetNewBaseExp:
 	ld a, [wCurPartySpecies]
 	ld c, a
 	; b = form
-	ld a, MON_FORM
-	call OTPartyAttr
-	and SPECIESFORM_MASK
+	ld a, [wCurForm]
 	ld b, a
 	; bc = index
 	call GetSpeciesAndFormIndex
-	dec bc
 	ld hl, EvosAttacksPointers
 	add hl, bc
 	add hl, bc

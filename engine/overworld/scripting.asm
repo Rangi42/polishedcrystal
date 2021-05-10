@@ -1599,12 +1599,13 @@ Script_addval16:
 	ld hl, hScriptVar
 	ld a, [hli]
 	ld l, [hl]
-	ld a, h
+	ld h, a
 	add hl, bc
 	ld a, h
 	ldh [hScriptVar], a
 	ld a, l
 	ldh [hScriptVar+1], a
+	ret
 
 Script_random:
 	call GetScriptByte
@@ -1659,18 +1660,18 @@ GetVarAction:
 Script_getmonname:
 	ld hl, wNamedObjectIndex
 	call GetScriptByte
-	ld d, a
-	call GetScriptByte
 	ld e, a
-	ld a, d
+	call GetScriptByte
+	ld d, a
+	ld a, e
 	and a
 	jr nz, .gotit
 	ldh a, [hScriptVar]
-	ld e, a
+	ld d, a
 	ldh a, [hScriptVar+1]
 .gotit
 	ld [hli], a
-	ld [hl], e
+	ld [hl], d
 	call GetPokemonName
 	ld de, wStringBuffer1
 
@@ -1955,9 +1956,9 @@ Script_checkpoke:
 	xor a
 	ldh [hScriptVar], a
 	call GetScriptByte
-	ld b, a
-	call GetScriptByte
 	ld c, a
+	call GetScriptByte
+	ld b, a
 	farcall FindThatSpecies
 	ret z
 	ld a, TRUE

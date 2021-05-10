@@ -506,7 +506,6 @@ LearnEvolutionMove:
 	ld b, a
 	; bc = index
 	call GetSpeciesAndFormIndex
-	dec bc
 	ld hl, EvolutionMoves
 	add hl, bc
 	ld a, [hl]

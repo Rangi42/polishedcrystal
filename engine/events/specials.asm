@@ -26,9 +26,9 @@ Special_SetCopycatPalette:
 
 Special_GameCornerPrizeMonCheckDex:
 	ldh a, [hScriptVar]
-	ld b, a
-	ldh a, [hScriptVar+1]
 	ld c, a
+	ldh a, [hScriptVar+1]
+	ld b, a
 	push bc
 	call CheckCaughtMon
 	pop bc
@@ -45,9 +45,9 @@ Special_GameCornerPrizeMonCheckDex:
 
 SpecialSeenMon:
 	ldh a, [hScriptVar]
-	ld b, a
-	ldh a, [hScriptVar+1]
 	ld c, a
+	ldh a, [hScriptVar+1]
+	ld b, a
 	jmp SetSeenMon
 
 Special_FindThatSpecies:

@@ -882,7 +882,6 @@ PlacePartyMonEvoStoneCompatibility:
 	ld c, e
 	; bc = index
 	call GetSpeciesAndFormIndex
-	dec bc
 	ld hl, EvosAttacksPointers
 	add hl, bc
 	add hl, bc

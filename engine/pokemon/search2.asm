@@ -21,9 +21,10 @@ _FindThatSpeciesYourTrainerID:
 	ret
 
 FindThatSpecies:
-; Find species/extspecies bc in your party.
+; Find species = c, extspecies+form = b in your party.
+; If form == NO_FORM, only check extspecies
 ; If you have no Pokemon, returns e = -1 and z.
-; If that species is in your party, returns its location in c, and nz.
+; If that species is in your party, returns its location in e, and nz.
 ; Otherwise, returns z.
 	ld e, -1
 	ld a, [wPartyCount]
