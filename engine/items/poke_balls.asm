@@ -362,7 +362,7 @@ MoonBallMultiplier:
 	and SPECIESFORM_MASK
 	ld b, a
 	; bc = index
-	predef GetEvosAttacksPointers
+	predef GetEvosAttacksPointer
 	pop bc
 
 	push bc
