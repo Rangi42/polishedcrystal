@@ -1319,12 +1319,7 @@ GetForgottenMoves::
 	and SPECIESFORM_MASK
 	ld b, a
 	; bc = index
-	call GetSpeciesAndFormIndex
-	ld hl, EvosAttacksPointers
-	add hl, bc
-	add hl, bc
-	ld a, BANK(EvosAttacksPointers)
-	call GetFarWord
+	predef GetEvosAttacksPointer
 .skip_evos
 	ld a, BANK(EvosAttacks)
 	call GetFarByte

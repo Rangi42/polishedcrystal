@@ -599,7 +599,7 @@ FillMoves:
 	call GetEvosAttacksPointer
 .GoToAttacks:
 	ld a, [hli]
-	and a
+	inc a
 	jr nz, .GoToAttacks
 	jr .GetLevel
 
@@ -779,7 +779,7 @@ GetPartyEvosAttacksPointer:
 	ld c, a
 GetEvosAttacksPointer:
 ; input: b = form, c = species
-	; bc = index
+; output: bc = index, hl = pointer
 	call GetSpeciesAndFormIndex
 	ld hl, EvosAttacksPointers
 	add hl, bc

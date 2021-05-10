@@ -35,3 +35,4 @@ PredefPointers::
 	add_predef GetUserItemAfterUnnerve
 	add_predef ChangeHappiness
 	add_predef RemoveMonFromParty
+	add_predef GetEvosAttacksPointer

@@ -587,22 +587,17 @@ InheritLevelMove:
 	and SPECIESFORM_MASK
 	ld b, a
 	; bc = index
-	call GetSpeciesAndFormIndex
-	ld hl, EvosAttacksPointers
-	add hl, bc
-	add hl, bc
-	ld a, BANK(EvosAttacksPointers)
-	call GetFarWord
+	predef GetEvosAttacksPointer
 .loop
 	ld a, BANK(EvosAttacks)
 	call GetFarByte
 	inc hl
-	and a
+	inc a
 	jr nz, .loop
 .loop2
 	ld a, BANK(EvosAttacks)
 	call GetFarByte
-	and a
+	inc a
 	ret z
 	inc hl
 	ld a, BANK(EvosAttacks)

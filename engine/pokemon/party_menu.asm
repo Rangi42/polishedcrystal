@@ -881,43 +881,19 @@ PlacePartyMonEvoStoneCompatibility:
 	; c = species
 	ld c, e
 	; bc = index
-	call GetSpeciesAndFormIndex
-	ld hl, EvosAttacksPointers
-	add hl, bc
-	add hl, bc
-	call .DetermineCompatibility
-	pop hl
-	rst PlaceString
-
-.next
-	pop hl
-	ld de, 2 * SCREEN_WIDTH
-	add hl, de
-	pop bc
-	inc b
-	dec c
-	jr nz, .loop
-	ret
-
-.DetermineCompatibility:
-	ld de, wStringBuffer1
-	ld a, BANK(EvosAttacksPointers)
-	ld bc, 2
-	call FarCopyBytes
-	ld hl, wStringBuffer1
-	ld a, [hli]
-	ld h, [hl]
-	ld l, a
-	ld de, wStringBuffer1
+	predef GetEvosAttacksPointer
 ; Reads up to six evolution entries
+	ld de, wStringBuffer1
 	ld a, BANK(EvosAttacks)
 	ld bc, wStringBuffer2 - wStringBuffer1
 	call FarCopyBytes
 	ld hl, wStringBuffer1
+	ld de, .string_not_able
 .loop2
 	ld a, [hli]
-	and a
-	jr z, .nope
+	inc a
+	jr z, .done
+	dec a
 	inc hl
 	inc hl
 	cp EVOLVE_ITEM
@@ -930,10 +906,18 @@ PlacePartyMonEvoStoneCompatibility:
 	inc hl
 	jr nz, .loop2
 	ld de, .string_able
-	ret
+.done
+	pop hl
+	rst PlaceString
 
-.nope
-	ld de, .string_not_able
+.next
+	pop hl
+	ld de, 2 * SCREEN_WIDTH
+	add hl, de
+	pop bc
+	inc b
+	dec c
+	jr nz, .loop
 	ret
 
 .string_able

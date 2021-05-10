@@ -7118,16 +7118,10 @@ GetNewBaseExp:
 	ld a, [wCurForm]
 	ld b, a
 	; bc = index
-	call GetSpeciesAndFormIndex
-	ld hl, EvosAttacksPointers
-	add hl, bc
-	add hl, bc
-	ld a, BANK(EvosAttacksPointers)
-	call GetFarWord
-
+	predef GetEvosAttacksPointer
 	ld a, BANK(EvosAttacks)
 	call GetFarByte
-	and a
+	inc a
 	ld a, 4 ; basic mon (not evolved, but can evolve): *4/20 -> *0.2
 	jr nz, .got_multiplier
 	jr .stage_1_or_nonevolver
