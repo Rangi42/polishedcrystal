@@ -306,6 +306,9 @@ SpecialSnorlaxAwake:
 
 PlayCurMonCry:
 	ld a, [wCurPartySpecies]
+	ld c, a
+	ld a, [wCurForm]
+	ld b, a
 	jmp PlayCry
 
 Special_FadeOutMusic:

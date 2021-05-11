@@ -1152,7 +1152,7 @@ wEventFlags:: flag_array NUM_EVENTS
 
 wCurBox:: db
 
-	ds 126 ; unused
+	ds 103 ; unused
 
 wCelebiEvent:: db
 
@@ -1208,8 +1208,8 @@ wFruitTreeFlags:: flag_array NUM_FRUIT_TREES
 wNuzlockeLandmarkFlags:: flag_array NUM_LANDMARKS
 
 wHiddenGrottoContents::
-; content type, content id
-	ds NUM_HIDDEN_GROTTOES * 2
+; content type, content id, content id + 1
+	ds NUM_HIDDEN_GROTTOES * 3
 
 wCurHiddenGrotto:: db
 

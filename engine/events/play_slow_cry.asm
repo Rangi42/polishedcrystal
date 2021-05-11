@@ -1,9 +1,9 @@
 PlaySlowCry:
 	ldh a, [hScriptVar]
-	ld b, a
-	ldh a, [hScriptVar+1]
 	ld c, a
-PlaySlowCryA:
+	ldh a, [hScriptVar+1]
+	ld b, a
+PlaySlowCryBC:
 	call LoadCryHeader
 	ret c
 

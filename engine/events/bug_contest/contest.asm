@@ -250,9 +250,9 @@ BugContest_JudgeContestants:
 	ld hl, wBugContestTempPersonID
 	ld a, 1 ; Player
 	ld [hli], a
-	ld a, [wContestMon]
+	ld a, [wContestMonSpecies]
 	ld [hli], a
-	ld a, [wContestForm]
+	ld a, [wContestMonForm]
 	ld [hli], a
 	ldh a, [hProduct]
 	ld [hli], a

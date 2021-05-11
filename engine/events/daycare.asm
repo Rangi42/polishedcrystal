@@ -161,6 +161,9 @@ DayCare_DepositPokemonText:
 	ld a, DAYCARETEXT_DEPOSIT
 	call PrintDayCareText
 	ld a, [wCurPartySpecies]
+	ld c, a
+	ld a, [wCurForm]
+	ld b, a
 	call PlayCry
 	ld a, DAYCARETEXT_COME_BACK_LATER
 	jr PrintDayCareText
@@ -218,6 +221,9 @@ DayCare_TakeMoney_PlayCry:
 	ld a, DAYCARETEXT_WITHDRAW
 	call PrintDayCareText
 	ld a, [wCurPartySpecies]
+	ld c, a
+	ld a, [wCurForm]
+	ld b, a
 	call PlayCry
 	ld a, DAYCARETEXT_TOO_SOON
 	; fallthrough

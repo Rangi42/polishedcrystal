@@ -220,8 +220,10 @@ GetMonSprite:
 
 .GrottoMon:
 	farcall GetHiddenGrottoContents
-	ld a, [hl]
-	jr .NoFormMon
+	ld a, c
+	ld e, b
+	ld d, 0
+	jr .Mon
 
 .MonDoll1:
 	ld a, [wDecoLeftOrnament]

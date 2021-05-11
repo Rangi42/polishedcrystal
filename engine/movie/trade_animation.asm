@@ -722,6 +722,9 @@ TradeAnim_ShowGivemonData:
 	call TradeAnim_ShowGivemonFrontpic
 
 	ld a, [wPlayerTrademonSpecies]
+	ld c, a
+	ld a, [wPlayerTrademonForm]
+	ld b, a
 	call _PlayCry
 .skip_cry
 

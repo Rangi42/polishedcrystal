@@ -743,6 +743,9 @@ PokeBallEffect:
 	ld a, $f
 	ld [wCryTracks], a
 	ld a, [wTempEnemyMonSpecies]
+	ld c, a
+	ld a, [wCurForm]
+	ld b, a
 	call PlayStereoCry
 
 .skip_cry

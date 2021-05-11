@@ -2030,8 +2030,12 @@ FaintUserPokemon:
 
 	ld hl, wBattleMonSpecies
 	call GetUserMonAttr
-	ld a, [hl]
-	farcall PlaySlowCryA
+	ld c, [hl]
+	assert wBattleMonForm - wBattleMonSpecies == wEnemyMonForm - wEnemyMonSpecies
+	ld de, wBattleMonForm - wBattleMonSpecies
+	add hl, de
+	ld b, [hl]
+	farcall PlaySlowCryBC
 	ld de, SFX_KINESIS
 	call PlaySFX
 
@@ -2999,6 +3003,9 @@ SendOutPlayerMon:
 	ld a, $f0
 	ld [wCryTracks], a
 	ld a, [wCurPartySpecies]
+	ld c, a
+	ld a, [wCurForm]
+	ld b, a
 	call PlayStereoCry
 
 .statused
@@ -8500,6 +8507,9 @@ BattleStartMessage:
 	ld a, $f
 	ld [wCryTracks], a
 	ld a, [wTempEnemyMonSpecies]
+	ld c, a
+	ld a, [wCurForm]
+	ld b, a
 	call PlayStereoCry
 
 .skip_cry

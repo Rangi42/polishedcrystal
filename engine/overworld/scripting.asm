@@ -2566,7 +2566,10 @@ Script_showcrytext:
 
 Script_loadgrottomon:
 	farcall GetHiddenGrottoContents
+	ld a, c
 	ld [wTempWildMonSpecies], a
+	ld a, b
+	ld [wCurForm], a
 	call PlayCry
 	ld a, (1 << 7)
 	ld [wBattleScriptFlags], a

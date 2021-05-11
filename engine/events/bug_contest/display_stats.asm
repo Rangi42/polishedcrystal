@@ -34,9 +34,9 @@ DisplayCaughtContestMonStats:
 	rst PlaceString
 
 	ld hl, wNamedObjectIndex
-	ld a, [wContestMon]
+	ld a, [wContestMonSpecies]
 	ld [hli], a
-	ld a, [wContestForm]
+	ld a, [wContestMonForm]
 	ld [hl], a
 	call GetPokemonName
 	ld de, wStringBuffer1
