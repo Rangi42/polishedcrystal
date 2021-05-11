@@ -533,9 +533,11 @@ GetCurPartyMonSpeciesIfZero:
 	ret nz
 	ld a, MON_SPECIES
 	call GetPartyParamLocation
+	ld c, a
 	ld [wCurPartySpecies], a
 	ld a, MON_FORM
 	call GetPartyParamLocation
+	ld b, a
 	ld [wCurForm], a
 	xor a
 	ret
@@ -884,13 +886,11 @@ Script_cry:
 	; 1 or 2 parameters: 1 if the first is 0. Otherwise, first param is
 	; species, the second ext+form.
 	call GetScriptByte
-	ld [wCurPartySpecies], a
 	call GetCurPartyMonSpeciesIfZero
-	jr z, .playcry
+	jmp z, PlayCry
+	ld c, a
 	call GetScriptByte
-	ld [wCurForm], a
-.playcry
-	ld a, [wCurPartySpecies]
+	ld b, a
 	jmp PlayCry
 
 Script_setlasttalked:
