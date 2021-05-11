@@ -1422,6 +1422,8 @@ GivePoke::
 	lb bc, $81, 1
 	farcall CopyBetweenPartyAndTemp
 
+	xor a
+	ld [wBattleMode], a
 	ld hl, wTempMonItem
 	ld a, [wCurItem]
 	ld [hli], a
