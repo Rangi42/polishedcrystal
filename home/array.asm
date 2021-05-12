@@ -16,20 +16,20 @@ IsInArray::
 	add hl, de
 	jr .loop
 
-IsInHalfwordArray_NextItem:
+IsInWordArray_NextItem:
 	add hl, de
-IsInHalfwordArray::
-; Same as IsInArray, but for halfword values. The value is input in bc; index not returned.
+IsInWordArray::
+; Same as IsInArray, but for word values. The value is input in bc; index not returned.
 	ld a, [hli]
 	and [hl]
 	inc a
 	ret z
 	ld a, [hld]
 	cp b
-	jr nz, IsInHalfwordArray_NextItem
+	jr nz, IsInWordArray_NextItem
 	ld a, [hl]
 	cp c
-	jr nz, IsInHalfwordArray_NextItem
+	jr nz, IsInWordArray_NextItem
 	scf
 	ret
 

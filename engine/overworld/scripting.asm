@@ -1658,7 +1658,6 @@ GetVarAction:
 	farjp _GetVarAction
 
 Script_getmonname:
-	ld hl, wNamedObjectIndex
 	call GetScriptByte
 	ld e, a
 	call GetScriptByte
@@ -1670,6 +1669,7 @@ Script_getmonname:
 	ld d, a
 	ldh a, [hScriptVar+1]
 .gotit
+	ld hl, wNamedObjectIndex
 	ld [hli], a
 	ld [hl], d
 	call GetPokemonName

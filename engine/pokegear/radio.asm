@@ -251,9 +251,13 @@ endr
 	add hl, de
 	inc hl ; skip level
 	ld a, BANK(JohtoGrassWildMons)
-	call GetFarByte
+	call GetFarWord
+	ld a, l
 	ld [wNamedObjectIndex], a
 	ld [wCurPartySpecies], a
+	ld a, h
+	ld [wNamedObjectIndex+1], a
+	ld [wCurForm], a
 	call GetPokemonName
 	ld hl, wStringBuffer1
 	ld de, wMonOrItemNameBuffer
@@ -318,8 +322,11 @@ OPT_OakText3:
 	text_end
 
 OaksPkmnTalk7:
+	ld hl, wNamedObjectIndex
 	ld a, [wCurPartySpecies]
-	ld [wNamedObjectIndex], a
+	ld [hli], a
+	ld a, [wCurForm]
+	ld [hl], a
 	call GetPokemonName
 	ld hl, OPT_MaryText1
 	ld a, OAKS_POKEMON_TALK_8
@@ -659,19 +666,30 @@ ClearBottomLine:
 PokedexShow1:
 	call StartRadioStation
 .loop
-	call Random
-	cp NUM_POKEMON
-	jr nc, .loop
-	ld c, a
+	ld bc, NUM_SPECIES
+	call RandomRange16
+	ld a, c
+	and a
+	jr z, .loop
+	inc a
+	jr z, .loop
+	ld a, b
+	assert (EXTSPECIES_MASK > %00011111) && (EXTSPECIES_MASK & %00100000)
+	swap a
+	rla
+	ld b, a
 	push bc
 	ld a, c
 	call CheckCaughtMon
 	pop bc
 	jr z, .loop
-	inc c
 	ld a, c
+	ld hl, wNamedObjectIndex
 	ld [wCurPartySpecies], a
-	ld [wNamedObjectIndex], a
+	ld [hli], a
+	ld a, b
+	ld [wCurForm], a
+	ld [hl], a
 	call GetPokemonName
 	ld hl, PokedexShowText
 	ld a, POKEDEX_SHOW_2
@@ -1529,6 +1547,7 @@ BuenasPassword4:
 GetBuenasPassword:
 ; The password indices are held in c.  High nybble contains the group index, low nybble contains the word index.
 ; Load the password group pointer in hl.
+; TODO: Convert Buena's password to handle 9bit mon indexes
 	ld a, c
 	swap a
 	and $f
@@ -1587,6 +1606,8 @@ GetBuenasPassword:
 	add hl, de
 	ld a, [hl]
 	ld [wNamedObjectIndex], a
+	xor a
+	ld [wNamedObjectIndex+1], a
 	ret
 
 .RawString:

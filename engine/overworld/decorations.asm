@@ -565,8 +565,11 @@ GetDecoName:
 	ld a, e
 	; fallthrough
 .getpokename:
+	; TODO: deco attributes should handle 9bit mon indexes
 	push bc
 	ld [wNamedObjectIndex], a
+	xor a
+	ld [wNamedObjectIndex+1], a
 	call GetPokemonName
 	pop bc
 	jr .copy

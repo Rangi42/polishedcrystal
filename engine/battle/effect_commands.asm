@@ -2237,7 +2237,7 @@ BattleCommand_moveanimnosub:
 	ld b, [hl]
 	ld hl, FuryAttackUsers
 	ld de, 2
-	call IsInHalfwordArray
+	call IsInWordArray
 	pop de
 	jr nc, .multihit
 	ld a, 2
@@ -2276,12 +2276,12 @@ StatUpDownAnim:
 	ld b, [hl]
 	ld hl, WithdrawUsers
 	ld de, 2
-	call IsInHalfwordArray
+	call IsInWordArray
 	ld a, 1
 	jr c, .got_kick_counter
 .not_withdraw
 	inc hl ; ld hl, HardenUsers
-	call IsInHalfwordArray
+	call IsInWordArray
 	jr nc, .not_harden
 	ld a, 2
 	jr .got_kick_counter

@@ -1936,7 +1936,12 @@ RunPostBattleAbilities::
 	ld a, MON_SPECIES
 	call GetPartyParamLocation
 	ld a, [hl]
-	ld [wNamedObjectIndex], a
+	ld bc, MON_FORM - MON_SPECIES
+	add hl, bc
+	ld b, [hl]
+	ld hl, wNamedObjectIndex
+	ld [hli], a
+	ld [hl], b
 	call GetPokemonName
 	ld hl, wStringBuffer1
 	ld de, wBattleMonNickname

@@ -586,8 +586,11 @@ PokeBallEffect:
 	bit NUZLOCKE_MODE, a
 	jr nz, .AlwaysNickname
 
+	ld hl, wNamedObjectIndex
 	ld a, [wCurPartySpecies]
-	ld [wNamedObjectIndex], a
+	ld [hli], a
+	ld a, [wCurForm]
+	ld [hl], a
 	call GetPokemonName
 
 	ld hl, Text_AskNicknameNewlyCaughtMon
@@ -647,8 +650,11 @@ PokeBallEffect:
 	bit NUZLOCKE_MODE, a
 	jr nz, .AlwaysNicknameBox
 
+	ld hl, wNamedObjectIndex
 	ld a, [wCurPartySpecies]
-	ld [wNamedObjectIndex], a
+	ld [hli], a
+	ld a, [wCurForm]
+	ld [hl], a
 	call GetPokemonName
 
 	ld hl, Text_AskNicknameNewlyCaughtMon

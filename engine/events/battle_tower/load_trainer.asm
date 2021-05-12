@@ -407,9 +407,11 @@ BT_AppendOTMon:
 	rst AddNTimes
 
 	; Now we can actually start adding data.
-	ld b, [hl]
-	ld a, b
+	ld a, [hli]
+	ld b, a
 	ld [wNamedObjectIndex], a ; for later nickname setup
+	ld a, [hld]
+	ld [wNamedObjectIndex+1], a
 	push hl
 
 	; Add first species byte.

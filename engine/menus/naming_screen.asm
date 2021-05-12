@@ -72,8 +72,11 @@ NamingScreen:
 	ld a, [wCurPartySpecies]
 	ld [wTempIconSpecies], a
 	farcall LoadNamingScreenMonIcon
+	ld hl, wNamedObjectIndex
 	ld a, [wCurPartySpecies]
-	ld [wNamedObjectIndex], a
+	ld [hli], a
+	ld a, [wCurForm]
+	ld [hl], a
 	call GetPokemonName
 	hlcoord 5, 2
 	rst PlaceString

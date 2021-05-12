@@ -185,9 +185,13 @@ RunTradeAnimSequence:
 	ld hl, wOTTrademonForm
 	ld de, vTiles0 tile $31
 	call TradeAnim_GetFrontpic
-	ld a, [wPlayerTrademonSpecies]
+	ld a, [wPlayerTrademonForm]
+	ld b, a
+	ld a, [wPlayerTrademonSpecies] ; not loading into c since we're loading into wNamedObjectIndex anyway
 	ld de, wPlayerTrademonSpeciesName
 	call TradeAnim_GetNickname
+	ld a, [wOTTrademonForm]
+	ld c, a
 	ld a, [wOTTrademonSpecies]
 	ld de, wOTTrademonSpeciesName
 	call TradeAnim_GetNickname
@@ -762,7 +766,9 @@ TradeAnim_GetFrontpic:
 
 TradeAnim_GetNickname:
 	push de
-	ld [wNamedObjectIndex], a
+	ld hl, wNamedObjectIndex
+	ld [hli], a
+	ld [hl], b
 	call GetPokemonName
 	ld hl, wStringBuffer1
 	pop de
