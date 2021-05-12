@@ -1557,12 +1557,13 @@ wMagnetTrainPlayerSpriteInitX:: db
 
 wColorVaryDVs:: ds 3
 wColorVarySpecies:: db
+wColorVaryForm:: db
 wColorVaryShiny:: db
 
 wPalFadeDelayFrames:: db
 wPalFadeDelay:: db
 
-	ds 100 ; unused
+	ds 99 ; unused
 
 wLYOverridesBackup:: ds SCREEN_HEIGHT_PX
 wLYOverridesBackupEnd::

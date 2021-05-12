@@ -65,8 +65,10 @@ _CGB_BattleColors:
 	push de
 	; hl = DVs
 	farcall GetPartyMonDVs
-	; b = species
+	; c = species
 	ld a, [wTempBattleMonSpecies]
+	ld c, a
+	ld a, [wCurForm]
 	ld b, a
 	; vary colors by DVs
 	call CopyDVsToColorVaryDVs
@@ -83,8 +85,10 @@ _CGB_BattleColors:
 	push de
 	; hl = DVs
 	farcall GetEnemyMonDVs
-	; b = species
+	; c = species
 	ld a, [wTempEnemyMonSpecies]
+	ld c, a
+	ld a, [wCurForm]
 	ld b, a
 	; vary colors by DVs
 	call CopyDVsToColorVaryDVs
@@ -554,8 +558,11 @@ _CGB_Evolution:
 	ld bc, PARTYMON_STRUCT_LENGTH
 	ld a, [wCurPartyMon]
 	rst AddNTimes
-	; b = species
+	; c = species
 	ld a, [wCurPartySpecies]
+	ld c, a
+	; b = form
+	ld a, [wCurForm]
 	ld b, a
 	; vary colors by DVs
 	call CopyDVsToColorVaryDVs
