@@ -539,10 +539,14 @@ ObjectEventTypeArray:
 	ret
 
 .pokemon:
-	ld hl, MAPOBJECT_RANGE
+	ld hl, MAPOBJECT_RADIUS
+	add hl, bc
+	ld a, [hl]
+	ldh [hScriptVar], a
+	ld bc, MAPOBJECT_RANGE - MAPOBJECT_RADIUS
 	add hl, bc
 	ld a, [hli]
-	ldh [hScriptVar], a
+	ldh [hScriptVar+1], a
 	ld de, wTempScriptBuffer
 	ld a, showcrytext_command
 	ld [de], a

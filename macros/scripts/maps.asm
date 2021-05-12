@@ -97,7 +97,7 @@ object_event: MACRO
 	if \<10> == OBJECTTYPE_COMMAND
 		db \<11>_command ; command id
 	else
-		db \<11> ; sight_range || cry id
+		db \<11> ; sight_range || extspecies/form
 	endc
 	if _NARG == 14
 		db \<12> ; itemball contents
@@ -151,7 +151,11 @@ smashrock_event: MACRO
 ENDM
 
 pokemon_event: MACRO
-	object_event \1, \2, SPRITE_MON_ICON, SPRITEMOVEDATA_POKEMON, 0, \3, \4, \5, \6, OBJECTTYPE_POKEMON, \3, \7, \8
+	if _NARG == 8
+		object_event \1, \2, SPRITE_MON_ICON, SPRITEMOVEDATA_POKEMON, 0, LOW(\3), \4, \5, \6, OBJECTTYPE_POKEMON, HIGH(\3) << EXT_SPECIES, \7, \8
+	else
+		object_event \1, \2, SPRITE_MON_ICON, SPRITEMOVEDATA_POKEMON, 0, LOW(\3), \5, \6, \7, OBJECTTYPE_POKEMON, HIGH(\3) << EXT_SPECIES | \4, \8, \9
+	endc
 ENDM
 
 pc_nurse_event: MACRO

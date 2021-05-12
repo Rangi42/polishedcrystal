@@ -207,7 +207,8 @@ wSpriteAnimationStructsEnd::
 wSpriteAnimCount:: db
 wCurSpriteOAMAddr:: db
 
-wCurIcon:: db
+wCurIcon::
+wCurIconSpecies:: db
 wCurIconPersonality::
 wCurIconShiny:: db
 wCurIconForm:: db

@@ -1233,7 +1233,7 @@ ENDM
 showcrytext: MACRO
 	db showcrytext_command
 	dw \1 ; text_pointer
-	db \2 ; cry_id
+	dp \2 ; cry_id
 ENDM
 
 	const endtext_command

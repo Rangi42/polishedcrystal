@@ -161,6 +161,8 @@ CopyObjectStruct::
 	ret
 
 CopyMapObjectToObjectStruct:
+	ld a, TRUE
+	ldh [hIsMapObject], a
 	ldh a, [hObjectStructIndexBuffer]
 	ld hl, MAPOBJECT_OBJECT_STRUCT_ID
 	add hl, bc

@@ -2,7 +2,7 @@ INCLUDE "data/pokemon/menu_icon_pals.asm"
 
 LoadOverworldMonIcon:
 	; c = species
-	ld a, [wCurIcon]
+	ld a, [wCurIconSpecies]
 	ld c, a
 	; b = form
 	ld a, [wCurIconForm]

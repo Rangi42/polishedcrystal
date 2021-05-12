@@ -2,7 +2,7 @@ Route34IlexForestGate_MapScriptHeader:
 	def_scene_scripts
 
 	def_callbacks
-	callback MAPCALLBACK_OBJECTS, UnknownScript_0x62d2d
+	callback MAPCALLBACK_OBJECTS, .IsForestRestless
 
 	def_warp_events
 	warp_event  4,  0, ROUTE_34, 1
@@ -18,21 +18,21 @@ Route34IlexForestGate_MapScriptHeader:
 	def_object_events
 	object_event  9,  3, SPRITE_POKEFAN_F, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, Route34IlexForestGateTeacherScript, EVENT_ROUTE_34_ILEX_FOREST_GATE_TEACHER_BEHIND_COUNTER
 	object_event  5,  7, SPRITE_POKEFAN_F, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, Route34IlexForestGateTeacherScript, EVENT_ROUTE_34_ILEX_FOREST_GATE_TEACHER_IN_WALKWAY
-	pokemon_event  9,  4, HERACROSS, -1, -1, PAL_NPC_BLUE, Route34IlexForestGateButterfreeText, -1
+	pokemon_event  9,  4, HERACROSS, -1, -1, PAL_NPC_BLUE, Route34IlexForestGateHeracrossText, -1
 	object_event  3,  4, SPRITE_PICNICKER, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, Route34IlexForestGateLassText, EVENT_ROUTE_34_ILEX_FOREST_GATE_LASS
 
 	object_const_def
 	const ROUTE34ILEXFORESTGATE_TEACHER1
 	const ROUTE34ILEXFORESTGATE_TEACHER2
 
-UnknownScript_0x62d2d:
+.IsForestRestless:
 	checkevent EVENT_FOREST_IS_RESTLESS
-	iffalse UnknownScript_0x62d38
+	iffalse .Normal
 	disappear ROUTE34ILEXFORESTGATE_TEACHER1
 	appear ROUTE34ILEXFORESTGATE_TEACHER2
 	endcallback
 
-UnknownScript_0x62d38:
+.Normal:
 	disappear ROUTE34ILEXFORESTGATE_TEACHER2
 	appear ROUTE34ILEXFORESTGATE_TEACHER1
 	endcallback
@@ -102,7 +102,7 @@ Route34IlexForestGateTeacher_ForestIsRestless:
 	line "away right now."
 	done
 
-Route34IlexForestGateButterfreeText:
+Route34IlexForestGateHeracrossText:
 	text "Heracross: Cross!"
 	done
 

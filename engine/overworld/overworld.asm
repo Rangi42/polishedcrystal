@@ -80,6 +80,7 @@ ReloadSpriteIndex::
 	ldh a, [hUsedSpriteIndex]
 	ld b, a
 	xor a
+	ldh [hIsMapObject], a
 .loop
 	ldh [hObjectStructIndexBuffer], a
 	ld a, [hl]
@@ -91,15 +92,7 @@ ReloadSpriteIndex::
 	jr nz, .done
 .continue
 	push hl
-	; hl points to an object_struct; we want bc to point to a map_object,
-	; to get the radius (actually the SPRITE_MON_ICON species).
-	push bc
-	ld bc, OBJECT_RADIUS - MAPOBJECT_RADIUS
-	add hl, bc
-	ld b, h
-	ld c, l
 	call GetSpriteVTile
-	pop bc
 	pop hl
 	push hl
 	inc hl ; skip OBJECT_SPRITE
@@ -195,10 +188,20 @@ GetMonSprite:
 ; that bc takes MAPOBJECT_* offsets.
 ; (That means the player, Battle Tower trainers, and variable sprites cannot
 ;  use Pokémon icons.)
-	ld hl, MAPOBJECT_RADIUS
+	ldh a, [hIsMapObject]
+	and a
+	ld bc, OBJECT_RADIUS - OBJECT_SPRITE
+	ld de, OBJECT_RANGE - OBJECT_SPRITE
+	jr z, .object
+	ld bc, MAPOBJECT_RADIUS - MAPOBJECT_SPRITE
+	ld de, MAPOBJECT_RANGE - MAPOBJECT_SPRITE
+.object
 	add hl, bc
 	ld a, [hl]
-	jr .NoFormMon
+	add hl, de
+	ld e, [hl]
+	ld d, 0
+	jr .Mon
 
 .BreedMon1:
 	ld a, [wBreedMon1Shiny]
