@@ -560,7 +560,9 @@ wCurHPAnimHighHP:: db
 NEXTU
 ; evolution data
 wEvolutionOldSpecies:: db
+wEvolutionOldForm:: db
 wEvolutionNewSpecies:: db
+wEvolutionNewForm:: db
 wEvolutionPicOffset:: db
 wEvolutionCanceled:: db
 

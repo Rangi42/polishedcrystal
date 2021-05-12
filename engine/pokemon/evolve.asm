@@ -29,9 +29,12 @@ EvolveAfterBattle_MasterLoop:
 	cp $ff
 	jmp z, .ReturnToMap
 
-	ld [wEvolutionOldSpecies], a
-
 	push hl
+	ld [wEvolutionOldSpecies], a
+	ld a, MON_FORM
+	call GetPartyParamLocation
+	ld a, [hl]
+	ld [wEvolutionOldForm], a
 	ld a, [wCurPartyMon]
 	ld c, a
 	ld hl, wEvolvableFlags
@@ -42,6 +45,9 @@ EvolveAfterBattle_MasterLoop:
 	jr z, EvolveAfterBattle_MasterLoop
 
 	ld a, [wEvolutionOldSpecies]
+	ld c, a
+	ld a, [wEvolutionOldForm]
+	ld b, a
 	call GetPartyEvosAttacksPointer
 
 	push hl
@@ -244,8 +250,10 @@ endr
 
 	push hl
 
+	ld a, [hli]
+	ld [wEvolutionNewSpecies], a
 	ld a, [hl]
-	ld [wBuffer2], a
+	ld [wEvolutionNewForm], a
 	ld a, [wCurPartyMon]
 	ld hl, wPartyMonNicknames
 	call GetNickname
@@ -278,11 +286,14 @@ endr
 
 	pop hl
 
-	ld a, [hl]
+	ld a, [hli]
 	ld [wCurSpecies], a
 	ld [wTempMonSpecies], a
-	ld [wBuffer2], a
 	ld [wNamedObjectIndex], a
+	ld a, [hld]
+	ld [wCurForm], a
+	ld [wTempMonForm], a
+	ld [wNamedObjectIndex+1], a
 	call GetPokemonName
 
 	push hl
@@ -300,9 +311,6 @@ endr
 
 	call ClearTileMap
 	call UpdateSpeciesNameIfNotNicknamed
-	ld a, [wTempMonForm]
-	and SPECIESFORM_MASK
-	ld [wCurForm], a
 	call GetBaseData
 
 	ld hl, wTempMonEVs - 1
@@ -360,6 +368,7 @@ endr
 .skip_unown
 	pop de
 	pop hl
+	
 	ld a, [wTempMonSpecies]
 	ld [hl], a
 	push hl
@@ -407,7 +416,7 @@ _PlainFormOnEvolution:
 _ChangeFormOnEvolution:
 	ld b, a
 	ld a, [wTempMonForm]
-	and $ff - SPECIESFORM_MASK
+	and $ff - FORM_MASK
 	or b
 	ld [wTempMonForm], a
 	ret
@@ -430,8 +439,11 @@ ChangeFormOnItemEvolution:
 	jr _PlainFormOnEvolution
 
 UpdateSpeciesNameIfNotNicknamed:
+	ld hl, wNamedObjectIndex
 	ld a, [wEvolutionOldSpecies]
-	ld [wNamedObjectIndex], a
+	ld [hli], a
+	ld a, [wEvolutionOldForm]
+	ld [hl], a
 	call GetPokemonName
 	ld hl, wStringBuffer1
 	ld de, wStringBuffer2
@@ -449,8 +461,11 @@ UpdateSpeciesNameIfNotNicknamed:
 	ld hl, wPartyMonNicknames
 	rst AddNTimes
 	push hl
+	ld hl, wNamedObjectIndex
 	ld a, [wCurSpecies]
-	ld [wNamedObjectIndex], a
+	ld [hli], a
+	ld a, [wCurForm]
+	ld [hl], a
 	call GetPokemonName
 	ld hl, wStringBuffer1
 	pop de
@@ -542,6 +557,10 @@ LearnEvolutionMove:
 LearnLevelMoves:
 	ld a, [wTempSpecies]
 	ld [wCurPartySpecies], a
+	ld c, a
+	; b = form
+	ld a, [wCurForm]
+	ld b, a
 	call GetPartyEvosAttacksPointer
 
 .skip_evos
@@ -773,7 +792,6 @@ GetPartyEvosAttacksPointer:
 	ld bc, PARTYMON_STRUCT_LENGTH
 	rst AddNTimes
 	ld a, [hl]
-	and SPECIESFORM_MASK
 	ld b, a
 	; c = species
 	pop af
