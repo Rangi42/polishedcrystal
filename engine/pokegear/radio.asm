@@ -1527,9 +1527,8 @@ BuenasPassword4:
 	ld e, a
 ; For each group, choose one of the three passwords.
 .greater_than_three
-	call Random
-	and $3
-	cp NUM_PASSWORDS_PER_CATEGORY
+	ld a, NUM_PASSWORDS_PER_CATEGORY
+	call RandomRange
 	jr nc, .greater_than_three
 ; The high nybble of wBuenasPassword will now contain the password group index, and the low nybble contains the actual password.
 	add e
@@ -1547,7 +1546,6 @@ BuenasPassword4:
 GetBuenasPassword:
 ; The password indices are held in c.  High nybble contains the group index, low nybble contains the word index.
 ; Load the password group pointer in hl.
-; TODO: Convert Buena's password to handle 9bit mon indexes
 	ld a, c
 	swap a
 	and $f
@@ -1589,6 +1587,7 @@ GetBuenasPassword:
 	dw .RawString
 
 .Mon:
+	sla c
 	call .GetTheIndex
 	jmp GetPokemonName
 
@@ -1604,9 +1603,9 @@ GetBuenasPassword:
 	ld h, 0
 	ld l, c
 	add hl, de
-	ld a, [hl]
+	ld a, [hli]
 	ld [wNamedObjectIndex], a
-	xor a
+	ld a, [hl] ; items and moves just ignore this anyway
 	ld [wNamedObjectIndex+1], a
 	ret
 
