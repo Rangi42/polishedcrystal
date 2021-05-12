@@ -39,9 +39,7 @@ CheckPartyFullAfterContest:
 	ld e, l
 	ld hl, wPlayerName
 	rst CopyBytes
-	ld a, [wCurPartySpecies]
-	ld [wNamedObjectIndex], a
-	call GetPokemonName
+	call GetPartyPokemonName
 	ld hl, wStringBuffer1
 	ld de, wMonOrItemNameBuffer
 	ld bc, MON_NAME_LENGTH

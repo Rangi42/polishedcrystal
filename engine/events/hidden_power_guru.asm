@@ -5,13 +5,7 @@ Special_HiddenPowerGuru:
 	call GetPartyParamLocation
 	bit MON_IS_EGG_F, [hl]
 	jr nz, .egg
-	assert MON_IS_EGG == MON_FORM
-	ld a, [hl]
-	ld hl, wNamedObjectIndex+1
-	ld [hld], a
-	ld a, [wCurPartySpecies]
-	ld [hl], a
-	call GetPokemonName
+	call GetPartyPokemonName
 	call CopyPokemonName_Buffer1_Buffer3
 	ld a, [wCurPartyMon]
 	ld hl, wPartyMon1DVs

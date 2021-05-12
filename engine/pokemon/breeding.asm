@@ -289,7 +289,14 @@ HatchEggs:
 	rst AddNTimes
 	ld a, [hl]
 	ld [wCurPartySpecies], a
-	dec a
+	ld c, a
+
+	ld a, MON_FORM
+	call GetPartyParamLocation
+	ld a, [hl]
+	and SPECIESFORM_MASK
+	ld [wCurForm], a
+	ld b, a
 	call SetSeenAndCaughtMon
 
 	ld a, [wCurPartyMon]
@@ -303,23 +310,20 @@ HatchEggs:
 	ld a, [wCurPartySpecies]
 	cp TOGEPI
 	jr nz, .nottogepi
+	ld a, [wCurForm]
+	and EXTSPECIES_MASK
+	assert HIGH(TOGEPI) == 0
+	and a
+	jr nz, .nottogepi
 	eventflagset EVENT_TOGEPI_HATCHED
 .nottogepi
-
 	pop de
-
 	ld a, [wCurPartySpecies]
 	dec de
 	ld [de], a
 	ld [wNamedObjectIndex], a
 	ld [wCurSpecies], a
-	call GetPokemonName
-
-	ld a, MON_FORM
-	call GetPartyParamLocation
-	ld a, [hl]
-	and SPECIESFORM_MASK
-	ld [wCurForm], a
+	call GetPartyPokemonName
 
 	ld a, [wCurPartyMon]
 	ld hl, wPartyMonNicknames

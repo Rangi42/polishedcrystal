@@ -46,11 +46,7 @@ TryAddMonToParty:
 	ld hl, wPlayerName
 	ld bc, NAME_LENGTH
 	rst CopyBytes
-	ld a, [wCurPartySpecies]
-	ld [wNamedObjectIndex], a
-	ld a, [wCurForm]
-	ld [wNamedObjectIndex+1], a
-	call GetPokemonName
+	call GetPartyPokemonName
 	ld a, [wMonType]
 	and $f
 	ld hl, wOTPartyMonNicknames
@@ -964,10 +960,7 @@ SentPkmnIntoBox:
 	ld bc, NAME_LENGTH
 	rst CopyBytes
 
-	ld a, [wCurPartySpecies]
-	ld [wNamedObjectIndex], a
-	call GetPokemonName
-
+	call GetPartyPokemonName
 	ld hl, wStringBuffer1
 	ld de, wTempMonNickname
 	ld bc, MON_NAME_LENGTH
@@ -1495,11 +1488,7 @@ GivePoke::
 
 .added
 	push de
-	ld a, [wCurPartySpecies]
-	ld [wNamedObjectIndex], a
-	ld a, [wTempMonForm]
-	ld [wNamedObjectIndex+1], a
-	call GetPokemonName
+	call GetPartyPokemonName
 	ld a, [wTempMonForm]
 	bit MON_IS_EGG_F, a
 	ld hl, ReceivedGiftEggText

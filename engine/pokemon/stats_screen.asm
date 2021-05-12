@@ -262,11 +262,9 @@ StatsScreen_InitUpperHalf:
 	hlcoord 9, 4
 	ld a, "/"
 	ld [hli], a
-	ld a, [wCurSpecies]
-	ld [wNamedObjectIndex], a
-	ld a, [wCurForm]
-	ld [wNamedObjectIndex+1], a
-	call GetPokemonName
+	push hl
+	call GetPartyPokemonName
+	pop hl
 	rst PlaceString
 	call StatsScreen_PlacePageSwitchArrows
 	jr StatsScreen_PlaceShinyIcon
