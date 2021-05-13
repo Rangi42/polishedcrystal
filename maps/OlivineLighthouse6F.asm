@@ -15,7 +15,7 @@ OlivineLighthouse6F_MapScriptHeader:
 
 	def_object_events
 	object_event  8,  8, SPRITE_JASMINE, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, OlivineLighthouseJasmine, EVENT_OLIVINE_LIGHTHOUSE_JASMINE
-	object_event  9,  8, SPRITE_MON_ICON, SPRITEMOVEDATA_POKEMON, 0, AMPHAROS, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_SCRIPT, 0, OlivineLighthouseAmphy, -1
+	object_event  9,  8, SPRITE_MON_ICON, SPRITEMOVEDATA_POKEMON, 0, AMPHAROS, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_SCRIPT, AMPHAROS, OlivineLighthouseAmphy, -1
 	itemball_event  3,  4, SUPER_POTION, 1, EVENT_OLIVINE_LIGHTHOUSE_6F_SUPER_POTION
 
 	object_const_def
@@ -26,19 +26,19 @@ OlivineLighthouseJasmine:
 	faceplayer
 	opentext
 	checkkeyitem SECRETPOTION
-	iftrue UnknownScript_0x60bab
+	iftrue .BroughtSecretpotion
 	checkevent EVENT_JASMINE_EXPLAINED_AMPHYS_SICKNESS
-	iftrue UnknownScript_0x60ba5
+	iftrue .ExplainedSickness
 	writetext JasmineCianwoodPharmacyText
 	promptbutton
 	setevent EVENT_JASMINE_EXPLAINED_AMPHYS_SICKNESS
-UnknownScript_0x60ba5:
+.ExplainedSickness:
 	jumpopenedtext JasmineGetSomeMedicineText
 
-UnknownScript_0x60bab:
+.BroughtSecretpotion:
 	writetext JasmineCureAmphyText
 	yesorno
-	iffalse UnknownScript_0x60c25
+	iffalse .Refused
 	writetext PlayerHandedSecretpotionText
 	promptbutton
 	takekeyitem SECRETPOTION
@@ -65,23 +65,23 @@ UnknownScript_0x60bab:
 	setevent EVENT_JASMINE_RETURNED_TO_GYM
 	clearevent EVENT_OLIVINE_GYM_JASMINE
 	readvar VAR_FACING
-	ifequal DOWN, UnknownScript_0x60c17
-	ifequal RIGHT, UnknownScript_0x60c1e
+	ifequal DOWN, .FacingDown
+	ifequal RIGHT, .FacingRight
 	applymovement OLIVINELIGHTHOUSE6F_JASMINE, OlivineLighthouseJasmineLeavesUpMovement
 	disappear OLIVINELIGHTHOUSE6F_JASMINE
 	end
 
-UnknownScript_0x60c17:
+.FacingDown:
 	applymovement OLIVINELIGHTHOUSE6F_JASMINE, OlivineLighthouseJasmineLeavesDownMovement
 	disappear OLIVINELIGHTHOUSE6F_JASMINE
 	end
 
-UnknownScript_0x60c1e:
+.FacingRight:
 	applymovement OLIVINELIGHTHOUSE6F_JASMINE, OlivineLighthouseJasmineLeavesRightMovement
 	disappear OLIVINELIGHTHOUSE6F_JASMINE
 	end
 
-UnknownScript_0x60c25:
+.Refused:
 	writetext JasmineISeeText
 	waitbutton
 	closetext
@@ -91,7 +91,7 @@ UnknownScript_0x60c25:
 
 OlivineLighthouseAmphy:
 	checkevent EVENT_JASMINE_RETURNED_TO_GYM
-	iftrue UnknownScript_0x60c51
+	iftrue .HealthyNow
 	faceplayer
 	opentext
 	writetext AmphyPalPalooText
@@ -100,7 +100,7 @@ OlivineLighthouseAmphy:
 	promptbutton
 	jumpopenedtext AmphyBreathingLaboredText
 
-UnknownScript_0x60c51:
+.HealthyNow:
 	showcrytext AmphyPaluPaluluText, AMPHAROS
 	special FadeOutPalettes
 	special LoadMapPalettes

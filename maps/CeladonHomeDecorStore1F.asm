@@ -16,10 +16,31 @@ CeladonHomeDecorStore1F_MapScriptHeader:
 	def_object_events
 	object_event  4,  1, SPRITE_RECEPTIONIST, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_COMMAND, jumptextfaceplayer, CeladonHomeDecorStore1FReceptionistText, -1
 	object_event  5,  1, SPRITE_CLERK, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, CeladonHomeDecorStore1FClerkScript, -1
-	object_event  7,  5, SPRITE_MON_ICON, SPRITEMOVEDATA_STILL, 0, BULBASAUR, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_COMMAND, jumptext, CeladonHomeDecorStore1FBulbasaurDollText, -1
-	object_event  8,  5, SPRITE_MON_ICON, SPRITEMOVEDATA_STILL, 0, CHARMANDER, -1, -1, PAL_NPC_RED, OBJECTTYPE_COMMAND, jumptext, CeladonHomeDecorStore1FCharmanderDollText, -1
-	object_event  9,  5, SPRITE_MON_ICON, SPRITEMOVEDATA_STILL, 0, SQUIRTLE, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_COMMAND, jumptext, CeladonHomeDecorStore1FSquirtleDollText, -1
+	object_event  7,  5, SPRITE_MON_ICON, SPRITEMOVEDATA_STILL, 0, BULBASAUR, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, BULBASAUR, CeladonHomeDecorStore1FBulbasaurDollScript, -1
+	object_event  8,  5, SPRITE_MON_ICON, SPRITEMOVEDATA_STILL, 0, CHARMANDER, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, CHARMANDER, CeladonHomeDecorStore1FCharmanderDollScript, -1
+	object_event  9,  5, SPRITE_MON_ICON, SPRITEMOVEDATA_STILL, 0, SQUIRTLE, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, SQUIRTLE, CeladonHomeDecorStore1FSquirtleDollScript, -1
 	object_event  0,  4, SPRITE_BATTLE_GIRL, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_COMMAND, jumptextfaceplayer, CeladonHomeDecorStore1FCooltrainerfText, -1
+
+CeladonHomeDecorStore1FBulbasaurDollScript:
+	jumpthistext
+
+	text "It's a cute"
+	line "Bulbasaur doll!"
+	done
+
+CeladonHomeDecorStore1FCharmanderDollScript:
+	jumpthistext
+
+	text "It's a tough"
+	line "Charmander doll!"
+	done
+
+CeladonHomeDecorStore1FSquirtleDollScript:
+	jumpthistext
+
+	text "It's a cool"
+	line "Squirtle doll!"
+	done
 
 CeladonHomeDecorStore1FClerkScript:
 	faceplayer
@@ -155,21 +176,6 @@ CeladonHomeDecorStore1FNoMoneyText:
 CeladonHomeDecorStore1FAlreadyBoughtText:
 	text "You already have"
 	line "that!"
-	done
-
-CeladonHomeDecorStore1FBulbasaurDollText:
-	text "It's a cute"
-	line "Bulbasaur doll!"
-	done
-
-CeladonHomeDecorStore1FCharmanderDollText:
-	text "It's a tough"
-	line "Charmander doll!"
-	done
-
-CeladonHomeDecorStore1FSquirtleDollText:
-	text "It's a cool"
-	line "Squirtle doll!"
 	done
 
 CeladonHomeDecorStore1FCooltrainerfText:

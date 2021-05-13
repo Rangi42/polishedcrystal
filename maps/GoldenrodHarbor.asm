@@ -20,7 +20,7 @@ GoldenrodHarbor_MapScriptHeader:
 	itemball_event 13,  3, STAR_PIECE, 1, EVENT_GOLDENROD_HARBOR_STAR_PIECE
 	object_event 27, 15, SPRITE_ACE_TRAINER_F, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_COMMAND, pokemart, MARTTYPE_ADVENTURER, MART_GOLDENROD_HARBOR, -1
 	object_event 22, 15, SPRITE_POKEFAN_M, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, GoldenrodHarborPokefanmScript, -1
-	object_event 21, 15, SPRITE_MON_ICON, SPRITEMOVEDATA_STILL, 0, MAGIKARP, -1, -1, PAL_NPC_RED, OBJECTTYPE_COMMAND, jumptext, GoldenrodHarborMagikarpText, -1
+	object_event 21, 15, SPRITE_MON_ICON, SPRITEMOVEDATA_STILL, 0, MAGIKARP, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, MAGIKARP, GoldenrodHarborMagikarpScript, -1
 	object_event 16, 15, SPRITE_SCHOOLBOY, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, GoldenrodHarborYoungsterScript, -1
 	object_event 16, 20, SPRITE_FISHER, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, 0, OBJECTTYPE_COMMAND, trade, NPC_TRADE_JACQUES, -1
 	object_event 40, 16, SPRITE_ROCKET, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_GOLDENROD_CITY_ROCKET_SCOUT
@@ -87,6 +87,16 @@ GenericTrainerSwimmermJames:
 	text "Can't a Swimmer"
 	line "use a rowboat"
 	cont "sometimes?"
+	done
+
+
+GoldenrodHarborMagikarpScript:
+	jumpthistext
+
+	text "This is a Fish"
+	line "#mon! Huh?"
+
+	para "It's only a doll…"
 	done
 
 GoldenrodHarborPokefanmScript:
@@ -324,13 +334,6 @@ SwimmermJamesSeenText:
 SwimmermJamesBeatenText:
 	text "Maybe I can't"
 	line "battle…"
-	done
-
-GoldenrodHarborMagikarpText:
-	text "This is a Fish"
-	line "#mon! Huh?"
-
-	para "It's only a doll…"
 	done
 
 GoldenrodHarborDollVendorText:
