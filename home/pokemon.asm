@@ -312,6 +312,9 @@ GetSpeciesAndFormIndexFromHL::
 	ret
 
 .helper:
+	inc c
+	jr z, .egg
+	dec c
 	ld a, b
 	and SPECIESFORM_MASK
 	ld b, a
@@ -353,6 +356,9 @@ GetSpeciesAndFormIndexFromHL::
 	dec bc
 	ret
 
+.egg
+	ld b, 0
+	dec c
 .normal
 	; Converts species 1-254 to 0-253, extspecies to 256-509 (egg is 255)
 	ld a, b

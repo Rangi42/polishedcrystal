@@ -710,8 +710,6 @@ PlaceTradePartnerNamesAndParty:
 	call GetPartyLocation
 	assert MON_IS_EGG == MON_FORM
 	bit MON_IS_EGG_F, [hl]
-	xor a
-	ld [wNamedObjectIndex+1], a
 	ld a, EGG
 	jr nz, .got_species
 	ld a, [hl]
@@ -1177,9 +1175,12 @@ LinkTrade_TradeStatsMenu:
 	ld a, [wCurOTTradePartyMon]
 	ld hl, wOTPartyMon1IsEgg
 	call GetPartyLocation
+	assert MON_IS_EGG == MON_FORM
 	bit MON_IS_EGG_F, [hl]
 	ld a, EGG
 	jr nz, .got_ot_species
+	ld a, [hl]
+	ld [wNamedObjectIndex+1], a
 	ld a, [wCurOTTradePartyMon]
 	ld hl, wOTPartySpecies
 	ld c, a
@@ -1361,9 +1362,12 @@ LinkTrade:
 	ld a, [wCurTradePartyMon]
 	ld hl, wPartyMon1IsEgg
 	call GetPartyLocation
+	assert MON_IS_EGG == MON_FORM
 	bit MON_IS_EGG_F, [hl]
 	ld a, EGG
 	jr nz, .got_party_species
+	ld a, [hl]
+	ld [wNamedObjectIndex+1], a
 	ld a, [wCurTradePartyMon]
 	ld hl, wPartySpecies
 	ld c, a
@@ -1380,9 +1384,12 @@ LinkTrade:
 	ld a, [wCurOTTradePartyMon]
 	ld hl, wOTPartyMon1IsEgg
 	call GetPartyLocation
+	assert MON_IS_EGG == MON_FORM
 	bit MON_IS_EGG_F, [hl]
 	ld a, EGG
 	jr nz, .got_ot_species
+	ld a, [hl]
+	ld [wNamedObjectIndex+1], a
 	ld a, [wCurOTTradePartyMon]
 	ld hl, wOTPartySpecies
 	ld c, a
