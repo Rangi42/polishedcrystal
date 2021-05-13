@@ -10,6 +10,9 @@ CheckMagikarpLength:
 	ld a, [wCurPartySpecies]
 	cp MAGIKARP
 	jr nz, .not_magikarp
+	ld a, [wCurForm]
+	cp HIGH(MAGIKARP) << MON_EXTSPECIES_F
+	jr nz, .not_magikarp
 
 	; Now let's compute its length based on its DVs and ID.
 	ld a, [wCurPartyMon]
