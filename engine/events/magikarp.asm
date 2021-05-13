@@ -8,10 +8,12 @@ CheckMagikarpLength:
 	farcall SelectMonFromParty
 	jr c, .declined
 	ld a, [wCurPartySpecies]
-	cp MAGIKARP
+	cp LOW(MAGIKARP)
 	jr nz, .not_magikarp
 	ld a, [wCurForm]
-	cp HIGH(MAGIKARP) << MON_EXTSPECIES_F
+	and EXTSPECIES_MASK
+	assert HIGH(MAGIKARP) == 0
+	and a ; cp HIGH(MAGIKARP) << MON_EXTSPECIES_F
 	jr nz, .not_magikarp
 
 	; Now let's compute its length based on its DVs and ID.
