@@ -11,9 +11,10 @@ CheckMagikarpLength:
 	cp LOW(MAGIKARP)
 	jr nz, .not_magikarp
 	ld a, [wCurForm]
-	and EXTSPECIES_MASK
+	assert MON_IS_EGG == MON_FORM
+	and IS_EGG_MASK | EXTSPECIES_MASK
 	assert HIGH(MAGIKARP) == 0
-	and a ; cp HIGH(MAGIKARP) << MON_EXTSPECIES_F
+	and a ; cp HIGH(MAGIKARP) << MON_EXTSPECIES_F | IS_EGG_MASK
 	jr nz, .not_magikarp
 
 	; Now let's compute its length based on its DVs and ID.

@@ -708,9 +708,14 @@ PlaceTradePartnerNamesAndParty:
 	add hl, de
 	ld a, c
 	call GetPartyLocation
+	assert MON_IS_EGG == MON_FORM
 	bit MON_IS_EGG_F, [hl]
+	xor a
+	ld [wNamedObjectIndex+1], a
 	ld a, EGG
 	jr nz, .got_species
+	ld a, [hl]
+	ld [wNamedObjectIndex+1], a
 	ld hl, MON_SPECIES
 	add hl, de
 	pop bc
