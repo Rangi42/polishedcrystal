@@ -18,29 +18,29 @@ TreeMons:
 
 TreeMonSet_City:
 TreeMonSet_Canyon:
-	dbpb 50, PIDGEY,     10
-	dbpb 15, PIDGEY,     10
-	dbpb 15, PIDGEY,     10
-	dbpb 10, PIDGEY,     10
-	dbpb  5, MEOWTH,     10
-	dbpb  5, MEOWTH,     10
+	dbpb 50, SPEAROW,    10
+	dbpb 15, SPEAROW,    10
+	dbpb 15, SPEAROW,    10
+	dbpb 10, AIPOM,      10
+	dbpb  5, AIPOM,      10
+	dbpb  5, AIPOM,      10
 	db -1
 	; rare
-	dbpb 50, PIDGEY,     10
+	dbpb 50, SPEAROW,    10
 	dbpb 15, HERACROSS,  10
 	dbpb 15, HERACROSS,  10
-	dbpb 10, PIDGEY,     10
-	dbpb  5, MEOWTH,     10
-	dbpb  5, MEOWTH,     10
+	dbpb 10, AIPOM,      10
+	dbpb  5, AIPOM,      10
+	dbpb  5, AIPOM,      10
 	db -1
 
 TreeMonSet_Town:
-	dbpb 50, PIDGEY,     10
+	dbpb 50, SPEAROW,    10
 	dbpb 15, EKANS,      10
-	dbpb 15, EKANS,      10
-	dbpb 10, PIDGEY,     10
-	dbpb  5, MEOWTH,     10
-	dbpb  5, MEOWTH,     10
+	dbpb 15, SPEAROW,    10
+	dbpb 10, AIPOM,      10
+	dbpb  5, AIPOM,      10
+	dbpb  5, AIPOM,      10
 	db -1
 	; rare
 	dbpb 50, PIDGEY,     10

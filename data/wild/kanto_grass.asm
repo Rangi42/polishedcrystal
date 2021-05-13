@@ -423,7 +423,7 @@
 	def_grass_wildmons ROUTE_3
 	db 10 percent, 10 percent, 10 percent ; encounter rates: morn/day/nite
 	; morn
-	dbp 52, PIDGEOTTO
+	dbp 52, FEAROW
 	dbp 52, RATICATE
 	dbp 54, ARBOK, ARBOK_KANTO_FORM
 	dbp 55, SANDSLASH
@@ -431,7 +431,7 @@
 	dbp 57, JIGGLYPUFF
 	dbp 55, WIGGLYTUFF
 	; day
-	dbp 52, PIDGEOTTO
+	dbp 52, FEAROW
 	dbp 52, RATICATE
 	dbp 54, ARBOK, ARBOK_KANTO_FORM
 	dbp 55, SANDSLASH
@@ -451,7 +451,7 @@
 	def_grass_wildmons ROUTE_4
 	db 10 percent, 10 percent, 10 percent ; encounter rates: morn/day/nite
 	; morn
-	dbp 54, PIDGEOTTO
+	dbp 54, FEAROW
 	dbp 54, RATICATE
 	dbp 56, ARBOK, ARBOK_KANTO_FORM
 	dbp 57, SANDSLASH
@@ -459,7 +459,7 @@
 	dbp 58, PRIMEAPE
 	dbp 59, PRIMEAPE
 	; day
-	dbp 54, PIDGEOTTO
+	dbp 54, FEAROW
 	dbp 54, RATICATE
 	dbp 56, ARBOK, ARBOK_KANTO_FORM
 	dbp 57, SANDSLASH
@@ -536,7 +536,7 @@
 	db 10 percent, 10 percent, 10 percent ; encounter rates: morn/day/nite
 	; morn
 	dbp 49, RATICATE
-	dbp 49, PIDGEOTTO
+	dbp 49, FEAROW
 	dbp 51, GRANBULL
 	dbp 54, VULPIX
 	dbp 54, JIGGLYPUFF
@@ -544,7 +544,7 @@
 	dbp 51, WIGGLYTUFF
 	; day
 	dbp 49, RATICATE
-	dbp 49, PIDGEOTTO
+	dbp 49, FEAROW
 	dbp 51, GRANBULL
 	dbp 54, VULPIX
 	dbp 54, JIGGLYPUFF
@@ -592,7 +592,7 @@
 	db 10 percent, 10 percent, 10 percent ; encounter rates: morn/day/nite
 	; morn
 	dbp 48, RATICATE
-	dbp 47, PIDGEOTTO
+	dbp 47, FEAROW
 	dbp 49, PRIMEAPE
 	dbp 50, NIDORINA
 	dbp 50, NIDORINO
@@ -600,7 +600,7 @@
 	dbp 52, PRIMEAPE
 	; day
 	dbp 48, RATICATE
-	dbp 47, PIDGEOTTO
+	dbp 47, FEAROW
 	dbp 49, PRIMEAPE
 	dbp 50, NIDORINA
 	dbp 50, NIDORINO
@@ -619,7 +619,7 @@
 	def_grass_wildmons ROUTE_10_NORTH
 	db 10 percent, 10 percent, 10 percent ; encounter rates: morn/day/nite
 	; morn
-	dbp 47, PIDGEOTTO
+	dbp 47, FEAROW
 	dbp 49, ELECTRODE
 	dbp 47, RATICATE
 	dbp 48, MAGNETON
@@ -627,7 +627,7 @@
 	dbp 50, ELECTABUZZ
 	dbp 52, ELECTABUZZ
 	; day
-	dbp 47, PIDGEOTTO
+	dbp 47, FEAROW
 	dbp 49, ELECTRODE
 	dbp 47, RATICATE
 	dbp 48, MAGNETON
@@ -647,21 +647,21 @@
 	def_grass_wildmons ROUTE_11
 	db 10 percent, 10 percent, 10 percent ; encounter rates: morn/day/nite
 	; morn
-	dbp 53, SUNFLORA
+	dbp 53, SKIPLOOM
 	dbp 48, RATICATE
 	dbp 50, MAGNETON
 	dbp 51, PIDGEOTTO
 	dbp 51, SANDSLASH
 	dbp 51, SUNFLORA
-	dbp 51, SUNFLORA
+	dbp 53, SUNFLORA
 	; day
-	dbp 53, SUNFLORA
+	dbp 53, SKIPLOOM
 	dbp 48, RATICATE
 	dbp 50, MAGNETON
 	dbp 51, PIDGEOTTO
 	dbp 51, SANDSLASH
 	dbp 51, SUNFLORA
-	dbp 51, SUNFLORA
+	dbp 53, SUNFLORA
 	; nite
 	dbp 53, DROWZEE
 	dbp 48, MEOWTH
@@ -788,17 +788,17 @@
 	db 10 percent, 10 percent, 10 percent ; encounter rates: morn/day/nite
 	; morn
 	dbp 53, GRIMER
-	dbp 50, PIDGEOTTO
+	dbp 50, FEAROW
 	dbp 54, SLUGMA
-	dbp 52, PIDGEOTTO
+	dbp 52, FEAROW
 	dbp 53, MAGCARGO
 	dbp 54, MUK
 	dbp 55, MUK
 	; day
 	dbp 53, GRIMER
-	dbp 50, PIDGEOTTO
+	dbp 50, FEAROW
 	dbp 54, SLUGMA
-	dbp 52, PIDGEOTTO
+	dbp 52, FEAROW
 	dbp 53, MAGCARGO
 	dbp 54, MUK
 	dbp 55, MUK
@@ -815,18 +815,18 @@
 	def_grass_wildmons ROUTE_17
 	db 10 percent, 10 percent, 10 percent ; encounter rates: morn/day/nite
 	; morn
-	dbp 51, PIDGEOTTO
+	dbp 51, FEAROW
 	dbp 55, SLUGMA
 	dbp 55, GRIMER
-	dbp 53, PIDGEOTTO
+	dbp 53, FEAROW
 	dbp 53, MAGCARGO
 	dbp 54, MUK
 	dbp 56, MUK
 	; day
-	dbp 51, PIDGEOTTO
+	dbp 51, FEAROW
 	dbp 55, SLUGMA
 	dbp 55, GRIMER
-	dbp 53, PIDGEOTTO
+	dbp 53, FEAROW
 	dbp 53, MAGCARGO
 	dbp 54, MUK
 	dbp 56, MUK
@@ -843,17 +843,17 @@
 	def_grass_wildmons ROUTE_18_EAST
 	db 10 percent, 10 percent, 10 percent ; encounter rates: morn/day/nite
 	; morn
-	dbp 52, PIDGEOTTO
+	dbp 52, FEAROW
 	dbp 56, DODUO
-	dbp 53, PIDGEOTTO
+	dbp 53, FEAROW
 	dbp 54, DODRIO
 	dbp 54, MAGCARGO
 	dbp 55, MUK
 	dbp 57, MUK
 	; day
-	dbp 52, PIDGEOTTO
+	dbp 52, FEAROW
 	dbp 56, DODUO
-	dbp 53, PIDGEOTTO
+	dbp 53, FEAROW
 	dbp 54, DODRIO
 	dbp 54, MAGCARGO
 	dbp 55, MUK
@@ -871,17 +871,17 @@
 	def_grass_wildmons ROUTE_18_WEST
 	db 10 percent, 10 percent, 10 percent ; encounter rates: morn/day/nite
 	; morn
-	dbp 52, PIDGEOTTO
+	dbp 52, FEAROW
 	dbp 56, DODUO
-	dbp 53, PIDGEOTTO
+	dbp 53, FEAROW
 	dbp 54, DODRIO
 	dbp 54, MAGCARGO
 	dbp 55, MUK
 	dbp 57, MUK
 	; day
-	dbp 52, PIDGEOTTO
+	dbp 52, FEAROW
 	dbp 56, DODUO
-	dbp 53, PIDGEOTTO
+	dbp 53, FEAROW
 	dbp 54, DODRIO
 	dbp 54, MAGCARGO
 	dbp 55, MUK
@@ -928,7 +928,7 @@
 	db 10 percent, 10 percent, 10 percent ; encounter rates: morn/day/nite
 	; morn
 	dbp 56, RATICATE
-	dbp 56, PIDGEOTTO
+	dbp 56, FEAROW
 	dbp 58, NIDORINO
 	dbp 58, NIDORINA
 	dbp 59, PONYTA
@@ -936,7 +936,7 @@
 	dbp 60, PONYTA
 	; day
 	dbp 56, RATICATE
-	dbp 56, PIDGEOTTO
+	dbp 56, FEAROW
 	dbp 58, NIDORINO
 	dbp 58, NIDORINA
 	dbp 59, PONYTA

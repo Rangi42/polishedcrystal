@@ -377,7 +377,7 @@
 	; day
 	dbp 12, NIDORAN_F
 	dbp 13, NIDORAN_M
-	dbp 14, SENTRET
+	dbp 14, SUNKERN
 	dbp 15, PIDGEY
 	dbp 10, CATERPIE
 	dbp 12, WEEDLE
@@ -831,10 +831,10 @@
 	dbp 32, GOLBAT
 	dbp 32, NINETALES, ALOLAN_FORM
 	; nite
-	dbp 30, ZUBAT
+	dbp 30, DELIBIRD
 	dbp 31, ZUBAT
 	dbp 32, GOLBAT
-	dbp 33, GOLBAT
+	dbp 33, DELIBIRD
 	dbp 34, GOLBAT
 	dbp 32, GOLBAT
 	dbp 32, GOLBAT
@@ -859,10 +859,10 @@
 	dbp 33, NINETALES, ALOLAN_FORM
 	dbp 32, JYNX
 	; nite
-	dbp 32, ZUBAT
+	dbp 32, DELIBIRD
 	dbp 33, ZUBAT
 	dbp 33, GOLBAT
-	dbp 34, GOLBAT
+	dbp 34, DELIBIRD
 	dbp 35, GOLBAT
 	dbp 33, GOLBAT
 	dbp 32, SNEASEL
@@ -887,10 +887,10 @@
 	dbp 32, JYNX
 	dbp 34, JYNX
 	; nite
-	dbp 33, ZUBAT
+	dbp 33, DELIBIRD
 	dbp 34, ZUBAT
 	dbp 34, GOLBAT
-	dbp 35, GOLBAT
+	dbp 35, DELIBIRD
 	dbp 35, GOLBAT
 	dbp 32, SNEASEL
 	dbp 34, SNEASEL
@@ -915,10 +915,10 @@
 	dbp 32, JYNX
 	dbp 34, JYNX
 	; nite
-	dbp 33, ZUBAT
+	dbp 33, DELIBIRD
 	dbp 34, ZUBAT
 	dbp 34, GOLBAT
-	dbp 35, GOLBAT
+	dbp 35, DELIBIRD
 	dbp 35, GOLBAT
 	dbp 32, SNEASEL
 	dbp 34, SNEASEL
@@ -943,7 +943,7 @@
 	dbp 34, JYNX
 	dbp 36, JYNX
 	; nite
-	dbp 34, ZUBAT
+	dbp 34, DELIBIRD
 	dbp 35, ZUBAT
 	dbp 35, GOLBAT
 	dbp 35, GOLBAT
@@ -1352,16 +1352,16 @@
 	dbp 3, PIDGEY
 	dbp 3, SENTRET
 	dbp 2, RATTATA
-	dbp 3, SUNKERN
-	dbp 3, SUNKERN
+	dbp 3, HOPPIP
+	dbp 3, HOPPIP
 	; day
 	dbp 2, PIDGEY
 	dbp 2, SENTRET
 	dbp 3, PIDGEY
 	dbp 3, SENTRET
 	dbp 2, RATTATA
-	dbp 3, SUNKERN
-	dbp 3, SUNKERN
+	dbp 3, HOPPIP
+	dbp 3, HOPPIP
 	; nite
 	dbp 2, HOOTHOOT
 	dbp 2, RATTATA
@@ -1380,16 +1380,16 @@
 	dbp 4, CATERPIE
 	dbp 4, PIDGEY
 	dbp 3, WEEDLE
-	dbp 4, SUNKERN
-	dbp 4, SUNKERN
+	dbp 4, HOPPIP
+	dbp 4, HOPPIP
 	; day
 	dbp 3, PIDGEY
 	dbp 3, CATERPIE
 	dbp 4, CATERPIE
 	dbp 4, PIDGEY
 	dbp 3, WEEDLE
-	dbp 4, SUNKERN
-	dbp 4, SUNKERN
+	dbp 4, HOPPIP
+	dbp 4, HOPPIP
 	; nite
 	dbp 3, SPINARAK
 	dbp 3, HOOTHOOT
@@ -1408,16 +1408,16 @@
 	dbp 5, BELLSPROUT
 	dbp 5, PIDGEY
 	dbp 4, WEEDLE
-	dbp 5, SUNKERN
-	dbp 5, SUNKERN
+	dbp 5, HOPPIP
+	dbp 5, HOPPIP
 	; day
 	dbp 4, PIDGEY
 	dbp 4, CATERPIE
 	dbp 5, BELLSPROUT
 	dbp 5, PIDGEY
 	dbp 4, WEEDLE
-	dbp 5, SUNKERN
-	dbp 5, SUNKERN
+	dbp 5, HOPPIP
+	dbp 5, HOPPIP
 	; nite
 	dbp 4, SPINARAK
 	dbp 4, POLIWAG
@@ -1436,16 +1436,16 @@
 	dbp 7, BELLSPROUT
 	dbp 6, MAREEP
 	dbp 7, MAREEP
-	dbp 6, SUNKERN
-	dbp 7, SUNKERN
+	dbp 6, HOPPIP
+	dbp 7, HOPPIP
 	; day
 	dbp 4, EKANS, ARBOK_JOHTO_FORM
 	dbp 5, RATTATA
 	dbp 7, BELLSPROUT
 	dbp 6, MAREEP
 	dbp 7, MAREEP
-	dbp 6, SUNKERN
-	dbp 7, SUNKERN
+	dbp 6, HOPPIP
+	dbp 7, HOPPIP
 	; nite
 	dbp 4, WOOPER
 	dbp 5, RATTATA
@@ -1460,20 +1460,20 @@
 	db 10 percent, 10 percent, 10 percent ; encounter rates: morn/day/nite
 	; morn
 	dbp 6, RATTATA
-	dbp 6, PIDGEY
+	dbp 6, SPEAROW
 	dbp 6, GEODUDE
-	dbp 6, SANDSHREW
+	dbp 6, HOPPIP
 	dbp 7, EKANS, ARBOK_JOHTO_FORM
-	dbp 7, SUNKERN
-	dbp 7, SUNKERN
+	dbp 7, HOPPIP
+	dbp 7, HOPPIP
 	; day
 	dbp 6, RATTATA
-	dbp 6, PIDGEY
+	dbp 6, SPEAROW
 	dbp 6, GEODUDE
-	dbp 6, SANDSHREW
+	dbp 6, HOPPIP
 	dbp 7, EKANS, ARBOK_JOHTO_FORM
-	dbp 7, SUNKERN
-	dbp 7, SUNKERN
+	dbp 7, HOPPIP
+	dbp 7, HOPPIP
 	; nite
 	dbp 6, RATTATA
 	dbp 6, ZUBAT
@@ -1590,7 +1590,7 @@
 	dbp 13, SPINARAK
 	dbp 15, STANTLER
 	dbp 14, HOOTHOOT
-	dbp 15, NOCTOWL
+	dbp 16, STANTLER
 	dbp 16, ARIADOS
 	dbp 15, HOUNDOUR
 	dbp 16, HOUNDOUR
@@ -1659,7 +1659,7 @@
 	dbp 22, MANKEY
 	dbp 22, RATTATA
 	dbp 23, RATICATE
-	dbp 21, PIDGEY
+	dbp 21, SPEAROW
 	dbp 24, ARBOK, ARBOK_JOHTO_FORM
 	dbp 24, PRIMEAPE
 	; day
@@ -1667,7 +1667,7 @@
 	dbp 22, MANKEY
 	dbp 22, RATTATA
 	dbp 23, RATICATE
-	dbp 21, PIDGEY
+	dbp 21, SPEAROW
 	dbp 24, ARBOK, ARBOK_JOHTO_FORM
 	dbp 24, PRIMEAPE
 	; nite
@@ -1712,20 +1712,20 @@
 	db 10 percent, 10 percent, 10 percent ; encounter rates: morn/day/nite
 	; morn
 	dbp 31, TANGELA
-	dbp 29, TANGELA
+	dbp 29, LICKITUNG
 	dbp 30, BELLSPROUT
 	dbp 32, WEEPINBELL
-	dbp 32, FURRET
-	dbp 34, FURRET
-	dbp 34, FURRET
+	dbp 32, LICKITUNG
+	dbp 34, LICKITUNG
+	dbp 34, LICKITUNG
 	; day
 	dbp 31, TANGELA
-	dbp 29, TANGELA
+	dbp 29, LICKITUNG
 	dbp 30, BELLSPROUT
 	dbp 32, WEEPINBELL
-	dbp 32, FURRET
-	dbp 34, FURRET
-	dbp 34, FURRET
+	dbp 32, LICKITUNG
+	dbp 34, LICKITUNG
+	dbp 34, LICKITUNG
 	; nite
 	dbp 31, TANGELA
 	dbp 29, POLIWAG
@@ -1768,7 +1768,7 @@
 	db 10 percent, 10 percent, 10 percent ; encounter rates: morn/day/nite
 	; morn
 	dbp 2, GEODUDE
-	dbp 2, PIDGEY
+	dbp 2, SPEAROW
 	dbp 3, GEODUDE
 	dbp 2, PHANPY
 	dbp 2, RATTATA
@@ -1776,7 +1776,7 @@
 	dbp 3, RATTATA
 	; day
 	dbp 2, GEODUDE
-	dbp 2, PIDGEY
+	dbp 2, SPEAROW
 	dbp 3, GEODUDE
 	dbp 2, JIGGLYPUFF
 	dbp 2, RATTATA

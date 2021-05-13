@@ -219,15 +219,15 @@ WhitneyGroup:
 	db "Whitney@"
 	db TRAINERTYPE_ITEM | TRAINERTYPE_PERSONALITY | TRAINERTYPE_MOVES
 	; party
+	dbp 71, STANTLER, FEMALE
+		db LIGHT_CLAY, ABILITY_1 | NAT_NEUTRAL
+		db REFLECT, LIGHT_SCREEN, DOUBLE_EDGE, ZEN_HEADBUTT
 	dbp 72, CLEFABLE, FEMALE
 		db PINK_BOW, ABILITY_1 | NAT_NEUTRAL
 		db CALM_MIND, MOONBLAST, FRESH_SNACK, THUNDER_WAVE
 	dbp 70, URSARING, FEMALE
 		db BLACK_BELT, ABILITY_1 | NAT_NEUTRAL
 		db SWORDS_DANCE, CROSS_CHOP, CRUNCH, PLAY_ROUGH
-	dbp 71, GIRAFARIG, FEMALE
-		db TWISTEDSPOON, ABILITY_1 | NAT_NEUTRAL
-		db NASTY_PLOT, PSYCHIC_M, HYPER_VOICE, SHADOW_BALL
 	dbp 72, WIGGLYTUFF, FEMALE 
 		db LEFTOVERS, ABILITY_1 | NAT_NEUTRAL
 		db FOCUS_BLAST, HYPER_VOICE, DAZZLINGLEAM, ICE_BEAM
@@ -2221,7 +2221,7 @@ YoungsterGroup:
 	db "Warren@"
 	db TRAINERTYPE_NORMAL
 	; party
-	dbp 56, PIDGEOTTO
+	dbp 56, FEAROW
 	dbp 60, RATICATE
 	db -1 ; end
 
@@ -2701,7 +2701,7 @@ CamperGroup:
 	db "Quentin@"
 	db TRAINERTYPE_NORMAL
 	; party
-	dbp 30, PIDGEOTTO
+	dbp 30, FEAROW
 	dbp 30, PRIMEAPE
 	dbp 30, TAUROS
 	db -1 ; end
@@ -2843,7 +2843,7 @@ PicnickerGroup:
 	db TRAINERTYPE_NORMAL
 	; party
 	dbp 9, SUNKERN
-	dbp 9, SUNKERN
+	dbp 9, HOPPIP
 	dbp 12, BULBASAUR
 	db -1 ; end
 
@@ -2854,7 +2854,7 @@ PicnickerGroup:
 	db TRAINERTYPE_NORMAL
 	; party
 	dbp 14, SUNKERN
-	dbp 14, SUNKERN
+	dbp 14, HOPPIP
 	dbp 17, IVYSAUR
 	db -1 ; end
 
@@ -2865,7 +2865,7 @@ PicnickerGroup:
 	db TRAINERTYPE_NORMAL
 	; party
 	dbp 26, SUNFLORA
-	dbp 27, SUNFLORA
+	dbp 27, SKIPLOOM
 	dbp 29, IVYSAUR
 	db -1 ; end
 
@@ -2876,7 +2876,7 @@ PicnickerGroup:
 	db TRAINERTYPE_NORMAL
 	; party
 	dbp 30, SUNFLORA
-	dbp 31, SUNFLORA
+	dbp 31, JUMPLUFF
 	dbp 32, IVYSAUR
 	db -1 ; end
 
@@ -2892,12 +2892,8 @@ if DEF(FAITHFUL)
 else
 		db LEECH_SEED, GIGA_DRAIN, SUNNY_DAY, FLAMETHROWER
 endc
-	dbp 34, SUNFLORA
-if DEF(FAITHFUL)
-		db GIGA_DRAIN, SOLAR_BEAM, SUNNY_DAY, EARTH_POWER
-else
-		db GIGA_DRAIN, SOLAR_BEAM, SUNNY_DAY, FLAMETHROWER
-endc
+	dbp 34, JUMPLUFF
+		db ACROBATICS, SLEEP_POWDER, STUN_SPORE, MEGA_DRAIN
 	dbp 38, VENUSAUR
 		db SOLAR_BEAM, RAZOR_LEAF, HEADBUTT, MUD_SLAP
 	db -1 ; end
@@ -3019,7 +3015,7 @@ endc
 	db "Debra@"
 	db TRAINERTYPE_NORMAL
 	; party
-	dbp 50, AZUMARILL
+	dbp 50, SEAKING
 	db -1 ; end
 
 ; ================
@@ -3028,8 +3024,8 @@ endc
 	db "Heidi@"
 	db TRAINERTYPE_NORMAL
 	; party
-	dbp 53, SUNFLORA
-	dbp 53, SUNFLORA
+	dbp 53, JUMPLUFF
+	dbp 53, JUMPLUFF
 	db -1 ; end
 
 ; ================
@@ -3262,7 +3258,7 @@ FisherGroup:
 	db "Ralph@"
 	db TRAINERTYPE_NORMAL
 	; party
-	dbp 10, CHINCHOU
+	dbp 10, GOLDEEN
 	db -1 ; end
 
 ; ================
@@ -3271,7 +3267,7 @@ FisherGroup:
 	db "Ralph@"
 	db TRAINERTYPE_NORMAL
 	; party
-	dbp 17, CHINCHOU
+	dbp 17, GOLDEEN
 	db -1 ; end
 
 ; ================
@@ -3281,7 +3277,7 @@ FisherGroup:
 	db TRAINERTYPE_NORMAL
 	; party
 	dbp 17, QWILFISH
-	dbp 19, CHINCHOU
+	dbp 19, GOLDEEN
 	db -1 ; end
 
 ; ================
@@ -3291,7 +3287,7 @@ FisherGroup:
 	db TRAINERTYPE_NORMAL
 	; party
 	dbp 30, QWILFISH
-	dbp 32, LANTURN
+	dbp 32, SEAKING
 	db -1 ; end
 
 ; ================
@@ -3300,10 +3296,12 @@ FisherGroup:
 	db "Ralph@"
 	db TRAINERTYPE_MOVES
 	; party
-	dbp 35, QWILFISH
+	dbp 36, QWILFISH
 		db TOXIC, MINIMIZE, SURF, PIN_MISSILE
-	dbp 39, LANTURN
-		db REVERSAL, WATERFALL, SPARK, CONFUSE_RAY
+	dbp 36, LANTURN
+		db REVERSAL, WATERFALL, THUNDERBOLT, CONFUSE_RAY
+	dbp 39, SEAKING
+		db WATERFALL, AGILITY, FURY_STRIKES, POISON_JAB
 	db -1 ; end
 
 ; ================
@@ -3321,6 +3319,7 @@ FisherGroup:
 	db "Tully@"
 	db TRAINERTYPE_NORMAL
 	; party
+	dbp 35, GOLDEEN
 	dbp 35, QWILFISH
 	db -1 ; end
 
@@ -3331,7 +3330,7 @@ FisherGroup:
 	db TRAINERTYPE_NORMAL
 	; party
 	dbp 40, POLIWHIRL
-	dbp 40, QWILFISH
+	dbp 40, SEAKING
 	dbp 40, QWILFISH
 	db -1 ; end
 
@@ -3343,8 +3342,8 @@ FisherGroup:
 	; party
 	dbp 43, POLIWRATH
 		db RAIN_DANCE, HYPNOSIS, WATERFALL, CLOSE_COMBAT
-	dbp 43, QWILFISH
-		db ROLLOUT, SURF, PIN_MISSILE, TAKE_DOWN
+	dbp 43, SEAKING
+		db AGILITY, WATERFALL, BODY_SLAM, POISON_JAB
 	dbp 45, QWILFISH
 		db ROLLOUT, WATERFALL, PIN_MISSILE, TAKE_DOWN
 	db -1 ; end
@@ -3355,9 +3354,9 @@ FisherGroup:
 	db "Wilton@"
 	db TRAINERTYPE_NORMAL
 	; party
-	dbp 34, QWILFISH
-	dbp 34, REMORAID
-	dbp 36, GYARADOS
+	dbp 34, GOLDEEN
+	dbp 36, REMORAID
+	dbp 36, SEAKING
 	db -1 ; end
 
 ; ================
@@ -3366,9 +3365,9 @@ FisherGroup:
 	db "Wilton@"
 	db TRAINERTYPE_NORMAL
 	; party
-	dbp 36, QWILFISH
-	dbp 36, REMORAID
-	dbp 38, GYARADOS
+	dbp 36, GOLDEEN
+	dbp 38, REMORAID
+	dbp 38, SEAKING
 	db -1 ; end
 
 ; ================
@@ -3377,10 +3376,10 @@ FisherGroup:
 	db "Wilton@"
 	db TRAINERTYPE_MOVES
 	; party
-	dbp 38, QWILFISH
-		db WATERFALL, TAKE_DOWN, PIN_MISSILE, ROLLOUT
-	dbp 38, GYARADOS
-		db WATERFALL, DRAGON_PULSE, DRAGON_RAGE, RAIN_DANCE
+	dbp 38, GOLDEEN
+		db WATERFALL, FURY_STRIKES, POISON_JAB, RAIN_DANCE
+	dbp 40, SEAKING
+		db WATERFALL, BODY_SLAM, POISON_JAB, AGILITY
 	dbp 42, OCTILLERY
 		db PSYBEAM, AURORA_BEAM, OCTAZOOKA, HYPER_BEAM
 	db -1 ; end
@@ -3416,9 +3415,9 @@ FisherGroup:
 	db "Kyle@"
 	db TRAINERTYPE_NORMAL
 	; party
-	dbp 57, POLIWHIRL
+	dbp 57, SEAKING
 	dbp 54, QWILFISH
-	dbp 57, GYARADOS
+	dbp 57, SEAKING
 	db -1 ; end
 
 ; ================
@@ -3539,7 +3538,7 @@ FisherGroup:
 	; party
 	dbp 40, QWILFISH
 	dbp 40, QWILFISH
-	dbp 42, GYARADOS
+	dbp 42, SEAKING
 	db -1 ; end
 
 ; ================
@@ -3755,7 +3754,7 @@ BirdKeeperGroup:
 	db "Abe@"
 	db TRAINERTYPE_NORMAL
 	; party
-	dbp 9, PIDGEY
+	dbp 9, SPEAROW
 	db -1 ; end
 
 ; ================
@@ -3788,9 +3787,9 @@ BirdKeeperGroup:
 	db "Denis@"
 	db TRAINERTYPE_NORMAL
 	; party
-	dbp 18, PIDGEY
-	dbp 20, PIDGEOTTO
-	dbp 18, FARFETCH_D
+	dbp 18, SPEAROW
+	dbp 20, FEAROW
+	dbp 18, SPEAROW
 	db -1 ; end
 
 ; ================
@@ -3809,7 +3808,7 @@ BirdKeeperGroup:
 	db "Roy@"
 	db TRAINERTYPE_NORMAL
 	; party
-	dbp 55, PIDGEOTTO
+	dbp 55, FEAROW
 	dbp 59, PIDGEOT
 	db -1 ; end
 
@@ -3841,7 +3840,7 @@ BirdKeeperGroup:
 	; party
 	dbp 6, PIDGEY
 	dbp 6, PIDGEY
-	dbp 8, HOOTHOOT
+	dbp 8, SPEAROW
 	db -1 ; end
 
 ; ================
@@ -3859,8 +3858,8 @@ BirdKeeperGroup:
 	db "Bret@"
 	db TRAINERTYPE_NORMAL
 	; party
-	dbp 57, PIDGEOTTO
-	dbp 57, FARFETCH_D
+	dbp 57, PIDGEOT
+	dbp 57, FEAROW
 	db -1 ; end
 
 ; ================
@@ -4936,7 +4935,7 @@ PokefanMGroup:
 	db "Colin@"
 	db TRAINERTYPE_ITEM
 	; party
-	dbp 49, GLACEON
+	dbp 49, DELIBIRD
 		db SITRUS_BERRY
 	db -1 ; end
 
@@ -4950,7 +4949,7 @@ PokefanMGroup:
 		db KINGS_ROCK
 	dbp 56, SLOWKING
 		db KINGS_ROCK
-	dbp 56, KINGLER
+	dbp 56, SEAKING
 		db KINGS_ROCK
 	db -1 ; end
 
@@ -5158,7 +5157,7 @@ PokemaniacGroup:
 	db "Brent@"
 	db TRAINERTYPE_NORMAL
 	; party
-	dbp 32, MAROWAK
+	dbp 32, LICKITUNG
 	db -1 ; end
 
 ; ================
@@ -5260,9 +5259,10 @@ PokemaniacGroup:
 
 	; POKEMANIAC
 	db "Issac@"
-	db TRAINERTYPE_NORMAL
+	db TRAINERTYPE_MOVES
 	; party
-	dbp 12, FLAAFFY
+	dbp 12, LICKITUNG
+		db LICK, SUPERSONIC, CUT, NO_MOVE
 	db -1 ; end
 
 ; ================
@@ -5728,7 +5728,7 @@ endc
 	; party
 	dbp 56, LEAFEON
 	dbp 57, TANGELA
-	dbp 58, SUNFLORA
+	dbp 58, JUMPLUFF
 	db -1 ; end
 
 ; ================
@@ -5907,7 +5907,7 @@ BeautyGroup:
 	db TRAINERTYPE_NORMAL
 	; party
 	dbp 18, SUNKERN
-	dbp 18, SUNFLORA
+	dbp 18, SKIPLOOM
 	dbp 18, SUNFLORA
 	db -1 ; end
 
@@ -6684,7 +6684,7 @@ SchoolboyGroup:
 	db "Ricky@"
 	db TRAINERTYPE_NORMAL
 	; party
-	dbp 44, GIRAFARIG
+	dbp 44, AIPOM
 	dbp 46, DITTO
 	db -1 ; end
 
@@ -8183,7 +8183,7 @@ SwimmerMGroup:
 	dbp 57, SEADRA
 	dbp 58, TENTACOOL
 	dbp 59, TENTACRUEL
-	dbp 58, GOLDUCK
+	dbp 58, SEAKING
 	db -1 ; end
 
 ; ================
@@ -8439,9 +8439,9 @@ SwimmerFGroup:
 	db "Kaylee@"
 	db TRAINERTYPE_NORMAL
 	; party
-	dbp 18, MARILL
-	dbp 20, MARILL
-	dbp 20, AZUMARILL
+	dbp 18, GOLDEEN
+	dbp 20, GOLDEEN
+	dbp 20, SEAKING
 	db -1 ; end
 
 ; ================
@@ -8451,7 +8451,7 @@ SwimmerFGroup:
 	db TRAINERTYPE_NORMAL
 	; party
 	dbp 20, PSYDUCK
-	dbp 22, SEEL
+	dbp 22, GOLDEEN
 	db -1 ; end
 
 ; ================
@@ -8552,7 +8552,7 @@ SwimmerFGroup:
 	db "Briana@"
 	db TRAINERTYPE_NORMAL
 	; party
-	dbp 56, GYARADOS
+	dbp 56, SEAKING
 	dbp 56, LAPRAS
 	db -1 ; end
 
@@ -9532,9 +9532,9 @@ TeacherGroup:
 	db "Hillary@"
 	db TRAINERTYPE_NORMAL
 	; party
-	dbp 58, PERSIAN
+	dbp 58, AIPOM
 	dbp 56, SUNFLORA
-	dbp 59, CUBONE
+	dbp 59, MAROWAK
 	db -1 ; end
 
 ; ================
@@ -10626,7 +10626,7 @@ endc
 	db "Lois@"
 	db TRAINERTYPE_NORMAL
 	; party
-	dbp 29, SUNFLORA
+	dbp 29, JUMPLUFF
 	dbp 29, NINETALES
 	db -1 ; end
 
@@ -10669,8 +10669,8 @@ endc
 	db "Irene@"
 	db TRAINERTYPE_NORMAL
 	; party
-	dbp 22, PSYDUCK
-	dbp 24, GOLDUCK
+	dbp 22, GOLDEEN
+	dbp 24, SEAKING
 	db -1 ; end
 
 ; ================
