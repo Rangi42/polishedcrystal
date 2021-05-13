@@ -92,7 +92,13 @@ ReloadSpriteIndex::
 	jr nz, .done
 .continue
 	push hl
+	; hl points to an object_struct; we want bc to point to a map_object,
+	; to get the radius (actually the SPRITE_MON_ICON species).
+	push bc
+	ld b, h
+	ld c, l
 	call GetSpriteVTile
+	pop bc
 	pop hl
 	push hl
 	inc hl ; skip OBJECT_SPRITE
@@ -190,11 +196,11 @@ GetMonSprite:
 ;  use Pokémon icons.)
 	ldh a, [hIsMapObject]
 	and a
-	ld bc, OBJECT_RADIUS - OBJECT_SPRITE
-	ld de, OBJECT_RANGE - OBJECT_SPRITE
+	ld hl, OBJECT_RADIUS - OBJECT_SPRITE
+	ld de, OBJECT_RANGE - OBJECT_RADIUS
 	jr z, .object
-	ld bc, MAPOBJECT_RADIUS - MAPOBJECT_SPRITE
-	ld de, MAPOBJECT_RANGE - MAPOBJECT_SPRITE
+	ld hl, MAPOBJECT_RADIUS - MAPOBJECT_OBJECT_STRUCT_ID
+	ld de, MAPOBJECT_RANGE - MAPOBJECT_RADIUS
 .object
 	add hl, bc
 	ld a, [hl]

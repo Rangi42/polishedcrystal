@@ -907,6 +907,9 @@ Special_DayCareMon1:
 	ld hl, DayCareMon1Text
 	call PrintText
 	ld a, [wBreedMon1Species]
+	ld c, a
+	ld a, [wBreedMon1Form]
+	ld b, a
 	call PlayCry
 	ld a, [wDayCareLady]
 	bit 0, a
@@ -920,6 +923,9 @@ Special_DayCareMon2:
 	ld hl, DayCareMon2Text
 	call PrintText
 	ld a, [wBreedMon2Species]
+	ld c, a
+	ld a, [wBreedMon2Form]
+	ld b, a
 	call PlayCry
 	ld a, [wDayCareMan]
 	bit 0, a

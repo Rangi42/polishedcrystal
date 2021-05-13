@@ -12,7 +12,9 @@ GetSpriteVTile::
 	push de
 	push bc
 	ldh [hUsedSpriteIndex], a
+	push bc
 	farcall GetSprite
+	pop bc
 	ld hl, wSpriteFlags
 	res 5, [hl]
 	; SPRITE_BIG_GYARADOS and SPRITE_SAILBOAT use the last object_struct

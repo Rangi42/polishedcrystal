@@ -101,9 +101,9 @@ object_event: MACRO
 	if \<10> == OBJECTTYPE_COMMAND
 		db \<11>_command ; command id
 	elif \3 == SPRITE_MON_ICON
-		db HIGH(\<11>) << MON_EXTSPECIES_F
+		db (HIGH(\6) << MON_EXTSPECIES_F) | \<11> ; extspecies | form
 	else
-		db \<11> ; sight_range || extspecies/form
+		db \<11> ; sight_range
 	endc
 	if _NARG == 14
 		db \<12> ; itemball contents
@@ -158,9 +158,9 @@ ENDM
 
 pokemon_event: MACRO
 	if _NARG == 9
-		object_event \1, \2, SPRITE_MON_ICON, \4, 0, LOW(\3), \5, \6, \7, OBJECTTYPE_POKEMON, HIGH(\3) << MON_EXTSPECIES_F, \8, \9
+		object_event \1, \2, SPRITE_MON_ICON, \4, 0, \3, \5, \6, \7, OBJECTTYPE_POKEMON, NO_FORM, \8, \9
 	else
-		object_event \1, \2, SPRITE_MON_ICON, \5, 0, LOW(\3), \6, \7, \8, OBJECTTYPE_POKEMON, HIGH(\3) << MON_EXTSPECIES_F | \4, \9, \<10>
+		object_event \1, \2, SPRITE_MON_ICON, \5, 0, \3, \6, \7, \8, OBJECTTYPE_POKEMON, \4, \9, \<10>
 	endc
 ENDM
 

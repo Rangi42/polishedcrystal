@@ -303,7 +303,7 @@ GetSpeciesAndFormIndexFromHL::
 	add hl, de
 	srl h
 	rr l
-	ld de, REAL_NUM_POKEMON - 1
+	ld de, NUM_SPECIES
 	add hl, de
 	ld b, h
 	ld c, l
@@ -348,7 +348,6 @@ GetSpeciesAndFormIndexFromHL::
 
 .full_comparision
 	ld a, [hli]
-	set MON_EXTSPECIES_F, a
 	cp b
 	jr nz, .loop
 	dec bc
