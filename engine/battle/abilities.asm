@@ -643,42 +643,6 @@ RunHitAbilities:
 	jmp z, WeakArmorAbility
 	ret
 
-RunContactAbilities:
-; turn perspective is from the attacker
-; 30% of the time, activate Poison Touch
-	call BattleRandom
-	cp 1 + 30 percent
-	jr nc, .skip_user_ability
-	call GetTrueUserAbility
-	cp POISON_TOUCH
-	call z, PoisonTouchAbility
-.skip_user_ability
-; abilities only trigger 30% of the time
-;
-; Abilities always run from the ability user's perspective. This is
-; consistent. Thus, a switchturn happens here. Feel free to rework
-; the logic if you feel that this reduces readability.
-	call BattleRandom
-	cp 1 + 30 percent
-	ret nc
-	call GetOpponentAbilityAfterMoldBreaker
-	ld b, a
-
-	call CallOpponentTurn
-.do_enemy_abilities
-	ld a, b
-	cp EFFECT_SPORE
-	jr z, EffectSporeAbility
-	cp FLAME_BODY
-	jr z, FlameBodyAbility
-	cp POISON_POINT
-	jr z, PoisonPointAbility
-	cp STATIC
-	jr z, StaticAbility
-	cp CUTE_CHARM
-	jr z, CuteCharmAbility
-	ret
-
 CursedBodyAbility:
 	call SwitchTurn
 	farcall GetFutureSightUser
@@ -695,12 +659,51 @@ CursedBodyAbility:
 	farcall BattleCommand_disable
 	jmp EnableAnimations
 
+RunContactAbilities:
+; turn perspective is from the attacker
+	call GetTrueUserAbility
+	ld hl, UserContactAbilities
+	call AbilityJumptable
+	call GetOpponentAbilityAfterMoldBreaker
+	ld hl, TargetContactAbilities
+	jmp AbilityJumptable
+
+UserContactAbilities:
+	dbw POISON_TOUCH, PoisonTouchAbility
+	dbw -1, -1
+
+TargetContactAbilities:
+	dbw EFFECT_SPORE, EffectSporeAbility
+	dbw FLAME_BODY, FlameBodyAbility
+	dbw POISON_POINT, PoisonPointAbility
+	dbw STATIC, StaticAbility
+	dbw CUTE_CHARM, CuteCharmAbility
+	dbw TANGLING_HAIR, TanglingHairAbility
+	dbw -1, -1
+
 CuteCharmAbility:
 	call HasUserFainted
 	ret z
+
+	; Only works 30% of the time.
+	ld a, 10
+	call BattleRandomRange
+	cp 3
+	ret nc
+
 	call DisableAnimations
 	; this runs ShowAbilityActivation when relevant
 	farcall BattleCommand_attract
+	jmp EnableAnimations
+
+TanglingHairAbility:
+	call HasOpponentFainted
+	ret z
+
+	call DisableAnimations
+	ld b, SPEED
+	ld a, STAT_SILENT
+	farcall _ForceLowerOppStat
 	jmp EnableAnimations
 
 EffectSporeAbility:
@@ -746,6 +749,12 @@ StaticAbility:
 AfflictStatusAbility:
 	ld b, 0
 _AfflictStatusAbility:
+	; Only works 30% of the time.
+	ld a, 10
+	call BattleRandomRange
+	cp 3
+	ret nc
+
 	push hl
 	push bc
 	ld a, BANK(CanPoisonTarget)
