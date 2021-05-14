@@ -252,14 +252,22 @@ PokedexDataPointerTable:
 	dba LugiaPokedexEntry
 	dba HoOhPokedexEntry
 	dba CelebiPokedexEntry
-	dba MismagiusPokedexEntry
-	dba HonchkrowPokedexEntry
-	dba MunchlaxPokedexEntry
+	dba AzurillPokedexEntry
+	dba WynautPokedexEntry
+	dba AmbipomPokedexEntry
 	assert_table_length NUM_POKEMON
 	dba BulbasaurPokedexEntry ; egg
 	dba BulbasaurPokedexEntry ; index $100
+	dba MismagiusPokedexEntry
+	dba HonchkrowPokedexEntry
+	dba BonslyPokedexEntry
+	dba MimeJrPokedexEntry
+	dba HappinyPokedexEntry
+	dba MunchlaxPokedexEntry
+	dba MantykePokedexEntry
 	dba WeavilePokedexEntry
 	dba MagnezonePokedexEntry
+	dba LickilickyPokedexEntry
 	dba RhyperiorPokedexEntry
 	dba TangrowthPokedexEntry
 	dba ElectivirePokedexEntry
@@ -272,4 +280,8 @@ PokedexDataPointerTable:
 	dba MamoswinePokedexEntry
 	dba PorygonZPokedexEntry
 	dba SylveonPokedexEntry
+	dba PerrserkerPokedexEntry
+	dba CursolaPokedexEntry
+	dba SirfetchDPokedexEntry
+	dba MrRimePokedexEntry
 	assert_table_length NUM_SPECIES

@@ -6,7 +6,7 @@
 	db 58 ; base exp
 	db NO_ITEM ; item 1
 	db NO_ITEM ; item 2
-	dn GENDER_F50, 3 ; gender ratio, step cycles to hatch
+	dn GENDER_F50, 1 ; gender ratio, step cycles to hatch
 	INCBIN "gfx/pokemon/marill/front.dimensions"
 	abilities_for MARILL, THICK_FAT, HUGE_POWER, SAP_SIPPER
 	db GROWTH_FAST ; growth rate

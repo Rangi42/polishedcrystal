@@ -429,11 +429,6 @@ RhyhornEggMoves:
 	db COUNTER
 	db $ff
 
-ChanseyEggMoves:
-	db METRONOME
-	db HEAL_BELL
-	db $ff
-
 TangelaEggMoves:
 	db CONFUSION
 	db AMNESIA ; requires Hoppip
@@ -463,14 +458,7 @@ GoldeenEggMoves:
 	db AQUA_TAIL
 	db HYDRO_PUMP
 	db PSYBEAM
-	db $ff
-
-MrMimeEggMoves:
-	db CONFUSE_RAY
-	db FUTURE_SIGHT
-	db HYPNOSIS
-	db NASTY_PLOT
-	db TRICK
+	db QUICK_ATTACK
 	db $ff
 
 ScytherEggMoves:
@@ -676,23 +664,6 @@ MareepEggMoves:
 	db SAFEGUARD
 	db $ff
 
-MarillEggMoves:
-	db BELLY_DRUM
-	db FORESIGHT
-	db FUTURE_SIGHT
-	db PERISH_SONG
-	db SUPERSONIC
-	db LIGHT_SCREEN
-	db AMNESIA
-	db CALM_MIND
-	db AQUA_JET
-	db $ff
-
-SudowoodoEggMoves:
-	db DEFENSE_CURL
-	db EXPLOSION
-	db $ff
-
 HoppipEggMoves:
 	db ENCORE
 	db SEED_BOMB
@@ -738,11 +709,6 @@ MisdreavusEggMoves:
 	db DESTINY_BOND
 	db NASTY_PLOT
 	db SCREECH
-	db $ff
-
-WobbuffetEggMoves:
-	db CHARM
-	db ENCORE
 	db $ff
 
 GirafarigEggMoves:
@@ -891,14 +857,6 @@ DelibirdEggMoves:
 	db SPLASH
 	db $ff
 
-MantineEggMoves:
-	db HAZE
-	db MIRROR_COAT
-	db SPLASH
-	db HYDRO_PUMP
-	db GUNK_SHOT
-	db $ff
-
 SkarmoryEggMoves:
 	db DRILL_PECK
 	db PURSUIT
@@ -976,6 +934,47 @@ LarvitarEggMoves:
 	db OUTRAGE
 	db ANCIENTPOWER
 	db IRON_HEAD
+	db $ff
+
+AzurillEggMoves:
+	db BELLY_DRUM
+	db FORESIGHT
+	db FUTURE_SIGHT
+	db PERISH_SONG
+	db SUPERSONIC
+	db LIGHT_SCREEN
+	db AMNESIA
+	db CALM_MIND
+	db $ff
+
+WynautEggMoves:
+	db CHARM
+	db ENCORE
+	db $ff
+
+BonslyEggMoves:
+	db DEFENSE_CURL
+	db EXPLOSION
+	db $ff
+
+MimeJrEggMoves:
+	db CONFUSE_RAY
+	db FUTURE_SIGHT
+	db HYPNOSIS
+	db NASTY_PLOT
+	db TRICK
+	db $ff
+
+HappinyEggMoves:
+	db HEAL_BELL
+	db $ff
+
+MantykeEggMoves:
+	db HAZE
+	db MIRROR_COAT
+	db SPLASH
+	db HYDRO_PUMP
+	db GUNK_SHOT
 	db $ff
 
 MunchlaxEggMoves:

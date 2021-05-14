@@ -184,7 +184,7 @@ EvolutionMoves::
 	db PETAL_DANCE  ; BELLOSSOM
 	db NO_MOVE      ; MARILL
 	db NO_MOVE      ; AZUMARILL
-	db NO_MOVE      ; SUDOWOODO
+	db STONE_EDGE   ; SUDOWOODO
 	db GIGA_DRAIN   ; POLITOED
 	db NO_MOVE      ; HOPPIP
 	db NO_MOVE      ; SKIPLOOM
@@ -205,7 +205,7 @@ endc
 	db NO_MOVE      ; SLOWKING
 	db NO_MOVE      ; MISDREAVUS
 	db NO_MOVE      ; UNOWN
-	db NO_MOVE      ; WOBBUFFET
+	db RECOVER      ; WOBBUFFET
 	db NO_MOVE      ; GIRAFARIG
 	db NO_MOVE      ; PINECO
 	db FLASH_CANNON ; FORRETRESS
@@ -255,14 +255,22 @@ endc
 	db NO_MOVE      ; LUGIA
 	db NO_MOVE      ; HO_OH
 	db NO_MOVE      ; CELEBI
-	db DAZZLINGLEAM ; MISMAGIUS
-	db NO_MOVE      ; HONCHKROW
-	db NO_MOVE      ; MUNCHLAX
+	db NO_MOVE      ; AZURILL
+	db NO_MOVE      ; WYNAUT
+	db NO_MOVE      ; AMBIPOM
 	assert_table_length NUM_POKEMON
 	db NO_MOVE      ; EGG
 	db NO_MOVE      ; index $100
+	db DAZZLINGLEAM ; MISMAGIUS
+	db NO_MOVE      ; HONCHKROW
+	db NO_MOVE      ; BONSLY
+	db NO_MOVE      ; MIME_JR_
+	db NO_MOVE      ; HAPPINY
+	db NO_MOVE      ; MUNCHLAX
+	db NO_MOVE      ; MANTYKE
 	db NO_MOVE      ; WEAVILE
 	db TRI_ATTACK   ; MAGNEZONE
+	db NO_MOVE      ; LICKILICKY
 	db OUTRAGE      ; RHYPERIOR
 	db NO_MOVE      ; TANGROWTH
 	db CLOSE_COMBAT ; ELECTIVIRE
@@ -275,6 +283,10 @@ endc
 	db NO_MOVE      ; MAMOSWINE
 	db NASTY_PLOT   ; PORYGON_Z
 	db DISARM_VOICE ; SYLVEON
+	db IRON_HEAD    ; PERRSERKER
+	db NO_MOVE      ; CURSOLA
+	db COUNTER      ; SIRFETCH_D
+	db NO_MOVE      ; MR_RIME
 	assert_table_length NUM_SPECIES
 
 	db BITE         ; GYARADOS, GYARADOS_RED_FORM

@@ -64,6 +64,7 @@ NewPokedexOrder:
 	dp HAUNTER
 	dp GENGAR
 	dp UNOWN
+	dp WYNAUT
 	dp WOBBUFFET
 	dp ONIX
 	dp STEELIX
@@ -110,6 +111,7 @@ NewPokedexOrder:
 	dp SUNFLORA
 	dp EXEGGCUTE
 	dp EXEGGUTOR
+	dp BONSLY
 	dp SUDOWOODO
 	dp VENONAT
 	dp VENOMOTH
@@ -127,6 +129,7 @@ NewPokedexOrder:
 	dp VOLTORB
 	dp ELECTRODE
 	dp AIPOM
+	dp AMBIPOM
 	dp SNUBBULL
 	dp GRANBULL
 	dp VULPIX
@@ -134,6 +137,7 @@ NewPokedexOrder:
 	dp GROWLITHE
 	dp ARCANINE
 	dp STANTLER
+	dp AZURILL
 	dp MARILL
 	dp AZUMARILL
 	dp DIGLETT
@@ -142,6 +146,7 @@ NewPokedexOrder:
 	dp PRIMEAPE
 	dp MEOWTH
 	dp PERSIAN
+	dp PERRSERKER
 	dp PSYDUCK
 	dp GOLDUCK
 	dp MACHOP
@@ -162,9 +167,12 @@ NewPokedexOrder:
 	dp ELEKID
 	dp ELECTABUZZ
 	dp ELECTIVIRE
+	dp MIME_JR_
 	dp MR__MIME
+	dp MR__RIME
 	dp SMEARGLE
 	dp FARFETCH_D
+	dp SIRFETCH_D
 	dp NATU
 	dp XATU
 	dp QWILFISH
@@ -178,6 +186,7 @@ NewPokedexOrder:
 	dp SHELLDER
 	dp CLOYSTER
 	dp CORSOLA
+	dp CURSOLA
 	dp REMORAID
 	dp OCTILLERY
 	dp CHINCHOU
@@ -185,6 +194,7 @@ NewPokedexOrder:
 	dp SEEL
 	dp DEWGONG
 	dp LICKITUNG
+	dp LICKILICKY
 	dp TANGELA
 	dp TANGROWTH
 	dp EEVEE
@@ -210,6 +220,7 @@ NewPokedexOrder:
 	dp PHANPY
 	dp DONPHAN
 	dp MANTINE
+	dp MANTYKE
 	dp SKARMORY
 	dp DODUO
 	dp DODRIO
@@ -234,6 +245,7 @@ NewPokedexOrder:
 	dp PORYGON
 	dp PORYGON2
 	dp PORYGON_Z
+	dp HAPPINY
 	dp CHANSEY
 	dp BLISSEY
 	dp LAPRAS

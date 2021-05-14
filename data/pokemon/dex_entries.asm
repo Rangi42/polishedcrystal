@@ -1005,6 +1005,14 @@ SECTION "CelebiPokedexEntry", ROMX
 CelebiPokedexEntry::
 INCLUDE "data/pokemon/dex_entries/251.asm"
 
+SECTION "AzurillPokedexEntry", ROMX
+AzurillPokedexEntry::
+INCLUDE "data/pokemon/dex_entries/298.asm"
+
+SECTION "WynautPokedexEntry", ROMX
+WynautPokedexEntry::
+INCLUDE "data/pokemon/dex_entries/360.asm"
+
 SECTION "MismagiusPokedexEntry", ROMX
 MismagiusPokedexEntry::
 INCLUDE "data/pokemon/dex_entries/429.asm"
@@ -1013,9 +1021,25 @@ SECTION "HonchkrowPokedexEntry", ROMX
 HonchkrowPokedexEntry::
 INCLUDE "data/pokemon/dex_entries/430.asm"
 
+SECTION "BonslyPokedexEntry", ROMX
+BonslyPokedexEntry::
+INCLUDE "data/pokemon/dex_entries/438.asm"
+
+SECTION "MimeJrPokedexEntry", ROMX
+MimeJrPokedexEntry::
+INCLUDE "data/pokemon/dex_entries/439.asm"
+
+SECTION "HappinyPokedexEntry", ROMX
+HappinyPokedexEntry::
+INCLUDE "data/pokemon/dex_entries/440.asm"
+
 SECTION "MunchlaxPokedexEntry", ROMX
 MunchlaxPokedexEntry::
 INCLUDE "data/pokemon/dex_entries/446.asm"
+
+SECTION "MantykePokedexEntry", ROMX
+MantykePokedexEntry::
+INCLUDE "data/pokemon/dex_entries/458.asm"
 
 SECTION "WeavilePokedexEntry", ROMX
 WeavilePokedexEntry::
@@ -1024,6 +1048,10 @@ INCLUDE "data/pokemon/dex_entries/461.asm"
 SECTION "MagnezonePokedexEntry", ROMX
 MagnezonePokedexEntry::
 INCLUDE "data/pokemon/dex_entries/462.asm"
+
+SECTION "LickilickyPokedexEntry", ROMX
+LickilickyPokedexEntry::
+INCLUDE "data/pokemon/dex_entries/463.asm"
 
 SECTION "RhyperiorPokedexEntry", ROMX
 RhyperiorPokedexEntry::
@@ -1072,3 +1100,19 @@ INCLUDE "data/pokemon/dex_entries/474.asm"
 SECTION "SylveonPokedexEntry", ROMX
 SylveonPokedexEntry::
 INCLUDE "data/pokemon/dex_entries/700.asm"
+
+SECTION "PerrserkerPokedexEntry", ROMX
+PerrserkerPokedexEntry::
+INCLUDE "data/pokemon/dex_entries/863.asm"
+
+SECTION "CursolaPokedexEntry", ROMX
+CursolaPokedexEntry::
+INCLUDE "data/pokemon/dex_entries/864.asm"
+
+SECTION "SirfetchDPokedexEntry", ROMX
+SirfetchDPokedexEntry::
+INCLUDE "data/pokemon/dex_entries/865.asm"
+
+SECTION "MrRimePokedexEntry", ROMX
+MrRimePokedexEntry::
+INCLUDE "data/pokemon/dex_entries/866.asm"

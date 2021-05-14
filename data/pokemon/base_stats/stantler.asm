@@ -1,7 +1,11 @@
 	db  73,  95,  62,  85,  65,  85 ; 465 BST
 	;   hp  atk  def  spd  sat  sdf
 
+if DEF(FAITHFUL)
 	db NORMAL, NORMAL ; type
+else
+	db NORMAL, PSYCHIC ; type
+endc
 	db 45 ; catch rate
 	db 165 ; base exp
 	db NO_ITEM, NO_ITEM ; held items

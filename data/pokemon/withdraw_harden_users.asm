@@ -34,4 +34,5 @@ HardenUsers:
 	dp PUPITAR
 	dp TYRANITAR
 	dp GLISCOR
+	dp CURSOLA
 	dw 0

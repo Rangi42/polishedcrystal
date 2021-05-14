@@ -6,18 +6,21 @@ AlphabeticalPokedexOrder:
 	dp AERODACTYL
 	dp AIPOM
 	dp ALAKAZAM
+	dp AMBIPOM
 	dp AMPHAROS
 	dp ARBOK
 	dp ARCANINE
 	dp ARIADOS
 	dp ARTICUNO
 	dp AZUMARILL
+	dp AZURILL
 	dp BAYLEEF
 	dp BEEDRILL
 	dp BELLOSSOM
 	dp BELLSPROUT
 	dp BLASTOISE
 	dp BLISSEY
+	dp BONSLY
 	dp BULBASAUR
 	dp BUTTERFREE
 	dp CATERPIE
@@ -36,6 +39,7 @@ AlphabeticalPokedexOrder:
 	dp CROBAT
 	dp CROCONAW
 	dp CUBONE
+	dp CURSOLA
 	dp CYNDAQUIL
 	dp DELIBIRD
 	dp DEWGONG
@@ -84,6 +88,7 @@ AlphabeticalPokedexOrder:
 	dp GRIMER
 	dp GROWLITHE
 	dp GYARADOS
+	dp HAPPINY
 	dp HAUNTER
 	dp HERACROSS
 	dp HITMONCHAN
@@ -118,6 +123,7 @@ AlphabeticalPokedexOrder:
 	dp LEAFEON
 	dp LEDIAN
 	dp LEDYBA
+	dp LICKILICKY
 	dp LICKITUNG
 	dp LUGIA
 	dp MACHAMP
@@ -134,6 +140,7 @@ AlphabeticalPokedexOrder:
 	dp MAMOSWINE
 	dp MANKEY
 	dp MANTINE
+	dp MANTYKE
 	dp MAREEP
 	dp MARILL
 	dp MAROWAK
@@ -143,10 +150,12 @@ AlphabeticalPokedexOrder:
 	dp MEW
 	dp MEWTWO
 	dp MILTANK
+	dp MIME_JR_
 	dp MISDREAVUS
 	dp MISMAGIUS
 	dp MOLTRES
 	dp MR__MIME
+	dp MR__RIME
 	dp MUK
 	dp MUNCHLAX
 	dp MURKROW
@@ -166,6 +175,7 @@ AlphabeticalPokedexOrder:
 	dp ONIX
 	dp PARAS
 	dp PARASECT
+	dp PERRSERKER
 	dp PERSIAN
 	dp PHANPY
 	dp PICHU
@@ -209,6 +219,7 @@ AlphabeticalPokedexOrder:
 	dp SENTRET
 	dp SHELLDER
 	dp SHUCKLE
+	dp SIRFETCH_D
 	dp SKARMORY
 	dp SKIPLOOM
 	dp SLOWBRO
@@ -265,6 +276,7 @@ AlphabeticalPokedexOrder:
 	dp WIGGLYTUFF
 	dp WOBBUFFET
 	dp WOOPER
+	dp WYNAUT
 	dp XATU
 	dp YANMA
 	dp YANMEGA

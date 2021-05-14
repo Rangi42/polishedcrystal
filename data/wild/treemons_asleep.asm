@@ -7,7 +7,7 @@ AsleepTreeMonsNite:
 	dp WEEDLE
 	dp KAKUNA
 	dp BEEDRILL
-	dp PIDGEY
+	dp SPEAROW
 	dp EKANS
 	dp EXEGGCUTE
 	dp LEDYBA
