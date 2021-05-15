@@ -83,7 +83,7 @@ IconPointers:
 	dba SlowbroIcon
 	dba MagnemiteIcon
 	dba MagnetonIcon
-	dba FarfetchdIcon
+	dba FarfetchDPlainIcon
 	dba DoduoIcon
 	dba DodrioIcon
 	dba SeelIcon
@@ -122,7 +122,7 @@ IconPointers:
 	dba SeakingIcon
 	dba StaryuIcon
 	dba StarmieIcon
-	dba MrMimeIcon
+	dba MrMimePlainIcon
 	dba ScytherIcon
 	dba JynxIcon
 	dba ElectabuzzIcon
@@ -222,7 +222,7 @@ IconPointers:
 	dba MagcargoIcon
 	dba SwinubIcon
 	dba PiloswineIcon
-	dba CorsolaIcon
+	dba CorsolaPlainIcon
 	dba RemoraidIcon
 	dba OctilleryIcon
 	dba DelibirdIcon
@@ -252,13 +252,22 @@ IconPointers:
 	dba LugiaIcon
 	dba HoOhIcon
 	dba CelebiIcon
-	dba MismagiusIcon
-	dba HonchkrowIcon
-	dba MunchlaxIcon
+	dba AzurillIcon
+	dba WynautIcon
+	dba AmbipomIcon
+	assert_table_length NUM_POKEMON + 1
 	dba EggIcon
 	dba NullIcon
+	dba MismagiusIcon
+	dba HonchkrowIcon
+	dba BonslyIcon
+	dba MimeJrIcon
+	dba HappinyIcon
+	dba MunchlaxIcon
+	dba MantykeIcon
 	dba WeavileIcon
 	dba MagnezoneIcon
+	dba LickilickyIcon
 	dba RhyperiorIcon
 	dba TangrowthIcon
 	dba ElectivireIcon
@@ -271,6 +280,11 @@ IconPointers:
 	dba MamoswineIcon
 	dba PorygonZIcon
 	dba SylveonIcon
+	dba PerrserkerIcon
+	dba CursolaIcon
+	dba SirfetchDIcon
+	dba MrRimeIcon
+	assert_table_length NUM_SPECIES + 1
 
 	dba UnownBIcon
 	dba UnownCIcon
@@ -321,6 +335,7 @@ endr
 	dba MewtwoArmoredIcon
 	dba RattataIcon ; TODO
 	dba RaticateIcon ; TODO
+	dba RaichuIcon ; TODO
 	dba SandshrewIcon ; TODO
 	dba SandslashIcon ; TODO
 	dba VulpixIcon ; TODO
@@ -334,17 +349,19 @@ endr
 	dba GolemIcon ; TODO
 	dba GrimerIcon ; TODO
 	dba MukIcon ; TODO
-	dba RaichuIcon ; TODO
 	dba ExeggutorAlolanIcon
 	dba MarowakIcon ; TODO
 	dba PonytaIcon ; TODO
 	dba RapidashIcon ; TODO
+	dba FarfetchDPlainIcon ; TODO
 	dba SlowpokeIcon ; TODO
 	dba SlowbroIcon ; TODO
-	dba SlowkingIcon ; TODO
 	dba WeezingIcon ; TODO
+	dba MrMimePlainIcon ; TODO
 	dba ArticunoIcon ; TODO
 	dba ZapdosIcon ; TODO
 	dba MoltresIcon ; TODO
+	dba SlowkingIcon ; TODO
+	dba CorsolaPlainIcon ; TODO
 
 	assert_table_length NUM_UNIQUE_POKEMON + 1

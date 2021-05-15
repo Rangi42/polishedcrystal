@@ -178,6 +178,7 @@ DiglettAlolanEggMoves:
 
 MeowthPlainEggMoves:
 MeowthAlolanEggMoves:
+MeowthGalarianEggMoves:
 	db CHARM
 	db HYPNOSIS
 	db AMNESIA
@@ -304,7 +305,9 @@ SlowpokeGalarianEggMoves:
 	db ZEN_HEADBUTT
 	db $ff
 
-FarfetchDEggMoves:
+FarfetchDGalarianMoves:
+	db COUNTER
+FarfetchDPlainEggMoves:
 	db FORESIGHT
 	db GUST
 	db QUICK_ATTACK
@@ -822,7 +825,8 @@ SwinubEggMoves:
 	db ICICLE_SPEAR
 	db $ff
 
-CorsolaEggMoves:
+CorsolaPlainEggMoves:
+CorsolaGalarianEggMoves:
 	db BARRIER
 	db CONFUSE_RAY
 	db HAZE

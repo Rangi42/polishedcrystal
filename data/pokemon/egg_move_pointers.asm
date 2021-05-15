@@ -82,7 +82,7 @@ EggMovePointers::
 	dw NoEggMoves
 	dw NoEggMoves
 	dw NoEggMoves
-	dw FarfetchDEggMoves
+	dw FarfetchDPlainEggMoves
 	dw DoduoEggMoves
 	dw NoEggMoves
 	dw SeelEggMoves
@@ -221,7 +221,7 @@ EggMovePointers::
 	dw NoEggMoves
 	dw SwinubEggMoves
 	dw NoEggMoves
-	dw CorsolaEggMoves
+	dw CorsolaPlainEggMoves
 	dw RemoraidEggMoves
 	dw NoEggMoves
 	dw DelibirdEggMoves
@@ -289,6 +289,7 @@ EggMovePointers::
 	dw NoEggMoves
 	dw RattataAlolanEggMoves
 	dw NoEggMoves
+	dw NoEggMoves
 	dw SandshrewAlolanEggMoves
 	dw NoEggMoves
 	dw VulpixAlolanEggMoves
@@ -304,14 +305,17 @@ EggMovePointers::
 	dw NoEggMoves
 	dw NoEggMoves
 	dw NoEggMoves
-	dw NoEggMoves
+	dw MeowthGalarianEggMoves
 	dw PonytaGalarianEggMoves
 	dw NoEggMoves
 	dw SlowpokeGalarianEggMoves
 	dw NoEggMoves
+	dw FarfetchDGalarianEggMoves
 	dw NoEggMoves
 	dw NoEggMoves
 	dw NoEggMoves
 	dw NoEggMoves
 	dw NoEggMoves
+	dw NoEggMoves
+	dw CorsolaGalarianEggMoves
 	assert_table_length NUM_EXT_POKEMON

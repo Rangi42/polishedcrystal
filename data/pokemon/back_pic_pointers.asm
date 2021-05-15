@@ -82,7 +82,7 @@ BackPicPointers::
 	dba SlowbroPlainBackpic
 	dba MagnemiteBackpic
 	dba MagnetonBackpic
-	dba FarfetchDBackpic
+	dba FarfetchDPlainBackpic
 	dba DoduoBackpic
 	dba DodrioBackpic
 	dba SeelBackpic
@@ -121,7 +121,7 @@ BackPicPointers::
 	dba SeakingBackpic
 	dba StaryuBackpic
 	dba StarmieBackpic
-	dba MrMimeBackpic
+	dba MrMimePlainBackpic
 	dba ScytherBackpic
 	dba JynxBackpic
 	dba ElectabuzzBackpic
@@ -221,7 +221,7 @@ BackPicPointers::
 	dba MagcargoBackpic
 	dba SwinubBackpic
 	dba PiloswineBackpic
-	dba CorsolaBackpic
+	dba CorsolaPlainBackpic
 	dba RemoraidBackpic
 	dba OctilleryBackpic
 	dba DelibirdBackpic
@@ -251,14 +251,22 @@ BackPicPointers::
 	dba LugiaBackpic
 	dba HoOhBackpic
 	dba CelebiBackpic
-	dba MismagiusBackpic
-	dba HonchkrowBackpic
-	dba MunchlaxBackpic
+	dba AzurillBackpic
+	dba WynautBackpic
+	dba AmbipomBackpic
 	assert_table_length NUM_POKEMON
 	dba EggPic
 	dba EggPic
+	dba MismagiusBackpic
+	dba HonchkrowBackpic
+	dba BonslyBackpic
+	dba MimeJrBackpic
+	dba HappinyBackpic
+	dba MunchlaxBackpic
+	dba MantykeBackpic
 	dba WeavileBackpic
 	dba MagnezoneBackpic
+	dba LickilickyBackpic
 	dba RhyperiorBackpic
 	dba TangrowthBackpic
 	dba ElectivireBackpic
@@ -271,6 +279,10 @@ BackPicPointers::
 	dba MamoswineBackpic
 	dba PorygonZBackpic
 	dba SylveonBackpic
+	dba PerrserkerBackpic
+	dba CursolaBackpic
+	dba SirfetchDBackpic
+	dba MrRimeBackpic
 	assert_table_length NUM_SPECIES
 
 	dba UnownBBackpic
@@ -334,6 +346,7 @@ BackPicPointers::
 	dba MewtwoArmoredBackpic
 	dba RattataAlolanBackpic
 	dba RaticateAlolanBackpic
+	dba RaichuAlolanBackpic
 	dba SandshrewAlolanBackpic
 	dba SandslashAlolanBackpic
 	dba VulpixAlolanBackpic
@@ -347,17 +360,19 @@ BackPicPointers::
 	dba GolemAlolanBackpic
 	dba GrimerAlolanBackpic
 	dba MukAlolanBackpic
-	dba RaichuAlolanBackpic
 	dba ExeggutorAlolanBackpic
 	dba MarowakAlolanBackpic
+	dba MeowthGalarianBackpic
 	dba PonytaGalarianBackpic
 	dba RapidashGalarianBackpic
 	dba SlowpokeGalarianBackpic
 	dba SlowbroGalarianBackpic
-	dba SlowkingGalarianBackpic
+	dba FarfetchDGalarianBackpic
 	dba WeezingGalarianBackpic
+	dba MrMimeGalarianBackpic
 	dba ArticunoGalarianBackpic
 	dba ZapdosGalarianBackpic
 	dba MoltresGalarianBackpic
-
+	dba SlowkingGalarianBackpic
+	dba CorsolaGalarianBackpic
 	assert_table_length NUM_UNIQUE_POKEMON

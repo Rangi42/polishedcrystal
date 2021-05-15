@@ -5937,6 +5937,8 @@ endc
 	db 70, GIGA_IMPACT ; Meteor Assault → similar move
 	db -1 ; no more level-up moves
 
+MrMimeGalarianEvosAttacks:
+	dbbp EVOLVE_LEVEL, 42, MR__RIME
 MrRimeEvosAttacks:
 	db -1 ; no more evolutions
 	db 1, RECOVER ; Slack Off → similar move

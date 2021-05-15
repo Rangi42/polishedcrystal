@@ -1,5 +1,5 @@
-FrontPicPointers::
-	table_width 3, FrontPicPointers
+FrontpicPointers::
+	table_width 3, FrontpicPointers
 	dba BulbasaurFrontpic
 	dba IvysaurFrontpic
 	dba VenusaurFrontpic
@@ -82,7 +82,7 @@ FrontPicPointers::
 	dba SlowbroPlainFrontpic
 	dba MagnemiteFrontpic
 	dba MagnetonFrontpic
-	dba FarfetchDFrontpic
+	dba FarfetchDPlainFrontpic
 	dba DoduoFrontpic
 	dba DodrioFrontpic
 	dba SeelFrontpic
@@ -121,7 +121,7 @@ FrontPicPointers::
 	dba SeakingFrontpic
 	dba StaryuFrontpic
 	dba StarmieFrontpic
-	dba MrMimeFrontpic
+	dba MrMimePlainFrontpic
 	dba ScytherFrontpic
 	dba JynxFrontpic
 	dba ElectabuzzFrontpic
@@ -221,7 +221,7 @@ FrontPicPointers::
 	dba MagcargoFrontpic
 	dba SwinubFrontpic
 	dba PiloswineFrontpic
-	dba CorsolaFrontpic
+	dba CorsolaPlainFrontpic
 	dba RemoraidFrontpic
 	dba OctilleryFrontpic
 	dba DelibirdFrontpic
@@ -251,14 +251,22 @@ FrontPicPointers::
 	dba LugiaFrontpic
 	dba HoOhFrontpic
 	dba CelebiFrontpic
-	dba MismagiusFrontpic
-	dba HonchkrowFrontpic
-	dba MunchlaxFrontpic
+	dba AzurillFrontpic
+	dba WynautFrontpic
+	dba AmbipomFrontpic
 	assert_table_length NUM_POKEMON
 	dba EggPic
 	dba EggPic
+	dba MismagiusFrontpic
+	dba HonchkrowFrontpic
+	dba BonslyFrontpic
+	dba MimeJrFrontpic
+	dba HappinyFrontpic
+	dba MunchlaxFrontpic
+	dba MantykeFrontpic
 	dba WeavileFrontpic
 	dba MagnezoneFrontpic
+	dba LickilickyFrontpic
 	dba RhyperiorFrontpic
 	dba TangrowthFrontpic
 	dba ElectivireFrontpic
@@ -271,6 +279,10 @@ FrontPicPointers::
 	dba MamoswineFrontpic
 	dba PorygonZFrontpic
 	dba SylveonFrontpic
+	dba PerrserkerFrontpic
+	dba CursolaFrontpic
+	dba SirfetchDFrontpic
+	dba MrRimeFrontpic
 	assert_table_length NUM_SPECIES
 
 	dba UnownBFrontpic
@@ -334,6 +346,7 @@ FrontPicPointers::
 	dba MewtwoArmoredFrontpic
 	dba RattataAlolanFrontpic
 	dba RaticateAlolanFrontpic
+	dba RaichuAlolanFrontpic
 	dba SandshrewAlolanFrontpic
 	dba SandslashAlolanFrontpic
 	dba VulpixAlolanFrontpic
@@ -347,17 +360,19 @@ FrontPicPointers::
 	dba GolemAlolanFrontpic
 	dba GrimerAlolanFrontpic
 	dba MukAlolanFrontpic
-	dba RaichuAlolanFrontpic
 	dba ExeggutorAlolanFrontpic
 	dba MarowakAlolanFrontpic
+	dba MeowthGalarianFrontpic
 	dba PonytaGalarianFrontpic
 	dba RapidashGalarianFrontpic
 	dba SlowpokeGalarianFrontpic
 	dba SlowbroGalarianFrontpic
-	dba SlowkingGalarianFrontpic
+	dba FarfetchDGalarianFrontpic
 	dba WeezingGalarianFrontpic
+	dba MrMimeGalarianFrontpic
 	dba ArticunoGalarianFrontpic
 	dba ZapdosGalarianFrontpic
 	dba MoltresGalarianFrontpic
-
+	dba SlowkingGalarianFrontpic
+	dba CorsolaGalarianFrontpic
 	assert_table_length NUM_UNIQUE_POKEMON

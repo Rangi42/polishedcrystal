@@ -253,14 +253,22 @@ ValidPokemonLevels: ; for Wonder Trade
 	db 255, 255 ; Lugia
 	db 255, 255 ; Ho-Oh
 	db 255, 255 ; Celebi
-	db  40, 100 ; Mismagius
-	db  40, 100 ; Honchkrow
-	db   1,  19 ; Munchlax
+	db   1,  19 ; Azurill
+	db   1,  19 ; Wynaut
+	db  35, 100 ; Ambipom
 	assert_table_length NUM_POKEMON + 1
 	db 255, 255 ; Egg
 	db 255, 255 ; Egg
+	db  40, 100 ; Mismagius
+	db  40, 100 ; Honchkrow
+	db   1,  19 ; Bonsly
+	db   1,  19 ; Mime Jr.
+	db   1,  19 ; Happiny
+	db   1,  19 ; Munchlax
+	db   1,  19 ; Mantyke
 	db  40, 100 ; Weavile
 	db  50, 100 ; Magnezone
+	db  35, 100 ; Lickilicky
 	db  55, 100 ; Rhyperior
 	db  39, 100 ; Tangrowth
 	db  47, 100 ; Electivire
@@ -273,4 +281,8 @@ ValidPokemonLevels: ; for Wonder Trade
 	db  45, 100 ; Mamoswine
 	db  40, 100 ; Porygon-Z
 	db  20, 100 ; Sylveon
+	db  28, 100 ; Perrserker
+	db  38, 100 ; Cursola
+	db  40, 100 ; Sirfetch'd
+	db  42, 100 ; Mr. Rime
 	assert_table_length NUM_SPECIES + 1

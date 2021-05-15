@@ -127,7 +127,7 @@ PokemonCries::
 	mon_cry CRY_CATERPIE,    $010,  $17f ; Seaking
 	mon_cry CRY_PARAS,       $002,  $0a0 ; Staryu
 	mon_cry CRY_PARAS,       $000,  $100 ; Starmie
-	mon_cry CRY_KRABBY,      $008,  $0c0 ; MrMime
+	mon_cry CRY_KRABBY,      $008,  $0c0 ; Mr.Mime
 	mon_cry CRY_CATERPIE,    $000,  $100 ; Scyther
 	mon_cry CRY_DROWZEE,     $0ff,  $17f ; Jynx
 	mon_cry CRY_VOLTORB,     $08f,  $17f ; Electabuzz
@@ -257,14 +257,22 @@ PokemonCries::
 	mon_cry CRY_TYPHLOSION,  $000,  $100 ; Lugia
 	mon_cry CRY_TYROGUE,     $000,  $180 ; HoOh
 	mon_cry CRY_ENTEI,       $14a,  $111 ; Celebi
-	mon_cry CRY_HOOTHOOT,    $130,  $0e8 ; Mismagius
-	mon_cry CRY_MARILL,     -$01f,  $180 ; Honchkrow
-	mon_cry CRY_GRIMER,      $055,  $081 ; Munchlax
+	mon_cry CRY_MARILL,      $11b,  $120 ; Azurill
+	mon_cry CRY_AMPHAROS,    $27b,  $144 ; Wynaut
+	mon_cry CRY_TYROGUE,    -$051,  $0e8 ; Ambipom
 	assert_table_length NUM_POKEMON
 	mon_cry CRY_NIDORAN_M,      0,     0 ; Egg
 	mon_cry CRY_NIDORAN_M,      0,     0 ; Index $100
+	mon_cry CRY_HOOTHOOT,    $130,  $0e8 ; Mismagius
+	mon_cry CRY_MARILL,     -$01f,  $180 ; Honchkrow
+	mon_cry CRY_BELLOSSOM,   $f40,  $180 ; Bonsly
+	mon_cry CRY_KRABBY,      $008,  $0c0 ; Mime Jr.
+	mon_cry CRY_PIDGEOTTO,   $00a,  $140 ; Happiny
+	mon_cry CRY_GRIMER,      $055,  $081 ; Munchlax
+	mon_cry CRY_MANTINE,    -$0be,  $0f0 ; Mantyke
 	mon_cry CRY_WOOPER,      $053,  $0af ; Weavile
 	mon_cry CRY_METAPOD,     $020,  $140 ; Magnezone
+	mon_cry CRY_SEEL,        $000,  $100 ; Lickilicky
 	mon_cry CRY_RHYDON,      $000,  $100 ; Rhyperior
 	mon_cry CRY_GOLEM,       $000,  $100 ; Tangrowth
 	mon_cry CRY_VOLTORB,     $08f,  $17f ; Electivire
@@ -277,4 +285,8 @@ PokemonCries::
 	mon_cry CRY_MAGCARGO,   -$109,  $100 ; Mamoswine
 	mon_cry CRY_GIRAFARIG,   $073,  $240 ; PorygonZ
 	mon_cry CRY_VENONAT,     $0b0,  $16f ; Sylveon
+	mon_cry CRY_CLEFAIRY,    $077,  $090 ; Perrserker
+	mon_cry CRY_MAGCARGO,    $0a1,  $0e8 ; Cursola
+	mon_cry CRY_FARFETCH_D,  $0dd,  $081 ; SirfetchD
+	mon_cry CRY_KRABBY,      $008,  $0c0 ; Mr.Rime
 	assert_table_length NUM_SPECIES

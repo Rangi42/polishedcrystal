@@ -422,20 +422,20 @@ FIRST_VARIANT_FORM_MON EQU const_value ; 14f
 ALOLAN_FORM EQU 2
 	const_skip ; 151 rattata
 	const_skip ; 152 raticate
-	const_skip ; 153 sandshrew
-	const_skip ; 154 sandslash
-	const_skip ; 155 vulpix
-	const_skip ; 156 ninetales
-	const_skip ; 157 diglett
-	const_skip ; 158 dugtrio
-	const_skip ; 159 meowth
-	const_skip ; 15a persian
-	const_skip ; 15b geodude
-	const_skip ; 15c graveler
-	const_skip ; 15d golem
-	const_skip ; 15e grimer
-	const_skip ; 15f muk
-	const_skip ; 160 raichu
+	const_skip ; 153 raichu
+	const_skip ; 154 sandshrew
+	const_skip ; 155 sandslash
+	const_skip ; 156 vulpix
+	const_skip ; 157 ninetales
+	const_skip ; 158 diglett
+	const_skip ; 159 dugtrio
+	const_skip ; 15a meowth
+	const_skip ; 15b persian
+	const_skip ; 15c geodude
+	const_skip ; 15d graveler
+	const_skip ; 15e golem
+	const_skip ; 15f grimer
+	const_skip ; 160 muk
 	const_skip ; 161 exeggutor
 	const_skip ; 162 marowak
 

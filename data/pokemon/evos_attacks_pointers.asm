@@ -86,7 +86,7 @@ EvosAttacksPointers::
 	dw SlowbroPlainEvosAttacks
 	dw MagnemiteEvosAttacks
 	dw MagnetonEvosAttacks
-	dw FarfetchDEvosAttacks
+	dw FarfetchDPlainEvosAttacks
 	dw DoduoEvosAttacks
 	dw DodrioEvosAttacks
 	dw SeelEvosAttacks
@@ -125,7 +125,7 @@ EvosAttacksPointers::
 	dw SeakingEvosAttacks
 	dw StaryuEvosAttacks
 	dw StarmieEvosAttacks
-	dw MrMimeEvosAttacks
+	dw MrMimePlainEvosAttacks
 	dw ScytherEvosAttacks
 	dw JynxEvosAttacks
 	dw ElectabuzzEvosAttacks
@@ -225,7 +225,7 @@ EvosAttacksPointers::
 	dw MagcargoEvosAttacks
 	dw SwinubEvosAttacks
 	dw PiloswineEvosAttacks
-	dw CorsolaEvosAttacks
+	dw CorsolaPlainEvosAttacks
 	dw RemoraidEvosAttacks
 	dw OctilleryEvosAttacks
 	dw DelibirdEvosAttacks
@@ -255,13 +255,22 @@ EvosAttacksPointers::
 	dw LugiaEvosAttacks
 	dw HoOhEvosAttacks
 	dw CelebiEvosAttacks
+	dw AzurillEvosAttacks
+	dw WynautEvosAttacks
+	dw AmbipomEvosAttacks
+	assert_table_length NUM_POKEMON
+	dw EggEvosAttacks
+	dw EggEvosAttacks
 	dw MismagiusEvosAttacks
 	dw HonchkrowEvosAttacks
+	dw BonslyEvosAttacks
+	dw MimeJrEvosAttacks
+	dw HappinyEvosAttacks
 	dw MunchlaxEvosAttacks
-	dw EggEvosAttacks
-	dw EggEvosAttacks
+	dw MantykeEvosAttacks
 	dw WeavileEvosAttacks
 	dw MagnezoneEvosAttacks
+	dw LickilickyEvosAttacks
 	dw RhyperiorEvosAttacks
 	dw TangrowthEvosAttacks
 	dw ElectivireEvosAttacks
@@ -274,11 +283,17 @@ EvosAttacksPointers::
 	dw MamoswineEvosAttacks
 	dw PorygonZEvosAttacks
 	dw SylveonEvosAttacks
+	dw PerrserkerEvosAttacks
+	dw CursolaEvosAttacks
+	dw SirfetchDEvosAttacks
+	dw MrRimeEvosAttacks
+	assert_table_length NUM_SPECIES
 
 	dw GyaradosEvosAttacks
 	dw MewtwoEvosAttacks
 	dw RattataAlolanEvosAttacks
 	dw RaticateAlolanEvosAttacks
+	dw RaichuAlolanEvosAttacks
 	dw SandshrewAlolanEvosAttacks
 	dw SandslashAlolanEvosAttacks
 	dw VulpixAlolanEvosAttacks
@@ -292,16 +307,19 @@ EvosAttacksPointers::
 	dw GolemAlolanEvosAttacks
 	dw GrimerAlolanEvosAttacks
 	dw MukAlolanEvosAttacks
-	dw RaichuAlolanEvosAttacks
 	dw ExeggutorAlolanEvosAttacks
 	dw MarowakAlolanEvosAttacks
+	dw MeowthGalarianEvosAttacks
 	dw PonytaGalarianEvosAttacks
 	dw RapidashGalarianEvosAttacks
 	dw SlowpokeGalarianEvosAttacks
 	dw SlowbroGalarianEvosAttacks
-	dw SlowkingGalarianEvosAttacks
+	dw FarfetchDGalarianEvosAttacks
 	dw WeezingGalarianEvosAttacks
+	dw MrMimeGalarianEvosAttacks
 	dw ArticunoGalarianEvosAttacks
 	dw ZapdosGalarianEvosAttacks
 	dw MoltresGalarianEvosAttacks
+	dw SlowkingGalarianEvosAttacks
+	dw CorsolaGalarianEvosAttacks
 	assert_table_length NUM_EXT_POKEMON

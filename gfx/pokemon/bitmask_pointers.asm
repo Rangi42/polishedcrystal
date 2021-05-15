@@ -82,7 +82,7 @@ BitmasksPointers:
 	dw SlowbroPlainBitmasks
 	dw MagnemiteBitmasks
 	dw MagnetonBitmasks
-	dw FarfetchDBitmasks
+	dw FarfetchDPlainBitmasks
 	dw DoduoBitmasks
 	dw DodrioBitmasks
 	dw SeelBitmasks
@@ -121,7 +121,7 @@ BitmasksPointers:
 	dw SeakingBitmasks
 	dw StaryuBitmasks
 	dw StarmieBitmasks
-	dw MrMimeBitmasks
+	dw MrMimePlainBitmasks
 	dw ScytherBitmasks
 	dw JynxBitmasks
 	dw ElectabuzzBitmasks
@@ -221,7 +221,7 @@ BitmasksPointers:
 	dw MagcargoBitmasks
 	dw SwinubBitmasks
 	dw PiloswineBitmasks
-	dw CorsolaBitmasks
+	dw CorsolaPlainBitmasks
 	dw RemoraidBitmasks
 	dw OctilleryBitmasks
 	dw DelibirdBitmasks
@@ -251,14 +251,22 @@ BitmasksPointers:
 	dw LugiaBitmasks
 	dw HoOhBitmasks
 	dw CelebiBitmasks
-	dw MismagiusBitmasks
-	dw HonchkrowBitmasks
-	dw MunchlaxBitmasks
+	dw AzurillBitmasks
+	dw WynautBitmasks
+	dw AmbipomBitmasks
 	assert_table_length NUM_POKEMON
 	dw EggBitmasks
 	dw EggBitmasks
+	dw MismagiusBitmasks
+	dw HonchkrowBitmasks
+	dw BonslyBitmasks
+	dw MimeJrBitmasks
+	dw HappinyBitmasks
+	dw MunchlaxBitmasks
+	dw MantykeBitmasks
 	dw WeavileBitmasks
 	dw MagnezoneBitmasks
+	dw LickilickyBitmasks
 	dw RhyperiorBitmasks
 	dw TangrowthBitmasks
 	dw ElectivireBitmasks
@@ -271,6 +279,10 @@ BitmasksPointers:
 	dw MamoswineBitmasks
 	dw PorygonZBitmasks
 	dw SylveonBitmasks
+	dw PerrserkerBitmasks
+	dw CursolaBitmasks
+	dw SirfetchDBitmasks
+	dw MrRimeBitmasks
 	assert_table_length NUM_SPECIES
 
 	dw UnownBBitmasks
@@ -334,6 +346,7 @@ BitmasksPointers:
 	dw MewtwoArmoredBitmasks
 	dw RattataAlolanBitmasks
 	dw RaticateAlolanBitmasks
+	dw RaichuAlolanBitmasks
 	dw SandshrewAlolanBitmasks
 	dw SandslashAlolanBitmasks
 	dw VulpixAlolanBitmasks
@@ -347,17 +360,20 @@ BitmasksPointers:
 	dw GolemAlolanBitmasks
 	dw GrimerAlolanBitmasks
 	dw MukAlolanBitmasks
-	dw RaichuAlolanBitmasks
 	dw ExeggutorAlolanBitmasks
 	dw MarowakAlolanBitmasks
+	dw MeowthGalarianBitmasks
 	dw PonytaGalarianBitmasks
 	dw RapidashGalarianBitmasks
 	dw SlowpokeGalarianBitmasks
 	dw SlowbroGalarianBitmasks
-	dw SlowkingGalarianBitmasks
+	dw FarfetchDGalarianBitmasks
 	dw WeezingGalarianBitmasks
+	dw MrMimeGalarianBitmasks
 	dw ArticunoGalarianBitmasks
 	dw ZapdosGalarianBitmasks
 	dw MoltresGalarianBitmasks
+	dw SlowkingGalarianBitmasks
+	dw CorsolaGalarianBitmasks
 
 	assert_table_length NUM_UNIQUE_POKEMON

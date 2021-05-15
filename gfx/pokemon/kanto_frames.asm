@@ -62,7 +62,6 @@ TentacoolFrames:  INCLUDE "gfx/pokemon/tentacool/frames.asm"
 TentacruelFrames: INCLUDE "gfx/pokemon/tentacruel/frames.asm"
 MagnemiteFrames:  INCLUDE "gfx/pokemon/magnemite/frames.asm"
 MagnetonFrames:   INCLUDE "gfx/pokemon/magneton/frames.asm"
-FarfetchDFrames:  INCLUDE "gfx/pokemon/farfetch_d/frames.asm"
 DoduoFrames:      INCLUDE "gfx/pokemon/doduo/frames.asm"
 DodrioFrames:     INCLUDE "gfx/pokemon/dodrio/frames.asm"
 SeelFrames:       INCLUDE "gfx/pokemon/seel/frames.asm"
@@ -96,7 +95,6 @@ GoldeenFrames:    INCLUDE "gfx/pokemon/goldeen/frames.asm"
 SeakingFrames:    INCLUDE "gfx/pokemon/seaking/frames.asm"
 StaryuFrames:     INCLUDE "gfx/pokemon/staryu/frames.asm"
 StarmieFrames:    INCLUDE "gfx/pokemon/starmie/frames.asm"
-MrMimeFrames:     INCLUDE "gfx/pokemon/mr__mime/frames.asm"
 ScytherFrames:    INCLUDE "gfx/pokemon/scyther/frames.asm"
 JynxFrames:       INCLUDE "gfx/pokemon/jynx/frames.asm"
 ElectabuzzFrames: INCLUDE "gfx/pokemon/electabuzz/frames.asm"
@@ -163,6 +161,9 @@ RattataAlolanFrames: INCLUDE "gfx/pokemon/rattata_alolan/frames.asm"
 RaticatePlainFrames:  INCLUDE "gfx/pokemon/raticate_plain/frames.asm"
 RaticateAlolanFrames: INCLUDE "gfx/pokemon/raticate_alolan/frames.asm"
 
+RaichuPlainFrames:  INCLUDE "gfx/pokemon/raichu_plain/frames.asm"
+RaichuAlolanFrames: INCLUDE "gfx/pokemon/raichu_alolan/frames.asm"
+
 SandshrewPlainFrames:  INCLUDE "gfx/pokemon/sandshrew_plain/frames.asm"
 SandshrewAlolanFrames: INCLUDE "gfx/pokemon/sandshrew_alolan/frames.asm"
 
@@ -181,8 +182,9 @@ DiglettAlolanFrames: INCLUDE "gfx/pokemon/diglett_alolan/frames.asm"
 DugtrioPlainFrames:  INCLUDE "gfx/pokemon/dugtrio_plain/frames.asm"
 DugtrioAlolanFrames: INCLUDE "gfx/pokemon/dugtrio_alolan/frames.asm"
 
-MeowthPlainFrames:  INCLUDE "gfx/pokemon/meowth_plain/frames.asm"
-MeowthAlolanFrames: INCLUDE "gfx/pokemon/meowth_alolan/frames.asm"
+MeowthPlainFrames:    INCLUDE "gfx/pokemon/meowth_plain/frames.asm"
+MeowthAlolanFrames:   INCLUDE "gfx/pokemon/meowth_alolan/frames.asm"
+MeowthGalarianFrames: INCLUDE "gfx/pokemon/meowth_galarian/frames.asm"
 
 PersianPlainFrames:  INCLUDE "gfx/pokemon/persian_plain/frames.asm"
 PersianAlolanFrames: INCLUDE "gfx/pokemon/persian_alolan/frames.asm"
@@ -202,9 +204,6 @@ GrimerAlolanFrames: INCLUDE "gfx/pokemon/grimer_alolan/frames.asm"
 MukPlainFrames:  INCLUDE "gfx/pokemon/muk_plain/frames.asm"
 MukAlolanFrames: INCLUDE "gfx/pokemon/muk_alolan/frames.asm"
 
-RaichuPlainFrames:  INCLUDE "gfx/pokemon/raichu_plain/frames.asm"
-RaichuAlolanFrames: INCLUDE "gfx/pokemon/raichu_alolan/frames.asm"
-
 ExeggutorPlainFrames:  INCLUDE "gfx/pokemon/exeggutor_plain/frames.asm"
 ExeggutorAlolanFrames: INCLUDE "gfx/pokemon/exeggutor_alolan/frames.asm"
 
@@ -223,8 +222,14 @@ SlowpokeGalarianFrames: INCLUDE "gfx/pokemon/slowpoke_galarian/frames.asm"
 SlowbroPlainFrames:    INCLUDE "gfx/pokemon/slowbro_plain/frames.asm"
 SlowbroGalarianFrames: INCLUDE "gfx/pokemon/slowbro_galarian/frames.asm"
 
+FarfetchDPlainFrames:    INCLUDE "gfx/pokemon/farfetch_d_plain/frames.asm"
+FarfetchDGalarianFrames: INCLUDE "gfx/pokemon/farfetch_d_galarian/frames.asm"
+
 WeezingPlainFrames:    INCLUDE "gfx/pokemon/weezing_plain/frames.asm"
 WeezingGalarianFrames: INCLUDE "gfx/pokemon/weezing_galarian/frames.asm"
+
+MrMimePlainFrames:    INCLUDE "gfx/pokemon/mr__mime_plain/frames.asm"
+MrMimeGalarianFrames: INCLUDE "gfx/pokemon/mr__mime_galarian/frames.asm"
 
 ArticunoPlainFrames:    INCLUDE "gfx/pokemon/articuno_plain/frames.asm"
 ArticunoGalarianFrames: INCLUDE "gfx/pokemon/articuno_galarian/frames.asm"

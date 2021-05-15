@@ -82,7 +82,7 @@ FramesPointers:
 	dw SlowbroPlainFrames
 	dw MagnemiteFrames
 	dw MagnetonFrames
-	dw FarfetchDFrames
+	dw FarfetchDPlainFrames
 	dw DoduoFrames
 	dw DodrioFrames
 	dw SeelFrames
@@ -121,7 +121,7 @@ FramesPointers:
 	dw SeakingFrames
 	dw StaryuFrames
 	dw StarmieFrames
-	dw MrMimeFrames
+	dw MrMimePlainFrames
 	dw ScytherFrames
 	dw JynxFrames
 	dw ElectabuzzFrames
@@ -221,7 +221,7 @@ FramesPointers:
 	dw MagcargoFrames
 	dw SwinubFrames
 	dw PiloswineFrames
-	dw CorsolaFrames
+	dw CorsolaPlainFrames
 	dw RemoraidFrames
 	dw OctilleryFrames
 	dw DelibirdFrames
@@ -251,14 +251,22 @@ FramesPointers:
 	dw LugiaFrames
 	dw HoOhFrames
 	dw CelebiFrames
-	dw MismagiusFrames
-	dw HonchkrowFrames
-	dw MunchlaxFrames
+	dw AzurillFrames
+	dw WynautFrames
+	dw AmbipomFrames
 	assert_table_length NUM_POKEMON
 	dw EggFrames
 	dw EggFrames
+	dw MismagiusFrames
+	dw HonchkrowFrames
+	dw BonslyFrames
+	dw MimeJrFrames
+	dw HappinyFrames
+	dw MunchlaxFrames
+	dw MantykeFrames
 	dw WeavileFrames
 	dw MagnezoneFrames
+	dw LickilickyFrames
 	dw RhyperiorFrames
 	dw TangrowthFrames
 	dw ElectivireFrames
@@ -271,6 +279,10 @@ FramesPointers:
 	dw MamoswineFrames
 	dw PorygonZFrames
 	dw SylveonFrames
+	dw PerrserkerFrames
+	dw CursolaFrames
+	dw SirfetchDFrames
+	dw MrRimeFrames
 	assert_table_length NUM_SPECIES
 
 	dw UnownBFrames
@@ -334,6 +346,7 @@ FramesPointers:
 	dw MewtwoArmoredFrames
 	dw RattataAlolanFrames
 	dw RaticateAlolanFrames
+	dw RaichuAlolanFrames
 	dw SandshrewAlolanFrames
 	dw SandslashAlolanFrames
 	dw VulpixAlolanFrames
@@ -347,17 +360,20 @@ FramesPointers:
 	dw GolemAlolanFrames
 	dw GrimerAlolanFrames
 	dw MukAlolanFrames
-	dw RaichuAlolanFrames
 	dw ExeggutorAlolanFrames
 	dw MarowakAlolanFrames
+	dw MeowthGalarianFrames
 	dw PonytaGalarianFrames
 	dw RapidashGalarianFrames
 	dw SlowpokeGalarianFrames
 	dw SlowbroGalarianFrames
-	dw SlowkingGalarianFrames
+	dw FarfetchDGalarianFrames
 	dw WeezingGalarianFrames
+	dw MrMimeGalarianFrames
 	dw ArticunoGalarianFrames
 	dw ZapdosGalarianFrames
 	dw MoltresGalarianFrames
+	dw SlowkingGalarianFrames
+	dw CorsolaGalarianFrames
 
 	assert_table_length NUM_UNIQUE_POKEMON

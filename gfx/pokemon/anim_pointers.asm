@@ -82,7 +82,7 @@ AnimationPointers:
 	dw SlowbroPlainAnimation
 	dw MagnemiteAnimation
 	dw MagnetonAnimation
-	dw FarfetchDAnimation
+	dw FarfetchDPlainAnimation
 	dw DoduoAnimation
 	dw DodrioAnimation
 	dw SeelAnimation
@@ -121,7 +121,7 @@ AnimationPointers:
 	dw SeakingAnimation
 	dw StaryuAnimation
 	dw StarmieAnimation
-	dw MrMimeAnimation
+	dw MrMimePlainAnimation
 	dw ScytherAnimation
 	dw JynxAnimation
 	dw ElectabuzzAnimation
@@ -221,7 +221,7 @@ AnimationPointers:
 	dw MagcargoAnimation
 	dw SwinubAnimation
 	dw PiloswineAnimation
-	dw CorsolaAnimation
+	dw CorsolaPlainAnimation
 	dw RemoraidAnimation
 	dw OctilleryAnimation
 	dw DelibirdAnimation
@@ -251,14 +251,22 @@ AnimationPointers:
 	dw LugiaAnimation
 	dw HoOhAnimation
 	dw CelebiAnimation
-	dw MismagiusAnimation
-	dw HonchkrowAnimation
-	dw MunchlaxAnimation
+	dw AzurillAnimation
+	dw WynautAnimation
+	dw AmbipomAnimation
 	assert_table_length NUM_POKEMON
 	dw EggAnimation
 	dw EggAnimation
+	dw MismagiusAnimation
+	dw HonchkrowAnimation
+	dw BonslyAnimation
+	dw MimeJrAnimation
+	dw HappinyAnimation
+	dw MunchlaxAnimation
+	dw MantykeAnimation
 	dw WeavileAnimation
 	dw MagnezoneAnimation
+	dw LickilickyAnimation
 	dw RhyperiorAnimation
 	dw TangrowthAnimation
 	dw ElectivireAnimation
@@ -271,6 +279,10 @@ AnimationPointers:
 	dw MamoswineAnimation
 	dw PorygonZAnimation
 	dw SylveonAnimation
+	dw PerrserkerAnimation
+	dw CursolaAnimation
+	dw SirfetchDAnimation
+	dw MrRimeAnimation
 	assert_table_length NUM_SPECIES
 
 	dw UnownBAnimation
@@ -334,6 +346,7 @@ AnimationPointers:
 	dw MewtwoArmoredAnimation
 	dw RattataAlolanAnimation
 	dw RaticateAlolanAnimation
+	dw RaichuAlolanAnimation
 	dw SandshrewAlolanAnimation
 	dw SandslashAlolanAnimation
 	dw VulpixAlolanAnimation
@@ -347,17 +360,20 @@ AnimationPointers:
 	dw GolemAlolanAnimation
 	dw GrimerAlolanAnimation
 	dw MukAlolanAnimation
-	dw RaichuAlolanAnimation
 	dw ExeggutorAlolanAnimation
 	dw MarowakAlolanAnimation
+	dw MeowthGalarianAnimation
 	dw PonytaGalarianAnimation
 	dw RapidashGalarianAnimation
 	dw SlowpokeGalarianAnimation
 	dw SlowbroGalarianAnimation
-	dw SlowkingGalarianAnimation
+	dw FarfetchDGalarianAnimation
 	dw WeezingGalarianAnimation
+	dw MrMimeGalarianAnimation
 	dw ArticunoGalarianAnimation
 	dw ZapdosGalarianAnimation
 	dw MoltresGalarianAnimation
+	dw SlowkingGalarianAnimation
+	dw CorsolaGalarianAnimation
 
 	assert_table_length NUM_UNIQUE_POKEMON

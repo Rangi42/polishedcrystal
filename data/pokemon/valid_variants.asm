@@ -1,9 +1,10 @@
 ValidVariantRanges: ; for Wonder Trade
-	dp UNOWN,     NUM_UNOWN
+	dp UNOWN,      NUM_UNOWN
 	dp ARBOK,      2 ; ARBOK_JOHTO_FORM or ARBOK_KANTO_FORM
-	dp MAGIKARP,  NUM_MAGIKARP
+	dp MAGIKARP,   NUM_MAGIKARP
 	dp RATTATA,    2 ; ALOLAN
 	dp RATICATE,   2 ; ALOLAN
+	dp RAICHU,     2 ; ALOLAN
 	dp SANDSHREW,  2 ; ALOLAN
 	dp SANDSLASH,  2 ; ALOLAN
 	dp VULPIX,     2 ; ALOLAN
@@ -17,7 +18,6 @@ ValidVariantRanges: ; for Wonder Trade
 	dp GOLEM,      2 ; ALOLAN
 	dp GRIMER,     2 ; ALOLAN
 	dp MUK,        2 ; ALOLAN
-	dp RAICHU,     2 ; ALOLAN
 	dp EXEGGUTOR,  2 ; ALOLAN
 	dp MAROWAK,    2 ; ALOLAN
 	dp MEOWTH,     2 ; GALARIAN
