@@ -38,12 +38,7 @@ These changes have been made since the 2.2.0 release. If you build the project a
    * Confusion has a 33% chance (not 50%) to hit self.
    * Gengar has Cursed Body as its normal Ability. (Can also have Levitate in non-Faithful.)
    * Raikou, Entei, and Suicune have Inner Focus as their Hidden Ability (Faithful).
-   * Balls' catch rate multipliers:
-      * Timer Ball: 1 + (turns passed × 3) / 10.
-      * Nest Ball: (41 − enemy mon level) / 5.
-      * Lure Ball: ×5.
-      * Net Ball: ×3.5.
-      * Dusk Ball: ×3.
+   * The catch rate multipliers of Poké Balls.
    * Critical capture.
    * Non-roaming wild Pokémon no longer flee.
    * Friendship increases more on walks, haircuts, level-ups, and special matches such as Gym Leaders.
