@@ -70,7 +70,6 @@ These changes have been made since the 2.2.0 release. If you build the project a
 * Add: Overworld prompt for Flash.
 * Add: Earl gives Type Chart as he showed in Pokémon Stadium 2.
 * Add: "Odd Souvenir" (Strange Souvenir of Alola) as an Evolution item.
-* Add: Utility Umbrella as an all-weather (instead of sunlight and rain) protection.
 * Add: Ability Capsule helps breeding for a higher chance of Hidden Ability.
 * Add: Judge Machine in Goldenrod PCC, with IV/EV charts like Gen 7+.
 * Add: Hyper Training for full-EV (instead of Lv. 100) Pokémon, with icons to show up in the stat screen and the Judge Machine.
