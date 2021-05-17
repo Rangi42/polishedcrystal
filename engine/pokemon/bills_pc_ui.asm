@@ -2956,7 +2956,7 @@ BillsPC_Release:
 
 BillsPC_Rename:
 	call BillsPC_PrepareTransistion
-	ld b, 4
+	ld b, $4 ; box
 	ld de, wStringBuffer2
 	farcall NamingScreen
 	ld hl, wStringBuffer2
