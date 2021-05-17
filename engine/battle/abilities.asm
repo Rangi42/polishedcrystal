@@ -665,8 +665,10 @@ RunContactAbilities:
 	ld hl, UserContactAbilities
 	call AbilityJumptable
 	call GetOpponentAbilityAfterMoldBreaker
+	call SwitchTurn
 	ld hl, TargetContactAbilities
-	jmp AbilityJumptable
+	call AbilityJumptable
+	jmp SwitchTurn
 
 UserContactAbilities:
 	dbw POISON_TOUCH, PoisonTouchAbility
