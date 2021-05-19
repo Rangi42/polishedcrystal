@@ -28,19 +28,19 @@ jobs:
         mv polishedcrystal-3.0.0-beta.sym build/polishedcrystal-3.0.0-beta.sym
         make tidy
         make -j4 faithful
-        mv polishedcrystal-3.0.0-beta.gbc build/polishedcrystal-3.0.0-beta-faithful.gbc
-        mv polishedcrystal-3.0.0-beta.sym build/polishedcrystal-3.0.0-beta-faithful.sym
+        mv polishedcrystal-3.0.0-beta.gbc build/polishedcrystal-faithful-3.0.0-beta.gbc
+        mv polishedcrystal-3.0.0-beta.sym build/polishedcrystal-faithful-3.0.0-beta.sym
         make tidy
         make -j4 debug
         mv polishedcrystal-3.0.0-beta.gbc build/polisheddebug-3.0.0-beta.gbc
         mv polishedcrystal-3.0.0-beta.sym build/polisheddebug-3.0.0-beta.sym
         make tidy
         make -j4 faithful debug
-        mv polishedcrystal-3.0.0-beta.gbc build/polisheddebug-3.0.0-beta-faithful.gbc
-        mv polishedcrystal-3.0.0-beta.sym build/polisheddebug-3.0.0-beta-faithful.sym
+        mv polishedcrystal-3.0.0-beta.gbc build/polisheddebug-faithful-3.0.0-beta.gbc
+        mv polishedcrystal-3.0.0-beta.sym build/polisheddebug-faithful-3.0.0-beta.sym
         make tidy
         make bsp
-        mv polishedcrystal-3.0.0-beta.bsp build/polishedcrystal-3.0.0-beta.bsp
+        mv polishedcrystal-3.0.0-beta.bsp build/polishedcrystal-savepatch-3.0.0-beta.bsp
         popd
     - name: Delete old release
       id: delete_release
@@ -104,8 +104,8 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         upload_url: ${{ steps.create_release.outputs.upload_url }}
-        asset_path: ./polishedcrystal/build/polishedcrystal-3.0.0-beta-faithful.gbc
-        asset_name: polishedcrystal-3.0.0-beta-${{ env.SHORT_SHA }}-faithful.gbc
+        asset_path: ./polishedcrystal/build/polishedcrystal-faithful-3.0.0-beta.gbc
+        asset_name: polishedcrystal-faithful-3.0.0-beta-${{ env.SHORT_SHA }}.gbc
         asset_content_type: application/octet-stream
     - name: Upload faithful SYM
       id: upload-faithful-sym
@@ -114,8 +114,8 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         upload_url: ${{ steps.create_release.outputs.upload_url }}
-        asset_path: ./polishedcrystal/build/polishedcrystal-3.0.0-beta-faithful.sym
-        asset_name: polishedcrystal-3.0.0-beta-${{ env.SHORT_SHA }}-faithful.sym
+        asset_path: ./polishedcrystal/build/polishedcrystal-faithful-3.0.0-beta.sym
+        asset_name: polishedcrystal-faithful-3.0.0-beta-${{ env.SHORT_SHA }}.sym
         asset_content_type: text/plain
     - name: Upload debug ROM
       id: upload-debug
@@ -144,8 +144,8 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         upload_url: ${{ steps.create_release.outputs.upload_url }}
-        asset_path: ./polishedcrystal/build/polisheddebug-3.0.0-beta-faithful.gbc
-        asset_name: polisheddebug-3.0.0-beta-${{ env.SHORT_SHA }}-faithful.gbc
+        asset_path: ./polishedcrystal/build/polisheddebug-faithful-3.0.0-beta.gbc
+        asset_name: polisheddebug-faithful-3.0.0-beta-${{ env.SHORT_SHA }}.gbc
         asset_content_type: application/octet-stream
     - name: Upload faithful debug SYM
       id: upload-faithful-debug-sym
@@ -154,8 +154,8 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         upload_url: ${{ steps.create_release.outputs.upload_url }}
-        asset_path: ./polishedcrystal/build/polisheddebug-3.0.0-beta-faithful.sym
-        asset_name: polisheddebug-3.0.0-beta-${{ env.SHORT_SHA }}-faithful.sym
+        asset_path: ./polishedcrystal/build/polisheddebug-faithful-3.0.0-beta.sym
+        asset_name: polisheddebug-faithful-3.0.0-beta-${{ env.SHORT_SHA }}.sym
         asset_content_type: text/plain
     - name: Upload BSP
       id: upload-bsp
@@ -164,6 +164,6 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         upload_url: ${{ steps.create_release.outputs.upload_url }}
-        asset_path: ./polishedcrystal/build/polishedcrystal-3.0.0-beta.bsp
-        asset_name: polishedcrystal-3.0.0-beta-${{ env.SHORT_SHA }}.bsp
+        asset_path: ./polishedcrystal/build/polishedcrystal-savepatch-3.0.0-beta.bsp
+        asset_name: polishedcrystal-savepatch-3.0.0-beta-${{ env.SHORT_SHA }}.bsp
         asset_content_type: application/octet-stream
