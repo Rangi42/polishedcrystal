@@ -1091,6 +1091,24 @@ MeowthAlolanEvosAttacks:
 	db 55, DARK_PULSE
 	db -1 ; no more level-up moves
 
+MeowthGalarianEvosAttacks:
+	dbbp EVOLVE_LEVEL, 28, PERRSERKER, PLAIN_FORM
+	db -1 ; no more evolutions
+	db 1, ASTONISH ; Fake Out → new move
+	db 1, GROWL
+	db 4, HONE_CLAWS
+	db 8, SCRATCH
+	db 12, PAY_DAY
+	db 16, METAL_CLAW
+	db 20, PURSUIT ; Taunt → new move
+	db 24, SWAGGER
+	db 29, FURY_STRIKES ; Fury Swipes → similar move
+	db 32, SCREECH
+	db 36, SLASH
+	db 40, IRON_TAIL ; Metal Sound → TR move
+	db 44, THRASH
+	db -1 ; no more level-up moves
+
 PersianPlainEvosAttacks:
 	db -1 ; no more evolutions
 	db 1, BUBBLE_BEAM ; RBY TM move
@@ -1842,7 +1860,7 @@ MagnetonEvosAttacks:
 	db 63, ZAP_CANNON
 	db -1 ; no more level-up moves
 
-FarfetchDEvosAttacks:
+FarfetchDPlainEvosAttacks:
 	db -1 ; no more evolutions
 	db 1, POISON_JAB
 	db 1, BATON_PASS ; Brave Bird → event move
@@ -1863,6 +1881,34 @@ FarfetchDEvosAttacks:
 	db 45, FALSE_SWIPE
 	db 49, AIR_SLASH
 	db 55, BRAVE_BIRD
+	db -1 ; no more level-up moves
+
+FarfetchDGalarianEvosAttacks:
+	dbbp EVOLVE_CRIT, TR_ANYTIME, SIRFETCH_D, PLAIN_FORM
+	db -1 ; no more evolutions
+	db 1, PECK
+	db 1, MUD_SLAP ; Sand Attack → similar move
+	db 5, LEER
+	db 10, QUICK_ATTACK ; Fury Cutter → egg move
+if DEF(FAITHFUL)
+	db 15, ROCK_SMASH
+else
+	db 15, REVENGE ; Rock Smash → TM move
+endc
+	db 20, FEINT_ATTACK ; Brutal Swing → similar move
+	db 25, PROTECT ; Detect → similar move
+	db 30, KNOCK_OFF
+	db 35, STEEL_WING ; Defog → TM move
+if DEF(FAITHFUL)
+	db 40, NIGHT_SLASH ; Brick Break → egg move
+else
+	db 40, ROCK_SMASH ; Brick Break
+endc
+	db 45, SWORDS_DANCE
+	db 50, BODY_SLAM ; Slam → TR move
+	db 55, POISON_JAB ; Leaf Blade → TR move
+	db 60, CLOSE_COMBAT ; Final Gambit → TR move
+	db 65, BRAVE_BIRD
 	db -1 ; no more level-up moves
 
 DoduoEvosAttacks:
@@ -2725,7 +2771,7 @@ StarmieEvosAttacks:
 	db 60, TRI_ATTACK ; RBY TM move
 	db -1 ; no more level-up moves
 
-MrMimeEvosAttacks:
+MrMimePlainEvosAttacks:
 	db -1 ; no more evolutions
 	db 1, BARRIER
 	db 1, CONFUSION
@@ -4834,7 +4880,7 @@ PiloswineEvosAttacks:
 	db 58, AMNESIA
 	db -1 ; no more level-up moves
 
-CorsolaEvosAttacks:
+CorsolaPlainEvosAttacks:
 	db -1 ; no more evolutions
 	db 1, TACKLE
 	db 1, DEFENSE_CURL ; Harden → similar move
@@ -4854,6 +4900,24 @@ CorsolaEvosAttacks:
 	db 45, MIRROR_COAT
 	db 47, EARTH_POWER
 	db 50, REVERSAL ; Flail → similar move
+	db -1 ; no more level-up moves
+
+CorsolaGalarianEvosAttacks:
+	dbbp EVOLVE_LEVEL, 38, CURSOLA, PLAIN_FORM
+	db -1 ; no more evolutions
+	db 1, TACKLE
+	db 1, DEFENSE_CURL ; Harden → similar move
+	db 5, ASTONISH
+	db 10, DISABLE
+	db 15, HAZE ; Spite → egg move
+	db 20, ANCIENTPOWER
+	db 25, HEX
+	db 30, CURSE
+	db 35, GIGA_DRAIN ; Strength Sap → TM move
+	db 40, POWER_GEM
+	db 45, NIGHT_SHADE
+	db 50, SHADOW_BALL ; Grudge → TR move
+	db 55, MIRROR_COAT
 	db -1 ; no more level-up moves
 
 RemoraidEvosAttacks:
@@ -5873,19 +5937,19 @@ PerrserkerEvosAttacks:
 	db -1 ; no more evolutions
 	db 1, IRON_HEAD ; evolution move
 	db 1, COUNTER ; Metal Burst → similar move
-	db 1 ; Iron Defense →
-	db 1, ; Fake Out →
+	db 1, CUT ; Iron Defense → HM move
+	db 1, ASTONISH ; Fake Out → new move
 	db 1, GROWL
 	db 1, HONE_CLAWS
 	db 1, SCRATCH
 	db 12, PAY_DAY
 	db 16, METAL_CLAW
-	db 20, ; Taunt →
+	db 20, PURSUIT ; Taunt → new move
 	db 24, SWAGGER
 	db 31, FURY_STRIKES
 	db 36, SCREECH
 	db 42, SLASH
-	db 48, ; Metal Sound →
+	db 48, IRON_TAIL ; Metal Sound → TR move
 	db 54, THRASH
 	db -1 ; no more level-up moves
 
@@ -5896,20 +5960,20 @@ CursolaEvosAttacks:
 	db 1, DEFENSE_CURL ; Harden → similar move
 	db 1, ASTONISH
 	db 1, DISABLE
-	db 15, ; Spite →
+	db 15, HAZE ; Spite → egg move
 	db 20, ANCIENTPOWER
 	db 25, HEX
 	db 30, CURSE
-	db 35, ; Strength Sap →
+	db 35, GIGA_DRAIN ; Strength Sap → TM move
 	db 40, POWER_GEM
 	db 45, NIGHT_SHADE
-	db 50, ; Grudge →
+	db 50, SAHDOW_BALL ; Grudge →
 	db 55, MIRROR_COAT
 	db -1 ; no more level-up moves
 
 SirfetchDEvosAttacks:
 	db -1 ; no more evolutions
-	db 1, CUT ; Fury Cutter → new move
+	db 1, CUT ; Fury Cutter → HM move
 	db 1, COUNTER ; Iron Defense → egg move ; evolution move
 	db 1, QUICK_ATTACK ; First Impression → egg move
 	db 1, PECK

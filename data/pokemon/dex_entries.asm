@@ -517,9 +517,9 @@ SECTION "MagikarpPokedexEntry", ROMX
 MagikarpPokedexEntry::
 INCLUDE "data/pokemon/dex_entries/magikarp.asm"
 
-SECTION "GyaradosPokedexEntry", ROMX
-GyaradosPokedexEntry::
-INCLUDE "data/pokemon/dex_entries/gyarados.asm"
+SECTION "GyaradosPlainPokedexEntry", ROMX
+GyaradosPlainPokedexEntry::
+INCLUDE "data/pokemon/dex_entries/gyarados_plain.asm"
 
 SECTION "LaprasPokedexEntry", ROMX
 LaprasPokedexEntry::
@@ -597,9 +597,9 @@ SECTION "DragonitePokedexEntry", ROMX
 DragonitePokedexEntry::
 INCLUDE "data/pokemon/dex_entries/dragonite.asm"
 
-SECTION "MewtwoPokedexEntry", ROMX
-MewtwoPokedexEntry::
-INCLUDE "data/pokemon/dex_entries/mewtwo.asm"
+SECTION "MewtwoPlainPokedexEntry", ROMX
+MewtwoPlainPokedexEntry::
+INCLUDE "data/pokemon/dex_entries/mewtwo_plain.asm"
 
 SECTION "MewPokedexEntry", ROMX
 MewPokedexEntry::
@@ -1116,3 +1116,119 @@ INCLUDE "data/pokemon/dex_entries/sirfetchd.asm"
 SECTION "MrRimePokedexEntry", ROMX
 MrRimePokedexEntry::
 INCLUDE "data/pokemon/dex_entries/mr__rime.asm"
+
+SECTION "GyaradosRedPokedexEntry", ROMX
+GyaradosRedPokedexEntry::
+INCLUDE "data/pokemon/dex_entries/gyarados_red.asm"
+
+SECTION "MewtwoArmoredPokedexEntry", ROMX
+MewtwoArmoredPokedexEntry::
+INCLUDE "data/pokemon/dex_entries/mewtwo_armored.asm"
+
+SECTION "RattataAlolanPokedexEntry", ROMX
+RattataAlolanPokedexEntry::
+INCLUDE "data/pokemon/dex_entries/rattata_alolan.asm"
+
+SECTION "RaticateAlolanPokedexEntry", ROMX
+RaticateAlolanPokedexEntry::
+INCLUDE "data/pokemon/dex_entries/raticate_alolan.asm"
+
+SECTION "RaichuAlolanPokedexEntry", ROMX
+RaichuAlolanPokedexEntry::
+INCLUDE "data/pokemon/dex_entries/raichu_alolan.asm"
+
+SECTION "SandshrewAlolanPokedexEntry", ROMX
+SandshrewAlolanPokedexEntry::
+INCLUDE "data/pokemon/dex_entries/sandshrew_alolan.asm"
+
+SECTION "SandslashAlolanPokedexEntry", ROMX
+SandslashAlolanPokedexEntry::
+INCLUDE "data/pokemon/dex_entries/sandslash_alolan.asm"
+
+SECTION "VulpixAlolanPokedexEntry", ROMX
+VulpixAlolanPokedexEntry::
+INCLUDE "data/pokemon/dex_entries/vulpix_alolan.asm"
+
+SECTION "NinetalesAlolanPokedexEntry", ROMX
+NinetalesAlolanPokedexEntry::
+INCLUDE "data/pokemon/dex_entries/ninetales_alolan.asm"
+
+SECTION "DiglettAlolanPokedexEntry", ROMX
+DiglettAlolanPokedexEntry::
+INCLUDE "data/pokemon/dex_entries/diglett_alolan.asm"
+
+SECTION "DugtrioAlolanPokedexEntry", ROMX
+DugtrioAlolanPokedexEntry::
+INCLUDE "data/pokemon/dex_entries/dugtrio_alolan.asm"
+
+SECTION "MeowthAlolanPokedexEntry", ROMX
+MeowthAlolanPokedexEntry::
+INCLUDE "data/pokemon/dex_entries/meowth_alolan.asm"
+
+SECTION "MeowthGalarianPokedexEntry", ROMX
+MeowthGalarianPokedexEntry::
+INCLUDE "data/pokemon/dex_entries/meowth_galarian.asm"
+
+SECTION "PersianAlolanPokedexEntry", ROMX
+PersianAlolanPokedexEntry::
+INCLUDE "data/pokemon/dex_entries/persian_alolan.asm"
+
+SECTION "GeodudeAlolanPokedexEntry", ROMX
+GeodudeAlolanPokedexEntry::
+INCLUDE "data/pokemon/dex_entries/geodude_alolan.asm"
+
+SECTION "GravelerAlolanPokedexEntry", ROMX
+GravelerAlolanPokedexEntry::
+INCLUDE "data/pokemon/dex_entries/graveler_alolan.asm"
+
+SECTION "GolemAlolanPokedexEntry", ROMX
+GolemAlolanPokedexEntry::
+INCLUDE "data/pokemon/dex_entries/golem_alolan.asm"
+
+SECTION "PonytaGalarianPokedexEntry", ROMX
+PonytaGalarianPokedexEntry::
+INCLUDE "data/pokemon/dex_entries/ponyta_galarian.asm"
+
+SECTION "RapidashGalarianPokedexEntry", ROMX
+RapidashGalarianPokedexEntry::
+INCLUDE "data/pokemon/dex_entries/rapidash_galarian.asm"
+
+SECTION "SlowpokeGalarianPokedexEntry", ROMX
+SlowpokeGalarianPokedexEntry::
+INCLUDE "data/pokemon/dex_entries/slowpoke_galarian.asm"
+
+SECTION "SlowbroGalarianPokedexEntry", ROMX
+SlowbroGalarianPokedexEntry::
+INCLUDE "data/pokemon/dex_entries/slowbro_galarian.asm"
+
+SECTION "FarfetchDGalarianPokedexEntry", ROMX
+FarfetchDGalarianPokedexEntry::
+INCLUDE "data/pokemon/dex_entries/farfetch_d_galarian.asm"
+
+SECTION "WeezingGalarianPokedexEntry", ROMX
+WeezingGalarianPokedexEntry::
+INCLUDE "data/pokemon/dex_entries/weezing_galarian.asm"
+
+SECTION "MrMimeGalarianPokedexEntry", ROMX
+MrMimeGalarianPokedexEntry::
+INCLUDE "data/pokemon/dex_entries/mr__mime_galarian.asm"
+
+SECTION "ArticunoGalarianPokedexEntry", ROMX
+ArticunoGalarianPokedexEntry::
+INCLUDE "data/pokemon/dex_entries/articuno_galarian.asm"
+
+SECTION "ZapdosGalarianPokedexEntry", ROMX
+ZapdosGalarianPokedexEntry::
+INCLUDE "data/pokemon/dex_entries/zapdos_galarian.asm"
+
+SECTION "MoltresGalarianPokedexEntry", ROMX
+MoltresGalarianPokedexEntry::
+INCLUDE "data/pokemon/dex_entries/moltres_galarian.asm"
+
+SECTION "SlowkingGalarianPokedexEntry", ROMX
+SlowkingGalarianPokedexEntry::
+INCLUDE "data/pokemon/dex_entries/slowking_galarian.asm"
+
+SECTION "CorsolaGalarianPokedexEntry", ROMX
+CorsolaGalarianPokedexEntry::
+INCLUDE "data/pokemon/dex_entries/corsola_galarian.asm"

@@ -12738,7 +12738,7 @@ ImakuniGroup:
 	dbp 63, HYPNO
 		db QUICK_CLAW
 	dbp 61, FARFETCH_D
-		db STICK
+		db LEEK
 	dbp 61, DODRIO
 		db SHARP_BEAK
 	dbp 64, WOBBUFFET

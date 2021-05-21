@@ -161,7 +161,7 @@ ItemEffects:
 	dw IsntTheTimeMessage ; SMOKE_BALL
 	dw IsntTheTimeMessage ; BERSERK_GENE
 	dw IsntTheTimeMessage ; LIGHT_BALL
-	dw IsntTheTimeMessage ; STICK
+	dw IsntTheTimeMessage ; LEEK
 	dw IsntTheTimeMessage ; THICK_CLUB
 	dw IsntTheTimeMessage ; LUCKY_PUNCH
 	dw IsntTheTimeMessage ; METAL_POWDER

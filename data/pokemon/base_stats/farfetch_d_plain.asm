@@ -18,7 +18,7 @@ else
 	db 124 ; base exp
 endc
 	db NO_ITEM ; item 1
-	db STICK ; item 2
+	db LEEK ; item 2
 	dn GENDER_F50, 3 ; gender ratio, step cycles to hatch
 	INCBIN "gfx/pokemon/farfetch_d/front.dimensions"
 	abilities_for FARFETCH_D, KEEN_EYE, INNER_FOCUS, DEFIANT
