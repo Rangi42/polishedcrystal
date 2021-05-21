@@ -123,8 +123,7 @@ CopyGfxToSuperNintendoVRAM:
 	call SendSGBPacket
 	xor a
 	ldh [rBGP], a
-	ei
-	ret
+	reti
 
 MaskEnFreezePacket:
 	db $b9, $01, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00
@@ -136,7 +135,7 @@ ChrTrnPacket:
 PctTrnPacket:
 	db $a1, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00
 
-	ds 8
+	ds 9
 
 SGBBorderPals:
 INCLUDE "gfx/sgb/sgb_border.pal"
