@@ -1,5 +1,17 @@
 INCLUDE "constants.asm"
 
+evo_data: MACRO
+	db \1, \2 ; evolution type, parameter
+	if \2 == EVOLVE_STAT || \2 == EVOLVE_HOLDING
+		db \3 ;  ATK_*_DEF | time of day
+		shift
+	endc
+	if _NARG > 3
+		dp \3, \4
+	else
+		dp \3
+	endc
+ENDM
 
 SECTION "Evolutions and Attacks", ROMX
 
@@ -10,7 +22,7 @@ INCLUDE "data/pokemon/evos_attacks_pointers.asm"
 EvosAttacks::
 
 BulbasaurEvosAttacks:
-	dbbp EVOLVE_LEVEL, 16, IVYSAUR
+	evo_data EVOLVE_LEVEL, 16, IVYSAUR
 	db -1 ; no more evolutions
 	db 1, TACKLE
 	db 3, GROWL
@@ -30,7 +42,7 @@ BulbasaurEvosAttacks:
 	db -1 ; no more level-up moves
 
 IvysaurEvosAttacks:
-	dbbp EVOLVE_LEVEL, 32, VENUSAUR
+	evo_data EVOLVE_LEVEL, 32, VENUSAUR
 	db -1 ; no more evolutions
 	db 1, TACKLE
 	db 3, GROWL
@@ -72,7 +84,7 @@ VenusaurEvosAttacks:
 	db -1 ; no more level-up moves
 
 CharmanderEvosAttacks:
-	dbbp EVOLVE_LEVEL, 16, CHARMELEON
+	evo_data EVOLVE_LEVEL, 16, CHARMELEON
 	db -1 ; no more evolutions
 	db 1, SCRATCH
 	db 1, GROWL
@@ -89,7 +101,7 @@ CharmanderEvosAttacks:
 	db -1 ; no more level-up moves
 
 CharmeleonEvosAttacks:
-	dbbp EVOLVE_LEVEL, 36, CHARIZARD
+	evo_data EVOLVE_LEVEL, 36, CHARIZARD
 	db -1 ; no more evolutions
 	db 1, SCRATCH
 	db 1, GROWL
@@ -130,7 +142,7 @@ CharizardEvosAttacks:
 	db -1 ; no more level-up moves
 
 SquirtleEvosAttacks:
-	dbbp EVOLVE_LEVEL, 16, WARTORTLE
+	evo_data EVOLVE_LEVEL, 16, WARTORTLE
 	db -1 ; no more evolutions
 	db 1, TACKLE
 	db 4, LEER ; Tail Whip → similar move
@@ -150,7 +162,7 @@ SquirtleEvosAttacks:
 	db -1 ; no more level-up moves
 
 WartortleEvosAttacks:
-	dbbp EVOLVE_LEVEL, 36, BLASTOISE
+	evo_data EVOLVE_LEVEL, 36, BLASTOISE
 	db -1 ; no more evolutions
 	db 1, TACKLE
 	db 4, LEER ; Tail Whip → similar move
@@ -196,7 +208,7 @@ endc
 	db -1 ; no more level-up moves
 
 CaterpieEvosAttacks:
-	dbbp EVOLVE_LEVEL, 7, METAPOD
+	evo_data EVOLVE_LEVEL, 7, METAPOD
 	db -1 ; no more evolutions
 	db 1, TACKLE
 	db 1, STRING_SHOT
@@ -204,7 +216,7 @@ CaterpieEvosAttacks:
 	db -1 ; no more level-up moves
 
 MetapodEvosAttacks:
-	dbbp EVOLVE_LEVEL, 10, BUTTERFREE
+	evo_data EVOLVE_LEVEL, 10, BUTTERFREE
 	db -1 ; no more evolutions
 	db 1, TACKLE ; Caterpie move
 	db 1, STRING_SHOT ; Caterpie move
@@ -233,7 +245,7 @@ ButterfreeEvosAttacks:
 	db -1 ; no more level-up moves
 
 WeedleEvosAttacks:
-	dbbp EVOLVE_LEVEL, 7, KAKUNA
+	evo_data EVOLVE_LEVEL, 7, KAKUNA
 	db -1 ; no more evolutions
 	db 1, POISON_STING
 	db 1, STRING_SHOT
@@ -241,7 +253,7 @@ WeedleEvosAttacks:
 	db -1 ; no more level-up moves
 
 KakunaEvosAttacks:
-	dbbp EVOLVE_LEVEL, 10, BEEDRILL
+	evo_data EVOLVE_LEVEL, 10, BEEDRILL
 	db -1 ; no more evolutions
 	db 1, POISON_STING ; Weedle move
 	db 1, STRING_SHOT ; Weedle move
@@ -268,7 +280,7 @@ BeedrillEvosAttacks:
 	db -1 ; no more level-up moves
 
 PidgeyEvosAttacks:
-	dbbp EVOLVE_LEVEL, 18, PIDGEOTTO
+	evo_data EVOLVE_LEVEL, 18, PIDGEOTTO
 	db -1 ; no more evolutions
 	db 1, TACKLE
 	db 5, GUST ; Sand Attack → Gust
@@ -287,7 +299,7 @@ PidgeyEvosAttacks:
 	db -1 ; no more level-up moves
 
 PidgeottoEvosAttacks:
-	dbbp EVOLVE_LEVEL, 36, PIDGEOT
+	evo_data EVOLVE_LEVEL, 36, PIDGEOT
 	db -1 ; no more evolutions
 	db 1, TACKLE
 	db 5, GUST ; Sand Attack → Gust
@@ -325,7 +337,7 @@ PidgeotEvosAttacks:
 
 RattataPlainEvosAttacks:
 RattataAlolanEvosAttacks:
-	dbbp EVOLVE_LEVEL, 20, RATICATE
+	evo_data EVOLVE_LEVEL, 20, RATICATE
 	db -1 ; no more evolutions
 	db 1, TACKLE
 	db 1, LEER ; Tail Whip → similar move
@@ -363,7 +375,7 @@ RaticateAlolanEvosAttacks:
 	db -1 ; no more level-up moves
 
 SpearowEvosAttacks:
-	dbbp EVOLVE_LEVEL, 20, FEAROW
+	evo_data EVOLVE_LEVEL, 20, FEAROW
 	db -1 ; no more evolutions
 	db 1, PECK
 	db 1, GROWL
@@ -397,7 +409,7 @@ FearowEvosAttacks:
 	db -1 ; no more level-up moves
 
 EkansEvosAttacks:
-	dbbp EVOLVE_LEVEL, 22, ARBOK
+	evo_data EVOLVE_LEVEL, 22, ARBOK
 	db -1 ; no more evolutions
 	db 1, WRAP
 	db 1, LEER
@@ -437,8 +449,8 @@ ArbokEvosAttacks:
 	db -1 ; no more level-up moves
 
 PikachuEvosAttacks:
-	dbbp EVOLVE_ITEM, THUNDERSTONE, RAICHU, PLAIN_FORM
-	dbbp EVOLVE_ITEM, ODD_SOUVENIR, RAICHU, ALOLAN_FORM
+	evo_data EVOLVE_ITEM, THUNDERSTONE, RAICHU, PLAIN_FORM
+	evo_data EVOLVE_ITEM, ODD_SOUVENIR, RAICHU, ALOLAN_FORM
 	db -1 ; no more evolutions
 	db 1, THUNDERSHOCK
 	db 1, LEER ; Tail Whip → similar move
@@ -480,7 +492,7 @@ RaichuAlolanEvosAttacks:
 	db -1 ; no more level-up moves
 
 SandshrewPlainEvosAttacks:
-	dbbp EVOLVE_LEVEL, 22, SANDSLASH, PLAIN_FORM
+	evo_data EVOLVE_LEVEL, 22, SANDSLASH, PLAIN_FORM
 	db -1 ; no more evolutions
 	db 1, SCRATCH
 	db 1, DEFENSE_CURL
@@ -502,7 +514,7 @@ SandshrewPlainEvosAttacks:
 	db -1 ; no more level-up moves
 
 SandshrewAlolanEvosAttacks:
-	dbbp EVOLVE_ITEM, ICE_STONE, SANDSLASH, ALOLAN_FORM
+	evo_data EVOLVE_ITEM, ICE_STONE, SANDSLASH, ALOLAN_FORM
 	db -1 ; no more evolutions
 	db 1, SCRATCH
 	db 1, DEFENSE_CURL
@@ -560,7 +572,7 @@ SandslashAlolanEvosAttacks:
 	db -1 ; no more level-up moves
 
 NidoranFEvosAttacks:
-	dbbp EVOLVE_LEVEL, 16, NIDORINA
+	evo_data EVOLVE_LEVEL, 16, NIDORINA
 	db -1 ; no more evolutions
 	db 1, GROWL
 	db 1, SCRATCH
@@ -578,7 +590,7 @@ NidoranFEvosAttacks:
 	db -1 ; no more level-up moves
 
 NidorinaEvosAttacks:
-	dbbp EVOLVE_ITEM, MOON_STONE, NIDOQUEEN
+	evo_data EVOLVE_ITEM, MOON_STONE, NIDOQUEEN
 	db -1 ; no more evolutions
 	db 1, GROWL
 	db 1, SCRATCH
@@ -609,7 +621,7 @@ NidoqueenEvosAttacks:
 	db -1 ; no more level-up moves
 
 NidoranMEvosAttacks:
-	dbbp EVOLVE_LEVEL, 16, NIDORINO
+	evo_data EVOLVE_LEVEL, 16, NIDORINO
 	db -1 ; no more evolutions
 	db 1, LEER
 	db 1, PECK
@@ -627,7 +639,7 @@ NidoranMEvosAttacks:
 	db -1 ; no more level-up moves
 
 NidorinoEvosAttacks:
-	dbbp EVOLVE_ITEM, MOON_STONE, NIDOKING
+	evo_data EVOLVE_ITEM, MOON_STONE, NIDOKING
 	db -1 ; no more evolutions
 	db 1, LEER
 	db 1, PECK
@@ -658,7 +670,7 @@ NidokingEvosAttacks:
 	db -1 ; no more level-up moves
 
 ClefairyEvosAttacks:
-	dbbp EVOLVE_ITEM, MOON_STONE, CLEFABLE
+	evo_data EVOLVE_ITEM, MOON_STONE, CLEFABLE
 	db -1 ; no more evolutions
 	db 1, DISARM_VOICE
 	db 1, TACKLE ; Pound → similar move
@@ -695,7 +707,7 @@ ClefableEvosAttacks:
 	db -1 ; no more level-up moves
 
 VulpixPlainEvosAttacks:
-	dbbp EVOLVE_ITEM, FIRE_STONE, NINETALES, PLAIN_FORM
+	evo_data EVOLVE_ITEM, FIRE_STONE, NINETALES, PLAIN_FORM
 	db -1 ; no more evolutions
 	db 1, EMBER
 	db 4, GROWL ; Tail Whip → new move
@@ -721,7 +733,7 @@ VulpixPlainEvosAttacks:
 	db -1 ; no more level-up moves
 
 VulpixAlolanEvosAttacks:
-	dbbp EVOLVE_ITEM, ICE_STONE, NINETALES, ALOLAN_FORM
+	evo_data EVOLVE_ITEM, ICE_STONE, NINETALES, ALOLAN_FORM
 	db -1 ; no more evolutions
 	db 1, ICY_WIND ; Powder Snow → similar move
 	db 4, GROWL ; Tail Whip → new move
@@ -766,7 +778,7 @@ NinetalesAlolanEvosAttacks:
 	db -1 ; no more level-up moves
 
 JigglypuffEvosAttacks:
-	dbbp EVOLVE_ITEM, MOON_STONE, WIGGLYTUFF
+	evo_data EVOLVE_ITEM, MOON_STONE, WIGGLYTUFF
 	db -1 ; no more evolutions
 	db 1, SING
 	db 1, SWEET_KISS ; Igglybuff move
@@ -799,7 +811,7 @@ WigglytuffEvosAttacks:
 	db -1 ; no more level-up moves
 
 ZubatEvosAttacks:
-	dbbp EVOLVE_LEVEL, 22, GOLBAT
+	evo_data EVOLVE_LEVEL, 22, GOLBAT
 	db -1 ; no more evolutions
 	db 1, ABSORB
 	db 5, SUPERSONIC
@@ -819,7 +831,7 @@ ZubatEvosAttacks:
 	db -1 ; no more level-up moves
 
 GolbatEvosAttacks:
-	dbbp EVOLVE_HAPPINESS, TR_ANYTIME, CROBAT
+	evo_data EVOLVE_HAPPINESS, TR_ANYTIME, CROBAT
 	db -1 ; no more evolutions
 	db 1, SCREECH
 	db 1, ABSORB
@@ -841,7 +853,7 @@ GolbatEvosAttacks:
 	db -1 ; no more level-up moves
 
 OddishEvosAttacks:
-	dbbp EVOLVE_LEVEL, 21, GLOOM
+	evo_data EVOLVE_LEVEL, 21, GLOOM
 	db -1 ; no more evolutions
 	db 1, ABSORB
 	db 1, GROWTH
@@ -862,8 +874,8 @@ OddishEvosAttacks:
 	db -1 ; no more level-up moves
 
 GloomEvosAttacks:
-	dbbp EVOLVE_ITEM, LEAF_STONE, VILEPLUME
-	dbbp EVOLVE_ITEM, SUN_STONE, BELLOSSOM
+	evo_data EVOLVE_ITEM, LEAF_STONE, VILEPLUME
+	evo_data EVOLVE_ITEM, SUN_STONE, BELLOSSOM
 	db -1 ; no more evolutions
 	db 1, ABSORB
 	db 5, LEECH_SEED ; Sweet Scent → event move
@@ -895,7 +907,7 @@ VileplumeEvosAttacks:
 	db -1 ; no more level-up moves
 
 ParasEvosAttacks:
-	dbbp EVOLVE_LEVEL, 24, PARASECT
+	evo_data EVOLVE_LEVEL, 24, PARASECT
 	db -1 ; no more evolutions
 	db 1, SCRATCH
 	db 2, SLEEP_POWDER ; Let's Go move
@@ -931,7 +943,7 @@ ParasectEvosAttacks:
 	db -1 ; no more level-up moves
 
 VenonatEvosAttacks:
-	dbbp EVOLVE_LEVEL, 31, VENOMOTH
+	evo_data EVOLVE_LEVEL, 31, VENOMOTH
 	db -1 ; no more evolutions
 	db 1, TACKLE
 	db 1, DISABLE
@@ -971,7 +983,7 @@ VenomothEvosAttacks:
 	db -1 ; no more level-up moves
 
 DiglettPlainEvosAttacks:
-	dbbp EVOLVE_LEVEL, 26, DUGTRIO, PLAIN_FORM
+	evo_data EVOLVE_LEVEL, 26, DUGTRIO, PLAIN_FORM
 	db -1 ; no more evolutions
 	db 1, MUD_SLAP ; Sand Attack → Mud-Slap
 	db 1, SCRATCH
@@ -991,7 +1003,7 @@ DiglettPlainEvosAttacks:
 	db -1 ; no more level-up moves
 
 DiglettAlolanEvosAttacks:
-	dbbp EVOLVE_LEVEL, 26, DUGTRIO, ALOLAN_FORM
+	evo_data EVOLVE_LEVEL, 26, DUGTRIO, ALOLAN_FORM
 	db -1 ; no more evolutions
 	db 1, MUD_SLAP ; Sand Attack → Mud-Slap
 	db 1, METAL_CLAW
@@ -1053,7 +1065,7 @@ DugtrioAlolanEvosAttacks:
 	db -1 ; no more level-up moves
 
 MeowthPlainEvosAttacks:
-	dbbp EVOLVE_LEVEL, 28, PERSIAN, PLAIN_FORM
+	evo_data EVOLVE_LEVEL, 28, PERSIAN, PLAIN_FORM
 	db -1 ; no more evolutions
 	db 1, SCRATCH
 	db 1, GROWL
@@ -1072,7 +1084,7 @@ MeowthPlainEvosAttacks:
 	db -1 ; no more level-up moves
 
 MeowthAlolanEvosAttacks:
-	dbbp EVOLVE_LEVEL, 28, PERSIAN, ALOLAN_FORM
+	evo_data EVOLVE_LEVEL, 28, PERSIAN, ALOLAN_FORM
 	db -1 ; no more evolutions
 	db 1, SCRATCH
 	db 1, GROWL
@@ -1092,7 +1104,7 @@ MeowthAlolanEvosAttacks:
 	db -1 ; no more level-up moves
 
 MeowthGalarianEvosAttacks:
-	dbbp EVOLVE_LEVEL, 28, PERRSERKER, PLAIN_FORM
+	evo_data EVOLVE_LEVEL, 28, PERRSERKER, PLAIN_FORM
 	db -1 ; no more evolutions
 	db 1, ASTONISH ; Fake Out → new move
 	db 1, GROWL
@@ -1153,7 +1165,7 @@ PersianAlolanEvosAttacks:
 	db -1 ; no more level-up moves
 
 PsyduckEvosAttacks:
-	dbbp EVOLVE_LEVEL, 33, GOLDUCK
+	evo_data EVOLVE_LEVEL, 33, GOLDUCK
 	db -1 ; no more evolutions
 	db 1, SCRATCH
 	db 4, LEER ; Tail Whip → similar move
@@ -1193,7 +1205,7 @@ GolduckEvosAttacks:
 	db -1 ; no more level-up moves
 
 MankeyEvosAttacks:
-	dbbp EVOLVE_LEVEL, 28, PRIMEAPE
+	evo_data EVOLVE_LEVEL, 28, PRIMEAPE
 	db -1 ; no more evolutions
 	db 1, SCRATCH
 	db 1, LOW_KICK
@@ -1237,7 +1249,7 @@ PrimeapeEvosAttacks:
 	db -1 ; no more level-up moves
 
 GrowlitheEvosAttacks:
-	dbbp EVOLVE_ITEM, FIRE_STONE, ARCANINE
+	evo_data EVOLVE_ITEM, FIRE_STONE, ARCANINE
 	db -1 ; no more evolutions
 	db 1, GROWL
 	db 1, BITE
@@ -1273,7 +1285,7 @@ ArcanineEvosAttacks:
 	db -1 ; no more level-up moves
 
 PoliwagEvosAttacks:
-	dbbp EVOLVE_LEVEL, 25, POLIWHIRL
+	evo_data EVOLVE_LEVEL, 25, POLIWHIRL
 	db -1 ; no more evolutions
 	db 1, SWEET_KISS ; event move
 	db 1, WATER_GUN ; Water Sport → Water Gun
@@ -1292,8 +1304,8 @@ PoliwagEvosAttacks:
 	db -1 ; no more level-up moves
 
 PoliwhirlEvosAttacks:
-	dbbp EVOLVE_ITEM, WATER_STONE, POLIWRATH
-	dbbp EVOLVE_HOLDING, KINGS_ROCK, POLITOED
+	evo_data EVOLVE_ITEM, WATER_STONE, POLIWRATH
+	evo_data EVOLVE_HOLDING, KINGS_ROCK, TR_ANYTIME, POLITOED
 	db -1 ; no more evolutions
 	db 1, SWEET_KISS ; event move
 	db 1, WATER_GUN ; Water Sport → Water Gun
@@ -1323,13 +1335,13 @@ PoliwrathEvosAttacks:
 	db -1 ; no more level-up moves
 
 AbraEvosAttacks:
-	dbbp EVOLVE_LEVEL, 16, KADABRA
+	evo_data EVOLVE_LEVEL, 16, KADABRA
 	db -1 ; no more evolutions
 	db 1, TELEPORT
 	db -1 ; no more level-up moves
 
 KadabraEvosAttacks:
-	dbbp EVOLVE_EVS, MON_SAT_EV, ALAKAZAM
+	evo_data EVOLVE_EVS, MON_SAT_EV, ALAKAZAM
 	db -1 ; no more evolutions
 	db 1, TELEPORT
 	db 1, FORESIGHT ; evolution move
@@ -1369,7 +1381,7 @@ AlakazamEvosAttacks:
 	db -1 ; no more level-up moves
 
 MachopEvosAttacks:
-	dbbp EVOLVE_LEVEL, 28, MACHOKE
+	evo_data EVOLVE_LEVEL, 28, MACHOKE
 	db -1 ; no more evolutions
 	db 1, LOW_KICK
 	db 1, LEER
@@ -1391,7 +1403,7 @@ MachopEvosAttacks:
 	db -1 ; no more level-up moves
 
 MachokeEvosAttacks:
-	dbbp EVOLVE_EVS, MON_ATK_EV, MACHAMP
+	evo_data EVOLVE_EVS, MON_ATK_EV, MACHAMP
 	db -1 ; no more evolutions
 	db 1, LOW_KICK
 	db 1, LEER
@@ -1436,7 +1448,7 @@ MachampEvosAttacks:
 	db -1 ; no more level-up moves
 
 BellsproutEvosAttacks:
-	dbbp EVOLVE_LEVEL, 21, WEEPINBELL
+	evo_data EVOLVE_LEVEL, 21, WEEPINBELL
 	db -1 ; no more evolutions
 	db 1, VINE_WHIP
 	db 7, GROWTH
@@ -1455,7 +1467,7 @@ BellsproutEvosAttacks:
 	db -1 ; no more level-up moves
 
 WeepinbellEvosAttacks:
-	dbbp EVOLVE_ITEM, LEAF_STONE, VICTREEBEL
+	evo_data EVOLVE_ITEM, LEAF_STONE, VICTREEBEL
 	db -1 ; no more evolutions
 	db 1, VINE_WHIP
 	db 7, GROWTH
@@ -1484,7 +1496,7 @@ VictreebelEvosAttacks:
 	db -1 ; no more level-up moves
 
 TentacoolEvosAttacks:
-	dbbp EVOLVE_LEVEL, 30, TENTACRUEL
+	evo_data EVOLVE_LEVEL, 30, TENTACRUEL
 	db -1 ; no more evolutions
 	db 1, POISON_STING
 	db 4, SUPERSONIC
@@ -1526,7 +1538,7 @@ TentacruelEvosAttacks:
 	db -1 ; no more level-up moves
 
 GeodudePlainEvosAttacks:
-	dbbp EVOLVE_LEVEL, 25, GRAVELER, PLAIN_FORM
+	evo_data EVOLVE_LEVEL, 25, GRAVELER, PLAIN_FORM
 	db -1 ; no more evolutions
 	db 1, TACKLE
 	db 1, DEFENSE_CURL
@@ -1547,7 +1559,7 @@ GeodudePlainEvosAttacks:
 	db -1 ; no more level-up moves
 
 GravelerPlainEvosAttacks:
-	dbbp EVOLVE_EVS, MON_DEF_EV, GOLEM, PLAIN_FORM
+	evo_data EVOLVE_EVS, MON_DEF_EV, GOLEM, PLAIN_FORM
 	db -1 ; no more evolutions
 	db 1, TACKLE
 	db 1, DEFENSE_CURL
@@ -1589,7 +1601,7 @@ GolemPlainEvosAttacks:
 	db -1 ; no more level-up moves
 
 GeodudeAlolanEvosAttacks:
-	dbbp EVOLVE_LEVEL, 25, GRAVELER, ALOLAN_FORM
+	evo_data EVOLVE_LEVEL, 25, GRAVELER, ALOLAN_FORM
 	db -1 ; no more evolutions
 	db 1, TACKLE
 	db 1, DEFENSE_CURL
@@ -1610,7 +1622,7 @@ GeodudeAlolanEvosAttacks:
 	db -1 ; no more level-up moves
 
 GravelerAlolanEvosAttacks:
-	dbbp EVOLVE_EVS, MON_DEF_EV, GOLEM, ALOLAN_FORM
+	evo_data EVOLVE_EVS, MON_DEF_EV, GOLEM, ALOLAN_FORM
 	db -1 ; no more evolutions
 	db 1, TACKLE
 	db 1, DEFENSE_CURL
@@ -1652,7 +1664,7 @@ GolemAlolanEvosAttacks:
 	db -1 ; no more level-up moves
 
 PonytaPlainEvosAttacks:
-	dbbp EVOLVE_LEVEL, 40, RAPIDASH, PLAIN_FORM
+	evo_data EVOLVE_LEVEL, 40, RAPIDASH, PLAIN_FORM
 	db -1 ; no more evolutions
 	db 1, GROWL
 	db 1, TACKLE
@@ -1671,7 +1683,7 @@ PonytaPlainEvosAttacks:
 	db -1 ; no more level-up moves
 
 PonytaGalarianEvosAttacks:
-	dbbp EVOLVE_LEVEL, 40, RAPIDASH, GALARIAN_FORM
+	evo_data EVOLVE_LEVEL, 40, RAPIDASH, GALARIAN_FORM
 	db -1 ; no more evolutions
 	db 1, GROWL
 	db 1, TACKLE
@@ -1731,8 +1743,8 @@ RapidashGalarianEvosAttacks:
 	db -1 ; no more level-up moves
 
 SlowpokePlainEvosAttacks:
-	dbbp EVOLVE_HOLDING, KINGS_ROCK, SLOWKING, PLAIN_FORM
-	dbbp EVOLVE_LEVEL, 37, SLOWBRO, PLAIN_FORM
+	evo_data EVOLVE_HOLDING, KINGS_ROCK, TR_ANYTIME, SLOWKING, PLAIN_FORM
+	evo_data EVOLVE_LEVEL, 37, SLOWBRO, PLAIN_FORM
 	db -1 ; no more evolutions
 	db 1, CURSE
 	db 1, TACKLE
@@ -1752,8 +1764,8 @@ SlowpokePlainEvosAttacks:
 	db -1 ; no more level-up moves
 
 SlowpokeGalarianEvosAttacks:
-	dbbp EVOLVE_HOLDING, KINGS_ROCK, SLOWKING, GALARIAN_FORM
-	dbbp EVOLVE_LEVEL, 37, SLOWBRO, GALARIAN_FORM
+	evo_data EVOLVE_HOLDING, KINGS_ROCK, TR_ANYTIME, SLOWKING, GALARIAN_FORM
+	evo_data EVOLVE_LEVEL, 37, SLOWBRO, GALARIAN_FORM
 	db -1 ; no more evolutions
 	db 1, CURSE
 	db 1, TACKLE
@@ -1813,7 +1825,7 @@ SlowbroGalarianEvosAttacks:
 	db -1 ; no more level-up moves
 
 MagnemiteEvosAttacks:
-	dbbp EVOLVE_LEVEL, 30, MAGNETON
+	evo_data EVOLVE_LEVEL, 30, MAGNETON
 	db -1 ; no more evolutions
 	db 1, SUPERSONIC
 	db 1, TACKLE
@@ -1836,8 +1848,9 @@ MagnemiteEvosAttacks:
 	db -1 ; no more level-up moves
 
 MagnetonEvosAttacks:
-	dbbp EVOLVE_LOCATION, MAGNET_TUNNEL, MAGNEZONE
-	dbbp EVOLVE_LOCATION, ROCK_TUNNEL, MAGNEZONE
+	evo_data EVOLVE_ITEM, THUNDERSTONE, MAGNEZONE
+	evo_data EVOLVE_LOCATION, MAGNET_TUNNEL, MAGNEZONE
+	evo_data EVOLVE_LOCATION, ROCK_TUNNEL, MAGNEZONE
 	db -1 ; no more evolutions
 	db 1, TRI_ATTACK ; evolution move
 	db 1, SUPERSONIC
@@ -1884,7 +1897,7 @@ FarfetchDPlainEvosAttacks:
 	db -1 ; no more level-up moves
 
 FarfetchDGalarianEvosAttacks:
-	dbbp EVOLVE_CRIT, TR_ANYTIME, SIRFETCH_D, PLAIN_FORM
+	evo_data EVOLVE_CRIT, TR_ANYTIME, SIRFETCH_D, PLAIN_FORM
 	db -1 ; no more evolutions
 	db 1, PECK
 	db 1, MUD_SLAP ; Sand Attack → similar move
@@ -1912,7 +1925,7 @@ endc
 	db -1 ; no more level-up moves
 
 DoduoEvosAttacks:
-	dbbp EVOLVE_LEVEL, 31, DODRIO
+	evo_data EVOLVE_LEVEL, 31, DODRIO
 	db -1 ; no more evolutions
 	db 1, PECK
 	db 1, GROWL
@@ -1954,7 +1967,7 @@ DodrioEvosAttacks:
 	db -1 ; no more level-up moves
 
 SeelEvosAttacks:
-	dbbp EVOLVE_LEVEL, 34, DEWGONG
+	evo_data EVOLVE_LEVEL, 34, DEWGONG
 	db -1 ; no more evolutions
 	db 1, HEADBUTT
 	db 3, GROWL
@@ -1999,7 +2012,7 @@ DewgongEvosAttacks:
 	db -1 ; no more level-up moves
 
 GrimerPlainEvosAttacks:
-	dbbp EVOLVE_LEVEL, 38, MUK, PLAIN_FORM
+	evo_data EVOLVE_LEVEL, 38, MUK, PLAIN_FORM
 	db -1 ; no more evolutions
 	db 1, TACKLE ; Pound → similar move
 	db 1, ACID ; Poison Gas → new move
@@ -2019,7 +2032,7 @@ GrimerPlainEvosAttacks:
 	db -1 ; no more level-up moves
 
 GrimerAlolanEvosAttacks:
-	dbbp EVOLVE_LEVEL, 38, MUK, ALOLAN_FORM
+	evo_data EVOLVE_LEVEL, 38, MUK, ALOLAN_FORM
 	db -1 ; no more evolutions
 	db 1, TACKLE ; Pound → similar move
 	db 1, ACID ; Poison Gas → new move
@@ -2079,7 +2092,7 @@ MukAlolanEvosAttacks:
 	db -1 ; no more level-up moves
 
 ShellderEvosAttacks:
-	dbbp EVOLVE_ITEM, WATER_STONE, CLOYSTER
+	evo_data EVOLVE_ITEM, WATER_STONE, CLOYSTER
 	db -1 ; no more evolutions
 	db 1, TACKLE
 	db 4, DEFENSE_CURL ; Withdraw → similar move
@@ -2117,7 +2130,7 @@ CloysterEvosAttacks:
 	db -1 ; no more level-up moves
 
 GastlyEvosAttacks:
-	dbbp EVOLVE_LEVEL, 25, HAUNTER
+	evo_data EVOLVE_LEVEL, 25, HAUNTER
 	db -1 ; no more evolutions
 	db 1, HYPNOSIS
 	db 1, LICK
@@ -2137,7 +2150,7 @@ GastlyEvosAttacks:
 	db -1 ; no more level-up moves
 
 HaunterEvosAttacks:
-	dbbp EVOLVE_EVS, MON_SPD_EV, GENGAR
+	evo_data EVOLVE_EVS, MON_SPD_EV, GENGAR
 	db -1 ; no more evolutions
 	db 1, SHADOW_CLAW ; Shadow Punch → TM move ; evolution move
 	db 1, HYPNOSIS
@@ -2178,7 +2191,7 @@ GengarEvosAttacks:
 	db -1 ; no more level-up moves
 
 OnixEvosAttacks:
-	dbbp EVOLVE_HOLDING, METAL_COAT, STEELIX
+	evo_data EVOLVE_HOLDING, METAL_COAT, TR_ANYTIME, STEELIX
 	db -1 ; no more evolutions
 	db 1, TACKLE
 	db 1, DEFENSE_CURL ; Harden → similar move
@@ -2203,7 +2216,7 @@ OnixEvosAttacks:
 	db -1 ; no more level-up moves
 
 DrowzeeEvosAttacks:
-	dbbp EVOLVE_LEVEL, 26, HYPNO
+	evo_data EVOLVE_LEVEL, 26, HYPNO
 	db -1 ; no more evolutions
 	db 1, TACKLE ; Pound → similar move
 	db 1, HYPNOSIS
@@ -2246,7 +2259,7 @@ HypnoEvosAttacks:
 	db -1 ; no more level-up moves
 
 KrabbyEvosAttacks:
-	dbbp EVOLVE_LEVEL, 28, KINGLER
+	evo_data EVOLVE_LEVEL, 28, KINGLER
 	db -1 ; no more evolutions
 	db 1, AQUA_JET ; Bubble → new move
 	db 5, SCRATCH ; Vice Grip → new move
@@ -2283,7 +2296,7 @@ KinglerEvosAttacks:
 	db -1 ; no more level-up moves
 
 VoltorbEvosAttacks:
-	dbbp EVOLVE_LEVEL, 30, ELECTRODE
+	evo_data EVOLVE_LEVEL, 30, ELECTRODE
 	db -1 ; no more evolutions
 	db 1, TACKLE
 	db 1, THUNDERSHOCK ; Let's Go move
@@ -2326,8 +2339,8 @@ ElectrodeEvosAttacks:
 	db -1 ; no more level-up moves
 
 ExeggcuteEvosAttacks:
-	dbbp EVOLVE_ITEM, LEAF_STONE, EXEGGUTOR, PLAIN_FORM
-	dbbp EVOLVE_ITEM, ODD_SOUVENIR, EXEGGUTOR, ALOLAN_FORM
+	evo_data EVOLVE_ITEM, LEAF_STONE, EXEGGUTOR, PLAIN_FORM
+	evo_data EVOLVE_ITEM, ODD_SOUVENIR, EXEGGUTOR, ALOLAN_FORM
 	db -1 ; no more evolutions
 	db 1, TACKLE ; Barrage → new move
 	db 1, HYPNOSIS
@@ -2371,8 +2384,8 @@ ExeggutorAlolanEvosAttacks:
 	db -1 ; no more level-up moves
 
 CuboneEvosAttacks:
-	dbbp EVOLVE_LEVEL, 28, MAROWAK, PLAIN_FORM
-	dbbp EVOLVE_ITEM, ODD_SOUVENIR, MAROWAK, ALOLAN_FORM
+	evo_data EVOLVE_LEVEL, 28, MAROWAK, PLAIN_FORM
+	evo_data EVOLVE_ITEM, ODD_SOUVENIR, MAROWAK, ALOLAN_FORM
 	db -1 ; no more evolutions
 	db 1, GROWL
 	db 3, TACKLE ; Tail Whip → new move
@@ -2482,7 +2495,7 @@ HitmonchanEvosAttacks:
 	db -1 ; no more level-up moves
 
 LickitungEvosAttacks:
-	dbbp EVOLVE_MOVE, ROLLOUT, LICKILICKY ; no more evolutions
+	evo_data EVOLVE_MOVE, ROLLOUT, LICKILICKY ; no more evolutions
 	db 1, LICK
 	db 5, SUPERSONIC
 	db 9, DEFENSE_CURL
@@ -2501,7 +2514,7 @@ LickitungEvosAttacks:
 	db -1 ; no more level-up moves
 
 KoffingEvosAttacks:
-	dbbp EVOLVE_LEVEL, 35, WEEZING, PLAIN_FORM
+	evo_data EVOLVE_LEVEL, 35, WEEZING, PLAIN_FORM
 	db -1 ; no more evolutions
 	db 1, TACKLE
 	db 4, ACID ; Smog → new move
@@ -2557,7 +2570,7 @@ WeezingGalarianEvosAttacks:
 	db -1 ; no more level-up moves
 
 RhyhornEvosAttacks:
-	dbbp EVOLVE_LEVEL, 42, RHYDON
+	evo_data EVOLVE_LEVEL, 42, RHYDON
 	db -1 ; no more evolutions
 	db 1, TACKLE
 	db 1, MUD_SLAP ; Sand-Attack → similar move
@@ -2579,7 +2592,7 @@ RhyhornEvosAttacks:
 	db -1 ; no more level-up moves
 
 RhydonEvosAttacks:
-	dbbp EVOLVE_HOLDING, PROTECTOR, RHYPERIOR
+	evo_data EVOLVE_HOLDING, PROTECTOR, TR_ANYTIME, RHYPERIOR
 	db -1 ; no more evolutions
 	db 1, OUTRAGE ; Hammer Arm → HGSS tutor move ; evolution move
 	db 1, TACKLE
@@ -2602,7 +2615,7 @@ RhydonEvosAttacks:
 	db -1 ; no more level-up moves
 
 ChanseyEvosAttacks:
-	dbbp EVOLVE_HAPPINESS, TR_ANYTIME, BLISSEY
+	evo_data EVOLVE_HAPPINESS, TR_ANYTIME, BLISSEY
 	db -1 ; no more evolutions
 	db 1, DEFENSE_CURL
 	db 1, TACKLE ; Pound → similar move
@@ -2624,7 +2637,7 @@ ChanseyEvosAttacks:
 	db -1 ; no more level-up moves
 
 TangelaEvosAttacks:
-	dbbp EVOLVE_MOVE, ANCIENTPOWER, TANGROWTH
+	evo_data EVOLVE_MOVE, ANCIENTPOWER, TANGROWTH
 	db -1 ; no more evolutions
 	db 1, WRAP ; Constrict → similar move
 	db 4, SLEEP_POWDER
@@ -2666,7 +2679,7 @@ KangaskhanEvosAttacks:
 	db -1 ; no more level-up moves
 
 HorseaEvosAttacks:
-	dbbp EVOLVE_LEVEL, 32, SEADRA
+	evo_data EVOLVE_LEVEL, 32, SEADRA
 	db -1 ; no more evolutions
 	db 1, WATER_GUN ; Bubble → similar move
 	db 5, SMOKESCREEN
@@ -2683,7 +2696,7 @@ HorseaEvosAttacks:
 	db -1 ; no more level-up moves
 
 SeadraEvosAttacks:
-	dbbp EVOLVE_HOLDING, DRAGON_SCALE, KINGDRA
+	evo_data EVOLVE_HOLDING, DRAGON_SCALE, TR_ANYTIME, KINGDRA
 	db -1 ; no more evolutions
 	db 1, WATER_GUN ; Bubble → similar move
 	db 5, SMOKESCREEN
@@ -2700,7 +2713,7 @@ SeadraEvosAttacks:
 	db -1 ; no more level-up moves
 
 GoldeenEvosAttacks:
-	dbbp EVOLVE_LEVEL, 33, SEAKING
+	evo_data EVOLVE_LEVEL, 33, SEAKING
 	db -1 ; no more evolutions
 	db 1, PECK
 	db 1, LEER ; Tail Whip → similar move
@@ -2738,7 +2751,7 @@ SeakingEvosAttacks:
 	db -1 ; no more level-up moves
 
 StaryuEvosAttacks:
-	dbbp EVOLVE_ITEM, WATER_STONE, STARMIE
+	evo_data EVOLVE_ITEM, WATER_STONE, STARMIE
 	db -1 ; no more evolutions
 	db 1, TACKLE
 	db 1, DEFENSE_CURL ; Harden → similar move
@@ -2794,7 +2807,7 @@ MrMimePlainEvosAttacks:
 	db -1 ; no more level-up moves
 
 ScytherEvosAttacks:
-	dbbp EVOLVE_HOLDING, METAL_COAT, SCIZOR
+	evo_data EVOLVE_HOLDING, METAL_COAT, TR_ANYTIME, SCIZOR
 	db -1 ; no more evolutions
 	db 1, QUICK_ATTACK
 	db 1, LEER
@@ -2838,7 +2851,7 @@ JynxEvosAttacks:
 	db -1 ; no more level-up moves
 
 ElectabuzzEvosAttacks:
-	dbbp EVOLVE_HOLDING, ELECTIRIZER, ELECTIVIRE
+	evo_data EVOLVE_HOLDING, ELECTIRIZER, TR_ANYTIME, ELECTIVIRE
 	db -1 ; no more evolutions
 	db 1, QUICK_ATTACK
 	db 1, LEER
@@ -2857,7 +2870,7 @@ ElectabuzzEvosAttacks:
 	db -1 ; no more level-up moves
 
 MagmarEvosAttacks:
-	dbbp EVOLVE_HOLDING, MAGMARIZER, MAGMORTAR
+	evo_data EVOLVE_HOLDING, MAGMARIZER, TR_ANYTIME, MAGMORTAR
 	db -1 ; no more evolutions
 	db 1, HAZE ; Smog → new move
 	db 1, LEER
@@ -2915,7 +2928,7 @@ TaurosEvosAttacks:
 	db -1 ; no more level-up moves
 
 MagikarpEvosAttacks:
-	dbbp EVOLVE_LEVEL, 20, GYARADOS
+	evo_data EVOLVE_LEVEL, 20, GYARADOS
 	db -1 ; no more evolutions
 	db 1, SPLASH
 	db 15, TACKLE
@@ -2973,14 +2986,16 @@ DittoEvosAttacks:
 	db -1 ; no more level-up moves
 
 EeveeEvosAttacks:
-	dbbp EVOLVE_ITEM, THUNDERSTONE, JOLTEON
-	dbbp EVOLVE_ITEM, WATER_STONE, VAPOREON
-	dbbp EVOLVE_ITEM, FIRE_STONE, FLAREON
-	dbbp EVOLVE_ITEM, SHINY_STONE, SYLVEON
-	dbbp EVOLVE_LOCATION, ILEX_FOREST, LEAFEON
-	dbbp EVOLVE_LOCATION, ICE_PATH, GLACEON
-	dbbp EVOLVE_HAPPINESS, TR_MORNDAY, ESPEON
-	dbbp EVOLVE_HAPPINESS, TR_EVENITE, UMBREON
+	evo_data EVOLVE_ITEM, THUNDERSTONE, JOLTEON
+	evo_data EVOLVE_ITEM, WATER_STONE, VAPOREON
+	evo_data EVOLVE_ITEM, FIRE_STONE, FLAREON
+	evo_data EVOLVE_ITEM, SHINY_STONE, SYLVEON
+	evo_data EVOLVE_ITEM, LEAF_STONE, LEAFEON
+	evo_data EVOLVE_LOCATION, ILEX_FOREST, LEAFEON
+	evo_data EVOLVE_ITEM, ICE_STONE, GLACEON
+	evo_data EVOLVE_LOCATION, ICE_PATH, GLACEON
+	evo_data EVOLVE_HAPPINESS, TR_MORNDAY, ESPEON
+	evo_data EVOLVE_HAPPINESS, TR_EVENITE, UMBREON
 	db -1 ; no more evolutions
 	db 1, GROWL
 	db 1, TACKLE
@@ -3058,7 +3073,7 @@ FlareonEvosAttacks:
 	db -1 ; no more level-up moves
 
 PorygonEvosAttacks:
-	dbbp EVOLVE_HOLDING, UP_GRADE, PORYGON2
+	evo_data EVOLVE_HOLDING, UP_GRADE, TR_ANYTIME, PORYGON2
 	db -1 ; no more evolutions
 	db 1, TACKLE
 	db 1, CONVERSION
@@ -3077,7 +3092,7 @@ PorygonEvosAttacks:
 	db -1 ; no more level-up moves
 
 OmanyteEvosAttacks:
-	dbbp EVOLVE_LEVEL, 40, OMASTAR
+	evo_data EVOLVE_LEVEL, 40, OMASTAR
 	db -1 ; no more evolutions
 	db 1, WRAP ; Constrict → similar move
 	db 1, DEFENSE_CURL ; Withdraw → similar move
@@ -3117,7 +3132,7 @@ OmastarEvosAttacks:
 	db -1 ; no more level-up moves
 
 KabutoEvosAttacks:
-	dbbp EVOLVE_LEVEL, 40, KABUTOPS
+	evo_data EVOLVE_LEVEL, 40, KABUTOPS
 	db -1 ; no more evolutions
 	db 1, SCRATCH
 	db 1, DEFENSE_CURL ; Harden → similar move
@@ -3322,7 +3337,7 @@ MoltresGalarianEvosAttacks:
 	db -1 ; no more level-up moves
 
 DratiniEvosAttacks:
-	dbbp EVOLVE_LEVEL, 30, DRAGONAIR
+	evo_data EVOLVE_LEVEL, 30, DRAGONAIR
 	db -1 ; no more evolutions
 	db 1, WRAP
 	db 1, LEER
@@ -3341,7 +3356,7 @@ DratiniEvosAttacks:
 	db -1 ; no more level-up moves
 
 DragonairEvosAttacks:
-	dbbp EVOLVE_LEVEL, 55, DRAGONITE
+	evo_data EVOLVE_LEVEL, 55, DRAGONITE
 	db -1 ; no more evolutions
 	db 1, WRAP
 	db 1, LEER
@@ -3425,7 +3440,7 @@ MewEvosAttacks:
 	db -1 ; no more level-up moves
 
 ChikoritaEvosAttacks:
-	dbbp EVOLVE_LEVEL, 16, BAYLEEF
+	evo_data EVOLVE_LEVEL, 16, BAYLEEF
 	db -1 ; no more evolutions
 	db 1, TACKLE
 	db 1, GROWL
@@ -3447,7 +3462,7 @@ ChikoritaEvosAttacks:
 	db -1 ; no more level-up moves
 
 BayleefEvosAttacks:
-	dbbp EVOLVE_LEVEL, 32, MEGANIUM
+	evo_data EVOLVE_LEVEL, 32, MEGANIUM
 	db -1 ; no more evolutions
 	db 1, TACKLE
 	db 1, GROWL
@@ -3491,7 +3506,7 @@ MeganiumEvosAttacks:
 	db -1 ; no more level-up moves
 
 CyndaquilEvosAttacks:
-	dbbp EVOLVE_LEVEL, 14, QUILAVA
+	evo_data EVOLVE_LEVEL, 14, QUILAVA
 	db -1 ; no more evolutions
 	db 1, TACKLE
 	db 1, LEER
@@ -3512,7 +3527,7 @@ CyndaquilEvosAttacks:
 	db -1 ; no more level-up moves
 
 QuilavaEvosAttacks:
-	dbbp EVOLVE_LEVEL, 36, TYPHLOSION
+	evo_data EVOLVE_LEVEL, 36, TYPHLOSION
 	db -1 ; no more evolutions
 	db 1, TACKLE
 	db 1, LEER
@@ -3554,7 +3569,7 @@ TyphlosionEvosAttacks:
 	db -1 ; no more level-up moves
 
 TotodileEvosAttacks:
-	dbbp EVOLVE_LEVEL, 18, CROCONAW
+	evo_data EVOLVE_LEVEL, 18, CROCONAW
 	db -1 ; no more evolutions
 	db 1, SCRATCH
 	db 1, LEER
@@ -3576,7 +3591,7 @@ TotodileEvosAttacks:
 	db -1 ; no more level-up moves
 
 CroconawEvosAttacks:
-	dbbp EVOLVE_LEVEL, 30, FERALIGATR
+	evo_data EVOLVE_LEVEL, 30, FERALIGATR
 	db -1 ; no more evolutions
 	db 1, SCRATCH
 	db 1, LEER
@@ -3621,7 +3636,7 @@ FeraligatrEvosAttacks:
 	db -1 ; no more level-up moves
 
 SentretEvosAttacks:
-	dbbp EVOLVE_LEVEL, 15, FURRET
+	evo_data EVOLVE_LEVEL, 15, FURRET
 	db -1 ; no more evolutions
 	db 1, TACKLE
 	db 1, FORESIGHT
@@ -3659,7 +3674,7 @@ FurretEvosAttacks:
 	db -1 ; no more level-up moves
 
 HoothootEvosAttacks:
-	dbbp EVOLVE_LEVEL, 20, NOCTOWL
+	evo_data EVOLVE_LEVEL, 20, NOCTOWL
 	db -1 ; no more evolutions
 	db 1, TACKLE
 	db 1, GROWL
@@ -3705,7 +3720,7 @@ NoctowlEvosAttacks:
 	db -1 ; no more level-up moves
 
 LedybaEvosAttacks:
-	dbbp EVOLVE_LEVEL, 18, LEDIAN
+	evo_data EVOLVE_LEVEL, 18, LEDIAN
 	db -1 ; no more evolutions
 	db 1, TACKLE
 	db 5, SUPERSONIC
@@ -3743,7 +3758,7 @@ LedianEvosAttacks:
 	db -1 ; no more level-up moves
 
 SpinarakEvosAttacks:
-	dbbp EVOLVE_LEVEL, 22, ARIADOS
+	evo_data EVOLVE_LEVEL, 22, ARIADOS
 	db -1 ; no more evolutions
 	db 1, POISON_STING
 	db 1, STRING_SHOT
@@ -3810,7 +3825,7 @@ CrobatEvosAttacks:
 	db -1 ; no more level-up moves
 
 ChinchouEvosAttacks:
-	dbbp EVOLVE_LEVEL, 27, LANTURN
+	evo_data EVOLVE_LEVEL, 27, LANTURN
 	db -1 ; no more evolutions
 	db 1, WATER_GUN ; Bubble → Water Gun
 	db 1, SUPERSONIC
@@ -3851,7 +3866,7 @@ LanturnEvosAttacks:
 	db -1 ; no more level-up moves
 
 PichuEvosAttacks:
-	dbbp EVOLVE_HAPPINESS, TR_ANYTIME, PIKACHU
+	evo_data EVOLVE_HAPPINESS, TR_ANYTIME, PIKACHU
 	db -1 ; no more evolutions
 	db 1, THUNDERSHOCK
 	db 1, CHARM
@@ -3865,7 +3880,7 @@ PichuEvosAttacks:
 	db -1 ; no more level-up moves
 
 CleffaEvosAttacks:
-	dbbp EVOLVE_HAPPINESS, TR_ANYTIME, CLEFAIRY
+	evo_data EVOLVE_HAPPINESS, TR_ANYTIME, CLEFAIRY
 	db -1 ; no more evolutions
 	db 1, SPLASH
 	db 1, TACKLE ; Pound → similar move
@@ -3878,7 +3893,7 @@ CleffaEvosAttacks:
 	db -1 ; no more level-up moves
 
 IgglybuffEvosAttacks:
-	dbbp EVOLVE_HAPPINESS, TR_ANYTIME, JIGGLYPUFF
+	evo_data EVOLVE_HAPPINESS, TR_ANYTIME, JIGGLYPUFF
 	db -1 ; no more evolutions
 	db 1, SING
 	db 1, TACKLE ; Pound → similar move
@@ -3891,7 +3906,7 @@ IgglybuffEvosAttacks:
 	db -1 ; no more level-up moves
 
 TogepiEvosAttacks:
-	dbbp EVOLVE_HAPPINESS, TR_ANYTIME, TOGETIC
+	evo_data EVOLVE_HAPPINESS, TR_ANYTIME, TOGETIC
 	db -1 ; no more evolutions
 	db 1, GROWL
 	db 1, CHARM
@@ -3911,7 +3926,7 @@ TogepiEvosAttacks:
 	db -1 ; no more level-up moves
 
 TogeticEvosAttacks:
-	dbbp EVOLVE_ITEM, SHINY_STONE, TOGEKISS
+	evo_data EVOLVE_ITEM, SHINY_STONE, TOGEKISS
 	db -1 ; no more evolutions
 	db 1, GROWL
 	db 1, CHARM
@@ -3932,7 +3947,7 @@ TogeticEvosAttacks:
 	db -1 ; no more level-up moves
 
 NatuEvosAttacks:
-	dbbp EVOLVE_LEVEL, 25, XATU
+	evo_data EVOLVE_LEVEL, 25, XATU
 	db -1 ; no more evolutions
 	db 1, PECK
 	db 1, LEER
@@ -3972,7 +3987,7 @@ XatuEvosAttacks:
 	db -1 ; no more level-up moves
 
 MareepEvosAttacks:
-	dbbp EVOLVE_LEVEL, 15, FLAAFFY
+	evo_data EVOLVE_LEVEL, 15, FLAAFFY
 	db -1 ; no more evolutions
 	db 1, TACKLE
 	db 1, GROWL
@@ -3993,9 +4008,9 @@ MareepEvosAttacks:
 
 FlaaffyEvosAttacks:
 if DEF(FAITHFUL)
-	dbbp EVOLVE_LEVEL, 30, AMPHAROS
+	evo_data EVOLVE_LEVEL, 30, AMPHAROS
 else
-	dbbp EVOLVE_LEVEL, 36, AMPHAROS
+	evo_data EVOLVE_LEVEL, 36, AMPHAROS
 endc
 	db -1 ; no more evolutions
 	db 1, TACKLE
@@ -4052,7 +4067,7 @@ BellossomEvosAttacks:
 	db -1 ; no more level-up moves
 
 MarillEvosAttacks:
-	dbbp EVOLVE_LEVEL, 18, AZUMARILL
+	evo_data EVOLVE_LEVEL, 18, AZUMARILL
 	db -1 ; no more evolutions
 	db 1, TACKLE
 	db 2, GROWL ; Tail Whip → new move
@@ -4121,7 +4136,7 @@ PolitoedEvosAttacks:
 	db -1 ; no more level-up moves
 
 HoppipEvosAttacks:
-	dbbp EVOLVE_LEVEL, 18, SKIPLOOM
+	evo_data EVOLVE_LEVEL, 18, SKIPLOOM
 	db -1 ; no more evolutions
 	db 1, ABSORB
 	db 1, SPLASH
@@ -4146,7 +4161,7 @@ HoppipEvosAttacks:
 	db -1 ; no more level-up moves
 
 SkiploomEvosAttacks:
-	dbbp EVOLVE_LEVEL, 27, JUMPLUFF
+	evo_data EVOLVE_LEVEL, 27, JUMPLUFF
 	db -1 ; no more evolutions
 	db 1, ABSORB
 	db 1, SPLASH
@@ -4195,7 +4210,7 @@ JumpluffEvosAttacks:
 	db -1 ; no more level-up moves
 
 AipomEvosAttacks:
-	dbbp EVOLVE_MOVE, HEADBUTT, AMBIPOM
+	evo_data EVOLVE_MOVE, HEADBUTT, AMBIPOM
 	db -1 ; no more evolutions
 	db 1, SCRATCH
 	db 1, LEER ; Tail Whip → similar move
@@ -4214,7 +4229,7 @@ AipomEvosAttacks:
 	db -1 ; no more level-up moves
 
 SunkernEvosAttacks:
-	dbbp EVOLVE_ITEM, SUN_STONE, SUNFLORA
+	evo_data EVOLVE_ITEM, SUN_STONE, SUNFLORA
 	db -1 ; no more evolutions
 	db 1, SPLASH ; Growth → Hoppip move
 	db 1, ABSORB
@@ -4266,7 +4281,7 @@ endc
 	db -1 ; no more level-up moves
 
 YanmaEvosAttacks:
-	dbbp EVOLVE_MOVE, ANCIENTPOWER, YANMEGA
+	evo_data EVOLVE_MOVE, ANCIENTPOWER, YANMEGA
 	db -1 ; no more evolutions
 	db 1, TACKLE
 	db 1, FORESIGHT
@@ -4293,7 +4308,7 @@ endc
 	db -1 ; no more level-up moves
 
 WooperEvosAttacks:
-	dbbp EVOLVE_LEVEL, 20, QUAGSIRE
+	evo_data EVOLVE_LEVEL, 20, QUAGSIRE
 	db -1 ; no more evolutions
 	db 1, WATER_GUN
 	db 1, LEER ; Tail Whip → similar move
@@ -4365,7 +4380,7 @@ UmbreonEvosAttacks:
 	db -1 ; no more level-up moves
 
 MurkrowEvosAttacks:
-	dbbp EVOLVE_ITEM, DUSK_STONE, HONCHKROW
+	evo_data EVOLVE_ITEM, DUSK_STONE, HONCHKROW
 	db -1 ; no more evolutions
 	db 1, PECK
 	db 1, ASTONISH
@@ -4428,7 +4443,7 @@ SlowkingGalarianEvosAttacks:
 	db -1 ; no more level-up moves
 
 MisdreavusEvosAttacks:
-	dbbp EVOLVE_ITEM, DUSK_STONE, MISMAGIUS
+	evo_data EVOLVE_ITEM, DUSK_STONE, MISMAGIUS
 	db -1 ; no more evolutions
 	db 1, GROWL
 	db 1, TELEPORT ; Psywave → new move
@@ -4486,7 +4501,7 @@ GirafarigEvosAttacks:
 	db -1 ; no more level-up moves
 
 PinecoEvosAttacks:
-	dbbp EVOLVE_LEVEL, 31, FORRETRESS
+	evo_data EVOLVE_LEVEL, 31, FORRETRESS
 	db -1 ; no more evolutions
 	db 1, TACKLE
 	db 1, PROTECT
@@ -4554,7 +4569,7 @@ DunsparceEvosAttacks:
 	db -1 ; no more level-up moves
 
 GligarEvosAttacks:
-	dbbp EVOLVE_HOLDING, RAZOR_FANG, GLISCOR
+	evo_data EVOLVE_HOLDING, RAZOR_FANG, TR_EVENITE, GLISCOR
 	db -1 ; no more evolutions
 	db 1, POISON_STING
 	db 4, MUD_SLAP ; Sand Attack → similar move
@@ -4618,7 +4633,7 @@ SteelixEvosAttacks:
 	db -1 ; no more level-up moves
 
 SnubbullEvosAttacks:
-	dbbp EVOLVE_LEVEL, 23, GRANBULL
+	evo_data EVOLVE_LEVEL, 23, GRANBULL
 	db -1 ; no more evolutions
 	db 1, TACKLE
 	db 1, SCARY_FACE
@@ -4738,7 +4753,7 @@ HeracrossEvosAttacks:
 	db -1 ; no more level-up moves
 
 SneaselEvosAttacks:
-	dbbp EVOLVE_HOLDING, RAZOR_CLAW, WEAVILE
+	evo_data EVOLVE_HOLDING, RAZOR_CLAW, TR_EVENITE, WEAVILE
 	db -1 ; no more evolutions
 	db 1, SCRATCH
 	db 1, LEER
@@ -4759,7 +4774,7 @@ SneaselEvosAttacks:
 	db -1 ; no more level-up moves
 
 TeddiursaEvosAttacks:
-	dbbp EVOLVE_LEVEL, 30, URSARING
+	evo_data EVOLVE_LEVEL, 30, URSARING
 	db -1 ; no more evolutions
 	db 1, THIEF ; Covet → TM move
 	db 1, SCRATCH
@@ -4799,7 +4814,7 @@ UrsaringEvosAttacks:
 	db -1 ; no more level-up moves
 
 SlugmaEvosAttacks:
-	dbbp EVOLVE_LEVEL, 38, MAGCARGO
+	evo_data EVOLVE_LEVEL, 38, MAGCARGO
 	db -1 ; no more evolutions
 	db 1, MUD_SLAP ; Smog → TM move
 	db 6, EMBER
@@ -4839,7 +4854,7 @@ MagcargoEvosAttacks:
 	db -1 ; no more level-up moves
 
 SwinubEvosAttacks:
-	dbbp EVOLVE_LEVEL, 33, PILOSWINE
+	evo_data EVOLVE_LEVEL, 33, PILOSWINE
 	db -1 ; no more evolutions
 	db 1, TACKLE
 	db 1, FORESIGHT ; Odor Sleuth → similar move
@@ -4859,7 +4874,7 @@ SwinubEvosAttacks:
 	db -1 ; no more level-up moves
 
 PiloswineEvosAttacks:
-	dbbp EVOLVE_MOVE, ANCIENTPOWER, MAMOSWINE
+	evo_data EVOLVE_MOVE, ANCIENTPOWER, MAMOSWINE
 	db -1 ; no more evolutions
 	db 1, ANCIENTPOWER
 	db 1, FURY_STRIKES ; evolution move (Fury Attack)
@@ -4903,7 +4918,7 @@ CorsolaPlainEvosAttacks:
 	db -1 ; no more level-up moves
 
 CorsolaGalarianEvosAttacks:
-	dbbp EVOLVE_LEVEL, 38, CURSOLA, PLAIN_FORM
+	evo_data EVOLVE_LEVEL, 38, CURSOLA, PLAIN_FORM
 	db -1 ; no more evolutions
 	db 1, TACKLE
 	db 1, DEFENSE_CURL ; Harden → similar move
@@ -4921,7 +4936,7 @@ CorsolaGalarianEvosAttacks:
 	db -1 ; no more level-up moves
 
 RemoraidEvosAttacks:
-	dbbp EVOLVE_LEVEL, 25, OCTILLERY
+	evo_data EVOLVE_LEVEL, 25, OCTILLERY
 	db -1 ; no more evolutions
 	db 1, WRAP ; Sw/Sh move
 	db 1, WATER_GUN
@@ -5012,7 +5027,7 @@ SkarmoryEvosAttacks:
 	db -1 ; no more level-up moves
 
 HoundourEvosAttacks:
-	dbbp EVOLVE_LEVEL, 24, HOUNDOOM
+	evo_data EVOLVE_LEVEL, 24, HOUNDOOM
 	db -1 ; no more evolutions
 	db 1, LEER
 	db 1, EMBER
@@ -5070,7 +5085,7 @@ KingdraEvosAttacks:
 	db -1 ; no more level-up moves
 
 PhanpyEvosAttacks:
-	dbbp EVOLVE_LEVEL, 25, DONPHAN
+	evo_data EVOLVE_LEVEL, 25, DONPHAN
 	db -1 ; no more evolutions
 	db 1, FORESIGHT ; Odor Sleuth → similar move
 	db 1, TACKLE
@@ -5107,7 +5122,7 @@ DonphanEvosAttacks:
 	db -1 ; no more level-up moves
 
 Porygon2EvosAttacks:
-	dbbp EVOLVE_HOLDING, DUBIOUS_DISC, PORYGON_Z
+	evo_data EVOLVE_HOLDING, DUBIOUS_DISC, TR_ANYTIME, PORYGON_Z
 	db -1 ; no more evolutions
 	db 1, TACKLE
 	db 1, CONVERSION
@@ -5160,9 +5175,9 @@ SmeargleEvosAttacks:
 	db -1 ; no more level-up moves
 
 TyrogueEvosAttacks:
-	dbbp EVOLVE_STAT, 20, ATK_LT_DEF, HITMONCHAN
-	dbbp EVOLVE_STAT, 20, ATK_GT_DEF, HITMONLEE
-	dbbp EVOLVE_STAT, 20, ATK_EQ_DEF, HITMONTOP
+	evo_data EVOLVE_STAT, 20, ATK_LT_DEF, HITMONCHAN
+	evo_data EVOLVE_STAT, 20, ATK_GT_DEF, HITMONLEE
+	evo_data EVOLVE_STAT, 20, ATK_EQ_DEF, HITMONTOP
 	db -1 ; no more evolutions
 	db 1, TACKLE
 	db 1, RAGE ; Fake Out → event move
@@ -5189,7 +5204,7 @@ HitmontopEvosAttacks:
 	db -1 ; no more level-up moves
 
 SmoochumEvosAttacks:
-	dbbp EVOLVE_LEVEL, 30, JYNX
+	evo_data EVOLVE_LEVEL, 30, JYNX
 	db -1 ; no more evolutions
 	db 1, LICK
 	db 1, TACKLE ; Pound → similar move
@@ -5208,7 +5223,7 @@ SmoochumEvosAttacks:
 	db -1 ; no more level-up moves
 
 ElekidEvosAttacks:
-	dbbp EVOLVE_LEVEL, 30, ELECTABUZZ
+	evo_data EVOLVE_LEVEL, 30, ELECTABUZZ
 	db -1 ; no more evolutions
 	db 1, QUICK_ATTACK
 	db 1, LEER
@@ -5227,7 +5242,7 @@ ElekidEvosAttacks:
 	db -1 ; no more level-up moves
 
 MagbyEvosAttacks:
-	dbbp EVOLVE_LEVEL, 30, MAGMAR
+	evo_data EVOLVE_LEVEL, 30, MAGMAR
 	db -1 ; no more evolutions
 	db 1, HAZE ; Smog → new move
 	db 1, LEER
@@ -5344,7 +5359,7 @@ SuicuneEvosAttacks:
 	db -1 ; no more level-up moves
 
 LarvitarEvosAttacks:
-	dbbp EVOLVE_LEVEL, 30, PUPITAR
+	evo_data EVOLVE_LEVEL, 30, PUPITAR
 	db -1 ; no more evolutions
 	db 1, TACKLE ; Sw/Sh move
 	db 1, BITE
@@ -5366,7 +5381,7 @@ LarvitarEvosAttacks:
 	db -1 ; no more level-up moves
 
 PupitarEvosAttacks:
-	dbbp EVOLVE_LEVEL, 55, TYRANITAR
+	evo_data EVOLVE_LEVEL, 55, TYRANITAR
 	db -1 ; no more evolutions
 	db 1, DEFENSE_CURL ; evolution move
 	db 1, TACKLE ; Sw/Sh move
@@ -5470,7 +5485,7 @@ CelebiEvosAttacks:
 	db -1 ; no more level-up moves
 
 AzurillEvosAttacks:
-	dbbp EVOLVE_HAPPINESS, TR_ANYTIME, MARILL
+	evo_data EVOLVE_HAPPINESS, TR_ANYTIME, MARILL
 	db -1 ; no more evolutions
 	db 1, SPLASH
 	db 1, WATER_GUN
@@ -5485,7 +5500,7 @@ AzurillEvosAttacks:
 	db -1 ; no more level-up moves
 
 WynautEvosAttacks:
-	dbbp EVOLVE_LEVEL, 15, WOBBUFFET
+	evo_data EVOLVE_LEVEL, 15, WOBBUFFET
 	db -1 ; no more evolutions
 	db 1, SPLASH
 	db 1, CHARM
@@ -5545,7 +5560,7 @@ HonchkrowEvosAttacks:
 	db -1 ; no more level-up moves
 
 BonslyEvosAttacks:
-	dbbp EVOLVE_MOVE, ROCK_THROW, SUDOWOODO
+	evo_data EVOLVE_MOVE, ROCK_THROW, SUDOWOODO
 	db -1 ; no more evolutions
 	db 1, CHARM ; Fake Tears → new move
 	db 1, SUBSTITUTE ; Copycat → Sudowoodo event move
@@ -5563,8 +5578,8 @@ BonslyEvosAttacks:
 	db -1 ; no more level-up moves
 
 MimeJrEvosAttacks:
-	dbbp EVOLVE_MOVE, PROTECT, MR_MIME, PLAIN_FORM
-	dbbp EVOLVE_LOCATION, ICE_PATH, MR_MIME, GALARIAN_FORM
+	evo_data EVOLVE_MOVE, PROTECT, MR_MIME, PLAIN_FORM
+	evo_data EVOLVE_LOCATION, ICE_PATH, MR_MIME, GALARIAN_FORM
 	db -1 ; no more evolutions
 	db 1, BARRIER
 	db 1, CONFUSION
@@ -5588,7 +5603,7 @@ MimeJrEvosAttacks:
 	db -1 ; no more level-up moves
 
 HappinyEvosAttacks:
-	dbbp EVOLVE_HOLDING, HARD_STONE, CHANSEY
+	evo_data EVOLVE_HOLDING, LUCKY_EGG, TR_MORNDAY, CHANSEY
 	db -1 ; no more evolutions
 	db 1, MINIMIZE
 	db 1, TACKLE ; Pound → similar move
@@ -5601,7 +5616,7 @@ HappinyEvosAttacks:
 	db -1 ; no more level-up moves
 
 MunchlaxEvosAttacks:
-	dbbp EVOLVE_HAPPINESS, TR_ANYTIME, SNORLAX
+	evo_data EVOLVE_HAPPINESS, TR_ANYTIME, SNORLAX
 	db -1 ; no more evolutions
 	db 1, SWEET_KISS ; Recycle → event move
 	db 1, METRONOME
@@ -5623,7 +5638,7 @@ MunchlaxEvosAttacks:
 	db -1 ; no more level-up moves
 
 MantykeEvosAttacks
-	dbbp EVOLVE_PARTY, REMORAID, MANTINE
+	evo_data EVOLVE_PARTY, REMORAID, MANTINE
 	db -1 ; no more evolutions
 	db 1, GUST ; event move
 	db 1, TACKLE
@@ -6002,7 +6017,7 @@ endc
 	db -1 ; no more level-up moves
 
 MrMimeGalarianEvosAttacks:
-	dbbp EVOLVE_LEVEL, 42, MR__RIME
+	evo_data EVOLVE_LEVEL, 42, MR__RIME
 MrRimeEvosAttacks:
 	db -1 ; no more evolutions
 	db 1, RECOVER ; Slack Off → similar move

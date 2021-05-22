@@ -6,21 +6,13 @@ else
 	;   hp  atk  def  spd  sat  sdf
 endc
 
-if DEF(FAITHFUL)
 	db NORMAL, FLYING ; type
-else
-	db FLYING, FIGHTING ; type
-endc
 	db 45 ; catch rate
-if DEF(FAITHFUL)
 	db 94 ; base exp
-else
-	db 124 ; base exp
-endc
 	db NO_ITEM ; item 1
 	db LEEK ; item 2
 	dn GENDER_F50, 3 ; gender ratio, step cycles to hatch
-	INCBIN "gfx/pokemon/farfetch_d/front.dimensions"
+	INCBIN "gfx/pokemon/farfetch_d_plain/front.dimensions"
 	abilities_for FARFETCH_D, KEEN_EYE, INNER_FOCUS, DEFIANT
 	db GROWTH_MEDIUM_FAST ; growth rate
 	dn EGG_FLYING, EGG_GROUND ; egg groups

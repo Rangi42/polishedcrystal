@@ -1,20 +1,20 @@
-	db  45,  49,  49,  45,  65,  65 ; 318 BST
+	db  50,  80,  95,  10,  10,  45 ; 290 BST
 	;   hp  atk  def  spd  sat  sdf
 
-	db GRASS, POISON ; type
-	db 45 ; catch rate
-	db 64 ; base exp
+	db ROCK, ROCK ; type
+	db 255 ; catch rate
+	db 68 ; base exp
 	db NO_ITEM ; item 1
 	db NO_ITEM ; item 2
-	dn GENDER_F12_5, 3 ; gender ratio, step cycles to hatch
-	INCBIN "gfx/pokemon/bulbasaur/front.dimensions"
-	abilities_for BULBASAUR, OVERGROW, CHLOROPHYLL, EFFECT_SPORE
-	db GROWTH_MEDIUM_SLOW ; growth rate
-	dn EGG_MONSTER, EGG_PLANT ; egg groups
+	dn GENDER_F50, 3 ; gender ratio, step cycles to hatch
+	INCBIN "gfx/pokemon/bonsly/front.dimensions"
+	abilities_for BONSLY, STURDY, ROCK_HEAD, RATTLED
+	db GROWTH_MEDIUM_FAST ; growth rate
+	dn EGG_NONE, EGG_NONE ; egg groups
 
-	ev_yield   0,   0,   0,   0,   1,   0
+	ev_yield   0,   0,   1,   0,   0,   0
 	;         hp  atk  def  spd  sat  sdf
 
 	; tm/hm learnset
-	tmhm CURSE, TOXIC, HIDDEN_POWER, SUNNY_DAY, LIGHT_SCREEN, PROTECT, GIGA_DRAIN, SAFEGUARD, SOLAR_BEAM, RETURN, ROCK_SMASH, DOUBLE_TEAM, SLUDGE_BOMB, SUBSTITUTE, FACADE, REST, ATTRACT, ENERGY_BALL, FLASH, SWORDS_DANCE, CUT, STRENGTH, BODY_SLAM, DEFENSE_CURL, DOUBLE_EDGE, ENDURE, HEADBUTT, KNOCK_OFF, SEED_BOMB, SLEEP_TALK, SWAGGER
+	tmhm CURSE, CALM_MIND, TOXIC, HIDDEN_POWER, SUNNY_DAY, PROTECT, RETURN, DIG, ROCK_SMASH, DOUBLE_TEAM, SANDSTORM, SUBSTITUTE, FACADE, REST, ATTRACT, THIEF, ROCK_SLIDE, EXPLOSION, COUNTER, DEFENSE_CURL, DOUBLE_EDGE, EARTH_POWER, ENDURE, HEADBUTT, ROLLOUT, SLEEP_TALK, SUCKER_PUNCH, SWAGGER	; end
 	; end

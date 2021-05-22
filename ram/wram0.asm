@@ -384,7 +384,7 @@ wPlayerSubStatus1::
 ; 7 attract
 ; 6 flash fire
 ; 5 endure
-; 4 perish song
+; 4 unused
 ; 3 identified
 ; 2 protect
 ; 1 curse

@@ -16,7 +16,7 @@ endc
 	db HARD_STONE ; item 1
 	db LUMINOUSMOSS ; item 2
 	dn GENDER_F75, 3 ; gender ratio, step cycles to hatch
-	INCBIN "gfx/pokemon/corsola/front.dimensions"
+	INCBIN "gfx/pokemon/corsola_plain/front.dimensions"
 	abilities_for CORSOLA, HUSTLE, NATURAL_CURE, REGENERATOR
 	db GROWTH_FAST ; growth rate
 	dn EGG_WATER_1, EGG_WATER_3 ; egg groups

@@ -39,6 +39,7 @@ BattleEntryAbilities:
 	dbw PRESSURE, PressureAbility
 	dbw MOLD_BREAKER, MoldBreakerAbility
 	dbw NEUTRALIZING_GAS, NeutralizingGasAbility
+	dbw SCREEN_CLEANER, ScreenCleanerAbility
 	; fallthrough
 StatusHealAbilities:
 ; Status immunity abilities that autoproc if the user gets the status or the ability
@@ -494,6 +495,48 @@ FriskAbility:
 	call StdBattleTextbox
 	jmp EnableAnimations
 
+ScreenCleanerAbility:
+	; Text order is fastest team's screens fade first, then slowest.
+	; Preserves current battle turn (i.e. when mon is switched in via U-turn)
+	ld a, [wPlayerScreens]
+	and a
+	jr nz, .screens_up
+	ld a, [wEnemyScreens]
+	and a
+	ret z
+.screens_up
+	call DisableAnimations
+	call ShowAbilityActivation
+	ldh a, [hBattleTurn]
+	push af
+	call SetFastestTurn
+	call .do_it
+	call SwitchTurn
+	call .do_it
+	pop af
+	ldh [hBattleTurn], a
+	jmp EnableAnimations
+
+.do_it
+	farcall GetTurnAndPlacePrefix
+	ld hl, wPlayerScreens
+	jr z, .got_screens
+	ld hl, wEnemyScreens
+.got_screens
+	ld a, [hl]
+	ld [hl], 0
+	push af
+	and SCREENS_REFLECT
+	jr z, .no_reflect
+	ld hl, BattleText_ReflectFaded
+	call StdBattleTextbox
+.no_reflect
+	pop af
+	and SCREENS_LIGHT_SCREEN
+	ret z
+	ld hl, BattleText_LightScreenFell
+	jmp StdBattleTextbox
+
 RunEnemyOwnTempoAbility:
 	call SwitchTurn
 	call GetTrueUserAbility
@@ -653,19 +696,23 @@ RunContactAbilities:
 	cp POISON_TOUCH
 	call z, PoisonTouchAbility
 .skip_user_ability
-; abilities only trigger 30% of the time
+; abilities only trigger 30% of the time, aside from Perish Body
 ;
 ; Abilities always run from the ability user's perspective. This is
 ; consistent. Thus, a switchturn happens here. Feel free to rework
 ; the logic if you feel that this reduces readability.
-	call BattleRandom
-	cp 1 + 30 percent
-	ret nc
 	call GetOpponentAbilityAfterMoldBreaker
 	ld b, a
 
 	call CallOpponentTurn
 .do_enemy_abilities
+	cp PERISH_BODY
+	jr z, PerishBodyAbility
+
+	call BattleRandom
+	cp 1 + 30 percent
+	ret nc
+
 	ld a, b
 	cp EFFECT_SPORE
 	jr z, EffectSporeAbility
@@ -701,6 +748,32 @@ CuteCharmAbility:
 	call DisableAnimations
 	; this runs ShowAbilityActivation when relevant
 	farcall BattleCommand_attract
+	jmp EnableAnimations
+
+PerishBodyAbility:
+	; can't just use BattleCommand_perishsong
+	; since Soundproof has no effect here
+	ld hl, wPlayerPerishCount
+	ld de, wEnemyPerishCount
+	ldh a, [hBattleTurn]
+	and a
+	call z, SwapHLDE
+
+	ld a, [hl]
+	and a
+	ret nz ; don't activate if attacker already has a perish count
+	ld [hl], 4
+
+	ld a, [de]
+	and a
+	jr nz, .no_user
+	ld a, 4
+	ld [de], a
+.no_user
+	call DisableAnimations
+	call ShowAbilityActivation
+	ld hl, StartPerishBodyText
+	call StdBattleTextbox
 	jmp EnableAnimations
 
 EffectSporeAbility:
@@ -1494,6 +1567,7 @@ OffensiveDamageAbilities:
 	dbw PIXILATE, PixilateAbility
 	dbw GALVANIZE, GalvanizeAbility
 	dbw GORILLA_TACTICS, GorillaTacticsAbility
+	dbw STEELY_SPIRIT, SteelySpiritAbility
 	dbw -1, -1
 
 DefensiveDamageAbilities:
@@ -1536,11 +1610,19 @@ SwarmAbility:
 	ld b, BUG
 PinchAbility:
 ; 150% damage if the user is in a pinch (1/3HP or less) for given type
+	push bc
+	call CheckPinch
+	pop bc
+	jr z, TypeDependentAbility
+	ret
+
+SteelySpiritAbility:
+	ld b, STEEL
+TypeDependentAbility:
+; 150% damage if move type matches given type in b
 	ld a, BATTLE_VARS_MOVE_TYPE
 	call GetBattleVar
 	cp b
-	ret nz
-	call CheckPinch
 	ret nz
 	ln a, 3, 2 ; x1.5
 	jmp MultiplyAndDivide
