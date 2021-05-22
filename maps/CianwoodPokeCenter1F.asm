@@ -43,11 +43,12 @@ PokemonJournalChuckScript:
 
 CianwoodGymGuyScript:
 	checkevent EVENT_GOT_HM04_STRENGTH
-	iftrue_jumptextfaceplayer .Text
 	iffalse .no_strength
 	checkevent EVENT_BEAT_CHUCK
 	iftrue_jumptextfaceplayer .WinText
-..no_strength
+	jumptextfaceplayer .Text
+
+.no_strength
 	faceplayer
 	opentext
 	writetext .Text
