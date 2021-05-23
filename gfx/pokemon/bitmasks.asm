@@ -288,22 +288,22 @@ ArbokKogaBitmasks:   INCLUDE "gfx/pokemon/arbok_koga/bitmask.asm"
 ArbokAgathaBitmasks: INCLUDE "gfx/pokemon/arbok_agatha/bitmask.asm"
 ArbokArianaBitmasks: INCLUDE "gfx/pokemon/arbok_ariana/bitmask.asm"
 
-MagikarpPlainBitmasks:
-MagikarpSkellyBitmasks:
-MagikarpCalico1Bitmasks:
-MagikarpCalico2Bitmasks:
-MagikarpCalico3Bitmasks:
-MagikarpTwoToneBitmasks:
-MagikarpOrcaBitmasks:
-MagikarpDapplesBitmasks:
-MagikarpTigerBitmasks:
-MagikarpZebraBitmasks:
-MagikarpStripeBitmasks:
-MagikarpBubblesBitmasks:
-MagikarpForeheadBitmasks:
-MagikarpMaskBitmasks:
-MagikarpSaucyBitmasks:
-MagikarpRaindropBitmasks: INCLUDE "gfx/pokemon/magikarp/bitmask.asm"
+MagikarpPlainBitmasks:    INCLUDE "gfx/pokemon/magikarp_plain/bitmask.asm"
+MagikarpSkellyBitmasks:   INCLUDE "gfx/pokemon/magikarp_skelly/bitmask.asm"
+MagikarpCalico1Bitmasks:  INCLUDE "gfx/pokemon/magikarp_calico1/bitmask.asm"
+MagikarpCalico2Bitmasks:  INCLUDE "gfx/pokemon/magikarp_calico2/bitmask.asm"
+MagikarpCalico3Bitmasks:  INCLUDE "gfx/pokemon/magikarp_calico3/bitmask.asm"
+MagikarpTwoToneBitmasks:  INCLUDE "gfx/pokemon/magikarp_twotone/bitmask.asm"
+MagikarpOrcaBitmasks:     INCLUDE "gfx/pokemon/magikarp_orca/bitmask.asm"
+MagikarpDapplesBitmasks:  INCLUDE "gfx/pokemon/magikarp_dapples/bitmask.asm"
+MagikarpTigerBitmasks:    INCLUDE "gfx/pokemon/magikarp_tiger/bitmask.asm"
+MagikarpZebraBitmasks:    INCLUDE "gfx/pokemon/magikarp_zebra/bitmask.asm"
+MagikarpStripeBitmasks:   INCLUDE "gfx/pokemon/magikarp_stripe/bitmask.asm"
+MagikarpBubblesBitmasks:  INCLUDE "gfx/pokemon/magikarp_bubbles/bitmask.asm"
+MagikarpForeheadBitmasks: INCLUDE "gfx/pokemon/magikarp_forehead/bitmask.asm"
+MagikarpMaskBitmasks:     INCLUDE "gfx/pokemon/magikarp_mask/bitmask.asm"
+MagikarpSaucyBitmasks:    INCLUDE "gfx/pokemon/magikarp_saucy/bitmask.asm"
+MagikarpRaindropBitmasks: INCLUDE "gfx/pokemon/magikarp_raindrop/bitmask.asm"
 
 GyaradosPlainBitmasks: INCLUDE "gfx/pokemon/gyarados_plain/bitmask.asm"
 GyaradosRedBitmasks:   INCLUDE "gfx/pokemon/gyarados_red/bitmask.asm"
@@ -340,6 +340,7 @@ DugtrioAlolanBitmasks: INCLUDE "gfx/pokemon/dugtrio_alolan/bitmask.asm"
 
 MeowthPlainBitmasks:  INCLUDE "gfx/pokemon/meowth_plain/bitmask.asm"
 MeowthAlolanBitmasks: INCLUDE "gfx/pokemon/meowth_alolan/bitmask.asm"
+MeowthGalarianBitmasks: INCLUDE "gfx/pokemon/meowth_galarian/bitmask.asm"
 
 PersianPlainBitmasks:  INCLUDE "gfx/pokemon/persian_plain/bitmask.asm"
 PersianAlolanBitmasks: INCLUDE "gfx/pokemon/persian_alolan/bitmask.asm"

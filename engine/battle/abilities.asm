@@ -717,11 +717,11 @@ RunContactAbilities:
 	cp EFFECT_SPORE
 	jr z, EffectSporeAbility
 	cp FLAME_BODY
-	jr z, FlameBodyAbility
+	jmp z, FlameBodyAbility
 	cp POISON_POINT
-	jr z, PoisonPointAbility
+	jmp z, PoisonPointAbility
 	cp STATIC
-	jr z, StaticAbility
+	jmp z, StaticAbility
 	cp CUTE_CHARM
 	jr z, CuteCharmAbility
 	ret

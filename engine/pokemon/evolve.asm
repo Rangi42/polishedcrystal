@@ -88,6 +88,8 @@ EvolveAfterBattle_MasterLoop:
 	jmp z, .evs
 	cp EVOLVE_LEVEL
 	jmp z, .level
+	cp EVOLVE_PARTY
+	jmp z, .party
 	cp EVOLVE_HAPPINESS
 	jr z, .happiness
 
@@ -170,14 +172,47 @@ EvolveAfterBattle_MasterLoop:
 	and a
 	jmp nz, .dont_evolve_3
 	call ChangeFormOnItemEvolution
-	jr .proceed
+	jmp .proceed
+
+.party
+	ld a, [hli]
+	ld c, a
+	push hl
+	push de
+	ld hl, wPartyMon1Species
+	ld a, [wPartyCount]
+	ld b, a
+.party_loop
+	ld a, [hl]
+	cp c
+	jr nz, .next
+	ld de, MON_FORM - MON_SPECIES
+	add hl, de
+	ld a, [hl]
+	and a
+	jr z, .party_ok
+	dec b
+	jmp z, .party_no
+	ld de, PARTYMON_STRUCT_LENGTH - MON_FORM
+	add hl, de
+	jr .party_loop
+
+.party_no
+	pop de
+	pop hl
+	jmp .dont_evolve_3
+
+.party_ok
+	pop de
+	pop hl
+	jmp .proceed
 
 .holding
 	ld a, [hli]
 	ld b, a
 	ld a, [wTempMonItem]
 	cp b
-	jmp nz, .dont_evolve_3
+	jmp nz, .dont_evolve_2
 	ld a, [hli]
 	cp TR_ANYTIME
 	jr z, .ok
@@ -240,8 +275,17 @@ endr
 
 .crit
 	inc hl
-	ld a, [wCritCount]
+	push hl
+	push bc
+	ld hl, wCriticalCount
+	ld a, [wCurPartyMon]
+	ld c, a
+	ld b, 0
+	add hl, bc
+	ld a, [hl]
 	cp 3
+	pop bc
+	pop hl
 	jmp c, .dont_evolve_3
 	jr .proceed
 

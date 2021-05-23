@@ -239,6 +239,8 @@ TangelaBackpic:           INCBIN "gfx/pokemon/tangela/back.2bpp.lz"
 
 SECTION "Pokemon Pics 12", ROMX
 
+KangaskhanFrontpic:       INCBIN "gfx/pokemon/kangaskhan/front.animated.2bpp.lz"
+KangaskhanBackpic:        INCBIN "gfx/pokemon/kangaskhan/back.2bpp.lz"
 HorseaFrontpic:           INCBIN "gfx/pokemon/horsea/front.animated.2bpp.lz"
 HorseaBackpic:            INCBIN "gfx/pokemon/horsea/back.2bpp.lz"
 SeadraFrontpic:           INCBIN "gfx/pokemon/seadra/front.animated.2bpp.lz"
@@ -941,7 +943,7 @@ SECTION "Mime Jr./Mr.Mime/Mr.Rime Pics", ROMX
 
 MrMimePlainFrontpic:      INCBIN "gfx/pokemon/mr__mime_plain/front.animated.2bpp.lz"
 MrMimePlainBackpic:       INCBIN "gfx/pokemon/mr__mime_plain/back.2bpp.lz"
-MrMimeGalarianFrontpic:   INCBIN "gfx/pokemon/mr__mime_galarain/front.animated.2bpp.lz"
+MrMimeGalarianFrontpic:   INCBIN "gfx/pokemon/mr__mime_galarian/front.animated.2bpp.lz"
 MrMimeGalarianBackpic:    INCBIN "gfx/pokemon/mr__mime_galarian/back.2bpp.lz"
 MimeJrFrontpic:           INCBIN "gfx/pokemon/mime_jr_/front.animated.2bpp.lz"
 MimeJrBackpic:            INCBIN "gfx/pokemon/mime_jr_/back.2bpp.lz"
@@ -965,7 +967,7 @@ MoltresGalarianFrontpic:  INCBIN "gfx/pokemon/moltres_galarian/front.animated.2b
 MoltresGalarianBackpic:   INCBIN "gfx/pokemon/moltres_galarian/back.2bpp.lz"
 
 
-SECTION "
+SECTION "Corsola/Cursola Pics", ROMX
 CorsolaPlainFrontpic:     INCBIN "gfx/pokemon/corsola_plain/front.animated.2bpp.lz"
 CorsolaPlainBackpic:      INCBIN "gfx/pokemon/corsola_plain/back.2bpp.lz"
 CorsolaGalarianFrontpic:  INCBIN "gfx/pokemon/corsola_galarian/front.animated.2bpp.lz"

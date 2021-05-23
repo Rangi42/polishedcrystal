@@ -342,6 +342,7 @@ DugtrioAlolanAnimation: INCLUDE "gfx/pokemon/dugtrio_alolan/anim.asm"
 
 MeowthPlainAnimation:  INCLUDE "gfx/pokemon/meowth_plain/anim.asm"
 MeowthAlolanAnimation: INCLUDE "gfx/pokemon/meowth_alolan/anim.asm"
+MeowthGalarianAnimation: INCLUDE "gfx/pokemon/meowth_galarian/anim.asm"
 
 PersianPlainAnimation:  INCLUDE "gfx/pokemon/persian_plain/anim.asm"
 PersianAlolanAnimation: INCLUDE "gfx/pokemon/persian_alolan/anim.asm"

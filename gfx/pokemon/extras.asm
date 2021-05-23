@@ -340,6 +340,7 @@ DugtrioAlolanAnimationExtra: INCLUDE "gfx/pokemon/dugtrio_alolan/anim_idle.asm"
 
 MeowthPlainAnimationExtra:  INCLUDE "gfx/pokemon/meowth_plain/anim_idle.asm"
 MeowthAlolanAnimationExtra: INCLUDE "gfx/pokemon/meowth_alolan/anim_idle.asm"
+MeowthGalarianAnimationExtra: INCLUDE "gfx/pokemon/meowth_galarian/anim_idle.asm"
 
 PersianPlainAnimationExtra:  INCLUDE "gfx/pokemon/persian_plain/anim_idle.asm"
 PersianAlolanAnimationExtra: INCLUDE "gfx/pokemon/persian_alolan/anim_idle.asm"

@@ -27,7 +27,7 @@ ValidVariantRanges: ; for Wonder Trade
 	dp SLOWBRO,    2 ; GALARIAN
 	dp FARFETCH_D, 2 ; GALARIAN
 	dp WEEZING,    2 ; GALARIAN
-	dp MR_MIME,    2 ; GALARIAN
+	dp MR__MIME,   2 ; GALARIAN
 	dp ARTICUNO,   2 ; GALARIAN
 	dp ZAPDOS,     2 ; GALARIAN
 	dp MOLTRES,    2 ; GALARIAN

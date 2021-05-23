@@ -355,6 +355,9 @@ PerrserkerIcon::   INCBIN "gfx/icons/perrserker.2bpp.lz"
 CursolaIcon::      INCBIN "gfx/icons/cursola.2bpp.lz"
 SirfetchDIcon::    INCBIN "gfx/icons/sirfetch_d.2bpp.lz"
 MrRimeIcon::       INCBIN "gfx/icons/mr__rime.2bpp.lz"
+MrMimeGalarianIcon:: INCBIN "gfx/icons/mr__mime_galarian.2bpp.lz"
+CorsolaGalarianIcon:: INCBIN "gfx/icons/corsola_galarian.2bpp.lz"
+
 
 SECTION "Mon Icons 19", ROMX
 
@@ -390,3 +393,5 @@ UnownZIcon::       INCBIN "gfx/icons/unown_z.2bpp.lz"
 UnownExclamationIcon:: INCBIN "gfx/icons/unown_exclamation.2bpp.lz"
 UnownQuestionIcon:: INCBIN "gfx/icons/unown_question.2bpp.lz"
 ExeggutorAlolanIcon:: INCBIN "gfx/icons/exeggutor_alolan.2bpp.lz"
+MeowthGalarianIcon:: INCBIN "gfx/icons/meowth_galarian.2bpp.lz"
+FarfetchDGalarianIcon:: INCBIN "gfx/icons/farfetch_d_galarian.2bpp.lz"

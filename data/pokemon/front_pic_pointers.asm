@@ -1,5 +1,5 @@
-FrontpicPointers::
-	table_width 3, FrontpicPointers
+FrontPicPointers::
+	table_width 3, FrontPicPointers
 	dba BulbasaurFrontpic
 	dba IvysaurFrontpic
 	dba VenusaurFrontpic

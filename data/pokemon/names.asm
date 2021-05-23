@@ -282,6 +282,6 @@ PokemonNames::
 	rawchar "Sylveon@@@"
 	rawchar "Perrserker"
 	rawchar "Cursola@@@"
-	rawchar "Sirfetch'd"
+	rawchar "Sirfetch'd@"
 	rawchar "Mr.Rime@@@"
 	assert_table_length NUM_SPECIES + 1

@@ -1186,6 +1186,15 @@ BattleCommand_critical:
 .guranteed_crit
 	ld a, 1
 	ld [wCriticalHit], a
+	ldh a, [hBattleTurn]
+	and a
+	ret nz
+	ld hl, wCriticalCount
+	ld a, [wCurBattleMon]
+	ld c, a
+	ld b, 0
+	add hl, bc
+	inc [hl]
 	ret
 
 CheckAirBalloon:

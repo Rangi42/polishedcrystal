@@ -47,7 +47,6 @@ Pokémon Polished Crystal would never have been finished without the help of man
 * JaceDeane for the Goldenrod Museum paintings, many Pokémon and trainer sprites, Prof. Ivy's overworld sprite, and some tiles.
 * bloodless for sprites of Buck, Maylene, Skyla, Veteran♂, some variant Pikachu, Diglett, and Dugtrio.
 * Kuroko Aizawa for sprites of Prof. Ivy, Looker, Cheryl, Officer♀, Aroma Lady, Artist.
-* Scarlax for most Galarian backpics and Galarian Farfetch'd animation.
 * SCMidna for animations of Alolan Diglett and Dugtrio, Munchlax, Unown ! and ?, and Surfing Pikachu, and the stat trainers' overworld sprites.
 * Acrozz for many HGSS Pokémon palettes, and sprites and animations of Magikarp forms.
 * Freeline for animations of Honchkrow and Munchlax, and the Rocket Executives' and stat trainers' overworld sprites.
@@ -57,6 +56,8 @@ Pokémon Polished Crystal would never have been finished without the help of man
 * spritershawn for sprites of Red, Blue, and Green.
 * isamuakai01 for sprites of Steven and Cynthia.
 * Maddalena for sprites of Imakuni and the Ghost.
+* Scarlax for most 8th gen backpics.
+* EeveeEe1999 for 8th gen menu icons.
 * Luna for some sprites and tiles.
 * Twilir for Lyra's back sprite.
 * Danny-E for Lorelei's sprite.

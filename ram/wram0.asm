@@ -349,8 +349,6 @@ wBattleMonNickname:: ds MON_NAME_LENGTH
 
 wBattleMon:: battle_struct wBattleMon
 
-	ds 2
-
 wWildMon:: db
 	ds 1
 wEnemyTrainerItem1:: db
@@ -447,7 +445,6 @@ wPlayerDisableCount:: db
 wPlayerEncoreCount:: db ; also for choice-locking
 wPlayerPerishCount:: db
 wPlayerProtectCount:: db
-	ds 1
 
 wEnemyAbility:: db
 wEnemyRolloutCount:: db
@@ -457,14 +454,13 @@ wEnemyDisableCount:: db
 wEnemyEncoreCount:: db
 wEnemyPerishCount:: db
 wEnemyProtectCount:: db
-	ds 1
+
+wCriticalCount:: ds PARTY_LENGTH ; for g-Farfetch'd evolution
 wBattleSubStatusWRAMEnd::
 
 wDamageTaken::
 ; Format: $xy yy, x = total multihit hits, y = total damage
 	dw
-
-	ds 2 ; unused
 
 wBattleReward:: ds 3
 wBattleAnimParam::

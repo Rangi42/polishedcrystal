@@ -331,7 +331,7 @@ INCLUDE "data/pokemon/dex_entries/magneton.asm"
 
 SECTION "FarfetchDPlainPokedexEntry", ROMX
 FarfetchDPlainPokedexEntry::
-INCLUDE "data/pokemon/dex_entries/farfetchd_plain.asm"
+INCLUDE "data/pokemon/dex_entries/farfetch_d_plain.asm"
 
 SECTION "DoduoPokedexEntry", ROMX
 DoduoPokedexEntry::
@@ -349,8 +349,8 @@ SECTION "DewgongPokedexEntry", ROMX
 DewgongPokedexEntry::
 INCLUDE "data/pokemon/dex_entries/dewgong.asm"
 
-SECTION "GrimerPokedexEntry", ROMX
-GrimerPokedexEntry::
+SECTION "GrimerPlainPokedexEntry", ROMX
+GrimerPlainPokedexEntry::
 INCLUDE "data/pokemon/dex_entries/grimer_plain.asm"
 
 SECTION "MukPlainPokedexEntry", ROMX
@@ -551,7 +551,7 @@ INCLUDE "data/pokemon/dex_entries/porygon.asm"
 
 SECTION "OmanytePokedexEntry", ROMX
 OmanytePokedexEntry::
-INCLUDE "data/pokemon/dex_entries/onamyte.asm"
+INCLUDE "data/pokemon/dex_entries/omanyte.asm"
 
 SECTION "OmastarPokedexEntry", ROMX
 OmastarPokedexEntry::
@@ -1013,6 +1013,10 @@ SECTION "WynautPokedexEntry", ROMX
 WynautPokedexEntry::
 INCLUDE "data/pokemon/dex_entries/wynaut.asm"
 
+SECTION "AmbipomPokedexEntry", ROMX
+AmbipomPokedexEntry::
+INCLUDE "data/pokemon/dex_entries/ambipom.asm"
+
 SECTION "MismagiusPokedexEntry", ROMX
 MismagiusPokedexEntry::
 INCLUDE "data/pokemon/dex_entries/mismagius.asm"
@@ -1111,7 +1115,7 @@ INCLUDE "data/pokemon/dex_entries/cursola.asm"
 
 SECTION "SirfetchDPokedexEntry", ROMX
 SirfetchDPokedexEntry::
-INCLUDE "data/pokemon/dex_entries/sirfetchd.asm"
+INCLUDE "data/pokemon/dex_entries/sirfetch_d.asm"
 
 SECTION "MrRimePokedexEntry", ROMX
 MrRimePokedexEntry::
@@ -1164,6 +1168,22 @@ INCLUDE "data/pokemon/dex_entries/dugtrio_alolan.asm"
 SECTION "MeowthAlolanPokedexEntry", ROMX
 MeowthAlolanPokedexEntry::
 INCLUDE "data/pokemon/dex_entries/meowth_alolan.asm"
+
+SECTION "GrimerAlolanPokedexEntry", ROMX
+GrimerAlolanPokedexEntry::
+INCLUDE "data/pokemon/dex_entries/grimer_alolan.asm"
+
+SECTION "MukAlolanPokedexEntry", ROMX
+MukAlolanPokedexEntry::
+INCLUDE "data/pokemon/dex_entries/muk_alolan.asm"
+
+SECTION "ExeggutorAlolanPokedexEntry", ROMX
+ExeggutorAlolanPokedexEntry::
+INCLUDE "data/pokemon/dex_entries/exeggutor_alolan.asm"
+
+SECTION "MarowakAlolanPokedexEntry", ROMX
+MarowakAlolanPokedexEntry::
+INCLUDE "data/pokemon/dex_entries/marowak_alolan.asm"
 
 SECTION "MeowthGalarianPokedexEntry", ROMX
 MeowthGalarianPokedexEntry::

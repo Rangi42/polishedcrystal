@@ -147,6 +147,8 @@ AbilityNames:
 	dw PastelVeil
 	dw QuickDraw
 	dw SteelySpirit
+	dw PerishBody
+	dw ScreenCleaner
 	assert_table_length NUM_ABILITIES
 
 NoAbility:       rawchar "---@"

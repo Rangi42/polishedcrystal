@@ -130,7 +130,7 @@ PokedexDataPointerTable:
 	dba PinsirPokedexEntry
 	dba TaurosPokedexEntry
 	dba MagikarpPokedexEntry
-	dba GyaradosPokedexEntry
+	dba GyaradosPlainPokedexEntry
 	dba LaprasPokedexEntry
 	dba DittoPokedexEntry
 	dba EeveePokedexEntry
@@ -150,7 +150,7 @@ PokedexDataPointerTable:
 	dba DratiniPokedexEntry
 	dba DragonairPokedexEntry
 	dba DragonitePokedexEntry
-	dba MewtwoPokedexEntry
+	dba MewtwoPlainPokedexEntry
 	dba MewPokedexEntry
 	dba ChikoritaPokedexEntry
 	dba BayleefPokedexEntry

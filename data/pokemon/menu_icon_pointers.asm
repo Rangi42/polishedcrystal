@@ -52,7 +52,7 @@ IconPointers:
 	dba VenomothIcon
 	dba DiglettIcon
 	dba DugtrioIcon
-	dba MeowthIcon
+	dba MeowthPlainIcon
 	dba PersianIcon
 	dba PsyduckIcon
 	dba GolduckIcon
@@ -342,7 +342,7 @@ endr
 	dba NinetalesIcon ; TODO
 	dba DiglettIcon ; TODO
 	dba DugtrioIcon ; TODO
-	dba MeowthIcon ; TODO
+	dba MeowthPlainIcon ; TODO
 	dba PersianIcon ; TODO
 	dba GeodudeIcon ; TODO
 	dba GravelerIcon ; TODO
@@ -351,17 +351,18 @@ endr
 	dba MukIcon ; TODO
 	dba ExeggutorAlolanIcon
 	dba MarowakIcon ; TODO
+	dba MeowthGalarianIcon
 	dba PonytaIcon ; TODO
 	dba RapidashIcon ; TODO
-	dba FarfetchDPlainIcon ; TODO
 	dba SlowpokeIcon ; TODO
 	dba SlowbroIcon ; TODO
+	dba FarfetchDGalarianIcon
 	dba WeezingIcon ; TODO
-	dba MrMimePlainIcon ; TODO
+	dba MrMimeGalarianIcon
 	dba ArticunoIcon ; TODO
 	dba ZapdosIcon ; TODO
 	dba MoltresIcon ; TODO
 	dba SlowkingIcon ; TODO
-	dba CorsolaPlainIcon ; TODO
+	dba CorsolaGalarianIcon
 
 	assert_table_length NUM_UNIQUE_POKEMON + 1

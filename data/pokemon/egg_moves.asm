@@ -305,7 +305,7 @@ SlowpokeGalarianEggMoves:
 	db ZEN_HEADBUTT
 	db $ff
 
-FarfetchDGalarianMoves:
+FarfetchDGalarianEggMoves:
 	db COUNTER
 FarfetchDPlainEggMoves:
 	db FORESIGHT

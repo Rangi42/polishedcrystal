@@ -2,14 +2,14 @@ INCLUDE "constants.asm"
 
 evo_data: MACRO
 	db \1, \2 ; evolution type, parameter
-	if \2 == EVOLVE_STAT || \2 == EVOLVE_HOLDING
+	if (\1 == EVOLVE_STAT) || (\1 == EVOLVE_HOLDING)
 		db \3 ;  ATK_*_DEF | time of day
 		shift
 	endc
 	if _NARG > 3
 		dp \3, \4
 	else
-		dp \3
+		dp \3, NO_FORM
 	endc
 ENDM
 
@@ -1906,7 +1906,7 @@ FarfetchDGalarianEvosAttacks:
 if DEF(FAITHFUL)
 	db 15, ROCK_SMASH
 else
-	db 15, REVENGE ; Rock Smash → TM move
+	db 15, REVERSAL ; Rock Smash → TM move
 endc
 	db 20, FEINT_ATTACK ; Brutal Swing → similar move
 	db 25, PROTECT ; Detect → similar move
@@ -5578,8 +5578,8 @@ BonslyEvosAttacks:
 	db -1 ; no more level-up moves
 
 MimeJrEvosAttacks:
-	evo_data EVOLVE_MOVE, PROTECT, MR_MIME, PLAIN_FORM
-	evo_data EVOLVE_LOCATION, ICE_PATH, MR_MIME, GALARIAN_FORM
+	evo_data EVOLVE_MOVE, PROTECT, MR__MIME, PLAIN_FORM
+	evo_data EVOLVE_LOCATION, ICE_PATH, MR__MIME, GALARIAN_FORM
 	db -1 ; no more evolutions
 	db 1, BARRIER
 	db 1, CONFUSION
@@ -5603,7 +5603,7 @@ MimeJrEvosAttacks:
 	db -1 ; no more level-up moves
 
 HappinyEvosAttacks:
-	evo_data EVOLVE_HOLDING, LUCKY_EGG, TR_MORNDAY, CHANSEY
+	evo_data EVOLVE_LEVEL, 20, CHANSEY
 	db -1 ; no more evolutions
 	db 1, MINIMIZE
 	db 1, TACKLE ; Pound → similar move
@@ -5637,7 +5637,7 @@ MunchlaxEvosAttacks:
 	db 57, DOUBLE_EDGE ; Last Resort → egg move
 	db -1 ; no more level-up moves
 
-MantykeEvosAttacks
+MantykeEvosAttacks:
 	evo_data EVOLVE_PARTY, REMORAID, MANTINE
 	db -1 ; no more evolutions
 	db 1, GUST ; event move
@@ -5982,7 +5982,7 @@ CursolaEvosAttacks:
 	db 35, GIGA_DRAIN ; Strength Sap → TM move
 	db 40, POWER_GEM
 	db 45, NIGHT_SHADE
-	db 50, SAHDOW_BALL ; Grudge →
+	db 50, SHADOW_BALL ; Grudge → TR move
 	db 55, MIRROR_COAT
 	db -1 ; no more level-up moves
 
@@ -5997,7 +5997,7 @@ SirfetchDEvosAttacks:
 if DEF(FAITHFUL)
 	db 15, ROCK_SMASH
 else
-	db 15, REVENGE ; Rock Smash → TM move
+	db 15, REVERSAL ; Rock Smash → TM move
 endc
 	db 20, FEINT_ATTACK ; Brutal Swing → similar move
 	db 25, PROTECT ; Detect → similar move
