@@ -25,6 +25,7 @@ Pokémon Polished Crystal would never have been finished without the help of man
 * Armada651 for the playable Celadon Game Corner lucky slot machine.
 * tonyism for the in-battle shiny icon code.
 * Tachytaenius for the ability to change the Ball a Pokémon is in.
+* SadisticMystic and Kate Dering for vanilla battle engine testing and documentation.
 
 
 ## Music

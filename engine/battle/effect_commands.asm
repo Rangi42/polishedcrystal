@@ -1186,15 +1186,6 @@ BattleCommand_critical:
 .guranteed_crit
 	ld a, 1
 	ld [wCriticalHit], a
-	ldh a, [hBattleTurn]
-	and a
-	ret nz
-	ld hl, wCriticalCount
-	ld a, [wCurBattleMon]
-	ld c, a
-	ld b, 0
-	add hl, bc
-	inc [hl]
 	ret
 
 CheckAirBalloon:
@@ -2581,6 +2572,30 @@ BattleCommand_criticaltext:
 	ld hl, CriticalHitText
 	call StdBattleTextbox
 
+; Add 1 to the critical hit count if it's the player's turn
+	ld a, [wLinkMode]
+	and a
+	jr nz, .cont
+	ld a, [wInBattleTowerBattle]
+	and a
+	jr nz, .cont
+	ldh a, [hBattleTurn]
+	and a
+	jr nz, .cont
+	ld hl, wCriticalCount
+	ld a, [wCurBattleMon]
+	ld c, a
+	ld b, 0
+	add hl, bc
+	inc [hl]
+	ld a, [hl]
+	cp 3
+	jr c, .cont
+	ld b, SET_FLAG
+	ld hl, wEvolvableFlags
+	predef FlagPredef ; c still contains wCurBatlteMon
+
+.cont
 	xor a
 	ld [wCriticalHit], a
 

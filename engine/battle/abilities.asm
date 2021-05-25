@@ -496,8 +496,8 @@ FriskAbility:
 	jmp EnableAnimations
 
 ScreenCleanerAbility:
-	; Text order is fastest team's screens fade first, then slowest.
-	; Preserves current battle turn (i.e. when mon is switched in via U-turn)
+	; Text order is player 1's screens fade, then player 2's.
+	; Preserves current battle turn (i.e. when mon is switched out via Roar)
 	ld a, [wPlayerScreens]
 	and a
 	jr nz, .screens_up
@@ -509,30 +509,36 @@ ScreenCleanerAbility:
 	call ShowAbilityActivation
 	ldh a, [hBattleTurn]
 	push af
-	call SetFastestTurn
-	call .do_it
+	ldh a, [hSerialConnectionStatus]
+	cp USING_INTERNAL_CLOCK
+	ld a, 1
+	jr z, .player_2
+	dec a
+.player_2
+	ldh [hBattleTurn], a
+	call .clear_screens
 	call SwitchTurn
-	call .do_it
+	call .clear_screens
 	pop af
 	ldh [hBattleTurn], a
 	jmp EnableAnimations
 
-.do_it
+.clear_screens
 	farcall GetTurnAndPlacePrefix
 	ld hl, wPlayerScreens
 	jr z, .got_screens
 	ld hl, wEnemyScreens
 .got_screens
 	ld a, [hl]
-	ld [hl], 0
 	push af
+	ld [hl], 0
 	and SCREENS_REFLECT
 	jr z, .no_reflect
 	ld hl, BattleText_ReflectFaded
 	call StdBattleTextbox
 .no_reflect
 	pop af
-	and SCREENS_LIGHT_SCREEN
+	and SCREENS_LIGHTSCREEN
 	ret z
 	ld hl, BattleText_LightScreenFell
 	jmp StdBattleTextbox
