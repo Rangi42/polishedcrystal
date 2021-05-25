@@ -2958,7 +2958,7 @@ BillsPC_Release:
 
 BillsPC_Rename:
 	call BillsPC_PrepareTransistion
-	ld b, 4
+	ld b, $4 ; box
 	ld de, wStringBuffer2
 	farcall NamingScreen
 	ld hl, wStringBuffer2
@@ -3484,9 +3484,9 @@ BillsPC_ApplyPals:
 .loop
 	; Copy white to color 0.
 if !DEF(MONOCHROME)
-	ld a, $ff
+	ld a, LOW(palred 31 + palgreen 31 + palblue 31)
 	ld [hli], a
-	ld a, $7f
+	ld a, HIGH(palred 31 + palgreen 31 + palblue 31)
 	ld [hli], a
 else
 	ld a, LOW(PAL_MONOCHROME_WHITE)

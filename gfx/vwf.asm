@@ -97,7 +97,7 @@ VWFWidths:
 	db 4 ; $de "+"
 	db 6 ; $df "<SHARP>"
 	db 5 ; $e0 "0"
-	db 4 ; $e1 "1"
+	db 5 ; $e1 "1"
 	db 5 ; $e2 "2"
 	db 5 ; $e3 "3"
 	db 5 ; $e4 "4"

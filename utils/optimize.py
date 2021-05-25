@@ -304,6 +304,12 @@ patterns = {
 	(lambda line1, prev: re.match(r'(?:cp|or) [%\$&]?0+$', line1.code)
 		or re.match(r'and (?:255|-1|\$[Ff][Ff]|%11111111|&377)$', line1.code)),
 ],
+' ei + ret': [
+	# Bad: ei / ret
+	# Good: reti
+	(lambda line1, prev: line1.code == 'ei'),
+	(lambda line2, prev: line2.code == 'ret'),
+],
 'Tail call': [
 	# Bad: call Foo / ret (unless Foo messes with the stack)
 	# Good: jr|jp Foo

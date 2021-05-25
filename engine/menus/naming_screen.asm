@@ -75,13 +75,8 @@ NamingScreen:
 	call GetPartyPokemonName
 	hlcoord 5, 2
 	rst PlaceString
-	ld l, c
-	ld h, b
-	ld de, .NicknameStrings
-	rst PlaceString
-	inc de
 	hlcoord 5, 4
-	rst PlaceString
+	ld [hl], "/"
 	farcall GetGender
 	jr c, .genderless
 	ld a, "♂"
@@ -97,10 +92,6 @@ NamingScreen:
 	ld [hl], "★"
 .not_shiny
 	jmp .StoreMonIconParams
-
-.NicknameStrings:
-	db "'s@"
-	db "nickname?@"
 
 .Player:
 	farcall _GetPlayerIcon
@@ -186,12 +177,12 @@ NamingScreen:
 
 .StoreMonIconParams:
 	ld a, MON_NAME_LENGTH - 1
-	hlcoord 5, 6
+	hlcoord 7, 4
 	jr .StoreParams
 
 .StoreSpriteIconParams:
 	ld a, PLAYER_NAME_LENGTH - 1
-	hlcoord 5, 6
+	hlcoord 5, 4
 	jr .StoreParams
 
 .StoreBoxIconParams:
@@ -207,17 +198,6 @@ NamingScreen:
 	ld [wNamingScreenStringEntryCoord + 1], a
 	ret
 
-NamingScreen_IsTargetBox:
-	push bc
-	push af
-	ld a, [wNamingScreenType]
-	sub $3
-	ld b, a
-	pop af
-	dec b
-	pop bc
-	ret
-
 NamingScreen_InitText:
 	call WaitTop
 	hlcoord 0, 0
@@ -225,12 +205,7 @@ NamingScreen_InitText:
 	ld a, NAMINGSCREEN_BORDER
 	rst ByteFill
 	hlcoord 1, 1
-	lb bc, 6, 18
-	call NamingScreen_IsTargetBox
-	jr nz, .not_box
 	lb bc, 4, 18
-
-.not_box
 	call ClearBox
 	ld a, [wOptions3]
 	bit QWERTY_KEYBOARD_F, a
@@ -238,32 +213,14 @@ NamingScreen_InitText:
 	jr z, NamingScreen_ApplyTextInputMode
 	ld de, NameInputUpperQwerty
 NamingScreen_ApplyTextInputMode:
-	call NamingScreen_IsTargetBox
-	jr nz, .not_box
-	ld hl, BoxNameInputLower - NameInputLower
-	add hl, de
-	ld d, h
-	ld e, l
-
-.not_box
 	push de
-	hlcoord 1, 8
-	lb bc, 7, 18
-	call NamingScreen_IsTargetBox
-	jr nz, .not_box_2
 	hlcoord 1, 6
 	lb bc, 9, 18
-
-.not_box_2
 	call ClearBox
 	hlcoord 1, 16
 	lb bc, 1, 18
 	call ClearBox
 	pop de
-	hlcoord 2, 8
-	ld b, $5
-	call NamingScreen_IsTargetBox
-	jr nz, .row
 	hlcoord 2, 6
 	ld b, $6
 
@@ -307,12 +264,7 @@ NamingScreenJoypadLoop:
 .UpdateStringEntry:
 	xor a
 	ldh [hBGMapMode], a
-	hlcoord 1, 5
-	call NamingScreen_IsTargetBox
-	jr nz, .got_coords
 	hlcoord 1, 3
-
-.got_coords
 	lb bc, 1, 18
 	call ClearBox
 	ld hl, wNamingScreenDestinationPointer
@@ -336,11 +288,7 @@ NamingScreenJoypadLoop:
 	dw .ReadButtons
 
 .InitCursor:
-	depixel 10, 3
-	call NamingScreen_IsTargetBox
-	jr nz, .got_cursor_position
-	ld d, 8 * 8
-.got_cursor_position
+	depixel 8, 3
 	ld a, SPRITE_ANIM_INDEX_NAMING_SCREEN_CURSOR
 	call _InitSpriteAnimStruct
 	ld a, c
@@ -402,10 +350,7 @@ NamingScreenJoypadLoop:
 	ld [hl], $8
 	ld hl, SPRITEANIMSTRUCT_VAR2
 	add hl, bc
-	ld [hl], $4
-	call NamingScreen_IsTargetBox
-	ret nz
-	inc [hl]
+	ld [hl], $5
 	ret
 
 .b
@@ -456,14 +401,7 @@ NamingScreen_GetCursorPosition:
 	ld hl, SPRITEANIMSTRUCT_VAR2
 	add hl, bc
 	ld a, [hl]
-	push bc
-	ld b, $4
-	call NamingScreen_IsTargetBox
-	jr nz, .not_box
-	inc b
-.not_box
-	cp b
-	pop bc
+	cp $5
 	jr nz, .not_bottom_row
 	ld hl, SPRITEANIMSTRUCT_VAR1
 	add hl, bc
@@ -497,12 +435,7 @@ NamingScreen_AnimateCursor:
 	ld hl, SPRITEANIMSTRUCT_YOFFSET
 	add hl, bc
 	ld [hl], e
-	ld d, $4
-	call NamingScreen_IsTargetBox
-	jr nz, .ok
-	inc d
-.ok
-	cp d
+	cp $5
 	ld de, .LetterEntries
 	ld a, 0
 	jr nz, .got_pointer
@@ -611,15 +544,7 @@ NamingScreen_AnimateCursor:
 	ld hl, SPRITEANIMSTRUCT_VAR2
 	add hl, bc
 	ld a, [hl]
-	call NamingScreen_IsTargetBox
-	jr nz, .asm_11af9
 	cp $5
-	jr nc, .asm_11aff
-	inc [hl]
-	ret
-
-.asm_11af9
-	cp $4
 	jr nc, .asm_11aff
 	inc [hl]
 	ret
@@ -638,10 +563,7 @@ NamingScreen_AnimateCursor:
 	ret
 
 .asm_11b0c
-	ld [hl], $4
-	call NamingScreen_IsTargetBox
-	ret nz
-	inc [hl]
+	ld [hl], $5
 	ret
 
 NamingScreen_TryAddCharacter:
