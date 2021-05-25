@@ -538,7 +538,7 @@ ScreenCleanerAbility:
 	call StdBattleTextbox
 .no_reflect
 	pop af
-	and SCREENS_LIGHTSCREEN
+	and SCREENS_LIGHT_SCREEN
 	ret z
 	ld hl, BattleText_LightScreenFell
 	jmp StdBattleTextbox

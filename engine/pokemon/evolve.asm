@@ -185,14 +185,15 @@ EvolveAfterBattle_MasterLoop:
 .party_loop
 	ld a, [hl]
 	cp c
-	jr nz, .next
+	jr nz, .party_next
 	ld de, MON_FORM - MON_SPECIES
 	add hl, de
 	ld a, [hl]
 	and a
 	jr z, .party_ok
+.party_next
 	dec b
-	jmp z, .party_no
+	jr z, .party_no
 	ld de, PARTYMON_STRUCT_LENGTH - MON_FORM
 	add hl, de
 	jr .party_loop
