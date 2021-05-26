@@ -1462,25 +1462,25 @@
 	dbp 6, RATTATA
 	dbp 6, SPEAROW
 	dbp 6, GEODUDE
-	dbp 6, HOPPIP
+	dbp 7, HOPPIP
 	dbp 7, EKANS, ARBOK_JOHTO_FORM
-	dbp 7, HOPPIP
-	dbp 7, HOPPIP
+	dbp 6, SUNKERN
+	dbp 7, SUNKERN
 	; day
 	dbp 6, RATTATA
 	dbp 6, SPEAROW
 	dbp 6, GEODUDE
-	dbp 6, HOPPIP
+	dbp 7, HOPPIP
 	dbp 7, EKANS, ARBOK_JOHTO_FORM
-	dbp 7, HOPPIP
-	dbp 7, HOPPIP
+	dbp 6, SUNKERN
+	dbp 7, SUNKERN
 	; nite
 	dbp 6, RATTATA
 	dbp 6, ZUBAT
 	dbp 6, GEODUDE
-	dbp 6, ZUBAT
+	dbp 7, ZUBAT
 	dbp 7, RATTATA
-	dbp 7, ODDISH
+	dbp 6, ODDISH
 	dbp 7, ODDISH
 	end_grass_wildmons
 
