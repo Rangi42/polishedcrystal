@@ -184,7 +184,7 @@ BattleCommand_conversion:
 	ld [de], a
 	inc de
 	ld [de], a
-	ld [wNamedObjectIndexBuffer], a
+	ld [wNamedObjectIndex], a
 	farcall GetTypeName
 	call AnimateCurrentMove
 	ld hl, TransformedTypeText

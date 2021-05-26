@@ -14,7 +14,7 @@ BattleCommand_thief:
 	xor a
 	ld [bc], a
 	ld a, d
-	ld [wNamedObjectIndexBuffer], a
+	ld [wNamedObjectIndex], a
 	call GetItemName
 	ld hl, StoleText
 	call StdBattleTextbox

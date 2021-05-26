@@ -11,9 +11,8 @@
 	const PLACE_PARTYMON_BATTLETOWER
 
 partymenuqualities: MACRO
-rept _NARG
-	db PLACE_PARTYMON_\1
-	shift
+for i, 1, _NARG + 1
+	db PLACE_PARTYMON_\<i>
 endr
 	db -1 ; end
 ENDM

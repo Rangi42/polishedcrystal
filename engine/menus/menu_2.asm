@@ -14,7 +14,7 @@ PlaceMartItemName:
 	ld a, [wMenuSelection]
 	cp CANCEL ; special case for Cancel in Key Items pocket
 	ld de, ScrollingMenu_CancelString ; found in scrolling_menu.asm
-	ld [wNamedObjectIndexBuffer], a
+	ld [wNamedObjectIndex], a
 	call nz, GetItemName
 	pop hl
 	rst PlaceString
@@ -23,7 +23,7 @@ PlaceMartItemName:
 PlaceMenuTMHMName:
 	push de
 	ld a, [wMenuSelection]
-	ld [wNamedObjectIndexBuffer], a
+	ld [wNamedObjectIndex], a
 	call GetTMHMName
 	pop hl
 	rst PlaceString
@@ -182,7 +182,7 @@ StartMenu_PrintBugContestStatus:
 	and a
 	ld de, .None
 	jr z, .no_contest_mon
-	ld [wd265], a
+	ld [wNamedObjectIndex], a
 	call GetPokemonName
 
 .no_contest_mon

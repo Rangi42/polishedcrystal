@@ -72,7 +72,7 @@ CantUseItemText:
 
 PartyMonItemName:
 	ld a, [wCurItem]
-	ld [wd265], a
+	ld [wNamedObjectIndex], a
 	call GetItemName
 	jmp CopyName1
 
@@ -170,7 +170,7 @@ GiveTakePartyMonItem:
 	and a
 	ld de, .noItemString
 	jr z, .not_holding_anything
-	ld [wNamedObjectIndexBuffer], a
+	ld [wNamedObjectIndex], a
 	call GetItemName
 	ld de, wStringBuffer1
 .not_holding_anything
@@ -249,23 +249,23 @@ TryGiveItemToPartymon:
 	jmp MenuTextboxBackup
 
 .already_holding_item
-	ld [wd265], a
+	ld [wNamedObjectIndex], a
 	call GetItemName
 	ld hl, SwitchAlreadyHoldingText
 	call StartMenuYesNo
 	ret c
 
 	call TossItemToGive
-	ld a, [wd265]
+	ld a, [wNamedObjectIndex]
 	push af
 	ld a, [wCurItem]
-	ld [wd265], a
+	ld [wNamedObjectIndex], a
 	pop af
 	ld [wCurItem], a
 	call ReceiveItemFromPokemon
 	jr c, .bag_not_full
 
-	ld a, [wd265]
+	ld a, [wNamedObjectIndex]
 	ld [wCurItem], a
 	call ReceiveItemFromPokemon
 	ld hl, ItemStorageIsFullText
@@ -274,7 +274,7 @@ TryGiveItemToPartymon:
 .bag_not_full
 	ld hl, TookAndMadeHoldText
 	call MenuTextboxBackup
-	ld a, [wd265]
+	ld a, [wNamedObjectIndex]
 	ld [wCurItem], a
 	; fallthrough
 GivePartyItem:
@@ -425,27 +425,27 @@ TakePartyItem:
 	call GetPartyItemLocation
 	ld a, [hl]
 	and a
-	jr z, .asm_12c8c
+	jr z, .not_holding_item
 
 	ld [wCurItem], a
 	call ReceiveItemFromPokemon
-	jr nc, .asm_12c94
+	jr nc, .item_storage_full
 
 	call ItemIsMail
 	call GetPartyItemLocation
 	ld a, [hl]
-	ld [wd265], a
+	ld [wNamedObjectIndex], a
 	ld [hl], NO_ITEM
 	call UpdateMewtwoForm
 	call GetItemName
 	ld hl, TookFromText
 	jmp MenuTextboxBackup
 
-.asm_12c8c
+.not_holding_item
 	ld hl, IsntHoldingAnythingText
 	jmp MenuTextboxBackup
 
-.asm_12c94
+.item_storage_full
 	ld hl, ItemStorageIsFullText
 	jmp MenuTextboxBackup
 
@@ -1408,7 +1408,7 @@ SetUpMoveScreenBG:
 	call LoadFontsBattleExtra
 	call ClearSpriteAnims2
 	ld a, [wTempMonSpecies]
-	ld [wd265], a
+	ld [wTempIconSpecies], a
 	ld a, [wTempMonForm]
 	ld [wCurForm], a
 	farcall LoadMoveMenuMonIcon
@@ -1630,8 +1630,8 @@ PlaceMoveData:
 	hlcoord 10, 12
 	cp 2
 	jr c, .no_power
-	ld [wd265], a
-	ld de, wd265
+	ld [wTextDecimalByte], a
+	ld de, wTextDecimalByte
 	lb bc, 1, 3
 	call PrintNum
 	jr .place_accuracy
@@ -1645,8 +1645,8 @@ PlaceMoveData:
 	hlcoord 15, 12
 	cp 2
 	jr c, .no_acc
-	ld [wd265], a
-	ld de, wd265
+	ld [wTextDecimalByte], a
+	ld de, wTextDecimalByte
 	lb bc, 1, 3
 	call PrintNum
 	jr .description

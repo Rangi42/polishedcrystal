@@ -1,9 +1,8 @@
 ; Pic animation arrangement.
 
 POKEANIM: MACRO
-rept _NARG
-	db (PokeAnim_\1_ - PokeAnim_SetupCommands) / 2
-	shift
+for i, 1, _NARG + 1
+	db (PokeAnim_\<i>_ - PokeAnim_SetupCommands) / 2
 endr
 	db (PokeAnim_Finish_ - PokeAnim_SetupCommands) / 2
 ENDM

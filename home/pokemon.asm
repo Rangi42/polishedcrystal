@@ -100,8 +100,8 @@ PrintLevel::
 	; fallthrough
 
 Print8BitNumRightAlign::
-	ld [wd265], a
-	ld de, wd265
+	ld [wTextDecimalByte], a
+	ld de, wTextDecimalByte
 	ld b, PRINTNUM_LEFTALIGN | 1
 	jmp PrintNum
 

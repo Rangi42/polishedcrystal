@@ -157,7 +157,7 @@ GetRegisteredItem:
 	ld a, [de]
 	and a
 	jr z, .next
-	ld [wNamedObjectIndexBuffer], a
+	ld [wNamedObjectIndex], a
 	push de
 	push hl
 	push af

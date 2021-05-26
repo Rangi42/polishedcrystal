@@ -4,9 +4,8 @@
 roam_map: MACRO
 	map_id \1
 	db _NARG - 1
-rept _NARG - 1
-	map_id \2
-	shift
+for i, 2, _NARG + 1
+	map_id \<i>
 endr
 	db 0
 list_index = list_index + 1

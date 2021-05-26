@@ -18,15 +18,14 @@ tmhm: MACRO
 		def _tm{d:n} = 0
 	endr
 	; set bits of bytes
-	rept _NARG
-		if DEF(\1_TMNUM)
-			def n = (\1_TMNUM - 1) / 8
-			def i = (\1_TMNUM - 1) % 8
-			def _tm{d:n} = _tm{d:n} | (1 << i)
+	for i, 1, _NARG + 1
+		if DEF(\<i>_TMNUM)
+			def n = (\<i>_TMNUM - 1) / 8
+			def t = (\<i>_TMNUM - 1) % 8
+			def _tm{d:n} = _tm{d:n} | (1 << t)
 		else
-			fail "\1 is not a TM, HM, or tutor move"
+			fail "\<i> is not a TM, HM, or tutor move"
 		endc
-		shift
 	endr
 	; output bytes
 	for n, (NUM_TM_HM_TUTOR + 7) / 8

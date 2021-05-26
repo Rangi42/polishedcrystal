@@ -568,8 +568,8 @@ PrintHour:
 	inc hl
 	pop bc
 	call AdjustHourForAMorPM
-	ld [wd265], a
-	ld de, wd265
+	ld [wTextDecimalByte], a
+	ld de, wTextDecimalByte
 	jmp PrintTwoDigitNumberRightAlign
 
 GetTimeOfDayString:

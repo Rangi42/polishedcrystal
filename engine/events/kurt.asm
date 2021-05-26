@@ -97,7 +97,7 @@ Kurt_SelectApricorn:
 	and a
 	ret z
 	push de
-	ld [wNamedObjectIndexBuffer], a
+	ld [wNamedObjectIndex], a
 	call GetApricornName
 	pop hl
 	rst PlaceString
@@ -157,7 +157,7 @@ Kurt_SelectQuantity:
 	ld de, SCREEN_WIDTH + 1
 	add hl, de
 	ld a, [wCurItem]
-	ld [wNamedObjectIndexBuffer], a
+	ld [wNamedObjectIndex], a
 	call GetApricornName
 	rst PlaceString
 	ret

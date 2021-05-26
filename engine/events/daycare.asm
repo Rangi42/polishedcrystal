@@ -671,7 +671,7 @@ DayCare_InitBreeding:
 	bit DAYCAREMAN_HAS_MON_F, a
 	ret z
 	call CheckBreedmonCompatibility
-	ld a, [wd265]
+	ld a, [wBreedingCompatibility]
 	and a
 	ret z
 	ld hl, wDayCareMan

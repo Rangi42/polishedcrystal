@@ -682,7 +682,7 @@ HandleWrap:
 .print_text
 	pop de
 	ld a, [de]
-	ld [wNamedObjectIndexBuffer], a
+	ld [wNamedObjectIndex], a
 	call GetMoveName
 	jmp StdBattleTextbox
 
@@ -791,7 +791,7 @@ HandlePerishSong:
 	ret z
 	dec [hl]
 	ld a, [hl]
-	ld [wd265], a
+	ld [wTextDecimalByte], a
 	push af
 	ld hl, PerishCountText
 	call StdBattleTextbox
