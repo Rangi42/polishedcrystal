@@ -27,6 +27,17 @@ NPCTrade::
 	ld a, TRADE_DIALOG_WRONG
 	jr nz, .done
 
+	inc hl
+	ld a, [hl]
+	and $ff - EXTSPECIES_MASK
+	ld a, [wCurForm]
+	jr nz, .check_form ; if NO_FORM specified, then accept any mon of this species
+	and EXTSPECIES_MASK
+.check_form
+	cp [hl]
+	ld a, TRADE_DIALOG_WRONG
+	jr nz, .done
+
 	ld b, SET_FLAG
 	call TradeFlagAction
 
@@ -79,20 +90,29 @@ Trade_GetDialog:
 DoNPCTrade:
 	ld e, NPCTRADE_GIVEMON
 	call GetTradeAttribute
-	ld a, [hl]
+	ld a, [hli]
 	ld [wPlayerTrademonSpecies], a
+	ld c, a
+	ld a, [hl]
+	ld [wPlayerTrademonForm], a
+	ld b, a
 
 	ld e, NPCTRADE_GETMON
 	call GetTradeAttribute
-	ld a, [hl]
+	ld a, [hli]
 	ld [wOTTrademonSpecies], a
+	ld a, [hl]
+	ld [wOTTrademonForm], a
 
-	ld a, [wPlayerTrademonSpecies]
+	; bc = wPlayerTrademonSpecies+Form
 	ld de, wPlayerTrademonSpeciesName
 	call GetTradeMonName
 	call CopyTradeName
 
 	ld a, [wOTTrademonSpecies]
+	ld c, a
+	ld a, [wOTTrademonForm]
+	ld b, a
 	ld de, wOTTrademonSpeciesName
 	call GetTradeMonName
 	call CopyTradeName
@@ -276,7 +296,10 @@ Trade_GetAttributeOfLastPartymon:
 
 GetTradeMonName:
 	push de
-	ld [wNamedObjectIndex], a
+	ld hl, wNamedObjectIndex
+	ld a, c
+	ld [hli], a
+	ld [hl], b
 	call GetBasePokemonName
 	ld hl, wStringBuffer1
 	pop de
@@ -329,7 +352,9 @@ Trade_CopyThreeBytes:
 GetTradeMonNames:
 	ld e, NPCTRADE_GETMON
 	call GetTradeAttribute
-	ld a, [hl]
+	ld a, [hli]
+	ld c, a
+	ld b, [hl]
 	call GetTradeMonName
 
 	ld de, wStringBuffer2
@@ -337,7 +362,9 @@ GetTradeMonNames:
 
 	ld e, NPCTRADE_GIVEMON
 	call GetTradeAttribute
-	ld a, [hl]
+	ld a, [hli]
+	ld c, a
+	ld b, [hl]
 	call GetTradeMonName
 
 	ld de, wMonOrItemNameBuffer

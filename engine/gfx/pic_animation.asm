@@ -861,7 +861,7 @@ GetMonFramesPointer:
 	ld a, h
 	ld [wPokeAnimFramesAddr + 1], a
 	ld a, [wPokeAnimVariant]
-	and MON_EXTSPECIES
+	and EXTSPECIES_MASK
 	jr nz, .johto_frames
 	ld a, [wPokeAnimSpecies]
 	cp CHIKORITA

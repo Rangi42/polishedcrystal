@@ -100,12 +100,13 @@ GetBasePokemonName::
 
 GetPartyPokemonName::
 ; Get Pokemon name wCurPartySpecies + wCurForm
-; WARNING: overwrites hl
+	push hl
 	ld hl, wNamedObjectIndex
 	ld a, [wCurPartySpecies]
 	ld [hli], a
 	ld a, [wCurForm]
 	ld [hl], a
+	pop hl
 	; fall-through
 GetPokemonName::
 ; Get Pokemon name wNamedObjectIndex.

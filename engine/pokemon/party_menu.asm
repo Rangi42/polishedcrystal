@@ -1234,12 +1234,15 @@ PartyMenuSelect:
 	ld a, [wMenuCursorY]
 	dec a
 	ld [wCurPartyMon], a
-	ld c, a
-	ld b, $0
-	ld hl, wPartySpecies
-	add hl, bc
+	ld bc, PARTYMON_STRUCT_LENGTH
+	ld hl, wPartyMon1Species
+	rst AddNTimes
 	ld a, [hl]
 	ld [wCurPartySpecies], a
+	ld bc, MON_FORM - MON_SPECIES
+	add hl, bc
+	ld a, [hl]
+	ld [wCurForm], a
 
 	ld de, SFX_READ_TEXT_2
 	call PlaySFX

@@ -84,7 +84,7 @@ ValidPokemonLevels: ; for Wonder Trade
 	db  37, 100 ; Slowbro
 	db   1,  29 ; Magnemite
 	db  30,  49 ; Magneton
-	db  20, 100 ; Farfetch'd
+	db   1,  20 ; Farfetch'd
 	db   1,  30 ; Doduo
 	db  31, 100 ; Dodrio
 	db   1,  33 ; Seel
@@ -258,7 +258,7 @@ ValidPokemonLevels: ; for Wonder Trade
 	db  35, 100 ; Ambipom
 	assert_table_length NUM_POKEMON + 1
 	db 255, 255 ; Egg
-	db 255, 255 ; Egg
+	db 255, 255 ; dummy index $100
 	db  40, 100 ; Mismagius
 	db  40, 100 ; Honchkrow
 	db   1,  19 ; Bonsly
@@ -283,6 +283,6 @@ ValidPokemonLevels: ; for Wonder Trade
 	db  20, 100 ; Sylveon
 	db  28, 100 ; Perrserker
 	db  38, 100 ; Cursola
-	db  40, 100 ; Sirfetch'd
+	db  20, 100 ; Sirfetch'd
 	db  42, 100 ; Mr. Rime
 	assert_table_length NUM_SPECIES + 1
