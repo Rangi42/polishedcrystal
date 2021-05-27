@@ -113,12 +113,12 @@ DoWonderTrade:
 	ld a, b
 	call ConvertFormToExtendedSpecies
 	ld b, a
-	ld [wOTTrademonExtspecies], a
+	ld [wOTTrademonForm], a
 
 	ld a, [wPlayerTrademonSpecies]
 	cp c
 	jr nz, .got_species
-	ld a, [wOTTrademonExtspecies]
+	ld a, [wOTTrademonForm]
 	and EXTSPECIES_MASK
 	cp b
 	jr z, .random_trademon
