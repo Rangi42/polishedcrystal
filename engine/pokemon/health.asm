@@ -111,16 +111,22 @@ ComputeHPBarPixels:
 	rr e
 	srl d
 	rr e
-	ldh a, [hProduct + 2]
+	ldh a, [hProduct + 1]
 	ld b, a
+	ldh a, [hProduct + 2]
+	ld c, a
 	ldh a, [hProduct + 3]
-	srl b
+	srl c
+	rr b
 	rra
-	srl b
+	srl c
+	rr b
 	rra
 	ldh [hDividend + 3], a
-	ld a, b
+	ld a, c
 	ldh [hDividend + 2], a
+	ld a, b
+	ldh [hDividend + 1], a
 .divide
 	ld a, e
 	ldh [hDivisor], a
