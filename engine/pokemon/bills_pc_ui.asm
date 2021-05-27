@@ -124,7 +124,7 @@ BillsPC_LoadUI:
 	; Cursor sprite OAM
 	lb de, -18, 0 ; fixed up by the animseq code
 	ld a, SPRITE_ANIM_INDEX_PC_CURSOR
-	call _InitSpriteAnimStruct
+	call InitSpriteAnimStruct
 	ld a, PCANIM_ANIMATE
 	ld [wBillsPC_CursorAnimFlag], a
 
@@ -132,10 +132,10 @@ BillsPC_LoadUI:
 	lb de, $98, $10
 	ld a, SPRITE_ANIM_INDEX_PC_MODE
 	push de
-	call _InitSpriteAnimStruct
+	call InitSpriteAnimStruct
 	pop af
 	ld a, SPRITE_ANIM_INDEX_PC_MODE2
-	call _InitSpriteAnimStruct
+	call InitSpriteAnimStruct
 
 	; Pack icon.
 	; TODO: Instead of a hack where we prevent the pack from claiming a slot,
@@ -145,7 +145,7 @@ BillsPC_LoadUI:
 	push hl
 	lb de, $58, $30
 	ld a, SPRITE_ANIM_INDEX_PC_PACK
-	call _InitSpriteAnimStruct
+	call InitSpriteAnimStruct
 	pop hl
 	dec [hl]
 
@@ -1884,7 +1884,7 @@ BillsPC_PrepareQuickAnim:
 
 	lb de, 0, 0
 	ld a, SPRITE_ANIM_INDEX_PC_QUICK
-	call _InitSpriteAnimStruct
+	call InitSpriteAnimStruct
 
 	call BillsPC_UpdateCursorLocation
 	pop bc

@@ -1,5 +1,5 @@
-_InitSpriteAnimStruct::
-	farjp InitSpriteAnimStruct
+InitSpriteAnimStruct::
+	farjp _InitSpriteAnimStruct
 
 ReinitSpriteAnimFrame::
 	farjp _ReinitSpriteAnimFrame

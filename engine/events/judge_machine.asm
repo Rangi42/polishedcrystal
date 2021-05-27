@@ -413,7 +413,7 @@ SparkleMaxStat:
 	inc a
 	ret nz
 	ld a, SPRITE_ANIM_INDEX_MAX_STAT_SPARKLE
-	jr _InitSpriteAnimStruct_PreserveHL
+	jr InitSpriteAnimStruct_PreserveHL
 
 SparkleMaxStatOrShowBottleCap:
 ; Show a sparkle sprite at (d, e) if a is 255,
@@ -422,13 +422,13 @@ SparkleMaxStatOrShowBottleCap:
 	rlc [hl] ; sets carry if hyper trained
 	inc a ; sets z if if max stat; does not affect carry
 	ld a, SPRITE_ANIM_INDEX_MAX_STAT_SPARKLE
-	jr z, _InitSpriteAnimStruct_PreserveHL
+	jr z, InitSpriteAnimStruct_PreserveHL
 	assert SPRITE_ANIM_INDEX_MAX_STAT_SPARKLE + 1 == SPRITE_ANIM_INDEX_HYPER_TRAINED_STAT
 	inc a ; does not affect carry
 	ret nc
-_InitSpriteAnimStruct_PreserveHL:
+InitSpriteAnimStruct_PreserveHL:
 	push hl
-	call _InitSpriteAnimStruct
+	call InitSpriteAnimStruct
 	pop hl
 	scf
 	ret

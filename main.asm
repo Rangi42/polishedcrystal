@@ -316,6 +316,7 @@ INCLUDE "engine/tilesets/timeofday_pals.asm"
 INCLUDE "engine/battle/battle_transition.asm"
 INCLUDE "engine/events/field_moves.asm"
 INCLUDE "engine/events/magnet_train.asm"
+; The 2 below files assume they're within the same bank.
 INCLUDE "engine/gfx/sprites.asm"
 INCLUDE "engine/gfx/mon_icons.asm"
 INCLUDE "data/pokemon/menu_icon_pointers.asm"

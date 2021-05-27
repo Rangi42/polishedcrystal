@@ -145,7 +145,7 @@ NamingScreen:
 	ld [hl], a
 	depixel 4, 4, 4, 0
 	ld a, SPRITE_ANIM_INDEX_RED_WALK
-	call _InitSpriteAnimStruct
+	call InitSpriteAnimStruct
 	ld hl, SPRITEANIMSTRUCT_FRAMESET_ID
 	add hl, bc
 	ld [hl], SPRITE_ANIM_FRAMESET_NULL
@@ -173,7 +173,7 @@ NamingScreen:
 	ld [hl], a
 	ld a, c
 	depixel 4, 4, 4, 0
-	jmp _InitSpriteAnimStruct
+	jmp InitSpriteAnimStruct
 
 .StoreMonIconParams:
 	ld a, MON_NAME_LENGTH - 1
@@ -290,7 +290,7 @@ NamingScreenJoypadLoop:
 .InitCursor:
 	depixel 8, 3
 	ld a, SPRITE_ANIM_INDEX_NAMING_SCREEN_CURSOR
-	call _InitSpriteAnimStruct
+	call InitSpriteAnimStruct
 	ld a, c
 	ld [wNamingScreenCursorObjectPointer], a
 	ld a, b
@@ -798,7 +798,7 @@ _ComposeMailMessage:
 	; init mail icon
 	depixel 3, 2
 	ld a, SPRITE_ANIM_INDEX_PARTY_MON
-	call _InitSpriteAnimStruct
+	call InitSpriteAnimStruct
 
 	ld hl, SPRITEANIMSTRUCT_ANIM_SEQ_ID
 	add hl, bc
@@ -918,7 +918,7 @@ INCBIN "gfx/icons/mail2.2bpp.lz"
 .init_blinking_cursor
 	depixel 9, 2
 	ld a, SPRITE_ANIM_INDEX_COMPOSE_MAIL_CURSOR
-	call _InitSpriteAnimStruct
+	call InitSpriteAnimStruct
 	ld a, c
 	ld [wNamingScreenCursorObjectPointer], a
 	ld a, b
