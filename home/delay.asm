@@ -37,9 +37,12 @@ DelayFrame::
 	ldh [hVBlankOccurred], a
 
 ; Wait for the next VBlank, halting to conserve battery
-.halt
+DelayFrameHalt:
 	halt ; rgbasm adds a nop after this instruction by default
+	; fallthrough
+MaybeDelayFrame:
+; Used in place of DelayFrame for special cases.
 	ldh a, [hVBlankOccurred]
 	and a
-	jr nz, .halt
+	jr nz, DelayFrameHalt
 	ret

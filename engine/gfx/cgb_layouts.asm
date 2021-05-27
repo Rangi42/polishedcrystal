@@ -356,59 +356,18 @@ _CGB_StatsScreenHPPals:
 	jmp _CGB_FinishLayout
 
 _CGB_Pokedex:
+	ld hl, PokedexPals
 	ld de, wBGPals1
-	ld hl, PokedexRedPalette
-	call LoadHLPaletteIntoDE
-
-	ld a, [wCurPartySpecies]
-	cp $ff
-	jr nz, .is_pokemon
-	ld hl, .GreenPicPalette
-	call LoadHLPaletteIntoDE
-	jr .got_palette
-.is_pokemon
-	ld bc, wDexMonShiny
-	call GetMonNormalOrShinyPalettePointer
-	call LoadPalette_White_Col1_Col2_Black
-.got_palette
-
-	call WipeAttrMap
-
-	hlcoord 1, 1, wAttrMap
-	lb bc, 7, 7
-	ld a, $1
-	call FillBoxWithByte
-
-	ld hl, PokegearOBPals
+	ld c, 2 palettes
+	call LoadCPaletteBytesFromHLIntoDE
+	ld de, wBGPals1 palette 4
+	ld c, 2 palettes
+	call LoadCPaletteBytesFromHLIntoDE
 	ld de, wOBPals1
 	ld c, 2 palettes
 	call LoadCPaletteBytesFromHLIntoDE
 
-	ld hl, .CursorPalette
-	ld de, wOBPals1 palette 7
-	call LoadHLPaletteIntoDE
-
 	jmp _CGB_FinishLayout
-
-.GreenPicPalette:
-if !DEF(MONOCHROME)
-	RGB 11, 23, 00
-	RGB 07, 17, 00
-	RGB 06, 16, 03
-	RGB 05, 12, 01
-else
-	MONOCHROME_RGB_FOUR
-endc
-
-.CursorPalette:
-if !DEF(MONOCHROME)
-	RGB 00, 00, 00
-	RGB 11, 23, 00
-	RGB 07, 17, 00
-	RGB 00, 00, 00
-else
-	MONOCHROME_RGB_FOUR
-endc
 
 _CGB_SlotMachine:
 	ld hl, SlotMachinePals
@@ -615,7 +574,7 @@ _CGB_MoveList:
 
 _CGB_PokedexSearchOption:
 	ld de, wBGPals1
-	ld hl, PokedexRedPalette
+	ld hl, PokedexPals
 	call LoadHLPaletteIntoDE
 
 	call WipeAttrMap
@@ -953,7 +912,7 @@ LoadFirstTwoTrainerCardPals:
 
 _CGB_PokedexUnownMode:
 	ld de, wBGPals1
-	ld hl, PokedexRedPalette
+	ld hl, PokedexPals
 	call LoadHLPaletteIntoDE
 
 	ld a, [wCurPartySpecies]

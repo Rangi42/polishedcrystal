@@ -31,13 +31,13 @@ _SafeCopyTilemapAtOnce::
 	xor a
 	ldh [hCGBPalUpdate], a
 	ldh a, [rLY]
-	cp $70
+	cp $6d
 	call nc, DelayFrame ; not enough time to update music, so wait a frame
 	ld a, e
 	ldh [hCGBPalUpdate], a
 .waitLYAndUpdateMusic
 	ldh a, [rLY]
-	cp $70
+	cp $6d
 	jr nz, .waitLYAndUpdateMusic
 	xor a
 	ldh [hBGMapHalf], a

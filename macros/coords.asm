@@ -11,6 +11,19 @@ coord: MACRO
 	endc
 ENDM
 
+hldexcoord EQUS "dexcoord hl,"
+bcdexcoord EQUS "dexcoord bc,"
+dedexcoord EQUS "dexcoord de,"
+
+dexcoord: MACRO
+; register, x, y[, origin]
+	if _NARG < 4
+		ld \1, (\3) * BG_MAP_WIDTH + (\2) + wDexTilemap
+	else
+		ld \1, (\3) * BG_MAP_WIDTH + (\2) + \4
+	endc
+ENDM
+
 hlbgcoord EQUS "bgcoord hl,"
 bcbgcoord EQUS "bgcoord bc,"
 debgcoord EQUS "bgcoord de,"

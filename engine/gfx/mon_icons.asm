@@ -8,6 +8,8 @@ LoadOverworldMonIcon:
 	ld a, [wCurIconForm]
 	ld b, a
 	; bc = index
+	; fallthrough
+_LoadOverworldMonIcon:
 	call GetCosmeticSpeciesAndFormIndex
 	inc bc
 	ld hl, IconPointers
@@ -128,6 +130,54 @@ ProcessMenuMonIconColor:
 
 .finish
 	jmp PopAFBCDEHL
+
+GetMenuMonIconTruePalette:
+; Returns icon col1/col2 palette in bcde (col0/col3 as white/black is implicit)
+; with species+form in bc and shininess in a.
+if DEF(MONOCHROME)
+	ld bc, PAL_MONOCHROME_WHITE
+	ld de, PAL_MONOCHROME_LIGHT
+else
+	and SHINY_MASK
+	push af
+
+	call GetCosmeticSpeciesAndFormIndex
+	ld hl, MenuMonIconColors
+	add hl, bc
+	ld c, [hl]
+	pop af
+	jr nz, .shiny
+	swap c
+.shiny
+	ld a, c
+	and $f
+	ld bc, palred 31 + palgreen 19 + palblue 10
+	and a ; PAL_OW_RED
+	ld de, palred 31 + palgreen 07 + palblue 01
+	jr z, .got_pal
+	dec a ; PAL_OW_BLUE
+	ld de, palred 10 + palgreen 09 + palblue 31
+	jr z, .got_pal
+	dec a ; PAL_OW_GREEN
+	ld de, palred 07 + palgreen 23 + palblue 03
+	jr z, .got_pal
+	dec a ; PAL_OW_BROWN
+	ld de, palred 15 + palgreen 10 + palblue 03
+	jr z, .got_pal
+	dec a ; PAL_OW_PURPLE
+	ld de, palred 18 + palgreen 04 + palblue 18
+	jr z, .got_pal
+	dec a ; PAL_OW_GRAY
+	ld de, palred 13 + palgreen 13 + palblue 13
+	jr z, .got_pal
+	dec a ; PAL_OW_PINK
+	ld de, palred 31 + palgreen 10 + palblue 11
+	jr z, .got_pal
+	; PAL_OW_TEAL
+	ld de, palred 03 + palgreen 23 + palblue 21
+.got_pal
+endc
+	ret
 
 GetOverworldMonIconPalette::
 	ld a, [wCurIcon]

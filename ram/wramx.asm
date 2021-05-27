@@ -290,6 +290,13 @@ wBattleBerriesPocketScrollPosition:: db
 
 wTMHMMoveNameBackup:: ds MOVE_NAME_LENGTH
 
+UNION
+wTempDexFound:: flag_array NUM_EXT_POKEMON
+wTempDexEnd::
+NEXTU
+wTempDexFoundSpecies:: flag_array NUM_SPECIES
+wTempDexSpeciesEnd::
+NEXTU
 wStringBuffer1:: ds STRING_BUFFER_LENGTH + 5
 wStringBuffer2:: ds STRING_BUFFER_LENGTH
 wStringBuffer3:: ds STRING_BUFFER_LENGTH
@@ -312,6 +319,7 @@ wBT_PartySelections:: ds PARTY_LENGTH
 wBT_MonParty:: ds BATTLETOWER_PARTYDATA_SIZE
 wBT_SecondaryMonParty:: ds BATTLETOWER_PARTYDATA_SIZE ; last rental trainer
 wBT_OTMonParty:: ds BATTLETOWER_PARTYDATA_SIZE ; also for starting rental setup
+ENDU
 ENDU
 
 wBattleMenuCursorBuffer:: dw
@@ -1321,13 +1329,16 @@ wPartyMonNicknamesEnd::
 
 	ds 9 ; unused
 
-wPokedexCaught:: flag_array NUM_POKEMON
+wPokedexCaught:: flag_array NUM_EXT_POKEMON
 wEndPokedexCaught::
 
-wPokedexSeen:: flag_array NUM_POKEMON
+wPokedexSeen:: flag_array NUM_EXT_POKEMON
 wEndPokedexSeen::
 
-wUnownDex:: ds NUM_UNOWN
+wUnownDex:: flag_array NUM_UNOWN
+
+	ds 8 ; unused
+
 wUnlockedUnowns:: db
 
 wFirstUnownSeen:: db
@@ -1460,8 +1471,52 @@ wSoundEngineBackup:: ds wChannelsEnd - wMusic
 
 SECTION "Metatiles", WRAMX
 
+UNION
 wDecompressedMetatiles:: ds 256 tiles
+NEXTU
+UNION
+wDex2bpp:: ds 35 tiles
+NEXTU
+; copied using hdma transfers (which is orders of magnitudes faster), so it uses
+; 32x32 as opposed to only the 21x19 that we need.
+wDexTilemap:: ds BG_MAP_WIDTH * (SCREEN_HEIGHT + 1)
+wDexAttrmap:: ds BG_MAP_WIDTH * (SCREEN_HEIGHT + 1)
+wDexMapEnd::
+wDexMons::
+for n, 1, NUM_SPECIES + 1
+wDexMon{d:n}::
+wDexMon{d:n}Species:: db
+wDexMon{d:n}Form:: db
+endr
+wDexMonsEnd::
 
+; Copy of dex row tile info. H-Blank uses a copy in wram0.
+wDexPalCopy::
+wDexRow1Tile: db ; Sprite offset for dex minis col 2-4
+wDexRow1Pals:: ds 6 * 5 ; 3 15bit colors per pal, 5 columns
+wDexRow2Tile: db
+wDexRow2Pals:: ds 6 * 5
+wDexRow3Tile: db
+wDexRow3Pals:: ds 6 * 5
+wDexPalCopyEnd::
+
+wDexNumber:: dw
+wDexNumberString:: ds 4 ; 3 numbers including leading zeroes + terminator
+
+UNION
+wDexTiles::
+wDexVWFTiles:: ds 18 tiles
+wDexIconTiles:: ds 24 tiles ; 4 tiles padding
+wDexTilesEnd::
+NEXTU
+
+wDexVirtualOAMCopy:: ds 4 * (5 + 4 * 3) ; 4 bytes, 5 balls + 3 minis
+wDexVirtualOAMCopyEnd::
+ENDU
+ENDU
+
+wDexVWFPreset:: ds 18 tiles ; loaded into VWFTiles on a new row.
+ENDU
 
 SECTION "Attributes", WRAMX
 

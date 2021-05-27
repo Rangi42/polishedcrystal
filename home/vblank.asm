@@ -115,7 +115,7 @@ VBlank::
 	dw VBlank1   ; 1
 	dw VBlank2   ; 2
 	dw VBlank1   ; 3
-	dw DoNothing ; 4
+	dw VBlank4   ; 4 (pokédex)
 	dw VBlank5   ; 5
 	dw VBlank6   ; 6
 	dw VBlank7   ; 7
@@ -207,6 +207,58 @@ VBlank6::
 	call Serve1bppRequest
 	call DMATransfer
 
+	jr VBlankUpdateSound
+
+VBlank4::
+; normal operation
+
+; rng
+; scx, scy, wy, wx
+; dma transfer
+; dex map (also updates palettes)
+; tiles
+; oam
+; joypad
+; sound
+
+	ldh a, [hSCX]
+	ldh [rSCX], a
+	ldh a, [hSCY]
+	ldh [rSCY], a
+	ldh a, [hWY]
+	ldh [rWY], a
+	ldh a, [hWX]
+	ldh [rWX], a
+
+	call UpdateDexMap
+
+	; These have their own timing checks.
+
+	call Serve2bppRequest
+	call Serve1bppRequest
+
+.done
+	call PushOAM
+	; vblank-sensitive operations are done
+
+	; inc frame counter
+	ld hl, hVBlankCounter
+	inc [hl]
+
+	; advance random variables
+	call UpdateDividerCounters
+	call AdvanceRNGState
+
+	ld a, [wTextDelayFrames]
+	and a
+	jr z, .noDelay2
+	dec a
+	ld [wTextDelayFrames], a
+.noDelay2
+	call Joypad
+
+	ldh a, [hSeconds]
+	ldh [hSecondsBackup], a
 	jr VBlankUpdateSound
 
 VBlank1::

@@ -241,22 +241,29 @@ GetNickname::
 	rst CopyBytes
 	jmp PopBCDEHL
 
-GetPokedexNumber::
+GetNationalDexNumber:
 ; input: c = species, b = extspecies+form
-; output bc = de = pokedex number ((256*extspecies + c) - (2*extspecies))
-; this reflects how c = $00 and c = $ff don't have a pokédex number.
-; assumes number of pokemon < $1000
+; output: bc = natdex number ((256*extspecies + c) - (2*extspecies))
 	ld a, b
 	call ConvertFormToExtendedSpecies
 	ld b, a
 	add a
+	push de
 	ld d, a
 	ld a, c
 	sub d
+	pop de
 	ld c, a
-	jr nc, .no_carry
+	ret nc
 	dec b
-.no_carry
+	ret
+
+GetPokedexNumber::
+; input: c = species, b = extspecies+form
+; output bc = de = pokedex number ((256*extspecies + c) - (2*extspecies))
+; this reflects how c = $00 and c = $ff don't have a pokédex number.
+; TODO: Should be able to handle regional dex order.
+	call GetNationalDexNumber
 	ld d, b
 	ld e, c
 	ret

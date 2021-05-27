@@ -39,6 +39,7 @@ DoAnimFrame:
 	dw AnimSeq_PcQuick            ; SPRITE_ANIM_SEQ_PC_QUICK
 	dw AnimSeq_PcMode             ; SPRITE_ANIM_SEQ_PC_MODE
 	dw AnimSeq_PcPack             ; SPRITE_ANIM_SEQ_PC_PACK
+	dw AnimSeq_DexCursor          ; SPRITE_ANIM_SEQ_DEX_CURSOR
 	assert_table_length NUM_SPRITE_ANIM_SEQS
 
 AnimSeq_PartyMon:
@@ -744,6 +745,9 @@ AnimSeq_PcPack:
 	ld hl, SPRITEANIMSTRUCT_YOFFSET
 	add hl, bc
 	ld [hl], a
+	ret
+
+AnimSeq_DexCursor:
 	ret
 
 AnimSeqs_IncAnonJumptableIndex:

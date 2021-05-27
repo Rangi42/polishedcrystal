@@ -9,6 +9,46 @@ ForcePushOAM:
 	ld a, HIGH(wVirtualOAM)
 	jmp hPushOAM
 
+UpdateDexMap::
+; Reloads dex pals and dex tilemap
+	ld a, [wPokedex_UpdateTiles]
+	inc a
+	ret nz
+	call UpdateCGBPals
+	ldh a, [rSVBK]
+	push af
+	ld a, BANK(wDexTilemap)
+	ldh [rSVBK], a
+	ld a, HIGH(wDexTilemap)
+	ldh [rHDMA1], a
+	ld a, LOW(wDexTilemap)
+	ldh [rHDMA2], a
+	ld a, HIGH(vBGMap0)
+	ldh [rHDMA3], a
+	ld a, LOW(vBGMap0)
+	ldh [rHDMA4], a
+	ld a, ((BG_MAP_WIDTH * (SCREEN_HEIGHT + 1)) >> 4) - 1
+	ldh [rHDMA5], a
+	ld a, 1
+	ldh [rVBK], a
+	ld a, HIGH(vBGMap2)
+	ldh [rHDMA3], a
+	ld a, LOW(vBGMap2)
+	ldh [rHDMA4], a
+	ld a, ((BG_MAP_WIDTH * (SCREEN_HEIGHT + 1)) >> 4) - 1
+	ldh [rHDMA5], a
+	xor a
+	ldh [rVBK], a
+	pop af
+	ldh [rSVBK], a
+	xor a
+	ld [wPokedex_UpdateTiles], a
+	ld hl, wDexPalCopy
+	ld de, wPokedex_Pals
+	ld bc, wPokedex_PalsEnd - wPokedex_Pals
+	rst CopyBytes
+	ret
+
 DMATransfer::
 ; Return carry if the transfer is completed.
 

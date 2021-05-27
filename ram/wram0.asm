@@ -275,6 +275,7 @@ wVirtualOAMEnd::
 
 SECTION "Tilemap and Attrmap", WRAM0
 
+; Some code depend on these being next to each other in memory.
 wTileMap::
 ; 20x18 grid of 8x8 tiles
 	ds SCREEN_WIDTH * SCREEN_HEIGHT
@@ -786,6 +787,40 @@ wUnownPuzzle::
 wPuzzlePieces:: ds 6 * 6
 wUnownPuzzleEnd::
 
+
+SECTION UNION "Misc 480", WRAM0
+; Pokedex
+	ds 172
+
+wPokedex_HBlankCode::
+wPokedex_HBlankHeader:: ds 9 ; push af, backup rombank, bankswitch, call...
+wPokedex_HBlankFunction:: dw ; ...(function to call)...
+wPokedex_HBlankFooter:: ds 5 ; ...restore backup, bankswitch back, pop af, reti
+wPokedex_HBlankCodeEnd::
+
+wPokedex_Pals::
+wPokedex_Row1::
+wPokedex_Row1Tile: db ; Sprite offset for dex minis col 2-4
+wPokedex_Row1Pals:: ds 6 * 5 ; 3 15bit colors per pal, 5 columns
+wPokedex_Row2::
+wPokedex_Row2Tile: db
+wPokedex_Row2Pals:: ds 6 * 5
+wPokedex_Row3::
+wPokedex_Row3Tile: db
+wPokedex_Row3Pals:: ds 6 * 5
+wPokedex_PalsEnd::
+
+wPokedex_NumSeen:: dw
+wPokedex_NumOwned:: dw
+wPokedex_CursorPos:: db
+wPokedex_Offset:: db
+UNION
+wPokedex_Rows:: db
+wPokedex_LastCol:: db ; 1-5 in case the final row isn't completely filled
+NEXTU
+wPokedex_FinalEntry:: dw ; Final entry. Overwritten with rows/lastcol later.
+ENDU
+wPokedex_UpdateTiles:: db ; Whether to update tiles upon input request.
 
 SECTION UNION "Misc 480", WRAM0
 ; Pokedex
