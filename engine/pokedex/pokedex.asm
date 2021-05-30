@@ -458,7 +458,6 @@ Pokedex:
 	db "Seen/ Own/@"
 
 Pokedex_MainLoop:
-	call Pokedex_DrawListCursor
 	ld c, 240
 	call DelayFrames
 	ld c, 240
@@ -469,8 +468,16 @@ Pokedex_MainLoop:
 	call DelayFrames
 	ret
 
-Pokedex_DrawListCursor:
-	ret
+	const_def
+	const DEXPOS_MONS
+	const DEXPOS_DEXNO
+	const DEXPOS_ICON_TILES
+	const DEXPOS_VWF_TILES
+	const DEXPOS_VTILES
+	const DEXPOS_TILE_OFFSET
+	const DEXPOS_TILEMAP
+	const DEXPOS_ATTRMAP
+	const DEXPOS_PALCOPY
 
 Pokedex_UpdateRow:
 ; Populate tiles used for the given row in c with dex numbers and icon.
@@ -483,32 +490,25 @@ Pokedex_UpdateRow:
 	ld de, wDexVWFTiles
 	ld bc, 18 tiles
 	rst CopyBytes
-
-	; Get tile destination
-	ld hl, vTiles5
 	pop bc
-	ld e, c
-	ld bc, 20 tiles
-	ld a, e
-	and %11
-	ld d, a
-	rst AddNTimes
 
-	; Save this for later (Where in VRAM to write tiles to).
-	push hl
+	; Set sprite offset.
+	ld a, DEXPOS_TILE_OFFSET
+	ld b, 1 ; the first column is part of BG, not OAM.
+	call .GetPosData
+	ld e, l
+	dec b
+	ld a, DEXPOS_PALCOPY
+	call .GetPosData
+	dec hl
+	ld [hl], e
 
-	ld hl, wPokedex_Offset
+	; Set up the VWF tilemap row with the proper tiles+attributes.
+	ld a, DEXPOS_TILEMAP
+	call .GetPosData
 	ld a, e
-	sub [hl]
-	push af
-	hlcoord 1, 9
-	ld bc, SCREEN_WIDTH * 3
-	rst AddNTimes
-	ld a, d
-	add a
-	add a
-	swap d
-	add d
+	sub 4
+	push bc
 	push af
 	ld d, 18
 .loop
@@ -525,9 +525,11 @@ Pokedex_UpdateRow:
 	dec d
 	jr nz, .loop2
 	pop af
+
+	; Now set up the mini BG tiles properly.
 	ld bc, (wTileMap - wAttrMap) + 2
 	add hl, bc
-	xor $80
+	or $80
 	ld [hli], a
 	inc a
 	ld [hli], a
@@ -549,56 +551,22 @@ Pokedex_UpdateRow:
 	ld [hli], a
 	inc a
 	ld [hli], a
+	pop bc
+	; The rest are to be iterated by column.
 
-	; Display VWF numbers.
-	ld h, d
-	ld l, e
-	add hl, hl
-	add hl, hl
-	add hl, de
-	ld b, h
-	ld c, l
-	ld d, e
-	pop af
-
-	; At this point, a contains the row to adjust (0, 1 or 2). Get wDexRow
-	; pointer.
-	ld e, a
-	add a
-	swap a
-	sub e
-	ld e, a
-
-	; Figure out tile offset for sprites.
-	ld a, d
-	and %11
-	ld d, a
-	swap d
-	add a
-	add a
-	add d
-	add 4 ; The first 4 tiles are part of BG, skip those.
-	ld d, 0
-	ld hl, wDexPalCopy
-	add hl, de
-	ld [hl], a
-
-	; Now prepare for iteration.
-	ld d, 5
-	ld hl, wDexIconTiles
 .loop3
-	push de
+	; Get mini palette and check species for this position.
+	ld a, DEXPOS_PALCOPY
+	call .GetPosData
 	push hl
-
-	; Get mini.
-	ld hl, wDexMons
-	add hl, bc
-	add hl, bc
+	ld a, DEXPOS_MONS
+	call .GetPosData
 	ld a, [hli]
 	and a
 	jr nz, .got_species
-	ld hl, wDexPalCopy
-	call .GetPalDest
+
+	; Blank the palette and do nothing else.
+	pop hl
 	xor a
 	dec a
 	ld d, 6
@@ -609,12 +577,33 @@ Pokedex_UpdateRow:
 	jr .species_done
 
 .got_species
-	; Palette
+	; Palette.
+	ld d, [hl]
+	bit MON_CAUGHT_F, d
+	jr z, .mon_not_caught
+	push af
+
+	; If the mon is caught, we don't want slight transparency on the VWF dexno.
+	ld a, DEXPOS_ATTRMAP
+	call .GetPosData
+
+	; VWF tilemap actually uses slightly less than 4 tiles, so fix that up here.
+	ld a, b
+	cp 3
+	jr c, .not_far_right
+	dec hl
+.not_far_right
+	ld a, VRAM_BANK_1 | 5
+	ld [hli], a
+	ld [hli], a
+	ld [hli], a
+	pop af
+
+.mon_not_caught
+	pop hl
 	push bc
 	ld c, a
-	ld b, [hl]
-	ld hl, wDexPalCopy
-	call .GetPalDest
+	ld b, d
 
 	push bc
 	ld a, b
@@ -626,7 +615,7 @@ Pokedex_UpdateRow:
 	pop hl
 	pop af
 	push af
-	jr z, .species_caught
+	jr nz, .species_caught
 
 	; Apply transparency
 	push hl
@@ -674,7 +663,7 @@ Pokedex_UpdateRow:
 	ld [hli], a
 	pop af
 	ld bc, palred 0 + palgreen 0 + palblue 0
-	jr z, .got_outline_pal
+	jr nz, .got_outline_pal
 	ld bc, palred 16 + palgreen 16 + palblue 16
 .got_outline_pal
 	ld a, c
@@ -684,56 +673,50 @@ Pokedex_UpdateRow:
 	; Icon
 	pop bc
 	farcall _LoadOverworldMonIcon
-	ld h, d
-	ld l, e
 	ld a, b
 	pop bc
-	pop de
-	push de
+	push af
+	ld a, DEXPOS_ICON_TILES
+	call .GetPosData
+	pop af
+	call SwapHLDE
 	push bc
 	call FarDecompressToDE
 	pop bc
 .species_done
-	ld hl, wDexNumber
-	push hl
-	inc bc
-	ld a, b
-	ld [hli], a
-	ld a, c
-	ld [hli], a ; hl now points to wDexNumberString
-	pop de
+	call .GetDexNo
+	ld de, wDexNumber
+	ld a, h
+	ld [de], a
+	inc de
+	ld a, l
+	ld [de], a
+	dec de
+	ld hl, wDexNumberString
 	push bc
 	lb bc, PRINTNUM_LEADINGZEROS | 2, 3
 	call PrintNum
 	pop bc
-	pop hl
 	ld a, "@"
 	ld [wDexNumberString + 3], a
-	pop de
-	push de
+	ld a, DEXPOS_VWF_TILES
+	call .GetPosData
+	ld a, 14
+	sub b
+	sub b
 	push bc
-	push hl
-	; - 1 tile to make vwf offset code simpler.
-	ld bc, (wDexVWFTiles - 1 tiles) - wDexIconTiles
-	add hl, bc
-	ld c, d
-	inc c
-	inc c
-	sla c
+	ld c, a
 	ld b, VWF_OPAQUE
 	ld de, wDexNumberString
 	call PlaceVWFString
-	pop hl
-	ld de, 4 tiles
-	add hl, de
 	pop bc
-	pop de
-	ld a, e
-	add 6
-	ld e, a
-	dec d
+	inc b
+	ld a, b
+	cp 5
 	jmp nz, .loop3
-	pop hl
+	ld b, 0
+	ld a, DEXPOS_VTILES
+	call .GetPosData
 	ld de, wDexVWFTiles
 	ld c, 18
 	ldh a, [rVBK]
@@ -761,40 +744,84 @@ Pokedex_UpdateRow:
 	inc hl
 	ret
 
+.GetDexNo:
+; TODO: When we have search modes, we want to check based on wDexMons.
+	ld a, DEXPOS_DEXNO
+	; fallthrough
 .GetPosData:
-; Return data depending on a for row c and, if applicable, column b.
+; Sets hl to a pointer offset, or value, depending on position data type in a.
+; Takes row in c and column in b as input (0-indexed).
 	push bc
 	call .do_pos_data
 	pop bc
 	ret
 
 .do_pos_data
-	and a
-	jr z, .vtile_dest
-	dec a
-	jr z, .tilemap_dest
+	cp DEXPOS_TILEMAP
+	jr nc, .got_row
 
-.vtile_dest
-	ld hl, vTiles5
+	ld hl, wPokedex_Offset
+	push af
+	ld a, c
+	add [hl]
+	ld c, a
+	pop af
+	cp DEXPOS_ICON_TILES
+	jr c, .got_row
+	push af
 	ld a, c
 	and %11
+	ld c, a
+	pop af
+
+.got_row
+	ld hl, .PosTable
 	push bc
-	ld bc, 20 tiles
+	ld bc, 6
 	rst AddNTimes
 	pop bc
+	push de
+	ld a, [hli]
+	ld e, a
+	ld a, [hli]
+	ld d, a
+	ld a, c
+	call .AddWordNTimesToDE
 	ld a, b
-	ld bc, 4 tiles
-	rst AddNTimes
+	call .AddWordNTimesToDE
+	ld h, d
+	ld l, e
+	pop de
 	ret
 
-.tilemap_dest
-	ld hl, wPokedex_Offset
-	ld a, c
-	sub [hl]
-	hlcoord 1, 9
-	ld bc, SCREEN_WIDTH * 3
+.AddWordNTimesToDE:
+	; Add [hl16]*a to de.
+	push bc
+	ld c, [hl]
+	inc hl
+	ld b, [hl]
+	inc hl
+	call SwapHLDE
 	rst AddNTimes
+	call SwapHLDE
+	pop bc
 	ret
+
+.PosTable:
+	; absolute row
+	dw wDexMons, 10, 2
+	dw 1, 5, 1
+
+	; mod-based
+	dw wDexIconTiles, 0, 4 tiles
+	dw wDexVWFTiles - 1 tiles, 0, 4 tiles
+	dw vTiles5, 20 tiles, 4 tiles
+	dw 0, 20, 4
+
+	; offset-based
+	dw wTileMap + 9 * SCREEN_WIDTH + 1, SCREEN_WIDTH * 3, 4
+	dw wAttrMap + 9 * SCREEN_WIDTH + 1, SCREEN_WIDTH * 3, 4
+	dw wDexPalCopy + 1, 6 * 5 + 1, 6
 
 Pokedex_InitData:
 ; Initializes the list of Pokémon seen and owned.
