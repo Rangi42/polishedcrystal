@@ -735,15 +735,6 @@ Pokedex_UpdateRow:
 	ldh [rVBK], a
 	ret
 
-.GetPalDest:
-	; e contains relative pointer to actual location.
-	ld d, 0
-	add hl, de
-
-	; Skip the sprite tile offset.
-	inc hl
-	ret
-
 .GetDexNo:
 ; TODO: When we have search modes, we want to check based on wDexMons.
 	ld a, DEXPOS_DEXNO
