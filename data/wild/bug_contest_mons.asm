@@ -1,11 +1,7 @@
 contest_mon: MACRO
-	if _NARG == 5
-		dbpb \1, \2, \3, \4
-		shift
-	else
-		dbpb \1, \2, \3
-	endc
-	db \4
+	db \1
+	dp \2
+	db \3, \4
 ENDM
 
 ContestMons:

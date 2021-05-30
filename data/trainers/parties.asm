@@ -24,6 +24,18 @@ INCLUDE "data/trainers/party_pointers.asm"
 ; TODO: swap ABILITY_1 and ABILITY_2 in base data as need so that ABILITY_1 is the better one for default NPCs (e.g. NPCs should have Sturdy when possible)
 
 
+; TODO: do `dp mon[, form] / db level` and eliminate this macro
+dbp: MACRO
+	if _NARG == 3
+		db \1
+		dp \2, \3
+	else
+		db \1
+		dp \2
+	endc
+ENDM
+
+
 SECTION "Enemy Trainer Parties 1", ROMX
 
 CarrieGroup:

@@ -5892,11 +5892,21 @@ GenerateWildForm:
 	ld [wCurForm], a
 	jmp PopBCDEHL
 
+random_wild_form: MACRO
+	if _NARG == 3
+		dp \1, \2
+		dw \3
+	else
+		dp \1
+		dw \2
+	endc
+ENDM
+
 RandomWildSpeciesForms:
-	dpw UNOWN,    .Unown
-	dpw MAGIKARP, .Magikarp
-	dpw EKANS,    .EkansArbok
-	dpw ARBOK,    .EkansArbok
+	random_wild_form UNOWN,    .Unown
+	random_wild_form MAGIKARP, .Magikarp
+	random_wild_form EKANS,    .EkansArbok
+	random_wild_form ARBOK,    .EkansArbok
 	dbw 0,        .Default
 
 .Unown:
