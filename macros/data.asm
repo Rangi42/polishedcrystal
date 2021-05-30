@@ -35,11 +35,6 @@ dbbww: MACRO
 	dw \3, \4
 ENDM
 
-dbbwww: MACRO
-	db \1, \2
-	dw \3, \4, \5
-ENDM
-
 dn: MACRO
 	rept _NARG / 2
 		db (\1) << 4 + (\2)
@@ -75,16 +70,6 @@ dab: MACRO ; dwb address, bank
 	for i, 1, _NARG + 1
 		dwb \<i>, BANK(\<i>)
 	endr
-ENDM
-
-dbba: MACRO
-	db \1
-	dba \2
-ENDM
-
-dbbba: MACRO
-	db \1, \2
-	dba \3
 ENDM
 
 dbpixel: MACRO
