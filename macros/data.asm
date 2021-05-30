@@ -20,21 +20,6 @@ dbbw: MACRO
 	dw \3
 ENDM
 
-dbbbw: MACRO
-	db \1, \2, \3
-	dw \4
-ENDM
-
-dbww: MACRO
-	db \1
-	dw \2, \3
-ENDM
-
-dbbww: MACRO
-	db \1, \2
-	dw \3, \4
-ENDM
-
 dn: MACRO
 	rept _NARG / 2
 		db (\1) << 4 + (\2)
