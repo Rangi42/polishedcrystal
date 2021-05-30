@@ -123,17 +123,6 @@ dbp: MACRO
 	endc
 ENDM
 
-dpw: MACRO
-	if _NARG == 3
-		dp \1, \2
-		dw \3
-	else
-		dp \1
-		dw \2
-	endc
-ENDM
-
-
 genders: MACRO
 ; eight arguments, all MALE or FEMALE
 	def x = 0
