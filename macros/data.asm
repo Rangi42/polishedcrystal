@@ -113,16 +113,6 @@ dp: MACRO ; db species, extspecies | form
 	endc
 ENDM
 
-dbp: MACRO
-	if _NARG == 3
-		db \1
-		dp \2, \3
-	else
-		db \1
-		dp \2
-	endc
-ENDM
-
 genders: MACRO
 ; eight arguments, all MALE or FEMALE
 	def x = 0
