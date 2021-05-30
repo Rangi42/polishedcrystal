@@ -123,16 +123,6 @@ dbp: MACRO
 	endc
 ENDM
 
-dpb: MACRO
-	if _NARG == 3
-		dp \1, \2
-		db \3
-	else
-		dp \1
-		db \2
-	endc
-ENDM
-
 dpw: MACRO
 	if _NARG == 3
 		dp \1, \2
