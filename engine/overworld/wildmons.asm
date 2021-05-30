@@ -1081,7 +1081,6 @@ RandomPhoneWildMon:
 	ld bc, 5 + 0 * 3
 	add hl, bc
 	call GetTimeOfDayNotEve
-	inc a
 	ld bc, NUM_GRASSMON * 3
 	rst AddNTimes
 
