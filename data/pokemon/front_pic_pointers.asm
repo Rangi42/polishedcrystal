@@ -254,9 +254,8 @@ FrontPicPointers::
 	dba AzurillFrontpic
 	dba WynautFrontpic
 	dba AmbipomFrontpic
-	assert_table_length NUM_POKEMON
 	dba EggPic
-	dba EggPic
+	dba EggPic ; $100
 	dba MismagiusFrontpic
 	dba HonchkrowFrontpic
 	dba BonslyFrontpic

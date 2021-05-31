@@ -256,9 +256,8 @@ ValidPokemonLevels: ; for Wonder Trade
 	db   1,  19 ; Azurill
 	db   1,  19 ; Wynaut
 	db  35, 100 ; Ambipom
-	assert_table_length NUM_POKEMON + 1
 	db 255, 255 ; Egg
-	db 255, 255 ; dummy index $100
+	db 255, 255 ; $100
 	db  40, 100 ; Mismagius
 	db  40, 100 ; Honchkrow
 	db   1,  19 ; Bonsly

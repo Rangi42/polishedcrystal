@@ -254,9 +254,8 @@ AnimationExtraPointers:
 	dw AzurillAnimationExtra
 	dw WynautAnimationExtra
 	dw AmbipomAnimationExtra
-	assert_table_length NUM_POKEMON
 	dw EggAnimationExtra
-	dw EggAnimationExtra
+	dw EggAnimationExtra ; $100
 	dw MismagiusAnimationExtra
 	dw HonchkrowAnimationExtra
 	dw BonslyAnimationExtra

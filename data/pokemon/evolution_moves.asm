@@ -258,9 +258,8 @@ endc
 	db NO_MOVE      ; AZURILL
 	db NO_MOVE      ; WYNAUT
 	db NO_MOVE      ; AMBIPOM
-	assert_table_length NUM_POKEMON
 	db NO_MOVE      ; EGG
-	db NO_MOVE      ; index $100
+	db NO_MOVE      ; $100
 	db DAZZLINGLEAM ; MISMAGIUS
 	db NO_MOVE      ; HONCHKROW
 	db NO_MOVE      ; BONSLY

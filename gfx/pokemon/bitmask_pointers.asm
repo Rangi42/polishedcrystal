@@ -254,9 +254,8 @@ BitmasksPointers:
 	dw AzurillBitmasks
 	dw WynautBitmasks
 	dw AmbipomBitmasks
-	assert_table_length NUM_POKEMON
 	dw EggBitmasks
-	dw EggBitmasks
+	dw EggBitmasks ; $100
 	dw MismagiusBitmasks
 	dw HonchkrowBitmasks
 	dw BonslyBitmasks

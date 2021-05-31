@@ -255,7 +255,6 @@ PokemonNames::
 	rawchar "Azurill@@@"
 	rawchar "Wynaut@@@@"
 	rawchar "Ambipom@@@"
-	assert_table_length NUM_POKEMON + 1
 	rawchar "Egg@@@@@@@"
 	rawchar "?256?@@@@@"
 	rawchar "Mismagius@"

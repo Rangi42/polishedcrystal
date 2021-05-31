@@ -2,12 +2,7 @@ PokemonPalettes:
 	table_width PAL_COLOR_SIZE * 2 * 2, PokemonPalettes
 
 if DEF(MONOCHROME)
-rept NUM_POKEMON + 4
-	MONOCHROME_RGB_TWO
-	MONOCHROME_RGB_TWO
-endr
-
-rept 22
+rept NUM_EXT_POKEMON + 1
 	MONOCHROME_RGB_TWO
 	MONOCHROME_RGB_TWO
 endr

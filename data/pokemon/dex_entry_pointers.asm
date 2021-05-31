@@ -255,9 +255,8 @@ PokedexDataPointerTable:
 	dba AzurillPokedexEntry
 	dba WynautPokedexEntry
 	dba AmbipomPokedexEntry
-	assert_table_length NUM_POKEMON
-	dba BulbasaurPokedexEntry ; egg
-	dba BulbasaurPokedexEntry ; index $100
+	dba BulbasaurPokedexEntry ; EGG
+	dba BulbasaurPokedexEntry ; $100
 	dba MismagiusPokedexEntry
 	dba HonchkrowPokedexEntry
 	dba BonslyPokedexEntry

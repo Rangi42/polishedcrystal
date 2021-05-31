@@ -254,9 +254,8 @@ FramesPointers:
 	dw AzurillFrames
 	dw WynautFrames
 	dw AmbipomFrames
-	assert_table_length NUM_POKEMON
 	dw EggFrames
-	dw EggFrames
+	dw EggFrames ; $100
 	dw MismagiusFrames
 	dw HonchkrowFrames
 	dw BonslyFrames

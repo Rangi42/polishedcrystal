@@ -258,9 +258,8 @@ MenuMonIconColors::
 	iconpal BLUE, GREEN ; AZURILL
 	iconpal BLUE, PURPLE ; WYNAUT
 	iconpal PURPLE, RED ; AMBIPOM
-	assert_table_length NUM_POKEMON
 	iconpal RED, BLUE ; EGG
-	iconpal RED, BLUE ; index $100
+	iconpal RED, BLUE ; $100
 	iconpal PURPLE, BROWN ; MISMAGIUS
 	iconpal BLUE, PURPLE ; HONCHKROW
 	iconpal BROWN, RED ; BONSLY

@@ -258,9 +258,8 @@ EvosAttacksPointers::
 	dw AzurillEvosAttacks
 	dw WynautEvosAttacks
 	dw AmbipomEvosAttacks
-	assert_table_length NUM_POKEMON
 	dw EggEvosAttacks
-	dw EggEvosAttacks
+	dw EggEvosAttacks ; $100
 	dw MismagiusEvosAttacks
 	dw HonchkrowEvosAttacks
 	dw BonslyEvosAttacks

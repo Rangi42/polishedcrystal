@@ -275,7 +275,7 @@
 	const AZURILL    ; fc
 	const WYNAUT     ; fd
 	const AMBIPOM    ; fe
-NUM_POKEMON EQU const_value - 1 ; fe
+NUM_POKEMON EQU const_value - 1 ; fe ; TODO: eliminate this
 	const EGG        ; ff
 	const_skip       ; 100 is unused
 	const MISMAGIUS  ; 101
@@ -303,7 +303,7 @@ NUM_POKEMON EQU const_value - 1 ; fe
 	const PERRSERKER ; 117
 	const CURSOLA    ; 118
 	const SIRFETCH_D ; 119
-	const MR__RIME    ; 11a
+	const MR__RIME   ; 11a
 NUM_SPECIES EQU const_value - 1 ; 11a
 REAL_NUM_POKEMON EQU NUM_SPECIES - (2 * HIGH(NUM_SPECIES)) ; 118
 

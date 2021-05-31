@@ -255,9 +255,8 @@ IconPointers:
 	dba AzurillIcon
 	dba WynautIcon
 	dba AmbipomIcon
-	assert_table_length NUM_POKEMON + 1
 	dba EggIcon
-	dba NullIcon
+	dba NullIcon ; $100
 	dba MismagiusIcon
 	dba HonchkrowIcon
 	dba BonslyIcon

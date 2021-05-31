@@ -254,9 +254,8 @@ AnimationPointers:
 	dw AzurillAnimation
 	dw WynautAnimation
 	dw AmbipomAnimation
-	assert_table_length NUM_POKEMON
 	dw EggAnimation
-	dw EggAnimation
+	dw EggAnimation ; $100
 	dw MismagiusAnimation
 	dw HonchkrowAnimation
 	dw BonslyAnimation

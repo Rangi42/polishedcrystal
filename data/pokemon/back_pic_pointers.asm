@@ -254,9 +254,8 @@ BackPicPointers::
 	dba AzurillBackpic
 	dba WynautBackpic
 	dba AmbipomBackpic
-	assert_table_length NUM_POKEMON
 	dba EggPic
-	dba EggPic
+	dba EggPic ; $100
 	dba MismagiusBackpic
 	dba HonchkrowBackpic
 	dba BonslyBackpic
