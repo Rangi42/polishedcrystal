@@ -1232,7 +1232,6 @@ ManageBoxes:
 	call JoyTextDelay
 .redo_input
 	ldh a, [hJoyPressed]
-	ld hl, wInputFlags
 	rrca
 	jr c, .pressed_a
 	rrca

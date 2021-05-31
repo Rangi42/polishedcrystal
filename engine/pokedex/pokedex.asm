@@ -205,11 +205,11 @@ Pokedex:
 	ld a, 4
 	ldh [hSCX], a
 	ldh [hSCY], a
-	call Pokedex_UpdateTilemap
 
 	xor a
 	ld [wPokedex_CursorPos], a
 
+	call Pokedex_GetCursorMon
 	call Pokedex_MainLoop
 
 	ld hl, rIE
@@ -457,16 +457,60 @@ Pokedex:
 .SeenOwn:
 	db "Seen/ Own/@"
 
-Pokedex_MainLoop:
-	ld c, 240
-	call DelayFrames
-	ld c, 240
-	call DelayFrames
-	ld c, 240
-	call DelayFrames
-	ld c, 240
-	call DelayFrames
+Pokedex_GetCursorMon:
+	call Pokedex_ScheduleTilemapUpdate
+
 	ret
+
+Pokedex_MainLoop:
+.loop
+	call Pokedex_GetInput
+	rrca
+	jr c, .pressed_a
+	rrca
+	jr c, .pressed_b
+	rrca
+	jr c, .pressed_select
+	rrca
+	jr c, .pressed_start
+	rrca
+	jr c, .pressed_right
+	rrca
+	jr c, .pressed_left
+	rrca
+	jr c, .pressed_up
+	rrca
+	jr c, .pressed_down
+	jr .loop
+
+.pressed_a
+	jr .loop
+.pressed_b
+	ret
+.pressed_select
+.pressed_start
+.pressed_right
+	ld b, 1
+	jr .modcursorpos
+.pressed_left
+	ld b, 7
+	; fallthrough
+.modcursorpos
+	ld hl, wPokedex_CursorPos
+	ld a, b
+	add [hl]
+	and $f7
+	ld [hl], a
+	and $f
+	cp 5
+	jr nc, .modcursorpos
+	; fallthrough
+.newcursorpos
+	call Pokedex_GetCursorMon
+	jr .loop
+.pressed_up
+.pressed_down
+	jr .loop
 
 	const_def
 	const DEXPOS_MONS
@@ -1047,15 +1091,25 @@ _Pokedex_GetCaptureStats:
 	pop bc
 	ret
 
-Pokedex_Delay:
-; Checks if there's a pending tilemap update, and if so, invokes it. Otherwise,
-; just calls DelayFrame.
+Pokedex_GetInput:
+; Returns button input in a, and potentially handles screen refreshing.
 	ld a, TRUE
 	ldh [hVBlankOccurred], a
 	ld a, [wPokedex_UpdateTiles]
 	and a
 	call nz, Pokedex_UpdateTilemap
-	jp MaybeDelayFrame
+	call MaybeDelayFrame
+	call JoyTextDelay_AllowRepeat
+
+	; Only allow keyrepeat of the D-pad.
+	ldh a, [hJoyLast]
+	and D_PAD
+	push bc
+	ld b, a
+	ldh a, [hJoyPressed]
+	or b
+	pop bc
+	ret
 
 Pokedex_ScheduleTilemapUpdate:
 ; Schedules a tilemap update for the next Pokedex_Delay.

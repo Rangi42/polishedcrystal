@@ -748,6 +748,28 @@ AnimSeq_PcPack:
 	ret
 
 AnimSeq_DexCursor:
+	push bc
+	ld hl, SPRITEANIMSTRUCT_YOFFSET
+	add hl, bc
+	push hl
+	ld hl, SPRITEANIMSTRUCT_XOFFSET
+	add hl, bc
+	push hl
+	ld a, [wPokedex_CursorPos]
+	ld b, a
+	and $7
+	ld c, 30
+	call SimpleMultiply
+	pop hl
+	ld [hl], a
+	ld a, b
+	swap a
+	and $f
+	ld c, 24
+	call SimpleMultiply
+	pop hl
+	ld [hl], a
+	pop bc
 	ret
 
 AnimSeqs_IncAnonJumptableIndex:
