@@ -1001,7 +1001,7 @@ Pokedex_InitData:
 
 .GetSpecies:
 ; Returns the species data for the given dex no+1. TODO: account for dex mode.
-;	jr .national_mode
+	jr .national_mode
 
 .regional_mode
 	push hl
@@ -1190,6 +1190,7 @@ Pokedex_GetCursorMon:
 	ld a, b
 	ld [wCurForm], a
 	ld [wNamedObjectIndex+1], a
+	ld [wPokedex_Form], a
 	call GetPokemonName
 	ld de, wStringBuffer1
 	hlcoord 9, 2
@@ -1203,7 +1204,22 @@ Pokedex_GetCursorMon:
 	hlcoord 1, 1
 	ld a, $40
 	call _PlaceFrontpicAtHL
-	
+
+	ld bc, wPokedex_Personality
+	xor a
+	ld [bc], a ; Not shiny.
+	ld a, [wCurPartySpecies]
+	farcall GetMonNormalOrShinyPalettePointer
+	ldh a, [rSVBK]
+	push af
+	ld a, BANK(wBGPals1)
+	ldh [rSVBK], a
+	ld de, wBGPals1 palette 6 + 2
+	ld a, BANK(PokemonPalettes)
+	ld bc, 4
+	call FarCopyBytes
+	pop af
+	ldh [rSVBK], a
 
 .done
 	xor a

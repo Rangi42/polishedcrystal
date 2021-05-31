@@ -815,6 +815,10 @@ wPokedex_PalsEnd::
 ; update the entire display smoothly in a single frame without noticeable delay.
 wPokedex_MonInfoBank:: db
 
+wPokedex_Personality::
+wPokedex_Shiny:: db
+wPokedex_Form:: db
+
 wPokedex_NumSeen:: dw
 wPokedex_NumOwned:: dw
 wPokedex_CursorPos:: db
