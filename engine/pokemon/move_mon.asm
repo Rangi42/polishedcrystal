@@ -222,12 +222,10 @@ endr
 	push hl
 	jr z, .wildmon
 	ld a, [wCurPartySpecies]
-	ld [wTempSpecies], a
-	dec a
+	ld c, a
+	ld a, [wCurForm]
+	ld b, a
 	push de
-	call CheckCaughtMon
-	ld a, [wTempSpecies]
-	dec a
 	call SetSeenAndCaughtMon
 	pop de
 	pop hl
@@ -972,7 +970,9 @@ SentPkmnIntoBox:
 	rst CopyBytes
 
 	ld a, [wCurPartySpecies]
-	dec a
+	ld c, a
+	ld a, [wCurForm]
+	ld b, a
 	call SetSeenAndCaughtMon
 
 	ld a, [wCurPartySpecies]
@@ -1638,8 +1638,9 @@ GivePoke::
 	ld a, [wTempMonForm]
 	bit MON_IS_EGG_F, a
 	jr nz, .done
+	ld b, a
 	ld a, [wCurPartySpecies]
-	dec a
+	ld c, a
 	call SetSeenAndCaughtMon
 	ld a, [wCurPartySpecies]
 	cp UNOWN

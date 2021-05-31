@@ -679,12 +679,11 @@ PokedexShow1:
 	rla
 	ld b, a
 	push bc
-	ld a, c
 	call CheckCaughtMon
 	pop bc
 	jr z, .loop
-	ld a, c
 	ld hl, wNamedObjectIndex
+	ld a, c
 	ld [wCurPartySpecies], a
 	ld [hli], a
 	ld a, b
@@ -696,11 +695,12 @@ PokedexShow1:
 	jmp NextRadioLine
 
 PokedexShow2:
-	ld a, [wCurPartySpecies]
-	dec a
 	ld hl, PokedexDataPointerTable
+	ld a, [wCurPartySpecies]
 	ld c, a
-	ld b, 0
+	ld a, [wCurForm]
+	ld b, a
+	call GetSpeciesAndFormIndex
 	add hl, bc
 	add hl, bc
 	add hl, bc

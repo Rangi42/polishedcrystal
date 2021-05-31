@@ -372,44 +372,44 @@ RespawnOneOffs:
 	eventflagreset EVENT_BEAT_CYNTHIA
 .SkipCynthia
 
-	ld a, SUDOWOODO - 1
+	ld bc, SUDOWOODO
 	call CheckCaughtMon
 	jr nz, .CaughtSudowoodo
 	eventflagreset EVENT_ROUTE_36_SUDOWOODO
 .CaughtSudowoodo
 
-	ld a, ARTICUNO - 1
+	ld bc, ARTICUNO
 	call CheckCaughtMon
 	jr nz, .CaughtArticuno
 	eventflagreset EVENT_SEAFOAM_ISLANDS_ARTICUNO
 .CaughtArticuno
 
-	ld a, ZAPDOS - 1
+	ld bc, ZAPDOS
 	call CheckCaughtMon
 	jr nz, .CaughtZapdos
 	eventflagreset EVENT_ROUTE_10_ZAPDOS
 	eventflagreset EVENT_ZAPDOS_GONE
 .CaughtZapdos
 
-	ld a, MOLTRES - 1
+	ld bc, MOLTRES
 	call CheckCaughtMon
 	jr nz, .CaughtMoltres
 	eventflagreset EVENT_CINNABAR_VOLCANO_MOLTRES
 .CaughtMoltres
 
-	ld a, MEWTWO - 1
+	ld bc, MEWTWO
 	call CheckCaughtMon
 	jr nz, .CaughtMewtwo
 	eventflagreset EVENT_CERULEAN_CAVE_MEWTWO
 .CaughtMewtwo
 
-	ld a, MEW - 1
+	ld bc, MEW
 	call CheckCaughtMon
 	jr nz, .CaughtMew
 	eventflagreset EVENT_FARAWAY_JUNGLE_MEW
 .CaughtMew
 
-	ld a, RAIKOU - 1
+	ld bc, RAIKOU
 	call CheckCaughtMon
 	jr nz, .CaughtRaikou
 	ld hl, wRoamMon1Species
@@ -418,7 +418,7 @@ RespawnOneOffs:
 	call z, RespawnRoamingRaikou
 .CaughtRaikou
 
-	ld a, ENTEI - 1
+	ld bc, ENTEI
 	call CheckCaughtMon
 	jr nz, .CaughtEntei
 	ld hl, wRoamMon2Species
@@ -429,7 +429,7 @@ RespawnOneOffs:
 
 	eventflagcheck EVENT_FOUGHT_SUICUNE
 	jr z, .CaughtSuicune
-	ld a, SUICUNE - 1
+	ld bc, SUICUNE
 	call CheckCaughtMon
 	jr nz, .CaughtSuicune
 	ld hl, wRoamMon3Species
@@ -438,14 +438,14 @@ RespawnOneOffs:
 	call z, RespawnRoamingSuicune
 .CaughtSuicune
 
-	ld a, LUGIA - 1
+	ld bc, LUGIA
 	call CheckCaughtMon
 	jr nz, .CaughtLugia
 	eventflagreset EVENT_WHIRL_ISLAND_LUGIA_CHAMBER_LUGIA
 	eventflagreset EVENT_FOUGHT_LUGIA
 .CaughtLugia
 
-	ld a, HO_OH - 1
+	ld bc, HO_OH
 	call CheckCaughtMon
 	ret nz
 	eventflagreset EVENT_TIN_TOWER_ROOF_HO_OH

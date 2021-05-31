@@ -136,7 +136,9 @@ DrawEnemyHUDBorder:
 	call DoesNuzlockeModePreventCapture
 	jr c, .nuzlocke
 	ld a, [wTempEnemyMonSpecies]
-	dec a
+	ld c, a
+	ld a, [wTempEnemyMonForm]
+	ld b, a
 	call CheckCaughtMon
 	ret z
 	hlcoord 1, 1
