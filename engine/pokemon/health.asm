@@ -112,21 +112,18 @@ ComputeHPBarPixels:
 	srl d
 	rr e
 	ldh a, [hProduct + 1]
-	ld b, a
+	srl a ; get the 17th bit into the carry bit
+	ldh [hProduct + 1], a
 	ldh a, [hProduct + 2]
-	ld c, a
+	ld b, a
 	ldh a, [hProduct + 3]
-	srl c
 	rr b
 	rra
-	srl c
-	rr b
+	srl b
 	rra
 	ldh [hDividend + 3], a
-	ld a, c
-	ldh [hDividend + 2], a
 	ld a, b
-	ldh [hDividend + 1], a
+	ldh [hDividend + 2], a
 .divide
 	ld a, e
 	ldh [hDivisor], a
