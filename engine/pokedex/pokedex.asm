@@ -1174,8 +1174,15 @@ Pokedex_GetCursorMon:
 	; If species is zero, there's nothing there. Just reload the screen.
 	ld a, c
 	and a
-	jr z, .done
+	jr nz, .got_species
 
+	; Introduce a deliberate delay. The reason for this is so that we get a more
+	; consistent delay for each slot if keyrepeat applies.
+	ld c, 3
+	call DelayFrames
+	jr .done
+
+.got_species
 	; Species name.
 	ld [wCurPartySpecies], a
 	ld [wCurSpecies], a
@@ -2324,54 +2331,6 @@ Pokedex_DrawListWindow:
 	ret
 
 Pokedex_DrawSearchResultsWindow:
-	ld a, $34
-	hlcoord 0, 0
-	ld bc, 11
-	rst ByteFill
-	ld a, $39
-	hlcoord 0, 10
-	ld bc, 11
-	rst ByteFill
-	hlcoord 5, 0
-	ld [hl], $3f
-	hlcoord 5, 10
-	ld [hl], $40
-	hlcoord 11, 0
-	ld [hl], $60
-	ld a, $61
-	hlcoord 11, 1
-	ld b, SCREEN_HEIGHT / 2
-	call Pokedex_FillColumn
-	ld [hl], $62
-	ld a, $34
-	hlcoord 0, 11
-	ld bc, 11
-	rst ByteFill
-	ld a, $39
-	hlcoord 0, 17
-	ld bc, 11
-	rst ByteFill
-	hlcoord 11, 11
-	ld [hl], $60
-	ld a, $61
-	hlcoord 11, 12
-	ld b, 5
-	call Pokedex_FillColumn
-	ld [hl], $62
-	hlcoord 0, 12
-	lb bc, 5, 11
-	call ClearBox
-	ld de, .esults_D
-	hlcoord 0, 12
-	rst PlaceString
-	ret
-
-.esults_D
-; (SEARCH R)
-	db   "esults<NEXT>"
-; (### FOUN)
-	next "d!@"
-
 Pokedex_FillBackgroundColor2:
 	hlcoord 0, 0
 	ld a, $32
