@@ -463,24 +463,21 @@ PokeBallEffect:
 	ld [wCurPartySpecies], a
 	ld [wTempSpecies], a
 
-	push af
 	cp UNOWN
 	jr nz, .unown_done
 	ld hl, wOTPartyMon1Form
 	predef GetVariant
 	farcall UpdateUnownDex
 .unown_done
-	pop af
-
-	dec a
-	call CheckCaughtMon
-
-	ld a, c
-	push af
 	ld hl, wTempSpecies
 	ld a, [hli]
 	ld c, a
 	ld b, [hl]
+	push bc
+	call CheckCaughtMon
+	ld a, c
+	pop bc
+	push af
 	call SetSeenAndCaughtMon
 	pop af
 	and a
