@@ -1119,8 +1119,9 @@ Pokedex_GetInput:
 ; Returns button input in a, and potentially handles screen refreshing.
 	ld a, TRUE
 	ldh [hVBlankOccurred], a
-	ld a, [wPokedex_UpdateTiles]
-	and a
+	ld hl, wPokedex_GFXMode
+	bit DEXGFX_DEFERRED, [hl]
+	res DEXGFX_DEFERRED, [hl]
 	call nz, Pokedex_UpdateTilemap
 	call MaybeDelayFrame
 	call JoyTextDelay_AllowRepeat
@@ -1150,7 +1151,6 @@ Pokedex_GetCursorMon:
 	ld a, [hl]
 	xor 1
 	ld [hl], a
-	ldh [rVBK], a
 
 	; Set up proper palettes and switch between vbk0 and vbk1 usage.
 	swap a
@@ -1180,56 +1180,167 @@ Pokedex_GetCursorMon:
 	; consistent delay for each slot if keyrepeat applies.
 	ld c, 3
 	call DelayFrames
-	jr .done
+	jmp .done
 
 .got_species
 	; Species name.
 	ld [wCurPartySpecies], a
 	ld [wCurSpecies], a
 	ld [wNamedObjectIndex], a
+	bit MON_CAUGHT_F, b
+	res MON_CAUGHT_F, b
 	ld a, b
 	ld [wCurForm], a
 	ld [wNamedObjectIndex+1], a
 	ld [wPokedex_Form], a
+	push af
 	call GetPokemonName
 	ld de, wStringBuffer1
 	hlcoord 9, 2
 	call PlaceString
 
+	; Frontpic
 	call GetBaseData
-	ld de, vTiles2 tile $40 ; or vTiles5 if vbk1
-	farcall PrepareFrontpic
-	call DelayFrame
-	farcall GetPreparedFrontpic
+	farcall DexPrepareFrontpic
+	ld hl, wPokedex_GFXMode
+	set DEXGFX_FRONTPIC, [hl]
 	hlcoord 1, 1
 	ld a, $40
 	call _PlaceFrontpicAtHL
 
+	; Frontpic pal
 	ld bc, wPokedex_Personality
 	xor a
 	ld [bc], a ; Not shiny.
 	ld a, [wCurPartySpecies]
 	farcall GetMonNormalOrShinyPalettePointer
-	ldh a, [rSVBK]
-	push af
-	ld a, BANK(wBGPals1)
-	ldh [rSVBK], a
 	ld de, wBGPals1 palette 6 + 2
 	ld a, BANK(PokemonPalettes)
 	ld bc, 4
-	call FarCopyBytes
+	call FarCopyBytesToColorWRAM
+
+	; If we haven't caught the mon, we're done here.
+	pop af
+	jmp z, .done
+
+	; Otherwise, also include footprint and type icons.
+	; Type icons.
+	ld hl, TypeIconGFX
+	ld a, [wBaseType1]
+	ld c, a
+	ld a, [wBaseType2]
+	ld b, a
+	push bc
+	ld b, 0
+	ld a, 4 * LEN_1BPP_TILE
+	rst AddNTimes
+	ld de, wBGPals1 palette 7 + 2
+	call Pokedex_CopyTypeIconPals
+	pop bc
+	ld de, wDexMonType1Tiles
+	ldh a, [rSVBK]
+	push af
+	ld a, BANK(wDexMonType1Tiles)
+	ldh [rSVBK], a
+	push bc
+	lb bc, BANK(TypeIconGFX), 4
+	call Pokedex_Copy1bpp
+	pop bc
+	ld c, b
+	ld b, 0
+	ld a, 4 * LEN_1BPP_TILE
+	ld hl, TypeIconGFX
+	rst AddNTimes
+	ld de, wBGPals1 palette 7 + 4
+	call Pokedex_CopyTypeIconPals
+	ld de, wDexMonType2Tiles
+	lb bc, BANK(TypeIconGFX), 4
+	call Pokedex_Copy1bpp
+
+	; Footprint
+	call Pokedex_GetCursorSpecies
+	res MON_CAUGHT_F, b
+	call GetSpeciesAndFormIndex
+	ld hl, Footprints
+	ld a, 4 * LEN_1BPP_TILE
+	rst AddNTimes
+	ld de, wDexMonFootprintTiles
+	lb bc, BANK(Footprints), 4
+	call Pokedex_Copy1bpp
+
+	; Make the type icons use color 1 and 2 of the pal instead of 3.
+	ld hl, wDexMonType1Tiles + 1
+	xor a
+	ld c, 2
+.outer_copy_loop
+	ld b, $20
+.inner_copy_loop
+	ld [hli], a
+	inc hl
+	dec b
+	jr nz, .inner_copy_loop
+	dec hl
+	dec c
+	jr nz, .outer_copy_loop
+
+	; Print out the type icon tilemap.
+	hlcoord 9, 4
+	ld a, $71
+	ld b, 8
+.type_icon_loop
+	ld [hli], a
+	inc a
+	dec b
+	jr nz, .type_icon_loop
+
+	; And the footprint tilemap.
+	hlcoord 18, 3
+	ld [hli], a
+	inc a
+	ld [hli], a
+	inc a
+	hlcoord 18, 4
+	ld [hli], a
+	inc a
+	ld [hl], a
+
+	ld hl, wPokedex_GFXMode
+	set DEXGFX_POKEINFO, [hl]
 	pop af
 	ldh [rSVBK], a
 
 .done
-	xor a
-	ldh [rVBK], a
 	; fallthrough
 Pokedex_ScheduleTilemapUpdate:
 ; Schedules a tilemap update for the next Pokedex_Delay.
-	ld a, 1
-	ld [wPokedex_UpdateTiles], a
+	ld hl, wPokedex_GFXMode
+	set DEXGFX_DEFERRED, [hl]
 	ret
+
+Pokedex_CopyTypeIconPals:
+	push hl
+	ld hl, TypeIconPals
+	ld a, 2
+	rst AddNTimes
+	ld a, BANK(TypeIconPals)
+	ld bc, 2
+	call FarCopyBytesToColorWRAM
+	pop hl
+	ret
+
+Pokedex_Copy1bpp:
+; Copies c tiles from b:hl to de. Avoids running Copy1bpp during HBlank.
+	ld a, [rLY]
+	sub $38
+	jr c, .ok
+.loop
+	cp $8
+	call c, DelayFrame
+	sub $18
+	jr nc, .loop
+.ok
+	call SwapHLDE
+	jmp Copy1bpp
 
 Pokedex_SetTilemap:
 ; Copies between wDexTilemap+wDexAttrmap (32x32) and wTilemap/wAttrmap (20x18).
@@ -1298,9 +1409,9 @@ Pokedex_ReloadTilemap:
 	rst CopyBytes
 
 	call SetPalettes
-	ld a, -1
-	ld [wPokedex_UpdateTiles], a
-	jmp DelayFrame
+	ld hl, wPokedex_GFXMode
+	set DEXGFX_TILEMAP, [hl]
+	ret
 
 ; All PHB functions are timing-critical down to single cycles. Do not optimize
 ; for space unless you align the cycles exactly the same (Don't optimize for
@@ -2019,66 +2130,6 @@ String_START_SEARCH:
 	db $48, $3b, $49, $4a, $4b, $4c, $4d, $4e, $5d, $5e, $ff
 
 Pokedex_DrawDexEntryScreenBG:
-	call Pokedex_FillBackgroundColor2
-	hlcoord 0, 0
-	lb bc, 15, 18
-	call Pokedex_PlaceBorder
-	hlcoord 19, 0
-	ld [hl], $34
-	hlcoord 19, 1
-	ld a, " "
-	ld b, 15
-	call Pokedex_FillColumn
-	ld [hl], $39
-	hlcoord 1, 10
-	ld bc, 19
-	ld a, $5f ; horizontal divider
-	rst ByteFill
-	hlcoord 1, 17
-	ld bc, 18
-	ld a, " "
-	rst ByteFill
-	ld a, [wOptions2]
-	bit POKEDEX_UNITS, a
-	jr nz, .metric
-	hlcoord 9, 7
-	ld de, .HeightImperial
-	call Pokedex_PlaceString
-	hlcoord 9, 9
-	ld de, .WeightImperial
-	call Pokedex_PlaceString
-	jr .done
-.metric
-	hlcoord 9, 7
-	ld de, .HeightMetric
-	call Pokedex_PlaceString
-	hlcoord 9, 9
-	ld de, .WeightMetric
-	call Pokedex_PlaceString
-.done
-	hlcoord 0, 17
-
-	ld a, [wCelebiEvent]
-	bit 4, a ; ENGINE_HAVE_SHINY_CHARM
-	ld de, .MenuItemsShinyCharm
-	jr nz, .ok
-	ld de, .MenuItems
-.ok
-	call Pokedex_PlaceString
-	jmp PlaceFrontpicTopLeftCorner
-
-.HeightImperial:
-	rawchar "Ht  ?′??″", $ff ; HT  ?'??"
-.WeightImperial:
-	rawchar "Wt   ???lb", $ff ; WT   ???lb
-.HeightMetric:
-	rawchar "Ht   ???m", $ff ; HT   ???m"
-.WeightMetric:
-	rawchar "Wt   ???kg", $ff ; WT   ???kg
-.MenuItems:
-	rawchar $3b, " Page Area Cry     ", $ff
-.MenuItemsShinyCharm:
-	rawchar $3b, " Page Area Cry Shny", $ff
 
 Pokedex_DrawDexEntryScreenRightEdge:
 	ldh a, [hBGMapAddress]
