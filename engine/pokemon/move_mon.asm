@@ -571,18 +571,23 @@ AddTempMonToParty:
 	ld bc, MON_NAME_LENGTH
 	rst CopyBytes
 
+	ld hl, wNamedObjectIndex
 	ld a, [wCurPartySpecies]
-	ld [wNamedObjectIndex], a
+	ld c, a
+	ld [hli], a
+	ld a, [wCurForm]
+	ld b, a
+	ld [hl], a
 
+	push bc
 	ld hl, wPartyMon1IsEgg
 	ld a, [wPartyCount]
 	dec a
 	ld bc, PARTYMON_STRUCT_LENGTH
 	rst AddNTimes
+	pop bc
 	bit MON_IS_EGG_F, [hl]
 	jr nz, .egg
-	ld a, [wCurPartySpecies]
-	dec a
 	call SetSeenAndCaughtMon
 	ld hl, wPartyMon1Happiness
 	ld a, [wPartyCount]

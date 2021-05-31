@@ -103,10 +103,13 @@ CheckDexMon::
 
 PokedexFlagAction::
 	push af
+	push hl
 	call GetSpeciesAndFormIndex
 	ld d, b
 	ld e, c
-	pop bc
+	pop hl
+	pop af
+	ld b, a
 	call FlagAction
 	ld a, c
 	and a
