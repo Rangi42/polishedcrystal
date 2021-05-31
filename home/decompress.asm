@@ -17,6 +17,8 @@ FarDecompressToDE::
 Decompress::
 ; Decompress LZ data from hl to de.
 	ldh a, [hVBlank]
+	cp 4
+	jr z, _Decompress
 	push af
 	ld a, 2 ; sound only XXX use constants for vblank modes
 	ldh [hVBlank], a

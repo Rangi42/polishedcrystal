@@ -810,6 +810,11 @@ wPokedex_Row3Tile: db
 wPokedex_Row3Pals:: ds 6 * 5
 wPokedex_PalsEnd::
 
+; Pokémon info (frontpic, types, etc) is stored in either vbk0 or vbk1. This is
+; cycled each time we move the cursor. The reason for this is so that we can
+; update the entire display smoothly in a single frame without noticeable delay.
+wPokedex_MonInfoBank:: db
+
 wPokedex_NumSeen:: dw
 wPokedex_NumOwned:: dw
 wPokedex_CursorPos:: db

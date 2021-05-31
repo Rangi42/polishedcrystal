@@ -208,6 +208,7 @@ Pokedex:
 
 	xor a
 	ld [wPokedex_CursorPos], a
+	ld [wPokedex_MonInfoBank], a
 
 	call Pokedex_GetCursorMon
 	call Pokedex_MainLoop
@@ -457,9 +458,32 @@ Pokedex:
 .SeenOwn:
 	db "Seen/ Own/@"
 
-Pokedex_GetCursorMon:
-	call Pokedex_ScheduleTilemapUpdate
-
+Pokedex_GetCursorSpecies:
+; Returns species in c, form+ext in b that cursor is hovering.
+	ld a, BANK(wDexMons)
+	call StackCallInWRAMBankA
+.Function:
+	ld a, [wPokedex_CursorPos]
+	ld b, a
+	swap a
+	and $f
+	ld hl, wPokedex_Offset
+	add [hl]
+	ld c, 10
+	call SimpleMultiply
+	ld c, a
+	ld a, b
+	ld b, 0
+	ld hl, wDexMons
+	add hl, bc
+	and $f
+	ld c, 2
+	call SimpleMultiply
+	ld c, a
+	add hl, bc
+	ld a, [hli]
+	ld b, [hl]
+	ld c, a
 	ret
 
 Pokedex_MainLoop:
@@ -1111,6 +1135,73 @@ Pokedex_GetInput:
 	pop bc
 	ret
 
+Pokedex_GetCursorMon:
+; Displays information about the mon the cursor is currently hovering.
+	; First, clear existing data.
+	hlcoord 9, 2
+	lb bc, 3, 11
+	call ClearBox
+	hlcoord 1, 1
+	lb bc, 7, 7
+	call ClearBox
+
+	; Switch which bank to store tile data in.
+	ld hl, wPokedex_MonInfoBank
+	ld a, [hl]
+	xor 1
+	ld [hl], a
+	ldh [rVBK], a
+
+	; Set up proper palettes and switch between vbk0 and vbk1 usage.
+	swap a
+	rrca
+
+	; Frontpic pal
+	hlcoord 1, 1, wAttrMap
+	lb bc, 7, 7
+	add $6 ; BG6, potentially with VRAM_BANK_1
+	call FillBoxWithByte
+
+	; Mon infobox pal
+	inc a ; BG7, potentially with VRAM_BANK_1
+	hlcoord 9, 3, wAttrMap
+	lb bc, 2, 11
+	call FillBoxWithByte
+
+	; Attributes are done. Now we can deal with the main data.
+	call Pokedex_GetCursorSpecies
+
+	; If species is zero, there's nothing there. Just reload the screen.
+	ld a, c
+	and a
+	jr z, .done
+
+	; Species name.
+	ld [wCurPartySpecies], a
+	ld [wCurSpecies], a
+	ld [wNamedObjectIndex], a
+	ld a, b
+	ld [wCurForm], a
+	ld [wNamedObjectIndex+1], a
+	call GetPokemonName
+	ld de, wStringBuffer1
+	hlcoord 9, 2
+	call PlaceString
+
+	call GetBaseData
+	ld de, vTiles2 tile $40 ; or vTiles5 if vbk1
+	farcall PrepareFrontpic
+	call DelayFrame
+	farcall GetPreparedFrontpic
+	hlcoord 1, 1
+	ld a, $40
+	call _PlaceFrontpicAtHL
+	
+
+.done
+	xor a
+	ldh [rVBK], a
+	; fallthrough
 Pokedex_ScheduleTilemapUpdate:
 ; Schedules a tilemap update for the next Pokedex_Delay.
 	ld a, 1
@@ -1280,7 +1371,7 @@ PHB_LoadRow:
 	pop de
 
 	; This places the OAM writes within the worst-case mode0 margin.
-	ld b, 29
+	ld b, 28
 .fixtiming1
 	dec b
 	jp nz, .fixtiming1
@@ -1872,8 +1963,9 @@ Pokedex_ResetBGMapMode:
 Pokedex_FillColumn:
 PlaceFrontpicTopLeftCorner:
 PlaceFrontpicAtHL:
-	ld de, SCREEN_WIDTH
 	xor a
+_PlaceFrontpicAtHL:
+	ld de, SCREEN_WIDTH
 	ld b, 7
 .row
 	ld c, 7
