@@ -7808,9 +7808,9 @@ HandleNuzlockeFlags:
 	ret nz
 
 	; Dupes clause: don't count duplicate encounters
-	ld a, [wTempEnemyMonSpecies]
+	ld a, [wOTPartyMon1Species]
 	ld c, a
-	ld a, [wTempEnemyMonForm]
+	ld a, [wOTPartyMon1Form]
 	ld b, a
 	call CheckCaughtMon
 	ret nz
