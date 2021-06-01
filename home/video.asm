@@ -9,44 +9,94 @@ ForcePushOAM:
 	ld a, HIGH(wVirtualOAM)
 	jmp hPushOAM
 
+ContinueGDMACopy:
+	push hl
+	push af
+	ld hl, rHDMA3
+	jr _GDMACopy
+GDMACopy:
+; Copy a-1 tiles from de to bc. Preserves all registers. Assumes GDMA is valid.
+	push hl
+	push af
+	ld hl, rHDMA1
+	ld a, d
+	ld [hli], a
+	ld a, e
+	ld [hli], a
+_GDMACopy:
+	ld a, b
+	ld [hli], a
+	ld a, c
+	ld [hli], a
+	pop af
+	ld [hl], a
+	pop hl
+	ret
+
 UpdateDexMap::
-; Reloads dex pals and dex tilemap
-	ld a, [wPokedex_UpdateTiles]
-	inc a
-	ret nz
-	call UpdateCGBPals
+; Reloads dex gfx data depending on wPokedex_UpdateTiles.
 	ldh a, [rSVBK]
+	push af
+	ldh a, [rVBK]
 	push af
 	ld a, BANK(wDexTilemap)
 	ldh [rSVBK], a
-	ld a, HIGH(wDexTilemap)
-	ldh [rHDMA1], a
-	ld a, LOW(wDexTilemap)
-	ldh [rHDMA2], a
-	ld a, HIGH(vBGMap0)
-	ldh [rHDMA3], a
-	ld a, LOW(vBGMap0)
-	ldh [rHDMA4], a
+	ld hl, wPokedex_GFXMode
+	bit DEXGFX_FRONTPIC, [hl]
+	res DEXGFX_FRONTPIC, [hl]
+	jr z, .frontpic_done
+
+	ld a, [wPokedex_MonInfoBank]
+	ldh [rVBK], a
+	ld de, wDexMonFrontpicTiles
+	ld bc, vTiles2 tile $40
+	ld a, 48
+	call GDMACopy
+
+.frontpic_done
+	bit DEXGFX_POKEINFO, [hl]
+	res DEXGFX_POKEINFO, [hl]
+	jr z, .pokeinfo_done
+	ld a, [wPokedex_MonInfoBank]
+	ldh [rVBK], a
+	ld de, wDexMonType1Tiles
+	ld bc, vTiles2 tile $71
+	ld a, 11
+	call GDMACopy
+
+.pokeinfo_done
+	; Don't run this too late into VBlank.
+	ld a, [rLY]
+	cp $93
+	jr nc, .done
+	and a
+	jr z, .done
+
+	bit DEXGFX_TILEMAP, [hl]
+	res DEXGFX_TILEMAP, [hl]
+	jr z, .done
+
+	xor a
+	ldh [rVBK], a
+	call UpdateCGBPals
+	call ForcePushOAM
+	ld de, wDexTilemap
+	ld bc, vBGMap0
 	ld a, ((BG_MAP_WIDTH * (SCREEN_HEIGHT + 1)) >> 4) - 1
-	ldh [rHDMA5], a
+	call GDMACopy
 	ld a, 1
 	ldh [rVBK], a
-	ld a, HIGH(vBGMap2)
-	ldh [rHDMA3], a
-	ld a, LOW(vBGMap2)
-	ldh [rHDMA4], a
 	ld a, ((BG_MAP_WIDTH * (SCREEN_HEIGHT + 1)) >> 4) - 1
-	ldh [rHDMA5], a
-	xor a
-	ldh [rVBK], a
-	pop af
-	ldh [rSVBK], a
-	xor a
-	ld [wPokedex_UpdateTiles], a
+	call ContinueGDMACopy
 	ld hl, wDexPalCopy
 	ld de, wPokedex_Pals
 	ld bc, wPokedex_PalsEnd - wPokedex_Pals
 	rst CopyBytes
+.done
+	pop af
+	ldh [rVBK], a
+	pop af
+	ldh [rSVBK], a
 	ret
 
 DMATransfer::

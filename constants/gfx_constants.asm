@@ -58,6 +58,13 @@ NUM_SPRITE_OAM_STRUCTS EQU 40 ; see wVirtualOAM
 	const VWF_INVERT_F
 	const VWF_OPAQUE_F
 
+; Dex GFX flags
+	const_def
+	const DEXGFX_DEFERRED ; tilemap+pal update scheduled for next input request
+	const DEXGFX_TILEMAP ; includes palettes
+	const DEXGFX_FRONTPIC
+	const DEXGFX_POKEINFO ; non-frontpic gfx (type icons, footprint)
+
 VWF_SINGLE EQU 1 << VWF_SINGLE_F
 VWF_INVERT EQU 1 << VWF_INVERT_F
 VWF_OPAQUE EQU 1 << VWF_OPAQUE_F

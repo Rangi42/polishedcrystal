@@ -819,6 +819,9 @@ wPokedex_Personality::
 wPokedex_Shiny:: db
 wPokedex_Form:: db
 
+wPokedexOAM_CaughtY:: db
+wPokedexOAM_SeenY:: db
+
 wPokedex_NumSeen:: dw
 wPokedex_NumOwned:: dw
 wPokedex_CursorPos:: db
@@ -829,7 +832,7 @@ wPokedex_LastCol:: db ; 1-5 in case the final row isn't completely filled
 NEXTU
 wPokedex_FinalEntry:: dw ; Final entry. Overwritten with rows/lastcol later.
 ENDU
-wPokedex_UpdateTiles:: db ; Whether to update tiles upon input request.
+wPokedex_GFXMode:: db ; flags for various gfx update types
 
 SECTION UNION "Misc 480", WRAM0
 ; Pokedex

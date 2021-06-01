@@ -1482,6 +1482,26 @@ NEXTU
 wDexTilemap:: ds BG_MAP_WIDTH * (SCREEN_HEIGHT + 1)
 wDexAttrmap:: ds BG_MAP_WIDTH * (SCREEN_HEIGHT + 1)
 wDexMapEnd::
+
+UNION
+wDexVWFTiles:: ds 18 tiles
+wDexIconTiles:: ds 24 tiles ; 4 tiles padding
+NEXTU
+; Copied using GDMA in VBlank. Ideally we want to do GDMA as part of hblank,
+; but there is some issues with that yet to be fully researched (issue #639).
+wDexMonTiles::
+wDexMonFrontpicTiles:: ds 49 tiles
+wDexMonType1Tiles:: ds 4 tiles
+wDexMonType2Tiles:: ds 4 tiles
+wDexMonFootprintTiles:: ds 4 tiles
+wDexMonTilesEnd::
+ENDU
+
+wDexVirtualOAMCopy:: ds 4 * (5 + 4 * 3) ; 5 balls + 3 minis
+wDexVirtualOAMDexNoCopy:: ds 4 * 6
+wDexVirtualOAMCopyEnd::
+
+
 wDexMons::
 for n, 1, NUM_SPECIES + 1
 wDexMon{d:n}::
@@ -1503,16 +1523,6 @@ wDexPalCopyEnd::
 wDexNumber:: dw
 wDexNumberString:: ds 4 ; 3 numbers including leading zeroes + terminator
 
-UNION
-wDexTiles::
-wDexVWFTiles:: ds 18 tiles
-wDexIconTiles:: ds 24 tiles ; 4 tiles padding
-wDexTilesEnd::
-NEXTU
-
-wDexVirtualOAMCopy:: ds 4 * (5 + 4 * 3) ; 4 bytes, 5 balls + 3 minis
-wDexVirtualOAMCopyEnd::
-ENDU
 ENDU
 
 wDexVWFPreset:: ds 18 tiles ; loaded into VWFTiles on a new row.
