@@ -682,6 +682,7 @@ Pokedex_UpdateRow:
 	sub 4
 	push bc
 	push af
+	add $d0
 	ld d, 18
 .loop
 	ld [hli], a
@@ -889,19 +890,20 @@ Pokedex_UpdateRow:
 	ld b, 0
 	ld a, DEXPOS_VTILES
 	call .GetPosData
-	ld de, wDexVWFTiles
-	ld c, 18
+	ld de, wDexIconTiles
+	ld c, 20
 	ldh a, [rVBK]
 	push af
 	ld a, 1
 	ldh [rVBK], a
+	call DelayFrame
 	push hl
 	call Get2bpp
 	pop hl
-	ld bc, vTiles4 - vTiles5
+	ld bc, (vTiles4 tile $50) - vTiles4
 	add hl, bc
-	ld c, 20
-	ld de, wDexIconTiles
+	ld c, 18
+	ld de, wDexVWFTiles
 	call Get2bpp
 	pop af
 	ldh [rVBK], a
@@ -978,7 +980,7 @@ Pokedex_UpdateRow:
 	; mod-based
 	dw wDexIconTiles, 0, 4 tiles
 	dw wDexVWFTiles - 1 tiles, 0, 4 tiles
-	dw vTiles5, 20 tiles, 4 tiles
+	dw vTiles4, 20 tiles, 4 tiles
 	dw 0, 20, 4
 
 	; offset-based
