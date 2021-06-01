@@ -1324,7 +1324,7 @@ GetForgottenMoves::
 	ld a, BANK(EvosAttacks)
 	call GetFarByte
 	inc hl
-	and a
+	inc a
 	jr nz, .skip_evos
 
 	ld de, wMoveScreenMoves

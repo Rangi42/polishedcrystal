@@ -937,14 +937,14 @@ PlacePartyMonGender:
 	push hl
 	call PartyMenuCheckEgg
 	jr nz, .next
-	push hl
-	ld hl, wPartySpecies
-	ld e, b
-	ld d, 0
-	add hl, de
-	ld a, [hl]
-	ld [wCurPartySpecies], a
-	pop hl
+	; push hl
+	; ld hl, wPartySpecies
+	; ld e, b
+	; ld d, 0
+	; add hl, de
+	; ld a, [hl]
+	; ld [wCurPartySpecies], a
+	; pop hl
 	ld a, [wCurPartyMon]
 	push af
 	ld a, b
@@ -990,12 +990,8 @@ PlacePartyMonRemindable:
 	call PartyMenuCheckEgg
 	jr nz, .next
 	push hl
-	ld hl, wPartySpecies
-	ld e, b
-	ld d, 0
-	add hl, de
-	ld a, [hl]
-	ld [wCurPartySpecies], a
+	ld a, b
+	ld [wCurPartyMon], a
 	farcall GetForgottenMoves
 	pop hl
 	call .PlaceAbleNotAble
