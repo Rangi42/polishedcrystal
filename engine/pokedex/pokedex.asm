@@ -23,6 +23,17 @@ DEXTILE_SECOND_ROW  EQU 1 << DEXTILE_SECOND_ROW_F
 	const DEXSTATE_UPDATE_UNOWN_MODE
 	const DEXSTATE_EXIT
 
+	const_def
+	const DEXPOS_MONS
+	const DEXPOS_DEXNO
+	const DEXPOS_ICON_TILES
+	const DEXPOS_VWF_TILES
+	const DEXPOS_VTILES
+	const DEXPOS_TILE_OFFSET
+	const DEXPOS_TILEMAP
+	const DEXPOS_ATTRMAP
+	const DEXPOS_PALCOPY
+
 Pokedex:
 	ldh a, [hBGMapMode]
 	ld b, a
@@ -547,24 +558,96 @@ Pokedex_MainLoop:
 	and $f
 	cp 5
 	jr nc, .modcursorpos
-	; fallthrough
+	jr .newcursorpos
+.pressed_up
+	ld hl, wPokedex_CursorPos
+	ld a, [hl]
+	sub $10
+	jr nc, .setcursorpos
+	ld b, 0
+	call .SwitchRow
+	jr .newcursorpos
+.setcursorpos
+	ld [hl], a
 .newcursorpos
 	call Pokedex_GetCursorMon
 	jr .loop
-.pressed_up
 .pressed_down
-	jr .loop
+	ld hl, wPokedex_CursorPos
+	ld a, [hl]
+	add $10
+	cp $30
+	jr c, .setcursorpos
+	ld b, 2
+	call .SwitchRow
+	jr .newcursorpos
 
-	const_def
-	const DEXPOS_MONS
-	const DEXPOS_DEXNO
-	const DEXPOS_ICON_TILES
-	const DEXPOS_VWF_TILES
-	const DEXPOS_VTILES
-	const DEXPOS_TILE_OFFSET
-	const DEXPOS_TILEMAP
-	const DEXPOS_ATTRMAP
-	const DEXPOS_PALCOPY
+.ShiftRowData:
+; Copies c bytes data between hl and de. b determines direction.
+	push bc
+	ld a, b
+	ld b, 0
+	and a
+	jr nz, .shift_upwards
+	add hl, bc
+	call SwapHLDE
+	add hl, bc
+	dec hl
+.reverse_copy_loop
+	ld a, [hld]
+	dec de
+	ld [de], a
+	dec c
+	jr nz, .reverse_copy_loop
+	pop bc
+	ret
+
+.shift_upwards
+	rst CopyBytes
+	pop bc
+	ret
+
+.SwitchRow:
+	ld a, BANK(wDexPalCopy)
+	call StackCallInWRAMBankA
+.SwitchRow_Function:
+	ld hl, wPokedex_Offset
+
+	ld a, b
+	and a
+	jr z, .upwards
+
+	; Don't move downwards past row offset (total - 3).
+	ld a, [wPokedex_Rows]
+	sub [hl]
+	cp 4
+	ret c
+	inc [hl]
+
+	; Minor optimization: +2-1 is shorter than jumping past descending.
+	inc [hl]
+
+.upwards
+	; Don't move upwards past row offset 0.
+	or [hl]
+	ret z
+	dec [hl]
+
+	; Shift current row information around.
+	ld de, wDexRow1Tile
+	ld hl, wDexRow2Tile
+	ld c, wDexRow3Tile - wDexRow1Tile
+	call .ShiftRowData
+	decoord 1, 9
+	hlcoord 1, 12
+	ld c, SCREEN_WIDTH * 6 - 2
+	call .ShiftRowData
+	decoord 1, 9, wAttrMap
+	hlcoord 1, 12, wAttrMap
+	ld c, SCREEN_WIDTH * 6 - 2
+	call .ShiftRowData
+	ld c, b
+	; fallthrough
 
 Pokedex_UpdateRow:
 ; Populate tiles used for the given row in c with dex numbers and icon.
@@ -2221,70 +2304,6 @@ String_START_SEARCH:
 Pokedex_DrawDexEntryScreenBG:
 
 Pokedex_DrawDexEntryScreenRightEdge:
-	ldh a, [hBGMapAddress]
-	ld l, a
-	ldh a, [hBGMapAddress + 1]
-	ld h, a
-	push hl
-	inc hl
-	ld a, l
-	ldh [hBGMapAddress], a
-	ld a, h
-	ldh [hBGMapAddress + 1], a
-	hlcoord 19, 0
-	ld [hl], $60
-	hlcoord 19, 1
-	ld a, $61
-	ld b, 15
-	call Pokedex_FillColumn
-	ld [hl], $62
-	hlcoord 19, 17
-	ld [hl], $3c
-	xor a
-	ld b, SCREEN_HEIGHT
-	hlcoord 19, 0, wAttrMap
-	call Pokedex_FillColumn
-	call ApplyAttrAndTilemapInVBlank
-	pop hl
-	ld a, l
-	ldh [hBGMapAddress], a
-	ld a, h
-	ldh [hBGMapAddress + 1], a
-	ret
-
-Pokedex_DrawOptionScreenBG:
-	call Pokedex_FillBackgroundColor2
-	hlcoord 0, 2
-	lb bc, 8, 18
-	call Pokedex_PlaceBorder
-	hlcoord 0, 12
-	lb bc, 4, 18
-	call Pokedex_PlaceBorder
-	hlcoord 0, 1
-	ld de, .Title
-	call Pokedex_PlaceString
-	hlcoord 3, 4
-	ld de, .Modes
-	rst PlaceString
-	ld a, [wUnlockedUnownMode]
-	and a
-	ret z
-	hlcoord 3, 10
-	ld de, .UnownMode
-	rst PlaceString
-	ret
-
-.Title:
-	rawchar $3b, " Option ", $3c, $ff
-
-.Modes:
-	db   "Johto Mode"
-	next "National Mode"
-	next "A to Z Mode@"
-
-.UnownMode:
-	db "Unown Mode@"
-
 Pokedex_DrawSearchScreenBG:
 	call Pokedex_FillBackgroundColor2
 	hlcoord 0, 2
@@ -2322,34 +2341,6 @@ Pokedex_DrawSearchScreenBG:
 	next "Cancel@"
 
 Pokedex_DrawSearchResultsScreenBG:
-	call Pokedex_FillBackgroundColor2
-	hlcoord 0, 0
-	lb bc, 7, 7
-	call Pokedex_PlaceBorder
-	hlcoord 0, 11
-	lb bc, 5, 18
-	call Pokedex_PlaceBorder
-	hlcoord 1, 12
-	ld de, .BottomWindowText
-	rst PlaceString
-	ld de, wDexSearchResultCount
-	hlcoord 1, 16
-	lb bc, 1, 3
-	call PrintNum
-	hlcoord 8, 0
-	ld [hl], $59
-	hlcoord 8, 1
-	ld b, 7
-	ld a, $5a
-	call Pokedex_FillColumn
-	hlcoord 8, 8
-	ld [hl], $53
-	hlcoord 8, 9
-	ld [hl], $63
-	hlcoord 8, 10
-	ld [hl], $64
-	jmp PlaceFrontpicTopLeftCorner
-
 .BottomWindowText:
 	db   "Search Results"
 	next "  Type/"
