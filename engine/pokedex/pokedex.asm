@@ -1036,6 +1036,7 @@ Pokedex_InitData:
 	ldh a, [hRemainder]
 	ld [wPokedex_LastCol], a
 	ldh a, [hQuotient + 2]
+	inc a
 	ld [wPokedex_Rows], a
 	ret
 
@@ -1122,16 +1123,23 @@ Pokedex_InitData:
 
 .national_mode
 	ld b, d
-	ld c, e
-	ld a, b
-	inc bc
-	inc a
+	ld a, e
+	push de
+	inc d
 .natloop
+	add 2
+	jr nc, .natok
+	inc b
+	inc d
+.natok
+	dec d
+	jr nz, .natloop
 	dec a
-	ret z
-	dec bc
-	dec bc
-	jr .natloop
+	ld c, a
+	swap b
+	sla b
+	pop de
+	ret
 
 .CheckOwnership:
 	push hl
