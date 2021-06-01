@@ -644,6 +644,10 @@ Pokedex_MainLoop:
 	hlcoord 1, 12, wAttrMap
 	ld c, SCREEN_WIDTH * 6 - 2
 	call .ShiftRowData
+	hlcoord 19, 9
+	ld [hl], $21
+	hlcoord 19, 12
+	ld [hl], $1a
 	ld c, b
 	; fallthrough
 
