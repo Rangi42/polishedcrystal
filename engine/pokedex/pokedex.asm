@@ -494,22 +494,20 @@ Pokedex_GetCursorSpecies:
 	call StackCallInWRAMBankA
 .Function:
 	ld a, [wPokedex_CursorPos]
-	ld b, a
+	push af
 	swap a
 	and $f
 	ld hl, wPokedex_Offset
 	add [hl]
-	ld c, 10
-	call SimpleMultiply
 	ld c, a
-	ld a, b
 	ld b, 0
+	ld a, 10
 	ld hl, wDexMons
-	add hl, bc
+	rst AddNTimes
+	pop af
 	and $f
-	ld c, 2
-	call SimpleMultiply
 	ld c, a
+	add hl, bc
 	add hl, bc
 	ld a, [hli]
 	ld b, [hl]
