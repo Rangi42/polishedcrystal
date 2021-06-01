@@ -280,7 +280,7 @@ Pokedex:
 	jr nz, .mini_oam_outer_loop
 
 	; Dex number
-	lb bc, 80, 6
+	lb bc, 77, 6
 	xor a
 .dexno_oam_loop
 	ld [hli], a
