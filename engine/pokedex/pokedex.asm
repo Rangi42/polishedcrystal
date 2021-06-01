@@ -78,7 +78,7 @@ Pokedex:
 
 	ld de, DexOAM
 	ld hl, vTiles0
-	lb bc, BANK(DexOAM), 4
+	lb bc, BANK(DexOAM), 5
 	call Get2bpp
 
 	call .SetupVWFPreset
@@ -290,6 +290,16 @@ Pokedex:
 	dec c
 	jr nz, .mini_oam_outer_loop
 
+	; Scrollbar
+	ld a, 85
+	ld [hli], a
+	ld a, 160
+	ld [hli], a
+	ld a, 4
+	ld [hli], a
+	ld a, 1
+	ld [hli], a
+
 	; Dex number
 	lb bc, 77, 6
 	xor a
@@ -305,9 +315,9 @@ Pokedex:
 	dec c
 	jr nz, .dexno_oam_loop
 	ld a, "№"
-	ld [wVirtualOAMSprite30TileID], a
-	ld a, "."
 	ld [wVirtualOAMSprite31TileID], a
+	ld a, "."
+	ld [wVirtualOAMSprite32TileID], a
 
 	lb de, $50, $09
 	ld a, SPRITE_ANIM_INDEX_DEX_CURSOR
@@ -1544,11 +1554,6 @@ Pokedex_ReloadTilemap:
 	ld a, BANK(wDexTilemap)
 	call StackCallInWRAMBankA
 .Function:
-	; Check if we have time to reload sprite animations in time.
-	ldh a, [rLY]
-	cp $50
-	call nc, DelayFrame
-
 	; This will be overwritten, so back it up.
 	ld hl, wVirtualOAMSprite12
 	ld de, wDexVirtualOAMCopy
@@ -1583,6 +1588,27 @@ Pokedex_ReloadTilemap:
 	pop af
 	dec a
 	jr nz, .dexno_str_loop
+
+	; Fix scrollbar
+	ld hl, hMultiplicand
+	ld [hli], a
+	ld [hli], a
+	ld a, [wPokedex_Offset]
+	ld [hli], a
+	ld a, 54
+	ldh [hMultiplier], a
+	call Multiply
+	ld b, 4
+	ld a, [wPokedex_Rows]
+	sub 3
+	ldh [hDivisor], a
+	ld a, 0
+	jr c, .got_scrollbar_offset
+	call Divide
+	ldh a, [hQuotient + 2]
+	add 85
+.got_scrollbar_offset
+	ld [wDexVirtualOAMScrollbarCopy], a
 	farcall PlaySpriteAnimations
 
 	; Copy it back.
@@ -1861,6 +1887,15 @@ DexOAM:
 	dw `11000000
 	dw `11000000
 	dw `11000000
+
+	dw `33333333
+	dw `32222223
+	dw `32222223
+	dw `32222223
+	dw `32222223
+	dw `32222223
+	dw `32222223
+	dw `33333333
 
 DexTiles:
 	dw `00000100

@@ -1498,6 +1498,7 @@ wDexMonTilesEnd::
 ENDU
 
 wDexVirtualOAMCopy:: ds 4 * (5 + 4 * 3) ; 5 balls + 3 minis
+wDexVirtualOAMScrollbarCopy:: ds 4
 wDexVirtualOAMDexNoCopy:: ds 4 * 6
 wDexVirtualOAMCopyEnd::
 
