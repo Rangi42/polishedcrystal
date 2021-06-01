@@ -1233,13 +1233,12 @@ Pokedex_GetInput:
 	call JoyTextDelay_AllowRepeat
 
 	; Only allow keyrepeat of the D-pad.
+	ldh a, [hJoyPressed]
+	and a
+	ret nz
+
 	ldh a, [hJoyLast]
 	and D_PAD
-	push bc
-	ld b, a
-	ldh a, [hJoyPressed]
-	or b
-	pop bc
 	ret
 
 Pokedex_GetCursorMon:
@@ -1587,6 +1586,10 @@ Pokedex_ReloadTilemap:
 	call SetPalettes
 	ld hl, wPokedex_GFXMode
 	set DEXGFX_TILEMAP, [hl]
+.tilemap_delay
+	call DelayFrame
+	bit DEXGFX_TILEMAP, [hl]
+	jr nz, .tilemap_delay
 	ret
 
 ; All PHB functions are timing-critical down to single cycles. Do not optimize
