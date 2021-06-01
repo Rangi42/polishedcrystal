@@ -1229,7 +1229,11 @@ Pokedex_GetCursorMon:
 	ld a, [wBaseType1]
 	ld c, a
 	ld a, [wBaseType2]
+	cp c
+	ld b, -1
+	jr z, .got_types
 	ld b, a
+.got_types
 	push bc
 	ld b, 0
 	ld a, 4 * LEN_1BPP_TILE
@@ -1246,6 +1250,10 @@ Pokedex_GetCursorMon:
 	lb bc, BANK(TypeIconGFX), 4
 	call Pokedex_Copy1bpp
 	pop bc
+	inc b
+	push af
+	jr z, .types_done
+	dec b
 	ld c, b
 	ld b, 0
 	ld a, 4 * LEN_1BPP_TILE
@@ -1257,6 +1265,7 @@ Pokedex_GetCursorMon:
 	lb bc, BANK(TypeIconGFX), 4
 	call Pokedex_Copy1bpp
 
+.types_done
 	; Footprint
 	call Pokedex_GetCursorSpecies
 	res MON_CAUGHT_F, b
@@ -1285,8 +1294,11 @@ Pokedex_GetCursorMon:
 
 	; Print out the type icon tilemap.
 	hlcoord 9, 4
-	ld a, $71
+	pop af
 	ld b, 8
+	ld a, $71
+	jr nz, .type_icon_loop
+	ld b, 4
 .type_icon_loop
 	ld [hli], a
 	inc a
@@ -1294,6 +1306,7 @@ Pokedex_GetCursorMon:
 	jr nz, .type_icon_loop
 
 	; And the footprint tilemap.
+	ld a, $79
 	hlcoord 18, 3
 	ld [hli], a
 	inc a
