@@ -411,6 +411,15 @@ Pokedex:
 	call .ListLoop
 	ld b, d
 	ld [hl], b
+
+	; Set scrollbar palette.
+	push hl
+	push bc
+	ld bc, wAttrMap - wTileMap
+	add hl, bc
+	ld [hl], 1
+	pop bc
+	pop hl
 	inc hl
 	ret
 
