@@ -279,6 +279,25 @@ Pokedex:
 	dec c
 	jr nz, .mini_oam_outer_loop
 
+	; Dex number
+	lb bc, 80, 6
+	xor a
+.dexno_oam_loop
+	ld [hli], a
+	ld a, b
+	ld [hli], a
+	add 8
+	ld b, a
+	xor a
+	ld [hli], a
+	ld [hli], a
+	dec c
+	jr nz, .dexno_oam_loop
+	ld a, "№"
+	ld [wVirtualOAMSprite30TileID], a
+	ld a, "."
+	ld [wVirtualOAMSprite31TileID], a
+
 	lb de, $50, $09
 	ld a, SPRITE_ANIM_INDEX_DEX_CURSOR
 	jmp InitSpriteAnimStruct
@@ -1145,6 +1164,9 @@ Pokedex_GetCursorMon:
 	hlcoord 1, 1
 	lb bc, 7, 7
 	call ClearBox
+	xor a
+	ld [wPokedexOAM_CaughtY], a
+	ld [wPokedexOAM_SeenY], a
 
 	; Switch which bank to store tile data in.
 	ld hl, wPokedex_MonInfoBank
@@ -1189,15 +1211,38 @@ Pokedex_GetCursorMon:
 	ld [wNamedObjectIndex], a
 	bit MON_CAUGHT_F, b
 	res MON_CAUGHT_F, b
+	ld a, $10
+	ld [wPokedexOAM_SeenY], a
 	ld a, b
 	ld [wCurForm], a
 	ld [wNamedObjectIndex+1], a
 	ld [wPokedex_Form], a
 	push af
+	push bc
 	call GetPokemonName
 	ld de, wStringBuffer1
 	hlcoord 9, 2
 	call PlaceString
+	pop bc
+
+	; Get dex number.
+	ldh a, [rSVBK]
+	push af
+	ld a, BANK(wDexNumber)
+	ldh [rSVBK], a
+	call GetPokedexNumber
+	ld de, wDexNumber
+	ld a, b
+	ld [de], a
+	inc de
+	ld a, c
+	ld [de], a
+	dec de
+	ld hl, wDexNumberString
+	lb bc, PRINTNUM_LEADINGZEROS | 2, 3
+	call PrintNum
+	pop af
+	ldh [rSVBK], a
 
 	; Frontpic
 	call GetBaseData
@@ -1222,6 +1267,9 @@ Pokedex_GetCursorMon:
 	; If we haven't caught the mon, we're done here.
 	pop af
 	jmp z, .done
+
+	ld a, $10
+	ld [wPokedexOAM_CaughtY], a
 
 	; Otherwise, also include footprint and type icons.
 	; Type icons.
@@ -1344,16 +1392,18 @@ Pokedex_CopyTypeIconPals:
 Pokedex_Copy1bpp:
 ; Copies c tiles from b:hl to de. Avoids running Copy1bpp during HBlank.
 	ld a, [rLY]
-	sub $38
+	sub $3c
 	jr c, .ok
 .loop
-	cp $8
-	call c, DelayFrame
+	cp $4
+	jr c, Pokedex_Copy1bpp
 	sub $18
 	jr nc, .loop
 .ok
 	call SwapHLDE
-	jmp Copy1bpp
+	di
+	call Copy1bpp
+	reti
 
 Pokedex_SetTilemap:
 ; Copies between wDexTilemap+wDexAttrmap (32x32) and wTilemap/wAttrmap (20x18).
@@ -1403,7 +1453,7 @@ Pokedex_ReloadTilemap:
 	; Check if we have time to reload sprite animations in time.
 	ldh a, [rLY]
 	cp $50
-	call nz, DelayFrame
+	call nc, DelayFrame
 
 	; This will be overwritten, so back it up.
 	ld hl, wVirtualOAMSprite12
@@ -1413,6 +1463,32 @@ Pokedex_ReloadTilemap:
 	push de
 	push hl
 	rst CopyBytes
+
+	; Reload dex number display.
+	ld bc, 4
+	ld hl, wDexVirtualOAMDexNoCopy
+	ld a, [wPokedexOAM_CaughtY]
+	ld [hl], a
+	add hl, bc
+	ld d, 5
+	ld a, [wPokedexOAM_SeenY]
+.dexno_y_loop
+	ld [hl], a
+	add hl, bc
+	dec d
+	jr nz, .dexno_y_loop
+	ld hl, wDexVirtualOAMDexNoCopy + 14
+	ld de, wDexNumberString
+	ld a, 3
+.dexno_str_loop
+	push af
+	ld a, [de]
+	inc de
+	ld [hl], a
+	add hl, bc
+	pop af
+	dec a
+	jr nz, .dexno_str_loop
 	farcall PlaySpriteAnimations
 
 	; Copy it back.
@@ -2419,54 +2495,7 @@ Pokedex_FillBackgroundColor2:
 	ret
 
 Pokedex_PlaceString:
-.loop
-	ld a, [de]
-	cp -1
-	ret z
-	inc de
-	ld [hli], a
-	jr .loop
-
 Pokedex_PlaceBorder:
-	push hl
-	ld a, $33
-	ld [hli], a
-	ld d, $34
-	call .FillRow
-	ld [hl], $35
-	pop hl
-	ld de, SCREEN_WIDTH
-	add hl, de
-.loop
-	push hl
-	ld a, $36
-	ld [hli], a
-	ld d, $7f
-	call .FillRow
-	ld [hl], $37
-	pop hl
-	ld de, SCREEN_WIDTH
-	add hl, de
-	dec b
-	jr nz, .loop
-	ld a, $38
-	ld [hli], a
-	ld d, $39
-	call .FillRow
-	ld [hl], $3a
-	ret
-
-.FillRow:
-	ld e, c
-.row_loop
-	ld a, e
-	and a
-	ret z
-	ld a, d
-	ld [hli], a
-	dec e
-	jr .row_loop
-
 Pokedex_PrintListing:
 ; Prints the list of Pokémon on the main Pokédex screen.
 

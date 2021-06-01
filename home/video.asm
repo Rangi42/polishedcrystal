@@ -79,6 +79,7 @@ UpdateDexMap::
 	xor a
 	ldh [rVBK], a
 	call UpdateCGBPals
+	call ForcePushOAM
 	ld de, wDexTilemap
 	ld bc, vBGMap0
 	ld a, ((BG_MAP_WIDTH * (SCREEN_HEIGHT + 1)) >> 4) - 1

@@ -1497,8 +1497,10 @@ wDexMonFootprintTiles:: ds 4 tiles
 wDexMonTilesEnd::
 ENDU
 
-wDexVirtualOAMCopy:: ds 4 * (5 + 4 * 3 + 6) ; 5 balls + 3 minis + "*No.123"
+wDexVirtualOAMCopy:: ds 4 * (5 + 4 * 3) ; 5 balls + 3 minis
+wDexVirtualOAMDexNoCopy:: ds 4 * 6
 wDexVirtualOAMCopyEnd::
+
 
 wDexMons::
 for n, 1, NUM_SPECIES + 1

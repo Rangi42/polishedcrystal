@@ -819,6 +819,9 @@ wPokedex_Personality::
 wPokedex_Shiny:: db
 wPokedex_Form:: db
 
+wPokedexOAM_CaughtY:: db
+wPokedexOAM_SeenY:: db
+
 wPokedex_NumSeen:: dw
 wPokedex_NumOwned:: dw
 wPokedex_CursorPos:: db

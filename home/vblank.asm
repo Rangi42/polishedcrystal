@@ -215,9 +215,8 @@ VBlank4::
 ; rng
 ; scx, scy, wy, wx
 ; dma transfer
-; dex map (also updates palettes)
+; dex map (also updates palettes and oam)
 ; tiles
-; oam
 ; joypad
 ; sound
 
@@ -238,7 +237,6 @@ VBlank4::
 	call Serve1bppRequest
 
 .done
-	call PushOAM
 	; vblank-sensitive operations are done
 
 	; inc frame counter
