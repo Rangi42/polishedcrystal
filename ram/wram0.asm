@@ -339,8 +339,9 @@ wLinkPlayerFixedPartyMon1ID:: ds 3
 
 
 SECTION UNION "Misc 480", WRAM0
-; battle
+; battle + pokédex (merged because pokédex can be called from battle)
 
+; Battle data
 wBattle::
 wEnemyMoveStruct::  move_struct wEnemyMoveStruct
 wPlayerMoveStruct:: move_struct wPlayerMoveStruct
@@ -664,6 +665,48 @@ wAmuletCoin:: db
 wDVAndPersonalityBuffer:: ds 5
 wBattleEnd::
 
+; Pokédex data.
+wPokedex_HBlankCode::
+wPokedex_HBlankHeader:: ds 9 ; push af, backup rombank, bankswitch, call...
+wPokedex_HBlankFunction:: dw ; ...(function to call)...
+wPokedex_HBlankFooter:: ds 5 ; ...restore backup, bankswitch back, pop af, reti
+wPokedex_HBlankCodeEnd::
+
+wPokedex_Pals::
+wPokedex_Row1::
+wPokedex_Row1Tile: db ; Sprite offset for dex minis col 2-4
+wPokedex_Row1Pals:: ds 6 * 5 ; 3 15bit colors per pal, 5 columns
+wPokedex_Row2::
+wPokedex_Row2Tile: db
+wPokedex_Row2Pals:: ds 6 * 5
+wPokedex_Row3::
+wPokedex_Row3Tile: db
+wPokedex_Row3Pals:: ds 6 * 5
+wPokedex_PalsEnd::
+
+; Pokémon info (frontpic, types, etc) is stored in either vbk0 or vbk1. This is
+; cycled each time we move the cursor. The reason for this is so that we can
+; update the entire display smoothly in a single frame without noticeable delay.
+wPokedex_MonInfoBank:: db
+
+wPokedex_Personality::
+wPokedex_Shiny:: db
+wPokedex_Form:: db
+
+wPokedexOAM_CaughtY:: db
+wPokedexOAM_SeenY:: db
+
+wPokedex_NumSeen:: dw
+wPokedex_NumOwned:: dw
+wPokedex_CursorPos:: db
+wPokedex_Offset:: db
+UNION
+wPokedex_Rows:: db
+wPokedex_LastCol:: db ; 1-5 in case the final row isn't completely filled
+NEXTU
+wPokedex_FinalEntry:: dw ; Final entry. Overwritten with rows/lastcol later.
+ENDU
+wPokedex_GFXMode:: db ; flags for various gfx update types
 
 SECTION UNION "Misc 480", WRAM0
 ; trade
@@ -787,52 +830,6 @@ wUnownPuzzle::
 wPuzzlePieces:: ds 6 * 6
 wUnownPuzzleEnd::
 
-
-SECTION UNION "Misc 480", WRAM0
-; Pokedex
-	ds 172
-
-wPokedex_HBlankCode::
-wPokedex_HBlankHeader:: ds 9 ; push af, backup rombank, bankswitch, call...
-wPokedex_HBlankFunction:: dw ; ...(function to call)...
-wPokedex_HBlankFooter:: ds 5 ; ...restore backup, bankswitch back, pop af, reti
-wPokedex_HBlankCodeEnd::
-
-wPokedex_Pals::
-wPokedex_Row1::
-wPokedex_Row1Tile: db ; Sprite offset for dex minis col 2-4
-wPokedex_Row1Pals:: ds 6 * 5 ; 3 15bit colors per pal, 5 columns
-wPokedex_Row2::
-wPokedex_Row2Tile: db
-wPokedex_Row2Pals:: ds 6 * 5
-wPokedex_Row3::
-wPokedex_Row3Tile: db
-wPokedex_Row3Pals:: ds 6 * 5
-wPokedex_PalsEnd::
-
-; Pokémon info (frontpic, types, etc) is stored in either vbk0 or vbk1. This is
-; cycled each time we move the cursor. The reason for this is so that we can
-; update the entire display smoothly in a single frame without noticeable delay.
-wPokedex_MonInfoBank:: db
-
-wPokedex_Personality::
-wPokedex_Shiny:: db
-wPokedex_Form:: db
-
-wPokedexOAM_CaughtY:: db
-wPokedexOAM_SeenY:: db
-
-wPokedex_NumSeen:: dw
-wPokedex_NumOwned:: dw
-wPokedex_CursorPos:: db
-wPokedex_Offset:: db
-UNION
-wPokedex_Rows:: db
-wPokedex_LastCol:: db ; 1-5 in case the final row isn't completely filled
-NEXTU
-wPokedex_FinalEntry:: dw ; Final entry. Overwritten with rows/lastcol later.
-ENDU
-wPokedex_GFXMode:: db ; flags for various gfx update types
 
 SECTION UNION "Misc 480", WRAM0
 ; Pokedex

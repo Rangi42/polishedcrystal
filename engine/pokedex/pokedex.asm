@@ -558,8 +558,11 @@ Pokedex_MainLoop:
 	jr .loop
 .pressed_b
 	ret
-.pressed_select
 .pressed_start
+	; TODO: mode switch
+	jr .loop
+.pressed_select
+	jr .loop
 .pressed_right
 	ld b, 1
 	jr .modcursorpos
