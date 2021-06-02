@@ -1,11 +1,7 @@
 	const_def
 	const DEXTILE_FROM_DEXMAP_F
-	const DEXTILE_SECOND_COL_F
-	const DEXTILE_SECOND_ROW_F
 
 DEXTILE_FROM_DEXMAP EQU 1 << DEXTILE_FROM_DEXMAP_F
-DEXTILE_SECOND_COL  EQU 1 << DEXTILE_SECOND_COL_F
-DEXTILE_SECOND_ROW  EQU 1 << DEXTILE_SECOND_ROW_F
 
 	const_def
 	const DEXSTATE_MAIN_SCR
@@ -68,14 +64,14 @@ Pokedex:
 	; TODO: compress dex tiles.
 	; The reason we copy like this is because we want to copy some of the tiles
 	; to a template to write out VWF dex numbers later.
-	ld hl, DexTiles
+	ld hl, PokedexLZ
 	ld de, wDex2bpp
-	ld bc, 44 tiles
-	rst CopyBytes
+	ld a, BANK(PokedexLZ)
+	call FarDecompressToDE
 
 	ld de, wDex2bpp
 	ld hl, vTiles2
-	lb bc, BANK(DexTiles), 44
+	lb bc, BANK(PokedexLZ), 64
 	call Get2bpp
 
 	ld de, DexOAM
@@ -85,65 +81,10 @@ Pokedex:
 
 	call .SetupVWFPreset
 
-	; First, clear attributes (Tiles are left unitialized).
-	ld hl, wDexAttrmap
-	ld bc, wDexMapEnd - wDexAttrmap
-	xor a
-	rst ByteFill
-
-	; Topmost line right of pokepic.
-	hldexcoord 9, 0
-	ld a, $01
-	ld bc, 12
-	rst ByteFill
-
-	; Pokepic
-	hldexcoord 0, 0
-	lb bc, 7, 7
-	ld de, Pokedex_PokepicBorder
-	call Pokedex_CreateBox
-	ld a, $07
-	hldexcoord 0, 3
-	ld [hl], a
-	hldexcoord 0, 6
-	ld [hl], a
-
-	; Infoboxes.
-	hldexcoord 8, 4 ; actually 8, 5, see next comment.
-	lb bc, 3, 11 ; actually 2, 11, but this way we can push/pop bc.
-	ld de, Pokedex_InfoBorder
-	push de
-	push bc
-	call Pokedex_CreateBox
-	pop bc
-	pop de
-	hldexcoord 8, 1
-	call Pokedex_CreateBox
-
-	; Join up grid lines.
-	ld a, $0f
-	hldexcoord 8, 3
-	ld [hl], a
-	hldexcoord 8, 6
-	ld [hl], a
-
-	ld e, $02
-	hldexcoord 11, 0
-	call .JoinHorizontalGrid
-	ld e, $0b
-	hldexcoord 11, 1
-	call .JoinHorizontalGrid
-	ld e, $12
-	hldexcoord 11, 5
-	call .JoinHorizontalGrid
-	hldexcoord 11, 8
-	call .JoinHorizontalGrid
-
-	; Bottom line below the grid list.
-	hldexcoord 0, 18
-	ld a, $15
-	ld bc, 21
-	rst ByteFill
+	ld hl, MainScreenTilemap
+	ld de, wDexTilemap
+	ld a, BANK(MainScreenTilemap)
+	call FarDecompressToDE
 
 	; Now we no longer have to deal with the extra row/col. Use regular tilemap
 	; for the rest.
@@ -151,14 +92,6 @@ Pokedex:
 	ldh [rSVBK], a
 	ld b, DEXTILE_FROM_DEXMAP
 	call Pokedex_SetTilemap
-
-	; List layout.
-	call .ListSetup
-
-	; Seen/Own text.
-	hlcoord 9, 6
-	ld de, .SeenOwn
-	rst PlaceString
 
 	call Pokedex_InitData
 
@@ -318,7 +251,7 @@ Pokedex:
 .SetupVWFPreset:
 ; Sets up wDexVWFPreset appropriately.
 	; First, copy the regular top line to the entire preset.
-	ld hl, wDex2bpp tile $15
+	ld hl, wDex2bpp
 	ld de, wDexVWFPreset
 	ld bc, 1 tiles
 	push de
@@ -338,7 +271,7 @@ Pokedex:
 .VWFCopyTile:
 	ld de, -1 tiles
 	add hl, de
-	ld de, wDex2bpp tile $17
+	ld de, wDex2bpp tile $02
 .vwfloop1
 	call .DoVWFCopy
 	push bc
@@ -350,7 +283,7 @@ Pokedex:
 	ld a, b
 	dec a
 	jr nz, .vwfloop1
-	ld de, wDex2bpp tile $16
+	ld de, wDex2bpp tile $01
 	jr .vwfloop1
 
 .DoVWFCopy:
@@ -363,163 +296,6 @@ Pokedex:
 	jr nz, .vwfloop2
 	ret
 
-.ListSetup:
-	hlcoord 0, 9
-	ld e, 3
-.mainlistloop
-	ld a, $15
-	call .DoListSetup
-	ld a, b
-	inc a
-	call .DoListSetup
-	call .DoListSetup
-
-	; At this point, hl is at the beginning of the next row (or the bottom).
-	; Move it around to fix up attributes for BG icon area.
-	push hl
-	ld a, VRAM_BANK_1 | 2
-	ld bc, wAttrMap - wTileMap - (SCREEN_WIDTH * 2) + 1
-	call .SetListIconAttr
-	inc a ; ld a, VRAM_BANK_1 | 3
-	ld bc, -5
-	call .SetListIconAttr
-	pop hl
-	dec e
-	jr nz, .mainlistloop
-	ld a, $21
-	hlcoord 19, 9
-	ld [hl], a
-	hlcoord 19, 17
-	inc a
-	ld [hl], a
-	ret
-
-.DoListSetup:
-	ld b, 4
-	call .ListLoop
-	dec hl
-	ld b, 1
-	ld d, c
-	call .ListLoop
-	ld b, d
-	ld [hl], b
-
-	; Set scrollbar palette.
-	push hl
-	push bc
-	ld bc, wAttrMap - wTileMap
-	add hl, bc
-	ld [hl], 1
-	pop bc
-	pop hl
-	inc hl
-	ret
-
-.ListLoop:
-	ld c, a
-	inc c
-	ld [hl], c
-	inc hl
-	jr .firstlistloop
-.loop
-	ld [hli], a
-.firstlistloop
-	ld [hli], a
-	ld [hli], a
-	inc c
-	ld [hl], c
-	inc hl
-	dec b
-	jr nz, .loop
-	ret
-
-.SetListIconAttr:
-	add hl, bc
-	ld [hli], a
-	ld [hld], a
-	ld bc, SCREEN_WIDTH
-	add hl, bc
-	ld [hli], a
-	ld [hld], a
-	ret
-
-.JoinHorizontalGrid:
-	ld bc, 3
-	ld d, c
-	ld a, e
-.gridloop
-	ld [hli], a
-	add hl, bc
-	inc a
-	dec d
-	jr nz, .gridloop
-	ret
-
-.SeenOwn:
-	db "Seen/ Own/@"
-
-Pokedex_CreateBox:
-	ld a, BG_MAP_WIDTH
-	push bc
-	push hl
-	push de
-	push af
-	call _CreateBoxBorders
-	pop af
-	pop hl
-	ld bc, 9
-	add hl, bc
-	ld d, h
-	ld e, l
-	pop hl
-	ld bc, wDexAttrmap - wDexTilemap
-	add hl, bc
-	pop bc
-	jmp _CreateBoxBorders
-
-Pokedex_PokepicBorder:
-	; Tiles
-	db $00, $01, $05 ; top
-	db $06, $7f, $08 ; middle
-	db $06, $7f, $08 ; bottom
-
-	; Attributes
-	db 0, 0, X_FLIP ; top
-	db 0, 0, X_FLIP ; middle
-	db 0, 0, X_FLIP ; bottom
-
-Pokedex_InfoBorder:
-	; Tiles
-	db $09, $0a, $09 ; top
-	db $0e, $7f, $0e ; middle
-	db $10, $11, $10 ; bottom
-
-	; Attributes
-	db X_FLIP, 0, 0 ; top
-	db X_FLIP, 0, 0 ; middle
-	db X_FLIP, 0, 0 ; bottom
-
-Pokedex_DescInfoBorder:
-	; Tiles
-	db $09, $0a, $09 ; top
-	db $0e, $7f, $0e ; middle
-	db $2a, $2b, $25 ; bottom
-
-	; Attributes
-	db X_FLIP, 0, 0 ; top
-	db X_FLIP, 0, 0 ; middle
-	db 0, 0, 0 ; bottom
-
-Pokedex_DescBorder:
-	; Tiles
-	db $23, $24, $25 ; top
-	db $26, $7f, $26 ; middle
-	db $27, $28, $29 ; bottom
-
-	; Attributes
-	db 0, 0, 0 ; top
-	db 0, 0, X_FLIP ; middle
-	db 0, 0, 0 ; bottom
 
 Pokedex_GetCursorSpecies:
 ; Returns species in c, form+ext in b that cursor is hovering.
@@ -682,9 +458,9 @@ Pokedex_MainLoop:
 	ld c, SCREEN_WIDTH * 6 - 2
 	call .ShiftRowData
 	hlcoord 19, 9
-	ld [hl], $21
+	ld [hl], $0c
 	hlcoord 19, 12
-	ld [hl], $1a
+	ld [hl], $1c
 	ld c, b
 	; fallthrough
 
@@ -1035,15 +811,6 @@ Pokedex_Description:
 	ld a, BANK(wDexTilemap)
 	call StackCallInWRAMBankA
 .Function:
-	hldexcoord 0, 10
-	lb bc, 6, 19
-	ld de, Pokedex_DescBorder
-	call Pokedex_CreateBox
-	hldexcoord 8, 0
-	lb bc, 9, 11
-	ld de, Pokedex_DescInfoBorder
-	call Pokedex_CreateBox
-
 	hldexcoord 9, 1
 	ld [hl], "N"
 	hldexcoord 9, 3
@@ -1984,402 +1751,6 @@ DexOAM:
 	dw `32222223
 	dw `33333333
 
-DexTiles:
-	dw `00000100
-	dw `00000100
-	dw `00000100
-	dw `00000100
-	dw `00000100
-	dw `11111111
-	dw `00000100
-	dw `00000100
-
-	dw `00000000
-	dw `00000000
-	dw `00000000
-	dw `00000000
-	dw `00000000
-	dw `11111111
-	dw `00000000
-	dw `00000000
-
-	dw `00000001
-	dw `00000001
-	dw `00000001
-	dw `00000001
-	dw `00000001
-	dw `11111111
-	dw `00000001
-	dw `00000001
-
-	dw `00000100
-	dw `00000100
-	dw `00000100
-	dw `00000100
-	dw `00000100
-	dw `11111111
-	dw `00000100
-	dw `00000100
-
-	dw `00010000
-	dw `00010000
-	dw `00010000
-	dw `00010000
-	dw `00010000
-	dw `11111111
-	dw `00010000
-	dw `00010000
-
-	dw `00000010
-	dw `00000010
-	dw `00000010
-	dw `00000010
-	dw `00000010
-	dw `11111111
-	dw `00000010
-	dw `00000010
-
-	dw `00000100
-	dw `00000100
-	dw `00000100
-	dw `00000100
-	dw `00000100
-	dw `00000100
-	dw `00000100
-	dw `00000100
-
-	dw `00000100
-	dw `00000100
-	dw `00000100
-	dw `00000100
-	dw `00000100
-	dw `11111100
-	dw `00000100
-	dw `00000100
-
-	dw `00000010
-	dw `00000010
-	dw `00000010
-	dw `00000010
-	dw `00000010
-	dw `00000010
-	dw `00000010
-	dw `00000010
-
-	dw `00000010
-	dw `00000010
-	dw `00000010
-	dw `00000010
-	dw `33000010
-	dw `22300010
-	dw `22230010
-	dw `00030010
-
-	dw `00000000
-	dw `00000000
-	dw `00000000
-	dw `00000000
-	dw `33333333
-	dw `22222222
-	dw `22222222
-	dw `00000000
-
-	dw `00000001
-	dw `00000001
-	dw `00000001
-	dw `00000001
-	dw `33333333
-	dw `22222222
-	dw `22222222
-	dw `00000000
-
-	dw `00000100
-	dw `00000100
-	dw `00000100
-	dw `00000100
-	dw `33333333
-	dw `22222222
-	dw `22222222
-	dw `00000000
-
-	dw `00010000
-	dw `00010000
-	dw `00010000
-	dw `00010000
-	dw `33333333
-	dw `22222222
-	dw `22222222
-	dw `00000000
-
-	dw `00030010
-	dw `00030010
-	dw `00030010
-	dw `00030010
-	dw `00030010
-	dw `00030010
-	dw `00030010
-	dw `00030010
-
-	dw `00030010
-	dw `00030010
-	dw `00030010
-	dw `00030010
-	dw `00030010
-	dw `00031110
-	dw `00030010
-	dw `00030010
-
-	dw `00030010
-	dw `00300010
-	dw `33000010
-	dw `00000010
-	dw `33000010
-	dw `22300010
-	dw `22230010
-	dw `00030010
-
-	dw `00000000
-	dw `00000000
-	dw `33333333
-	dw `00000000
-	dw `33333333
-	dw `22222222
-	dw `22222222
-	dw `00000000
-
-	dw `00000000
-	dw `00000000
-	dw `33333333
-	dw `00000001
-	dw `33333333
-	dw `22222222
-	dw `22222222
-	dw `00000000
-
-	dw `00000000
-	dw `00000000
-	dw `33333333
-	dw `00000100
-	dw `33333333
-	dw `22222222
-	dw `22222222
-	dw `00000000
-
-	dw `00000000
-	dw `00000000
-	dw `33333333
-	dw `00010000
-	dw `33333333
-	dw `22222222
-	dw `22222222
-	dw `00000000
-
-	dw `11111111
-	dw `00000000
-	dw `00000000
-	dw `00000000
-	dw `00000000
-	dw `00000000
-	dw `00000000
-	dw `00000000
-
-	dw `11111111
-	dw `01000000
-	dw `01000000
-	dw `01000000
-	dw `01000000
-	dw `01000000
-	dw `01000000
-	dw `01000000
-
-	dw `11111111
-	dw `00000001
-	dw `00000001
-	dw `00000001
-	dw `00000001
-	dw `00000001
-	dw `00000001
-	dw `00000001
-
-	dw `11111111
-	dw `00000100
-	dw `00000100
-	dw `00000100
-	dw `00000100
-	dw `00000100
-	dw `00000100
-	dw `00000100
-
-	dw `11111111
-	dw `00010000
-	dw `00010000
-	dw `00010000
-	dw `00010000
-	dw `00010000
-	dw `00010000
-	dw `00010000
-
-	dw `11300311
-	dw `00300300
-	dw `00300300
-	dw `00300300
-	dw `00300300
-	dw `00300300
-	dw `00300300
-	dw `00300300
-
-	dw `00000000
-	dw `00000000
-	dw `00000000
-	dw `00000000
-	dw `00000000
-	dw `00000000
-	dw `00000000
-	dw `00000000
-
-	dw `01000000
-	dw `01000000
-	dw `01000000
-	dw `01000000
-	dw `01000000
-	dw `01000000
-	dw `01000000
-	dw `01000000
-
-	dw `00000001
-	dw `00000001
-	dw `00000001
-	dw `00000001
-	dw `00000001
-	dw `00000001
-	dw `00000001
-	dw `00000001
-
-	dw `00000100
-	dw `00000100
-	dw `00000100
-	dw `00000100
-	dw `00000100
-	dw `00000100
-	dw `00000100
-	dw `00000100
-
-	dw `00010000
-	dw `00010000
-	dw `00010000
-	dw `00010000
-	dw `00010000
-	dw `00010000
-	dw `00010000
-	dw `00010000
-
-	dw `00300300
-	dw `00300300
-	dw `00300300
-	dw `00300300
-	dw `00300300
-	dw `00300300
-	dw `00300300
-	dw `00300300
-
-	dw `11133111
-	dw `00322300
-	dw `03222230
-	dw `32222223
-	dw `33333333
-	dw `00300300
-	dw `00300300
-	dw `00300300
-
-	dw `00300300
-	dw `00300300
-	dw `00300300
-	dw `33333333
-	dw `32222223
-	dw `03222230
-	dw `00322300
-	dw `00033000
-
-	dw `00000100
-	dw `00000100
-	dw `00000100
-	dw `00000100
-	dw `00000100
-	dw `00000133
-	dw `00000320
-	dw `00003220
-
-	dw `00000000
-	dw `00000000
-	dw `00000000
-	dw `00000000
-	dw `00000000
-	dw `33333333
-	dw `00000000
-	dw `00000000
-
-	dw `00030000
-	dw `00300000
-	dw `33000000
-	dw `00000000
-	dw `00000000
-	dw `33000000
-	dw `02300000
-	dw `02230000
-
-	dw `00003220
-	dw `00003220
-	dw `00003220
-	dw `00003220
-	dw `00003220
-	dw `00003220
-	dw `00003220
-	dw `00003220
-
-	dw `00003220
-	dw `00003220
-	dw `00003220
-	dw `00003220
-	dw `00000320
-	dw `00000133
-	dw `00000100
-	dw `00000100
-
-	dw `00000000
-	dw `00000000
-	dw `00000000
-	dw `00000000
-	dw `00000000
-	dw `33333333
-	dw `00000000
-	dw `00000000
-
-	dw `02230000
-	dw `02230000
-	dw `02230000
-	dw `02230000
-	dw `02300000
-	dw `33000000
-	dw `00000000
-	dw `00000000
-
-	dw `01003000
-	dw `01000300
-	dw `01000033
-	dw `01000000
-	dw `01000000
-	dw `33333333
-	dw `00000000
-	dw `00000000
-
-	dw `00000000
-	dw `00000000
-	dw `33333333
-	dw `00000000
-	dw `00000000
-	dw `33333333
-	dw `00000000
-	dw `00000000
 
 
 
@@ -3529,7 +2900,12 @@ Pokedex_SetBGMapMode:
 	ldh [hBGMapMode], a
 	jmp Delay2
 
+MainScreenTilemap:
+INCBIN "gfx/pokedex/main.bin.lz"
+
 PokedexLZ:
+INCBIN "gfx/pokedex/pokedex.2bpp.lz"
+
 PokedexSlowpokeLZ:
 INCBIN "gfx/pokedex/slowpoke.2bpp.lz"
 
