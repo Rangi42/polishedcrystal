@@ -1475,7 +1475,7 @@ UNION
 wDecompressedMetatiles:: ds 256 tiles
 NEXTU
 UNION
-wDex2bpp:: ds 35 tiles
+wDex2bpp:: ds 39 tiles
 NEXTU
 ; copied using hdma transfers (which is orders of magnitudes faster), so it uses
 ; 32x32 as opposed to only the 21x19 that we need.
