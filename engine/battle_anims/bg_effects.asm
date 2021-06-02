@@ -138,12 +138,12 @@ BattleBGEffects_IncrementJumptable:
 	ret
 
 BattleBGEffect_FlashInverted_Data:
-	db %11100100
-	db %00011011
+	dc 3, 2, 1, 0
+	dc 0, 1, 2, 3 ; loop invert
 
 BattleBGEffect_FlashWhite_Data:
-	db %11100100
-	db %00000000
+	dc 3, 2, 1, 0
+	dc 0, 0, 0, 0
 
 BattleBGEffect_FlashInverted:
 	ld de, BattleBGEffect_FlashInverted_Data
@@ -199,9 +199,9 @@ BattleBGEffect_WhiteHues:
 	jmp EndBattleBGEffect
 
 .Pals:
-	db %11100100
-	db %11100000
-	db %11010000
+	dc 3, 2, 1, 0
+	dc 3, 2, 0, 0
+	dc 3, 1, 0, 0
 	db -1
 
 BattleBGEffect_BlackHues:
@@ -215,9 +215,9 @@ BattleBGEffect_BlackHues:
 	jmp EndBattleBGEffect
 
 .Pals:
-	db %11100100
-	db %11110100
-	db %11111000
+	dc 3, 2, 1, 0
+	dc 3, 3, 1, 0
+	dc 3, 3, 2, 0
 	db -1
 
 BattleBGEffect_AlternateHues:
@@ -232,14 +232,14 @@ BattleBGEffect_AlternateHues:
 	jmp EndBattleBGEffect
 
 .Pals:
-	db %11100100
-	db %11111000
-	db %11111100
-	db %11111000
-	db %11100100
-	db %10010000
-	db %01000000
-	db %10010000
+	dc 3, 2, 1, 0
+	dc 3, 3, 2, 0
+	dc 3, 3, 3, 0
+	dc 3, 3, 2, 0
+	dc 3, 2, 1, 0
+	dc 2, 1, 0, 0
+	dc 1, 0, 0, 0
+	dc 2, 1, 0, 0
 	db -2
 
 BattleBGEffect_CycleOBPalsGrayAndYellow:
@@ -249,8 +249,8 @@ BattleBGEffect_CycleOBPalsGrayAndYellow:
 	ret
 
 .PalsCGB:
-	db %11100100
-	db %10010000
+	dc 3, 2, 1, 0
+	dc 2, 1, 0, 0
 	db -2
 
 BattleBGEffect_CycleMidOBPalsGrayAndYellow:
@@ -260,8 +260,8 @@ BattleBGEffect_CycleMidOBPalsGrayAndYellow:
 	ret
 
 .PalsCGB:
-	db %11100100
-	db %11011000
+	dc 3, 2, 1, 0
+	dc 3, 1, 2, 0
 	db -2
 
 BattleBGEffect_CycleBGPals_Inverted:
@@ -271,9 +271,9 @@ BattleBGEffect_CycleBGPals_Inverted:
 	ret
 
 .Pals:
-	db %00011011
-	db %01100011
-	db %10000111
+	dc 1, 1, 1, 1 ; invert once
+	dc 1, 3, 2, 0
+	dc 2, 1, 3, 0
 	db -2
 
 BattleBGEffect_HideMon:
@@ -2206,12 +2206,13 @@ BattleBGEffect_GetNextDMGPal:
 	cp -1
 	jr z, .quit
 	cp -2
-	jr nz, .repeat
+	jr nz, .cont
+	; repeat
 	ld a, [de]
 	ld hl, BG_EFFECT_STRUCT_PARAM
 	add hl, bc
 	ld [hl], $0
-.repeat
+.cont
 	and a
 	ret
 

@@ -262,7 +262,7 @@ MenuMonIconColors::
 	iconpal RED, BLUE ; $100
 	iconpal PURPLE, BROWN ; MISMAGIUS
 	iconpal BLUE, PURPLE ; HONCHKROW
-	iconpal BROWN, RED ; BONSLY
+	iconpal GREEN, RED ; BONSLY
 	iconpal BLUE, GREEN ; MIME_JR_
 	iconpal RED, PINK ; HAPPINY
 	iconpal TEAL, BLUE ; MUNCHLAX
