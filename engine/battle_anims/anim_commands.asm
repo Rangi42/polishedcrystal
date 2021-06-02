@@ -1327,30 +1327,39 @@ BattleAnim_SetBGPals:
 	ldh [rSVBK], a
 if !DEF(MONOCHROME)
 	ld a, b
-	cp $1b
+	ld c, %00011011 ; 0, 1, 2, 3 (cycle inverts)
+	cp c
+	jr z, .invert
 	ldh a, [rBGP]
-	jr z, .is_1b
-	cp $1b
-	jr nz, .not_1b
-.is_1b
+	cp %01010101 ; 1, 1, 1, 1 (invert once)
+	jr z, .invert
+	cp c
+	jr nz, .no_invert
+.invert
+	cp c
 	ld c, 7 palettes
 	ld hl, wBGPals1
-.loop_UnknBGPals
 	ld a, [hl]
+	jr z, .loop_invert_BGPals
+	and a
+	jr z, .already_inverted
+.loop_invert_BGPals
 	cpl
 	ld [hli], a
 	dec c
-	jr nz, .loop_UnknBGPals
+	ld a, [hl]
+	jr nz, .loop_invert_BGPals
 	ld c, 2 palettes
 	ld hl, wOBPals1
-.loop_UnknOBPals
+.loop_invert_OBPals
 	ld a, [hl]
 	cpl
 	ld [hli], a
 	dec c
-	jr nz, .loop_UnknOBPals
-	ld a, $e4
-.not_1b
+	jr nz, .loop_invert_OBPals
+.already_inverted
+	ld a, %11100100
+.no_invert
 	push af
 else
 	ldh a, [rBGP]

@@ -15,14 +15,21 @@ dbw: MACRO
 	dw \2
 ENDM
 
-dn: MACRO
+dn: MACRO ; "nybbles"
 	rept _NARG / 2
 		db (\1) << 4 + (\2)
 		shift 2
 	endr
 ENDM
 
-dx: MACRO
+dc: MACRO ; "crumbs"
+rept _NARG / 4
+	db ((\1) << 6) | ((\2) << 4) | ((\3) << 2) | (\4)
+	shift 4
+endr
+ENDM
+
+dx: MACRO ; x-byte (big-endian)
 	for x, 8 * ((\1) - 1), -1, -8
 		db LOW((\2) >> x)
 	endr
