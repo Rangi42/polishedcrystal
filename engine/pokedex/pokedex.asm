@@ -70,12 +70,12 @@ Pokedex:
 	; to a template to write out VWF dex numbers later.
 	ld hl, DexTiles
 	ld de, wDex2bpp
-	ld bc, 39 tiles
+	ld bc, 44 tiles
 	rst CopyBytes
 
 	ld de, wDex2bpp
 	ld hl, vTiles2
-	lb bc, BANK(DexTiles), 39
+	lb bc, BANK(DexTiles), 44
 	call Get2bpp
 
 	ld de, DexOAM
@@ -499,16 +499,27 @@ Pokedex_InfoBorder:
 	db X_FLIP, 0, 0 ; middle
 	db X_FLIP, 0, 0 ; bottom
 
+Pokedex_DescInfoBorder:
+	; Tiles
+	db $09, $0a, $09 ; top
+	db $0e, $7f, $0e ; middle
+	db $2a, $2b, $25 ; bottom
+
+	; Attributes
+	db X_FLIP, 0, 0 ; top
+	db X_FLIP, 0, 0 ; middle
+	db 0, 0, 0 ; bottom
+
 Pokedex_DescBorder:
 	; Tiles
 	db $23, $24, $25 ; top
 	db $26, $7f, $26 ; middle
-	db $23, $24, $25 ; bottom
+	db $27, $28, $29 ; bottom
 
 	; Attributes
 	db 0, 0, 0 ; top
 	db 0, 0, X_FLIP ; middle
-	db Y_FLIP, Y_FLIP, Y_FLIP ; bottom
+	db 0, 0, 0 ; bottom
 
 Pokedex_GetCursorSpecies:
 ; Returns species in c, form+ext in b that cursor is hovering.
@@ -1024,13 +1035,13 @@ Pokedex_Description:
 	ld a, BANK(wDexTilemap)
 	call StackCallInWRAMBankA
 .Function:
-	hldexcoord 0, 11
-	lb bc, 5, 19
+	hldexcoord 0, 10
+	lb bc, 6, 19
 	ld de, Pokedex_DescBorder
 	call Pokedex_CreateBox
 	hldexcoord 8, 0
 	lb bc, 9, 11
-	ld de, Pokedex_InfoBorder
+	ld de, Pokedex_DescInfoBorder
 	call Pokedex_CreateBox
 
 	hldexcoord 9, 1
@@ -1046,7 +1057,7 @@ Pokedex_Description:
 	ld b, DEXTILE_FROM_DEXMAP
 	call Pokedex_SetTilemap
 	call Pokedex_UpdateTilemap
-	ld a, $4f
+	ld a, $65
 	ld de, PHB_DescSwitchSCY
 	call Pokedex_SetHBlankFunction
 	ld c, 240
@@ -2291,39 +2302,84 @@ DexTiles:
 
 	dw `00000100
 	dw `00000100
+	dw `00000100
+	dw `00000100
+	dw `00000100
 	dw `00000133
 	dw `00000320
 	dw `00003220
+
+	dw `00000000
+	dw `00000000
+	dw `00000000
+	dw `00000000
+	dw `00000000
+	dw `33333333
+	dw `00000000
+	dw `00000000
+
+	dw `00030000
+	dw `00300000
+	dw `33000000
+	dw `00000000
+	dw `00000000
+	dw `33000000
+	dw `02300000
+	dw `02230000
+
 	dw `00003220
 	dw `00003220
 	dw `00003220
+	dw `00003220
+	dw `00003220
+	dw `00003220
+	dw `00003220
+	dw `00003220
+
+	dw `00003220
+	dw `00003220
+	dw `00003220
+	dw `00003220
+	dw `00000320
+	dw `00000133
+	dw `00000100
+	dw `00000100
+
+	dw `00000000
+	dw `00000000
+	dw `00000000
+	dw `00000000
+	dw `00000000
+	dw `33333333
+	dw `00000000
+	dw `00000000
+
+	dw `02230000
+	dw `02230000
+	dw `02230000
+	dw `02230000
+	dw `02300000
+	dw `33000000
+	dw `00000000
+	dw `00000000
+
+	dw `01003000
+	dw `01000300
+	dw `01000033
+	dw `01000000
+	dw `01000000
+	dw `33333333
+	dw `00000000
+	dw `00000000
 
 	dw `00000000
 	dw `00000000
 	dw `33333333
 	dw `00000000
 	dw `00000000
+	dw `33333333
 	dw `00000000
 	dw `00000000
-	dw `00000000
-
-	dw `00000000
-	dw `00000000
-	dw `33000000
-	dw `02300000
-	dw `02230000
-	dw `02230000
-	dw `02230000
-	dw `02230000
-
-	dw `00003220
-	dw `00003220
-	dw `00003220
-	dw `00003220
-	dw `00003220
-	dw `00003220
-	dw `00003220
-	dw `00003220
 
 
 
@@ -3387,9 +3443,6 @@ Pokedex_LoadSelectedMonTiles:
 	call Get2bpp
 	jmp CloseSRAM
 
-Pokedex_LoadCurrentFootprint:
-	call Pokedex_GetSelectedMon
-
 Pokedex_LoadAnyFootprint:
 	ld a, [wTempSpecies]
 	dec a
@@ -3464,88 +3517,7 @@ Pokedex_LoadUnownFrontpicTiles:
 	ret
 
 NewPokedexEntry:
-	ldh a, [hMapAnims]
-	push af
-	ld a, [wOTPartyMon1Shiny]
-	ld [wDexMonShiny], a
-	xor a
-	ldh [hMapAnims], a
-	call LowVolume
-	call ClearBGPalettes
-	call ClearTileMap
-	call UpdateSprites
-	call ClearSprites
-	ld a, [wPokedexStatus]
-	push af
-	ldh a, [hSCX]
-	add 5
-	ldh [hSCX], a
-	xor a
-	ld [wPokedexStatus], a
-	call .NewPokedexEntry
-	call WaitPressAorB_BlinkCursor
-	ld a, $1
-	ld [wPokedexStatus], a
-	farcall DisplayDexEntry
-	call WaitPressAorB_BlinkCursor
-	pop af
-	ld [wPokedexStatus], a
-	call MaxVolume
-	call ClearBGPalettes
-	ldh a, [hSCX]
-	add -5
-	ldh [hSCX], a
-	call .ReturnFromDexRegistration
-	pop af
-	ldh [hMapAnims], a
 	ret
-
-.NewPokedexEntry:
-	xor a
-	ldh [hBGMapMode], a
-	call Pokedex_DrawDexEntryScreenRightEdge
-	call Pokedex_ResetBGMapMode
-	call DisableLCD
-	call LoadStandardFont
-	call LoadFontsExtra
-	call Pokedex_LoadGFX2
-	call Pokedex_LoadAnyFootprint
-	ld a, [wTempSpecies]
-	ld [wCurPartySpecies], a
-	ld a, [wCurForm]
-	ld [wDexMonForm], a
-	call Pokedex_DrawDexEntryScreenBG
-	call Pokedex_DrawFootprint
-	hlcoord 0, SCREEN_HEIGHT - 1
-	ld a, $3b
-	ld [hli], a
-	ld bc, SCREEN_WIDTH - 1
-	ld a, " "
-	rst ByteFill
-	farcall DisplayDexEntry
-	call EnableLCD
-	call ApplyTilemapInVBlank
-	call GetBaseData
-	ld de, vTiles2
-	predef GetFrontpic
-	ld a, CGB_POKEDEX
-	call Pokedex_GetCGBLayout
-	ld a, [wCurPartySpecies]
-	jmp PlayCry
-
-.ReturnFromDexRegistration:
-	call ClearTileMap
-	call LoadFontsExtra
-	call LoadStandardFont
-	call PlaceFrontpicTopLeftCorner
-	call ApplyAttrAndTilemapInVBlank
-	farcall GetEnemyMonDVs
-	ld de, wTempMonDVs
-	ld bc, 5
-	rst CopyBytes
-	ld a, CGB_TRAINER_OR_MON_FRONTPIC_PALS
-	call GetCGBLayout
-	jmp SetPalettes
 
 Pokedex_SetBGMapMode3:
 	ld a, $3
@@ -3563,5 +3535,3 @@ INCBIN "gfx/pokedex/slowpoke.2bpp.lz"
 
 QuestionMarkLZ:
 INCBIN "gfx/pokedex/question_mark.2bpp.lz"
-
-INCLUDE "gfx/pokemon/footprints.asm"

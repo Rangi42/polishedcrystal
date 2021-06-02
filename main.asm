@@ -198,6 +198,11 @@ SECTION "Pokedex", ROMX
 INCLUDE "engine/pokedex/pokedex.asm"
 
 
+SECTION "Pokédex Footprints", ROMX
+
+INCLUDE "gfx/pokemon/footprints.asm"
+
+
 SECTION "Moves", ROMX
 
 INCLUDE "data/moves/moves.asm"
