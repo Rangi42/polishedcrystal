@@ -265,7 +265,7 @@ MenuMonIconColors::
 	iconpal BROWN, RED ; BONSLY
 	iconpal BLUE, GREEN ; MIME_JR_
 	iconpal RED, PINK ; HAPPINY
-	iconpal GREEN, BLUE ; MUNCHLAX
+	iconpal TEAL, BLUE ; MUNCHLAX
 	iconpal BLUE, TEAL ; MANTYKE
 	iconpal BLUE, RED ; WEAVILE
 	iconpal GRAY, BROWN ; MAGNEZONE
