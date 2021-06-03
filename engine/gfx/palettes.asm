@@ -1905,8 +1905,8 @@ if !DEF(MONOCHROME)
 	; BG1: blue areas
 	RGB 31, 31, 31
 	RGB 23, 23, 23
-	RGB 11, 14, 31
 	RGB 00, 00, 00
+	RGB 11, 14, 31
 
 	; BG4: vwf text, not captured
 	RGB 31, 31, 31
