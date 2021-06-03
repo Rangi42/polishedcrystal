@@ -1950,6 +1950,16 @@ rept 2
 endr
 endc
 
+Pokedex_QuestionMarkPal:
+if !DEF(MONOCHROME)
+	RGB 22, 24, 26
+	RGB 16, 17, 18
+else
+	RGB_MONOCHROME_LIGHT
+	RGB_MONOCHROME_DARK
+endc
+
+
 BillsPC_ThemePals:
 if !DEF(MONOCHROME)
 ; standard

@@ -93,6 +93,10 @@ Pokedex:
 	ld b, DEXTILE_FROM_DEXMAP
 	call Pokedex_SetTilemap
 
+	hlcoord 1, 1
+	ld a, $40
+	call _PlaceFrontpicAtHL
+
 	call Pokedex_InitData
 
 	hlcoord 10, 7
@@ -1098,9 +1102,6 @@ Pokedex_GetCursorMon:
 	hlcoord 9, 2
 	lb bc, 3, 11
 	call ClearBox
-	hlcoord 1, 1
-	lb bc, 7, 7
-	call ClearBox
 	xor a
 	ld [wPokedexOAM_IsCaught], a
 	ld [wPokedexOAM_DexNoY], a
@@ -1134,6 +1135,26 @@ Pokedex_GetCursorMon:
 	ld a, c
 	and a
 	jr nz, .got_species
+
+	; Display a questionmark in place of the frontpic.
+	ldh a, [rSVBK]
+	push af
+	ld a, BANK(wDexMonFrontpicTiles)
+	ldh [rSVBK], a
+	ld hl, QuestionMarkLZ
+	ld de, wDexMonFrontpicTiles
+	ld a, BANK(QuestionMarkLZ)
+	call FarDecompressToDE
+	pop af
+	ldh [rSVBK], a
+	ld hl, wPokedex_GFXMode
+	set DEXGFX_FRONTPIC, [hl]
+
+	ld hl, Pokedex_QuestionMarkPal
+	ld de, wBGPals1 palette 6 + 2
+	ld a, BANK(Pokedex_QuestionMarkPal)
+	ld bc, 4
+	call FarCopyBytesToColorWRAM
 
 	; Introduce a deliberate delay. The reason for this is so that we get a more
 	; consistent delay for each slot if keyrepeat applies.
@@ -1186,9 +1207,6 @@ Pokedex_GetCursorMon:
 	farcall DexPrepareFrontpic
 	ld hl, wPokedex_GFXMode
 	set DEXGFX_FRONTPIC, [hl]
-	hlcoord 1, 1
-	ld a, $40
-	call _PlaceFrontpicAtHL
 
 	; Frontpic pal
 	ld bc, wPokedex_Personality
