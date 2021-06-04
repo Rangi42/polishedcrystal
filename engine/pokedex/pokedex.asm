@@ -871,6 +871,12 @@ Pokedex_Description:
 	ld a, "?"
 	ld bc, 5
 	rst ByteFill
+
+	; This isn't used (it's for pagination for dex entries we have caught), but
+	; this balances the stack.
+	push af
+	push af
+	push af
 	jmp .info_done
 
 .mon_caught
@@ -970,9 +976,27 @@ Pokedex_Description:
 .weight_done
 	pop af
 	pop hl
+	inc hl
+	inc hl
+	ld d, h
+	ld e, l
+	push hl
+	push af
+	hlcoord 1, 12
+	call FarString
+	inc de
+	pop af
+	push de
+	push af
+	; At this point, we have pointers to the dex pages stored on the stack along
+	; with the bank. This is used if we want to switch page.
+
 .info_done
+	pop af
+	pop hl
+	pop hl
 	call Pokedex_RefreshScreen
-	ld a, $65
+	ld a, $57
 	ld de, PHB_DescSwitchSCY
 	call Pokedex_SetHBlankFunction
 	ld c, 240
