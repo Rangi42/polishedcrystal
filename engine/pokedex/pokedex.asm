@@ -825,7 +825,7 @@ Pokedex_UpdateRow:
 	dw wDexPalCopy + 1, 6 * 5 + 1, 6
 
 PokedexVWFStr_DescMenu:
-	rawchar "Page  Data  Breed  More  Area  Cry@"
+	rawchar "Bio  Data  Breed  More  Area  Cry@"
 PokedexVWFStr_DescMenuEnd:
 
 PokedexStr_Feet:
@@ -1062,7 +1062,7 @@ Pokedex_Description:
 	rst CopyBytes
 	ld hl, wDexVWFTiles tile 1
 	ld de, wDexVirtualOAMCopy
-	lb bc, VWF_INVERT, 0
+	lb bc, VWF_INVERT, 4
 	call PlaceVWFString
 	ld b, 0
 	call Pokedex_SetTilemap
