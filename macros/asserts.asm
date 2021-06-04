@@ -64,6 +64,16 @@ end_water_wildmons: MACRO
 		"def_water_wildmons {CURRENT_WATER_WILDMONS_MAP}: expected {d:WATER_WILDDATA_LENGTH} bytes"
 ENDM
 
+wildmon: MACRO
+	if _NARG == 3
+		db \1
+		dp \2, \3
+	else
+		db \1
+		dp \2
+	endc
+ENDM
+
 jmp: MACRO
 	if _NARG == 1
 		assert warn, \1 - @ > 127 + 2 || \1 - @ < -128 + 2, "jp can be jr"

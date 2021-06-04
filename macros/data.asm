@@ -15,31 +15,6 @@ dbw: MACRO
 	dw \2
 ENDM
 
-dbbw: MACRO
-	db \1, \2
-	dw \3
-ENDM
-
-dbbbw: MACRO
-	db \1, \2, \3
-	dw \4
-ENDM
-
-dbww: MACRO
-	db \1
-	dw \2, \3
-ENDM
-
-dbbww: MACRO
-	db \1, \2
-	dw \3, \4
-ENDM
-
-dbbwww: MACRO
-	db \1, \2
-	dw \3, \4, \5
-ENDM
-
 dn: MACRO
 	rept _NARG / 2
 		db (\1) << 4 + (\2)
@@ -77,16 +52,6 @@ dab: MACRO ; dwb address, bank
 	endr
 ENDM
 
-dbba: MACRO
-	db \1
-	dba \2
-ENDM
-
-dbbba: MACRO
-	db \1, \2
-	dba \3
-ENDM
-
 dbpixel: MACRO
 	if _NARG >= 4
 		db \1 * 8 + \3, \2 * 8 + \4
@@ -112,37 +77,6 @@ dp: MACRO ; db species, extspecies | form
 		db LOW(\1), HIGH(\1) << MON_EXTSPECIES_F
 	endc
 ENDM
-
-dbp: MACRO
-	if _NARG == 3
-		db \1
-		dp \2, \3
-	else
-		db \1
-		dp \2
-	endc
-ENDM
-
-dpb: MACRO
-	if _NARG == 3
-		dp \1, \2
-		db \3
-	else
-		dp \1
-		db \2
-	endc
-ENDM
-
-dpw: MACRO
-	if _NARG == 3
-		dp \1, \2
-		dw \3
-	else
-		dp \1
-		dw \2
-	endc
-ENDM
-
 
 genders: MACRO
 ; eight arguments, all MALE or FEMALE

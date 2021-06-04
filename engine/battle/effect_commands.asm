@@ -4987,13 +4987,19 @@ DisplayStatusProblem:
 	ld l, a
 	jmp StdBattleTextbox
 
+status_problem: MACRO
+	db \1 ; status mask
+	dw \2 ; animation
+	dw \3 ; text
+ENDM
+
 StatusProblemTable:
-	dbww 1 << TOX, ANIM_PSN, BadlyPoisonedText ; needs to be before PSN
-	dbww 1 << PAR, ANIM_PAR, ParalyzedText
-	dbww 1 << FRZ, ANIM_FRZ, FrozenSolidText
-	dbww 1 << BRN, ANIM_BRN, WasBurnedText
-	dbww 1 << PSN, ANIM_PSN, WasPoisonedText
-	dbww SLP, ANIM_SLP, FellAsleepText
+	status_problem 1 << TOX, ANIM_PSN, BadlyPoisonedText ; needs to be before PSN
+	status_problem 1 << PAR, ANIM_PAR, ParalyzedText
+	status_problem 1 << FRZ, ANIM_FRZ, FrozenSolidText
+	status_problem 1 << BRN, ANIM_BRN, WasBurnedText
+	status_problem 1 << PSN, ANIM_PSN, WasPoisonedText
+	status_problem      SLP, ANIM_SLP, FellAsleepText
 
 BattleCommand_poison:
 	ld a, 1 << PSN
