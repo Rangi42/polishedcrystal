@@ -516,14 +516,6 @@ Pokedex_UpdateRow:
 	ld a, BANK(wDexMons)
 	call StackCallInWRAMBankA
 .Function:
-	; Prepare VWF tiles.
-	push bc
-	ld hl, wDexVWFPreset
-	ld de, wDexVWFTiles
-	ld bc, 18 tiles
-	rst CopyBytes
-	pop bc
-
 	; Set sprite offset.
 	ld a, DEXPOS_ICONTILE_OFFSET
 	ld b, 1 ; the first column is part of BG, not OAM.
@@ -587,9 +579,20 @@ Pokedex_UpdateRow:
 	ld [hli], a
 	inc a
 	ld [hli], a
-	pop bc
-	; The rest are to be iterated by column.
 
+	; If we haven't yet written the previous row tiles, wait for it.
+	ld hl, wPokedex_GFXMode
+	bit DEXGFX_ROWTILES, [hl]
+	call nz, DelayFrame
+
+	; Prepare VWF tiles.
+	ld hl, wDexVWFPreset
+	ld de, wDexVWFTiles
+	ld bc, 18 tiles
+	rst CopyBytes
+	pop bc
+
+	; The rest are to be iterated by column.
 .loop3
 	; Get mini palette and check species for this position.
 	ld a, DEXPOS_PALCOPY
@@ -721,20 +724,10 @@ Pokedex_UpdateRow:
 	pop bc
 .species_done
 	call .GetDexNo
-	ld de, wDexNumber
-	ld a, h
-	ld [de], a
-	inc de
-	ld a, l
-	ld [de], a
-	dec de
-	ld hl, wDexNumberString
+	ld de, wDexNumberString
 	push bc
-	lb bc, PRINTNUM_LEADINGZEROS | 2, 3
-	call PrintNum
+	call .FastPrintNum
 	pop bc
-	ld a, "@"
-	ld [wDexNumberString + 3], a
 	ld a, DEXPOS_VWF_TILES
 	call .GetPosData
 	ld a, 14
@@ -751,28 +744,51 @@ Pokedex_UpdateRow:
 	cp 5
 	jmp nz, .loop3
 	ld b, 0
-	ld a, DEXPOS_ICON_VTILES
-	call .GetPosData
-	ld de, wDexIconTiles
-	ldh a, [rVBK]
-	push af
-	ld a, 1
-	ldh [rVBK], a
-	call DelayFrame
-	push hl
-	push bc
-	ld c, 20
-	call Get2bpp
-	pop bc
-	pop hl
-	ld b, 0
 	ld a, DEXPOS_VWF_VTILES
 	call .GetPosData
-	ld c, 18
-	ld de, wDexVWFTiles
-	call Get2bpp
-	pop af
-	ldh [rVBK], a
+	ld de, wDexRowTilesDest
+	ld a, l
+	ld [de], a
+	inc de
+	ld a, h
+	ld [de], a
+	inc de
+	ld a, DEXPOS_ICON_VTILES
+	call .GetPosData
+	ld a, l
+	ld [de], a
+	inc de
+	ld a, h
+	ld [de], a
+	ld hl, wPokedex_GFXMode
+	set DEXGFX_ROWTILES, [hl]
+	ret
+
+.FastPrintNum:
+	ld bc, -100
+	ld a, "0" - 1
+.printloop1
+	inc a
+	add hl, bc
+	bit 7, h
+	jr z, .printloop1
+	ld [de], a
+	inc de
+	ld bc, 10
+	ld a, "9" + 1
+.printloop2
+	dec a
+	add hl, bc
+	bit 7, h
+	jr nz, .printloop2
+	ld [de], a
+	inc de
+	ld a, "0"
+	add l
+	ld [de], a
+	inc de
+	ld a, "@"
+	ld [de], a
 	ret
 
 .GetDexNo:
@@ -1186,6 +1202,9 @@ Pokedex_GetCursorMon:
 	jr nz, .got_species
 
 	; Display a questionmark in place of the frontpic.
+	ld hl, wPokedex_GFXMode
+	bit DEXGFX_ROWTILES, [hl]
+	call nz, DelayFrame
 	ldh a, [rSVBK]
 	push af
 	ld a, BANK(wDexMonFrontpicTiles)

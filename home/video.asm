@@ -35,13 +35,16 @@ _GDMACopy:
 
 UpdateDexMap::
 ; Reloads dex gfx data depending on wPokedex_UpdateTiles.
+	ld hl, wPokedex_GFXMode
+	ld a, [hl]
+	and a
+	ret z
 	ldh a, [rSVBK]
 	push af
 	ldh a, [rVBK]
 	push af
 	ld a, BANK(wDexTilemap)
 	ldh [rSVBK], a
-	ld hl, wPokedex_GFXMode
 	bit DEXGFX_FRONTPIC, [hl]
 	res DEXGFX_FRONTPIC, [hl]
 	jr z, .frontpic_done
@@ -65,6 +68,30 @@ UpdateDexMap::
 	call GDMACopy
 
 .pokeinfo_done
+	bit DEXGFX_ROWTILES, [hl]
+	res DEXGFX_ROWTILES, [hl]
+	jr z, .rowtiles_done
+
+	ld a, 1
+	ldh [rVBK], a
+	push hl
+	ld hl, wDexRowTilesDest
+	ld a, [hli]
+	ld c, a
+	ld a, [hli]
+	ld b, a
+	ld de, wDexVWFTiles
+	ld a, 17
+	call GDMACopy
+	ld a, [hli]
+	ld c, a
+	ld b, [hl]
+	ld de, wDexIconTiles
+	ld a, 19
+	call GDMACopy
+	pop hl
+
+.rowtiles_done
 	; Don't run this too late into VBlank.
 	ldh a, [rLY]
 	cp $93
