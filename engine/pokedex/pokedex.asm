@@ -24,8 +24,10 @@ DEXTILE_FROM_DEXMAP EQU 1 << DEXTILE_FROM_DEXMAP_F
 	const DEXPOS_DEXNO
 	const DEXPOS_ICON_TILES
 	const DEXPOS_VWF_TILES
-	const DEXPOS_VTILES
-	const DEXPOS_TILE_OFFSET
+	const DEXPOS_ICON_VTILES
+	const DEXPOS_VWF_VTILES
+	const DEXPOS_ICONTILE_OFFSET
+	const DEXPOS_VWFTILE_OFFSET
 	const DEXPOS_TILEMAP
 	const DEXPOS_ATTRMAP
 	const DEXPOS_PALCOPY
@@ -485,7 +487,7 @@ Pokedex_UpdateRow:
 	pop bc
 
 	; Set sprite offset.
-	ld a, DEXPOS_TILE_OFFSET
+	ld a, DEXPOS_ICONTILE_OFFSET
 	ld b, 1 ; the first column is part of BG, not OAM.
 	call .GetPosData
 	ld e, l
@@ -494,15 +496,19 @@ Pokedex_UpdateRow:
 	call .GetPosData
 	dec hl
 	ld [hl], e
+	ld a, e
+	add $7c
+	push bc
+	push af
 
 	; Set up the VWF tilemap row with the proper tiles+attributes.
 	ld a, DEXPOS_TILEMAP
 	call .GetPosData
-	ld a, e
-	sub 4
-	push bc
-	push af
-	add $d0
+	push hl
+	ld a, DEXPOS_VWFTILE_OFFSET
+	call .GetPosData
+	ld a, l
+	pop hl
 	ld d, 18
 .loop
 	ld [hli], a
@@ -522,7 +528,6 @@ Pokedex_UpdateRow:
 	; Now set up the mini BG tiles properly.
 	ld bc, (wTileMap - wAttrMap) + 2
 	add hl, bc
-	or $80
 	ld [hli], a
 	inc a
 	ld [hli], a
@@ -708,20 +713,23 @@ Pokedex_UpdateRow:
 	cp 5
 	jmp nz, .loop3
 	ld b, 0
-	ld a, DEXPOS_VTILES
+	ld a, DEXPOS_ICON_VTILES
 	call .GetPosData
 	ld de, wDexIconTiles
-	ld c, 20
 	ldh a, [rVBK]
 	push af
 	ld a, 1
 	ldh [rVBK], a
 	call DelayFrame
 	push hl
+	push bc
+	ld c, 20
 	call Get2bpp
+	pop bc
 	pop hl
-	ld bc, (vTiles4 tile $50) - vTiles4
-	add hl, bc
+	ld b, 0
+	ld a, DEXPOS_VWF_VTILES
+	call .GetPosData
 	ld c, 18
 	ld de, wDexVWFTiles
 	call Get2bpp
@@ -801,7 +809,9 @@ Pokedex_UpdateRow:
 	dw wDexIconTiles, 0, 4 tiles
 	dw wDexVWFTiles - 1 tiles, 0, 4 tiles
 	dw vTiles4, 20 tiles, 4 tiles
+	dw vTiles4 tile $50, 18 tiles, 4 tiles
 	dw 0, 20, 4
+	dw $d0, 18, 4
 
 	; offset-based
 	dw wTileMap + 9 * SCREEN_WIDTH + 1, SCREEN_WIDTH * 3, 4
