@@ -73,8 +73,17 @@ Pokedex:
 
 	ld de, wDex2bpp
 	ld hl, vTiles2
-	lb bc, BANK(PokedexLZ), 64
+	lb bc, BANK(PokedexLZ), $40
 	call Get2bpp
+
+	ld a, 1
+	ldh [rVBK], a
+	ld de, wDex2bpp tile $40
+	ld hl, vTiles5 tile $18
+	lb bc, BANK(PokedexLZ), $20
+	call Get2bpp
+	xor a
+	ldh [rVBK], a
 
 	ld de, DexOAM
 	ld hl, vTiles0
