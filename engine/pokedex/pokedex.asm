@@ -824,6 +824,10 @@ Pokedex_UpdateRow:
 	dw wAttrMap + 9 * SCREEN_WIDTH + 1, SCREEN_WIDTH * 3, 4
 	dw wDexPalCopy + 1, 6 * 5 + 1, 6
 
+PokedexVWFStr_DescMenu:
+	rawchar "Page  Data  Breed  More  Area  Cry@"
+PokedexVWFStr_DescMenuEnd:
+
 PokedexStr_Feet:
 ; Feet uses its own pelicular display format, so replace the ?s too.
 	db "′??″@"
@@ -832,6 +836,7 @@ Pokedex_Description:
 	; Since we're reusing 0:$40-$7c, ensure that we have the frontpic loaded in
 	; 1:$40-$7c.
 	call Pokedex_GetCursorMonInVBK1
+	call Pokedex_RefreshScreen
 
 	; Move the dex number display.
 	ld a, 17
@@ -1042,14 +1047,54 @@ Pokedex_Description:
 	; At this point, we have pointers to the dex pages stored on the stack along
 	; with the bank. This is used if we want to switch page.
 
+	; Bottom menu bar
+	ldh a, [rSVBK]
+	push af
+	ld a, BANK(wDexVWFTiles)
+	ldh [rSVBK], a
+	ld a, -1
+	ld bc, 21 tiles
+	ld hl, wDexVWFTiles
+	rst ByteFill
+	ld hl, PokedexVWFStr_DescMenu
+	ld de, wDexVirtualOAMCopy
+	ld bc, PokedexVWFStr_DescMenuEnd - PokedexVWFStr_DescMenu
+	rst CopyBytes
+	ld hl, wDexVWFTiles tile 1
+	ld de, wDexVirtualOAMCopy
+	lb bc, VWF_INVERT, 0
+	call PlaceVWFString
+	ld b, 0
+	call Pokedex_SetTilemap
+	hldexcoord 0, 18
+	ld a, $40
+	ld b, 21
+.botmenu_loop
+	ld [hli], a
+	inc a
+	dec b
+	jr nz, .botmenu_loop
+
+	call DelayFrame
+	ld de, wDexVWFTiles
+	ld hl, vTiles2 tile $40
+	ld c, 21
+	call Get2bpp
+
+	ld b, DEXTILE_FROM_DEXMAP
+	call Pokedex_SetTilemap
+	pop af
+	ldh [rSVBK], a
 .info_done
 	pop af
 	pop hl
 	pop hl
+
 	call Pokedex_RefreshScreen
 	ld a, $57
 	ld de, PHB_DescSwitchSCY
 	call Pokedex_SetHBlankFunction
+
 	ld c, 240
 	call DelayFrames
 
