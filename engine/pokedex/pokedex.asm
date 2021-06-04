@@ -867,7 +867,7 @@ Pokedex_Description:
 	call Pokedex_GetCursorSpecies
 	bit MON_CAUGHT_F, b
 	jr nz, .mon_caught
-	hlcoord 9, 3
+	hlcoord 9, 5
 	ld a, "?"
 	ld bc, 5
 	rst ByteFill
@@ -1023,7 +1023,7 @@ Pokedex_Description:
 	jr .info_done
 .weight_done
 	; Category
-	hlcoord 9, 3
+	hlcoord 9, 5
 	push bc
 	push af
 	call FarString
