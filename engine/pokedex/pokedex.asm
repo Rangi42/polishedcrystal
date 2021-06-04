@@ -922,14 +922,9 @@ Pokedex_Description:
 	add hl, de
 	ld bc, 12
 	rst AddNTimes
-	ld b, h
-	ld c, l
-	ld de, 16646 ; 0.254 << 16
-	call Mul16
-	ld de, hTmpd
-	hlcoord 12, 7
-	ln bc, 0, 2, 4, 5
-	call PrintNum
+	decoord 12, 7
+	ld bc, 16646 ; 0.254 << 16
+	call Mul16AndPrint
 	jr .height_done
 
 	; TODO: convert to metric if applicable.
@@ -958,13 +953,21 @@ Pokedex_Description:
 	push hl
 	push af
 	call GetFarWord
-	ld d, h
-	ld e, l
+	ld a, [wOptions2]
+	bit POKEDEX_UNITS, a
+	jr z, .imperial_weight
+	decoord 12, 9
+	ld bc, 29726 ; 0.45359237 << 16
+	call Mul16AndPrint
+	jr .weight_done
 
 .imperial_weight
+	ld d, h
+	ld e, l
 	hlcoord 12, 9
 	ln bc, 0, 2, 4, 5
 	call PrintNumFromReg
+.weight_done
 	pop af
 	pop hl
 .info_done
@@ -1014,6 +1017,16 @@ Pokedex_Main:
 
 	call Pokedex_RefreshScreen
 	jmp Pokedex_SetHBlankFunctionToRow1
+
+Mul16AndPrint:
+	push de
+	ld d, h
+	ld e, l
+	call Mul16
+	pop hl
+	ld de, hTmpd
+	ln bc, 0, 2, 4, 5
+	jmp PrintNum
 
 ; Metric conversion code by TPP Anniversary Crystal 251
 ; https://github.com/TwitchPlaysPokemon/tppcrystal251pub/blob/public/main.asm
