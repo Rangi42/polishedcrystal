@@ -364,7 +364,11 @@ Pokedex_MainLoop:
 	jr .loop
 
 .pressed_a
-	call Pokedex_Description
+	; Do nothing if we haven't seen what the cursor is hovering.
+	call Pokedex_GetCursorSpecies
+	ld a, c
+	and a
+	call nz, Pokedex_Description
 	jr .loop
 .pressed_start
 	; TODO: search
@@ -373,43 +377,67 @@ Pokedex_MainLoop:
 	; TODO: mode switch
 	jr .loop
 .pressed_right
-	ld b, 1
-	jr .modcursorpos
+	ld a, 1
+	jr .fixcursor
 .pressed_left
-	ld b, 7
-	; fallthrough
-.modcursorpos
-	ld hl, wPokedex_CursorPos
-	ld a, b
-	add [hl]
-	and $f7
-	ld [hl], a
-	and $f
-	cp 5
-	jr nc, .modcursorpos
-	jr .newcursorpos
+	ld a, -1
+	jr .fixcursor
 .pressed_up
+	ld a, -$10
+	jr .fixcursor
+.pressed_down
+	ld a, $10
+	; fallthrough
+.fixcursor
 	ld hl, wPokedex_CursorPos
-	ld a, [hl]
-	sub $10
-	jr nc, .setcursorpos
-	ld b, 0
-	call .SwitchRow
-	jr .newcursorpos
-.setcursorpos
+.fixcursor_loop
+	push af
+	add [hl]
 	ld [hl], a
-.newcursorpos
+	call .CursorPosValid
+	pop bc
+	ld a, b
+	jr nz, .fixcursor_loop
 	call Pokedex_GetCursorMon
 	jr .loop
-.pressed_down
-	ld hl, wPokedex_CursorPos
+
+.CursorPosValid:
+	; If we can't go further up or down, don't do anything.
 	ld a, [hl]
-	add $10
-	cp $30
-	jr c, .setcursorpos
+	inc a
+	jr nz, .not_going_upwards
+
+	push hl
+	ld b, 0
+	call .SwitchRow ; Returns a=0 c|z upon failure.
+	pop hl
+	ld [hl], a
+	ret c
+	ld [hl], $04
+	ret
+
+.not_going_upwards
+	dec a
+	cp $25
+	jr c, .not_going_downwards
+	push hl
 	ld b, 2
 	call .SwitchRow
-	jr .newcursorpos
+	pop hl
+	ld [hl], $20
+	ret nc
+
+	; Should still be a valid cursor movement for this purpose.
+	xor a
+	ld [hl], $24
+	ret
+
+.not_going_downwards
+	and $f
+	cp $5
+	sbc a
+	inc a
+	ret
 
 .ShiftRowData:
 ; Copies c bytes data between hl and de. b determines direction.
@@ -459,6 +487,7 @@ Pokedex_MainLoop:
 .upwards
 	; Don't move upwards past row offset 0.
 	or [hl]
+	scf
 	ret z
 	dec [hl]
 
@@ -480,7 +509,9 @@ Pokedex_MainLoop:
 	hlcoord 19, 12
 	ld [hl], $1c
 	ld c, b
-	; fallthrough
+	call Pokedex_UpdateRow
+	xor a
+	ret
 
 Pokedex_UpdateRow:
 ; Populate tiles used for the given row in c with dex numbers and icon.
@@ -833,8 +864,19 @@ Pokedex_Description:
 	ld a, 1 << DEXGFX_FRONTPIC | 1 << DEXGFX_POKEINFO
 	ld [wPokedex_GFXMode], a
 
+	; Move the dex number display.
+	ld a, 17
+	ld [wPokedexOAM_DexNoX], a
+	ld a, 80
+	ld [wPokedexOAM_DexNoY], a
+
+	; Load the description tilemap.
 	ld hl, DexTilemap_Description
 	call Pokedex_LoadTilemapWithPokepic
+
+	ld de, wStringBuffer1
+	hlcoord 9, 1
+	call PlaceString
 	call Pokedex_UpdateTilemap
 	ld a, $65
 	ld de, PHB_DescSwitchSCY
