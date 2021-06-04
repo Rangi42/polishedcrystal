@@ -61,10 +61,10 @@ Pokedex:
 	xor a
 	ldh [hBGMapMode], a
 
-	; Set up the screen
+	; Set up tile graphics
 	ldh a, [rSVBK]
 	push af
-	ld a, BANK(wDexTilemap)
+	ld a, BANK(wDex2bpp)
 	ldh [rSVBK], a
 
 	; TODO: compress dex tiles.
@@ -99,29 +99,10 @@ Pokedex:
 	pop af
 	ldh [rSVBK], a
 
-	ld hl, DexTilemap_Main
-	call Pokedex_LoadTilemapWithPokepic
-
-	call Pokedex_InitData
-
-	hlcoord 10, 7
-	lb bc, 2, 3
-	ld de, wPokedex_NumSeen
-	call PrintNum
-	hlcoord 17, 7
-	lb bc, 2, 3
-	ld de, wPokedex_NumOwned
-	call PrintNum
-
-	ld c, 0
-	call Pokedex_UpdateRow
-	ld c, 1
-	call Pokedex_UpdateRow
-	ld c, 2
-	call Pokedex_UpdateRow
-
 	; Prepare OAM
 	call .PrepareOAM
+
+	call Pokedex_InitData
 
 	; Reset palettes for minis
 	xor a
@@ -140,16 +121,6 @@ Pokedex:
 	ldh [hFunctionTargetLo], a
 	ld a, HIGH(wPokedex_HBlankCode)
 	ldh [hFunctionTargetHi], a
-	ld a, $3f
-	ld de, PHB_Row1
-	call Pokedex_SetHBlankFunction
-
-	ld a, 1 << 6
-	ldh [rSTAT], a
-	ld hl, rIF
-	res LCD_STAT, [hl]
-	ld hl, rIE
-	set LCD_STAT, [hl]
 
 	ld a, CGB_POKEDEX
 	call Pokedex_GetCGBLayout
@@ -158,12 +129,19 @@ Pokedex:
 	ldh [hSCX], a
 	ldh [hSCY], a
 
+	call Pokedex_Main
+
+	ld a, 1 << 6
+	ldh [rSTAT], a
+	ld hl, rIF
+	res LCD_STAT, [hl]
+	ld hl, rIE
+	set LCD_STAT, [hl]
+
 	xor a
 	ld [wPokedex_CursorPos], a
 	ld [wPokedex_MonInfoBank], a
-	ld [wPokedex_DisplayMode], a ; DEXDISP_MAIN
 
-	call Pokedex_GetCursorMon
 	call Pokedex_MainLoop
 
 	ld hl, rIE
@@ -243,8 +221,6 @@ Pokedex:
 	ld [hli], a
 
 	; Dex number
-	ld a, 77
-	ld [wPokedexOAM_DexNoX], a
 	xor a
 	ld bc, 24
 	rst ByteFill
@@ -253,10 +229,7 @@ Pokedex:
 	ld [wVirtualOAMSprite31TileID], a
 	ld a, "."
 	ld [wVirtualOAMSprite32TileID], a
-
-	lb de, $50, $09
-	ld a, SPRITE_ANIM_INDEX_DEX_CURSOR
-	jmp InitSpriteAnimStruct
+	ret
 
 .SetupVWFPreset:
 ; Sets up wDexVWFPreset appropriately.
@@ -878,9 +851,43 @@ Pokedex_Description:
 	ld c, 240
 	call DelayFrames
 
+	; fallthrough
+Pokedex_Main:
+	; Move the dex number display.
+	ld a, 77
+	ld [wPokedexOAM_DexNoX], a
+	ld a, 16
+	ld [wPokedexOAM_DexNoY], a
+
+	ld hl, DexTilemap_Main
+	call Pokedex_LoadTilemapWithPokepic
+
 	xor a
 	ld [wPokedex_DisplayMode], a
-	ret
+
+	lb de, $50, $09
+	ld a, SPRITE_ANIM_INDEX_DEX_CURSOR
+	call InitSpriteAnimStruct
+
+	hlcoord 10, 7
+	lb bc, 2, 3
+	ld de, wPokedex_NumSeen
+	call PrintNum
+	hlcoord 17, 7
+	lb bc, 2, 3
+	ld de, wPokedex_NumOwned
+	call PrintNum
+
+	ld c, 0
+	call Pokedex_UpdateRow
+	ld c, 1
+	call Pokedex_UpdateRow
+	ld c, 2
+	call Pokedex_UpdateRow
+
+	call Pokedex_GetCursorMon
+	call Pokedex_RefreshScreen
+	jmp Pokedex_SetHBlankFunctionToRow1
 
 Pokedex_InitData:
 ; Initializes the list of Pokémon seen and owned.
