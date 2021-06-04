@@ -397,42 +397,40 @@ Pokedex_MainLoop:
 	call .CursorPosValid
 	pop bc
 	ld a, b
-	jr nz, .fixcursor_loop
+	jr nc, .fixcursor_loop
 	call Pokedex_GetCursorMon
 	jr .loop
 
 .CursorPosValid:
 	; If we can't go further up or down, don't do anything.
 	ld a, [hl]
-	inc a
-	jr nz, .not_going_upwards
-
+	cp $f0
+	jr c, .not_going_upwards
+	add $10
+	ld [hl], a
 	push hl
 	ld b, 0
 	call .SwitchRow ; Returns a=0 c|z upon failure.
 	pop hl
-	ld [hl], a
-	ret c
-	ld [hl], $04
+	jr nc, .not_going_downwards
+	ld [hl], 0
 	ret
 
 .not_going_upwards
-	dec a
-	cp $25
+	cp $30
 	jr c, .not_going_downwards
+	sub $10
+	ld [hl], a
 	push hl
 	ld b, 2
 	call .SwitchRow
 	pop hl
-	ld [hl], $20
-	ret nc
-
-	; Should still be a valid cursor movement for this purpose.
-	xor a
+	jr nc, .not_going_downwards
 	ld [hl], $24
 	ret
 
 .not_going_downwards
+	ld a, [hl]
 	and $f
 	cp $5
 	sbc a
