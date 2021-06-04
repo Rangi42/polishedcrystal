@@ -16,7 +16,6 @@
 ; last update 02/09/2020
 
 BattleTowerMons:
-BattleTowerPokemon1:
 	; MEGANIUM type: Grass, Fairy
 	; 80,  82, 100,  80,  83, 100
 	; hp  atk  def  spd  sat  sdf
@@ -25,7 +24,6 @@ BattleTowerPokemon1:
 	db BTDVS_HP_ROCK
 	db ABILITY_2 | BOLD, MALE ; Natural Cure, +Def -Atk
 
-BattleTowerPokemon2:
 	db MEGANIUM, BIG_ROOT ;(A)
 	db GIGA_DRAIN, PROTECT, LEECH_SEED, TOXIC
 	db PERFECT_DVS

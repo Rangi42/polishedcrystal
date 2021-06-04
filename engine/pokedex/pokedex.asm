@@ -333,7 +333,7 @@ Pokedex_MainLoop:
 	rrca
 	jr c, .pressed_a
 	rrca
-	jr c, .pressed_b
+	ret c ; pressed b
 	rrca
 	jr c, .pressed_select
 	rrca
@@ -351,12 +351,11 @@ Pokedex_MainLoop:
 .pressed_a
 	call Pokedex_Description
 	jr .loop
-.pressed_b
-	ret
 .pressed_start
-	; TODO: mode switch
+	; TODO: search
 	jr .loop
 .pressed_select
+	; TODO: mode switch
 	jr .loop
 .pressed_right
 	ld b, 1
@@ -954,7 +953,8 @@ Pokedex_InitData:
 	ret
 
 .GetSpecies:
-; Returns the species data for the given dex no+1. TODO: account for dex mode.
+; Returns the species data for the given dex no+1.
+; TODO: account for dex mode.
 	jr .national_mode
 
 .regional_mode
@@ -1346,7 +1346,7 @@ Pokedex_CopyTypeIconPals:
 
 Pokedex_Copy1bpp:
 ; Copies c tiles from b:hl to de. Avoids running Copy1bpp during HBlank.
-	ld a, [rLY]
+	ldh a, [rLY]
 	sub $3c
 	jr c, .ok
 .loop
@@ -1672,7 +1672,7 @@ rept 6
 	ld [c], a
 endr
 	; advance to the next pal quickly
-	ld [c], a
+	ld [c], a ; no-optimize useless loads (rOBPD)
 	ld [c], a
 
 	; Prepare this for later.
@@ -1718,10 +1718,10 @@ endr
 	ld a, [hl]
 	cp 1
 	ld a, d
-	jr c, .end ; conditional returns desyncs the timing
+	jr c, .end ; `ret c` desyncs the timing
 	xor a
 .end
-	ret
+	ret ; no-optimize stub function
 
 DexOAM:
 	dw `00000000
@@ -2906,6 +2906,7 @@ Pokedex_LoadUnownFrontpicTiles:
 	ret
 
 NewPokedexEntry:
+	; TODO
 	ret
 
 Pokedex_SetBGMapMode3:

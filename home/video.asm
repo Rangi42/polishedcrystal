@@ -66,7 +66,7 @@ UpdateDexMap::
 
 .pokeinfo_done
 	; Don't run this too late into VBlank.
-	ld a, [rLY]
+	ldh a, [rLY]
 	cp $93
 	jr nc, .done
 	and a

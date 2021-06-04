@@ -4,7 +4,6 @@ FarCopyBytesToColorWRAM::
 .Function:
 	ld a, BANK("GBC Video")
 	call StackCallInWRAMBankA
-.Function2:
 	jr _CopyBytes
 
 FarCopyBytes::

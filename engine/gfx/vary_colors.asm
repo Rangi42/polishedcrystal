@@ -27,18 +27,21 @@ CopyDVsToColorVaryDVs:
 	ld [hli], a
 ; wColorVaryDVs+2 = SatSdfDV
 	ld a, c
-	ld [hl], a
+	ld [hli], a
 	inc hl
 	inc hl
+	assert wColorVaryDVs + 5 == wColorVaryShiny
 ; wColorVaryShiny = Shiny
 	ld a, b
 	ld [hld], a
 	pop af
 	ld d, a
 	pop bc
+	assert wColorVaryShiny - 1 == wColorVaryForm
 ; wColorVaryForm = Form
 	ld a, b
 	ld [hld], a
+	assert wColorVaryForm - 1 == wColorVarySpecies
 ; wColorVarySpecies = Species
 	ld [hl], c
 
