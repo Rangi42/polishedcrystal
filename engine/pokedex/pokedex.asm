@@ -1545,7 +1545,7 @@ Pokedex_SetHBlankFunction:
 ; All PHB functions are timing-critical down to single cycles. Do not optimize
 ; for space unless you align the cycles exactly the same (Don't optimize for
 ; speed either, there's no point since everything here is busylooping).
-; An interrupt can trigget with between -1 and 5 cycles of imprecision.
+; An interrupt can trigger with between 0 and 5 cycles of imprecision.
 ; Thus, we assume worst-case mode0 access. Mode2 is always 40 cycles in
 ; doublespeed while worst-case mode0 is 37 after factoring in interrupt latency.
 PHB_WRAMCode:
