@@ -1641,12 +1641,12 @@ _Pokedex_GetCursorMon:
 	dec c
 	jr nz, .outer_copy_loop
 
-	ld hl, wPokedex_GFXFlags
-	set DEXGFX_POKEINFO, [hl]
 	pop af
 	ldh [rSVBK], a
 
 .done
+	ld hl, wPokedex_GFXFlags
+	set DEXGFX_POKEINFO, [hl]
 	; fallthrough
 Pokedex_ScheduleScreenUpdate:
 ; Schedules a screen refresh for the next Pokedex_GetInput.
