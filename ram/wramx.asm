@@ -1469,13 +1469,16 @@ SECTION "Sound Stack", WRAMX
 wSoundEngineBackup:: ds wChannelsEnd - wMusic
 
 
-SECTION "Metatiles", WRAMX
+SECTION UNION "Metatiles", WRAMX
+
+wDecompressedMetatiles:: ds 256 tiles
+
+
+SECTION UNION "Metatiles", WRAMX
 
 UNION
-wDecompressedMetatiles:: ds 256 tiles
-NEXTU
-UNION
 wDex2bpp:: ds $60 tiles
+
 NEXTU
 ; copied using hdma transfers (which is orders of magnitudes faster), so it uses
 ; 32x32 as opposed to only the 21x19 that we need.
@@ -1502,7 +1505,6 @@ wDexVirtualOAMScrollbarCopy:: ds 4
 wDexVirtualOAMDexNoCopy:: ds 4 * 6
 wDexVirtualOAMCopyEnd::
 
-
 wDexMons::
 for n, 1, NUM_SPECIES + 1
 wDexMon{d:n}::
@@ -1514,11 +1516,11 @@ wDexMonsEnd::
 ; Copy of dex row tile info. H-Blank uses a copy in wram0.
 wDexPalCopy::
 wDexRow1Tile: db ; Sprite offset for dex minis col 2-4
-wDexRow1Pals:: ds 6 * 5 ; 3 15bit colors per pal, 5 columns
+wDexRow1Pals:: ds PAL_COLOR_SIZE * 3 * 5 ; 3 15bit colors per pal, 5 columns
 wDexRow2Tile: db
-wDexRow2Pals:: ds 6 * 5
+wDexRow2Pals:: ds PAL_COLOR_SIZE * 3 * 5
 wDexRow3Tile: db
-wDexRow3Pals:: ds 6 * 5
+wDexRow3Pals:: ds PAL_COLOR_SIZE * 3 * 5
 wDexPalCopyEnd::
 
 wDexNumber:: dw
@@ -1527,7 +1529,7 @@ wDexNumberString:: ds 4 ; 3 numbers including leading zeroes + terminator
 ENDU
 
 wDexVWFPreset:: ds 18 tiles ; loaded into VWFTiles on a new row.
-ENDU
+
 
 SECTION "Attributes", WRAMX
 

@@ -675,13 +675,13 @@ wPokedex_HBlankCodeEnd::
 wPokedex_Pals::
 wPokedex_Row1::
 wPokedex_Row1Tile: db ; Sprite offset for dex minis col 2-4
-wPokedex_Row1Pals:: ds 6 * 5 ; 3 15bit colors per pal, 5 columns
+wPokedex_Row1Pals:: ds PAL_COLOR_SIZE * 3 * 5 ; 3 15bit colors per pal, 5 columns
 wPokedex_Row2::
 wPokedex_Row2Tile: db
-wPokedex_Row2Pals:: ds 6 * 5
+wPokedex_Row2Pals:: ds PAL_COLOR_SIZE * 3 * 5
 wPokedex_Row3::
 wPokedex_Row3Tile: db
-wPokedex_Row3Pals:: ds 6 * 5
+wPokedex_Row3Pals:: ds PAL_COLOR_SIZE * 3 * 5
 wPokedex_PalsEnd::
 
 ; Pokémon info (frontpic, types, etc) is stored in either vbk0 or vbk1. This is
@@ -708,6 +708,7 @@ NEXTU
 wPokedex_FinalEntry:: dw ; Final entry. Overwritten with rows/lastcol later.
 ENDU
 wPokedex_GFXMode:: db ; flags for various gfx update types
+
 
 SECTION UNION "Misc 480", WRAM0
 ; trade
