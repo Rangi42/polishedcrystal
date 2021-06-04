@@ -196,8 +196,7 @@ _FastPrintNum:
 .printloop1
 	inc a
 	add hl, bc
-	bit 7, h
-	jr z, .printloop1
+	jr c, .printloop1
 	ld [de], a
 	inc de
 	ld bc, 10
@@ -205,8 +204,7 @@ _FastPrintNum:
 .printloop2
 	dec a
 	add hl, bc
-	bit 7, h
-	jr nz, .printloop2
+	jr nc, .printloop2
 	ld [de], a
 	inc de
 	ld a, "0"
