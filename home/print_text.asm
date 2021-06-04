@@ -73,6 +73,10 @@ PrintNum::
 	homecall _PrintNum
 	ret
 
+PrintNumFromReg::
+	homecall _PrintNumFromReg
+	ret
+
 FastPrintNum::
 	homecall _FastPrintNum
 	ret

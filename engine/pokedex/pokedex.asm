@@ -129,6 +129,7 @@ Pokedex:
 	ldh [hSCX], a
 	ldh [hSCY], a
 
+	call Pokedex_GetCursorMonInVBK1
 	call Pokedex_Main
 
 	ld a, 1 << 6
@@ -823,11 +824,14 @@ Pokedex_UpdateRow:
 	dw wAttrMap + 9 * SCREEN_WIDTH + 1, SCREEN_WIDTH * 3, 4
 	dw wDexPalCopy + 1, 6 * 5 + 1, 6
 
+PokedexStr_Feet:
+; Feet uses its own pelicular display format, so replace the ?s too.
+	db "′??″@"
+
 Pokedex_Description:
-	ld a, 1
-	ld [wPokedex_MonInfoBank], a
-	ld a, 1 << DEXGFX_FRONTPIC | 1 << DEXGFX_POKEINFO
-	ld [wPokedex_GFXFlags], a
+	; Since we're reusing 0:$40-$7c, ensure that we have the frontpic loaded in
+	; 1:$40-$7c.
+	call Pokedex_GetCursorMonInVBK1
 
 	; Move the dex number display.
 	ld a, 17
@@ -844,6 +848,106 @@ Pokedex_Description:
 	ld de, wStringBuffer1
 	hlcoord 9, 1
 	call PlaceString
+
+	; Possibly adjust units of display.
+	ld a, [wOptions2]
+	bit POKEDEX_UNITS, a
+	jr nz, .units_ok
+
+	hlcoord 15, 7
+	ld de, PokedexStr_Feet
+	call PlaceString
+	hlcoord 18, 9
+	ld a, "l"
+	ld [hli], a
+	ld [hl], "b"
+
+.units_ok
+	; Check if we've captured the mon. If not, return "?????" as mon type.
+	call Pokedex_GetCursorSpecies
+	bit MON_CAUGHT_F, b
+	jr nz, .mon_caught
+	hlcoord 9, 3
+	ld a, "?"
+	ld bc, 5
+	rst ByteFill
+	jr .info_done
+
+.mon_caught
+	; Get a pointer to the dex information.
+	call GetSpeciesAndFormIndex
+	ld hl, PokedexDataPointerTable
+	add hl, bc
+	add hl, bc
+	add hl, bc
+	ld a, BANK(PokedexDataPointerTable)
+	ld b, a
+	call GetFarByte
+	inc hl
+	ld c, a
+	ld a, b
+	call GetFarWord
+	ld a, c
+	ld d, h
+	ld e, l
+
+	; Category
+	hlcoord 9, 3
+	push bc
+	push af
+	call FarString
+	inc de
+	pop af
+	pop bc
+	ld h, d
+	ld l, e
+	ld a, c
+
+	; Height
+	push af
+	call GetFarWord
+	inc de
+	inc de
+	push de
+	ld d, h
+	ld e, l
+
+	; TODO: convert to metric if applicable.
+.imperial_height
+	hlcoord 13, 7
+	ln bc, 0, 2, 2, 4
+	call PrintNumFromReg
+
+	; hooray for Imperial Units(TM)
+	hlcoord 15, 7
+	ld a, "′"
+	ld [hli], a
+	ld a, "0"
+	cp [hl]
+	jr nz, .nonzero_inches
+	ld [hl], " "
+.nonzero_inches
+	pop hl
+	ld d, h
+	ld e, l
+	pop af
+
+	; Weight
+	push af
+	call GetFarWord
+	inc de
+	inc de
+	push de
+	ld d, h
+	ld e, l
+
+.imperial_weight
+	hlcoord 12, 9
+	ln bc, 0, 2, 4, 5
+	call PrintNumFromReg
+	pop de
+	pop af
+.info_done
 	call Pokedex_RefreshScreen
 	ld a, $65
 	ld de, PHB_DescSwitchSCY
@@ -861,6 +965,9 @@ Pokedex_Main:
 
 	ld hl, DexTilemap_Main
 	call Pokedex_LoadTilemapWithPokepic
+	ld de, wStringBuffer1
+	hlcoord 9, 2
+	call PlaceString
 
 	xor a
 	ld [wPokedex_DisplayMode], a
@@ -885,7 +992,6 @@ Pokedex_Main:
 	ld c, 2
 	call Pokedex_UpdateRow
 
-	call Pokedex_GetCursorMon
 	call Pokedex_RefreshScreen
 	jmp Pokedex_SetHBlankFunctionToRow1
 
@@ -1151,14 +1257,29 @@ Pokedex_GetInput:
 	and D_PAD
 	ret
 
+Pokedex_GetCursorMonInVBK1:
+	ld a, 1
+	ld [wPokedex_MonInfoBank], a
+	jr _Pokedex_GetCursorMon
 Pokedex_GetCursorMon:
 ; Displays information about the mon the cursor is currently hovering.
-	; Switch which bank to store tile data in.
+	; Switch which bank to store tile data in. Tiles are loaded as follows:
+	; 0: vTiles2 tile $40
+	; 1: vTiles5 tile $40
+	; 2: vTiles1 tile $40 (unused)
+	; 3: vTiles4 tile $40
+	ld a, [wPokedex_DisplayMode]
+	and a
+	ld b, 1
+	jr z, .got_vbkswitch
+	ld b, 3
+.got_vbkswitch
 	ld hl, wPokedex_MonInfoBank
 	ld a, [hl]
-	xor 1
+	xor b
 	ld [hl], a
 
+_Pokedex_GetCursorMon:
 	; Set up proper palettes and switch between vbk0 and vbk1 usage.
 	swap a
 	rrca
@@ -1180,6 +1301,8 @@ Pokedex_GetCursorMon:
 	rst ByteFill
 
 	; Clear existing data.
+	ld a, "@"
+	ld [wStringBuffer1], a
 	hlcoord 9, 2
 	ld a, $7f
 	ld c, 10
@@ -1248,7 +1371,6 @@ Pokedex_GetCursorMon:
 	ld [wCurSpecies], a
 	ld [wNamedObjectIndex], a
 	bit MON_CAUGHT_F, b
-	res MON_CAUGHT_F, b
 	ld a, $10
 	ld [wPokedexOAM_DexNoY], a
 	ld a, b
@@ -1344,7 +1466,6 @@ Pokedex_GetCursorMon:
 .types_done
 	; Footprint
 	call Pokedex_GetCursorSpecies
-	res MON_CAUGHT_F, b
 	call GetSpeciesAndFormIndex
 	ld hl, Footprints
 	ld a, 4 * LEN_1BPP_TILE

@@ -1487,7 +1487,7 @@ wDexAttrmap:: ds BG_MAP_WIDTH * (SCREEN_HEIGHT + 1)
 wDexMapEnd::
 
 UNION
-wDexVWFTiles:: ds 18 tiles
+wDexVWFTiles:: ds 18 tiles ; might use part of IconTiles outside main display
 wDexIconTiles:: ds 24 tiles ; 4 tiles padding
 wDexRowTilesDest::
 wDexVWFTilesDest:: dw
