@@ -1463,7 +1463,7 @@ Pokedex_ReloadTilemap:
 	ld [hli], a
 	ld a, [wPokedex_Offset]
 	ld [hli], a
-	ld a, 54
+	ld a, 55
 	ldh [hMultiplier], a
 	call Multiply
 	ld b, 4
