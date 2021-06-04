@@ -81,21 +81,11 @@ Pokedex:
 
 	call .SetupVWFPreset
 
-	ld hl, MainScreenTilemap
-	ld de, wDexTilemap
-	ld a, BANK(MainScreenTilemap)
-	call FarDecompressToDE
-
-	; Now we no longer have to deal with the extra row/col. Use regular tilemap
-	; for the rest.
 	pop af
 	ldh [rSVBK], a
-	ld b, DEXTILE_FROM_DEXMAP
-	call Pokedex_SetTilemap
 
-	hlcoord 1, 1
-	ld a, $40
-	call _PlaceFrontpicAtHL
+	ld hl, DexTilemap_Main
+	call Pokedex_LoadTilemapWithPokepic
 
 	call Pokedex_InitData
 
@@ -300,6 +290,20 @@ Pokedex:
 	jr nz, .vwfloop2
 	ret
 
+Pokedex_LoadTilemapWithPokepic:
+	ld a, BANK(wDexTilemap)
+	call StackCallInWRAMBankA
+.Function:
+	ld de, wDexTilemap
+	ld a, BANK(DexTilemaps)
+	call FarDecompressToDE
+
+	ld b, DEXTILE_FROM_DEXMAP
+	call Pokedex_SetTilemap
+
+	hlcoord 1, 1
+	ld a, $40
+	jmp _PlaceFrontpicAtHL
 
 Pokedex_GetCursorSpecies:
 ; Returns species in c, form+ext in b that cursor is hovering.
@@ -806,27 +810,13 @@ Pokedex_UpdateRow:
 	dw wDexPalCopy + 1, 6 * 5 + 1, 6
 
 Pokedex_Description:
-	; Ensure that the frontpic, type icons and footprint is in vbk1.
-	; This will switch the bank used if applicable to vbk1, so we can use vbk0
-	; for some additional tiles.
-	ld a, [wPokedex_MonInfoBank]
-	and a
-	call z, Pokedex_GetCursorMon
-	ld a, BANK(wDexTilemap)
-	call StackCallInWRAMBankA
-.Function:
-	hldexcoord 9, 1
-	ld [hl], "N"
-	hldexcoord 9, 3
-	ld [hl], "D"
-	hldexcoord 9, 5
-	ld [hl], "T"
-	hldexcoord 9, 7
-	ld [hl], "H"
-	hldexcoord 9, 9
-	ld [hl], "W"
-	ld b, DEXTILE_FROM_DEXMAP
-	call Pokedex_SetTilemap
+	ld a, 1
+	ld [wPokedex_MonInfoBank], a
+	ld a, 1 << DEXGFX_FRONTPIC | 1 << DEXGFX_POKEINFO
+	ld [wPokedex_GFXMode], a
+
+	ld hl, DexTilemap_Description
+	call Pokedex_LoadTilemapWithPokepic
 	call Pokedex_UpdateTilemap
 	ld a, $65
 	ld de, PHB_DescSwitchSCY
@@ -2918,8 +2908,12 @@ Pokedex_SetBGMapMode:
 	ldh [hBGMapMode], a
 	jmp Delay2
 
-MainScreenTilemap:
+DexTilemaps:
+DexTilemap_Main:
 INCBIN "gfx/pokedex/main.bin.lz"
+
+DexTilemap_Description:
+INCBIN "gfx/pokedex/description.bin.lz"
 
 PokedexLZ:
 INCBIN "gfx/pokedex/pokedex.2bpp.lz"
