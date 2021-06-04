@@ -35,7 +35,7 @@ _GDMACopy:
 
 UpdateDexMap::
 ; Reloads dex gfx data depending on wPokedex_UpdateTiles.
-	ld hl, wPokedex_GFXMode
+	ld hl, wPokedex_GFXFlags
 	ld a, [hl]
 	and a
 	ret z

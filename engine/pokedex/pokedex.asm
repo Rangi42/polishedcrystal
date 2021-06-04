@@ -20,6 +20,10 @@ DEXTILE_FROM_DEXMAP EQU 1 << DEXTILE_FROM_DEXMAP_F
 	const DEXSTATE_EXIT
 
 	const_def
+	const DEXDISP_MAIN
+	const DEXDISP_DESC
+
+	const_def
 	const DEXPOS_MONS
 	const DEXPOS_DEXNO
 	const DEXPOS_ICON_TILES
@@ -157,6 +161,7 @@ Pokedex:
 	xor a
 	ld [wPokedex_CursorPos], a
 	ld [wPokedex_MonInfoBank], a
+	ld [wPokedex_DisplayMode], a ; DEXDISP_MAIN
 
 	call Pokedex_GetCursorMon
 	call Pokedex_MainLoop
@@ -581,7 +586,7 @@ Pokedex_UpdateRow:
 	ld [hli], a
 
 	; If we haven't yet written the previous row tiles, wait for it.
-	ld hl, wPokedex_GFXMode
+	ld hl, wPokedex_GFXFlags
 	bit DEXGFX_ROWTILES, [hl]
 	call nz, DelayFrame
 
@@ -760,7 +765,7 @@ Pokedex_UpdateRow:
 	inc de
 	ld a, h
 	ld [de], a
-	ld hl, wPokedex_GFXMode
+	ld hl, wPokedex_GFXFlags
 	set DEXGFX_ROWTILES, [hl]
 	ret
 
@@ -849,7 +854,7 @@ Pokedex_Description:
 	ld a, 1
 	ld [wPokedex_MonInfoBank], a
 	ld a, 1 << DEXGFX_FRONTPIC | 1 << DEXGFX_POKEINFO
-	ld [wPokedex_GFXMode], a
+	ld [wPokedex_GFXFlags], a
 
 	; Move the dex number display.
 	ld a, 17
@@ -861,15 +866,20 @@ Pokedex_Description:
 	ld hl, DexTilemap_Description
 	call Pokedex_LoadTilemapWithPokepic
 
+	ld a, DEXDISP_DESC
+	ld [wPokedex_DisplayMode], a
 	ld de, wStringBuffer1
 	hlcoord 9, 1
 	call PlaceString
-	call Pokedex_UpdateTilemap
+	call Pokedex_RefreshScreen
 	ld a, $65
 	ld de, PHB_DescSwitchSCY
 	call Pokedex_SetHBlankFunction
 	ld c, 240
-	jmp DelayFrames
+	call DelayFrames
+
+	xor a
+	ld [wPokedex_DisplayMode], a
 	ret
 
 Pokedex_InitData:
@@ -1118,10 +1128,10 @@ Pokedex_GetInput:
 ; Returns button input in a, and potentially handles screen refreshing.
 	ld a, TRUE
 	ldh [hVBlankOccurred], a
-	ld hl, wPokedex_GFXMode
+	ld hl, wPokedex_GFXFlags
 	bit DEXGFX_DEFERRED, [hl]
 	res DEXGFX_DEFERRED, [hl]
-	call nz, Pokedex_UpdateTilemap
+	call nz, Pokedex_RefreshScreen
 	call MaybeDelayFrame
 	call JoyTextDelay_AllowRepeat
 
@@ -1196,7 +1206,7 @@ Pokedex_GetCursorMon:
 	jr nz, .got_species
 
 	; Display a questionmark in place of the frontpic.
-	ld hl, wPokedex_GFXMode
+	ld hl, wPokedex_GFXFlags
 	bit DEXGFX_ROWTILES, [hl]
 	call nz, DelayFrame
 	ldh a, [rSVBK]
@@ -1209,7 +1219,7 @@ Pokedex_GetCursorMon:
 	call FarDecompressToDE
 	pop af
 	ldh [rSVBK], a
-	ld hl, wPokedex_GFXMode
+	ld hl, wPokedex_GFXFlags
 	set DEXGFX_FRONTPIC, [hl]
 	set DEXGFX_POKEINFO, [hl]
 
@@ -1262,7 +1272,7 @@ Pokedex_GetCursorMon:
 	; Frontpic
 	call GetBaseData
 	farcall DexPrepareFrontpic
-	ld hl, wPokedex_GFXMode
+	ld hl, wPokedex_GFXFlags
 	set DEXGFX_FRONTPIC, [hl]
 
 	; Frontpic pal
@@ -1351,16 +1361,16 @@ Pokedex_GetCursorMon:
 	dec c
 	jr nz, .outer_copy_loop
 
-	ld hl, wPokedex_GFXMode
+	ld hl, wPokedex_GFXFlags
 	set DEXGFX_POKEINFO, [hl]
 	pop af
 	ldh [rSVBK], a
 
 .done
 	; fallthrough
-Pokedex_ScheduleTilemapUpdate:
-; Schedules a tilemap update for the next Pokedex_Delay.
-	ld hl, wPokedex_GFXMode
+Pokedex_ScheduleScreenUpdate:
+; Schedules a screen refresh for the next Pokedex_GetInput.
+	ld hl, wPokedex_GFXFlags
 	set DEXGFX_DEFERRED, [hl]
 	ret
 
@@ -1424,15 +1434,13 @@ Pokedex_SetTilemap:
 	pop bc
 	ret
 
-Pokedex_UpdateTilemap:
-; Updates a 21x19 tilemap. Prefer DeferredUpdateTilemap, unless this is for
-; a screen transistion or similar, which doesn't do anything until we use
-; Pokedex_Delay, i.e. for awaiting user input.
-	; Standard operation only changes the topleft part of the tilemap.
+Pokedex_RefreshScreen:
+; Refreshes the screen. Prefer ScheduleScreenUpdate to reduce on needless
+; screen updates, which defers the refresh until Pokedex_GetInput.
+	; Copy the normal tilemap to the larger dex tilemap.
 	ld b, 0
 	call Pokedex_SetTilemap
-	; fallthrough
-Pokedex_ReloadTilemap:
+
 	ld a, BANK(wDexTilemap)
 	call StackCallInWRAMBankA
 .Function:
@@ -1479,7 +1487,13 @@ Pokedex_ReloadTilemap:
 	dec a
 	jr nz, .dexno_str_loop
 
-	; Fix scrollbar
+	; Scrollbar should only be visible in the main dex display mode.
+	ld a, [wPokedex_DisplayMode]
+	and a ; cp DEXDISP_MAIN
+	ld a, 0
+	jr nz, .got_scrollbar_offset
+
+	; Figure out scrollbar position.
 	ld hl, hMultiplicand
 	ld [hli], a
 	ld [hli], a
@@ -1508,7 +1522,7 @@ Pokedex_ReloadTilemap:
 	rst CopyBytes
 
 	call SetPalettes
-	ld hl, wPokedex_GFXMode
+	ld hl, wPokedex_GFXFlags
 	set DEXGFX_TILEMAP, [hl]
 .tilemap_delay
 	call DelayFrame

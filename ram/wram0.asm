@@ -707,7 +707,8 @@ wPokedex_LastCol:: db ; 1-5 in case the final row isn't completely filled
 NEXTU
 wPokedex_FinalEntry:: dw ; Final entry. Overwritten with rows/lastcol later.
 ENDU
-wPokedex_GFXMode:: db ; flags for various gfx update types
+wPokedex_GFXFlags:: db ; flags for various gfx update types
+wPokedex_DisplayMode:: db ; current pokédex display
 
 
 SECTION UNION "Misc 480", WRAM0

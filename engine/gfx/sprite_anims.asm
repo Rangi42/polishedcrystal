@@ -751,6 +751,10 @@ AnimSeq_DexCursor:
 	push bc
 	ld hl, SPRITEANIMSTRUCT_YOFFSET
 	add hl, bc
+	ld a, [wPokedex_DisplayMode]
+	and a ; cp DEXDISP_MAIN
+	ld [hl], 160
+	jr nz, .done
 	push hl
 	ld hl, SPRITEANIMSTRUCT_XOFFSET
 	add hl, bc
@@ -769,6 +773,7 @@ AnimSeq_DexCursor:
 	call SimpleMultiply
 	pop hl
 	ld [hl], a
+.done
 	pop bc
 	ret
 

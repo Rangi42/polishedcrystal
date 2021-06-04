@@ -163,7 +163,7 @@ DexPrepareFrontpic:
 	or e
 	ld [sScratch], a
 	pop bc
-	ld hl, wPokedex_GFXMode
+	ld hl, wPokedex_GFXFlags
 	bit DEXGFX_ROWTILES, [hl]
 	call nz, DelayFrame
 	ld hl, wDexMonFrontpicTiles
