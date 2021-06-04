@@ -187,3 +187,32 @@ PrintHLNum:
 	push bc
 	call PrintLetterDelay
 	jmp PopBCDEHL
+
+_FastPrintNum:
+; Prints 3 digits of 16bit number in hl with leading zeros + terminator.
+; Assumes hl is between 000-999.
+	ld bc, -100
+	ld a, "0" - 1
+.printloop1
+	inc a
+	add hl, bc
+	bit 7, h
+	jr z, .printloop1
+	ld [de], a
+	inc de
+	ld bc, 10
+	ld a, "9" + 1
+.printloop2
+	dec a
+	add hl, bc
+	bit 7, h
+	jr nz, .printloop2
+	ld [de], a
+	inc de
+	ld a, "0"
+	add l
+	ld [de], a
+	inc de
+	ld a, "@"
+	ld [de], a
+	ret

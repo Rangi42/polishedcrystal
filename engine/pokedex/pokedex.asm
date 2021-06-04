@@ -726,7 +726,7 @@ Pokedex_UpdateRow:
 	call .GetDexNo
 	ld de, wDexNumberString
 	push bc
-	call .FastPrintNum
+	call FastPrintNum
 	pop bc
 	ld a, DEXPOS_VWF_TILES
 	call .GetPosData
@@ -762,33 +762,6 @@ Pokedex_UpdateRow:
 	ld [de], a
 	ld hl, wPokedex_GFXMode
 	set DEXGFX_ROWTILES, [hl]
-	ret
-
-.FastPrintNum:
-	ld bc, -100
-	ld a, "0" - 1
-.printloop1
-	inc a
-	add hl, bc
-	bit 7, h
-	jr z, .printloop1
-	ld [de], a
-	inc de
-	ld bc, 10
-	ld a, "9" + 1
-.printloop2
-	dec a
-	add hl, bc
-	bit 7, h
-	jr nz, .printloop2
-	ld [de], a
-	inc de
-	ld a, "0"
-	add l
-	ld [de], a
-	inc de
-	ld a, "@"
-	ld [de], a
 	ret
 
 .GetDexNo:
@@ -1257,16 +1230,10 @@ Pokedex_GetCursorMon:
 	ld a, BANK(wDexNumber)
 	ldh [rSVBK], a
 	call GetPokedexNumber
-	ld de, wDexNumber
-	ld a, b
-	ld [de], a
-	inc de
-	ld a, c
-	ld [de], a
-	dec de
-	ld hl, wDexNumberString
-	lb bc, PRINTNUM_LEADINGZEROS | 2, 3
-	call PrintNum
+	ld de, wDexNumberString
+	ld h, b
+	ld l, c
+	call FastPrintNum
 	pop af
 	ldh [rSVBK], a
 
