@@ -152,7 +152,7 @@ DisplayDexEntry:
 	ld b, h
 	ld c, l
 	ld de, 16646 ; 0.254 << 16
-	call Mul16
+	call _Mul16
 	ld de, hTmpd
 	hlcoord 11, 7
 	ln bc, 0, 2, 4, 5
@@ -199,7 +199,7 @@ DisplayDexEntry:
 	ld c, d
 	ld b, e
 	ld de, 29726 ; 0.45359237 << 16
-	call Mul16
+	call _Mul16
 	ld de, hTmpd
 	hlcoord 11, 9
 	ln bc, 0, 2, 4, 5
@@ -272,7 +272,9 @@ DisplayDexEntry:
 
 ; Metric conversion code by TPP Anniversary Crystal 251
 ; https://github.com/TwitchPlaysPokemon/tppcrystal251pub/blob/public/main.asm
-Mul16:
+_Mul16:
+; TODO: delete this
+	farjp Mul16
 	;[hTmpd][hTmpe]hl = bc * de
 	xor a
 	ldh [hTmpd], a

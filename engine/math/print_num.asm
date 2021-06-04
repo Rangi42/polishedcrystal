@@ -1,6 +1,6 @@
 _PrintNumFromReg::
 ; Print c digits of 16bit number in de to hl. Printnum flags, but not bytecount,
-; is reserved.
+; is preserved.
 	push hl
 	ld hl, hPrintNum
 	xor a

@@ -871,7 +871,7 @@ Pokedex_Description:
 	ld a, "?"
 	ld bc, 5
 	rst ByteFill
-	jr .info_done
+	jmp .info_done
 
 .mon_caught
 	; Get a pointer to the dex information.
@@ -904,16 +904,38 @@ Pokedex_Description:
 	ld a, c
 
 	; Height
+	push hl
 	push af
 	call GetFarWord
-	inc de
-	inc de
-	push de
-	ld d, h
-	ld e, l
+	ld a, [wOptions2]
+	bit POKEDEX_UNITS, a
+	jr z, .imperial_height
+
+	; First, convert feet to inches.
+	ld de, -100
+	ld a, -1
+.inch_loop
+	inc a
+	add hl, de
+	jr c, .inch_loop
+	ld de, 100
+	add hl, de
+	ld bc, 12
+	rst AddNTimes
+	ld b, h
+	ld c, l
+	ld de, 16646 ; 0.254 << 16
+	call Mul16
+	ld de, hTmpd
+	hlcoord 12, 7
+	ln bc, 0, 2, 4, 5
+	call PrintNum
+	jr .height_done
 
 	; TODO: convert to metric if applicable.
 .imperial_height
+	ld d, h
+	ld e, l
 	hlcoord 13, 7
 	ln bc, 0, 2, 2, 4
 	call PrintNumFromReg
@@ -924,20 +946,18 @@ Pokedex_Description:
 	ld [hli], a
 	ld a, "0"
 	cp [hl]
-	jr nz, .nonzero_inches
+	jr nz, .height_done
 	ld [hl], " "
-.nonzero_inches
-	pop hl
-	ld d, h
-	ld e, l
+.height_done
 	pop af
+	pop hl
+	inc hl
+	inc hl
 
 	; Weight
+	push hl
 	push af
 	call GetFarWord
-	inc de
-	inc de
-	push de
 	ld d, h
 	ld e, l
 
@@ -945,8 +965,8 @@ Pokedex_Description:
 	hlcoord 12, 9
 	ln bc, 0, 2, 4, 5
 	call PrintNumFromReg
-	pop de
 	pop af
+	pop hl
 .info_done
 	call Pokedex_RefreshScreen
 	ld a, $65
@@ -994,6 +1014,41 @@ Pokedex_Main:
 
 	call Pokedex_RefreshScreen
 	jmp Pokedex_SetHBlankFunctionToRow1
+
+; Metric conversion code by TPP Anniversary Crystal 251
+; https://github.com/TwitchPlaysPokemon/tppcrystal251pub/blob/public/main.asm
+Mul16:
+; [hTmpd][hTmpe]hl = bc * de
+	xor a
+	ldh [hTmpd], a
+	ldh [hTmpe], a
+	ld hl, 0
+	ld a, 16
+	ldh [hProduct], a
+.loop
+	add hl, hl
+	ldh a, [hTmpe]
+	rla
+	ldh [hTmpe], a
+	ldh a, [hTmpd]
+	rla
+	ldh [hTmpd], a
+	sla e
+	rl d
+	jr nc, .noadd
+	add hl, bc
+	ldh a, [hTmpe]
+	adc 0
+	ldh [hTmpe], a
+	ldh a, [hTmpd]
+	adc 0
+	ldh [hTmpd], a
+.noadd
+	ldh a, [hProduct]
+	dec a
+	ldh [hProduct], a
+	jr nz, .loop
+	ret
 
 Pokedex_InitData:
 ; Initializes the list of Pokémon seen and owned.
