@@ -1,5 +1,9 @@
+	db 6  ; height
+	dw 85 ; weight
+
+	db 0 ; unused
+
 	db "Lizard@" ; species name
-	dw 200, 187 ; height, weight
 
 	db   "If it's healthy,"
 	next "the flame on the"

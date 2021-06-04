@@ -1,5 +1,9 @@
+	db 12  ; height
+	dw 250 ; weight
+
+	db 0 ; unused
+
 	db "Dragon@" ; species name
-	dw 311, 551 ; height, weight
 
 	db   "The male raises"
 	next "the young. If it"

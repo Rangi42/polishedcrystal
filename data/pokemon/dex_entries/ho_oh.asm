@@ -1,5 +1,9 @@
+	db 38   ; height
+	dw 1990 ; weight
+
+	db 0 ; unused
+
 	db "Rainbow@" ; species name
-	dw 1206, 4387 ; height, weight
 
 	db   "It will reveal"
 	next "itself before a"

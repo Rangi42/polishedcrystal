@@ -1,5 +1,9 @@
+	db 13  ; height
+	dw 540 ; weight
+
+	db 0 ; unused
+
 	db "Tadpole@" ; species name
-	dw 403, 1190 ; height, weight
 
 	db   "It can use its"
 	next "well-developed"

@@ -1,5 +1,9 @@
+	db 24   ; height
+	dw 2828 ; weight
+
+	db 0 ; unused
+
 	db "Drill@" ; species name
-	dw 710, 6235 ; height, weight
 
 	db   "From holes in its"
 	next "palms, it fires"

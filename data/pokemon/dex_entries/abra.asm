@@ -1,5 +1,9 @@
+	db 9   ; height
+	dw 195 ; weight
+
+	db 0 ; unused
+
 	db "Psi@" ; species name
-	dw 211, 430 ; height, weight
 
 	db   "It hypnotizes"
 	next "itself so that it"

@@ -1,5 +1,9 @@
+	db 12  ; height
+	dw 655 ; weight
+
+	db 0 ; unused
+
 	db "Licking@" ; species name
-	dw 311, 1444 ; height, weight
 
 	db   "Its tongue has"
 	next "well-developed"

@@ -1,5 +1,9 @@
+	db 5  ; height
+	dw 39 ; weight
+
+	db 0 ; unused
+
 	db "Balloon@" ; species name
-	dw 108, 86 ; height, weight
 
 	db   "When faced with a"
 	next "larger opponent,"

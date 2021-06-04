@@ -1,5 +1,9 @@
+	db 7  ; height
+	dw 69 ; weight
+
+	db 0 ; unused
+
 	db "Seed@" ; species name
-	dw 204, 152 ; height, weight
 
 	db   "While it is young,"
 	next "it uses the"

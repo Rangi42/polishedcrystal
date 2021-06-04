@@ -1,5 +1,9 @@
+	db 6   ; height
+	dw 124 ; weight
+
+	db 0 ; unused
+
 	db "Tadpole@" ; species name
-	dw 200, 273 ; height, weight
 
 	db   "The swirl on its"
 	next "belly is its"

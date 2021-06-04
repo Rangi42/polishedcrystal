@@ -1,5 +1,9 @@
+	db 9   ; height
+	dw 300 ; weight
+
+	db 0 ; unused
+
 	db "Sludge@" ; species name
-	dw 211, 661 ; height, weight
 
 	db   "When two of these"
 	next "#mon's bodies"

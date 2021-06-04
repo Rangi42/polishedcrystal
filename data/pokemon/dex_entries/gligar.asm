@@ -1,5 +1,9 @@
+	db 11  ; height
+	dw 648 ; weight
+
+	db 0 ; unused
+
 	db "FlyScorpion@" ; species name
-	dw 307, 1429 ; height, weight
 
 	db   "It builds its nest"
 	next "on a steep cliff."

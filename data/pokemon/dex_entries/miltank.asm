@@ -1,5 +1,9 @@
+	db 12  ; height
+	dw 755 ; weight
+
+	db 0 ; unused
+
 	db "Milk Cow@" ; species name
-	dw 311, 1664 ; height, weight
 
 	db   "In order to milk a"
 	next "Miltank, one must"

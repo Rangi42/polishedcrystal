@@ -1,5 +1,9 @@
+	db 15  ; height
+	dw 405 ; weight
+
+	db 0 ; unused
+
 	db "Shadow@" ; species name
-	dw 411, 893 ; height, weight
 
 	db   "Hiding in people's"
 	next "shadows at night,"

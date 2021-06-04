@@ -1,5 +1,9 @@
+	db 17  ; height
+	dw 509 ; weight
+
+	db 0 ; unused
+
 	db "Cruel@" ; species name
-	dw 507, 1122 ; height, weight
 
 	db   "Known as Articuno,"
 	next "this #mon fires"

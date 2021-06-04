@@ -1,5 +1,9 @@
+	db 12  ; height
+	dw 580 ; weight
+
+	db 0 ; unused
+
 	db "Painter@" ; species name
-	dw 311, 1279 ; height, weight
 
 	db   "The color of the"
 	next "mysterious fluid"

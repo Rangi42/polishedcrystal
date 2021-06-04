@@ -1,5 +1,9 @@
+	db 4  ; height
+	dw 75 ; weight
+
+	db 0 ; unused
+
 	db "Scratch Cat@" ; species name
-	dw 104, 165 ; height, weight
 
 	db   "These daring #-"
 	next "mon have coins on"

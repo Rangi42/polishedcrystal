@@ -1,5 +1,9 @@
+	db 8   ; height
+	dw 115 ; weight
+
+	db 0 ; unused
+
 	db "Long Tail@" ; species name
-	dw 207, 254 ; height, weight
 
 	db   "It uses its tail"
 	next "to hang on to tree"

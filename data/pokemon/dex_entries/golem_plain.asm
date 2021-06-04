@@ -1,5 +1,9 @@
+	db 14   ; height
+	dw 3000 ; weight
+
+	db 0 ; unused
+
 	db "Megaton@" ; species name
-	dw 407, 6614 ; height, weight
 
 	db   "Its rock-like body"
 	next "is so durable,"

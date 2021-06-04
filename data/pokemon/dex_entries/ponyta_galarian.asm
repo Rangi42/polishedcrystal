@@ -1,5 +1,9 @@
+	db 8   ; height
+	dw 240 ; weight
+
+	db 0 ; unused
+
 	db "Unique Horn@" ; species name
-	dw 207, 529 ; height, weight
 
 	db   "It will look into"
 	next "your eyes and read"

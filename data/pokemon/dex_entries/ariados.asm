@@ -1,5 +1,9 @@
+	db 11  ; height
+	dw 335 ; weight
+
+	db 0 ; unused
+
 	db "Long Leg@" ; species name
-	dw 307, 739 ; height, weight
 
 	db   "Rather than making"
 	next "a nest in one"

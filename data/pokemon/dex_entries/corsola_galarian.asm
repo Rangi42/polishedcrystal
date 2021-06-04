@@ -1,5 +1,9 @@
+	db 6 ; height
+	dw 5 ; weight
+
+	db 0 ; unused
+
 	db "Coral@" ; species name
-	dw 200, 11 ; height, weight
 
 	db   "Watch your step"
 	next "when wandering ar-"

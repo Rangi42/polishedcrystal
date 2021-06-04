@@ -1,5 +1,9 @@
+	db 7   ; height
+	dw 420 ; weight
+
+	db 0 ; unused
+
 	db "Sludge@" ; species name
-	dw 204, 926 ; height, weight
 
 	db   "A Grimer, which had"
 	next "been brought in to"

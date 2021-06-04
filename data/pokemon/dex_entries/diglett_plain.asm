@@ -1,5 +1,9 @@
+	db 2 ; height
+	dw 8 ; weight
+
+	db 0 ; unused
+
 	db "Mole@" ; species name
-	dw 8, 18 ; height, weight
 
 	db   "It digs under-"
 	next "ground and chews"

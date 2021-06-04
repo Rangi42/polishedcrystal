@@ -1,5 +1,9 @@
+	db 109  ; height
+	dw 4156 ; weight
+
+	db 0 ; unused
+
 	db "Coconut@" ; species name
-	dw 3509, 9162 ; height, weight
 
 	db   "It swings its long"
 	next "neck like a whip"

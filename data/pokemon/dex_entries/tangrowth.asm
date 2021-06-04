@@ -1,5 +1,9 @@
+	db 20   ; height
+	dw 1286 ; weight
+
+	db 0 ; unused
+
 	db "Vine@" ; species name
-	dw 607, 2835 ; height, weight
 
 	db   "It ensnares prey"
 	next "by extending arms"

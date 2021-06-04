@@ -1,5 +1,9 @@
+	db 12  ; height
+	dw 550 ; weight
+
+	db 0 ; unused
+
 	db "Mouse@" ; species name
-	dw 311, 1213 ; height, weight
 
 	db   "It runs across"
 	next "snow-covered plains"

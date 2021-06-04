@@ -1,5 +1,9 @@
+	db 5  ; height
+	dw 85 ; weight
+
+	db 0 ; unused
+
 	db "String Spit@" ; species name
-	dw 108, 187 ; height, weight
 
 	db   "If prey becomes"
 	next "ensnared in its"

@@ -1,5 +1,9 @@
+	db 12  ; height
+	dw 225 ; weight
+
+	db 0 ; unused
+
 	db "Light@" ; species name
-	dw 311, 496 ; height, weight
 
 	db   "This #mon uses"
 	next "the bright part of"

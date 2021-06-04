@@ -1,5 +1,9 @@
+	db 4  ; height
+	dw 42 ; weight
+
+	db 0 ; unused
+
 	db "Scratch Cat@" ; species name
-	dw 104, 93 ; height, weight
 
 	db   "It loves things"
 	next "that sparkle. When"

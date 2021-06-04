@@ -1,5 +1,9 @@
+	db 10  ; height
+	dw 290 ; weight
+
+	db 0 ; unused
+
 	db "Bubble Jet@" ; species name
-	dw 303, 639 ; height, weight
 
 	db   "As it uses the"
 	next "fins on the tip"

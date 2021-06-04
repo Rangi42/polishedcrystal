@@ -1,5 +1,9 @@
+	db 92   ; height
+	dw 4000 ; weight
+
+	db 0 ; unused
+
 	db "Iron Snake@" ; species name
-	dw 3002, 8818 ; height, weight
 
 	db   "The many small"
 	next "metal particles"

@@ -1,5 +1,9 @@
+	db 7   ; height
+	dw 666 ; weight
+
+	db 0 ; unused
+
 	db "Mole@" ; species name
-	dw 204, 1468 ; height, weight
 
 	db   "Its metallic whis-"
 	next "kers are heavy, so"

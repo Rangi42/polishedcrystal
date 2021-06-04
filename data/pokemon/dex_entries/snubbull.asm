@@ -1,5 +1,9 @@
+	db 6  ; height
+	dw 78 ; weight
+
+	db 0 ; unused
+
 	db "Fairy@" ; species name
-	dw 200, 172 ; height, weight
 
 	db   "In truth, it is a"
 	next "cowardly #mon."

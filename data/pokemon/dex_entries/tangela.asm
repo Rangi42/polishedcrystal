@@ -1,5 +1,9 @@
+	db 10  ; height
+	dw 350 ; weight
+
+	db 0 ; unused
+
 	db "Vine@" ; species name
-	dw 303, 772 ; height, weight
 
 	db   "During battle, it"
 	next "constantly moves"

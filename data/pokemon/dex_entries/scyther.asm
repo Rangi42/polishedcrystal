@@ -1,5 +1,9 @@
+	db 15  ; height
+	dw 560 ; weight
+
+	db 0 ; unused
+
 	db "Mantis@" ; species name
-	dw 411, 1235 ; height, weight
 
 	db   "It's very proud of"
 	next "its speed. It"

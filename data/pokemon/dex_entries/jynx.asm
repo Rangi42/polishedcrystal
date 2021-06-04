@@ -1,5 +1,9 @@
+	db 14  ; height
+	dw 406 ; weight
+
+	db 0 ; unused
+
 	db "Human Shape@" ; species name
-	dw 407, 895 ; height, weight
 
 	db   "It has several"
 	next "different cry"

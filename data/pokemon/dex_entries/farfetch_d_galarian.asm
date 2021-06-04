@@ -1,5 +1,9 @@
+	db 8   ; height
+	dw 420 ; weight
+
+	db 0 ; unused
+
 	db "Wild Duck@" ; species name
-	dw 207, 926 ; height, weight
 
 	db   "These Farfetch'd"
 	next "are brave warriors,"

@@ -1,5 +1,9 @@
+	db 6   ; height
+	dw 205 ; weight
+
+	db 0 ; unused
+
 	db "Mold@" ; species name
-	dw 200, 452 ; height, weight
 
 	db   "The fluid secreted"
 	next "by its toes carves"

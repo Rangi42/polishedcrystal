@@ -1,5 +1,9 @@
+	db 3  ; height
+	dw 18 ; weight
+
+	db 0 ; unused
+
 	db "Seed@" ; species name
-	dw 100, 40 ; height, weight
 
 	db   "It is very weak."
 	next "Its only means of"

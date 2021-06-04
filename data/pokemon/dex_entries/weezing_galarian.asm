@@ -1,5 +1,9 @@
+	db 30  ; height
+	dw 160 ; weight
+
+	db 0 ; unused
+
 	db "Poison Gas@" ; species name
-	dw 910, 353 ; height, weight
 
 	db   "It consumes par-"
 	next "ticles that con-"

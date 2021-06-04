@@ -1,5 +1,9 @@
+	db 16  ; height
+	dw 582 ; weight
+
+	db 0 ; unused
+
 	db "Strong Legs@" ; species name
-	dw 503, 1283 ; height, weight
 
 	db   "When its feathers"
 	next "rub together,"

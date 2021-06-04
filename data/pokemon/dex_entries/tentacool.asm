@@ -1,5 +1,9 @@
+	db 9   ; height
+	dw 455 ; weight
+
+	db 0 ; unused
+
 	db "Jellyfish@" ; species name
-	dw 211, 1003 ; height, weight
 
 	db   "As it floats along"
 	next "on the waves, it"

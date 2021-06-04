@@ -1,5 +1,9 @@
+	db 22  ; height
+	dw 800 ; weight
+
+	db 0 ; unused
+
 	db "Parent@" ; species name
-	dw 703, 1764 ; height, weight
 
 	db   "To avoid"
 	next "crushing the"

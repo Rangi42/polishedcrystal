@@ -1,5 +1,9 @@
+	db 10   ; height
+	dw 1150 ; weight
+
+	db 0 ; unused
+
 	db "Spikes@" ; species name
-	dw 303, 2535 ; height, weight
 
 	db   "It can remember"
 	next "only one thing at"

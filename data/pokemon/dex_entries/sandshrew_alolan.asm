@@ -1,5 +1,9 @@
+	db 7   ; height
+	dw 400 ; weight
+
+	db 0 ; unused
+
 	db "Mouse@" ; species name
-	dw 204, 882 ; height, weight
 
 	db   "It lives on snowy"
 	next "mountains. Its"

@@ -1,5 +1,9 @@
+	db 4  ; height
+	dw 70 ; weight
+
+	db 0 ; unused
+
 	db "Poison Pin@" ; species name
-	dw 104, 154 ; height, weight
 
 	db   "Small and very"
 	next "docile, it pro-"

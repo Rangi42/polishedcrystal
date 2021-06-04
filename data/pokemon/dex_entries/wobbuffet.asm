@@ -1,5 +1,9 @@
+	db 13  ; height
+	dw 285 ; weight
+
+	db 0 ; unused
+
 	db "Patient@" ; species name
-	dw 403, 628 ; height, weight
 
 	db   "In order to"
 	next "conceal its black"

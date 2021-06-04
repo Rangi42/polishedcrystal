@@ -1,5 +1,9 @@
+	db 8   ; height
+	dw 150 ; weight
+
+	db 0 ; unused
+
 	db "Wild Duck@" ; species name
-	dw 207, 331 ; height, weight
 
 	db   "In order to"
 	next "prevent their"

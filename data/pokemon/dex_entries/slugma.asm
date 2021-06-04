@@ -1,5 +1,9 @@
+	db 7   ; height
+	dw 350 ; weight
+
+	db 0 ; unused
+
 	db "Lava@" ; species name
-	dw 204, 772 ; height, weight
 
 	db   "These group"
 	next "together in areas"

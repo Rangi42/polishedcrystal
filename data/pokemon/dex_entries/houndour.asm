@@ -1,5 +1,9 @@
+	db 6   ; height
+	dw 108 ; weight
+
+	db 0 ; unused
+
 	db "Dark@" ; species name
-	dw 200, 238 ; height, weight
 
 	db   "Around dawn, its"
 	next "ominous howl"

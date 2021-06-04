@@ -1,5 +1,9 @@
+	db 23  ; height
+	dw 888 ; weight
+
+	db 0 ; unused
+
 	db "Big Jaw@" ; species name
-	dw 707, 1958 ; height, weight
 
 	db   "Although it has a"
 	next "massive body, its"

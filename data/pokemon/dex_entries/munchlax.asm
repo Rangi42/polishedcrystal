@@ -1,5 +1,9 @@
+	db 6    ; height
+	dw 1050 ; weight
+
+	db 0 ; unused
+
 	db "Big Eater@" ; species name
-	dw 200, 2315 ; height, weight
 
 	db   "In its desperation"
 	next "to gulp down food,"

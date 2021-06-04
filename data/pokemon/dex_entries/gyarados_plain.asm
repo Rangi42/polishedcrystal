@@ -1,5 +1,9 @@
+	db 65   ; height
+	dw 2350 ; weight
+
+	db 0 ; unused
+
 	db "Atrocious@" ; species name
-	dw 2104, 5181 ; height, weight
 
 	db   "It appears whenever"
 	next "there is world"

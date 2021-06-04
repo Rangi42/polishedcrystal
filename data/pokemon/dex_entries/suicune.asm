@@ -1,5 +1,9 @@
+	db 20   ; height
+	dw 1870 ; weight
+
+	db 0 ; unused
+
 	db "Aurora@" ; species name
-	dw 607, 4123 ; height, weight
 
 	db   "This divine"
 	next "#mon blows"

@@ -1,5 +1,9 @@
+	db 12  ; height
+	dw 380 ; weight
+
+	db 0 ; unused
+
 	db "Beak@" ; species name
-	dw 311, 838 ; height, weight
 
 	db   "It uses its long"
 	next "beak to attack. It"

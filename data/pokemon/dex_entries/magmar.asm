@@ -1,5 +1,9 @@
+	db 13  ; height
+	dw 445 ; weight
+
+	db 0 ; unused
+
 	db "Spitfire@" ; species name
-	dw 403, 981 ; height, weight
 
 	db   "It moves more"
 	next "frequently in hot"

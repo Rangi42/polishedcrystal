@@ -1,5 +1,9 @@
+	db 8    ; height
+	dw 1170 ; weight
+
+	db 0 ; unused
+
 	db "Wild Duck@" ; species name
-	dw 207, 2579 ; height, weight
 
 	db   "After deflecting"
 	next "attacks with its"

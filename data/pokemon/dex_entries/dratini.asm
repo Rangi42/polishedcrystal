@@ -1,5 +1,9 @@
+	db 18 ; height
+	dw 33 ; weight
+
+	db 0 ; unused
+
 	db "Dragon@" ; species name
-	dw 511, 73 ; height, weight
 
 	db   "It sheds many lay-"
 	next "ers of skin as it"

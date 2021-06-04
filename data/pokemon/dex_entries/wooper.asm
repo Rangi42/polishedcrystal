@@ -1,5 +1,9 @@
+	db 4  ; height
+	dw 85 ; weight
+
+	db 0 ; unused
+
 	db "Water Fish@" ; species name
-	dw 104, 187 ; height, weight
 
 	db   "A mucous"
 	next "membrane covers"

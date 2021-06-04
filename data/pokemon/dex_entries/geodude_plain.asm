@@ -1,5 +1,9 @@
+	db 4   ; height
+	dw 200 ; weight
+
+	db 0 ; unused
+
 	db "Rock@" ; species name
-	dw 104, 441 ; height, weight
 
 	db   "Proud of their"
 	next "sturdy bodies,"

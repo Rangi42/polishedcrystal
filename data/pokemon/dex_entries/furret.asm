@@ -1,5 +1,9 @@
+	db 18  ; height
+	dw 325 ; weight
+
+	db 0 ; unused
+
 	db "Long Body@" ; species name
-	dw 511, 717 ; height, weight
 
 	db   "It lives in narrow"
 	next "burrows that fit"

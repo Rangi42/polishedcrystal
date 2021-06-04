@@ -1,5 +1,9 @@
+	db 18   ; height
+	dw 1386 ; weight
+
+	db 0 ; unused
+
 	db "Thunderbolt@" ; species name
-	dw 511, 3056 ; height, weight
 
 	db   "It pushes the tips"
 	next "of its two tails"

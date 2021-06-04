@@ -1,5 +1,9 @@
+	db 15  ; height
+	dw 550 ; weight
+
+	db 0 ; unused
+
 	db "Stag Beetle@" ; species name
-	dw 411, 1213 ; height, weight
 
 	db   "When the"
 	next "temperature drops"

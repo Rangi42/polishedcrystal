@@ -1,5 +1,9 @@
+	db 12  ; height
+	dw 158 ; weight
+
+	db 0 ; unused
+
 	db "Leaf@" ; species name
-	dw 311, 348 ; height, weight
 
 	db   "The scent that"
 	next "wafts from the"

@@ -1,5 +1,9 @@
+	db 6  ; height
+	dw 10 ; weight
+
+	db 0 ; unused
+
 	db "Poison Gas@" ; species name
-	dw 200, 22 ; height, weight
 
 	db   "If one gets close"
 	next "enough to it when"

@@ -1,5 +1,9 @@
+	db 11  ; height
+	dw 300 ; weight
+
+	db 0 ; unused
+
 	db "Bird@" ; species name
-	dw 307, 661 ; height, weight
 
 	db   "It slowly flies in"
 	next "a circular pattern,"

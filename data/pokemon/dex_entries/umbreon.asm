@@ -1,5 +1,9 @@
+	db 10  ; height
+	dw 270 ; weight
+
+	db 0 ; unused
+
 	db "Moonlight@" ; species name
-	dw 303, 595 ; height, weight
 
 	db   "On the night of a"
 	next "full moon, or when"

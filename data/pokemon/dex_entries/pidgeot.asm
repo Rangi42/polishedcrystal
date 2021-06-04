@@ -1,5 +1,9 @@
+	db 15  ; height
+	dw 395 ; weight
+
+	db 0 ; unused
+
 	db "Bird@" ; species name
-	dw 411, 871 ; height, weight
 
 	db   "This #mon flies"
 	next "at Mach 2 speed,"

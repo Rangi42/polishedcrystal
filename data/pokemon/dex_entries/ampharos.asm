@@ -1,5 +1,9 @@
+	db 14  ; height
+	dw 615 ; weight
+
+	db 0 ; unused
+
 	db "Light@" ; species name
-	dw 407, 1356 ; height, weight
 
 	db   "When it gets dark,"
 	next "the light from its"

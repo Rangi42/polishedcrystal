@@ -1,5 +1,9 @@
+	db 15  ; height
+	dw 380 ; weight
+
+	db 0 ; unused
+
 	db "Jubilee@" ; species name
-	dw 411, 838 ; height, weight
 
 	db   "It shares many"
 	next "blessings with"

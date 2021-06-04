@@ -1,5 +1,9 @@
+	db 10  ; height
+	dw 295 ; weight
+
+	db 0 ; unused
+
 	db "Mouse@" ; species name
-	dw 303, 650 ; height, weight
 
 	db   "Adept at climbing"
 	next "trees, it rolls"

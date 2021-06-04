@@ -1,5 +1,9 @@
+	db 40  ; height
+	dw 165 ; weight
+
+	db 0 ; unused
+
 	db "Dragon@" ; species name
-	dw 1301, 364 ; height, weight
 
 	db   "It is called the"
 	next "divine #mon."

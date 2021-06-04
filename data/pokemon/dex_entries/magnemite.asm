@@ -1,5 +1,9 @@
+	db 3  ; height
+	dw 60 ; weight
+
+	db 0 ; unused
+
 	db "Magnet@" ; species name
-	dw 100, 132 ; height, weight
 
 	db   "The electricity"
 	next "emitted by the"

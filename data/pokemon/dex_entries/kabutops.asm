@@ -1,5 +1,9 @@
+	db 13  ; height
+	dw 405 ; weight
+
+	db 0 ; unused
+
 	db "Shellfish@" ; species name
-	dw 403, 893 ; height, weight
 
 	db   "It was able to swim"
 	next "quickly through"

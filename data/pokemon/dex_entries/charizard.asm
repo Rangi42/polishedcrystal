@@ -1,5 +1,9 @@
+	db 17  ; height
+	dw 905 ; weight
+
+	db 0 ; unused
+
 	db "Flame@" ; species name
-	dw 507, 1995 ; height, weight
 
 	db   "It uses its wings"
 	next "to fly high. The"

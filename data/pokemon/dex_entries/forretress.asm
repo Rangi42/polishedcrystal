@@ -1,5 +1,9 @@
+	db 12   ; height
+	dw 1258 ; weight
+
+	db 0 ; unused
+
 	db "Bagworm@" ; species name
-	dw 311, 2773 ; height, weight
 
 	db   "Usually found"
 	next "hanging on to a"

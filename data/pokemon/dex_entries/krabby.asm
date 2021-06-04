@@ -1,5 +1,9 @@
+	db 4  ; height
+	dw 65 ; weight
+
+	db 0 ; unused
+
 	db "River Crab@" ; species name
-	dw 104, 143 ; height, weight
 
 	db   "If it is unable"
 	next "to find food, it"

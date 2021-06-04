@@ -1,5 +1,9 @@
+	db 2  ; height
+	dw 10 ; weight
+
+	db 0 ; unused
+
 	db "Mole@" ; species name
-	dw 8, 22 ; height, weight
 
 	db   "The metal-rich"
 	next "geology of this"

@@ -1,5 +1,9 @@
+	db 10   ; height
+	dw 1050 ; weight
+
+	db 0 ; unused
+
 	db "Rock@" ; species name
-	dw 303, 2315 ; height, weight
 
 	db   "It travels by roll-"
 	next "ing on mountain"

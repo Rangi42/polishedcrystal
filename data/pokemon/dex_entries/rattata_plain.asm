@@ -1,5 +1,9 @@
+	db 3  ; height
+	dw 35 ; weight
+
+	db 0 ; unused
+
 	db "Rat@" ; species name
-	dw 100, 77 ; height, weight
 
 	db   "This #mon's"
 	next "impressive vitality"

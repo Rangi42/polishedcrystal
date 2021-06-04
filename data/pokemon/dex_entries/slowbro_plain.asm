@@ -1,9 +1,13 @@
+	db 16  ; height
+	dw 785 ; weight
+
+	db 0 ; unused
+
 if DEF(FAITHFUL)
 	db "Hermit Crab@" ; species name
 else
 	db "Squatter@" ; species name
 endc
-	dw 503, 1731 ; height, weight
 
 	db   "An attached"
 	next "Shellder won't let"

@@ -1,5 +1,9 @@
+	db 10  ; height
+	dw 235 ; weight
+
+	db 0 ; unused
+
 	db "Intertwined@" ; species name
-	dw 303, 518 ; height, weight
 
 	db   "It wraps its"
 	next "ribbonlike feelers"

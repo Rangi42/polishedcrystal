@@ -1,5 +1,9 @@
+	db 4  ; height
+	dw 80 ; weight
+
+	db 0 ; unused
+
 	db "Dragon@" ; species name
-	dw 104, 176 ; height, weight
 
 	db   "When they're in a"
 	next "safe location,"

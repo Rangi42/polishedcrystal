@@ -1,5 +1,9 @@
+	db 5  ; height
+	dw 90 ; weight
+
+	db 0 ; unused
+
 	db "Poison Pin@" ; species name
-	dw 108, 198 ; height, weight
 
 	db   "It constantly"
 	next "moves its large"

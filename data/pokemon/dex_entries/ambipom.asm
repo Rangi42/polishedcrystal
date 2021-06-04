@@ -1,5 +1,9 @@
+	db 12  ; height
+	dw 203 ; weight
+
+	db 0 ; unused
+
 	db "Long Tail@" ; species name
-	dw 311, 448 ; height, weight
 
 	db   "Split in two, the"
 	next "tails are so adept"

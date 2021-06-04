@@ -1,5 +1,9 @@
+	db 20   ; height
+	dw 1200 ; weight
+
+	db 0 ; unused
+
 	db "Coconut@" ; species name
-	dw 607, 2646 ; height, weight
 
 	db   "Living in a good"
 	next "environment makes"

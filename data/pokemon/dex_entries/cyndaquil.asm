@@ -1,5 +1,9 @@
+	db 5  ; height
+	dw 79 ; weight
+
+	db 0 ; unused
+
 	db "Fire Mouse@" ; species name
-	dw 108, 174 ; height, weight
 
 	db   "The fire that"
 	next "spouts from its"

@@ -1,5 +1,9 @@
+	db 7   ; height
+	dw 210 ; weight
+
+	db 0 ; unused
+
 	db "Scuffle@" ; species name
-	dw 204, 463 ; height, weight
 
 	db   "To brush up on its"
 	next "fighting skills,"

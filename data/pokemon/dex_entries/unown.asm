@@ -1,5 +1,9 @@
+	db 5  ; height
+	dw 50 ; weight
+
+	db 0 ; unused
+
 	db "Symbol@" ; species name
-	dw 108, 110 ; height, weight
 
 	db   "Because different"
 	next "types of Unown"

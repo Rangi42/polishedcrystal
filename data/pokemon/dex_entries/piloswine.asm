@@ -1,5 +1,9 @@
+	db 11  ; height
+	dw 558 ; weight
+
+	db 0 ; unused
+
 	db "Swine@" ; species name
-	dw 307, 1230 ; height, weight
 
 	db   "Although its legs"
 	next "are short, its"

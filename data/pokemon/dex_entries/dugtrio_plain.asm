@@ -1,5 +1,9 @@
+	db 7   ; height
+	dw 333 ; weight
+
+	db 0 ; unused
+
 	db "Mole@" ; species name
-	dw 204, 734 ; height, weight
 
 	db   "Its three heads bob"
 	next "separately up and"

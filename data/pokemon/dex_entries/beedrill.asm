@@ -1,5 +1,9 @@
+	db 10  ; height
+	dw 295 ; weight
+
+	db 0 ; unused
+
 	db "Poison Bee@" ; species name
-	dw 303, 650 ; height, weight
 
 	db   "It uses sharp,"
 	next "poisonous stings"

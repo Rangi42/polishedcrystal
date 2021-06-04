@@ -1,5 +1,9 @@
+	db 12  ; height
+	dw 380 ; weight
+
+	db 0 ; unused
+
 	db "Clear Wing@" ; species name
-	dw 311, 838 ; height, weight
 
 	db   "It can see in all"
 	next "directions without"

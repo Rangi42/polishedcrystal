@@ -1,5 +1,9 @@
+	db 6  ; height
+	dw 10 ; weight
+
+	db 0 ; unused
+
 	db "Cottonweed@" ; species name
-	dw 200, 22 ; height, weight
 
 	db   "As soon as it"
 	next "rains, it closes"

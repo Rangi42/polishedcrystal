@@ -1,5 +1,9 @@
+	db 3  ; height
+	dw 32 ; weight
+
+	db 0 ; unused
+
 	db "Hairy Bug@" ; species name
-	dw 100, 71 ; height, weight
 
 	db   "The barb on top of"
 	next "its head secretes"

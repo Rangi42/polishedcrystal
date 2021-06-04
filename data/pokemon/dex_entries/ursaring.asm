@@ -1,5 +1,9 @@
+	db 18  ; height
+	dw 1258 ; weight
+
+	db 0 ; unused
+
 	db "Hibernator@" ; species name
-	dw 511, 2773 ; height, weight
 
 	db   "Although it has a"
 	next "large body, it is"

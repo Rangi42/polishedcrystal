@@ -1,5 +1,9 @@
+	db 6  ; height
+	dw 325 ; weight
+
+	db 0 ; unused
+
 	db "Virtual@" ; species name
-	dw 200, 717 ; height, weight
 
 	db   "This man-made"
 	next "#mon evolved"

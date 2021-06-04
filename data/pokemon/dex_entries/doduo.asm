@@ -1,5 +1,9 @@
+	db 14  ; height
+	dw 392 ; weight
+
+	db 0 ; unused
+
 	db "Twin Bird@" ; species name
-	dw 407, 864 ; height, weight
 
 	db   "By alternately"
 	next "raising and lower-"

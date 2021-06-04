@@ -1,5 +1,9 @@
+	db 11  ; height
+	dw 346 ; weight
+
+	db 0 ; unused
+
 	db "Egg@" ; species name
-	dw 307, 763 ; height, weight
 
 	db   "People try to"
 	next "catch it for its"

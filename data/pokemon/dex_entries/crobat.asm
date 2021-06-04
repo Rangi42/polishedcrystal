@@ -1,5 +1,9 @@
+	db 18  ; height
+	dw 750 ; weight
+
+	db 0 ; unused
+
 	db "Bat@" ; species name
-	dw 511, 1653 ; height, weight
 
 	db   "As a result of its"
 	next "pursuit of faster,"

@@ -1,5 +1,9 @@
+	db 11  ; height
+	dw 800 ; weight
+
+	db 0 ; unused
+
 	db "Mysterious@" ; species name
-	dw 307, 1764 ; height, weight
 
 	db   "It is said that it"
 	next "uses the seven-"

@@ -1,5 +1,9 @@
+	db 6   ; height
+	dw 140 ; weight
+
+	db 0 ; unused
+
 	db "Bright@" ; species name
-	dw 200, 309 ; height, weight
 
 	db   "It tends to move in"
 	next "a pack. Individuals"

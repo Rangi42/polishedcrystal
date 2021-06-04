@@ -1,5 +1,9 @@
+	db 12   ; height
+	dw 1800 ; weight
+
+	db 0 ; unused
+
 	db "Magnet Area@" ; species name
-	dw 311, 3968 ; height, weight
 
 	db   "It evolved from"
 	next "exposure to a"

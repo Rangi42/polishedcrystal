@@ -1,5 +1,9 @@
+	db 3  ; height
+	dw 54 ; weight
+
+	db 0 ; unused
+
 	db "Mushroom@" ; species name
-	dw 100, 119 ; height, weight
 
 	db   "The tochukaso"
 	next "growing on this"

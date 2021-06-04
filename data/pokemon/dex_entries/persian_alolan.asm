@@ -1,5 +1,9 @@
+	db 11  ; height
+	dw 330 ; weight
+
+	db 0 ; unused
+
 	db "Classy Cat@" ; species name
-	dw 307, 728 ; height, weight
 
 	db   "It has the classi-"
 	next "est coat. The"

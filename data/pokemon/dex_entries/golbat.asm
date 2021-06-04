@@ -1,5 +1,9 @@
+	db 16  ; height
+	dw 550 ; weight
+
+	db 0 ; unused
+
 	db "Bat@" ; species name
-	dw 503, 1213 ; height, weight
 
 	db   "However hard its"
 	next "victim's hide may"

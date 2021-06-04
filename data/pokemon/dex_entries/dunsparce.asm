@@ -1,5 +1,9 @@
+	db 15  ; height
+	dw 140 ; weight
+
+	db 0 ; unused
+
 	db "Land Snake@" ; species name
-	dw 411, 309 ; height, weight
 
 	db   "It hides deep"
 	next "inside caves where"

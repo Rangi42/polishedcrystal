@@ -1,5 +1,9 @@
+	db 11  ; height
+	dw 320 ; weight
+
+	db 0 ; unused
+
 	db "Butterfly@" ; species name
-	dw 307, 705 ; height, weight
 
 	db   "It flits from"
 	next "flower to flower,"

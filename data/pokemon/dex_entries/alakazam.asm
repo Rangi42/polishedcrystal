@@ -1,5 +1,9 @@
+	db 15  ; height
+	dw 480 ; weight
+
+	db 0 ; unused
+
 	db "Psi@" ; species name
-	dw 411, 1058 ; height, weight
 
 	db   "It has an IQ of"
 	next "5000. It calculates"

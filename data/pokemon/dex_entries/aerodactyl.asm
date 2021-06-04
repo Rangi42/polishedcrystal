@@ -1,5 +1,9 @@
+	db 18  ; height
+	dw 590 ; weight
+
+	db 0 ; unused
+
 	db "Fossil@" ; species name
-	dw 511, 1301 ; height, weight
 
 	db   "In prehistoric"
 	next "times, this"

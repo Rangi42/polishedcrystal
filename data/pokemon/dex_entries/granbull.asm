@@ -1,5 +1,9 @@
+	db 14  ; height
+	dw 487 ; weight
+
+	db 0 ; unused
+
 	db "Fairy@" ; species name
-	dw 407, 1074 ; height, weight
 
 	db   "It can make most"
 	next "any #mon run"

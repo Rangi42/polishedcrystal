@@ -1,5 +1,9 @@
+	db 3  ; height
+	dw 40 ; weight
+
+	db 0 ; unused
+
 	db "Bivalve@" ; species name
-	dw 100, 88 ; height, weight
 
 	db   "Clamping on to an"
 	next "opponent reveals"

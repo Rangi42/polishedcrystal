@@ -1,5 +1,9 @@
+	db 20   ; height
+	dw 2020 ; weight
+
+	db 0 ; unused
+
 	db "Armor@" ; species name
-	dw 607, 4453 ; height, weight
 
 	db   "In just one of its"
 	next "mighty hands, it"

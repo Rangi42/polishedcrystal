@@ -1,5 +1,9 @@
+	db 4  ; height
+	dw 60 ; weight
+
+	db 0 ; unused
+
 	db "Mouse@" ; species name
-	dw 104, 132 ; height, weight
 
 	db   "When it is angered,"
 	next "it immediately"

@@ -1,5 +1,9 @@
+	db 4  ; height
+	dw 65 ; weight
+
+	db 0 ; unused
+
 	db "Pig@" ; species name
-	dw 104, 143 ; height, weight
 
 	db   "It uses the tip of"
 	next "its nose to dig"

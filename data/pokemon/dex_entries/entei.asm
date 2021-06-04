@@ -1,5 +1,9 @@
+	db 21   ; height
+	dw 1980 ; weight
+
+	db 0 ; unused
+
 	db "Volcano@" ; species name
-	dw 607, 4365 ; height, weight
 
 	db   "This brawny"
 	next "#mon courses"

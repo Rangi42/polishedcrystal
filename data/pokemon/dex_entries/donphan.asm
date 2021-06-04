@@ -1,5 +1,9 @@
+	db 11   ; height
+	dw 1200 ; weight
+
+	db 0 ; unused
+
 	db "Armor@" ; species name
-	dw 307, 2646 ; height, weight
 
 	db   "Because this"
 	next "#mon's skin is"

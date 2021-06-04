@@ -1,5 +1,9 @@
+	db 9   ; height
+	dw 160 ; weight
+
+	db 0 ; unused
+
 	db "Delivery@" ; species name
-	dw 211, 353 ; height, weight
 
 	db   "It always carries"
 	next "its food with it,"

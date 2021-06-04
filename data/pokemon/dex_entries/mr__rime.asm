@@ -1,5 +1,9 @@
+	db 15  ; height
+	dw 582 ; weight
+
+	db 0 ; unused
+
 	db "Comedian@" ; species name
-	dw 207, 2579 ; height, weight
 
 	db   "It's highly skilled"
 	next "at tap-dancing. It"

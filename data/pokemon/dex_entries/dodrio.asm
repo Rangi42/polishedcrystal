@@ -1,5 +1,9 @@
+	db 18  ; height
+	dw 852 ; weight
+
+	db 0 ; unused
+
 	db "Triple Bird@" ; species name
-	dw 511, 1878 ; height, weight
 
 	db   "An enemy that"
 	next "takes its eyes off"

@@ -1,5 +1,9 @@
+	db 17   ; height
+	dw 1400 ; weight
+
+	db 0 ; unused
+
 	db "Licking@" ; species name
-	dw 507, 3086 ; height, weight
 
 	db   "The long tongue is"
 	next "always soggy with"

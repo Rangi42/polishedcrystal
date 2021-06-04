@@ -1,5 +1,9 @@
+	db 22   ; height
+	dw 1370 ; weight
+
+	db 0 ; unused
+
 	db "Genetic@" ; species name
-	dw 701, 3020 ; height, weight
 
 	db   "With its defenses"
 	next "bolstered and its"

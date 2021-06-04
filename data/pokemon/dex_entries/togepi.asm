@@ -1,5 +1,9 @@
+	db 3  ; height
+	dw 15 ; weight
+
+	db 0 ; unused
+
 	db "Spike Ball@" ; species name
-	dw 100, 33 ; height, weight
 
 	db   "It is considered"
 	next "to be a symbol of"

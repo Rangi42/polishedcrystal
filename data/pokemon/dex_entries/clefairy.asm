@@ -1,5 +1,9 @@
+	db 6  ; height
+	dw 75 ; weight
+
+	db 0 ; unused
+
 	db "Fairy@" ; species name
-	dw 200, 165 ; height, weight
 
 	db   "Though rarely"
 	next "seen, it becomes"

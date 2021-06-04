@@ -1,5 +1,9 @@
+	db 17  ; height
+	dw 505 ; weight
+
+	db 0 ; unused
+
 	db "Armor Bird@" ; species name
-	dw 507, 1113 ; height, weight
 
 	db   "The feathers that"
 	next "it sheds are very"

@@ -1,5 +1,9 @@
+	db 17  ; height
+	dw 766 ; weight
+
+	db 0 ; unused
+
 	db "Duck@" ; species name
-	dw 507, 1689 ; height, weight
 
 	db   "It swims gracefully"
 	next "along on the"

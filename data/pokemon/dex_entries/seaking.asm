@@ -1,5 +1,9 @@
+	db 13  ; height
+	dw 390 ; weight
+
+	db 0 ; unused
+
 	db "Goldfish@" ; species name
-	dw 403, 860 ; height, weight
 
 	db   "When autumn comes,"
 	next "the males patrol"

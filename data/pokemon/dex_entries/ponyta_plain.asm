@@ -1,5 +1,9 @@
+	db 10  ; height
+	dw 300 ; weight
+
+	db 0 ; unused
+
 	db "Fire Horse@" ; species name
-	dw 303, 661 ; height, weight
 
 	db   "Training by"
 	next "jumping over grass"

@@ -1,5 +1,9 @@
+	db 14  ; height
+	dw 750 ; weight
+
+	db 0 ; unused
+
 	db "Water Fish@" ; species name
-	dw 407, 1653 ; height, weight
 
 	db   "Its body is always"
 	next "slimy. It often"

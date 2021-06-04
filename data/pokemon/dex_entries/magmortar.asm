@@ -1,5 +1,9 @@
+	db 16  ; height
+	dw 680 ; weight
+
+	db 0 ; unused
+
 	db "Blast@" ; species name
-	dw 503, 1499 ; height, weight
 
 	db   "There are still"
 	next "quite a few"

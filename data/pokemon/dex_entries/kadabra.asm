@@ -1,5 +1,9 @@
+	db 13  ; height
+	dw 565 ; weight
+
+	db 0 ; unused
+
 	db "Psi@" ; species name
-	dw 403, 1246 ; height, weight
 
 	db   "When it closes its"
 	next "eyes, twice as many"

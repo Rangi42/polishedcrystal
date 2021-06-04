@@ -1,5 +1,9 @@
+	db 6   ; height
+	dw 244 ; weight
+
+	db 0 ; unused
+
 	db "Playhouse@" ; species name
-	dw 200, 538 ; height, weight
 
 	db   "It carries a"
 	next "round, egg-shaped"

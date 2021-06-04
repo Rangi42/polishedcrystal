@@ -1,5 +1,9 @@
+	db 22   ; height
+	dw 2100 ; weight
+
+	db 0 ; unused
+
 	db "Dragon@" ; species name
-	dw 703, 4630 ; height, weight
 
 	db   "It is said that"
 	next "somewhere in the"

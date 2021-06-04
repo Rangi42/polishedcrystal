@@ -1,5 +1,9 @@
+	db 11  ; height
+	dw 339 ; weight
+
+	db 0 ; unused
+
 	db "Frog@" ; species name
-	dw 307, 747 ; height, weight
 
 	db   "When it expands"
 	next "its throat to"

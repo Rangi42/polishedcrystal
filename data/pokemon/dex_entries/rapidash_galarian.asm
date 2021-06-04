@@ -1,5 +1,9 @@
+	db 17  ; height
+	dw 800 ; weight
+
+	db 0 ; unused
+
 	db "Unique Horn@" ; species name
-	dw 507, 1764 ; height, weight
 
 	db   "The psychic attacks"
 	next "unleashed from this"

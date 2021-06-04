@@ -1,5 +1,9 @@
+	db 8  ; height
+	dw 30 ; weight
+
+	db 0 ; unused
+
 	db "Cottonweed@" ; species name
-	dw 207, 66 ; height, weight
 
 	db   "Even in the fierc-"
 	next "est wind, it can"

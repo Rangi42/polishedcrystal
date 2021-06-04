@@ -1,5 +1,9 @@
+	db 3  ; height
+	dw 40 ; weight
+
+	db 0 ; unused
+
 	db "Transform@" ; species name
-	dw 100, 88 ; height, weight
 
 	db   "When it encounters"
 	next "another Ditto,"

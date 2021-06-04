@@ -1,5 +1,9 @@
+	db 15  ; height
+	dw 150 ; weight
+
+	db 0 ; unused
+
 	db "Mystic@" ; species name
-	dw 411, 331 ; height, weight
 
 	db   "Once it begins to"
 	next "meditate at sun-"

@@ -1,5 +1,9 @@
+	db 8   ; height
+	dw 365 ; weight
+
+	db 0 ; unused
+
 	db "Virtual@" ; species name
-	dw 207, 805 ; height, weight
 
 	db   "An artificial"
 	next "#mon created"

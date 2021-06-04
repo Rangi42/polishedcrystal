@@ -1,5 +1,9 @@
+	db 5   ; height
+	dw 104 ; weight
+
+	db 0 ; unused
+
 	db "Ball@" ; species name
-	dw 108, 229 ; height, weight
 
 	db   "During the study"
 	next "of this #mon, it"

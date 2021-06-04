@@ -1,5 +1,9 @@
+	db 9   ; height
+	dw 100 ; weight
+
+	db 0 ; unused
+
 	db "Fish@" ; species name
-	dw 211, 220 ; height, weight
 
 	db   "This weak and"
 	next "pathetic #mon"

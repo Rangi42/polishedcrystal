@@ -1,5 +1,9 @@
+	db 4   ; height
+	dw 203 ; weight
+
+	db 0 ; unused
+
 	db "Rock@" ; species name
-	dw 104, 448 ; height, weight
 
 	db   "Its body is a mag-"
 	next "netic stone. Iron"

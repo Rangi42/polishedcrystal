@@ -1,5 +1,9 @@
+	db 20  ; height
+	dw 69 ; weight
+
+	db 0 ; unused
+
 	db "Snake@" ; species name
-	dw 607, 152 ; height, weight
 
 	db   "It flutters the"
 	next "tip of its tongue"

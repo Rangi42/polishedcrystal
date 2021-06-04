@@ -1,5 +1,9 @@
+	db 8   ; height
+	dw 285 ; weight
+
+	db 0 ; unused
+
 	db "Aqua Rabbit@" ; species name
-	dw 207, 628 ; height, weight
 
 	db   "The bubble-like"
 	next "pattern on its"

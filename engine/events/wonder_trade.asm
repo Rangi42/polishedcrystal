@@ -118,7 +118,7 @@ DoWonderTrade:
 	ld a, [wPlayerTrademonSpecies]
 	cp c
 	jr nz, .got_species
-	ld a, [wOTTrademonForm]
+	ld a, [wPlayerTrademonForm]
 	and EXTSPECIES_MASK
 	cp b
 	jr z, .random_trademon
@@ -561,21 +561,21 @@ GetWonderTradeOTForm:
 	lb de, PLAIN_FORM, 1
 	or d
 	ld d, a
-	ld hl, CosmeticSpeciesAndFormTable
+	ld hl, CosmeticSpeciesAndFormTable - 1
 .loop
+	inc hl
 	ld a, [hli] ; species
 	and a
 	ld a, d
 	ret z
 	cp c
-	ld a, [hli] ; extspecies + form
+	ld a, [hl] ; extspecies + form
 	jr nz, .loop
 	and EXTSPECIES_MASK
 	cp b
 	jr nz, .loop
 	push hl
 	push bc
-	dec hl
 	ld b, [hl]
 	ld hl, InvalidVariants
 	call GetSpeciesAndFormIndexFromHL
@@ -587,8 +587,7 @@ GetWonderTradeOTForm:
 	call RandomRange
 	and a
 	jr nz, .loop ; 1/n chance for switch
-	dec hl
-	ld a, [hli]
+	ld a, [hl]
 	and SPECIESFORM_MASK
 	ld d, a
 	jr .loop

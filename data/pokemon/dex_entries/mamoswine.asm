@@ -1,5 +1,9 @@
+	db 25   ; height
+	dw 2910 ; weight
+
+	db 0 ; unused
+
 	db "Twin Tusk@" ; species name
-	dw 802, 6415 ; height, weight
 
 	db   "Its impressive"
 	next "tusks are made of"

@@ -1,5 +1,9 @@
+	db 4 ; height
+	dw 5 ; weight
+
+	db 0 ; unused
+
 	db "Cottonweed@" ; species name
-	dw 104, 11 ; height, weight
 
 	db   "It can be carried"
 	next "away on even the"

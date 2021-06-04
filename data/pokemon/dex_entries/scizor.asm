@@ -1,5 +1,9 @@
+	db 18   ; height
+	dw 1180 ; weight
+
+	db 0 ; unused
+
 	db "Scissors@" ; species name
-	dw 511, 2601 ; height, weight
 
 	db   "This #mon's"
 	next "pincers, which"

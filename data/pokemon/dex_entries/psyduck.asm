@@ -1,5 +1,9 @@
+	db 8   ; height
+	dw 196 ; weight
+
+	db 0 ; unused
+
 	db "Duck@" ; species name
-	dw 207, 432 ; height, weight
 
 	db   "The only time it"
 	next "can use its psychic"

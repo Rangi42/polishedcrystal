@@ -1,5 +1,9 @@
+	db 14  ; height
+	dw 712 ; weight
+
+	db 0 ; unused
+
 	db "Big Horn@" ; species name
-	dw 407, 1570 ; height, weight
 
 	db   "The round balls"
 	next "found on the"

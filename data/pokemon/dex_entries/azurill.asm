@@ -1,5 +1,9 @@
+	db 2  ; height
+	dw 20 ; weight
+
+	db 0
+
 	db "Polka Dot@" ; species name
-	dw 8, 44 ; height, weight
 
 	db   "Its tail is filled"
 	next "with the nutrients"

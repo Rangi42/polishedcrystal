@@ -1,5 +1,9 @@
+	db 6  ; height
+	dw 99 ; weight
+
+	db 0 ; unused
+
 	db "Fox@" ; species name
-	dw 200, 218 ; height, weight
 
 	db   "If you observe its"
 	next "curly hairs through"

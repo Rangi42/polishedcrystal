@@ -1,5 +1,9 @@
+	db 21   ; height
+	dw 4600 ; weight
+
+	db 0 ; unused
+
 	db "Sleeping@" ; species name
-	dw 611, 10141 ; height, weight
 
 	db   "This #mon's"
 	next "stomach is so"

@@ -1,5 +1,9 @@
+	db 9   ; height
+	dw 340 ; weight
+
+	db 0 ; unused
+
 	db "Virtual@" ; species name
-	dw 211, 750 ; height, weight
 
 	db   "Its programming"
 	next "was modified to"

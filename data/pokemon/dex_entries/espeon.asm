@@ -1,5 +1,9 @@
+	db 9   ; height
+	dw 265 ; weight
+
+	db 0 ; unused
+
 	db "Sun@" ; species name
-	dw 211, 584 ; height, weight
 
 	db   "The tip of its"
 	next "forked tail"

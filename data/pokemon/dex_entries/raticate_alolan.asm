@@ -1,5 +1,9 @@
+	db 7   ; height
+	dw 255 ; weight
+
+	db 0 ; unused
+
 	db "Mouse@" ; species name
-	dw 204, 562 ; height, weight
 
 	db   "It makes its Rat-"
 	next "tata underlings"

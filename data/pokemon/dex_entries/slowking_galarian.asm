@@ -1,5 +1,9 @@
+	db 18  ; height
+	dw 795 ; weight
+
+	db 0 ; unused
+
 	db "Hexpert@" ; species name
-	dw 511, 1753 ; height, weight
 
 	db   "A combination of"
 	next "toxins and the"

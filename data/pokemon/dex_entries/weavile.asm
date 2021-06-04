@@ -1,5 +1,9 @@
+	db 11  ; height
+	dw 340 ; weight
+
+	db 0 ; unused
+
 	db "Sharp Claw@" ; species name
-	dw 307, 750 ; height, weight
 
 	db   "It lives in snowy"
 	next "regions. It carves"

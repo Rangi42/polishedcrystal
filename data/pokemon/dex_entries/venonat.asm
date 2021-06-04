@@ -1,5 +1,9 @@
+	db 10  ; height
+	dw 300 ; weight
+
+	db 0 ; unused
+
 	db "Insect@" ; species name
-	dw 303, 661 ; height, weight
 
 	db   "The small bugs it"
 	next "eats appear only"

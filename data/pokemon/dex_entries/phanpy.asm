@@ -1,5 +1,9 @@
+	db 5   ; height
+	dw 335 ; weight
+
+	db 0 ; unused
+
 	db "Long Nose@" ; species name
-	dw 108, 739 ; height, weight
 
 	db   "During the deserted"
 	next "morning hours,"

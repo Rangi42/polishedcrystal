@@ -1,5 +1,9 @@
+	db 14  ; height
+	dw 568 ; weight
+
+	db 0 ; unused
+
 	db "Dancing@" ; species name
-	dw 407, 1252 ; height, weight
 
 	db   "It can radiate"
 	next "chilliness from"

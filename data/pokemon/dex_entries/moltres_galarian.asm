@@ -1,5 +1,9 @@
+	db 20  ; height
+	dw 660 ; weight
+
+	db 0 ; unused
+
 	db "Malevolent@" ; species name
-	dw 607, 1455 ; height, weight
 
 	db   "The sinister aura"
 	next "that blazes like"

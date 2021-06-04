@@ -1,5 +1,9 @@
+	db 5   ; height
+	dw 115 ; weight
+
+	db 0 ; unused
+
 	db "Shellfish@" ; species name
-	dw 108, 254 ; height, weight
 
 	db   "Three hundred"
 	next "million years ago,"

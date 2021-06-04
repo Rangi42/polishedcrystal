@@ -1,5 +1,9 @@
+	db 12  ; height
+	dw 360 ; weight
+
+	db 0 ; unused
+
 	db "Dopey@" ; species name
-	dw 311, 794 ; height, weight
 
 	db   "Although it's norm-"
 	next "ally zoned out, its"
