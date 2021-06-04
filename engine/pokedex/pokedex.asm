@@ -1136,14 +1136,6 @@ Pokedex_GetInput:
 
 Pokedex_GetCursorMon:
 ; Displays information about the mon the cursor is currently hovering.
-	; First, clear existing data.
-	hlcoord 9, 2
-	lb bc, 3, 11
-	call ClearBox
-	xor a
-	ld [wPokedexOAM_IsCaught], a
-	ld [wPokedexOAM_DexNoY], a
-
 	; Switch which bank to store tile data in.
 	ld hl, wPokedex_MonInfoBank
 	ld a, [hl]
@@ -1160,11 +1152,40 @@ Pokedex_GetCursorMon:
 	add $6 ; BG6, potentially with VRAM_BANK_1
 	call FillBoxWithByte
 
+	hlcoord 18, 3, wAttrMap
+	lb bc, 2, 2
+	call FillBoxWithByte
+
 	; Mon infobox pal
 	inc a ; BG7, potentially with VRAM_BANK_1
-	hlcoord 9, 3, wAttrMap
-	lb bc, 2, 11
-	call FillBoxWithByte
+	hlcoord 9, 4, wAttrMap
+	ld bc, 8
+	rst ByteFill
+
+	; Clear existing data.
+	hlcoord 9, 2
+	ld a, $7f
+	ld c, 10
+	rst ByteFill
+	xor a
+	ld [wPokedexOAM_IsCaught], a
+	ld [wPokedexOAM_DexNoY], a
+	ldh a, [rSVBK]
+	push af
+	ld a, BANK(wDexMonFootprintTiles)
+	ldh [rSVBK], a
+	ld hl, wDexMonFootprintTiles
+	xor a
+	ld bc, 4 tiles
+	rst ByteFill
+	ld a, BANK(wBGPals1)
+	ldh [rSVBK], a
+	ld a, -1
+	ld hl, wBGPals1 palette 7 + 2
+	ld c, 6
+	rst ByteFill
+	pop af
+	ldh [rSVBK], a
 
 	; Attributes are done. Now we can deal with the main data.
 	call Pokedex_GetCursorSpecies
@@ -1190,6 +1211,7 @@ Pokedex_GetCursorMon:
 	ldh [rSVBK], a
 	ld hl, wPokedex_GFXMode
 	set DEXGFX_FRONTPIC, [hl]
+	set DEXGFX_POKEINFO, [hl]
 
 	ld hl, Pokedex_QuestionMarkPal
 	ld de, wBGPals1 palette 6 + 2
@@ -1289,7 +1311,6 @@ Pokedex_GetCursorMon:
 	call Pokedex_Copy1bpp
 	pop bc
 	inc b
-	push af
 	jr z, .types_done
 	dec b
 	ld c, b
@@ -1329,31 +1350,6 @@ Pokedex_GetCursorMon:
 	dec hl
 	dec c
 	jr nz, .outer_copy_loop
-
-	; Print out the type icon tilemap.
-	hlcoord 9, 4
-	pop af
-	ld b, 8
-	ld a, $71
-	jr nz, .type_icon_loop
-	ld b, 4
-.type_icon_loop
-	ld [hli], a
-	inc a
-	dec b
-	jr nz, .type_icon_loop
-
-	; And the footprint tilemap.
-	ld a, $79
-	hlcoord 18, 3
-	ld [hli], a
-	inc a
-	ld [hli], a
-	inc a
-	hlcoord 18, 4
-	ld [hli], a
-	inc a
-	ld [hl], a
 
 	ld hl, wPokedex_GFXMode
 	set DEXGFX_POKEINFO, [hl]
