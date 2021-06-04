@@ -1010,8 +1010,7 @@ Pokedex_Description:
 	hlcoord 12, 9
 	ln bc, 0, 2, 4, 5
 	call PrintNumFromReg
-	push af
-	jr .info_done
+	jr .weight_done
 
 .metric_weight
 	ld d, h
@@ -1019,28 +1018,20 @@ Pokedex_Description:
 	hlcoord 12, 9
 	ln bc, 0, 2, 4, 5
 	call PrintNumFromReg
-	push af
-	jr .info_done
+
 .weight_done
 	; Category
+	pop af
+	pop de
+	inc de
+	inc de
+	inc de
 	hlcoord 9, 5
-	push bc
 	push af
 	call FarString
 	inc de
 	pop af
-	pop bc
-	ld h, d
-	ld l, e
-	ld a, c
-
-	pop af
-	pop hl
-	inc hl
-	inc hl
-	ld d, h
-	ld e, l
-	push hl
+	push de
 	push af
 	hlcoord 1, 12
 	call FarString
