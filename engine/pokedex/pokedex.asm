@@ -894,9 +894,134 @@ Pokedex_Description:
 	ld a, b
 	call GetFarWord
 	ld a, c
+
+	; Height
+	push hl
+	push af
+	call GetFarByte
+	ldh [hMultiplier], a
+	ld e, a
+	ld a, [wOptions2]
+	bit POKEDEX_UNITS, a
+	jr nz, .metric_height
+
+	; Multiply by 16513008 >> 22
+	ld a, 16513008 >> 16
+	ldh [hMultiplicand + 0], a
+	ld a, (16513008 >> 8) & $ff
+	ldh [hMultiplicand + 1], a
+	ld a, 16513008 & $ff
+	ldh [hMultiplicand + 2], a
+	call Multiply
+	ld hl, hProduct + 1
+	ld a, [hld]
+	ld l, [hl]
+	ld h, 0
+	add a
+	rl l
+	rl h
+	add a
+	rl l
+	rl h
+	add a
+	jr nc, .no_ht_overflow
+	inc hl
+.no_ht_overflow
+	ld a, -1
+	ld bc, -12
+	push hl
+.ht_loop
+	pop de
+	inc a
+	push hl
+	add hl, bc
+	jr c, .ht_loop
+	ld bc, 12
+	ld e, a
+	hlcoord 13, 7
+	lb bc, 2, 2
+	push bc
+	call PrintNumFromReg
+	pop bc
+	pop de
+	hlcoord 16, 7
+	lb bc, 2, 2
+	call PrintNumFromReg
+	jr .height_done
+
+.metric_height
+	ld d, 0
+	hlcoord 12, 7
+	ln bc, 0, 2, 4, 5
+	call PrintNumFromReg
+
+.height_done
+	pop af
+	pop hl
+	inc hl
+
+	; Weight
+	push hl
+	push af
+	call GetFarWord
+	ld a, [wOptions2]
+	bit POKEDEX_UNITS, a
+	jr nz, .metric_weight
+
+	; Approximate as follows: lbs = ((kg * 43 * 35 * 192) + (kg * 4)) >> 17.
+	push hl
+	add hl, hl
+	add hl, hl
+	pop de
+	push hl
+	ld hl, hMultiplicand
+	xor a
+	ld [hli], a
+	ld a, d
+	ld [hli], a
+	ld [hl], e
+
+	ld a, 43
+	ldh [hMultiplier], a
+	call Multiply
+	ld a, 35
+	ldh [hMultiplier], a
+	call Multiply
+	ld a, 192
+	ldh [hMultiplier], a
+	call Multiply
+	ld hl, hProduct
+	ld a, [hli]
+	ld d, a
+	ld a, [hli]
+	ld e, a
+	ld a, [hli]
+	ld l, [hl]
+	ld h, a
+	pop bc
+	add hl, bc
+	jr nc, .no_wt_overflow
+	inc de
+.no_wt_overflow
+	; Shift by 17, but ensure we round up.
+	inc de
+	srl d
+	rr e
+	hlcoord 12, 9
+	ln bc, 0, 2, 4, 5
+	call PrintNumFromReg
+	push af
+	jr .info_done
+
+.metric_weight
 	ld d, h
 	ld e, l
-
+	hlcoord 12, 9
+	ln bc, 0, 2, 4, 5
+	call PrintNumFromReg
+	push af
+	jr .info_done
+.weight_done
 	; Category
 	hlcoord 9, 3
 	push bc
@@ -909,71 +1034,6 @@ Pokedex_Description:
 	ld l, e
 	ld a, c
 
-	; Height
-	push hl
-	push af
-	call GetFarWord
-	ld a, [wOptions2]
-	bit POKEDEX_UNITS, a
-	jr z, .imperial_height
-
-	; First, convert feet to inches.
-	ld de, -100
-	ld a, -1
-.inch_loop
-	inc a
-	add hl, de
-	jr c, .inch_loop
-	ld de, 100
-	add hl, de
-	ld bc, 12
-	rst AddNTimes
-	decoord 12, 7
-	ld bc, 16646 ; 0.254 << 16
-	call Mul16AndPrint
-	jr .height_done
-
-	; TODO: convert to metric if applicable.
-.imperial_height
-	ld d, h
-	ld e, l
-	hlcoord 13, 7
-	ln bc, 0, 2, 2, 4
-	call PrintNumFromReg
-
-	; hooray for Imperial Units(TM)
-	hlcoord 15, 7
-	ld a, "′"
-	ld [hli], a
-	ld a, "0"
-	cp [hl]
-	jr nz, .height_done
-	ld [hl], " "
-.height_done
-	pop af
-	pop hl
-	inc hl
-	inc hl
-
-	; Weight
-	push hl
-	push af
-	call GetFarWord
-	ld a, [wOptions2]
-	bit POKEDEX_UNITS, a
-	jr z, .imperial_weight
-	decoord 12, 9
-	ld bc, 29726 ; 0.45359237 << 16
-	call Mul16AndPrint
-	jr .weight_done
-
-.imperial_weight
-	ld d, h
-	ld e, l
-	hlcoord 12, 9
-	ln bc, 0, 2, 4, 5
-	call PrintNumFromReg
-.weight_done
 	pop af
 	pop hl
 	inc hl
