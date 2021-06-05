@@ -48,7 +48,7 @@ EvolveAfterBattle_MasterLoop:
 	ld c, a
 	ld a, [wEvolutionOldForm]
 	ld b, a
-	call GetPartyEvosAttacksPointer
+	call GetEvosAttacksPointer
 
 	push hl
 	xor a
@@ -623,7 +623,7 @@ LearnLevelMoves:
 	; b = form
 	ld a, [wCurForm]
 	ld b, a
-	call GetPartyEvosAttacksPointer
+	call GetEvosAttacksPointer
 
 .skip_evos
 	ld a, [hli]
@@ -848,18 +848,6 @@ GetPreEvolution:
 	scf
 	ret
 
-GetPartyEvosAttacksPointer:
-	push af
-	; b = form
-	ld a, [wCurPartyMon]
-	ld hl, wPartyMon1Form
-	ld bc, PARTYMON_STRUCT_LENGTH
-	rst AddNTimes
-	ld a, [hl]
-	ld b, a
-	; c = species
-	pop af
-	ld c, a
 GetEvosAttacksPointer:
 ; input: b = form, c = species
 ; output: bc = index, hl = pointer
