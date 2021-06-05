@@ -227,112 +227,67 @@ ParkBallMultiplier:
 	jmp MultiplyAndDivide
 
 GetSpeciesWeight::
-; input: a = species
+; input: bc = species+form
 ; output: hl = weight
+	call GetSpeciesAndFormIndex
 	ld hl, PokedexDataPointerTable
-	dec a
-	ld e, a
-	ld d, 0
-	add hl, de
-	add hl, de
-	add hl, de
+	add hl, bc
+	add hl, bc
+	add hl, bc
 	ld a, BANK(PokedexDataPointerTable)
 	call GetFarByte
 	push af
 	inc hl
 	ld a, BANK(PokedexDataPointerTable)
 	call GetFarWord
-	pop de
+	pop af
 
-.skip_species
-	ld a, d
-	call GetFarByte
-	inc hl
-	cp "@"
-	jr nz, .skip_species
-
-	; skip height
-	ld a, d
-	inc hl
-	inc hl
-
-	; get weight
-	jmp GetFarWord
+	inc hl ; skip height
+	jmp GetFarWord ; get weight
 
 HeavyBallMultiplier:
 ; subtract 20 from base catch rate if weight < 102.4 kg
 ; else add 0 to base catch rate if weight < 204.8 kg
 ; else add 20 to base catch rate if weight < 307.2 kg
 ; else add 30 to base catch rate if weight < 409.6 kg
-; else add 40 to base catch rate (never happens)
-	ld a, [wEnemyMonCatchRate]
-	ld b, a
-	call .do_it
-	ld a, b
-	ld [wEnemyMonCatchRate], a
-
-.do_it
+; else add 40 to base catch rate
 	ld a, [wEnemyMonSpecies]
+	ld c, a
+	ld a, [wEnemyMonForm]
+	ld b, a
 	call GetSpeciesWeight
 
-	push bc
-	srl h
-	rr l
 	ld b, h
-	ld c, l
-rept 4
-	srl b
-	rr c
-endr
-	call .subbc
-	srl b
-	rr c
-	call .subbc
-	ld a, h
-	pop bc
+	ld hl, wEnemyMonCatchRate
 
-	ld c, a
+	ld a, b
 	cp HIGH(1024) ; 102.4 kg
 	jr c, .lightmon
 
-	ld hl, .WeightsTable
+	ld de, .WeightsTable
 .lookup
-	ld a, c
-	cp [hl]
-	jr c, .heavymon
-	inc hl
-	inc hl
+	ld a, [de]
+	cp b
+	jr nc, .heavymon
+	inc de
+	inc de
 	jr .lookup
 
 .heavymon
-	inc hl
-	ld a, b
+	inc de
+	ld a, [de]
 	add [hl]
-	ld b, a
+	ld [hl], a
 	ret nc
-	ld b, 255
+	ld [hl], 255
 	ret
 
 .lightmon
-	ld a, b
+	ld a, [hl]
 	sub 20
-	ld b, a
+	ld [hl], a
 	ret nc
-	ld b, 1
-	ret
-
-.subbc
-	; subtract bc from hl
-	push bc
-	ld a, b
-	cpl
-	ld b, a
-	ld a, c
-	cpl
-	ld c, a
-	inc bc
-	add hl, bc
-	pop bc
+	ld [hl], 1
 	ret
 
 .WeightsTable:
@@ -455,9 +410,11 @@ DoLevelBallMultiplier:
 
 RepeatBallMultiplier:
 ; multiply catch rate by 3.5 if enemy mon is already in Pokédex
-	ld a, [wTempEnemyMonSpecies]
-	dec a
 	push bc
+	ld a, [wTempEnemyMonSpecies]
+	ld c, a
+	ld a, [wOTPartyMon1Form]
+	ld b, a
 	call CheckCaughtMon
 	pop bc
 	ret z
