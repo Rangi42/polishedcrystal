@@ -130,13 +130,12 @@ GetHallOfFameParty:
 	ld de, wOverworldMapBlocks
 	ld [de], a
 	inc de
-	ld hl, wPartySpecies
+	ld hl, wPartyCount
 	ld c, 0
 .next
-	ld a, [hli]
-	inc a
-	jr z, .done
 	ld a, c
+	cp [hl]
+	jr nc, .done
 	push hl
 	ld hl, wPartyMon1IsEgg
 	call GetPartyLocation

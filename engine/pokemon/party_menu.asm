@@ -804,16 +804,13 @@ PlacePartyMonTMHMCompatibility:
 	call PartyMenuCheckEgg
 	jr nz, .next
 	push hl
-	ld hl, wPartySpecies
-	ld e, b
-	ld d, 0
-	add hl, de
+	ld hl, wPartyMon1Species
+	ld a, b
+	call GetPartyLocation
 	ld a, [hl]
 	ld [wCurPartySpecies], a
-	ld a, b
-	ld hl, wPartyMon1Form
-	ld bc, PARTYMON_STRUCT_LENGTH
-	rst AddNTimes
+	ld bc, MON_FORM - MON_SPECIES
+	add hl, bc
 	ld a, [hl]
 	and SPECIESFORM_MASK
 	ld [wCurForm], a

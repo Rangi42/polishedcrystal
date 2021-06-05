@@ -348,12 +348,10 @@ JudgeSystem::
 	jr nz, .more_next
 .switch_mon
 	ld [wCurPartyMon], a
-	ld c, a
-	ld b, 0
-	ld hl, wPartySpecies
-	add hl, bc
 	inc a
 	ld [wPartyMenuCursor], a
+	ld bc, MON_SPECIES - MON_IS_EGG
+	add hl, bc
 	ld a, [hl]
 	ld [wCurPartySpecies], a
 	call ClearSpriteAnims

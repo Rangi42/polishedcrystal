@@ -163,22 +163,24 @@ CheckBreedmonCompatibility:
 
 DoEggStep::
 	; Check if Flame Body/Magma Armor applies
-	ld de, wPartySpecies
+	ld a, [wPartyCount]
+	and a
+	ret z
+	ld e, a
+	push de
 	ld hl, wPartyMon1Ability
 .ability_loop
-	ld a, [de]
-	inc de
-	inc a
-	jr z, .no_ability_bonus
 	push hl
 	push de
-	ld de, wPartyMon1IsEgg - wPartyMon1Ability
+	ld de, MON_SPECIES - MON_ABILITY
+	add hl, de
+	ld c, [hl]
+	ld de, MON_IS_EGG - MON_SPECIES
 	add hl, de
 	bit MON_IS_EGG_F, [hl]
 	pop de
 	pop hl
 	jr nz, .ability_next
-	ld c, a
 	push de
 	push hl
 	call GetAbility
@@ -192,7 +194,8 @@ DoEggStep::
 	jr z, .ability_ok
 .ability_next
 	call .NextPartyMon
-	jr .ability_loop
+	dec e
+	jr nz, .ability_loop
 .no_ability_bonus
 	ld c, 1
 .ability_ok
@@ -204,19 +207,14 @@ DoEggStep::
 	jr nc, .no_oval_charm
 	sla c
 .no_oval_charm
-	ld de, wPartySpecies
+	pop de
+	ld b, e
+	ld de, MON_IS_EGG - MON_HAPPINESS
 	ld hl, wPartyMon1Happiness ; Egg cycles when not hatched
 .loop
-	ld a, [de]
-	inc de
-	inc a
-	jr z, .done
 	push hl
-	push de
-	ld de, wPartyMon1IsEgg - wPartyMon1Happiness
 	add hl, de
 	bit MON_IS_EGG_F, [hl]
-	pop de
 	pop hl
 	jr z, .next
 	ld a, [hl]
@@ -229,6 +227,8 @@ DoEggStep::
 	; fallthrough
 .next
 	call .NextPartyMon
+	dec b
+	jr z, .done
 	jr .loop
 
 .hatch
@@ -254,21 +254,19 @@ OverworldHatchEgg::
 	jmp CloseText
 
 HatchEggs:
-	ld de, wPartySpecies
 	ld hl, wPartyMon1Happiness
 	xor a
 	ld [wCurPartyMon], a
+	ld a, [wPartyCount]
+	and a
+	ret z
+	ld e, a
 
 .loop
-	ld a, [de]
-	inc de
-	inc a
-	ret z
-
 	push de
 	push hl
 	push de
-	ld de, wPartyMon1IsEgg - wPartyMon1Happiness
+	ld de, MON_IS_EGG - MON_HAPPINESS
 	add hl, de
 	bit MON_IS_EGG_F, [hl]
 	pop de
@@ -278,15 +276,13 @@ HatchEggs:
 	ld a, [hl]
 	and a
 	jmp nz, .next
-	ld [hl], $78
+	ld [hl], HATCHED_HAPPINESS
 
 	push de
 
 	farcall SetEggMonCaughtData
-	ld a, [wCurPartyMon]
-	ld hl, wPartyMon1Species
-	ld bc, PARTYMON_STRUCT_LENGTH
-	rst AddNTimes
+	ld a, MON_SPECIES
+	call GetPartyParamLocation
 	ld a, [hl]
 	ld [wCurPartySpecies], a
 	ld c, a
@@ -299,10 +295,8 @@ HatchEggs:
 	ld b, a
 	call SetSeenAndCaughtMon
 
-	ld a, [wCurPartyMon]
-	ld hl, wPartyMon1IsEgg
-	ld bc, PARTYMON_STRUCT_LENGTH
-	rst AddNTimes
+	ld a, MON_IS_EGG
+	call GetPartyParamLocation
 	ld a, [hl]
 	and $ff - IS_EGG_MASK
 	ld [hl], a
@@ -436,6 +430,8 @@ HatchEggs:
 	ld de, PARTYMON_STRUCT_LENGTH
 	add hl, de
 	pop de
+	dec e
+	ret z
 	jmp .loop
 
 .Text_HatchEgg:

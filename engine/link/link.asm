@@ -1181,10 +1181,7 @@ LinkTrade_TradeStatsMenu:
 	jr nz, .got_ot_species
 	ld a, [hl]
 	ld [wNamedObjectIndex+1], a
-	ld a, [wCurOTTradePartyMon]
-	ld hl, wOTPartySpecies
-	ld c, a
-	ld b, $0
+	ld bc, MON_SPECIES - MON_FORM
 	add hl, bc
 	ld a, [hl]
 .got_ot_species
@@ -1369,13 +1366,16 @@ LinkTrade:
 	ld a, [hl]
 	ld [wNamedObjectIndex+1], a
 	ld a, [wCurTradePartyMon]
-	ld hl, wPartySpecies
-	ld c, a
-	ld b, 0
-	add hl, bc
+	ld hl, wPartyMon1Species
+	call GetPartyLocation
 	ld a, [hl]
 .got_party_species
 	ld [wNamedObjectIndex], a
+	ld bc, MON_FORM - MON_SPECIES
+	add hl, bc
+	ld a, [hl]
+	and SPECIESFORM_MASK
+	ld [wNamedObjectIndex+1], a
 	call GetPokemonName
 	ld hl, wStringBuffer1
 	ld de, wBufferTrademonNickname
@@ -1390,10 +1390,7 @@ LinkTrade:
 	jr nz, .got_ot_species
 	ld a, [hl]
 	ld [wNamedObjectIndex+1], a
-	ld a, [wCurOTTradePartyMon]
-	ld hl, wOTPartySpecies
-	ld c, a
-	ld b, $0
+	ld bc, MON_SPECIES - MON_FORM
 	add hl, bc
 	ld a, [hl]
 .got_ot_species
@@ -1523,14 +1520,17 @@ LinkTrade:
 	ld a, EGG
 	jr nz, .got_tradeparty_species
 	ld a, [wCurTradePartyMon]
-	ld hl, wPartySpecies
-	ld b, $0
-	ld c, a
-	add hl, bc
+	ld hl, wPartyMon1Species
+	call GetPartyLocation
 	ld a, [hl]
 .got_tradeparty_species
 	ld [wPlayerTrademonSpecies], a
 	push af
+; caught data
+	ld b, h
+	ld c, l
+	farcall GetCaughtGender
+	ld [wPlayerTrademonCaughtData], a
 ; OT name
 	ld a, [wCurTradePartyMon]
 	ld hl, wPartyMonOTs
@@ -1556,14 +1556,6 @@ LinkTrade:
 	ld [wPlayerTrademonDVs + 1], a
 	ld a, [hl]
 	ld [wPlayerTrademonDVs + 2], a
-; caught data
-	ld hl, wPartyMon1Species
-	ld a, [wCurTradePartyMon]
-	call GetPartyLocation
-	ld b, h
-	ld c, l
-	farcall GetCaughtGender
-	ld [wPlayerTrademonCaughtData], a
 
 ; Buffer other player data
 ; nickname
@@ -1578,10 +1570,8 @@ LinkTrade:
 	bit MON_IS_EGG_F, [hl]
 	ld a, EGG
 	jr nz, .got_tradeot_species
-	ld a, [wCurOTTradePartyMon]
 	ld hl, wOTPartySpecies
-	ld b, 0
-	ld c, a
+	ld bc, MON_SPECIES - MON_FORM
 	add hl, bc
 	ld a, [hl]
 .got_tradeot_species
@@ -1637,11 +1627,8 @@ LinkTrade:
 	ld [wCurPartyMon], a
 	ld a, TRUE
 	ld [wForceEvolution], a
-	ld a, [wCurOTTradePartyMon]
-	push af
 	ld hl, wOTPartySpecies
-	ld b, 0
-	ld c, a
+	ld bc, MON_SPECIES - MON_FORM
 	add hl, bc
 	ld a, [hl]
 	ld [wCurOTTradePartyMon], a
@@ -1660,7 +1647,7 @@ LinkTrade:
 .player_2
 	call TradeAnimationPlayer2
 .done_animation
-	pop af
+	ld a, [wCurOTTradePartyMon]
 	ld c, a
 	ld [wCurPartyMon], a
 	ld hl, wOTPartySpecies

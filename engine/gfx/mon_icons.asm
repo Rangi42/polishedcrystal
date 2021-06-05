@@ -63,22 +63,17 @@ LoadPartyMenuMonIconColors:
 	sub c
 	ld [wCurPartyMon], a
 
-	ld d, 0
-	ld e, a
-
-	push af
 	ld hl, wPartyMon1Item
 	call GetPartyLocation
 	ld a, [hl]
 	ld [wCurIconMonHasItemOrMail], a
-	pop af
 
-	ld hl, wPartyMon1IsEgg
-	call GetPartyLocation
+	ld de, MON_IS_EGG - MON_ITEM
+	add hl, de
 	bit MON_IS_EGG_F, [hl]
 	ld a, EGG
 	jr nz, .got_species
-	ld hl, wPartySpecies
+	ld de, MON_SPECIES - MON_IS_EGG
 	add hl, de
 	ld a, [hl]
 .got_species
@@ -294,21 +289,16 @@ _InitScreenMonIcon:
 	jmp PopBCDEHL
 
 InitPartyMenuIcon:
-	ld a, [wCurIconTile]
-	push af
 	ldh a, [hObjectStructIndexBuffer]
-	ld e, a
-	ld d, 0
-	ld hl, wPartyMon1IsEgg ; aka wPartyMon1Form
-	push de
+	assert wPartyMon1IsEgg == wPartyMon1Form
+	ld hl, wPartyMon1IsEgg
 	call GetPartyLocation
-	pop de
 	ld a, [hl]
 	bit MON_IS_EGG_F, a
 	jr nz, .egg
 	and SPECIESFORM_MASK
 	ld [wCurIconForm], a
-	ld hl, wPartySpecies
+	ld de, MON_SPECIES - MON_FORM
 	add hl, de
 	ld a, [hl]
 	jr .got_icon
@@ -329,7 +319,7 @@ InitPartyMenuIcon:
 ; type is partymon icon
 	ld a, SPRITE_ANIM_INDEX_PARTY_MON
 	call _InitSpriteAnimStruct
-	pop af
+	ld a, [wCurIconTile]
 	ld hl, SPRITEANIMSTRUCT_TILE_ID
 	add hl, bc
 	ld [hl], a
@@ -391,10 +381,7 @@ Fly_PrepMonIcon:
 	call GetPartyParamLocation
 	and SPECIESFORM_MASK
 	ld [wCurIconForm], a
-	ld a, [wCurPartyMon]
-	ld hl, wPartySpecies
-	ld e, a
-	ld d, 0
+	ld de, MON_SPECIES - MON_FORM
 	add hl, de
 	ld a, [hl]
 	ld [wTempIconSpecies], a

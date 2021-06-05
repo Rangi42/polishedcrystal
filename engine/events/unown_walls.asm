@@ -1,6 +1,5 @@
 SpecialHoOhChamber:
-	ld hl, wPartySpecies
-	ld a, [hl]
+	ld a, [wPartyMon1Species]
 	ld [wCurPartySpecies], a
 	ld [wCurSpecies], a
 	ld a, [wPartyMon1Form]

@@ -6402,11 +6402,8 @@ GiveExperiencePoints:
 	ld [hl], a
 
 .skip2
-	ld a, [wCurPartyMon]
-	ld e, a
-	ld d, $0
-	ld hl, wPartySpecies
-	add hl, de
+	ld a, MON_SPECIES
+	call GetPartyParamLocation
 	ld a, [hl]
 	ld [wCurSpecies], a
 	call GetCurPartyMonVariant

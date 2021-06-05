@@ -27,22 +27,21 @@ HealPartyMonEvenForNuzlocke:
 	ret
 
 HealParty:
+	ld a, [wPartyCount]
+	ld c, a
 	xor a
-	ld [wCurPartyMon], a
-	ld hl, wPartySpecies
 .loop
-	ld a, [hli]
-	cp -1
+	cp c
 	ret z
-	push hl
+	ld [wCurPartyMon], a
+	push bc
 	ld a, MON_IS_EGG
 	call GetPartyParamLocation
 	bit MON_IS_EGG_F, [hl]
 	call z, HealPartyMon
-	pop hl
+	pop bc
 	ld a, [wCurPartyMon]
 	inc a
-	ld [wCurPartyMon], a
 	jr .loop
 
 HealPartyMon:

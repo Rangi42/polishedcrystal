@@ -69,18 +69,13 @@ CheckPartyMove:
 	xor a
 	ld [wCurPartyMon], a
 .loop
-	ld c, e
-	ld b, 0
-	ld hl, wPartySpecies
-	add hl, bc
-	ld a, [hl]
-	call IsAPokemon
-	jr c, .no
+	ld a, [wPartyCount]
+	cp e
+	jr z, .no
 
-	ld bc, PARTYMON_STRUCT_LENGTH
-	ld hl, wPartyMon1Form
+	ld hl, wPartyMon1IsEgg
 	ld a, e
-	rst AddNTimes
+	call GetPartyLocation
 	bit MON_IS_EGG_F, [hl]
 	jr nz, .next
 	ld bc, MON_MOVES - MON_FORM
@@ -110,13 +105,16 @@ CheckForSurfingPikachu:
 	ld d, SURF
 	call CheckPartyMove
 	jr c, .no
-	ld a, [wCurPartyMon]
-	ld e, a
-	ld d, 0
-	ld hl, wPartySpecies
-	add hl, de
+	ld a, MON_SPECIES
+	call GetPartyParamLocation
 	ld a, [hl]
 	cp PIKACHU
+	jr nz, .no
+	assert !HIGH(PIKACHU)
+	ld de, MON_EXTSPECIES - MON_SPECIES
+	add hl, de
+	ld a, [hl]
+	and MON_EXTSPECIES_F
 	jr nz, .no
 	ld a, TRUE
 	ldh [hScriptVar], a
@@ -522,16 +520,20 @@ GetSurfType:
 ; Surfing on Pikachu uses an alternate sprite.
 ; This is done by using a separate movement type.
 
-	ld a, [wCurPartyMon]
-	ld e, a
-	ld d, 0
-	ld hl, wPartySpecies
-	add hl, de
+	ld a, MON_SPECIES
+	call GetPartyParamLocation
 
 	ld a, [hl]
 	cp PIKACHU
+	jr nz, .not_pikachu
+	assert !HIGH(PIKACHU)
+	ld de, MON_EXTSPECIES - MON_SPECIES
+	add hl, de
+	ld a, [hl]
+	and MON_EXTSPECIES_F
 	ld a, PLAYER_SURF_PIKA
 	ret z
+.not_pikachu
 	ld a, PLAYER_SURF
 	ret
 
@@ -1084,13 +1086,13 @@ SetStrengthFlag:
 	ld hl, wOWState
 	set OWSTATE_STRENGTH, [hl]
 PrepareOverworldMove:
-	ld a, [wCurPartyMon]
-	ld e, a
-	ld d, 0
-	ld hl, wPartySpecies
-	add hl, de
-	ld a, [hl]
-	ld [wBuffer6], a
+	; ld a, [wCurPartyMon]
+	; ld e, a
+	; ld d, 0
+	; ld hl, wPartySpecies
+	; add hl, de
+	; ld a, [hl]
+	; ld [wBuffer6], a
 	jmp GetPartyNickname
 
 Script_StrengthFromMenu:
