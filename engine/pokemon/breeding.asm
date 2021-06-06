@@ -283,7 +283,6 @@ HatchEggs:
 	farcall SetEggMonCaughtData
 	ld a, MON_SPECIES
 	call GetPartyParamLocation
-	ld a, [hl]
 	ld [wCurPartySpecies], a
 	ld c, a
 
@@ -297,7 +296,6 @@ HatchEggs:
 
 	ld a, MON_IS_EGG
 	call GetPartyParamLocation
-	ld a, [hl]
 	and $ff - IS_EGG_MASK
 	ld [hl], a
 

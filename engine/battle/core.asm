@@ -6404,7 +6404,6 @@ GiveExperiencePoints:
 .skip2
 	ld a, MON_SPECIES
 	call GetPartyParamLocation
-	ld a, [hl]
 	ld [wCurSpecies], a
 	call GetCurPartyMonVariant
 	call GetBaseData

@@ -107,7 +107,6 @@ CheckForSurfingPikachu:
 	jr c, .no
 	ld a, MON_SPECIES
 	call GetPartyParamLocation
-	ld a, [hl]
 	cp PIKACHU
 	jr nz, .no
 	assert !HIGH(PIKACHU)
@@ -522,8 +521,6 @@ GetSurfType:
 
 	ld a, MON_SPECIES
 	call GetPartyParamLocation
-
-	ld a, [hl]
 	cp PIKACHU
 	jr nz, .not_pikachu
 	assert !HIGH(PIKACHU)

@@ -1627,7 +1627,6 @@ LinkTrade:
 	ld [wCurPartyMon], a
 	ld a, TRUE
 	ld [wForceEvolution], a
-	ld hl, wOTPartySpecies
 	ld bc, MON_SPECIES - MON_FORM
 	add hl, bc
 	ld a, [hl]

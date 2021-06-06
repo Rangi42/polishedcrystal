@@ -289,6 +289,8 @@ _InitScreenMonIcon:
 	jmp PopBCDEHL
 
 InitPartyMenuIcon:
+	ld a, [wCurIconTile]
+	push af
 	ldh a, [hObjectStructIndexBuffer]
 	assert wPartyMon1IsEgg == wPartyMon1Form
 	ld hl, wPartyMon1IsEgg
@@ -319,7 +321,7 @@ InitPartyMenuIcon:
 ; type is partymon icon
 	ld a, SPRITE_ANIM_INDEX_PARTY_MON
 	call _InitSpriteAnimStruct
-	ld a, [wCurIconTile]
+	pop af
 	ld hl, SPRITEANIMSTRUCT_TILE_ID
 	add hl, bc
 	ld [hl], a
