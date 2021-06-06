@@ -361,8 +361,7 @@ _CGB_Pokedex:
 	ld c, 2 palettes
 	call LoadCPaletteBytesFromHLIntoDE
 	ld de, wBGPals1 palette 4
-	ld c, 2 palettes
-	call LoadCPaletteBytesFromHLIntoDE
+	call LoadHLPaletteIntoDE
 	ld de, wOBPals1
 	ld c, 2 palettes
 	call LoadCPaletteBytesFromHLIntoDE

@@ -1487,7 +1487,7 @@ wDexAttrmap:: ds BG_MAP_WIDTH * (SCREEN_HEIGHT + 1)
 wDexMapEnd::
 
 UNION
-wDexVWFTiles:: ds 18 tiles ; might use part of IconTiles outside main display
+wDexVWFTiles:: ds 19 tiles ; 1 tile padding
 wDexIconTiles:: ds 24 tiles ; 4 tiles padding
 wDexRowTilesDest::
 wDexVWFTilesDest:: dw
@@ -1530,8 +1530,6 @@ wDexNumber:: dw
 wDexNumberString:: ds 4 ; 3 numbers including leading zeroes + terminator
 
 ENDU
-
-wDexVWFPreset:: ds 18 tiles ; loaded into VWFTiles on a new row.
 
 
 SECTION "Attributes", WRAMX
