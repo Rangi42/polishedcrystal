@@ -228,7 +228,4 @@ _FastPrintNum:
 	ld a, "0"
 	add l
 	ld [de], a
-	inc de
-	ld a, "@"
-	ld [de], a
 	ret

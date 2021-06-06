@@ -141,7 +141,6 @@ Pokedex:
 
 	xor a
 	ld [wPokedex_CursorPos], a
-	ld [wPokedex_MonInfoBank], a
 
 	call Pokedex_MainLoop
 
@@ -707,6 +706,9 @@ Pokedex_UpdateRow:
 	push bc
 	call FastPrintNum
 	pop bc
+	inc de
+	ld a, "@"
+	ld [de], a
 	ld a, DEXPOS_VWF_TILES
 	call .GetPosData
 	ld a, 14
@@ -1579,7 +1581,7 @@ _Pokedex_GetCursorMon:
 	ld a, BANK(wDexNumber)
 	ldh [rSVBK], a
 	call GetPokedexNumber
-	ld de, wDexNumberString
+	ld de, wPokedexOAM_DexNoStr
 	ld h, b
 	ld l, c
 	call FastPrintNum
@@ -1791,7 +1793,7 @@ Pokedex_RefreshScreen:
 	jr nz, .dexno_y_loop
 	ld c, 4
 	ld hl, wDexVirtualOAMDexNoCopy + 14
-	ld de, wDexNumberString
+	ld de, wPokedexOAM_DexNoStr
 	ld a, 3
 .dexno_str_loop
 	push af
