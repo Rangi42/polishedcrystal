@@ -11,25 +11,21 @@ ForcePushOAM:
 
 ContinueGDMACopy:
 	push hl
-	push af
 	ld hl, rHDMA3
 	jr _GDMACopy
 GDMACopy:
 ; Copy a-1 tiles from de to bc. Preserves all registers. Assumes GDMA is valid.
 	push hl
-	push af
 	ld hl, rHDMA1
-	ld a, d
-	ld [hli], a
-	ld a, e
-	ld [hli], a
+	ld [hl], d
+	inc hl
+	ld [hl], e
+	inc hl
 _GDMACopy:
-	ld a, b
-	ld [hli], a
-	ld a, c
-	ld [hli], a
-	pop af
-	ld [hl], a
+	ld [hl], b
+	inc hl
+	ld [hl], c
+	ldh [rHDMA5], a
 	pop hl
 	ret
 

@@ -94,8 +94,6 @@ Pokedex:
 	lb bc, BANK(DexOAM), 5
 	call Get2bpp
 
-	call .SetupVWFPreset
-
 	pop af
 	ldh [rSVBK], a
 
@@ -141,7 +139,6 @@ Pokedex:
 
 	xor a
 	ld [wPokedex_CursorPos], a
-	ld [wPokedex_MonInfoBank], a
 
 	call Pokedex_MainLoop
 
@@ -230,54 +227,6 @@ Pokedex:
 	ld [wVirtualOAMSprite31TileID], a
 	ld a, "."
 	ld [wVirtualOAMSprite32TileID], a
-	ret
-
-.SetupVWFPreset:
-; Sets up wDexVWFPreset appropriately.
-	; First, copy the regular top line to the entire preset.
-	ld hl, wDex2bpp
-	ld de, wDexVWFPreset
-	ld bc, 1 tiles
-	push de
-	rst CopyBytes
-	pop hl
-	; This will make 17 copies of the first tile.
-	ld bc, 17 tiles
-	rst CopyBytes
-
-	; Then deal with the vertical dividers.
-	ld hl, wDexVWFPreset tile $03
-	ld b, 4
-	call .VWFCopyTile
-	ld b, 1
-	; fallthrough
-
-.VWFCopyTile:
-	ld de, -1 tiles
-	add hl, de
-	ld de, wDex2bpp tile $02
-.vwfloop1
-	call .DoVWFCopy
-	push bc
-	ld bc, 3 tiles
-	add hl, bc
-	pop bc
-	dec b
-	ret z
-	ld a, b
-	dec a
-	jr nz, .vwfloop1
-	ld de, wDex2bpp tile $01
-	jr .vwfloop1
-
-.DoVWFCopy:
-	ld c, 1 tiles
-.vwfloop2
-	ld a, [de]
-	ld [hli], a
-	inc de
-	dec c
-	jr nz, .vwfloop2
 	ret
 
 Pokedex_LoadTilemapWithPokepic:
@@ -524,19 +473,11 @@ Pokedex_UpdateRow:
 	inc a
 	dec d
 	jr nz, .loop
-	ld bc, wAttrMap - (wTileMap + 18)
-	add hl, bc
-	ld a, VRAM_BANK_1 | 4
-	ld d, 18
-.loop2
-	ld [hli], a
-	dec d
-	jr nz, .loop2
 	pop af
 
 	; Now set up the mini BG tiles properly.
-	ld bc, (wTileMap - wAttrMap) + 2
-	add hl, bc
+	inc hl
+	inc hl
 	ld [hli], a
 	inc a
 	ld [hli], a
@@ -565,10 +506,10 @@ Pokedex_UpdateRow:
 	call nz, DelayFrame
 
 	; Prepare VWF tiles.
-	ld hl, wDexVWFPreset
-	ld de, wDexVWFTiles
+	ld hl, wDexVWFTiles
 	ld bc, 18 tiles
-	rst CopyBytes
+	xor a
+	rst ByteFill
 	pop bc
 
 	; The rest are to be iterated by column.
@@ -592,32 +533,12 @@ Pokedex_UpdateRow:
 	ld [hli], a
 	dec d
 	jr nz, .blank_pal
+	push af
 	jr .species_done
 
 .got_species
 	; Palette.
 	ld d, [hl]
-	bit MON_CAUGHT_F, d
-	jr z, .mon_not_caught
-	push af
-
-	; If the mon is caught, we don't want slight transparency on the VWF dexno.
-	ld a, DEXPOS_ATTRMAP
-	call .GetPosData
-
-	; VWF tilemap actually uses slightly less than 4 tiles, so fix that up here.
-	ld a, b
-	cp 3
-	jr c, .not_far_right
-	dec hl
-.not_far_right
-	ld a, VRAM_BANK_1 | 5
-	ld [hli], a
-	ld [hli], a
-	ld [hli], a
-	pop af
-
-.mon_not_caught
 	pop hl
 	push bc
 	ld c, a
@@ -690,14 +611,17 @@ Pokedex_UpdateRow:
 
 	; Icon
 	pop bc
+	push af
 	farcall _LoadOverworldMonIcon
+	pop af
 	ld a, b
 	pop bc
 	push af
 	ld a, DEXPOS_ICON_TILES
 	call .GetPosData
-	pop af
 	call SwapHLDE
+	pop af
+	push af
 	push bc
 	call FarDecompressToDE
 	pop bc
@@ -707,14 +631,22 @@ Pokedex_UpdateRow:
 	push bc
 	call FastPrintNum
 	pop bc
+	inc de
+	ld a, "@"
+	ld [de], a
 	ld a, DEXPOS_VWF_TILES
 	call .GetPosData
+	pop af
+	ld d, 0
+	jr nz, .got_vwf_transparency
+	ld d, VWF_OPAQUE
+.got_vwf_transparency
 	ld a, 14
 	sub b
 	sub b
 	push bc
 	ld c, a
-	ld b, VWF_OPAQUE
+	ld b, d
 	ld de, wDexNumberString
 	call PlaceVWFString
 	pop bc
@@ -739,6 +671,36 @@ Pokedex_UpdateRow:
 	inc de
 	ld a, h
 	ld [de], a
+	ld hl, wDexVWFTiles
+	lb bc, -1, 18
+	ld de, 1 tiles
+.vwfhlines_loop
+	ld [hl], b
+	add hl, de
+	dec c
+	jr nz, .vwfhlines_loop
+	ld a, 1
+	ld hl, wDexVWFTiles tile 2
+	ld b, 5
+.vwfvlines_outer_loop
+	ld c, 8
+.vwfvlines_loop
+	push af
+	or [hl]
+	ld [hli], a
+	inc hl
+	pop af
+	dec c
+	jr nz, .vwfvlines_loop
+	add hl, de
+	add hl, de
+	rlca
+	rlca
+	jr c, .vwfvlines_next
+	add hl, de
+.vwfvlines_next
+	dec b
+	jr nz, .vwfvlines_outer_loop
 	ld hl, wPokedex_GFXFlags
 	set DEXGFX_ROWTILES, [hl]
 	ret
@@ -1579,7 +1541,7 @@ _Pokedex_GetCursorMon:
 	ld a, BANK(wDexNumber)
 	ldh [rSVBK], a
 	call GetPokedexNumber
-	ld de, wDexNumberString
+	ld de, wPokedexOAM_DexNoStr
 	ld h, b
 	ld l, c
 	call FastPrintNum
@@ -1791,7 +1753,7 @@ Pokedex_RefreshScreen:
 	jr nz, .dexno_y_loop
 	ld c, 4
 	ld hl, wDexVirtualOAMDexNoCopy + 14
-	ld de, wDexNumberString
+	ld de, wPokedexOAM_DexNoStr
 	ld a, 3
 .dexno_str_loop
 	push af
