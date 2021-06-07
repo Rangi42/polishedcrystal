@@ -15,8 +15,8 @@ WonderTrade::
 	ret c
 
 	ld a, MON_IS_EGG
-	call GetPartyParamLocation
-	bit MON_IS_EGG_F, [hl]
+	call GetPartyParamLocationAndValue
+	bit MON_IS_EGG_F, a
 	jr z, .not_egg
 	ld a, EGG
 	ld [wCurPartySpecies], a

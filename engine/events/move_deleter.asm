@@ -8,12 +8,11 @@ MoveDeletion:
 	farcall SelectMonFromParty
 	jr c, .declined
 	ld a, MON_IS_EGG
-	call GetPartyParamLocation
-	bit MON_IS_EGG_F, [hl]
+	call GetPartyParamLocationAndValue
+	bit MON_IS_EGG_F, a
 	jr nz, .egg
 	ld a, MON_MOVES + 1
-	call GetPartyParamLocation
-	ld a, [hl]
+	call GetPartyParamLocationAndValue
 	and a
 	jr z, .onlyonemove
 	ld hl, .AskWhichMoveText

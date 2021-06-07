@@ -606,8 +606,8 @@ GiveItem:
 	farcall PartyMenuSelect
 	jr c, .finish
 	ld a, MON_FORM
-	call GetPartyParamLocation
-	bit MON_IS_EGG_F, [hl]
+	call GetPartyParamLocationAndValue
+	bit MON_IS_EGG_F, a
 	jr z, .give
 	ld hl, .Egg
 	call PrintText

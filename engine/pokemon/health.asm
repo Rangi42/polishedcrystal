@@ -36,8 +36,8 @@ HealParty:
 	ld [wCurPartyMon], a
 	push bc
 	ld a, MON_IS_EGG
-	call GetPartyParamLocation
-	bit MON_IS_EGG_F, [hl]
+	call GetPartyParamLocationAndValue
+	bit MON_IS_EGG_F, a
 	call z, HealPartyMon
 	pop bc
 	ld a, [wCurPartyMon]
@@ -46,7 +46,7 @@ HealParty:
 
 HealPartyMon:
 	ld a, MON_SPECIES
-	call GetPartyParamLocation
+	call GetPartyParamLocationAndValue
 	ld d, h
 	ld e, l
 

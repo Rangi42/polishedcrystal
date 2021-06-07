@@ -282,21 +282,20 @@ HatchEggs:
 
 	farcall SetEggMonCaughtData
 	ld a, MON_SPECIES
-	call GetPartyParamLocation
+	call GetPartyParamLocationAndValue
 	ld [wCurPartySpecies], a
 	ld c, a
 
 	ld a, MON_FORM
-	call GetPartyParamLocation
-	ld a, [hl]
+	call GetPartyParamLocationAndValue
 	and SPECIESFORM_MASK
 	ld [wCurForm], a
 	ld b, a
 	call SetSeenAndCaughtMon
 
 	ld a, MON_IS_EGG
-	call GetPartyParamLocation
-	and $ff - IS_EGG_MASK
+	call GetPartyParamLocationAndValue
+	and $ff ^ IS_EGG_MASK
 	ld [hl], a
 
 	ld a, [wCurPartySpecies]

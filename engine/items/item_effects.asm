@@ -849,8 +849,7 @@ EvoStoneEffect:
 	jmp c, ItemNotUsed_ExitMenu
 
 	ld a, MON_ITEM
-	call GetPartyParamLocation
-	ld a, [hl]
+	call GetPartyParamLocationAndValue
 	cp EVERSTONE
 	jr z, .no_effect
 
@@ -871,8 +870,7 @@ LowerEVBerry:
 	jmp c, ItemNotUsed_ExitMenu
 
 	ld a, MON_HAPPINESS
-	call GetPartyParamLocation
-	ld a, [hl]
+	call GetPartyParamLocationAndValue
 	inc a
 	push af
 	call SetUpEVModifier
@@ -940,7 +938,7 @@ SetUpEVModifier:
 	call UseItem_GetBaseDataAndNickParameters
 	call GetEVRelativePointer
 	ld a, MON_EVS
-	jmp GetPartyParamLocation
+	jmp GetPartyParamLocationAndValue
 
 GetStatStringAndPlayFullHealSFX:
 	call GetEVRelativePointer
@@ -985,9 +983,7 @@ RareCandy:
 	call UseItem_GetBaseDataAndNickParameters
 
 	ld a, MON_LEVEL
-	call GetPartyParamLocation
-
-	ld a, [hl]
+	call GetPartyParamLocationAndValue
 	cp MAX_LEVEL
 	jmp nc, EvoStoneEffect.force_evolution
 
@@ -1000,7 +996,7 @@ RareCandy:
 
 	pop de
 	ld a, MON_EXP
-	call GetPartyParamLocation
+	call GetPartyParamLocationAndValue
 
 	ldh a, [hMultiplicand]
 	ld [hli], a
@@ -1066,8 +1062,7 @@ UseStatusHealer:
 	jr z, .no_good
 	call GetItemHealingAction
 	ld a, MON_STATUS
-	call GetPartyParamLocation
-	ld a, [hl]
+	call GetPartyParamLocationAndValue
 	and c
 	jr nz, .good
 
@@ -1220,7 +1215,7 @@ FullRestore:
 	ld [wLowHealthAlarm], a
 	call ReviveFullHP
 	ld a, MON_STATUS
-	call GetPartyParamLocation
+	call GetPartyParamLocationAndValue
 	xor a
 	ld [hli], a
 	ld [hl], a
@@ -1342,8 +1337,8 @@ UseItem_SelectMon_Loop:
 	call ChoosePkmnToUseItemOn
 	jr c, .done
 	ld a, MON_IS_EGG
-	call GetPartyParamLocation
-	bit MON_IS_EGG_F, [hl]
+	call GetPartyParamLocationAndValue
+	bit MON_IS_EGG_F, a
 	jr z, .not_egg
 	call CantUseOnEggMessage
 	jr .handle_loop
@@ -1387,8 +1382,8 @@ UseItem_DoSelectMon:
 	ret c
 
 	ld a, MON_IS_EGG
-	call GetPartyParamLocation
-	bit MON_IS_EGG_F, [hl]
+	call GetPartyParamLocationAndValue
+	bit MON_IS_EGG_F, a
 	jr z, .not_egg
 
 	call CantUseOnEggMessage
@@ -1405,8 +1400,7 @@ UseItem_GetBaseDataAndNickParameters:
 	ld [wCurSpecies], a
 	ld [wTempSpecies], a
 	ld a, MON_FORM
-	call GetPartyParamLocation
-	ld a, [hl]
+	call GetPartyParamLocationAndValue
 	and SPECIESFORM_MASK
 	ld [wCurForm], a
 	call GetBaseData
@@ -1416,11 +1410,11 @@ UseItem_GetBaseDataAndNickParameters:
 
 UseItem_GetHPParameter:
 	ld a, MON_HP
-	jmp GetPartyParamLocation
+	jmp GetPartyParamLocationAndValue
 
 UseItem_GetMaxHPParameter:
 	ld a, MON_MAXHP
-	jmp GetPartyParamLocation
+	jmp GetPartyParamLocationAndValue
 
 ChoosePkmnToUseItemOn:
 	farcall InitPartyMenuLayout
@@ -2425,7 +2419,7 @@ UsedItemText:
 
 ApplyPPUp:
 	ld a, MON_MOVES
-	call GetPartyParamLocation
+	call GetPartyParamLocationAndValue
 	push hl
 	ld de, wBuffer1
 	predef FillPP
@@ -2520,10 +2514,10 @@ RestoreTempPP:
 
 RestoreAllPP:
 	ld a, MON_PP
-	call GetPartyParamLocation
+	call GetPartyParamLocationAndValue
 	push hl
 	ld a, MON_MOVES
-	call GetPartyParamLocation
+	call GetPartyParamLocationAndValue
 	pop de
 	xor a ; PARTYMON
 	ld [wMonType], a
@@ -2654,7 +2648,7 @@ AbilityCap:
 	push hl
 	call UseItem_GetBaseDataAndNickParameters
 	ld a, MON_ABILITY
-	call GetPartyParamLocation
+	call GetPartyParamLocationAndValue
 	ld d, h
 	ld e, l
 	pop hl

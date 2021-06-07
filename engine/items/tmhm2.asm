@@ -415,8 +415,8 @@ ChooseMonToLearnTMHM_NoRefresh:
 	ret c
 	push af
 	ld a, MON_IS_EGG
-	call GetPartyParamLocation
-	bit MON_IS_EGG_F, [hl]
+	call GetPartyParamLocationAndValue
+	bit MON_IS_EGG_F, a
 	pop bc ; now contains the former contents of af
 	jr nz, .egg
 	push bc
@@ -443,8 +443,7 @@ ChooseMonToLearnTMHM_NoRefresh:
 
 TeachTMHM:
 	ld a, MON_FORM
-	call GetPartyParamLocation
-	ld a, [hl]
+	call GetPartyParamLocationAndValue
 	and SPECIESFORM_MASK
 	ld [wCurForm], a
 	predef CanLearnTMHMMove
@@ -582,7 +581,7 @@ IsHM::
 
 KnowsMove:
 	ld a, MON_MOVES
-	call GetPartyParamLocation
+	call GetPartyParamLocationAndValue
 	ld a, [wPutativeTMHMMove]
 	ld b, a
 	ld c, NUM_MOVES

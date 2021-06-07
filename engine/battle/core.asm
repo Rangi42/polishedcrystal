@@ -2995,7 +2995,7 @@ SendOutPlayerMon:
 
 .not_shiny
 	ld a, MON_SPECIES
-	call GetPartyParamLocation
+	call GetPartyParamLocationAndValue
 	ld b, h
 	ld c, l
 	farcall CheckFaintedFrzSlp
@@ -3077,7 +3077,7 @@ PostBattleTasks::
 	ld [wCurPartyMon], a
 	farcall UpdatePkmnStats
 	ld a, MON_STATUS
-	call GetPartyParamLocation
+	call GetPartyParamLocationAndValue
 	res TOX, [hl]
 	pop af
 	jr nz, .loop
@@ -4727,7 +4727,7 @@ MoveSelectionScreen:
 
 .ether_elixer_menu
 	ld a, MON_MOVES
-	call GetPartyParamLocation
+	call GetPartyParamLocationAndValue
 
 .got_menu_type
 	ld de, wListMoves_MoveIndicesBuffer
@@ -6401,7 +6401,7 @@ GiveExperiencePoints:
 
 .skip2
 	ld a, MON_SPECIES
-	call GetPartyParamLocation
+	call GetPartyParamLocationAndValue
 	ld [wCurSpecies], a
 	call GetCurPartyMonVariant
 	call GetBaseData
@@ -6563,7 +6563,7 @@ GiveExperiencePoints:
 	ret z
 	ld [wCurPartyMon], a
 	ld a, MON_SPECIES
-	call GetPartyParamLocation
+	call GetPartyParamLocationAndValue
 	ld b, h
 	ld c, l
 	jmp .loop
@@ -7692,8 +7692,8 @@ InitEnemyTrainer:
 .partyloop
 	push bc
 	ld a, MON_HP
-	call GetPartyParamLocation
-	ld a, [hli]
+	call GetPartyParamLocationAndValue
+	inc hl
 	or [hl]
 	jr z, .skipfaintedmon
 	ld c, HAPPINESS_GYMBATTLE

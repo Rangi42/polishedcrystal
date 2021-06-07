@@ -1611,7 +1611,7 @@ LinkTrade:
 	ld a, [wCurTradePartyMon]
 	ld [wCurPartyMon], a
 	ld a, MON_SPECIES
-	call GetPartyParamLocation
+	call GetPartyParamLocationAndValue
 	ld [wCurTradePartyMon], a
 
 	xor a ; REMOVE_PARTY

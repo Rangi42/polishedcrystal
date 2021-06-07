@@ -224,8 +224,8 @@ BT_PartySelect:
 	; 3 menu headers; eggs (implicitly banned), banned, regular
 	; Check if mon is an Egg
 	ld a, MON_IS_EGG
-	call GetPartyParamLocation
-	bit MON_IS_EGG_F, [hl]
+	call GetPartyParamLocationAndValue
+	bit MON_IS_EGG_F, a
 	ld hl, .EggMenuHeader
 	jmp nz, BT_DisplayMenu
 
@@ -287,8 +287,8 @@ BT_PartySelect:
 .Moves:
 	; For Eggs, "Moves" is actually the "Cancel" option
 	ld a, MON_IS_EGG
-	call GetPartyParamLocation
-	bit MON_IS_EGG_F, [hl]
+	call GetPartyParamLocationAndValue
+	bit MON_IS_EGG_F, a
 	jr nz, .Cancel
 	farcall ManagePokemonMoves
 

@@ -39,9 +39,8 @@ SpecialOmanyteChamber:
 	ld [wCurPartyMon], a
 	push bc
 	ld a, MON_ITEM
-	call GetPartyParamLocation
+	call GetPartyParamLocationAndValue
 	pop bc
-	ld a, [hl]
 	cp WATER_STONE
 	jr nz, .loop
 

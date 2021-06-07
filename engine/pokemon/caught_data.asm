@@ -15,7 +15,7 @@ CheckPartyFullAfterContest:
 	inc [hl]
 	ld [wCurPartyMon], a
 	ld a, MON_SPECIES
-	call GetPartyParamLocation
+	call GetPartyParamLocationAndValue
 	ld d, h
 	ld e, l
 	ld hl, wContestMon
@@ -51,13 +51,13 @@ CheckPartyFullAfterContest:
 	ld hl, wMonOrItemNameBuffer
 	rst CopyBytes
 	ld a, MON_LEVEL
-	call GetPartyParamLocation
+	call GetPartyParamLocationAndValue
 	ld [wCurPartyLevel], a
 	xor a ; PARK_BALL
 	ld [wCurItem], a
 	call SetCaughtData
 	ld a, MON_CAUGHTLOCATION
-	call GetPartyParamLocation
+	call GetPartyParamLocationAndValue
 	ld [hl], NATIONAL_PARK
 	xor a
 	ld [wContestMon], a

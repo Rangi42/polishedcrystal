@@ -45,11 +45,10 @@ LoadFlyMonColor:
 	push af
 
 	ld a, MON_SPECIES
-	call GetPartyParamLocation
-	ld a, [hl]
+	call GetPartyParamLocationAndValue
 	ld [wCurPartySpecies], a
 	ld a, MON_SHINY
-	call GetPartyParamLocation
+	call GetPartyParamLocationAndValue
 	call GetMenuMonIconPalette
 	jr ProcessMenuMonIconColor
 
@@ -64,7 +63,7 @@ LoadPartyMenuMonIconColors:
 	ld [wCurPartyMon], a
 
 	ld a, MON_ITEM
-	call GetPartyParamLocation
+	call GetPartyParamLocationAndValue
 	ld [wCurIconMonHasItemOrMail], a
 
 	ld de, MON_IS_EGG - MON_ITEM
@@ -78,7 +77,7 @@ LoadPartyMenuMonIconColors:
 .got_species
 	ld [wCurPartySpecies], a
 	ld a, MON_SHINY
-	call GetPartyParamLocation
+	call GetPartyParamLocationAndValue
 	call GetMenuMonIconPalette
 	push af
 
@@ -254,14 +253,14 @@ LoadMoveMenuMonIcon:
 	depixel 3, 4, 2, 4
 	push de
 	ld hl, wTempMonForm
+	ld a, [hl]
 	jr _InitScreenMonIcon
 InitScreenMonIcon:
 	push de
 
 	ld a, MON_FORM ; aka MON_IS_EGG
-	call GetPartyParamLocation
+	call GetPartyParamLocationAndValue
 _InitScreenMonIcon:
-	ld a, [hl]
 	and SPECIESFORM_MASK
 	ld [wCurIconForm], a
 	bit MON_IS_EGG_F, [hl]
@@ -379,7 +378,7 @@ SetPartyMonIconAnimSpeed:
 Fly_PrepMonIcon:
 	push de
 	ld a, MON_FORM
-	call GetPartyParamLocation
+	call GetPartyParamLocationAndValue
 	and SPECIESFORM_MASK
 	ld [wCurIconForm], a
 	ld de, MON_SPECIES - MON_FORM

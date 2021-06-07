@@ -1969,11 +1969,11 @@ RunPostBattleAbilities::
 	ld [wCurPartyMon], a
 
 	ld a, MON_SPECIES
-	call GetPartyParamLocation
-	ld c, [hl]
+	call GetPartyParamLocationAndValue
+	ld c, a
 	ld a, MON_IS_EGG
-	call GetPartyParamLocation
-	bit MON_IS_EGG_F, [hl]
+	call GetPartyParamLocationAndValue
+	bit MON_IS_EGG_F, a
 	jr nz, .loop
 	assert MON_PERSONALITY == MON_IS_EGG - 1
 	dec hl
@@ -1989,15 +1989,14 @@ RunPostBattleAbilities::
 .natural_cure
 	; Heal status
 	ld a, MON_STATUS
-	call GetPartyParamLocation
+	call GetPartyParamLocationAndValue
 	xor a
 	ld [hl], a
 	jr .loop
 
 .Pickup:
 	ld a, MON_ITEM
-	call GetPartyParamLocation
-	ld a, [hl]
+	call GetPartyParamLocationAndValue
 	and a
 	ret nz
 
@@ -2008,12 +2007,11 @@ RunPostBattleAbilities::
 	call DisableAnimations
 
 	ld a, MON_LEVEL
-	call GetPartyParamLocation
-	ld a, [hl]
+	call GetPartyParamLocationAndValue
 	call GetRandomPickupItem
 	ld b, a
 	ld a, MON_ITEM
-	call GetPartyParamLocation
+	call GetPartyParamLocationAndValue
 	ld a, b
 	ld [hl], a
 	push bc
@@ -2029,8 +2027,7 @@ RunPostBattleAbilities::
 	push bc
 	push de
 	ld a, MON_SPECIES
-	call GetPartyParamLocation
-	ld a, [hl]
+	call GetPartyParamLocationAndValue
 	ld bc, MON_FORM - MON_SPECIES
 	add hl, bc
 	ld b, [hl]

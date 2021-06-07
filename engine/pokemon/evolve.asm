@@ -29,7 +29,7 @@ EvolveAfterBattle_MasterLoop:
 
 	push af
 	ld a, MON_SPECIES
-	call GetPartyParamLocation
+	call GetPartyParamLocationAndValue
 	ld [wEvolutionOldSpecies], a
 	ld bc, MON_FORM - MON_SPECIES
 	add hl, bc

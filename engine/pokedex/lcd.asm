@@ -250,11 +250,10 @@ PHB_LoadRow:
 	pop de
 
 	; This places the OAM writes within the worst-case mode0 margin.
-	; Do not optimize this, it's there for a reason!
 	ld b, 28
 .fixtiming1
 	dec b
-	jp nz, .fixtiming1
+	jp nz, .fixtiming1 ; do not use jmp/jr
 
 	; Write poké ball presence info
 	ld hl, oamSprite12YCoord + 16

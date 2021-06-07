@@ -1,4 +1,4 @@
-GetPartyParamLocation::
+GetPartyParamLocationAndValue::
 ; Get the location and value of parameter a from wCurPartyMon in wPartyMons
 	push bc
 	ld hl, wPartyMons
@@ -6,8 +6,8 @@ GetPartyParamLocation::
 	ld b, 0
 	add hl, bc
 	ld a, [wCurPartyMon]
-	call GetPartyLocation
 	pop bc
+	call GetPartyLocation
 	ld a, [hl]
 	ret
 

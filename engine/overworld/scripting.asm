@@ -532,11 +532,11 @@ GetCurPartyMonSpeciesIfZero:
 	and a
 	ret nz
 	ld a, MON_SPECIES
-	call GetPartyParamLocation
+	call GetPartyParamLocationAndValue
 	ld c, a
 	ld [wCurPartySpecies], a
 	ld a, MON_FORM
-	call GetPartyParamLocation
+	call GetPartyParamLocationAndValue
 	ld b, a
 	ld [wCurForm], a
 	xor a
@@ -1976,8 +1976,8 @@ Script_checkegg:
 	push af
 	ld [wCurPartyMon], a
 	ld a, MON_FORM
-	call GetPartyParamLocation
-	bit MON_IS_EGG_F, [hl]
+	call GetPartyParamLocationAndValue
+	bit MON_IS_EGG_F, a
 	jr z, .next
 	ld a, TRUE
 	ldh [hScriptVar], a

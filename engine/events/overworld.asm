@@ -106,8 +106,8 @@ CheckForSurfingPikachu:
 	call CheckPartyMove
 	jr c, .no
 	ld a, MON_SPECIES
-	call GetPartyParamLocation
-	cp PIKACHU
+	call GetPartyParamLocationAndValue
+	cp LOW(PIKACHU)
 	jr nz, .no
 	assert !HIGH(PIKACHU)
 	ld de, MON_EXTSPECIES - MON_SPECIES
@@ -520,8 +520,8 @@ GetSurfType:
 ; This is done by using a separate movement type.
 
 	ld a, MON_SPECIES
-	call GetPartyParamLocation
-	cp PIKACHU
+	call GetPartyParamLocationAndValue
+	cp LOW(PIKACHU)
 	jr nz, .not_pikachu
 	assert !HIGH(PIKACHU)
 	ld de, MON_EXTSPECIES - MON_SPECIES
