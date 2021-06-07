@@ -63,9 +63,8 @@ LoadPartyMenuMonIconColors:
 	sub c
 	ld [wCurPartyMon], a
 
-	ld hl, wPartyMon1Item
-	call GetPartyLocation
-	ld a, [hl]
+	ld a, MON_ITEM
+	call GetPartyParamLocation
 	ld [wCurIconMonHasItemOrMail], a
 
 	ld de, MON_IS_EGG - MON_ITEM

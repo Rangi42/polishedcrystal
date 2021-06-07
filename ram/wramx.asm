@@ -1374,7 +1374,7 @@ wBreedMon2:: breed_struct wBreedMon2
 
 	ds 54 ; unused
 
-wBugContestSecondPartySpecies:: db
+wBugContestBackupPartyCount:: db
 wContestMon:: party_struct wContestMon
 
 wDunsparceMapGroup:: db

@@ -10,8 +10,7 @@ BattleStart_TrainerHuds:
 
 ShowPlayerMonsRemaining:
 	call DrawPlayerPartyIconHUDBorder
-	ld hl, wPartyMon1HP
-	ld de, wPartyCount
+	ld hl, wPartyCount
 	call StageBallTilesData
 	; ldpixel wPlaceBallsX, 12, 12
 	ld a, 12 * 8
@@ -31,8 +30,7 @@ EnemySwitch_TrainerHud:
 
 ShowOTTrainerMonsRemaining:
 	call DrawEnemyPartyIconHUDBorder
-	ld hl, wOTPartyMon1HP
-	ld de, wOTPartyCount
+	ld hl, wOTPartyCount
 	call StageBallTilesData
 	; ldpixel wPlaceBallsX, 9, 4
 	ld hl, wPlaceBallsX
@@ -45,57 +43,47 @@ ShowOTTrainerMonsRemaining:
 	jmp LoadTrainerHudOAM
 
 StageBallTilesData:
-	ld a, [de]
-	push af
+	ld b, [hl]
+	assert wPartyMon1HP - wPartyCount == wOTPartyMon1HP - wOTPartyCount
+	ld de, wPartyMon1HP - wPartyCount
+	add hl, de
 	ld de, wBuffer1
 	ld c, PARTY_LENGTH
-	ld a, $34 ; empty slot
-.loop1
-	ld [de], a
-	inc de
-	dec c
-	jr nz, .loop1
-	pop af
-	ld de, wBuffer1
-.loop2
-	push af
-	call .GetHUDTile
-	inc de
-	pop af
-	dec a
-	jr nz, .loop2
-	ret
+.loop
+	push bc
+	ld a, b
+	cp c
+	ld b, $34 ; empty slot
+	jr nc, .load
 
-.GetHUDTile:
+	dec b ; $33, fainted
 	ld a, [hli]
 	and a
 	jr nz, .got_hp
 	ld a, [hl]
 	and a
-	ld b, $33 ; fainted
-	jr z, .fainted
-
+	assert MON_HP + 1 == MON_STATUS + 3
 .got_hp
+	dec hl ; dec rr doesn't affect flags
 	dec hl
 	dec hl
-	dec hl
+	jr z, .load
+
+	dec b ; $32, statused
 	ld a, [hl]
 	and a
-	ld b, $32 ; statused
 	jr nz, .load
-	dec b ; $31 ; normal
-	jr .load
-
-.fainted
-	dec hl
-	dec hl
-	dec hl
-
+	dec b ; $31, normal
+	;fall-through
 .load
 	ld a, b
 	ld [de], a
+	inc de
 	ld bc, PARTYMON_STRUCT_LENGTH + MON_HP - MON_STATUS
 	add hl, bc
+	pop bc
+	dec c
+	jr nz, .loop
 	ret
 
 DrawPlayerPartyIconHUDBorder:
@@ -170,8 +158,7 @@ PlaceHUDBorderTiles:
 
 LinkBattle_TrainerHuds:
 	call LoadBallIconGFX
-	ld hl, wPartyMon1HP
-	ld de, wPartyCount
+	ld hl, wPartyCount
 	call StageBallTilesData
 	ld hl, wPlaceBallsX
 	ld a, 10 * 8
@@ -182,8 +169,7 @@ LinkBattle_TrainerHuds:
 	ld hl, wVirtualOAM
 	call LoadTrainerHudOAM
 
-	ld hl, wOTPartyMon1HP
-	ld de, wOTPartyCount
+	ld hl, wOTPartyCount
 	call StageBallTilesData
 	ld hl, wPlaceBallsX
 	ld a, 10 * 8

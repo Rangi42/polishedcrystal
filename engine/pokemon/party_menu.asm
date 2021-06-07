@@ -1107,8 +1107,7 @@ GetPartyMenuTilemapPointers:
 INCLUDE "data/party_menu_qualities.asm"
 
 InitPartyMenuGFX:
-	ld hl, wPartyCount
-	ld a, [hli]
+	ld a, [wPartyCount]
 	and a
 	ret z
 	ld c, a
@@ -1116,12 +1115,10 @@ InitPartyMenuGFX:
 	ldh [hObjectStructIndexBuffer], a
 .loop
 	push bc
-	push hl
 	farcall LoadPartyMenuMonIcon
 	ldh a, [hObjectStructIndexBuffer]
 	inc a
 	ldh [hObjectStructIndexBuffer], a
-	pop hl
 	pop bc
 	dec c
 	jr nz, .loop

@@ -3,18 +3,15 @@ ContestDropOffMons:
 	ld a, [hli]
 	or [hl]
 	jr z, .fainted
-; Mask the rest of your party by setting the count to 1...
+; Mask the rest of your party by setting the count to 1,
+; backing up the party count somewhere
 	ld hl, wPartyCount
-	ld a, 1
-	ld [hli], a
-	inc hl
-; ... backing up the second mon index somewhere...
 	ld a, [hl]
-	ld [wBugContestSecondPartySpecies], a
-; ... and replacing it with the terminator byte
-	ld [hl], $ff
+	ld [wBugContestBackupPartyCount], a
 	xor a
 	ldh [hScriptVar], a
+	inc a
+	ld [hl], a
 	ret
 
 .fainted
@@ -23,21 +20,8 @@ ContestDropOffMons:
 	ret
 
 ContestReturnMons:
-; Restore the species of the second mon.
-	ld hl, wPartySpecies + 1
-	ld a, [wBugContestSecondPartySpecies]
-	ld [hl], a
-; Restore the party count, which must be recomputed.
-	ld b, $1
-.loop
-	ld a, [hli]
-	cp -1
-	jr z, .done
-	inc b
-	jr .loop
-
-.done
-	ld a, b
+; Restore the party count from backup.
+	ld a, [wBugContestBackupPartyCount]
 	ld [wPartyCount], a
 	ret
 

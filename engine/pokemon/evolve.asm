@@ -14,25 +14,25 @@ EvolveAfterBattle:
 	push hl
 	push bc
 	push de
-	ld hl, wPartyCount
-
-	push hl
+	ld a, [wPartyCount]
+	and a
+	jmp z, .ReturnToMap
+	push af
 
 EvolveAfterBattle_MasterLoop:
 	ld hl, wCurPartyMon
 	inc [hl]
 
-	pop hl
-
-	inc hl
-	ld a, [hl]
-	cp $ff
+	pop af
+	cp [hl]
 	jmp z, .ReturnToMap
 
-	push hl
-	ld [wEvolutionOldSpecies], a
-	ld a, MON_FORM
+	push af
+	ld a, MON_SPECIES
 	call GetPartyParamLocation
+	ld [wEvolutionOldSpecies], a
+	ld bc, MON_FORM - MON_SPECIES
+	add hl, bc
 	ld a, [hl]
 	ld [wEvolutionOldForm], a
 	ld a, [wCurPartyMon]
