@@ -229,7 +229,9 @@ VBlank4::
 	ldh a, [hWX]
 	ldh [rWX], a
 
-	call UpdateDexMap
+	ld a, BANK(PVB_UpdateDexMap)
+	rst Bankswitch
+	call PVB_UpdateDexMap ; far-ok
 
 	; These have their own timing checks.
 

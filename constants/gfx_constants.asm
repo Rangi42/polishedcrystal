@@ -58,6 +58,10 @@ NUM_SPRITE_OAM_STRUCTS EQU 40 ; see wVirtualOAM
 	const VWF_INVERT_F
 	const VWF_OPAQUE_F
 
+VWF_SINGLE EQU 1 << VWF_SINGLE_F
+VWF_INVERT EQU 1 << VWF_INVERT_F
+VWF_OPAQUE EQU 1 << VWF_OPAQUE_F
+
 ; Dex GFX flags
 	const_def
 	const DEXGFX_DEFERRED ; tilemap+pal update scheduled for next input request
@@ -66,6 +70,7 @@ NUM_SPRITE_OAM_STRUCTS EQU 40 ; see wVirtualOAM
 	const DEXGFX_POKEINFO ; non-frontpic gfx (type icons, footprint)
 	const DEXGFX_ROWTILES ; icon+vwf tiles for a row update
 
-VWF_SINGLE EQU 1 << VWF_SINGLE_F
-VWF_INVERT EQU 1 << VWF_INVERT_F
-VWF_OPAQUE EQU 1 << VWF_OPAQUE_F
+	const_def
+	const DEXTILE_FROM_DEXMAP_F
+
+DEXTILE_FROM_DEXMAP EQU 1 << DEXTILE_FROM_DEXMAP_F
