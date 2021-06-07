@@ -13,15 +13,17 @@ CheckPartyFullAfterContest:
 	cp 6
 	jr nc, .TryAddToBox
 	inc [hl]
-	ld hl, wPartyMon1Species
-	call GetPartyLocation
+	ld [wCurPartyMon], a
+	ld a, MON_SPECIES
+	call GetPartyParamLocation
 	ld d, h
 	ld e, l
 	ld hl, wContestMon
+	ld a, [hl]
+	ld [wCurSpecies], a
 	ld bc, PARTYMON_STRUCT_LENGTH
 	rst CopyBytes
-	ld a, [wPartyCount]
-	dec a
+	ld a, [wCurPartyMon]
 	ld hl, wPartyMonOTs
 	call SkipNames
 	ld d, h
@@ -35,36 +37,27 @@ CheckPartyFullAfterContest:
 	rst CopyBytes
 	call GiveANickname_YesNo
 	jr c, .Party_SkipNickname
-	ld a, [wPartyCount]
-	dec a
-	ld [wCurPartyMon], a
 	xor a
 	ld [wMonType], a
 	ld de, wMonOrItemNameBuffer
 	farcall InitNickname
 
 .Party_SkipNickname:
-	ld a, [wPartyCount]
-	dec a
+	ld a, [wCurPartyMon]
 	ld hl, wPartyMonNicknames
 	call SkipNames
 	ld d, h
 	ld e, l
 	ld hl, wMonOrItemNameBuffer
 	rst CopyBytes
-	ld a, [wPartyCount]
-	dec a
-	ld hl, wPartyMon1Level
-	call GetPartyLocation
-	ld a, [hl]
+	ld a, MON_LEVEL
+	call GetPartyParamLocation
 	ld [wCurPartyLevel], a
 	xor a ; PARK_BALL
 	ld [wCurItem], a
 	call SetCaughtData
-	ld a, [wPartyCount]
-	dec a
-	ld hl, wPartyMon1CaughtLocation
-	call GetPartyLocation
+	ld a, MON_CAUGHTLOCATION
+	call GetPartyParamLocation
 	ld [hl], NATIONAL_PARK
 	xor a
 	ld [wContestMon], a

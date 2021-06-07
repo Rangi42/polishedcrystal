@@ -8,7 +8,7 @@ ReadTrainerParty:
 	ret nz ; populated elsewhere
 
 	xor a
-	ld [wPartyCount], a
+	ld [wOTPartyCount], a
 
 	ld hl, wOTPartyMons
 	ld bc, PARTYMON_STRUCT_LENGTH * PARTY_LENGTH

@@ -644,6 +644,18 @@ RetrieveBreedmon:
 
 .room_in_party
 	inc [hl]
+	ld h, a
+	ld a, [wPokemonWithdrawDepositParameter]
+	and a
+	ld a, [wBreedMon1Species]
+	ld de, wBreedMon1Nickname
+	jr z, .okay
+	ld a, [wBreedMon2Species]
+	ld de, wBreedMon2Nickname
+
+.okay
+	ld [wCurSpecies], a
+	ld a, h
 	ld hl, wPartyMonNicknames
 	call SkipNames
 	call SwapHLDE
