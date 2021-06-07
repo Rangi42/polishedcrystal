@@ -1570,7 +1570,6 @@ LinkTrade:
 	bit MON_IS_EGG_F, [hl]
 	ld a, EGG
 	jr nz, .got_tradeot_species
-	ld hl, wOTPartySpecies
 	ld bc, MON_SPECIES - MON_FORM
 	add hl, bc
 	ld a, [hl]
@@ -1612,11 +1611,8 @@ LinkTrade:
 
 	ld a, [wCurTradePartyMon]
 	ld [wCurPartyMon], a
-	ld hl, wPartySpecies
-	ld b, 0
-	ld c, a
-	add hl, bc
-	ld a, [hl]
+	ld a, MON_SPECIES
+	call GetPartyParamLocation
 	ld [wCurTradePartyMon], a
 
 	xor a ; REMOVE_PARTY
@@ -1625,12 +1621,14 @@ LinkTrade:
 	ld a, [wPartyCount]
 	dec a
 	ld [wCurPartyMon], a
-	ld a, TRUE
-	ld [wForceEvolution], a
-	ld bc, MON_SPECIES - MON_FORM
-	add hl, bc
+	ld a, [wCurOTTradePartyMon]
+	push af
+	ld hl, wOTPartyMon1Species
+	call GetPartyLocation
 	ld a, [hl]
 	ld [wCurOTTradePartyMon], a
+	ld a, TRUE
+	ld [wForceEvolution], a
 
 	ld c, 100
 	call DelayFrames
@@ -1646,13 +1644,11 @@ LinkTrade:
 .player_2
 	call TradeAnimationPlayer2
 .done_animation
-	ld a, [wCurOTTradePartyMon]
+	pop af
 	ld c, a
 	ld [wCurPartyMon], a
-	ld hl, wOTPartySpecies
-	ld d, 0
-	ld e, a
-	add hl, de
+	ld hl, wOTPartyMon1Species
+	call GetPartyLocation
 	ld a, [hl]
 	ld [wCurPartySpecies], a
 	ld hl, wOTPartyMon1Species
