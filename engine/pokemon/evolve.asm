@@ -16,7 +16,7 @@ EvolveAfterBattle:
 	push de
 	ld a, [wPartyCount]
 	and a
-	jmp z, .ReturnToMap
+	jmp z, EvolveAfterBattle_ReturnToMap
 	push af
 
 EvolveAfterBattle_MasterLoop:
@@ -25,7 +25,7 @@ EvolveAfterBattle_MasterLoop:
 
 	pop af
 	cp [hl]
-	jmp z, .ReturnToMap
+	jmp z, EvolveAfterBattle_ReturnToMap
 
 	push af
 	ld a, MON_SPECIES
@@ -450,7 +450,7 @@ endr
 	inc hl
 	jmp .loop
 
-.ReturnToMap:
+EvolveAfterBattle_ReturnToMap:
 	pop de
 	pop bc
 	pop hl
