@@ -729,7 +729,7 @@ wOTPartyData::
 wOTPlayerName:: ds NAME_LENGTH
 wOTPlayerID:: dw
 wOTPartyCount:: db
-wOTPartySpecies:: ds PARTY_LENGTH + 1 ; legacy scripts don't check PartyCount
+wOTPartySpecies:: ds PARTY_LENGTH + 1 ; dereferenced, delete before savepatch
 
 
 UNION
@@ -1305,7 +1305,7 @@ SECTION "Party", WRAMX
 wPokemonData::
 
 wPartyCount::   db ; number of Pokémon in party
-wPartySpecies:: ds PARTY_LENGTH
+wPartySpecies:: ds PARTY_LENGTH ; deferenced, delete before patch
 wPartyEnd::     db ; older code doesn't check wPartyCount
 
 wPartyMons::

@@ -414,22 +414,6 @@ BT_AppendOTMon:
 	ld [wNamedObjectIndex+1], a
 	push hl
 
-	; Add first species byte.
-	ld hl, wOTPartySpecies
-	ld a, [wOTPartyCount]
-	push af
-	add l
-	ld l, a
-	adc h
-	sub l
-	ld h, a
-	ld [hl], b
-	pop af
-
-	; Also append terminator
-	inc hl
-	ld [hl], -1
-
 	; Set de to the relevant partymon struct.
 	ld hl, wOTPartyMon1
 	call GetPartyLocation
@@ -437,7 +421,7 @@ BT_AppendOTMon:
 	ld e, l
 	pop hl
 
-	; Add second species byte
+	; Add species byte
 	ld bc, 1
 	ld a, MON_SPECIES
 	call .Copy
@@ -553,9 +537,8 @@ BT_AppendOTMon:
 	rst CopyBytes
 
 	; All done, now we just have to increment the party counter
-	ld a, [wOTPartyCount]
-	inc a
-	ld [wOTPartyCount], a
+	ld hl, wOTPartyCount
+	inc [hl]
 	pop bc
 
 	; Overwrite c with actual set index, assuming it was -1 previously.

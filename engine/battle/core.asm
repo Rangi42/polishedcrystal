@@ -4530,16 +4530,14 @@ CheckRunSpeed:
 	pop hl
 	jr z, .ability_prevents_escape
 
-	ld a, [wNumFleeAttempts]
-	inc a
-	ld [wNumFleeAttempts], a
-
 	; hl = player speed
 	; de = enemy speed
 
 	push hl
 	push de
 	call Call_LoadTempTileMapToTileMap
+	ld hl, wNumFleeAttempts
+	inc [hl]
 	pop de
 	pop hl
 
@@ -4834,9 +4832,9 @@ MoveSelectionScreen:
 
 	xor a
 	ld [wMoveSwapBuffer], a
-	ld a, [wMenuCursorY]
-	dec a
-	ld [wMenuCursorY], a
+	ld hl, wMenuCursorY
+	dec [hl]
+	ld a, [hl]
 	ld b, a
 	ld [wCurMoveNum], a
 

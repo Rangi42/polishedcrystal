@@ -11,21 +11,10 @@ CheckPartyFullAfterContest:
 	ld hl, wPartyCount
 	ld a, [hl]
 	cp 6
-	jmp nc, .TryAddToBox
-	inc a
-	ld [hl], a
-	ld c, a
-	ld b, $0
-	add hl, bc
-	ld a, [wContestMon]
-	ld [hli], a
-	ld [wCurSpecies], a
-	ld [hl], $ff
+	jr nc, .TryAddToBox
+	inc [hl]
 	ld hl, wPartyMon1Species
-	ld a, [wPartyCount]
-	dec a
-	ld bc, PARTYMON_STRUCT_LENGTH
-	rst AddNTimes
+	call GetPartyLocation
 	ld d, h
 	ld e, l
 	ld hl, wContestMon

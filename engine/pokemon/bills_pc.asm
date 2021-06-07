@@ -248,11 +248,6 @@ SwapPartyMons:
 	dec e
 	ld d, c
 
-	; Swap species in the species array
-	ld hl, wPartySpecies
-	ld bc, 1
-	call DoPartySwap
-
 	; Swap partymon struct
 	ld hl, wPartyMon1
 	ld c, PARTYMON_STRUCT_LENGTH
@@ -485,7 +480,7 @@ UpdateStorageBoxMonFromTemp:
 	ld a, [wTempMonBox]
 	ld b, a
 	and a
-	jmp z, CopyBetweenPartyAndTemp
+	jr z, CopyBetweenPartyAndTemp
 
 	; Otherwise, we need to allocate a new box entry.
 	; Erase the current entry before trying to find a new one.
@@ -576,11 +571,6 @@ SetStorageBoxPointer:
 	; Then delete the partymon.
 	ld hl, wPartyCount
 	dec [hl]
-	ld c, [hl]
-	ld b, 0
-	ld hl, wPartySpecies
-	add hl, bc
-	ld [hl], -1
 	jr .done
 
 .not_empty
@@ -614,12 +604,6 @@ CopyBetweenPartyAndTemp:
 ; Note that this will not update the party count if adding a new mon.
 ; If bit 7 of b is set, copies between wOTPartyMons instead of wPartyMons.
 ; If bit 0 of b is set, copies from party to temp, otherwise the reverse.
-	dec c
-	ld hl, wPartySpecies
-	ld de, wTempMonSpecies
-	ld a, 1
-	call .Copy
-
 	ld hl, wPartyMon1
 	ld de, wTempMon
 	ld a, PARTYMON_STRUCT_LENGTH

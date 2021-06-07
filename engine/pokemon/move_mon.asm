@@ -10,26 +10,12 @@ TryAddMonToParty:
 .getpartylocation
 	; Do we have room for it?
 	ld a, [de]
-	inc a
-	cp PARTY_LENGTH + 1
+	cp PARTY_LENGTH
 	ret nc
 	; Increase the party count
+	inc a
 	ld [de], a
-	ldh [hMoveMon], a ; HRAM backup
-	; de += a
-	add e
-	ld e, a
-	adc d
-	sub e
-	ld d, a
-	; Load the species of the Pokemon into the party list.
-	; The terminator is usually here, but it'll be back.
-	ld a, [wCurPartySpecies]
-	ld [de], a
-	; Load the terminator into the next slot.
-	inc de
-	ld a, -1
-	ld [de], a
+	ld [hMoveMon], a ; HRAM backup
 	; Now let's load the OT name.
 	ld hl, wPartyMonOTs
 	ld a, [wMonType]
@@ -530,20 +516,9 @@ AddTempMonToParty:
 	scf
 	ret z
 
-	inc a
-	ld [hl], a
-	ld c, a
-	ld b, 0
-	add hl, bc
-	ld a, [wCurPartySpecies]
-	ld [hli], a
-	ld [hl], $ff
-
+	inc [hl]
 	ld hl, wPartyMon1Species
-	ld a, [wPartyCount]
-	dec a
-	ld bc, PARTYMON_STRUCT_LENGTH
-	rst AddNTimes
+	call GetPartyLocation
 	ld e, l
 	ld d, h
 	ld hl, wTempMonSpecies
@@ -668,26 +643,8 @@ RetrieveBreedmon:
 	ret
 
 .room_in_party
-	inc a
-	ld [hl], a
-	ld c, a
-	ld b, 0
-	add hl, bc
-	ld a, [wPokemonWithdrawDepositParameter]
-	and a
-	ld a, [wBreedMon1Species]
-	ld de, wBreedMon1Nickname
-	jr z, .okay
-	ld a, [wBreedMon2Species]
-	ld de, wBreedMon2Nickname
-
-.okay
-	ld [hli], a
-	ld [wCurSpecies], a
-	ld [hl], $ff
+	inc [hl]
 	ld hl, wPartyMonNicknames
-	ld a, [wPartyCount]
-	dec a
 	call SkipNames
 	call SwapHLDE
 	rst CopyBytes

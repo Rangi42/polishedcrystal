@@ -537,7 +537,6 @@ PokeBallEffect:
 	ld bc, NAME_LENGTH
 	rst CopyBytes
 	pop af
-	push af
 	ld hl, wPartyMonNicknames
 	call SkipNames
 	ld d, h
@@ -545,14 +544,6 @@ PokeBallEffect:
 	ld hl, wOTPartyMonNicknames
 	ld bc, MON_NAME_LENGTH
 	rst CopyBytes
-	pop af
-	ld b, 0
-	ld c, a
-	ld hl, wPartySpecies
-	add hl, bc
-	ld a, [wOTPartyMon1Species]
-	ld [hli], a
-	ld [hl], $ff
 
 	farcall SetCaughtData
 

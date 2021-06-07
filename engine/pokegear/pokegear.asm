@@ -1023,10 +1023,10 @@ PokegearPhone_UpdateDisplayList:
 	pop af
 	ld b, a
 	call GetCallerClassAndName
+	ld hl, wPokegearPhoneLoadNameBuffer
+	inc [hl]
+	ld a, [hl]
 	pop hl
-	ld a, [wPokegearPhoneLoadNameBuffer]
-	inc a
-	ld [wPokegearPhoneLoadNameBuffer], a
 	cp $4 ; 4 entries fit on the screen
 	jr c, .loop
 	; fallthrough
@@ -2274,9 +2274,8 @@ Pokedex_GetArea:
 	ret z
 .go_right
 
-	ld a, [wTownMapCursorLandmark]
-	inc a
-	ld [wTownMapCursorLandmark], a
+	ld hl, wTownMapCursorLandmark
+	inc [hl]
 
 .update
 	call .UpdateGFX

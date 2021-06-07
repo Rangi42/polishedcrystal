@@ -460,13 +460,13 @@ OaksPkmnTalk9:
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
-	ld a, [wOaksPkmnTalkSegmentCounter]
-	dec a
-	ld [wOaksPkmnTalkSegmentCounter], a
+	push hl
+	ld hl, wOaksPkmnTalkSegmentCounter
+	dec [hl]
 	ld a, OAKS_POKEMON_TALK_4
 	jr nz, .ok
-	ld a, 5
-	ld [wOaksPkmnTalkSegmentCounter], a
+	ld [hl], 5
+	pop hl
 	ld a, OAKS_POKEMON_TALK_10
 .ok
 	jmp NextRadioLine

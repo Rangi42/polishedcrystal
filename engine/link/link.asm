@@ -238,9 +238,8 @@ Gen2ToGen2LinkComms:
 	ld bc, NAME_LENGTH
 	rst CopyBytes
 
-	ld de, wOTPartyCount
-	ld bc, 1 + PARTY_LENGTH + 1
-	rst CopyBytes
+	ld a, [hli]
+	ld [wOTPartyCount], a
 
 	ld de, wOTPlayerID
 	ld bc, 2
@@ -470,9 +469,9 @@ Link_PrepPartyData_Gen2:
 	ld bc, NAME_LENGTH
 	rst CopyBytes
 
-	ld hl, wPartyCount
-	ld bc, 1 + PARTY_LENGTH + 1
-	rst CopyBytes
+	ld a, [wPartyCount]
+	ld [de], a
+	inc de
 
 	ld hl, wPlayerID
 	ld bc, 2
@@ -1924,13 +1923,11 @@ Special_WaitForLinkedFriend:
 	ldh [rSC], a
 	ld a, START_TRANSFER_EXTERNAL_CLOCK
 	ldh [rSC], a
-	ld a, [wLinkTimeoutFrames]
-	dec a
-	ld [wLinkTimeoutFrames], a
+	ld hl, wLinkTimeoutFrames
+	dec [hl]
 	jr nz, .not_done
-	ld a, [wLinkTimeoutFrames + 1]
-	dec a
-	ld [wLinkTimeoutFrames + 1], a
+	inc hl
+	dec [hl]
 	jr z, .done
 
 .not_done

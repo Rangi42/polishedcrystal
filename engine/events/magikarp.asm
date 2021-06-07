@@ -13,7 +13,7 @@ CheckMagikarpLength:
 	ld a, [wCurForm]
 	assert MON_IS_EGG == MON_FORM
 	and IS_EGG_MASK | EXTSPECIES_MASK
-	assert HIGH(MAGIKARP) == 0
+	assert !HIGH(MAGIKARP)
 	and a ; cp HIGH(MAGIKARP) << MON_EXTSPECIES_F | IS_EGG_MASK
 	jr nz, .not_magikarp
 

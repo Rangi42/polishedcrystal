@@ -7,15 +7,11 @@ ReadTrainerParty:
 	and a
 	ret nz ; populated elsewhere
 
-	ld hl, wOTPartyCount
 	xor a
-	ld [hli], a
-	dec a
-	ld [hl], a
+	ld [wPartyCount], a
 
 	ld hl, wOTPartyMons
 	ld bc, PARTYMON_STRUCT_LENGTH * PARTY_LENGTH
-	xor a
 	rst ByteFill
 
 	call FindTrainerData

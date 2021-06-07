@@ -112,12 +112,6 @@ ResetWRAM:
 	ld bc, wGameDataEnd - wBattlePointsEnd
 	rst ByteFill
 
-	; Fill party species array with terminators.
-	ld hl, wPartySpecies
-	ld bc, PARTY_LENGTH + 1
-	dec a ; ld a, -1
-	rst ByteFill
-
 	call Random
 	ldh a, [rLY]
 	ldh [hSecondsBackup], a
@@ -136,12 +130,9 @@ ResetWRAM:
 	call Random
 	ld [wSecretID + 1], a
 
-	ld hl, wPartyCount
-	call _ResetWRAM_InitList
-
 	xor a
+	ld [wPartyCount], a
 	ld [wMonStatusFlags], a
-
 	ld [wPlayerGender], a
 
 	ld hl, wNumItems
