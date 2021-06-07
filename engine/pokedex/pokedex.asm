@@ -1315,7 +1315,7 @@ _Pokedex_GetCaptureStats:
 	; we've seen/captured and return that in bc.
 	ld hl, wTempDexFoundSpecies
 	ld bc, wTempDexSpeciesEnd - wTempDexFoundSpecies
-	jp CountSetBits16
+	jmp CountSetBits16
 
 .SetFlag:
 	push bc
@@ -1517,7 +1517,7 @@ _Pokedex_GetCursorMon:
 
 	; If we haven't caught the mon, we're done here.
 	pop af
-	jmp z, .done
+	jr z, .done
 
 	ld a, 1
 	ld [wPokedexOAM_IsCaught], a

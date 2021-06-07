@@ -253,7 +253,7 @@ PHB_LoadRow:
 	ld b, 28
 .fixtiming1
 	dec b
-	jp nz, .fixtiming1
+	jr nz, .fixtiming1
 
 	; Write poké ball presence info
 	ld hl, oamSprite12YCoord + 16
