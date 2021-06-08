@@ -250,10 +250,11 @@ PHB_LoadRow:
 	pop de
 
 	; This places the OAM writes within the worst-case mode0 margin.
-	ld b, 28
+	; Delay for exactly 2 + (1 + 3) * 34 + 1 + 2 = 141 cycles.
+	ld b, 35
 .fixtiming1
 	dec b
-	jp nz, .fixtiming1 ; do not use jmp/jr
+	jr nz, .fixtiming1
 
 	; Write poké ball presence info
 	ld hl, oamSprite12YCoord + 16
