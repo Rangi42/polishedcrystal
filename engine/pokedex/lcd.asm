@@ -385,7 +385,7 @@ endr
 	ret ; no-optimize stub function
 
 PVB_UpdateDexMap::
-; Reloads dex gfx data depending on wPokedex_UpdateTiles.
+; Reloads dex gfx data depending on wPokedex_GFXFlags.
 	ld hl, wPokedex_GFXFlags
 	ld a, [hl]
 	and a
