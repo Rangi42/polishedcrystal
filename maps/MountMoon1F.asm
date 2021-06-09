@@ -32,7 +32,7 @@ MountMoon1F_MapScriptHeader:
 	const MOUNTMOON1F_SILVER
 
 MountMoon1FTrigger0:
-	prioritysjump .RivalBattle
+	sdefer .RivalBattle
 	end
 
 .RivalBattle:

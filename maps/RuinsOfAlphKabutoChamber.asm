@@ -29,7 +29,7 @@ RuinsOfAlphKabutoChamber_MapScriptHeader:
 RuinsofAlphKabutoChamberTrigger0:
 	checkevent EVENT_WALL_OPENED_IN_KABUTO_CHAMBER
 	iffalse .End
-	prioritysjump RuinsofAlphKabutoChamberWallOpenScript
+	sdefer RuinsofAlphKabutoChamberWallOpenScript
 .End
 	end
 

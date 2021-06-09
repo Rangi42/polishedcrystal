@@ -43,7 +43,7 @@ Route10North_MapScriptHeader:
 	const ROUTE10_KRIS
 
 Route10NorthTrigger1:
-	prioritysjump Route10NorthLawrenceEncounter1Script
+	sdefer Route10NorthLawrenceEncounter1Script
 Route10NorthTrigger0:
 	end
 

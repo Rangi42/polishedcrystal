@@ -23,7 +23,7 @@ DragonShrine_MapScriptHeader:
 	const DRAGONSHRINE_CLAIR
 
 DragonShrineTrigger0:
-	prioritysjump DragonShrineTestScript
+	sdefer DragonShrineTestScript
 	end
 
 DragonShrineTestScript:

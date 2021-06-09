@@ -32,7 +32,7 @@ Route35NationalParkGate_MapScriptHeader:
 	const ROUTE35NATIONALPARKGATE_OFFICER2
 
 Route35NationalParkGateTrigger2:
-	prioritysjump Route35NationalParkGate_LeavingContestEarly
+	sdefer Route35NationalParkGate_LeavingContestEarly
 Route35NationalParkGateTrigger0:
 Route35NationalParkGateTrigger1:
 	end

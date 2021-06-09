@@ -28,7 +28,7 @@ RuinsofAlphHoOhChamberTrigger0:
 	special SpecialHoOhChamber
 	checkevent EVENT_WALL_OPENED_IN_HO_OH_CHAMBER
 	iffalse .End
-	prioritysjump RuinsOfAlphHoOhChamberWallOpenScript
+	sdefer RuinsOfAlphHoOhChamberWallOpenScript
 .End
 	end
 

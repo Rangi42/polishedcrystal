@@ -26,7 +26,7 @@ Route43Gate_MapScriptHeader:
 	const ROUTE43GATE_ROCKET2
 
 Route43GateTrigger0:
-	prioritysjump .RocketTakeover
+	sdefer .RocketTakeover
 	end
 
 .RocketTakeover:

@@ -26,7 +26,7 @@ VermilionPort_MapScriptHeader:
 	const VERMILIONPORT_SAILOR2
 
 VermilionPortTrigger1:
-	prioritysjump UnknownScript_0x74da6
+	sdefer UnknownScript_0x74da6
 VermilionPortTrigger0:
 	end
 

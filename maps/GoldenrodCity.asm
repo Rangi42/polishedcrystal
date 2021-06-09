@@ -91,7 +91,7 @@ GoldenrodCityMoveTutor:
 	endcallback
 
 GoldenrodCityTrigger0:
-	prioritysjump GoldenrodCityStepDownScript
+	sdefer GoldenrodCityStepDownScript
 	end
 
 GoldenrodCityStepDownScript:

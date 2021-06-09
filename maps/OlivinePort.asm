@@ -29,7 +29,7 @@ OlivinePort_MapScriptHeader:
 	const OLIVINEPORT_SAILOR3
 
 OlivinePortTrigger1:
-	prioritysjump UnknownScript_0x748b1
+	sdefer UnknownScript_0x748b1
 OlivinePortTrigger0:
 	end
 

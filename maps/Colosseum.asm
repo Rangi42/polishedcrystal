@@ -25,7 +25,7 @@ Colosseum_MapScriptHeader:
 	const COLOSSEUM_CHRIS2
 
 ColosseumTrigger0:
-	prioritysjump ColosseumScript_Initialize
+	sdefer ColosseumScript_Initialize
 	end
 
 ColosseumScript_SetWhichChris:

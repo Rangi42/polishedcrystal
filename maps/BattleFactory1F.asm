@@ -43,15 +43,13 @@ BattleFactory1FContinueChallenge:
 		line "for you."
 		prompt
 
-	; Schedule script for running. This prevents odd issues that a regular jump
-	; causes for scene scripts. This is NOT a true jump, so "end" is necessary.
-	prioritysjump Script_ReturnToRentalChallenge
+	sdefer Script_ReturnToRentalChallenge
 	end
 
 .LeftWithoutSaving:
-	; The player resetted the game in the middle of a battle.
+	; The player reset the game in the middle of a battle.
 	; This counts as a battle loss, and will reset the winstreak.
-	prioritysjump .LeftWithoutSaving2
+	sdefer .LeftWithoutSaving2
 	end
 .LeftWithoutSaving2:
 	opentext
@@ -73,11 +71,11 @@ BattleFactory1FContinueChallenge:
 
 .LostChallenge:
 	opentext
-	prioritysjump Script_CommitBattleFactoryResult
+	sdefer Script_CommitBattleFactoryResult
 	end
 
 .WonChallenge:
-	prioritysjump .WonChallenge2
+	sdefer .WonChallenge2
 	end
 .WonChallenge2:
 	opentext

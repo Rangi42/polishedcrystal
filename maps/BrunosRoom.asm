@@ -19,7 +19,7 @@ BrunosRoom_MapScriptHeader:
 	object_event  5,  7, SPRITE_BRUNO, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, BrunoScript, -1
 
 BrunosRoomEntranceTrigger:
-	prioritysjump .Script
+	sdefer .Script
 	end
 
 .Script:

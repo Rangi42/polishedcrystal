@@ -55,7 +55,7 @@ RuinsOfAlphInnerChamber_MapScriptHeader:
 	object_event  7, 11, SPRITE_SCIENTIST, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_COMMAND, jumptextfaceplayer, RuinsOfAlphInnerChamberScientistText, EVENT_RUINS_OF_ALPH_INNER_CHAMBER_TOURISTS
 
 RuinsofAlphInnerChamberTrigger1:
-	prioritysjump RuinsOfAlphInnerChamberStrangePresenceScript
+	sdefer RuinsOfAlphInnerChamberStrangePresenceScript
 RuinsofAlphInnerChamberTrigger0:
 	end
 

@@ -18,7 +18,7 @@ WillsRoom_MapScriptHeader:
 	object_event  5,  7, SPRITE_WILL, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, WillScript, -1
 
 WillsRoomEntranceTrigger:
-	prioritysjump .Script
+	sdefer .Script
 	end
 
 .Script:
