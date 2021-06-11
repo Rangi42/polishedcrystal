@@ -33,7 +33,7 @@ DelayFrame::
 ; Wait for one frame
 	ldh a, [rLY]
 	ldh [hDelayFrameLY], a
-	ld a, TRUE
+	xor a ; ld a, FALSE
 	ldh [hVBlankOccurred], a
 
 ; Wait for the next VBlank, halting to conserve battery
@@ -44,5 +44,5 @@ MaybeDelayFrame:
 ; Used in place of DelayFrame for special cases.
 	ldh a, [hVBlankOccurred]
 	and a
-	jr nz, DelayFrameHalt
+	jr z, DelayFrameHalt
 	ret

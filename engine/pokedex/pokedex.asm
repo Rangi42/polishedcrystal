@@ -1339,7 +1339,7 @@ _Pokedex_GetCaptureStats:
 
 Pokedex_GetInput:
 ; Returns button input in a, and potentially handles screen refreshing.
-	ld a, TRUE
+	xor a ; ld a, FALSE
 	ldh [hVBlankOccurred], a
 	ld hl, wPokedex_GFXFlags
 	bit DEXGFX_DEFERRED, [hl]

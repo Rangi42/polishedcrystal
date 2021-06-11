@@ -78,14 +78,12 @@ VBlank::
 	call GameTimer
 
 	ld hl, hVBlankOccurred
-	ld a, [hl]
-	and a
-	ld [hl], FALSE
+	dec [hl]
 	jr nz, .noVBlankLeak
 	ld a, $ff
 	ldh [hDelayFrameLY], a
 .noVBlankLeak
-
+	ld [hl], TRUE
 	pop af
 	ldh [hTempBank], a
 
