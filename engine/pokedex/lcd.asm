@@ -475,4 +475,4 @@ PVB_UpdateDexMap::
 	ret
 
 DexOAM:
-INCBIN "gfx/pokedex/oam.2bpp"
+INCBIN "gfx/pokedex/oam.2bpp.lz"

@@ -84,10 +84,10 @@ Pokedex:
 	xor a
 	ldh [rVBK], a
 
-	ld de, DexOAM
-	ld hl, vTiles0
+	ld hl, DexOAM
+	ld de, vTiles0
 	lb bc, BANK(DexOAM), 5
-	call Get2bpp
+	call DecompressRequest2bpp
 
 	pop af
 	ldh [rSVBK], a
