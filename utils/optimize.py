@@ -469,6 +469,14 @@ patterns = {
 		and line1.code.lower() not in {'endc', 'endr', 'endm'}),
 	(lambda line2, prev: line2.code.startswith('jr ') and ',' not in line2.code),
 ],
+# 'Inefficient WRAM increment/decrement': [
+	# # Bad: ld a, [wFoo] / inc|dec a / ld [wFoo], a (unless hl needs to be preserved)
+	# # Good: ld hl, wFoo / inc|dec [hl]
+	# (lambda line1, prev: re.match(r'ld a, \[w', line1.code)),
+	# (lambda line2, prev: line2.code in {'inc a', 'dec a'}),
+	# (lambda line3, prev: re.match(r'ld \[w.*?\], a', line3.code)
+		# and line3.code.split(", ")[0].lstrip("ld ") == prev[0].code.split(", ")[-1]),
+# ],
 }
 
 # Count the total instances of the pattern

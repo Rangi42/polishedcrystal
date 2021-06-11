@@ -20,6 +20,7 @@ CheckUniqueWildMove:
 	ld a, [hli] ; form
 	ld b, a
 	ld a, [wCurForm]
+	and SPECIESFORM_MASK
 	cp b
 	jr nz, .inc1andloop
 	ld a, [hli] ; move

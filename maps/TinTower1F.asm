@@ -37,7 +37,7 @@ TinTower1F_MapScriptHeader:
 	const TINTOWER1F_SAGE3
 
 TinTower1FTrigger0:
-	prioritysjump SuicuneBattle
+	sdefer SuicuneBattle
 	end
 
 UnknownScript_0x18502f:

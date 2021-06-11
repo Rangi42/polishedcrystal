@@ -28,7 +28,7 @@ LancesRoom_MapScriptHeader:
 	const LANCESROOM_OAK
 
 LancesRoomEntranceTrigger:
-	prioritysjump .Script
+	sdefer .Script
 	end
 
 .Script:

@@ -51,7 +51,7 @@ TeamRocketBaseB3F_MapScriptHeader:
 	const TEAMROCKETBASEB3F_SILVER
 
 TeamRocketBaseB3FTrigger0:
-	prioritysjump LanceGetPasswordScript
+	sdefer LanceGetPasswordScript
 	end
 
 TeamRocketBaseB3FCheckGiovanniDoor:

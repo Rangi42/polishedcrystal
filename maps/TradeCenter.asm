@@ -24,7 +24,7 @@ TradeCenter_MapScriptHeader:
 	const TRADECENTER_CHRIS2
 
 TradeCenterTrigger0:
-	prioritysjump TradeCenter_Initialize
+	sdefer TradeCenter_Initialize
 	end
 
 TradeCenter_SetWhichChris:

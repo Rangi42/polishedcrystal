@@ -26,7 +26,7 @@ DayCare_MapScriptHeader:
 	const DAYCARE_LYRA
 
 DayCareTrigger0:
-	prioritysjump DayCare_MeetGrandma
+	sdefer DayCare_MeetGrandma
 	end
 
 DayCareEggCheckCallback:

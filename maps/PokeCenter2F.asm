@@ -27,12 +27,12 @@ PokeCenter2F_MapScriptHeader:
 	const POKECENTER2F_BATTLE_RECEPTIONIST
 
 PokeCenter2FLeftTradeCenterTrigger:
-	prioritysjump Script_LeftCableTradeCenter
+	sdefer Script_LeftCableTradeCenter
 PokeCenter2FDummyTrigger:
 	end
 
 PokeCenter2FLeftColosseumTrigger:
-	prioritysjump Script_LeftCableColosseum
+	sdefer Script_LeftCableColosseum
 	end
 
 PokeCenter2FTileCallback:

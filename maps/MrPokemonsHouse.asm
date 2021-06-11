@@ -29,7 +29,7 @@ MrPokemonsHouse_MapScriptHeader:
 	const MRPOKEMONSHOUSE_POKEDEX
 
 MrPokemonsHouseTrigger0:
-	prioritysjump .MrPokemonEvent
+	sdefer .MrPokemonEvent
 	end
 
 .MrPokemonEvent:

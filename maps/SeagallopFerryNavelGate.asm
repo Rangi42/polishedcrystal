@@ -20,7 +20,7 @@ SeagallopFerryNavelGate_MapScriptHeader:
 	const SEAGALLOPFERRYNAVELGATE_SAILOR
 
 SeagallopFerryNavelGateTrigger1:
-	prioritysjump SeagallopFerryNavelGate_PlayerArrives
+	sdefer SeagallopFerryNavelGate_PlayerArrives
 SeagallopFerryNavelGateTrigger0:
 	end
 

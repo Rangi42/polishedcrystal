@@ -2495,7 +2495,8 @@ HitmonchanEvosAttacks:
 	db -1 ; no more level-up moves
 
 LickitungEvosAttacks:
-	evo_data EVOLVE_MOVE, ROLLOUT, LICKILICKY ; no more evolutions
+	evo_data EVOLVE_MOVE, ROLLOUT, LICKILICKY
+	db -1 ; no more evolutions
 	db 1, LICK
 	db 5, SUPERSONIC
 	db 9, DEFENSE_CURL
@@ -4982,7 +4983,7 @@ endc
 
 DelibirdEvosAttacks:
 	db -1 ; no more evolutions
-	db 1, EXPLOSION ; Present → haha le funny XD
+	db 1, ICICLE_CRASH ; Present → new move
 	db 25, DRILL_PECK
 	db -1 ; no more level-up moves
 

@@ -911,9 +911,9 @@ deactivatefacing: MACRO
 	db \1 ; time
 ENDM
 
-	const prioritysjump_command
-prioritysjump: MACRO
-	db prioritysjump_command
+	const sdefer_command
+sdefer: MACRO
+	db sdefer_command
 	dw \1 ; pointer
 ENDM
 

@@ -26,7 +26,7 @@ EcruteakPokeCenter1F_MapScriptHeader:
 	const ECRUTEAKPOKECENTER1F_BILL
 
 EcruteakPokeCenter1FBillWalksUpTrigger:
-	prioritysjump .Script
+	sdefer .Script
 	end
 
 .Script:

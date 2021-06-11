@@ -58,7 +58,7 @@ EcruteakGym_MapScriptHeader:
 	const ECRUTEAKGYM_GRAMPS
 
 EcruteakGymTrigger0:
-	prioritysjump EcruteakGymClosed
+	sdefer EcruteakGymClosed
 	end
 
 EcruteakGymMortyScript:

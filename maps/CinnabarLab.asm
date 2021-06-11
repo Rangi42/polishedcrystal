@@ -42,7 +42,7 @@ CinnabarLab_MapScriptHeader:
 	const CINNABARLAB_KRIS
 
 CinnabarLabTrigger0:
-	prioritysjump CinnabarLabStepDownScript
+	sdefer CinnabarLabStepDownScript
 	end
 
 CinnabarLabStepDownScript:

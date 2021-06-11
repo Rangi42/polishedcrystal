@@ -36,11 +36,11 @@ BattleFactoryHallway_MapScriptHeader:
 BattleFactoryHallwayFollowReceptionist:
 	readvar VAR_YCOORD
 	ifequal 13, .arrived_from_lobby
-	prioritysjump .WonBattle
+	sdefer .WonBattle
 	end
 
 .arrived_from_lobby
-	prioritysjump .StepIntoRoom
+	sdefer .StepIntoRoom
 	end
 
 .WonBattle:

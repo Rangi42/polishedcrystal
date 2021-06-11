@@ -25,7 +25,7 @@ VioletGym_MapScriptHeader:
 	const VIOLETGYM_GYM_GUY2
 
 VioletGymTrigger0:
-	prioritysjump VioletGymFalknerAwayScript
+	sdefer VioletGymFalknerAwayScript
 	end
 
 VioletGymFalknerAwayScript:
