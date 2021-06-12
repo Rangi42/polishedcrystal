@@ -36,11 +36,11 @@ FastShip1F_MapScriptHeader:
 	const FASTSHIP1F_GENTLEMAN
 
 FastShip1FTrigger1:
-	prioritysjump FastShip1FPriorityJump2
+	sdefer FastShip1FEnterFastShipScript
 FastShip1FTrigger0:
 	end
 
-FastShip1FPriorityJump2:
+FastShip1FEnterFastShipScript:
 	applymovement FASTSHIP1F_SAILOR1, FastShip1F_SailorStepAsideMovement
 	applymovement PLAYER, FastShip1F_PlayerEntersShipMovement
 	applymovement FASTSHIP1F_SAILOR1, FastShip1F_SailorBlocksDoorMovement

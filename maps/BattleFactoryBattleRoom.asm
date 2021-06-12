@@ -22,7 +22,7 @@ BattleFactoryBattleRoom_MapScriptHeader:
 
 BattleFactoryBattleRoomEnterBattleRoom:
 	disappear BATTLEFACTORYBATTLEROOM_OPPONENT
-	prioritysjump Script_BattleFloor
+	sdefer Script_BattleFloor
 	end
 
 Script_BattleFloor:

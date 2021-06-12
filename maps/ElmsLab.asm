@@ -62,7 +62,7 @@ ElmsLab_MapScriptHeader:
 	const ELMSLAB_LYRA
 
 ElmsLabTrigger0:
-	prioritysjump ElmsLab_AutowalkUpToElm
+	sdefer ElmsLab_AutowalkUpToElm
 ElmsLabTrigger1:
 ElmsLabTrigger2:
 ElmsLabTrigger3:
@@ -72,7 +72,7 @@ ElmsLabTrigger6:
 	end
 
 ElmsLabTrigger7:
-	prioritysjump ElmsLab_AutoAideSpeech
+	sdefer ElmsLab_AutoAideSpeech
 	end
 
 ElmsLabCallback_MoveElm:

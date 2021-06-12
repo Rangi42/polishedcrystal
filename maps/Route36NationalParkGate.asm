@@ -48,7 +48,7 @@ Route36NationalParkGate_MapScriptHeader:
 	const ROUTE36NATIONALPARKGATE_OFFICER2
 
 Route36NationalParkGateTrigger2:
-	prioritysjump Route36NationalParkGateLeftTheContestEarly
+	sdefer Route36NationalParkGateLeftTheContestEarly
 Route36NationalParkGateTrigger0:
 Route36NationalParkGateTrigger1:
 	end

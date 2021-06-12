@@ -30,7 +30,7 @@ CeruleanGym_MapScriptHeader:
 	const CERULEANGYM_ROCKET
 
 CeruleanGymTrigger1:
-	prioritysjump UnknownScript_0x1883de
+	sdefer UnknownScript_0x1883de
 CeruleanGymTrigger0:
 	end
 

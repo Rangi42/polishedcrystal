@@ -444,11 +444,9 @@ PadFrontpic:
 
 .six
 	ld c, 7 tiles
-	xor a
 	call .Fill
 .six_loop
 	ld c, 1 tiles
-	xor a
 	call .Fill
 	ld c, 6 tiles
 	call LoadFrontpic
@@ -458,24 +456,23 @@ PadFrontpic:
 
 .five
 	ld c, 7 tiles
-	xor a
 	call .Fill
 .five_loop
 	ld c, 2 tiles
-	xor a
 	call .Fill
 	ld c, 5 tiles
 	call LoadFrontpic
 	dec b
 	jr nz, .five_loop
 	ld c, 7 tiles
-	xor a
 	; fallthrough
 
 .Fill:
+	xor a
+.fill_loop
 	ld [hli], a
 	dec c
-	jr nz, .Fill
+	jr nz, .fill_loop
 	ret
 
 LoadFrontpic:

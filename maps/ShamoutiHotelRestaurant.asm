@@ -21,7 +21,7 @@ ShamoutiHotelRestaurant_MapScriptHeader:
 	const SHAMOUTIHOTELRESTAURANT_RECEPTIONIST
 
 ShamoutiHotelRestaurantTrigger0:
-	prioritysjump ShamoutiHotelRestaurantChallengeScript
+	sdefer ShamoutiHotelRestaurantChallengeScript
 	end
 
 ShamoutiHotelRestaurantChallengeScript:

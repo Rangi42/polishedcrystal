@@ -767,7 +767,7 @@ wMapEventStatus::
 
 wScriptFlags::
 wScriptFlags1::
-; bit 3: priority jump
+; bit 3: run deferred script
 	db
 wScriptFlags2::
 	db
@@ -788,10 +788,10 @@ wScriptStackSize:: db
 wScriptStack:: ds 3 * 12
 wScriptDelay:: db
 
-wPriorityScriptBank::
+wDeferredScriptBank::
 wScriptTextBank::
 	db
-wPriorityScriptAddr::
+wDeferredScriptAddr::
 wScriptTextAddr::
 	dw
 

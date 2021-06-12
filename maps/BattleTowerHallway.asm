@@ -23,7 +23,7 @@ BattleTowerHallway_MapScriptHeader:
 	const BATTLETOWERHALLWAY_RECEPTIONIST
 
 BattleTowerHallwayFollowReceptionist:
-	prioritysjump .ChooseBattleRoom
+	sdefer .ChooseBattleRoom
 	end
 
 .ChooseBattleRoom:

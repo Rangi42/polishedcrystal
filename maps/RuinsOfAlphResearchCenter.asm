@@ -29,7 +29,7 @@ RuinsOfAlphResearchCenter_MapScriptHeader:
 	const RUINSOFALPHRESEARCHCENTER_SCIENTIST3
 
 RuinsofAlphResearchCenterTrigger1:
-	prioritysjump RuinsOfAlphResearchCenterGetUnownDexScript
+	sdefer RuinsOfAlphResearchCenterGetUnownDexScript
 RuinsofAlphResearchCenterTrigger0:
 	end
 

@@ -25,7 +25,7 @@ FarawayIsland_MapScriptHeader:
 	const FARAWAYISLAND_LAWRENCE
 
 FarawayIslandTrigger1:
-	prioritysjump FarawayIsland_PlayerArrives
+	sdefer FarawayIsland_PlayerArrives
 FarawayIslandTrigger0:
 	end
 

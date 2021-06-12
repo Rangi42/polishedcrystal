@@ -32,7 +32,7 @@ BurnedTower1F_MapScriptHeader:
 	const BURNEDTOWER1F_SILVER
 
 BurnedTower1FTrigger0:
-	prioritysjump BurnedTower1FEusineTriggerScript
+	sdefer BurnedTower1FEusineTriggerScript
 	end
 
 BurnedTower1FHoleAndLadder:

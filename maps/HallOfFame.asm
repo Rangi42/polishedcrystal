@@ -19,7 +19,7 @@ HallOfFame_MapScriptHeader:
 	const HALLOFFAME_LANCE
 
 HallOfFameEntranceTrigger:
-	prioritysjump .Script
+	sdefer .Script
 	end
 
 .Script:

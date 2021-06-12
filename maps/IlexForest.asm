@@ -53,7 +53,7 @@ IlexForest_MapScriptHeader:
 	const ILEXFOREST_YOUNGSTER
 
 IlexForestTrigger1:
-	prioritysjump IlexForestFinishCelebiEventScript
+	sdefer IlexForestFinishCelebiEventScript
 IlexForestTrigger0:
 	end
 
