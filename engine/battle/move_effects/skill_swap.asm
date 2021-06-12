@@ -19,6 +19,11 @@ BattleCommand_skillswap:
 	pop bc
 	jr c, .failed
 
+	ld a, b
+	ld [wEnemyAbility], a
+	ld a, d
+	ld [wPlayerAbility], a
+
 	call AnimateCurrentMove
 
 	ld hl, SwappedAbilitiesText
