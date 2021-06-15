@@ -24,6 +24,7 @@ HallOfFame::
 	inc [hl]
 .ok
 	farcall SaveGameData
+	farcall SaveCurrentVersion
 	call GetHallOfFameParty
 	farcall AddHallOfFameEntry
 
