@@ -412,8 +412,8 @@ PVB_UpdateDexMap::
 	ld a, ((BG_MAP_WIDTH * (SCREEN_HEIGHT + 1)) >> 4) - 1
 	call ContinueGDMACopy
 	ld [hl], 0
-	call UpdateCGBPals
 	call ForcePushOAM
+	call ForceUpdateCGBPals
 	ld hl, wDexPalCopy
 	ld de, wPokedex_Pals
 	ld bc, wPokedex_PalsEnd - wPokedex_Pals
