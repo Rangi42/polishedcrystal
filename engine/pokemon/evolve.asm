@@ -223,7 +223,7 @@ EvolveAfterBattle_MasterLoop:
 .ok
 	xor a
 	ld [wTempMonItem], a
-	jr .proceed
+	jmp .proceed
 
 .holding_daylight
 	ld a, [wTimeOfDay]
