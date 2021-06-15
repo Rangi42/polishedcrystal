@@ -188,10 +188,10 @@ DragonShrineElder1Script:
 	waitbutton
 	checkevent EVENT_ANSWERED_DRAGON_MASTER_QUIZ_WRONG
 	iftrue .NoExtremeSpeed
-	givepoke DRATINI, NO_FORM, 15, SITRUS_BERRY, ULTRA_BALL, EXTREMESPEED
+	givepoke DRATINI, PLAIN_FORM, 15, SITRUS_BERRY, ULTRA_BALL, EXTREMESPEED
 	sjump .FinishElderScript
 .NoExtremeSpeed
-	givepoke DRATINI, NO_FORM, 15, SITRUS_BERRY, ULTRA_BALL
+	givepoke DRATINI, PLAIN_FORM, 15, SITRUS_BERRY, ULTRA_BALL
 .FinishElderScript
 	iffalse_jumpopenedtext DragonShrinePartyAndBoxFullText
 	setevent EVENT_GOT_DRATINI

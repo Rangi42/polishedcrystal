@@ -755,11 +755,10 @@ TradeAnim_AnimateFrontpic:
 
 TradeAnim_GetFrontpic:
 	push de
-	push af
-	predef GetVariant
-	pop af
 	ld [wCurPartySpecies], a
 	ld [wCurSpecies], a
+	ld a, [hl]
+	ld [wCurForm], a
 	call GetBaseData
 	pop de
 	predef_jump GetFrontpic

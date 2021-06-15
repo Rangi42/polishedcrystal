@@ -474,14 +474,12 @@ endr
 	and $f
 	jr nz, .done
 	ld a, [wCurPartySpecies]
-	cp UNOWN
+	cp LOW(UNOWN)
 	jr nz, .done
-	ld hl, wPartyMon1Form
-	ld a, [wPartyCount]
-	dec a
-	ld bc, PARTYMON_STRUCT_LENGTH
-	rst AddNTimes
-	predef GetVariant
+	assert !HIGH(UNOWN)
+	ld a, [wCurForm]
+	and EXTSPECIES_MASK
+	jr nz, .done
 	farcall UpdateUnownDex
 
 .done
@@ -522,6 +520,7 @@ AddTempMonToParty:
 	ld e, l
 	ld d, h
 	ld hl, wTempMonSpecies
+	ld bc, PARTYMON_STRUCT_LENGTH
 	rst CopyBytes
 
 	ld hl, wPartyMonOTs
@@ -545,12 +544,14 @@ AddTempMonToParty:
 	rst CopyBytes
 
 	ld hl, wNamedObjectIndex
-	ld a, [wCurPartySpecies]
+	ld a, [wTempMonSpecies]
 	ld c, a
 	ld [hli], a
-	ld a, [wCurForm]
+	ld [wCurPartySpecies], a
+	ld a, [wTempMonForm]
 	ld b, a
 	ld [hl], a
+	ld [wCurForm], a
 
 	push bc
 	ld hl, wPartyMon1IsEgg
@@ -571,14 +572,12 @@ AddTempMonToParty:
 .egg
 
 	ld a, [wCurPartySpecies]
-	cp UNOWN
+	cp LOW(UNOWN)
 	jr nz, .not_unown
-	ld hl, wPartyMon1Form
-	ld a, [wPartyCount]
-	dec a
-	ld bc, PARTYMON_STRUCT_LENGTH
-	rst AddNTimes
-	predef GetVariant
+	assert !HIGH(UNOWN)
+	ld a, [wCurForm]
+	and EXTSPECIES_MASK
+	jr nz, .not_unown
 	farcall UpdateUnownDex
 	ld a, [wFirstUnownSeen]
 	and a
@@ -588,14 +587,12 @@ AddTempMonToParty:
 .not_unown
 
 	ld a, [wCurPartySpecies]
-	cp MAGIKARP
+	cp LOW(MAGIKARP)
 	jr nz, .done
-	ld hl, wPartyMon1Form
-	ld a, [wPartyCount]
-	dec a
-	ld bc, PARTYMON_STRUCT_LENGTH
-	rst AddNTimes
-	predef GetVariant
+	assert !HIGH(MAGIKARP)
+	ld a, [wCurForm]
+	and EXTSPECIES_MASK
+	jr nz, .done
 	ld a, [wFirstMagikarpSeen]
 	and a
 	jr nz, .done
@@ -923,8 +920,8 @@ SentPkmnIntoBox:
 
 	ld a, [wCurPartySpecies]
 	ld [wCurSpecies], a
-	ld hl, wOTPartyMon1Form
-	predef GetVariant
+	ld a, [wOTPartyMon1Form]
+	ld [wCurForm], a
 	call GetBaseData
 
 	ld hl, wPlayerName

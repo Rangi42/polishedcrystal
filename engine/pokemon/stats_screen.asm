@@ -236,10 +236,6 @@ StatsScreen_InitUpperHalf:
 	ld a, [wCurForm]
 	ld b, a
 	call GetPokedexNumber
-	ld a, b
-	ld [wStringBuffer1], a
-	ld a, c
-	ld [wStringBuffer1 + 1], a
 	hlcoord 8, 0
 	ld a, "№"
 	ld [hli], a
@@ -247,8 +243,7 @@ StatsScreen_InitUpperHalf:
 	ld [hli], a
 	hlcoord 10, 0
 	lb bc, PRINTNUM_LEADINGZEROS | 2, 3
-	ld de, wStringBuffer1
-	call PrintNum
+	call PrintNumFromReg ; sets de
 	hlcoord 14, 0
 	call PrintLevel
 	ld hl, wTempMonNickname
@@ -898,8 +893,8 @@ TN_PrintCharacteristics:
 INCLUDE "data/characteristics.asm"
 
 StatsScreen_PlaceFrontpic:
-	ld hl, wTempMonForm
-	predef GetVariant
+	ld a, [wTempMonForm]
+	ld [wCurForm], a
 	call StatsScreen_GetAnimationParam
 	jr nc, .no_cry
 	call .Animate

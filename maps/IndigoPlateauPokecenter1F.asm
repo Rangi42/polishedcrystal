@@ -362,15 +362,15 @@ IndigoPlateauYellowScript:
 	iftrue .Squirtle
 	checkevent EVENT_GOT_CHARMANDER_FROM_IVY
 	iftrue .Bulbasaur
-	givepoke CHARMANDER, NO_FORM, 10, SITRUS_BERRY
+	givepoke CHARMANDER, PLAIN_FORM, 10, SITRUS_BERRY
 	sjump .Finish
 
 .Bulbasaur:
-	givepoke BULBASAUR, NO_FORM, 10, SITRUS_BERRY
+	givepoke BULBASAUR, PLAIN_FORM, 10, SITRUS_BERRY
 	sjump .Finish
 
 .Squirtle:
-	givepoke SQUIRTLE, NO_FORM, 10, SITRUS_BERRY
+	givepoke SQUIRTLE, PLAIN_FORM, 10, SITRUS_BERRY
 .Finish:
 	iffalse_jumpopenedtext .PartyAndBoxFullText
 	writetext .GoodbyeText

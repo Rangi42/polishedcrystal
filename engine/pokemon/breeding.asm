@@ -657,11 +657,9 @@ InheritMove:
 
 GetEggFrontpic:
 	push de
-	ld a, [wCurPartyMon]
-	ld hl, wPartyMon1Form
-	ld bc, PARTYMON_STRUCT_LENGTH
-	rst AddNTimes
-	predef GetVariant
+	ld a, MON_FORM
+	call GetPartyParamLocationAndValue
+	ld [wCurForm], a
 	ld a, EGG
 	ld [wCurPartySpecies], a
 	ld [wCurSpecies], a
@@ -671,11 +669,9 @@ GetEggFrontpic:
 
 GetHatchlingFrontpic:
 	push de
-	ld a, [wCurPartyMon]
-	ld hl, wPartyMon1Form
-	ld bc, PARTYMON_STRUCT_LENGTH
-	rst AddNTimes
-	predef GetVariant
+	ld a, MON_FORM
+	call GetPartyParamLocationAndValue
+	ld [wCurForm], a
 	ld a, [wCurPartySpecies]
 	ld [wCurSpecies], a
 	call GetBaseData

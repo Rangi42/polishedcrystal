@@ -61,19 +61,19 @@ Oak:
 	iftrue .Charmander
 	checkevent EVENT_GOT_CHARMANDER_FROM_IVY
 	iftrue .Squirtle
-	givepoke BULBASAUR, NO_FORM, 10, SITRUS_BERRY
+	givepoke BULBASAUR, PLAIN_FORM, 10, SITRUS_BERRY
 	iffalse .PartyAndBoxFull
 	setevent EVENT_GOT_A_POKEMON_FROM_OAK
 	sjump .CheckBadges
 
 .Charmander:
-	givepoke CHARMANDER, NO_FORM, 10, SITRUS_BERRY
+	givepoke CHARMANDER, PLAIN_FORM, 10, SITRUS_BERRY
 	iffalse .PartyAndBoxFull
 	setevent EVENT_GOT_A_POKEMON_FROM_OAK
 	sjump .CheckBadges
 
 .Squirtle:
-	givepoke SQUIRTLE, NO_FORM, 10, SITRUS_BERRY
+	givepoke SQUIRTLE, PLAIN_FORM, 10, SITRUS_BERRY
 	iffalse .PartyAndBoxFull
 	setevent EVENT_GOT_A_POKEMON_FROM_OAK
 	sjump .CheckBadges

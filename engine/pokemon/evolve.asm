@@ -132,11 +132,12 @@ EvolveAfterBattle_MasterLoop:
 
 	; Spiky-eared Pichu cannot evolve
 	ld a, [wTempMonSpecies]
-	cp PICHU
+	cp LOW(PICHU)
 	jr nz, .not_spiky_eared_pichu
 	ld a, [wTempMonForm]
+	assert !HIGH(PICHU)
 	and SPECIESFORM_MASK
-	cp 2
+	cp PICHU_SPIKY_EARED_FORM
 	jmp z, .dont_evolve_2
 
 .not_spiky_eared_pichu
@@ -171,7 +172,6 @@ EvolveAfterBattle_MasterLoop:
 	ld a, [wLinkMode]
 	and a
 	jmp nz, .dont_evolve_3
-	call ChangeFormOnItemEvolution
 	jmp .proceed
 
 .party
@@ -298,23 +298,27 @@ endr
 	jmp c, .dont_evolve_3
 	call IsMonHoldingEverstone
 	jmp z, .dont_evolve_3
-	call ChangeFormOnLevelEvolution
 
 .proceed
 	ld a, [wTempMonLevel]
 	ld [wCurPartyLevel], a
-	ld a, [wTempMonForm]
-	and SPECIESFORM_MASK
-	ld [wCurForm], a
 	ld a, $1
 	ld [wMonTriedToEvolve], a
-
-	push hl
 
 	ld a, [hli]
 	ld [wEvolutionNewSpecies], a
 	ld a, [hl]
+	ld c, a
+	and FORM_MASK
+	ld a, [wTempMonForm]
+	jr z, .keep_old_form
+	and $ff - FORM_MASK
+.keep_old_form
+	and $ff - EXTSPECIES_MASK
+	or c
 	ld [wEvolutionNewForm], a
+	and SPECIESFORM_MASK
+	ld [wCurForm], a
 	ld a, [wCurPartyMon]
 	ld hl, wPartyMonNicknames
 	call GetNickname
@@ -345,27 +349,25 @@ endr
 	ld hl, Text_CongratulationsYourPokemon
 	call PrintText
 
-	pop hl
-
+	ld hl, wEvolutionNewSpecies
 	ld a, [hli]
 	ld [wCurSpecies], a
 	ld [wTempMonSpecies], a
 	ld [wNamedObjectIndex], a
-	ld a, [hld]
+
+	ld a, [hl]
 	ld [wCurForm], a
 	ld [wTempMonForm], a
 	ld [wNamedObjectIndex+1], a
-	call GetPokemonName
 
-	push hl
+	call GetPokemonName
 	ld hl, Text_EvolvedIntoPKMN
 	call PrintTextboxText
 
 	ld de, MUSIC_NONE
 	call PlayMusic
 	ld de, SFX_CAUGHT_MON
-	call PlaySFX
-	call WaitSFX
+	call PlayWaitSFX
 
 	ld c, 40
 	call DelayFrames
@@ -415,30 +417,13 @@ endr
 	ld [wMonType], a
 	ld a, [wCurSpecies]
 	ld [wTempSpecies], a
-	dec a
+	ld c, a
+	ld a, [wCurForm]
+	ld b, a
 	call SetSeenAndCaughtMon
 
-	ld a, [wTempSpecies]
-	cp UNOWN
-	jr nz, .skip_unown
-
-	ld hl, wTempMonForm
-	predef GetVariant
-	farcall UpdateUnownDex
-
-.skip_unown
-	pop de
-	pop hl
-	
-	ld a, [wTempMonSpecies]
-	ld [hl], a
-	push hl
-	push de
 	call LearnEvolutionMove
 	call LearnLevelMoves
-	pop de
-	ld l, e
-	ld h, d
 	jmp EvolveAfterBattle_MasterLoop
 
 .dont_evolve_1
@@ -464,41 +449,6 @@ EvolveAfterBattle_ReturnToMap:
 	and a
 	call nz, RestartMapMusic
 	ret
-
-ChangeFormOnLevelEvolution:
-; These Pokémon evolve into plain forms by level.
-	ld a, [wTempMonSpecies]
-	cp CUBONE
-	jr z, _PlainFormOnEvolution
-	cp KOFFING
-	ret nz
-
-_PlainFormOnEvolution:
-	ld a, PLAIN_FORM
-_ChangeFormOnEvolution:
-	ld b, a
-	ld a, [wTempMonForm]
-	and $ff - FORM_MASK
-	or b
-	ld [wTempMonForm], a
-	ret
-
-ChangeFormOnItemEvolution:
-; These Pokémon evolve into different forms with different items.
-	ld a, [wTempMonSpecies]
-	cp PIKACHU
-	jr z, .ok
-	cp EXEGGCUTE
-	jr z, .ok
-	cp CUBONE
-	ret nz
-
-.ok
-	ld a, [wCurItem]
-	cp ODD_SOUVENIR
-	ld a, ALOLAN_FORM
-	jr z, _ChangeFormOnEvolution
-	jr _PlainFormOnEvolution
 
 UpdateSpeciesNameIfNotNicknamed:
 	ld hl, wNamedObjectIndex

@@ -1,15 +1,11 @@
 GetTrademonFrontpic:
 	ld a, [wOTTrademonSpecies]
-	ld hl, wOTTrademonForm
-	ld de, vTiles2
-	push de
-	push af
-	predef GetVariant
-	pop af
 	ld [wCurPartySpecies], a
 	ld [wCurSpecies], a
+	ld a, [wOTTrademonForm]
+	ld [wCurForm], a
 	call GetBaseData
-	pop de
+	ld de, vTiles2
 	predef_jump FrontpicPredef
 
 AnimateTrademonFrontpic:

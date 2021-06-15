@@ -224,9 +224,8 @@ AnimateHOFMonEntrance:
 	ld a, [hli]
 	ld [wTempMonPersonality], a
 	ld a, [hli]
-	ld [wTempMonPersonality + 1], a
-	ld hl, wTempMonForm
-	predef GetVariant
+	ld [wTempMonForm], a
+	ld [wCurForm], a
 	hlcoord 0, 0
 	ld bc, SCREEN_WIDTH * SCREEN_HEIGHT
 	ld a, " "
@@ -447,12 +446,16 @@ DisplayHOFMon:
 	call Textbox
 	ld a, [wTempMonSpecies]
 	ld [wCurPartySpecies], a
-	ld [wTextDecimalByte], a
-	ld hl, wTempMonForm
-	predef GetVariant
+	ld c, a
+	ld a, [wTempMonForm]
+	ld [wCurForm], a
+	ld b, a
 	hlcoord 6, 5
+	push bc
 	call PrepMonFrontpicFlipped
-	ld a, [wTempMonIsEgg]
+	pop bc
+	assert MON_IS_EGG == MON_FORM
+	ld a, b
 	bit MON_IS_EGG_F, a
 	jr nz, .print_id_no
 	hlcoord 1, 13
@@ -460,9 +463,9 @@ DisplayHOFMon:
 	ld [hli], a
 	ld [hl], "."
 	hlcoord 3, 13
-	ld de, wTextDecimalByte
-	lb bc, PRINTNUM_LEADINGZEROS | 1, 3
-	call PrintNum
+	call GetPokedexNumber ; sets de
+	lb bc, PRINTNUM_LEADINGZEROS | 2, 3
+	call PrintNumFromReg
 	call GetBasePokemonName
 	hlcoord 7, 13
 	rst PlaceString

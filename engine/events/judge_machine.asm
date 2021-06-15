@@ -117,8 +117,8 @@ JudgeSystem::
 	farcall CopyBetweenPartyAndTemp
 
 ; Load the frontpic graphics
-	ld hl, wTempMonForm
-	predef GetVariant
+	ld a, [wTempMonForm]
+	ld [wCurForm], a
 	call GetBaseData
 	ld de, vTiles2
 	predef GetFrontpic

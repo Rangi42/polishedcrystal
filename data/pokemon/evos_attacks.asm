@@ -9,7 +9,7 @@ evo_data: MACRO
 	if _NARG > 3
 		dp \3, \4
 	else
-		dp \3, NO_FORM
+		dp \3, PLAIN_FORM
 	endc
 ENDM
 
@@ -2929,7 +2929,7 @@ TaurosEvosAttacks:
 	db -1 ; no more level-up moves
 
 MagikarpEvosAttacks:
-	evo_data EVOLVE_LEVEL, 20, GYARADOS
+	evo_data EVOLVE_LEVEL, 20, GYARADOS, NO_FORM ; preserve pre-evo form
 	db -1 ; no more evolutions
 	db 1, SPLASH
 	db 15, TACKLE

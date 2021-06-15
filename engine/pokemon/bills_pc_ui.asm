@@ -981,19 +981,11 @@ _GetCursorMon:
 	; Prepare frontpic. Split into decompression + loading to make sure we
 	; refresh the pokepic and the palette in a single frame (decompression
 	; is unpredictable, but bpp copy can be relied upon).
-	ld a, [wTempMonSpecies]
-
-	; Replaced with EGG later for frontpic, but we might want to
-	; change form with GetVariant
-	ld [wCurPartySpecies], a
-	ld hl, wTempMonForm
-	ld de, vTiles2
-	push de
-	push af
-	predef GetVariant
-	ld a, [wTempMonIsEgg]
+	ld a, [wTempMonForm]
+	ld [wCurForm], a
 	ld d, a
-	pop af
+	ld a, [wTempMonSpecies]
+	assert MON_IS_EGG == MON_FORM
 	bit MON_IS_EGG_F, d
 	jr z, .not_egg
 	ld a, EGG
@@ -1001,7 +993,7 @@ _GetCursorMon:
 	ld [wCurPartySpecies], a
 	ld [wCurSpecies], a
 	call GetBaseData
-	pop de
+	ld de, vTiles2
 	farcall PrepareFrontpic
 
 	push hl

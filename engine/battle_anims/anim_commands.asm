@@ -830,7 +830,8 @@ BattleAnimCmd_Transform:
 
 	ld a, [wTempBattleMonSpecies] ; TempBattleMonSpecies
 	ld [wCurPartySpecies], a ; CurPartySpecies
-	farcall GetBattleMonVariant
+	ld a, [wBattleMonForm]
+	ld [wCurForm], a
 	ld de, vTiles0 tile $00
 	predef GetFrontpic
 	jr .done
@@ -838,7 +839,8 @@ BattleAnimCmd_Transform:
 .player
 	ld a, [wTempEnemyMonSpecies] ; TempEnemyMonSpecies
 	ld [wCurPartySpecies], a ; CurPartySpecies
-	farcall GetEnemyMonVariant
+	ld a, [wEnemyMonForm]
+	ld [wCurForm], a
 	ld de, vTiles0 tile $00
 	predef GetBackpic
 
@@ -1093,13 +1095,15 @@ BattleAnimCmd_BeatUp:
 	and a
 	jr z, .player
 
-	farcall GetBattleMonVariant
+	ld a, [wBattleMonForm]
+	ld [wCurForm], a
 	ld de, vTiles2 tile $00
 	predef GetFrontpic
 	jr .done
 
 .player
-	farcall GetEnemyMonVariant
+	ld a, [wEnemyMonForm]
+	ld [wCurForm], a
 	ld de, vTiles2 tile $31
 	predef GetBackpic
 
