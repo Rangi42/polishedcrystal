@@ -218,12 +218,24 @@ EvolveAfterBattle_MasterLoop:
 	cp TR_ANYTIME
 	jr z, .ok
 	cp TR_MORNDAY
-	jr z, .happiness_daylight
-	jr .happiness_nighttime
+	jr z, .holding_daylight
+	jr .holding_nighttime
 .ok
 	xor a
 	ld [wTempMonItem], a
 	jr .proceed
+
+.holding_daylight
+	ld a, [wTimeOfDay]
+	cp NITE
+	jmp nc, .dont_evolve_3
+	jr .ok
+
+.holding_nighttime
+	ld a, [wTimeOfDay]
+	cp NITE
+	jmp c, .dont_evolve_3
+	jr .ok
 
 .location
 	ld a, [wMapGroup]
