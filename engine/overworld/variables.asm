@@ -133,4 +133,4 @@ Var_CountTrainerStars:
 	inc b
 .nostar4
 	ld a, b
-	jmp _Var_loadstringbuffer2
+	jr _Var_loadstringbuffer2

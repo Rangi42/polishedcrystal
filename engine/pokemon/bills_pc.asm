@@ -604,6 +604,7 @@ CopyBetweenPartyAndTemp:
 ; Note that this will not update the party count if adding a new mon.
 ; If bit 7 of b is set, copies between wOTPartyMons instead of wPartyMons.
 ; If bit 0 of b is set, copies from party to temp, otherwise the reverse.
+	dec c
 	ld hl, wPartyMon1
 	ld de, wTempMon
 	ld a, PARTYMON_STRUCT_LENGTH
