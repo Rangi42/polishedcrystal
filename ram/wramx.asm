@@ -1336,6 +1336,7 @@ wPokedexSeen:: flag_array NUM_EXT_POKEMON
 wEndPokedexSeen::
 
 wUnownDex:: flag_array NUM_UNOWN
+wUnownDexEnd::
 
 	ds 8 ; unused
 

@@ -78,8 +78,9 @@ Var_DayOfWeek:
 	jr _Var_loadstringbuffer2
 
 Var_UnownCaught:
-	call .count
-	ld a, b
+	ld hl, wUnownDex
+	ld b, wUnownDexEnd - wUnownDex
+	call CountSetBits ; result returned in a
 	jr _Var_loadstringbuffer2
 
 .count
