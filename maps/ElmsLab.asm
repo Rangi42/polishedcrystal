@@ -203,8 +203,8 @@ CyndaquilPokeBallScript:
 	iftrue_jumptext ElmPokeBallText
 	turnobject ELMSLAB_ELM, DOWN
 	refreshscreen
-	pokepic PORYGON_Z
-	cry PORYGON_Z
+	pokepic CYNDAQUIL
+	cry CYNDAQUIL
 	waitbutton
 	closepokepic
 	opentext
