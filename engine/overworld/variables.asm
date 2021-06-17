@@ -83,19 +83,6 @@ Var_UnownCaught:
 	call CountSetBits ; result returned in a
 	jr _Var_loadstringbuffer2
 
-.count
-	ld hl, wUnownDex
-	ld b, 0
-.loop
-	ld a, [hli]
-	and a
-	ret z
-	inc b
-	ld a, b
-	cp NUM_UNOWN
-	jr c, .loop
-	ret
-
 Var_BoxFreeSpace:
 ; Remaining database entries
 	farcall CheckFreeDatabaseEntries
