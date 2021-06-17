@@ -57,6 +57,7 @@ Pokémon Polished Crystal would never have been finished without the help of man
 * spritershawn for sprites of Red, Blue, and Green.
 * isamuakai01 for sprites of Steven and Cynthia.
 * Maddalena for sprites of Imakuni and the Ghost.
+* ShadowOne333 for Ambipom animation.
 * Scarlax for most 8th gen backpics.
 * EeveeEe1999 for 8th gen menu icons.
 * Luna for some sprites and tiles.
