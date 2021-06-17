@@ -463,14 +463,6 @@ PokeBallEffect:
 	ld [wCurPartySpecies], a
 	ld [wTempSpecies], a
 
-	cp LOW(UNOWN)
-	jr nz, .unown_done
-	assert !HIGH(UNOWN)
-	ld a, [wCurForm]
-	and EXTSPECIES_MASK
-	jr nz, .unown_done
-	farcall UpdateUnownDex
-.unown_done
 	ld hl, wTempSpecies
 	ld a, [hli]
 	ld c, a

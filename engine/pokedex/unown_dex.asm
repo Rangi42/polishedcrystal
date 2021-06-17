@@ -1,23 +1,3 @@
-UpdateUnownDex:
-	ld a, [wCurForm]
-	ld c, a
-	ld b, NUM_UNOWN
-	ld hl, wUnownDex
-.loop
-	ld a, [hli]
-	and a
-	jr z, .done
-	cp c
-	ret z
-	dec b
-	jr nz, .loop
-	ret
-
-.done
-	dec hl
-	ld [hl], c
-	ret
-
 PrintUnownWord:
 	hlcoord 4, 15
 	ld bc, 12

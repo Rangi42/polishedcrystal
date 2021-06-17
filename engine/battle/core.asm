@@ -1320,36 +1320,6 @@ endr
 	ld [wEnemyMonBaseExp], a
 
 	ld a, c
-	cp LOW(UNOWN)
-	jr nz, .skip_unown
-	assert !HIGH(UNOWN)
-	ld a, b
-	and EXTSPECIES_MASK
-	jr nz, .skip_unown
-	ld a, [wFirstUnownSeen]
-	and a
-	jr nz, .skip_unown
-	ld a, b
-	and FORM_MASK
-	ld [wFirstUnownSeen], a
-.skip_unown
-
-	ld a, c
-	cp LOW(MAGIKARP)
-	jr nz, .skip_magikarp
-	assert !HIGH(MAGIKARP)
-	ld a, b
-	and EXTSPECIES_MASK
-	jr nz, .skip_magikarp
-	ld a, [wFirstMagikarpSeen]
-	and a
-	jr nz, .skip_magikarp
-	ld a, b
-	and FORM_MASK
-	ld [wFirstMagikarpSeen], a
-.skip_magikarp
-
-	ld a, c
 	cp LOW(PIKACHU)
 	jr nz, .enemy_extras_done
 	assert !HIGH(PIKACHU)
@@ -5636,7 +5606,7 @@ LinkBattleSendReceiveAction:
 	add BATTLEACTION_SWITCH1 - 1
 	jr .use_move
 
-LoadEnemyMon:
+LoadEnemyWildmon:
 ; Initialize wildmon data
 	xor a
 	ld [wOTPartyCount], a
@@ -5656,7 +5626,7 @@ LoadEnemyMon:
 	predef TryAddMonToParty
 
 	call CheckValidMagikarpLength
-	jr c, LoadEnemyMon
+	jr c, LoadEnemyWildmon
 
 	ld a, [wBaseCatchRate]
 	ld [wEnemyMonCatchRate], a
@@ -7634,7 +7604,7 @@ InitEnemyTrainer:
 InitEnemyWildmon:
 	ld a, WILD_BATTLE
 	ld [wBattleMode], a
-	call LoadEnemyMon
+	call LoadEnemyWildmon
 	call SetEnemyTurn
 	ld a, 1
 	ld [wEnemySwitchTarget], a

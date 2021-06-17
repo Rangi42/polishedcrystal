@@ -4,7 +4,7 @@
 	db NORMAL, NORMAL ; type
 	db 45 ; catch rate
 	db 186 ; base exp
-	db SITRUS_BERRY, SITRUS_BERRY ; held items
+	db ALWAYS_ITEM_2, SITRUS_BERRY ; held items
 	dn GENDER_F50, 3 ; gender ratio, step cycles to hatch
 	INCBIN "gfx/pokemon/ambipom/front.dimensions"
 	abilities_for AMBIPOM, PICKUP, RUN_AWAY, SKILL_LINK

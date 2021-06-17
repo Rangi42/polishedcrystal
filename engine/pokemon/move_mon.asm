@@ -469,20 +469,6 @@ endr
 	ld [hl], b
 	pop bc
 	pop hl
-
-	ld a, [wMonType]
-	and $f
-	jr nz, .done
-	ld a, [wCurPartySpecies]
-	cp LOW(UNOWN)
-	jr nz, .done
-	assert !HIGH(UNOWN)
-	ld a, [wCurForm]
-	and EXTSPECIES_MASK
-	jr nz, .done
-	farcall UpdateUnownDex
-
-.done
 	scf ; When this function returns, the carry flag indicates success vs failure.
 	ret
 
@@ -561,7 +547,7 @@ AddTempMonToParty:
 	rst AddNTimes
 	pop bc
 	bit MON_IS_EGG_F, [hl]
-	jr nz, .egg
+	jr nz, .done
 	call SetSeenAndCaughtMon
 	ld hl, wPartyMon1Happiness
 	ld a, [wPartyCount]
@@ -569,36 +555,6 @@ AddTempMonToParty:
 	ld bc, PARTYMON_STRUCT_LENGTH
 	rst AddNTimes
 	ld [hl], BASE_HAPPINESS
-.egg
-
-	ld a, [wCurPartySpecies]
-	cp LOW(UNOWN)
-	jr nz, .not_unown
-	assert !HIGH(UNOWN)
-	ld a, [wCurForm]
-	and EXTSPECIES_MASK
-	jr nz, .not_unown
-	farcall UpdateUnownDex
-	ld a, [wFirstUnownSeen]
-	and a
-	jr nz, .done
-	ld a, [wCurForm]
-	ld [wFirstUnownSeen], a
-.not_unown
-
-	ld a, [wCurPartySpecies]
-	cp LOW(MAGIKARP)
-	jr nz, .done
-	assert !HIGH(MAGIKARP)
-	ld a, [wCurForm]
-	and EXTSPECIES_MASK
-	jr nz, .done
-	ld a, [wFirstMagikarpSeen]
-	and a
-	jr nz, .done
-	ld a, [wCurForm]
-	ld [wFirstMagikarpSeen], a
-
 .done
 	and a
 	ret
@@ -940,12 +896,6 @@ SentPkmnIntoBox:
 	ld a, [wCurForm]
 	ld b, a
 	call SetSeenAndCaughtMon
-
-	ld a, [wCurPartySpecies]
-	cp UNOWN
-	jr nz, .not_unown
-	farcall UpdateUnownDex
-.not_unown
 	pop bc
 	ld a, b
 	ld [wTempMonBox], a
@@ -1418,7 +1368,7 @@ GivePoke::
 	ld a, b
 	and a
 	jmp nz, .trainer_data
-	ld a, [wTempMonForm]
+	ld a, [wCurForm]
 	bit MON_IS_EGG_F, a
 	jr z, .not_egg
 	ld de, String_Egg
@@ -1448,9 +1398,8 @@ GivePoke::
 	call AddTempMonToParty
 	ld d, PARTYMON
 	jr nc, .added
-	call .SetUpBoxMon
+	call .SetUpBoxMon ; d = BOXMON if nc
 	jmp c, .FailedToGiveMon
-	ld d, BOXMON
 
 .added
 	push de
@@ -1596,33 +1545,14 @@ GivePoke::
 	ld [wTempMonBox], a
 	ld a, c
 	ld [wTempMonSlot], a
-	ld a, [wTempMonForm]
+	ld a, [wCurForm]
 	bit MON_IS_EGG_F, a
 	jr nz, .done
+	and SPECIESFORM_MASK
 	ld b, a
 	ld a, [wCurPartySpecies]
 	ld c, a
 	call SetSeenAndCaughtMon
-	ld a, [wCurPartySpecies]
-	cp UNOWN
-	jr nz, .check_magikarp
-	farcall UpdateUnownDex
-	ld a, [wFirstUnownSeen]
-	and a
-	jr nz, .check_magikarp
-	ld a, [wTempMonForm]
-	and FORM_MASK
-	ld [wFirstUnownSeen], a
-.check_magikarp
-	ld a, [wCurPartySpecies]
-	cp MAGIKARP
-	jr nz, .done
-	ld a, [wFirstMagikarpSeen]
-	and a
-	jr nz, .done
-	ld a, [wTempMonForm]
-	and FORM_MASK
-	ld [wFirstMagikarpSeen], a
 .done
 	ld d, BOXMON
 	and a
