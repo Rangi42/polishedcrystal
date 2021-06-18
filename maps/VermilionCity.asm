@@ -207,7 +207,7 @@ VermilionGymBadgeGuy:
 	verbosegiveitem BOTTLE_CAP
 	iffalse_endtext
 	setevent EVENT_GOT_BOTTLE_CAP_FROM_VERMILION_GUY
-	writetext VermillionCityBadgeGuyBattleEdgeText
+	writetext VermilionCityBadgeGuyBattleEdgeText
 	waitendtext
 
 VermilionMachokeOwnerScript:
