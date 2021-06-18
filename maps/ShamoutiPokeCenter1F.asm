@@ -72,6 +72,7 @@ ShamoutiPokeCenter1FIvyScript:
 	waitsfx
 	givepoke BULBASAUR, NO_FORM, 10, SITRUS_BERRY
 	iffalse_jumpopenedtext .NoRoomText
+	getmonname BULBASAUR, STRING_BUFFER_3
 	setevent EVENT_GOT_BULBASAUR_FROM_IVY
 	sjump .Finish
 
@@ -81,6 +82,7 @@ ShamoutiPokeCenter1FIvyScript:
 	waitsfx
 	givepoke CHARMANDER, NO_FORM, 10, SITRUS_BERRY
 	iffalse_jumpopenedtext .NoRoomText
+	getmonname CHARMANDER, STRING_BUFFER_3
 	setevent EVENT_GOT_CHARMANDER_FROM_IVY
 	sjump .Finish
 
@@ -90,6 +92,7 @@ ShamoutiPokeCenter1FIvyScript:
 	waitsfx
 	givepoke SQUIRTLE, NO_FORM, 10, SITRUS_BERRY
 	iffalse_jumpopenedtext .NoRoomText
+	getmonname SQUIRTLE, STRING_BUFFER_3
 	setevent EVENT_GOT_SQUIRTLE_FROM_IVY
 .Finish:
 	writetext .GoodbyeText
