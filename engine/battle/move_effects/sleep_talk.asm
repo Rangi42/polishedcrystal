@@ -54,18 +54,17 @@ BattleCommand_sleeptalk:
 
 .end_loop
 	pop hl
-	swap e
 	ld a, c
 	and a
 	jr z, .fail
 	call RandomRange
 	inc a
 	ld b, a
-	ld c, -1
+	ld c, NUM_MOVES
 
 .get_move_loop
-	inc c
-	sla e
+	dec c
+	srl e
 	jr nc, .get_move_loop
 	dec b
 	jr nz, .get_move_loop
