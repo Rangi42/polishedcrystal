@@ -885,6 +885,7 @@ PhanpyEggMoves:
 	db ANCIENTPOWER
 	db GUNK_SHOT
 	db ICE_SHARD
+	db ENCORE
 	db $ff
 
 StantlerEggMoves:

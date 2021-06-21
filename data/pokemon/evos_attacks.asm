@@ -5094,7 +5094,7 @@ PhanpyEvosAttacks:
 	db 1, DEFENSE_CURL
 	db 6, REVERSAL ; Flail → similar move
 	db 10, ROLLOUT
-	db 15, ENCORE ; Natural Gift → event move
+	db 15, MAGNITUDE ; Natural Gift → Donphan move
 	db 19, ENDURE
 	db 24, TAKE_DOWN ; Slam → Take Down
 	db 28, BODY_SLAM ; Take Down → TM move
@@ -5113,10 +5113,10 @@ DonphanEvosAttacks:
 	db 1, BULLDOZE
 	db 6, RAPID_SPIN
 	db 10, ROLLOUT
-	db 15, IRON_TAIL ; Assurance → TM move
+	db 15, MAGNITUDE ; Assurance → Magnitude
 	db 19, KNOCK_OFF
 	db 24, ANCIENTPOWER ; Slam → HGSS tutor move
-	db 30, MAGNITUDE
+	db 30, IRON_TAIL ; Magnitude → TM move
 	db 37, SCARY_FACE
 	db 43, EARTHQUAKE
 	db 50, GIGA_IMPACT
