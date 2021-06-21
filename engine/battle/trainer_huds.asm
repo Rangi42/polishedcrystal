@@ -43,18 +43,20 @@ ShowOTTrainerMonsRemaining:
 	jmp LoadTrainerHudOAM
 
 StageBallTilesData:
-	ld b, [hl]
+	ld a, PARTY_LENGTH
+	ld c, a
+	sub [hl]
+	ld b, a
 	assert wPartyMon1HP - wPartyCount == wOTPartyMon1HP - wOTPartyCount
 	ld de, wPartyMon1HP - wPartyCount
 	add hl, de
 	ld de, wBuffer1
-	ld c, PARTY_LENGTH
 .loop
 	push bc
 	ld a, b
 	cp c
 	ld b, $34 ; empty slot
-	jr nc, .load
+	jr nc, .dec2_load
 
 	dec b ; $33, fainted
 	ld a, [hli]
@@ -74,7 +76,11 @@ StageBallTilesData:
 	and a
 	jr nz, .load
 	dec b ; $31, normal
-	;fall-through
+	jr .load
+
+.dec2_load
+	dec hl
+	dec hl
 .load
 	ld a, b
 	ld [de], a

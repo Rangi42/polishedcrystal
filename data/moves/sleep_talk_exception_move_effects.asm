@@ -1,4 +1,4 @@
-; Sleep Talk cannot use these move effects (nor Struggle).
+; Sleep Talk cannot use moves with these move effects (nor Struggle).
 
 SleepTalkExcepts:
 	db EFFECT_METRONOME
