@@ -76,10 +76,10 @@ ENDM
 
 jmp: MACRO
 	if _NARG == 1
-		assert warn, \1 - @ > 127 + 2 || \1 - @ < -128 + 2, "jp can be jr"
 		jp \1
 	else
-		assert warn, \2 - @ > 127 + 2 || \2 - @ < -128 + 2, "jp can be jr"
 		jp \1, \2
+		shift
 	endc
+	assert warn, (\1) - @ > 127 || (\1) - @ < -129, "jp can be jr"
 ENDM
