@@ -6,13 +6,7 @@ BattleStart_TrainerHuds:
 	ld a, [wBattleMode]
 	dec a
 	ret z
-	jp ShowOTTrainerMonsRemaining
-
-EnemySwitch_TrainerHud:
-	ld a, $e4
-	ldh [rOBP0], a
-	call LoadBallIconGFX
-	jp ShowOTTrainerMonsRemaining
+	jr ShowOTTrainerMonsRemaining
 
 ShowPlayerMonsRemaining:
 	call DrawPlayerPartyIconHUDBorder
@@ -27,7 +21,13 @@ ShowPlayerMonsRemaining:
 	ld a, 8
 	ld [wPlaceBallsDirection], a
 	ld hl, wVirtualOAM
-	jp LoadTrainerHudOAM
+	jmp LoadTrainerHudOAM
+
+EnemySwitch_TrainerHud:
+	ld a, $e4
+	ldh [rOBP0], a
+	call LoadBallIconGFX
+	; fallthrough
 
 ShowOTTrainerMonsRemaining:
 	call DrawEnemyPartyIconHUDBorder
@@ -42,7 +42,7 @@ ShowOTTrainerMonsRemaining:
 	ld a, -8
 	ld [wPlaceBallsDirection], a
 	ld hl, wVirtualOAM + PARTY_LENGTH * 4
-	jp LoadTrainerHudOAM
+	jmp LoadTrainerHudOAM
 
 StageBallTilesData:
 	ld a, [de]
@@ -216,7 +216,7 @@ LoadBallIconGFX:
 	ld de, .gfx
 	ld hl, vTiles0 tile $31
 	lb bc, BANK(LoadBallIconGFX), 4
-	jp Get2bpp
+	jmp Get2bpp
 
 .gfx
 INCBIN "gfx/battle/balls.2bpp"
@@ -261,11 +261,7 @@ DoesNuzlockeModePreventCapture:
 	jr c, .no
 
 	; Is location already done?
-	ld a, [wMapGroup]
-	ld b, a
-	ld a, [wMapNumber]
-	ld c, a
-	call GetWorldMapLocation
+	call GetCurrentLandmark
 	ld c, a
 	ld hl, wNuzlockeLandmarkFlags
 	; Use landmark as index into flag array

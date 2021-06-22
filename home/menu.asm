@@ -99,7 +99,7 @@ CopyMenuData2::
 	ld de, wMenuDataFlags
 	ld bc, wMenuDataEnd - wMenuDataFlags
 	rst CopyBytes
-	jp PopAFBCDEHL
+	jmp PopAFBCDEHL
 
 GetWindowStackTop::
 	ld hl, wWindowStackPointer
@@ -116,7 +116,7 @@ PlaceVerticalMenuItems::
 	call CopyMenuData2
 	ld a, [wMenuDataItems]
 	and a
-	jp z, SetUpVariableDataMenu
+	jmp z, SetUpVariableDataMenu
 	ld hl, wMenuDataPointer
 	ld a, [hli]
 	ld d, [hl]
@@ -155,7 +155,7 @@ MenuBox::
 	call GetMenuBoxDims
 	dec b
 	dec c
-	jp Textbox
+	jmp Textbox
 
 GetMenuTextStartCoord::
 	ld a, [wMenuBorderTopCoord]
@@ -185,14 +185,14 @@ ClearMenuBoxInterior::
 	call GetMenuBoxDims
 	dec b
 	dec c
-	jp ClearBox
+	jmp ClearBox
 
 ClearWholeMenuBox::
 	call MenuBoxCoord2Tile
 	call GetMenuBoxDims
 	inc c
 	inc b
-	jp ClearBox
+	jmp ClearBox
 
 PushWindow_MenuBoxCoordToTile::
 	bccoord 0, 0
@@ -267,11 +267,11 @@ MenuTextbox::
 	push hl
 	call LoadMenuTextbox
 	pop hl
-	jp PrintText
+	jmp PrintText
 
 MenuTextboxBackup::
 	call MenuTextbox
-	jp CloseWindow
+	jmp CloseWindow
 
 LoadMenuTextbox::
 	ld hl, MenuTextboxDataHeader
@@ -283,7 +283,7 @@ LoadStandardMenuHeader::
 
 LoadMenuHeader::
 	call CopyMenuHeader
-	jp PushWindow
+	jmp PushWindow
 
 StandardMenuDataHeader:
 	db $40 ; tile backup
@@ -316,7 +316,7 @@ VerticalMenu::
 	ld a, [wMenuFlags]
 	bit 2, a
 	ld a, b
-	jp nz, GetVariableDataMenuResult
+	jmp nz, GetVariableDataMenuResult
 	bit 1, b
 	jr z, .okay
 .cancel
@@ -421,7 +421,7 @@ NoYesMenuDataHeader::
 
 OffsetMenuDataHeader::
 	call _OffsetMenuDataHeader
-	jp PushWindow
+	jmp PushWindow
 
 _OffsetMenuDataHeader::
 	push de
@@ -453,7 +453,7 @@ DoNthMenu::
 	call InitMenuCursorAndButtonPermissions
 	call GetStaticMenuJoypad
 	call GetMenuJoypad
-	jp MenuClickSound
+	jmp MenuClickSound
 
 SetUpMenu::
 	call DrawVariableLengthMenuBox ; ???
@@ -467,7 +467,7 @@ DrawVariableLengthMenuBox::
 	call CopyMenuData2
 	call GetMenuIndexSet
 	call AutomaticGetMenuBottomCoord
-	jp MenuBox
+	jmp MenuBox
 
 SetUpVariableDataMenu:
 	ld hl, wMenuFlags
@@ -654,7 +654,7 @@ PlaceNthMenuStrings::
 MenuJumptable::
 	ld a, [wMenuSelection]
 	call GetMenuDataPointerTableEntry
-	jp IndirectHL
+	jmp IndirectHL
 
 GetMenuDataPointerTableEntry::
 	ld e, a
@@ -724,7 +724,7 @@ PlayClickSFX::
 MenuTextboxWaitButton::
 	call MenuTextbox
 	call WaitButton
-	jp ExitMenu
+	jmp ExitMenu
 
 _2DMenu::
 	ldh a, [hROMBank]

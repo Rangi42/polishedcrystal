@@ -1,3 +1,3 @@
 BattleCommand_splash:
 	call AnimateCurrentMove
-	jp PrintNothingHappened
+	jmp PrintNothingHappened

@@ -33,8 +33,8 @@ BattleCommand_screen:
 	ld hl, ReflectEffectText
 .succeeded
 	call AnimateCurrentMove
-	jp StdBattleTextbox
+	jmp StdBattleTextbox
 
 .failed
 	call AnimateFailedMove
-	jp PrintButItFailed
+	jmp PrintButItFailed

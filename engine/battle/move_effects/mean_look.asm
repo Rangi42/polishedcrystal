@@ -17,13 +17,13 @@ BattleCommand_arenatrap:
 	set SUBSTATUS_CANT_RUN, [hl]
 	call AnimateCurrentMove
 	ld hl, CantEscapeNowText
-	jp StdBattleTextbox
+	jmp StdBattleTextbox
 
 .immune
 	call AnimateFailedMove
 	ld hl, DoesntAffectText
-	jp StdBattleTextbox
+	jmp StdBattleTextbox
 
 .failed
 	call AnimateFailedMove
-	jp PrintButItFailed
+	jmp PrintButItFailed

@@ -1,5 +1,7 @@
 SpriteAnimOAMData:
-	; vtile offset, pointer
+; entries correspond to SPRITE_ANIM_OAMSET_* constants (see constants/sprite_anim_constants.asm)
+	table_width 3, SpriteAnimOAMData
+	; vtile offset, data pointer
 	dbw $00, .OAMData_PartyMon           ; SPRITE_ANIM_OAMSET_RED_WALK_1
 	dbw $04, .OAMData_PartyMon           ; SPRITE_ANIM_OAMSET_RED_WALK_2
 	dbw $00, .OAMData_TextEntryCursor    ; SPRITE_ANIM_OAMSET_TEXT_ENTRY_CURSOR
@@ -75,11 +77,13 @@ SpriteAnimOAMData:
 	dbw $04, .OAMData_GameFreakLogo4_11  ; SPRITE_ANIM_OAMSET_GAMEFREAK_LOGO_10
 	dbw $00, .OAMData_GameFreakLogo4_11  ; SPRITE_ANIM_OAMSET_GAMEFREAK_LOGO_11
 	dbw $00, .OAMData_MaxStatSparkle     ; SPRITE_ANIM_OAMSET_MAX_STAT_SPARKLE
+	dbw $00, .OAMData_HyperTrainedStat   ; SPRITE_ANIM_OAMSET_HYPER_TRAINED_STAT
 	dbw $00, .OAMData_PcCursor           ; SPRITE_ANIM_OAMSET_PC_CURSOR
 	dbw $00, .OAMData_PcQuick            ; SPRITE_ANIM_OAMSET_PC_QUICK
 	dbw $00, .OAMData_PcMode             ; SPRITE_ANIM_OAMSET_PC_MODE
 	dbw $00, .OAMData_PcMode2            ; SPRITE_ANIM_OAMSET_PC_MODE2
 	dbw $00, .OAMData_PcPack             ; SPRITE_ANIM_OAMSET_PC_PACK
+	assert_table_length NUM_SPRITE_ANIM_OAMSETS
 
 .OAMData_1x1_Palette0:
 	db 1
@@ -631,6 +635,10 @@ SpriteAnimOAMData:
 .OAMData_MaxStatSparkle:
 	db 1
 	dsprite  2,  0,  2,  0, $00, $0
+
+.OAMData_HyperTrainedStat:
+	db 1
+	dsprite  2,  0,  2,  0, $01, $1
 
 .OAMData_PcCursor:
 	db 9

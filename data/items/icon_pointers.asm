@@ -1,4 +1,5 @@
 ItemIconPointers:
+	table_width 3, ItemIconPointers
 	dba NoItemIcon
 	dba PokeBallIcon
 	dba GreatBallIcon
@@ -254,6 +255,7 @@ ItemIconPointers:
 	dba BlueSkyMailIcon
 	dba MusicMailIcon
 	dba MirageMailIcon
+	assert_table_length NUM_ITEMS + 1
 
 KeyItemIconPointers:
 	dba BicycleIcon

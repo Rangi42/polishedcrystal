@@ -26,7 +26,7 @@ DayCare_MapScriptHeader:
 	const DAYCARE_LYRA
 
 DayCareTrigger0:
-	prioritysjump DayCare_MeetGrandma
+	sdefer DayCare_MeetGrandma
 	end
 
 DayCareEggCheckCallback:
@@ -96,18 +96,23 @@ DayCareManScript_Inside:
 	iftrue .AlreadyHaveOddEgg
 	writetext DayCareManText_GiveOddEgg
 	promptbutton
-	readvar VAR_PARTYCOUNT
-	ifequal PARTY_LENGTH, .PartyFull
 	special GiveOddEgg
+	iffalse_jumpopenedtext DayCareText_PartyAndBoxFull
 	writetext DayCareText_GotOddEgg
 	playsound SFX_GET_EGG_FROM_DAYCARE_LADY
 	waitsfx
+	ifequal 1, .InParty
+	special Special_CurBoxFullCheck
+	iffalse .BoxNotFull
+	farwritetext _CurBoxFullText
+.BoxNotFull
+	special GetCurBoxName
+	farwritetext _EggSentToPCText
+	promptbutton
+.InParty:
 	writetext DayCareText_DescribeOddEgg
 	setevent EVENT_GOT_ODD_EGG
 	waitendtext
-
-.PartyFull:
-	jumpopenedtext DayCareText_PartyFull
 
 .AlreadyHaveOddEgg:
 	special Special_DayCareMan
@@ -124,31 +129,27 @@ DayCareLadyScript:
 	iftrue .NoLyrasEgg
 	writetext DayCareLadyText_GiveLyrasEgg
 	promptbutton
-	readvar VAR_PARTYCOUNT
-	ifequal PARTY_LENGTH, .PartyFull
 	checkevent EVENT_GOT_TOTODILE_FROM_ELM
 	iftrue .GiveCyndaquilEgg
 	checkevent EVENT_GOT_CHIKORITA_FROM_ELM
 	iftrue .GiveTotodileEgg
-	giveegg CHIKORITA, EGG_LEVEL
+	giveegg CHIKORITA
 	sjump .GotLyrasEgg
 
 .GiveCyndaquilEgg:
-	giveegg CYNDAQUIL, EGG_LEVEL
+	giveegg CYNDAQUIL
 	sjump .GotLyrasEgg
 
 .GiveTotodileEgg:
-	giveegg TOTODILE, EGG_LEVEL
+	giveegg TOTODILE
 .GotLyrasEgg
+	iffalse_jumpopenedtext DayCareText_PartyAndBoxFull
 	farwritetext _ReceivedEggText
 	playsound SFX_GET_EGG_FROM_DAYCARE_LADY
 	waitsfx
 	writetext DayCareLadyText_DescribeLyrasEgg
 	setevent EVENT_GOT_LYRAS_EGG
 	waitendtext
-
-.PartyFull:
-	jumpopenedtext DayCareText_PartyFull
 
 .NoLyrasEgg:
 	special Special_DayCareLady
@@ -350,7 +351,8 @@ DayCareLadyText_DescribeLyrasEgg:
 	cont "trainer."
 	done
 
-DayCareText_PartyFull:
-	text "You've no room for"
-	line "this."
+DayCareText_PartyAndBoxFull:
+	text "You have no room"
+	line "for this, even in"
+	cont "your box."
 	done

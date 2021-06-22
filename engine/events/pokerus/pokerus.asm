@@ -70,7 +70,7 @@ GivePokerusToWonderTradeMon:
 	ret nc                 ; 32/65536 = 1/2048 chance
 	ld a, [wCurPartyMon]
 	ld b, a
-	jp ContinueGivingPokerus
+	jr ContinueGivingPokerus
 
 TrySpreadPokerus:
 	call Random

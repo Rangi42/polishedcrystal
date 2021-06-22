@@ -196,6 +196,8 @@
 NUM_MUSIC_SONGS EQU const_value
 
 ; GetMapMusic picks music for these values (see data/maps/special_map_music.asm)
-MUSIC_RADIO_TOWER   EQU -1
-MUSIC_MAHOGANY_MART EQU -2
-MUSIC_LAVENDER      EQU -3
+	const_def $ff, -1
+	const MUSIC_RADIO_TOWER   ; ff
+	const MUSIC_MAHOGANY_MART ; fe
+	const MUSIC_LAVENDER      ; fd
+FIRST_ALT_MUSIC EQU const_value + 1

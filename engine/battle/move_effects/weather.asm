@@ -16,7 +16,7 @@ BattleCommand_starthail:
 StartWeather:
 	ld a, [wBattleWeather]
 	cp b
-	jp z, BattleEffect_ButItFailed
+	jmp z, BattleEffect_ButItFailed
 
 	ld a, b
 	ld [wBattleWeather], a
@@ -24,4 +24,4 @@ StartWeather:
 	call GetItemBoostedDuration
 	ld [wWeatherCount], a
 	call AnimateCurrentMove
-	jp StdBattleTextbox ; hl has text pointer already
+	jmp StdBattleTextbox ; hl has text pointer already

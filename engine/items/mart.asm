@@ -32,7 +32,7 @@ MartDialog:
 	xor a ; MARTTYPE_STANDARD, STANDARDMART_HOWMAYIHELPYOU
 	ld [wMartType], a
 	ld [wMartJumptableIndex], a
-	jp StandardMart
+	jmp StandardMart
 
 HerbShop:
 	call FarReadMart
@@ -41,7 +41,7 @@ HerbShop:
 	call MartTextbox
 	call BuyMenu
 	ld hl, Text_HerbShop_ComeAgain
-	jp MartTextbox
+	jmp MartTextbox
 
 BargainShop:
 	ld b, BANK(BargainShopData)
@@ -61,7 +61,7 @@ BargainShop:
 
 .skip_set
 	ld hl, Text_BargainShop_ComeAgain
-	jp MartTextbox
+	jmp MartTextbox
 
 INCLUDE "data/items/bargain_shop.asm"
 
@@ -72,7 +72,7 @@ Pharmacist:
 	call MartTextbox
 	call BuyMenu
 	ld hl, Text_Pharmacist_ComeAgain
-	jp MartTextbox
+	jmp MartTextbox
 
 RooftopSale:
 	ld b, BANK(RooftopSaleData1) ; BANK(RooftopSaleData2)
@@ -89,7 +89,7 @@ RooftopSale:
 	call MartTextbox
 	call BuyMenu
 	ld hl, Text_Mart_ComeAgain
-	jp MartTextbox
+	jmp MartTextbox
 
 INCLUDE "data/items/rooftop_sale.asm"
 
@@ -100,7 +100,7 @@ SilphMart:
 	call MartTextbox
 	call BuyMenu
 	ld hl, Text_SilphMart_ComeAgain
-	jp MartTextbox
+	jmp MartTextbox
 
 AdventurerMart:
 	call FarReadMart
@@ -109,7 +109,7 @@ AdventurerMart:
 	call MartTextbox
 	call BuyMenu
 	ld hl, Text_AdventurerMart_ComeAgain
-	jp MartTextbox
+	jmp MartTextbox
 
 InformalMart:
 	call FarReadMart
@@ -118,7 +118,7 @@ InformalMart:
 	call MartTextbox
 	call BuyMenu
 	ld hl, Text_InformalMart_ComeAgain
-	jp MartTextbox
+	jmp MartTextbox
 
 BazaarMart:
 	call FarReadMart
@@ -127,7 +127,7 @@ BazaarMart:
 	call MartTextbox
 	call BuyMenu
 	ld hl, Text_BazaarMart_ComeAgain
-	jp MartTextbox
+	jmp MartTextbox
 
 TMMart:
 	call FarReadTMMart
@@ -136,7 +136,7 @@ TMMart:
 	call MartTextbox
 	call BuyTMMenu
 	ld hl, Text_Mart_ComeAgain
-	jp MartTextbox
+	jmp MartTextbox
 
 BlueCardMart:
 	ld b, BANK(BlueCardMartData)
@@ -148,7 +148,7 @@ BlueCardMart:
 	call MartTextbox
 	call BlueCardBuyMenu
 	ld hl, Text_BlueCardMart_ComeAgain
-	jp MartTextbox
+	jmp MartTextbox
 
 INCLUDE "data/items/buena_prizes.asm"
 
@@ -159,7 +159,7 @@ BTMart:
 	call MartTextbox
 	call BTBuyMenu
 	ld hl, Text_BTMart_ComeAgain
-	jp MartTextbox
+	jmp MartTextbox
 
 LoadMartPointer:
 	ld a, b
@@ -513,7 +513,7 @@ BuyMenu_InitGFX:
 	ld [wMenuScrollPositionBackup], a
 	ld a, 1
 	ld [wMenuCursorBufferBackup], a
-	jp DelayFrame
+	jmp DelayFrame
 
 .BuyLeftColumnTilemapString:
 	db $15, $15, $15, $15, $15, 0 ; Background
@@ -543,7 +543,7 @@ LoadBuyMenuText:
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
-	jp PrintText
+	jmp PrintText
 
 MartAskPurchaseQuantity:
 	ld a, [wCurItem]
@@ -552,10 +552,10 @@ MartAskPurchaseQuantity:
 	inc hl
 	ld a, [hl]
 	and a
-	jp z, StandardMartAskPurchaseQuantity
+	jmp z, StandardMartAskPurchaseQuantity
 	cp 1
-	jp z, BargainShopAskPurchaseQuantity
-	jp RooftopSaleAskPurchaseQuantity
+	jmp z, BargainShopAskPurchaseQuantity
+	jmp RooftopSaleAskPurchaseQuantity
 
 GetMartDialogGroup:
 	ld a, [wMartType]
@@ -678,7 +678,7 @@ BuyMenuLoop:
 	call SpeechTextbox
 	ld a, [wMenuJoypad]
 	cp B_BUTTON
-	jp z, MartMenuLoop_SetCarry
+	jmp z, MartMenuLoop_SetCarry
 	call MartAskPurchaseQuantity
 	jr c, .cancel
 	call MartConfirmPurchase
@@ -686,10 +686,10 @@ BuyMenuLoop:
 	ld de, wMoney
 	ld bc, hMoneyTemp
 	call CompareMoney
-	jp c, MartMenuLoop_InsufficientFunds
+	jmp c, MartMenuLoop_InsufficientFunds
 	ld hl, wNumItems
 	call ReceiveItem
-	jp nc, MartMenuLoop_InsufficientBagSpace
+	jmp nc, MartMenuLoop_InsufficientBagSpace
 	ld a, [wMartItemID]
 	ld e, a
 	ld d, $0
@@ -741,7 +741,7 @@ BuyTMMenuLoop:
 	call SpeechTextbox
 	ld a, [wMenuJoypad]
 	cp B_BUTTON
-	jp z, MartMenuLoop_SetCarry
+	jmp z, MartMenuLoop_SetCarry
 	call TMMartAskPurchaseQuantity
 	jr c, .cancel
 	call TMMartConfirmPurchase
@@ -749,7 +749,7 @@ BuyTMMenuLoop:
 	ld de, wMoney
 	ld bc, hMoneyTemp
 	call CompareMoney
-	jp c, MartMenuLoop_InsufficientFunds
+	jmp c, MartMenuLoop_InsufficientFunds
 	call ReceiveTMHM
 	call PlayTransactionSound
 	ld de, wMoney
@@ -772,14 +772,14 @@ BlueCardBuyMenuLoop:
 	call SpeechTextbox
 	ld a, [wMenuJoypad]
 	cp B_BUTTON
-	jp z, MartMenuLoop_SetCarry
+	jmp z, MartMenuLoop_SetCarry
 	call MartConfirmPurchase
 	jr c, .cancel
 	call BlueCardMartComparePoints
-	jp c, MartMenuLoop_InsufficientFunds
+	jmp c, MartMenuLoop_InsufficientFunds
 	ld hl, wNumItems
 	call ReceiveItem
-	jp nc, MartMenuLoop_InsufficientBagSpace
+	jmp nc, MartMenuLoop_InsufficientBagSpace
 	call PlayTransactionSound
 	ld a, [wBlueCardBalance]
 	ld hl, hMoneyTemp
@@ -802,16 +802,16 @@ BTBuyMenuLoop:
 	call SpeechTextbox
 	ld a, [wMenuJoypad]
 	cp B_BUTTON
-	jp z, MartMenuLoop_SetCarry
+	jr z, MartMenuLoop_SetCarry
 	call BTMartAskPurchaseQuantity
 	jr c, .cancel
 	call BTMartConfirmPurchase
 	jr c, .cancel
 	call BTMartCompareBP
-	jp c, MartMenuLoop_InsufficientFunds
+	jr c, MartMenuLoop_InsufficientFunds
 	ld hl, wNumItems
 	call ReceiveItem
-	jp nc, MartMenuLoop_InsufficientBagSpace
+	jr nc, MartMenuLoop_InsufficientBagSpace
 	call PlayTransactionSound
 	ld de, wBattlePoints
 	ld bc, hMoneyTemp + 1
@@ -857,34 +857,34 @@ StandardMartAskPurchaseQuantity:
 	ld a, MARTTEXT_HOW_MANY
 	call LoadBuyMenuText
 	farcall SelectQuantityToBuy
-	jp ExitMenu
+	jmp ExitMenu
 
 MartConfirmPurchase:
 BTMartConfirmPurchase:
 	predef PartyMonItemName
 	ld a, MARTTEXT_COSTS_THIS_MUCH
 	call LoadBuyMenuText
-	jp YesNoBox
+	jmp YesNoBox
 
 TMMartConfirmPurchase:
 	ld a, [wCurTMHM]
-	ld [wd265], a
+	ld [wNamedObjectIndex], a
 	call GetTMHMName
 	call CopyName1
 
 	; off by one error?
-	ld a, [wd265]
+	ld a, [wNamedObjectIndex]
 	inc a
-	ld [wd265], a
+	ld [wTempTMHM], a
 
 	predef GetTMHMMove
-	ld a, [wd265]
+	ld a, [wTempTMHM]
 	ld [wPutativeTMHMMove], a
 	call GetMoveName
 
 	ld a, MARTTEXT_COSTS_THIS_MUCH
 	call LoadBuyMenuText
-	jp YesNoBox
+	jmp YesNoBox
 
 BargainShopAskPurchaseQuantity:
 	ld a, 1
@@ -947,7 +947,7 @@ RooftopSaleAskPurchaseQuantity:
 	ld d, [hl]
 
 	farcall RooftopSale_SelectQuantityToBuy
-	jp ExitMenu
+	jmp ExitMenu
 
 TMMartAskPurchaseQuantity:
 	ld a, [wCurTMHM]
@@ -1007,7 +1007,7 @@ BTMartAskPurchaseQuantity:
 	ld c, a
 
 	farcall BT_SelectQuantityToBuy
-	jp ExitMenu
+	jmp ExitMenu
 
 BlueCardMartComparePoints:
 ; no need for a "BlueCardMartAskPurchaseQuantity"
@@ -1102,7 +1102,7 @@ MartMenu_PrintBCDPrices:
 	ld bc, SCREEN_WIDTH - 4
 	add hl, bc
 	ld c, PRINTNUM_LEADINGZEROS | PRINTNUM_MONEY | 3
-	jp PrintBCDNumber
+	jmp PrintBCDNumber
 
 BlueCardMenuDataHeader_Buy:
 	db $40 ; flags
@@ -1168,7 +1168,7 @@ GetCursorItemPointCost:
 	ld b, 0
 	ld hl, wMartItem1BCD
 	add hl, bc
-	jp SwapHLDE
+	jmp SwapHLDE
 
 Text_HerbShop_Intro:
 	; Hello, dear. I sell inexpensive herbal medicine. They're good, but a trifle bitter. Your #MON may not like them. Hehehehe…
@@ -1389,7 +1389,7 @@ SellMenu:
 	farcall DepositSellPack
 	ld a, [wPackUsedItem]
 	and a
-	jp z, .quit
+	jr z, .quit
 	call .TryToSellItem
 	jr .loop
 
@@ -1518,9 +1518,9 @@ Text_Mart_SoldForAmount:
 PlayTransactionSound:
 	call WaitSFX
 	ld de, SFX_TRANSACTION
-	jp PlaySFX
+	jmp PlaySFX
 
 MartTextbox:
 	call MenuTextbox
 	call JoyWaitAorB
-	jp ExitMenu
+	jmp ExitMenu

@@ -1,21 +1,21 @@
 command: MACRO
-	enum \1_command
-\1 equs "db \1_command"
+	const \1_command
+\1 EQUS "db \1_command"
 	dw BattleCommand_\1
 ENDM
 
 commandx: MACRO
-	enum \1_command
-\1 equs "db \1_command,"
+	const \1_command
+\1 EQUS "db \1_command,"
 	dw BattleCommand_\1
 ENDM
 
 commandonly: MACRO
-	enum \1_command
-\1 equs "db \1_command"
+	const \1_command
+\1 EQUS "db \1_command"
 ENDM
 
-	enum_start 1
+	const_def 1
 
 BattleCommandPointers:
 	command checkturn
@@ -37,7 +37,7 @@ BattleCommandPointers:
 	command postfainteffects
 	command posthiteffects
 	command poisontarget
-	command sleeptarget
+	command sleep
 	command draintarget
 	command eatdream
 	command burntarget
@@ -47,7 +47,7 @@ BattleCommandPointers:
 	command payday
 	command conversion
 	command resetstats
-	command forceswitch
+	command roar
 	command endloop
 	command flinchtarget
 	command recoil
@@ -168,9 +168,11 @@ BattleCommandPointers:
 	commandx raiseoppstathit
 	commandx loweroppstathit
 
+NUM_EFFECT_COMMANDS EQU const_value - 1
+
 FIRST_MOVEARG_COMMAND EQU raisestat_command
 LAST_MOVEARG_COMMAND EQU loweroppstathit_command
 
-	enum_start -1, -1
+	const_def $ff, -1
 	commandonly endmove
 	commandonly endturn

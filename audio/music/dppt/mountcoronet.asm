@@ -1,7 +1,7 @@
 ; Pokémon D/P/Pt - Mount Coronet
 ; Demixed by Mmmmmm
 ; https://pastebin.com/NeuV0aPD
-; https://hax.iimarck.us/topic/6777/
+; https://hax.iimarckus.org/topic/6777/
 
 Music_MountCoronetDPPt:
 	dbw $80, Music_MountCoronetDPPt_Ch1

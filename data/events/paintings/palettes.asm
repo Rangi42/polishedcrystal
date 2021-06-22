@@ -1,4 +1,5 @@
 PaintingPalettes:
+	table_width PALETTE_SIZE, PaintingPalettes
 
 if !DEF(MONOCHROME)
 HoOhPaintingPalette:      INCLUDE "gfx/paintings/ho_oh_painting.pal"
@@ -13,3 +14,5 @@ rept NUM_PAINTINGS
 	MONOCHROME_RGB_FOUR
 endr
 endc
+
+	assert_table_length NUM_PAINTINGS

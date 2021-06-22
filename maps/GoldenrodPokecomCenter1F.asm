@@ -39,11 +39,11 @@ GoldenrodPokecomCenter1F_MapScriptHeader:
 	object_event  3, 11, SPRITE_CUTE_GIRL, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, PAL_NPC_RED, OBJECTTYPE_COMMAND, jumptextfaceplayer, GoldenrodPokecenter1FLassText, -1
 	object_event 12, 14, SPRITE_MATRON, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_SCRIPT, 0, GoldenrodPokecenter1FPokefanF, -1
 	object_event 16,  8, SPRITE_LINK_RECEPTIONIST, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, WonderTradeReceptionistScript, -1
-	object_event  8, 13, SPRITE_SUPER_NERD, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x61c89, -1
-	object_event 27, 13, SPRITE_POKEFAN_F, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x61e5c, -1
-	object_event 21,  6, SPRITE_ROCKER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x61fc9, -1
-	object_event 18, 13, SPRITE_GRAMPS, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x62222, -1
-	object_event 18,  9, SPRITE_CUTE_GIRL, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x61cef, -1
+	object_event  8, 13, SPRITE_SUPER_NERD, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, GoldenrodPokecenter1FSuperNerdText, -1
+	object_event 27, 13, SPRITE_POKEFAN_F, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_COMMAND, jumptextfaceplayer, GoldenrodPokecenter1FPokefanFText_Sunflora, -1
+	object_event 21,  6, SPRITE_ROCKER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_COMMAND, jumptextfaceplayer, GoldenrodPokecenter1FRockerText, -1
+	object_event 18, 13, SPRITE_GRAMPS, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, GoldenrodPokecenter1FGrampsText, -1
+	object_event 18,  9, SPRITE_CUTE_GIRL, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_COMMAND, jumptextfaceplayer, GoldenrodPokecenter1FLassText_PidgeyMail, -1
 	object_event  3,  9, SPRITE_ICE_BOULDER, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, InfoSignScript, -1
 	object_event 23,  3, SPRITE_ICE_BOULDER, SPRITEMOVEDATA_POKECOM_NEWS, 0, 0, -1, -1, 0, OBJECTTYPE_COMMAND, end, NULL, -1
 
@@ -96,7 +96,7 @@ GoldenrodPokecenter1FLassText:
 
 GoldenrodPokecenter1FPokefanF:
 	checkevent EVENT_GOT_EVIOLITE_IN_GOLDENROD
-	iftrue_jumptextfaceplayer GoldenrodPokeComCenter1FPokefanFGotEvioliteText
+	iftrue_jumptextfaceplayer GoldenrodPokecenter1FPokefanFGotEvioliteText
 	faceplayer
 	opentext
 	writetext GoldenrodPokecenter1FPokefanFDoYouHaveEonMailText
@@ -166,7 +166,7 @@ GoldenrodPokecenter1FPlayerGaveAwayTheEonMailText:
 	line "the Eon Mail."
 	done
 
-GoldenrodPokeComCenter1FPokefanFGotEvioliteText:
+GoldenrodPokecenter1FPokefanFGotEvioliteText:
 	text "Thank you for"
 	line "the Eon Mail!"
 
@@ -312,7 +312,7 @@ JudgeMachineScript:
 	special JudgeMachine
 	waitendtext
 
-UnknownText_0x61c89:
+GoldenrodPokecenter1FSuperNerdText:
 	text "Whoa, this #mon"
 	line "Center is huge."
 
@@ -323,7 +323,7 @@ UnknownText_0x61c89:
 	line "new machines too."
 	done
 
-UnknownText_0x61cef:
+GoldenrodPokecenter1FLassText_PidgeyMail:
 	text "I thought up a fun"
 	line "new thing for the"
 	cont "Wonder Trade Hub!"
@@ -445,7 +445,7 @@ JudgeMachineEngineerLeavesMovement:
 	step_left
 	step_end
 
-UnknownText_0x61e5c:
+GoldenrodPokecenter1FPokefanFText_Sunflora:
 	text "Some girl I don't"
 	line "know sent me her"
 	cont "Sunflora."
@@ -455,7 +455,7 @@ UnknownText_0x61e5c:
 	cont "you want."
 	done
 
-UnknownText_0x61fc9:
+GoldenrodPokecenter1FRockerText:
 	text "The machines here"
 	line "can't all be used"
 	cont "yet."
@@ -467,7 +467,7 @@ UnknownText_0x61fc9:
 	line "people."
 	done
 
-UnknownText_0x62222:
+GoldenrodPokecenter1FGrampsText:
 	text "Just seeing all"
 	line "these new things"
 

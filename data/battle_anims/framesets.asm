@@ -1,4 +1,5 @@
 BattleAnimFrameData:
+	table_width 2, BattleAnimFrameData
 	dw .Frameset_00 ; 00
 	dw .Frameset_01 ; 01
 	dw .Frameset_02 ; 02
@@ -185,6 +186,7 @@ BattleAnimFrameData:
 	dw .Frameset_b7 ; b7
 	dw .Frameset_b8 ; b8
 	dw .Frameset_b9 ; b9
+	assert_table_length NUM_BATTLEANIMFRAMESETS
 
 ; OAM index (see battle/objects/oam.asm), flip flags / duration
 .Frameset_00:

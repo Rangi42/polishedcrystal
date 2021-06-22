@@ -4,7 +4,7 @@ BattleCommand_transform:
 	ld a, BATTLE_VARS_SUBSTATUS2_OPP
 	call GetBattleVarAddr
 	bit SUBSTATUS_TRANSFORMED, [hl]
-	jp nz, BattleEffect_ButItFailed
+	jmp nz, BattleEffect_ButItFailed
 
 	ldh a, [hBattleTurn]
 	and a
@@ -19,7 +19,7 @@ BattleCommand_transform:
 	jr nz, .not_armored_mewtwo
 	ld a, [de]
 	cp ARMOR_SUIT
-	jp z, BattleEffect_ButItFailed
+	jmp z, BattleEffect_ButItFailed
 .not_armored_mewtwo
 
 	call GetTrueUserAbility
@@ -28,10 +28,10 @@ BattleCommand_transform:
 	ld a, BATTLE_VARS_SUBSTATUS4_OPP
 	call GetBattleVarAddr
 	bit SUBSTATUS_SUBSTITUTE, [hl]
-	jp nz, BattleEffect_ButItFailed
+	jmp nz, BattleEffect_ButItFailed
 .bypass_sub
 	call CheckHiddenOpponent
-	jp nz, BattleEffect_ButItFailed
+	jmp nz, BattleEffect_ButItFailed
 
 	farcall GetDisableEncoreMoves
 	push de
@@ -123,7 +123,7 @@ BattleCommand_transform:
 	jr nz, .pp_loop
 	pop hl
 	ld a, [hl]
-	ld [wNamedObjectIndexBuffer], a
+	ld [wNamedObjectIndex], a
 	call GetPokemonName
 	ld hl, wEnemyStatLevels
 	ld de, wPlayerStatLevels

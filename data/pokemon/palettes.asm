@@ -1,4 +1,5 @@
 PokemonPalettes:
+	table_width PAL_COLOR_SIZE * 2 * 2, PokemonPalettes
 
 if DEF(MONOCHROME)
 rept 256
@@ -14,6 +15,7 @@ endr
 elif DEF(HGSS)
 	RGB 30,22,17, 16,14,19 ; 000
 	RGB 30,22,17, 16,14,19 ; 000 shiny
+
 INCLUDE "gfx/pokemon/bulbasaur/hgss/normal.pal"
 INCLUDE "gfx/pokemon/bulbasaur/hgss/shiny.pal"
 INCLUDE "gfx/pokemon/ivysaur/hgss/normal.pal"
@@ -522,6 +524,8 @@ INCLUDE "gfx/pokemon/glaceon/hgss/normal.pal"
 INCLUDE "gfx/pokemon/glaceon/hgss/shiny.pal"
 INCLUDE "gfx/pokemon/sylveon/hgss/normal.pal"
 INCLUDE "gfx/pokemon/sylveon/hgss/shiny.pal"
+	assert_table_length NUM_POKEMON + 1
+
 INCLUDE "gfx/pokemon/egg/hgss/normal.pal"
 INCLUDE "gfx/pokemon/egg/hgss/shiny.pal"
 
@@ -583,10 +587,12 @@ INCLUDE "gfx/pokemon/zapdos_galarian/hgss/normal.pal"
 INCLUDE "gfx/pokemon/zapdos_galarian/hgss/shiny.pal"
 INCLUDE "gfx/pokemon/moltres_galarian/hgss/normal.pal"
 INCLUDE "gfx/pokemon/moltres_galarian/hgss/shiny.pal"
+	assert_table_length NUM_EXT_POKEMON + 1
 
 else
 	RGB 30,22,17, 16,14,19 ; 000
 	RGB 30,22,17, 16,14,19 ; 000 shiny
+
 INCLUDE "gfx/pokemon/bulbasaur/normal.pal"
 INCLUDE "gfx/pokemon/bulbasaur/shiny.pal"
 INCLUDE "gfx/pokemon/ivysaur/normal.pal"
@@ -1095,6 +1101,8 @@ INCLUDE "gfx/pokemon/glaceon/normal.pal"
 INCLUDE "gfx/pokemon/glaceon/shiny.pal"
 INCLUDE "gfx/pokemon/sylveon/normal.pal"
 INCLUDE "gfx/pokemon/sylveon/shiny.pal"
+	assert_table_length NUM_POKEMON + 1
+
 INCLUDE "gfx/pokemon/egg/normal.pal"
 INCLUDE "gfx/pokemon/egg/shiny.pal"
 
@@ -1156,5 +1164,6 @@ INCLUDE "gfx/pokemon/zapdos_galarian/normal.pal"
 INCLUDE "gfx/pokemon/zapdos_galarian/shiny.pal"
 INCLUDE "gfx/pokemon/moltres_galarian/normal.pal"
 INCLUDE "gfx/pokemon/moltres_galarian/shiny.pal"
+	assert_table_length NUM_EXT_POKEMON + 1
 
 endc

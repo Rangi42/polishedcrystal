@@ -164,12 +164,17 @@ hRandomSub:: db
 
 hSecondsBackup:: db
 
-hChartScreen::
+UNION
 ; 0 - player
 ; 1 - opponent trainer
 hBattleTurn:: db
-
 hBattlePalFadeMode:: db
+hTimeOfDayPalOffset:: db
+NEXTU
+hChartScreen:: db
+hChartFillCoord:: db
+hChartLineCoord:: db
+ENDU
 
 hCGBPalUpdate:: db
 hCGB::          db
@@ -190,8 +195,6 @@ hRequested1bpp::        db
 hRequestedVTileDest::   dw
 hRequestedVTileSource:: dw
 hRequestOpaque1bpp::    db
-
-hTimeOfDayPalOffset:: db
 
 UNION
 hTmpd:: db

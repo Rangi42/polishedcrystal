@@ -1,13 +1,13 @@
 SelectMenu::
 	call CheckRegisteredItem
-	jp nz, UseRegisteredItem
+	jr nz, UseRegisteredItem
 
 	call OpenText
 	ld b, BANK(ItemMayBeRegisteredText)
 	ld hl, ItemMayBeRegisteredText
 	call MapTextbox
 	call WaitButton
-	jp CloseText
+	jmp CloseText
 
 ItemMayBeRegisteredText:
 	text_far _MayRegisterItemText
@@ -157,7 +157,7 @@ GetRegisteredItem:
 	ld a, [de]
 	and a
 	jr z, .next
-	ld [wNamedObjectIndexBuffer], a
+	ld [wNamedObjectIndex], a
 	push de
 	push hl
 	push af

@@ -32,7 +32,7 @@ BattleCommand_attract:
 	and a
 	ret nz
 
-	jp FailAttract
+	jmp FailAttract
 
 .no_ability_protection
 	; maybe this was called by cute charm
@@ -167,7 +167,7 @@ CheckMentalHerb:
 	ld hl, CuredDisableWithItem
 	call nz, .print
 
-	jp ConsumeUserItem
+	jmp ConsumeUserItem
 
 .print
 	push bc

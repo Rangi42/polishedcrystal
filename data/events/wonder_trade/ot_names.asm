@@ -1,4 +1,5 @@
 WonderTradeOTNames1:
+	table_width PLAYER_NAME_LENGTH, WonderTradeOTNames1
 	rawchar "Red@@@@@" ; $00
 	rawchar "Blue@@@@" ; $01
 	rawchar "Green@@@" ; $02
@@ -255,8 +256,10 @@ WonderTradeOTNames1:
 	rawchar "Spark@@@" ; $fd
 	rawchar "Satoshi@" ; $fe
 	rawchar "Tajiri@@" ; $ff
+	assert_table_length $100
 
 WonderTradeOTNames2:
+	table_width PLAYER_NAME_LENGTH, WonderTradeOTNames2
 	rawchar "Shigeru@" ; $00
 	rawchar "Hibiki@@" ; $01
 	rawchar "Kotone@@" ; $02
@@ -513,3 +516,4 @@ WonderTradeOTNames2:
 	rawchar "Tetsuya@" ; $fd
 	rawchar "Oota@@@@" ; $fe
 	rawchar "Turner@@" ; $ff
+	assert_table_length $100

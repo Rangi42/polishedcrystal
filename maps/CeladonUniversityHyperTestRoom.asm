@@ -133,15 +133,8 @@ CeladonUniversityHyperTestRoomWestwoodScript:
 	writetext .CongratulationsText
 	waitbutton
 
-	readvar VAR_PARTYCOUNT
-	ifequal 6, .PartyFull
-	writetext .ReceivedMagikarpText
-	playsound SFX_CAUGHT_MON
-	waitsfx
-	givepoke MAGIKARP, MAGIKARP_MASK_FORM, 10, EVIOLITE
-	special TeachMagikarpDragonRage
-	setval ULTRA_BALL
-	special SetLastPartyMonBall
+	givepoke MAGIKARP, MAGIKARP_MASK_FORM, 10, EVIOLITE, ULTRA_BALL, DRAGON_RAGE
+	iffalse_jumpopenedtext .PartyAndBoxFullText
 	setevent EVENT_GOT_DRAGON_RAGE_MAGIKARP
 	jumpopenedtext .TestOverText
 
@@ -149,9 +142,6 @@ CeladonUniversityHyperTestRoomWestwoodScript:
 	waitsfx
 	playsound SFX_WRONG
 	jumpopenedtext .WrongAnswerText
-
-.PartyFull:
-	jumpopenedtext .PartyFullText
 
 .GreetingText:
 	text "Prof.Westwood?"
@@ -272,11 +262,6 @@ CeladonUniversityHyperTestRoomWestwoodScript:
 	line "knows Dragon Rage!"
 	done
 
-.ReceivedMagikarpText:
-	text "<PLAYER> received"
-	line "Magikarp!"
-	done
-
 .TestOverText:
 	text "Our students have"
 	line "the tenacity of a"
@@ -286,9 +271,9 @@ CeladonUniversityHyperTestRoomWestwoodScript:
 	cont "And so do you!"
 	done
 
-.PartyFullText:
+.PartyAndBoxFullText:
 	text "Oh no! Your party"
-	line "is full…"
+	line "and box are full…"
 	done
 
 .RefusedText:

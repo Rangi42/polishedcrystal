@@ -1,7 +1,7 @@
 ; Pokémon S/M - Battle! Wild Pokémon
 ; Demixed by Mmmmmm
 ; https://pastebin.com/WSdP1J0x
-; https://hax.iimarck.us/topic/6777/6/
+; https://hax.iimarckus.org/topic/6777/6/
 
 Music_WildBattleSM:
 	musicheader 4, 1, Music_WildBattleSM_Ch1

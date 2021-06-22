@@ -44,5 +44,6 @@ MoldBreakerSuppressedAbilities:
 	db VOLT_ABSORB
 	db WATER_ABSORB
 	db WATER_VEIL
+	db WHITE_SMOKE
 	db WONDER_SKIN
 	db -1

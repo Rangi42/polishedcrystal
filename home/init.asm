@@ -209,7 +209,7 @@ Init::
 	call InitSound
 	xor a
 	ld [wMapMusic], a
-	jp GameInit ; far-ok
+	jmp GameInit ; far-ok
 
 ClearVRAM::
 ; Wipe VRAM banks 0 and 1
@@ -251,4 +251,4 @@ ClearsScratch::
 	ld bc, $20
 	xor a
 	rst ByteFill
-	jp CloseSRAM
+	jmp CloseSRAM

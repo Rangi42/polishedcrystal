@@ -17,7 +17,7 @@ InitSound::
 	pop af
 	rst Bankswitch
 
-	jp PopAFBCDEHL
+	jmp PopAFBCDEHL
 
 UpdateSound::
 
@@ -36,7 +36,7 @@ UpdateSound::
 	pop af
 	rst Bankswitch
 
-	jp PopAFBCDEHL
+	jmp PopAFBCDEHL
 
 _LoadMusicByte::
 ; wCurMusicByte = [a:de]
@@ -45,6 +45,56 @@ _LoadMusicByte::
 	ld [wCurMusicByte], a
 	ld a, BANK(LoadMusicByte)
 	rst Bankswitch
+	ret
+
+CheckSpecialMapMusic:
+; Returns z if the current map has a special music handler.
+	ld hl, SpecialMusicMaps
+	ld a, [wMapGroup]
+	ld b, a
+	ld a, [wMapNumber]
+	ld c, a
+.loop:
+	ld a, [hli]
+	and a
+	jr z, .ret_nz
+	cp b
+	jr nz, .wrong_group
+	ld a, [hli]
+	cp c
+	jr nz, .wrong_map
+	ret
+
+.ret_nz
+	or 1
+	ret
+
+.wrong_group:
+	inc hl
+.wrong_map:
+	inc hl
+	inc hl
+	jr .loop
+
+PlayBikeMusic:
+; Play bike music unless we're in a map with special music handling.
+	call CheckSpecialMapMusic
+	ret z
+	call .get_bike_music
+	ld a, e
+	ld [wMapMusic], a
+	jr PlayMusic
+
+.get_bike_music
+	call RegionCheck
+	ld a, e
+	ld de, MUSIC_BICYCLE_RB
+	cp KANTO_REGION
+	ret z
+	ld de, MUSIC_BICYCLE_RSE
+	cp ORANGE_REGION
+	ret z
+	ld de, MUSIC_BICYCLE
 	ret
 
 PlayMusicAfterDelay::
@@ -82,7 +132,7 @@ PlayMusic::
 	pop af
 	rst Bankswitch
 
-	jp PopAFBCDEHL
+	jmp PopAFBCDEHL
 
 PlayMusic2::
 ; Stop playing music, then play music de.
@@ -107,7 +157,7 @@ PlayMusic2::
 	pop af
 	rst Bankswitch
 
-	jp PopAFBCDEHL
+	jmp PopAFBCDEHL
 
 PlayCryHeader::
 ; Play cry header de.
@@ -151,7 +201,7 @@ endr
 	pop af
 	rst Bankswitch
 
-	jp PopAFBCDEHL
+	jmp PopAFBCDEHL
 
 WaitPlaySFX::
 	call WaitSFX
@@ -188,8 +238,11 @@ PlaySFX::
 	rst Bankswitch
 
 .done
-	jp PopAFBCDEHL
+	jmp PopAFBCDEHL
 
+PlayWaitSFX:
+	call PlaySFX
+	; fallthrough
 Script_waitsfx::
 WaitSFX::
 ; infinite loop until sfx is done playing
@@ -299,7 +352,7 @@ FadeToMapMusic::
 	ld [wMapMusic], a
 
 .done
-	jp PopAFBCDEHL
+	jmp PopAFBCDEHL
 
 Script_playmapmusic::
 PlayMapMusic::
@@ -313,7 +366,7 @@ PlayMapMusic::
 	cp e
 	call nz, PlayMusicAfterDelay
 
-	jp PopAFBCDEHL
+	jmp PopAFBCDEHL
 
 PlayMapMusicBike::
 	push hl
@@ -326,12 +379,12 @@ PlayMapMusicBike::
 	call GetMapMusic_MaybeSpecial
 	call PlayMusicAfterDelay
 
-	jp PopAFBCDEHL
+	jmp PopAFBCDEHL
 
 TryRestartMapMusic::
 	ld a, [wDontPlayMapMusicOnReload]
 	and a
-	jp z, RestoreMusic
+	jmp z, RestoreMusic
 	xor a
 	ld [wMapMusic], a
 	ld de, MUSIC_NONE
@@ -353,31 +406,12 @@ RestartMapMusic::
 	ld e, a
 	ld d, 0
 	call PlayMusic
-	jp PopAFBCDEHL
+	jmp PopAFBCDEHL
 
 GetMapMusic_MaybeSpecial::
-	ld hl, SpecialMusicMaps
-	ld a, [wMapGroup]
-	ld b, a
-	ld a, [wMapNumber]
-	ld c, a
-.loop:
-	ld a, [hli]
-	and a
-	jr z, GetPlayerStateMusic
-	cp b
-	jr nz, .wrong_group
-	ld a, [hli]
-	cp c
-	jr nz, .wrong_map
-	jp IndirectHL
-
-.wrong_group:
-	inc hl
-.wrong_map:
-	inc hl
-	inc hl
-	jr .loop
+	call CheckSpecialMapMusic
+	jmp z, IndirectHL
+	jr GetPlayerStateMusic
 
 GetCyclingRoadMusic:
 	ld de, MUSIC_BICYCLE_XY
@@ -395,25 +429,11 @@ GetBugCatchingContestMusic:
 
 GetPlayerStateMusic:
 	ld a, [wPlayerState]
-	cp PLAYER_BIKE
-	jr z, .bike
 	cp PLAYER_SURF
 	jr z, .surf
 	cp PLAYER_SURF_PIKA
 	jr z, .surf_pikachu
-	jp GetMapMusic
-
-.bike:
-	call RegionCheck
-	ld a, e
-	ld de, MUSIC_BICYCLE_RB
-	cp KANTO_REGION
-	ret z
-	ld de, MUSIC_BICYCLE_RSE
-	cp ORANGE_REGION
-	ret z
-	ld de, MUSIC_BICYCLE
-	ret
+	jmp GetMapMusic
 
 .surf:
 	call RegionCheck
@@ -430,27 +450,6 @@ GetPlayerStateMusic:
 .surf_pikachu:
 	ld de, MUSIC_SURFING_PIKACHU
 	ret
-
-SpecialMusicMaps:
-music_map: MACRO
-	map_id \1
-	dw \2
-ENDM
-	music_map ROUTE_23, GetMapMusic
-	music_map INDIGO_PLATEAU, GetMapMusic
-	music_map QUIET_CAVE_1F, GetMapMusic
-	music_map QUIET_CAVE_B1F, GetMapMusic
-	music_map QUIET_CAVE_B2F, GetMapMusic
-	music_map QUIET_CAVE_B3F, GetMapMusic
-	music_map SCARY_CAVE_SHIPWRECK, GetMapMusic
-	music_map WHIRL_ISLAND_LUGIA_CHAMBER, GetMapMusic
-	music_map TIN_TOWER_ROOF, GetMapMusic
-	music_map ROUTE_16_SOUTH, GetCyclingRoadMusic
-	music_map ROUTE_17, GetCyclingRoadMusic
-	music_map ROUTE_18_WEST, GetCyclingRoadMusic
-	music_map ROUTE_35_NATIONAL_PARK_GATE, GetBugCatchingContestMusic
-	music_map ROUTE_36_NATIONAL_PARK_GATE, GetBugCatchingContestMusic
-	db 0 ; end
 
 CheckSFX::
 ; Return carry if any SFX channels are active.

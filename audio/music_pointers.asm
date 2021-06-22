@@ -1,4 +1,5 @@
 Music:
+	table_width 3, Music
 	dba Music_Nothing
 	dba Music_CrystalOpening
 	dba Music_TitleScreen
@@ -191,3 +192,4 @@ Music:
 	dba Music_GymLeaderBattlePrism
 	dba Music_PaletteBattlePrism
 	dba Music_Megalovania
+	assert_table_length NUM_MUSIC_SONGS

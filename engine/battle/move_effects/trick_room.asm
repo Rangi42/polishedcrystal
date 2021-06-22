@@ -9,7 +9,7 @@ BattleCommand_trickroom:
 	ld [hl], 0
 
 	ld hl, TrickRoomEndedText
-	jp StdBattleTextbox
+	jmp StdBattleTextbox
 
 .new_trick_room
 	ld hl, TrickRoomText
@@ -28,4 +28,4 @@ BattleCommand_trickroom:
 	ret nz
 
 	farcall UseStatItemText
-	jp ConsumeUserItem
+	jmp ConsumeUserItem

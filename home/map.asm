@@ -1119,7 +1119,7 @@ _DoLoadTilesetGFX0:
 	inc c
 	jr z, .special_load
 	dec c
-	jp DecompressRequest2bpp
+	jmp DecompressRequest2bpp
 
 .special_load
 	; Skip roof tiles when writing to VRAM
@@ -1135,7 +1135,7 @@ _DoLoadTilesetGFX0:
 	ld de, wDecompressScratch tile $13
 	ld hl, vTiles2 tile $13
 	ld c, $6c ; write tiles $13-$7e
-	jp Request2bppInWRA6
+	jmp Request2bppInWRA6
 
 LoadTilesetGFX::
 	xor a
@@ -1476,7 +1476,7 @@ GetCoordTile::
 
 .nocarry2
 	ld a, BANK(wDecompressedCollisions)
-	jp GetFarWRAMByte
+	jmp GetFarWRAMByte
 
 GetBlockLocation::
 	ld a, [wMapWidth]
@@ -1647,7 +1647,7 @@ FadeToMenu::
 	call LoadStandardMenuHeader
 	farcall FadeOutPalettes
 	call ClearSprites
-	jp DisableSpriteUpdates
+	jmp DisableSpriteUpdates
 
 CloseSubmenu::
 	call ClearBGPalettes
@@ -1667,7 +1667,7 @@ FinishExitMenu::
 	farcall LoadBlindingFlashPalette
 	call ApplyAttrAndTilemapInVBlank
 	farcall FadeInPalettes
-	jp EnableSpriteUpdates
+	jmp EnableSpriteUpdates
 
 ReturnToMapWithSpeechTextbox::
 	push af
@@ -1714,7 +1714,7 @@ ReloadTilesetAndPalettes::
 	pop af
 	rst Bankswitch
 
-	jp EnableLCD
+	jmp EnableLCD
 
 GetMapPointer::
 	ld a, [wMapGroup]
@@ -1867,7 +1867,7 @@ GetMapEnvironment::
 	ld de, MAP_ENVIRONMENT
 	call GetMapField
 	ld a, c
-	jp PopBCDEHL
+	jmp PopBCDEHL
 
 GetAnyMapEnvironment::
 	push hl
@@ -1876,7 +1876,7 @@ GetAnyMapEnvironment::
 	ld de, MAP_ENVIRONMENT
 	call GetAnyMapField
 	ld a, c
-	jp PopBCDEHL
+	jmp PopBCDEHL
 
 GetAnyMapTileset::
 	ld de, MAP_TILESET
@@ -1911,7 +1911,7 @@ GetWorldMapLocation::
 	ld de, MAP_LOCATION
 	call GetAnyMapField
 	ld a, c
-	jp PopBCDEHL
+	jmp PopBCDEHL
 
 RandomRegionCheck::
 ; Returns current region, like RegionCheck, except that Mt. Silver and Route 28
@@ -1949,13 +1949,20 @@ GetMapMusic::
 	push bc
 	ld de, MAP_MUSIC
 	call GetMapField
-	ld hl, SpecialMapMusic
-.loop
-	ld a, [hli]
-	and a
-	jr z, .done
-	cp c
-	jr nz, .next
+	ld a, c
+	cp FIRST_ALT_MUSIC
+	jr c, .done
+	; hl = AlternateMusic + ~c * 5
+	cpl
+	ld c, a
+	add a
+	add a
+	add c
+	add LOW(AlternateMusic)
+	ld l, a
+	adc HIGH(AlternateMusic)
+	sub l
+	ld h, a
 	ld a, [hli]
 	ld e, a
 	ld a, [hli]
@@ -1968,19 +1975,12 @@ GetMapMusic::
 	inc hl
 .false
 	ld a, [hl]
-	ld c, a
 .done
-	ld e, c
+	ld e, a
 	ld d, 0
 	pop bc
 	pop hl
 	ret
-
-.next
-rept 5
-	inc hl
-endr
-	jr .loop
 
 GetMapTimeOfDay::
 	call GetPhoneServiceTimeOfDayByte
@@ -2014,7 +2014,7 @@ GetFishingGroup::
 	call GetMapField
 	ld a, c
 
-	jp PopBCDEHL
+	jmp PopBCDEHL
 
 TilesetUnchanged::
 ; returns z if tileset is unchanged from last tileset

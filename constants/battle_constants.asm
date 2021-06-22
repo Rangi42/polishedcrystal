@@ -134,8 +134,7 @@ STAT_SKIPTEXT  EQU 1 << STAT_SKIPTEXT_F
 	const BATTLE_VARS_LAST_COUNTER_MOVE_OPP
 	const BATTLE_VARS_LAST_MOVE
 	const BATTLE_VARS_LAST_MOVE_OPP
-assert const_value % 2 == 0
-NUM_BATTLE_VAR_LOCATION_PAIRS EQU const_value / 2
+NUM_BATTLE_VARS EQU const_value
 
 ; BattleVarLocations indexes (see home/battle_vars.asm)
 	const_def
@@ -169,6 +168,8 @@ NUM_BATTLE_VAR_LOCATION_PAIRS EQU const_value / 2
 	const ENEMY_COUNTER_MOVE
 	const PLAYER_LAST_MOVE
 	const ENEMY_LAST_MOVE
+assert const_value % 2 == 0
+NUM_BATTLE_VAR_LOCATION_PAIRS EQU const_value / 2
 
 ; status condition bit flags
 SLP EQU %111 ; 0-7 turns
@@ -182,47 +183,48 @@ SLP EQU %111 ; 0-7 turns
 ALL_STATUS EQU (1 << PSN) | (1 << BRN) | (1 << FRZ) | (1 << PAR) | (1 << TOX) | SLP
 
 ; wPlayerSubStatus1 or wEnemySubStatus1 bit flags
-	enum_start 7, -1
-	enum SUBSTATUS_IN_LOVE
-	enum SUBSTATUS_FLASH_FIRE
-	enum SUBSTATUS_ENDURE
-	enum SUBSTATUS_PERISH
-	enum SUBSTATUS_IDENTIFIED
-	enum SUBSTATUS_PROTECT
-	enum SUBSTATUS_CURSE
-	enum SUBSTATUS_UNBURDEN
+	const_def
+	const SUBSTATUS_UNBURDEN
+	const SUBSTATUS_CURSE
+	const SUBSTATUS_PROTECT
+	const SUBSTATUS_IDENTIFIED
+	const SUBSTATUS_PERISH
+	const SUBSTATUS_ENDURE
+	const SUBSTATUS_FLASH_FIRE
+	const SUBSTATUS_IN_LOVE
 
 ; wPlayerSubStatus2 or wEnemySubStatus2 bit flags
-	enum_start 7, -1
-	enum SUBSTATUS_CANT_RUN
-	enum SUBSTATUS_DESTINY_BOND
-	enum SUBSTATUS_LOCK_ON
-	enum SUBSTATUS_TRANSFORMED
-	enum SUBSTATUS_IN_ABILITY
-	enum SUBSTATUS_FAINTED
-	enum SUBSTATUS_MINIMIZED
+	const_def
+	const_skip
+	const SUBSTATUS_MINIMIZED
+	const SUBSTATUS_FAINTED
+	const SUBSTATUS_IN_ABILITY
+	const SUBSTATUS_TRANSFORMED
+	const SUBSTATUS_LOCK_ON
+	const SUBSTATUS_DESTINY_BOND
+	const SUBSTATUS_CANT_RUN
 
 ; wPlayerSubStatus3 or wEnemySubStatus3 bit flags
-	enum_start 7, -1
-	enum SUBSTATUS_CONFUSED
-	enum SUBSTATUS_FLYING
-	enum SUBSTATUS_UNDERGROUND
-	enum SUBSTATUS_CHARGED
-	enum SUBSTATUS_RECHARGE
-	enum SUBSTATUS_IN_LOOP
-	enum SUBSTATUS_RAMPAGE
-	enum SUBSTATUS_ROLLOUT
+	const_def
+	const SUBSTATUS_ROLLOUT
+	const SUBSTATUS_RAMPAGE
+	const SUBSTATUS_IN_LOOP
+	const SUBSTATUS_RECHARGE
+	const SUBSTATUS_CHARGED
+	const SUBSTATUS_UNDERGROUND
+	const SUBSTATUS_FLYING
+	const SUBSTATUS_CONFUSED
 
 ; wPlayerSubStatus4 or wEnemySubStatus4 bit flags
-	enum_start 7, -1
-	enum SUBSTATUS_LEECH_SEED
-	enum SUBSTATUS_RAGE
-	enum SUBSTATUS_FLINCHED
-	enum SUBSTATUS_SUBSTITUTE
-	enum SUBSTATUS_ROOST
-	enum SUBSTATUS_FOCUS_ENERGY
-	enum SUBSTATUS_4_1 ; unused
-	enum SUBSTATUS_CURLED ; formerly in its own substatus
+	const_def
+	const SUBSTATUS_CURLED
+	const_skip
+	const SUBSTATUS_FOCUS_ENERGY
+	const SUBSTATUS_ROOST
+	const SUBSTATUS_SUBSTITUTE
+	const SUBSTATUS_FLINCHED
+	const SUBSTATUS_RAGE
+	const SUBSTATUS_LEECH_SEED
 
 ; wPlayerHazards or wEnemyHazards bit masks (stackable)
 HAZARDS_SPIKES       EQU %00110000
@@ -307,13 +309,18 @@ QUICK_PACK   EQU 1 << QUICK_PACK_F
 	const LOSE
 	const DRAW
 
+; link_battle_record struct
+LINK_BATTLE_RECORD_LENGTH EQU 2 + (NAME_LENGTH - 1) + 2 * 3
+NUM_LINK_BATTLE_RECORDS EQU 5
+
+; used in data/trainers/dvs.asm
+PERFECT_DVS EQUS "$ff, $ff, $ff"
+
 ; $00 is used instead of $ff for DVs because $ff is the end-of-trainer marker
 ; ReadTrainerParty converts $00 to $ff when reading DVs
-; DV order: hp:atk, def:spe, sat:sdf
-PERFECT_DVS      EQUS "$ff, $ff, $ff"
+; DV order: hp:atk, def:spd, sat:sdf
 FAKE_PERFECT_DVS EQUS "$00, $00, $00"
 DVS_TRICK_ROOM   EQUS "$00, $f0, $00"
-BTDVS_TRICK_ROOM EQUS "$ff, $f0, $ff"
 
 ; Hidden Power DVs ($00 is converted to $ff in regular trainer sets)
 ; Chosen for stat importance: Speed > * > Atk
@@ -351,41 +358,4 @@ DVS_HP_PSYCHIC  EQUS "$00, $ee, $00"
 DVS_HP_ICE      EQUS "$00, $fe, $00"
 DVS_HP_DRAGON   EQUS "$00, $ef, $00"
 DVS_HP_DARK     EQUS "$fe, $00, $00"
-endc
-
-; Battle Tower Hidden Power DVs ($ff instead of $00)
-if DEF(FAITHFUL)
-BTDVS_HP_FIGHTING EQUS "$ff, $ee, $ee"
-BTDVS_HP_FLYING   EQUS "$ee, $ef, $ee"
-BTDVS_HP_POISON   EQUS "$ff, $ef, $ee"
-BTDVS_HP_GROUND   EQUS "$ff, $ff, $ee"
-BTDVS_HP_ROCK     EQUS "$ff, $ee, $fe"
-BTDVS_HP_BUG      EQUS "$fe, $ef, $fe"
-BTDVS_HP_GHOST    EQUS "$fe, $ff, $fe"
-BTDVS_HP_STEEL    EQUS "$ff, $ff, $fe"
-BTDVS_HP_FIRE     EQUS "$fe, $fe, $ef"
-BTDVS_HP_WATER    EQUS "$fe, $ef, $ef"
-BTDVS_HP_GRASS    EQUS "$fe, $ff, $ef"
-BTDVS_HP_ELECTRIC EQUS "$ff, $ff, $ef"
-BTDVS_HP_PSYCHIC  EQUS "$fe, $fe, $ff"
-BTDVS_HP_ICE      EQUS "$fe, $ef, $ff"
-BTDVS_HP_DRAGON   EQUS "$fe, $ff, $ff"
-BTDVS_HP_DARK     EQUS "$ff, $ff, $ff"
-else
-BTDVS_HP_FIGHTING EQUS "$ff, $ee, $ee"
-BTDVS_HP_FLYING   EQUS "$ff, $fe, $ee"
-BTDVS_HP_POISON   EQUS "$ff, $ef, $ee"
-BTDVS_HP_GROUND   EQUS "$ff, $ff, $ee"
-BTDVS_HP_ROCK     EQUS "$ff, $ee, $fe"
-BTDVS_HP_BUG      EQUS "$ff, $fe, $fe"
-BTDVS_HP_GHOST    EQUS "$ff, $ef, $fe"
-BTDVS_HP_STEEL    EQUS "$ff, $ff, $fe"
-BTDVS_HP_FIRE     EQUS "$ff, $ee, $ef"
-BTDVS_HP_WATER    EQUS "$ff, $fe, $ef"
-BTDVS_HP_GRASS    EQUS "$ff, $ef, $ef"
-BTDVS_HP_ELECTRIC EQUS "$ff, $ff, $ef"
-BTDVS_HP_PSYCHIC  EQUS "$ff, $ee, $ff"
-BTDVS_HP_ICE      EQUS "$ff, $fe, $ff"
-BTDVS_HP_DRAGON   EQUS "$ff, $ef, $ff"
-BTDVS_HP_DARK     EQUS "$fe, $ff, $ff"
 endc

@@ -301,9 +301,6 @@ NGRAMS_END EQU $52
 
 rawchar: MACRO
 	setcharmap no_ngrams
-	rept _NARG
-		db \1
-		shift
-	endr
+	db \#
 	setcharmap default
 ENDM

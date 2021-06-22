@@ -86,7 +86,7 @@ EnterMap:
 	ldh [hMapEntryMethod], a
 	ld a, MAPSTATUS_HANDLE
 	ld [wMapStatus], a
-	jp DeleteSavedMusic
+	jmp DeleteSavedMusic
 
 HandleMap:
 	call HandleMapTimeAndJoypad
@@ -111,7 +111,7 @@ MapEvents:
 	ret nz
 	call PlayerEvents
 	call DisableEvents
-	jp ScriptEvents
+	jmp ScriptEvents
 
 NextOverworldFrame:
 	; If we haven't already performed a delay outside DelayFrame as a result
@@ -162,7 +162,7 @@ NextOverworldFrame:
 	call z, DelayFrame
 	pop af
 	ldh [rVBK], a
-	jp PopBCDEHL
+	jmp PopBCDEHL
 
 HandleMapTimeAndJoypad:
 	ld a, [wMapEventStatus]
@@ -171,12 +171,15 @@ HandleMapTimeAndJoypad:
 
 	call UpdateTime
 	call GetJoypad
-	jp TimeOfDayPals
+	jmp TimeOfDayPals
 
 HandleMapObjects:
 	farcall HandleNPCStep ; engine/map_objects.asm
 	farcall _HandlePlayerStep
-	jp _CheckObjectEnteringVisibleRange
+	ld hl, wPlayerStepFlags
+	bit PLAYERSTEP_STOP_F, [hl]
+	ret z
+	farjp CheckObjectEnteringVisibleRange
 
 HandleMapBackground:
 	farcall _UpdateSprites
@@ -201,12 +204,6 @@ CheckPlayerState:
 	ld a, MAPEVENTS_OFF
 	ld [wMapEventStatus], a
 	ret
-
-_CheckObjectEnteringVisibleRange:
-	ld hl, wPlayerStepFlags
-	bit PLAYERSTEP_STOP_F, [hl]
-	ret z
-	farjp CheckObjectEnteringVisibleRange
 
 PlayerEvents:
 	xor a
@@ -329,7 +326,7 @@ CheckTileEvent:
 	ld h, [hl]
 	ld l, a
 	ld a, [wMapScriptsBank]
-	jp CallScript
+	jmp CallScript
 
 CheckWildEncounterCooldown:
 	ld hl, wWildEncounterCooldown
@@ -385,11 +382,11 @@ RunSceneScript:
 	bit 3, [hl]
 	jr z, .nope
 
-	ld hl, wPriorityScriptAddr
+	ld hl, wDeferredScriptAddr
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
-	ld a, [wPriorityScriptBank]
+	ld a, [wDeferredScriptBank]
 	call CallScript
 	scf
 	ret
@@ -504,12 +501,14 @@ TryObjectEvent:
 	call StackJumpTable
 
 ObjectEventTypeArray:
+	table_width 2, ObjectEventTypeArray
 	dw .script   ; OBJECTTYPE_SCRIPT
 	dw .itemball ; OBJECTTYPE_ITEMBALL
 	dw .trainer  ; OBJECTTYPE_TRAINER
 	dw .trainer  ; OBJECTTYPE_GENERICTRAINER
 	dw .pokemon  ; OBJECTTYPE_POKEMON
 	dw .command  ; OBJECTTYPE_COMMAND
+	assert_table_length NUM_OBJECT_TYPES
 
 .script:
 	ld hl, MAPOBJECT_SCRIPT_POINTER
@@ -518,7 +517,7 @@ ObjectEventTypeArray:
 	ld h, [hl]
 	ld l, a
 	ld a, [wMapScriptsBank]
-	jp CallScript
+	jmp CallScript
 
 .itemball:
 	ld hl, MAPOBJECT_RANGE
@@ -574,7 +573,7 @@ endr
 .callTemporaryScriptBuffer:
 	ld hl, wTempScriptBuffer
 	ld a, [wMapScriptsBank]
-	jp CallScript
+	jmp CallScript
 
 TryBGEvent:
 	call CheckFacingBGEvent
@@ -585,10 +584,11 @@ TryBGEvent:
 .IsBGEvent:
 	ld a, [wCurBGEventType]
 	cp BGEVENT_ITEM
-	jp nc, BGEventJumptable.itemifset
+	jr nc, BGEventJumptable.itemifset
 	call StackJumpTable
 
 BGEventJumptable:
+	table_width 2, BGEventJumptable
 	dw .read     ; BGEVENT_READ
 	dw .up       ; BGEVENT_UP
 	dw .down     ; BGEVENT_DOWN
@@ -599,6 +599,7 @@ BGEventJumptable:
 	dw .jumptext ; BGEVENT_JUMPTEXT
 	dw .jumpstd  ; BGEVENT_JUMPSTD
 	dw .ifnotset ; BGEVENT_GROTTOITEM
+	assert_table_length NUM_BGEVENTS
 
 .up
 	ld b, OW_UP
@@ -617,7 +618,7 @@ BGEventJumptable:
 	ld a, [wPlayerDirection]
 	and %1100
 	cp b
-	jp nz, .dontread
+	jr nz, .dontread
 
 .read
 	call PlayTalkObject
@@ -641,7 +642,7 @@ BGEventJumptable:
 	call EventFlagAction
 	ld a, c
 	and a
-	jp nz, .dontread
+	jr nz, .dontread
 	call PlayTalkObject
 	ld hl, wHiddenItemEvent
 	ld a, [wCurBGEventScriptAddr]
@@ -727,50 +728,51 @@ PlayerMovement:
 	ret
 
 PlayerMovementPointers:
-	dw .zero
-	dw .one
-	dw .two
-	dw .three
-	dw .four
-	dw .five
-	dw .six
-	dw .seven
+; entries correspond to PLAYERMOVEMENT_* constants
+	table_width 2, PlayerMovementPointers
+	dw .normal
+	dw .warp
+	dw .turn
+	dw .force_turn
+	dw .finish
+	dw .continue
+	dw .exit_water
+	dw .jump
+	assert_table_length NUM_PLAYER_MOVEMENTS
 
-.zero
-.four
+.normal:
+.finish:
 	xor a
 	ld c, a
 	ret
 
-.seven ; functionally the same as zero/four?
+.jump: ; functionally the same as normal/finish?
 	xor a
 	ld c, a
 	ret
 
-.one
-	ld a, 5
+.warp:
+	ld a, PLAYEREVENT_WARP
 	ld c, a
 	scf
 	ret
 
-.two
-	ld a, 9
+.turn:
+	ld a, PLAYEREVENT_JOYCHANGEFACING
 	ld c, a
 	scf
 	ret
 
-.three
-; force the player to move in some direction
+.force_turn:
 	ld a, BANK(Script_ForcedMovement)
 	ld hl, Script_ForcedMovement
 	call CallScript
-;	ld a, -1
 	ld c, a
 	scf
 	ret
 
-.five
-.six
+.continue:
+.exit_water:
 	ld a, -1
 	ld c, a
 	and a
@@ -954,7 +956,9 @@ DoPlayerEvent:
 	ret
 
 PlayerEventScriptPointers:
-	dba InvalidEventScript          ; PLAYEREVENT_NONE
+; entries correspond to PLAYEREVENT_* constants
+	table_width 3, PlayerEventScriptPointers
+	dba InvalidEventScript       ; PLAYEREVENT_NONE
 	dba SeenByTrainerScript      ; PLAYEREVENT_SEENBYTRAINER
 	dba TalkToTrainerScript      ; PLAYEREVENT_TALKTOTRAINER
 	dba FindItemInBallScript     ; PLAYEREVENT_ITEMBALL
@@ -966,7 +970,8 @@ PlayerEventScriptPointers:
 	dba ChangeDirectionScript    ; PLAYEREVENT_JOYCHANGEFACING
 	dba FindTMHMInBallScript     ; PLAYEREVENT_TMHMBALL
 	dba FindKeyItemInBallScript  ; PLAYEREVENT_KEYITEMBALL
-	dba InvalidEventScript          ; NUM_PLAYER_EVENTS
+	dba InvalidEventScript       ; (NUM_PLAYER_EVENTS)
+	assert_table_length NUM_PLAYER_EVENTS + 1
 
 HatchEggScript:
 	callasm OverworldHatchEgg
@@ -1065,6 +1070,8 @@ TryTileCollisionEvent:
 	cp COLL_HEADBUTT_TREE
 	jr z, .headbutt
 	farcall TrySurfOW
+	jr c, .done
+	farcall TryFlashOW
 	jr nc, .noevent
 .done
 	call PlayClickSFX

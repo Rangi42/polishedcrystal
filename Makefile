@@ -85,7 +85,7 @@ clean: tidy
 	$(MAKE) clean -C tools/
 
 tidy:
-	rm -f $(crystal_obj) $(wildcard $(NAME)-*.gbc) $(wildcard $(NAME)-*.map) $(wildcard $(NAME)-*.sym) $(wildcard $(NAME)-*.bsp)
+	rm -f $(crystal_obj) $(wildcard $(NAME)-*.gbc) $(wildcard $(NAME)-*.map) $(wildcard $(NAME)-*.sym) $(wildcard $(NAME)-*.bsp) rgbdscheck.o
 
 freespace: ROM_NAME = $(NAME)-$(VERSION)
 freespace: crystal tools/bankends
@@ -94,8 +94,11 @@ freespace: crystal tools/bankends
 bsp: $(NAME)-$(VERSION).bsp
 
 
+rgbdscheck.o: rgbdscheck.asm
+	$(RGBDS_DIR)rgbasm -o $@ $<
+
 define DEP
-$1: $2 $$(shell tools/scan_includes $2)
+$1: $2 $$(shell tools/scan_includes $2) | rgbdscheck.o
 	$$(RGBDS_DIR)rgbasm $$(RGBASM_FLAGS) -L -o $$@ $$<
 endef
 
@@ -185,6 +188,7 @@ gfx/trade/game_boy.2bpp: tools/gfx += --remove-duplicates
 gfx/trade/link_cable.2bpp: tools/gfx += --remove-duplicates
 gfx/trade/ball_poof_cable.2bpp: gfx/trade/ball.2bpp gfx/trade/poof.2bpp gfx/trade/cable.2bpp ; cat $^ > $@
 gfx/trade/game_boy_cable.2bpp: gfx/trade/game_boy.2bpp gfx/trade/link_cable.2bpp ; cat $^ > $@
+gfx/trade/trade_screen.2bpp: gfx/trade/border.2bpp gfx/trade/textbox.2bpp ; cat $^ > $@
 
 gfx/trainer_card/chris_card.2bpp: rgbgfx += -h
 gfx/trainer_card/kris_card.2bpp: rgbgfx += -h

@@ -24,7 +24,6 @@ The final, non-beta 3.0 release should include all of these.
 * Add hidden grottoes throughout Johto
 * Variety Channel with daily unique music
 * Separate radio channels for March and Lullaby, available every day
-* Send gift Pokémon to the PC if the party is full
 * Generate random team for Psychic Inver
 * Wild Ghosts and the SilphScope2
 * More location-unique wild moves (see [material/moves.txt](material/moves.txt))
@@ -32,10 +31,7 @@ The final, non-beta 3.0 release should include all of these.
 * DVs to vary palettes for trainers' duplicate Pokémon (e.g. Clair's Dragonairs)
 * Complete Alolan and Galarian forms
    * Persian as a one-time trade from an Alolan tourist (you can breed it for more)
-   * Rattata/Raticate in Kanto
    * Grimer/Muk in Goldenrod City (Celadon's Muk are a sign of its pollution, Goldenrod's Alolan Muk would be a sign that they manage pollution better)
-   * Sandshrew/Sandslash and Vulpix/Ninetales in the Ice Path and/or Seafoam Islands
-   * Marowak, Exeggutor, and Raichu evolve while holding the Odd Souvenir
    * Ponyta/Rapidash on Shamouti Island
    * Corsola/Cursola in Scary Cave
    * Farfetch'd/Sirfetch'd instead of non-faithful Farfetch'd
@@ -174,8 +170,8 @@ Some of these may never be added; they're just suggestions.
    * PGo Battle! Legendary Raid (for Mew)
    * S/M Malie City (Day) (for Shamouti Shrine)
 * More Orange Islands
-* Add [Sweet Honey](http://iimarck.us/i/sweet-honey/) that acts like Sweet Scent and attracts rare Pokémon
-* First Pokémon walks behind you ([comet's prototype](https://hax.iimarck.us/topic/6248/) and [diff](https://github.com/yenatch/pokecrystal/commit/dbc5cd2025a0214c5b2cd1e3330f50603a0bb9d1))
+* Add [Sweet Honey](http://iimarckus.org/i/sweet-honey/) that acts like Sweet Scent and attracts rare Pokémon
+* First Pokémon walks behind you ([comet's prototype](https://hax.iimarckus.org/topic/6248/) and [diff](https://github.com/yenatch/pokecrystal/commit/dbc5cd2025a0214c5b2cd1e3330f50603a0bb9d1))
 * Seasons with appropriate day/night lengths from B/W (affects palettes, tiles, wild Pokémon, dialog, accessible areas, etc)
 * Dive areas
 * Rock Climb areas
@@ -186,7 +182,7 @@ Some of these may never be added; they're just suggestions.
 * Something like Poké Radar or Pokéwalker
 * Rarely wild Pokémon know an egg move (could be a bonus for DexNav or Poké Radar use)
 * Use the [Japanese GS Ball event quiz](https://www.pokecommunity.com/showthread.php?p=9739072#post9739072) ([original](http://www.geocities.co.jp/Playtown-Darts/9915/serebi.htm))
-* Restore [unused memory game](http://iimarck.us/i/memory/) ([more info](https://tcrf.net/Pok%C3%A9mon_Gold_and_Silver#Unused_Memory_Game))
+* Restore [unused memory game](http://iimarckus.org/i/memory/) ([more info](https://tcrf.net/Pok%C3%A9mon_Gold_and_Silver#Unused_Memory_Game))
 * Restore the Pikachu's Beach minigame
 * Level ranges for wild Pokémon, instead of single values
 * Championship title defense like in Gen VII (challengers: rival, Lyra, Lance, Prof.Oak, Prof.Elm, Clair, Blue, Eusine, Kimono Girl Naoko, Palmer, Lorelei, Agatha, Steven, Cynthia, Caitlin, and Lawrence)

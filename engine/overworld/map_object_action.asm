@@ -1,4 +1,7 @@
 ObjectActionPairPointers:
+; entries correspond to OBJECT_ACTION_* constants (see constants/map_object_constants.asm)
+	table_width 2 + 2, ObjectActionPairPointers
+	;  normal action,                  frozen action
 	dw SetFacingStanding,              SetFacingStanding          ; OBJECT_ACTION_00
 	dw SetFacingStandAction,           SetFacingCurrent           ; OBJECT_ACTION_STAND
 	dw SetFacingStepAction,            SetFacingCurrent           ; OBJECT_ACTION_STEP
@@ -25,6 +28,7 @@ ObjectActionPairPointers:
 	dw SetFacingRun,                   SetFacingCurrent           ; OBJECT_ACTION_RUN
 	dw SetFacingSailboatTop,           SetFacingSailboatTop       ; OBJECT_ACTION_SAILBOAT_TOP
 	dw SetFacingSailboatBottom,        SetFacingSailboatBottom    ; OBJECT_ACTION_SAILBOAT_BOTTOM
+	assert_table_length NUM_OBJECT_ACTIONS
 
 SetFacingStanding:
 	ld a, STANDING
@@ -153,7 +157,7 @@ SetFacingCounterclockwiseSpin:
 
 SetFacingCounterclockwiseSpin2:
 	call CounterclockwiseSpinAction
-	jp SetFacingStanding
+	jmp SetFacingStanding
 
 CounterclockwiseSpinAction:
 	ld hl, OBJECT_STEP_FRAME
@@ -202,10 +206,10 @@ SetFacingBounce:
 	ld [hl], a
 	and %00001000
 	ld a, FACING_STEP_UP_0
-	jp nz, SetFixedFacing
+	jmp nz, SetFixedFacing
 SetFacingFreezeBounce:
 	xor a ; FACING_STEP_DOWN_0
-	jp SetFixedFacing
+	jmp SetFixedFacing
 
 SetFacingFruit:
 	ld hl, OBJECT_RADIUS
@@ -229,7 +233,7 @@ SetFacingFruit:
 	sbc a
 	add FACING_BERRY
 .ok
-	jp SetFixedFacing
+	jmp SetFixedFacing
 
 SetFacingBigGyarados:
 	ld hl, OBJECT_STEP_FRAME
@@ -240,10 +244,10 @@ SetFacingBigGyarados:
 	ld [hl], a
 	and %00001000
 	ld a, FACING_BIG_GYARADOS_2
-	jp nz, SetFixedFacing
+	jmp nz, SetFixedFacing
 SetFacingFreezeBigGyarados:
 	ld a, FACING_BIG_GYARADOS_1
-	jp SetFixedFacing
+	jmp SetFixedFacing
 
 SetFacingWeirdTree:
 	ld hl, OBJECT_STEP_FRAME
@@ -254,7 +258,7 @@ SetFacingWeirdTree:
 	rrca
 	rrca
 	add FACING_WEIRD_TREE_0
-	jp SetFixedFacing
+	jmp SetFixedFacing
 
 SetFacingBoulderDust:
 	ld hl, OBJECT_STEP_FRAME
@@ -266,7 +270,7 @@ SetFacingBoulderDust:
 	jr z, .ok
 	inc a ; FACING_BOULDER_DUST_2
 .ok
-	jp SetFixedFacing
+	jmp SetFixedFacing
 
 SetFacingGrassShake:
 	ld hl, OBJECT_STEP_FRAME
@@ -278,7 +282,7 @@ SetFacingGrassShake:
 	jr z, .ok
 	inc a ; FACING_GRASS_2
 .ok
-	jp SetFixedFacing
+	jmp SetFixedFacing
 
 SetFacingPuddleSplash:
 	ld hl, OBJECT_STEP_FRAME
@@ -290,13 +294,13 @@ SetFacingPuddleSplash:
 	jr z, .ok
 	inc a ; FACING_SPLASH_2
 .ok
-	jp SetFixedFacing
+	jmp SetFixedFacing
 
 SetFacingRun:
 	ld hl, OBJECT_FLAGS1
 	add hl, bc
 	bit SLIDING_F, [hl]
-	jp nz, SetFacingCurrent
+	jmp nz, SetFacingCurrent
 
 	ld hl, OBJECT_STEP_FRAME
 	add hl, bc

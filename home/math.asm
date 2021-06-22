@@ -28,7 +28,7 @@ SimpleDivide::
 	ret
 .div0
 	ld a, ERR_DIV_ZERO
-	jp Crash
+	jmp Crash
 
 Multiply::
 ; Multiply hMultiplicand (3 bytes) by hMultiplier. Result in hProduct.
@@ -39,7 +39,7 @@ Multiply::
 
 	farcall _Multiply
 
-	jp PopBCDEHL
+	jmp PopBCDEHL
 
 Divide::
 ; Divide hDividend length b (max 4 bytes) by hDivisor. Result in hQuotient.
@@ -50,7 +50,7 @@ Divide::
 
 	homecall _Divide
 
-	jp PopBCDEHL
+	jmp PopBCDEHL
 
 MultiplyAndDivide::
 ; a = $xy: multiply multiplicands by x, then divide by y

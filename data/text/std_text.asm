@@ -202,6 +202,10 @@ TownMapText:
 	text "It's the Town Map."
 	done
 
+DiplomaText:
+	text "It's the Diploma."
+	done
+
 WindowText:
 	text "My reflection!"
 	line "Lookin' good!"

@@ -1,7 +1,7 @@
 HealPartyEvenForNuzlocke:
 	ld a, [wInitialOptions]
 	bit NUZLOCKE_MODE, a
-	jp z, HealParty
+	jr z, HealParty
 
 	ld a, [wInitialOptions]
 	res NUZLOCKE_MODE, a
@@ -15,7 +15,7 @@ HealPartyEvenForNuzlocke:
 HealPartyMonEvenForNuzlocke:
 	ld a, [wInitialOptions]
 	bit NUZLOCKE_MODE, a
-	jp z, HealPartyMon
+	jr z, HealPartyMon
 
 	ld a, [wInitialOptions]
 	res NUZLOCKE_MODE, a
@@ -85,7 +85,7 @@ HealPartyMon:
 	ld a, [hl]
 	ld [bc], a
 
-	jp RestoreAllPP
+	jmp RestoreAllPP
 
 ComputeHPBarPixels:
 ; e = bc * (6 * 8) / de

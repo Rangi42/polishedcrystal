@@ -1,11 +1,12 @@
 engine_flag: MACRO
+; location, bit
+; (all locations are in WRAM bank 1)
 	dwb \1 + (\2 / 8), 1 << (\2 % 8)
 ENDM
 
 EngineFlags:
-; All locations are in WRAM bank 1.
-
-	; location, bit
+; entries correspond to ENGINE_* constants
+	table_width 3, EngineFlags
 
 	; pokegear
 	engine_flag wPokegearFlags, 1 ; radio card ; $0
@@ -14,12 +15,12 @@ EngineFlags:
 	engine_flag wPokegearFlags, 3 ; expn card
 	engine_flag wPokegearFlags, 7 ; on/off
 
-	;   wDayCareMan, 7 ; daycare 1 on
-	engine_flag wDayCareMan, 6 ; egg is ready
-	;   wDayCareMan, 5 ; monster 1 and 2 are compatible
-	engine_flag wDayCareMan, 0 ; monster 1 in daycare
-	;   wDayCareLady, 7 = daycare 2 on
-	engine_flag wDayCareLady, 0 ; monster 2 in daycare
+	;   wDayCareMan, DAYCAREMAN_ACTIVE_F ; daycare 1 on
+	engine_flag wDayCareMan, DAYCAREMAN_HAS_EGG_F ; egg is ready
+	;   wDayCareMan, DAYCAREMAN_MONS_COMPATIBLE_F ; monster 1 and 2 are compatible
+	engine_flag wDayCareMan, DAYCAREMAN_HAS_MON_F ; monster 1 in daycare
+	;   wDayCareLady, DAYCARELADY_ACTIVE_F = daycare 2 on
+	engine_flag wDayCareLady, DAYCARELADY_HAS_MON_F ; monster 2 in daycare
 
 	engine_flag wMomSavingMoney, 0 ; mom saving money ; $8
 	engine_flag wMomSavingMoney, 7 ; dst
@@ -271,3 +272,5 @@ EngineFlags:
 	engine_flag wPokemonJournals, 32 ; mr.fuji
 
 	engine_flag wStatusFlags3, 0 ; judge machine
+
+	assert_table_length NUM_ENGINE_FLAGS

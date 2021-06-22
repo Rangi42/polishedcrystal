@@ -20,7 +20,7 @@ SeagallopFerryShamoutiGate_MapScriptHeader:
 	const SEAGALLOPFERRYSHAMOUTIGATE_SAILOR
 
 SeagallopFerryShamoutiGateTrigger1:
-	prioritysjump SeagallopFerryShamoutiGate_PlayerArrives
+	sdefer SeagallopFerryShamoutiGate_PlayerArrives
 SeagallopFerryShamoutiGateTrigger0:
 	end
 

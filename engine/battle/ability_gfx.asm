@@ -57,7 +57,7 @@ PerformAbilityGFX:
 	call SafeCopyTilemapAtOnce
 
 	call AbilityVWF
-	jp ApplyAbilityTiles
+	jmp ApplyAbilityTiles
 
 .Fill2Tiles:
 ; Fills 2 tiles at hl, which points to the last row of the bottom tile + 1
@@ -159,7 +159,7 @@ PerformAbilityGFX:
 	ld bc, wAttrMap - wTileMap - SLIDEOUT_WIDTH - SCREEN_WIDTH
 	add hl, bc
 	ld b, -1 ; keep current palette
-	jp SetAbilityOverlayAttributes
+	jr SetAbilityOverlayAttributes
 
 .CopyTilesToWRAM:
 	ldh a, [hBattleTurn]
@@ -251,6 +251,7 @@ SetUserAbilityOverlayAttributes:
 	jr z, SetAbilityOverlayAttributes
 	hlcoord 9, 3, wAttrMap
 	; fallthrough
+
 SetAbilityOverlayAttributes:
 ; sets attributes for hl pointing to overlay area to use vbk1
 ; b: palette to use, or -1 to keep the current palette

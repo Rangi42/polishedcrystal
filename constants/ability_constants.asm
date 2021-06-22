@@ -66,6 +66,7 @@
 	const DROUGHT
 	const ARENA_TRAP
 	const VITAL_SPIRIT
+	const WHITE_SMOKE
 	const SHELL_ARMOR
 	const TANGLED_FEET
 	const MOTOR_DRIVE

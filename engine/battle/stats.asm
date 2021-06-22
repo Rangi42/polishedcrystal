@@ -50,11 +50,11 @@ FarChangeStat:
 	jr nz, .is_target
 	call GetTrueUserAbility
 	cp CONTRARY
-	jp nz, .ability_done
+	jmp nz, .ability_done
 	ld a, b
 	xor STAT_LOWER
 	ld b, a
-	jp .ability_done
+	jmp .ability_done
 
 .is_target
 	call GetOpponentAbilityAfterMoldBreaker
@@ -95,11 +95,13 @@ FarChangeStat:
 	farcall ShowPotentialAbilityActivation
 	farcall AnimateFailedMove
 	ld hl, ProtectedByMistText
-	jp StdBattleTextbox
+	jmp StdBattleTextbox
 
 .check_ability
 	call GetOpponentAbilityAfterMoldBreaker
 	cp CLEAR_BODY
+	jr z, .ability_immune
+	cp WHITE_SMOKE
 	jr z, .ability_immune
 	cp HYPER_CUTTER
 	ld c, ATTACK
@@ -160,7 +162,7 @@ FarChangeStat:
 	ld hl, WontRiseAnymoreText
 	ld de, WontDropAnymoreText
 	or 1
-	jp DoPrintStatChange
+	jr DoPrintStatChange
 
 .check_anim
 	bit STAT_SKIPTEXT_F, b
@@ -186,7 +188,7 @@ DoPrintStatChange:
 	call SwitchTurn
 	pop af
 	call .do_print
-	jp SwitchTurn
+	jmp SwitchTurn
 
 .do_print
 	bit STAT_LOWER_F, b
@@ -212,7 +214,7 @@ DoPrintStatChange:
 	ret
 
 .printmsg
-	jp StdBattleTextbox
+	jmp StdBattleTextbox
 
 GetStatRaiseMessage:
 	ld a, [wLoweredStat]
@@ -358,7 +360,7 @@ PlayStatChangeAnim:
 
 	call SwitchTurn
 	call .do_it
-	jp SwitchTurn
+	jmp SwitchTurn
 
 .do_it
 	push hl
@@ -396,7 +398,7 @@ endc
 	ld a, CGB_BATTLE_COLORS
 	call GetCGBLayout
 	call SetPalettes
-	jp PopBCDEHL
+	jmp PopBCDEHL
 
 StatPals: ; similar to X items
 ; attack - red

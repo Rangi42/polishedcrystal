@@ -95,24 +95,41 @@ _AIChooseMove:
 	; Wildmons choose moves at random
 	ld a, [wBattleMode]
 	dec a
-	jp z, .DecrementScores
+	jmp z, .DecrementScores
 
 ; Apply AI scoring layers depending on the trainer class.
 .ApplyLayers:
 	ld hl, TrainerClassAttributes + TRNATTR_AI_MOVE_WEIGHTS
 
-	; If we have a battle in BattleTower just load the Attributes of the first wTrainerClass (Falkner)
-	; so we have always the same AI, regardless of the loaded class of trainer
+	; Battle Tower sets the AI flags differently.
 	ld a, [wInBattleTowerBattle]
-	bit 0, a
-	jr nz, .battle_tower_skip
+	and a
+	jr z, .not_battle_tower
 
+	; Battle Tower always use max AI strength.
+	farcall BT_InRentalMode
+	ld a, 16
+	jr nz, .got_bt_level
+
+	; Early Battle Factory runs are easier.
+	farcall BT_GetCurStreakAddr
+	ld a, [hli]
+	and a
+	ld a, 16
+	jr nz, .got_bt_level
+	ld a, [hl]
+	add 7
+	rra
+.got_bt_level
+	call .AddBattleTowerFlags
+	jr .battle_tower_done
+
+.not_battle_tower
 	ld a, [wTrainerClass]
 	dec a
-	ld bc, 7 ; Trainer2AI - Trainer1AI
+	ld bc, NUM_TRAINER_ATTRIBUTES
 	rst AddNTimes
 
-.battle_tower_skip
 	ld de, wAIFlags
 	ld bc, 2
 	ld a, BANK(TrainerClassAttributes)
@@ -121,6 +138,7 @@ _AIChooseMove:
 	; Add badge flags
 	call .AddBadgeFlags
 
+.battle_tower_done
 	; Aggressive overrides type matchups
 	ld hl, wAIFlags
 	lb bc, CHECK_FLAG, AI_AGGRESSIVE_F
@@ -181,6 +199,7 @@ endc
 	ld hl, wBadges
 	ld b, wBadgesEnd - wBadges
 	call CountSetBits
+.AddBattleTowerFlags:
 	ld hl, .BadgeAILayers
 .badge_loop
 	ld c, [hl]
@@ -202,7 +221,9 @@ endc
 	db 0, AI_BASIC_F ; Avoid redundant actions; paralyzing a paralyzed foe/etc.
 	db 2, AI_TYPES_F ; We've mastered type matchups. Hop would be proud.
 	db 4, AI_STATUS_F ; Hypnosis vs Insomnia, etc.
+	db 6, AI_SETUP_F ; Use stat change moves intelligently.
 	db 8, AI_AGGRESSIVE_F ; Use most damaging move.
+	db 8, AI_RISKY_F ; Use moves that KO the target.
 	db 16, AI_SMART_F ; "Advanced" AI
 	db -1
 
@@ -355,7 +376,7 @@ AIDebug:
 	inc de
 	and a
 	jr z, .get_score
-	ld [wNamedObjectIndexBuffer], a
+	ld [wNamedObjectIndex], a
 	push hl
 	call GetMoveName
 	pop hl

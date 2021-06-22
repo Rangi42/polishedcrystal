@@ -1,4 +1,5 @@
 IconPointers:
+	table_width 3, IconPointers
 	dba NullIcon
 	dba BulbasaurIcon
 	dba IvysaurIcon
@@ -254,6 +255,8 @@ IconPointers:
 	dba LeafeonIcon
 	dba GlaceonIcon
 	dba SylveonIcon
+	assert_table_length NUM_POKEMON + 1
+
 	dba EggIcon
 
 	dba UnownBIcon
@@ -330,3 +333,5 @@ endr
 	dba ArticunoIcon ; TODO
 	dba ZapdosIcon ; TODO
 	dba MoltresIcon ; TODO
+
+	assert_table_length NUM_UNIQUE_POKEMON + 1

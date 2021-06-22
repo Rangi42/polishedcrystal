@@ -1,4 +1,5 @@
 TileCollisionTable::
+	table_width 1, TileCollisionTable
 	db LAND_TILE  ; COLL_FLOOR
 	db WALL_TILE  ; COLL_VOID
 	db LAND_TILE  ; 02
@@ -255,3 +256,4 @@ TileCollisionTable::
 	db LAND_TILE  ; fd
 	db LAND_TILE  ; fe
 	db WALL_TILE  ; ff
+	assert_table_length $100

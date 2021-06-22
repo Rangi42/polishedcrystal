@@ -28,7 +28,7 @@ RuinsofAlphOmanyteChamberTrigger0:
 	special SpecialOmanyteChamber
 	checkevent EVENT_WALL_OPENED_IN_OMANYTE_CHAMBER
 	iffalse .End
-	prioritysjump RuinsOfAlphOmanyteChamberWallOpenScript
+	sdefer RuinsOfAlphOmanyteChamberWallOpenScript
 .End
 	end
 

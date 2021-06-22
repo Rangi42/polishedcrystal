@@ -1,4 +1,6 @@
 Facings:
+; entries correspond to FACING_* constants (see constants/map_object_constants.asm)
+	table_width 2, Facings
 	dw FacingStepDown0      ; FACING_STEP_DOWN_0
 	dw FacingStepDown1      ; FACING_STEP_DOWN_1
 	dw FacingStepDown2      ; FACING_STEP_DOWN_2
@@ -48,7 +50,8 @@ Facings:
 	dw FacingArchTreeRight  ; FACING_ARCH_TREE_RIGHT
 	dw FacingSailboatTop    ; FACING_SAILBOAT_TOP
 	dw FacingSailboatBottom ; FACING_SAILBOAT_BOTTOM
-	dw 0
+	assert_table_length NUM_FACINGS
+	dw 0 ; end
 
 ; Tables used as a reference to transform OAM data.
 

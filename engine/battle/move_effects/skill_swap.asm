@@ -4,19 +4,25 @@ BattleCommand_skillswap:
 	jr nz, .failed
 
 	ld a, [wPlayerAbility]
-	inc a
-	jr z, .failed
-	dec a
-	jr z, .failed
-	ld b, a
+	push af
+	ld hl, SkillSwapExcepts
+	push hl
+	call IsInByteArray
+	pop hl
+	pop bc
+	jr c, .failed
 	ld a, [wEnemyAbility]
-	inc a
-	jr z, .failed
-	dec a
-	jr z, .failed
-	ld [wPlayerAbility], a
+	push bc
+	push af
+	call IsInByteArray
+	pop de
+	pop bc
+	jr c, .failed
+
 	ld a, b
 	ld [wEnemyAbility], a
+	ld a, d
+	ld [wPlayerAbility], a
 
 	call AnimateCurrentMove
 
@@ -28,8 +34,13 @@ BattleCommand_skillswap:
 	farcall RunActivationAbilitiesInner
 	call SwitchTurn
 	farcall RunActivationAbilitiesInner
-	jp SwitchTurn
+	jmp SwitchTurn
 
 .failed
 	call AnimateFailedMove
-	jp PrintButItFailed
+	jmp PrintButItFailed
+
+SkillSwapExcepts:
+	db NO_ABILITY
+	db NEUTRALIZING_GAS
+	db -1

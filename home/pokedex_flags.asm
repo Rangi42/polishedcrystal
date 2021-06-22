@@ -1,6 +1,6 @@
 CountSetBits::
 ; Count the number of set bits in b bytes starting from hl.
-; Return in a, c and [wd265].
+; Return in a, c and [wNumSetBits].
 
 	ld c, 0
 .next
@@ -10,9 +10,10 @@ CountSetBits::
 
 .count
 	srl e
-	ld a, c
-	adc 0
-	ld c, a
+	jr nc, .no_carry
+	inc c
+.no_carry
+
 	dec d
 	jr nz, .count
 
@@ -20,7 +21,7 @@ CountSetBits::
 	jr nz, .next
 
 	ld a, c
-	ld [wd265], a
+	ld [wNumSetBits], a
 	ret
 
 GetWeekday::

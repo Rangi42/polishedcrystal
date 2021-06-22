@@ -1,4 +1,5 @@
 ValidPokemonLevels: ; for Wonder Trade
+	table_width 2, ValidPokemonLevels
 	;  min, max
 	db 255, 255 ; ?????
 	db   1,  15 ; Bulbasaur
@@ -255,4 +256,6 @@ ValidPokemonLevels: ; for Wonder Trade
 	db  20, 100 ; Leafeon
 	db  20, 100 ; Glaceon
 	db  20, 100 ; Sylveon
+	assert_table_length NUM_POKEMON + 1
 	db 255, 255 ; Egg
+	assert_table_length NUM_SPECIES + 1

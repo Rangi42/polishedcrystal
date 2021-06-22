@@ -51,15 +51,13 @@ BattleTower1FContinueChallenge:
 		line "for you."
 		prompt
 
-	; Schedule script for running. This prevents odd issues that a regular jump
-	; causes for scene scripts. This is NOT a true jump, so "end" is necessary.
-	prioritysjump Script_ReturnToBattleTowerChallenge
+	sdefer Script_ReturnToBattleTowerChallenge
 	end
 
 .LeftWithoutSaving:
-	; The player resetted the game in the middle of a battle.
+	; The player reset the game in the middle of a battle.
 	; This counts as a battle loss, and will reset the winstreak.
-	prioritysjump .LeftWithoutSaving2
+	sdefer .LeftWithoutSaving2
 	end
 
 .LeftWithoutSaving2:
@@ -78,15 +76,15 @@ BattleTower1FContinueChallenge:
 		line "invalid."
 		done
 	waitbutton
-	sjump .CommitResult
+	sjump Script_CommitBattleTowerResult
 
 .LostChallenge:
 	opentext
-	prioritysjump .CommitResult
+	sdefer Script_CommitBattleTowerResult
 	end
 
 .WonChallenge:
-	prioritysjump .WonChallenge2
+	sdefer .WonChallenge2
 	end
 
 .WonChallenge2:
@@ -102,7 +100,7 @@ BattleTower1FContinueChallenge:
 		prompt
 	verbosegiveitem ABILITYPATCH
 	; fallthrough
-.CommitResult:
+Script_CommitBattleTowerResult:
 	special Special_BattleTower_CommitChallengeResult
 	iffalse .WeHopeToServeYouAgain
 	setevent EVENT_BEAT_PALMER
@@ -215,8 +213,9 @@ BattleTower1FReceptionistScript:
 		text "Want to go into a"
 		line "Battle Room?"
 		done
-
-	special Special_BattleTower_MainMenu
+	loadmenu MenuDataHeader_BattleInfoCancel
+	verticalmenu
+	closewindow
 	ifequal $1, .Challenge
 	ifequal $2, .Explanation
 	writethistext
@@ -241,7 +240,6 @@ BattleTower1FReceptionistScript:
 		done
 	yesorno
 	iffalse .BattleTowerMenu
-
 	; Done here to ensure it's saved in case the player resets later.
 	; The scene script running after the player saves but before the
 	; challenge starts is harmless since there's no challenge prepared.
@@ -254,6 +252,7 @@ BattleTower1FReceptionistScript:
 	; fallthrough
 Script_ReturnToBattleTowerChallenge:
 	; From this point onwards, resetting the game should count as a streak loss
+	setscene 0
 	setval BATTLETOWER_CHALLENGE_IN_PROGRESS
 	special Special_BattleTower_SetChallengeState
 
@@ -285,6 +284,20 @@ Script_ReturnToBattleTowerChallenge:
 	step_up
 	step_up
 	step_end
+
+MenuDataHeader_BattleInfoCancel:
+	db $40 ; flags
+	db  4, 11 ; start coords
+	db 11, 19 ; end coords
+	dw MenuData2_BattleInfoCancel
+	db 1 ; default option
+
+MenuData2_BattleInfoCancel:
+	db $a0 ; flags
+	db 3
+	db "Battle@"
+	db "Info@"
+	db "Cancel@"
 
 BattleTowerPharmacistScript:
 	faceplayer

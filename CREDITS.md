@@ -17,6 +17,7 @@ Pokémon Polished Crystal would never have been finished without the help of man
 * Sanqui for the music player with piano roll visualization.
 * ax6 for porting the xorshift+ PRNG from Prism as well as developing bsp and related patching functions originally for Prism.
 * MeroMero for the in-battle color inversion code, Smeargle color code, and some move animations.
+* darsh for the BSP save patch script and some bug fixes.
 * kroc for the no-RTC code.
 * VictoriaLacroix for the Running Shoes routine.
 * ShockSlayer for fixing the InitBattleDisplay and FinalPkmnSlideInEnemyMonFrontpic routines.

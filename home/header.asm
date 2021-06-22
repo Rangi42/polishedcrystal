@@ -6,7 +6,7 @@
 SECTION "rst00 EntryPoint", ROM0[$0000]
 EntryPoint::
 	di
-	jp Rst0Crash
+	jmp Rst0Crash
 
 PushWindow::
 	farjp _PushWindow
@@ -14,7 +14,7 @@ PushWindow::
 
 SECTION "rst08 FarCall", ROM0[$0008]
 FarCall::
-	jp RstFarCall
+	jmp RstFarCall
 
 PopAFBCDEHL::
 	pop af
@@ -39,7 +39,7 @@ DoNothing:: ; no-optimize stub function
 
 SECTION "rst18 AddNTimes", ROM0[$0018]
 AddNTimes::
-	jp _AddNTimes
+	jmp _AddNTimes
 
 FarCopyColorWRAM::
 	ld a, BANK("GBC Video")
@@ -52,7 +52,7 @@ FarCopyWRAM::
 
 SECTION "rst20 CopyBytes", ROM0[$0020]
 CopyBytes::
-	jp _CopyBytes
+	jmp _CopyBytes
 
 GetFarByte::
 ; retrieve a single byte from a:hl, and return it in a.
@@ -65,7 +65,7 @@ GetFarByte::
 
 SECTION "rst28 ByteFill", ROM0[$0028]
 ByteFill::
-	jp _ByteFill
+	jmp _ByteFill
 
 GetFarWRAMByte::
 	call StackCallInWRAMBankA
@@ -77,7 +77,7 @@ GetFarWRAMByte::
 
 SECTION "rst30 PlaceString", ROM0[$0030]
 PlaceString::
-	jp _PlaceString
+	jmp _PlaceString
 
 SwapHLDE::
 	push de
@@ -89,7 +89,7 @@ SwapHLDE::
 
 SECTION "rst38 Predef", ROM0[$0038]
 Predef::
-	jp _Predef
+	jmp _Predef
 
 IsAPokemon::
 ; For functions using EGG as sentinel, use "and a" instead (EGG is $ff)
@@ -103,7 +103,7 @@ IsAPokemon::
 ; Game Boy hardware interrupts
 
 SECTION "vblank", ROM0[$0040]
-	jp VBlank
+	jmp VBlank
 
 ItemIsMail::
 ; Returns carry if item d is a mail.
@@ -130,7 +130,7 @@ INCLUDE "home/vwf.asm"
 
 
 SECTION "serial", ROM0[$0058]
-	jp Serial
+	jmp Serial
 
 
 SECTION "High Home", ROM0[$005b]
@@ -147,7 +147,7 @@ SECTION "Header", ROM0[$0100]
 
 Start::
 	nop ; no-optimize nops
-	jp _Start
+	jr _Start
 
 ; rgbfix patches the cartridge header here
 	ds $0150 - @, $00

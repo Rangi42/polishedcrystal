@@ -14,16 +14,14 @@ wMusic::
 wMusicPlaying:: db ; nonzero if playing
 
 wChannels::
-wChannel1:: channel_struct wChannel1
-wChannel2:: channel_struct wChannel2
-wChannel3:: channel_struct wChannel3
-wChannel4:: channel_struct wChannel4
+for n, 1, NUM_MUSIC_CHANS + 1
+wChannel{d:n}:: channel_struct wChannel{d:n}
+endr
 
 wSFXChannels::
-wChannel5:: channel_struct wChannel5
-wChannel6:: channel_struct wChannel6
-wChannel7:: channel_struct wChannel7
-wChannel8:: channel_struct wChannel8
+for n, NUM_MUSIC_CHANS + 1, NUM_CHANNELS + 1
+wChannel{d:n}:: channel_struct wChannel{d:n}
+endr
 
 wCurTrackDuty:: db
 wCurTrackIntensity:: db
@@ -201,16 +199,9 @@ wSpriteAnimDict:: ds 10 * 2
 wSpriteAnimationStructs::
 ; Field  0: Index
 ; Fields 1-3: Loaded from SpriteAnimSeqData
-wSpriteAnim1::  sprite_anim_struct wSpriteAnim1
-wSpriteAnim2::  sprite_anim_struct wSpriteAnim2
-wSpriteAnim3::  sprite_anim_struct wSpriteAnim3
-wSpriteAnim4::  sprite_anim_struct wSpriteAnim4
-wSpriteAnim5::  sprite_anim_struct wSpriteAnim5
-wSpriteAnim6::  sprite_anim_struct wSpriteAnim6
-wSpriteAnim7::  sprite_anim_struct wSpriteAnim7
-wSpriteAnim8::  sprite_anim_struct wSpriteAnim8
-wSpriteAnim9::  sprite_anim_struct wSpriteAnim9
-wSpriteAnim10:: sprite_anim_struct wSpriteAnim10
+for n, 1, NUM_SPRITE_ANIM_STRUCTS + 1
+wSpriteAnim{d:n}:: sprite_anim_struct wSpriteAnim{d:n}
+endr
 wSpriteAnimationStructsEnd::
 
 wSpriteAnimCount:: db
@@ -275,46 +266,9 @@ wMusicPlayerWRAMEnd::
 SECTION "Sprites", WRAM0
 
 wVirtualOAM::
-wVirtualOAMSprite00:: sprite_oam_struct wVirtualOAMSprite00
-wVirtualOAMSprite01:: sprite_oam_struct wVirtualOAMSprite01
-wVirtualOAMSprite02:: sprite_oam_struct wVirtualOAMSprite02
-wVirtualOAMSprite03:: sprite_oam_struct wVirtualOAMSprite03
-wVirtualOAMSprite04:: sprite_oam_struct wVirtualOAMSprite04
-wVirtualOAMSprite05:: sprite_oam_struct wVirtualOAMSprite05
-wVirtualOAMSprite06:: sprite_oam_struct wVirtualOAMSprite06
-wVirtualOAMSprite07:: sprite_oam_struct wVirtualOAMSprite07
-wVirtualOAMSprite08:: sprite_oam_struct wVirtualOAMSprite08
-wVirtualOAMSprite09:: sprite_oam_struct wVirtualOAMSprite09
-wVirtualOAMSprite10:: sprite_oam_struct wVirtualOAMSprite10
-wVirtualOAMSprite11:: sprite_oam_struct wVirtualOAMSprite11
-wVirtualOAMSprite12:: sprite_oam_struct wVirtualOAMSprite12
-wVirtualOAMSprite13:: sprite_oam_struct wVirtualOAMSprite13
-wVirtualOAMSprite14:: sprite_oam_struct wVirtualOAMSprite14
-wVirtualOAMSprite15:: sprite_oam_struct wVirtualOAMSprite15
-wVirtualOAMSprite16:: sprite_oam_struct wVirtualOAMSprite16
-wVirtualOAMSprite17:: sprite_oam_struct wVirtualOAMSprite17
-wVirtualOAMSprite18:: sprite_oam_struct wVirtualOAMSprite18
-wVirtualOAMSprite19:: sprite_oam_struct wVirtualOAMSprite19
-wVirtualOAMSprite20:: sprite_oam_struct wVirtualOAMSprite20
-wVirtualOAMSprite21:: sprite_oam_struct wVirtualOAMSprite21
-wVirtualOAMSprite22:: sprite_oam_struct wVirtualOAMSprite22
-wVirtualOAMSprite23:: sprite_oam_struct wVirtualOAMSprite23
-wVirtualOAMSprite24:: sprite_oam_struct wVirtualOAMSprite24
-wVirtualOAMSprite25:: sprite_oam_struct wVirtualOAMSprite25
-wVirtualOAMSprite26:: sprite_oam_struct wVirtualOAMSprite26
-wVirtualOAMSprite27:: sprite_oam_struct wVirtualOAMSprite27
-wVirtualOAMSprite28:: sprite_oam_struct wVirtualOAMSprite28
-wVirtualOAMSprite29:: sprite_oam_struct wVirtualOAMSprite29
-wVirtualOAMSprite30:: sprite_oam_struct wVirtualOAMSprite30
-wVirtualOAMSprite31:: sprite_oam_struct wVirtualOAMSprite31
-wVirtualOAMSprite32:: sprite_oam_struct wVirtualOAMSprite32
-wVirtualOAMSprite33:: sprite_oam_struct wVirtualOAMSprite33
-wVirtualOAMSprite34:: sprite_oam_struct wVirtualOAMSprite34
-wVirtualOAMSprite35:: sprite_oam_struct wVirtualOAMSprite35
-wVirtualOAMSprite36:: sprite_oam_struct wVirtualOAMSprite36
-wVirtualOAMSprite37:: sprite_oam_struct wVirtualOAMSprite37
-wVirtualOAMSprite38:: sprite_oam_struct wVirtualOAMSprite38
-wVirtualOAMSprite39:: sprite_oam_struct wVirtualOAMSprite39
+for n, NUM_SPRITE_OAM_STRUCTS
+wVirtualOAMSprite{02d:n}:: sprite_oam_struct wVirtualOAMSprite{02d:n}
+endr
 wVirtualOAMEnd::
 
 
@@ -338,43 +292,52 @@ wAttrMap::
 wAttrMapEnd::
 
 
-SECTION "Battle", WRAM0
+SECTION UNION "Misc 480", WRAM0
+; misc
 
-UNION
 wMisc:: ds (SCREEN_WIDTH + 4) * (SCREEN_HEIGHT + 2)
 wMiscEnd::
 
-NEXTU
+
+SECTION UNION "Misc 480", WRAM0
 ; odd egg
+
 wOddEgg:: party_struct wOddEgg
 wOddEggName:: ds MON_NAME_LENGTH
 wOddEggOTName:: ds MON_NAME_LENGTH
 
-NEXTU
+
+SECTION UNION "Misc 480", WRAM0
 ; hall of fame temp struct
+
 wHallOfFameTemp:: hall_of_fame wHallOfFameTemp
 
-NEXTU
+
+SECTION UNION "Misc 480", WRAM0
 ; timeset temp storage
+
 wTimeSetBuffer:: ds 20
 wInitHourBuffer:: ds 13
 wInitMinuteBuffer:: ds 17
 
-NEXTU
+
+SECTION UNION "Misc 480", WRAM0
 ; link patch lists
+
 wPlayerPatchLists:: ds 200
 wOTPatchLists:: ds 200
 
-NEXTU
+
+SECTION UNION "Misc 480", WRAM0
 ; link engine
+
 wLinkMisc:: ds 10
 wLinkPlayerFixedPartyMon1ID:: ds 3
 	ds 37
 
-NEXTU
+
+SECTION UNION "Misc 480", WRAM0
 ; battle
-	ds 1
-NEXTU
 
 wBattle::
 wEnemyMoveStruct::  move_struct wEnemyMoveStruct
@@ -544,9 +507,6 @@ wPlayerAtkLevel:: db
 wPlayerDefLevel:: db
 wPlayerSpdLevel:: db
 wPlayerSAtkLevel:: db
-
-UNION
-; battle subsection
 wPlayerSDefLevel:: db
 wPlayerAccLevel:: db
 wPlayerEvaLevel:: db
@@ -706,8 +666,11 @@ wAmuletCoin:: db
 wDVAndPersonalityBuffer:: ds 5
 wBattleEnd::
 
-NEXTU
+
+SECTION UNION "Misc 480", WRAM0
 ; trade
+	ds 172
+
 wTrademons::
 wPlayerTrademon:: trademon wPlayerTrademon
 wOTTrademon:: trademon wOTTrademon
@@ -726,8 +689,11 @@ wLinkTradeGetmonPersonality::
 wLinkTradeGetmonShiny:: db
 wLinkTradeGetmonForm:: db
 
-NEXTU
+
+SECTION UNION "Misc 480", WRAM0
 ; naming screen
+	ds 172
+
 wNamingScreenDestinationPointer:: dw
 wNamingScreenCurNameLength:: db
 wNamingScreenMaxNameLength:: db
@@ -736,8 +702,11 @@ wNamingScreenCursorObjectPointer:: dw
 wNamingScreenLastCharacter:: db
 wNamingScreenStringEntryCoord:: dw
 
-NEXTU
+
+SECTION UNION "Misc 480", WRAM0
 ; pokegear
+	ds 172
+
 wPokegearPhoneLoadNameBuffer:: db
 wPokegearPhoneCursorPosition:: db
 wPokegearPhoneScrollPosition:: db
@@ -751,8 +720,11 @@ wPokegearRadioChannelAddr:: dw
 wPokegearRadioMusicPlaying:: db
 wPokegearNumberBuffer:: db
 
-NEXTU
+
+SECTION UNION "Misc 480", WRAM0
 ; slot machine
+	ds 172
+
 wSlots::
 wReel1:: slot_reel wReel1
 wReel2:: slot_reel wReel2
@@ -775,8 +747,11 @@ wSlotsDataEnd::
 	ds 28
 wSlotsEnd::
 
-NEXTU
+
+SECTION UNION "Misc 480", WRAM0
 ; card flip
+	ds 172
+
 wCardFlip::
 wDeck:: ds 24
 wDeckEnd::
@@ -786,8 +761,11 @@ wDiscardPile:: ds 24
 wDiscardPileEnd::
 wCardFlipEnd::
 
-;NEXTU
+
+;SECTION UNION "Misc 480", WRAM0
 ;; memory game
+;	ds 172
+;
 ;wMemoryGame::
 ;wMemoryGameCards:: ds 9 * 5
 ;wMemoryGameCardsEnd::
@@ -802,14 +780,20 @@ wCardFlipEnd::
 ;wMemoryGameNumCardsMatched:: db
 ;wMemoryGameEnd::
 
-NEXTU
+
+SECTION UNION "Misc 480", WRAM0
 ; Unown puzzle
+	ds 172
+
 wUnownPuzzle::
 wPuzzlePieces:: ds 6 * 6
 wUnownPuzzleEnd::
 
-NEXTU
+
+SECTION UNION "Misc 480", WRAM0
 ; Pokedex
+	ds 172
+
 wPokedexDataStart::
 wPokedexOrder:: ds NUM_POKEMON - 1
 wPokedexOrderEnd:: ds 6
@@ -841,22 +825,24 @@ wDexMonShiny:: db
 wDexMonForm:: db
 wPokedexDataEnd::
 
-ENDU
 
-ENDU
-
-SECTION "Overworld Map", WRAM0
-
-UNION
+SECTION UNION "Misc 1300", WRAM0
 ; overworld map
-wOverworldMapBlocks:: ds $580 ; large enough for 45x20 NavelRockInside.ablk; (45+6)x(20+6) = 1326 < 1408
+
+; large enough for 45x20 NavelRockInside.ablk; (45+6)x(20+6) = 1326 < 1408
+; was originally only 1300 bytes
+wOverworldMapBlocks:: ds $580
 wOverworldMapBlocksEnd::
 
-NEXTU
+
+SECTION UNION "Misc 1300", WRAM0
 ; credits image
+
 wCreditsBlankFrame2bpp:: ds 8 * 8 * 2
 
-NEXTU
+
+SECTION UNION "Misc 1300", WRAM0
+; Bill's PC
 
 ; If you change ordering of this, remember to fix LCD hblank code too.
 ; Note that (as of when comment was written), hblank can't always keep up
@@ -915,13 +901,17 @@ wBillsPC_QuickFrames:: db
 
 wBillsPC_ApplyThemePals:: db ; used by _CGB_BillsPC
 
-NEXTU
+
+SECTION UNION "Misc 1300", WRAM0
 ; raw link data
+
 wLinkData:: ds 1300
 wLinkDataEnd::
 
-NEXTU
+
+SECTION UNION "Misc 1300", WRAM0
 ; link data members
+
 wLinkPlayerName:: ds NAME_LENGTH
 wLinkPartyCount:: db
 wLinkPartySpecies:: ds PARTY_LENGTH
@@ -930,28 +920,19 @@ wLinkPartyEnd:: db ; older code doesn't check PartyCount
 UNION
 ; link player data
 wLinkPlayerData::
-wLinkPlayerPartyMon1:: party_struct wLinkPlayerPartyMon1
-wLinkPlayerPartyMon2:: party_struct wLinkPlayerPartyMon2
-wLinkPlayerPartyMon3:: party_struct wLinkPlayerPartyMon3
-wLinkPlayerPartyMon4:: party_struct wLinkPlayerPartyMon4
-wLinkPlayerPartyMon5:: party_struct wLinkPlayerPartyMon5
-wLinkPlayerPartyMon6:: party_struct wLinkPlayerPartyMon6
+for n, 1, PARTY_LENGTH + 1
+wLinkPlayerPartyMon{d:n}:: party_struct wLinkPlayerPartyMon{d:n}
+endr
 
 wLinkPlayerPartyMonOTs::
-wLinkPlayerPartyMon1OT:: ds NAME_LENGTH
-wLinkPlayerPartyMon2OT:: ds NAME_LENGTH
-wLinkPlayerPartyMon3OT:: ds NAME_LENGTH
-wLinkPlayerPartyMon4OT:: ds NAME_LENGTH
-wLinkPlayerPartyMon5OT:: ds NAME_LENGTH
-wLinkPlayerPartyMon6OT:: ds NAME_LENGTH
+for n, 1, PARTY_LENGTH + 1
+wLinkPlayerPartyMon{d:n}OT:: ds NAME_LENGTH
+endr
 
 wLinkPlayerPartyMonNicknames::
-wLinkPlayerPartyMon1Nickname:: ds MON_NAME_LENGTH
-wLinkPlayerPartyMon2Nickname:: ds MON_NAME_LENGTH
-wLinkPlayerPartyMon3Nickname:: ds MON_NAME_LENGTH
-wLinkPlayerPartyMon4Nickname:: ds MON_NAME_LENGTH
-wLinkPlayerPartyMon5Nickname:: ds MON_NAME_LENGTH
-wLinkPlayerPartyMon6Nickname:: ds MON_NAME_LENGTH
+for n, 1, PARTY_LENGTH + 1
+wLinkPlayerPartyMon{d:n}Nickname:: ds MON_NAME_LENGTH
+endr
 wLinkPlayerDataEnd::
 
 NEXTU
@@ -960,9 +941,11 @@ wLinkPatchList1:: ds SERIAL_PATCH_LIST_LENGTH
 wLinkPatchList2:: ds SERIAL_PATCH_LIST_LENGTH
 ENDU
 
-NEXTU
+
+SECTION UNION "Misc 1300", WRAM0
 ; link mail data
 	ds 500
+
 wLinkPlayerMail::
 wLinkPlayerMailPreamble:: ds SERIAL_MAIL_PREAMBLE_LENGTH
 wLinkPlayerMailMessages:: ds (MAIL_MSG_LENGTH + 1) * PARTY_LENGTH
@@ -977,13 +960,13 @@ wOTPlayerMailPatchSet:: ds 103 + SERIAL_MAIL_PREAMBLE_LENGTH
 wLinkOTMailEnd::
 	ds 10
 
-NEXTU
+
+SECTION UNION "Misc 1300", WRAM0
 ; received link mail data
 	ds 500
+
 wLinkReceivedMail:: ds MAIL_STRUCT_LENGTH * PARTY_LENGTH
 wLinkReceivedMailEnd:: db
-
-ENDU
 
 
 SECTION "Video", WRAM0

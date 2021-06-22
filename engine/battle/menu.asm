@@ -33,7 +33,7 @@ _BattleMenuCommon:
 	ld [wBattleMenuFlags], a
 	ld a, [wMenuCursorBuffer]
 	ld [wBattleMenuCursorBuffer], a
-	jp ExitMenu
+	jmp ExitMenu
 
 BattleMenuDataHeader:
 	db $40 ; flags
@@ -79,7 +79,7 @@ ShowParkBallsRemaining:
 	hlcoord 12, 16
 	ld de, wParkBallsRemaining
 	lb bc, PRINTNUM_LEADINGZEROS | 1, 2
-	jp PrintNum
+	jmp PrintNum
 
 SafariBattleMenuDataHeader:
 	db $40 ; flags
@@ -105,4 +105,4 @@ ShowSafariBallsRemaining:
 	hlcoord 11, 14
 	ld de, wSafariBallsRemaining
 	lb bc, PRINTNUM_LEADINGZEROS | 1, 2
-	jp PrintNum
+	jmp PrintNum

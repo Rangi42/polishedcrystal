@@ -1,7 +1,6 @@
 unown_set: MACRO
-rept _NARG
-	db UNOWN_\1_FORM
-	shift
+for i, 1, _NARG + 1
+	db UNOWN_\<i>_FORM
 endr
 	db -1
 ENDM

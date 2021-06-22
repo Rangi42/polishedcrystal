@@ -26,10 +26,10 @@ GenericTrainerBird_keeperToby:
 	generictrainer BIRD_KEEPER, TOBY, EVENT_BEAT_BIRD_KEEPER_TOBY, Bird_keeperTobySeenText, Bird_keeperTobyBeatenText
 
 	text "I plan to train in"
-	line "Cianwood City to"
+	line "the Yellow Forest"
 
-	para "teach my #mon"
-	line "how to Fly."
+	para "to teach my #-"
+	line "mon how to Fly."
 	done
 
 GenericTrainerSailorHarry:

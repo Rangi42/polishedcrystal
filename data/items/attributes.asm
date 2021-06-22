@@ -6,6 +6,7 @@ item_attribute: MACRO
 ENDM
 
 ItemAttributes:
+	table_width ITEMATTR_STRUCT_LENGTH, ItemAttributes
 ; # BALL
 	item_attribute 200, 0, 0, BALL, ITEMMENU_PARTY, ITEMMENU_CLOSE
 ; GREAT BALL
@@ -31,7 +32,7 @@ ItemAttributes:
 ; LOVE BALL
 	item_attribute 150, 0, 0, BALL, ITEMMENU_PARTY, ITEMMENU_CLOSE
 ; ABILITYPATCH
-	item_attribute 1000, 0, 0, ITEM, ITEMMENU_PARTY, ITEMMENU_CLOSE
+	item_attribute 1000, 0, 0, ITEM, ITEMMENU_PARTY, ITEMMENU_NOUSE
 ; REPEAT BALL
 	item_attribute 1000, 0, 0, BALL, ITEMMENU_PARTY, ITEMMENU_CLOSE
 ; TIMER BALL
@@ -157,7 +158,7 @@ ItemAttributes:
 ; # DOLL
 	item_attribute 1000, 0, 0, ITEM, ITEMMENU_NOUSE, ITEMMENU_CLOSE
 ; ABILITY CAP
-	item_attribute 1000, 0, 0, ITEM, ITEMMENU_PARTY, ITEMMENU_CLOSE
+	item_attribute 1000, 0, 0, ITEM, ITEMMENU_PARTY, ITEMMENU_NOUSE
 ; LEAF STONE
 	item_attribute 3000, 0, 0, ITEM, ITEMMENU_PARTY, ITEMMENU_NOUSE
 ; FIRE STONE
@@ -514,6 +515,7 @@ ItemAttributes:
 	item_attribute 50, 0, 0, ITEM, ITEMMENU_NOUSE, ITEMMENU_NOUSE
 ; MIRAGE MAIL
 	item_attribute 50, 0, 0, ITEM, ITEMMENU_NOUSE, ITEMMENU_NOUSE
+	assert_table_length NUM_ITEMS
 
 key_item_attribute: MACRO
 ; selectable, field menu, battle menu
@@ -522,6 +524,7 @@ key_item_attribute: MACRO
 ENDM
 
 KeyItemAttributes:
+	table_width KEYITEMATTR_STRUCT_LENGTH, KeyItemAttributes
 ; BICYCLE
 	key_item_attribute 1, ITEMMENU_CLOSE, ITEMMENU_NOUSE
 ; OLD ROD
@@ -582,3 +585,4 @@ KeyItemAttributes:
 	key_item_attribute 0, ITEMMENU_CURRENT, ITEMMENU_NOUSE
 ; TYPE CHART
 	key_item_attribute 0, ITEMMENU_CURRENT, ITEMMENU_CURRENT
+	assert_table_length NUM_KEY_ITEMS

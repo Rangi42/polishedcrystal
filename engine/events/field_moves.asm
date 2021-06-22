@@ -7,7 +7,7 @@ BlindingFlash::
 	ld a, CGB_MAPPALS
 	call GetCGBLayout
 	farcall LoadBlindingFlashPalette
-	jp FadeInPalettes
+	jmp FadeInPalettes
 
 ShakeHeadbuttTree:
 	call ClearSpriteAnims
@@ -53,7 +53,7 @@ ShakeHeadbuttTree:
 	xor a
 	rst ByteFill
 	call DelayFrame
-	jp UpdatePlayerSprite
+	jmp UpdatePlayerSprite
 
 HeadbuttTreeGFX:
 INCBIN "gfx/overworld/headbutt_tree.2bpp.lz"
@@ -359,7 +359,7 @@ FlyFunction_FrameTimer:
 	and $7
 	ret nz
 	ld de, SFX_FLY
-	jp PlaySFX
+	jmp PlaySFX
 
 .exit
 	ld hl, wJumptableIndex

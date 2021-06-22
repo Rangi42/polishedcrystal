@@ -53,7 +53,7 @@ BattleCommand_substitute:
 .finish
 	ld hl, MadeSubstituteText
 	call StdBattleTextbox
-	jp RefreshBattleHuds
+	jmp RefreshBattleHuds
 
 .already_has_sub
 	call CheckUserIsCharging
@@ -66,4 +66,4 @@ BattleCommand_substitute:
 	call nz, BattleCommand_raisesub
 	ld hl, TooWeakSubText
 .jp_stdbattletextbox
-	jp StdBattleTextbox
+	jmp StdBattleTextbox

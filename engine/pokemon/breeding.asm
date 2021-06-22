@@ -13,7 +13,7 @@
 CheckBreedmonCompatibility:
 	call .CheckBreedingGroupCompatibility
 	ld c, INCOMPATIBLE
-	jp nc, .done
+	jr nc, .done
 	ld a, [wBreedMon1Species]
 	ld [wCurPartySpecies], a
 	ld a, [wBreedMon1Gender]
@@ -60,7 +60,7 @@ CheckBreedmonCompatibility:
 
 .done
 	ld a, c
-	ld [wd265], a
+	ld [wBreedingCompatibility], a
 	ret
 
 .CheckBreedingGroupCompatibility:
@@ -185,17 +185,25 @@ DoEggStep::
 	pop hl
 	pop de
 	ld a, b
-	ld c, 1
+	ld c, 2
 	cp FLAME_BODY
 	jr z, .ability_ok
 	cp MAGMA_ARMOR
 	jr z, .ability_ok
 .ability_next
-	call .nextpartymon
+	call .NextPartyMon
 	jr .ability_loop
 .no_ability_bonus
-	ld c, 0
+	ld c, 1
 .ability_ok
+	ld a, OVAL_CHARM
+	ld [wCurKeyItem], a
+	push bc
+	call CheckKeyItem
+	pop bc
+	jr nc, .no_oval_charm
+	sla c
+.no_oval_charm
 	ld de, wPartySpecies
 	ld hl, wPartyMon1Happiness ; Egg cycles when not hatched
 .loop
@@ -211,13 +219,18 @@ DoEggStep::
 	pop de
 	pop hl
 	jr z, .next
-	dec [hl]
+	ld a, [hl]
+	sub c
+	jr nc, .ok
+	xor a
+.ok
+	ld [hl], a
 	jr z, .hatch
-	ld a, c
-	and a
-	jr z, .next
-	dec [hl]
-	jr nz, .next
+	; fallthrough
+.next
+	call .NextPartyMon
+	jr .loop
+
 .hatch
 	ld a, 1
 	and a
@@ -225,10 +238,7 @@ DoEggStep::
 	ld c, 0 ; TODO: check if this is needed (was done earlier)
 	ret
 
-.next
-	call .nextpartymon
-	jr .loop
-.nextpartymon
+.NextPartyMon:
 	push de
 	ld de, PARTYMON_STRUCT_LENGTH
 	add hl, de
@@ -241,7 +251,7 @@ OverworldHatchEgg::
 	call HatchEggs
 	call ExitAllMenus
 	call RestartMapMusic
-	jp CloseText
+	jmp CloseText
 
 HatchEggs:
 	ld de, wPartySpecies
@@ -264,10 +274,10 @@ HatchEggs:
 	pop de
 	pop hl
 	push hl
-	jp z, .next
+	jmp z, .next
 	ld a, [hl]
 	and a
-	jp nz, .next
+	jmp nz, .next
 	ld [hl], $78
 
 	push de
@@ -301,7 +311,7 @@ HatchEggs:
 	ld a, [wCurPartySpecies]
 	dec de
 	ld [de], a
-	ld [wd265], a
+	ld [wNamedObjectIndex], a
 	ld [wCurSpecies], a
 	call GetPokemonName
 
@@ -422,7 +432,7 @@ HatchEggs:
 	ld de, PARTYMON_STRUCT_LENGTH
 	add hl, de
 	pop de
-	jp .loop
+	jmp .loop
 
 .Text_HatchEgg:
 	; Huh? @ @
@@ -702,7 +712,7 @@ Hatch_UpdateFrontpicBGMapCenter:
 	pop af
 	call Hatch_LoadFrontpicPal
 	call SetPalettes
-	jp ApplyAttrAndTilemapInVBlank
+	jmp ApplyAttrAndTilemapInVBlank
 
 EggHatch_DoAnimFrame:
 	push hl
@@ -710,10 +720,10 @@ EggHatch_DoAnimFrame:
 	push bc
 	farcall PlaySpriteAnimations
 	call DelayFrame
-	jp PopBCDEHL
+	jmp PopBCDEHL
 
 EggHatch_AnimationSequence:
-	ld a, [wd265]
+	ld a, [wNamedObjectIndex]
 	ld [wJumptableIndex], a
 	ld a, [wCurSpecies]
 	push af
@@ -806,7 +816,7 @@ Hatch_LoadFrontpicPal:
 	ld [wPlayerHPPal], a
 	ld c, FALSE
 	ld a, CGB_EVOLUTION
-	jp GetCGBLayout
+	jmp GetCGBLayout
 
 EggHatch_CrackShell:
 	ld a, [wFrameCounter]
@@ -827,7 +837,7 @@ EggHatch_CrackShell:
 	add hl, bc
 	ld [hl], $0
 	ld de, SFX_EGG_CRACK
-	jp PlaySFX
+	jmp PlaySFX
 
 EggHatchGFX:
 INCBIN "gfx/evo/egg_hatch.2bpp"
@@ -872,7 +882,7 @@ Hatch_InitShellFragments:
 .done
 	ld de, SFX_EGG_HATCH
 	call PlaySFX
-	jp EggHatch_DoAnimFrame
+	jmp EggHatch_DoAnimFrame
 
 .SpriteData:
 ; Probably OAM.
@@ -907,7 +917,7 @@ Special_DayCareMon1:
 	call ButtonSound
 	ld hl, wBreedMon2Nickname
 	call DayCareMonCompatibilityText
-	jp PrintText
+	jmp PrintText
 
 Special_DayCareMon2:
 	ld hl, DayCareMon2Text
@@ -920,10 +930,10 @@ Special_DayCareMon2:
 	call ButtonSound
 	ld hl, wBreedMon1Nickname
 	call DayCareMonCompatibilityText
-	jp PrintText
+	jmp PrintText
 
 DayCareMonCursor:
-	jp WaitPressAorB_BlinkCursor
+	jmp WaitPressAorB_BlinkCursor
 
 DayCareMon2Text:
 	; It's @ that was left with the DAY-CARE LADY.
@@ -942,7 +952,7 @@ DayCareMonCompatibilityText:
 	rst CopyBytes
 	call CheckBreedmonCompatibility
 	pop bc
-	ld a, [wd265]
+	ld a, [wBreedingCompatibility]
 
 	ld hl, .Incompatible
 	and a

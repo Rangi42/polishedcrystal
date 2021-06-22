@@ -2,6 +2,7 @@
 ; then continue with entries for these species+form combinations.
 
 CosmeticSpeciesAndFormTable:
+	table_width 2, CosmeticSpeciesAndFormTable
 	dp UNOWN,     UNOWN_B_FORM
 	dp UNOWN,     UNOWN_C_FORM
 	dp UNOWN,     UNOWN_D_FORM
@@ -54,7 +55,11 @@ CosmeticSpeciesAndFormTable:
 	dp MAGIKARP,  MAGIKARP_MASK_FORM
 	dp MAGIKARP,  MAGIKARP_SAUCY_FORM
 	dp MAGIKARP,  MAGIKARP_RAINDROP_FORM
+	assert_table_length NUM_COSMETIC_FORMS
+	; fallthrough
+
 VariantSpeciesAndFormTable:
+	table_width 2, VariantSpeciesAndFormTable
 	dp GYARADOS,  GYARADOS_RED_FORM
 	dp MEWTWO,    MEWTWO_ARMORED_FORM
 	dp RATTATA,   ALOLAN_FORM
@@ -84,10 +89,16 @@ VariantSpeciesAndFormTable:
 	dp ARTICUNO,  GALARIAN_FORM
 	dp ZAPDOS,    GALARIAN_FORM
 	dp MOLTRES,   GALARIAN_FORM
+	assert_table_length NUM_VARIANT_FORMS
+	; fallthrough
+
 ExtSpeciesTable:
 ; For species after index 254. Just a simple ordered table.
 ; We can't just convert directly, that results in problems with formes, even if
 ; the extspecies doesn't have a form on its own.
 ; TODO: maybe convert directly anyway by splitting the tables up for
 ; optimization reasons? This would only really be relevant for the pokedex.
+	table_width 2, ExtSpeciesTable
+	assert_table_length NUM_EXT_SPECIES
+
 	db 0 ; end

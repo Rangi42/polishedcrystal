@@ -16,6 +16,7 @@ ENDM
 
 MapGroupPointers::
 ; pointers to the first map header of each map group
+	table_width 2, MapGroupPointers
 	dw MapGroup1
 	dw MapGroup2
 	dw MapGroup3
@@ -51,6 +52,7 @@ MapGroupPointers::
 	dw MapGroup33
 	dw MapGroup34
 	dw MapGroup35
+	assert_table_length NUM_MAP_GROUPS
 
 MapGroup1:
 	map OlivinePokeCenter1F, TILESET_POKECENTER, INDOOR, OLIVINE_CITY, MUSIC_POKEMON_CENTER, 0, PALETTE_DAY, FISHGROUP_SHORE

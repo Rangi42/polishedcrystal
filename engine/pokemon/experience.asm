@@ -172,6 +172,6 @@ CalcExpAtLevel:
 	ld a, d
 	ldh [hMultiplicand + 2], a
 	ldh [hMultiplier], a
-	jp Multiply
+	jmp Multiply
 
 INCLUDE "data/growth_rates.asm"

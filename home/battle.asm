@@ -152,7 +152,7 @@ GetQuarterMaxHP::
 GetHalfMaxHP::
 	call GetMaxHP
 HalfHP::
-	jp HalveBC
+	jmp HalveBC
 
 GetMaxHP::
 ; output: bc, wBuffer1-2
@@ -221,7 +221,6 @@ UpdateBattleMon::
 	ret
 
 UpdateEnemyMonInParty::
-; No wildmons.
 	ld a, [wCurOTMon]
 	ld hl, wOTPartyMon1Level
 	call GetPartyLocation
@@ -236,7 +235,7 @@ UpdateEnemyMonInParty::
 RefreshBattleHuds::
 	call UpdateBattleHuds
 	call Delay2
-	jp ApplyTilemapInVBlank
+	jmp ApplyTilemapInVBlank
 
 UpdateBattleHuds::
 	farcall UpdatePlayerHUD
@@ -330,7 +329,7 @@ UserCanLoseItem::
 .cannot_lose
 	xor a
 .done
-	jp PopBCDEHL
+	jmp PopBCDEHL
 
 GetOpponentUsedItemAddr::
 	call CallOpponentTurn
@@ -470,7 +469,7 @@ ApplyAttackDamageMod::
 	ld a, c
 	pop bc
 	ret nz
-	jp MultiplyAndDivide
+	jmp MultiplyAndDivide
 
 ApplySpecialDefenseDamageMod::
 	push bc
@@ -852,7 +851,7 @@ BattleTextbox::
 	call UpdateSprites
 	call ApplyTilemap
 	pop hl
-	jp PrintTextboxText
+	jmp PrintTextboxText
 
 GetBattleAnimPointer::
 	anonbankpush BattleAnimations

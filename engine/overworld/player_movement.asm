@@ -469,7 +469,7 @@ DoPlayerMovement::
 	ld a, [wWalkingDirection]
 	ld e, a
 	cp STANDING
-	jp z, .StandInPlace
+	jr z, .StandInPlace
 
 	add hl, de
 	ld a, [hl]
@@ -484,6 +484,8 @@ DoPlayerMovement::
 	ret
 
 .Steps:
+; entries correspond to STEP_* constants (see constants/map_object_constants.asm)
+	table_width 2, DoPlayerMovement.Steps
 	dw .SlowStep ; x0.5
 	dw .NormalStep ; x1
 	dw .FastStep ; x4
@@ -496,6 +498,7 @@ DoPlayerMovement::
 	dw .SpinStep
 	dw .Fast ; x2
 	dw .StairsStep
+	assert_table_length NUM_STEPS
 
 .SlowStep:
 	slow_step_down
@@ -858,7 +861,7 @@ endc
 	call CheckSFX
 	ret c
 	ld de, SFX_BUMP
-	jp PlaySFX
+	jmp PlaySFX
 
 .GetOutOfWater:
 	push bc

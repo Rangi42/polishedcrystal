@@ -1,4 +1,5 @@
 AbilityNames:
+	table_width 2, AbilityNames
 	dw NoAbility
 	dw Stench
 	dw Drizzle
@@ -65,6 +66,7 @@ AbilityNames:
 	dw Drought
 	dw ArenaTrap
 	dw VitalSpirit
+	dw WhiteSmoke
 	dw ShellArmor
 	dw TangledFeet
 	dw MotorDrive
@@ -144,6 +146,7 @@ AbilityNames:
 	dw NeutralizingGas
 	dw PastelVeil
 	dw QuickDraw
+	assert_table_length NUM_ABILITIES
 
 NoAbility:       rawchar "---@"
 Stench:          rawchar "Stench@"
@@ -211,6 +214,7 @@ RockHead:        rawchar "Rock Head@"
 Drought:         rawchar "Drought@"
 ArenaTrap:       rawchar "Arena Trap@"
 VitalSpirit:     rawchar "Vital Spirit@"
+WhiteSmoke:      rawchar "White Smoke@"
 ShellArmor:      rawchar "Shell Armor@"
 TangledFeet:     rawchar "Tangled Feet@"
 MotorDrive:      rawchar "Motor Drive@"

@@ -1,4 +1,5 @@
 EvolutionMoves::
+	table_width 1, EvolutionMoves
 	db NO_MOVE      ; BULBASAUR
 	db NO_MOVE      ; IVYSAUR
 	db PETAL_DANCE  ; VENUSAUR
@@ -257,6 +258,8 @@ endc
 	db RAZOR_LEAF   ; LEAFEON
 	db ICY_WIND     ; GLACEON
 	db DISARM_VOICE ; SYLVEON
+	assert_table_length NUM_POKEMON
+
 	db NO_MOVE      ; EGG
 
 	db BITE         ; GYARADOS, GYARADOS_RED_FORM
@@ -288,3 +291,4 @@ endc
 	db NO_MOVE      ; ARTICUNO, GALARIAN_FORM
 	db NO_MOVE      ; ZAPDOS, GALARIAN_FORM
 	db NO_MOVE      ; MOLTRES, GALARIAN_FORM
+	assert_table_length NUM_EXT_POKEMON

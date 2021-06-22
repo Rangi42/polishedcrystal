@@ -60,7 +60,7 @@ else
 	ldh [hRTCDayHi], a
 
 ; unlatch clock / disable clock r/w
-	jp CloseSRAM
+	jmp CloseSRAM
 endc
 
 FixDays::
@@ -238,7 +238,7 @@ else
 	ld [de], a
 
 ; cleanup
-	jp CloseSRAM ; unlatch clock, disable clock r/w
+	jmp CloseSRAM ; unlatch clock, disable clock r/w
 endc
 
 RecordRTCStatus::
@@ -250,11 +250,11 @@ RecordRTCStatus::
 	pop af
 	or [hl]
 	ld [hl], a
-	jp CloseSRAM
+	jmp CloseSRAM
 
 CheckRTCStatus::
 ; check sRTCStatusFlags
 	ld a, BANK(sRTCStatusFlags)
 	call GetSRAMBank
 	ld a, [sRTCStatusFlags]
-	jp CloseSRAM
+	jmp CloseSRAM

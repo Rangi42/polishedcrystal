@@ -9,4 +9,4 @@ BattleCommand_growth:
 	call ForceRaiseStat
 	pop bc
 	ld b, c
-	jp ForceRaiseStat
+	jmp ForceRaiseStat

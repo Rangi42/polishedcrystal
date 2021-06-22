@@ -65,12 +65,12 @@ _LoadMapPart::
 loadmappart_function_macro: MACRO
 	ld a, b
 	and a
-	jp z, .BlockY0BlockX0\@
+	jmp z, .BlockY0BlockX0\@
 	dec a
-	jp z, .BlockY0BlockX1\@
+	jmp z, .BlockY0BlockX1\@
 	hlcoord 0, 0, \1
 	dec a
-	jp z, .BlockY1BlockX0\@
+	jmp z, .BlockY1BlockX0\@
 ; block y1, block x1
 
 .BlockY1BlockX1\@:

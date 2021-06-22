@@ -142,7 +142,7 @@ Mom_GiveItemOrDoll:
 	ld a, 1
 	ld [wItemQuantityChangeBuffer], a
 	ld hl, wNumPCItems
-	jp ReceiveItem
+	jmp ReceiveItem
 
 Mom_GetScriptPointer:
 	call GetItemFromMom

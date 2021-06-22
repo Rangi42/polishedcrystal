@@ -1,10 +1,12 @@
 StatNames:
 ; entries correspond to stat ids
-	db "Attack@"
-	db "Defense@"
-	db "Speed@"
-	db "Spcl.Atk@"
-	db "Spcl.Def@"
-	db "Accuracy@"
-	db "Evasion@"
-	db "stats@" ; used for Curse
+	list_start StatNames
+	li "Attack"
+	li "Defense"
+	li "Speed"
+	li "Spcl.Atk"
+	li "Spcl.Def"
+	li "Accuracy"
+	li "Evasion"
+	li "stats" ; used for Curse
+	assert_list_length NUM_LEVEL_STATS

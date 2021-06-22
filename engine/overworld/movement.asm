@@ -1,4 +1,6 @@
 MovementPointers:
+; entries correspond to movement_* constants (see macros/scripts/movement.asm)
+	table_width 2, MovementPointers
 	dw Movement_turn_head_down        ; 00
 	dw Movement_turn_head_up          ; 01
 	dw Movement_turn_head_left        ; 02
@@ -101,6 +103,7 @@ MovementPointers:
 	dw Movement_stairs_step_up        ; 63
 	dw Movement_stairs_step_left      ; 64
 	dw Movement_stairs_step_right     ; 65
+	assert_table_length NUM_MOVEMENT_CMDS
 
 Movement_teleport_from:
 	ld hl, OBJECT_STEP_TYPE
@@ -202,7 +205,7 @@ Movement_step_loop:
 	ld hl, OBJECT_MOVEMENT_BYTE_INDEX
 	add hl, bc
 	ld [hl], $0
-	jp ContinueReadingMovement
+	jmp ContinueReadingMovement
 
 Movement_step_resume:
 Movement_step_end:
@@ -346,45 +349,45 @@ Movement_remove_sliding:
 	ld hl, OBJECT_FLAGS1
 	add hl, bc
 	res SLIDING_F, [hl]
-	jp ContinueReadingMovement
+	jmp ContinueReadingMovement
 
 Movement_set_sliding:
 	ld hl, OBJECT_FLAGS1
 	add hl, bc
 	set SLIDING_F, [hl]
-	jp ContinueReadingMovement
+	jmp ContinueReadingMovement
 
 Movement_remove_fixed_facing:
 	ld hl, OBJECT_FLAGS1
 	add hl, bc
 	res FIXED_FACING_F, [hl]
-	jp ContinueReadingMovement
+	jmp ContinueReadingMovement
 
 Movement_fix_facing:
 	ld hl, OBJECT_FLAGS1
 	add hl, bc
 	set FIXED_FACING_F, [hl]
-	jp ContinueReadingMovement
+	jmp ContinueReadingMovement
 
 Movement_show_object:
 	ld hl, OBJECT_FLAGS1
 	add hl, bc
 	res INVISIBLE_F, [hl]
-	jp ContinueReadingMovement
+	jmp ContinueReadingMovement
 
 Movement_hide_object:
 	ld hl, OBJECT_FLAGS1
 	add hl, bc
 	set INVISIBLE_F, [hl]
-	jp ContinueReadingMovement
+	jmp ContinueReadingMovement
 
 Movement_hide_emote:
 	call DespawnEmote
-	jp ContinueReadingMovement
+	jmp ContinueReadingMovement
 
 Movement_show_emote:
 	call SpawnEmote
-	jp ContinueReadingMovement
+	jmp ContinueReadingMovement
 
 Movement_step_shake:
 ; parameters:
@@ -392,7 +395,7 @@ Movement_step_shake:
 
 	call JumpMovementPointer
 	call ShakeScreen
-	jp ContinueReadingMovement
+	jmp ContinueReadingMovement
 
 Movement_turn_head_down:
 	ld a, OW_DOWN
@@ -488,7 +491,7 @@ Movement_big_step_right:
 Movement_do_step:
 	ld d, OBJECT_ACTION_STEP
 Movement_normal_step:
-	jp NormalStep
+	jmp NormalStep
 
 Movement_run_step_down:
 	ld a, STEP_RUN << 2 | DOWN  ; STEP_RUN
@@ -555,7 +558,7 @@ Movement_turn_waterfall_left:
 Movement_turn_waterfall_right:
 	ld a, STEP_WALK << 2 | RIGHT
 Movement_turning_step:
-	jp TurningStep
+	jmp TurningStep
 
 Movement_slow_slide_step_down:
 	ld a, STEP_SLOW << 2 | DOWN
@@ -604,7 +607,7 @@ Movement_fast_slide_step_left:
 Movement_fast_slide_step_right:
 	ld a, STEP_RUN << 2 | RIGHT
 Movement_slide_step:
-	jp SlideStep
+	jmp SlideStep
 
 Movement_slow_jump_step_down:
 	ld a, STEP_SLOW << 2 | DOWN

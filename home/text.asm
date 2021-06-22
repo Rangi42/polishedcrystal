@@ -35,7 +35,7 @@ ClearTileMap::
 	ldh a, [rLCDC]
 	bit 7, a
 	ret z
-	jp ApplyTilemapInVBlank
+	jmp ApplyTilemapInVBlank
 
 SpeechTextbox::
 ; Standard textbox.
@@ -154,7 +154,7 @@ PlaceNextChar::
 	cp NGRAMS_START
 	jr nc, _PlaceNgramChar
 	dec de
-	jp FinishString
+	jmp FinishString
 
 SpaceChar::
 	ld a, " "
@@ -178,7 +178,7 @@ _PlaceNgramChar:
 	ld d, [hl]
 	ld e, a
 	pop hl
-	jp PlaceCommandCharacter
+	jmp PlaceCommandCharacter
 
 _PlaceSpecialChar:
 	sub "@"
@@ -273,7 +273,7 @@ Paragraph::
 	call DelayFrames
 	hlcoord TEXTBOX_INNERX, TEXTBOX_INNERY
 	pop de
-	jp NextChar
+	jmp NextChar
 
 PromptText::
 	push de
@@ -343,7 +343,7 @@ PlaceCommandCharacter::
 	ld h, b
 	ld l, c
 	pop de
-	jp NextChar
+	jmp NextChar
 
 TextScroll::
 	hlcoord TEXTBOX_INNERX, TEXTBOX_INNERY
@@ -370,7 +370,7 @@ TextScroll::
 	ld bc, TEXTBOX_INNERW
 	rst ByteFill
 	ld c, 5
-	jp DelayFrames
+	jmp DelayFrames
 
 Text_WaitBGMap::
 	push bc
@@ -433,6 +433,7 @@ DoTextUntilTerminator::
 	ret
 
 TextCommands::
+	table_width 2, TextCommands
 	dw TextCommand_START         ; $00 <START>
 	dw TextCommand_RAM           ; $01 <RAM>
 	dw TextCommand_PROMPT_BUTTON ; $02 <WAIT>
@@ -442,6 +443,7 @@ TextCommands::
 	dw TextCommand_SOUND         ; $06 <SOUND>
 	dw TextCommand_DAY           ; $07 <DAY>
 	dw TextCommand_FAR           ; $08 <FAR>
+	assert_table_length NGRAMS_START
 
 _ImplicitlyStartedText:
 	dec hl
@@ -566,7 +568,7 @@ TextCommand_SOUND::
 	ld d, 0
 	call PlaySFX
 	call WaitSFX
-	jp PopBCDEHL
+	jmp PopBCDEHL
 
 TextCommand_DAY::
 ; print the day of the week

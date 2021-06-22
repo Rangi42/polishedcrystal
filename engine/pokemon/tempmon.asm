@@ -8,7 +8,7 @@ CopyPkmnOrEggToTempMon:
 	cp OTPARTYMON
 	jr z, .got_addr
 	ld a, ERR_OLDBOX
-	jp Crash
+	jmp Crash
 .got_addr
 	ld a, [wCurPartyMon]
 	rst AddNTimes
@@ -38,7 +38,7 @@ _CopyPkmnToTempMon:
 	cp OTPARTYMON
 	jr z, .copywholestruct
 	ld a, ERR_OLDBOX
-	jp Crash
+	jmp Crash
 
 .copywholestruct
 	ld a, [wCurPartyMon]
@@ -79,7 +79,7 @@ GetPkmnSpecies:
 
 .boxmon
 	ld a, ERR_OLDBOX
-	jp Crash
+	jmp Crash
 
 .breedmon
 	ld a, [wBreedMon1Species]
@@ -116,7 +116,7 @@ GetPkmnForm:
 
 .boxmon
 	ld a, ERR_OLDBOX
-	jp Crash
+	jmp Crash
 
 .breedmon
 	ld a, [wBreedMon1Form]

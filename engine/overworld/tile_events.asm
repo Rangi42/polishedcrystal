@@ -35,7 +35,7 @@ CheckDirectionalWarp::
 CheckWarpFacingDown:
 	ld a, [wPlayerStandingTile]
 	ld hl, .blocks
-	jp IsInByteArray
+	jmp IsInByteArray
 
 .blocks:
 	db COLL_DOOR
@@ -47,7 +47,7 @@ CheckWarpFacingDown:
 CheckGrassCollision::
 	ld a, [wPlayerStandingTile]
 	ld hl, .blocks
-	jp IsInByteArray
+	jmp IsInByteArray
 
 .blocks:
 	db COLL_TALL_GRASS
@@ -58,7 +58,7 @@ CheckGrassCollision::
 CheckCutCollision:
 	ld a, c
 	ld hl, .blocks
-	jp IsInByteArray
+	jmp IsInByteArray
 
 .blocks:
 	db COLL_TALL_GRASS

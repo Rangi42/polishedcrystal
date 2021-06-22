@@ -1,4 +1,5 @@
 BitmasksPointers:
+	table_width 2, BitmasksPointers
 	dw BulbasaurBitmasks
 	dw IvysaurBitmasks
 	dw VenusaurBitmasks
@@ -253,6 +254,8 @@ BitmasksPointers:
 	dw LeafeonBitmasks
 	dw GlaceonBitmasks
 	dw SylveonBitmasks
+	assert_table_length NUM_POKEMON
+
 	dw EggBitmasks
 
 	dw UnownBBitmasks
@@ -341,3 +344,5 @@ BitmasksPointers:
 	dw ArticunoGalarianBitmasks
 	dw ZapdosGalarianBitmasks
 	dw MoltresGalarianBitmasks
+
+	assert_table_length NUM_UNIQUE_POKEMON

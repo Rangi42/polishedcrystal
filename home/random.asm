@@ -70,7 +70,7 @@ endr
 	inc hl
 	sub [hl]
 	ldh [hRandomSub], a
-	jp PopBCDEHL
+	jmp PopBCDEHL
 
 UpdateDividerCounters::
 	ldh a, [rDIV]

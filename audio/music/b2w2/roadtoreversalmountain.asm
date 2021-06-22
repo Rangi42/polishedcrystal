@@ -1,7 +1,7 @@
 ; Pokémon B2/W2 - Road to Reversal Mountain
 ; Demixed by Mmmmmm
 ; https://pastebin.com/27rkdjmk
-; https://hax.iimarck.us/topic/6777/
+; https://hax.iimarckus.org/topic/6777/
 
 Music_RoadToReversalMountainB2W2:
 	musicheader 4, 1, Music_RoadToReversalMountainB2W2_Ch1

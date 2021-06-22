@@ -65,7 +65,7 @@ BattleCommand_conversion:
 
 .fail
 	call AnimateFailedMove
-	jp PrintButItFailed
+	jmp PrintButItFailed
 
 .choose_move
 	push de
@@ -131,7 +131,7 @@ BattleCommand_conversion:
 	; If we have a battle in BattleTower just load the Attributes of the first wTrainerClass (Falkner)
 	; so we have always the same AI, regardless of the loaded class of trainer
 	ld a, [wInBattleTowerBattle]
-	bit 0, a
+	and a
 	jr nz, .battle_tower_skip
 
 	ld a, [wTrainerClass]
@@ -184,11 +184,11 @@ BattleCommand_conversion:
 	ld [de], a
 	inc de
 	ld [de], a
-	ld [wNamedObjectIndexBuffer], a
+	ld [wNamedObjectIndex], a
 	farcall GetTypeName
 	call AnimateCurrentMove
 	ld hl, TransformedTypeText
-	jp StdBattleTextbox
+	jmp StdBattleTextbox
 .invalid_selection
 	; If the player chose an invalid move, give an appropriate message.
 	; Otherwise, just loop back to move selection.
@@ -202,5 +202,5 @@ BattleCommand_conversion:
 	; skip move delay after the first selection
 	ldh a, [hBattleTurn]
 	and a
-	jp z, .player_choose_move
-	jp .choose_move
+	jmp z, .player_choose_move
+	jmp .choose_move

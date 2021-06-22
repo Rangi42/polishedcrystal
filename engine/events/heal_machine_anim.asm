@@ -13,7 +13,7 @@ HealMachineAnim:
 	ld [wBuffer2], a
 	call .DoJumptableFunctions
 	ld a, [wBuffer2]
-	jp DmgToCgbObjPal1
+	jmp DmgToCgbObjPal1
 
 .DoJumptableFunctions:
 	xor a
@@ -88,7 +88,7 @@ HealMachineAnim:
 .PlayHealMusic:
 	ld de, MUSIC_HEAL
 	call PlayMusic
-	jp .FlashPalettes8Times
+	jr .FlashPalettes8Times
 
 .HOF_PlaySFX:
 	ld de, SFX_GAME_FREAK_LOGO_GS
@@ -96,25 +96,7 @@ HealMachineAnim:
 	call .FlashPalettes8Times
 	call WaitSFX
 	ld de, SFX_BOOT_PC
-	jp PlaySFX
-
-.PC_ElmsLab_OAM:
-	dsprite   4, 0,   4, 2, $78, PAL_OW_TREE
-	dsprite   4, 0,   4, 6, $78, PAL_OW_TREE
-	dsprite   4, 6,   4, 0, $79, PAL_OW_TREE
-	dsprite   4, 6,   5, 0, $79, PAL_OW_TREE | X_FLIP
-	dsprite   5, 3,   4, 0, $79, PAL_OW_TREE
-	dsprite   5, 3,   5, 0, $79, PAL_OW_TREE | X_FLIP
-	dsprite   6, 0,   4, 0, $79, PAL_OW_TREE
-	dsprite   6, 0,   5, 0, $79, PAL_OW_TREE | X_FLIP
-
-.HOF_OAM:
-	dsprite   7, 4,  10, 1, $79, PAL_OW_TREE
-	dsprite   7, 4,  10, 6, $79, PAL_OW_TREE
-	dsprite   7, 3,   9, 5, $79, PAL_OW_TREE
-	dsprite   7, 3,  11, 2, $79, PAL_OW_TREE
-	dsprite   7, 1,   9, 1, $79, PAL_OW_TREE
-	dsprite   7, 1,  11, 5, $79, PAL_OW_TREE
+	jmp PlaySFX
 
 .LoadPalettes:
 	ld hl, .palettes
@@ -124,16 +106,6 @@ HealMachineAnim:
 	ld a, $1
 	ldh [hCGBPalUpdate], a
 	ret
-
-.palettes
-if !DEF(MONOCHROME)
-	RGB 31, 31, 31
-	RGB 31, 19, 10
-	RGB 31, 07, 01
-	RGB 00, 00, 00
-else
-	MONOCHROME_RGB_FOUR
-endc
 
 .FlashPalettes8Times:
 	ld c, $8
@@ -213,3 +185,31 @@ endc
 	ld [hli], a
 	pop bc
 	ret
+
+.PC_ElmsLab_OAM:
+	dsprite   4, 0,   4, 2, $78, PAL_OW_TREE
+	dsprite   4, 0,   4, 6, $78, PAL_OW_TREE
+	dsprite   4, 6,   4, 0, $79, PAL_OW_TREE
+	dsprite   4, 6,   5, 0, $79, PAL_OW_TREE | X_FLIP
+	dsprite   5, 3,   4, 0, $79, PAL_OW_TREE
+	dsprite   5, 3,   5, 0, $79, PAL_OW_TREE | X_FLIP
+	dsprite   6, 0,   4, 0, $79, PAL_OW_TREE
+	dsprite   6, 0,   5, 0, $79, PAL_OW_TREE | X_FLIP
+
+.HOF_OAM:
+	dsprite   7, 4,  10, 1, $79, PAL_OW_TREE
+	dsprite   7, 4,  10, 6, $79, PAL_OW_TREE
+	dsprite   7, 3,   9, 5, $79, PAL_OW_TREE
+	dsprite   7, 3,  11, 2, $79, PAL_OW_TREE
+	dsprite   7, 1,   9, 1, $79, PAL_OW_TREE
+	dsprite   7, 1,  11, 5, $79, PAL_OW_TREE
+
+.palettes
+if !DEF(MONOCHROME)
+	RGB 31, 31, 31
+	RGB 31, 19, 10
+	RGB 31, 07, 01
+	RGB 00, 00, 00
+else
+	MONOCHROME_RGB_FOUR
+endc

@@ -43,7 +43,7 @@ A full list of features is in [FEATURES.md](FEATURES.md). Features new to the be
 You can post questions or comments on any of these sites. But please read the [FAQ](FAQ.md) first if you have a question.
 
 * [Discord](https://discord.gg/ZK5pqK8)
-* [Skeetendo](https://hax.iimarck.us/topic/6874/)
+* [Skeetendo](https://hax.iimarckus.org/topic/6874/)
 * [PokéCommunity](http://www.pokecommunity.com/showthread.php?t=373172)
 * [Romhack.me](http://www.romhack.me/polishedcrystal/wall/)
 * [/r/PokemonROMHacks](https://www.reddit.com/r/PokemonROMhacks/comments/51kbcn/pok%C3%A9mon_polished_crystal_200/)

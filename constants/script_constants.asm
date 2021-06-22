@@ -43,7 +43,7 @@ STRING_BUFFER_LENGTH EQU 19
 	const TRAINERTEXT_LOSS
 
 ; readvar/writevar/loadvar arguments
-; _GetVarAction.VarActionTable indexes (see engine/overworld/variables.asm)
+; VarActionTable indexes (see engine/overworld/variables.asm)
 	const_def
 	const VAR_STRINGBUFFER2    ; 00
 	const VAR_PARTYCOUNT       ; 01
@@ -183,7 +183,6 @@ NUM_FLOORS EQU const_value
 	const EMOTE_FISH
 NUM_EMOTES EQU const_value
 EMOTE_FROM_MEM EQU -1
-EMOTE_LENGTH EQU 3
 
 ; fruittree arguments
 ; FruitTreeItems indexes (see data/items/fruit_trees.asm)
@@ -297,6 +296,18 @@ NUM_DECODESCS EQU const_value
 	const BUGCONTEST_CAUGHT_MON ; 0
 	const BUGCONTEST_BOXED_MON  ; 1
 	const BUGCONTEST_NO_CATCH   ; 2
+
+; Bug-Catching Contest values
+BUG_CONTEST_BALLS EQU 20
+if DEF(NO_RTC)
+BUG_CONTEST_MINUTES EQU 20 * NO_RTC_SPEEDUP
+else
+BUG_CONTEST_MINUTES EQU 20
+endc
+BUG_CONTEST_SECONDS EQU 0
+BUG_CONTEST_PLAYER EQU 1
+NUM_BUG_CONTESTANTS EQU 10 ; not counting the player
+BUG_CONTESTANT_SIZE EQU 4
 
 ; HealMachineAnim setval arguments
 ; HealMachineAnim.Pointers indexes (see engine/events/heal_machine_anim.asm)

@@ -17,7 +17,7 @@ DisplayUsedMoveText:
 
 	ld a, BATTLE_VARS_MOVE_ANIM
 	call GetBattleVar
-	ld [wd265], a
+	ld [wMoveGrammar], a
 
 	; Skip last move update if move was called (1=called, 2=Power Herb)
 	ldh a, [hBattleTurn]
@@ -33,7 +33,7 @@ DisplayUsedMoveText:
 	push hl
 	ld a, BATTLE_VARS_LAST_COUNTER_MOVE
 	call GetBattleVarAddr
-	ld a, [wd265]
+	ld a, [wMoveGrammar]
 	ld [hl], a
 	pop hl
 	ld [hl], a
@@ -47,7 +47,7 @@ DisplayUsedMoveText:
 	ld hl, UsedMoveInsteadText
 .ok
 	call StdBattleTextbox
-	jp ApplyTilemapInVBlank
+	jmp ApplyTilemapInVBlank
 
 UpdateUsedMoves:
 ; append move a to wPlayerUsedMoves unless it has already been used

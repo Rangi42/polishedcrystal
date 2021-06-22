@@ -29,7 +29,7 @@ MahoganyMart1F_MapScriptHeader:
 	const MAHOGANYMART1F_DRAGONITE
 
 MahoganyMart1FTrigger1:
-	prioritysjump MahoganyMart1FLanceUncoversStaircaseScript
+	sdefer MahoganyMart1FLanceUncoversStaircaseScript
 MahoganyMart1FTrigger0:
 	end
 

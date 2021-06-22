@@ -98,4 +98,4 @@ ReanchorBGMap_NoOAMUpdate_NoDelay::
 	ld hl, wVramState
 	set 6, [hl]
 	ld b, 0
-	jp SafeCopyTilemapAtOnce
+	jmp SafeCopyTilemapAtOnce

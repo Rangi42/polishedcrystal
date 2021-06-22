@@ -27,7 +27,7 @@ RuinsOfAlphAerodactylChamber_MapScriptHeader:
 RuinsofAlphAerodactylChamberTrigger0:
 	checkevent EVENT_WALL_OPENED_IN_AERODACTYL_CHAMBER
 	iffalse .End
-	prioritysjump RuinsOfAlphAerodactylChamberWallOpenScript
+	sdefer RuinsOfAlphAerodactylChamberWallOpenScript
 .End
 	end
 

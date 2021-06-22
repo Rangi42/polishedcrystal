@@ -5,6 +5,8 @@ overworld_sprite: MACRO
 ENDM
 
 SpriteHeaders:
+; entries correspond to SPRITE_* constants
+	table_width NUM_SPRITEDATA_FIELDS, SpriteHeaders
 	overworld_sprite ChrisSpriteGFX, WALKING_SPRITE, PAL_OW_RED
 	overworld_sprite ChrisBikeSpriteGFX, WALKING_SPRITE, PAL_OW_RED
 	overworld_sprite ChrisSurfSpriteGFX, WALKING_SPRITE, PAL_OW_RED
@@ -72,7 +74,7 @@ SpriteHeaders:
 	overworld_sprite FlannerySpriteGFX, WALKING_SPRITE, PAL_OW_RED
 	overworld_sprite MayleneSpriteGFX, WALKING_SPRITE, PAL_OW_RED
 	overworld_sprite SkylaSpriteGFX, WALKING_SPRITE, PAL_OW_RED
-	overworld_sprite ValerieSpriteGFX, WALKING_SPRITE, PAL_OW_RED
+	overworld_sprite ValerieSpriteGFX, WALKING_SPRITE, PAL_OW_PURPLE
 	overworld_sprite KukuiSpriteGFX, STANDING_SPRITE, PAL_OW_GREEN
 	overworld_sprite CaitlinSpriteGFX, WALKING_SPRITE, PAL_OW_RED
 	overworld_sprite DarachSpriteGFX, WALKING_SPRITE, PAL_OW_PURPLE
@@ -196,3 +198,4 @@ SpriteHeaders:
 	overworld_sprite ElectricFenceRightSpriteGFX, STANDING_SPRITE, PAL_OW_TREE
 	overworld_sprite SailboatSpriteGFX, STANDING_SPRITE, PAL_OW_PURPLE
 	overworld_sprite IceBoulderSpriteGFX, STANDING_SPRITE, PAL_OW_ROCK
+	assert_table_length NUM_OVERWORLD_SPRITES

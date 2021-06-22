@@ -26,7 +26,7 @@ BattleTowerOutside_MapScriptHeader:
 	object_event  9,  9, SPRITE_RATTATA_BACK, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, OBJECTTYPE_COMMAND, jumptext, BattleTowerOutsideDoorsClosedText, EVENT_BATTLE_TOWER_OPEN
 
 BattleTowerOutsideStepDownTrigger:
-	prioritysjump .Script
+	sdefer .Script
 	end
 
 .Script:

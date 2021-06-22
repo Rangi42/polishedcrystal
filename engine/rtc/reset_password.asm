@@ -21,7 +21,7 @@ _ResetClock:
 	ld [sRTCStatusFlags], a
 	call CloseSRAM
 	ld hl, .text_okay
-	jp PrintText
+	jmp PrintText
 
 .text_okay
 	; Select CONTINUE & reset settings.

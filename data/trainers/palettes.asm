@@ -1,4 +1,6 @@
 TrainerPalettes:
+; entries correspond to trainer classes
+	table_width PAL_COLOR_SIZE * 2, TrainerPalettes
 
 if !DEF(MONOCHROME)
 ChrisPalette:            INCLUDE "gfx/trainers/cal.pal"
@@ -158,7 +160,9 @@ else
 ChrisPalette:
 KrisPalette:
 Lyra1Palette:
-rept NUM_TRAINER_CLASSES
+rept NUM_TRAINER_CLASS_PICS + 1
 	MONOCHROME_RGB_TWO
 endr
 endc
+
+	assert_table_length NUM_TRAINER_CLASS_PICS + 1

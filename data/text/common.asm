@@ -1800,7 +1800,8 @@ _IllKeepItThanksText::
 SECTION "_NoRoomForEggText", ROMX
 _NoRoomForEggText::
 	text "You have no room"
-	line "in your party."
+	line "in your party"
+	cont "or your box."
 	cont "Come back later."
 	done
 
@@ -2039,6 +2040,12 @@ _CutNothingText::
 	text "There's nothing to"
 	line "Cut here."
 	prompt
+
+SECTION "_AskFlashText", ROMX
+_AskFlashText::
+	text "It's pitch black."
+	line "Want to use Flash?"
+	done
 
 SECTION "_BlindingFlashText", ROMX
 _BlindingFlashText::
@@ -2588,11 +2595,20 @@ MailMovedFromBoxText::
 	line "from the Mailbox."
 	prompt
 
-SECTION "Text_WasSentToBillsPC", ROMX
-Text_WasSentToBillsPC::
+SECTION "_ReceivedGiftMonText", ROMX
+_ReceivedGiftMonText::
+	text "<PLAYER> received"
+	line ""
+	text_ram wMonOrItemNameBuffer
+	text "!"
+	done
+
+SECTION "_EggSentToPCText", ROMX
+_EggSentToPCText::
+	text "The Egg was sent"
+	line "to "
 	text_ram wStringBuffer1
-	text " was"
-	line "sent to Bill's PC."
+	text "."
 	prompt
 
 SECTION "_PCGottaHavePokemonText", ROMX
@@ -3330,9 +3346,11 @@ _WarnVBAText::
 	para "that may crash"
 	line "Polished Crystal."
 
-	para "Please use another"
-	line "emulator, such as"
-	cont "BGB or Gambatte."
+	para "Please use a more"
+	line "accurate emulator,"
+
+	para "such as BGB, mGBA,"
+	line "or Gambatte."
 	prompt
 
 SECTION "_ClockTimeMayBeWrongText", ROMX
@@ -4170,15 +4188,15 @@ Text_Waitbutton_2::
 	text_promptbutton
 	text_end
 
-SECTION "_BallCurBoxFullText", ROMX
-_BallCurBoxFullText::
+SECTION "_CurBoxFullText", ROMX
+_CurBoxFullText::
 	text ""
 	text_ram wStringBuffer1
 	text " is full."
 	prompt
 
-SECTION "_BallSentToPCText", ROMX
-_BallSentToPCText::
+SECTION "_MonSentToPCText", ROMX
+_MonSentToPCText::
 	text_ram wMonOrItemNameBuffer
 	text " was"
 	line "sent to "
@@ -4511,8 +4529,8 @@ WonderTradePromptText::
 ;	line "accept an Egg."
 ;	prompt
 
-;SECTION "UnknownText_0x613c8", ROMX
-;UnknownText_0x613c8::
+;SECTION "WonderTradeCantAcceptAbnormalMonText", ROMX
+;WonderTradeCantAcceptAbnormalMonText::
 ;	text "Sorry, but your"
 ;	line "#mon appears to"
 ;

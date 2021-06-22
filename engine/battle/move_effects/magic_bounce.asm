@@ -60,7 +60,7 @@ BattleCommand_bounceback:
 	farcall ShowAbilityActivation
 	pop bc
 	ld a, b
-	ld [wNamedObjectIndexBuffer], a
+	ld [wNamedObjectIndex], a
 	call GetMoveName
 	ld hl, BouncedBackText
 	call StdBattleTextbox
@@ -99,4 +99,4 @@ BattleCommand_bounceback:
 	pop af
 	ld [hl], a
 	call UpdateMoveData
-	jp SwitchTurn
+	jmp SwitchTurn

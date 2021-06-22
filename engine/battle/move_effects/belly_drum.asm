@@ -26,4 +26,4 @@ BattleCommand_bellydrum:
 
 .failed
 	call AnimateFailedMove
-	jp PrintButItFailed
+	jmp PrintButItFailed

@@ -21,7 +21,7 @@ InitDisplayForLeafCredits:
 	call EnableLCD
 FinishDisplayForEndgame:
 	call ApplyAttrAndTilemapInVBlank
-	jp SetPalettes
+	jmp SetPalettes
 
 ClearDisplayForEndgame:
 	call ClearBGPalettes

@@ -30,7 +30,7 @@ GetPartyNickname:
 ; copy text from wStringBuffer2 to wStringBuffer3
 	ld de, wStringBuffer2
 	ld hl, wStringBuffer3
-	jp CopyName2
+	jmp CopyName2
 
 CheckEngineFlag:
 ; Check engine flag de
@@ -139,7 +139,7 @@ FieldMovePokepicScript:
 
 FieldMoveFailed:
 	ld hl, .CantUseHere
-	jp MenuTextboxBackup
+	jmp MenuTextboxBackup
 
 .CantUseHere:
 	; Can't use that here.
@@ -277,7 +277,7 @@ CutDownGrass:
 	call BufferScreen
 	call GetMovementPermissions
 	call UpdateSprites
-	jp DelayFrame
+	jmp DelayFrame
 
 CheckOverworldTileArrays:
 	; Input: c contains the tile you're facing
@@ -343,7 +343,32 @@ CutDownTree:
 	call GetMovementPermissions
 	call UpdateSprites
 	call DelayFrame
-	jp LoadStandardFont
+	jmp LoadStandardFont
+
+TryFlashOW::
+	ld a, [wTimeOfDayPalset]
+	cp DARKNESS_PALSET
+	jr nz, .quit
+	ld d, FLASH
+	call CheckPartyMove
+	jr c, .quit
+	call GetPartyNickname
+	ld a, BANK(AskFlashScript)
+	ld hl, AskFlashScript
+	call CallScript
+	scf
+	ret
+
+.quit
+	xor a
+	ret
+
+AskFlashScript:
+	opentext
+	farwritetext _AskFlashText
+	yesorno
+	iftrue Script_UseFlash
+	endtext
 
 OWFlash:
 	call .CheckUseFlash
@@ -372,7 +397,7 @@ OWFlash:
 
 UseFlash:
 	ld hl, Script_UseFlash
-	jp QueueScript
+	jmp QueueScript
 
 Script_UseFlash:
 	reloadmappart
@@ -480,7 +505,7 @@ AutoSurfScript:
 	writevar VAR_MOVEMENT
 
 	special UpdatePlayerSprite
-	special PlayMapMusic
+	playmapmusic
 ; step into the water
 	special Special_SurfStartStep ; (slow_step_x, step_end)
 	applymovement PLAYER, wMovementBuffer ; PLAYER, MovementBuffer
@@ -726,7 +751,7 @@ FlyFunction:
 .ReturnFromFly:
 	farcall ReturnFromFly_SpawnOnlyPlayer
 	call DelayFrame
-	jp UpdatePlayerSprite
+	jmp UpdatePlayerSprite
 
 WaterfallFunction:
 	call .TryWaterfall
@@ -1067,7 +1092,7 @@ PrepareOverworldMove:
 	add hl, de
 	ld a, [hl]
 	ld [wBuffer6], a
-	jp GetPartyNickname
+	jmp GetPartyNickname
 
 Script_StrengthFromMenu:
 	reloadmappart
@@ -1702,7 +1727,7 @@ PutTheRodAway:
 	ld a, $1
 	ld [wPlayerAction], a
 	call UpdateSprites
-	jp UpdatePlayerSprite
+	jmp UpdatePlayerSprite
 
 CurItemToScriptVar:
 	ld a, [wCurItem]
@@ -1726,6 +1751,7 @@ BikeFunction:
 	jr .CannotUseBike
 
 .GetOnBike:
+	call PlayBikeMusic
 	ld hl, Script_GetOnBike
 	ld de, Script_GetOnBike_Register
 	call .CheckIfRegistered
@@ -1792,7 +1818,6 @@ Script_GetOnBike:
 FinishGettingOnBike:
 	closetext
 	special UpdatePlayerSprite
-	special PlayMapMusic
 	end
 
 Script_GetOnBike_Register:
@@ -1808,7 +1833,7 @@ Script_GetOffBike:
 FinishGettingOffBike:
 	closetext
 	special UpdatePlayerSprite
-	special PlayMapMusic
+	playmapmusic
 	end
 
 Script_GetOffBike_Register:

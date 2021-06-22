@@ -1,4 +1,5 @@
 ItemDescriptions:
+	table_width 2, ItemDescriptions
 	dw PokeBallDesc
 	dw GreatBallDesc
 	dw UltraBallDesc
@@ -253,6 +254,7 @@ ItemDescriptions:
 	dw BlueSkyMailDesc
 	dw MusicMailDesc
 	dw MirageMailDesc
+	assert_table_length NUM_ITEMS
 
 KeyItemDescriptions:
 	dw BicycleDesc

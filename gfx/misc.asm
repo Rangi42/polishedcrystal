@@ -30,6 +30,11 @@ CreditsSequence1GFX:: INCBIN "gfx/credits/sequence1.2bpp.lz"
 CreditsSequence2GFX:: INCBIN "gfx/credits/sequence2.2bpp.lz"
 
 
+SECTION "Trade Graphics", ROMX
+
+TradeScreenGFX:: INCBIN "gfx/trade/trade_screen.2bpp.lz"
+
+
 SECTION "Stats Graphics", ROMX
 
 GFX_Stats:: INCBIN "gfx/stats/stats_balls.2bpp.lz"

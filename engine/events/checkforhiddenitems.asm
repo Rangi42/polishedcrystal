@@ -19,7 +19,7 @@ CheckForHiddenItems:
 ; ... before even checking to see if there are any signposts on this map.
 	ld a, [wCurMapBGEventCount]
 	and a
-	jp z, .nosignpostitems
+	jr z, .nosignpostitems
 
 ; For i = 1:wCurMapBGEventCount...
 .loop
@@ -92,7 +92,7 @@ CheckForHiddenItems:
 ; Restore the signpost counter and decrement it.  If it hits zero, there are no hidden items in range.
 	ld a, [wBuffer2]
 	dec a
-	jp nz, .loop
+	jr nz, .loop
 
 	; Check if we found anything. Return carry if we did.
 .nosignpostitems
@@ -212,4 +212,4 @@ CalculateItemDistance:
 	and $f0
 	or b
 	add c
-	jp PopBCDEHL
+	jmp PopBCDEHL

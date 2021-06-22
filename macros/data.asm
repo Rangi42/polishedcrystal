@@ -15,42 +15,17 @@ dbw: MACRO
 	dw \2
 ENDM
 
-dbbw: MACRO
-	db \1, \2
-	dw \3
-ENDM
-
-dbbbw: MACRO
-	db \1, \2, \3
-	dw \4
-ENDM
-
-dbww: MACRO
-	db \1
-	dw \2, \3
-ENDM
-
-dbbww: MACRO
-	db \1, \2
-	dw \3, \4
-ENDM
-
-dbbwww: MACRO
-	db \1, \2
-	dw \3, \4, \5
-ENDM
-
 dn: MACRO
-rept _NARG / 2
-	db (\1) << 4 + (\2)
-	shift 2
-endr
+	rept _NARG / 2
+		db (\1) << 4 + (\2)
+		shift 2
+	endr
 ENDM
 
 dx: MACRO
-for x, 8 * ((\1) - 1), -1, -8
-	db LOW((\2) >> x)
-endr
+	for x, 8 * ((\1) - 1), -1, -8
+		db LOW((\2) >> x)
+	endr
 ENDM
 
 dt: MACRO ; three-byte (big-endian)
@@ -66,35 +41,23 @@ bigdw: MACRO ; big-endian word
 ENDM
 
 dba: MACRO ; dbw bank, address
-rept _NARG
-	dbw BANK(\1), \1
-	shift
-endr
+	for i, 1, _NARG + 1
+		dbw BANK(\<i>), \<i>
+	endr
 ENDM
 
 dab: MACRO ; dwb address, bank
-rept _NARG
-	dwb \1, BANK(\1)
-	shift
-endr
-ENDM
-
-dbba: MACRO
-	db \1
-	dba \2
-ENDM
-
-dbbba: MACRO
-	db \1, \2
-	dba \3
+	for i, 1, _NARG + 1
+		dwb \<i>, BANK(\<i>)
+	endr
 ENDM
 
 dbpixel: MACRO
-if _NARG >= 4
-	db \1 * 8 + \3, \2 * 8 + \4
-else
-	db \1 * 8, \2 * 8
-endc
+	if _NARG >= 4
+		db \1 * 8 + \3, \2 * 8 + \4
+	else
+		db \1 * 8, \2 * 8
+	endc
 ENDM
 
 dsprite: MACRO
@@ -102,60 +65,28 @@ dsprite: MACRO
 ENDM
 
 bcd: MACRO
-rept _NARG
-	dn ((\1) % 100) / 10, (\1) % 10
-	shift
-endr
+	for i, 1, _NARG + 1
+		dn ((\<i>) % 100) / 10, (\<i>) % 10
+	endr
 ENDM
 
 dp: MACRO ; db species, extspecies | form
-if _NARG == 2
-	db LOW(\1), HIGH(\1) << MON_EXTSPECIES_F | \2
-else
-	db LOW(\1), HIGH(\1) << MON_EXTSPECIES_F
-endc
+	if _NARG == 2
+		db LOW(\1), HIGH(\1) << MON_EXTSPECIES_F | \2
+	else
+		db LOW(\1), HIGH(\1) << MON_EXTSPECIES_F
+	endc
 ENDM
-
-dbp: MACRO
-	db \1
-if _NARG == 3
-	dp \2, \3
-else
-	dp \2
-endc
-ENDM
-
-dpb: MACRO
-if _NARG == 3
-	dp \1, \2
-	shift
-else
-	dp \1
-endc
-	db \2
-ENDM
-
-dpw: MACRO
-if _NARG == 3
-	dp \1, \2
-	shift
-else
-	dp \1
-endc
-	dw \2
-ENDM
-
 
 genders: MACRO
 ; eight arguments, all MALE or FEMALE
-x = 0
-y = 1
-rept _NARG
-	if !STRCMP("\1", "FEMALE")
-x = x | y
-	endc
-y = y * 2
-	shift
-endr
+	def x = 0
+	def y = 1
+	for i, 1, _NARG + 1
+		if !STRCMP("\<i>", "FEMALE")
+			def x = x | y
+		endc
+		def y = y * 2
+	endr
 	db x
 ENDM

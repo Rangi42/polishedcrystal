@@ -42,4 +42,4 @@ BattleCommand_clearhazards:
 	xor a
 	ld [de], a
 	ld hl, ReleasedByText
-	jp StdBattleTextbox
+	jmp StdBattleTextbox

@@ -1,4 +1,6 @@
 TMHMMoves:
+; entries correspond to *_TMNUM constants (see constants/item_constants.asm)
+	table_width 1, TMHMMoves
 	db DYNAMICPUNCH ; TM01 (Chuck)
 	db DRAGON_CLAW  ; TM02 (Route 27)
 	db CURSE        ; TM03 (Celadon Mansion)
@@ -74,12 +76,14 @@ TMHMMoves:
 	db THUNDER_WAVE ; TM73 (Rock Tunnel)
 	db GYRO_BALL    ; TM74 (TODO: Magnet Tunnel)
 	db SWORDS_DANCE ; TM75 (Celadon Dept. Store)
+	assert_table_length NUM_TMS
 	db CUT          ; HM01 (Ilex Forest)
 	db FLY          ; HM02 (Cianwood City)
 	db SURF         ; HM03 (Ecruteak City)
 	db STRENGTH     ; HM04 (Cianwood City)
 	db WHIRLPOOL    ; HM05 (Route 42)
 	db WATERFALL    ; HM06 (Ice Path)
+	assert_table_length NUM_TMS + NUM_HMS
 	db AGILITY      ; MT01 (TODO)
 	db AQUA_TAIL    ; MT02 (Route 4)
 	db BATON_PASS   ; MT03 (TODO)
@@ -111,5 +115,6 @@ TMHMMoves:
 	db TRICK_ROOM   ; MT29 (TODO)
 	db ZAP_CANNON   ; MT30 (Power Plant)
 	db ZEN_HEADBUTT ; MT31 (Saffron City)
+	assert_table_length NUM_TM_HM_TUTOR
 ; TODO: Agility, Baton Pass, Charm, Endure, Trick Room
 	db 0 ; end

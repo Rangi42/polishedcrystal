@@ -34,7 +34,7 @@ DisplayCaughtContestMonStats:
 	rst PlaceString
 
 	ld a, [wContestMon]
-	ld [wd265], a
+	ld [wNamedObjectIndex], a
 	call GetPokemonName
 	ld de, wStringBuffer1
 	hlcoord 1, 2
@@ -74,7 +74,7 @@ DisplayCaughtContestMonStats:
 	call ApplyTilemapInVBlank
 	ld a, CGB_DIPLOMA
 	call GetCGBLayout
-	jp SetPalettes
+	jmp SetPalettes
 
 .Health:
 	db "Health@"

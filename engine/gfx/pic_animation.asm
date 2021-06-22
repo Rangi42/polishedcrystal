@@ -1,9 +1,8 @@
 ; Pic animation arrangement.
 
 POKEANIM: MACRO
-rept _NARG
-	db (PokeAnim_\1_ - PokeAnim_SetupCommands) / 2
-	shift
+for i, 1, _NARG + 1
+	db (PokeAnim_\<i>_ - PokeAnim_SetupCommands) / 2
 endr
 	db (PokeAnim_Finish_ - PokeAnim_SetupCommands) / 2
 ENDM
@@ -324,7 +323,7 @@ PokeAnim_DoAnimScript:
 	dec a
 	ld [wPokeAnimWaitCounter], a
 	ret nz
-	jp PokeAnim_StopWaitAnim
+	jr PokeAnim_StopWaitAnim
 
 .SetRepeat:
 	ld a, [wPokeAnimParameter]
@@ -374,7 +373,7 @@ PokeAnim_GetFrame:
 	push hl
 	call PokeAnim_CopyBitmaskToBuffer
 	pop hl
-	jp PokeAnim_ConvertAndApplyBitmask
+	jmp PokeAnim_ConvertAndApplyBitmask
 
 PokeAnim_StartWaitAnim:
 	ld a, [wPokeAnimJumptableIndex]
@@ -441,7 +440,7 @@ PokeAnim_CopyBitmaskToBuffer:
 	pop bc
 	ld de, wPokeAnimBitmaskBuffer
 	ld a, [wPokeAnimBitmaskBank]
-	jp FarCopyBytes
+	jmp FarCopyBytes
 
 .GetSize:
 	push hl
@@ -541,22 +540,21 @@ PokeAnim_ConvertAndApplyBitmask:
 	rst AddNTimes
 	ld a, [wBoxAlignment]
 	and a
-	jr nz, .go
 	ld a, [wPokeAnimBitmaskCurCol]
 	ld e, a
+	jr nz, .subtract
+	; hl += [wPokeAnimBitmaskCurCol]
 	ld d, 0
 	add hl, de
 	ret
 
-.go
-	ld a, [wPokeAnimBitmaskCurCol]
-	ld e, a
+.subtract
+	; hl -= [wPokeAnimBitmaskCurCol]
 	ld a, l
 	sub e
 	ld l, a
-	ld a, h
-	sbc 0
-	ld h, a
+	ret nc
+	dec h
 	ret
 
 .GetTilemap:
@@ -731,7 +729,7 @@ PokeAnim_PlaceGraphic:
 	ld h, [hl]
 	ld l, a
 	lb bc, 7, 7
-	jp ClearBox
+	jmp ClearBox
 
 PokeAnim_SetVBank1:
 	ldh a, [rSVBK]
@@ -820,7 +818,7 @@ GetMonAnimDataIndex:
 	ld a, [wPokeAnimVariant]
 	ld b, a
 	; bc = index
-	jp GetCosmeticSpeciesAndFormIndex
+	jmp GetCosmeticSpeciesAndFormIndex
 
 GetMonAnimPointer:
 	call GetMonAnimDataIndex

@@ -1,6 +1,6 @@
 GetModifiedCaptureRate:
 ; Modified capture rate uses the following formula:
-; (3M - 2H * b * r * s) / 3M
+; ((3M - 2H) * b * r * s) / 3M
 ; M: Max HP, H = Current HP, b = ball bonus
 ; r = base capture rate, s = status bonus
 ; Heavy Ball is special: it will interact directly with r, giving
@@ -222,13 +222,13 @@ UltraBallMultiplier:
 SafariBallMultiplier:
 ; multiply catch rate by 2
 	ln a, 2, 1 ; x2
-	jp MultiplyAndDivide
+	jmp MultiplyAndDivide
 
 GreatBallMultiplier:
 ParkBallMultiplier:
 ; multiply catch rate by 1.5
 	ln a, 3, 2 ; x1.5
-	jp MultiplyAndDivide
+	jmp MultiplyAndDivide
 
 GetSpeciesWeight::
 ; input: a = species
@@ -261,7 +261,7 @@ GetSpeciesWeight::
 	inc hl
 
 	; get weight
-	jp GetFarWord
+	jmp GetFarWord
 
 HeavyBallMultiplier:
 ; subtract 20 from base catch rate if weight < 102.4 kg
@@ -353,7 +353,7 @@ LureBallMultiplier:
 	ret nz
 
 	ln a, 5, 1 ; x5
-	jp MultiplyAndDivide
+	jmp MultiplyAndDivide
 
 MoonBallMultiplier:
 ; multiply catch rate by 4 if mon evolves with moon stone
@@ -394,7 +394,7 @@ MoonBallMultiplier:
 	ret nz
 
 	ln a, 4, 1 ; x4
-	jp MultiplyAndDivide
+	jmp MultiplyAndDivide
 
 LoveBallMultiplier:
 ; multiply catch rate by 8 if mons are of same species, different sex
@@ -411,32 +411,21 @@ LoveBallMultiplier:
 	ret z ; same gender
 
 	ln a, 8, 1 ; x8
-	jp MultiplyAndDivide
+	jmp MultiplyAndDivide
 
 FastBallMultiplier:
-; multiply catch rate by 4 if enemy mon is in one of the three
-; FleeMons tables.
-	ld a, [wTempEnemyMonSpecies]
-	ld c, a
-	ld hl, FleeMons
-	ld d, 3
-
-.loop
-	ld a, BANK(FleeMons)
+; multiply catch rate by 4 if enemy mon has base speed 100+
+	ld a, [wOTPartyMon1Species]
+	dec a
+	ld hl, BaseData + BASE_SPD
+	ld bc, BASE_DATA_SIZE
+	rst AddNTimes
+	ld a, BANK(BaseData)
 	call GetFarByte
-
-	inc hl
-	cp -1
-	jr z, .next
-	cp c
-	jr nz, .loop
-
+	cp 100
+	ret c
 	ln a, 4, 1 ; x4
-	jp MultiplyAndDivide
-.next
-	dec d
-	jr nz, .loop
-	ret
+	jmp MultiplyAndDivide
 
 LevelBallMultiplier:
 ; multiply catch rate by 8 if player mon level / 4 > enemy mon level
@@ -468,7 +457,7 @@ RepeatBallMultiplier:
 	ret z
 
 	ln a, 7, 2 ; x3.5
-	jp MultiplyAndDivide
+	jmp MultiplyAndDivide
 
 TimerBallMultiplier:
 ; multiply catch rate by 1 + (turns passed * 3) / 10, capped at 4
@@ -484,7 +473,7 @@ TimerBallMultiplier:
 	ldh [hMultiplier], a
 	call Multiply
 	ln a, 1, 10 ; x0.1 after the above multiplier gives 1.3x, 1.6x, 1.9x, ..., 4x.
-	jp MultiplyAndDivide
+	jmp MultiplyAndDivide
 
 NestBallMultiplier:
 ; multiply catch rate by (41 - enemy mon level) / 5, floored at 1
@@ -496,7 +485,7 @@ NestBallMultiplier:
 	ldh [hMultiplier], a
 	call Multiply
 	ln a, 1, 5 ; x0.2
-	jp MultiplyAndDivide
+	jmp MultiplyAndDivide
 
 NetBallMultiplier:
 ; multiply catch rate by 3.5 if mon is water or bug type
@@ -513,7 +502,7 @@ NetBallMultiplier:
 
 .ok
 	ln a, 7, 2 ; x3.5
-	jp MultiplyAndDivide
+	jmp MultiplyAndDivide
 
 DiveBallMultiplier:
 ; multiply catch rate by 3.5 if surfing or fishing
@@ -529,7 +518,7 @@ DiveBallMultiplier:
 
 .water
 	ln a, 7, 2 ; x3.5
-	jp MultiplyAndDivide
+	jmp MultiplyAndDivide
 
 QuickBallMultiplier:
 ; multiply catch rate by 5 on first turn
@@ -538,7 +527,7 @@ QuickBallMultiplier:
 	ret nz
 
 	ln a, 5, 1 ; x5
-	jp MultiplyAndDivide
+	jmp MultiplyAndDivide
 
 DuskBallMultiplier:
 ; multiply catch rate by 3 at evening, night, or in caves
@@ -554,7 +543,7 @@ DuskBallMultiplier:
 
 .dusk
 	ln a, 3, 1 ; x3
-	jp MultiplyAndDivide
+	jmp MultiplyAndDivide
 
 DreamBallMultiplier:
 ; multiply catch rate by 4 if mon is asleep (on top of regular sleep bonus)
@@ -563,4 +552,4 @@ DreamBallMultiplier:
 	ret z
 
 	ln a, 4, 1 ; x4
-	jp MultiplyAndDivide
+	jmp MultiplyAndDivide

@@ -254,4 +254,4 @@ PrintWinLossText::
 	ld a, [wMapScriptsBank]
 	call FarPrintText
 	call ApplyTilemapInVBlank
-	jp WaitPressAorB_BlinkCursor
+	jmp WaitPressAorB_BlinkCursor

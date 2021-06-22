@@ -2,43 +2,40 @@
 
 frame: MACRO
 	db \1
-x = \2
-if _NARG > 2
-rept _NARG - 2
-x = x | (1 << (\3 + 1))
-	shift
-endr
-endc
+	def x = \2
+	for i, 3, _NARG + 1
+		redef x = x | (1 << (\<i> + 1))
+	endr
 	db x
 ENDM
 
-	enum_start $fc
+	const_def $fc
 
-	enum delanim_command ; $fc
+	const delanim_command ; $fc
 delanim: MACRO ; used for oam
 	db delanim_command
 ENDM
 
-	enum dorepeat_command ; $fd
+	const dorepeat_command ; $fd
 dorepeat: MACRO
 	db dorepeat_command
 	db \1 ; #
 ENDM
 
-	enum setrepeat_command ; $fe
+	const setrepeat_command ; $fe
 setrepeat: MACRO
 	db setrepeat_command
 	db \1 ; #
 ENDM
 
-	enum endanim_command ; $ff
+	const endanim_command ; $ff
 endanim: MACRO
 	db endanim_command
 ENDM
 
-__enum__ = $fe
+const_value = $fe
 
-	enum dorestart_command ; $fe
+	const dorestart_command ; $fe
 dorestart: MACRO ; used for oam
 	db dorestart_command
 ENDM

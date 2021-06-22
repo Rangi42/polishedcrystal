@@ -1,6 +1,4 @@
 PredefPointers::
-; $4b Predef pointers
-; address, bank
 	add_predef LearnMove
 	add_predef FlagPredef
 	add_predef ComputeHPBarPixels

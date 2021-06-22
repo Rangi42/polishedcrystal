@@ -42,7 +42,7 @@ DoEncoreDisable:
 	push bc
 	push af
 
-	ld [wNamedObjectIndexBuffer], a
+	ld [wNamedObjectIndex], a
 	call GetMoveName
 	; since abilities use strbuf1, copy to strbuf2 to not overwrite it
 	ld hl, wStringBuffer1
@@ -96,8 +96,8 @@ DoEncoreDisable:
 	ld [de], a
 	call AnimateCurrentMove
 	call StdBattleTextbox
-	jp CheckOpponentMentalHerb
+	jmp CheckOpponentMentalHerb
 
 .failed
 	call AnimateFailedMove
-	jp PrintButItFailed
+	jmp PrintButItFailed

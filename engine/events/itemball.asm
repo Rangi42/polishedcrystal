@@ -22,7 +22,7 @@ FindItemInBallScript::
 	xor a
 	ldh [hScriptVar], a
 	ld a, [wItemBallItemID]
-	ld [wNamedObjectIndexBuffer], a
+	ld [wNamedObjectIndex], a
 	call GetItemName
 	ld hl, wStringBuffer3
 	call CopyName2
@@ -41,7 +41,7 @@ FindItemInBallScript::
 	ld a, [wItemBallItemID]
 	call LoadItemIconForOverworld
 	farcall LoadItemIconPalette
-	jp PrintOverworldItemIcon
+	jmp PrintOverworldItemIcon
 
 FindKeyItemInBallScript::
 	callasm .ReceiveKeyItem
@@ -59,7 +59,7 @@ FindKeyItemInBallScript::
 	ldh [hScriptVar], a
 	ld a, [wItemBallItemID]
 	inc a
-	ld [wNamedObjectIndexBuffer], a
+	ld [wNamedObjectIndex], a
 	call GetKeyItemName
 	ld hl, wStringBuffer3
 	call CopyName2
@@ -74,7 +74,7 @@ FindKeyItemInBallScript::
 	ld a, [wItemBallItemID]
 	call LoadKeyItemIconForOverworld
 	farcall LoadKeyItemIconPaletteForOverworld
-	jp PrintOverworldItemIcon
+	jmp PrintOverworldItemIcon
 
 FindTMHMInBallScript::
 	callasm .ReceiveTMHM
@@ -92,18 +92,18 @@ FindTMHMInBallScript::
 	xor a
 	ldh [hScriptVar], a
 	ld a, [wItemBallItemID]
-	ld [wNamedObjectIndexBuffer], a
+	ld [wNamedObjectIndex], a
 	call GetTMHMName
 	ld hl, wStringBuffer3
 	call CopyName2
 
 	; off by one error?
-	ld a, [wd265]
+	ld a, [wNamedObjectIndex]
 	inc a
-	ld [wd265], a
+	ld [wTempTMHM], a
 
 	predef GetTMHMMove
-	ld a, [wd265]
+	ld a, [wTempTMHM]
 	ld [wPutativeTMHMMove], a
 	call GetMoveName
 
@@ -123,4 +123,4 @@ FindTMHMInBallScript::
 	ld a, [wItemBallItemID]
 	call LoadTMHMIconForOverworld
 	farcall LoadTMHMIconPalette
-	jp PrintOverworldItemIcon
+	jmp PrintOverworldItemIcon

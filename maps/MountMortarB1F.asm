@@ -57,26 +57,20 @@ MountMortarB1FKiyoScript:
 	iftrue_jumptextfaceplayer MountMortarB1FKiyoGotTyrogueText
 	faceplayer
 	checkevent EVENT_BEAT_KIYO
-	iftrue UnknownScript_0x7e217
+	iftrue .BeatKiyo
 	showtext MountMortarB1FKiyoIntroText
 	winlosstext MountMortarB1FKiyoWinText, 0
 	loadtrainer KARATE_KING, KIYO
 	startbattle
 	reloadmapafterbattle
 	setevent EVENT_BEAT_KIYO
-UnknownScript_0x7e217:
+.BeatKiyo:
 	opentext
 	writetext MountMortarB1FTyrogueRewardText
 	promptbutton
 	waitsfx
-	readvar VAR_PARTYCOUNT
-	ifequal $6, UnknownScript_0x7e237
-	writetext MountMortarB1FReceiveMonText
-	playsound SFX_CAUGHT_MON
-	waitsfx
-	givepoke TYROGUE, 10
-	setval PREMIER_BALL
-	special SetLastPartyMonBall
+	givepoke TYROGUE, NO_FORM, 10, NO_ITEM, PREMIER_BALL
+	iffalse_jumpopenedtext MountMortarB1FKiyoFullPartyAndBoxText
 	setevent EVENT_GOT_TYROGUE_FROM_KIYO
 	jumpthisopenedtext
 
@@ -93,9 +87,6 @@ MountMortarB1FKiyoGotTyrogueText:
 
 	para "Farewell!"
 	done
-
-UnknownScript_0x7e237:
-	jumpopenedtext MountMortarB1FKiyoFullPartyText
 
 MountMortarB1FHikerText:
 	text "My #mon used"
@@ -180,12 +171,8 @@ MountMortarB1FTyrogueRewardText:
 	line "fighting #mon."
 	done
 
-MountMortarB1FReceiveMonText:
-	text "<PLAYER> received"
-	line "Tyrogue."
-	done
-
-MountMortarB1FKiyoFullPartyText:
+MountMortarB1FKiyoFullPartyAndBoxText:
 	text "You have no room"
-	line "in your party!"
+	line "in your party"
+	line "or box!"
 	done

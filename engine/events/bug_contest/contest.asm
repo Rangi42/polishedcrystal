@@ -1,4 +1,3 @@
-
 ContestDropOffMons:
 	ld hl, wPartyMon1HP
 	ld a, [hli]
@@ -45,9 +44,9 @@ ContestReturnMons:
 Special_GiveParkBalls:
 	xor a
 	ld [wContestMon], a
-	ld a, 20
+	ld a, BUG_CONTEST_BALLS
 	ld [wParkBallsRemaining], a
-	jp StartBugContestTimer
+	jmp StartBugContestTimer
 
 BugCatchingContestBattleScript::
 	loadvar VAR_BATTLETYPE, BATTLETYPE_CONTEST
@@ -89,25 +88,25 @@ _BugContestJudging:
 	ld a, [wBugContestThirdPlacePersonID]
 	call LoadContestantName
 	ld a, [wBugContestThirdPlaceMon]
-	ld [wNamedObjectIndexBuffer], a
+	ld [wNamedObjectIndex], a
 	call GetPokemonName
 	ld hl, BugContest_ThirdPlaceText
 	call PrintText
 	ld a, [wBugContestSecondPlacePersonID]
 	call LoadContestantName
 	ld a, [wBugContestSecondPlaceMon]
-	ld [wNamedObjectIndexBuffer], a
+	ld [wNamedObjectIndex], a
 	call GetPokemonName
 	ld hl, BugContest_SecondPlaceText
 	call PrintText
 	ld a, [wBugContestFirstPlacePersonID]
 	call LoadContestantName
 	ld a, [wBugContestFirstPlaceMon]
-	ld [wNamedObjectIndexBuffer], a
+	ld [wNamedObjectIndex], a
 	call GetPokemonName
 	ld hl, BugContest_FirstPlaceText
 	call PrintText
-	jp BugContest_GetPlayersResult
+	jmp BugContest_GetPlayersResult
 
 BugContest_FirstPlaceText:
 	text_far ContestJudging_FirstPlaceText
@@ -226,6 +225,16 @@ BugContest_GetPlayersResult:
 	jr nz, .loop
 	ret
 
+ClearContestResults:
+	ld hl, wBugContestResults
+	ld b, wBugContestWinnersEnd - wBugContestResults
+	xor a
+.loop
+	ld [hli], a
+	dec b
+	jr nz, .loop
+	ret
+
 BugContest_JudgeContestants:
 	call ClearContestResults
 	call ComputeAIContestantScores
@@ -238,17 +247,7 @@ BugContest_JudgeContestants:
 	ld [hli], a
 	ldh a, [hProduct + 1]
 	ld [hl], a
-	jp DetermineContestWinners
-
-ClearContestResults:
-	ld hl, wBugContestResults
-	ld b, wBugContestWinnersEnd - wBugContestResults
-	xor a
-.loop
-	ld [hli], a
-	dec b
-	jr nz, .loop
-	ret
+	; fallthrough
 
 DetermineContestWinners:
 	ld de, wBugContestTempScore
@@ -544,6 +543,6 @@ Special_CheckBugContestContestantFlag:
 	inc hl
 	ld d, [hl]
 	ld b, CHECK_FLAG
-	jp EventFlagAction
+	jmp EventFlagAction
 
 INCLUDE "data/events/bug_contest_flags.asm"

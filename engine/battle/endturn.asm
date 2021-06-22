@@ -143,7 +143,7 @@ HandleBetweenTurnEffects:
 	and a
 	jr nz, .player_set_mode
 	ld a, [wInBattleTowerBattle]
-	bit 0, a
+	and a
 	jr nz, .player_set_mode
 
 	; Obviously, if we're playing in Set mode, assume Set mode...
@@ -190,14 +190,14 @@ HandleBetweenTurnEffects:
 
 	farcall SpikesDamageBoth
 	farcall RunBothActivationAbilities
-	jp .endturn_loop
+	jmp .endturn_loop
 .not_both2
 	call SetEnemyTurn
 	dec e
 	call z, SetPlayerTurn
 	farcall SpikesDamage
 	farcall RunActivationAbilities
-	jp .endturn_loop
+	jmp .endturn_loop
 
 HandleEndturnBlockA:
 	call SetFastestTurn
@@ -210,7 +210,7 @@ HandleEndturnBlockA:
 	call HasUserFainted
 	ret z
 	farcall EndturnAbilitiesA
-	jp HandleLeftovers
+	jmp HandleLeftovers
 	; healer
 
 HandleEndturnBlockB:
@@ -223,7 +223,7 @@ HandleEndturnBlockB:
 	farcall EndturnAbilitiesB ; and pickup/harvest (no need to move below orbs)
 	call SwitchTurn
 	call HandleStatusOrbs
-	jp SwitchTurn
+	jmp SwitchTurn
 
 HandleWeather:
 	ld a, [wBattleWeather]
@@ -400,7 +400,7 @@ HandleFutureSight:
 	xor a
 	ld [hl], a
 	ld hl, BattleText_UsersFutureSightMissed
-	jp StdBattleTextbox
+	jmp StdBattleTextbox
 
 .do_future_sight
 	push hl
@@ -431,7 +431,7 @@ HandleFutureSight:
 	pop hl
 	ld [hl], 0
 	call UpdateBattleMonInParty
-	jp UpdateEnemyMonInParty
+	jmp UpdateEnemyMonInParty
 
 HandleLeftovers:
 	call HasUserFainted
@@ -458,7 +458,7 @@ HandleLeftovers:
 	farcall RestoreHP
 	ld hl, BattleText_UserRecoveredWithItem
 .print
-	jp StdBattleTextbox
+	jmp StdBattleTextbox
 
 PreventEndturnDamage:
 ; returns z if residual damage at endturn is prevented
@@ -515,7 +515,7 @@ HandleLeechSeed:
 	call StdBattleTextbox
 	farcall EnableAnimations
 .done
-	jp SwitchTurn
+	jmp SwitchTurn
 
 HandlePoison:
 	call SetFastestTurn
@@ -598,7 +598,7 @@ DoPoisonBurnDamageAnim:
 	xor a
 	ld [wNumHits], a
 	farcall Call_PlayBattleAnim_OnlyIfVisible
-	jp GetEighthMaxHP
+	jmp GetEighthMaxHP
 
 HandleCurse:
 	call SetFastestTurn
@@ -619,7 +619,7 @@ HandleCurse:
 	call GetQuarterMaxHP
 	predef SubtractHPFromUser
 	ld hl, HurtByCurseText
-	jp StdBattleTextbox
+	jmp StdBattleTextbox
 
 HandleWrap:
 	call SetFastestTurn
@@ -682,9 +682,9 @@ HandleWrap:
 .print_text
 	pop de
 	ld a, [de]
-	ld [wNamedObjectIndexBuffer], a
+	ld [wNamedObjectIndex], a
 	call GetMoveName
-	jp StdBattleTextbox
+	jmp StdBattleTextbox
 
 HandleEncore:
 	call SetFastestTurn
@@ -751,7 +751,7 @@ EndturnEncoreDisable_End:
 	ld [hl], 0
 	ld h, d
 	ld l, e
-	jp StdBattleTextbox
+	jmp StdBattleTextbox
 
 HandleDisable:
 	call SetFastestTurn
@@ -791,7 +791,7 @@ HandlePerishSong:
 	ret z
 	dec [hl]
 	ld a, [hl]
-	ld [wd265], a
+	ld [wTextDecimalByte], a
 	push af
 	ld hl, PerishCountText
 	call StdBattleTextbox
@@ -809,7 +809,7 @@ HandleTrickRoom:
 	dec [hl]
 	ret nz
 	ld hl, TrickRoomEndedText
-	jp StdBattleTextbox
+	jmp StdBattleTextbox
 
 HandleLeppaBerry:
 	call SetFastestTurn
@@ -906,7 +906,7 @@ DecrementHighNibble:
 PrintTextAfterNibbleTick:
 	ld h, d
 	ld l, e
-	jp StdBattleTextbox
+	jmp StdBattleTextbox
 
 GetTurnAndPlacePrefix:
 ; Preserves a, returns zero flag for a
@@ -984,7 +984,7 @@ HandleStatusOrbs:
 	farcall PlayOpponentBattleAnim
 	call RefreshBattleHuds
 	pop hl
-	jp StdBattleTextbox
+	jmp StdBattleTextbox
 
 HandleRoost:
 	call SetFastestTurn

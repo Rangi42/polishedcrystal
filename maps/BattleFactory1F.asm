@@ -43,17 +43,14 @@ BattleFactory1FContinueChallenge:
 		line "for you."
 		prompt
 
-	; Schedule script for running. This prevents odd issues that a regular jump
-	; causes for scene scripts. This is NOT a true jump, so "end" is necessary.
-	prioritysjump Script_ReturnToBattleFactoryChallenge
+	sdefer Script_ReturnToRentalChallenge
 	end
 
 .LeftWithoutSaving:
-	; The player resetted the game in the middle of a battle.
+	; The player reset the game in the middle of a battle.
 	; This counts as a battle loss, and will reset the winstreak.
-	prioritysjump .LeftWithoutSaving2
+	sdefer .LeftWithoutSaving2
 	end
-
 .LeftWithoutSaving2:
 	opentext
 	writethistext
@@ -70,17 +67,16 @@ BattleFactory1FContinueChallenge:
 		line "invalid."
 		done
 	waitbutton
-	sjump .CommitResult
+	sjump Script_CommitBattleFactoryResult
 
 .LostChallenge:
 	opentext
-	prioritysjump .CommitResult
+	sdefer Script_CommitBattleFactoryResult
 	end
 
 .WonChallenge:
-	prioritysjump .WonChallenge2
+	sdefer .WonChallenge2
 	end
-
 .WonChallenge2:
 	opentext
 	writethistext
@@ -92,9 +88,9 @@ BattleFactory1FContinueChallenge:
 		para "For that, you get"
 		line "this great prize!"
 		prompt
-	verbosegiveitem ABILITYPATCH
+	verbosegiveitem MINT_LEAF
 	; fallthrough
-.CommitResult:
+Script_CommitBattleFactoryResult:
 	special Special_BattleTower_CommitChallengeResult
 	iffalse .WeHopeToServeYouAgain
 	setevent EVENT_BEAT_PALMER
@@ -118,7 +114,10 @@ BattleFactory1FRulesScript:
 	yesorno
 	iffalse_endtext
 	jumpthisopenedtext
-		text "Three #mon may"
+		text "You are given six"
+		line "rental #mon."
+
+		para "Three #mon may"
 		line "enter battles."
 
 		para "All three must be"
@@ -128,19 +127,22 @@ BattleFactory1FRulesScript:
 		line "hold must also be"
 		cont "different."
 
-		para "Eggs or certain"
-		line "Legendary #mon"
-		cont "aren't eligible"
-		cont "to battle."
+		para "After winning a"
+		line "battle, you may"
+		cont "trade a #mon"
+		cont "with the opponent."
 		done
 
 BattleFactory1FStreakText:
 	text "Streak: "
-	text_decimal wBattleTowerCurStreak, 2, 5
+	text_decimal wBattleFactoryCurStreak, 2, 5
 	text " wins"
 	line "Record: "
-	text_decimal wBattleTowerTopStreak, 2, 5
+	text_decimal wBattleFactoryTopStreak, 2, 5
 	text " wins"
+	cont "Swaps this run: "
+	text_decimal wBattleFactorySwapCount, 1, 2
+	text ""
 	done
 
 BattleFactory1FReceptionistScript:
@@ -160,18 +162,31 @@ BattleFactory1FReceptionistScript:
 	setevent EVENT_BATTLE_FACTORY_INTRO
 	writethistext
 		text "Would you like to"
-		line "hear about the"
-		cont "Battle Factory?"
+		line "hear about this"
+		cont "facility?"
 		done
 	yesorno
 	iffalse .BattleFactoryMenu
 
 .Explanation:
 	writethistext
-		; TODO: explain Factory rules
 		text "Battle Factory is"
-		line "a facility for"
-		cont "#mon battles."
+		line "a facility where"
+		cont "you battle using"
+		cont "rental #mon."
+
+		para "Countless #mon"
+		line "trainers gather"
+
+		para "from all over to"
+		line "hold battles on"
+		cont "the Battle Floor."
+
+		para "Each challenge"
+		line "has 7 trainers."
+
+		para "Beat them all to"
+		line "get Battle Points."
 
 		para "To interrupt a"
 		line "session, you must"
@@ -185,13 +200,14 @@ BattleFactory1FReceptionistScript:
 	; fallthrough
 .BattleFactoryMenu:
 	; Setscene here in case the player aborted a quicksave prompted by challenge
-	setscene 1
+	setscene $1
 	writethistext
 		text "Want to head onto"
 		line "the Battle Floor?"
 		done
-
-	special Special_BattleTower_MainMenu
+	loadmenu MenuDataHeader_BattleInfoCancel
+	verticalmenu
+	closewindow
 	ifequal $1, .Challenge
 	ifequal $2, .Explanation
 	writethistext
@@ -202,12 +218,6 @@ BattleFactory1FReceptionistScript:
 
 .Challenge:
 	writethistext
-		text "Choose #mon"
-		line "to enter."
-		prompt
-	special Special_BattleTower_SelectParticipants
-	iffalse .BattleFactoryMenu
-	writethistext
 		text "Before entering"
 		line "the Battle Floor,"
 
@@ -216,7 +226,6 @@ BattleFactory1FReceptionistScript:
 		done
 	yesorno
 	iffalse .BattleFactoryMenu
-
 	; Done here to ensure it's saved in case the player resets later.
 	; The scene script running after the player saves but before the
 	; challenge starts is harmless since there's no challenge prepared.
@@ -224,11 +233,18 @@ BattleFactory1FReceptionistScript:
 	special Special_TryQuickSave
 	iffalse .BattleFactoryMenu
 
-	; Initializes opponent trainers and stores player mon choices in SRAM
+	; Set this early in case the player leaves before picking their team.
+	; This prevents them from re-rolling without forfeiting a streak.
+	setval BATTLETOWER_CHALLENGE_IN_PROGRESS
+	special Special_BattleTower_SetChallengeState
+	special Special_BattleTower_SetupRentalMode
+
+	; Initializes opponent trainers
 	special Special_BattleTower_BeginChallenge
 	; fallthrough
-Script_ReturnToBattleFactoryChallenge:
+Script_ReturnToRentalChallenge:
 	; From this point onwards, resetting the game should count as a streak loss
+	setscene 0
 	setval BATTLETOWER_CHALLENGE_IN_PROGRESS
 	special Special_BattleTower_SetChallengeState
 
@@ -240,7 +256,6 @@ Script_ReturnToBattleFactoryChallenge:
 	waitbutton
 	closetext
 
-	musicfadeout MUSIC_NONE, 8
 	follow BATTLEFACTORY1F_RECEPTIONIST, PLAYER
 	applymovement BATTLEFACTORY1F_RECEPTIONIST, .WalkToHallway
 	stopfollow

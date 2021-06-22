@@ -122,17 +122,17 @@ PickApricornScript:
 
 .GetApricornName:
 	ldh a, [hScriptVar]
-	ld [wd265], a
+	ld [wNamedObjectIndex], a
 	call GetApricornName
 	ld de, wStringBuffer1
 	ld hl, wStringBuffer3
-	jp CopyName2
+	jmp CopyName2
 
 .ShowApricornIcon:
 	ld a, [wCurFruit]
 	call LoadApricornIconForOverworld
 	farcall LoadApricornIconPalette
-	jp PrintOverworldItemIcon
+	jmp PrintOverworldItemIcon
 
 CheckFruitTree:
 	ld b, CHECK_FLAG

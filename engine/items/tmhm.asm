@@ -1,7 +1,7 @@
 CanLearnTMHMMove:
 	ld a, [wPutativeTMHMMove]
 	and a
-	jp z, GetForgottenMoves
+	jmp z, GetForgottenMoves
 
 	ld a, [wCurPartySpecies]
 	ld [wCurSpecies], a
@@ -18,11 +18,11 @@ CanLearnTMHMMove:
 	and a
 	jr z, .end
 	cp b
-	jr z, .asm_11659
+	jr z, .found
 	inc c
 	jr .loop
 
-.asm_11659
+.found
 	pop hl
 	ld b, CHECK_FLAG
 	push de
@@ -37,14 +37,14 @@ CanLearnTMHMMove:
 	ret
 
 GetTMHMMove:
-	ld a, [wd265]
-	dec a ; off by one error?
+	ld a, [wTempTMHM]
+	dec a
 	ld hl, TMHMMoves
 	ld b, 0
 	ld c, a
 	add hl, bc
 	ld a, [hl]
-	ld [wd265], a
+	ld [wTempTMHM], a
 	ret
 
 INCLUDE "data/moves/tmhm_moves.asm"

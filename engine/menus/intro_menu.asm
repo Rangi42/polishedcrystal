@@ -18,7 +18,7 @@ InitIntroGradient::
 	ld de, .IntroGradientGFX
 	ld hl, vTiles2 tile $70
 	lb bc, BANK(.IntroGradientGFX), 3
-	jp Get2bpp
+	jmp Get2bpp
 
 .IntroGradientGFX:
 INCBIN "gfx/new_game/intro_gradient.2bpp"
@@ -32,7 +32,7 @@ _MainMenu:
 	ld [wMapMusic], a
 	call PlayMusic
 	farcall MainMenu
-	jp StartTitleScreen
+	jmp StartTitleScreen
 
 NewGame_ClearTileMapEtc:
 	xor a
@@ -40,7 +40,7 @@ NewGame_ClearTileMapEtc:
 	call ClearTileMap
 	call LoadFontsExtra
 	call LoadStandardFont
-	jp ClearWindowData
+	jmp ClearWindowData
 
 NewGamePlus:
 	xor a
@@ -56,7 +56,7 @@ NewGame:
 _NewGame_FinishSetup:
 	call ResetWRAM
 	call NewGame_ClearTileMapEtc
-	call CheckVBA
+	call WarnVBA
 	call SetInitialOptions
 	call ProfElmSpeech
 	call InitializeWorld
@@ -68,7 +68,7 @@ _NewGame_FinishSetup:
 
 	ld a, MAPSETUP_WARP
 	ldh [hMapEntryMethod], a
-	jp FinishContinueFunction
+	jmp FinishContinueFunction
 
 ResetWRAM_NotPlus:
 	xor a
@@ -93,27 +93,23 @@ ResetWRAM_NotPlus:
 
 ResetWRAM:
 	ld hl, wVirtualOAM
-	ld bc, wOptions1 - wVirtualOAM
+	ld bc, wOptions3 - wVirtualOAM
 	xor a
 	rst ByteFill
 
 	ld hl, wRAM1Start
 	ld bc, wGameData - wRAM1Start
-	xor a
 	rst ByteFill
 
 	; erase wGameData, but keep wMoney and wBattlePoints
 	ld hl, wGameData
 	ld bc, wMoney - wGameData
-	xor a
 	rst ByteFill
 	ld hl, wMoneyEnd
 	ld bc, wBattlePoints - wMoneyEnd
-	xor a
 	rst ByteFill
 	ld hl, wBattlePointsEnd
 	ld bc, wGameDataEnd - wBattlePointsEnd
-	xor a
 	rst ByteFill
 
 	; Fill party species array with terminators.
@@ -225,7 +221,7 @@ endr
 
 	farcall DeletePartyMonMail
 
-	jp ResetGameTime
+	jmp ResetGameTime
 
 _ResetWRAM_InitList:
 ; Loads 0 in the count and -1 in the first item or mon slot.
@@ -242,7 +238,7 @@ InitializeMagikarpHouse:
 	ld a, $6
 	ld [hli], a
 	ld de, .Ralph
-	jp CopyName2
+	jmp CopyName2
 
 .Ralph:
 	db "Ralph@"
@@ -298,7 +294,7 @@ LoadOrRegenerateLuckyIDNumber:
 	ld a, c
 	ld [wLuckyIDNumber + 1], a
 	ld [sLuckyIDNumber + 1], a
-	jp CloseSRAM
+	jmp CloseSRAM
 
 Continue:
 	farcall TryLoadSaveFile
@@ -311,10 +307,10 @@ Continue:
 	ld c, 20
 	call DelayFrames
 	call ConfirmContinue
-	jp c, CloseWindow
-	call CheckVBA
+	jmp c, CloseWindow
+	call WarnVBA
 	call Continue_CheckRTC_RestartClock
-	jp c, CloseWindow
+	jmp c, CloseWindow
 	call Continue_CheckEGO_ResetInitialOptions
 	ld a, $8
 	ld [wMusicFade], a
@@ -333,17 +329,18 @@ Continue:
 	jr z, .SpawnAfterE4
 	ld a, MAPSETUP_CONTINUE
 	ldh [hMapEntryMethod], a
-	jp FinishContinueFunction
+	jr FinishContinueFunction
 
 .SpawnAfterE4:
 	ld a, SPAWN_NEW_BARK
 	ld [wDefaultSpawnpoint], a
 	call PostCreditsSpawn
-	jp FinishContinueFunction
+	jr FinishContinueFunction
 
 SpawnAfterLeaf:
 	ld a, SPAWN_HOME
 	ld [wDefaultSpawnpoint], a
+	; fallthrough
 
 PostCreditsSpawn:
 	xor a
@@ -364,15 +361,11 @@ ConfirmContinue:
 	scf
 	ret
 
-CheckVBA:
-	xor a
-	ldh [rSC], a ; no-optimize redundant loads (VBA loads this wrong)
-	ldh a, [rSC]
-	and %01111100
-	cp %01111100
+WarnVBA:
+	call CheckVBA
 	ret z
 	ld hl, .WarnVBAText
-	jp PrintText
+	jmp PrintText
 
 .WarnVBAText:
 	text_far _WarnVBAText
@@ -411,7 +404,7 @@ FinishContinueFunction:
 	farcall OverworldLoop
 	ld a, [wSpawnAfterChampion]
 	cp SPAWN_LEAF
-	jp nz, SoftReset
+	jmp nz, SoftReset
 	call SpawnAfterLeaf
 	jr .loop
 
@@ -435,14 +428,14 @@ DisplayNormalContinueData:
 	call Continue_DisplayBadgesDexPlayerName
 	call Continue_PrintGameTime
 	call LoadFontsExtra
-	jp UpdateSprites
+	jmp UpdateSprites
 
 DisplayContinueDataWithRTCError:
 	call Continue_LoadMenuHeader
 	call Continue_DisplayBadgesDexPlayerName
 	call Continue_UnknownGameTime
 	call LoadFontsExtra
-	jp UpdateSprites
+	jmp UpdateSprites
 
 Continue_LoadMenuHeader:
 	xor a
@@ -456,7 +449,7 @@ Continue_LoadMenuHeader:
 .pokedex_header
 	call _OffsetMenuDataHeader
 	call MenuBox
-	jp PlaceVerticalMenuItems
+	jmp PlaceVerticalMenuItems
 
 .MenuDataHeader_Dex:
 	db $40 ; flags
@@ -514,7 +507,7 @@ Continue_DisplayBadgesDexPlayerName:
 Continue_PrintGameTime:
 	decoord 9, 8, 0
 	add hl, de
-	jp Continue_DisplayGameTime
+	jr Continue_DisplayGameTime
 
 Continue_UnknownGameTime:
 	decoord 9, 8, 0
@@ -532,9 +525,9 @@ Continue_DisplayBadgeCount:
 	ld b, 2
 	call CountSetBits
 	pop hl
-	ld de, wd265
+	ld de, wNumSetBits
 	lb bc, 1, 2
-	jp PrintNum
+	jmp PrintNum
 
 Continue_DisplayPokedexNumCaught:
 	ld a, [wStatusFlags]
@@ -542,16 +535,12 @@ Continue_DisplayPokedexNumCaught:
 	ret z
 	push hl
 	ld hl, wPokedexCaught
-IF NUM_POKEMON % 8
-	ld b, NUM_POKEMON / 8 + 1
-ELSE
-	ld b, NUM_POKEMON / 8
-ENDC
+	ld b, (NUM_POKEMON + 7) / 8
 	call CountSetBits
 	pop hl
-	ld de, wd265
+	ld de, wNumSetBits
 	lb bc, 1, 3
-	jp PrintNum
+	jmp PrintNum
 
 Continue_DisplayGameTime:
 	ld de, wGameTimeHours
@@ -561,7 +550,7 @@ Continue_DisplayGameTime:
 	ld [hli], a
 	ld de, wGameTimeMinutes
 	lb bc, PRINTNUM_LEADINGZEROS | 1, 2
-	jp PrintNum
+	jmp PrintNum
 
 ProfElmSpeech:
 	farcall InitClock
@@ -655,7 +644,7 @@ endc
 	call Intro_RotatePalettesLeftFrontpic
 
 	ld hl, ElmText7
-	jp PrintText
+	jmp PrintText
 
 ElmText1:
 	text_far _ElmText1
@@ -791,7 +780,7 @@ NamePlayer:
 	jr z, .Male
 	ld de, DefaultFemalePlayerName
 .Male:
-	jp InitName
+	jmp InitName
 
 INCLUDE "data/default_player_names.asm"
 
@@ -835,7 +824,7 @@ ShrinkPlayer:
 
 	ld c, 15
 	call FadeToWhite
-	jp ClearTileMap
+	jmp ClearTileMap
 
 Intro_RotatePalettesLeftFrontpic:
 	ld hl, IntroFadePalettes
@@ -1205,15 +1194,15 @@ TitleScreenEnd:
 
 DeleteSaveData:
 	farcall _DeleteSaveData
-	jp Init
+	jmp Init
 
 ResetClock:
 	farcall _ResetClock
-	jp Init
+	jmp Init
 
 ResetInitialOptions:
 	farcall _ResetInitialOptions
-	jp Init
+	jmp Init
 
 Copyright:
 	call ClearTileMap
@@ -1255,4 +1244,4 @@ GameInit::
 	ld a, $90
 	ldh [hWY], a
 	call ApplyTilemapInVBlank
-	jp CrystalIntroSequence
+	jmp CrystalIntroSequence

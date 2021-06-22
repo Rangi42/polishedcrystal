@@ -22,7 +22,7 @@ BattleTowerBattleRoom_MapScriptHeader:
 
 BattleTowerBattleRoomEnterBattleRoom:
 	disappear BATTLETOWERBATTLEROOM_OPPONENT
-	prioritysjump Script_BattleRoom
+	sdefer Script_BattleRoom
 	end
 
 Script_BattleRoom:
@@ -58,7 +58,7 @@ Script_BattleRoomLoop:
 	specialsound
 	waitbutton
 	ifequal BTCHALLENGE_WON, Script_BeatenAllTowerTrainers
-	ifequal BTCHALLENGE_TYCOON, .WarnAboutTycoon
+	ifequal BTCHALLENGE_FACILITYBRAIN, .WarnAboutTycoon
 .AskNextBattle:
 	writethistext
 		text "Next up, opponent"
@@ -123,6 +123,7 @@ Script_LostBattleTower:
 	sjump Script_ReturnToBattleTowerLobby
 
 Script_BeatenAllTowerTrainers:
+	special FadeOutPalettes
 	setval BATTLETOWER_WON_CHALLENGE
 	special Special_BattleTower_SetChallengeState
 	; fallthrough

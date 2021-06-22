@@ -22,13 +22,11 @@ BattleFactoryBattleRoom_MapScriptHeader:
 
 BattleFactoryBattleRoomEnterBattleRoom:
 	disappear BATTLEFACTORYBATTLEROOM_OPPONENT
-	prioritysjump Script_BattleFloor
+	sdefer Script_BattleFloor
 	end
 
 Script_BattleFloor:
 	applymovement PLAYER, MovementData_BattleFactoryBattleRoomPlayerWalksIn
-; beat all 7 opponents in a row
-Script_BattleFloorLoop:
 	special Special_BattleTower_LoadOpponentTrainerAndPokemonsWithOTSprite
 	appear BATTLEFACTORYBATTLEROOM_OPPONENT
 	warpsound
@@ -45,77 +43,9 @@ Script_BattleFloorLoop:
 	applymovement BATTLEFACTORYBATTLEROOM_OPPONENT, MovementData_BattleFactoryBattleRoomOpponentWalksOut
 	warpsound
 	disappear BATTLEFACTORYBATTLEROOM_OPPONENT
-	applymovement BATTLEFACTORYBATTLEROOM_RECEPTIONIST, MovementData_BattleFactoryBattleRoomReceptionistWalksToPlayer
-	applyonemovement PLAYER, turn_head_left
-	opentext
-	writethistext
-		text "<PLAYER> received"
-		line ""
-		text_ram wStringBuffer1
-		text " BP!"
-		done
-	waitsfx
-	specialsound
-	waitbutton
-	ifequal BTCHALLENGE_WON, Script_BeatenAllFactoryTrainers
-	ifequal BTCHALLENGE_TYCOON, .WarnAboutHead
-.AskNextBattle:
-	writethistext
-		text "Next up, opponent"
-		line "No. "
-		text_decimal wStringBuffer3, 2, 5
-		text ". Ready?"
-		done
-	sjump .ShownText
-.WarnAboutHead:
-	writethistext
-		text "Congratulations"
-		line "on your winning"
-		cont "streak, trainer!"
-
-		para "The Factory Head"
-		line "has sent word that"
-
-		para "he is impressed"
-		line "with your skill."
-
-		para "Are you ready to"
-		line "battle the"
-		cont "Factory Head?"
-		done
-.ShownText
-	yesorno
-	iffalse .DontBattleNextOpponent
-	closetext
-	applyonemovement PLAYER, turn_head_right
-	applymovement BATTLEFACTORYBATTLEROOM_RECEPTIONIST, MovementData_BattleFactoryBattleRoomReceptionistWalksAway
-	sjump Script_BattleFloorLoop
-
-.DontBattleNextOpponent:
-	writethistext
-		text "Save and end the"
-		line "session?"
-		done
-	yesorno
-	iffalse .DontSaveAndEndTheSession
-	special SaveOptions
-	setval BATTLETOWER_SAVED_AND_LEFT
-	special Special_BattleTower_SetChallengeState
-	playsound SFX_SAVE
-	waitsfx
 	special FadeOutPalettes
-	special SoftReset
-.DontSaveAndEndTheSession:
-	writethistext
-		text "Cancel your Battle"
-		line "Floor challenge?"
-
-		para "Beware, it counts"
-		line "as a loss."
-		done
-	yesorno
-	iffalse .AskNextBattle
-	special FadeOutPalettes
+	warpfacing RIGHT, BATTLE_FACTORY_HALLWAY, 4, 8
+	end
 
 Script_LostBattleFactory:
 	setval BATTLETOWER_LOST_CHALLENGE
@@ -123,6 +53,7 @@ Script_LostBattleFactory:
 	sjump Script_ReturnToBattleFactoryLobby
 
 Script_BeatenAllFactoryTrainers:
+	special FadeOutPalettes
 	setval BATTLETOWER_WON_CHALLENGE
 	special Special_BattleTower_SetChallengeState
 	; fallthrough

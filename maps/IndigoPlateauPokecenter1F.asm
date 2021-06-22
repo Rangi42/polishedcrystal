@@ -358,37 +358,21 @@ IndigoPlateauYellowScript:
 	writetext .GiveStarterText
 	promptbutton
 	waitsfx
-	readvar VAR_PARTYCOUNT
-	ifequal $6, .PartyFull
 	checkevent EVENT_GOT_BULBASAUR_FROM_IVY
 	iftrue .Squirtle
 	checkevent EVENT_GOT_CHARMANDER_FROM_IVY
 	iftrue .Bulbasaur
-	getmonname CHARMANDER, $0
-	writetext .ReceivedKantoStarterText
-	playsound SFX_CAUGHT_MON
-	waitsfx
-	promptbutton
 	givepoke CHARMANDER, NO_FORM, 10, SITRUS_BERRY
 	sjump .Finish
 
 .Bulbasaur:
-	getmonname BULBASAUR, $0
-	writetext .ReceivedKantoStarterText
-	playsound SFX_CAUGHT_MON
-	waitsfx
-	promptbutton
 	givepoke BULBASAUR, NO_FORM, 10, SITRUS_BERRY
 	sjump .Finish
 
 .Squirtle:
-	getmonname SQUIRTLE, $0
-	writetext .ReceivedKantoStarterText
-	playsound SFX_CAUGHT_MON
-	waitsfx
-	promptbutton
 	givepoke SQUIRTLE, NO_FORM, 10, SITRUS_BERRY
 .Finish:
+	iffalse_jumpopenedtext .PartyAndBoxFullText
 	writetext .GoodbyeText
 	waitbutton
 	closetext
@@ -404,14 +388,15 @@ IndigoPlateauYellowScript:
 	waitsfx
 	end
 
-.PartyFull:
-	jumpthisopenedtext
-
+.PartyAndBoxFullText:
 	text "Yellow: Oh…"
 	line "You can't carry"
 
 	para "another #mon"
 	line "either…"
+
+	para "And your box is"
+	line "full, too…"
 	done
 
 .GreetingText:
@@ -472,13 +457,6 @@ IndigoPlateauYellowScript:
 	para "I hope we'll meet"
 	line "again."
 	cont "Bye-bye!"
-	done
-
-.ReceivedKantoStarterText:
-	text "<PLAYER> received"
-	line ""
-	text_ram wStringBuffer3
-	text "!"
 	done
 
 .DownMovement:

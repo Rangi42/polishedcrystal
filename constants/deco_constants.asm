@@ -18,12 +18,14 @@ DECOATTR_STRUCT_LENGTH EQU _RS
 NUM_DECO_TYPES EQU const_value - 1
 
 ; DecorationNames indexes (see data/decorations/names.asm)
-	const_def 1
+	const_def
+	const CANCEL_DECO
 	const PUT_IT_AWAY
 	const MAGNAPLANT
 	const TROPICPLANT
 	const JUMBOPLANT
 	const TOWN_MAP_POSTER
+	const DIPLOMA
 	const SUPER_NES
 	const NINTENDO_64
 	const GAMECUBE
@@ -44,6 +46,7 @@ NUM_DECO_TYPES EQU const_value - 1
 	const BLUE_CARPET
 	const YELLOW_CARPET
 	const GREEN_CARPET
+NUM_DECO_NAMES EQU const_value
 
 ; DoDecorationAction2.DecoActions indexes (see engine/overworld/decorations.asm)
 	const_def 1
@@ -68,7 +71,7 @@ __deco_value__ = 0
 deco: MACRO
 	const DECO_\1
 DECOFLAG_\1 EQU __deco_value__
-__deco_value = __deco_value__ + 1 ; TODO: correct to __deco_value__?
+__deco_value__ = __deco_value__ + 1
 ENDM
 
 ; decorations:
@@ -95,6 +98,7 @@ ENDM
 ; FindOwnedPosters.posters values (see engine/overworld/decorations.asm)
 	const POSTERS
 	deco  TOWN_MAP
+	deco  DIPLOMA
 	deco  PIKACHU_POSTER
 	deco  CLEFAIRY_POSTER
 	deco  MARILL_POSTER

@@ -21,4 +21,4 @@ SetMemEvent:
 	ld d, [hl]
 	ld e, a
 	ld b, SET_FLAG
-	jp EventFlagAction
+	jmp EventFlagAction

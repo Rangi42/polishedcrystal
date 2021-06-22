@@ -14,7 +14,167 @@ SelectTradeOrDayCareMon:
 	call SetPalettes
 	call DelayFrame
 	call PartyMenuSelect
-	jp ReturnToMapWithSpeechTextbox
+	jmp ReturnToMapWithSpeechTextbox
+
+BT_SwapRentals:
+	; Party selection is always 1-2-3, so prepare this.
+	xor a
+	ld hl, wBT_PartySelections
+	ld [hli], a
+	inc a
+	ld [hli], a
+	inc a
+	ld [hl], a
+	ld a, PARTYMENUACTION_BATTLE_TOWER
+	ld [wPartyMenuActionText], a
+	call DisableSpriteUpdates
+	call ClearBGPalettes
+
+.loop
+	call InitPartyMenuLayout
+	hlcoord 1, 16
+	ld de, .TradeWhichPKMN
+	call PlaceString
+	call ApplyTilemapInVBlank
+	ld a, CGB_PARTY_MENU
+	call GetCGBLayout
+	call SetPalettes
+	call DelayFrame
+	call PartyMenuSelect
+	jmp c, .return
+	farcall FreezeMonIcons
+
+	call InitPartySwap
+	hlcoord 1, 16
+	ld de, .TradeWhichPKMN
+	call PlaceString
+	call ApplyTilemapInVBlank
+	call SetPalettes
+	call DelayFrame
+	call PartyMenuSelect
+	jr c, .loop
+
+	; If we "swapped" a mon with itself, just cancel the switch choice.
+	ld a, [wSwitchMon]
+	ld c, a
+	dec c
+	ld a, [wCurPartyMon]
+	cp c
+	jr z, .reset_switch
+
+	; Figure out if we actually swapped one of ours with one of the last foe's.
+	ld b, 0
+	cp 3
+	rl b
+	ld a, c
+	cp 3
+	rl b
+
+	; If b is 0 or 3, we swapped within ours or opponent, which isn't a proper
+	; swap.
+	ld a, b
+	and a
+	jr z, .improper_swap
+	cp 3
+	jr z, .improper_swap
+
+	; The swap is plausible. Invoke the swap.
+	ld a, [wCurPartyMon]
+	ld b, a
+	ld a, [wSwitchMon]
+	ld c, a
+	push bc
+	call .SwitchPartyMons
+
+	; Perform a legality check.
+	farcall BT_LegalityCheck
+	dec e
+	ld hl, BTText_SameSpecies
+	jr z, .reset_and_print_error
+	dec e
+	ld hl, BTText_SameItem
+	jr z, .reset_and_print_error
+
+	call BT_ConfirmPartySelection
+	jr c, .return_to_loop
+	dec a
+	jr nz, .return_to_loop
+	pop bc
+	jr .return
+
+.reset_and_print_error
+	push hl
+	call InitPartyMenuLayout
+	farcall FreezeMonIcons
+	pop hl
+	call PrintText
+.return_to_loop
+	pop bc
+	ld a, b
+	ld [wCurPartyMon], a
+	inc a
+	ld [wMenuCursorY], a
+	ld a, c
+	ld [wSwitchMon], a
+	call .SwitchPartyMons
+.reset_switch
+	xor a
+	ld [wSwitchMon], a
+	jmp .loop
+
+.improper_swap
+	ld hl, .MustSwapBetweenTeams
+	push hl
+	call InitPartyMenuLayout
+	farcall FreezeMonIcons
+	pop hl
+	call PrintText
+	xor a
+	ld [wSwitchMon], a
+	jmp .loop
+
+.return
+	jmp ReturnToMapWithSpeechTextbox
+
+.SwitchPartyMons:
+	ld hl, wBT_MonParty
+	ld a, [wCurPartyMon]
+	ld b, a
+	ld a, [wSwitchMon]
+	dec a
+	ld c, a
+	push hl
+	ld a, b
+	ld b, 0
+	add hl, bc
+	add hl, bc
+	ld d, h
+	ld e, l
+	pop hl
+	ld c, a
+	add hl, bc
+	add hl, bc
+	ld a, [de]
+	ld b, [hl]
+	ld [hli], a
+	ld a, b
+	ld [de], a
+	inc de
+	ld a, [de]
+	ld b, [hl]
+	ld [hl], a
+	ld a, b
+	ld [de], a
+	call _SwitchPartyMons
+	farjp BT_SetRentalOT
+
+.MustSwapBetweenTeams:
+	text "You must trade <PK><MN>"
+	line "between the teams!"
+	prompt
+
+.TradeWhichPKMN:
+	db "Trade which <PK><MN>?   @"
 
 BT_PartySelect:
 	ld a, PARTYMENUACTION_BATTLE_TOWER
@@ -40,6 +200,7 @@ BT_PartySelect:
 
 	call BT_RemoveCurSelection
 	jr .loop
+
 .open_menu
 	call .Menu
 	jr c, .loop
@@ -51,13 +212,13 @@ BT_PartySelect:
 	dec a ; Enter
 	jr z, .Enter
 	dec a ; Stats
-	jp z, .Stats
+	jmp z, .Stats
 	dec a ; Moves
-	jp z, .Moves
+	jmp z, .Moves
 	jr .loop ; Cancel
 
 .return
-	jp ReturnToMapWithSpeechTextbox
+	jmp ReturnToMapWithSpeechTextbox
 
 .Menu:
 	; 3 menu headers; eggs (implicitly banned), banned, regular
@@ -66,74 +227,39 @@ BT_PartySelect:
 	call GetPartyParamLocation
 	bit MON_IS_EGG_F, [hl]
 	ld hl, .EggMenuHeader
-	jr nz, .DisplayMenu
+	jmp nz, BT_DisplayMenu
 
 	; Check if mon is banned
 	ld a, [wCurPartyMon]
 	call BT_CheckEnterState
 	ld hl, .MenuHeader
-	jr nc, .DisplayMenu
+	jmp nc, BT_DisplayMenu
 	ld hl, .BannedMenuHeader
-	; fallthrough
-.DisplayMenu:
-	call CopyMenuHeader
-	xor a
-	ldh [hBGMapMode], a
-	call MenuBox
-	call UpdateSprites
-	call PlaceVerticalMenuItems
-	call ApplyTilemapInVBlank
-	call CopyMenuData2
-	ld a, [wMenuDataFlags]
-	bit 7, a
-	scf
-	ret z
-	call InitVerticalMenuCursor
-	ld hl, w2DMenuFlags1
-	set 6, [hl]
-	call DoMenuJoypadLoop
-	ld de, SFX_READ_TEXT_2
-	call PlaySFX
-	ldh a, [hJoyPressed]
-	and a ; clear carry
-	bit B_BUTTON_F, a
-	ret z
-	scf
-	ret
+	jmp BT_DisplayMenu
 
 .Enter:
 	call BT_AddCurSelection
 	ld hl, .too_many_mons_text
-	jp c, .print_error
+	jr c, .print_error
 	ld a, [wBT_PartySelectCounter]
 	cp 3
-	jp nz, .loop
+	jr nz, .loop
 
 	; Entered 3 mons. Check legality, and if OK, prompt to enter those 3.
 	farcall BT_SetPlayerOT
 	farcall BT_LegalityCheck
 	dec e
-	ld hl, .same_species
+	ld hl, BTText_SameSpecies
 	jr z, .reset_and_print_error
 	dec e
-	ld hl, .same_item
+	ld hl, BTText_SameItem
 	jr z, .reset_and_print_error
 
-	call InitPartyMenuLayout
-	farcall FreezeMonIcons
-	hlcoord 1, 16
-	ld de, .selection_ok_text
-	call PlaceString
-	ld hl, .YesNoMenuHeader
-	call .DisplayMenu
-	ld a, [wMenuCursorY]
-	jp c, .loop
+	call BT_ConfirmPartySelection
+	jmp c, .loop
 	dec a
-	jp nz, .loop
-	jp .return
-
-.selection_ok_text
-	db "Enter battle?@"
+	jmp nz, .loop
+	jr .return
 
 .reset_and_print_error
 	push hl
@@ -143,31 +269,20 @@ BT_PartySelect:
 	call PrintText
 	xor a
 	ld [wBT_PartySelectCounter], a
-	jp .loop
+	jmp .loop
 
 .print_error
 	call PrintText
-	jp .loop
+	jmp .loop
 
 .too_many_mons_text
 	text "You may only enter"
 	line "with 3 #mon!"
 	prompt
 
-.same_species
-	text "The #mon must"
-	line "be of different"
-	cont "species!"
-	prompt
-
-.same_item
-	text "The #mon's held"
-	line "items must differ!"
-	prompt
-
 .Stats:
 	farcall OpenPartyStats
-	jp .loop
+	jmp .loop
 
 .Moves:
 	; For Eggs, "Moves" is actually the "Cancel" option
@@ -178,7 +293,7 @@ BT_PartySelect:
 	farcall ManagePokemonMoves
 
 .Cancel:
-	jp .loop
+	jmp .loop
 
 .EggMenuHeader:
 	db $00 ; flags
@@ -222,6 +337,31 @@ BT_PartySelect:
 	db "Moves@"
 	db "Cancel@"
 
+BTText_EnterBattle:
+	db "Enter battle?@"
+
+BTText_SameSpecies:
+	text "The #mon must"
+	line "be of different"
+	cont "species!"
+	prompt
+
+BTText_SameItem:
+	text "The #mon's held"
+	line "items must differ!"
+	prompt
+
+BT_ConfirmPartySelection:
+	call InitPartyMenuLayout
+	farcall FreezeMonIcons
+	hlcoord 1, 16
+	ld de, BTText_EnterBattle
+	call PlaceString
+	ld hl, .YesNoMenuHeader
+	call BT_DisplayMenu
+	ld a, [wMenuCursorY]
+	ret
+
 .YesNoMenuHeader:
 ; the regular yes/no prompt position is unsuitable, so make our own here
 	db $00 ; flags
@@ -235,6 +375,32 @@ BT_PartySelect:
 	db 2 ; items
 	db "Yes@"
 	db "No@"
+
+BT_DisplayMenu:
+	call CopyMenuHeader
+	xor a
+	ldh [hBGMapMode], a
+	call MenuBox
+	call UpdateSprites
+	call PlaceVerticalMenuItems
+	call ApplyTilemapInVBlank
+	call CopyMenuData2
+	ld a, [wMenuDataFlags]
+	bit 7, a
+	scf
+	ret z
+	call InitVerticalMenuCursor
+	ld hl, w2DMenuFlags1
+	set 6, [hl]
+	call DoMenuJoypadLoop
+	ld de, SFX_READ_TEXT_2
+	call PlaySFX
+	ldh a, [hJoyPressed]
+	and a ; clear carry
+	bit B_BUTTON_F, a
+	ret z
+	scf
+	ret
 
 BT_CheckEnterState:
 ; Check enter state of party mon in a. Returns:
@@ -261,11 +427,21 @@ BT_CheckEnterState:
 	jr c, .banned
 	pop af
 
-	; Check entry number, if any
-	ld b, a
+	; Check entry state. If we're rental-swapping, we want to display it a bit
+	; differently.
 	ld hl, wBT_PartySelectCounter
 	ld c, [hl]
 	inc c
+	jr nz, .not_rental
+
+	inc a
+	cp 4
+	jr c, .got_entry
+	ld a, 4
+	jr .got_entry
+
+.not_rental
+	ld b, a
 	ld d, 0
 	ld hl, wBT_PartySelections
 .loop
@@ -280,6 +456,7 @@ BT_CheckEnterState:
 
 	; Entry number is stored in d
 	ld a, d
+.got_entry
 	and a
 	jr .return
 
@@ -288,7 +465,7 @@ BT_CheckEnterState:
 	xor a
 	scf
 .return
-	jp PopBCDEHL
+	jmp PopBCDEHL
 
 BT_AddCurSelection:
 ; Adds wCurPartyMon to BT selection. Doesn't verify that the mon already
@@ -343,7 +520,7 @@ BT_RemoveCurSelection:
 .shift_loop
 	ld a, d
 	cp e
-	jp z, PopBCDEHL
+	jmp z, PopBCDEHL
 	ld a, [bc]
 	inc bc
 	ld [hli], a
@@ -355,12 +532,12 @@ InitPartyMenuLayout:
 	call InitPartyMenuWithCancel
 	call InitPartyMenuGFX
 	call WritePartyMenuTilemap
-	jp PrintPartyMenuText
+	jmp PrintPartyMenuText
 
 LoadPartyMenuGFX:
 	call LoadFontsBattleExtra
 	farcall InitPartyMenuPalettes ; engine/color.asm
-	jp ClearSpriteAnims2
+	jmp ClearSpriteAnims2
 
 WritePartyMenuTilemap:
 	ld hl, wOptions1
@@ -814,7 +991,7 @@ PlacePartyMonGender:
 	jr nz, .loop
 
 	ld a, CGB_PARTY_MENU
-	jp GetCGBLayout
+	jmp GetCGBLayout
 
 PlacePartyMonRemindable:
 	ld a, [wPartyCount]
@@ -888,7 +1065,10 @@ PlacePartyMonBattleTower:
 	dec a
 	ld de, .Second
 	jr z, .next
+	dec a
 	ld de, .Third
+	jr z, .next
+	ld de, .LastFoe
 .next
 	push hl
 	push bc
@@ -914,6 +1094,9 @@ PlacePartyMonBattleTower:
 
 .Third
 	db "Third@"
+
+.LastFoe
+	db "Last foe@"
 
 PartyMenuCheckEgg:
 	push hl
@@ -992,6 +1175,25 @@ InitPartyMenuWithCancel:
 	ld [wMenuCursorY], a
 	ld a, A_BUTTON | B_BUTTON
 	ld [wMenuJoypadFilter], a
+	ret
+
+InitPartySwap:
+	ld a, [wCurPartyMon]
+	inc a
+	ld [wSwitchMon], a
+
+	farcall HoldSwitchmonIcon
+
+	call InitPartyMenuNoCancel
+	call WritePartyMenuTilemap
+	call PrintPartyMenuText
+
+	hlcoord 0, 1
+	ld bc, 20 * 2
+	ld a, [wSwitchMon]
+	dec a
+	rst AddNTimes
+	ld [hl], "▷"
 	ret
 
 InitPartyMenuNoCancel:
@@ -1143,8 +1345,23 @@ PrintPartyMenuActionText:
 	call GetNickname
 	ld a, [wPartyMenuActionText]
 	and $f
-	ld hl, .MenuActionTexts
-	jp .PrintText
+	add a
+	add LOW(.MenuActionTexts)
+	ld l, a
+	adc HIGH(.MenuActionTexts)
+	sub l
+	ld h, a
+	ld a, [hli]
+	ld h, [hl]
+	ld l, a
+	ld a, [wOptions1]
+	push af
+	set NO_TEXT_SCROLL, a
+	ld [wOptions1], a
+	call PrintText
+	pop af
+	ld [wOptions1], a
+	ret
 
 .MenuActionTexts:
 	dw .Text_CuredOfPoison
@@ -1207,20 +1424,3 @@ PrintPartyMenuActionText:
 	; came to its senses.
 	text_far _CameToItsSensesText
 	text_end
-
-.PrintText:
-	ld e, a
-	ld d, 0
-	add hl, de
-	add hl, de
-	ld a, [hli]
-	ld h, [hl]
-	ld l, a
-	ld a, [wOptions1]
-	push af
-	set NO_TEXT_SCROLL, a
-	ld [wOptions1], a
-	call PrintText
-	pop af
-	ld [wOptions1], a
-	ret

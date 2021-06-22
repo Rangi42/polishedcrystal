@@ -1,4 +1,6 @@
 TrainerPicPointers::
+; entries correspond to trainer classes (see constants/trainer_constants.asm)
+	table_width 3, TrainerPicPointers
 	dba CarriePic
 	dba CalPic
 	dba FalknerPic
@@ -144,9 +146,11 @@ TrainerPicPointers::
 	dba ImakuniPic
 	dba LawrencePic
 	dba ReiPic
+	assert_table_length NUM_TRAINER_CLASSES
 	dba OmastarFossilPic
 	dba KabutopsFossilPic
 	dba AerodactylFossilPic
 	dba CuboneArmorPic
 	dba MeteoritePic
 	dba SilhouettePic
+	assert_table_length NUM_TRAINER_CLASS_PICS

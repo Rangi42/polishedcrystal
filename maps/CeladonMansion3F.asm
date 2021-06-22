@@ -24,21 +24,30 @@ CeladonMansion3F_MapScriptHeader:
 	object_event  0,  4, SPRITE_FAT_GUY, SPRITEMOVEDATA_STANDING_UP, 0, 2, -1, -1, PAL_NPC_RED, OBJECTTYPE_COMMAND, jumptextfaceplayer, GameFreakCharacterDesignerText, -1
 
 GameFreakGameDesignerScript:
+	checkevent EVENT_DECO_POSTER_4
+	iftrue_jumptextfaceplayer GameFreakDesignerGaveDiplomaText
 	faceplayer
 	opentext
 	writetext GameFreakGameDesignerText
 	readvar VAR_DEXCAUGHT
-	ifgreater 252, UnknownScript_0x7167e
+	ifgreater 252, .CompletedPokedex
 	waitendtext
 
-UnknownScript_0x7167e:
+.CompletedPokedex:
 	promptbutton
 	writetext GameFreakGameDesignerCompletedPokedexText
 	playsound SFX_DEX_FANFARE_230_PLUS
 	waitsfx
 	writetext GameFreakGameDesignerPauseForDiplomaText
+	waitbutton
+	writetext GameFreakGameDesignerGiveDiplomaText
+	setevent EVENT_DECO_POSTER_4
+	playsound SFX_KEY_ITEM
+	waitsfx
 	promptbutton
-	special Diploma
+	callasm Diploma
+	writetext GameFreakGameDesignerDiplomaSentText
+	waitbutton
 	jumpopenedtext GameFreakGameDesignerAfterDiplomaText
 
 MapCeladonMansion3FSignpost0Script:
@@ -73,12 +82,36 @@ GameFreakGameDesignerCompletedPokedexText:
 	done
 
 GameFreakGameDesignerPauseForDiplomaText:
-	text "…"
+	text "To recognize your"
+	line "achievement…"
+	cont "here you go!"
+
+	para "A crisp new"
+	line "Diploma!"
+	done
+
+GameFreakGameDesignerGiveDiplomaText:
+	text "<PLAYER> received"
+	line "Diploma!"
+	done
+
+GameFreakGameDesignerDiplomaSentText:
+	text "Diploma"
+	line "was sent home."
 	done
 
 GameFreakGameDesignerAfterDiplomaText:
 	text "You should go show"
 	line "that off!"
+	done
+
+GameFreakDesignerGaveDiplomaText:
+	text "Congratulations"
+	line "for completing"
+	cont "your #dex!"
+
+	para "You should show"
+	line "off that Diploma!"
 	done
 
 GameFreakGraphicArtistText:

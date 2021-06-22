@@ -5,11 +5,11 @@ lb: MACRO ; r, hi, lo
 ENDM
 
 ln: MACRO ; r, hi, lo[, hi, lo]
-if _NARG == 3
-	ld \1, ((\2) & $f) << 4 | ((\3) & $f)
-else
-	lb \1, ((\2) & $f) << 4 | ((\3) & $f), ((\4) & $f) << 4 | ((\5) & $f)
-endc
+	if _NARG == 3
+		ld \1, ((\2) & $f) << 4 | ((\3) & $f)
+	else
+		lb \1, ((\2) & $f) << 4 | ((\3) & $f), ((\4) & $f) << 4 | ((\5) & $f)
+	endc
 ENDM
 
 maskbits: MACRO
@@ -23,25 +23,25 @@ maskbits: MACRO
 ; 	maskbits 26
 ; 	cp 26
 ; 	jr nc, .loop
-x = 1
-rept 8
-if x + 1 < (\1)
-x = x << 1 | 1
-endc
-endr
-if _NARG == 2
-	and x << (\2)
-else
-	and x
-endc
+	def x = 1
+	rept 8
+		if x + 1 < (\1)
+			redef x = x << 1 | 1
+		endc
+	endr
+	if _NARG == 2
+		and x << (\2)
+	else
+		and x
+	endc
 ENDM
 
 ldpixel: MACRO
-if _NARG >= 5
-	lb \1, \2 * 8 + \4, \3 * 8 + \5
-else
-	lb \1, \2 * 8, \3 * 8
-endc
+	if _NARG >= 5
+		lb \1, \2 * 8 + \4, \3 * 8 + \5
+	else
+		lb \1, \2 * 8, \3 * 8
+	endc
 ENDM
 
 depixel EQUS "ldpixel de,"

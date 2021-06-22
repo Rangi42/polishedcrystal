@@ -50,7 +50,7 @@ Route24_OverheadBridgeAsm:
 	changebridgeblock 20, 34, $ec, ROUTE_24
 	changebridgeblock 20, 36, $ec, ROUTE_24
 	changebridgeblock 20, 38, $ed, ROUTE_24
-	jp BufferScreen
+	jmp BufferScreen
 
 Route24_UnderfootBridgeAsm:
 	changebridgeblock 20, 16, $d2, ROUTE_24
@@ -65,7 +65,7 @@ Route24_UnderfootBridgeAsm:
 	changebridgeblock 20, 34, $d2, ROUTE_24
 	changebridgeblock 20, 36, $d2, ROUTE_24
 	changebridgeblock 20, 38, $b1, ROUTE_24
-	jp BufferScreen
+	jmp BufferScreen
 
 Route24BridgeOverheadTrigger:
 	callasm Route24_OverheadBridgeAsm
@@ -80,7 +80,7 @@ Route24BridgeUnderfootTrigger:
 Route24_FinishBridge:
 	ld [wWalkingOnBridge], a
 	ld [wRoute24SceneID], a ; setscene a
-	jp GenericFinishBridge
+	jmp GenericFinishBridge
 
 TrainerGruntM31:
 	trainer GRUNTM, 31, EVENT_BEAT_ROCKET_GRUNTM_31, Route24RocketSeenText, Route24RocketBeatenText, 0, Route24RocketScript

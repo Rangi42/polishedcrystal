@@ -1,6 +1,7 @@
 MapGroupRoofs:
 ; entries correspond to map groups
-; values are indexes for Roofs (see below)
+; values are indexes for LoadMapGroupRoof.Roofs
+	table_width 1, MapGroupRoofs
 	db -1 ; group 0
 	db  3 ; group 1 (Olivine City)
 	db  2 ; group 2 (Mahogany Town)
@@ -37,3 +38,4 @@ MapGroupRoofs:
 	db -1 ; group 33
 	db  2 ; group 34 (Sinjoh Ruins)
 	db -1 ; group 35
+	assert_table_length NUM_MAP_GROUPS + 1

@@ -1,4 +1,5 @@
 AnimationPointers:
+	table_width 2, AnimationPointers
 	dw BulbasaurAnimation
 	dw IvysaurAnimation
 	dw VenusaurAnimation
@@ -253,6 +254,8 @@ AnimationPointers:
 	dw LeafeonAnimation
 	dw GlaceonAnimation
 	dw SylveonAnimation
+	assert_table_length NUM_POKEMON
+
 	dw EggAnimation
 
 	dw UnownBAnimation
@@ -341,3 +344,5 @@ AnimationPointers:
 	dw ArticunoGalarianAnimation
 	dw ZapdosGalarianAnimation
 	dw MoltresGalarianAnimation
+
+	assert_table_length NUM_UNIQUE_POKEMON

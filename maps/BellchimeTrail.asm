@@ -23,7 +23,7 @@ BellchimeTrail_MapScriptHeader:
 	const BELLCHIMETRAIL_VALERIE
 
 BellchimeTrailStepDownTrigger:
-	prioritysjump .Script
+	sdefer .Script
 	end
 
 .Script:

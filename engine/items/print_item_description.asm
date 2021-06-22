@@ -22,16 +22,16 @@ PrintDescription:
 	ret
 
 PrintTMHMDescription:
-; Print the description for TM/HM [wCurSpecies] at de.
-	ld a, [wCurSpecies]
+; Print the description for TM/HM [wCurMove] at de.
+	ld a, [wCurMove]
 	inc a
 	ld [wCurTMHM], a
-	ld [wCurTMHMBuffer], a
+	ld [wTempTMHM], a
 	push de
 	predef GetTMHMMove
 	pop hl
-	ld a, [wd265]
-	ld [wCurSpecies], a
+	ld a, [wTempTMHM]
+	ld [wCurMove], a
 	predef_jump PrintMoveDesc
 
 INCLUDE "data/items/descriptions.asm"

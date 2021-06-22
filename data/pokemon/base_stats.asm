@@ -7,38 +7,35 @@ ENDM
 abilities_for: MACRO
 ; mon, ability1, ability2, hiddenability
 	db \2, \3, \4
-ABIL_\1_\4 = HIDDEN_ABILITY
-ABIL_\1_\3 = ABILITY_2
-ABIL_\1_\2 = ABILITY_1
+	def ABIL_\1_\4 = HIDDEN_ABILITY
+	def ABIL_\1_\3 = ABILITY_2
+	def ABIL_\1_\2 = ABILITY_1
 ENDM
 
 tmhm: MACRO
-; initialize bytes to 0
-for n, (NUM_TM_HM_TUTOR + 7) / 8
-_tm{d:n} = 0
-endr
-; set bits of bytes
-rept _NARG
-	if DEF(\1_TMNUM)
-n = (\1_TMNUM - 1) / 8
-i = (\1_TMNUM - 1) % 8
-_tm{d:n} = _tm{d:n} | (1 << i)
-	else
-		fail "\1 is not a TM, HM, or tutor move"
-	endc
-	shift
-endr
-; output bytes
-for n, (NUM_TM_HM_TUTOR + 7) / 8
-	db _tm{d:n}
-endr
+	; initialize bytes to 0
+	for n, (NUM_TM_HM_TUTOR + 7) / 8
+		def _tm{d:n} = 0
+	endr
+	; set bits of bytes
+	for i, 1, _NARG + 1
+		if DEF(\<i>_TMNUM)
+			def n = (\<i>_TMNUM - 1) / 8
+			def t = (\<i>_TMNUM - 1) % 8
+			def _tm{d:n} = _tm{d:n} | (1 << t)
+		else
+			fail "\<i> is not a TM, HM, or tutor move"
+		endc
+	endr
+	; output bytes
+	for n, (NUM_TM_HM_TUTOR + 7) / 8
+		db _tm{d:n}
+	endr
 ENDM
 
 BaseData::
-
-BaseData0::
+	table_width BASE_DATA_SIZE, BaseData
 INCLUDE "data/pokemon/base_stats/bulbasaur.asm"
-BaseData1::
 INCLUDE "data/pokemon/base_stats/ivysaur.asm"
 INCLUDE "data/pokemon/base_stats/venusaur.asm"
 INCLUDE "data/pokemon/base_stats/charmander.asm"
@@ -292,6 +289,8 @@ INCLUDE "data/pokemon/base_stats/celebi.asm"
 INCLUDE "data/pokemon/base_stats/leafeon.asm"
 INCLUDE "data/pokemon/base_stats/glaceon.asm"
 INCLUDE "data/pokemon/base_stats/sylveon.asm"
+	assert_table_length NUM_POKEMON
+
 INCLUDE "data/pokemon/base_stats/egg.asm"
 
 INCLUDE "data/pokemon/base_stats/gyarados.asm" ; red
@@ -323,3 +322,4 @@ INCLUDE "data/pokemon/base_stats/weezing_galarian.asm"
 INCLUDE "data/pokemon/base_stats/articuno_galarian.asm"
 INCLUDE "data/pokemon/base_stats/zapdos_galarian.asm"
 INCLUDE "data/pokemon/base_stats/moltres_galarian.asm"
+	assert_table_length NUM_EXT_POKEMON

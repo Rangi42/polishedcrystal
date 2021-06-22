@@ -30,10 +30,10 @@ SetMenuMonIconColor:
 	push bc
 	push af
 
-	ld a, [wd265]
+	ld a, [wTempIconSpecies]
 	ld [wCurPartySpecies], a
 	call GetMenuMonIconPalette
-	jp ProcessMenuMonIconColor
+	jr ProcessMenuMonIconColor
 
 LoadFlyMonColor:
 	push hl
@@ -48,7 +48,7 @@ LoadFlyMonColor:
 	ld a, MON_SHINY
 	call GetPartyParamLocation
 	call GetMenuMonIconPalette
-	jp ProcessMenuMonIconColor
+	jr ProcessMenuMonIconColor
 
 LoadPartyMenuMonIconColors:
 	push hl
@@ -126,7 +126,7 @@ ProcessMenuMonIconColor:
 	jr nz, .colorIcon
 
 .finish
-	jp PopAFBCDEHL
+	jmp PopAFBCDEHL
 
 GetOverworldMonIconPalette::
 	ld a, [wCurIcon]
@@ -174,7 +174,7 @@ LoadPartyMenuMonIcon:
 	call .SpawnItemIcon
 	call SetPartyMonIconAnimSpeed
 
-	jp PopBCDEHL
+	jmp PopBCDEHL
 
 .SpawnItemIcon:
 	ldh a, [hObjectStructIndexBuffer]
@@ -221,11 +221,11 @@ _InitScreenMonIcon:
 	and SPECIESFORM_MASK
 	ld [wCurIconForm], a
 	bit MON_IS_EGG_F, [hl]
-	ld a, [wd265]
+	ld a, [wTempIconSpecies]
 	jr z, .got_species
 	ld a, EGG
 .got_species
-	ld [wd265], a
+	ld [wTempIconSpecies], a
 	ld [wCurIcon], a
 
 	dec hl ; MON_SHINY = MON_FORM - 1
@@ -241,15 +241,7 @@ _InitScreenMonIcon:
 	add hl, bc
 	ld [hl], SPRITE_ANIM_SEQ_NULL
 
-	jp PopBCDEHL
-
-LoadTradeAnimationMonIcon:
-	call SetMenuMonIconColor
-	ld a, [wd265]
-	ld [wCurIcon], a
-	ld a, $62
-	ld [wCurIconTile], a
-	jp GetMemIconGFX
+	jmp PopBCDEHL
 
 InitPartyMenuIcon:
 	ld a, [wCurIconTile]
@@ -355,7 +347,7 @@ Fly_PrepMonIcon:
 	ld d, 0
 	add hl, de
 	ld a, [hl]
-	ld [wd265], a
+	ld [wTempIconSpecies], a
 	ld [wCurIcon], a
 	pop de
 	ld a, e
@@ -364,11 +356,19 @@ Fly_PrepMonIcon:
 PokegearFlyMap_GetMonIcon:
 ; Load species icon into VRAM at tile a
 	call Fly_PrepMonIcon
-	jp GetIconGFX
+	jr GetIconGFX
 
 FlyFunction_GetMonIcon:
 	call Fly_PrepMonIcon
-	jp GetIcon_a
+	jr GetIcon_a
+
+LoadTradeAnimationMonIcon:
+	call SetMenuMonIconColor
+	ld a, [wTempIconSpecies]
+	ld [wCurIcon], a
+	ld a, $62
+	ld [wCurIconTile], a
+	; fallthrough
 
 GetMemIconGFX:
 	ld a, [wCurIconTile]
@@ -383,10 +383,6 @@ GetIconGFX:
 	add 10
 	ld [wCurIconTile], a
 	ret
-
-HeldItemIcons:
-INCBIN "gfx/icons/mail.2bpp"
-INCBIN "gfx/icons/item.2bpp"
 
 GetIcon_a:
 ; Load icon graphics into VRAM starting from tile a.
@@ -531,3 +527,7 @@ HoldSwitchmonIcon:
 	dec e
 	jr nz, .loop
 	ret
+
+HeldItemIcons:
+INCBIN "gfx/icons/mail.2bpp"
+INCBIN "gfx/icons/item.2bpp"

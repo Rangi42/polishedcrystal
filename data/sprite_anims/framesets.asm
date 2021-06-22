@@ -1,4 +1,6 @@
 SpriteAnimFrameData:
+; entries correspond to SPRITE_ANIM_FRAMESET_* constants (see constants/sprite_anim_constants.asm)
+	table_width 2, SpriteAnimFrameData
 	dw .Frameset_00
 	dw .Frameset_PartyMon
 	dw .Frameset_PartyMonWithMail
@@ -48,11 +50,13 @@ SpriteAnimFrameData:
 	dw .Frameset_CelebiLeft
 	dw .Frameset_CelebiRight
 	dw .Frameset_MaxStatSparkle
+	dw .Frameset_HyperTrainedStat
 	dw .Frameset_PcCursor
 	dw .Frameset_PcQuick
 	dw .Frameset_PcMode
 	dw .Frameset_PcMode2
 	dw .Frameset_PcPack
+	assert_table_length NUM_SPRITE_ANIM_FRAMESETS
 
 .Frameset_00:
 	frame SPRITE_ANIM_OAMSET_RED_WALK_1, 32
@@ -329,6 +333,10 @@ SpriteAnimFrameData:
 
 .Frameset_MaxStatSparkle:
 	frame SPRITE_ANIM_OAMSET_MAX_STAT_SPARKLE, 32
+	dorestart
+
+.Frameset_HyperTrainedStat:
+	frame SPRITE_ANIM_OAMSET_HYPER_TRAINED_STAT, 32
 	dorestart
 
 .Frameset_PcCursor:

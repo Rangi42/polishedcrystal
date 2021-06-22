@@ -92,7 +92,7 @@ _TypeChart:
 	pop af
 	ldh [hInMenu], a
 
-	jp ClearBGPalettes
+	jmp ClearBGPalettes
 
 TypeChartPalettes:
 if !DEF(MONOCHROME)

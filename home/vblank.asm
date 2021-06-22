@@ -104,7 +104,7 @@ VBlank::
 	ld a, ERR_VERSION_MISMATCH
 .crash
 	di
-	jp Crash
+	jmp Crash
 
 .skipToGameTime
 	call AnimateTileset
@@ -189,7 +189,7 @@ VBlankUpdateSound::
 ; sound only
 	ld a, BANK(_UpdateSound)
 	rst Bankswitch
-	jp _UpdateSound ; far-ok
+	jmp _UpdateSound ; far-ok
 
 VBlank6::
 ; palettes
@@ -312,4 +312,4 @@ VBlank7::
 ; also updates oam, and pals if specified
 	ld a, BANK(VBlankSafeCopyTilemapAtOnce)
 	rst Bankswitch
-	jp VBlankSafeCopyTilemapAtOnce ; far-ok
+	jmp VBlankSafeCopyTilemapAtOnce ; far-ok

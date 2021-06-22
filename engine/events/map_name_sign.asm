@@ -168,7 +168,7 @@ PlaceMapNameSign::
 	ret nc
 	sub MAPSIGNSTAGE_3_SLIDEIN
 	jr c, .graphics_ok
-	jp nz, LoadMapNameSignGFX
+	jr nz, LoadMapNameSignGFX
 	push hl
 	call InitMapNameFrame
 	farcall HDMATransfer_OnlyTopFourRows

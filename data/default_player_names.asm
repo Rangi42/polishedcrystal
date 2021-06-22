@@ -1,5 +1,7 @@
 DefaultMalePlayerName:
-	rawchar "Chris@@@", 0, 0, 0
+	rawchar "Chris@@@"
+	db 0, 0, 0
 
 DefaultFemalePlayerName:
-	rawchar "Kris@@@@", 0, 0, 0
+	rawchar "Kris@@@@"
+	db 0, 0, 0

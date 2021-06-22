@@ -53,11 +53,8 @@ VioletPokeCenter1FElmsAideScript:
 	yesorno
 	iffalse .RefusedEgg
 	readvar VAR_PARTYCOUNT
-	ifequal PARTY_LENGTH, .PartyFull
-	giveegg TOGEPI, EGG_LEVEL
-	farwritetext _ReceivedEggText
-	playsound SFX_GET_EGG_FROM_DAYCARE_LADY
-	waitsfx
+	giveegg TOGEPI
+	iffalse_jumpopenedtext .PartyAndBoxFull
 	setevent EVENT_GOT_TOGEPI_EGG_FROM_ELMS_AIDE
 	clearevent EVENT_ELMS_AIDE_IN_LAB
 	clearevent EVENT_TOGEPI_HATCHED
@@ -80,12 +77,13 @@ VioletPokeCenter1FElmsAideScript:
 	waitsfx
 	end
 
-.PartyFull:
-	jumpthisopenedtext
-
+.PartyAndBoxFull:
 	text "Oh, no. You can't"
 	line "carry any more"
 	cont "#mon with you."
+
+	para "You have no space"
+	line "in your box, too."
 
 	para "I'll wait here"
 	line "while you make"

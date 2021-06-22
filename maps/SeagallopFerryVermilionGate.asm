@@ -19,7 +19,7 @@ SeagallopFerryVermilionGate_MapScriptHeader:
 	const SEAGALLOPFERRYVERMILIONGATE_SAILOR
 
 SeagallopFerryVermilionGateTrigger1:
-	prioritysjump SeagallopFerryVermilionGate_PlayerArrives
+	sdefer SeagallopFerryVermilionGate_PlayerArrives
 SeagallopFerryVermilionGateTrigger0:
 	end
 

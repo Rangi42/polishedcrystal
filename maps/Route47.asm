@@ -104,7 +104,7 @@ Route47TileScript:
 	changebridgeblock 22, 16, $e7, ROUTE_47
 	changebridgeblock 24, 16, $e7, ROUTE_47
 	changebridgeblock 26, 16, $eb, ROUTE_47
-	jp BufferScreen
+	jmp BufferScreen
 
 .underfoot_asm:
 	; bridge 1
@@ -127,18 +127,7 @@ Route47TileScript:
 	changebridgeblock 22, 16, $e6, ROUTE_47
 	changebridgeblock 24, 16, $e6, ROUTE_47
 	changebridgeblock 26, 16, $b7, ROUTE_47
-	jp BufferScreen
-
-Route47_FinishOverheadBridge:
-	xor a
-	jr Route47_FinishBridge
-
-Route47_FinishUnderfootBridge:
-	ld a, $1
-Route47_FinishBridge:
-	ld [wWalkingOnBridge], a
-	ld [wRoute47SceneID], a ; setscene a
-	jp GenericFinishBridge
+	jmp BufferScreen
 
 Route47Bridge1OverheadTrigger:
 	callthisasm
@@ -147,7 +136,7 @@ Route47Bridge1OverheadTrigger:
 	changebridgeblock 46, 24, $e7, ROUTE_47
 	changebridgeblock 48, 24, $e7, ROUTE_47
 	changebridgeblock 50, 24, $ea, ROUTE_47
-	jp Route47_FinishOverheadBridge
+	jr Route47_FinishOverheadBridge
 
 Route47Bridge1UnderfootTrigger:
 	callthisasm
@@ -156,35 +145,46 @@ Route47Bridge1UnderfootTrigger:
 	changebridgeblock 46, 24, $e6, ROUTE_47
 	changebridgeblock 48, 24, $e6, ROUTE_47
 	changebridgeblock 50, 24, $ab, ROUTE_47
-	jp Route47_FinishUnderfootBridge
+	jr Route47_FinishUnderfootBridge
 
 Route47Bridge2OverheadTrigger:
 	callthisasm
 	changebridgeblock 44, 18, $e8, ROUTE_47
 	changebridgeblock 46, 18, $e8, ROUTE_47
 	changebridgeblock 48, 18, $e8, ROUTE_47
-	jp Route47_FinishOverheadBridge
+	; fallthrough
+
+Route47_FinishOverheadBridge:
+	xor a
+	jr Route47_FinishBridge
 
 Route47Bridge2UnderfootTrigger:
 	callthisasm
 	changebridgeblock 44, 18, $e6, ROUTE_47
 	changebridgeblock 46, 18, $e6, ROUTE_47
 	changebridgeblock 48, 18, $e6, ROUTE_47
-	jp Route47_FinishUnderfootBridge
+	; fallthrough
+
+Route47_FinishUnderfootBridge:
+	ld a, $1
+Route47_FinishBridge:
+	ld [wWalkingOnBridge], a
+	ld [wRoute47SceneID], a ; setscene a
+	jmp GenericFinishBridge
 
 Route47Bridge3OverheadTrigger:
 	callthisasm
 	changebridgeblock 20, 24, $e8, ROUTE_47
 	changebridgeblock 22, 24, $e8, ROUTE_47
 	changebridgeblock 24, 24, $e8, ROUTE_47
-	jp Route47_FinishOverheadBridge
+	jr Route47_FinishOverheadBridge
 
 Route47Bridge3UnderfootTrigger:
 	callthisasm
 	changebridgeblock 20, 24, $e6, ROUTE_47
 	changebridgeblock 22, 24, $e6, ROUTE_47
 	changebridgeblock 24, 24, $e6, ROUTE_47
-	jp Route47_FinishUnderfootBridge
+	jr Route47_FinishUnderfootBridge
 
 Route47Bridge4OverheadTrigger:
 	callthisasm
@@ -193,7 +193,7 @@ Route47Bridge4OverheadTrigger:
 	changebridgeblock 22, 16, $e7, ROUTE_47
 	changebridgeblock 24, 16, $e7, ROUTE_47
 	changebridgeblock 26, 16, $eb, ROUTE_47
-	jp Route47_FinishOverheadBridge
+	jr Route47_FinishOverheadBridge
 
 Route47Bridge4UnderfootTrigger:
 	callthisasm
@@ -202,7 +202,7 @@ Route47Bridge4UnderfootTrigger:
 	changebridgeblock 22, 16, $e6, ROUTE_47
 	changebridgeblock 24, 16, $e6, ROUTE_47
 	changebridgeblock 26, 16, $b7, ROUTE_47
-	jp Route47_FinishUnderfootBridge
+	jr Route47_FinishUnderfootBridge
 
 GenericTrainerHikerDevin:
 	generictrainer HIKER, DEVIN, EVENT_BEAT_HIKER_DEVIN, HikerDevinSeenText, HikerDevinBeatenText

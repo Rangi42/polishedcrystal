@@ -277,7 +277,8 @@ DoMailSwap:
 	ld bc, MAIL_STRUCT_LENGTH
 	call DoPartySwap
 	call CloseSRAM
-	jp PopBCDEHL
+	jmp PopBCDEHL
+
 DoPartySwap:
 ; Swaps bc bytes between hl+d*bc and hl+e*bc
 	; Get pointers to swap
@@ -431,7 +432,7 @@ FlushStorageSystem:
 	inc b
 	cp NUM_BOXES * 2 ; current + backup
 	jr nz, .outer_loop
-	jp PopBCDEHL
+	jmp PopBCDEHL
 
 GetStorageBoxPointer:
 ; Returns the pokedb bank+entry in de for box b, slot c.
@@ -439,7 +440,7 @@ GetStorageBoxPointer:
 	ld a, b
 	and a
 	ld a, ERR_NEWBOX
-	jp z, Crash
+	jmp z, Crash
 
 	ld a, BANK(sNewBox1)
 	call GetSRAMBank
@@ -472,7 +473,7 @@ GetStorageBoxPointer:
 	inc d
 .got_bank
 	pop hl
-	jp CloseSRAM
+	jmp CloseSRAM
 
 UpdateStorageBoxMonFromTemp:
 ; Updates storage pointed to by wTempMonBox+wTempMonSlot with content in
@@ -484,7 +485,7 @@ UpdateStorageBoxMonFromTemp:
 	ld a, [wTempMonBox]
 	ld b, a
 	and a
-	jp z, CopyBetweenPartyAndTemp
+	jmp z, CopyBetweenPartyAndTemp
 
 	; Otherwise, we need to allocate a new box entry.
 	; Erase the current entry before trying to find a new one.
@@ -596,7 +597,7 @@ SetStorageBoxPointer:
 	call CopyBetweenPartyAndTemp
 .done
 	call CloseSRAM
-	jp PopBCDEHL
+	jmp PopBCDEHL
 
 ShiftPartySlotToEnd:
 ; Shift party slot c until the end.
@@ -671,7 +672,7 @@ AddStorageMon:
 	; Allocate the entry. Return a fatal error if the entry was already set.
 	call AllocateStorageFlag
 	ld a, ERR_NEWBOX
-	jp nz, Crash
+	jmp nz, Crash
 	push hl
 	push de
 	push bc
@@ -696,7 +697,7 @@ AddStorageMon:
 
 	call DecodeTempMon
 	call CloseSRAM
-	jp PopBCDEHL
+	jmp PopBCDEHL
 
 OpenStorageDB:
 ; Opens pokedb bank given by d (1 or 2). Leaves SRAM open, obviously.
@@ -706,7 +707,7 @@ OpenStorageDB:
 	jr z, .got_bank
 	ld a, BANK(sBoxMons2)
 .got_bank
-	jp GetSRAMBank
+	jmp GetSRAMBank
 
 EncodeTempMon:
 ; Encodes party_struct wTempMon in-place to savemon_struct wEncodedTempMon.
@@ -1113,7 +1114,7 @@ InitializeBoxes:
 
 	; In case we reset the game mid-flush and then chose to start a new game,
 	; ensure that all entries are allocated properly.
-	jp FlushStorageSystem
+	jmp FlushStorageSystem
 
 .Box:
 	rawchar "Box @"
@@ -1146,8 +1147,14 @@ CopyBoxTheme:
 	ld a, [hl]
 .set_theme
 	ld [hl], a
-	jp CloseSRAM
+	jmp CloseSRAM
 
+GetCurBoxName:
+; Writes name of current box to string buffer 1.
+	ld a, [wCurBox]
+	inc a
+	ld b, a
+	; fallthrough
 GetBoxName:
 ; Writes name of box b to string buffer 1.
 	ld c, 0
@@ -1181,7 +1188,7 @@ CopyBoxName:
 	call z, SwapHLDE
 	ld bc, BOX_NAME_LENGTH
 	rst CopyBytes
-	jp CloseSRAM
+	jmp CloseSRAM
 
 PrevStorageBoxMon:
 ; Reads wTempMonBox+wTempMonSlot and attempts to load a previous mon.
@@ -1290,7 +1297,7 @@ GetStorageBoxMon:
 	ld [wCurForm], a
 	call GetBaseData
 	or 1
-	jp PopBCDEHL
+	jmp PopBCDEHL
 
 GetStorageMon:
 ; Reads storage bank d, entry e and put it in wTempMon.
@@ -1322,7 +1329,7 @@ GetStorageMon:
 	call DecodeTempMon
 .done
 	call CloseSRAM
-	jp PopBCDEHL
+	jmp PopBCDEHL
 
 AllocateStorageFlag:
 ; Allocates the given storage flag. Returns nz if storage is already in use.
@@ -1359,7 +1366,7 @@ StorageFlagAction:
 	call .do_it
 	; Stack call doesn't preserve flags.
 	and a
-	jp PopBCDEHL
+	jmp PopBCDEHL
 
 .do_it
 	ld a, BANK(wPokeDB1UsedEntries)
@@ -1375,3 +1382,37 @@ StorageFlagAction:
 	dec c
 	ld d, 0
 	predef_jump FlagPredef
+
+Special_CurBoxFullCheck:
+; Returns 0 if wTempMonBox = wCurBox
+; Returns 1 if wTempMonBox != wCurBox
+	call CurBoxFullCheck
+	ld a, TRUE
+	jr nz, .ok
+	dec a
+.ok
+	ldh [hScriptVar], a
+	ret
+
+CurBoxFullCheck:
+; Requires wTempMonBox to have sent mon box (returned in b)
+; Returns 0 if wTempMonBox = wCurBox (or wTempMonBox = 0)
+; Returns 1 if wTempMonBox != wCurBox
+;   Also returns name of old wCurBox in wStringBuffer1
+;   and sets wCurBox to wTempMonBox in this case
+	ld a, [wTempMonBox]
+	and a
+	ret z
+	ld b, a
+	ld a, [wCurBox]
+	inc a
+	cp b
+	ret z
+	push bc
+	call GetCurBoxName
+	pop bc
+	ld a, b
+	dec a
+	ld [wCurBox], a
+	or 1
+	ret

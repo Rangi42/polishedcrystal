@@ -1,7 +1,7 @@
 ; Pokémon B/W - Final Pokémon
 ; Demixed by Mmmmmm
 ; https://pastebin.com/nxxf3cRT
-; https://hax.iimarck.us/topic/6777/6/
+; https://hax.iimarckus.org/topic/6777/6/
 
 Music_FinalPokemonBW:
 	musicheader 4, 1, Music_FinalPokemonBW_Ch1

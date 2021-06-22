@@ -51,7 +51,7 @@ JudgeMachine:
 .cancel
 	ld hl, NewsMachineCancelText
 .done
-	jp PrintText
+	jmp PrintText
 
 NewsMachineOffText:
 	text "It's the #mon"
@@ -110,12 +110,11 @@ JudgeSystem::
 	ldh [hBGMapMode], a
 
 ; Load the party struct into wTempMon
-	ld hl, wPartyMons
 	ld a, [wCurPartyMon]
-	call GetPartyLocation
-	ld de, wTempMon
-	ld bc, PARTYMON_STRUCT_LENGTH
-	rst CopyBytes
+	inc a
+	ld c, a
+	ld b, 1
+	farcall CopyBetweenPartyAndTemp
 
 ; Load the frontpic graphics
 	ld hl, wTempMonForm
@@ -134,10 +133,10 @@ JudgeSystem::
 	xor a
 	ldh [rVBK], a
 
-; Load the max stat sparkle graphics
+; Load the max stat sparkle and hyper trained bottle cap graphics
 	ld hl, MaxStatSparkleGFX
 	ld de, vTiles0
-	ld bc, 1 tiles
+	ld bc, 2 tiles
 	rst CopyBytes
 
 ; Place the up/down arrows and nickname
@@ -195,14 +194,14 @@ JudgeSystem::
 
 ; Place the Pokédex number
 	ld a, [wCurPartySpecies]
-	ld [wd265], a
+	ld [wTextDecimalByte], a
 	hlcoord 1, 13
 	ld a, "№"
 	ld [hli], a
 	ld a, "."
 	ld [hli], a
 	lb bc, PRINTNUM_LEADINGZEROS | 1, 3
-	ld de, wd265
+	ld de, wTextDecimalByte
 	call PrintNum
 
 ; Place the chart
@@ -358,7 +357,7 @@ JudgeSystem::
 	ld a, [hl]
 	ld [wCurPartySpecies], a
 	call ClearSpriteAnims
-	jp .restart
+	jmp .restart
 
 .EVHeading:
 	db "Effort   @"
@@ -383,7 +382,7 @@ JudgeSystem::
 	add hl, de
 	pop de
 	lb bc, 2, 3
-	jp PrintNum
+	jmp PrintNum
 
 .HP:  db "HP@"
 .Atk: db "Atk@"
@@ -406,14 +405,33 @@ JudgeSystem::
 	rst PlaceString
 ; Render the chart when this returns (bc is on the stack)
 	ld b, 2
-	jp SafeCopyTilemapAtOnce
+	jmp SafeCopyTilemapAtOnce
 
 SparkleMaxStat:
 ; Show a sparkle sprite at (d, e) if a is 255
+; Returns carry if the sprite is shown
 	inc a
 	ret nz
 	ld a, SPRITE_ANIM_INDEX_MAX_STAT_SPARKLE
-	jp _InitSpriteAnimStruct
+	jr _InitSpriteAnimStruct_PreserveHL
+
+SparkleMaxStatOrShowBottleCap:
+; Show a sparkle sprite at (d, e) if a is 255,
+; or a bottle cap sprite if [hl] bit 7 is 1 (shifts [hl] regardless)
+; Returns carry if either sprite is shown
+	rlc [hl] ; sets carry if hyper trained
+	inc a ; sets z if if max stat; does not affect carry
+	ld a, SPRITE_ANIM_INDEX_MAX_STAT_SPARKLE
+	jr z, _InitSpriteAnimStruct_PreserveHL
+	assert SPRITE_ANIM_INDEX_MAX_STAT_SPARKLE + 1 == SPRITE_ANIM_INDEX_HYPER_TRAINED_STAT
+	inc a ; does not affect carry
+	ret nc
+_InitSpriteAnimStruct_PreserveHL:
+	push hl
+	call _InitSpriteAnimStruct
+	pop hl
+	scf
+	ret
 
 RenderEVChart:
 ; Read the EVs and round them up to the nearest 4
@@ -457,6 +475,9 @@ RenderEVChart:
 
 RenderIVChart:
 ; Read the IVs and scale them to 255 instead of 31
+	ld hl, wBuffer1
+	ld a, [wTempMonHyperTraining]
+	ld [hl], a
 ; HP
 	ld a, [wTempMonHPAtkDV]
 	and $f0
@@ -465,7 +486,7 @@ RenderIVChart:
 	or b
 	ldh [hChartHP], a
 	depixel 2, 12
-	call SparkleMaxStat
+	call SparkleMaxStatOrShowBottleCap
 ; Atk
 	ld a, [wTempMonHPAtkDV]
 	and $0f
@@ -474,7 +495,7 @@ RenderIVChart:
 	or b
 	ldh [hChartAtk], a
 	depixel 4, 17
-	call SparkleMaxStat
+	call SparkleMaxStatOrShowBottleCap
 ; Def
 	ld a, [wTempMonDefSpdDV]
 	and $f0
@@ -483,7 +504,7 @@ RenderIVChart:
 	or b
 	ldh [hChartDef], a
 	depixel 15, 17
-	call SparkleMaxStat
+	call SparkleMaxStatOrShowBottleCap
 ; Spd
 	ld a, [wTempMonDefSpdDV]
 	and $0f
@@ -492,7 +513,7 @@ RenderIVChart:
 	or b
 	ldh [hChartSpd], a
 	depixel 17, 12
-	call SparkleMaxStat
+	call SparkleMaxStatOrShowBottleCap
 ; SAt
 	ld a, [wTempMonSatSdfDV]
 	and $f0
@@ -501,7 +522,7 @@ RenderIVChart:
 	or b
 	ldh [hChartSat], a
 	depixel 4, 6
-	call SparkleMaxStat
+	call SparkleMaxStatOrShowBottleCap
 ; SDf
 	ld a, [wTempMonSatSdfDV]
 	and $0f
@@ -510,7 +531,7 @@ RenderIVChart:
 	or b
 	ldh [hChartSdf], a
 	depixel 15, 6
-	call SparkleMaxStat
+	call SparkleMaxStatOrShowBottleCap
 	; fallthrough
 
 RenderChart:
@@ -752,10 +773,10 @@ DrawLowRadarLine:
 	ldh [hErr], a
 
 ; For x from b to d, draw a point at (x, c)
+	ld a, d
+	ldh [hChartLineCoord], a
 .loop
-	push de
 	call hLCDInterruptFunction ; FillRadarUp/Down/Left/Right
-	pop de
 
 ; Update D and y
 	ldh a, [hErr]
@@ -775,7 +796,7 @@ DrawLowRadarLine:
 	ldh [hErr], a
 
 	inc b
-	ld a, d
+	ldh a, [hChartLineCoord]
 	cp b
 	jr nc, .loop
 	ret
@@ -807,10 +828,10 @@ DrawHighRadarLine:
 	ldh [hSingleOpcode], a
 
 ; For y from c to e, draw a point at (b, y)
+	ld a, e
+	ldh [hChartLineCoord], a
 .loop
-	push de
 	call hLCDInterruptFunction ; FillRadarUp/Down/Left/Right
-	pop de
 
 ; Update D and x
 	ldh a, [hErr]
@@ -830,7 +851,7 @@ DrawHighRadarLine:
 	ldh [hErr], a
 
 	inc c
-	ld a, e
+	ldh a, [hChartLineCoord]
 	cp c
 	jr nc, .loop
 	ret
@@ -847,12 +868,12 @@ DrawHorizontalRadarLine:
 .x_sorted
 
 ; For x from b to d, draw a point at (x, c)
-.loop
-	push de
-	call hLCDInterruptFunction ; FillRadarUp/Down/Left/Right
-	pop de
-	inc b
 	ld a, d
+	ldh [hChartLineCoord], a
+.loop
+	call hLCDInterruptFunction ; FillRadarUp/Down/Left/Right
+	inc b
+	ldh a, [hChartLineCoord]
 	cp b
 	jr nc, .loop
 	ret
@@ -869,12 +890,12 @@ DrawVerticalRadarLine:
 .y_sorted
 
 ; For y from c to e, draw a point at (b, y)
-.loop
-	push de
-	call hLCDInterruptFunction ; FillRadarUp/Down/Left/Right
-	pop de
-	inc c
 	ld a, e
+	ldh [hChartLineCoord], a
+.loop
+	call hLCDInterruptFunction ; FillRadarUp/Down/Left/Right
+	inc c
+	ldh a, [hChartLineCoord]
 	cp c
 	jr nc, .loop
 	ret
@@ -892,6 +913,8 @@ FillRadarDown:
 _FillRadarVertical:
 ; Draw a vertical line from (b, c) to (b, y), where y = hl[b]
 
+	push bc
+
 ; de = point on the diagonal axes
 	ld e, b
 	ld d, 0
@@ -899,8 +922,6 @@ _FillRadarVertical:
 	ld a, [hl]
 	ld e, a
 	ld d, b
-
-	push bc
 
 ; Ensure that y0 < y1 (c < e)
 	ld a, c
@@ -911,12 +932,12 @@ _FillRadarVertical:
 .y_sorted
 
 ; For y from c to e, draw a point at (b, y)
-.loop
-	push de
-	call DrawRadarPointBC
-	pop de
-	inc c
 	ld a, e
+	ldh [hChartFillCoord], a
+.loop
+	call DrawRadarPointBC
+	inc c
+	ldh a, [hChartFillCoord]
 	cp c
 	jr nc, .loop
 
@@ -936,6 +957,8 @@ FillRadarRight:
 _FillRadarHorizontal:
 ; Draw a horizontal line from (b, c) to the vertical axis
 
+	push bc
+
 ; de = point on the diagonal axes
 	ld a, c
 	sub 24
@@ -946,8 +969,6 @@ _FillRadarHorizontal:
 	ld d, a
 	ld e, c
 
-	push bc
-
 ; Ensure that x0 < x1 (b < d)
 	ld a, b
 	cp d
@@ -957,12 +978,12 @@ _FillRadarHorizontal:
 .x_sorted
 
 ; For x from b to d, draw a point at (x, c)
-.loop
-	push de
-	call DrawRadarPointBC
-	pop de
-	inc b
 	ld a, d
+	ldh [hChartFillCoord], a
+.loop
+	call DrawRadarPointBC
+	inc b
+	ldh a, [hChartFillCoord]
 	cp b
 	jr nc, .loop
 
@@ -972,63 +993,42 @@ _FillRadarHorizontal:
 DrawRadarPointBC:
 ; Draw a point at (b, c), where 0 <= b < 80 and 0 <= c < 96
 
-; Byte: wDecompressScratch + ((y & $f8) * 10 + (x & $f8) + (y & $7)) * 2
+; Byte: wDecompressScratch + ((y & $f8) * 10 + (x & $f8) + (y & $7)) * 2 + 1
 	; hl = (y & $f8) * 10
 	ld a, c
 	and $f8
-	ld hl, .Times10
-	srl a
-	srl a
-	ld d, 0
-	ld e, a
-	add hl, de
-	ld a, [hli]
-	ld h, [hl]
+	add a
 	ld l, a
+	ld h, 0
+	ld d, h
+	ld e, l
+	add hl, hl
+	add hl, hl
+	add hl, de
 	; hl += (x & $f8) + (y & $7)
 	ld a, b
 	and $f8
-	ld d, 0
 	ld e, a
 	ld a, c
 	and $7
 	add e
 	ld e, a
 	add hl, de
-	; hl = wDecompressScratch + hl * 2
+	; hl = wDecompressScratch + hl * 2 + 1 (second byte of 8 pixels)
 	add hl, hl
-	ld de, wDecompressScratch
+	ld de, wDecompressScratch + 1
 	add hl, de
 
-; Bit: 7 - (x & $7)
-	ld a, b
-	and $7
-	cpl
-	add 7 + 1 ; a = 7 - a
-
-; Set the bit in the second byte: white -> dark, black -> black (no light hue)
-	inc hl
+; Set the (7 - (x & $7))th bit in the byte: white -> dark, black -> black (no light hue)
 	; $c6 | (a << 3) = the 'set {a}, [hl]' opcode
+	ld a, b
 	add a
 	add a
 	add a
-	or $c6
+	and $7 << 3
+	xor $c6 ^ ($7 << 3) ; this is 'xor $fe', so 'cpl / dec a' would also work
 	ldh [hBitwiseOpcode], a
-	jp hBitwiseOperation
-
-.Times10:
-	dw %0000000000 ; == %00000xxx * 10 ($00-07)
-	dw %0001010000 ; == %00001xxx * 10 ($08-0f)
-	dw %0010100000 ; == %00010xxx * 10 ($10-17)
-	dw %0011110000 ; == %00011xxx * 10 ($18-1f)
-	dw %0101000000 ; == %00100xxx * 10 ($20-27)
-	dw %0110010000 ; == %00101xxx * 10 ($28-2f)
-	dw %0111100000 ; == %00110xxx * 10 ($30-37)
-	dw %1000110000 ; == %00111xxx * 10 ($38-3f)
-	dw %1010000000 ; == %01000xxx * 10 ($40-47)
-	dw %1011010000 ; == %01001xxx * 10 ($48-4f)
-	dw %1100100000 ; == %01010xxx * 10 ($50-57)
-	dw %1101110000 ; == %01011xxx * 10 ($58-5f)
+	jmp hBitwiseOperation
 
 atk_y_coords: MACRO
 	db 47, 46, 46, 45, 45, 44, 43, 43, 42, 42, 41, 40, 40, 39, 39, 38, 37, 37, 36, 36

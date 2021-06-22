@@ -186,4 +186,4 @@ PrintHLNum:
 	push de
 	push bc
 	call PrintLetterDelay
-	jp PopBCDEHL
+	jmp PopBCDEHL

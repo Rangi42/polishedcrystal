@@ -6,6 +6,7 @@ decoration: MACRO
 ENDM
 
 DecorationAttributes:
+	table_width DECOATTR_STRUCT_LENGTH, DecorationAttributes
 	decoration DECO_PLANT,    0,                 0,                  EVENT_TEMPORARY_UNTIL_MAP_RELOAD_1, 0
 	decoration DECO_PLANT,    PUT_IT_AWAY,       PUT_AWAY_BED,       EVENT_TEMPORARY_UNTIL_MAP_RELOAD_1, 0
 	decoration DECO_BED,      FEATHERY_BED,      SET_UP_BED,         EVENT_DECO_BED_1,                   $83
@@ -23,6 +24,7 @@ DecorationAttributes:
 	decoration DECO_PLANT,    JUMBOPLANT,        SET_UP_PLANT,       EVENT_DECO_PLANT_3,                 $73
 	decoration DECO_PLANT,    PUT_IT_AWAY,       PUT_AWAY_POSTER,    EVENT_TEMPORARY_UNTIL_MAP_RELOAD_1, 0
 	decoration DECO_PLANT,    TOWN_MAP_POSTER,   SET_UP_POSTER,      EVENT_DECO_PLANT_4,                 $6c
+	decoration DECO_PLANT,    DIPLOMA,           SET_UP_POSTER,      EVENT_DECO_POSTER_4,                $9c
 	decoration DECO_POSTER,   PIKACHU,           SET_UP_POSTER,      EVENT_DECO_POSTER_1,                $6d
 	decoration DECO_POSTER,   CLEFAIRY,          SET_UP_POSTER,      EVENT_DECO_POSTER_2,                $6e
 	decoration DECO_POSTER,   MARILL,            SET_UP_POSTER,      EVENT_DECO_POSTER_3,                $6f
@@ -68,3 +70,4 @@ DecorationAttributes:
 	decoration DECO_DOLL,     EEVEE,             SET_UP_DOLL,        EVENT_DECO_EEVEE_DOLL,              SPRITE_MON_DOLL_1
 	decoration DECO_PLANT,    GOLD_TROPHY,       SET_UP_DOLL,        EVENT_DECO_GOLD_TROPHY,             SPRITE_GOLD_TROPHY
 	decoration DECO_PLANT,    SILVER_TROPHY,     SET_UP_DOLL,        EVENT_DECO_SILVER_TROPHY,           SPRITE_SILVER_TROPHY
+	assert_table_length NUM_DECOS + NUM_DECO_CATEGORIES + 1

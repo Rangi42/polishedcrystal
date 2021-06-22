@@ -2,7 +2,7 @@ BattleCommand_checkfuturesight:
 	call GetFutureSightUser
 	ret c
 	ld b, futuresight_command
-	jp SkipToBattleCommandAfter
+	jmp SkipToBattleCommandAfter
 
 BattleCommand_futuresight:
 	ldh a, [hBattleTurn]
@@ -26,9 +26,9 @@ BattleCommand_futuresight:
 
 	ld hl, ForesawAttackText
 	call StdBattleTextbox
-	jp EndMoveEffect
+	jmp EndMoveEffect
 
 .failed
 	call AnimateFailedMove
 	call PrintButItFailed
-	jp EndMoveEffect
+	jmp EndMoveEffect

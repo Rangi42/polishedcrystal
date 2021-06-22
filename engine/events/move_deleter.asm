@@ -27,7 +27,7 @@ MoveDeletion:
 	jr c, .declined ; no moves -- should never happen
 	push af
 	ld a, [wMoveScreenSelectedMove]
-	ld [wd265], a
+	ld [wNamedObjectIndex], a
 	call GetMoveName
 	ld hl, .ConfirmDeleteText
 	call PrintText
@@ -40,19 +40,19 @@ MoveDeletion:
 	call PlaySFX
 	call WaitSFX
 	ld hl, .MoveDeletedText
-	jp PrintText
+	jmp PrintText
 
 .egg
 	ld hl, .EggText
-	jp PrintText
+	jmp PrintText
 
 .declined
 	ld hl, .DeclinedDeletionText
-	jp PrintText
+	jmp PrintText
 
 .onlyonemove
 	ld hl, .OnlyOneMoveText
-	jp PrintText
+	jmp PrintText
 
 .OnlyOneMoveText:
 	; That #MON knows only one move.

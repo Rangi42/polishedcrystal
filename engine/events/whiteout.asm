@@ -45,12 +45,12 @@ OverworldWhiteoutFade:
 	call ClearSprites
 	ld a, CGB_DIPLOMA
 	call GetCGBLayout
-	jp SetPalettes
+	jmp SetPalettes
 
 BattleBGMap:
 	ld a, CGB_BATTLE_GRAYSCALE
 	call GetCGBLayout
-	jp SetPalettes
+	jmp SetPalettes
 
 ; Gen VI money loss code by TPP Anniversary Crystal 251
 ; https://github.com/TwitchPlaysPokemon/tppcrystal251pub/blob/public/main.asm

@@ -145,20 +145,20 @@ Bird_keeperVance1Script:
 	loadvar VAR_CALLERID, PHONE_BIRDKEEPER_VANCE
 	opentext
 	checkflag ENGINE_VANCE_READY_FOR_REMATCH
-	iftrue UnknownScript_0x19d86a
+	iftrue .WantsBattle
 	checkcellnum PHONE_BIRDKEEPER_VANCE
 	iftrue Route44NumberAcceptedM
 	checkevent EVENT_VANCE_ASKED_FOR_PHONE_NUMBER
-	iftrue UnknownScript_0x19d853
+	iftrue .AskedAlready
 	writetext BirdKeeperVanceLegendaryBirdsText
 	promptbutton
 	setevent EVENT_VANCE_ASKED_FOR_PHONE_NUMBER
 	scall Route44AskNumber1M
-	sjump UnknownScript_0x19d856
+	sjump .AskForNumber
 
-UnknownScript_0x19d853:
+.AskedAlready:
 	scall Route44AskNumber2M
-UnknownScript_0x19d856:
+.AskForNumber:
 	askforphonenumber PHONE_BIRDKEEPER_VANCE
 	ifequal $1, Route44PhoneFullM
 	ifequal $2, Route44NumberDeclinedM
@@ -166,7 +166,7 @@ UnknownScript_0x19d856:
 	scall Route44RegisteredNumberM
 	sjump Route44NumberAcceptedM
 
-UnknownScript_0x19d86a:
+.WantsBattle:
 	scall Route44RematchM
 	winlosstext Bird_keeperVance1BeatenText, 0
 	readmem wVanceFightCount
@@ -201,19 +201,19 @@ UnknownScript_0x19d86a:
 	reloadmapafterbattle
 	clearflag ENGINE_VANCE_READY_FOR_REMATCH
 	checkevent EVENT_VANCE_CARBOS
-	iftrue UnknownScript_0x19d8cb
+	iftrue .Carbos
 	checkevent EVENT_GOT_CARBOS_FROM_VANCE
-	iftrue UnknownScript_0x19d8ca
+	iftrue .ReceivedCarbosBefore
 	scall Route44RematchGiftM
 	verbosegiveitem CARBOS
 	iffalse VancePackFull
 	setevent EVENT_GOT_CARBOS_FROM_VANCE
 	sjump Route44NumberAcceptedM
 
-UnknownScript_0x19d8ca:
+.ReceivedCarbosBefore:
 	end
 
-UnknownScript_0x19d8cb:
+.Carbos:
 	opentext
 	writetext BirdKeeperVance2BeatenText
 	waitbutton
@@ -273,28 +273,28 @@ FisherWilton1Script:
 	loadvar VAR_CALLERID, PHONE_FISHER_WILTON
 	opentext
 	checkflag ENGINE_WILTON_READY_FOR_REMATCH
-	iftrue UnknownScript_0x19d96e
+	iftrue .WantsBattle
 	checkflag ENGINE_WILTON_HAS_ITEM
-	iftrue UnknownScript_0x19d9b4
+	iftrue .HasItem
 	checkcellnum PHONE_FISHER_WILTON
 	iftrue Route44NumberAcceptedM
 	checkevent EVENT_WILTON_ASKED_FOR_PHONE_NUMBER
-	iftrue UnknownScript_0x19d957
+	iftrue .AskedAlready
 	checkunits
 	iftrue .metric
-	writetext UnknownText_0x19daa8_Imperial
+	writetext FisherWiltonHugePoliwagText_Imperial
 	sjump .ok
 .metric
-	writetext UnknownText_0x19daa8_Metric
+	writetext FisherWiltonHugePoliwagText_Metric
 .ok
 	promptbutton
 	setevent EVENT_WILTON_ASKED_FOR_PHONE_NUMBER
 	scall Route44AskNumber1M
-	sjump UnknownScript_0x19d95a
+	sjump .AskForNumber
 
-UnknownScript_0x19d957:
+.AskedAlready:
 	scall Route44AskNumber2M
-UnknownScript_0x19d95a:
+.AskForNumber:
 	askforphonenumber PHONE_FISHER_WILTON
 	ifequal $1, Route44PhoneFullM
 	ifequal $2, Route44NumberDeclinedM
@@ -302,7 +302,7 @@ UnknownScript_0x19d95a:
 	scall Route44RegisteredNumberM
 	sjump Route44NumberAcceptedM
 
-UnknownScript_0x19d96e:
+.WantsBattle:
 	scall Route44RematchM
 	winlosstext FisherWilton1BeatenText, 0
 	readmem wWiltonFightCount
@@ -338,32 +338,32 @@ UnknownScript_0x19d96e:
 	clearflag ENGINE_WILTON_READY_FOR_REMATCH
 	end
 
-UnknownScript_0x19d9b4:
+.HasItem:
 	scall Route44GiftM
 	checkevent EVENT_WILTON_HAS_ULTRA_BALL
-	iftrue UnknownScript_0x19d9c9
+	iftrue .UltraBall
 	checkevent EVENT_WILTON_HAS_GREAT_BALL
-	iftrue UnknownScript_0x19d9d2
+	iftrue .GreatBall
 	checkevent EVENT_WILTON_HAS_POKE_BALL
-	iftrue UnknownScript_0x19d9db
-UnknownScript_0x19d9c9:
+	iftrue .PokeBall
+.UltraBall:
 	verbosegiveitem ULTRA_BALL
-	iffalse UnknownScript_0x19d9e7
-	sjump UnknownScript_0x19d9e1
+	iffalse .Route44PackFullM
+	sjump .ItemReceived
 
-UnknownScript_0x19d9d2:
+.GreatBall:
 	verbosegiveitem GREAT_BALL
-	iffalse UnknownScript_0x19d9e7
-	sjump UnknownScript_0x19d9e1
+	iffalse .Route44PackFullM
+	sjump .ItemReceived
 
-UnknownScript_0x19d9db:
+.PokeBall:
 	verbosegiveitem POKE_BALL
-	iffalse UnknownScript_0x19d9e7
-UnknownScript_0x19d9e1:
+	iffalse .Route44PackFullM
+.ItemReceived:
 	clearflag ENGINE_WILTON_HAS_ITEM
 	sjump Route44NumberAcceptedM
 
-UnknownScript_0x19d9e7:
+.Route44PackFullM:
 	sjump Route44PackFullM
 
 GenericTrainerFisherEdgar:
@@ -433,7 +433,7 @@ FisherWilton1BeatenText:
 	line "it."
 	done
 
-UnknownText_0x19daa8_Imperial:
+FisherWiltonHugePoliwagText_Imperial:
 	text "That Poliwag that"
 	line "got away…"
 	cont "It was huge."
@@ -442,7 +442,7 @@ UnknownText_0x19daa8_Imperial:
 	line "been 16 feet long!"
 	done
 
-UnknownText_0x19daa8_Metric:
+FisherWiltonHugePoliwagText_Metric:
 	text "That Poliwag that"
 	line "got away…"
 	cont "It was huge."

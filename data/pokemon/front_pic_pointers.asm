@@ -1,4 +1,5 @@
 FrontPicPointers::
+	table_width 3, FrontPicPointers
 	dba BulbasaurFrontpic
 	dba IvysaurFrontpic
 	dba VenusaurFrontpic
@@ -253,6 +254,8 @@ FrontPicPointers::
 	dba LeafeonFrontpic
 	dba GlaceonFrontpic
 	dba SylveonFrontpic
+	assert_table_length NUM_POKEMON
+
 	dba EggPic
 
 	dba UnownBFrontpic
@@ -341,3 +344,5 @@ FrontPicPointers::
 	dba ArticunoGalarianFrontpic
 	dba ZapdosGalarianFrontpic
 	dba MoltresGalarianFrontpic
+
+	assert_table_length NUM_UNIQUE_POKEMON
