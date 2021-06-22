@@ -801,14 +801,8 @@ _BT_SetPlayerOT:
 	ld bc, 0
 	ld d, a
 .loop
-	; Party species array
-	push de
-	ld hl, wPartySpecies
-	ld de, wOTPartySpecies
-	ld a, 1 ; just a single byte to copy each iteration
-	call .CopyPartyData
-
 	; Main party struct
+	push de
 	ld hl, wPartyMons
 	ld de, wOTPartyMons
 	ld a, PARTYMON_STRUCT_LENGTH
@@ -843,11 +837,6 @@ _BT_SetPlayerOT:
 	ld a, c
 	cp d
 	jr nz, .loop
-
-	; Add party species terminator, then we're done
-	ld hl, wOTPartySpecies
-	add hl, bc
-	ld [hl], -1
 	ret
 
 .CopyPartyData:

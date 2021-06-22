@@ -174,6 +174,56 @@ RandomRange::
 	pop bc
 	ret
 
+RandomRange16::
+; Return a random number between 0 and bc (non-inclusive)
+	ld a, b
+	and a
+	jr z, .8bit
+	push hl
+	push de
+	cpl
+	ld d, a
+	ld a, c
+	cpl
+	ld e, a
+	inc de
+
+; de = $10000 % bc
+	ld hl, 0
+	add hl, de
+.mod
+	add hl, de
+	jr c, .mod
+	add hl, bc
+	ld d, h
+	ld e, l
+	push bc
+
+	; get a random number
+	; from 0 to $ffff - de
+.loop
+	call Random
+	ldh a, [hRandomAdd]
+	ld h, a
+	ldh a, [hRandomSub]
+	ld l, a
+	add hl, de
+	jr c, .loop
+
+	pop de
+	ld b, h
+	ld c, l
+	call Divide16
+	pop de
+	pop hl
+	ret
+
+.8bit
+	ld a, c
+	call RandomRange
+	ld c, a
+	ret
+
 BattleRandomRange::
 ; battle friendly RandomRange
 	push bc

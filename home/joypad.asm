@@ -305,14 +305,18 @@ WaitButton::
 	ldh [hOAMUpdate], a
 	ret
 
+JoyTextDelay_AllowRepeat::
+	call GetJoypad
+	jr _JoyTextDelay
 JoyTextDelay::
 	call GetJoypad
 	ldh a, [hInMenu]
 	and a
 	ldh a, [hJoyPressed]
-	jr z, .ok
+	jr z, _JoyTextDelay_ok
+_JoyTextDelay:
 	ldh a, [hJoyDown]
-.ok
+_JoyTextDelay_ok:
 	ldh [hJoyLast], a
 	ldh a, [hJoyPressed]
 	and a

@@ -28,7 +28,7 @@ CeladonEusine:
 	writetext EusineNoBeastsText
 	waitbutton
 	closetext
-	setval RAIKOU
+	setmonval RAIKOU
 	special SpecialMonCheck
 	iftrue .OwnRaikou
 	showtext EusineShowsRaikouText
@@ -37,10 +37,10 @@ CeladonEusine:
 	cry RAIKOU
 	waitbutton
 	closepokepic
-	setval RAIKOU
+	setmonval RAIKOU
 	special SpecialSeenMon
 .OwnRaikou
-	setval ENTEI
+	setmonval ENTEI
 	special SpecialMonCheck
 	iftrue .OwnEntei
 	showtext EusineShowsEnteiText
@@ -49,10 +49,10 @@ CeladonEusine:
 	cry ENTEI
 	waitbutton
 	closepokepic
-	setval ENTEI
+	setmonval ENTEI
 	special SpecialSeenMon
 .OwnEntei
-	setval SUICUNE
+	setmonval SUICUNE
 	special SpecialMonCheck
 	iftrue .OwnSuicune
 	showtext EusineShowsSuicuneText
@@ -61,7 +61,7 @@ CeladonEusine:
 	cry SUICUNE
 	waitbutton
 	closepokepic
-	setval SUICUNE
+	setmonval SUICUNE
 	special SpecialSeenMon
 .OwnSuicune
 	jumptext EusineQuestHintText

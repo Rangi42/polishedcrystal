@@ -12,7 +12,7 @@ Route39Barn_MapScriptHeader:
 	def_bg_events
 
 	def_object_events
-	object_event  3,  3, SPRITE_MON_ICON, SPRITEMOVEDATA_POKEMON, 0, MILTANK, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, MooMoo, -1
+	object_event  3,  3, SPRITE_MON_ICON, SPRITEMOVEDATA_POKEMON, 0, MILTANK, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, NO_FORM, MooMoo, -1
 	object_event  2,  3, SPRITE_TWIN, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, Route39BarnTwin1Script, -1
 	object_event  4,  3, SPRITE_TWIN, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, Route39BarnTwin2Script, -1
 
@@ -57,7 +57,7 @@ MooMoo:
 	iftrue .HappyCow
 	opentext
 	writetext Text_WeakMoo
-	setval MILTANK
+	setmonval MILTANK
 	special PlaySlowCry
 	promptbutton
 	writetext Text_ItsCryIsWeak

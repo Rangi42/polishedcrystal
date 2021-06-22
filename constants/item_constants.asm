@@ -179,7 +179,7 @@
 	const BERSERK_GENE ; 94
 
 	const LIGHT_BALL   ; 95
-	const STICK        ; 96
+	const LEEK         ; 96
 	const THICK_CLUB   ; 97
 	const LUCKY_PUNCH  ; 98
 	const METAL_POWDER ; 99
@@ -415,6 +415,7 @@ endc
 	const NAM_LAGGING_TAIL
 	const NAM_LANSAT_BERRY
 	const NAM_LEAF_STONE
+	const NAM_LEEK
 	const NAM_LEFTOVERS
 	const NAM_LEMONADE
 	const NAM_LEPPA_BERRY
@@ -536,7 +537,6 @@ endc
 	const NAM_STAR_PIECE
 	const NAM_STARDUST
 	const NAM_STARF_BERRY
-	const NAM_STICK
 	const NAM_SUN_STONE
 	const NAM_SUPER_POTION
 	const NAM_SUPER_REPEL

@@ -9,6 +9,26 @@ ForcePushOAM:
 	ld a, HIGH(wVirtualOAM)
 	jmp hPushOAM
 
+ContinueGDMACopy:
+	push hl
+	ld hl, rHDMA3
+	jr _GDMACopy
+GDMACopy:
+; Copy a-1 tiles from de to bc. Preserves all registers. Assumes GDMA is valid.
+	push hl
+	ld hl, rHDMA1
+	ld [hl], d
+	inc hl
+	ld [hl], e
+	inc hl
+_GDMACopy:
+	ld [hl], b
+	inc hl
+	ld [hl], c
+	ldh [rHDMA5], a
+	pop hl
+	ret
+
 DMATransfer::
 ; Return carry if the transfer is completed.
 

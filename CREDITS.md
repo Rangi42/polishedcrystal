@@ -25,6 +25,7 @@ Pokémon Polished Crystal would never have been finished without the help of man
 * Armada651 for the playable Celadon Game Corner lucky slot machine.
 * tonyism for the in-battle shiny icon code.
 * Tachytaenius for the ability to change the Ball a Pokémon is in.
+* SadisticMystic and Kate Dering for vanilla battle engine testing and documentation.
 
 
 ## Music
@@ -56,6 +57,9 @@ Pokémon Polished Crystal would never have been finished without the help of man
 * spritershawn for sprites of Red, Blue, and Green.
 * isamuakai01 for sprites of Steven and Cynthia.
 * Maddalena for sprites of Imakuni and the Ghost.
+* ShadowOne333 for Ambipom, Bonsly, Happiny, Mime Jr. and Mantyke, Galarian Meowth, Alolan Rattata, Alolan Raticate, Alolan Muk and Alolan Grimer animations.
+* Scarlax for most 8th gen backpics and Galarian Farfetch'd, Galarian Corola, Cursola, Sirfetch'd and Spiky-eared Pichu animations.
+* EeveeEe1999 for 8th gen menu icons and Lickilicky and Galarian Slowking animations.
 * Luna for some sprites and tiles.
 * Twilir for Lyra's back sprite.
 * Danny-E for Lorelei's sprite.

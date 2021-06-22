@@ -522,6 +522,7 @@ GetMonPalettePointer:
 	call GetSpeciesAndFormIndex
 	ld h, b
 	ld l, c
+	inc hl
 	add hl, hl
 	add hl, hl
 	add hl, hl
@@ -546,6 +547,11 @@ endr
 LoadPokemonPalette:
 	; a = species
 	ld a, [wCurPartySpecies]
+
+	; This allows us to use the same function as with
+	; GetMonNormalOrShinyPalettePointer.
+	ld bc, wCurForm - 1
+
 	; hl = palette
 	call GetMonPalettePointer
 	; load palette in BG 7
@@ -572,8 +578,10 @@ LoadPartyMonPalette:
 	ld hl, wPartyMon1DVs
 	ld a, [wCurPartyMon]
 	call GetPartyLocation
-	; b = species
+	; c = species
 	ld a, [wCurPartySpecies]
+	ld c, a
+	ld a, [wCurForm]
 	ld b, a
 	; vary colors by DVs
 	call CopyDVsToColorVaryDVs

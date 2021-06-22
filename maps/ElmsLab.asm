@@ -151,25 +151,25 @@ ElmCheckEverstone:
 	iftrue ElmGiveEverstoneScript
 	checkevent EVENT_TOLD_ELM_ABOUT_TOGEPI_OVER_THE_PHONE
 	iffalse ElmCheckTogepiEgg
-	setval TOGEPI
+	setmonval TOGEPI
 	special Special_FindThatSpeciesYourTrainerID
 	iftrue ShowElmTogepiScript
-	setval TOGETIC
+	setmonval TOGETIC
 	special Special_FindThatSpeciesYourTrainerID
 	iftrue ShowElmTogepiScript
-	setval TOGEKISS
+	setmonval TOGEKISS
 	special Special_FindThatSpeciesYourTrainerID
 	iftrue ShowElmTogepiScript
 	jumpopenedtext ElmThoughtEggHatchedText
 
 ElmEggHatchedScript:
-	setval TOGEPI
+	setmonval TOGEPI
 	special Special_FindThatSpeciesYourTrainerID
 	iftrue ShowElmTogepiScript
-	setval TOGETIC
+	setmonval TOGETIC
 	special Special_FindThatSpeciesYourTrainerID
 	iftrue ShowElmTogepiScript
-	setval TOGEKISS
+	setmonval TOGEKISS
 	special Special_FindThatSpeciesYourTrainerID
 	iftrue ShowElmTogepiScript
 	sjump ElmCheckGotEggAgain
@@ -216,7 +216,7 @@ CyndaquilPokeBallScript:
 	writetext ChoseStarterText
 	promptbutton
 	waitsfx
-	givepoke CYNDAQUIL, NO_FORM, 5, ORAN_BERRY
+	givepoke CYNDAQUIL, PLAIN_FORM, 5, ORAN_BERRY
 	writetext LyraChoosesStarterText
 	waitbutton
 	closetext
@@ -256,7 +256,7 @@ TotodilePokeBallScript:
 	writetext ChoseStarterText
 	promptbutton
 	waitsfx
-	givepoke TOTODILE, NO_FORM, 5, ORAN_BERRY
+	givepoke TOTODILE, PLAIN_FORM, 5, ORAN_BERRY
 	writetext LyraChoosesStarterText
 	waitbutton
 	closetext
@@ -294,7 +294,7 @@ ChikoritaPokeBallScript:
 	writetext ChoseStarterText
 	promptbutton
 	waitsfx
-	givepoke CHIKORITA, NO_FORM, 5, ORAN_BERRY
+	givepoke CHIKORITA, PLAIN_FORM, 5, ORAN_BERRY
 	writetext LyraChoosesStarterText
 	waitbutton
 	closetext

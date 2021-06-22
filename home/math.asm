@@ -52,6 +52,14 @@ Divide::
 
 	jmp PopBCDEHL
 
+Divide16::
+; calculates bc / de, stores quotient in de and remainder in bc
+; also stores quotient in hQuotient and remainder in hRemainder
+	push hl
+	homecall _Divide16
+	pop hl
+	ret
+
 MultiplyAndDivide::
 ; a = $xy: multiply multiplicands by x, then divide by y
 ; Used for damage modifiers, catch rate modifiers, etc.

@@ -21,7 +21,6 @@ PredefPointers::
 	add_predef GetGender
 	add_predef StatsScreenInit
 	add_predef DrawPlayerHP
-	add_predef GetVariant
 	add_predef PlayBattleAnim
 	add_predef PartyMonItemName
 	add_predef GetFrontpic
@@ -35,3 +34,4 @@ PredefPointers::
 	add_predef GetUserItemAfterUnnerve
 	add_predef ChangeHappiness
 	add_predef RemoveMonFromParty
+	add_predef GetEvosAttacksPointer

@@ -1,10 +1,9 @@
 Fish:
 ; Using a fishing rod.
 ; Fish for monsters with rod e in encounter group d.
-; Return monster e at level d.
+; Return monster bc at level d.
 
 	push hl
-	push bc
 	push af
 
 	ld b, e
@@ -17,14 +16,15 @@ endr
 	call .Fish
 
 	pop af
-	pop bc
 	pop hl
 	ret
 
 .Fish:
 ; Fish for monsters with rod b from encounter data in FishGroup at hl.
-; Return monster e at level d; or item e if d = 0; or nothing if de = 0.
+; Return monster bc at level d; or item bc if d = 0; or nothing if bc = 0 and d = 0.
 
+	ld e, b
+	ld d, 0
 	call Random
 	cp [hl]
 	jr c, .bite
@@ -37,11 +37,9 @@ endr
 	; 1: Good
 	; 2: Super
 	ld hl, FishItems
-	ld e, b
-	ld d, 0
 	add hl, de
-	ld a, [hl]
-	ld e, a
+	ld c, [hl]
+	ld b, d ; ld b, 0
 	ret
 
 .bite
@@ -51,8 +49,6 @@ endr
 	; 2: Super
 	inc hl
 	inc hl
-	ld e, b
-	ld d, 0
 	add hl, de
 	add hl, de
 	ld a, [hli]
@@ -63,6 +59,7 @@ endr
 	call Random
 .loop
 	cp [hl]
+	inc hl
 	jr z, .ok
 	jr c, .ok
 	inc hl
@@ -70,40 +67,43 @@ endr
 	inc hl
 	jr .loop
 .ok
-	inc hl
-
 	; Species 0 reads from a time-based encounter table.
 	ld a, [hli]
-	ld d, a
+	ld c, a
 	and a
 	call z, .TimeEncounter
 
-	ld e, [hl]
+	ld a, [hli]
+	ld b, a
+	ld d, [hl]
 	ret
 
 .no_bite
-	ld de, 0
+	ld b, d ; d already = 0
+	ld c, d
 	ret
 
 .TimeEncounter:
 	; The level byte is repurposed as the index for the new table.
+	inc hl
 	ld e, [hl]
 	ld d, 0
 	ld hl, TimeFishGroups
-rept 4
+rept 6
 	add hl, de
 endr
 
 	ld a, [wTimeOfDay]
 	and 3
 	cp NITE
-	jr c, .time_species
+	jr c, .day_species
+	inc hl
 	inc hl
 	inc hl
 
-.time_species
-	ld d, [hl]
-	inc hl
+.day_species
+	ld a, [hli]
+	ld c, a
 	ret
 
 GetFishGroupIndex:

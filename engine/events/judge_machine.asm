@@ -28,8 +28,8 @@ JudgeMachine:
 	jr c, .cancel
 ; Can't judge an Egg
 	ld a, MON_IS_EGG
-	call GetPartyParamLocation
-	bit MON_IS_EGG_F, [hl]
+	call GetPartyParamLocationAndValue
+	bit MON_IS_EGG_F, a
 	ld hl, NewsMachineEggText
 	jr nz, .done
 ; Show the EV and IV charts
@@ -117,8 +117,8 @@ JudgeSystem::
 	farcall CopyBetweenPartyAndTemp
 
 ; Load the frontpic graphics
-	ld hl, wTempMonForm
-	predef GetVariant
+	ld a, [wTempMonForm]
+	ld [wCurForm], a
 	call GetBaseData
 	ld de, vTiles2
 	predef GetFrontpic
@@ -348,12 +348,10 @@ JudgeSystem::
 	jr nz, .more_next
 .switch_mon
 	ld [wCurPartyMon], a
-	ld c, a
-	ld b, 0
-	ld hl, wPartySpecies
-	add hl, bc
 	inc a
 	ld [wPartyMenuCursor], a
+	ld bc, MON_SPECIES - MON_IS_EGG
+	add hl, bc
 	ld a, [hl]
 	ld [wCurPartySpecies], a
 	call ClearSpriteAnims
@@ -413,7 +411,7 @@ SparkleMaxStat:
 	inc a
 	ret nz
 	ld a, SPRITE_ANIM_INDEX_MAX_STAT_SPARKLE
-	jr _InitSpriteAnimStruct_PreserveHL
+	jr InitSpriteAnimStruct_PreserveHL
 
 SparkleMaxStatOrShowBottleCap:
 ; Show a sparkle sprite at (d, e) if a is 255,
@@ -422,13 +420,13 @@ SparkleMaxStatOrShowBottleCap:
 	rlc [hl] ; sets carry if hyper trained
 	inc a ; sets z if if max stat; does not affect carry
 	ld a, SPRITE_ANIM_INDEX_MAX_STAT_SPARKLE
-	jr z, _InitSpriteAnimStruct_PreserveHL
+	jr z, InitSpriteAnimStruct_PreserveHL
 	assert SPRITE_ANIM_INDEX_MAX_STAT_SPARKLE + 1 == SPRITE_ANIM_INDEX_HYPER_TRAINED_STAT
 	inc a ; does not affect carry
 	ret nc
-_InitSpriteAnimStruct_PreserveHL:
+InitSpriteAnimStruct_PreserveHL:
 	push hl
-	call _InitSpriteAnimStruct
+	call InitSpriteAnimStruct
 	pop hl
 	scf
 	ret

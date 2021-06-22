@@ -1,79 +1,3 @@
-GetVariant:
-	ld a, [wCurPartySpecies]
-	cp PIKACHU
-	jr z, .GetPikachuVariant
-
-; Return CurForm based on Form at hl
-	ld a, [hl]
-	and SPECIESFORM_MASK
-	jr nz, .ok
-
-	ld a, [wCurPartySpecies]
-	cp ARBOK
-	jr nz, .not_kanto_arbok
-; NPC trainers should appear to have Kantonian Arbok without explicitly
-; giving them all a personality, so form 0 becomes 1 (Johto) or 2 (Kanto)
-	push bc
-	push de
-	call RegionCheck
-	ld a, e
-	pop de
-	pop bc
-	and a
-	jr z, .not_kanto_arbok
-.kanto_arbok
-	ld a, ARBOK_KANTO_FORM
-	jr .ok
-.not_kanto_arbok
-	ld a, PLAIN_FORM ; safeguard: form 0 becomes variant 1
-
-.ok
-	ld [wCurForm], a
-	ret
-
-.GetPikachuVariant:
-; Return Pikachu form (1-5) in wCurForm
-; hl-8 is ...MonMove1
-; hl-7 is ...MonMove2
-; hl-6 is ...MonMove3
-; hl-5 is ...MonMove4
-; hl is ...MonForm
-
-	ld a, [hl]
-	and SPECIESFORM_MASK
-	cp PIKACHU_RED_FORM
-	jr nc, .use_form
-
-	push bc
-	ld bc, MON_MOVES - MON_FORM
-	add hl, bc
-	pop bc
-
-	ld a, PIKACHU_SURF_FORM
-	ld [wCurForm], a
-rept NUM_MOVES
-	ld a, [hli]
-	cp SURF
-	ret z
-endr
-
-rept NUM_MOVES
-	dec hl
-endr
-	ld a, PIKACHU_FLY_FORM
-	ld [wCurForm], a
-rept NUM_MOVES
-	ld a, [hli]
-	cp FLY
-	ret z
-endr
-
-.plain
-	ld a, PLAIN_FORM
-.use_form
-	ld [wCurForm], a
-	ret
-
 GetFrontpic:
 	ld a, [wCurPartySpecies]
 	ld [wCurSpecies], a
@@ -136,6 +60,41 @@ _GetPreparedFrontpic:
 	pop hl
 	ret
 
+DexPrepareFrontpic:
+; Writes the final frontpic result to wDexFrontpicTiles instead of sScratch.
+; sScratch is still used during decompression, however.
+	ld a, [wBasePicSize]
+	and $f
+	ld d, a
+	ld a, [wCurPartySpecies]
+	ld c, a
+	ld a, [wCurForm]
+	ld b, a
+	ld a, BANK(wDexMonFrontpicTiles)
+	call StackCallInWRAMBankA
+.Function:
+	ld a, BANK(sScratch)
+	call GetSRAMBank
+	push de
+	call _GetFrontpicPointer
+	ld a, b
+	ld de, sScratch + 1 tiles
+	call FarDecompressToDE
+	swap e
+	swap d
+	ld a, d
+	and $f0
+	or e
+	ld [sScratch], a
+	pop bc
+	ld hl, wPokedex_GFXFlags
+	bit DEXGFX_ROWTILES, [hl]
+	call nz, DelayFrame
+	ld hl, wDexMonFrontpicTiles
+	ld de, sScratch + 1 tiles
+	call PadFrontpic
+	jmp CloseSRAM
+
 _PrepareFrontpic:
 	ld a, BANK(sScratch)
 	call GetSRAMBank
@@ -171,8 +130,8 @@ GetFrontpicPointer:
 	ld a, [wCurForm]
 	ld b, a
 	; bc = index
+_GetFrontpicPointer:
 	call GetCosmeticSpeciesAndFormIndex
-	dec bc
 	ld hl, FrontPicPointers
 rept 3
 	add hl, bc
@@ -296,7 +255,6 @@ GetBackpic:
 	push de
 	; bc = index
 	call GetCosmeticSpeciesAndFormIndex
-	dec bc
 	ld hl, BackPicPointers
 rept 3
 	add hl, bc

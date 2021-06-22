@@ -251,9 +251,13 @@ endr
 	add hl, de
 	inc hl ; skip level
 	ld a, BANK(JohtoGrassWildMons)
-	call GetFarByte
+	call GetFarWord
+	ld a, l
 	ld [wNamedObjectIndex], a
 	ld [wCurPartySpecies], a
+	ld a, h
+	ld [wNamedObjectIndex+1], a
+	ld [wCurForm], a
 	call GetPokemonName
 	ld hl, wStringBuffer1
 	ld de, wMonOrItemNameBuffer
@@ -318,8 +322,11 @@ OPT_OakText3:
 	text_end
 
 OaksPkmnTalk7:
+	ld hl, wNamedObjectIndex
 	ld a, [wCurPartySpecies]
-	ld [wNamedObjectIndex], a
+	ld [hli], a
+	ld a, [wCurForm]
+	ld [hl], a
 	call GetPokemonName
 	ld hl, OPT_MaryText1
 	ld a, OAKS_POKEMON_TALK_8
@@ -453,13 +460,13 @@ OaksPkmnTalk9:
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
-	ld a, [wOaksPkmnTalkSegmentCounter]
-	dec a
-	ld [wOaksPkmnTalkSegmentCounter], a
+	push hl
+	ld hl, wOaksPkmnTalkSegmentCounter
+	dec [hl]
 	ld a, OAKS_POKEMON_TALK_4
 	jr nz, .ok
-	ld a, 5
-	ld [wOaksPkmnTalkSegmentCounter], a
+	ld [hl], 5
+	pop hl
 	ld a, OAKS_POKEMON_TALK_10
 .ok
 	jmp NextRadioLine
@@ -659,30 +666,41 @@ ClearBottomLine:
 PokedexShow1:
 	call StartRadioStation
 .loop
-	call Random
-	cp NUM_POKEMON
-	jr nc, .loop
-	ld c, a
-	push bc
+	ld bc, NUM_SPECIES
+	call RandomRange16
 	ld a, c
+	and a
+	jr z, .loop
+	inc a
+	jr z, .loop
+	ld a, b
+	assert (EXTSPECIES_MASK > %00011111) && (EXTSPECIES_MASK & %00100000)
+	swap a
+	rla
+	ld b, a
+	push bc
 	call CheckCaughtMon
 	pop bc
 	jr z, .loop
-	inc c
+	ld hl, wNamedObjectIndex
 	ld a, c
 	ld [wCurPartySpecies], a
-	ld [wNamedObjectIndex], a
+	ld [hli], a
+	ld a, b
+	ld [wCurForm], a
+	ld [hl], a
 	call GetPokemonName
 	ld hl, PokedexShowText
 	ld a, POKEDEX_SHOW_2
 	jmp NextRadioLine
 
 PokedexShow2:
-	ld a, [wCurPartySpecies]
-	dec a
 	ld hl, PokedexDataPointerTable
+	ld a, [wCurPartySpecies]
 	ld c, a
-	ld b, 0
+	ld a, [wCurForm]
+	ld b, a
+	call GetSpeciesAndFormIndex
 	add hl, bc
 	add hl, bc
 	add hl, bc
@@ -1509,9 +1527,8 @@ BuenasPassword4:
 	ld e, a
 ; For each group, choose one of the three passwords.
 .greater_than_three
-	call Random
-	and $3
-	cp NUM_PASSWORDS_PER_CATEGORY
+	ld a, NUM_PASSWORDS_PER_CATEGORY
+	call RandomRange
 	jr nc, .greater_than_three
 ; The high nybble of wBuenasPassword will now contain the password group index, and the low nybble contains the actual password.
 	add e
@@ -1570,6 +1587,7 @@ GetBuenasPassword:
 	dw .RawString
 
 .Mon:
+	sla c
 	call .GetTheIndex
 	jmp GetPokemonName
 
@@ -1585,8 +1603,10 @@ GetBuenasPassword:
 	ld h, 0
 	ld l, c
 	add hl, de
-	ld a, [hl]
+	ld a, [hli]
 	ld [wNamedObjectIndex], a
+	ld a, [hl] ; items and moves just ignore this anyway
+	ld [wNamedObjectIndex+1], a
 	ret
 
 .RawString:

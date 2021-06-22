@@ -65,8 +65,10 @@ _CGB_BattleColors:
 	push de
 	; hl = DVs
 	farcall GetPartyMonDVs
-	; b = species
+	; c = species
 	ld a, [wTempBattleMonSpecies]
+	ld c, a
+	ld a, [wCurForm]
 	ld b, a
 	; vary colors by DVs
 	call CopyDVsToColorVaryDVs
@@ -83,8 +85,10 @@ _CGB_BattleColors:
 	push de
 	; hl = DVs
 	farcall GetEnemyMonDVs
-	; b = species
+	; c = species
 	ld a, [wTempEnemyMonSpecies]
+	ld c, a
+	ld a, [wCurForm]
 	ld b, a
 	; vary colors by DVs
 	call CopyDVsToColorVaryDVs
@@ -352,59 +356,17 @@ _CGB_StatsScreenHPPals:
 	jmp _CGB_FinishLayout
 
 _CGB_Pokedex:
+	ld hl, PokedexPals
 	ld de, wBGPals1
-	ld hl, PokedexRedPalette
+	ld c, 2 palettes
+	call LoadCPaletteBytesFromHLIntoDE
+	ld de, wBGPals1 palette 4
 	call LoadHLPaletteIntoDE
-
-	ld a, [wCurPartySpecies]
-	cp $ff
-	jr nz, .is_pokemon
-	ld hl, .GreenPicPalette
-	call LoadHLPaletteIntoDE
-	jr .got_palette
-.is_pokemon
-	ld bc, wDexMonShiny
-	call GetMonNormalOrShinyPalettePointer
-	call LoadPalette_White_Col1_Col2_Black
-.got_palette
-
-	call WipeAttrMap
-
-	hlcoord 1, 1, wAttrMap
-	lb bc, 7, 7
-	ld a, $1
-	call FillBoxWithByte
-
-	ld hl, PokegearOBPals
 	ld de, wOBPals1
 	ld c, 2 palettes
 	call LoadCPaletteBytesFromHLIntoDE
 
-	ld hl, .CursorPalette
-	ld de, wOBPals1 palette 7
-	call LoadHLPaletteIntoDE
-
 	jmp _CGB_FinishLayout
-
-.GreenPicPalette:
-if !DEF(MONOCHROME)
-	RGB 11, 23, 00
-	RGB 07, 17, 00
-	RGB 06, 16, 03
-	RGB 05, 12, 01
-else
-	MONOCHROME_RGB_FOUR
-endc
-
-.CursorPalette:
-if !DEF(MONOCHROME)
-	RGB 00, 00, 00
-	RGB 11, 23, 00
-	RGB 07, 17, 00
-	RGB 00, 00, 00
-else
-	MONOCHROME_RGB_FOUR
-endc
 
 _CGB_SlotMachine:
 	ld hl, SlotMachinePals
@@ -554,8 +516,11 @@ _CGB_Evolution:
 	ld bc, PARTYMON_STRUCT_LENGTH
 	ld a, [wCurPartyMon]
 	rst AddNTimes
-	; b = species
+	; c = species
 	ld a, [wCurPartySpecies]
+	ld c, a
+	; b = form
+	ld a, [wCurForm]
 	ld b, a
 	; vary colors by DVs
 	call CopyDVsToColorVaryDVs
@@ -608,7 +573,7 @@ _CGB_MoveList:
 
 _CGB_PokedexSearchOption:
 	ld de, wBGPals1
-	ld hl, PokedexRedPalette
+	ld hl, PokedexPals
 	call LoadHLPaletteIntoDE
 
 	call WipeAttrMap
@@ -946,7 +911,7 @@ LoadFirstTwoTrainerCardPals:
 
 _CGB_PokedexUnownMode:
 	ld de, wBGPals1
-	ld hl, PokedexRedPalette
+	ld hl, PokedexPals
 	call LoadHLPaletteIntoDE
 
 	ld a, [wCurPartySpecies]

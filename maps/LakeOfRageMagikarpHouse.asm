@@ -40,7 +40,7 @@ MagikarpLengthRaterScript:
 	end
 
 .AskedForMagikarp:
-	setval MAGIKARP
+	setmonval MAGIKARP
 	special Special_FindThatSpecies
 	iffalse .ClearedRocketHideout
 	writetext MagikarpLengthRaterText_YouHaveAMagikarp

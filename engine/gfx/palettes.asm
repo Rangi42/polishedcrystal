@@ -709,7 +709,7 @@ if !DEF(MONOCHROME)
 ; LIGHT BALL
 	RGB 28, 27, 05
 	RGB 20, 20, 02
-; STICK
+; LEEK
 	RGB 22, 22, 17
 	RGB 15, 23, 01
 ; THICK CLUB
@@ -1894,18 +1894,55 @@ else
 	MONOCHROME_RGB_FOUR
 endc
 
-PokedexRedPalette:
+PokedexPals:
 if !DEF(MONOCHROME)
-	RGB 00, 00, 00
-	RGB 31, 20, 10
-	RGB 26, 10, 06
+	; BG0: main areas
 	RGB 31, 31, 31
+	RGB 23, 23, 23
+	RGB 26, 10, 06
+	RGB 00, 00, 00
+
+	; BG1: blue areas
+	RGB 31, 31, 31
+	RGB 23, 23, 23
+	RGB 00, 00, 00
+	RGB 11, 14, 31
+
+	; BG4: vwf text
+	RGB 31, 31, 31
+	RGB 23, 23, 23
+	RGB 16, 16, 16
+	RGB 00, 00, 00
+
+	; OB0: Balls + cursor
+	RGB 31, 31, 31
+	RGB 31, 07, 04
+	RGB 26, 10, 06
+	RGB 00, 00, 00
+
+	; OB1: Scrollbar
+	RGB 31, 31, 31
+	RGB 23, 23, 23
+	RGB 11, 14, 31
+	RGB 00, 00, 00
 else
-	RGB_MONOCHROME_BLACK
+rept 5
+	RGB_MONOCHROME_WHITE
 	RGB_MONOCHROME_LIGHT
 	RGB_MONOCHROME_DARK
-	RGB_MONOCHROME_WHITE
+	RGB_MONOCHROME_BLACK
+endr
 endc
+
+Pokedex_QuestionMarkPal:
+if !DEF(MONOCHROME)
+	RGB 22, 24, 26
+	RGB 16, 17, 18
+else
+	RGB_MONOCHROME_LIGHT
+	RGB_MONOCHROME_DARK
+endc
+
 
 BillsPC_ThemePals:
 if !DEF(MONOCHROME)

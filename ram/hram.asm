@@ -4,7 +4,7 @@ HRAM_START::
 
 hPushOAM:: ds 5
 
-hScriptVar:: db
+hScriptVar:: dw
 
 hROMBankBackup:: db
 
@@ -46,7 +46,7 @@ hInMenu:: db
 
 UNION
 hGraphicStartTile:: db
-hMoveMon:: db
+hIsMapObject:: db ; 0 = object, 1 = mapobject
 hMapObjectIndexBuffer:: db
 hObjectStructIndexBuffer:: db
 NEXTU
@@ -54,6 +54,9 @@ hMapBorderBlock:: db
 hMapWidthPlus6:: db
 hConnectionStripLength:: db
 hConnectedMapWidth:: db
+NEXTU
+	ds 1
+hMoveMon:: db
 ENDU
 
 UNION
@@ -208,7 +211,7 @@ ENDU
 
 hCrashCode:: db
 
-	ds 8
+	ds 7
 
 hAppendVWFText:: ds 4
 

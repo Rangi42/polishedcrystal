@@ -10,26 +10,12 @@ TryAddMonToParty:
 .getpartylocation
 	; Do we have room for it?
 	ld a, [de]
-	inc a
-	cp PARTY_LENGTH + 1
+	cp PARTY_LENGTH
 	ret nc
 	; Increase the party count
+	inc a
 	ld [de], a
 	ldh [hMoveMon], a ; HRAM backup
-	; de += a
-	add e
-	ld e, a
-	adc d
-	sub e
-	ld d, a
-	; Load the species of the Pokemon into the party list.
-	; The terminator is usually here, but it'll be back.
-	ld a, [wCurPartySpecies]
-	ld [de], a
-	; Load the terminator into the next slot.
-	inc de
-	ld a, -1
-	ld [de], a
 	; Now let's load the OT name.
 	ld hl, wPartyMonOTs
 	ld a, [wMonType]
@@ -46,9 +32,7 @@ TryAddMonToParty:
 	ld hl, wPlayerName
 	ld bc, NAME_LENGTH
 	rst CopyBytes
-	ld a, [wCurPartySpecies]
-	ld [wNamedObjectIndex], a
-	call GetPokemonName
+	call GetPartyPokemonName
 	ld a, [wMonType]
 	and $f
 	ld hl, wOTPartyMonNicknames
@@ -224,12 +208,10 @@ endr
 	push hl
 	jr z, .wildmon
 	ld a, [wCurPartySpecies]
-	ld [wTempSpecies], a
-	dec a
+	ld c, a
+	ld a, [wCurForm]
+	ld b, a
 	push de
-	call CheckCaughtMon
-	ld a, [wTempSpecies]
-	dec a
 	call SetSeenAndCaughtMon
 	pop de
 	pop hl
@@ -487,22 +469,6 @@ endr
 	ld [hl], b
 	pop bc
 	pop hl
-
-	ld a, [wMonType]
-	and $f
-	jr nz, .done
-	ld a, [wCurPartySpecies]
-	cp UNOWN
-	jr nz, .done
-	ld hl, wPartyMon1Form
-	ld a, [wPartyCount]
-	dec a
-	ld bc, PARTYMON_STRUCT_LENGTH
-	rst AddNTimes
-	predef GetVariant
-	farcall UpdateUnownDex
-
-.done
 	scf ; When this function returns, the carry flag indicates success vs failure.
 	ret
 
@@ -534,23 +500,13 @@ AddTempMonToParty:
 	scf
 	ret z
 
-	inc a
-	ld [hl], a
-	ld c, a
-	ld b, 0
-	add hl, bc
-	ld a, [wCurPartySpecies]
-	ld [hli], a
-	ld [hl], $ff
-
+	inc [hl]
 	ld hl, wPartyMon1Species
-	ld a, [wPartyCount]
-	dec a
-	ld bc, PARTYMON_STRUCT_LENGTH
-	rst AddNTimes
+	call GetPartyLocation
 	ld e, l
 	ld d, h
 	ld hl, wTempMonSpecies
+	ld bc, PARTYMON_STRUCT_LENGTH
 	rst CopyBytes
 
 	ld hl, wPartyMonOTs
@@ -573,18 +529,25 @@ AddTempMonToParty:
 	ld bc, MON_NAME_LENGTH
 	rst CopyBytes
 
-	ld a, [wCurPartySpecies]
-	ld [wNamedObjectIndex], a
+	ld hl, wNamedObjectIndex
+	ld a, [wTempMonSpecies]
+	ld c, a
+	ld [hli], a
+	ld [wCurPartySpecies], a
+	ld a, [wTempMonForm]
+	ld b, a
+	ld [hl], a
+	ld [wCurForm], a
 
+	push bc
 	ld hl, wPartyMon1IsEgg
 	ld a, [wPartyCount]
 	dec a
 	ld bc, PARTYMON_STRUCT_LENGTH
 	rst AddNTimes
+	pop bc
 	bit MON_IS_EGG_F, [hl]
-	jr nz, .egg
-	ld a, [wCurPartySpecies]
-	dec a
+	jr nz, .done
 	call SetSeenAndCaughtMon
 	ld hl, wPartyMon1Happiness
 	ld a, [wPartyCount]
@@ -592,40 +555,6 @@ AddTempMonToParty:
 	ld bc, PARTYMON_STRUCT_LENGTH
 	rst AddNTimes
 	ld [hl], BASE_HAPPINESS
-.egg
-
-	ld a, [wCurPartySpecies]
-	cp UNOWN
-	jr nz, .not_unown
-	ld hl, wPartyMon1Form
-	ld a, [wPartyCount]
-	dec a
-	ld bc, PARTYMON_STRUCT_LENGTH
-	rst AddNTimes
-	predef GetVariant
-	farcall UpdateUnownDex
-	ld a, [wFirstUnownSeen]
-	and a
-	jr nz, .done
-	ld a, [wCurForm]
-	ld [wFirstUnownSeen], a
-.not_unown
-
-	ld a, [wCurPartySpecies]
-	cp MAGIKARP
-	jr nz, .done
-	ld hl, wPartyMon1Form
-	ld a, [wPartyCount]
-	dec a
-	ld bc, PARTYMON_STRUCT_LENGTH
-	rst AddNTimes
-	predef GetVariant
-	ld a, [wFirstMagikarpSeen]
-	and a
-	jr nz, .done
-	ld a, [wCurForm]
-	ld [wFirstMagikarpSeen], a
-
 .done
 	and a
 	ret
@@ -667,11 +596,8 @@ RetrieveBreedmon:
 	ret
 
 .room_in_party
-	inc a
-	ld [hl], a
-	ld c, a
-	ld b, 0
-	add hl, bc
+	inc [hl]
+	ld h, a
 	ld a, [wPokemonWithdrawDepositParameter]
 	and a
 	ld a, [wBreedMon1Species]
@@ -681,12 +607,9 @@ RetrieveBreedmon:
 	ld de, wBreedMon2Nickname
 
 .okay
-	ld [hli], a
 	ld [wCurSpecies], a
-	ld [hl], $ff
+	ld a, h
 	ld hl, wPartyMonNicknames
-	ld a, [wPartyCount]
-	dec a
 	call SkipNames
 	call SwapHLDE
 	rst CopyBytes
@@ -767,8 +690,8 @@ Special_HyperTrain:
 	farcall SelectMonFromParty
 	jmp c, .nope
 	ld a, MON_IS_EGG
-	call GetPartyParamLocation
-	bit MON_IS_EGG_F, [hl]
+	call GetPartyParamLocationAndValue
+	bit MON_IS_EGG_F, a
 	ld hl, .TextCantTrainEgg
 	jr nz, .print_and_fail
 
@@ -799,7 +722,7 @@ Special_HyperTrain:
 	; Check if we've reached maximum effort on the stat
 	ld a, MON_EVS - 1
 	add c
-	call GetPartyParamLocation
+	call GetPartyParamLocationAndValue
 	cp 252
 	ld hl, .TextNotMaxEffort
 	jr c, .print_and_fail
@@ -818,23 +741,23 @@ Special_HyperTrain:
 	; Recalculate stats.
 	push bc
 	ld a, MON_SPECIES
-	call GetPartyParamLocation
+	call GetPartyParamLocationAndValue
 	ld [wCurSpecies], a
 	ld a, MON_FORM
-	call GetPartyParamLocation
+	call GetPartyParamLocationAndValue
 	ld [wCurForm], a
 	call GetBaseData
 	pop bc
 
 	ld a, MON_LEVEL
-	call GetPartyParamLocation
+	call GetPartyParamLocationAndValue
 	ld [wCurPartyLevel], a
 
 	ld a, MON_MAXHP
-	call GetPartyParamLocation
+	call GetPartyParamLocationAndValue
 	push hl
 	ld a, MON_EVS - 1
-	call GetPartyParamLocation
+	call GetPartyParamLocationAndValue
 	pop de
 	predef CalcPkmnStats
 
@@ -953,8 +876,8 @@ SentPkmnIntoBox:
 
 	ld a, [wCurPartySpecies]
 	ld [wCurSpecies], a
-	ld hl, wOTPartyMon1Form
-	predef GetVariant
+	ld a, [wOTPartyMon1Form]
+	ld [wCurForm], a
 	call GetBaseData
 
 	ld hl, wPlayerName
@@ -962,24 +885,17 @@ SentPkmnIntoBox:
 	ld bc, NAME_LENGTH
 	rst CopyBytes
 
-	ld a, [wCurPartySpecies]
-	ld [wNamedObjectIndex], a
-	call GetPokemonName
-
+	call GetPartyPokemonName
 	ld hl, wStringBuffer1
 	ld de, wTempMonNickname
 	ld bc, MON_NAME_LENGTH
 	rst CopyBytes
 
 	ld a, [wCurPartySpecies]
-	dec a
+	ld c, a
+	ld a, [wCurForm]
+	ld b, a
 	call SetSeenAndCaughtMon
-
-	ld a, [wCurPartySpecies]
-	cp UNOWN
-	jr nz, .not_unown
-	farcall UpdateUnownDex
-.not_unown
 	pop bc
 	ld a, b
 	ld [wTempMonBox], a
@@ -1004,31 +920,29 @@ RemoveMonFromParty:
 
 ComputeNPCTrademonStats:
 	ld a, MON_LEVEL
-	call GetPartyParamLocation
-	ld a, [hl]
-	ld [MON_LEVEL], a ; wow
+	call GetPartyParamLocationAndValue
+	ld [wCurPartyLevel], a
 	ld a, MON_SPECIES
-	call GetPartyParamLocation
+	call GetPartyParamLocationAndValue
 	ld a, [hl]
 	ld [wCurSpecies], a
 	ld a, MON_FORM
-	call GetPartyParamLocation
-	ld a, [hl]
+	call GetPartyParamLocationAndValue
 	and SPECIESFORM_MASK
 	ld [wCurForm], a
 	call GetBaseData
 	ld a, MON_MAXHP
-	call GetPartyParamLocation
+	call GetPartyParamLocationAndValue
 	ld d, h
 	ld e, l
 	push de
 	ld a, MON_EVS - 1
-	call GetPartyParamLocation
+	call GetPartyParamLocationAndValue
 	ld b, TRUE
 	predef CalcPkmnStats
 	pop de
 	ld a, MON_HP
-	call GetPartyParamLocation
+	call GetPartyParamLocationAndValue
 	ld a, [de]
 	inc de
 	ld [hli], a
@@ -1039,39 +953,36 @@ ComputeNPCTrademonStats:
 UpdatePkmnStats:
 ; Recalculates the stats of wCurPartyMon and also updates current HP accordingly
 	ld a, MON_SPECIES
-	call GetPartyParamLocation
-	ld a, [hl]
+	call GetPartyParamLocationAndValue
 	ld [wCurSpecies], a
 	ld a, MON_FORM
-	call GetPartyParamLocation
-	ld a, [hl]
+	call GetPartyParamLocationAndValue
 	and SPECIESFORM_MASK
 	ld [wCurForm], a
 	call GetBaseData
 	ld a, MON_LEVEL
-	call GetPartyParamLocation
-	ld a, [hl]
+	call GetPartyParamLocationAndValue
 	ld [wCurPartyLevel], a
 	ld a, MON_MAXHP + 1
-	call GetPartyParamLocation
-	ld a, [hld]
+	call GetPartyParamLocationAndValue
+	dec hl
 	ld c, a
 	ld b, [hl]
 	push bc
 	ld d, h
 	ld e, l
 	ld a, MON_EVS - 1
-	call GetPartyParamLocation
+	call GetPartyParamLocationAndValue
 	call GetHyperTraining
 	inc a
 	ld b, a
 	predef CalcPkmnStats
 	ld a, MON_HP
-	call GetPartyParamLocation
+	call GetPartyParamLocationAndValue
 	pop bc
 
 	; Don't change the current HP if we're fainted
-	ld a, [hli]
+	inc hl
 	or [hl]
 	ret z
 
@@ -1457,7 +1368,7 @@ GivePoke::
 	ld a, b
 	and a
 	jmp nz, .trainer_data
-	ld a, [wTempMonForm]
+	ld a, [wCurForm]
 	bit MON_IS_EGG_F, a
 	jr z, .not_egg
 	ld de, String_Egg
@@ -1487,15 +1398,12 @@ GivePoke::
 	call AddTempMonToParty
 	ld d, PARTYMON
 	jr nc, .added
-	call .SetUpBoxMon
+	call .SetUpBoxMon ; d = BOXMON if nc
 	jmp c, .FailedToGiveMon
-	ld d, BOXMON
 
 .added
 	push de
-	ld a, [wCurPartySpecies]
-	ld [wNamedObjectIndex], a
-	call GetPokemonName
+	call GetPartyPokemonName
 	ld a, [wTempMonForm]
 	bit MON_IS_EGG_F, a
 	ld hl, ReceivedGiftEggText
@@ -1637,32 +1545,14 @@ GivePoke::
 	ld [wTempMonBox], a
 	ld a, c
 	ld [wTempMonSlot], a
-	ld a, [wTempMonForm]
+	ld a, [wCurForm]
 	bit MON_IS_EGG_F, a
 	jr nz, .done
+	and SPECIESFORM_MASK
+	ld b, a
 	ld a, [wCurPartySpecies]
-	dec a
+	ld c, a
 	call SetSeenAndCaughtMon
-	ld a, [wCurPartySpecies]
-	cp UNOWN
-	jr nz, .check_magikarp
-	farcall UpdateUnownDex
-	ld a, [wFirstUnownSeen]
-	and a
-	jr nz, .check_magikarp
-	ld a, [wTempMonForm]
-	and FORM_MASK
-	ld [wFirstUnownSeen], a
-.check_magikarp
-	ld a, [wCurPartySpecies]
-	cp MAGIKARP
-	jr nz, .done
-	ld a, [wFirstMagikarpSeen]
-	and a
-	jr nz, .done
-	ld a, [wTempMonForm]
-	and FORM_MASK
-	ld [wFirstMagikarpSeen], a
 .done
 	ld d, BOXMON
 	and a

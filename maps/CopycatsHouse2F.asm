@@ -14,11 +14,11 @@ CopycatsHouse2F_MapScriptHeader:
 	def_object_events
 	object_event  4,  3, SPRITE_COPYCAT, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, Copycat1Script, EVENT_COPYCAT_1
 	object_event  4,  3, SPRITE_COPYCAT, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, Copycat2Script, EVENT_COPYCAT_2
-	object_event  6,  4, SPRITE_MON_ICON, SPRITEMOVEDATA_POKEMON, 0, DODRIO, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_SCRIPT, 0, CopycatsDodrioScript, -1
-	object_event  6,  1, SPRITE_MON_ICON, SPRITEMOVEDATA_STILL, 0, CLEFAIRY, -1, -1, PAL_NPC_RED, OBJECTTYPE_COMMAND, jumptext, CopycatsHouse2FDollText, EVENT_COPYCATS_HOUSE_2F_DOLL
-	object_event  2,  1, SPRITE_MON_ICON, SPRITEMOVEDATA_STILL, 0, GENGAR, -1, -1, PAL_NPC_PURPLE, OBJECTTYPE_COMMAND, jumptext, CopycatsHouse2FDollText, -1
-	object_event  7,  1, SPRITE_MON_ICON, SPRITEMOVEDATA_STILL, 0, MURKROW, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_COMMAND, jumptext, CopycatsHouse2FDollText, -1
-	pokemon_event  0,  4, DITTO, -1, -1, PAL_NPC_PURPLE, CopycatsHouse2FDittoText, -1
+	object_event  6,  4, SPRITE_MON_ICON, SPRITEMOVEDATA_POKEMON, 0, DODRIO, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_SCRIPT, NO_FORM, CopycatsDodrioScript, -1
+	object_event  6,  1, SPRITE_MON_ICON, SPRITEMOVEDATA_STILL, 0, CLEFAIRY, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, NO_FORM, CopycatsHouse2FDollScript, EVENT_COPYCATS_HOUSE_2F_DOLL
+	object_event  2,  1, SPRITE_MON_ICON, SPRITEMOVEDATA_STILL, 0, GENGAR, -1, -1, PAL_NPC_PURPLE, OBJECTTYPE_SCRIPT, NO_FORM, CopycatsHouse2FDollScript, -1
+	object_event  7,  1, SPRITE_MON_ICON, SPRITEMOVEDATA_STILL, 0, MURKROW, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, NO_FORM, CopycatsHouse2FDollScript, -1
+	pokemon_event  0,  4, DITTO, SPRITEMOVEDATA_POKEMON, -1, -1, PAL_NPC_PURPLE, CopycatsHouse2FDittoText, -1
 
 	object_const_def
 	const COPYCATSHOUSE2F_COPYCAT1
@@ -317,7 +317,9 @@ CopycatsDodrioScript:
 	text "Dodrio: Gii giii!"
 	done
 
-CopycatsHouse2FDollText:
+CopycatsHouse2FDollScript:
+	jumpthistext
+
 	text "This is a rare"
 	line "#mon! Huh?"
 

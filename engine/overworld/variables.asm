@@ -7,8 +7,6 @@ VarActionTable:
 	dwb Var_BattleResult,               RETVAR_EXECUTE
 	dwb wBattleType,                    RETVAR_ADDR_DE
 	dwb wTimeOfDay,                     RETVAR_STRBUF2
-	dwb Var_CountCaughtMons,            RETVAR_EXECUTE
-	dwb Var_CountSeenMons,              RETVAR_EXECUTE
 	dwb Var_CountBadges,                RETVAR_EXECUTE
 	dwb wPlayerState,                   RETVAR_ADDR_DE
 	dwb Var_PlayerFacing,               RETVAR_EXECUTE
@@ -61,20 +59,6 @@ _Var_loadstringbuffer2:
 	ld [de], a
 	ret
 
-Var_CountCaughtMons:
-	ld hl, wPokedexCaught
-	ld b, wEndPokedexCaught - wPokedexCaught
-	call CountSetBits
-	ld a, [wNumSetBits]
-	jr _Var_loadstringbuffer2
-
-Var_CountSeenMons:
-	ld hl, wPokedexSeen
-	ld b, wEndPokedexSeen - wPokedexSeen
-	call CountSetBits
-	ld a, [wNumSetBits]
-	jr _Var_loadstringbuffer2
-
 Var_CountBadges:
 	ld hl, wBadges
 	ld b, wBadgesEnd - wBadges
@@ -94,22 +78,10 @@ Var_DayOfWeek:
 	jr _Var_loadstringbuffer2
 
 Var_UnownCaught:
-	call .count
-	ld a, b
-	jr _Var_loadstringbuffer2
-
-.count
 	ld hl, wUnownDex
-	ld b, 0
-.loop
-	ld a, [hli]
-	and a
-	ret z
-	inc b
-	ld a, b
-	cp NUM_UNOWN
-	jr c, .loop
-	ret
+	ld b, wUnownDexEnd - wUnownDex
+	call CountSetBits ; result returned in a
+	jr _Var_loadstringbuffer2
 
 Var_BoxFreeSpace:
 ; Remaining database entries
@@ -161,4 +133,4 @@ Var_CountTrainerStars:
 	inc b
 .nostar4
 	ld a, b
-	jmp _Var_loadstringbuffer2
+	jr _Var_loadstringbuffer2

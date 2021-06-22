@@ -62,43 +62,37 @@ VariantSpeciesAndFormTable:
 	table_width 2, VariantSpeciesAndFormTable
 	dp GYARADOS,  GYARADOS_RED_FORM
 	dp MEWTWO,    MEWTWO_ARMORED_FORM
-	dp RATTATA,   ALOLAN_FORM
-	dp RATICATE,  ALOLAN_FORM
-	dp SANDSHREW, ALOLAN_FORM
-	dp SANDSLASH, ALOLAN_FORM
-	dp VULPIX,    ALOLAN_FORM
-	dp NINETALES, ALOLAN_FORM
-	dp DIGLETT,   ALOLAN_FORM
-	dp DUGTRIO,   ALOLAN_FORM
-	dp MEOWTH,    ALOLAN_FORM
-	dp PERSIAN,   ALOLAN_FORM
-	dp GEODUDE,   ALOLAN_FORM
-	dp GRAVELER,  ALOLAN_FORM
-	dp GOLEM,     ALOLAN_FORM
-	dp GRIMER,    ALOLAN_FORM
-	dp MUK,       ALOLAN_FORM
-	dp RAICHU,    ALOLAN_FORM
-	dp EXEGGUTOR, ALOLAN_FORM
-	dp MAROWAK,   ALOLAN_FORM
-	dp PONYTA,    GALARIAN_FORM
-	dp RAPIDASH,  GALARIAN_FORM
-	dp SLOWPOKE,  GALARIAN_FORM
-	dp SLOWBRO,   GALARIAN_FORM
-	dp SLOWKING,  GALARIAN_FORM
-	dp WEEZING,   GALARIAN_FORM
-	dp ARTICUNO,  GALARIAN_FORM
-	dp ZAPDOS,    GALARIAN_FORM
-	dp MOLTRES,   GALARIAN_FORM
+	dp RATTATA,    ALOLAN_FORM
+	dp RATICATE,   ALOLAN_FORM
+	dp RAICHU,     ALOLAN_FORM
+	dp SANDSHREW,  ALOLAN_FORM
+	dp SANDSLASH,  ALOLAN_FORM
+	dp VULPIX,     ALOLAN_FORM
+	dp NINETALES,  ALOLAN_FORM
+	dp DIGLETT,    ALOLAN_FORM
+	dp DUGTRIO,    ALOLAN_FORM
+	dp MEOWTH,     ALOLAN_FORM
+	dp PERSIAN,    ALOLAN_FORM
+	dp GEODUDE,    ALOLAN_FORM
+	dp GRAVELER,   ALOLAN_FORM
+	dp GOLEM,      ALOLAN_FORM
+	dp GRIMER,     ALOLAN_FORM
+	dp MUK,        ALOLAN_FORM
+	dp EXEGGUTOR,  ALOLAN_FORM
+	dp MAROWAK,    ALOLAN_FORM
+	dp MEOWTH,     GALARIAN_FORM
+	dp PONYTA,     GALARIAN_FORM
+	dp RAPIDASH,   GALARIAN_FORM
+	dp SLOWPOKE,   GALARIAN_FORM
+	dp SLOWBRO,    GALARIAN_FORM
+	dp FARFETCH_D, GALARIAN_FORM
+	dp WEEZING,    GALARIAN_FORM
+	dp MR__MIME,   GALARIAN_FORM
+	dp ARTICUNO,   GALARIAN_FORM
+	dp ZAPDOS,     GALARIAN_FORM
+	dp MOLTRES,    GALARIAN_FORM
+	dp SLOWKING,   GALARIAN_FORM
+	dp CORSOLA,    GALARIAN_FORM
 	assert_table_length NUM_VARIANT_FORMS
-	; fallthrough
-
-ExtSpeciesTable:
-; For species after index 254. Just a simple ordered table.
-; We can't just convert directly, that results in problems with formes, even if
-; the extspecies doesn't have a form on its own.
-; TODO: maybe convert directly anyway by splitting the tables up for
-; optimization reasons? This would only really be relevant for the pokedex.
-	table_width 2, ExtSpeciesTable
-	assert_table_length NUM_EXT_SPECIES
 
 	db 0 ; end

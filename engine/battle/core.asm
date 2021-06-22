@@ -1200,6 +1200,7 @@ endr
 	jr z, .got_partymon
 	ld hl, wOTPartyMon1Species
 .got_partymon
+	push hl
 	ld a, [wCurPartyMon]
 	call GetPartyLocation
 	ld de, wBattleMonSpecies
@@ -1224,18 +1225,18 @@ endr
 	ldh a, [hBattleTurn]
 	and a
 	ld hl, wTempBattleMonSpecies
-	ld bc, GetBattleMonVariant
 	jr z, .got_species_and_form
 	ld hl, wTempEnemyMonSpecies
-	ld bc, GetEnemyMonVariant
 .got_species_and_form
 	ld a, [de]
 	ld [wCurSpecies], a
 	ld [wCurPartySpecies], a
 	ld [hl], a
-	ld h, b
-	ld l, c
-	call _hl_ ; sets [wCurForm]
+	pop hl
+	ld bc, MON_FORM - MON_SPECIES
+	add hl, bc
+	ld a, [hl]
+	ld [wCurForm], a
 
 	push de
 	call GetBaseData
@@ -1307,35 +1308,45 @@ endr
 	and a
 	jr nz, .enemy_extras_done
 
-	ld a, [wCurSpecies]
-	dec a
+	ld a, [wCurPartySpecies]
 	ld c, a
-	ld b, SET_FLAG
-	ld hl, wPokedexSeen
-	predef FlagPredef
+	ld a, [wCurForm]
+	ld b, a
+	push bc
+	call SetSeenMon
+	pop bc
 
 	ld a, [wBaseExp]
 	ld [wEnemyMonBaseExp], a
 
-	ld a, [wCurPartySpecies]
-	cp UNOWN
-	jr nz, .skip_unown
-	ld a, [wFirstUnownSeen]
-	and a
-	jr nz, .skip_unown
-	ld a, [wCurForm]
-	ld [wFirstUnownSeen], a
-.skip_unown
+	ld a, c
+	cp LOW(PIKACHU)
+	jr nz, .enemy_extras_done
+	assert !HIGH(PIKACHU)
+	ld a, b
+	and EXTSPECIES_MASK
+	jr nz, .enemy_extras_done
+	ld c, NUM_MOVES
+	ld hl, wOTPartyMon1Moves
 
-	ld a, [wCurPartySpecies]
-	cp MAGIKARP
-	jr nz, .enemy_extras_done
-	ld a, [wFirstMagikarpSeen]
-	and a
-	jr nz, .enemy_extras_done
-	call GetEnemyMonVariant
-	ld a, [wCurForm]
-	ld [wFirstMagikarpSeen], a
+.pikachu_move_loop
+	ld a, [hli]
+	cp FLY
+	ld a, PIKACHU_FLY_FORM
+	jr z, .got_pikachu_move
+	cp SURF
+	ld a, PIKACHU_SURF_FORM
+	jr z, .got_pikachu_move
+	dec c
+	jr z, .enemy_extras_done
+	jr .pikachu_move_loop
+
+.got_pikachu_move
+	ld c, a
+	ld a, b
+	and $ff - FORM_MASK
+	or c
+	ld [wCurForm], a
 
 .enemy_extras_done
 	; Send-out animation
@@ -1471,23 +1482,6 @@ GetParticipantVar::
 	ld hl, wPartyParticipants
 	add hl, bc
 	ret
-
-GetEnemyMonVariant:
-	ld a, [wCurOTMon]
-	ld hl, wOTPartyMon1Form
-	call GetPartyLocation
-	predef_jump GetVariant
-
-GetCurPartyMonVariant:
-	ld a, [wCurPartyMon]
-	jr _GetPlayerMonVariant
-
-GetBattleMonVariant:
-	ld a, [wCurBattleMon]
-_GetPlayerMonVariant:
-	ld hl, wPartyMon1Form
-	call GetPartyLocation
-	predef_jump GetVariant
 
 CheckOpponentFullHP:
 	call CallOpponentTurn
@@ -2030,8 +2024,12 @@ FaintUserPokemon:
 
 	ld hl, wBattleMonSpecies
 	call GetUserMonAttr
-	ld a, [hl]
-	farcall PlaySlowCryA
+	ld c, [hl]
+	assert wBattleMonForm - wBattleMonSpecies == wEnemyMonForm - wEnemyMonSpecies
+	ld de, wBattleMonForm - wBattleMonSpecies
+	add hl, de
+	ld b, [hl]
+	farcall PlaySlowCryBC
 	ld de, SFX_KINESIS
 	call PlaySFX
 
@@ -2781,10 +2779,9 @@ OfferSwitch:
 	ret
 
 Function_SetEnemyPkmnAndSendOutAnimation:
-	ld a, [wTempEnemyMonSpecies]
-	ld [wCurPartySpecies], a
+	; wCurPartySpecies and wCurForm should already be set
+	ld a, [wCurPartySpecies]
 	ld [wCurSpecies], a
-	call GetEnemyMonVariant
 	call GetBaseData
 	ld a, OTPARTYMON
 	ld [wMonType], a
@@ -2955,7 +2952,6 @@ GetEnemyMonPersonality:
 	jmp GetPartyLocation
 
 SendOutPlayerMon:
-	call GetBattleMonVariant
 	hlcoord 1, 5
 	lb bc, 7, 8
 	call ClearBox
@@ -2991,7 +2987,7 @@ SendOutPlayerMon:
 
 .not_shiny
 	ld a, MON_SPECIES
-	call GetPartyParamLocation
+	call GetPartyParamLocationAndValue
 	ld b, h
 	ld c, l
 	farcall CheckFaintedFrzSlp
@@ -2999,6 +2995,9 @@ SendOutPlayerMon:
 	ld a, $f0
 	ld [wCryTracks], a
 	ld a, [wCurPartySpecies]
+	ld c, a
+	ld a, [wCurForm]
+	ld b, a
 	call PlayStereoCry
 
 .statused
@@ -3070,7 +3069,7 @@ PostBattleTasks::
 	ld [wCurPartyMon], a
 	farcall UpdatePkmnStats
 	ld a, MON_STATUS
-	call GetPartyParamLocation
+	call GetPartyParamLocationAndValue
 	res TOX, [hl]
 	pop af
 	jr nz, .loop
@@ -3704,7 +3703,10 @@ endr
 	ld a, [hl]
 	ld [wCurPartySpecies], a
 	ld [wCurSpecies], a
-	call GetBattleMonVariant
+	ld bc, MON_FORM - MON_SPECIES
+	add hl, bc
+	ld a, [hl]
+	ld [wCurForm], a
 	call GetBaseData
 
 	pop hl
@@ -3759,7 +3761,8 @@ DrawEnemyHUD:
 	ld a, [wTempEnemyMonSpecies]
 	ld [wCurSpecies], a
 	ld [wCurPartySpecies], a
-	call GetEnemyMonVariant
+	ld a, [wEnemyMonForm]
+	ld [wCurForm], a
 	call GetBaseData
 	ld de, wEnemyMonNickname
 	hlcoord 1, 0
@@ -4523,16 +4526,14 @@ CheckRunSpeed:
 	pop hl
 	jr z, .ability_prevents_escape
 
-	ld a, [wNumFleeAttempts]
-	inc a
-	ld [wNumFleeAttempts], a
-
 	; hl = player speed
 	; de = enemy speed
 
 	push hl
 	push de
 	call Call_LoadTempTileMapToTileMap
+	ld hl, wNumFleeAttempts
+	inc [hl]
 	pop de
 	pop hl
 
@@ -4722,7 +4723,7 @@ MoveSelectionScreen:
 
 .ether_elixer_menu
 	ld a, MON_MOVES
-	call GetPartyParamLocation
+	call GetPartyParamLocationAndValue
 
 .got_menu_type
 	ld de, wListMoves_MoveIndicesBuffer
@@ -4827,9 +4828,9 @@ MoveSelectionScreen:
 
 	xor a
 	ld [wMoveSwapBuffer], a
-	ld a, [wMenuCursorY]
-	dec a
-	ld [wMenuCursorY], a
+	ld hl, wMenuCursorY
+	dec [hl]
+	ld a, [hl]
 	ld b, a
 	ld [wCurMoveNum], a
 
@@ -5605,7 +5606,7 @@ LinkBattleSendReceiveAction:
 	add BATTLEACTION_SWITCH1 - 1
 	jr .use_move
 
-LoadEnemyMon:
+LoadEnemyWildmon:
 ; Initialize wildmon data
 	xor a
 	ld [wOTPartyCount], a
@@ -5625,7 +5626,7 @@ LoadEnemyMon:
 	predef TryAddMonToParty
 
 	call CheckValidMagikarpLength
-	jr c, LoadEnemyMon
+	jr c, LoadEnemyWildmon
 
 	ld a, [wBaseCatchRate]
 	ld [wEnemyMonCatchRate], a
@@ -5758,8 +5759,11 @@ ApplyLegendaryDVs:
 
 	push hl
 	ld a, [wCurPartySpecies]
+	ld c, a
+	ld a, [wCurForm]
+	ld b, a
 	ld hl, LegendaryMons
-	call IsInByteArray
+	call GetSpeciesAndFormIndexFromHL
 	pop hl
 	jr nc, .done
 
@@ -5846,123 +5850,7 @@ CheckSleepingTreeMon:
 
 INCLUDE "data/wild/treemons_asleep.asm"
 
-GenerateWildForm:
-	push hl
-	push de
-	push bc
-	ld a, [wWildMonForm]
-	ld b, a
-	and FORM_MASK
-	ld a, b
-	jr nz, .done
-	ld a, [wTempEnemyMonSpecies]
-	ld c, a
-	ld hl, RandomWildSpeciesForms
-.loop
-	; Check species
-	ld a, [hli]
-	and a
-	jr z, .ok
-	cp c
-	; Load and increase hl before jumping so we have a consistent hl value after
-	ld a, [hli]
-	jr nz, .next
-
-	; Check extspecies
-	xor b
-	and EXTSPECIES_MASK
-	jr z, .ok
-.next
-	inc hl
-	inc hl
-	jr .loop
-.ok
-	call IndirectHL
-.done
-	ld [wCurForm], a
-	jmp PopBCDEHL
-
-random_wild_form: MACRO
-	if _NARG == 3
-		dp \1, \2
-		dw \3
-	else
-		dp \1
-		dw \2
-	endc
-ENDM
-
-RandomWildSpeciesForms:
-	random_wild_form UNOWN,    .Unown
-	random_wild_form MAGIKARP, .Magikarp
-	random_wild_form EKANS,    .EkansArbok
-	random_wild_form ARBOK,    .EkansArbok
-	dbw 0,        .Default
-
-.Unown:
-	; Random Unown letter
-	ld a, NUM_UNOWN
-	call .RandomForm
-	; Can't use any letters that haven't been unlocked
-	call CheckUnownLetter
-	jr nc, .Unown ; re-roll
-	ret
-
-.Magikarp:
-	; Random Magikarp pattern
-	ld a, NUM_MAGIKARP
-	jr .RandomForm
-
-.EkansArbok:
-	; Random Arbok form (if not already specified)
-	ld a, 2 ; ARBOK_JOHTO_FORM or ARBOK_KANTO_FORM
-	; fallthrough
-.RandomForm:
-	call BattleRandomRange
-	inc a
-	ret
-
-.Default:
-	ld a, PLAIN_FORM
-	ret
-
-CheckUnownLetter:
-; Return carry if the Unown letter in a has been unlocked.
-	ld b, a
-	ld a, [wUnlockedUnowns]
-	ld c, a
-	ld de, 0
-
-.loop
-; Don't check this set unless it's been unlocked
-	srl c
-	jr nc, .next
-
-; Is our letter in the set?
-	ld hl, UnlockedUnownLetterSets
-	add hl, de
-	ld a, [hli]
-	ld h, [hl]
-	ld l, a
-
-	push de
-	push bc
-	ld a, b
-	call IsInByteArray
-	pop bc
-	pop de
-
-	ret c ; unlocked letter, returns carry
-
-.next
-; Make sure we haven't gone past the end of the table
-	inc e
-	inc e
-	ld a, e
-	cp UnlockedUnownLetterSets.End - UnlockedUnownLetterSets
-	jr c, .loop
-
-	ret ; not unlocked or invalid letter, returns not carry
+INCLUDE "engine/battle/random_wild_forms.asm"
 
 CheckValidMagikarpLength:
 ; Return carry if the Magikarp length is invalid for the current area
@@ -6023,8 +5911,6 @@ CheckValidMagikarpLength:
 .redo:
 	scf
 	ret
-
-INCLUDE "data/wild/unlocked_unowns.asm"
 
 FinalPkmnSlideInEnemyMonFrontpic:
 	call FinishBattleAnim
@@ -6392,14 +6278,13 @@ GiveExperiencePoints:
 	ld [hl], a
 
 .skip2
-	ld a, [wCurPartyMon]
-	ld e, a
-	ld d, $0
-	ld hl, wPartySpecies
+	ld a, MON_SPECIES
+	call GetPartyParamLocationAndValue
+	ld [wCurSpecies], a
+	ld de, MON_FORM - MON_SPECIES
 	add hl, de
 	ld a, [hl]
-	ld [wCurSpecies], a
-	call GetCurPartyMonVariant
+	ld [wCurForm], a
 	call GetBaseData
 	push bc
 	ld d, MAX_LEVEL
@@ -6559,7 +6444,7 @@ GiveExperiencePoints:
 	ret z
 	ld [wCurPartyMon], a
 	ld a, MON_SPECIES
-	call GetPartyParamLocation
+	call GetPartyParamLocationAndValue
 	ld b, h
 	ld c, l
 	jmp .loop
@@ -6779,7 +6664,10 @@ GiveBattleEVs:
 	ld a, MON_SPECIES
 	call OTPartyAttr
 	ld [wCurSpecies], a
-	call GetEnemyMonVariant
+	ld bc, MON_FORM - MON_SPECIES
+	add hl, bc
+	ld a, [hl]
+	ld [wCurForm], a
 	pop hl
 	call GetBaseData
 	; EV yield format:
@@ -7113,7 +7001,7 @@ GetNewBaseExp:
 
 	ld a, [wCurSpecies]
 	ld [wCurPartySpecies], a
-
+	; wCurForm should already be set... right?
 	farcall GetPreEvolution
 	jr c, .not_basic
 
@@ -7122,29 +7010,24 @@ GetNewBaseExp:
 	ld a, [wCurPartySpecies]
 	ld c, a
 	; b = form
-	ld a, MON_FORM
-	call OTPartyAttr
-	and SPECIESFORM_MASK
+	ld a, [wCurForm]
 	ld b, a
 	; bc = index
-	call GetSpeciesAndFormIndex
-	dec bc
-	ld hl, EvosAttacksPointers
-	add hl, bc
-	add hl, bc
-	ld a, BANK(EvosAttacksPointers)
-	call GetFarWord
-
+	predef GetEvosAttacksPointer
 	ld a, BANK(EvosAttacks)
 	call GetFarByte
-	and a
+	inc a
 	ld a, 4 ; basic mon (not evolved, but can evolve): *4/20 -> *0.2
 	jr nz, .got_multiplier
 	jr .stage_1_or_nonevolver
 
 .not_basic
+	ld a, [wCurPartySpecies]
+	ld c, a
+	ld a, [wCurForm]
+	ld b, a
 	ld hl, LegendaryMons
-	call IsInByteArray
+	call GetSpeciesAndFormIndexFromHL
 	jr c, .legendary
 	farcall GetPreEvolution
 .legendary
@@ -7350,7 +7233,8 @@ HandleSafariAngerEatingStatus:
 	; reset the catch rate to normal if bait/rock effects have worn off
 	ld a, [wEnemyMonSpecies]
 	ld [wCurSpecies], a
-	call GetEnemyMonVariant
+	ld a, [wEnemyMonForm]
+	ld [wCurForm], a
 	call GetBaseData
 	ld a, [wBaseCatchRate]
 	ld [wEnemyMonCatchRate], a
@@ -7507,11 +7391,16 @@ DropPlayerSub:
 	jr nz, GetBackpic_DoAnim
 	ld a, [wCurPartySpecies]
 	push af
+	ld a, [wCurForm]
+	push af
 	ld a, [wBattleMonSpecies]
 	ld [wCurPartySpecies], a
-	call GetBattleMonVariant
+	ld a, [wBattleMonForm]
+	ld [wCurForm], a
 	ld de, vTiles2 tile $31
 	predef GetBackpic
+	pop af
+	ld [wCurForm], a
 	pop af
 	ld [wCurPartySpecies], a
 	ret
@@ -7541,13 +7430,18 @@ DropEnemySub:
 
 	ld a, [wCurPartySpecies]
 	push af
+	ld a, [wCurForm]
+	push af
 	ld a, [wEnemyMonSpecies]
 	ld [wCurSpecies], a
 	ld [wCurPartySpecies], a
-	call GetEnemyMonVariant
+	ld a, [wEnemyMonForm]
+	ld [wCurForm], a
 	call GetBaseData
 	ld de, vTiles2
 	predef FrontpicPredef
+	pop af
+	ld [wCurForm], a
 	pop af
 	ld [wCurPartySpecies], a
 	ret
@@ -7693,8 +7587,8 @@ InitEnemyTrainer:
 .partyloop
 	push bc
 	ld a, MON_HP
-	call GetPartyParamLocation
-	ld a, [hli]
+	call GetPartyParamLocationAndValue
+	inc hl
 	or [hl]
 	jr z, .skipfaintedmon
 	ld c, HAPPINESS_GYMBATTLE
@@ -7710,33 +7604,11 @@ InitEnemyTrainer:
 InitEnemyWildmon:
 	ld a, WILD_BATTLE
 	ld [wBattleMode], a
-	call LoadEnemyMon
+	call LoadEnemyWildmon
 	call SetEnemyTurn
 	ld a, 1
 	ld [wEnemySwitchTarget], a
 	call SendInUserPkmn
-	ld hl, wOTPartyMon1Form
-	predef GetVariant
-
-	ld a, [wCurPartySpecies]
-	cp UNOWN
-	jr nz, .skip_unown
-	ld a, [wFirstUnownSeen]
-	and a
-	jr nz, .skip_unown
-	ld a, [wCurForm]
-	ld [wFirstUnownSeen], a
-.skip_unown
-
-	ld a, [wCurPartySpecies]
-	cp MAGIKARP
-	jr nz, .skip_magikarp
-	ld a, [wFirstMagikarpSeen]
-	and a
-	jr nz, .skip_magikarp
-	ld a, [wCurForm]
-	ld [wFirstMagikarpSeen], a
-.skip_magikarp
 
 	ld de, vTiles2
 	predef FrontpicPredef
@@ -7803,8 +7675,10 @@ HandleNuzlockeFlags:
 	ret nz
 
 	; Dupes clause: don't count duplicate encounters
-	ld a, [wTempEnemyMonSpecies]
-	dec a
+	ld a, [wOTPartyMon1Species]
+	ld c, a
+	ld a, [wOTPartyMon1Form]
+	ld b, a
 	call CheckCaughtMon
 	ret nz
 
@@ -8512,6 +8386,9 @@ BattleStartMessage:
 	ld a, $f
 	ld [wCryTracks], a
 	ld a, [wTempEnemyMonSpecies]
+	ld c, a
+	ld a, [wCurForm]
+	ld b, a
 	call PlayStereoCry
 
 .skip_cry

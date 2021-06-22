@@ -83,6 +83,7 @@ SpriteAnimOAMData:
 	dbw $00, .OAMData_PcMode             ; SPRITE_ANIM_OAMSET_PC_MODE
 	dbw $00, .OAMData_PcMode2            ; SPRITE_ANIM_OAMSET_PC_MODE2
 	dbw $00, .OAMData_PcPack             ; SPRITE_ANIM_OAMSET_PC_PACK
+	dbw $00, .OAMData_DexCursor          ; SPRITE_ANIM_OAMSET_DEX_CURSOR
 	assert_table_length NUM_SPRITE_ANIM_OAMSETS
 
 .OAMData_1x1_Palette0:
@@ -686,3 +687,22 @@ SpriteAnimOAMData:
 	dsprite  0,  0,  1,  0, $30, $4 | VRAM_BANK_1
 	dsprite  1,  0,  0,  0, $31, $4 | VRAM_BANK_1
 	dsprite  1,  0,  1,  0, $32, $4 | VRAM_BANK_1
+
+.OAMData_DexCursor:
+	db 12
+	; top
+	dsprite  0,  0,  0,  0, $01, $0
+	dsprite  0,  0,  1,  0, $02, $0
+	dsprite  0,  0,  2,  0, $02, $0
+	dsprite  0,  0,  3, -1, $01, $0 | X_FLIP
+	; right
+	dsprite  1,  0,  3, -1, $03, $0 | X_FLIP
+	dsprite  2,  0,  3, -1, $03, $0 | X_FLIP
+	; bottom
+	dsprite  3,  0,  3, -1, $02, $0
+	dsprite  3,  0,  2,  0, $02, $0
+	dsprite  3,  0,  1,  0, $02, $0
+	dsprite  3,  0,  0,  0, $02, $0
+	; left
+	dsprite  2,  0,  0,  0, $03, $0
+	dsprite  1,  0,  0,  0, $03, $0

@@ -4,11 +4,15 @@ EvolutionAnimation:
 	push bc
 	ld a, [wCurSpecies]
 	push af
+	ld a, [wCurForm]
+	push af
 	ldh a, [rOBP0]
 	push af
 	call .EvolutionAnimation
 	pop af
 	ldh [rOBP0], a
+	pop af
+	ld [wCurForm], a
 	pop af
 	ld [wCurSpecies], a
 	pop bc
@@ -60,20 +64,30 @@ EvolutionAnimation:
 	ld a, 7 * 7
 	ld [wEvolutionPicOffset], a
 	call .ReplaceFrontpic
-	ld a, [wEvolutionNewSpecies]
+	ld hl, wEvolutionNewSpecies
+	ld a, [hli]
 	ld [wCurPartySpecies], a
 	ld [wCurSpecies], a
+	ld a, [hl]
+	ld [wCurForm], a
+	
 	call .LoadFrontpic
-	ld a, [wEvolutionOldSpecies]
+	ld hl, wEvolutionOldSpecies
+	ld a, [hli]
 	ld [wCurPartySpecies], a
 	ld [wCurSpecies], a
+	ld a, [hl]
+	ld [wCurForm], a
 
 	ld a, $1
 	ldh [hBGMapMode], a
 	call .check_statused
 	jr c, .skip_cry
 
-	ld a, [wEvolutionOldSpecies]
+	ld hl, wEvolutionOldSpecies
+	ld a, [hli]
+	ld c, a
+	ld b, [hl]
 	call PlayCry
 
 .skip_cry
@@ -98,7 +112,37 @@ EvolutionAnimation:
 	ld [wPlayerHPPal], a
 
 	call .GetColoredCGBLayout
-	call .PlayEvolvedSFX
+	ld de, SFX_EVOLVED
+	call PlaySFX
+	ld hl, wJumptableIndex
+	ld a, [hl]
+	push af
+	ld [hl], $0
+.loop4
+	ld hl, wJumptableIndex
+	ld a, [hl]
+	cp 32
+	jr nc, .done
+	ld d, a
+	inc [hl]
+	and $1
+	jr nz, .done_balls
+	ld e, a
+	call .GenerateBallOfLight
+	ld e, $10
+	call .GenerateBallOfLight
+.done_balls
+	call .AnimateBallsOfLight
+	jr .loop4
+
+.done
+	ld c, 32
+.loop5
+	call .AnimateBallsOfLight
+	dec c
+	jr nz, .loop5
+	pop af
+	ld [wJumptableIndex], a
 	call ClearSpriteAnims
 	call .check_statused
 	ret c
@@ -109,6 +153,8 @@ EvolutionAnimation:
 	ld [wBoxAlignment], a
 	ld a, [wCurPartySpecies]
 	push af
+	ld a, [wCurForm]
+	push af
 
 	ld a, [wPlayerHPPal]
 	ld [wCurPartySpecies], a
@@ -116,6 +162,8 @@ EvolutionAnimation:
 	lb de, $0, ANIM_MON_EVOLVE
 	predef AnimateFrontpic
 
+	pop af
+	ld [wCurForm], a
 	pop af
 	ld [wCurPartySpecies], a
 	pop af
@@ -130,12 +178,14 @@ EvolutionAnimation:
 	ld [wPlayerHPPal], a
 
 	call .GetColoredCGBLayout
-	call .PlayEvolvedSFX
 	call ClearSpriteAnims
 	call .check_statused
 	ret c
 
-	ld a, [wPlayerHPPal]
+	ld hl, wEvolutionOldSpecies
+	ld a, [hli]
+	ld c, a
+	ld b, [hl]
 	jmp PlayCry
 
 .GetColoredCGBLayout:
@@ -241,55 +291,11 @@ EvolutionAnimation:
 	ld c, l
 	jmp CheckFaintedFrzSlp
 
-.PlayEvolvedSFX:
-	ld a, [wEvolutionCanceled]
-	and a
-	ret nz
-	ld de, SFX_EVOLVED
-	call PlaySFX
-	ld hl, wJumptableIndex
-	ld a, [hl]
-	push af
-	ld [hl], $0
-.loop4
-	call .balls_of_light
-	jr nc, .done
-	call .AnimateBallsOfLight
-	jr .loop4
-
-.done
-	ld c, 32
-.loop5
-	call .AnimateBallsOfLight
-	dec c
-	jr nz, .loop5
-	pop af
-	ld [wJumptableIndex], a
-	ret
-
-.balls_of_light
-	ld hl, wJumptableIndex
-	ld a, [hl]
-	cp 32
-	ret nc
-	ld d, a
-	inc [hl]
-	and $1
-	jr nz, .done_balls
-	ld e, a
-	call .GenerateBallOfLight
-	ld e, $10
-	call .GenerateBallOfLight
-
-.done_balls
-	scf
-	ret
-
 .GenerateBallOfLight:
 	push de
 	depixel 9, 11
 	ld a, SPRITE_ANIM_INDEX_EVOLUTION_BALL_OF_LIGHT
-	call _InitSpriteAnimStruct
+	call InitSpriteAnimStruct
 	ld hl, SPRITEANIMSTRUCT_JUMPTABLE_INDEX
 	add hl, bc
 	ld a, [wJumptableIndex]

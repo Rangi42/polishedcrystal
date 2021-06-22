@@ -209,7 +209,7 @@ endr
 	setflag ENGINE_CREDITS_SKIP
 	setflag ENGINE_HAVE_SHINY_CHARM
 	; good party
-	givepoke MEWTWO, NO_FORM, 100, BRIGHTPOWDER
+	givepoke MEWTWO, PLAIN_FORM, 100, BRIGHTPOWDER
 	loadmem wPartyMon1EVs+0, 252
 	loadmem wPartyMon1EVs+1, 252
 	loadmem wPartyMon1EVs+2, 252
@@ -231,8 +231,8 @@ endr
 	loadmem wPartyMon1Stats+8, HIGH(999)
 	loadmem wPartyMon1Stats+9, LOW(999)
 	; hm slaves
-	givepoke MEW, NO_FORM, 100, LEFTOVERS
-	givepoke MEW, NO_FORM, 100, LEFTOVERS
+	givepoke MEW, PLAIN_FORM, 100, LEFTOVERS
+	givepoke MEW, PLAIN_FORM, 100, LEFTOVERS
 	loadmem wPartyMon2Moves+0, FLY
 	loadmem wPartyMon2Moves+1, SURF
 	loadmem wPartyMon2Moves+2, STRENGTH
