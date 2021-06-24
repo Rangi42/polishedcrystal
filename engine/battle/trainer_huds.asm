@@ -83,7 +83,7 @@ StageBallTilesData:
 	ld a, b
 	ld [de], a
 	inc de
-	ld bc, PARTYMON_STRUCT_LENGTH + MON_HP - MON_STATUS
+	ld bc, PARTYMON_STRUCT_LENGTH
 	add hl, bc
 	pop bc
 	dec c
