@@ -674,7 +674,6 @@ HoppipEggMoves:
 
 AipomEggMoves:
 	db COUNTER
-	db DOUBLE_SLAP
 	db PURSUIT
 	db $ff
 

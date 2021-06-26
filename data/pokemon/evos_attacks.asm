@@ -394,6 +394,7 @@ SpearowEvosAttacks:
 FearowEvosAttacks:
 	db -1 ; no more evolutions
 	db 1, QUICK_ATTACK ; Pluck → egg move
+	db 1, PECK
 	db 1, GROWL
 	db 4, LEER
 	db 8, PURSUIT
@@ -4211,7 +4212,7 @@ JumpluffEvosAttacks:
 	db -1 ; no more level-up moves
 
 AipomEvosAttacks:
-	evo_data EVOLVE_MOVE, HEADBUTT, AMBIPOM
+	evo_data EVOLVE_MOVE, DOUBLE_SLAP, AMBIPOM
 	db -1 ; no more evolutions
 	db 1, SCRATCH
 	db 1, LEER ; Tail Whip → similar move
@@ -4223,7 +4224,7 @@ AipomEvosAttacks:
 	db 22, SWIFT
 	db 25, SCREECH
 	db 29, AGILITY
-	db 32, HEADBUTT ; Double Hit → tutor move
+	db 32, DOUBLE_SLAP ; Double Hit → egg move
 	db 36, ACROBATICS ; Fling → TM move
 	db 39, NASTY_PLOT
 	db 43, DOUBLE_EDGE ; Last Resort → tutor move
@@ -5515,7 +5516,7 @@ WynautEvosAttacks:
 
 AmbipomEvosAttacks:
 	db -1 ; no more evolutions
-	db 1, DOUBLE_SLAP ; Dual Chop → egg move
+	db 1, HEADBUTT ; Dual Chop → tutor move
 	db 1, SCRATCH
 	db 1, LEER ; Tail Whip → similar move
 	db 4, MUD_SLAP ; Sand Attack → similar move
@@ -5526,7 +5527,7 @@ AmbipomEvosAttacks:
 	db 22, SWIFT
 	db 25, SCREECH
 	db 29, AGILITY
-	db 32, HEADBUTT ; Double Hit → tutor move
+	db 32, DOUBLE_SLAP ; Double Hit → egg move
 	db 36, ACROBATICS ; Fling → TM move
 	db 39, NASTY_PLOT
 	db 43, DOUBLE_EDGE ; Last Resort → tutor move
