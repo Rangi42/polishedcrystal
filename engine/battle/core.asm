@@ -370,6 +370,7 @@ GetSpeed::
 	cp HELD_IRON_BALL
 	ln a, 1, 2 ; x0.5
 	jr z, .apply_item_mod
+	ld a, b
 	cp HELD_CHOICE
 	jr nz, .done
 	ld a, c
