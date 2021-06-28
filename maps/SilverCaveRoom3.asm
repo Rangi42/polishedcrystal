@@ -20,7 +20,7 @@ SilverCaveRoom3_MapScriptHeader:
 SilverCaveRoom3DailyRedRematchCallback:
 	disappear SILVERCAVEROOM3_RED
 	checkevent EVENT_BEAT_RED
-	iftrue .Disappear ; Leaf is currently in Navel Rock, so Red cannot be battled yet
+	iftrue .Disappear ; we last beat Red, so Leaf needs to be beaten before Red reappears
 	checkflag ENGINE_RED_IN_MOUNT_SILVER
 	iftrue .Disappear
 	appear SILVERCAVEROOM3_RED

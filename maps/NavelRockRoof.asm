@@ -24,7 +24,7 @@ NavelRockRoof_MapScriptHeader:
 NavelRockRoofDailyLeafRematchCallback:
 	disappear NAVELROCKROOF_GREEN
 	checkevent EVENT_BEAT_RED
-	iffalse .Disappear ; Red is currently in Mt. Silver, so Leaf cannot be battled yet
+	iffalse .Disappear ; we last beat Leaf (or haven't yet beaten Red)
 	checkflag ENGINE_LEAF_IN_NAVEL_ROCK
 	iftrue .Disappear
 	appear NAVELROCKROOF_GREEN
