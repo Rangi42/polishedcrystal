@@ -2,7 +2,7 @@ NavelRockRoof_MapScriptHeader:
 	def_scene_scripts
 
 	def_callbacks
-	callback MAPCALLBACK_SPRITES, NavelRockRoofDailyLeafRematchCallback
+	callback MAPCALLBACK_OBJECTS, NavelRockRoofDailyLeafRematchCallback
 
 	def_warp_events
 	warp_event  9, 15, NAVEL_ROCK_INSIDE, 14
@@ -23,14 +23,12 @@ NavelRockRoof_MapScriptHeader:
 
 NavelRockRoofDailyLeafRematchCallback:
 	disappear NAVELROCKROOF_GREEN
+	checkevent EVENT_BEAT_RED
+	iffalse .Disappear ; Red is currently in Mt. Silver, so Leaf cannot be battled yet
 	checkflag ENGINE_LEAF_IN_NAVEL_ROCK
 	iftrue .Disappear
 	appear NAVELROCKROOF_GREEN
 .Disappear
-	endcallback
-
-.Appear:
-	appear NAVELROCKROOF_GREEN
 	endcallback
 
 Leaf:
@@ -90,6 +88,7 @@ Leaf:
 	pause 40
 	disappear NAVELROCKROOF_CHRIS
 	disappear NAVELROCKROOF_KRIS
+	clearevent EVENT_BEAT_RED
 	setevent EVENT_BEAT_LEAF
 	credits
 	end

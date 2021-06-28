@@ -50,7 +50,7 @@ Copycat1Script:
 	setval (PAL_NPC_RED) << 4
 	special Special_SetCopycatPalette
 	variablesprite SPRITE_COPYCAT, SPRITE_CHRIS
-	special MapCallbackSprites_LoadUsedSpritesGFX
+	special RefreshSprites
 	checkevent EVENT_RESTORED_POWER_TO_KANTO
 	iftrue .ReturnedMachinePart
 	showtext .Greeting1Text
@@ -68,7 +68,7 @@ Copycat1Script:
 	setval (PAL_NPC_RED) << 4
 	special Special_SetCopycatPalette
 	variablesprite SPRITE_COPYCAT, SPRITE_CHRIS
-	special MapCallbackSprites_LoadUsedSpritesGFX
+	special RefreshSprites
 	showtext .Thanks1Text
 	applymovement COPYCATSHOUSE2F_COPYCAT1, CopycatSpinMovement
 	sjump CopycatFinalScript
@@ -128,7 +128,7 @@ Copycat2Script:
 	setval (PAL_NPC_BLUE) << 4
 	special Special_SetCopycatPalette
 	variablesprite SPRITE_COPYCAT, SPRITE_KRIS
-	special MapCallbackSprites_LoadUsedSpritesGFX
+	special RefreshSprites
 	checkevent EVENT_RESTORED_POWER_TO_KANTO
 	iftrue .ReturnedMachinePart
 	showtext .Greeting2Text
@@ -146,7 +146,7 @@ Copycat2Script:
 	setval (PAL_NPC_BLUE) << 4
 	special Special_SetCopycatPalette
 	variablesprite SPRITE_COPYCAT, SPRITE_KRIS
-	special MapCallbackSprites_LoadUsedSpritesGFX
+	special RefreshSprites
 	showtext .Thanks2Text
 	applymovement COPYCATSHOUSE2F_COPYCAT2, CopycatSpinMovement
 	sjump CopycatFinalScript
@@ -198,7 +198,7 @@ CopycatRetortScript:
 	setval (PAL_NPC_GREEN) << 4
 	special Special_SetCopycatPalette
 	variablesprite SPRITE_COPYCAT, SPRITE_LASS
-	special MapCallbackSprites_LoadUsedSpritesGFX
+	special RefreshSprites
 	jumpthistext
 
 	text "Copycat: Hmm?"
@@ -213,7 +213,7 @@ CopycatWorriedScript:
 	setval (PAL_NPC_GREEN) << 4
 	special Special_SetCopycatPalette
 	variablesprite SPRITE_COPYCAT, SPRITE_LASS
-	special MapCallbackSprites_LoadUsedSpritesGFX
+	special RefreshSprites
 	setevent EVENT_MET_COPYCAT_FOUND_OUT_ABOUT_LOST_ITEM
 	jumpthistext
 
@@ -282,7 +282,7 @@ CopycatFinalScript:
 	setval (PAL_NPC_GREEN) << 4
 	special Special_SetCopycatPalette
 	variablesprite SPRITE_COPYCAT, SPRITE_LASS
-	special MapCallbackSprites_LoadUsedSpritesGFX
+	special RefreshSprites
 	jumpthistext
 
 	text "Copycat: You bet!"

@@ -89,7 +89,7 @@ MapRuinsofAlphHoOhChamberSignpost3Script:
 	unowntypeface
 	showtext RuinsOfAlphHoOhChamberDescriptionText
 	restoretypeface
-	special MapCallbackSprites_LoadUsedSpritesGFX
+	special RefreshSprites
 	end
 
 MapRuinsofAlphHoOhChamberSignpost5Script:

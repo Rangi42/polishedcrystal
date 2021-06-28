@@ -44,12 +44,12 @@ JanineImpersonatorScript:
 	applymovement FUCHSIAPOKECENTER1F_JANINE_IMPERSONATOR, .SpinMovement
 	faceplayer
 	variablesprite SPRITE_JANINE_IMPERSONATOR, SPRITE_JANINE
-	special MapCallbackSprites_LoadUsedSpritesGFX
+	special RefreshSprites
 	showtext .Text2
 	applymovement FUCHSIAPOKECENTER1F_JANINE_IMPERSONATOR, .SpinMovement
 	faceplayer
 	variablesprite SPRITE_JANINE_IMPERSONATOR, SPRITE_CUTE_GIRL
-	special MapCallbackSprites_LoadUsedSpritesGFX
+	special RefreshSprites
 	end
 
 .Text1:

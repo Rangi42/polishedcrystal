@@ -58,9 +58,6 @@ GetPlayerSprite:
 	db PLAYER_SURF_PIKA, SPRITE_SURFING_PIKACHU
 	db $ff
 
-MapCallbackSprites_LoadUsedSpritesGFX:
-	ld a, MAPCALLBACK_SPRITES
-	call RunMapCallback
 RefreshSprites::
 	push hl
 	push de

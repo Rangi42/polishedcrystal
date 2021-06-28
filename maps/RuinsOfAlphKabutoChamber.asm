@@ -112,7 +112,7 @@ MapRuinsofAlphKabutoChamberSignpost3Script:
 	unowntypeface
 	showtext RuinsOfAlphKabutoChamberDescriptionText
 	restoretypeface
-	special MapCallbackSprites_LoadUsedSpritesGFX
+	special RefreshSprites
 	end
 
 MapRuinsofAlphKabutoChamberSignpost5Script:

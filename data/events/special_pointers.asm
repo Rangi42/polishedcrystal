@@ -89,7 +89,7 @@ SpecialsPointers::
 	add_special RandomPhoneRareWildMon
 	add_special RandomPhoneWildMon
 	add_special RandomPhoneMon
-	add_special MapCallbackSprites_LoadUsedSpritesGFX
+	add_special RefreshSprites
 	add_special PlaySlowCry
 	add_special SpecialSnorlaxAwake
 	add_special Special_OlderHaircutBrother
