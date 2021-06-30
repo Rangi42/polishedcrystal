@@ -2,7 +2,7 @@ SilverCaveRoom3_MapScriptHeader:
 	def_scene_scripts
 
 	def_callbacks
-	callback MAPCALLBACK_SPRITES, SilverCaveRoom3DailyRedRematchCallback
+	callback MAPCALLBACK_OBJECTS, SilverCaveRoom3DailyRedRematchCallback
 
 	def_warp_events
 	warp_event  9, 29, SILVER_CAVE_ROOM_2, 2
@@ -19,6 +19,8 @@ SilverCaveRoom3_MapScriptHeader:
 
 SilverCaveRoom3DailyRedRematchCallback:
 	disappear SILVERCAVEROOM3_RED
+	checkevent EVENT_BEAT_RED
+	iftrue .Disappear ; we last beat Red, so Leaf needs to be beaten before Red reappears
 	checkflag ENGINE_RED_IN_MOUNT_SILVER
 	iftrue .Disappear
 	appear SILVERCAVEROOM3_RED

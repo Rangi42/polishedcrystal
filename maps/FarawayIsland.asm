@@ -5,7 +5,7 @@ FarawayIsland_MapScriptHeader:
 
 	def_callbacks
 	callback MAPCALLBACK_NEWMAP, FarawayIslandVisited
-	callback MAPCALLBACK_SPRITES, FarawayIslandSetupLawrence
+	callback MAPCALLBACK_OBJECTS, FarawayIslandSetupLawrence
 
 	def_warp_events
 	warp_event 22,  8, FARAWAY_JUNGLE, 1

@@ -207,7 +207,8 @@ VermilionGymBadgeGuy:
 	verbosegiveitem BOTTLE_CAP
 	iffalse_endtext
 	setevent EVENT_GOT_BOTTLE_CAP_FROM_VERMILION_GUY
-	jumpthisopenedtext
+	writetext VermilionCityBadgeGuyBattleEdgeText
+	waitendtext
 
 VermilionMachokeOwnerScript:
 	checkevent EVENT_RESTORED_POWER_TO_KANTO
