@@ -753,11 +753,10 @@ PokeBallEffect:
 	call ClearBGPalettes
 	call ClearTileMap
 
-	push af
 	ld a, CGB_BATTLE_COLORS
 	call GetCGBLayout
 	call SetPalettes
-	pop af
+	xor a
 
 .toss
 	ld hl, wNumItems
