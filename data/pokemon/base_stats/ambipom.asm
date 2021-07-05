@@ -7,7 +7,7 @@
 	db ALWAYS_ITEM_2, SITRUS_BERRY ; held items
 	dn GENDER_F50, 3 ; gender ratio, step cycles to hatch
 	INCBIN "gfx/pokemon/ambipom/front.dimensions"
-	abilities_for AMBIPOM, PICKUP, RUN_AWAY, SKILL_LINK
+	abilities_for AMBIPOM, TECHNICIAN, PICKUP, SKILL_LINK
 	db GROWTH_FAST ; growth rate
 	dn EGG_GROUND, EGG_GROUND ; egg groups
 

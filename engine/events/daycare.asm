@@ -757,12 +757,14 @@ DayCare_GenerateEgg:
 ; but we don't want to breed mons that shouldn't be hatched (see: Spiky-eared Pichu)
 	ld hl, InvalidBreedmons
 	call GetSpeciesAndFormIndexFromHL
+	jr nc, .form_ok
 	ld hl, wCurForm
 	ld a, [hl]
 	and EXTSPECIES_MASK
 	or PLAIN_FORM
 	ld [hl], a
 
+.form_ok
 	call GetBaseData
 
 	; Set name and item

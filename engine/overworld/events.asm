@@ -1180,7 +1180,7 @@ _TryWildEncounter_BugContest:
 	jr nc, .loop
 	srl a
 	ld hl, ContestMons
-	ld de, 4
+	ld de, 5
 .CheckMon:
 	sub [hl]
 	jr c, .GotMon
@@ -1191,6 +1191,9 @@ _TryWildEncounter_BugContest:
 ; Species
 	ld a, [hli]
 	ld [wTempWildMonSpecies], a
+; Form
+	ld a, [hli]
+	ld [wCurForm], a
 ; Min level
 	ld a, [hli]
 	ld d, a

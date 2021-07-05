@@ -4106,12 +4106,15 @@ BattleMenu_SafariBall:
 	ld a, SAFARI_BALL
 	ld [wCurItem], a
 	call DoItemEffect
-	jr .UseItem
+	jr .safari_or_contest_next
 
 .contest
 	xor a ; PARK_BALL
 	ld [wCurItem], a
 	call DoItemEffect
+.safari_or_contest_next
+	ld a, BALL
+	ld [wItemAttributeParamBuffer], a
 	jr .UseItem
 
 .didnt_use_item

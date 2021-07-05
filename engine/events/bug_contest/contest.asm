@@ -319,6 +319,7 @@ ComputeAIContestantScores:
 	add hl, bc
 	add hl, bc
 	add hl, bc
+	add hl, bc
 	ld a, [hli]
 	ld [wBugContestTempMon], a
 	ld a, [hli]

@@ -1118,7 +1118,7 @@ MeowthGalarianEvosAttacks:
 	db 29, FURY_STRIKES ; Fury Swipes → similar move
 	db 32, SCREECH
 	db 36, SLASH
-	db 40, IRON_TAIL ; Metal Sound → TR move
+	db 40, CRUNCH ; Metal Sound → TR move
 	db 44, THRASH
 	db -1 ; no more level-up moves
 
@@ -5954,7 +5954,7 @@ PerrserkerEvosAttacks:
 	db -1 ; no more evolutions
 	db 1, IRON_HEAD ; evolution move
 	db 1, COUNTER ; Metal Burst → similar move
-	db 1, CUT ; Iron Defense → HM move
+	db 1, PLAY_ROUGH ; Iron Defense → TR move
 	db 1, ASTONISH ; Fake Out → new move
 	db 1, GROWL
 	db 1, HONE_CLAWS
@@ -5966,7 +5966,7 @@ PerrserkerEvosAttacks:
 	db 31, FURY_STRIKES
 	db 36, SCREECH
 	db 42, SLASH
-	db 48, IRON_TAIL ; Metal Sound → TR move
+	db 48, CRUNCH ; Metal Sound → TR move
 	db 54, THRASH
 	db -1 ; no more level-up moves
 
