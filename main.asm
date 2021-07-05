@@ -272,7 +272,6 @@ INCLUDE "engine/pokemon/mon_stats.asm"
 INCLUDE "engine/pokemon/experience.asm"
 INCLUDE "engine/pokemon/switchpartymons.asm"
 INCLUDE "engine/gfx/load_pics.asm"
-INCLUDE "data/pokemon/names.asm"
 INCLUDE "engine/pokemon/natures.asm"
 
 
@@ -542,10 +541,14 @@ INCLUDE "data/items/apricorn_names.asm"
 INCLUDE "engine/items/print_item_description.asm"
 
 
-SECTION "Move and Landmark Text", ROMX
+SECTION "Pokemon Names", ROMX
+
+INCLUDE "data/pokemon/names.asm"
+
+
+SECTION "Move Names", ROMX
 
 INCLUDE "data/moves/names.asm"
-INCLUDE "engine/overworld/landmarks.asm"
 
 
 SECTION "Crystal Events", ROMX

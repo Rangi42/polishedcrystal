@@ -1299,5 +1299,6 @@ DoBikeStep::
 	xor a
 	ret
 
+INCLUDE "engine/overworld/landmarks.asm"
 INCLUDE "engine/overworld/stone_table.asm"
 INCLUDE "engine/overworld/scripting.asm"
