@@ -4933,7 +4933,7 @@ CorsolaGalarianEvosAttacks:
 	db 35, GIGA_DRAIN ; Strength Sap → TM move
 	db 40, POWER_GEM
 	db 45, NIGHT_SHADE
-	db 50, SHADOW_BALL ; Grudge → TR move
+	db 50, HYDRO_PUMP ; Grudge → TR move
 	db 55, MIRROR_COAT
 	db -1 ; no more level-up moves
 
@@ -4984,9 +4984,22 @@ endc
 
 DelibirdEvosAttacks:
 	db -1 ; no more evolutions
-	db 1, ICICLE_CRASH ; Present → new move
-	db 25, DRILL_PECK
-	db -1 ; no more level-up moves
+; based on Gen V Chatot
+    db 1, PECK
+    db 5, GROWL
+    db 9, PAY_DAY ; Mirror Move → new move
+    db 13, SING
+    db 17, ICY_WIND
+    db 21, WING_ATTACK
+    db 25, HAIL
+    db 29, DRILL_PECK
+    db 33, AURORA_BEAM
+    db 37, BODY_SLAM
+    db 41, ROOST
+    db 45, FLY
+    db 49, BELLY_DRUM
+    db 53, HURRICANE
+    db 57, BLIZZARD
 
 MantineEvosAttacks:
 	db -1 ; no more evolutions
@@ -5984,7 +5997,7 @@ CursolaEvosAttacks:
 	db 35, GIGA_DRAIN ; Strength Sap → TM move
 	db 40, POWER_GEM
 	db 45, NIGHT_SHADE
-	db 50, SHADOW_BALL ; Grudge → TR move
+	db 50, HYDRO_PUMP ; Grudge → TR move
 	db 55, MIRROR_COAT
 	db -1 ; no more level-up moves
 

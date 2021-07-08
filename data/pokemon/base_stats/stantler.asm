@@ -1,5 +1,10 @@
+if DEF(FAITHFUL)
 	db  73,  95,  62,  85,  65,  85 ; 465 BST
 	;   hp  atk  def  spd  sat  sdf
+else
+	db  73, 100,  62,  85,  65,  85 ; 470 BST
+	;   hp  atk  def  spd  sat  sdf
+endc
 
 if DEF(FAITHFUL)
 	db NORMAL, NORMAL ; type

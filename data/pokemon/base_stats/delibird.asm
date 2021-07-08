@@ -1,5 +1,10 @@
-	db  45,  55,  45,  75,  65,  45 ; 330 BST
-	;   hp  atk  def  spd  sat  sdf
+if DEF(FAITHFUL)
+    db  45,  55,  45,  75,  65,  45 ; 330 BST
+    ;   hp  atk  def  spd  sat  sdf
+else
+    db  55,  85,  55, 105,  95,  45 ; 440 BST
+    ;   hp  atk  def  spd  sat  sdf
+endc
 
 	db ICE, FLYING ; type
 	db 45 ; catch rate
