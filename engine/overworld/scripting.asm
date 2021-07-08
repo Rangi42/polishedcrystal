@@ -1709,7 +1709,7 @@ Script_getcurlandmarkname:
 
 ConvertLandmarkToText:
 	ld e, a
-	farcall GetLandmarkName
+	call GetLandmarkName
 	ld de, wStringBuffer1
 	jr ConvertMemToText
 
