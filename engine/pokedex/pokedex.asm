@@ -544,49 +544,9 @@ Pokedex_UpdateRow:
 	and CAUGHT_MASK ; z = is not caught
 	push af
 	push hl
-	xor a
-	farcall GetMenuMonIconTruePalette
+	ld a, 0 ; not shiny
+	call GetMenuMonIconTruePaletteWithTranslucency
 	pop hl
-	pop af
-	push af
-	jr nz, .species_caught
-
-	; Apply transparency
-	push hl
-	; Remove least significant bit from each pal color.
-	ld hl, palred 30 + palgreen 30 + palblue 30
-	ld a, c
-	and l
-	ld c, a
-	ld a, b
-	and h
-	ld b, a
-	ld a, e
-	and l
-	ld e, a
-	ld a, d
-	and h
-	ld d, a
-
-	; Halve all palette colors
-	srl b
-	rr c
-	srl d
-	rr e
-
-	; Add 16 to each palette color.
-	ld hl, palred 16 + palgreen 16 + palblue 16
-	push hl
-	add hl, de
-	ld d, h
-	ld e, l
-	pop hl
-	add hl, bc
-	ld b, h
-	ld c, l
-	pop hl
-
-.species_caught
 	ld a, c
 	ld [hli], a
 	ld a, b

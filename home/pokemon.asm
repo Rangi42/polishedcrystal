@@ -374,3 +374,48 @@ GetSpeciesAndFormIndexFromHL::
 	dec c
 	scf
 	ret
+
+GetMenuMonIconTruePaletteWithTranslucency:
+; Returns icon col1/col2 palette in bcde (col0/col3 as white/black is implicit)
+; with species+form in bc, shininess in a, and z to make translucent.
+	push af
+	homecall GetMenuMonIconTruePalette
+	pop af
+	ret nz
+
+	; Apply transparency
+	push hl
+	; Remove least significant bit from each pal color.
+	ld hl, %11110_11110_11110
+	ld a, c
+	and l
+	ld c, a
+	ld a, b
+	and h
+	ld b, a
+	ld a, e
+	and l
+	ld e, a
+	ld a, d
+	and h
+	ld d, a
+
+	; Halve both palette colors.
+	srl b
+	rr c
+	srl d
+	rr e
+
+	; Add 16 to each palette color.
+	ld hl, palred 16 + palgreen 16 + palblue 16
+	push hl
+	add hl, de
+	ld d, h
+	ld e, l
+	pop hl
+	add hl, bc
+	ld b, h
+	ld c, l
+	pop hl
+
+	ret

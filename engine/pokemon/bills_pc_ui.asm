@@ -701,8 +701,14 @@ WriteIconPaletteData:
 	ld c, a
 	ld a, [wTempMonForm]
 	ld b, a
+	ld a, [wBillsPC_CursorMode]
+	cp PC_ITEM_MODE ; z = in item mode
+	jr nz, .got_transparency
+	ld a, [wTempMonItem]
+	and a ; z = is not holding an item
+.got_transparency
 	ld a, [wTempMonShiny]
-	farcall GetMenuMonIconTruePalette
+	call GetMenuMonIconTruePaletteWithTranslucency
 	ld h, b
 	ld l, c
 	pop bc
