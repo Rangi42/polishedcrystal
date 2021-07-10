@@ -541,7 +541,7 @@ Pokedex_UpdateRow:
 
 	push bc
 	ld a, b
-	and CAUGHT_MASK
+	and CAUGHT_MASK ; z = is not caught
 	push af
 	push hl
 	xor a

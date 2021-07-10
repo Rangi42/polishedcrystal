@@ -130,10 +130,10 @@ GetMenuMonIconTruePalette:
 if DEF(MONOCHROME)
 	ld bc, PAL_MONOCHROME_WHITE
 	ld de, PAL_MONOCHROME_LIGHT
+	ret
 else
 	and SHINY_MASK
 	push af
-
 	call GetCosmeticSpeciesAndFormIndex
 	ld hl, MenuMonIconColors
 	add hl, bc
@@ -147,30 +147,29 @@ else
 	ld bc, palred 31 + palgreen 19 + palblue 10
 	and a ; PAL_OW_RED
 	ld de, palred 31 + palgreen 07 + palblue 01
-	jr z, .got_pal
+	ret z
 	dec a ; PAL_OW_BLUE
 	ld de, palred 10 + palgreen 09 + palblue 31
-	jr z, .got_pal
+	ret z
 	dec a ; PAL_OW_GREEN
 	ld de, palred 07 + palgreen 23 + palblue 03
-	jr z, .got_pal
+	ret z
 	dec a ; PAL_OW_BROWN
 	ld de, palred 15 + palgreen 10 + palblue 03
-	jr z, .got_pal
+	ret z
 	dec a ; PAL_OW_PURPLE
 	ld de, palred 18 + palgreen 04 + palblue 18
-	jr z, .got_pal
+	ret z
 	dec a ; PAL_OW_GRAY
 	ld de, palred 13 + palgreen 13 + palblue 13
-	jr z, .got_pal
+	ret z
 	dec a ; PAL_OW_PINK
 	ld de, palred 31 + palgreen 10 + palblue 11
-	jr z, .got_pal
+	ret z
 	; PAL_OW_TEAL
 	ld de, palred 03 + palgreen 23 + palblue 21
-.got_pal
-endc
 	ret
+endc
 
 GetOverworldMonIconPalette::
 	ld a, [wCurIcon]
