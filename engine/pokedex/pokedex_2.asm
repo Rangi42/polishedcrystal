@@ -151,7 +151,7 @@ DisplayDexEntry:
 	add hl, de
 	ld b, h
 	ld c, l
-	ld de, 16646 ; 0.254 << 16
+	ld de, 0.254
 	call Mul16
 	ld de, hTmpd
 	hlcoord 11, 7
@@ -198,7 +198,7 @@ DisplayDexEntry:
 
 	ld c, d
 	ld b, e
-	ld de, 29726 ; 0.45359237 << 16
+	ld de, 0.45359237
 	call Mul16
 	ld de, hTmpd
 	hlcoord 11, 9
