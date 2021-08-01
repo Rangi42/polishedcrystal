@@ -497,9 +497,8 @@ AnimateFountain:
 	sub l
 	ld h, a
 
-	ld a, [hli]
-	ld h, [hl]
-	ld l, a
+	ld sp, hl
+	pop hl
 
 	ld sp, hl
 	jmp WriteTileToDE
