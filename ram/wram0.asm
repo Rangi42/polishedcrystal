@@ -615,7 +615,7 @@ wBattleWeather::
 
 wWeatherCount:: db ; # turns remaining
 
-wLoweredStat::
+wChangedStat::
 ; bit 4-7: how many stages to raise/lower + 1 (between +1 and +12)
 ; bit 0-3: which stat to raise/lower
 	db
