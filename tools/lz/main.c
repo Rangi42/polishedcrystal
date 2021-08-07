@@ -17,7 +17,7 @@ int main (int argc, char ** argv) {
     } else
       write_commands_and_padding_to_textfile(options.output, commands, size, file_buffer, original_size - remainder, remainder);
   } else {
-    commands = compress(file_buffer, &size, options.method);
+    commands = compress(file_buffer, &size);
     (options.mode ? write_commands_to_textfile : write_commands_to_file)(options.output, commands, size, file_buffer, options.alignment);
   }
   free(file_buffer);
@@ -25,30 +25,11 @@ int main (int argc, char ** argv) {
   return 0;
 }
 
-struct command * compress (const unsigned char * data, unsigned short * size, unsigned method) {
+struct command * compress (const unsigned char * data, unsigned short * size) {
   unsigned char * bitflipped = malloc(*size);
   unsigned current;
   for (current = 0; current < *size; current ++) bitflipped[current] = bit_flipping_table[data[current]];
-  const struct compressor * compressor = compressors;
-  struct command * result;
-  if (method < COMPRESSION_METHODS) {
-    while (method >= compressor -> methods) method -= (compressor ++) -> methods;
-    result = compressor -> function(data, bitflipped, size, method);
-  } else {
-    struct command * compressed_sequences[COMPRESSION_METHODS];
-    unsigned short lengths[COMPRESSION_METHODS];
-    unsigned flags = 0;
-    for (current = 0; current < COMPRESSION_METHODS; current ++) {
-      lengths[current] = *size;
-      if (flags == compressor -> methods) {
-        flags = 0;
-        compressor ++;
-      }
-      compressed_sequences[current] = compressor -> function(data, bitflipped, lengths + current, flags ++);
-    }
-    result = select_optimal_sequence(compressed_sequences, lengths, size);
-    for (current = 0; current < COMPRESSION_METHODS; current ++) free(compressed_sequences[current]);
-  }
+  struct command * result = compress_dp(data, bitflipped, size);
   free(bitflipped);
   return result;
 }

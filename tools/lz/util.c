@@ -22,25 +22,6 @@ unsigned char * read_file_into_buffer (const char * file, unsigned short * size)
   return buf;
 }
 
-struct command pick_best_command (unsigned count, struct command command, ...) {
-  struct command result = command;
-  va_list ap;
-  va_start(ap, command);
-  while (-- count) {
-    command = va_arg(ap, struct command);
-    if (is_better(command, result)) result = command;
-  }
-  va_end(ap);
-  return result;
-}
-
-int is_better (struct command new, struct command old) {
-  if (new.command == 7) return 0;
-  if (old.command == 7) return 1;
-  short new_savings = new.count - command_size(new), old_savings = old.count - command_size(old);
-  return new_savings > old_savings;
-}
-
 short command_size (struct command command) {
   short header_size = 1 + (command.count > SHORT_COMMAND_COUNT);
   if (command.command & 4) return header_size + 1 + (command.value >= 0);
