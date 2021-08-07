@@ -26,6 +26,7 @@ Pokémon Polished Crystal would never have been finished without the help of man
 * tonyism for the in-battle shiny icon code.
 * Tachytaenius for the ability to change the Ball a Pokémon is in.
 * SadisticMystic and Kate Dering for vanilla battle engine testing and documentation.
+* ax6 and NieDzejkob for developing and optimizing lzcomp.
 
 
 ## Music
