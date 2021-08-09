@@ -106,7 +106,7 @@ PrintMagikarpLength:
 	ld b, a
 	ld a, [wMagikarpLengthMmLo]
 	ld c, a
-	ld de, 2580 ; (1/25.4) << 16
+	ld de, div(1.0, 25.4)
 	xor a
 	ldh [hTmpd], a
 	ldh [hTmpe], a

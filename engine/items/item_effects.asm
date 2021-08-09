@@ -2124,16 +2124,10 @@ RestorePP:
 	cp MAX_ETHER
 	jr z, .restore_all
 
-	ld c, 10
-	cp LEPPA_BERRY
-	jr z, .restore_some
-
-	ld c, 10
-
-.restore_some
+; restore up to 10 PP for ETHER, ELIXIR, and LEPPA_BERRY
 	ld a, [hl]
 	and (1 << 6) - 1
-	add c
+	add 10
 	cp b
 	jr nc, .restore_all
 	ld b, a
