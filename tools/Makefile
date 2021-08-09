@@ -1,7 +1,7 @@
 .PHONY: all clean
 
 CC := gcc
-CFLAGS = -O3 -std=c11 -Wall -Wextra -pedantic
+CFLAGS = -O3 -std=c17 -Wall -Wextra -pedantic
 
 tools := \
 	lzcomp \
@@ -19,7 +19,7 @@ all: $(tools)
 clean:
 	rm -f $(tools) *.o *.h.gch *.pyc
 
-lzcomp: CFLAGS += -flto -Wno-strict-overflow -Wno-sign-compare
+lzcomp: CFLAGS += -flto
 lzcomp: $(wildcard lz/*.c) $(wildcard lz/*.h)
 	$(CC) $(CFLAGS) -o $@ lz/*.c
 
