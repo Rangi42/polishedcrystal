@@ -287,10 +287,8 @@ endr
 	dec a
 	jr nz, .row
 
-	ldh a, [hSPBuffer]
-	ld l, a
-	ldh a, [hSPBuffer + 1]
-	ld h, a
+	ld sp, hSPBuffer
+	pop hl
 	ld sp, hl
 	ret
 
@@ -322,9 +320,8 @@ _Serve1bppRequest::
 	ld a, [hli]
 	ld d, a
 ; Source
-	ld a, [hli]
-	ld h, [hl]
-	ld l, a
+	ld sp, hl
+	pop hl
 	ld sp, hl
 	ld h, d
 	ld l, e
@@ -402,9 +399,8 @@ _Serve2bppRequest::
 	ld a, [hli]
 	ld d, a
 ; Source
-	ld a, [hli]
-	ld h, [hl]
-	ld l, a
+	ld sp, hl
+	pop hl
 	ld sp, hl
 	ld h, d
 	ld l, e
@@ -425,10 +421,8 @@ WriteVTileSourceAndDestinationAndReturn:
 	ld sp, hl
 	ld [hRequestedVTileDest], sp
 
-	ldh a, [hSPBuffer]
-	ld l, a
-	ldh a, [hSPBuffer + 1]
-	ld h, a
+	ld sp, hSPBuffer
+	pop hl
 	ld sp, hl
 	ret
 
