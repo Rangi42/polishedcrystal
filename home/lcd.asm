@@ -82,7 +82,7 @@ LCDBillsPC1::
 	ldh [rBGPI], a
 rept 4
 	ld a, [hli]
-	ld [c], a
+	ldh [c], a
 endr
 
 	; third box mon
@@ -90,7 +90,7 @@ endr
 	ldh [rBGPI], a
 rept 4
 	ld a, [hli]
-	ld [c], a
+	ldh [c], a
 endr
 
 	; fourth box mon
@@ -98,7 +98,7 @@ endr
 	ldh [rBGPI], a
 rept 4
 	ld a, [hli]
-	ld [c], a
+	ldh [c], a
 endr
 	; end of VRAM writes
 
@@ -126,7 +126,7 @@ LCDBillsPC2::
 	ldh [rBGPI], a
 rept 4
 	ld a, [hli]
-	ld [c], a
+	ldh [c], a
 endr
 
 	; second party mon
@@ -134,7 +134,7 @@ endr
 	ldh [rBGPI], a
 rept 4
 	ld a, [hli]
-	ld [c], a
+	ldh [c], a
 endr
 
 	; first box mon
@@ -142,7 +142,7 @@ endr
 	ldh [rBGPI], a
 rept 4
 	ld a, [hli]
-	ld [c], a
+	ldh [c], a
 endr
 	; end of VRAM writes
 
@@ -211,7 +211,7 @@ LCDBillsPC3:
 	ldh [rBGPI], a
 rept 2
 	ld a, [hli]
-	ld [c], a
+	ldh [c], a
 endr
 	; end of VRAM writes
 

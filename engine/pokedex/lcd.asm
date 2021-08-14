@@ -278,7 +278,7 @@ PHB_LoadRow:
 	ldh [rBGPI], a
 rept 6
 	ld a, [hli]
-	ld [c], a
+	ldh [c], a
 endr
 	ld a, $80 | $12
 	ldh [rOBPI], a
@@ -330,11 +330,11 @@ endr
 	ld c, LOW(rOBPD)
 rept 6
 	ld a, [hli]
-	ld [c], a
+	ldh [c], a
 endr
 	; advance to the next pal quickly
-	ld [c], a ; no-optimize useless loads (rOBPD)
-	ld [c], a
+	ldh [c], a ; no-optimize useless loads (rOBPD)
+	ldh [c], a
 
 	; Prepare this for later.
 	ld a, $80 | $1a
@@ -366,7 +366,7 @@ endr
 	pop hl
 rept 6
 	ld a, [hli]
-	ld [c], a
+	ldh [c], a
 endr
 	ld a, d
 	ret
