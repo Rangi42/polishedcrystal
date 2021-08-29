@@ -368,7 +368,7 @@ BattleAnimCmd_Jump:
 	ret
 
 BattleAnimCmd_StatLoop:
-	ld a, [wLoweredStat]
+	ld a, [wChangedStat]
 	swap a
 	and $f
 	inc a

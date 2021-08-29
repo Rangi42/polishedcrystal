@@ -8,7 +8,7 @@ FarChangeStat:
 	jr nz, .move_script_byte_ok
 	farcall ReadMoveScriptByte
 .move_script_byte_ok
-	ld [wLoweredStat], a
+	ld [wChangedStat], a
 	pop af
 	ld b, a
 	bit STAT_TARGET_F, b
@@ -113,7 +113,7 @@ FarChangeStat:
 	ld c, ACCURACY
 	jr nz, .ability_done
 .ability_check
-	ld a, [wLoweredStat]
+	ld a, [wChangedStat]
 	and $f
 	cp c
 	jr nz, .ability_done
@@ -141,7 +141,7 @@ FarChangeStat:
 .lower
 	call DoLowerStat
 .stat_done
-	ld a, [wLoweredStat]
+	ld a, [wChangedStat]
 	and $f
 	ld b, a
 	inc b
@@ -217,7 +217,7 @@ DoPrintStatChange:
 	jmp StdBattleTextbox
 
 GetStatRaiseMessage:
-	ld a, [wLoweredStat]
+	ld a, [wChangedStat]
 	and $f0
 	swap a
 	and a
@@ -236,7 +236,7 @@ GetStatRaiseMessage:
 UseStatItemText:
 ; doesn't consume the item in case of multiple stats
 	push bc
-	ld a, [wLoweredStat]
+	ld a, [wChangedStat]
 	and $f
 	ld b, a
 	inc b
@@ -246,7 +246,7 @@ UseStatItemText:
 	farcall ItemRecoveryAnim
 .item_anim_done
 	call GetCurItemName
-	ld a, [wLoweredStat]
+	ld a, [wChangedStat]
 	and $f0
 	swap a
 	and a
@@ -300,14 +300,14 @@ DoChangeStat:
 	jr z, .got_stat_levels
 	ld hl, wEnemyStatLevels
 .got_stat_levels
-	ld a, [wLoweredStat]
+	ld a, [wChangedStat]
 	and $f
 	ld c, a
 	ld b, 0
 	add hl, bc
 
 	; Perform the stat change
-	ld a, [wLoweredStat]
+	ld a, [wChangedStat]
 	and $f0
 	swap a
 	inc a
@@ -341,10 +341,10 @@ DoChangeStat:
 	jr z, .stat_change_failed
 	dec b
 	swap b
-	ld a, [wLoweredStat]
+	ld a, [wChangedStat]
 	and $f
 	or b
-	ld [wLoweredStat], a
+	ld [wChangedStat], a
 	ret
 
 .stat_change_failed
@@ -369,7 +369,7 @@ PlayStatChangeAnim:
 if !DEF(MONOCHROME)
 	ld hl, StatPals
 	ld de, wOBPals1 palette PAL_BATTLE_OB_GRAY + 2
-	ld a, [wLoweredStat]
+	ld a, [wChangedStat]
 	and $f
 	add a
 	add a
