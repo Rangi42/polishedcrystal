@@ -10,7 +10,7 @@ WriteOAMDMACodeToHRAM::
 	ret
 
 .PushOAM:
-	ld [c], a
+	ldh [c], a
 .pushoam_loop
 	dec b
 	jr nz, .pushoam_loop

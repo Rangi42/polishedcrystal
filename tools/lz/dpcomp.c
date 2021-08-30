@@ -88,7 +88,7 @@ void process_input(void) {
 
         for (unsigned at = 0; at < plen - 1; at++) {
             unsigned k = min(MAX_COMMAND_COUNT, match_right(plen - 1, at));
-            for (int i = 2; i <= k; i++) {
+            for (unsigned i = 2; i <= k; i++) {
                 consider(plen + i - 1, (struct command) {
                     .command = 4,
                     .count = i,
@@ -97,7 +97,7 @@ void process_input(void) {
             }
 
             k = min(MAX_COMMAND_COUNT, match_left(plen - 1, at));
-            for (int i = 2; i <= k; i++) {
+            for (unsigned i = 2; i <= k; i++) {
                 consider(plen + i - 1, (struct command) {
                     .command = 6,
                     .count = i,
@@ -106,7 +106,7 @@ void process_input(void) {
             }
 
             k = min(MAX_COMMAND_COUNT, match_flipped(plen - 1, at));
-            for (int i = 2; i <= k; i++) {
+            for (unsigned i = 2; i <= k; i++) {
                 consider(plen + i - 1, (struct command) {
                     .command = 5,
                     .count = i,
