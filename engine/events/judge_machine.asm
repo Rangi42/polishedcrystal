@@ -827,6 +827,14 @@ DrawHighRadarLine:
 .x_sorted
 	ldh [hSingleOpcode], a
 
+; D = 2 * dx - dy
+	ldh a, [hDY]
+	ld l, a
+	ldh a, [hDX]
+	add a
+	sub l
+	ldh [hErr], a
+
 ; For y from c to e, draw a point at (b, y)
 	ld a, e
 	ldh [hChartLineCoord], a
