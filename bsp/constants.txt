@@ -40,7 +40,7 @@
 	define MAP_GROUP_OFFSET,                   0x834
 	define PARTY_COUNT_OFFSET,                 0x856
 	define PARTY_MON_OT_OFFSET,                0x97e
-	define POKEDEX_CAUGHT_OFFSET,              0xa0b
+	define POKEDEX_CAUGHT_OFFSET,              0xa03
 	define DAYCARE_MAN_OFFSET,                 0xa6a
 	define BREED_MON_1_NICK_OFFSET,            0xa6b
 	define BREED_MON_1_OT_OFFSET,              0xa76

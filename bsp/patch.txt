@@ -43,6 +43,7 @@
 	include "item_patches.txt"
 	include "move_patches.txt"
 	include "apply_party_patches.txt"
+	include "apply_party_patches_old.txt"
 	include "pokecenter_check.txt"
 
 	include "sram_offsets.txt"

@@ -4985,21 +4985,21 @@ endc
 DelibirdEvosAttacks:
 	db -1 ; no more evolutions
 ; based on Gen V Chatot
-    db 1, PECK
-    db 5, GROWL
-    db 9, PAY_DAY ; Mirror Move → new move
-    db 13, SING
-    db 17, ICY_WIND
-    db 21, WING_ATTACK
-    db 25, HAIL
-    db 29, DRILL_PECK
-    db 33, AURORA_BEAM
-    db 37, BODY_SLAM
-    db 41, ROOST
-    db 45, FLY
-    db 49, BELLY_DRUM
-    db 53, HURRICANE
-    db 57, BLIZZARD
+	db 1, PECK
+	db 5, GROWL
+	db 9, PAY_DAY ; Mirror Move → new move
+	db 13, SING
+	db 17, ICY_WIND
+	db 21, WING_ATTACK
+	db 25, HAIL
+	db 29, DRILL_PECK
+	db 33, AURORA_BEAM
+	db 37, BODY_SLAM
+	db 41, ROOST
+	db 45, FLY
+	db 49, BELLY_DRUM
+	db 53, HURRICANE
+	db 57, BLIZZARD
 
 MantineEvosAttacks:
 	db -1 ; no more evolutions

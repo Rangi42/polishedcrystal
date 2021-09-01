@@ -1327,7 +1327,7 @@ wPartyMon{d:n}Nickname:: ds MON_NAME_LENGTH
 endr
 wPartyMonNicknamesEnd::
 
-	ds 9 ; unused
+	ds 1 ; unused
 
 wPokedexCaught:: flag_array NUM_EXT_POKEMON
 wEndPokedexCaught::
@@ -1335,10 +1335,10 @@ wEndPokedexCaught::
 wPokedexSeen:: flag_array NUM_EXT_POKEMON
 wEndPokedexSeen::
 
+	ds 16 ; unused
+
 wUnownDex:: flag_array NUM_UNOWN
 wUnownDexEnd::
-
-	ds 8 ; unused
 
 wUnlockedUnowns:: db
 
