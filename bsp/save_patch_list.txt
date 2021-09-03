@@ -44,12 +44,12 @@ SavePatches:
 	dw ChangeCheckValue
 
 	dh 8
-	dw ConvertMonIndexesTo9Bit
-
-	dh 8
 	dw ConvertUnownDexToBitArray
 
 	dh 8
-	dw ConvertDexTo9Bit
+	dw ConvertMonIndexesTo9Bit
+
+	dh 8
+	dw ShiftHiddenGrottoContents
 
 	dh 0

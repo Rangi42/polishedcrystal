@@ -321,12 +321,12 @@ ConvertUnownDexToBitArray:
 	poppos
 	return
 
-ConvertMonIndexesTo9bit:
+ConvertMonIndexesTo9Bit:
 ; First, we need to shift existing caught flags into their new indexes,
 ; then we need to shift caught data/unown dex forward to account for the bigger seen flag array
 ; (we've already converted unown dex to a flag array, so we have a buffer to work with).
 ; We'll handle caught data for forms later.
-	set #1, POKEDEX_CAUGHT_OFFSET_v7
+	set #1, POKEDEX_CAUGHT_OFFSET
 	call GetGameDataPointer
 	seek #result
 	set #1, 32
@@ -338,12 +338,13 @@ ConvertMonIndexesTo9bit:
 	set #r0, .mon_indexes
 	set #r1, .mon_forms
 
-; modify pokedex flags (for convenience, shift seen flags before caught flags)
+; modify pokedex flags
+	seek #result
 	set #1, 320
 	set #2, #r0
 	jump ShiftFlags
 
-	seekback 80
+	seekfwd 40
 	set #1, 320
 	set #2, #r0
 	jump ShiftFlags
@@ -386,7 +387,7 @@ ConvertMonIndexesTo9bit:
 	shiftright #temp, 8
 	ifne #1, 0x39, .move_loop
 .got_form
-	seekfwd 15 (ID -> form)
+	seekfwd 15 ; (ID -> form)
 	getfilebyte #1
 	and #1, 0xe0 ; ~FORM_MASK
 	or #1, #2
@@ -398,7 +399,7 @@ ConvertMonIndexesTo9bit:
 	set #address, #r1
 .form_loop
 	getbyteinc #1, #address
-	ifeq 0xff, .done
+	ifeq #1, 0xff, .done
 	getbyteinc #2, #address
 	ifne #1, #result, .form_loop
 
@@ -418,7 +419,7 @@ ConvertMonIndexesTo9bit:
 	call GetGameDataPointer
 	seek #result
 	subtract #temp, #address, #r1 ; get the form+species index of the current variant form, needed for pokedex flags
-	shiftright #temp
+	shiftright #temp, 1
 	add #1, #temp, 0x118 ; note that #temp is off by +1 for actual index, since #address is +2 bytes ahead of form actually being checked
 	set #2, 1
 	push #1
@@ -505,3 +506,19 @@ ConvertMonIndexesTo9bit:
 	db 0xc7, 3 ; SLOWKING, GALARIAN
 	db 0xde, 3 ; CORSOLA, GALARIAN
 	db -1
+
+ShiftHiddenGrottoContents:
+	set #1, CELEBI_EVENT_OFFSET
+	call GetGameDataPointer
+	seek #result
+	set #1, 76
+	set #2, 23
+	call ShiftSaveDataBack
+
+.shift_loop
+	writebyte #zero
+	decrement #2
+	retz #2
+	set #1, 2
+	call ShiftSaveDataBack
+	jump .shift_loop

@@ -2,7 +2,7 @@ ReplaceMove:
 	; replaces old move with new move that target Pokemon doesn't already know
 	; #r0: move replace table
 	set #1, .mon_callback
-	jump ApplyPartyPatches
+	jump ApplyPartyPatchesOld
 
 .mon_callback
 	push #1

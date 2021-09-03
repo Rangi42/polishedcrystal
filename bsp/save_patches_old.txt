@@ -210,7 +210,7 @@ AdjustItemIndexesToBuild4:
 
 AdjustMonCaughtBallData:
 	set #1, .ball_adjust_callback
-	jump ApplyPartyPatches
+	jump ApplyPartyPatchesOld
 
 .ball_adjust_callback
 	add #1, CAUGHTBALL_OFFSET
@@ -590,7 +590,7 @@ UpdateCharset:
 ChangeGyaradosForm:
 	set #curbuild, 6
 	set #1, .mon_callback
-	call ApplyPartyPatches
+	call ApplyPartyPatchesOld
 
 .mon_callback
 	seek #1
