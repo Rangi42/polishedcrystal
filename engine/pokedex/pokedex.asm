@@ -237,7 +237,28 @@ Pokedex_LoadTilemapWithPokepic:
 
 	hlcoord 1, 1
 	ld a, $40
-	jmp _PlaceFrontpicAtHL
+	call _PlaceFrontpicAtHL
+
+	; Correct the pokepic vram bank if applicable.
+	ld a, [wPokedex_MonInfoBank]
+	and a
+	ret nz
+
+	hlcoord 1, 1, wAttrMap
+	ld b, 7
+.outer_loop
+	ld c, 7
+.inner_loop
+	ld a, [hl]
+	xor VRAM_BANK_1
+	ld [hli], a
+	dec c
+	jr nz, .inner_loop
+	ld de, SCREEN_WIDTH - 7
+	add hl, de
+	dec b
+	jr nz, .outer_loop
+	ret
 
 Pokedex_GetCursorSpecies:
 ; Returns species in c, form+ext in b that cursor is hovering.
@@ -790,11 +811,6 @@ PokedexStr_Feet:
 	db "′??″@"
 
 Pokedex_Description:
-	; Since we're reusing 0:$40-$7c, ensure that we have the frontpic loaded in
-	; 1:$40-$7c.
-	call Pokedex_GetCursorMonInVBK1
-	call Pokedex_RefreshScreen
-
 	; Move the dex number display.
 	ld a, 17
 	ld [wPokedexOAM_DexNoX], a
@@ -1007,36 +1023,29 @@ Pokedex_Description:
 	; Bottom menu bar
 	ldh a, [rSVBK]
 	push af
-	ld a, BANK(wDexVWFTiles)
+	ld a, BANK(wDexTilemap)
 	ldh [rSVBK], a
-	ld a, -1
-	ld bc, 21 tiles
-	ld hl, wDexVWFTiles
-	rst ByteFill
-	ld hl, PokedexVWFStr_DescMenu
-	ld de, wDexVirtualOAMCopy
-	ld bc, PokedexVWFStr_DescMenuEnd - PokedexVWFStr_DescMenu
-	rst CopyBytes
-	ld hl, wDexVWFTiles tile 1
-	ld de, wDexVirtualOAMCopy
-	lb bc, VWF_INVERT, 4
-	call PlaceVWFString
 	ld b, 0
 	call Pokedex_SetTilemap
-	hldexcoord 0, 18
-	ld a, $40
-	ld b, 21
+	hldexcoord 2, 18
+	ld a, $16
+	ld [hli], a
+	ld a, $f2
+	ld b, 15
 .botmenu_loop
 	ld [hli], a
-	inc a
 	dec b
 	jr nz, .botmenu_loop
-
-	call DelayFrame
-	ld de, wDexVWFTiles
-	ld hl, vTiles2 tile $40
-	ld c, 21
-	call Get2bpp
+	ld [hl], $16
+	hldexcoord 4, 18
+	ld a, $3c
+	ld [hli], a
+	inc a
+	ld [hli], a
+	inc a
+	ld [hli], a
+	hldexcoord 18, 18, wDexAttrmap
+	set OAM_X_FLIP, [hl]
 
 	ld b, DEXTILE_FROM_DEXMAP
 	call Pokedex_SetTilemap
@@ -1357,28 +1366,24 @@ Pokedex_GetInput:
 	and D_PAD
 	ret
 
+Pokedex_SwitchMonInfoBank:
+; Switch which bank to store tile data in. Tiles are loaded as follows:
+; 0: vTiles2 tile $40
+; 1: vTiles5 tile $40
+	ld hl, wPokedex_MonInfoBank
+	ld a, [hl]
+	xor 1
+	ld [hl], a
+	ret
+
 Pokedex_GetCursorMonInVBK1:
 	ld a, 1
 	ld [wPokedex_MonInfoBank], a
 	jr _Pokedex_GetCursorMon
 Pokedex_GetCursorMon:
 ; Displays information about the mon the cursor is currently hovering.
-	; Switch which bank to store tile data in. Tiles are loaded as follows:
-	; 0: vTiles2 tile $40
-	; 1: vTiles5 tile $40
-	; 2: vTiles1 tile $40 (unused)
-	; 3: vTiles4 tile $40
-	ld a, [wPokedex_DisplayMode]
-	and a
-	ld b, 1
-	jr z, .got_vbkswitch
-	ld b, 3
-.got_vbkswitch
-	ld hl, wPokedex_MonInfoBank
-	ld a, [hl]
-	xor b
-	ld [hl], a
-
+	call Pokedex_SwitchMonInfoBank
+	; fallthrough
 _Pokedex_GetCursorMon:
 	; Set up proper palettes and switch between vbk0 and vbk1 usage.
 	swap a

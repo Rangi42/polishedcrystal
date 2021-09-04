@@ -772,7 +772,8 @@ ChecksumTempMon:
 	call .DoChecksum
 
 	; nickname + OT. This skips one CRC multiplier due to a double-increase.
-	; Counterintuitive but harmless.
+	; Counterintuitive but harmless (originally a mistake, but fixing would
+	; needlessly break saves...).
 	ld bc, wEncodedTempMonNickname
 	ld d, $80 | (SAVEMON_STRUCT_LENGTH - SAVEMON_NICKNAME)
 	call .DoChecksum
