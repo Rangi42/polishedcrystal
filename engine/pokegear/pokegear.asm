@@ -1978,14 +1978,14 @@ TownMapBubble:
 
 ; Top-left corner
 	hlcoord 1, 0
-	ld a, $37
+	ld a, $3c
 	ld [hli], a
 ; Top row
 	ld bc, 16
 	ld a, " "
 	rst ByteFill
 ; Top-right corner
-	ld [hl], $38
+	ld [hl], $3d
 	hlcoord 1, 1
 
 ; Middle row
@@ -1995,14 +1995,14 @@ TownMapBubble:
 
 ; Bottom-left corner
 	hlcoord 1, 2
-	ld a, $39
+	ld a, $3e
 	ld [hli], a
 ; Bottom row
 	ld bc, 16
 	ld a, " "
 	rst ByteFill
 ; Bottom-right corner
-	ld [hl], $3a
+	ld [hl], $3f
 
 ; Print "Where?"
 	hlcoord 2, 0
