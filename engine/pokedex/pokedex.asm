@@ -1007,6 +1007,7 @@ Pokedex_Description:
 	hlcoord 9, 5
 	push af
 	call FarString
+	; Dex entry
 	inc de
 	pop af
 	push de
@@ -1044,25 +1045,67 @@ Pokedex_Description:
 	ld [hli], a
 	inc a
 	ld [hli], a
-	hldexcoord 18, 18, wDexAttrmap
+	hldexcoord 15, 18
+	ld a, $2e
+	ld [hli], a
+	inc a
+	ld [hli], a
+	inc a
+	ld [hl], a
+	hldexcoord 15, 18, wDexAttrmap
+	set OAM_TILE_BANK, [hl]
+	inc hl
+	set OAM_TILE_BANK, [hl]
+	inc hl
+	set OAM_TILE_BANK, [hl]
+	inc hl
 	set OAM_X_FLIP, [hl]
 
 	ld b, DEXTILE_FROM_DEXMAP
 	call Pokedex_SetTilemap
 	pop af
 	ldh [rSVBK], a
-.info_done
-	pop af
-	pop hl
-	pop hl
 
+.joypad_loop
 	call Pokedex_RefreshScreen
 	ld a, $57
 	ld de, PHB_DescSwitchSCY
 	call Pokedex_SetHBlankFunction
+	call Pokedex_GetInput
+	rrca
+	jr c, .pressed_a
+	rrca
+	jr c, .info_done ; pressed b
+	jr .joypad_loop
 
-	ld c, 240
-	call DelayFrames
+.pressed_a
+	; print other page description
+	lb bc, 5, 19
+	hlcoord 1, 12
+	push hl
+	call ClearBox
+	pop hl
+	pop af
+	pop de
+	pop bc
+	push de
+	push bc
+	push af
+	call FarString
+
+	;swap P.1/P.2 tile
+	hlcoord 2, 10
+	ld a, [hl]
+	inc [hl]
+	cp $1d
+	jr z, .joypad_loop
+	ld [hl], $1d
+	jr .joypad_loop
+
+.info_done
+	pop af
+	pop hl
+	pop hl
 
 	; fallthrough
 Pokedex_Main:
@@ -2776,6 +2819,15 @@ INCBIN "gfx/pokedex/main.bin.lz"
 
 DexTilemap_Description:
 INCBIN "gfx/pokedex/description.bin.lz"
+
+DexTilemap_Bio:
+INCBIN "gfx/pokedex/bio.bin.lz"
+
+DexTilemap_Stats:
+INCBIN "gfx/pokedex/stats.bin.lz"
+
+DexTilemap_Area:
+INCBIN "gfx/pokedex/area.bin.lz"
 
 PokedexLZ:
 INCBIN "gfx/pokedex/pokedex.2bpp.lz"
