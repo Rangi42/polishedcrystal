@@ -858,6 +858,36 @@ Pokedex_Description:
 	jmp .info_done
 
 .mon_caught
+	; Type and footprint should use correct vbank
+	ld a, [wPokedex_MonInfoBank]
+	and a
+	jr nz, .vbank_1
+	hlcoord 18, 2, wAttrMap
+	ld b, VRAM_BANK_1
+	ld a, [hl]
+	xor b
+	ld [hli], a
+	ld a, [hl]
+	xor b
+	ld [hli], a
+	hlcoord 9, 3, wAttrMap
+	assert VRAM_BANK_1 == 8
+	ld c, b
+.attr_loop
+	ld a, [hl]
+	xor b
+	ld [hli], a
+	dec c
+	jr nz, .attr_loop
+	inc hl
+	ld a, [hl]
+	xor b
+	ld [hli], a
+	ld a, [hl]
+	xor b
+	ld [hli], a
+
+.vbank_1
 	; Get a pointer to the dex information.
 	call GetSpeciesAndFormIndex
 	ld hl, PokedexDataPointerTable
