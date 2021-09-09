@@ -286,6 +286,22 @@ Pokedex_GetCursorSpecies:
 	ld c, a
 	ret
 
+Pokedex_SwapNormalShinyPalette:
+	ld a, SHINY_CHARM
+	ld [wCurKeyItem], a
+	call CheckKeyItem
+	; ret nc
+	ld bc, wPokedex_Personality
+	ld a, [bc]
+	xor SHINY_MASK
+	ld [bc], a
+	ld a, [wCurPartySpecies]
+	farcall GetMonNormalOrShinyPalettePointer
+	ld de, wBGPals1 palette 6 + 2
+	ld a, BANK(PokemonPalettes)
+	ld bc, 4
+	jp FarCopyBytesToColorWRAM
+
 Pokedex_MainLoop:
 .loop
 	call Pokedex_GetInput
@@ -855,7 +871,7 @@ Pokedex_Description:
 	push af
 	push af
 	push af
-	jmp .info_done
+	jmp .not_caught
 
 .mon_caught
 	; Get a pointer to the dex information.
@@ -1021,7 +1037,7 @@ Pokedex_Description:
 	; At this point, we have pointers to the dex pages stored on the stack along
 	; with the bank. This is used if we want to switch page.
 
-	; Type and footprint should use correct vbank
+	; Type and footprint should use correct vram bank
 	ld a, [wPokedex_MonInfoBank]
 	and a
 	jr nz, .vbank_1
@@ -1096,6 +1112,7 @@ Pokedex_Description:
 	pop af
 	ldh [rSVBK], a
 
+.not_caught
 .joypad_loop
 	call Pokedex_RefreshScreen
 	ld a, $57
@@ -1106,10 +1123,17 @@ Pokedex_Description:
 	jr c, .pressed_a
 	rrca
 	jr c, .info_done ; pressed b
+	rrca
+	jr c, .pressed_select
+	rrca
+	jr c, .pressed_start
 	jr .joypad_loop
 
 .pressed_a
 	; print other page description
+	call Pokedex_GetCursorSpecies
+	bit MON_CAUGHT_F, b
+	jr z, .joypad_loop
 	lb bc, 5, 19
 	hlcoord 1, 12
 	push hl
@@ -1123,7 +1147,7 @@ Pokedex_Description:
 	push af
 	call FarString
 
-	;swap P.1/P.2 tile
+	; swap P.1/P.2 tile
 	hlcoord 2, 10
 	ld a, [hl]
 	inc [hl]
@@ -1131,6 +1155,62 @@ Pokedex_Description:
 	jr z, .joypad_loop
 	ld [hl], $1d
 	jr .joypad_loop
+
+.pressed_select
+	; cycle shininess
+	call Pokedex_SwapNormalShinyPalette
+	jr .joypad_loop
+
+.pressed_start
+	; cycle form (if applicable)
+	call Pokedex_GetCursorSpecies
+	push hl
+	res MON_CAUGHT_F, b
+	ld hl, VariantSpeciesAndFormTable
+.variant_loop
+	ld a, [hli]
+	and a
+	jr z, .apply_form
+	cp c
+	ld a, [hli]
+	jr nz, .variant_loop
+	xor b
+	cp FORM_MASK + 1 ; check extspecies
+	jr nc, .variant_loop
+	and FORM_MASK ; ensure listed form isn't the same as current form
+	jr z, .variant_loop
+	push hl
+	push bc
+	call CheckSeenMon
+	pop bc
+	pop hl
+	jr z, .variant_loop
+.apply_form
+	dec hl
+	ld b, [hl]
+	push bc
+	call CheckSeenMon ; we still need to check if base form was ever seen
+	pop bc
+	jr z, .joypad_loop
+	push bc
+	call CheckCaughtMon
+	pop bc
+	jr z, .cont
+	set MON_CAUGHT_F, b
+.cont
+	pop hl
+	ldh a, [rSVBK]
+	push af
+	ld a, BANK(wDexMons)
+	ldh [rSVBK], a
+	ld [hl], b
+	pop af
+	ldh [rSVBK], a
+	pop af
+	pop hl
+	pop hl
+	call Pokedex_GetCursorMon
+	jmp Pokedex_Description
 
 .info_done
 	pop af
@@ -1539,8 +1619,8 @@ _Pokedex_GetCursorMon:
 
 	; Introduce a deliberate delay. The reason for this is so that we get a more
 	; consistent delay for each slot if keyrepeat applies.
-	ld c, 3
-	call DelayFrames
+	; ld c, 3
+	; call DelayFrames
 	jmp .done
 
 .got_species
