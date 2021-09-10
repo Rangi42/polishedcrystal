@@ -1206,7 +1206,7 @@ Pokedex_Description:
 	ld a, b
 	and FORM_MASK
 	cp ALOLAN_FORM
-	jmp c, .joypad_loop
+	jr c, .joypad_loop
 .test_base
 	ld a, b
 	and EXTSPECIES_MASK
