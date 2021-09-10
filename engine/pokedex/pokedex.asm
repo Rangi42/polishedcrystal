@@ -1143,7 +1143,7 @@ Pokedex_Description:
 	pop de
 	pop bc
 	push de
-	push bc
+	push bc ; switch page 1 and page 2 on the stack
 	push af
 	call FarString
 
@@ -1165,8 +1165,7 @@ Pokedex_Description:
 	; cycle form (if applicable)
 	call Pokedex_GetCursorSpecies
 	res MON_CAUGHT_F, b
-	xor a
-	ld [wTempForm], a
+	ld d, 0
 	ld hl, VariantSpeciesAndFormTable
 .variant_loop
 	ld a, [hli]
@@ -1182,25 +1181,26 @@ Pokedex_Description:
 	jr z, .variant_loop
 	dec hl
 	push bc
+	push de
 	push hl
 	ld b, [hl]
 	call CheckSeenMon
 	pop hl
+	pop de
 	pop bc
 	ld a, [hli]
 	jr z, .variant_loop
 	cp b
 	jr nc, .got_form
-	ld d, a
-	ld a, [wTempForm]
+	ld e, a
+	ld a, d
 	and a
 	jr nz, .variant_loop
-	ld a, d
-	ld [wTempForm], a ; possible form to switch to, but we should check if others are viable (including base form)
+	ld d, e ; possible form to switch to, but we should check if others are viable (including base form)
 	jr .variant_loop
 
 .cont
-	ld a, [wTempForm]
+	ld a, d
 	and a
 	jr nz, .test_base
 	ld a, b
@@ -1212,11 +1212,13 @@ Pokedex_Description:
 	and EXTSPECIES_MASK
 	ld b, a
 	push bc
+	push de
 	call CheckSeenMon
+	pop de
 	pop bc
 	ld a, b
 	jr nz, .got_form
-	ld a, [wTempForm]
+	ld a, d
 	and a
 	jmp z, .joypad_loop ; non-zero form hasn't changed and base form wasn't seen yet
 .got_form
