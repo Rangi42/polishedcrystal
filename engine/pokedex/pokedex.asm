@@ -1238,7 +1238,7 @@ Pokedex_Description:
 	ldh [rSVBK], a
 	ld [hl], b
 	pop af
-	ld [rSVBK], a
+	ldh [rSVBK], a
 	pop af
 	pop hl
 	pop hl

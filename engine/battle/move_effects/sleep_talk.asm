@@ -16,8 +16,7 @@ BattleCommand_sleeptalk:
 	ld hl, wEnemyMonMoves
 .got_moves
 	farcall GetDisableEncoreMoves
-	ld b, NUM_MOVES
-	ld c, 0
+	lb bc, NUM_MOVES, 0
 	ld e, c
 	push hl
 
