@@ -1164,7 +1164,6 @@ Pokedex_Description:
 .pressed_start
 	; cycle form (if applicable)
 	call Pokedex_GetCursorSpecies
-	push hl ; should point to form byte in wDexMons
 	res MON_CAUGHT_F, b
 	xor a
 	ld [wTempForm], a
@@ -1190,31 +1189,31 @@ Pokedex_Description:
 	pop bc
 	ld a, [hli]
 	jr z, .variant_loop
-	ld [wTempForm], a ; possible form to switch to, but we should check if others are viable (including base form)
 	cp b
-	jr c, .variant_loop
-.cont
-	pop hl
+	jr nc, .got_form
+	ld d, a
 	ld a, [wTempForm]
 	and a
-	jr nz, .form_found
+	jr nz, .variant_loop
+	ld a, d
+	ld [wTempForm], a ; possible form to switch to, but we should check if others are viable (including base form)
+	jr .variant_loop
+
+.cont
+	ld a, [wTempForm]
+	and a
+	jr nz, .test_base
 	ld a, b
 	and FORM_MASK
 	cp ALOLAN_FORM
-	ld a, 0 ; no-optimize
-	jr c, .joypad_loop
-.form_found
-	cp b
-	jr nc, .got_form
+	jmp c, .joypad_loop
 .test_base
 	ld a, b
 	and EXTSPECIES_MASK
 	ld b, a
-	push hl
 	push bc
 	call CheckSeenMon
 	pop bc
-	pop hl
 	ld a, b
 	jr nz, .got_form
 	ld a, [wTempForm]
@@ -1222,14 +1221,15 @@ Pokedex_Description:
 	jmp z, .joypad_loop ; non-zero form hasn't changed and base form wasn't seen yet
 .got_form
 	ld b, a
-	push hl
 	push bc
 	call CheckCaughtMon
 	pop bc
-	pop hl
 	jr z, .not_caught
 	set MON_CAUGHT_F, b
 .not_caught
+	push bc
+	call Pokedex_GetCursorSpecies ; hl should point to form byte offset in wDexMons
+	pop bc
 	ldh a, [rSVBK]
 	push af
 	ld a, BANK(wDexMons)
