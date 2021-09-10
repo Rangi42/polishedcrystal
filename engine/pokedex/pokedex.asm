@@ -871,7 +871,7 @@ Pokedex_Description:
 	push af
 	push af
 	push af
-	jmp .not_caught
+	jmp .refresh
 
 .mon_caught
 	; Get a pointer to the dex information.
@@ -1112,17 +1112,17 @@ Pokedex_Description:
 	pop af
 	ldh [rSVBK], a
 
-.not_caught
-.joypad_loop
+.refresh
 	call Pokedex_RefreshScreen
 	ld a, $57
 	ld de, PHB_DescSwitchSCY
 	call Pokedex_SetHBlankFunction
+.joypad_loop
 	call Pokedex_GetInput
 	rrca
 	jr c, .pressed_a
 	rrca
-	jr c, .info_done ; pressed b
+	jmp c, .info_done ; pressed b
 	rrca
 	jr c, .pressed_select
 	rrca
@@ -1152,60 +1152,91 @@ Pokedex_Description:
 	ld a, [hl]
 	inc [hl]
 	cp $1d
-	jr z, .joypad_loop
+	jr z, .refresh
 	ld [hl], $1d
-	jr .joypad_loop
+	jr .refresh
 
 .pressed_select
 	; cycle shininess
 	call Pokedex_SwapNormalShinyPalette
-	jr .joypad_loop
+	jr .refresh
 
 .pressed_start
 	; cycle form (if applicable)
 	call Pokedex_GetCursorSpecies
-	push hl
+	push hl ; should point to form byte in wDexMons
 	res MON_CAUGHT_F, b
+	xor a
+	ld [wTempForm], a
 	ld hl, VariantSpeciesAndFormTable
 .variant_loop
 	ld a, [hli]
 	and a
-	jr z, .apply_form
+	jr z, .cont
 	cp c
 	ld a, [hli]
 	jr nz, .variant_loop
 	xor b
-	cp FORM_MASK + 1 ; check extspecies
+	cp FORM_MASK + 1
 	jr nc, .variant_loop
 	and FORM_MASK ; ensure listed form isn't the same as current form
 	jr z, .variant_loop
+	dec hl
+	push bc
+	push hl
+	ld b, [hl]
+	call CheckSeenMon
+	pop hl
+	pop bc
+	ld a, [hli]
+	jr z, .variant_loop
+	ld [wTempForm], a ; possible form to switch to, but we should check if others are viable (including base form)
+	cp b
+	jr c, .variant_loop
+.cont
+	pop hl
+	ld a, [wTempForm]
+	and a
+	jr nz, .form_found
+	ld a, b
+	and FORM_MASK
+	cp ALOLAN_FORM
+	ld a, 0 ; no-optimize
+	jr c, .joypad_loop
+.form_found
+	cp b
+	jr nc, .got_form
+.test_base
+	ld a, b
+	and EXTSPECIES_MASK
+	ld b, a
 	push hl
 	push bc
 	call CheckSeenMon
 	pop bc
 	pop hl
-	jr z, .variant_loop
-.apply_form
-	dec hl
-	ld b, [hl]
-	push bc
-	call CheckSeenMon ; we still need to check if base form was ever seen
-	pop bc
-	jr z, .joypad_loop
+	ld a, b
+	jr nz, .got_form
+	ld a, [wTempForm]
+	and a
+	jmp z, .joypad_loop ; non-zero form hasn't changed and base form wasn't seen yet
+.got_form
+	ld b, a
+	push hl
 	push bc
 	call CheckCaughtMon
 	pop bc
-	jr z, .cont
-	set MON_CAUGHT_F, b
-.cont
 	pop hl
+	jr z, .not_caught
+	set MON_CAUGHT_F, b
+.not_caught
 	ldh a, [rSVBK]
 	push af
 	ld a, BANK(wDexMons)
 	ldh [rSVBK], a
 	ld [hl], b
 	pop af
-	ldh [rSVBK], a
+	ld [rSVBK], a
 	pop af
 	pop hl
 	pop hl
