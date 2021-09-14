@@ -260,6 +260,168 @@ Pokedex_LoadTilemapWithPokepic:
 	jr nz, .outer_loop
 	ret
 
+Pokedex_PrevPageMon:
+	call Pokedex_GetCursorSpecies
+	dec hl
+	ld a, h
+	cpl
+	ld b, a
+	ld a, l
+	cpl
+	ld c, a
+	inc bc
+	ld de, $ffff ^ wDexMons
+	push hl
+	add hl, de
+	ld d, h
+	ld e, l
+	pop hl
+	srl d
+	rr e
+	ld a, BANK(wDexMons)
+	call StackCallInWRAMBankA
+.Function:
+.seek_loop
+	dec de
+	bit 7, d
+	ret nz
+	dec hl
+	dec hl
+	ld a, [hl]
+	and a
+	jr z, .seek_loop
+	add hl, bc
+	ld a, h
+	cpl
+	ld h, a
+	ld a, l
+	cpl
+	ld l, a
+	inc hl
+	ld bc, -10
+	ld de, wPokedex_CursorPos
+.cursor_row_loop
+	add hl, bc
+	jr nc, .done_row
+	call .adjust_row
+	jr .cursor_row_loop
+.done_row
+	ld bc, 10
+	add hl, bc
+	ld bc, -2
+.cursor_col_loop
+	add hl, bc
+	jr nc, .done
+	ld a, [de]
+	and $f
+	jr nz, .no_adjust
+	call .adjust_row
+	ld a, [de]
+	and $f0
+	add 4
+	ld [de], a
+	jr .cursor_col_loop
+.no_adjust
+	ld a, [de]
+	dec a
+	ld [de], a
+	jr .cursor_col_loop
+.done
+	xor a
+	ret
+
+.adjust_row
+	ld a, [de]
+	sub $10
+	ld [de], a
+	ret nc
+	add $10
+	ld [de], a
+	inc de
+	ld a, [de]
+	dec a
+	ld [de], a
+	dec de
+	ret
+
+Pokedex_NextPageMon:
+	call Pokedex_GetCursorSpecies
+	dec hl
+	ld a, h
+	cpl
+	ld b, a
+	ld a, l
+	cpl
+	ld c, a
+	inc bc
+	push hl
+	ld hl, wDexMonsEnd
+	add hl, bc
+	ld d, h
+	ld e, l
+	pop hl
+	srl d
+	rr e
+	ld a, BANK(wDexMons)
+	call StackCallInWRAMBankA
+.Function:
+.seek_loop
+	dec de
+	bit 7, d
+	ret nz
+	inc hl
+	inc hl
+	ld a, [hl]
+	and a
+	jr z, .seek_loop
+	add hl, bc
+	ld bc, -10
+	ld de, wPokedex_CursorPos
+.cursor_row_loop
+	add hl, bc
+	jr nc, .done_row
+	call .adjust_row
+	jr .cursor_row_loop
+.done_row
+	ld bc, 10
+	add hl, bc
+	ld bc, -2
+.cursor_col_loop
+	add hl, bc
+	jr nc, .done
+	ld a, [de]
+	and $f
+	cp 4
+	jr c, .no_adjust
+	call .adjust_row
+	ld a, [de]
+	and $f0
+	ld [de], a
+	jr .cursor_col_loop
+.no_adjust
+	ld a, [de]
+	inc a
+	ld [de], a
+	jr .cursor_col_loop
+.done
+	xor a
+	ret
+
+.adjust_row
+	ld a, [de]
+	add $10
+	ld [de], a
+	cp $30
+	ret c
+	sub $10
+	ld [de], a
+	inc de
+	ld a, [de]
+	inc a
+	ld [de], a
+	dec de
+	ret
+
 Pokedex_GetCursorSpecies:
 ; Returns species in c, form+ext in b that cursor is hovering.
 	ld a, BANK(wDexMons)
@@ -1127,6 +1289,14 @@ Pokedex_Description:
 	jr c, .pressed_select
 	rrca
 	jr c, .pressed_start
+	rrca
+	; jr c, .pressed_right
+	rrca
+	; jr c, .pressed_left
+	rrca
+	jr c, .pressed_up
+	rrca
+	jr c, .pressed_down
 	jr .joypad_loop
 
 .pressed_a
@@ -1160,6 +1330,16 @@ Pokedex_Description:
 	; cycle shininess
 	call Pokedex_SwapNormalShinyPalette
 	jr .refresh
+
+.pressed_up
+	call Pokedex_PrevPageMon
+	jr nz, .joypad_loop
+	jr .reload_page
+
+.pressed_down
+	call Pokedex_NextPageMon
+	jr nz, .joypad_loop
+	jr .reload_page
 
 .pressed_start
 	; cycle form (if applicable)
@@ -1206,7 +1386,7 @@ Pokedex_Description:
 	ld a, b
 	and FORM_MASK
 	cp ALOLAN_FORM
-	jr c, .joypad_loop
+	jmp c, .joypad_loop
 .test_base
 	ld a, b
 	and EXTSPECIES_MASK
@@ -1239,6 +1419,7 @@ Pokedex_Description:
 	ld [hl], b
 	pop af
 	ldh [rSVBK], a
+.reload_page
 	pop af
 	pop hl
 	pop hl
