@@ -427,10 +427,13 @@ PVB_UpdateDexMap::
 
 	ld a, [wPokedex_MonInfoBank]
 	ldh [rVBK], a
-	ld de, wDexMonFrontpicTiles
+	ld de, sScratch + 1 tiles
 	ld bc, vTiles2 tile $40
+	ld a, BANK(sScratch)
+	call GetSRAMBank
 	ld a, 48
 	call GDMACopy
+	call CloseSRAM
 
 .frontpic_done
 	bit DEXGFX_POKEINFO, [hl]

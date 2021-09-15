@@ -270,7 +270,7 @@ Pokedex_PrevPageMon:
 	cpl
 	ld c, a
 	inc bc
-	ld de, $ffff ^ wDexMons
+	ld de, $ffff ^ wDexMons + 1
 	push hl
 	add hl, de
 	ld d, h
@@ -1279,6 +1279,12 @@ Pokedex_Description:
 	ld a, $57
 	ld de, PHB_DescSwitchSCY
 	call Pokedex_SetHBlankFunction
+	ld a, [wCurPartySpecies]
+	ld c, a
+	ld a, [wPokedex_Form]
+	ld b, a
+	call PlayCry2
+
 .joypad_loop
 	call Pokedex_GetInput
 	rrca
@@ -1329,7 +1335,8 @@ Pokedex_Description:
 .pressed_select
 	; cycle shininess
 	call Pokedex_SwapNormalShinyPalette
-	jr .refresh
+	call Pokedex_RefreshScreen
+	jr .joypad_loop
 
 .pressed_up
 	call Pokedex_PrevPageMon
@@ -1813,12 +1820,13 @@ _Pokedex_GetCursorMon:
 	call nz, DelayFrame
 	ldh a, [rSVBK]
 	push af
-	ld a, BANK(wDexMonFrontpicTiles)
-	ldh [rSVBK], a
 	ld hl, QuestionMarkLZ
-	ld de, wDexMonFrontpicTiles
+	ld de, sScratch
+	ld a, BANK(sScratch)
+	call GetSRAMBank
 	ld a, BANK(QuestionMarkLZ)
 	call FarDecompressToDE
+	call CloseSRAM
 	pop af
 	ldh [rSVBK], a
 	ld hl, wPokedex_GFXFlags
@@ -1872,7 +1880,7 @@ _Pokedex_GetCursorMon:
 
 	; Frontpic
 	call GetBaseData
-	farcall DexPrepareFrontpic
+	farcall PrepareFrontpic
 	ld hl, wPokedex_GFXFlags
 	set DEXGFX_FRONTPIC, [hl]
 
@@ -3040,7 +3048,7 @@ Pokedex_LoadSelectedMonTiles:
 	ld a, BANK(sScratch)
 	call GetSRAMBank
 	ld hl, QuestionMarkLZ
-	ld de, sScratch
+	ld de, sScratch + 1 tiles
 	call Decompress
 	ld hl, vTiles2
 	ld de, sScratch
