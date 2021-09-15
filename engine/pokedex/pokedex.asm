@@ -1818,17 +1818,13 @@ _Pokedex_GetCursorMon:
 	ld hl, wPokedex_GFXFlags
 	bit DEXGFX_ROWTILES, [hl]
 	call nz, DelayFrame
-	ldh a, [rSVBK]
-	push af
 	ld hl, QuestionMarkLZ
-	ld de, sScratch
+	ld de, sScratch + 1 tiles
 	ld a, BANK(sScratch)
 	call GetSRAMBank
 	ld a, BANK(QuestionMarkLZ)
 	call FarDecompressToDE
 	call CloseSRAM
-	pop af
-	ldh [rSVBK], a
 	ld hl, wPokedex_GFXFlags
 	set DEXGFX_FRONTPIC, [hl]
 	set DEXGFX_POKEINFO, [hl]
@@ -3051,7 +3047,7 @@ Pokedex_LoadSelectedMonTiles:
 	ld de, sScratch + 1 tiles
 	call Decompress
 	ld hl, vTiles2
-	ld de, sScratch
+	ld de, sScratch + 1 tiles
 	ld c, 7 * 7
 	ldh a, [hROMBank]
 	ld b, a
