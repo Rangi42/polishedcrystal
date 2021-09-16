@@ -149,13 +149,14 @@ ENDM
 	map_const ECRUTEAK_GYM,                                5,  9 ;  7
 	map_const ECRUTEAK_ITEMFINDER_HOUSE,                   4,  4 ;  8
 	map_const ECRUTEAK_CITY,                              20, 18 ;  9
-	map_const ROUTE_36,                                   32,  9 ; 10
-	map_const ROUTE_36_RUINS_OF_ALPH_GATE,                 5,  4 ; 11
-	map_const ROUTE_36_VIOLET_GATE,                        5,  4 ; 12
-	map_const ROUTE_37,                                   10, 10 ; 13
-	map_const VALERIES_HOUSE,                              4,  4 ; 14
-	map_const ECRUTEAK_CHERISH_BALL_HOUSE,                 4,  4 ; 15
-	map_const ECRUTEAK_DESTINY_KNOT_HOUSE,                 4,  4 ; 16
+	map_const ROUTE_35,                                   12, 18 ; 10
+	map_const ROUTE_36,                                   32,  9 ; 11
+	map_const ROUTE_36_RUINS_OF_ALPH_GATE,                 5,  4 ; 12
+	map_const ROUTE_36_VIOLET_GATE,                        5,  4 ; 13
+	map_const ROUTE_37,                                   10, 10 ; 14
+	map_const VALERIES_HOUSE,                              4,  4 ; 15
+	map_const ECRUTEAK_CHERISH_BALL_HOUSE,                 4,  4 ; 16
+	map_const ECRUTEAK_DESTINY_KNOT_HOUSE,                 4,  4 ; 17
 
 	newgroup                                                     ;  5
 	map_const BLACKTHORN_GYM_1F,                           5,  9 ;  1
@@ -252,7 +253,7 @@ ENDM
 	newgroup                                                     ; 11
 	map_const ROUTE_34,                                   10, 27 ;  1
 	map_const ROUTE_34_COAST,                              9, 34 ;  2
-	map_const ROUTE_35,                                   12, 18 ;  3
+	map_const DAYCARE,                                     4,  4 ;  3
 	map_const STORMY_BEACH,                               22, 11 ;  4
 	map_const MURKY_SWAMP,                                23, 19 ;  5
 	map_const GOLDENROD_CITY,                             22, 18 ;  6
@@ -278,14 +279,13 @@ ENDM
 	map_const ILEX_FOREST_AZALEA_GATE,                     5,  4 ; 26
 	map_const ROUTE_34_ILEX_FOREST_GATE,                   5,  4 ; 27
 	map_const ROUTE_35_GOLDENROD_GATE,                     5,  4 ; 28
-	map_const DAYCARE,                                     4,  4 ; 29
-	map_const GOLDENROD_HP_UP_HOUSE,                       4,  4 ; 30
-	map_const GOLDENROD_NET_BALL_HOUSE,                    4,  4 ; 31
-	map_const GOLDENROD_BAND_HOUSE,                        4,  4 ; 32
-	map_const GOLDENROD_MUSEUM_1F,                         7,  4 ; 33
-	map_const GOLDENROD_MUSEUM_2F,                         7,  4 ; 34
-	map_const MAGNET_TUNNEL_WEST,                         10, 11 ; 35
-	map_const MAGNET_TUNNEL_INSIDE,                       23, 13 ; 36
+	map_const GOLDENROD_HP_UP_HOUSE,                       4,  4 ; 29
+	map_const GOLDENROD_NET_BALL_HOUSE,                    4,  4 ; 30
+	map_const GOLDENROD_BAND_HOUSE,                        4,  4 ; 31
+	map_const GOLDENROD_MUSEUM_1F,                         7,  4 ; 32
+	map_const GOLDENROD_MUSEUM_2F,                         7,  4 ; 33
+	map_const MAGNET_TUNNEL_WEST,                         10, 11 ; 34
+	map_const MAGNET_TUNNEL_INSIDE,                       23, 13 ; 35
 
 	newgroup                                                     ; 12
 	map_const ROUTE_6,                                    15, 16 ;  1
