@@ -1568,27 +1568,34 @@ BattleCommand_checkpowder:
 	ld a, BATTLE_VARS_MOVE_ANIM
 	call GetBattleVar
 	cp SING
-	jr z, .sing
-	cp THUNDER_WAVE
-	jr z, .twave
-	ld hl, PowderMoves
-	call IsInByteArray
-	ret nc
-	jr BattleCommand_resettypematchup
-.sing
+	jr nz, .not_sing
 	farcall CheckNullificationAbilities
 	ld a, [wTypeMatchup]
 	and a
 	ret nz
 	ld [wTypeModifier], a
 	ret
-.twave
-	call CheckIfTargetIsGroundType
-	jr nz, BattleCommand_resettypematchup
-	call GetOpponentItemAfterUnnerve
-	ld a, b
-	cp HELD_RING_TARGET
+
+.not_sing
+	cp THUNDER_WAVE
+	jr z, BattleCommand_resettypematchup
+	cp TOXIC
+	jr z, .check_corrosion
+	cp POISONPOWDER
+	jr nz, .powder
+.check_corrosion
+	ld b, a
+	call GetTrueUserAbility
+	cp CORROSION
 	ret z
+	ld a, b
+	cp TOXIC
+	jr z, BattleCommand_resettypematchup
+	; fallthrough for poisonpowder
+.powder
+	ld hl, PowderMoves
+	call IsInByteArray
+	ret nc
 	; fallthrough
 BattleCommand_resettypematchup:
 ; Reset the type matchup multiplier to 1.0, if the type matchup is not 0.

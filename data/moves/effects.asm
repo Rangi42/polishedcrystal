@@ -750,7 +750,6 @@ Poisonpowder:
 	checkhit
 	checkpowder
 	bounceback
-	stab
 	checksafeguard
 	poison
 	endmove
@@ -761,8 +760,8 @@ Toxic:
 	doturn
 	hastarget
 	checkhit
+	checkpowder
 	bounceback
-	stab
 	checksafeguard
 	toxic
 	endmove
