@@ -69,8 +69,8 @@ ENDM
 	map_const BURNED_TOWER_B1F,                           10,  9 ; 15
 	map_const NATIONAL_PARK,                              21, 27 ; 16
 	map_const NATIONAL_PARK_BUG_CONTEST,                  21, 27 ; 17
-	map_const ROUTE_35_NATIONAL_PARK_GATE,                10,  4 ; 19
-	map_const ROUTE_36_NATIONAL_PARK_GATE,                 5,  4 ; 18
+	map_const ROUTE_35_NATIONAL_PARK_GATE,                10,  4 ; 18
+	map_const ROUTE_36_NATIONAL_PARK_GATE,                 5,  4 ; 19
 	map_const RADIO_TOWER_1F,                              9,  4 ; 20
 	map_const RADIO_TOWER_2F,                              9,  4 ; 21
 	map_const RADIO_TOWER_3F,                              9,  4 ; 22
