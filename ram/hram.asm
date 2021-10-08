@@ -177,6 +177,9 @@ NEXTU
 hChartScreen:: db
 hChartFillCoord:: db
 hChartLineCoord:: db
+NEXTU
+hPokedexDescPlayCry:: db
+	ds 2
 ENDU
 
 hCGBPalUpdate:: db

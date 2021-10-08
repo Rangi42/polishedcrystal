@@ -17,6 +17,9 @@
 	const_def
 	const DEXDISP_MAIN
 	const DEXDISP_DESC
+	const DEXDISP_AREA
+	const DEXDISP_BIO
+	const DEXDISP_STAT
 
 	const_def
 	const DEXPOS_MONS
@@ -224,6 +227,17 @@ Pokedex:
 	ld [wVirtualOAMSprite32TileID], a
 	ret
 
+Pokedex_LoadTilemap:
+	ld a, BANK(wDexTilemap)
+	call StackCallInWRAMBankA
+.Function
+	ld de, wDexTilemap
+	ld a, BANK(DexTilemaps)
+	call FarDecompressToDE
+
+	ld b, DEXTILE_FROM_DEXMAP
+	jmp Pokedex_SetTilemap
+
 Pokedex_LoadTilemapWithPokepic:
 	ld a, BANK(wDexTilemap)
 	call StackCallInWRAMBankA
@@ -260,7 +274,98 @@ Pokedex_LoadTilemapWithPokepic:
 	jr nz, .outer_loop
 	ret
 
+Pokedex_ChangeForm:
+; ret c if no alternate form is found
+	call Pokedex_GetCursorSpecies
+	res MON_CAUGHT_F, b
+	ld d, 0
+	ld hl, VariantSpeciesAndFormTable
+.variant_loop
+	ld a, [hli]
+	and a
+	jr z, .cont
+	cp c
+	ld a, [hli]
+	jr nz, .variant_loop
+	xor b
+	cp FORM_MASK + 1
+	jr nc, .variant_loop
+	and FORM_MASK ; ensure listed form isn't the same as current form
+	jr z, .variant_loop
+	dec hl
+	push bc
+	push de
+	push hl
+	ld b, [hl]
+	ld a, [wPokedex_DisplayMode]
+	cp DEXDISP_BIO
+	call nc, CheckCaughtMon
+	call c, CheckSeenMon ; CheckCaughtMon (when called) always returns with carry flag cleared
+	pop hl
+	pop de
+	pop bc
+	ld a, [hli]
+	jr z, .variant_loop
+	cp b
+	jr nc, .got_form
+	ld e, a
+	ld a, d
+	and a
+	jr nz, .variant_loop
+	ld d, e ; possible form to switch to, but we should check if others are viable (including base form)
+	jr .variant_loop
+
+.cont
+	ld a, d
+	and a
+	jr nz, .test_base
+	ld a, b
+	and FORM_MASK
+	cp ALOLAN_FORM
+	ret c
+.test_base
+	ld a, b
+	and EXTSPECIES_MASK
+	ld b, a
+	push bc
+	push de
+	ld a, [wPokedex_DisplayMode]
+	cp DEXDISP_BIO
+	call nc, CheckCaughtMon
+	call c, CheckSeenMon
+	pop de
+	pop bc
+	ld a, b
+	jr nz, .got_form
+	ld a, d
+	and a
+	scf
+	ret z ; non-zero form hasn't changed and base form wasn't seen yet
+.got_form
+	ld b, a
+	push bc
+	call CheckCaughtMon
+	pop bc
+	jr z, .not_caught
+	set MON_CAUGHT_F, b
+.not_caught
+	push bc
+	call Pokedex_GetCursorSpecies ; hl should point to form byte offset in wDexMons
+	pop bc
+	ldh a, [rSVBK]
+	push af
+	ld a, BANK(wDexMons)
+	ldh [rSVBK], a
+	ld [hl], b
+	pop af
+	ldh [rSVBK], a
+	xor a
+	ret
+
 Pokedex_PrevPageMon:
+	ld a, BANK(wDexMons)
+	call StackCallInWRAMBankA
+.Function:
 	call Pokedex_GetCursorSpecies
 	dec hl
 	ld a, h
@@ -278,9 +383,6 @@ Pokedex_PrevPageMon:
 	pop hl
 	srl d
 	rr e
-	ld a, BANK(wDexMons)
-	call StackCallInWRAMBankA
-.Function:
 .seek_loop
 	dec de
 	bit 7, d
@@ -290,6 +392,14 @@ Pokedex_PrevPageMon:
 	ld a, [hl]
 	and a
 	jr z, .seek_loop
+	ld a, [wPokedex_DisplayMode]
+	cp DEXDISP_BIO
+	jr c, .got_mon
+	inc hl
+	ld a, [hld]
+	bit 7, a
+	jr z, .seek_loop
+.got_mon
 	add hl, bc
 	ld a, h
 	cpl
@@ -345,6 +455,9 @@ Pokedex_PrevPageMon:
 	ret
 
 Pokedex_NextPageMon:
+	ld a, BANK(wDexMons)
+	call StackCallInWRAMBankA
+.Function:
 	call Pokedex_GetCursorSpecies
 	dec hl
 	ld a, h
@@ -355,16 +468,13 @@ Pokedex_NextPageMon:
 	ld c, a
 	inc bc
 	push hl
-	ld hl, wDexMonsEnd
+	ld hl, wDexMonsEnd - 2
 	add hl, bc
 	ld d, h
 	ld e, l
 	pop hl
 	srl d
 	rr e
-	ld a, BANK(wDexMons)
-	call StackCallInWRAMBankA
-.Function:
 .seek_loop
 	dec de
 	bit 7, d
@@ -374,6 +484,14 @@ Pokedex_NextPageMon:
 	ld a, [hl]
 	and a
 	jr z, .seek_loop
+	ld a, [wPokedex_DisplayMode]
+	cp DEXDISP_BIO
+	jr c, .got_mon
+	inc hl
+	ld a, [hld]
+	bit 7, a
+	jr z, .seek_loop
+.got_mon
 	add hl, bc
 	ld bc, -10
 	ld de, wPokedex_CursorPos
@@ -447,22 +565,6 @@ Pokedex_GetCursorSpecies:
 	ld b, [hl]
 	ld c, a
 	ret
-
-Pokedex_SwapNormalShinyPalette:
-	ld a, SHINY_CHARM
-	ld [wCurKeyItem], a
-	call CheckKeyItem
-	; ret nc
-	ld bc, wPokedex_Personality
-	ld a, [bc]
-	xor SHINY_MASK
-	ld [bc], a
-	ld a, [wCurPartySpecies]
-	farcall GetMonNormalOrShinyPalettePointer
-	ld de, wBGPals1 palette 6 + 2
-	ld a, BANK(PokemonPalettes)
-	ld bc, 4
-	jp FarCopyBytesToColorWRAM
 
 Pokedex_MainLoop:
 .loop
@@ -980,15 +1082,18 @@ Pokedex_UpdateRow:
 	dw wAttrMap + 9 * SCREEN_WIDTH + 1, SCREEN_WIDTH * 3, 4
 	dw wDexPalCopy + 1, 6 * 5 + 1, 6
 
-PokedexVWFStr_DescMenu:
-	rawchar "Bio  Data  Breed  More  Area  Cry@"
-PokedexVWFStr_DescMenuEnd:
-
 PokedexStr_Feet:
 ; Feet uses its own pelicular display format, so replace the ?s too.
 	db "′??″@"
 
+Pokedex_DescriptionNoCry:
+	xor a
+	jr _Pokedex_Description
+
 Pokedex_Description:
+	ld a, 1
+_Pokedex_Description:
+	ldh [hPokedexDescPlayCry], a
 	; Move the dex number display.
 	ld a, 17
 	ld [wPokedexOAM_DexNoX], a
@@ -1279,6 +1384,10 @@ Pokedex_Description:
 	ld a, $57
 	ld de, PHB_DescSwitchSCY
 	call Pokedex_SetHBlankFunction
+
+	ldh a, [hPokedexDescPlayCry]
+	and a
+	jr z, .joypad_loop
 	ld a, [wCurPartySpecies]
 	ld c, a
 	ld a, [wPokedex_Form]
@@ -1294,11 +1403,11 @@ Pokedex_Description:
 	rrca
 	jr c, .pressed_select
 	rrca
-	jr c, .pressed_start
+	jmp c, .pressed_start
 	rrca
-	; jr c, .pressed_right
+	jr c, .pressed_right
 	rrca
-	; jr c, .pressed_left
+	jr c, .pressed_left
 	rrca
 	jr c, .pressed_up
 	rrca
@@ -1328,13 +1437,28 @@ Pokedex_Description:
 	ld a, [hl]
 	inc [hl]
 	cp $1d
-	jr z, .refresh
+	jr z, .page_ok
 	ld [hl], $1d
-	jr .refresh
+.page_ok
+	call Pokedex_RefreshScreen
+	jr .joypad_loop
 
 .pressed_select
 	; cycle shininess
-	call Pokedex_SwapNormalShinyPalette
+	ld a, SHINY_CHARM
+	ld [wCurKeyItem], a
+	call CheckKeyItem
+	; jr nc, .joypad_loop
+	ld bc, wPokedex_Personality
+	ld a, [bc]
+	xor SHINY_MASK
+	ld [bc], a
+	ld a, [wCurPartySpecies]
+	farcall GetMonNormalOrShinyPalettePointer
+	ld de, wBGPals1 palette 6 + 2
+	ld a, BANK(PokemonPalettes)
+	ld bc, 4
+	call FarCopyBytesToColorWRAM
 	call Pokedex_RefreshScreen
 	jr .joypad_loop
 
@@ -1346,92 +1470,38 @@ Pokedex_Description:
 .pressed_down
 	call Pokedex_NextPageMon
 	jr nz, .joypad_loop
-	jr .reload_page
-
-.pressed_start
-	; cycle form (if applicable)
-	call Pokedex_GetCursorSpecies
-	res MON_CAUGHT_F, b
-	ld d, 0
-	ld hl, VariantSpeciesAndFormTable
-.variant_loop
-	ld a, [hli]
-	and a
-	jr z, .cont
-	cp c
-	ld a, [hli]
-	jr nz, .variant_loop
-	xor b
-	cp FORM_MASK + 1
-	jr nc, .variant_loop
-	and FORM_MASK ; ensure listed form isn't the same as current form
-	jr z, .variant_loop
-	dec hl
-	push bc
-	push de
-	push hl
-	ld b, [hl]
-	call CheckSeenMon
-	pop hl
-	pop de
-	pop bc
-	ld a, [hli]
-	jr z, .variant_loop
-	cp b
-	jr nc, .got_form
-	ld e, a
-	ld a, d
-	and a
-	jr nz, .variant_loop
-	ld d, e ; possible form to switch to, but we should check if others are viable (including base form)
-	jr .variant_loop
-
-.cont
-	ld a, d
-	and a
-	jr nz, .test_base
-	ld a, b
-	and FORM_MASK
-	cp ALOLAN_FORM
-	jmp c, .joypad_loop
-.test_base
-	ld a, b
-	and EXTSPECIES_MASK
-	ld b, a
-	push bc
-	push de
-	call CheckSeenMon
-	pop de
-	pop bc
-	ld a, b
-	jr nz, .got_form
-	ld a, d
-	and a
-	jmp z, .joypad_loop ; non-zero form hasn't changed and base form wasn't seen yet
-.got_form
-	ld b, a
-	push bc
-	call CheckCaughtMon
-	pop bc
-	jr z, .not_caught
-	set MON_CAUGHT_F, b
-.not_caught
-	push bc
-	call Pokedex_GetCursorSpecies ; hl should point to form byte offset in wDexMons
-	pop bc
-	ldh a, [rSVBK]
-	push af
-	ld a, BANK(wDexMons)
-	ldh [rSVBK], a
-	ld [hl], b
-	pop af
-	ldh [rSVBK], a
 .reload_page
 	pop af
 	pop hl
 	pop hl
 	call Pokedex_GetCursorMon
 	jmp Pokedex_Description
+
+.pressed_right
+	call Pokedex_GetCursorSpecies
+	bit MON_CAUGHT_F, b
+	jr z, .pressed_left
+	pop af
+	pop hl
+	pop hl
+	jmp Pokedex_Bio
+
+ .pressed_left
+	pop af
+	pop hl
+	pop hl
+	; jmp Pokedex_Area
+	jmp Pokedex_DescriptionNoCry
+
+.pressed_start
+	; cycle form (if applicable)
+	call Pokedex_ChangeForm
+	jmp c, .joypad_loop
+	pop af
+	pop hl
+	pop hl
+	call Pokedex_GetCursorMon
+	jmp Pokedex_DescriptionNoCry
 
 .info_done
 	pop af
@@ -1477,6 +1547,301 @@ Pokedex_Main:
 
 	call Pokedex_RefreshScreen
 	jmp Pokedex_SetHBlankFunctionToRow1
+
+Pokedex_Bio:
+	; Load the bio tilemap.
+	ld hl, DexTilemap_Bio
+	call Pokedex_LoadTilemap
+
+	ld a, DEXDISP_BIO
+	ld [wPokedex_DisplayMode], a
+	ld de, wStringBuffer1
+	hlcoord 4, 1
+	call PlaceString
+
+	call Pokedex_GetCursorSpecies
+	call GetSpeciesAndFormIndex
+	ld hl, PokedexDataPointerTable
+	add hl, bc
+	add hl, bc
+	add hl, bc
+	ld a, BANK(PokedexDataPointerTable)
+	ld b, a
+	call GetFarByte
+	inc hl
+	ld c, a
+	ld a, b
+	call GetFarWord
+	ld a, c
+
+	ld de, 4
+	add hl, de ; point to category
+	ld d, h
+	ld e, l
+	hlcoord 4, 3
+	call FarString
+
+	hlcoord 8, 5
+	ld de, wBaseCatchRate
+	lb bc, 1, 3
+	call PrintNum
+
+	hlcoord 8, 7
+	ld de, wBaseExp
+	lb bc, 1, 3
+	call PrintNum
+
+	call Pokedex_RefreshScreen
+	ld a, $87
+	ld de, PHB_DescSwitchSCY
+	call Pokedex_SetHBlankFunction
+
+.joypad_loop
+	call Pokedex_GetInput
+	rrca
+	; jr c, .pressed_a
+	rrca
+	jmp c, Pokedex_Main
+	rrca
+	; jr c, .pressed_select
+	rrca
+	jr c, .pressed_start
+	rrca
+	jr c, Pokedex_Stats
+	rrca
+	jmp c, Pokedex_DescriptionNoCry
+	rrca
+	jr c, .pressed_up
+	rrca
+	jr c, .pressed_down
+	jr .joypad_loop
+
+.pressed_start
+	call Pokedex_ChangeForm
+	jr c, .joypad_loop
+	jr .reload_page
+
+.pressed_up
+	call Pokedex_PrevPageMon
+	jr nz, .joypad_loop
+	jr .reload_page
+
+.pressed_down
+	call Pokedex_NextPageMon
+	jr nz, .joypad_loop
+.reload_page
+	call Pokedex_GetCursorMon
+	jmp Pokedex_Bio
+
+Pokedex_Stats:
+	; Load the stats tilemap.
+	ld hl, DexTilemap_Stats
+	call Pokedex_LoadTilemap
+	ldh a, [rSVBK]
+	push af
+	ld a, BANK(wBGPals1)
+	ldh [rSVBK], a
+	ld de, palred 31 + palgreen 26 + palblue 0
+	ld hl, wBGPals1 palette 5 + 2
+	ld a, e
+	ld [hli], a
+	ld [hl], d
+	pop af
+	ldh [rSVBK], a
+
+	ld a, DEXDISP_BIO
+	ld [wPokedex_DisplayMode], a
+	ld de, wStringBuffer1
+	hlcoord 4, 1
+	call PlaceString
+
+	call Pokedex_GetCursorSpecies
+	call GetSpeciesAndFormIndex
+
+	hlcoord 5, 5
+	ld de, wBaseHP
+	lb bc, 1, 3
+	call PrintNum
+	ld a, [wBaseEVYield1]
+	rlca
+	rlca
+	and 3
+	jr z, .atk
+	add $30 ; get corresponding EV tile
+	ld [hl], a
+
+.atk
+	hlcoord 5, 7
+	ld de, wBaseAttack
+	lb bc, 1, 3
+	call PrintNum
+	ld a, [wBaseEVYield1]
+	swap a
+	and 3
+	jr z, .def
+	add $30
+	ld [hl], a
+
+.def
+	hlcoord 5, 9
+	ld de, wBaseDefense
+	lb bc, 1, 3
+	call PrintNum
+	ld a, [wBaseEVYield1]
+	rrca
+	rrca
+	and 3
+	jr z, .sat
+	add $30
+	ld [hl], a
+
+.sat
+	hlcoord 15, 5
+	ld de, wBaseSpecialAttack
+	lb bc, 1, 3
+	call PrintNum
+	ld a, [wBaseEVYield2]
+	rlca
+	rlca
+	and 3
+	jr z, .sdf
+	add $30
+	ld [hl], a
+
+.sdf
+	hlcoord 15, 7
+	ld de, wBaseSpecialDefense
+	lb bc, 1, 3
+	call PrintNum
+	ld a, [wBaseEVYield2]
+	swap a
+	and 3
+	jr z, .spe
+	add $30
+	ld [hl], a
+
+.spe
+	hlcoord 15, 9
+	ld de, wBaseSpeed
+	lb bc, 1, 3
+	call PrintNum
+	ld a, [wBaseEVYield1]
+	and 3
+	jr z, .ok
+	add $30
+	ld [hl], a
+
+.ok
+	ld a, [wBaseAbility1]
+	ld b, a
+	push bc
+	hlcoord 1, 13
+	farcall PrintAbility
+	pop bc
+	farcall PrintAbilityDescription
+
+	ld a, [wPokedex_MonInfoBank]
+	and a
+	jr nz, .vbank_1
+	hlcoord 18, 2, wAttrMap
+	ld b, VRAM_BANK_1
+	ld a, [hl]
+	xor b
+	ld [hli], a
+	ld a, [hl]
+	xor b
+	ld [hli], a
+	hlcoord 4, 3, wAttrMap
+	assert VRAM_BANK_1 == 8
+	ld c, b
+.attr_loop
+	ld a, [hl]
+	xor b
+	ld [hli], a
+	dec c
+	jr nz, .attr_loop
+	hlcoord 18, 3, wAttrMap
+	ld a, [hl]
+	xor b
+	ld [hli], a
+	ld a, [hl]
+	xor b
+	ld [hli], a
+
+.vbank_1
+	call Pokedex_RefreshScreen
+	ld a, $87
+	ld de, PHB_DescSwitchSCY
+	call Pokedex_SetHBlankFunction
+
+.joypad_loop
+	call Pokedex_GetInput
+	rrca
+	jr c, .pressed_a
+	rrca
+	jmp c, Pokedex_Main
+	rrca
+	; jr c, .pressed_select
+	rrca
+	jr c, .pressed_start
+	rrca
+	; jr c, Pokedex_Area
+	rrca
+	jmp c, Pokedex_Bio
+	rrca
+	jr c, .pressed_up
+	rrca
+	jr c, .pressed_down
+	jr .joypad_loop
+
+.pressed_start
+	call Pokedex_ChangeForm
+	jr c, .joypad_loop
+	jr .reload_page
+
+.pressed_up
+	call Pokedex_PrevPageMon
+	jr nz, .joypad_loop
+	jr .reload_page
+
+.pressed_down
+	call Pokedex_NextPageMon
+	jr nz, .joypad_loop
+.reload_page
+	call Pokedex_GetCursorMon
+	jmp Pokedex_Stats
+
+.pressed_a
+	lb bc, 4, 19
+	hlcoord 1, 13
+	push hl
+	call ClearBox
+	hlcoord 9, 11
+	ld a, [hl]
+	cp "2"
+	ld b, $3f
+	jr z, .got_char
+	cp $3f ; bold H
+	ld b, "1"
+	jr z, .got_char
+	inc b
+.got_char
+	ld [hl], b
+	ld a, b
+	and 3 ; conveniently, $3f & 3 = 3
+	dec a
+	ld c, a
+	ld b, 0
+	ld hl, wBaseAbility1
+	add hl, bc
+	ld b, [hl]
+	pop hl
+	push bc
+	farcall PrintAbility
+	pop bc
+	farcall PrintAbilityDescription
+	call Pokedex_RefreshScreen
+	jr .joypad_loop
 
 Pokedex_InitData:
 ; Initializes the list of Pokémon seen and owned.

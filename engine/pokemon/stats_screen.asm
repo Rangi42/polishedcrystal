@@ -717,6 +717,7 @@ StatsScreen_LoadGFX:
 	call GetAbility
 	; PlaceString as used in PrintAbility doesn't preserve any register, so push it.
 	push bc
+	hlcoord 3, 13
 	farcall PrintAbility
 	pop bc
 	farjp PrintAbilityDescription
