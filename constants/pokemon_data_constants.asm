@@ -75,6 +75,7 @@ NUM_GROWTH_RATES EQU const_value
 	const EGG_DITTO         ; d
 	const EGG_DRAGON        ; e
 	const EGG_NONE          ; f (Undiscovered)
+NUM_EGG_GROUPS EQU const_value - 1
 
 ; breed_struct and party_struct members (see macros/wram.asm)
 rsreset

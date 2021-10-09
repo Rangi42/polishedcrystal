@@ -1561,6 +1561,8 @@ Pokedex_Bio:
 
 	call Pokedex_GetCursorSpecies
 	call GetSpeciesAndFormIndex
+
+	; Get Pokemon category
 	ld hl, PokedexDataPointerTable
 	add hl, bc
 	add hl, bc
@@ -1581,15 +1583,70 @@ Pokedex_Bio:
 	hlcoord 4, 3
 	call FarString
 
+	; Print catch rate
 	hlcoord 8, 5
 	ld de, wBaseCatchRate
 	lb bc, 1, 3
 	call PrintNum
 
+	; Print base experience
 	hlcoord 8, 7
 	ld de, wBaseExp
 	lb bc, 1, 3
 	call PrintNum
+
+	; Print egg group(s)
+	ld a, [wBaseEggGroups]
+	ld c, a
+	swap c
+	cp c
+	jr z, .print_group_1
+	push bc
+	call .GetEggGroupName
+	hlcoord 6, 12
+	ld a, "s"
+	ld [hli], a
+	inc hl
+	ld a, b
+	call FarString
+	pop bc
+.print_group_1
+	ld a, c
+	call .GetEggGroupName
+	hlcoord 8, 11
+	ld a, b
+	call FarString
+	
+	; Print hatch rate
+	ld a, [wBaseEggSteps]
+	and $f
+	cp $f
+	ld de, NotApplicable
+	jr z, .goteggsteps
+	ld e, a
+	ld d, 0
+	ld hl, HatchSpeedNames
+	add hl, de
+	add hl, de
+	ld a, [hli]
+	ld d, [hl]
+	ld e, a
+.goteggsteps
+	hlcoord 8, 14
+	call PlaceString
+
+	; Print growth rate
+	ld a, [wBaseGrowthRate]
+	ld e, a
+	ld d, 0
+	ld hl, GrowthRateNames
+	add hl, de
+	add hl, de
+	ld a, [hli]
+	ld d, [hl]
+	ld e, a
+	hlcoord 8, 16
+	call PlaceString
 
 	call Pokedex_RefreshScreen
 	ld a, $87
@@ -1607,7 +1664,7 @@ Pokedex_Bio:
 	rrca
 	jr c, .pressed_start
 	rrca
-	jr c, Pokedex_Stats
+	jmp c, Pokedex_Stats
 	rrca
 	jmp c, Pokedex_DescriptionNoCry
 	rrca
@@ -1632,6 +1689,23 @@ Pokedex_Bio:
 .reload_page
 	call Pokedex_GetCursorMon
 	jmp Pokedex_Bio
+
+.GetEggGroupName:
+	and $f
+	dec a
+	ld c, a
+	ld b, 0
+	ld hl, EggGroupNames
+	add hl, bc
+	add hl, bc
+	ld a, BANK(EggGroupNames)
+	ld b, a
+	call GetFarWord
+	ld d, h
+	ld e, l
+	ret
+
+INCLUDE "data/pokedex_bio.asm"
 
 Pokedex_Stats:
 	; Load the stats tilemap.
@@ -1658,6 +1732,7 @@ Pokedex_Stats:
 	call Pokedex_GetCursorSpecies
 	call GetSpeciesAndFormIndex
 
+	; load base stats + EV yield, starting with HP
 	hlcoord 5, 5
 	ld de, wBaseHP
 	lb bc, 1, 3
@@ -1732,6 +1807,7 @@ Pokedex_Stats:
 	ld [hl], a
 
 .ok
+	; load ability
 	ld a, [wBaseAbility1]
 	ld b, a
 	push bc
@@ -1740,6 +1816,7 @@ Pokedex_Stats:
 	pop bc
 	farcall PrintAbilityDescription
 
+	; use correct vram bank for types and footprint
 	ld a, [wPokedex_MonInfoBank]
 	and a
 	jr nz, .vbank_1
