@@ -6972,10 +6972,17 @@ GetNewBaseExp:
 ; exceptions: Chansey, Blissey
 	ld a, MON_SPECIES
 	call OTPartyAttr
+	ld c, a
+	ld a, MON_EXTSPECIES
+	call OTPartyAttr
+	and EXTSPECIES_MASK
+	ld b, a
+_GetNewBaseExp:
 	ld hl, NewBaseExpExceptions
-	ld de, 3
-	call IsInArray
+	ld de, 4
+	call IsInWordArray
 	jr nc, .calc_base_exp
+	inc hl
 	inc hl
 	ld a, [hli]
 	ldh [hMultiplicand + 2], a

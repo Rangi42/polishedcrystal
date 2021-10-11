@@ -1138,7 +1138,7 @@ _Pokedex_Description:
 	push af
 	push af
 	push af
-	jmp .refresh
+	jmp .botmenu
 
 .mon_caught
 	; Get a pointer to the dex information.
@@ -1307,7 +1307,7 @@ _Pokedex_Description:
 	; Type and footprint should use correct vram bank
 	ld a, [wPokedex_MonInfoBank]
 	and a
-	jr nz, .vbank_1
+	jr nz, .botmenu
 	hlcoord 18, 2, wAttrMap
 	ld b, VRAM_BANK_1
 	ld a, [hl]
@@ -1333,7 +1333,7 @@ _Pokedex_Description:
 	xor b
 	ld [hli], a
 
-.vbank_1
+.botmenu
 	; Bottom menu bar
 	ldh a, [rSVBK]
 	push af
@@ -1379,7 +1379,6 @@ _Pokedex_Description:
 	pop af
 	ldh [rSVBK], a
 
-.refresh
 	call Pokedex_RefreshScreen
 	ld a, $57
 	ld de, PHB_DescSwitchSCY
@@ -1553,6 +1552,10 @@ Pokedex_Bio:
 	ld hl, DexTilemap_Bio
 	call Pokedex_LoadTilemap
 
+	; Unload dex number
+	xor a
+	ld [wPokedexOAM_DexNoY], a
+
 	ld a, DEXDISP_BIO
 	ld [wPokedex_DisplayMode], a
 	ld de, wStringBuffer1
@@ -1590,10 +1593,27 @@ Pokedex_Bio:
 	call PrintNum
 
 	; Print base experience
+	ld a, [wBaseExp]
+	ld e, a
+	ld d, 0
+	ld a, [wInitialOptions]
+	bit SCALED_EXP, a ; should we use gen 5+ formula?
+	jr z, .got_exp
+	ld a, [wCurPartySpecies]
+	ld c, a
+	ld a, [wPokedex_Form]
+	ld [wCurForm], a ; just in case
+	and EXTSPECIES_MASK
+	ld b, a
+	farcall _GetNewBaseExp
+	ldh a, [hMultiplicand + 1]
+	ld d, a
+	ldh a, [hMultiplicand + 2]
+	ld e, a
+.got_exp
 	hlcoord 8, 7
-	ld de, wBaseExp
-	lb bc, 1, 3
-	call PrintNum
+	ld bc, 3
+	call PrintNumFromReg
 
 	; Print egg group(s)
 	ld a, [wBaseEggGroups]
@@ -1711,6 +1731,11 @@ Pokedex_Stats:
 	; Load the stats tilemap.
 	ld hl, DexTilemap_Stats
 	call Pokedex_LoadTilemap
+
+	; Unload dex number
+	xor a
+	ld [wPokedexOAM_DexNoY], a
+
 	ldh a, [rSVBK]
 	push af
 	ld a, BANK(wBGPals1)
@@ -2251,7 +2276,7 @@ _Pokedex_GetCursorMon:
 	; Attributes are done. Now we can deal with the main data.
 	call Pokedex_GetCursorSpecies
 
-	; If species is zero, there's nothing there. Just reload the screen.
+	; If species is zero, there's nothing there. Just load question mark tiles, then reload the screen.
 	ld a, c
 	and a
 	jr nz, .got_species
@@ -2288,9 +2313,9 @@ _Pokedex_GetCursorMon:
 	ld [wCurPartySpecies], a
 	ld [wCurSpecies], a
 	ld [wNamedObjectIndex], a
-	bit MON_CAUGHT_F, b
 	ld a, $10
 	ld [wPokedexOAM_DexNoY], a
+	bit MON_CAUGHT_F, b
 	ld a, b
 	ld [wCurForm], a
 	ld [wNamedObjectIndex+1], a
