@@ -4795,7 +4795,7 @@ BattleCommand_burntarget:
 	call GetBattleVarAddr
 	and a
 	jr nz, Defrost
-	ld b, 0
+	ld b, a ; a == 0
 	call CanBurnTarget
 	ret nz
 	ld a, [wTypeModifier]
