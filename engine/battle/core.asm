@@ -6636,7 +6636,7 @@ GiveBattleEVs:
 	ld hl, MON_PKRUS
 	add hl, bc
 	ld a, [hl]
-	and a
+	and POKERUS_MASK
 	jr z, .check_item
 	set 0, d
 .check_item

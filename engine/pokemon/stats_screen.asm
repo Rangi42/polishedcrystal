@@ -419,12 +419,10 @@ StatsScreen_LoadGFX:
 	hlcoord 0, 9
 	rst PlaceString
 	ld a, [wTempMonPokerusStatus]
-	ld b, a
-	and $f
-	jr nz, .HasPokerus
-	ld a, b
-	and $f0
+	and POKERUS_MASK
 	jr z, .NotImmuneToPkrs
+	cp POKERUS_CURED
+	jr nz, .HasPokerus
 	hlcoord 8, 8
 	ld [hl], "."
 .NotImmuneToPkrs:
