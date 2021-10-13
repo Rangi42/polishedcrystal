@@ -265,20 +265,21 @@ CheckPokerusTick::
 	ld hl, wPartyMon1PokerusStatus
 .loop
 	ld a, [hl]
-	and $f
+	and POKERUS_MASK
 	jr z, .next
 	assert POKERUS_CURED % 2 == 1
 	ld d, POKERUS_CURED ; no need to check if pokerus status = POKERUS_CURED, bit 0 is already set
 	ld e, b
 .inner_loop
-	rrca
-	jr c, .cured
+	rlca
+	cp POKERUS_MASK + 1
+	jr nc, .cured
 	dec e
 	jr nz, .inner_loop
 	ld d, a
 .cured
 	ld a, [hl]
-	and $f0
+	and ~POKERUS_MASK
 	or d
 	ld [hl], a
 .next
