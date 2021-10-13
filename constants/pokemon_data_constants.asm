@@ -224,6 +224,9 @@ MON_CRY_LENGTH EQU 6
 ; maximum number of party pokemon
 PARTY_LENGTH EQU 6
 
+; pokerus
+POKERUS_CURED EQU 13
+
 ; boxes
 MONS_PER_BOX    EQU 20
 MONDB_ENTRIES   EQU 167
