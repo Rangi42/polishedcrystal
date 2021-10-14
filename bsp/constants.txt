@@ -63,10 +63,11 @@
 	define PLAYER_NAME_LENGTH,      8
 
 ; pokemon struct offsets
-	define MOVES_OFFSET,            2
-	define FORM_OFFSET,            21
-	define PP_OFFSET,              22
-	define CAUGHTBALL_OFFSET,      28
+	define MOVES_OFFSET,       2
+	define FORM_OFFSET,       21
+	define PP_OFFSET,         22
+	define POKERUS_OFFSET,    27
+	define CAUGHTBALL_OFFSET, 28
 
 ; pokemon struct constants
 	define NUM_MOVES,     4
@@ -75,7 +76,7 @@
 	define FORM_MASK,  0x1f
 
 ; pokemon constants
-	define GYARADOS,     0x82
+	define GYARADOS, 0x82
 
 ; move constants
 	define RAGE,         0x63

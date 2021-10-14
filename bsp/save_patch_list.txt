@@ -50,6 +50,9 @@ SavePatches:
 	dw ConvertMonIndexesTo9Bit
 
 	dh 8
+	dw ConvertPokerusToNybble
+
+	dh 8
 	dw ShiftHiddenGrottoContents
 
 	dh 0

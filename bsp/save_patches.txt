@@ -374,7 +374,7 @@ ConvertMonIndexesTo9Bit:
 .got_result
 	writebyte #result
 
-	; Special case for Pikachu, need to seet fly form or surf form
+	; Special case for Pikachu, need to set fly form or surf form
 	ifeq #result, 0x19, .not_pikachu ; mons like Sirfetch'd ($119) didn't exist yet, so there's no conflicts
 	readbyte #temp ; item -> moves
 	readword #temp ; all four moves
@@ -492,20 +492,44 @@ ConvertMonIndexesTo9Bit:
 	db 0x59, 2 ; MUK, ALOLAN
 	db 0x67, 2 ; EXEGGUTOR, ALOLAN
 	db 0x69, 2 ; MAROWAK, ALOLAN
-	db 0x34, 3 ; MEOWTH, GALARIAN
+	;db 0x34, 3 ; MEOWTH, GALARIAN
 	db 0x4d, 3 ; PONYTA, GALARIAN
 	db 0x4e, 3 ; RAPIDASH, GALARIAN
 	db 0x4f, 3 ; SLOWPOKE, GALARIAN
 	db 0x50, 3 ; SLOWBRO, GALARIAN
-	db 0x53, 3 ; FARFETCH_D, GALARIAN
+	;db 0x53, 3 ; FARFETCH_D, GALARIAN
 	db 0x6e, 3 ; WEEZING, GALARIAN
-	db 0x7a, 3 ; MR__MIME, GALARIAN
+	;db 0x7a, 3 ; MR__MIME, GALARIAN
 	db 0x90, 3 ; ARTICUNO, GALARIAN
 	db 0x91, 3 ; ZAPDOS, GALARIAN
 	db 0x92, 3 ; MOLTRES, GALARIAN
 	db 0xc7, 3 ; SLOWKING, GALARIAN
-	db 0xde, 3 ; CORSOLA, GALARIAN
+	;db 0xde, 3 ; CORSOLA, GALARIAN
 	db -1
+
+ConvertPokerusToNybble:
+; If a mon has an active infection, it will get reset
+; to its full days count. Cured infections remain cured
+	set #1, .mon_callback
+	call ApplyPartyPatches
+
+.mon_callback
+	add #1, POKERUS_OFFSET
+	seek #1
+	getfilebyte #1
+	retz #1
+	set #2, 0xf
+	and #temp, #1, #2
+	set #result, 13
+	jumpz #temp, .got_value
+	rotateleft #temp, #1, -4
+	and #temp, #2
+	remainder #temp, 4
+	subtract #temp, 32, #temp
+	rotateleft #result, #2, #temp
+.got_value
+	writebyte #result
+	return
 
 ShiftHiddenGrottoContents:
 	set #1, CELEBI_EVENT_OFFSET
