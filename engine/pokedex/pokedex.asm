@@ -1138,7 +1138,7 @@ _Pokedex_Description:
 	push af
 	push af
 	push af
-	jmp .botmenu
+	jmp .sel_shiny
 
 .mon_caught
 	; Get a pointer to the dex information.
@@ -1307,7 +1307,7 @@ _Pokedex_Description:
 	; Type and footprint should use correct vram bank
 	ld a, [wPokedex_MonInfoBank]
 	and a
-	jr nz, .botmenu
+	jr nz, .sel_shiny
 	hlcoord 18, 2, wAttrMap
 	ld b, VRAM_BANK_1
 	ld a, [hl]
@@ -1332,6 +1332,27 @@ _Pokedex_Description:
 	ld a, [hl]
 	xor b
 	ld [hli], a
+
+.sel_shiny
+	; Sel/Shiny indicator
+	ld a, SHINY_CHARM
+	ld [wCurKeyItem], a
+	call CheckKeyItem
+	jr nc, .botmenu
+	hlcoord 9, 10
+	ld b, $28
+.sel_shiny_loop
+	ld [hl], b
+	inc b
+	ld de, wAttrMap - wTileMap
+	add hl, de
+	ld a, $08
+	ld [hli], a
+	ld de, wTileMap - wAttrMap
+	add hl, de
+	ld a, b
+	cp $2e
+	jr nz, .sel_shiny_loop
 
 .botmenu
 	; Bottom menu bar
