@@ -89,7 +89,7 @@ Pokedex:
 
 	ld hl, DexOAM
 	ld de, vTiles0
-	lb bc, BANK(DexOAM), 5
+	lb bc, BANK(DexOAM), 29
 	call DecompressRequest2bpp
 
 	pop af
