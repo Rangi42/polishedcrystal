@@ -1,7 +1,7 @@
 	db 14  ; height
 	dw 615 ; weight
 
-	dn SHAPE_BIPEDAL_TAIL, BODY_COLOR_RED
+	dn SHAPE_BIPEDAL_TAIL, BODY_COLOR_YELLOW
 
 	db "Light@" ; species name
 

@@ -1,7 +1,7 @@
 	db 5  ; height
 	dw 55 ; weight
 
-	dn SHAPE_BIPEDAL, BODY_COLOR_RED
+	dn SHAPE_BIPEDAL, BODY_COLOR_PINK
 
 	db "Balloon@" ; species name
 

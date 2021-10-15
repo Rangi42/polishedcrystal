@@ -1,7 +1,7 @@
 	db 3  ; height
 	dw 29 ; weight
 
-	dn SHAPE_INSECTOID, BODY_COLOR_RED
+	dn SHAPE_INSECTOID, BODY_COLOR_GREEN
 
 	db "Worm@" ; species name
 

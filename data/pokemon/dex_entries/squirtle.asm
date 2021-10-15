@@ -1,7 +1,7 @@
 	db 5  ; height
 	dw 90 ; weight
 
-	dn SHAPE_BIPEDAL_TAIL, BODY_COLOR_RED
+	dn SHAPE_BIPEDAL_TAIL, BODY_COLOR_BLUE
 
 	db "Tiny Turtle@" ; species name
 

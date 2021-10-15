@@ -1,7 +1,7 @@
 	db 7   ; height
 	dw 190 ; weight
 
-	dn SHAPE_QUADRUPED, BODY_COLOR_RED
+	dn SHAPE_QUADRUPED, BODY_COLOR_BROWN
 
 	db "Puppy@" ; species name
 

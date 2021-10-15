@@ -1,7 +1,7 @@
 	db 6  ; height
 	dw 10 ; weight
 
-	dn SHAPE_HEAD, BODY_COLOR_RED
+	dn SHAPE_HEAD, BODY_COLOR_PURPLE
 
 	db "Poison Gas@" ; species name
 

@@ -1,7 +1,7 @@
 	db 13  ; height
 	dw 540 ; weight
 
-	dn SHAPE_BIPEDAL, BODY_COLOR_RED
+	dn SHAPE_BIPEDAL, BODY_COLOR_BLUE
 
 	db "Tadpole@" ; species name
 

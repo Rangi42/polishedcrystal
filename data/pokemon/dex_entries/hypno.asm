@@ -1,7 +1,7 @@
 	db 16  ; height
 	dw 756 ; weight
 
-	dn SHAPE_BIPEDAL, BODY_COLOR_RED
+	dn SHAPE_BIPEDAL, BODY_COLOR_YELLOW
 
 	db "Hypnosis@" ; species name
 

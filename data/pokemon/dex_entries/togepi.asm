@@ -1,7 +1,7 @@
 	db 3  ; height
 	dw 15 ; weight
 
-	dn SHAPE_BIPEDAL, BODY_COLOR_RED
+	dn SHAPE_BIPEDAL, BODY_COLOR_WHITE
 
 	db "Spike Ball@" ; species name
 

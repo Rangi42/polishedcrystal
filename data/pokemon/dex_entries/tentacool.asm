@@ -1,7 +1,7 @@
 	db 9   ; height
 	dw 455 ; weight
 
-	dn SHAPE_TENTACLES, BODY_COLOR_RED
+	dn SHAPE_TENTACLES, BODY_COLOR_BLUE
 
 	db "Jellyfish@" ; species name
 

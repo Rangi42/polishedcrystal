@@ -1,7 +1,7 @@
 	db 17  ; height
 	dw 509 ; weight
 
-	dn SHAPE_WINGS, BODY_COLOR_RED
+	dn SHAPE_WINGS, BODY_COLOR_PURPLE
 
 	db "Cruel@" ; species name
 

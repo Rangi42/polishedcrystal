@@ -1,7 +1,7 @@
 	db 17   ; height
 	dw 1400 ; weight
 
-	dn SHAPE_BIPEDAL, BODY_COLOR_RED
+	dn SHAPE_BIPEDAL, BODY_COLOR_PINK
 
 	db "Licking@" ; species name
 

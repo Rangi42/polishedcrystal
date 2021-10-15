@@ -1,7 +1,7 @@
 	db 20  ; height
 	dw 795 ; weight
 
-	dn SHAPE_BIPEDAL_TAIL, BODY_COLOR_RED
+	dn SHAPE_BIPEDAL_TAIL, BODY_COLOR_PINK
 
 	db "Royal@" ; species name
 

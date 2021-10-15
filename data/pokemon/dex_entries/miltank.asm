@@ -1,7 +1,7 @@
 	db 12  ; height
 	dw 755 ; weight
 
-	dn SHAPE_BIPEDAL_TAIL, BODY_COLOR_RED
+	dn SHAPE_BIPEDAL_TAIL, BODY_COLOR_PINK
 
 	db "Milk Cow@" ; species name
 

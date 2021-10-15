@@ -1,7 +1,7 @@
 	db 14   ; height
 	dw 3000 ; weight
 
-	dn SHAPE_BIPEDAL, BODY_COLOR_RED
+	dn SHAPE_BIPEDAL, BODY_COLOR_BROWN
 
 	db "Megaton@" ; species name
 

@@ -1,7 +1,7 @@
 	db 7   ; height
 	dw 666 ; weight
 
-	dn SHAPE_MULTIBODY, BODY_COLOR_RED
+	dn SHAPE_MULTIBODY, BODY_COLOR_BROWN
 
 	db "Mole@" ; species name
 

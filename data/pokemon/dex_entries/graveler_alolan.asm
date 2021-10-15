@@ -1,7 +1,7 @@
 	db 10   ; height
 	dw 1100 ; weight
 
-	dn SHAPE_BIPEDAL, BODY_COLOR_RED
+	dn SHAPE_BIPEDAL, BODY_COLOR_GRAY
 
 	db "Rock@" ; species name
 

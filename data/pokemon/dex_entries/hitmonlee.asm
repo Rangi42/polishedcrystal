@@ -1,7 +1,7 @@
 	db 15  ; height
 	dw 498 ; weight
 
-	dn SHAPE_BIPEDAL, BODY_COLOR_RED
+	dn SHAPE_BIPEDAL, BODY_COLOR_BROWN
 
 	db "Kicking@" ; species name
 

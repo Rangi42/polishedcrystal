@@ -1,7 +1,7 @@
 	db 7   ; height
 	dw 420 ; weight
 
-	dn SHAPE_HEAD_ARMS, BODY_COLOR_RED
+	dn SHAPE_HEAD_ARMS, BODY_COLOR_GREEN
 
 	db "Sludge@" ; species name
 

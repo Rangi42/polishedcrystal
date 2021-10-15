@@ -1,7 +1,7 @@
 	db 5  ; height
 	dw 50 ; weight
 
-	dn SHAPE_HEAD, BODY_COLOR_RED
+	dn SHAPE_HEAD, BODY_COLOR_BLACK
 
 	db "Symbol@" ; species name
 

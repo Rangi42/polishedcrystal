@@ -1,7 +1,7 @@
 	db 8    ; height
 	dw 1170 ; weight
 
-	dn SHAPE_WINGS, BODY_COLOR_RED
+	dn SHAPE_WINGS, BODY_COLOR_WHITE
 
 	db "Wild Duck@" ; species name
 

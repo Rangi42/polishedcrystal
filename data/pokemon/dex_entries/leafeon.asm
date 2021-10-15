@@ -1,7 +1,7 @@
 	db 10  ; height
 	dw 255 ; weight
 
-	dn SHAPE_QUADRUPED, BODY_COLOR_RED
+	dn SHAPE_QUADRUPED, BODY_COLOR_GREEN
 
 	db "Verdant@" ; species name
 

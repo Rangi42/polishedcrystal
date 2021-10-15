@@ -1,7 +1,7 @@
 	db 11  ; height
 	dw 250 ; weight
 
-	dn SHAPE_BIPEDAL_TAIL, BODY_COLOR_RED
+	dn SHAPE_BIPEDAL_TAIL, BODY_COLOR_BLUE
 
 	db "Big Jaw@" ; species name
 

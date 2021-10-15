@@ -1,7 +1,7 @@
 	db 11  ; height
 	dw 900 ; weight
 
-	dn SHAPE_FINS, BODY_COLOR_RED
+	dn SHAPE_FINS, BODY_COLOR_WHITE
 
 	db "Sea Lion@" ; species name
 

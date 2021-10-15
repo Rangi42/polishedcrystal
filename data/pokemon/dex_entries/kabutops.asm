@@ -1,7 +1,7 @@
 	db 13  ; height
 	dw 405 ; weight
 
-	dn SHAPE_BIPEDAL_TAIL, BODY_COLOR_RED
+	dn SHAPE_BIPEDAL_TAIL, BODY_COLOR_BROWN
 
 	db "Shellfish@" ; species name
 

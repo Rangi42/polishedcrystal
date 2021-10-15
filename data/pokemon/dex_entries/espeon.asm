@@ -1,7 +1,7 @@
 	db 9   ; height
 	dw 265 ; weight
 
-	dn SHAPE_QUADRUPED, BODY_COLOR_RED
+	dn SHAPE_QUADRUPED, BODY_COLOR_PURPLE
 
 	db "Sun@" ; species name
 

@@ -1,7 +1,7 @@
 	db 8   ; height
 	dw 365 ; weight
 
-	dn SHAPE_HEAD_LEGS, BODY_COLOR_RED
+	dn SHAPE_HEAD_LEGS, BODY_COLOR_PINK
 
 	db "Virtual@" ; species name
 

@@ -1,7 +1,7 @@
 	db 40  ; height
 	dw 165 ; weight
 
-	dn SHAPE_SERPENTINE, BODY_COLOR_RED
+	dn SHAPE_SERPENTINE, BODY_COLOR_BLUE
 
 	db "Dragon@" ; species name
 

@@ -1,7 +1,7 @@
 	db 6   ; height
 	dw 205 ; weight
 
-	dn SHAPE_INSECTOID, BODY_COLOR_RED
+	dn SHAPE_INSECTOID, BODY_COLOR_YELLOW
 
 	db "Mold@" ; species name
 

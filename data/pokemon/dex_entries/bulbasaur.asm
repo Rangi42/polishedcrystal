@@ -1,7 +1,7 @@
 	db 7  ; height
 	dw 69 ; weight
 
-	dn SHAPE_QUADRUPED, BODY_COLOR_RED
+	dn SHAPE_QUADRUPED, BODY_COLOR_GREEN
 
 	db "Seed@" ; species name
 

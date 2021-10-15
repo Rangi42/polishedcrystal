@@ -1,7 +1,7 @@
 	db 8   ; height
 	dw 259 ; weight
 
-	dn SHAPE_QUADRUPED, BODY_COLOR_RED
+	dn SHAPE_QUADRUPED, BODY_COLOR_BLUE
 
 	db "Fresh Snow@" ; species name
 

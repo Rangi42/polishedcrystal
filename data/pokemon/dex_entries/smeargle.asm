@@ -1,7 +1,7 @@
 	db 12  ; height
 	dw 580 ; weight
 
-	dn SHAPE_BIPEDAL_TAIL, BODY_COLOR_RED
+	dn SHAPE_BIPEDAL_TAIL, BODY_COLOR_WHITE
 
 	db "Painter@" ; species name
 

@@ -1,7 +1,7 @@
 	db 8  ; height
 	dw 86 ; weight
 
-	dn SHAPE_BIPEDAL, BODY_COLOR_RED
+	dn SHAPE_BIPEDAL, BODY_COLOR_BLUE
 
 	db "Weed@" ; species name
 

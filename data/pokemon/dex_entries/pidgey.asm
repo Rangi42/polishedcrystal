@@ -1,7 +1,7 @@
 	db 3  ; height
 	dw 18 ; weight
 
-	dn SHAPE_WINGS, BODY_COLOR_RED
+	dn SHAPE_WINGS, BODY_COLOR_BROWN
 
 	db "Tiny Bird@" ; species name
 

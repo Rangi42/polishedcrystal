@@ -1,7 +1,7 @@
 	db 18  ; height
 	dw 1258 ; weight
 
-	dn SHAPE_BIPEDAL_TAIL, BODY_COLOR_RED
+	dn SHAPE_BIPEDAL_TAIL, BODY_COLOR_BROWN
 
 	db "Hibernator@" ; species name
 

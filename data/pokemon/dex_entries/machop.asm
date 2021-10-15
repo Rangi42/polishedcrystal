@@ -1,7 +1,7 @@
 	db 8   ; height
 	dw 195 ; weight
 
-	dn SHAPE_BIPEDAL_TAIL, BODY_COLOR_RED
+	dn SHAPE_BIPEDAL_TAIL, BODY_COLOR_GRAY
 
 	db "Superpower@" ; species name
 

@@ -1,7 +1,7 @@
 	db 3  ; height
 	dw 65 ; weight
 
-	dn SHAPE_QUADRUPED, BODY_COLOR_RED
+	dn SHAPE_QUADRUPED, BODY_COLOR_BROWN
 
 	db "Evolution@" ; species name
 

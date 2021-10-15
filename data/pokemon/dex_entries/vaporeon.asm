@@ -1,7 +1,7 @@
 	db 10  ; height
 	dw 290 ; weight
 
-	dn SHAPE_QUADRUPED, BODY_COLOR_RED
+	dn SHAPE_QUADRUPED, BODY_COLOR_BLUE
 
 	db "Bubble Jet@" ; species name
 

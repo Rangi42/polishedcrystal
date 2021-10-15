@@ -1,7 +1,7 @@
 	db 12  ; height
 	dw 380 ; weight
 
-	dn SHAPE_WINGS, BODY_COLOR_RED
+	dn SHAPE_WINGS, BODY_COLOR_BROWN
 
 	db "Beak@" ; species name
 

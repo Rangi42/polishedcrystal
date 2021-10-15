@@ -1,7 +1,7 @@
 	db 6  ; height
 	dw 32 ; weight
 
-	dn SHAPE_BIPEDAL, BODY_COLOR_RED
+	dn SHAPE_BIPEDAL, BODY_COLOR_WHITE
 
 	db "Happiness@" ; species name
 

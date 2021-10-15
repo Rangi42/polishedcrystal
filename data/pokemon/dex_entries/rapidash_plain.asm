@@ -1,7 +1,7 @@
 	db 17  ; height
 	dw 950 ; weight
 
-	dn SHAPE_QUADRUPED, BODY_COLOR_RED
+	dn SHAPE_QUADRUPED, BODY_COLOR_YELLOW
 
 	db "Fire Horse@" ; species name
 

@@ -1,7 +1,7 @@
 	db 6   ; height
 	dw 720 ; weight
 
-	dn SHAPE_BIPEDAL_TAIL, BODY_COLOR_RED
+	dn SHAPE_BIPEDAL_TAIL, BODY_COLOR_GREEN
 
 	db "Rock Skin@" ; species name
 

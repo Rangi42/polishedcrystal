@@ -1,7 +1,7 @@
 	db 4  ; height
 	dw 65 ; weight
 
-	dn SHAPE_QUADRUPED, BODY_COLOR_RED
+	dn SHAPE_QUADRUPED, BODY_COLOR_BROWN
 
 	db "Pig@" ; species name
 

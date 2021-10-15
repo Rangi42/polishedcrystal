@@ -1,7 +1,7 @@
 	db 35  ; height
 	dw 650 ; weight
 
-	dn SHAPE_SERPENTINE, BODY_COLOR_RED
+	dn SHAPE_SERPENTINE, BODY_COLOR_PURPLE
 
 	db "Cobra@" ; species name
 

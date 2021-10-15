@@ -1,7 +1,7 @@
 	db 12   ; height
 	dw 1258 ; weight
 
-	dn SHAPE_HEAD, BODY_COLOR_RED
+	dn SHAPE_HEAD, BODY_COLOR_PURPLE
 
 	db "Bagworm@" ; species name
 

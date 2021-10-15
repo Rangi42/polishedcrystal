@@ -1,7 +1,7 @@
 	db 14  ; height
 	dw 620 ; weight
 
-	dn SHAPE_BIPEDAL_TAIL, BODY_COLOR_RED
+	dn SHAPE_BIPEDAL_TAIL, BODY_COLOR_PURPLE
 
 	db "Drill@" ; species name
 

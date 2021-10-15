@@ -1,7 +1,7 @@
 	db 6  ; height
 	dw 78 ; weight
 
-	dn SHAPE_QUADRUPED, BODY_COLOR_RED
+	dn SHAPE_QUADRUPED, BODY_COLOR_WHITE
 
 	db "Wool@" ; species name
 

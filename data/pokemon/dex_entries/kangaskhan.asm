@@ -1,7 +1,7 @@
 	db 22  ; height
 	dw 800 ; weight
 
-	dn SHAPE_BIPEDAL_TAIL, BODY_COLOR_RED
+	dn SHAPE_BIPEDAL_TAIL, BODY_COLOR_BROWN
 
 	db "Parent@" ; species name
 

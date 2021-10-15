@@ -1,7 +1,7 @@
 	db 4  ; height
 	dw 85 ; weight
 
-	dn SHAPE_BIPEDAL_TAIL, BODY_COLOR_RED
+	dn SHAPE_BIPEDAL_TAIL, BODY_COLOR_BLUE
 
 	db "Aqua Mouse@" ; species name
 

@@ -1,7 +1,7 @@
 	db 8  ; height
 	dw 75 ; weight
 
-	dn SHAPE_WINGS, BODY_COLOR_RED
+	dn SHAPE_WINGS, BODY_COLOR_PURPLE
 
 	db "Bat@" ; species name
 

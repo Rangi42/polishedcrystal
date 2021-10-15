@@ -1,7 +1,7 @@
 	db 7   ; height
 	dw 212 ; weight
 
-	dn SHAPE_WINGS, BODY_COLOR_RED
+	dn SHAPE_WINGS, BODY_COLOR_BROWN
 
 	db "Owl@" ; species name
 

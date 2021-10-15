@@ -1,7 +1,7 @@
 	db 14  ; height
 	dw 502 ; weight
 
-	dn SHAPE_BIPEDAL, BODY_COLOR_RED
+	dn SHAPE_BIPEDAL, BODY_COLOR_BROWN
 
 	db "Punching@" ; species name
 

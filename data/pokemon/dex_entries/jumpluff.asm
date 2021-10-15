@@ -1,7 +1,7 @@
 	db 8  ; height
 	dw 30 ; weight
 
-	dn SHAPE_BIPEDAL_TAIL, BODY_COLOR_RED
+	dn SHAPE_BIPEDAL_TAIL, BODY_COLOR_BLUE
 
 	db "Cottonweed@" ; species name
 

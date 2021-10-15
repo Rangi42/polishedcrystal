@@ -1,7 +1,7 @@
 	db 10  ; height
 	dw 235 ; weight
 
-	dn SHAPE_QUADRUPED, BODY_COLOR_RED
+	dn SHAPE_QUADRUPED, BODY_COLOR_PINK
 
 	db "Intertwined@" ; species name
 

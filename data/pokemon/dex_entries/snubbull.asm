@@ -1,7 +1,7 @@
 	db 6  ; height
 	dw 78 ; weight
 
-	dn SHAPE_BIPEDAL, BODY_COLOR_RED
+	dn SHAPE_BIPEDAL, BODY_COLOR_PINK
 
 	db "Fairy@" ; species name
 

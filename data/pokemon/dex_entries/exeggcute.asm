@@ -1,7 +1,7 @@
 	db 4  ; height
 	dw 25 ; weight
 
-	dn SHAPE_MULTIBODY, BODY_COLOR_RED
+	dn SHAPE_MULTIBODY, BODY_COLOR_PINK
 
 	db "Egg@" ; species name
 

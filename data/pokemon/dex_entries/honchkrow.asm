@@ -1,7 +1,7 @@
 	db 9   ; height
 	dw 273 ; weight
 
-	dn SHAPE_WINGS, BODY_COLOR_RED
+	dn SHAPE_WINGS, BODY_COLOR_BLACK
 
 	db "Big Boss@" ; species name
 

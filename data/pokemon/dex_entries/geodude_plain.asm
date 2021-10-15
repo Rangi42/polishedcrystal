@@ -1,7 +1,7 @@
 	db 4   ; height
 	dw 200 ; weight
 
-	dn SHAPE_HEAD_ARMS, BODY_COLOR_RED
+	dn SHAPE_HEAD_ARMS, BODY_COLOR_BROWN
 
 	db "Rock@" ; species name
 

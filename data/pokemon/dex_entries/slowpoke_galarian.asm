@@ -1,7 +1,7 @@
 	db 12  ; height
 	dw 360 ; weight
 
-	dn SHAPE_QUADRUPED, BODY_COLOR_RED
+	dn SHAPE_QUADRUPED, BODY_COLOR_PINK
 
 	db "Dopey@" ; species name
 

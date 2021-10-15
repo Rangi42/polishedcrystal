@@ -1,7 +1,7 @@
 	db 15   ; height
 	dw 1325 ; weight
 
-	dn SHAPE_HEAD, BODY_COLOR_RED
+	dn SHAPE_HEAD, BODY_COLOR_PURPLE
 
 	db "Bivalve@" ; species name
 

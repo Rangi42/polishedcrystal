@@ -1,7 +1,7 @@
 	db 9   ; height
 	dw 280 ; weight
 
-	dn SHAPE_BIPEDAL_TAIL, BODY_COLOR_RED
+	dn SHAPE_BIPEDAL_TAIL, BODY_COLOR_BLACK
 
 	db "Sharp Claw@" ; species name
 

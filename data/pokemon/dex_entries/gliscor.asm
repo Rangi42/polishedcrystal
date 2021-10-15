@@ -1,7 +1,7 @@
 	db 20  ; height
 	dw 425 ; weight
 
-	dn SHAPE_WINGS, BODY_COLOR_RED
+	dn SHAPE_WINGS, BODY_COLOR_PURPLE
 
 	db "FangScorpio@" ; species name
 

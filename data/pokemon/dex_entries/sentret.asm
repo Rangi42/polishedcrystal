@@ -1,7 +1,7 @@
 	db 8 ; height
 	dw 60 ; weight
 
-	dn SHAPE_QUADRUPED, BODY_COLOR_RED
+	dn SHAPE_QUADRUPED, BODY_COLOR_BROWN
 
 	db "Scout@" ; species name
 
