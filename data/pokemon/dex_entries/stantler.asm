@@ -1,7 +1,7 @@
 	db 14  ; height
 	dw 712 ; weight
 
-	db 0 ; unused
+	dn SHAPE_QUADRUPED, BODY_COLOR_RED
 
 	db "Big Horn@" ; species name
 

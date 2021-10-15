@@ -1,7 +1,7 @@
 	db 12  ; height
 	dw 186 ; weight
 
-	db 0 ; unused
+	dn SHAPE_BIPEDAL, BODY_COLOR_RED
 
 	db "Flower@" ; species name
 

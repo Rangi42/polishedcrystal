@@ -1,7 +1,7 @@
 	db 65   ; height
 	dw 2350 ; weight
 
-	db 0 ; unused
+	dn SHAPE_SERPENTINE, BODY_COLOR_RED
 
 	db "Atrocious@" ; species name
 

@@ -1,7 +1,7 @@
 	db 11  ; height
 	dw 320 ; weight
 
-	db 0 ; unused
+	dn SHAPE_MULTIWINGS, BODY_COLOR_RED
 
 	db "Butterfly@" ; species name
 

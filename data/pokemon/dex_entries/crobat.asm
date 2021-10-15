@@ -1,7 +1,7 @@
 	db 18  ; height
 	dw 750 ; weight
 
-	db 0 ; unused
+	dn SHAPE_MULTIWINGS, BODY_COLOR_RED
 
 	db "Bat@" ; species name
 

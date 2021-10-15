@@ -1,7 +1,7 @@
 	db 4  ; height
 	dw 65 ; weight
 
-	db 0 ; unused
+	dn SHAPE_INSECTOID, BODY_COLOR_RED
 
 	db "River Crab@" ; species name
 

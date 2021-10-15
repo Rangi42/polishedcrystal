@@ -1,7 +1,7 @@
 	db 20   ; height
 	dw 1870 ; weight
 
-	db 0 ; unused
+	dn SHAPE_QUADRUPED, BODY_COLOR_RED
 
 	db "Aurora@" ; species name
 

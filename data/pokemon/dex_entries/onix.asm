@@ -1,7 +1,7 @@
 	db 88  ; height
 	dw 2100 ; weight
 
-	db 0 ; unused
+	dn SHAPE_SERPENTINE, BODY_COLOR_RED
 
 	db "Rock Snake@" ; species name
 

@@ -1,7 +1,7 @@
 	db 12  ; height
 	dw 666 ; weight
 
-	db 0 ; unused
+	dn SHAPE_HEAD, BODY_COLOR_RED
 
 	db "Ball@" ; species name
 

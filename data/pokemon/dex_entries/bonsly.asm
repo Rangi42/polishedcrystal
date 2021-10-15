@@ -1,7 +1,7 @@
 	db 5   ; height
 	dw 150 ; weight
 
-	db 0 ; unused
+	dn SHAPE_HEAD_LEGS, BODY_COLOR_RED
 
 	db "Bonsai@" ; species name
 

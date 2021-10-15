@@ -1,7 +1,7 @@
 	db 22   ; height
 	dw 1370 ; weight
 
-	db 0 ; unused
+	dn SHAPE_BIPEDAL_TAIL, BODY_COLOR_RED
 
 	db "Genetic@" ; species name
 

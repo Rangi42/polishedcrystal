@@ -1,7 +1,7 @@
 	db 6   ; height
 	dw 100 ; weight
 
-	db 0 ; unused
+	dn SHAPE_SERPENTINE, BODY_COLOR_RED
 
 	db "Cocoon@" ; species name
 

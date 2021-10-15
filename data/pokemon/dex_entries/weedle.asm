@@ -1,7 +1,7 @@
 	db 3  ; height
 	dw 32 ; weight
 
-	db 0 ; unused
+	dn SHAPE_INSECTOID, BODY_COLOR_RED
 
 	db "Hairy Bug@" ; species name
 

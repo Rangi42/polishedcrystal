@@ -1,7 +1,7 @@
 	db 18   ; height
 	dw 1180 ; weight
 
-	db 0 ; unused
+	dn SHAPE_MULTIWINGS, BODY_COLOR_RED
 
 	db "Scissors@" ; species name
 

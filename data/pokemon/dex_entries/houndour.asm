@@ -1,7 +1,7 @@
 	db 6   ; height
 	dw 108 ; weight
 
-	db 0 ; unused
+	dn SHAPE_QUADRUPED, BODY_COLOR_RED
 
 	db "Dark@" ; species name
 

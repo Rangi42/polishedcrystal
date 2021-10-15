@@ -1,7 +1,7 @@
 	db 12 ; height
 	dw 95 ; weight
 
-	db 0 ; unused
+	dn SHAPE_MULTIBODY, BODY_COLOR_RED
 
 	db "Poison Gas@" ; species name
 

@@ -1,7 +1,7 @@
 	db 14  ; height
 	dw 392 ; weight
 
-	db 0 ; unused
+	dn SHAPE_HEAD_LEGS, BODY_COLOR_RED
 
 	db "Twin Bird@" ; species name
 

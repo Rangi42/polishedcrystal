@@ -1,7 +1,7 @@
 	db 6   ; height
 	dw 235 ; weight
 
-	db 0 ; unused
+	dn SHAPE_BIPEDAL, BODY_COLOR_RED
 
 	db "Electric@" ; species name
 

@@ -1,7 +1,7 @@
 	db 6  ; height
 	dw 50 ; weight
 
-	db 0 ; unused
+	dn SHAPE_INSECTOID, BODY_COLOR_RED
 
 	db "Coral@" ; species name
 

@@ -1,7 +1,7 @@
 	db 7  ; height
 	dw 10 ; weight
 
-	db 0 ; unused
+	dn SHAPE_HEAD, BODY_COLOR_RED
 
 	db "Screech@" ; species name
 

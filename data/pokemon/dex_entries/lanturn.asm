@@ -1,7 +1,7 @@
 	db 12  ; height
 	dw 225 ; weight
 
-	db 0 ; unused
+	dn SHAPE_FINS, BODY_COLOR_RED
 
 	db "Light@" ; species name
 

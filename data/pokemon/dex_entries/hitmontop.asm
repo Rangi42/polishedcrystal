@@ -1,7 +1,7 @@
 	db 14  ; height
 	dw 480 ; weight
 
-	db 0 ; unused
+	dn SHAPE_BIPEDAL_TAIL, BODY_COLOR_RED
 
 	db "Handstand@" ; species name
 

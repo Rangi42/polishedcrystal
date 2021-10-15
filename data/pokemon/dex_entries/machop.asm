@@ -1,7 +1,7 @@
 	db 8   ; height
 	dw 195 ; weight
 
-	db 0 ; unused
+	dn SHAPE_BIPEDAL_TAIL, BODY_COLOR_RED
 
 	db "Superpower@" ; species name
 

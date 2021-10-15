@@ -1,7 +1,7 @@
 	db 2  ; height
 	dw 20 ; weight
 
-	db 0 ; unused
+	dn SHAPE_WINGS, BODY_COLOR_RED
 
 	db "Little Bird@" ; species name
 

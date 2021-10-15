@@ -1,7 +1,7 @@
 	db 12  ; height
 	dw 250 ; weight
 
-	db 0 ; unused
+	dn SHAPE_HEAD_BASE, BODY_COLOR_RED
 
 	db "Dragon@" ; species name
 

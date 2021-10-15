@@ -1,7 +1,7 @@
 	db 10   ; height
 	dw 1150 ; weight
 
-	db 0 ; unused
+	dn SHAPE_QUADRUPED, BODY_COLOR_RED
 
 	db "Spikes@" ; species name
 

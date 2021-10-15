@@ -1,7 +1,7 @@
 	db 21   ; height
 	dw 1980 ; weight
 
-	db 0 ; unused
+	dn SHAPE_QUADRUPED, BODY_COLOR_RED
 
 	db "Volcano@" ; species name
 

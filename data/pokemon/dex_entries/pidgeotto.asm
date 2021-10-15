@@ -1,7 +1,7 @@
 	db 11  ; height
 	dw 300 ; weight
 
-	db 0 ; unused
+	dn SHAPE_WINGS, BODY_COLOR_RED
 
 	db "Bird@" ; species name
 

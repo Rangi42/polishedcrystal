@@ -1,7 +1,7 @@
 	db 25   ; height
 	dw 2200 ; weight
 
-	db 0 ; unused
+	dn SHAPE_FINS, BODY_COLOR_RED
 
 	db "Transport@" ; species name
 

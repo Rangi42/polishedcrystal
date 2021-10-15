@@ -77,6 +77,40 @@ NUM_GROWTH_RATES EQU const_value
 	const EGG_NONE          ; f (Undiscovered)
 NUM_EGG_GROUPS EQU const_value - 1
 
+; shapes (see data/pokemon/dex_entries/*.asm)
+	const_def
+	const SHAPE_HEAD         ; 0
+	const SHAPE_SERPENTINE   ; 1
+	const SHAPE_FINS         ; 2
+	const SHAPE_HEAD_ARMS    ; 3
+	const SHAPE_HEAD_BASE    ; 4
+	const SHAPE_BIPEDAL_TAIL ; 5
+	const SHAPE_HEAD_LEGS    ; 6
+	const SHAPE_QUADRUPED    ; 7
+	const SHAPE_WINGS        ; 8
+	const SHAPE_TENTACLES    ; 9
+	const SHAPE_MULTIBODY    ; a
+	const SHAPE_BIPEDAL      ; b
+	const SHAPE_MULTIWINGS   ; c
+	const SHAPE_INSECTOID    ; d
+assert const_value <= $10
+NUM_SHAPES EQU const_value
+
+; body colors (see data/pokemon/dex_entries/*.asm)
+	const_def
+	const BODY_COLOR_RED    ; 0
+	const BODY_COLOR_BLUE   ; 1
+	const BODY_COLOR_YELLOW ; 2
+	const BODY_COLOR_GREEN  ; 3
+	const BODY_COLOR_BLACK  ; 4
+	const BODY_COLOR_BROWN  ; 5
+	const BODY_COLOR_PURPLE ; 6
+	const BODY_COLOR_GRAY   ; 7
+	const BODY_COLOR_WHITE  ; 8
+	const BODY_COLOR_PINK   ; 9
+assert const_value <= $10
+NUM_BODY_COLORS EQU const_value
+
 ; breed_struct and party_struct members (see macros/wram.asm)
 rsreset
 MON_SPECIES            rb

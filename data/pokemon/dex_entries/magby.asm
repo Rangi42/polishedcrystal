@@ -1,7 +1,7 @@
 	db 7   ; height
 	dw 214 ; weight
 
-	db 0 ; unused
+	dn SHAPE_BIPEDAL_TAIL, BODY_COLOR_RED
 
 	db "Live Coal@" ; species name
 

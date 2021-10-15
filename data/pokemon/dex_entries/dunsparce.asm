@@ -1,7 +1,7 @@
 	db 15  ; height
 	dw 140 ; weight
 
-	db 0 ; unused
+	dn SHAPE_SERPENTINE, BODY_COLOR_RED
 
 	db "Land Snake@" ; species name
 

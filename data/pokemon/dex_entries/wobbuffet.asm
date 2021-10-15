@@ -1,7 +1,7 @@
 	db 13  ; height
 	dw 285 ; weight
 
-	db 0 ; unused
+	dn SHAPE_HEAD_BASE, BODY_COLOR_RED
 
 	db "Patient@" ; species name
 

@@ -1,7 +1,7 @@
 	db 20   ; height
 	dw 1200 ; weight
 
-	db 0 ; unused
+	dn SHAPE_HEAD_LEGS, BODY_COLOR_RED
 
 	db "Coconut@" ; species name
 

@@ -1,7 +1,7 @@
 	db 5   ; height
 	dw 115 ; weight
 
-	db 0 ; unused
+	dn SHAPE_INSECTOID, BODY_COLOR_RED
 
 	db "Shellfish@" ; species name
 

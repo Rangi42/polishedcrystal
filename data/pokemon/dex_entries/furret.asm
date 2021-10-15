@@ -1,7 +1,7 @@
 	db 18  ; height
 	dw 325 ; weight
 
-	db 0 ; unused
+	dn SHAPE_QUADRUPED, BODY_COLOR_RED
 
 	db "Long Body@" ; species name
 

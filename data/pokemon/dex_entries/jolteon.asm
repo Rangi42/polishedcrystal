@@ -1,7 +1,7 @@
 	db 8   ; height
 	dw 245 ; weight
 
-	db 0 ; unused
+	dn SHAPE_QUADRUPED, BODY_COLOR_RED
 
 	db "Lightning@" ; species name
 

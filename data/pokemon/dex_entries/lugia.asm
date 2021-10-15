@@ -1,7 +1,7 @@
 	db 52   ; height
 	dw 2160 ; weight
 
-	db 0 ; unused
+	dn SHAPE_WINGS, BODY_COLOR_RED
 
 	db "Diving@" ; species name
 

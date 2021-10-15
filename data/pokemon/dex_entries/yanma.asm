@@ -1,7 +1,7 @@
 	db 12  ; height
 	dw 380 ; weight
 
-	db 0 ; unused
+	dn SHAPE_MULTIWINGS, BODY_COLOR_RED
 
 	db "Clear Wing@" ; species name
 

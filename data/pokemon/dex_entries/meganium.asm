@@ -1,7 +1,7 @@
 	db 18   ; height
 	dw 1005 ; weight
 
-	db 0 ; unused
+	dn SHAPE_QUADRUPED, BODY_COLOR_RED
 
 	db "Herb@" ; species name
 

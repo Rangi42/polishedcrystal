@@ -1,7 +1,7 @@
 	db 15  ; height
 	dw 405 ; weight
 
-	db 0 ; unused
+	dn SHAPE_BIPEDAL_TAIL, BODY_COLOR_RED
 
 	db "Shadow@" ; species name
 

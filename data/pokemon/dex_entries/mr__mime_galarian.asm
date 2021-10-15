@@ -1,7 +1,7 @@
 	db 14  ; height
 	dw 568 ; weight
 
-	db 0 ; unused
+	dn SHAPE_BIPEDAL, BODY_COLOR_RED
 
 	db "Dancing@" ; species name
 

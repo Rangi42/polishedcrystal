@@ -1,7 +1,7 @@
 	db 12  ; height
 	dw 203 ; weight
 
-	db 0 ; unused
+	dn SHAPE_BIPEDAL_TAIL, BODY_COLOR_RED
 
 	db "Long Tail@" ; species name
 

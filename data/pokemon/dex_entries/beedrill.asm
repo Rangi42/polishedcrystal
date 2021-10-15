@@ -1,7 +1,7 @@
 	db 10  ; height
 	dw 295 ; weight
 
-	db 0 ; unused
+	dn SHAPE_MULTIWINGS, BODY_COLOR_RED
 
 	db "Poison Bee@" ; species name
 

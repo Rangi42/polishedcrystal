@@ -1,7 +1,7 @@
 	db 3  ; height
 	dw 60 ; weight
 
-	db 0 ; unused
+	dn SHAPE_HEAD_ARMS, BODY_COLOR_RED
 
 	db "Magnet@" ; species name
 

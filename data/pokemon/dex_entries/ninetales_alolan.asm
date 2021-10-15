@@ -1,7 +1,7 @@
 	db 11  ; height
 	dw 199 ; weight
 
-	db 0 ; unused
+	dn SHAPE_QUADRUPED, BODY_COLOR_RED
 
 	db "Fox@" ; species name
 

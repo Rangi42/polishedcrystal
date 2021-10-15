@@ -1,7 +1,7 @@
 	db 5  ; height
 	dw 79 ; weight
 
-	db 0 ; unused
+	dn SHAPE_BIPEDAL, BODY_COLOR_RED
 
 	db "Fire Mouse@" ; species name
 
