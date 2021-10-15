@@ -151,11 +151,11 @@ BillsPC_LoadUI:
 
 	; Gender symbols and shiny star
 	ld hl, BattleExtrasGFX
-	ld de, vTiles2 tile $40
-	lb bc, BANK(BattleExtrasGFX), 4
+	ld de, vTiles2 tile $41
+	lb bc, BANK(BattleExtrasGFX), 3
 	call DecompressRequest2bpp
 
-	; Box frame tiles and Pokérus symbol (overwrites first tile of BattleExtrasGFX)
+	; Box frame tiles and Pokérus symbol
 	ld hl, BillsPC_TileGFX
 	ld de, vTiles2 tile $31
 	lb bc, BANK(BillsPC_TileGFX), 16

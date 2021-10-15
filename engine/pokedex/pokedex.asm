@@ -92,9 +92,10 @@ Pokedex:
 	lb bc, BANK(DexOAM), 29
 	call DecompressRequest2bpp
 
+	; Gender symbols
 	ld hl, BattleExtrasGFX
-	ld de, vTiles2 tile $7c
-	lb bc, BANK(BattleExtrasGFX), 3
+	ld de, vTiles2 tile $7d
+	lb bc, BANK(BattleExtrasGFX), 2
 	call DecompressRequest2bpp
 
 	pop af
@@ -1627,7 +1628,7 @@ Pokedex_Bio:
 	jr z, .all_f
 	cp GENDER_UNKNOWN
 	jr z, .unknown
-	ld b, a
+	ld b, a ; no-optimize a = N - a
 	ld a, 8
 	sub b
 .simplify_loop
