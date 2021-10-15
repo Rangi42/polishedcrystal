@@ -1,7 +1,7 @@
 	db 11  ; height
 	dw 340 ; weight
 
-	db 0 ; unused
+	dn SHAPE_BIPEDAL_TAIL, BODY_COLOR_BLACK
 
 	db "Sharp Claw@" ; species name
 

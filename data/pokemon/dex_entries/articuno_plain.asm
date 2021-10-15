@@ -1,7 +1,7 @@
 	db 17  ; height
 	dw 554 ; weight
 
-	db 0 ; unused
+	dn SHAPE_WINGS, BODY_COLOR_BLUE
 
 	db "Freeze@" ; species name
 

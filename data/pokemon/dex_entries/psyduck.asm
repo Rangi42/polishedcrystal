@@ -1,7 +1,7 @@
 	db 8   ; height
 	dw 196 ; weight
 
-	db 0 ; unused
+	dn SHAPE_BIPEDAL_TAIL, BODY_COLOR_YELLOW
 
 	db "Duck@" ; species name
 

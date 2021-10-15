@@ -1,7 +1,7 @@
 	db 11  ; height
 	dw 335 ; weight
 
-	db 0 ; unused
+	dn SHAPE_INSECTOID, BODY_COLOR_RED
 
 	db "Long Leg@" ; species name
 

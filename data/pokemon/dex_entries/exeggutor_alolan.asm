@@ -1,7 +1,7 @@
 	db 109  ; height
 	dw 4156 ; weight
 
-	db 0 ; unused
+	dn SHAPE_HEAD_LEGS, BODY_COLOR_YELLOW
 
 	db "Coconut@" ; species name
 

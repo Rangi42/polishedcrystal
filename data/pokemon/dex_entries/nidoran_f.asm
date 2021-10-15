@@ -1,7 +1,7 @@
 	db 4  ; height
 	dw 70 ; weight
 
-	db 0 ; unused
+	dn SHAPE_QUADRUPED, BODY_COLOR_BLUE
 
 	db "Poison Pin@" ; species name
 

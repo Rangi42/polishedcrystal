@@ -1,7 +1,7 @@
 	db 14  ; height
 	dw 406 ; weight
 
-	db 0 ; unused
+	dn SHAPE_BIPEDAL, BODY_COLOR_RED
 
 	db "Human Shape@" ; species name
 

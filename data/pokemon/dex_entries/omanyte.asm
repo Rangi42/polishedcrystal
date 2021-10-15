@@ -1,7 +1,7 @@
 	db 4  ; height
 	dw 75 ; weight
 
-	db 0 ; unused
+	dn SHAPE_TENTACLES, BODY_COLOR_BLUE
 
 	db "Spiral@" ; species name
 

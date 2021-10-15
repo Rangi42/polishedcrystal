@@ -1,7 +1,7 @@
 	db 7   ; height
 	dw 185 ; weight
 
-	db 0 ; unused
+	dn SHAPE_QUADRUPED, BODY_COLOR_BROWN
 
 	db "Rat@" ; species name
 

@@ -1,7 +1,7 @@
 	db 15  ; height
 	dw 125 ; weight
 
-	db 0 ; unused
+	dn SHAPE_MULTIWINGS, BODY_COLOR_PURPLE
 
 	db "Poison Moth@" ; species name
 

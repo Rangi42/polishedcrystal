@@ -1,7 +1,7 @@
 	db 11  ; height
 	dw 558 ; weight
 
-	db 0 ; unused
+	dn SHAPE_QUADRUPED, BODY_COLOR_BROWN
 
 	db "Swine@" ; species name
 

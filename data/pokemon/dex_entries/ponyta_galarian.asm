@@ -1,7 +1,7 @@
 	db 8   ; height
 	dw 240 ; weight
 
-	db 0 ; unused
+	dn SHAPE_QUADRUPED, BODY_COLOR_WHITE
 
 	db "Unique Horn@" ; species name
 

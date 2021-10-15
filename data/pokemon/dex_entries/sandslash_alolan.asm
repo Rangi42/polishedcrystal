@@ -1,7 +1,7 @@
 	db 12  ; height
 	dw 550 ; weight
 
-	db 0 ; unused
+	dn SHAPE_BIPEDAL_TAIL, BODY_COLOR_BLUE
 
 	db "Mouse@" ; species name
 

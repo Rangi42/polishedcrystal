@@ -1,7 +1,7 @@
 	db 18  ; height
 	dw 590 ; weight
 
-	db 0 ; unused
+	dn SHAPE_WINGS, BODY_COLOR_PURPLE
 
 	db "Fossil@" ; species name
 

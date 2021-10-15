@@ -1,7 +1,7 @@
 	db 9   ; height
 	dw 160 ; weight
 
-	db 0 ; unused
+	dn SHAPE_WINGS, BODY_COLOR_RED
 
 	db "Delivery@" ; species name
 

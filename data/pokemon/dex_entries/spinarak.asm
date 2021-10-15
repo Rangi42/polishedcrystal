@@ -1,7 +1,7 @@
 	db 5  ; height
 	dw 85 ; weight
 
-	db 0 ; unused
+	dn SHAPE_INSECTOID, BODY_COLOR_GREEN
 
 	db "String Spit@" ; species name
 

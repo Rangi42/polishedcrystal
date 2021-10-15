@@ -1,7 +1,7 @@
 	db 19   ; height
 	dw 1780 ; weight
 
-	db 0 ; unused
+	dn SHAPE_QUADRUPED, BODY_COLOR_YELLOW
 
 	db "Thunder@" ; species name
 

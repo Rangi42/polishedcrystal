@@ -1,7 +1,7 @@
 	db 12   ; height
 	dw 1520 ; weight
 
-	db 0 ; unused
+	dn SHAPE_SERPENTINE, BODY_COLOR_GRAY
 
 	db "Hard Shell@" ; species name
 

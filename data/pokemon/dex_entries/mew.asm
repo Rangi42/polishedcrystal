@@ -1,7 +1,7 @@
 	db 4  ; height
 	dw 40 ; weight
 
-	db 0 ; unused
+	dn SHAPE_BIPEDAL_TAIL, BODY_COLOR_PINK
 
 	db "New Species@" ; species name
 

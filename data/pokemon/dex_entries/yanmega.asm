@@ -1,7 +1,7 @@
 	db 19  ; height
 	dw 515 ; weight
 
-	db 0 ; unused
+	dn SHAPE_MULTIWINGS, BODY_COLOR_GREEN
 
 	db "Ogre Darner@" ; species name
 

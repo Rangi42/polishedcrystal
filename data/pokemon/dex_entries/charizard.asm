@@ -1,7 +1,7 @@
 	db 17  ; height
 	dw 905 ; weight
 
-	db 0 ; unused
+	dn SHAPE_BIPEDAL_TAIL, BODY_COLOR_RED
 
 	db "Flame@" ; species name
 

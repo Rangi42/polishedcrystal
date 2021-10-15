@@ -1,7 +1,7 @@
 	db 12  ; height
 	dw 380 ; weight
 
-	db 0 ; unused
+	dn SHAPE_BIPEDAL, BODY_COLOR_BROWN
 
 	db "Imitation@" ; species name
 

@@ -1,7 +1,7 @@
 	db 18  ; height
 	dw 852 ; weight
 
-	db 0 ; unused
+	dn SHAPE_HEAD_LEGS, BODY_COLOR_BROWN
 
 	db "Triple Bird@" ; species name
 

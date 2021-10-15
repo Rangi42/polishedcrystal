@@ -1,7 +1,7 @@
 	db 7   ; height
 	dw 255 ; weight
 
-	db 0 ; unused
+	dn SHAPE_QUADRUPED, BODY_COLOR_BLACK
 
 	db "Mouse@" ; species name
 

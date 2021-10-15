@@ -1,7 +1,7 @@
 	db 8   ; height
 	dw 345 ; weight
 
-	db 0 ; unused
+	dn SHAPE_HEAD_BASE, BODY_COLOR_BROWN
 
 	db "Star Shape@" ; species name
 

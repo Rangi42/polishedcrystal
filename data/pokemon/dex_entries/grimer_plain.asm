@@ -1,7 +1,7 @@
 	db 9   ; height
 	dw 300 ; weight
 
-	db 0 ; unused
+	dn SHAPE_HEAD_ARMS, BODY_COLOR_PURPLE
 
 	db "Sludge@" ; species name
 

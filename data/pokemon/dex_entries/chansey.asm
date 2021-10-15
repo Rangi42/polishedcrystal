@@ -1,7 +1,7 @@
 	db 11  ; height
 	dw 346 ; weight
 
-	db 0 ; unused
+	dn SHAPE_BIPEDAL_TAIL, BODY_COLOR_PINK
 
 	db "Egg@" ; species name
 

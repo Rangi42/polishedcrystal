@@ -1,7 +1,7 @@
 	db 12  ; height
 	dw 158 ; weight
 
-	db 0 ; unused
+	dn SHAPE_QUADRUPED, BODY_COLOR_GREEN
 
 	db "Leaf@" ; species name
 

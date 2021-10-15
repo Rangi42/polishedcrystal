@@ -1,7 +1,7 @@
 	db 38   ; height
 	dw 1990 ; weight
 
-	db 0 ; unused
+	dn SHAPE_WINGS, BODY_COLOR_RED
 
 	db "Rainbow@" ; species name
 

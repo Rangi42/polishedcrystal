@@ -1,7 +1,7 @@
 	db 3  ; height
 	dw 65 ; weight
 
-	db 0 ; unused
+	dn SHAPE_QUADRUPED, BODY_COLOR_BROWN
 
 	db "Evolution@" ; species name
 

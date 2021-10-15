@@ -1,7 +1,7 @@
 	db 10  ; height
 	dw 300 ; weight
 
-	db 0 ; unused
+	dn SHAPE_BIPEDAL, BODY_COLOR_PURPLE
 
 	db "Insect@" ; species name
 

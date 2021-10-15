@@ -1,7 +1,7 @@
 	db 9   ; height
 	dw 285 ; weight
 
-	db 0 ; unused
+	dn SHAPE_TENTACLES, BODY_COLOR_RED
 
 	db "Jet@" ; species name
 

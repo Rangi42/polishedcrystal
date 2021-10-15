@@ -1,7 +1,7 @@
 	db 10  ; height
 	dw 650 ; weight
 
-	db 0 ; unused
+	dn SHAPE_WINGS, BODY_COLOR_BLUE
 
 	db "Kite@" ; species name
 

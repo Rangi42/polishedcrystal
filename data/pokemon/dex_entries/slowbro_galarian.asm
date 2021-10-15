@@ -1,7 +1,7 @@
 	db 16  ; height
 	dw 705 ; weight
 
-	db 0 ; unused
+	dn SHAPE_BIPEDAL_TAIL, BODY_COLOR_PINK
 
 if DEF(FAITHFUL)
 	db "Hermit Crab@" ; species name

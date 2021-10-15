@@ -1,7 +1,7 @@
 	db 5   ; height
 	dw 280 ; weight
 
-	db 0 ; unused
+	dn SHAPE_BIPEDAL_TAIL, BODY_COLOR_BROWN
 
 	db "Pig Monkey@" ; species name
 

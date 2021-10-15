@@ -1,7 +1,7 @@
 	db 11  ; height
 	dw 800 ; weight
 
-	db 0 ; unused
+	dn SHAPE_HEAD_BASE, BODY_COLOR_PURPLE
 
 	db "Mysterious@" ; species name
 

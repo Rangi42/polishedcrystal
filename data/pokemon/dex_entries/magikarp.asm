@@ -1,7 +1,7 @@
 	db 9   ; height
 	dw 100 ; weight
 
-	db 0 ; unused
+	dn SHAPE_FINS, BODY_COLOR_RED
 
 	db "Fish@" ; species name
 

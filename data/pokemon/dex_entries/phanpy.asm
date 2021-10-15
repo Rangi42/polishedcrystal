@@ -1,7 +1,7 @@
 	db 5   ; height
 	dw 335 ; weight
 
-	db 0 ; unused
+	dn SHAPE_QUADRUPED, BODY_COLOR_BLUE
 
 	db "Long Nose@" ; species name
 

@@ -1,7 +1,7 @@
 	db 5  ; height
 	dw 39 ; weight
 
-	db 0 ; unused
+	dn SHAPE_FINS, BODY_COLOR_GRAY
 
 	db "Balloon@" ; species name
 

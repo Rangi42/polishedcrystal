@@ -1,7 +1,7 @@
 	db 25   ; height
 	dw 2910 ; weight
 
-	db 0 ; unused
+	dn SHAPE_QUADRUPED, BODY_COLOR_BROWN
 
 	db "Twin Tusk@" ; species name
 

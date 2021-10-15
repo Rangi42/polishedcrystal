@@ -1,7 +1,7 @@
 	db 7   ; height
 	dw 210 ; weight
 
-	db 0 ; unused
+	dn SHAPE_BIPEDAL, BODY_COLOR_PURPLE
 
 	db "Scuffle@" ; species name
 

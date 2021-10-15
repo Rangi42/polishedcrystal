@@ -1,7 +1,7 @@
 	db 10  ; height
 	dw 108 ; weight
 
-	db 0 ; unused
+	dn SHAPE_WINGS, BODY_COLOR_RED
 
 	db "Five Star@" ; species name
 

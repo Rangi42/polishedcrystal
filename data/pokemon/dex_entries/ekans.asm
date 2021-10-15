@@ -1,7 +1,7 @@
 	db 20  ; height
 	dw 69 ; weight
 
-	db 0 ; unused
+	dn SHAPE_SERPENTINE, BODY_COLOR_PURPLE
 
 	db "Snake@" ; species name
 

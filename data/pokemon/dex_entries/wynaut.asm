@@ -1,7 +1,7 @@
 	db 6   ; height
 	dw 140 ; weight
 
-	db 0 ; unused
+	dn SHAPE_BIPEDAL_TAIL, BODY_COLOR_BLUE
 
 	db "Bright@" ; species name
 

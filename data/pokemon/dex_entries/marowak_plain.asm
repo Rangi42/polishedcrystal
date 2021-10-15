@@ -1,7 +1,7 @@
 	db 10  ; height
 	dw 450 ; weight
 
-	db 0 ; unused
+	dn SHAPE_BIPEDAL_TAIL, BODY_COLOR_BROWN
 
 	db "Bone Keeper@" ; species name
 

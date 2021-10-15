@@ -1,7 +1,7 @@
 	db 10 ; height
 	dw 4  ; weight
 
-	db 0 ; unused
+	dn SHAPE_HEAD_ARMS, BODY_COLOR_WHITE
 
 	db "Coral@" ; species name
 

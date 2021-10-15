@@ -1,7 +1,7 @@
 	db 3  ; height
 	dw 10 ; weight
 
-	db 0 ; unused
+	dn SHAPE_BIPEDAL, BODY_COLOR_PINK
 
 	db "Balloon@" ; species name
 

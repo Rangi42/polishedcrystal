@@ -1,7 +1,7 @@
 	db 18   ; height
 	dw 1386 ; weight
 
-	db 0 ; unused
+	dn SHAPE_BIPEDAL_TAIL, BODY_COLOR_YELLOW
 
 	db "Thunderbolt@" ; species name
 

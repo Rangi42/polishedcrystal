@@ -1,7 +1,7 @@
 	db 9  ; height
 	dw 44 ; weight
 
-	db 0 ; unused
+	dn SHAPE_HEAD, BODY_COLOR_PURPLE
 
 	db "Magical@" ; species name
 

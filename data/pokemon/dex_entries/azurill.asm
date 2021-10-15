@@ -1,7 +1,7 @@
 	db 2  ; height
 	dw 20 ; weight
 
-	db 0
+	dn SHAPE_HEAD_LEGS, BODY_COLOR_BLUE
 
 	db "Polka Dot@" ; species name
 

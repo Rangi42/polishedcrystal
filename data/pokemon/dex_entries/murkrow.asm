@@ -1,7 +1,7 @@
 	db 5  ; height
 	dw 21 ; weight
 
-	db 0 ; unused
+	dn SHAPE_WINGS, BODY_COLOR_BLACK
 
 	db "Darkness@" ; species name
 

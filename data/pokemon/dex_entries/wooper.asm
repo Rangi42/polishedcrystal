@@ -1,7 +1,7 @@
 	db 4  ; height
 	dw 85 ; weight
 
-	db 0 ; unused
+	dn SHAPE_HEAD_LEGS, BODY_COLOR_BLUE
 
 	db "Water Fish@" ; species name
 

@@ -1,7 +1,7 @@
 	db 10 ; height
 	dw 64 ; weight
 
-	db 0 ; unused
+	dn SHAPE_HEAD_BASE, BODY_COLOR_GREEN
 
 	db "Flycatcher@" ; species name
 

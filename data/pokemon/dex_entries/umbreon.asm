@@ -1,7 +1,7 @@
 	db 10  ; height
 	dw 270 ; weight
 
-	db 0 ; unused
+	dn SHAPE_QUADRUPED, BODY_COLOR_BLACK
 
 	db "Moonlight@" ; species name
 

@@ -1,7 +1,7 @@
 	db 11  ; height
 	dw 339 ; weight
 
-	db 0 ; unused
+	dn SHAPE_BIPEDAL, BODY_COLOR_GREEN
 
 	db "Frog@" ; species name
 

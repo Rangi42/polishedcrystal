@@ -1,7 +1,7 @@
 	db 10  ; height
 	dw 350 ; weight
 
-	db 0 ; unused
+	dn SHAPE_HEAD_LEGS, BODY_COLOR_BLUE
 
 	db "Vine@" ; species name
 

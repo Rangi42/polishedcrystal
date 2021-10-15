@@ -1,7 +1,7 @@
 	db 17  ; height
 	dw 505 ; weight
 
-	db 0 ; unused
+	dn SHAPE_WINGS, BODY_COLOR_GRAY
 
 	db "Armor Bird@" ; species name
 

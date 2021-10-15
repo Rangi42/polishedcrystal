@@ -1,7 +1,7 @@
 	db 11  ; height
 	dw 648 ; weight
 
-	db 0 ; unused
+	dn SHAPE_WINGS, BODY_COLOR_PURPLE
 
 	db "FlyScorpion@" ; species name
 

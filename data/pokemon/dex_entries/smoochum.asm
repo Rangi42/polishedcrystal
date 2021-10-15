@@ -1,7 +1,7 @@
 	db 4  ; height
 	dw 60 ; weight
 
-	db 0 ; unused
+	dn SHAPE_BIPEDAL, BODY_COLOR_PINK
 
 	db "Kiss@" ; species name
 

@@ -1,7 +1,7 @@
 	db 21   ; height
 	dw 4600 ; weight
 
-	db 0 ; unused
+	dn SHAPE_BIPEDAL, BODY_COLOR_BLACK
 
 	db "Sleeping@" ; species name
 

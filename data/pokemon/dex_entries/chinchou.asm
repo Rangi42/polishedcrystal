@@ -1,7 +1,7 @@
 	db 5   ; height
 	dw 120 ; weight
 
-	db 0 ; unused
+	dn SHAPE_FINS, BODY_COLOR_BLUE
 
 	db "Angler@" ; species name
 

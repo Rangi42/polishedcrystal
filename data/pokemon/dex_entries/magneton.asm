@@ -1,7 +1,7 @@
 	db 10  ; height
 	dw 600 ; weight
 
-	db 0 ; unused
+	dn SHAPE_MULTIBODY, BODY_COLOR_GRAY
 
 	db "Magnet@" ; species name
 

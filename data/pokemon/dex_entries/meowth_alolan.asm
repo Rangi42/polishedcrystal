@@ -1,7 +1,7 @@
 	db 4  ; height
 	dw 42 ; weight
 
-	db 0 ; unused
+	dn SHAPE_QUADRUPED, BODY_COLOR_BLUE
 
 	db "Scratch Cat@" ; species name
 

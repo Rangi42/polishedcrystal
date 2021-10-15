@@ -1,7 +1,7 @@
 	db 20  ; height
 	dw 600 ; weight
 
-	db 0 ; unused
+	dn SHAPE_WINGS, BODY_COLOR_YELLOW
 
 	db "Flame@" ; species name
 

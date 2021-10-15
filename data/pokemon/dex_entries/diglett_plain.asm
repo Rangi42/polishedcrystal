@@ -1,7 +1,7 @@
 	db 2 ; height
 	dw 8 ; weight
 
-	db 0 ; unused
+	dn SHAPE_HEAD_BASE, BODY_COLOR_BROWN
 
 	db "Mole@" ; species name
 

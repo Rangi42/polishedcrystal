@@ -1,7 +1,7 @@
 	db 13  ; height
 	dw 390 ; weight
 
-	db 0 ; unused
+	dn SHAPE_FINS, BODY_COLOR_RED
 
 	db "Goldfish@" ; species name
 

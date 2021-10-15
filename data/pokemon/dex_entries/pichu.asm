@@ -1,7 +1,7 @@
 	db 3  ; height
 	dw 20 ; weight
 
-	db 0 ; unused
+	dn SHAPE_QUADRUPED, BODY_COLOR_YELLOW
 
 	db "Tiny Mouse@" ; species name
 

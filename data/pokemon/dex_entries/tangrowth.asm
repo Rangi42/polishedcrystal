@@ -1,7 +1,7 @@
 	db 20   ; height
 	dw 1286 ; weight
 
-	db 0 ; unused
+	dn SHAPE_BIPEDAL, BODY_COLOR_BLUE
 
 	db "Vine@" ; species name
 

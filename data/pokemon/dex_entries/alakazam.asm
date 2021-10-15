@@ -1,7 +1,7 @@
 	db 15  ; height
 	dw 480 ; weight
 
-	db 0 ; unused
+	dn SHAPE_BIPEDAL, BODY_COLOR_BROWN
 
 	db "Psi@" ; species name
 

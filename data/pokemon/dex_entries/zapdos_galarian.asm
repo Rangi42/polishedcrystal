@@ -1,7 +1,7 @@
 	db 16  ; height
 	dw 582 ; weight
 
-	db 0 ; unused
+	dn SHAPE_WINGS, BODY_COLOR_YELLOW
 
 	db "Strong Legs@" ; species name
 
