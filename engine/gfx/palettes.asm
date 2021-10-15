@@ -1914,6 +1914,12 @@ if !DEF(MONOCHROME)
 	RGB 16, 16, 16
 	RGB 00, 00, 00
 
+	; BG5: misc pals
+	RGB 31, 31, 31
+	RGB 31, 12, 06 ; male
+	RGB 04, 17, 31 ; female
+	RGB 31, 26, 00 ; EV yield
+
 	; OB0: Balls + cursor
 	RGB 31, 31, 31
 	RGB 31, 07, 04

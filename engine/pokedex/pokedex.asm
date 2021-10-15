@@ -92,6 +92,11 @@ Pokedex:
 	lb bc, BANK(DexOAM), 29
 	call DecompressRequest2bpp
 
+	ld hl, BattleExtrasGFX
+	ld de, vTiles2 tile $7c
+	lb bc, BANK(BattleExtrasGFX), 3
+	call DecompressRequest2bpp
+
 	pop af
 	ldh [rSVBK], a
 
@@ -1613,7 +1618,53 @@ Pokedex_Bio:
 	lb bc, 1, 3
 	call PrintNum
 
+	; Print gender ratio
+	ld a, [wBaseGender]
+	swap a
+	and $f
+	jr z, .all_m
+	cp GENDER_F100
+	jr z, .all_f
+	cp GENDER_UNKNOWN
+	jr z, .unknown
+	ld b, a
+	ld a, 8
+	sub b
+.simplify_loop
+	rrc b
+	rrca
+	jr nc, .simplify_loop
+	rlc b
+	rlca
+	add "0"
+	hlcoord 8, 9
+	ld [hli], a
+	inc hl
+	inc hl
+	ld a, b
+	add "0"
+	ld [hl], a
+	jr .base_exp
+
+.all_m
+	hlcoord 12, 9
+	ld [hl], $7d
+.all_f
+	ld de, .AllString
+	jr .print
+
+.unknown
+	hlcoord 12, 9, wAttrMap
+	ld [hl], 0
+	ld de, .UnknownString
+.print
+	hlcoord 8, 9
+	call PlaceString
+	hlcoord 9, 9, wAttrMap
+	ld [hl], 0
+
 	; Print base experience
+.base_exp
 	ld a, [wBaseExp]
 	ld e, a
 	ld d, 0
@@ -1746,6 +1797,10 @@ Pokedex_Bio:
 	ld e, l
 	ret
 
+.AllString
+	db "All @"
+.UnknownString
+	db "Unknown@"
 INCLUDE "data/pokedex_bio.asm"
 
 Pokedex_Stats:
@@ -1757,19 +1812,7 @@ Pokedex_Stats:
 	xor a
 	ld [wPokedexOAM_DexNoY], a
 
-	ldh a, [rSVBK]
-	push af
-	ld a, BANK(wBGPals1)
-	ldh [rSVBK], a
-	ld de, palred 31 + palgreen 26 + palblue 0
-	ld hl, wBGPals1 palette 5 + 2
-	ld a, e
-	ld [hli], a
-	ld [hl], d
-	pop af
-	ldh [rSVBK], a
-
-	ld a, DEXDISP_BIO
+	ld a, DEXDISP_STAT
 	ld [wPokedex_DisplayMode], a
 	ld de, wStringBuffer1
 	hlcoord 4, 1
