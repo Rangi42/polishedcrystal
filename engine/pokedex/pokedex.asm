@@ -1414,6 +1414,8 @@ _Pokedex_Description:
 	ldh a, [hPokedexDescPlayCry]
 	and a
 	jr z, .joypad_loop
+	xor a
+	ldh [hPokedexDescPlayCry], a
 	ld a, [wCurPartySpecies]
 	ld c, a
 	ld a, [wPokedex_Form]
@@ -1892,14 +1894,27 @@ Pokedex_Stats:
 	call PrintNum
 	ld a, [wBaseEVYield1]
 	and 3
-	jr z, .ok
+	jr z, .ability
 	add $30
 	ld [hl], a
 
-.ok
+.ability
 	; load ability
-	ld a, [wBaseAbility1]
-	ld b, a
+	ldh a, [hPokedexStatsCurAbil]
+	add "1"
+	cp "3"
+	jr nz, .got_tile
+	ld a, $3f ; bold H
+.got_tile
+	hlcoord 9, 11
+	ld [hl], a
+	ldh a, [hPokedexStatsCurAbil]
+	add LOW(wBaseAbility1)
+	ld l, a
+	adc HIGH(wBaseAbility1)
+	sub l
+	ld h, a
+	ld b, [hl]
 	push bc
 	hlcoord 1, 13
 	farcall PrintAbility
@@ -1952,14 +1967,24 @@ Pokedex_Stats:
 	rrca
 	jr c, .pressed_start
 	rrca
-	; jr c, Pokedex_Area
+	; jr c, .pressed_right
 	rrca
-	jmp c, Pokedex_Bio
+	jmp c, .pressed_left
 	rrca
 	jr c, .pressed_up
 	rrca
 	jr c, .pressed_down
 	jr .joypad_loop
+
+.pressed_left
+	xor a
+	ldh [hPokedexStatsCurAbil], a
+	jmp Pokedex_Bio
+
+;.pressed_right
+	;xor a
+	;ldh [hPokedexStatsCurAbil], a
+	;jmp Pokedex_Area
 
 .pressed_start
 	call Pokedex_ChangeForm
@@ -1983,24 +2008,26 @@ Pokedex_Stats:
 	hlcoord 1, 13
 	push hl
 	call ClearBox
-	hlcoord 9, 11
-	ld a, [hl]
-	cp "2"
-	ld b, $3f
+	ldh a, [hPokedexStatsCurAbil]
+	dec a
+	ld b, $3f ; bold H
 	jr z, .got_char
-	cp $3f ; bold H
+	dec a
 	ld b, "1"
 	jr z, .got_char
 	inc b
 .got_char
+	hlcoord 9, 11
 	ld [hl], b
 	ld a, b
-	and 3 ; conveniently, $3f & 3 = 3
+	and 3 ; conveniently, $3f & $3 = $3
 	dec a
-	ld c, a
-	ld b, 0
-	ld hl, wBaseAbility1
-	add hl, bc
+	ldh [hPokedexDescPlayCry], a
+	add LOW(wBaseAbility1)
+	ld l, a
+	adc HIGH(wBaseAbility1)
+	sub l
+	ld h, a
 	ld b, [hl]
 	pop hl
 	push bc
