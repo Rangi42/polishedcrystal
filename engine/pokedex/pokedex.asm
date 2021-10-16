@@ -16,10 +16,12 @@
 
 	const_def
 	const DEXDISP_MAIN
+	const DEXDISP_MODE
+	const DEXDISP_SEARCH
 	const DEXDISP_DESC
 	const DEXDISP_AREA
 	const DEXDISP_BIO
-	const DEXDISP_STAT
+	const DEXDISP_STATS
 
 	const_def
 	const DEXPOS_MONS
@@ -1344,7 +1346,7 @@ _Pokedex_Description:
 	ld a, SHINY_CHARM
 	ld [wCurKeyItem], a
 	call CheckKeyItem
-	jr nc, .botmenu
+	;jr nc, .botmenu
 	hlcoord 9, 10
 	ld b, $28
 .sel_shiny_loop
@@ -1581,10 +1583,6 @@ Pokedex_Bio:
 	ld hl, DexTilemap_Bio
 	call Pokedex_LoadTilemap
 
-	; Unload dex number
-	xor a
-	ld [wPokedexOAM_DexNoY], a
-
 	ld a, DEXDISP_BIO
 	ld [wPokedex_DisplayMode], a
 	ld de, wStringBuffer1
@@ -1751,7 +1749,7 @@ Pokedex_Bio:
 .joypad_loop
 	call Pokedex_GetInput
 	rrca
-	; jr c, .pressed_a
+	jr c, .pressed_a
 	rrca
 	jmp c, Pokedex_Main
 	rrca
@@ -1785,6 +1783,14 @@ Pokedex_Bio:
 	call Pokedex_GetCursorMon
 	jmp Pokedex_Bio
 
+.pressed_a
+	ld a, [wCurPartySpecies]
+	ld c, a
+	ld a, [wPokedex_Form]
+	ld b, a
+	call PlayCry
+	jr .joypad_loop
+
 .GetEggGroupName:
 	and $f
 	dec a
@@ -1811,11 +1817,7 @@ Pokedex_Stats:
 	ld hl, DexTilemap_Stats
 	call Pokedex_LoadTilemap
 
-	; Unload dex number
-	xor a
-	ld [wPokedexOAM_DexNoY], a
-
-	ld a, DEXDISP_STAT
+	ld a, DEXDISP_STATS
 	ld [wPokedex_DisplayMode], a
 	ld de, wStringBuffer1
 	hlcoord 4, 1

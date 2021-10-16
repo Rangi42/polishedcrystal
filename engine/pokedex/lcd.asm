@@ -66,7 +66,15 @@ Pokedex_RefreshScreen:
 	push hl
 	rst CopyBytes
 
-	; Reload dex number display.
+	; Reload dex number display, should only be visible for main and description pages.
+	ld a, [wPokedex_DisplayMode]
+	cp DEXDISP_DESC
+	jr z, .got_y
+	and a
+	jr z, .got_y
+	xor a
+	ld [wPokedexOAM_DexNoY], a
+.got_y
 	ld a, [wPokedexOAM_DexNoX]
 	ld e, a
 	ld bc, 2
@@ -124,11 +132,92 @@ Pokedex_RefreshScreen:
 	call Divide
 	ldh a, [hQuotient + 2]
 	add 85
+
 .got_scrollbar_offset
 	ld [wDexVirtualOAMScrollbarCopy], a
 	farcall PlaySpriteAnimations
+	ld a, [wPokedex_DisplayMode]
+	sub DEXDISP_SEARCH
+	jr c, .copy_back
+
+	push af
+	ld e, a
+	add a
+	add a
+	add e
+	add LOW(DexDisplayOAMData)
+	ld e, a
+	add HIGH(DexDisplayOAMData)
+	sub e
+	ld d, a
+	ld hl, wVirtualOAMSprite00
+	pop af
+	jr z, .indicator_oam ; cp DEXDISP_SEARCH
+
+	ld a, 152
+	ld b, a
+	ld [hli], a
+	ld a, [de]
+	ld [hli], a
+	ld a, $17
+	ld c, a
+	ld [hli], a
+	ld a, 1
+	ld [hli], a
+	ld a, [wPokedexOAM_IsCaught]
+	and a
+	jr z, .indicator_oam
+	push de
+	ld de, DexBotMenuXPositions
+	ld a, [de]
+.botmenu_oam_loop
+	ld [hl], b
+	inc hl
+	ld [hli], a
+	inc c
+	ld a, c
+	ld [hli], a
+	xor a
+	ld [hli], a
+	inc de
+	ld a, [de]
+	and a
+	jr nz, .botmenu_oam_loop
+	pop de
+
+.indicator_oam
+	inc de
+	ld a, [de] ; indicator y pos
+	and a
+	jr z, .copy_back
+	push hl
+	ld h, d
+	ld l, e
+	ld b, a
+	inc hl
+	ld a, [hli]
+	ld c, a
+	ld a, [hli]
+	ld d, a
+	ld e, [hl]
+	pop hl
+.indicator_oam_loop
+	ld a, b
+	ld [hli], a
+	ld a, c
+	ld [hli], a
+	add 8
+	ld c, a
+	ld a, d
+	ld [hli], a
+	inc d
+	ld a, 1
+	ld [hli], a
+	dec e
+	jr nz, .indicator_oam_loop
 
 	; Copy it back.
+.copy_back
 	pop de
 	pop hl
 	pop bc
@@ -506,6 +595,17 @@ PVB_UpdateDexMap::
 	pop af
 	ldh [rSVBK], a
 	ret
+
+DexBotMenuXPositions:
+	db 66, 74, 91, 99, 105, 0
+
+DexDisplayOAMData:
+; bottom menu cursor x pos, indicator y pos, indicator x pos, indicator start tile, indicator length
+	db  0,   0,   0, $0b, 6 ; DEXDISP_SEARCH
+	db 32,  93,  31, $05, 6 ; DEXDISP_DESC
+	db  0,   0,   0,   0, 0 ; DEXDISP_AREA
+	db 62,  52, 132, $12, 4 ; DEXDISP_BIO
+	db 87,   0              ; DEXDISP_STATS (can be < 6 bytes since it's the highest index)
 
 DexOAM:
 INCBIN "gfx/pokedex/oam.2bpp.lz"

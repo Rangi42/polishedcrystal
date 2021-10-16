@@ -1921,14 +1921,14 @@ if !DEF(MONOCHROME)
 	RGB 31, 26, 00 ; EV yield
 
 	; OB0: Balls + cursor
+	;RGB 31, 31, 31
 	RGB 31, 31, 31
-	RGB 31, 07, 04
 	RGB 26, 10, 06
 	RGB 00, 00, 00
 
 	; OB1: Scrollbar
 	RGB 31, 31, 31
-	RGB 23, 23, 23
+	RGB 31, 31, 31
 	RGB 11, 14, 31
 	RGB 00, 00, 00
 else

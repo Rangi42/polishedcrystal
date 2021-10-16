@@ -263,12 +263,12 @@ _CGB_PokegearPals:
 	ret
 
 _CGB_PokedexAreaPals:
-	ld hl, PokegearPals
-	ld de, wBGPals1
-	ld c, 8 palettes
+	ld hl, PokegearPals palette 1
+	ld de, wBGPals1 palette 1
+	ld c, 7 palettes
 	call LoadCPaletteBytesFromHLIntoDE
 
-	ld hl, .InvertedGrayPalette
+	ld hl, PokedexPals palette 1
 	ld de, wBGPals1 palette 0
 	call LoadHLPaletteIntoDE
 
@@ -276,19 +276,6 @@ _CGB_PokedexAreaPals:
 	ld a, $1
 	ldh [hCGBPalUpdate], a
 	ret
-
-.InvertedGrayPalette:
-if !DEF(MONOCHROME)
-	RGB 00, 00, 00
-	RGB 21, 00, 21
-	RGB 13, 00, 13
-	RGB 31, 31, 31
-else
-	RGB_MONOCHROME_BLACK
-	RGB_MONOCHROME_LIGHT
-	RGB_MONOCHROME_DARK
-	RGB_MONOCHROME_WHITE
-endc
 
 _CGB_StatsScreenHPPals:
 	ld de, wBGPals1
@@ -363,8 +350,8 @@ _CGB_Pokedex:
 	ld de, wBGPals1 palette 4
 	ld c, 2 palettes
 	call LoadCPaletteBytesFromHLIntoDE
-	ld de, wOBPals1
-	ld c, 2 palettes
+	ld de, wOBPals1 + 2
+	ld c, 2 palettes - 2
 	call LoadCPaletteBytesFromHLIntoDE
 
 	jmp _CGB_FinishLayout
