@@ -188,6 +188,36 @@ PHB_DescSwitchSCY:
 	ldh [rSCY], a
 	jmp PopBCDEHL
 
+PHB_BioStatsSwitchSCY:
+	push hl
+	push de
+	push bc
+.busyloop
+	ld a, [rSTAT]
+	and %11
+	jr nz, .busyloop
+	ld a, 3
+	ldh [rSCY], a
+	ld a, $87
+	ld de, _PHB_BioStatsSwitchSCY
+	call Pokedex_SetHBlankFunction
+	jmp PopBCDEHL
+
+_PHB_BioStatsSwitchSCY:
+	push hl
+	push de
+	push bc
+.busyloop
+	ld a, [rSTAT]
+	and %11
+	jr nz, .busyloop
+	ld a, 8
+	ldh [rSCY], a
+	ld a, $84
+	ld de, PHB_BioStatsSwitchSCY
+	call Pokedex_SetHBlankFunction
+	jmp PopBCDEHL
+
 PHB_Row1:
 	push hl
 	push de

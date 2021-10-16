@@ -1742,8 +1742,8 @@ Pokedex_Bio:
 	call PlaceString
 
 	call Pokedex_RefreshScreen
-	ld a, $87
-	ld de, PHB_DescSwitchSCY
+	ld a, $84
+	ld de, PHB_BioStatsSwitchSCY
 	call Pokedex_SetHBlankFunction
 
 .joypad_loop
@@ -1937,8 +1937,8 @@ Pokedex_Stats:
 
 .vbank_1
 	call Pokedex_RefreshScreen
-	ld a, $87
-	ld de, PHB_DescSwitchSCY
+	ld a, $84
+	ld de, PHB_BioStatsSwitchSCY
 	call Pokedex_SetHBlankFunction
 
 .joypad_loop

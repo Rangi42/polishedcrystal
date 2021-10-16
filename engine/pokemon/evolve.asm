@@ -776,6 +776,10 @@ GetPreEvolution:
 	inc hl
 	jr nz, .not_preevo
 	ld a, [wCurForm]
+	and SPECIESFORM_MASK
+	jr nz, .cont
+	inc a
+.cont
 	cp [hl]
 	jr z, .found_preevo
 .not_preevo
