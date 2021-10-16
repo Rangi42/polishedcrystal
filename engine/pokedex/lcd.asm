@@ -566,6 +566,17 @@ PVB_UpdateDexMap::
 	call GDMACopy
 
 .pokeinfo_done
+	bit DEXGFX_ICONSHAPE, [hl]
+	res DEXGFX_ICONSHAPE, [hl]
+	jr z, .iconshape_done
+	ld a, 1
+	ldh [rVBK], a
+	ld de, wDexMonIconTiles
+	ld bc, vTiles2 tile $38
+	ld a, 7
+	call GDMACopy
+
+.iconshape_done
 	bit DEXGFX_ROWTILES, [hl]
 	res DEXGFX_ROWTILES, [hl]
 	jr z, .done
@@ -597,7 +608,7 @@ PVB_UpdateDexMap::
 	ret
 
 DexBotMenuXPositions:
-	db 66, 74, 91, 99, 105, 0
+	db 66, 74, 91, 99, 107, 0
 
 DexDisplayOAMData:
 ; bottom menu cursor x pos, indicator y pos, indicator x pos, indicator start tile, indicator length
