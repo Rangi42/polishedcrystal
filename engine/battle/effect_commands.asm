@@ -3003,6 +3003,9 @@ BattleCommand_posthiteffects:
 	jr .rocky_helmet_done
 
 .offend_hit
+	call GetFutureSightUser
+	jr nc, .rocky_helmet_done
+
 	ld a, BATTLE_VARS_MOVE_CATEGORY
 	call GetBattleVar
 	cp c
@@ -6196,67 +6199,6 @@ BattleCommand_doubleminimizedamage:
 	ld a, $ff
 	ld [hli], a
 	ld [hl], a
-	ret
-
-GetFutureSightUser::
-; Returns:
-; c|z: Regular user in a (Future Sight not involved)
-; nc|z: Active user in a (Future Sight applying)
-; nc|nz: External user in a (or active fainted), future sight applying.
-	push hl
-	push de
-	push bc
-	ldh a, [hBattleTurn]
-	and a
-	ld hl, wPlayerFutureSightCount
-	ld bc, wCurBattleMon
-	jr z, .got_future
-	ld hl, wEnemyFutureSightCount
-	ld bc, wCurOTMon
-.got_future
-	ld a, [hl]
-	and a
-	jr z, .future_sight_offline
-	and $f
-	jr nz, .future_sight_offline
-	ld a, [hl]
-	swap a
-	dec a
-	and $f
-	ld d, a
-	ld a, [bc]
-	cp d
-	ld a, d
-	pop bc
-	pop de
-	pop hl
-	scf
-	ccf
-	ret nz
-
-	; If user is fainted, treat as non-active
-	push af
-	push hl
-	call HasUserFainted
-	pop hl
-	jr z, .active_fainted
-	pop af
-	ret
-
-.active_fainted
-	pop af
-	and a
-	ret nz
-	rrca
-	ret
-
-.future_sight_offline
-	xor a
-	ld a, [bc]
-	pop bc
-	pop de
-	pop hl
-	scf
 	ret
 
 _GetTrueUserAbility::

@@ -695,10 +695,8 @@ RunHitAbilities:
 CursedBodyAbility:
 	call SwitchTurn
 	farcall GetFutureSightUser
-	push af
 	call SwitchTurn
-	pop af
-	ret nz
+	ret nc
 	ld a, 10
 	call BattleRandomRange
 	cp 3
@@ -1491,12 +1489,10 @@ SelectRandomLowerStat:
 	ret
 
 SelectRandomStat:
-	; Randomize values until we get one matching a nonmaxed stat
+; Randomizes values until we get one matching a nonmaxed stat
 .loop1
-	call BattleRandom
-	and $7
-	cp 5
-	jr nc, .loop1 ; don't raise acc/eva, only 0-4 (atk/def/spe/sat/sdf)
+	ld a, 5 ; don't raise acc/eva, only 0-4 (atk/def/spe/sat/sdf)
+	call BattleRandomRange
 	lb de, 1, 0 ; e = counter
 .loop2
 	cp e
@@ -1512,9 +1508,8 @@ SelectRandomStat:
 
 MoodyAbility:
 ; Moody raises one stat by 2 stages and lowers another (not the same one!) by 1.
-; It will not try to raise a stat at +6 (or lower one at -6). This means that, should all
-; stats be +6, Moody will not raise any stat, and vice versa.
-
+; It will not try to raise a stat at +6 (or lower one at -6). This means that,
+; should all stats be +6, Moody will not raise any stat, and vice versa.
 	call DisableAnimations
 
 	call GetCappedStats
@@ -1641,7 +1636,7 @@ TypeDependentAbility:
 	jmp MultiplyAndDivide
 
 RivalryAbility:
-; 100% damage if either mon is genderless, 125% if same gender, 75% if opposite gender
+; 100% damage if either mon is genderless, 125% if same gender, 75% if opposite
 	farcall CheckOppositeGender
 	ret c
 	ln a, 5, 4 ; x1.25
@@ -1661,13 +1656,13 @@ SheerForceAbility:
 AnalyticAbility:
 ; 130% damage if opponent went first
 	farcall GetFutureSightUser
+	ret nc
 	jr nc, .future_sight
 	ld a, [wEnemyGoesFirst] ; 0 = player goes first
 	ld b, a
 	ldh a, [hBattleTurn] ; 0 = player's turn
 	xor b ; nz if opponent went first
 	ret z
-.future_sight
 	ln a, 13, 10 ; x1.3
 	jmp MultiplyAndDivide
 
