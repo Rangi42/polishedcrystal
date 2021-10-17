@@ -1,9 +1,4 @@
-	db 6  ; height
-	dw 78 ; weight
-
-	dn SHAPE_QUADRUPED, BODY_COLOR_WHITE
-
-	db "Wool@" ; species name
+	db "Wool@"
 
 	db   "It stores lots of"
 	next "air in its soft"

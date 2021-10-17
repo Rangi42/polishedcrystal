@@ -1,9 +1,4 @@
-	db 8   ; height
-	dw 300 ; weight
-
-	dn SHAPE_BIPEDAL_TAIL, BODY_COLOR_YELLOW
-
-	db "Mouse@" ; species name
+	db "Mouse@"
 
 	db   "If its electric"
 	next "pouches run empty,"

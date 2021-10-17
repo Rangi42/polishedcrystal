@@ -1,9 +1,4 @@
-	db 6  ; height
-	dw 50 ; weight
-
-	dn SHAPE_BIPEDAL, BODY_COLOR_GREEN
-
-	db "Time Travel@" ; species name
+	db "Time Travel@"
 
 	db   "Revered as a"
 	next "guardian of the"

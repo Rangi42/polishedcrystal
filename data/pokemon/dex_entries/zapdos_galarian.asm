@@ -1,9 +1,4 @@
-	db 16  ; height
-	dw 582 ; weight
-
-	dn SHAPE_WINGS, BODY_COLOR_YELLOW
-
-	db "Strong Legs@" ; species name
+	db "Strong Legs@"
 
 	db   "When its feathers"
 	next "rub together,"

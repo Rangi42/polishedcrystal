@@ -1,9 +1,4 @@
-	db 17  ; height
-	dw 766 ; weight
-
-	dn SHAPE_BIPEDAL_TAIL, BODY_COLOR_BLUE
-
-	db "Duck@" ; species name
+	db "Duck@"
 
 	db   "It swims gracefully"
 	next "along on the"

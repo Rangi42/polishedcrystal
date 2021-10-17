@@ -1,9 +1,4 @@
-	db 13  ; height
-	dw 285 ; weight
-
-	dn SHAPE_HEAD_BASE, BODY_COLOR_BLUE
-
-	db "Patient@" ; species name
+	db "Patient@"
 
 	db   "In order to"
 	next "conceal its black"

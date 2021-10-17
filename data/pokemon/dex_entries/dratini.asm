@@ -1,9 +1,4 @@
-	db 18 ; height
-	dw 33 ; weight
-
-	dn SHAPE_SERPENTINE, BODY_COLOR_BLUE
-
-	db "Dragon@" ; species name
+	db "Dragon@"
 
 	db   "It sheds many lay-"
 	next "ers of skin as it"

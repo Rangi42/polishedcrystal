@@ -1,9 +1,4 @@
-	db 12  ; height
-	dw 666 ; weight
-
-	dn SHAPE_HEAD, BODY_COLOR_RED
-
-	db "Ball@" ; species name
+	db "Ball@"
 
 	db   "The more energy it"
 	next "charges up, the"

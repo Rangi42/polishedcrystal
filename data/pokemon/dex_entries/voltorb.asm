@@ -1,9 +1,4 @@
-	db 5   ; height
-	dw 104 ; weight
-
-	dn SHAPE_HEAD, BODY_COLOR_RED
-
-	db "Ball@" ; species name
+	db "Ball@"
 
 	db   "During the study"
 	next "of this #mon, it"

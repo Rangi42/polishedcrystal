@@ -1,9 +1,4 @@
-	db 15  ; height
-	dw 705 ; weight
-
-	dn SHAPE_BIPEDAL, BODY_COLOR_GRAY
-
-	db "Superpower@" ; species name
+	db "Superpower@"
 
 	db   "This tough #mon"
 	next "always stays in"

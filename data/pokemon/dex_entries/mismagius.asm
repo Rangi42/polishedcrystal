@@ -1,9 +1,4 @@
-	db 9  ; height
-	dw 44 ; weight
-
-	dn SHAPE_HEAD, BODY_COLOR_PURPLE
-
-	db "Magical@" ; species name
+	db "Magical@"
 
 	db   "Its cries sound"
 	next "like incantations"

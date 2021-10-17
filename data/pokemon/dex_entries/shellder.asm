@@ -1,9 +1,4 @@
-	db 3  ; height
-	dw 40 ; weight
-
-	dn SHAPE_HEAD, BODY_COLOR_PURPLE
-
-	db "Bivalve@" ; species name
+	db "Bivalve@"
 
 	db   "Clamping on to an"
 	next "opponent reveals"

@@ -1,9 +1,4 @@
-	db 6  ; height
-	dw 75 ; weight
-
-	dn SHAPE_BIPEDAL_TAIL, BODY_COLOR_PINK
-
-	db "Fairy@" ; species name
+	db "Fairy@"
 
 	db   "Though rarely"
 	next "seen, it becomes"

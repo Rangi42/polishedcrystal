@@ -1,9 +1,4 @@
-	db 15  ; height
-	dw 150 ; weight
-
-	dn SHAPE_WINGS, BODY_COLOR_GREEN
-
-	db "Mystic@" ; species name
+	db "Mystic@"
 
 	db   "Once it begins to"
 	next "meditate at sun-"

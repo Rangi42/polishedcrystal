@@ -1,9 +1,4 @@
-	db 3  ; height
-	dw 15 ; weight
-
-	dn SHAPE_BIPEDAL, BODY_COLOR_WHITE
-
-	db "Spike Ball@" ; species name
+	db "Spike Ball@"
 
 	db   "It is considered"
 	next "to be a symbol of"

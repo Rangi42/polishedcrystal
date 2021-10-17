@@ -1,9 +1,4 @@
-	db 7   ; height
-	dw 212 ; weight
-
-	dn SHAPE_WINGS, BODY_COLOR_BROWN
-
-	db "Owl@" ; species name
+	db "Owl@"
 
 	db   "It begins to hoot"
 	next "at the same time"

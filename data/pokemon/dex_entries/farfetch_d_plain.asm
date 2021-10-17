@@ -1,9 +1,4 @@
-	db 8   ; height
-	dw 150 ; weight
-
-	dn SHAPE_WINGS, BODY_COLOR_BROWN
-
-	db "Wild Duck@" ; species name
+	db "Wild Duck@"
 
 	db   "In order to"
 	next "prevent their"

@@ -1,9 +1,4 @@
-	db 3  ; height
-	dw 18 ; weight
-
-	dn SHAPE_HEAD, BODY_COLOR_YELLOW
-
-	db "Seed@" ; species name
+	db "Seed@"
 
 	db   "It is very weak."
 	next "Its only means of"

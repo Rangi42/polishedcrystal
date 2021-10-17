@@ -1,9 +1,4 @@
-	db 6   ; height
-	dw 720 ; weight
-
-	dn SHAPE_BIPEDAL_TAIL, BODY_COLOR_GREEN
-
-	db "Rock Skin@" ; species name
+	db "Rock Skin@"
 
 	db   "Born deep under-"
 	next "ground, this"

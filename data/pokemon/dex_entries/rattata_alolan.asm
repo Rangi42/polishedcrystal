@@ -1,9 +1,4 @@
-	db 3  ; height
-	dw 38 ; weight
-
-	dn SHAPE_QUADRUPED, BODY_COLOR_BLACK
-
-	db "Mouse@" ; species name
+	db "Mouse@"
 
 	db   "It has no interest"
 	next "in anything that's"

@@ -1,9 +1,4 @@
-	db 22   ; height
-	dw 1370 ; weight
-
-	dn SHAPE_BIPEDAL_TAIL, BODY_COLOR_GRAY
-
-	db "Genetic@" ; species name
+	db "Genetic@"
 
 	db   "With its defenses"
 	next "bolstered and its"

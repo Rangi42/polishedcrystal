@@ -1,9 +1,4 @@
-	db 20  ; height
-	dw 425 ; weight
-
-	dn SHAPE_WINGS, BODY_COLOR_PURPLE
-
-	db "FangScorpio@" ; species name
+	db "FangScorpio@"
 
 	db   "Its flight is"
 	next "soundless. It uses"

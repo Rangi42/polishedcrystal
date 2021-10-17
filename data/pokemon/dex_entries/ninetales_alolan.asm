@@ -1,9 +1,4 @@
-	db 11  ; height
-	dw 199 ; weight
-
-	dn SHAPE_QUADRUPED, BODY_COLOR_BLUE
-
-	db "Fox@" ; species name
+	db "Fox@"
 
 	db   "The reason it"
 	next "guides people all"

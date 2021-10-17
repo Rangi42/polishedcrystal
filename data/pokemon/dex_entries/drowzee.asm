@@ -1,9 +1,4 @@
-	db 10  ; height
-	dw 324 ; weight
-
-	dn SHAPE_BIPEDAL, BODY_COLOR_YELLOW
-
-	db "Hypnosis@" ; species name
+	db "Hypnosis@"
 
 	db   "When it twitches"
 	next "its nose, it can"

@@ -1,9 +1,4 @@
-	db 14  ; height
-	dw 480 ; weight
-
-	dn SHAPE_BIPEDAL_TAIL, BODY_COLOR_BROWN
-
-	db "Handstand@" ; species name
+	db "Handstand@"
 
 	db   "After doing a"
 	next "handstand to"

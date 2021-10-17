@@ -1,9 +1,4 @@
-	db 5   ; height
-	dw 335 ; weight
-
-	dn SHAPE_QUADRUPED, BODY_COLOR_BLUE
-
-	db "Long Nose@" ; species name
+	db "Long Nose@"
 
 	db   "During the deserted"
 	next "morning hours,"

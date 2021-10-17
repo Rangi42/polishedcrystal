@@ -1,9 +1,4 @@
-	db 16  ; height
-	dw 550 ; weight
-
-	dn SHAPE_WINGS, BODY_COLOR_PURPLE
-
-	db "Bat@" ; species name
+	db "Bat@"
 
 	db   "However hard its"
 	next "victim's hide may"

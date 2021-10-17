@@ -1,9 +1,4 @@
-	db 17  ; height
-	dw 905 ; weight
-
-	dn SHAPE_BIPEDAL_TAIL, BODY_COLOR_RED
-
-	db "Flame@" ; species name
+	db "Flame@"
 
 	db   "It uses its wings"
 	next "to fly high. The"

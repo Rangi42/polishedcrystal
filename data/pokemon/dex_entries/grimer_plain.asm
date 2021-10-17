@@ -1,9 +1,4 @@
-	db 9   ; height
-	dw 300 ; weight
-
-	dn SHAPE_HEAD_ARMS, BODY_COLOR_PURPLE
-
-	db "Sludge@" ; species name
+	db "Sludge@"
 
 	db   "When two of these"
 	next "#mon's bodies"

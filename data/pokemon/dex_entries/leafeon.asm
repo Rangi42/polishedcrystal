@@ -1,9 +1,4 @@
-	db 10  ; height
-	dw 255 ; weight
-
-	dn SHAPE_QUADRUPED, BODY_COLOR_GREEN
-
-	db "Verdant@" ; species name
+	db "Verdant@"
 
 	db   "Just like a plant,"
 	next "it uses photosyn-"

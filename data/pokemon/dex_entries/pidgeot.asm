@@ -1,9 +1,4 @@
-	db 15  ; height
-	dw 395 ; weight
-
-	dn SHAPE_WINGS, BODY_COLOR_BROWN
-
-	db "Bird@" ; species name
+	db "Bird@"
 
 	db   "This #mon flies"
 	next "at Mach 2 speed,"

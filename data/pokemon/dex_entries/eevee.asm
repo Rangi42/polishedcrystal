@@ -1,9 +1,4 @@
-	db 3  ; height
-	dw 65 ; weight
-
-	dn SHAPE_QUADRUPED, BODY_COLOR_BROWN
-
-	db "Evolution@" ; species name
+	db "Evolution@"
 
 	db   "Its ability to"
 	next "evolve into many"

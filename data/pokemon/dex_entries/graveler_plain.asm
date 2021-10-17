@@ -1,9 +1,4 @@
-	db 10   ; height
-	dw 1050 ; weight
-
-	dn SHAPE_BIPEDAL, BODY_COLOR_BROWN
-
-	db "Rock@" ; species name
+	db "Rock@"
 
 	db   "It travels by roll-"
 	next "ing on mountain"

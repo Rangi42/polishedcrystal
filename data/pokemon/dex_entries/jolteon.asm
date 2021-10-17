@@ -1,9 +1,4 @@
-	db 8   ; height
-	dw 245 ; weight
-
-	dn SHAPE_QUADRUPED, BODY_COLOR_YELLOW
-
-	db "Lightning@" ; species name
+	db "Lightning@"
 
 	db   "The negatively"
 	next "charged ions"

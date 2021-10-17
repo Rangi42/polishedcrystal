@@ -1,9 +1,4 @@
-	db 4  ; height
-	dw 80 ; weight
-
-	dn SHAPE_HEAD_BASE, BODY_COLOR_BLUE
-
-	db "Dragon@" ; species name
+	db "Dragon@"
 
 	db   "When they're in a"
 	next "safe location,"

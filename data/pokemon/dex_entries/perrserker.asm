@@ -1,9 +1,4 @@
-	db 8   ; height
-	dw 280 ; weight
-
-	dn SHAPE_BIPEDAL_TAIL, BODY_COLOR_BROWN
-
-	db "Viking@" ; species name
+	db "Viking@"
 
 	db   "After many battles,"
 	next "it evolved"

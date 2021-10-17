@@ -1,9 +1,4 @@
-	db 11  ; height
-	dw 648 ; weight
-
-	dn SHAPE_WINGS, BODY_COLOR_PURPLE
-
-	db "FlyScorpion@" ; species name
+	db "FlyScorpion@"
 
 	db   "It builds its nest"
 	next "on a steep cliff."

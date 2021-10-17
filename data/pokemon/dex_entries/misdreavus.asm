@@ -1,9 +1,4 @@
-	db 7  ; height
-	dw 10 ; weight
-
-	dn SHAPE_HEAD, BODY_COLOR_GRAY
-
-	db "Screech@" ; species name
+	db "Screech@"
 
 	db   "It loves to watch"
 	next "people it's scared."

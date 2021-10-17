@@ -1,9 +1,4 @@
-	db 3  ; height
-	dw 10 ; weight
-
-	dn SHAPE_BIPEDAL, BODY_COLOR_PINK
-
-	db "Balloon@" ; species name
+	db "Balloon@"
 
 	db   "Instead of walking"
 	next "with its short"

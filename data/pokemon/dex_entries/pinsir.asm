@@ -1,9 +1,4 @@
-	db 15  ; height
-	dw 550 ; weight
-
-	dn SHAPE_BIPEDAL, BODY_COLOR_BROWN
-
-	db "Stag Beetle@" ; species name
+	db "Stag Beetle@"
 
 	db   "When the"
 	next "temperature drops"

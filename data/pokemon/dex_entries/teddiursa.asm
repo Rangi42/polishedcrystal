@@ -1,9 +1,4 @@
-	db 6  ; height
-	dw 88 ; weight
-
-	dn SHAPE_BIPEDAL_TAIL, BODY_COLOR_BROWN
-
-	db "Little Bear@" ; species name
+	db "Little Bear@"
 
 	db   "It always licks"
 	next "honey. Its palm"

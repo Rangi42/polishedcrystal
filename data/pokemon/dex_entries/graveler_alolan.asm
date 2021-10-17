@@ -1,9 +1,4 @@
-	db 10   ; height
-	dw 1100 ; weight
-
-	dn SHAPE_BIPEDAL, BODY_COLOR_GRAY
-
-	db "Rock@" ; species name
+	db "Rock@"
 
 	db   "Its entire body is"
 	next "tinged with elec-"

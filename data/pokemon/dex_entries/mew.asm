@@ -1,9 +1,4 @@
-	db 4  ; height
-	dw 40 ; weight
-
-	dn SHAPE_BIPEDAL_TAIL, BODY_COLOR_PINK
-
-	db "New Species@" ; species name
+	db "New Species@"
 
 	db   "Because it can"
 	next "learn any move,"

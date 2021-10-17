@@ -1,9 +1,4 @@
-	db 9   ; height
-	dw 285 ; weight
-
-	dn SHAPE_TENTACLES, BODY_COLOR_RED
-
-	db "Jet@" ; species name
+	db "Jet@"
 
 	db   "Its instinct is to"
 	next "bury itself in"

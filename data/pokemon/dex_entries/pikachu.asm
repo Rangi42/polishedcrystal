@@ -1,9 +1,4 @@
-	db 4  ; height
-	dw 60 ; weight
-
-	dn SHAPE_QUADRUPED, BODY_COLOR_YELLOW
-
-	db "Mouse@" ; species name
+	db "Mouse@"
 
 	db   "When it is angered,"
 	next "it immediately"

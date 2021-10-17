@@ -1,9 +1,4 @@
-	db 25   ; height
-	dw 2200 ; weight
-
-	dn SHAPE_FINS, BODY_COLOR_BLUE
-
-	db "Transport@" ; species name
+	db "Transport@"
 
 	db   "This gentle"
 	next "#mon loves to"

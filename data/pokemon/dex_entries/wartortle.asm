@@ -1,9 +1,4 @@
-	db 10  ; height
-	dw 225 ; weight
-
-	dn SHAPE_BIPEDAL_TAIL, BODY_COLOR_BLUE
-
-	db "Turtle@" ; species name
+	db "Turtle@"
 
 	db   "Its long, furry"
 	next "tail is a symbol"

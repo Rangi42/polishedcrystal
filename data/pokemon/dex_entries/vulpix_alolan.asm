@@ -1,9 +1,4 @@
-	db 6  ; height
-	dw 99 ; weight
-
-	dn SHAPE_QUADRUPED, BODY_COLOR_WHITE
-
-	db "Fox@" ; species name
+	db "Fox@"
 
 	db   "If you observe its"
 	next "curly hairs through"

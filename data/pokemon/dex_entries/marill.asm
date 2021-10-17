@@ -1,9 +1,4 @@
-	db 4  ; height
-	dw 85 ; weight
-
-	dn SHAPE_BIPEDAL_TAIL, BODY_COLOR_BLUE
-
-	db "Aqua Mouse@" ; species name
+	db "Aqua Mouse@"
 
 	db   "The fur on its"
 	next "body naturally"

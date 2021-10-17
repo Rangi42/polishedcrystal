@@ -1,9 +1,4 @@
-	db 109  ; height
-	dw 4156 ; weight
-
-	dn SHAPE_HEAD_LEGS, BODY_COLOR_YELLOW
-
-	db "Coconut@" ; species name
+	db "Coconut@"
 
 	db   "It swings its long"
 	next "neck like a whip"

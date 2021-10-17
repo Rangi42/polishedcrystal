@@ -1,9 +1,4 @@
-	db 6  ; height
-	dw 32 ; weight
-
-	dn SHAPE_BIPEDAL, BODY_COLOR_WHITE
-
-	db "Happiness@" ; species name
+	db "Happiness@"
 
 	db   "Although it does"
 	next "not flap its wings"

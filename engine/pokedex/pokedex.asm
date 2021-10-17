@@ -1149,24 +1149,18 @@ _Pokedex_Description:
 	jmp .sel_shiny
 
 .mon_caught
-	; Get a pointer to the dex information.
 	call GetSpeciesAndFormIndex
-	ld hl, PokedexDataPointerTable
+	push bc
+
+	; Get a pointer to the body information
+	ld hl, PokemonBodyData
+rept 4
 	add hl, bc
-	add hl, bc
-	add hl, bc
-	ld a, BANK(PokedexDataPointerTable)
-	ld b, a
-	call GetFarByte
-	inc hl
-	ld c, a
-	ld a, b
-	call GetFarWord
-	ld a, c
+endr
 
 	; Height
 	push hl
-	push af
+	ld a, BANK(PokemonBodyData)
 	call GetFarByte
 	ldh [hMultiplier], a
 	ld e, a
@@ -1225,13 +1219,11 @@ _Pokedex_Description:
 	call PrintNumFromReg
 
 .height_done
-	pop af
 	pop hl
 	inc hl
 
 	; Weight
-	push hl
-	push af
+	ld a, BANK(PokemonBodyData)
 	call GetFarWord
 	ld a, [wOptions2]
 	bit POKEDEX_UNITS, a
@@ -1289,12 +1281,10 @@ _Pokedex_Description:
 	call PrintNumFromReg
 
 .weight_done
+	pop bc
+
 	; Category
-	pop af
-	pop de
-	inc de
-	inc de
-	inc de
+	call Pokedex_GetDexEntryPointer
 	hlcoord 9, 5
 	push af
 	call FarString
@@ -1514,7 +1504,7 @@ _Pokedex_Description:
 	pop af
 	pop hl
 	pop hl
-	jmp Pokedex_Bio
+	jr Pokedex_Bio
 
  .pressed_left
 	pop af
@@ -1592,24 +1582,8 @@ Pokedex_Bio:
 	call Pokedex_GetCursorSpecies
 	call GetSpeciesAndFormIndex
 
-	; Get Pokemon category
-	ld hl, PokedexDataPointerTable
-	add hl, bc
-	add hl, bc
-	add hl, bc
-	ld a, BANK(PokedexDataPointerTable)
-	ld b, a
-	call GetFarByte
-	inc hl
-	ld c, a
-	ld a, b
-	call GetFarWord
-	ld a, c
-
-	ld de, 4
-	add hl, de ; point to category
-	ld d, h
-	ld e, l
+	; Print category
+	call Pokedex_GetDexEntryPointer
 	hlcoord 4, 3
 	call FarString
 
@@ -1971,7 +1945,7 @@ Pokedex_Stats:
 	rrca
 	; jr c, .pressed_right
 	rrca
-	jmp c, .pressed_left
+	jr c, .pressed_left
 	rrca
 	jr c, .pressed_up
 	rrca
@@ -3701,6 +3675,12 @@ Pokedex_SetBGMapMode4:
 Pokedex_SetBGMapMode:
 	ldh [hBGMapMode], a
 	jmp Delay2
+
+Pokedex_GetDexEntryPointer:
+	call GetDexEntryPointer
+	ld d, h
+	ld e, l
+	ret
 
 DexTilemaps:
 DexTilemap_Main:

@@ -1,9 +1,4 @@
-	db 5   ; height
-	dw 115 ; weight
-
-	dn SHAPE_INSECTOID, BODY_COLOR_BROWN
-
-	db "Shellfish@" ; species name
+	db "Shellfish@"
 
 	db   "Three hundred"
 	next "million years ago,"

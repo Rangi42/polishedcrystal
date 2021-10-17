@@ -1,9 +1,4 @@
-	db 9   ; height
-	dw 195 ; weight
-
-	dn SHAPE_BIPEDAL_TAIL, BODY_COLOR_BROWN
-
-	db "Psi@" ; species name
+	db "Psi@"
 
 	db   "It hypnotizes"
 	next "itself so that it"

@@ -230,19 +230,12 @@ GetSpeciesWeight::
 ; input: bc = species+form
 ; output: hl = weight
 	call GetSpeciesAndFormIndex
-	ld hl, PokedexDataPointerTable
+	ld hl, PokemonBodyData
+rept 4
 	add hl, bc
-	add hl, bc
-	add hl, bc
-	ld a, BANK(PokedexDataPointerTable)
-	call GetFarByte
-	push af
-	inc hl
-	ld a, BANK(PokedexDataPointerTable)
-	call GetFarWord
-	pop af
-
+endr
 	inc hl ; skip height
+	ld a, BANK(PokemonBodyData)
 	jmp GetFarWord ; get weight
 
 HeavyBallMultiplier:

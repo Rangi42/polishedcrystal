@@ -1,9 +1,4 @@
-	db 18  ; height
-	dw 325 ; weight
-
-	dn SHAPE_QUADRUPED, BODY_COLOR_BROWN
-
-	db "Long Body@" ; species name
+	db "Long Body@"
 
 	db   "It lives in narrow"
 	next "burrows that fit"

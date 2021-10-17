@@ -1,9 +1,4 @@
-	db 8   ; height
-	dw 115 ; weight
-
-	dn SHAPE_BIPEDAL_TAIL, BODY_COLOR_PURPLE
-
-	db "Long Tail@" ; species name
+	db "Long Tail@"
 
 	db   "It uses its tail"
 	next "to hang on to tree"

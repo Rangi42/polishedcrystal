@@ -1,9 +1,4 @@
-	db 7   ; height
-	dw 333 ; weight
-
-	dn SHAPE_MULTIBODY, BODY_COLOR_BROWN
-
-	db "Mole@" ; species name
+	db "Mole@"
 
 	db   "Its three heads bob"
 	next "separately up and"

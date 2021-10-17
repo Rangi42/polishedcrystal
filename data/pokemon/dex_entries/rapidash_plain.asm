@@ -1,9 +1,4 @@
-	db 17  ; height
-	dw 950 ; weight
-
-	dn SHAPE_QUADRUPED, BODY_COLOR_YELLOW
-
-	db "Fire Horse@" ; species name
+	db "Fire Horse@"
 
 	db   "It just loves to"
 	next "gallop. The faster"

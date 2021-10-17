@@ -1,9 +1,4 @@
-	db 4  ; height
-	dw 75 ; weight
-
-	dn SHAPE_BIPEDAL_TAIL, BODY_COLOR_BROWN
-
-	db "Scratch Cat@" ; species name
+	db "Scratch Cat@"
 
 	db   "These daring #-"
 	next "mon have coins on"

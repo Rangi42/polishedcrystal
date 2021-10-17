@@ -1,9 +1,4 @@
-	db 8   ; height
-	dw 259 ; weight
-
-	dn SHAPE_QUADRUPED, BODY_COLOR_BLUE
-
-	db "Fresh Snow@" ; species name
+	db "Fresh Snow@"
 
 	db   "It causes small"
 	next "ice crystals to"

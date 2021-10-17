@@ -1,9 +1,4 @@
-	db 11  ; height
-	dw 199 ; weight
-
-	dn SHAPE_QUADRUPED, BODY_COLOR_YELLOW
-
-	db "Fox@" ; species name
+	db "Fox@"
 
 	db   "It is said to live"
 	next "a thousand years,"

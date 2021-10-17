@@ -1,9 +1,4 @@
-	db 3  ; height
-	dw 18 ; weight
-
-	dn SHAPE_WINGS, BODY_COLOR_BROWN
-
-	db "Tiny Bird@" ; species name
+	db "Tiny Bird@"
 
 	db   "It rapidly flaps"
 	next "its wings in the"

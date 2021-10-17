@@ -1,9 +1,4 @@
-	db 10  ; height
-	dw 235 ; weight
-
-	dn SHAPE_QUADRUPED, BODY_COLOR_PINK
-
-	db "Intertwined@" ; species name
+	db "Intertwined@"
 
 	db   "It wraps its"
 	next "ribbonlike feelers"

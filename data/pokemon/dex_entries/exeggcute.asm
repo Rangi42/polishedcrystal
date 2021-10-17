@@ -1,9 +1,4 @@
-	db 4  ; height
-	dw 25 ; weight
-
-	dn SHAPE_MULTIBODY, BODY_COLOR_PINK
-
-	db "Egg@" ; species name
+	db "Egg@"
 
 	db   "If even one is"
 	next "separated from the"

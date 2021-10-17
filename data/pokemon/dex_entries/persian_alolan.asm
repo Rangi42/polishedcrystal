@@ -1,9 +1,4 @@
-	db 11  ; height
-	dw 330 ; weight
-
-	dn SHAPE_QUADRUPED, BODY_COLOR_BLUE
-
-	db "Classy Cat@" ; species name
+	db "Classy Cat@"
 
 	db   "It has the classi-"
 	next "est coat. The"

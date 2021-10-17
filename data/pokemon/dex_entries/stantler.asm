@@ -1,9 +1,4 @@
-	db 14  ; height
-	dw 712 ; weight
-
-	dn SHAPE_QUADRUPED, BODY_COLOR_BROWN
-
-	db "Big Horn@" ; species name
+	db "Big Horn@"
 
 	db   "The round balls"
 	next "found on the"

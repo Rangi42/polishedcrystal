@@ -1,9 +1,4 @@
-	db 3  ; height
-	dw 32 ; weight
-
-	dn SHAPE_INSECTOID, BODY_COLOR_BROWN
-
-	db "Hairy Bug@" ; species name
+	db "Hairy Bug@"
 
 	db   "The barb on top of"
 	next "its head secretes"

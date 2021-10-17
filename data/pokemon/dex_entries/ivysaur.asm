@@ -1,9 +1,4 @@
-	db 10  ; height
-	dw 130 ; weight
-
-	dn SHAPE_QUADRUPED, BODY_COLOR_GREEN
-
-	db "Seed@" ; species name
+	db "Seed@"
 
 	db   "The bulb on its"
 	next "back grows as it"

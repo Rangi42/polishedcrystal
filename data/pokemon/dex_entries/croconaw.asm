@@ -1,9 +1,4 @@
-	db 11  ; height
-	dw 250 ; weight
-
-	dn SHAPE_BIPEDAL_TAIL, BODY_COLOR_BLUE
-
-	db "Big Jaw@" ; species name
+	db "Big Jaw@"
 
 	db   "The tips of its"
 	next "fangs are slanted"

@@ -1,9 +1,4 @@
-	db 17  ; height
-	dw 800 ; weight
-
-	dn SHAPE_QUADRUPED, BODY_COLOR_WHITE
-
-	db "Unique Horn@" ; species name
+	db "Unique Horn@"
 
 	db   "The psychic attacks"
 	next "unleashed from this"

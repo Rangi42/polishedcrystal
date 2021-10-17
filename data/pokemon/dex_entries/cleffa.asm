@@ -1,9 +1,4 @@
-	db 3  ; height
-	dw 30 ; weight
-
-	dn SHAPE_BIPEDAL_TAIL, BODY_COLOR_PINK
-
-	db "Star Shape@" ; species name
+	db "Star Shape@"
 
 	db   "If the impact site"
 	next "of a meteorite is"

@@ -1,9 +1,4 @@
-	db 12  ; height
-	dw 186 ; weight
-
-	dn SHAPE_BIPEDAL, BODY_COLOR_RED
-
-	db "Flower@" ; species name
+	db "Flower@"
 
 	db   "By shaking its big"
 	next "petals, it scatters"

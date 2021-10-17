@@ -1,9 +1,4 @@
-	db 11  ; height
-	dw 346 ; weight
-
-	dn SHAPE_BIPEDAL_TAIL, BODY_COLOR_PINK
-
-	db "Egg@" ; species name
+	db "Egg@"
 
 	db   "People try to"
 	next "catch it for its"

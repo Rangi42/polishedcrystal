@@ -1,9 +1,4 @@
-	db 15  ; height
-	dw 140 ; weight
-
-	dn SHAPE_SERPENTINE, BODY_COLOR_YELLOW
-
-	db "Land Snake@" ; species name
+	db "Land Snake@"
 
 	db   "It hides deep"
 	next "inside caves where"

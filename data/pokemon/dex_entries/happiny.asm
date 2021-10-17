@@ -1,9 +1,4 @@
-	db 6   ; height
-	dw 244 ; weight
-
-	dn SHAPE_BIPEDAL, BODY_COLOR_PINK
-
-	db "Playhouse@" ; species name
+	db "Playhouse@"
 
 	db   "It carries a"
 	next "round, egg-shaped"

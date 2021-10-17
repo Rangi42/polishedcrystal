@@ -1,9 +1,4 @@
-	db 18   ; height
-	dw 1386 ; weight
-
-	dn SHAPE_BIPEDAL_TAIL, BODY_COLOR_YELLOW
-
-	db "Thunderbolt@" ; species name
+	db "Thunderbolt@"
 
 	db   "It pushes the tips"
 	next "of its two tails"

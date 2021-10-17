@@ -1,9 +1,4 @@
-	db 6   ; height
-	dw 140 ; weight
-
-	dn SHAPE_BIPEDAL_TAIL, BODY_COLOR_BLUE
-
-	db "Bright@" ; species name
+	db "Bright@"
 
 	db   "It tends to move in"
 	next "a pack. Individuals"

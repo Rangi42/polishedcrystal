@@ -1,9 +1,4 @@
-	db 6   ; height
-	dw 235 ; weight
-
-	dn SHAPE_BIPEDAL, BODY_COLOR_YELLOW
-
-	db "Electric@" ; species name
+	db "Electric@"
 
 	db   "It loves violent"
 	next "thunder. The space"

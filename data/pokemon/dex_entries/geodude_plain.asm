@@ -1,9 +1,4 @@
-	db 4   ; height
-	dw 200 ; weight
-
-	dn SHAPE_HEAD_ARMS, BODY_COLOR_BROWN
-
-	db "Rock@" ; species name
+	db "Rock@"
 
 	db   "Proud of their"
 	next "sturdy bodies,"

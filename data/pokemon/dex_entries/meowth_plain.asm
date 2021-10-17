@@ -1,9 +1,4 @@
-	db 4  ; height
-	dw 42 ; weight
-
-	dn SHAPE_QUADRUPED, BODY_COLOR_YELLOW
-
-	db "Scratch Cat@" ; species name
+	db "Scratch Cat@"
 
 	db   "It loves things"
 	next "that sparkle. When"

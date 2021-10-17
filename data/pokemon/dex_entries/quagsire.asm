@@ -1,9 +1,4 @@
-	db 14  ; height
-	dw 750 ; weight
-
-	dn SHAPE_BIPEDAL_TAIL, BODY_COLOR_BLUE
-
-	db "Water Fish@" ; species name
+	db "Water Fish@"
 
 	db   "Its body is always"
 	next "slimy. It often"

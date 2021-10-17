@@ -1,9 +1,4 @@
-	db 6   ; height
-	dw 120 ; weight
-
-	dn SHAPE_FINS, BODY_COLOR_GRAY
-
-	db "Jet@" ; species name
+	db "Jet@"
 
 	db   "To escape from an"
 	next "attacker, it may"

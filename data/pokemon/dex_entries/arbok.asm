@@ -1,9 +1,4 @@
-	db 35  ; height
-	dw 650 ; weight
-
-	dn SHAPE_SERPENTINE, BODY_COLOR_PURPLE
-
-	db "Cobra@" ; species name
+	db "Cobra@"
 
 	db   "To intimidate"
 	next "foes, it spreads"

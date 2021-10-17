@@ -1,9 +1,4 @@
-	db 8    ; height
-	dw 1170 ; weight
-
-	dn SHAPE_WINGS, BODY_COLOR_WHITE
-
-	db "Wild Duck@" ; species name
+	db "Wild Duck@"
 
 	db   "After deflecting"
 	next "attacks with its"

@@ -1,9 +1,4 @@
-	db 8   ; height
-	dw 345 ; weight
-
-	dn SHAPE_HEAD_BASE, BODY_COLOR_BROWN
-
-	db "Star Shape@" ; species name
+	db "Star Shape@"
 
 	db   "When the stars"
 	next "twinkle at night,"

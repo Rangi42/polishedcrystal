@@ -1,9 +1,4 @@
-	db 5  ; height
-	dw 79 ; weight
-
-	dn SHAPE_BIPEDAL, BODY_COLOR_YELLOW
-
-	db "Fire Mouse@" ; species name
+	db "Fire Mouse@"
 
 	db   "The fire that"
 	next "spouts from its"

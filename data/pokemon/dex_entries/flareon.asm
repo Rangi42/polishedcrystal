@@ -1,9 +1,4 @@
-	db 9   ; height
-	dw 250 ; weight
-
-	dn SHAPE_QUADRUPED, BODY_COLOR_RED
-
-	db "Flame@" ; species name
+	db "Flame@"
 
 	db   "Once it has stored"
 	next "up enough heat,"

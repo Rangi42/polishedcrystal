@@ -1,9 +1,4 @@
-	db 4  ; height
-	dw 58 ; weight
-
-	dn SHAPE_BIPEDAL, BODY_COLOR_GREEN
-
-	db "Flower@" ; species name
+	db "Flower@"
 
 	db   "When these dance"
 	next "together, their"

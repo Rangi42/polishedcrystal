@@ -1,9 +1,4 @@
-	db 9   ; height
-	dw 160 ; weight
-
-	dn SHAPE_WINGS, BODY_COLOR_RED
-
-	db "Delivery@" ; species name
+	db "Delivery@"
 
 	db   "It always carries"
 	next "its food with it,"

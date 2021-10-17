@@ -1,9 +1,4 @@
-	db 8  ; height
-	dw 133 ; weight
-
-	dn SHAPE_BIPEDAL_TAIL, BODY_COLOR_PINK
-
-	db "Wool@" ; species name
+	db "Wool@"
 
 	db   "Because of its"
 	next "rubbery, electric-"

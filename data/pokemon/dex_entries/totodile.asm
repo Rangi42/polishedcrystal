@@ -1,9 +1,4 @@
-	db 6  ; height
-	dw 95 ; weight
-
-	dn SHAPE_BIPEDAL_TAIL, BODY_COLOR_BLUE
-
-	db "Big Jaw@" ; species name
+	db "Big Jaw@"
 
 	db   "This rough critter"
 	next "chomps at any"

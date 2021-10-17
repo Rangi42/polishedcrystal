@@ -1,9 +1,4 @@
-	db 16  ; height
-	dw 526 ; weight
-
-	dn SHAPE_WINGS, BODY_COLOR_YELLOW
-
-	db "Electric@" ; species name
+	db "Electric@"
 
 	db   "Legendary bird"
 	next "#mon. They say"

@@ -1,9 +1,4 @@
-	db 8   ; height
-	dw 200 ; weight
-
-	dn SHAPE_QUADRUPED, BODY_COLOR_BLUE
-
-	db "Poison Pin@" ; species name
+	db "Poison Pin@"
 
 	db   "It has a docile"
 	next "nature. If it is"

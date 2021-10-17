@@ -1,9 +1,4 @@
-	db 13  ; height
-	dw 400 ; weight
-
-	dn SHAPE_BIPEDAL_TAIL, BODY_COLOR_PINK
-
-	db "Fairy@" ; species name
+	db "Fairy@"
 
 	db   "Said to live in"
 	next "quiet, remote"

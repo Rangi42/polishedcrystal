@@ -1,9 +1,4 @@
-	db 15  ; height
-	dw 480 ; weight
-
-	dn SHAPE_BIPEDAL, BODY_COLOR_BROWN
-
-	db "Psi@" ; species name
+	db "Psi@"
 
 	db   "It has an IQ of"
 	next "5000. It calculates"

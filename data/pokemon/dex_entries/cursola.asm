@@ -1,9 +1,4 @@
-	db 10 ; height
-	dw 4  ; weight
-
-	dn SHAPE_HEAD_ARMS, BODY_COLOR_WHITE
-
-	db "Coral@" ; species name
+	db "Coral@"
 
 	db   "Be cautious of the"
 	next "ectoplasmic body"

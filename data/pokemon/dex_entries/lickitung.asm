@@ -1,9 +1,4 @@
-	db 12  ; height
-	dw 655 ; weight
-
-	dn SHAPE_BIPEDAL_TAIL, BODY_COLOR_PINK
-
-	db "Licking@" ; species name
+	db "Licking@"
 
 	db   "Its tongue has"
 	next "well-developed"

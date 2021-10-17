@@ -1,9 +1,4 @@
-	db 6  ; height
-	dw 325 ; weight
-
-	dn SHAPE_HEAD_LEGS, BODY_COLOR_RED
-
-	db "Virtual@" ; species name
+	db "Virtual@"
 
 	db   "This man-made"
 	next "#mon evolved"

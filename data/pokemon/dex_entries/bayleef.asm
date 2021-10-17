@@ -1,9 +1,4 @@
-	db 12  ; height
-	dw 158 ; weight
-
-	dn SHAPE_QUADRUPED, BODY_COLOR_GREEN
-
-	db "Leaf@" ; species name
+	db "Leaf@"
 
 	db   "The scent that"
 	next "wafts from the"

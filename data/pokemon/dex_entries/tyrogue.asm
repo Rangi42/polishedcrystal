@@ -1,9 +1,4 @@
-	db 7   ; height
-	dw 210 ; weight
-
-	dn SHAPE_BIPEDAL, BODY_COLOR_PURPLE
-
-	db "Scuffle@" ; species name
+	db "Scuffle@"
 
 	db   "To brush up on its"
 	next "fighting skills,"

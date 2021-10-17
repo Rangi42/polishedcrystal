@@ -1,9 +1,4 @@
-	db 20   ; height
-	dw 2020 ; weight
-
-	dn SHAPE_BIPEDAL_TAIL, BODY_COLOR_GREEN
-
-	db "Armor@" ; species name
+	db "Armor@"
 
 	db   "In just one of its"
 	next "mighty hands, it"

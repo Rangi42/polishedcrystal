@@ -1,9 +1,4 @@
-	db 6  ; height
-	dw 50 ; weight
-
-	dn SHAPE_INSECTOID, BODY_COLOR_PINK
-
-	db "Coral@" ; species name
+	db "Coral@"
 
 	db   "The points on its"
 	next "head absorb"

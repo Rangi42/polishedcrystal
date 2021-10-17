@@ -1,9 +1,4 @@
-	db 9   ; height
-	dw 195 ; weight
-
-	dn SHAPE_QUADRUPED, BODY_COLOR_PURPLE
-
-	db "Poison Pin@" ; species name
+	db "Poison Pin@"
 
 	db   "It is easily"
 	next "agitated and uses"

@@ -1,9 +1,4 @@
-	db 15  ; height
-	dw 380 ; weight
-
-	dn SHAPE_WINGS, BODY_COLOR_WHITE
-
-	db "Jubilee@" ; species name
+	db "Jubilee@"
 
 	db   "It shares many"
 	next "blessings with"

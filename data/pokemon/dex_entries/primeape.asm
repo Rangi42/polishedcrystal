@@ -1,9 +1,4 @@
-	db 10  ; height
-	dw 320 ; weight
-
-	dn SHAPE_BIPEDAL_TAIL, BODY_COLOR_BROWN
-
-	db "Pig Monkey@" ; species name
+	db "Pig Monkey@"
 
 	db   "It will beat up"
 	next "anyone who makes"

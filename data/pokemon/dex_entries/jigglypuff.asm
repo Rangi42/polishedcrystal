@@ -1,9 +1,4 @@
-	db 5  ; height
-	dw 55 ; weight
-
-	dn SHAPE_BIPEDAL, BODY_COLOR_PINK
-
-	db "Balloon@" ; species name
+	db "Balloon@"
 
 	db   "It rolls its cute"
 	next "eyes as it sings a"

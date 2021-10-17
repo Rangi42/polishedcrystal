@@ -1,9 +1,4 @@
-	db 5  ; height
-	dw 21 ; weight
-
-	dn SHAPE_WINGS, BODY_COLOR_BLACK
-
-	db "Darkness@" ; species name
+	db "Darkness@"
 
 	db   "It hides any shiny"
 	next "object it finds in"

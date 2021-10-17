@@ -1,9 +1,4 @@
-	db 7  ; height
-	dw 99 ; weight
-
-	dn SHAPE_SERPENTINE, BODY_COLOR_GREEN
-
-	db "Cocoon@" ; species name
+	db "Cocoon@"
 
 	db   "This is its pre-"
 	next "evolved form. At"

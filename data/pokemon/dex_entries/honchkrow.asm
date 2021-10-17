@@ -1,9 +1,4 @@
-	db 9   ; height
-	dw 273 ; weight
-
-	dn SHAPE_WINGS, BODY_COLOR_BLACK
-
-	db "Big Boss@" ; species name
+	db "Big Boss@"
 
 	db   "It is merciless by"
 	next "nature. It is said"

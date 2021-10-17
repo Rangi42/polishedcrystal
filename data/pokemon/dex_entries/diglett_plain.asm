@@ -1,9 +1,4 @@
-	db 2 ; height
-	dw 8 ; weight
-
-	dn SHAPE_HEAD_BASE, BODY_COLOR_BROWN
-
-	db "Mole@" ; species name
+	db "Mole@"
 
 	db   "It digs under-"
 	next "ground and chews"

@@ -1,9 +1,4 @@
-	db 3  ; height
-	dw 54 ; weight
-
-	dn SHAPE_INSECTOID, BODY_COLOR_RED
-
-	db "Mushroom@" ; species name
+	db "Mushroom@"
 
 	db   "The tochukaso"
 	next "growing on this"

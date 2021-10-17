@@ -1,9 +1,4 @@
-	db 10  ; height
-	dw 350 ; weight
-
-	dn SHAPE_HEAD_LEGS, BODY_COLOR_BLUE
-
-	db "Vine@" ; species name
+	db "Vine@"
 
 	db   "During battle, it"
 	next "constantly moves"

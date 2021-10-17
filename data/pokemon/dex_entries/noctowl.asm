@@ -1,9 +1,4 @@
-	db 16  ; height
-	dw 408 ; weight
-
-	dn SHAPE_WINGS, BODY_COLOR_BROWN
-
-	db "Owl@" ; species name
+	db "Owl@"
 
 	db   "Its extremely soft"
 	next "feathers make no"

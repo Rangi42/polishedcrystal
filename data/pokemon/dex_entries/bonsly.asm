@@ -1,9 +1,4 @@
-	db 5   ; height
-	dw 150 ; weight
-
-	dn SHAPE_HEAD_LEGS, BODY_COLOR_BROWN
-
-	db "Bonsai@" ; species name
+	db "Bonsai@"
 
 	db   "It prefers an arid"
 	next "atmposhere. It"

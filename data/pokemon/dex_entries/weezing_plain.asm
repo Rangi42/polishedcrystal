@@ -1,9 +1,4 @@
-	db 12 ; height
-	dw 95 ; weight
-
-	dn SHAPE_MULTIBODY, BODY_COLOR_PURPLE
-
-	db "Poison Gas@" ; species name
+	db "Poison Gas@"
 
 	db   "When it inhales"
 	next "poisonous gases"

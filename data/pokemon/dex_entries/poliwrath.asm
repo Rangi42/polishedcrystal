@@ -1,9 +1,4 @@
-	db 13  ; height
-	dw 540 ; weight
-
-	dn SHAPE_BIPEDAL, BODY_COLOR_BLUE
-
-	db "Tadpole@" ; species name
+	db "Tadpole@"
 
 	db   "It can use its"
 	next "well-developed"

@@ -1,9 +1,4 @@
-	db 5  ; height
-	dw 90 ; weight
-
-	dn SHAPE_BIPEDAL_TAIL, BODY_COLOR_BLUE
-
-	db "Tiny Turtle@" ; species name
+	db "Tiny Turtle@"
 
 	db   "When it feels"
 	next "threatened, it"

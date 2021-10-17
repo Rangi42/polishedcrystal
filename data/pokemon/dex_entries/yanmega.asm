@@ -1,9 +1,4 @@
-	db 19  ; height
-	dw 515 ; weight
-
-	dn SHAPE_MULTIWINGS, BODY_COLOR_GREEN
-
-	db "Ogre Darner@" ; species name
+	db "Ogre Darner@"
 
 	db   "Its jaw power is"
 	next "incredible. It is"

@@ -1,9 +1,4 @@
-	db 20  ; height
-	dw 660 ; weight
-
-	dn SHAPE_WINGS, BODY_COLOR_RED
-
-	db "Malevolent@" ; species name
+	db "Malevolent@"
 
 	db   "The sinister aura"
 	next "that blazes like"

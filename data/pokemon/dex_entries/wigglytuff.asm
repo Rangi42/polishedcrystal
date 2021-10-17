@@ -1,9 +1,4 @@
-	db 10  ; height
-	dw 120 ; weight
-
-	dn SHAPE_BIPEDAL, BODY_COLOR_PINK
-
-	db "Balloon@" ; species name
+	db "Balloon@"
 
 	db   "The rich, fluffy"
 	next "fur that covers"

@@ -1,9 +1,4 @@
-	db 40  ; height
-	dw 165 ; weight
-
-	dn SHAPE_SERPENTINE, BODY_COLOR_BLUE
-
-	db "Dragon@" ; species name
+	db "Dragon@"
 
 	db   "It is called the"
 	next "divine #mon."

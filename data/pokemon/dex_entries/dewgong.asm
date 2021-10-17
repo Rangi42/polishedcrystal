@@ -1,9 +1,4 @@
-	db 17   ; height
-	dw 1200 ; weight
-
-	dn SHAPE_FINS, BODY_COLOR_WHITE
-
-	db "Sea Lion@" ; species name
+	db "Sea Lion@"
 
 	db   "It sleeps under"
 	next "shallow ocean"

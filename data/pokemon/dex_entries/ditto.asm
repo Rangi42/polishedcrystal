@@ -1,9 +1,4 @@
-	db 3  ; height
-	dw 40 ; weight
-
-	dn SHAPE_HEAD, BODY_COLOR_PURPLE
-
-	db "Transform@" ; species name
+	db "Transform@"
 
 	db   "When it encounters"
 	next "another Ditto,"

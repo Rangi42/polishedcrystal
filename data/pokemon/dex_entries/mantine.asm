@@ -1,9 +1,4 @@
-	db 21   ; height
-	dw 2200 ; weight
-
-	dn SHAPE_WINGS, BODY_COLOR_PURPLE
-
-	db "Kite@" ; species name
+	db "Kite@"
 
 	db   "It swims along"
 	next "freely, eating"

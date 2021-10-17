@@ -1,9 +1,4 @@
-	db 17   ; height
-	dw 1400 ; weight
-
-	dn SHAPE_BIPEDAL, BODY_COLOR_PINK
-
-	db "Licking@" ; species name
+	db "Licking@"
 
 	db   "The long tongue is"
 	next "always soggy with"

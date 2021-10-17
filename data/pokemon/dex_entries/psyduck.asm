@@ -1,9 +1,4 @@
-	db 8   ; height
-	dw 196 ; weight
-
-	dn SHAPE_BIPEDAL_TAIL, BODY_COLOR_YELLOW
-
-	db "Duck@" ; species name
+	db "Duck@"
 
 	db   "The only time it"
 	next "can use its psychic"

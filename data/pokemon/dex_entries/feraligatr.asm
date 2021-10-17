@@ -1,9 +1,4 @@
-	db 23  ; height
-	dw 888 ; weight
-
-	dn SHAPE_BIPEDAL_TAIL, BODY_COLOR_BLUE
-
-	db "Big Jaw@" ; species name
+	db "Big Jaw@"
 
 	db   "Although it has a"
 	next "massive body, its"

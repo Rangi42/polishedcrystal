@@ -1,9 +1,4 @@
-	db 88  ; height
-	dw 2100 ; weight
-
-	dn SHAPE_SERPENTINE, BODY_COLOR_GRAY
-
-	db "Rock Snake@" ; species name
+	db "Rock Snake@"
 
 	db   "As it digs through"
 	next "the ground, it"

@@ -1,9 +1,4 @@
-	db 14  ; height
-	dw 406 ; weight
-
-	dn SHAPE_BIPEDAL, BODY_COLOR_RED
-
-	db "Human Shape@" ; species name
+	db "Human Shape@"
 
 	db   "It has several"
 	next "different cry"

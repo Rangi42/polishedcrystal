@@ -241,6 +241,23 @@ GetNickname::
 	rst CopyBytes
 	jmp PopBCDEHL
 
+GetDexEntryPointer::
+; input: c = species, b = extspecies+form
+; output: a = bank, hl = address
+; clobbers d
+	ld hl, PokedexDataPointerTable
+	add hl, bc
+	add hl, bc
+	add hl, bc
+	ld a, BANK(PokedexDataPointerTable)
+	call GetFarByte
+	ld d, a
+	inc hl
+	ld a, BANK(PokedexDataPointerTable)
+	call GetFarWord
+	ld a, d
+	ret
+
 GetNationalDexNumber:
 ; input: c = species, b = extspecies+form
 ; output: bc = natdex number ((256*extspecies + c) - (2*extspecies))

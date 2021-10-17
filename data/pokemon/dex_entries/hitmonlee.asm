@@ -1,9 +1,4 @@
-	db 15  ; height
-	dw 498 ; weight
-
-	dn SHAPE_BIPEDAL, BODY_COLOR_BROWN
-
-	db "Kicking@" ; species name
+	db "Kicking@"
 
 	db   "It is also called"
 	next "the Kick Master."

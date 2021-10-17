@@ -1,9 +1,4 @@
-	db 14  ; height
-	dw 356 ; weight
-
-	dn SHAPE_WINGS, BODY_COLOR_RED
-
-	db "Five Star@" ; species name
+	db "Five Star@"
 
 	db   "In the daytime"
 	next "when it gets warm,"

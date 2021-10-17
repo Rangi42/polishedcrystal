@@ -1,9 +1,4 @@
-	db 21   ; height
-	dw 4600 ; weight
-
-	dn SHAPE_BIPEDAL, BODY_COLOR_BLACK
-
-	db "Sleeping@" ; species name
+	db "Sleeping@"
 
 	db   "This #mon's"
 	next "stomach is so"

@@ -1,9 +1,4 @@
-	db 11  ; height
-	dw 320 ; weight
-
-	dn SHAPE_MULTIWINGS, BODY_COLOR_WHITE
-
-	db "Butterfly@" ; species name
+	db "Butterfly@"
 
 	db   "It flits from"
 	next "flower to flower,"

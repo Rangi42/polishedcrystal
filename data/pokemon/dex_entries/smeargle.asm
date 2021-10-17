@@ -1,9 +1,4 @@
-	db 12  ; height
-	dw 580 ; weight
-
-	dn SHAPE_BIPEDAL_TAIL, BODY_COLOR_WHITE
-
-	db "Painter@" ; species name
+	db "Painter@"
 
 	db   "The color of the"
 	next "mysterious fluid"

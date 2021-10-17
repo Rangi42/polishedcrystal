@@ -1,9 +1,4 @@
-	db 13 ; height
-	dw 1  ; weight
-
-	dn SHAPE_HEAD, BODY_COLOR_PURPLE
-
-	db "Gas@" ; species name
+	db "Gas@"
 
 	db   "It wraps its op-"
 	next "ponent in its gas-"

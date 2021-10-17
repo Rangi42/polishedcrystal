@@ -1,9 +1,4 @@
-	db 6  ; height
-	dw 10 ; weight
-
-	dn SHAPE_HEAD, BODY_COLOR_PURPLE
-
-	db "Poison Gas@" ; species name
+	db "Poison Gas@"
 
 	db   "If one gets close"
 	next "enough to it when"

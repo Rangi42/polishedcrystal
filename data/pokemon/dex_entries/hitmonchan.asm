@@ -1,9 +1,4 @@
-	db 14  ; height
-	dw 502 ; weight
-
-	dn SHAPE_BIPEDAL, BODY_COLOR_BROWN
-
-	db "Punching@" ; species name
+	db "Punching@"
 
 	db   "To increase the"
 	next "strength of all"

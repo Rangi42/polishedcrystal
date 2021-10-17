@@ -1,9 +1,4 @@
-	db 4  ; height
-	dw 60 ; weight
-
-	dn SHAPE_BIPEDAL, BODY_COLOR_PINK
-
-	db "Kiss@" ; species name
+	db "Kiss@"
 
 	db   "The sensitivity of"
 	next "its lips develops"

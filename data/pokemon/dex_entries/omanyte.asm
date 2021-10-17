@@ -1,9 +1,4 @@
-	db 4  ; height
-	dw 75 ; weight
-
-	dn SHAPE_TENTACLES, BODY_COLOR_BLUE
-
-	db "Spiral@" ; species name
+	db "Spiral@"
 
 	db   "In prehistoric"
 	next "times, it swam on"

@@ -1,9 +1,4 @@
-	db 14  ; height
-	dw 350 ; weight
-
-	dn SHAPE_QUADRUPED, BODY_COLOR_BLACK
-
-	db "Dark@" ; species name
+	db "Dark@"
 
 	db   "The pungent-"
 	next "smelling flame"

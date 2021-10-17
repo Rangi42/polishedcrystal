@@ -1,9 +1,4 @@
-	db 14  ; height
-	dw 884 ; weight
-
-	dn SHAPE_QUADRUPED, BODY_COLOR_BROWN
-
-	db "Wild Bull@" ; species name
+	db "Wild Bull@"
 
 	db   "These violent"
 	next "#mon fight with"

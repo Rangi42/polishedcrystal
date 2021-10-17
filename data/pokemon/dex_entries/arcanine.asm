@@ -1,9 +1,4 @@
-	db 19   ; height
-	dw 1550 ; weight
-
-	dn SHAPE_QUADRUPED, BODY_COLOR_BROWN
-
-	db "Legendary@" ; species name
+	db "Legendary@"
 
 	db   "An ancient picture"
 	next "scroll shows that"

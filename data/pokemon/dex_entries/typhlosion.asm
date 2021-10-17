@@ -1,9 +1,4 @@
-	db 17  ; height
-	dw 795 ; weight
-
-	dn SHAPE_QUADRUPED, BODY_COLOR_YELLOW
-
-	db "Volcano@" ; species name
+	db "Volcano@"
 
 	db   "When heat from its"
 	next "body causes the"

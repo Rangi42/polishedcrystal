@@ -1,9 +1,4 @@
-	db 6   ; height
-	dw 120 ; weight
-
-	dn SHAPE_BIPEDAL_TAIL, BODY_COLOR_YELLOW
-
-	db "Mouse@" ; species name
+	db "Mouse@"
 
 	db   "It prefers dry,"
 	next "sandy places"

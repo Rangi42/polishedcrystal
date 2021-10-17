@@ -1,9 +1,4 @@
-	db 9   ; height
-	dw 340 ; weight
-
-	dn SHAPE_HEAD_ARMS, BODY_COLOR_RED
-
-	db "Virtual@" ; species name
+	db "Virtual@"
 
 	db   "Its programming"
 	next "was modified to"

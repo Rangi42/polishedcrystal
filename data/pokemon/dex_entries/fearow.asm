@@ -1,9 +1,4 @@
-	db 12  ; height
-	dw 380 ; weight
-
-	dn SHAPE_WINGS, BODY_COLOR_BROWN
-
-	db "Beak@" ; species name
+	db "Beak@"
 
 	db   "It uses its long"
 	next "beak to attack. It"

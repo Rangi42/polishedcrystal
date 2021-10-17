@@ -1,9 +1,4 @@
-	db 6   ; height
-	dw 150 ; weight
-
-	dn SHAPE_FINS, BODY_COLOR_RED
-
-	db "Goldfish@" ; species name
+	db "Goldfish@"
 
 	db   "During spawning"
 	next "season, they swim"

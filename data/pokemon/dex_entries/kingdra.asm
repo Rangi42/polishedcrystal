@@ -1,9 +1,4 @@
-	db 18   ; height
-	dw 1520 ; weight
-
-	dn SHAPE_HEAD_BASE, BODY_COLOR_BLUE
-
-	db "Dragon@" ; species name
+	db "Dragon@"
 
 	db   "It stores energy"
 	next "by sleeping at"

@@ -1,9 +1,4 @@
-	db 4 ; height
-	dw 5 ; weight
-
-	dn SHAPE_BIPEDAL_TAIL, BODY_COLOR_PINK
-
-	db "Cottonweed@" ; species name
+	db "Cottonweed@"
 
 	db   "It can be carried"
 	next "away on even the"

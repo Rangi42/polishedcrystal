@@ -1,9 +1,4 @@
-	db 4  ; height
-	dw 65 ; weight
-
-	dn SHAPE_BIPEDAL_TAIL, BODY_COLOR_BROWN
-
-	db "Lonely@" ; species name
+	db "Lonely@"
 
 	db   "It lost its mother"
 	next "after its birth."

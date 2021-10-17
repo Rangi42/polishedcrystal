@@ -1,9 +1,4 @@
-	db 4  ; height
-	dw 70 ; weight
-
-	dn SHAPE_QUADRUPED, BODY_COLOR_BLUE
-
-	db "Poison Pin@" ; species name
+	db "Poison Pin@"
 
 	db   "Small and very"
 	next "docile, it pro-"

@@ -1,9 +1,4 @@
-	db 10  ; height
-	dw 200 ; weight
-
-	dn SHAPE_BIPEDAL, BODY_COLOR_BLUE
-
-	db "Tadpole@" ; species name
+	db "Tadpole@"
 
 	db   "Though it is"
 	next "skilled at walking,"

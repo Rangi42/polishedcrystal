@@ -1,9 +1,4 @@
-	db 20   ; height
-	dw 1286 ; weight
-
-	dn SHAPE_BIPEDAL, BODY_COLOR_BLUE
-
-	db "Vine@" ; species name
+	db "Vine@"
 
 	db   "It ensnares prey"
 	next "by extending arms"

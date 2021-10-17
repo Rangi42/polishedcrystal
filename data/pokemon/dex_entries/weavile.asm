@@ -1,9 +1,4 @@
-	db 11  ; height
-	dw 340 ; weight
-
-	dn SHAPE_BIPEDAL_TAIL, BODY_COLOR_BLACK
-
-	db "Sharp Claw@" ; species name
+	db "Sharp Claw@"
 
 	db   "It lives in snowy"
 	next "regions. It carves"

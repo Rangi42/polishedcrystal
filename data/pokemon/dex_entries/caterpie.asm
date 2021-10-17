@@ -1,9 +1,4 @@
-	db 3  ; height
-	dw 29 ; weight
-
-	dn SHAPE_INSECTOID, BODY_COLOR_GREEN
-
-	db "Worm@" ; species name
+	db "Worm@"
 
 	db   "It crawls into"
 	next "foliage where it"

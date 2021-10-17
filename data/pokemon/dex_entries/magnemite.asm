@@ -1,9 +1,4 @@
-	db 3  ; height
-	dw 60 ; weight
-
-	dn SHAPE_HEAD_ARMS, BODY_COLOR_GRAY
-
-	db "Magnet@" ; species name
+	db "Magnet@"
 
 	db   "The electricity"
 	next "emitted by the"

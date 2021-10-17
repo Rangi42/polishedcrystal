@@ -1,9 +1,4 @@
-	db 14   ; height
-	dw 3000 ; weight
-
-	dn SHAPE_BIPEDAL, BODY_COLOR_BROWN
-
-	db "Megaton@" ; species name
+	db "Megaton@"
 
 	db   "Its rock-like body"
 	next "is so durable,"

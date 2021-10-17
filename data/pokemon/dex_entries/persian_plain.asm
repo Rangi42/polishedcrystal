@@ -1,9 +1,4 @@
-	db 10  ; height
-	dw 320 ; weight
-
-	dn SHAPE_QUADRUPED, BODY_COLOR_YELLOW
-
-	db "Classy Cat@" ; species name
+	db "Classy Cat@"
 
 	db   "Behind its lithe,"
 	next "elegant appearance"

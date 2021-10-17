@@ -1,9 +1,4 @@
-	db 5   ; height
-	dw 280 ; weight
-
-	dn SHAPE_BIPEDAL_TAIL, BODY_COLOR_BROWN
-
-	db "Pig Monkey@" ; species name
+	db "Pig Monkey@"
 
 	db   "It lives in groups"
 	next "in the treetops."

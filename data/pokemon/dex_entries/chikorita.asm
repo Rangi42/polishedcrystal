@@ -1,9 +1,4 @@
-	db 9  ; height
-	dw 64 ; weight
-
-	dn SHAPE_QUADRUPED, BODY_COLOR_GREEN
-
-	db "Leaf@" ; species name
+	db "Leaf@"
 
 	db   "It loves to bask"
 	next "in the sunlight."

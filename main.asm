@@ -541,6 +541,11 @@ INCLUDE "data/items/apricorn_names.asm"
 INCLUDE "engine/items/print_item_description.asm"
 
 
+SECTION "Pokemon Body Data", ROMX
+
+INCLUDE "data/pokemon/body_data.asm"
+
+
 SECTION "Pokemon Names", ROMX
 
 INCLUDE "data/pokemon/names.asm"

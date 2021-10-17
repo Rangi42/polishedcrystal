@@ -1,12 +1,7 @@
-	db 16  ; height
-	dw 785 ; weight
-
-	dn SHAPE_BIPEDAL_TAIL, BODY_COLOR_PINK
-
 if DEF(FAITHFUL)
-	db "Hermit Crab@" ; species name
+	db "Hermit Crab@"
 else
-	db "Squatter@" ; species name
+	db "Squatter@"
 endc
 
 	db   "An attached"

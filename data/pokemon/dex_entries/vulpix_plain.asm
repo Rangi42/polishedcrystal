@@ -1,9 +1,4 @@
-	db 6  ; height
-	dw 99 ; weight
-
-	dn SHAPE_QUADRUPED, BODY_COLOR_BROWN
-
-	db "Fox@" ; species name
+	db "Fox@"
 
 	db   "As its body grows"
 	next "larger, its six"

@@ -1,9 +1,4 @@
-	db 4  ; height
-	dw 42 ; weight
-
-	dn SHAPE_QUADRUPED, BODY_COLOR_BLUE
-
-	db "Scratch Cat@" ; species name
+	db "Scratch Cat@"
 
 	db   "Highly intelligent"
 	next "and prideful, it's"

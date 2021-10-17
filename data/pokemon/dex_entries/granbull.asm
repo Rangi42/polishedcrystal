@@ -1,9 +1,4 @@
-	db 14  ; height
-	dw 487 ; weight
-
-	dn SHAPE_BIPEDAL_TAIL, BODY_COLOR_PURPLE
-
-	db "Fairy@" ; species name
+	db "Fairy@"
 
 	db   "It can make most"
 	next "any #mon run"

@@ -1,9 +1,4 @@
-	db 10   ; height
-	dw 1150 ; weight
-
-	dn SHAPE_QUADRUPED, BODY_COLOR_GRAY
-
-	db "Spikes@" ; species name
+	db "Spikes@"
 
 	db   "It can remember"
 	next "only one thing at"

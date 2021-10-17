@@ -1,9 +1,4 @@
-	db 8 ; height
-	dw 60 ; weight
-
-	dn SHAPE_QUADRUPED, BODY_COLOR_BROWN
-
-	db "Scout@" ; species name
+	db "Scout@"
 
 	db   "When acting as a"
 	next "lookout, it warns"

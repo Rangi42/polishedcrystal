@@ -1,9 +1,4 @@
-	db 7  ; height
-	dw 69 ; weight
-
-	dn SHAPE_QUADRUPED, BODY_COLOR_GREEN
-
-	db "Seed@" ; species name
+	db "Seed@"
 
 	db   "While it is young,"
 	next "it uses the"

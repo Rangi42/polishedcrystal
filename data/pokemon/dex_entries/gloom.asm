@@ -1,9 +1,4 @@
-	db 8  ; height
-	dw 86 ; weight
-
-	dn SHAPE_BIPEDAL, BODY_COLOR_BLUE
-
-	db "Weed@" ; species name
+	db "Weed@"
 
 	db   "The smell from its"
 	next "drool-like syrup"

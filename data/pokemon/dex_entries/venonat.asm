@@ -1,9 +1,4 @@
-	db 10  ; height
-	dw 300 ; weight
-
-	dn SHAPE_BIPEDAL, BODY_COLOR_PURPLE
-
-	db "Insect@" ; species name
+	db "Insect@"
 
 	db   "The small bugs it"
 	next "eats appear only"

@@ -1,9 +1,4 @@
-	db 15   ; height
-	dw 1325 ; weight
-
-	dn SHAPE_HEAD, BODY_COLOR_PURPLE
-
-	db "Bivalve@" ; species name
+	db "Bivalve@"
 
 	db   "Even a missile"
 	next "can't break the"

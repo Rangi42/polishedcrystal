@@ -1,9 +1,4 @@
-	db 8   ; height
-	dw 420 ; weight
-
-	dn SHAPE_WINGS, BODY_COLOR_BROWN
-
-	db "Wild Duck@" ; species name
+	db "Wild Duck@"
 
 	db   "These Farfetch'd"
 	next "are brave warriors,"

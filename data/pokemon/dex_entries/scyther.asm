@@ -1,9 +1,4 @@
-	db 15  ; height
-	dw 560 ; weight
-
-	dn SHAPE_MULTIWINGS, BODY_COLOR_GREEN
-
-	db "Mantis@" ; species name
+	db "Mantis@"
 
 	db   "It's very proud of"
 	next "its speed. It"

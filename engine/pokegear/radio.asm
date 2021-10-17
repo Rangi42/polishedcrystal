@@ -700,20 +700,7 @@ PokedexShow2:
 	ld a, [wCurForm]
 	ld b, a
 	call GetSpeciesAndFormIndex
-	ld hl, PokedexDataPointerTable
-	add hl, bc
-	add hl, bc
-	add hl, bc
-	ld a, BANK(PokedexDataPointerTable)
-	call GetFarByte
-	ld b, a
-	inc hl
-	ld a, BANK(PokedexDataPointerTable)
-	call GetFarWord
-rept 4
-	inc hl
-endr
-	ld a, b
+	call GetDexEntryPointer
 	push af
 	push hl
 	call CopyDexEntryPart1

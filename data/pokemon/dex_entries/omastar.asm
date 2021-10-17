@@ -1,9 +1,4 @@
-	db 10  ; height
-	dw 350 ; weight
-
-	dn SHAPE_TENTACLES, BODY_COLOR_BLUE
-
-	db "Spiral@" ; species name
+	db "Spiral@"
 
 	db   "Its heavy shell"
 	next "allowed it to"

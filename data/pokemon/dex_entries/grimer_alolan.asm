@@ -1,9 +1,4 @@
-	db 7   ; height
-	dw 420 ; weight
-
-	dn SHAPE_HEAD_ARMS, BODY_COLOR_GREEN
-
-	db "Sludge@" ; species name
+	db "Sludge@"
 
 	db   "A Grimer, which had"
 	next "been brought in to"

@@ -1,9 +1,4 @@
-	db 10  ; height
-	dw 270 ; weight
-
-	dn SHAPE_QUADRUPED, BODY_COLOR_BLACK
-
-	db "Moonlight@" ; species name
+	db "Moonlight@"
 
 	db   "On the night of a"
 	next "full moon, or when"

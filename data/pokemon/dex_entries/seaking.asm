@@ -1,9 +1,4 @@
-	db 13  ; height
-	dw 390 ; weight
-
-	dn SHAPE_FINS, BODY_COLOR_RED
-
-	db "Goldfish@" ; species name
+	db "Goldfish@"
 
 	db   "When autumn comes,"
 	next "the males patrol"

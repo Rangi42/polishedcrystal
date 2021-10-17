@@ -1,9 +1,4 @@
-	db 5  ; height
-	dw 90 ; weight
-
-	dn SHAPE_QUADRUPED, BODY_COLOR_PURPLE
-
-	db "Poison Pin@" ; species name
+	db "Poison Pin@"
 
 	db   "It constantly"
 	next "moves its large"

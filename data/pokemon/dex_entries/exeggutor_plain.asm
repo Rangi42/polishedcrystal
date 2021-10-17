@@ -1,9 +1,4 @@
-	db 20   ; height
-	dw 1200 ; weight
-
-	dn SHAPE_HEAD_LEGS, BODY_COLOR_YELLOW
-
-	db "Coconut@" ; species name
+	db "Coconut@"
 
 	db   "Living in a good"
 	next "environment makes"

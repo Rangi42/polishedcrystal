@@ -1,9 +1,4 @@
-	db 7   ; height
-	dw 400 ; weight
-
-	dn SHAPE_BIPEDAL_TAIL, BODY_COLOR_WHITE
-
-	db "Mouse@" ; species name
+	db "Mouse@"
 
 	db   "It lives on snowy"
 	next "mountains. Its"

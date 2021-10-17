@@ -11,6 +11,7 @@
 ; - FrontPicPointers (see data/pokemon/front_pic_pointers.asm)
 ; - BackPicPointers (see data/pokemon/back_pic_pointers.asm)
 ; - PokemonPalettes (see data/pokemon/palettes.asm)
+; - PokemonBodyData (see data/pokemon/body_data.asm)
 ; - PokedexDataPointerTable (see data/pokemon/dex_entry_pointers.asm)
 ; - AlphabeticalPokedexOrder (see data/pokemon/dex_order_alpha.asm)
 ; - NewPokedexOrder (see data/pokemon/dex_order_new.asm)
