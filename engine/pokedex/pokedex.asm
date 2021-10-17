@@ -621,7 +621,12 @@ Pokedex_MainLoop:
 	ld a, $10
 	; fallthrough
 .fixcursor
-	ld hl, wPokedex_CursorPos
+	ld hl, wPokedex_Offset
+	ld c, [hl]
+	assert wPokedex_Offset - 1 == wPokedex_CursorPos
+	dec hl
+	ld b, [hl]
+	push bc
 .fixcursor_loop
 	push af
 	add [hl]
@@ -630,7 +635,14 @@ Pokedex_MainLoop:
 	pop bc
 	ld a, b
 	jr nc, .fixcursor_loop
-	call Pokedex_GetCursorMon
+	pop bc
+	ld a, [hli]
+	cp b
+	jr nz, .changed
+	ld a, [hl]
+	cp c
+.changed
+	call nz, Pokedex_GetCursorMon
 	jr .loop
 
 .CursorPosValid:
