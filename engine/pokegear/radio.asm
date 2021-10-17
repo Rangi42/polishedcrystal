@@ -695,12 +695,12 @@ PokedexShow1:
 	jmp NextRadioLine
 
 PokedexShow2:
-	ld hl, PokedexDataPointerTable
 	ld a, [wCurPartySpecies]
 	ld c, a
 	ld a, [wCurForm]
 	ld b, a
 	call GetSpeciesAndFormIndex
+	ld hl, PokedexDataPointerTable
 	add hl, bc
 	add hl, bc
 	add hl, bc
@@ -710,6 +710,9 @@ PokedexShow2:
 	inc hl
 	ld a, BANK(PokedexDataPointerTable)
 	call GetFarWord
+rept 4
+	inc hl
+endr
 	ld a, b
 	push af
 	push hl
@@ -721,9 +724,6 @@ PokedexShow2:
 	pop hl
 	pop af
 	call CopyDexEntryPart2
-rept 4
-	inc hl
-endr
 ;	call GetFarByte
 ;	cp $2f
 ;	jr nz, .load
