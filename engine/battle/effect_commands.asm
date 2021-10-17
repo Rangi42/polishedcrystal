@@ -3252,6 +3252,8 @@ EndMoveDamageChecks:
 	cp HELD_SWITCH
 .deferred_switch
 	ret nz
+	call GetFutureSightUser
+	ret nc
 	ld a, c
 	jmp SetDeferredSwitch
 
