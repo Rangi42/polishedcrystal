@@ -1143,11 +1143,9 @@ CrystalIntro_UnownFade:
 	add a
 	add a
 	ld e, a
-	ld d, $0
-	ld hl, wBGPals2
+	ld d, 0
+	ld hl, wBGPals2 + 2
 	add hl, de
-	inc hl
-	inc hl
 	ld a, [wIntroSceneTimer]
 	and $3f
 	cp $1f + 1
@@ -1347,12 +1345,9 @@ Intro_FadeUnownWordPals:
 	add a
 	add a
 	ld e, a
-	ld d, $0
-	ld hl, wBGPals2
+	ld d, 0
+	ld hl, wBGPals2 + 4
 	add hl, de
-rept 4
-	inc hl
-endr
 	ld a, [wIntroSceneTimer]
 	add a
 	ld c, a

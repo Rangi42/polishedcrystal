@@ -230,11 +230,10 @@ GetSpeciesWeight::
 ; input: bc = species+form
 ; output: hl = weight
 	call GetSpeciesAndFormIndex
-	ld hl, PokemonBodyData
+	ld hl, PokemonBodyData + 1 ; skip height
 rept 4
 	add hl, bc
 endr
-	inc hl ; skip height
 	ld a, BANK(PokemonBodyData)
 	jmp GetFarWord ; get weight
 

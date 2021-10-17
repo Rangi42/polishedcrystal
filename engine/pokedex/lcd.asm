@@ -279,7 +279,7 @@ PHB_BioStatsSwitchSCY:
 	push de
 	push bc
 .busyloop
-	ld a, [rSTAT]
+	ldh a, [rSTAT]
 	and %11
 	jr nz, .busyloop
 	ld a, 3
@@ -294,7 +294,7 @@ _PHB_BioStatsSwitchSCY:
 	push de
 	push bc
 .busyloop
-	ld a, [rSTAT]
+	ldh a, [rSTAT]
 	and %11
 	jr nz, .busyloop
 	ld a, 8
