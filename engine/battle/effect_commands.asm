@@ -3271,6 +3271,8 @@ EndMoveDamageChecks:
 	jr .deferred_switch
 
 .shell_bell
+	call GetFutureSightUser
+	ret nc
 	farcall CheckFullHP
 	ret z
 	ld a, [wDamageTaken]
