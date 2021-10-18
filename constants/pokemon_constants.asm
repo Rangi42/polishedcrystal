@@ -456,6 +456,10 @@ GALARIAN_FORM EQU 3
 	const_skip ; 16e slowking
 	const_skip ; 16f corsola
 
+; hisuian forms
+HISUIAN_FORM EQU 4
+; TODO when Legends: Arceus is released (2022-01-28)
+
 NUM_VARIANT_FORMS EQU const_value - FIRST_VARIANT_FORM_MON ; 1d
 
 ; these constants include EGG and a dummy entry as species

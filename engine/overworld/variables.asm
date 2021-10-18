@@ -115,13 +115,17 @@ Var_CountTrainerStars:
 	; star for completing the Pokédex
 	push bc
 	ld hl, wPokedexCaught
-	ld b, wEndPokedexCaught - wPokedexCaught
-	call CountSetBits
-	pop bc
-	cp NUM_POKEMON
+	ld bc, wEndPokedexCaught - wPokedexCaught
+	call CountSetBits16
+	ld a, b
+	cp HIGH(NUM_EXT_POKEMON)
+	jr c, .nostar3
+	ld a, c
+	cp LOW(NUM_EXT_POKEMON)
 	jr c, .nostar3
 	inc b
 .nostar3
+	pop bc
 	; star for reading all Pokémon Journals
 	push bc
 	ld hl, wPokemonJournals
