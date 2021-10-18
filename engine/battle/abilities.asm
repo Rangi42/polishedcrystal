@@ -1657,7 +1657,6 @@ AnalyticAbility:
 ; 130% damage if opponent went first
 	farcall GetFutureSightUser
 	ret nc
-	jr nc, .future_sight
 	ld a, [wEnemyGoesFirst] ; 0 = player goes first
 	ld b, a
 	ldh a, [hBattleTurn] ; 0 = player's turn
