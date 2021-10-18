@@ -1,13 +1,14 @@
 Pokedex_Copy1bpp:
 ; Copies c tiles from b:hl to de. Avoids running Copy1bpp during HBlank.
-	ldh a, [rLY]
 	push bc
+.loop
+	ldh a, [rLY]
 	ld b, a
 	ldh a, [rLYC]
 	sub b
-	pop bc
 	cp $4
-	jr c, Pokedex_Copy1bpp
+	jr c, .loop
+	pop bc
 	call SwapHLDE
 	di
 	call Copy1bpp
