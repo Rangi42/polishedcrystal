@@ -1663,6 +1663,7 @@ AnalyticAbility:
 	ldh a, [hBattleTurn] ; 0 = player's turn
 	xor b ; nz if opponent went first
 	ret z
+.future_sight
 	ln a, 13, 10 ; x1.3
 	jmp MultiplyAndDivide
 
