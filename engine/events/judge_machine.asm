@@ -1083,7 +1083,7 @@ RightSlashAxesXCoords:
 JudgeSystemGFX:
 INCBIN "gfx/stats/judge.2bpp.lz"
 
-	MaxStatSparkleGFX:
+MaxStatSparkleGFX:
 INCBIN "gfx/stats/sparkle.2bpp"
 
 EVChartPals:
