@@ -8,7 +8,7 @@ if !DEF(MONOCHROME)
 ; green
 	RGB 07, 23, 03
 ; black
-	RGB 00, 00, 00
+	RGB 07, 07, 07
 ; brown
 	RGB 15, 10, 03
 ; purple

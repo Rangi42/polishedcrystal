@@ -2514,21 +2514,11 @@ _Pokedex_GetCursorMon:
 
 	call Pokedex_GetCursorSpecies
 	call GetSpeciesAndFormIndex
-	ld hl, PokedexDataPointerTable
+	ld hl, PokemonBodyData + 3 ; skip height and weight
+rept 4
 	add hl, bc
-	add hl, bc
-	add hl, bc
-	ld a, BANK(PokedexDataPointerTable)
-	ld b, a
-	call GetFarByte
-	inc hl
-	ld c, a
-	ld a, b
-	call GetFarWord
-	ld a, c
-	inc hl
-	inc hl
-	inc hl
+endr
+	ld a, BANK(PokemonBodyData)
 	call GetFarByte
 	push af
 	swap a
