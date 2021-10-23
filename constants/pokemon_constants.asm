@@ -11,6 +11,7 @@
 ; - FrontPicPointers (see data/pokemon/front_pic_pointers.asm)
 ; - BackPicPointers (see data/pokemon/back_pic_pointers.asm)
 ; - PokemonPalettes (see data/pokemon/palettes.asm)
+; - PokemonBodyData (see data/pokemon/body_data.asm)
 ; - PokedexDataPointerTable (see data/pokemon/dex_entry_pointers.asm)
 ; - AlphabeticalPokedexOrder (see data/pokemon/dex_order_alpha.asm)
 ; - NewPokedexOrder (see data/pokemon/dex_order_new.asm)
@@ -454,6 +455,10 @@ GALARIAN_FORM EQU 3
 	const_skip ; 16d moltres
 	const_skip ; 16e slowking
 	const_skip ; 16f corsola
+
+; hisuian forms
+HISUIAN_FORM EQU 4
+; TODO when Legends: Arceus is released (2022-01-28)
 
 NUM_VARIANT_FORMS EQU const_value - FIRST_VARIANT_FORM_MON ; 1d
 

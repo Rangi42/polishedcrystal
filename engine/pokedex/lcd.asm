@@ -1,13 +1,13 @@
 Pokedex_Copy1bpp:
 ; Copies c tiles from b:hl to de. Avoids running Copy1bpp during HBlank.
 	push bc
-.busyloop
+.loop
 	ldh a, [rLY]
 	ld b, a
 	ldh a, [rLYC]
 	sub b
 	cp $4
-	jr c, .busyloop
+	jr c, .loop
 	pop bc
 	call SwapHLDE
 	di
@@ -274,7 +274,7 @@ PHB_BioStatsSwitchSCY:
 	push de
 	push bc
 .busyloop
-	ld a, [rSTAT]
+	ldh a, [rSTAT]
 	and %11
 	jr nz, .busyloop
 	ld a, 3
@@ -289,7 +289,7 @@ _PHB_BioStatsSwitchSCY:
 	push de
 	push bc
 .busyloop
-	ld a, [rSTAT]
+	ldh a, [rSTAT]
 	and %11
 	jr nz, .busyloop
 	ld a, 8

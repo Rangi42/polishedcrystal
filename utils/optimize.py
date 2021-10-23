@@ -304,7 +304,7 @@ patterns = {
 	(lambda line1, prev: re.match(r'(?:cp|or) [%\$&]?0+$', line1.code)
 		or re.match(r'and (?:255|-1|\$[Ff][Ff]|%11111111|&377)$', line1.code)),
 ],
-' ei + ret': [
+'ei + ret': [
 	# Bad: ei / ret
 	# Good: reti
 	(lambda line1, prev: line1.code == 'ei'),
@@ -436,6 +436,41 @@ patterns = {
 	(lambda line1, prev: re.match(r'ld .+, [^afbcdehl\[]', line1.code)),
 	(lambda line2, prev: (line2.code.startswith('inc ') or line2.code.startswith('dec '))
 		and line2.code[4:].strip() == prev[0].code.split(',')[0][2:].strip()),
+],
+'hl|bc|de = N / bc|de|hl = K / hl|bc|de += bc|de|hl': [
+	# Bad: hl|bc|de = N / bc|de|hl = K / hl|bc|de += bc|de|hl (unless K is needed in bc|de|hl)
+	# Good: hl|bc|de = N + K
+	(lambda line1, prev: re.match(r'ld (?:hl|bc|de), [^\[]', line1.code)),
+	(lambda line2, prev: re.match(r'ld (?:hl|bc|de), [^\[]', line2.code)
+		and line2.code[2] != prev[0].code[3]),
+	(1, lambda line3, prev: re.match(r'add (?:hl|bc|de), (?!hl|bc|de)', line3.code)
+		and line3.code[4] == prev[0].code[3] and line3.code[8] == prev[1].code[3]),
+],
+'hl|bc|de = N / ... / inc|dec hl|bc|de': [
+	# Bad: hl|bc|de = N / ... / inc|dec hl|bc|de
+	# Good: hl|bc|de = N +/- 1 / ...
+	(lambda line1, prev: re.match(r'ld (?:hl|bc|de), [^\[]', line1.code)),
+	(1, lambda line2, prev: not re.match(r'^(jr|jp|jmp|call|rst|ret|predef)', line2.code)
+		and line2.code[:5] != prev[0].code[:5]
+		and '[' + prev[0].code[3:5] not in line2.code
+		and not re.match(r'^(?:push|pop) ' + prev[0].code[3:5], line2.code)
+		and not (line2.code.startswith('.') or line2.code.endswith(':'))),
+	(1, lambda line3, prev: re.match(r'(?:inc|dec) (?:hl|bc|de)', line3.code)
+		and line3.code[4] == prev[0].code[3]),
+],
+'hl|bc|de = N / ... / bc|de|hl = K / hl|bc|de += bc|de|hl': [
+	# Bad: hl|bc|de = N / ... / bc|de|hl = K / hl|bc|de += bc|de|hl (unless K is needed in bc|de|hl)
+	# Good: hl|bc|de = N + K / ...
+	(lambda line1, prev: re.match(r'ld (?:hl|bc|de), [^\[]', line1.code)),
+	(1, lambda line2, prev: not re.match(r'^(jr|jp|jmp|call|rst|ret|predef)', line2.code)
+		and line2.code[:5] != prev[0].code[:5]
+		and '[' + prev[0].code[3:5] not in line2.code
+		and not re.match(r'^(?:push|pop) ' + prev[0].code[3:5], line2.code)
+		and not (line2.code.startswith('.') or line2.code.endswith(':'))),
+	(lambda line3, prev: re.match(r'ld (?:hl|bc|de), [^\[]', line3.code)
+		and line3.code[2] != prev[0].code[3]),
+	(1, lambda line4, prev: re.match(r'add (?:hl|bc|de), (?!hl|bc|de)', line4.code)
+		and line4.code[4] == prev[0].code[3] and line4.code[8] == prev[1].code[3]),
 ],
 'Redundant ret': [
 	# Bad: ret z|nz|c|nc / ret
