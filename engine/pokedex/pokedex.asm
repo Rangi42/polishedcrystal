@@ -1403,7 +1403,7 @@ endr
 	pop af
 	ldh [rSVBK], a
 
-	call Pokedex_ScheduleScreenUpdate
+	call Pokedex_RefreshScreen
 	ld a, $57
 	ld de, PHB_DescSwitchSCY
 	call Pokedex_SetHBlankFunction
@@ -1714,7 +1714,7 @@ Pokedex_Bio:
 	hlcoord 8, 16
 	call PlaceString
 
-	call Pokedex_ScheduleScreenUpdate
+	call Pokedex_RefreshScreen
 	ld a, $84
 	ld de, PHB_BioStatsSwitchSCY
 	call Pokedex_SetHBlankFunction
