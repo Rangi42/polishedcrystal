@@ -1,0 +1,15 @@
+if !DEF(MONOCHROME)
+; green
+	RGB 31, 25, 02
+	RGB 00, 23, 00
+; yellow
+	RGB 31, 25, 02
+	RGB 31, 21, 00
+; red
+	RGB 31, 25, 02
+	RGB 31, 00, 00
+else
+	MONOCHROME_RGB_TWO
+	MONOCHROME_RGB_TWO
+	MONOCHROME_RGB_TWO
+endc

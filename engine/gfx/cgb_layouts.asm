@@ -666,17 +666,11 @@ endr
 _CGB_TrainerCard:
 	call LoadFirstTwoTrainerCardPals
 
-	ld hl, BronzeTrainerCardPals
-	call LoadPalette_White_Col1_Col2_Black
-
-	ld hl, SilverTrainerCardPals
-	call LoadPalette_White_Col1_Col2_Black
-
-	ld hl, GoldTrainerCardPals
-	call LoadPalette_White_Col1_Col2_Black
-
-	ld hl, CrystalTrainerCardPals
-	call LoadPalette_White_Col1_Col2_Black
+	ld hl, TrainerCardPals + 4 ; skip default
+	call LoadPalette_White_Col1_Col2_Black ; bronze star
+	call LoadPalette_White_Col1_Col2_Black ; silver star
+	call LoadPalette_White_Col1_Col2_Black ; gold star
+	call LoadPalette_White_Col1_Col2_Black ; crystal star
 
 	; Trainer stars
 	hlcoord 2, 16, wAttrMap

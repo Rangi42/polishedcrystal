@@ -1,0 +1,46 @@
+if !DEF(MONOCHROME)
+; red
+	RGB 27, 31, 27
+	RGB 31, 19, 10
+	RGB 31, 07, 01
+	RGB 00, 00, 00
+; blue
+	RGB 27, 31, 27
+	RGB 31, 19, 10
+	RGB 10, 09, 31
+	RGB 00, 00, 00
+; green
+	RGB 27, 31, 27
+	RGB 31, 19, 10
+	RGB 07, 23, 03
+	RGB 00, 00, 00
+; brown
+	RGB 27, 31, 27
+	RGB 31, 19, 10
+	RGB 15, 10, 03
+	RGB 00, 00, 00
+; purple
+	RGB 27, 31, 27
+	RGB 31, 19, 10
+	RGB 18, 04, 18
+	RGB 00, 00, 00
+; gray
+	RGB 27, 31, 27
+	RGB 31, 19, 10
+	RGB 13, 13, 13
+	RGB 00, 00, 00
+; pink
+	RGB 27, 31, 27
+	RGB 31, 19, 10
+	RGB 31, 10, 11
+	RGB 00, 00, 00
+; teal
+	RGB 27, 31, 27
+	RGB 31, 19, 10
+	RGB 03, 23, 21
+	RGB 00, 00, 00
+else
+rept 8
+	MONOCHROME_RGB_FOUR_OW
+endr
+endc

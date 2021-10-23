@@ -1,0 +1,44 @@
+if !DEF(MONOCHROME)
+	; BG0: main areas
+	RGB 31, 31, 31
+	RGB 23, 23, 23
+	RGB 26, 10, 06
+	RGB 00, 00, 00
+
+	; BG1: blue areas
+	RGB 31, 31, 31
+	RGB 23, 23, 23
+	RGB 00, 00, 00
+	RGB 11, 14, 31
+
+	; BG4: vwf text
+	RGB 31, 31, 31
+	RGB 23, 23, 23
+	RGB 16, 16, 16
+	RGB 00, 00, 00
+
+	; BG5: misc pals
+	RGB 31, 31, 31
+	RGB 31, 12, 06 ; male
+	RGB 04, 17, 31 ; female
+	RGB 31, 26, 00 ; EV yield
+
+	; OB0: Balls + cursor
+	;RGB 31, 31, 31
+	RGB 31, 31, 31
+	RGB 26, 10, 06
+	RGB 00, 00, 00
+
+	; OB1: Scrollbar
+	RGB 31, 31, 31
+	RGB 31, 31, 31
+	RGB 11, 14, 31
+	RGB 00, 00, 00
+else
+rept 5
+	RGB_MONOCHROME_WHITE
+	RGB_MONOCHROME_LIGHT
+	RGB_MONOCHROME_DARK
+	RGB_MONOCHROME_BLACK
+endr
+endc
