@@ -178,7 +178,6 @@ hChartScreen:: db
 hChartFillCoord:: db
 hChartLineCoord:: db
 NEXTU
-hPokedexDescPlayCry::
 hPokedexStatsCurAbil:: db
 	ds 2
 ENDU

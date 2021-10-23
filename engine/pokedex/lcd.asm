@@ -1,11 +1,14 @@
 Pokedex_Copy1bpp:
 ; Copies c tiles from b:hl to de. Avoids running Copy1bpp during HBlank.
+	push bc
+.busyloop
 	ldh a, [rLY]
 	ld b, a
 	ldh a, [rLYC]
 	sub b
 	cp $4
-	jr c, Pokedex_Copy1bpp
+	jr c, .busyloop
+	pop bc
 	call SwapHLDE
 	di
 	call Copy1bpp
@@ -64,14 +67,6 @@ Pokedex_RefreshScreen:
 	rst CopyBytes
 
 	; Reload dex number display, should only be visible for main and description pages.
-	ld a, [wPokedex_DisplayMode]
-	cp DEXDISP_DESC
-	jr z, .got_y
-	and a
-	jr z, .got_y
-	xor a
-	ld [wPokedexOAM_DexNoY], a
-.got_y
 	ld a, [wPokedexOAM_DexNoX]
 	ld e, a
 	ld bc, 2

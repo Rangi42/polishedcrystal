@@ -190,7 +190,7 @@ JudgeSystem::
 
 ; Place the frontpic graphics
 	hlcoord 0, 6
-	farcall PlaceFrontpicAtHL
+	call PlaceFrontpicAtHL
 
 ; Place the Pokédex number
 	ld a, [wCurPartySpecies]

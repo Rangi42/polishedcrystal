@@ -69,6 +69,7 @@ VWF_OPAQUE EQU 1 << VWF_OPAQUE_F
 	const DEXGFX_FRONTPIC
 	const DEXGFX_POKEINFO ; non-frontpic gfx (type icons, footprint)
 	const DEXGFX_ROWTILES ; icon+vwf tiles for a row update
+	const DEXGFX_ICONSHAPE ; icon+body for individual mon pages
 
 	const_def
 	const DEXTILE_FROM_DEXMAP_F

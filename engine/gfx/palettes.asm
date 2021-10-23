@@ -1646,6 +1646,34 @@ rept 8
 endr
 endc
 
+BodyColorPals:
+if !DEF(MONOCHROME)
+; red
+	RGB 31, 07, 01
+; blue
+	RGB 10, 09, 31
+; yellow
+	RGB 31, 21, 02
+; green
+	RGB 07, 23, 03
+; black
+	RGB 00, 00, 00
+; brown
+	RGB 15, 10, 03
+; purple
+	RGB 18, 04, 18
+; gray
+	RGB 13, 13, 13
+; white
+	RGB 26, 26, 26
+; pink
+	RGB 31, 10, 11
+else
+rept 8
+	RGB_MONOCHROME_BLACK
+endr
+endc
+
 MartMenuPals:
 if !DEF(MONOCHROME)
 	RGB 31, 31, 31

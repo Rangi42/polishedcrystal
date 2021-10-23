@@ -14,7 +14,7 @@ ContinueGDMACopy:
 	ld hl, rHDMA3
 	jr _GDMACopy
 GDMACopy:
-; Copy a-1 tiles from de to bc. Preserves all registers. Assumes GDMA is valid.
+; Copy a+1 tiles from de to bc. Preserves all registers. Assumes GDMA is valid.
 	push hl
 	ld hl, rHDMA1
 	ld [hl], d

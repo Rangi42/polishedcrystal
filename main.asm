@@ -204,6 +204,11 @@ SECTION "Pokédex Footprints", ROMX
 INCLUDE "gfx/pokemon/footprints.asm"
 
 
+SECTION "Pokedex Shapes", ROMX
+
+INCLUDE "gfx/shapes.asm"
+
+
 SECTION "Moves", ROMX
 
 INCLUDE "data/moves/moves.asm"

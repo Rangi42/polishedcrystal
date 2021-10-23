@@ -1094,14 +1094,7 @@ PokedexStr_Feet:
 ; Feet uses its own pelicular display format, so replace the ?s too.
 	db "′??″@"
 
-Pokedex_DescriptionNoCry:
-	xor a
-	jr _Pokedex_Description
-
 Pokedex_Description:
-	ld a, 1
-_Pokedex_Description:
-	ldh [hPokedexDescPlayCry], a
 	; Move the dex number display.
 	ld a, 17
 	ld [wPokedexOAM_DexNoX], a
@@ -1408,21 +1401,10 @@ _Pokedex_Description:
 	pop af
 	ldh [rSVBK], a
 
-	call Pokedex_RefreshScreen
+	call Pokedex_ScheduleScreenUpdate
 	ld a, $57
 	ld de, PHB_DescSwitchSCY
 	call Pokedex_SetHBlankFunction
-
-	ldh a, [hPokedexDescPlayCry]
-	and a
-	jr z, .joypad_loop
-	xor a
-	ldh [hPokedexDescPlayCry], a
-	ld a, [wCurPartySpecies]
-	ld c, a
-	ld a, [wPokedex_Form]
-	ld b, a
-	call PlayCry2
 
 .joypad_loop
 	call Pokedex_GetInput
@@ -1470,7 +1452,7 @@ _Pokedex_Description:
 	jr z, .page_ok
 	ld [hl], $1d
 .page_ok
-	call Pokedex_RefreshScreen
+	call Pokedex_ScheduleScreenUpdate
 	jr .joypad_loop
 
 .pressed_select
@@ -1489,7 +1471,7 @@ _Pokedex_Description:
 	ld a, BANK(PokemonPalettes)
 	ld bc, 4
 	call FarCopyBytesToColorWRAM
-	call Pokedex_RefreshScreen
+	call Pokedex_ScheduleScreenUpdate
 	jr .joypad_loop
 
 .pressed_up
@@ -1514,14 +1496,14 @@ _Pokedex_Description:
 	pop af
 	pop hl
 	pop hl
-	jmp Pokedex_Bio
+	jr Pokedex_Bio
 
  .pressed_left
 	pop af
 	pop hl
 	pop hl
 	; jmp Pokedex_Area
-	jmp Pokedex_DescriptionNoCry
+	jmp Pokedex_Description
 
 .pressed_start
 	; cycle form (if applicable)
@@ -1531,7 +1513,7 @@ _Pokedex_Description:
 	pop hl
 	pop hl
 	call Pokedex_GetCursorMon
-	jmp Pokedex_DescriptionNoCry
+	jmp Pokedex_Description
 
 .info_done
 	pop af
@@ -1582,6 +1564,11 @@ Pokedex_Bio:
 	; Load the bio tilemap.
 	ld hl, DexTilemap_Bio
 	call Pokedex_LoadTilemap
+
+	ld a, 117
+	ld [wPokedexOAM_DexNoX], a
+	ld a, 20
+	ld [wPokedexOAM_DexNoY], a
 
 	ld a, DEXDISP_BIO
 	ld [wPokedex_DisplayMode], a
@@ -1741,7 +1728,7 @@ Pokedex_Bio:
 	hlcoord 8, 16
 	call PlaceString
 
-	call Pokedex_RefreshScreen
+	call Pokedex_ScheduleScreenUpdate
 	ld a, $84
 	ld de, PHB_BioStatsSwitchSCY
 	call Pokedex_SetHBlankFunction
@@ -1759,7 +1746,7 @@ Pokedex_Bio:
 	rrca
 	jmp c, Pokedex_Stats
 	rrca
-	jmp c, Pokedex_DescriptionNoCry
+	jmp c, Pokedex_Description
 	rrca
 	jr c, .pressed_up
 	rrca
@@ -1813,9 +1800,17 @@ Pokedex_Bio:
 INCLUDE "data/pokedex_bio.asm"
 
 Pokedex_Stats:
+	xor a
+	ldh [hPokedexStatsCurAbil], a
+_Pokedex_Stats:
 	; Load the stats tilemap.
 	ld hl, DexTilemap_Stats
 	call Pokedex_LoadTilemap
+
+	ld a, 117
+	ld [wPokedexOAM_DexNoX], a
+	ld a, 20
+	ld [wPokedexOAM_DexNoY], a
 
 	ld a, DEXDISP_STATS
 	ld [wPokedex_DisplayMode], a
@@ -1953,7 +1948,7 @@ Pokedex_Stats:
 	ld [hli], a
 
 .vbank_1
-	call Pokedex_RefreshScreen
+	call Pokedex_ScheduleScreenUpdate
 	ld a, $84
 	ld de, PHB_BioStatsSwitchSCY
 	call Pokedex_SetHBlankFunction
@@ -1969,24 +1964,14 @@ Pokedex_Stats:
 	rrca
 	jr c, .pressed_start
 	rrca
-	; jr c, .pressed_right
+	; jmp c, Pokedex_Area
 	rrca
-	jmp c, .pressed_left
+	jmp c, Pokedex_Bio
 	rrca
 	jr c, .pressed_up
 	rrca
 	jr c, .pressed_down
 	jr .joypad_loop
-
-.pressed_left
-	xor a
-	ldh [hPokedexStatsCurAbil], a
-	jmp Pokedex_Bio
-
-;.pressed_right
-	;xor a
-	;ldh [hPokedexStatsCurAbil], a
-	;jmp Pokedex_Area
 
 .pressed_start
 	call Pokedex_ChangeForm
@@ -2003,7 +1988,7 @@ Pokedex_Stats:
 	jr nz, .joypad_loop
 .reload_page
 	call Pokedex_GetCursorMon
-	jmp Pokedex_Stats
+	jmp _Pokedex_Stats
 
 .pressed_a
 	lb bc, 4, 19
@@ -2024,7 +2009,7 @@ Pokedex_Stats:
 	ld a, b
 	and 3 ; conveniently, $3f & $3 = $3
 	dec a
-	ldh [hPokedexDescPlayCry], a
+	ldh [hPokedexStatsCurAbil], a
 	add LOW(wBaseAbility1)
 	ld l, a
 	adc HIGH(wBaseAbility1)
@@ -2036,7 +2021,7 @@ Pokedex_Stats:
 	farcall PrintAbility
 	pop bc
 	farcall PrintAbilityDescription
-	call Pokedex_RefreshScreen
+	call Pokedex_ScheduleScreenUpdate
 	jr .joypad_loop
 
 Pokedex_InitData:
@@ -2407,6 +2392,7 @@ _Pokedex_GetCursorMon:
 	ld [wCurPartySpecies], a
 	ld [wCurSpecies], a
 	ld [wNamedObjectIndex], a
+	ld [wCurIconSpecies], a
 	ld a, $10
 	ld [wPokedexOAM_DexNoY], a
 	bit MON_CAUGHT_F, b
@@ -2414,6 +2400,7 @@ _Pokedex_GetCursorMon:
 	ld [wCurForm], a
 	ld [wNamedObjectIndex+1], a
 	ld [wPokedex_Form], a
+	ld [wCurIconForm], a
 	push af
 	push bc
 	call GetPokemonName
@@ -2454,7 +2441,7 @@ _Pokedex_GetCursorMon:
 
 	; If we haven't caught the mon, we're done here.
 	pop af
-	jr z, .done
+	jmp z, .done
 
 	ld a, 1
 	ld [wPokedexOAM_IsCaught], a
@@ -2526,9 +2513,84 @@ _Pokedex_GetCursorMon:
 	dec c
 	jr nz, .outer_copy_loop
 
+	ld a, [wPokedex_DisplayMode]
+	cp DEXDISP_DESC
+	jr c, .done_2
+
+	farcall LoadOverworldMonIcon
+	ld h, d
+	ld l, e
+	ld a, BANK(wDexMonIconTiles)
+	ldh [rSVBK], a
+	ld de, wDexMonIconTiles
+	ld a, b
+	call FarDecompressToDE
+
+	call Pokedex_GetCursorSpecies
+	call GetSpeciesAndFormIndex
+	ld hl, PokedexDataPointerTable
+	add hl, bc
+	add hl, bc
+	add hl, bc
+	ld a, BANK(PokedexDataPointerTable)
+	ld b, a
+	call GetFarByte
+	inc hl
+	ld c, a
+	ld a, b
+	call GetFarWord
+	ld a, c
+	inc hl
+	inc hl
+	inc hl
+	call GetFarByte
+	push af
+	swap a
+	and $f
+	ld c, a
+	ld b, 0
+	ld hl, Shapes
+	ld a, 4 * LEN_1BPP_TILE
+	rst AddNTimes
+	ld de, wDexMonShapeTiles
+	lb bc, BANK(Shapes), 4
+	call Pokedex_Copy1bpp
+
+	ld a, BANK(wBGPals1)
+	ldh [rSVBK], a
+	pop af
+	and $f
+	add a
+	add LOW(BodyColorPals)
+	ld l, a
+	adc HIGH(BodyColorPals)
+	sub l
+	ld h, a
+	ld a, BANK(BodyColorPals)
+	ld de, wBGPals1 palette 3 + 6
+	ld bc, 2
+	call FarCopyBytesToColorWRAM
+
+	ld a, [wCurIconSpecies]
+	ld c, a
+	ld a, [wCurIconForm]
+	ld b, a
+	xor a
+	farcall GetMenuMonIconTruePalette
+	ld hl, wBGPals1 palette 2 + 5
+	ld a, d
+	ld [hld], a
+	ld a, e
+	ld [hld], a
+	ld a, b
+	ld [hld], a
+	ld [hl], c
+
+	ld hl, wPokedex_GFXFlags
+	set DEXGFX_ICONSHAPE, [hl]
+.done_2
 	pop af
 	ldh [rSVBK], a
-
 .done
 	ld hl, wPokedex_GFXFlags
 	set DEXGFX_POKEINFO, [hl]
@@ -2655,41 +2717,10 @@ Pokedex_CopyTypeIconPals:
 
 
 
-Pokedex_ResetBGMapMode:
-Pokedex_FillColumn:
-PlaceFrontpicTopLeftCorner:
-PlaceFrontpicAtHL:
-	xor a
-_PlaceFrontpicAtHL:
-	ld de, SCREEN_WIDTH
-	ld b, 7
-.row
-	ld c, 7
-	push af
-	push hl
-.col
-	ld [hli], a
-	add 7
-	dec c
-	jr nz, .col
-	pop hl
-	add hl, de
-	pop af
-	inc a
-	dec b
-	jr nz, .row
-	ret
-
 String_SEEN:
 	rawchar "Seen", $ff
 String_OWN:
 	rawchar "Own", $ff
-String_SELECT_OPTION:
-;	db $3b, $48, $49, $4a, $44, $45, $46, $47 ; SELECT > OPTION
-	db $3b, $41, $42, $43, $44, $45, $46, $47
-String_START_SEARCH:
-;	db $3c, $3b, $41, $42, $43, $4b, $4c, $4d, $4e, $3c, $ff ; START > SEARCH
-	db $48, $3b, $49, $4a, $4b, $4c, $4d, $4e, $5d, $5e, $ff
 
 Pokedex_DrawDexEntryScreenBG:
 

@@ -53,6 +53,28 @@ DrawBattleHPBar::
 .done
 	jmp PopBCDEHL
 
+PlaceFrontpicAtHL:
+	xor a
+_PlaceFrontpicAtHL:
+	ld de, SCREEN_WIDTH
+	ld b, 7
+.row
+	ld c, 7
+	push af
+	push hl
+.col
+	ld [hli], a
+	add 7
+	dec c
+	jr nz, .col
+	pop hl
+	add hl, de
+	pop af
+	inc a
+	dec b
+	jr nz, .row
+	ret
+
 PrepMonFrontpicFlipped::
 	xor a
 	jr _PrepMonFrontpic

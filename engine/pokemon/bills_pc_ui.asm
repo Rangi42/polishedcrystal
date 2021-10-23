@@ -1118,7 +1118,7 @@ _GetCursorMon:
 
 	; Poképic tilemap
 	hlcoord 0, 0
-	farcall PlaceFrontpicAtHL
+	call PlaceFrontpicAtHL
 
 	; Nickname
 	hlcoord 8, 0

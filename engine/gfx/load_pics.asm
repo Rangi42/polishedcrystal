@@ -60,41 +60,6 @@ _GetPreparedFrontpic:
 	pop hl
 	ret
 
-DexPrepareFrontpic:
-; Writes the final frontpic result to wDexFrontpicTiles instead of sScratch.
-; sScratch is still used during decompression, however.
-	ld a, [wBasePicSize]
-	and $f
-	ld d, a
-	ld a, [wCurPartySpecies]
-	ld c, a
-	ld a, [wCurForm]
-	ld b, a
-	ld a, BANK(wDexMonFrontpicTiles)
-	call StackCallInWRAMBankA
-.Function:
-	ld a, BANK(sScratch)
-	call GetSRAMBank
-	push de
-	call _GetFrontpicPointer
-	ld a, b
-	ld de, sScratch + 1 tiles
-	call FarDecompressToDE
-	swap e
-	swap d
-	ld a, d
-	and $f0
-	or e
-	ld [sScratch], a
-	pop bc
-	ld hl, wPokedex_GFXFlags
-	bit DEXGFX_ROWTILES, [hl]
-	call nz, DelayFrame
-	ld hl, wDexMonFrontpicTiles
-	ld de, sScratch + 1 tiles
-	call PadFrontpic
-	jmp CloseSRAM
-
 _PrepareFrontpic:
 	ld a, BANK(sScratch)
 	call GetSRAMBank
