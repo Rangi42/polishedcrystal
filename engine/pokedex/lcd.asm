@@ -72,6 +72,9 @@ Pokedex_RefreshScreen:
 	ld bc, 2
 	ld hl, wDexVirtualOAMDexNoCopy
 	ld d, 6
+	ld a, [wPokedex_DisplayMode]
+	sub DEXDISP_BIO
+	jr nc, .dexno_y_loop
 	ld a, [wPokedexOAM_IsCaught]
 	and a
 	jr z, .dexno_y_loop
@@ -156,6 +159,9 @@ Pokedex_RefreshScreen:
 	ld [hli], a
 	ld a, 1
 	ld [hli], a
+	ld a, [wPokedex_DisplayMode]
+	sub DEXDISP_BIO
+	jr nc, .indicator_oam
 	ld a, [wPokedexOAM_IsCaught]
 	and a
 	jr z, .indicator_oam
