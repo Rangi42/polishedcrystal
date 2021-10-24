@@ -371,185 +371,70 @@ Pokedex_ChangeForm:
 	ret
 
 Pokedex_PrevPageMon:
-	ld a, BANK(wDexMons)
-	call StackCallInWRAMBankA
-.Function:
-	call Pokedex_GetCursorSpecies
-	dec hl
-	ld a, h
-	cpl
-	ld b, a
-	ld a, l
-	cpl
-	ld c, a
-	inc bc
-	ld de, $ffff ^ wDexMons + 1
-	push hl
-	add hl, de
-	ld d, h
-	ld e, l
-	pop hl
-	srl d
-	rr e
-.seek_loop
-	dec de
-	bit 7, d
-	ret nz
-	dec hl
-	dec hl
-	ld a, [hl]
-	and a
-	jr z, .seek_loop
-	ld a, [wPokedex_DisplayMode]
-	cp DEXDISP_BIO
-	jr c, .got_mon
-	inc hl
-	ld a, [hld]
-	bit 7, a
-	jr z, .seek_loop
-.got_mon
-	add hl, bc
-	ld a, h
-	cpl
-	ld h, a
-	ld a, l
-	cpl
-	ld l, a
-	inc hl
-	ld bc, -10
-	ld de, wPokedex_CursorPos
-.cursor_row_loop
-	add hl, bc
-	jr nc, .done_row
-	call .adjust_row
-	jr .cursor_row_loop
-.done_row
-	ld bc, 10
-	add hl, bc
-	ld bc, -2
-.cursor_col_loop
-	add hl, bc
-	jr nc, .done
-	ld a, [de]
-	and $f
-	jr nz, .no_adjust
-	call .adjust_row
-	ld a, [de]
-	and $f0
-	add 4
-	ld [de], a
-	jr .cursor_col_loop
-.no_adjust
-	ld a, [de]
-	dec a
-	ld [de], a
-	jr .cursor_col_loop
-.done
-	xor a
-	ret
-
-.adjust_row
-	ld a, [de]
-	sub $10
-	ld [de], a
-	ret nc
-	add $10
-	ld [de], a
-	inc de
-	ld a, [de]
-	dec a
-	ld [de], a
-	dec de
-	ret
+	ld a, -1
+	jr Pokedex_ScrollPageMon
 
 Pokedex_NextPageMon:
-	ld a, BANK(wDexMons)
-	call StackCallInWRAMBankA
-.Function:
-	call Pokedex_GetCursorSpecies
+	ld a, 1
+	; fallthrough
+Pokedex_ScrollPageMon:
+; Scroll the cursor until we find a species (caught-only for certain pages), or
+; until we reach the end.
+	; Back up current position and offset, in case we are at the beginning/end.
+	ld hl, wPokedex_Offset
+	ld c, [hl]
 	dec hl
-	ld a, h
-	cpl
-	ld b, a
-	ld a, l
-	cpl
-	ld c, a
-	inc bc
-	push hl
-	ld hl, wDexMonsEnd - 2
-	add hl, bc
-	ld d, h
-	ld e, l
-	pop hl
-	srl d
-	rr e
-.seek_loop
-	dec de
-	bit 7, d
-	ret nz
-	inc hl
-	inc hl
-	ld a, [hl]
+	ld b, [hl]
+	ld e, b
+
+	; Scroll the dex cursor
+.loop
+	push af
+	push bc
+	ld d, 1
+	push de
+	call Pokedex_SetCursorMon
+	pop de
+
+	; Check if the cursor changed
+	ld a, [wPokedex_CursorPos]
+	cp e
+	jr z, .scroll_failed
+	ld e, a
+
+	; Check if we found a valid species
+	call Pokedex_GetCursorSpecies
+	bit MON_CAUGHT_F, b
+	jr nz, .found_species
 	and a
-	jr z, .seek_loop
+	jr z, .next
 	ld a, [wPokedex_DisplayMode]
 	cp DEXDISP_BIO
-	jr c, .got_mon
-	inc hl
-	ld a, [hld]
-	bit 7, a
-	jr z, .seek_loop
-.got_mon
-	add hl, bc
-	ld bc, -10
-	ld de, wPokedex_CursorPos
-.cursor_row_loop
-	add hl, bc
-	jr nc, .done_row
-	call .adjust_row
-	jr .cursor_row_loop
-.done_row
-	ld bc, 10
-	add hl, bc
-	ld bc, -2
-.cursor_col_loop
-	add hl, bc
-	jr nc, .done
-	ld a, [de]
-	and $f
-	cp 4
-	jr c, .no_adjust
-	call .adjust_row
-	ld a, [de]
-	and $f0
-	ld [de], a
-	jr .cursor_col_loop
-.no_adjust
-	ld a, [de]
-	inc a
-	ld [de], a
-	jr .cursor_col_loop
-.done
+	jr nc, .next
+
+.found_species
+	pop bc
+	pop af
 	xor a
 	ret
 
-.adjust_row
-	ld a, [de]
-	add $10
-	ld [de], a
-	cp $30
-	ret c
-	sub $10
-	ld [de], a
-	inc de
-	ld a, [de]
-	inc a
-	ld [de], a
-	dec de
+.next
+	pop bc
+	pop af
+	jr .loop
+
+.scroll_failed
+	pop bc
+	ld hl, wPokedex_Offset
+	ld [hl], c
+	dec hl
+	ld [hl], b
+	pop af
+	or 1
 	ret
 
 Pokedex_GetCursorSpecies:
-; Returns species in c, form+ext in b that cursor is hovering.
+; Returns species in c and a, form+ext in b that cursor is hovering.
 	ld a, BANK(wDexMons)
 	call StackCallInWRAMBankA
 .Function:
@@ -621,6 +506,12 @@ Pokedex_MainLoop:
 	ld a, $10
 	; fallthrough
 .fixcursor
+	ld d, 0
+	call Pokedex_SetCursorMon
+	jr .loop
+
+Pokedex_SetCursorMon:
+; Changes the cursor location based on a. If d==1, skip display updates.
 	ld hl, wPokedex_Offset
 	ld c, [hl]
 	assert wPokedex_Offset - 1 == wPokedex_CursorPos
@@ -636,6 +527,9 @@ Pokedex_MainLoop:
 	ld a, b
 	jr nc, .fixcursor_loop
 	pop bc
+	ld a, d
+	and a
+	ret nz
 	ld a, [hli]
 	cp b
 	jr nz, .changed
@@ -643,7 +537,7 @@ Pokedex_MainLoop:
 	cp c
 .changed
 	call nz, Pokedex_GetCursorMon
-	jr .loop
+	ret
 
 .CursorPosValid:
 	; If we can't go further up or down, don't do anything.
@@ -654,7 +548,7 @@ Pokedex_MainLoop:
 	ld [hl], a
 	push hl
 	ld b, 0
-	call .SwitchRow ; Returns a=0 c|z upon failure.
+	call .SwitchRow ; Returns c upon failure.
 	pop hl
 	jr nc, .not_going_downwards
 	ld [hl], 0
@@ -733,6 +627,10 @@ Pokedex_MainLoop:
 	ret z
 	dec [hl]
 
+	xor a
+	bit 0, d
+	ret nz
+
 	; Shift current row information around.
 	ld de, wDexRow1Tile
 	ld hl, wDexRow2Tile
@@ -753,6 +651,7 @@ Pokedex_MainLoop:
 	ld c, b
 	call Pokedex_UpdateRow
 	xor a
+	ld d, a
 	ret
 
 Pokedex_UpdateRow:
