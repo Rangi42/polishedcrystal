@@ -1833,7 +1833,7 @@ _Pokedex_Stats:
 	ld [hli], a
 
 .vbank_1
-	call Pokedex_ScheduleScreenUpdate
+	call Pokedex_RefreshScreen
 	ld a, $84
 	ld de, PHB_BioStatsSwitchSCY
 	call Pokedex_SetHBlankFunction

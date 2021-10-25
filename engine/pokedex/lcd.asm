@@ -232,6 +232,16 @@ Pokedex_SetHBlankFunctionToRow1:
 	ld de, PHB_Row1
 	; fallthrough
 Pokedex_SetHBlankFunction:
+	; Don't run this 1 scanline before the LYC to be set.
+	push de
+	ld d, a
+.loop
+	ldh a, [rLY]
+	sub d
+	inc a ; LY - a + 1 == 0 means 1 scanline above intended LYC
+	jr z, .loop
+	ld a, d
+	pop de
 	ldh [rLYC], a
 	ld a, e
 	ld [wPokedex_HBlankFunction], a
