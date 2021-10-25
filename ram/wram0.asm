@@ -702,6 +702,7 @@ wPokedex_NumSeen:: dw
 wPokedex_NumOwned:: dw
 wPokedex_CursorPos:: db
 wPokedex_Offset:: db
+wPokedex_FirstIconTile:: db
 UNION
 wPokedex_Rows:: db
 wPokedex_LastCol:: db ; 1-5 in case the final row isn't completely filled

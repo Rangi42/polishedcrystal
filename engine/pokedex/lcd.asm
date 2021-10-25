@@ -575,13 +575,28 @@ PVB_UpdateDexMap::
 	call GDMACopy
 
 .pokeinfo_done
+	ld a, 1
+	ldh [rVBK], a
 	bit DEXGFX_ICONSHAPE, [hl]
 	res DEXGFX_ICONSHAPE, [hl]
 	jr z, .iconshape_done
-	ld a, 1
-	ldh [rVBK], a
+
+	ld a, [wPokedex_MonInfoBank]
+	rlca
+	rlca
+	rlca
+	ld c, a
+	ld a, [wPokedex_FirstIconTile]
+	add c
+	swap a
+	ld c, a
+	and $f
+	add HIGH(vTiles4)
+	ld b, a
+	ld a, c
+	and $f0
+	ld c, a ; ld bc, vTiles4 tile (wPokedex_FirstIconTile + wPokedex_MonInfoBank * 8)
 	ld de, wDexMonIconTiles
-	ld bc, vTiles2 tile $38
 	ld a, 7
 	call GDMACopy
 
@@ -590,8 +605,6 @@ PVB_UpdateDexMap::
 	res DEXGFX_ROWTILES, [hl]
 	jr z, .done
 
-	ld a, 1
-	ldh [rVBK], a
 	push hl
 	ld hl, wDexRowTilesDest
 	ld a, [hli]

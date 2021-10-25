@@ -53,6 +53,9 @@ SavePatches:
 	dw ConvertPokerusToNybble
 
 	dh 8
+	dw RemovePartySpecies
+
+	dh 8
 	dw ShiftHiddenGrottoContents
 
 	dh 0

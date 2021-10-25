@@ -282,6 +282,54 @@ Pokedex_LoadTilemapWithPokepic:
 	jr nz, .outer_loop
 	ret
 
+Pokedex_LoadTilemapWithIconAndForm:
+	ld a, BANK(wDexTilemap)
+	call StackCallInWRAMBankA
+.Function:
+	ld de, wDexTilemap
+	ld a, BANK(DexTilemaps)
+	call FarDecompressToDE
+
+	ld b, DEXTILE_FROM_DEXMAP
+	call Pokedex_SetTilemap
+
+	ld a, [wPokedex_MonInfoBank]
+	rlca
+	rlca
+	rlca
+	ld b, a
+	ld a, [wPokedex_FirstIconTile]
+	add b ; wPokedex_FirstIconTile + wPokedex_MonInfoBank * 8
+	xor $80
+
+	hlcoord 1, 1
+	ld [hli], a
+	inc a
+	ld [hl], a
+	inc a
+	hlcoord 1, 2
+	ld [hli], a
+	inc a
+	ld [hl], a
+
+	ld b, a
+	ld a, [wPokedex_DisplayMode]
+	cp DEXDISP_STATS ; stats page shouldn't display shape
+	ret nc
+
+	ld a, b
+	inc a
+	hlcoord 18, 2
+	ld [hli], a
+	inc a
+	ld [hl], a
+	inc a
+	hlcoord 18, 3
+	ld [hli], a
+	inc a
+	ld [hl], a
+	ret
+
 Pokedex_ChangeForm:
 ; ret c if no alternate form is found
 	call Pokedex_GetCursorSpecies
@@ -426,8 +474,8 @@ Pokedex_ScrollPageMon:
 .scroll_failed
 	pop bc
 	ld hl, wPokedex_Offset
-	ld [hl], c
-	dec hl
+	ld a, c
+	ld [hld], a
 	ld [hl], b
 	pop af
 	or 1
@@ -662,11 +710,11 @@ Pokedex_UpdateRow:
 	; Set sprite offset.
 	ld a, DEXPOS_ICONTILE_OFFSET
 	ld b, 1 ; the first column is part of BG, not OAM.
-	call .GetPosData
+	call Pokedex_GetPosData
 	ld e, l
 	dec b
 	ld a, DEXPOS_PALCOPY
-	call .GetPosData
+	call Pokedex_GetPosData
 	dec hl
 	ld [hl], e
 	ld a, e
@@ -676,10 +724,10 @@ Pokedex_UpdateRow:
 
 	; Set up the VWF tilemap row with the proper tiles+attributes.
 	ld a, DEXPOS_TILEMAP
-	call .GetPosData
+	call Pokedex_GetPosData
 	push hl
 	ld a, DEXPOS_VWFTILE_OFFSET
-	call .GetPosData
+	call Pokedex_GetPosData
 	ld a, l
 	pop hl
 	ld d, 18
@@ -731,10 +779,10 @@ Pokedex_UpdateRow:
 .loop3
 	; Get mini palette and check species for this position.
 	ld a, DEXPOS_PALCOPY
-	call .GetPosData
+	call Pokedex_GetPosData
 	push hl
 	ld a, DEXPOS_MONS
-	call .GetPosData
+	call Pokedex_GetPosData
 	ld a, [hli]
 	and a
 	jr nz, .got_species
@@ -833,7 +881,7 @@ Pokedex_UpdateRow:
 	pop bc
 	push af
 	ld a, DEXPOS_ICON_TILES
-	call .GetPosData
+	call Pokedex_GetPosData
 	call SwapHLDE
 	pop af
 	push af
@@ -850,7 +898,7 @@ Pokedex_UpdateRow:
 	ld a, "@"
 	ld [de], a
 	ld a, DEXPOS_VWF_TILES
-	call .GetPosData
+	call Pokedex_GetPosData
 	pop af
 	ld d, 0
 	jr nz, .got_vwf_transparency
@@ -871,7 +919,7 @@ Pokedex_UpdateRow:
 	jmp nz, .loop3
 	ld b, 0
 	ld a, DEXPOS_VWF_VTILES
-	call .GetPosData
+	call Pokedex_GetPosData
 	ld de, wDexRowTilesDest
 	ld a, l
 	ld [de], a
@@ -880,7 +928,7 @@ Pokedex_UpdateRow:
 	ld [de], a
 	inc de
 	ld a, DEXPOS_ICON_VTILES
-	call .GetPosData
+	call Pokedex_GetPosData
 	ld a, l
 	ld [de], a
 	inc de
@@ -924,15 +972,10 @@ Pokedex_UpdateRow:
 ; TODO: When we have search modes, we want to check based on wDexMons.
 	ld a, DEXPOS_DEXNO
 	; fallthrough
-.GetPosData:
+Pokedex_GetPosData:
 ; Sets hl to a pointer offset, or value, depending on position data type in a.
 ; Takes row in c and column in b as input (0-indexed).
 	push bc
-	call .do_pos_data
-	pop bc
-	ret
-
-.do_pos_data
 	cp DEXPOS_TILEMAP
 	jr nc, .got_row
 
@@ -968,6 +1011,7 @@ Pokedex_UpdateRow:
 	ld h, d
 	ld l, e
 	pop de
+	pop bc
 	ret
 
 .AddWordNTimesToDE:
@@ -1001,11 +1045,33 @@ Pokedex_UpdateRow:
 	dw wAttrMap + 9 * SCREEN_WIDTH + 1, SCREEN_WIDTH * 3, 4
 	dw wDexPalCopy + 1, 6 * 5 + 1, 6
 
+Pokedex_GetFirstIconTile:
+; Get first icon tile number in wPokedex_FirstIconTile
+	lb bc, 0, 3
+	ld a, DEXPOS_ICONTILE_OFFSET
+	call Pokedex_GetPosData
+	ld a, l
+	ld [wPokedex_FirstIconTile], a
+	ret
+
 PokedexStr_Feet:
 ; Feet uses its own pelicular display format, so replace the ?s too.
 	db "′??″@"
 
 Pokedex_Description:
+	; Get tile number for icon/shape
+	call Pokedex_GetFirstIconTile
+
+	; Load icon/shape into memory
+	ld a, DEXDISP_DESC
+	ld [wPokedex_DisplayMode], a
+	call Pokedex_GetCursorMon
+
+_Pokedex_Description:
+	; Set display mode again here, in case we begin execution here
+	ld a, DEXDISP_DESC
+	ld [wPokedex_DisplayMode], a
+
 	; Move the dex number display.
 	ld a, 17
 	ld [wPokedexOAM_DexNoX], a
@@ -1016,8 +1082,6 @@ Pokedex_Description:
 	ld hl, DexTilemap_Description
 	call Pokedex_LoadTilemapWithPokepic
 
-	ld a, DEXDISP_DESC
-	ld [wPokedex_DisplayMode], a
 	ld de, wStringBuffer1
 	hlcoord 9, 1
 	call PlaceString
@@ -1050,7 +1114,7 @@ Pokedex_Description:
 	push af
 	push af
 	push af
-	jmp .sel_shiny
+	jmp .footprint_bank
 
 .mon_caught
 	call GetSpeciesAndFormIndex
@@ -1206,6 +1270,7 @@ endr
 	; At this point, we have pointers to the dex pages stored on the stack along
 	; with the bank. This is used if we want to switch page.
 
+.footprint_bank
 	; Type and footprint should use correct vram bank
 	ld a, [wPokedex_MonInfoBank]
 	and a
@@ -1312,7 +1377,7 @@ endr
 	rrca
 	jr c, .pressed_a
 	rrca
-	jmp c, .info_done ; pressed b
+	jmp c, .pressed_b
 	rrca
 	jr c, .pressed_select
 	rrca
@@ -1329,8 +1394,8 @@ endr
 
 .pressed_a
 	; print other page description
-	call Pokedex_GetCursorSpecies
-	bit MON_CAUGHT_F, b
+	ld a, [wPokedexOAM_IsCaught]
+	and a
 	jr z, .joypad_loop
 	lb bc, 5, 19
 	hlcoord 1, 12
@@ -1387,12 +1452,11 @@ endr
 	pop af
 	pop hl
 	pop hl
-	call Pokedex_GetCursorMon
 	jmp Pokedex_Description
 
 .pressed_right
-	call Pokedex_GetCursorSpecies
-	bit MON_CAUGHT_F, b
+	ld a, [wPokedexOAM_IsCaught]
+	and a
 	jr z, .pressed_left
 	pop af
 	pop hl
@@ -1400,23 +1464,19 @@ endr
 	jr Pokedex_Bio
 
  .pressed_left
-	pop af
-	pop hl
-	pop hl
+	jmp .joypad_loop
+	; pop af
+	; pop hl
+	; pop hl
 	; jmp Pokedex_Area
-	jmp Pokedex_Description
 
 .pressed_start
 	; cycle form (if applicable)
 	call Pokedex_ChangeForm
 	jmp c, .joypad_loop
-	pop af
-	pop hl
-	pop hl
-	call Pokedex_GetCursorMon
-	jmp Pokedex_Description
+	jr .reload_page
 
-.info_done
+.pressed_b
 	pop af
 	pop hl
 	pop hl
@@ -1435,6 +1495,18 @@ Pokedex_Main:
 	hlcoord 9, 2
 	call PlaceString
 
+	ld a, [wPokedex_MonInfoBank]
+	and a
+	jr nz, .vram_bank_1
+	xor a
+	hlcoord 18, 3, wAttrMap
+	ld [hli], a
+	ld [hl], a
+	hlcoord 18, 4, wAttrMap
+	ld [hli], a
+	ld [hl], a
+
+.vram_bank_1
 	xor a
 	ld [wPokedex_DisplayMode], a
 
@@ -1462,17 +1534,18 @@ Pokedex_Main:
 	jmp Pokedex_SetHBlankFunctionToRow1
 
 Pokedex_Bio:
+	ld a, DEXDISP_BIO
+	ld [wPokedex_DisplayMode], a
+
 	; Load the bio tilemap.
 	ld hl, DexTilemap_Bio
-	call Pokedex_LoadTilemap
+	call Pokedex_LoadTilemapWithIconAndForm
 
 	ld a, 117
 	ld [wPokedexOAM_DexNoX], a
 	ld a, 20
 	ld [wPokedexOAM_DexNoY], a
 
-	ld a, DEXDISP_BIO
-	ld [wPokedex_DisplayMode], a
 	ld de, wStringBuffer1
 	hlcoord 4, 1
 	call PlaceString
@@ -1631,7 +1704,7 @@ Pokedex_Bio:
 	rrca
 	jmp c, Pokedex_Stats
 	rrca
-	jmp c, Pokedex_Description
+	jmp c, _Pokedex_Description
 	rrca
 	jr c, .pressed_up
 	rrca
@@ -1646,11 +1719,13 @@ Pokedex_Bio:
 .pressed_up
 	call Pokedex_PrevPageMon
 	jr nz, .joypad_loop
-	jr .reload_page
+	jr .reload_position
 
 .pressed_down
 	call Pokedex_NextPageMon
 	jr nz, .joypad_loop
+.reload_position
+	call Pokedex_GetFirstIconTile
 .reload_page
 	call Pokedex_GetCursorMon
 	jmp Pokedex_Bio
@@ -1688,17 +1763,18 @@ Pokedex_Stats:
 	xor a
 	ldh [hPokedexStatsCurAbil], a
 _Pokedex_Stats:
+	ld a, DEXDISP_STATS
+	ld [wPokedex_DisplayMode], a
+
 	; Load the stats tilemap.
 	ld hl, DexTilemap_Stats
-	call Pokedex_LoadTilemap
+	call Pokedex_LoadTilemapWithIconAndForm
 
 	ld a, 117
 	ld [wPokedexOAM_DexNoX], a
 	ld a, 20
 	ld [wPokedexOAM_DexNoY], a
 
-	ld a, DEXDISP_STATS
-	ld [wPokedex_DisplayMode], a
 	ld de, wStringBuffer1
 	hlcoord 4, 1
 	call PlaceString
@@ -1866,11 +1942,13 @@ _Pokedex_Stats:
 .pressed_up
 	call Pokedex_PrevPageMon
 	jr nz, .joypad_loop
-	jr .reload_page
+	jr .reload_position
 
 .pressed_down
 	call Pokedex_NextPageMon
 	jr nz, .joypad_loop
+.reload_position
+	call Pokedex_GetFirstIconTile
 .reload_page
 	call Pokedex_GetCursorMon
 	jmp _Pokedex_Stats
