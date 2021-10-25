@@ -37,10 +37,10 @@ ENDM
 	fishentry  35 percent,     MAGIKARP,   20
 	fishentry  70 percent,     KRABBY,     20
 	fishentry  90 percent + 1, KRABBY,     20
-	fishentry 100 percent,     0,  0
+	fishentry 100 percent,     0,  0          ; corsola morn/day, staryu at night
 .Shore_Super:
 	fishentry  40 percent,     KRABBY,     40
-	fishentry  70 percent,     0,  1
+	fishentry  70 percent,     0,  1          ; corsola morn/day, staryu at night
 	fishentry  90 percent + 1, KRABBY,     40
 	fishentry 100 percent,     KINGLER,    40
 
@@ -52,10 +52,10 @@ ENDM
 	fishentry  35 percent,     MAGIKARP,   20
 	fishentry  70 percent,     TENTACOOL,  20
 	fishentry  90 percent + 1, CHINCHOU,   20
-	fishentry 100 percent,     0,  2
+	fishentry 100 percent,     SHELLDER,   20
 .Ocean_Super:
 	fishentry  40 percent,     CHINCHOU,   40
-	fishentry  70 percent,     0,  3
+	fishentry  70 percent,     SHELLDER,   40
 	fishentry  90 percent + 1, TENTACRUEL, 40
 	fishentry 100 percent,     LANTURN,    40
 
@@ -67,10 +67,10 @@ ENDM
 	fishentry  35 percent,     MAGIKARP,   20
 	fishentry  70 percent,     GOLDEEN,    20
 	fishentry  90 percent + 1, GOLDEEN,    20
-	fishentry 100 percent,     0,  4
+	fishentry 100 percent,     GOLDEEN,    20
 .Lake_Super:
 	fishentry  40 percent,     GOLDEEN,    40
-	fishentry  70 percent,     0,  5
+	fishentry  70 percent,     GOLDEEN,    40
 	fishentry  90 percent + 1, MAGIKARP,   40
 	fishentry 100 percent,     SEAKING,    40
 
@@ -82,10 +82,10 @@ ENDM
 	fishentry  35 percent,     MAGIKARP,   20
 	fishentry  70 percent,     POLIWAG,    20
 	fishentry  90 percent + 1, POLIWAG,    20
-	fishentry 100 percent,     0,  6
+	fishentry 100 percent,     POLIWAG,    20
 .Pond_Super:
 	fishentry  40 percent,     POLIWAG,    40
-	fishentry  70 percent,     0,  7
+	fishentry  70 percent,     POLIWAG,    40
 	fishentry  90 percent + 1, MAGIKARP,   40
 	fishentry 100 percent,     POLIWAG,    40
 
@@ -97,10 +97,10 @@ ENDM
 	fishentry  35 percent,     MAGIKARP,   20
 	fishentry  70 percent,     MAGIKARP,   20
 	fishentry  90 percent + 1, MAGIKARP,   20
-	fishentry 100 percent,     0,  8
+	fishentry 100 percent,     DRATINI,    20
 .Dratini_Super:
 	fishentry  40 percent,     MAGIKARP,   40
-	fishentry  70 percent,     0,  9
+	fishentry  70 percent,     DRATINI,    40
 	fishentry  90 percent + 1, MAGIKARP,   40
 	fishentry 100 percent,     DRAGONAIR,  40
 
@@ -112,10 +112,10 @@ ENDM
 	fishentry  35 percent,     MAGIKARP,   20
 	fishentry  70 percent,     QWILFISH,   20
 	fishentry  90 percent + 1, QWILFISH,   20
-	fishentry 100 percent,     0,  10
+	fishentry 100 percent,     QWILFISH,   20
 .Qwilfish_Swarm_Super:
 	fishentry  40 percent,     QWILFISH,   40
-	fishentry  70 percent,     0,  11
+	fishentry  70 percent,     QWILFISH,   40
 	fishentry  90 percent + 1, QWILFISH,   40
 	fishentry 100 percent,     QWILFISH,   40
 
@@ -127,10 +127,10 @@ ENDM
 	fishentry  35 percent,     MAGIKARP,   20
 	fishentry  70 percent,     REMORAID,   20
 	fishentry  90 percent + 1, REMORAID,   20
-	fishentry 100 percent,     0,  12
+	fishentry 100 percent,     REMORAID,   20
 .Remoraid_Swarm_Super:
 	fishentry  40 percent,     REMORAID,   40
-	fishentry  70 percent,     0,  13
+	fishentry  70 percent,     REMORAID,   40
 	fishentry  90 percent + 1, REMORAID,   40
 	fishentry 100 percent,     REMORAID,   40
 
@@ -142,10 +142,10 @@ ENDM
 	fishentry  35 percent,     MAGIKARP,   20
 	fishentry  70 percent,     MAGIKARP,   20
 	fishentry  90 percent + 1, MAGIKARP,   20
-	fishentry 100 percent,     0,  14
+	fishentry 100 percent,     GYARADOS,   20
 .Gyarados_Super:
 	fishentry  40 percent,     MAGIKARP,   40
-	fishentry  70 percent,     0,  15
+	fishentry  70 percent,     GYARADOS,   40
 	fishentry  90 percent + 1, MAGIKARP,   40
 	fishentry 100 percent,     MAGIKARP,   40
 
@@ -157,10 +157,10 @@ ENDM
 	fishentry  35 percent,     MAGIKARP,   10
 	fishentry  70 percent,     MAGIKARP,   10
 	fishentry  90 percent + 1, MAGIKARP,   10
-	fishentry 100 percent,     0,  16
+	fishentry 100 percent,     DRATINI,    10
 .Dratini_2_Super:
 	fishentry  40 percent,     MAGIKARP,   10
-	fishentry  70 percent,     0,  17
+	fishentry  70 percent,     DRATINI,    10
 	fishentry  90 percent + 1, MAGIKARP,   10
 	fishentry 100 percent,     DRAGONAIR,  10
 
@@ -172,10 +172,10 @@ ENDM
 	fishentry  35 percent,     MAGIKARP,   20
 	fishentry  70 percent,     KRABBY,     20
 	fishentry  90 percent + 1, KRABBY,     20
-	fishentry 100 percent,     0,  18
+	fishentry 100 percent,     HORSEA,     20
 .WhirlIslands_Super:
 	fishentry  40 percent,     KRABBY,     40
-	fishentry  70 percent,     0,  19
+	fishentry  70 percent,     HORSEA,     40
 	fishentry  90 percent + 1, KINGLER,    40
 	fishentry 100 percent,     SEADRA,     40
 
@@ -189,11 +189,11 @@ ENDM
 	fishentry  35 percent,     MAGIKARP,   20
 	fishentry  70 percent,     TENTACOOL,  20
 	fishentry  90 percent + 1, TENTACOOL,  20
-	fishentry 100 percent,     0,  20
+	fishentry 100 percent,     TENTACOOL,  20
 .Qwilfish_NoSwarm_Super:
 .Qwilfish_Super:
 	fishentry  40 percent,     TENTACOOL,  40
-	fishentry  70 percent,     0,  21
+	fishentry  70 percent,     TENTACOOL,  40
 	fishentry  90 percent + 1, MAGIKARP,   40
 	fishentry 100 percent,     QWILFISH,   40
 
@@ -205,10 +205,10 @@ ENDM
 	fishentry  35 percent,     MAGIKARP,   20
 	fishentry  70 percent,     POLIWAG,    20
 	fishentry  90 percent + 1, POLIWAG,    20
-	fishentry 100 percent,     0,  6
+	fishentry 100 percent,     POLIWAG,    20
 .Remoraid_Super:
 	fishentry  40 percent,     POLIWAG,    40
-	fishentry  70 percent,     0,  7
+	fishentry  70 percent,     POLIWAG,    40
 	fishentry  90 percent + 1, MAGIKARP,   40
 	fishentry 100 percent,     REMORAID,   40
 
@@ -223,26 +223,6 @@ TimeFishGroups:
 	; day, night
 	timedfishgroup CORSOLA,    20, STARYU,     20
 	timedfishgroup CORSOLA,    40, STARYU,     40
-	timedfishgroup SHELLDER,   20, SHELLDER,   20
-	timedfishgroup SHELLDER,   40, SHELLDER,   40
-	timedfishgroup GOLDEEN,    20, GOLDEEN,    20
-	timedfishgroup GOLDEEN,    40, GOLDEEN,    40
-	timedfishgroup POLIWAG,    20, POLIWAG,    20
-	timedfishgroup POLIWAG,    40, POLIWAG,    40
-	timedfishgroup DRATINI,    20, DRATINI,    20
-	timedfishgroup DRATINI,    40, DRATINI,    40
-	timedfishgroup QWILFISH,   20, QWILFISH,   20
-	timedfishgroup QWILFISH,   40, QWILFISH,   40
-	timedfishgroup REMORAID,   20, REMORAID,   20
-	timedfishgroup REMORAID,   40, REMORAID,   40
-	timedfishgroup GYARADOS,   20, GYARADOS,   20
-	timedfishgroup GYARADOS,   40, GYARADOS,   40
-	timedfishgroup DRATINI,    10, DRATINI,    10
-	timedfishgroup DRATINI,    10, DRATINI,    10
-	timedfishgroup HORSEA,     20, HORSEA,     20
-	timedfishgroup HORSEA,     40, HORSEA,     40
-	timedfishgroup TENTACOOL,  20, TENTACOOL,  20
-	timedfishgroup TENTACOOL,  40, TENTACOOL,  40
 
 FishItems:
 	db PEARL
