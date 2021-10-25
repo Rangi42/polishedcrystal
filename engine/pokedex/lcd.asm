@@ -242,6 +242,10 @@ Pokedex_SetHBlankFunction:
 	jr z, .loop
 	ld a, d
 	pop de
+	; fallthrough
+Pokedex_UnsafeSetHBlankFunction:
+; Can be used by H-blank functions for sequential triggers, since those use
+; consisten timings and don't require the error-checking.
 	ldh [rLYC], a
 	ld a, e
 	ld [wPokedex_HBlankFunction], a
@@ -294,7 +298,7 @@ PHB_BioStatsSwitchSCY:
 	ldh [rSCY], a
 	ld a, $87
 	ld de, _PHB_BioStatsSwitchSCY
-	call Pokedex_SetHBlankFunction
+	call Pokedex_UnsafeSetHBlankFunction
 	jmp PopBCDEHL
 
 _PHB_BioStatsSwitchSCY:
@@ -309,7 +313,7 @@ _PHB_BioStatsSwitchSCY:
 	ldh [rSCY], a
 	ld a, $84
 	ld de, PHB_BioStatsSwitchSCY
-	call Pokedex_SetHBlankFunction
+	call Pokedex_UnsafeSetHBlankFunction
 	jmp PopBCDEHL
 
 PHB_Row1:
@@ -322,7 +326,7 @@ PHB_Row1:
 
 	ld a, $57
 	ld de, PHB_Row2
-	call Pokedex_SetHBlankFunction
+	call Pokedex_UnsafeSetHBlankFunction
 	jmp PopBCDEHL
 
 PHB_Row2:
@@ -335,7 +339,7 @@ PHB_Row2:
 
 	ld a, $6f
 	ld de, PHB_Row3
-	call Pokedex_SetHBlankFunction
+	call Pokedex_UnsafeSetHBlankFunction
 	jmp PopBCDEHL
 
 PHB_Row3:
