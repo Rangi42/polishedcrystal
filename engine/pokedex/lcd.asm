@@ -597,6 +597,8 @@ PVB_UpdateDexMap::
 	and a
 	jp z, .done
 	ldh [rLYC], a
+	xor a
+	ld [wPokedex_PendingLYC], a
 	ld hl, wPokedex_PendingHBlankFunction
 	ld de, wPokedex_HBlankFunction
 	ld a, [hli]
