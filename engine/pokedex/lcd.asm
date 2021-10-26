@@ -324,9 +324,9 @@ PHB_SearchSwitchSCY:
 	ldh a, [rSTAT]
 	and %11
 	jr nz, .busyloop
-	ld a, 3
+	ld a, 8
 	ldh [rSCY], a
-	ld a, $3
+	ld a, $88
 	ld de, PHB_SearchSwitchSCY2
 	call Pokedex_UnsafeSetHBlankFunction
 	jmp PopBCDEHL
@@ -339,9 +339,9 @@ PHB_SearchSwitchSCY2:
 	ldh a, [rSTAT]
 	and %11
 	jr nz, .busyloop
-	ld a, 4
+	ld a, -8
 	ldh [rSCY], a
-	ld a, $f
+	ld a, $8b
 	ld de, PHB_SearchSwitchSCY3
 	call Pokedex_UnsafeSetHBlankFunction
 	jmp PopBCDEHL
@@ -354,39 +354,9 @@ PHB_SearchSwitchSCY3:
 	ldh a, [rSTAT]
 	and %11
 	jr nz, .busyloop
-	ld a, 8
-	ldh [rSCY], a
-	ld a, $88
-	ld de, PHB_SearchSwitchSCY4
-	call Pokedex_UnsafeSetHBlankFunction
-	jmp PopBCDEHL
-
-PHB_SearchSwitchSCY4:
-	push hl
-	push de
-	push bc
-.busyloop
-	ldh a, [rSTAT]
-	and %11
-	jr nz, .busyloop
-	ld a, -8
-	ldh [rSCY], a
-	ld a, $8b
-	ld de, PHB_SearchSwitchSCY5
-	call Pokedex_UnsafeSetHBlankFunction
-	jmp PopBCDEHL
-
-PHB_SearchSwitchSCY5:
-	push hl
-	push de
-	push bc
-.busyloop
-	ldh a, [rSTAT]
-	and %11
-	jr nz, .busyloop
 	ld a, 4
 	ldh [rSCY], a
-	ld a, $2
+	ld a, $f
 	ld de, PHB_SearchSwitchSCY
 	call Pokedex_UnsafeSetHBlankFunction
 	jmp PopBCDEHL

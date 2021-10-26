@@ -84,7 +84,7 @@ Pokedex:
 	ldh [rVBK], a
 	ld de, wDex2bpp tile $40
 	ld hl, vTiles5 tile $18
-	lb bc, BANK(PokedexLZ), $20
+	lb bc, BANK(PokedexLZ), $22
 	call Get2bpp
 	xor a
 	ldh [rVBK], a
@@ -1998,8 +1998,28 @@ Pokedex_Search:
 	xor a
 	ld [wPokedexOAM_DexNoY], a
 
+	ldh a, [rSVBK]
+	ld b, a
+	ld a, BANK(wBGPals1)
+	ldh [rSVBK], a
+	ld hl, wBGPals1 palette 2
+	ld a, $5a
+	ld [hli], a
+	ld a, $19
+	ld [hli], a
+	xor a
+	ld [hli], a
+	ld [hli], a
+	ld [hli], a
+	ld [hli], a
+	dec a
+	ld [hli], a
+	ld [hli], a
+	ld a, b
+	ldh [rSVBK], a
+
 	call Pokedex_RefreshScreen
-	ld a, $2
+	ld a, $f
 	ld de, PHB_SearchSwitchSCY
 	call Pokedex_SetHBlankFunction
 
