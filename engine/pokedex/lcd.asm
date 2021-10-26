@@ -591,6 +591,19 @@ PVB_UpdateDexMap::
 	ld de, wPokedex_Pals
 	ld bc, wPokedex_PalsEnd - wPokedex_Pals
 	rst CopyBytes
+
+	; update HBlank trigger if applicable
+	ld a, [wPokedex_PendingLYC]
+	and a
+	jp z, .done
+	ldh [rLYC], a
+	ld hl, wPokedex_PendingHBlankFunction
+	ld de, wPokedex_HBlankFunction
+	ld a, [hli]
+	ld [de], a
+	inc de
+	ld a, [hl]
+	ld [de], a
 	jr .done
 
 .no_tilemap
