@@ -672,6 +672,10 @@ wPokedex_HBlankFunction:: dw ; ...(function to call)...
 wPokedex_HBlankFooter:: ds 5 ; ...restore backup, bankswitch back, pop af, reti
 wPokedex_HBlankCodeEnd::
 
+; For setting up a new HBlank trigger
+wPokedex_PendingLYC:: db
+wPokedex_PendingHBlankFunction:: dw
+
 wPokedex_Pals::
 wPokedex_Row1::
 wPokedex_Row1Tile: db ; Sprite offset for dex minis col 2-4

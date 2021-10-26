@@ -60,6 +60,7 @@ Pokedex:
 
 	xor a
 	ldh [hBGMapMode], a
+	ld [wPokedex_PendingLYC], a
 
 	; Set up tile graphics
 	ldh a, [rSVBK]
@@ -1367,10 +1368,9 @@ endr
 	pop af
 	ldh [rSVBK], a
 
-	call Pokedex_RefreshScreen
 	ld a, $57
 	ld de, PHB_DescSwitchSCY
-	call Pokedex_SetHBlankFunction
+	call Pokedex_ScheduleScreenUpdateWithHBlank
 
 .joypad_loop
 	call Pokedex_GetInput
@@ -1686,10 +1686,9 @@ Pokedex_Bio:
 	hlcoord 8, 16
 	call PlaceString
 
-	call Pokedex_RefreshScreen
 	ld a, $84
 	ld de, PHB_BioStatsSwitchSCY
-	call Pokedex_SetHBlankFunction
+	call Pokedex_ScheduleScreenUpdateWithHBlank
 
 .joypad_loop
 	call Pokedex_GetInput
@@ -1909,10 +1908,9 @@ _Pokedex_Stats:
 	ld [hli], a
 
 .vbank_1
-	call Pokedex_RefreshScreen
 	ld a, $84
 	ld de, PHB_BioStatsSwitchSCY
-	call Pokedex_SetHBlankFunction
+	call Pokedex_ScheduleScreenUpdateWithHBlank
 
 .joypad_loop
 	call Pokedex_GetInput
@@ -2047,10 +2045,9 @@ endc
 	ld a, b
 	ldh [rSVBK], a
 
-	call Pokedex_RefreshScreen
 	ld a, $f
 	ld de, PHB_SearchSwitchSCY
-	call Pokedex_SetHBlankFunction
+	call Pokedex_ScheduleScreenUpdateWithHBlank
 
 .joypad_loop
 	call Pokedex_GetInput
@@ -2635,8 +2632,18 @@ endr
 	; fallthrough
 Pokedex_ScheduleScreenUpdate:
 ; Schedules a screen refresh for the next Pokedex_GetInput.
+	xor a
+	; fallthrough
+Pokedex_ScheduleScreenUpdateWithHBlank:
 	ld hl, wPokedex_GFXFlags
 	set DEXGFX_DEFERRED, [hl]
+	and a
+	ret z
+	ld [wPokedex_PendingLYC], a
+	ld a, e
+	ld [wPokedex_PendingHBlankFunction], a
+	ld a, d
+	ld [wPokedex_PendingHBlankFunction + 1], a
 	ret
 
 Pokedex_CopyTypeIconPals:
