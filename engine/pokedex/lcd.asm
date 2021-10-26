@@ -227,10 +227,6 @@ Pokedex_RefreshScreen:
 	jr nz, .tilemap_delay
 	ret
 
-Pokedex_SetHBlankFunctionToRow1:
-	ld a, $3f
-	ld de, PHB_Row1
-	; fallthrough
 Pokedex_SetHBlankFunction:
 	; Don't run this 1 scanline before the LYC to be set.
 	push de
@@ -395,7 +391,9 @@ PHB_Row3:
 	ld d, 128
 	call PHB_LoadRow
 
-	call Pokedex_SetHBlankFunctionToRow1
+	ld a, $3f
+	ld de, PHB_Row1
+	call Pokedex_UnsafeSetHBlankFunction
 	jmp PopBCDEHL
 
 PHB_LoadRow:
@@ -597,6 +595,8 @@ PVB_UpdateDexMap::
 	and a
 	jp z, .done
 	ldh [rLYC], a
+	xor a
+	ld [wPokedex_PendingLYC], a
 	ld hl, wPokedex_PendingHBlankFunction
 	ld de, wPokedex_HBlankFunction
 	ld a, [hli]

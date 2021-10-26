@@ -137,6 +137,9 @@ Pokedex:
 	call Pokedex_GetCursorMonInVBK1
 	call Pokedex_Main
 
+	; Needs to be set up immediately during init.
+	call Pokedex_RefreshScreen
+
 	ld a, 1 << 6
 	ldh [rSTAT], a
 	ld hl, rIF
@@ -1530,8 +1533,9 @@ Pokedex_Main:
 	ld c, 2
 	call Pokedex_UpdateRow
 
-	call Pokedex_RefreshScreen
-	jmp Pokedex_SetHBlankFunctionToRow1
+	ld a, $3f
+	ld de, PHB_Row1
+	jmp Pokedex_ScheduleScreenUpdateWithHBlank
 
 Pokedex_Bio:
 	ld a, DEXDISP_BIO
