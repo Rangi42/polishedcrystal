@@ -712,6 +712,14 @@ ENDU
 wPokedex_GFXFlags:: db ; flags for various gfx update types
 wPokedex_DisplayMode:: db ; current pokédex display
 
+wPokedex_SearchData::
+wPokedex_SearchType1:: db
+wPokedex_SearchType2:: db
+wPokedex_SearchGroup1:: db
+wPokedex_SearchGroup2:: db
+wPokedex_SearchBody:: db
+wPokedex_SearchColor:: db
+wPokedex_SearchDataEnd::
 
 SECTION UNION "Misc 480", WRAM0
 ; trade
