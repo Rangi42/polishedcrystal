@@ -2013,7 +2013,7 @@ if DEF(NOIR)
 else
 	ld a, LOW(palred 26 + palgreen 10 + palblue 6)
 	ld [hli], a
-	ld a, HIGH(palred 36 + palgreen 10 + palblue 6)
+	ld a, HIGH(palred 26 + palgreen 10 + palblue 6)
 	ld [hli], a
 endc
 	; black
