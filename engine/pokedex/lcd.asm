@@ -142,7 +142,7 @@ Pokedex_RefreshScreen:
 	add e
 	add LOW(DexDisplayOAMData)
 	ld e, a
-	add HIGH(DexDisplayOAMData)
+	adc HIGH(DexDisplayOAMData)
 	sub e
 	ld d, a
 	ld hl, wVirtualOAMSprite00
