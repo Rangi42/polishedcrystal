@@ -1381,7 +1381,7 @@ endr
 	rrca
 	jr c, .pressed_select
 	rrca
-	jmp c, .pressed_start
+	jr c, .pressed_start
 	rrca
 	jr c, .pressed_right
 	rrca
@@ -2003,18 +2003,47 @@ Pokedex_Search:
 	ld a, BANK(wBGPals1)
 	ldh [rSVBK], a
 	ld hl, wBGPals1 palette 2
-	ld a, $5a
+if !DEF(MONOCHROME)
+	; red
+if DEF(NOIR)
+	ld a, LOW(palred 14 + palgreen 14 + palblue 14)
 	ld [hli], a
-	ld a, $19
+	ld a, HIGH(palred 14 + palgreen 14 + palblue 14)
 	ld [hli], a
+else
+	ld a, LOW(palred 26 + palgreen 10 + palblue 6)
+	ld [hli], a
+	ld a, HIGH(palred 36 + palgreen 10 + palblue 6)
+	ld [hli], a
+endc
+	; black
 	xor a
 	ld [hli], a
 	ld [hli], a
 	ld [hli], a
 	ld [hli], a
+	; white
 	dec a
 	ld [hli], a
+	ld [hl], a
+else
+	ld a, LOW(PAL_MONOCHROME_DARK)
 	ld [hli], a
+	ld a, HIGH(PAL_MONOCHROME_DARK)
+	ld [hli], a
+	ld a, LOW(PAL_MONOCHROME_BLACK)
+	ld [hli], a
+	ld a, HIGH(PAL_MONOCHROME_BLACK)
+	ld [hli], a
+	ld a, LOW(PAL_MONOCHROME_BLACK)
+	ld [hli], a
+	ld a, HIGH(PAL_MONOCHROME_BLACK)
+	ld [hli], a
+	ld a, LOW(PAL_MONOCHROME_WHITE)
+	ld [hli], a
+	ld a, HIGH(PAL_MONOCHROME_WHITE)
+	ld [hl], a
+endc
 	ld a, b
 	ldh [rSVBK], a
 
