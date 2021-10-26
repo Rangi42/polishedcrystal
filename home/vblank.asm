@@ -257,7 +257,45 @@ VBlank4::
 
 	ldh a, [hSeconds]
 	ldh [hSecondsBackup], a
-	jr VBlankUpdateSound
+
+	; A variant of sode in vblank1 for running the sound engine with LCD int
+	ldh a, [hROMBankBackup]
+	push af
+	ldh a, [rIE]
+	push af
+	ldh a, [rIF]
+	push af
+	xor a
+	ldh [rIF], a
+	ldh a, [rIE]
+	and 1 << LCD_STAT
+	ldh [rIE], a
+
+	ei
+	call VBlankUpdateSound
+	di
+
+	; get requested ints
+	ldh a, [rIF]
+	ld b, a
+
+	; discard requested ints
+	pop af
+	or b
+	ld b, a
+	xor a
+	ldh [rIF], a
+
+	; enable ints besides joypad
+	pop af
+	ldh [rIE], a
+
+	; rerequest ints
+	ld a, b
+	ldh [rIF], a
+	pop af
+	ldh [hROMBankBackup], a
+	ret
 
 VBlank1::
 ; scx, scy
