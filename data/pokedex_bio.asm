@@ -28,3 +28,29 @@ Slow:          db "Slow@"
 Slower:        db "Slower@"
 Slowest:       db "Slowest@"
 NotApplicable: db "N/A@"
+
+BodyColorNames:
+; entries correspond to colors (see constants/pokemon_data_constants.asm)
+	table_width 2, BodyColorNames
+	dw BodyRed
+	dw BodyBlue
+	dw BodyYellow
+	dw BodyGreen
+	dw BodyBlack
+	dw BodyBrown
+	dw BodyPurple
+	dw BodyGray
+	dw BodyWhite
+	dw BodyPink
+	assert_table_length NUM_BODY_COLORS
+
+BodyRed:    db "Red@"
+BodyBlue:   db "Blue@"
+BodyYellow: db "Yellow@"
+BodyGreen:  db "Green@"
+BodyBlack:  db "Black@"
+BodyBrown:  db "Brown@"
+BodyPurple: db "Purple@"
+BodyGray:   db "Gray@"
+BodyWhite:  db "White@"
+BodyPink:   db "Pink@"

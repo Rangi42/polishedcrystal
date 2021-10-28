@@ -530,7 +530,7 @@ BillsPC_PrintBoxName:
 	ld b, 0
 	hlcoord 9, 5
 	add hl, bc
-	jmp PlaceString
+	jmp _PlaceString
 
 SetPartyIcons:
 ; Writes party list
@@ -1123,7 +1123,7 @@ _GetCursorMon:
 	; Nickname
 	hlcoord 8, 0
 	ld de, wTempMonNickname
-	call PlaceString
+	rst PlaceString
 
 	; If we're dealing with an egg, we're done now.
 	ld a, [wTempMonIsEgg]
@@ -1140,7 +1140,7 @@ _GetCursorMon:
 	ld [hli], a
 	call GetPokemonName
 	ld de, wStringBuffer1
-	call PlaceString
+	rst PlaceString
 
 	; Level
 	hlcoord 0, 8

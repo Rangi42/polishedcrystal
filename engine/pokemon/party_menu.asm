@@ -34,7 +34,7 @@ BT_SwapRentals:
 	call InitPartyMenuLayout
 	hlcoord 1, 16
 	ld de, .TradeWhichPKMN
-	call PlaceString
+	rst PlaceString
 	call ApplyTilemapInVBlank
 	ld a, CGB_PARTY_MENU
 	call GetCGBLayout
@@ -47,7 +47,7 @@ BT_SwapRentals:
 	call InitPartySwap
 	hlcoord 1, 16
 	ld de, .TradeWhichPKMN
-	call PlaceString
+	rst PlaceString
 	call ApplyTilemapInVBlank
 	call SetPalettes
 	call DelayFrame
@@ -356,7 +356,7 @@ BT_ConfirmPartySelection:
 	farcall FreezeMonIcons
 	hlcoord 1, 16
 	ld de, BTText_EnterBattle
-	call PlaceString
+	rst PlaceString
 	ld hl, .YesNoMenuHeader
 	call BT_DisplayMenu
 	ld a, [wMenuCursorY]

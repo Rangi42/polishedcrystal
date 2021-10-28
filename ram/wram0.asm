@@ -724,6 +724,7 @@ wPokedex_SearchGroup2:: db
 wPokedex_SearchBody:: db
 wPokedex_SearchColor:: db
 wPokedex_SearchDataEnd::
+wPokedex_SearchCursorY:: db
 
 SECTION UNION "Misc 480", WRAM0
 ; trade
