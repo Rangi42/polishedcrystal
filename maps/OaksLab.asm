@@ -114,7 +114,6 @@ Oak:
 	writetext OakLabCaughtAllText
 	promptbutton
 	verbosegivekeyitem SHINY_CHARM
-	setflag ENGINE_HAVE_SHINY_CHARM
 	setevent EVENT_GOT_SHINY_CHARM_FROM_OAK
 	writetext OakLabShinyCharmText
 	waitbutton
