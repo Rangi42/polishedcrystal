@@ -422,6 +422,41 @@ Pokedex_ChangeForm:
 	xor a
 	ret
 
+Pokedex_SwitchNormalOrShinyPalette:
+	ld a, SHINY_CHARM
+	ld [wCurKeyItem], a
+	call CheckKeyItem
+	ret nc
+	ld bc, wPokedex_Personality
+	ld a, [bc]
+	xor SHINY_MASK
+	ld [bc], a
+	ld a, [wCurPartySpecies]
+	farcall GetMonNormalOrShinyPalettePointer
+	ld de, wBGPals1 palette 6 + 2
+	ld a, BANK(PokemonPalettes)
+	ld bc, 4
+	call FarCopyBytesToColorWRAM
+Pokedex_GetMonIconPalette:
+	ld a, BANK(wBGPals1)
+	call StackCallInWRAMBankA
+.Function:
+	ld a, [wCurIconSpecies]
+	ld c, a
+	ld a, [wCurIconForm]
+	ld b, a
+	ld a, [wPokedex_Personality]
+	farcall GetMenuMonIconTruePalette
+	ld hl, wBGPals1 palette 2 + 5
+	ld a, d
+	ld [hld], a
+	ld a, e
+	ld [hld], a
+	ld a, b
+	ld [hld], a
+	ld [hl], c
+	jmp Pokedex_ScheduleScreenUpdate
+
 Pokedex_PrevPageMon:
 	ld a, -1
 	jr Pokedex_ScrollPageMon
@@ -1380,7 +1415,7 @@ endr
 	rrca
 	jr c, .pressed_a
 	rrca
-	jmp c, .pressed_b
+	jr c, .pressed_b
 	rrca
 	jr c, .pressed_select
 	rrca
@@ -1426,21 +1461,7 @@ endr
 
 .pressed_select
 	; cycle shininess
-	ld a, SHINY_CHARM
-	ld [wCurKeyItem], a
-	call CheckKeyItem
-	; jr nc, .joypad_loop
-	ld bc, wPokedex_Personality
-	ld a, [bc]
-	xor SHINY_MASK
-	ld [bc], a
-	ld a, [wCurPartySpecies]
-	farcall GetMonNormalOrShinyPalettePointer
-	ld de, wBGPals1 palette 6 + 2
-	ld a, BANK(PokemonPalettes)
-	ld bc, 4
-	call FarCopyBytesToColorWRAM
-	call Pokedex_ScheduleScreenUpdate
+	call Pokedex_SwitchNormalOrShinyPalette
 	jr .joypad_loop
 
 .pressed_up
@@ -1467,7 +1488,7 @@ endr
 	jr Pokedex_Bio
 
  .pressed_left
-	jmp .joypad_loop
+	jr .joypad_loop
 	; pop af
 	; pop hl
 	; pop hl
@@ -1476,7 +1497,7 @@ endr
 .pressed_start
 	; cycle form (if applicable)
 	call Pokedex_ChangeForm
-	jmp c, .joypad_loop
+	jr c, .joypad_loop
 	jr .reload_page
 
 .pressed_b
@@ -1701,7 +1722,7 @@ Pokedex_Bio:
 	rrca
 	jmp c, Pokedex_Main
 	rrca
-	; jr c, .pressed_select
+	jr c, .pressed_select
 	rrca
 	jr c, .pressed_start
 	rrca
@@ -1712,6 +1733,11 @@ Pokedex_Bio:
 	jr c, .pressed_up
 	rrca
 	jr c, .pressed_down
+	jr .joypad_loop
+
+.pressed_select
+	; cycle shininess
+	call Pokedex_SwitchNormalOrShinyPalette
 	jr .joypad_loop
 
 .pressed_start
@@ -1923,7 +1949,7 @@ _Pokedex_Stats:
 	rrca
 	jmp c, Pokedex_Main
 	rrca
-	; jr c, .pressed_select
+	jr c, .pressed_select
 	rrca
 	jr c, .pressed_start
 	rrca
@@ -1934,6 +1960,11 @@ _Pokedex_Stats:
 	jr c, .pressed_up
 	rrca
 	jr c, .pressed_down
+	jr .joypad_loop
+
+.pressed_select
+	; cycle shininess
+	call Pokedex_SwitchNormalOrShinyPalette
 	jr .joypad_loop
 
 .pressed_start
@@ -1999,17 +2030,14 @@ Pokedex_SearchInit:
 	; fallthrough
 Pokedex_SearchReset:
 ; Resets all search fields but preserves cursor pos
-	ld hl, wPokedex_SearchType1
-	ld a, NORMAL + 1
-	ld [hli], a
-
+	ld hl, wPokedex_SearchData
 	xor a
 	ld [wPokedexOAM_DexNoY], a ; might as well do this here
-	assert wPokedex_SearchDataEnd - wPokedex_SearchType2 == 5
-rept 5 ; rept wPokedex_SearchDataEnd - wPokedex_SearchType2 doesn't assemble :(
+	assert wPokedex_SearchDataEnd - wPokedex_SearchData == 6 ; rept {expression} doesn't assemble :(
+rept 6 ; this is the same number of bytes as a loop, and less cycles
 	ld [hli], a
 endr
-
+	; fallthrough
 Pokedex_Search:
 ; Reloads Search page without reinitializing search fields/cursor
 	; Load the search page tilemap.
@@ -2895,21 +2923,7 @@ endr
 	ld de, wBGPals1 palette 3 + 6
 	ld bc, 2
 	call FarCopyBytesToColorWRAM
-
-	ld a, [wCurIconSpecies]
-	ld c, a
-	ld a, [wCurIconForm]
-	ld b, a
-	xor a
-	farcall GetMenuMonIconTruePalette
-	ld hl, wBGPals1 palette 2 + 5
-	ld a, d
-	ld [hld], a
-	ld a, e
-	ld [hld], a
-	ld a, b
-	ld [hld], a
-	ld [hl], c
+	call Pokedex_GetMonIconPalette
 
 	ld hl, wPokedex_GFXFlags
 	set DEXGFX_ICONSHAPE, [hl]
