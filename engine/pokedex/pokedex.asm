@@ -109,8 +109,9 @@ Pokedex:
 
 	call Pokedex_InitData
 
-	; Reset palettes for minis
+	; Reset shininess and palettes for minis
 	xor a
+	ld [wPokedex_Personality], a
 	dec a
 	ld hl, wPokedex_Pals
 	ld bc, wPokedex_PalsEnd - wPokedex_Pals
@@ -433,7 +434,7 @@ Pokedex_SwitchNormalOrShinyPalette:
 	ld [wCurKeyItem], a
 	call CheckKeyItem
 	ret nc
-	ld bc, wPokedex_Personality
+	ld bc, wPokedex_Shiny
 	ld a, [bc]
 	xor SHINY_MASK
 	ld [bc], a
@@ -451,7 +452,7 @@ Pokedex_GetMonIconPalette:
 	ld c, a
 	ld a, [wCurIconForm]
 	ld b, a
-	ld a, [wPokedex_Personality]
+	ld a, [wPokedex_Shiny]
 	farcall GetMenuMonIconTruePalette
 	ld hl, wBGPals1 palette 2 + 5
 	ld a, d
@@ -2395,7 +2396,7 @@ Pokedex_BlankString:
 
 Pokedex_InitData:
 ; Initializes the list of Pokémon seen and owned.
-	; Reset cursor positioning.
+	; Reset cursor positioning and shiny flag.
 	xor a
 	ld [wPokedex_CursorPos], a
 	ld [wPokedex_Offset], a
@@ -2798,15 +2799,15 @@ _Pokedex_GetCursorMon:
 	set DEXGFX_FRONTPIC, [hl]
 
 	; Check if other eligible forms to switch to exists
-	ld bc, wPokedex_Personality
-	xor a
-	ld [bc], a ; Not shiny, clear pokedex other eligible form flag
-	inc a
-	push bc
+	ld hl, wPokedex_Personality
+	res 0, [hl] ; clear pokedex other eligible form flag
+	ld a, 1
+	push hl
 	call Pokedex_CheckForOtherForms
 	pop bc
 	jr c, .no_variants
-	ld a, 1
+	ld a, [bc]
+	inc a
 	ld [bc], a
 
 .no_variants
