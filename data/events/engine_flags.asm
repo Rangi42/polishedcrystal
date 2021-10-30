@@ -167,8 +167,6 @@ EngineFlags:
 	engine_flag wPlayerGender, 0 ; player is female
 
 	engine_flag wCelebiEvent, 2 ; have gs ball after kurt examined it
-	engine_flag wCelebiEvent, 3 ; have silphscope2
-	engine_flag wCelebiEvent, 4 ; have shiny charm
 
 	; rematches
 	engine_flag wDailyRematchFlags, 0  ; jack
