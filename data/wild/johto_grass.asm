@@ -2044,4 +2044,32 @@
 	wildmon 33, STEELIX
 	end_grass_wildmons
 
+	def_grass_wildmons MURKY_SWAMP
+	db 2 percent, 2 percent, 2 percent ; encounter rates: morn/day/nite
+	; morn
+	wildmon 22, WOOPER
+	wildmon 25, QUAGSIRE
+	wildmon 23, YANMA
+	wildmon 23, YANMA
+	wildmon 24, GRIMER, ALOLAN_FORM
+	wildmon 25, GRIMER, ALOLAN_FORM
+	wildmon 27, YANMEGA
+	; day
+	wildmon 22, WOOPER
+	wildmon 25, QUAGSIRE
+	wildmon 23, YANMA
+	wildmon 23, YANMA
+	wildmon 24, GRIMER, ALOLAN_FORM
+	wildmon 25, GRIMER, ALOLAN_FORM
+	wildmon 27, YANMEGA
+	; nite
+	wildmon 25, QUAGSIRE
+	wildmon 20, ZUBAT
+	wildmon 25, VENONAT
+	wildmon 22, GASTLY
+	wildmon 25, HAUNTER
+	wildmon 25, MISDREAVUS
+	wildmon 31, VENOMOTH
+	end_grass_wildmons
+
 	db -1 ; end

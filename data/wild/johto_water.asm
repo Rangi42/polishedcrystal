@@ -371,4 +371,11 @@
 	wildmon 30, CHINCHOU
 	end_water_wildmons
 
+	def_water_wildmons MURKY_SWAMP
+	db 6 percent ; encounter rate
+	wildmon 20, WOOPER
+	wildmon 25, QUAGSIRE
+	wildmon 30, QUAGSIRE
+	end_water_wildmons
+
 	db -1 ; end
