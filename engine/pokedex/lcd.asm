@@ -146,7 +146,8 @@ Pokedex_RefreshScreen:
 	sub e
 	ld d, a
 	ld hl, wVirtualOAMSprite00
-	pop af
+	ld a, [de]
+	and a
 	jr z, .indicator_oam ; cp DEXDISP_SEARCH
 
 	ld a, 152
@@ -181,6 +182,15 @@ Pokedex_RefreshScreen:
 	pop de
 
 .indicator_oam
+	pop af
+	assert DEXDISP_SEARCH + 1 == DEXDISP_DESC
+	dec a ; cp DEXDISP_DESC - DEXDISP_SEARCH
+	jr nz, .indicator_ok
+	ld a, [wPokedex_OtherForm]
+	rra
+	jr nc, .copy_back
+
+.indicator_ok
 	inc de
 	ld a, [de] ; indicator y pos
 	and a
@@ -692,7 +702,7 @@ DexBotMenuXPositions:
 
 DexDisplayOAMData:
 ; bottom menu cursor x pos, indicator y pos, indicator x pos, indicator start tile, indicator length
-	db  0,   0,   0, $0b, 6 ; DEXDISP_SEARCH
+	db  0, 137,  77, $0b, 6 ; DEXDISP_SEARCH
 	db 32,  93,  31, $05, 6 ; DEXDISP_DESC
 	db  0,   0,   0,   0, 0 ; DEXDISP_AREA
 	db 62,  52, 132, $12, 4 ; DEXDISP_BIO

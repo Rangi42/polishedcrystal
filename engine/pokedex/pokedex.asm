@@ -335,11 +335,30 @@ Pokedex_LoadTilemapWithIconAndForm:
 	ret
 
 Pokedex_ChangeForm:
-; ret c if no alternate form is found
+; Input: a = 0 (check seen), 1 (check caught)
+	call Pokedex_CheckForOtherForms
+	ret c
+	ld a, BANK(wDexMons)
+	call StackCallInWRAMBankA
+.Function:
+	ld [hl], b
+	jmp Pokedex_ScheduleScreenUpdate
+
+Pokedex_CheckForOtherForms:
+; Input: a = 0 (check caught), 1 (check seen)
+; Output: b = form, c = species, hl = pointer to mon form
+; carry flag set if no other eligible form found
+	ld e, a
 	call Pokedex_GetCursorSpecies
 	res MON_CAUGHT_F, b
 	ld d, 0
+	push hl
 	ld hl, VariantSpeciesAndFormTable
+	call .FindVariant
+	pop hl
+	ret
+
+.FindVariant:
 .variant_loop
 	ld a, [hli]
 	and a
@@ -357,8 +376,8 @@ Pokedex_ChangeForm:
 	push de
 	push hl
 	ld b, [hl]
-	ld a, [wPokedex_DisplayMode]
-	cp DEXDISP_BIO
+	ld a, e
+	rra
 	call nc, CheckCaughtMon
 	call c, CheckSeenMon ; CheckCaughtMon (when called) always returns with carry flag cleared
 	pop hl
@@ -368,11 +387,10 @@ Pokedex_ChangeForm:
 	jr z, .variant_loop
 	cp b
 	jr nc, .got_form
-	ld e, a
-	ld a, d
-	and a
+	dec d
+	inc d
 	jr nz, .variant_loop
-	ld d, e ; possible form to switch to, but we should check if others are viable (including base form)
+	ld d, a ; possible form to switch to, but we should check if others are viable (including base form)
 	jr .variant_loop
 
 .cont
@@ -387,14 +405,14 @@ Pokedex_ChangeForm:
 	ld a, b
 	and EXTSPECIES_MASK
 	ld b, a
-	push bc
 	push de
-	ld a, [wPokedex_DisplayMode]
-	cp DEXDISP_BIO
+	push bc
+	ld a, e
+	rra
 	call nc, CheckCaughtMon
 	call c, CheckSeenMon
-	pop de
 	pop bc
+	pop de
 	ld a, b
 	jr nz, .got_form
 	ld a, d
@@ -404,22 +422,10 @@ Pokedex_ChangeForm:
 .got_form
 	ld b, a
 	push bc
-	call CheckCaughtMon
+	call CheckCaughtMon ; FlagAction always clears carry flag
 	pop bc
-	jr z, .not_caught
+	ret z
 	set MON_CAUGHT_F, b
-.not_caught
-	push bc
-	call Pokedex_GetCursorSpecies ; hl should point to form byte offset in wDexMons
-	pop bc
-	ldh a, [rSVBK]
-	push af
-	ld a, BANK(wDexMons)
-	ldh [rSVBK], a
-	ld [hl], b
-	pop af
-	ldh [rSVBK], a
-	xor a
 	ret
 
 Pokedex_SwitchNormalOrShinyPalette:
@@ -1344,7 +1350,7 @@ endr
 	ld a, SHINY_CHARM
 	ld [wCurKeyItem], a
 	call CheckKeyItem
-	;jr nc, .botmenu
+	jr nc, .botmenu
 	hlcoord 9, 10
 	ld b, $28
 .sel_shiny_loop
@@ -1496,6 +1502,7 @@ endr
 
 .pressed_start
 	; cycle form (if applicable)
+	ld a, 1
 	call Pokedex_ChangeForm
 	jr c, .joypad_loop
 	jr .reload_page
@@ -1741,6 +1748,7 @@ Pokedex_Bio:
 	jr .joypad_loop
 
 .pressed_start
+	xor a
 	call Pokedex_ChangeForm
 	jr c, .joypad_loop
 	jr .reload_page
@@ -1968,6 +1976,7 @@ _Pokedex_Stats:
 	jr .joypad_loop
 
 .pressed_start
+	xor a
 	call Pokedex_ChangeForm
 	jr c, .joypad_loop
 	jr .reload_page
@@ -2052,16 +2061,14 @@ Pokedex_Search:
 	ld [hl], "▶"
 
 	; Fill fields based on current search data
-	ld c, wPokedex_SearchDataEnd - wPokedex_SearchData
+	ld c, wPokedex_SearchBody - wPokedex_SearchData
 	ld hl, wPokedex_SearchData
 .load_fields_loop
+	push hl
+	push bc
 	ld a, c
 	cpl
 	add wPokedex_SearchDataEnd - wPokedex_SearchData + 2
-	cp 5 ; Body has its own loader
-	jr z, .next
-	push hl
-	push bc
 	ld e, a
 	dec e
 	srl e
@@ -2072,7 +2079,6 @@ Pokedex_Search:
 	call Pokedex_SearchPrintFieldName
 	pop bc
 	pop hl
-.next
 	inc hl
 	dec c
 	jr nz, .load_fields_loop
@@ -2275,8 +2281,8 @@ endc
 	dw .TypeSwitch
 	dw .EggGroupSwitch
 	dw .EggGroupSwitch
-	dw .BodyShapeSwitch
 	dw .BodyColorSwitch
+	dw .BodyShapeSwitch
 
 .TypeSwitch:
 	ld d, NUM_TYPES
@@ -2791,10 +2797,20 @@ _Pokedex_GetCursorMon:
 	ld hl, wPokedex_GFXFlags
 	set DEXGFX_FRONTPIC, [hl]
 
-	; Frontpic pal
+	; Check if other eligible forms to switch to exists
 	ld bc, wPokedex_Personality
 	xor a
-	ld [bc], a ; Not shiny.
+	ld [bc], a ; Not shiny, clear pokedex other eligible form flag
+	inc a
+	push bc
+	call Pokedex_CheckForOtherForms
+	pop bc
+	jr c, .no_variants
+	ld a, 1
+	ld [bc], a
+
+.no_variants
+	; Frontpic pal
 	ld a, [wCurPartySpecies]
 	farcall GetMonNormalOrShinyPalettePointer
 	ld de, wBGPals1 palette 6 + 2

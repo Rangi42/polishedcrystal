@@ -694,7 +694,10 @@ wPokedex_PalsEnd::
 wPokedex_MonInfoBank:: db
 
 wPokedex_Personality::
-wPokedex_Shiny:: db
+; bit 7 = shiny
+; bit 0 = has other form (eligible to switch to)
+wPokedex_Shiny::
+wPokedex_OtherForm:: db
 wPokedex_Form:: db
 
 wPokedexOAM_DexNoX:: db
@@ -721,8 +724,8 @@ wPokedex_SearchType1:: db
 wPokedex_SearchType2:: db
 wPokedex_SearchGroup1:: db
 wPokedex_SearchGroup2:: db
-wPokedex_SearchBody:: db
 wPokedex_SearchColor:: db
+wPokedex_SearchBody:: db
 wPokedex_SearchDataEnd::
 wPokedex_SearchCursorY:: db
 
