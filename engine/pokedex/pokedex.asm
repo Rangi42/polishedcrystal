@@ -2166,18 +2166,15 @@ else
 	ld [hl], a
 endc
 
-	ld hl, wPokedex_SearchBody
-	ld c, BODY_COLOR_BLACK
-	ld a, [hli]
+	ld hl, wPokedex_SearchColor
+	ld a, [hld]
 	and a
-	jr z, .black
+	jr z, .done_pals
 	ld a, [hl] ; wPokedex_SearchColor
 	and a
-	jr z, .black
-	dec a
-	ld c, a
+	jr z, .done_pals
 .black
-	ld a, c
+	dec a
 	add a
 	add LOW(BodyColorPals)
 	ld l, a
@@ -2188,6 +2185,9 @@ endc
 	ld de, wBGPals1 palette 3 + 6
 	ld bc, 2
 	call FarCopyBytesToColorWRAM
+	jr .done_pals
+
+.done_pals
 	ld a, b
 	ldh [rSVBK], a
 .refresh
