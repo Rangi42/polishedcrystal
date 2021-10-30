@@ -1652,11 +1652,16 @@ Pokedex_Bio:
 	jr z, .got_exp
 	ld a, [wCurPartySpecies]
 	ld c, a
-	ld a, [wPokedex_Form]
-	ld [wCurForm], a ; just in case
+	ld a, [wCurForm]
 	and EXTSPECIES_MASK
 	ld b, a
+	push bc
 	farcall _GetNewBaseExp
+	pop bc
+	ld a, c
+	ld [wCurPartySpecies], a
+	ld a, b
+	ld [wCurForm], a
 	ldh a, [hMultiplicand + 1]
 	ld d, a
 	ldh a, [hMultiplicand + 2]
@@ -1771,7 +1776,7 @@ Pokedex_Bio:
 .pressed_a
 	ld a, [wCurPartySpecies]
 	ld c, a
-	ld a, [wPokedex_Form]
+	ld a, [wCurForm]
 	ld b, a
 	call PlayCry
 	jr .joypad_loop
