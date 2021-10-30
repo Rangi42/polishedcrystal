@@ -2174,14 +2174,20 @@ endc
 	ld a, [hl] ; wPokedex_SearchColor
 	and a
 	jr z, .black
+	dec a
 	ld c, a
 .black
 	ld a, c
-	dec a
 	add a
 	add LOW(BodyColorPals)
 	ld l, a
 	adc HIGH(BodyColorPals)
+	sub l
+	ld h, a
+	ld a, BANK(BodyColorPals)
+	ld de, wBGPals1 palette 3 + 6
+	ld bc, 2
+	call FarCopyBytesToColorWRAM
 	ld a, b
 	ldh [rSVBK], a
 .refresh
