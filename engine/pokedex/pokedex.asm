@@ -2540,20 +2540,17 @@ Pokedex_InitData:
 	ret
 
 .national_mode
-	ld b, d
-	ld a, e
+	ld b, -1
 	push de
 	inc d
 .natloop
-	add 2
-	jr nc, .natok
+	inc de
+	inc de
 	inc b
-	inc d
-.natok
 	dec d
 	jr nz, .natloop
-	dec a
-	ld c, a
+	ld c, e
+	dec bc
 	swap b
 	sla b
 	pop de
