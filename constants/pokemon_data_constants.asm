@@ -77,7 +77,15 @@ NUM_GROWTH_RATES EQU const_value
 	const EGG_NONE          ; f (Undiscovered)
 NUM_EGG_GROUPS EQU const_value - 1
 
-; shapes (see data/pokemon/dex_entries/*.asm)
+; body data struct members (see data/pokemon/body_data.asm)
+rsreset
+BODY_HEIGHT rb
+BODY_WEIGHT rw
+BODY_COLOR  rb
+BODY_SHAPE EQU BODY_COLOR
+BODY_DATA_SIZE EQU _RS
+
+; shapes (see data/pokemon/body_data.asm)
 	const_def
 	const SHAPE_HEAD         ; 0
 	const SHAPE_SERPENTINE   ; 1
@@ -96,7 +104,7 @@ NUM_EGG_GROUPS EQU const_value - 1
 assert const_value <= $10
 NUM_SHAPES EQU const_value
 
-; body colors (see data/pokemon/dex_entries/*.asm)
+; body colors (see data/pokemon/body_data.asm)
 	const_def
 	const BODY_COLOR_RED    ; 0
 	const BODY_COLOR_BLUE   ; 1

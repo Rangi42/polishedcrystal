@@ -127,6 +127,12 @@ Print8BitNumRightAlign::
 	ld b, PRINTNUM_LEFTALIGN | 1
 	jmp PrintNum
 
+GetBaseDataFromIndexBC::
+	push hl
+	push de
+	push bc
+	jr _GetBaseData
+
 GetBaseData::
 	push hl
 	push de
@@ -136,6 +142,7 @@ GetBaseData::
 	ld a, [wCurForm]
 	ld b, a
 	call GetSpeciesAndFormIndex
+_GetBaseData::
 	ld a, BASE_DATA_SIZE
 	ld hl, BaseData
 	rst AddNTimes

@@ -2405,6 +2405,124 @@ Pokedex_SearchPrintFieldName:
 Pokedex_BlankString:
 	db "----@"
 
+Pokedex_GetSearchResults:
+	ld de, 0
+.loop
+	; Check if mon at index de was caught
+	push de
+	ld hl, wPokedexCaught
+	ld b, CHECK_FLAG
+	call FlagAction
+	jr z, .next
+	pop bc
+
+	; Are we looking for any base data?
+	push bc
+	ld hl, wTempDexFound
+	push hl
+	ld a, [hli]
+	or [hl]
+	inc hl
+	or [hl]
+	inc [hl]
+	or [hl]
+	pop hl
+	jr z, .base_data_done
+
+	; Check base data (types + egg groups)
+	call GetBaseDataFromIndexBC
+	call .CheckTypes ; check wPokedex_SearchType1
+	jr nz, .next
+	inc hl
+	call .CheckTypes ; check wPokedex_SearchType2
+	jr nz, .next
+
+	inc hl
+	call .CheckEggGroups ; check wPokedex_SearchGroup1
+	jr nz, .next
+	inc hl
+	call .CheckEggGroups ; check wPokedex_SearchGroup2
+	jr nz, .next
+
+.base_data_done
+	; Are we looking for body data?
+	ld a, [hli]
+	ld d, a ; color
+	or [hl]
+	ld e, a ; shape
+	jr z, .body_done
+	ld hl, PokemonBodyData + BODY_COLOR
+rept BODY_DATA_SIZE ; faster than AddNTimes while BODY_DATA_SIZE is small
+	add hl, bc
+endr
+	ld a, BANK(PokemonBodyData)
+	call GetFarByte
+	ld h, a
+
+	inc d
+	dec d
+	jr z, .color_done
+	and $f
+	cp d
+	jr nz, .next
+
+.color_done
+	inc e
+	dec e
+	jr z, .shape_done
+	ld a, h
+	swap a
+	and $f
+	cp e
+	jr nz, .next
+
+.shape_done
+	; we got the mon we're looking for, add it to results
+	pop de
+	push de
+	ld hl, wTempDexFound
+	ld b, SET_FLAG
+	call FlagAction
+
+.next
+	pop de
+	inc de
+	ld a, e
+	cp LOW(NUM_EXT_POKEMON)
+	jr nz, .loop
+	ld a, d
+	cp HIGH(NUM_EXT_POKEMON)
+	jr nz, .loop
+	ret
+
+.CheckTypes:
+	ld de, wBaseType1
+	ld a, [hl]
+	and a
+	ret z
+	ld a, [de]
+	cp [hl]
+	ret z
+	inc de
+	ld a, [de]
+	cp [hl]
+	ret
+
+.CheckEggGroups:
+	ld de, wBaseEggGroups
+	ld a, [hl]
+	and a
+	ret z
+	ld a, [de]
+	and $f
+	cp [hl]
+	ret z
+	ld a, [de]
+	swap a
+	and $f
+	cp [hl]
+	ret
+
 Pokedex_InitData:
 ; Initializes the list of Pokémon seen and owned.
 	; Reset cursor positioning and shiny flag.
