@@ -2074,7 +2074,7 @@ Pokedex_Search:
 	push bc
 	ld a, c
 	cpl
-	add wPokedex_SearchDataEnd - wPokedex_SearchData + 2
+	add wPokedex_SearchDataEnd - wPokedex_SearchData + 1
 	ld e, a
 	dec e
 	srl e
@@ -2209,7 +2209,7 @@ endc
 	rrca
 	jmp c, Pokedex_SearchReset ; pressed select
 	rrca
-	; jr c, .pressed_start
+	jr c, .pressed_start
 	rrca
 	jmp c, .pressed_right
 	rrca
@@ -2218,6 +2218,10 @@ endc
 	jr c, .pressed_up
 	rrca
 	jr c, .pressed_down
+	jr .joypad_loop
+
+.pressed_start
+	call Pokedex_GetSearchResults
 	jr .joypad_loop
 
 .pressed_up
@@ -2249,8 +2253,8 @@ endc
 
 .pressed_a
 	ld a, [wPokedex_SearchCursorY]
-	; cp 15
-	; jr z, .pressed_start
+	cp 15
+	jr z, .pressed_start
 	cp 17
 	jr nz, .pressed_right
 .pressed_b
@@ -2283,7 +2287,7 @@ endc
 	srl a
 	dec a; index = wPokedex_SearchCursorY / 2 - 1
 	cp 6 ; "Start!"
-	jr nc, .joypad_loop
+	jmp nc, .joypad_loop
 	ld e, a
 	srl e
 	call StackJumpTable
@@ -2406,6 +2410,12 @@ Pokedex_BlankString:
 	db "----@"
 
 Pokedex_GetSearchResults:
+	; Clear temp dex
+	ld hl, wTempDexFound
+	ld bc, wTempDexEnd - wTempDexFound
+	xor a
+	rst ByteFill
+
 	ld de, 0
 .loop
 	; Check if mon at index de was caught
@@ -2418,13 +2428,13 @@ Pokedex_GetSearchResults:
 
 	; Are we looking for any base data?
 	push bc
-	ld hl, wTempDexFound
+	ld hl, wPokedex_SearchData
 	push hl
 	ld a, [hli]
 	or [hl]
 	inc hl
 	or [hl]
-	inc [hl]
+	inc hl
 	or [hl]
 	pop hl
 	jr z, .base_data_done
@@ -2446,10 +2456,11 @@ Pokedex_GetSearchResults:
 
 .base_data_done
 	; Are we looking for body data?
+	inc hl
 	ld a, [hli]
 	ld d, a ; color
+	ld e, [hl] ; shape
 	or [hl]
-	ld e, a ; shape
 	jr z, .body_done
 	ld hl, PokemonBodyData + BODY_COLOR
 rept BODY_DATA_SIZE ; faster than AddNTimes while BODY_DATA_SIZE is small
@@ -2462,6 +2473,7 @@ endr
 	inc d
 	dec d
 	jr z, .color_done
+	dec d
 	and $f
 	cp d
 	jr nz, .next
@@ -2469,14 +2481,15 @@ endr
 .color_done
 	inc e
 	dec e
-	jr z, .shape_done
+	jr z, .body_done
+	dec e
 	ld a, h
 	swap a
 	and $f
 	cp e
 	jr nz, .next
 
-.shape_done
+.body_done
 	; we got the mon we're looking for, add it to results
 	pop de
 	push de
@@ -2501,10 +2514,12 @@ endr
 	and a
 	ret z
 	ld a, [de]
+	inc a
 	cp [hl]
 	ret z
 	inc de
 	ld a, [de]
+	inc a
 	cp [hl]
 	ret
 
