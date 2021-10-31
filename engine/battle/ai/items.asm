@@ -373,7 +373,7 @@ AI_Items:
 	jmp c, .DontUse
 	ld b, 20
 	call EnemyUsedPotion
-	jmp .Use
+	jr .Use
 
 .GuardSpec:
 	call .XItem

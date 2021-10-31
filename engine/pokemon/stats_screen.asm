@@ -116,9 +116,8 @@ EggStatsInit:
 	call EggStatsScreen
 	pop af
 	ld [wCurPartySpecies], a
-	ld a, [wJumptableIndex]
-	inc a
-	ld [wJumptableIndex], a
+	ld hl, wJumptableIndex
+	inc [hl]
 	ret
 
 EggStatsJoypad:
@@ -148,9 +147,8 @@ StatsScreen_LoadPage:
 	call StatsScreen_LoadGFX
 	ld hl, wStatsScreenFlags
 	res 4, [hl]
-	ld a, [wJumptableIndex]
-	inc a
-	ld [wJumptableIndex], a
+	ld hl, wJumptableIndex
+	inc [hl]
 	ret
 
 StatsScreen_GetJoypad:
@@ -238,10 +236,6 @@ StatsScreen_InitUpperHalf:
 	ld a, [wCurForm]
 	ld b, a
 	call GetPokedexNumber
-	ld a, b
-	ld [wStringBuffer1], a
-	ld a, c
-	ld [wStringBuffer1 + 1], a
 	hlcoord 8, 0
 	ld a, "№"
 	ld [hli], a
@@ -249,8 +243,7 @@ StatsScreen_InitUpperHalf:
 	ld [hli], a
 	hlcoord 10, 0
 	lb bc, PRINTNUM_LEADINGZEROS | 2, 3
-	ld de, wStringBuffer1
-	call PrintNum
+	call PrintNumFromReg ; sets de
 	hlcoord 14, 0
 	call PrintLevel
 	ld hl, wTempMonNickname
@@ -262,9 +255,9 @@ StatsScreen_InitUpperHalf:
 	hlcoord 9, 4
 	ld a, "/"
 	ld [hli], a
-	ld a, [wCurSpecies]
-	ld [wNamedObjectIndex], a
-	call GetPokemonName
+	push hl
+	call GetPartyPokemonName
+	pop hl
 	rst PlaceString
 	call StatsScreen_PlacePageSwitchArrows
 	jr StatsScreen_PlaceShinyIcon
@@ -426,12 +419,10 @@ StatsScreen_LoadGFX:
 	hlcoord 0, 9
 	rst PlaceString
 	ld a, [wTempMonPokerusStatus]
-	ld b, a
-	and $f
-	jr nz, .HasPokerus
-	ld a, b
-	and $f0
+	and POKERUS_MASK
 	jr z, .NotImmuneToPkrs
+	cp POKERUS_CURED
+	jr nz, .HasPokerus
 	hlcoord 8, 8
 	ld [hl], "."
 .NotImmuneToPkrs:
@@ -724,6 +715,7 @@ StatsScreen_LoadGFX:
 	call GetAbility
 	; PlaceString as used in PrintAbility doesn't preserve any register, so push it.
 	push bc
+	hlcoord 3, 13
 	farcall PrintAbility
 	pop bc
 	farjp PrintAbilityDescription
@@ -900,8 +892,8 @@ TN_PrintCharacteristics:
 INCLUDE "data/characteristics.asm"
 
 StatsScreen_PlaceFrontpic:
-	ld hl, wTempMonForm
-	predef GetVariant
+	ld a, [wTempMonForm]
+	ld [wCurForm], a
 	call StatsScreen_GetAnimationParam
 	jr nc, .no_cry
 	call .Animate

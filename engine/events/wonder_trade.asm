@@ -15,8 +15,8 @@ WonderTrade::
 	ret c
 
 	ld a, MON_IS_EGG
-	call GetPartyParamLocation
-	bit MON_IS_EGG_F, [hl]
+	call GetPartyParamLocationAndValue
+	bit MON_IS_EGG_F, a
 	jr z, .not_egg
 	ld a, EGG
 	ld [wCurPartySpecies], a
@@ -86,25 +86,56 @@ DoWonderTrade:
 	jmp .compute_trademon_stats
 
 .random_trademon
-	ld a, NUM_POKEMON
-	call RandomRange
-	inc a
+	ld hl, wPartyMon1Level
+	ld bc, PARTYMON_STRUCT_LENGTH
+	call Trade_GetAttributeOfCurrentPartymon
+	ld a, [hl]
+	ld d, a
+
+	ld bc, NUM_SPECIES
+	call RandomRange16
+	ld hl, ValidPokemonLevels
+	add hl, bc
+	add hl, bc
+
+	ld a, [hli]
+	dec a
+	cp d
+	jr c, .random_trademon
+
+	ld a, [hl]
+	cp d
+	jr nc, .random_trademon
+
+	inc bc
+	ld a, c
 	ld [wOTTrademonSpecies], a
-	call CheckValidLevel
-	and a
-	jr nz, .random_trademon
-	ld a, [wPlayerTrademonSpecies]
+	ld a, b
+	call ConvertFormToExtendedSpecies
 	ld b, a
-	ld a, [wOTTrademonSpecies]
+	ld [wOTTrademonForm], a
+
+	ld a, [wPlayerTrademonSpecies]
+	cp c
+	jr nz, .got_species
+	ld a, [wPlayerTrademonForm]
+	and EXTSPECIES_MASK
 	cp b
 	jr z, .random_trademon
 
+.got_species
 	ld a, [wPlayerTrademonSpecies]
+	ld c, a
+	ld a, [wPlayerTrademonForm]
+	ld b, a
 	ld de, wPlayerTrademonSpeciesName
 	call GetTradeMonName
 	call CopyTradeName
 
 	ld a, [wOTTrademonSpecies]
+	ld c, a
+	ld a, [wOTTrademonForm]
+	ld b, a
 	ld de, wOTTrademonSpeciesName
 	call GetTradeMonName
 	call CopyTradeName
@@ -464,8 +495,8 @@ GetGSBallPichu:
 
 	ld a, HIDDEN_ABILITY | QUIRKY
 	ld [wOTTrademonPersonality], a
-	ld a, FEMALE | 2 ; spiky-eared variant
-	ld [wOTTrademonPersonality + 1], a
+	ld a, FEMALE | PICHU_SPIKY_EARED_FORM ; spiky-eared variant
+	ld [wOTTrademonForm], a
 
 	ld hl, wPartyMon1Personality
 	ld bc, PARTYMON_STRUCT_LENGTH
@@ -478,7 +509,6 @@ GetGSBallPichu:
 	call Trade_GetAttributeOfLastPartymon
 	xor a
 	ld [de], a
-
 	ret
 
 GetWonderTradeOTName:
@@ -524,19 +554,45 @@ INCLUDE "data/events/wonder_trade/ot_genders.asm"
 GetWonderTradeOTForm:
 ; pick randomly from [1, N] for [wOTTrademonSpecies], or default to 1
 	ld a, [wOTTrademonSpecies]
-	ld hl, ValidVariantRanges
-	ld de, 2
-	call IsInArray
-	ld a, 1
-	jr nc, .ok
+	ld c, a
+	ld a, [wOTTrademonForm]
+	and EXTSPECIES_MASK
+	ld b, a
+	lb de, PLAIN_FORM, 1
+	or d
+	ld d, a
+	ld hl, CosmeticSpeciesAndFormTable - 1
+.loop
 	inc hl
-	ld a, [hl]
-.ok
+	ld a, [hli] ; species
+	and a
+	ld a, d
+	ret z
+	cp c
+	ld a, [hl] ; extspecies + form
+	jr nz, .loop
+	and EXTSPECIES_MASK
+	cp b
+	jr nz, .loop
+	push hl
+	push bc
+	ld b, [hl]
+	ld hl, InvalidVariants
+	call GetSpeciesAndFormIndexFromHL
+	pop bc
+	pop hl
+	jr c, .loop
+	inc e
+	ld a, e
 	call RandomRange
-	inc a
-	ret
+	and a
+	jr nz, .loop ; 1/n chance for switch
+	ld a, [hl]
+	and SPECIESFORM_MASK
+	ld d, a
+	jr .loop
 
-INCLUDE "data/pokemon/valid_variants.asm"
+INCLUDE "data/pokemon/invalid_variants.asm"
 
 GetWonderTradeHeldItem:
 ; Returns a level-scaled item reward
@@ -561,16 +617,14 @@ INCLUDE "data/events/wonder_trade/held_items.asm"
 CheckValidLevel:
 ; Don't receive Pokémon outside a valid level range.
 ; Legendaries and other banned Pokémon have a "valid" range of 255 to 255.
+; bc = species+extspecies full index; bc is preserved
 	ld hl, wPartyMon1Level
 	ld bc, PARTYMON_STRUCT_LENGTH
 	call Trade_GetAttributeOfCurrentPartymon
 	ld a, [hl]
 	ld d, a
 
-	ld a, [wOTTrademonSpecies]
 	ld hl, ValidPokemonLevels
-	ld b, 0
-	ld c, a
 	add hl, bc
 	add hl, bc
 
@@ -584,6 +638,5 @@ CheckValidLevel:
 	ret c
 
 	xor a
-	ret
 
 INCLUDE "data/pokemon/valid_levels.asm"

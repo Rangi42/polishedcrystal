@@ -69,7 +69,7 @@ MountMortarB1FKiyoScript:
 	writetext MountMortarB1FTyrogueRewardText
 	promptbutton
 	waitsfx
-	givepoke TYROGUE, NO_FORM, 10, NO_ITEM, PREMIER_BALL
+	givepoke TYROGUE, PLAIN_FORM, 10, NO_ITEM, PREMIER_BALL
 	iffalse_jumpopenedtext MountMortarB1FKiyoFullPartyAndBoxText
 	setevent EVENT_GOT_TYROGUE_FROM_KIYO
 	jumpthisopenedtext

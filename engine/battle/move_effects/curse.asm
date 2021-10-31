@@ -25,7 +25,7 @@ BattleCommand_curse:
 	ld a, 1
 	ld [wKickCounter], a
 	call AnimateCurrentMove
-	farcall GetHalfMaxHP
+	call GetHalfMaxHP
 	predef SubtractHPFromUser
 	call UpdateUserInParty
 	ld hl, PutACurseText

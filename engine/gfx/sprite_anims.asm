@@ -39,6 +39,7 @@ DoAnimFrame:
 	dw AnimSeq_PcQuick            ; SPRITE_ANIM_SEQ_PC_QUICK
 	dw AnimSeq_PcMode             ; SPRITE_ANIM_SEQ_PC_MODE
 	dw AnimSeq_PcPack             ; SPRITE_ANIM_SEQ_PC_PACK
+	dw AnimSeq_DexCursor          ; SPRITE_ANIM_SEQ_DEX_CURSOR
 	assert_table_length NUM_SPRITE_ANIM_SEQS
 
 AnimSeq_PartyMon:
@@ -744,6 +745,36 @@ AnimSeq_PcPack:
 	ld hl, SPRITEANIMSTRUCT_YOFFSET
 	add hl, bc
 	ld [hl], a
+	ret
+
+AnimSeq_DexCursor:
+	push bc
+	ld hl, SPRITEANIMSTRUCT_YOFFSET
+	add hl, bc
+	ld a, [wPokedex_DisplayMode]
+	and a ; cp DEXDISP_MAIN
+	ld [hl], 160
+	jr nz, .done
+	push hl
+	ld hl, SPRITEANIMSTRUCT_XOFFSET
+	add hl, bc
+	push hl
+	ld a, [wPokedex_CursorPos]
+	ld b, a
+	and $7
+	ld c, 30
+	call SimpleMultiply
+	pop hl
+	ld [hl], a
+	ld a, b
+	swap a
+	and $f
+	ld c, 24
+	call SimpleMultiply
+	pop hl
+	ld [hl], a
+.done
+	pop bc
 	ret
 
 AnimSeqs_IncAnonJumptableIndex:

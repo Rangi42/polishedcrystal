@@ -16,9 +16,9 @@ TinTower1F_MapScriptHeader:
 	def_bg_events
 
 	def_object_events
-	object_event  7,  9, SPRITE_MON_ICON, SPRITEMOVEDATA_POKEMON, 0, SUICUNE, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_TIN_TOWER_1F_SUICUNE
-	object_event  5,  9, SPRITE_MON_ICON, SPRITEMOVEDATA_POKEMON, 0, RAIKOU, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_TIN_TOWER_1F_RAIKOU
-	object_event 10,  9, SPRITE_MON_ICON, SPRITEMOVEDATA_POKEMON, 0, ENTEI, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_TIN_TOWER_1F_ENTEI
+	pokemon_event  7,  9, SUICUNE, SPRITEMOVEDATA_POKEMON, -1, -1, PAL_NPC_BLUE, ObjectEvent, EVENT_TIN_TOWER_1F_SUICUNE
+	pokemon_event  5,  9, RAIKOU, SPRITEMOVEDATA_POKEMON, -1, -1, PAL_NPC_BROWN, ObjectEvent, EVENT_TIN_TOWER_1F_RAIKOU
+	pokemon_event 10,  9, ENTEI, SPRITEMOVEDATA_POKEMON, -1, -1, PAL_NPC_RED, ObjectEvent, EVENT_TIN_TOWER_1F_ENTEI
 	object_event  6,  3, SPRITE_EUSINE, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, TinTowerEusineHoOhText, EVENT_TIN_TOWER_1F_EUSINE
 	object_event  3,  9, SPRITE_ELDER, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, TinTower1FSage1Text, EVENT_TIN_TOWER_1F_WISE_TRIO_1
 	object_event  9, 11, SPRITE_ELDER, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, TinTower1FSage2Text, EVENT_TIN_TOWER_1F_WISE_TRIO_1
@@ -60,7 +60,7 @@ UnknownScript_0x185050:
 	checkevent EVENT_FOUGHT_SUICUNE
 	iftrue UnknownScript_0x185077
 	appear TINTOWER1F_SUICUNE
-	setval RAIKOU
+	setmonval RAIKOU
 	special SpecialMonCheck
 	iftrue UnknownScript_0x185065
 	appear TINTOWER1F_RAIKOU
@@ -69,7 +69,7 @@ UnknownScript_0x185050:
 UnknownScript_0x185065:
 	disappear TINTOWER1F_RAIKOU
 UnknownScript_0x185067:
-	setval ENTEI
+	setmonval ENTEI
 	special SpecialMonCheck
 	iftrue UnknownScript_0x185074
 	appear TINTOWER1F_ENTEI
@@ -98,7 +98,7 @@ TinTowerStairsCallback:
 SuicuneBattle:
 	applymovement PLAYER, TinTowerPlayerMovement1
 	pause 15
-	setval RAIKOU
+	setmonval RAIKOU
 	special SpecialMonCheck
 	iftrue .Next1 ; if player caught Raikou, he doesn't appear in Tin Tower
 	applymovement TINTOWER1F_RAIKOU, TinTowerRaikouMovement1
@@ -111,7 +111,7 @@ SuicuneBattle:
 	playsound SFX_EXIT_BUILDING
 	waitsfx
 .Next1:
-	setval ENTEI
+	setmonval ENTEI
 	special SpecialMonCheck
 	iftrue .Next2 ; if player caught Entei, he doesn't appear in Tin Tower
 	applymovement TINTOWER1F_ENTEI, TinTowerEnteiMovement1

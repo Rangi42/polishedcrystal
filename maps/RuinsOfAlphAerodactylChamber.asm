@@ -88,7 +88,7 @@ MapRuinsofAlphAerodactylChamberSignpost3Script:
 	unowntypeface
 	showtext RuinsOfAlphAerodactylChamberDescriptionText
 	restoretypeface
-	special MapCallbackSprites_LoadUsedSpritesGFX
+	special RefreshSprites
 	end
 
 MapRuinsofAlphAerodactylChamberSignpost5Script:

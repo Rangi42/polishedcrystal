@@ -17,7 +17,7 @@ SinjohRuinsHouse_MapScriptHeader:
 	object_event  5,  4, SPRITE_CYNTHIA, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, SinjohRuinsHouseCynthiaScript, EVENT_SINJOH_RUINS_HOUSE_CYNTHIA
 	object_event  5,  3, SPRITE_HIKER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, SinjohRuinsHousePokefanmText, -1
 	object_event  2,  4, SPRITE_GRAMPS, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, SinjohRuinsHouseGrampsScript, -1
-	pokemon_event  2,  3, ABRA, -1, -1, PAL_NPC_BROWN, SinjohRuinsHouseAbraText, -1
+	pokemon_event  2,  3, ABRA, SPRITEMOVEDATA_POKEMON, -1, -1, PAL_NPC_BROWN, SinjohRuinsHouseAbraText, -1
 
 	object_const_def
 	const SINJOHRUINSHOUSE_CYNTHIA

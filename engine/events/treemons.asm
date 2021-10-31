@@ -213,6 +213,7 @@ SelectTreeMon:
 	inc hl
 	inc hl
 	inc hl
+	inc hl
 	jr .loop
 
 .ok
@@ -222,6 +223,8 @@ SelectTreeMon:
 
 	ld a, [hli]
 	ld [wTempWildMonSpecies], a
+	ld a, [hli]
+	ld [wCurForm], a
 	ld a, [hl]
 	ld [wCurPartyLevel], a
 	scf

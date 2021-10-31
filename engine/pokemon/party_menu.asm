@@ -34,7 +34,7 @@ BT_SwapRentals:
 	call InitPartyMenuLayout
 	hlcoord 1, 16
 	ld de, .TradeWhichPKMN
-	call PlaceString
+	rst PlaceString
 	call ApplyTilemapInVBlank
 	ld a, CGB_PARTY_MENU
 	call GetCGBLayout
@@ -47,7 +47,7 @@ BT_SwapRentals:
 	call InitPartySwap
 	hlcoord 1, 16
 	ld de, .TradeWhichPKMN
-	call PlaceString
+	rst PlaceString
 	call ApplyTilemapInVBlank
 	call SetPalettes
 	call DelayFrame
@@ -224,8 +224,8 @@ BT_PartySelect:
 	; 3 menu headers; eggs (implicitly banned), banned, regular
 	; Check if mon is an Egg
 	ld a, MON_IS_EGG
-	call GetPartyParamLocation
-	bit MON_IS_EGG_F, [hl]
+	call GetPartyParamLocationAndValue
+	bit MON_IS_EGG_F, a
 	ld hl, .EggMenuHeader
 	jmp nz, BT_DisplayMenu
 
@@ -287,8 +287,8 @@ BT_PartySelect:
 .Moves:
 	; For Eggs, "Moves" is actually the "Cancel" option
 	ld a, MON_IS_EGG
-	call GetPartyParamLocation
-	bit MON_IS_EGG_F, [hl]
+	call GetPartyParamLocationAndValue
+	bit MON_IS_EGG_F, a
 	jr nz, .Cancel
 	farcall ManagePokemonMoves
 
@@ -356,7 +356,7 @@ BT_ConfirmPartySelection:
 	farcall FreezeMonIcons
 	hlcoord 1, 16
 	ld de, BTText_EnterBattle
-	call PlaceString
+	rst PlaceString
 	ld hl, .YesNoMenuHeader
 	call BT_DisplayMenu
 	ld a, [wMenuCursorY]
@@ -415,15 +415,16 @@ BT_CheckEnterState:
 	push af
 	ld hl, wPartyMon1IsEgg
 	call GetPartyLocation
-	bit MON_IS_EGG_F, [hl]
+	ld b, [hl]
+	bit MON_IS_EGG_F, b
 	jr nz, .banned
 	pop af
 	push af
 	ld hl, wPartyMon1Species
 	call GetPartyLocation
-	ld a, [hl]
+	ld c, [hl]
 	ld hl, UberMons
-	call IsInByteArray
+	call GetSpeciesAndFormIndexFromHL
 	jr c, .banned
 	pop af
 
@@ -803,16 +804,13 @@ PlacePartyMonTMHMCompatibility:
 	call PartyMenuCheckEgg
 	jr nz, .next
 	push hl
-	ld hl, wPartySpecies
-	ld e, b
-	ld d, 0
-	add hl, de
+	ld hl, wPartyMon1Species
+	ld a, b
+	call GetPartyLocation
 	ld a, [hl]
 	ld [wCurPartySpecies], a
-	ld a, b
-	ld hl, wPartyMon1Form
-	ld bc, PARTYMON_STRUCT_LENGTH
-	rst AddNTimes
+	ld bc, MON_FORM - MON_SPECIES
+	add hl, bc
 	ld a, [hl]
 	and SPECIESFORM_MASK
 	ld [wCurForm], a
@@ -880,44 +878,19 @@ PlacePartyMonEvoStoneCompatibility:
 	; c = species
 	ld c, e
 	; bc = index
-	call GetSpeciesAndFormIndex
-	dec bc
-	ld hl, EvosAttacksPointers
-	add hl, bc
-	add hl, bc
-	call .DetermineCompatibility
-	pop hl
-	rst PlaceString
-
-.next
-	pop hl
-	ld de, 2 * SCREEN_WIDTH
-	add hl, de
-	pop bc
-	inc b
-	dec c
-	jr nz, .loop
-	ret
-
-.DetermineCompatibility:
-	ld de, wStringBuffer1
-	ld a, BANK(EvosAttacksPointers)
-	ld bc, 2
-	call FarCopyBytes
-	ld hl, wStringBuffer1
-	ld a, [hli]
-	ld h, [hl]
-	ld l, a
-	ld de, wStringBuffer1
+	predef GetEvosAttacksPointer
 ; Reads up to six evolution entries
+	ld de, wStringBuffer1
 	ld a, BANK(EvosAttacks)
 	ld bc, wStringBuffer2 - wStringBuffer1
 	call FarCopyBytes
 	ld hl, wStringBuffer1
+	ld de, .string_not_able
 .loop2
 	ld a, [hli]
-	and a
-	jr z, .nope
+	inc a
+	jr z, .done
+	dec a
 	inc hl
 	inc hl
 	cp EVOLVE_ITEM
@@ -930,10 +903,18 @@ PlacePartyMonEvoStoneCompatibility:
 	inc hl
 	jr nz, .loop2
 	ld de, .string_able
-	ret
+.done
+	pop hl
+	rst PlaceString
 
-.nope
-	ld de, .string_not_able
+.next
+	pop hl
+	ld de, 2 * SCREEN_WIDTH
+	add hl, de
+	pop bc
+	inc b
+	dec c
+	jr nz, .loop
 	ret
 
 .string_able
@@ -953,14 +934,14 @@ PlacePartyMonGender:
 	push hl
 	call PartyMenuCheckEgg
 	jr nz, .next
-	push hl
-	ld hl, wPartySpecies
-	ld e, b
-	ld d, 0
-	add hl, de
-	ld a, [hl]
-	ld [wCurPartySpecies], a
-	pop hl
+	; push hl
+	; ld hl, wPartySpecies
+	; ld e, b
+	; ld d, 0
+	; add hl, de
+	; ld a, [hl]
+	; ld [wCurPartySpecies], a
+	; pop hl
 	ld a, [wCurPartyMon]
 	push af
 	ld a, b
@@ -1006,12 +987,8 @@ PlacePartyMonRemindable:
 	call PartyMenuCheckEgg
 	jr nz, .next
 	push hl
-	ld hl, wPartySpecies
-	ld e, b
-	ld d, 0
-	add hl, de
-	ld a, [hl]
-	ld [wCurPartySpecies], a
+	ld a, b
+	ld [wCurPartyMon], a
 	farcall GetForgottenMoves
 	pop hl
 	call .PlaceAbleNotAble
@@ -1130,8 +1107,7 @@ GetPartyMenuTilemapPointers:
 INCLUDE "data/party_menu_qualities.asm"
 
 InitPartyMenuGFX:
-	ld hl, wPartyCount
-	ld a, [hli]
+	ld a, [wPartyCount]
 	and a
 	ret z
 	ld c, a
@@ -1139,12 +1115,10 @@ InitPartyMenuGFX:
 	ldh [hObjectStructIndexBuffer], a
 .loop
 	push bc
-	push hl
 	farcall LoadPartyMenuMonIcon
 	ldh a, [hObjectStructIndexBuffer]
 	inc a
 	ldh [hObjectStructIndexBuffer], a
-	pop hl
 	pop bc
 	dec c
 	jr nz, .loop
@@ -1250,12 +1224,15 @@ PartyMenuSelect:
 	ld a, [wMenuCursorY]
 	dec a
 	ld [wCurPartyMon], a
-	ld c, a
-	ld b, $0
-	ld hl, wPartySpecies
-	add hl, bc
+	ld bc, PARTYMON_STRUCT_LENGTH
+	ld hl, wPartyMon1Species
+	rst AddNTimes
 	ld a, [hl]
 	ld [wCurPartySpecies], a
+	ld bc, MON_FORM - MON_SPECIES
+	add hl, bc
+	ld a, [hl]
+	ld [wCurForm], a
 
 	ld de, SFX_READ_TEXT_2
 	call PlaySFX

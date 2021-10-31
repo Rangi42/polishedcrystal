@@ -50,30 +50,28 @@ STRING_BUFFER_LENGTH EQU 19
 	const VAR_BATTLERESULT     ; 02
 	const VAR_BATTLETYPE       ; 03
 	const VAR_TIMEOFDAY        ; 04
-	const VAR_DEXCAUGHT        ; 05
-	const VAR_DEXSEEN          ; 06
-	const VAR_BADGES           ; 07
-	const VAR_MOVEMENT         ; 08
-	const VAR_FACING           ; 09
-	const VAR_HOUR             ; 0a
-	const VAR_WEEKDAY          ; 0b
-	const VAR_MAPGROUP         ; 0c
-	const VAR_MAPNUMBER        ; 0d
-	const VAR_UNOWNCOUNT       ; 0e
-	const VAR_ENVIRONMENT      ; 0f
-	const VAR_BOXSPACE         ; 10
-	const VAR_CONTESTMINUTES   ; 11
-	const VAR_XCOORD           ; 12
-	const VAR_YCOORD           ; 13
-	const VAR_SPECIALPHONECALL ; 14
-	const VAR_KURT_APRICORNS   ; 15
-	const VAR_CALLERID         ; 16
-	const VAR_BLUECARDBALANCE  ; 17
-	const VAR_BUENASPASSWORD   ; 18
-	const VAR_KENJI_BREAK      ; 19
-	const VAR_PKMN_JOURNALS    ; 1a
-	const VAR_TRAINER_STARS    ; 1b
-NUM_VARS EQU const_value           ; 1c
+	const VAR_BADGES           ; 05
+	const VAR_MOVEMENT         ; 06
+	const VAR_FACING           ; 07
+	const VAR_HOUR             ; 08
+	const VAR_WEEKDAY          ; 09
+	const VAR_MAPGROUP         ; 0a
+	const VAR_MAPNUMBER        ; 0b
+	const VAR_UNOWNCOUNT       ; 0c
+	const VAR_ENVIRONMENT      ; 0d
+	const VAR_BOXSPACE         ; 0e
+	const VAR_CONTESTMINUTES   ; 0f
+	const VAR_XCOORD           ; 10
+	const VAR_YCOORD           ; 11
+	const VAR_SPECIALPHONECALL ; 12
+	const VAR_KURT_APRICORNS   ; 13
+	const VAR_CALLERID         ; 14
+	const VAR_BLUECARDBALANCE  ; 15
+	const VAR_BUENASPASSWORD   ; 16
+	const VAR_KENJI_BREAK      ; 17
+	const VAR_PKMN_JOURNALS    ; 18
+	const VAR_TRAINER_STARS    ; 19
+NUM_VARS EQU const_value           ; 1a
 
 ; variable action types
 RETVAR_STRBUF2 EQU 0 << 6

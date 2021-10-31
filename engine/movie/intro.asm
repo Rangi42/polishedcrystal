@@ -318,7 +318,7 @@ IntroScene7:
 	call ClearSpriteAnims
 	depixel 13, 27, 4, 0
 	ld a, SPRITE_ANIM_INDEX_INTRO_SUICUNE
-	call _InitSpriteAnimStruct
+	call InitSpriteAnimStruct
 	ld a, $f0
 	ld [wGlobalAnimXOffset], a
 	call Intro_SetCGBPalUpdate
@@ -411,7 +411,7 @@ IntroScene10:
 	depixel 22, 6
 	ld a, SPRITE_ANIM_INDEX_INTRO_WOOPER
 .got_anim
-	call _InitSpriteAnimStruct
+	call InitSpriteAnimStruct
 	ld de, SFX_INTRO_PICHU
 	jmp PlaySFX
 
@@ -552,7 +552,7 @@ IntroScene13:
 	call ClearSpriteAnims
 	depixel 13, 11, 4, 0
 	ld a, SPRITE_ANIM_INDEX_INTRO_SUICUNE
-	call _InitSpriteAnimStruct
+	call InitSpriteAnimStruct
 	ld de, MUSIC_CRYSTAL_OPENING
 	call PlayMusic
 	xor a
@@ -657,10 +657,10 @@ IntroScene15:
 	call Intro_SetCGBPalUpdate
 	depixel 8, 5
 	ld a, SPRITE_ANIM_INDEX_INTRO_UNOWN_F
-	call _InitSpriteAnimStruct
+	call InitSpriteAnimStruct
 	depixel 12, 0
 	ld a, SPRITE_ANIM_INDEX_INTRO_SUICUNE_AWAY
-	call _InitSpriteAnimStruct
+	call InitSpriteAnimStruct
 	xor a
 	ld [wIntroSceneFrameCounter], a
 	ld [wIntroSceneTimer], a
@@ -801,7 +801,7 @@ IntroScene19:
 	call Intro_SetCGBPalUpdate
 	depixel 12, 0
 	ld a, SPRITE_ANIM_INDEX_INTRO_SUICUNE_AWAY
-	call _InitSpriteAnimStruct
+	call InitSpriteAnimStruct
 	xor a
 	ld [wIntroSceneFrameCounter], a
 	ld [wIntroSceneTimer], a
@@ -1102,7 +1102,7 @@ endc
 CrystalIntro_InitUnownAnim:
 	push de
 	ld a, SPRITE_ANIM_INDEX_INTRO_UNOWN
-	call _InitSpriteAnimStruct
+	call InitSpriteAnimStruct
 	ld hl, SPRITEANIMSTRUCT_VAR1
 	add hl, bc
 	ld [hl], $8
@@ -1112,7 +1112,7 @@ CrystalIntro_InitUnownAnim:
 
 	push de
 	ld a, SPRITE_ANIM_INDEX_INTRO_UNOWN
-	call _InitSpriteAnimStruct
+	call InitSpriteAnimStruct
 	ld hl, SPRITEANIMSTRUCT_VAR1
 	add hl, bc
 	ld [hl], $18
@@ -1122,7 +1122,7 @@ CrystalIntro_InitUnownAnim:
 
 	push de
 	ld a, SPRITE_ANIM_INDEX_INTRO_UNOWN
-	call _InitSpriteAnimStruct
+	call InitSpriteAnimStruct
 	ld hl, SPRITEANIMSTRUCT_VAR1
 	add hl, bc
 	ld [hl], $28
@@ -1131,7 +1131,7 @@ CrystalIntro_InitUnownAnim:
 	pop de
 
 	ld a, SPRITE_ANIM_INDEX_INTRO_UNOWN
-	call _InitSpriteAnimStruct
+	call InitSpriteAnimStruct
 	ld hl, SPRITEANIMSTRUCT_VAR1
 	add hl, bc
 	ld [hl], $38
@@ -1143,11 +1143,9 @@ CrystalIntro_UnownFade:
 	add a
 	add a
 	ld e, a
-	ld d, $0
-	ld hl, wBGPals2
+	ld d, 0
+	ld hl, wBGPals2 + 2
 	add hl, de
-	inc hl
-	inc hl
 	ld a, [wIntroSceneTimer]
 	and $3f
 	cp $1f + 1
@@ -1347,12 +1345,9 @@ Intro_FadeUnownWordPals:
 	add a
 	add a
 	ld e, a
-	ld d, $0
-	ld hl, wBGPals2
+	ld d, 0
+	ld hl, wBGPals2 + 4
 	add hl, de
-rept 4
-	inc hl
-endr
 	ld a, [wIntroSceneTimer]
 	add a
 	ld c, a

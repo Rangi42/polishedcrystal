@@ -10,10 +10,9 @@ Pokepic::
 	jr .got_palette
 .partymon
 	farcall LoadPartyMonPalette
-	ld hl, wPartyMon1Form
-	ld a, [wCurPartyMon]
-	call GetPartyLocation
-	farcall GetVariant
+	ld a, MON_FORM
+	call GetPartyParamLocationAndValue
+	ld [wCurForm], a
 .got_palette
 	call UpdateTimePals
 	xor a

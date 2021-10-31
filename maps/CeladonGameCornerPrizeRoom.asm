@@ -148,7 +148,7 @@ CeladonGameCornerPokemonVendor:
 	waitbutton
 	givepoke MR__MIME, 10
 	iffalse_jumpopenedtext CeladonPrizeRoom_NotEnoughRoomText
-	setval MR__MIME
+	setmonval MR__MIME
 	special Special_GameCornerPrizeMonCheckDex
 	takecoins CELADONGAMECORNERPRIZEROOM_MR__MIME_COINS
 	sjump .loop
@@ -165,7 +165,7 @@ CeladonGameCornerPokemonVendor:
 	waitbutton
 	givepoke EEVEE, 20
 	iffalse_jumpopenedtext CeladonPrizeRoom_NotEnoughRoomText
-	setval EEVEE
+	setmonval EEVEE
 	special Special_GameCornerPrizeMonCheckDex
 	takecoins CELADONGAMECORNERPRIZEROOM_EEVEE_COINS
 	sjump .loop
@@ -182,7 +182,7 @@ CeladonGameCornerPokemonVendor:
 	waitbutton
 	givepoke PORYGON, 30
 	iffalse_jumpopenedtext CeladonPrizeRoom_NotEnoughRoomText
-	setval PORYGON
+	setmonval PORYGON
 	special Special_GameCornerPrizeMonCheckDex
 	takecoins CELADONGAMECORNERPRIZEROOM_PORYGON_COINS
 	sjump .loop

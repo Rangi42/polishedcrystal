@@ -9,6 +9,26 @@ ForcePushOAM:
 	ld a, HIGH(wVirtualOAM)
 	jmp hPushOAM
 
+ContinueGDMACopy:
+	push hl
+	ld hl, rHDMA3
+	jr _GDMACopy
+GDMACopy:
+; Copy a+1 tiles from de to bc. Preserves all registers. Assumes GDMA is valid.
+	push hl
+	ld hl, rHDMA1
+	ld [hl], d
+	inc hl
+	ld [hl], e
+	inc hl
+_GDMACopy:
+	ld [hl], b
+	inc hl
+	ld [hl], c
+	ldh [rHDMA5], a
+	pop hl
+	ret
+
 DMATransfer::
 ; Return carry if the transfer is completed.
 
@@ -267,10 +287,8 @@ endr
 	dec a
 	jr nz, .row
 
-	ldh a, [hSPBuffer]
-	ld l, a
-	ldh a, [hSPBuffer + 1]
-	ld h, a
+	ld sp, hSPBuffer
+	pop hl
 	ld sp, hl
 	ret
 
@@ -302,9 +320,8 @@ _Serve1bppRequest::
 	ld a, [hli]
 	ld d, a
 ; Source
-	ld a, [hli]
-	ld h, [hl]
-	ld l, a
+	ld sp, hl
+	pop hl
 	ld sp, hl
 	ld h, d
 	ld l, e
@@ -382,9 +399,8 @@ _Serve2bppRequest::
 	ld a, [hli]
 	ld d, a
 ; Source
-	ld a, [hli]
-	ld h, [hl]
-	ld l, a
+	ld sp, hl
+	pop hl
 	ld sp, hl
 	ld h, d
 	ld l, e
@@ -405,10 +421,8 @@ WriteVTileSourceAndDestinationAndReturn:
 	ld sp, hl
 	ld [hRequestedVTileDest], sp
 
-	ldh a, [hSPBuffer]
-	ld l, a
-	ldh a, [hSPBuffer + 1]
-	ld h, a
+	ld sp, hSPBuffer
+	pop hl
 	ld sp, hl
 	ret
 

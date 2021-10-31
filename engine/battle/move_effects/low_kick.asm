@@ -7,7 +7,11 @@ BattleCommand_lowkick:
 	jr nz, .got_opp_species
 	ld hl, wEnemyMonSpecies
 .got_opp_species
-	ld a, [hl]
+	ld c, [hl]
+	assert wBattleMonForm - wBattleMonSpecies == wEnemyMonForm - wEnemyMonSpecies
+	ld de, wBattleMonForm - wBattleMonSpecies
+	add hl, de
+	ld b, [hl]
 	farcall GetSpeciesWeight
 	ld d, h
 	ld e, l

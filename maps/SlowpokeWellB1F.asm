@@ -18,7 +18,7 @@ SlowpokeWellB1F_MapScriptHeader:
 	object_event 10,  4, SPRITE_ROCKET_GIRL, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 4, GenericTrainerGruntF1, EVENT_SLOWPOKE_WELL_ROCKETS
 	object_event  0, 17, SPRITE_KURT, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, OBJECTTYPE_COMMAND, end, NULL, EVENT_SLOWPOKE_WELL_KURT
 	object_event  7,  4, SPRITE_SLOWPOKETAIL, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, SlowpokeWellB1FSlowpokeWithMailScript, EVENT_SLOWPOKE_WELL_SLOWPOKES
-	object_event  6,  2, SPRITE_SLOWPOKETAIL, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, 0, OBJECTTYPE_POKEMON, SLOWPOKE, SlowpokeWellB1FTaillessSlowpokeText, EVENT_SLOWPOKE_WELL_SLOWPOKES
+	object_event  6,  2, SPRITE_SLOWPOKETAIL, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, SlowpokeWellB1FTaillessSlowpokeScript, EVENT_SLOWPOKE_WELL_SLOWPOKES
 	strengthboulder_event  3, 2
 	itemball_event 10,  3, SUPER_POTION, 1, EVENT_SLOWPOKE_WELL_B1F_SUPER_POTION
 
@@ -113,6 +113,10 @@ SlowpokeWellB1FSlowpokeWithMailScript:
 	yesorno
 	iftrue_jumpopenedtext SlowpokeWellB1FSlowpokeMailText
 	endtext
+
+SlowpokeWellB1FTaillessSlowpokeScript:
+	showcrytext SlowpokeWellB1FTaillessSlowpokeText, SLOWPOKE
+	end
 
 KurtSlowpokeWellVictoryMovementData:
 	step_left

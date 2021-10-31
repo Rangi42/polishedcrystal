@@ -161,7 +161,7 @@ ItemEffects:
 	dw IsntTheTimeMessage ; SMOKE_BALL
 	dw IsntTheTimeMessage ; BERSERK_GENE
 	dw IsntTheTimeMessage ; LIGHT_BALL
-	dw IsntTheTimeMessage ; STICK
+	dw IsntTheTimeMessage ; LEEK
 	dw IsntTheTimeMessage ; THICK_CLUB
 	dw IsntTheTimeMessage ; LUCKY_PUNCH
 	dw IsntTheTimeMessage ; METAL_POWDER
@@ -455,6 +455,7 @@ PokeBallEffect:
 	ld a, [wOTPartyMon1Form]
 	and SPECIESFORM_MASK
 	ld [wCurForm], a
+	ld [wTempForm], a
 	call GetBaseData
 
 	pop af
@@ -462,22 +463,15 @@ PokeBallEffect:
 	ld [wCurPartySpecies], a
 	ld [wTempSpecies], a
 
-	push af
-	cp UNOWN
-	jr nz, .unown_done
-	ld hl, wOTPartyMon1Form
-	predef GetVariant
-	farcall UpdateUnownDex
-.unown_done
-	pop af
-
-	dec a
+	ld hl, wTempSpecies
+	ld a, [hli]
+	ld c, a
+	ld b, [hl]
+	push bc
 	call CheckCaughtMon
-
 	ld a, c
+	pop bc
 	push af
-	ld a, [wTempSpecies]
-	dec a
 	call SetSeenAndCaughtMon
 	pop af
 	and a
@@ -493,6 +487,8 @@ PokeBallEffect:
 
 	ld a, [wOTPartyMon1Species]
 	ld [wTempSpecies], a
+	ld a, [wOTPartyMon1Form]
+	ld [wTempForm], a ; is any of this necessary?
 	farcall NewPokedexEntry
 
 .skip_pokedex
@@ -535,7 +531,6 @@ PokeBallEffect:
 	ld bc, NAME_LENGTH
 	rst CopyBytes
 	pop af
-	push af
 	ld hl, wPartyMonNicknames
 	call SkipNames
 	ld d, h
@@ -543,14 +538,6 @@ PokeBallEffect:
 	ld hl, wOTPartyMonNicknames
 	ld bc, MON_NAME_LENGTH
 	rst CopyBytes
-	pop af
-	ld b, 0
-	ld c, a
-	ld hl, wPartySpecies
-	add hl, bc
-	ld a, [wOTPartyMon1Species]
-	ld [hli], a
-	ld [hl], $ff
 
 	farcall SetCaughtData
 
@@ -581,9 +568,7 @@ PokeBallEffect:
 	bit NUZLOCKE_MODE, a
 	jr nz, .AlwaysNickname
 
-	ld a, [wCurPartySpecies]
-	ld [wNamedObjectIndex], a
-	call GetPokemonName
+	call GetPartyPokemonName
 
 	ld hl, Text_AskNicknameNewlyCaughtMon
 	call PrintText
@@ -642,9 +627,7 @@ PokeBallEffect:
 	bit NUZLOCKE_MODE, a
 	jr nz, .AlwaysNicknameBox
 
-	ld a, [wCurPartySpecies]
-	ld [wNamedObjectIndex], a
-	call GetPokemonName
+	call GetPartyPokemonName
 
 	ld hl, Text_AskNicknameNewlyCaughtMon
 	call PrintText
@@ -738,6 +721,9 @@ PokeBallEffect:
 	ld a, $f
 	ld [wCryTracks], a
 	ld a, [wTempEnemyMonSpecies]
+	ld c, a
+	ld a, [wCurForm]
+	ld b, a
 	call PlayStereoCry
 
 .skip_cry
@@ -767,11 +753,10 @@ PokeBallEffect:
 	call ClearBGPalettes
 	call ClearTileMap
 
-	push af
 	ld a, CGB_BATTLE_COLORS
 	call GetCGBLayout
 	call SetPalettes
-	pop af
+	xor a
 
 .toss
 	ld hl, wNumItems
@@ -857,8 +842,7 @@ EvoStoneEffect:
 	jmp c, ItemNotUsed_ExitMenu
 
 	ld a, MON_ITEM
-	call GetPartyParamLocation
-	ld a, [hl]
+	call GetPartyParamLocationAndValue
 	cp EVERSTONE
 	jr z, .no_effect
 
@@ -879,8 +863,7 @@ LowerEVBerry:
 	jmp c, ItemNotUsed_ExitMenu
 
 	ld a, MON_HAPPINESS
-	call GetPartyParamLocation
-	ld a, [hl]
+	call GetPartyParamLocationAndValue
 	inc a
 	push af
 	call SetUpEVModifier
@@ -948,7 +931,7 @@ SetUpEVModifier:
 	call UseItem_GetBaseDataAndNickParameters
 	call GetEVRelativePointer
 	ld a, MON_EVS
-	jmp GetPartyParamLocation
+	jmp GetPartyParamLocationAndValue
 
 GetStatStringAndPlayFullHealSFX:
 	call GetEVRelativePointer
@@ -993,9 +976,7 @@ RareCandy:
 	call UseItem_GetBaseDataAndNickParameters
 
 	ld a, MON_LEVEL
-	call GetPartyParamLocation
-
-	ld a, [hl]
+	call GetPartyParamLocationAndValue
 	cp MAX_LEVEL
 	jmp nc, EvoStoneEffect.force_evolution
 
@@ -1008,7 +989,7 @@ RareCandy:
 
 	pop de
 	ld a, MON_EXP
-	call GetPartyParamLocation
+	call GetPartyParamLocationAndValue
 
 	ldh a, [hMultiplicand]
 	ld [hli], a
@@ -1074,8 +1055,7 @@ UseStatusHealer:
 	jr z, .no_good
 	call GetItemHealingAction
 	ld a, MON_STATUS
-	call GetPartyParamLocation
-	ld a, [hl]
+	call GetPartyParamLocationAndValue
 	and c
 	jr nz, .good
 
@@ -1228,7 +1208,7 @@ FullRestore:
 	ld [wLowHealthAlarm], a
 	call ReviveFullHP
 	ld a, MON_STATUS
-	call GetPartyParamLocation
+	call GetPartyParamLocationAndValue
 	xor a
 	ld [hli], a
 	ld [hl], a
@@ -1350,8 +1330,8 @@ UseItem_SelectMon_Loop:
 	call ChoosePkmnToUseItemOn
 	jr c, .done
 	ld a, MON_IS_EGG
-	call GetPartyParamLocation
-	bit MON_IS_EGG_F, [hl]
+	call GetPartyParamLocationAndValue
+	bit MON_IS_EGG_F, a
 	jr z, .not_egg
 	call CantUseOnEggMessage
 	jr .handle_loop
@@ -1395,8 +1375,8 @@ UseItem_DoSelectMon:
 	ret c
 
 	ld a, MON_IS_EGG
-	call GetPartyParamLocation
-	bit MON_IS_EGG_F, [hl]
+	call GetPartyParamLocationAndValue
+	bit MON_IS_EGG_F, a
 	jr z, .not_egg
 
 	call CantUseOnEggMessage
@@ -1413,8 +1393,7 @@ UseItem_GetBaseDataAndNickParameters:
 	ld [wCurSpecies], a
 	ld [wTempSpecies], a
 	ld a, MON_FORM
-	call GetPartyParamLocation
-	ld a, [hl]
+	call GetPartyParamLocationAndValue
 	and SPECIESFORM_MASK
 	ld [wCurForm], a
 	call GetBaseData
@@ -1424,11 +1403,11 @@ UseItem_GetBaseDataAndNickParameters:
 
 UseItem_GetHPParameter:
 	ld a, MON_HP
-	jmp GetPartyParamLocation
+	jmp GetPartyParamLocationAndValue
 
 UseItem_GetMaxHPParameter:
 	ld a, MON_MAXHP
-	jmp GetPartyParamLocation
+	jmp GetPartyParamLocationAndValue
 
 ChoosePkmnToUseItemOn:
 	farcall InitPartyMenuLayout
@@ -2427,7 +2406,7 @@ UsedItemText:
 
 ApplyPPUp:
 	ld a, MON_MOVES
-	call GetPartyParamLocation
+	call GetPartyParamLocationAndValue
 	push hl
 	ld de, wBuffer1
 	predef FillPP
@@ -2522,10 +2501,10 @@ RestoreTempPP:
 
 RestoreAllPP:
 	ld a, MON_PP
-	call GetPartyParamLocation
+	call GetPartyParamLocationAndValue
 	push hl
 	ld a, MON_MOVES
-	call GetPartyParamLocation
+	call GetPartyParamLocationAndValue
 	pop de
 	xor a ; PARTYMON
 	ld [wMonType], a
@@ -2656,7 +2635,7 @@ AbilityCap:
 	push hl
 	call UseItem_GetBaseDataAndNickParameters
 	ld a, MON_ABILITY
-	call GetPartyParamLocation
+	call GetPartyParamLocationAndValue
 	ld d, h
 	ld e, l
 	pop hl

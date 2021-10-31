@@ -20,8 +20,11 @@ GetName::
 	cp MON_NAME
 	jr nz, .NotPokeName
 
+	ld hl, wNamedObjectIndex
 	ld a, [wCurSpecies]
-	ld [wNamedObjectIndex], a
+	ld [hli], a
+	ld a, [wCurForm]
+	ld [hl], a
 	call GetPokemonName
 	ld hl, MON_NAME_LENGTH
 	add hl, de
@@ -95,25 +98,32 @@ GetBasePokemonName::
 	pop hl
 	ret
 
+GetPartyPokemonName::
+; Get Pokemon name wCurPartySpecies + wCurForm
+	push hl
+	ld hl, wNamedObjectIndex
+	ld a, [wCurPartySpecies]
+	ld [hli], a
+	ld a, [wCurForm]
+	ld [hl], a
+	pop hl
+	; fall-through
 GetPokemonName::
 ; Get Pokemon name wNamedObjectIndex.
 	push hl
 
 ; Each name is ten characters
-	push bc
-	ld a, [wNamedObjectIndex]
-	ld c, a
-	ld a, [wCurForm]
-	ld b, a
-	call GetExtendedSpeciesIndex
-	ld d, b
-	ld e, c
-	pop bc
+	ld hl, wNamedObjectIndex
+	ld a, [hli]
+	ld e, a
+	ld a, [hl]
+	call ConvertFormToExtendedSpecies
+	ld d, a
 	ld h, d
 	ld l, e
+	add hl, hl ; hl = hl * 2
 	add hl, hl ; hl = hl * 4
-	add hl, hl ; hl = hl * 4
-	add hl, de ; hl = (hl*4) + de
+	add hl, de ; hl = (hl*4) + hl
 	add hl, hl ; hl = (5*hl) + (5*hl)
 	ld de, PokemonNames
 	add hl, de

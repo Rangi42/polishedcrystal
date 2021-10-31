@@ -1307,10 +1307,15 @@ IdentifiedText:
 	cont "<TARGET>!"
 	prompt
 
-StartPerishText:
+StartPerishSongText:
 	text "#mon that heard"
 	line "the song will"
 	cont "faint in 3 turns!"
+	prompt
+
+StartPerishBodyText:
+	text "Both #mon will"
+	line "faint in 3 turns!"
 	prompt
 
 SandstormBrewedText:

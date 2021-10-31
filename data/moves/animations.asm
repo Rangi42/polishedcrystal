@@ -2731,7 +2731,7 @@ BattleAnim_DazzlinGleam:
 BattleAnim_Flash:
 	anim_1gfx ANIM_GFX_SPEED
 	anim_sound 0, 1, SFX_FLASH
-	anim_bgeffect ANIM_BG_FLASH_INVERTED, $0, $6, $20
+	anim_bgeffect ANIM_BG_FLASH_INVERTED, $0, $8, $40
 	anim_wait 4
 	anim_obj ANIM_OBJ_FLASH, -15, 0,   7, 0, $0
 	anim_wait 4

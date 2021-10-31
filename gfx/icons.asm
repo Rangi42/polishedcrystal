@@ -68,7 +68,7 @@ SECTION "Mon Icons 4", ROMX
 VenomothIcon::     INCBIN "gfx/icons/venomoth.2bpp.lz"
 DiglettIcon::      INCBIN "gfx/icons/diglett.2bpp.lz"
 DugtrioIcon::      INCBIN "gfx/icons/dugtrio.2bpp.lz"
-MeowthIcon::       INCBIN "gfx/icons/meowth.2bpp.lz"
+MeowthPlainIcon::  INCBIN "gfx/icons/meowth_plain.2bpp.lz"
 PersianIcon::      INCBIN "gfx/icons/persian.2bpp.lz"
 PsyduckIcon::      INCBIN "gfx/icons/psyduck.2bpp.lz"
 GolduckIcon::      INCBIN "gfx/icons/golduck.2bpp.lz"
@@ -105,22 +105,22 @@ SlowbroIcon::      INCBIN "gfx/icons/slowbro.2bpp.lz"
 
 SECTION "Mon Icons 6", ROMX
 
-MagnemiteIcon::    INCBIN "gfx/icons/magnemite.2bpp.lz"
-MagnetonIcon::     INCBIN "gfx/icons/magneton.2bpp.lz"
-FarfetchdIcon::    INCBIN "gfx/icons/farfetch_d.2bpp.lz"
-DoduoIcon::        INCBIN "gfx/icons/doduo.2bpp.lz"
-DodrioIcon::       INCBIN "gfx/icons/dodrio.2bpp.lz"
-SeelIcon::         INCBIN "gfx/icons/seel.2bpp.lz"
-DewgongIcon::      INCBIN "gfx/icons/dewgong.2bpp.lz"
-GrimerIcon::       INCBIN "gfx/icons/grimer.2bpp.lz"
-MukIcon::          INCBIN "gfx/icons/muk.2bpp.lz"
-ShellderIcon::     INCBIN "gfx/icons/shellder.2bpp.lz"
-CloysterIcon::     INCBIN "gfx/icons/cloyster.2bpp.lz"
-GastlyIcon::       INCBIN "gfx/icons/gastly.2bpp.lz"
-HaunterIcon::      INCBIN "gfx/icons/haunter.2bpp.lz"
-GengarIcon::       INCBIN "gfx/icons/gengar.2bpp.lz"
-OnixIcon::         INCBIN "gfx/icons/onix.2bpp.lz"
-DrowzeeIcon::      INCBIN "gfx/icons/drowzee.2bpp.lz"
+MagnemiteIcon::      INCBIN "gfx/icons/magnemite.2bpp.lz"
+MagnetonIcon::       INCBIN "gfx/icons/magneton.2bpp.lz"
+FarfetchDPlainIcon:: INCBIN "gfx/icons/farfetch_d_plain.2bpp.lz"
+DoduoIcon::          INCBIN "gfx/icons/doduo.2bpp.lz"
+DodrioIcon::         INCBIN "gfx/icons/dodrio.2bpp.lz"
+SeelIcon::           INCBIN "gfx/icons/seel.2bpp.lz"
+DewgongIcon::        INCBIN "gfx/icons/dewgong.2bpp.lz"
+GrimerIcon::         INCBIN "gfx/icons/grimer.2bpp.lz"
+MukIcon::            INCBIN "gfx/icons/muk.2bpp.lz"
+ShellderIcon::       INCBIN "gfx/icons/shellder.2bpp.lz"
+CloysterIcon::       INCBIN "gfx/icons/cloyster.2bpp.lz"
+GastlyIcon::         INCBIN "gfx/icons/gastly.2bpp.lz"
+HaunterIcon::        INCBIN "gfx/icons/haunter.2bpp.lz"
+GengarIcon::         INCBIN "gfx/icons/gengar.2bpp.lz"
+OnixIcon::           INCBIN "gfx/icons/onix.2bpp.lz"
+DrowzeeIcon::        INCBIN "gfx/icons/drowzee.2bpp.lz"
 
 
 SECTION "Mon Icons 7", ROMX
@@ -154,7 +154,7 @@ TogeticIcon::      INCBIN "gfx/icons/togetic.2bpp.lz"
 TogekissIcon::     INCBIN "gfx/icons/togekiss.2bpp.lz"
 StaryuIcon::       INCBIN "gfx/icons/staryu.2bpp.lz"
 StarmieIcon::      INCBIN "gfx/icons/starmie.2bpp.lz"
-MrMimeIcon::       INCBIN "gfx/icons/mr__mime.2bpp.lz"
+MrMimePlainIcon::  INCBIN "gfx/icons/mr__mime_plain.2bpp.lz"
 ScytherIcon::      INCBIN "gfx/icons/scyther.2bpp.lz"
 JynxIcon::         INCBIN "gfx/icons/jynx.2bpp.lz"
 ElectabuzzIcon::   INCBIN "gfx/icons/electabuzz.2bpp.lz"
@@ -278,7 +278,7 @@ MagcargoIcon::     INCBIN "gfx/icons/magcargo.2bpp.lz"
 SwinubIcon::       INCBIN "gfx/icons/swinub.2bpp.lz"
 PiloswineIcon::    INCBIN "gfx/icons/piloswine.2bpp.lz"
 MamoswineIcon::    INCBIN "gfx/icons/mamoswine.2bpp.lz"
-CorsolaIcon::      INCBIN "gfx/icons/corsola.2bpp.lz"
+CorsolaPlainIcon:: INCBIN "gfx/icons/corsola_plain.2bpp.lz"
 RemoraidIcon::     INCBIN "gfx/icons/remoraid.2bpp.lz"
 OctilleryIcon::    INCBIN "gfx/icons/octillery.2bpp.lz"
 
@@ -325,6 +325,42 @@ MewtwoArmoredIcon:: INCBIN "gfx/icons/mewtwo_armored.2bpp.lz"
 
 SECTION "Mon Icons 17", ROMX
 
+SpearowIcon::      INCBIN "gfx/icons/spearow.2bpp.lz"
+FearowIcon::       INCBIN "gfx/icons/fearow.2bpp.lz"
+LickitungIcon::    INCBIN "gfx/icons/lickitung.2bpp.lz"
+GoldeenIcon::      INCBIN "gfx/icons/goldeen.2bpp.lz"
+SeakingIcon::      INCBIN "gfx/icons/seaking.2bpp.lz"
+CleffaIcon::       INCBIN "gfx/icons/cleffa.2bpp.lz"
+IgglybuffIcon::    INCBIN "gfx/icons/igglybuff.2bpp.lz"
+HoppipIcon::       INCBIN "gfx/icons/hoppip.2bpp.lz"
+SkiploomIcon::     INCBIN "gfx/icons/skiploom.2bpp.lz"
+JumpluffIcon::     INCBIN "gfx/icons/jumpluff.2bpp.lz"
+AipomIcon::        INCBIN "gfx/icons/aipom.2bpp.lz"
+DelibirdIcon::     INCBIN "gfx/icons/delibird.2bpp.lz"
+StantlerIcon::     INCBIN "gfx/icons/stantler.2bpp.lz"
+SmoochumIcon::     INCBIN "gfx/icons/smoochum.2bpp.lz"
+AzurillIcon::      INCBIN "gfx/icons/azurill.2bpp.lz"
+WynautIcon::       INCBIN "gfx/icons/wynaut.2bpp.lz"
+
+
+SECTION "Mon Icons 18", ROMX
+
+AmbipomIcon::      INCBIN "gfx/icons/ambipom.2bpp.lz"
+BonslyIcon::       INCBIN "gfx/icons/bonsly.2bpp.lz"
+MimeJrIcon::       INCBIN "gfx/icons/mime_jr_.2bpp.lz"
+HappinyIcon::      INCBIN "gfx/icons/happiny.2bpp.lz"
+MantykeIcon::      INCBIN "gfx/icons/mantyke.2bpp.lz"
+LickilickyIcon::   INCBIN "gfx/icons/lickilicky.2bpp.lz"
+PerrserkerIcon::   INCBIN "gfx/icons/perrserker.2bpp.lz"
+CursolaIcon::      INCBIN "gfx/icons/cursola.2bpp.lz"
+SirfetchDIcon::    INCBIN "gfx/icons/sirfetch_d.2bpp.lz"
+MrRimeIcon::       INCBIN "gfx/icons/mr__rime.2bpp.lz"
+MrMimeGalarianIcon:: INCBIN "gfx/icons/mr__mime_galarian.2bpp.lz"
+CorsolaGalarianIcon:: INCBIN "gfx/icons/corsola_galarian.2bpp.lz"
+
+
+SECTION "Mon Icons 19", ROMX
+
 UnownBIcon::       INCBIN "gfx/icons/unown_b.2bpp.lz"
 UnownCIcon::       INCBIN "gfx/icons/unown_c.2bpp.lz"
 UnownDIcon::       INCBIN "gfx/icons/unown_d.2bpp.lz"
@@ -343,7 +379,7 @@ UnownPIcon::       INCBIN "gfx/icons/unown_p.2bpp.lz"
 UnownQIcon::       INCBIN "gfx/icons/unown_q.2bpp.lz"
 
 
-SECTION "Mon Icons 18", ROMX
+SECTION "Mon Icons 20", ROMX
 
 UnownRIcon::       INCBIN "gfx/icons/unown_r.2bpp.lz"
 UnownSIcon::       INCBIN "gfx/icons/unown_s.2bpp.lz"
@@ -357,3 +393,5 @@ UnownZIcon::       INCBIN "gfx/icons/unown_z.2bpp.lz"
 UnownExclamationIcon:: INCBIN "gfx/icons/unown_exclamation.2bpp.lz"
 UnownQuestionIcon:: INCBIN "gfx/icons/unown_question.2bpp.lz"
 ExeggutorAlolanIcon:: INCBIN "gfx/icons/exeggutor_alolan.2bpp.lz"
+MeowthGalarianIcon:: INCBIN "gfx/icons/meowth_galarian.2bpp.lz"
+FarfetchDGalarianIcon:: INCBIN "gfx/icons/farfetch_d_galarian.2bpp.lz"

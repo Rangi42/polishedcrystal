@@ -12,13 +12,12 @@ BattleCommand_protect:
 	jmp StdBattleTextbox
 
 ProtectChance:
-	ld de, wPlayerProtectCount
 	ldh a, [hBattleTurn]
 	and a
-	jr z, .asm_37637
+	ld de, wPlayerProtectCount
+	jr z, .got_protect_count
 	ld de, wEnemyProtectCount
-.asm_37637
-
+.got_protect_count
 	call CheckOpponentWentFirst
 	jr nz, .failed
 

@@ -123,7 +123,13 @@ BattleCommand_transform:
 	jr nz, .pp_loop
 	pop hl
 	ld a, [hl]
-	ld [wNamedObjectIndex], a
+	assert wBattleMonForm - wBattleMonSpecies == wEnemyMonForm - wEnemyMonSpecies
+	ld bc, wBattleMonForm - wBattleMonSpecies
+	add hl, bc
+	ld b, [hl]
+	ld hl, wNamedObjectIndex
+	ld [hli], a
+	ld [hl], b
 	call GetPokemonName
 	ld hl, wEnemyStatLevels
 	ld de, wPlayerStatLevels

@@ -207,7 +207,8 @@ wSpriteAnimationStructsEnd::
 wSpriteAnimCount:: db
 wCurSpriteOAMAddr:: db
 
-wCurIcon:: db
+wCurIcon::
+wCurIconSpecies:: db
 wCurIconPersonality::
 wCurIconShiny:: db
 wCurIconForm:: db
@@ -274,6 +275,7 @@ wVirtualOAMEnd::
 
 SECTION "Tilemap and Attrmap", WRAM0
 
+; Some code depend on these being next to each other in memory.
 wTileMap::
 ; 20x18 grid of 8x8 tiles
 	ds SCREEN_WIDTH * SCREEN_HEIGHT
@@ -337,8 +339,10 @@ wLinkPlayerFixedPartyMon1ID:: ds 3
 
 
 SECTION UNION "Misc 480", WRAM0
-; battle
+; battle + pokédex (merged because pokédex can be called from battle)
 
+UNION
+; Battle data
 wBattle::
 wEnemyMoveStruct::  move_struct wEnemyMoveStruct
 wPlayerMoveStruct:: move_struct wPlayerMoveStruct
@@ -347,8 +351,6 @@ wEnemyMonNickname::  ds MON_NAME_LENGTH
 wBattleMonNickname:: ds MON_NAME_LENGTH
 
 wBattleMon:: battle_struct wBattleMon
-
-	ds 2
 
 wWildMon:: db
 	ds 1
@@ -383,7 +385,7 @@ wPlayerSubStatus1::
 ; 7 attract
 ; 6 flash fire
 ; 5 endure
-; 4 perish song
+; 4 unused
 ; 3 identified
 ; 2 protect
 ; 1 curse
@@ -446,7 +448,6 @@ wPlayerDisableCount:: db
 wPlayerEncoreCount:: db ; also for choice-locking
 wPlayerPerishCount:: db
 wPlayerProtectCount:: db
-	ds 1
 
 wEnemyAbility:: db
 wEnemyRolloutCount:: db
@@ -456,14 +457,13 @@ wEnemyDisableCount:: db
 wEnemyEncoreCount:: db
 wEnemyPerishCount:: db
 wEnemyProtectCount:: db
-	ds 1
+
+wCriticalCount:: ds PARTY_LENGTH ; for g-Farfetch'd evolution
 wBattleSubStatusWRAMEnd::
 
 wDamageTaken::
 ; Format: $xy yy, x = total multihit hits, y = total damage
 	dw
-
-	ds 2 ; unused
 
 wBattleReward:: ds 3
 wBattleAnimParam::
@@ -665,7 +665,76 @@ wAmuletCoin:: db
 
 wDVAndPersonalityBuffer:: ds 5
 wBattleEnd::
+NEXTU
+wTempDexFound:: flag_array NUM_EXT_POKEMON
+wTempDexEnd::
+wTempDexFoundSpecies:: flag_array NUM_SPECIES
+wTempDexSpeciesEnd::
+ENDU
 
+; Pokédex data.
+wPokedex_HBlankCode::
+wPokedex_HBlankHeader:: ds 9 ; push af, backup rombank, bankswitch, call...
+wPokedex_HBlankFunction:: dw ; ...(function to call)...
+wPokedex_HBlankFooter:: ds 5 ; ...restore backup, bankswitch back, pop af, reti
+wPokedex_HBlankCodeEnd::
+
+; For setting up a new HBlank trigger
+wPokedex_PendingLYC:: db
+wPokedex_PendingHBlankFunction:: dw
+
+wPokedex_Pals::
+wPokedex_Row1::
+wPokedex_Row1Tile: db ; Sprite offset for dex minis col 2-4
+wPokedex_Row1Pals:: ds PAL_COLOR_SIZE * 3 * 5 ; 3 15bit colors per pal, 5 columns
+wPokedex_Row2::
+wPokedex_Row2Tile: db
+wPokedex_Row2Pals:: ds PAL_COLOR_SIZE * 3 * 5
+wPokedex_Row3::
+wPokedex_Row3Tile: db
+wPokedex_Row3Pals:: ds PAL_COLOR_SIZE * 3 * 5
+wPokedex_PalsEnd::
+
+; Pokémon info (frontpic, types, etc) is stored in either vbk0 or vbk1. This is
+; cycled each time we move the cursor. The reason for this is so that we can
+; update the entire display smoothly in a single frame without noticeable delay.
+wPokedex_MonInfoBank:: db
+
+wPokedex_Personality::
+; bit 7 = shiny
+; bit 0 = has other form (eligible to switch to)
+wPokedex_Shiny::
+wPokedex_OtherForm:: db
+wPokedex_Form:: db
+
+wPokedexOAM_DexNoX:: db
+wPokedexOAM_DexNoY:: db
+wPokedexOAM_DexNoStr:: ds 3
+wPokedexOAM_IsCaught:: db
+
+wPokedex_NumSeen:: dw
+wPokedex_NumOwned:: dw
+wPokedex_CursorPos:: db
+wPokedex_Offset:: db
+wPokedex_FirstIconTile:: db
+UNION
+wPokedex_Rows:: db
+wPokedex_LastCol:: db ; 1-5 in case the final row isn't completely filled
+NEXTU
+wPokedex_FinalEntry:: dw ; Final entry. Overwritten with rows/lastcol later.
+ENDU
+wPokedex_GFXFlags:: db ; flags for various gfx update types
+wPokedex_DisplayMode:: db ; current pokédex display
+
+wPokedex_SearchData::
+wPokedex_SearchType1:: db
+wPokedex_SearchType2:: db
+wPokedex_SearchGroup1:: db
+wPokedex_SearchGroup2:: db
+wPokedex_SearchColor:: db
+wPokedex_SearchBody:: db
+wPokedex_SearchDataEnd::
+wPokedex_SearchCursorY:: db
 
 SECTION UNION "Misc 480", WRAM0
 ; trade
@@ -798,14 +867,14 @@ wPokedexDataStart::
 wPokedexOrder:: ds NUM_POKEMON - 1
 wPokedexOrderEnd:: ds 6
 wPokedexMetadata::
-wDexListingScrollOffset:: db ; offset of the first displayed entry from the start
+wDexListingScrollOffset:: dw ; offset of the first displayed entry from the start
 wDexListingCursor:: db ; Dex cursor
-wDexListingEnd:: db ; Last mon to display
+wDexListingEnd:: dw ; Last mon to display
 wDexListingHeight:: db ; number of entries displayed at once in the dex listing
 wCurDexMode:: db ; Pokedex Mode
 wDexSearchMonType1:: db ; first type to search
 wDexSearchMonType2:: db ; second type to search
-wDexSearchResultCount:: db
+wDexSearchResultCount:: dw
 wDexArrowCursorPosIndex:: db
 wDexArrowCursorDelayCounter:: db
 wDexArrowCursorBlinkCounter:: db
@@ -814,12 +883,13 @@ wUnlockedUnownMode:: db
 wDexCurUnownIndex:: db
 wDexUnownCount:: db
 wDexConvertedMonType:: db ; mon type converted from dex search mon type
-wDexListingScrollOffsetBackup:: db
+wDexListingScrollOffsetBackup:: dw
 wDexListingCursorBackup:: db
 wBackupDexListingCursor:: db
 wBackupDexListingPage:: db
 wDexCurLocation:: db
 wPokedexStatus:: db
+wPokedexDisplayNumber:: dw
 wDexMonPersonality::
 wDexMonShiny:: db
 wDexMonForm:: db

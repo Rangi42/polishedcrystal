@@ -25,9 +25,9 @@ ProfOaksAide1Script:
 	iftrue .Explain
 	writetext ProfOaksAide1HiText
 	waitbutton
-	countseencaught
-	readvar VAR_DEXCAUGHT
-	ifgreater 14, .HereYouGo
+	setval16 15
+	special CountCaught
+	iftrue .HereYouGo
 .UhOh
 	jumpopenedtext ProfOaksAide1UhOhText
 

@@ -27,7 +27,7 @@ IvysLab_MapScriptHeader:
 
 	def_object_events
 	object_event  4,  3, SPRITE_IVY, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, ProfIvyScript, -1
-	object_event  5,  3, SPRITE_MON_ICON, SPRITEMOVEDATA_POKEMON, 0, NIDORINO, -1, -1, PAL_NPC_PURPLE, OBJECTTYPE_SCRIPT, 0, IvysLabNidorinoScript, -1
+	object_event  5,  3, SPRITE_MON_ICON, SPRITEMOVEDATA_POKEMON, 0, NIDORINO, -1, -1, PAL_NPC_PURPLE, OBJECTTYPE_SCRIPT, NO_FORM, IvysLabNidorinoScript, -1
 	object_event  2,  9, SPRITE_BATTLE_GIRL, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, PAL_NPC_PURPLE, OBJECTTYPE_SCRIPT, 0, IvysLabHopeScript, -1
 
 	object_const_def
@@ -204,7 +204,7 @@ IvysLabNidorinoScript:
 	iftrue .Healed
 	opentext
 	writetext .WeakCry
-	setval NIDORINO
+	setmonval NIDORINO
 	special PlaySlowCry
 	promptbutton
 	jumpthisopenedtext

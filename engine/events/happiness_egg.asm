@@ -3,21 +3,21 @@ GetFirstPokemonHappiness:
 	ld hl, wPartyMon1Species
 .loop
 	ld a, [hl]
-	push hl
 	ld bc, wPartyMon1IsEgg - wPartyMon1Species
 	add hl, bc
 	bit MON_IS_EGG_F, [hl]
-	pop hl
 	jr z, .done
 	ld bc, PARTYMON_STRUCT_LENGTH
 	add hl, bc
 	jr .loop
 
 .done
-	ld bc, wPartyMon1Happiness - wPartyMon1Species
-	add hl, bc
 	ld [wNamedObjectIndex], a
+	assert MON_IS_EGG == MON_FORM
 	ld a, [hl]
+	ld [wNamedObjectIndex+1], a
+	ld bc, wPartyMon1Happiness - wPartyMon1IsEgg
+	add hl, bc
 	ldh [hScriptVar], a
 	call GetPokemonName
 	jmp CopyPokemonName_Buffer1_Buffer3
@@ -26,6 +26,8 @@ CheckFirstMonIsEgg:
 	ld a, [wPartyMon1Species]
 	ld [wNamedObjectIndex], a
 	ld a, [wPartyMon1IsEgg]
+	assert MON_IS_EGG == MON_FORM
+	ld [wNamedObjectIndex+1], a
 	bit MON_IS_EGG_F, a
 	ld a, $1
 	jr nz, .egg

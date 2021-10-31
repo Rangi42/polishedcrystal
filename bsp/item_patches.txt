@@ -21,7 +21,7 @@ AdjustItemIndexes:
 	call .get_pocket
 
 	set #1, .mon_callback
-	jump ApplyPartyPatches
+	jump ApplyPartyPatchesOld
 
 .get_pocket
 	call GetGameDataOffsetConstant

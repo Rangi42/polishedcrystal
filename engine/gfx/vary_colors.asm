@@ -6,15 +6,15 @@ CopyDVsToColorVaryDVs:
 	ld a, [hli]
 	ld d, a
 ; c = SatSdfDV
+	push bc
 	ld a, [hli]
 	ld c, a
 ; b = Shiny
-	push bc
 	ld a, [hl]
 	ld b, a
 
 	ldh a, [rSVBK]
-	ld c, a
+	push af
 	ld a, $5
 	ldh [rSVBK], a
 
@@ -25,20 +25,25 @@ CopyDVsToColorVaryDVs:
 ; wColorVaryDVs+1 = DefSpdDV
 	ld a, d
 	ld [hli], a
+; wColorVaryDVs+2 = SatSdfDV
+	ld a, c
+	ld [hli], a
 	inc hl
 	inc hl
+	assert wColorVaryDVs + 5 == wColorVaryShiny
 ; wColorVaryShiny = Shiny
 	ld a, b
 	ld [hld], a
-	ld a, c
+	pop af
 	ld d, a
 	pop bc
-; wColorVarySpecies = Species
+	assert wColorVaryShiny - 1 == wColorVaryForm
+; wColorVaryForm = Form
 	ld a, b
 	ld [hld], a
-; wColorVaryDVs+2 = SatSdfDV
-	ld a, c
-	ld [hl], a
+	assert wColorVaryForm - 1 == wColorVarySpecies
+; wColorVarySpecies = Species
+	ld [hl], c
 
 	ld a, d
 	ldh [rSVBK], a
@@ -170,6 +175,7 @@ VaryColorsByDVs::
 ; [bc+2] = pppp:qqqq
 
 ; [wColorVarySpecies] = species
+; [wColorVaryForm] = form
 ; [wColorVaryShiny] = shiny
 
 if DEF(MONOCHROME) || DEF(NOIR)
@@ -188,9 +194,15 @@ endc
 	ld bc, wColorVaryDVs
 
 	ld a, [wColorVarySpecies]
-	cp SMEARGLE
+	cp LOW(SMEARGLE)
+	jr nz, .VaryColors
+	ld a, [wColorVaryForm]
+	and EXTSPECIES_MASK
+	assert HIGH(SMEARGLE) << MON_EXTSPECIES_F == 0
+	and a
 	jr z, .Smeargle
 
+.VaryColors:
 ;;; LiteRed ~ HPDV, aka, rrrrr ~ hhhh
 ; store HPDV in e
 	ld a, [bc]
@@ -389,6 +401,8 @@ VaryBGPalByTempMonDVs:
 	push hl
 	ld hl, wTempMonDVs
 	ld a, [wTempMonSpecies]
+	ld c, a
+	ld a, [wTempMonForm]
 	ld b, a
 	call CopyDVsToColorVaryDVs
 	pop hl

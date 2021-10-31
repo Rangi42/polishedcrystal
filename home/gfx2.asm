@@ -7,9 +7,8 @@ HBlankCopy2bpp::
 	ld a, [hli]
 	ld d, a ; destination
 
-	ld a, [hli] ; source
-	ld h, [hl]
-	ld l, a
+	ld sp, hl ; source
+	pop hl
 	ld sp, hl ; set source to sp
 	ld a, h ; save source high byte for later
 	ld h, d ; exchange hl and de

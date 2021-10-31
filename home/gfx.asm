@@ -237,9 +237,8 @@ HBlankCopy1bpp:
 	ld a, [hli]
 	ld d, a ; destination
 
-	ld a, [hli] ; source
-	ld h, [hl]
-	ld l, a
+	ld sp, hl ; source
+	pop hl
 	ld sp, hl ; set source to sp
 	ld h, d ; exchange hl and de
 	ld l, e
@@ -338,10 +337,8 @@ ContinueHBlankCopy:
 	ld [hRequestedVTileDest], sp
 	scf
 DoneHBlankCopy:
-	ldh a, [hSPBuffer]
-	ld l, a
-	ldh a, [hSPBuffer + 1]
-	ld h, a
+	ld sp, hSPBuffer
+	pop hl
 	ld sp, hl
 	reti
 

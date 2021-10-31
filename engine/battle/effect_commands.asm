@@ -1124,7 +1124,7 @@ BattleCommand_critical:
 	cp FARFETCH_D
 	jr nz, .FocusEnergy
 	ld a, [hl]
-	cp STICK
+	cp LEEK
 	jr nz, .FocusEnergy
 
 ; +2 critical level
@@ -2233,15 +2233,21 @@ BattleCommand_moveanimnosub:
 	push de
 	ldh a, [hBattleTurn]
 	and a
-	ld a, [wBattleMonSpecies]
+	ld hl, wBattleMonSpecies
 	jr z, .got_user_species
-	ld a, [wEnemyMonSpecies]
+	ld hl, wEnemyMonSpecies
 .got_user_species
+	ld c, [hl]
+	assert wBattleMonForm - wBattleMonSpecies == wEnemyMonForm - wEnemyMonSpecies
+	ld de, wBattleMonForm - wBattleMonSpecies
+	add hl, de
+	ld b, [hl]
 	ld hl, FuryAttackUsers
-	call IsInByteArray
+	ld de, 2
+	call IsInWordArray
 	pop de
 	jr nc, .multihit
-	ld a, $2
+	ld a, 2
 	ld [wKickCounter], a
 	jr .fury_attack
 
@@ -2262,29 +2268,29 @@ StatUpDownAnim:
 ; animation for the Pokémon that learned each one
 	ld a, BATTLE_VARS_MOVE_ANIM
 	call GetBattleVar
-	ld e, a
-	ld d, 0
 	cp DEFENSE_CURL
 	jr nz, .not_defense_curl
 	ldh a, [hBattleTurn]
 	and a
-	ld a, [wBattleMonSpecies]
+	ld hl, wBattleMonSpecies
 	jr z, .got_user_species
-	ld a, [wEnemyMonSpecies]
+	ld hl, wEnemyMonSpecies
 .got_user_species
-	push af
+	ld c, [hl]
+	assert wBattleMonForm - wBattleMonSpecies == wEnemyMonForm - wEnemyMonSpecies
+	ld de, wBattleMonForm - wBattleMonSpecies
+	add hl, de
+	ld b, [hl]
 	ld hl, WithdrawUsers
-	call IsInByteArray
-	jr nc, .not_withdraw
-	pop af
-	ld a, $1
-	jr .got_kick_counter
+	ld de, 2
+	call IsInWordArray
+	ld a, 1
+	jr c, .got_kick_counter
 .not_withdraw
-	pop af ; restore species to a
 	inc hl ; ld hl, HardenUsers
-	call IsInByteArray
+	call IsInWordArray
 	jr nc, .not_harden
-	ld a, $2
+	ld a, 2
 	jr .got_kick_counter
 .not_harden
 .not_defense_curl
@@ -2573,6 +2579,30 @@ BattleCommand_criticaltext:
 	ld hl, CriticalHitText
 	call StdBattleTextbox
 
+; Add 1 to the critical hit count if it's the player's turn
+	ld a, [wLinkMode]
+	and a
+	jr nz, .cont
+	ld a, [wInBattleTowerBattle]
+	and a
+	jr nz, .cont
+	ldh a, [hBattleTurn]
+	and a
+	jr nz, .cont
+	ld hl, wCriticalCount
+	ld a, [wCurBattleMon]
+	ld c, a
+	ld b, 0
+	add hl, bc
+	inc [hl]
+	ld a, [hl]
+	cp 3
+	jr c, .cont
+	ld b, SET_FLAG
+	ld hl, wEvolvableFlags
+	predef FlagPredef ; c still contains wCurBatlteMon
+
+.cont
 	xor a
 	ld [wCriticalHit], a
 
@@ -2973,6 +3003,9 @@ BattleCommand_posthiteffects:
 	jr .rocky_helmet_done
 
 .offend_hit
+	call GetFutureSightUser
+	jr nc, .rocky_helmet_done
+
 	ld a, BATTLE_VARS_MOVE_CATEGORY
 	call GetBattleVar
 	cp c
@@ -3219,6 +3252,8 @@ EndMoveDamageChecks:
 	cp HELD_SWITCH
 .deferred_switch
 	ret nz
+	call GetFutureSightUser
+	ret nc
 	ld a, c
 	jmp SetDeferredSwitch
 
@@ -3236,6 +3271,8 @@ EndMoveDamageChecks:
 	jr .deferred_switch
 
 .shell_bell
+	call GetFutureSightUser
+	ret nc
 	farcall CheckFullHP
 	ret z
 	ld a, [wDamageTaken]
@@ -3364,16 +3401,10 @@ UnevolvedEviolite:
 	and SPECIESFORM_MASK
 	ld b, a
 	; bc = index
-	call GetSpeciesAndFormIndex
-	dec bc
-	ld hl, EvosAttacksPointers
-	add hl, bc
-	add hl, bc
-	ld a, BANK(EvosAttacksPointers)
-	call GetFarWord
+	predef GetEvosAttacksPointer
 	ld a, BANK(EvosAttacks)
 	call GetFarByte
-	and a
+	inc a
 	pop bc
 	pop hl
 	ret z
@@ -4771,7 +4802,7 @@ BattleCommand_burntarget:
 	call GetBattleVarAddr
 	and a
 	jr nz, Defrost
-	ld b, 0
+	ld b, a ; a == 0
 	call CanBurnTarget
 	ret nz
 	ld a, [wTypeModifier]
@@ -6172,67 +6203,6 @@ BattleCommand_doubleminimizedamage:
 	ld a, $ff
 	ld [hli], a
 	ld [hl], a
-	ret
-
-GetFutureSightUser::
-; Returns:
-; c|z: Regular user in a (Future Sight not involved)
-; nc|z: Active user in a (Future Sight applying)
-; nc|nz: External user in a (or active fainted), future sight applying.
-	push hl
-	push de
-	push bc
-	ldh a, [hBattleTurn]
-	and a
-	ld hl, wPlayerFutureSightCount
-	ld bc, wCurBattleMon
-	jr z, .got_future
-	ld hl, wEnemyFutureSightCount
-	ld bc, wCurOTMon
-.got_future
-	ld a, [hl]
-	and a
-	jr z, .future_sight_offline
-	and $f
-	jr nz, .future_sight_offline
-	ld a, [hl]
-	swap a
-	dec a
-	and $f
-	ld d, a
-	ld a, [bc]
-	cp d
-	ld a, d
-	pop bc
-	pop de
-	pop hl
-	scf
-	ccf
-	ret nz
-
-	; If user is fainted, treat as non-active
-	push af
-	push hl
-	call HasUserFainted
-	pop hl
-	jr z, .active_fainted
-	pop af
-	ret
-
-.active_fainted
-	pop af
-	and a
-	ret nz
-	rrca
-	ret
-
-.future_sight_offline
-	xor a
-	ld a, [bc]
-	pop bc
-	pop de
-	pop hl
-	scf
 	ret
 
 _GetTrueUserAbility::

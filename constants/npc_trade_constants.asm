@@ -1,11 +1,11 @@
 ; npctrade struct members (see data/events/npc_trades.asm)
 rsreset
 NPCTRADE_DIALOG      rb
-NPCTRADE_GIVEMON     rb
-NPCTRADE_GETMON      rb
+NPCTRADE_GIVEMON     rw
+NPCTRADE_GETMON      rw
 NPCTRADE_NICKNAME    rb MON_NAME_LENGTH
 NPCTRADE_DVS         rb 3
-NPCTRADE_PERSONALITY rw
+NPCTRADE_PERSONALITY rb
 NPCTRADE_BALL        rb
 NPCTRADE_ITEM        rb
 NPCTRADE_OT_ID       rw

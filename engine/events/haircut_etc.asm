@@ -24,8 +24,8 @@ MassageOrHaircut:
 	jr c, .nope
 	ld a, MON_IS_EGG
 	push hl
-	call GetPartyParamLocation
-	bit MON_IS_EGG_F, [hl]
+	call GetPartyParamLocationAndValue
+	bit MON_IS_EGG_F, a
 	pop hl
 	jr nz, .egg
 	push hl

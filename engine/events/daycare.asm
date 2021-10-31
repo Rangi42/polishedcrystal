@@ -161,6 +161,9 @@ DayCare_DepositPokemonText:
 	ld a, DAYCARETEXT_DEPOSIT
 	call PrintDayCareText
 	ld a, [wCurPartySpecies]
+	ld c, a
+	ld a, [wCurForm]
+	ld b, a
 	call PlayCry
 	ld a, DAYCARETEXT_COME_BACK_LATER
 	jr PrintDayCareText
@@ -218,6 +221,9 @@ DayCare_TakeMoney_PlayCry:
 	ld a, DAYCARETEXT_WITHDRAW
 	call PrintDayCareText
 	ld a, [wCurPartySpecies]
+	ld c, a
+	ld a, [wCurForm]
+	ld b, a
 	call PlayCry
 	ld a, DAYCARETEXT_TOO_SOON
 	; fallthrough
@@ -481,18 +487,6 @@ DayCare_GiveEgg:
 	ld [wCurSpecies], a
 	ld [wCurPartySpecies], a
 
-	; Red Gyarados' Eggs should be plain
-	cp MAGIKARP
-	jr nz, .not_red_magikarp
-	ld a, [wTempMonForm]
-	and SPECIESFORM_MASK
-	cp GYARADOS_RED_FORM
-	jr c, .not_red_magikarp
-	ld a, [wTempMonForm]
-	and $ff - SPECIESFORM_MASK
-	or PLAIN_FORM
-	ld [wTempMonForm], a
-.not_red_magikarp
 	; Recalculates stats and sets other partymon stuff.
 	farcall SetTempPartyMonData
 	farcall AddTempMonToParty
@@ -724,6 +718,10 @@ DayCare_GenerateEgg:
 	ld a, [wCurPartySpecies]
 	cp NIDORAN_F
 	jr nz, .GotEggSpecies
+	assert !HIGH(NIDORAN_F)
+	ld a, [wCurForm]
+	and EXTSPECIES_MASK
+	jr nz, .GotEggSpecies
 
 	; random Nidoran offspring
 	call Random
@@ -735,7 +733,6 @@ DayCare_GenerateEgg:
 .GotEggSpecies:
 	ld [wCurPartySpecies], a
 	ld [wCurSpecies], a
-
 	; Clear tempmon struct
 	xor a
 	ld hl, wTempMon
@@ -744,16 +741,30 @@ DayCare_GenerateEgg:
 
 	ld a, [wCurPartySpecies]
 	ld [wTempMonSpecies], a
+	ld c, a
 
 	; Form inheritance: from the mother or non-Ditto. If both
 	; parents share species, pick at random.
 	; Must assign [wCurForm] before GetBaseData.
 	ld hl, wBreedMon1Form
-	call .inherit_mother_unless_samespecies
+	call .inherit_mother_unless_samespecies ; this should preserve c!
 	ld a, [hl]
 	and SPECIESFORM_MASK
 	ld [wCurForm], a
+	ld b, a
 
+; it's useful for mons to have forms not found in CosmeticSpeciesAndFormTable (see: Ekans)
+; but we don't want to breed mons that shouldn't be hatched (see: Spiky-eared Pichu)
+	ld hl, InvalidBreedmons
+	call GetSpeciesAndFormIndexFromHL
+	jr nc, .form_ok
+	ld hl, wCurForm
+	ld a, [hl]
+	and EXTSPECIES_MASK
+	or PLAIN_FORM
+	ld [hl], a
+
+.form_ok
 	call GetBaseData
 
 	; Set name and item
@@ -1050,3 +1061,5 @@ DayCare_GenerateEgg:
 
 .String_EGG:
 	rawchar "Egg@"
+
+INCLUDE "data/pokemon/invalid_breedmons.asm"

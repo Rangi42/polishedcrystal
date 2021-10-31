@@ -48,8 +48,8 @@ def get_ordered_mons():
 				ordered_mons.append(mon)
 				simple_name = mon.replace('_', '')
 				underscore_names[simple_name] = mon
-			# Assume that NUM_POKEMON is defined right after all the Pokémon
-			if line.startswith('NUM_POKEMON'):
+			# Assume that NUM_SPECIES is defined right after all the Pokémon
+			if line.startswith('NUM_SPECIES'):
 				break
 
 def get_egg_groups(mon):

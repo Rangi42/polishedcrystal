@@ -112,12 +112,6 @@ ResetWRAM:
 	ld bc, wGameDataEnd - wBattlePointsEnd
 	rst ByteFill
 
-	; Fill party species array with terminators.
-	ld hl, wPartySpecies
-	ld bc, PARTY_LENGTH + 1
-	dec a ; ld a, -1
-	rst ByteFill
-
 	call Random
 	ldh a, [rLY]
 	ldh [hSecondsBackup], a
@@ -136,12 +130,9 @@ ResetWRAM:
 	call Random
 	ld [wSecretID + 1], a
 
-	ld hl, wPartyCount
-	call _ResetWRAM_InitList
-
 	xor a
+	ld [wPartyCount], a
 	ld [wMonStatusFlags], a
-
 	ld [wPlayerGender], a
 
 	ld hl, wNumItems
@@ -531,15 +522,15 @@ Continue_DisplayBadgeCount:
 
 Continue_DisplayPokedexNumCaught:
 	ld a, [wStatusFlags]
-	bit 0, a ; Pokedex
+	bit STATUSFLAGS_POKEDEX_F, a
 	ret z
 	push hl
 	ld hl, wPokedexCaught
-	ld b, (NUM_POKEMON + 7) / 8
-	call CountSetBits
+	ld bc, wEndPokedexCaught - wPokedexCaught
+	call CountSetBits16
 	pop hl
 	ld de, wNumSetBits
-	lb bc, 1, 3
+	lb bc, 2, 3
 	jmp PrintNum
 
 Continue_DisplayGameTime:
@@ -582,10 +573,13 @@ if !DEF(DEBUG)
 	call FadeToWhite
 	call ClearTileMap
 
-	ld a, SYLVEON
+	ld a, LOW(SYLVEON)
 	ld [wCurSpecies], a
 	ld [wCurPartySpecies], a
-	call GetBaseData ; [wCurForm] doesn't matter for Sylveon
+	ld a, HIGH(SYLVEON) << MON_EXTSPECIES_F
+	ld [wCurForm], a
+	ld [wTempMonForm], a
+	call GetBaseData
 
 	hlcoord 6, 4
 	call PrepMonFrontpic
@@ -653,8 +647,11 @@ ElmText1:
 ElmText2:
 	text_far _ElmText2
 	text_asm
-	ld a, SYLVEON
-	call PlayCry
+	xor a
+	ld [wStereoPanningMask], a
+	ld [wCryTracks], a
+	ld de, SYLVEON - 1
+	call PlayCryHeader
 	call WaitSFX
 	ld hl, ElmText3
 	ret

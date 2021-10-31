@@ -110,8 +110,8 @@ wMonMailMessageBuffer:: ds MAIL_MSG_LENGTH + 1
 
 NEXTU
 ; prof. oak's pc
-wTempPokedexSeenCount:: db
-wTempPokedexCaughtCount:: db
+wTempPokedexSeenCount:: dw
+wTempPokedexCaughtCount:: dw
 
 NEXTU
 ; player's room pc
@@ -290,6 +290,7 @@ wBattleBerriesPocketScrollPosition:: db
 
 wTMHMMoveNameBackup:: ds MOVE_NAME_LENGTH
 
+UNION
 wStringBuffer1:: ds STRING_BUFFER_LENGTH + 5
 wStringBuffer2:: ds STRING_BUFFER_LENGTH
 wStringBuffer3:: ds STRING_BUFFER_LENGTH
@@ -312,6 +313,7 @@ wBT_PartySelections:: ds PARTY_LENGTH
 wBT_MonParty:: ds BATTLETOWER_PARTYDATA_SIZE
 wBT_SecondaryMonParty:: ds BATTLETOWER_PARTYDATA_SIZE ; last rental trainer
 wBT_OTMonParty:: ds BATTLETOWER_PARTYDATA_SIZE ; also for starting rental setup
+ENDU
 ENDU
 
 wBattleMenuCursorBuffer:: dw
@@ -560,7 +562,9 @@ wCurHPAnimHighHP:: db
 NEXTU
 ; evolution data
 wEvolutionOldSpecies:: db
+wEvolutionOldForm:: db
 wEvolutionNewSpecies:: db
+wEvolutionNewForm:: db
 wEvolutionPicOffset:: db
 wEvolutionCanceled:: db
 
@@ -694,7 +698,9 @@ wMoveGrammar::
 wApplyStatLevelMultipliersToEnemy::
 wUsePPUp::
 wFoundMatchingID::
-	ds 3
+	db
+wTempForm::
+	ds 2
 
 wMonTriedToEvolve:: db
 
@@ -717,7 +723,7 @@ wOTPartyData::
 wOTPlayerName:: ds NAME_LENGTH
 wOTPlayerID:: dw
 wOTPartyCount:: db
-wOTPartySpecies:: ds PARTY_LENGTH + 1 ; legacy scripts don't check PartyCount
+wOTPartySpecies:: ds PARTY_LENGTH + 1 ; dereferenced, delete before savepatch
 
 
 UNION
@@ -1150,7 +1156,7 @@ wEventFlags:: flag_array NUM_EVENTS
 
 wCurBox:: db
 
-	ds 126 ; unused
+	ds 103 ; unused
 
 wCelebiEvent:: db
 
@@ -1206,8 +1212,8 @@ wFruitTreeFlags:: flag_array NUM_FRUIT_TREES
 wNuzlockeLandmarkFlags:: flag_array NUM_LANDMARKS
 
 wHiddenGrottoContents::
-; content type, content id
-	ds NUM_HIDDEN_GROTTOES * 2
+; content type, content id, content id + 1
+	ds NUM_HIDDEN_GROTTOES * 3
 
 wCurHiddenGrotto:: db
 
@@ -1293,7 +1299,7 @@ SECTION "Party", WRAMX
 wPokemonData::
 
 wPartyCount::   db ; number of Pokémon in party
-wPartySpecies:: ds PARTY_LENGTH
+wPartySpecies:: ds PARTY_LENGTH ; deferenced, delete before patch
 wPartyEnd::     db ; older code doesn't check wPartyCount
 
 wPartyMons::
@@ -1315,15 +1321,19 @@ wPartyMon{d:n}Nickname:: ds MON_NAME_LENGTH
 endr
 wPartyMonNicknamesEnd::
 
-	ds 9 ; unused
+	ds 1 ; unused
 
-wPokedexCaught:: flag_array NUM_POKEMON
+wPokedexCaught:: flag_array NUM_EXT_POKEMON
 wEndPokedexCaught::
 
-wPokedexSeen:: flag_array NUM_POKEMON
+wPokedexSeen:: flag_array NUM_EXT_POKEMON
 wEndPokedexSeen::
 
-wUnownDex:: ds NUM_UNOWN
+	ds 16 ; unused
+
+wUnownDex:: flag_array NUM_UNOWN
+wUnownDexEnd::
+
 wUnlockedUnowns:: db
 
 wFirstUnownSeen:: db
@@ -1359,7 +1369,7 @@ wBreedMon2:: breed_struct wBreedMon2
 
 	ds 54 ; unused
 
-wBugContestSecondPartySpecies:: db
+wBugContestBackupPartyCount:: db
 wContestMon:: party_struct wContestMon
 
 wDunsparceMapGroup:: db
@@ -1454,9 +1464,69 @@ SECTION "Sound Stack", WRAMX
 wSoundEngineBackup:: ds wChannelsEnd - wMusic
 
 
-SECTION "Metatiles", WRAMX
+SECTION UNION "Metatiles", WRAMX
 
 wDecompressedMetatiles:: ds 256 tiles
+
+
+SECTION UNION "Metatiles", WRAMX
+
+UNION
+wDex2bpp:: ds $60 tiles
+
+NEXTU
+; copied using hdma transfers (which is orders of magnitudes faster), so it uses
+; 32x32 as opposed to only the 21x19 that we need.
+wDexTilemap:: ds BG_MAP_WIDTH * (SCREEN_HEIGHT + 1)
+wDexAttrmap:: ds BG_MAP_WIDTH * (SCREEN_HEIGHT + 1)
+wDexMapEnd::
+
+UNION
+wDexVWFTiles:: ds 19 tiles ; 1 tile padding
+wDexIconTiles:: ds 24 tiles ; 4 tiles padding
+wDexRowTilesDest::
+wDexVWFTilesDest:: dw
+wDexIconTilesDest:: dw
+NEXTU
+; Copied using GDMA in VBlank. Ideally we want to do GDMA as part of hblank,
+; but there is some issues with that yet to be fully researched (issue #639).
+	ds 49 tiles
+wDexMonTiles::
+wDexMonType1Tiles:: ds 4 tiles
+wDexMonType2Tiles:: ds 4 tiles
+wDexMonFootprintTiles:: ds 4 tiles
+wDexMonIconTiles:: ds 4 tiles
+wDexMonShapeTiles:: ds 4 tiles
+wDexMonTilesEnd::
+ENDU
+
+wDexVirtualOAMCopy:: ds 4 * (5 + 4 * 3) ; 5 balls + 3 minis
+wDexVirtualOAMScrollbarCopy:: ds 4
+wDexVirtualOAMDexNoCopy:: ds 4 * 6
+wDexVirtualOAMCopyEnd::
+
+wDexMons::
+for n, 1, NUM_SPECIES + 1
+wDexMon{d:n}::
+wDexMon{d:n}Species:: db
+wDexMon{d:n}Form:: db
+endr
+wDexMonsEnd::
+
+; Copy of dex row tile info. H-Blank uses a copy in wram0.
+wDexPalCopy::
+wDexRow1Tile: db ; Sprite offset for dex minis col 2-4
+wDexRow1Pals:: ds PAL_COLOR_SIZE * 3 * 5 ; 3 15bit colors per pal, 5 columns
+wDexRow2Tile: db
+wDexRow2Pals:: ds PAL_COLOR_SIZE * 3 * 5
+wDexRow3Tile: db
+wDexRow3Pals:: ds PAL_COLOR_SIZE * 3 * 5
+wDexPalCopyEnd::
+
+wDexNumber:: dw
+wDexNumberString:: ds 4 ; 3 numbers including leading zeroes + terminator
+
+ENDU
 
 
 SECTION "Attributes", WRAMX
@@ -1555,12 +1625,13 @@ wMagnetTrainPlayerSpriteInitX:: db
 
 wColorVaryDVs:: ds 3
 wColorVarySpecies:: db
+wColorVaryForm:: db
 wColorVaryShiny:: db
 
 wPalFadeDelayFrames:: db
 wPalFadeDelay:: db
 
-	ds 100 ; unused
+	ds 99 ; unused
 
 wLYOverridesBackup:: ds SCREEN_HEIGHT_PX
 wLYOverridesBackupEnd::

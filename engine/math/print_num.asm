@@ -1,5 +1,23 @@
+_PrintNumFromReg::
+; Print c digits of 16bit number in de to hl. Printnum flags, but not bytecount,
+; is preserved.
+	push hl
+	ld hl, hPrintNum
+	xor a
+	ld [hli], a
+	ld [hli], a
+	ld a, d
+	ld [hli], a
+	ld [hl], e
+	pop hl
+	ld de, hPrintNum + 2
+	ld a, %11110000
+	and b
+	or 2
+	ld b, a
+	; fallthrough
 _PrintNum::
-; Print c digits of byte length b (big endian) from de to hl.
+; Print c digits of byte length b (big endian) from pointer in de to hl.
 ; High nibble of c denotes decimal point location.
 ; Works on up to 1-8 digits and up to 4 bytes (up to 99999999).
 ; The higher b nibble has some flags:
@@ -187,3 +205,27 @@ PrintHLNum:
 	push bc
 	call PrintLetterDelay
 	jmp PopBCDEHL
+
+_FastPrintNum:
+; Prints 3 digits of 16bit number in hl with leading zeros + terminator.
+; Assumes hl is between 000-999.
+	ld bc, -100
+	ld a, "0" - 1
+.printloop1
+	inc a
+	add hl, bc
+	jr c, .printloop1
+	ld [de], a
+	inc de
+	ld bc, 10
+	ld a, "9" + 1
+.printloop2
+	dec a
+	add hl, bc
+	jr nc, .printloop2
+	ld [de], a
+	inc de
+	ld a, "0"
+	add l
+	ld [de], a
+	ret
