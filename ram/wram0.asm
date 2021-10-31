@@ -668,7 +668,6 @@ wBattleEnd::
 NEXTU
 wTempDexFound:: flag_array NUM_EXT_POKEMON
 wTempDexEnd::
-NEXTU ; todo: remove
 wTempDexFoundSpecies:: flag_array NUM_SPECIES
 wTempDexSpeciesEnd::
 ENDU

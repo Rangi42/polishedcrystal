@@ -2601,7 +2601,7 @@ Pokedex_InitData:
 	ld [hl], c
 	pop bc
 	pop hl
-;	ld hl, wTempDexFound
+	ld hl, wTempDexFound
 	ld de, 0
 .loop
 	push de
@@ -2716,6 +2716,12 @@ _Pokedex_GetCaptureStats:
 	ld bc, wTempDexEnd - wTempDexFound
 	rst CopyBytes
 
+	; Clear existing temp species array
+	xor a
+	ld hl, wTempDexFoundSpecies
+	ld bc, wTempDexSpeciesEnd - wTempDexFoundSpecies
+	rst ByteFill
+
 	; Iterate the flags past the main species flags for base data-affecting
 	; formes. If we find entries there, unset the flag and set the corresponding
 	; main species flag.
@@ -2725,9 +2731,6 @@ _Pokedex_GetCaptureStats:
 	; Have we seen/caught this forme?
 	call .CheckFlag
 	jr z, .next
-
-	; Reset the form flag.
-	call .ResetFlag
 
 	; Set the corresponding regular flag.
 	push de
@@ -2760,18 +2763,15 @@ _Pokedex_GetCaptureStats:
 
 .SetFlag:
 	push bc
+	ld hl, wTempDexFoundSpecies
 	ld b, SET_FLAG
-	jr .SafeFlagAction
-.ResetFlag:
-	push bc
-	ld b, RESET_FLAG
 	jr .SafeFlagAction
 .CheckFlag:
 	push bc
+	ld hl, wTempDexFound
 	ld b, CHECK_FLAG
 	; fallthrough
 .SafeFlagAction:
-	ld hl, wTempDexFound
 	push de
 	call FlagAction
 	pop de
