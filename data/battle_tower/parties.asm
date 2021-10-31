@@ -8,7 +8,7 @@
 ;	db BTDVS_*
 ;	db ABIL_* | NAT_*
 
-; last update: 2021-05-30 19:00
+; last update: 2021-10-31 20:00
 
 BattleTowerMons:
 
