@@ -291,12 +291,6 @@ wBattleBerriesPocketScrollPosition:: db
 wTMHMMoveNameBackup:: ds MOVE_NAME_LENGTH
 
 UNION
-wTempDexFound:: flag_array NUM_EXT_POKEMON
-wTempDexEnd::
-NEXTU
-wTempDexFoundSpecies:: flag_array NUM_SPECIES
-wTempDexSpeciesEnd::
-NEXTU
 wStringBuffer1:: ds STRING_BUFFER_LENGTH + 5
 wStringBuffer2:: ds STRING_BUFFER_LENGTH
 wStringBuffer3:: ds STRING_BUFFER_LENGTH

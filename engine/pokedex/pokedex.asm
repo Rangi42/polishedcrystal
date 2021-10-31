@@ -2586,6 +2586,7 @@ Pokedex_InitData:
 	ld [hl], c
 	pop bc
 	pop hl
+;	ld hl, wTempDexFound
 	ld de, 0
 .loop
 	push de
