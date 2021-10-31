@@ -9,7 +9,7 @@ TMHMMoves:
 	db TOXIC        ; TM06 (Celadon Game Corner)
 	db HAIL         ; TM07 (Celadon Dept. Store)
 	db BULK_UP      ; TM08 (Celadon Dept. Store)
-	db VENOSHOCK    ; TM09 (Route 1)
+	db VENOSHOCK    ; TM09 (Route 11)
 	db HIDDEN_POWER ; TM10 (Lake of Rage)
 	db SUNNY_DAY    ; TM11 (Celadon Dept. Store)
 	db HONE_CLAWS   ; TM12 (Route 35)

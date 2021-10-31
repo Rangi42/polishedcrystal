@@ -1568,27 +1568,34 @@ BattleCommand_checkpowder:
 	ld a, BATTLE_VARS_MOVE_ANIM
 	call GetBattleVar
 	cp SING
-	jr z, .sing
-	cp THUNDER_WAVE
-	jr z, .twave
-	ld hl, PowderMoves
-	call IsInByteArray
-	ret nc
-	jr BattleCommand_resettypematchup
-.sing
+	jr nz, .not_sing
 	farcall CheckNullificationAbilities
 	ld a, [wTypeMatchup]
 	and a
 	ret nz
 	ld [wTypeModifier], a
 	ret
-.twave
-	call CheckIfTargetIsGroundType
-	jr nz, BattleCommand_resettypematchup
-	call GetOpponentItemAfterUnnerve
-	ld a, b
-	cp HELD_RING_TARGET
+
+.not_sing
+	cp THUNDER_WAVE
+	jr z, BattleCommand_resettypematchup
+	cp TOXIC
+	jr z, .check_corrosion
+	cp POISONPOWDER
+	jr nz, .powder
+.check_corrosion
+	ld b, a
+	call GetTrueUserAbility
+	cp CORROSION
 	ret z
+	ld a, b
+	cp TOXIC
+	jr z, BattleCommand_resettypematchup
+	; fallthrough for poisonpowder
+.powder
+	ld hl, PowderMoves
+	call IsInByteArray
+	ret nc
 	; fallthrough
 BattleCommand_resettypematchup:
 ; Reset the type matchup multiplier to 1.0, if the type matchup is not 0.
@@ -4420,7 +4427,7 @@ BattleCommand_sleep:
 	and a
 	jr z, .failed_ineffective
 
-	ld b, 1
+	ld b, 0
 	call CanSleepTarget
 	jr c, .ability_ok
 	jr nz, .failed
@@ -4501,6 +4508,14 @@ CanSleepTarget:
 	lb de, INSOMNIA, HELD_PREVENT_SLEEP
 	ld h, SLP
 CanStatusTarget:
+; Input:
+; a=0: Check Mold Breaker and Substitute (user directly poisoning foe)
+; a=1: Ignore MB and sub (Toxic Spikes, target on-contact abilities)
+; a=2: Ignore MB and sub, check victim for Corrosion (Toxic Orb)
+; bc: Type immunities
+; d: Ability immunity
+; e: Item immunity
+; h: Status
 ; Returns:
 ;     z -- we can
 ;  c|nz -- we can't, due to ability
@@ -4515,7 +4530,33 @@ CanStatusTarget:
 	ld a, h
 	cp 1 << PSN
 	jr nz, .not_corrosive
+
+	pop af
+	and a
+	push af
+	and a
+	jr z, .check_psn_status_move
+	dec a
+	jr z, .not_corrosive
+
+	; Check target (not user!) for corrosion, used with Toxic Orb.
+	call GetOpponentAbility
+	jr .check_corrosion
+
+.check_psn_status_move
+	; We can't check if the move is a status move in general, because
+	; this causes problems with Roar + Corrosion into Toxic Spikes,
+	; which shouldn't poison Poison/Steel-types. Instead, we have to
+	; specifically check for status moves that cause poisoning.
+	ld a, BATTLE_VARS_MOVE_EFFECT
+	call GetBattleVar
+	cp EFFECT_POISON
+	jr z, .check_user_corrosion
+	cp EFFECT_TOXIC
+	jr nz, .not_corrosive
+.check_user_corrosion
 	call GetTrueUserAbility
+.check_corrosion
 	cp CORROSION
 	jr nz, .not_corrosive
 	pop af
@@ -4541,7 +4582,7 @@ CanStatusTarget:
 	jr z, .cant_item
 	pop af
 	and a
-	jr z, .no_mold_breaker
+	jr nz, .no_mold_breaker
 	call CheckSubstituteOpp
 	ld hl, ButItFailedText
 	jr nz, .end
@@ -4605,7 +4646,7 @@ CanStatusTarget:
 	ret
 
 BattleCommand_poisontarget:
-	ld b, 1
+	ld b, 0
 	call CanPoisonTarget
 	ret nz
 	ld a, [wTypeModifier]
@@ -4730,7 +4771,7 @@ BattleCommand_burntarget:
 	call GetBattleVarAddr
 	and a
 	jr nz, Defrost
-	ld b, 1
+	ld b, 0
 	call CanBurnTarget
 	ret nz
 	ld a, [wTypeModifier]
@@ -4827,7 +4868,7 @@ BattleCommand_freezetarget:
 BattleCommand_paralyzetarget:
 	xor a
 	ld [wNumHits], a
-	ld b, 1
+	ld b, 0
 	call CanParalyzeTarget
 	ret nz
 	ld a, [wTypeModifier]
@@ -5022,7 +5063,7 @@ StatusTargetVerbose:
 	and a
 	jr z, .failed_ineffective
 
-	ld b, 1
+	ld b, 0
 	call _hl_
 	jr c, .ability_ok
 	jr nz, .failed

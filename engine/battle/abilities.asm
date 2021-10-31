@@ -735,10 +735,10 @@ PoisonTouchAbility:
 	; Poison Touch is the same as an opposing Poison Point, and since
 	; abilities always run from the ability user's POV...
 	; Doesn't apply when opponent has a Substitute up...
-	ld b, 1
+	ld b, 0
 	jr DoPoisonAbility
 PoisonPointAbility:
-	ld b, 0
+	ld b, 1
 	; fallthrough
 DoPoisonAbility:
 	ld hl, CanPoisonTarget
@@ -749,7 +749,7 @@ StaticAbility:
 	ld c, 1 << PAR
 	; fallthrough
 AfflictStatusAbility:
-	ld b, 0
+	ld b, 1
 _AfflictStatusAbility:
 	; Only works 30% of the time.
 	ld a, 10
