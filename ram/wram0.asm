@@ -341,7 +341,6 @@ wLinkPlayerFixedPartyMon1ID:: ds 3
 SECTION UNION "Misc 480", WRAM0
 ; battle + pokédex (merged because pokédex can be called from battle)
 
-UNION
 ; Battle data
 wBattle::
 wEnemyMoveStruct::  move_struct wEnemyMoveStruct
@@ -665,12 +664,6 @@ wAmuletCoin:: db
 
 wDVAndPersonalityBuffer:: ds 5
 wBattleEnd::
-NEXTU
-wTempDexFound:: flag_array NUM_EXT_POKEMON
-wTempDexEnd::
-wTempDexFoundSpecies:: flag_array NUM_SPECIES
-wTempDexSpeciesEnd::
-ENDU
 
 ; Pokédex data.
 wPokedex_HBlankCode::

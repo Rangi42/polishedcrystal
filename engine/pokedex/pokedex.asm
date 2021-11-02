@@ -2411,8 +2411,8 @@ Pokedex_BlankString:
 
 Pokedex_GetSearchResults:
 	; Clear temp dex
-	ld hl, wTempDexFound
-	ld bc, wTempDexEnd - wTempDexFound
+;	ld hl, wTempDexFound
+;	ld bc, wTempDexEnd - wTempDexFound
 	xor a
 	rst ByteFill
 
@@ -2493,7 +2493,7 @@ endr
 	; we got the mon we're looking for, add it to results
 	pop de
 	push de
-	ld hl, wTempDexFound
+;	ld hl, wTempDexFound
 	ld b, SET_FLAG
 	call FlagAction
 
@@ -2540,10 +2540,13 @@ endr
 
 Pokedex_InitData:
 ; Initializes the list of Pokémon seen and owned.
-	; Reset cursor positioning and shiny flag.
+	; Reset cursor positioning and wTempDex data.
 	xor a
 	ld [wPokedex_CursorPos], a
 	ld [wPokedex_Offset], a
+	ld hl, wTempDex
+	ld bc, wTempDexEnd - wTempDex
+	rst ByteFill
 
 	; First, wipe the current wDexMons data.
 	ldh a, [rSVBK]
@@ -2559,26 +2562,19 @@ Pokedex_InitData:
 
 	; Then populate the list with seen/captured Pokémon. Do seen first, because
 	; a captured altform takes predecence over a seen regular form.
-	ld hl, wPokedexSeen
-	ld de, wPokedex_NumSeen
-	ld b, 0
-	call .GetCaptureData
-	ld a, [wPokedex_FinalEntry]
-	ld b, a
-	ld a, [wPokedex_FinalEntry + 1]
-	ld c, a
-	push bc
-	ld hl, wPokedexCaught
-	ld de, wPokedex_NumOwned
-	ld b, CAUGHT_MASK
-	call .GetCaptureData
-	pop bc
+	; TODO: when dex mode is implemented, call IterateSpecies with a=1 if order
+	; is set to johto mode.
+	ld hl, .SpeciesCallback
+	xor a
+	call Pokedex_IterateSpecies
 
 	; Set up LastCol and Rows
-	ld hl, hDividend
-	ld a, b
-	ld [hli], a
-	ld [hl], c
+	ld hl, wPokedex_FinalEntry
+	ld a, [hli]
+	ld b, [hl]
+	ld hl, hDividend + 1
+	ld [hld], a
+	ld [hl], b
 	ld a, 5
 	ldh [hDivisor], a
 	ld b, 2
@@ -2588,194 +2584,243 @@ Pokedex_InitData:
 	ldh a, [hQuotient + 2]
 	inc a
 	ld [wPokedex_Rows], a
+
+	; Write to seen/owned
+	ld hl, wTempDexSeen
+	ld de, wPokedex_NumSeen
+	ld bc, 4
+	rst CopyBytes
 	ret
 
-.GetCaptureData:
-	push hl
-	push bc
-	push de
-	call _Pokedex_GetCaptureStats
-	pop hl
-	ld a, b
-	ld [hli], a
-	ld [hl], c
-	pop bc
-	pop hl
-	ld hl, wTempDexFound
-	ld de, 0
-.loop
-	push de
-	push bc ; popped to af later, so c is clobbered.
-	call .GetSpecies
+.SpeciesCallback:
+	; We can't stackcall to wDexMons because HandleSeenOwn assumes wram1.
+	call Pokedex_HandleSeenOwn
+	ret z
 
-	; Check for any entry.
-	push hl
-	ld hl, wTempDexFoundSpecies
-	call .CheckOwnership
-	pop hl
-	jr z, .next
-
-	; Check if we have the main entry, or if we should look at variant lists.
-	call .CheckOwnership
-	jr nz, .found
-
-.variant_loop
-	inc b
-	call .CheckOwnership
-	jr z, .variant_loop
-.found
-	pop af
-	push af
-	or b
-	ld b, a
-	ld a, d
-	ld [wPokedex_FinalEntry], a
-	ld a, e
-	ld [wPokedex_FinalEntry + 1], a
+	; This is placed here because we want to preserve HandleSeenOwn flags.
 	ldh a, [rSVBK]
 	push af
-	ld a, BANK(wDexMons)
-	ldh [rSVBK], a
-	push hl
-	ld hl, wDexMons
-	add hl, de
-	add hl, de
+
+	; Get dex number.
+	ld d, b
+	ld e, c
+	jr nc, .not_caught
+	set MON_CAUGHT_F, d
+.not_caught
+	push de
+	call GetNationalDexNumber
+	pop de
+	dec bc
+
+	; TODO: in johto dex mode, we want to read the conversion table here.
+	; Note that we still want to decrement since we only need the number for
+	; adding to wDexMons.
+
+	; Track which entry we appended last.
+	ld hl, wPokedex_FinalEntry
 	ld a, c
 	ld [hli], a
 	ld [hl], b
-	pop hl
+
+	; Append to wDexMons.
+	ld a, BANK(wDexMons)
+	ldh [rSVBK], a
+	ld hl, wDexMons
+	add hl, bc
+	add hl, bc
+	ld a, e
+	ld [hli], a
+	ld [hl], d
 	pop af
 	ldh [rSVBK], a
-.next
-	pop bc
-	pop de
-	inc de
-	ld a, e
-	sub LOW(REAL_NUM_POKEMON)
-	ld a, d
-	sbc HIGH(REAL_NUM_POKEMON)
-	jr c, .loop
 	ret
 
-.GetSpecies:
-; Returns the species data for the given dex no+1.
-; TODO: account for dex mode.
-	jr .national_mode
+Pokedex_HandleSeenOwn:
+; IterateSpecies callback that handles seen/owned statistics.
+; Returns c if we've caught the mon, nz if we've seen it, otherwise z.
+; It uses bc as input for species+form, de as input for extended index.
+; Final results are stored in wTempDexSeen and wTempDexOwn assuming this
+; is used as main callback (and not chained with another that messes with
+; the way it handles things). Not that the one invoking this callback has to
+; clear wTempDex-wTempDexEnd itself.
+	; First, check if we own the Pokémon.
+	ld hl, wPokedexCaught
+	call .CheckDexFlag
+	jr z, .check_seen
 
-.regional_mode
-	push hl
-	ld hl, NewPokedexOrder
-	add hl, de
-	add hl, de
+	; We still want to handle seen data, but we want to return carry.
+	call .check_seen
+
+	; Return nz|c. This assumes [hl] isn't 65535.
+	ld hl, wTempDexOwn + 1
+	scf
+	; fallthrough
+.IncrementHLPointer:
+; big endian, hl starts at the least significant byte. This is because other
+; code assumes basically everything is big endian, and copying this data is
+; simplified this way...
+	inc [hl]
+	ret nz
+	dec hl
+	inc [hl]
+	ret
+
+.check_seen
+	; Check if we've already verified seen data for this. If so,
+	; we don't need to bother checking another one.
+	ld hl, wTempDexLast
 	ld a, [hli]
-	ld c, a
+	cp c
+	ld a, [hld]
+	jr nz, .not_last
+	xor b
+	and EXTSPECIES_MASK
+	ret z
+
+.not_last
+	push hl
+	ld hl, wPokedexSeen
+	call .CheckDexFlag
+	pop hl
+	ret z
+
+	; Carry is unset as a result of the flag check, no need to fix it here.
+	ld a, c
+	ld [hli], a
+	ld [hl], b
+	ld hl, wTempDexSeen + 1
+	jr .IncrementHLPointer
+
+.CheckDexFlag:
+	push de
+	push bc
+	ld b, CHECK_FLAG
+	; Not PokedexFlagAction, it's pointless when we already have extended index.
+	call FlagAction
+	pop bc
+	pop de
+	ret
+
+Pokedex_IterateSpecies:
+; Iterates all species. For each iteration, use hl as callback for a function to
+; call for each valid species ID including all formes. bc contains species+form
+; being checked. and de contains the resulting variant (not cosmetic) index.
+; If a is nonzero, iterate in newdex order. Skip formes if callback returns c.
+	ld b, 0
+	ld c, b
+	ld de, REAL_NUM_POKEMON
+	inc d ; to simplify looping checks
+	and a
+	jr nz, .species_loop
+	inc c
+.species_loop
+	push de
+	push bc
+	push af
+
+	; Get current species
+	call .GetSpeciesID
+
+	; Set de to extended index including regional variant.
+	ld d, b
+	ld e, c
+	swap d
+	srl d
+	dec de
+
+	; Begin at forme 1, not forme 0.
+	inc b
+
+	push hl
+	push de
+	push bc
+	call _hl_
+	pop bc
+	pop de
+	pop hl
+	jr c, .next_species
+
+	; Iterate through the variant form table to find any entries that match this
+	; species. The reason for the NUM_SPECIES offset is because we want de to
+	; contain the converted 16bit extended ID when calling hl.
+	ld de, NUM_SPECIES
+	push hl
+.form_loop
+	ld hl, VariantSpeciesAndFormTable - NUM_SPECIES * 2
+	add hl, de
+	add hl, de
+
+	; Check if the 8bit species byte matches.
+	ld a, [hli]
+	and a
+	jr z, .pop_hl_next_species
+	cp c
+	jr nz, .next_form
+
+	; Check if the extspecies bits match.
+	ld a, [hl]
+	xor b ; if this leaves EXTSPECIES_MASK bits nonzero, they don't match.
+	and EXTSPECIES_MASK
+	jr nz, .next_form
 	ld b, [hl]
 	pop hl
-	ret
-
-.national_mode
-	ld b, -1
-	push de
-	inc d
-.natloop
-	inc de
-	inc de
-	inc b
-	dec d
-	jr nz, .natloop
-	ld c, e
-	dec bc
-	swap b
-	sla b
-	pop de
-	ret
-
-.CheckOwnership:
 	push hl
 	push de
 	push bc
-	ld a, CHECK_FLAG
-	call PokedexFlagAction
-	jmp PopBCDEHL
-
-Pokedex_GetCaptureStats:
-; Sets de to the amount caught, bc to the amount seen, and writes a detailed
-; list of the seen/caught list (compressing formes into one entry) into
-; wTempDexFound (unionized with string buffers 1-5)
-	ld hl, wPokedexCaught
-	call _Pokedex_GetCaptureStats
-	push bc
-	ld hl, wPokedexSeen
-	call _Pokedex_GetCaptureStats
+	call _hl_
+	pop bc
 	pop de
+	jr c, .pop_hl_next_species
+.next_form
+	inc de
+	jr .form_loop
+
+.pop_hl_next_species
+	pop hl
+.next_species
+	; Check if we've iterated all the species.
+	pop af
+	pop bc
+	pop de
+	inc bc
+
+	; If iterating using old order, we need to skip c=255 and c=0
+	and a
+	jr nz, .next_species_new_order
+
+	; Skip c=255 and c=0
+	inc c
+	jr nz, .next_species_old_order
+	inc b
+	inc c
+	inc c
+.next_species_old_order
+	dec c
+.next_species_new_order
+	dec e
+	jr nz, .species_loop
+	dec d
+	jr nz, .species_loop
 	ret
 
-_Pokedex_GetCaptureStats:
-	; Copies caught/seen array from hl to wTempDex.
-	ld de, wTempDexFound
-	ld bc, wTempDexEnd - wTempDexFound
-	rst CopyBytes
+.GetSpeciesID:
+	bit 0, a
+	jr nz, .new_dex_order
 
-	; Clear existing temp species array
-	xor a
-	ld hl, wTempDexFoundSpecies
-	ld bc, wTempDexSpeciesEnd - wTempDexFoundSpecies
-	rst ByteFill
+	; Move the 9th bit to extspecies.
+	swap b
+	sla b
+	ret
 
-	; Iterate the flags past the main species flags for base data-affecting
-	; formes. If we find entries there, unset the flag and set the corresponding
-	; main species flag.
-	ld bc, VariantSpeciesAndFormTable
-	ld de, NUM_SPECIES
-.loop
-	; Have we seen/caught this forme?
-	call .CheckFlag
-	jr z, .next
-
-	; Set the corresponding regular flag.
-	push de
-	ld a, [bc]
-	ld e, a
-	inc bc
-	ld a, [bc]
-	call ConvertFormToExtendedSpecies
-	dec bc
-	ld d, a
-	dec de ; Flags are 0-indexed.
-	call .SetFlag
-	pop de
-
-.next
-	inc bc
-	inc bc
-	inc de
-	ld a, e
-	sub LOW(NUM_EXT_POKEMON)
-	ld a, d
-	sbc HIGH(NUM_EXT_POKEMON)
-	jr c, .loop
-
-	; Now we have a list of dex entries seen/captured. Figure out how many
-	; we've seen/captured and return that in bc.
-	ld hl, wTempDexFoundSpecies
-	ld bc, wTempDexSpeciesEnd - wTempDexFoundSpecies
-	jmp CountSetBits16
-
-.SetFlag:
-	push bc
-	ld hl, wTempDexFoundSpecies
-	ld b, SET_FLAG
-	jr .SafeFlagAction
-.CheckFlag:
-	push bc
-	ld hl, wTempDexFound
-	ld b, CHECK_FLAG
-	; fallthrough
-.SafeFlagAction:
-	push de
-	call FlagAction
-	pop de
-	pop bc
+.new_dex_order
+	push hl
+	ld hl, NewPokedexOrder
+	add hl, bc
+	add hl, bc
+	ld c, [hl]
+	inc hl
+	ld b, [hl]
+	pop hl
 	ret
 
 Pokedex_GetInput:

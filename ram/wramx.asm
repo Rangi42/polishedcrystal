@@ -313,6 +313,13 @@ wBT_PartySelections:: ds PARTY_LENGTH
 wBT_MonParty:: ds BATTLETOWER_PARTYDATA_SIZE
 wBT_SecondaryMonParty:: ds BATTLETOWER_PARTYDATA_SIZE ; last rental trainer
 wBT_OTMonParty:: ds BATTLETOWER_PARTYDATA_SIZE ; also for starting rental setup
+NEXTU
+; Seen/Own iterator handling.
+wTempDex::
+wTempDexSeen:: dw
+wTempDexOwn:: dw
+wTempDexLast:: dw ; the last species marked as seen
+wTempDexEnd::
 ENDU
 ENDU
 
