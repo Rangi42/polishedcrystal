@@ -5981,6 +5981,7 @@ PerrserkerEvosAttacks:
 	db 42, SLASH
 	db 48, CRUNCH ; Metal Sound → TR move
 	db 54, THRASH
+	db 60, CLOSE_COMBAT ; TR move
 	db -1 ; no more level-up moves
 
 CursolaEvosAttacks:

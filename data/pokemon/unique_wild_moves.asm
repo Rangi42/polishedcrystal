@@ -19,7 +19,6 @@ UniqueWildMoves:
 	unique_moves ILEX_FOREST,      0,          0
 	unique_moves ROUTE_34_COAST,   STARYU,     DREAM_EATER  ; new move
 	unique_moves STORMY_BEACH,     VENOMOTH,   0
-	unique_moves MURKY_SWAMP,      KOFFING,    CRUNCH       ; Prism tutor move
 	unique_moves MURKY_SWAMP,      MISDREAVUS, HEAL_BELL    ; HGSS tutor move
 	unique_moves ROUTE_35_COAST,   0,          0
 	unique_moves NATIONAL_PARK,    0,          0
@@ -60,6 +59,7 @@ UniqueWildMoves:
 	unique_moves SCARY_CAVE,       GOLBAT,     HYPNOSIS     ; Dream World move
 	unique_moves SCARY_CAVE,       LANTURN,    SUCKER_PUNCH ; HGSS tutor move
 	unique_moves SEAFOAM_ISLANDS,  JYNX,       METRONOME    ; RBY TM move
+	unique_moves POKEMON_MANSION,  WEEZING,    CRUNCH       ; Prism tutor move
 	unique_moves POKEMON_MANSION,  RAPIDASH,   NASTY_PLOT   ; Prism tutor move
 	unique_moves CINNABAR_VOLCANO, MAGMAR,     METRONOME    ; RBY TM move
 	unique_moves TOHJO_FALLS,      0,          0
@@ -76,5 +76,6 @@ UniqueWildMoves:
 	unique_moves FIRE_ISLAND,      HOUNDOOM,   SUCKER_PUNCH ; HGSS tutor move
 	unique_moves ICE_ISLAND,       WEAVILE,    LOW_KICK     ; HGSS tutor move
 	unique_moves LIGHTNING_ISLAND, ELECTRODE,  SUCKER_PUNCH ; HGSS tutor move
+	unique_moves ROUTE_44,         AIPOM,      ROCK_BLAST   ; new move
 	unique_moves ROUTE_49,         PARASECT,   CONFUSE_RAY  ; Prism tutor move
 	db -1
