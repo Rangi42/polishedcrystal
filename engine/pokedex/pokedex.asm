@@ -2409,25 +2409,73 @@ Pokedex_SearchPrintFieldName:
 Pokedex_BlankString:
 	db "----@"
 
-Pokedex_GetSearchResults:
-	; Clear temp dex
-;	ld hl, wTempDexFound
-;	ld bc, wTempDexEnd - wTempDexFound
+Pokedex_ResetDexMonsAndTemp:
+; Resets wDexMons and wTempDex RAM.
 	xor a
+	ld hl, wPokedex_FinalEntry
+	ld [hli], a
+	ld [hl], a
+	ld hl, wTempDex
+	ld bc, wTempDexEnd - wTempDex
 	rst ByteFill
 
-	ld de, 0
-.loop
-	; Check if mon at index de was caught
-	push de
-	ld hl, wPokedexCaught
-	ld b, CHECK_FLAG
-	call FlagAction
-	jr z, .next
-	pop bc
+	; Wipe the current wDexMons data.
+	ldh a, [rSVBK]
+	push af
+	ld a, BANK(wDexMons)
+	ldh [rSVBK], a
+	xor a
+	ld hl, wDexMons
+	ld bc, wDexMonsEnd - wDexMons
+	rst ByteFill
+	pop af
+	ldh [rSVBK], a
+	ret
 
+Pokedex_ConvertFinalEntryToRowCols:
+	ld hl, wPokedex_FinalEntry
+	ld a, [hli]
+	ld b, [hl]
+	ld hl, hDividend + 1
+	ld [hld], a
+	ld [hl], b
+	ld a, 5
+	ldh [hDivisor], a
+	ld b, 2
+	call Divide
+	ldh a, [hRemainder]
+	ld [wPokedex_LastCol], a
+	ldh a, [hQuotient + 2]
+	inc a
+	ld [wPokedex_Rows], a
+	ret
+
+Pokedex_GetSearchResults:
+	call Pokedex_ResetDexMonsAndTemp
+
+	ld hl, .SpeciesCallback
+	xor a
+	call Pokedex_IterateSpecies
+
+	call Pokedex_ConvertFinalEntryToRowCols
+	ret
+
+.SpeciesCallback:
+	call Pokedex_HandleSeenOwn
+	ret z
+
+	jr c, .caught
+
+	;;; HANDLE SEEN HERE ;;;
+	ret
+
+.caught
 	; Are we looking for any base data?
+	; Preserve species+form for appending into wDexMons later.
 	push bc
+	ld b, d
+	ld c, e
+
 	ld hl, wPokedex_SearchData
 	push hl
 	ld a, [hli]
@@ -2490,22 +2538,46 @@ endr
 	jr nz, .next
 
 .body_done
-	; we got the mon we're looking for, add it to results
-	pop de
-	push de
-;	ld hl, wTempDexFound
-	ld b, SET_FLAG
-	call FlagAction
+	; We found a valid search result. Append to wDexMons.
+	pop bc
+	set MON_CAUGHT_F, b
+
+	; First, get the last entry handled in wDexMons.
+	ld hl, wPokedex_FinalEntry + 1
+	ld a, [hld]
+	ld e, [hl]
+	ld d, a
+
+	; Then increment it for the next one.
+	inc [hl]
+	jr nz, .no_overflow
+	inc hl
+	inc [hl]
+
+.no_overflow
+	; Now append this entry to the list.
+	ldh a, [rSVBK]
+	push af
+	ld a, BANK(wDexMons)
+	ldh [rSVBK], a
+	ld hl, wDexMons
+	add hl, de
+	add hl, de
+	ld a, c
+	ld [hli], a
+	ld [hl], b
+	pop af
+	ldh [rSVBK], a
+	scf
+	ret
 
 .next
-	pop de
-	inc de
-	ld a, e
-	cp LOW(NUM_EXT_POKEMON)
-	jr nz, .loop
-	ld a, d
-	cp HIGH(NUM_EXT_POKEMON)
-	jr nz, .loop
+	pop bc
+
+	; This might override a carry from before. This is intentional, since we
+	; only reach this code if a captured mon is an invalid search result.
+	; Returning carry will tell the iterator to move on to the next species.
+	xor a
 	ret
 
 .CheckTypes:
@@ -2544,21 +2616,7 @@ Pokedex_InitData:
 	xor a
 	ld [wPokedex_CursorPos], a
 	ld [wPokedex_Offset], a
-	ld hl, wTempDex
-	ld bc, wTempDexEnd - wTempDex
-	rst ByteFill
-
-	; First, wipe the current wDexMons data.
-	ldh a, [rSVBK]
-	push af
-	ld a, BANK(wDexMons)
-	ldh [rSVBK], a
-	xor a
-	ld hl, wDexMons
-	ld bc, wDexMonsEnd - wDexMons
-	rst ByteFill
-	pop af
-	ldh [rSVBK], a
+	call Pokedex_ResetDexMonsAndTemp
 
 	; Then populate the list with seen/captured Pokémon. Do seen first, because
 	; a captured altform takes predecence over a seen regular form.
@@ -2569,21 +2627,7 @@ Pokedex_InitData:
 	call Pokedex_IterateSpecies
 
 	; Set up LastCol and Rows
-	ld hl, wPokedex_FinalEntry
-	ld a, [hli]
-	ld b, [hl]
-	ld hl, hDividend + 1
-	ld [hld], a
-	ld [hl], b
-	ld a, 5
-	ldh [hDivisor], a
-	ld b, 2
-	call Divide
-	ldh a, [hRemainder]
-	ld [wPokedex_LastCol], a
-	ldh a, [hQuotient + 2]
-	inc a
-	ld [wPokedex_Rows], a
+	call Pokedex_ConvertFinalEntryToRowCols
 
 	; Write to seen/owned
 	ld hl, wTempDexSeen
