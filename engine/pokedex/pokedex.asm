@@ -2749,7 +2749,7 @@ Pokedex_IterateSpecies:
 ; Iterates all species. For each iteration, use hl as callback for a function to
 ; call for each valid species ID including all formes. bc contains species+form
 ; being checked. and de contains the resulting variant (not cosmetic) index.
-; If a is nonzero, iterate in newdex order. Skip formes if callback returns c.
+; Iterate in the following order depending on a: 0 (natdex), 1 (johto), 2 (a-z)
 	ld b, 0
 	ld c, b
 	ld de, REAL_NUM_POKEMON
@@ -2848,7 +2848,7 @@ Pokedex_IterateSpecies:
 	ret
 
 .GetSpeciesID:
-	bit 0, a
+	and a
 	jr nz, .new_dex_order
 
 	; Move the 9th bit to extspecies.
@@ -2858,7 +2858,11 @@ Pokedex_IterateSpecies:
 
 .new_dex_order
 	push hl
+	dec a
 	ld hl, NewPokedexOrder
+	jr z, .got_dex_order
+	ld hl, AlphabeticalPokedexOrder
+.got_dex_order
 	add hl, bc
 	add hl, bc
 	ld c, [hl]
