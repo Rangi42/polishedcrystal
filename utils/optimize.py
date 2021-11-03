@@ -472,6 +472,16 @@ patterns = {
 	(1, lambda line4, prev: re.match(r'add (?:hl|bc|de), (?!hl|bc|de)', line4.code)
 		and line4.code[4] == prev[0].code[3] and line4.code[8] == prev[1].code[3]),
 ],
+'dec a, then AddNTimes': [
+	# Bad: ld hl, Foo / dec a / ld bc, BAR / call|rst AddNTimes
+	# Bad: ld hl, Foo / ld bc, BAR / dec a / call|rst AddNTimes
+	# Good: ld hl, Foo - BAR / ld bc, BAR / call|rst AddNTimes
+	(lambda line1, prev: re.match(r'ld hl, [^\[]', line1.code)),
+	(lambda line2, prev: re.match(r'ld bc, [^\[]', line2.code) or line2.code == 'dec a'),
+	(lambda line3, prev: (re.match(r'ld bc, [^\[]', line3.code) or line3.code == 'dec a')
+		and (line3.code == 'dec a') != (prev[1].code == 'dec a')),
+	(lambda line4, prev: re.match(r'(?:call|rst) AddNTimes', line4.code)),
+],
 'Redundant ret': [
 	# Bad: ret z|nz|c|nc / ret
 	# Bad: ret / ret z|nz|c|nc

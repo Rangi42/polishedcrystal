@@ -443,9 +443,8 @@ GetStorageBoxPointer:
 	push hl
 	push bc
 	ld a, b
-	ld hl, sNewBox1Entries
+	ld hl, sNewBox1Entries - (sNewBox2 - sNewBox1)
 	ld bc, sNewBox2 - sNewBox1
-	dec a
 	rst AddNTimes
 	pop bc
 	push bc
@@ -531,9 +530,8 @@ SetStorageBoxPointer:
 
 	; Get the correct box.
 	ld a, b
-	ld hl, sNewBox1Entries
+	ld hl, sNewBox1Entries - (sNewBox2 - sNewBox1)
 	ld bc, sNewBox2 - sNewBox1
-	dec a
 	rst AddNTimes
 	pop bc
 	push bc
