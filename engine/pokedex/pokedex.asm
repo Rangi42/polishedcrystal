@@ -101,6 +101,34 @@ Pokedex:
 	lb bc, BANK(BattleExtrasGFX), 2
 	call DecompressRequest2bpp
 
+	; Set up a conversion table for Johto dex numbers.
+	ld a, BANK(wDexConversionTable)
+	ldh [rSVBK], a
+	ld de, 0
+	ld bc, REAL_NUM_POKEMON + $100 ; "+ $100" simplifies loop iteration
+.conversion_loop
+	push bc
+	ld hl, NewPokedexOrder
+	add hl, de
+	add hl, de
+	ld a, [hli]
+	ld b, [hl]
+	ld c, a
+	inc de
+	push de
+	call GetNationalDexNumber
+	ld hl, wDexConversionTable - 2
+	add hl, bc
+	add hl, bc
+	pop de
+	ld a, d
+	ld [hli], a
+	ld [hl], e
+	pop bc
+	dec c
+	jr nz, .conversion_loop
+	dec b
+	jr nz, .conversion_loop
 	pop af
 	ldh [rSVBK], a
 

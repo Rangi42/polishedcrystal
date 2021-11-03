@@ -1545,7 +1545,7 @@ endr
 wDexMonsEnd::
 
 ; Conversion table to get johto dex number from national dex number.
-wConversionTable:: ds NUM_SPECIES * 2
+wDexConversionTable:: ds NUM_SPECIES * 2
 
 
 SECTION "Collisions or Music Player", WRAMX
