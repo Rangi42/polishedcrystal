@@ -6459,7 +6459,7 @@ AnimateFailedMove:
 
 BattleCommand_movedelay:
 ; Wait 40 frames.
-	ld c, 40
+	ld c, 30
 	jmp DelayFrames
 
 EndMoveEffect:
