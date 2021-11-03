@@ -1021,7 +1021,7 @@ wPokegearFlags::
 ; bit 7: on/off
 	ds 1
 wRadioTuningKnob:: db
-wLastDexMode:: db
+wPokedexMode:: db
 
 wTMHMPocketScrollPosition:: db
 wTMHMPocketCursor::

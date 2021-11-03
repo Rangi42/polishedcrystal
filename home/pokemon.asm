@@ -287,6 +287,34 @@ GetDexEntryPointer::
 	ld a, d
 	ret
 
+GetDexNumber:
+; Returns dex number depending on wPokedexMode.
+	ld a, [wPokedexMode]
+	and a
+	jr z, GetNationalDexNumber
+
+	ld a, BANK(NewPokedexOrder)
+	call StackCallInBankA
+.Function:
+	push hl
+	ld hl, NewPokedexOrder
+.loop
+	ld a, [hli]
+	cp c
+	ld a, [hli]
+	jr nz, .loop
+	xor b
+	and EXTSPECIES_MASK
+	jr nz, .loop
+	srl h
+	rr l
+	ld bc, -(NewPokedexOrder / 2)
+	add hl, bc
+	ld b, h
+	ld c, l
+	pop hl
+	ret
+
 GetNationalDexNumber:
 ; input: c = species, b = extspecies+form
 ; output: bc = natdex number ((256*extspecies + c) - (2*extspecies))

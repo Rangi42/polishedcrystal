@@ -115,12 +115,10 @@ Pokedex:
 	ld b, [hl]
 	ld c, a
 	inc de
-	push de
 	call GetNationalDexNumber
 	ld hl, wDexConversionTable - 2
 	add hl, bc
 	add hl, bc
-	pop de
 	ld a, d
 	ld [hli], a
 	ld [hl], e
@@ -271,7 +269,7 @@ Pokedex:
 Pokedex_LoadTilemap:
 	ld a, BANK(wDexTilemap)
 	call StackCallInWRAMBankA
-.Function
+.Function:
 	ld de, wDexTilemap
 	ld a, BANK(DexTilemaps)
 	call FarDecompressToDE
@@ -1124,6 +1122,32 @@ Pokedex_GetPosData:
 	dw wTileMap + 9 * SCREEN_WIDTH + 1, SCREEN_WIDTH * 3, 4
 	dw wAttrMap + 9 * SCREEN_WIDTH + 1, SCREEN_WIDTH * 3, 4
 	dw wDexPalCopy + 1, 6 * 5 + 1, 6
+
+Pokedex_GetDexNumber:
+; Optimized version of GetDexNumber for the benefit of the pokédex, which needs
+; to query several Pokédex numbers in quick succession for things like the list.
+; Instead of iterating NewPokedexOrder in case we're in johto mode, it checks a
+; conversion table (wDexConversionTable) after figuring out the national dex No.
+; Do not use this function outside the pokédex, because the conversion table
+; isn't initialized at that point.
+	call GetNationalDexNumber
+	ld a, [wPokedexMode]
+	and a
+	ret z
+
+	ld a, BANK(wDexConversionTable)
+	call StackCallInWRAMBankA
+.Function:
+	push hl
+	ld hl, wDexConversionTable - 2
+	add hl, bc
+	add hl, bc
+	ld a, [hli]
+	ld c, [hl]
+	pop hl
+	ld b, a
+	ret
+
 
 Pokedex_GetFirstIconTile:
 ; Get first icon tile number in a, l, wPokedex_FirstIconTile
@@ -2685,9 +2709,7 @@ Pokedex_InitData:
 	jr nc, .not_caught
 	set MON_CAUGHT_F, d
 .not_caught
-	push de
 	call GetNationalDexNumber
-	pop de
 	dec bc
 
 	; TODO: in johto dex mode, we want to read the conversion table here.
