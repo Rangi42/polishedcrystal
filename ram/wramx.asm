@@ -1512,14 +1512,6 @@ wDexVirtualOAMScrollbarCopy:: ds 4
 wDexVirtualOAMDexNoCopy:: ds 4 * 6
 wDexVirtualOAMCopyEnd::
 
-wDexMons::
-for n, 1, NUM_SPECIES + 1
-wDexMon{d:n}::
-wDexMon{d:n}Species:: db
-wDexMon{d:n}Form:: db
-endr
-wDexMonsEnd::
-
 ; Copy of dex row tile info. H-Blank uses a copy in wram0.
 wDexPalCopy::
 wDexRow1Tile: db ; Sprite offset for dex minis col 2-4
@@ -1536,9 +1528,24 @@ wDexNumberString:: ds 4 ; 3 numbers including leading zeroes + terminator
 ENDU
 
 
-SECTION "Attributes", WRAMX
+SECTION UNION "Attributes", WRAMX
 
 wDecompressedAttributes:: ds 256 tiles
+
+
+SECTION UNION "Attributes", WRAMX
+
+; Array of Pokémon in the pokédex list.
+wDexMons::
+for n, 1, NUM_SPECIES + 1
+wDexMon{d:n}::
+wDexMon{d:n}Species:: db
+wDexMon{d:n}Form:: db
+endr
+wDexMonsEnd::
+
+; Conversion table to get johto dex number from national dex number.
+wConversionTable:: ds NUM_SPECIES * 2
 
 
 SECTION "Collisions or Music Player", WRAMX
