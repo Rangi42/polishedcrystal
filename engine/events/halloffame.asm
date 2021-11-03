@@ -459,12 +459,14 @@ DisplayHOFMon:
 	ld a, b
 	bit MON_IS_EGG_F, a
 	jr nz, .print_id_no
+	call GetPokedexNumber
+	ld d, b
+	ld e, c
 	hlcoord 1, 13
 	ld a, "№"
 	ld [hli], a
-	ld [hl], "."
-	hlcoord 3, 13
-	call GetPokedexNumber ; sets de
+	ld a, "."
+	ld [hli], a
 	lb bc, PRINTNUM_LEADINGZEROS | 2, 3
 	call PrintNumFromReg
 	call GetBasePokemonName

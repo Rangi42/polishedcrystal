@@ -3075,7 +3075,7 @@ _Pokedex_GetCursorMon:
 	push af
 	ld a, BANK(wDexNumber)
 	ldh [rSVBK], a
-	call GetPokedexNumber
+	call Pokedex_GetDexNumber
 	ld de, wPokedexOAM_DexNoStr
 	ld h, b
 	ld l, c

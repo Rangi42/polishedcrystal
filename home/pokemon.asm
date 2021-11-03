@@ -287,8 +287,11 @@ GetDexEntryPointer::
 	ld a, d
 	ret
 
-GetDexNumber:
-; Returns dex number depending on wPokedexMode.
+GetPokedexNumber::
+; input: c = species, b = extspecies+form
+; output bc = de = pokedex number ((256*extspecies + c) - (2*extspecies))
+; this reflects how c = $00 and c = $ff don't have a pokédex number.
+; TODO: Should be able to handle regional dex order.
 	ld a, [wPokedexMode]
 	and a
 	jr z, GetNationalDexNumber
@@ -330,16 +333,6 @@ GetNationalDexNumber:
 	ld c, a
 	ret nc
 	dec b
-	ret
-
-GetPokedexNumber::
-; input: c = species, b = extspecies+form
-; output bc = de = pokedex number ((256*extspecies + c) - (2*extspecies))
-; this reflects how c = $00 and c = $ff don't have a pokédex number.
-; TODO: Should be able to handle regional dex order.
-	call GetNationalDexNumber
-	ld d, b
-	ld e, c
 	ret
 
 ConvertFormToExtendedSpecies::

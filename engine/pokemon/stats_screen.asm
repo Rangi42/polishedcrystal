@@ -236,12 +236,13 @@ StatsScreen_InitUpperHalf:
 	ld a, [wCurForm]
 	ld b, a
 	call GetPokedexNumber
+	ld d, b
+	ld e, c
 	hlcoord 8, 0
 	ld a, "№"
 	ld [hli], a
 	ld a, "."
 	ld [hli], a
-	hlcoord 10, 0
 	lb bc, PRINTNUM_LEADINGZEROS | 2, 3
 	call PrintNumFromReg ; sets de
 	hlcoord 14, 0
