@@ -968,6 +968,13 @@ Pokedex_UpdateRow:
 	pop bc
 .species_done
 	call .GetDexNo
+	ld a, h
+	or l
+	jr nz, .do_vwf
+	pop af
+	jr .vwf_done
+
+.do_vwf
 	ld de, wDexNumberString
 	push bc
 	call FastPrintNum
@@ -991,6 +998,7 @@ Pokedex_UpdateRow:
 	ld de, wDexNumberString
 	call PlaceVWFString
 	pop bc
+.vwf_done
 	inc b
 	ld a, b
 	cp 5
@@ -1061,7 +1069,6 @@ Pokedex_UpdateRow:
 	; If there's blank space here, we assume that the list is properly ordered.
 	; This is because the only point when we have non-contiguous dex numbers,
 	; we also have no blank spaces.
-	; TODO: account for the end of the list (wPokedex_LastCol).
 	ld a, c
 	and a
 	jr z, .not_seen
@@ -1075,6 +1082,20 @@ Pokedex_UpdateRow:
 
 .not_seen
 	pop bc
+	ld hl, wPokedex_Rows
+	ld a, [wPokedex_Offset]
+	add c
+	inc a
+	sub [hl]
+	jr c, .get_dexno
+	inc hl
+	ld a, b
+	sub [hl]
+	jr c, .get_dexno
+	ld hl, 0
+	ret
+
+.get_dexno
 	ld a, DEXPOS_DEXNO
 	; fallthrough
 Pokedex_GetPosData:
@@ -2532,6 +2553,7 @@ Pokedex_ConvertFinalEntryToRowCols:
 	ld b, 2
 	call Divide
 	ldh a, [hRemainder]
+	inc a
 	ld [wPokedex_LastCol], a
 	ldh a, [hQuotient + 2]
 	inc a
