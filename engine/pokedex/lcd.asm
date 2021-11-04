@@ -120,16 +120,11 @@ Pokedex_RefreshScreen:
 	call Multiply
 	ld b, 4
 	ld a, [wPokedex_Rows]
-	sub 4
-	jr nc, .scrollbar_enabled
-	xor a
-	jr .got_scrollbar_offset
-
-.scrollbar_enabled
-	inc a
+	sub 3
 	ldh [hDivisor], a
 	ld a, 0
 	jr c, .got_scrollbar_offset
+	jr z, .got_scrollbar_offset
 	call Divide
 	ldh a, [hQuotient + 2]
 	add 85
