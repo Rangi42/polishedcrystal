@@ -1088,10 +1088,12 @@ Pokedex_UpdateRow:
 	inc a
 	sub [hl]
 	jr c, .get_dexno
+	jr nz, .end_of_list
 	inc hl
 	ld a, b
 	sub [hl]
 	jr c, .get_dexno
+.end_of_list
 	ld hl, 0
 	ret
 
@@ -2567,8 +2569,13 @@ Pokedex_GetSearchResults:
 	ld a, [wPokedexMode]
 	call Pokedex_IterateSpecies
 
-	call Pokedex_ConvertFinalEntryToRowCols
-	ret
+	; TODO: handle FinalEntry==0 (no search results found)
+	ld hl, wPokedex_FinalEntry
+	dec [hl]
+	jr z, Pokedex_ConvertFinalEntryToRowCols
+	inc hl
+	dec [hl]
+	jr Pokedex_ConvertFinalEntryToRowCols
 
 .SpeciesCallback:
 	call Pokedex_HandleSeenOwn
