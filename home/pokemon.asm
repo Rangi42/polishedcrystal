@@ -294,7 +294,7 @@ GetPokedexNumber::
 ; TODO: Should be able to handle regional dex order.
 	ld a, [wPokedexMode]
 	and a
-	jr z, GetNationalDexNumber
+	jr nz, GetNationalDexNumber
 
 	ld a, BANK(NewPokedexOrder)
 	call StackCallInBankA

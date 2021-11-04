@@ -1186,7 +1186,7 @@ Pokedex_GetDexNumber:
 	call GetNationalDexNumber
 	ld a, [wPokedexMode]
 	and a
-	ret z
+	ret nz
 
 	ld a, BANK(wDexConversionTable)
 	call StackCallInWRAMBankA
