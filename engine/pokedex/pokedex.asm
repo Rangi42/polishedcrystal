@@ -2571,7 +2571,9 @@ Pokedex_GetSearchResults:
 
 	; TODO: handle FinalEntry==0 (no search results found)
 	ld hl, wPokedex_FinalEntry
+	ld a, [hl]
 	dec [hl]
+	and a
 	jr nz, .no_final_overflow
 	inc hl
 	dec [hl]
