@@ -1047,7 +1047,34 @@ Pokedex_UpdateRow:
 	ret
 
 .GetDexNo:
-; TODO: When we have search modes, we want to check based on wDexMons.
+	ld a, DEXPOS_MONS
+	call Pokedex_GetPosData
+	ld a, BANK(wDexMons)
+	ldh [rSVBK], a
+	push bc
+	ld a, [hli]
+	ld c, a
+	ld b, [hl]
+	ld a, BANK(wDexMonTiles)
+	ldh [rSVBK], a
+
+	; If there's blank space here, we assume that the list is properly ordered.
+	; This is because the only point when we have non-contiguous dex numbers,
+	; we also have no blank spaces.
+	; TODO: account for the end of the list (wPokedex_LastCol).
+	ld a, c
+	and a
+	jr z, .not_seen
+
+	; Otherwise, get the dex number for the species the usual way.
+	call Pokedex_GetDexNumber
+	ld h, b
+	ld l, c
+	pop bc
+	ret
+
+.not_seen
+	pop bc
 	ld a, DEXPOS_DEXNO
 	; fallthrough
 Pokedex_GetPosData:
@@ -1130,6 +1157,9 @@ Pokedex_GetDexNumber:
 ; conversion table (wDexConversionTable) after figuring out the national dex No.
 ; Do not use this function outside the pokédex, because the conversion table
 ; isn't initialized at that point.
+	ld a, BANK(wPokedexMode)
+	call StackCallInWRAMBankA
+.StackCall1:
 	call GetNationalDexNumber
 	ld a, [wPokedexMode]
 	and a
@@ -1137,7 +1167,7 @@ Pokedex_GetDexNumber:
 
 	ld a, BANK(wDexConversionTable)
 	call StackCallInWRAMBankA
-.Function:
+.StackCall2:
 	push hl
 	ld hl, wDexConversionTable - 2
 	add hl, bc
