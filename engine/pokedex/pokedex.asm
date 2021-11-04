@@ -3071,11 +3071,11 @@ _Pokedex_GetCursorMon:
 	pop bc
 
 	; Get dex number.
+	call Pokedex_GetDexNumber
 	ldh a, [rSVBK]
 	push af
 	ld a, BANK(wDexNumber)
 	ldh [rSVBK], a
-	call Pokedex_GetDexNumber
 	ld de, wPokedexOAM_DexNoStr
 	ld h, b
 	ld l, c
