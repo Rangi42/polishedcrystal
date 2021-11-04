@@ -5,8 +5,7 @@ AUTO_INPUT EQU $ff
 	const_def
 	const DEXMODE_NEW
 	const DEXMODE_OLD
-	const DEXMODE_ABC
-	const DEXMODE_UNOWN
+	; 2 means a-z for IterateSpecies, but isn't a proper dex mode
 
 ; wMonType::
 	const_def

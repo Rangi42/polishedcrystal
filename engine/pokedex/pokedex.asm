@@ -2566,8 +2566,7 @@ Pokedex_GetSearchResults:
 	call Pokedex_ResetDexMonsAndTemp
 
 	ld hl, .SpeciesCallback
-	ld a, [wPokedexMode]
-	call Pokedex_IterateSpecies
+	call Pokedex_IterateSpeciesWithMode
 
 	; TODO: handle FinalEntry==0 (no search results found)
 	ld hl, wPokedex_FinalEntry
@@ -2743,8 +2742,7 @@ Pokedex_InitData:
 	; TODO: when dex mode is implemented, call IterateSpecies with a=1 if order
 	; is set to johto mode.
 	ld hl, .SpeciesCallback
-	ld a, [wPokedexMode]
-	call Pokedex_IterateSpecies
+	call Pokedex_IterateSpeciesWithMode
 
 	; Set up LastCol and Rows
 	call Pokedex_ConvertFinalEntryToRowCols
@@ -2863,6 +2861,11 @@ Pokedex_HandleSeenOwn:
 	pop de
 	ret
 
+Pokedex_IterateSpeciesWithMode:
+	; wPokedexMode is 0 (johto)/1 (national), but IterateSpecies swaps them for
+	; simplicity. So do a xor 1 here.
+	ld a, [wPokedexMode]
+	xor 1
 Pokedex_IterateSpecies:
 ; Iterates all species. For each iteration, use hl as callback for a function to
 ; call for each valid species ID including all formes. bc contains species+form
@@ -2872,7 +2875,7 @@ Pokedex_IterateSpecies:
 	ld c, b
 	ld de, REAL_NUM_POKEMON
 	inc d ; to simplify looping checks
-	and a
+	and a ; cp DEXMODE_OLD
 	jr nz, .species_loop
 	inc c
 .species_loop
@@ -2947,7 +2950,7 @@ Pokedex_IterateSpecies:
 	inc bc
 
 	; If iterating using old order, we need to skip c=255 and c=0
-	and a
+	and a ; cp DEXMODE_OLD
 	jr nz, .next_species_new_order
 
 	; Skip c=255 and c=0
@@ -2966,7 +2969,7 @@ Pokedex_IterateSpecies:
 	ret
 
 .GetSpeciesID:
-	and a
+	and a ; cp DEXMODE_OLD
 	jr nz, .new_dex_order
 
 	; Move the 9th bit to extspecies.
@@ -2976,7 +2979,7 @@ Pokedex_IterateSpecies:
 
 .new_dex_order
 	push hl
-	dec a
+	dec a ; cp DEXMODE_NEW
 	ld hl, NewPokedexOrder
 	jr z, .got_dex_order
 	ld hl, AlphabeticalPokedexOrder
