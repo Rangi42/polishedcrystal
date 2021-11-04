@@ -2564,7 +2564,7 @@ Pokedex_GetSearchResults:
 	call Pokedex_ResetDexMonsAndTemp
 
 	ld hl, .SpeciesCallback
-	xor a
+	ld a, [wPokedexMode]
 	call Pokedex_IterateSpecies
 
 	call Pokedex_ConvertFinalEntryToRowCols
@@ -2733,7 +2733,7 @@ Pokedex_InitData:
 	; TODO: when dex mode is implemented, call IterateSpecies with a=1 if order
 	; is set to johto mode.
 	ld hl, .SpeciesCallback
-	xor a
+	ld a, [wPokedexMode]
 	call Pokedex_IterateSpecies
 
 	; Set up LastCol and Rows
@@ -2761,7 +2761,7 @@ Pokedex_InitData:
 	jr nc, .not_caught
 	set MON_CAUGHT_F, d
 .not_caught
-	call GetNationalDexNumber
+	call Pokedex_GetDexNumber
 	dec bc
 
 	; TODO: in johto dex mode, we want to read the conversion table here.
