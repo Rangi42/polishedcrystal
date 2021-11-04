@@ -2572,9 +2572,10 @@ Pokedex_GetSearchResults:
 	; TODO: handle FinalEntry==0 (no search results found)
 	ld hl, wPokedex_FinalEntry
 	dec [hl]
-	jr z, Pokedex_ConvertFinalEntryToRowCols
+	jr nz, .no_final_overflow
 	inc hl
 	dec [hl]
+.no_final_overflow
 	jr Pokedex_ConvertFinalEntryToRowCols
 
 .SpeciesCallback:
