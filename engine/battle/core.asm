@@ -7005,9 +7005,6 @@ _GetNewBaseExp:
 	dec b
 	jr nz, .bst_loop
 
-	; We want to round up at 0.5, so double this.
-	add hl, hl
-
 	ld a, h
 	ldh [hMultiplicand + 1], a
 	ld a, l
@@ -7052,11 +7049,15 @@ _GetNewBaseExp:
 .got_multiplier
 	ldh [hMultiplier], a
 	call Multiply
-	ld a, 20
+
+	; We want to round up on 0.5, so divide by 10 first.
+	ld a, 10
 	ldh [hDivisor], a
 	ld b, 4
 	call Divide
 	ld hl, hMultiplicand + 1
+
+	; Halve the result, rounding up on .5
 	srl [hl]
 	inc hl
 	rr [hl]
