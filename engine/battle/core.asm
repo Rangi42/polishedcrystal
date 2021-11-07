@@ -7005,6 +7005,9 @@ _GetNewBaseExp:
 	dec b
 	jr nz, .bst_loop
 
+	; We want to round up at 0.5, so double this.
+	add hl, hl
+
 	ld a, h
 	ldh [hMultiplicand + 1], a
 	ld a, l
@@ -7052,7 +7055,17 @@ _GetNewBaseExp:
 	ld a, 20
 	ldh [hDivisor], a
 	ld b, 4
-	jmp Divide
+	call Divide
+	ld hl, hMultiplicand + 1
+	srl [hl]
+	inc hl
+	rr [hl]
+	ret nc
+	inc [hl]
+	ret nz
+	dec hl
+	inc [hl]
+	ret
 
 INCLUDE "data/pokemon/base_exp_exceptions.asm"
 
