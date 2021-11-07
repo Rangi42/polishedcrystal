@@ -2567,16 +2567,6 @@ Pokedex_GetSearchResults:
 
 	ld hl, .SpeciesCallback
 	call Pokedex_IterateSpeciesWithMode
-
-	; TODO: handle FinalEntry==0 (no search results found)
-	ld hl, wPokedex_FinalEntry
-	ld a, [hl]
-	dec [hl]
-	and a
-	jr nz, .no_final_overflow
-	inc hl
-	dec [hl]
-.no_final_overflow
 	jr Pokedex_ConvertFinalEntryToRowCols
 
 .SpeciesCallback:
@@ -2585,8 +2575,23 @@ Pokedex_GetSearchResults:
 
 	jr c, .caught
 
-	;;; HANDLE SEEN HERE ;;;
-	ret
+	; Check if we're doing a null search.
+	ld hl, wPokedex_SearchData
+	ld b, wPokedex_SearchDataEnd - wPokedex_SearchData
+	xor a
+.check_null_search
+	or [hl]
+	inc hl
+	dec b
+	jr nz, .check_null_search
+
+	; If we aren't, skip this entry.
+	and a
+	ret nz
+
+	; Otherwise, append the species. This will return nc
+	; as desired.
+	jr .search_done
 
 .caught
 	; Are we looking for any base data?
@@ -2609,17 +2614,17 @@ Pokedex_GetSearchResults:
 	; Check base data (types + egg groups)
 	call GetBaseDataFromIndexBC
 	call .CheckTypes ; check wPokedex_SearchType1
-	jr nz, .next
+	jr nz, .invalid
 	inc hl
 	call .CheckTypes ; check wPokedex_SearchType2
-	jr nz, .next
+	jr nz, .invalid
 
 	inc hl
 	call .CheckEggGroups ; check wPokedex_SearchGroup1
-	jr nz, .next
+	jr nz, .invalid
 	inc hl
 	call .CheckEggGroups ; check wPokedex_SearchGroup2
-	jr nz, .next
+	jr nz, .invalid
 
 .base_data_done
 	; Are we looking for body data?
@@ -2643,7 +2648,7 @@ endr
 	dec d
 	and $f
 	cp d
-	jr nz, .next
+	jr nz, .invalid
 
 .color_done
 	inc e
@@ -2654,43 +2659,76 @@ endr
 	swap a
 	and $f
 	cp e
-	jr nz, .next
+	jr nz, .invalid
 
 .body_done
 	; We found a valid search result. Append to wDexMons.
 	pop bc
 	set MON_CAUGHT_F, b
 
+	; Mark that the mon is caught for later return.
+	scf
+
+.search_done
+	ldh a, [rSVBK]
+	push af
+	ld a, BANK(wDexMons)
+	ldh [rSVBK], a
+
+.check_finalentry
 	; First, get the last entry handled in wDexMons.
 	ld hl, wPokedex_FinalEntry + 1
 	ld a, [hld]
 	ld e, [hl]
 	ld d, a
 
-	; Then increment it for the next one.
-	inc [hl]
-	jr nz, .no_overflow
-	inc hl
-	inc [hl]
-
-.no_overflow
-	; Now append this entry to the list.
-	ldh a, [rSVBK]
-	push af
-	ld a, BANK(wDexMons)
-	ldh [rSVBK], a
+	; Check if the final entry matches. If not, we want to
+	; move on to the next wDexMons entry.
+	push hl
 	ld hl, wDexMons
 	add hl, de
 	add hl, de
+
+	; Don't overwrite unless the entry is blank, or the same
+	; species.
+
+	; Is the entry blank?
+	inc [hl]
+	dec [hl]
+	jr z, .overwrite_ok
+
+	; Is it the same species?
+	ld a, [hli]
+	cp c
+	jr nz, .next_dexmon
+	ld a, [hld]
+	xor b
+	and EXTSPECIES_MASK
+	jr nz, .next_dexmon
+
+	; Overwrite with current species data.
+.overwrite_ok
 	ld a, c
 	ld [hli], a
 	ld [hl], b
+	pop hl
 	pop af
 	ldh [rSVBK], a
-	scf
 	ret
 
-.next
+.next_dexmon
+	pop hl
+
+	; Increment FinalEntry and try again.
+	; Then increment it for the next one.
+	inc [hl]
+	jr nz, .check_finalentry
+	inc hl
+	inc [hl]
+	jr .check_finalentry
+
+.invalid
+	; Entry doesn't match search terms.
 	pop bc
 
 	; This might override a carry from before. This is intentional, since we
