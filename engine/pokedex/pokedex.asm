@@ -2563,11 +2563,26 @@ Pokedex_ConvertFinalEntryToRowCols:
 	ret
 
 Pokedex_GetSearchResults:
+; Returns z if there was no search results.
 	call Pokedex_ResetDexMonsAndTemp
 
 	ld hl, .SpeciesCallback
 	call Pokedex_IterateSpeciesWithMode
-	jr Pokedex_ConvertFinalEntryToRowCols
+	call Pokedex_ConvertFinalEntryToRowCols
+
+	; If the first byte in wDexMons is blank, there was
+	; no search results found, otherwise it'd be 1-254,
+	; signifying a species.
+	ldh a, [rSVBK]
+	push af
+	ld a, BANK(wDexMons)
+	ldh [rSVBK], a
+	ld a, [wDexMons]
+	and a
+	pop bc ; preserve flags
+	ld a, b
+	ldh [rSVBK], a
+	ret
 
 .SpeciesCallback:
 	call Pokedex_HandleSeenOwn
