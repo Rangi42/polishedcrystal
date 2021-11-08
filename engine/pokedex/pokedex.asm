@@ -2332,6 +2332,10 @@ endc
 	jr .joypad_loop
 
 .pressed_start
+	ld a, [wPokedexMode]
+	xor 1 ; for IterateSpecies, 0=national, 1=regional
+
+	; If alphabetical, set a=2 here.
 	call Pokedex_GetSearchResults
 	jr .joypad_loop
 
@@ -2564,10 +2568,14 @@ Pokedex_ConvertFinalEntryToRowCols:
 
 Pokedex_GetSearchResults:
 ; Returns z if there was no search results.
+; a defines order: 0 (national), 1 (regional), 2 (a-z). Note that a is swapped
+; compared to wPokedexMode.
+	push af
 	call Pokedex_ResetDexMonsAndTemp
+	pop af
 
 	ld hl, .SpeciesCallback
-	call Pokedex_IterateSpeciesWithMode
+	call Pokedex_IterateSpecies
 	call Pokedex_ConvertFinalEntryToRowCols
 
 	; If the first byte in wDexMons is blank, there was
