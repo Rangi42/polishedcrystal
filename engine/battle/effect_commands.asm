@@ -6428,8 +6428,8 @@ AnimateFailedMove:
 	jmp BattleCommand_raisesub
 
 BattleCommand_movedelay:
-; Wait 40 frames.
-	ld c, 40
+; Wait 30 frames.
+	ld c, 30
 	jmp DelayFrames
 
 EndMoveEffect:

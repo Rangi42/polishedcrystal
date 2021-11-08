@@ -1987,7 +1987,7 @@ RestorePPEffect:
 	push hl
 	push bc
 	ld a, [hl]
-	add 1 << 6 ; increase PP Up count by 1
+	add PP_UP_ONE ; increase PP Up count by 1
 	ld [hl], a
 	ld a, TRUE
 	ld [wUsePPUp], a
@@ -2114,7 +2114,7 @@ RestorePP:
 	ld a, [wTempPP]
 	ld b, a
 	ld a, [hl]
-	and (1 << 6) - 1
+	and PP_MASK
 	cp b
 	jr nc, .dont_restore
 
@@ -2126,7 +2126,7 @@ RestorePP:
 
 ; restore up to 10 PP for ETHER, ELIXIR, and LEPPA_BERRY
 	ld a, [hl]
-	and (1 << 6) - 1
+	and PP_MASK
 	add 10
 	cp b
 	jr nc, .restore_all
