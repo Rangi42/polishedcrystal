@@ -2159,10 +2159,8 @@ Pokedex_SearchReset:
 	ld hl, wPokedex_SearchData
 	xor a
 	ld [wPokedexOAM_DexNoY], a ; might as well do this here
-	assert wPokedex_SearchDataEnd - wPokedex_SearchData == 6 ; rept {expression} doesn't assemble :(
-rept 6 ; this is the same number of bytes as a loop, and less cycles
-	ld [hli], a
-endr
+	ld bc, wPokedex_SearchDataEnd - wPokedex_SearchData
+	rst ByteFill
 	; fallthrough
 Pokedex_Search:
 ; Reloads Search page without reinitializing search fields/cursor
