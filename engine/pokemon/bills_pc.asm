@@ -739,17 +739,17 @@ EncodeTempMon:
 	ld b, wEncodedTempMonEnd - wEncodedTempMonNickname
 .charmap_loop
 	ld a, [hl]
-	; " " -> $7a
+	; " " ($7f) -> $7a
 	ld c, $7a | ~%01111111
 	cp " "
 	jr z, .replace
-	; "@" -> $7b
+	; "@" ($53) -> $7b
 	inc c
 	cp "@"
 	jr z, .replace
-	; "<NULL>" -> $7c
+	; "<START>" ($00) -> $7c
 	inc c
-	and a
+	and a ; cp "<START>"
 	jr nz, .removebit
 .replace
 	ld a, c
@@ -849,11 +849,11 @@ DecodeTempMon:
 	ld c, "@"
 	jr z, .replace
 	dec a
-	ld c, 0
-	jr z, .replace
+	jr z, .replace_a ; a is "<START>" ($00) iff the zero flag is set
 
 	; Reverse the previous decrements
 	add $fc
+.replace_a
 	ld c, a
 .replace
 	ld [hl], c
