@@ -1330,13 +1330,15 @@ wPartyMonNicknamesEnd::
 
 	ds 1 ; unused
 
-wPokedexCaught:: flag_array NUM_EXT_POKEMON
+wPokedexFlags::
+wPokedexCaught:: flag_array NUM_UNIQUE_POKEMON
 wEndPokedexCaught::
 
-wPokedexSeen:: flag_array NUM_EXT_POKEMON
+wPokedexSeen:: flag_array NUM_UNIQUE_POKEMON
 wEndPokedexSeen::
+wEndPokedexFlags::
 
-	ds 16 ; unused
+	ds 4 ; unused
 
 wUnownDex:: flag_array NUM_UNOWN
 wUnownDexEnd::

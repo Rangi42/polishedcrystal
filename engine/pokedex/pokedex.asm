@@ -36,7 +36,52 @@
 	const DEXPOS_ATTRMAP
 	const DEXPOS_PALCOPY
 
+PokedexDebugFlags:
+; Clears dex flags and sets some new ones for testing.
+; Temporary; should be removed when dex is confirmed as fully working.
+	; Clear dex flags
+	ld hl, wPokedexFlags
+	ld bc, wEndPokedexFlags - wPokedexFlags
+	xor a
+	rst ByteFill
+
+	ld hl, .DexFlagList
+.loop1
+	ld a, [hli]
+	and a
+	jr z, .loop2
+	ld c, a
+	ld a, [hli]
+	ld b, a
+	push hl
+	farcall SetSeenAndCaughtMon
+	pop hl
+	jr .loop1
+.loop2
+	ld a, [hli]
+	and a
+	ret z
+	ld c, a
+	ld a, [hli]
+	ld b, a
+	push hl
+	farcall SetSeenMon
+	pop hl
+	jr .loop2
+
+.DexFlagList:
+	; seen+owned
+	dp BULBASAUR
+	dp UNOWN
+	dp UNOWN, UNOWN_B_FORM
+	db 0
+
+	; only seen
+	dp UNOWN, UNOWN_C_FORM
+	db 0
+
 Pokedex:
+	call PokedexDebugFlags
 	ldh a, [hBGMapMode]
 	ld b, a
 	ldh a, [hVBlank]
@@ -362,17 +407,38 @@ Pokedex_LoadTilemapWithIconAndForm:
 	ret
 
 Pokedex_ChangeForm:
-; Input: a = 0 (check seen), 1 (check caught)
+; Input: a = 0 (check caught), 1 (check seen). For this function's purpose,
+; any mon with cosmetic formes are considered caught even if only seen.
+	push af
+	ld a, [wPokedex_Personality]
+	bit 1, a
+	jr z, .not_cosmetic
+	pop af
+
+	ld a, 1
+	call Pokedex_CheckForOtherForms
+	ld a, BANK(wDexMons)
+	call StackCallInWRAMBankA
+.StackCall1:
+	ld a, [hl]
+	and CAUGHT_MASK
+	or b
+	ld b, a
+	jr .set_hl
+
+.not_cosmetic
+	pop af
 	call Pokedex_CheckForOtherForms
 	ret c
 	ld a, BANK(wDexMons)
 	call StackCallInWRAMBankA
-.Function:
+.StackCall2:
+.set_hl
 	ld [hl], b
 	jmp Pokedex_ScheduleScreenUpdate
 
 Pokedex_CheckForOtherForms:
-; Input: a = 0 (check caught), 1 (check seen)
+; Input: a = 0 (check caught), 1 (check seen), 2 (check noncosmetic seen)
 ; Output: b = form, c = species, hl = pointer to mon form
 ; carry flag set if no other eligible form found
 	ld e, a
@@ -380,7 +446,12 @@ Pokedex_CheckForOtherForms:
 	res MON_CAUGHT_F, b
 	ld d, 0
 	push hl
+	bit 1, e
+	ld hl, CosmeticSpeciesAndFormTable
+	jr z, .cosmetic
 	ld hl, VariantSpeciesAndFormTable
+	dec e
+.cosmetic
 	call .FindVariant
 	pop hl
 	ret
@@ -1803,7 +1874,7 @@ Pokedex_Bio:
 	hlcoord 8, 11
 	ld a, b
 	call FarString
-	
+
 	; Print hatch rate
 	ld a, [wBaseEggSteps]
 	and $f
@@ -2970,7 +3041,7 @@ Pokedex_IterateSpecies:
 	ld de, NUM_SPECIES
 	push hl
 .form_loop
-	ld hl, VariantSpeciesAndFormTable - NUM_SPECIES * 2
+	ld hl, CosmeticSpeciesAndFormTable - NUM_SPECIES * 2
 	add hl, de
 	add hl, de
 
@@ -3213,19 +3284,27 @@ _Pokedex_GetCursorMon:
 	ld hl, wPokedex_GFXFlags
 	set DEXGFX_FRONTPIC, [hl]
 
-	; Check if other eligible forms to switch to exists
+	; Check if this mon has variants
 	ld hl, wPokedex_Personality
 	res 0, [hl] ; clear pokedex other eligible form flag
 	ld a, 1
 	push hl
 	call Pokedex_CheckForOtherForms
-	pop bc
-	jr c, .no_variants
-	ld a, [bc]
-	inc a
-	ld [bc], a
+	jr c, .variants_done
 
-.no_variants
+	; Check if this mon only has cosmetic variants
+	ld a, 2
+	call Pokedex_CheckForOtherForms
+	pop hl
+	push hl
+	inc [hl]
+	res 1, [hl]
+	jr c, .variants_done
+	set 1, [hl]
+
+.variants_done
+	pop bc
+
 	; Frontpic pal
 	ld a, [wCurPartySpecies]
 	farcall GetMonNormalOrShinyPalettePointer

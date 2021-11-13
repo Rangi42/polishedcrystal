@@ -147,7 +147,7 @@ CheckDexMon::
 PokedexFlagAction::
 	push af
 	push hl
-	call GetSpeciesAndFormIndex
+	call GetCosmeticSpeciesAndFormIndex
 	ld d, b
 	ld e, c
 	pop hl
