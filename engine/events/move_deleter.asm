@@ -165,4 +165,8 @@ MoveDeletion:
 	and $ff - FORM_MASK
 	or PLAIN_FORM
 	ld [hl], a
-	ret
+
+	; Register this Pikachu as seen+caught in the dex.
+	ld c, PIKACHU
+	ld b, a
+	farjp SetSeenAndCaughtMon
