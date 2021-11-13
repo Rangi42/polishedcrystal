@@ -1345,8 +1345,7 @@ wUnownDexEnd::
 
 wUnlockedUnowns:: db
 
-wFirstUnownSeen:: db
-wFirstMagikarpSeen:: db
+	ds 2 ; unused
 
 wDayCareMan::
 ; bit 7: active
