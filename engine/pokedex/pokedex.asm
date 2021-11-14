@@ -54,7 +54,7 @@ PokedexDebugFlags:
 	ld a, [hli]
 	ld b, a
 	push hl
-	farcall SetSeenAndCaughtMon
+	call SetSeenAndCaughtMon
 	pop hl
 	jr .loop1
 .loop2
@@ -65,7 +65,7 @@ PokedexDebugFlags:
 	ld a, [hli]
 	ld b, a
 	push hl
-	farcall SetSeenMon
+	call SetSeenMon
 	pop hl
 	jr .loop2
 
@@ -2411,9 +2411,9 @@ endc
 	rrca
 	jr c, .pressed_start
 	rrca
-	jmp c, .pressed_right
+	jr c, .pressed_right
 	rrca
-	jmp c, .pressed_left
+	jr c, .pressed_left
 	rrca
 	jr c, .pressed_up
 	rrca
