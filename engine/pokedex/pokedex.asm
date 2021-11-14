@@ -74,10 +74,12 @@ PokedexDebugFlags:
 	dp BULBASAUR
 	dp UNOWN
 	dp UNOWN, UNOWN_B_FORM
+	dp VULPIX
 	db 0
 
 	; only seen
 	dp UNOWN, UNOWN_C_FORM
+	dp VULPIX, ALOLAN_FORM
 	db 0
 
 Pokedex:
@@ -437,8 +439,32 @@ Pokedex_ChangeForm:
 	ld [hl], b
 	jmp Pokedex_ScheduleScreenUpdate
 
+Pokedex_MonHasCosmeticForms:
+; Returns carry if the given mon on the cursor doesn't have cosmetic forms.
+	call Pokedex_GetCursorSpecies
+
+	; Used to track when we reach the end of the cosmetic table
+	ld de, -VariantSpeciesAndFormTable
+	ld hl, CosmeticSpeciesAndFormTable
+.loop
+	ld a, [hli]
+	cp c
+	ld a, [hli]
+	jr nz, .next
+	xor b
+	and EXTSPECIES_MASK
+	jr z, .done ; At this point, carry isn't set.
+.next
+	push hl
+	add hl, de
+	pop hl
+	jr nc, .loop
+	; At this point, carry is set.
+.done
+	ret
+
 Pokedex_CheckForOtherForms:
-; Input: a = 0 (check caught), 1 (check seen), 2 (check noncosmetic seen)
+; Input: a = 0 (check caught), 1 (check seen)
 ; Output: b = form, c = species, hl = pointer to mon form
 ; carry flag set if no other eligible form found
 	ld e, a
@@ -446,12 +472,7 @@ Pokedex_CheckForOtherForms:
 	res MON_CAUGHT_F, b
 	ld d, 0
 	push hl
-	bit 1, e
 	ld hl, CosmeticSpeciesAndFormTable
-	jr z, .cosmetic
-	ld hl, VariantSpeciesAndFormTable
-	dec e
-.cosmetic
 	call .FindVariant
 	pop hl
 	ret
@@ -3285,26 +3306,23 @@ _Pokedex_GetCursorMon:
 	set DEXGFX_FRONTPIC, [hl]
 
 	; Check if this mon has variants
+	call Pokedex_MonHasCosmeticForms
 	ld hl, wPokedex_Personality
-	res 0, [hl] ; clear pokedex other eligible form flag
+	res 0, [hl]
+	res 1, [hl]
+	jr c, .no_cosmetic_variants
+	set 1, [hl]
+.no_cosmetic_variants
 	ld a, 1
 	push hl
 	call Pokedex_CheckForOtherForms
-	jr c, .variants_done
-
-	; Check if this mon only has cosmetic variants
-	ld a, 2
-	call Pokedex_CheckForOtherForms
-	pop hl
-	push hl
-	inc [hl]
-	res 1, [hl]
-	jr c, .variants_done
-	set 1, [hl]
-
-.variants_done
 	pop bc
+	jr c, .no_variants
+	ld a, [bc]
+	inc a
+	ld [bc], a
 
+.no_variants
 	; Frontpic pal
 	ld a, [wCurPartySpecies]
 	farcall GetMonNormalOrShinyPalettePointer
