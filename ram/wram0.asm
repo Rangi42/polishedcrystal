@@ -695,7 +695,6 @@ wPokedex_MonInfoBank:: db
 
 wPokedex_Personality::
 ; bit 7 = shiny
-; bit 1 = has cosmetic formes (should preserve capture flag data)
 ; bit 0 = has other form (eligible to switch to)
 wPokedex_Shiny::
 wPokedex_OtherForm:: db

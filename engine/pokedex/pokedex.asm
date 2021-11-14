@@ -410,11 +410,10 @@ Pokedex_LoadTilemapWithIconAndForm:
 
 Pokedex_ChangeForm:
 ; Input: a = 0 (check caught), 1 (check seen). For this function's purpose,
-; any mon with cosmetic formes are considered caught even if only seen.
+; any mon with cosmetic forms are considered caught even if only seen.
 	push af
-	ld a, [wPokedex_Personality]
-	bit 1, a
-	jr z, .not_cosmetic
+	call Pokedex_MonHasCosmeticForms
+	jr c, .not_cosmetic
 	pop af
 
 	ld a, 1
@@ -3306,13 +3305,8 @@ _Pokedex_GetCursorMon:
 	set DEXGFX_FRONTPIC, [hl]
 
 	; Check if this mon has variants
-	call Pokedex_MonHasCosmeticForms
 	ld hl, wPokedex_Personality
 	res 0, [hl]
-	res 1, [hl]
-	jr c, .no_cosmetic_variants
-	set 1, [hl]
-.no_cosmetic_variants
 	ld a, 1
 	push hl
 	call Pokedex_CheckForOtherForms
