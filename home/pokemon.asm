@@ -401,7 +401,7 @@ GetSpeciesAndFormIndexFromHL::
 
 	; Verify correct extspecies+form.
 	xor b
-	jr z, .found_index ; perfect match
+	ret z ; perfect match
 
 	; Is the mismatch due to wrong species (extspecies mismatch)?
 	; We can check this by comparing on form mask+1, since form is
