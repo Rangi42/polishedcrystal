@@ -1697,6 +1697,10 @@ AteAbilities:
 
 	; change move type
 	ld [hl], b
+
+	; Note that fixing category for the Phys/Spec split option can't be done
+	; here, because this is done after the game has already figured out whether
+	; the move is physical or special.
 	ln a, 6, 5 ; x1.2
 	jmp MultiplyAndDivide
 
