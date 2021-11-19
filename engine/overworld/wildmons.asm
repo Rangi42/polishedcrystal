@@ -514,6 +514,7 @@ ApplyAbilityEffectsOnEncounterMon:
 
 .AbilityEffects:
 	dbw ARENA_TRAP,    .ArenaTrap
+	dbw FLASH_FIRE,    .FlashFire
 	dbw HARVEST,       .Harvest
 	dbw HUSTLE,        .Hustle
 	dbw ILLUMINATE,    .Illuminate
@@ -527,24 +528,15 @@ ApplyAbilityEffectsOnEncounterMon:
 	dbw QUICK_FEET,    .QuickFeet
 	dbw STATIC,        .Static
 	dbw STENCH,        .Stench
-	dbw SWARM,         .Swarm
 	dbw VITAL_SPIRIT,  .VitalSpirit
+	dbw WHITE_SMOKE,   .WhiteSmoke
 	dbw -1, -1
 
 .ArenaTrap:
 .Illuminate:
+.NoGuard:
 .double_encounter_rate
 	sla b
-	jr .avoid_rate_overflow
-
-.NoGuard:
-.Swarm:
-.semidouble_encounter_rate
-	ld a, b
-	srl b
-	add b
-	ld b, a
-.avoid_rate_overflow
 	ret nc
 	ld b, $ff
 	ret
@@ -552,6 +544,7 @@ ApplyAbilityEffectsOnEncounterMon:
 .Infiltrator:
 .QuickFeet:
 .Stench:
+.WhiteSmoke:
 .halve_encounter_rate
 	srl b
 .avoid_rate_underflow
@@ -584,6 +577,10 @@ ApplyAbilityEffectsOnEncounterMon:
 	ret nc
 	jr .halve_encounter_rate
 
+.FlashFire:
+	push bc
+	ld c, FIRE
+	jr .force_wildtype
 .Harvest:
 	push bc
 	ld c, GRASS

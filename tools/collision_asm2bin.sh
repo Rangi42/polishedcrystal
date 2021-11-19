@@ -1,8 +1,8 @@
 #!/bin/sh
 # Usage: collision_asm2bin.sh collision.asm collision.bin
 
-TEMP_ASM=$(mktemp collision.asm.XXX)
-TEMP_O=$(mktemp collision.o.XXX)
+TEMP_ASM=$(mktemp collision.asm.XXXXXX)
+TEMP_O=$(mktemp collision.o.XXXXXX)
 
 echo 'INCLUDE "constants/collision_constants.asm"' > "$TEMP_ASM"
 echo 'INCLUDE "macros/collision.asm"' >> "$TEMP_ASM"

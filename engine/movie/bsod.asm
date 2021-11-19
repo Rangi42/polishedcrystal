@@ -72,6 +72,9 @@ BSOD:
 	dec a ; a == ERR_NEWBOX?
 	ld de, BSOD_NewBox
 	jr z, .done
+	dec a ; a == ERR_WINSTACK_OVERFLOW?
+	ld de, BSOD_WinStackOverflow
+	jr z, .done
 	ld de, BSOD_UnknownError
 .done
 	hlcoord 1, 14
@@ -170,6 +173,9 @@ BSOD_OldBox:
 
 BSOD_NewBox:
 	db "Fatal PC box error@"
+
+BSOD_WinStackOverflow:
+	db "Win.stack overflow@"
 
 BSOD_UnknownError:
 	db "Unknown error@"
