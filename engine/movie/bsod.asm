@@ -47,9 +47,9 @@ BSOD:
 	ld a, NUM_ERR_CODES
 .valid
 	add a
-	add LOW(BSOD_ErrorStrings)
+	add LOW(BSODErrorStrings)
 	ld l, a
-	adc HIGH(BSOD_ErrorStrings)
+	adc HIGH(BSODErrorStrings)
 	sub l
 	ld h, a
 	ld a, [hli]
@@ -122,8 +122,8 @@ VBABSODMessage:
 	next1 "or Gambatte."
 	next  "Error:@"
 
-BSOD_ErrorStrings:
-	table_width 2, BSOD_ErrorStrings
+BSODErrorStrings:
+	table_width 2, BSODErrorStrings
 	dw .Rst0             ; ERR_RST_0
 	dw .DivZero          ; ERR_DIV_ZERO
 	dw .EggSpecies       ; ERR_EGG_SPECIES
@@ -138,38 +138,15 @@ BSOD_ErrorStrings:
 	dw .UnknownError     ; unknown
 	assert_table_length NUM_ERR_CODES + 1
 
-.Rst0:
-	db "rst 0@"
-
-.DivZero:
-	db "Division by zero@"
-
-.EggSpecies:
-	db "<PK><MN> species is Egg@"
-
-.ExecutingRAM:
-	db "Executing RAM@"
-
-.StackOverflow:
-	db "Stack overflow@"
-
-.StackUnderflow:
-	db "Stack underflow@"
-
-.OldBTState:
-	db "Old Battle Tower@"
-
-.VersionMismatch:
-	db "Version mismatch@"
-
-.OldBox:
-	db "Old PC box storage@"
-
-.NewBox:
-	db "Fatal PC box error@"
-
-.WinStackOverflow:
-	db "Win.stack overflow@"
-
-.UnknownError:
-	db "Unknown error@"
+.Rst0:             db "rst 0@"
+.DivZero:          db "Division by zero@"
+.EggSpecies:       db "<PK><MN> species is Egg@"
+.ExecutingRAM:     db "Executing RAM@"
+.StackOverflow:    db "Stack overflow@"
+.StackUnderflow:   db "Stack underflow@"
+.OldBTState:       db "Old Battle Tower@"
+.VersionMismatch:  db "Version mismatch@"
+.OldBox:           db "Old PC box storage@"
+.NewBox:           db "Fatal PC box error@"
+.WinStackOverflow: db "Win.stack overflow@"
+.UnknownError:     db "Unknown error@"
