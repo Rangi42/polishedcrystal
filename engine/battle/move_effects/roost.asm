@@ -26,7 +26,7 @@ BattleCommand_roost:
 	; Roost shouldn't mess with non-Flying types.
 	ld a, [hl]
 	cp b
-	jr nz, .types_ok
+	ret nz ; don't set the roost status if types don't change
 
 	; We've found the flying type.
 	ld [hl], c
