@@ -275,7 +275,7 @@ SaveOptions:
 	ld a, [wOptions3]
 	ld [sOptions3], a
 	ld a, [wOptions1]
-	and $ff ^ (1 << NO_TEXT_SCROLL)
+	and ~(1 << NO_TEXT_SCROLL)
 	ld [sOptions + wOptions1 - wOptions], a
 	jmp CloseSRAM
 

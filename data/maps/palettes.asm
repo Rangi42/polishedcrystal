@@ -1,16 +1,16 @@
 special_pal_for: MACRO
-if "\1" == "map"
+if !STRCMP("\1", "map")
 	db PAL_FOR_MAP
 	map_id \2 ; map id
-elif "\1" == "landmark"
+elif !STRCMP("\1", "landmark")
 	db PAL_FOR_LANDMARK
 	db \2 ; landmark
-elif "\1" == "tileset"
+elif !STRCMP("\1", "tileset")
 	db PAL_FOR_TILESET
 	db \2 ; tileset
-elif "\1" == "overcast"
+elif !STRCMP("\1", "overcast")
 	db PAL_FOR_OVERCAST
-elif "\1" == "darkness"
+elif !STRCMP("\1", "darkness")
 	db PAL_FOR_DARKNESS
 endc
 ENDM

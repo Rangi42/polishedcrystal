@@ -466,7 +466,7 @@ _UpdateMewtwoForm:
 .got_form
 	ld d, a
 	ld a, [hl]
-	and $ff ^ SPECIESFORM_MASK
+	and ~SPECIESFORM_MASK
 	or d
 	ld [hl], a
 	ret

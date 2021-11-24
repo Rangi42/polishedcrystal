@@ -13,7 +13,7 @@ else
 RGBDS_DIR =
 endif
 
-RGBASM_FLAGS = -E -Weverything
+RGBASM_FLAGS = -E -Weverything -Wnumeric-string=2 -Wtruncation=1
 RGBLINK_FLAGS = -n $(ROM_NAME).sym -m $(ROM_NAME).map -l layout.link -p $(FILLER)
 RGBFIX_FLAGS = -csjv -t $(TITLE) -i $(MCODE) -n $(ROMVERSION) -p $(FILLER) -k 01 -l 0x33 -m 0x10 -r 3
 

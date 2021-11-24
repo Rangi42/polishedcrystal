@@ -4,7 +4,7 @@ frame: MACRO
 	db \1
 	def x = \2
 	for i, 3, _NARG + 1
-		redef x = x | (1 << (\<i> + 1))
+		redef x |= 1 << (\<i> + 1)
 	endr
 	db x
 ENDM

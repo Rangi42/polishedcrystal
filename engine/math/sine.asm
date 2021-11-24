@@ -49,5 +49,5 @@ _Sine::
 x = 0
 rept $20
 	dw (sin(x) + (sin(x) & $ff)) >> 8 ; round up
-x = x + DIV(32768, $20) ; a circle has 65536 "degrees"
+x += DIV(32768, $20) ; a circle has 65536 "degrees"
 endr

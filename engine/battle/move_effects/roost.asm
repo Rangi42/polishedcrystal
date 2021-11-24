@@ -7,6 +7,8 @@ BattleCommand_roost:
 	call CheckIfUserIsFlyingType
 	ret nz
 
+	lb bc, FLYING, UNKNOWN_T
+
 	ldh a, [hBattleTurn]
 	and a
 	ld hl, wBattleMonType1
@@ -15,13 +17,19 @@ BattleCommand_roost:
 .got_types
 	; Check if both types are flying
 	ld a, [hli]
-	cp FLYING
+	cp b
 	jr nz, .not_double_flying
 	ld a, [hld]
-	cp FLYING
+	cp b
 	jr z, .normalize
 .not_double_flying
-	ld [hl], UNKNOWN_T
+	; Roost shouldn't mess with non-Flying types.
+	ld a, [hl]
+	cp b
+	ret nz ; don't set the roost status if types don't change
+
+	; We've found the flying type.
+	ld [hl], c
 	jr .types_ok
 .normalize
 	; Pure Flying types become Normal

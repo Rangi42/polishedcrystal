@@ -389,7 +389,7 @@ endr
 	inc de
 .loop1
 	ld a, [hl]
-	and $ff ^ PALETTE_MASK
+	and ~PALETTE_MASK
 	or PAL_BG_TEXT ; black
 	ld [hl], a
 	ld a, [wBattleTransitionSpinQuadrant]
@@ -510,7 +510,7 @@ StartTrainerBattle_SpeckleToBlack:
 	cp PAL_BG_TEXT ; black
 	jr z, .y_loop
 	ld a, [hl]
-	and $ff ^ PALETTE_MASK
+	and ~PALETTE_MASK
 	or PAL_BG_TEXT ; black
 	ld [hl], a
 	ret
@@ -565,7 +565,7 @@ StartTrainerBattle_LoadPokeBallGraphics:
 	ld bc, SCREEN_WIDTH * SCREEN_HEIGHT
 .loop1
 	ld a, [hl]
-	and $ff ^ PALETTE_MASK
+	and ~PALETTE_MASK
 	or PAL_BG_RED ; flashing overworld
 	ld [hli], a
 	dec bc
@@ -904,7 +904,7 @@ StartTrainerBattle_ZoomToBlack:
 	push hl
 .col
 	ld a, [hl]
-	and $ff ^ PALETTE_MASK
+	and ~PALETTE_MASK
 	or PAL_BG_TEXT ; black
 	ld [hli], a
 	dec c
