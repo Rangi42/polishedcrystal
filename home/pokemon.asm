@@ -414,7 +414,6 @@ GetSpeciesAndFormIndexFromHL::
 	xor b ; revert previous "xor b" to regain the value in [hl-1]
 	and FORM_MASK ; does the table contain an exact form?
 	jr nz, .loop
-.found_index
 	ret
 
 .egg
