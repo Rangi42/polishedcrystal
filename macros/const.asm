@@ -15,7 +15,7 @@ ENDM
 
 const: MACRO
 	DEF \1 EQU const_value
-	redef const_value = const_value + const_inc
+	redef const_value += const_inc
 ENDM
 
 shift_const: MACRO
@@ -25,9 +25,9 @@ ENDM
 
 const_skip: MACRO
 	if _NARG >= 1
-		redef const_value = const_value + const_inc * (\1)
+		redef const_value += const_inc * (\1)
 	else
-		redef const_value = const_value + const_inc
+		redef const_value += const_inc
 	endc
 ENDM
 

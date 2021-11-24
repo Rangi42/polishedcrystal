@@ -84,9 +84,9 @@ genders: MACRO
 	def y = 1
 	for i, 1, _NARG + 1
 		if !STRCMP("\<i>", "FEMALE")
-			def x = x | y
+			def x |= y
 		endc
-		def y = y * 2
+		def y <<= 1
 	endr
 	db x
 ENDM

@@ -22,7 +22,7 @@ tmhm: MACRO
 		if DEF(\<i>_TMNUM)
 			def n = (\<i>_TMNUM - 1) / 8
 			def t = (\<i>_TMNUM - 1) % 8
-			def _tm{d:n} = _tm{d:n} | (1 << t)
+			def _tm{d:n} |= 1 << t
 		else
 			fail "\<i> is not a TM, HM, or tutor move"
 		endc

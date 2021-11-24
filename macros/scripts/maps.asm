@@ -12,7 +12,7 @@ ENDM
 
 scene_script: MACRO
 	dw \1 ; script
-	redef {_NUM_SCENE_SCRIPTS} = {_NUM_SCENE_SCRIPTS} + 1
+	redef {_NUM_SCENE_SCRIPTS} += 1
 ENDM
 
 def_callbacks: MACRO
@@ -24,7 +24,7 @@ ENDM
 callback: MACRO
 	db \1 ; type
 	dw \2 ; script
-	def {_NUM_CALLBACKS} = {_NUM_CALLBACKS} + 1
+	redef {_NUM_CALLBACKS} += 1
 ENDM
 
 def_warp_events: MACRO
@@ -38,7 +38,7 @@ warp_event: MACRO
 	db \1 ; x
 	db \4 ; warp_to
 	map_id \3 ; map
-	redef {_NUM_WARP_EVENTS} = {_NUM_WARP_EVENTS} + 1
+	redef {_NUM_WARP_EVENTS} += 1
 ENDM
 
 def_coord_events: MACRO
@@ -52,7 +52,7 @@ coord_event: MACRO
 	db \2 ; y
 	db \1 ; x
 	dw \4 ; script
-	redef {_NUM_COORD_EVENTS} = {_NUM_COORD_EVENTS} + 1
+	redef {_NUM_COORD_EVENTS} += 1
 ENDM
 
 def_bg_events: MACRO
@@ -74,7 +74,7 @@ bg_event: MACRO
 	else
 		dw \4 ; pointer
 	endc
-	redef {_NUM_BG_EVENTS} = {_NUM_BG_EVENTS} + 1
+	redef {_NUM_BG_EVENTS} += 1
 ENDM
 
 def_object_events: MACRO
@@ -107,7 +107,7 @@ object_event: MACRO
 		dw \<12> ; pointer || byte, 0
 		dw \<13> ; event flag
 	endc
-	redef {_NUM_OBJECT_EVENTS} = {_NUM_OBJECT_EVENTS} + 1
+	redef {_NUM_OBJECT_EVENTS} += 1
 ENDM
 
 itemball_event: MACRO

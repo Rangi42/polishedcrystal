@@ -293,14 +293,14 @@ ext_const_def: MACRO
 	endc
 	if _NARG >= 2
 		DEF \2 EQU ext_const_value
-		redef ext_const_value = ext_const_value + const_inc
+		redef ext_const_value += const_inc
 	endc
 ENDM
 
 ext_const: MACRO
 	const_skip
 	DEF \1 EQU ext_const_value
-	redef ext_const_value = ext_const_value + const_inc
+	redef ext_const_value += const_inc
 ENDM
 
 NO_FORM EQU 0
