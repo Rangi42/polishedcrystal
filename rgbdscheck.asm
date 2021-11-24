@@ -1,10 +1,10 @@
 MAJOR EQU 0
 MINOR EQU 5
-PATCH EQU 1
+PATCH EQU 2
 RC    EQU 0
 
 wrong_rgbds: MACRO
-	fail "polishedcrystal requires rgbds v0.5.1 or newer."
+	fail "polishedcrystal requires rgbds v0.5.2 or newer."
 ENDM
 
 if !DEF(__RGBDS_MAJOR__) || !DEF(__RGBDS_MINOR__) || !DEF(__RGBDS_PATCH__)
