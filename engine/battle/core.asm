@@ -3970,7 +3970,7 @@ BattleMenu:
 BattleMenu_Fight:
 	ld a, [wBattleType]
 	cp BATTLETYPE_SAFARI
-	jmp z, BattleMenu_SafariBall
+	jr z, BattleMenu_SafariBall
 
 	xor a
 	ld [wNumFleeAttempts], a

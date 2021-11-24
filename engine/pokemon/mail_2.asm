@@ -563,7 +563,7 @@ LoadMusicMailGFX:
 	call Mail_Draw3x2Graphic
 	call LovelyEonMail_PlaceIcons
 	pop hl
-	jmp MailGFX_PlaceMessage
+	jr MailGFX_PlaceMessage
 
 LoadMirageMailGFX:
 	push bc
