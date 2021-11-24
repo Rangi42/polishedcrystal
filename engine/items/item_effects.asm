@@ -2312,7 +2312,7 @@ Ball_ReplacePartyMonCaughtBall:
 	jr z, AlreadyInThatBallMessage
 
 	ld a, [hl]
-	and $ff ^ CAUGHT_BALL_MASK
+	and ~CAUGHT_BALL_MASK
 	add b
 	ld [hl], a
 	call UseDisposableItem
@@ -2709,7 +2709,7 @@ AbilityCap:
 
 	; Change ability
 	ld a, [de]
-	and $ff ^ ABILITY_MASK
+	and ~ABILITY_MASK
 	or c
 	ld [de], a
 

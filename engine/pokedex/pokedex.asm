@@ -2349,7 +2349,7 @@ Pokedex_LoadCurrentFootprint:
 Pokedex_LoadAnyFootprint:
 	ld a, [wTempSpecies]
 	dec a
-	and ($ff ^ $07) ; $f8 ; $1f << 3
+	and %11111000
 	rrca
 	rrca
 	rrca
@@ -2358,7 +2358,7 @@ Pokedex_LoadAnyFootprint:
 	ld d, a
 	ld a, [wTempSpecies]
 	dec a
-	and 7
+	and %00000111
 	swap a ; * $10
 	add a
 	ld l, a

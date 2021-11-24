@@ -1391,7 +1391,7 @@ ManageBoxes:
 .regular_right
 	; Move right, wrapping around
 	inc a ; 6 columns, CursorPosValid fixes up final column 6+
-	and LOW(~$8)
+	and ~$8
 	jr .new_cursor_pos
 
 .pressed_left
@@ -1427,7 +1427,7 @@ ManageBoxes:
 	; Move left, wrapping around
 	or $8 ; 6 columns, CursorPosValid fixes up final column 6+
 	dec a
-	and LOW(~$8)
+	and ~$8
 	jr .new_cursor_pos
 
 .pressed_start
