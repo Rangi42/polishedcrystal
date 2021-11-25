@@ -1087,7 +1087,7 @@ MaxStatSparkleGFX:
 INCBIN "gfx/stats/sparkle.2bpp"
 
 EVChartPals:
-INCBIN "gfx/stats/ev_chart.pal"
+INCLUDE "gfx/stats/ev_chart.pal"
 
 IVChartPals:
-INCBIN "gfx/stats/iv_chart.pal"
+INCLUDE "gfx/stats/iv_chart.pal"
