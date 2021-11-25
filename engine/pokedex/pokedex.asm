@@ -192,13 +192,12 @@ Pokedex:
 
 	; Prepare H-blank code.
 	ld hl, PHB_LCDCode
-	ld de, wPokedex_HBlankCode
+	ld de, wLCDPokedex
 	ld bc, PHB_LCDCodeEnd - PHB_LCDCode
 	rst CopyBytes
-	assert (PHB_LCDCodeEnd - PHB_LCDCode) == (wPokedex_HBlankCodeEnd - wPokedex_HBlankCode)
-	ld a, LOW(wPokedex_HBlankCode)
+	ld a, LOW(wLCDPokedex)
 	ldh [hFunctionTargetLo], a
-	ld a, HIGH(wPokedex_HBlankCode)
+	ld a, HIGH(wLCDPokedex)
 	ldh [hFunctionTargetHi], a
 
 	ld a, CGB_POKEDEX

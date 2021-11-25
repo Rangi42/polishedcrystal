@@ -341,8 +341,14 @@ wLinkPlayerFixedPartyMon1ID:: ds 3
 SECTION UNION "Misc 480", WRAM0
 ; battle + pokédex (merged because pokédex can be called from battle)
 
+; wLCDPokedex is defined in a LOAD UNION block in engine/pokedex/lcd.asm
+; Reserve space for it at the beginning of this LOAD UNION
+	assert wLCDPokedexEnd - wLCDPokedex == 16
+	ds 16
+
 ; Battle data
 wBattle::
+
 wEnemyMoveStruct::  move_struct wEnemyMoveStruct
 wPlayerMoveStruct:: move_struct wPlayerMoveStruct
 
@@ -666,11 +672,6 @@ wDVAndPersonalityBuffer:: ds 5
 wBattleEnd::
 
 ; Pokédex data.
-wPokedex_HBlankCode::
-wPokedex_HBlankHeader:: ds 9 ; push af, backup rombank, bankswitch, call...
-wPokedex_HBlankFunction:: dw ; ...(function to call)...
-wPokedex_HBlankFooter:: ds 5 ; ...restore backup, bankswitch back, pop af, reti
-wPokedex_HBlankCodeEnd::
 
 ; For setting up a new HBlank trigger
 wPokedex_PendingLYC:: db

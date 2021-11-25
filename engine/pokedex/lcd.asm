@@ -269,16 +269,22 @@ Pokedex_UnsafeSetHBlankFunction:
 ; Thus, we assume worst-case mode0 access. Mode2 is always 40 cycles in
 ; doublespeed while worst-case mode0 is 37 after factoring in interrupt latency.
 PHB_LCDCode:
+LOAD UNION "Misc 480", WRAM0
+wLCDPokedex::
 	push af
 	ldh a, [hROMBank]
 	ldh [hROMBankBackup], a
 	ld a, BANK(PHB_LCDCode)
 	rst Bankswitch
-	call DoNothing ; replaced with the actual function
+	db $cd ; call
+wPokedex_HBlankFunction::
+	dw DoNothing ; replaced with the actual function
 	ldh a, [hROMBankBackup]
 	rst Bankswitch
 	pop af
 	reti
+wLCDPokedexEnd::
+ENDL
 PHB_LCDCodeEnd:
 
 PHB_DescSwitchSCY:
