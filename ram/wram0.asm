@@ -343,8 +343,8 @@ SECTION UNION "Misc 480", WRAM0
 
 ; wLCDPokedex is defined in a LOAD UNION block in engine/pokedex/lcd.asm
 ; Reserve space for it at the beginning of this LOAD UNION
-	assert wLCDPokedexEnd - wLCDPokedex == 16
-	ds 16
+	ds 15
+	assert wLCDPokedexEnd - wLCDPokedex == @ - STARTOF("Misc 480")
 
 ; Battle data
 wBattle::

@@ -271,7 +271,6 @@ Pokedex_UnsafeSetHBlankFunction:
 PHB_LCDCode:
 LOAD UNION "Misc 480", WRAM0
 wLCDPokedex::
-	push af
 	ldh a, [hROMBank]
 	ldh [hROMBankBackup], a
 	ld a, BANK(PHB_LCDCode)

@@ -1,5 +1,4 @@
 LCDGeneric::
-	push af
 	ldh a, [hLCDCPointer]
 	and a
 	jr z, .done
@@ -22,7 +21,6 @@ LCDGeneric::
 	reti
 
 LCDMusicPlayer::
-	push af
 	ldh a, [rLY]
 	cp PIANO_ROLL_HEIGHT_PX
 	jr nc, .done
@@ -65,8 +63,6 @@ LCDMusicPlayer::
 	reti
 
 LCDBillsPC1::
-	push af
-
 	; Write boxmon palettes
 	ldh a, [rSTAT]
 	bit 2, a
@@ -114,7 +110,6 @@ endr
 	reti
 
 LCDBillsPC2::
-	push af
 	push hl
 	push bc
 	ld c, LOW(rBGPD)
@@ -188,7 +183,6 @@ endr
 
 LCDBillsPC3:
 ; Writes white or box background to color0 for BG3
-	push af
 	push hl
 	push bc
 	push de
