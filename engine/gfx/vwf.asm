@@ -8,10 +8,10 @@ _PlaceVWFString::
 ; Preserves the value of b.
 
 ; Build a function to write pixels in hAppendVWFText.
-; - nothing: or [hl] / ld [hld], a / ld [hl], a / ret
-; - invert: xor [hl] / ld [hld], a / ld [hl], a / ret
-; - opaque: or [hl] / ld [hld], a / ret
-; - invert+opaque: xor [hl] / ld [hld], a / ret
+; - nothing:        or [hl] / ld [hld], a / ld [hl], a / ret
+; - invert:        xor [hl] / ld [hld], a / ld [hl], a / ret
+; - opaque:         or [hl] / ld [hld], a /              ret
+; - invert+opaque: xor [hl] / ld [hld], a /              ret
 	push hl
 	ld hl, hAppendVWFText
 	bit VWF_INVERT_F, b
