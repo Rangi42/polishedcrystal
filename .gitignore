@@ -25,4 +25,5 @@ data/tilesets/*_collision.bin
 bank_ends.txt
 
 # local tools
+rgbds/
 deploy.sh
