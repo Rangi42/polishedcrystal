@@ -191,11 +191,11 @@ Pokedex:
 	rst ByteFill
 
 	; Prepare H-blank code.
-	ld hl, PHB_WRAMCode
+	ld hl, PHB_LCDCode
 	ld de, wPokedex_HBlankCode
-	ld bc, PHB_WRAMCodeEnd - PHB_WRAMCode
+	ld bc, PHB_LCDCodeEnd - PHB_LCDCode
 	rst CopyBytes
-	assert (PHB_WRAMCodeEnd - PHB_WRAMCode) == (wPokedex_HBlankCodeEnd - wPokedex_HBlankCode)
+	assert (PHB_LCDCodeEnd - PHB_LCDCode) == (wPokedex_HBlankCodeEnd - wPokedex_HBlankCode)
 	ld a, LOW(wPokedex_HBlankCode)
 	ldh [hFunctionTargetLo], a
 	ld a, HIGH(wPokedex_HBlankCode)

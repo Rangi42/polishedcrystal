@@ -268,18 +268,18 @@ Pokedex_UnsafeSetHBlankFunction:
 ; An interrupt can trigger with between 0 and 5 cycles of imprecision.
 ; Thus, we assume worst-case mode0 access. Mode2 is always 40 cycles in
 ; doublespeed while worst-case mode0 is 37 after factoring in interrupt latency.
-PHB_WRAMCode:
+PHB_LCDCode:
 	push af
 	ldh a, [hROMBank]
 	ldh [hROMBankBackup], a
-	ld a, BANK(PHB_WRAMCode)
+	ld a, BANK(PHB_LCDCode)
 	rst Bankswitch
 	call DoNothing ; replaced with the actual function
 	ldh a, [hROMBankBackup]
 	rst Bankswitch
 	pop af
 	reti
-PHB_WRAMCodeEnd:
+PHB_LCDCodeEnd:
 
 PHB_DescSwitchSCY:
 	push hl

@@ -1,9 +1,5 @@
 SECTION "HRAM", HRAM
 
-HRAM_START::
-
-hPushOAM:: ds 5
-
 hScriptVar:: dw
 
 hROMBankBackup:: db
@@ -232,5 +228,3 @@ hBitwiseRet::    db ; $c9 ret
 hSingleOperation::
 hSingleOpcode:: db ; opcode
 hSingleRet::    db ; $c9 ret
-
-HRAM_END::

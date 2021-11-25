@@ -288,4 +288,5 @@ SRAM $3
 	"Boxes 8-14"
 
 HRAM
+	"OAM DMA"
 	"HRAM"
