@@ -147,72 +147,72 @@ _CGB_FinishBattleScreenLayout:
 	and a
 	jr z, .overlay_done
 
-	hlcoord 0, 8, wAttrMap
+	hlcoord 0, 8, wAttrmap
 	bit 3, [hl]
 	jr z, .no_player_overlay
 	set 0, b
 .no_player_overlay
-	hlcoord 9, 3, wAttrMap
+	hlcoord 9, 3, wAttrmap
 	bit 3, [hl]
 	jr z, .overlay_done
 	set 1, b
 
 .overlay_done
 	push bc
-	hlcoord 0, 0, wAttrMap
+	hlcoord 0, 0, wAttrmap
 	ld bc, SCREEN_WIDTH * SCREEN_HEIGHT
 	ld a, PAL_BATTLE_BG_ENEMY_HP
 	rst ByteFill
 
-	hlcoord 0, 4, wAttrMap
+	hlcoord 0, 4, wAttrmap
 	lb bc, 8, 10
 	xor a ; PAL_BATTLE_BG_PLAYER
 	call FillBoxWithByte
 
-	hlcoord 10, 0, wAttrMap
+	hlcoord 10, 0, wAttrmap
 	lb bc, 7, 10
 	ld a, PAL_BATTLE_BG_ENEMY
 	call FillBoxWithByte
 
-	hlcoord 0, 0, wAttrMap
+	hlcoord 0, 0, wAttrmap
 	lb bc, 4, 10
 	ld a, PAL_BATTLE_BG_ENEMY_HP
 	call FillBoxWithByte
 
-	hlcoord 10, 7, wAttrMap
+	hlcoord 10, 7, wAttrmap
 	lb bc, 5, 10
 	ld a, PAL_BATTLE_BG_PLAYER_HP
 	call FillBoxWithByte
 
-	hlcoord 12, 11, wAttrMap
+	hlcoord 12, 11, wAttrmap
 	lb bc, 1, 7
 	ld a, PAL_BATTLE_BG_EXP_GENDER
 	call FillBoxWithByte
 
 	ld a, PAL_BATTLE_BG_EXP_GENDER
-	hlcoord 1, 1, wAttrMap
+	hlcoord 1, 1, wAttrmap
 	ld [hl], a
-	hlcoord 8, 1, wAttrMap
+	hlcoord 8, 1, wAttrmap
 	ld [hl], a
-	hlcoord 18, 8, wAttrMap
+	hlcoord 18, 8, wAttrmap
 	ld [hl], a
 
-	hlcoord 12, 8, wAttrMap
+	hlcoord 12, 8, wAttrmap
 	lb bc, 1, 2
 	ld a, PAL_BATTLE_BG_STATUS
 	call FillBoxWithByte
 
-	hlcoord 2, 1, wAttrMap
+	hlcoord 2, 1, wAttrmap
 	lb bc, 1, 2
 	ld a, PAL_BATTLE_BG_STATUS
 	call FillBoxWithByte
 
-	hlcoord 1, 9, wAttrMap
+	hlcoord 1, 9, wAttrmap
 	lb bc, 1, 6
 	ld a, PAL_BATTLE_BG_TYPE_CAT
 	call FillBoxWithByte
 
-	hlcoord 0, 12, wAttrMap
+	hlcoord 0, 12, wAttrmap
 	ld bc, 6 * SCREEN_WIDTH
 	ld a, PAL_BATTLE_BG_TEXT
 	rst ByteFill
@@ -228,7 +228,7 @@ _CGB_FinishBattleScreenLayout:
 	jr z, .apply_attr_map
 	bit 0, b
 	jr z, .no_player_overlay2
-	hlcoord 0, 8, wAttrMap
+	hlcoord 0, 8, wAttrmap
 	push bc
 	ld b, PAL_BATTLE_BG_TEXT
 	farcall SetAbilityOverlayAttributes
@@ -236,7 +236,7 @@ _CGB_FinishBattleScreenLayout:
 .no_player_overlay2
 	bit 1, b
 	jr z, .apply_attr_map
-	hlcoord 9, 3, wAttrMap
+	hlcoord 9, 3, wAttrmap
 	ld b, PAL_BATTLE_BG_TEXT
 	farcall SetAbilityOverlayAttributes
 
@@ -307,35 +307,35 @@ _CGB_StatsScreenHPPals:
 
 	call WipeAttrMap
 
-	hlcoord 0, 0, wAttrMap
+	hlcoord 0, 0, wAttrmap
 	lb bc, 8, SCREEN_WIDTH
 	ld a, $1
 	call FillBoxWithByte
 
-	hlcoord 18, 0, wAttrMap
+	hlcoord 18, 0, wAttrmap
 	ld [hl], $2
 
-	hlcoord 11, 5, wAttrMap
+	hlcoord 11, 5, wAttrmap
 	lb bc, 2, 2
 	ld a, $3
 	call FillBoxWithByte
 
-	hlcoord 13, 5, wAttrMap
+	hlcoord 13, 5, wAttrmap
 	lb bc, 2, 2
 	ld a, $4
 	call FillBoxWithByte
 
-	hlcoord 15, 5, wAttrMap
+	hlcoord 15, 5, wAttrmap
 	lb bc, 2, 2
 	ld a, $5
 	call FillBoxWithByte
 
-	hlcoord 17, 5, wAttrMap
+	hlcoord 17, 5, wAttrmap
 	lb bc, 2, 2
 	ld a, $6
 	call FillBoxWithByte
 
-	hlcoord 8, 6, wAttrMap
+	hlcoord 8, 6, wAttrmap
 	lb bc, 1, 1
 	ld a, $7
 	call FillBoxWithByte
@@ -364,52 +364,52 @@ _CGB_SlotMachine:
 
 	call WipeAttrMap
 
-	hlcoord 0, 2, wAttrMap
+	hlcoord 0, 2, wAttrmap
 	lb bc, 10, 3
 	ld a, $2
 	call FillBoxWithByte
 
-	hlcoord 17, 2, wAttrMap
+	hlcoord 17, 2, wAttrmap
 	lb bc, 10, 3
 	ld a, $2
 	call FillBoxWithByte
 
-	hlcoord 0, 4, wAttrMap
+	hlcoord 0, 4, wAttrmap
 	lb bc, 6, 3
 	ld a, $3
 	call FillBoxWithByte
 
-	hlcoord 17, 4, wAttrMap
+	hlcoord 17, 4, wAttrmap
 	lb bc, 6, 3
 	ld a, $3
 	call FillBoxWithByte
 
-	hlcoord 0, 6, wAttrMap
+	hlcoord 0, 6, wAttrmap
 	lb bc, 2, 3
 	ld a, $4
 	call FillBoxWithByte
 
-	hlcoord 17, 6, wAttrMap
+	hlcoord 17, 6, wAttrmap
 	lb bc, 2, 3
 	ld a, $4
 	call FillBoxWithByte
 
-	hlcoord 4, 2, wAttrMap
+	hlcoord 4, 2, wAttrmap
 	lb bc, 2, 12
 	ld a, $1
 	call FillBoxWithByte
 
-	hlcoord 3, 2, wAttrMap
+	hlcoord 3, 2, wAttrmap
 	lb bc, 10, 1
 	ld a, $1
 	call FillBoxWithByte
 
-	hlcoord 16, 2, wAttrMap
+	hlcoord 16, 2, wAttrmap
 	lb bc, 10, 1
 	ld a, $1
 	call FillBoxWithByte
 
-	hlcoord 0, 12, wAttrMap
+	hlcoord 0, 12, wAttrmap
 	ld bc, $78
 	ld a, $7
 	rst ByteFill
@@ -464,7 +464,7 @@ _CGB_PartyMenu:
 
 	call InitPartyMenuOBPals
 
-	hlcoord 10, 2, wAttrMap
+	hlcoord 10, 2, wAttrmap
 	lb bc, 11, 1
 	ld a, $4
 	call FillBoxWithByte
@@ -525,12 +525,12 @@ _CGB_Evolution:
 	jmp _CGB_FinishLayout
 
 _CGB_MoveList:
-	hlcoord 0, 0, wAttrMap
+	hlcoord 0, 0, wAttrmap
 	ld bc, SCREEN_WIDTH * SCREEN_HEIGHT
 	ld a, $7
 	rst ByteFill
 
-	hlcoord 1, 12, wAttrMap
+	hlcoord 1, 12, wAttrmap
 	ld bc, 6
 	xor a
 	rst ByteFill
@@ -588,12 +588,12 @@ endr
 
 	call WipeAttrMap
 
-	hlcoord 6, 4, wAttrMap
+	hlcoord 6, 4, wAttrmap
 	lb bc, 7, 1
 	ld a, $2
 	call FillBoxWithByte
 
-	hlcoord 1, 8, wAttrMap
+	hlcoord 1, 8, wAttrmap
 	lb bc, 3, 3
 	ld a, $7
 	call FillBoxWithByte
@@ -620,7 +620,7 @@ _CGB_PackPals:
 
 	call WipeAttrMap
 
-	hlcoord 0, 0, wAttrMap
+	hlcoord 0, 0, wAttrmap
 	ld a, $2
 rept 6
 	ld [hli], a
@@ -642,21 +642,21 @@ endr
 	ld [hl], a
 
 	ld a, $1
-	hlcoord 7, 2, wAttrMap
+	hlcoord 7, 2, wAttrmap
 	ld [hl], a
-	hlcoord 7, 4, wAttrMap
+	hlcoord 7, 4, wAttrmap
 	ld [hl], a
-	hlcoord 7, 6, wAttrMap
+	hlcoord 7, 6, wAttrmap
 	ld [hl], a
-	hlcoord 7, 8, wAttrMap
+	hlcoord 7, 8, wAttrmap
 	ld [hl], a
-	hlcoord 7, 10, wAttrMap
+	hlcoord 7, 10, wAttrmap
 	ld [hl], a
-	hlcoord 0, 2, wAttrMap
+	hlcoord 0, 2, wAttrmap
 	lb bc, 5, 5
 	call FillBoxWithByte
 
-	hlcoord 1, 8, wAttrMap
+	hlcoord 1, 8, wAttrmap
 	lb bc, 3, 3
 	ld a, $7
 	call FillBoxWithByte
@@ -673,7 +673,7 @@ _CGB_TrainerCard:
 	call LoadPalette_White_Col1_Col2_Black ; crystal star
 
 	; Trainer stars
-	hlcoord 2, 16, wAttrMap
+	hlcoord 2, 16, wAttrmap
 	ld a, $2 ; bronze
 	ld [hli], a
 	inc a ; silver
@@ -719,49 +719,49 @@ _CGB_TrainerCard2:
 	call LoadCPaletteBytesFromHLIntoDE
 
 	; Falkner
-	hlcoord 3, 10, wAttrMap
+	hlcoord 3, 10, wAttrmap
 	lb bc, 3, 3
 	ld a, $2
 	call FillBoxWithByte
 
 	; Bugsy
-	hlcoord 7, 10, wAttrMap
+	hlcoord 7, 10, wAttrmap
 	lb bc, 3, 3
 	ld a, $3
 	call FillBoxWithByte
 
 	; Whitney
-	hlcoord 11, 10, wAttrMap
+	hlcoord 11, 10, wAttrmap
 	lb bc, 3, 3
 	ld a, $4
 	call FillBoxWithByte
 
 	; Morty
-	hlcoord 15, 10, wAttrMap
+	hlcoord 15, 10, wAttrmap
 	lb bc, 3, 3
 	ld a, $5
 	call FillBoxWithByte
 
 	; Chuck
-	hlcoord 3, 13, wAttrMap
+	hlcoord 3, 13, wAttrmap
 	lb bc, 3, 3
 	ld a, $6
 	call FillBoxWithByte
 
 	; Jasmine
-	hlcoord 7, 13, wAttrMap
+	hlcoord 7, 13, wAttrmap
 	lb bc, 3, 3
 	ld a, $6
 	call FillBoxWithByte
 
 	; Pryce
-	hlcoord 11, 13, wAttrMap
+	hlcoord 11, 13, wAttrmap
 	lb bc, 3, 3
 	ld a, $7
 	call FillBoxWithByte
 
 	; Clair
-	hlcoord 15, 13, wAttrMap
+	hlcoord 15, 13, wAttrmap
 	lb bc, 3, 3
 	ld a, $7
 	call FillBoxWithByte
@@ -802,49 +802,49 @@ _CGB_TrainerCard3:
 	call LoadCPaletteBytesFromHLIntoDE
 
 	; Lt.Surge
-	hlcoord 3, 10, wAttrMap
+	hlcoord 3, 10, wAttrmap
 	lb bc, 3, 3
 	ld a, $4
 	call FillBoxWithByte
 
 	; Sabrina
-	hlcoord 7, 10, wAttrMap
+	hlcoord 7, 10, wAttrmap
 	lb bc, 3, 3
 	ld a, $3
 	call FillBoxWithByte
 
 	; Misty
-	hlcoord 11, 10, wAttrMap
+	hlcoord 11, 10, wAttrmap
 	lb bc, 3, 3
 	ld a, $5
 	call FillBoxWithByte
 
 	; Erika
-	hlcoord 15, 10, wAttrMap
+	hlcoord 15, 10, wAttrmap
 	lb bc, 3, 3
 	ld a, $4
 	call FillBoxWithByte
 
 	; Janine
-	hlcoord 3, 13, wAttrMap
+	hlcoord 3, 13, wAttrmap
 	lb bc, 3, 3
 	ld a, $6
 	call FillBoxWithByte
 
 	; Brock
-	hlcoord 7, 13, wAttrMap
+	hlcoord 7, 13, wAttrmap
 	lb bc, 3, 3
 	ld a, $2
 	call FillBoxWithByte
 
 	; Blaine
-	hlcoord 11, 13, wAttrMap
+	hlcoord 11, 13, wAttrmap
 	lb bc, 3, 3
 	ld a, $3
 	call FillBoxWithByte
 
 	; Blue
-	hlcoord 15, 13, wAttrMap
+	hlcoord 15, 13, wAttrmap
 	lb bc, 3, 3
 	ld a, $7
 	call FillBoxWithByte
@@ -877,13 +877,13 @@ LoadFirstTwoTrainerCardPals:
 
 	push de
 	; border
-	hlcoord 0, 0, wAttrMap
+	hlcoord 0, 0, wAttrmap
 	ld bc, SCREEN_WIDTH * SCREEN_HEIGHT
 	xor a
 	rst ByteFill
 
 	; player
-	hlcoord 14, 1, wAttrMap
+	hlcoord 14, 1, wAttrmap
 	lb bc, 7, 5
 	ld a, $1
 	call FillBoxWithByte
@@ -902,7 +902,7 @@ _CGB_PokedexUnownMode:
 
 	call WipeAttrMap
 
-	hlcoord 6, 5, wAttrMap
+	hlcoord 6, 5, wAttrmap
 	lb bc, 7, 7
 	ld a, $1
 	call FillBoxWithByte
@@ -1124,7 +1124,7 @@ _CGB_IntroPals:
 
 	call WipeAttrMap
 
-	hlcoord 0, 0, wAttrMap
+	hlcoord 0, 0, wAttrmap
 	lb bc, 3, 20
 	ld a, $1
 	call FillBoxWithByte
@@ -1185,7 +1185,7 @@ _CGB_JudgeSystem:
 	call WipeAttrMap
 
 	; up/down arrows
-	hlcoord 0, 0, wAttrMap
+	hlcoord 0, 0, wAttrmap
 	ld a, 1 | VRAM_BANK_1
 	ld [hli], a
 	; top row
@@ -1200,47 +1200,47 @@ _CGB_JudgeSystem:
 	ld bc, 21
 	rst ByteFill
 	; left/right arrows
-	hlcoord 0, 2, wAttrMap
+	hlcoord 0, 2, wAttrmap
 	ld [hl], 0 | VRAM_BANK_1
 	; frontpic
-	hlcoord 0, 6, wAttrMap
+	hlcoord 0, 6, wAttrmap
 	lb bc, 7, 7
 	ld a, 7
 	call FillBoxWithByte
 	; chart
-	hlcoord 9, 4, wAttrMap
+	hlcoord 9, 4, wAttrmap
 	lb bc, 12, 8
 	ld a, 5 | VRAM_BANK_1
 	call FillBoxWithByte
-	hlcoord 8, 6, wAttrMap
+	hlcoord 8, 6, wAttrmap
 	lb bc, 8, 1
 	ld a, 5 | VRAM_BANK_1
 	call FillBoxWithByte
-	hlcoord 17, 6, wAttrMap
+	hlcoord 17, 6, wAttrmap
 	lb bc, 8, 1
 	ld a, 5 | VRAM_BANK_1
 	call FillBoxWithByte
 	; stat values
 	ld c, STAT_HP
-	hlcoord 12, 3, wAttrMap
+	hlcoord 12, 3, wAttrmap
 	call .FillStat
 	ld c, STAT_ATK
-	hlcoord 17, 5, wAttrMap
+	hlcoord 17, 5, wAttrmap
 	call .FillStat
 	ld c, STAT_DEF
-	hlcoord 17, 14, wAttrMap
+	hlcoord 17, 14, wAttrmap
 	call .FillStat
 	ld c, STAT_SPD
-	hlcoord 12, 16, wAttrMap
+	hlcoord 12, 16, wAttrmap
 	call .FillStat
 	ld c, STAT_SDEF
-	hlcoord 6, 14, wAttrMap
+	hlcoord 6, 14, wAttrmap
 	call .FillStat
 	ld c, STAT_SATK
-	hlcoord 6, 5, wAttrMap
+	hlcoord 6, 5, wAttrmap
 	call .FillStat
 	; heading
-	hlcoord 0, 3, wAttrMap
+	hlcoord 0, 3, wAttrmap
 	ld a, 0 | VRAM_BANK_1
 	ld bc, 11
 	rst ByteFill

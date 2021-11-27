@@ -422,9 +422,9 @@ ButtonSound::
 	and %00010000 ; bit 4, a
 	ld a, "▼"
 	jr nz, .load_cursor_state
-	ld a, [wTileMap + 17 + 17 * SCREEN_WIDTH]
+	ld a, [wTilemap + 17 + 17 * SCREEN_WIDTH]
 .load_cursor_state
-	ld [wTileMap + 18 + 17 * SCREEN_WIDTH], a
+	ld [wTilemap + 18 + 17 * SCREEN_WIDTH], a
 	ret
 
 BlinkCursor::

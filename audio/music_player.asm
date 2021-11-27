@@ -136,14 +136,14 @@ MusicPlayer::
 
 ; Apply palettes
 	xor a
-	hlcoord 0, 0, wAttrMap
+	hlcoord 0, 0, wAttrmap
 	ld bc, SCREEN_WIDTH * SCREEN_HEIGHT
 	rst ByteFill
-	hlcoord 3, 17, wAttrMap
+	hlcoord 3, 17, wAttrmap
 	ld [hl], $3
-	hlcoord 8, 17, wAttrMap
+	hlcoord 8, 17, wAttrmap
 	ld [hl], $2
-	hlcoord 12, 17, wAttrMap
+	hlcoord 12, 17, wAttrmap
 	ld a, $1
 	ld [hli], a
 	ld [hl], a

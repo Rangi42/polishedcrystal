@@ -34,7 +34,7 @@ ClearDisplayForEndgame:
 	ld bc, vBGMap1 - vBGMap0
 	ld a, " "
 	rst ByteFill
-	hlcoord 0, 0, wAttrMap
+	hlcoord 0, 0, wAttrmap
 	ld bc, SCREEN_WIDTH * SCREEN_HEIGHT
 	xor a
 	rst ByteFill

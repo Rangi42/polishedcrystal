@@ -191,7 +191,7 @@ InitPokegearTilemap:
 	xor a
 	ldh [hBGMapMode], a
 	hlcoord 0, 0
-	ld bc, wTileMapEnd - wTileMap
+	ld bc, wTilemapEnd - wTilemap
 	ld a, $4f
 	rst ByteFill
 	ld a, [wPokegearCard]
@@ -2358,7 +2358,7 @@ Pokedex_GetArea:
 .GetAndPlaceNest:
 	ld a, [wTownMapCursorLandmark]
 	ld e, a
-	farcall FindNest ; load nest landmarks into wTileMap[0,0]
+	farcall FindNest ; load nest landmarks into wTilemap[0,0]
 	decoord 0, 0
 	ld hl, wVirtualOAM
 .nestloop
@@ -2572,7 +2572,7 @@ FillTownMap:
 TownMapPals:
 ; Assign palettes based on tile ids
 	hlcoord 0, 0
-	decoord 0, 0, wAttrMap
+	decoord 0, 0, wAttrmap
 	ld bc, SCREEN_WIDTH * SCREEN_HEIGHT
 .loop
 	ld a, [hli]
@@ -2645,7 +2645,7 @@ TownMapKantoFlips:
 TownMapOrangeFlips:
 	decoord 0, 0, OrangeMap
 TownMapFlips:
-	hlcoord 0, 0, wAttrMap
+	hlcoord 0, 0, wAttrmap
 	ld bc, SCREEN_WIDTH * SCREEN_HEIGHT
 .loop
 	; [de] == YXtttttt

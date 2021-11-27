@@ -57,7 +57,7 @@ ApplyHPBarPals:
 .PartyMenu:
 	ld e, c
 	inc e
-	hlcoord 11, 1, wAttrMap
+	hlcoord 11, 1, wAttrmap
 	ld bc, 2 * SCREEN_WIDTH
 	ld a, [wCurPartyMon]
 .loop
@@ -329,7 +329,7 @@ endc
 	jmp PopAFBCDEHL
 
 WipeAttrMap:
-	hlcoord 0, 0, wAttrMap
+	hlcoord 0, 0, wAttrmap
 	ld bc, SCREEN_WIDTH * SCREEN_HEIGHT
 	xor a
 	rst ByteFill
@@ -360,7 +360,7 @@ ApplyAttrMap:
 	ldh a, [rLCDC]
 	bit 7, a
 	jr nz, ApplyAttrMapVBank0
-	hlcoord 0, 0, wAttrMap
+	hlcoord 0, 0, wAttrmap
 	debgcoord 0, 0
 	ld b, SCREEN_HEIGHT
 	ld a, 1
@@ -406,7 +406,7 @@ ApplyPartyMenuHPPals:
 	ld a, [de]
 	inc a
 	ld e, a
-	hlcoord 11, 2, wAttrMap
+	hlcoord 11, 2, wAttrmap
 	ld bc, 2 * SCREEN_WIDTH
 	ld a, [wHPPalIndex]
 .loop

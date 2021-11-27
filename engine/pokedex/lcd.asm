@@ -22,7 +22,7 @@ Pokedex_SetTilemap:
 	call StackCallInWRAMBankA
 .Function:
 	ld hl, wDexTilemap
-	ld de, wTileMap
+	ld de, wTilemap
 	call .Copy
 	; fallthrough
 .Copy:

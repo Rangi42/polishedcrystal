@@ -342,7 +342,7 @@ Pokedex_LoadTilemapWithPokepic:
 	and a
 	ret nz
 
-	hlcoord 1, 1, wAttrMap
+	hlcoord 1, 1, wAttrmap
 	ld b, 7
 .outer_loop
 	ld c, 7
@@ -849,8 +849,8 @@ Pokedex_SetCursorMon:
 	hlcoord 1, 12
 	ld c, SCREEN_WIDTH * 6 - 2
 	call .ShiftRowData
-	decoord 1, 9, wAttrMap
-	hlcoord 1, 12, wAttrMap
+	decoord 1, 9, wAttrmap
+	hlcoord 1, 12, wAttrmap
 	ld c, SCREEN_WIDTH * 6 - 2
 	call .ShiftRowData
 	hlcoord 19, 9
@@ -1258,8 +1258,8 @@ Pokedex_GetPosData:
 	dw $d0, 18, 4
 
 	; offset-based
-	dw wTileMap + 9 * SCREEN_WIDTH + 1, SCREEN_WIDTH * 3, 4
-	dw wAttrMap + 9 * SCREEN_WIDTH + 1, SCREEN_WIDTH * 3, 4
+	dw wTilemap + 9 * SCREEN_WIDTH + 1, SCREEN_WIDTH * 3, 4
+	dw wAttrmap + 9 * SCREEN_WIDTH + 1, SCREEN_WIDTH * 3, 4
 	dw wDexPalCopy + 1, 6 * 5 + 1, 6
 
 Pokedex_GetDexNumber:
@@ -1521,7 +1521,7 @@ endr
 	ld a, [wPokedex_MonInfoBank]
 	and a
 	jr nz, .sel_shiny
-	hlcoord 18, 2, wAttrMap
+	hlcoord 18, 2, wAttrmap
 	ld b, VRAM_BANK_1
 	ld a, [hl]
 	xor b
@@ -1529,7 +1529,7 @@ endr
 	ld a, [hl]
 	xor b
 	ld [hli], a
-	hlcoord 9, 3, wAttrMap
+	hlcoord 9, 3, wAttrmap
 	assert VRAM_BANK_1 == 8
 	ld c, b
 .attr_loop
@@ -1557,11 +1557,11 @@ endr
 .sel_shiny_loop
 	ld [hl], b
 	inc b
-	ld de, wAttrMap - wTileMap
+	ld de, wAttrmap - wTilemap
 	add hl, de
 	ld a, $08
 	ld [hli], a
-	ld de, wTileMap - wAttrMap
+	ld de, wTilemap - wAttrmap
 	add hl, de
 	ld a, b
 	cp $2e
@@ -1731,10 +1731,10 @@ Pokedex_Main:
 	and a
 	jr nz, .vram_bank_1
 	xor a
-	hlcoord 18, 3, wAttrMap
+	hlcoord 18, 3, wAttrmap
 	ld [hli], a
 	ld [hl], a
-	hlcoord 18, 4, wAttrMap
+	hlcoord 18, 4, wAttrmap
 	ld [hli], a
 	ld [hl], a
 
@@ -1833,13 +1833,13 @@ Pokedex_Bio:
 	jr .print
 
 .unknown
-	hlcoord 12, 9, wAttrMap
+	hlcoord 12, 9, wAttrmap
 	ld [hl], 0
 	ld de, .UnknownString
 .print
 	hlcoord 8, 9
 	rst PlaceString
-	hlcoord 9, 9, wAttrMap
+	hlcoord 9, 9, wAttrmap
 	ld [hl], 0
 
 	; Print base experience
@@ -2126,7 +2126,7 @@ _Pokedex_Stats:
 	ld a, [wPokedex_MonInfoBank]
 	and a
 	jr nz, .vbank_1
-	hlcoord 18, 2, wAttrMap
+	hlcoord 18, 2, wAttrmap
 	ld b, VRAM_BANK_1
 	ld a, [hl]
 	xor b
@@ -2134,7 +2134,7 @@ _Pokedex_Stats:
 	ld a, [hl]
 	xor b
 	ld [hli], a
-	hlcoord 4, 3, wAttrMap
+	hlcoord 4, 3, wAttrmap
 	assert VRAM_BANK_1 == 8
 	ld c, b
 .attr_loop
@@ -2143,7 +2143,7 @@ _Pokedex_Stats:
 	ld [hli], a
 	dec c
 	jr nz, .attr_loop
-	hlcoord 18, 3, wAttrMap
+	hlcoord 18, 3, wAttrmap
 	ld a, [hl]
 	xor b
 	ld [hli], a
@@ -3184,18 +3184,18 @@ _Pokedex_GetCursorMon:
 	rrca
 
 	; Frontpic pal
-	hlcoord 1, 1, wAttrMap
+	hlcoord 1, 1, wAttrmap
 	lb bc, 7, 7
 	add $6 ; BG6, potentially with VRAM_BANK_1
 	call FillBoxWithByte
 
-	hlcoord 18, 3, wAttrMap
+	hlcoord 18, 3, wAttrmap
 	lb bc, 2, 2
 	call FillBoxWithByte
 
 	; Mon infobox pal
 	inc a ; BG7, potentially with VRAM_BANK_1
-	hlcoord 9, 4, wAttrMap
+	hlcoord 9, 4, wAttrmap
 	ld bc, 8
 	rst ByteFill
 

@@ -787,7 +787,7 @@ PokeAnim_GetAttrMapCoord:
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
-	ld de, wAttrMap - wTileMap
+	ld de, wAttrmap - wTilemap
 	add hl, de
 	ret
 

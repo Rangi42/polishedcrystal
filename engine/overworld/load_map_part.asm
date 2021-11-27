@@ -904,7 +904,7 @@ loadmappart_function_macro: MACRO
 ENDM
 
 _LoadMapPart_TileMap:
-	loadmappart_function_macro wTileMap
+	loadmappart_function_macro wTilemap
 
 _LoadMapPart_AttrMap:
-	loadmappart_function_macro wAttrMap
+	loadmappart_function_macro wAttrmap

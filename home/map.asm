@@ -987,7 +987,7 @@ ReloadWalkedTile:
 	hlcoord 8, 6
 	ld de, wBGMapBuffer
 	call .CommitTiles
-	hlcoord 8, 6, wAttrMap
+	hlcoord 8, 6, wAttrmap
 	ld de, wBGMapPalBuffer
 	call .CommitTiles
 	ld a, [wBGMapAnchor]

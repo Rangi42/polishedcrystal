@@ -14,7 +14,7 @@ HDMATransferAttrMapToWRAMBank3:
 	call CallInSafeGFXMode
 
 .Function:
-	decoord 0, 0, wAttrMap
+	decoord 0, 0, wAttrmap
 	ld hl, wScratchAttrMap
 	call CutAndPasteAttrMap
 	ld a, $1
@@ -26,7 +26,7 @@ ReloadMapPart::
 	call CallInSafeGFXMode
 
 .Function:
-	decoord 0, 0, wAttrMap
+	decoord 0, 0, wAttrmap
 	ld hl, wScratchAttrMap
 	call CutAndPasteAttrMap
 	decoord 0, 0
@@ -230,7 +230,7 @@ HDMATransfer_OnlyTopFourRows:
 	decoord 0, 0
 	call .Copy
 	ld hl, wScratchTileMap + $80
-	decoord 0, 0, wAttrMap
+	decoord 0, 0, wAttrmap
 	call .Copy
 	di
 	ld a, $1
