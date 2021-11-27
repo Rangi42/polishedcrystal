@@ -115,7 +115,6 @@ Pokedex:
 	ld a, BANK(wDex2bpp)
 	ldh [rSVBK], a
 
-	; TODO: compress dex tiles.
 	; The reason we copy like this is because we want to copy some of the tiles
 	; to a template to write out VWF dex numbers later.
 	ld hl, PokedexLZ
