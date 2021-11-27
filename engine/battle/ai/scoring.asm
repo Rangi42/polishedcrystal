@@ -384,6 +384,7 @@ AI_Smart:
 	dbw EFFECT_MIRROR_COAT,       AI_Smart_MirrorCoat
 	dbw EFFECT_EARTHQUAKE,        AI_Smart_Earthquake
 	dbw EFFECT_FUTURE_SIGHT,      AI_Smart_FutureSight
+	dbw EFFECT_JUMP_KICK,         AI_Smart_JumpKick
 	dbw EFFECT_GUST,              AI_Smart_Gust
 	dbw EFFECT_STOMP,             AI_Smart_Stomp
 	dbw EFFECT_BODY_SLAM,         AI_Smart_Stomp
@@ -1951,8 +1952,28 @@ AI_Smart_MirrorCoat:
 	inc [hl]
 	ret
 
-AI_Smart_Gust:
+AI_Smart_JumpKick:
+; Greatly discourage this move if the player is semi-invulnerable and the enemy
+; is faster and neither Pokémon has No Guard.
+	; Do nothing if anyone has No Guard.
+	call GetOpponentAbilityAfterMoldBreaker
+	cp NO_GUARD
+	ret z
+	call GetTrueUserAbility
+	cp NO_GUARD
+	ret z
 
+	; Check if we're faster.
+	call AICompareSpeed
+	ret nc
+
+	; Check if the player is semi-invulnerable
+	ld a, [wPlayerSubStatus3]
+	and SEMI_INVULNERABLE_MASK
+	ret z
+	jmp AIDiscourageMove
+
+AI_Smart_Gust:
 ; Greatly encourage this move if the player is flying and the enemy is faster.
 	ld a, [wPlayerSelectedMove]
 	cp FLY
