@@ -2388,7 +2388,7 @@ endc
 	ld de, wBGPals1 palette 3 + 6
 	ld bc, 2
 	call FarCopyBytesToColorWRAM
-	jr .done_pals
+	; fallthrough
 
 .done_pals
 	ld a, b
