@@ -29,7 +29,6 @@ Route19_MapScriptHeader:
 	object_event  9, 34, SPRITE_SWIMMER_GUY, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 2, GenericTrainerSwimmermTucker, -1
 	object_event 11, 20, SPRITE_SWIMMER_GUY, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 3, GenericTrainerSwimmermJerome, -1
 	object_event 13, 43, SPRITE_SWIMMER_GUY, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 3, GenericTrainerSwimmermHarold, -1
-	object_event 13, 51, SPRITE_COSPLAYER, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 1, GenericTrainerCosplayerBrooke, -1
 	object_event  9,  3, SPRITE_ENGINEER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, Route19Fisher1Script, -1
 	object_event 11,  3, SPRITE_ENGINEER, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, Route19Fisher2Script, -1
 	tmhmball_event 14, 52, TM_SCALD, EVENT_ROUTE_19_TM_SCALD
@@ -97,18 +96,6 @@ GenericTrainerSwimmermHarold:
 	line "swallow you up."
 	done
 
-GenericTrainerCosplayerBrooke:
-	generictrainer COSPLAYER, BROOKE, EVENT_BEAT_COSPLAYER_BROOKE, CosplayerBrookeSeenText, CosplayerBrookeBeatenText
-
-	text "I made this outfit"
-	line "for a fancy dress"
-	cont "party, but I love"
-
-	para "it so much that I"
-	line "wear it elsewhere"
-	cont "too."
-	done
-
 Route19Fisher1Script:
 	checkevent EVENT_CINNABAR_ROCKS_CLEARED
 	iffalse_jumptextfaceplayer Route19Fisher1Text
@@ -163,17 +150,6 @@ SwimmermHaroldSeenText:
 
 SwimmermHaroldBeatenText:
 	text "Glub…"
-	done
-
-CosplayerBrookeSeenText:
-	text "Dressing up is"
-	line "such fun!"
-	done
-
-CosplayerBrookeBeatenText:
-	text "You'd better not"
-	line "have damaged my"
-	cont "costume!"
 	done
 
 Route19Fisher1Text:

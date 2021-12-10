@@ -41,7 +41,7 @@ SaffronHitmontopKidHouseChildScript:
 
 .Text2:
 	text "Top… Top? TOP!"
-	line "HITMONTOP! ♥"
+	line "HITMONTOP!"
 	done
 
 .Text3:

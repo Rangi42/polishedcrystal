@@ -146,7 +146,6 @@ endr
 	ld a, $ff
 .dv3_ok
 	ld [de], a
-	inc de
 
 .not_dvs
 ; personality?
@@ -154,9 +153,16 @@ endr
 	bit TRNTYPE_PERSONALITY, a
 	jr z, .not_personality
 
-	; We only care about the upper personality byte.
-	; The lower one has already been specified as part of
-	; extended species data ("dp").
+	push hl
+	ld a, [wOTPartyCount]
+	dec a
+	ld hl, wOTPartyMon1Personality
+	ld bc, PARTYMON_STRUCT_LENGTH
+	rst AddNTimes
+	ld d, h
+	ld e, l
+	pop hl
+
 	call GetNextTrainerDataByte
 	ld [de], a
 

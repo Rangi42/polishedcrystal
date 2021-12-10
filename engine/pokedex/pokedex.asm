@@ -67,7 +67,7 @@ PokedexDebugFlags:
 	db 0
 
 Pokedex:
-;	call PokedexDebugFlags
+	call PokedexDebugFlags
 	ldh a, [hBGMapMode]
 	ld b, a
 	ldh a, [hVBlank]
@@ -117,9 +117,6 @@ Pokedex:
 	ld hl, vTiles5 tile $18
 	lb bc, BANK(PokedexLZ), $22
 	call Get2bpp
-
-	ld de, vTiles3 ; upper VBK1 tile area is intended
-	farcall _LoadTownMapGFX
 	xor a
 	ldh [rVBK], a
 
@@ -1682,10 +1679,11 @@ endr
 	jr Pokedex_Bio
 
  .pressed_left
-	pop af
-	pop hl
-	pop hl
-	jmp Pokedex_Area
+	jr .joypad_loop
+	; pop af
+	; pop hl
+	; pop hl
+	; jmp Pokedex_Area
 
 .pressed_start
 	; cycle form (if applicable)
@@ -1752,9 +1750,6 @@ Pokedex_Main:
 	ld de, PHB_Row1
 	jmp Pokedex_ScheduleScreenUpdateWithHBlank
 
-Pokedex_Area:
-	ld a, DEXDISP_AREA
-	ld [wPokedex_DisplayMode], a
 Pokedex_Bio:
 	ld a, DEXDISP_BIO
 	ld [wPokedex_DisplayMode], a
@@ -2156,7 +2151,7 @@ _Pokedex_Stats:
 	rrca
 	jr c, .pressed_start
 	rrca
-	jmp c, Pokedex_Area
+	; jmp c, Pokedex_Area
 	rrca
 	jmp c, Pokedex_Bio
 	rrca

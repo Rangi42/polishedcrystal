@@ -15,7 +15,6 @@ Route16West_MapScriptHeader:
 	def_object_events
 	object_event 56,  7, SPRITE_LASS, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 2, GenericTrainerLassGina, -1
 	object_event 17,  7, SPRITE_LASS, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 5, GenericTrainerLassAlice, -1
-	object_event  9, 12, SPRITE_COSPLAYER, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 2, GenericTrainerCosplayerKuroko, -1
 	object_event 40, 11, SPRITE_ACE_TRAINER_F, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 1, GenericTrainerCooltrainerfSera, -1
 	object_event  6,  2, SPRITE_BEAUTY, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 3, GenericTrainerBeautyNicole, -1
 	itemball_event 42, 14, METRONOME_I, 1, EVENT_ROUTE_16_WEST_METRONOME
@@ -29,7 +28,7 @@ GenericTrainerLassGina:
 
 	text "My strappy sandals"
 	line "look sooo cute,"
-	cont "though! ♥"
+	cont "though!"
 	done
 
 .SeenText:
@@ -54,7 +53,7 @@ GenericTrainerLassAlice:
 	text "Our eyes met!"
 
 	para "Now you must date"
-	line "me! ♥"
+	line "me!"
 
 	para "No wait, I mean,"
 	line "we must battle!"
@@ -65,29 +64,11 @@ GenericTrainerLassAlice:
 	line "so cruel?"
 	done
 
-GenericTrainerCosplayerKuroko:
-	generictrainer COSPLAYER, KUROKO, EVENT_BEAT_COSPLAYER_KUROKO, .SeenText, .BeatenText
-
-	text "One time a trainer"
-	line "threw a # Ball"
-	cont "at me!"
-	done
-
-.SeenText:
-	text "See how lifelike"
-	line "my cosplay is?"
-	done
-
-.BeatenText:
-	text "You just don't"
-	line "appreciate art!"
-	done
-
 GenericTrainerCooltrainerfSera:
 	generictrainer COOLTRAINERF, SERA, EVENT_BEAT_COOLTRAINERF_SERA, .SeenText, .BeatenText
 
 	text "I've gone out as a"
-	line "a Cosplayer, but"
+	line "a Cooltrainer, but"
 
 	para "an Ace Trainer's"
 	line "outfit is more"
@@ -100,7 +81,7 @@ GenericTrainerCooltrainerfSera:
 	done
 
 .BeatenText:
-	text "Congrats! ♥"
+	text "Congrats!"
 	done
 
 GenericTrainerBeautyNicole:

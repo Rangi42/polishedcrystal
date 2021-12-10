@@ -164,7 +164,7 @@ GenericTrainerSightseerfNoelle:
 	text "Aww… I lost?"
 	line "No problem!"
 
-	para "Selfie! ♥"
+	para "Selfie!"
 	line "Click!"
 	done
 

@@ -11,19 +11,7 @@
 #include <unistd.h>
 #include <getopt.h>
 
-#ifndef PROGRAM_NAME
-#error Define PROGRAM_NAME before including common.h!
-#endif
-#ifndef USAGE_OPTS
-#error Define USAGE_OPTS before including common.h!
-#endif
-
-#define error_exit(...) exit((fprintf(stderr, PROGRAM_NAME ": " __VA_ARGS__), 1))
-
-void usage_exit(int status) {
-	fprintf(stderr, "Usage: " PROGRAM_NAME " " USAGE_OPTS "\n");
-	exit(status);
-}
+#define error_exit(...) exit((fprintf(stderr, __VA_ARGS__), 1))
 
 int getopt_long_index;
 #define getopt_long(argc, argv, optstring, longopts) getopt_long(argc, argv, optstring, longopts, &getopt_long_index)
@@ -137,3 +125,4 @@ void read_dimensions(const char *filename, int *width) {
 }
 
 #endif // GUARD_COMMON_H
+

@@ -20,7 +20,7 @@ NameRater:
 	call GetPartyParamLocationAndValue
 	bit MON_IS_EGG_F, a
 	jr nz, .egg
-; ... or a Pokemon you got from a trade...
+; ... or a Pokemon you got from a trade.
 	ld a, [wInitialOptions]
 	bit TRADED_AS_OT_OPT, a
 	jr nz, .no_name_lock

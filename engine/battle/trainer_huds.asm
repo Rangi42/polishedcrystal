@@ -76,8 +76,8 @@ StageBallTilesData:
 	dec b ; $32, statused
 	ld a, [hl]
 	and a
-	jr nz, .load
 	dec b ; $31, normal
+	jr .load
 
 .load
 	ld a, b

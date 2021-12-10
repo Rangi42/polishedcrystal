@@ -132,9 +132,7 @@ CherrygroveSilverTriggerNorth:
 .FinishRival:
 	special DeleteSavedMusic
 	playmusic MUSIC_RIVAL_AFTER
-	showtext CherrygroveRivalTextAfter1
-	showemote EMOTE_SHOCK, CHERRYGROVECITY_SILVER, 15
-	showtext CherrygroveRivalTextAfter2
+	showtext CherrygroveRivalTextAfter
 	playsound SFX_TACKLE
 	applymovement PLAYER, CherrygroveCity_RivalPushesYouOutOfTheWay
 	turnobject PLAYER, LEFT
@@ -385,7 +383,7 @@ SilverCherrygroveLossText:
 	line "waste of time."
 	done
 
-CherrygroveRivalTextAfter1:
+CherrygroveRivalTextAfter:
 	text "…… …… ……"
 
 	para "You want to know"
@@ -395,14 +393,6 @@ CherrygroveRivalTextAfter1:
 	line "the world's great-"
 	cont "est #mon"
 	cont "trainer."
-	done
-
-CherrygroveRivalTextAfter2:
-	text "Hey! Give back my"
-	line "Trainer Card!"
-
-	para "Oh no… You saw"
-	line "my name…"
 	done
 
 CherrygroveTeacherText_HaveMapCard:

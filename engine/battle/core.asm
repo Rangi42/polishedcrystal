@@ -4106,7 +4106,7 @@ BattleMenu_SafariBall:
 	ld a, SAFARI_BALL
 	ld [wCurItem], a
 	call DoItemEffect
-	jr .safari_or_contest_next
+ 	jr .safari_or_contest_next
 
 .contest
 	xor a ; PARK_BALL
@@ -7050,7 +7050,7 @@ _GetNewBaseExp:
 	ldh [hMultiplier], a
 	call Multiply
 
-	; We want to round up on 0.5, so divide by 10 first.
+	; We want to round up at 0.5, so double this.
 	ld a, 10
 	ldh [hDivisor], a
 	ld b, 4

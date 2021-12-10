@@ -6,9 +6,9 @@ ApplyPartyPatches:
 	push #b
 	push #a
 	set #a, #1
+	set #1, 5
 
 	; apply patches to party pokemon
-	set #1, 5
 	call GetGameDataOffsetConstant
 	set #1, #result
 	call GetGameDataPointer

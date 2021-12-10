@@ -29,12 +29,12 @@ BattleTowerTrainers:
 	rawchar "Oakley@@@@", COWGIRL
 	rawchar "Annie@@@@@", OFFICERF
 	rawchar "Park@@@@@@", ENGINEER
-	rawchar "Patricia@@", COSPLAYER
+	rawchar "Patricia@@", POKEFANF
 	rawchar "Rajan@@@@@", PICNICKER
 	rawchar "Diaz@@@@@@", PICNICKER
 	rawchar "Mozi@@@@@@", SAGE
 	rawchar "Adrián@@@@", WAITER
-	rawchar "Tomoyo@@@@", COSPLAYER
+	rawchar "Tomoyo@@@@", POKEFANF
 	rawchar "Ebony@@@@@", COOLTRAINERF
 	rawchar "Pirsig@@@@", SAGE
 	rawchar "Corey@@@@@", OFFICERM

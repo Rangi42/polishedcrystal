@@ -529,7 +529,7 @@ ApplyAbilityEffectsOnEncounterMon:
 	dbw STATIC,        .Static
 	dbw STENCH,        .Stench
 	dbw VITAL_SPIRIT,  .VitalSpirit
-	dbw WHITE_SMOKE,   .WhiteSmoke
+ 	dbw WHITE_SMOKE,   .WhiteSmoke
 	dbw -1, -1
 
 .ArenaTrap:

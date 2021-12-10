@@ -1,101 +1,111 @@
-#define PROGRAM_NAME "pokemon_animation"
-#define USAGE_OPTS "[-h|--help] [-b|--bitmasks] [-f|--frames] front.animated.tilemap front.dimensions"
-
-#include "common.h"
-
-struct Options {
-	bool use_bitmasks;
-	bool use_frames;
-};
-
-void parse_args(int argc, char *argv[], struct Options *options) {
-	struct option long_options[] = {
-		{"bitmasks", no_argument, 0, 'b'},
-		{"frames", no_argument, 0, 'f'},
-		{"help", no_argument, 0, 'h'},
-		{0}
-	};
-	for (int opt; (opt = getopt_long(argc, argv, "bfh", long_options)) != -1;) {
-		switch (opt) {
-		case 'b':
-			options->use_bitmasks = true;
-			break;
-		case 'f':
-			options->use_frames = true;
-			break;
-		case 'h':
-			usage_exit(0);
-			break;
-		default:
-			usage_exit(1);
-		}
-	}
-}
+#include <stdio.h>
+#include <unistd.h>
+#include <stdlib.h>
+#include <string.h>
+#include <stdint.h>
+#include <stdbool.h>
+#include <getopt.h>
 
 struct Frame {
-	uint8_t *data;
+	uint8_t* data;
 	int size;
 	int bitmask;
 };
 
 struct Frames {
-	struct Frame *frames;
+	struct Frame* frames;
 	int num_frames;
+	int frame_size;
 };
 
 struct Bitmask {
-	uint8_t *data;
+	uint8_t* data;
 	int bitlength;
 };
 
 struct Bitmasks {
-	struct Bitmask *bitmasks;
+	struct Bitmask* bitmasks;
 	int num_bitmasks;
 };
 
-int bitmask_exists(const struct Bitmask *bitmask, const struct Bitmasks *bitmasks) {
-	for (int i = 0; i < bitmasks->num_bitmasks; i++) {
-		struct Bitmask existing = bitmasks->bitmasks[i];
-		if (bitmask->bitlength != existing.bitlength) {
-			continue;
-		}
-		bool match = true;
-		int length = (bitmask->bitlength + 7) / 8;
-		for (int j = 0; j < length; j++) {
-			if (bitmask->data[j] != existing.data[j]) {
-				match = false;
-				break;
-			}
-		}
-		if (match) {
-			return i;
-		}
+
+int make_frames(struct Frames* frames, struct Bitmasks* bitmasks, char* tilemap_filename, char* dimensions_filename);
+int bitmask_exists(struct Bitmask *bitmask, struct Bitmasks *bitmasks);
+void print_frames(struct Frames* frames, int frame_size);
+
+
+int make_frames(struct Frames* frames, struct Bitmasks* bitmasks, char* tilemap_filename, char* dimensions_filename) {
+	uint8_t* tilemap;
+	uint8_t* this_frame;
+	FILE* f;
+	size_t size;
+	int width;
+	int height;
+	uint8_t byte;
+	int frame_size;
+	int num_frames;
+	int i, j;
+
+	f = fopen(tilemap_filename, "rb");
+	if (f == NULL) {
+		fprintf(stderr, "could not open file %s\n", tilemap_filename);
+		exit(1);
 	}
-	return -1;
-}
 
-void make_frames(const uint8_t *tilemap, long tilemap_size, int width, struct Frames *frames, struct Bitmasks *bitmasks) {
-	int num_tiles_per_frame = width * width;
-	int num_frames = tilemap_size / num_tiles_per_frame - 1;
+	fseek(f, 0, SEEK_END);
+	size = ftell(f);
+	if (!size) {
+		fprintf(stderr, "empty file %s\n", tilemap_filename);
+		exit(1);
+	}
+	rewind(f);
 
-	frames->frames = malloc_verbose((sizeof *frames->frames) * num_frames);
-	frames->num_frames = num_frames;
+	tilemap = malloc(size);
+	if (!tilemap) {
+		fprintf(stderr, "malloc failure\n");
+		exit(1);
+	}
+	if (size != fread(tilemap, 1, size, f)) {
+		fprintf(stderr, "failed to read file %s\n", tilemap_filename);
+		exit(1);
+	}
+	fclose(f);
 
-	bitmasks->bitmasks = malloc_verbose((sizeof *bitmasks->bitmasks) * num_frames);
+	f = fopen(dimensions_filename, "rb");
+	if (f == NULL) {
+		fprintf(stderr, "could not open file %s\n", dimensions_filename);
+		exit(1);
+	}
+	if (1 != fread(&byte, 1, 1, f))  {
+		fprintf(stderr, "failed to read file %s\n", dimensions_filename);
+		exit(1);
+	}
+	fclose(f);
+
+	width = byte & 0xf;
+	height = byte >> 4;
+
+	frame_size = width * height;
+
+	num_frames = size / frame_size - 1;
+
+	bitmasks->bitmasks = malloc((sizeof (struct Bitmask)) * num_frames);
 	bitmasks->num_bitmasks = 0;
 
-	const uint8_t *first_frame = &tilemap[0];
-	const uint8_t *this_frame = &tilemap[num_tiles_per_frame];
-	for (int i = 0; i < num_frames; i++) {
-		struct Frame *frame = malloc_verbose(sizeof *frame);
-		frame->data = malloc_verbose(num_tiles_per_frame);
+	frames->frames = malloc((sizeof (struct Frame)) * num_frames);
+	frames->frame_size = frame_size;
+	frames->num_frames = 0;
+
+	uint8_t *first_frame = tilemap;
+	this_frame = tilemap + frame_size;
+	for (i = 0; i < num_frames; i++) {
+		struct Frame *frame = (struct Frame*)malloc(sizeof(struct Frame));
+		frame->data = malloc(frame_size);
 		frame->size = 0;
-
-		struct Bitmask *bitmask = malloc_verbose(sizeof *bitmask);
-		bitmask->data = calloc_verbose((num_tiles_per_frame + 7) / 8);
+		struct Bitmask *bitmask = (struct Bitmask*)malloc(sizeof(struct Bitmask));
+		bitmask->data = calloc((frame_size + 7) / 8, 1);
 		bitmask->bitlength = 0;
-
-		for (int j = 0; j < num_tiles_per_frame; j++) {
+		for (j = 0; j < frame_size; j++) {
 			if (bitmask->bitlength % 8 == 0) {
 				bitmask->data[bitmask->bitlength / 8] = 0;
 			}
@@ -107,8 +117,8 @@ void make_frames(const uint8_t *tilemap, long tilemap_size, int width, struct Fr
 			}
 			bitmask->bitlength++;
 		}
-		// I don't remember exactly why this works.
-		// I think it was that the bits are read backwards, but not indexed backwards.
+		// Bits and bytes are both little-endian:
+		// tile order ABCDEFGHIJKLMNOP becomes db order %HGFEDCBA %PONMLKJI.
 		int last = bitmask->bitlength - 1;
 		bitmask->data[last / 8] >>= (7 - (last % 8));
 
@@ -122,75 +132,138 @@ void make_frames(const uint8_t *tilemap, long tilemap_size, int width, struct Fr
 			free(bitmask);
 		}
 		frames->frames[i] = *frame;
-		this_frame += num_tiles_per_frame;
-	}
-}
-
-void print_frames(struct Frames *frames) {
-	for (int i = 0; i < frames->num_frames; i++) {
-		printf("\tdw .frame%d\n", i + 1);
-	}
-	for (int i = 0; i < frames->num_frames; i++) {
-		const struct Frame *frame = &frames->frames[i];
-		printf(".frame%d\n", i + 1);
-		printf("\tdb $%02x ; bitmask\n", frame->bitmask);
-		if (frame->size > 0) {
-			for (int j = 0; j < frame->size; j++) {
-				if (j % 12 == 0) {
-					if (j) {
-						putchar('\n');
-					}
-					printf("\tdb $%02x", frame->data[j]);
-				} else {
-					printf(", $%02x", frame->data[j]);
-				}
-			}
-			putchar('\n');
-		}
-	}
-}
-
-void print_bitmasks(const struct Bitmasks *bitmasks) {
-	for (int i = 0; i < bitmasks->num_bitmasks; i++) {
-		struct Bitmask bitmask = bitmasks->bitmasks[i];
-		printf("; %d\n", i);
-		int length = (bitmask.bitlength + 7) / 8;
-		for (int j = 0; j < length; j++) {
-			printf("\tdb %%");
-			for (int k = 0; k < 8; k++) {
-				putchar(((bitmask.data[j] >> (7 - k)) & 1) ? '1' : '0');
-			}
-			putchar('\n');
-		}
-	}
-}
-
-int main(int argc, char *argv[]) {
-	struct Options options = {0};
-	parse_args(argc, argv, &options);
-
-	argc -= optind;
-	argv += optind;
-	if (argc < 2) {
-		usage_exit(1);
-	}
-
-	int width;
-	read_dimensions(argv[1], &width);
-	long tilemap_size;
-	uint8_t *tilemap = read_u8(argv[0], &tilemap_size);
-
-	struct Frames frames = {0};
-	struct Bitmasks bitmasks = {0};
-	make_frames(tilemap, tilemap_size, width, &frames, &bitmasks);
-
-	if (options.use_frames) {
-		print_frames(&frames);
-	}
-	if (options.use_bitmasks) {
-		print_bitmasks(&bitmasks);
+		frames->num_frames++;
+		this_frame += frame_size;
 	}
 
 	free(tilemap);
+
+	return frame_size;
+}
+
+int bitmask_exists(struct Bitmask *bitmask, struct Bitmasks *bitmasks) {
+	int i, j;
+	struct Bitmask existing;
+	for (i = 0; i < bitmasks->num_bitmasks; i++) {
+		existing = bitmasks->bitmasks[i];
+		if (bitmask->bitlength != existing.bitlength) {
+			continue;
+		}
+		bool match = true;
+		for (j = 0; j < (bitmask->bitlength + 7) / 8; j++) {
+			if (bitmask->data[j] != existing.data[j]) {
+				match = false;
+				break;
+			}
+		}
+		if (match) {
+			return i;
+		}
+	}
+	return -1;
+}
+
+void print_frames(struct Frames* frames, int frame_size) {
+	int i;
+	int j;
+	uint8_t limit = 0x7f - (7 * 7 - frame_size);
+	for (i = 0; i < frames->num_frames; i++) {
+		printf("\tdw .frame%d\n", i + 1);
+	}
+	for (i = 0; i < frames->num_frames; i++) {
+		struct Frame *frame = &frames->frames[i];
+		printf(".frame%d\n", i + 1);
+		printf("\tdb $%02x ; bitmask\n", frame->bitmask);
+		if (frame->size > 0) {
+			for (j = 0; j < frame->size; j++) {
+				uint8_t offset = frame->data[j];
+				if (offset >= limit) {
+					offset++;
+				}
+				if (j % 12 == 0) {
+					if (j) {
+						printf("\n");
+					}
+					printf("\tdb $%02x", offset);
+				} else {
+					printf(", $%02x", offset);
+				}
+			}
+			printf("\n");
+		}
+	}
+}
+
+void print_bitmasks(struct Bitmasks* bitmasks) {
+	int i, j, k;
+	int length;
+	struct Bitmask bitmask;
+	for (i = 0; i < bitmasks->num_bitmasks; i++) {
+		printf("; %d\n", i);
+		bitmask = bitmasks->bitmasks[i];
+		length = (bitmask.bitlength + 7) / 8;
+		for (j = 0; j < length; j++) {
+			printf("\tdb %%");
+			for (k = 0; k < 8; k++) {
+				if ((bitmask.data[j] >> (7 - k)) & 1) {
+					printf("1");
+				} else {
+					printf("0");
+				};
+			}
+			printf("\n");
+		}
+	}
+}
+
+// HOW ARE YOU GENTLEMEN.
+char* cats (char* head, char* tail) {
+	char* string;
+	string = malloc(strlen(head) + strlen(tail) + 1);
+	strcpy(string, head);
+	strcat(string, tail);
+	return string;
+}
+
+static void usage(void) {
+	printf("Usage: pokemon_animation [-b] [-f] tilemap_file dimensions_file\n");
+	exit(1);
+}
+
+int main(int argc, char* argv[]) {
+	struct Frames frames = {0};
+	struct Bitmasks bitmasks = {0};
+	int ch;
+	bool use_bitmasks = false, use_frames = false;
+	char* tilemap_filename;
+	char* dimensions_filename;
+
+	while ((ch = getopt(argc, argv, "bf")) != -1) {
+		switch (ch) {
+			case 'b':
+				use_bitmasks = true;
+				break;
+			case 'f':
+				use_frames = true;
+				break;
+			default:
+				usage();
+		}
+	}
+	argc -= optind;
+	argv += optind;
+	if (argc < 2) {
+		usage();
+	}
+	tilemap_filename = argv[0];
+	dimensions_filename = argv[1];
+
+	int frame_size = make_frames(&frames, &bitmasks, tilemap_filename, dimensions_filename);
+	if (use_frames) {
+		print_frames(&frames, frame_size);
+	}
+	if (use_bitmasks) {
+		print_bitmasks(&bitmasks);
+	}
 	return 0;
 }

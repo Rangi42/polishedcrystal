@@ -166,7 +166,7 @@ MoveDeletion:
 	or PLAIN_FORM
 	ld [hl], a
 
-	; Register this Pikachu as seen+caught in the dex.
+; Register this Pikachu as seen+caught in the dex.
 	ld c, PIKACHU
 	ld b, a
 	jp SetSeenAndCaughtMon

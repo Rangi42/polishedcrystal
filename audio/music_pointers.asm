@@ -190,6 +190,6 @@ Music:
 	dba Music_WildBattlePrism
 	dba Music_TrainerBattlePrism
 	dba Music_GymLeaderBattlePrism
-	dba Music_PaletteBattlePrism
-	dba Music_Megalovania
+	dba Music_KantoGymLeaderBattle
+	dba Music_KantoChampionBattle
 	assert_table_length NUM_MUSIC_SONGS

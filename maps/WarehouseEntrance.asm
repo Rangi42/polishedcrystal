@@ -33,7 +33,6 @@ WarehouseEntrance_MapScriptHeader:
 	object_event  1, 27, SPRITE_POKEMANIAC, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 2, GenericTrainerPokemaniacIssac, -1
 	object_event  0,  6, SPRITE_POKEMANIAC, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 3, GenericTrainerPokemaniacDonald, -1
 	keyitemball_event  4, 25, COIN_CASE, EVENT_WAREHOUSE_ENTRANCE_COIN_CASE
-	object_event  1, 18, SPRITE_COSPLAYER, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 3, GenericTrainerCosplayerClara, -1
 
 	object_const_def
 	const WAREHOUSEENTRANCE_GRAMPS
@@ -174,13 +173,6 @@ GenericTrainerPokemaniacDonald:
 	para "He'll phone you if"
 	line "he sees any rare"
 	cont "#mon."
-	done
-
-GenericTrainerCosplayerClara:
-	generictrainer COSPLAYER, CLARA, EVENT_BEAT_COSPLAYER_CLARA, CosplayerClaraSeenText, CosplayerClaraBeatenText
-
-	text "I made this cos-"
-	line "tume myself!"
 	done
 
 BitterMerchantScript:
@@ -435,18 +427,6 @@ PokemaniacDonaldSeenText:
 PokemaniacDonaldBeatenText:
 	text "Gaah! I lost!"
 	line "That makes me mad!"
-	done
-
-CosplayerClaraSeenText:
-	text "Pix! Vul, pix! ♥"
-	done
-
-CosplayerClaraBeatenText:
-	text "You thought I was"
-	line "a #mon?"
-
-	para "Nope! It's just"
-	line "quality cosplay."
 	done
 
 GoldenrodUndergroundTheDoorsLockedText:

@@ -1400,3 +1400,4 @@ CurBoxFullCheck:
 	ld [wCurBox], a
 	or 1
 	ret
+

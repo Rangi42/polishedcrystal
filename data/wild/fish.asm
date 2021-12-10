@@ -37,10 +37,10 @@ ENDM
 	fishentry  35 percent,     MAGIKARP,   20
 	fishentry  70 percent,     KRABBY,     20
 	fishentry  90 percent + 1, KRABBY,     20
-	fishentry 100 percent,     0,  0          ; corsola morn/day, staryu at night
+	fishentry 100 percent,     0,  0	; corsola morn/day, staryu at night
 .Shore_Super:
 	fishentry  40 percent,     KRABBY,     40
-	fishentry  70 percent,     0,  1          ; corsola morn/day, staryu at night
+	fishentry  70 percent,     0,  1	; corsola morn/day, staryu at night
 	fishentry  90 percent + 1, KRABBY,     40
 	fishentry 100 percent,     KINGLER,    40
 

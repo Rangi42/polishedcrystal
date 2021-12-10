@@ -188,11 +188,7 @@ DayCareLyraHelloText1:
 	para "This is <PLAYER>!"
 
 	para "Grandma: Ah ha."
-
-	para "This is your"
-	line "boy… friend."
-
-	para "I see. Hmm."
+	line "I see. Hmm."
 	done
 
 DayCareLyraHelloText2:
@@ -204,27 +200,11 @@ DayCareLyraHelloText2:
 	para "This is <PLAYER>!"
 
 	para "Grandma: Ah ha."
-
-	para "This is your"
-	line "girl… friend."
-
-	para "I see. Hmm."
+	line "I see. Hmm."
 	done
 
 DayCareLyraProtestText1:
-	text "Lyra: What?"
-	line "Grandma…!"
-
-	para "What are you"
-	line "talking about?"
-
-	para "He just lives"
-	line "nearby…"
-
-	para "Grandma: Hahaha."
-	line "I know, I know."
-
-	para "You must be sure"
+	text "You must be sure"
 	line "he's talented."
 
 	para "Right, <PLAYER>?"
@@ -233,19 +213,7 @@ DayCareLyraProtestText1:
 	done
 
 DayCareLyraProtestText2:
-	text "Lyra: What?"
-	line "Grandma…!"
-
-	para "What are you"
-	line "talking about?"
-
-	para "She just lives"
-	line "nearby…"
-
-	para "Grandma: Hahaha."
-	line "I know, I know."
-
-	para "You must be sure"
+	text "You must be sure"
 	line "she's talented."
 
 	para "Right, <PLAYER>?"

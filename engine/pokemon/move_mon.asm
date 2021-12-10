@@ -70,8 +70,29 @@ TryAddMonToParty:
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
+	ld a, [wOtherTrainerType]
+	bit TRNTYPE_ITEM, a
+	jr z, .no_skip_trainer_item
+	inc hl
+.no_skip_trainer_item
+	bit TRNTYPE_EVS, a
+	jr z, .no_skip_trainer_evs
+	inc hl
+.no_skip_trainer_evs
+	bit TRNTYPE_DVS, a
+	jr z, .no_skip_trainer_dvs
+	inc hl
+	inc hl
+	inc hl
+.no_skip_trainer_dvs
+	bit TRNTYPE_PERSONALITY, a
+	ld a, NO_FORM
+	jr z, .got_trainer_form
+	inc hl
 	ld a, [wTrainerGroupBank]
 	call GetFarByte
+	and SPECIESFORM_MASK
+.got_trainer_form
 	ld [wCurForm], a
 .not_trainer_form
 

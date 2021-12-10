@@ -184,15 +184,15 @@
 	const MUSIC_CHAMPION_BATTLE_B2W2           ; b4
 	const MUSIC_CREDITS                        ; b5
 	const MUSIC_POST_CREDITS                   ; b6
-	const MUSIC_TITLE_XY                       ; b7
+	const MUSIC_TITLE_XY                       ; b7 ; unused
 	const MUSIC_DEWFORD_TOWN_RSE               ; b8 ; unused
 	const MUSIC_MARINE_TUBE_B2W2               ; b9 ; unused
 	const MUSIC_LEGENDARY_BATTLE_XY            ; ba ; unused
 	const MUSIC_WILD_BATTLE_PRISM              ; bb ; unused
 	const MUSIC_TRAINER_BATTLE_PRISM           ; bc ; unused
 	const MUSIC_GYM_LEADER_BATTLE_PRISM        ; bd ; unused
-	const MUSIC_PALETTE_BATTLE_PRISM           ; be ; unused
-	const MUSIC_UNDERTALE_MEGALOVANIA          ; bf ; unused
+	const MUSIC_KANTO_GYM_LEADER               ; be
+	const MUSIC_KANTO_CHAMPION_BATTLE          ; bf
 NUM_MUSIC_SONGS EQU const_value
 
 ; GetMapMusic picks music for these values (see data/maps/special_map_music.asm)

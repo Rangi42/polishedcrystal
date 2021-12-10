@@ -565,7 +565,7 @@ StartTrainerBattle_LoadPokeBallGraphics:
 	ld bc, SCREEN_WIDTH * SCREEN_HEIGHT
 .loop1
 	ld a, [hl]
-	and ~PALETTE_MASK
+	and $ff ^ PALETTE_MASK
 	or PAL_BG_RED ; flashing overworld
 	ld [hli], a
 	dec bc

@@ -73,7 +73,7 @@ GiftSpearowName:
 GiftSpearowOTName:
 	rawchar "Randy@"
 
-GiftSpearowOTIDAndCaughtGender:
+ GiftSpearowOTIDAndCaughtGender:
 	bigdw 01001
 	db MALE
 

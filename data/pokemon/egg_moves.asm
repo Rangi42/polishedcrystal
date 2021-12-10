@@ -890,7 +890,7 @@ PhanpyEggMoves:
 StantlerEggMoves:
 	db BITE
 	db DOUBLE_KICK
-	db EXTRASENSORY
+ 	db EXTRASENSORY
 	db RAGE
 	db $ff
 

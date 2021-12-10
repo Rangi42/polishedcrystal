@@ -254,7 +254,7 @@ CheckPokerusTick::
 	and a
 	ret z ; not even a day has passed since game start
 	ld b, a
-
+	
 	ld a, [wPartyCount]
 	and a
 	ret z ; don't waste time if we don't have any party members

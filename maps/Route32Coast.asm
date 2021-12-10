@@ -22,7 +22,6 @@ Route32Coast_MapScriptHeader:
 	object_event 20,  8, SPRITE_SWIMMER_GIRL, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 4, GenericTrainerSwimmerfAlison, -1
 	object_event 23, 17, SPRITE_SWIMMER_GIRL, SPRITEMOVEDATA_SPINCOUNTERCLOCKWISE, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 4, GenericTrainerSwimmerfStephanie, -1
 	object_event 18, 23, SPRITE_BIRD_KEEPER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 5, GenericTrainerBird_keeperPowell, -1
-	object_event 14, 62, SPRITE_COSPLAYER, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 1, GenericTrainerCosplayerChloe, -1
 	object_event 24, 62, SPRITE_FISHER, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 1, GenericTrainerFisherKiley, -1
 	object_event  6, 22, SPRITE_CAMPER, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 2, GenericTrainerCamperCraig, -1
 	object_event 11, 45, SPRITE_LASS, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 2, GenericTrainerLassLayla, -1
@@ -140,26 +139,6 @@ GenericTrainerBird_keeperPowell:
 .BeatenText:
 	text "Oh no! My"
 	line "#mon!"
-	done
-
-GenericTrainerCosplayerChloe:
-	generictrainer COSPLAYER, CHLOE, EVENT_BEAT_COSPLAYER_CHLOE, .SeenText, .BeatenText
-
-	text "When I'm dressed"
-	line "like this, people"
-	para "say I'm the cutest"
-	line "wherever I go."
-	done
-
-.SeenText:
-	text "Like my costume?"
-	line "It's super effect-"
-	cont "ive!"
-	done
-
-.BeatenText:
-	text "Well, that wasn't"
-	line "very effective…"
 	done
 
 GenericTrainerFisherKiley:

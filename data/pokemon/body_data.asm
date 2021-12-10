@@ -188,7 +188,7 @@ PokemonBodyData:
 	body_data   6,   78, QUADRUPED,    WHITE  ; MAREEP
 	body_data   8,  133, BIPEDAL_TAIL, PINK   ; FLAAFFY
 	body_data  14,  615, BIPEDAL_TAIL, YELLOW ; AMPHAROS
-	body_data   4,   58, BIPEDAL,      GREEN  ; BELLOSSOM
+	body_data   4,   58, BIPEDAL,      BLUE   ; BELLOSSOM
 	body_data   4,   85, BIPEDAL_TAIL, BLUE   ; MARILL
 	body_data   8,  285, BIPEDAL_TAIL, BLUE   ; AZUMARILL
 	body_data  12,  380, BIPEDAL,      BROWN  ; SUDOWOODO

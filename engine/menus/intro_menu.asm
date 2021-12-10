@@ -573,10 +573,10 @@ if !DEF(DEBUG)
 	call FadeToWhite
 	call ClearTileMap
 
-	ld a, LOW(SYLVEON)
+	ld a, LOW(ESPEON)
 	ld [wCurSpecies], a
 	ld [wCurPartySpecies], a
-	ld a, HIGH(SYLVEON) << MON_EXTSPECIES_F
+	ld a, HIGH(ESPEON) << MON_EXTSPECIES_F
 	ld [wCurForm], a
 	ld [wTempMonForm], a
 	call GetBaseData
@@ -650,7 +650,7 @@ ElmText2:
 	xor a
 	ld [wStereoPanningMask], a
 	ld [wCryTracks], a
-	ld de, SYLVEON - 1
+	ld de, ESPEON - 1
 	call PlayCryHeader
 	call WaitSFX
 	ld hl, ElmText3
@@ -1050,7 +1050,7 @@ TitleScreenEntrance:
 	ld hl, wStatusFlags
 	bit 6, [hl] ; hall of fame
 	jr z, .ok
-	ld de, MUSIC_TITLE_XY
+	ld de, MUSIC_TITLE	; MUSIC_TITLE_XY
 .ok
 	call PlayMusic
 

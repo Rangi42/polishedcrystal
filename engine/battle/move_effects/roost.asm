@@ -20,7 +20,7 @@ BattleCommand_roost:
 	cp b
 	jr nz, .not_double_flying
 	ld a, [hld]
-	cp b
+	cp FLYING
 	jr z, .normalize
 .not_double_flying
 	; Roost shouldn't mess with non-Flying types.

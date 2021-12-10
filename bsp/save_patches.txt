@@ -427,7 +427,7 @@ ConvertMonIndexesTo9Bit:
 	pop #1
 	seekfwd 40
 	call FlagAction
-	
+
 .done
 	ifeq #4, 1, FixNewboxChecksum
 	return

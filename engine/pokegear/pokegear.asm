@@ -2727,10 +2727,8 @@ TownMapPlayerIcon:
 	ret
 
 LoadTownMapGFX:
-	ld de, vTiles2
-	; fallthrough
-_LoadTownMapGFX:
 	ld hl, TownMapGFX
+	ld de, vTiles2
 	lb bc, BANK(TownMapGFX), $40
 	jmp DecompressRequest2bpp
 

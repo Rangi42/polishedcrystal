@@ -10,13 +10,13 @@ OddEggProbabilities:
 	table_width 2, OddEggProbabilities
 prob_total = 0
 ; Pichu
-	prob 10
+	prob 12
 ; Cleffa
-	prob 16
+	prob 12
 ; Igglybuff
-	prob 16
+	prob 12
 ; Tyrogue
-	prob 2
+	prob 6
 ; Smoochum
 	prob 12
 ; Elekid
@@ -26,7 +26,7 @@ prob_total = 0
 ; Mime Jr.
 	prob 8
 ; Happiny
-	prob 4
+	prob 6
 ; Munchlax
 	prob 8
 	assert_table_length NUM_ODD_EGGS
