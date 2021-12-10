@@ -284,9 +284,9 @@ _CardFlip:
 	call CardFlip_UpdateCoinBalanceDisplay
 	call YesNoBox
 	jmp c, .Increment
-	ld a, [wCardFlipNumCardsPlayed]
-	inc a
-	ld [wCardFlipNumCardsPlayed], a
+	ld hl, wCardFlipNumCardsPlayed
+	inc [hl]
+	ld a, [hl]
 	cp 12
 	jr c, .KeepTheCurrentDeck
 	call CardFlip_InitTilemap
@@ -435,7 +435,7 @@ CardFlip_DisplayCardFaceUp:
 	pop hl
 
 	; Set the attributes
-	ld de, wAttrMap - wTileMap
+	ld de, wAttrmap - wTilemap
 	add hl, de
 	ld a, [wCardFlipFaceUpCard]
 	and 3
@@ -1466,32 +1466,32 @@ ENDM
 	dsprite   1, 0,   1, 0, $00, $0 | X_FLIP | Y_FLIP | PRIORITY
 
 CardFlip_InitAttrPals:
-	hlcoord 0, 0, wAttrMap
+	hlcoord 0, 0, wAttrmap
 	ld bc, SCREEN_HEIGHT * SCREEN_WIDTH
 	xor a
 	rst ByteFill
 
-	hlcoord 12, 1, wAttrMap
+	hlcoord 12, 1, wAttrmap
 	lb bc, 2, 2
 	ld a, $1
 	call FillBoxWithByte
 
-	hlcoord 14, 1, wAttrMap
+	hlcoord 14, 1, wAttrmap
 	lb bc, 2, 2
 	ld a, $2
 	call FillBoxWithByte
 
-	hlcoord 16, 1, wAttrMap
+	hlcoord 16, 1, wAttrmap
 	lb bc, 2, 2
 	ld a, $3
 	call FillBoxWithByte
 
-	hlcoord 18, 1, wAttrMap
+	hlcoord 18, 1, wAttrmap
 	lb bc, 2, 2
 	ld a, $4
 	call FillBoxWithByte
 
-	hlcoord 9, 0, wAttrMap
+	hlcoord 9, 0, wAttrmap
 	lb bc, 12, 1
 	ld a, $1
 	call FillBoxWithByte

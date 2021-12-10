@@ -185,9 +185,13 @@ RunTradeAnimSequence:
 	ld hl, wOTTrademonForm
 	ld de, vTiles0 tile $31
 	call TradeAnim_GetFrontpic
-	ld a, [wPlayerTrademonSpecies]
+	ld a, [wPlayerTrademonForm]
+	ld b, a
+	ld a, [wPlayerTrademonSpecies] ; not loading into c since we're loading into wNamedObjectIndex anyway
 	ld de, wPlayerTrademonSpeciesName
 	call TradeAnim_GetNickname
+	ld a, [wOTTrademonForm]
+	ld c, a
 	ld a, [wOTTrademonSpecies]
 	ld de, wOTTrademonSpeciesName
 	call TradeAnim_GetNickname
@@ -344,7 +348,7 @@ TradeAnim_InitTubeAnim:
 
 	pop de
 	ld a, SPRITE_ANIM_INDEX_TRADEMON_ICON
-	call _InitSpriteAnimStruct
+	call InitSpriteAnimStruct
 
 	ld hl, SPRITEANIMSTRUCT_JUMPTABLE_INDEX
 	add hl, bc
@@ -353,7 +357,7 @@ TradeAnim_InitTubeAnim:
 
 	pop de
 	ld a, SPRITE_ANIM_INDEX_TRADEMON_BUBBLE
-	call _InitSpriteAnimStruct
+	call InitSpriteAnimStruct
 
 	ld hl, SPRITEANIMSTRUCT_JUMPTABLE_INDEX
 	add hl, bc
@@ -722,11 +726,10 @@ TradeAnim_ShowGivemonData:
 	call TradeAnim_ShowGivemonFrontpic
 
 	ld a, [wPlayerTrademonSpecies]
-	call GetCryIndex
-	jr c, .skip_cry
-	ld e, c
-	ld d, b
-	call PlayCryHeader
+	ld c, a
+	ld a, [wPlayerTrademonForm]
+	ld b, a
+	call _PlayCry
 .skip_cry
 
 	jmp TradeAnim_AdvanceScriptPointer
@@ -752,18 +755,19 @@ TradeAnim_AnimateFrontpic:
 
 TradeAnim_GetFrontpic:
 	push de
-	push af
-	predef GetVariant
-	pop af
 	ld [wCurPartySpecies], a
 	ld [wCurSpecies], a
+	ld a, [hl]
+	ld [wCurForm], a
 	call GetBaseData
 	pop de
 	predef_jump GetFrontpic
 
 TradeAnim_GetNickname:
 	push de
-	ld [wNamedObjectIndex], a
+	ld hl, wNamedObjectIndex
+	ld [hli], a
+	ld [hl], b
 	call GetPokemonName
 	ld hl, wStringBuffer1
 	pop de
@@ -945,7 +949,7 @@ TrademonStats_PrintTrademonID:
 TradeAnim_RockingBall:
 	depixel 10, 11, 4, 0
 	ld a, SPRITE_ANIM_INDEX_TRADE_POKE_BALL
-	call _InitSpriteAnimStruct
+	call InitSpriteAnimStruct
 	call TradeAnim_AdvanceScriptPointer
 	ld a, $20
 	ld [wFrameCounter], a
@@ -954,7 +958,7 @@ TradeAnim_RockingBall:
 TradeAnim_DropBall:
 	depixel 10, 11, 4, 0
 	ld a, SPRITE_ANIM_INDEX_TRADE_POKE_BALL
-	call _InitSpriteAnimStruct
+	call InitSpriteAnimStruct
 	ld hl, SPRITEANIMSTRUCT_JUMPTABLE_INDEX
 	add hl, bc
 	ld [hl], $1
@@ -969,7 +973,7 @@ TradeAnim_DropBall:
 TradeAnim_Poof:
 	depixel 10, 11, 4, 0
 	ld a, SPRITE_ANIM_INDEX_TRADE_POOF
-	call _InitSpriteAnimStruct
+	call InitSpriteAnimStruct
 	call TradeAnim_AdvanceScriptPointer
 	ld a, $10
 	ld [wFrameCounter], a
@@ -981,7 +985,7 @@ TradeAnim_BulgeThroughTube:
 	call DmgToCgbObjPal0
 	depixel 5, 11
 	ld a, SPRITE_ANIM_INDEX_TRADE_TUBE_BULGE
-	call _InitSpriteAnimStruct
+	call InitSpriteAnimStruct
 	call TradeAnim_AdvanceScriptPointer
 	ld a, $40
 	ld [wFrameCounter], a

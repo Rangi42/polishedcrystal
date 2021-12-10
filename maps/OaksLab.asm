@@ -29,7 +29,7 @@ OaksLab_MapScriptHeader:
 
 	def_object_events
 	object_event  4,  2, SPRITE_OAK, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, Oak, -1
-	object_event  7,  3, SPRITE_MON_ICON, SPRITEMOVEDATA_STILL, 0, EEVEE, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_SCRIPT, 0, EeveeDollScript, EVENT_DECO_EEVEE_DOLL
+	object_event  7,  3, SPRITE_MON_ICON, SPRITEMOVEDATA_STILL, 0, EEVEE, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_SCRIPT, NO_FORM, EeveeDollScript, EVENT_DECO_EEVEE_DOLL
 	object_event  1,  8, SPRITE_AROMA_LADY, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_COMMAND, jumptextfaceplayer, OaksAssistant1Text, -1
 	object_event  8,  9, SPRITE_SCIENTIST, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_COMMAND, jumptextfaceplayer, OaksAssistant2Text, -1
 	object_event  1,  4, SPRITE_SCIENTIST, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, PAL_NPC_RED, OBJECTTYPE_COMMAND, jumptextfaceplayer, OaksAssistant3Text, -1
@@ -61,19 +61,19 @@ Oak:
 	iftrue .Charmander
 	checkevent EVENT_GOT_CHARMANDER_FROM_IVY
 	iftrue .Squirtle
-	givepoke BULBASAUR, NO_FORM, 10, SITRUS_BERRY
+	givepoke BULBASAUR, PLAIN_FORM, 10, SITRUS_BERRY
 	iffalse .PartyAndBoxFull
 	setevent EVENT_GOT_A_POKEMON_FROM_OAK
 	sjump .CheckBadges
 
 .Charmander:
-	givepoke CHARMANDER, NO_FORM, 10, SITRUS_BERRY
+	givepoke CHARMANDER, PLAIN_FORM, 10, SITRUS_BERRY
 	iffalse .PartyAndBoxFull
 	setevent EVENT_GOT_A_POKEMON_FROM_OAK
 	sjump .CheckBadges
 
 .Squirtle:
-	givepoke SQUIRTLE, NO_FORM, 10, SITRUS_BERRY
+	givepoke SQUIRTLE, PLAIN_FORM, 10, SITRUS_BERRY
 	iffalse .PartyAndBoxFull
 	setevent EVENT_GOT_A_POKEMON_FROM_OAK
 	sjump .CheckBadges
@@ -97,8 +97,9 @@ Oak:
 	special ProfOaksPCBoot
 	checkevent EVENT_GOT_OVAL_CHARM_FROM_OAK
 	iftrue .NoOvalCharm
-	readvar VAR_DEXSEEN
-	ifless NUM_POKEMON, .NoOvalCharm
+	setval16 NUM_SPECIES - 2
+	special CountSeen
+	iffalse .NoOvalCharm
 	writetext OakLabSeenAllText
 	promptbutton
 	verbosegivekeyitem OVAL_CHARM
@@ -108,12 +109,11 @@ Oak:
 .NoOvalCharm
 	checkevent EVENT_GOT_SHINY_CHARM_FROM_OAK
 	iftrue .NoShinyCharm
-	readvar VAR_DEXCAUGHT
-	ifless NUM_POKEMON, .NoShinyCharm
+	setval16 NUM_SPECIES - 2
+	special CountCaught
 	writetext OakLabCaughtAllText
 	promptbutton
 	verbosegivekeyitem SHINY_CHARM
-	setflag ENGINE_HAVE_SHINY_CHARM
 	setevent EVENT_GOT_SHINY_CHARM_FROM_OAK
 	writetext OakLabShinyCharmText
 	waitbutton

@@ -320,7 +320,7 @@ MagnetTrain_Jumptable:
 	pop af
 	ldh [rSVBK], a
 	ld a, b
-	call _InitSpriteAnimStruct
+	call InitSpriteAnimStruct
 	ld hl, SPRITEANIMSTRUCT_TILE_ID
 	add hl, bc
 	ld [hl], $0

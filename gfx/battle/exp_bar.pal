@@ -1,0 +1,6 @@
+if !DEF(MONOCHROME)
+	RGB 31, 12, 06 ; red
+	RGB 04, 17, 31 ; blue
+else
+	MONOCHROME_RGB_TWO
+endc

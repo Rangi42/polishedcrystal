@@ -238,9 +238,8 @@ Gen2ToGen2LinkComms:
 	ld bc, NAME_LENGTH
 	rst CopyBytes
 
-	ld de, wOTPartyCount
-	ld bc, 1 + PARTY_LENGTH + 1
-	rst CopyBytes
+	ld a, [hli]
+	ld [wOTPartyCount], a
 
 	ld de, wOTPlayerID
 	ld bc, 2
@@ -470,9 +469,9 @@ Link_PrepPartyData_Gen2:
 	ld bc, NAME_LENGTH
 	rst CopyBytes
 
-	ld hl, wPartyCount
-	ld bc, 1 + PARTY_LENGTH + 1
-	rst CopyBytes
+	ld a, [wPartyCount]
+	ld [de], a
+	inc de
 
 	ld hl, wPlayerID
 	ld bc, 2
@@ -708,9 +707,12 @@ PlaceTradePartnerNamesAndParty:
 	add hl, de
 	ld a, c
 	call GetPartyLocation
+	assert MON_IS_EGG == MON_FORM
 	bit MON_IS_EGG_F, [hl]
 	ld a, EGG
 	jr nz, .got_species
+	ld a, [hl]
+	ld [wNamedObjectIndex+1], a
 	ld hl, MON_SPECIES
 	add hl, de
 	pop bc
@@ -1172,13 +1174,13 @@ LinkTrade_TradeStatsMenu:
 	ld a, [wCurOTTradePartyMon]
 	ld hl, wOTPartyMon1IsEgg
 	call GetPartyLocation
+	assert MON_IS_EGG == MON_FORM
 	bit MON_IS_EGG_F, [hl]
 	ld a, EGG
 	jr nz, .got_ot_species
-	ld a, [wCurOTTradePartyMon]
-	ld hl, wOTPartySpecies
-	ld c, a
-	ld b, $0
+	ld a, [hl]
+	ld [wNamedObjectIndex+1], a
+	ld bc, MON_SPECIES - MON_FORM
 	add hl, bc
 	ld a, [hl]
 .got_ot_species
@@ -1356,17 +1358,23 @@ LinkTrade:
 	ld a, [wCurTradePartyMon]
 	ld hl, wPartyMon1IsEgg
 	call GetPartyLocation
+	assert MON_IS_EGG == MON_FORM
 	bit MON_IS_EGG_F, [hl]
 	ld a, EGG
 	jr nz, .got_party_species
+	ld a, [hl]
+	ld [wNamedObjectIndex+1], a
 	ld a, [wCurTradePartyMon]
-	ld hl, wPartySpecies
-	ld c, a
-	ld b, 0
-	add hl, bc
+	ld hl, wPartyMon1Species
+	call GetPartyLocation
 	ld a, [hl]
 .got_party_species
 	ld [wNamedObjectIndex], a
+	ld bc, MON_FORM - MON_SPECIES
+	add hl, bc
+	ld a, [hl]
+	and SPECIESFORM_MASK
+	ld [wNamedObjectIndex+1], a
 	call GetPokemonName
 	ld hl, wStringBuffer1
 	ld de, wBufferTrademonNickname
@@ -1375,13 +1383,13 @@ LinkTrade:
 	ld a, [wCurOTTradePartyMon]
 	ld hl, wOTPartyMon1IsEgg
 	call GetPartyLocation
+	assert MON_IS_EGG == MON_FORM
 	bit MON_IS_EGG_F, [hl]
 	ld a, EGG
 	jr nz, .got_ot_species
-	ld a, [wCurOTTradePartyMon]
-	ld hl, wOTPartySpecies
-	ld c, a
-	ld b, $0
+	ld a, [hl]
+	ld [wNamedObjectIndex+1], a
+	ld bc, MON_SPECIES - MON_FORM
 	add hl, bc
 	ld a, [hl]
 .got_ot_species
@@ -1511,14 +1519,17 @@ LinkTrade:
 	ld a, EGG
 	jr nz, .got_tradeparty_species
 	ld a, [wCurTradePartyMon]
-	ld hl, wPartySpecies
-	ld b, $0
-	ld c, a
-	add hl, bc
+	ld hl, wPartyMon1Species
+	call GetPartyLocation
 	ld a, [hl]
 .got_tradeparty_species
 	ld [wPlayerTrademonSpecies], a
 	push af
+; caught data
+	ld b, h
+	ld c, l
+	farcall GetCaughtGender
+	ld [wPlayerTrademonCaughtData], a
 ; OT name
 	ld a, [wCurTradePartyMon]
 	ld hl, wPartyMonOTs
@@ -1544,14 +1555,6 @@ LinkTrade:
 	ld [wPlayerTrademonDVs + 1], a
 	ld a, [hl]
 	ld [wPlayerTrademonDVs + 2], a
-; caught data
-	ld hl, wPartyMon1Species
-	ld a, [wCurTradePartyMon]
-	call GetPartyLocation
-	ld b, h
-	ld c, l
-	farcall GetCaughtGender
-	ld [wPlayerTrademonCaughtData], a
 
 ; Buffer other player data
 ; nickname
@@ -1566,10 +1569,7 @@ LinkTrade:
 	bit MON_IS_EGG_F, [hl]
 	ld a, EGG
 	jr nz, .got_tradeot_species
-	ld a, [wCurOTTradePartyMon]
-	ld hl, wOTPartySpecies
-	ld b, 0
-	ld c, a
+	ld bc, MON_SPECIES - MON_FORM
 	add hl, bc
 	ld a, [hl]
 .got_tradeot_species
@@ -1610,11 +1610,8 @@ LinkTrade:
 
 	ld a, [wCurTradePartyMon]
 	ld [wCurPartyMon], a
-	ld hl, wPartySpecies
-	ld b, 0
-	ld c, a
-	add hl, bc
-	ld a, [hl]
+	ld a, MON_SPECIES
+	call GetPartyParamLocationAndValue
 	ld [wCurTradePartyMon], a
 
 	xor a ; REMOVE_PARTY
@@ -1623,16 +1620,14 @@ LinkTrade:
 	ld a, [wPartyCount]
 	dec a
 	ld [wCurPartyMon], a
-	ld a, TRUE
-	ld [wForceEvolution], a
 	ld a, [wCurOTTradePartyMon]
 	push af
-	ld hl, wOTPartySpecies
-	ld b, 0
-	ld c, a
-	add hl, bc
+	ld hl, wOTPartyMon1Species
+	call GetPartyLocation
 	ld a, [hl]
 	ld [wCurOTTradePartyMon], a
+	ld a, TRUE
+	ld [wForceEvolution], a
 
 	ld c, 100
 	call DelayFrames
@@ -1651,10 +1646,8 @@ LinkTrade:
 	pop af
 	ld c, a
 	ld [wCurPartyMon], a
-	ld hl, wOTPartySpecies
-	ld d, 0
-	ld e, a
-	add hl, de
+	ld hl, wOTPartyMon1Species
+	call GetPartyLocation
 	ld a, [hl]
 	ld [wCurPartySpecies], a
 	ld hl, wOTPartyMon1Species
@@ -1774,7 +1767,7 @@ LinkTextbox::
 
 	pop hl
 	pop bc
-	ld de, wAttrMap - wTileMap
+	ld de, wAttrmap - wTilemap
 	add hl, de
 	inc b
 	inc b
@@ -1930,13 +1923,11 @@ Special_WaitForLinkedFriend:
 	ldh [rSC], a
 	ld a, START_TRANSFER_EXTERNAL_CLOCK
 	ldh [rSC], a
-	ld a, [wLinkTimeoutFrames]
-	dec a
-	ld [wLinkTimeoutFrames], a
+	ld hl, wLinkTimeoutFrames
+	dec [hl]
 	jr nz, .not_done
-	ld a, [wLinkTimeoutFrames + 1]
-	dec a
-	ld [wLinkTimeoutFrames + 1], a
+	inc hl
+	dec [hl]
 	jr z, .done
 
 .not_done
@@ -2371,50 +2362,50 @@ DetermineLinkBattleResult:
 	ret
 
 InitLinkTradePalMap:
-	hlcoord 0, 0, wAttrMap
+	hlcoord 0, 0, wAttrmap
 	lb bc, 16, 2
 	ld a, $4
 	call .fill_box
 	ld a, $3
-	ldcoord_a 0, 1, wAttrMap
-	ldcoord_a 0, 14, wAttrMap
-	hlcoord 2, 0, wAttrMap
+	ldcoord_a 0, 1, wAttrmap
+	ldcoord_a 0, 14, wAttrmap
+	hlcoord 2, 0, wAttrmap
 	lb bc, 8, 18
 	ld a, $5
 	call .fill_box
-	hlcoord 2, 8, wAttrMap
+	hlcoord 2, 8, wAttrmap
 	lb bc, 8, 18
 	ld a, $6
 	call .fill_box
-	hlcoord 0, 16, wAttrMap
+	hlcoord 0, 16, wAttrmap
 	lb bc, 2, SCREEN_WIDTH
 	ld a, $4
 	call .fill_box
 	ld a, $3
 	lb bc, 6, 1
-	hlcoord 6, 1, wAttrMap
+	hlcoord 6, 1, wAttrmap
 	call .fill_box
 	ld a, $3
 	lb bc, 6, 1
-	hlcoord 17, 1, wAttrMap
+	hlcoord 17, 1, wAttrmap
 	call .fill_box
 	ld a, $3
 	lb bc, 6, 1
-	hlcoord 6, 9, wAttrMap
+	hlcoord 6, 9, wAttrmap
 	call .fill_box
 	ld a, $3
 	lb bc, 6, 1
-	hlcoord 17, 9, wAttrMap
+	hlcoord 17, 9, wAttrmap
 	call .fill_box
 	ld a, $2
-	hlcoord 2, 16, wAttrMap
+	hlcoord 2, 16, wAttrmap
 	ld [hli], a
 	ld a, $7
 	ld [hli], a
 	ld [hli], a
 	ld [hli], a
 	ld [hl], $2
-	hlcoord 2, 17, wAttrMap
+	hlcoord 2, 17, wAttrmap
 	ld a, $3
 	ld bc, 6
 	rst ByteFill

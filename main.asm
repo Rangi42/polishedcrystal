@@ -195,7 +195,18 @@ INCLUDE "engine/battle/endturn.asm"
 
 SECTION "Pokedex", ROMX
 
+INCLUDE "engine/pokedex/lcd.asm"
 INCLUDE "engine/pokedex/pokedex.asm"
+
+
+SECTION "Pokédex Footprints", ROMX
+
+INCLUDE "gfx/pokemon/footprints.asm"
+
+
+SECTION "Pokedex Shapes", ROMX
+
+INCLUDE "gfx/shapes.asm"
 
 
 SECTION "Moves", ROMX
@@ -266,7 +277,6 @@ INCLUDE "engine/pokemon/mon_stats.asm"
 INCLUDE "engine/pokemon/experience.asm"
 INCLUDE "engine/pokemon/switchpartymons.asm"
 INCLUDE "engine/gfx/load_pics.asm"
-INCLUDE "data/pokemon/names.asm"
 INCLUDE "engine/pokemon/natures.asm"
 
 
@@ -316,6 +326,7 @@ INCLUDE "engine/tilesets/timeofday_pals.asm"
 INCLUDE "engine/battle/battle_transition.asm"
 INCLUDE "engine/events/field_moves.asm"
 INCLUDE "engine/events/magnet_train.asm"
+; The 2 below files assume they're within the same bank.
 INCLUDE "engine/gfx/sprites.asm"
 INCLUDE "engine/gfx/mon_icons.asm"
 INCLUDE "data/pokemon/menu_icon_pointers.asm"
@@ -535,10 +546,19 @@ INCLUDE "data/items/apricorn_names.asm"
 INCLUDE "engine/items/print_item_description.asm"
 
 
-SECTION "Move and Landmark Text", ROMX
+SECTION "Pokemon Body Data", ROMX
+
+INCLUDE "data/pokemon/body_data.asm"
+
+
+SECTION "Pokemon Names", ROMX
+
+INCLUDE "data/pokemon/names.asm"
+
+
+SECTION "Move Names", ROMX
 
 INCLUDE "data/moves/names.asm"
-INCLUDE "engine/overworld/landmarks.asm"
 
 
 SECTION "Crystal Events", ROMX

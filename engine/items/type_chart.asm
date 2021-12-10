@@ -60,7 +60,7 @@ _TypeChart:
 	rst CopyBytes
 
 	ld hl, TypeChartAttrmap
-	decoord 0, 0, wAttrMap
+	decoord 0, 0, wAttrmap
 	ld bc, SCREEN_WIDTH * SCREEN_HEIGHT
 	rst CopyBytes
 

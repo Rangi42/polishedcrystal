@@ -272,3 +272,277 @@ ChangeCheckValue:
 	seek #temp
 	writebyte 0x61
 	return
+
+ConvertUnownDexToBitArray:
+	set #1, UNOWN_DEX_OFFSET_v7
+	call GetGameDataPointer
+	seek #result
+	getfileword #2
+	writeword #zero
+
+.dex_loop_1
+	and #1, #2, 0xff
+	jumpz #1, .done_loop_1
+	decrement #1
+	push #2
+	call .set_flag
+	pop #2
+	shiftright #2, 8 ; TODO: check if this should be shiftleft instead
+	jump .dex_loop_1
+
+.done_loop_1
+	pushpos
+	set #length, 24
+.dex_loop_2
+	readbyte #1
+	jumpz #1, .done_loop_2
+	decrement #1
+	call .set_flag
+	decrement #length
+	jumpnz #length, .dex_loop_2
+
+.done_loop_2
+	poppos
+	fillbyte 24, #zero
+	seek #result
+	getfileword #result
+	writeword #zero
+	seekfwd 20
+	writeword #zero
+	return
+
+.set_flag
+	pushpos
+	seek #result
+	push #result
+	set #2, 1
+	call FlagAction
+	pop #result
+	poppos
+	return
+
+ConvertMonIndexesTo9Bit:
+; First, we need to shift existing caught flags into their new indexes,
+; then we need to shift caught data/unown dex forward to account for the bigger seen flag array
+; (we've already converted unown dex to a flag array, so we have a buffer to work with).
+; We'll handle caught data for forms later.
+	set #1, POKEDEX_CAUGHT_OFFSET
+	call GetGameDataPointer
+	seek #result
+	set #1, 32
+	set #2, 8
+	call ShiftSaveDataBack
+	writeword #zero
+	writeword #zero ; effectively fillbyte 8, #zero
+
+	set #r0, .mon_indexes
+	set #r1, .mon_forms
+
+; modify pokedex flags
+	seek #result
+	set #1, 320
+	set #2, #r0
+	jump ShiftFlags
+
+	seekfwd 40
+	set #1, 320
+	set #2, #r0
+	jump ShiftFlags
+
+	set #1, .mon_callback
+	jump ApplyPartyPatches ; normally, I'd generalize this (as in AdjustPokemonIndexes), but there's some special cases here
+
+.mon_callback
+	seek #1
+	getfilebyte #result
+	set #address, #r0
+.index_loop
+	gethalfwordinc #temp, #address ; get offset index upper bound
+	ifeq #temp, 0xffff, .done_loop
+	gethalfwordinc #offset, #address ; get offset
+	ifgt #result, #temp, .index_loop
+	add #result, #offset
+.done_loop
+	iflt #result, 0xff, .got_result
+	pushpos
+	seekfwd 21 ; to extspecies
+	getfilebyte #temp
+	add #temp, 0x20
+	writebyte #temp
+	poppos
+	subtract #result, 0xfe
+.got_result
+	writebyte #result
+
+	; Special case for Pikachu, need to set fly form or surf form
+	ifeq #result, 0x19, .not_pikachu ; mons like Sirfetch'd ($119) didn't exist yet, so there's no conflicts
+	readbyte #temp ; item -> moves
+	readword #temp ; all four moves
+.move_loop
+	and #1, #temp, 0xff
+	jumpz #1, .done
+	set #2, 2 ; FLY_FORM
+	ifeq #1, 0x13, .got_form
+	increment #2 ; SURF_FORM
+	shiftright #temp, 8
+	ifne #1, 0x39, .move_loop
+.got_form
+	seekfwd 15 ; (ID -> form)
+	getfilebyte #1
+	and #1, 0xe0 ; ~FORM_MASK
+	or #1, #2
+	writebyte #1
+	jump .done
+
+.not_pikachu
+	; Galarian form indexes shift from 2 to 3, and Pokedex flags need to be set
+	set #address, #r1
+.form_loop
+	getbyteinc #1, #address
+	ifeq #1, 0xff, .done
+	getbyteinc #2, #address
+	ifne #1, #result, .form_loop
+
+	seekfwd 20 ; to forms (file pointer is at items here, not species)
+	getfilebyte #3
+	and #temp, #3, 0x20 ; check extspecies
+	jumpz #temp, .done
+	and #temp, #3, FORM_MASK
+	ifeq #temp, #2, .set_pokedex
+	ifne #temp, 2, .done ; special case where Galarian form now = 3, not 2
+	ifne #2, 3, .done
+
+	increment #temp
+	writebyte #temp
+.set_pokedex
+	set #1, POKEDEX_CAUGHT_OFFSET
+	call GetGameDataPointer
+	seek #result
+	subtract #temp, #address, #r1 ; get the form+species index of the current variant form, needed for pokedex flags
+	shiftright #temp, 1
+	add #1, #temp, 0x118 ; note that #temp is off by +1 for actual index, since #address is +2 bytes ahead of form actually being checked
+	set #2, 1
+	push #1
+	call FlagAction
+	pop #1
+	seekfwd 40
+	call FlagAction
+	
+.done
+	ifeq #4, 1, FixNewboxChecksum
+	return
+
+.mon_indexes
+	; upper bound, offset
+	dh 0x14, 0   ; RATICATE
+	dh 0x16, 162 ; AZUMARILL
+	dh 0x6b, 0   ; HITMONCHAN
+	dh 0x74, 1   ; SEADRA
+	dh 0x76, 57  ; TOGETIC
+	db 0x77, 152 ; TOGEKISS
+	dh 0xac, 0   ; PICHU
+	dh 0xad, 89  ; MUNCHLAX
+	dh 0xae, 91  ; MAGNEZONE
+	dh 0xb0, 92  ; TANGROWTH
+	dh 0xb6, 0   ; BELLOSSOM
+	dh 0xb8, 2   ; SUDOWOODO
+	dh 0xbb, 6   ; YANMA
+	dh 0xbc, 84  ; YANMEGA
+	dh 0xc1, 5   ; MURKROW
+	dh 0xc2, 64  ; HONCHKROW
+	dh 0xc4, 4   ; MISDREAVUS
+	dh 0xc5, 60  ; MISMAGIUS
+	dh 0xcc, 3   ; GLIGAR
+	dh 0xcd, 70  ; GLISCOR
+	dh 0xd5, 2   ; SNEASEL
+	dh 0xd6, 50  ; WEAVILE
+	dh 0xdc, 1   ; PILOSWINE
+	dh 0xdd, 55  ; MAMOSWINE
+	dh 0xe0, 0   ; OCTILLERY
+	dh 0xe8, 1   ; PORYGON2
+	dh 0xe9, 44  ; PORYGON_Z
+	dh 0xec, 1   ; HITMONTOP
+	dh 0xed, 2   ; ELEKID
+	dh 0xee, 31  ; ELECTIVIRE
+	dh 0xef, 1   ; MAGBY
+	dh 0xf0, 30  ; MAGMORTAR
+	dh 0xfb, 0   ; CELEBI
+	dh 0xfd, 21  ; GLACEON
+	dh 0xfe, 24  ; SYLVEON
+	dh -1
+
+.mon_forms:
+	db 0x82, 18 ; GYARADOS, RED
+	db 0x96, 2 ; MEWTWO, ARMORED
+	db 0x13, 2 ; RATTATA, ALOLAN
+	db 0x14, 2 ; RATICATE, ALOLAN
+	db 0x1a, 2 ; RAICHU, ALOLAN
+	db 0x1b, 2 ; SANDSHREW, ALOLAN
+	db 0x1c, 2 ; SANDSLASH, ALOLAN
+	db 0x25, 2 ; VULPIX, ALOLAN
+	db 0x26, 2 ; NINETALES, ALOLAN
+	db 0x32, 2 ; DIGLETT, ALOLAN
+	db 0x33, 2 ; DUGTRIO, ALOLAN
+	db 0x34, 2 ; MEOWTH, ALOLAN
+	db 0x35, 2 ; PERSIAN, ALOLAN
+	db 0x4a, 2 ; GEODUDE, ALOLAN
+	db 0x4b, 2 ; GRAVELER, ALOLAN
+	db 0x4c, 2 ; GOLEM, ALOLAN
+	db 0x58, 2 ; GRIMER, ALOLAN
+	db 0x59, 2 ; MUK, ALOLAN
+	db 0x67, 2 ; EXEGGUTOR, ALOLAN
+	db 0x69, 2 ; MAROWAK, ALOLAN
+	;db 0x34, 3 ; MEOWTH, GALARIAN
+	db 0x4d, 3 ; PONYTA, GALARIAN
+	db 0x4e, 3 ; RAPIDASH, GALARIAN
+	db 0x4f, 3 ; SLOWPOKE, GALARIAN
+	db 0x50, 3 ; SLOWBRO, GALARIAN
+	;db 0x53, 3 ; FARFETCH_D, GALARIAN
+	db 0x6e, 3 ; WEEZING, GALARIAN
+	;db 0x7a, 3 ; MR__MIME, GALARIAN
+	db 0x90, 3 ; ARTICUNO, GALARIAN
+	db 0x91, 3 ; ZAPDOS, GALARIAN
+	db 0x92, 3 ; MOLTRES, GALARIAN
+	db 0xc7, 3 ; SLOWKING, GALARIAN
+	;db 0xde, 3 ; CORSOLA, GALARIAN
+	db -1
+
+ConvertPokerusToNybble:
+; If a mon has an active infection, it will get reset
+; to its full days count. Cured infections remain cured
+	set #1, .mon_callback
+	call ApplyPartyPatches
+
+.mon_callback
+	add #1, POKERUS_OFFSET
+	seek #1
+	getfilebyte #1
+	retz #1
+	set #2, 0xf
+	and #temp, #1, #2
+	set #result, 13
+	jumpz #temp, .got_value
+	rotateleft #temp, #1, -4
+	and #temp, #2
+	remainder #temp, 4
+	subtract #temp, 32, #temp
+	rotateleft #result, #2, #temp
+.got_value
+	writebyte #result
+	return
+
+ShiftHiddenGrottoContents:
+	set #1, CELEBI_EVENT_OFFSET
+	call GetGameDataPointer
+	seek #result
+	set #1, 76
+	set #2, 23
+	call ShiftSaveDataBack
+
+.shift_loop
+	writebyte #zero
+	decrement #2
+	retz #2
+	set #1, 2
+	call ShiftSaveDataBack
+	jump .shift_loop

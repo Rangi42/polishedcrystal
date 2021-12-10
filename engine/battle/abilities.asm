@@ -39,6 +39,7 @@ BattleEntryAbilities:
 	dbw PRESSURE, PressureAbility
 	dbw MOLD_BREAKER, MoldBreakerAbility
 	dbw NEUTRALIZING_GAS, NeutralizingGasAbility
+	dbw SCREEN_CLEANER, ScreenCleanerAbility
 	; fallthrough
 StatusHealAbilities:
 ; Status immunity abilities that autoproc if the user gets the status or the ability
@@ -494,6 +495,54 @@ FriskAbility:
 	call StdBattleTextbox
 	jmp EnableAnimations
 
+ScreenCleanerAbility:
+	; Text order is player 1's screens fade, then player 2's.
+	; Preserves current battle turn (i.e. when mon is switched out via Roar)
+	ld a, [wPlayerScreens]
+	and a
+	jr nz, .screens_up
+	ld a, [wEnemyScreens]
+	and a
+	ret z
+.screens_up
+	call DisableAnimations
+	call ShowAbilityActivation
+	ldh a, [hBattleTurn]
+	push af
+	ldh a, [hSerialConnectionStatus]
+	cp USING_INTERNAL_CLOCK
+	ld a, 1
+	jr z, .player_2
+	dec a
+.player_2
+	ldh [hBattleTurn], a
+	call .clear_screens
+	call SwitchTurn
+	call .clear_screens
+	pop af
+	ldh [hBattleTurn], a
+	jmp EnableAnimations
+
+.clear_screens
+	farcall GetTurnAndPlacePrefix
+	ld hl, wPlayerScreens
+	jr z, .got_screens
+	ld hl, wEnemyScreens
+.got_screens
+	ld a, [hl]
+	push af
+	ld [hl], 0
+	and SCREENS_REFLECT
+	jr z, .no_reflect
+	ld hl, BattleText_ReflectFaded
+	call StdBattleTextbox
+.no_reflect
+	pop af
+	and SCREENS_LIGHT_SCREEN
+	ret z
+	ld hl, BattleText_LightScreenFell
+	jmp StdBattleTextbox
+
 RunEnemyOwnTempoAbility:
 	call SwitchTurn
 	call GetTrueUserAbility
@@ -646,10 +695,8 @@ RunHitAbilities:
 CursedBodyAbility:
 	call SwitchTurn
 	farcall GetFutureSightUser
-	push af
 	call SwitchTurn
-	pop af
-	ret nz
+	ret nc
 	ld a, 10
 	call BattleRandomRange
 	cp 3
@@ -681,6 +728,7 @@ TargetContactAbilities:
 	dbw STATIC, StaticAbility
 	dbw CUTE_CHARM, CuteCharmAbility
 	dbw TANGLING_HAIR, TanglingHairAbility
+	dbw PERISH_BODY, PerishBodyAbility
 	dbw -1, -1
 
 CuteCharmAbility:
@@ -697,6 +745,31 @@ CuteCharmAbility:
 	; this runs ShowAbilityActivation when relevant
 	farcall BattleCommand_attract
 	jmp EnableAnimations
+
+PerishBodyAbility:
+	; can't just use BattleCommand_perishsong
+	; since Soundproof has no effect here
+	ld hl, wPlayerPerishCount
+	ld de, wEnemyPerishCount
+	ldh a, [hBattleTurn]
+	and a
+	call z, SwapHLDE
+
+	ld a, [hl]
+	and a
+	ret nz ; don't activate if attacker already has a perish count
+	ld [hl], 4
+
+	ld a, [de]
+	and a
+	jr nz, .no_user
+	ld a, 4
+	ld [de], a
+.no_user
+	call DisableAnimations
+	call ShowAbilityActivation
+	ld hl, StartPerishBodyText
+	call StdBattleTextbox
 
 TanglingHairAbility:
 	call HasOpponentFainted
@@ -1416,12 +1489,10 @@ SelectRandomLowerStat:
 	ret
 
 SelectRandomStat:
-	; Randomize values until we get one matching a nonmaxed stat
+; Randomizes values until we get one matching a nonmaxed stat
 .loop1
-	call BattleRandom
-	and $7
-	cp 5
-	jr nc, .loop1 ; don't raise acc/eva, only 0-4 (atk/def/spe/sat/sdf)
+	ld a, 5 ; don't raise acc/eva, only 0-4 (atk/def/spe/sat/sdf)
+	call BattleRandomRange
 	lb de, 1, 0 ; e = counter
 .loop2
 	cp e
@@ -1437,9 +1508,8 @@ SelectRandomStat:
 
 MoodyAbility:
 ; Moody raises one stat by 2 stages and lowers another (not the same one!) by 1.
-; It will not try to raise a stat at +6 (or lower one at -6). This means that, should all
-; stats be +6, Moody will not raise any stat, and vice versa.
-
+; It will not try to raise a stat at +6 (or lower one at -6). This means that,
+; should all stats be +6, Moody will not raise any stat, and vice versa.
 	call DisableAnimations
 
 	call GetCappedStats
@@ -1505,6 +1575,7 @@ OffensiveDamageAbilities:
 	dbw PIXILATE, PixilateAbility
 	dbw GALVANIZE, GalvanizeAbility
 	dbw GORILLA_TACTICS, GorillaTacticsAbility
+	dbw STEELY_SPIRIT, SteelySpiritAbility
 	dbw -1, -1
 
 DefensiveDamageAbilities:
@@ -1547,17 +1618,25 @@ SwarmAbility:
 	ld b, BUG
 PinchAbility:
 ; 150% damage if the user is in a pinch (1/3HP or less) for given type
+	push bc
+	call CheckPinch
+	pop bc
+	jr z, TypeDependentAbility
+	ret
+
+SteelySpiritAbility:
+	ld b, STEEL
+TypeDependentAbility:
+; 150% damage if move type matches given type in b
 	ld a, BATTLE_VARS_MOVE_TYPE
 	call GetBattleVar
 	cp b
-	ret nz
-	call CheckPinch
 	ret nz
 	ln a, 3, 2 ; x1.5
 	jmp MultiplyAndDivide
 
 RivalryAbility:
-; 100% damage if either mon is genderless, 125% if same gender, 75% if opposite gender
+; 100% damage if either mon is genderless, 125% if same gender, 75% if opposite
 	farcall CheckOppositeGender
 	ret c
 	ln a, 5, 4 ; x1.25
@@ -1577,7 +1656,7 @@ SheerForceAbility:
 AnalyticAbility:
 ; 130% damage if opponent went first
 	farcall GetFutureSightUser
-	jr nc, .future_sight
+	ret nc
 	ld a, [wEnemyGoesFirst] ; 0 = player goes first
 	ld b, a
 	ldh a, [hBattleTurn] ; 0 = player's turn
@@ -1889,11 +1968,11 @@ RunPostBattleAbilities::
 	ld [wCurPartyMon], a
 
 	ld a, MON_SPECIES
-	call GetPartyParamLocation
-	ld c, [hl]
+	call GetPartyParamLocationAndValue
+	ld c, a
 	ld a, MON_IS_EGG
-	call GetPartyParamLocation
-	bit MON_IS_EGG_F, [hl]
+	call GetPartyParamLocationAndValue
+	bit MON_IS_EGG_F, a
 	jr nz, .loop
 	assert MON_PERSONALITY == MON_IS_EGG - 1
 	dec hl
@@ -1909,15 +1988,14 @@ RunPostBattleAbilities::
 .natural_cure
 	; Heal status
 	ld a, MON_STATUS
-	call GetPartyParamLocation
+	call GetPartyParamLocationAndValue
 	xor a
 	ld [hl], a
 	jr .loop
 
 .Pickup:
 	ld a, MON_ITEM
-	call GetPartyParamLocation
-	ld a, [hl]
+	call GetPartyParamLocationAndValue
 	and a
 	ret nz
 
@@ -1928,12 +2006,11 @@ RunPostBattleAbilities::
 	call DisableAnimations
 
 	ld a, MON_LEVEL
-	call GetPartyParamLocation
-	ld a, [hl]
+	call GetPartyParamLocationAndValue
 	call GetRandomPickupItem
 	ld b, a
 	ld a, MON_ITEM
-	call GetPartyParamLocation
+	call GetPartyParamLocationAndValue
 	ld a, b
 	ld [hl], a
 	push bc
@@ -1949,9 +2026,13 @@ RunPostBattleAbilities::
 	push bc
 	push de
 	ld a, MON_SPECIES
-	call GetPartyParamLocation
-	ld a, [hl]
-	ld [wNamedObjectIndex], a
+	call GetPartyParamLocationAndValue
+	ld bc, MON_FORM - MON_SPECIES
+	add hl, bc
+	ld b, [hl]
+	ld hl, wNamedObjectIndex
+	ld [hli], a
+	ld [hl], b
 	call GetPokemonName
 	ld hl, wStringBuffer1
 	ld de, wBattleMonNickname

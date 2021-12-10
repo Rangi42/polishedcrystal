@@ -1,3 +1,11 @@
+FarCopyBytesToColorWRAM::
+; Copy bc bytes from a:hl to de in color WRAM
+	call StackCallInBankA
+.Function:
+	ld a, BANK("GBC Video")
+	call StackCallInWRAMBankA
+	jr _CopyBytes
+
 FarCopyBytes::
 	call StackCallInBankA
 	; fallthrough

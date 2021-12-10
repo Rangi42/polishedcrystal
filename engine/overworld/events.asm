@@ -539,10 +539,14 @@ ObjectEventTypeArray:
 	ret
 
 .pokemon:
-	ld hl, MAPOBJECT_RANGE
+	ld hl, MAPOBJECT_RADIUS
 	add hl, bc
-	ld a, [hli]
-	ldh [hScriptVar], a
+	ld a, [hl]
+	ld bc, MAPOBJECT_RANGE - MAPOBJECT_RADIUS
+	add hl, bc
+	ld b, [hl]
+	ld c, a
+	inc hl
 	ld de, wTempScriptBuffer
 	ld a, showcrytext_command
 	ld [de], a
@@ -552,7 +556,10 @@ rept 2
 	ld [de], a
 	inc de
 endr
-	xor a
+	ld a, c
+	ld [de], a
+	inc de
+	ld b, a
 	ld [de], a
 	inc de
 	ld a, end_command
@@ -1173,7 +1180,7 @@ _TryWildEncounter_BugContest:
 	jr nc, .loop
 	srl a
 	ld hl, ContestMons
-	ld de, 4
+	ld de, 5
 .CheckMon:
 	sub [hl]
 	jr c, .GotMon
@@ -1184,6 +1191,9 @@ _TryWildEncounter_BugContest:
 ; Species
 	ld a, [hli]
 	ld [wTempWildMonSpecies], a
+; Form
+	ld a, [hli]
+	ld [wCurForm], a
 ; Min level
 	ld a, [hli]
 	ld d, a
@@ -1292,5 +1302,6 @@ DoBikeStep::
 	xor a
 	ret
 
+INCLUDE "engine/overworld/landmarks.asm"
 INCLUDE "engine/overworld/stone_table.asm"
 INCLUDE "engine/overworld/scripting.asm"

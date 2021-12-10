@@ -129,19 +129,20 @@ CheckCriticalCapture:
 	ld [hl], a
 
 	ld hl, wPokedexCaught
-	ld b, wEndPokedexCaught - wPokedexCaught
-	call CountSetBits
-	inc a
-	ld b, 5
-	jr z, .got_multiplier
-	dec a
-	ld b, 0
+	ld bc, wEndPokedexCaught - wPokedexCaught
+	call CountSetBits16
 	ld hl, .multipliers
+	ld d, 0
 .loop
-	cp [hl]
+	ld a, [hli]
+	cp b
+	ld a, [hli]
+	jr c, .next
+	jr nz, .got_multiplier
+	cp c
 	jr c, .got_multiplier
-	inc b
-	inc hl
+.next
+	inc d
 	jr .loop
 .got_multiplier
 	; Catch Charm doubles capture rate (Unverified for SwSh!)
@@ -149,37 +150,32 @@ CheckCriticalCapture:
 	push af
 	ld a, CATCH_CHARM
 	ld [wCurKeyItem], a
-	push hl
-	push de
-	push bc
 	call CheckKeyItem
-	pop bc
-	pop de
-	pop hl
 	ld a, $6
 	jr c, .catch_charm
 	add a
 .catch_charm
-	swap b
-	or b
+	swap d
+	or d
 	call MultiplyAndDivide
 	pop af
 	ld [wCurItem], a
 	ldh a, [hQuotient + 2]
-	ld b, a
+	ld d, a
 	call Random
-	cp b
+	cp d
 	ret
 
 .multipliers
-	; Taken from Prism. Vanilla numbers don't work since we only have 254 mons.
+	; Taken from Prism. Vanilla numbers don't work since we only have ~270 mons.
 	; Multiplier applies if we have less than that amount of mons.
-	db 31 ; x0
-	db 101 ; x0.5
-	db 151 ; x1
-	db 201 ; x1.5
-	db 231 ; x2
-	db 255 ; x2.5
+	; This probably should change as we add more mons to the game.
+	dw 30 ; x0
+	dw 100 ; x0.5
+	dw 150 ; x1
+	dw 200 ; x1.5
+	dw 250 ; x2
+	dw -1 ; x2.5
 
 CheckBallOverflow:
 ; Returns z if capture rate math is currently more than 24bit, which means
@@ -231,112 +227,59 @@ ParkBallMultiplier:
 	jmp MultiplyAndDivide
 
 GetSpeciesWeight::
-; input: a = species
+; input: bc = species+form
 ; output: hl = weight
-	ld hl, PokedexDataPointerTable
-	dec a
-	ld e, a
-	ld d, 0
-	add hl, de
-	add hl, de
-	add hl, de
-	ld a, BANK(PokedexDataPointerTable)
-	call GetFarByte
-	push af
-	inc hl
-	ld a, BANK(PokedexDataPointerTable)
-	call GetFarWord
-	pop de
-
-.skip_species
-	ld a, d
-	call GetFarByte
-	inc hl
-	cp "@"
-	jr nz, .skip_species
-
-	; skip height
-	ld a, d
-	inc hl
-	inc hl
-
-	; get weight
-	jmp GetFarWord
+	call GetSpeciesAndFormIndex
+	ld hl, PokemonBodyData + 1 ; skip height
+rept 4
+	add hl, bc
+endr
+	ld a, BANK(PokemonBodyData)
+	jmp GetFarWord ; get weight
 
 HeavyBallMultiplier:
 ; subtract 20 from base catch rate if weight < 102.4 kg
 ; else add 0 to base catch rate if weight < 204.8 kg
 ; else add 20 to base catch rate if weight < 307.2 kg
 ; else add 30 to base catch rate if weight < 409.6 kg
-; else add 40 to base catch rate (never happens)
-	ld a, [wEnemyMonCatchRate]
-	ld b, a
-	call .do_it
-	ld a, b
-	ld [wEnemyMonCatchRate], a
-
-.do_it
+; else add 40 to base catch rate
 	ld a, [wEnemyMonSpecies]
+	ld c, a
+	ld a, [wEnemyMonForm]
+	ld b, a
 	call GetSpeciesWeight
 
-	push bc
-	srl h
-	rr l
 	ld b, h
-	ld c, l
-rept 4
-	srl b
-	rr c
-endr
-	call .subbc
-	srl b
-	rr c
-	call .subbc
-	ld a, h
-	pop bc
+	ld hl, wEnemyMonCatchRate
 
-	ld c, a
+	ld a, b
 	cp HIGH(1024) ; 102.4 kg
 	jr c, .lightmon
 
-	ld hl, .WeightsTable
+	ld de, .WeightsTable
 .lookup
-	ld a, c
-	cp [hl]
-	jr c, .heavymon
-	inc hl
-	inc hl
+	ld a, [de]
+	cp b
+	jr nc, .heavymon
+	inc de
+	inc de
 	jr .lookup
 
 .heavymon
-	inc hl
-	ld a, b
+	inc de
+	ld a, [de]
 	add [hl]
-	ld b, a
+	ld [hl], a
 	ret nc
-	ld b, 255
+	ld [hl], 255
 	ret
 
 .lightmon
-	ld a, b
+	ld a, [hl]
 	sub 20
-	ld b, a
+	ld [hl], a
 	ret nc
-	ld b, 1
-	ret
-
-.subbc
-	; subtract bc from hl
-	push bc
-	ld a, b
-	cpl
-	ld b, a
-	ld a, c
-	cpl
-	ld c, a
-	inc bc
-	add hl, bc
-	pop bc
+	ld [hl], 1
 	ret
 
 .WeightsTable:
@@ -362,17 +305,11 @@ MoonBallMultiplier:
 	ld a, [wTempEnemyMonSpecies]
 	ld c, a
 	; b = form
-	ld a, [wEnemyMonForm]
+	ld a, [wOTPartyMon1Form]
 	and SPECIESFORM_MASK
 	ld b, a
 	; bc = index
-	call GetSpeciesAndFormIndex
-	dec bc
-	ld hl, EvosAttacksPointers
-	add hl, bc
-	add hl, bc
-	ld a, BANK(EvosAttacksPointers)
-	call GetFarWord
+	predef GetEvosAttacksPointer
 	pop bc
 
 	push bc
@@ -398,12 +335,28 @@ MoonBallMultiplier:
 
 LoveBallMultiplier:
 ; multiply catch rate by 8 if mons are of same species, different sex
+	push bc
 
 	; does species match?
-	ld a, [wTempEnemyMonSpecies]
+	ld a, MON_SPECIES
+	call TrueUserPartyAttr
+	ld bc, MON_FORM - MON_SPECIES
+	add hl, bc
 	ld c, a
-	ld a, [wTempBattleMonSpecies]
+	ld a, [hl]
+	and EXTSPECIES_MASK
+	ld b, a
+
+	ld a, MON_SPECIES
+	call OpponentPartyAttr
 	cp c
+	ld a, b
+	ld bc, MON_FORM - MON_SPECIES
+	add hl, bc
+	pop bc
+	ret nz
+	and EXTSPECIES_MASK
+	cp [hl]
 	ret nz
 
 	farcall CheckOppositeGender
@@ -449,9 +402,11 @@ DoLevelBallMultiplier:
 
 RepeatBallMultiplier:
 ; multiply catch rate by 3.5 if enemy mon is already in Pokédex
-	ld a, [wTempEnemyMonSpecies]
-	dec a
 	push bc
+	ld a, [wTempEnemyMonSpecies]
+	ld c, a
+	ld a, [wOTPartyMon1Form]
+	ld b, a
 	call CheckCaughtMon
 	pop bc
 	ret z

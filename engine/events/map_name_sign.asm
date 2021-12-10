@@ -306,7 +306,7 @@ LoadMapNameSignGFX:
 InitMapNameFrame:
 ; InitMapSignAttrMap
 	hlcoord 0, 0
-	ld de, wAttrMap - wTileMap
+	ld de, wAttrmap - wTilemap
 	add hl, de
 	; top row
 	ld a, PRIORITY | PAL_BG_TEXT

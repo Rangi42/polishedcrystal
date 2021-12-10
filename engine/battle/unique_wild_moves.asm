@@ -11,10 +11,16 @@ CheckUniqueWildMove:
 	cp -1
 	ret z
 	cp c
-	jr nz, .inc2andloop
+	jr nz, .inc3andloop
 	ld a, [hli] ; species
 	ld b, a
 	ld a, [wCurPartySpecies]
+	cp b
+	jr nz, .inc2andloop
+	ld a, [hli] ; form
+	ld b, a
+	ld a, [wCurForm]
+	and SPECIESFORM_MASK
 	cp b
 	jr nz, .inc1andloop
 	ld a, [hli] ; move
@@ -65,6 +71,8 @@ CheckUniqueWildMove:
 	ld [hl], a
 	ret
 
+.inc3andloop
+	inc hl
 .inc2andloop
 	inc hl
 .inc1andloop

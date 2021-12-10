@@ -17,6 +17,8 @@ FarDecompressToDE::
 Decompress::
 ; Decompress LZ data from hl to de.
 	ldh a, [hVBlank]
+	cp 4
+	jr z, _Decompress
 	push af
 	ld a, 2 ; sound only XXX use constants for vblank modes
 	ldh [hVBlank], a
@@ -115,6 +117,7 @@ LZ_LONG_HI       EQU %00000011
 
 	; read at least 1 byte
 	inc bc
+	inc a
 	jr .command
 
 .short
@@ -132,8 +135,6 @@ LZ_LONG_HI       EQU %00000011
 
 .command
 	; Modify loop counts to support 8 bit loop counters
-	ld a, c
-	and a
 	jr z, .multiple_of_256
 	inc b
 .multiple_of_256

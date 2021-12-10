@@ -207,9 +207,8 @@ endr
 	setevent EVENT_RESTORED_POWER_TO_KANTO
 	; post-e4
 	setflag ENGINE_CREDITS_SKIP
-	setflag ENGINE_HAVE_SHINY_CHARM
 	; good party
-	givepoke MEWTWO, NO_FORM, 100, BRIGHTPOWDER
+	givepoke MEWTWO, PLAIN_FORM, 100, BRIGHTPOWDER
 	loadmem wPartyMon1EVs+0, 252
 	loadmem wPartyMon1EVs+1, 252
 	loadmem wPartyMon1EVs+2, 252
@@ -231,8 +230,8 @@ endr
 	loadmem wPartyMon1Stats+8, HIGH(999)
 	loadmem wPartyMon1Stats+9, LOW(999)
 	; hm slaves
-	givepoke MEW, NO_FORM, 100, LEFTOVERS
-	givepoke MEW, NO_FORM, 100, LEFTOVERS
+	givepoke MEW, PLAIN_FORM, 100, LEFTOVERS
+	givepoke MEW, PLAIN_FORM, 100, LEFTOVERS
 	loadmem wPartyMon2Moves+0, FLY
 	loadmem wPartyMon2Moves+1, SURF
 	loadmem wPartyMon2Moves+2, STRENGTH
@@ -250,7 +249,9 @@ endr
 	loadmem wPartyMon3PP+2, 15
 	loadmem wPartyMon3PP+3, 15
 	; variant form test
-	givepoke SLOWKING, GALARIAN_FORM, 50
+	givepoke ARTICUNO, GALARIAN_FORM, 50
+	givepoke ZAPDOS, GALARIAN_FORM, 50
+	givepoke MOLTRES, GALARIAN_FORM, 50
 ;	givepoke ARTICUNO, GALARIAN_FORM, 50
 ;	givepoke ZAPDOS, GALARIAN_FORM, 50
 ;	givepoke MOLTRES, GALARIAN_FORM, 50
@@ -276,16 +277,6 @@ endr
 	end
 
 FillPokedex:
-	ld a, 1
-;	ld [wUnlockedUnownMode], a
-	ld [wFirstUnownSeen], a
-	ld [wFirstMagikarpSeen], a
-;	ld hl, wUnownDex
-;	ld a, 1
-;rept NUM_UNOWN
-;	ld [hli], a
-;	inc a
-;endr
 	ld hl, wPokedexSeen
 	call .Fill
 	ld hl, wPokedexCaught

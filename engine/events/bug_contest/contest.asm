@@ -3,18 +3,15 @@ ContestDropOffMons:
 	ld a, [hli]
 	or [hl]
 	jr z, .fainted
-; Mask the rest of your party by setting the count to 1...
+; Mask the rest of your party by setting the count to 1,
+; backing up the party count somewhere
 	ld hl, wPartyCount
-	ld a, 1
-	ld [hli], a
-	inc hl
-; ... backing up the second mon index somewhere...
 	ld a, [hl]
-	ld [wBugContestSecondPartySpecies], a
-; ... and replacing it with the terminator byte
-	ld [hl], $ff
+	ld [wBugContestBackupPartyCount], a
 	xor a
 	ldh [hScriptVar], a
+	inc a
+	ld [hl], a
 	ret
 
 .fainted
@@ -23,21 +20,8 @@ ContestDropOffMons:
 	ret
 
 ContestReturnMons:
-; Restore the species of the second mon.
-	ld hl, wPartySpecies + 1
-	ld a, [wBugContestSecondPartySpecies]
-	ld [hl], a
-; Restore the party count, which must be recomputed.
-	ld b, $1
-.loop
-	ld a, [hli]
-	cp -1
-	jr z, .done
-	inc b
-	jr .loop
-
-.done
-	ld a, b
+; Restore the party count from backup.
+	ld a, [wBugContestBackupPartyCount]
 	ld [wPartyCount], a
 	ret
 
@@ -87,22 +71,31 @@ _BugContestJudging:
 	call BugContest_JudgeContestants
 	ld a, [wBugContestThirdPlacePersonID]
 	call LoadContestantName
+	ld hl, wNamedObjectIndex
 	ld a, [wBugContestThirdPlaceMon]
-	ld [wNamedObjectIndex], a
+	ld [hli], a
+	ld a, [wBugContestThirdPlaceForm]
+	ld [hl], a
 	call GetPokemonName
 	ld hl, BugContest_ThirdPlaceText
 	call PrintText
 	ld a, [wBugContestSecondPlacePersonID]
 	call LoadContestantName
+	ld hl, wNamedObjectIndex
 	ld a, [wBugContestSecondPlaceMon]
-	ld [wNamedObjectIndex], a
+	ld [hli], a
+	ld a, [wBugContestSecondPlaceForm]
+	ld [hl], a
 	call GetPokemonName
 	ld hl, BugContest_SecondPlaceText
 	call PrintText
 	ld a, [wBugContestFirstPlacePersonID]
 	call LoadContestantName
+	ld hl, wNamedObjectIndex
 	ld a, [wBugContestFirstPlaceMon]
-	ld [wNamedObjectIndex], a
+	ld [hli], a
+	ld a, [wBugContestFirstPlaceForm]
+	ld [hl], a
 	call GetPokemonName
 	ld hl, BugContest_FirstPlaceText
 	call PrintText
@@ -241,7 +234,9 @@ BugContest_JudgeContestants:
 	ld hl, wBugContestTempPersonID
 	ld a, 1 ; Player
 	ld [hli], a
-	ld a, [wContestMon]
+	ld a, [wContestMonSpecies]
+	ld [hli], a
+	ld a, [wContestMonForm]
 	ld [hli], a
 	ldh a, [hProduct]
 	ld [hli], a
@@ -290,7 +285,7 @@ DetermineContestWinners:
 
 CopyTempContestant:
 	ld hl, wBugContestTempPersonID
-	ld bc, 4
+	ld bc, 5
 	rst CopyBytes
 	ret
 
@@ -317,17 +312,18 @@ ComputeAIContestantScores:
 	inc hl
 	inc hl
 .loop2
-	call Random
-	and 3
-	cp 3
-	jr z, .loop2
+	ld a, 3
+	call RandomRange
 	ld c, a
 	ld b, 0
 	add hl, bc
 	add hl, bc
 	add hl, bc
+	add hl, bc
 	ld a, [hli]
 	ld [wBugContestTempMon], a
+	ld a, [hli]
+	ld [wBugContestTempForm], a
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a

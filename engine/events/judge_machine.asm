@@ -28,8 +28,8 @@ JudgeMachine:
 	jr c, .cancel
 ; Can't judge an Egg
 	ld a, MON_IS_EGG
-	call GetPartyParamLocation
-	bit MON_IS_EGG_F, [hl]
+	call GetPartyParamLocationAndValue
+	bit MON_IS_EGG_F, a
 	ld hl, NewsMachineEggText
 	jr nz, .done
 ; Show the EV and IV charts
@@ -117,8 +117,8 @@ JudgeSystem::
 	farcall CopyBetweenPartyAndTemp
 
 ; Load the frontpic graphics
-	ld hl, wTempMonForm
-	predef GetVariant
+	ld a, [wTempMonForm]
+	ld [wCurForm], a
 	call GetBaseData
 	ld de, vTiles2
 	predef GetFrontpic
@@ -190,7 +190,7 @@ JudgeSystem::
 
 ; Place the frontpic graphics
 	hlcoord 0, 6
-	farcall PlaceFrontpicAtHL
+	call PlaceFrontpicAtHL
 
 ; Place the Pokédex number
 	ld a, [wCurPartySpecies]
@@ -348,12 +348,10 @@ JudgeSystem::
 	jr nz, .more_next
 .switch_mon
 	ld [wCurPartyMon], a
-	ld c, a
-	ld b, 0
-	ld hl, wPartySpecies
-	add hl, bc
 	inc a
 	ld [wPartyMenuCursor], a
+	ld bc, MON_SPECIES - MON_IS_EGG
+	add hl, bc
 	ld a, [hl]
 	ld [wCurPartySpecies], a
 	call ClearSpriteAnims
@@ -413,7 +411,7 @@ SparkleMaxStat:
 	inc a
 	ret nz
 	ld a, SPRITE_ANIM_INDEX_MAX_STAT_SPARKLE
-	jr _InitSpriteAnimStruct_PreserveHL
+	jr InitSpriteAnimStruct_PreserveHL
 
 SparkleMaxStatOrShowBottleCap:
 ; Show a sparkle sprite at (d, e) if a is 255,
@@ -422,13 +420,13 @@ SparkleMaxStatOrShowBottleCap:
 	rlc [hl] ; sets carry if hyper trained
 	inc a ; sets z if if max stat; does not affect carry
 	ld a, SPRITE_ANIM_INDEX_MAX_STAT_SPARKLE
-	jr z, _InitSpriteAnimStruct_PreserveHL
+	jr z, InitSpriteAnimStruct_PreserveHL
 	assert SPRITE_ANIM_INDEX_MAX_STAT_SPARKLE + 1 == SPRITE_ANIM_INDEX_HYPER_TRAINED_STAT
 	inc a ; does not affect carry
 	ret nc
-_InitSpriteAnimStruct_PreserveHL:
+InitSpriteAnimStruct_PreserveHL:
 	push hl
-	call _InitSpriteAnimStruct
+	call InitSpriteAnimStruct
 	pop hl
 	scf
 	ret
@@ -1089,83 +1087,7 @@ MaxStatSparkleGFX:
 INCBIN "gfx/stats/sparkle.2bpp"
 
 EVChartPals:
-if !DEF(MONOCHROME)
-	RGB 23,28,21, 22,26,20, 10,17,16, 00,00,00 ; main bg
-	RGB 31,31,31, 23,28,21, 31,25,02, 00,00,00 ; top text (incl. shiny)
-	RGB 23,28,21, 31,31,31, 00,00,00, 02,06,13 ; stat values and B button
-	RGB 23,28,21, 31,00,31, 31,00,31, 03,15,29 ; lowered stat
-	RGB 23,28,21, 31,00,31, 31,00,31, 23,07,03 ; raised stat
-	RGB 18,27,29, 23,28,21, 02,10,20, 10,17,16 ; chart
-else
-; main bg
-	RGB_MONOCHROME_LIGHT
-	RGB_MONOCHROME_LIGHT
-	RGB_MONOCHROME_DARK
-	RGB_MONOCHROME_BLACK
-; top text
-	RGB_MONOCHROME_WHITE
-	RGB_MONOCHROME_LIGHT
-	RGB_MONOCHROME_LIGHT
-	RGB_MONOCHROME_BLACK
-; stat values and B button
-	RGB_MONOCHROME_LIGHT
-	RGB_MONOCHROME_WHITE
-	RGB_MONOCHROME_BLACK
-	RGB_MONOCHROME_BLACK
-; lowered stat
-	RGB_MONOCHROME_LIGHT
-	RGB_MONOCHROME_WHITE
-	RGB_MONOCHROME_WHITE
-	RGB_MONOCHROME_BLACK
-; raised stat
-	RGB_MONOCHROME_LIGHT
-	RGB_MONOCHROME_WHITE
-	RGB_MONOCHROME_WHITE
-	RGB_MONOCHROME_BLACK
-; chart
-	RGB_MONOCHROME_WHITE
-	RGB_MONOCHROME_LIGHT
-	RGB_MONOCHROME_BLACK
-	RGB_MONOCHROME_DARK
-endc
+INCLUDE "gfx/stats/ev_chart.pal"
 
 IVChartPals:
-if !DEF(MONOCHROME)
-	RGB 28,21,14, 26,20,13, 27,14,13, 00,00,00 ; main bg
-	RGB 31,31,31, 28,21,14, 31,25,02, 00,00,00 ; top text (incl. shiny)
-	RGB 28,21,14, 31,31,31, 00,00,00, 02,06,13 ; stat values and B button
-	RGB 28,21,14, 31,00,31, 31,00,31, 03,15,29 ; lowered stat
-	RGB 28,21,14, 31,00,31, 31,00,31, 23,07,03 ; raised stat
-	RGB 18,27,29, 28,21,14, 02,10,20, 27,14,13 ; chart
-else
-; main bg
-	RGB_MONOCHROME_LIGHT
-	RGB_MONOCHROME_LIGHT
-	RGB_MONOCHROME_DARK
-	RGB_MONOCHROME_BLACK
-; top text
-	RGB_MONOCHROME_WHITE
-	RGB_MONOCHROME_LIGHT
-	RGB_MONOCHROME_LIGHT
-	RGB_MONOCHROME_BLACK
-; stat values and B button
-	RGB_MONOCHROME_LIGHT
-	RGB_MONOCHROME_WHITE
-	RGB_MONOCHROME_BLACK
-	RGB_MONOCHROME_BLACK
-; lowered stat
-	RGB_MONOCHROME_LIGHT
-	RGB_MONOCHROME_WHITE
-	RGB_MONOCHROME_WHITE
-	RGB_MONOCHROME_BLACK
-; raised stat
-	RGB_MONOCHROME_LIGHT
-	RGB_MONOCHROME_WHITE
-	RGB_MONOCHROME_WHITE
-	RGB_MONOCHROME_BLACK
-; chart
-	RGB_MONOCHROME_WHITE
-	RGB_MONOCHROME_LIGHT
-	RGB_MONOCHROME_BLACK
-	RGB_MONOCHROME_DARK
-endc
+INCLUDE "gfx/stats/iv_chart.pal"

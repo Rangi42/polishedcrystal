@@ -163,6 +163,7 @@ gfx/paintings/%.2bpp: rgbgfx += -h
 gfx/player/chris_back.2bpp: rgbgfx += -h
 gfx/player/kris_back.2bpp: rgbgfx += -h
 
+gfx/pokedex/%.bin: gfx/pokedex/%.tilemap gfx/pokedex/%.attrmap ; cat $^ > $@
 gfx/pokedex/pokedex.2bpp: tools/gfx += --trim-whitespace
 gfx/pokedex/question_mark.2bpp: rgbgfx += -h
 gfx/pokedex/slowpoke.2bpp: tools/gfx += --trim-whitespace

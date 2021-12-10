@@ -78,14 +78,12 @@ VBlank::
 	call GameTimer
 
 	ld hl, hVBlankOccurred
-	ld a, [hl]
-	and a
-	ld [hl], FALSE
+	dec [hl]
 	jr nz, .noVBlankLeak
 	ld a, $ff
 	ldh [hDelayFrameLY], a
 .noVBlankLeak
-
+	ld [hl], TRUE
 	pop af
 	ldh [hTempBank], a
 
@@ -115,7 +113,7 @@ VBlank::
 	dw VBlank1   ; 1
 	dw VBlank2   ; 2
 	dw VBlank1   ; 3
-	dw DoNothing ; 4
+	dw VBlank4   ; 4 (pokédex)
 	dw VBlank5   ; 5
 	dw VBlank6   ; 6
 	dw VBlank7   ; 7
@@ -208,6 +206,96 @@ VBlank6::
 	call DMATransfer
 
 	jr VBlankUpdateSound
+
+VBlank4::
+; normal operation
+
+; rng
+; scx, scy, wy, wx
+; dma transfer
+; dex map (also updates palettes and oam)
+; tiles
+; joypad
+; sound
+
+	ldh a, [hSCX]
+	ldh [rSCX], a
+	ldh a, [hSCY]
+	ldh [rSCY], a
+	ldh a, [hWY]
+	ldh [rWY], a
+	ldh a, [hWX]
+	ldh [rWX], a
+
+	ld a, BANK(PVB_UpdateDexMap)
+	rst Bankswitch
+	call PVB_UpdateDexMap ; far-ok
+
+	; These have their own timing checks.
+
+	call Serve2bppRequest
+	call Serve1bppRequest
+
+.done
+	; vblank-sensitive operations are done
+
+	; inc frame counter
+	ld hl, hVBlankCounter
+	inc [hl]
+
+	; advance random variables
+	call UpdateDividerCounters
+	call AdvanceRNGState
+
+	ld a, [wTextDelayFrames]
+	and a
+	jr z, .noDelay2
+	dec a
+	ld [wTextDelayFrames], a
+.noDelay2
+	call Joypad
+
+	ldh a, [hSeconds]
+	ldh [hSecondsBackup], a
+
+	; A variant of sode in vblank1 for running the sound engine with LCD int
+	ldh a, [hROMBankBackup]
+	push af
+	ldh a, [rIE]
+	push af
+	ldh a, [rIF]
+	push af
+	xor a
+	ldh [rIF], a
+	ldh a, [rIE]
+	and 1 << LCD_STAT
+	ldh [rIE], a
+
+	ei
+	call VBlankUpdateSound
+	di
+
+	; get requested ints
+	ldh a, [rIF]
+	ld b, a
+
+	; discard requested ints
+	pop af
+	or b
+	ld b, a
+	xor a
+	ldh [rIF], a
+
+	; enable ints besides joypad
+	pop af
+	ldh [rIE], a
+
+	; rerequest ints
+	ld a, b
+	ldh [rIF], a
+	pop af
+	ldh [hROMBankBackup], a
+	ret
 
 VBlank1::
 ; scx, scy

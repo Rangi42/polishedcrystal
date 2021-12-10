@@ -1044,8 +1044,11 @@ RandomPhoneRareWildMon:
 ; Since we haven't seen it, have the caller tell us about it.
 	ld de, wStringBuffer1
 	call CopyName1
+	ld hl, wNamedObjectIndex
 	ld a, c
-	ld [wNamedObjectIndex], a
+	ld [hli], a
+	ld a, b
+	ld [hl], a
 	call GetPokemonName
 	ld hl, .SawRareMonText
 	call PrintText
@@ -1213,8 +1216,11 @@ RandomPhoneMon:
 
 	inc hl ; species
 	ld a, [wTrainerGroupBank]
-	call GetFarByte
+	call GetFarWord
+	ld a, l
 	ld [wNamedObjectIndex], a
+	ld a, h
+	ld [wNamedObjectIndex+1], a
 	call GetPokemonName
 	ld hl, wStringBuffer1
 	ld de, wStringBuffer4

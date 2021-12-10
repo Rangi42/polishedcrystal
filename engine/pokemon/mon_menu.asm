@@ -161,8 +161,8 @@ GiveTakePartyMonItem:
 
 ; Eggs can't hold items!
 	ld a, MON_IS_EGG
-	call GetPartyParamLocation
-	bit MON_IS_EGG_F, [hl]
+	call GetPartyParamLocationAndValue
+	bit MON_IS_EGG_F, a
 	jr nz, .cancel
 
 	call GetPartyItemLocation
@@ -453,7 +453,7 @@ UpdateMewtwoForm:
 	ld d, h
 	ld e, l
 	ld a, MON_FORM
-	call GetPartyParamLocation
+	call GetPartyParamLocationAndValue
 _UpdateMewtwoForm:
 	ld a, [wCurPartySpecies]
 	cp MEWTWO
@@ -466,7 +466,7 @@ _UpdateMewtwoForm:
 .got_form
 	ld d, a
 	ld a, [hl]
-	and $ff - SPECIESFORM_MASK
+	and ~SPECIESFORM_MASK
 	or d
 	ld [hl], a
 	ret
@@ -525,7 +525,7 @@ CantPlaceMailInStorageText:
 GetPartyItemLocation:
 	push af
 	ld a, MON_ITEM
-	call GetPartyParamLocation
+	call GetPartyParamLocationAndValue
 	pop af
 	ret
 
@@ -795,8 +795,8 @@ MonMenu_FreshSnack:
 .CheckMonHasEnoughHP:
 ; Need to have at least (MaxHP / 5) HP left.
 	ld a, MON_MAXHP
-	call GetPartyParamLocation
-	ld a, [hli]
+	call GetPartyParamLocationAndValue
+	inc hl
 	ldh [hDividend + 0], a
 	ld a, [hl]
 	ldh [hDividend + 1], a
@@ -805,7 +805,7 @@ MonMenu_FreshSnack:
 	ld b, 2
 	call Divide
 	ld a, MON_HP + 1
-	call GetPartyParamLocation
+	call GetPartyParamLocationAndValue
 	ldh a, [hQuotient + 2]
 	sub [hl]
 	dec hl
@@ -1310,35 +1310,28 @@ GetForgottenMoves::
 ; and moves the mon already knows
 	; c = species
 	ld a, MON_SPECIES
-	call GetPartyParamLocation
-	ld c, [hl]
+	call GetPartyParamLocationAndValue
+	ld c, a
 	; b = form
 	ld a, MON_FORM
-	call GetPartyParamLocation
-	ld a, [hl]
+	call GetPartyParamLocationAndValue
 	and SPECIESFORM_MASK
 	ld b, a
 	; bc = index
-	call GetSpeciesAndFormIndex
-	dec bc
-	ld hl, EvosAttacksPointers
-	add hl, bc
-	add hl, bc
-	ld a, BANK(EvosAttacksPointers)
-	call GetFarWord
+	predef GetEvosAttacksPointer
 .skip_evos
 	ld a, BANK(EvosAttacks)
 	call GetFarByte
 	inc hl
-	and a
+	inc a
 	jr nz, .skip_evos
 
 	ld de, wMoveScreenMoves
 	ld c, a
 	push hl
 	ld a, MON_LEVEL
-	call GetPartyParamLocation
-	ld b, [hl]
+	call GetPartyParamLocationAndValue
+	ld b, a
 	pop hl
 	inc b ; so that we can use jr nc
 .loop
@@ -1358,7 +1351,7 @@ GetForgottenMoves::
 	push bc
 	ld b, a
 	ld a, MON_MOVES
-	call GetPartyParamLocation
+	call GetPartyParamLocationAndValue
 	ld c, NUM_MOVES
 	ld a, b
 	call .move_exists
@@ -1482,7 +1475,7 @@ MoveScreen_ListMoves:
 	cp MOVESCREEN_REMINDER
 	jr z, .got_pp
 	ld a, MON_PP
-	call GetPartyParamLocation
+	call GetPartyParamLocationAndValue
 	ld c, NUM_MOVES
 	ld de, wTempMonPP
 	ld a, [wMoveScreenOffset]
@@ -1506,7 +1499,7 @@ MoveScreen_ListMoves:
 	; Now we have things set up correctly
 	hlcoord 10, 4
 	predef ListMovePP
-	hlcoord 1, 12, wAttrMap
+	hlcoord 1, 12, wAttrmap
 	ld bc, 6
 	xor a
 	rst ByteFill

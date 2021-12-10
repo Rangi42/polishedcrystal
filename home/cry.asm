@@ -75,17 +75,19 @@ endr
 	ret
 
 GetCryIndex::
+; input: c = species, b = form
+; output: bc = base species index
+	ld a, c
 	and a
 	jr z, .no
-	cp NUM_POKEMON + 1
-	jr nc, .no
+	inc c ; cp EGG
+	jr z, .no
 
-	ld c, a
-	ld a, [wCurForm]
+	dec c
+	dec c ; slightly faster than dec bc, since we know c != 0
+	ld a, b
+	call ConvertFormToExtendedSpecies
 	ld b, a
-	call GetExtendedSpeciesIndex
-	dec bc
-	ld a, c
 	and a
 	ret
 

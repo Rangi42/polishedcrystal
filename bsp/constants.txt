@@ -37,10 +37,11 @@
 	define BERRIES_OFFSET,                     0x4a5
 	define PC_ITEMS_OFFSET,                    0x4e5
 	define BOX_NAMES_OFFSET,                   0x6e1
+	define CELEBI_EVENT_OFFSET,                0x748
 	define MAP_GROUP_OFFSET,                   0x834
 	define PARTY_COUNT_OFFSET,                 0x856
 	define PARTY_MON_OT_OFFSET,                0x97e
-	define POKEDEX_CAUGHT_OFFSET,              0xa0b
+	define POKEDEX_CAUGHT_OFFSET,              0xa03
 	define DAYCARE_MAN_OFFSET,                 0xa6a
 	define BREED_MON_1_NICK_OFFSET,            0xa6b
 	define BREED_MON_1_OT_OFFSET,              0xa76
@@ -62,10 +63,11 @@
 	define PLAYER_NAME_LENGTH,      8
 
 ; pokemon struct offsets
-	define MOVES_OFFSET,            2
-	define FORM_OFFSET,            21
-	define PP_OFFSET,              22
-	define CAUGHTBALL_OFFSET,      28
+	define MOVES_OFFSET,       2
+	define FORM_OFFSET,       21
+	define PP_OFFSET,         22
+	define POKERUS_OFFSET,    27
+	define CAUGHTBALL_OFFSET, 28
 
 ; pokemon struct constants
 	define NUM_MOVES,     4
@@ -74,7 +76,7 @@
 	define FORM_MASK,  0x1f
 
 ; pokemon constants
-	define GYARADOS,     0x82
+	define GYARADOS, 0x82
 
 ; move constants
 	define RAGE,         0x63

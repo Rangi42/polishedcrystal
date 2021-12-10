@@ -187,9 +187,9 @@ _UpdateSound::
 	add hl, bc
 	ld c, l
 	ld b, h
-	ld a, [wCurChannel]
-	inc a
-	ld [wCurChannel], a
+	ld hl, wCurChannel
+	inc [hl]
+	ld a, [hl]
 	cp $8 ; are we done?
 	jmp nz, .loop ; do it all again
 

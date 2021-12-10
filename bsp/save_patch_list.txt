@@ -40,7 +40,22 @@ SavePatches:
 	dh 7
 	dw ConvertToNewbox ; first build with version number
 
-	dh 7 ; 7.1
-	dw ChangeCheckValue ; implicit, only to convert check value to 97
+	dh 7
+	dw ChangeCheckValue
+
+	dh 8
+	dw ConvertUnownDexToBitArray
+
+	dh 8
+	dw ConvertMonIndexesTo9Bit
+
+	dh 8
+	dw ConvertPokerusToNybble
+
+	dh 8
+	dw RemovePartySpecies
+
+	dh 8
+	dw ShiftHiddenGrottoContents
 
 	dh 0

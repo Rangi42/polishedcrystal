@@ -10,21 +10,25 @@ NameRater:
 	farcall SelectMonFromParty
 	jmp c, .cancel
 
-	ld a, MON_FORM
-	call GetPartyParamLocation
-	ld [wCurForm], a
+; Load the species name into wStringBuffer2 and the nickname into wStringBuffer1
+	call GetPartyPokemonName
+	call CopyName1
+	call GetCurNickname
+
 ; He can't rename an egg...
 	ld a, MON_IS_EGG
-	call GetPartyParamLocation
-	bit MON_IS_EGG_F, [hl]
+	call GetPartyParamLocationAndValue
+	bit MON_IS_EGG_F, a
 	jr nz, .egg
-; ... or a Pokemon you got from a trade.
-	call GetCurNickname
+; ... or a Pokemon you got from a trade...
 	ld a, [wInitialOptions]
 	bit TRADED_AS_OT_OPT, a
 	jr nz, .no_name_lock
 	call CheckIfMonIsYourOT
-	jr c, .traded
+	jr nc, .no_name_lock
+; ... if it already has a nickname.
+	call CompareNewToOld
+	jr nc, .traded
 .no_name_lock
 ; This name is good, but we can do better.  How about it?
 	ld hl, NameRaterIsGoodText
@@ -93,7 +97,7 @@ CheckIfMonIsYourOT:
 	ld a, [wCurPartyMon]
 	rst AddNTimes
 	ld de, wPlayerName
-	ld c, NAME_LENGTH
+	ld c, PLAYER_NAME_LENGTH
 	call .loop
 	jr c, .nope
 

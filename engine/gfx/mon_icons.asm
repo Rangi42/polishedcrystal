@@ -2,13 +2,16 @@ INCLUDE "data/pokemon/menu_icon_pals.asm"
 
 LoadOverworldMonIcon:
 	; c = species
-	ld a, [wCurIcon]
+	ld a, [wCurIconSpecies]
 	ld c, a
 	; b = form
 	ld a, [wCurIconForm]
 	ld b, a
 	; bc = index
+	; fallthrough
+_LoadOverworldMonIcon:
 	call GetCosmeticSpeciesAndFormIndex
+	inc bc
 	ld hl, IconPointers
 	add hl, bc
 	add hl, bc
@@ -42,11 +45,10 @@ LoadFlyMonColor:
 	push af
 
 	ld a, MON_SPECIES
-	call GetPartyParamLocation
-	ld a, [hl]
+	call GetPartyParamLocationAndValue
 	ld [wCurPartySpecies], a
 	ld a, MON_SHINY
-	call GetPartyParamLocation
+	call GetPartyParamLocationAndValue
 	call GetMenuMonIconPalette
 	jr ProcessMenuMonIconColor
 
@@ -60,28 +62,22 @@ LoadPartyMenuMonIconColors:
 	sub c
 	ld [wCurPartyMon], a
 
-	ld d, 0
-	ld e, a
-
-	push af
-	ld hl, wPartyMon1Item
-	call GetPartyLocation
-	ld a, [hl]
+	ld a, MON_ITEM
+	call GetPartyParamLocationAndValue
 	ld [wCurIconMonHasItemOrMail], a
-	pop af
 
-	ld hl, wPartyMon1IsEgg
-	call GetPartyLocation
+	ld de, MON_IS_EGG - MON_ITEM
+	add hl, de
 	bit MON_IS_EGG_F, [hl]
 	ld a, EGG
 	jr nz, .got_species
-	ld hl, wPartySpecies
+	ld de, MON_SPECIES - MON_IS_EGG
 	add hl, de
 	ld a, [hl]
 .got_species
 	ld [wCurPartySpecies], a
 	ld a, MON_SHINY
-	call GetPartyParamLocation
+	call GetPartyParamLocationAndValue
 	call GetMenuMonIconPalette
 	push af
 
@@ -128,6 +124,53 @@ ProcessMenuMonIconColor:
 .finish
 	jmp PopAFBCDEHL
 
+GetMenuMonIconTruePalette:
+; Returns icon col1/col2 palette in bcde (col0/col3 as white/black is implicit)
+; with species+form in bc and shininess in a.
+if DEF(MONOCHROME)
+	ld bc, PAL_MONOCHROME_WHITE
+	ld de, PAL_MONOCHROME_LIGHT
+	ret
+else
+	and SHINY_MASK
+	push af
+	call GetCosmeticSpeciesAndFormIndex
+	ld hl, MenuMonIconColors
+	add hl, bc
+	ld c, [hl]
+	pop af
+	jr nz, .shiny
+	swap c
+.shiny
+	ld a, c
+	and $f
+	ld bc, palred 31 + palgreen 19 + palblue 10
+	and a ; PAL_OW_RED
+	ld de, palred 31 + palgreen 07 + palblue 01
+	ret z
+	dec a ; PAL_OW_BLUE
+	ld de, palred 10 + palgreen 09 + palblue 31
+	ret z
+	dec a ; PAL_OW_GREEN
+	ld de, palred 07 + palgreen 23 + palblue 03
+	ret z
+	dec a ; PAL_OW_BROWN
+	ld de, palred 15 + palgreen 10 + palblue 03
+	ret z
+	dec a ; PAL_OW_PURPLE
+	ld de, palred 18 + palgreen 04 + palblue 18
+	ret z
+	dec a ; PAL_OW_GRAY
+	ld de, palred 13 + palgreen 13 + palblue 13
+	ret z
+	dec a ; PAL_OW_PINK
+	ld de, palred 31 + palgreen 10 + palblue 11
+	ret z
+	; PAL_OW_TEAL
+	ld de, palred 03 + palgreen 23 + palblue 21
+	ret
+endc
+
 GetOverworldMonIconPalette::
 	ld a, [wCurIcon]
 	ld hl, wCurIconShiny
@@ -151,7 +194,6 @@ _GetMonIconPalette:
 
 	; bc = index
 	call GetCosmeticSpeciesAndFormIndex
-	dec bc
 	ld hl, MenuMonIconColors
 	add hl, bc
 	ld c, [hl]
@@ -210,14 +252,14 @@ LoadMoveMenuMonIcon:
 	depixel 3, 4, 2, 4
 	push de
 	ld hl, wTempMonForm
+	ld a, [hl]
 	jr _InitScreenMonIcon
 InitScreenMonIcon:
 	push de
 
 	ld a, MON_FORM ; aka MON_IS_EGG
-	call GetPartyParamLocation
+	call GetPartyParamLocationAndValue
 _InitScreenMonIcon:
-	ld a, [hl]
 	and SPECIESFORM_MASK
 	ld [wCurIconForm], a
 	bit MON_IS_EGG_F, [hl]
@@ -236,7 +278,7 @@ _InitScreenMonIcon:
 
 	pop de
 	ld a, SPRITE_ANIM_INDEX_PARTY_MON
-	call InitSpriteAnimStruct
+	call _InitSpriteAnimStruct
 	ld hl, SPRITEANIMSTRUCT_ANIM_SEQ_ID
 	add hl, bc
 	ld [hl], SPRITE_ANIM_SEQ_NULL
@@ -247,18 +289,15 @@ InitPartyMenuIcon:
 	ld a, [wCurIconTile]
 	push af
 	ldh a, [hObjectStructIndexBuffer]
-	ld e, a
-	ld d, 0
-	ld hl, wPartyMon1IsEgg ; aka wPartyMon1Form
-	push de
+	assert wPartyMon1IsEgg == wPartyMon1Form
+	ld hl, wPartyMon1IsEgg
 	call GetPartyLocation
-	pop de
 	ld a, [hl]
 	bit MON_IS_EGG_F, a
 	jr nz, .egg
 	and SPECIESFORM_MASK
 	ld [wCurIconForm], a
-	ld hl, wPartySpecies
+	ld de, MON_SPECIES - MON_FORM
 	add hl, de
 	ld a, [hl]
 	jr .got_icon
@@ -278,7 +317,7 @@ InitPartyMenuIcon:
 	ld e, $10
 ; type is partymon icon
 	ld a, SPRITE_ANIM_INDEX_PARTY_MON
-	call InitSpriteAnimStruct
+	call _InitSpriteAnimStruct
 	pop af
 	ld hl, SPRITEANIMSTRUCT_TILE_ID
 	add hl, bc
@@ -338,13 +377,10 @@ SetPartyMonIconAnimSpeed:
 Fly_PrepMonIcon:
 	push de
 	ld a, MON_FORM
-	call GetPartyParamLocation
+	call GetPartyParamLocationAndValue
 	and SPECIESFORM_MASK
 	ld [wCurIconForm], a
-	ld a, [wCurPartyMon]
-	ld hl, wPartySpecies
-	ld e, a
-	ld d, 0
+	ld de, MON_SPECIES - MON_FORM
 	add hl, de
 	ld a, [hl]
 	ld [wTempIconSpecies], a

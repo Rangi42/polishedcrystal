@@ -154,7 +154,7 @@ INCBIN "gfx/town_map/arrow.2bpp.lz"
 InitPokegearModeIndicatorArrow:
 	depixel 4, 2, 4, 0
 	ld a, SPRITE_ANIM_INDEX_POKEGEAR_MODE_ARROW
-	call _InitSpriteAnimStruct
+	call InitSpriteAnimStruct
 	ld hl, SPRITEANIMSTRUCT_TILE_ID
 	add hl, bc
 	ld [hl], $0
@@ -191,7 +191,7 @@ InitPokegearTilemap:
 	xor a
 	ldh [hBGMapMode], a
 	hlcoord 0, 0
-	ld bc, wTileMapEnd - wTileMap
+	ld bc, wTilemapEnd - wTilemap
 	ld a, $4f
 	rst ByteFill
 	ld a, [wPokegearCard]
@@ -634,7 +634,7 @@ PokegearMap_InitPlayerIcon:
 	ld b, SPRITE_ANIM_INDEX_BLUE_WALK
 .got_gender
 	ld a, b
-	call _InitSpriteAnimStruct
+	call InitSpriteAnimStruct
 	ld hl, SPRITEANIMSTRUCT_TILE_ID
 	add hl, bc
 	ld [hl], $10
@@ -655,7 +655,7 @@ PokegearMap_InitCursor:
 	push af
 	depixel 0, 0
 	ld a, SPRITE_ANIM_INDEX_POKEGEAR_MODE_ARROW
-	call _InitSpriteAnimStruct
+	call InitSpriteAnimStruct
 	ld hl, SPRITEANIMSTRUCT_TILE_ID
 	add hl, bc
 	ld [hl], $4
@@ -736,7 +736,7 @@ PokegearRadio_Init:
 	call InitPokegearTilemap
 	depixel 4, 10, 4, 4
 	ld a, SPRITE_ANIM_INDEX_RADIO_TUNING_KNOB
-	call _InitSpriteAnimStruct
+	call InitSpriteAnimStruct
 	ld hl, SPRITEANIMSTRUCT_TILE_ID
 	add hl, bc
 	ld [hl], $8
@@ -1023,10 +1023,10 @@ PokegearPhone_UpdateDisplayList:
 	pop af
 	ld b, a
 	call GetCallerClassAndName
+	ld hl, wPokegearPhoneLoadNameBuffer
+	inc [hl]
+	ld a, [hl]
 	pop hl
-	ld a, [wPokegearPhoneLoadNameBuffer]
-	inc a
-	ld [wPokegearPhoneLoadNameBuffer], a
 	cp $4 ; 4 entries fit on the screen
 	jr c, .loop
 	; fallthrough
@@ -1978,14 +1978,14 @@ TownMapBubble:
 
 ; Top-left corner
 	hlcoord 1, 0
-	ld a, $37
+	ld a, $3c
 	ld [hli], a
 ; Top row
 	ld bc, 16
 	ld a, " "
 	rst ByteFill
 ; Top-right corner
-	ld [hl], $38
+	ld [hl], $3d
 	hlcoord 1, 1
 
 ; Middle row
@@ -1995,14 +1995,14 @@ TownMapBubble:
 
 ; Bottom-left corner
 	hlcoord 1, 2
-	ld a, $39
+	ld a, $3e
 	ld [hli], a
 ; Bottom row
 	ld bc, 16
 	ld a, " "
 	rst ByteFill
 ; Bottom-right corner
-	ld [hl], $3a
+	ld [hl], $3f
 
 ; Print "Where?"
 	hlcoord 2, 0
@@ -2274,9 +2274,8 @@ Pokedex_GetArea:
 	ret z
 .go_right
 
-	ld a, [wTownMapCursorLandmark]
-	inc a
-	ld [wTownMapCursorLandmark], a
+	ld hl, wTownMapCursorLandmark
+	inc [hl]
 
 .update
 	call .UpdateGFX
@@ -2359,7 +2358,7 @@ Pokedex_GetArea:
 .GetAndPlaceNest:
 	ld a, [wTownMapCursorLandmark]
 	ld e, a
-	farcall FindNest ; load nest landmarks into wTileMap[0,0]
+	farcall FindNest ; load nest landmarks into wTilemap[0,0]
 	decoord 0, 0
 	ld hl, wVirtualOAM
 .nestloop
@@ -2573,7 +2572,7 @@ FillTownMap:
 TownMapPals:
 ; Assign palettes based on tile ids
 	hlcoord 0, 0
-	decoord 0, 0, wAttrMap
+	decoord 0, 0, wAttrmap
 	ld bc, SCREEN_WIDTH * SCREEN_HEIGHT
 .loop
 	ld a, [hli]
@@ -2646,7 +2645,7 @@ TownMapKantoFlips:
 TownMapOrangeFlips:
 	decoord 0, 0, OrangeMap
 TownMapFlips:
-	hlcoord 0, 0, wAttrMap
+	hlcoord 0, 0, wAttrmap
 	ld bc, SCREEN_WIDTH * SCREEN_HEIGHT
 .loop
 	; [de] == YXtttttt
@@ -2673,7 +2672,7 @@ TownMapMon:
 ; Animation/palette
 	depixel 0, 0
 	ld a, SPRITE_ANIM_INDEX_PARTY_MON
-	call _InitSpriteAnimStruct
+	call InitSpriteAnimStruct
 	ld hl, SPRITEANIMSTRUCT_TILE_ID
 	add hl, bc
 	ld [hl], $8
@@ -2710,7 +2709,7 @@ TownMapPlayerIcon:
 	ld b, SPRITE_ANIM_INDEX_BLUE_WALK ; Female
 .got_gender
 	ld a, b
-	call _InitSpriteAnimStruct
+	call InitSpriteAnimStruct
 	ld hl, SPRITEANIMSTRUCT_TILE_ID
 	add hl, bc
 	ld [hl], $10
@@ -2728,8 +2727,10 @@ TownMapPlayerIcon:
 	ret
 
 LoadTownMapGFX:
-	ld hl, TownMapGFX
 	ld de, vTiles2
+	; fallthrough
+_LoadTownMapGFX:
+	ld hl, TownMapGFX
 	lb bc, BANK(TownMapGFX), $40
 	jmp DecompressRequest2bpp
 

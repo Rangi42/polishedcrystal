@@ -161,7 +161,7 @@ endc
 	li "Smoke Ball"
 	li "Berserk Gene"
 	li "Light Ball"
-	li "Stick"
+	li "Leek"
 	li "Thick Club"
 	li "Lucky Punch"
 	li "Metal Powder"

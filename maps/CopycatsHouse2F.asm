@@ -14,11 +14,11 @@ CopycatsHouse2F_MapScriptHeader:
 	def_object_events
 	object_event  4,  3, SPRITE_COPYCAT, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, Copycat1Script, EVENT_COPYCAT_1
 	object_event  4,  3, SPRITE_COPYCAT, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, Copycat2Script, EVENT_COPYCAT_2
-	object_event  6,  4, SPRITE_MON_ICON, SPRITEMOVEDATA_POKEMON, 0, DODRIO, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_SCRIPT, 0, CopycatsDodrioScript, -1
-	object_event  6,  1, SPRITE_MON_ICON, SPRITEMOVEDATA_STILL, 0, CLEFAIRY, -1, -1, PAL_NPC_RED, OBJECTTYPE_COMMAND, jumptext, CopycatsHouse2FDollText, EVENT_COPYCATS_HOUSE_2F_DOLL
-	object_event  2,  1, SPRITE_MON_ICON, SPRITEMOVEDATA_STILL, 0, GENGAR, -1, -1, PAL_NPC_PURPLE, OBJECTTYPE_COMMAND, jumptext, CopycatsHouse2FDollText, -1
-	object_event  7,  1, SPRITE_MON_ICON, SPRITEMOVEDATA_STILL, 0, MURKROW, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_COMMAND, jumptext, CopycatsHouse2FDollText, -1
-	pokemon_event  0,  4, DITTO, -1, -1, PAL_NPC_PURPLE, CopycatsHouse2FDittoText, -1
+	object_event  6,  4, SPRITE_MON_ICON, SPRITEMOVEDATA_POKEMON, 0, DODRIO, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_SCRIPT, NO_FORM, CopycatsDodrioScript, -1
+	object_event  6,  1, SPRITE_MON_ICON, SPRITEMOVEDATA_STILL, 0, CLEFAIRY, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, NO_FORM, CopycatsHouse2FDollScript, EVENT_COPYCATS_HOUSE_2F_DOLL
+	object_event  2,  1, SPRITE_MON_ICON, SPRITEMOVEDATA_STILL, 0, GENGAR, -1, -1, PAL_NPC_PURPLE, OBJECTTYPE_SCRIPT, NO_FORM, CopycatsHouse2FDollScript, -1
+	object_event  7,  1, SPRITE_MON_ICON, SPRITEMOVEDATA_STILL, 0, MURKROW, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, NO_FORM, CopycatsHouse2FDollScript, -1
+	pokemon_event  0,  4, DITTO, SPRITEMOVEDATA_POKEMON, -1, -1, PAL_NPC_PURPLE, CopycatsHouse2FDittoText, -1
 
 	object_const_def
 	const COPYCATSHOUSE2F_COPYCAT1
@@ -50,7 +50,7 @@ Copycat1Script:
 	setval (PAL_NPC_RED) << 4
 	special Special_SetCopycatPalette
 	variablesprite SPRITE_COPYCAT, SPRITE_CHRIS
-	special MapCallbackSprites_LoadUsedSpritesGFX
+	special RefreshSprites
 	checkevent EVENT_RESTORED_POWER_TO_KANTO
 	iftrue .ReturnedMachinePart
 	showtext .Greeting1Text
@@ -68,7 +68,7 @@ Copycat1Script:
 	setval (PAL_NPC_RED) << 4
 	special Special_SetCopycatPalette
 	variablesprite SPRITE_COPYCAT, SPRITE_CHRIS
-	special MapCallbackSprites_LoadUsedSpritesGFX
+	special RefreshSprites
 	showtext .Thanks1Text
 	applymovement COPYCATSHOUSE2F_COPYCAT1, CopycatSpinMovement
 	sjump CopycatFinalScript
@@ -128,7 +128,7 @@ Copycat2Script:
 	setval (PAL_NPC_BLUE) << 4
 	special Special_SetCopycatPalette
 	variablesprite SPRITE_COPYCAT, SPRITE_KRIS
-	special MapCallbackSprites_LoadUsedSpritesGFX
+	special RefreshSprites
 	checkevent EVENT_RESTORED_POWER_TO_KANTO
 	iftrue .ReturnedMachinePart
 	showtext .Greeting2Text
@@ -146,7 +146,7 @@ Copycat2Script:
 	setval (PAL_NPC_BLUE) << 4
 	special Special_SetCopycatPalette
 	variablesprite SPRITE_COPYCAT, SPRITE_KRIS
-	special MapCallbackSprites_LoadUsedSpritesGFX
+	special RefreshSprites
 	showtext .Thanks2Text
 	applymovement COPYCATSHOUSE2F_COPYCAT2, CopycatSpinMovement
 	sjump CopycatFinalScript
@@ -198,7 +198,7 @@ CopycatRetortScript:
 	setval (PAL_NPC_GREEN) << 4
 	special Special_SetCopycatPalette
 	variablesprite SPRITE_COPYCAT, SPRITE_LASS
-	special MapCallbackSprites_LoadUsedSpritesGFX
+	special RefreshSprites
 	jumpthistext
 
 	text "Copycat: Hmm?"
@@ -213,7 +213,7 @@ CopycatWorriedScript:
 	setval (PAL_NPC_GREEN) << 4
 	special Special_SetCopycatPalette
 	variablesprite SPRITE_COPYCAT, SPRITE_LASS
-	special MapCallbackSprites_LoadUsedSpritesGFX
+	special RefreshSprites
 	setevent EVENT_MET_COPYCAT_FOUND_OUT_ABOUT_LOST_ITEM
 	jumpthistext
 
@@ -282,7 +282,7 @@ CopycatFinalScript:
 	setval (PAL_NPC_GREEN) << 4
 	special Special_SetCopycatPalette
 	variablesprite SPRITE_COPYCAT, SPRITE_LASS
-	special MapCallbackSprites_LoadUsedSpritesGFX
+	special RefreshSprites
 	jumpthistext
 
 	text "Copycat: You bet!"
@@ -317,7 +317,9 @@ CopycatsDodrioScript:
 	text "Dodrio: Gii giii!"
 	done
 
-CopycatsHouse2FDollText:
+CopycatsHouse2FDollScript:
+	jumpthistext
+
 	text "This is a rare"
 	line "#mon! Huh?"
 

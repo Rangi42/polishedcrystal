@@ -73,6 +73,14 @@ PrintNum::
 	homecall _PrintNum
 	ret
 
+PrintNumFromReg::
+	homecall _PrintNumFromReg
+	ret
+
+FastPrintNum::
+	homecall _FastPrintNum
+	ret
+
 FarPrintText::
 	ldh [hBuffer], a
 	homecall PrintText, [hBuffer]

@@ -94,8 +94,8 @@ Init::
 	ldh a, [hCGB]
 	push af
 	xor a
-	ld hl, HRAM_START
-	ld bc, HRAM_END - HRAM_START
+	ld hl, HRAM_Begin
+	ld bc, HRAM_End - HRAM_Begin
 	rst ByteFill
 	pop af
 	ldh [hCGB], a

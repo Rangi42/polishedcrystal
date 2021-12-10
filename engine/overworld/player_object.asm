@@ -7,11 +7,11 @@ BlankScreen:
 	call ClearBGPalettes
 	call ClearSprites
 	hlcoord 0, 0
-	ld bc, wTileMapEnd - wTileMap
+	ld bc, wTilemapEnd - wTilemap
 	ld a, " "
 	rst ByteFill
-	hlcoord 0, 0, wAttrMap
-	ld bc, wAttrMapEnd - wAttrMap
+	hlcoord 0, 0, wAttrmap
+	ld bc, wAttrmapEnd - wAttrmap
 	ld a, $7
 	rst ByteFill
 	call ApplyAttrAndTilemapInVBlank
@@ -161,6 +161,8 @@ CopyObjectStruct::
 	ret
 
 CopyMapObjectToObjectStruct:
+	ld a, TRUE
+	ldh [hIsMapObject], a
 	ldh a, [hObjectStructIndexBuffer]
 	ld hl, MAPOBJECT_OBJECT_STRUCT_ID
 	add hl, bc

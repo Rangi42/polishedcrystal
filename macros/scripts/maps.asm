@@ -90,14 +90,20 @@ object_event: MACRO
 	db \2 + 4 ; y
 	db \1 + 4 ; x
 	db \4 ; movement function
-	dn \5, \6 ; radius: y, x
+	if \3 == SPRITE_MON_ICON
+		dn \5, LOW(\6) ; mon index
+	else
+		dn \5, \6 ; radius: y, x
+	endc
 	db \7 ; clock_hour
 	db \8 ; clock_daytime
 	dn \9, \<10> ; color, persontype
 	if \<10> == OBJECTTYPE_COMMAND
 		db \<11>_command ; command id
+	elif \3 == SPRITE_MON_ICON
+		db (HIGH(\6) << MON_EXTSPECIES_F) | \<11> ; extspecies | form
 	else
-		db \<11> ; sight_range || cry id
+		db \<11> ; sight_range
 	endc
 	if _NARG == 14
 		db \<12> ; itemball contents
@@ -151,7 +157,11 @@ smashrock_event: MACRO
 ENDM
 
 pokemon_event: MACRO
-	object_event \1, \2, SPRITE_MON_ICON, SPRITEMOVEDATA_POKEMON, 0, \3, \4, \5, \6, OBJECTTYPE_POKEMON, \3, \7, \8
+	if _NARG == 9
+		object_event \1, \2, SPRITE_MON_ICON, \4, 0, \3, \5, \6, \7, OBJECTTYPE_POKEMON, NO_FORM, \8, \9
+	else
+		object_event \1, \2, SPRITE_MON_ICON, \5, 0, \3, \6, \7, \8, OBJECTTYPE_POKEMON, \4, \9, \<10>
+	endc
 ENDM
 
 pc_nurse_event: MACRO

@@ -248,11 +248,6 @@ SwapPartyMons:
 	dec e
 	ld d, c
 
-	; Swap species in the species array
-	ld hl, wPartySpecies
-	ld bc, 1
-	call DoPartySwap
-
 	; Swap partymon struct
 	ld hl, wPartyMon1
 	ld c, PARTYMON_STRUCT_LENGTH
@@ -448,9 +443,8 @@ GetStorageBoxPointer:
 	push hl
 	push bc
 	ld a, b
-	ld hl, sNewBox1Entries
+	ld hl, sNewBox1Entries - (sNewBox2 - sNewBox1)
 	ld bc, sNewBox2 - sNewBox1
-	dec a
 	rst AddNTimes
 	pop bc
 	push bc
@@ -485,7 +479,7 @@ UpdateStorageBoxMonFromTemp:
 	ld a, [wTempMonBox]
 	ld b, a
 	and a
-	jmp z, CopyBetweenPartyAndTemp
+	jr z, CopyBetweenPartyAndTemp
 
 	; Otherwise, we need to allocate a new box entry.
 	; Erase the current entry before trying to find a new one.
@@ -536,9 +530,8 @@ SetStorageBoxPointer:
 
 	; Get the correct box.
 	ld a, b
-	ld hl, sNewBox1Entries
+	ld hl, sNewBox1Entries - (sNewBox2 - sNewBox1)
 	ld bc, sNewBox2 - sNewBox1
-	dec a
 	rst AddNTimes
 	pop bc
 	push bc
@@ -576,11 +569,6 @@ SetStorageBoxPointer:
 	; Then delete the partymon.
 	ld hl, wPartyCount
 	dec [hl]
-	ld c, [hl]
-	ld b, 0
-	ld hl, wPartySpecies
-	add hl, bc
-	ld [hl], -1
 	jr .done
 
 .not_empty
@@ -615,11 +603,6 @@ CopyBetweenPartyAndTemp:
 ; If bit 7 of b is set, copies between wOTPartyMons instead of wPartyMons.
 ; If bit 0 of b is set, copies from party to temp, otherwise the reverse.
 	dec c
-	ld hl, wPartySpecies
-	ld de, wTempMonSpecies
-	ld a, 1
-	call .Copy
-
 	ld hl, wPartyMon1
 	ld de, wTempMon
 	ld a, PARTYMON_STRUCT_LENGTH
@@ -756,17 +739,17 @@ EncodeTempMon:
 	ld b, wEncodedTempMonEnd - wEncodedTempMonNickname
 .charmap_loop
 	ld a, [hl]
-	; " " -> $7a
+	; " " ($7f) -> $7a
 	ld c, $7a | ~%01111111
 	cp " "
 	jr z, .replace
-	; "@" -> $7b
+	; "@" ($53) -> $7b
 	inc c
 	cp "@"
 	jr z, .replace
-	; "<NULL>" -> $7c
+	; "<START>" ($00) -> $7c
 	inc c
-	and a
+	and a ; cp "<START>"
 	jr nz, .removebit
 .replace
 	ld a, c
@@ -787,7 +770,8 @@ ChecksumTempMon:
 	call .DoChecksum
 
 	; nickname + OT. This skips one CRC multiplier due to a double-increase.
-	; Counterintuitive but harmless.
+	; Counterintuitive but harmless (originally a mistake, but fixing would
+	; needlessly break saves...).
 	ld bc, wEncodedTempMonNickname
 	ld d, $80 | (SAVEMON_STRUCT_LENGTH - SAVEMON_NICKNAME)
 	call .DoChecksum
@@ -865,11 +849,11 @@ DecodeTempMon:
 	ld c, "@"
 	jr z, .replace
 	dec a
-	ld c, 0
-	jr z, .replace
+	jr z, .replace_a ; a is "<START>" ($00) iff the zero flag is set
 
 	; Reverse the previous decrements
 	add $fc
+.replace_a
 	ld c, a
 .replace
 	ld [hl], c
