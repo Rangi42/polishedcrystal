@@ -22,7 +22,14 @@ endr
 	ld [wDVAndPersonalityBuffer + 2], a
 	ld a, [hli]
 	ld [wDVAndPersonalityBuffer + 3], a
-	ld a, [hli]
+	ld a, [wOtherTrainerType]
+	bit TRNTYPE_PERSONALITY, a
+	ld a, [wCurForm]
+	jr z, .skip_class_gender
+	and SPECIESFORM_MASK
+	or [hl]
+	ld [wCurForm], a
+.skip_class_gender
 	ld [wDVAndPersonalityBuffer + 4], a
 	ret
 

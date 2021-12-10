@@ -72,8 +72,6 @@ TryAddMonToParty:
 	ld l, a
 	ld a, [wTrainerGroupBank]
 	call GetFarByte
-	and SPECIESFORM_MASK
-.got_trainer_form
 	ld [wCurForm], a
 .not_trainer_form
 
