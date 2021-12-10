@@ -291,7 +291,6 @@ GetPokedexNumber::
 ; input: c = species, b = extspecies+form
 ; output bc = de = pokedex number ((256*extspecies + c) - (2*extspecies))
 ; this reflects how c = $00 and c = $ff don't have a pokédex number.
-; TODO: Should be able to handle regional dex order.
 	ld a, [wPokedexMode]
 	and a
 	jr nz, GetNationalDexNumber
