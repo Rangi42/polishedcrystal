@@ -25,7 +25,7 @@ endr
 	ld a, [wOtherTrainerType]
 	bit TRNTYPE_PERSONALITY, a
 	ld a, [wCurForm]
-	jr z, .skip_class_gender
+	jr nz, .skip_class_gender
 	and SPECIESFORM_MASK
 	or [hl]
 	ld [wCurForm], a
