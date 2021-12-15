@@ -6,6 +6,7 @@
 	const DEXDISP_AREA
 	const DEXDISP_BIO
 	const DEXDISP_STATS
+	const DEXDISP_NEWDESC
 
 	const_def
 	const DEXPOS_MONS
@@ -1084,19 +1085,25 @@ PokedexStr_Feet:
 ; Feet uses its own pelicular display format, so replace the ?s too.
 	db "′??″@"
 
+Pokedex_SetDispModeUnlessNewMon:
+	ld a, [wPokedex_DisplayMode]
+	cp DEXDISP_NEWDESC
+	ret z
+	ld a, DEXDISP_DESC
+	ld [wPokedex_DisplayMode], a
+	ret
+
 Pokedex_Description:
 	; Get tile number for icon/shape
 	call Pokedex_GetFirstIconTile
 
 	; Load icon/shape into memory
-	ld a, DEXDISP_DESC
-	ld [wPokedex_DisplayMode], a
+	call Pokedex_SetDispModeUnlessNewMon
 	call Pokedex_GetCursorMon
 
 _Pokedex_Description:
 	; Set display mode again here, in case we begin execution here
-	ld a, DEXDISP_DESC
-	ld [wPokedex_DisplayMode], a
+	call Pokedex_SetDispModeUnlessNewMon
 
 	; Move the dex number display.
 	ld a, 17
@@ -3670,6 +3677,8 @@ NewPokedexEntry:
 	ld hl, rIE
 	set LCD_STAT, [hl]
 
+	ld a, DEXDISP_NEWDESC
+	ld [wPokedex_DisplayMode], a
 	call Pokedex_Description
 
 	ret
