@@ -48,33 +48,6 @@ TryAddMonToParty:
 	ld bc, MON_NAME_LENGTH
 	rst CopyBytes
 
-; Cases to set [wCurForm] before calling GetBaseData:
-; - Gift Pokémon or Egg: givepoke/giveegg already set it
-; - Wild Pokémon: LoadEnemyMon already set it
-; - Roaming Pokémon: get it from wRoamMon#Form
-; - Trainer Pokémon: get it from party data (pushed by ReadTrainerParty)
-
-	ld a, [wMonType]
-	and $f
-	jr z, .not_trainer_form
-	ld a, [wBattleMode]
-	dec a
-	jr z, .not_trainer_form
-	; hl = party data, deep off the stack
-	; Here the stack contains:
-	; - sp+$6: party data for [wCurPartyMon], just past the level and species
-	; - sp+$4: return address for 'predef TryAddMonToParty'
-	; - sp+$2: af from _Predef (ReturnFarCall will pop this)
-	; - sp+$0: return address for 'call RetrieveAHLAndCallFunction'
-	ld hl, sp+$6
-	ld a, [hli]
-	ld h, [hl]
-	ld l, a
-	ld a, [wTrainerGroupBank]
-	call GetFarByte
-	ld [wCurForm], a
-.not_trainer_form
-
 	ld a, [wBattleType]
 	cp BATTLETYPE_ROAMING
 	jr nz, .not_roaming_form

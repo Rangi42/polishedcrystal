@@ -186,7 +186,10 @@ Pokedex_RefreshScreen:
 	pop af
 	assert DEXDISP_SEARCH + 1 == DEXDISP_DESC
 	dec a ; cp DEXDISP_DESC - DEXDISP_SEARCH
+	jr z, .fix_indicator
+	sub DEXDISP_NEWDESC - DEXDISP_DESC
 	jr nz, .indicator_ok
+.fix_indicator
 	ld a, [wPokedex_OtherForm]
 	rra
 	jr nc, .copy_back
