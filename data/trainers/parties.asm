@@ -26,13 +26,9 @@ INCLUDE "data/trainers/party_pointers.asm"
 
 ; TODO: do `dp mon[, form] / db level` and eliminate this macro
 dbp: MACRO
-	if _NARG == 3
-		db \1
-		dp \2, \3
-	else
-		db \1
-		dp \2
-	endc
+	db (\1)
+	shift
+	dp \#
 ENDM
 
 
