@@ -76,16 +76,6 @@ Pokedex:
 
 	call Pokedex_Main
 
-	; Needs to be set up immediately during init.
-	call Pokedex_RefreshScreen
-
-	ld a, 1 << 6
-	ldh [rSTAT], a
-	ld hl, rIF
-	res LCD_STAT, [hl]
-	ld hl, rIE
-	set LCD_STAT, [hl]
-
 	xor a
 	ld [wPokedex_CursorPos], a
 
@@ -3250,11 +3240,27 @@ Pokedex_ScheduleScreenUpdateWithHBlank:
 	set DEXGFX_DEFERRED, [hl]
 	and a
 	ret z
-	ld [wPokedex_PendingLYC], a
+
+	; If this is the initial h-blank setup, force a screen refresh and activate
+	; LCD H-Blank.
+	ld hl, wPokedex_PendingLYC
+	inc [hl]
+	dec [hl]
+	ld [hli], a
 	ld a, e
-	ld [wPokedex_PendingHBlankFunction], a
-	ld a, d
-	ld [wPokedex_PendingHBlankFunction + 1], a
+	ld [hli], a
+	ld [hl], d
+	ret nz
+
+	; Needs to be set up immediately during init.
+	call Pokedex_RefreshScreen
+
+	ld a, 1 << 6
+	ldh [rSTAT], a
+	ld hl, rIF
+	res LCD_STAT, [hl]
+	ld hl, rIE
+	set LCD_STAT, [hl]
 	ret
 
 Pokedex_CopyTypeIconPals:
@@ -3669,13 +3675,6 @@ NewPokedexEntry:
 	call ClearPalettes
 	call DelayFrame
 	call StackDexGraphics
-
-	ld a, 1 << 6
-	ldh [rSTAT], a
-	ld hl, rIF
-	res LCD_STAT, [hl]
-	ld hl, rIE
-	set LCD_STAT, [hl]
 
 	ld a, DEXDISP_NEWDESC
 	ld [wPokedex_DisplayMode], a
