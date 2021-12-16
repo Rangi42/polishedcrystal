@@ -1394,6 +1394,57 @@ endr
 	ld de, PHB_DescSwitchSCY
 	call Pokedex_ScheduleScreenUpdateWithHBlank
 
+	ld a, [wPokedex_DisplayMode]
+	cp DEXDISP_NEWDESC
+	jr nz, .joypad_loop
+
+.newdesc_joypad
+	call Pokedex_GetInput
+	rrca
+	jr c, .newdesc_a
+	rrca
+	jr c, .newdesc_done
+	jr .newdesc_joypad
+
+.newdesc_a
+	call .SwitchPage
+	jr z, .newdesc_joypad
+.newdesc_done
+	; Exited early
+	pop af
+	pop hl
+	pop hl
+	ret
+
+.SwitchPage:
+; Returns nz if switching from page 2 to page 1.
+	lb bc, 5, 19
+	hlcoord 1, 12
+	call ClearBox
+	pop hl ; preserve the return address...
+	pop af
+	pop de
+	pop bc
+	push de
+	push bc ; switch page 1 and page 2 on the stack
+	push af
+	push hl ; return the return address to its proper place
+	hlcoord 1, 12
+	call FarString
+
+	; swap P.1/P.2 tile
+	hlcoord 2, 10
+	ld a, [hl]
+	inc [hl]
+	cp $1d
+	jr z, .page_ok
+	ld [hl], $1d
+.page_ok
+	push af
+	call Pokedex_ScheduleScreenUpdate
+	pop af
+	ret
+
 .joypad_loop
 	call Pokedex_GetInput
 	rrca
@@ -1419,28 +1470,7 @@ endr
 	ld a, [wPokedexOAM_IsCaught]
 	and a
 	jr z, .joypad_loop
-	lb bc, 5, 19
-	hlcoord 1, 12
-	push hl
-	call ClearBox
-	pop hl
-	pop af
-	pop de
-	pop bc
-	push de
-	push bc ; switch page 1 and page 2 on the stack
-	push af
-	call FarString
-
-	; swap P.1/P.2 tile
-	hlcoord 2, 10
-	ld a, [hl]
-	inc [hl]
-	cp $1d
-	jr z, .page_ok
-	ld [hl], $1d
-.page_ok
-	call Pokedex_ScheduleScreenUpdate
+	call .SwitchPage
 	jr .joypad_loop
 
 .pressed_select
@@ -3578,7 +3608,25 @@ StackDexGraphics:
 	xor a
 	ldh [hSCX], a
 	ldh [hSCY], a
-	farjp _DecompressMetatiles
+	farcall _DecompressMetatiles
+
+	; If we're in "new dex description" mode, do a couple of more things.
+	ld a, [wPokedex_DisplayMode]
+	cp DEXDISP_NEWDESC
+	ret nz
+
+	call ClearTileMap
+	hlcoord 7, 3
+	ld a, $40
+	call _PlaceFrontpicAtHL
+	farcall GetEnemyMonDVs
+	ld de, wTempMonDVs
+	ld bc, 5
+	rst CopyBytes
+	ld a, CGB_TRAINER_OR_MON_FRONTPIC_PALS
+	call GetCGBLayout
+	ld b, 2
+	jp SafeCopyTilemapAtOnce
 
 .PrepareOAM:
 	; Poké balls
