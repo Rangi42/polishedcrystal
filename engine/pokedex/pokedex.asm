@@ -1346,6 +1346,11 @@ endr
 
 .botmenu
 	; Bottom menu bar
+	; Don't display bottom menu in new dex entry mode.
+	ld a, [wPokedex_DisplayMode]
+	cp DEXDISP_NEWDESC
+	jr z, .botmenu_done
+
 	ldh a, [rSVBK]
 	push af
 	ld a, BANK(wDexTilemap)
@@ -1390,9 +1395,61 @@ endr
 	pop af
 	ldh [rSVBK], a
 
+.botmenu_done
 	ld a, $57
 	ld de, PHB_DescSwitchSCY
 	call Pokedex_ScheduleScreenUpdateWithHBlank
+
+	ld a, [wPokedex_DisplayMode]
+	cp DEXDISP_NEWDESC
+	jr nz, .joypad_loop
+
+.newdesc_joypad
+	call Pokedex_GetInput
+	rrca
+	jr c, .newdesc_a
+	rrca
+	jr c, .newdesc_done
+	jr .newdesc_joypad
+
+.newdesc_a
+	call .SwitchPage
+	jr z, .newdesc_joypad
+.newdesc_done
+	; Exited early
+	pop af
+	pop hl
+	pop hl
+	ret
+
+.SwitchPage:
+; Returns nz if switching from page 2 to page 1.
+	lb bc, 5, 19
+	hlcoord 1, 12
+	call ClearBox
+	pop hl ; preserve the return address...
+	pop af
+	pop de
+	pop bc
+	push de
+	push bc ; switch page 1 and page 2 on the stack
+	push af
+	push hl ; return the return address to its proper place
+	hlcoord 1, 12
+	call FarString
+
+	; swap P.1/P.2 tile
+	hlcoord 2, 10
+	ld a, [hl]
+	inc [hl]
+	cp $1d
+	jr z, .page_ok
+	ld [hl], $1d
+.page_ok
+	push af
+	call Pokedex_ScheduleScreenUpdate
+	pop af
+	ret
 
 .joypad_loop
 	call Pokedex_GetInput
@@ -1419,28 +1476,7 @@ endr
 	ld a, [wPokedexOAM_IsCaught]
 	and a
 	jr z, .joypad_loop
-	lb bc, 5, 19
-	hlcoord 1, 12
-	push hl
-	call ClearBox
-	pop hl
-	pop af
-	pop de
-	pop bc
-	push de
-	push bc ; switch page 1 and page 2 on the stack
-	push af
-	call FarString
-
-	; swap P.1/P.2 tile
-	hlcoord 2, 10
-	ld a, [hl]
-	inc [hl]
-	cp $1d
-	jr z, .page_ok
-	ld [hl], $1d
-.page_ok
-	call Pokedex_ScheduleScreenUpdate
+	call .SwitchPage
 	jr .joypad_loop
 
 .pressed_select
@@ -3416,236 +3452,6 @@ Pokedex_GetCGBLayout:
 	ld a, $e0
 	jmp DmgToCgbObjPal0
 
-StackDexGraphics:
-	pop de
-	ldh a, [hBGMapMode]
-	ld b, a
-	ldh a, [hVBlank]
-	ld hl, wOptions1
-	ld c, [hl]
-	push hl
-	push bc
-	push af
-	ld a, 4
-	ldh [hVBlank], a
-	set NO_TEXT_SCROLL, [hl]
-
-	push de
-	call ClearScreen
-	call ClearPalettes
-	farcall WipeAttrMap
-	call ClearSprites
-	call ClearSpriteAnims
-	ld a, [wVramState]
-	res 0, a
-	ld [wVramState], a
-
-	xor a
-	ldh [hBGMapMode], a
-	ld [wPokedex_PendingLYC], a
-
-	; Set up tile graphics
-	ldh a, [rSVBK]
-	push af
-	ld a, BANK(wDex2bpp)
-	ldh [rSVBK], a
-
-	; The reason we copy like this is because we want to copy some of the tiles
-	; to a template to write out VWF dex numbers later.
-	ld hl, PokedexLZ
-	ld de, wDex2bpp
-	ld a, BANK(PokedexLZ)
-	call FarDecompressToDE
-
-	ld de, wDex2bpp
-	ld hl, vTiles2
-	lb bc, BANK(PokedexLZ), $40
-	call Get2bpp
-
-	ld a, 1
-	ldh [rVBK], a
-	ld de, wDex2bpp tile $40
-	ld hl, vTiles5 tile $18
-	lb bc, BANK(PokedexLZ), $22
-	call Get2bpp
-
-	ld de, vTiles3 ; upper VBK1 tile area is intended
-	farcall _LoadTownMapGFX
-	xor a
-	ldh [rVBK], a
-
-	ld hl, DexOAM
-	ld de, vTiles0
-	lb bc, BANK(DexOAM), 29
-	call DecompressRequest2bpp
-
-	; Gender symbols
-	ld hl, BattleExtrasGFX
-	ld de, vTiles2 tile $7d
-	lb bc, BANK(BattleExtrasGFX), 2
-	call DecompressRequest2bpp
-
-	; Set up a conversion table for Johto dex numbers.
-	ld a, BANK(wDexConversionTable)
-	ldh [rSVBK], a
-	ld de, 0
-	ld bc, REAL_NUM_POKEMON + $100 ; "+ $100" simplifies loop iteration
-.conversion_loop
-	push bc
-	ld hl, NewPokedexOrder
-	add hl, de
-	add hl, de
-	ld a, [hli]
-	ld b, [hl]
-	ld c, a
-	inc de
-	call GetNationalDexNumber
-	ld hl, wDexConversionTable - 2
-	add hl, bc
-	add hl, bc
-	ld a, d
-	ld [hli], a
-	ld [hl], e
-	pop bc
-	dec c
-	jr nz, .conversion_loop
-	dec b
-	jr nz, .conversion_loop
-	pop af
-	ldh [rSVBK], a
-
-	; Prepare OAM
-	call .PrepareOAM
-
-	call Pokedex_InitData
-
-	; Reset shininess and palettes for minis
-	xor a
-	ld [wPokedex_Personality], a
-	dec a
-	ld hl, wPokedex_Pals
-	ld bc, wPokedex_PalsEnd - wPokedex_Pals
-	rst ByteFill
-
-	; Prepare H-blank code.
-	ld hl, PHB_LCDCode
-	ld de, wLCDPokedex
-	ld bc, PHB_LCDCodeEnd - PHB_LCDCode
-	rst CopyBytes
-	ld a, LOW(wLCDPokedex)
-	ldh [hFunctionTargetLo], a
-	ld a, HIGH(wLCDPokedex)
-	ldh [hFunctionTargetHi], a
-
-	ld a, CGB_POKEDEX
-	call Pokedex_GetCGBLayout
-
-	ld a, 4
-	ldh [hSCX], a
-	ldh [hSCY], a
-
-	call Pokedex_GetCursorMonInVBK1
-	pop de
-	call _de_
-
-	call ClearPalettes
-	call ClearSprites
-	call ClearSpriteAnims
-	ld hl, wPokedex_GFXFlags
-	set DEXGFX_TILEMAP, [hl]
-.loop
-	bit DEXGFX_TILEMAP, [hl]
-	jr z, .done_update
-	call DelayFrame
-	jr .loop
-.done_update
-	ld hl, rIE
-	res LCD_STAT, [hl]
-	ld a, 1 << 3
-	ldh [rSTAT], a
-	ld a, LOW(LCDGeneric)
-	ldh [hFunctionTargetLo], a
-	ld a, HIGH(LCDGeneric)
-	ldh [hFunctionTargetHi], a
-
-	pop af
-	pop bc
-	pop hl
-	ldh [hVBlank], a
-	ld [hl], c
-	ld a, b
-	ldh [hBGMapMode], a
-	xor a
-	ldh [hSCX], a
-	ldh [hSCY], a
-	farjp _DecompressMetatiles
-
-.PrepareOAM:
-	; Poké balls
-	ld hl, wVirtualOAMSprite12
-	lb bc, 12, 5
-	xor a
-.ball_oam_loop
-	ld [hli], a
-	ld a, b
-	ld [hli], a
-	add 30
-	ld b, a
-	xor a
-	ld [hli], a
-	ld [hli], a
-	dec c
-	jr nz, .ball_oam_loop
-
-	; Minis
-	lb bc, 46, 3
-.mini_oam_outer_loop
-	lb de, 4, 8
-.mini_oam_loop
-	xor a
-	ld [hli], a
-	ld a, b
-	ld [hli], a
-	add e
-	ld b, a
-	ld a, e
-	cpl
-	inc a
-	ld e, a
-	xor a
-	ld [hli], a
-	ld a, VRAM_BANK_1 | 5
-	sub c
-	ld [hli], a
-	dec d
-	jr nz, .mini_oam_loop
-	ld a, b
-	add 30
-	ld b, a
-	dec c
-	jr nz, .mini_oam_outer_loop
-
-	; Scrollbar
-	ld a, 85
-	ld [hli], a
-	ld a, 160
-	ld [hli], a
-	ld a, 4
-	ld [hli], a
-	ld a, 1
-	ld [hli], a
-
-	; Dex number
-	xor a
-	ld bc, 24
-	rst ByteFill
-
-	ld a, "№"
-	ld [wVirtualOAMSprite31TileID], a
-	ld a, "."
-	ld [wVirtualOAMSprite32TileID], a
-	ret
-
 NewPokedexEntry:
 	; Disable H-blank as invoked in battles.
 	ld hl, rIE
@@ -3678,9 +3484,7 @@ NewPokedexEntry:
 
 	ld a, DEXDISP_NEWDESC
 	ld [wPokedex_DisplayMode], a
-	call Pokedex_Description
-
-	ret
+	jmp Pokedex_Description
 
 Pokedex_GetDexEntryPointer:
 	call GetDexEntryPointer
