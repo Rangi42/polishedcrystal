@@ -411,7 +411,7 @@ StackDexGraphics:
 	ret nz
 
 	call ClearTileMap
-	hlcoord 7, 3
+	hlcoord 7, 2
 	ld a, $40
 	call _PlaceFrontpicAtHL
 	farcall GetEnemyMonDVs
