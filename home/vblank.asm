@@ -281,7 +281,7 @@ VBlank4::
 	ldh a, [rLYC]
 	ld b, a
 .busyloop
-	ld a, [rLY]
+	ldh a, [rLY]
 	sub b
 	jr z, .busyloop
 	inc a

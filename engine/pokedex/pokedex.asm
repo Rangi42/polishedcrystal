@@ -221,15 +221,13 @@ Pokedex_MonHasCosmeticForms:
 	jr nz, .next
 	xor b
 	and EXTSPECIES_MASK
-	jr z, .done ; At this point, carry isn't set.
+	ret z ; At this point, carry isn't set.
 .next
 	push hl
 	add hl, de
 	pop hl
 	jr nc, .loop
-	; At this point, carry is set.
-.done
-	ret
+	ret ; At this point, carry is set.
 
 Pokedex_CheckForOtherForms:
 ; Input: a = 0 (check caught), 1 (check seen)
@@ -1475,8 +1473,7 @@ endr
 	; print other page description
 	ld a, [wPokedexOAM_IsCaught]
 	and a
-	jr z, .joypad_loop
-	call .SwitchPage
+	call nz, .SwitchPage
 	jr .joypad_loop
 
 .pressed_select
