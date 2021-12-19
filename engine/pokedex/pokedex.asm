@@ -221,15 +221,13 @@ Pokedex_MonHasCosmeticForms:
 	jr nz, .next
 	xor b
 	and EXTSPECIES_MASK
-	jr z, .done ; At this point, carry isn't set.
+	ret z ; At this point, carry isn't set.
 .next
 	push hl
 	add hl, de
 	pop hl
 	jr nc, .loop
-	; At this point, carry is set.
-.done
-	ret
+	ret ; At this point, carry is set.
 
 Pokedex_CheckForOtherForms:
 ; Input: a = 0 (check caught), 1 (check seen)
@@ -1475,8 +1473,7 @@ endr
 	; print other page description
 	ld a, [wPokedexOAM_IsCaught]
 	and a
-	jr z, .joypad_loop
-	call .SwitchPage
+	call nz, .SwitchPage
 	jr .joypad_loop
 
 .pressed_select
@@ -1578,9 +1575,6 @@ Pokedex_Main:
 	ld de, PHB_Row1
 	jmp Pokedex_ScheduleScreenUpdateWithHBlank
 
-Pokedex_Area:
-	ld a, DEXDISP_AREA
-	ld [wPokedex_DisplayMode], a
 Pokedex_Bio:
 	ld a, DEXDISP_BIO
 	ld [wPokedex_DisplayMode], a
@@ -1816,6 +1810,71 @@ Pokedex_Bio:
 .UnknownString
 	db "Unknown@"
 INCLUDE "data/pokedex_bio.asm"
+
+Pokedex_Area:
+	ld a, DEXDISP_AREA
+	ld [wPokedex_DisplayMode], a
+
+	ld hl, DexTilemap_Area
+	call Pokedex_LoadTilemapWithIconAndForm
+
+	xor a
+	ld [wPokedexOAM_DexNoY], a
+	ld [wPokedex_PendingSCY], a
+	ld a, 8
+	ld de, PHB_AreaSwitchTileMode
+	call Pokedex_ScheduleScreenUpdateWithHBlank
+.joypad_loop
+	call Pokedex_GetInput
+	push af
+	ld a, 4
+	ld [wPokedex_PendingSCY], a
+	pop af
+	rrca
+	jr c, .pressed_a
+	rrca
+	jmp c, Pokedex_Main
+	rrca
+	jr c, .pressed_select
+	rrca
+	jr c, .pressed_start
+	rrca
+	jmp c, _Pokedex_Description
+	rrca
+	jr c, .pressed_left
+	rrca
+	jr c, .pressed_up
+	rrca
+	jr c, .pressed_down
+.pressed_a
+.pressed_select
+	jr .joypad_loop
+
+.pressed_start
+	xor a
+	call Pokedex_ChangeForm
+	jr c, .joypad_loop
+	jr .reload_page
+
+.pressed_left
+	ld a, [wPokedexOAM_IsCaught]
+	and a
+	jmp z, _Pokedex_Description
+	jr Pokedex_Stats
+
+.pressed_up
+	call Pokedex_PrevPageMon
+	jr nz, .joypad_loop
+	jr .reload_position
+
+.pressed_down
+	call Pokedex_NextPageMon
+	jr nz, .joypad_loop
+.reload_position
+	call Pokedex_GetFirstIconTile
+.reload_page
+	call Pokedex_GetCursorMon
+	jr Pokedex_Area
 
 Pokedex_Stats:
 	xor a

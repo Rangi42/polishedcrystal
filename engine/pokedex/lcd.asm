@@ -368,6 +368,7 @@ StackDexGraphics:
 	ld a, 4
 	ldh [hSCX], a
 	ldh [hSCY], a
+	ld [wPokedex_PendingSCY], a
 
 	call Pokedex_GetCursorMonInVBK1
 	pop de
@@ -411,7 +412,7 @@ StackDexGraphics:
 	ret nz
 
 	call ClearTileMap
-	hlcoord 7, 3
+	hlcoord 7, 2
 	ld a, $40
 	call _PlaceFrontpicAtHL
 	farcall GetEnemyMonDVs
@@ -576,6 +577,28 @@ _PHB_BioStatsSwitchSCY:
 	ldh [rSCY], a
 	ld a, $84
 	ld de, PHB_BioStatsSwitchSCY
+	call Pokedex_UnsafeSetHBlankFunction
+	jmp PopBCDEHL
+
+PHB_AreaSwitchTileMode:
+	push hl
+	push de
+	push bc
+	ld hl, rLCDC
+	set rLCDC_TILE_DATA, [hl]
+	ld a, $84
+	ld de, PHB_AreaSwitchTileMode2
+	call Pokedex_UnsafeSetHBlankFunction
+	jmp PopBCDEHL
+
+PHB_AreaSwitchTileMode2:
+	push hl
+	push de
+	push bc
+	ld hl, rLCDC
+	res rLCDC_TILE_DATA, [hl]
+	ld a, 8
+	ld de, PHB_AreaSwitchTileMode
 	call Pokedex_UnsafeSetHBlankFunction
 	jmp PopBCDEHL
 
@@ -852,6 +875,14 @@ PVB_UpdateDexMap::
 	ld [hl], 0
 	call ForcePushOAM
 	call ForceUpdateCGBPals
+
+	; Update pending SCY
+	ld a, [wPokedex_PendingSCY]
+	ldh [hSCY], a
+	ldh [rSCY], a
+
+	; done with time-critical activities
+
 	ld hl, wDexPalCopy
 	ld de, wPokedex_Pals
 	ld bc, wPokedex_PalsEnd - wPokedex_Pals
@@ -958,12 +989,12 @@ DexBotMenuXPositions:
 	db 66, 74, 91, 99, 107, 0
 
 DexDisplayOAMData:
-; bottom menu cursor x pos, indicator y pos, indicator x pos, indicator start tile, indicator length
-	db  0, 137,  77, $0b, 6 ; DEXDISP_SEARCH
-	db 32,  93,  31, $05, 6 ; DEXDISP_DESC
-	db  0,   0,   0,   0, 0 ; DEXDISP_AREA
-	db 62,  52, 132, $12, 4 ; DEXDISP_BIO
-	db 87,   0              ; DEXDISP_STATS (can be < 6 bytes since it's the highest index)
+; botmenu cursor x, indicator y, indicator x, indicator offset, indicator length
+	db   0, 137,  77, $0b, 6 ; DEXDISP_SEARCH
+	db  32,  93,  31, $05, 6 ; DEXDISP_DESC
+	db 122,   0,   0,   0, 0 ; DEXDISP_AREA
+	db  62,  52, 132, $12, 4 ; DEXDISP_BIO
+	db  87,   0              ; DEXDISP_STATS (last index can be < 6 bytes)
 
 DexOAM:
 INCBIN "gfx/pokedex/oam.2bpp.lz"
