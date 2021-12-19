@@ -208,7 +208,7 @@ VBlank6::
 	jr VBlankUpdateSound
 
 VBlank4::
-; normal operation
+; pokédex
 
 ; rng
 ; scx, scy, wy, wx
@@ -258,7 +258,7 @@ VBlank4::
 	ldh a, [hSeconds]
 	ldh [hSecondsBackup], a
 
-	; A variant of sode in vblank1 for running the sound engine with LCD int
+	; A variant of code in vblank1 for running the sound engine with LCD int
 	ldh a, [hROMBankBackup]
 	push af
 	ldh a, [rIE]
@@ -273,6 +273,20 @@ VBlank4::
 
 	ei
 	call VBlankUpdateSound
+
+	; Ensure that we don't miss an interrupt in the tiny window between di+reti
+	ldh a, [rIE]
+	and 1 << LCD_STAT
+	jr z, .di
+	ldh a, [rLYC]
+	ld b, a
+.busyloop
+	ld a, [rLY]
+	sub b
+	jr z, .busyloop
+	inc a
+	jr z, .busyloop
+.di
 	di
 
 	; get requested ints
