@@ -1,7 +1,7 @@
 	const_def
 	const DEXDISP_MAIN
 	const DEXDISP_MODE
-	const DEXDISP_NEWDESC
+	const DEXDISP_NEWDESC ; must be before search
 	const DEXDISP_SEARCH
 	const DEXDISP_DESC
 	const DEXDISP_BIO
@@ -1346,6 +1346,11 @@ endr
 	xor b
 	ld [hli], a
 
+	; Don't display bottom menu or shiny hint in new dex entry mode.
+	ld a, [wPokedex_DisplayMode]
+	cp DEXDISP_NEWDESC
+	jr z, .botmenu_done
+
 .sel_shiny
 	; Sel/Shiny indicator
 	ld a, SHINY_CHARM
@@ -1369,11 +1374,6 @@ endr
 
 .botmenu
 	; Bottom menu bar
-	; Don't display bottom menu in new dex entry mode.
-	ld a, [wPokedex_DisplayMode]
-	cp DEXDISP_NEWDESC
-	jr z, .botmenu_done
-
 	ldh a, [rSVBK]
 	push af
 	ld a, BANK(wDexTilemap)
