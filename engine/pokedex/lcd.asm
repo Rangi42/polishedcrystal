@@ -184,11 +184,16 @@ Pokedex_RefreshScreen:
 
 .indicator_oam
 	pop af
+
+	; In description mode, only display indicator if we have seen formes.
+	; This is specifically in regular description mode, we don't want to
+	; display it in the "new dex entry".
 	assert DEXDISP_SEARCH + 1 == DEXDISP_DESC
 	dec a ; cp DEXDISP_DESC - DEXDISP_SEARCH
 	jr z, .fix_indicator
 	sub DEXDISP_NEWDESC - DEXDISP_DESC
 	jr nz, .indicator_ok
+	jr .copy_back
 .fix_indicator
 	ld a, [wPokedex_OtherForm]
 	rra
@@ -368,7 +373,6 @@ StackDexGraphics:
 	ld a, 4
 	ldh [hSCX], a
 	ldh [hSCY], a
-	ld [wPokedex_PendingSCY], a
 
 	call Pokedex_GetCursorMonInVBK1
 	pop de
@@ -581,6 +585,7 @@ _PHB_BioStatsSwitchSCY:
 	jmp PopBCDEHL
 
 PHB_AreaSwitchTileMode:
+	ret
 	push hl
 	push de
 	push bc
@@ -876,11 +881,6 @@ PVB_UpdateDexMap::
 	call ForcePushOAM
 	call ForceUpdateCGBPals
 
-	; Update pending SCY
-	ld a, [wPokedex_PendingSCY]
-	ldh [hSCY], a
-	ldh [rSCY], a
-
 	; done with time-critical activities
 
 	ld hl, wDexPalCopy
@@ -992,9 +992,9 @@ DexDisplayOAMData:
 ; botmenu cursor x, indicator y, indicator x, indicator offset, indicator length
 	db   0, 137,  77, $0b, 6 ; DEXDISP_SEARCH
 	db  32,  93,  31, $05, 6 ; DEXDISP_DESC
-	db 122,   0,   0,   0, 0 ; DEXDISP_AREA
 	db  62,  52, 132, $12, 4 ; DEXDISP_BIO
-	db  87,   0              ; DEXDISP_STATS (last index can be < 6 bytes)
+	db  87,   0,   0,   0, 0 ; DEXDISP_STATS
+	db 122,   0              ; DEXDISP_AREA (last index can be < 6 bytes)
 
 DexOAM:
 INCBIN "gfx/pokedex/oam.2bpp.lz"
