@@ -677,8 +677,6 @@ wBattleEnd::
 wPokedex_PendingLYC:: db
 wPokedex_PendingHBlankFunction:: dw
 
-wPokedex_PendingSCY:: db ; Baseline SCY for a tilemap
-
 wPokedex_Pals::
 wPokedex_Row1::
 wPokedex_Row1Tile: db ; Sprite offset for dex minis col 2-4

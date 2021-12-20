@@ -1,12 +1,12 @@
 	const_def
 	const DEXDISP_MAIN
 	const DEXDISP_MODE
+	const DEXDISP_NEWDESC
 	const DEXDISP_SEARCH
 	const DEXDISP_DESC
-	const DEXDISP_AREA
 	const DEXDISP_BIO
 	const DEXDISP_STATS
-	const DEXDISP_NEWDESC
+	const DEXDISP_AREA
 
 	const_def
 	const DEXPOS_MONS
@@ -20,6 +20,16 @@
 	const DEXPOS_TILEMAP
 	const DEXPOS_ATTRMAP
 	const DEXPOS_PALCOPY
+
+	const_def
+	const DEXAREA_MORN
+	const DEXAREA_DAY
+	const DEXAREA_NITE
+	const DEXAREA_SURF
+	const DEXAREA_FISH
+	const DEXAREA_TREE
+	const DEXAREA_GAME
+NUM_DEXAREA EQU const_value
 
 PokedexDebugFlags:
 ; Clears dex flags and sets some new ones for testing.
@@ -131,15 +141,28 @@ Pokedex_LoadTilemapWithPokepic:
 
 Pokedex_LoadTilemapWithIconAndForm:
 	ld a, BANK(wDexTilemap)
-	call StackCallInWRAMBankA
-.Function:
+	ldh [rSVBK], a
 	ld de, wDexTilemap
 	ld a, BANK(DexTilemaps)
 	call FarDecompressToDE
 
 	ld b, DEXTILE_FROM_DEXMAP
 	call Pokedex_SetTilemap
+	ld a, BANK(wStringBuffer1)
+	ldh [rSVBK], a
 
+	; Print species name
+	ld de, wStringBuffer1
+	hlcoord 4, 1
+	rst PlaceString
+
+	; Set dex number display position
+	ld a, 117
+	ld [wPokedexOAM_DexNoX], a
+	ld a, 20
+	ld [wPokedexOAM_DexNoY], a
+
+	; Display mini
 	ld a, [wPokedex_MonInfoBank]
 	rlca
 	rlca
@@ -160,8 +183,10 @@ Pokedex_LoadTilemapWithIconAndForm:
 	ld [hl], a
 
 	ld b, a
+
 	ld a, [wPokedex_DisplayMode]
-	cp DEXDISP_STATS ; stats page shouldn't display shape
+	assert (DEXDISP_AREA > DEXDISP_STATS)
+	cp DEXDISP_STATS ; stats+area pages shouldn't display shape
 	ret nc
 
 	ld a, b
@@ -1583,15 +1608,6 @@ Pokedex_Bio:
 	ld hl, DexTilemap_Bio
 	call Pokedex_LoadTilemapWithIconAndForm
 
-	ld a, 117
-	ld [wPokedexOAM_DexNoX], a
-	ld a, 20
-	ld [wPokedexOAM_DexNoY], a
-
-	ld de, wStringBuffer1
-	hlcoord 4, 1
-	rst PlaceString
-
 	call Pokedex_GetCursorSpecies
 	call GetSpeciesAndFormIndex
 
@@ -1811,25 +1827,46 @@ Pokedex_Bio:
 	db "Unknown@"
 INCLUDE "data/pokedex_bio.asm"
 
+Pokedex_AreaTypeLists:
+	rawchar "Morn"
+	rawchar "Day "
+	rawchar "Nite"
+	rawchar "Surf"
+	rawchar "Fish"
+	rawchar "Tree"
+	rawchar "Game" ; bug catching/safari zone
+
 Pokedex_Area:
+	; TODO: maybe preset depending on time of day?
+	xor a
+	ldh [hPokedexAreaMode], a
+_Pokedex_Area:
 	ld a, DEXDISP_AREA
 	ld [wPokedex_DisplayMode], a
 
+	; Figure out area mode text
+	ldh a, [hPokedexAreaMode]
+	and $f
+	ld bc, 4
+	ld hl, Pokedex_AreaTypeLists
+	rst AddNTimes
+	push hl
+
+	; Retrieve the area tilemap
 	ld hl, DexTilemap_Area
 	call Pokedex_LoadTilemapWithIconAndForm
 
-	xor a
-	ld [wPokedexOAM_DexNoY], a
-	ld [wPokedex_PendingSCY], a
-	ld a, 8
-	ld de, PHB_AreaSwitchTileMode
+	pop hl
+	decoord 16, 2
+	ld bc, 4
+	rst CopyBytes
+
+	; when we have the town map data, fix this
+	ld a, $84
+	ld de, PHB_BioStatsSwitchSCY
 	call Pokedex_ScheduleScreenUpdateWithHBlank
 .joypad_loop
 	call Pokedex_GetInput
-	push af
-	ld a, 4
-	ld [wPokedex_PendingSCY], a
-	pop af
 	rrca
 	jr c, .pressed_a
 	rrca
@@ -1846,9 +1883,32 @@ Pokedex_Area:
 	jr c, .pressed_up
 	rrca
 	jr c, .pressed_down
-.pressed_a
-.pressed_select
 	jr .joypad_loop
+
+.pressed_a
+	; Switch area type displayed
+	ld hl, hPokedexAreaMode
+	inc [hl]
+	ld a, [hl]
+	and $f
+	cp NUM_DEXAREA
+	jr nz, _Pokedex_Area
+	; fallthrough
+.loopback_area_mode
+	xor [hl] ; Will retain the other nibble type and set targeted one to 0.
+	ld [hl], a
+	jr _Pokedex_Area
+
+.pressed_select
+	; Switch displayed region
+	ld hl, hPokedexAreaMode
+	ld a, [hl]
+	add $10
+	ld [hl], a
+	and $f0
+	cp NUM_REGIONS << 4
+	jr nz, _Pokedex_Area
+	jr .loopback_area_mode
 
 .pressed_start
 	xor a
@@ -1874,7 +1934,7 @@ Pokedex_Area:
 	call Pokedex_GetFirstIconTile
 .reload_page
 	call Pokedex_GetCursorMon
-	jr Pokedex_Area
+	jmp _Pokedex_Area
 
 Pokedex_Stats:
 	xor a
@@ -1886,15 +1946,6 @@ _Pokedex_Stats:
 	; Load the stats tilemap.
 	ld hl, DexTilemap_Stats
 	call Pokedex_LoadTilemapWithIconAndForm
-
-	ld a, 117
-	ld [wPokedexOAM_DexNoX], a
-	ld a, 20
-	ld [wPokedexOAM_DexNoY], a
-
-	ld de, wStringBuffer1
-	hlcoord 4, 1
-	rst PlaceString
 
 	call Pokedex_GetCursorSpecies
 	call GetSpeciesAndFormIndex
