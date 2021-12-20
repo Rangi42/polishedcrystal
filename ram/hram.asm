@@ -174,6 +174,7 @@ hChartScreen:: db
 hChartFillCoord:: db
 hChartLineCoord:: db
 NEXTU
+hPokedexAreaMode:: ; nibbles with region + capture category
 hPokedexStatsCurAbil:: db
 	ds 2
 ENDU
