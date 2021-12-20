@@ -1907,6 +1907,22 @@ _Pokedex_Area:
 	ld [hl], a
 	and $f0
 	cp NUM_REGIONS << 4
+	jr z, .loopback_area_mode
+
+	; Check if we've visited Kanto.
+	push hl
+	ld hl, wStatusFlags
+	bit 6, [hl] ; ENGINE_CREDITS_SKIP
+	pop hl
+	jr z, .loopback_area_mode
+
+	; If we're switching to Orange Islands, check if we've visited it.
+	cp ORANGE_REGION << 4
+	jr nz, _Pokedex_Area
+	push hl
+	ld hl, wStatusFlags2
+	bit 3, [hl] ; ENGINE_SEEN_SHAMOUTI_ISLAND
+	pop hl
 	jr nz, _Pokedex_Area
 	jr .loopback_area_mode
 
