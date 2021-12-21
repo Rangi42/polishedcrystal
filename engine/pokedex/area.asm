@@ -116,7 +116,7 @@ _Pokedex_Area:
 	jr nz, .joypad_loop
 	inc [hl]
 	ld a, [hl]
-	and $f
+	and DEXAREA_TYPE_MASK
 	cp NUM_DEXAREA
 	jr nz, _Pokedex_Area
 	; fallthrough
@@ -134,7 +134,7 @@ _Pokedex_Area:
 	ld a, [hl]
 	add $10
 	ld [hl], a
-	and $70
+	and DEXAREA_REGION_MASK
 	cp NUM_REGIONS << 4
 	jr z, .loopback_area_mode
 
