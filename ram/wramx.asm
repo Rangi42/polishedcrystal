@@ -1526,6 +1526,20 @@ wDexPalCopyEnd::
 wDexNumber:: dw
 wDexNumberString:: ds 4 ; 3 numbers including leading zeroes + terminator
 
+; Landmark to highlight if mon is at player location. Note that this is exact,
+; including things like the proper floor. This is -1 to denote no highlight,
+wDexAreaHighlight:: db
+
+; Table of xy coords for landmarks. These contain either zero, or xy of the
+; landmark to display. We don't actually care about the exact landmark beyond
+; knowing if we should highlight the one that players are at (see above).
+wDexAreaMons::
+for n, 1, NUM_LANDMARKS + 1
+wDexAreaMon{d:n}::
+wDexAreaMon{d:n}YCoord:: db
+wDexAreaMon{d:n}XCoord:: db
+endr
+wDexAreaMonsEnd::
 ENDU
 
 

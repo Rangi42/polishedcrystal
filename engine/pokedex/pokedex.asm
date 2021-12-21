@@ -1,36 +1,3 @@
-	const_def
-	const DEXDISP_MAIN
-	const DEXDISP_MODE
-	const DEXDISP_NEWDESC ; must be before search
-	const DEXDISP_SEARCH
-	const DEXDISP_DESC
-	const DEXDISP_BIO
-	const DEXDISP_STATS
-	const DEXDISP_AREA
-
-	const_def
-	const DEXPOS_MONS
-	const DEXPOS_DEXNO
-	const DEXPOS_ICON_TILES
-	const DEXPOS_VWF_TILES
-	const DEXPOS_ICON_VTILES
-	const DEXPOS_VWF_VTILES
-	const DEXPOS_ICONTILE_OFFSET
-	const DEXPOS_VWFTILE_OFFSET
-	const DEXPOS_TILEMAP
-	const DEXPOS_ATTRMAP
-	const DEXPOS_PALCOPY
-
-	const_def
-	const DEXAREA_MORN
-	const DEXAREA_DAY
-	const DEXAREA_NITE
-	const DEXAREA_SURF
-	const DEXAREA_FISH
-	const DEXAREA_TREE
-	const DEXAREA_GAME
-NUM_DEXAREA EQU const_value
-
 PokedexDebugFlags:
 ; Clears dex flags and sets some new ones for testing.
 ; Temporary; should be removed when dex is confirmed as fully working.
@@ -413,7 +380,9 @@ Pokedex_ScrollPageMon:
 	jr z, .next
 	ld a, [wPokedex_DisplayMode]
 	cp DEXDISP_BIO
-	jr nc, .next
+	jr z, .next
+	cp DEXDISP_STATS
+	jr z, .next
 
 .found_species
 	pop bc
@@ -1827,131 +1796,6 @@ Pokedex_Bio:
 	db "Unknown@"
 INCLUDE "data/pokedex_bio.asm"
 
-Pokedex_AreaTypeLists:
-	rawchar "Morn"
-	rawchar "Day "
-	rawchar "Nite"
-	rawchar "Surf"
-	rawchar "Fish"
-	rawchar "Tree"
-	rawchar "Game" ; bug catching/safari zone
-
-Pokedex_Area:
-	; TODO: maybe preset depending on time of day?
-	xor a
-	ldh [hPokedexAreaMode], a
-_Pokedex_Area:
-	ld a, DEXDISP_AREA
-	ld [wPokedex_DisplayMode], a
-
-	; Figure out area mode text
-	ldh a, [hPokedexAreaMode]
-	and $f
-	ld bc, 4
-	ld hl, Pokedex_AreaTypeLists
-	rst AddNTimes
-	push hl
-
-	; Retrieve the area tilemap
-	ld hl, DexTilemap_Area
-	call Pokedex_LoadTilemapWithIconAndForm
-
-	pop hl
-	decoord 16, 2
-	ld bc, 4
-	rst CopyBytes
-
-	; when we have the town map data, fix this
-	ld a, $84
-	ld de, PHB_BioStatsSwitchSCY
-	call Pokedex_ScheduleScreenUpdateWithHBlank
-.joypad_loop
-	call Pokedex_GetInput
-	rrca
-	jr c, .pressed_a
-	rrca
-	jmp c, Pokedex_Main
-	rrca
-	jr c, .pressed_select
-	rrca
-	jr c, .pressed_start
-	rrca
-	jmp c, _Pokedex_Description
-	rrca
-	jr c, .pressed_left
-	rrca
-	jr c, .pressed_up
-	rrca
-	jr c, .pressed_down
-	jr .joypad_loop
-
-.pressed_a
-	; Switch area type displayed
-	ld hl, hPokedexAreaMode
-	inc [hl]
-	ld a, [hl]
-	and $f
-	cp NUM_DEXAREA
-	jr nz, _Pokedex_Area
-	; fallthrough
-.loopback_area_mode
-	xor [hl] ; Will retain the other nibble type and set targeted one to 0.
-	ld [hl], a
-	jr _Pokedex_Area
-
-.pressed_select
-	; Switch displayed region
-	ld hl, hPokedexAreaMode
-	ld a, [hl]
-	add $10
-	ld [hl], a
-	and $f0
-	cp NUM_REGIONS << 4
-	jr z, .loopback_area_mode
-
-	; Check if we've visited Kanto.
-	push hl
-	ld hl, wStatusFlags
-	bit 6, [hl] ; ENGINE_CREDITS_SKIP
-	pop hl
-	jr z, .loopback_area_mode
-
-	; If we're switching to Orange Islands, check if we've visited it.
-	cp ORANGE_REGION << 4
-	jr nz, _Pokedex_Area
-	push hl
-	ld hl, wStatusFlags2
-	bit 3, [hl] ; ENGINE_SEEN_SHAMOUTI_ISLAND
-	pop hl
-	jr nz, _Pokedex_Area
-	jr .loopback_area_mode
-
-.pressed_start
-	xor a
-	call Pokedex_ChangeForm
-	jr c, .joypad_loop
-	jr .reload_page
-
-.pressed_left
-	ld a, [wPokedexOAM_IsCaught]
-	and a
-	jmp z, _Pokedex_Description
-	jr Pokedex_Stats
-
-.pressed_up
-	call Pokedex_PrevPageMon
-	jr nz, .joypad_loop
-	jr .reload_position
-
-.pressed_down
-	call Pokedex_NextPageMon
-	jr nz, .joypad_loop
-.reload_position
-	call Pokedex_GetFirstIconTile
-.reload_page
-	call Pokedex_GetCursorMon
-	jmp _Pokedex_Area
-
 Pokedex_Stats:
 	xor a
 	ldh [hPokedexStatsCurAbil], a
@@ -3261,9 +3105,11 @@ _Pokedex_GetCursorMon:
 	ld bc, 4
 	call FarCopyBytesToColorWRAM
 
-	; If we haven't caught the mon, we're done here.
+	; If we haven't caught the mon, skip footprint and type icons
 	pop af
-	jmp z, .done
+	ldh a, [rSVBK]
+	push af
+	jmp z, .type_pals_done
 
 	ld a, 1
 	ld [wPokedexOAM_IsCaught], a
@@ -3287,8 +3133,6 @@ _Pokedex_GetCursorMon:
 	call Pokedex_CopyTypeIconPals
 	pop bc
 	ld de, wDexMonType1Tiles
-	ldh a, [rSVBK]
-	push af
 	ld a, BANK(wDexMonType1Tiles)
 	ldh [rSVBK], a
 	push bc
@@ -3335,6 +3179,7 @@ _Pokedex_GetCursorMon:
 	dec c
 	jr nz, .outer_copy_loop
 
+.type_pals_done
 	ld a, [wPokedex_DisplayMode]
 	cp DEXDISP_DESC
 	jr c, .done_2

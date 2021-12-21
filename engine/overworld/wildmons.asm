@@ -27,10 +27,9 @@ LoadWildMonData:
 	ld [wWaterEncounterRate], a
 	ret
 
-FindNest:
-; Parameters:
-; e: 0 = Johto, 1 = Kanto, 2 = Orange
-; wNamedObjectIndex: species
+GetWildLocations:
+; Writes to wDexAreaMons. Assumes we're in the correct WRAM bank for this.
+; Parameters: c = species, b = form.
 	hlcoord 0, 0
 	ld bc, SCREEN_WIDTH * SCREEN_HEIGHT
 	xor a

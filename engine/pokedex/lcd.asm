@@ -66,7 +66,8 @@ Pokedex_RefreshScreen:
 	push hl
 	rst CopyBytes
 
-	; Reload dex number display, should only be visible for main and description pages.
+	; Reload dex number display, should only be visible for main and
+	; description pages.
 	ld a, [wPokedexOAM_DexNoX]
 	ld e, a
 	ld bc, 2
