@@ -380,7 +380,9 @@ Pokedex_ScrollPageMon:
 	jr z, .next
 	ld a, [wPokedex_DisplayMode]
 	cp DEXDISP_BIO
-	jr nc, .next
+	jr z, .next
+	cp DEXDISP_STATS
+	jr z, .next
 
 .found_species
 	pop bc
@@ -3103,9 +3105,11 @@ _Pokedex_GetCursorMon:
 	ld bc, 4
 	call FarCopyBytesToColorWRAM
 
-	; If we haven't caught the mon, we're done here.
+	; If we haven't caught the mon, skip footprint and type icons
 	pop af
-	jmp z, .done
+	ldh a, [rSVBK]
+	push af
+	jmp z, .type_pals_done
 
 	ld a, 1
 	ld [wPokedexOAM_IsCaught], a
@@ -3129,8 +3133,6 @@ _Pokedex_GetCursorMon:
 	call Pokedex_CopyTypeIconPals
 	pop bc
 	ld de, wDexMonType1Tiles
-	ldh a, [rSVBK]
-	push af
 	ld a, BANK(wDexMonType1Tiles)
 	ldh [rSVBK], a
 	push bc
@@ -3177,6 +3179,7 @@ _Pokedex_GetCursorMon:
 	dec c
 	jr nz, .outer_copy_loop
 
+.type_pals_done
 	ld a, [wPokedex_DisplayMode]
 	cp DEXDISP_DESC
 	jr c, .done_2
