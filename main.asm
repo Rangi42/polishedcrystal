@@ -195,6 +195,7 @@ INCLUDE "engine/battle/endturn.asm"
 
 SECTION "Pokedex", ROMX
 
+INCLUDE "engine/pokedex/area.asm"
 INCLUDE "engine/pokedex/lcd.asm"
 INCLUDE "engine/pokedex/pokedex.asm"
 
