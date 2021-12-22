@@ -227,8 +227,7 @@ Pokedex_GetAreaOAM:
 	ld e, l
 	ld hl, wVirtualOAMSprite36
 	ld a, 4 ; loop iterator
-	ld b, 132 ; x
-	ld c, 30 ; y
+	lb bc, 128, 30 ; x, y
 .type_loop
 	push af
 	ld a, c
