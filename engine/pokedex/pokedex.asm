@@ -124,7 +124,7 @@ Pokedex_LoadTilemapWithIconAndForm:
 	rst PlaceString
 
 	; Set dex number display position
-	ld a, 117
+	ld a, 116
 	ld [wPokedexOAM_DexNoX], a
 	ld a, 20
 	ld [wPokedexOAM_DexNoY], a
