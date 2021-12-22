@@ -68,23 +68,8 @@ _Pokedex_Area:
 	ld a, DEXDISP_AREA
 	ld [wPokedex_DisplayMode], a
 
-	; Set d to region and e to location
-	ldh a, [hPokedexAreaMode]
-	ld d, a
-	and $f
-	ld e, a
-	xor d
-	swap a
-	and $7
-	ld d, a
+	call Pokedex_GetAreaMode
 	push de
-
-	; Figure out area mode text
-	ld a, e
-	ld bc, 4
-	ld hl, Pokedex_AreaTypeLists
-	rst AddNTimes
-	push hl
 
 	; Retrieve the area tilemap
 	ld hl, DexTilemap_Kanto
@@ -97,15 +82,9 @@ _Pokedex_Area:
 .got_tilemap
 	call Pokedex_LoadTilemapWithIconAndForm
 
-	pop hl
-	decoord 16, 2
-	ld bc, 4
-	rst CopyBytes
-
 	pop de
 	call Pokedex_GetMonLocations
 
-	; when we have the town map data, fix this
 	ld a, 11
 	ld de, PHB_AreaSwitchTileMode
 	call Pokedex_ScheduleScreenUpdateWithHBlank
@@ -120,20 +99,20 @@ _Pokedex_Area:
 	rrca
 	jr c, .pressed_start
 	rrca
-	jmp c, .pressed_right
+	jr c, .pressed_right
 	rrca
 	jr c, .pressed_left
 	rrca
-	jmp c, .pressed_up
+	jr c, .pressed_up
 	rrca
-	jmp c, .pressed_down
+	jr c, .pressed_down
 	jr .joypad_loop
 
 .pressed_a
 	; Switch area type displayed
 	ld hl, hPokedexAreaMode
 	bit DEXAREA_UNKNOWN_F, [hl]
-	jr nz, .joypad_loop
+	jr z, .joypad_loop
 	inc [hl]
 	ld a, [hl]
 	and DEXAREA_TYPE_MASK
@@ -216,6 +195,57 @@ _Pokedex_Area:
 	call Pokedex_GetFirstIconTile
 	call Pokedex_GetCursorMon
 	jmp Pokedex_Area_ResetLocationData
+
+Pokedex_GetAreaMode:
+; Returns region displayed in d, location type in e.
+; Returns nz if area is "unknown" (unavailable).
+	ldh a, [hPokedexAreaMode]
+	ld d, a
+	and DEXAREA_TYPE_MASK
+	ld e, a
+	xor d
+	push af
+	and DEXAREA_REGION_MASK
+	swap a
+	ld d, a
+	pop af
+	bit DEXAREA_UNKNOWN_F, a
+	ret
+
+Pokedex_GetAreaOAM:
+; Handles OAM data for the area screen.
+; Caution: runs in WRAM3.
+	; Get a pointer to location type string for printing.
+	call Pokedex_GetAreaMode
+	ld l, e
+	ld h, 0
+	add hl, hl
+	add hl, hl
+	ld bc, Pokedex_AreaTypeLists
+	add hl, bc
+	ld d, h
+	ld e, l
+	ld hl, wVirtualOAMSprite36
+	ld a, 4 ; loop iterator
+	ld b, 132 ; x
+	ld c, 30 ; y
+.type_loop
+	push af
+	ld a, c
+	ld [hli], a
+	ld a, b
+	ld [hli], a
+	add 8
+	ld b, a
+	ld a, [de]
+	inc de
+	ld [hli], a
+	xor a
+	ld [hli], a
+	pop af
+	dec a
+	jr nz, .type_loop
+	ret
 
 Pokedex_GetMonLocations:
 ; Creates a table of nest coordinates for the given area mode.

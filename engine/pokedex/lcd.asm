@@ -204,7 +204,7 @@ Pokedex_RefreshScreen:
 	inc de
 	ld a, [de] ; indicator y pos
 	and a
-	jr z, .copy_back
+	jr z, .indicator_done
 	push hl
 	ld h, d
 	ld l, e
@@ -230,6 +230,12 @@ Pokedex_RefreshScreen:
 	ld [hli], a
 	dec e
 	jr nz, .indicator_oam_loop
+
+.indicator_done
+	; Area mode needs a lot of additional sprites, handled seperately.
+	ld a, [wPokedex_DisplayMode]
+	cp DEXDISP_AREA
+	call z, Pokedex_GetAreaOAM
 
 	; Copy it back.
 .copy_back
@@ -617,18 +623,53 @@ PHB_AreaSwitchTileMode:
 	ld hl, rLCDC
 	set rLCDC_TILE_DATA, [hl]
 
-	; TODO: scy fixup.
-	ld a, $84
+	ld b, 22
+	call PHB_WaitUntilLY_Mode0
+
+	xor a
+	ldh [rSCX], a
+	add 9
+	ldh [rSCY], a
+
+	ld a, $86
 	ld de, PHB_AreaSwitchTileMode2
 	call Pokedex_UnsafeSetHBlankFunction
 	jmp PopBCDEHL
+
+PHB_WaitUntilLY_Mode0:
+; Don't use this for more timing-critical h-blank setups.
+; Wait until mode0 for LY in b.
+.busyloop
+	ldh a, [rLY]
+	cp b
+	jr nz, .busyloop
+.busyloop2
+	ldh a, [rSTAT]
+	and $3
+	jr nz, .busyloop2
+	ret
 
 PHB_AreaSwitchTileMode2:
 	push hl
 	push de
 	push bc
+	ld hl, rSTAT
+.busyloop
+	ld a, [hl]
+	and $3
+	jr nz, .busyloop
+
+	ld a, 4
+	ldh [rSCX], a
+	ld a, -104 ; line 7 of tile 3 (0-indexed)
+	ldh [rSCY], a
+	ld b, $87
+	call PHB_WaitUntilLY_Mode0
+
 	ld hl, rLCDC
 	res rLCDC_TILE_DATA, [hl]
+	ld a, 8
+	ldh [rSCY], a
 	ld a, 11
 	ld de, PHB_AreaSwitchTileMode
 	call Pokedex_UnsafeSetHBlankFunction
