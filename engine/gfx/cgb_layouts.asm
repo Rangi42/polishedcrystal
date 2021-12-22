@@ -23,7 +23,7 @@ LoadCGBLayout::
 	dw _CGB_PartyMenu
 	dw _CGB_Evolution
 	dw _CGB_MoveList
-	dw _CGB_PokedexSearchOption
+	dw _CGB_Pokedex_PrepareOnly
 	dw _CGB_BuyMenu
 	dw _CGB_PackPals
 	dw _CGB_TrainerCard
@@ -343,6 +343,10 @@ _CGB_StatsScreenHPPals:
 	jmp _CGB_FinishLayout
 
 _CGB_Pokedex:
+	call _CGB_Pokedex_PrepareOnly
+	jmp _CGB_FinishLayout
+
+_CGB_Pokedex_PrepareOnly:
 	ld hl, PokedexPals
 	ld de, wBGPals1
 	ld c, 2 palettes
@@ -352,9 +356,7 @@ _CGB_Pokedex:
 	call LoadCPaletteBytesFromHLIntoDE
 	ld de, wOBPals1 + 2
 	ld c, 2 palettes - 2
-	call LoadCPaletteBytesFromHLIntoDE
-
-	jmp _CGB_FinishLayout
+	jmp LoadCPaletteBytesFromHLIntoDE
 
 _CGB_SlotMachine:
 	ld hl, SlotMachinePals
@@ -557,14 +559,6 @@ _CGB_MoveList:
 	ld c, 2
 	call LoadCPaletteBytesFromHLIntoDE
 
-	jmp _CGB_FinishLayout
-
-_CGB_PokedexSearchOption:
-	ld de, wBGPals1
-	ld hl, PokedexPals
-	call LoadHLPaletteIntoDE
-
-	call WipeAttrMap
 	jmp _CGB_FinishLayout
 
 _CGB_BuyMenu:

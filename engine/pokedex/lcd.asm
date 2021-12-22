@@ -289,6 +289,7 @@ StackDexGraphics:
 	call FarDecompressToDE
 
 	ld de, wDex2bpp
+	push de
 	ld hl, vTiles2
 	lb bc, BANK(PokedexLZ), $40
 	call Get2bpp
@@ -300,10 +301,23 @@ StackDexGraphics:
 	lb bc, BANK(PokedexLZ), $22
 	call Get2bpp
 
-	ld de, vTiles3 ; upper VBK1 tile area is intended
-	farcall _LoadTownMapGFX
+	ld de, vTiles3
+	ld hl, PokedexAreaLZ
+	lb bc, BANK(PokedexAreaLZ), $40
+	call DecompressRequest2bpp
 	xor a
 	ldh [rVBK], a
+
+	; ensure that vTiles0 $7f is whitespace (for the benefit of area display)
+	pop hl
+	push hl
+	ld bc, 1 tiles
+	xor a
+	rst ByteFill
+	pop de
+	ld hl, vTiles0 tile $7f
+	lb bc, BANK(PokedexLZ), 1
+	call Get2bpp
 
 	ld hl, DexOAM
 	ld de, vTiles0
@@ -586,12 +600,24 @@ _PHB_BioStatsSwitchSCY:
 	jmp PopBCDEHL
 
 PHB_AreaSwitchTileMode:
-	ret
 	push hl
 	push de
 	push bc
+
+	; There's nothing stopping us from changing rLCDC on a technical level, but
+	; doing it too early might result in part of the scanline reading from the
+	; wrong tileset section. Thus, we busyloop until mode0.
+	ld hl, rSTAT
+.busyloop
+	ld a, [hl]
+	and $3
+	jr nz, .busyloop
+
+	; Switch where we're reading tile data from.
 	ld hl, rLCDC
 	set rLCDC_TILE_DATA, [hl]
+
+	; TODO: scy fixup.
 	ld a, $84
 	ld de, PHB_AreaSwitchTileMode2
 	call Pokedex_UnsafeSetHBlankFunction
@@ -603,7 +629,7 @@ PHB_AreaSwitchTileMode2:
 	push bc
 	ld hl, rLCDC
 	res rLCDC_TILE_DATA, [hl]
-	ld a, 8
+	ld a, 11
 	ld de, PHB_AreaSwitchTileMode
 	call Pokedex_UnsafeSetHBlankFunction
 	jmp PopBCDEHL
