@@ -80,55 +80,12 @@ GetWeekday::
 ; Input: bc = form, species
 SetSeenAndCaughtMon::
 	push bc
-	ld a, c
-	cp LOW(UNOWN)
-	jr nz, .not_unown
-	assert !HIGH(UNOWN)
-	ld a, b
-	and SPECIESFORM_MASK
-	cp FORM_MASK + 1
-	jr nc, .not_unown
-	push bc
-	ld hl, wUnownDex
-	ld c, a
-	ld b, SET_FLAG
-	predef FlagPredef
-	pop bc
-.not_unown
 	ld hl, wPokedexCaught
 	call SetDexMon
 	pop bc
 	; fallthrough
 
 SetSeenMon::
-	ld a, c
-	cp LOW(UNOWN)
-	jr nz, .skip_unown
-	assert !HIGH(UNOWN)
-	ld a, b
-	and EXTSPECIES_MASK
-	jr nz, .skip_unown
-	ld hl, wFirstUnownSeen
-	ld a, [hl]
-	and a
-	jr nz, .skip_unown
-	ld [hl], b
-.skip_unown
-
-	ld a, c
-	cp LOW(MAGIKARP)
-	jr nz, .extras_done
-	assert !HIGH(MAGIKARP)
-	ld a, b
-	and EXTSPECIES_MASK
-	jr nz, .extras_done
-	ld hl, wFirstMagikarpSeen
-	ld a, [hl]
-	and a
-	jr nz, .extras_done
-	ld [hl], b
-.extras_done
-
 	ld hl, wPokedexSeen
 SetDexMon::
 	ld a, SET_FLAG
@@ -147,7 +104,7 @@ CheckDexMon::
 PokedexFlagAction::
 	push af
 	push hl
-	call GetSpeciesAndFormIndex
+	call GetCosmeticSpeciesAndFormIndex
 	ld d, b
 	ld e, c
 	pop hl

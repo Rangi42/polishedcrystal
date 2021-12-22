@@ -1443,7 +1443,7 @@ ItemActionTextWaitButton:
 	xor a
 	ldh [hBGMapMode], a
 	hlcoord 0, 0
-	ld bc, wTileMapEnd - wTileMap
+	ld bc, wTilemapEnd - wTilemap
 	ld a, " "
 	rst ByteFill
 	ld a, [wPartyMenuActionText]

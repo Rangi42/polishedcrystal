@@ -196,16 +196,6 @@ DoWonderTrade:
 	predef TryAddMonToParty
 
 	ld a, [wOTTrademonSpecies]
-	cp MAGIKARP
-	jr nz, .not_first_magikarp
-	ld a, [wFirstMagikarpSeen]
-	and a
-	jr nz, .not_first_magikarp
-	ld a, [wCurForm]
-	ld [wFirstMagikarpSeen], a
-.not_first_magikarp
-
-	ld a, [wOTTrademonSpecies]
 	ld de, wOTTrademonNickname
 	call GetTradeMonName
 	call CopyTradeName

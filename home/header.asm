@@ -115,6 +115,7 @@ ItemIsMail_a::
 
 
 SECTION "lcd", ROM0[$0048]
+	push af
 	jr hLCDInterruptFunction
 
 GetMemCGBLayout::

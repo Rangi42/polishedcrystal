@@ -359,7 +359,7 @@ IntroScene9:
 	xor a
 	ldh [hLCDCPointer], a
 	call ClearSprites
-	hlcoord 0, 0, wAttrMap
+	hlcoord 0, 0, wAttrmap
 	; first 12 rows have palette 1
 	ld bc, 12 * SCREEN_WIDTH
 	ld a, $1

@@ -42,41 +42,19 @@ BSOD:
 	ldh a, [hCrashCode]
 	call PrintNum_NoHRAM
 
-	and a ; a == ERR_RST_0?
-	ld de, BSOD_Rst0
-	jr z, .done
-	dec a ; a == ERR_DIV_ZERO?
-	ld de, BSOD_DivZero
-	jr z, .done
-	dec a ; a == ERR_EGG_SPECIES?
-	ld de, BSOD_EggSpecies
-	jr z, .done
-	dec a ; a == ERR_EXECUTING_RAM?
-	ld de, BSOD_ExecutingRAM
-	jr z, .done
-	dec a ; a == ERR_STACK_OVERFLOW?
-	ld de, BSOD_StackOverflow
-	jr z, .done
-	dec a ; a == ERR_STACK_UNDERFLOW?
-	ld de, BSOD_StackUnderflow
-	jr z, .done
-	dec a ; a == ERR_BT_STATE?
-	ld de, BSOD_OldBTState
-	jr z, .done
-	dec a ; a == ERR_VERSION_MISMATCH?
-	ld de, BSOD_VersionMismatch
-	jr z, .done
-	dec a ; a == ERR_OLDBOX?
-	ld de, BSOD_OldBox
-	jr z, .done
-	dec a ; a == ERR_NEWBOX?
-	ld de, BSOD_NewBox
-	jr z, .done
-	dec a ; a == ERR_WINSTACK_OVERFLOW?
-	ld de, BSOD_WinStackOverflow
-	jr z, .done
-	ld de, BSOD_UnknownError
-.done
+	cp NUM_ERR_CODES
+	jr c, .valid
+	ld a, NUM_ERR_CODES
+.valid
+	add a
+	add LOW(BSODErrorStrings)
+	ld l, a
+	adc HIGH(BSODErrorStrings)
+	sub l
+	ld h, a
+	ld a, [hli]
+	ld d, [hl]
+	ld e, a
 	hlcoord 1, 14
 	rst PlaceString
 
@@ -144,38 +122,31 @@ VBABSODMessage:
 	next1 "or Gambatte."
 	next  "Error:@"
 
-BSOD_Rst0:
-	db "rst 0@"
+BSODErrorStrings:
+	table_width 2, BSODErrorStrings
+	dw .Rst0             ; ERR_RST_0
+	dw .DivZero          ; ERR_DIV_ZERO
+	dw .EggSpecies       ; ERR_EGG_SPECIES
+	dw .ExecutingRAM     ; ERR_EXECUTING_RAM
+	dw .StackOverflow    ; ERR_STACK_OVERFLOW
+	dw .StackUnderflow   ; ERR_STACK_UNDERFLOW
+	dw .OldBTState       ; ERR_BT_STATE
+	dw .VersionMismatch  ; ERR_VERSION_MISMATCH
+	dw .OldBox           ; ERR_OLDBOX
+	dw .NewBox           ; ERR_NEWBOX
+	dw .WinStackOverflow ; ERR_WINSTACK_OVERFLOW
+	dw .UnknownError     ; unknown
+	assert_table_length NUM_ERR_CODES + 1
 
-BSOD_DivZero:
-	db "Division by zero@"
-
-BSOD_EggSpecies:
-	db "<PK><MN> species is Egg@"
-
-BSOD_ExecutingRAM:
-	db "Executing RAM@"
-
-BSOD_StackOverflow:
-	db "Stack overflow@"
-
-BSOD_StackUnderflow:
-	db "Stack underflow@"
-
-BSOD_OldBTState:
-	db "Old Battle Tower@"
-
-BSOD_VersionMismatch:
-	db "Version mismatch@"
-
-BSOD_OldBox:
-	db "Old PC box storage@"
-
-BSOD_NewBox:
-	db "Fatal PC box error@"
-
-BSOD_WinStackOverflow:
-	db "Win.stack overflow@"
-
-BSOD_UnknownError:
-	db "Unknown error@"
+.Rst0:             db "rst 0@"
+.DivZero:          db "Division by zero@"
+.EggSpecies:       db "<PK><MN> species is Egg@"
+.ExecutingRAM:     db "Executing RAM@"
+.StackOverflow:    db "Stack overflow@"
+.StackUnderflow:   db "Stack underflow@"
+.OldBTState:       db "Old Battle Tower@"
+.VersionMismatch:  db "Version mismatch@"
+.OldBox:           db "Old PC box storage@"
+.NewBox:           db "Fatal PC box error@"
+.WinStackOverflow: db "Win.stack overflow@"
+.UnknownError:     db "Unknown error@"

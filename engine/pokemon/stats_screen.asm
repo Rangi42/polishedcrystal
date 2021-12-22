@@ -313,7 +313,7 @@ StatsScreen_PlaceHorizontalDivider:
 .got_vertical_pos
 	ld [hl], $37
 .skip_t_divider
-	hlcoord 0, 7, wAttrMap
+	hlcoord 0, 7, wAttrmap
 	ld a, c
 	add $3
 	ld b, SCREEN_WIDTH

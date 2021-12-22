@@ -48,54 +48,6 @@ TryAddMonToParty:
 	ld bc, MON_NAME_LENGTH
 	rst CopyBytes
 
-; Cases to set [wCurForm] before calling GetBaseData:
-; - Gift Pokémon or Egg: givepoke/giveegg already set it
-; - Wild Pokémon: LoadEnemyMon already set it
-; - Roaming Pokémon: get it from wRoamMon#Form
-; - Trainer Pokémon: get it from party data (pushed by ReadTrainerParty)
-
-	ld a, [wMonType]
-	and $f
-	jr z, .not_trainer_form
-	ld a, [wBattleMode]
-	dec a
-	jr z, .not_trainer_form
-	; hl = party data, deep off the stack
-	; Here the stack contains:
-	; - sp+$6: party data for [wCurPartyMon], just past the level and species
-	; - sp+$4: return address for 'predef TryAddMonToParty'
-	; - sp+$2: af from _Predef (ReturnFarCall will pop this)
-	; - sp+$0: return address for 'call RetrieveAHLAndCallFunction'
-	ld hl, sp+$6
-	ld a, [hli]
-	ld h, [hl]
-	ld l, a
-	ld a, [wOtherTrainerType]
-	bit TRNTYPE_ITEM, a
-	jr z, .no_skip_trainer_item
-	inc hl
-.no_skip_trainer_item
-	bit TRNTYPE_EVS, a
-	jr z, .no_skip_trainer_evs
-	inc hl
-.no_skip_trainer_evs
-	bit TRNTYPE_DVS, a
-	jr z, .no_skip_trainer_dvs
-	inc hl
-	inc hl
-	inc hl
-.no_skip_trainer_dvs
-	bit TRNTYPE_PERSONALITY, a
-	ld a, NO_FORM
-	jr z, .got_trainer_form
-	inc hl
-	ld a, [wTrainerGroupBank]
-	call GetFarByte
-	and SPECIESFORM_MASK
-.got_trainer_form
-	ld [wCurForm], a
-.not_trainer_form
-
 	ld a, [wBattleType]
 	cp BATTLETYPE_ROAMING
 	jr nz, .not_roaming_form

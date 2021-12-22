@@ -295,7 +295,7 @@ HatchEggs:
 
 	ld a, MON_IS_EGG
 	call GetPartyParamLocationAndValue
-	and $ff ^ IS_EGG_MASK
+	and ~IS_EGG_MASK
 	ld [hl], a
 
 	ld a, [wCurPartySpecies]

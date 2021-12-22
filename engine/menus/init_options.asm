@@ -18,7 +18,7 @@ SetInitialOptions:
 	xor a
 	rst ByteFill
 
-	hlcoord 0, 0, wAttrMap
+	hlcoord 0, 0, wAttrmap
 	ld bc, SCREEN_HEIGHT * SCREEN_WIDTH
 	xor a
 	rst ByteFill
@@ -428,7 +428,7 @@ InitialOptions_UpdateCursorPosition:
 	add hl, bc
 	ld a, [hl]
 	; hlcoord 1, a
-	ld hl, wTileMap
+	ld hl, wTilemap
 	ld bc, SCREEN_WIDTH
 	rst AddNTimes
 	inc hl

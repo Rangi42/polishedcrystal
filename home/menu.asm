@@ -199,7 +199,7 @@ PushWindow_MenuBoxCoordToTile::
 	jr PushWindow_MenuBoxCoordToAbsolute
 
 PushWindow_MenuBoxCoordToAttr::
-	bccoord 0, 0, wAttrMap
+	bccoord 0, 0, wAttrmap
 
 ; fallthrough
 PushWindow_MenuBoxCoordToAbsolute:
@@ -221,7 +221,7 @@ MenuBoxCoord2Tile::
 	; fallthrough
 
 Coord2Tile::
-; Return the address of wTileMap(c, b) in hl.
+; Return the address of wTilemap(c, b) in hl.
 	call Coord2Absolute
 	bccoord 0, 0
 	add hl, bc
@@ -239,9 +239,9 @@ MenuBoxCoord2Attr::
 	; fallthrough
 
 Coord2Attr::
-; Return the address of wAttrMap(c, b) in hl.
+; Return the address of wAttrmap(c, b) in hl.
 	call Coord2Absolute
-	bccoord 0, 0, wAttrMap
+	bccoord 0, 0, wAttrmap
 	add hl, bc
 	ret
 

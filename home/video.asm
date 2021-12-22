@@ -142,7 +142,7 @@ WaitTop::
 HALF_HEIGHT EQU SCREEN_HEIGHT / 2
 
 UpdateBGMap::
-; Update the BG Map, in halves, from wTileMap and wAttrMap.
+; Update the BG Map, in halves, from wTilemap and wAttrmap.
 
 	ldh a, [hBGMapMode]
 	and $7f
@@ -167,7 +167,7 @@ UpdateBGMap::
 	jr z, .DoCustomSourceTiles
 	dec a
 	ret nz
-	bccoord 0, 0, wAttrMap
+	bccoord 0, 0, wAttrmap
 	ld a, 1
 	ldh [rVBK], a
 	call .DoCustomSourceTiles
@@ -226,14 +226,14 @@ UpdateBGMap::
 	and a ; 0
 	jr z, .AttributeMapTop
 ; bottom row
-	coord sp, 0, 9, wAttrMap
+	coord sp, 0, 9, wAttrmap
 	ld de, HALF_HEIGHT * BG_MAP_WIDTH
 	add hl, de
 ; Next time: top half
 	xor a
 	jr .startCopy
 .AttributeMapTop
-	coord sp, 0, 0, wAttrMap
+	coord sp, 0, 0, wAttrmap
 ; Next time: bottom half
 	jr .AttributeMapTopContinue
 
@@ -267,7 +267,7 @@ UpdateBGMap::
 ; Rows of tiles in a half
 	ld a, SCREEN_HEIGHT / 2
 .startCustomCopy
-; Discrepancy between wTileMap and BGMap
+; Discrepancy between wTilemap and BGMap
 	ld bc, BG_MAP_WIDTH - (SCREEN_WIDTH - 1)
 .row
 ; Copy a row of 20 tiles

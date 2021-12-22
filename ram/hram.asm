@@ -1,9 +1,5 @@
 SECTION "HRAM", HRAM
 
-HRAM_START::
-
-hPushOAM:: ds 5
-
 hScriptVar:: dw
 
 hROMBankBackup:: db
@@ -178,6 +174,7 @@ hChartScreen:: db
 hChartFillCoord:: db
 hChartLineCoord:: db
 NEXTU
+hPokedexAreaMode:: ; %xyyyzzzz, x: area unknown, y: region, z: location type
 hPokedexStatsCurAbil:: db
 	ds 2
 ENDU
@@ -232,5 +229,3 @@ hBitwiseRet::    db ; $c9 ret
 hSingleOperation::
 hSingleOpcode:: db ; opcode
 hSingleRet::    db ; $c9 ret
-
-HRAM_END::

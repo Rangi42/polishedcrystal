@@ -70,7 +70,7 @@ EvolutionAnimation:
 	ld [wCurSpecies], a
 	ld a, [hl]
 	ld [wCurForm], a
-	
+
 	call .LoadFrontpic
 	ld hl, wEvolutionOldSpecies
 	ld a, [hli]

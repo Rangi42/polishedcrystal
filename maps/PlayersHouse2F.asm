@@ -277,16 +277,6 @@ endr
 	end
 
 FillPokedex:
-	ld a, 1
-;	ld [wUnlockedUnownMode], a
-	ld [wFirstUnownSeen], a
-	ld [wFirstMagikarpSeen], a
-;	ld hl, wUnownDex
-;	ld a, 1
-;rept NUM_UNOWN
-;	ld [hli], a
-;	inc a
-;endr
 	ld hl, wPokedexSeen
 	call .Fill
 	ld hl, wPokedexCaught

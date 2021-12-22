@@ -16,6 +16,8 @@ jobs:
         sudo apt-get install make python gcc git bison
         git clone -b v0.5.2 --depth=1 https://github.com/gbdev/rgbds
         pushd rgbds
+        git fetch
+        git checkout 3e945679ad615692c3e9c07f52a21922b561c9a6
         sudo make install
         popd
     - name: Build Rangi42/polishedcrystal

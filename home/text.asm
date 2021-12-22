@@ -22,14 +22,14 @@ FillBoxWithByte::
 
 ClearScreen::
 	ld a, PAL_BG_TEXT
-	hlcoord 0, 0, wAttrMap
+	hlcoord 0, 0, wAttrmap
 	ld bc, SCREEN_WIDTH * SCREEN_HEIGHT
 	rst ByteFill
 ClearTileMap::
-; Fill wTileMap with blank tiles.
+; Fill wTilemap with blank tiles.
 	hlcoord 0, 0
 	ld a, " "
-	ld bc, wTileMapEnd - wTileMap
+	ld bc, wTilemapEnd - wTilemap
 	rst ByteFill
 	; Update the BG Map.
 	ldh a, [rLCDC]
@@ -55,7 +55,7 @@ Textbox::
 	; fallthrough
 TextboxPalette::
 ; Fill text box width c height b at hl with pal 7
-	ld de, wAttrMap - wTileMap
+	ld de, wAttrmap - wTilemap
 	add hl, de
 	inc b
 	inc b

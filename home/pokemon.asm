@@ -291,7 +291,6 @@ GetPokedexNumber::
 ; input: c = species, b = extspecies+form
 ; output bc = de = pokedex number ((256*extspecies + c) - (2*extspecies))
 ; this reflects how c = $00 and c = $ff don't have a pokédex number.
-; TODO: Should be able to handle regional dex order.
 	ld a, [wPokedexMode]
 	and a
 	jr nz, GetNationalDexNumber
@@ -366,7 +365,6 @@ GetSpeciesAndFormIndexFromHL::
 	ld a, l
 	cpl
 	ld e, a
-	dec hl
 	call .helper
 	jr nc, .final
 	ccf
@@ -392,42 +390,29 @@ GetSpeciesAndFormIndexFromHL::
 	ld a, b
 	and SPECIESFORM_MASK
 	ld b, a
-.next
-	inc hl
 .loop
 	ld a, [hli]
 	and a
 	jr z, .normal
 	cp c
-	jr nz, .next
-
-	; If form mask is 0, only verify extspecies
-	ld a, SPECIESFORM_MASK
-	and [hl]
-	jr nz, .not_null_speciesform
-
-	; Compare extspecies only
-	ld a, b
-	and EXTSPECIES_MASK
-	jr z, .found_index
-	jr .next
-
-.not_null_speciesform
-	cp EXTSPECIES_MASK
-	jr nz, .full_comparision
-
-	; Table index is extspecies only. If input form isn't, ignore it.
-	bit MON_EXTSPECIES_F, b
-	jr z, .next
-.found_index
-	inc hl ; makes sure we point at a proper index with final helper
-	ret
-
-.full_comparision
 	ld a, [hli]
-	cp b
 	jr nz, .loop
-	dec bc
+
+	; Verify correct extspecies+form.
+	xor b
+	ret z ; perfect match
+
+	; Is the mismatch due to wrong species (extspecies mismatch)?
+	; We can check this by comparing on form mask+1, since form is
+	; right below extspecies.
+	assert (EXTSPECIES_MASK > FORM_MASK)
+	cp (FORM_MASK + 1)
+	jr nc, .loop
+
+	; Otherwise, check if we care about exact form.
+	xor b ; revert previous "xor b" to regain the value in [hl-1]
+	and FORM_MASK ; does the table contain an exact form?
+	jr nz, .loop
 	ret
 
 .egg

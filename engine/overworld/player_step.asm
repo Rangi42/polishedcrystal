@@ -212,7 +212,7 @@ ScrollMapDown::
 	hlcoord 0, 0
 	ld de, wBGMapBuffer + 8
 	call BackupBGMapRow
-	hlcoord 0, 0, wAttrMap
+	hlcoord 0, 0, wAttrmap
 	ld de, wBGMapPalBuffer + 8
 	call BackupBGMapRow
 	ld a, [wBGMapAnchor]
@@ -229,7 +229,7 @@ ScrollMapUp::
 	hlcoord 0, SCREEN_HEIGHT - 2
 	ld de, wBGMapBuffer + 8
 	call BackupBGMapRow
-	hlcoord 0, SCREEN_HEIGHT - 2, wAttrMap
+	hlcoord 0, SCREEN_HEIGHT - 2, wAttrmap
 	ld de, wBGMapPalBuffer + 8
 	call BackupBGMapRow
 	ld hl, wBGMapAnchor
@@ -254,7 +254,7 @@ ScrollMapRight::
 	hlcoord 0, 0
 	ld de, wBGMapBuffer + 8
 	call BackupBGMapColumn
-	hlcoord 0, 0, wAttrMap
+	hlcoord 0, 0, wAttrmap
 	ld de, wBGMapPalBuffer + 8
 	call BackupBGMapColumn
 	ld a, [wBGMapAnchor]
@@ -271,7 +271,7 @@ ScrollMapLeft::
 	hlcoord SCREEN_WIDTH - 2, 0
 	ld de, wBGMapBuffer + 8
 	call BackupBGMapColumn
-	hlcoord SCREEN_WIDTH - 2, 0, wAttrMap
+	hlcoord SCREEN_WIDTH - 2, 0, wAttrmap
 	ld de, wBGMapPalBuffer + 8
 	call BackupBGMapColumn
 	ld a, [wBGMapAnchor]

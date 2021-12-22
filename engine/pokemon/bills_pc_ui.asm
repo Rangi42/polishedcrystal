@@ -199,25 +199,25 @@ UseBillsPC:
 	ldh [rVBK], a
 
 	; Pokepic attributes
-	hlcoord 0, 0, wAttrMap
+	hlcoord 0, 0, wAttrmap
 	lb bc, 7, 7
 	ld a, 2
 	call FillBoxWithByte
 
 	; Shiny and PkRs
-	hlcoord 5, 8, wAttrMap
+	hlcoord 5, 8, wAttrmap
 	ld a, $3
 	ld [hli], a
 	ld [hl], a
 
 	; Item name is in vbk1
-	hlcoord 10, 2, wAttrMap ; Cursor's item
+	hlcoord 10, 2, wAttrmap ; Cursor's item
 	ld bc, 10
 	ld a, VRAM_BANK_1
 	push bc
 	rst ByteFill
 	pop bc
-	hlcoord 10, 3, wAttrMap ; Mon's item
+	hlcoord 10, 3, wAttrmap ; Mon's item
 	rst ByteFill
 
 	; Storage box
@@ -232,7 +232,7 @@ UseBillsPC:
 	call .SpecialRow
 
 	; set up box title to use vbk0 (previously set to vbk1 by .Box)
-	hlcoord 8, 5, wAttrMap
+	hlcoord 8, 5, wAttrmap
 	ld bc, 11
 	ld a, 7
 	rst ByteFill
@@ -313,7 +313,7 @@ UseBillsPC:
 	push hl
 	call CreateBoxBorders
 	pop hl
-	ld bc, wAttrMap - wTileMap
+	ld bc, wAttrmap - wTilemap
 	add hl, bc
 	pop bc
 	ld de, .BoxAttr
@@ -344,7 +344,7 @@ UseBillsPC:
 	dec a
 	ld [hl], a
 	pop hl
-	ld bc, wAttrMap - wTileMap
+	ld bc, wAttrmap - wTilemap
 	add hl, bc
 	pop bc
 	ld a, 1
@@ -383,7 +383,7 @@ UseBillsPC:
 	inc a
 	ld [hld], a
 	inc a
-	ld bc, -SCREEN_WIDTH + (wAttrMap - wTileMap)
+	ld bc, -SCREEN_WIDTH + (wAttrmap - wTilemap)
 	add hl, bc
 	ld [hl], e
 	inc hl
@@ -394,7 +394,7 @@ UseBillsPC:
 	inc hl
 	ld [hl], e
 	inc e
-	ld bc, -SCREEN_WIDTH + 2 + (wTileMap - wAttrMap)
+	ld bc, -SCREEN_WIDTH + 2 + (wTilemap - wAttrmap)
 	add hl, bc
 	pop bc
 	ret
@@ -1017,7 +1017,7 @@ _GetCursorMon:
 	cp $13
 	jr nc, .delay_loop
 
-	ld a, [wAttrMap]
+	ld a, [wAttrmap]
 	and VRAM_BANK_1
 	pop hl
 	push af
@@ -1068,7 +1068,7 @@ _GetCursorMon:
 	jr nz, .got_new_tile_bank
 	ld a, 2 | VRAM_BANK_1
 .got_new_tile_bank
-	hlcoord 0, 0, wAttrMap
+	hlcoord 0, 0, wAttrmap
 	lb bc, 7, 7
 	call FillBoxWithByte
 

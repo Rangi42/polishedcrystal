@@ -213,7 +213,7 @@ LoadMapTimeOfDay:
 	call .ClearBGMap
 	decoord 0, 0
 	call .copy
-	decoord 0, 0, wAttrMap
+	decoord 0, 0, wAttrmap
 	ld a, $1
 	ldh [rVBK], a
 .copy

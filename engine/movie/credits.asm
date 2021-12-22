@@ -525,22 +525,22 @@ ConstructCreditsTilemap:
 	ld a, $20
 	call DrawCreditsBorder
 
-	hlcoord 0, 0, wAttrMap
+	hlcoord 0, 0, wAttrmap
 	ld bc, 4 * SCREEN_WIDTH
 	xor a
 	rst ByteFill
 
-	hlcoord 0, 4, wAttrMap
+	hlcoord 0, 4, wAttrmap
 	ld bc, SCREEN_WIDTH
 	ld a, $1
 	rst ByteFill
 
-	hlcoord 0, 5, wAttrMap
+	hlcoord 0, 5, wAttrmap
 	ld bc, 12 * SCREEN_WIDTH
 	ld a, $2
 	rst ByteFill
 
-	hlcoord 0, 17, wAttrMap
+	hlcoord 0, 17, wAttrmap
 	ld bc, SCREEN_WIDTH
 	ld a, $1
 	rst ByteFill

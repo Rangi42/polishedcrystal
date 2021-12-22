@@ -117,7 +117,7 @@ Special_DisplayUnownWords:
 
 .copy
 	call .CopyWord
-	ld bc, wAttrMap - wTileMap
+	ld bc, wAttrmap - wTilemap
 	add hl, bc
 	call .FillAttr
 	call ApplyAttrAndTilemapInVBlank

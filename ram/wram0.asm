@@ -276,12 +276,12 @@ wVirtualOAMEnd::
 SECTION "Tilemap and Attrmap", WRAM0
 
 ; Some code depend on these being next to each other in memory.
-wTileMap::
+wTilemap::
 ; 20x18 grid of 8x8 tiles
 	ds SCREEN_WIDTH * SCREEN_HEIGHT
-wTileMapEnd::
+wTilemapEnd::
 
-wAttrMap::
+wAttrmap::
 ; 20x18 grid of palettes for 8x8 tiles
 ; read horizontally from the top row
 ; bit 7: priority
@@ -291,7 +291,7 @@ wAttrMap::
 ; bit 3: vram bank (cgb only)
 ; bit 2-0: pal # (cgb only)
 	ds SCREEN_WIDTH * SCREEN_HEIGHT
-wAttrMapEnd::
+wAttrmapEnd::
 
 
 SECTION UNION "Misc 480", WRAM0
@@ -341,8 +341,14 @@ wLinkPlayerFixedPartyMon1ID:: ds 3
 SECTION UNION "Misc 480", WRAM0
 ; battle + pokédex (merged because pokédex can be called from battle)
 
+; wLCDPokedex is defined in a LOAD UNION block in engine/pokedex/lcd.asm
+; Reserve space for it at the beginning of this LOAD UNION
+	ds 15
+	assert wLCDPokedexEnd - wLCDPokedex == @ - STARTOF("Misc 480")
+
 ; Battle data
 wBattle::
+
 wEnemyMoveStruct::  move_struct wEnemyMoveStruct
 wPlayerMoveStruct:: move_struct wPlayerMoveStruct
 
@@ -666,11 +672,6 @@ wDVAndPersonalityBuffer:: ds 5
 wBattleEnd::
 
 ; Pokédex data.
-wPokedex_HBlankCode::
-wPokedex_HBlankHeader:: ds 9 ; push af, backup rombank, bankswitch, call...
-wPokedex_HBlankFunction:: dw ; ...(function to call)...
-wPokedex_HBlankFooter:: ds 5 ; ...restore backup, bankswitch back, pop af, reti
-wPokedex_HBlankCodeEnd::
 
 ; For setting up a new HBlank trigger
 wPokedex_PendingLYC:: db

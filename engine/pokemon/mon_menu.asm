@@ -466,7 +466,7 @@ _UpdateMewtwoForm:
 .got_form
 	ld d, a
 	ld a, [hl]
-	and $ff ^ SPECIESFORM_MASK
+	and ~SPECIESFORM_MASK
 	or d
 	ld [hl], a
 	ret
@@ -1499,7 +1499,7 @@ MoveScreen_ListMoves:
 	; Now we have things set up correctly
 	hlcoord 10, 4
 	predef ListMovePP
-	hlcoord 1, 12, wAttrMap
+	hlcoord 1, 12, wAttrmap
 	ld bc, 6
 	xor a
 	rst ByteFill
