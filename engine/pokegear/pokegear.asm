@@ -2420,8 +2420,5 @@ INCBIN "gfx/town_map/kanto.bin"
 OrangeMap:
 INCBIN "gfx/town_map/orange.bin"
 
-PokedexNestIconGFX:
-INCBIN "gfx/town_map/dexmap_nest_icon.2bpp"
-
 PokegearGFX:
 INCBIN "gfx/pokegear/pokegear.2bpp.lz"
