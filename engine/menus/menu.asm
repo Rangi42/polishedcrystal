@@ -554,6 +554,15 @@ _PushWindow::
 	ld a, l
 	ld [de], a
 	dec de
+
+	; Check if a window stack overflow happened.
+	ld a, d
+	cp $d0
+	jr nc, .no_overflow
+	ld a, ERR_WINSTACK_OVERFLOW
+	jmp Crash
+
+.no_overflow
 	ld hl, wWindowStackPointer
 	ld [hl], e
 	inc hl

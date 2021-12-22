@@ -22,7 +22,7 @@ cd polishedcrystal
 mkdir rgbds
 ```
 
-Then download [**rgbds**](https://rgbds.gbdev.io/). If you're building Polished Crystal 2.2.0, get rgbds version 0.3.9. If you're building the 3.0.0 beta, you'll need version **0.5.1**. Extract the archive and put all the .exe and .dll files in polishedcrystal/rgbds.
+Then download [**rgbds**](https://rgbds.gbdev.io/). If you're building Polished Crystal 2.2.0, get rgbds version 0.3.9. If you're building the 3.0.0 beta, you'll need version **0.5.2**. Extract the archive and put all the .exe and .dll files in polishedcrystal/rgbds.
 
 To build **polishedcrystal.gbc**:
 

@@ -1,5 +1,5 @@
 newgroup: MACRO
-const_value = const_value + 1
+const_value += 1
 __map_value__ = 1
 ENDM
 
@@ -9,7 +9,7 @@ map_const: MACRO
 ;\3: height: in blocks
 GROUP_\1 EQU const_value
 MAP_\1 EQU __map_value__
-__map_value__ = __map_value__ + 1
+__map_value__ += 1
 \1_WIDTH  EQU \2
 \1_HEIGHT EQU \3
 ENDM

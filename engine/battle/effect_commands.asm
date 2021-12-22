@@ -1301,12 +1301,25 @@ BattleCommand_stab:
 	ld a, BATTLE_VARS_SUBSTATUS2
 	call GetBattleVar
 	bit SUBSTATUS_IN_ABILITY, a
-	ld a, $14
+	ln a, 1, 4 ; x0.25
 	call nz, MultiplyAndDivide
 
 	; Second ability pass
 	push hl
 	farcall ApplyDamageAbilities_AfterTypeMatchup
+
+	; Expert Belt
+	call GetUserItem
+	ld a, b
+	cp HELD_EXPERT_BELT
+	jr nz, .no_expert_belt
+
+	ld a, [wTypeModifier]
+	cp $11
+	ln a, 6, 5 ; x1.2
+	call nc, MultiplyAndDivide
+
+.no_expert_belt
 	pop hl
 
 	ld a, $10
@@ -1472,7 +1485,7 @@ _CheckTypeMatchup:
 	call GetOpponentAbilityAfterMoldBreaker
 	cp OVERCOAT
 	jr nz, .skip_powder
-	ld a, 3
+	ld a, ATKFAIL_ABILITY
 	ld [wAttackMissed], a
 	jr .Immune
 
@@ -3936,8 +3949,6 @@ BattleCommand_damagecalc:
 	jr z, .category_boost
 	cp HELD_CHOICE
 	jr z, .choice
-	cp HELD_EXPERT_BELT
-	jr z, .expert_belt
 	cp HELD_METRONOME
 	jr z, .metronome_item
 
@@ -3987,12 +3998,6 @@ BattleCommand_damagecalc:
 	swap a
 	add b
 	call MultiplyAndDivide
-	jr .done_attacker_item
-.expert_belt
-	ld a, [wTypeModifier]
-	cp $11
-	ln a, 6, 5 ; x1.2
-	call nc, MultiplyAndDivide
 	; fallthrough
 .done_attacker_item
 	call GetOpponentItem
