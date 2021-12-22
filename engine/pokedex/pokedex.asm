@@ -124,7 +124,7 @@ Pokedex_LoadTilemapWithIconAndForm:
 	rst PlaceString
 
 	; Set dex number display position
-	ld a, 117
+	ld a, 116
 	ld [wPokedexOAM_DexNoX], a
 	ld a, 20
 	ld [wPokedexOAM_DexNoY], a
@@ -3476,9 +3476,6 @@ INCBIN "gfx/pokedex/bio.bin.lz"
 DexTilemap_Stats:
 INCBIN "gfx/pokedex/stats.bin.lz"
 
-DexTilemap_Area:
-INCBIN "gfx/pokedex/area.bin.lz"
-
 DexTilemap_Search:
 INCBIN "gfx/pokedex/search.bin.lz"
 
@@ -3487,6 +3484,18 @@ INCBIN "gfx/pokedex/mode.bin.lz"
 
 PokedexLZ:
 INCBIN "gfx/pokedex/pokedex.2bpp.lz"
+
+DexTilemap_Kanto:
+INCBIN "gfx/pokedex/kanto.bin.lz"
+
+DexTilemap_Johto:
+INCBIN "gfx/pokedex/johto.bin.lz"
+
+DexTilemap_Orange:
+INCBIN "gfx/pokedex/orange.bin.lz"
+
+PokedexAreaLZ:
+INCBIN "gfx/pokedex/area.2bpp.lz"
 
 PokedexSlowpokeLZ:
 INCBIN "gfx/pokedex/slowpoke.2bpp.lz"

@@ -1,16 +1,4 @@
 if !DEF(MONOCHROME)
-	; BG0: main areas
-	RGB 31, 31, 31
-	RGB 23, 23, 23
-	RGB 26, 10, 06
-	RGB 00, 00, 00
-
-	; BG1: blue areas
-	RGB 31, 31, 31
-	RGB 23, 23, 23
-	RGB 00, 00, 00
-	RGB 11, 14, 31
-
 	; BG3: land and water
 	RGB 31, 31, 31
 	RGB 00, 24, 15
@@ -41,7 +29,7 @@ if !DEF(MONOCHROME)
 	RGB 00, 20, 12
 	RGB 00, 16, 10
 else
-rept 7
+rept 5
 	RGB_MONOCHROME_WHITE
 	RGB_MONOCHROME_LIGHT
 	RGB_MONOCHROME_DARK
