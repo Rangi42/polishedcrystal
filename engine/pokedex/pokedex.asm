@@ -3109,7 +3109,7 @@ _Pokedex_GetCursorMon:
 	pop af
 	ldh a, [rSVBK]
 	push af
-	jmp z, .type_pals_done
+	jr z, .type_pals_done
 
 	ld a, 1
 	ld [wPokedexOAM_IsCaught], a

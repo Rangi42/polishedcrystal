@@ -65,7 +65,7 @@ Landmarks:
 	landmark 140,  60, BlackthornCityName
 	landmark 140,  52, DragonsDenName
 	landmark 140,  80, Route45Name
-	landmark 120,  84, DarkCaveName
+	landmark 124,  84, DarkCaveName
 	landmark 132, 104, Route46Name
 	landmark 152,  76, SilverCaveName
 	landmark 110, 140, FastShipName
