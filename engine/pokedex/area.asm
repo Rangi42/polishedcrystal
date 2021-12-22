@@ -21,9 +21,6 @@ Pokedex_Area_ResetLocationData:
 	ld a, BANK(wBGPals1)
 	ldh [rSVBK], a
 	ld hl, DexAreaPals
-	ld de, wBGPals1
-	ld bc, 2 palettes
-	rst CopyBytes
 	ld de, wBGPals1 palette 3
 	ld bc, 5 palettes
 	rst CopyBytes
