@@ -1,3 +1,4 @@
+if DEF(DEBUG)
 PokedexDebugFlags:
 ; Clears dex flags and sets some new ones for testing.
 ; Temporary; should be removed when dex is confirmed as fully working.
@@ -43,6 +44,7 @@ PokedexDebugFlags:
 	dp UNOWN, UNOWN_C_FORM
 	dp VULPIX, ALOLAN_FORM
 	db 0
+endc
 
 Pokedex:
 ;	call PokedexDebugFlags
