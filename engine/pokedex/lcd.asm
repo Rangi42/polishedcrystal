@@ -473,6 +473,7 @@ Pokedex_GetMainOAM:
 	jr nz, .mini_oam_outer_loop
 
 	; Figure out scrollbar position.
+	xor a
 	push hl
 	ld hl, hMultiplicand
 	ld [hli], a
@@ -495,7 +496,6 @@ Pokedex_GetMainOAM:
 
 .got_scrollbar_offset
 	pop hl
-	ld a, 85
 	ld [hli], a
 	ld a, 160
 	ld [hli], a
