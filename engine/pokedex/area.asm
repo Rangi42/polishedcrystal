@@ -243,7 +243,6 @@ Pokedex_GetAreaOAM:
 	ldh a, [hPokedexAreaMode]
 	and DEXAREA_REGION_MASK
 	cp ORANGE_REGION << 4
-	push af
 	lb de, 1, 8
 	lb hl, 0, $0b
 	lb bc, 115, 143
@@ -256,11 +255,8 @@ Pokedex_GetAreaOAM:
 	call Pokedex_WriteOAM
 	ld d, 1
 	ld l, $10
-	ld b, 129
-	pop af
-	jr nz, .not_orange_2
-	ld b, 121
-.not_orange_2
+	dec b
+	dec b
 	call Pokedex_WriteOAM
 
 	; We want to print a VWF string. To do this, we must first clear the tiles.
