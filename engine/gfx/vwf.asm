@@ -12,6 +12,7 @@ _PlaceVWFString::
 ; - invert:        xor [hl] / ld [hld], a / ld [hl], a / ret
 ; - opaque:         or [hl] / ld [hld], a /              ret
 ; - invert+opaque: xor [hl] / ld [hld], a /              ret
+	push af
 	push hl
 	ld hl, hAppendVWFText
 	bit VWF_INVERT_F, b
@@ -29,9 +30,8 @@ _PlaceVWFString::
 .opaque
 	ld [hl], $c9 ; ret
 	pop hl
+	pop af
 
-.main_loop
-	ld a, [de]
 	inc de
 	cp "@"
 	ret z
@@ -122,22 +122,14 @@ _PlaceVWFString::
 	pop af ; from push bc
 
 	ld b, a
-	bit VWF_SINGLE_F, a
-	ret nz
-
-	jr .main_loop
+	or 1
+	ret
 
 _GetVWFLength::
 ; Returns length of string de in a.
-	push de
-	push bc
-	ld c, 0
-
-.loop
-	ld a, [de]
 	inc de
 	cp "@"
-	jr z, .done
+	ret z
 
 	push hl
 	push de
@@ -155,12 +147,7 @@ _GetVWFLength::
 	ld c, a
 	pop de
 	pop hl
-	jr .loop
-
-.done
-	ld a, c
-	pop bc
-	pop de
+	or 1
 	ret
 
 INCLUDE "gfx/vwf.asm"
