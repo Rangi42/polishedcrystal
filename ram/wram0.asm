@@ -703,7 +703,6 @@ wPokedex_Form:: db
 
 wPokedexOAM_DexNoX:: db
 wPokedexOAM_DexNoY:: db
-wPokedexOAM_DexNoStr:: ds 3
 wPokedexOAM_IsCaught:: db
 
 wPokedex_NumSeen:: dw

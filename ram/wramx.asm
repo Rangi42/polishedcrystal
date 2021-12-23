@@ -1508,11 +1508,6 @@ wDexMonShapeTiles:: ds 4 tiles
 wDexMonTilesEnd::
 ENDU
 
-wDexVirtualOAMCopy:: ds 4 * (5 + 4 * 3) ; 5 balls + 3 minis
-wDexVirtualOAMScrollbarCopy:: ds 4
-wDexVirtualOAMDexNoCopy:: ds 4 * 6
-wDexVirtualOAMCopyEnd::
-
 ; Copy of dex row tile info. H-Blank uses a copy in wram0.
 wDexPalCopy::
 wDexRow1Tile: db ; Sprite offset for dex minis col 2-4
@@ -1523,6 +1518,12 @@ wDexRow3Tile: db
 wDexRow3Pals:: ds PAL_COLOR_SIZE * 3 * 5
 wDexPalCopyEnd::
 
+wDexNoStr::
+wDexNoStrBall:: db ; ball if caught, $7f otherwise
+wDexNoStrNo:: ds 2 ; "No."
+wDexNoStrNumber:: ds 3 ; the dex number
+
+; These are for the list view. For the "No.123", see wPokedexOAM_DexNo in wram0.
 wDexNumber:: dw
 wDexNumberString:: ds 4 ; 3 numbers including leading zeroes + terminator
 
