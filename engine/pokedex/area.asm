@@ -7,6 +7,7 @@ Pokedex_AreaTypeLists:
 	rawchar "Good Rod@"
 	rawchar "Super Rod@"
 	rawchar "Headbutt@"
+	rawchar "Rock Smash@"
 	rawchar "Bug Contest@"
 
 Pokedex_Area:

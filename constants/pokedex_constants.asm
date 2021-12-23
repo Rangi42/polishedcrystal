@@ -33,6 +33,7 @@ DEXAREA_WILDS EQU const_value ; Areas above are handled by GetWildLocations
 	const DEXAREA_GOOD_ROD
 	const DEXAREA_SUPER_ROD
 	const DEXAREA_TREE
+	const DEXAREA_ROCK
 	const DEXAREA_GAME
 NUM_DEXAREA EQU const_value
 
