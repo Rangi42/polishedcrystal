@@ -135,7 +135,7 @@ _Pokedex_Area:
 	; Switch displayed region
 	ld hl, hPokedexAreaMode
 	bit DEXAREA_UNKNOWN_F, [hl]
-	jr nz, .joypad_loop
+	jr z, .joypad_loop
 	ld hl, hPokedexAreaMode
 	ld a, [hl]
 	add $10
@@ -143,6 +143,7 @@ _Pokedex_Area:
 	and DEXAREA_REGION_MASK
 	cp NUM_REGIONS << 4
 	jr z, .loopback_area_mode
+	jr _Pokedex_Area
 
 	; Check if we've visited Kanto.
 	push hl
@@ -219,7 +220,7 @@ Pokedex_GetAreaOAM:
 ; Handles OAM data for the area screen.
 ; Caution: runs in WRAM3.
 	; Write Area Unknown
-	lb de, 9, 12
+	lb de, 9, 6
 	lb hl, VRAM_BANK_1, $30
 	lb bc, 52, 91 ; x, y
 	ldh a, [hPokedexAreaMode]
@@ -228,14 +229,14 @@ Pokedex_GetAreaOAM:
 	call z, Pokedex_WriteOAM
 
 	; Write (A) button
-	lb de, 2, 12
+	lb de, 2, 6
 	lb hl, VRAM_BANK_1 | 1, $39
 	lb bc, 146, 30 ; x, y
 	pop af
 	call nz, Pokedex_WriteOAM
 
 	; Write (SEL) button
-	lb de, 1, 14
+	lb de, 1, 8
 	lb hl, 0, $0b
 	lb bc, 120, 140
 	call Pokedex_WriteOAM
@@ -277,7 +278,7 @@ Pokedex_GetAreaOAM:
 	call Pokedex_Get2bpp
 
 	lb bc, 94, 29
-	lb de, 7, 23
+	lb de, 7, 27
 	lb hl, 0, $40
 	call Pokedex_WriteOAM
 	ret
