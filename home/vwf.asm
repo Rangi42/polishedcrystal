@@ -1,21 +1,24 @@
 PlaceVWFString::
 ; Place string de at hl with flags in b and offset in c.
-	; Read input in home to allow de to be in ROMX.
+; Read while in ROM0 so [de] can be from any ROMX bank.
+	farcall _BuildAppendVFWTextFunction
+.loop
 	ld a, [de]
-	farcall _PlaceVWFString
+	farcall _PlaceNextVWFChar
 	ret z
 	bit VWF_SINGLE_F, b
-	ret nz
-	jr PlaceVWFString
+	jr z, .loop
+	ret
 
 GetVWFLength::
 ; Returns length of string de in a.
+; Read while in ROM0 so [de] can be from any ROMX bank.
 	push de
 	push bc
 	ld c, 0
 .loop
 	ld a, [de]
-	farcall _GetVWFLength
+	farcall _GetNextVWFLength
 	jr nz, .loop
 	ld a, c
 	pop bc
