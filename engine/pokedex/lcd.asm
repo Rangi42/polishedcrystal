@@ -232,17 +232,17 @@ Pokedex_RefreshScreen:
 	jr nz, .indicator_oam_loop
 
 .indicator_done
-	; Area mode needs a lot of additional sprites, handled seperately.
-	ld a, [wPokedex_DisplayMode]
-	cp DEXDISP_AREA
-	call z, Pokedex_GetAreaOAM
-
 	; Copy it back.
 .copy_back
 	pop de
 	pop hl
 	pop bc
 	rst CopyBytes
+
+	; Area mode needs a lot of additional sprites, handled seperately.
+	ld a, [wPokedex_DisplayMode]
+	cp DEXDISP_AREA
+	call z, Pokedex_GetAreaOAM
 
 	call SetPalettes
 	ld hl, wPokedex_GFXFlags
@@ -251,6 +251,56 @@ Pokedex_RefreshScreen:
 	call DelayFrame
 	bit DEXGFX_TILEMAP, [hl]
 	jr nz, .tilemap_delay
+	ret
+
+Pokedex_WriteOAMFromHL:
+; Writes d sprites starting from OAM sprite e.
+; Input: bc = xy, d = length, e = starting OAM, [hl] = tiles, a = attributes
+	push de
+	ld d, a
+	ld a, [hli]
+	push hl
+	ld l, a
+	ld h, d
+	ld d, 1
+	call Pokedex_WriteOAM
+	ld a, h
+	pop hl
+	pop de
+	inc e
+	dec d
+	jr nz, Pokedex_WriteOAMFromHL
+	ret
+
+Pokedex_WriteOAM:
+; Writes d sprites starting from OAM sprite e.
+; Input: bc = xy, d = length, e = starting OAM, h = attributes, l = tile ID
+	push de
+	push hl
+	ld l, e
+	ld h, 0
+	add hl, hl
+	add hl, hl
+	ld de, wVirtualOAM
+	add hl, de
+	pop de
+	ld a, c
+	ld [hli], a
+	ld a, b
+	ld [hli], a
+	add 8
+	ld b, a
+	ld a, e
+	ld [hli], a
+	ld a, d
+	ld [hli], a
+	ld h, d
+	ld l, e
+	pop de
+	inc l ; next tile
+	inc e ; next OAM
+	dec d
+	jr nz, Pokedex_WriteOAM
 	ret
 
 StackDexGraphics:
