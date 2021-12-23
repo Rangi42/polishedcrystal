@@ -57,131 +57,75 @@ Pokedex_RefreshScreen:
 	ld a, BANK(wDexTilemap)
 	call StackCallInWRAMBankA
 .Function:
-	; This will be overwritten, so back it up.
-	ld hl, wVirtualOAMSprite12
-	ld de, wDexVirtualOAMCopy
-	ld bc, wDexVirtualOAMCopyEnd - wDexVirtualOAMCopy
-	push bc
-	push de
-	push hl
-	rst CopyBytes
-
-	; Reload dex number display, should only be visible for main and
-	; description pages.
-	ld a, [wPokedexOAM_DexNoX]
-	ld e, a
-	ld bc, 2
-	ld hl, wDexVirtualOAMDexNoCopy
-	ld d, 6
-	ld a, [wPokedex_DisplayMode]
-	sub DEXDISP_BIO
-	jr nc, .dexno_y_loop
+	; Reload dex number ball display
+	; Don't display a ball if mon isn't caught.
 	ld a, [wPokedexOAM_IsCaught]
 	and a
-	jr z, .dexno_y_loop
-	ld a, [wPokedexOAM_DexNoY]
-.dexno_y_loop
-	ld [hli], a
-	ld a, e
-	ld [hli], a
-	add 8
-	ld e, a
-	ld a, [wPokedexOAM_DexNoY]
-	add hl, bc
-	dec d
-	jr nz, .dexno_y_loop
-	ld c, 4
-	ld hl, wDexVirtualOAMDexNoCopy + 14
-	ld de, wPokedexOAM_DexNoStr
-	ld a, 3
-.dexno_str_loop
-	push af
-	ld a, [de]
-	inc de
-	ld [hl], a
-	add hl, bc
-	pop af
-	dec a
-	jr nz, .dexno_str_loop
+	ld a, $7f
+	ld [wDexNoStrBall], a
+	jr z, .dexno_ball_done
 
-	; Scrollbar should only be visible in the main dex display mode.
+	; Never display it in Bio/Stats/Area pages.
 	ld a, [wPokedex_DisplayMode]
-	and a ; cp DEXDISP_MAIN
-	ld a, 0
-	jr nz, .got_scrollbar_offset
+	cp DEXDISP_BIO
+	jr nc, .dexno_ball_done
 
-	; Figure out scrollbar position.
-	ld hl, hMultiplicand
-	ld [hli], a
-	ld [hli], a
-	ld a, [wPokedex_Offset]
-	ld [hli], a
-	ld a, 55
-	ldh [hMultiplier], a
-	call Multiply
-	ld b, 4
-	ld a, [wPokedex_Rows]
-	sub 3
-	ldh [hDivisor], a
-	ld a, 0
-	jr c, .got_scrollbar_offset
-	jr z, .got_scrollbar_offset
-	call Divide
-	ldh a, [hQuotient + 2]
-	add 85
+	; Otherwise, display a ball.
+	xor a ; the ball occupies tile ID 0.
+	ld [wDexNoStrBall], a
 
-.got_scrollbar_offset
-	ld [wDexVirtualOAMScrollbarCopy], a
+.dexno_ball_done
+	; This also wipes the sprite table. Convenient!
 	farcall PlaySpriteAnimations
+
+	; Add "*No.123" back.
+	ld a, [wPokedexOAM_DexNoX]
+	ld b, a
+	ld a, [wPokedexOAM_DexNoY]
+	ld c, a
+	ld hl, wDexNoStr
+	lb de, 6, 30 ; length, OAM index
+	xor a ; attributes
+	call Pokedex_WriteOAMFromHL
+
 	ld a, [wPokedex_DisplayMode]
 	sub DEXDISP_SEARCH
-	jr c, .copy_back
+	jr c, .indicator_done
 
+	; Handle bottom bar
 	push af
-	ld e, a
+	ld l, a
 	add a
 	add a
-	add e
+	add l
 	add LOW(DexDisplayOAMData)
-	ld e, a
+	ld l, a
 	adc HIGH(DexDisplayOAMData)
-	sub e
-	ld d, a
-	ld hl, wVirtualOAMSprite00
-	ld a, [de]
+	sub l
+	ld h, a
+
+	; Should we draw it in the first place?
+	ld a, [hli]
 	and a
 	jr z, .indicator_oam ; cp DEXDISP_SEARCH
 
-	ld a, 152
-	ld b, a
-	ld [hli], a
-	ld a, [de]
-	ld [hli], a
-	ld a, $17
-	ld c, a
-	ld [hli], a
-	ld a, 1
-	ld [hli], a
-	ld a, [wPokedexOAM_IsCaught]
-	and a
-	jr z, .indicator_oam
-	push de
-	ld de, DexBotMenuXPositions
-	ld a, [de]
-.botmenu_oam_loop
-	ld [hl], b
-	inc hl
-	ld [hli], a
-	inc c
-	ld a, c
-	ld [hli], a
-	xor a
-	ld [hli], a
-	inc de
-	ld a, [de]
-	and a
-	jr nz, .botmenu_oam_loop
-	pop de
+	ld c, 152 ; y
+	ld b, a ; x
+	push hl
+	lb de, 1, 0 ; length, oam number
+	lb hl, 0, $17 ; attributes, tile id
+	call Pokedex_WriteOAM
+
+	; Bio
+	ld b, $42
+	ld d, 2
+	call Pokedex_WriteOAM
+
+	; Stats
+	ld b, $5b
+	ld d, 3
+	call Pokedex_WriteOAM
+	pop hl
 
 .indicator_oam
 	pop af
@@ -194,55 +138,36 @@ Pokedex_RefreshScreen:
 	jr z, .fix_indicator
 	sub DEXDISP_NEWDESC - DEXDISP_DESC
 	jr nz, .indicator_ok
-	jr .copy_back
+	jr .indicator_done
 .fix_indicator
 	ld a, [wPokedex_OtherForm]
 	rra
-	jr nc, .copy_back
+	jr nc, .indicator_done
 
 .indicator_ok
-	inc de
-	ld a, [de] ; indicator y pos
+	; If y=0, skip this.
+	ld a, [hli]
 	and a
 	jr z, .indicator_done
-	push hl
-	ld h, d
-	ld l, e
+	ld c, a
+	ld a, [hli]
 	ld b, a
-	inc hl
 	ld a, [hli]
-	ld c, a
-	ld a, [hli]
-	ld d, a
-	ld e, [hl]
-	pop hl
-.indicator_oam_loop
-	ld a, b
-	ld [hli], a
-	ld a, c
-	ld [hli], a
-	add 8
-	ld c, a
-	ld a, d
-	ld [hli], a
-	inc d
-	ld a, 1
-	ld [hli], a
-	dec e
-	jr nz, .indicator_oam_loop
+	ld d, [hl]
+	ld l, a
+	ld h, 1
+	ld e, 6
+	call Pokedex_WriteOAM
 
 .indicator_done
-	; Area mode needs a lot of additional sprites, handled seperately.
+	; These need additional sprite handling, handled seperately.
 	ld a, [wPokedex_DisplayMode]
 	cp DEXDISP_AREA
+	push af
 	call z, Pokedex_GetAreaOAM
-
-	; Copy it back.
-.copy_back
-	pop de
-	pop hl
-	pop bc
-	rst CopyBytes
+	pop af
+	and a ; cp DEXDISP_MAIN
+	call z, Pokedex_GetMainOAM
 
 	call SetPalettes
 	ld hl, wPokedex_GFXFlags
@@ -251,6 +176,56 @@ Pokedex_RefreshScreen:
 	call DelayFrame
 	bit DEXGFX_TILEMAP, [hl]
 	jr nz, .tilemap_delay
+	ret
+
+Pokedex_WriteOAMFromHL:
+; Writes d sprites starting from OAM sprite e.
+; Input: bc = xy, d = length, e = starting OAM, [hl] = tiles, a = attributes
+	push de
+	ld d, a
+	ld a, [hli]
+	push hl
+	ld l, a
+	ld h, d
+	ld d, 1
+	call Pokedex_WriteOAM
+	ld a, h
+	pop hl
+	pop de
+	inc e
+	dec d
+	jr nz, Pokedex_WriteOAMFromHL
+	ret
+
+Pokedex_WriteOAM:
+; Writes d sprites starting from OAM sprite e.
+; Input: bc = xy, d = length, e = starting OAM, h = attributes, l = tile ID
+	push de
+	push hl
+	ld l, e
+	ld h, 0
+	add hl, hl
+	add hl, hl
+	ld de, wVirtualOAM
+	add hl, de
+	pop de
+	ld a, c
+	ld [hli], a
+	ld a, b
+	ld [hli], a
+	add 8
+	ld b, a
+	ld a, e
+	ld [hli], a
+	ld a, d
+	ld [hli], a
+	ld h, d
+	ld l, e
+	pop de
+	inc l ; next tile
+	inc e ; next OAM
+	dec d
+	jr nz, Pokedex_WriteOAM
 	ret
 
 StackDexGraphics:
@@ -314,6 +289,12 @@ StackDexGraphics:
 	xor a
 	ldh [rVBK], a
 
+	; fill out the "No." part in the "*No.123" string.
+	ld hl, wDexNoStrNo
+	ld a, "№"
+	ld [hli], a
+	ld [hl], "."
+
 	; ensure that vTiles0 $7f is whitespace (for the benefit of area display)
 	pop hl
 	push hl
@@ -364,9 +345,6 @@ StackDexGraphics:
 	jr nz, .conversion_loop
 	pop af
 	ldh [rSVBK], a
-
-	; Prepare OAM
-	call .PrepareOAM
 
 	call Pokedex_InitData
 
@@ -449,7 +427,7 @@ StackDexGraphics:
 	ld b, 2
 	jp SafeCopyTilemapAtOnce
 
-.PrepareOAM:
+Pokedex_GetMainOAM:
 	; Poké balls
 	ld hl, wVirtualOAMSprite12
 	lb bc, 12, 5
@@ -494,8 +472,30 @@ StackDexGraphics:
 	dec c
 	jr nz, .mini_oam_outer_loop
 
-	; Scrollbar
-	ld a, 85
+	; Figure out scrollbar position.
+	xor a
+	push hl
+	ld hl, hMultiplicand
+	ld [hli], a
+	ld [hli], a
+	ld a, [wPokedex_Offset]
+	ld [hli], a
+	ld a, 55
+	ldh [hMultiplier], a
+	call Multiply
+	ld b, 4
+	ld a, [wPokedex_Rows]
+	sub 3
+	ldh [hDivisor], a
+	ld a, 0
+	jr c, .got_scrollbar_offset
+	jr z, .got_scrollbar_offset
+	call Divide
+	ldh a, [hQuotient + 2]
+	add 85
+
+.got_scrollbar_offset
+	pop hl
 	ld [hli], a
 	ld a, 160
 	ld [hli], a
@@ -503,16 +503,6 @@ StackDexGraphics:
 	ld [hli], a
 	ld a, 1
 	ld [hli], a
-
-	; Dex number
-	xor a
-	ld bc, 24
-	rst ByteFill
-
-	ld a, "№"
-	ld [wVirtualOAMSprite31TileID], a
-	ld a, "."
-	ld [wVirtualOAMSprite32TileID], a
 	ret
 
 Pokedex_SetHBlankFunction:

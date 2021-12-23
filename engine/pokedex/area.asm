@@ -150,7 +150,7 @@ _Pokedex_Area:
 
 	; If we're switching to Orange Islands, check if we've visited it.
 	cp ORANGE_REGION << 4
-	jmp nz, _Pokedex_Area
+	jr nz, _Pokedex_Area
 	push hl
 	ld hl, wStatusFlags2
 	bit 3, [hl] ; ENGINE_SEEN_SHAMOUTI_ISLAND
@@ -223,28 +223,30 @@ Pokedex_GetAreaOAM:
 	add hl, hl
 	ld bc, Pokedex_AreaTypeLists
 	add hl, bc
-	ld d, h
-	ld e, l
-	ld hl, wVirtualOAMSprite36
-	ld a, 4 ; loop iterator
-	ld b, 132 ; x
-	ld c, 30 ; y
-.type_loop
+	push hl
+
+	; Write Area Unknown
+	lb de, 9, 12
+	lb hl, VRAM_BANK_1, $30
+	lb bc, 52, 91 ; x, y
+	ldh a, [hPokedexAreaMode]
+	bit DEXAREA_UNKNOWN_F, a
 	push af
-	ld a, c
-	ld [hli], a
-	ld a, b
-	ld [hli], a
-	add 8
-	ld b, a
-	ld a, [de]
-	inc de
-	ld [hli], a
-	xor a
-	ld [hli], a
+	call nz, Pokedex_WriteOAM
+
+	; Write (A) button
+	lb de, 2, 12
+	lb hl, VRAM_BANK_1 | 1, $39
+	lb bc, 112, 30 ; x, y
 	pop af
-	dec a
-	jr nz, .type_loop
+	call z, Pokedex_WriteOAM
+
+	; Write Morn/Day/etc
+	lb de, 4, 36 ; length, oam id
+	ld b, 128 ; x (same y as before)
+	pop hl
+	xor a ; attributes
+	call Pokedex_WriteOAMFromHL
 	ret
 
 Pokedex_GetMonLocations:
