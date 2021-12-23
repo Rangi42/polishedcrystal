@@ -225,7 +225,7 @@ Pokedex_GetAreaOAM:
 ; Caution: runs in WRAM3.
 	; Write Area Unknown
 	lb de, 9, 6
-	lb hl, VRAM_BANK_1, $30
+	lb hl, VRAM_BANK_1, $34
 	lb bc, 52, 91 ; x, y
 	ldh a, [hPokedexAreaMode]
 	bit DEXAREA_UNKNOWN_F, a
@@ -234,22 +234,33 @@ Pokedex_GetAreaOAM:
 
 	; Write (A) button
 	lb de, 2, 6
-	lb hl, VRAM_BANK_1 | 1, $39
+	lb hl, VRAM_BANK_1 | 1, $3d
 	lb bc, 146, 30 ; x, y
 	pop af
 	call nz, Pokedex_WriteOAM
 
 	; Write (SEL) button
+	ldh a, [hPokedexAreaMode]
+	and DEXAREA_REGION_MASK
+	cp ORANGE_REGION << 4
+	push af
 	lb de, 1, 8
 	lb hl, 0, $0b
-	lb bc, 120, 140
+	lb bc, 115, 143
+	jr nz, .not_orange_1
+	ld b, 107
+.not_orange_1
 	call Pokedex_WriteOAM
 	ld d, 1
 	ld l, $11
 	call Pokedex_WriteOAM
 	ld d, 1
 	ld l, $10
-	ld b, 134
+	ld b, 129
+	pop af
+	jr nz, .not_orange_2
+	ld b, 121
+.not_orange_2
 	call Pokedex_WriteOAM
 
 	; We want to print a VWF string. To do this, we must first clear the tiles.
@@ -284,8 +295,7 @@ Pokedex_GetAreaOAM:
 	lb bc, 94, 29
 	lb de, 7, 27
 	lb hl, 0, $40
-	call Pokedex_WriteOAM
-	ret
+	jmp Pokedex_WriteOAM
 
 Pokedex_GetMonLocations:
 ; Creates a table of nest coordinates for the given area mode.

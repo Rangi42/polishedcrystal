@@ -94,7 +94,7 @@ Pokegear_LoadGFX:
 	ld a, BANK(TownMapGFX)
 	call FarDecompressToDE
 	ld hl, PokegearGFX
-	ld de, vTiles2 tile $40
+	ld de, vTiles2 tile $50
 	ld a, BANK(PokegearGFX)
 	call Decompress
 	ld hl, PokegearSpritesGFX
@@ -192,7 +192,7 @@ InitPokegearTilemap:
 	ldh [hBGMapMode], a
 	hlcoord 0, 0
 	ld bc, wTilemapEnd - wTilemap
-	ld a, $4f
+	ld a, $5f
 	rst ByteFill
 	ld a, [wPokegearCard]
 	and $3
@@ -280,7 +280,7 @@ InitPokegearTilemap:
 	hlcoord 1, 2
 	rst ByteFill
 	hlcoord 0, 2
-	ld [hl], $6
+	ld [hl], $06
 	hlcoord 19, 2
 	ld [hl], $17
 	ld a, [wPokegearMapCursorLandmark]
@@ -304,7 +304,7 @@ InitPokegearTilemap:
 
 .PlacePhoneBars:
 	hlcoord 17, 1
-	ld a, $58
+	ld a, $68
 	ld [hli], a
 	inc a
 	ld [hl], a
@@ -315,17 +315,17 @@ InitPokegearTilemap:
 	and a
 	ret nz
 	hlcoord 18, 2
-	ld [hl], $5b
+	ld [hl], $6b
 	ret
 
 Pokegear_FinishTilemap:
 	hlcoord 0, 0
 	ld bc, $8
-	ld a, $4f
+	ld a, $5f
 	rst ByteFill
 	hlcoord 0, 1
 	ld bc, $8
-	ld a, $4f
+	ld a, $5f
 	rst ByteFill
 	ld de, wPokegearFlags
 	ld a, [de]
@@ -338,22 +338,22 @@ Pokegear_FinishTilemap:
 	bit 1, a
 	call nz, .PlaceRadioIcon
 	hlcoord 0, 0
-	ld a, $46
+	ld a, $56
 	jr .PlacePokegearCardIcon
 
 .PlaceMapIcon:
 	hlcoord 2, 0
-	ld a, $40
+	ld a, $50
 	jr .PlacePokegearCardIcon
 
 .PlacePhoneIcon:
 	hlcoord 4, 0
-	ld a, $44
+	ld a, $54
 	jr .PlacePokegearCardIcon
 
 .PlaceRadioIcon:
 	hlcoord 6, 0
-	ld a, $42
+	ld a, $52
 .PlacePokegearCardIcon:
 	ld [hli], a
 	inc a
@@ -1981,14 +1981,14 @@ TownMapBubble:
 
 ; Top-left corner
 	hlcoord 1, 0
-	ld a, $3c
+	ld a, $40
 	ld [hli], a
 ; Top row
 	ld bc, 16
 	ld a, " "
 	rst ByteFill
 ; Top-right corner
-	ld [hl], $3d
+	ld [hl], $41
 	hlcoord 1, 1
 
 ; Middle row
@@ -1998,14 +1998,14 @@ TownMapBubble:
 
 ; Bottom-left corner
 	hlcoord 1, 2
-	ld a, $3e
+	ld a, $42
 	ld [hli], a
 ; Bottom row
 	ld bc, 16
 	ld a, " "
 	rst ByteFill
 ; Bottom-right corner
-	ld [hl], $3f
+	ld [hl], $43
 
 ; Print "Where?"
 	hlcoord 2, 0
@@ -2408,7 +2408,7 @@ LoadTownMapGFX:
 	; fallthrough
 _LoadTownMapGFX:
 	ld hl, TownMapGFX
-	lb bc, BANK(TownMapGFX), $40
+	lb bc, BANK(TownMapGFX), $44
 	jmp DecompressRequest2bpp
 
 JohtoMap:
