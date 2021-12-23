@@ -103,7 +103,7 @@ Pokedex_RefreshScreen:
 	ld a, [wPokedexOAM_DexNoY]
 	ld c, a
 	ld hl, wDexNoStr
-	lb de, 6, 30 ; length, OAM index
+	lb de, 6, 34 ; length, OAM index
 	xor a ; attributes
 	call Pokedex_WriteOAMFromHL
 
