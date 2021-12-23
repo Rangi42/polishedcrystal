@@ -24,18 +24,18 @@
 
 	; area mode data
 	const_def
-	const DEXAREA_MORN
+	const DEXAREA_MORNING
 	const DEXAREA_DAY
-	const DEXAREA_NITE
-	const DEXAREA_SURF
+	const DEXAREA_NIGHT
+	const DEXAREA_SURFING
 DEXAREA_WILDS EQU const_value ; Areas above are handled by GetWildLocations
 	const DEXAREA_OLD_ROD
 	const DEXAREA_GOOD_ROD
 	const DEXAREA_SUPER_ROD
-	const DEXAREA_TREE
-	const DEXAREA_ROCK
-	const DEXAREA_GAME
-NUM_DEXAREA EQU const_value
+	const DEXAREA_THEADBUTT
+	const DEXAREA_ROCK_SMASH
+	const DEXAREA_CONTEST
+NUM_DEXAREAS EQU const_value
 
 DEXAREA_UNKNOWN_MASK EQU %10000000
 DEXAREA_REGION_MASK  EQU %01110000

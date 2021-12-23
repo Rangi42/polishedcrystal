@@ -1,14 +1,18 @@
 Pokedex_AreaTypeLists:
-	rawchar "Morning@"
-	rawchar "Day@"
-	rawchar "Night@"
-	rawchar "Surfing@"
-	rawchar "Old Rod@"
-	rawchar "Good Rod@"
-	rawchar "Super Rod@"
-	rawchar "Headbutt@"
-	rawchar "Rock Smash@"
-	rawchar "Bug Contest@"
+	list_start Pokedex_AreaTypeLists
+	setcharmap no_ngrams
+	li "Morning"
+	li "Day"
+	li "Night"
+	li "Surfing"
+	li "Old Rod"
+	li "Good Rod"
+	li "Super Rod"
+	li "Headbutt"
+	li "Rock Smash"
+	li "Bug Contest"
+	setcharmap default
+	assert_list_length NUM_DEXAREAS
 
 Pokedex_Area:
 	; TODO: maybe preset depending on time of day?
@@ -45,7 +49,7 @@ Pokedex_Area_ResetLocationData:
 	jr nc, _Pokedex_Area
 	inc e
 	ld a, e
-	cp NUM_DEXAREA
+	cp NUM_DEXAREAS
 	jr nz, .area_unknown
 	inc d
 	ld a, d
@@ -119,7 +123,7 @@ _Pokedex_Area:
 	inc [hl]
 	ld a, [hl]
 	and DEXAREA_TYPE_MASK
-	cp NUM_DEXAREA
+	cp NUM_DEXAREAS
 	jr nz, _Pokedex_Area
 	; fallthrough
 .loopback_area_mode
