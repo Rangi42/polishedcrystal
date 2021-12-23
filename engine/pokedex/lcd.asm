@@ -75,35 +75,6 @@ Pokedex_RefreshScreen:
 	ld [wDexNoStrBall], a
 
 .dexno_ball_done
-	; Scrollbar should only be visible in the main dex display mode.
-	ld a, [wPokedex_DisplayMode]
-	and a ; cp DEXDISP_MAIN
-	ld a, 0
-	jr nz, .got_scrollbar_offset
-
-	; Figure out scrollbar position.
-	ld hl, hMultiplicand
-	ld [hli], a
-	ld [hli], a
-	ld a, [wPokedex_Offset]
-	ld [hli], a
-	ld a, 55
-	ldh [hMultiplier], a
-	call Multiply
-	ld b, 4
-	ld a, [wPokedex_Rows]
-	sub 3
-	ldh [hDivisor], a
-	ld a, 0
-	jr c, .got_scrollbar_offset
-	jr z, .got_scrollbar_offset
-	call Divide
-	ldh a, [hQuotient + 2]
-	add 85
-
-.got_scrollbar_offset
-;	ld [wDexVirtualOAMScrollbarCopy], a
-
 	; This also wipes the sprite table. Convenient!
 	farcall PlaySpriteAnimations
 
@@ -375,9 +346,6 @@ StackDexGraphics:
 	pop af
 	ldh [rSVBK], a
 
-	; Prepare OAM
-	call .PrepareOAM
-
 	call Pokedex_InitData
 
 	; Reset shininess and palettes for minis
@@ -459,7 +427,7 @@ StackDexGraphics:
 	ld b, 2
 	jp SafeCopyTilemapAtOnce
 
-.PrepareOAM:
+Pokedex_GetMainOAM:
 	; Poké balls
 	ld hl, wVirtualOAMSprite12
 	lb bc, 12, 5
@@ -504,7 +472,29 @@ StackDexGraphics:
 	dec c
 	jr nz, .mini_oam_outer_loop
 
-	; Scrollbar
+	; Figure out scrollbar position.
+	push hl
+	ld hl, hMultiplicand
+	ld [hli], a
+	ld [hli], a
+	ld a, [wPokedex_Offset]
+	ld [hli], a
+	ld a, 55
+	ldh [hMultiplier], a
+	call Multiply
+	ld b, 4
+	ld a, [wPokedex_Rows]
+	sub 3
+	ldh [hDivisor], a
+	ld a, 0
+	jr c, .got_scrollbar_offset
+	jr z, .got_scrollbar_offset
+	call Divide
+	ldh a, [hQuotient + 2]
+	add 85
+
+.got_scrollbar_offset
+	pop hl
 	ld a, 85
 	ld [hli], a
 	ld a, 160
@@ -513,14 +503,6 @@ StackDexGraphics:
 	ld [hli], a
 	ld a, 1
 	ld [hli], a
-
-	; Dex number
-	xor a
-	ld bc, 24
-	rst ByteFill
-	ret
-
-Pokedex_GetMainOAM:
 	ret
 
 Pokedex_SetHBlankFunction:
