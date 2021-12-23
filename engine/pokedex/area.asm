@@ -1,11 +1,13 @@
 Pokedex_AreaTypeLists:
-	rawchar "Morn"
-	rawchar "Day "
-	rawchar "Nite"
-	rawchar "Surf"
-	rawchar "Fish"
-	rawchar "Tree"
-	rawchar "Game" ; bug catching/safari zone
+	rawchar "Morning@"
+	rawchar "Day@"
+	rawchar "Night@"
+	rawchar "Surfing@"
+	rawchar "Old Rod@"
+	rawchar "Good Rod@"
+	rawchar "Super Rod@"
+	rawchar "Headbutt@"
+	rawchar "Bug Contest@"
 
 Pokedex_Area:
 	; TODO: maybe preset depending on time of day?
@@ -215,16 +217,6 @@ Pokedex_GetAreaMode:
 Pokedex_GetAreaOAM:
 ; Handles OAM data for the area screen.
 ; Caution: runs in WRAM3.
-	; Get a pointer to location type string for printing.
-	call Pokedex_GetAreaMode
-	ld l, e
-	ld h, 0
-	add hl, hl
-	add hl, hl
-	ld bc, Pokedex_AreaTypeLists
-	add hl, bc
-	push hl
-
 	; Write Area Unknown
 	lb de, 9, 12
 	lb hl, VRAM_BANK_1, $30
@@ -232,21 +224,48 @@ Pokedex_GetAreaOAM:
 	ldh a, [hPokedexAreaMode]
 	bit DEXAREA_UNKNOWN_F, a
 	push af
-	call nz, Pokedex_WriteOAM
+	call z, Pokedex_WriteOAM
 
 	; Write (A) button
 	lb de, 2, 12
 	lb hl, VRAM_BANK_1 | 1, $39
-	lb bc, 112, 30 ; x, y
+	lb bc, 146, 30 ; x, y
 	pop af
-	call z, Pokedex_WriteOAM
+	call nz, Pokedex_WriteOAM
 
-	; Write Morn/Day/etc
-	lb de, 4, 36 ; length, oam id
-	ld b, 128 ; x (same y as before)
+	; We want to print a VWF string. To do this, we must first clear the tiles.
+	xor a
+	ld hl, wDexAreaTypeTiles
+	ld bc, wDexAreaTypeTilesEnd - wDexAreaTypeTiles
+	push hl
+	rst ByteFill
+
+	; Get a pointer to location type string for printing.
+	call Pokedex_GetAreaMode
+	ld a, e
+	ld hl, Pokedex_AreaTypeLists
+	call GetNthString
+	ld d, h
+	ld e, l
 	pop hl
-	xor a ; attributes
-	call Pokedex_WriteOAMFromHL
+	push hl
+
+	; We want to right-justify it, so get the vwf length.
+	call GetVWFLength
+	cpl
+	add $36
+	ld c, a
+	ld b, 0
+	call PlaceVWFString
+	pop hl
+	ld de, vTiles0 tile $40
+	lb bc, 0, 7
+	call Pokedex_Get2bpp
+
+	lb bc, 94, 29
+	lb de, 7, 23
+	lb hl, 0, $40
+	call Pokedex_WriteOAM
 	ret
 
 Pokedex_GetMonLocations:

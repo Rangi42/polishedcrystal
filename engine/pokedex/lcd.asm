@@ -6,12 +6,30 @@ Pokedex_Copy1bpp:
 	ld b, a
 	ldh a, [rLYC]
 	sub b
-	cp $4
+	cp c
 	jr c, .loop
 	pop bc
 	call SwapHLDE
 	di
 	call Copy1bpp
+	reti
+
+Pokedex_Get2bpp:
+; Copies c tiles from b:hl to de. Avoids running Copy2bpp during HBlank.
+	push bc
+.loop
+	ldh a, [rLY]
+	cp $84
+	jr nc, .loop
+	ld b, a
+	ldh a, [rLYC]
+	sub b
+	cp $10
+	jr c, .loop
+	pop bc
+	call SwapHLDE
+	di
+	call Get2bpp
 	reti
 
 Pokedex_SetTilemap:
@@ -75,7 +93,8 @@ Pokedex_RefreshScreen:
 	ld [wDexNoStrBall], a
 
 .dexno_ball_done
-	; This also wipes the sprite table. Convenient!
+	; We really only use sprite anims for the list cursor, but calling this
+	; unconditionally also wipes the sprite table. Convenient!
 	farcall PlaySpriteAnimations
 
 	; Add "*No.123" back.

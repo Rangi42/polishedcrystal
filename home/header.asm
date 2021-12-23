@@ -127,8 +127,6 @@ GetCGBLayout::
 SECTION "timer", ROM0[$0050]
 ; TIMER is never enabled
 
-INCLUDE "home/vwf.asm"
-
 
 SECTION "serial", ROM0[$0058]
 	jmp Serial
