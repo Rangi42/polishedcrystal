@@ -234,6 +234,19 @@ Pokedex_GetAreaOAM:
 	pop af
 	call nz, Pokedex_WriteOAM
 
+	; Write (SEL) button
+	lb de, 1, 14
+	lb hl, 0, $0b
+	lb bc, 120, 140
+	call Pokedex_WriteOAM
+	ld d, 1
+	ld l, $11
+	call Pokedex_WriteOAM
+	ld d, 1
+	ld l, $10
+	ld b, 134
+	call Pokedex_WriteOAM
+
 	; We want to print a VWF string. To do this, we must first clear the tiles.
 	xor a
 	ld hl, wDexAreaTypeTiles
