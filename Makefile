@@ -186,6 +186,8 @@ gfx/stats/stats_balls.2bpp: gfx/stats/stats.2bpp gfx/stats/balls.2bpp ; cat $^ >
 gfx/title/crystal.2bpp: tools/gfx += --interleave --png=$<
 gfx/title/logo_version.2bpp: gfx/title/logo.2bpp gfx/title/version.2bpp ; cat $^ > $@
 
+gfx/town_map/town_map.2bpp: tools/gfx += --trim-whitespace
+
 gfx/trade/ball.2bpp: tools/gfx += --remove-whitespace
 gfx/trade/game_boy.2bpp: tools/gfx += --remove-duplicates
 gfx/trade/link_cable.2bpp: tools/gfx += --remove-duplicates

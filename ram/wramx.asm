@@ -1505,7 +1505,8 @@ wDexMonType2Tiles:: ds 4 tiles
 wDexMonFootprintTiles:: ds 4 tiles
 wDexMonIconTiles:: ds 4 tiles
 wDexMonShapeTiles:: ds 4 tiles
-wDexMonTilesEnd::
+wDexAreaTypeTiles:: ds 7 tiles
+wDexAreaTypeTilesEnd::
 ENDU
 
 ; Copy of dex row tile info. H-Blank uses a copy in wram0.
