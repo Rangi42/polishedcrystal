@@ -162,43 +162,40 @@ CheckBreedmonCompatibility:
 	ret
 
 DoEggStep::
-	; Check if Flame Body/Magma Armor applies
 	ld a, [wPartyCount]
 	and a
 	ret z
+
+	; Check if Flame Body/Magma Armor applies
 	ld e, a
-	push de
-	ld hl, wPartyMon1Ability
-.ability_loop
+	ld hl, wPartyMon1IsEgg
 	push hl
 	push de
-	ld de, MON_SPECIES - MON_ABILITY
+.loop
+	bit MON_IS_EGG_F, [hl]
+	jr nz, .next_ability
+	push hl
+	push de
+	ld de, MON_SPECIES - MON_IS_EGG
 	add hl, de
 	ld c, [hl]
-	ld de, MON_IS_EGG - MON_SPECIES
+	ld de, MON_ABILITY - MON_SPECIES
 	add hl, de
-	bit MON_IS_EGG_F, [hl]
-	pop de
-	pop hl
-	jr nz, .ability_next
-	push de
-	push hl
 	call GetAbility
-	pop hl
 	pop de
+	pop hl
 	ld a, b
 	ld c, 2
 	cp FLAME_BODY
-	jr z, .ability_ok
+	jr z, .got_decrement
 	cp MAGMA_ARMOR
-	jr z, .ability_ok
-.ability_next
+	jr z, .got_decrement
+.next_ability
 	call .NextPartyMon
-	dec e
-	jr nz, .ability_loop
-.no_ability_bonus
+	jr nz, .loop
 	ld c, 1
-.ability_ok
+.got_decrement
+	; Check if Oval Charm applies
 	ld a, OVAL_CHARM
 	ld [wCurKeyItem], a
 	push bc
@@ -208,41 +205,39 @@ DoEggStep::
 	sla c
 .no_oval_charm
 	pop de
-	ld b, e
-	ld de, MON_IS_EGG - MON_HAPPINESS
-	ld hl, wPartyMon1Happiness ; Egg cycles when not hatched
-.loop
-	push hl
-	add hl, de
-	bit MON_IS_EGG_F, [hl]
 	pop hl
-	jr z, .next
-	ld a, [hl]
-	sub c
-	jr nc, .ok
-	xor a
-.ok
-	ld [hl], a
-	jr z, .hatch
-	; fallthrough
-.next
-	call .NextPartyMon
-	dec b
-	jr z, .done
-	jr .loop
+	ld d, c
 
-.hatch
-	ld a, 1
-	and a
-.done
-	ld c, 0 ; TODO: check if this is needed (was done earlier)
+	; Tick down eggs by d egg cycles.
+	xor a ; Hatching marker.
+	push af
+.egg_loop
+	bit MON_IS_EGG_F, [hl]
+	jr z, .next_egg
+	push hl
+	ld bc, MON_HAPPINESS - MON_IS_EGG
+	add hl, bc
+	ld a, [hl]
+	sub d
+	jr nc, .egg_ok
+	xor a
+.egg_ok
+	ld [hl], a
+	pop hl
+	jr nz, .next_egg
+	pop af
+	or 1
+	push af
+.next_egg
+	call .NextPartyMon
+	jr nz, .egg_loop
+	pop af
 	ret
 
 .NextPartyMon:
-	push de
-	ld de, PARTYMON_STRUCT_LENGTH
-	add hl, de
-	pop de
+	ld bc, PARTYMON_STRUCT_LENGTH
+	add hl, bc
+	dec e
 	ret
 
 OverworldHatchEgg::
