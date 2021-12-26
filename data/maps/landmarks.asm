@@ -146,9 +146,9 @@ Landmarks:
 	landmark  68,  92, FireIslandName
 	landmark  84,  92, IceIslandName
 	landmark 100,  92, LightningIslandName
-	landmark  76, 124, Route49Name
+	landmark  76, 132, Route49Name
 	landmark  84, 132, ValenciaIslandName
-	landmark 144, 120, NavelRockName
+	landmark 140, 116, NavelRockName
 	landmark  32, 136, FarawayIslandName
 	assert_table_length NUM_LANDMARKS
 
