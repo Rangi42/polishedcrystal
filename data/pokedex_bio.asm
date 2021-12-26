@@ -19,15 +19,15 @@ GrowthRateNames:
 	dw Slow
 	assert_table_length NUM_GROWTH_RATES
 
-Fastest:       db "Fastest@"
-Faster:        db "Faster@"
-Fast:          db "Fast@"
-MediumFast:    db "Medium-Fast@"
-MediumSlow:    db "Medium-Slow@"
-Slow:          db "Slow@"
-Slower:        db "Slower@"
-Slowest:       db "Slowest@"
-NotApplicable: db "N/A@"
+Fastest:    db "Fastest@"
+Faster:     db "Faster@"
+Fast:       db "Fast@"
+MediumFast: db "Medium-Fast@"
+MediumSlow: db "Medium-Slow@"
+Slow:       db "Slow@"
+Slower:     db "Slower@"
+Slowest:    db "Slowest@"
+Unknown:    db "Unknown@"
 
 BodyColorNames:
 ; entries correspond to colors (see constants/pokemon_data_constants.asm)
