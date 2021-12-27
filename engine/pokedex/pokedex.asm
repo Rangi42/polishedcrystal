@@ -1631,7 +1631,7 @@ Pokedex_Bio:
 .unknown
 	hlcoord 12, 9, wAttrmap
 	ld [hl], 0
-	ld de, .UnknownString
+	ld de, Unknown
 .print
 	hlcoord 8, 9
 	rst PlaceString
@@ -1693,7 +1693,7 @@ Pokedex_Bio:
 	ld a, [wBaseEggSteps]
 	and $f
 	cp $f
-	ld de, NotApplicable
+	ld de, Unknown
 	jr z, .goteggsteps
 	ld e, a
 	ld d, 0
@@ -1794,8 +1794,6 @@ Pokedex_Bio:
 
 .AllString
 	db "All @"
-.UnknownString
-	db "Unknown@"
 INCLUDE "data/pokedex_bio.asm"
 
 Pokedex_Stats:
