@@ -344,9 +344,11 @@ Pokedex_GetMonLocations:
 	push af
 	ld e, a
 	farcall GetLandmarkCoords
-	ld a, e
+	ld a, d ; y
+	sub 5
 	ld [hli], a
-	ld a, d
+	ld a, e ; x
+	sub 4
 	ld [hli], a
 	pop af
 	jr .loop
@@ -554,7 +556,17 @@ PHB_WriteNestOAM:
 _PHB_WriteNestOAM:
 	; Write the first 8 (4x2) OAM slots
 	ld a, [wDexAreaMonOffset]
-	call .GetAreaMonsIndex
+	; below is an inline version of .GetAreaMonsIndex to use less cycles
+	push af
+	add LOW(wDexAreaMons)
+	ld e, a
+	adc HIGH(wDexAreaMons)
+	sub e
+	ld d, a
+	pop af
+
+	; We can't use PHB_BusyLoop because we only want to wait 2 cycles
+	add hl, hl ; wastes 2 cycles in a single byte
 
 	; Ensure that this codepath takes the same amount of cycles no matter
 	; whether bit 2 is set or not.
@@ -568,25 +580,30 @@ _PHB_WriteNestOAM:
 .outer_loop
 	push af
 	ld h, 4
+	jr .stack_loop_nopush
 .stack_loop
+	push bc
+.stack_loop_nopush
 	ld a, [de]
 	inc de
 	ld b, a
 	ld a, [de]
 	inc de
 	ld c, a
-	push bc
 	dec h
 	jr nz, .stack_loop
 	ld h, HIGH(oamSprite12YCoord)
 	ld de, 3
-rept 4
-	pop bc
+rept 3
 	ld a, b
 	ld [hli], a
 	ld [hl], c
 	add hl, de
+	pop bc
 endr
+	ld a, b
+	ld [hli], a
+	ld [hl], c
 	ld a, [wDexAreaMonOffset]
 	add 8
 	call .GetAreaMonsIndex
