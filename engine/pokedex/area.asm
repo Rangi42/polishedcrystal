@@ -457,13 +457,6 @@ PHB_AreaSwitchTileMode:
 	push de
 	push bc
 
-	ld b, 2
-.wait_mode2
-	ldh a, [rSTAT]
-	and $3
-	cp b
-	jr nz, .wait_mode2
-
 	; There's nothing stopping us from changing rLCDC on a technical level, but
 	; doing it too early might result in part of the scanline reading from the
 	; wrong tileset section. Thus, we busyloop until mode0.
