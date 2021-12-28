@@ -677,6 +677,7 @@ wBattleEnd::
 wPokedex_PendingLYC:: db
 wPokedex_PendingHBlankFunction:: dw
 
+; Palettes and tile offset for listview minis
 wPokedex_Pals::
 wPokedex_Row1::
 wPokedex_Row1Tile: db ; Sprite offset for dex minis col 2-4

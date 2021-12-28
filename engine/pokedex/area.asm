@@ -91,6 +91,7 @@ _Pokedex_Area:
 
 	pop de
 	call Pokedex_GetMonLocations
+	call Pokedex_SortAreaMons
 
 	ld a, 11
 	ld de, PHB_AreaSwitchTileMode
@@ -119,7 +120,7 @@ _Pokedex_Area:
 	; Switch area type displayed
 	ld hl, hPokedexAreaMode
 	bit DEXAREA_UNKNOWN_F, [hl]
-	jr z, .joypad_loop
+	jr nz, .joypad_loop
 	inc [hl]
 	ld a, [hl]
 	and DEXAREA_TYPE_MASK
@@ -139,7 +140,7 @@ _Pokedex_Area:
 	; Switch displayed region
 	ld hl, hPokedexAreaMode
 	bit DEXAREA_UNKNOWN_F, [hl]
-	jr z, .joypad_loop
+	jr nz, .joypad_loop
 	ld hl, hPokedexAreaMode
 	ld a, [hl]
 	add $10
@@ -158,7 +159,7 @@ _Pokedex_Area:
 
 	; If we're switching to Orange Islands, check if we've visited it.
 	cp ORANGE_REGION << 4
-	jr nz, _Pokedex_Area
+	jmp nz, _Pokedex_Area
 	push hl
 	ld hl, wStatusFlags2
 	bit 3, [hl] ; ENGINE_SEEN_SHAMOUTI_ISLAND
@@ -222,7 +223,7 @@ Pokedex_GetAreaMode:
 
 Pokedex_GetAreaOAM:
 ; Handles OAM data for the area screen.
-; Caution: runs in WRAM3.
+; Caution: runs in the wDex* WRAMX bank.
 	; Write Area Unknown
 	lb de, 9, 6
 	lb hl, VRAM_BANK_1, $34
@@ -230,25 +231,32 @@ Pokedex_GetAreaOAM:
 	ldh a, [hPokedexAreaMode]
 	bit DEXAREA_UNKNOWN_F, a
 	push af
-	call z, Pokedex_WriteOAM
+	call nz, Pokedex_WriteOAM
+	pop af
+	jr nz, .a_sel_done
+
+	; Write nest highlight
+	ld hl, wDexAreaHighlightOAM
+	ld de, wVirtualOAMSprite06
+	ld bc, 4
+	rst CopyBytes
 
 	; Write (A) button
-	lb de, 2, 6
+	lb de, 2, 7
 	lb hl, VRAM_BANK_1 | 1, $3d
 	lb bc, 146, 30 ; x, y
-	pop af
-	call nz, Pokedex_WriteOAM
+	call Pokedex_WriteOAM
 
 	; Write (SEL) button
 	ldh a, [hPokedexAreaMode]
 	and DEXAREA_REGION_MASK
 	cp ORANGE_REGION << 4
-	lb de, 1, 8
+	lb de, 1, 9
 	lb hl, 0, $0b
 	lb bc, 115, 143
-	jr nz, .not_orange_1
+	jr nz, .not_orange
 	ld b, 107
-.not_orange_1
+.not_orange
 	call Pokedex_WriteOAM
 	ld d, 1
 	ld l, $11
@@ -259,6 +267,15 @@ Pokedex_GetAreaOAM:
 	dec b
 	call Pokedex_WriteOAM
 
+	; Write nest OAM tiles + attributes. Set y to 0 because we don't want to
+	; render any by default.
+	ld c, 0
+	ld d, 15 ; 10+10 but the final 5 are reserved for type vwf name by default
+	; e (OAM slot) is kept from previous writing
+	lb hl, VRAM_BANK_1, $3f
+	call Pokedex_WriteOAMSingleTile
+
+.a_sel_done
 	; We want to print a VWF string. To do this, we must first clear the tiles.
 	xor a
 	ld hl, wDexAreaTypeTiles
@@ -291,7 +308,14 @@ Pokedex_GetAreaOAM:
 	lb bc, 94, 29
 	lb de, 7, 27
 	lb hl, 0, $40
-	jmp Pokedex_WriteOAM
+	call Pokedex_WriteOAM
+
+	; Copy 5 of the OAM slots to backup for h-blank benefit
+	ld hl, wVirtualOAMSprite27
+	ld de, wDexAreaTypeOAMCopy
+	ld bc, 20
+	rst CopyBytes
+	ret
 
 Pokedex_GetMonLocations:
 ; Creates a table of nest coordinates for the given area mode.
@@ -305,9 +329,304 @@ Pokedex_GetMonLocations:
 	ld hl, wDexAreaMons
 	ld bc, wDexAreaMonsEnd - wDexAreaMons
 	rst ByteFill
+	ld hl, wDexAreaHighlightOAM
+	ld c, 4
+	rst ByteFill
 	dec a
 	ld [wDexAreaHighlight], a
-	scf
+
+	; just turn every landmark on for now
+	ld hl, wDexAreaMons
+	ld a, KANTO_LANDMARK
+.loop
+	dec a
+	ret z
+	push af
+	ld e, a
+	farcall GetLandmarkCoords
+	ld a, e
+	ld [hli], a
+	ld a, d
+	ld [hli], a
+	pop af
+	jr .loop
+
+Pokedex_SortAreaMons:
+; Sorts area mons for the benefit of hblank processing
+	ld a, BANK(wDexAreaMons)
+	call StackCallInWRAMBankA
+.Function:
+	; First, check if we should assign a highlighted nest.
+	ld a, [wDexAreaHighlight]
+	inc a
+	jr z, .no_highlight
+
+	; We have a highlight nest. Remove from the wDexAreaMons table and
+	; place it seperately. This is so we don't need to worry about handling
+	; it when doing the regular nest list iteration.
+	dec a
+	ld hl, wDexAreaMons
+	ld c, a
+	ld b, 0
+	add hl, bc
+	add hl, bc
+	ld d, h
+	ld e, l
+	ld hl, wDexAreaHighlightOAM
+	ld a, [de]
+	ld [hli], a
+	ld a, -2
+	ld [de], a
+	inc de
+	ld a, [de]
+	ld [hli], a
+	ld a, -2
+	ld [de], a
+	ld a, 0 ; nest tile ID
+	ld [de], a
+	inc de
+	ld a, 1 ; nest tile attributes
+	ld [de], a
+
+.no_highlight
+	; Sort the AreaMons array
+	; Sorting indices will be off by 2 to ensure that null entries are
+	; placed last (interpreted as -2). -1 is used as a terminator for the
+	; sorting index callback, so setting the terminator to 1 will result in
+	; the result we want.
+	ld a, 1
+	ld [wDexAreaMonsTerminator], a
+	ld hl, Pokedex_GetAreaMonIndex
+	ld de, Pokedex_DoAreaInsertSort
+	jmp SortItems
+
+Pokedex_GetAreaMonIndex:
+	push hl
+	push bc
+	ld hl, wDexAreaMons
+	ld c, b
+	ld b, 0
+	add hl, bc
+	add hl, bc
+	ld a, [hl]
+	pop bc
+	pop hl
+	sub 2
+	ret
+
+Pokedex_DoAreaInsertSort:
+; Assumes b>a.
+	; Get target item
+	ld hl, wDexAreaMons
+	ld c, b
+	ld b, 0
+	add hl, bc
+	add hl, bc
+
+	; Iterate c-a times
+	sub c
+	ld d, h
+	ld e, l
+	ld b, [hl]
+	inc hl
+	ld c, [hl]
+	push bc
+	ld c, a
+
+.loop
+	dec de
+	ld a, [de]
+	ld [hld], a
+	dec de
+	ld a, [de]
+	ld [hld], a
+	inc c
+	jr nz, .loop
+	pop bc
+	ld a, b
+	ld [de], a
+	inc de
+	ld a, c
+	ld [de], a
+	ret
+
+; area hblank functions
+
+PHB_AreaSwitchTileMode:
+	push hl
+	push de
+	push bc
+
+	; There's nothing stopping us from changing rLCDC on a technical level, but
+	; doing it too early might result in part of the scanline reading from the
+	; wrong tileset section. Thus, we busyloop until mode0.
+	ld c, 34
+	call PHB_BusyLoop1
+
+	; Switch where we're reading tile data from.
+	ld hl, rLCDC
+	set rLCDC_TILE_DATA, [hl]
+
+	ld c, 9
+	call PHB_BusyLoop1
+
+	call PHB_WriteNestOAM_FirstRun
+
+	ld b, 22
+	call PHB_WaitUntilLY_Mode0
+
+	xor a
+	ldh [rSCX], a
+	add 9
+	ldh [rSCY], a
+
+	ld a, $86
+	ld de, PHB_AreaSwitchTileMode2
+	call Pokedex_UnsafeSetHBlankFunction
+	jmp PopBCDEHL
+
+PHB_BusyLoop3:
+; BusyLoop4 isn't needed, increment c by 1 instead.
+	nop ; no-optimize nops
+	; fallthrough
+PHB_BusyLoop2:
+	nop ; no-optimize nops
+	; fallthrough
+PHB_BusyLoop1:
+	nop ; no-optimize nops
+	; fallthrough
+PHB_BusyLoop:
+; Busyloops for (c-1)*4+1 cycles.
+; Use functions above to avoid extra inline nops.
+; Note that c=0 underflows.
+	dec c
+	jr nz, PHB_BusyLoop
+	ret
+
+PHB_AreaSwitchTileMode2:
+	push hl
+	push de
+	push bc
+	ld hl, rSTAT
+.busyloop
+	ld a, [hl]
+	and $3
+	jr nz, .busyloop
+
+	ld a, 4
+	ldh [rSCX], a
+	ld a, -104 ; line 7 of tile 3 (0-indexed)
+	ldh [rSCY], a
+	ld b, $87
+	call PHB_WaitUntilLY_Mode0
+
+	ld hl, rLCDC
+	res rLCDC_TILE_DATA, [hl]
+	ld a, 8
+	ldh [rSCY], a
+	ld a, 11
+	ld de, PHB_AreaSwitchTileMode
+	call Pokedex_UnsafeSetHBlankFunction
+	jmp PopBCDEHL
+
+PHB_WriteNestOAM_FirstRun:
+; Called from a seperate PHB function. Thus, the fact that this takes more
+; cycles than PHB_WriteNestOAM is accounted for.
+	push hl
+	push de
+	push bc
+	ldh a, [rSVBK]
+	push af
+	ld a, BANK(wDexAreaMonOffset)
+	ldh [rSVBK], a
+	xor a
+	ld [wDexAreaMonOffset], a
+	jr _PHB_WriteNestOAM
+
+PHB_WriteNestOAM:
+	push hl
+	push de
+	push bc
+	ldh a, [rSVBK]
+	push af
+	ld a, BANK(wDexAreaMonOffset)
+	ldh [rSVBK], a
+_PHB_WriteNestOAM:
+	; Write the first 8 (4x2) OAM slots
+	ld a, [wDexAreaMonOffset]
+	call .GetAreaMonsIndex
+
+	; Ensure that this codepath takes the same amount of cycles no matter
+	; whether bit 2 is set or not.
+	bit 2, a
+	ld l, LOW(oamSprite12YCoord)
+	ld a, LOW(oamSprite22YCoord)
+	jr z, .got_oam_ptr ; z: 3 cycles, nz: 2 cycles
+	ld l, a ; 1 cycle (total 2+1=3, same as z)
+.got_oam_ptr
+	ld a, 2
+.outer_loop
+	push af
+	ld h, 4
+.stack_loop
+	ld a, [de]
+	inc de
+	ld b, a
+	ld a, [de]
+	inc de
+	ld c, a
+	push bc
+	dec h
+	jr nz, .stack_loop
+	ld h, HIGH(oamSprite12YCoord)
+	ld de, 3
+rept 4
+	pop bc
+	ld a, b
+	ld [hli], a
+	ld [hl], c
+	add hl, de
+endr
+	ld a, [wDexAreaMonOffset]
+	add 8
+	call .GetAreaMonsIndex
+
+	; probably need to do a bit of busylooping here...
+	pop af
+	dec a
+	jr nz, .outer_loop
+
+	ld a, [wDexAreaMonOffset]
+	add 20
+	ld [wDexAreaMonOffset], a
+
+	; Figure out next h-blank. If next Y-coord is 0, we are at the end.
+	; If so, set pending interrupt to bottom menu handling.
+	; Otherwise, set next h-blank event to WriteNestOAM with LYC=a-4.
+	call .GetAreaMonsIndex
+	ld a, [de]
+	sub 4
+	ld de, PHB_WriteNestOAM
+
+	; DON'T desync the timing for each possibility of the conditional!
+	push af
+	call nc, Pokedex_UnsafeSetHBlankFunction
+	pop af
+	ld a, $86
+	call c, Pokedex_UnsafeSetHBlankFunction
+	pop af
+	ldh [rSVBK], a
+	jmp PopBCDEHL
+
+.GetAreaMonsIndex:
+; de = wDexAreaMons + a
+	push af
+	add LOW(wDexAreaMons)
+	ld e, a
+	adc HIGH(wDexAreaMons)
+	sub e
+	ld d, a
+	pop af
 	ret
 
 DexAreaPals:

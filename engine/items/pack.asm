@@ -371,7 +371,12 @@ SortTMsName:
 
 SortItemsType:
 SortItemsName:
-	farjp SortItemsInBag
+	ld a, [wScrollingMenuCursorPosition]
+	push af
+	farcall SortItemsInBag
+	pop af
+	ld [wScrollingMenuCursorPosition], a
+	ret
 
 MenuDataHeader_UseGiveToss:
 	db $40 ; flags

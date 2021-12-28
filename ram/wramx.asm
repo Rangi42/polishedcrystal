@@ -1532,6 +1532,8 @@ wDexNumberString:: ds 4 ; 3 numbers including leading zeroes + terminator
 ; including things like the proper floor. This is -1 to denote no highlight,
 wDexAreaHighlight:: db
 
+wDexAreaHighlightOAM:: ds 4
+
 ; Table of xy coords for landmarks. These contain either zero, or xy of the
 ; landmark to display. We don't actually care about the exact landmark beyond
 ; knowing if we should highlight the one that players are at (see above).
@@ -1542,6 +1544,14 @@ wDexAreaMon{d:n}YCoord:: db
 wDexAreaMon{d:n}XCoord:: db
 endr
 wDexAreaMonsEnd::
+
+UNION
+wDexAreaMonsTerminator:: db ; set to 1 in order to make AreaMons sorting work
+NEXTU
+; Things handled by hblank
+wDexAreaTypeOAMCopy:: ds 20 ; copy of part of the VWF OAM for area type
+wDexAreaMonOffset:: db ; current area mon index to process in h-blank
+ENDU
 ENDU
 
 

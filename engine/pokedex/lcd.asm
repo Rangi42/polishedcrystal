@@ -216,6 +216,19 @@ Pokedex_WriteOAMFromHL:
 	jr nz, Pokedex_WriteOAMFromHL
 	ret
 
+Pokedex_WriteOAMSingleTile:
+; Writes a line of sprites, all with the same tile ID.
+	ld a, d
+.loop
+	push af
+	ld d, 1
+	call Pokedex_WriteOAM
+	dec l
+	pop af
+	dec a
+	jr nz, .loop
+	ret
+
 Pokedex_WriteOAM:
 ; Writes d sprites starting from OAM sprite e.
 ; Input: bc = xy, d = length, e = starting OAM, h = attributes, l = tile ID
@@ -572,6 +585,19 @@ wLCDPokedexEnd::
 ENDL
 PHB_LCDCodeEnd:
 
+PHB_WaitUntilLY_Mode0:
+; Don't use this for more timing-critical h-blank setups.
+; Wait until mode0 for LY in b.
+.busyloop
+	ldh a, [rLY]
+	cp b
+	jr nz, .busyloop
+.busyloop2
+	ldh a, [rSTAT]
+	and $3
+	jr nz, .busyloop2
+	ret
+
 PHB_DescSwitchSCY:
 	push hl
 	push de
@@ -611,76 +637,6 @@ _PHB_BioStatsSwitchSCY:
 	ldh [rSCY], a
 	ld a, $84
 	ld de, PHB_BioStatsSwitchSCY
-	call Pokedex_UnsafeSetHBlankFunction
-	jmp PopBCDEHL
-
-PHB_AreaSwitchTileMode:
-	push hl
-	push de
-	push bc
-
-	; There's nothing stopping us from changing rLCDC on a technical level, but
-	; doing it too early might result in part of the scanline reading from the
-	; wrong tileset section. Thus, we busyloop until mode0.
-	ld hl, rSTAT
-.busyloop
-	ld a, [hl]
-	and $3
-	jr nz, .busyloop
-
-	; Switch where we're reading tile data from.
-	ld hl, rLCDC
-	set rLCDC_TILE_DATA, [hl]
-
-	ld b, 22
-	call PHB_WaitUntilLY_Mode0
-
-	xor a
-	ldh [rSCX], a
-	add 9
-	ldh [rSCY], a
-
-	ld a, $86
-	ld de, PHB_AreaSwitchTileMode2
-	call Pokedex_UnsafeSetHBlankFunction
-	jmp PopBCDEHL
-
-PHB_WaitUntilLY_Mode0:
-; Don't use this for more timing-critical h-blank setups.
-; Wait until mode0 for LY in b.
-.busyloop
-	ldh a, [rLY]
-	cp b
-	jr nz, .busyloop
-.busyloop2
-	ldh a, [rSTAT]
-	and $3
-	jr nz, .busyloop2
-	ret
-
-PHB_AreaSwitchTileMode2:
-	push hl
-	push de
-	push bc
-	ld hl, rSTAT
-.busyloop
-	ld a, [hl]
-	and $3
-	jr nz, .busyloop
-
-	ld a, 4
-	ldh [rSCX], a
-	ld a, -104 ; line 7 of tile 3 (0-indexed)
-	ldh [rSCY], a
-	ld b, $87
-	call PHB_WaitUntilLY_Mode0
-
-	ld hl, rLCDC
-	res rLCDC_TILE_DATA, [hl]
-	ld a, 8
-	ldh [rSCY], a
-	ld a, 11
-	ld de, PHB_AreaSwitchTileMode
 	call Pokedex_UnsafeSetHBlankFunction
 	jmp PopBCDEHL
 
@@ -960,11 +916,16 @@ PVB_UpdateDexMap::
 
 	; done with time-critical activities
 
+	; Only reload this in the main screen.
+	ld a, [wPokedex_DisplayMode]
+	and a ; cp DEXDISP_MAIN
+	jr nz, .done_palcopy
 	ld hl, wDexPalCopy
 	ld de, wPokedex_Pals
 	ld bc, wPokedex_PalsEnd - wPokedex_Pals
 	rst CopyBytes
 
+.done_palcopy
 	; update HBlank trigger if applicable
 	ld a, [wPokedex_PendingLYC]
 	and a
