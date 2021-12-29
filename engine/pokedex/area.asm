@@ -50,7 +50,7 @@ Pokedex_Area_ResetLocationData:
 	inc e
 	ld a, e
 	cp NUM_DEXAREAS
-	jr nz, .area_unknown
+	jr nz, .inner_loop
 	inc d
 	ld a, d
 	cp NUM_REGIONS
@@ -333,8 +333,18 @@ Pokedex_GetMonLocations:
 	dec a
 	ld [wDexAreaHighlight], a
 
+	push de
+	call Pokedex_MonHasCosmeticForms
+	pop de
+	push af
 	call Pokedex_GetCursorSpecies
+	pop af
 
+	; Don't let this interfere with gender when checking locations
+	res MON_CAUGHT_F, b
+	jr c, .not_cosmetic
+	set MON_COSMETIC_F, b ; shares bit with caught, but this is safe
+.not_cosmetic
 	ld a, e
 	sub DEXAREA_WILDS
 	jr c, .wild
@@ -348,6 +358,9 @@ Pokedex_GetMonLocations:
 	farjp GetWildLocations
 .fish
 	; TODO: GetFishLocations
+	ret
+
+Pokedex_SetWildLandmark:
 	ret
 
 Pokedex_SortAreaMons:
