@@ -916,16 +916,17 @@ PVB_UpdateDexMap::
 
 	; done with time-critical activities
 
-	; Only reload this in the main screen.
-	ld a, [wPokedex_DisplayMode]
-	and a ; cp DEXDISP_MAIN
-	jr nz, .done_palcopy
+	; These only need to be done for DEXDISP_AREA and DEXDISP_MAIN respectively,
+	; but doing them unconditionally is harmless and takes up less space.
+	ld a, [wDexAreaMonOffset]
+	xor $80
+	ld [wDexAreaMonOffset], a
+
 	ld hl, wDexPalCopy
 	ld de, wPokedex_Pals
 	ld bc, wPokedex_PalsEnd - wPokedex_Pals
 	rst CopyBytes
 
-.done_palcopy
 	; update HBlank trigger if applicable
 	ld a, [wPokedex_PendingLYC]
 	and a

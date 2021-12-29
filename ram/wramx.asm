@@ -1537,21 +1537,29 @@ wDexAreaHighlightOAM:: ds 4
 ; Table of xy coords for landmarks. These contain either zero, or xy of the
 ; landmark to display. We don't actually care about the exact landmark beyond
 ; knowing if we should highlight the one that players are at (see above).
+
+	; Needs to be at address $xx00
+	ds $12
+
 wDexAreaMons::
-for n, 1, NUM_LANDMARKS + 1
+; Array size needs to be a multiple of 10 covering all landmarks for a region.
+; Upper cap is 120.
+for n, 1, 100
 wDexAreaMon{d:n}::
 wDexAreaMon{d:n}YCoord:: db
 wDexAreaMon{d:n}XCoord:: db
 endr
+wDexAreaMonsTerminator:: db
 wDexAreaMonsEnd::
 
-UNION
-wDexAreaMonsTerminator:: db ; set to 1 in order to make AreaMons sorting work
-NEXTU
 ; Things handled by hblank
 wDexAreaTypeOAMCopy:: ds 20 ; copy of part of the VWF OAM for area type
 wDexAreaMonOffset:: db ; current area mon index to process in h-blank
-ENDU
+
+	ds $24
+
+wDexAreaMons2:: ds (wDexAreaMonsEnd - wDexAreaMons)
+
 ENDU
 
 

@@ -325,9 +325,15 @@ Pokedex_GetMonLocations:
 	call StackCallInWRAMBankA
 .Function:
 	; Clear existing area data.
-	xor a
+	ld a, [wDexAreaMonOffset]
+	and $80
 	ld hl, wDexAreaMons
+	jr nz, .got_mon_table
+	inc h
+.got_mon_table
+	xor a
 	ld bc, wDexAreaMonsEnd - wDexAreaMons
+	push hl
 	rst ByteFill
 	ld hl, wDexAreaHighlightOAM
 	ld c, 4
@@ -336,7 +342,7 @@ Pokedex_GetMonLocations:
 	ld [wDexAreaHighlight], a
 
 	; just turn every landmark on for now
-	ld hl, wDexAreaMons
+	pop hl
 	ld a, KANTO_LANDMARK
 .loop
 	dec a
@@ -358,6 +364,12 @@ Pokedex_SortAreaMons:
 	ld a, BANK(wDexAreaMons)
 	call StackCallInWRAMBankA
 .Function:
+	ld a, [wDexAreaMonOffset]
+	and $80
+	ld hl, wDexAreaMons
+	jr nz, .got_mon_table
+	inc h
+.got_mon_table
 	; First, check if we should assign a highlighted nest.
 	ld a, [wDexAreaHighlight]
 	inc a
@@ -367,11 +379,9 @@ Pokedex_SortAreaMons:
 	; place it seperately. This is so we don't need to worry about handling
 	; it when doing the regular nest list iteration.
 	dec a
-	ld hl, wDexAreaMons
-	ld c, a
-	ld b, 0
-	add hl, bc
-	add hl, bc
+	push hl
+	add a
+	ld l, a
 	ld d, h
 	ld e, l
 	ld hl, wDexAreaHighlightOAM
@@ -389,6 +399,7 @@ Pokedex_SortAreaMons:
 	inc de
 	ld a, 1 ; nest tile attributes
 	ld [de], a
+	pop hl
 
 .no_highlight
 	; Sort the AreaMons array
@@ -396,20 +407,28 @@ Pokedex_SortAreaMons:
 	; placed last (interpreted as -2). -1 is used as a terminator for the
 	; sorting index callback, so setting the terminator to 1 will result in
 	; the result we want.
-	ld a, 1
-	ld [wDexAreaMonsTerminator], a
+	ld bc, wDexAreaMonsTerminator - wDexAreaMons
+	add hl, bc
+	ld [hl], 1
+	push hl
 	ld hl, Pokedex_GetAreaMonIndex
 	ld de, Pokedex_DoAreaInsertSort
-	jmp SortItems
+	call SortItems
+	pop hl
+	dec [hl]
+	ret
 
 Pokedex_GetAreaMonIndex:
 	push hl
 	push bc
-	ld hl, wDexAreaMons
-	ld c, b
-	ld b, 0
-	add hl, bc
-	add hl, bc
+	ld a, [wDexAreaMonOffset]
+	and $80
+	ld h, HIGH(wDexAreaMons)
+	jr nz, .got_mon_table
+	inc h
+.got_mon_table
+	sla b
+	ld l, b
 	ld a, [hl]
 	pop bc
 	pop hl
@@ -418,15 +437,21 @@ Pokedex_GetAreaMonIndex:
 
 Pokedex_DoAreaInsertSort:
 ; Assumes b>a.
-	; Get target item
-	ld hl, wDexAreaMons
-	ld c, b
-	ld b, 0
-	add hl, bc
-	add hl, bc
+	push af
+	ld a, [wDexAreaMonOffset]
+	and $80
+	ld h, HIGH(wDexAreaMons)
+	jr nz, .got_mon_table
+	inc h
+.got_mon_table
+	pop af
 
-	; Iterate c-a times
-	sub c
+	; Get target item
+	ld l, b
+	sla l
+
+	; Iterate b-a times (we use inc, not dec, to iterate, so doing a-b is ok)
+	sub b
 	ld d, h
 	ld e, l
 	ld b, [hl]
@@ -469,8 +494,8 @@ PHB_AreaSwitchTileMode:
 	ld hl, rLCDC
 	set rLCDC_TILE_DATA, [hl]
 
-	ld c, 9
-	call PHB_BusyLoop1
+	ld c, 8
+	call PHB_BusyLoop
 
 	call PHB_WriteNestOAM_FirstRun
 
@@ -538,8 +563,11 @@ PHB_WriteNestOAM_FirstRun:
 	push af
 	ld a, BANK(wDexAreaMonOffset)
 	ldh [rSVBK], a
-	xor a
-	ld [wDexAreaMonOffset], a
+
+	ld hl, wDexAreaMonOffset
+	ld a, [hl]
+	and $80
+	ld [hl], a
 	jr _PHB_WriteNestOAM
 
 PHB_WriteNestOAM:
@@ -553,19 +581,9 @@ PHB_WriteNestOAM:
 _PHB_WriteNestOAM:
 	; Write the first 8 (4x2) OAM slots
 	ld a, [wDexAreaMonOffset]
-	; Below is an inline version of .GetAreaMonsIndex to use less cycles.
-	; We can't reduce the busyloop count on AreaSwitchTileMode to avoid having
-	; to do this in-line, because WriteNestOAM can be a "main" h-blank callback
-	push af
-	add LOW(wDexAreaMons)
-	ld e, a
-	adc HIGH(wDexAreaMons)
-	sub e
-	ld d, a
-	pop af
 
-	; We can't use PHB_BusyLoop because we only want to wait 2 cycles
-	add hl, hl ; wastes 2 cycles in a single byte
+	; This leaves a as a*2, so check bit 2, not bit 1 for "every other time".
+	call .GetAreaMonsIndex
 
 	; Ensure that this codepath takes the same amount of cycles no matter
 	; whether bit 2 is set or not.
@@ -605,26 +623,26 @@ endr
 	ld [hl], c
 	add hl, de
 
-	ld c, 15
-	call PHB_BusyLoop2
+	ld c, 17
+	call PHB_BusyLoop1
 
 	ld a, [wDexAreaMonOffset]
-	add 8
+	add 4
 	call .GetAreaMonsIndex
 
 	pop af
 	dec a
 	jr nz, .outer_loop
 
-	ld c, 2
-	call PHB_BusyLoop
+	ld c, 3
+	call PHB_BusyLoop3
 
 	ld a, [wDexAreaMonOffset]
-	add 20
+	add 10
 	ld [wDexAreaMonOffset], a
 
 	; Handle the final 2 OAM slots.
-	sub 4 ; 4 left to handle
+	sub 2
 	call .GetAreaMonsIndex
 
 	; Push tiles
@@ -674,14 +692,18 @@ endr
 	jmp PopBCDEHL
 
 .GetAreaMonsIndex:
-; de = wDexAreaMons + a
-	push af
-	add LOW(wDexAreaMons)
+; de = wDexAreaMons + a*2. Leaves a as a*2.
+	assert (LOW(wDexAreaMons) == 0), "wDexAreaMons isn't $xx00"
+	assert (LOW(wDexAreaMons) == 0), "wDexAreaMons2 isn't $xx00"
+	assert (wDexAreaMons2 == wDexAreaMons + $100)
+
+	; Needs to be cycle-equal whether the conditional is nc or c.
+	ld d, HIGH(wDexAreaMons)
+	add a
+	jr nc, .got_mon_table
+	inc d
+.got_mon_table
 	ld e, a
-	adc HIGH(wDexAreaMons)
-	sub e
-	ld d, a
-	pop af
 	ret
 
 DexAreaPals:
