@@ -556,7 +556,9 @@ PHB_WriteNestOAM:
 _PHB_WriteNestOAM:
 	; Write the first 8 (4x2) OAM slots
 	ld a, [wDexAreaMonOffset]
-	; below is an inline version of .GetAreaMonsIndex to use less cycles
+	; Below is an inline version of .GetAreaMonsIndex to use less cycles.
+	; We can't reduce the busyloop count on AreaSwitchTileMode to avoid having
+	; to do this in-line, because WriteNestOAM can be a "main" h-blank callback
 	push af
 	add LOW(wDexAreaMons)
 	ld e, a
@@ -604,6 +606,11 @@ endr
 	ld a, b
 	ld [hli], a
 	ld [hl], c
+	add hl, de
+
+	ld c, 15
+	call PHB_BusyLoop2
+
 	ld a, [wDexAreaMonOffset]
 	add 8
 	call .GetAreaMonsIndex
