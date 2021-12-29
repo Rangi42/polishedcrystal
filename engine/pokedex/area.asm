@@ -482,9 +482,6 @@ PHB_AreaSwitchTileMode:
 	add 9
 	ldh [rSCY], a
 
-	ld a, $86
-	ld de, PHB_AreaSwitchTileMode2
-	call Pokedex_UnsafeSetHBlankFunction
 	jmp PopBCDEHL
 
 PHB_BusyLoop3:
@@ -662,7 +659,7 @@ endr
 	ld a, [wDexAreaMonOffset]
 	call .GetAreaMonsIndex
 	ld a, [de]
-	sub 4
+	sub 12 ; 4 lines to process, -8 because effective OAM xy is 8 more
 	ld de, PHB_WriteNestOAM
 
 	; DON'T desync the timing for each possibility of the conditional!
@@ -670,6 +667,7 @@ endr
 	call nc, Pokedex_UnsafeSetHBlankFunction
 	pop af
 	ld a, $86
+	ld de, PHB_AreaSwitchTileMode2
 	call c, Pokedex_UnsafeSetHBlankFunction
 	pop af
 	ldh [rSVBK], a
