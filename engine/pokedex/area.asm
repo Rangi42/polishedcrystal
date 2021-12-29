@@ -344,9 +344,11 @@ Pokedex_GetMonLocations:
 	push af
 	ld e, a
 	farcall GetLandmarkCoords
-	ld a, e
+	ld a, d ; y
+	sub 5
 	ld [hli], a
-	ld a, d
+	ld a, e ; x
+	sub 4
 	ld [hli], a
 	pop af
 	jr .loop
@@ -480,9 +482,6 @@ PHB_AreaSwitchTileMode:
 	add 9
 	ldh [rSCY], a
 
-	ld a, $86
-	ld de, PHB_AreaSwitchTileMode2
-	call Pokedex_UnsafeSetHBlankFunction
 	jmp PopBCDEHL
 
 PHB_BusyLoop3:
@@ -554,7 +553,19 @@ PHB_WriteNestOAM:
 _PHB_WriteNestOAM:
 	; Write the first 8 (4x2) OAM slots
 	ld a, [wDexAreaMonOffset]
-	call .GetAreaMonsIndex
+	; Below is an inline version of .GetAreaMonsIndex to use less cycles.
+	; We can't reduce the busyloop count on AreaSwitchTileMode to avoid having
+	; to do this in-line, because WriteNestOAM can be a "main" h-blank callback
+	push af
+	add LOW(wDexAreaMons)
+	ld e, a
+	adc HIGH(wDexAreaMons)
+	sub e
+	ld d, a
+	pop af
+
+	; We can't use PHB_BusyLoop because we only want to wait 2 cycles
+	add hl, hl ; wastes 2 cycles in a single byte
 
 	; Ensure that this codepath takes the same amount of cycles no matter
 	; whether bit 2 is set or not.
@@ -568,7 +579,55 @@ _PHB_WriteNestOAM:
 .outer_loop
 	push af
 	ld h, 4
+	jr .stack_loop_nopush
 .stack_loop
+	push bc
+.stack_loop_nopush
+	ld a, [de]
+	inc de
+	ld b, a
+	ld a, [de]
+	inc de
+	ld c, a
+	dec h
+	jr nz, .stack_loop
+	ld h, HIGH(oamSprite12YCoord)
+	ld de, 3
+rept 3
+	ld a, b
+	ld [hli], a
+	ld [hl], c
+	add hl, de
+	pop bc
+endr
+	ld a, b
+	ld [hli], a
+	ld [hl], c
+	add hl, de
+
+	ld c, 15
+	call PHB_BusyLoop2
+
+	ld a, [wDexAreaMonOffset]
+	add 8
+	call .GetAreaMonsIndex
+
+	pop af
+	dec a
+	jr nz, .outer_loop
+
+	ld c, 2
+	call PHB_BusyLoop
+
+	ld a, [wDexAreaMonOffset]
+	add 20
+	ld [wDexAreaMonOffset], a
+
+	; Handle the final 2 OAM slots.
+	sub 4 ; 4 left to handle
+	call .GetAreaMonsIndex
+
+	; Push tiles
 	ld a, [de]
 	inc de
 	ld b, a
@@ -576,36 +635,31 @@ _PHB_WriteNestOAM:
 	inc de
 	ld c, a
 	push bc
-	dec h
-	jr nz, .stack_loop
-	ld h, HIGH(oamSprite12YCoord)
+	ld a, [de]
+	inc de
+	ld b, a
+	ld a, [de]
+	inc de
+	ld c, a
 	ld de, 3
-rept 4
-	pop bc
+
+	; Pop and write to OAM
 	ld a, b
 	ld [hli], a
 	ld [hl], c
 	add hl, de
-endr
-	ld a, [wDexAreaMonOffset]
-	add 8
-	call .GetAreaMonsIndex
-
-	; probably need to do a bit of busylooping here...
-	pop af
-	dec a
-	jr nz, .outer_loop
-
-	ld a, [wDexAreaMonOffset]
-	add 20
-	ld [wDexAreaMonOffset], a
+	pop bc
+	ld a, b
+	ld [hli], a
+	ld [hl], c
 
 	; Figure out next h-blank. If next Y-coord is 0, we are at the end.
 	; If so, set pending interrupt to bottom menu handling.
 	; Otherwise, set next h-blank event to WriteNestOAM with LYC=a-4.
+	ld a, [wDexAreaMonOffset]
 	call .GetAreaMonsIndex
 	ld a, [de]
-	sub 4
+	sub 20 ; 4 lines to process, -8 because effective OAM xy is 8 more
 	ld de, PHB_WriteNestOAM
 
 	; DON'T desync the timing for each possibility of the conditional!
@@ -613,6 +667,7 @@ endr
 	call nc, Pokedex_UnsafeSetHBlankFunction
 	pop af
 	ld a, $86
+	ld de, PHB_AreaSwitchTileMode2
 	call c, Pokedex_UnsafeSetHBlankFunction
 	pop af
 	ldh [rSVBK], a

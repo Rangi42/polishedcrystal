@@ -1551,7 +1551,7 @@ Pokedex_Main:
 	ld a, SPRITE_ANIM_INDEX_DEX_CURSOR
 	call InitSpriteAnimStruct
 
-	hlcoord 10, 7
+	hlcoord 11, 7
 	lb bc, 2, 3
 	ld de, wPokedex_NumSeen
 	call PrintNum
