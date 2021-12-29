@@ -659,7 +659,7 @@ endr
 	ld a, [wDexAreaMonOffset]
 	call .GetAreaMonsIndex
 	ld a, [de]
-	sub 12 ; 4 lines to process, -8 because effective OAM xy is 8 more
+	sub 20 ; 4 lines to process, -8 because effective OAM xy is 8 more
 	ld de, PHB_WriteNestOAM
 
 	; DON'T desync the timing for each possibility of the conditional!
