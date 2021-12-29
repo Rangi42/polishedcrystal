@@ -128,12 +128,18 @@ Pokedex_RefreshScreen:
 	and a
 	jr z, .indicator_oam ; cp DEXDISP_SEARCH
 
+	; Draw bottom bar cursor
 	ld c, 152 ; y
 	ld b, a ; x
 	push hl
 	lb de, 1, 0 ; length, oam number
 	lb hl, 0, $17 ; attributes, tile id
 	call Pokedex_WriteOAM
+
+	; Don't draw the middle menu options if mon isn't caught§
+	ld a, [wPokedexOAM_IsCaught]
+	and a
+	jr z, .pop_hl_indicator_oam
 
 	; Bio
 	ld b, $42
@@ -144,8 +150,9 @@ Pokedex_RefreshScreen:
 	ld b, $5b
 	ld d, 3
 	call Pokedex_WriteOAM
-	pop hl
 
+.pop_hl_indicator_oam
+	pop hl
 .indicator_oam
 	pop af
 

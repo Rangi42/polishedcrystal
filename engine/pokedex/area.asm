@@ -333,6 +333,8 @@ Pokedex_GetMonLocations:
 	dec a
 	ld [wDexAreaHighlight], a
 
+	call Pokedex_GetCursorSpecies
+
 	ld a, e
 	sub DEXAREA_WILDS
 	jr c, .wild
@@ -549,7 +551,7 @@ PHB_BusyLoop1:
 	nop ; no-optimize nops
 	; fallthrough
 PHB_BusyLoop:
-; Busyloops for (c-1)*4+15 cycles including "ld c, N; call BusyLoop".
+; Busyloops for (c-1)*4+15 cycles ("ld c, N; call PHB_BusyLoop; (...); ret").
 ; Use functions above to avoid extra inline nops.
 ; Note that c=0 underflows.
 	dec c
