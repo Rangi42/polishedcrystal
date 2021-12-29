@@ -923,6 +923,11 @@ PVB_UpdateDexMap::
 	ld a, [wDexAreaMonOffset]
 	xor $80
 	ld [wDexAreaMonOffset], a
+
+	; wDexAreaModeCopy is used by h-blank
+	ldh a, [hPokedexAreaMode]
+	ld [wDexAreaModeCopy], a
+
 	ld hl, wVirtualOAM
 	ld de, wDexAreaVirtualOAM
 	ld bc, wVirtualOAMEnd - wVirtualOAM

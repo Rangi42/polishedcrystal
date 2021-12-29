@@ -487,13 +487,35 @@ PHB_AreaSwitchTileMode:
 	ld hl, rLCDC
 	set rLCDC_TILE_DATA, [hl]
 
-	ld c, 177
-	call PHB_BusyLoop2
+	ld c, 172
+	call PHB_BusyLoop1
 
+	ldh a, [rSVBK]
+	push af
+	ld a, BANK(wDexAreaModeCopy)
+	ldh [rSVBK], a
+	ld a, [wDexAreaModeCopy]
+	bit DEXAREA_UNKNOWN_F, a
+	jr z, .not_unknown
+
+	; Don't mess with the "Area Unknown" icon if applicable.
+	ld a, $86
+	ld de, PHB_AreaSwitchTileMode2
+	call Pokedex_UnsafeSetHBlankFunction
+
+	ld c, 173
+	call PHB_BusyLoop2
+	jr .done_writing_nests
+
+.not_unknown
 	call PHB_WriteNestOAM_FirstRun
 
-	ld c, 79
-	call PHB_BusyLoop
+.done_writing_nests
+	pop af
+	ldh [rSVBK], a
+
+	ld c, 77
+	call PHB_BusyLoop2
 
 	ld hl, oamSprite39Attributes
 	ld c, 3

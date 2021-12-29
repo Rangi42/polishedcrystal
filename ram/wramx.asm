@@ -1557,10 +1557,11 @@ wDexAreaMonsEnd::
 ; Things handled by hblank
 wDexAreaMonOffset:: db ; current area mon index to process in h-blank
 wDexAreaSpriteSlot:: db ; LOW(address) to oamSprite to use.
+wDexAreaModeCopy:: db ; written to from hPokedexAreaMode on screen reload
 
 	; Used to align wDexAreaMons2. Feel free to add more data here, just don't
 	; let wDexAreaMons2 be misaligned (an assert will tell you if you do).
-	ds $37
+	ds $36
 
 wDexAreaMons2:: ds (wDexAreaMonsEnd - wDexAreaMons)
 
