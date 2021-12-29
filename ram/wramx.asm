@@ -1538,7 +1538,8 @@ wDexAreaHighlightOAM:: ds 4
 ; landmark to display. We don't actually care about the exact landmark beyond
 ; knowing if we should highlight the one that players are at (see above).
 
-	; Needs to be at address $xx00
+	; Used to align wDexAreaMons. Feel free to add more data here, just don't
+	; let wDexAreaMons be misaligned (an assert will tell you if you do).
 	ds $12
 
 wDexAreaMons::
@@ -1556,6 +1557,8 @@ wDexAreaMonsEnd::
 wDexAreaTypeOAMCopy:: ds 20 ; copy of part of the VWF OAM for area type
 wDexAreaMonOffset:: db ; current area mon index to process in h-blank
 
+	; Used to align wDexAreaMons2. Feel free to add more data here, just don't
+	; let wDexAreaMons2 be misaligned (an assert will tell you if you do).
 	ds $24
 
 wDexAreaMons2:: ds (wDexAreaMonsEnd - wDexAreaMons)
