@@ -241,17 +241,11 @@ Pokedex_GetAreaOAM:
 	ld bc, 4
 	rst CopyBytes
 
-	; Write (A) button
-	lb de, 2, 7
-	lb hl, VRAM_BANK_1 | 1, $3d
-	lb bc, 146, 30 ; x, y
-	call Pokedex_WriteOAM
-
 	; Write (SEL) button
 	ldh a, [hPokedexAreaMode]
 	and DEXAREA_REGION_MASK
 	cp ORANGE_REGION << 4
-	lb de, 1, 9
+	lb de, 1, 7
 	lb hl, 0, $0b
 	lb bc, 115, 143
 	jr nz, .not_orange
@@ -267,10 +261,16 @@ Pokedex_GetAreaOAM:
 	dec b
 	call Pokedex_WriteOAM
 
+	; Write (A) button
+	lb de, 2, 25
+	lb hl, VRAM_BANK_1 | 1, $3d
+	lb bc, 146, 30 ; x, y
+	call Pokedex_WriteOAM
+
 	; Write nest OAM tiles + attributes. Set y to 0 because we don't want to
 	; render any by default.
 	ld c, 0
-	ld d, 15 ; 10+10 but the final 5 are reserved for type vwf name by default
+	lb de, 15, 10 ; the other 15 slots is dealt with as part of hblank
 	; e (OAM slot) is kept from previous writing
 	lb hl, VRAM_BANK_1, $3f
 	call Pokedex_WriteOAMSingleTile
@@ -308,14 +308,7 @@ Pokedex_GetAreaOAM:
 	lb bc, 94, 29
 	lb de, 7, 27
 	lb hl, 0, $40
-	call Pokedex_WriteOAM
-
-	; Copy 5 of the OAM slots to backup for h-blank benefit
-	ld hl, wVirtualOAMSprite27
-	ld de, wDexAreaTypeOAMCopy
-	ld bc, 20
-	rst CopyBytes
-	ret
+	jmp Pokedex_WriteOAM
 
 Pokedex_GetMonLocations:
 ; Creates a table of nest coordinates for the given area mode.
@@ -494,25 +487,31 @@ PHB_AreaSwitchTileMode:
 	ld hl, rLCDC
 	set rLCDC_TILE_DATA, [hl]
 
-	ld c, 179
-	call PHB_BusyLoop
+	ld c, 177
+	call PHB_BusyLoop2
 
 	call PHB_WriteNestOAM_FirstRun
 
-	ld c, 254
+	ld c, 79
 	call PHB_BusyLoop
 
-	ld hl, oamSprite27TileID
-	ld de, 3
-	ld a, $3f
-	ld b, VRAM_BANK_1
-rept 4
-	ld [hli], a
+	ld hl, oamSprite39Attributes
+	ld c, 3
+	ld de, -3
+	ld a, VRAM_BANK_1
+	ld b, $3f
+.loop
+rept 5
+	ld [hld], a
 	ld [hl], b
 	add hl, de
 endr
-	ld [hli], a
-	ld [hl], b
+	push bc
+	ld c, 44
+	call PHB_BusyLoop
+	pop bc
+	dec c
+	jr nz, .loop
 
 	xor a
 	ldh [rSCX], a
@@ -532,7 +531,7 @@ PHB_BusyLoop1:
 	nop ; no-optimize nops
 	; fallthrough
 PHB_BusyLoop:
-; Busyloops for (c-1)*4+1 cycles.
+; Busyloops for (c-1)*4+15 cycles including "ld c, N; call BusyLoop".
 ; Use functions above to avoid extra inline nops.
 ; Note that c=0 underflows.
 	dec c
@@ -563,6 +562,9 @@ PHB_AreaSwitchTileMode2:
 	ld a, 11
 	ld de, PHB_AreaSwitchTileMode
 	call Pokedex_UnsafeSetHBlankFunction
+
+	; TODO: this will cause problems when leaving area mode
+	call ForcePushOAM
 	jmp PopBCDEHL
 
 PHB_WriteNestOAM_FirstRun:
@@ -580,6 +582,8 @@ PHB_WriteNestOAM_FirstRun:
 	ld a, [hl]
 	and $80
 	ld [hl], a
+	ld a, LOW(oamSprite10YCoord)
+	ld [wDexAreaSpriteSlot], a
 	jr _PHB_WriteNestOAM
 
 PHB_WriteNestOAM:
@@ -591,20 +595,16 @@ PHB_WriteNestOAM:
 	ld a, BANK(wDexAreaMonOffset)
 	ldh [rSVBK], a
 _PHB_WriteNestOAM:
+	ld hl, wDexAreaMonOffset
+	ld a, [hli]
+	ld l, [hl] ; wDexAreaSpriteSlot
+
+	; We need to waste 6 cycles, PHB_BusyLoop takes too long.
+	inc [hl]
+	dec [hl]
+
 	; Write the first 8 (4x2) OAM slots
-	ld a, [wDexAreaMonOffset]
-
-	; This leaves a as a*2, so check bit 2, not bit 1 for "every other time".
 	call .GetAreaMonsIndex
-
-	; Ensure that this codepath takes the same amount of cycles no matter
-	; whether bit 2 is set or not.
-	bit 2, a
-	ld l, LOW(oamSprite12YCoord)
-	ld a, LOW(oamSprite22YCoord)
-	jr z, .got_oam_ptr ; z: 3 cycles, nz: 2 cycles
-	ld l, a ; 1 cycle (total 2+1=3, same as z)
-.got_oam_ptr
 	ld a, 2
 .outer_loop
 	push af
@@ -683,16 +683,27 @@ endr
 	ld [hli], a
 	ld [hl], c
 
+	; conditional needs to take the same time whether nz or z.
+	ld b, LOW(oamSprite10YCoord)
+	ld hl, wDexAreaSpriteSlot
+	ld a, [hl]
+	add 40
+	cp LOW(oamSprite39YCoord) + 4
+	jr nz, .got_new_oam_ptr
+	ld a, b
+.got_new_oam_ptr
+	ld [hld], a
+
 	; Figure out next h-blank. If next Y-coord is 0, we are at the end.
 	; If so, set pending interrupt to bottom menu handling.
 	; Otherwise, set next h-blank event to WriteNestOAM with LYC=a-4.
-	ld a, [wDexAreaMonOffset]
+	ld a, [hl] ; wDexAreaMonOffset
 	call .GetAreaMonsIndex
 	ld a, [de]
 	sub 20 ; 4 lines to process, -16 because effective OAM y is 16 more
 	ld de, PHB_WriteNestOAM
 
-	; DON'T desync the timing for each possibility of the conditional!
+	; conditional needs to take the same time.
 	push af
 	call nc, Pokedex_UnsafeSetHBlankFunction
 	pop af

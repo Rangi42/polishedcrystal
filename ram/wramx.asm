@@ -1532,6 +1532,7 @@ wDexNumberString:: ds 4 ; 3 numbers including leading zeroes + terminator
 ; including things like the proper floor. This is -1 to denote no highlight,
 wDexAreaHighlight:: db
 
+; TODO: do we need this? why not just write to wVirtualOAM directly?
 wDexAreaHighlightOAM:: ds 4
 
 ; Table of xy coords for landmarks. These contain either zero, or xy of the
@@ -1554,12 +1555,12 @@ wDexAreaMonsTerminator:: db
 wDexAreaMonsEnd::
 
 ; Things handled by hblank
-wDexAreaTypeOAMCopy:: ds 20 ; copy of part of the VWF OAM for area type
 wDexAreaMonOffset:: db ; current area mon index to process in h-blank
+wDexAreaSpriteSlot:: db ; LOW(address) to oamSprite to use.
 
 	; Used to align wDexAreaMons2. Feel free to add more data here, just don't
 	; let wDexAreaMons2 be misaligned (an assert will tell you if you do).
-	ds $24
+	ds $37
 
 wDexAreaMons2:: ds (wDexAreaMonsEnd - wDexAreaMons)
 
