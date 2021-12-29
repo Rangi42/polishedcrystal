@@ -615,18 +615,51 @@ endr
 	add 8
 	call .GetAreaMonsIndex
 
-	; probably need to do a bit of busylooping here...
 	pop af
 	dec a
 	jr nz, .outer_loop
+
+	ld c, 2
+	call PHB_BusyLoop
 
 	ld a, [wDexAreaMonOffset]
 	add 20
 	ld [wDexAreaMonOffset], a
 
+	; Handle the final 2 OAM slots.
+	sub 4 ; 4 left to handle
+	call .GetAreaMonsIndex
+
+	; Push tiles
+	ld a, [de]
+	inc de
+	ld b, a
+	ld a, [de]
+	inc de
+	ld c, a
+	push bc
+	ld a, [de]
+	inc de
+	ld b, a
+	ld a, [de]
+	inc de
+	ld c, a
+	ld de, 3
+
+	; Pop and write to OAM
+	ld a, b
+	ld [hli], a
+	ld [hl], c
+	add hl, de
+	pop bc
+	ld a, b
+	ld [hli], a
+	ld [hl], c
+
 	; Figure out next h-blank. If next Y-coord is 0, we are at the end.
 	; If so, set pending interrupt to bottom menu handling.
 	; Otherwise, set next h-blank event to WriteNestOAM with LYC=a-4.
+	ld a, [wDexAreaMonOffset]
 	call .GetAreaMonsIndex
 	ld a, [de]
 	sub 4
