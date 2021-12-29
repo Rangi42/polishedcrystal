@@ -326,7 +326,6 @@ Pokedex_GetMonLocations:
 .got_mon_table
 	xor a
 	ld bc, wDexAreaMonsEnd - wDexAreaMons
-	push hl
 	rst ByteFill
 	ld hl, wDexAreaHighlightOAM
 	ld c, 4
@@ -334,23 +333,20 @@ Pokedex_GetMonLocations:
 	dec a
 	ld [wDexAreaHighlight], a
 
-	; just turn every landmark on for now
-	pop hl
-	ld a, KANTO_LANDMARK
-.loop
-	dec a
-	ret z
-	push af
-	ld e, a
-	farcall GetLandmarkCoords
-	ld a, d ; y
-	sub 5
-	ld [hli], a
-	ld a, e ; x
-	sub 4
-	ld [hli], a
-	pop af
-	jr .loop
+	ld a, e
+	sub DEXAREA_WILDS
+	jr c, .wild
+	sub DEXAREA_FISH
+	jr c, .fish
+
+	; TODO: Headbutt, Rock Smash, Contest
+	ret
+
+.wild
+	farjp GetWildLocations
+.fish
+	; TODO: GetFishLocations
+	ret
 
 Pokedex_SortAreaMons:
 ; Sorts area mons for the benefit of hblank processing

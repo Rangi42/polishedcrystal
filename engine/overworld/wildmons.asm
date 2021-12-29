@@ -29,7 +29,9 @@ LoadWildMonData:
 
 GetWildLocations:
 ; Writes to wDexAreaMons. Assumes we're in the correct WRAM bank for this.
-; Parameters: c = species, b = form.
+; Parameters: e = type, d = region, c = species, b = form.
+	scf
+	ret
 	hlcoord 0, 0
 	ld bc, SCREEN_WIDTH * SCREEN_HEIGHT
 	xor a
