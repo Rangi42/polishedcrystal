@@ -563,8 +563,15 @@ PHB_AreaSwitchTileMode2:
 	ld de, PHB_AreaSwitchTileMode
 	call Pokedex_UnsafeSetHBlankFunction
 
-	; TODO: this will cause problems when leaving area mode
-	call ForcePushOAM
+	ldh a, [rSVBK]
+	push af
+	ld a, BANK(wDexAreaVirtualOAM)
+	ldh [rSVBK], a
+	lb bc, 41, LOW(rDMA)
+	ld a, HIGH(wDexAreaVirtualOAM)
+	call hPushOAM
+	pop af
+	ldh [rSVBK], a
 	jmp PopBCDEHL
 
 PHB_WriteNestOAM_FirstRun:

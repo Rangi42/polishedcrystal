@@ -1564,6 +1564,10 @@ wDexAreaSpriteSlot:: db ; LOW(address) to oamSprite to use.
 
 wDexAreaMons2:: ds (wDexAreaMonsEnd - wDexAreaMons)
 
+	ds $39
+
+wDexAreaVirtualOAM:: ds (wVirtualOAMEnd - wVirtualOAM)
+
 ENDU
 
 

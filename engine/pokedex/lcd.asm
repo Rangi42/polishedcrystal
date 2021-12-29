@@ -916,17 +916,28 @@ PVB_UpdateDexMap::
 
 	; done with time-critical activities
 
-	; These only need to be done for DEXDISP_AREA and DEXDISP_MAIN respectively,
-	; but doing them unconditionally is harmless and takes up less space.
+	ld a, [wPokedex_DisplayMode]
+	cp DEXDISP_AREA
+	jr nz, .no_area
+
 	ld a, [wDexAreaMonOffset]
 	xor $80
 	ld [wDexAreaMonOffset], a
+	ld hl, wVirtualOAM
+	ld de, wDexAreaVirtualOAM
+	ld bc, wVirtualOAMEnd - wVirtualOAM
+	rst CopyBytes
+	jr .done_copy
 
+.no_area
+	and a ; cp DEXDISP_MAIN
+	jr nz, .done_copy
 	ld hl, wDexPalCopy
 	ld de, wPokedex_Pals
 	ld bc, wPokedex_PalsEnd - wPokedex_Pals
 	rst CopyBytes
 
+.done_copy
 	; update HBlank trigger if applicable
 	ld a, [wPokedex_PendingLYC]
 	and a
@@ -1023,6 +1034,7 @@ PVB_UpdateDexMap::
 	pop af
 	ldh [rSVBK], a
 	ret
+
 
 DexBotMenuXPositions:
 	db 66, 74, 91, 99, 107, 0
