@@ -361,7 +361,44 @@ Pokedex_GetMonLocations:
 	ret
 
 Pokedex_SetWildLandmark:
-	ret
+; Add landmark for map group d, map number e.
+	push hl
+	push de
+	push bc
+	ld b, d
+	ld c, e
+	call GetWorldMapLocation
+	ld e, a
+	ld a, [wDexAreaMonOffset]
+	and $80
+	ld h, HIGH(wDexAreaMons)
+	jr nz, .got_mon_table
+	inc h
+.got_mon_table
+	ld a, e
+
+	; Wrap back to 0 across regions.
+	ld c, KANTO_LANDMARK
+	sub c
+	jr c, .got_landmark
+	ld c, SHAMOUTI_LANDMARK - KANTO_LANDMARK
+	sub c
+	jr c, .got_landmark
+	ld c, 0
+.got_landmark
+	add c
+	add a
+	ld l, a
+	push hl
+	farcall GetLandmarkCoords
+	pop hl
+	ld a, d ; y
+	sub 5
+	ld [hli], a
+	ld a, e
+	sub 4
+	ld [hl], a
+	jp PopBCDEHL
 
 Pokedex_SortAreaMons:
 ; Sorts area mons for the benefit of hblank processing
