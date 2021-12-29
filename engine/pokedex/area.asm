@@ -494,13 +494,25 @@ PHB_AreaSwitchTileMode:
 	ld hl, rLCDC
 	set rLCDC_TILE_DATA, [hl]
 
-	ld c, 8
+	ld c, 179
 	call PHB_BusyLoop
 
 	call PHB_WriteNestOAM_FirstRun
 
-	ld b, 22
-	call PHB_WaitUntilLY_Mode0
+	ld c, 254
+	call PHB_BusyLoop
+
+	ld hl, oamSprite27TileID
+	ld de, 3
+	ld a, $3f
+	ld b, VRAM_BANK_1
+rept 4
+	ld [hli], a
+	ld [hl], b
+	add hl, de
+endr
+	ld [hli], a
+	ld [hl], b
 
 	xor a
 	ldh [rSCX], a
