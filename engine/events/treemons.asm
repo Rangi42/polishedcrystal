@@ -140,21 +140,30 @@ GetTreeMonSet:
 
 INCLUDE "data/wild/treemon_maps.asm"
 
+GetRockSmashLocations:
+; Writes to wDexAreaMons. Assumes we're in the correct WRAM bank for this.
+; Parameters: e = type, d = region, c = species, b = form.
+	push de
+	xor a
+	ld d, TREEMON_SET_ROCK
+	jr GetTreeOrRockLocations
+
 GetHeadbuttLocations:
 ; Writes to wDexAreaMons. Assumes we're in the correct WRAM bank for this.
 ; Parameters: e = type, d = region, c = species, b = form.
 	push de
-
+	xor a
+	ld d, a
+	; fallthrough
+GetTreeOrRockLocations:
 	; Clear area locator data.
 	ld hl, wDexAreaValidTreeGroups
 	push bc
 	ld bc, NUM_TREEMON_SETS
-	xor a
 	rst ByteFill
 	pop bc
 
 	; Figure out which treemon sets have this mon.
-	ld d, a
 
 	; If this loop finishes with carry flag still set, return afterwards since
 	; we didn't find anything.
@@ -162,19 +171,31 @@ GetHeadbuttLocations:
 	push af
 .moncheck_loop
 	push de
+	ld a, d
 	call GetTreeMons
+	pop de
+
+	; The rock set only has one wildmon table, not 2 for common and rare.
+	ld a, d
+	cp TREEMON_SET_ROCK
+	ccf
+	jr c, .rock
 
 	; For whatever reason, headbutt encounters use 2 tables per set, each using
 	; a seperator. Thus, we perform the mon check twice...
 	call .CheckTable
+.rock
 	call c, .CheckTable
-	pop de
 	call nc, .AppendTreeSet ; This function screws with previously pushed af.
 	inc d
 	ld a, d
 	cp TREEMON_SET_ROCK
-	jr nz, .moncheck_loop
+	jr c, .moncheck_loop
 
+	ld hl, TreeMonMaps
+	jr z, .got_map_table
+	ld hl, RockMonMaps
+.got_map_table
 	; Check if the mon occupies any slot
 	pop af
 	pop de
@@ -185,9 +206,7 @@ GetHeadbuttLocations:
 	ld a, d ; region
 	scf
 	push af
-	ld hl, TreeMonMaps
 	ld b, HIGH(wDexAreaValidTreeGroups)
-
 .loop
 	ld a, [hli]
 	ld d, a

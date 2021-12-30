@@ -352,6 +352,8 @@ Pokedex_GetMonLocations:
 
 	; TODO: Rock Smash, Contest
 	jr z, .headbutt
+	dec a ; cp DEXAREA_ROCK_SMASH
+	jr z, .rock_smash
 	ret
 
 .wild
@@ -361,6 +363,8 @@ Pokedex_GetMonLocations:
 	ret
 .headbutt
 	farjp GetHeadbuttLocations
+.rock_smash
+	farjp GetRockSmashLocations
 
 Pokedex_SetWildLandmark:
 ; Add landmark for map group d, map number e.
