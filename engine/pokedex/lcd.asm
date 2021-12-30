@@ -128,12 +128,18 @@ Pokedex_RefreshScreen:
 	and a
 	jr z, .indicator_oam ; cp DEXDISP_SEARCH
 
+	; Draw bottom bar cursor
 	ld c, 152 ; y
 	ld b, a ; x
 	push hl
 	lb de, 1, 0 ; length, oam number
 	lb hl, 0, $17 ; attributes, tile id
 	call Pokedex_WriteOAM
+
+	; Don't draw the middle menu options if mon isn't caught§
+	ld a, [wPokedexOAM_IsCaught]
+	and a
+	jr z, .pop_hl_indicator_oam
 
 	; Bio
 	ld b, $42
@@ -144,8 +150,9 @@ Pokedex_RefreshScreen:
 	ld b, $5b
 	ld d, 3
 	call Pokedex_WriteOAM
-	pop hl
 
+.pop_hl_indicator_oam
+	pop hl
 .indicator_oam
 	pop af
 
@@ -916,16 +923,33 @@ PVB_UpdateDexMap::
 
 	; done with time-critical activities
 
-	; Only reload this in the main screen.
 	ld a, [wPokedex_DisplayMode]
+	cp DEXDISP_AREA
+	jr nz, .no_area
+
+	ld a, [wDexAreaMonOffset]
+	xor $80
+	ld [wDexAreaMonOffset], a
+
+	; wDexAreaModeCopy is used by h-blank
+	ldh a, [hPokedexAreaMode]
+	ld [wDexAreaModeCopy], a
+
+	ld hl, wVirtualOAM
+	ld de, wDexAreaVirtualOAM
+	ld bc, wVirtualOAMEnd - wVirtualOAM
+	rst CopyBytes
+	jr .done_copy
+
+.no_area
 	and a ; cp DEXDISP_MAIN
-	jr nz, .done_palcopy
+	jr nz, .done_copy
 	ld hl, wDexPalCopy
 	ld de, wPokedex_Pals
 	ld bc, wPokedex_PalsEnd - wPokedex_Pals
 	rst CopyBytes
 
-.done_palcopy
+.done_copy
 	; update HBlank trigger if applicable
 	ld a, [wPokedex_PendingLYC]
 	and a
@@ -1022,6 +1046,7 @@ PVB_UpdateDexMap::
 	pop af
 	ldh [rSVBK], a
 	ret
+
 
 DexBotMenuXPositions:
 	db 66, 74, 91, 99, 107, 0

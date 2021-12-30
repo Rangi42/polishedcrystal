@@ -50,7 +50,7 @@ Pokedex_Area_ResetLocationData:
 	inc e
 	ld a, e
 	cp NUM_DEXAREAS
-	jr nz, .area_unknown
+	jr nz, .inner_loop
 	inc d
 	ld a, d
 	cp NUM_REGIONS
@@ -148,7 +148,6 @@ _Pokedex_Area:
 	and DEXAREA_REGION_MASK
 	cp NUM_REGIONS << 4
 	jr z, .loopback_area_mode
-	jr _Pokedex_Area
 
 	; Check if we've visited Kanto.
 	push hl
@@ -159,7 +158,7 @@ _Pokedex_Area:
 
 	; If we're switching to Orange Islands, check if we've visited it.
 	cp ORANGE_REGION << 4
-	jmp nz, _Pokedex_Area
+	jr nz, _Pokedex_Area
 	push hl
 	ld hl, wStatusFlags2
 	bit 3, [hl] ; ENGINE_SEEN_SHAMOUTI_ISLAND
@@ -241,17 +240,11 @@ Pokedex_GetAreaOAM:
 	ld bc, 4
 	rst CopyBytes
 
-	; Write (A) button
-	lb de, 2, 7
-	lb hl, VRAM_BANK_1 | 1, $3d
-	lb bc, 146, 30 ; x, y
-	call Pokedex_WriteOAM
-
 	; Write (SEL) button
 	ldh a, [hPokedexAreaMode]
 	and DEXAREA_REGION_MASK
 	cp ORANGE_REGION << 4
-	lb de, 1, 9
+	lb de, 1, 7
 	lb hl, 0, $0b
 	lb bc, 115, 143
 	jr nz, .not_orange
@@ -267,10 +260,16 @@ Pokedex_GetAreaOAM:
 	dec b
 	call Pokedex_WriteOAM
 
+	; Write (A) button
+	lb de, 2, 25
+	lb hl, VRAM_BANK_1 | 1, $3d
+	lb bc, 146, 30 ; x, y
+	call Pokedex_WriteOAM
+
 	; Write nest OAM tiles + attributes. Set y to 0 because we don't want to
 	; render any by default.
 	ld c, 0
-	ld d, 15 ; 10+10 but the final 5 are reserved for type vwf name by default
+	lb de, 15, 10 ; the other 15 slots is dealt with as part of hblank
 	; e (OAM slot) is kept from previous writing
 	lb hl, VRAM_BANK_1, $3f
 	call Pokedex_WriteOAMSingleTile
@@ -308,14 +307,7 @@ Pokedex_GetAreaOAM:
 	lb bc, 94, 29
 	lb de, 7, 27
 	lb hl, 0, $40
-	call Pokedex_WriteOAM
-
-	; Copy 5 of the OAM slots to backup for h-blank benefit
-	ld hl, wVirtualOAMSprite27
-	ld de, wDexAreaTypeOAMCopy
-	ld bc, 20
-	rst CopyBytes
-	ret
+	jmp Pokedex_WriteOAM
 
 Pokedex_GetMonLocations:
 ; Creates a table of nest coordinates for the given area mode.
@@ -325,8 +317,13 @@ Pokedex_GetMonLocations:
 	call StackCallInWRAMBankA
 .Function:
 	; Clear existing area data.
-	xor a
+	ld a, [wDexAreaMonOffset]
+	and $80
 	ld hl, wDexAreaMons
+	jr nz, .got_mon_table
+	inc h
+.got_mon_table
+	xor a
 	ld bc, wDexAreaMonsEnd - wDexAreaMons
 	rst ByteFill
 	ld hl, wDexAreaHighlightOAM
@@ -335,29 +332,84 @@ Pokedex_GetMonLocations:
 	dec a
 	ld [wDexAreaHighlight], a
 
-	; just turn every landmark on for now
-	ld hl, wDexAreaMons
-	ld a, KANTO_LANDMARK
-.loop
-	dec a
-	ret z
+	push de
+	call Pokedex_MonHasCosmeticForms
+	pop de
 	push af
+	call Pokedex_GetCursorSpecies
+	pop af
+
+	; Don't let this interfere with gender when checking locations
+	res MON_CAUGHT_F, b
+	jr c, .not_cosmetic
+	set MON_COSMETIC_F, b ; shares bit with caught, but this is safe
+.not_cosmetic
+	ld a, e
+	sub DEXAREA_WILDS
+	jr c, .wild
+	sub DEXAREA_FISH
+	jr c, .fish
+
+	; TODO: Headbutt, Rock Smash, Contest
+	ret
+
+.wild
+	farjp GetWildLocations
+.fish
+	; TODO: GetFishLocations
+	ret
+
+Pokedex_SetWildLandmark:
+; Add landmark for map group d, map number e.
+	push hl
+	push de
+	push bc
+	ld b, d
+	ld c, e
+	call GetWorldMapLocation
 	ld e, a
+	ld a, [wDexAreaMonOffset]
+	and $80
+	ld h, HIGH(wDexAreaMons)
+	jr nz, .got_mon_table
+	inc h
+.got_mon_table
+	ld a, e
+
+	; Wrap back to 0 across regions.
+	ld c, KANTO_LANDMARK
+	sub c
+	jr c, .got_landmark
+	ld c, SHAMOUTI_LANDMARK - KANTO_LANDMARK
+	sub c
+	jr c, .got_landmark
+	ld c, 0
+.got_landmark
+	add c
+	add a
+	ld l, a
+	push hl
 	farcall GetLandmarkCoords
+	pop hl
 	ld a, d ; y
 	sub 5
 	ld [hli], a
-	ld a, e ; x
+	ld a, e
 	sub 4
-	ld [hli], a
-	pop af
-	jr .loop
+	ld [hl], a
+	jp PopBCDEHL
 
 Pokedex_SortAreaMons:
 ; Sorts area mons for the benefit of hblank processing
 	ld a, BANK(wDexAreaMons)
 	call StackCallInWRAMBankA
 .Function:
+	ld a, [wDexAreaMonOffset]
+	and $80
+	ld hl, wDexAreaMons
+	jr nz, .got_mon_table
+	inc h
+.got_mon_table
 	; First, check if we should assign a highlighted nest.
 	ld a, [wDexAreaHighlight]
 	inc a
@@ -367,11 +419,9 @@ Pokedex_SortAreaMons:
 	; place it seperately. This is so we don't need to worry about handling
 	; it when doing the regular nest list iteration.
 	dec a
-	ld hl, wDexAreaMons
-	ld c, a
-	ld b, 0
-	add hl, bc
-	add hl, bc
+	push hl
+	add a
+	ld l, a
 	ld d, h
 	ld e, l
 	ld hl, wDexAreaHighlightOAM
@@ -389,6 +439,7 @@ Pokedex_SortAreaMons:
 	inc de
 	ld a, 1 ; nest tile attributes
 	ld [de], a
+	pop hl
 
 .no_highlight
 	; Sort the AreaMons array
@@ -396,20 +447,28 @@ Pokedex_SortAreaMons:
 	; placed last (interpreted as -2). -1 is used as a terminator for the
 	; sorting index callback, so setting the terminator to 1 will result in
 	; the result we want.
-	ld a, 1
-	ld [wDexAreaMonsTerminator], a
+	ld bc, wDexAreaMonsTerminator - wDexAreaMons
+	add hl, bc
+	ld [hl], 1
+	push hl
 	ld hl, Pokedex_GetAreaMonIndex
 	ld de, Pokedex_DoAreaInsertSort
-	jmp SortItems
+	call SortItems
+	pop hl
+	dec [hl]
+	ret
 
 Pokedex_GetAreaMonIndex:
 	push hl
 	push bc
-	ld hl, wDexAreaMons
-	ld c, b
-	ld b, 0
-	add hl, bc
-	add hl, bc
+	ld a, [wDexAreaMonOffset]
+	and $80
+	ld h, HIGH(wDexAreaMons)
+	jr nz, .got_mon_table
+	inc h
+.got_mon_table
+	sla b
+	ld l, b
 	ld a, [hl]
 	pop bc
 	pop hl
@@ -418,15 +477,21 @@ Pokedex_GetAreaMonIndex:
 
 Pokedex_DoAreaInsertSort:
 ; Assumes b>a.
-	; Get target item
-	ld hl, wDexAreaMons
-	ld c, b
-	ld b, 0
-	add hl, bc
-	add hl, bc
+	push af
+	ld a, [wDexAreaMonOffset]
+	and $80
+	ld h, HIGH(wDexAreaMons)
+	jr nz, .got_mon_table
+	inc h
+.got_mon_table
+	pop af
 
-	; Iterate c-a times
-	sub c
+	; Get target item
+	ld l, b
+	sla l
+
+	; Iterate b-a times (we use inc, not dec, to iterate, so doing a-b is ok)
+	sub b
 	ld d, h
 	ld e, l
 	ld b, [hl]
@@ -469,13 +534,53 @@ PHB_AreaSwitchTileMode:
 	ld hl, rLCDC
 	set rLCDC_TILE_DATA, [hl]
 
-	ld c, 9
+	ld c, 172
 	call PHB_BusyLoop1
 
+	ldh a, [rSVBK]
+	push af
+	ld a, BANK(wDexAreaModeCopy)
+	ldh [rSVBK], a
+	ld a, [wDexAreaModeCopy]
+	bit DEXAREA_UNKNOWN_F, a
+	jr z, .not_unknown
+
+	; Don't mess with the "Area Unknown" icon if applicable.
+	ld a, $86
+	ld de, PHB_AreaSwitchTileMode2
+	call Pokedex_UnsafeSetHBlankFunction
+
+	ld c, 173
+	call PHB_BusyLoop2
+	jr .done_writing_nests
+
+.not_unknown
 	call PHB_WriteNestOAM_FirstRun
 
-	ld b, 22
-	call PHB_WaitUntilLY_Mode0
+.done_writing_nests
+	pop af
+	ldh [rSVBK], a
+
+	ld c, 77
+	call PHB_BusyLoop2
+
+	ld hl, oamSprite39Attributes
+	ld c, 3
+	ld de, -3
+	ld a, VRAM_BANK_1
+	ld b, $3f
+.loop
+rept 5
+	ld [hld], a
+	ld [hl], b
+	add hl, de
+endr
+	push bc
+	ld c, 44
+	call PHB_BusyLoop
+	pop bc
+	dec c
+	jr nz, .loop
 
 	xor a
 	ldh [rSCX], a
@@ -495,7 +600,7 @@ PHB_BusyLoop1:
 	nop ; no-optimize nops
 	; fallthrough
 PHB_BusyLoop:
-; Busyloops for (c-1)*4+1 cycles.
+; Busyloops for (c-1)*4+15 cycles ("ld c, N; call PHB_BusyLoop; (...); ret").
 ; Use functions above to avoid extra inline nops.
 ; Note that c=0 underflows.
 	dec c
@@ -526,6 +631,16 @@ PHB_AreaSwitchTileMode2:
 	ld a, 11
 	ld de, PHB_AreaSwitchTileMode
 	call Pokedex_UnsafeSetHBlankFunction
+
+	ldh a, [rSVBK]
+	push af
+	ld a, BANK(wDexAreaVirtualOAM)
+	ldh [rSVBK], a
+	lb bc, 41, LOW(rDMA)
+	ld a, HIGH(wDexAreaVirtualOAM)
+	call hPushOAM
+	pop af
+	ldh [rSVBK], a
 	jmp PopBCDEHL
 
 PHB_WriteNestOAM_FirstRun:
@@ -538,8 +653,13 @@ PHB_WriteNestOAM_FirstRun:
 	push af
 	ld a, BANK(wDexAreaMonOffset)
 	ldh [rSVBK], a
-	xor a
-	ld [wDexAreaMonOffset], a
+
+	ld hl, wDexAreaMonOffset
+	ld a, [hl]
+	and $80
+	ld [hl], a
+	ld a, LOW(oamSprite10YCoord)
+	ld [wDexAreaSpriteSlot], a
 	jr _PHB_WriteNestOAM
 
 PHB_WriteNestOAM:
@@ -551,30 +671,16 @@ PHB_WriteNestOAM:
 	ld a, BANK(wDexAreaMonOffset)
 	ldh [rSVBK], a
 _PHB_WriteNestOAM:
+	ld hl, wDexAreaMonOffset
+	ld a, [hli]
+	ld l, [hl] ; wDexAreaSpriteSlot
+
+	; We need to waste 6 cycles, PHB_BusyLoop takes too long.
+	inc [hl]
+	dec [hl]
+
 	; Write the first 8 (4x2) OAM slots
-	ld a, [wDexAreaMonOffset]
-	; Below is an inline version of .GetAreaMonsIndex to use less cycles.
-	; We can't reduce the busyloop count on AreaSwitchTileMode to avoid having
-	; to do this in-line, because WriteNestOAM can be a "main" h-blank callback
-	push af
-	add LOW(wDexAreaMons)
-	ld e, a
-	adc HIGH(wDexAreaMons)
-	sub e
-	ld d, a
-	pop af
-
-	; We can't use PHB_BusyLoop because we only want to wait 2 cycles
-	add hl, hl ; wastes 2 cycles in a single byte
-
-	; Ensure that this codepath takes the same amount of cycles no matter
-	; whether bit 2 is set or not.
-	bit 2, a
-	ld l, LOW(oamSprite12YCoord)
-	ld a, LOW(oamSprite22YCoord)
-	jr z, .got_oam_ptr ; z: 3 cycles, nz: 2 cycles
-	ld l, a ; 1 cycle (total 2+1=3, same as z)
-.got_oam_ptr
+	call .GetAreaMonsIndex
 	ld a, 2
 .outer_loop
 	push af
@@ -605,26 +711,26 @@ endr
 	ld [hl], c
 	add hl, de
 
-	ld c, 15
-	call PHB_BusyLoop2
+	ld c, 17
+	call PHB_BusyLoop1
 
 	ld a, [wDexAreaMonOffset]
-	add 8
+	add 4
 	call .GetAreaMonsIndex
 
 	pop af
 	dec a
 	jr nz, .outer_loop
 
-	ld c, 2
-	call PHB_BusyLoop
+	ld c, 3
+	call PHB_BusyLoop3
 
 	ld a, [wDexAreaMonOffset]
-	add 20
+	add 10
 	ld [wDexAreaMonOffset], a
 
 	; Handle the final 2 OAM slots.
-	sub 4 ; 4 left to handle
+	sub 2
 	call .GetAreaMonsIndex
 
 	; Push tiles
@@ -653,16 +759,27 @@ endr
 	ld [hli], a
 	ld [hl], c
 
+	; conditional needs to take the same time whether nz or z.
+	ld b, LOW(oamSprite10YCoord)
+	ld hl, wDexAreaSpriteSlot
+	ld a, [hl]
+	add 40
+	cp LOW(oamSprite39YCoord) + 4
+	jr nz, .got_new_oam_ptr
+	ld a, b
+.got_new_oam_ptr
+	ld [hld], a
+
 	; Figure out next h-blank. If next Y-coord is 0, we are at the end.
 	; If so, set pending interrupt to bottom menu handling.
 	; Otherwise, set next h-blank event to WriteNestOAM with LYC=a-4.
-	ld a, [wDexAreaMonOffset]
+	ld a, [hl] ; wDexAreaMonOffset
 	call .GetAreaMonsIndex
 	ld a, [de]
-	sub 20 ; 4 lines to process, -8 because effective OAM xy is 8 more
+	sub 20 ; 4 lines to process, -16 because effective OAM y is 16 more
 	ld de, PHB_WriteNestOAM
 
-	; DON'T desync the timing for each possibility of the conditional!
+	; conditional needs to take the same time.
 	push af
 	call nc, Pokedex_UnsafeSetHBlankFunction
 	pop af
@@ -674,14 +791,18 @@ endr
 	jmp PopBCDEHL
 
 .GetAreaMonsIndex:
-; de = wDexAreaMons + a
-	push af
-	add LOW(wDexAreaMons)
+; de = wDexAreaMons + a*2. Leaves a as a*2.
+	assert (LOW(wDexAreaMons) == 0), "wDexAreaMons isn't $xx00"
+	assert (LOW(wDexAreaMons) == 0), "wDexAreaMons2 isn't $xx00"
+	assert (wDexAreaMons2 == wDexAreaMons + $100)
+
+	; Needs to be cycle-equal whether the conditional is nc or c.
+	ld d, HIGH(wDexAreaMons)
+	add a
+	jr nc, .got_mon_table
+	inc d
+.got_mon_table
 	ld e, a
-	adc HIGH(wDexAreaMons)
-	sub e
-	ld d, a
-	pop af
 	ret
 
 DexAreaPals:
