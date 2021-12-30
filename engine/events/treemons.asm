@@ -179,12 +179,9 @@ GetTreeOrRockLocations:
 	ld a, d
 	cp TREEMON_SET_ROCK
 	ccf
-	jr c, .rock
-
+	call nc, .CheckTable
 	; For whatever reason, headbutt encounters use 2 tables per set, each using
 	; a seperator. Thus, we perform the mon check twice...
-	call .CheckTable
-.rock
 	call c, .CheckTable
 	call nc, .AppendTreeSet ; This function screws with previously pushed af.
 	inc d
@@ -223,7 +220,7 @@ GetTreeOrRockLocations:
 
 	pop af
 
-	; Sets noncarry if insertion succeeded.
+	; Resets carry if insertion succeeded.
 	farcall Pokedex_SetWildLandmark
 	push af
 	jr .loop
@@ -235,7 +232,7 @@ GetTreeOrRockLocations:
 .CheckTable:
 ; Checks if the headbutt table in hl has the given mon in bc. Return nc if yes.
 	ld a, [hli]
-	add 1 ; sets carry if we found the terminator
+	add 1 ; no-optimize a++|a-- (sets carry if we found the -1 terminator)
 	ret c
 
 	ld a, [hli]

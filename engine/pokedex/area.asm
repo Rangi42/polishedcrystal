@@ -391,8 +391,7 @@ Pokedex_SetWildLandmark:
 	ld a, e
 
 	; Wrap back to 0 across regions.
-	ld c, KANTO_LANDMARK
-	ld b, JOHTO_REGION
+	lb bc, JOHTO_REGION, KANTO_LANDMARK
 	sub c
 	jr c, .got_landmark
 	inc b ; KANTO_REGION
