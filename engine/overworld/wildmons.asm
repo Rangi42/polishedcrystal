@@ -120,7 +120,21 @@ GetWildLocations:
 	jr nz, .cosmetic
 
 	cp b
-	jr z, .found_species
+	jr nz, .findmon_next
+
+.found_species
+	pop hl
+	ld a, [hli]
+	ld d, a
+	ld a, [hld]
+	ld e, a
+	farcall Pokedex_SetWildLandmark
+	pop af
+	ld d, a
+	xor a ; set zero flag to mark at least one capture
+	ld a, d
+	jr .findmon_next_outer
+
 .cosmetic
 	xor b
 	and EXTSPECIES_MASK
@@ -139,19 +153,6 @@ GetWildLocations:
 	add hl, de
 	pop de
 	jr .findmon_outer_loop
-
-.found_species
-	pop hl
-	ld a, [hli]
-	ld d, a
-	ld a, [hld]
-	ld e, a
-	farcall Pokedex_SetWildLandmark
-	pop af
-	ld d, a
-	xor a ; set zero flag to mark at least one capture
-	ld a, d
-	jr .findmon_next_outer
 
 .GrassTables:
 	dw JohtoGrassWildMons
