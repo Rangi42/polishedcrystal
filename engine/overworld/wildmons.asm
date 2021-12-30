@@ -112,6 +112,7 @@ GetWildLocations:
 	ld d, a
 	ld a, [hld]
 	ld e, a
+	ld a, -1
 	farcall Pokedex_SetWildLandmark
 	pop af
 	ld d, a

@@ -180,8 +180,37 @@ GetHeadbuttLocations:
 	pop de
 	ret c
 
-	; The mon occupies at least one slot.
+	; The mon occupies at least one slot. Iterate TreeMonMaps for all maps with
+	; headbutt groups the mon is a part of.
+	ld a, d ; region
 	scf
+	push af
+	ld hl, TreeMonMaps
+	ld b, HIGH(wDexAreaValidTreeGroups)
+
+.loop
+	ld a, [hli]
+	ld d, a
+	inc a
+	jr z, .end_of_maps
+	ld a, [hli]
+	ld e, a
+	ld a, [hli]
+	add LOW(wDexAreaValidTreeGroups)
+	ld c, a
+	ld a, [bc]
+	and a
+	jr z, .loop
+
+	pop af
+
+	; Sets noncarry if insertion succeeded.
+	farcall Pokedex_SetWildLandmark
+	push af
+	jr .loop
+
+.end_of_maps
+	pop af
 	ret
 
 .CheckTable:

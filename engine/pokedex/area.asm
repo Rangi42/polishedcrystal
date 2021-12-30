@@ -364,10 +364,12 @@ Pokedex_GetMonLocations:
 
 Pokedex_SetWildLandmark:
 ; Add landmark for map group d, map number e.
-; TODO: return carry for wrong region.
+; Parameters: a = region of map id de, or -1 if any region is allowed.
+; Returns carry if insertion failed (a != -1).
 	push hl
 	push de
 	push bc
+	push af
 	ld b, d
 	ld c, e
 	call GetWorldMapLocation
@@ -382,16 +384,31 @@ Pokedex_SetWildLandmark:
 
 	; Wrap back to 0 across regions.
 	ld c, KANTO_LANDMARK
+	ld b, JOHTO_REGION
 	sub c
 	jr c, .got_landmark
+	inc b ; KANTO_REGION
 	ld c, SHAMOUTI_LANDMARK - KANTO_LANDMARK
 	sub c
 	jr c, .got_landmark
 	ld c, 0
+	inc b ; ORANGE_REGION
 .got_landmark
 	add c
 	add a
 	ld l, a
+
+	; Compare region in b against region in a.
+	pop af
+	cp b
+	jr z, .region_ok
+
+	; Preserves a and jumps to end, returning carry if applicable.
+	cp -1 ; aka 255
+	jr c, .end
+
+.region_ok
+	push af
 	push hl
 	farcall GetLandmarkCoords
 	pop hl
@@ -401,6 +418,8 @@ Pokedex_SetWildLandmark:
 	ld a, e
 	sub 4
 	ld [hl], a
+	pop af
+.end
 	jp PopBCDEHL
 
 Pokedex_SortAreaMons:
