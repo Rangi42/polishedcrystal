@@ -167,7 +167,7 @@ _Pokedex_Area:
 	jr .loopback_area_mode
 
 .pressed_start
-	xor a
+	ld a, 1
 	call Pokedex_ChangeForm
 	jr c, .joypad_loop
 	call Pokedex_GetCursorMon
