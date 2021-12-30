@@ -25,7 +25,12 @@ FishGroups:
 fishentry: MACRO
 ; % chance, species, level
 	db \1
-	dp \2
+	if _NARG == 4
+		dp \2, \3
+		shift
+	else
+		dp \2
+	endc
 	db \3
 ENDM
 
@@ -37,10 +42,10 @@ ENDM
 	fishentry  35 percent,     MAGIKARP,   20
 	fishentry  70 percent,     KRABBY,     20
 	fishentry  90 percent + 1, KRABBY,     20
-	fishentry 100 percent,     0,  0          ; corsola morn/day, staryu at night
+	fishentry 100 percent,     0,          20 ; corsola morn/day, staryu eve/night
 .Shore_Super:
 	fishentry  40 percent,     KRABBY,     40
-	fishentry  70 percent,     0,  1          ; corsola morn/day, staryu at night
+	fishentry  70 percent,     0,          40 ; corsola morn/day, staryu eve/night
 	fishentry  90 percent + 1, KRABBY,     40
 	fishentry 100 percent,     KINGLER,    40
 
@@ -211,18 +216,6 @@ ENDM
 	fishentry  70 percent,     POLIWAG,    40
 	fishentry  90 percent + 1, MAGIKARP,   40
 	fishentry 100 percent,     REMORAID,   40
-
-timedfishgroup: MACRO
-	dp \1
-	db \2
-	dp \3
-	db \4
-ENDM
-
-TimeFishGroups:
-	; day, night
-	timedfishgroup CORSOLA,    20, STARYU,     20
-	timedfishgroup CORSOLA,    40, STARYU,     40
 
 FishItems:
 	db PEARL

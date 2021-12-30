@@ -67,11 +67,12 @@ endr
 	inc hl
 	jr .loop
 .ok
-	; Species 0 reads from a time-based encounter table.
+	; Species 0 is Corsola during morning/day
+	; and Staryu during evening/night.
 	ld a, [hli]
-	ld c, a
 	and a
 	call z, .TimeEncounter
+	ld c, a
 
 	ld a, [hli]
 	ld b, a
@@ -84,26 +85,13 @@ endr
 	ret
 
 .TimeEncounter:
-	; The level byte is repurposed as the index for the new table.
-	inc hl
-	ld e, [hl]
-	ld d, 0
-	ld hl, TimeFishGroups
-rept 6
-	add hl, de
-endr
-
 	ld a, [wTimeOfDay]
 	and 3
 	cp NITE
-	jr c, .day_species
-	inc hl
-	inc hl
-	inc hl
-
-.day_species
-	ld a, [hli]
-	ld c, a
+	; a = carry ? CORSOLA : STARYU
+	sbc a
+	and CORSOLA - STARYU
+	add STARYU
 	ret
 
 GetFishGroupIndex:
