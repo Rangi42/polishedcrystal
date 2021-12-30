@@ -148,7 +148,6 @@ _Pokedex_Area:
 	and DEXAREA_REGION_MASK
 	cp NUM_REGIONS << 4
 	jr z, .loopback_area_mode
-	jr _Pokedex_Area
 
 	; Check if we've visited Kanto.
 	push hl
@@ -159,7 +158,7 @@ _Pokedex_Area:
 
 	; If we're switching to Orange Islands, check if we've visited it.
 	cp ORANGE_REGION << 4
-	jmp nz, _Pokedex_Area
+	jr nz, _Pokedex_Area
 	push hl
 	ld hl, wStatusFlags2
 	bit 3, [hl] ; ENGINE_SEEN_SHAMOUTI_ISLAND
