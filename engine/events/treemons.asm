@@ -78,7 +78,6 @@ TreeMonEncounter:
 	ret
 
 RockMonEncounter:
-
 	xor a
 	ld [wTempWildMonSpecies], a
 	ld [wCurPartyLevel], a
@@ -139,6 +138,20 @@ GetTreeMonSet:
 	ret
 
 INCLUDE "data/wild/treemon_maps.asm"
+
+GetFishingGroup:
+; Return carry and fishgroup in a
+; if the current map is in FishMonMaps.
+	push de
+	push hl
+	push bc
+
+	ld hl, FishMonMaps
+	call GetTreeMonSet
+
+	jmp PopBCDEHL
+
+INCLUDE "data/wild/fishmon_maps.asm"
 
 GetRockSmashLocations:
 ; Writes to wDexAreaMons. Assumes we're in the correct WRAM bank for this.
