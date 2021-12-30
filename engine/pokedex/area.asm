@@ -9,7 +9,11 @@ Pokedex_AreaTypeLists:
 	li "Good Rod"
 	li "Super Rod"
 	li "Headbutt"
+if DEF(FAITHFUL)
 	li "Rock Smash"
+else
+	li "Brick Break"
+endc
 	li "Bug Contest"
 	setcharmap default
 	assert_list_length NUM_DEXAREAS
