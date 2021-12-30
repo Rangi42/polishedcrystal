@@ -10,6 +10,7 @@ FishGroups:
 	fishgroup 65 percent + 1, 85 percent + 1, .Shore_Old,            .Shore_Good,            .Shore_Super
 	fishgroup 75 percent + 1, 85 percent + 1, .Ocean_Old,            .Ocean_Good,            .Ocean_Super
 	fishgroup 70 percent + 1, 85 percent + 1, .Lake_Old,             .Lake_Good,             .Lake_Super
+	fishgroup 70 percent + 1, 85 percent + 1, .River_Old,            .River_Good,            .River_Super
 	fishgroup 55 percent + 1, 65 percent + 1, .Pond_Old,             .Pond_Good,             .Pond_Super
 	fishgroup 60 percent + 1, 70 percent + 1, .Dratini_Old,          .Dratini_Good,          .Dratini_Super
 	fishgroup 60 percent + 1, 70 percent + 1, .Qwilfish_Swarm_Old,   .Qwilfish_Swarm_Good,   .Qwilfish_Swarm_Super
@@ -65,15 +66,18 @@ ENDM
 	fishentry 100 percent,     LANTURN,    40
 
 .Lake_Old:
+.River_Old:
 	fishentry  70 percent + 1, MAGIKARP,   10
 	fishentry  85 percent + 1, MAGIKARP,   10
 	fishentry 100 percent,     GOLDEEN,    10
 .Lake_Good:
+.River_Good:
 	fishentry  35 percent,     MAGIKARP,   20
 	fishentry  70 percent,     GOLDEEN,    20
 	fishentry  90 percent + 1, GOLDEEN,    20
 	fishentry 100 percent,     GOLDEEN,    20
 .Lake_Super:
+.River_Super:
 	fishentry  40 percent,     GOLDEEN,    40
 	fishentry  70 percent,     GOLDEEN,    40
 	fishentry  90 percent + 1, MAGIKARP,   40
