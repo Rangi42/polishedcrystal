@@ -143,6 +143,8 @@ INCLUDE "data/wild/treemon_maps.asm"
 GetHeadbuttLocations:
 ; Writes to wDexAreaMons. Assumes we're in the correct WRAM bank for this.
 ; Parameters: e = type, d = region, c = species, b = form.
+	push de
+
 	; Clear area locator data.
 	ld hl, wDexAreaValidTreeGroups
 	push bc
@@ -150,8 +152,66 @@ GetHeadbuttLocations:
 	xor a
 	rst ByteFill
 	pop bc
+
+	; Figure out which treemon sets have this mon.
+	ld d, a
+
+	; If this loop finishes with carry flag still set, return afterwards since
+	; we didn't find anything.
+	scf
+	push af
+.moncheck_loop
+	push de
+	call GetTreeMons
+
+	; For whatever reason, headbutt encounters use 2 tables per set, each using
+	; a seperator. Thus, we perform the mon check twice...
+	call .CheckTable
+	call c, .CheckTable
+	pop de
+	call nc, .AppendTreeSet ; This function screws with previously pushed af.
+	inc d
+	ld a, d
+	cp TREEMON_SET_ROCK
+	jr nz, .moncheck_loop
+
+	; Check if the mon occupies any slot
+	pop af
+	pop de
+	ret c
+
+	; The mon occupies at least one slot.
 	scf
 	ret
+
+.CheckTable:
+; Checks if the headbutt table in hl has the given mon in bc. Return nc if yes.
+	ld a, [hli]
+	add 1 ; sets carry if we found the terminator
+	ret c
+
+	ld a, [hli]
+	cp c
+	ld a, [hli]
+	inc hl ; skip level
+	jr nz, .CheckTable
+	call DexCompareWildForm
+	jr nz, .CheckTable
+	ret
+
+.AppendTreeSet:
+	ld a, LOW(wDexAreaValidTreeGroups)
+	add d
+	ld h, HIGH(wDexAreaValidTreeGroups)
+	ld l, a
+	ld [hl], 1
+
+	; Resets carry on previously pushed af.
+	pop hl ; return addr
+	pop af
+	and a
+	push af
+	jp hl
 
 GetTreeMons:
 ; Return the address of TreeMon table a in hl.

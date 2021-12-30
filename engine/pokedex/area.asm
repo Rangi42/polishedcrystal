@@ -345,7 +345,7 @@ Pokedex_GetMonLocations:
 	set MON_COSMETIC_F, b ; shares bit with caught, but this is safe
 .not_cosmetic
 	ld a, e
-	sub DEXAREA_WILDS
+	cp DEXAREA_WILDS
 	jr c, .wild
 	sub DEXAREA_FISH ; also sub DEXAREA_HEADBUTT
 	jr c, .fish
