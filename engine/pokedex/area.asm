@@ -347,10 +347,11 @@ Pokedex_GetMonLocations:
 	ld a, e
 	sub DEXAREA_WILDS
 	jr c, .wild
-	sub DEXAREA_FISH
+	sub DEXAREA_FISH ; also sub DEXAREA_HEADBUTT
 	jr c, .fish
 
-	; TODO: Headbutt, Rock Smash, Contest
+	; TODO: Rock Smash, Contest
+	jr z, .headbutt
 	ret
 
 .wild
@@ -358,9 +359,12 @@ Pokedex_GetMonLocations:
 .fish
 	; TODO: GetFishLocations
 	ret
+.headbutt
+	farjp GetHeadbuttLocations
 
 Pokedex_SetWildLandmark:
 ; Add landmark for map group d, map number e.
+; TODO: return carry for wrong region.
 	push hl
 	push de
 	push bc

@@ -1535,13 +1535,23 @@ wDexAreaHighlight:: db
 ; TODO: do we need this? why not just write to wVirtualOAM directly?
 wDexAreaHighlightOAM:: ds 4
 
+wDexAreaValidGroups::
+UNION
+wDexAreaValidFishGroups:: ds NUM_FISHGROUPS
+NEXTU
+wDexAreaValidTreeGroups:: ds NUM_TREEMON_SETS
+ENDU
+wDexAreaValidGroupsEnd::
+
+	assert (HIGH(wDexAreaValidGroupsEnd) == HIGH(wDexAreaValidGroups))
+
 ; Table of xy coords for landmarks. These contain either zero, or xy of the
 ; landmark to display. We don't actually care about the exact landmark beyond
 ; knowing if we should highlight the one that players are at (see above).
 
 	; Used to align wDexAreaMons. Feel free to add more data here, just don't
 	; let wDexAreaMons be misaligned (an assert will tell you if you do).
-	ds $12
+	ds 5
 
 wDexAreaMons::
 ; Array size needs to be a multiple of 10 covering all landmarks for a region.

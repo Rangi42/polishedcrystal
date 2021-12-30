@@ -140,6 +140,19 @@ GetTreeMonSet:
 
 INCLUDE "data/wild/treemon_maps.asm"
 
+GetHeadbuttLocations:
+; Writes to wDexAreaMons. Assumes we're in the correct WRAM bank for this.
+; Parameters: e = type, d = region, c = species, b = form.
+	; Clear area locator data.
+	ld hl, wDexAreaValidTreeGroups
+	push bc
+	ld bc, NUM_TREEMON_SETS
+	xor a
+	rst ByteFill
+	pop bc
+	scf
+	ret
+
 GetTreeMons:
 ; Return the address of TreeMon table a in hl.
 ; Return nc if table a doesn't exist.
