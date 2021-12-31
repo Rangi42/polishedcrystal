@@ -507,6 +507,7 @@ Pokedex_GetMonLocations:
 	ld hl, wDexAreaHighlightOAM
 	ld c, 4
 	rst ByteFill
+	; TODO: highlight nests in the player's current map
 	dec a
 	ld [wDexAreaHighlight], a
 
@@ -640,7 +641,7 @@ Pokedex_SortAreaMons:
 	ld a, 0 ; nest tile ID
 	ld [de], a
 	inc de
-	ld a, 1 ; nest tile attributes
+	ld a, 2 ; nest tile attributes
 	ld [de], a
 	pop hl
 
