@@ -81,22 +81,30 @@ _Pokedex_Area:
 	rrca
 	jr c, .pressed_select
 	rrca
-	jr c, .pressed_start
+	jmp c, .pressed_start
 	rrca
-	jr c, .pressed_right
+	jmp c, .pressed_right
 	rrca
-	jr c, .pressed_left
+	jmp c, .pressed_left
 	rrca
-	jr c, .pressed_up
+	jmp c, .pressed_up
 	rrca
-	jr c, .pressed_down
+	jmp c, .pressed_down
 	jr .joypad_loop
 
 .pressed_a
 	; Switch area type displayed
+	call Pokedex_GetAreaMode
+	call Pokedex_GetRegionAreaFlag
+	call Pokedex_CountLocations
+	jr z, .joypad_loop
+
+	; Block 1 valid location too, to avoid updating wDexAreaLastMode.
+	dec a
+	jr z, .joypad_loop
+
+	ld b, 1 ; update lastmode if applicable
 	ld hl, hPokedexAreaMode
-	bit DEXAREA_UNKNOWN_F, [hl]
-	jr nz, .joypad_loop
 	inc [hl]
 	ld a, [hl]
 	and DEXAREA_TYPE_MASK
@@ -107,11 +115,26 @@ _Pokedex_Area:
 	xor [hl] ; Will retain the other nibble type and set targeted one to 0.
 	ld [hl], a
 .cycle_area
+	push bc
 	call Pokedex_CycleToKnownArea
-	jr nc, _Pokedex_Area
+	pop bc
 	ld hl, hPokedexAreaMode
+	jr c, .unknown
+	dec b
+	jr nz, _Pokedex_Area
+	ldh a, [rSVBK]
+	push af
+	ld a, BANK(wDexAreaLastMode)
+	ldh [rSVBK], a
+	ld a, [hl]
+	ld [wDexAreaLastMode], a
+	pop af
+	ldh [rSVBK], a
+	jmp _Pokedex_Area
+
+.unknown
 	set DEXAREA_UNKNOWN_F, [hl]
-	jr _Pokedex_Area
+	jmp _Pokedex_Area
 
 .pressed_b
 	ld hl, Pokedex_Main
@@ -122,6 +145,7 @@ _Pokedex_Area:
 	ld b, -1 ; all regions
 	call Pokedex_CountLocations
 	jr z, .joypad_loop
+	ld b, 0 ; don't update lastmode
 
 	; Switch displayed region
 	ld hl, hPokedexAreaMode
@@ -152,7 +176,7 @@ _Pokedex_Area:
 .pressed_start
 	ld a, 1
 	call Pokedex_ChangeForm
-	jr c, .joypad_loop
+	jmp c, .joypad_loop
 	call Pokedex_GetCursorMon
 	jmp Pokedex_Area_ResetLocationData
 
@@ -257,7 +281,7 @@ Pokedex_ReloadValidLocations:
 	and DEXAREA_REGION_MASK
 	ld [hl], a
 	ld a, [wDexAreaLastMode]
-	and DEXAREA_REGION_MASK
+	and DEXAREA_TYPE_MASK
 	or [hl]
 	ld [hl], a
 	call Pokedex_CycleToKnownArea
