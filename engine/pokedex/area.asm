@@ -532,8 +532,7 @@ Pokedex_GetMonLocations:
 	jr z, .headbutt
 	dec a ; cp DEXAREA_ROCK_SMASH
 	jr z, .rock_smash
-	scf
-	ret
+	farjp GetContestLocations
 
 .wild
 	farjp GetWildLocations

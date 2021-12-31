@@ -1170,6 +1170,37 @@ CanUseSweetScent::
 	and a
 	ret
 
+GetContestLocations:
+; Writes to wDexAreaMons. Assumes we're in the correct WRAM bank for this.
+; Parameters: e = type, d = region, c = species, b = form.
+	; Only Johto has Contests.
+	inc d
+	dec d
+	scf
+	ret nz
+
+	ld hl, ContestMons + 1
+	ld e, (ContestMonsEnd - ContestMons) / 5
+.loop
+	ld a, [hli]
+	cp c
+	ld a, [hli]
+	inc hl ; skip level min
+	inc hl ; skip level max
+	inc hl ; skip (next mon's) encounter rate
+	jr nz, .next
+	call DexCompareWildForm
+	jr z, .found_mon
+.next
+	dec e
+	jr nz, .loop
+	scf
+	ret
+.found_mon
+	lb de, GROUP_NATIONAL_PARK, MAP_NATIONAL_PARK
+	xor a ; ld a, JOHTO_REGION
+	farjp Pokedex_SetWildLandmark
+
 _TryWildEncounter_BugContest:
 	call TryWildEncounter_BugContest
 	ret nc
