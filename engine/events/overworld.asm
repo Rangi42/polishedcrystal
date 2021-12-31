@@ -1531,9 +1531,8 @@ FishFunction:
 	ret
 
 .facingwater
-	call GetFishingGroup
-	and a
-	jr nz, .goodtofish
+	farcall GetFishingGroup
+	jr c, .goodtofish
 	ld a, $4
 	ret
 

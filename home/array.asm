@@ -69,3 +69,45 @@ GetIntervalValue::
 .done
 	ld a, [hl]
 	ret
+
+SortItems:
+; Sorts an array with a size up to a terminator sorting index of -1.
+; Assumes that the sorting function performs an insertion swap as opposed to
+; a pure swap.
+; Input: hl = sorting index callback (in b: item index, out a: sort index)
+; de = sorting function (swapping index a and b)
+	xor a
+	ld b, a
+.outer_loop
+	call _hl_
+	ld c, a
+	inc a
+	ret z
+.inner_loop
+	inc b
+	call _hl_
+	inc a
+	ret z
+	dec a
+	cp c
+	ld c, a
+	jr nc, .inner_loop
+	push bc
+	ld b, 0
+.insertion_loop
+	call _hl_
+	cp c
+	jr nc, .do_sort
+	inc b
+	jr .insertion_loop
+.do_sort
+	ld a, b
+	pop bc
+	push bc
+	push hl
+	push de
+	call _de_
+	pop de
+	pop hl
+	pop bc
+	jr .outer_loop

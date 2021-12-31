@@ -275,8 +275,8 @@ InitPokegearTilemap:
 
 .Map:
 	call PokegearMap
-	ld a, $7
-	ld bc, $12
+	ld a, $07
+	ld bc, 18
 	hlcoord 1, 2
 	rst ByteFill
 	hlcoord 0, 2
@@ -671,9 +671,16 @@ PokegearMap_InitCursor:
 	pop bc
 	ret
 
+TownMap_UpdateLandmarkName:
+	hlcoord 0, 0
+	jr _UpdateLandmarkName
+
 PokegearMap_UpdateLandmarkName:
-	push af
 	hlcoord 8, 0
+	; fallthrough
+_UpdateLandmarkName:
+	push hl
+	push af
 	lb bc, 2, 12
 	call ClearBox
 	pop af
@@ -681,9 +688,26 @@ PokegearMap_UpdateLandmarkName:
 	push de
 	farcall GetLandmarkName
 	pop de
-	call TownMap_ConvertLineBreakCharacters
-	hlcoord 8, 0
-	ld [hl], "<UPDN>"
+	pop hl
+	ld a, "<UPDN>"
+	ld [hli], a
+	push hl
+	ld hl, wStringBuffer1
+	ld d, h
+	ld e, l
+.loop
+	ld a, [hl]
+	cp "@"
+	jr z, .end
+	cp "¯"
+	jr z, .line_break
+	inc hl
+	jr .loop
+.line_break
+	ld [hl], "<LNBRK>"
+.end
+	pop hl
+	rst PlaceString
 	ret
 
 PokegearMap_UpdateCursorPosition:
@@ -697,26 +721,6 @@ PokegearMap_UpdateCursorPosition:
 	ld hl, SPRITEANIMSTRUCT_YCOORD
 	add hl, bc
 	ld [hl], d
-	ret
-
-TownMap_ConvertLineBreakCharacters:
-	ld hl, wStringBuffer1
-.loop
-	ld a, [hl]
-	cp "@"
-	jr z, .end
-	cp "¯"
-	jr z, .line_break
-	inc hl
-	jr .loop
-
-.line_break
-	ld [hl], "<LNBRK>"
-
-.end
-	ld de, wStringBuffer1
-	hlcoord 9, 0
-	rst PlaceString
 	ret
 
 TownMap_GetJohtoLandmarkLimits:
@@ -1741,7 +1745,7 @@ _TownMap:
 
 .next
 	ld a, [wTownMapCursorLandmark]
-	call PokegearMap_UpdateLandmarkName
+	call TownMap_UpdateLandmarkName
 	ld a, [wTownMapCursorObjectPointer]
 	ld c, a
 	ld a, [wTownMapCursorObjectPointer + 1]
@@ -1753,26 +1757,20 @@ _TownMap:
 
 .InitTilemap:
 	call PokegearMap
-	ld a, $7
-	ld bc, 6
-	hlcoord 1, 0
-	rst ByteFill
-	hlcoord 0, 0
-	ld [hl], $6
-	hlcoord 7, 0
-	ld [hl], $17
-	hlcoord 7, 1
+	ld a, $06
+	hlcoord 12, 0
+	ld [hl], a
+	hlcoord 12, 1
 	ld [hl], $16
-	hlcoord 7, 2
-	ld [hl], $26
-	ld a, $7
+	hlcoord 0, 2
+	ld [hli], a
+	inc a
 	ld bc, NAME_LENGTH
-	hlcoord 8, 2
+	hlcoord 1, 2
 	rst ByteFill
-	hlcoord 19, 2
-	ld [hl], $17
+	ld [hl], $27
 	ld a, [wTownMapCursorLandmark]
-	call PokegearMap_UpdateLandmarkName
+	call TownMap_UpdateLandmarkName
 	call TownMapPals
 
 	ld a, [wTownMapPlayerIconLandmark]

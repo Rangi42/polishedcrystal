@@ -1532,16 +1532,55 @@ wDexNumberString:: ds 4 ; 3 numbers including leading zeroes + terminator
 ; including things like the proper floor. This is -1 to denote no highlight,
 wDexAreaHighlight:: db
 
+; TODO: do we need this? why not just write to wVirtualOAM directly?
+wDexAreaHighlightOAM:: ds 4
+
+wDexAreaValidGroups::
+UNION
+wDexAreaValidFishGroups:: ds NUM_FISHGROUPS
+NEXTU
+wDexAreaValidTreeGroups:: ds NUM_TREEMON_SETS
+ENDU
+wDexAreaValidGroupsEnd::
+
+	assert (HIGH(wDexAreaValidGroupsEnd) == HIGH(wDexAreaValidGroups))
+
 ; Table of xy coords for landmarks. These contain either zero, or xy of the
 ; landmark to display. We don't actually care about the exact landmark beyond
 ; knowing if we should highlight the one that players are at (see above).
+
+	; Used to align wDexAreaMons. Feel free to add more data here, just don't
+	; let wDexAreaMons be misaligned (an assert will tell you if you do).
+	ds 4
+
 wDexAreaMons::
-for n, 1, NUM_LANDMARKS + 1
+; Array size needs to be a multiple of 10 covering all landmarks for a region.
+; Upper cap is 120.
+for n, 1, 100
 wDexAreaMon{d:n}::
 wDexAreaMon{d:n}YCoord:: db
 wDexAreaMon{d:n}XCoord:: db
 endr
+wDexAreaMonsTerminator:: db
 wDexAreaMonsEnd::
+
+; Things handled by hblank
+wDexAreaMonOffset:: db ; current area mon index to process in h-blank
+wDexAreaSpriteSlot:: db ; LOW(address) to oamSprite to use.
+wDexAreaModeCopy:: db ; written to from hPokedexAreaMode on screen reload
+
+	; Used to align wDexAreaMons2. Feel free to add more data here, just don't
+	; let wDexAreaMons2 be misaligned (an assert will tell you if you do).
+	ds $36
+
+wDexAreaMons2:: ds (wDexAreaMonsEnd - wDexAreaMons)
+
+	; Used to align wDexAreaVirtualOAM. Feel free to add more data here, just
+	; don't let it be misaligned.
+	ds $39
+
+wDexAreaVirtualOAM:: ds (wVirtualOAMEnd - wVirtualOAM)
+
 ENDU
 
 

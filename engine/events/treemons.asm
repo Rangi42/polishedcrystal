@@ -78,7 +78,6 @@ TreeMonEncounter:
 	ret
 
 RockMonEncounter:
-
 	xor a
 	ld [wTempWildMonSpecies], a
 	ld [wCurPartyLevel], a
@@ -140,28 +139,156 @@ GetTreeMonSet:
 
 INCLUDE "data/wild/treemon_maps.asm"
 
+GetFishingGroup:
+; Return carry and fishgroup in a
+; if the current map is in FishMonMaps.
+	push de
+	push hl
+	push bc
+
+	ld hl, FishMonMaps
+	call GetTreeMonSet
+
+	jmp PopBCDEHL
+
+INCLUDE "data/wild/fishmon_maps.asm"
+
+GetRockSmashLocations:
+; Writes to wDexAreaMons. Assumes we're in the correct WRAM bank for this.
+; Parameters: e = type, d = region, c = species, b = form.
+	push de
+	xor a
+	ld d, TREEMON_SET_ROCK
+	jr GetTreeOrRockLocations
+
+GetHeadbuttLocations:
+; Writes to wDexAreaMons. Assumes we're in the correct WRAM bank for this.
+; Parameters: e = type, d = region, c = species, b = form.
+	push de
+	xor a
+	ld d, a
+	; fallthrough
+GetTreeOrRockLocations:
+	; Clear area locator data.
+	ld hl, wDexAreaValidTreeGroups
+	push bc
+	ld bc, NUM_TREEMON_SETS
+	rst ByteFill
+	pop bc
+
+	; Figure out which treemon sets have this mon.
+
+	; If this loop finishes with carry flag still set, return afterwards since
+	; we didn't find anything.
+	scf
+	push af
+.moncheck_loop
+	ld a, d
+	call GetTreeMons
+
+	; The rock set only has one wildmon table, not 2 for common and rare.
+	ld a, d
+	cp TREEMON_SET_ROCK
+	ccf
+	call nc, .CheckTable
+	; For whatever reason, headbutt encounters use 2 tables per set, each using
+	; a seperator. Thus, we perform the mon check twice...
+	call c, .CheckTable
+	call nc, .AppendTreeSet ; This function screws with previously pushed af.
+	inc d
+	ld a, d
+	cp TREEMON_SET_ROCK
+	jr c, .moncheck_loop
+
+	ld hl, TreeMonMaps
+	jr z, .got_map_table
+	ld hl, RockMonMaps
+.got_map_table
+	; Check if the mon occupies any slot
+	pop af
+	pop de
+	ret c
+	; fallthrough
+.CheckMaps:
+	; The mon occupies at least one slot. Iterate TreeMonMaps for all maps with
+	; headbutt groups the mon is a part of.
+	ld a, d ; region
+	scf
+	push af
+	ld b, HIGH(wDexAreaValidTreeGroups)
+.loop
+	ld a, [hli]
+	ld d, a
+	inc a
+	jr z, .end_of_maps
+	ld a, [hli]
+	ld e, a
+	ld a, [hli]
+	add LOW(wDexAreaValidTreeGroups)
+	ld c, a
+	ld a, [bc]
+	and a
+	jr z, .loop
+
+	pop af
+
+	; Resets carry if insertion succeeded.
+	farcall Pokedex_SetWildLandmark
+	push af
+	jr .loop
+
+.end_of_maps
+	pop af
+	ret
+
+.CheckTable:
+; Checks if the headbutt table in hl has the given mon in bc. Return nc if yes.
+	ld a, [hli]
+	add 1 ; no-optimize a++|a-- (sets carry if we found the -1 terminator)
+	ret c
+
+	ld a, [hli]
+	cp c
+	ld a, [hli]
+	inc hl ; skip level
+	jr nz, .CheckTable
+	call DexCompareWildForm
+	jr nz, .CheckTable
+	ret
+
+.AppendTreeSet:
+	ld a, LOW(wDexAreaValidTreeGroups)
+	add d
+	ld h, HIGH(wDexAreaValidTreeGroups)
+	ld l, a
+	ld [hl], 1
+
+	; Resets carry on previously pushed af.
+	pop hl ; return addr
+	pop af
+	and a
+	push af
+	jp hl
+
 GetTreeMons:
 ; Return the address of TreeMon table a in hl.
 ; Return nc if table a doesn't exist.
 
 	cp NUM_TREEMON_SETS
-	jr nc, .quit
+	ret nc
 
-	ld e, a
-	ld d, 0
-	ld hl, TreeMons
-	add hl, de
-	add hl, de
+	add a
+	add LOW(TreeMons)
+	ld l, a
+	adc HIGH(TreeMons)
+	sub l
+	ld h, a
 
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
 
 	scf
-	ret
-
-.quit
-	xor a
 	ret
 
 INCLUDE "data/wild/treemons.asm"

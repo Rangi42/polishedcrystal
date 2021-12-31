@@ -234,6 +234,32 @@ GetAbility::
 	ld b, a
 	ret
 
+DexCompareWildForm:
+; Compares wildmon form in a (converting form 0->1) with b.
+; If b is cosmetic form, only check for matching extspecies.
+; Otherwise, check exact form. Returns z if matching. If z is returned, nc
+; is also returned (but can sometimes be returned on nz as well).
+	push af
+	and FORM_MASK
+	jr nz, .form_ok
+	pop af
+	inc a
+	jr .got_form
+
+.form_ok
+	pop af
+.got_form
+	bit MON_COSMETIC_F, b
+	jr nz, .cosmetic
+
+	cp b
+	ret
+
+.cosmetic
+	xor b
+	and EXTSPECIES_MASK
+	ret
+
 GetGenderRatio::
 ; 'b' contains the target form
 ; 'c' contains the target species

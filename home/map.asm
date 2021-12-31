@@ -1748,7 +1748,7 @@ GetAnyMapPointer::
 	; find the cth map within the group
 	dec c
 	ld b, 0
-	ld a, 9
+	ld a, MAP_LENGTH
 	rst AddNTimes
 	ret
 
@@ -2004,17 +2004,6 @@ GetPhoneServiceTimeOfDayByte::
 	pop bc
 	pop hl
 	ret
-
-GetFishingGroup::
-	push de
-	push hl
-	push bc
-
-	ld de, MAP_FISHGROUP
-	call GetMapField
-	ld a, c
-
-	jmp PopBCDEHL
 
 TilesetUnchanged::
 ; returns z if tileset is unchanged from last tileset

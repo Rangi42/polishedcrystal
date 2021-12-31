@@ -32,7 +32,8 @@ DEXAREA_WILDS EQU const_value ; Areas above are handled by GetWildLocations
 	const DEXAREA_OLD_ROD
 	const DEXAREA_GOOD_ROD
 	const DEXAREA_SUPER_ROD
-	const DEXAREA_THEADBUTT
+DEXAREA_FISH EQU const_value ; Areas above are handled by GetFishLocations
+	const DEXAREA_HEADBUTT
 	const DEXAREA_ROCK_SMASH
 	const DEXAREA_CONTEST
 NUM_DEXAREAS EQU const_value

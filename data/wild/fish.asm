@@ -10,6 +10,7 @@ FishGroups:
 	fishgroup 65 percent + 1, 85 percent + 1, .Shore_Old,            .Shore_Good,            .Shore_Super
 	fishgroup 75 percent + 1, 85 percent + 1, .Ocean_Old,            .Ocean_Good,            .Ocean_Super
 	fishgroup 70 percent + 1, 85 percent + 1, .Lake_Old,             .Lake_Good,             .Lake_Super
+	fishgroup 70 percent + 1, 85 percent + 1, .River_Old,            .River_Good,            .River_Super
 	fishgroup 55 percent + 1, 65 percent + 1, .Pond_Old,             .Pond_Good,             .Pond_Super
 	fishgroup 60 percent + 1, 70 percent + 1, .Dratini_Old,          .Dratini_Good,          .Dratini_Super
 	fishgroup 60 percent + 1, 70 percent + 1, .Qwilfish_Swarm_Old,   .Qwilfish_Swarm_Good,   .Qwilfish_Swarm_Super
@@ -25,7 +26,12 @@ FishGroups:
 fishentry: MACRO
 ; % chance, species, level
 	db \1
-	dp \2
+	if _NARG == 4
+		dp \2, \3
+		shift
+	else
+		dp \2
+	endc
 	db \3
 ENDM
 
@@ -37,10 +43,10 @@ ENDM
 	fishentry  35 percent,     MAGIKARP,   20
 	fishentry  70 percent,     KRABBY,     20
 	fishentry  90 percent + 1, KRABBY,     20
-	fishentry 100 percent,     0,  0          ; corsola morn/day, staryu at night
+	fishentry 100 percent,     0,          20 ; corsola morn/day, staryu eve/night
 .Shore_Super:
 	fishentry  40 percent,     KRABBY,     40
-	fishentry  70 percent,     0,  1          ; corsola morn/day, staryu at night
+	fishentry  70 percent,     0,          40 ; corsola morn/day, staryu eve/night
 	fishentry  90 percent + 1, KRABBY,     40
 	fishentry 100 percent,     KINGLER,    40
 
@@ -60,15 +66,18 @@ ENDM
 	fishentry 100 percent,     LANTURN,    40
 
 .Lake_Old:
+.River_Old:
 	fishentry  70 percent + 1, MAGIKARP,   10
 	fishentry  85 percent + 1, MAGIKARP,   10
 	fishentry 100 percent,     GOLDEEN,    10
 .Lake_Good:
+.River_Good:
 	fishentry  35 percent,     MAGIKARP,   20
 	fishentry  70 percent,     GOLDEEN,    20
 	fishentry  90 percent + 1, GOLDEEN,    20
 	fishentry 100 percent,     GOLDEEN,    20
 .Lake_Super:
+.River_Super:
 	fishentry  40 percent,     GOLDEEN,    40
 	fishentry  70 percent,     GOLDEEN,    40
 	fishentry  90 percent + 1, MAGIKARP,   40
@@ -211,18 +220,6 @@ ENDM
 	fishentry  70 percent,     POLIWAG,    40
 	fishentry  90 percent + 1, MAGIKARP,   40
 	fishentry 100 percent,     REMORAID,   40
-
-timedfishgroup: MACRO
-	dp \1
-	db \2
-	dp \3
-	db \4
-ENDM
-
-TimeFishGroups:
-	; day, night
-	timedfishgroup CORSOLA,    20, STARYU,     20
-	timedfishgroup CORSOLA,    40, STARYU,     40
 
 FishItems:
 	db PEARL
