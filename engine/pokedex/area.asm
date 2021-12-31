@@ -20,8 +20,15 @@ endc
 
 Pokedex_Area:
 	; TODO: maybe preset depending on time of day?
+	ldh a, [rSVBK]
+	push af
+	ld a, BANK(wDexAreaLastMode)
+	ldh [rSVBK], a
 	xor a
 	ldh [hPokedexAreaMode], a
+	ld [wDexAreaLastMode], a
+	pop af
+	ldh [rSVBK], a
 	; fallthrough
 Pokedex_Area_ResetLocationData:
 ; For when scrolling to a new species or forme.
@@ -38,42 +45,7 @@ Pokedex_Area_ResetLocationData:
 	pop af
 	ldh [rSVBK], a
 
-	; Clear "Area Unknown" marker.
-	ld hl, hPokedexAreaMode
-	res DEXAREA_UNKNOWN_F, [hl]
-
-	; Iterate all location types to check if we should print "Area Unknown".
-	ld d, 0 ; region
-.outer_loop
-	ld e, 0 ; type
-.inner_loop
-	push de
-	call Pokedex_GetMonLocations
-	pop de
-	jr nc, _Pokedex_Area
-	inc e
-	ld a, e
-	cp NUM_DEXAREAS
-	jr nz, .inner_loop
-	inc d
-	ld a, d
-	cp NUM_REGIONS
-	jr z, .area_unknown
-
-	; Check if we have unlocked the region
-	cp ORANGE_REGION
-	jr nz, .check_kanto
-	ld a, [wStatusFlags2]
-	bit 3, a ; ENGINE_SEEN_SHAMOUTI_ISLAND
-	jr z, .area_unknown
-	; Redundant to run the check below again, but means less space used.
-.check_kanto
-	ld a, [wStatusFlags]
-	bit 6, a ; ENGINE_CREDITS_SKIP
-	jr nz, .outer_loop
-.area_unknown
-	ld hl, hPokedexAreaMode
-	set DEXAREA_UNKNOWN_F, [hl]
+	call Pokedex_ReloadValidLocations
 	; fallthrough
 _Pokedex_Area:
 	ld a, DEXDISP_AREA
@@ -129,11 +101,13 @@ _Pokedex_Area:
 	ld a, [hl]
 	and DEXAREA_TYPE_MASK
 	cp NUM_DEXAREAS
-	jr nz, _Pokedex_Area
+	jr nz, .cycle_area
 	; fallthrough
 .loopback_area_mode
 	xor [hl] ; Will retain the other nibble type and set targeted one to 0.
 	ld [hl], a
+.cycle_area
+	call Pokedex_CycleToKnownArea
 	jr _Pokedex_Area
 
 .pressed_b
@@ -141,10 +115,12 @@ _Pokedex_Area:
 	jr .switch_dex_screen
 
 .pressed_select
+	; Check if there's at least one region with a valid nest.
+	ld b, -1 ; all regions
+	call Pokedex_CountLocations
+	jr z, .joypad_loop
+
 	; Switch displayed region
-	ld hl, hPokedexAreaMode
-	bit DEXAREA_UNKNOWN_F, [hl]
-	jr nz, .joypad_loop
 	ld hl, hPokedexAreaMode
 	ld a, [hl]
 	add $10
@@ -162,12 +138,12 @@ _Pokedex_Area:
 
 	; If we're switching to Orange Islands, check if we've visited it.
 	cp ORANGE_REGION << 4
-	jr nz, _Pokedex_Area
+	jr nz, .cycle_area
 	push hl
 	ld hl, wStatusFlags2
 	bit 3, [hl] ; ENGINE_SEEN_SHAMOUTI_ISLAND
 	pop hl
-	jmp nz, _Pokedex_Area
+	jr nz, .cycle_area
 	jr .loopback_area_mode
 
 .pressed_start
@@ -207,6 +183,169 @@ _Pokedex_Area:
 	call Pokedex_GetFirstIconTile
 	call Pokedex_GetCursorMon
 	jmp Pokedex_Area_ResetLocationData
+
+Pokedex_ReloadValidLocations:
+	ld a, BANK(wDexAreaRegionLocations)
+	call StackCallInWRAMBankA
+.Function:
+	ld hl, wDexAreaRegionLocations
+	xor a
+	ld bc, NUM_DEXAREAS
+	rst ByteFill
+
+	; Clear "Area Unknown" marker.
+	ld hl, hPokedexAreaMode
+	res DEXAREA_UNKNOWN_F, [hl]
+	push hl
+
+	; Iterate all location types to check if we should print "Area Unknown".
+	ld d, 0 ; region
+	ld b, 1 ; bitflag for first region
+.outer_loop
+	ld e, 0 ; type
+	ld hl, wDexAreaRegionLocations
+.inner_loop
+	push hl
+	push de
+	push bc
+	call Pokedex_GetMonLocations
+	pop bc
+	pop de
+	pop hl
+	jr c, .next
+	ld a, [hl]
+	or b
+	ld [hl], a
+.next
+	inc hl
+	inc e
+	ld a, e
+	cp NUM_DEXAREAS
+	jr nz, .inner_loop
+	sla b
+	inc d
+	ld a, d
+	cp NUM_REGIONS
+	jr z, .finish
+
+	; Check if we have unlocked the region
+	cp ORANGE_REGION
+	jr nz, .check_kanto
+	push hl
+	ld hl, wStatusFlags2
+	call GetFarWRAMByte
+	pop hl
+	bit 3, a ; ENGINE_SEEN_SHAMOUTI_ISLAND
+	jr z, .finish
+	; Redundant to run the check below again, but means less space used.
+.check_kanto
+	push hl
+	ld hl, wStatusFlags
+	call GetFarWRAMByte
+	pop hl
+	bit 6, a ; ENGINE_CREDITS_SKIP
+	jr nz, .outer_loop
+
+.finish
+	; Cycle to a known area, preferring last used mode.
+	pop hl
+	push hl
+	ld a, [hl]
+	and DEXAREA_REGION_MASK
+	ld [hl], a
+	ld a, [wDexAreaLastMode]
+	and DEXAREA_REGION_MASK
+	or [hl]
+	ld [hl], a
+	call Pokedex_CycleToKnownArea
+	pop hl
+	ret nc
+	set DEXAREA_UNKNOWN_F, [hl]
+	ret
+
+Pokedex_GetRegionAreaFlag:
+; Set b to the bitflag for region in d.
+	ld a, $80
+	inc d
+.area_bitflag
+	rlca
+	dec d
+	jr nz, .area_bitflag
+	ld b, a
+	ret
+
+Pokedex_CountLocations:
+; Count valid locations for region bitflags in b.
+; Returns amount in e. Returns z if no valid locations were found.
+	ld a, BANK(wDexAreaRegionLocations)
+	call StackCallInWRAMBankA
+.Function:
+	lb de, NUM_DEXAREAS, 0
+	ld hl, wDexAreaRegionLocations
+.loop
+	ld a, [hli]
+	and b
+	jr z, .invalid_location
+	inc e
+.invalid_location
+	dec d
+	jr nz, .loop
+
+	; If e is 0, a is also 0 from previous [hl]. So this returns z correctly.
+	or e
+	ret
+
+Pokedex_CycleToKnownArea:
+; Cycles hPokedexAreaMode to a location type with at least one nest.
+; Returns carry if the current region doesn't have one.
+	ld a, BANK(wDexAreaRegionLocations)
+	call StackCallInWRAMBankA
+.Function:
+	call Pokedex_GetAreaMode
+	call Pokedex_GetRegionAreaFlag
+
+	; Set hl to wDexAreaRegionLocations+e (e=current type)
+	ld a, e
+	add LOW(wDexAreaRegionLocations)
+	ld l, a
+	adc HIGH(wDexAreaRegionLocations)
+	sub l
+	ld h, a
+
+	; We want to know our former location in case we fail to find a location.
+	ld d, e
+
+.loop
+	ld a, [hli]
+	and b
+	jr nz, .found_location
+
+	; Try the next location
+	inc e
+	ld a, e
+	cp NUM_DEXAREAS
+	jr nz, .got_new_area
+
+	; Loopback to the first area.
+	ld hl, wDexAreaRegionLocations
+	xor a
+	ld e, a
+.got_new_area
+	; Check if we ended up where we started.
+	cp d
+	jr nz, .loop
+
+	; Failed to find a location, set carry.
+	scf
+	ret
+.found_location
+	ldh a, [hPokedexAreaMode]
+
+	; Resets carry, so we don't need to "xor a" later.
+	and DEXAREA_REGION_MASK
+	or e
+	ldh [hPokedexAreaMode], a
+	ret
 
 Pokedex_GetAreaMode:
 ; Returns region displayed in d, location type in e.
@@ -358,6 +497,7 @@ Pokedex_GetMonLocations:
 	jr z, .headbutt
 	dec a ; cp DEXAREA_ROCK_SMASH
 	jr z, .rock_smash
+	scf
 	ret
 
 .wild
