@@ -363,8 +363,7 @@ Pokedex_GetMonLocations:
 .wild
 	farjp GetWildLocations
 .fish
-	; TODO: GetFishLocations
-	ret
+	farjp GetFishLocations
 .headbutt
 	farjp GetHeadbuttLocations
 .rock_smash

@@ -183,10 +183,8 @@ GetTreeOrRockLocations:
 	scf
 	push af
 .moncheck_loop
-	push de
 	ld a, d
 	call GetTreeMons
-	pop de
 
 	; The rock set only has one wildmon table, not 2 for common and rare.
 	ld a, d
@@ -210,7 +208,8 @@ GetTreeOrRockLocations:
 	pop af
 	pop de
 	ret c
-
+	; fallthrough
+.CheckMaps:
 	; The mon occupies at least one slot. Iterate TreeMonMaps for all maps with
 	; headbutt groups the mon is a part of.
 	ld a, d ; region
@@ -276,23 +275,20 @@ GetTreeMons:
 ; Return nc if table a doesn't exist.
 
 	cp NUM_TREEMON_SETS
-	jr nc, .quit
+	ret nc
 
-	ld e, a
-	ld d, 0
-	ld hl, TreeMons
-	add hl, de
-	add hl, de
+	add a
+	add LOW(TreeMons)
+	ld l, a
+	adc HIGH(TreeMons)
+	sub l
+	ld h, a
 
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
 
 	scf
-	ret
-
-.quit
-	xor a
 	ret
 
 INCLUDE "data/wild/treemons.asm"
