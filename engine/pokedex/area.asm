@@ -108,6 +108,9 @@ _Pokedex_Area:
 	ld [hl], a
 .cycle_area
 	call Pokedex_CycleToKnownArea
+	jr nc, _Pokedex_Area
+	ld hl, hPokedexAreaMode
+	set DEXAREA_UNKNOWN_F, [hl]
 	jr _Pokedex_Area
 
 .pressed_b
@@ -367,7 +370,7 @@ Pokedex_GetAreaOAM:
 ; Handles OAM data for the area screen.
 ; Caution: runs in the wDex* WRAMX bank.
 	; Write Area Unknown
-	lb de, 9, 6
+	lb de, 9, 10
 	lb hl, VRAM_BANK_1, $34
 	lb bc, 52, 91 ; x, y
 	ldh a, [hPokedexAreaMode]
@@ -375,39 +378,13 @@ Pokedex_GetAreaOAM:
 	push af
 	call nz, Pokedex_WriteOAM
 	pop af
-	jr nz, .a_sel_done
+	jr nz, .a_highlight_done
 
 	; Write nest highlight
 	ld hl, wDexAreaHighlightOAM
 	ld de, wVirtualOAMSprite06
 	ld bc, 4
 	rst CopyBytes
-
-	; Write (SEL) button
-	ldh a, [hPokedexAreaMode]
-	and DEXAREA_REGION_MASK
-	cp ORANGE_REGION << 4
-	lb de, 1, 7
-	lb hl, 0, $0b
-	lb bc, 115, 143
-	jr nz, .not_orange
-	ld b, 107
-.not_orange
-	call Pokedex_WriteOAM
-	ld d, 1
-	ld l, $11
-	call Pokedex_WriteOAM
-	ld d, 1
-	ld l, $10
-	dec b
-	dec b
-	call Pokedex_WriteOAM
-
-	; Write (A) button
-	lb de, 2, 25
-	lb hl, VRAM_BANK_1 | 1, $3d
-	lb bc, 146, 30 ; x, y
-	call Pokedex_WriteOAM
 
 	; Write nest OAM tiles + attributes. Set y to 0 because we don't want to
 	; render any by default.
@@ -416,8 +393,6 @@ Pokedex_GetAreaOAM:
 	; e (OAM slot) is kept from previous writing
 	lb hl, VRAM_BANK_1, $3f
 	call Pokedex_WriteOAMSingleTile
-
-.a_sel_done
 	; We want to print a VWF string. To do this, we must first clear the tiles.
 	xor a
 	ld hl, wDexAreaTypeTiles
@@ -450,7 +425,43 @@ Pokedex_GetAreaOAM:
 	lb bc, 94, 29
 	lb de, 7, 27
 	lb hl, 0, $40
-	jmp Pokedex_WriteOAM
+	call Pokedex_WriteOAM
+
+	; Write (A) button
+	call Pokedex_GetAreaMode
+	call Pokedex_GetRegionAreaFlag
+	call Pokedex_CountLocations
+	dec a
+	jr z, .a_highlight_done
+	lb de, 2, 25
+	lb hl, VRAM_BANK_1 | 1, $3d
+	lb bc, 146, 30 ; x, y
+	call Pokedex_WriteOAM
+
+.a_highlight_done
+	; Write (SEL) button
+	ld b, -1
+	call Pokedex_CountLocations
+	ret z
+
+	ldh a, [hPokedexAreaMode]
+	and DEXAREA_REGION_MASK
+	cp ORANGE_REGION << 4
+	lb de, 1, 7
+	lb hl, 0, $0b
+	lb bc, 115, 143
+	jr nz, .not_orange
+	ld b, 107
+.not_orange
+	call Pokedex_WriteOAM
+	ld d, 1
+	ld l, $11
+	call Pokedex_WriteOAM
+	ld d, 1
+	ld l, $10
+	dec b
+	dec b
+	jp Pokedex_WriteOAM
 
 Pokedex_GetMonLocations:
 ; Creates a table of nest coordinates for the given area mode.
