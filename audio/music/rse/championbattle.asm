@@ -17,6 +17,7 @@ Music_ChampionBattleRSE_Ch1:
 	vibrato $8, $15
 	notetype $3, $94
 Music_ChampionBattleRSE_Ch1_loop_1:
+	intensity $60
 	octave 5
 	note G_, 2
 	note G#, 2
@@ -346,6 +347,7 @@ Music_ChampionBattleRSE_Ch2:
 	vibrato $12, $25
 	tone $0001
 	notetype $3, $d4
+	intensity $80
 	octave 4
 	note D#, 2
 	note D_, 2

@@ -15,6 +15,7 @@ Music_GymLeaderBattleRSE_Ch1:
 	tone $0001
 	notetype $C, $C4
 	vibrato $12, $15
+	intensity $70
 	octave 5
 	note C_, 1
 	octave 4
@@ -321,6 +322,7 @@ Music_GymLeaderBattleRSE_Ch2:
 	dutycycle 2
 	notetype $C, $94
 	vibrato $12, $15
+	intensity $55
 	octave 5
 	note G_, 1
 	note G#, 1
