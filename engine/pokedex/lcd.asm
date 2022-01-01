@@ -756,12 +756,8 @@ PHB_LoadRow:
 	call .GetCaptureOffset
 	pop de
 
-	; This places the OAM writes within the worst-case mode0 margin.
-	; Delay for exactly 2 + (1 + 3) * 34 + 1 + 2 = 141 cycles.
-	ld b, 35
-.fixtiming1
-	dec b
-	jr nz, .fixtiming1
+	ld c, 32
+	call PHB_BusyLoop2
 
 	; Write poké ball presence info
 	ld hl, oamSprite12YCoord + 16
@@ -832,7 +828,7 @@ endr
 	ld [hl], e
 	inc e
 
-	; Pal col 2 (OBJ2) on first iteration, col 3 (OBJ3) on the second.
+	; Pal col 2 (OBJ5) on first iteration, col 3 (OBJ6) on the second.
 	pop hl
 	ld c, LOW(rOBPD)
 rept 6
@@ -868,7 +864,7 @@ rept 3
 endr
 	ld d, a
 
-	; Pal col 4 (OBJ4) on first iteration, col 5 (BG3) on the second.
+	; Pal col 4 (OBJ7) on first iteration, col 5 (BG3) on the second.
 	pop bc
 	pop hl
 rept 6

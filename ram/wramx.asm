@@ -1532,7 +1532,7 @@ wDexNumberString:: ds 4 ; 3 numbers including leading zeroes + terminator
 ; including things like the proper floor. This is -1 to denote no highlight,
 wDexAreaHighlight:: db
 
-; TODO: do we need this? why not just write to wVirtualOAM directly?
+; Needed because when we reload the screen, wVirtualOAM is wiped clean.
 wDexAreaHighlightOAM:: ds 4
 
 wDexAreaValidGroups::
