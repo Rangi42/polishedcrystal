@@ -355,7 +355,7 @@ _CGB_Pokedex_PrepareOnly:
 	ld c, 2 palettes
 	call LoadCPaletteBytesFromHLIntoDE
 	ld de, wOBPals1 + 2
-	ld c, 2 palettes - 2
+	ld c, 3 palettes - 2
 	jmp LoadCPaletteBytesFromHLIntoDE
 
 _CGB_SlotMachine:

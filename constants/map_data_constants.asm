@@ -12,8 +12,7 @@ MAP_MAPATTRIBUTES      rw ; 3
 MAP_LOCATION           rb ; 5
 MAP_MUSIC              rb ; 6
 MAP_PALETTE            rb ; 7
-MAP_FISHGROUP          rb ; 8
-MAP_LENGTH EQU _RS
+MAP_LENGTH EQU _RS        ; 8
 
 ; map environments (wEnvironment)
 ; EnvironmentColorsPointers indexes (see data/maps/environment_colors.asm)
@@ -45,6 +44,7 @@ DARKNESS_PALSET EQU %00011011 ; brightlevel 0, 1, 2, 3
 	const FISHGROUP_SHORE
 	const FISHGROUP_OCEAN
 	const FISHGROUP_LAKE
+	const FISHGROUP_RIVER
 	const FISHGROUP_POND
 	const FISHGROUP_DRATINI
 	const FISHGROUP_QWILFISH_SWARM

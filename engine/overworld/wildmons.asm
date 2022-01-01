@@ -103,23 +103,7 @@ GetWildLocations:
 	inc hl
 	jr nz, .findmon_next
 
-	; Convert form 0 to form 1.
-	push af
-	and FORM_MASK
-	jr nz, .form_ok
-	pop af
-	inc a
-	jr .got_form
-
-.form_ok
-	pop af
-.got_form
-	; If the form is noncosmetic, only allow a==b. Otherwise, allow any b that
-	; match extspecies.
-	bit MON_COSMETIC_F, b
-	jr nz, .cosmetic
-
-	cp b
+	call DexCompareWildForm
 	jr nz, .findmon_next
 
 .found_species
@@ -128,17 +112,13 @@ GetWildLocations:
 	ld d, a
 	ld a, [hld]
 	ld e, a
+	ld a, -1
 	farcall Pokedex_SetWildLandmark
 	pop af
 	ld d, a
 	xor a ; set zero flag to mark at least one capture
 	ld a, d
 	jr .findmon_next_outer
-
-.cosmetic
-	xor b
-	and EXTSPECIES_MASK
-	jr z, .found_species
 
 .findmon_next
 	dec d
