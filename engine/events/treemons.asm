@@ -215,7 +215,7 @@ GetTreeOrRockLocations:
 	ld a, d ; region
 	scf
 	push af
-	ld b, HIGH(wDexAreaValidTreeGroups)
+	ld b, HIGH(wDexAreaValidGroups)
 .loop
 	ld a, [hli]
 	ld d, a
@@ -224,7 +224,7 @@ GetTreeOrRockLocations:
 	ld a, [hli]
 	ld e, a
 	ld a, [hli]
-	add LOW(wDexAreaValidTreeGroups)
+	add LOW(wDexAreaValidGroups)
 	ld c, a
 	ld a, [bc]
 	and a

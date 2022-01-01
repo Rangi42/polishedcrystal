@@ -20,8 +20,15 @@ endc
 
 Pokedex_Area:
 	; TODO: maybe preset depending on time of day?
+	ldh a, [rSVBK]
+	push af
+	ld a, BANK(wDexAreaLastMode)
+	ldh [rSVBK], a
 	xor a
 	ldh [hPokedexAreaMode], a
+	ld [wDexAreaLastMode], a
+	pop af
+	ldh [rSVBK], a
 	; fallthrough
 Pokedex_Area_ResetLocationData:
 ; For when scrolling to a new species or forme.
@@ -38,42 +45,7 @@ Pokedex_Area_ResetLocationData:
 	pop af
 	ldh [rSVBK], a
 
-	; Clear "Area Unknown" marker.
-	ld hl, hPokedexAreaMode
-	res DEXAREA_UNKNOWN_F, [hl]
-
-	; Iterate all location types to check if we should print "Area Unknown".
-	ld d, 0 ; region
-.outer_loop
-	ld e, 0 ; type
-.inner_loop
-	push de
-	call Pokedex_GetMonLocations
-	pop de
-	jr nc, _Pokedex_Area
-	inc e
-	ld a, e
-	cp NUM_DEXAREAS
-	jr nz, .inner_loop
-	inc d
-	ld a, d
-	cp NUM_REGIONS
-	jr z, .area_unknown
-
-	; Check if we have unlocked the region
-	cp ORANGE_REGION
-	jr nz, .check_kanto
-	ld a, [wStatusFlags2]
-	bit 3, a ; ENGINE_SEEN_SHAMOUTI_ISLAND
-	jr z, .area_unknown
-	; Redundant to run the check below again, but means less space used.
-.check_kanto
-	ld a, [wStatusFlags]
-	bit 6, a ; ENGINE_CREDITS_SKIP
-	jr nz, .outer_loop
-.area_unknown
-	ld hl, hPokedexAreaMode
-	set DEXAREA_UNKNOWN_F, [hl]
+	call Pokedex_ReloadValidLocations
 	; fallthrough
 _Pokedex_Area:
 	ld a, DEXDISP_AREA
@@ -109,42 +81,73 @@ _Pokedex_Area:
 	rrca
 	jr c, .pressed_select
 	rrca
-	jr c, .pressed_start
+	jmp c, .pressed_start
 	rrca
-	jr c, .pressed_right
+	jmp c, .pressed_right
 	rrca
-	jr c, .pressed_left
+	jmp c, .pressed_left
 	rrca
-	jr c, .pressed_up
+	jmp c, .pressed_up
 	rrca
-	jr c, .pressed_down
+	jmp c, .pressed_down
 	jr .joypad_loop
 
 .pressed_a
 	; Switch area type displayed
+	call Pokedex_GetAreaMode
+	call Pokedex_GetRegionAreaFlag
+	call Pokedex_CountLocations
+	jr z, .joypad_loop
+
+	; Block 1 valid location too, to avoid updating wDexAreaLastMode.
+	dec a
+	jr z, .joypad_loop
+
+	ld b, 1 ; update lastmode if applicable
 	ld hl, hPokedexAreaMode
-	bit DEXAREA_UNKNOWN_F, [hl]
-	jr nz, .joypad_loop
 	inc [hl]
 	ld a, [hl]
 	and DEXAREA_TYPE_MASK
 	cp NUM_DEXAREAS
-	jr nz, _Pokedex_Area
+	jr nz, .cycle_area
 	; fallthrough
 .loopback_area_mode
 	xor [hl] ; Will retain the other nibble type and set targeted one to 0.
 	ld [hl], a
-	jr _Pokedex_Area
+.cycle_area
+	push bc
+	call Pokedex_CycleToKnownArea
+	pop bc
+	ld hl, hPokedexAreaMode
+	jr c, .unknown
+	dec b
+	jr nz, _Pokedex_Area
+	ldh a, [rSVBK]
+	push af
+	ld a, BANK(wDexAreaLastMode)
+	ldh [rSVBK], a
+	ld a, [hl]
+	ld [wDexAreaLastMode], a
+	pop af
+	ldh [rSVBK], a
+	jmp _Pokedex_Area
+
+.unknown
+	set DEXAREA_UNKNOWN_F, [hl]
+	jmp _Pokedex_Area
 
 .pressed_b
 	ld hl, Pokedex_Main
 	jr .switch_dex_screen
 
 .pressed_select
+	; Check if there's at least one region with a valid nest.
+	ld b, -1 ; all regions
+	call Pokedex_CountLocations
+	jr z, .joypad_loop
+	ld b, 0 ; don't update lastmode
+
 	; Switch displayed region
-	ld hl, hPokedexAreaMode
-	bit DEXAREA_UNKNOWN_F, [hl]
-	jr nz, .joypad_loop
 	ld hl, hPokedexAreaMode
 	ld a, [hl]
 	add $10
@@ -162,18 +165,18 @@ _Pokedex_Area:
 
 	; If we're switching to Orange Islands, check if we've visited it.
 	cp ORANGE_REGION << 4
-	jr nz, _Pokedex_Area
+	jr nz, .cycle_area
 	push hl
 	ld hl, wStatusFlags2
 	bit 3, [hl] ; ENGINE_SEEN_SHAMOUTI_ISLAND
 	pop hl
-	jmp nz, _Pokedex_Area
+	jr nz, .cycle_area
 	jr .loopback_area_mode
 
 .pressed_start
 	ld a, 1
 	call Pokedex_ChangeForm
-	jr c, .joypad_loop
+	jmp c, .joypad_loop
 	call Pokedex_GetCursorMon
 	jmp Pokedex_Area_ResetLocationData
 
@@ -208,6 +211,171 @@ _Pokedex_Area:
 	call Pokedex_GetCursorMon
 	jmp Pokedex_Area_ResetLocationData
 
+Pokedex_ReloadValidLocations:
+	ld a, BANK(wDexAreaRegionLocations)
+	call StackCallInWRAMBankA
+.Function:
+	ld hl, wDexAreaRegionLocations
+	xor a
+	ld bc, NUM_DEXAREAS
+	rst ByteFill
+
+	; Clear "Area Unknown" marker.
+	ld hl, hPokedexAreaMode
+	res DEXAREA_UNKNOWN_F, [hl]
+	push hl
+
+	; Iterate all location types to check if we should print "Area Unknown".
+	ld d, 0 ; region
+	ld b, 1 ; bitflag for first region
+.outer_loop
+	ld e, 0 ; type
+	ld hl, wDexAreaRegionLocations
+.inner_loop
+	push hl
+	push de
+	push bc
+	call Pokedex_GetMonLocations
+	pop bc
+	pop de
+	pop hl
+	jr c, .next
+	ld a, [hl]
+	or b
+	ld [hl], a
+.next
+	inc hl
+	inc e
+	ld a, e
+	cp NUM_DEXAREAS
+	jr nz, .inner_loop
+	sla b
+	inc d
+	ld a, d
+	cp NUM_REGIONS
+	jr z, .finish
+
+	; Check if we have unlocked the region
+	cp ORANGE_REGION
+	jr nz, .check_kanto
+	push hl
+	ld hl, wStatusFlags2
+	ld a, BANK(wStatusFlags2)
+	call GetFarWRAMByte
+	pop hl
+	bit 3, a ; ENGINE_SEEN_SHAMOUTI_ISLAND
+	jr z, .finish
+	; Redundant to run the check below again, but means less space used.
+.check_kanto
+	push hl
+	ld hl, wStatusFlags
+	ld a, BANK(wStatusFlags)
+	call GetFarWRAMByte
+	pop hl
+	bit 6, a ; ENGINE_CREDITS_SKIP
+	jr nz, .outer_loop
+
+.finish
+	; Cycle to a known area, preferring last used mode.
+	pop hl
+	push hl
+	ld a, [hl]
+	and DEXAREA_REGION_MASK
+	ld [hl], a
+	ld a, [wDexAreaLastMode]
+	and DEXAREA_TYPE_MASK
+	or [hl]
+	ld [hl], a
+	call Pokedex_CycleToKnownArea
+	pop hl
+	ret nc
+	set DEXAREA_UNKNOWN_F, [hl]
+	ret
+
+Pokedex_GetRegionAreaFlag:
+; Set b to the bitflag for region in d.
+	ld a, $80
+	inc d
+.area_bitflag
+	rlca
+	dec d
+	jr nz, .area_bitflag
+	ld b, a
+	ret
+
+Pokedex_CountLocations:
+; Count valid locations for region bitflags in b.
+; Returns amount in e. Returns z if no valid locations were found.
+	ld a, BANK(wDexAreaRegionLocations)
+	call StackCallInWRAMBankA
+.Function:
+	lb de, NUM_DEXAREAS, 0
+	ld hl, wDexAreaRegionLocations
+.loop
+	ld a, [hli]
+	and b
+	jr z, .invalid_location
+	inc e
+.invalid_location
+	dec d
+	jr nz, .loop
+
+	; If e is 0, a is also 0 from previous [hl]. So this returns z correctly.
+	or e
+	ret
+
+Pokedex_CycleToKnownArea:
+; Cycles hPokedexAreaMode to a location type with at least one nest.
+; Returns carry if the current region doesn't have one.
+	ld a, BANK(wDexAreaRegionLocations)
+	call StackCallInWRAMBankA
+.Function:
+	call Pokedex_GetAreaMode
+	call Pokedex_GetRegionAreaFlag
+
+	; Set hl to wDexAreaRegionLocations+e (e=current type)
+	ld a, e
+	add LOW(wDexAreaRegionLocations)
+	ld l, a
+	adc HIGH(wDexAreaRegionLocations)
+	sub l
+	ld h, a
+
+	; We want to know our former location in case we fail to find a location.
+	ld d, e
+
+.loop
+	ld a, [hli]
+	and b
+	jr nz, .found_location
+
+	; Try the next location
+	inc e
+	ld a, e
+	cp NUM_DEXAREAS
+	jr nz, .got_new_area
+
+	; Loopback to the first area.
+	ld hl, wDexAreaRegionLocations
+	xor a
+	ld e, a
+.got_new_area
+	; Check if we ended up where we started.
+	cp d
+	jr nz, .loop
+
+	; Failed to find a location, set carry.
+	scf
+	ret
+.found_location
+	ldh a, [hPokedexAreaMode]
+
+	; Resets carry, so we don't need to "xor a" later.
+	and DEXAREA_REGION_MASK
+	or e
+	ldh [hPokedexAreaMode], a
+	ret
+
 Pokedex_GetAreaMode:
 ; Returns region displayed in d, location type in e.
 ; Returns nz if area is "unknown" (unavailable).
@@ -228,7 +396,7 @@ Pokedex_GetAreaOAM:
 ; Handles OAM data for the area screen.
 ; Caution: runs in the wDex* WRAMX bank.
 	; Write Area Unknown
-	lb de, 9, 6
+	lb de, 9, 10
 	lb hl, VRAM_BANK_1, $34
 	lb bc, 52, 91 ; x, y
 	ldh a, [hPokedexAreaMode]
@@ -236,38 +404,15 @@ Pokedex_GetAreaOAM:
 	push af
 	call nz, Pokedex_WriteOAM
 	pop af
-	jr nz, .a_sel_done
+	jr nz, .a_highlight_done
 
 	; Write nest highlight
-	ld hl, wDexAreaHighlightOAM
-	ld de, wVirtualOAMSprite06
-	ld bc, 4
-	rst CopyBytes
-
-	; Write (SEL) button
-	ldh a, [hPokedexAreaMode]
-	and DEXAREA_REGION_MASK
-	cp ORANGE_REGION << 4
-	lb de, 1, 7
-	lb hl, 0, $0b
-	lb bc, 115, 143
-	jr nz, .not_orange
-	ld b, 107
-.not_orange
-	call Pokedex_WriteOAM
-	ld d, 1
-	ld l, $11
-	call Pokedex_WriteOAM
-	ld d, 1
-	ld l, $10
-	dec b
-	dec b
-	call Pokedex_WriteOAM
-
-	; Write (A) button
-	lb de, 2, 25
-	lb hl, VRAM_BANK_1 | 1, $3d
-	lb bc, 146, 30 ; x, y
+	ld hl, wDexAreaHighlightY
+	ld a, [hli]
+	ld b, [hl]
+	ld c, a
+	lb de, 1, 6
+	lb hl, VRAM_BANK_1 | 2, $3f
 	call Pokedex_WriteOAM
 
 	; Write nest OAM tiles + attributes. Set y to 0 because we don't want to
@@ -277,8 +422,6 @@ Pokedex_GetAreaOAM:
 	; e (OAM slot) is kept from previous writing
 	lb hl, VRAM_BANK_1, $3f
 	call Pokedex_WriteOAMSingleTile
-
-.a_sel_done
 	; We want to print a VWF string. To do this, we must first clear the tiles.
 	xor a
 	ld hl, wDexAreaTypeTiles
@@ -311,7 +454,43 @@ Pokedex_GetAreaOAM:
 	lb bc, 94, 29
 	lb de, 7, 27
 	lb hl, 0, $40
-	jmp Pokedex_WriteOAM
+	call Pokedex_WriteOAM
+
+	; Write (A) button
+	call Pokedex_GetAreaMode
+	call Pokedex_GetRegionAreaFlag
+	call Pokedex_CountLocations
+	dec a
+	jr z, .a_highlight_done
+	lb de, 2, 25
+	lb hl, VRAM_BANK_1 | 1, $3d
+	lb bc, 146, 30 ; x, y
+	call Pokedex_WriteOAM
+
+.a_highlight_done
+	; Write (SEL) button
+	ld b, -1
+	call Pokedex_CountLocations
+	ret z
+
+	ldh a, [hPokedexAreaMode]
+	and DEXAREA_REGION_MASK
+	cp ORANGE_REGION << 4
+	lb de, 1, 7
+	lb hl, 0, $0b
+	lb bc, 115, 143
+	jr nz, .not_orange
+	ld b, 107
+.not_orange
+	call Pokedex_WriteOAM
+	ld d, 1
+	ld l, $11
+	call Pokedex_WriteOAM
+	ld d, 1
+	ld l, $10
+	dec b
+	dec b
+	jp Pokedex_WriteOAM
 
 Pokedex_GetMonLocations:
 ; Creates a table of nest coordinates for the given area mode.
@@ -330,9 +509,10 @@ Pokedex_GetMonLocations:
 	xor a
 	ld bc, wDexAreaMonsEnd - wDexAreaMons
 	rst ByteFill
-	ld hl, wDexAreaHighlightOAM
-	ld c, 4
-	rst ByteFill
+	ld hl, wDexAreaHighlightY
+	ld [hli], a
+	ld [hl], a
+	; TODO: highlight nests in the player's current map
 	dec a
 	ld [wDexAreaHighlight], a
 
@@ -358,7 +538,7 @@ Pokedex_GetMonLocations:
 	jr z, .headbutt
 	dec a ; cp DEXAREA_ROCK_SMASH
 	jr z, .rock_smash
-	ret
+	farjp GetContestLocations
 
 .wild
 	farjp GetWildLocations
@@ -376,6 +556,7 @@ Pokedex_SetWildLandmark:
 	push hl
 	push de
 	push bc
+	push de
 	push af
 	ld b, d
 	ld c, e
@@ -407,6 +588,7 @@ Pokedex_SetWildLandmark:
 	; Compare region in b against region in a.
 	pop af
 	cp b
+	pop bc ; previously pushed map group+map number in de
 	jr z, .region_ok
 
 	; Preserves a and jumps to end, returning carry if applicable.
@@ -416,6 +598,21 @@ Pokedex_SetWildLandmark:
 .region_ok
 	push af
 	push hl
+
+	; Check player map group+number
+	ld a, BANK(wMapGroup)
+	ld hl, wMapGroup
+	call GetFarWRAMByte
+	cp b
+	jr nz, .highlight_done
+	ld a, BANK(wMapNumber)
+	ld hl, wMapNumber
+	call GetFarWRAMByte
+	cp c
+	jr nz, .highlight_done
+	ld a, e
+	ld [wDexAreaHighlight], a
+.highlight_done
 	farcall GetLandmarkCoords
 	pop hl
 	ld a, d ; y
@@ -440,7 +637,9 @@ Pokedex_SortAreaMons:
 	inc h
 .got_mon_table
 	; First, check if we should assign a highlighted nest.
-	ld a, [wDexAreaHighlight]
+	ld de, wDexAreaHighlight
+	ld a, [de]
+	inc de
 	inc a
 	jr z, .no_highlight
 
@@ -451,22 +650,12 @@ Pokedex_SortAreaMons:
 	push hl
 	add a
 	ld l, a
-	ld d, h
-	ld e, l
-	ld hl, wDexAreaHighlightOAM
-	ld a, [de]
-	ld [hli], a
-	ld a, -2
+	ld a, [hl]
 	ld [de], a
 	inc de
-	ld a, [de]
+	xor a
 	ld [hli], a
-	ld a, -2
-	ld [de], a
-	ld a, 0 ; nest tile ID
-	ld [de], a
-	inc de
-	ld a, 1 ; nest tile attributes
+	ld a, [hl]
 	ld [de], a
 	pop hl
 
