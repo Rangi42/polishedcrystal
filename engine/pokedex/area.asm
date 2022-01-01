@@ -260,6 +260,7 @@ Pokedex_ReloadValidLocations:
 	jr nz, .check_kanto
 	push hl
 	ld hl, wStatusFlags2
+	ld a, BANK(wStatusFlags2)
 	call GetFarWRAMByte
 	pop hl
 	bit 3, a ; ENGINE_SEEN_SHAMOUTI_ISLAND
@@ -268,6 +269,7 @@ Pokedex_ReloadValidLocations:
 .check_kanto
 	push hl
 	ld hl, wStatusFlags
+	ld a, BANK(wStatusFlags)
 	call GetFarWRAMByte
 	pop hl
 	bit 6, a ; ENGINE_CREDITS_SKIP
@@ -405,10 +407,13 @@ Pokedex_GetAreaOAM:
 	jr nz, .a_highlight_done
 
 	; Write nest highlight
-	ld hl, wDexAreaHighlightOAM
-	ld de, wVirtualOAMSprite06
-	ld bc, 4
-	rst CopyBytes
+	ld hl, wDexAreaHighlightY
+	ld a, [hli]
+	ld b, [hl]
+	ld c, a
+	lb de, 1, 6
+	lb hl, VRAM_BANK_1 | 2, $3f
+	call Pokedex_WriteOAM
 
 	; Write nest OAM tiles + attributes. Set y to 0 because we don't want to
 	; render any by default.
@@ -504,9 +509,9 @@ Pokedex_GetMonLocations:
 	xor a
 	ld bc, wDexAreaMonsEnd - wDexAreaMons
 	rst ByteFill
-	ld hl, wDexAreaHighlightOAM
-	ld c, 4
-	rst ByteFill
+	ld hl, wDexAreaHighlightY
+	ld [hli], a
+	ld [hl], a
 	; TODO: highlight nests in the player's current map
 	dec a
 	ld [wDexAreaHighlight], a
@@ -551,6 +556,7 @@ Pokedex_SetWildLandmark:
 	push hl
 	push de
 	push bc
+	push de
 	push af
 	ld b, d
 	ld c, e
@@ -582,6 +588,7 @@ Pokedex_SetWildLandmark:
 	; Compare region in b against region in a.
 	pop af
 	cp b
+	pop bc ; previously pushed map group+map number in de
 	jr z, .region_ok
 
 	; Preserves a and jumps to end, returning carry if applicable.
@@ -591,6 +598,21 @@ Pokedex_SetWildLandmark:
 .region_ok
 	push af
 	push hl
+
+	; Check player map group+number
+	ld a, BANK(wMapGroup)
+	ld hl, wMapGroup
+	call GetFarWRAMByte
+	cp b
+	jr nz, .highlight_done
+	ld a, BANK(wMapNumber)
+	ld hl, wMapNumber
+	call GetFarWRAMByte
+	cp c
+	jr nz, .highlight_done
+	ld a, e
+	ld [wDexAreaHighlight], a
+.highlight_done
 	farcall GetLandmarkCoords
 	pop hl
 	ld a, d ; y
@@ -615,7 +637,9 @@ Pokedex_SortAreaMons:
 	inc h
 .got_mon_table
 	; First, check if we should assign a highlighted nest.
-	ld a, [wDexAreaHighlight]
+	ld de, wDexAreaHighlight
+	ld a, [de]
+	inc de
 	inc a
 	jr z, .no_highlight
 
@@ -626,22 +650,12 @@ Pokedex_SortAreaMons:
 	push hl
 	add a
 	ld l, a
-	ld d, h
-	ld e, l
-	ld hl, wDexAreaHighlightOAM
-	ld a, [de]
-	ld [hli], a
-	ld a, -2
+	ld a, [hl]
 	ld [de], a
 	inc de
-	ld a, [de]
+	xor a
 	ld [hli], a
-	ld a, -2
-	ld [de], a
-	ld a, 0 ; nest tile ID
-	ld [de], a
-	inc de
-	ld a, 2 ; nest tile attributes
+	ld a, [hl]
 	ld [de], a
 	pop hl
 

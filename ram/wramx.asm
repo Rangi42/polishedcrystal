@@ -1533,7 +1533,8 @@ wDexNumberString:: ds 4 ; 3 numbers including leading zeroes + terminator
 wDexAreaHighlight:: db
 
 ; Needed because when we reload the screen, wVirtualOAM is wiped clean.
-wDexAreaHighlightOAM:: ds 4
+wDexAreaHighlightY:: db
+wDexAreaHighlightX:: db
 
 wDexAreaValidGroups::
 UNION
@@ -1558,7 +1559,7 @@ wDexAreaLastMode:: db
 
 	; Used to align wDexAreaMons. Feel free to add more data here, just don't
 	; let wDexAreaMons be misaligned (an assert will tell you if you do).
-	ds 3
+	ds 5
 
 wDexAreaMons::
 ; Array size needs to be a multiple of 10 covering all landmarks for a region.

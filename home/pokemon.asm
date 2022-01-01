@@ -255,6 +255,9 @@ DexCompareWildForm:
 	; a at this point has MON_COSMETIC_F if form is cosmetic.
 	; Thus, doubling it will leave mismatching extspecies/form data
 	; on noncarry, returning nz.
+
+	assert (MON_COSMETIC_F == 7)
+
 	add a
 	ret nc
 
