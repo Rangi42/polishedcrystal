@@ -18,3 +18,4 @@ ContestMons:
 	contest_mon  5, YANMA,      13, 14
 	contest_mon  5, SCYTHER,    13, 14
 	contest_mon  5, PINSIR,     13, 14
+ContestMonsEnd:

@@ -283,6 +283,7 @@ Pokedex_CheckForOtherForms:
 .test_base
 	ld a, b
 	and EXTSPECIES_MASK
+	inc a
 	ld b, a
 	push de
 	push bc

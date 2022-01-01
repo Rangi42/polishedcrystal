@@ -500,7 +500,8 @@ Pokedex_GetMainOAM:
 	ld e, a
 	xor a
 	ld [hli], a
-	ld a, VRAM_BANK_1 | 5
+	; VRAM_BANK_1 + 8 - 1/2/3 == VRAM_BANK_1 | 7/6/5
+	ld a, VRAM_BANK_1 + 8
 	sub c
 	ld [hli], a
 	dec d
@@ -786,7 +787,7 @@ rept 6
 	ld a, [hli]
 	ldh [c], a
 endr
-	ld a, $80 | $12
+	ld a, $80 | $2a
 	ldh [rOBPI], a
 	pop de
 	push de
