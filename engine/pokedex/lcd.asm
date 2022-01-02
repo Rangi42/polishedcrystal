@@ -188,6 +188,24 @@ Pokedex_RefreshScreen:
 .indicator_done
 	; These need additional sprite handling, handled seperately.
 	ld a, [wPokedex_DisplayMode]
+	cp DEXDISP_STATS
+	jr nz, .not_stats
+
+	; Ability display
+	lb bc, 76, 100
+	lb de, 1, 15
+	lb hl, 0, $1d
+
+	ldh a, [hPokedexStatsCurAbil]
+	cp 2 ; 0/1/2 -> 1/2/H
+	jr z, .got_ability
+	add "1"
+	ld l, a
+.got_ability
+	call Pokedex_WriteOAM
+	jr .set_pals
+
+.not_stats
 	cp DEXDISP_AREA
 	push af
 	call z, Pokedex_GetAreaOAM
@@ -195,6 +213,7 @@ Pokedex_RefreshScreen:
 	and a ; cp DEXDISP_MAIN
 	call z, Pokedex_GetMainOAM
 
+.set_pals
 	call SetPalettes
 	ld hl, wPokedex_GFXFlags
 	set DEXGFX_TILEMAP, [hl]
@@ -318,7 +337,7 @@ StackDexGraphics:
 	ldh [rVBK], a
 	ld de, wDex2bpp tile $40
 	ld hl, vTiles5 tile $18
-	lb bc, BANK(PokedexLZ), $22
+	lb bc, BANK(PokedexLZ), $28
 	call Get2bpp
 
 	ld de, vTiles3
@@ -347,7 +366,7 @@ StackDexGraphics:
 
 	ld hl, DexOAM
 	ld de, vTiles0
-	lb bc, BANK(DexOAM), 29
+	lb bc, BANK(DexOAM), 30
 	call DecompressRequest2bpp
 
 	; Gender symbols

@@ -466,7 +466,7 @@ Pokedex_MainLoop:
 	call Pokedex_SearchInit
 	jr .loop
 .pressed_select
-	; TODO: mode switch
+	call Pokedex_Mode
 	jr .loop
 .pressed_right
 	ld a, 1
@@ -1886,15 +1886,6 @@ _Pokedex_Stats:
 	ld [hl], a
 
 .ability
-	; load ability
-	ldh a, [hPokedexStatsCurAbil]
-	add "1"
-	cp "3"
-	jr nz, .got_tile
-	ld a, $3f ; bold H
-.got_tile
-	hlcoord 9, 11
-	ld [hl], a
 	ldh a, [hPokedexStatsCurAbil]
 	add LOW(wBaseAbility1)
 	ld l, a
@@ -1993,19 +1984,11 @@ _Pokedex_Stats:
 	push hl
 	call ClearBox
 	ldh a, [hPokedexStatsCurAbil]
-	dec a
-	ld b, $3f ; bold H
-	jr z, .got_char
-	dec a
-	ld b, "1"
-	jr z, .got_char
-	inc b
-.got_char
-	hlcoord 9, 11
-	ld [hl], b
-	ld a, b
-	and 3 ; conveniently, $3f & $3 = $3
-	dec a
+	inc a
+	cp 3
+	jr nz, .got_new_abil
+	xor a
+.got_new_abil
 	ldh [hPokedexStatsCurAbil], a
 	add LOW(wBaseAbility1)
 	ld l, a
@@ -2021,13 +2004,59 @@ _Pokedex_Stats:
 	call Pokedex_ScheduleScreenUpdate
 	jr .joypad_loop
 
+Pokedex_SetModeSearchPals:
+	ld a, BANK(wBGPals1)
+	call StackCallInWRAMBankA
+.Function:
+	ld hl, DexModeSearchPals
+	ld de, wBGPals1 palette 2
+	ld bc, 1 palettes
+	rst CopyBytes
+	ret
+
+Pokedex_ResetModeSearchPals:
+; Sets BG2 to white/black/white/black, BG3:0 to white. Mid 2 are irrelevant.
+	ld a, BANK(wBGPals1)
+	call StackCallInWRAMBankA
+.Function:
+	ld hl, wBGPals1 palette 2
+	ld c, (1 palettes + 2) / 2
+	ld a, -1
+.loop
+	ld [hli], a
+	ld [hli], a
+	cpl
+	dec c
+	jr nz, .loop
+	ret
+
+Pokedex_Mode:
+	ld a, DEXDISP_MODE
+	ld [wPokedex_DisplayMode], a
+
+	call Pokedex_SetModeSearchPals
+
+	xor a
+	ld [wPokedex_MenuCursorY], a
+	ld [wPokedexOAM_DexNoY], a
+	ld hl, DexTilemap_Mode
+	call Pokedex_LoadTilemap
+	; disable hblank int
+	ld a, -1
+	call Pokedex_ScheduleScreenUpdateWithHBlank
+	call Pokedex_GetInput
+	ld c, 240
+	call DelayFrames
+	call Pokedex_ResetModeSearchPals
+	jp Pokedex_Main
+
 Pokedex_SearchInit:
 ; Call to fully initialize Search page and reset cursor pos
 	ld a, DEXDISP_SEARCH
 	ld [wPokedex_DisplayMode], a
 
 	ld a, 3
-	ld [wPokedex_SearchCursorY], a
+	ld [wPokedex_MenuCursorY], a
 	; fallthrough
 Pokedex_SearchReset:
 ; Resets all search fields but preserves cursor pos
@@ -2044,7 +2073,7 @@ Pokedex_Search:
 	call Pokedex_LoadTilemap
 
 	; Draw cursor
-	ld a, [wPokedex_SearchCursorY]
+	ld a, [wPokedex_MenuCursorY]
 	ld b, a
 	ld c, 1
 	call Coord2Tile
@@ -2213,14 +2242,14 @@ endc
 	jr .joypad_loop
 
 .pressed_up
-	ld a, [wPokedex_SearchCursorY]
+	ld a, [wPokedex_MenuCursorY]
 	cp 3
 	jr z, .joypad_loop
 	ld d, -2
 	jr .move_cursor
 
 .pressed_down
-	ld a, [wPokedex_SearchCursorY]
+	ld a, [wPokedex_MenuCursorY]
 	cp 17
 	jr nc, .joypad_loop
 	ld d, 2
@@ -2232,7 +2261,7 @@ endc
 	ld [hl], $7f ; clear old tile
 	ld a, e
 	add d
-	ld [wPokedex_SearchCursorY], a
+	ld [wPokedex_MenuCursorY], a
 	ld c, 1
 	ld b, a
 	call Coord2Tile
@@ -2240,7 +2269,7 @@ endc
 	jr .refresh
 
 .pressed_a
-	ld a, [wPokedex_SearchCursorY]
+	ld a, [wPokedex_MenuCursorY]
 	cp 15
 	jr z, .pressed_start
 	cp 17
@@ -2270,10 +2299,10 @@ endc
 .pressed_left
 	ld c, -1
 .switch_index
-	ld a, [wPokedex_SearchCursorY]
+	ld a, [wPokedex_MenuCursorY]
 	ld b, a
 	srl a
-	dec a; index = wPokedex_SearchCursorY / 2 - 1
+	dec a; index = wPokedex_MenuCursorY / 2 - 1
 	cp 6 ; "Start!"
 	jmp nc, .joypad_loop
 	ld e, a
@@ -3482,6 +3511,9 @@ INCBIN "gfx/pokedex/search.bin.lz"
 
 DexTilemap_Mode:
 INCBIN "gfx/pokedex/mode.bin.lz"
+
+DexModeSearchPals:
+INCLUDE "gfx/pokedex/mode_search.pal"
 
 PokedexLZ:
 INCBIN "gfx/pokedex/pokedex.2bpp.lz"
