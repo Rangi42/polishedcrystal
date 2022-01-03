@@ -636,7 +636,7 @@ PHB_ModeSwitchSCY2:
 	push hl
 	push de
 	ld de, PHB_ModeSwitchSCY3
-	lb hl, 12, $7b
+	lb hl, 10, $7d
 	jr PHB_DoSwitchSCY
 
 PHB_ModeSwitchSCY3:
@@ -655,6 +655,7 @@ PHB_ModeSwitchSCY4:
 	lb hl, 8, $57
 	; fallthrough
 PHB_DoSwitchSCY:
+; Switch SCY to h, then set next hblank event to de with LYC=l
 	push bc
 .loop
 	ldh a, [rSTAT]
