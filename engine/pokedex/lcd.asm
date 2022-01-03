@@ -630,14 +630,14 @@ PHB_ModeSwitchSCY:
 	push de
 	ld de, PHB_ModeSwitchSCY2
 	lb hl, 7, $60
-	jr PHB_DoModeSwitchSCY
+	jr PHB_DoSwitchSCY
 
 PHB_ModeSwitchSCY2:
 	push hl
 	push de
 	ld de, PHB_ModeSwitchSCY3
 	lb hl, 12, $7b
-	jr PHB_DoModeSwitchSCY
+	jr PHB_DoSwitchSCY
 
 PHB_ModeSwitchSCY3:
 	push hl
@@ -646,7 +646,7 @@ PHB_ModeSwitchSCY3:
 
 	; reuse the spacing between the 2 description lines
 	lb hl, -4, $83
-	jr PHB_DoModeSwitchSCY
+	jr PHB_DoSwitchSCY
 
 PHB_ModeSwitchSCY4:
 	push hl
@@ -654,7 +654,7 @@ PHB_ModeSwitchSCY4:
 	ld de, PHB_ModeSwitchSCY
 	lb hl, 8, $57
 	; fallthrough
-PHB_DoModeSwitchSCY:
+PHB_DoSwitchSCY:
 	push bc
 .loop
 	ldh a, [rSTAT]
@@ -681,77 +681,37 @@ PHB_DescSwitchSCY:
 PHB_BioStatsSwitchSCY:
 	push hl
 	push de
-	push bc
-.busyloop
-	ldh a, [rSTAT]
-	and %11
-	jr nz, .busyloop
-	ld a, 3
-	ldh [rSCY], a
-	ld a, $87
-	ld de, _PHB_BioStatsSwitchSCY
-	call Pokedex_UnsafeSetHBlankFunction
-	jmp PopBCDEHL
+	ld de, PHB_BioStatsSwitchSCY2
+	lb hl, 3, $87
+	jr PHB_DoSwitchSCY
 
-_PHB_BioStatsSwitchSCY:
+PHB_BioStatsSwitchSCY2:
 	push hl
 	push de
-	push bc
-.busyloop
-	ldh a, [rSTAT]
-	and %11
-	jr nz, .busyloop
-	ld a, 8
-	ldh [rSCY], a
-	ld a, $84
 	ld de, PHB_BioStatsSwitchSCY
-	call Pokedex_UnsafeSetHBlankFunction
-	jmp PopBCDEHL
+	lb hl, 8, $84
+	jr PHB_DoSwitchSCY
 
 PHB_SearchSwitchSCY:
 	push hl
 	push de
-	push bc
-.busyloop
-	ldh a, [rSTAT]
-	and %11
-	jr nz, .busyloop
-	ld a, 8
-	ldh [rSCY], a
-	ld a, $88
 	ld de, PHB_SearchSwitchSCY2
-	call Pokedex_UnsafeSetHBlankFunction
-	jmp PopBCDEHL
+	lb hl, 8, $88
+	jr PHB_DoSwitchSCY
 
 PHB_SearchSwitchSCY2:
 	push hl
 	push de
-	push bc
-.busyloop
-	ldh a, [rSTAT]
-	and %11
-	jr nz, .busyloop
-	ld a, -8
-	ldh [rSCY], a
-	ld a, $8b
 	ld de, PHB_SearchSwitchSCY3
-	call Pokedex_UnsafeSetHBlankFunction
-	jmp PopBCDEHL
+	lb hl, -8, $8b
+	jr PHB_DoSwitchSCY
 
 PHB_SearchSwitchSCY3:
 	push hl
 	push de
-	push bc
-.busyloop
-	ldh a, [rSTAT]
-	and %11
-	jr nz, .busyloop
-	ld a, 4
-	ldh [rSCY], a
-	ld a, $f
 	ld de, PHB_SearchSwitchSCY
-	call Pokedex_UnsafeSetHBlankFunction
-	jmp PopBCDEHL
+	lb hl, 4, $f
+	jr PHB_DoSwitchSCY
 
 PHB_Row1:
 	push hl
