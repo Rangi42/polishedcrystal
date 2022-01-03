@@ -620,9 +620,9 @@ Pokedex_SetCursorMon:
 	ld c, SCREEN_WIDTH * 6 - 2
 	call .ShiftRowData
 	hlcoord 19, 9
-	ld [hl], $0c
+	ld [hl], POKEDEX_SCROLLTILE_TOP
 	hlcoord 19, 12
-	ld [hl], $1c
+	ld [hl], POKEDEX_SCROLLTILE_BAR
 	ld c, b
 	call Pokedex_UpdateRow
 	xor a
@@ -1018,10 +1018,10 @@ Pokedex_GetPosData:
 	; mod-based
 	dw wDexIconTiles, 0, 4 tiles
 	dw wDexVWFTiles - 1 tiles, 0, 4 tiles
-	dw vTiles4, 20 tiles, 4 tiles
-	dw vTiles4 tile $50, 18 tiles, 4 tiles
-	dw 0, 20, 4
-	dw $d0, 18, 4
+	dw vTiles4 tile $20, 20 tiles, 4 tiles
+	dw vTiles0 tile $28, 18 tiles, 4 tiles
+	dw $20, 20, 4
+	dw $28, 18, 4
 
 	; offset-based
 	dw wTilemap + 9 * SCREEN_WIDTH + 1, SCREEN_WIDTH * 3, 4

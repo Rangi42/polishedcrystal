@@ -447,13 +447,13 @@ Pokedex_GetAreaOAM:
 	ld b, 0
 	call PlaceVWFString
 	pop hl
-	ld de, vTiles0 tile $40
+	ld de, vTiles0 tile $20
 	lb bc, 0, 7
 	call Pokedex_Get2bpp
 
 	lb bc, 94, 29
 	lb de, 7, 27
-	lb hl, 0, $40
+	lb hl, 0, $20
 	call Pokedex_WriteOAM
 
 	; Write (A) button

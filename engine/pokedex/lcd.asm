@@ -339,6 +339,35 @@ StackDexGraphics:
 	lb bc, BANK(PokedexLZ), $40
 	call Get2bpp
 
+	; Also write some of the tiles to vTiles0.
+	; TODO: move these tiles to allow just 2 copies, gridlines and scrollbar
+	; Grid lines
+	ld de, wDex2bpp tile $01
+	ld hl, vTiles0 tile $70
+	lb bc, BANK(PokedexLZ), $1
+	call Get2bpp
+
+	ld de, wDex2bpp tile $11
+	ld hl, vTiles0 tile $71
+	lb bc, BANK(PokedexLZ), $4
+	call Get2bpp
+
+	; Scrollbar tiles
+	ld de, wDex2bpp tile $0c
+	ld hl, vTiles0 tile $75
+	lb bc, BANK(PokedexLZ), $1
+	call Get2bpp
+
+	ld de, wDex2bpp tile $1c
+	ld hl, vTiles0 tile $76
+	lb bc, BANK(PokedexLZ), $4
+	call Get2bpp
+
+	ld de, wDex2bpp tile $2c
+	ld hl, vTiles0 tile $77
+	lb bc, BANK(PokedexLZ), $4
+	call Get2bpp
+
 	ld a, 1
 	ldh [rVBK], a
 	ld de, wDex2bpp tile $40
@@ -754,9 +783,24 @@ PHB_Row3:
 	ld d, 128
 	call PHB_LoadRow
 
+	ld a, $87
+	ld de, PHB_MainResetLCDC
+	call Pokedex_UnsafeSetHBlankFunction
+	jmp PopBCDEHL
+
+PHB_MainResetLCDC:
+	push hl
+	push de
+	push bc
 	ld a, $3f
 	ld de, PHB_Row1
 	call Pokedex_UnsafeSetHBlankFunction
+.loop
+	ldh a, [rSTAT]
+	and %11
+	jr nz, .loop
+	ld hl, rLCDC
+	res rLCDC_TILE_DATA, [hl]
 	jmp PopBCDEHL
 
 PHB_LoadRow:
@@ -780,10 +824,14 @@ PHB_LoadRow:
 	ldh [rSCX], a
 	ld a, 8
 	ldh [rSCY], a
+	ldh a, [rLCDC]
+	set rLCDC_TILE_DATA, a
+	ldh [rLCDC], a
+
 	call .GetCaptureOffset
 	pop de
 
-	ld c, 32
+	ld c, 30
 	call PHB_BusyLoop2
 
 	; Write poké ball presence info
@@ -817,7 +865,7 @@ endr
 
 	; Sprite tiles and pal col 2-3
 	ld a, e
-	or $80
+	xor $80
 	ld de, oamSprite17TileID
 	ld b, 33
 	call .WriteMiniTiles
@@ -988,7 +1036,7 @@ PVB_UpdateDexMap::
 	inc de
 	ld a, [hl]
 	ld [de], a
-	jr .done
+	jmp .done
 
 .no_tilemap
 	bit DEXGFX_FRONTPIC, [hl]
@@ -1048,6 +1096,8 @@ PVB_UpdateDexMap::
 	jr z, .done
 
 	push hl
+	xor a
+	ldh [rVBK], a
 	ld hl, wDexRowTilesDest
 	ld a, [hli]
 	ld c, a
@@ -1056,6 +1106,8 @@ PVB_UpdateDexMap::
 	ld de, wDexVWFTiles
 	ld a, 17
 	call GDMACopy
+	ld a, 1
+	ldh [rVBK], a
 	ld a, [hli]
 	ld c, a
 	ld b, [hl]
