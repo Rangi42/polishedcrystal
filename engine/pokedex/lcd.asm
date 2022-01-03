@@ -203,6 +203,12 @@ Pokedex_RefreshScreen:
 	ld l, a
 .got_ability
 	call Pokedex_WriteOAM
+
+	; (A) button for ability display
+	ld b, 92
+	ld d, 2
+	lb hl, VRAM_BANK_1 | 1, $3d
+	call Pokedex_WriteOAM
 	jr .set_pals
 
 .not_stats
