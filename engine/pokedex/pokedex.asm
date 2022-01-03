@@ -2054,11 +2054,12 @@ _Pokedex_Mode:
 	call GetNthString
 	ld d, h
 	ld e, l
-	hlcoord 1, 14
+	hlcoord 2, 14
 	call PlaceString
 
 	; disable hblank int
-	ld a, -1
+	ld a, $57
+	ld de, PHB_ModeSwitchSCY
 	call Pokedex_ScheduleScreenUpdateWithHBlank
 .joypad_loop
 	call Pokedex_GetInput

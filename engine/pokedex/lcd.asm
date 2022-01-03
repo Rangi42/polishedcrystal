@@ -625,6 +625,47 @@ PHB_WaitUntilLY_Mode0:
 	jr nz, .busyloop2
 	ret
 
+PHB_ModeSwitchSCY:
+	push hl
+	push de
+	ld de, PHB_ModeSwitchSCY2
+	lb hl, 7, $60
+	jr PHB_DoModeSwitchSCY
+
+PHB_ModeSwitchSCY2:
+	push hl
+	push de
+	ld de, PHB_ModeSwitchSCY3
+	lb hl, 12, $7b
+	jr PHB_DoModeSwitchSCY
+
+PHB_ModeSwitchSCY3:
+	push hl
+	push de
+	ld de, PHB_ModeSwitchSCY4
+
+	; reuse the spacing between the 2 description lines
+	lb hl, -4, $83
+	jr PHB_DoModeSwitchSCY
+
+PHB_ModeSwitchSCY4:
+	push hl
+	push de
+	ld de, PHB_ModeSwitchSCY
+	lb hl, 8, $57
+	; fallthrough
+PHB_DoModeSwitchSCY:
+	push bc
+.loop
+	ldh a, [rSTAT]
+	and %11
+	jr nz, .loop
+	ld a, h
+	ldh [rSCY], a
+	ld a, l
+	call Pokedex_UnsafeSetHBlankFunction
+	jmp PopBCDEHL
+
 PHB_DescSwitchSCY:
 	push hl
 	push de
