@@ -2033,22 +2033,104 @@ Pokedex_ResetModeSearchPals:
 Pokedex_Mode:
 	ld a, DEXDISP_MODE
 	ld [wPokedex_DisplayMode], a
-
 	call Pokedex_SetModeSearchPals
-
 	xor a
 	ld [wPokedex_MenuCursorY], a
 	ld [wPokedexOAM_DexNoY], a
+	; fallthrough
+_Pokedex_Mode:
 	ld hl, DexTilemap_Mode
 	call Pokedex_LoadTilemap
+	hlcoord 1, 4
+	ld a, [wPokedex_MenuCursorY]
+	push af
+	ld bc, SCREEN_WIDTH * 2
+	rst AddNTimes
+	ld [hl], "▶"
+
+	; explain menu option
+	pop af
+	ld hl, .MenuDescriptions
+	call GetNthString
+	ld d, h
+	ld e, l
+	hlcoord 1, 14
+	call PlaceString
+
 	; disable hblank int
 	ld a, -1
 	call Pokedex_ScheduleScreenUpdateWithHBlank
+.joypad_loop
 	call Pokedex_GetInput
-	ld c, 240
-	call DelayFrames
+	rrca
+	jr c, .pressed_a
+	rrca
+	jr c, .return ; pressed b
+	swap a ; ignore select, start, right, left
+	rrca
+	jr c, .pressed_up
+	rrca
+	jr c, .pressed_down
+	jr .joypad_loop
+
+.pressed_a
+	ld a, [wPokedex_MenuCursorY]
+	cp 2
+	jr c, .change_mode
+	jr nz, .return
+
+	; TODO: Unown Mode
+.change_mode
+	ld [wPokedexMode], a
+	call Pokedex_InitData
+	xor a
+	ld [wPokedex_CursorPos], a
+	ld [wPokedex_Offset], a
+.return
 	call Pokedex_ResetModeSearchPals
 	jp Pokedex_Main
+
+.pressed_up
+	ld a, [wPokedex_MenuCursorY]
+	and a
+	jr z, .joypad_loop
+	dec a
+	cp 2
+	jr nz, .change_menu
+	ld b, -1 ; Modifier for menu mode if unown mode not unlocked
+.check_unown
+	; TODO: Have we unlocked Unown Mode?
+	add b
+.change_menu
+	ld [wPokedex_MenuCursorY], a
+	jr _Pokedex_Mode
+
+.pressed_down
+	ld a, [wPokedex_MenuCursorY]
+	cp 3
+	jr z, .joypad_loop
+	inc a
+	cp 2
+	ld b, 1
+	jr z, .check_unown
+	jr .change_menu
+
+.MenuDescriptions:
+	text "<PK><MN> are listed in"
+	next "regional order."
+	text_end
+
+	text "<PK><MN> are listed in"
+	next "national order."
+	text_end
+
+	text "Display Unown"
+	next "information."
+	text_end
+
+	text "Return to the <PK><MN>"
+	next "list."
+	text_end
 
 Pokedex_SearchInit:
 ; Call to fully initialize Search page and reset cursor pos
@@ -3418,33 +3500,6 @@ Pokedex_CopyTypeIconPals:
 INCLUDE "data/pokemon/dex_order_alpha.asm"
 INCLUDE "data/pokemon/dex_order_new.asm"
 
-
-_Pokedex_JustBlackOutBG:
-	ldh a, [rSVBK]
-	push af
-	ld a, $5
-	ldh [rSVBK], a
-	ld hl, wBGPals1
-if !DEF(MONOCHROME)
-	ld bc, 8 palettes
-	xor a ; RGB 00,00,00
-	rst ByteFill
-else
-	ld b, (8 palettes) / 2
-.mono_loop
-	ld a, LOW(PAL_MONOCHROME_BLACK)
-	ld [hli], a
-	ld a, HIGH(PAL_MONOCHROME_BLACK)
-	ld [hli], a
-	dec b
-	jr nz, .mono_loop
-endc
-	pop af
-	ldh [rSVBK], a
-	ld a, $ff
-	call DmgToCgbBGPals
-	ld a, $ff
-	jmp DmgToCgbObjPal0
 
 Pokedex_GetCGBLayout:
 	call GetCGBLayout
