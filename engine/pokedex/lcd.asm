@@ -188,6 +188,30 @@ Pokedex_RefreshScreen:
 .indicator_done
 	; These need additional sprite handling, handled seperately.
 	ld a, [wPokedex_DisplayMode]
+	cp DEXDISP_STATS
+	jr nz, .not_stats
+
+	; Ability display
+	lb bc, 76, 100
+	lb de, 1, 15
+	lb hl, 0, $1d
+
+	ldh a, [hPokedexStatsCurAbil]
+	cp 2 ; 0/1/2 -> 1/2/H
+	jr z, .got_ability
+	add "1"
+	ld l, a
+.got_ability
+	call Pokedex_WriteOAM
+
+	; (A) button for ability display
+	ld b, 92
+	ld d, 2
+	lb hl, VRAM_BANK_1 | 1, $3d
+	call Pokedex_WriteOAM
+	jr .set_pals
+
+.not_stats
 	cp DEXDISP_AREA
 	push af
 	call z, Pokedex_GetAreaOAM
@@ -195,6 +219,7 @@ Pokedex_RefreshScreen:
 	and a ; cp DEXDISP_MAIN
 	call z, Pokedex_GetMainOAM
 
+.set_pals
 	call SetPalettes
 	ld hl, wPokedex_GFXFlags
 	set DEXGFX_TILEMAP, [hl]
@@ -318,7 +343,7 @@ StackDexGraphics:
 	ldh [rVBK], a
 	ld de, wDex2bpp tile $40
 	ld hl, vTiles5 tile $18
-	lb bc, BANK(PokedexLZ), $22
+	lb bc, BANK(PokedexLZ), $28
 	call Get2bpp
 
 	ld de, vTiles3
@@ -347,7 +372,7 @@ StackDexGraphics:
 
 	ld hl, DexOAM
 	ld de, vTiles0
-	lb bc, BANK(DexOAM), 29
+	lb bc, BANK(DexOAM), 30
 	call DecompressRequest2bpp
 
 	; Gender symbols
@@ -606,6 +631,48 @@ PHB_WaitUntilLY_Mode0:
 	jr nz, .busyloop2
 	ret
 
+PHB_ModeSwitchSCY:
+	push hl
+	push de
+	ld de, PHB_ModeSwitchSCY2
+	lb hl, 7, $60
+	jr PHB_DoSwitchSCY
+
+PHB_ModeSwitchSCY2:
+	push hl
+	push de
+	ld de, PHB_ModeSwitchSCY3
+	lb hl, 10, $7d
+	jr PHB_DoSwitchSCY
+
+PHB_ModeSwitchSCY3:
+	push hl
+	push de
+	ld de, PHB_ModeSwitchSCY4
+
+	; reuse the spacing between the 2 description lines
+	lb hl, -4, $83
+	jr PHB_DoSwitchSCY
+
+PHB_ModeSwitchSCY4:
+	push hl
+	push de
+	ld de, PHB_ModeSwitchSCY
+	lb hl, 8, $57
+	; fallthrough
+PHB_DoSwitchSCY:
+; Switch SCY to h, then set next hblank event to de with LYC=l
+	push bc
+.loop
+	ldh a, [rSTAT]
+	and %11
+	jr nz, .loop
+	ld a, h
+	ldh [rSCY], a
+	ld a, l
+	call Pokedex_UnsafeSetHBlankFunction
+	jmp PopBCDEHL
+
 PHB_DescSwitchSCY:
 	push hl
 	push de
@@ -621,77 +688,37 @@ PHB_DescSwitchSCY:
 PHB_BioStatsSwitchSCY:
 	push hl
 	push de
-	push bc
-.busyloop
-	ldh a, [rSTAT]
-	and %11
-	jr nz, .busyloop
-	ld a, 3
-	ldh [rSCY], a
-	ld a, $87
-	ld de, _PHB_BioStatsSwitchSCY
-	call Pokedex_UnsafeSetHBlankFunction
-	jmp PopBCDEHL
+	ld de, PHB_BioStatsSwitchSCY2
+	lb hl, 3, $87
+	jr PHB_DoSwitchSCY
 
-_PHB_BioStatsSwitchSCY:
+PHB_BioStatsSwitchSCY2:
 	push hl
 	push de
-	push bc
-.busyloop
-	ldh a, [rSTAT]
-	and %11
-	jr nz, .busyloop
-	ld a, 8
-	ldh [rSCY], a
-	ld a, $84
 	ld de, PHB_BioStatsSwitchSCY
-	call Pokedex_UnsafeSetHBlankFunction
-	jmp PopBCDEHL
+	lb hl, 8, $84
+	jr PHB_DoSwitchSCY
 
 PHB_SearchSwitchSCY:
 	push hl
 	push de
-	push bc
-.busyloop
-	ldh a, [rSTAT]
-	and %11
-	jr nz, .busyloop
-	ld a, 8
-	ldh [rSCY], a
-	ld a, $88
 	ld de, PHB_SearchSwitchSCY2
-	call Pokedex_UnsafeSetHBlankFunction
-	jmp PopBCDEHL
+	lb hl, 8, $88
+	jr PHB_DoSwitchSCY
 
 PHB_SearchSwitchSCY2:
 	push hl
 	push de
-	push bc
-.busyloop
-	ldh a, [rSTAT]
-	and %11
-	jr nz, .busyloop
-	ld a, -8
-	ldh [rSCY], a
-	ld a, $8b
 	ld de, PHB_SearchSwitchSCY3
-	call Pokedex_UnsafeSetHBlankFunction
-	jmp PopBCDEHL
+	lb hl, -8, $8b
+	jr PHB_DoSwitchSCY
 
 PHB_SearchSwitchSCY3:
 	push hl
 	push de
-	push bc
-.busyloop
-	ldh a, [rSTAT]
-	and %11
-	jr nz, .busyloop
-	ld a, 4
-	ldh [rSCY], a
-	ld a, $f
 	ld de, PHB_SearchSwitchSCY
-	call Pokedex_UnsafeSetHBlankFunction
-	jmp PopBCDEHL
+	lb hl, 4, $f
+	jr PHB_DoSwitchSCY
 
 PHB_Row1:
 	push hl
