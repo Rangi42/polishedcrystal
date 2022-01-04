@@ -3573,9 +3573,6 @@ INCBIN "gfx/pokedex/johto.bin.lz"
 DexTilemap_Orange:
 INCBIN "gfx/pokedex/orange.bin.lz"
 
-PokedexAreaLZ:
-INCBIN "gfx/pokedex/area.2bpp.lz"
-
 PokedexSlowpokeLZ:
 INCBIN "gfx/pokedex/slowpoke.2bpp.lz"
 

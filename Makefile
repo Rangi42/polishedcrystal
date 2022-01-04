@@ -164,7 +164,8 @@ gfx/player/chris_back.2bpp: rgbgfx += -h
 gfx/player/kris_back.2bpp: rgbgfx += -h
 
 gfx/pokedex/%.bin: gfx/pokedex/%.tilemap gfx/pokedex/%.attrmap ; cat $^ > $@
-gfx/pokedex/pokedex.2bpp: gfx/pokedex/pokedex0.2bpp gfx/pokedex/pokedex1.2bpp ; cat $^ > $@
+gfx/pokedex/pokedex.2bpp: gfx/pokedex/pokedex0.2bpp gfx/pokedex/pokedex1.2bpp gfx/pokedex/area.2bpp ; cat $^ > $@
+gfx/pokedex/pokedex0.2bpp: tools/gfx += --trim-whitespace
 gfx/pokedex/pokedex1.2bpp: tools/gfx += --trim-whitespace
 gfx/pokedex/area.2bpp: tools/gfx += --trim-whitespace
 gfx/pokedex/question_mark.2bpp: rgbgfx += -h
