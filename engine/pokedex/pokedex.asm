@@ -2032,10 +2032,11 @@ Pokedex_ResetModeSearchPals:
 Pokedex_Mode:
 	ld a, DEXDISP_MODE
 	ld [wPokedex_DisplayMode], a
-	call Pokedex_SetModeSearchPals
 	xor a
 	ld [wPokedex_MenuCursorY], a
 	ld [wPokedexOAM_DexNoY], a
+Pokedex_Mode_ReloadPals:
+	call Pokedex_SetModeSearchPals
 	; fallthrough
 _Pokedex_Mode:
 	ld hl, DexTilemap_Mode
@@ -2074,12 +2075,13 @@ _Pokedex_Mode:
 	jr .joypad_loop
 
 .pressed_a
+	jmp Pokedex_Unown
 	ld a, [wPokedex_MenuCursorY]
 	cp 2
 	jr c, .change_mode
 	jr nz, .return
+	jmp Pokedex_Unown
 
-	; TODO: Unown Mode
 .change_mode
 	ld [wPokedexMode], a
 	call Pokedex_InitData
@@ -3557,6 +3559,9 @@ INCBIN "gfx/pokedex/search.bin.lz"
 
 DexTilemap_Mode:
 INCBIN "gfx/pokedex/mode.bin.lz"
+
+DexTilemap_Unown:
+INCBIN "gfx/pokedex/unown.bin.lz"
 
 DexModeSearchPals:
 INCLUDE "gfx/pokedex/mode_search.pal"

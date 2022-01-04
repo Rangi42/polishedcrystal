@@ -1,3 +1,18 @@
+Pokedex_Unown:
+	ld a, DEXDISP_UNOWN
+	ld [wPokedex_DisplayMode], a
+	xor a
+	ld [wPokedex_UnownCursor], a
+	ld hl, UnownModePals
+	ld de, wBGPals1 palette 2
+	ld c, 2 palettes
+	farcall LoadCPaletteBytesFromHLIntoDE
+
+	ld hl, DexTilemap_Unown
+	call Pokedex_LoadTilemapWithPokepic
+	jmp Pokedex_Mode_ReloadPals
+	ret
+
 PrintUnownWord:
 	hlcoord 4, 15
 	ld bc, 12
@@ -27,3 +42,6 @@ PrintUnownWord:
 	jr .loop
 
 INCLUDE "data/pokemon/unown_words.asm"
+
+UnownModePals:
+INCLUDE "gfx/pokedex/unown.pal"

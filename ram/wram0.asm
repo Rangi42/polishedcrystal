@@ -678,6 +678,9 @@ wPokedex_PendingLYC:: db
 wPokedex_PendingHBlankFunction:: dw
 
 ; Palettes and tile offset for listview minis
+UNION
+wPokedex_UnownCursor: db
+NEXTU
 wPokedex_Pals::
 wPokedex_Row1::
 wPokedex_Row1Tile: db ; Sprite offset for dex minis col 2-4
@@ -689,6 +692,7 @@ wPokedex_Row3::
 wPokedex_Row3Tile: db
 wPokedex_Row3Pals:: ds PAL_COLOR_SIZE * 3 * 5
 wPokedex_PalsEnd::
+ENDU
 
 ; Pokémon info (frontpic, types, etc) is stored in either vbk0 or vbk1. This is
 ; cycled each time we move the cursor. The reason for this is so that we can

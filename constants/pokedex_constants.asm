@@ -1,6 +1,7 @@
 	const_def
 	const DEXDISP_MAIN
 	const DEXDISP_MODE
+	const DEXDISP_UNOWN
 	const DEXDISP_NEWDESC
 	; These below (starting from DEXDISP_SEARCH) have OAM data.
 	const DEXDISP_SEARCH
