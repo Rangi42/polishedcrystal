@@ -5,12 +5,27 @@ Pokedex_Unown:
 	ld [wPokedex_UnownCursor], a
 	ld hl, UnownModePals
 	ld de, wBGPals1 palette 2
-	ld c, 2 palettes
-	farcall LoadPalettes
+	ld bc, 2 palettes
+	ld a, BANK(UnownModePals)
+	call FarCopyBytesToColorWRAM
 
 	ld hl, DexTilemap_Unown
 	call Pokedex_LoadTilemapWithPokepic
+	ld a, -1
+	call Pokedex_ScheduleScreenUpdateWithHBlank
+	call Pokedex_GetInput
+	ld c, 240
+	call DelayFrames
 	jmp Pokedex_Mode_ReloadPals
+	ret
+
+Pokedex_LoadUnownPic:
+; GetCursorMon does a lot of stuff we don't want, hence we use this instead.
+	call Pokedex_SwitchMonInfoBank
+	
+	ld a, [wPokedex_MonInfoBank]
+	xor 1
+	ld [wPokedex_MonInfoBank], a
 	ret
 
 PrintUnownWord:
