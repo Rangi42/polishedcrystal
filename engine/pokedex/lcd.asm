@@ -333,39 +333,17 @@ StackDexGraphics:
 	ld a, BANK(PokedexLZ)
 	call FarDecompressToDE
 
+	; pokedex0
 	ld de, wDex2bpp
 	push de
 	ld hl, vTiles2
-	lb bc, BANK(PokedexLZ), $40
+	lb bc, BANK(PokedexLZ), $3d
 	call Get2bpp
 
-	; Also write some of the tiles to vTiles0.
-	; TODO: move these tiles to allow just 2 copies, gridlines and scrollbar
-	; Grid lines
-	ld de, wDex2bpp tile $01
+	; grid lines and scrollbar tiles
+	ld de, wDex2bpp tile $38
 	ld hl, vTiles0 tile $70
-	lb bc, BANK(PokedexLZ), $1
-	call Get2bpp
-
-	ld de, wDex2bpp tile $11
-	ld hl, vTiles0 tile $71
-	lb bc, BANK(PokedexLZ), $4
-	call Get2bpp
-
-	; Scrollbar tiles
-	ld de, wDex2bpp tile $0c
-	ld hl, vTiles0 tile $75
-	lb bc, BANK(PokedexLZ), $1
-	call Get2bpp
-
-	ld de, wDex2bpp tile $1c
-	ld hl, vTiles0 tile $76
-	lb bc, BANK(PokedexLZ), $1
-	call Get2bpp
-
-	ld de, wDex2bpp tile $2c
-	ld hl, vTiles0 tile $77
-	lb bc, BANK(PokedexLZ), $1
+	lb bc, BANK(PokedexLZ), $8
 	call Get2bpp
 
 	; pokedex1

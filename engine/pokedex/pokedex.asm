@@ -1363,14 +1363,13 @@ endr
 	jr nz, .botmenu_loop
 	ld [hl], $16
 	hldexcoord 4, 18
-	ld a, $3c
+	ld a, $2c
 	ld [hli], a
 	inc a
 	ld [hli], a
 	inc a
 	ld [hli], a
 	hldexcoord 15, 18
-	ld a, $2e
 	ld [hli], a
 	inc a
 	ld [hli], a
