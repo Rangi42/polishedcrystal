@@ -368,6 +368,7 @@ StackDexGraphics:
 	lb bc, BANK(PokedexLZ), $4
 	call Get2bpp
 
+	; pokedex1
 	ld a, 1
 	ldh [rVBK], a
 	ld de, wDex2bpp tile $40
@@ -375,10 +376,17 @@ StackDexGraphics:
 	lb bc, BANK(PokedexLZ), $28
 	call Get2bpp
 
+	; area
 	ld de, vTiles3
 	ld hl, PokedexAreaLZ
 	lb bc, BANK(PokedexAreaLZ), $40
 	call DecompressRequest2bpp
+
+	; (partial) unown font
+	ld de, FontUnown
+	ld hl, vTiles4
+	lb bc, BANK(FontUnown), $20
+	call Get1bpp
 	xor a
 	ldh [rVBK], a
 
