@@ -16,9 +16,8 @@ CheckShininess:
 InitPartyMenuPalettes:
 	ld de, wBGPals1
 	ld hl, PartyMenuBGPals
-rept 4
-	call LoadHLPaletteIntoDE
-endr
+	ld c, 4 palettes
+	call LoadPalettes
 	call InitPartyMenuOBPals
 	jmp WipeAttrMap
 
@@ -218,9 +217,12 @@ LoadStatsScreenPals:
 	ld a, $1
 	ret
 
-LoadHLPaletteIntoDE:
+LoadOnePalette:
+; Loads a single palette from hl to de in GBC Video WRAMX
 	ld c, 1 palettes
-LoadCPaletteBytesFromHLIntoDE:
+	; fallthrough
+LoadPalettes:
+; Load c palette bytes from hl to de in GBC Video WRAMX
 	ldh a, [rSVBK]
 	push af
 	ld a, BANK("GBC Video")

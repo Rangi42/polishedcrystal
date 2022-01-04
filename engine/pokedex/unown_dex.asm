@@ -6,7 +6,7 @@ Pokedex_Unown:
 	ld hl, UnownModePals
 	ld de, wBGPals1 palette 2
 	ld c, 2 palettes
-	farcall LoadCPaletteBytesFromHLIntoDE
+	farcall LoadPalettes
 
 	ld hl, DexTilemap_Unown
 	call Pokedex_LoadTilemapWithPokepic

@@ -45,12 +45,12 @@ _CGB_BattleGrayscale:
 	ld de, wBGPals1
 rept 8
 	ld hl, DarkGrayPalette
-	call LoadHLPaletteIntoDE
+	call LoadOnePalette
 endr
 	ld de, wOBPals1
 rept 2
 	ld hl, DarkGrayPalette
-	call LoadHLPaletteIntoDE
+	call LoadOnePalette
 endr
 	jmp _CGB_FinishBattleScreenLayout
 
@@ -125,15 +125,15 @@ _CGB_BattleColors:
 
 	ld hl, wBGPals1 palette PAL_BATTLE_BG_PLAYER
 	ld de, wBGPals1 palette PAL_BATTLE_BG_TYPE_CAT
-	call LoadHLPaletteIntoDE
+	call LoadOnePalette
 
 	ld hl, wBGPals1 palette PAL_BATTLE_BG_ENEMY
 	ld de, wOBPals1 palette PAL_BATTLE_OB_ENEMY
-	call LoadHLPaletteIntoDE
+	call LoadOnePalette
 
 	ld hl, wBGPals1 palette PAL_BATTLE_BG_PLAYER
 	ld de, wOBPals1 palette PAL_BATTLE_OB_PLAYER
-	call LoadHLPaletteIntoDE
+	call LoadOnePalette
 
 	ld a, CGB_BATTLE_COLORS
 	ld [wMemCGBLayout], a
@@ -220,7 +220,7 @@ _CGB_FinishBattleScreenLayout:
 	ld hl, BattleObjectPals
 	ld de, wOBPals1 palette PAL_BATTLE_OB_GRAY
 	ld c, 6 palettes
-	call LoadCPaletteBytesFromHLIntoDE
+	call LoadPalettes
 	pop bc
 
 	ld a, b
@@ -247,14 +247,14 @@ _CGB_PokegearPals:
 	ld hl, PokegearPals
 	ld de, wBGPals1
 	ld c, 8 palettes
-	call LoadCPaletteBytesFromHLIntoDE
+	call LoadPalettes
 
 	ld a, [wPlayerGender]
 	bit 0, a
 	jr z, .male
 	ld hl, FemalePokegearInterfacePalette
 	ld de, wBGPals1 palette 0
-	call LoadHLPaletteIntoDE
+	call LoadOnePalette
 .male
 
 	call ApplyPals
@@ -266,11 +266,11 @@ _CGB_PokedexAreaPals:
 	ld hl, PokegearPals palette 1
 	ld de, wBGPals1 palette 1
 	ld c, 7 palettes
-	call LoadCPaletteBytesFromHLIntoDE
+	call LoadPalettes
 
 	ld hl, PokedexPals palette 1
 	ld de, wBGPals1 palette 0
-	call LoadHLPaletteIntoDE
+	call LoadOnePalette
 
 	call ApplyPals
 	ld a, $1
@@ -295,7 +295,7 @@ _CGB_StatsScreenHPPals:
 
 	ld hl, StatsScreenPals
 	ld c, 4 palettes
-	call LoadCPaletteBytesFromHLIntoDE
+	call LoadPalettes
 
 	ld hl, CaughtBallPals
 	ld bc, $4
@@ -350,19 +350,19 @@ _CGB_Pokedex_PrepareOnly:
 	ld hl, PokedexPals
 	ld de, wBGPals1
 	ld c, 2 palettes
-	call LoadCPaletteBytesFromHLIntoDE
+	call LoadPalettes
 	ld de, wBGPals1 palette 4
 	ld c, 2 palettes
-	call LoadCPaletteBytesFromHLIntoDE
+	call LoadPalettes
 	ld de, wOBPals1 + 2
 	ld c, 3 palettes - 2
-	jmp LoadCPaletteBytesFromHLIntoDE
+	jmp LoadPalettes
 
 _CGB_SlotMachine:
 	ld hl, SlotMachinePals
 	ld de, wBGPals1
 	ld c, 16 palettes
-	call LoadCPaletteBytesFromHLIntoDE
+	call LoadPalettes
 
 	call WipeAttrMap
 
@@ -422,11 +422,11 @@ _CGB_Diploma:
 	ld hl, DiplomaPals
 	ld de, wBGPals1
 	ld c, 16 palettes
-	call LoadCPaletteBytesFromHLIntoDE
+	call LoadPalettes
 
 	ld de, wBGPals1
 	ld hl, .DiplomaPalette
-	call LoadHLPaletteIntoDE
+	call LoadOnePalette
 
 	call WipeAttrMap
 	jmp ApplyAttrMap
@@ -450,19 +450,19 @@ _CGB_MapPals:
 _CGB_PartyMenu:
 	ld de, wBGPals1
 	ld hl, .PartyMenuBGPalette
-	call LoadHLPaletteIntoDE
+	call LoadOnePalette
 
 	ld hl, HPBarPals
-	call LoadHLPaletteIntoDE
-	call LoadHLPaletteIntoDE
-	call LoadHLPaletteIntoDE
+	call LoadOnePalette
+	call LoadOnePalette
+	call LoadOnePalette
 
 	ld hl, GenderAndExpBarPals
 	call LoadPalette_White_Col1_Col2_Black
 
 	ld de, wBGPals1 palette 7
 	ld hl, .PartyMenuBGPalette
-	call LoadHLPaletteIntoDE
+	call LoadOnePalette
 
 	call InitPartyMenuOBPals
 
@@ -488,7 +488,7 @@ _CGB_Evolution:
 	and a
 	jr z, .pokemon
 	ld hl, DarkGrayPalette
-	call LoadHLPaletteIntoDE
+	call LoadOnePalette
 	jr .got_palette
 
 .pokemon
@@ -520,7 +520,7 @@ _CGB_Evolution:
 	ld hl, BattleObjectPals
 	ld de, wOBPals1 palette 2
 	ld c, 6 palettes
-	call LoadCPaletteBytesFromHLIntoDE
+	call LoadPalettes
 
 .got_palette
 	call WipeAttrMap
@@ -546,7 +546,7 @@ _CGB_MoveList:
 	add hl, bc
 	ld de, wBGPals1 palette 0 + 2
 	ld c, 4
-	call LoadCPaletteBytesFromHLIntoDE
+	call LoadPalettes
 
 	ld hl, Moves + MOVE_TYPE
 	call GetCurMoveProperty
@@ -557,7 +557,7 @@ _CGB_MoveList:
 	add hl, bc
 	ld de, wBGPals1 palette 0 + 6
 	ld c, 2
-	call LoadCPaletteBytesFromHLIntoDE
+	call LoadPalettes
 
 	jmp _CGB_FinishLayout
 
@@ -573,7 +573,7 @@ _CGB_BuyMenu:
 .ok
 	ld de, wBGPals1
 	ld c, 3 palettes
-	call LoadCPaletteBytesFromHLIntoDE
+	call LoadPalettes
 
 rept 2
 	ld hl, CancelPalette
@@ -610,7 +610,7 @@ _CGB_PackPals:
 .got_gender
 	ld de, wBGPals1
 	ld c, 8 palettes
-	call LoadCPaletteBytesFromHLIntoDE
+	call LoadPalettes
 
 	call WipeAttrMap
 
@@ -710,7 +710,7 @@ _CGB_TrainerCard2:
 	ld hl, JohtoBadgePalettes
 	ld de, wOBPals1
 	ld c, 8 palettes
-	call LoadCPaletteBytesFromHLIntoDE
+	call LoadPalettes
 
 	; Falkner
 	hlcoord 3, 10, wAttrmap
@@ -793,7 +793,7 @@ _CGB_TrainerCard3:
 	ld hl, KantoBadgePalettes
 	ld de, wOBPals1
 	ld c, 8 palettes
-	call LoadCPaletteBytesFromHLIntoDE
+	call LoadPalettes
 
 	; Lt.Surge
 	hlcoord 3, 10, wAttrmap
@@ -888,7 +888,7 @@ LoadFirstTwoTrainerCardPals:
 _CGB_PokedexUnownMode:
 	ld de, wBGPals1
 	ld hl, PokedexPals
-	call LoadHLPaletteIntoDE
+	call LoadOnePalette
 
 	ld a, [wCurPartySpecies]
 	call GetMonPalettePointer
@@ -923,38 +923,38 @@ BillsPC_PreviewTheme:
 	add hl, de
 	ld de, wBGPals1
 	ld c, 1 * 2
-	call LoadCPaletteBytesFromHLIntoDE
+	call LoadPalettes
 	push hl
 	ld hl, GenderAndExpBarPals
 	ld c, 2 * 2
-	call LoadCPaletteBytesFromHLIntoDE
+	call LoadPalettes
 	push de
 	ld hl, PokerusAndShinyPals
 	ld de, wBillsPC_PokerusShinyPal
 	ld c, 2 * 2
-	call LoadCPaletteBytesFromHLIntoDE
+	call LoadPalettes
 
 	; Prevents flickering shiny+pokerus background
 	ld hl, wBGPals1 palette 0
 	ld de, wBGPals1 palette 3
 	ld c, 1 * 2
-	call LoadCPaletteBytesFromHLIntoDE
+	call LoadPalettes
 	pop de
 	pop hl
 	ld c, 5 * 2
-	call LoadCPaletteBytesFromHLIntoDE
+	call LoadPalettes
 	ld a, [wBillsPC_ApplyThemePals]
 	and a
 	jr nz, .apply_pals
 	ld de, wOBPals1 palette 1
 	ld hl, .CursorPal
 	push hl
-	call LoadHLPaletteIntoDE
+	call LoadOnePalette
 	pop hl
-	call LoadHLPaletteIntoDE
+	call LoadOnePalette
 	ld hl, .PackPal
 	ld de, wOBPals1 palette 4
-	jmp LoadHLPaletteIntoDE
+	jmp LoadOnePalette
 
 .apply_pals
 	farjp BillsPC_SetPals
@@ -989,11 +989,11 @@ endc
 _CGB_UnownPuzzle:
 	ld de, wBGPals1
 	ld hl, .UnownPuzzlePalette
-	call LoadHLPaletteIntoDE
+	call LoadOnePalette
 
 	ld de, wOBPals1
 	ld hl, .UnownPuzzlePalette
-	call LoadHLPaletteIntoDE
+	call LoadOnePalette
 
 	ldh a, [rSVBK]
 	push af
@@ -1033,12 +1033,12 @@ endc
 _CGB_GameFreakLogo:
 	ld de, wBGPals1
 	ld hl, .GameFreakLogoPalette
-	call LoadHLPaletteIntoDE
+	call LoadOnePalette
 
 	ld de, wOBPals1
 rept 2
 	ld hl, .GameFreakDittoPalette
-	call LoadHLPaletteIntoDE
+	call LoadOnePalette
 endr
 	ret
 
@@ -1071,15 +1071,15 @@ endc
 _CGB_TradeTube:
 	ld de, wBGPals1
 	ld hl, .TradeTubeBluePalette
-	call LoadHLPaletteIntoDE
+	call LoadOnePalette
 
 	ld hl, .TradeTubeRedPalette
 	ld de, wOBPals1
-	call LoadHLPaletteIntoDE
+	call LoadOnePalette
 
 	ld de, wOBPals1 palette 7
 	ld hl, .TradeTubeBluePalette
-	call LoadHLPaletteIntoDE
+	call LoadOnePalette
 
 	jmp WipeAttrMap
 
@@ -1114,7 +1114,7 @@ _CGB_IntroPals:
 	pop de
 
 	ld hl, .IntroGradientPalette
-	call LoadHLPaletteIntoDE
+	call LoadOnePalette
 
 	call WipeAttrMap
 
@@ -1174,7 +1174,7 @@ _CGB_JudgeSystem:
 	ld de, wOBPals1 palette 0
 	ld hl, .SparkleAndBottleCapPalette
 	ld c, 2 palettes
-	call LoadCPaletteBytesFromHLIntoDE
+	call LoadPalettes
 
 	call WipeAttrMap
 
