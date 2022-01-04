@@ -1363,14 +1363,13 @@ endr
 	jr nz, .botmenu_loop
 	ld [hl], $16
 	hldexcoord 4, 18
-	ld a, $3c
+	ld a, $2c
 	ld [hli], a
 	inc a
 	ld [hli], a
 	inc a
 	ld [hli], a
 	hldexcoord 15, 18
-	ld a, $2e
 	ld [hli], a
 	inc a
 	ld [hli], a
@@ -2033,10 +2032,11 @@ Pokedex_ResetModeSearchPals:
 Pokedex_Mode:
 	ld a, DEXDISP_MODE
 	ld [wPokedex_DisplayMode], a
-	call Pokedex_SetModeSearchPals
 	xor a
 	ld [wPokedex_MenuCursorY], a
 	ld [wPokedexOAM_DexNoY], a
+Pokedex_Mode_ReloadPals:
+	call Pokedex_SetModeSearchPals
 	; fallthrough
 _Pokedex_Mode:
 	ld hl, DexTilemap_Mode
@@ -2075,12 +2075,13 @@ _Pokedex_Mode:
 	jr .joypad_loop
 
 .pressed_a
+	jmp Pokedex_Unown
 	ld a, [wPokedex_MenuCursorY]
 	cp 2
 	jr c, .change_mode
 	jr nz, .return
+	jmp Pokedex_Unown
 
-	; TODO: Unown Mode
 .change_mode
 	ld [wPokedexMode], a
 	call Pokedex_InitData
@@ -2092,28 +2093,25 @@ _Pokedex_Mode:
 	jp Pokedex_Main
 
 .pressed_up
-	ld a, [wPokedex_MenuCursorY]
-	and a
-	jr z, .joypad_loop
-	dec a
-	cp 2
-	jr nz, .change_menu
-	ld b, -1 ; Modifier for menu mode if unown mode not unlocked
-.check_unown
-	; TODO: Have we unlocked Unown Mode?
-	add b
+	ld b, -1 ; Menu movement modifier
 .change_menu
+	ld a, [wPokedex_MenuCursorY]
+	add b
+
+	; Check if we went past top or bottom.
+	cp NUM_DEXMODE
+	jr nc, .joypad_loop
 	ld [wPokedex_MenuCursorY], a
-	jr _Pokedex_Mode
+
+	cp DEXMODE_UNOWN
+	jr nz, _Pokedex_Mode
+
+	; Only allow access to Unown Mode option if we've unlocked it.
+	; TODO: Have we unlocked Unown Mode?
+	jr .change_menu ; advance to next option
 
 .pressed_down
-	ld a, [wPokedex_MenuCursorY]
-	cp 3
-	jr z, .joypad_loop
-	inc a
-	cp 2
 	ld b, 1
-	jr z, .check_unown
 	jr .change_menu
 
 .MenuDescriptions:
@@ -3562,6 +3560,9 @@ INCBIN "gfx/pokedex/search.bin.lz"
 DexTilemap_Mode:
 INCBIN "gfx/pokedex/mode.bin.lz"
 
+DexTilemap_Unown:
+INCBIN "gfx/pokedex/unown.bin.lz"
+
 DexModeSearchPals:
 INCLUDE "gfx/pokedex/mode_search.pal"
 
@@ -3576,9 +3577,6 @@ INCBIN "gfx/pokedex/johto.bin.lz"
 
 DexTilemap_Orange:
 INCBIN "gfx/pokedex/orange.bin.lz"
-
-PokedexAreaLZ:
-INCBIN "gfx/pokedex/area.2bpp.lz"
 
 PokedexSlowpokeLZ:
 INCBIN "gfx/pokedex/slowpoke.2bpp.lz"

@@ -1,6 +1,7 @@
 	const_def
 	const DEXDISP_MAIN
 	const DEXDISP_MODE
+	const DEXDISP_UNOWN
 	const DEXDISP_NEWDESC
 	; These below (starting from DEXDISP_SEARCH) have OAM data.
 	const DEXDISP_SEARCH
@@ -22,7 +23,19 @@
 	const DEXPOS_ATTRMAP
 	const DEXPOS_PALCOPY
 
-	; area mode data
+	; wCurDexMode::
+	; Also defines menu options for the dex mode menu.
+	const_def
+	; Valid for wCurDexMode
+	const DEXMODE_NEW
+	const DEXMODE_OLD
+DEXMODE_ABC EQU const_value ; Only used as a search option, not a proper mode.
+	; Other options
+	const DEXMODE_UNOWN
+	const DEXMODE_CANCEL
+NUM_DEXMODE EQU const_value
+
+	; area data
 	const_def
 	const DEXAREA_MORNING
 	const DEXAREA_DAY

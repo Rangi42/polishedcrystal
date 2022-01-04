@@ -35,10 +35,10 @@ if !DEF(MONOCHROME)
 	RGB 11, 14, 31
 	RGB 00, 00, 00
 
-	; OB2: Highlighted nest
+	; OB2: Highlighted nest + unown mode cursor
 	RGB 31, 31, 31
-	RGB 31, 31, 31
-	RGB 31, 29, 05
+	RGB 07, 16, 26 ; unown mode cursor
+	RGB 31, 29, 05 ; nest highlight coloring
 	RGB 00, 00, 00
 else
 	MONOCHROME_RGB_FOUR

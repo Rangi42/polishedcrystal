@@ -333,54 +333,32 @@ StackDexGraphics:
 	ld a, BANK(PokedexLZ)
 	call FarDecompressToDE
 
+	; pokedex0
 	ld de, wDex2bpp
 	push de
 	ld hl, vTiles2
-	lb bc, BANK(PokedexLZ), $40
+	ld c, $3d
 	call Get2bpp
 
-	; Also write some of the tiles to vTiles0.
-	; TODO: move these tiles to allow just 2 copies, gridlines and scrollbar
-	; Grid lines
-	ld de, wDex2bpp tile $01
+	; grid lines and scrollbar tiles
+	ld de, wDex2bpp tile $38
 	ld hl, vTiles0 tile $70
-	lb bc, BANK(PokedexLZ), $1
-	call Get2bpp
-
-	ld de, wDex2bpp tile $11
-	ld hl, vTiles0 tile $71
-	lb bc, BANK(PokedexLZ), $4
-	call Get2bpp
-
-	; Scrollbar tiles
-	ld de, wDex2bpp tile $0c
-	ld hl, vTiles0 tile $75
-	lb bc, BANK(PokedexLZ), $1
-	call Get2bpp
-
-	ld de, wDex2bpp tile $1c
-	ld hl, vTiles0 tile $76
-	lb bc, BANK(PokedexLZ), $1
-	call Get2bpp
-
-	ld de, wDex2bpp tile $2c
-	ld hl, vTiles0 tile $77
-	lb bc, BANK(PokedexLZ), $1
+	ld c, $8
 	call Get2bpp
 
 	; pokedex1
 	ld a, 1
 	ldh [rVBK], a
 	ld de, wDex2bpp tile $40
-	ld hl, vTiles5 tile $18
-	lb bc, BANK(PokedexLZ), $28
+	ld hl, vTiles5 tile $06
+	ld c, $39
 	call Get2bpp
 
 	; area
-	ld de, vTiles3
-	ld hl, PokedexAreaLZ
-	lb bc, BANK(PokedexAreaLZ), $40
-	call DecompressRequest2bpp
+	ld de, wDex2bpp tile $79
+	ld hl, vTiles3
+	ld c, $40
+	call Get2bpp
 
 	; (partial) unown font
 	ld de, FontUnown
