@@ -372,8 +372,8 @@ StackDexGraphics:
 	ld a, 1
 	ldh [rVBK], a
 	ld de, wDex2bpp tile $40
-	ld hl, vTiles5 tile $18
-	lb bc, BANK(PokedexLZ), $28
+	ld hl, vTiles5 tile $06
+	lb bc, BANK(PokedexLZ), $3a
 	call Get2bpp
 
 	; area
