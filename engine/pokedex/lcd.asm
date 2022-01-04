@@ -188,6 +188,30 @@ Pokedex_RefreshScreen:
 .indicator_done
 	; These need additional sprite handling, handled seperately.
 	ld a, [wPokedex_DisplayMode]
+	cp DEXDISP_STATS
+	jr nz, .not_stats
+
+	; Ability display
+	lb bc, 76, 100
+	lb de, 1, 15
+	lb hl, 0, $1d
+
+	ldh a, [hPokedexStatsCurAbil]
+	cp 2 ; 0/1/2 -> 1/2/H
+	jr z, .got_ability
+	add "1"
+	ld l, a
+.got_ability
+	call Pokedex_WriteOAM
+
+	; (A) button for ability display
+	ld b, 92
+	ld d, 2
+	lb hl, VRAM_BANK_1 | 1, $3d
+	call Pokedex_WriteOAM
+	jr .set_pals
+
+.not_stats
 	cp DEXDISP_AREA
 	push af
 	call z, Pokedex_GetAreaOAM
@@ -195,6 +219,7 @@ Pokedex_RefreshScreen:
 	and a ; cp DEXDISP_MAIN
 	call z, Pokedex_GetMainOAM
 
+.set_pals
 	call SetPalettes
 	ld hl, wPokedex_GFXFlags
 	set DEXGFX_TILEMAP, [hl]
@@ -314,17 +339,54 @@ StackDexGraphics:
 	lb bc, BANK(PokedexLZ), $40
 	call Get2bpp
 
+	; Also write some of the tiles to vTiles0.
+	; TODO: move these tiles to allow just 2 copies, gridlines and scrollbar
+	; Grid lines
+	ld de, wDex2bpp tile $01
+	ld hl, vTiles0 tile $70
+	lb bc, BANK(PokedexLZ), $1
+	call Get2bpp
+
+	ld de, wDex2bpp tile $11
+	ld hl, vTiles0 tile $71
+	lb bc, BANK(PokedexLZ), $4
+	call Get2bpp
+
+	; Scrollbar tiles
+	ld de, wDex2bpp tile $0c
+	ld hl, vTiles0 tile $75
+	lb bc, BANK(PokedexLZ), $1
+	call Get2bpp
+
+	ld de, wDex2bpp tile $1c
+	ld hl, vTiles0 tile $76
+	lb bc, BANK(PokedexLZ), $1
+	call Get2bpp
+
+	ld de, wDex2bpp tile $2c
+	ld hl, vTiles0 tile $77
+	lb bc, BANK(PokedexLZ), $1
+	call Get2bpp
+
+	; pokedex1
 	ld a, 1
 	ldh [rVBK], a
 	ld de, wDex2bpp tile $40
 	ld hl, vTiles5 tile $18
-	lb bc, BANK(PokedexLZ), $22
+	lb bc, BANK(PokedexLZ), $28
 	call Get2bpp
 
+	; area
 	ld de, vTiles3
 	ld hl, PokedexAreaLZ
 	lb bc, BANK(PokedexAreaLZ), $40
 	call DecompressRequest2bpp
+
+	; (partial) unown font
+	ld de, FontUnown
+	ld hl, vTiles4
+	lb bc, BANK(FontUnown), $20
+	call Get1bpp
 	xor a
 	ldh [rVBK], a
 
@@ -347,7 +409,7 @@ StackDexGraphics:
 
 	ld hl, DexOAM
 	ld de, vTiles0
-	lb bc, BANK(DexOAM), 29
+	lb bc, BANK(DexOAM), 30
 	call DecompressRequest2bpp
 
 	; Gender symbols
@@ -606,6 +668,48 @@ PHB_WaitUntilLY_Mode0:
 	jr nz, .busyloop2
 	ret
 
+PHB_ModeSwitchSCY:
+	push hl
+	push de
+	ld de, PHB_ModeSwitchSCY2
+	lb hl, 7, $60
+	jr PHB_DoSwitchSCY
+
+PHB_ModeSwitchSCY2:
+	push hl
+	push de
+	ld de, PHB_ModeSwitchSCY3
+	lb hl, 10, $7d
+	jr PHB_DoSwitchSCY
+
+PHB_ModeSwitchSCY3:
+	push hl
+	push de
+	ld de, PHB_ModeSwitchSCY4
+
+	; reuse the spacing between the 2 description lines
+	lb hl, -4, $83
+	jr PHB_DoSwitchSCY
+
+PHB_ModeSwitchSCY4:
+	push hl
+	push de
+	ld de, PHB_ModeSwitchSCY
+	lb hl, 8, $57
+	; fallthrough
+PHB_DoSwitchSCY:
+; Switch SCY to h, then set next hblank event to de with LYC=l
+	push bc
+.loop
+	ldh a, [rSTAT]
+	and %11
+	jr nz, .loop
+	ld a, h
+	ldh [rSCY], a
+	ld a, l
+	call Pokedex_UnsafeSetHBlankFunction
+	jmp PopBCDEHL
+
 PHB_DescSwitchSCY:
 	push hl
 	push de
@@ -621,77 +725,37 @@ PHB_DescSwitchSCY:
 PHB_BioStatsSwitchSCY:
 	push hl
 	push de
-	push bc
-.busyloop
-	ldh a, [rSTAT]
-	and %11
-	jr nz, .busyloop
-	ld a, 3
-	ldh [rSCY], a
-	ld a, $87
-	ld de, _PHB_BioStatsSwitchSCY
-	call Pokedex_UnsafeSetHBlankFunction
-	jmp PopBCDEHL
+	ld de, PHB_BioStatsSwitchSCY2
+	lb hl, 3, $87
+	jr PHB_DoSwitchSCY
 
-_PHB_BioStatsSwitchSCY:
+PHB_BioStatsSwitchSCY2:
 	push hl
 	push de
-	push bc
-.busyloop
-	ldh a, [rSTAT]
-	and %11
-	jr nz, .busyloop
-	ld a, 8
-	ldh [rSCY], a
-	ld a, $84
 	ld de, PHB_BioStatsSwitchSCY
-	call Pokedex_UnsafeSetHBlankFunction
-	jmp PopBCDEHL
+	lb hl, 8, $84
+	jr PHB_DoSwitchSCY
 
 PHB_SearchSwitchSCY:
 	push hl
 	push de
-	push bc
-.busyloop
-	ldh a, [rSTAT]
-	and %11
-	jr nz, .busyloop
-	ld a, 8
-	ldh [rSCY], a
-	ld a, $88
 	ld de, PHB_SearchSwitchSCY2
-	call Pokedex_UnsafeSetHBlankFunction
-	jmp PopBCDEHL
+	lb hl, 8, $88
+	jr PHB_DoSwitchSCY
 
 PHB_SearchSwitchSCY2:
 	push hl
 	push de
-	push bc
-.busyloop
-	ldh a, [rSTAT]
-	and %11
-	jr nz, .busyloop
-	ld a, -8
-	ldh [rSCY], a
-	ld a, $8b
 	ld de, PHB_SearchSwitchSCY3
-	call Pokedex_UnsafeSetHBlankFunction
-	jmp PopBCDEHL
+	lb hl, -8, $8b
+	jr PHB_DoSwitchSCY
 
 PHB_SearchSwitchSCY3:
 	push hl
 	push de
-	push bc
-.busyloop
-	ldh a, [rSTAT]
-	and %11
-	jr nz, .busyloop
-	ld a, 4
-	ldh [rSCY], a
-	ld a, $f
 	ld de, PHB_SearchSwitchSCY
-	call Pokedex_UnsafeSetHBlankFunction
-	jmp PopBCDEHL
+	lb hl, 4, $f
+	jr PHB_DoSwitchSCY
 
 PHB_Row1:
 	push hl
@@ -727,9 +791,24 @@ PHB_Row3:
 	ld d, 128
 	call PHB_LoadRow
 
+	ld a, $87
+	ld de, PHB_MainResetLCDC
+	call Pokedex_UnsafeSetHBlankFunction
+	jmp PopBCDEHL
+
+PHB_MainResetLCDC:
+	push hl
+	push de
+	push bc
 	ld a, $3f
 	ld de, PHB_Row1
 	call Pokedex_UnsafeSetHBlankFunction
+.loop
+	ldh a, [rSTAT]
+	and %11
+	jr nz, .loop
+	ld hl, rLCDC
+	res rLCDC_TILE_DATA, [hl]
 	jmp PopBCDEHL
 
 PHB_LoadRow:
@@ -753,15 +832,15 @@ PHB_LoadRow:
 	ldh [rSCX], a
 	ld a, 8
 	ldh [rSCY], a
+	ldh a, [rLCDC]
+	set rLCDC_TILE_DATA, a
+	ldh [rLCDC], a
+
 	call .GetCaptureOffset
 	pop de
 
-	; This places the OAM writes within the worst-case mode0 margin.
-	; Delay for exactly 2 + (1 + 3) * 34 + 1 + 2 = 141 cycles.
-	ld b, 35
-.fixtiming1
-	dec b
-	jr nz, .fixtiming1
+	ld c, 30
+	call PHB_BusyLoop2
 
 	; Write poké ball presence info
 	ld hl, oamSprite12YCoord + 16
@@ -794,7 +873,7 @@ endr
 
 	; Sprite tiles and pal col 2-3
 	ld a, e
-	or $80
+	xor $80
 	ld de, oamSprite17TileID
 	ld b, 33
 	call .WriteMiniTiles
@@ -832,7 +911,7 @@ endr
 	ld [hl], e
 	inc e
 
-	; Pal col 2 (OBJ2) on first iteration, col 3 (OBJ3) on the second.
+	; Pal col 2 (OBJ5) on first iteration, col 3 (OBJ6) on the second.
 	pop hl
 	ld c, LOW(rOBPD)
 rept 6
@@ -868,7 +947,7 @@ rept 3
 endr
 	ld d, a
 
-	; Pal col 4 (OBJ4) on first iteration, col 5 (BG3) on the second.
+	; Pal col 4 (OBJ7) on first iteration, col 5 (BG3) on the second.
 	pop bc
 	pop hl
 rept 6
@@ -965,7 +1044,7 @@ PVB_UpdateDexMap::
 	inc de
 	ld a, [hl]
 	ld [de], a
-	jr .done
+	jmp .done
 
 .no_tilemap
 	bit DEXGFX_FRONTPIC, [hl]
@@ -1025,6 +1104,8 @@ PVB_UpdateDexMap::
 	jr z, .done
 
 	push hl
+	xor a
+	ldh [rVBK], a
 	ld hl, wDexRowTilesDest
 	ld a, [hli]
 	ld c, a
@@ -1033,6 +1114,8 @@ PVB_UpdateDexMap::
 	ld de, wDexVWFTiles
 	ld a, 17
 	call GDMACopy
+	ld a, 1
+	ldh [rVBK], a
 	ld a, [hli]
 	ld c, a
 	ld b, [hl]

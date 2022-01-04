@@ -183,6 +183,7 @@ GetFishLocations:
 	; in WRAM1 so we need to use GetFarWRAM for time of day checking.
 	push hl
 	ld hl, wTimeOfDay
+	ld a, BANK(wTimeOfDay)
 	call GetFarWRAMByte
 	pop hl
 	and 3

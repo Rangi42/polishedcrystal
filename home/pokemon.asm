@@ -237,27 +237,33 @@ GetAbility::
 DexCompareWildForm:
 ; Compares wildmon form in a (converting form 0->1) with b.
 ; If b is cosmetic form, only check for matching extspecies.
-; Otherwise, check exact form. Returns z if matching. If z is returned, nc
-; is also returned (but can sometimes be returned on nz as well).
-	push af
+; Otherwise, check exact form. Returns z if matching. Always returns nc.
+	; Translate form 0->1
+	push bc
+	ld c, a
 	and FORM_MASK
-	jr nz, .form_ok
-	pop af
-	inc a
-	jr .got_form
-
-.form_ok
-	pop af
+	jr nz, .got_form
+	inc c
 .got_form
-	bit MON_COSMETIC_F, b
-	jr nz, .cosmetic
+	ld a, c
+	pop bc
 
-	cp b
-	ret
-
-.cosmetic
+	; If xor b returns z, form is identical.
 	xor b
-	and EXTSPECIES_MASK
+	ret z
+
+	; a at this point has MON_COSMETIC_F if form is cosmetic.
+	; Thus, doubling it will leave mismatching extspecies/form data
+	; on noncarry, returning nz.
+
+	assert (MON_COSMETIC_F == 7)
+
+	add a
+	ret nc
+
+	; At this point, we know we're dealing with a cosmetic form.
+	; Verify that extspecies matched (the above becomes a=0 if matched)..
+	and EXTSPECIES_MASK << 1
 	ret
 
 GetGenderRatio::
