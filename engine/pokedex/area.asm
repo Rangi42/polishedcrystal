@@ -512,7 +512,6 @@ Pokedex_GetMonLocations:
 	ld hl, wDexAreaHighlightY
 	ld [hli], a
 	ld [hl], a
-	; TODO: highlight nests in the player's current map
 	dec a
 	ld [wDexAreaHighlight], a
 
@@ -534,7 +533,6 @@ Pokedex_GetMonLocations:
 	sub DEXAREA_FISH ; also sub DEXAREA_HEADBUTT
 	jr c, .fish
 
-	; TODO: Rock Smash, Contest
 	jr z, .headbutt
 	dec a ; cp DEXAREA_ROCK_SMASH
 	jr z, .rock_smash

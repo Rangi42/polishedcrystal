@@ -2782,8 +2782,6 @@ Pokedex_InitData:
 
 	; Then populate the list with seen/captured Pokémon. Do seen first, because
 	; a captured altform takes predecence over a seen regular form.
-	; TODO: when dex mode is implemented, call IterateSpecies with a=1 if order
-	; is set to johto mode.
 	ld hl, .SpeciesCallback
 	call Pokedex_IterateSpeciesWithMode
 
@@ -2814,10 +2812,6 @@ Pokedex_InitData:
 .not_caught
 	call Pokedex_GetDexNumber
 	dec bc
-
-	; TODO: in johto dex mode, we want to read the conversion table here.
-	; Note that we still want to decrement since we only need the number for
-	; adding to wDexMons.
 
 	; Track which entry we appended last.
 	ld hl, wPokedex_FinalEntry
