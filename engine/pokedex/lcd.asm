@@ -360,12 +360,12 @@ StackDexGraphics:
 
 	ld de, wDex2bpp tile $1c
 	ld hl, vTiles0 tile $76
-	lb bc, BANK(PokedexLZ), $4
+	lb bc, BANK(PokedexLZ), $1
 	call Get2bpp
 
 	ld de, wDex2bpp tile $2c
 	ld hl, vTiles0 tile $77
-	lb bc, BANK(PokedexLZ), $4
+	lb bc, BANK(PokedexLZ), $1
 	call Get2bpp
 
 	; pokedex1
