@@ -1,5 +1,5 @@
 CountCaught:
-	call CountSeenCaught
+	farcall Pokedex_CountSeenOwn
 	ldh a, [hScriptVar]
 	cpl
 	ld l, a
@@ -16,7 +16,7 @@ CountCaught:
 	ret
 
 CountSeen:
-	call CountSeenCaught
+	farcall Pokedex_CountSeenOwn
 	ld hl, wTempDexSeen
 	ld a, [hli]
 	ld b, a
@@ -35,9 +35,6 @@ CountSeen:
 	inc a ; TRUE
 	ldh [hScriptVar], a
 	ret
-
-CountSeenCaught:
-	farjp Pokedex_CountSeenOwn
 
 ProfOaksPC:
 	ld hl, OakPCText1
@@ -69,9 +66,9 @@ ProfOaksPCRating:
 
 Rate:
 ; calculate Seen/Owned
-	call CountSeenCaught
+	farcall Pokedex_CountSeenOwn
 
-; print appropriate rating, we start on bc = pokedex caught due to CountSeenCaught
+; print appropriate rating, we start on bc = pokedex caught due to Pokedex_CountSeenOwn
 	ld hl, wStringBuffer4
 	call .UpdateRatingBuffer
 	ld hl, wTempDexSeen
