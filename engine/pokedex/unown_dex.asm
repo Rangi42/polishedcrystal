@@ -15,7 +15,7 @@ Pokedex_Unown:
 
 	call ClearSpriteAnims
 	lb de, $5c, $24
-	ld a, SPRITE_ANIM_INDEX_DEX_UNOWN
+	ld a, SPRITE_ANIM_INDEX_DEX_UNOWN_CURSOR
 	call InitSpriteAnimStruct
 
 	; fallthrough
@@ -144,23 +144,23 @@ _Pokedex_Unown:
 	ld [wPokedex_UnownCursor], a
 
 	; There's 7 columns, not 8.
-	and $7
+	maskbits $7
 	cp $7
 	jr z, .move_cursor
 	jmp _Pokedex_Unown
 
 Pokedex_GetPrintableUnownChar:
 ; Convert unown form in a to printable character.
-	; Usual case.
 	add "A" - 1
 
-	; Compare with form Z + 1 + ("A" - 1 from the previous add)
-	cp UNOWN_Z_FORM + "A"
-	ret c ; We are dealing wiht Unown A-Z.
+	cp (UNOWN_Z_FORM + 1) + ("A" - 1)
+	ret c
+
+	assert UNOWN_Z_FORM + 1 == UNOWN_EXCLAMATION_FORM
 	ld a, "!"
 	ret z
 
-	assert ("!" - 1 == "?")
+	assert "!" - 1 == "?"
 	dec a
 	ret
 

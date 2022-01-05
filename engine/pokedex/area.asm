@@ -490,7 +490,7 @@ Pokedex_GetAreaOAM:
 	ld l, $10
 	dec b
 	dec b
-	jp Pokedex_WriteOAM
+	jmp Pokedex_WriteOAM
 
 Pokedex_GetMonLocations:
 ; Creates a table of nest coordinates for the given area mode.
@@ -621,7 +621,7 @@ Pokedex_SetWildLandmark:
 	ld [hl], a
 	pop af
 .end
-	jp PopBCDEHL
+	jmp PopBCDEHL
 
 Pokedex_SortAreaMons:
 ; Sorts area mons for the benefit of hblank processing

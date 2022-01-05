@@ -504,7 +504,7 @@ StackDexGraphics:
 	ld a, CGB_TRAINER_OR_MON_FRONTPIC_PALS
 	call GetCGBLayout
 	ld b, 2
-	jp SafeCopyTilemapAtOnce
+	jmp SafeCopyTilemapAtOnce
 
 Pokedex_GetMainOAM:
 	; Poké balls
@@ -1011,7 +1011,7 @@ PVB_UpdateDexMap::
 	; update HBlank trigger if applicable
 	ld a, [wPokedex_PendingLYC]
 	and a
-	jp z, .done
+	jmp z, .done
 	ldh [rLYC], a
 	xor a
 	ld [wPokedex_PendingLYC], a
