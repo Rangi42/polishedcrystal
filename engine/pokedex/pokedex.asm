@@ -58,7 +58,7 @@ Pokedex:
 	xor a
 	ld [wPokedex_CursorPos], a
 
-	jp Pokedex_MainLoop
+	jmp Pokedex_MainLoop
 
 
 Pokedex_LoadTilemap:
@@ -2057,7 +2057,7 @@ _Pokedex_Mode:
 	; Maybe add Unown Mode option
 	ld de, ENGINE_UNOWN_DEX
 	farcall CheckEngineFlag
-	jr nc, .done_unown_mode
+	jr c, .done_unown_mode
 
 	hlcoord 2, 8
 	ld de, .UnownMode
@@ -2112,7 +2112,7 @@ _Pokedex_Mode:
 	ld [wPokedex_Offset], a
 .return
 	call Pokedex_ResetModeSearchPals
-	jp Pokedex_Main
+	jmp Pokedex_Main
 
 .pressed_up
 	ld b, -1 ; Menu movement modifier
@@ -2132,7 +2132,7 @@ _Pokedex_Mode:
 	ld de, ENGINE_UNOWN_DEX
 	farcall CheckEngineFlag
 	pop bc
-	jr nc, .change_menu
+	jr c, .change_menu
 	jmp _Pokedex_Mode
 
 .pressed_down

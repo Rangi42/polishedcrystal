@@ -84,7 +84,7 @@ SpriteAnimOAMData:
 	dbw $00, .OAMData_PcMode2            ; SPRITE_ANIM_OAMSET_PC_MODE2
 	dbw $00, .OAMData_PcPack             ; SPRITE_ANIM_OAMSET_PC_PACK
 	dbw $00, .OAMData_DexCursor          ; SPRITE_ANIM_OAMSET_DEX_CURSOR
-	dbw $1e, .OAMData_DexUnownCursor     ; SPRITE_ANIM_OAMSET_DEX_UNOWN
+	dbw $1e, .OAMData_DexUnownCursor     ; SPRITE_ANIM_OAMSET_DEX_UNOWN_CURSOR
 	assert_table_length NUM_SPRITE_ANIM_OAMSETS
 
 .OAMData_1x1_Palette0:

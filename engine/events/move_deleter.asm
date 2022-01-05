@@ -169,4 +169,4 @@ MoveDeletion:
 ; Register this Pikachu as seen+caught in the dex.
 	ld c, PIKACHU
 	ld b, a
-	jp SetSeenAndCaughtMon
+	jmp SetSeenAndCaughtMon

@@ -57,7 +57,7 @@ SpriteAnimFrameData:
 	dw .Frameset_PcMode2
 	dw .Frameset_PcPack
 	dw .Frameset_DexCursor
-	dw .Frameset_DexUnown
+	dw .Frameset_DexUnownCursor
 	assert_table_length NUM_SPRITE_ANIM_FRAMESETS
 
 .Frameset_00:
@@ -365,6 +365,6 @@ SpriteAnimFrameData:
 	frame SPRITE_ANIM_OAMSET_DEX_CURSOR, 32
 	dorestart
 
-.Frameset_DexUnown:
-	frame SPRITE_ANIM_OAMSET_DEX_UNOWN, 32
+.Frameset_DexUnownCursor:
+	frame SPRITE_ANIM_OAMSET_DEX_UNOWN_CURSOR, 32
 	dorestart
