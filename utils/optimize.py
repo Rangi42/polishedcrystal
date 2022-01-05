@@ -7,6 +7,7 @@ Search all .asm files for N code lines in a row that match some conditions.
 
 from collections import namedtuple
 from glob import iglob
+from sys import argv
 
 # Regular expressions are useful for text processing
 import re
@@ -528,7 +529,8 @@ patterns = {
 count = 0
 
 # Check all the .asm files
-for filename in iglob('**/*.asm', recursive=True):
+filenames = argv[1:] if len(argv) > 1 else iglob('**/*.asm', recursive=True)
+for filename in filenames:
 	printed = False
 	# Read each file line by line
 	with open(filename, 'r') as f:
