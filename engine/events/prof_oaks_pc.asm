@@ -1,5 +1,9 @@
 CountCaught:
 	farcall Pokedex_CountSeenOwn
+	ld hl, wTempDexOwn
+	ld a, [hli]
+	ld b, a
+	ld c, [hl]
 	ldh a, [hScriptVar]
 	cpl
 	ld l, a
