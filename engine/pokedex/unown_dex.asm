@@ -99,11 +99,55 @@ _Pokedex_Unown:
 
 	ld a, -1
 	call Pokedex_ScheduleScreenUpdateWithHBlank
+.joypad_loop
 	call Pokedex_GetInput
-	ld c, 240
-	call DelayFrames
+	rrca ; ignore A press
+	rrca
+	jr c, .pressed_b
+	rrca
+	jr c, .pressed_select
+	rrca ; ignore start
+	rrca
+	jr c, .pressed_right
+	rrca
+	jr c, .pressed_left
+	rrca
+	jr c, .pressed_up
+	rrca
+	jr c, .pressed_down
+	jr .joypad_loop
+
+.pressed_b
+	call ClearSpriteAnims
 	jmp Pokedex_Mode_ReloadPals
-	ret
+
+.pressed_select
+	call Pokedex_SwitchNormalOrShinyPalette
+	call Pokedex_ScheduleScreenUpdate
+	jr .joypad_loop
+
+.pressed_right
+	ld b, 1
+	jr .move_cursor
+.pressed_left
+	ld b, 7
+	jr .move_cursor
+.pressed_up
+	ld b, $30
+	jr .move_cursor
+.pressed_down
+	ld b, $10
+.move_cursor
+	ld a, [wPokedex_UnownCursor]
+	add b
+	and $37
+	ld [wPokedex_UnownCursor], a
+
+	; There's 7 columns, not 8.
+	and $7
+	cp $7
+	jr z, .move_cursor
+	jmp _Pokedex_Unown
 
 Pokedex_GetPrintableUnownChar:
 ; Convert unown form in a to printable character.

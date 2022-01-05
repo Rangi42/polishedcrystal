@@ -309,6 +309,7 @@ Pokedex_CheckForOtherForms:
 	ret
 
 Pokedex_SwitchNormalOrShinyPalette:
+; Leaves the mini alone and doesn't schedule a reload.
 	ld a, SHINY_CHARM
 	ld [wCurKeyItem], a
 	call CheckKeyItem
@@ -323,6 +324,14 @@ Pokedex_SwitchNormalOrShinyPalette:
 	ld a, BANK(PokemonPalettes)
 	ld bc, 4
 	call FarCopyBytesToColorWRAM
+	scf
+	ret
+
+Pokedex_SwitchNormalOrShinyPaletteAndUpdate:
+; Also reloads mini palette.
+	call Pokedex_SwitchNormalOrShinyPalette
+	ret nc
+	; fallthrough
 Pokedex_GetMonIconPalette:
 	ld a, BANK(wBGPals1)
 	call StackCallInWRAMBankA
@@ -1474,7 +1483,7 @@ endr
 
 .pressed_select
 	; cycle shininess
-	call Pokedex_SwitchNormalOrShinyPalette
+	call Pokedex_SwitchNormalOrShinyPaletteAndUpdate
 	jr .joypad_loop
 
 .pressed_up
@@ -1567,6 +1576,8 @@ Pokedex_Main:
 	call Pokedex_UpdateRow
 	ld c, 2
 	call Pokedex_UpdateRow
+
+	call Pokedex_GetCursorMon
 
 	ld a, $3f
 	ld de, PHB_Row1
@@ -1747,7 +1758,7 @@ Pokedex_Bio:
 
 .pressed_select
 	; cycle shininess
-	call Pokedex_SwitchNormalOrShinyPalette
+	call Pokedex_SwitchNormalOrShinyPaletteAndUpdate
 	jr .joypad_loop
 
 .pressed_start
@@ -1955,7 +1966,7 @@ _Pokedex_Stats:
 
 .pressed_select
 	; cycle shininess
-	call Pokedex_SwitchNormalOrShinyPalette
+	call Pokedex_SwitchNormalOrShinyPaletteAndUpdate
 	jr .joypad_loop
 
 .pressed_start
@@ -2076,7 +2087,6 @@ _Pokedex_Mode:
 	jr .joypad_loop
 
 .pressed_a
-	jmp Pokedex_Unown
 	ld a, [wPokedex_MenuCursorY]
 	cp 2
 	jr c, .change_mode
