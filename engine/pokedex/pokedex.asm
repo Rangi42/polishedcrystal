@@ -1547,6 +1547,7 @@ Pokedex_Main:
 	xor a
 	ld [wPokedex_DisplayMode], a
 
+	call ClearSpriteAnims
 	lb de, $50, $09
 	ld a, SPRITE_ANIM_INDEX_DEX_CURSOR
 	call InitSpriteAnimStruct
@@ -2030,12 +2031,12 @@ Pokedex_ResetModeSearchPals:
 	ret
 
 Pokedex_Mode:
-	ld a, DEXDISP_MODE
-	ld [wPokedex_DisplayMode], a
 	xor a
 	ld [wPokedex_MenuCursorY], a
 	ld [wPokedexOAM_DexNoY], a
 Pokedex_Mode_ReloadPals:
+	ld a, DEXDISP_MODE
+	ld [wPokedex_DisplayMode], a
 	call Pokedex_SetModeSearchPals
 	; fallthrough
 _Pokedex_Mode:
@@ -2055,7 +2056,7 @@ _Pokedex_Mode:
 	ld d, h
 	ld e, l
 	hlcoord 2, 14
-	call PlaceString
+	rst PlaceString
 
 	; disable hblank int
 	ld a, $57

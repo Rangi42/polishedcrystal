@@ -387,7 +387,7 @@ StackDexGraphics:
 
 	ld hl, DexOAM
 	ld de, vTiles0
-	lb bc, BANK(DexOAM), 30
+	lb bc, BANK(DexOAM), 31
 	call DecompressRequest2bpp
 
 	; Gender symbols

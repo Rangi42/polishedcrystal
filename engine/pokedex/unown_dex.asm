@@ -12,6 +12,12 @@ Pokedex_Unown:
 	ld bc, 2 palettes
 	ld a, BANK(UnownModePals)
 	call FarCopyBytesToColorWRAM
+
+	call ClearSpriteAnims
+	lb de, $5c, $24
+	ld a, SPRITE_ANIM_INDEX_DEX_UNOWN
+	call InitSpriteAnimStruct
+
 	; fallthrough
 _Pokedex_Unown:
 	; Load current unown pic.
@@ -19,13 +25,99 @@ _Pokedex_Unown:
 	push af
 	ld hl, DexTilemap_Unown
 	call Pokedex_LoadTilemapWithPokepic
+
+	; If we have caught the current Unown, we want to
+	; display the relevant letter and a word alongside.
+	; If not, we want to replace "UNOWN" with whitespace.
 	pop af
+	jr z, .not_caught
+
+	; Since Unown forms are 1-indexed, load pointer table from UnownWords-2.
+	call Pokedex_GetUnownCursorForm
+	ld a, b
+	push af
+	add a
+	add LOW(UnownWords - 2)
+	ld l, a
+	adc HIGH(UnownWords - 2)
+	sub l
+	ld h, a
+	ld a, [hli]
+	ld d, [hl]
+	ld e, a
+	hlcoord 10, 5
+	rst PlaceString
+	pop af
+	call Pokedex_GetPrintableUnownChar
+
+	hlcoord 16, 3
+	ld [hl], a
+	jr .current_done
+
+.not_caught
+	; Remove "UNOWN"
+	hlcoord 10, 3
+	ld a, " "
+	ld bc, 5
+	rst ByteFill
+
+.current_done
+	; Print a table of Unown characters for all formes we've caught.
+	hlcoord 4, 10
+	lb bc, UNOWN_A_FORM, LOW(UNOWN)
+	ld d, 4
+.outer_loop
+	ld e, 7
+.inner_loop
+	; Check if this form is captured.
+	push hl
+	push de
+	push bc
+	call CheckCaughtMon
+	pop bc
+	pop de
+	pop hl
+	jr z, .next
+
+	; Print character
+	ld a, b
+	call Pokedex_GetPrintableUnownChar
+	ld [hl], a
+.next
+	inc b
+	inc hl
+	inc hl
+	dec e
+	jr nz, .inner_loop
+	push bc
+	; 2x(screen) - unown chars per line * 2
+	ld bc, 2 * SCREEN_WIDTH - 7 * 2
+	add hl, bc
+	pop bc
+	dec d
+	jr nz, .outer_loop
+
 	ld a, -1
 	call Pokedex_ScheduleScreenUpdateWithHBlank
 	call Pokedex_GetInput
 	ld c, 240
 	call DelayFrames
 	jmp Pokedex_Mode_ReloadPals
+	ret
+
+Pokedex_GetPrintableUnownChar:
+; Convert unown form in a to printable character.
+	; Usual case.
+	add "A" - 1
+
+	; Compare with form Z + 1 + ("A" - 1 from the previous add)
+	cp UNOWN_Z_FORM + "A"
+	ret c ; We are dealing wiht Unown A-Z.
+	ld a, "!"
+	ret z
+
+	assert ("!" - 1 == "?")
+	dec a
 	ret
 
 Pokedex_LoadUnownPic:
@@ -81,9 +173,7 @@ Pokedex_GetUnownCursorForm:
 
 	; Vertical position
 	ld a, c
-	rrca
-	rrca
-	rrca
+	swap a
 	and %11
 	ld c, a
 
