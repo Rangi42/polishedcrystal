@@ -114,13 +114,12 @@ Var_CountTrainerStars:
 .nostar2
 	; star for completing the Pokédex
 	push bc
-	ld hl, wPokedexCaught
-	ld bc, wEndPokedexCaught - wPokedexCaught
-	call CountSetBits16
-	ld a, b
+	farcall Pokedex_CountSeenOwn
+	ld hl, wTempDexOwn
+	ld a, [hli]
 	cp HIGH(NUM_EXT_POKEMON)
 	jr c, .nostar3
-	ld a, c
+	ld a, [hl]
 	cp LOW(NUM_EXT_POKEMON)
 	jr c, .nostar3
 	inc b

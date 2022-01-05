@@ -276,7 +276,6 @@
 	const AZURILL    ; fc
 	const WYNAUT     ; fd
 	const AMBIPOM    ; fe
-NUM_POKEMON EQU const_value - 1 ; fe ; TODO: eliminate this
 	const EGG        ; ff
 	const_skip       ; 100 is unused
 	const MISMAGIUS  ; 101

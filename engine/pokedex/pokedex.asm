@@ -2841,6 +2841,21 @@ Pokedex_InitData:
 	ldh [rSVBK], a
 	ret
 
+Pokedex_CountSeenOwn:
+; Returns amount of seen in wTempDexSeen, owned in wTempDexOwn. Preserves regs.
+	push hl
+	push de
+	push bc
+	push af
+	; Reset temp dex data.
+	ld hl, wTempDex
+	ld bc, wTempDexEnd - wTempDex
+	xor a
+	rst ByteFill
+	ld hl, Pokedex_HandleSeenOwn
+	call Pokedex_IterateSpecies
+	jmp PopAFBCDEHL
+
 Pokedex_HandleSeenOwn:
 ; IterateSpecies callback that handles seen/owned statistics.
 ; Returns c if we've caught the mon, nz if we've seen it, otherwise z.

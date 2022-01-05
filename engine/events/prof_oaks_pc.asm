@@ -17,7 +17,7 @@ CountCaught:
 
 CountSeen:
 	call CountSeenCaught
-	ld hl, wTempPokedexSeenCount
+	ld hl, wTempDexSeen
 	ld a, [hli]
 	ld b, a
 	ld c, [hl]
@@ -37,21 +37,7 @@ CountSeen:
 	ret
 
 CountSeenCaught:
-	ld hl, wPokedexSeen
-	ld bc, wEndPokedexSeen - wPokedexSeen
-	call CountSetBits16
-	ld hl, wTempPokedexSeenCount
-	ld a, b
-	ld [hli], a
-	ld [hl], c
-	ld hl, wPokedexCaught
-	ld bc, wEndPokedexCaught - wPokedexCaught
-	call CountSetBits16
-	ld hl, wTempPokedexCaughtCount
-	ld a, b
-	ld [hli], a
-	ld [hl], c
-	ret
+	farjp Pokedex_CountSeenOwn
 
 ProfOaksPC:
 	ld hl, OakPCText1
@@ -88,7 +74,7 @@ Rate:
 ; print appropriate rating, we start on bc = pokedex caught due to CountSeenCaught
 	ld hl, wStringBuffer4
 	call .UpdateRatingBuffer
-	ld hl, wTempPokedexSeenCount
+	ld hl, wTempDexSeen
 	ld a, [hli]
 	ld b, a
 	ld c, [hl]
