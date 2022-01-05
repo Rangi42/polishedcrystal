@@ -308,7 +308,7 @@ ENDM
 	const checkpoke_command
 checkpoke: MACRO
 	db checkpoke_command
-	db \1 ; pkmn
+	dp \1 ; pkmn
 ENDM
 
 	const givepoke_command
