@@ -400,7 +400,7 @@ StackDexGraphics:
 	ld a, BANK(wDexConversionTable)
 	ldh [rSVBK], a
 	ld de, 0
-	ld bc, REAL_NUM_POKEMON + $100 ; "+ $100" simplifies loop iteration
+	ld bc, NUM_POKEMON + $100 ; "+ $100" simplifies loop iteration
 .conversion_loop
 	push bc
 	ld hl, NewPokedexOrder

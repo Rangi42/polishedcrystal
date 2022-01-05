@@ -282,4 +282,4 @@ NewPokedexOrder:
 	dp MEWTWO
 	dp MEW
 	dp CELEBI
-	assert_table_length REAL_NUM_POKEMON
+	assert_table_length NUM_POKEMON

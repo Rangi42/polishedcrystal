@@ -2934,7 +2934,7 @@ Pokedex_IterateSpecies:
 ; Iterate in the following order depending on a: 0 (natdex), 1 (johto), 2 (a-z)
 	ld b, 0
 	ld c, b
-	ld de, REAL_NUM_POKEMON
+	ld de, NUM_POKEMON
 	inc d ; to simplify looping checks
 	and a ; cp DEXMODE_OLD
 	jr nz, .species_loop

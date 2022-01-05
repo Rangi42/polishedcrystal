@@ -117,10 +117,10 @@ Var_CountTrainerStars:
 	farcall Pokedex_CountSeenOwn
 	ld hl, wTempDexOwn
 	ld a, [hli]
-	cp HIGH(REAL_NUM_POKEMON)
+	cp HIGH(NUM_POKEMON)
 	jr c, .nostar3
 	ld a, [hl]
-	cp LOW(REAL_NUM_POKEMON)
+	cp LOW(NUM_POKEMON)
 	jr c, .nostar3
 	inc b
 .nostar3
