@@ -2053,6 +2053,17 @@ Pokedex_Mode_ReloadPals:
 _Pokedex_Mode:
 	ld hl, DexTilemap_Mode
 	call Pokedex_LoadTilemap
+
+	; Maybe add Unown Mode option
+	ld de, ENGINE_UNOWN_DEX
+	farcall CheckEngineFlag
+	jr nc, .done_unown_mode
+
+	hlcoord 2, 8
+	ld de, .UnownMode
+	rst PlaceString
+
+.done_unown_mode
 	hlcoord 1, 4
 	ld a, [wPokedex_MenuCursorY]
 	push af
@@ -2117,13 +2128,19 @@ _Pokedex_Mode:
 	cp DEXMODE_UNOWN
 	jr nz, _Pokedex_Mode
 
-	; Only allow access to Unown Mode option if we've unlocked it.
-	; TODO: Have we unlocked Unown Mode?
-	jr .change_menu ; advance to next option
+	push bc
+	ld de, ENGINE_UNOWN_DEX
+	farcall CheckEngineFlag
+	pop bc
+	jr nc, .change_menu
+	jmp _Pokedex_Mode
 
 .pressed_down
 	ld b, 1
 	jr .change_menu
+
+.UnownMode:
+	db "Unown Mode@"
 
 .MenuDescriptions:
 	text "<PK><MN> are listed in"
