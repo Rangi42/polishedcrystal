@@ -128,18 +128,20 @@ CheckCriticalCapture:
 	ld a, [wBuffer1]
 	ld [hl], a
 
-	ld hl, wPokedexCaught
-	ld bc, wEndPokedexCaught - wPokedexCaught
-	call CountSetBits16
+	farcall Pokedex_CountSeenOwn
+	ld hl, wTempDexOwn
+	ld a, [hli]
+	ld c, [hl]
+	ld b, a
 	ld hl, .multipliers
 	ld d, 0
 .loop
 	ld a, [hli]
-	cp b
+	cp c
 	ld a, [hli]
 	jr c, .next
 	jr nz, .got_multiplier
-	cp c
+	cp b
 	jr c, .got_multiplier
 .next
 	inc d

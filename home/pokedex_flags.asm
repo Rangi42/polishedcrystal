@@ -24,50 +24,6 @@ CountSetBits::
 	ld [wNumSetBits], a
 	ret
 
-CountSetBits16::
-; Count the number of set bits in bc bytes starting from hl - assumes bc < $1000
-; Returns in bc; hl points to the end of the buffer; clobbers everything else
-; Assumes that CountSetBits will leave hl pointing to the end of the buffer
-	swap b
-	ld a, c
-	swap a
-	and $f
-	or b
-	ld d, a
-	ld a, c
-	jr z, .small_count
-	ld bc, 0
-	and $f
-	jr z, .loop
-	push de
-	call .small_count
-	pop de
-.loop
-	push bc
-	push de
-	ld b, $10
-	call CountSetBits
-	pop de
-	pop bc
-	add c
-	ld c, a
-	adc b
-	sub c
-	ld b, a
-	dec d
-	jr nz, .loop
-	ld a, b
-	ld [wNumSetBits], a
-	ld a, c
-	ld [wNumSetBits+1], a
-	ret
-
-.small_count
-	ld b, a
-	call CountSetBits
-	ld b, 0
-	ret
-
 GetWeekday::
 	ld a, [wCurDay]
 .mod

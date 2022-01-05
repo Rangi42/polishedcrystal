@@ -109,11 +109,6 @@ NEXTU
 wMonMailMessageBuffer:: ds MAIL_MSG_LENGTH + 1
 
 NEXTU
-; prof. oak's pc
-wTempPokedexSeenCount:: dw
-wTempPokedexCaughtCount:: dw
-
-NEXTU
 ; player's room pc
 UNION
 wDecoNameBuffer:: ds ITEM_NAME_LENGTH

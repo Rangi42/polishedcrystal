@@ -2053,6 +2053,17 @@ Pokedex_Mode_ReloadPals:
 _Pokedex_Mode:
 	ld hl, DexTilemap_Mode
 	call Pokedex_LoadTilemap
+
+	; Maybe add Unown Mode option
+	ld de, ENGINE_UNOWN_DEX
+	farcall CheckEngineFlag
+	jr nc, .done_unown_mode
+
+	hlcoord 2, 8
+	ld de, .UnownMode
+	rst PlaceString
+
+.done_unown_mode
 	hlcoord 1, 4
 	ld a, [wPokedex_MenuCursorY]
 	push af
@@ -2117,13 +2128,19 @@ _Pokedex_Mode:
 	cp DEXMODE_UNOWN
 	jr nz, _Pokedex_Mode
 
-	; Only allow access to Unown Mode option if we've unlocked it.
-	; TODO: Have we unlocked Unown Mode?
-	jr .change_menu ; advance to next option
+	push bc
+	ld de, ENGINE_UNOWN_DEX
+	farcall CheckEngineFlag
+	pop bc
+	jr nc, .change_menu
+	jmp _Pokedex_Mode
 
 .pressed_down
 	ld b, 1
 	jr .change_menu
+
+.UnownMode:
+	db "Unown Mode@"
 
 .MenuDescriptions:
 	text "<PK><MN> are listed in"
@@ -2841,6 +2858,21 @@ Pokedex_InitData:
 	ldh [rSVBK], a
 	ret
 
+Pokedex_CountSeenOwn:
+; Returns amount of seen in wTempDexSeen, owned in wTempDexOwn. Preserves regs.
+	push hl
+	push de
+	push bc
+	push af
+	; Reset temp dex data.
+	ld hl, wTempDex
+	ld bc, wTempDexEnd - wTempDex
+	xor a
+	rst ByteFill
+	ld hl, Pokedex_HandleSeenOwn
+	call Pokedex_IterateSpecies
+	jmp PopAFBCDEHL
+
 Pokedex_HandleSeenOwn:
 ; IterateSpecies callback that handles seen/owned statistics.
 ; Returns c if we've caught the mon, nz if we've seen it, otherwise z.
@@ -2919,7 +2951,7 @@ Pokedex_IterateSpecies:
 ; Iterate in the following order depending on a: 0 (natdex), 1 (johto), 2 (a-z)
 	ld b, 0
 	ld c, b
-	ld de, REAL_NUM_POKEMON
+	ld de, NUM_POKEMON
 	inc d ; to simplify looping checks
 	and a ; cp DEXMODE_OLD
 	jr nz, .species_loop
