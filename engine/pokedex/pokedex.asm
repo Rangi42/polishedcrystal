@@ -3047,6 +3047,26 @@ Pokedex_GetInput:
 	and D_PAD
 	ret
 
+Pokedex_LoadUndiscoveredPokepic:
+; Always returns z.
+	ld hl, QuestionMarkLZ
+	ld de, sScratch + 1 tiles
+	ld a, BANK(sScratch)
+	call GetSRAMBank
+	ld a, BANK(QuestionMarkLZ)
+	call FarDecompressToDE
+	call CloseSRAM
+	ld hl, wPokedex_GFXFlags
+	set DEXGFX_FRONTPIC, [hl]
+
+	ld hl, Pokedex_QuestionMarkPal
+	ld de, wBGPals1 palette 6 + 2
+	ld a, BANK(Pokedex_QuestionMarkPal)
+	ld bc, 4
+	call FarCopyBytesToColorWRAM
+	xor a
+	ret
+
 Pokedex_SwitchMonInfoBank:
 ; Switch which bank to store tile data in. Tiles are loaded as follows:
 ; 0: vTiles2 tile $40
@@ -3125,22 +3145,9 @@ _Pokedex_GetCursorMon:
 	ld hl, wPokedex_GFXFlags
 	bit DEXGFX_ROWTILES, [hl]
 	call nz, DelayFrame
-	ld hl, QuestionMarkLZ
-	ld de, sScratch + 1 tiles
-	ld a, BANK(sScratch)
-	call GetSRAMBank
-	ld a, BANK(QuestionMarkLZ)
-	call FarDecompressToDE
-	call CloseSRAM
-	ld hl, wPokedex_GFXFlags
-	set DEXGFX_FRONTPIC, [hl]
-	set DEXGFX_POKEINFO, [hl]
 
-	ld hl, Pokedex_QuestionMarkPal
-	ld de, wBGPals1 palette 6 + 2
-	ld a, BANK(Pokedex_QuestionMarkPal)
-	ld bc, 4
-	call FarCopyBytesToColorWRAM
+	call Pokedex_LoadUndiscoveredPokepic
+	set DEXGFX_POKEINFO, [hl]
 
 	; Introduce a deliberate delay. The reason for this is so that we get a more
 	; consistent delay for each slot if keyrepeat applies.
