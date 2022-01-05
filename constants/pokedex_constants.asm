@@ -1,7 +1,8 @@
 	const_def
 	const DEXDISP_MAIN
-	const DEXDISP_MODE
 	const DEXDISP_UNOWN
+DEXDISP_SPRITEANIM_OK EQU const_value ; Display modes with sprite anim cursor.
+	const DEXDISP_MODE
 	const DEXDISP_NEWDESC
 	; These below (starting from DEXDISP_SEARCH) have OAM data.
 	const DEXDISP_SEARCH

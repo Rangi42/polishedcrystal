@@ -309,6 +309,7 @@ Pokedex_CheckForOtherForms:
 	ret
 
 Pokedex_SwitchNormalOrShinyPalette:
+; Leaves the mini alone and doesn't schedule a reload.
 	ld a, SHINY_CHARM
 	ld [wCurKeyItem], a
 	call CheckKeyItem
@@ -323,6 +324,14 @@ Pokedex_SwitchNormalOrShinyPalette:
 	ld a, BANK(PokemonPalettes)
 	ld bc, 4
 	call FarCopyBytesToColorWRAM
+	scf
+	ret
+
+Pokedex_SwitchNormalOrShinyPaletteAndUpdate:
+; Also reloads mini palette.
+	call Pokedex_SwitchNormalOrShinyPalette
+	ret nc
+	; fallthrough
 Pokedex_GetMonIconPalette:
 	ld a, BANK(wBGPals1)
 	call StackCallInWRAMBankA
@@ -1474,7 +1483,7 @@ endr
 
 .pressed_select
 	; cycle shininess
-	call Pokedex_SwitchNormalOrShinyPalette
+	call Pokedex_SwitchNormalOrShinyPaletteAndUpdate
 	jr .joypad_loop
 
 .pressed_up
@@ -1547,6 +1556,7 @@ Pokedex_Main:
 	xor a
 	ld [wPokedex_DisplayMode], a
 
+	call ClearSpriteAnims
 	lb de, $50, $09
 	ld a, SPRITE_ANIM_INDEX_DEX_CURSOR
 	call InitSpriteAnimStruct
@@ -1566,6 +1576,8 @@ Pokedex_Main:
 	call Pokedex_UpdateRow
 	ld c, 2
 	call Pokedex_UpdateRow
+
+	call Pokedex_GetCursorMon
 
 	ld a, $3f
 	ld de, PHB_Row1
@@ -1746,7 +1758,7 @@ Pokedex_Bio:
 
 .pressed_select
 	; cycle shininess
-	call Pokedex_SwitchNormalOrShinyPalette
+	call Pokedex_SwitchNormalOrShinyPaletteAndUpdate
 	jr .joypad_loop
 
 .pressed_start
@@ -1954,7 +1966,7 @@ _Pokedex_Stats:
 
 .pressed_select
 	; cycle shininess
-	call Pokedex_SwitchNormalOrShinyPalette
+	call Pokedex_SwitchNormalOrShinyPaletteAndUpdate
 	jr .joypad_loop
 
 .pressed_start
@@ -2030,12 +2042,12 @@ Pokedex_ResetModeSearchPals:
 	ret
 
 Pokedex_Mode:
-	ld a, DEXDISP_MODE
-	ld [wPokedex_DisplayMode], a
 	xor a
 	ld [wPokedex_MenuCursorY], a
 	ld [wPokedexOAM_DexNoY], a
 Pokedex_Mode_ReloadPals:
+	ld a, DEXDISP_MODE
+	ld [wPokedex_DisplayMode], a
 	call Pokedex_SetModeSearchPals
 	; fallthrough
 _Pokedex_Mode:
@@ -2055,7 +2067,7 @@ _Pokedex_Mode:
 	ld d, h
 	ld e, l
 	hlcoord 2, 14
-	call PlaceString
+	rst PlaceString
 
 	; disable hblank int
 	ld a, $57
@@ -2075,7 +2087,6 @@ _Pokedex_Mode:
 	jr .joypad_loop
 
 .pressed_a
-	jmp Pokedex_Unown
 	ld a, [wPokedex_MenuCursorY]
 	cp 2
 	jr c, .change_mode
