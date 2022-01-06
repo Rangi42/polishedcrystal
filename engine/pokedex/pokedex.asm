@@ -2341,6 +2341,11 @@ _Pokedex_Search:
 	ld b, -1
 .switch_index
 	ld a, [wPokedex_MenuCursorY]
+
+	; do nothing if we're on "Start"
+	cp NUM_DEXSEARCH
+	jr z, .joypad_loop
+
 	add LOW(wPokedex_SearchData)
 	ld l, a
 	adc HIGH(wPokedex_SearchData)
