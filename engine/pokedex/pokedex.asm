@@ -2090,7 +2090,11 @@ _Pokedex_Mode:
 	jr c, .pressed_a
 	rrca
 	jr c, .return ; pressed b
-	swap a ; ignore select, start, right, left
+	rrca
+	jr c, .return ; pressed select
+	rrca ; skip start
+	rrca ; skip right
+	rrca ; skip left
 	rrca
 	jr c, .pressed_up
 	rrca
@@ -2327,11 +2331,11 @@ endc
 	rrca
 	jr c, .pressed_a
 	rrca
-	jr c, .pressed_b
+	jr c, .pressed_b_start
 	rrca
 	jmp c, Pokedex_SearchReset ; pressed select
 	rrca
-	jr c, .pressed_start
+	jr c, .pressed_b_start
 	rrca
 	jr c, .pressed_right
 	rrca
@@ -2342,11 +2346,11 @@ endc
 	jr c, .pressed_down
 	jr .joypad_loop
 
-.pressed_start
+.do_search
 	ld a, [wPokedexMode]
 	xor 1 ; for IterateSpecies, 0=national, 1=regional
 
-	; If alphabetical, set a=2 here.
+	; TODO: if alphabetical, set a=2 here.
 	call Pokedex_GetSearchResults
 	jr .joypad_loop
 
@@ -2379,11 +2383,11 @@ endc
 
 .pressed_a
 	ld a, [wPokedex_MenuCursorY]
-	cp 15
-	jr z, .pressed_start
-	cp 17
+	cp 15 ; Start!
+	jr z, .do_search
+	cp 17 ; Cancel
 	jr nz, .pressed_right
-.pressed_b
+.pressed_b_start
 	ldh a, [rSVBK]
 	ld b, a
 	ld a, BANK(wBGPals1)
