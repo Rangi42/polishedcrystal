@@ -472,7 +472,7 @@ Pokedex_MainLoop:
 	call nz, Pokedex_Description
 	jr .loop
 .pressed_start
-	call Pokedex_SearchInit
+	call Pokedex_Search
 	jr .loop
 .pressed_select
 	call Pokedex_Mode
@@ -2160,7 +2160,7 @@ _Pokedex_Mode:
 	next "list."
 	text_end
 
-Pokedex_SearchInit:
+Pokedex_Search:
 ; Call to fully initialize Search page and reset cursor pos
 	ld a, DEXDISP_SEARCH
 	ld [wPokedex_DisplayMode], a
@@ -2178,7 +2178,7 @@ Pokedex_SearchReset:
 	ld bc, wPokedex_SearchDataEnd - wPokedex_SearchData
 	rst ByteFill
 	; fallthrough
-Pokedex_Search:
+_Pokedex_Search:
 	ld hl, DexTilemap_Search
 	call Pokedex_LoadTilemap
 
@@ -2190,140 +2190,64 @@ Pokedex_Search:
 	ld [hl], "▶"
 
 	; Fill fields based on current search data
-	
-	ld c, wPokedex_SearchBody - wPokedex_SearchData
-	ld hl, wPokedex_SearchData
-.load_fields_loop
+	hlcoord 7, 4
+
+	; Body is handled seperately, hence "- 1".
+	ld a, NUM_DEXSEARCH - 1
+	ld bc, .SearchStringTableLocations
+	ld de, wPokedex_SearchData
+.print_loop
+	push af
+	push de
 	push hl
+	ld a, [de]
+	and a
+	ld de, .BlankDefaultString
+	push af
 	push bc
-	ld a, c
-	cpl
-	add wPokedex_SearchDataEnd - wPokedex_SearchData + 1
-	ld e, a
-	dec e
-	srl e
-	add a
-	inc a
-	ld b, a
-	ld a, [hl]
-	call Pokedex_SearchPrintFieldName
+	call nz, PlaceString
 	pop bc
-	pop hl
-	inc hl
-	dec c
-	jr nz, .load_fields_loop
-
-	; Load body and determine which tiles to use (similar to stats page)
-.reload_body
-	ld a, [wPokedex_SearchBody]
-	and a
-	jr nz, .not_blank
-	hlcoord 8, 11
-	ld a, $7f
-	ld [hli], a
-	ld [hl], a
-	hlcoord 8, 12
-	ld de, Pokedex_BlankString
-	rst PlaceString
-	jr .reload_pals
-
-.not_blank
-	dec a
-	; call Pokedex_GetBodyShapeInA
-	ld hl, wPokedex_GFXFlags
-	set DEXGFX_ICONSHAPE, [hl]
-	call Pokedex_GetFirstIconTile
-	add 8
-	hlcoord 8, 11
-	ld [hli], a
-	inc a
-	ld [hl], a
-	inc a
-	hlcoord 9, 11
-	ld [hli], a
-	inc a
-	ld [hli], a
-	ld a, $7f ; clear rest of Blank_String
-	ld [hli], a
-	ld [hl], a
-
-.reload_pals
-	ldh a, [rSVBK]
-	ld b, a
-	ld a, BANK(wBGPals1)
-	ldh [rSVBK], a
-	ld hl, wBGPals1 palette 2
-if !DEF(MONOCHROME)
-	; red
-if DEF(NOIR)
-	ld a, LOW(palred 14 + palgreen 14 + palblue 14)
-	ld [hli], a
-	ld a, HIGH(palred 14 + palgreen 14 + palblue 14)
-	ld [hli], a
-else
-	ld a, LOW(palred 26 + palgreen 10 + palblue 6)
-	ld [hli], a
-	ld a, HIGH(palred 26 + palgreen 10 + palblue 6)
-	ld [hli], a
-endc
-	; black
-	xor a
-	ld [hli], a
-	ld [hli], a
-	ld [hli], a
-	ld [hli], a
-	; white
-	dec a
-	ld [hli], a
-	ld [hl], a
-else
-	ld a, LOW(PAL_MONOCHROME_DARK)
-	ld [hli], a
-	ld a, HIGH(PAL_MONOCHROME_DARK)
-	ld [hli], a
-	ld a, LOW(PAL_MONOCHROME_BLACK)
-	ld [hli], a
-	ld a, HIGH(PAL_MONOCHROME_BLACK)
-	ld [hli], a
-	ld a, LOW(PAL_MONOCHROME_BLACK)
-	ld [hli], a
-	ld a, HIGH(PAL_MONOCHROME_BLACK)
-	ld [hli], a
-	ld a, LOW(PAL_MONOCHROME_WHITE)
-	ld [hli], a
-	ld a, HIGH(PAL_MONOCHROME_WHITE)
-	ld [hl], a
-endc
-
-	ld hl, wPokedex_SearchColor
-	ld a, [hld]
-	and a
-	jr z, .done_pals
-	ld a, [hl] ; wPokedex_SearchColor
-	and a
-	jr z, .done_pals
-.black
+	ld a, [bc]
+	ld l, a
+	inc bc
+	ld a, [bc]
+	ld h, a
+	inc bc
+	pop af
+	jr z, .next_print
 	dec a
 	add a
-	add LOW(BodyColorPals)
+	add l
 	ld l, a
-	adc HIGH(BodyColorPals)
+	adc h
 	sub l
 	ld h, a
-	ld a, BANK(BodyColorPals)
-	ld de, wBGPals1 palette 3 + 6
-	ld bc, 2
-	call FarCopyBytesToColorWRAM
-	; fallthrough
+	ld a, [bc]
+	push af
+	call GetFarWord
+	pop af
+	ld d, h
+	ld e, l
+.print
+	pop hl
+	push hl
+	push bc
+	call FarString
+	pop bc
+.next_print
+	pop hl
+	inc bc
+	ld de, SCREEN_WIDTH * 2
+	add hl, de
+	pop de
+	inc de
+	pop af
+	dec a
+	jr nz, .print_loop
 
-.done_pals
-	ld a, b
-	ldh [rSVBK], a
-.refresh
 	ld a, $f
 	ld de, PHB_SearchSwitchSCY
 	call Pokedex_ScheduleScreenUpdateWithHBlank
-
 .joypad_loop
 	call Pokedex_GetInput
 	rrca
@@ -2331,7 +2255,7 @@ endc
 	rrca
 	jr c, .pressed_b_start
 	rrca
-	jmp c, Pokedex_SearchReset ; pressed select
+	jr c, Pokedex_SearchReset ; pressed select
 	rrca
 	jr c, .pressed_b_start
 	rrca
@@ -2344,47 +2268,19 @@ endc
 	jr c, .pressed_down
 	jr .joypad_loop
 
-.do_search
-	ld a, [wPokedexMode]
-	xor 1 ; for IterateSpecies, 0=national, 1=regional
-
-	; TODO: if alphabetical, set a=2 here.
-	call Pokedex_GetSearchResults
-	jr .joypad_loop
-
-.pressed_up
-	ld a, [wPokedex_MenuCursorY]
-	cp 3
-	jr z, .joypad_loop
-	ld d, -2
-	jr .move_cursor
-
-.pressed_down
-	ld a, [wPokedex_MenuCursorY]
-	cp 17
-	jr nc, .joypad_loop
-	ld d, 2
-.move_cursor
-	ld e, a
-	ld c, 1
-	ld b, a
-	call Coord2Tile
-	ld [hl], $7f ; clear old tile
-	ld a, e
-	add d
-	ld [wPokedex_MenuCursorY], a
-	ld c, 1
-	ld b, a
-	call Coord2Tile
-	ld [hl], "▶"
-	jr .refresh
-
 .pressed_a
 	ld a, [wPokedex_MenuCursorY]
-	cp 15 ; Start!
-	jr z, .do_search
-	cp 17 ; Cancel
-	jr nz, .pressed_right
+	cp NUM_DEXSEARCH ; Start!
+	jr c, .pressed_right
+	ld a, [wPokedex_SearchOrder]
+	and a
+	ld a, 2
+	jr nz, .got_search_order
+	ld a, [wPokedexMode]
+	xor 1 ; for IterateSpecies, 0=national, 1=regional
+.got_search_order
+	call Pokedex_GetSearchResults
+	; TODO: proper "search mode".
 .pressed_b_start
 	ldh a, [rSVBK]
 	ld b, a
@@ -2403,139 +2299,75 @@ endc
 	ldh [rSVBK], a
 	jmp Pokedex_Main
 
+.pressed_up
+	ld b, -1
+	jr .move_cursor
+
+.pressed_down
+	ld b, 1
+.move_cursor
+	ld a, [wPokedex_MenuCursorY]
+	add b
+	; + 1 includes "Start!" as an option among carry
+	cp NUM_DEXSEARCH + 1
+	jr nc, .joypad_loop
+	ld [wPokedex_MenuCursorY], a
+	jmp _Pokedex_Search
+
 .pressed_right
-	ld c, 1
+	ld b, 1
 	jr .switch_index
 
 .pressed_left
-	ld c, -1
+	ld b, -1
 .switch_index
 	ld a, [wPokedex_MenuCursorY]
-	ld b, a
-	srl a
-	dec a; index = wPokedex_MenuCursorY / 2 - 1
-	cp 6 ; "Start!"
-	jmp nc, .joypad_loop
-	ld e, a
-	srl e
-	call StackJumpTable
-
-.SwitchIndexJumptable:
-	dw .TypeSwitch
-	dw .TypeSwitch
-	dw .EggGroupSwitch
-	dw .EggGroupSwitch
-	dw .BodyColorSwitch
-	dw .BodyShapeSwitch
-
-.TypeSwitch:
-	ld d, NUM_TYPES
-	ld hl, wPokedex_SearchType1
-	ld a, b
-	cp 3
-	jr z, .GetValue
-	inc hl
-	jr .GetValue
-
-.EggGroupSwitch:
-	ld d, NUM_EGG_GROUPS + 1
-	ld hl, wPokedex_SearchGroup1
-	ld a, b
-	cp 7
-	jr z, .GetValue
-	inc hl
-	jr .GetValue
-
-.BodyColorSwitch:
-	ld d, NUM_BODY_COLORS + 1
-	ld hl, wPokedex_SearchColor
-.GetValue:
-	ld a, [hl]
-	add c
-	cp -1
-	jr z, .loop_to_end ; go back to the last value (NUM_[field] - 1)
-	cp d
-	jr c, .no_loop
-	xor a
-	ld [hl], a
-	jr .finish
-
-.loop_to_end
-	ld a, d
-	dec a
-.no_loop
-	ld [hl], a
-.finish
-	call Pokedex_SearchPrintFieldName
-	jmp .reload_pals
-
-.BodyShapeSwitch:
-	jmp .joypad_loop
-
-Pokedex_SearchPrintFieldName:
-; Inputs:
-;   a = index + 1
-;   b = row - 1
-;   e = field
-; Output:
-;   name in wStringBuffer1
-
-	; Get tile coord
-	ld d, a
-	inc b
-	ld c, 8
-	call Coord2Tile
-
-	; Clear existing string
-	push hl
-	ld a, $7f
-	ld bc, 12
-	rst ByteFill
-
-	; If index == 0, use blank string
-	ld c, e
-	ld a, d
-	and a
-	ld b, BANK(Pokedex_SearchPrintFieldName)
-	ld de, Pokedex_BlankString
-	jr z, .got_field
-
-	; Otherwise, first determine which name pointer table to use
-	dec a
-	ld e, a
-	ld b, 0
-	ld d, b
-	ld hl, .field_table
-	add hl, bc ; c already = field
-	add hl, bc
-	add hl, bc
-	ld a, [hli]
-	ld b, a
-	ld a, [hli]
-	ld h, [hl]
+	add LOW(wPokedex_SearchData)
 	ld l, a
-
-	; Apply the index offset to hl, and get the address of the string
+	adc HIGH(wPokedex_SearchData)
+	sub l
+	ld h, a
+	push hl
+	ld de, .SearchOptionRanges - wPokedex_SearchData
 	add hl, de
-	add hl, de
-	ld a, b
-	call GetFarWord
-	ld d, h
-	ld e, l
+	pop de
+	ld a, [de]
 
-.got_field
-	; Got everything, now print!
-	pop hl
-	ld a, b
-	jmp FarString
+.switch_loop
+	; This is very inefficient, but minimizes code size (and isn't *that* slow)
+	add b
+	cp [hl]
+	jr nc, .switch_loop
+	ld [de], a
+	jmp _Pokedex_Search
 
-.field_table
-	dba TypeNames
-	dba EggGroupNames
-	dba BodyColorNames
+.SearchOptionRanges:
+	db 2 ; by Number/by Name
+	db NUM_TYPES
+	db NUM_TYPES
+	db NUM_EGG_GROUPS
+	db NUM_EGG_GROUPS
+	db NUM_BODY_COLORS
+	db NUM_SHAPES
 
-Pokedex_BlankString:
-	db "----@"
+.SearchStringTableLocations:
+	dab .DexOrdering
+	dab TypeNames
+	dab TypeNames
+	dab EggGroupNames
+	dab EggGroupNames
+	dab BodyColorNames
+
+.DexOrdering:
+	; "byNumber" is default and thus part of the tilemap
+	dw .byNameString
+
+.byNameString:
+	db "by Name  @"
+
+.BlankDefaultString:
+	; Blanks the default "----" string.
+	db "    @"
 
 Pokedex_ResetDexMonsAndTemp:
 ; Resets wDexMons and wTempDex RAM.
