@@ -1166,9 +1166,9 @@ endr
 	; Multiply by 500/127
 	xor a
 	ldh [hMultiplicand + 0], a
-	ld a, HIGH(500)
+	ld a, HIGH(1000)
 	ldh [hMultiplicand + 1], a
-	ld a, LOW(500)
+	ld a, LOW(1000)
 	ldh [hMultiplicand + 2], a
 	call Multiply
 	ld b, 4
@@ -1179,11 +1179,9 @@ endr
 	ld h, a
 	ldh a, [hQuotient + 2]
 	ld l, a
-	ldh a, [hRemainder]
-	cp 64
-	jr c, .no_rounding
 	inc hl
-.no_rounding
+	srl h
+	rr l
 	ld a, -1
 	ld bc, -12
 	push hl
