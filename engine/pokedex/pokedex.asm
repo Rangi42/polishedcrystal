@@ -1163,28 +1163,25 @@ endr
 	bit POKEDEX_UNITS, a
 	jr nz, .metric_height
 
-	; Multiply by 16513008 >> 22
-	ld a, 16513008 >> 16
+	; Multiply by 500/127
+	xor a
 	ldh [hMultiplicand + 0], a
-	ld a, (16513008 >> 8) & $ff
+	ld a, HIGH(1000)
 	ldh [hMultiplicand + 1], a
-	ld a, 16513008 & $ff
+	ld a, LOW(1000)
 	ldh [hMultiplicand + 2], a
 	call Multiply
-	ld hl, hProduct + 1
-	ld a, [hld]
-	ld l, [hl]
-	ld h, 0
-	add a
-	rl l
-	rl h
-	add a
-	rl l
-	rl h
-	add a
-	jr nc, .no_ht_overflow
+	ld b, 4
+	ld a, 127
+	ldh [hDivisor], a
+	call Divide
+	ldh a, [hQuotient + 1]
+	ld h, a
+	ldh a, [hQuotient + 2]
+	ld l, a
 	inc hl
-.no_ht_overflow
+	srl h
+	rr l
 	ld a, -1
 	ld bc, -12
 	push hl
