@@ -725,6 +725,7 @@ wPokedex_GFXFlags:: db ; flags for various gfx update types
 wPokedex_DisplayMode:: db ; current pokédex display
 
 wPokedex_SearchData::
+wPokedex_SearchOrder:: db
 wPokedex_SearchType1:: db
 wPokedex_SearchType2:: db
 wPokedex_SearchGroup1:: db

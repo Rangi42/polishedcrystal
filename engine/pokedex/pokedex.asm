@@ -2165,31 +2165,32 @@ Pokedex_SearchInit:
 	ld a, DEXDISP_SEARCH
 	ld [wPokedex_DisplayMode], a
 
-	ld a, 3
+	call Pokedex_SetModeSearchPals
+
+	xor a
+	ld [wPokedexOAM_DexNoY], a
 	ld [wPokedex_MenuCursorY], a
 	; fallthrough
 Pokedex_SearchReset:
 ; Resets all search fields but preserves cursor pos
-	ld hl, wPokedex_SearchData
 	xor a
-	ld [wPokedexOAM_DexNoY], a ; might as well do this here
+	ld hl, wPokedex_SearchData
 	ld bc, wPokedex_SearchDataEnd - wPokedex_SearchData
 	rst ByteFill
 	; fallthrough
 Pokedex_Search:
-; Reloads Search page without reinitializing search fields/cursor
-	; Load the search page tilemap.
 	ld hl, DexTilemap_Search
 	call Pokedex_LoadTilemap
 
 	; Draw cursor
+	hlcoord 1, 3
 	ld a, [wPokedex_MenuCursorY]
-	ld b, a
-	ld c, 1
-	call Coord2Tile
+	ld bc, SCREEN_WIDTH * 2
+	rst AddNTimes
 	ld [hl], "▶"
 
 	; Fill fields based on current search data
+	
 	ld c, wPokedex_SearchBody - wPokedex_SearchData
 	ld hl, wPokedex_SearchData
 .load_fields_loop

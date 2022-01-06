@@ -1,7 +1,5 @@
 ; TypeNames indexes (see data/types/names.asm)
 ; also used in:
-; - PokedexTypeSearchConversionTable (see data/types/search_types.asm)
-; - PokedexTypeSearchStrings (see data/types/search_strings.asm)
 ; - TypeMatchups (see data/types/type_matchups.asm)
 ; - InverseTypeMatchups (see data/types/type_matchups.asm)
 	const_def
