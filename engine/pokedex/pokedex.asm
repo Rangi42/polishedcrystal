@@ -2028,6 +2028,7 @@ Pokedex_ResetModeSearchPals:
 	call StackCallInWRAMBankA
 .Function:
 	ld hl, wBGPals1 palette 2
+if !DEF(MONOCHROME)
 	ld c, (1 palettes + 2) / 2
 	ld a, -1
 .loop
@@ -2037,6 +2038,26 @@ Pokedex_ResetModeSearchPals:
 	dec c
 	jr nz, .loop
 	ret
+else
+	; Also sets color 1 on BG3, not just 0, but that's fine.
+	ld b, 3
+.outer_loop
+	ld de, .colors
+	ld c, 4
+.inner_loop
+	ld a, [de]
+	inc de
+	ld [hli], a
+	dec c
+	jr nz, .inner_loop
+	dec b
+	jr nz, .outer_loop
+	ret
+
+.colors
+	RGB_MONOCHROME_WHITE
+	RGB_MONOCHROME_BLACK
+endc
 
 Pokedex_Mode:
 	xor a
@@ -2179,6 +2200,18 @@ Pokedex_SearchReset:
 	rst ByteFill
 	; fallthrough
 _Pokedex_Search:
+	; Update body shape pal
+	ld a, [wPokedex_SearchColor]
+	add a
+	add LOW(BodyColorPalsIncludingNull)
+	ld l, a
+	adc HIGH(BodyColorPalsIncludingNull)
+	sub l
+	ld h, a
+	ld de, wBGPals1 palette 3 + 6
+	ld bc, 2
+	ld a, BANK(BodyColorPalsIncludingNull)
+	call FarCopyBytesToColorWRAM
 	ld hl, DexTilemap_Search
 	call Pokedex_LoadTilemap
 
@@ -2255,7 +2288,7 @@ _Pokedex_Search:
 	rrca
 	jr c, .pressed_b_start
 	rrca
-	jr c, Pokedex_SearchReset ; pressed select
+	jmp c, Pokedex_SearchReset ; pressed select
 	rrca
 	jr c, .pressed_b_start
 	rrca
@@ -2282,21 +2315,7 @@ _Pokedex_Search:
 	call Pokedex_GetSearchResults
 	; TODO: proper "search mode".
 .pressed_b_start
-	ldh a, [rSVBK]
-	ld b, a
-	ld a, BANK(wBGPals1)
-	ldh [rSVBK], a
-	ld hl, wBGPals1 palette 2
-	ld c, (1 palettes + 2) / 2
-	ld a, $ff
-.reset_pal_loop
-	ld [hli], a
-	ld [hli], a
-	cpl
-	dec c
-	jr nz, .reset_pal_loop
-	ld a, b
-	ldh [rSVBK], a
+	call Pokedex_ResetModeSearchPals
 	jmp Pokedex_Main
 
 .pressed_up
