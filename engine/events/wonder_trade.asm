@@ -615,29 +615,4 @@ GetWonderTradeHeldItem:
 
 INCLUDE "data/events/wonder_trade/held_items.asm"
 
-CheckValidLevel:
-; Don't receive Pokémon outside a valid level range.
-; Legendaries and other banned Pokémon have a "valid" range of 255 to 255.
-; bc = species+extspecies full index; bc is preserved
-	ld hl, wPartyMon1Level
-	ld bc, PARTYMON_STRUCT_LENGTH
-	call Trade_GetAttributeOfCurrentPartymon
-	ld a, [hl]
-	ld d, a
-
-	ld hl, ValidPokemonLevels
-	add hl, bc
-	add hl, bc
-
-	ld a, [hli]
-	dec a
-	cp d
-	ret nc
-
-	ld a, [hl]
-	cp d
-	ret c
-
-	xor a
-
 INCLUDE "data/pokemon/valid_levels.asm"
