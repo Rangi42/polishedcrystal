@@ -2467,9 +2467,10 @@ Pokedex_GetSearchResults:
 
 	jr c, .caught
 
-	; Check if we're doing a null search.
-	ld hl, wPokedex_SearchData
-	ld b, wPokedex_SearchDataEnd - wPokedex_SearchData
+	; Check if we're doing a null search (excluding ordering).
+	assert (wPokedex_SearchData == wPokedex_SearchOrder)
+	ld hl, wPokedex_SearchData + 1
+	ld b, wPokedex_SearchDataEnd - (wPokedex_SearchData + 1)
 	xor a
 .check_null_search
 	or [hl]
