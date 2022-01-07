@@ -2154,11 +2154,12 @@ _Pokedex_Mode:
 	ld b, -1 ; Menu movement modifier
 .change_menu
 	ld a, [wPokedex_MenuCursorY]
+.change_menu_loop
 	add b
 
 	; Check if we went past top or bottom.
 	cp NUM_DEXMODE
-	jr nc, .joypad_loop
+	jr nc, .change_menu_loop
 	ld [wPokedex_MenuCursorY], a
 
 	cp DEXMODE_UNOWN
@@ -2355,10 +2356,11 @@ _Pokedex_Search:
 	ld b, 1
 .move_cursor
 	ld a, [wPokedex_MenuCursorY]
+.cursor_move_loop
 	add b
 	; + 1 includes "Start!" as an option among carry
 	cp NUM_DEXSEARCH + 1
-	jr nc, .joypad_loop
+	jr nc, .cursor_move_loop
 	ld [wPokedex_MenuCursorY], a
 	jmp _Pokedex_Search
 
