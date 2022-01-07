@@ -2195,8 +2195,8 @@ Pokedex_Search:
 Pokedex_SearchReset:
 ; Resets all search fields but preserves cursor pos
 	xor a
-	ld hl, wPokedex_SearchData
-	ld bc, wPokedex_SearchDataEnd - wPokedex_SearchData
+	ld hl, wPokedex_Search
+	ld bc, NUM_DEXSEARCH
 	rst ByteFill
 	; fallthrough
 _Pokedex_Search:
@@ -2228,7 +2228,7 @@ _Pokedex_Search:
 	; Body is handled seperately, hence "- 1".
 	ld a, NUM_DEXSEARCH - 1
 	ld bc, .SearchStringTableLocations
-	ld de, wPokedex_SearchData
+	ld de, wPokedex_Search
 .print_loop
 	push af
 	push de
@@ -2346,13 +2346,13 @@ _Pokedex_Search:
 	cp NUM_DEXSEARCH
 	jr z, .joypad_loop
 
-	add LOW(wPokedex_SearchData)
+	add LOW(wPokedex_Search)
 	ld l, a
-	adc HIGH(wPokedex_SearchData)
+	adc HIGH(wPokedex_Search)
 	sub l
 	ld h, a
 	push hl
-	ld de, .SearchOptionRanges - wPokedex_SearchData
+	ld de, .SearchOptionRanges - wPokedex_Search
 	add hl, de
 	pop de
 	ld a, [de]
@@ -2467,10 +2467,9 @@ Pokedex_GetSearchResults:
 
 	jr c, .caught
 
-	; Check if we're doing a null search (excluding ordering).
-	assert (wPokedex_SearchData == wPokedex_SearchOrder)
-	ld hl, wPokedex_SearchData + 1
-	ld b, wPokedex_SearchDataEnd - (wPokedex_SearchData + 1)
+	; Check if we're doing a null search. - 1 to exclude search order.
+	ld hl, wPokedex_SearchData
+	ld b, NUM_DEXSEARCH - 1
 	xor a
 .check_null_search
 	or [hl]

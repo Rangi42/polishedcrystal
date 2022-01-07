@@ -101,17 +101,18 @@ DoWonderTrade:
 	ld a, [hli]
 	dec a
 	cp d
-	jr c, .random_trademon
+	jr nc, .random_trademon
 
 	ld a, [hl]
 	cp d
-	jr nc, .random_trademon
+	jr c, .random_trademon
 
 	inc bc
 	ld a, c
 	ld [wOTTrademonSpecies], a
 	ld a, b
-	call ConvertFormToExtendedSpecies
+	swap a
+	add a
 	ld b, a
 	ld [wOTTrademonForm], a
 
@@ -193,9 +194,13 @@ DoWonderTrade:
 
 	call GetWonderTradeOTForm
 	ld [wCurForm], a
+	ld [wOTTrademonForm], a
 	predef TryAddMonToParty
 
 	ld a, [wOTTrademonSpecies]
+	ld c, a
+	ld a, [wOTTrademonForm]
+	ld b, a
 	ld de, wOTTrademonNickname
 	call GetTradeMonName
 	call CopyTradeName
@@ -614,30 +619,5 @@ GetWonderTradeHeldItem:
 	ret
 
 INCLUDE "data/events/wonder_trade/held_items.asm"
-
-CheckValidLevel:
-; Don't receive Pokémon outside a valid level range.
-; Legendaries and other banned Pokémon have a "valid" range of 255 to 255.
-; bc = species+extspecies full index; bc is preserved
-	ld hl, wPartyMon1Level
-	ld bc, PARTYMON_STRUCT_LENGTH
-	call Trade_GetAttributeOfCurrentPartymon
-	ld a, [hl]
-	ld d, a
-
-	ld hl, ValidPokemonLevels
-	add hl, bc
-	add hl, bc
-
-	ld a, [hli]
-	dec a
-	cp d
-	ret nc
-
-	ld a, [hl]
-	cp d
-	ret c
-
-	xor a
 
 INCLUDE "data/pokemon/valid_levels.asm"
