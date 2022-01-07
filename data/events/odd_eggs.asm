@@ -1,34 +1,18 @@
 NUM_ODD_EGGS EQU 10
 ODD_EGG_LENGTH EQU 10
 
-prob: MACRO
-prob_total += \1
-	dw prob_total * $ffff / 100
-ENDM
-
 OddEggProbabilities:
-	table_width 2, OddEggProbabilities
-prob_total = 0
-; Pichu
-	prob 10
-; Cleffa
-	prob 16
-; Igglybuff
-	prob 16
-; Tyrogue
-	prob 2
-; Smoochum
-	prob 12
-; Elekid
-	prob 12
-; Magby
-	prob 12
-; Mime Jr.
-	prob 8
-; Happiny
-	prob 4
-; Munchlax
-	prob 8
+	table_width 1, OddEggProbabilities
+	db 10
+	db 26
+	db 42
+	db 44
+	db 56
+	db 68
+	db 80
+	db 88
+	db 92
+	db 100
 	assert_table_length NUM_ODD_EGGS
 
 OddEggs:
