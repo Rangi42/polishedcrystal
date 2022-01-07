@@ -449,7 +449,7 @@ Pokedex_MainLoop:
 	rrca
 	jr c, .pressed_a
 	rrca
-	ret c ; pressed b
+	jr c, .pressed_b
 	rrca
 	jr c, .pressed_select
 	rrca
@@ -471,6 +471,13 @@ Pokedex_MainLoop:
 	and a
 	call nz, Pokedex_Description
 	jr .loop
+
+.pressed_b
+	; Usually just returns from dex, but in search mode, return to search.
+	ld a, [wPokedex_InSearchMode]
+	and a
+	ret z
+	; fallthrough
 .pressed_start
 	call Pokedex_Search
 	jr .loop
@@ -2191,6 +2198,11 @@ Pokedex_Search:
 	xor a
 	ld [wPokedexOAM_DexNoY], a
 	ld [wPokedex_MenuCursorY], a
+
+	; In search mode, don't reset current fields.
+	ld a, [wPokedex_InSearchMode]
+	and a
+	jr nz, _Pokedex_Search
 	; fallthrough
 Pokedex_SearchReset:
 ; Resets all search fields but preserves cursor pos
@@ -2313,8 +2325,22 @@ _Pokedex_Search:
 	xor 1 ; for IterateSpecies, 0=national, 1=regional
 .got_search_order
 	call Pokedex_GetSearchResults
-	; TODO: proper "search mode".
+	ld a, 1
+	ld [wPokedex_InSearchMode], a
+	jr .reset_cursor
 .pressed_b_start
+	; If we're currently in search mode, reinitialize the dex list first.
+	ld a, [wPokedex_InSearchMode]
+	and a
+	jr z, .reset_pals
+	xor a
+	ld [wPokedex_InSearchMode], a
+	call Pokedex_InitData
+.reset_cursor
+	xor a
+	ld [wPokedex_CursorPos], a
+	ld [wPokedex_Offset], a
+.reset_pals
 	call Pokedex_ResetModeSearchPals
 	jmp Pokedex_Main
 
