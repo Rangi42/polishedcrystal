@@ -724,6 +724,8 @@ ENDU
 wPokedex_GFXFlags:: db ; flags for various gfx update types
 wPokedex_DisplayMode:: db ; current pokédex display
 
+wPokedex_InSearchMode:: db
+
 wPokedex_Search::
 wPokedex_SearchOrder:: db
 wPokedex_SearchData::
