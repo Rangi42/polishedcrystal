@@ -1115,7 +1115,7 @@ DexBotMenuXPositions:
 
 DexDisplayOAMData:
 ; botmenu cursor x, indicator y, indicator x, indicator offset, indicator length
-	db   0, 137,  77, $0b, 6 ; DEXDISP_SEARCH
+	db   0, 145, 100, $0b, 6 ; DEXDISP_SEARCH
 	db  32,  93,  31, $05, 6 ; DEXDISP_DESC
 	db  62,  52, 132, $12, 4 ; DEXDISP_BIO
 	db  87,   0,   0,   0, 0 ; DEXDISP_STATS

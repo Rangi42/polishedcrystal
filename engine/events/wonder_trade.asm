@@ -365,15 +365,25 @@ GetGSBallPichu:
 	ld a, 2
 	ldh [hScriptVar], a
 
-	ld a, PICHU
+	assert !HIGH(PICHU)
+
+	ld a, LOW(PICHU)
 	ld [wOTTrademonSpecies], a
+	ld a, FEMALE | PICHU_SPIKY_EARED_FORM ; spiky-eared variant
+	ld [wOTTrademonForm], a
 
 	ld a, [wPlayerTrademonSpecies]
+	ld c, a
+	ld a, [wPlayerTrademonForm]
+	ld b, a
 	ld de, wPlayerTrademonSpeciesName
 	call GetTradeMonName
 	call CopyTradeName
 
 	ld a, [wOTTrademonSpecies]
+	ld c, a
+	ld a, [wOTTrademonForm]
+	ld b, a
 	ld de, wOTTrademonSpeciesName
 	call GetTradeMonName
 	call CopyTradeName
@@ -438,6 +448,9 @@ GetGSBallPichu:
 	farcall SetGiftPartyMonCaughtData
 
 	ld a, [wOTTrademonSpecies]
+	ld c, a
+	ld a, [wOTTrademonForm]
+	ld b, a
 	ld de, wOTTrademonNickname
 	call GetTradeMonName
 	call CopyTradeName
@@ -485,8 +498,6 @@ GetGSBallPichu:
 
 	ld a, HIDDEN_ABILITY | QUIRKY
 	ld [wOTTrademonPersonality], a
-	ld a, FEMALE | PICHU_SPIKY_EARED_FORM ; spiky-eared variant
-	ld [wOTTrademonForm], a
 
 	ld hl, wPartyMon1Personality
 	ld bc, PARTYMON_STRUCT_LENGTH

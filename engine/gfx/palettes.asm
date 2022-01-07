@@ -91,6 +91,12 @@ PartyMenuOBPals:
 PokegearOBPals:
 INCLUDE "gfx/icons/icons.pal"
 
+BodyColorPalsIncludingNull:
+if !DEF(MONOCHROME)
+	RGB 00, 00, 00
+else
+	RGB_MONOCHROME_BLACK
+endc
 BodyColorPals:
 INCLUDE "gfx/pokedex/body_colors.pal"
 
