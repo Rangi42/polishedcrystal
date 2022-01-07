@@ -101,17 +101,18 @@ DoWonderTrade:
 	ld a, [hli]
 	dec a
 	cp d
-	jr c, .random_trademon
+	jr nc, .random_trademon
 
 	ld a, [hl]
 	cp d
-	jr nc, .random_trademon
+	jr c, .random_trademon
 
 	inc bc
 	ld a, c
 	ld [wOTTrademonSpecies], a
 	ld a, b
-	call ConvertFormToExtendedSpecies
+	swap a
+	add a
 	ld b, a
 	ld [wOTTrademonForm], a
 
@@ -193,9 +194,13 @@ DoWonderTrade:
 
 	call GetWonderTradeOTForm
 	ld [wCurForm], a
+	ld [wOTTrademonForm], a
 	predef TryAddMonToParty
 
 	ld a, [wOTTrademonSpecies]
+	ld c, a
+	ld a, [wOTTrademonForm]
+	ld b, a
 	ld de, wOTTrademonNickname
 	call GetTradeMonName
 	call CopyTradeName
