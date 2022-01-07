@@ -2135,7 +2135,14 @@ _Pokedex_Mode:
 
 .change_mode
 	ld [wPokedexMode], a
-	call Pokedex_InitData
+
+	; In search mode, reload search results.
+	ld a, [wPokedex_InSearchMode]
+	and a
+	push af
+	call z, Pokedex_InitData
+	pop af
+	call nz, Pokedex_GetSearchResults
 	xor a
 	ld [wPokedex_CursorPos], a
 	ld [wPokedex_Offset], a
@@ -2147,15 +2154,16 @@ _Pokedex_Mode:
 	ld b, -1 ; Menu movement modifier
 .change_menu
 	ld a, [wPokedex_MenuCursorY]
+.change_menu_loop
 	add b
 
 	; Check if we went past top or bottom.
 	cp NUM_DEXMODE
-	jr nc, .joypad_loop
+	jr nc, .change_menu_loop
 	ld [wPokedex_MenuCursorY], a
 
 	cp DEXMODE_UNOWN
-	jr nz, _Pokedex_Mode
+	jmp nz, _Pokedex_Mode
 
 	push bc
 	ld de, ENGINE_UNOWN_DEX
@@ -2317,16 +2325,12 @@ _Pokedex_Search:
 	ld a, [wPokedex_MenuCursorY]
 	cp NUM_DEXSEARCH ; Start!
 	jr c, .pressed_right
-	ld a, [wPokedex_SearchOrder]
-	and a
-	ld a, 2
-	jr nz, .got_search_order
-	ld a, [wPokedexMode]
-	xor 1 ; for IterateSpecies, 0=national, 1=regional
-.got_search_order
-	call Pokedex_GetSearchResults
+
+	; Marks that we need to reload the list if we press B upon no results.
 	ld a, 1
 	ld [wPokedex_InSearchMode], a
+	call Pokedex_GetSearchResults
+	jr z, .joypad_loop
 	jr .reset_cursor
 .pressed_b_start
 	; If we're currently in search mode, reinitialize the dex list first.
@@ -2352,10 +2356,11 @@ _Pokedex_Search:
 	ld b, 1
 .move_cursor
 	ld a, [wPokedex_MenuCursorY]
+.cursor_move_loop
 	add b
 	; + 1 includes "Start!" as an option among carry
 	cp NUM_DEXSEARCH + 1
-	jr nc, .joypad_loop
+	jr nc, .cursor_move_loop
 	ld [wPokedex_MenuCursorY], a
 	jmp _Pokedex_Search
 
@@ -2463,12 +2468,15 @@ Pokedex_ConvertFinalEntryToRowCols:
 
 Pokedex_GetSearchResults:
 ; Returns z if there was no search results.
-; a defines order: 0 (national), 1 (regional), 2 (a-z). Note that a is swapped
-; compared to wPokedexMode.
-	push af
 	call Pokedex_ResetDexMonsAndTemp
-	pop af
 
+	ld a, [wPokedex_SearchOrder]
+	and a
+	ld a, 2
+	jr nz, .got_search_order
+	ld a, [wPokedexMode]
+	xor 1 ; for IterateSpecies, 0=national, 1=regional
+.got_search_order
 	ld hl, .SpeciesCallback
 	call Pokedex_IterateSpecies
 	call Pokedex_ConvertFinalEntryToRowCols
