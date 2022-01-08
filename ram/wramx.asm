@@ -1333,10 +1333,7 @@ wPokedexSeen:: flag_array NUM_UNIQUE_POKEMON
 wEndPokedexSeen::
 wEndPokedexFlags::
 
-	ds 4 ; unused
-
-wUnownDex:: flag_array NUM_UNOWN
-wUnownDexEnd::
+	ds 8 ; unused
 
 wUnlockedUnowns:: db
 
