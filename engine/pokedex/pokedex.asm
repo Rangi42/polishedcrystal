@@ -2523,8 +2523,9 @@ Pokedex_GetSearchResults:
 	; Are we looking for any base data?
 	; Preserve species+form for appending into wDexMons later.
 	push bc
-	ld b, d
-	ld c, e
+
+	; de contains cosmetic species index, we want regional index
+	call GetSpeciesAndFormIndex
 
 	ld hl, wPokedex_SearchData
 	push hl
