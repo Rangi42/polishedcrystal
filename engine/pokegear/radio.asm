@@ -466,9 +466,9 @@ OaksPkmnTalk9:
 	ld a, OAKS_POKEMON_TALK_4
 	jr nz, .ok
 	ld [hl], 5
-	pop hl
 	ld a, OAKS_POKEMON_TALK_10
 .ok
+	pop hl
 	jmp NextRadioLine
 
 .Descriptors:
