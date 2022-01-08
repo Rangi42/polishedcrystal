@@ -2535,8 +2535,8 @@ Pokedex_GetSearchResults:
 	or [hl]
 	inc hl
 	or [hl]
-	pop hl
 	jr z, .base_data_done
+	pop hl
 
 	; Check base data (types + egg groups)
 	call GetBaseDataFromIndexBC
@@ -2552,6 +2552,7 @@ Pokedex_GetSearchResults:
 	inc hl
 	call .CheckEggGroups ; check wPokedex_SearchGroup2
 	jr nz, .invalid
+	push hl
 
 .base_data_done
 	; Are we looking for body data?
@@ -2560,6 +2561,7 @@ Pokedex_GetSearchResults:
 	ld d, a ; color
 	ld e, [hl] ; shape
 	or [hl]
+	pop hl
 	jr z, .body_done
 	ld hl, PokemonBodyData + BODY_COLOR
 rept BODY_DATA_SIZE ; faster than AddNTimes while BODY_DATA_SIZE is small
