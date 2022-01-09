@@ -937,8 +937,6 @@ endr
 	ret
 
 .GetCaptureOffset:
-; Do not optimize to 'ld bc, 6 / add hl, bc'.
-; This takes exactly 24 cycles to keep the timing in sync.
 	push bc
 	ld bc, 6
 	add hl, bc
