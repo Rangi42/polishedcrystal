@@ -23,7 +23,7 @@ def is_referenced(label):
 	args = ['grep', '-r', '--include=*.asm', label] + glob.glob('*')
 	grep = subprocess.Popen(args, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
 	grep_stdout, grep_stderr = grep.communicate()
-	return grep_stdout.count(label) > 1
+	return grep_stdout.decode('utf8').count(label) > 1
 
 def main():
 	if len(sys.argv) < 2:

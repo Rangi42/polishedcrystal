@@ -328,9 +328,9 @@ StackDexGraphics:
 
 	; The reason we copy like this is because we want to copy some of the tiles
 	; to a template to write out VWF dex numbers later.
-	ld hl, PokedexLZ
+	ld hl, PokedexTileLZ
 	ld de, wDex2bpp
-	ld a, BANK(PokedexLZ)
+	ld a, BANK(PokedexTileLZ)
 	call FarDecompressToDE
 
 	; pokedex0
@@ -382,12 +382,12 @@ StackDexGraphics:
 	rst ByteFill
 	pop de
 	ld hl, vTiles0 tile $7f
-	lb bc, BANK(PokedexLZ), 1
+	lb bc, BANK(PokedexTileLZ), 1
 	call Get2bpp
 
-	ld hl, DexOAM
+	ld hl, PokedexObjLZ
 	ld de, vTiles0
-	lb bc, BANK(DexOAM), 31
+	lb bc, BANK(PokedexObjLZ), 31
 	call DecompressRequest2bpp
 
 	; Gender symbols
@@ -1120,6 +1120,3 @@ DexDisplayOAMData:
 	db  62,  52, 132, $12, 4 ; DEXDISP_BIO
 	db  87,   0,   0,   0, 0 ; DEXDISP_STATS
 	db 122,   0              ; DEXDISP_AREA (last index can be < 6 bytes)
-
-DexOAM:
-INCBIN "gfx/pokedex/oam.2bpp.lz"
