@@ -941,12 +941,13 @@ endr
 	add hl, bc
 	pop bc
 	ld a, [hl]
+	; a = carry (iff a == 0) ? d : 0
 	cp 1
-	ld a, d
-	jr c, .end ; `ret c` desyncs the timing
-	xor a
-.end
-	ret ; no-optimize stub function
+	sbc a
+	and d
+	nop ; no-optimize nops (keep the timing in sync)
+	nop
+	ret
 
 PVB_UpdateDexMap::
 ; Reloads dex gfx data depending on wPokedex_GFXFlags.
