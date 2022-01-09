@@ -33,7 +33,7 @@ Pokedex_Get2bpp:
 	reti
 
 Pokedex_SetTilemap:
-; Copies between wDexTilemap+wDexAttrmap (32x32) and wTilemap/wAttrmap (20x18).
+; Copies between wDexTilemap+wDexAttrmap (32x21) and wTilemap/wAttrmap (20x18).
 ; b controls the following:
 ; If bit 0 is set, copy from wDex*map instead of to it.
 	ld a, BANK(wDexTilemap)
@@ -446,7 +446,7 @@ StackDexGraphics:
 	ldh [hFunctionTargetHi], a
 
 	ld a, CGB_POKEDEX
-	call Pokedex_GetCGBLayout
+	call GetCGBLayout
 
 	ld a, 4
 	ldh [hSCX], a
@@ -725,7 +725,8 @@ PHB_SearchSwitchSCY2:
 	push hl
 	push de
 	ld de, PHB_SearchSwitchSCY3
-	lb hl, -8, $8b
+	; -117 is the top of the window above "Order".
+	lb hl, -117, $8b
 	jr PHB_DoSwitchSCY
 
 PHB_SearchSwitchSCY3:
@@ -817,8 +818,8 @@ PHB_LoadRow:
 	call .GetCaptureOffset
 	pop de
 
-	ld c, 30
-	call PHB_BusyLoop2
+	ld c, 33
+	call PHB_BusyLoop
 
 	; Write poké ball presence info
 	ld hl, oamSprite12YCoord + 16
@@ -941,12 +942,11 @@ endr
 	add hl, bc
 	pop bc
 	ld a, [hl]
+	; a = carry (iff a == 0) ? d : 0
 	cp 1
-	ld a, d
-	jr c, .end ; `ret c` desyncs the timing
-	xor a
-.end
-	ret ; no-optimize stub function
+	sbc a
+	and d
+	ret
 
 PVB_UpdateDexMap::
 ; Reloads dex gfx data depending on wPokedex_GFXFlags.
@@ -961,6 +961,11 @@ PVB_UpdateDexMap::
 	ld a, BANK(wDexTilemap)
 	ldh [rSVBK], a
 	ld a, [hl]
+
+	; Update the tilemap last if several kinds are pending.
+	; The reason this is checked here instead of later is because
+	; this just barely makes it in time before leaving VBlank, so.
+	; checking it last in a sequence causes us to run out of time.
 	res DEXGFX_DEFERRED, a
 	cp 1 << DEXGFX_TILEMAP
 	jr nz, .no_tilemap
@@ -1058,9 +1063,8 @@ PVB_UpdateDexMap::
 	jr z, .iconshape_done
 
 	ld a, [wPokedex_MonInfoBank]
-	rlca
-	rlca
-	rlca
+	swap a
+	rrca
 	ld c, a
 	ld a, [wPokedex_FirstIconTile]
 	add c
