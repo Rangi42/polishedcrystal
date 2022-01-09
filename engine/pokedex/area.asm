@@ -193,7 +193,7 @@ _Pokedex_Area:
 	; Restore previous palettes.
 	push hl
 	ld a, CGB_POKEDEX_PREPARE_ONLY
-	call Pokedex_GetCGBLayout
+	call GetCGBLayout
 	call Pokedex_GetCursorMon
 	pop hl
 	jp hl

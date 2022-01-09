@@ -446,7 +446,7 @@ StackDexGraphics:
 	ldh [hFunctionTargetHi], a
 
 	ld a, CGB_POKEDEX
-	call Pokedex_GetCGBLayout
+	call GetCGBLayout
 
 	ld a, 4
 	ldh [hSCX], a

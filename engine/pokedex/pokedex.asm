@@ -3536,13 +3536,6 @@ INCLUDE "data/pokemon/dex_order_alpha.asm"
 INCLUDE "data/pokemon/dex_order_new.asm"
 
 
-Pokedex_GetCGBLayout:
-	call GetCGBLayout
-	ld a, $e4
-	call DmgToCgbBGPals
-	ld a, $e0
-	jmp DmgToCgbObjPal0
-
 NewPokedexEntry:
 	; Disable H-blank as invoked in battles.
 	ld hl, rIE
