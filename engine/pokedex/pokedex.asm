@@ -2067,7 +2067,7 @@ else
 endc
 
 Pokedex_Mode:
-	xor a
+	ld a, [wPokedexMode]
 	ld [wPokedex_MenuCursorY], a
 	ld [wPokedexOAM_DexNoY], a
 Pokedex_Mode_ReloadPals:
