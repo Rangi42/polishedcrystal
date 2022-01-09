@@ -33,7 +33,7 @@ Pokedex_Get2bpp:
 	reti
 
 Pokedex_SetTilemap:
-; Copies between wDexTilemap+wDexAttrmap (32x32) and wTilemap/wAttrmap (20x18).
+; Copies between wDexTilemap+wDexAttrmap (32x21) and wTilemap/wAttrmap (20x18).
 ; b controls the following:
 ; If bit 0 is set, copy from wDex*map instead of to it.
 	ld a, BANK(wDexTilemap)
