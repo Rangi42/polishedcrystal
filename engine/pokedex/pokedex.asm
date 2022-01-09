@@ -1511,7 +1511,7 @@ endr
 	pop af
 	pop hl
 	pop hl
-	jr Pokedex_Bio
+	jmp Pokedex_Bio
 
  .pressed_left
 	pop af
@@ -1565,6 +1565,34 @@ Pokedex_Main:
 	ld a, SPRITE_ANIM_INDEX_DEX_CURSOR
 	call InitSpriteAnimStruct
 
+	ld a, [wPokedex_InSearchMode]
+	and a
+	jr z, .print_seen_own
+
+	; Replace with Results/
+	hlcoord 9, 6
+	ld de, .ResultString
+	rst PlaceString
+
+	xor a
+	ld h, a
+	ld l, a
+	ld b, a
+	ld c, 5
+	ld a, [wPokedex_Rows]
+	dec a
+	call nz, AddNTimes
+	ld a, [wPokedex_LastCol]
+	ld c, a
+	add hl, bc
+	ld d, h
+	ld e, l
+	hlcoord 16, 7
+	lb bc, 2, 3
+	call PrintNumFromReg
+	jr .minibox_done
+
+.print_seen_own
 	hlcoord 11, 7
 	lb bc, 2, 3
 	ld de, wPokedex_NumSeen
@@ -1574,6 +1602,7 @@ Pokedex_Main:
 	ld de, wPokedex_NumOwned
 	call PrintNum
 
+.minibox_done
 	ld c, 0
 	call Pokedex_UpdateRow
 	ld c, 1
@@ -1586,6 +1615,9 @@ Pokedex_Main:
 	ld a, $3f
 	ld de, PHB_Row1
 	jmp Pokedex_ScheduleScreenUpdateWithHBlank
+
+.ResultString:
+	db " Results/  @"
 
 Pokedex_Bio:
 	ld a, DEXDISP_BIO
