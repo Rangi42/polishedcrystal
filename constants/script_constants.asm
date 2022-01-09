@@ -230,8 +230,8 @@ NUM_FRUIT_TREES EQU const_value - 1
 	const HIDDENGROTTO_ROUTE_32           ; 01
 	const HIDDENGROTTO_ILEX_FOREST        ; 02
 	const HIDDENGROTTO_ROUTE_35           ; 03
-	const HIDDENGROTTO_LAKE_OF_RAGE       ; 04
-	const HIDDENGROTTO_05                 ; 05
+	const HIDDENGROTTO_RUINS_OF_ALPH      ; 04
+	const HIDDENGROTTO_LAKE_OF_RAGE       ; 05
 	const HIDDENGROTTO_06                 ; 06
 	const HIDDENGROTTO_07                 ; 07
 	const HIDDENGROTTO_08                 ; 08
