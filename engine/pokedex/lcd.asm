@@ -725,7 +725,8 @@ PHB_SearchSwitchSCY2:
 	push hl
 	push de
 	ld de, PHB_SearchSwitchSCY3
-	lb hl, -8, $8b
+	; -117 is the top of the window above "Order".
+	lb hl, -117, $8b
 	jr PHB_DoSwitchSCY
 
 PHB_SearchSwitchSCY3:
@@ -962,6 +963,11 @@ PVB_UpdateDexMap::
 	ld a, BANK(wDexTilemap)
 	ldh [rSVBK], a
 	ld a, [hl]
+
+	; Update the tilemap last if several kinds are pending.
+	; The reason this is checked here instead of later is because
+	; this just barely makes it in time before leaving VBlank, so.
+	; checking it last in a sequence causes us to run out of time.
 	res DEXGFX_DEFERRED, a
 	cp 1 << DEXGFX_TILEMAP
 	jr nz, .no_tilemap
@@ -1059,9 +1065,8 @@ PVB_UpdateDexMap::
 	jr z, .iconshape_done
 
 	ld a, [wPokedex_MonInfoBank]
-	rlca
-	rlca
-	rlca
+	swap a
+	rrca
 	ld c, a
 	ld a, [wPokedex_FirstIconTile]
 	add c

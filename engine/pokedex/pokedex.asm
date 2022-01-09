@@ -2220,7 +2220,68 @@ Pokedex_SearchReset:
 	rst ByteFill
 	; fallthrough
 _Pokedex_Search:
-	; Update body shape pal
+	ld hl, DexTilemap_Search
+	call Pokedex_LoadTilemap
+
+	; Update body shape tiles.
+	ld a, [wPokedex_SearchBody]
+	and a
+	jr z, .shape_done
+
+	dec a
+	ld hl, Shapes
+	ld bc, 4 * LEN_1BPP_TILE
+	rst AddNTimes
+	ldh a, [rSVBK]
+	push af
+	ld a, BANK(wDexMonShapeTiles)
+	ldh [rSVBK], a
+	ld de, wDexMonShapeTiles
+	lb bc, BANK(Shapes), 4
+	call Pokedex_Copy1bpp
+
+	; Blank "----" for body.
+	hlcoord 7, 16
+	ld de, .BlankDefaultString
+	rst PlaceString
+
+	; Display shape tiles and switch tile bank and palette
+	call Pokedex_GetFirstIconTile
+	ld b, a
+	ld a, [wPokedex_MonInfoBank]
+	swap a
+	rrca
+	add b
+	add 4 ; shape, not mini
+	xor $80
+	hlcoord 7, 15
+	ld [hli], a
+	inc a
+	ld [hld], a
+	inc a
+	ld bc, SCREEN_WIDTH
+	add hl, bc
+	ld [hli], a
+	inc a
+	ld [hld], a
+	ld bc, wAttrmap - (wTilemap + SCREEN_WIDTH)
+	add hl, bc
+	ld a, VRAM_BANK_1 | 3
+	ld [hli], a
+	ld [hld], a
+	ld bc, SCREEN_WIDTH
+	add hl, bc
+	ld [hli], a
+	ld [hl], a
+
+	; This will also do a useless write of mini data, but that is fine.
+	ld hl, wPokedex_GFXFlags
+	set DEXGFX_ICONSHAPE, [hl]
+	pop af
+	ldh [rSVBK], a
+
+.shape_done
+	; Update body shape pal.
 	ld a, [wPokedex_SearchColor]
 	add a
 	add LOW(BodyColorPalsIncludingNull)
@@ -2232,9 +2293,6 @@ _Pokedex_Search:
 	ld bc, 2
 	ld a, BANK(BodyColorPalsIncludingNull)
 	call FarCopyBytesToColorWRAM
-	ld hl, DexTilemap_Search
-	call Pokedex_LoadTilemap
-
 	; Draw cursor
 	hlcoord 1, 3
 	ld a, [wPokedex_MenuCursorY]
