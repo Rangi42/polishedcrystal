@@ -818,8 +818,8 @@ PHB_LoadRow:
 	call .GetCaptureOffset
 	pop de
 
-	ld c, 30
-	call PHB_BusyLoop2
+	ld c, 33
+	call PHB_BusyLoop
 
 	; Write poké ball presence info
 	ld hl, oamSprite12YCoord + 16
@@ -940,8 +940,7 @@ endr
 ; Do not optimize to 'ld bc, 6 / add hl, bc'.
 ; This takes exactly 24 cycles to keep the timing in sync.
 	push bc
-	ld bc, 3
-	add hl, bc
+	ld bc, 6
 	add hl, bc
 	pop bc
 	ld a, [hl]
