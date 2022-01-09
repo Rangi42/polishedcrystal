@@ -2420,6 +2420,7 @@ _Pokedex_Search:
 	cp NUM_DEXSEARCH + 1
 	jr nc, .cursor_move_loop
 	ld [wPokedex_MenuCursorY], a
+.reload
 	jmp _Pokedex_Search
 
 .pressed_right
@@ -2435,6 +2436,7 @@ _Pokedex_Search:
 	cp NUM_DEXSEARCH
 	jr z, .joypad_loop
 
+	push af
 	add LOW(wPokedex_Search)
 	ld l, a
 	adc HIGH(wPokedex_Search)
@@ -2452,7 +2454,12 @@ _Pokedex_Search:
 	cp [hl]
 	jr nc, .switch_loop
 	ld [de], a
-	jmp _Pokedex_Search
+
+	; If we're messing with shape, switch icon bank.
+	pop af
+	cp DEXSEARCH_SHAPE
+	call z, Pokedex_SwitchMonInfoBank
+	jr .reload
 
 .SearchOptionRanges:
 	db 2 ; by Number/by Name
