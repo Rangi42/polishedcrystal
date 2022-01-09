@@ -83,9 +83,7 @@ Var_UnownCaught:
 	push bc
 
 	assert !HIGH(UNOWN)
-
-	ld c, UNOWN
-	ld b, NUM_UNOWN
+	lb bc, NUM_UNOWN, UNOWN
 	ld d, 0
 .loop
 	push de
