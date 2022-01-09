@@ -937,8 +937,11 @@ endr
 	ret
 
 .GetCaptureOffset:
+; Do not optimize to 'ld bc, 6 / add hl, bc'.
+; This takes exactly 24 cycles to keep the timing in sync.
 	push bc
-	ld bc, 6
+	ld bc, 3
+	add hl, bc
 	add hl, bc
 	pop bc
 	ld a, [hl]
@@ -946,8 +949,6 @@ endr
 	cp 1
 	sbc a
 	and d
-	nop ; no-optimize nops (keep the timing in sync)
-	nop
 	ret
 
 PVB_UpdateDexMap::
