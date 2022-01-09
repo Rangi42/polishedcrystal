@@ -657,7 +657,7 @@ PHB_ModeSwitchSCY2:
 	push hl
 	push de
 	ld de, PHB_ModeSwitchSCY3
-	lb hl, 10, $7d
+	lb hl, 9, $7e
 	jr PHB_DoSwitchSCY
 
 PHB_ModeSwitchSCY3:
