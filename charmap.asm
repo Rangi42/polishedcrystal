@@ -204,7 +204,7 @@ FIRST_REGULAR_TEXT_CHAR EQU $7f
 	charmap "★",        $f6
 	charmap "↑",        $f7
 	charmap "↓",        $f8
-	charmap "<UPDN>",   $f9
+	charmap "<UNUSED>", $f9
 
 ; frame:
 	charmap "┌",        $fa

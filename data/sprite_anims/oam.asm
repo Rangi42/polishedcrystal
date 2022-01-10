@@ -85,6 +85,11 @@ SpriteAnimOAMData:
 	dbw $00, .OAMData_PcPack             ; SPRITE_ANIM_OAMSET_PC_PACK
 	dbw $00, .OAMData_DexCursor          ; SPRITE_ANIM_OAMSET_DEX_CURSOR
 	dbw $1e, .OAMData_DexUnownCursor     ; SPRITE_ANIM_OAMSET_DEX_UNOWN_CURSOR
+	dbw $40, .OAMData_DexSlowpoke        ; SPRITE_ANIM_OAMSET_DEX_SLOWPOKE_1
+	dbw $43, .OAMData_DexSlowpoke        ; SPRITE_ANIM_OAMSET_DEX_SLOWPOKE_2
+	dbw $46, .OAMData_DexSlowpoke        ; SPRITE_ANIM_OAMSET_DEX_SLOWPOKE_3
+	dbw $49, .OAMData_DexSlowpoke        ; SPRITE_ANIM_OAMSET_DEX_SLOWPOKE_4
+	dbw $4c, .OAMData_DexSlowpoke        ; SPRITE_ANIM_OAMSET_DEX_SLOWPOKE_5
 	assert_table_length NUM_SPRITE_ANIM_OAMSETS
 
 .OAMData_1x1_Palette0:
@@ -714,3 +719,18 @@ SpriteAnimOAMData:
 	dsprite -1,  7,  0,  0, $00, $2 | X_FLIP
 	dsprite  0,  0, -1,  7, $00, $2 | Y_FLIP
 	dsprite  0,  0,  0,  0, $00, $2 | X_FLIP | Y_FLIP
+
+.OAMData_DexSlowpoke:
+	db 9
+	; top row
+	dsprite  0,  0,  0,  0, $00, $0 | VRAM_BANK_1
+	dsprite  0,  0,  1,  0, $01, $0 | VRAM_BANK_1
+	dsprite  0,  0,  2,  0, $02, $0 | VRAM_BANK_1
+	; middle
+	dsprite  1,  0,  0,  0, $0f, $0 | VRAM_BANK_1
+	dsprite  1,  0,  1,  0, $10, $0 | VRAM_BANK_1
+	dsprite  1,  0,  2,  0, $11, $0 | VRAM_BANK_1
+	; bottom
+	dsprite  2,  0,  0,  0, $1e, $0 | VRAM_BANK_1
+	dsprite  2,  0,  1,  0, $1f, $0 | VRAM_BANK_1
+	dsprite  2,  0,  2,  0, $20, $0 | VRAM_BANK_1

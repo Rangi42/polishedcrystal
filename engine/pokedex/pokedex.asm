@@ -2402,9 +2402,9 @@ _Pokedex_Search:
 	rrca
 	jr c, .pressed_b_start
 	rrca
-	jr c, .pressed_right
+	jmp c, .pressed_right
 	rrca
-	jr c, .pressed_left
+	jmp c, .pressed_left
 	rrca
 	jr c, .pressed_up
 	rrca
@@ -2416,12 +2416,43 @@ _Pokedex_Search:
 	cp NUM_DEXSEARCH ; Start!
 	jr c, .pressed_right
 
+	call ClearSpriteAnims
+	lb de, 120, 120
+	ld a, SPRITE_ANIM_INDEX_DEX_SLOWPOKE
+	call InitSpriteAnimStruct
+
+	; Set a search timer.
+	ldh a, [hVBlankCounter]
+	and a
+	call z, DelayFrame
+	ldh a, [hVBlankCounter]
+	inc a
+	ld [wPokedex_SearchInProgress], a
+
 	; Marks that we need to reload the list if we press B upon no results.
 	ld a, 1
 	ld [wPokedex_InSearchMode], a
 	call Pokedex_GetSearchResults
-	jr z, .joypad_loop
-	jr .reset_cursor
+	push af
+	ld a, [wPokedex_SearchInProgress]
+	ld b, a
+.wait_81_frames
+	call DelayFrame
+	ldh a, [hVBlankCounter]
+	sub b
+	cp 81
+	jr c, .wait_81_frames
+	xor a
+	ld [wPokedex_SearchInProgress], a
+	call ClearSpriteAnims
+	pop af
+	jr nz, .reset_cursor
+
+	; If we didn't get any search results, play an error sound.
+	ld de, SFX_WRONG
+	call PlaySFX
+	jr .joypad_loop
+
 .pressed_b_start
 	; If we're currently in search mode, reinitialize the dex list first.
 	ld a, [wPokedex_InSearchMode]
@@ -2466,7 +2497,7 @@ _Pokedex_Search:
 
 	; do nothing if we're on "Start"
 	cp NUM_DEXSEARCH
-	jr z, .joypad_loop
+	jmp z, .joypad_loop
 
 	push af
 	add LOW(wPokedex_Search)

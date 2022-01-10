@@ -121,7 +121,7 @@ VWFWidths:
 	db 6 ; $f6 "★"
 	db 6 ; $f7 "↑"
 	db 6 ; $f8 "↓"
-	db 4 ; $f9 "<UPDN>"
+	db 1 ; $f9 "<UNUSED>"
 	db 5 ; $fa "┌"
 	db 5 ; $fb "─"
 	db 5 ; $fc "┐"
