@@ -120,13 +120,13 @@ VWFWidths:
 	db 6 ; $f5 "★"
 	db 3 ; $f6 "′"
 	db 5 ; $f7 "″"
-	db 1 ; $f8
-	db 1 ; $f9
-	db 5 ; $fa "┌"
-	db 5 ; $fb "─"
-	db 5 ; $fc "┐"
-	db 5 ; $fd "│"
-	db 5 ; $fe "└"
+	db 5 ; $f8 "┌"
+	db 5 ; $f9 "─"
+	db 5 ; $fa "┐"
+	db 5 ; $fb "│"
+	db 5 ; $fc "┃"
+	db 5 ; $fd "└"
+	db 5 ; $fe "━"
 	db 5 ; $ff "┘"
 
 VWFCharacterGFX:

@@ -204,14 +204,14 @@ FIRST_REGULAR_TEXT_CHAR EQU $7f
 	charmap "′",        $f6
 	charmap "″",        $f7
 
-; unused: $f8-$f9
-
 ; frame:
-	charmap "┌",        $fa
-	charmap "─",        $fb
-	charmap "┐",        $fc
-	charmap "│",        $fd
-	charmap "└",        $fe
+	charmap "┌",        $f8
+	charmap "─",        $f9
+	charmap "┐",        $fa
+	charmap "│",        $fb
+	charmap "┃",        $fc
+	charmap "└",        $fd
+	charmap "━",        $fe
 	charmap "┘",        $ff
 
 
