@@ -96,8 +96,8 @@ MenuMonIconColors::
 	iconpal PURPLE, RED ; SHELLDER
 	iconpal PURPLE, BLUE ; CLOYSTER
 	iconpal PURPLE, BLUE ; GASTLY
-	iconpal PURPLE, BLUE ; HAUNTER
-	iconpal PURPLE, BLUE ; GENGAR
+	iconpal RED, BLUE ; HAUNTER
+	iconpal RED, BLUE ; GENGAR
 	iconpal GRAY, BLUE ; ONIX
 	iconpal BROWN, PURPLE ; DROWZEE
 	iconpal BROWN, PURPLE ; HYPNO
@@ -250,7 +250,7 @@ MenuMonIconColors::
 	iconpal RED, BROWN ; ENTEI
 	iconpal TEAL, BLUE ; SUICUNE
 	iconpal GREEN, GREEN ; LARVITAR
-	iconpal GRAY, PURPLE ; PUPITAR
+	iconpal BLUE, PURPLE ; PUPITAR
 	iconpal GREEN, GRAY ; TYRANITAR
 	iconpal BLUE, RED ; LUGIA
 	iconpal RED, BROWN ; HO_OH
