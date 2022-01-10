@@ -2238,7 +2238,6 @@ Pokedex_Search:
 	xor a
 	ld [wPokedexOAM_DexNoY], a
 	ld [wPokedex_MenuCursorY], a
-	ld [wPokedex_SearchInProgress], a
 
 	; In search mode, don't reset current fields.
 	ld a, [wPokedex_InSearchMode]
