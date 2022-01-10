@@ -192,7 +192,7 @@ InitPokegearTilemap:
 	ldh [hBGMapMode], a
 	hlcoord 0, 0
 	ld bc, wTilemapEnd - wTilemap
-	ld a, $5f
+	ld a, "<BLACK>"
 	rst ByteFill
 	ld a, [wPokegearCard]
 	and $3
@@ -321,11 +321,11 @@ InitPokegearTilemap:
 Pokegear_FinishTilemap:
 	hlcoord 0, 0
 	ld bc, $8
-	ld a, $5f
+	ld a, "<BLACK>"
 	rst ByteFill
 	hlcoord 0, 1
 	ld bc, $8
-	ld a, $5f
+	ld a, "<BLACK>"
 	rst ByteFill
 	ld de, wPokegearFlags
 	ld a, [de]
@@ -689,7 +689,7 @@ _UpdateLandmarkName:
 	farcall GetLandmarkName
 	pop de
 	pop hl
-	ld a, "<UPDN>"
+	ld a, $44 ; up/down arrow
 	ld [hli], a
 	push hl
 	ld hl, wStringBuffer1
@@ -2013,7 +2013,7 @@ TownMapBubble:
 	call .Name
 ; Up/down arrows
 	hlcoord 18, 1
-	ld [hl], "<UPDN>"
+	ld [hl], $44
 	ret
 
 .Where:
@@ -2406,7 +2406,7 @@ LoadTownMapGFX:
 	; fallthrough
 _LoadTownMapGFX:
 	ld hl, TownMapGFX
-	lb bc, BANK(TownMapGFX), $44
+	lb bc, BANK(TownMapGFX), $45
 	jmp DecompressRequest2bpp
 
 JohtoMap:

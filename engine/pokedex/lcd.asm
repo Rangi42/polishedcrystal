@@ -460,7 +460,7 @@ Pokedex_RefreshOAM:
 	ld b, 92
 	ld d, 2
 	lb hl, VRAM_BANK_1 | 1, $3d
-	jmp Pokedex_WriteOAM
+	jr Pokedex_WriteOAM
 
 .not_stats
 	cp DEXDISP_SEARCH
