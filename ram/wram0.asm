@@ -726,6 +726,10 @@ wPokedex_DisplayMode:: db ; current pokédex display
 
 wPokedex_InSearchMode:: db
 
+; 0 when not in a current search, otherwise vblank counter at search start.
+; If vblank counter happens to be zero, it's treated as 255.
+wPokedex_SearchInProgress:: db
+
 wPokedex_Search::
 wPokedex_SearchOrder:: db
 wPokedex_SearchData::

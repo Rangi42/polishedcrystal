@@ -93,133 +93,8 @@ Pokedex_RefreshScreen:
 	ld [wDexNoStrBall], a
 
 .dexno_ball_done
-	; We really only use sprite anims for the list cursor, but calling this
-	; unconditionally also wipes the sprite table. Convenient!
-	farcall PlaySpriteAnimations
+	call Pokedex_RefreshOAM
 
-	; Add "*No.123" back.
-	ld a, [wPokedexOAM_DexNoX]
-	ld b, a
-	ld a, [wPokedexOAM_DexNoY]
-	ld c, a
-	ld hl, wDexNoStr
-	lb de, 6, 34 ; length, OAM index
-	xor a ; attributes
-	call Pokedex_WriteOAMFromHL
-
-	ld a, [wPokedex_DisplayMode]
-	sub DEXDISP_SEARCH
-	jr c, .indicator_done
-
-	; Handle bottom bar
-	push af
-	ld l, a
-	add a
-	add a
-	add l
-	add LOW(DexDisplayOAMData)
-	ld l, a
-	adc HIGH(DexDisplayOAMData)
-	sub l
-	ld h, a
-
-	; Should we draw it in the first place?
-	ld a, [hli]
-	and a
-	jr z, .indicator_oam ; cp DEXDISP_SEARCH
-
-	; Draw bottom bar cursor
-	ld c, 152 ; y
-	ld b, a ; x
-	push hl
-	lb de, 1, 0 ; length, oam number
-	lb hl, 0, $17 ; attributes, tile id
-	call Pokedex_WriteOAM
-
-	; Don't draw the middle menu options if mon isn't caught§
-	ld a, [wPokedexOAM_IsCaught]
-	and a
-	jr z, .pop_hl_indicator_oam
-
-	; Bio
-	ld b, $42
-	ld d, 2
-	call Pokedex_WriteOAM
-
-	; Stats
-	ld b, $5b
-	ld d, 3
-	call Pokedex_WriteOAM
-
-.pop_hl_indicator_oam
-	pop hl
-.indicator_oam
-	pop af
-
-	; In description mode, only display indicator if we have seen formes.
-	; This is specifically in regular description mode, we don't want to
-	; display it in the "new dex entry".
-	assert DEXDISP_SEARCH + 1 == DEXDISP_DESC
-	dec a ; cp DEXDISP_DESC - DEXDISP_SEARCH
-	jr z, .fix_indicator
-	sub DEXDISP_NEWDESC - DEXDISP_DESC
-	jr nz, .indicator_ok
-	jr .indicator_done
-.fix_indicator
-	ld a, [wPokedex_OtherForm]
-	rra
-	jr nc, .indicator_done
-
-.indicator_ok
-	; If y=0, skip this.
-	ld a, [hli]
-	and a
-	jr z, .indicator_done
-	ld c, a
-	ld a, [hli]
-	ld b, a
-	ld a, [hli]
-	ld d, [hl]
-	ld l, a
-	ld h, 1
-	ld e, 6
-	call Pokedex_WriteOAM
-
-.indicator_done
-	; These need additional sprite handling, handled seperately.
-	ld a, [wPokedex_DisplayMode]
-	cp DEXDISP_STATS
-	jr nz, .not_stats
-
-	; Ability display
-	lb bc, 76, 100
-	lb de, 1, 15
-	lb hl, 0, $1d
-
-	ldh a, [hPokedexStatsCurAbil]
-	cp 2 ; 0/1/2 -> 1/2/H
-	jr z, .got_ability
-	add "1"
-	ld l, a
-.got_ability
-	call Pokedex_WriteOAM
-
-	; (A) button for ability display
-	ld b, 92
-	ld d, 2
-	lb hl, VRAM_BANK_1 | 1, $3d
-	call Pokedex_WriteOAM
-	jr .set_pals
-
-.not_stats
-	cp DEXDISP_AREA
-	push af
-	call z, Pokedex_GetAreaOAM
-	pop af
-	and a ; cp DEXDISP_MAIN
-	call z, Pokedex_GetMainOAM
-
-.set_pals
 	call SetPalettes
 	ld hl, wPokedex_GFXFlags
 	set DEXGFX_TILEMAP, [hl]
@@ -246,50 +121,6 @@ Pokedex_WriteOAMFromHL:
 	inc e
 	dec d
 	jr nz, Pokedex_WriteOAMFromHL
-	ret
-
-Pokedex_WriteOAMSingleTile:
-; Writes a line of sprites, all with the same tile ID.
-	ld a, d
-.loop
-	push af
-	ld d, 1
-	call Pokedex_WriteOAM
-	dec l
-	pop af
-	dec a
-	jr nz, .loop
-	ret
-
-Pokedex_WriteOAM:
-; Writes d sprites starting from OAM sprite e.
-; Input: bc = xy, d = length, e = starting OAM, h = attributes, l = tile ID
-	push de
-	push hl
-	ld l, e
-	ld h, 0
-	add hl, hl
-	add hl, hl
-	ld de, wVirtualOAM
-	add hl, de
-	pop de
-	ld a, c
-	ld [hli], a
-	ld a, b
-	ld [hli], a
-	add 8
-	ld b, a
-	ld a, e
-	ld [hli], a
-	ld a, d
-	ld [hli], a
-	ld h, d
-	ld l, e
-	pop de
-	inc l ; next tile
-	inc e ; next OAM
-	dec d
-	jr nz, Pokedex_WriteOAM
 	ret
 
 StackDexGraphics:
@@ -365,6 +196,12 @@ StackDexGraphics:
 	ld hl, vTiles4
 	lb bc, BANK(FontUnown), $20
 	call Get1bpp
+
+	; slowpoke oam
+	ld hl, PokedexSlowpokeLZ
+	ld de, vTiles3 tile $40
+	lb bc, BANK(PokedexSlowpokeLZ), $2d
+	call DecompressRequest2bpp
 	xor a
 	ldh [rVBK], a
 
@@ -505,6 +342,204 @@ StackDexGraphics:
 	call GetCGBLayout
 	ld b, 2
 	jmp SafeCopyTilemapAtOnce
+
+Pokedex_RefreshOAM:
+; Reloads OAM data.
+	; We really only use sprite anims for the list cursor, but calling this
+	; unconditionally also wipes the sprite table. Convenient!
+	farcall PlaySpriteAnimations
+
+	; Add "*No.123" back.
+	ld a, [wPokedexOAM_DexNoX]
+	ld b, a
+	ld a, [wPokedexOAM_DexNoY]
+	ld c, a
+	ld hl, wDexNoStr
+	lb de, 6, 34 ; length, OAM index
+	xor a ; attributes
+	call Pokedex_WriteOAMFromHL
+
+	ld a, [wPokedex_DisplayMode]
+	sub DEXDISP_SEARCH
+	jr c, .indicator_done
+
+	; Handle bottom bar
+	push af
+	ld l, a
+	add a
+	add a
+	add l
+	add LOW(DexDisplayOAMData)
+	ld l, a
+	adc HIGH(DexDisplayOAMData)
+	sub l
+	ld h, a
+
+	; Should we draw it in the first place?
+	ld a, [hli]
+	and a
+	jr z, .indicator_oam ; cp DEXDISP_SEARCH
+
+	; Draw bottom bar cursor
+	ld c, 152 ; y
+	ld b, a ; x
+	push hl
+	lb de, 1, 0 ; length, oam number
+	lb hl, 0, $17 ; attributes, tile id
+	call Pokedex_WriteOAM
+
+	; Don't draw the middle menu options if mon isn't caught§
+	ld a, [wPokedexOAM_IsCaught]
+	and a
+	jr z, .pop_hl_indicator_oam
+
+	; Bio
+	ld b, $42
+	ld d, 2
+	call Pokedex_WriteOAM
+
+	; Stats
+	ld b, $5b
+	ld d, 3
+	call Pokedex_WriteOAM
+
+.pop_hl_indicator_oam
+	pop hl
+.indicator_oam
+	pop af
+
+	; In description mode, only display indicator if we have seen formes.
+	; This is specifically in regular description mode, we don't want to
+	; display it in the "new dex entry".
+	assert DEXDISP_SEARCH + 1 == DEXDISP_DESC
+	dec a ; cp DEXDISP_DESC - DEXDISP_SEARCH
+	jr z, .fix_indicator
+	sub DEXDISP_NEWDESC - DEXDISP_DESC
+	jr nz, .indicator_ok
+	jr .indicator_done
+.fix_indicator
+	ld a, [wPokedex_OtherForm]
+	rra
+	jr nc, .indicator_done
+
+.indicator_ok
+	; If y=0, skip this.
+	ld a, [hli]
+	and a
+	jr z, .indicator_done
+	ld c, a
+	ld a, [hli]
+	ld b, a
+	ld a, [hli]
+	ld d, [hl]
+	ld l, a
+	ld h, 1
+	ld e, 9
+	call Pokedex_WriteOAM
+
+.indicator_done
+	; These need additional sprite handling, handled seperately.
+	ld a, [wPokedex_DisplayMode]
+	cp DEXDISP_STATS
+	jr nz, .not_stats
+
+	; Ability display
+	lb bc, 76, 100
+	lb de, 1, 15
+	lb hl, 0, $1d
+
+	ldh a, [hPokedexStatsCurAbil]
+	cp 2 ; 0/1/2 -> 1/2/H
+	jr z, .got_ability
+	add "1"
+	ld l, a
+.got_ability
+	call Pokedex_WriteOAM
+
+	; (A) button for ability display
+	ld b, 92
+	ld d, 2
+	lb hl, VRAM_BANK_1 | 1, $3d
+	jmp Pokedex_WriteOAM
+
+.not_stats
+	cp DEXDISP_SEARCH
+	jr z, .search
+	cp DEXDISP_AREA
+	jmp z, Pokedex_GetAreaOAM
+	and a ; cp DEXDISP_MAIN
+	jr z, Pokedex_GetMainOAM
+	ret
+
+.search
+	ld a, [wPokedex_SearchInProgress]
+	and a
+	ret nz
+
+	; Write (static) slowpoke frame.
+	ld c, 120
+	ld e, 15
+	lb hl, VRAM_BANK_1, $40
+	ld a, 3
+.search_loop
+	ld b, 120
+	ld d, 3
+	push af
+	call Pokedex_WriteOAM
+	ld a, l
+	add 12
+	ld l, a
+	ld a, c
+	add 8
+	ld c, a
+	pop af
+	dec a
+	jr nz, .search_loop
+	ret
+
+Pokedex_WriteOAMSingleTile:
+; Writes a line of sprites, all with the same tile ID.
+	ld a, d
+.loop
+	push af
+	ld d, 1
+	call Pokedex_WriteOAM
+	dec l
+	pop af
+	dec a
+	jr nz, .loop
+	ret
+
+Pokedex_WriteOAM:
+; Writes d sprites starting from OAM sprite e.
+; Input: bc = xy, d = length, e = starting OAM, h = attributes, l = tile ID
+	push de
+	push hl
+	ld l, e
+	ld h, 0
+	add hl, hl
+	add hl, hl
+	ld de, wVirtualOAM
+	add hl, de
+	pop de
+	ld a, c
+	ld [hli], a
+	ld a, b
+	ld [hli], a
+	add 8
+	ld b, a
+	ld a, e
+	ld [hli], a
+	ld a, d
+	ld [hli], a
+	ld h, d
+	ld l, e
+	pop de
+	inc l ; next tile
+	inc e ; next OAM
+	dec d
+	jr nz, Pokedex_WriteOAM
+	ret
 
 Pokedex_GetMainOAM:
 	; Poké balls
@@ -717,9 +752,25 @@ PHB_BioStatsSwitchSCY2:
 PHB_SearchSwitchSCY:
 	push hl
 	push de
-	ld de, PHB_SearchSwitchSCY2
-	lb hl, 8, $88
+	ld de, PHB_SearchSetOAM
+	lb hl, 8, $40
 	jr PHB_DoSwitchSCY
+
+PHB_SearchSetOAM:
+; needed to handle slowpoke animation when enabled
+	push hl
+	push de
+	push bc
+	ld a, [wPokedex_SearchInProgress]
+	and a
+	jr z, .oam_done
+	call Pokedex_RefreshOAM
+	call ForcePushOAM
+.oam_done
+	ld a, $88
+	ld de, PHB_SearchSwitchSCY2
+	call Pokedex_UnsafeSetHBlankFunction
+	jmp PopBCDEHL
 
 PHB_SearchSwitchSCY2:
 	push hl
