@@ -70,6 +70,25 @@ endc
 .doGameTime
 	call GameTimer
 
+	; mobile adapter keep-alive
+	ldh a, [hMobile]
+	cp MOBILE_STANDBY
+	jr nz, .no_mobile
+	ld hl, wMobileSessionEnabled
+	ld a, [hl]
+	and a
+	jr z, .no_mobile
+	dec [hl]
+	jr nz, .no_mobile
+	ld [hl], 20
+	ld a, MOBILE_RECV_BYTE
+	ldh [rSB], a
+
+	; Stage for sending in timer interrupt.
+	ld a, 1 << MOBILE_NEXTBYTE_F | MOBILE_STANDBY
+	ldh [hMobile], a
+
+.no_mobile
 	ld hl, hVBlankOccurred
 	dec [hl]
 	jr nz, .noVBlankLeak

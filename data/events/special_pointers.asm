@@ -123,6 +123,12 @@ SpecialsPointers::
 	add_special Special_InitialSetDSTFlag
 	add_special Special_InitialClearDSTFlag
 
+; Mobile Communications
+	add_special Mobile_Init
+	add_special Mobile_Abort
+	add_special Mobile_ISPLogin
+	add_special Special_CheckMobileAvailability
+
 ; Battle Tower
 	add_special Special_BattleTower_Battle
 	add_special Special_BattleTower_GetBattleResult

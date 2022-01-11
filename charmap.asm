@@ -322,3 +322,28 @@ MACRO rawchar
 	db \#
 	setcharmap default
 ENDM
+
+; ASCII charmap, for mobile functions
+pushc
+	newcharmap ascii
+	DEF PRINTABLE_ASCII EQUS " !\"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz\{|}~"
+	for i, STRLEN("{PRINTABLE_ASCII}")
+		charmap STRSUB("{PRINTABLE_ASCII}", i + 1, 1), i + $20
+	endr
+	charmap "\t", $09
+	charmap "\n", $0a
+	charmap "\r", $0d
+popc
+
+MACRO asciichar
+	setcharmap ascii
+	db \#
+	setcharmap default
+ENDM
+
+MACRO asciistr
+	setcharmap ascii
+	db \#
+	db 0 ; null terminator
+	setcharmap default
+ENDM

@@ -20,7 +20,7 @@ PokeCenter2F_MapScriptHeader:
 	def_object_events
 	object_event  5,  2, SPRITE_LINK_RECEPTIONIST, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, LinkReceptionistScript_Trade, -1
 	object_event  9,  2, SPRITE_LINK_RECEPTIONIST, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, LinkReceptionistScript_Battle, -1
-	object_event 13,  3, SPRITE_LINK_RECEPTIONIST, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, Text_TimeCapsuleClosed, -1
+	object_event 13,  3, SPRITE_LINK_RECEPTIONIST, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, LinkReceptionistScript_Mobile, -1
 
 	object_const_def
 	const POKECENTER2F_TRADE_RECEPTIONIST
@@ -69,6 +69,81 @@ Script_LeftCableColosseum:
 	setscene $0
 	setmapscene COLOSSEUM, $0
 	end
+
+LinkReceptionistScript_Mobile:
+if !DEF(DEBUG)
+;	checkevent EVENT_GAVE_MYSTERY_EGG_TO_ELM
+;	iffalse Script_MobileSystemClosed
+endc
+	opentext
+	writetext Text_MobileReceptionistIntro
+	yesorno
+	iffalsefwd .Cancel
+	writetext Text_PleaseWait
+	special Mobile_Init
+	special Special_CheckMobileAvailability
+	iffalsefwd .AdapterNotConnected
+	writetext Text_MustSaveGame
+	yesorno
+	iffalsefwd .Aborted
+	special Special_TryQuickSave
+	iffalsefwd .Aborted
+	writetext Text_ConnectingToServer
+	callasm PCMA_ConnectAndListPlayers
+	ifequalfwd $1, .Aborted
+	ifequalfwd $2, .ConnectionLost
+	ifequalfwd $3, .ISPLoginFailure
+	end
+
+.AdapterNotConnected:
+	writetext Text_AdapterNotConnected
+	sjumpfwd .AbortLink
+
+.ISPLoginFailure:
+	writetext Text_FailedISPLogin
+	sjumpfwd .AbortLink
+.ConnectionLost:
+	writetext Text_ConnectionLost
+.Aborted:
+	writetext Text_PleaseComeAgain
+.AbortLink:
+	special Mobile_Abort
+.Cancel:
+	closetext
+	end
+
+PCMA_ConnectAndListPlayers:
+	; Login to ISP
+	farcall Mobile_ISPLogin
+	ld a, 3
+	ld [hScriptVar], a
+	ret z
+
+	; Connect to online server
+	farcall PO_Connect
+	jr z, .cannot_connect
+	ld a, 1
+	ld [hScriptVar], a
+	ret
+
+.cannot_connect
+	ld a, 2
+	ld [hScriptVar], a
+	ret
+
+Script_MobileSystemClosed:
+	faceplayer
+	opentext
+	writetext Text_MobileSystemClosed
+	waitbutton
+	closetext
+	end
+
+Text_MobileSystemClosed:
+	text "I'm sorry--the"
+	line "Mobile System is"
+	cont "being adjusted."
+	done
 
 PokeCenter2FLinkRecordSign:
 	reanchormap
@@ -239,6 +314,17 @@ PokeCenter2FMovementData_ReceptionistStepsRightAndDown:
 	slow_step_down
 	step_end
 
+Text_MobileReceptionistIntro:
+	text "Welcome to the"
+	line "Mobile System."
+
+	para "You may connect to"
+	line "the Internet here."
+
+	para "Would you like to"
+	line "connect?"
+	done
+
 Text_BattleReceptionistIntro:
 	text "Welcome to Cable"
 	line "Club Colosseum."
@@ -267,6 +353,30 @@ Text_FriendNotReady:
 	line "ready."
 	prompt
 
+Text_AdapterNotConnected:
+	text "The Mobile Adapter"
+	line "isn't connected."
+
+	para "Please refer to"
+	line "the manual for"
+	cont "this game for how"
+	cont "to connect."
+	prompt
+
+Text_ConnectionLost:
+	text "Can't connect to"
+	line "Polished Online."
+	prompt
+
+Text_FailedISPLogin:
+	text "Failed to connect"
+	line "to ISP."
+
+	para "Make sure your"
+	line "Mobile Adapter is"
+	cont "set up correctly."
+	prompt
+
 Text_MustSaveGame:
 	text "Before opening the"
 	line "link, you must"
@@ -275,6 +385,11 @@ Text_MustSaveGame:
 
 Text_PleaseWait:
 	text "Please wait."
+	done
+
+Text_ConnectingToServer:
+	text "Connecting to"
+	line "Polished Online…"
 	done
 
 Text_LinkTimedOut:

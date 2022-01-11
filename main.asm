@@ -657,6 +657,12 @@ SECTION "Diploma", ROMX
 INCLUDE "engine/events/diploma.asm"
 
 
+SECTION "Mobile Communication", ROMX
+
+INCLUDE "engine/mobile/serial.asm"
+INCLUDE "engine/mobile/server.asm"
+
+
 SECTION "Battle Tower Text", ROMX
 
 INCLUDE "data/battle_tower/trainer_text.asm"

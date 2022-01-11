@@ -206,7 +206,9 @@ ENDU
 hScriptBank:: db
 hScriptPos:: dw
 
-	ds 9 ; unused
+hMobile:: db
+
+	ds 8 ; unused
 
 hLCDInterruptFunction::
 hFunctionJump::     db ; $c3 jp

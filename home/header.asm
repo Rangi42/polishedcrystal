@@ -133,9 +133,7 @@ GetCGBLayout::
 
 
 SECTION "timer", ROM0[$0050]
-; TIMER is never enabled
-
-	reti ; just in case
+	jmp Timer
 
 PopAFBCDEHL::
 	pop af
@@ -145,13 +143,10 @@ PopBCDEHL::
 	pop hl
 	ret
 
-ClearText::
-	text_start
-	done
-
 
 SECTION "serial", ROM0[$0058]
 	jmp Serial
+
 
 
 SECTION "High Home", ROM0[$005b]

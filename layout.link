@@ -241,6 +241,7 @@ WRAMX $1
 WRAMX $2
 	org $d000
 	"Music Player RAM"
+	"Mobile Adapter Config"
 	align 8
 	"Sound Stack"
 	"Pic Animations RAM"

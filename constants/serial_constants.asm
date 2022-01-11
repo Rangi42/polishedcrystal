@@ -3,6 +3,7 @@
 	const LINK_TRADECENTER ; 2
 	const LINK_COLOSSEUM   ; 3
 	const LINK_ROOM_DUMMY  ; 4 (prevents linking with Polished Crystal before commit 35d5fafd, PR #708)
+	const LINK_MOBILE      ; 5
 
 ; hSerialReceive high nybbles
 DEF SERIAL_TRADECENTER EQU $70

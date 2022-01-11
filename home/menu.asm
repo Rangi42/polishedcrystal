@@ -20,20 +20,6 @@ ExitMenu::
 	pop af
 	ret
 
-GetTileBackupMenuBoxDims::
-	call GetMenuBoxDims
-	ld a, [wMenuFlags]
-	bit 1, a
-	jr z, .offsetOfOne
-	inc b
-	inc b
-	inc c
-	inc c
-.offsetOfOne
-	inc b
-	inc c
-	ret
-
 PopWindow::
 	ld b, $10
 	ld de, wMenuFlags

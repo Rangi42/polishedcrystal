@@ -795,3 +795,7 @@ DecompressString::
 	ldh a, [hPlaceStringCoords+1]
 	ld h, a
 	ret
+
+ClearText::
+	text_start
+	done

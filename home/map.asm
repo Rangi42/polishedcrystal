@@ -519,6 +519,13 @@ LoadBlockData::
 	ldh [hVBlank], a
 	ld hl, wOverworldMapBlocks
 	ld bc, wOverworldMapBlocksEnd - wOverworldMapBlocks
+
+	; Mobile reuses some of this data, don't overwrite it.
+	ld a, [hMobile]
+	and a
+	jr z, .got_bytecount
+	ld bc, 308
+.got_bytecount
 	xor a
 	rst ByteFill
 	call ChangeMap

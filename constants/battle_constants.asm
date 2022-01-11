@@ -290,7 +290,7 @@ DEF GUARD_MIST      EQU %11110000
 	const BATTLEACTION_SWITCH6
 	const_skip
 	const_skip
-	const_skip
+	const BATTLEACTION_NEWRANDOM ; RNG output provided by online server
 	const BATTLEACTION_STRUGGLE
 	const BATTLEACTION_FORFEIT
 
