@@ -283,7 +283,7 @@ Music_LugiasSong2000_Ch2_loop_main:
 	note E_, 4
 	note F#, 4
 	note E_, 4
-	loopchannel 0, Music_LugiasSong2000_Ch2_loop_main
+	jumpchannel Music_LugiasSong2000_Ch2_loop_main
 
 Music_LugiasSong2000_Ch3:
 	notetype $c, $23
@@ -323,7 +323,7 @@ Music_LugiasSong2000_Ch3_loop:
 	note B_, 12
 	note B_, 12
 	callchannel Music_LugiasSong2000_Ch3_branch_2
-	loopchannel 0, Music_LugiasSong2000_Ch3_loop
+	jumpchannel Music_LugiasSong2000_Ch3_loop
 
 Music_LugiasSong2000_Ch3_branch_1:
 	octave 5

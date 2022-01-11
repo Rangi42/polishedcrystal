@@ -39,7 +39,7 @@ Music_MainMenu_branch_f791d:
 	notetype $c, $94
 	octave 3
 	note C_, 4
-	loopchannel 0, Music_MainMenu_branch_f791d
+	jumpchannel Music_MainMenu_branch_f791d
 
 Music_MainMenu_Ch2:
 	dutycycle $3
@@ -69,7 +69,7 @@ Music_MainMenu_branch_f7949:
 	note E_, 2
 	notetype $c, $a4
 	note F_, 4
-	loopchannel 0, Music_MainMenu_branch_f7949
+	jumpchannel Music_MainMenu_branch_f7949
 
 Music_MainMenu_Ch3:
 	stereopanning $f0
@@ -108,7 +108,7 @@ Music_MainMenu_branch_f796f:
 	note __, 1
 	note F_, 1
 	note __, 3
-	loopchannel 0, Music_MainMenu_branch_f796f
+	jumpchannel Music_MainMenu_branch_f796f
 
 Music_MainMenu_Ch4:
 	stereopanning $f
@@ -139,4 +139,4 @@ Music_MainMenu_branch_f79a5:
 	note D#, 1
 	note D_, 1
 	note D_, 1
-	loopchannel 0, Music_MainMenu_branch_f79a5
+	jumpchannel Music_MainMenu_branch_f79a5

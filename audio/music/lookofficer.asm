@@ -32,7 +32,7 @@ Music_LookOfficer_branch_ed852:
 	intensity $2f
 	note A#, 16
 	note A_, 16
-	loopchannel 0, Music_LookOfficer_branch_ed852
+	jumpchannel Music_LookOfficer_branch_ed852
 
 Music_LookOfficer_Ch2:
 	vibrato $12, $34
@@ -75,7 +75,7 @@ Music_LookOfficer_branch_ed882:
 	callchannel Music_LookOfficer_branch_ed89e
 	pitchoffset 0, C_
 	callchannel Music_LookOfficer_branch_ed89e
-	loopchannel 0, Music_LookOfficer_branch_ed882
+	jumpchannel Music_LookOfficer_branch_ed882
 
 Music_LookOfficer_branch_ed89e:
 	octave 1
@@ -134,4 +134,4 @@ Music_LookOfficer_branch_ed8c8:
 	note D_, 8
 	note E_, 8
 	note C#, 8
-	loopchannel 0, Music_LookOfficer_branch_ed8c8
+	jumpchannel Music_LookOfficer_branch_ed8c8

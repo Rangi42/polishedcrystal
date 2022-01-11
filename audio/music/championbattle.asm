@@ -205,7 +205,7 @@ Music_ChampionBattle_branch_eaabe:
 	intensity $b7
 	octave 4
 	note D_, 4
-	loopchannel 0, Music_ChampionBattle_branch_eaa35
+	jumpchannel Music_ChampionBattle_branch_eaa35
 
 Music_ChampionBattle_branch_eaaee:
 	intensity $b2
@@ -489,7 +489,7 @@ Music_ChampionBattle_branch_eabef:
 	note E_, 8
 	note F#, 8
 	note G#, 8
-	loopchannel 0, Music_ChampionBattle_branch_eab9d
+	jumpchannel Music_ChampionBattle_branch_eab9d
 
 Music_ChampionBattle_branch_eac4f:
 	intensity $c2
@@ -710,7 +710,7 @@ Music_ChampionBattle_branch_ead4e:
 	note B_, 2
 	note A#, 2
 	note G#, 2
-	loopchannel 0, Music_ChampionBattle_branch_eacc6
+	jumpchannel Music_ChampionBattle_branch_eacc6
 
 Music_ChampionBattle_branch_ead61:
 	note D#, 1

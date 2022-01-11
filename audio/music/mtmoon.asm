@@ -13,7 +13,7 @@ Music_MtMoon_Ch1:
 	stereopanning $f0
 	notetype $c, $45
 	note __, 2
-	loopchannel 0, Music_MtMoon_branch_edb56
+	jumpchannel Music_MtMoon_branch_edb56
 
 Music_MtMoon_Ch2:
 	vibrato $b, $15
@@ -69,7 +69,7 @@ Music_MtMoon_branch_edb56:
 	note E_, 6
 	note F#, 6
 	note E_, 4
-	loopchannel 0, Music_MtMoon_branch_edb56
+	jumpchannel Music_MtMoon_branch_edb56
 
 Music_MtMoon_Ch3:
 Music_MtMoon_branch_edb8a:
@@ -116,7 +116,7 @@ Music_MtMoon_branch_edbab:
 	note E_, 2
 	note G#, 2
 	loopchannel 4, Music_MtMoon_branch_edbab
-	loopchannel 0, Music_MtMoon_branch_edb8a
+	jumpchannel Music_MtMoon_branch_edb8a
 
 Music_MtMoon_Ch4:
 	togglenoise $5
@@ -135,4 +135,4 @@ Music_MtMoon_branch_edbc3:
 	note A#, 4
 	stereopanning $f0
 	note A#, 8
-	loopchannel 0, Music_MtMoon_branch_edbc3
+	jumpchannel Music_MtMoon_branch_edbc3

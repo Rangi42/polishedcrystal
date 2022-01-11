@@ -111,7 +111,7 @@ Music_OreburghGateDPPt_Ch1_branch_2:
 	note G_, 8
 	intensity $2E
 	note G_, 8
-	loopchannel 0, Music_OreburghGateDPPt_Ch1_branch_1
+	jumpchannel Music_OreburghGateDPPt_Ch1_branch_1
 
 Music_OreburghGateDPPt_Ch2:
 	tone $0001
@@ -410,7 +410,7 @@ Music_OreburghGateDPPt_Ch2_branch_3:
 	note D#, 2
 	note __, 12
 	note __, 12
-	loopchannel 0, Music_OreburghGateDPPt_Ch2_branch_1
+	jumpchannel Music_OreburghGateDPPt_Ch2_branch_1
 
 Music_OreburghGateDPPt_Ch3:
 	notetype $C, $12
@@ -1256,4 +1256,4 @@ Music_OreburghGateDPPt_Ch3_branch_2:
 	intensity $12
 	note __, 12
 	note __, 12
-	loopchannel 0, Music_OreburghGateDPPt_Ch3_branch_1
+	jumpchannel Music_OreburghGateDPPt_Ch3_branch_1

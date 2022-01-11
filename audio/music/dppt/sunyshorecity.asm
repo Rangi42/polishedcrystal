@@ -578,7 +578,7 @@ Music_SunyshoreCityDPPt_Ch1_loop:
 	note B_, 6
 	note A_, 1
 	note G#, 1
-	loopchannel 0, Music_SunyshoreCityDPPt_Ch1_loop
+	jumpchannel Music_SunyshoreCityDPPt_Ch1_loop
 
 Music_SunyshoreCityDPPt_Ch2:
 	tone $0001
@@ -917,7 +917,7 @@ Music_SunyshoreCityDPPt_Ch2_loop:
 	note B_, 16
 	note A_, 1
 	note B_, 1
-	loopchannel 0, Music_SunyshoreCityDPPt_Ch2_loop
+	jumpchannel Music_SunyshoreCityDPPt_Ch2_loop
 
 Music_SunyshoreCityDPPt_Ch3:
 	intensity $25
@@ -1502,7 +1502,7 @@ Music_SunyshoreCityDPPt_Ch3_loop:
 	note E_, 1
 	note __, 1
 	note D#, 2
-	loopchannel 0, Music_SunyshoreCityDPPt_Ch3_loop
+	jumpchannel Music_SunyshoreCityDPPt_Ch3_loop
 
 Music_SunyshoreCityDPPt_Ch4:
 	togglenoise 3
@@ -1890,5 +1890,5 @@ Music_SunyshoreCityDPPt_Ch4_loop:
 	note C_, 4
 	note G_, 4
 	notetype $C
-	loopchannel 0, Music_SunyshoreCityDPPt_Ch4_loop
+	jumpchannel Music_SunyshoreCityDPPt_Ch4_loop
 

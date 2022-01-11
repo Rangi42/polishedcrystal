@@ -143,7 +143,7 @@ Music_EcruteakCity_branch_ef2e5:
 	octave 5
 	note C_, 2
 	callchannel Music_EcruteakCity_branch_ef391
-	loopchannel 0, Music_EcruteakCity_branch_ef2e5
+	jumpchannel Music_EcruteakCity_branch_ef2e5
 
 Music_EcruteakCity_branch_ef37f:
 	octave 5
@@ -467,7 +467,7 @@ Music_EcruteakCity_branch_ef3f2:
 	note C_, 2
 	note D_, 2
 	note E_, 16
-	loopchannel 0, Music_EcruteakCity_branch_ef3f2
+	jumpchannel Music_EcruteakCity_branch_ef3f2
 
 Music_EcruteakCity_Ch3:
 	stereopanning $ff
@@ -592,7 +592,7 @@ Music_EcruteakCity_branch_ef4e3:
 	note G_, 8
 	note E_, 8
 	note D_, 8
-	loopchannel 0, Music_EcruteakCity_branch_ef4e3
+	jumpchannel Music_EcruteakCity_branch_ef4e3
 
 Music_EcruteakCity_branch_ef569:
 	octave 3

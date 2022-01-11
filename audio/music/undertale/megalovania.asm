@@ -400,7 +400,7 @@ Music_Megalovania_Ch1_loop3:
 	note D_, 4
 	note C_, 4
 	note E_, 4
-	loopchannel 0, Music_Megalovania_Ch1_loop
+	jumpchannel Music_Megalovania_Ch1_loop
 
 Music_Megalovania_Ch1_ditty_1:
 	octave 5
@@ -1016,7 +1016,7 @@ Music_Megalovania_Ch2_loop:
 	note A#, 1
 	note A#, 1
 	callchannel Music_Megalovania_Ch2_ditty1
-	loopchannel 0, Music_Megalovania_Ch2_loop
+	jumpchannel Music_Megalovania_Ch2_loop
 
 Music_Megalovania_Ch2_ditty1:
 	octave 3
@@ -1311,7 +1311,7 @@ Music_Megalovania_Ch3_loop:
 	callchannel Music_Megalovania_Ch1Ch3_ditty_2
 	note C_, 1
 	note C_, 1
-	loopchannel 0, Music_Megalovania_Ch3_loop
+	jumpchannel Music_Megalovania_Ch3_loop
 
 Music_Megalovania_Ch3_ditty_1:
 	note C_, 1
@@ -1923,7 +1923,7 @@ Music_Megalovania_Ch4_loop13:
 	note __, 1
 	loopchannel 3, Music_Megalovania_Ch4_loop13
 	callchannel Music_Megalovania_Ch4_ditty2
-	loopchannel 0, Music_Megalovania_Ch4_loop
+	jumpchannel Music_Megalovania_Ch4_loop
 
 Music_Megalovania_Ch4_ditty1:
 	note A#, 1

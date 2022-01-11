@@ -108,7 +108,7 @@ Music_ScaryHouseXY_Ch1_loop_main:
 	note B_, 8
 	intensity $45
 	note B_, 8
-	loopchannel 0, Music_ScaryHouseXY_Ch1_loop_main
+	jumpchannel Music_ScaryHouseXY_Ch1_loop_main
 
 Music_ScaryHouseXY_Ch2:
 	dutycycle 2
@@ -187,7 +187,7 @@ Music_ScaryHouseXY_Ch2_loop_main:
 	note G_, 2
 	note G#, 4
 	note B_, 12
-	loopchannel 0, Music_ScaryHouseXY_Ch2_loop_main
+	jumpchannel Music_ScaryHouseXY_Ch2_loop_main
 
 Music_ScaryHouseXY_Ch3:
 	notetype $c, $20
@@ -272,4 +272,4 @@ Music_ScaryHouseXY_Ch3_loop_1:
 	note A#, 4
 	note __, 16
 	note __, 8
-	loopchannel 0, Music_ScaryHouseXY_Ch3_loop_main
+	jumpchannel Music_ScaryHouseXY_Ch3_loop_main

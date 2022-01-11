@@ -172,7 +172,7 @@ Music_DewfordTownRSE_Ch1_b1:
 	note __, 1
 	note G_, 6
 	note __, 6
-	loopchannel 0, Music_DewfordTownRSE_Ch1_b0
+	jumpchannel Music_DewfordTownRSE_Ch1_b0
 
 Music_DewfordTownRSE_Ch2:
 	stereopanning $f0
@@ -459,7 +459,7 @@ Music_DewfordTownRSE_Ch2_b0:
 	note __, 2
 	note D#, 2
 	note __, 6
-	loopchannel 0, Music_DewfordTownRSE_Ch2_b0
+	jumpchannel Music_DewfordTownRSE_Ch2_b0
 
 Music_DewfordTownRSE_Ch3:
 	stereopanning $ff
@@ -842,7 +842,7 @@ Music_DewfordTownRSE_Ch3_b0:
 	note __, 1
 	note D#, 16
 	note __, 8
-	loopchannel 0, Music_DewfordTownRSE_Ch3_b0
+	jumpchannel Music_DewfordTownRSE_Ch3_b0
 
 Music_DewfordTownRSE_Ch4:
 	togglenoise $2
@@ -909,4 +909,4 @@ Music_DewfordTownRSE_Ch4_b5:
 	note 1, 3
 	note 1, 4
 	note 1, 2
-	loopchannel 0, Music_DewfordTownRSE_Ch4_b0
+	jumpchannel Music_DewfordTownRSE_Ch4_b0

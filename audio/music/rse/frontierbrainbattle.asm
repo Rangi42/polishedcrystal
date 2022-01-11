@@ -817,7 +817,7 @@ Music_FrontierBrainBattleRSE_Ch1_loop:
 	note B_, 2
 	octave 4
 	note F_, 2
-	loopchannel 0, Music_FrontierBrainBattleRSE_Ch1_loop
+	jumpchannel Music_FrontierBrainBattleRSE_Ch1_loop
 
 Music_FrontierBrainBattleRSE_Ch2:
 	notetype $8, $D4
@@ -1254,7 +1254,7 @@ Music_FrontierBrainBattleRSE_Ch2_loop:
 	octave 5
 	note D_, 16
 	note __, 12
-	loopchannel 0, Music_FrontierBrainBattleRSE_Ch2_loop
+	jumpchannel Music_FrontierBrainBattleRSE_Ch2_loop
 
 Music_FrontierBrainBattleRSE_Ch3:
 	notetype $C, $19
@@ -2286,4 +2286,4 @@ Music_FrontierBrainBattleRSE_Ch3_loop:
 	note F#, 2
 	octave 3
 	note C_, 2
-	loopchannel 0, Music_FrontierBrainBattleRSE_Ch3_loop
+	jumpchannel Music_FrontierBrainBattleRSE_Ch3_loop

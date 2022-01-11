@@ -196,7 +196,7 @@ Music_MotherBeastBattleSM_Ch1_loop_main:
 	intensity $30
 	dutycycle 1
 	callchannel Music_MotherBeastBattleSM_Ch2_branch_3
-	loopchannel 0, Music_MotherBeastBattleSM_Ch1_loop_main
+	jumpchannel Music_MotherBeastBattleSM_Ch1_loop_main
 
 Music_MotherBeastBattleSM_Ch2:
 	dutycycle 3
@@ -691,7 +691,7 @@ Music_MotherBeastBattleSM_Ch2_loop_1:
 	intensity $90
 	dutycycle 0
 	callchannel Music_MotherBeastBattleSM_Ch2_branch_3
-	loopchannel 0, Music_MotherBeastBattleSM_Ch2_loop_main
+	jumpchannel Music_MotherBeastBattleSM_Ch2_loop_main
 
 Music_MotherBeastBattleSM_Ch2_branch_1:
 	note D_, 1
@@ -862,7 +862,7 @@ Music_MotherBeastBattleSM_Ch3_loop_2:
 	loopchannel 6, Music_MotherBeastBattleSM_Ch3_loop_2
 	note C_, 1
 	note __, 11
-	loopchannel 0, Music_MotherBeastBattleSM_Ch3_loop_main
+	jumpchannel Music_MotherBeastBattleSM_Ch3_loop_main
 
 Music_MotherBeastBattleSM_Ch4:
 	togglenoise $3
@@ -947,7 +947,7 @@ Music_MotherBeastBattleSM_Ch4_loop_1:
 	note D#, 2
 	loopchannel 11, Music_MotherBeastBattleSM_Ch4_loop_1
 	note C_, 8
-	loopchannel 0, Music_MotherBeastBattleSM_Ch4_loop_main
+	jumpchannel Music_MotherBeastBattleSM_Ch4_loop_main
 
 Music_MotherBeastBattleSM_Ch4_branch_1:
 	note C_, 6

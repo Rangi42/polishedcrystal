@@ -23,7 +23,7 @@ Music_DragonsDen_branch_eed03:
 	callchannel Music_DragonsDen_branch_eed2d
 	note __, 10
 	notetype $c, $b7
-	loopchannel 0, Music_DragonsDen_branch_eed03
+	jumpchannel Music_DragonsDen_branch_eed03
 
 Music_DragonsDen_branch_eed1e:
 	octave 3
@@ -72,7 +72,7 @@ Music_DragonsDen_branch_eed46:
 	callchannel Music_DragonsDen_branch_eed6b
 	note __, 16
 	notetype $c, $c7
-	loopchannel 0, Music_DragonsDen_branch_eed46
+	jumpchannel Music_DragonsDen_branch_eed46
 
 Music_DragonsDen_branch_eed5e:
 	octave 4
@@ -153,7 +153,7 @@ Music_DragonsDen_branch_eed99:
 	octave 3
 	note C#, 2
 	loopchannel 16, Music_DragonsDen_branch_eed99
-	loopchannel 0, Music_DragonsDen_branch_eed78
+	jumpchannel Music_DragonsDen_branch_eed78
 
 Music_DragonsDen_Ch4:
 	togglenoise $0
@@ -168,4 +168,4 @@ Music_DragonsDen_branch_eedbd:
 	note F#, 4
 	stereopanning $f0
 	note F#, 4
-	loopchannel 0, Music_DragonsDen_branch_eedbd
+	jumpchannel Music_DragonsDen_branch_eedbd

@@ -45,7 +45,7 @@ Music_LookKimonoGirl_branch_f79d7:
 	intensity $54
 	octave 3
 	note A_, 1
-	loopchannel 0, Music_LookKimonoGirl_branch_f79d7
+	jumpchannel Music_LookKimonoGirl_branch_f79d7
 
 Music_LookKimonoGirl_branch_f7a13:
 	intensity $b4
@@ -149,7 +149,7 @@ Music_LookKimonoGirl_branch_f7a5f:
 	note E_, 1
 	note D_, 1
 	callchannel Music_LookKimonoGirl_branch_f7a94
-	loopchannel 0, Music_LookKimonoGirl_branch_f7a5f
+	jumpchannel Music_LookKimonoGirl_branch_f7a5f
 
 Music_LookKimonoGirl_branch_f7a94:
 	octave 5
@@ -260,4 +260,4 @@ Music_LookKimonoGirl_branch_f7aec:
 	note E_, 2
 	note D_, 8
 	note E_, 8
-	loopchannel 0, Music_LookKimonoGirl_branch_f7aec
+	jumpchannel Music_LookKimonoGirl_branch_f7aec

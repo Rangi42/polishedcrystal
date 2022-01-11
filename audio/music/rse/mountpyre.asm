@@ -95,7 +95,7 @@ Music_MountPyreRSE_Ch1_loop_3:
 	notetype $6, $a3
 	note __, 16
 	note __, 15
-	loopchannel 0, Music_MountPyreRSE_Ch1_loop_main
+	jumpchannel Music_MountPyreRSE_Ch1_loop_main
 
 Music_MountPyreRSE_Ch2:
 	dutycycle 2
@@ -168,7 +168,7 @@ Music_MountPyreRSE_Ch2_loop_1:
 	note A#, 4
 	notetype $c, $a3
 	note __, 14
-	loopchannel 0, Music_MountPyreRSE_Ch2_loop_main
+	jumpchannel Music_MountPyreRSE_Ch2_loop_main
 
 Music_MountPyreRSE_Ch2_branch_1:
 	octave 3
@@ -361,7 +361,7 @@ Music_MountPyreRSE_Ch3_loop_2:
 	notetype $6, $24
 	note __, 13
 	note __, 13
-	loopchannel 0, Music_MountPyreRSE_Ch3_loop_main
+	jumpchannel Music_MountPyreRSE_Ch3_loop_main
 
 Music_MountPyreRSE_Ch4:
 	togglenoise $3
@@ -397,7 +397,7 @@ Music_MountPyreRSE_Ch4_loop_4:
 	note __, 16
 	note __, 8
 	note B_, 8
-	loopchannel 0, Music_MountPyreRSE_Ch4_loop_main
+	jumpchannel Music_MountPyreRSE_Ch4_loop_main
 
 Music_MountPyreRSE_Ch4_branch_1:
 	stereopanning $f0

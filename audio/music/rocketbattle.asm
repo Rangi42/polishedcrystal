@@ -387,7 +387,7 @@ Music_RocketBattle_branch_e9cc5:
 	note D#, 2
 	note D_, 2
 	note F_, 2
-	loopchannel 0, Music_RocketBattle_branch_e9c02
+	jumpchannel Music_RocketBattle_branch_e9c02
 
 Music_RocketBattle_Ch2:
 	dutycycle $3
@@ -654,7 +654,7 @@ Music_RocketBattle_branch_e9e5a:
 	note A#, 8
 	intensity $c7
 	note A#, 8
-	loopchannel 0, Music_RocketBattle_branch_e9db1
+	jumpchannel Music_RocketBattle_branch_e9db1
 
 Music_RocketBattle_branch_e9ea0:
 	intensity $c6
@@ -927,7 +927,7 @@ Music_RocketBattle_branch_e9fa8:
 	octave 3
 	note F_, 2
 	callchannel Music_RocketBattle_branch_ea01d
-	loopchannel 0, Music_RocketBattle_branch_e9efe
+	jumpchannel Music_RocketBattle_branch_e9efe
 
 Music_RocketBattle_branch_e9fe6:
 	octave 2

@@ -37,7 +37,7 @@ Music_Evolution_branch_f0713:
 	callchannel Music_Evolution_branch_f0743
 	notetype $c, $a4
 	note G#, 4
-	loopchannel 0, Music_Evolution_branch_f0713
+	jumpchannel Music_Evolution_branch_f0713
 
 Music_Evolution_branch_f0737:
 	notetype $c, $a2
@@ -91,7 +91,7 @@ Music_Evolution_branch_f0761:
 	octave 4
 	note C#, 4
 	octave 3
-	loopchannel 0, Music_Evolution_branch_f0761
+	jumpchannel Music_Evolution_branch_f0761
 
 Music_Evolution_branch_f0787:
 	notetype $c, $b2
@@ -134,7 +134,7 @@ Music_Evolution_branch_f07a3:
 	callchannel Music_Evolution_branch_f07d5
 	octave 4
 	note C#, 4
-	loopchannel 0, Music_Evolution_branch_f07a3
+	jumpchannel Music_Evolution_branch_f07a3
 
 Music_Evolution_branch_f07bf:
 	octave 2
@@ -196,4 +196,4 @@ Music_Evolution_branch_f07f0:
 	note E_, 2
 	note E_, 2
 	note E_, 2
-	loopchannel 0, Music_Evolution_branch_f07f0
+	jumpchannel Music_Evolution_branch_f07f0

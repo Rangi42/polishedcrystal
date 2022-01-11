@@ -214,7 +214,7 @@ Music_MountChimneyRSE_Ch1_loop_4:
 	note D#, 1
 	callchannel Music_MountChimneyRSE_blank
 	note __, 2
-	loopchannel 0, Music_MountChimneyRSE_Ch1_loop_main
+	jumpchannel Music_MountChimneyRSE_Ch1_loop_main
 
 Music_MountChimneyRSE_Ch1_branch_1:
 	notetype $6, $a2
@@ -573,7 +573,7 @@ Music_MountChimneyRSE_Ch2_loop:
 	callchannel Music_MountChimneyRSE_blank
 	dutycycle 3
 	note __, 2
-	loopchannel 0, Music_MountChimneyRSE_Ch2_loop
+	jumpchannel Music_MountChimneyRSE_Ch2_loop
 
 Music_MountChimneyRSE_Ch2_branch_1:
 	notetype $6, $a2
@@ -976,7 +976,7 @@ Music_MountChimneyRSE_Ch3_loop:
 	note G#, 1
 	note __, 1
 	callchannel Music_MountChimneyRSE_blank
-	loopchannel 0, Music_MountChimneyRSE_Ch3_loop
+	jumpchannel Music_MountChimneyRSE_Ch3_loop
 
 Music_MountChimneyRSE_Ch3_branch_1:
 	octave 1
@@ -1399,7 +1399,7 @@ Music_MountChimneyRSE_Ch4_loop:
 	note C#, 1
 	note C#, 1
 	note C#, 1
-	loopchannel 0, Music_MountChimneyRSE_Ch4_loop
+	jumpchannel Music_MountChimneyRSE_Ch4_loop
 
 Music_MountChimneyRSE_Ch4_branch_1:
 	note B_, 6

@@ -180,7 +180,7 @@ Music_ElmsLab_branch_ea075:
 	intensity $b2
 	note F_, 2
 	note F_, 4
-	loopchannel 0, Music_ElmsLab_branch_ea075
+	jumpchannel Music_ElmsLab_branch_ea075
 
 Music_ElmsLab_Ch2:
 	dutycycle $3
@@ -347,7 +347,7 @@ Music_ElmsLab_branch_ea14f:
 	intensity $c4
 	octave 3
 	note E_, 2
-	loopchannel 0, Music_ElmsLab_branch_ea14f
+	jumpchannel Music_ElmsLab_branch_ea14f
 
 Music_ElmsLab_Ch3:
 	stereopanning $f
@@ -524,7 +524,7 @@ Music_ElmsLab_branch_ea216:
 	note C_, 2
 	note F_, 2
 	note A_, 2
-	loopchannel 0, Music_ElmsLab_branch_ea216
+	jumpchannel Music_ElmsLab_branch_ea216
 
 Music_ElmsLab_Ch4:
 	stereopanning $f0
@@ -534,4 +534,4 @@ Music_ElmsLab_Ch4:
 	note __, 2
 Music_ElmsLab_branch_ea2b9:
 	note G_, 4
-	loopchannel 0, Music_ElmsLab_branch_ea2b9
+	jumpchannel Music_ElmsLab_branch_ea2b9

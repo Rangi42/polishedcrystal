@@ -227,7 +227,7 @@ Music_KantoGymBattle_branch_ec78b:
 	intensity $4c
 	octave 3
 	note D_, 4
-	loopchannel 0, Music_KantoGymBattle_branch_ec78b
+	jumpchannel Music_KantoGymBattle_branch_ec78b
 
 Music_KantoGymBattle_branch_ec832:
 	intensity $b5
@@ -401,7 +401,7 @@ Music_KantoGymBattle_branch_ec894:
 	note A#, 6
 	octave 3
 	note A_, 4
-	loopchannel 0, Music_KantoGymBattle_branch_ec894
+	jumpchannel Music_KantoGymBattle_branch_ec894
 
 Music_KantoGymBattle_branch_ec907:
 	dutycycle $2
@@ -607,4 +607,4 @@ Music_KantoGymBattle_branch_ec9e5:
 	octave 3
 	note D#, 2
 	note F_, 2
-	loopchannel 0, Music_KantoGymBattle_branch_ec965
+	jumpchannel Music_KantoGymBattle_branch_ec965

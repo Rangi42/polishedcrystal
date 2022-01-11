@@ -114,7 +114,7 @@ Music_BattleTowerLobby_branch_1794a9:
 	notetype $c, $75
 	octave 2
 	note B_, 4
-	loopchannel 0, Music_BattleTowerLobby_branch_1794a9
+	jumpchannel Music_BattleTowerLobby_branch_1794a9
 
 Music_BattleTowerLobby_Ch2:
 	dutycycle $2
@@ -198,7 +198,7 @@ Music_BattleTowerLobby_branch_179544:
 	note B_, 1
 	octave 4
 	note D#, 1
-	loopchannel 0, Music_BattleTowerLobby_branch_179544
+	jumpchannel Music_BattleTowerLobby_branch_179544
 
 Music_BattleTowerLobby_Ch3:
 	notetype $c, $11
@@ -294,7 +294,7 @@ Music_BattleTowerLobby_branch_1795b1:
 	note E_, 2
 	note D#, 2
 	note F#, 2
-	loopchannel 0, Music_BattleTowerLobby_branch_1795b1
+	jumpchannel Music_BattleTowerLobby_branch_1795b1
 
 Music_BattleTowerLobby_Ch4:
 	togglenoise $0
@@ -305,4 +305,4 @@ Music_BattleTowerLobby_branch_179612:
 	note F_, 4
 	note F_, 2
 	note F_, 4
-	loopchannel 0, Music_BattleTowerLobby_branch_179612
+	jumpchannel Music_BattleTowerLobby_branch_179612

@@ -536,7 +536,7 @@ Music_TrainerBattleDPPt_Ch1_loop:
 	note G_, 2
 	note C#, 2
 	note F_, 2
-	loopchannel 0, Music_TrainerBattleDPPt_Ch1_loop
+	jumpchannel Music_TrainerBattleDPPt_Ch1_loop
 
 Music_TrainerBattleDPPt_Ch2:
 	dutycycle 3
@@ -1020,7 +1020,7 @@ Music_TrainerBattleDPPt_Ch2_loop:
 	note C#, 2
 	note F_, 2
 	dutycycle 3
-	loopchannel 0, Music_TrainerBattleDPPt_Ch2_loop
+	jumpchannel Music_TrainerBattleDPPt_Ch2_loop
 
 Music_TrainerBattleDPPt_Ch3:
 	intensity $19
@@ -1797,7 +1797,7 @@ Music_TrainerBattleDPPt_Ch3_loop:
 	note C#, 2
 	octave 2
 	note A#, 2
-	loopchannel 0, Music_TrainerBattleDPPt_Ch3_loop
+	jumpchannel Music_TrainerBattleDPPt_Ch3_loop
 
 Music_TrainerBattleDPPt_Ch4:
 	togglenoise 3
@@ -2303,4 +2303,4 @@ Music_TrainerBattleDPPt_Ch4_loop:
 	note C_, 2
 	note C_, 2
 	note C_, 2
-	loopchannel 0, Music_TrainerBattleDPPt_Ch4_loop
+	jumpchannel Music_TrainerBattleDPPt_Ch4_loop

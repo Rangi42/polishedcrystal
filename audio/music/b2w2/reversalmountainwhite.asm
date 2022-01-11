@@ -260,7 +260,7 @@ Music_ReversalMountainWhite2_Ch1_loop:
 	note C_, 2
 	octave 3
 	note A_, 2
-	loopchannel 0, Music_ReversalMountainWhite2_Ch1_loop
+	jumpchannel Music_ReversalMountainWhite2_Ch1_loop
 
 Music_ReversalMountainWhite2_Ch1_branch_1:
 	octave 4
@@ -530,7 +530,7 @@ Music_ReversalMountainWhite2_Ch2_loop:
 	note C_, 2
 	octave 3
 	note A_, 2
-	loopchannel 0, Music_ReversalMountainWhite2_Ch2_loop
+	jumpchannel Music_ReversalMountainWhite2_Ch2_loop
 
 Music_ReversalMountainWhite2_Ch3:
 	stereopanning $f0
@@ -962,7 +962,7 @@ Music_ReversalMountainWhite2_Ch3_loop:
 	note A_, 1
 	intensity $35
 	note A_, 1
-	loopchannel 0, Music_ReversalMountainWhite2_Ch3_loop
+	jumpchannel Music_ReversalMountainWhite2_Ch3_loop
 
 Music_ReversalMountainWhite2_Ch4:
 	stereopanning $f
@@ -1015,7 +1015,7 @@ Music_ReversalMountainWhite2_Ch4_loop:
 	note __, 16
 	note __, 16
 	note __, 16
-	loopchannel 0, Music_ReversalMountainWhite2_Ch4_loop
+	jumpchannel Music_ReversalMountainWhite2_Ch4_loop
 
 Music_ReversalMountainWhite2_Ch4_branch_1:
 	note D#, 2

@@ -60,7 +60,7 @@ Music_NationalPark_branch_f5504:
 	note D_, 7
 	notetype $c, $77
 	note __, 4
-	loopchannel 0, Music_NationalPark_branch_f5504
+	jumpchannel Music_NationalPark_branch_f5504
 
 Music_NationalPark_branch_f554a:
 	octave 2
@@ -368,7 +368,7 @@ Music_NationalPark_branch_f565d:
 	octave 2
 	note D#, 2
 	note D_, 2
-	loopchannel 0, Music_NationalPark_branch_f565d
+	jumpchannel Music_NationalPark_branch_f565d
 
 Music_NationalPark_branch_f56b8:
 	octave 2
@@ -511,7 +511,7 @@ Music_NationalPark_branch_f572e:
 	octave 4
 	note G#, 1
 	note A#, 1
-	loopchannel 0, Music_NationalPark_branch_f572e
+	jumpchannel Music_NationalPark_branch_f572e
 
 Music_NationalPark_branch_f5756:
 	octave 5
@@ -654,4 +654,4 @@ Music_NationalPark_branch_f57c8:
 	note D_, 1
 	note A#, 1
 	note D#, 1
-	loopchannel 0, Music_NationalPark_branch_f57bd
+	jumpchannel Music_NationalPark_branch_f57bd

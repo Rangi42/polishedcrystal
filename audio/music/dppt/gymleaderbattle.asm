@@ -411,7 +411,7 @@ Music_GymLeaderBattleDPPt_Ch1_loop:
 	note A#, 2
 	note F#, 2
 	dutycycle 1
-	loopchannel 0, Music_GymLeaderBattleDPPt_Ch1_loop
+	jumpchannel Music_GymLeaderBattleDPPt_Ch1_loop
 
 Music_GymLeaderBattleDPPt_Ch2:
 	dutycycle 1
@@ -906,7 +906,7 @@ Music_GymLeaderBattleDPPt_Ch2_loop:
 	note A#, 1
 	intensity $C4
 	dutycycle 1
-	loopchannel 0, Music_GymLeaderBattleDPPt_Ch2_loop
+	jumpchannel Music_GymLeaderBattleDPPt_Ch2_loop
 
 Music_GymLeaderBattleDPPt_Ch3:
 	notetype $C, $19
@@ -1498,7 +1498,7 @@ Music_GymLeaderBattleDPPt_Ch3_loop:
 	note D#, 4
 	notetype $C, $19
 	octave 2
-	loopchannel 0, Music_GymLeaderBattleDPPt_Ch3_loop
+	jumpchannel Music_GymLeaderBattleDPPt_Ch3_loop
 
 Music_GymLeaderBattleDPPt_Ch4:
 	togglenoise 0
@@ -2108,4 +2108,4 @@ Music_GymLeaderBattleDPPt_Ch4_loop:
 	note D#, 1
 	note D#, 1
 	note D#, 1
-	loopchannel 0, Music_GymLeaderBattleDPPt_Ch4_loop
+	jumpchannel Music_GymLeaderBattleDPPt_Ch4_loop

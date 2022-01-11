@@ -359,7 +359,7 @@ Music_MountCoronetDPPt_Ch1_branch_2:
 	note F_, 4
 	octave 4
 	note D_, 2
-	loopchannel 0, Music_MountCoronetDPPt_Ch1_loop
+	jumpchannel Music_MountCoronetDPPt_Ch1_loop
 ;	notetype $6, $84
 ;	octave 5
 ;	note G_, 1
@@ -770,7 +770,7 @@ Music_MountCoronetDPPt_Ch2_branch_2:
 	note G#, 4
 	intensity $77
 	note G#, 6
-	loopchannel 0, Music_MountCoronetDPPt_Ch2_loop
+	jumpchannel Music_MountCoronetDPPt_Ch2_loop
 ;	octave 4
 ;	intensity $80
 ;	note G_, 6
@@ -1089,4 +1089,4 @@ Music_MountCoronetDPPt_Ch3_branch_1:
 	note C#, 4
 	note __, 12
 	note __, 16
-	loopchannel 0, Music_MountCoronetDPPt_Ch3_branch_0
+	jumpchannel Music_MountCoronetDPPt_Ch3_branch_0

@@ -157,7 +157,7 @@ Music_BikeRiding_branch_7dbc9:
 	note G_, 12
 	intensity $b5
 	vibrato $8, $14
-	loopchannel 0, Music_BikeRiding_branch_7dbc9
+	jumpchannel Music_BikeRiding_branch_7dbc9
 Music_BikeRiding_Ch2:
 	dutycycle 2
 	vibrato $6, $15
@@ -303,7 +303,7 @@ Music_BikeRiding_branch_7dc75:
 	notetype $c, $c7
 	note B_, 12
 	notetype $c, $c3
-	loopchannel 0, Music_BikeRiding_branch_7dc75
+	jumpchannel Music_BikeRiding_branch_7dc75
 Music_BikeRiding_Ch3:
 	notetype $c, $13
 	note __, 2
@@ -641,7 +641,7 @@ Music_BikeRiding_branch_7dd17:
 	octave 4
 	note F_, 1
 	note __, 1
-	loopchannel 0, Music_BikeRiding_branch_7dd17
+	jumpchannel Music_BikeRiding_branch_7dd17
 Music_BikeRiding_Ch4:
 	togglenoise $1
 	notetype $c
@@ -666,7 +666,7 @@ Music_BikeRiding_branch_7de6a:
 	callchannel Music_BikeRiding_branch_7dea7
 	callchannel Music_BikeRiding_branch_7dea7
 	callchannel Music_BikeRiding_branch_7dea7
-	loopchannel 0, Music_BikeRiding_branch_7de6a
+	jumpchannel Music_BikeRiding_branch_7de6a
 Music_BikeRiding_branch_7dea7:
 	note __, 2
 	note G#, 2

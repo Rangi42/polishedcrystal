@@ -62,7 +62,7 @@ Music_UnionCave_branch_f5c91:
 	tone $0010
 	callchannel Music_UnionCave_branch_f5ccf
 	tone $0002
-	loopchannel 0, Music_UnionCave_branch_f5c7b
+	jumpchannel Music_UnionCave_branch_f5c7b
 
 Music_UnionCave_branch_f5ccf:
 	octave 2
@@ -131,7 +131,7 @@ Music_UnionCave_branch_f5cda:
 	vibrato $1, $41
 	callchannel Music_UnionCave_branch_f5d52
 	vibrato $8, $24
-	loopchannel 0, Music_UnionCave_branch_f5cda
+	jumpchannel Music_UnionCave_branch_f5cda
 
 Music_UnionCave_branch_f5d34:
 	octave 4
@@ -234,7 +234,7 @@ Music_UnionCave_branch_f5d8d:
 Music_UnionCave_branch_f5d9c:
 	note __, 16
 	loopchannel 4, Music_UnionCave_branch_f5d9c
-	loopchannel 0, Music_UnionCave_branch_f5d5d
+	jumpchannel Music_UnionCave_branch_f5d5d
 
 Music_UnionCave_Ch4:
 	togglenoise $1
@@ -254,4 +254,4 @@ Music_UnionCave_branch_f5da9:
 	stereopanning $f0
 	note G#, 4
 	note __, 8
-	loopchannel 0, Music_UnionCave_branch_f5da9
+	jumpchannel Music_UnionCave_branch_f5da9

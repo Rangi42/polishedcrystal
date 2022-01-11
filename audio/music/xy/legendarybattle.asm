@@ -313,7 +313,7 @@ Music_LegendaryBattleXY_Ch1_loop_1:
 	note F_, 3
 	intensity $87
 	note F_, 4
-	loopchannel 0, Music_LegendaryBattleXY_Ch1_loop_main
+	jumpchannel Music_LegendaryBattleXY_Ch1_loop_main
 
 Music_LegendaryBattleXY_Ch2:
 	dutycycle $3
@@ -642,7 +642,7 @@ Music_LegendaryBattleXY_Ch2_loop_main:
 	note D#, 4
 	intensity $87
 	note D#, 4
-	loopchannel 0, Music_LegendaryBattleXY_Ch2_loop_main
+	jumpchannel Music_LegendaryBattleXY_Ch2_loop_main
 
 Music_LegendaryBattleXY_Ch3:
 	notetype $c, $19
@@ -828,4 +828,4 @@ Music_LegendaryBattleXY_Ch3_loop_12:
 	octave 2
 	note F_, 2
 	loopchannel 32, Music_LegendaryBattleXY_Ch3_loop_12
-	loopchannel 0, Music_LegendaryBattleXY_Ch3_loop_main
+	jumpchannel Music_LegendaryBattleXY_Ch3_loop_main

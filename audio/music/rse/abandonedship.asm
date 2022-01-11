@@ -253,7 +253,7 @@ Music_AbandonedShipRSE_Ch1_loop:
 	note B_, 3
 	note A#, 3
 	note G#, 2
-	loopchannel 0, Music_AbandonedShipRSE_Ch1_loop
+	jumpchannel Music_AbandonedShipRSE_Ch1_loop
 
 Music_AbandonedShipRSE_Ch2:
 	dutycycle $3
@@ -431,7 +431,7 @@ Music_AbandonedShipRSE_Ch2_loop:
 	note D#, 2
 	note __, 1
 	note C#, 2
-	loopchannel 0, Music_AbandonedShipRSE_Ch2_loop
+	jumpchannel Music_AbandonedShipRSE_Ch2_loop
 
 Music_AbandonedShipRSE_Ch2_branch_1:
 	notetype $c, $a0
@@ -594,7 +594,7 @@ Music_AbandonedShipRSE_Ch3_loop:
 	note A#, 2
 	note __, 1
 	note G#, 2
-	loopchannel 0, Music_AbandonedShipRSE_Ch3_loop
+	jumpchannel Music_AbandonedShipRSE_Ch3_loop
 
 Music_AbandonedShipRSE_Ch4:
 	stereopanning $f
@@ -675,7 +675,7 @@ Music_AbandonedShipRSE_branch_2:
 	note D_, 1
 	note D_, 1
 	note D_, 1
-	loopchannel 0, Music_AbandonedShipRSE_branch_1
+	jumpchannel Music_AbandonedShipRSE_branch_1
 
 Music_AbandonedShipRSE_branch_eeb6b:
 	note D_, 2

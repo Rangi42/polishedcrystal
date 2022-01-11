@@ -115,7 +115,7 @@ Music_Surf_branch_f519e:
 	note B_, 2
 	octave 3
 	note D#, 2
-	loopchannel 0, Music_Surf_branch_f519e
+	jumpchannel Music_Surf_branch_f519e
 
 Music_Surf_branch_f5233:
 	notetype $c, $a7
@@ -440,7 +440,7 @@ Music_Surf_branch_f5333:
 	note G#, 4
 	note A#, 4
 	note B_, 4
-	loopchannel 0, Music_Surf_branch_f5317
+	jumpchannel Music_Surf_branch_f5317
 
 Music_Surf_branch_f53b2:
 	octave 1
@@ -683,7 +683,7 @@ Music_Surf_branch_f540c:
 	note D#, 8
 	octave 2
 	note B_, 4
-	loopchannel 0, Music_Surf_branch_f540c
+	jumpchannel Music_Surf_branch_f540c
 
 Music_Surf_branch_f54c8:
 	octave 3

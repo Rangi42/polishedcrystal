@@ -167,7 +167,7 @@ Music_SurfingPikachu_branch_82d1a:
 	note D#, 1
 	note E_, 8
 	dutycycle 3
-	loopchannel 0, Music_SurfingPikachu_branch_82d1a
+	jumpchannel Music_SurfingPikachu_branch_82d1a
 Music_SurfingPikachu_Ch2:
 	dutycycle 3
 	vibrato $6, $15
@@ -314,7 +314,7 @@ Music_SurfingPikachu_branch_82de0:
 	note B_, 1
 	octave 4
 	note C#, 1
-	loopchannel 0, Music_SurfingPikachu_branch_82de0
+	jumpchannel Music_SurfingPikachu_branch_82de0
 Music_SurfingPikachu_Ch3:
 	notetype $c, $10
 	octave 4
@@ -689,4 +689,4 @@ Music_SurfingPikachu_branch_82ea0:
 	note __, 1
 	note D#, 1
 	note __, 1
-	loopchannel 0, Music_SurfingPikachu_branch_82ea0
+	jumpchannel Music_SurfingPikachu_branch_82ea0

@@ -612,7 +612,7 @@ Music_GameCornerDPPt_Ch1_loop:
 	note A_, 1
 	note A_, 1
 	note A_, 2
-	loopchannel 0, Music_GameCornerDPPt_Ch1_loop
+	jumpchannel Music_GameCornerDPPt_Ch1_loop
 
 Music_GameCornerDPPt_Ch2:
 	notetype $C, $C7
@@ -1282,7 +1282,7 @@ Music_GameCornerDPPt_Ch2_loop:
 	intensity $C7
 	note D_, 16
 	note __, 4
-	loopchannel 0, Music_GameCornerDPPt_Ch2_loop
+	jumpchannel Music_GameCornerDPPt_Ch2_loop
 
 Music_GameCornerDPPt_Ch3:
 	stereopanning $f0
@@ -2190,7 +2190,7 @@ Music_GameCornerDPPt_Ch3_loop:
 	note C_, 1
 	note __, 1
 	note C_, 4
-	loopchannel 0, Music_GameCornerDPPt_Ch3_loop
+	jumpchannel Music_GameCornerDPPt_Ch3_loop
 
 Music_GameCornerDPPt_Ch4:
 	togglenoise 3
@@ -2461,4 +2461,4 @@ Music_GameCornerDPPt_Ch4_loop:
 	note A#, 16
 	note __, 16
 	note __, 4
-	loopchannel 0, Music_GameCornerDPPt_Ch4_loop
+	jumpchannel Music_GameCornerDPPt_Ch4_loop

@@ -82,7 +82,7 @@ Music_CeladonCity_branch_f437d:
 	note A_, 1
 	note G_, 1
 	note A_, 8
-	loopchannel 0, Music_CeladonCity_branch_f436c
+	jumpchannel Music_CeladonCity_branch_f436c
 
 Music_CeladonCity_branch_f43cc:
 	note D_, 2
@@ -212,7 +212,7 @@ Music_CeladonCity_branch_f441a:
 	note A_, 1
 	octave 5
 	note D_, 16
-	loopchannel 0, Music_CeladonCity_branch_f441a
+	jumpchannel Music_CeladonCity_branch_f441a
 
 Music_CeladonCity_branch_f4463:
 	intensity $b2
@@ -354,7 +354,7 @@ Music_CeladonCity_branch_f44a1:
 	note E_, 2
 	note D_, 2
 	note __, 6
-	loopchannel 0, Music_CeladonCity_branch_f4495
+	jumpchannel Music_CeladonCity_branch_f4495
 
 Music_CeladonCity_branch_f44fd:
 	octave 2
