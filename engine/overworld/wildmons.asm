@@ -1065,6 +1065,7 @@ RandomPhoneWildMon:
 	ld [wNamedObjectIndex], a
 	ld a, [hl]
 	ld [wCurForm], a
+	ld [wNamedObjectIndex + 1], a
 	call GetPokemonName
 	ld hl, wStringBuffer1
 	ld de, wStringBuffer4
@@ -1119,7 +1120,7 @@ RandomPhoneMon:
 	bit TRNTYPE_NICKNAME, b
 	jr nz, .got_mon
 	; TRAINERTYPE_NORMAL uses 2 bytes per mon
-	ld c, 2
+	ld c, 3
 	; TRAINERTYPE_ITEM uses 1 more byte
 	bit TRNTYPE_ITEM, b
 	jr z, .no_item
@@ -1137,10 +1138,9 @@ RandomPhoneMon:
 	inc c
 	inc c
 .no_dvs
-	; TRAINERTYPE_PERSONALITY uses 2 more bytes
+	; TRAINERTYPE_PERSONALITY uses 1 more byte
 	bit TRNTYPE_PERSONALITY, b
 	jr z, .no_personality
-	inc c
 	inc c
 .no_personality
 	; TRAINERTYPE_MOVES uses 4 more bytes

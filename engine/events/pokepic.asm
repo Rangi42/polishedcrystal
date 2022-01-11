@@ -57,7 +57,7 @@ Paintingpic::
 	call UpdateTimePals
 	ld de, PaintingFrameGFX
 	ld hl, vTiles0 tile ("┌" - 3)
-	lb bc, BANK(PaintingFrameGFX), 9
+	lb bc, BANK(PaintingFrameGFX), 11
 	call Get2bpp
 	ld hl, PokepicMenuDataHeader
 	call CopyMenuHeader

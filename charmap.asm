@@ -44,10 +44,10 @@ BATTLEEXTRA_GFX_START EQU $5f
 	charmap "<FULLHP>", $6d
 	charmap "<HPEND>",  $6e
 
-	charmap "_",        $6f
-	charmap "◢",        $70
-	charmap "—",        $71
-	charmap "◣",        $72
+	charmap "◢",        $6f
+	charmap "—",        $70
+	charmap "◣",        $71
+	charmap "<NONO>",   $72
 
 	charmap "<XP1>",    $73
 	charmap "<XP2>",    $74
@@ -198,20 +198,20 @@ FIRST_REGULAR_TEXT_CHAR EQU $7f
 	charmap "…",        $f0
 	charmap "<PHONE>",  $f1
 	charmap "<BLACK>",  $f2
-	charmap "<NONO>",   $f3
-	charmap "′",        $f4
-	charmap "″",        $f5
-	charmap "★",        $f6
-	charmap "↑",        $f7
-	charmap "↓",        $f8
-	charmap "<UNUSED>", $f9
+	charmap "↑",        $f3
+	charmap "↓",        $f4
+	charmap "★",        $f5
+	charmap "′",        $f6
+	charmap "″",        $f7
 
 ; frame:
-	charmap "┌",        $fa
-	charmap "─",        $fb
-	charmap "┐",        $fc
-	charmap "│",        $fd
-	charmap "└",        $fe
+	charmap "┌",        $f8
+	charmap "─",        $f9
+	charmap "┐",        $fa
+	charmap "│",        $fb
+	charmap "┃",        $fc
+	charmap "└",        $fd
+	charmap "━",        $fe
 	charmap "┘",        $ff
 
 
