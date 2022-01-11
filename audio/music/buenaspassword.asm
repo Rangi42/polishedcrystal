@@ -136,7 +136,7 @@ Music_BuenasPassword_branch_17816b:
 	note __, 1
 	note G_, 1
 	note __, 1
-	loopchannel 0, Music_BuenasPassword_branch_17816b
+	jumpchannel Music_BuenasPassword_branch_17816b
 
 Music_BuenasPassword_branch_178204:
 	stereopanning $f
@@ -269,7 +269,7 @@ Music_BuenasPassword_branch_17823c:
 	note G_, 1
 	note __, 1
 	intensity $a5
-	loopchannel 0, Music_BuenasPassword_branch_17823c
+	jumpchannel Music_BuenasPassword_branch_17823c
 
 Music_BuenasPassword_branch_1782a4:
 	octave 3
@@ -510,7 +510,7 @@ Music_BuenasPassword_branch_178315:
 	note __, 1
 	note G_, 1
 	note __, 1
-	loopchannel 0, Music_BuenasPassword_branch_178315
+	jumpchannel Music_BuenasPassword_branch_178315
 
 Music_BuenasPassword_branch_1783a7:
 	octave 2
@@ -590,7 +590,7 @@ Music_BuenasPassword_branch_1783d9:
 	note D_, 2
 	note D_, 1
 	note D_, 1
-	loopchannel 0, Music_BuenasPassword_branch_1783d9
+	jumpchannel Music_BuenasPassword_branch_1783d9
 
 Music_BuenasPassword_branch_17840c:
 	stereopanning $ff

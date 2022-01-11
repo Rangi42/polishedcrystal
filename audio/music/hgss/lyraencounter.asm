@@ -183,7 +183,7 @@ Music_LyraEncounterHGSS_Ch1_loop:
 	note D_, 1
 	note D#, 2
 	note F_, 3
-	loopchannel 0, Music_LyraEncounterHGSS_Ch1_loop
+	jumpchannel Music_LyraEncounterHGSS_Ch1_loop
 
 Music_LyraEncounterHGSS_Ch2:
 	dutycycle 2
@@ -295,7 +295,7 @@ Music_LyraEncounterHGSS_Ch2_loop:
 	intensity $b7
 	note A#, 9
 	note __, 8
-	loopchannel 0, Music_LyraEncounterHGSS_Ch2_loop
+	jumpchannel Music_LyraEncounterHGSS_Ch2_loop
 
 Music_LyraEncounterHGSS_Ch3:
 	notetype $c, $15
@@ -484,7 +484,7 @@ Music_LyraEncounterHGSS_Ch3_loop:
 	octave 3
 	note C_, 2
 	note D_, 3
-	loopchannel 0, Music_LyraEncounterHGSS_Ch3_loop
+	jumpchannel Music_LyraEncounterHGSS_Ch3_loop
 
 Music_LyraEncounterHGSS_Ch4:
 	togglenoise $3
@@ -508,4 +508,4 @@ Music_LyraEncounterHGSS_Ch4_loop:
 	note C_, 4
 	note D#, 2
 	note D#, 2
-	loopchannel 0, Music_LyraEncounterHGSS_Ch4_loop
+	jumpchannel Music_LyraEncounterHGSS_Ch4_loop

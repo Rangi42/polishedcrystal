@@ -343,7 +343,7 @@ Music_FinalPokemonBW_Ch1_loop:
 	note D#, 2
 	octave 5
 	note C#, 2
-	loopchannel 0, Music_FinalPokemonBW_Ch1_loop
+	jumpchannel Music_FinalPokemonBW_Ch1_loop
 
 Music_FinalPokemonBW_Ch1_branch_1:
 	octave 3
@@ -622,7 +622,7 @@ Music_FinalPokemonBW_Ch2_loop:
 	note D_, 1
 	intensity $d7
 	note D_, 8
-	loopchannel 0, Music_FinalPokemonBW_Ch2_loop
+	jumpchannel Music_FinalPokemonBW_Ch2_loop
 
 Music_FinalPokemonBW_Ch2_branch_1:
 	octave 5
@@ -825,7 +825,7 @@ Music_FinalPokemonBW_Ch3_loop:
 	note __, 1
 	note D_, 16
 	note D_, 16
-	loopchannel 0, Music_FinalPokemonBW_Ch3_loop
+	jumpchannel Music_FinalPokemonBW_Ch3_loop
 
 Music_FinalPokemonBW_Ch3_branch_1:
 	note G_, 3
@@ -1013,7 +1013,7 @@ Music_FinalPokemonBW_Ch4_loop:
 	note D_, 1
 	note D_, 1
 	note D_, 1
-	loopchannel 0, Music_FinalPokemonBW_Ch4_loop
+	jumpchannel Music_FinalPokemonBW_Ch4_loop
 
 Music_FinalPokemonBW_Ch4_branch_1:
 	note D_, 2

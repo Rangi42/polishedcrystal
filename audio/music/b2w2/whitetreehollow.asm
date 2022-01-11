@@ -450,7 +450,7 @@ Music_WhiteTreehollowWhite2_Ch1_loop:
 	octave 5
 	intensity $a5
 	note D#, 8
-	loopchannel 0, Music_WhiteTreehollowWhite2_Ch1_loop
+	jumpchannel Music_WhiteTreehollowWhite2_Ch1_loop
 
 Music_WhiteTreehollowWhite2_Ch1_branch_1:
 	intensity $62
@@ -702,7 +702,7 @@ Music_WhiteTreehollowWhite2_Ch2_loop:
 	note G_, 1
 	note G#, 1
 	note A#, 1
-	loopchannel 0, Music_WhiteTreehollowWhite2_Ch2
+	jumpchannel Music_WhiteTreehollowWhite2_Ch2
 
 Music_WhiteTreehollowWhite2_Ch2_branch_1:
 	intensity $80
@@ -980,7 +980,7 @@ Music_WhiteTreehollowWhite2_Ch3:
 	octave 2
 	note A#, 1
 	note A#, 3
-	loopchannel 0, Music_WhiteTreehollowWhite2_Ch3
+	jumpchannel Music_WhiteTreehollowWhite2_Ch3
 
 Music_WhiteTreehollowWhite2_Ch4:
 	togglenoise $3
@@ -1016,4 +1016,4 @@ Music_WhiteTreehollowWhite2_Ch4_loop_3:
 	note C_, 1
 	note C_, 3
 	loopchannel 6, Music_WhiteTreehollowWhite2_Ch4_loop_3
-	loopchannel 0, Music_WhiteTreehollowWhite2_Ch4_loop_main
+	jumpchannel Music_WhiteTreehollowWhite2_Ch4_loop_main

@@ -39,7 +39,7 @@ Music_VictoryRoad_branch_f6c94:
 Music_VictoryRoad_branch_f6cae:
 	callchannel Music_VictoryRoad_branch_f6cb9
 	loopchannel 2, Music_VictoryRoad_branch_f6cae
-	loopchannel 0, Music_VictoryRoad_branch_f6c8d
+	jumpchannel Music_VictoryRoad_branch_f6c8d
 
 Music_VictoryRoad_branch_f6cb9:
 	intensity $b2
@@ -115,7 +115,7 @@ Music_VictoryRoad_branch_f6cd3:
 	octave 5
 	note C#, 1
 	note D_, 16
-	loopchannel 0, Music_VictoryRoad_branch_f6cd3
+	jumpchannel Music_VictoryRoad_branch_f6cd3
 
 Music_VictoryRoad_branch_f6d1e:
 	octave 3
@@ -155,7 +155,7 @@ Music_VictoryRoad_branch_f6d38:
 Music_VictoryRoad_branch_f6d47:
 	callchannel Music_VictoryRoad_branch_f6d52
 	loopchannel 2, Music_VictoryRoad_branch_f6d47
-	loopchannel 0, Music_VictoryRoad_branch_f6d31
+	jumpchannel Music_VictoryRoad_branch_f6d31
 
 Music_VictoryRoad_branch_f6d52:
 	octave 3
@@ -194,4 +194,4 @@ Music_VictoryRoad_branch_f6d63:
 	note D#, 1
 	note D_, 2
 	note D#, 1
-	loopchannel 0, Music_VictoryRoad_branch_f6d63
+	jumpchannel Music_VictoryRoad_branch_f6d63

@@ -50,7 +50,7 @@ Music_MtMoonSquare_branch_f484d:
 	octave 5
 	note D_, 4
 	loopchannel 2, Music_MtMoonSquare_branch_f484d
-	loopchannel 0, Music_MtMoonSquare_branch_f4826
+	jumpchannel Music_MtMoonSquare_branch_f4826
 
 Music_MtMoonSquare_Ch2:
 	dutycycle $2
@@ -104,4 +104,4 @@ Music_MtMoonSquare_branch_f489b:
 	note D_, 4
 	notetype $c, $62
 	loopchannel 2, Music_MtMoonSquare_branch_f489b
-	loopchannel 0, Music_MtMoonSquare_branch_f4862
+	jumpchannel Music_MtMoonSquare_branch_f4862

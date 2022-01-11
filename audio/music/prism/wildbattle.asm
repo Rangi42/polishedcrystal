@@ -313,7 +313,7 @@ Music_WildBattlePrism_branch_19f26b:
 	intensity $b7
 	dutycycle 3
 	octave 2
-	loopchannel 0, Music_WildBattlePrism_branch_19f26b
+	jumpchannel Music_WildBattlePrism_branch_19f26b
 
 Music_WildBattlePrism_Ch2:
 	dutycycle $3
@@ -535,7 +535,7 @@ Music_WildBattlePrism_branch_19f167:
 	intensity $c7
 	note F_, 8
 	note D#, 8
-	loopchannel 0, Music_WildBattlePrism_branch_19f167
+	jumpchannel Music_WildBattlePrism_branch_19f167
 
 Music_WildBattlePrism_Ch3:
 	notetype $c, $14
@@ -805,4 +805,4 @@ Music_WildBattlePrism_branch_19f3ed:
 	octave 4
 	note C#, 2
 	note D_, 16
-	loopchannel 0, Music_WildBattlePrism_branch_19f3ba
+	jumpchannel Music_WildBattlePrism_branch_19f3ba

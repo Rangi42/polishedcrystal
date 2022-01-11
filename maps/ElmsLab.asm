@@ -312,7 +312,7 @@ ChikoritaPokeBallScript:
 	closetext
 	applymovement ELMSLAB_LYRA, LyraAfterTotodileMovement
 	applymovement PLAYER, AfterChikoritaMovement
-	sjump ElmDirectionsScript
+	; fallthrough
 
 ElmDirectionsScript:
 	turnobject PLAYER, UP

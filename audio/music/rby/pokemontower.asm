@@ -145,7 +145,7 @@ Music_PokemonTowerRBY_branch_7f05a:
 	octave 5
 	note C_, 16
 	note C_, 16
-	loopchannel 0, Music_PokemonTowerRBY_branch_7f05a
+	jumpchannel Music_PokemonTowerRBY_branch_7f05a
 
 Music_PokemonTowerRBY_Ch2:
 	vibrato 20, 52
@@ -296,7 +296,7 @@ Music_PokemonTowerRBY_branch_7f0ee:
 	vibrato 0, 52
 	notetype 12, 167
 	note C_, 16
-	loopchannel 0, Music_PokemonTowerRBY_branch_7f0ee
+	jumpchannel Music_PokemonTowerRBY_branch_7f0ee
 
 Music_PokemonTowerRBY_Ch3:
 	vibrato 4, 17
@@ -461,4 +461,4 @@ Music_PokemonTowerRBY_branch_7f1a2:
 	note __, 1
 	note D#, 1
 	note __, 1
-	loopchannel 0, Music_PokemonTowerRBY_branch_7f1a2
+	jumpchannel Music_PokemonTowerRBY_branch_7f1a2

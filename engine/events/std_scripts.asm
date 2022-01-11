@@ -124,7 +124,7 @@ PokeCenterNurseScript:
 .nite_center
 	farwritetext NurseNiteText
 	promptbutton
-	sjump .ok
+	; fallthrough
 
 .ok
 	readvar VAR_TRAINER_STARS

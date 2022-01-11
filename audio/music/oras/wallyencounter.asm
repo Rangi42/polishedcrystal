@@ -124,7 +124,7 @@ Music_WallyEncounterORAS_Ch1_loop:
 	note G#, 2
 	note D#, 6
 	note D#, 6
-	loopchannel 0, Music_WallyEncounterORAS_Ch1_loop
+	jumpchannel Music_WallyEncounterORAS_Ch1_loop
 
 Music_WallyEncounterORAS_Ch2:
 	dutycycle $2
@@ -200,4 +200,4 @@ Music_WallyEncounterORAS_Ch2:
 	note G_, 3
 	note F_, 4
 	note D#, 16
-	loopchannel 0, Music_WallyEncounterORAS_Ch2
+	jumpchannel Music_WallyEncounterORAS_Ch2

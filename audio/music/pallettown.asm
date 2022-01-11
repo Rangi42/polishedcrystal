@@ -116,7 +116,7 @@ Music_PalletTown_branch_f4b59:
 	note G_, 1
 	intensity $1f
 	note F#, 8
-	loopchannel 0, Music_PalletTown_branch_f4b22
+	jumpchannel Music_PalletTown_branch_f4b22
 
 Music_PalletTown_Ch2:
 	vibrato $12, $44
@@ -241,7 +241,7 @@ Music_PalletTown_branch_f4be5:
 	octave 1
 	note B_, 2
 	note A_, 2
-	loopchannel 0, Music_PalletTown_branch_f4ba8
+	jumpchannel Music_PalletTown_branch_f4ba8
 
 Music_PalletTown_Ch3:
 	vibrato $14, $24
@@ -354,4 +354,4 @@ Music_PalletTown_branch_f4c2d:
 	note __, 1
 	note B_, 8
 	note A_, 8
-	loopchannel 0, Music_PalletTown_branch_f4c2d
+	jumpchannel Music_PalletTown_branch_f4c2d

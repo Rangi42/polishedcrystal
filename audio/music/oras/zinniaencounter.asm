@@ -158,7 +158,7 @@ Music_ZinniaEncounterORAS_Ch1_loop:
 	intensity $a6
 	note A_, 4
 	intensity $a3
-	loopchannel 0, Music_ZinniaEncounterORAS_Ch1_loop
+	jumpchannel Music_ZinniaEncounterORAS_Ch1_loop
 
 Music_ZinniaEncounterORAS_Ch2:
 	dutycycle 1
@@ -269,7 +269,7 @@ Music_ZinniaEncounterORAS_Ch2_loop_1:
 	note F#, 1
 	note __, 3
 	note F#, 4
-	loopchannel 0, Music_ZinniaEncounterORAS_Ch2_loop_main
+	jumpchannel Music_ZinniaEncounterORAS_Ch2_loop_main
 
 Music_ZinniaEncounterORAS_Ch2_branch_1:
 	note C#, 6
@@ -350,7 +350,7 @@ Music_ZinniaEncounterORAS_Ch3_loop:
 	note __, 3
 	note F#, 2
 	note __, 2
-	loopchannel 0, Music_ZinniaEncounterORAS_Ch3_loop
+	jumpchannel Music_ZinniaEncounterORAS_Ch3_loop
 
 Music_ZinniaEncounterORAS_Ch3_branch_1:
 	note F#, 2
@@ -493,4 +493,4 @@ Music_ZinniaEncounterORAS_Ch4_loop_4:
 	note C#, 1
 	note C#, 1
 	note C_, 4
-	loopchannel 0, Music_ZinniaEncounterORAS_Ch4_loop_main
+	jumpchannel Music_ZinniaEncounterORAS_Ch4_loop_main

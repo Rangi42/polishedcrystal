@@ -39,7 +39,7 @@ Music_ProfOak_branch_f4e22:
 	pitchoffset 0, C_
 	callchannel Music_ProfOak_branch_f4e6c
 	callchannel Music_ProfOak_branch_f4e6c
-	loopchannel 0, Music_ProfOak_branch_f4e22
+	jumpchannel Music_ProfOak_branch_f4e22
 
 Music_ProfOak_branch_f4e42:
 	octave 2
@@ -201,7 +201,7 @@ Music_ProfOak_branch_f4ebf:
 	octave 4
 	note E_, 1
 	note G#, 16
-	loopchannel 0, Music_ProfOak_branch_f4ebf
+	jumpchannel Music_ProfOak_branch_f4ebf
 
 Music_ProfOak_Ch3:
 	stereopanning $f
@@ -240,7 +240,7 @@ Music_ProfOak_branch_f4f1d:
 	pitchoffset 0, C_
 	callchannel Music_ProfOak_branch_f4f69
 	callchannel Music_ProfOak_branch_f4f69
-	loopchannel 0, Music_ProfOak_branch_f4f1d
+	jumpchannel Music_ProfOak_branch_f4f1d
 
 Music_ProfOak_branch_f4f3d:
 	note E_, 2

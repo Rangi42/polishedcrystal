@@ -90,7 +90,7 @@ Music_CherrygroveCity_branch_f5b26:
 	note A_, 4
 	octave 3
 	note C_, 4
-	loopchannel 0, Music_CherrygroveCity_branch_f5b26
+	jumpchannel Music_CherrygroveCity_branch_f5b26
 
 Music_CherrygroveCity_Ch2:
 	dutycycle $3
@@ -170,7 +170,7 @@ Music_CherrygroveCity_branch_f5b87:
 	note F_, 8
 	intensity $a7
 	note F_, 8
-	loopchannel 0, Music_CherrygroveCity_branch_f5b87
+	jumpchannel Music_CherrygroveCity_branch_f5b87
 
 Music_CherrygroveCity_Ch3:
 	notetype $c, $16
@@ -280,7 +280,7 @@ Music_CherrygroveCity_branch_f5be4:
 	note A_, 2
 	note F_, 2
 	note A_, 2
-	loopchannel 0, Music_CherrygroveCity_branch_f5be4
+	jumpchannel Music_CherrygroveCity_branch_f5be4
 
 Music_CherrygroveCity_Ch4:
 	togglenoise $3
@@ -302,4 +302,4 @@ Music_CherrygroveCity_branch_f5c4d:
 	note F#, 4
 	note C#, 2
 	note G_, 2
-	loopchannel 0, Music_CherrygroveCity_branch_f5c4d
+	jumpchannel Music_CherrygroveCity_branch_f5c4d

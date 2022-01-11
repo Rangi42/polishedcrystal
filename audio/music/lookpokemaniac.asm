@@ -25,7 +25,7 @@ Music_LookPokemaniac_branch_ebdfb:
 	note G_, 1
 	note __, 3
 	loopchannel 4, Music_LookPokemaniac_branch_ebdfb
-	loopchannel 0, Music_LookPokemaniac_branch_ebdfb
+	jumpchannel Music_LookPokemaniac_branch_ebdfb
 
 Music_LookPokemaniac_Ch2:
 	stereopanning $ff
@@ -76,7 +76,7 @@ Music_LookPokemaniac_branch_ebe38:
 	note C_, 1
 	note __, 3
 	loopchannel 2, Music_LookPokemaniac_branch_ebe38
-	loopchannel 0, Music_LookPokemaniac_branch_ebe24
+	jumpchannel Music_LookPokemaniac_branch_ebe24
 
 Music_LookPokemaniac_Ch3:
 	stereopanning $f0
@@ -95,7 +95,7 @@ Music_LookPokemaniac_branch_ebe62:
 	intensity $14
 	callchannel Music_LookPokemaniac_branch_ebe70
 	intensity $10
-	loopchannel 0, Music_LookPokemaniac_branch_ebe62
+	jumpchannel Music_LookPokemaniac_branch_ebe62
 
 Music_LookPokemaniac_branch_ebe70:
 	note A#, 6

@@ -64,17 +64,17 @@ IcePathB1FSetUpStoneTable:
 .Boulder4:
 	disappear ICEPATHB1F_BOULDER4
 	clearevent EVENT_BOULDER_IN_ICE_PATH_4A
-	sjump .FinishBoulder
+	; fallthrough
 
 .FinishBoulder:
 	pause 30
-	scall .BoulderFallsThrough
-	jumptext IcePathBoulderFellThroughText
-
-.BoulderFallsThrough:
 	playsound SFX_STRENGTH
 	earthquake 80
-	end
+	jumpthistext
+
+	text "The boulder fell"
+	line "through."
+	done
 
 IcePathB1FSkierScript:
 	faceplayer
@@ -183,9 +183,4 @@ SkierBeckySeenText:
 
 SkierBeckyBeatenText:
 	text "Achoo!"
-	done
-
-IcePathBoulderFellThroughText:
-	text "The boulder fell"
-	line "through."
 	done

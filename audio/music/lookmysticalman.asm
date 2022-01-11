@@ -154,7 +154,7 @@ Music_LookMysticalMan_branch_1784d4:
 	note E_, 2
 	note F#, 2
 	note A#, 2
-	loopchannel 0, Music_LookMysticalMan_branch_178458
+	jumpchannel Music_LookMysticalMan_branch_178458
 
 Music_LookMysticalMan_branch_1784f9:
 	note D_, 16
@@ -293,7 +293,7 @@ Music_LookMysticalMan_branch_178523:
 	note __, 1
 	note A#, 16
 	note __, 2
-	loopchannel 0, Music_LookMysticalMan_branch_178523
+	jumpchannel Music_LookMysticalMan_branch_178523
 
 Music_LookMysticalMan_branch_17859a:
 	note B_, 2
@@ -530,7 +530,7 @@ Music_LookMysticalMan_branch_178615:
 	octave 2
 	note B_, 8
 	note A#, 4
-	loopchannel 0, Music_LookMysticalMan_branch_1785df
+	jumpchannel Music_LookMysticalMan_branch_1785df
 
 Music_LookMysticalMan_Ch4:
 	togglenoise $3
@@ -578,7 +578,7 @@ Music_LookMysticalMan_branch_1786ba:
 	note D_, 1
 	note D_, 1
 	loopchannel 2, Music_LookMysticalMan_branch_1786ba
-	loopchannel 0, Music_LookMysticalMan_branch_178697
+	jumpchannel Music_LookMysticalMan_branch_178697
 
 Music_LookMysticalMan_branch_1786d3:
 	note D#, 4

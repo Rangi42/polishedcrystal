@@ -316,7 +316,7 @@ Music_MeteorFallsRSE_Ch1_loop_main:
 	note A#, 16
 	intensity $87
 	note A#, 8
-	loopchannel 0, Music_MeteorFallsRSE_Ch1_loop_main
+	jumpchannel Music_MeteorFallsRSE_Ch1_loop_main
 
 Music_MeteorFallsRSE_Ch2:
 	vibrato $6, $23
@@ -500,7 +500,7 @@ Music_MeteorFallsRSE_Ch2:
 	intensity $b7
 	note D#, 6
 	note D_, 6
-	loopchannel 0, Music_MeteorFallsRSE_Ch2
+	jumpchannel Music_MeteorFallsRSE_Ch2
 
 Music_MeteorFallsRSE_Ch3:
 	vibrato $16, $15
@@ -639,4 +639,4 @@ Music_MeteorFallsRSE_Ch3_loop_main:
 	note A#, 4
 	note G#, 4
 	note F_, 4
-	loopchannel 0, Music_MeteorFallsRSE_Ch3_loop_main
+	jumpchannel Music_MeteorFallsRSE_Ch3_loop_main

@@ -50,7 +50,7 @@ BattleTowerHallwayFollowReceptionist:
 
 .Room4:
 	applymovement BATTLETOWERHALLWAY_RECEPTIONIST, MovementData_BattleTowerHallwayWalkTo90100Room
-	sjump .EnterBattleRoom
+	; fallthrough
 
 .EnterBattleRoom:
 	stopfollow

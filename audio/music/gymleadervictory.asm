@@ -57,7 +57,7 @@ Music_GymLeaderVictory_branch_f4658:
 	note G_, 2
 	intensity $87
 	note F#, 16
-	loopchannel 0, Music_GymLeaderVictory_branch_f4658
+	jumpchannel Music_GymLeaderVictory_branch_f4658
 
 Music_GymLeaderVictory_branch_f4689:
 	intensity $91
@@ -170,7 +170,7 @@ Music_GymLeaderVictory_branch_f46d0:
 	note B_, 1
 	octave 5
 	note C#, 1
-	loopchannel 0, Music_GymLeaderVictory_branch_f46d0
+	jumpchannel Music_GymLeaderVictory_branch_f46d0
 
 Music_GymLeaderVictory_branch_f4711:
 	octave 5
@@ -304,7 +304,7 @@ Music_GymLeaderVictory_branch_f4744:
 	note B_, 2
 	octave 3
 	note C#, 2
-	loopchannel 0, Music_GymLeaderVictory_branch_f4744
+	jumpchannel Music_GymLeaderVictory_branch_f4744
 
 Music_GymLeaderVictory_branch_f479e:
 	octave 3
@@ -407,7 +407,7 @@ Music_GymLeaderVictory_branch_f47fb:
 	note D_, 2
 	note G_, 2
 	loopchannel 16, Music_GymLeaderVictory_branch_f47fb
-	loopchannel 0, Music_GymLeaderVictory_branch_f47eb
+	jumpchannel Music_GymLeaderVictory_branch_f47eb
 
 Music_GymLeaderVictory_branch_f480b:
 	note D#, 6

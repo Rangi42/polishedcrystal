@@ -315,7 +315,7 @@ Music_GymLeaderBattleRSE_Ch1_loop:
 	note E_, 8
 	intensity $A7
 	note E_, 8
-	loopchannel 0, Music_GymLeaderBattleRSE_Ch1_loop
+	jumpchannel Music_GymLeaderBattleRSE_Ch1_loop
 
 Music_GymLeaderBattleRSE_Ch2:
 	tone $0001
@@ -650,7 +650,7 @@ Music_GymLeaderBattleRSE_Ch2_loop_main:
 	callchannel Music_GymLeaderBattleRSE_Ch2_branch_3
 	callchannel Music_GymLeaderBattleRSE_Ch2_branch_2
 	callchannel Music_GymLeaderBattleRSE_Ch2_branch_2
-	loopchannel 0, Music_GymLeaderBattleRSE_Ch2_loop_main
+	jumpchannel Music_GymLeaderBattleRSE_Ch2_loop_main
 
 Music_GymLeaderBattleRSE_Ch2_branch_1:
 	dutycycle 0
@@ -841,7 +841,7 @@ Music_GymLeaderBattleRSE_Ch3_loop_4:
 	callchannel Music_GymLeaderBattleRSE_Ch3_branch_2
 	callchannel Music_GymLeaderBattleRSE_Ch3_branch_2
 	callchannel Music_GymLeaderBattleRSE_Ch3_branch_2
-	loopchannel 0, Music_GymLeaderBattleRSE_Ch3_loop_main
+	jumpchannel Music_GymLeaderBattleRSE_Ch3_loop_main
 
 Music_GymLeaderBattleRSE_Ch3_branch_1:
 	note C_, 2
@@ -925,7 +925,7 @@ Music_GymLeaderBattleRSE_Ch4_loop_4:
 	note C_, 8
 	note C_, 2
 	note C_, 6
-	loopchannel 0, Music_GymLeaderBattleRSE_Ch4_loop_main
+	jumpchannel Music_GymLeaderBattleRSE_Ch4_loop_main
 
 Music_GymLeaderBattleRSE_Ch4_branch_1:
 	note C_, 6

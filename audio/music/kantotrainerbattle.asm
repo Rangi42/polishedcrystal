@@ -460,7 +460,7 @@ Music_KantoTrainerBattle_branch_eca88:
 	intensity $b7
 	octave 4
 	note D_, 4
-	loopchannel 0, Music_KantoTrainerBattle_branch_eca88
+	jumpchannel Music_KantoTrainerBattle_branch_eca88
 
 Music_KantoTrainerBattle_Ch2:
 	pitchoffset 1, B_
@@ -912,7 +912,7 @@ Music_KantoTrainerBattle_branch_ecc41:
 	intensity $d7
 	octave 3
 	note B_, 4
-	loopchannel 0, Music_KantoTrainerBattle_branch_ecc41
+	jumpchannel Music_KantoTrainerBattle_branch_ecc41
 
 Music_KantoTrainerBattle_Ch3:
 	pitchoffset 1, B_
@@ -1531,4 +1531,4 @@ Music_KantoTrainerBattle_branch_ece5a:
 	intensity $14
 	octave 5
 	note G_, 4
-	loopchannel 0, Music_KantoTrainerBattle_branch_ece5a
+	jumpchannel Music_KantoTrainerBattle_branch_ece5a

@@ -246,7 +246,7 @@ Music_SSAqua_branch_eadbc:
 	note D_, 2
 	note F#, 2
 	note A_, 2
-	loopchannel 0, Music_SSAqua_branch_eadbc
+	jumpchannel Music_SSAqua_branch_eadbc
 
 Music_SSAqua_Ch2:
 	stereopanning $f0
@@ -389,7 +389,7 @@ Music_SSAqua_branch_eaed5:
 	note G_, 8
 	note A_, 8
 	note __, 8
-	loopchannel 0, Music_SSAqua_branch_eaed5
+	jumpchannel Music_SSAqua_branch_eaed5
 
 Music_SSAqua_branch_eaf88:
 	note D_, 6
@@ -821,7 +821,7 @@ Music_SSAqua_branch_eb08d:
 	note __, 1
 	note G_, 1
 	note __, 1
-	loopchannel 0, Music_SSAqua_branch_eb063
+	jumpchannel Music_SSAqua_branch_eb063
 
 Music_SSAqua_branch_eb14d:
 	notetype $6, $15
@@ -1125,7 +1125,7 @@ Music_SSAqua_branch_eb24e:
 	callchannel Music_SSAqua_branch_eb2ae
 	callchannel Music_SSAqua_branch_eb2ae
 	callchannel Music_SSAqua_branch_eb2c7
-	loopchannel 0, Music_SSAqua_branch_eb24e
+	jumpchannel Music_SSAqua_branch_eb24e
 
 Music_SSAqua_branch_eb2ae:
 	note A#, 2

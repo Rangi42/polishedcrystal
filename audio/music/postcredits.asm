@@ -126,7 +126,7 @@ Music_PostCredits_branch_cfdb2:
 	note D_, 2
 	octave 2
 	note G_, 2
-	loopchannel 0, Music_PostCredits_branch_cfdb2
+	jumpchannel Music_PostCredits_branch_cfdb2
 
 Music_PostCredits_Ch2:
 	pitchoffset 0, D#
@@ -259,4 +259,4 @@ Music_PostCredits_branch_cfe5a:
 	intensity $a3
 	note E_, 2
 	note F_, 2
-	loopchannel 0, Music_PostCredits_branch_cfe5a
+	jumpchannel Music_PostCredits_branch_cfe5a

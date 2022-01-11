@@ -65,7 +65,7 @@ UnknownScript_0x7450f:
 	startbattle
 	dontrestartmapmusic
 	reloadmapafterbattle
-	sjump UnknownScript_0x7451f
+	; fallthrough
 
 UnknownScript_0x7451f:
 	special DeleteSavedMusic

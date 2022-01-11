@@ -129,7 +129,7 @@ Music_Route12_branch_ec59b:
 	note F#, 1
 	note G#, 4
 	loopchannel 2, Music_Route12_branch_ec59b
-	loopchannel 0, Music_Route12_branch_ec535
+	jumpchannel Music_Route12_branch_ec535
 
 Music_Route12_branch_ec5b1:
 	octave 3
@@ -259,7 +259,7 @@ Music_Route12_branch_ec5e5:
 	note E_, 10
 	intensity $a4
 	note E_, 6
-	loopchannel 0, Music_Route12_branch_ec5e5
+	jumpchannel Music_Route12_branch_ec5e5
 
 Music_Route12_branch_ec647:
 	octave 4
@@ -358,7 +358,7 @@ Music_Route12_branch_ec6a3:
 	note E_, 3
 	note __, 1
 	loopchannel 2, Music_Route12_branch_ec6a3
-	loopchannel 0, Music_Route12_branch_ec66c
+	jumpchannel Music_Route12_branch_ec66c
 
 Music_Route12_branch_ec6b4:
 	octave 3
@@ -436,7 +436,7 @@ Music_Route12_branch_ec707:
 	note D_, 8
 	callchannel Music_Route12_branch_ec717
 	loopchannel 2, Music_Route12_branch_ec707
-	loopchannel 0, Music_Route12_branch_ec6e1
+	jumpchannel Music_Route12_branch_ec6e1
 
 Music_Route12_branch_ec717:
 	note C#, 1

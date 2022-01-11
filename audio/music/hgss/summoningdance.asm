@@ -54,7 +54,7 @@ Music_SummoningDanceHGSS_Ch1:
 	note G_, 2
 	note G_, 2
 	note A_, 8
-	loopchannel 0, Music_SummoningDanceHGSS_Ch1
+	jumpchannel Music_SummoningDanceHGSS_Ch1
 
 Music_SummoningDanceHGSS_Ch2:
 	dutycycle 0
@@ -128,7 +128,7 @@ Music_SummoningDanceHGSS_Ch2:
 	note F_, 1
 	notetype $c, $a5
 	note E_, 8
-	loopchannel 0, Music_SummoningDanceHGSS_Ch2
+	jumpchannel Music_SummoningDanceHGSS_Ch2
 
 Music_SummoningDanceHGSS_Ch3:
 	notetype $c, $14
@@ -179,4 +179,4 @@ Music_SummoningDanceHGSS_Ch3:
 	octave 2
 	note G_, 4
 	note A_, 8
-	loopchannel 0, Music_SummoningDanceHGSS_Ch3
+	jumpchannel Music_SummoningDanceHGSS_Ch3

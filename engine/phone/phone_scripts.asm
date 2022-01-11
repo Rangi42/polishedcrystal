@@ -70,7 +70,7 @@ MomPhoneOnRoute:
 MomPhoneOther:
 	farwritetext MomDeterminedText
 	promptbutton
-	sjump MomSavingMoney
+	; fallthrough
 
 MomSavingMoney:
 	checkflag ENGINE_MOM_SAVING_MONEY
@@ -120,7 +120,7 @@ MomPhoneWontSaveMoneyScript:
 	clearflag ENGINE_MOM_SAVING_MONEY
 	farwritetext MomPhoneWontSaveMoneyText
 	promptbutton
-	sjump MomPhoneHangUpScript
+	; fallthrough
 
 MomPhoneHangUpScript:
 	farwritetext MomPhoneHangUpText
@@ -166,7 +166,7 @@ BillPhoneScript1:
 .nitegreet
 	farwritetext BillPhoneNiteGreetingText
 	promptbutton
-	sjump .main
+	; fallthrough
 
 .main
 	farwritetext BillPhoneGenericText
@@ -339,7 +339,7 @@ LyraPhoneScript:
 .nitegreet
 	farwritetext LyraPhoneNiteGreetingText
 	promptbutton
-	sjump .main
+	; fallthrough
 
 .main
 	farwritetext LyraPhoneMainText
@@ -1028,7 +1028,7 @@ UnknownScript_0xbd624:
 
 UnknownScript_0xbd62a:
 	gettrainerclassname POKEFANM, $1
-	sjump LizGossipScript
+	; fallthrough
 
 LizGossipScript:
 	farsjump LizGossipRandomScript
@@ -1750,7 +1750,7 @@ UnknownScript_0xbdc57:
 
 UnknownScript_0xbdc5e:
 	getstring Phone_BrotherString, $1
-	sjump UnknownScript_0xbdc65
+	; fallthrough
 
 UnknownScript_0xbdc65:
 	farsjump TiffanyItsAwful

@@ -193,7 +193,7 @@ Music_Route3_branch_ec307:
 	note B_, 1
 	octave 4
 	note D_, 1
-	loopchannel 0, Music_Route3_branch_ec307
+	jumpchannel Music_Route3_branch_ec307
 
 Music_Route3_branch_ec3a4:
 	octave 3
@@ -324,7 +324,7 @@ Music_Route3_branch_ec3f5:
 	note G#, 6
 	note F#, 1
 	note G#, 1
-	loopchannel 0, Music_Route3_branch_ec3f5
+	jumpchannel Music_Route3_branch_ec3f5
 
 Music_Route3_branch_ec443:
 	note A_, 6
@@ -425,7 +425,7 @@ Music_Route3_branch_ec47f:
 	note __, 2
 	note F#, 1
 	note G#, 1
-	loopchannel 0, Music_Route3_branch_ec47f
+	jumpchannel Music_Route3_branch_ec47f
 
 Music_Route3_branch_ec4bd:
 	octave 3
@@ -498,4 +498,4 @@ Music_Route3_branch_ec4f0:
 	note C#, 1
 	note C#, 1
 	note C#, 1
-	loopchannel 0, Music_Route3_branch_ec4f0
+	jumpchannel Music_Route3_branch_ec4f0

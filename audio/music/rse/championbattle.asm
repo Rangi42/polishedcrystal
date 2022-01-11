@@ -314,7 +314,7 @@ Music_ChampionBattleRSE_Ch1_loop_2:
 	note A#, 6
 	intensity $b5
 	note A#, 10
-	loopchannel 0, Music_ChampionBattleRSE_Ch1_loop_main
+	jumpchannel Music_ChampionBattleRSE_Ch1_loop_main
 
 Music_ChampionBattleRSE_Ch1_branch_1:
 	octave 4
@@ -614,7 +614,7 @@ Music_ChampionBattleRSE_Ch2_loop_1:
 	note F_, 6
 	intensity $b5
 	note F_, 10
-	loopchannel 0, Music_ChampionBattleRSE_Ch2_loop_main
+	jumpchannel Music_ChampionBattleRSE_Ch2_loop_main
 
 Music_ChampionBattleRSE_Ch2_branch_1:
 	octave 3
@@ -818,7 +818,7 @@ Music_ChampionBattleRSE_Ch3_loop_5:
 	callchannel Music_ChampionBattleRSE_Ch3_branch_7
 	callchannel Music_ChampionBattleRSE_Ch3_branch_6
 	callchannel Music_ChampionBattleRSE_Ch3_branch_7
-	loopchannel 0, Music_ChampionBattleRSE_Ch3_loop_main
+	jumpchannel Music_ChampionBattleRSE_Ch3_loop_main
 	endchannel
 
 Music_ChampionBattleRSE_Ch3_branch_1:
@@ -1119,7 +1119,7 @@ Music_ChampionBattleRSE_Ch4_loop_2:
 Music_ChampionBattleRSE_Ch4_loop_3:
 	callchannel Music_ChampionBattleRSE_Ch4_branch_3
 	loopchannel 4, Music_ChampionBattleRSE_Ch4_loop_3
-	loopchannel 0, Music_ChampionBattleRSE_Ch4_loop_main
+	jumpchannel Music_ChampionBattleRSE_Ch4_loop_main
 
 Music_ChampionBattleRSE_Ch4_branch_1:
 	note D#, 2

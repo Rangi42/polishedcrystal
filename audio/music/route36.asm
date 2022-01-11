@@ -161,7 +161,7 @@ Music_Route36_branch_e9517:
 	intensity $b5
 	note D#, 2
 	note E_, 2
-	loopchannel 0, Music_Route36_branch_e9517
+	jumpchannel Music_Route36_branch_e9517
 
 Music_Route36_Ch2:
 	dutycycle $3
@@ -308,7 +308,7 @@ Music_Route36_branch_e95ce:
 	note G_, 1
 	note A_, 1
 	note B_, 1
-	loopchannel 0, Music_Route36_branch_e95ce
+	jumpchannel Music_Route36_branch_e95ce
 
 Music_Route36_Ch3:
 	notetype $c, $25
@@ -464,7 +464,7 @@ Music_Route36_branch_e9684:
 	note D_, 2
 	note D#, 2
 	note E_, 2
-	loopchannel 0, Music_Route36_branch_e9684
+	jumpchannel Music_Route36_branch_e9684
 
 Music_Route36_Ch4:
 	togglenoise $1
@@ -486,7 +486,7 @@ Music_Route36_branch_e9723:
 	note A_, 4
 	loopchannel 11, Music_Route36_branch_e9723
 	callchannel Music_Route36_branch_e9741
-	loopchannel 0, Music_Route36_branch_e9713
+	jumpchannel Music_Route36_branch_e9713
 
 Music_Route36_branch_e9734:
 	note A_, 4

@@ -422,7 +422,7 @@ Music_Route225DPPt_Ch1_loop:
 	note G_, 3
 	notetype $E, $97
 	note E_, 12
-	loopchannel 0, Music_Route225DPPt_Ch1_loop
+	jumpchannel Music_Route225DPPt_Ch1_loop
 
 Music_Route225DPPt_Ch2:
 Music_Route225DPPt_Ch2_loop:
@@ -861,7 +861,7 @@ Music_Route225DPPt_Ch2_loop:
 	note D_, 3
 	notetype $E, $A7
 	note C_, 12
-	loopchannel 0, Music_Route225DPPt_Ch2_loop
+	jumpchannel Music_Route225DPPt_Ch2_loop
 
 Music_Route225DPPt_Ch3:
 Music_Route225DPPt_Ch3_loop:
@@ -1389,7 +1389,7 @@ Music_Route225DPPt_Ch3_loop:
 	note C_, 2
 	note __, 6
 	note C_, 4
-	loopchannel 0, Music_Route225DPPt_Ch3_loop
+	jumpchannel Music_Route225DPPt_Ch3_loop
 
 Music_Route225DPPt_Ch4:
 	togglenoise 3
@@ -1656,4 +1656,4 @@ Music_Route225DPPt_Ch4_loop:
 	note C_, 8
 	note __, 16
 	note __, 16
-	loopchannel 0, Music_Route225DPPt_Ch4_loop
+	jumpchannel Music_Route225DPPt_Ch4_loop

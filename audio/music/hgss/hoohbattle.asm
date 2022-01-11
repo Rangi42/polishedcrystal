@@ -495,7 +495,7 @@ Music_HoOhBattleHGSS_Ch1_L:
 	note A#, 16
 	intensity $c7
 	note A#, 16
-	loopchannel 0, Music_HoOhBattleHGSS_Ch1_L
+	jumpchannel Music_HoOhBattleHGSS_Ch1_L
 
 Music_HoOhBattleHGSS_Ch2:
 	dutycycle $3
@@ -911,7 +911,7 @@ Music_HoOhBattleHGSS_Ch2_L:
 	note F_, 16
 	intensity $c7
 	note F_, 16
-	loopchannel 0, Music_HoOhBattleHGSS_Ch2_L
+	jumpchannel Music_HoOhBattleHGSS_Ch2_L
 
 Music_HoOhBattleHGSS_Ch3:
 	notetype $c, $16
@@ -1139,4 +1139,4 @@ Music_HoOhBattleHGSS_Ch3_L1:
 	note G_, 2
 	note A_, 2
 	note E_, 2
-	loopchannel 0, Music_HoOhBattleHGSS_Ch3_L
+	jumpchannel Music_HoOhBattleHGSS_Ch3_L

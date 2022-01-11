@@ -296,7 +296,7 @@ NeighborScript:
 .NiteScript:
 	writetext .NiteIntroText
 	promptbutton
-	sjump .Main
+	; fallthrough
 
 .Main:
 	writetext .NeighborText

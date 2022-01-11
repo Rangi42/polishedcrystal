@@ -65,19 +65,11 @@ CinnabarVolcanoB1FBouldersFall:
 
 .Disappear:
 	disappear CINNABARVOLCANOB1F_BOULDER
-	sjump .Fall
-
-.Fall:
 	pause 30
-	scall .FX
-	jumptext CinnabarVolcanoB1FBoulderFellText
-
-.FX:
 	playsound SFX_STRENGTH
 	earthquake 80
-	end
+	jumpthistext
 
-CinnabarVolcanoB1FBoulderFellText:
 	text "The boulder fell"
 	line "through!"
 	done

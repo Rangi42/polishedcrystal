@@ -549,7 +549,7 @@ Music_Route47HGSS_Ch1_loop_1:
 	octave 3
 	note G_, 1
 	note __, 2
-	loopchannel 0, Music_Route47HGSS_Ch1_loop_main
+	jumpchannel Music_Route47HGSS_Ch1_loop_main
 
 Music_Route47HGSS_Ch1_branch_1:
 	intensity $82
@@ -958,7 +958,7 @@ Music_Route47HGSS_Ch2_loop:
 	note A#, 3
 	note G_, 2
 	note E_, 4
-	loopchannel 0, Music_Route47HGSS_Ch2_loop
+	jumpchannel Music_Route47HGSS_Ch2_loop
 
 Music_Route47HGSS_Ch3:
 	notetype $c, $25
@@ -1087,7 +1087,7 @@ Music_Route47HGSS_Ch3_loop:
 	note G_, 16
 	octave 2
 	note C_, 16
-	loopchannel 0, Music_Route47HGSS_Ch3_loop
+	jumpchannel Music_Route47HGSS_Ch3_loop
 
 Music_Route47HGSS_Ch4:
 	togglenoise $3
@@ -1143,7 +1143,7 @@ Music_Route47HGSS_Ch4_loop_2:
 	callchannel Music_Route47HGSS_Ch4_branch_4
 	note __, 8
 	callchannel Music_Route47HGSS_Ch4_branch_4
-	loopchannel 0, Music_Route47HGSS_Ch4_loop_main
+	jumpchannel Music_Route47HGSS_Ch4_loop_main
 
 Music_Route47HGSS_Ch4_branch_1:
 	notetype $4

@@ -34,7 +34,7 @@ Music_RoadToReversalMountainB2W2_Ch1:
 	note __, 16
 	note __, 16
 	note __, 6
-	loopchannel 0, Music_RoadToReversalMountainB2W2_Ch1
+	jumpchannel Music_RoadToReversalMountainB2W2_Ch1
 
 Music_RoadToReversalMountainB2W2_Ch1_branch_1:
 	octave 2
@@ -183,7 +183,7 @@ Music_RoadToReversalMountainB2W2_Ch2:
 	note C_, 1
 	note C#, 1
 	note C_, 10
-	loopchannel 0, Music_RoadToReversalMountainB2W2_Ch2
+	jumpchannel Music_RoadToReversalMountainB2W2_Ch2
 
 Music_RoadToReversalMountainB2W2_Ch3:
 	notetype $c, $25
@@ -200,7 +200,7 @@ Music_RoadToReversalMountainB2W2_Ch3:
 	note __, 1
 	note G_, 1
 	note __, 1
-	loopchannel 0, Music_RoadToReversalMountainB2W2_Ch3
+	jumpchannel Music_RoadToReversalMountainB2W2_Ch3
 
 Music_RoadToReversalMountainB2W2_Ch3_branch_1:
 	note D_, 2
@@ -225,4 +225,4 @@ Music_RoadToReversalMountainB2W2_Ch4_loop:
 	note C_, 2
 	note C_, 2
 	note D#, 2
-	loopchannel 0, Music_RoadToReversalMountainB2W2_Ch4_loop
+	jumpchannel Music_RoadToReversalMountainB2W2_Ch4_loop

@@ -71,7 +71,7 @@ MountMoon1FTrigger0:
 	startbattle
 	dontrestartmapmusic
 	reloadmapafterbattle
-	sjump .FinishBattle
+	; fallthrough
 
 .FinishBattle:
 	special DeleteSavedMusic

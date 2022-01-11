@@ -289,7 +289,7 @@ Music_PaletteBattlePrism_branch_1edc47:
 	note D_, 16
 	intensity $b2
 	octave 3
-	loopchannel 0, Music_PaletteBattlePrism_branch_1edc47
+	jumpchannel Music_PaletteBattlePrism_branch_1edc47
 
 Music_PaletteBattlePrism_Ch2:
 	dutycycle $3
@@ -535,7 +535,7 @@ Music_PaletteBattlePrism_branch_1edbef:
 	loopchannel 2, Music_PaletteBattlePrism_branch_1edbef
 	intensity $c2
 	octave 3
-	loopchannel 0, Music_PaletteBattlePrism_branch_1edb37
+	jumpchannel Music_PaletteBattlePrism_branch_1edb37
 
 Music_PaletteBattlePrism_Ch3:
 	notetype $c, $19
@@ -665,4 +665,4 @@ Music_PaletteBattlePrism_branch_1edea9:
 	octave 3
 	note D_, 2
 	loopchannel 8, Music_PaletteBattlePrism_branch_1edea9
-	loopchannel 0, Music_PaletteBattlePrism_branch_1ede24
+	jumpchannel Music_PaletteBattlePrism_branch_1ede24
