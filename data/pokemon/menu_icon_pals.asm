@@ -152,7 +152,7 @@ MenuMonIconColors::
 	iconpal RED, PINK ; MOLTRES
 	iconpal BLUE, PINK ; DRATINI
 	iconpal BLUE, RED ; DRAGONAIR
-	iconpal RED, BLUE ; DRAGONITE
+	iconpal BROWN, BLUE ; DRAGONITE
 	iconpal PURPLE, GREEN ; MEWTWO
 	iconpal PINK, BLUE ; MEW
 	iconpal GREEN, RED ; CHIKORITA
