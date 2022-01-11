@@ -103,7 +103,7 @@ AzaleaTownRivalBattleTrigger2:
 	startbattle
 	dontrestartmapmusic
 	reloadmapafterbattle
-	sjump .AfterBattle
+	; fallthrough
 
 .AfterBattle:
 	special DeleteSavedMusic

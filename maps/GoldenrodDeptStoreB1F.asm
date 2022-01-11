@@ -31,7 +31,7 @@ UnknownScript_0x7d781:
 
 UnknownScript_0x7d78a:
 	changeblock 16, 4, $d
-	sjump UnknownScript_0x7d791
+	; fallthrough
 
 UnknownScript_0x7d791:
 	checkevent EVENT_WAREHOUSE_LAYOUT_2

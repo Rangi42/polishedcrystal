@@ -48,7 +48,7 @@ SetupValerieAfterMorningWalkScript:
 
 .Appear
 	appear VALERIESHOUSE_VALERIE
-	sjump SetupFairyBookScript
+	; fallthrough
 
 SetupFairyBookScript:
 	disappear VALERIESHOUSE_RED_FAIRY_BOOK

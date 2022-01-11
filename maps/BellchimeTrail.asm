@@ -150,7 +150,7 @@ BellchimeTrailValerieScript:
 	loadtrainer VALERIE, 3
 	startbattle
 	reloadmapafterbattle
-	sjump .AfterRematch
+	; fallthrough
 
 .AfterRematch:
 	opentext

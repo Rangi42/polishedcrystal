@@ -50,6 +50,8 @@ BlackthornGym2FBoulders:
 
 .Disappear6:
 	disappear BLACKTHORNGYM2F_BOULDER3
+	; fallthrough
+
 .Fall:
 	pause 30
 	playsound SFX_STRENGTH
