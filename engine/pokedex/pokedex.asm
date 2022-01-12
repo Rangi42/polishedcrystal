@@ -1143,6 +1143,19 @@ _Pokedex_Description:
 	ld bc, 5
 	rst ByteFill
 
+	; Clear the P.1 tiles.
+	hlcoord 1, 9
+	ld a, $7f
+	ld [hli], a
+	ld [hl], a
+	hlcoord 0, 10
+	ld a, $37
+	ld [hli], a
+	dec a ; $36
+	ld [hli], a
+	ld [hli], a
+	ld [hl], a
+
 	; This isn't used (it's for pagination for dex entries we have caught), but
 	; this balances the stack.
 	push af
@@ -1513,7 +1526,7 @@ endr
 	pop hl
 	jmp Pokedex_Bio
 
- .pressed_left
+.pressed_left
 	pop af
 	pop hl
 	pop hl
