@@ -181,12 +181,12 @@ StackDexGraphics:
 	ld a, 1
 	ldh [rVBK], a
 	ld de, wDex2bpp tile $40
-	ld hl, vTiles5 tile $06
-	ld c, $39
+	ld hl, vTiles5 tile $05
+	ld c, $3a
 	call Get2bpp
 
 	; area
-	ld de, wDex2bpp tile $79
+	ld de, wDex2bpp tile $7a
 	ld hl, vTiles3
 	ld c, $40
 	call Get2bpp
