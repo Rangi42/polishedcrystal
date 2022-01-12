@@ -267,17 +267,13 @@ DoNPCTrade:
 	jmp PopAFBCDEHL
 
 GetTradeAttribute:
-	ld d, 0
-	push de
-	ld a, [wJumptableIndex]
-	and $f
-	swap a
-	ld e, a
-	ld d, 0
+	push bc
 	ld hl, NPCTrades
-	add hl, de
-	add hl, de
-	pop de
+	ld a, [wJumptableIndex]
+	ld bc, NPCTRADE_STRUCT_LENGTH
+	rst AddNTimes
+	pop bc
+	ld d, a ; 0 after AddNTimes
 	add hl, de
 	ret
 
