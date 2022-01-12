@@ -142,8 +142,8 @@ AI_Redundant:
 
 .Spikes:
 	ld a, [wPlayerHazards]
-	and HAZARDS_SPIKES
-	cp HAZARDS_SPIKES
+	or ~HAZARDS_SPIKES
+	inc a
 	jr .InvertZero
 
 .ToxicSpikes:

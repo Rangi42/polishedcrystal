@@ -6,8 +6,8 @@ BattleCommand_spikes:
 	ld hl, wPlayerHazards
 .got_hazards
 	ld a, [hl]
-	and HAZARDS_SPIKES
-	cp HAZARDS_SPIKES
+	or ~HAZARDS_SPIKES
+	inc a
 	jmp z, FailSpikes
 	ld a, HAZARDS_SPIKES / 3
 	add [hl]

@@ -1821,8 +1821,8 @@ AI_Smart_RapidSpin:
 	jr nz, .asm_39097
 
 	ld a, [wEnemyHazards]
-	and HAZARDS_SPIKES
-	cp HAZARDS_SPIKES
+	or ~HAZARDS_SPIKES
+	inc a
 	ret nz
 
 .asm_39097

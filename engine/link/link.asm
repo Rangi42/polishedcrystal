@@ -1496,9 +1496,12 @@ LinkTrade:
 	rst CopyBytes
 ; species
 	ld a, [wCurTradePartyMon]
+	assert MON_IS_EGG == MON_FORM
 	ld hl, wPartyMon1IsEgg
 	call GetPartyLocation
-	bit MON_IS_EGG_F, [hl]
+	ld a, [hl]
+	ld [wPlayerTrademonForm], a
+	bit MON_IS_EGG_F, a
 	ld a, EGG
 	jr nz, .got_tradeparty_species
 	ld a, [wCurTradePartyMon]
@@ -1547,9 +1550,12 @@ LinkTrade:
 	rst CopyBytes
 ; species
 	ld a, [wCurOTTradePartyMon]
+	assert MON_IS_EGG == MON_FORM
 	ld hl, wOTPartyMon1IsEgg
 	call GetPartyLocation
-	bit MON_IS_EGG_F, [hl]
+	ld a, [hl]
+	ld [wOTTrademonForm], a
+	bit MON_IS_EGG_F, a
 	ld a, EGG
 	jr nz, .got_tradeot_species
 	ld bc, MON_SPECIES - MON_FORM
@@ -1634,7 +1640,8 @@ LinkTrade:
 	ld a, [hl]
 	ld [wCurPartySpecies], a
 	ld hl, wOTPartyMon1Species
-	ld b, $80
+	ld b, $81
+	inc c
 	farcall CopyBetweenPartyAndTemp
 	farcall AddTempMonToParty
 	ld a, [wPartyCount]

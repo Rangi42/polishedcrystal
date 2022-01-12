@@ -66,7 +66,9 @@ Copy2bpp::
 .Function:
 	call WriteVCopyRegistersToHRAM
 	ld b, c
-	jmp _Serve2bppRequest
+	di
+	call _Serve2bppRequest
+	reti
 
 Request2bpp::
 ; Load 2bpp at b:de to occupy c tiles of hl.
@@ -163,7 +165,9 @@ _Copy1bpp::
 .Function:
 	call WriteVCopyRegistersToHRAM
 	ld b, c
-	jmp _Serve1bppRequest
+	di
+	call _Serve1bppRequest
+	reti
 
 RequestOpaque1bpp:
 	ld a, 1

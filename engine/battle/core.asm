@@ -1201,9 +1201,9 @@ endr
 	jr z, .got_partymon
 	ld hl, wOTPartyMon1Species
 .got_partymon
-	push hl
 	ld a, [wCurPartyMon]
 	call GetPartyLocation
+	push hl
 	ld de, wBattleMonSpecies
 	call GetUserMonAttr_de
 	push de
