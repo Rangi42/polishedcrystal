@@ -1752,7 +1752,7 @@ Pokedex_Bio:
 
 	; Print hatch rate
 	ld a, [wBaseEggSteps]
-	and $f
+	and $f ; no-optimize a & X == X
 	cp $f
 	ld de, Unknown
 	jr z, .goteggsteps

@@ -216,8 +216,8 @@ CheckIfSpecialPaletteApplies:
 	call GetMapTimeOfDay
 	pop de
 	pop hl
-	and IN_DARKNESS
-	cp IN_DARKNESS
+	or ~IN_DARKNESS
+	inc a
 	ret nz
 	ld a, [wStatusFlags]
 	bit 2, a ; Flash

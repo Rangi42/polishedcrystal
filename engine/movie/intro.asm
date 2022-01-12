@@ -828,8 +828,8 @@ IntroScene20:
 .AppearUnown:
 	sub $18
 	ld c, a
-	and $3
-	cp $3
+	or ~$3
+	inc a
 	ret nz
 	ld a, c
 	and $1c

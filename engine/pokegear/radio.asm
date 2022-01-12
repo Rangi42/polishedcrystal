@@ -230,7 +230,7 @@ endr
 	; (Disallows EVE.)
 .loop2
 	call Random
-	and 3
+	and 3 ; no-optimize a & X == X
 	cp 3
 	jr z, .loop2
 
