@@ -973,6 +973,16 @@ _DrawCh1_2_3:
 	cp 2
 	jr nz, .finish
 
+	ld a, [wChannel3Intensity]
+	and $f
+	add "0"
+	cp "9" + 1
+	jr c, .got_digit
+	sub "9" + 1 - "A"
+.got_digit
+	; ld [coord 10, 16], a
+	ld [wTilemap + 16 * SCREEN_WIDTH + 10], a
+
 	hlcoord 12, MP_HUD_TOP + 2
 	; pick the waveform
 	ld a, [wChannel3Intensity]
