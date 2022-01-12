@@ -1,7 +1,6 @@
 ValidPokemonLevels: ; for Wonder Trade
 	table_width 2, ValidPokemonLevels
 	;  min, max
-	db 255, 255 ; ?????
 	db   1,  15 ; Bulbasaur
 	db  16,  31 ; Ivysaur
 	db  32, 100 ; Venusaur
@@ -284,4 +283,4 @@ ValidPokemonLevels: ; for Wonder Trade
 	db  38, 100 ; Cursola
 	db  20, 100 ; Sirfetch'd
 	db  42, 100 ; Mr. Rime
-	assert_table_length NUM_SPECIES + 1
+	assert_table_length NUM_SPECIES

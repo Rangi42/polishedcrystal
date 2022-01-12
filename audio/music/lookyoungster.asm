@@ -57,7 +57,7 @@ Music_LookYoungster_branch_f66ea:
 	note C_, 1
 	note __, 1
 	note __, 16
-	loopchannel 0, Music_LookYoungster_branch_f66ea
+	jumpchannel Music_LookYoungster_branch_f66ea
 
 Music_LookYoungster_Ch2:
 	stereopanning $f0
@@ -153,7 +153,7 @@ Music_LookYoungster_branch_f672f:
 	octave 4
 	note C_, 1
 	note __, 1
-	loopchannel 0, Music_LookYoungster_branch_f672f
+	jumpchannel Music_LookYoungster_branch_f672f
 
 Music_LookYoungster_Ch3:
 	stereopanning $ff
@@ -286,4 +286,4 @@ Music_LookYoungster_branch_f67ae:
 	note __, 1
 	note G#, 1
 	note __, 1
-	loopchannel 0, Music_LookYoungster_branch_f67ae
+	jumpchannel Music_LookYoungster_branch_f67ae

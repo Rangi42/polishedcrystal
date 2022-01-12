@@ -678,6 +678,9 @@ wPokedex_PendingLYC:: db
 wPokedex_PendingHBlankFunction:: dw
 
 ; Palettes and tile offset for listview minis
+UNION
+wPokedex_UnownCursor: db
+NEXTU
 wPokedex_Pals::
 wPokedex_Row1::
 wPokedex_Row1Tile: db ; Sprite offset for dex minis col 2-4
@@ -689,6 +692,7 @@ wPokedex_Row3::
 wPokedex_Row3Tile: db
 wPokedex_Row3Pals:: ds PAL_COLOR_SIZE * 3 * 5
 wPokedex_PalsEnd::
+ENDU
 
 ; Pokémon info (frontpic, types, etc) is stored in either vbk0 or vbk1. This is
 ; cycled each time we move the cursor. The reason for this is so that we can
@@ -720,6 +724,14 @@ ENDU
 wPokedex_GFXFlags:: db ; flags for various gfx update types
 wPokedex_DisplayMode:: db ; current pokédex display
 
+wPokedex_InSearchMode:: db
+
+; 0 when not in a current search, otherwise vblank counter at search start.
+; If vblank counter happens to be zero, it's treated as 255.
+wPokedex_SearchInProgress:: db
+
+wPokedex_Search::
+wPokedex_SearchOrder:: db
 wPokedex_SearchData::
 wPokedex_SearchType1:: db
 wPokedex_SearchType2:: db
@@ -728,6 +740,7 @@ wPokedex_SearchGroup2:: db
 wPokedex_SearchColor:: db
 wPokedex_SearchBody:: db
 wPokedex_SearchDataEnd::
+wPokedex_SearchEnd::
 wPokedex_MenuCursorY:: db
 
 SECTION UNION "Misc 480", WRAM0
@@ -851,43 +864,6 @@ SECTION UNION "Misc 480", WRAM0
 wUnownPuzzle::
 wPuzzlePieces:: ds 6 * 6
 wUnownPuzzleEnd::
-
-
-SECTION UNION "Misc 480", WRAM0
-; Pokedex
-	ds 172
-
-wPokedexDataStart::
-wPokedexOrder:: ds NUM_POKEMON - 1
-wPokedexOrderEnd:: ds 6
-wPokedexMetadata::
-wDexListingScrollOffset:: dw ; offset of the first displayed entry from the start
-wDexListingCursor:: db ; Dex cursor
-wDexListingEnd:: dw ; Last mon to display
-wDexListingHeight:: db ; number of entries displayed at once in the dex listing
-wCurDexMode:: db ; Pokedex Mode
-wDexSearchMonType1:: db ; first type to search
-wDexSearchMonType2:: db ; second type to search
-wDexSearchResultCount:: dw
-wDexArrowCursorPosIndex:: db
-wDexArrowCursorDelayCounter:: db
-wDexArrowCursorBlinkCounter:: db
-wDexSearchSlowpokeFrame:: db
-wUnlockedUnownMode:: db
-wDexCurUnownIndex:: db
-wDexUnownCount:: db
-wDexConvertedMonType:: db ; mon type converted from dex search mon type
-wDexListingScrollOffsetBackup:: dw
-wDexListingCursorBackup:: db
-wBackupDexListingCursor:: db
-wBackupDexListingPage:: db
-wDexCurLocation:: db
-wPokedexStatus:: db
-wPokedexDisplayNumber:: dw
-wDexMonPersonality::
-wDexMonShiny:: db
-wDexMonForm:: db
-wPokedexDataEnd::
 
 
 SECTION UNION "Misc 1300", WRAM0

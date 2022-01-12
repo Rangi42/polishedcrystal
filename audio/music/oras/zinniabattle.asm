@@ -254,7 +254,7 @@ Music_ZinniaBattleORAS_Ch1_loop_2:
 Music_ZinniaBattleORAS_Ch1_loop_3:
 	callchannel Music_ZinniaBattleORAS_Ch1_branch_1
 	loopchannel 3, Music_ZinniaBattleORAS_Ch1_loop_3
-	loopchannel 0, Music_ZinniaBattleORAS_Ch1_loop_main
+	jumpchannel Music_ZinniaBattleORAS_Ch1_loop_main
 
 Music_ZinniaBattleORAS_Ch1_branch_1:
 	intensity $a1
@@ -800,7 +800,7 @@ Music_ZinniaBattleORAS_Ch2_loop:
 	note E_, 2
 	note F#, 2
 	note E_, 2
-	loopchannel 0, Music_ZinniaBattleORAS_Ch2_loop
+	jumpchannel Music_ZinniaBattleORAS_Ch2_loop
 
 Music_ZinniaBattleORAS_Ch3:
 	notetype $3, $19
@@ -1045,7 +1045,7 @@ Music_ZinniaBattleORAS_Ch3_loop_2:
 	note G#, 8
 	note A_, 4
 	note B_, 4
-	loopchannel 0, Music_ZinniaBattleORAS_Ch3_loop_main
+	jumpchannel Music_ZinniaBattleORAS_Ch3_loop_main
 
 Music_ZinniaBattleORAS_Ch3_branch_1:
 	note D_, 2
@@ -1159,7 +1159,7 @@ Music_ZinniaBattleORAS_Ch4_loop_5:
 	note C_, 1
 	note D_, 1
 	callchannel Music_ZinniaBattleORAS_Ch4_branch_2
-	loopchannel 0, Music_ZinniaBattleORAS_Ch4_loop_main
+	jumpchannel Music_ZinniaBattleORAS_Ch4_loop_main
 
 Music_ZinniaBattleORAS_Ch4_branch_1:
 	note C_, 1

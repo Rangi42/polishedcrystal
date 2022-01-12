@@ -247,7 +247,7 @@ OlderHaircutBrotherScript:
 	clearevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_1
 	clearevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_2
 	setevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_3
-	sjump .then
+	; fallthrough
 
 .then
 	takemoney $0, 500

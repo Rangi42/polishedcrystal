@@ -102,7 +102,7 @@ Music_GameCorner_branch_eddef:
 	note D_, 3
 	note F_, 2
 	note F_, 9
-	loopchannel 0, Music_GameCorner_branch_edd84
+	jumpchannel Music_GameCorner_branch_edd84
 
 Music_GameCorner_branch_ede03:
 	note __, 2
@@ -202,7 +202,7 @@ Music_GameCorner_branch_ede25:
 	note A#, 2
 	note A#, 9
 	intensity $a4
-	loopchannel 0, Music_GameCorner_branch_ede25
+	jumpchannel Music_GameCorner_branch_ede25
 
 Music_GameCorner_branch_ede75:
 	octave 1
@@ -497,7 +497,7 @@ Music_GameCorner_branch_edeef:
 	note F_, 1
 	note E_, 1
 	note D_, 1
-	loopchannel 0, Music_GameCorner_branch_edeef
+	jumpchannel Music_GameCorner_branch_edeef
 
 Music_GameCorner_branch_edfdd:
 	octave 2
@@ -780,7 +780,7 @@ Music_GameCorner_branch_ee0e8:
 	note D_, 1
 	note D_, 1
 	note D#, 2
-	loopchannel 0, Music_GameCorner_branch_ee07f
+	jumpchannel Music_GameCorner_branch_ee07f
 
 Music_GameCorner_branch_ee106:
 	note C_, 2

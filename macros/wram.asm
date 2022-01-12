@@ -28,6 +28,7 @@ breed_struct: MACRO
 \1ExtSpecies::
 \1Form::           db
 \1PP::             ds NUM_MOVES
+\1EggCycles::
 \1Happiness::      db
 \1PokerusStatus::  db
 \1CaughtData::

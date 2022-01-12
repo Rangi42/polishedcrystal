@@ -299,7 +299,7 @@ Music_EverGrandeCityRSE_Ch1_loop:
 	intensity $C7
 	note G#, 16
 	note __, 8
-	loopchannel 0, Music_EverGrandeCityRSE_Ch1_loop
+	jumpchannel Music_EverGrandeCityRSE_Ch1_loop
 
 Music_EverGrandeCityRSE_Ch2:
 	vibrato $12, $25
@@ -615,7 +615,7 @@ Music_EverGrandeCityRSE_Ch2_loop:
 	note A#, 12
 	octave 6
 	note C_, 12
-	loopchannel 0, Music_EverGrandeCityRSE_Ch2_loop
+	jumpchannel Music_EverGrandeCityRSE_Ch2_loop
 
 Music_EverGrandeCityRSE_Ch3:
 	stereopanning $ff
@@ -1160,7 +1160,7 @@ Music_EverGrandeCityRSE_branch_ef4e3:
 	note A#, 2
 	octave 3
 	note C_, 2
-	loopchannel 0, Music_EverGrandeCityRSE_branch_ef4e3
+	jumpchannel Music_EverGrandeCityRSE_branch_ef4e3
 
 Music_EverGrandeCityRSE_Ch4:
 	togglenoise $3
@@ -1185,4 +1185,4 @@ Music_EverGrandeCityRSE_Ch4_loop:
 	note D_, 2
 	note D_, 2
 	note G#, 2
-	loopchannel 0, Music_EverGrandeCityRSE_Ch4_loop
+	jumpchannel Music_EverGrandeCityRSE_Ch4_loop

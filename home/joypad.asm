@@ -443,7 +443,7 @@ BlinkCursor::
 	dec a
 	ldh [hObjectStructIndexBuffer], a
 	ret nz
-	ld [hl], "─"
+	ld [hl], "━"
 	ld a, -1
 	ldh [hMapObjectIndexBuffer], a
 	ld a, 6

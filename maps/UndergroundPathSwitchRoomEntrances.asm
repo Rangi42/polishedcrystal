@@ -203,7 +203,7 @@ UndergroundSilverBattleScript:
 	startbattle
 	dontrestartmapmusic
 	reloadmapafterbattle
-	sjump .FinishRivalBattle
+	; fallthrough
 
 .FinishRivalBattle:
 	special DeleteSavedMusic

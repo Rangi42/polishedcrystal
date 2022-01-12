@@ -58,7 +58,7 @@ Pokedex:
 	xor a
 	ld [wPokedex_CursorPos], a
 
-	jp Pokedex_MainLoop
+	jmp Pokedex_MainLoop
 
 
 Pokedex_LoadTilemap:
@@ -309,6 +309,7 @@ Pokedex_CheckForOtherForms:
 	ret
 
 Pokedex_SwitchNormalOrShinyPalette:
+; Leaves the mini alone and doesn't schedule a reload.
 	ld a, SHINY_CHARM
 	ld [wCurKeyItem], a
 	call CheckKeyItem
@@ -323,6 +324,14 @@ Pokedex_SwitchNormalOrShinyPalette:
 	ld a, BANK(PokemonPalettes)
 	ld bc, 4
 	call FarCopyBytesToColorWRAM
+	scf
+	ret
+
+Pokedex_SwitchNormalOrShinyPaletteAndUpdate:
+; Also reloads mini palette.
+	call Pokedex_SwitchNormalOrShinyPalette
+	ret nc
+	; fallthrough
 Pokedex_GetMonIconPalette:
 	ld a, BANK(wBGPals1)
 	call StackCallInWRAMBankA
@@ -440,7 +449,7 @@ Pokedex_MainLoop:
 	rrca
 	jr c, .pressed_a
 	rrca
-	ret c ; pressed b
+	jr c, .pressed_b
 	rrca
 	jr c, .pressed_select
 	rrca
@@ -462,8 +471,15 @@ Pokedex_MainLoop:
 	and a
 	call nz, Pokedex_Description
 	jr .loop
+
+.pressed_b
+	; Usually just returns from dex, but in search mode, return to search.
+	ld a, [wPokedex_InSearchMode]
+	and a
+	ret z
+	; fallthrough
 .pressed_start
-	call Pokedex_SearchInit
+	call Pokedex_Search
 	jr .loop
 .pressed_select
 	call Pokedex_Mode
@@ -620,9 +636,9 @@ Pokedex_SetCursorMon:
 	ld c, SCREEN_WIDTH * 6 - 2
 	call .ShiftRowData
 	hlcoord 19, 9
-	ld [hl], $0c
+	ld [hl], POKEDEX_SCROLLTILE_TOP
 	hlcoord 19, 12
-	ld [hl], $1c
+	ld [hl], POKEDEX_SCROLLTILE_BAR
 	ld c, b
 	call Pokedex_UpdateRow
 	xor a
@@ -1018,10 +1034,10 @@ Pokedex_GetPosData:
 	; mod-based
 	dw wDexIconTiles, 0, 4 tiles
 	dw wDexVWFTiles - 1 tiles, 0, 4 tiles
-	dw vTiles4, 20 tiles, 4 tiles
-	dw vTiles4 tile $50, 18 tiles, 4 tiles
-	dw 0, 20, 4
-	dw $d0, 18, 4
+	dw vTiles4 tile $20, 20 tiles, 4 tiles
+	dw vTiles0 tile $28, 18 tiles, 4 tiles
+	dw $20, 20, 4
+	dw $28, 18, 4
 
 	; offset-based
 	dw wTilemap + 9 * SCREEN_WIDTH + 1, SCREEN_WIDTH * 3, 4
@@ -1127,6 +1143,19 @@ _Pokedex_Description:
 	ld bc, 5
 	rst ByteFill
 
+	; Clear the P.1 tiles.
+	hlcoord 1, 9
+	ld a, $7f
+	ld [hli], a
+	ld [hl], a
+	hlcoord 0, 10
+	ld a, $37
+	ld [hli], a
+	dec a ; $36
+	ld [hli], a
+	ld [hli], a
+	ld [hl], a
+
 	; This isn't used (it's for pagination for dex entries we have caught), but
 	; this balances the stack.
 	push af
@@ -1154,28 +1183,25 @@ endr
 	bit POKEDEX_UNITS, a
 	jr nz, .metric_height
 
-	; Multiply by 16513008 >> 22
-	ld a, 16513008 >> 16
+	; Multiply by 500/127
+	xor a
 	ldh [hMultiplicand + 0], a
-	ld a, (16513008 >> 8) & $ff
+	ld a, HIGH(1000)
 	ldh [hMultiplicand + 1], a
-	ld a, 16513008 & $ff
+	ld a, LOW(1000)
 	ldh [hMultiplicand + 2], a
 	call Multiply
-	ld hl, hProduct + 1
-	ld a, [hld]
-	ld l, [hl]
-	ld h, 0
-	add a
-	rl l
-	rl h
-	add a
-	rl l
-	rl h
-	add a
-	jr nc, .no_ht_overflow
+	ld b, 4
+	ld a, 127
+	ldh [hDivisor], a
+	call Divide
+	ldh a, [hQuotient + 1]
+	ld h, a
+	ldh a, [hQuotient + 2]
+	ld l, a
 	inc hl
-.no_ht_overflow
+	srl h
+	rr l
 	ld a, -1
 	ld bc, -12
 	push hl
@@ -1363,14 +1389,13 @@ endr
 	jr nz, .botmenu_loop
 	ld [hl], $16
 	hldexcoord 4, 18
-	ld a, $3c
+	ld a, $2c
 	ld [hli], a
 	inc a
 	ld [hli], a
 	inc a
 	ld [hli], a
 	hldexcoord 15, 18
-	ld a, $2e
 	ld [hli], a
 	inc a
 	ld [hli], a
@@ -1475,7 +1500,7 @@ endr
 
 .pressed_select
 	; cycle shininess
-	call Pokedex_SwitchNormalOrShinyPalette
+	call Pokedex_SwitchNormalOrShinyPaletteAndUpdate
 	jr .joypad_loop
 
 .pressed_up
@@ -1499,9 +1524,9 @@ endr
 	pop af
 	pop hl
 	pop hl
-	jr Pokedex_Bio
+	jmp Pokedex_Bio
 
- .pressed_left
+.pressed_left
 	pop af
 	pop hl
 	pop hl
@@ -1548,10 +1573,39 @@ Pokedex_Main:
 	xor a
 	ld [wPokedex_DisplayMode], a
 
+	call ClearSpriteAnims
 	lb de, $50, $09
 	ld a, SPRITE_ANIM_INDEX_DEX_CURSOR
 	call InitSpriteAnimStruct
 
+	ld a, [wPokedex_InSearchMode]
+	and a
+	jr z, .print_seen_own
+
+	; Replace with Results/
+	hlcoord 9, 6
+	ld de, .ResultString
+	rst PlaceString
+
+	xor a
+	ld h, a
+	ld l, a
+	ld b, a
+	ld c, 5
+	ld a, [wPokedex_Rows]
+	dec a
+	call nz, AddNTimes
+	ld a, [wPokedex_LastCol]
+	ld c, a
+	add hl, bc
+	ld d, h
+	ld e, l
+	hlcoord 16, 7
+	lb bc, 2, 3
+	call PrintNumFromReg
+	jr .minibox_done
+
+.print_seen_own
 	hlcoord 11, 7
 	lb bc, 2, 3
 	ld de, wPokedex_NumSeen
@@ -1561,6 +1615,7 @@ Pokedex_Main:
 	ld de, wPokedex_NumOwned
 	call PrintNum
 
+.minibox_done
 	ld c, 0
 	call Pokedex_UpdateRow
 	ld c, 1
@@ -1568,9 +1623,14 @@ Pokedex_Main:
 	ld c, 2
 	call Pokedex_UpdateRow
 
+	call Pokedex_GetCursorMon
+
 	ld a, $3f
 	ld de, PHB_Row1
 	jmp Pokedex_ScheduleScreenUpdateWithHBlank
+
+.ResultString:
+	db " Results/  @"
 
 Pokedex_Bio:
 	ld a, DEXDISP_BIO
@@ -1747,7 +1807,7 @@ Pokedex_Bio:
 
 .pressed_select
 	; cycle shininess
-	call Pokedex_SwitchNormalOrShinyPalette
+	call Pokedex_SwitchNormalOrShinyPaletteAndUpdate
 	jr .joypad_loop
 
 .pressed_start
@@ -1955,7 +2015,7 @@ _Pokedex_Stats:
 
 .pressed_select
 	; cycle shininess
-	call Pokedex_SwitchNormalOrShinyPalette
+	call Pokedex_SwitchNormalOrShinyPaletteAndUpdate
 	jr .joypad_loop
 
 .pressed_start
@@ -2020,6 +2080,7 @@ Pokedex_ResetModeSearchPals:
 	call StackCallInWRAMBankA
 .Function:
 	ld hl, wBGPals1 palette 2
+if !DEF(MONOCHROME)
 	ld c, (1 palettes + 2) / 2
 	ld a, -1
 .loop
@@ -2029,18 +2090,50 @@ Pokedex_ResetModeSearchPals:
 	dec c
 	jr nz, .loop
 	ret
+else
+	; Also sets color 1 on BG3, not just 0, but that's fine.
+	ld b, 3
+.outer_loop
+	ld de, .colors
+	ld c, 4
+.inner_loop
+	ld a, [de]
+	inc de
+	ld [hli], a
+	dec c
+	jr nz, .inner_loop
+	dec b
+	jr nz, .outer_loop
+	ret
+
+.colors
+	RGB_MONOCHROME_WHITE
+	RGB_MONOCHROME_BLACK
+endc
 
 Pokedex_Mode:
+	ld a, [wPokedexMode]
+	ld [wPokedex_MenuCursorY], a
+	ld [wPokedexOAM_DexNoY], a
+Pokedex_Mode_ReloadPals:
 	ld a, DEXDISP_MODE
 	ld [wPokedex_DisplayMode], a
 	call Pokedex_SetModeSearchPals
-	xor a
-	ld [wPokedex_MenuCursorY], a
-	ld [wPokedexOAM_DexNoY], a
 	; fallthrough
 _Pokedex_Mode:
 	ld hl, DexTilemap_Mode
 	call Pokedex_LoadTilemap
+
+	; Maybe add Unown Mode option
+	ld de, ENGINE_UNOWN_DEX
+	farcall CheckEngineFlag
+	jr c, .done_unown_mode
+
+	hlcoord 2, 8
+	ld de, .UnownMode
+	rst PlaceString
+
+.done_unown_mode
 	hlcoord 1, 4
 	ld a, [wPokedex_MenuCursorY]
 	push af
@@ -2055,7 +2148,7 @@ _Pokedex_Mode:
 	ld d, h
 	ld e, l
 	hlcoord 2, 14
-	call PlaceString
+	rst PlaceString
 
 	; disable hblank int
 	ld a, $57
@@ -2067,7 +2160,11 @@ _Pokedex_Mode:
 	jr c, .pressed_a
 	rrca
 	jr c, .return ; pressed b
-	swap a ; ignore select, start, right, left
+	rrca
+	jr c, .return ; pressed select
+	rrca ; skip start
+	rrca ; skip right
+	rrca ; skip left
 	rrca
 	jr c, .pressed_up
 	rrca
@@ -2079,42 +2176,53 @@ _Pokedex_Mode:
 	cp 2
 	jr c, .change_mode
 	jr nz, .return
+	jmp Pokedex_Unown
 
-	; TODO: Unown Mode
 .change_mode
 	ld [wPokedexMode], a
-	call Pokedex_InitData
+
+	; In search mode, reload search results.
+	ld a, [wPokedex_InSearchMode]
+	and a
+	push af
+	call z, Pokedex_InitData
+	pop af
+	call nz, Pokedex_GetSearchResults
 	xor a
 	ld [wPokedex_CursorPos], a
 	ld [wPokedex_Offset], a
 .return
 	call Pokedex_ResetModeSearchPals
-	jp Pokedex_Main
+	jmp Pokedex_Main
 
 .pressed_up
-	ld a, [wPokedex_MenuCursorY]
-	and a
-	jr z, .joypad_loop
-	dec a
-	cp 2
-	jr nz, .change_menu
-	ld b, -1 ; Modifier for menu mode if unown mode not unlocked
-.check_unown
-	; TODO: Have we unlocked Unown Mode?
-	add b
+	ld b, -1 ; Menu movement modifier
 .change_menu
+	ld a, [wPokedex_MenuCursorY]
+.change_menu_loop
+	add b
+
+	; Check if we went past top or bottom.
+	cp NUM_DEXMODE
+	jr nc, .change_menu_loop
 	ld [wPokedex_MenuCursorY], a
-	jr _Pokedex_Mode
+
+	cp DEXMODE_UNOWN
+	jmp nz, _Pokedex_Mode
+
+	push bc
+	ld de, ENGINE_UNOWN_DEX
+	farcall CheckEngineFlag
+	pop bc
+	jr c, .change_menu
+	jmp _Pokedex_Mode
 
 .pressed_down
-	ld a, [wPokedex_MenuCursorY]
-	cp 3
-	jr z, .joypad_loop
-	inc a
-	cp 2
 	ld b, 1
-	jr z, .check_unown
 	jr .change_menu
+
+.UnownMode:
+	db "Unown Mode@"
 
 .MenuDescriptions:
 	text "<PK><MN> are listed in"
@@ -2133,381 +2241,329 @@ _Pokedex_Mode:
 	next "list."
 	text_end
 
-Pokedex_SearchInit:
+Pokedex_Search:
 ; Call to fully initialize Search page and reset cursor pos
 	ld a, DEXDISP_SEARCH
 	ld [wPokedex_DisplayMode], a
 
-	ld a, 3
+	call Pokedex_SetModeSearchPals
+
+	xor a
+	ld [wPokedexOAM_DexNoY], a
 	ld [wPokedex_MenuCursorY], a
+
+	; In search mode, don't reset current fields.
+	ld a, [wPokedex_InSearchMode]
+	and a
+	jr nz, _Pokedex_Search
 	; fallthrough
 Pokedex_SearchReset:
 ; Resets all search fields but preserves cursor pos
-	ld hl, wPokedex_SearchData
 	xor a
-	ld [wPokedexOAM_DexNoY], a ; might as well do this here
-	ld bc, wPokedex_SearchDataEnd - wPokedex_SearchData
+	ld hl, wPokedex_Search
+	ld bc, NUM_DEXSEARCH
 	rst ByteFill
 	; fallthrough
-Pokedex_Search:
-; Reloads Search page without reinitializing search fields/cursor
-	; Load the search page tilemap.
+_Pokedex_Search:
 	ld hl, DexTilemap_Search
 	call Pokedex_LoadTilemap
 
-	; Draw cursor
-	ld a, [wPokedex_MenuCursorY]
+	; Update body shape tiles.
+	ld a, [wPokedex_SearchBody]
+	and a
+	jr z, .shape_done
+
+	dec a
+	ld hl, Shapes
+	ld bc, 4 * LEN_1BPP_TILE
+	rst AddNTimes
+	ldh a, [rSVBK]
+	push af
+	ld a, BANK(wDexMonShapeTiles)
+	ldh [rSVBK], a
+	ld de, wDexMonShapeTiles
+	lb bc, BANK(Shapes), 4
+	call Pokedex_Copy1bpp
+
+	; Blank "----" for body.
+	hlcoord 7, 16
+	ld de, .BlankDefaultString
+	rst PlaceString
+
+	; Display shape tiles and switch tile bank and palette
+	call Pokedex_GetFirstIconTile
 	ld b, a
-	ld c, 1
-	call Coord2Tile
+	ld a, [wPokedex_MonInfoBank]
+	swap a
+	rrca
+	add b
+	add 4 ; shape, not mini
+	xor $80
+	hlcoord 7, 15
+	ld [hli], a
+	inc a
+	ld [hld], a
+	inc a
+	ld bc, SCREEN_WIDTH
+	add hl, bc
+	ld [hli], a
+	inc a
+	ld [hld], a
+	ld bc, wAttrmap - (wTilemap + SCREEN_WIDTH)
+	add hl, bc
+	ld a, VRAM_BANK_1 | 3
+	ld [hli], a
+	ld [hld], a
+	ld bc, SCREEN_WIDTH
+	add hl, bc
+	ld [hli], a
+	ld [hl], a
+
+	; This will also do a useless write of mini data, but that is fine.
+	ld hl, wPokedex_GFXFlags
+	set DEXGFX_ICONSHAPE, [hl]
+	pop af
+	ldh [rSVBK], a
+
+.shape_done
+	; Update body shape pal.
+	ld a, [wPokedex_SearchColor]
+	add a
+	add LOW(BodyColorPalsIncludingNull)
+	ld l, a
+	adc HIGH(BodyColorPalsIncludingNull)
+	sub l
+	ld h, a
+	ld de, wBGPals1 palette 3 + 6
+	ld bc, 2
+	ld a, BANK(BodyColorPalsIncludingNull)
+	call FarCopyBytesToColorWRAM
+	; Draw cursor
+	hlcoord 1, 3
+	ld a, [wPokedex_MenuCursorY]
+	ld bc, SCREEN_WIDTH * 2
+	rst AddNTimes
 	ld [hl], "▶"
 
 	; Fill fields based on current search data
-	ld c, wPokedex_SearchBody - wPokedex_SearchData
-	ld hl, wPokedex_SearchData
-.load_fields_loop
+	hlcoord 7, 4
+
+	; Body is handled seperately, hence "- 1".
+	ld a, NUM_DEXSEARCH - 1
+	ld bc, .SearchStringTableLocations
+	ld de, wPokedex_Search
+.print_loop
+	push af
+	push de
 	push hl
+	ld a, [de]
+	and a
+	ld de, .BlankDefaultString
+	push af
 	push bc
-	ld a, c
-	cpl
-	add wPokedex_SearchDataEnd - wPokedex_SearchData + 1
-	ld e, a
-	dec e
-	srl e
-	add a
-	inc a
-	ld b, a
-	ld a, [hl]
-	call Pokedex_SearchPrintFieldName
+	call nz, PlaceString
 	pop bc
-	pop hl
-	inc hl
-	dec c
-	jr nz, .load_fields_loop
-
-	; Load body and determine which tiles to use (similar to stats page)
-.reload_body
-	ld a, [wPokedex_SearchBody]
-	and a
-	jr nz, .not_blank
-	hlcoord 8, 11
-	ld a, $7f
-	ld [hli], a
-	ld [hl], a
-	hlcoord 8, 12
-	ld de, Pokedex_BlankString
-	rst PlaceString
-	jr .reload_pals
-
-.not_blank
-	dec a
-	; call Pokedex_GetBodyShapeInA
-	ld hl, wPokedex_GFXFlags
-	set DEXGFX_ICONSHAPE, [hl]
-	call Pokedex_GetFirstIconTile
-	add 8
-	hlcoord 8, 11
-	ld [hli], a
-	inc a
-	ld [hl], a
-	inc a
-	hlcoord 9, 11
-	ld [hli], a
-	inc a
-	ld [hli], a
-	ld a, $7f ; clear rest of Blank_String
-	ld [hli], a
-	ld [hl], a
-
-.reload_pals
-	ldh a, [rSVBK]
-	ld b, a
-	ld a, BANK(wBGPals1)
-	ldh [rSVBK], a
-	ld hl, wBGPals1 palette 2
-if !DEF(MONOCHROME)
-	; red
-if DEF(NOIR)
-	ld a, LOW(palred 14 + palgreen 14 + palblue 14)
-	ld [hli], a
-	ld a, HIGH(palred 14 + palgreen 14 + palblue 14)
-	ld [hli], a
-else
-	ld a, LOW(palred 26 + palgreen 10 + palblue 6)
-	ld [hli], a
-	ld a, HIGH(palred 26 + palgreen 10 + palblue 6)
-	ld [hli], a
-endc
-	; black
-	xor a
-	ld [hli], a
-	ld [hli], a
-	ld [hli], a
-	ld [hli], a
-	; white
-	dec a
-	ld [hli], a
-	ld [hl], a
-else
-	ld a, LOW(PAL_MONOCHROME_DARK)
-	ld [hli], a
-	ld a, HIGH(PAL_MONOCHROME_DARK)
-	ld [hli], a
-	ld a, LOW(PAL_MONOCHROME_BLACK)
-	ld [hli], a
-	ld a, HIGH(PAL_MONOCHROME_BLACK)
-	ld [hli], a
-	ld a, LOW(PAL_MONOCHROME_BLACK)
-	ld [hli], a
-	ld a, HIGH(PAL_MONOCHROME_BLACK)
-	ld [hli], a
-	ld a, LOW(PAL_MONOCHROME_WHITE)
-	ld [hli], a
-	ld a, HIGH(PAL_MONOCHROME_WHITE)
-	ld [hl], a
-endc
-
-	ld hl, wPokedex_SearchColor
-	ld a, [hld]
-	and a
-	jr z, .done_pals
-	ld a, [hl] ; wPokedex_SearchColor
-	and a
-	jr z, .done_pals
-.black
+	ld a, [bc]
+	ld l, a
+	inc bc
+	ld a, [bc]
+	ld h, a
+	inc bc
+	pop af
+	jr z, .next_print
 	dec a
 	add a
-	add LOW(BodyColorPals)
+	add l
 	ld l, a
-	adc HIGH(BodyColorPals)
+	adc h
 	sub l
 	ld h, a
-	ld a, BANK(BodyColorPals)
-	ld de, wBGPals1 palette 3 + 6
-	ld bc, 2
-	call FarCopyBytesToColorWRAM
-	; fallthrough
+	ld a, [bc]
+	push af
+	call GetFarWord
+	pop af
+	ld d, h
+	ld e, l
+.print
+	pop hl
+	push hl
+	push bc
+	call FarString
+	pop bc
+.next_print
+	pop hl
+	inc bc
+	ld de, SCREEN_WIDTH * 2
+	add hl, de
+	pop de
+	inc de
+	pop af
+	dec a
+	jr nz, .print_loop
 
-.done_pals
-	ld a, b
-	ldh [rSVBK], a
-.refresh
 	ld a, $f
 	ld de, PHB_SearchSwitchSCY
 	call Pokedex_ScheduleScreenUpdateWithHBlank
-
 .joypad_loop
 	call Pokedex_GetInput
 	rrca
 	jr c, .pressed_a
 	rrca
-	jr c, .pressed_b
+	jr c, .pressed_b_start
 	rrca
 	jmp c, Pokedex_SearchReset ; pressed select
 	rrca
-	jr c, .pressed_start
+	jr c, .pressed_b_start
 	rrca
-	jr c, .pressed_right
+	jmp c, .pressed_right
 	rrca
-	jr c, .pressed_left
+	jmp c, .pressed_left
 	rrca
 	jr c, .pressed_up
 	rrca
 	jr c, .pressed_down
 	jr .joypad_loop
 
-.pressed_start
-	ld a, [wPokedexMode]
-	xor 1 ; for IterateSpecies, 0=national, 1=regional
+.pressed_a
+	ld a, [wPokedex_MenuCursorY]
+	cp NUM_DEXSEARCH ; Start!
+	jr c, .pressed_right
 
-	; If alphabetical, set a=2 here.
+	call ClearSpriteAnims
+	lb de, 120, 120
+	ld a, SPRITE_ANIM_INDEX_DEX_SLOWPOKE
+	call InitSpriteAnimStruct
+
+	; Set a search timer.
+	ldh a, [hVBlankCounter]
+	and a
+	call z, DelayFrame
+	ldh a, [hVBlankCounter]
+	inc a
+	ld [wPokedex_SearchInProgress], a
+
+	; Marks that we need to reload the list if we press B upon no results.
+	ld a, 1
+	ld [wPokedex_InSearchMode], a
 	call Pokedex_GetSearchResults
+	push af
+	ld a, [wPokedex_SearchInProgress]
+	ld b, a
+.wait_81_frames
+	call DelayFrame
+	ldh a, [hVBlankCounter]
+	sub b
+	cp 81
+	jr c, .wait_81_frames
+	xor a
+	ld [wPokedex_SearchInProgress], a
+	call ClearSpriteAnims
+	pop af
+	jr nz, .reset_cursor
+
+	; If we didn't get any search results, play an error sound.
+	ld de, SFX_WRONG
+	call PlaySFX
 	jr .joypad_loop
 
+.pressed_b_start
+	; If we're currently in search mode, reinitialize the dex list first.
+	ld a, [wPokedex_InSearchMode]
+	and a
+	jr z, .reset_pals
+	xor a
+	ld [wPokedex_InSearchMode], a
+	call Pokedex_InitData
+.reset_cursor
+	xor a
+	ld [wPokedex_CursorPos], a
+	ld [wPokedex_Offset], a
+.reset_pals
+	call Pokedex_ResetModeSearchPals
+	jmp Pokedex_Main
+
 .pressed_up
-	ld a, [wPokedex_MenuCursorY]
-	cp 3
-	jr z, .joypad_loop
-	ld d, -2
+	ld b, -1
 	jr .move_cursor
 
 .pressed_down
-	ld a, [wPokedex_MenuCursorY]
-	cp 17
-	jr nc, .joypad_loop
-	ld d, 2
+	ld b, 1
 .move_cursor
-	ld e, a
-	ld c, 1
-	ld b, a
-	call Coord2Tile
-	ld [hl], $7f ; clear old tile
-	ld a, e
-	add d
-	ld [wPokedex_MenuCursorY], a
-	ld c, 1
-	ld b, a
-	call Coord2Tile
-	ld [hl], "▶"
-	jr .refresh
-
-.pressed_a
 	ld a, [wPokedex_MenuCursorY]
-	cp 15
-	jr z, .pressed_start
-	cp 17
-	jr nz, .pressed_right
-.pressed_b
-	ldh a, [rSVBK]
-	ld b, a
-	ld a, BANK(wBGPals1)
-	ldh [rSVBK], a
-	ld hl, wBGPals1 palette 2
-	ld c, (1 palettes + 2) / 2
-	ld a, $ff
-.reset_pal_loop
-	ld [hli], a
-	ld [hli], a
-	cpl
-	dec c
-	jr nz, .reset_pal_loop
-	ld a, b
-	ldh [rSVBK], a
-	jmp Pokedex_Main
+.cursor_move_loop
+	add b
+	; + 1 includes "Start!" as an option among carry
+	cp NUM_DEXSEARCH + 1
+	jr nc, .cursor_move_loop
+	ld [wPokedex_MenuCursorY], a
+.reload
+	jmp _Pokedex_Search
 
 .pressed_right
-	ld c, 1
+	ld b, 1
 	jr .switch_index
 
 .pressed_left
-	ld c, -1
+	ld b, -1
 .switch_index
 	ld a, [wPokedex_MenuCursorY]
-	ld b, a
-	srl a
-	dec a; index = wPokedex_MenuCursorY / 2 - 1
-	cp 6 ; "Start!"
-	jmp nc, .joypad_loop
-	ld e, a
-	srl e
-	call StackJumpTable
 
-.SwitchIndexJumptable:
-	dw .TypeSwitch
-	dw .TypeSwitch
-	dw .EggGroupSwitch
-	dw .EggGroupSwitch
-	dw .BodyColorSwitch
-	dw .BodyShapeSwitch
+	; do nothing if we're on "Start"
+	cp NUM_DEXSEARCH
+	jmp z, .joypad_loop
 
-.TypeSwitch:
-	ld d, NUM_TYPES
-	ld hl, wPokedex_SearchType1
-	ld a, b
-	cp 3
-	jr z, .GetValue
-	inc hl
-	jr .GetValue
-
-.EggGroupSwitch:
-	ld d, NUM_EGG_GROUPS + 1
-	ld hl, wPokedex_SearchGroup1
-	ld a, b
-	cp 7
-	jr z, .GetValue
-	inc hl
-	jr .GetValue
-
-.BodyColorSwitch:
-	ld d, NUM_BODY_COLORS + 1
-	ld hl, wPokedex_SearchColor
-.GetValue:
-	ld a, [hl]
-	add c
-	cp -1
-	jr z, .loop_to_end ; go back to the last value (NUM_[field] - 1)
-	cp d
-	jr c, .no_loop
-	xor a
-	ld [hl], a
-	jr .finish
-
-.loop_to_end
-	ld a, d
-	dec a
-.no_loop
-	ld [hl], a
-.finish
-	call Pokedex_SearchPrintFieldName
-	jmp .reload_pals
-
-.BodyShapeSwitch:
-	jmp .joypad_loop
-
-Pokedex_SearchPrintFieldName:
-; Inputs:
-;   a = index + 1
-;   b = row - 1
-;   e = field
-; Output:
-;   name in wStringBuffer1
-
-	; Get tile coord
-	ld d, a
-	inc b
-	ld c, 8
-	call Coord2Tile
-
-	; Clear existing string
-	push hl
-	ld a, $7f
-	ld bc, 12
-	rst ByteFill
-
-	; If index == 0, use blank string
-	ld c, e
-	ld a, d
-	and a
-	ld b, BANK(Pokedex_SearchPrintFieldName)
-	ld de, Pokedex_BlankString
-	jr z, .got_field
-
-	; Otherwise, first determine which name pointer table to use
-	dec a
-	ld e, a
-	ld b, 0
-	ld d, b
-	ld hl, .field_table
-	add hl, bc ; c already = field
-	add hl, bc
-	add hl, bc
-	ld a, [hli]
-	ld b, a
-	ld a, [hli]
-	ld h, [hl]
+	push af
+	add LOW(wPokedex_Search)
 	ld l, a
-
-	; Apply the index offset to hl, and get the address of the string
+	adc HIGH(wPokedex_Search)
+	sub l
+	ld h, a
+	push hl
+	ld de, .SearchOptionRanges - wPokedex_Search
 	add hl, de
-	add hl, de
-	ld a, b
-	call GetFarWord
-	ld d, h
-	ld e, l
+	pop de
+	ld a, [de]
 
-.got_field
-	; Got everything, now print!
-	pop hl
-	ld a, b
-	jmp FarString
+.switch_loop
+	; This is very inefficient, but minimizes code size (and isn't *that* slow)
+	add b
+	cp [hl]
+	jr nc, .switch_loop
+	ld [de], a
 
-.field_table
-	dba TypeNames
-	dba EggGroupNames
-	dba BodyColorNames
+	; If we're messing with shape, switch icon bank.
+	pop af
+	cp DEXSEARCH_SHAPE
+	call z, Pokedex_SwitchMonInfoBank
+	jr .reload
 
-Pokedex_BlankString:
-	db "----@"
+.SearchOptionRanges:
+	db 2 ; by Number/by Name
+	db NUM_TYPES
+	db NUM_TYPES
+	db NUM_EGG_GROUPS
+	db NUM_EGG_GROUPS
+	db NUM_BODY_COLORS
+	db NUM_SHAPES
+
+.SearchStringTableLocations:
+	dab .DexOrdering
+	dab TypeNames
+	dab TypeNames
+	dab EggGroupNames
+	dab EggGroupNames
+	dab BodyColorNames
+
+.DexOrdering:
+	; "byNumber" is default and thus part of the tilemap
+	dw .byNameString
+
+.byNameString:
+	db "by Name  @"
+
+.BlankDefaultString:
+	; Blanks the default "----" string.
+	db "    @"
 
 Pokedex_ResetDexMonsAndTemp:
 ; Resets wDexMons and wTempDex RAM.
@@ -2553,12 +2609,15 @@ Pokedex_ConvertFinalEntryToRowCols:
 
 Pokedex_GetSearchResults:
 ; Returns z if there was no search results.
-; a defines order: 0 (national), 1 (regional), 2 (a-z). Note that a is swapped
-; compared to wPokedexMode.
-	push af
 	call Pokedex_ResetDexMonsAndTemp
-	pop af
 
+	ld a, [wPokedex_SearchOrder]
+	and a
+	ld a, 2
+	jr nz, .got_search_order
+	ld a, [wPokedexMode]
+	xor 1 ; for IterateSpecies, 0=national, 1=regional
+.got_search_order
 	ld hl, .SpeciesCallback
 	call Pokedex_IterateSpecies
 	call Pokedex_ConvertFinalEntryToRowCols
@@ -2583,9 +2642,9 @@ Pokedex_GetSearchResults:
 
 	jr c, .caught
 
-	; Check if we're doing a null search.
+	; Check if we're doing a null search. - 1 to exclude search order.
 	ld hl, wPokedex_SearchData
-	ld b, wPokedex_SearchDataEnd - wPokedex_SearchData
+	ld b, NUM_DEXSEARCH - 1
 	xor a
 .check_null_search
 	or [hl]
@@ -2605,8 +2664,9 @@ Pokedex_GetSearchResults:
 	; Are we looking for any base data?
 	; Preserve species+form for appending into wDexMons later.
 	push bc
-	ld b, d
-	ld c, e
+
+	; de contains cosmetic species index, we want regional index
+	call GetSpeciesAndFormIndex
 
 	ld hl, wPokedex_SearchData
 	push hl
@@ -2616,8 +2676,8 @@ Pokedex_GetSearchResults:
 	or [hl]
 	inc hl
 	or [hl]
-	pop hl
 	jr z, .base_data_done
+	pop hl
 
 	; Check base data (types + egg groups)
 	call GetBaseDataFromIndexBC
@@ -2633,6 +2693,7 @@ Pokedex_GetSearchResults:
 	inc hl
 	call .CheckEggGroups ; check wPokedex_SearchGroup2
 	jr nz, .invalid
+	push hl
 
 .base_data_done
 	; Are we looking for body data?
@@ -2641,6 +2702,7 @@ Pokedex_GetSearchResults:
 	ld d, a ; color
 	ld e, [hl] ; shape
 	or [hl]
+	pop hl
 	jr z, .body_done
 	ld hl, PokemonBodyData + BODY_COLOR
 rept BODY_DATA_SIZE ; faster than AddNTimes while BODY_DATA_SIZE is small
@@ -2782,8 +2844,6 @@ Pokedex_InitData:
 
 	; Then populate the list with seen/captured Pokémon. Do seen first, because
 	; a captured altform takes predecence over a seen regular form.
-	; TODO: when dex mode is implemented, call IterateSpecies with a=1 if order
-	; is set to johto mode.
 	ld hl, .SpeciesCallback
 	call Pokedex_IterateSpeciesWithMode
 
@@ -2815,10 +2875,6 @@ Pokedex_InitData:
 	call Pokedex_GetDexNumber
 	dec bc
 
-	; TODO: in johto dex mode, we want to read the conversion table here.
-	; Note that we still want to decrement since we only need the number for
-	; adding to wDexMons.
-
 	; Track which entry we appended last.
 	ld hl, wPokedex_FinalEntry
 	ld a, c
@@ -2837,6 +2893,21 @@ Pokedex_InitData:
 	pop af
 	ldh [rSVBK], a
 	ret
+
+Pokedex_CountSeenOwn:
+; Returns amount of seen in wTempDexSeen, owned in wTempDexOwn. Preserves regs.
+	push hl
+	push de
+	push bc
+	push af
+	; Reset temp dex data.
+	ld hl, wTempDex
+	ld bc, wTempDexEnd - wTempDex
+	xor a
+	rst ByteFill
+	ld hl, Pokedex_HandleSeenOwn
+	call Pokedex_IterateSpecies
+	jmp PopAFBCDEHL
 
 Pokedex_HandleSeenOwn:
 ; IterateSpecies callback that handles seen/owned statistics.
@@ -2916,7 +2987,7 @@ Pokedex_IterateSpecies:
 ; Iterate in the following order depending on a: 0 (natdex), 1 (johto), 2 (a-z)
 	ld b, 0
 	ld c, b
-	ld de, REAL_NUM_POKEMON
+	ld de, NUM_POKEMON
 	inc d ; to simplify looping checks
 	and a ; cp DEXMODE_OLD
 	jr nz, .species_loop
@@ -3055,6 +3126,26 @@ Pokedex_GetInput:
 	and D_PAD
 	ret
 
+Pokedex_LoadUndiscoveredPokepic:
+; Always returns z.
+	ld hl, QuestionMarkLZ
+	ld de, sScratch + 1 tiles
+	ld a, BANK(sScratch)
+	call GetSRAMBank
+	ld a, BANK(QuestionMarkLZ)
+	call FarDecompressToDE
+	call CloseSRAM
+	ld hl, wPokedex_GFXFlags
+	set DEXGFX_FRONTPIC, [hl]
+
+	ld hl, Pokedex_QuestionMarkPal
+	ld de, wBGPals1 palette 6 + 2
+	ld a, BANK(Pokedex_QuestionMarkPal)
+	ld bc, 4
+	call FarCopyBytesToColorWRAM
+	xor a
+	ret
+
 Pokedex_SwitchMonInfoBank:
 ; Switch which bank to store tile data in. Tiles are loaded as follows:
 ; 0: vTiles2 tile $40
@@ -3133,22 +3224,9 @@ _Pokedex_GetCursorMon:
 	ld hl, wPokedex_GFXFlags
 	bit DEXGFX_ROWTILES, [hl]
 	call nz, DelayFrame
-	ld hl, QuestionMarkLZ
-	ld de, sScratch + 1 tiles
-	ld a, BANK(sScratch)
-	call GetSRAMBank
-	ld a, BANK(QuestionMarkLZ)
-	call FarDecompressToDE
-	call CloseSRAM
-	ld hl, wPokedex_GFXFlags
-	set DEXGFX_FRONTPIC, [hl]
-	set DEXGFX_POKEINFO, [hl]
 
-	ld hl, Pokedex_QuestionMarkPal
-	ld de, wBGPals1 palette 6 + 2
-	ld a, BANK(Pokedex_QuestionMarkPal)
-	ld bc, 4
-	call FarCopyBytesToColorWRAM
+	call Pokedex_LoadUndiscoveredPokepic
+	set DEXGFX_POKEINFO, [hl]
 
 	; Introduce a deliberate delay. The reason for this is so that we get a more
 	; consistent delay for each slot if keyrepeat applies.
@@ -3394,120 +3472,9 @@ Pokedex_CopyTypeIconPals:
 	pop hl
 	ret
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 INCLUDE "data/pokemon/dex_order_alpha.asm"
 INCLUDE "data/pokemon/dex_order_new.asm"
 
-
-Pokedex_GetCGBLayout:
-	call GetCGBLayout
-	ld a, $e4
-	call DmgToCgbBGPals
-	ld a, $e0
-	jmp DmgToCgbObjPal0
 
 NewPokedexEntry:
 	; Disable H-blank as invoked in battles.
@@ -3549,45 +3516,5 @@ Pokedex_GetDexEntryPointer:
 	ld e, l
 	ret
 
-DexTilemaps:
-DexTilemap_Main:
-INCBIN "gfx/pokedex/main.bin.lz"
-
-DexTilemap_Description:
-INCBIN "gfx/pokedex/description.bin.lz"
-
-DexTilemap_Bio:
-INCBIN "gfx/pokedex/bio.bin.lz"
-
-DexTilemap_Stats:
-INCBIN "gfx/pokedex/stats.bin.lz"
-
-DexTilemap_Search:
-INCBIN "gfx/pokedex/search.bin.lz"
-
-DexTilemap_Mode:
-INCBIN "gfx/pokedex/mode.bin.lz"
-
 DexModeSearchPals:
 INCLUDE "gfx/pokedex/mode_search.pal"
-
-PokedexLZ:
-INCBIN "gfx/pokedex/pokedex.2bpp.lz"
-
-DexTilemap_Kanto:
-INCBIN "gfx/pokedex/kanto.bin.lz"
-
-DexTilemap_Johto:
-INCBIN "gfx/pokedex/johto.bin.lz"
-
-DexTilemap_Orange:
-INCBIN "gfx/pokedex/orange.bin.lz"
-
-PokedexAreaLZ:
-INCBIN "gfx/pokedex/area.2bpp.lz"
-
-PokedexSlowpokeLZ:
-INCBIN "gfx/pokedex/slowpoke.2bpp.lz"
-
-QuestionMarkLZ:
-INCBIN "gfx/pokedex/question_mark.2bpp.lz"

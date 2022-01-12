@@ -53,7 +53,7 @@ ProfOaksAide4Script:
 	line "Uh-oh! You've only"
 
 	para "caught "
-	text_decimal wTempPokedexCaughtCount, 2, 3
+	text_decimal wTempDexOwn, 2, 3
 	text " kinds"
 	line "of #mon."
 
@@ -103,7 +103,7 @@ ProfOaksAide4Script:
 	line "Great job! You've"
 
 	para "caught "
-	text_decimal wTempPokedexCaughtCount, 2, 3
+	text_decimal wTempDexOwn, 2, 3
 	text " kinds"
 	line "of #mon."
 

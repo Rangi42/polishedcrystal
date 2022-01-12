@@ -308,7 +308,7 @@ ENDM
 	const checkpoke_command
 checkpoke: MACRO
 	db checkpoke_command
-	db \1 ; pkmn
+	dp \1 ; pkmn
 ENDM
 
 	const givepoke_command
@@ -337,12 +337,10 @@ givepoke: MACRO
 		db NO_MOVE
 	endc
 	if _NARG >= 7
-		db \7 ; trainer
-		if \7
-			dw \8 ; trainer_name_pointer
-			dw \9 ; pkmn_nickname
-			dw \<10> ; trainer_ot_pointer
-		endc
+		db TRUE ; trainer
+		dw \7 ; nickname_pointer
+		dw \8 ; ot_name_pointer
+		dw \9 ; ot_id_pointer
 	else
 		db FALSE ; no trainer
 	endc

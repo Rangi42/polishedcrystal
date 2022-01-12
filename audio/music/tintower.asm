@@ -93,7 +93,7 @@ Music_TinTower_branch_f682a:
 	intensity $a5
 	octave 3
 	note A#, 4
-	loopchannel 0, Music_TinTower_branch_f682a
+	jumpchannel Music_TinTower_branch_f682a
 
 Music_TinTower_Ch2:
 	dutycycle $3
@@ -182,7 +182,7 @@ Music_TinTower_branch_f6895:
 	note C_, 6
 	intensity $95
 	note C#, 2
-	loopchannel 0, Music_TinTower_branch_f6893
+	jumpchannel Music_TinTower_branch_f6893
 
 Music_TinTower_Ch3:
 	notetype $c, $14
@@ -256,7 +256,7 @@ Music_TinTower_branch_f68fb:
 	note C_, 1
 	note __, 11
 	stereopanning $ff
-	loopchannel 0, Music_TinTower_branch_f68fb
+	jumpchannel Music_TinTower_branch_f68fb
 
 Music_TinTower_Ch4:
 	togglenoise $0
@@ -288,4 +288,4 @@ Music_TinTower_branch_f694c:
 	note G_, 2
 	note G_, 2
 	note F_, 2
-	loopchannel 0, Music_TinTower_branch_f694c
+	jumpchannel Music_TinTower_branch_f694c

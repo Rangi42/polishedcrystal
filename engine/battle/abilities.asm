@@ -1898,17 +1898,18 @@ _GetOpponentAbilityAfterMoldBreaker::
 	call GetTrueUserAbility
 	cp MOLD_BREAKER
 	ld a, b
-	jr nz, .end
+	jr nz, .done
 	push hl
 	push bc
 	ld hl, MoldBreakerSuppressedAbilities
 	call IsInByteArray
 	pop bc
 	pop hl
-	ld a, b
-	jr nc, .end
-	xor a ; ld a, NO_ABILITY
-.end
+	; a = carry ? NO_ABILITY (0) : b
+	ccf
+	sbc a
+	and b
+.done
 	pop bc
 	pop de
 	ret

@@ -87,7 +87,7 @@ Music_VermilionCity_branch_eb6a0:
 	note B_, 4
 	octave 3
 	note D_, 4
-	loopchannel 0, Music_VermilionCity_branch_eb6a0
+	jumpchannel Music_VermilionCity_branch_eb6a0
 
 Music_VermilionCity_branch_eb6f9:
 	octave 3
@@ -183,7 +183,7 @@ Music_VermilionCity_branch_eb735:
 	notetype $c, $87
 	octave 5
 	note E_, 16
-	loopchannel 0, Music_VermilionCity_branch_eb735
+	jumpchannel Music_VermilionCity_branch_eb735
 
 Music_VermilionCity_branch_eb768:
 	octave 1
@@ -286,7 +286,7 @@ Music_VermilionCity_branch_eb79e:
 	octave 5
 	note E_, 1
 	note G#, 1
-	loopchannel 0, Music_VermilionCity_branch_eb79e
+	jumpchannel Music_VermilionCity_branch_eb79e
 
 Music_VermilionCity_branch_eb7de:
 	octave 5

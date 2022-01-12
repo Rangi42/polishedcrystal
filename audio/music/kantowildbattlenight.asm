@@ -241,4 +241,4 @@ endr
 	callchannel Music_KantoWildBattle_Ch3_Part1
 	intensity $11
 	callchannel Music_KantoWildBattle_Ch3_Part2
-	loopchannel 0, Music_KantoWildBattleNight_Ch3loop
+	jumpchannel Music_KantoWildBattleNight_Ch3loop

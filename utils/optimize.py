@@ -7,6 +7,7 @@ Search all .asm files for N code lines in a row that match some conditions.
 
 from collections import namedtuple
 from glob import iglob
+from sys import argv
 
 # Regular expressions are useful for text processing
 import re
@@ -102,7 +103,7 @@ patterns = {
 	# Bad: ld a, P / jr c|nc, .ok / xor|inc|dec a / .ok
 	# Good: solutions involving sbc a
 	(lambda line1, prev: re.match(r'ld a, [^afbcdehl\[]', line1.code)),
-	(lambda line2, prev: re.match(r'j[rp] n?c,', line2.code)),
+	(lambda line2, prev: re.match(r'(jr|jp|jmp) n?c,', line2.code)),
 	(lambda line3, prev: re.match(r'ld a, [^afbcdehl\[]', line3.code)
 		or line3.code in {'xor a', 'inc a', 'dec a'}),
 	(lambda line4, prev: line4.code.rstrip(':') == prev[1].code.split(',')[1].strip()),
@@ -110,7 +111,7 @@ patterns = {
 'a++|a-- if carry': [
 	# Bad: jr nc, .ok / { inc|dec a }+ / .ok
 	# Good: adc|sbc 0
-	(lambda line1, prev: re.match(r'j[rp] nc,', line1.code)),
+	(lambda line1, prev: re.match(r'(jr|jp|jmp) nc,', line1.code)),
 	(lambda line2, prev: line2.code in {'inc a', 'dec a'}),
 	(1, lambda line3, prev: line3.code.rstrip(':') == prev[0].code.split(',')[1].strip()),
 ],
@@ -141,15 +142,15 @@ patterns = {
 'a|b|c|d|e|h|l = z|nz|c|nc ? P : Q': [
 	# Bad: jr z|nz|c|nc, .p / ld a|b|c|d|e|h|l, Q / jr .ok / .p / (ld a|b|c|d|e|h|l, P | xor a) / (.ok | jr .ok)
 	# Good: ld a|b|c|d|e|h|l, Q / jr nz|z|nc|c, .ok / .p / (ld a|b|c|d|e|h|l, P | xor a) / .ok
-	(lambda line1, prev: re.match(r'j[rp] n?[zc],', line1.code)),
+	(lambda line1, prev: re.match(r'(jr|jp|jmp) n?[zc],', line1.code)),
 	(lambda line2, prev: re.match(r'ldh? [abcdehl],', line2.code)),
-	(lambda line3, prev: re.match(r'j[rp] ', line3.code) and ',' not in line3.code
-		and line3.code != 'jm?p hl'),
+	(lambda line3, prev: re.match(r'(jr|jp|jmp) ', line3.code) and ',' not in line3.code
+		and line3.code != 'jp hl'),
 	(lambda line4, prev: line4.code.rstrip(':') == prev[0].code.split(',')[1].strip()),
 	(lambda line5, prev: re.match(r'ldh? [abcdehl],', line5.code)
 		or (line5.code in {'xor a', 'xor a, a'} and re.match(r'ldh? a,', prev[1].code))),
 	(lambda line6, prev: line6.code == prev[2].code
-		or line6.code.rstrip(':') == prev[2].code[3:].strip()),
+		or line6.code.rstrip(':') == prev[2].code.split(maxsplit=1)[-1].strip()),
 ],
 'hl|bc|de += a|N': [
 	# Bad: add l|N / ld l, a / ld a, h|0 / adc 0|h / ld h, a (hl or bc or de)
@@ -170,7 +171,7 @@ patterns = {
 	(lambda line1, prev: re.match(r'add (?:a, )?(?:[lce]|[^afbdh\[])', line1.code)),
 	(lambda line2, prev: re.match(r'ld [lce], a', line2.code)
 		and (lambda x: line2.code[3] == x or x not in 'lce')(prev[0].code.replace('add a,', 'add')[4])),
-	(lambda line3, prev: re.match(r'j[rp] nc,', line3.code)),
+	(lambda line3, prev: re.match(r'(jr|jp|jmp) nc,', line3.code)),
 	(lambda line4, prev: re.match(r'inc [hbd]', line4.code)
 		and line4.code[4] == PAIRS[prev[1].code[3]]),
 	(lambda line5, prev: line5.code.rstrip(':') == prev[2].code.split(',')[1].strip()),
@@ -334,24 +335,24 @@ patterns = {
 	# Good: call nz|z|nc|c, Foo
 	# Bad: jr z|nz|c|nc, .ok / call Foo / jr .ok
 	# Good: call nz|z|nc|c, Foo / jr .ok
-	(lambda line1, prev: re.match(r'j[rp] n?[zc],', line1.code)),
+	(lambda line1, prev: re.match(r'(jr|jp|jmp) n?[zc],', line1.code)),
 	(lambda line2, prev: line2.code.startswith('call ') and ',' not in line2.code),
-	(lambda line3, prev: (re.match(r'j[rp] ', line3.code) and ',' not in line3.code
+	(lambda line3, prev: (re.match(r'(jr|jp|jmp) ', line3.code) and ',' not in line3.code
 		and line3.code.split()[-1].strip() == prev[0].code.split(',')[1].strip())
 		or line3.code.rstrip(':') == prev[0].code.split(',')[1].strip()),
 ],
 'Conditional return': [
 	# Bad: jr z|nz|c|nc, .skip / ret / .skip
 	# Good: ret nz|z|nc|c .bar
-	(lambda line1, prev: re.match(r'j[rp] n?[zc],', line1.code)),
+	(lambda line1, prev: re.match(r'(jr|jp|jmp) n?[zc],', line1.code)),
 	(lambda line2, prev: line2.code == 'ret'),
 	(lambda line3, prev: line3.code.rstrip(':') == prev[0].code.split(',')[1].strip()),
 ],
 'Conditional fallthrough': [
 	# Bad: jr z|nz|c|nc, .foo / jr .bar / .foo: ...
 	# Good: jr nz|z|nc|c .bar / .foo: ...
-	(lambda line1, prev: re.match(r'j[rp] n?[zc],', line1.code)),
-	(lambda line2, prev: re.match(r'j[rp] ', line2.code) and ',' not in line2.code
+	(lambda line1, prev: re.match(r'(jr|jp|jmp) n?[zc],', line1.code)),
+	(lambda line2, prev: re.match(r'(jr|jp|jmp) ', line2.code) and ',' not in line2.code
 		and line2.code != 'jp hl'),
 	(lambda line3, prev: line3.code.rstrip(':') == prev[0].code.split(',')[1].strip()),
 ],
@@ -367,9 +368,9 @@ patterns = {
 'Pointless jumps': [
 	# Bad: jr|jp Foo / Foo: ...
 	# Good: fall through to Foo: ...
-	(lambda line1, prev: (line1.code.startswith('jr ') or line1.code.startswith('jp ')
-		or line1.code.startswith('jmp ')) and ',' not in line1.code),
-	(lambda line2, prev: line2.code.rstrip(':') == prev[0].code[3:].strip()
+	(lambda line1, prev: re.match(r'^(jr|jp|jmp|jump|sjump|jumpchannel|sound_jump) ', line1.code)
+		and ',' not in line1.code),
+	(lambda line2, prev: line2.code.rstrip(':') == prev[0].code.split(maxsplit=1)[-1].strip()
 		and (line2.context == prev[0].context or line2.context == line2.code)),
 ],
 'Useless loads': [
@@ -528,7 +529,8 @@ patterns = {
 count = 0
 
 # Check all the .asm files
-for filename in iglob('**/*.asm', recursive=True):
+filenames = argv[1:] if len(argv) > 1 else iglob('**/*.asm', recursive=True)
+for filename in filenames:
 	printed = False
 	# Read each file line by line
 	with open(filename, 'r') as f:

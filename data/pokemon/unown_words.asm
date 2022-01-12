@@ -2,7 +2,6 @@ UnownWords:
 ; entries correspond to UNOWN_* form constants
 	table_width 2, UnownWords
 	dw UnownWord1
-	dw UnownWord1
 	dw UnownWord2
 	dw UnownWord3
 	dw UnownWord4
@@ -30,7 +29,7 @@ UnownWords:
 	dw UnownWord26
 	dw UnownWord27
 	dw UnownWord28
-	assert_table_length NUM_UNOWN + 1
+	assert_table_length NUM_UNOWN
 
 UnownWord1:  db "ANGER@"
 UnownWord2:  db "BEAR@"

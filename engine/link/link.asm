@@ -1222,33 +1222,16 @@ LinkTrade_TradeStatsMenu:
 	text_end
 
 ValidateOTTrademon:
+; Returns carry if level isn't within 1-100.
 	ld a, [wCurOTTradePartyMon]
-	ld hl, wOTPartyMon1Species
+	ld hl, wOTPartyMon1Level
 	call GetPartyLocation
-	push hl
-	ld a, [wCurOTTradePartyMon]
-	inc a
-	ld c, a
-	ld b, 0
-	ld hl, wOTPartyCount
-	add hl, bc
 	ld a, [hl]
-	pop hl
-	cp [hl]
-	jr nz, .abnormal
 
-	ld b, h
-	ld c, l
-	ld hl, MON_LEVEL
-	add hl, bc
-	ld a, [hl]
-	cp MAX_LEVEL + 1
-	jr nc, .abnormal
-	and a
-	ret
-
-.abnormal
-	scf
+	; Only allow level 1-100.
+	dec a
+	cp MAX_LEVEL
+	ccf
 	ret
 
 CheckAnyOtherAliveMonsForTrade:

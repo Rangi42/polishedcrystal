@@ -2624,7 +2624,7 @@ LoadMusicByte::
 	ret
 
 ReloadWaveform::
-    ; called from the music player
+	; called from the music player
 	ld a, [wCurTrackIntensity]
 	and $f ; only NUM_WAVEFORMS are valid
 	; each wavepattern is $f bytes long, so seeking is done in $10s

@@ -1,12 +1,6 @@
 ; wInputType::
 AUTO_INPUT EQU $ff
 
-; wCurDexMode::
-	const_def
-	const DEXMODE_NEW
-	const DEXMODE_OLD
-	; 2 means a-z for IterateSpecies, but isn't a proper dex mode
-
 ; wMonType::
 	const_def
 	const PARTYMON   ; 0

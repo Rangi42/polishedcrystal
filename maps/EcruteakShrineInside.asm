@@ -76,10 +76,11 @@ EcruteakShrineInsideReiScript:
 	loadtrainer REI, 3
 	startbattle
 	reloadmapafterbattle
-	sjump .AfterRematch
+	; fallthrough
 
 .AfterRematch:
 	opentext
+	; fallthrough
 
 .ReiDone
 	jumpopenedtext EcruteakShrineInsideReiComeAgainText

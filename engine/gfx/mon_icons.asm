@@ -144,6 +144,32 @@ else
 .shiny
 	ld a, c
 	and $f
+if DEF(NOIR)
+	ld bc, palred 21 + palgreen 21 + palblue 21
+	and a ; PAL_OW_RED
+	ld de, palred 13 + palgreen 13 + palblue 13
+	ret z
+	dec a ; PAL_OW_BLUE
+	ld de, palred 11 + palgreen 11 + palblue 11
+	ret z
+	dec a ; PAL_OW_GREEN
+	ld de, palred 15 + palgreen 15 + palblue 15
+	ret z
+	dec a ; PAL_OW_BROWN
+	ld de, palred 10 + palgreen 10 + palblue 10
+	ret z
+	dec a ; PAL_OW_PURPLE
+	ld de, palred 09 + palgreen 09 + palblue 09
+	ret z
+	dec a ; PAL_OW_GRAY
+	ld de, palred 13 + palgreen 13 + palblue 13
+	ret z
+	dec a ; PAL_OW_PINK
+	ld de, palred 16 + palgreen 16 + palblue 16
+	ret z
+	; PAL_OW_TEAL
+	ld de, palred 16 + palgreen 16 + palblue 16
+else
 	ld bc, palred 31 + palgreen 19 + palblue 10
 	and a ; PAL_OW_RED
 	ld de, palred 31 + palgreen 07 + palblue 01
@@ -168,6 +194,7 @@ else
 	ret z
 	; PAL_OW_TEAL
 	ld de, palred 03 + palgreen 23 + palblue 21
+endc
 	ret
 endc
 

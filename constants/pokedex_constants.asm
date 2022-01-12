@@ -1,5 +1,7 @@
 	const_def
 	const DEXDISP_MAIN
+	const DEXDISP_UNOWN
+DEXDISP_SPRITEANIM_OK EQU const_value ; Display modes with sprite anim cursor.
 	const DEXDISP_MODE
 	const DEXDISP_NEWDESC
 	; These below (starting from DEXDISP_SEARCH) have OAM data.
@@ -22,7 +24,30 @@
 	const DEXPOS_ATTRMAP
 	const DEXPOS_PALCOPY
 
-	; area mode data
+	; Note that wPokedex_SearchData starts with Type1.
+	const_def
+	const DEXSEARCH_ORDER
+	const DEXSEARCH_TYPE1
+	const DEXSEARCH_TYPE2
+	const DEXSEARCH_GROUP1
+	const DEXSEARCH_GROUP2
+	const DEXSEARCH_COLOR
+	const DEXSEARCH_SHAPE
+NUM_DEXSEARCH EQU const_value
+
+	; wCurDexMode::
+	; Also defines menu options for the dex mode menu.
+	const_def
+	; Valid for wCurDexMode
+	const DEXMODE_NEW
+	const DEXMODE_OLD
+DEXMODE_ABC EQU const_value ; Only used as a search option, not a proper mode.
+	; Other options
+	const DEXMODE_UNOWN
+	const DEXMODE_CANCEL
+NUM_DEXMODE EQU const_value
+
+	; area data
 	const_def
 	const DEXAREA_MORNING
 	const DEXAREA_DAY
@@ -42,3 +67,6 @@ DEXAREA_UNKNOWN_MASK EQU %10000000
 DEXAREA_REGION_MASK  EQU %01110000
 DEXAREA_TYPE_MASK    EQU %00001111
 DEXAREA_UNKNOWN_F EQU 7 ; literally "Area Unknown", not pret "unknown meaning"
+
+POKEDEX_SCROLLTILE_TOP EQU $75
+POKEDEX_SCROLLTILE_BAR EQU $76

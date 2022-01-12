@@ -147,7 +147,7 @@ Music_PokemonCenter_branch_ed5df:
 	note E_, 2
 	note F#, 2
 	note G_, 2
-	loopchannel 0, Music_PokemonCenter_branch_ed5df
+	jumpchannel Music_PokemonCenter_branch_ed5df
 
 Music_PokemonCenter_Ch2:
 	vibrato $10, $25
@@ -215,7 +215,7 @@ Music_PokemonCenter_branch_ed674:
 	note F#, 2
 	note E_, 2
 	note D_, 8
-	loopchannel 0, Music_PokemonCenter_branch_ed674
+	jumpchannel Music_PokemonCenter_branch_ed674
 
 Music_PokemonCenter_branch_ed6d1:
 	dutycycle $2
@@ -354,7 +354,7 @@ Music_PokemonCenter_branch_ed6f6:
 	note __, 1
 	note E_, 1
 	note __, 1
-	loopchannel 0, Music_PokemonCenter_branch_ed6f6
+	jumpchannel Music_PokemonCenter_branch_ed6f6
 
 Music_PokemonCenter_branch_ed76f:
 	note E_, 1
@@ -401,4 +401,4 @@ Music_PokemonCenter_branch_ed792:
 	note G_, 2
 	note G_, 2
 	note G_, 2
-	loopchannel 0, Music_PokemonCenter_branch_ed792
+	jumpchannel Music_PokemonCenter_branch_ed792

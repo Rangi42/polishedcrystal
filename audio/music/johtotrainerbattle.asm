@@ -426,7 +426,7 @@ Music_JohtoTrainerBattle_branch_f61bd:
 	note F_, 10
 	intensity $a7
 	note F_, 6
-	loopchannel 0, Music_JohtoTrainerBattle_branch_f6102
+	jumpchannel Music_JohtoTrainerBattle_branch_f6102
 
 Music_JohtoTrainerBattle_branch_f629f:
 	octave 3
@@ -825,7 +825,7 @@ Music_JohtoTrainerBattle_branch_f63dd:
 	note E_, 2
 	note D_, 2
 	note F_, 2
-	loopchannel 0, Music_JohtoTrainerBattle_branch_f632a
+	jumpchannel Music_JohtoTrainerBattle_branch_f632a
 
 Music_JohtoTrainerBattle_branch_f649a:
 	octave 3
@@ -1246,7 +1246,7 @@ Music_JohtoTrainerBattle_branch_f6636:
 	note A#, 2
 	octave 4
 	note D_, 2
-	loopchannel 0, Music_JohtoTrainerBattle_branch_f6531
+	jumpchannel Music_JohtoTrainerBattle_branch_f6531
 
 Music_JohtoTrainerBattle_branch_f6676:
 	octave 4

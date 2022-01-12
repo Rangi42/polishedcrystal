@@ -239,7 +239,7 @@ Music_KantoWildBattle_branch_ed17e:
 	note D_, 1
 	note C#, 1
 	loopchannel 8, Music_KantoWildBattle_branch_ed17e
-	loopchannel 0, Music_KantoWildBattle_branch_ed091
+	jumpchannel Music_KantoWildBattle_branch_ed091
 
 Music_KantoWildBattle_branch_ed18a:
 	octave 4
@@ -475,7 +475,7 @@ endr
 	octave 2
 	note C_, 2
 	note __, 2
-	loopchannel 0, Music_KantoWildBattle_branch_ed1c8
+	jumpchannel Music_KantoWildBattle_branch_ed1c8
 
 Music_KantoWildBattle_branch_ed2c6:
 	octave 2
@@ -835,7 +835,7 @@ endr
 	callchannel Music_KantoWildBattle_Ch3_Part1
 	intensity $13
 	callchannel Music_KantoWildBattle_Ch3_Part2
-	loopchannel 0, Music_KantoWildBattle_Ch3loop
+	jumpchannel Music_KantoWildBattle_Ch3loop
 
 Music_KantoWildBattle_Ch3Intro:
 	octave 3

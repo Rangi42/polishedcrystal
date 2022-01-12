@@ -191,7 +191,7 @@ RunTradeAnimSequence:
 	ld de, wPlayerTrademonSpeciesName
 	call TradeAnim_GetNickname
 	ld a, [wOTTrademonForm]
-	ld c, a
+	ld b, a
 	ld a, [wOTTrademonSpecies]
 	ld de, wOTTrademonSpeciesName
 	call TradeAnim_GetNickname

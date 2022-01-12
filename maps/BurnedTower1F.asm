@@ -93,7 +93,7 @@ BurnedTowerRivalBattleScript:
 	startbattle
 	dontrestartmapmusic
 	reloadmapafterbattle
-	sjump .returnfrombattle
+	; fallthrough
 
 .returnfrombattle
 	special DeleteSavedMusic

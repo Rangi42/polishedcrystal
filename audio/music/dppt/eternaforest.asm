@@ -281,7 +281,7 @@ Music_EternaForestDPPt_Ch1_loop:
 	note B_, 6
 	intensity $42
 	note B_, 8
-	loopchannel 0, Music_EternaForestDPPt_Ch1_loop
+	jumpchannel Music_EternaForestDPPt_Ch1_loop
 
 Music_EternaForestDPPt_Ch2:
 Music_EternaForestDPPt_Ch2_loop:
@@ -515,7 +515,7 @@ Music_EternaForestDPPt_Ch2_loop:
 	note G_, 6
 	intensity $52
 	note G_, 8
-	loopchannel 0, Music_EternaForestDPPt_Ch2_loop
+	jumpchannel Music_EternaForestDPPt_Ch2_loop
 
 Music_EternaForestDPPt_Ch3:
 Music_EternaForestDPPt_Ch3_loop:
@@ -760,7 +760,7 @@ Music_EternaForestDPPt_Ch3_loop:
 	octave 7
 	note D_, 2
 	note __, 10
-	loopchannel 0, Music_EternaForestDPPt_Ch3_loop
+	jumpchannel Music_EternaForestDPPt_Ch3_loop
 
 Music_EternaForestDPPt_Ch4:
 	togglenoise 4
@@ -980,4 +980,4 @@ Music_EternaForestDPPt_Ch4_loop:
 	note __, 16
 	note __, 16
 	note __, 16
-	loopchannel 0, Music_EternaForestDPPt_Ch4_loop
+	jumpchannel Music_EternaForestDPPt_Ch4_loop

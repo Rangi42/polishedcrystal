@@ -193,7 +193,7 @@ _Pokedex_Area:
 	; Restore previous palettes.
 	push hl
 	ld a, CGB_POKEDEX_PREPARE_ONLY
-	call Pokedex_GetCGBLayout
+	call GetCGBLayout
 	call Pokedex_GetCursorMon
 	pop hl
 	jp hl
@@ -447,13 +447,13 @@ Pokedex_GetAreaOAM:
 	ld b, 0
 	call PlaceVWFString
 	pop hl
-	ld de, vTiles0 tile $40
+	ld de, vTiles0 tile $20
 	lb bc, 0, 7
 	call Pokedex_Get2bpp
 
 	lb bc, 94, 29
 	lb de, 7, 27
-	lb hl, 0, $40
+	lb hl, 0, $20
 	call Pokedex_WriteOAM
 
 	; Write (A) button
@@ -490,7 +490,7 @@ Pokedex_GetAreaOAM:
 	ld l, $10
 	dec b
 	dec b
-	jp Pokedex_WriteOAM
+	jmp Pokedex_WriteOAM
 
 Pokedex_GetMonLocations:
 ; Creates a table of nest coordinates for the given area mode.
@@ -512,7 +512,6 @@ Pokedex_GetMonLocations:
 	ld hl, wDexAreaHighlightY
 	ld [hli], a
 	ld [hl], a
-	; TODO: highlight nests in the player's current map
 	dec a
 	ld [wDexAreaHighlight], a
 
@@ -534,7 +533,6 @@ Pokedex_GetMonLocations:
 	sub DEXAREA_FISH ; also sub DEXAREA_HEADBUTT
 	jr c, .fish
 
-	; TODO: Rock Smash, Contest
 	jr z, .headbutt
 	dec a ; cp DEXAREA_ROCK_SMASH
 	jr z, .rock_smash
@@ -623,7 +621,7 @@ Pokedex_SetWildLandmark:
 	ld [hl], a
 	pop af
 .end
-	jp PopBCDEHL
+	jmp PopBCDEHL
 
 Pokedex_SortAreaMons:
 ; Sorts area mons for the benefit of hblank processing

@@ -1793,7 +1793,7 @@ StepFunction_PlayerStairs:
 	jmp IncrementObjectStructField1c
 
 .InitVertical:
- 	ld hl, OBJECT_ACTION
+	ld hl, OBJECT_ACTION
 	add hl, bc
 	ld [hl], OBJECT_ACTION_STAND
 	ld a, [wPlayerGoingUpStairs]

@@ -53,7 +53,7 @@ Music_ViridianForest_branch_ed8fb:
 	octave 3
 	note B_, 2
 	note G_, 2
-	loopchannel 0, Music_ViridianForest_branch_ed8fb
+	jumpchannel Music_ViridianForest_branch_ed8fb
 
 Music_ViridianForest_branch_ed931:
 	octave 4
@@ -172,7 +172,7 @@ Music_ViridianForest_branch_ed9a1:
 	callchannel Music_ViridianForest_branch_ed9dc
 	callchannel Music_ViridianForest_branch_eda02
 	callchannel Music_ViridianForest_branch_eda02
-	loopchannel 0, Music_ViridianForest_branch_ed9a1
+	jumpchannel Music_ViridianForest_branch_ed9a1
 
 Music_ViridianForest_branch_ed9ba:
 	octave 4
@@ -381,7 +381,7 @@ Music_ViridianForest_branch_eda4b:
 	note F#, 1
 	note G_, 16
 	note G_, 15
-	loopchannel 0, Music_ViridianForest_branch_eda4b
+	jumpchannel Music_ViridianForest_branch_eda4b
 
 Music_ViridianForest_branch_eda9e:
 	octave 3
@@ -511,4 +511,4 @@ Music_ViridianForest_branch_edb17:
 	note D_, 2
 	note D_, 2
 	note D#, 4
-	loopchannel 0, Music_ViridianForest_branch_edaef
+	jumpchannel Music_ViridianForest_branch_edaef

@@ -78,9 +78,28 @@ Var_DayOfWeek:
 	jr _Var_loadstringbuffer2
 
 Var_UnownCaught:
-	ld hl, wUnownDex
-	ld b, wUnownDexEnd - wUnownDex
-	call CountSetBits ; result returned in a
+	push hl
+	push de
+	push bc
+
+	assert !HIGH(UNOWN)
+	lb bc, NUM_UNOWN, UNOWN
+	ld d, 0
+.loop
+	push de
+	push bc
+	call PokedexFlagAction
+	pop bc
+	pop de
+	jr z, .not_captured
+	inc d
+.not_captured
+	dec b
+	jr nz, .loop
+	ld a, d
+	pop bc
+	pop de
+	pop hl
 	jr _Var_loadstringbuffer2
 
 Var_BoxFreeSpace:
@@ -114,14 +133,13 @@ Var_CountTrainerStars:
 .nostar2
 	; star for completing the Pokédex
 	push bc
-	ld hl, wPokedexCaught
-	ld bc, wEndPokedexCaught - wPokedexCaught
-	call CountSetBits16
-	ld a, b
-	cp HIGH(NUM_EXT_POKEMON)
+	farcall Pokedex_CountSeenOwn
+	ld hl, wTempDexOwn
+	ld a, [hli]
+	cp HIGH(NUM_POKEMON)
 	jr c, .nostar3
-	ld a, c
-	cp LOW(NUM_EXT_POKEMON)
+	ld a, [hl]
+	cp LOW(NUM_POKEMON)
 	jr c, .nostar3
 	inc b
 .nostar3
@@ -137,4 +155,4 @@ Var_CountTrainerStars:
 	inc b
 .nostar4
 	ld a, b
-	jr _Var_loadstringbuffer2
+	jmp _Var_loadstringbuffer2

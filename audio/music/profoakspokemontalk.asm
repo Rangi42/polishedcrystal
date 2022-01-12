@@ -128,7 +128,7 @@ Music_ProfOaksPokemonTalk_branch_f4cc3:
 	note __, 1
 	note F#, 1
 	note __, 1
-	loopchannel 0, Music_ProfOaksPokemonTalk_branch_f4cc3
+	jumpchannel Music_ProfOaksPokemonTalk_branch_f4cc3
 
 Music_ProfOaksPokemonTalk_Ch2:
 	vibrato $8, $24
@@ -203,7 +203,7 @@ Music_ProfOaksPokemonTalk_branch_f4d4d:
 	note __, 1
 	note A#, 1
 	note __, 1
-	loopchannel 0, Music_ProfOaksPokemonTalk_branch_f4d4d
+	jumpchannel Music_ProfOaksPokemonTalk_branch_f4d4d
 
 Music_ProfOaksPokemonTalk_Ch3:
 	vibrato $6, $38
@@ -302,4 +302,4 @@ Music_ProfOaksPokemonTalk_branch_f4d95:
 	octave 2
 	note A#, 1
 	note __, 1
-	loopchannel 0, Music_ProfOaksPokemonTalk_branch_f4d95
+	jumpchannel Music_ProfOaksPokemonTalk_branch_f4d95

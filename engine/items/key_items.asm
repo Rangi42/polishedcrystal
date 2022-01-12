@@ -171,11 +171,11 @@ KeyItems_DisplayPocketItems:
 	call KeyItemsPocket_GetCurrentLineCoord
 	push hl
 
-    push hl
-    pop de
-    push hl
+	push hl
+	pop de
+	push hl
 	ld a, [wTempKeyItem]
-    and a
+	and a
 	jr z, .not_registered
 	ld b, a
 	ld hl, wRegisteredItems
@@ -205,11 +205,11 @@ KeyItems_DisplayPocketItems:
 .not_unique
 	pop de
 	push de
-    inc de
+	inc de
 	ld a, c
 	ld [de], a
 .not_registered
-    pop hl
+	pop hl
 
 	ld a, [wNamedObjectIndex]
 	call GetKeyItemName

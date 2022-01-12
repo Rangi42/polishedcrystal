@@ -448,7 +448,7 @@ Music_BattleFactoryRSE_Ch1_loop:
 	note G_, 2
 	octave 2
 	note E_, 2
-	loopchannel 0, Music_BattleFactoryRSE_Ch1_loop
+	jumpchannel Music_BattleFactoryRSE_Ch1_loop
 
 Music_BattleFactoryRSE_Ch2:
 	stereopanning $ff
@@ -989,7 +989,7 @@ Music_BattleFactoryRSE_Ch2_loop:
 	octave 2
 	note E_, 1
 	note __, 1
-	loopchannel 0, Music_BattleFactoryRSE_Ch2_loop
+	jumpchannel Music_BattleFactoryRSE_Ch2_loop
 
 Music_BattleFactoryRSE_Ch2_branch_1:
 	octave 3
@@ -1163,7 +1163,7 @@ Music_BattleFactoryRSE_Ch3_loop:
 	callchannel Music_BattleFactoryRSE_Ch3_branch_1
 	callchannel Music_BattleFactoryRSE_Ch3_branch_3
 	callchannel Music_BattleFactoryRSE_Ch3_branch_1
-	loopchannel 0, Music_BattleFactoryRSE_Ch3_loop
+	jumpchannel Music_BattleFactoryRSE_Ch3_loop
 
 Music_BattleFactoryRSE_Ch3_branch_1:
 	octave 1
@@ -1251,7 +1251,7 @@ Music_BattleFactoryRSE_Ch4:
 	notetype $6
 Music_BattleFactoryRSE_Ch4_loop:
 	note D#, 8
-	loopchannel 0, Music_BattleFactoryRSE_Ch4_loop
+	jumpchannel Music_BattleFactoryRSE_Ch4_loop
 
 Music_BattleFactoryRSE_Ch4_branch_1:
 	note E_, 4

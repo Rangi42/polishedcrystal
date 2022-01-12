@@ -160,7 +160,7 @@ Music_NuggetBridgeHGSS_Loop1:
 	note F#, 2
 	octave 3
 	note C#, 2
-	loopchannel 0, Music_NuggetBridgeHGSS_Loop1
+	jumpchannel Music_NuggetBridgeHGSS_Loop1
 
 Music_NuggetBridgeHGSS_Ch2:
 	dutycycle 1
@@ -282,7 +282,7 @@ Music_NuggetBridgeHGSS_Loop2:
 	note E_, 1
 	note F#, 6
 	note A_, 2
-	loopchannel 0, Music_NuggetBridgeHGSS_Loop2
+	jumpchannel Music_NuggetBridgeHGSS_Loop2
 
 Music_NuggetBridgeHGSS_Ch3:
 	notetype $C, $15
@@ -417,7 +417,7 @@ Music_NuggetBridgeHGSS_Loop3:
 	note E_, 4
 	note __, 8
 	note D_, 4
-	loopchannel 0, Music_NuggetBridgeHGSS_Loop3
+	jumpchannel Music_NuggetBridgeHGSS_Loop3
 
 Music_NuggetBridgeHGSS_Bar7:
 	octave 2
@@ -608,4 +608,4 @@ Music_NuggetBridgeHGSS_Loop4:
 	note D_, 2
 	note D_, 2
 	note D_, 2
-	loopchannel 0, Music_NuggetBridgeHGSS_Loop4
+	jumpchannel Music_NuggetBridgeHGSS_Loop4

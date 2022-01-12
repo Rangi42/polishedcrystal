@@ -752,24 +752,30 @@ AnimSeq_DexCursor:
 	ld hl, SPRITEANIMSTRUCT_YOFFSET
 	add hl, bc
 	ld a, [wPokedex_DisplayMode]
-	and a ; cp DEXDISP_MAIN
+	cp DEXDISP_SPRITEANIM_OK
 	ld [hl], 160
-	jr nz, .done
+	jr nc, .done
 	push hl
+	push de
 	ld hl, SPRITEANIMSTRUCT_XOFFSET
 	add hl, bc
-	push hl
+	and a ; cp DEXDISP_MAIN
 	ld a, [wPokedex_CursorPos]
+	lb de, 30, 24
+	jr z, .got_cursor_info
+	ld a, [wPokedex_UnownCursor]
+	lb de, 16, 16
+.got_cursor_info
 	ld b, a
 	and $7
-	ld c, 30
+	ld c, d
 	call SimpleMultiply
-	pop hl
 	ld [hl], a
 	ld a, b
 	swap a
 	and $f
-	ld c, 24
+	ld c, e
+	pop de
 	call SimpleMultiply
 	pop hl
 	ld [hl], a

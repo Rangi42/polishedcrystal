@@ -55,7 +55,7 @@ Music_SpikyEaredPichuHGSS_Ch1:
 	note B_, 4
 	octave 4
 	note C_, 4
-	loopchannel 0, Music_SpikyEaredPichuHGSS_Ch1
+	jumpchannel Music_SpikyEaredPichuHGSS_Ch1
 
 Music_SpikyEaredPichuHGSS_Ch1_branch_1:
 	notetype $4, $92
@@ -246,7 +246,7 @@ Music_SpikyEaredPichuHGSS_Ch2_loop_1:
 	note D_, 4
 	note B_, 4
 	note __, 4
-	loopchannel 0, Music_SpikyEaredPichuHGSS_Ch2
+	jumpchannel Music_SpikyEaredPichuHGSS_Ch2
 
 Music_SpikyEaredPichuHGSS_Ch3:
 	notetype $6, $15
@@ -520,7 +520,7 @@ Music_SpikyEaredPichuHGSS_Ch3:
 	note F#, 1
 	note G_, 8
 	note __, 8
-	loopchannel 0, Music_SpikyEaredPichuHGSS_Ch3
+	jumpchannel Music_SpikyEaredPichuHGSS_Ch3
 
 Music_SpikyEaredPichuHGSS_Ch4:
 	togglenoise $3
@@ -556,4 +556,4 @@ Music_SpikyEaredPichuHGSS_Ch4_loop_1:
 	note C_, 2
 	note B_, 4
 	note D#, 4
-	loopchannel 0, Music_SpikyEaredPichuHGSS_Ch4_loop_main
+	jumpchannel Music_SpikyEaredPichuHGSS_Ch4_loop_main

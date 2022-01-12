@@ -66,8 +66,8 @@ TextboxPalette::
 
 TextBoxCharacters:
 	rawchar "┌─┐" ; top
-	rawchar "│ │" ; middle
-	rawchar "└─┘" ; bottom
+	rawchar "│ ┃" ; middle
+	rawchar "└━┘" ; bottom
 
 TextboxBorder::
 	ld de, TextBoxCharacters

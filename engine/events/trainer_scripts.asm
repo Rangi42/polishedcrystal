@@ -14,7 +14,7 @@ SeenByTrainerScript::
 	applymovementlasttalked wMovementBuffer
 	writeobjectxy LAST_TALKED
 	faceobject PLAYER, LAST_TALKED
-	sjump StartBattleWithMapTrainerScript
+	; fallthrough
 
 StartBattleWithMapTrainerScript:
 	opentext

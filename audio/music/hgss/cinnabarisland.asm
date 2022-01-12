@@ -75,7 +75,7 @@ Music_CinnabarIslandHGSS_Loop1:
 	note G_, 8
 	note F#, 4
 	note E_, 4
-	loopchannel 0, Music_CinnabarIslandHGSS_Loop1
+	jumpchannel Music_CinnabarIslandHGSS_Loop1
 
 Music_CinnabarIslandHGSS_Ch2:
 	dutycycle 1
@@ -156,4 +156,4 @@ Music_CinnabarIslandHGSS_Loop2:
 	octave 3
 	note B_, 2
 	note A_, 6
-	loopchannel 0, Music_CinnabarIslandHGSS_Loop2
+	jumpchannel Music_CinnabarIslandHGSS_Loop2

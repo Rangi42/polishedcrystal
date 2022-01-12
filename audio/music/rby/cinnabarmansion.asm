@@ -45,7 +45,7 @@ Music_CinnabarMansionRBY_branch_7ed19:
 	octave 5
 	note B_, 1
 	note B_, 2
-	loopchannel 0, Music_CinnabarMansionRBY_branch_7ed19
+	jumpchannel Music_CinnabarMansionRBY_branch_7ed19
 
 Music_CinnabarMansionRBY_Ch2:
 	dutycycle 2
@@ -81,7 +81,7 @@ Music_CinnabarMansionRBY_branch_7ed50:
 	note G#, 4
 	note G_, 4
 	note D#, 4
-	loopchannel 0, Music_CinnabarMansionRBY_branch_7ed4e
+	jumpchannel Music_CinnabarMansionRBY_branch_7ed4e
 
 Music_CinnabarMansionRBY_branch_7ed6c:
 	octave 3
@@ -148,7 +148,7 @@ Music_CinnabarMansionRBY_branch_7ed80:
 	note G_, 16
 	note G#, 8
 	note D#, 8
-	loopchannel 0, Music_CinnabarMansionRBY_branch_7ed80
+	jumpchannel Music_CinnabarMansionRBY_branch_7ed80
 
 Music_CinnabarMansionRBY_Ch4:
 	notetype 6
@@ -177,4 +177,4 @@ Music_CinnabarMansionRBY_branch_7edb5:
 	note __, 10
 	note __, 8
 	note F#, 8
-	loopchannel 0, Music_CinnabarMansionRBY_branch_7edb5
+	jumpchannel Music_CinnabarMansionRBY_branch_7edb5

@@ -36,7 +36,7 @@ Music_ShowMeAround_branch_edc01:
 	callchannel Music_ShowMeAround_branch_edc15
 	callchannel Music_ShowMeAround_branch_edc98
 	callchannel Music_ShowMeAround_branch_edc15
-	loopchannel 0, Music_ShowMeAround_branch_edc01
+	jumpchannel Music_ShowMeAround_branch_edc01
 
 Music_ShowMeAround_branch_edc15:
 	note __, 4
@@ -134,7 +134,7 @@ Music_ShowMeAround_branch_edc44:
 	note A_, 2
 	note A_, 2
 	note A_, 4
-	loopchannel 0, Music_ShowMeAround_branch_edc44
+	jumpchannel Music_ShowMeAround_branch_edc44
 
 Music_ShowMeAround_branch_edc86:
 	octave 3
@@ -226,7 +226,7 @@ Music_ShowMeAround_branch_edcd9:
 	callchannel Music_ShowMeAround_branch_edd0f
 	callchannel Music_ShowMeAround_branch_edcef
 	callchannel Music_ShowMeAround_branch_edd0f
-	loopchannel 0, Music_ShowMeAround_branch_edcd9
+	jumpchannel Music_ShowMeAround_branch_edcd9
 
 Music_ShowMeAround_branch_edcef:
 	octave 2
@@ -312,7 +312,7 @@ Music_ShowMeAround_branch_edd39:
 	callchannel Music_ShowMeAround_branch_edd5e
 	callchannel Music_ShowMeAround_branch_edd4f
 	callchannel Music_ShowMeAround_branch_edd5e
-	loopchannel 0, Music_ShowMeAround_branch_edd39
+	jumpchannel Music_ShowMeAround_branch_edd39
 
 Music_ShowMeAround_branch_edd4f:
 	note D#, 2

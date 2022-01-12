@@ -113,7 +113,7 @@ Music_LookRival_branch_f4ff7:
 	intensity $b7
 	note G#, 6
 	note F#, 4
-	loopchannel 0, Music_LookRival_branch_f4fb1
+	jumpchannel Music_LookRival_branch_f4fb1
 
 Music_LookRival_Ch2:
 	dutycycle $3
@@ -202,7 +202,7 @@ Music_LookRival_branch_f5070:
 	note D#, 4
 	intensity $c7
 	note D#, 10
-	loopchannel 0, Music_LookRival_branch_f502e
+	jumpchannel Music_LookRival_branch_f502e
 
 Music_LookRival_Ch3:
 	notetype $c, $28
@@ -289,7 +289,7 @@ Music_LookRival_branch_f509d:
 	note C_, 2
 	note F#, 2
 	note E_, 2
-	loopchannel 0, Music_LookRival_branch_f509d
+	jumpchannel Music_LookRival_branch_f509d
 
 Music_LookRival_branch_f50ef:
 	note F_, 2
@@ -349,4 +349,4 @@ Music_LookRival_branch_f5118:
 	note D#, 2
 	note D_, 2
 	note D_, 2
-	loopchannel 0, Music_LookRival_branch_f5118
+	jumpchannel Music_LookRival_branch_f5118

@@ -198,7 +198,7 @@ Music_JohtoWildBattle_branch_f5e2d:
 	note D_, 4
 	note F#, 4
 	note G_, 16
-	loopchannel 0, Music_JohtoWildBattle_branch_f5e2d
+	jumpchannel Music_JohtoWildBattle_branch_f5e2d
 
 Music_JohtoWildBattle_Ch2:
 	dutycycle $3
@@ -360,7 +360,7 @@ Music_JohtoWildBattle_branch_f5ed1:
 	note G_, 4
 	note A#, 4
 	note B_, 16
-	loopchannel 0, Music_JohtoWildBattle_branch_f5ed1
+	jumpchannel Music_JohtoWildBattle_branch_f5ed1
 
 Music_JohtoWildBattleNight_branch_f5f5d:
 Music_JohtoWildBattle_branch_f5f5d:
@@ -575,7 +575,7 @@ Music_JohtoWildBattle_branch_f6047:
 	note G_, 2
 	note F#, 2
 	note E_, 2
-	loopchannel 0, Music_JohtoWildBattle_branch_f5fdb
+	jumpchannel Music_JohtoWildBattle_branch_f5fdb
 
 Music_JohtoWildBattle_branch_f6055:
 	note D#, 2

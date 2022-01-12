@@ -118,6 +118,36 @@ AnimObjPremierBallGFX:: INCBIN "gfx/battle_balls/premier_ball.2bpp.lz"
 AnimObjCherishBallGFX:: INCBIN "gfx/battle_balls/cherish_ball.2bpp.lz"
 
 
+SECTION "Bill's PC Graphics", ROMX
+
+BillsPC_CursorGFX:: INCBIN "gfx/pc/cursor.2bpp"
+BillsPC_TileGFX::   INCBIN "gfx/pc/pc.2bpp.lz"
+BillsPC_ObjGFX::    INCBIN "gfx/pc/obj.2bpp.lz"
+
+
+SECTION "Pokedex Graphics", ROMX
+
+PokedexTileLZ::     INCBIN "gfx/pokedex/pokedex.2bpp.lz"
+PokedexSlowpokeLZ:: INCBIN "gfx/pokedex/slowpoke.2bpp.lz"
+QuestionMarkLZ::    INCBIN "gfx/pokedex/question_mark.2bpp.lz"
+PokedexObjLZ::      INCBIN "gfx/pokedex/oam.2bpp.lz"
+
+
+SECTION "Pokedex Tilemaps", ROMX
+
+DexTilemaps:
+DexTilemap_Main::        INCBIN "gfx/pokedex/main.bin.lz"
+DexTilemap_Description:: INCBIN "gfx/pokedex/description.bin.lz"
+DexTilemap_Bio::         INCBIN "gfx/pokedex/bio.bin.lz"
+DexTilemap_Stats::       INCBIN "gfx/pokedex/stats.bin.lz"
+DexTilemap_Search::      INCBIN "gfx/pokedex/search.bin.lz"
+DexTilemap_Mode::        INCBIN "gfx/pokedex/mode.bin.lz"
+DexTilemap_Unown::       INCBIN "gfx/pokedex/unown.bin.lz"
+DexTilemap_Kanto::       INCBIN "gfx/pokedex/kanto.bin.lz"
+DexTilemap_Johto::       INCBIN "gfx/pokedex/johto.bin.lz"
+DexTilemap_Orange::      INCBIN "gfx/pokedex/orange.bin.lz"
+
+
 SECTION "SGB Border Graphics", ROMX
 
 SGBBorderGFX::

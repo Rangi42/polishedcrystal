@@ -55,7 +55,7 @@ Music_Route4BW_Ch1_loop:
 	intensity $c7
 	note E_, 8
 	dutycycle $3
-	loopchannel 0, Music_Route4BW_Ch1_loop
+	jumpchannel Music_Route4BW_Ch1_loop
 
 Music_Route4BW_Ch1_branch_1:
 	notetype $c, $b2
@@ -288,7 +288,7 @@ Music_Route4BW_Ch2:
 	notetype $c, $c7
 	note F#, 4
 	note E_, 4
-	loopchannel 0, Music_Route4BW_Ch2
+	jumpchannel Music_Route4BW_Ch2
 
 Music_Route4BW_Ch3:
 	stereopanning $f0
@@ -508,7 +508,7 @@ Music_Route4BW_Ch3:
 	notetype $c, $14
 	note D#, 4
 	note C#, 4
-	loopchannel 0, Music_Route4BW_Ch3
+	jumpchannel Music_Route4BW_Ch3
 
 Music_Route4BW_Ch3_branch_1:
 	note D#, 5
@@ -567,7 +567,7 @@ Music_Route4BW_Ch4_branch_1:
 	note D#, 1
 	note D#, 1
 	note D_, 1
-	loopchannel 0, Music_Route4BW_Ch4_branch_1
+	jumpchannel Music_Route4BW_Ch4_branch_1
 
 Music_Route4BW_Ch4_branch_2:
 	note D_, 2

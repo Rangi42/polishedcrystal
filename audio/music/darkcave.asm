@@ -76,7 +76,7 @@ Music_DarkCave_branch_ea303:
 Music_DarkCave_branch_ea328:
 	callchannel Music_DarkCave_branch_ea333
 	loopchannel 2, Music_DarkCave_branch_ea328
-	loopchannel 0, Music_DarkCave_branch_ea2e8
+	jumpchannel Music_DarkCave_branch_ea2e8
 
 Music_DarkCave_branch_ea333:
 	octave 4
@@ -343,7 +343,7 @@ Music_DarkCave_branch_ea37e:
 	note D_, 16
 	note F_, 16
 	note D#, 16
-	loopchannel 0, Music_DarkCave_branch_ea37e
+	jumpchannel Music_DarkCave_branch_ea37e
 
 Music_DarkCave_Ch3:
 	notetype $c, $27
@@ -381,7 +381,7 @@ Music_DarkCave_branch_ea478:
 	note C#, 4
 	callchannel Music_DarkCave_branch_ea4a7
 	callchannel Music_DarkCave_branch_ea4a7
-	loopchannel 0, Music_DarkCave_branch_ea478
+	jumpchannel Music_DarkCave_branch_ea478
 
 Music_DarkCave_branch_ea4a7:
 	octave 3
@@ -480,4 +480,4 @@ Music_DarkCave_branch_ea4ee:
 	stereopanning $f0
 	note C#, 2
 	note C#, 2
-	loopchannel 0, Music_DarkCave_branch_ea4ee
+	jumpchannel Music_DarkCave_branch_ea4ee

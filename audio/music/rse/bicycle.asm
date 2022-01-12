@@ -312,7 +312,7 @@ Music_BicycleRSE_Ch1:
 	note D_, 16
 	intensity $87
 	note D_, 16
-	loopchannel 0, Music_BicycleRSE_Ch1
+	jumpchannel Music_BicycleRSE_Ch1
 
 Music_BicycleRSE_Ch2:
 	dutycycle $2
@@ -677,7 +677,7 @@ Music_BicycleRSE_Ch2:
 	note G_, 4
 	intensity $a1
 	note A_, 4
-	loopchannel 0, Music_BicycleRSE_Ch2
+	jumpchannel Music_BicycleRSE_Ch2
 
 Music_BicycleRSE_Ch2_branch_1:
 	octave 4
@@ -1062,7 +1062,7 @@ Music_BicycleRSE_Ch3_loop_1:
 	note A_, 1
 	note __, 3
 	loopchannel 8, Music_BicycleRSE_Ch3_loop_1
-	loopchannel 0, Music_BicycleRSE_Ch3_loop_main
+	jumpchannel Music_BicycleRSE_Ch3_loop_main
 
 Music_BicycleRSE_Ch4:
 	togglenoise $3
@@ -1100,4 +1100,4 @@ Music_BicycleRSE_Ch4_loop_4:
 	note __, 16
 	note __, 16
 	note __, 16
-	loopchannel 0, Music_BicycleRSE_Ch4_loop_main
+	jumpchannel Music_BicycleRSE_Ch4_loop_main

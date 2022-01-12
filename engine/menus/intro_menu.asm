@@ -524,12 +524,8 @@ Continue_DisplayPokedexNumCaught:
 	ld a, [wStatusFlags]
 	bit STATUSFLAGS_POKEDEX_F, a
 	ret z
-	push hl
-	ld hl, wPokedexCaught
-	ld bc, wEndPokedexCaught - wPokedexCaught
-	call CountSetBits16
-	pop hl
-	ld de, wNumSetBits
+	farcall Pokedex_CountSeenOwn
+	ld de, wTempDexOwn
 	lb bc, 2, 3
 	jmp PrintNum
 

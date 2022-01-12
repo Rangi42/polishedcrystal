@@ -428,7 +428,7 @@ Music_SurfRSE_Ch1_loop:
 	note A_, 4
 	note G#, 12
 	note C#, 12
-	loopchannel 0, Music_SurfRSE_Ch1_loop
+	jumpchannel Music_SurfRSE_Ch1_loop
 
 Music_SurfRSE_Ch2:
 Music_SurfRSE_Ch2_loop:
@@ -789,7 +789,7 @@ Music_SurfRSE_Ch2_loop:
 	note F_, 4
 	note F#, 4
 	note G#, 12
-	loopchannel 0, Music_SurfRSE_Ch2_loop
+	jumpchannel Music_SurfRSE_Ch2_loop
 
 Music_SurfRSE_Ch3:
 	notetype $C, $00
@@ -1049,4 +1049,4 @@ Music_SurfRSE_Ch3_loop:
 	note F#, 4
 	note F_, 12
 	note C#, 12
-	loopchannel 0, Music_SurfRSE_Ch3_loop
+	jumpchannel Music_SurfRSE_Ch3_loop

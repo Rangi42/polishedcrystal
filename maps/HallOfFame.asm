@@ -60,7 +60,6 @@ HallOfFameEntranceTrigger:
 	waitbutton
 	writetext .GoldTrophySentText
 	waitbutton
-	sjump .NoTrophy
 .NoTrophy
 	writetext .LanceText2
 	waitbutton

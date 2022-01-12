@@ -126,7 +126,7 @@ Music_RocketTheme_branch_f7713:
 	note F_, 2
 	note C_, 1
 	note D_, 1
-	loopchannel 0, Music_RocketTheme_branch_f768b
+	jumpchannel Music_RocketTheme_branch_f768b
 
 Music_RocketTheme_branch_f7727:
 	note __, 7
@@ -287,7 +287,7 @@ Music_RocketTheme_branch_f774b:
 	octave 5
 	note C_, 2
 	note D_, 2
-	loopchannel 0, Music_RocketTheme_branch_f774b
+	jumpchannel Music_RocketTheme_branch_f774b
 
 Music_RocketTheme_branch_f7800:
 	notetype $6, $b7
@@ -440,7 +440,7 @@ Music_RocketTheme_branch_f782f:
 	octave 4
 	note G#, 1
 	note __, 1
-	loopchannel 0, Music_RocketTheme_branch_f782f
+	jumpchannel Music_RocketTheme_branch_f782f
 
 Music_RocketTheme_Ch4:
 	togglenoise $3
@@ -471,4 +471,4 @@ Music_RocketTheme_branch_f78de:
 	callchannel Music_RocketTheme_branch_f7664
 	callchannel Music_RocketTheme_branch_f765c
 	callchannel Music_RocketTheme_branch_f765c
-	loopchannel 0, Music_RocketTheme_branch_f78c3
+	jumpchannel Music_RocketTheme_branch_f78c3

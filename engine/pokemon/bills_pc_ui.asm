@@ -399,15 +399,6 @@ UseBillsPC:
 	pop bc
 	ret
 
-BillsPC_CursorGFX:
-INCBIN "gfx/pc/cursor.2bpp"
-
-BillsPC_TileGFX:
-INCBIN "gfx/pc/pc.2bpp.lz"
-
-BillsPC_ObjGFX:
-INCBIN "gfx/pc/obj.2bpp.lz"
-
 BillsPC_BlankTiles:
 ; Used as input to blank a*4 tiles (mon icons typically use 4 tiles).
 	ld de, vTiles3 tile $00 ; Reserved blank tiles.

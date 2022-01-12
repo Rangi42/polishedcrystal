@@ -482,7 +482,7 @@ Music_Route210DPPt_Ch1_loop:
 	intensity $B5
 	note F_, 6
 	note __, 2
-	loopchannel 0, Music_Route210DPPt_Ch1_loop
+	jumpchannel Music_Route210DPPt_Ch1_loop
 
 Music_Route210DPPt_Ch2:
 	notetype $C, $C7
@@ -862,7 +862,7 @@ Music_Route210DPPt_Ch2_loop:
 	note C#, 8
 	intensity $C7
 	note C#, 16
-	loopchannel 0, Music_Route210DPPt_Ch2_loop
+	jumpchannel Music_Route210DPPt_Ch2_loop
 
 Music_Route210DPPt_Ch3:
 	notetype $6, $12
@@ -1473,7 +1473,7 @@ Music_Route210DPPt_Ch3_loop:
 	note __, 1
 	note G#, 1
 	note __, 1
-	loopchannel 0, Music_Route210DPPt_Ch3_loop
+	jumpchannel Music_Route210DPPt_Ch3_loop
 
 Music_Route210DPPt_Ch4:
 	togglenoise 0
@@ -1879,4 +1879,4 @@ Music_Route210DPPt_Ch4_loop:
 	note C_, 4
 	note C_, 2
 	note C_, 2
-	loopchannel 0, Music_Route210DPPt_Ch4_loop
+	jumpchannel Music_Route210DPPt_Ch4_loop

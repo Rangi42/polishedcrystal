@@ -198,6 +198,7 @@ SECTION "Pokedex", ROMX
 INCLUDE "engine/pokedex/area.asm"
 INCLUDE "engine/pokedex/lcd.asm"
 INCLUDE "engine/pokedex/pokedex.asm"
+INCLUDE "engine/pokedex/unown_dex.asm"
 
 
 SECTION "Pokédex Footprints", ROMX
@@ -459,7 +460,6 @@ SECTION "bank3E", ROMX
 
 INCLUDE "engine/events/name_rater.asm"
 INCLUDE "engine/events/play_slow_cry.asm"
-INCLUDE "engine/pokedex/unown_dex.asm"
 INCLUDE "engine/events/magikarp.asm"
 INCLUDE "engine/battle/hidden_power.asm"
 INCLUDE "engine/battle/misc.asm"
