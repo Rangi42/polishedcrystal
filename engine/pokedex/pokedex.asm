@@ -1526,7 +1526,7 @@ endr
 	pop hl
 	jmp Pokedex_Bio
 
- .pressed_left
+.pressed_left
 	pop af
 	pop hl
 	pop hl
