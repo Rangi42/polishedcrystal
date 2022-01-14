@@ -1763,33 +1763,22 @@ MPLPlaceString:
 MPTilemap:
 INCBIN "gfx/music_player/music_player.tilemap"
 
+ch_name: MACRO
+	dwcoord \1, \2 ; x, y
+	db \3, \4, \5 ; tile ids
+ENDM
+
 ChannelsOnTilemaps:
-	; channel 1
-	dwcoord 0, MP_HUD_TOP
-	db $07, $08, $09
-	; channel 2
-	dwcoord 5, MP_HUD_TOP
-	db $07, $08, $0a
-	; channel 3
-	dwcoord 10, MP_HUD_TOP
-	db $0b, $0c, $0d
-	; channel 4
-	dwcoord 16, MP_HUD_TOP
-	db $0e, $0f, $10
+	ch_name  0, MP_HUD_TOP, $07, $08, $09
+	ch_name  5, MP_HUD_TOP, $07, $08, $0a
+	ch_name 10, MP_HUD_TOP, $0b, $0c, $0d
+	ch_name 16, MP_HUD_TOP, $0e, $0f, $10
 
 ChannelsOffTilemaps:
-	; channel 1
-	dwcoord 0, MP_HUD_TOP
-	db $11, $12, $13
-	; channel 2
-	dwcoord 5, MP_HUD_TOP
-	db $11, $12, $14
-	; channel 3
-	dwcoord 10, MP_HUD_TOP
-	db $15, $16, $17
-	; channel 4
-	dwcoord 16, MP_HUD_TOP
-	db $18, $19, $1a
+	ch_name  0, MP_HUD_TOP, $11, $12, $13
+	ch_name  5, MP_HUD_TOP, $11, $12, $14
+	ch_name 10, MP_HUD_TOP, $15, $16, $17
+	ch_name 16, MP_HUD_TOP, $18, $19, $1a
 
 NoteOAM:
 	; y, x, tile id, OAM attributes
