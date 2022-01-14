@@ -139,11 +139,11 @@ MusicPlayer::
 	hlcoord 0, 0, wAttrmap
 	ld bc, SCREEN_WIDTH * SCREEN_HEIGHT
 	rst ByteFill
-	hlcoord 3, 17, wAttrmap
+	hlcoord 3, MP_HUD_TOP + 2, wAttrmap
 	ld [hl], $3
-	hlcoord 8, 17, wAttrmap
+	hlcoord 8, MP_HUD_TOP + 2, wAttrmap
 	ld [hl], $2
-	hlcoord 12, 17, wAttrmap
+	hlcoord 13, MP_HUD_TOP + 2, wAttrmap
 	ld a, $1
 	ld [hli], a
 	ld [hl], a
@@ -812,14 +812,21 @@ ClearChannelSelector:
 	ret
 
 _LocateChannelSelector:
-	ld c, 5
-	call SimpleMultiply
+	add LOW(.x_coords)
+	ld l, a
+	adc HIGH(.x_coords)
+	sub l
+	ld h, a
+	ld a, [hl]
 	hlcoord 3, MP_HUD_TOP
 	add l
 	ld l, a
 	ret nc
 	inc h
 	ret
+
+.x_coords
+	db 0, 5, 10, 16
 
 DrawChannelLabel:
 	and a
@@ -831,32 +838,29 @@ DrawChannelLabel:
 .draw
 	ld a, [wChannelSelector]
 	ld l, a
-	ld h, 0
-	add hl, hl
+	add a
+	add a
 	add l
 	ld l, a
+	ld h, 0
 	add hl, de
-	push hl
-
-	hlcoord 0, MP_HUD_TOP
-	ld a, [wChannelSelector]
-	ld c, 5
-	call SimpleMultiply
+	ld a, [hli]
 	ld e, a
-	ld d, 0
-	add hl, de
-	push hl
-	pop de
-	pop hl
-rept 3
+	ld a, [hli]
+	ld d, a
 	ld a, [hli]
 	ld [de], a
 	inc de
-endr
+	ld a, [hli]
+	ld [de], a
+	inc de
+	ld a, [hl]
+	ld [de], a
 	ret
 
 DrawChData:
 	hlcoord 0, MP_HUD_TOP + 1
+	xor a
 .loop:
 	ld [wTmpCh], a
 	call _DrawCh1_2_3
@@ -867,7 +871,7 @@ DrawChData:
 	jr c, .loop
 
 	; channel 4
-	hlcoord 18, MP_HUD_TOP + 1
+	hlcoord 19, MP_HUD_TOP + 1
 	ld a, [wMusicNoiseSampleSet]
 	add "0"
 	ld [hl], a
@@ -980,10 +984,10 @@ _DrawCh1_2_3:
 	jr c, .got_digit
 	sub "9" + 1 - "A"
 .got_digit
-	; ld [coord 10, 16], a
-	ld [wTilemap + 16 * SCREEN_WIDTH + 10], a
+	hlcoord 14, MP_HUD_TOP + 1
+	ld [hl], a
 
-	hlcoord 12, MP_HUD_TOP + 2
+	hlcoord 13, MP_HUD_TOP + 2
 	; pick the waveform
 	ld a, [wChannel3Intensity]
 	and $f
@@ -1758,10 +1762,34 @@ MPLPlaceString:
 
 MPTilemap:
 INCBIN "gfx/music_player/music_player.tilemap"
+
 ChannelsOnTilemaps:
-INCBIN "gfx/music_player/channels_on.tilemap"
+	; channel 1
+	dwcoord 0, MP_HUD_TOP
+	db $07, $08, $09
+	; channel 2
+	dwcoord 5, MP_HUD_TOP
+	db $07, $08, $0a
+	; channel 3
+	dwcoord 10, MP_HUD_TOP
+	db $0b, $0c, $0d
+	; channel 4
+	dwcoord 16, MP_HUD_TOP
+	db $0e, $0f, $10
+
 ChannelsOffTilemaps:
-INCBIN "gfx/music_player/channels_off.tilemap"
+	; channel 1
+	dwcoord 0, MP_HUD_TOP
+	db $11, $12, $13
+	; channel 2
+	dwcoord 5, MP_HUD_TOP
+	db $11, $12, $14
+	; channel 3
+	dwcoord 10, MP_HUD_TOP
+	db $15, $16, $17
+	; channel 4
+	dwcoord 16, MP_HUD_TOP
+	db $18, $19, $1a
 
 NoteOAM:
 	; y, x, tile id, OAM attributes
