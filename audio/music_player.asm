@@ -267,7 +267,7 @@ MusicPlayerLoop:
 	ldh [hBGMapHalf], a
 	jr MusicPlayerLoop
 
-.left:
+.down:
 ; previous song
 	ld a, [wSongSelection]
 	dec a
@@ -275,7 +275,7 @@ MusicPlayerLoop:
 	ld a, NUM_MUSIC_SONGS - 1
 	jmp _RedrawMusicPlayer
 
-.right:
+.up:
 ; next song
 	ld a, [wSongSelection]
 	inc a
@@ -284,7 +284,7 @@ MusicPlayerLoop:
 	ld a, 1
 	jmp _RedrawMusicPlayer
 
-.down:
+.left:
 ; 10 songs back
 	ld a, [wSongSelection]
 	sub MP_LIST_PAGE_SKIP
@@ -295,7 +295,7 @@ MusicPlayerLoop:
 	ld a, NUM_MUSIC_SONGS - 1
 	jmp _RedrawMusicPlayer
 
-.up:
+.right:
 ; 10 songs ahead
 	ld a, [wSongSelection]
 	add MP_LIST_PAGE_SKIP
