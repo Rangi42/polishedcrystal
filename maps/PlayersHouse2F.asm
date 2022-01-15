@@ -107,7 +107,7 @@ endr
 	giveitem MOON_STONE, 99
 	giveitem SUN_STONE, 99
 	giveitem DUSK_STONE, 99
-	giveitem DAWN_STONE, 99
+	giveitem OVAL_STONE, 99
 	giveitem SHINY_STONE, 99
 	giveitem EXP_SHARE, 99
 	giveitem LEFTOVERS, 99
