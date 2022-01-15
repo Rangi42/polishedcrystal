@@ -24,8 +24,8 @@ ifeq ($(filter nortc,$(MAKECMDGOALS)),nortc)
 RGBASM_FLAGS += -DNO_RTC
 endif
 ifeq ($(filter pocket,$(MAKECMDGOALS)),pocket)
-RGBASM_FLAGS += -DANALOGUE_POCKET
-RGBFIX_FLAGS = -csj -f hg -t $(TITLE) -i $(MCODE) -n $(ROMVERSION) -p $(FILLER) -k 01 -l 0x33 -m 0x10 -r 3
+RGBASM_FLAGS += -DANALOGUE_POCKET -DNO_RTC
+RGBFIX_FLAGS = -csj -f hg -t $(TITLE) -i $(MCODE) -n $(ROMVERSION) -p $(FILLER) -k 01 -l 0x33 -m 0x1b -r 3
 endif
 ifeq ($(filter monochrome,$(MAKECMDGOALS)),monochrome)
 RGBASM_FLAGS += -DMONOCHROME
