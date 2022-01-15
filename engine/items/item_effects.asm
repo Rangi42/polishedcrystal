@@ -95,7 +95,7 @@ ItemEffects:
 	dw EvoStoneEffect     ; MOON_STONE
 	dw EvoStoneEffect     ; SUN_STONE
 	dw EvoStoneEffect     ; DUSK_STONE
-	dw IsntTheTimeMessage ; OVAL_STONE
+	dw EvoStoneEffect     ; DAWN_STONE
 	dw EvoStoneEffect     ; SHINY_STONE
 	dw EvoStoneEffect     ; ICE_STONE
 	dw IsntTheTimeMessage ; EVERSTONE

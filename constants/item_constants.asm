@@ -107,7 +107,7 @@
 	const MOON_STONE   ; 51
 	const SUN_STONE    ; 52
 	const DUSK_STONE   ; 53
-	const OVAL_STONE   ; 54 not an evolution stone, but held to evolve
+	const DAWN_STONE   ; 54
 	const SHINY_STONE  ; 55
 	const ICE_STONE    ; 56
 	const EVERSTONE    ; 57
@@ -351,6 +351,7 @@ endc
 	const NAM_CLEANSE_TAG
 	const NAM_CUSTAP_BERRY
 	const NAM_DAMP_ROCK
+	const NAM_DAWN_STONE
 	const NAM_DESTINY_KNOT
 	const NAM_DIRE_HIT
 	const NAM_DIVE_BALL
@@ -464,7 +465,6 @@ endc
 	const NAM_ODD_SOUVENIR
 	const NAM_OLD_AMBER
 	const NAM_ORAN_BERRY
-	const NAM_OVAL_STONE
 	const NAM_PARALYZEHEAL
 	const NAM_PEARL
 	const NAM_PEARL_STRING

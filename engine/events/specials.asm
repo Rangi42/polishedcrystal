@@ -154,7 +154,7 @@ BugContestJudging:
 
 .FirstPlacePrizes:
 	db MORN_HOUR, MOON_STONE
-	db DAY_HOUR,  SHINY_STONE
+	db DAY_HOUR,  DAWN_STONE
 	db EVE_HOUR,  SUN_STONE
 	db NITE_HOUR, DUSK_STONE
 	db -1,        MOON_STONE
