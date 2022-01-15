@@ -226,7 +226,7 @@ DisableLCD::
 
 ; Don't need to do anything if the LCD is already off
 	ldh a, [rLCDC]
-	bit rLCDC_ENABLE, a ; lcd enable
+	bit rLCDC_ENABLE, a
 	ret z
 
 	xor a
@@ -247,7 +247,7 @@ DisableLCD::
 	jr z, .wait
 
 	ldh a, [rLCDC]
-	and ~(1 << rLCDC_ENABLE) ; lcd enable off
+	and ~(1 << rLCDC_ENABLE)
 	ldh [rLCDC], a
 
 	xor a
@@ -258,6 +258,6 @@ DisableLCD::
 
 EnableLCD::
 	ldh a, [rLCDC]
-	set rLCDC_ENABLE, a ; lcd enable
+	set rLCDC_ENABLE, a
 	ldh [rLCDC], a
 	ret

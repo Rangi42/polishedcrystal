@@ -56,7 +56,7 @@ Request2bppInWRA6::
 
 Get2bpp::
 	ldh a, [rLCDC]
-	bit rLCDC_ENABLE, a ; lcd on?
+	bit rLCDC_ENABLE, a
 	jr nz, Request2bpp
 
 Copy2bpp::
@@ -144,7 +144,7 @@ GetOpaque1bppFontTile::
 	lb bc, BANK(FontTiles), 1
 GetOpaque1bpp::
 	ldh a, [rLCDC]
-	bit rLCDC_ENABLE, a ; lcd on?
+	bit rLCDC_ENABLE, a
 	jr nz, RequestOpaque1bpp
 CopyOpaque1bpp:
 	ld a, 1
@@ -153,7 +153,7 @@ CopyOpaque1bpp:
 
 Get1bpp::
 	ldh a, [rLCDC]
-	bit rLCDC_ENABLE, a ; lcd on?
+	bit rLCDC_ENABLE, a
 	jr nz, Request1bpp
 Copy1bpp::
 	xor a

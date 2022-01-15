@@ -171,7 +171,7 @@ MusicPlayer::
 	call DelayFrame
 
 	ld hl, rLCDC
-	set rLCDC_ENABLE, [hl] ; lcd on
+	set rLCDC_ENABLE, [hl]
 	ei
 
 	call ClearSprites
@@ -331,7 +331,7 @@ MusicPlayerLoop:
 	ldh [rSVBK], a
 	call ClearSprites
 	ld hl, rLCDC
-	res rLCDC_SPRITE_SIZE, [hl] ; 8x8 sprites
+	res rLCDC_SPRITE_SIZE, [hl]
 	ld hl, rIE
 	res LCD_STAT, [hl]
 
@@ -1547,7 +1547,7 @@ SongSelector:
 	ld bc, SCREEN_WIDTH * SCREEN_HEIGHT
 	rst ByteFill
 	ld hl, rLCDC
-	res rLCDC_SPRITES_ENABLE, [hl] ; hide sprites
+	res rLCDC_SPRITES_ENABLE, [hl]
 	call ClearSprites
 
 	hlcoord 0, 0
@@ -1647,7 +1647,7 @@ SongSelector:
 .finish:
 	ld [wSongSelection], a
 	ld hl, rLCDC
-	set rLCDC_SPRITES_ENABLE, [hl] ; show sprites
+	set rLCDC_SPRITES_ENABLE, [hl]
 	ret
 
 UpdateSelectorNames:

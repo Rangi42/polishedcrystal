@@ -23,7 +23,7 @@ _SlotMachine:
 	ld hl, wOptions1
 	res NO_TEXT_SCROLL, [hl]
 	ld hl, rLCDC
-	res rLCDC_SPRITE_SIZE, [hl] ; 8x8 sprites
+	res rLCDC_SPRITE_SIZE, [hl]
 	ret
 
 .InitGFX:
@@ -68,7 +68,7 @@ _SlotMachine:
 	rst CopyBytes
 
 	ld hl, rLCDC
-	set rLCDC_SPRITE_SIZE, [hl] ; 8x16 sprites
+	set rLCDC_SPRITE_SIZE, [hl]
 	call EnableLCD
 	ld hl, wSlots
 	ld bc, wSlotsEnd - wSlots

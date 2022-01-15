@@ -142,7 +142,7 @@ Init::
 	ldh [hSCY], a
 	ldh [rJOYP], a
 
-	ld a, 1 << rSTAT_INT_MODE_0 ; HBlank int enable
+	ld a, 1 << rSTAT_INT_MODE_0
 	ldh [rSTAT], a
 
 	ld a, $90
