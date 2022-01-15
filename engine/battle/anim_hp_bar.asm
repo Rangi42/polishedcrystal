@@ -247,11 +247,11 @@ HPBarAnim_BGMapUpdate:
 	ldh [rVBK], a
 .waitnohb1
 	ldh a, [rSTAT]
-	and 3
+	and rSTAT_MODE_MASK ; wait until mode 1-3
 	jr z, .waitnohb1
 .waithbl1
 	ldh a, [rSTAT]
-	and 3
+	and rSTAT_MODE_MASK ; wait until mode 0
 	jr nz, .waithbl1
 	ld a, b
 	rept 7
@@ -282,11 +282,11 @@ HPBarAnim_BGMapUpdate:
 	di
 .waitnohb3
 	ldh a, [rSTAT]
-	and 3
+	and rSTAT_MODE_MASK ; wait until mode 1-3
 	jr z, .waitnohb3
 .waithb3
 	ldh a, [rSTAT]
-	and 3
+	and rSTAT_MODE_MASK ; wait until mode 0
 	jr nz, .waithb3
 	ld a, b
 	ldh [rBGPI], a

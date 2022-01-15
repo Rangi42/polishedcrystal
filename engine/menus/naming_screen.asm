@@ -48,7 +48,7 @@ NamingScreen:
 	call DisableLCD
 	call LoadNamingScreenGFX
 	call NamingScreen_InitText
-	ld a, %11100011
+	ld a, LCDC_DEFAULT
 	ldh [rLCDC], a
 	call .GetNamingScreenSetup
 	call ApplyTilemapInVBlank
@@ -804,7 +804,7 @@ _ComposeMailMessage:
 	add hl, bc
 	ld [hl], $0
 	call .InitCharset
-	ld a, %11100011
+	ld a, LCDC_DEFAULT
 	ldh [rLCDC], a
 	call .initwNamingScreenMaxNameLength
 	ld a, CGB_DIPLOMA

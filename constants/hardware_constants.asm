@@ -115,6 +115,30 @@ rWave_c     EQU $ff3c
 rWave_d     EQU $ff3d
 rWave_e     EQU $ff3e
 rWave_f     EQU $ff3f
+if DEF(ANALOGUE_POCKET)
+rLCDC       EQU $ff4e ; LCD Control (R/W)
+rLCDC_BG_PRIORITY    EQU 7 ; 0=Off, 1=On
+rLCDC_SPRITES_ENABLE EQU 6 ; 0=Off, 1=On
+rLCDC_SPRITE_SIZE    EQU 5 ; 0=8x8, 1=8x16
+rLCDC_BG_TILEMAP     EQU 4 ; 0=9800-9BFF, 1=9C00-9FFF
+rLCDC_TILE_DATA      EQU 3 ; 0=8800-97FF, 1=8000-8FFF
+rLCDC_WINDOW_ENABLE  EQU 2 ; 0=Off, 1=On
+rLCDC_WINDOW_TILEMAP EQU 1 ; 0=9800-9BFF, 1=9C00-9FFF
+rLCDC_ENABLE         EQU 0 ; 0=Off, 1=On
+LCDC_DEFAULT EQU (1 << rLCDC_ENABLE) | (1 << rLCDC_WINDOW_TILEMAP) | (1 << rLCDC_WINDOW_ENABLE) | (1 << rLCDC_SPRITES_ENABLE) | (1 << rLCDC_BG_PRIORITY)
+rSTAT       EQU $ff41 ; LCDC Status (R/W)
+rSTAT_INT_LYC        EQU 1 ; LYC=LY interrupt
+rSTAT_INT_MODE_2     EQU 2 ; Mode 2 interrupt (OAM search)
+rSTAT_INT_MODE_1     EQU 3 ; Mode 1 interrupt (VBlank)
+rSTAT_INT_MODE_0     EQU 4 ; Mode 0 interrupt (HBlank)
+rSTAT_LYC_CMP        EQU 5 ; LYC=LY flag
+rSTAT_MODE_0         EQU %00000000 ; HBlank
+rSTAT_MODE_1         EQU %10000000 ; VBlank
+rSTAT_MODE_2         EQU %01000000 ; Searching OAM
+rSTAT_MODE_3         EQU %11000000 ; Transferring data to LCD
+rSTAT_MODE_MASK      EQU %11000000
+rSTAT_INT_DEFAULT    EQU rSTAT_INT_MODE_0
+else
 rLCDC       EQU $ff40 ; LCD Control (R/W)
 rLCDC_BG_PRIORITY    EQU 0 ; 0=Off, 1=On
 rLCDC_SPRITES_ENABLE EQU 1 ; 0=Off, 1=On
@@ -126,6 +150,18 @@ rLCDC_WINDOW_TILEMAP EQU 6 ; 0=9800-9BFF, 1=9C00-9FFF
 rLCDC_ENABLE         EQU 7 ; 0=Off, 1=On
 LCDC_DEFAULT EQU (1 << rLCDC_ENABLE) | (1 << rLCDC_WINDOW_TILEMAP) | (1 << rLCDC_WINDOW_ENABLE) | (1 << rLCDC_SPRITES_ENABLE) | (1 << rLCDC_BG_PRIORITY)
 rSTAT       EQU $ff41 ; LCDC Status (R/W)
+rSTAT_INT_LYC        EQU 6 ; LYC=LY interrupt
+rSTAT_INT_MODE_2     EQU 5 ; Mode 2 interrupt (OAM search)
+rSTAT_INT_MODE_1     EQU 4 ; Mode 1 interrupt (VBlank)
+rSTAT_INT_MODE_0     EQU 3 ; Mode 0 interrupt (HBlank)
+rSTAT_LYC_CMP        EQU 2 ; LYC=LY flag
+rSTAT_MODE_0         EQU %00 ; HBlank
+rSTAT_MODE_1         EQU %01 ; VBlank
+rSTAT_MODE_2         EQU %10 ; Searching OAM
+rSTAT_MODE_3         EQU %11 ; Transferring data to LCD
+rSTAT_MODE_MASK      EQU %11
+rSTAT_INT_DEFAULT    EQU rSTAT_INT_MODE_0
+endc
 rSCY        EQU $ff42 ; Scroll Y (R/W)
 rSCX        EQU $ff43 ; Scroll X (R/W)
 rLY         EQU $ff44 ; LCDC Y-Coordinate (R)

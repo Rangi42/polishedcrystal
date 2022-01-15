@@ -3453,7 +3453,7 @@ Pokedex_ScheduleScreenUpdateWithHBlank:
 	; Needs to be set up immediately during init.
 	call Pokedex_RefreshScreen
 
-	ld a, 1 << 6
+	ld a, 1 << rSTAT_INT_LYC
 	ldh [rSTAT], a
 	ld hl, rIF
 	res LCD_STAT, [hl]

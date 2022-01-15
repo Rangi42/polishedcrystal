@@ -938,7 +938,7 @@ StartTitleScreen:
 	ld hl, rIE
 	res LCD_STAT, [hl]
 	ld hl, rLCDC
-	res 2, [hl] ; 8x8 sprites
+	res rLCDC_SPRITE_SIZE, [hl]
 	call ClearScreen
 	call ApplyAttrAndTilemapInVBlank
 	xor a

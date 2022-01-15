@@ -56,7 +56,7 @@ Request2bppInWRA6::
 
 Get2bpp::
 	ldh a, [rLCDC]
-	bit 7, a ; lcd on?
+	bit rLCDC_ENABLE, a
 	jr nz, Request2bpp
 
 Copy2bpp::
@@ -130,7 +130,7 @@ Request2bpp::
 
 GetMaybeOpaque1bpp::
 	ldh a, [rLCDC]
-	bit 7, a
+	bit rLCDC_ENABLE, a
 	jr nz, _Request1bpp
 	jr _Copy1bpp
 
@@ -144,7 +144,7 @@ GetOpaque1bppFontTile::
 	lb bc, BANK(FontTiles), 1
 GetOpaque1bpp::
 	ldh a, [rLCDC]
-	bit 7, a ; lcd on?
+	bit rLCDC_ENABLE, a
 	jr nz, RequestOpaque1bpp
 CopyOpaque1bpp:
 	ld a, 1
@@ -153,7 +153,7 @@ CopyOpaque1bpp:
 
 Get1bpp::
 	ldh a, [rLCDC]
-	bit 7, a ; lcd on?
+	bit rLCDC_ENABLE, a
 	jr nz, Request1bpp
 Copy1bpp::
 	xor a
@@ -259,11 +259,11 @@ HBlankCopy1bpp:
 	jr z, .waitNoHBlankOpaque
 .waitNoHBlank
 	ldh a, [rSTAT]
-	and 3
+	and rSTAT_MODE_MASK
 	jr z, .waitNoHBlank
 .waitHBlank
 	ldh a, [rSTAT]
-	and 3
+	and rSTAT_MODE_MASK
 	jr nz, .waitHBlank
 ; preloads r us
 	ld a, c
@@ -295,11 +295,11 @@ endr
 
 .waitNoHBlankOpaque
 	ldh a, [rSTAT]
-	and 3
+	and rSTAT_MODE_MASK
 	jr z, .waitNoHBlankOpaque
 .waitHBlankOpaque
 	ldh a, [rSTAT]
-	and 3
+	and rSTAT_MODE_MASK
 	jr nz, .waitHBlankOpaque
 ; preloads r us
 	ld a, $ff
@@ -360,7 +360,7 @@ WriteVCopyRegistersToHRAM:
 	ret
 
 VRAMToVRAMCopy::
-	lb bc, %11, LOW(rSTAT) ; predefine bitmask and rSTAT source for speed and size
+	lb bc, rSTAT_MODE_MASK, LOW(rSTAT) ; predefine for speed and size
 	jr .waitNoHBlank2
 .outerLoop2
 	ldh a, [rLY]

@@ -127,7 +127,7 @@ DoHBlankHDMATransfer_toBGMap:
 	set 7, c
 .waitHBlank
 	ldh a, [rSTAT]
-	and $3
+	and rSTAT_MODE_MASK
 	jr nz, .waitHBlank
 	ld hl, rHDMA5
 	ld [hl], c
@@ -162,7 +162,7 @@ DoHBlankHDMATransfer:
 	cp b ; is the end LY greater than the max LY
 	call nc, DI_DelayFrame ; if so, delay a frame to reset the LY
 
-	lb bc, %11, LOW(rSTAT)
+	lb bc, rSTAT_MODE_MASK, LOW(rSTAT)
 .noHBlankWait
 	ldh a, [c]
 	and b

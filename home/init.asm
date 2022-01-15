@@ -142,7 +142,7 @@ Init::
 	ldh [hSCY], a
 	ldh [rJOYP], a
 
-	ld a, $8 ; HBlank int enable
+	ld a, 1 << rSTAT_INT_MODE_0
 	ldh [rSTAT], a
 
 	ld a, $90
@@ -157,7 +157,7 @@ Init::
 
 	farcall InitSGBBorder
 
-	ld a, %11100011
+	ld a, LCDC_DEFAULT
 	; LCD on
 	; Win tilemap 1
 	; Win on
