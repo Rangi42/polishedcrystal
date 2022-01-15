@@ -830,7 +830,7 @@ PHB_AreaSwitchTileMode2:
 	ld hl, rSTAT
 .busyloop
 	ld a, [hl]
-	and $3
+	and rSTAT_MODE_MASK ; wait until mode 0
 	jr nz, .busyloop
 
 	ld a, 4

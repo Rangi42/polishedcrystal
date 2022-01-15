@@ -306,7 +306,7 @@ StackDexGraphics:
 .done_update
 	ld hl, rIE
 	res LCD_STAT, [hl]
-	ld a, 1 << 3
+	ld a, 1 << rSTAT_INT_DEFAULT
 	ldh [rSTAT], a
 	ld a, LOW(LCDGeneric)
 	ldh [hFunctionTargetLo], a
@@ -677,7 +677,7 @@ PHB_WaitUntilLY_Mode0:
 	jr nz, .busyloop
 .busyloop2
 	ldh a, [rSTAT]
-	and $3
+	and rSTAT_MODE_MASK ; wait until mode 0
 	jr nz, .busyloop2
 	ret
 
@@ -715,7 +715,7 @@ PHB_DoSwitchSCY:
 	push bc
 .loop
 	ldh a, [rSTAT]
-	and %11
+	and rSTAT_MODE_MASK
 	jr nz, .loop
 	ld a, h
 	ldh [rSCY], a
@@ -729,7 +729,7 @@ PHB_DescSwitchSCY:
 	push bc
 .busyloop
 	ldh a, [rSTAT]
-	and %11
+	and rSTAT_MODE_MASK ; wait until mode 0
 	jr nz, .busyloop
 	ld a, 8
 	ldh [rSCY], a
@@ -835,7 +835,7 @@ PHB_MainResetLCDC:
 	call Pokedex_UnsafeSetHBlankFunction
 .loop
 	ldh a, [rSTAT]
-	and %11
+	and rSTAT_MODE_MASK ; wait until mode 0
 	jr nz, .loop
 	ld hl, rLCDC
 	res rLCDC_TILE_DATA, [hl]

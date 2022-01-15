@@ -177,7 +177,7 @@ endc
 	call EnableLCD
 
 	ldh a, [rLCDC]
-	set 2, a ; 8x16 sprites
+	set rLCDC_SPRITE_SIZE, a ; 8x16 sprites
 	ldh [rLCDC], a
 
 	ld a, +112

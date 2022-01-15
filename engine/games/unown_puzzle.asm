@@ -44,7 +44,7 @@ UnownPuzzle:
 	ld [wHoldingUnownPuzzlePiece], a
 	ld [wUnownPuzzleCursorPosition], a
 	ld [wUnownPuzzleHeldPiece], a
-	ld a, %10010011
+	ld a, (1 << rLCDC_ENABLE) | (1 << rLCDC_TILE_DATA) | (1 << rLCDC_SPRITES_ENABLE) | (1 << rLCDC_BG_PRIORITY)
 	ldh [rLCDC], a
 	call ApplyTilemapInVBlank
 	ld a, CGB_UNOWN_PUZZLE
@@ -84,7 +84,7 @@ UnownPuzzle:
 	call ClearBGPalettes
 	call ClearTileMap
 	call ClearSprites
-	ld a, %11100011
+	ld a, LCDC_DEFAULT
 	ldh [rLCDC], a
 	ret
 

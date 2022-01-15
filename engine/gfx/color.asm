@@ -360,7 +360,7 @@ LoadMailPalettes:
 
 ApplyAttrMap:
 	ldh a, [rLCDC]
-	bit 7, a
+	bit rLCDC_ENABLE, a
 	jr nz, ApplyAttrMapVBank0
 	hlcoord 0, 0, wAttrmap
 	debgcoord 0, 0

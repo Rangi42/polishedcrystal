@@ -189,11 +189,11 @@ CopyTilemapInHBlank:
 	jr nc, .inVBlank1
 .waitnohbl1
 	ldh a, [rSTAT]
-	and %10
+	and rSTAT_MODE_2 ; wait until mode 2-3
 	jr z, .waitnohbl1
 .waithbl1
 	ldh a, [rSTAT]
-	and %10
+	and rSTAT_MODE_2 ; wait until mode 0-1
 	jr nz, .waithbl1
 ; load BGMap0
 .inVBlank1
@@ -228,11 +228,11 @@ CopyTilemapInHBlank:
 	jr nc, .inVBlank2
 .waitnohbl2
 	ldh a, [rSTAT]
-	and %10
+	and rSTAT_MODE_2 ; wait until mode 2-3
 	jr z, .waitnohbl2
 .waithbl2
 	ldh a, [rSTAT]
-	and %10
+	and rSTAT_MODE_2 ; wait until mode 0-1
 	jr nz, .waithbl2
 ; load BGMap0
 .inVBlank2

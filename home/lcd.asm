@@ -65,7 +65,7 @@ LCDMusicPlayer::
 LCDBillsPC1::
 	; Write boxmon palettes
 	ldh a, [rSTAT]
-	bit 2, a
+	bit rSTAT_LYC_CMP, a
 	jr z, .donepc
 	push hl
 	push bc
@@ -226,7 +226,7 @@ DisableLCD::
 
 ; Don't need to do anything if the LCD is already off
 	ldh a, [rLCDC]
-	bit 7, a ; lcd enable
+	bit rLCDC_ENABLE, a ; lcd enable
 	ret z
 
 	xor a
@@ -241,13 +241,13 @@ DisableLCD::
 .wait
 ; Wait until VBlank would normally happen
 	ldh a, [rLY]
-	cp $90
+	cp LY_VBLANK
 	jr c, .wait
-	cp $99
+	cp LY_VBLANK + 9
 	jr z, .wait
 
 	ldh a, [rLCDC]
-	and %01111111 ; lcd enable off
+	and ~(1 << rLCDC_ENABLE) ; lcd enable off
 	ldh [rLCDC], a
 
 	xor a
@@ -258,6 +258,6 @@ DisableLCD::
 
 EnableLCD::
 	ldh a, [rLCDC]
-	set 7, a ; lcd enable
+	set rLCDC_ENABLE, a ; lcd enable
 	ldh [rLCDC], a
 	ret

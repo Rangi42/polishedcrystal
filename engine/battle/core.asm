@@ -7520,11 +7520,11 @@ BattleIntro:
 	ld a, CGB_BATTLE_GRAYSCALE
 	call GetCGBLayout
 	ld hl, rLCDC
-	res 6, [hl] ; win tilemap 0
+	res rLCDC_WINDOW_TILEMAP, [hl] ; win tilemap 0
 	call InitBattleDisplay
 	call BattleStartMessage
 	ld hl, rLCDC
-	set 6, [hl] ; win tilemap 1
+	set rLCDC_WINDOW_TILEMAP, [hl] ; win tilemap 1
 	xor a
 	ldh [hBGMapMode], a
 	call EmptyBattleTextbox

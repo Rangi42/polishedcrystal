@@ -33,7 +33,7 @@ ClearTileMap::
 	rst ByteFill
 	; Update the BG Map.
 	ldh a, [rLCDC]
-	bit 7, a
+	bit rLCDC_ENABLE, a
 	ret z
 	jmp ApplyTilemapInVBlank
 

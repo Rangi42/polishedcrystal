@@ -23,6 +23,9 @@ endif
 ifeq ($(filter nortc,$(MAKECMDGOALS)),nortc)
 RGBASM_FLAGS += -DNO_RTC
 endif
+ifeq ($(filter pocket,$(MAKECMDGOALS)),pocket)
+RGBASM_FLAGS += -DANALOGUE_POCKET
+endif
 ifeq ($(filter monochrome,$(MAKECMDGOALS)),monochrome)
 RGBASM_FLAGS += -DMONOCHROME
 endif
@@ -58,7 +61,7 @@ gfx/misc.o
 
 
 .SUFFIXES:
-.PHONY: clean tidy crystal faithful nortc debug monochrome freespace tools bsp
+.PHONY: clean tidy crystal faithful nortc pocket debug monochrome freespace tools bsp
 .SECONDEXPANSION:
 .PRECIOUS: %.2bpp %.1bpp
 .SECONDARY:
