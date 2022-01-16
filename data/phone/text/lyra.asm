@@ -142,3 +142,37 @@ LyraPhoneLyrasEggEndText:
 
 	para "Bye-bye!"
 	done
+
+LyraPhoneMagnetonText:
+	text "What? You have a"
+	line "Magneton now?"
+	cont "That's so cool!"
+
+	para "I learned some-"
+	line "thing from Prof."
+	cont "Elm about their"
+	cont "evolution."
+
+	para "He said it evolves"
+	line "when it levels up"
+	cont "in a special"
+	cont "magnetic field."
+
+	para "Over in Kanto,"
+	line "such a field is"
+	cont "apparently found"
+	cont "in Rock Tunnel."
+
+	para "You didn't already"
+	line "know that,"
+	cont "did you?"
+
+	done
+
+LyraPhoneEndText:
+	text "Anyway… So nice"
+	line "to catch up with"
+	cont "you, <PLAYER>."
+
+	para "See you later!"
+	done
