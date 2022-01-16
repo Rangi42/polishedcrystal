@@ -342,7 +342,18 @@ LyraPhoneScript:
 	sjump .main
 
 .main
+	checkpoke MAGNETON
+	iftrue .magneton
 	farwritetext LyraPhoneMainText
+	end
+
+.magneton
+	farwritetext LyraPhoneMagnetonText
+	promptbutton	
+	sjump .endpokemon
+
+.endpokemon
+	farwritetext LyraPhoneEndText
 	end
 
 LyraPhoneScript2:
