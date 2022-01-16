@@ -15,18 +15,19 @@
 	; n-grams: $09 - $52 (defined below)
 
 	charmap "@",        $53
-	charmap "¯",        $54
-	charmap "<LNBRK>",  $55
-	charmap "<NEXT>",   $56
-	charmap "<LINE>",   $57
-	charmap "<CONT>",   $58
-	charmap "<PARA>",   $59
-	charmap "<DONE>",   $5a
-	charmap "<PROMPT>", $5b
+	charmap "<LNBRK>",  $54
+	charmap "<NEXT>",   $55
+	charmap "<LINE>",   $56
+	charmap "<CONT>",   $57
+	charmap "<PARA>",   $58
+	charmap "<DONE>",   $59
+	charmap "<PROMPT>", $5a
 
-	charmap "<TARGET>", $5c
-	charmap "<USER>",   $5d
-	charmap "<ENEMY>",  $5e
+	charmap "<TARGET>", $5b
+	charmap "<USER>",   $5c
+	charmap "<ENEMY>",  $5d
+
+	charmap "¯",        $5e
 
 ; Battle characters
 

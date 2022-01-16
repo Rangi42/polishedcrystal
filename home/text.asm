@@ -205,7 +205,6 @@ _bc_::
 
 SpecialCharacters:
 	dw FinishString     ; "@"
-	dw SpaceChar        ; "¯"
 	dw LineBreak        ; "<LNBRK>"
 	dw NextLineChar     ; "<NEXT>"
 	dw LineChar         ; "<LINE>"
@@ -216,6 +215,7 @@ SpecialCharacters:
 	dw PlaceTargetsName ; "<TARGET>"
 	dw PlaceUsersName   ; "<USER>"
 	dw PlaceEnemysName  ; "<ENEMY>"
+	dw SpaceChar        ; "¯"
 
 NextLineChar::
 	ld a, [wTextboxFlags]
