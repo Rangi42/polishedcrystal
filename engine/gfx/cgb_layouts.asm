@@ -492,10 +492,7 @@ _CGB_Evolution:
 	jr .got_palette
 
 .pokemon
-	ld hl, wPartyMon1Personality
-	ld bc, PARTYMON_STRUCT_LENGTH
-	ld a, [wCurPartyMon]
-	rst AddNTimes
+	ld hl, wTempMonPersonality
 	ld c, l
 	ld b, h
 	ld a, [wPlayerHPPal]

@@ -137,6 +137,7 @@ rSTAT_MODE_1         EQU %10000000 ; VBlank
 rSTAT_MODE_2         EQU %01000000 ; Searching OAM
 rSTAT_MODE_3         EQU %11000000 ; Transferring data to LCD
 rSTAT_MODE_MASK      EQU %11000000
+rSTAT_INT_DEFAULT    EQU rSTAT_INT_MODE_0
 else
 rLCDC       EQU $ff40 ; LCD Control (R/W)
 rLCDC_BG_PRIORITY    EQU 0 ; 0=Off, 1=On
