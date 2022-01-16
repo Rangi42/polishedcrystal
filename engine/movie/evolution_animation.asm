@@ -61,24 +61,6 @@ EvolutionAnimation:
 	ld bc, 7 * 7
 	call Request2bpp
 
-	ld a, 7 * 7
-	ld [wEvolutionPicOffset], a
-	call .ReplaceFrontpic
-	ld hl, wEvolutionNewSpecies
-	ld a, [hli]
-	ld [wCurPartySpecies], a
-	ld [wCurSpecies], a
-	ld a, [hl]
-	ld [wCurForm], a
-
-	call .LoadFrontpic
-	ld hl, wEvolutionOldSpecies
-	ld a, [hli]
-	ld [wCurPartySpecies], a
-	ld [wCurSpecies], a
-	ld a, [hl]
-	ld [wCurForm], a
-
 	ld a, $1
 	ldh [hBGMapMode], a
 	call .check_statused
@@ -94,13 +76,24 @@ EvolutionAnimation:
 	ld de, MUSIC_EVOLUTION
 	call PlayMusic
 
+	ld a, 7 * 7
+	ld [wEvolutionPicOffset], a
+	call .ReplaceFrontpic
+	ld hl, wEvolutionNewSpecies
+	ld a, [hli]
+	ld [wCurPartySpecies], a
+	ld [wCurSpecies], a
+	ld a, [hl]
+	ld [wCurForm], a
+
+	call .LoadFrontpic
 	ld c, 80
 	call DelayFrames
 
 	ld c, TRUE
 	call .GetCGBLayout
 	call .AnimationSequence
-	jr c, .cancel_evo
+	jmp c, .cancel_evo
 
 	ld a, -7 * 7
 	ld [wEvolutionPicOffset], a
@@ -108,8 +101,12 @@ EvolutionAnimation:
 	xor a
 	ld [wEvolutionCanceled], a
 
+	ld a, [wEvolutionNewForm]
+	ld [wTempMonForm], a
+
 	ld a, [wEvolutionNewSpecies]
 	ld [wPlayerHPPal], a
+	ld [wTempMonSpecies], a
 
 	call .GetColoredCGBLayout
 	ld de, SFX_EVOLVED

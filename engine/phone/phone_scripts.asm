@@ -342,7 +342,18 @@ LyraPhoneScript:
 	; fallthrough
 
 .main
+	checkpoke MAGNETON
+	iftrue .magneton
 	farwritetext LyraPhoneMainText
+	end
+
+.magneton
+	farwritetext LyraPhoneMagnetonText
+	promptbutton
+	; fallthrough
+
+.endpokemon
+	farwritetext LyraPhoneEndText
 	end
 
 LyraPhoneScript2:

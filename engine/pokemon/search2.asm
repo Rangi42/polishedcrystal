@@ -58,7 +58,7 @@ FindThatSpecies:
 	rr d
 	cp b
 	jr nz, .next
-	and a
+	or 1
 	ret
 
 .next

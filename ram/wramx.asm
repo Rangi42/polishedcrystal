@@ -725,7 +725,8 @@ wOTPartyData::
 wOTPlayerName:: ds NAME_LENGTH
 wOTPlayerID:: dw
 wOTPartyCount:: db
-wOTPartySpecies:: ds PARTY_LENGTH + 1 ; dereferenced, delete before savepatch
+
+	ds 7 ; unused
 
 
 UNION
@@ -747,7 +748,7 @@ endr
 wOTPartyDataEnd::
 
 NEXTU
-	ds 48
+	ds PARTYMON_STRUCT_LENGTH ; skip first OT partymon since wildmon use that
 
 ; catch tutorial dude bag
 wDudeBag::
@@ -1301,8 +1302,8 @@ SECTION "Party", WRAMX
 wPokemonData::
 
 wPartyCount::   db ; number of Pokémon in party
-wPartySpecies:: ds PARTY_LENGTH ; deferenced, delete before patch
-wPartyEnd::     db ; older code doesn't check wPartyCount
+
+	ds 7 ; unused
 
 wPartyMons::
 for n, 1, PARTY_LENGTH + 1

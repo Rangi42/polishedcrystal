@@ -2299,7 +2299,7 @@ _Pokedex_Search:
 	add b
 	add 4 ; shape, not mini
 	xor $80
-	hlcoord 7, 15
+	hlcoord 8, 15
 	ld [hli], a
 	inc a
 	ld [hld], a
