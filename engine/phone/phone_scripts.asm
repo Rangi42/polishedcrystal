@@ -349,8 +349,8 @@ LyraPhoneScript:
 
 .magneton
 	farwritetext LyraPhoneMagnetonText
-	promptbutton	
-	sjump .endpokemon
+	promptbutton
+	; fallthrough
 
 .endpokemon
 	farwritetext LyraPhoneEndText
