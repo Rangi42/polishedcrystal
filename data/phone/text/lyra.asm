@@ -158,13 +158,13 @@ LyraPhoneMagnetonText:
 	cont "in a special"
 	cont "magnetic field."
 
-	para "Here in Johto,"
+	para "Over in Kanto,"
 	line "such a field is"
-	cont "apparantly found"
+	cont "apparently found"
 	cont "in Rock Tunnel."
 
-	para "You probably did"
-	line "not know that,"
+	para "You didn't already"
+	line "know that,"
 	cont "did you?"
 
 	done
