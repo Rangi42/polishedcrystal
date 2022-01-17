@@ -100,7 +100,7 @@ ___compressing_text = 1
 ___ct_bits = 0
 ___ct_length = 0
 ___ct_in_bytes = 0
-___ct_out_bytes = 0
+___ct_out_bytes = 1 ; count the "<CTXT>"
 	setcharmap compressing
 	dtxt \#
 ENDM
