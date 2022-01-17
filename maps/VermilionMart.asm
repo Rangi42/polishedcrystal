@@ -17,7 +17,7 @@ VermilionMart_MapScriptHeader:
 	object_event  8,  6, SPRITE_LADY, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_COMMAND, jumptextfaceplayer, VermilionMartBeautyText, -1
 
 VermilionMartSuperNerdText:
-	text "Team Rocket is no"
+	ctxt "Team Rocket is no"
 	line "longer in Kanto."
 
 	para "That alone makes"
@@ -25,7 +25,7 @@ VermilionMartSuperNerdText:
 	done
 
 VermilionMartBeautyText:
-	text "I'm thinking about"
+	ctxt "I'm thinking about"
 	line "going shopping in"
 	cont "Saffron."
 

@@ -17,7 +17,7 @@ BluesHouse2F_MapScriptHeader:
 	def_object_events
 
 BluesHouse2FPCText:
-	text "There's a program"
+	ctxt "There's a program"
 	line "simulating a bat-"
 	cont "tle between a"
 
@@ -26,7 +26,7 @@ BluesHouse2FPCText:
 	done
 
 BluesHouse2FSNESText:
-	text "<PLAYER> played the"
+	ctxt "<PLAYER> played the"
 	line "SNES."
 
 	para "Better get going--"

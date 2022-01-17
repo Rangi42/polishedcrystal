@@ -23,7 +23,7 @@ CharcoalKilnBoss:
 	iftrue_jumptextfaceplayer .Text2
 	jumpthistextfaceplayer
 
-	text "All the Slowpoke"
+	ctxt "All the Slowpoke"
 	line "have disappeared"
 	cont "from the town."
 
@@ -37,7 +37,7 @@ CharcoalKilnBoss:
 	done
 
 .Text2:
-	text "The Slowpoke have"
+	ctxt "The Slowpoke have"
 	line "returned…"
 
 	para "But my Apprentice"
@@ -49,7 +49,7 @@ CharcoalKilnBoss:
 	done
 
 .Text3:
-	text "You chased off"
+	ctxt "You chased off"
 	line "Team Rocket and"
 
 	para "went to Ilex"
@@ -75,7 +75,7 @@ CharcoalKilnApprentice:
 	endtext
 
 .Text1:
-	text "Where have all the"
+	ctxt "Where have all the"
 	line "Slowpoke gone?"
 
 	para "Are they out play-"
@@ -83,7 +83,7 @@ CharcoalKilnApprentice:
 	done
 
 .Text2:
-	text "I'm sorry--I for-"
+	ctxt "I'm sorry--I for-"
 	line "got to thank you."
 
 	para "This is Charcoal"
@@ -95,7 +95,7 @@ CharcoalKilnApprentice:
 	done
 
 .Text3:
-	text "The Slowpoke came"
+	ctxt "The Slowpoke came"
 	line "back, and you even"
 	cont "found Farfetch'd."
 
@@ -109,5 +109,5 @@ CharcoalKilnFarfetchdScript:
 	end
 
 .Text:
-	text "Farfetch'd: Kwaa!"
+	ctxt "Farfetch'd: Kwaa!"
 	done

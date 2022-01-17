@@ -40,7 +40,7 @@ BattleTower2F_MapScriptHeader:
 BattleTower2FTVScript:
 	jumpthistext
 
-	text "There's an intense"
+	ctxt "There's an intense"
 	line "battle on the TV."
 	done
 
@@ -50,7 +50,7 @@ BattleTower2FCherylScript:
 	faceplayer
 	opentext
 	writethistext
-		text "Oh, hello,"
+		ctxt "Oh, hello,"
 		line "<PLAYER>."
 
 		para "It's been a long"
@@ -64,7 +64,7 @@ BattleTower2FCherylScript:
 	iffalse_jumpopenedtext .RefuseText
 	setflag ENGINE_CHERYL_DONE_TODAY
 	writethistext
-		text "I should warn you,"
+		ctxt "I should warn you,"
 		line "my #mon can be"
 		cont "quite rambunc-"
 		cont "tious."
@@ -90,7 +90,7 @@ BattleTower2FCherylScript:
 	jumpthistext
 
 .AfterText:
-	text "Being a trainer"
+	ctxt "Being a trainer"
 	line "isn't easy."
 
 	para "The more you"
@@ -103,7 +103,7 @@ BattleTower2FCherylScript:
 	done
 
 .BeatenText:
-	text "Striking the right"
+	ctxt "Striking the right"
 	line "balance of offense"
 	cont "and defense…"
 
@@ -112,7 +112,7 @@ BattleTower2FCherylScript:
 	done
 
 .RefuseText:
-	text "Giggle…"
+	ctxt "Giggle…"
 
 	para "#mon would get"
 	line "all worn out if we"
@@ -128,7 +128,7 @@ BattleTower2FRileyScript:
 	faceplayer
 	opentext
 	writethistext
-		text "Hi. Long time,"
+		ctxt "Hi. Long time,"
 		line "no see."
 
 		para "That look you"
@@ -141,7 +141,7 @@ BattleTower2FRileyScript:
 	iffalse_jumpopenedtext .RefuseText
 	setflag ENGINE_RILEY_DONE_TODAY
 	writethistext
-		text "Battling is our"
+		ctxt "Battling is our"
 		line "way of greeting!"
 		done
 	waitbutton
@@ -160,7 +160,7 @@ BattleTower2FRileyScript:
 	jumpthistext
 
 .AfterText:
-	text "If I weren't in"
+	ctxt "If I weren't in"
 	line "Dim Cave then…"
 
 	para "If you hadn't been"
@@ -174,7 +174,7 @@ BattleTower2FRileyScript:
 	done
 
 .BeatenText:
-	text "At times we bat-"
+	ctxt "At times we bat-"
 	line "tle, and sometimes"
 	cont "we team up."
 
@@ -184,7 +184,7 @@ BattleTower2FRileyScript:
 	done
 
 .RefuseText:
-	text "Oh, all right."
+	ctxt "Oh, all right."
 	line "Then we'll wait"
 	cont "till you're ready."
 	done
@@ -195,7 +195,7 @@ BattleTower2FBuckScript:
 	faceplayer
 	opentext
 	writethistext
-		text "Ehehehe! You're"
+		ctxt "Ehehehe! You're"
 		line "here at last!"
 
 		para "So we are going"
@@ -205,7 +205,7 @@ BattleTower2FBuckScript:
 	iffalse_jumpopenedtext .RefuseText
 	setflag ENGINE_BUCK_DONE_TODAY
 	writethistext
-		text "I can feel my"
+		ctxt "I can feel my"
 		line "#mon shivering"
 
 		para "inside their #"
@@ -228,19 +228,19 @@ BattleTower2FBuckScript:
 	jumpthistext
 
 .AfterText:
-	text "Fweh! Too much!"
+	ctxt "Fweh! Too much!"
 
 	para "I guess I'll keep"
 	line "improving my team."
 	done
 
 .BeatenText:
-	text "Heeheehee!"
+	ctxt "Heeheehee!"
 	line "So hot, you!"
 	done
 
 .RefuseText:
-	text "Huh, what? That"
+	ctxt "Huh, what? That"
 	line "takes the wind out"
 	cont "of my sails."
 	done
@@ -251,14 +251,14 @@ BattleTower2FMarleyScript:
 	faceplayer
 	opentext
 	writethistext
-		text "…Oh? A battle?"
+		ctxt "…Oh? A battle?"
 		line "With me?"
 		done
 	yesorno
 	iffalse_jumpopenedtext .RefuseText
 	setflag ENGINE_MARLEY_DONE_TODAY
 	writethistext
-		text "…OK. I… won't"
+		ctxt "…OK. I… won't"
 		line "lose…!"
 		done
 	waitbutton
@@ -282,7 +282,7 @@ BattleTower2FMarleyScript:
 	jumpthistext
 
 .AfterText:
-	text "…I might like"
+	ctxt "…I might like"
 	line "battling with you."
 
 	para "…Just a little."
@@ -290,11 +290,11 @@ BattleTower2FMarleyScript:
 	done
 
 .BeatenText:
-	text "…Awww."
+	ctxt "…Awww."
 	done
 
 .RefuseText:
-	text "…Oh, you. I'm get-"
+	ctxt "…Oh, you. I'm get-"
 	line "ting to dislike"
 	cont "you a little."
 	done
@@ -305,7 +305,7 @@ BattleTower2FMiraScript:
 	faceplayer
 	opentext
 	writethistext
-		text "<PLAYER>! Mira is"
+		ctxt "<PLAYER>! Mira is"
 		line "stronger now!"
 
 		para "Please! Battle"
@@ -315,7 +315,7 @@ BattleTower2FMiraScript:
 	iffalse_jumpopenedtext .RefuseText
 	setflag ENGINE_MIRA_DONE_TODAY
 	writethistext
-		text "Mira will show you"
+		ctxt "Mira will show you"
 		line "that Mira doesn't"
 
 		para "get lost anymore,"
@@ -337,7 +337,7 @@ BattleTower2FMiraScript:
 	jumpthistext
 
 .AfterText:
-	text "<PLAYER>, you are"
+	ctxt "<PLAYER>, you are"
 	line "always with your"
 	cont "#mon."
 
@@ -349,7 +349,7 @@ BattleTower2FMiraScript:
 	done
 
 .BeatenText:
-	text "Mira wonders if"
+	ctxt "Mira wonders if"
 	line "she can get very"
 
 	para "far in the Battle"
@@ -357,7 +357,7 @@ BattleTower2FMiraScript:
 	done
 
 .RefuseText:
-	text "Mira is a little"
+	ctxt "Mira is a little"
 	line "sad…"
 	done
 
@@ -367,7 +367,7 @@ BattleTower2FAnabelScript:
 	faceplayer
 	opentext
 	writethistext
-		text "You really did"
+		ctxt "You really did"
 		line "come to see me…"
 
 		para "I won't have to"
@@ -380,7 +380,7 @@ BattleTower2FAnabelScript:
 	iffalse_jumpopenedtext .RefuseText
 	setflag ENGINE_ANABEL_DONE_TODAY
 	writethistext
-		text "Let's begin,"
+		ctxt "Let's begin,"
 		line "shall we?"
 		done
 	waitbutton
@@ -399,7 +399,7 @@ BattleTower2FAnabelScript:
 	jumpthistext
 
 .AfterText:
-	text "That was fun…"
+	ctxt "That was fun…"
 
 	para "I have never had"
 	line "a #mon battle"
@@ -409,16 +409,16 @@ BattleTower2FAnabelScript:
 	done
 
 .BeatenText:
-	text "Thank you…"
+	ctxt "Thank you…"
 	done
 
 .RefuseText:
-	text "It's very dis-"
+	ctxt "It's very dis-"
 	line "appointing…"
 	done
 
 BattleTower2FCooltrainermText:
-	text "I need to go, but"
+	ctxt "I need to go, but"
 	line "I just can't stop"
 
 	para "watching this"
@@ -426,7 +426,7 @@ BattleTower2FCooltrainermText:
 	done
 
 BattleTower2FLadyText:
-	text "What makes me most"
+	ctxt "What makes me most"
 	line "happy being a"
 	cont "trainer?"
 
@@ -438,7 +438,7 @@ BattleTower2FLadyText:
 	done
 
 BattleTower2FTwinText:
-	text "Some people are"
+	ctxt "Some people are"
 	line "surprised to see"
 
 	para "a small girl like"
@@ -451,7 +451,7 @@ BattleTower2FTwinText:
 	done
 
 BattleTower2FSuperNerdText:
-	text "Hehe! All the"
+	ctxt "Hehe! All the"
 	line "trainers around us"
 	cont "look so pathetic!"
 
@@ -465,11 +465,11 @@ BattleTower2FSuperNerdText:
 	done
 
 BattleTower2FPikachuText:
-	text "Pikachu: Pichuu!"
+	ctxt "Pikachu: Pichuu!"
 	done
 
 BattleTower2FYoungsterText:
-	text "To be strong is to"
+	ctxt "To be strong is to"
 	line "be weak."
 
 	para "To be weak is to"
@@ -484,7 +484,7 @@ BattleTower2FYoungsterText:
 	done
 
 BattleTower2FBlackbeltText:
-	text "The karate gi is"
+	ctxt "The karate gi is"
 	line "the uniform of"
 	cont "fighters!"
 

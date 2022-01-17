@@ -16,7 +16,7 @@ VermilionSSAnneSpeechHouse_MapScriptHeader:
 	object_event  5,  4, SPRITE_BEAUTY, SPRITEMOVEDATA_STANDING_LEFT, 1, 0, -1, -1, PAL_NPC_PURPLE, OBJECTTYPE_COMMAND, jumptextfaceplayer, VermilionSSAnneSpeechHouseBeautyText, -1
 
 VermilionSSAnneSpeechHouseGrampsText:
-	text "Once a year, a"
+	ctxt "Once a year, a"
 	line "cruise ship named"
 
 	para "the S.S.Anne used"
@@ -36,7 +36,7 @@ VermilionSSAnneSpeechHouseGrampsText:
 	done
 
 VermilionSSAnneSpeechHouseBeautyText:
-	text "I've seen a model"
+	ctxt "I've seen a model"
 	line "of the S.S.Anne"
 
 	para "in an Oceanic"

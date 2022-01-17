@@ -24,7 +24,7 @@ CeladonUniversityClassroom3_MapScriptHeader:
 	object_event  4,  7, SPRITE_SUPER_NERD, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, CeladonUniversityClassroom3Super_nerdText, -1
 
 CeladonUniversityClassroom3SparkText:
-	text "Hey! I'm Spark."
+	ctxt "Hey! I'm Spark."
 	line "I teach Science--"
 
 	para "right now, it's"
@@ -43,7 +43,7 @@ CeladonUniversityClassroom3SparkText:
 	done
 
 CeladonUniversityClassroom3TeacherText:
-	text "Are you looking"
+	ctxt "Are you looking"
 	line "for Spark?"
 
 	para "He's out doing"
@@ -55,7 +55,7 @@ CeladonUniversityClassroom3TeacherText:
 	done
 
 CeladonUniversityClassroom3ChildText:
-	text "#mon inside"
+	ctxt "#mon inside"
 	line "# Balls are"
 
 	para "converted to light"
@@ -71,7 +71,7 @@ CeladonUniversityClassroom3ChildText:
 	done
 
 CeladonUniversityClassroom3LassText:
-	text "My instructor said"
+	ctxt "My instructor said"
 	line "that Magneton is a"
 
 	para "union of three"
@@ -86,7 +86,7 @@ CeladonUniversityClassroom3LassText:
 	done
 
 CeladonUniversityClassroom3Super_nerdText:
-	text "Have you heard of"
+	ctxt "Have you heard of"
 	line "the Electric-type"
 	cont "#mon Mareep?"
 
@@ -102,7 +102,7 @@ CeladonUniversityClassroom3Super_nerdText:
 	done
 
 CeladonUniversityClassroom3BlackboardText:
-	text "'Phylogenetics'"
+	ctxt "'Phylogenetics'"
 	line "is on the board."
 
 	para "“…#mon can be"
@@ -119,7 +119,7 @@ CeladonUniversityClassroom3BlackboardText:
 	done
 
 CeladonUniversityClassroom3Bookshelf1Text:
-	text "It's a book of"
+	ctxt "It's a book of"
 	line "prototype designs"
 
 	para "for technological"
@@ -131,7 +131,7 @@ CeladonUniversityClassroom3Bookshelf1Text:
 	done
 
 CeladonUniversityClassroom3Bookshelf2Text:
-	text "It's a paper writ-"
+	ctxt "It's a paper writ-"
 	line "ten by Prof."
 	cont "Silktree."
 

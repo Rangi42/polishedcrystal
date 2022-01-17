@@ -146,7 +146,7 @@ GruntM28Script:
 GenericTrainerRocketScientistRoss:
 	generictrainer ROCKET_SCIENTIST, ROSS, EVENT_BEAT_ROCKET_SCIENTIST_ROSS, RocketScientistRossSeenText, RocketScientistRossBeatenText
 
-	text "A radio signal"
+	ctxt "A radio signal"
 	line "that drives #-"
 	cont "mon mad…"
 
@@ -163,7 +163,7 @@ GenericTrainerRocketScientistRoss:
 GenericTrainerRocketScientistMitch:
 	generictrainer ROCKET_SCIENTIST, MITCH, EVENT_BEAT_ROCKET_SCIENTIST_MITCH, RocketScientistMitchSeenText, RocketScientistMitchBeatenText
 
-	text "If we turn up the"
+	ctxt "If we turn up the"
 	line "power of our radio"
 
 	para "signal for broad-"
@@ -288,7 +288,7 @@ RocketBaseRivalShovesPlayerMovement:
 	step_end
 
 LanceGetPasswordText:
-	text "Lance: It takes"
+	ctxt "Lance: It takes"
 	line "two passwords to"
 
 	para "get into the"
@@ -307,13 +307,13 @@ LanceGetPasswordText:
 	done
 
 TeamRocketBaseB3FRocketText:
-	text "Urrggh… The guy"
+	ctxt "Urrggh… The guy"
 	line "in the cape is"
 	cont "incredibly tough…"
 	done
 
 RocketBaseRivalText:
-	text "…"
+	ctxt "…"
 
 	para "Didn't I tell you"
 	line "that I was going"
@@ -355,7 +355,7 @@ RocketBaseRivalText:
 	done
 
 ExecutiveM4BeforeText:
-	text "What? Who are you?"
+	ctxt "What? Who are you?"
 	line "This is the office"
 
 	para "of our leader,"
@@ -382,7 +382,7 @@ ExecutiveM4BeforeText:
 	done
 
 ExecutiveM4BeatenText:
-	text "I… I couldn't do a"
+	ctxt "I… I couldn't do a"
 	line "thing…"
 
 	para "Giovanni, please"
@@ -390,7 +390,7 @@ ExecutiveM4BeatenText:
 	done
 
 ExecutiveM4AfterText:
-	text "No, I can't let"
+	ctxt "No, I can't let"
 	line "this affect me."
 
 	para "I have to inform"
@@ -398,14 +398,14 @@ ExecutiveM4AfterText:
 	done
 
 RocketBaseMurkrowText:
-	text "Murkrow: The"
+	ctxt "Murkrow: The"
 	line "password is…"
 
 	para "Hail Giovanni."
 	done
 
 GruntF5SeenText:
-	text "Do I know the"
+	ctxt "Do I know the"
 	line "password?"
 
 	para "Maybe."
@@ -415,12 +415,12 @@ GruntF5SeenText:
 	done
 
 GruntF5BeatenText:
-	text "All right. Stop."
+	ctxt "All right. Stop."
 	line "I'll tell you."
 	done
 
 GruntF5AfterBattleText:
-	text "The password to"
+	ctxt "The password to"
 	line "the boss's room is"
 
 	para "SlowpokeTail."
@@ -431,7 +431,7 @@ GruntF5AfterBattleText:
 	done
 
 GruntM28SeenText:
-	text "Hyuck-hyuck-hyuck!"
+	ctxt "Hyuck-hyuck-hyuck!"
 
 	para "You're challenging"
 	line "me to a battle?"
@@ -449,12 +449,12 @@ GruntM28SeenText:
 	done
 
 GruntM28BeatenText:
-	text "Hyuck-hyuck-hyuck!"
+	ctxt "Hyuck-hyuck-hyuck!"
 	line "You're good!"
 	done
 
 GruntM28AfterBattleText:
-	text "Hyuck-hyuck-hyuck!"
+	ctxt "Hyuck-hyuck-hyuck!"
 
 	para "The password to"
 	line "the boss's room…"
@@ -464,7 +464,7 @@ GruntM28AfterBattleText:
 	done
 
 RocketScientistRossSeenText:
-	text "I used to work for"
+	ctxt "I used to work for"
 	line "Silph, but now I"
 
 	para "run research for"
@@ -476,31 +476,31 @@ RocketScientistRossSeenText:
 	done
 
 RocketScientistRossBeatenText:
-	text "A mere tactical"
+	ctxt "A mere tactical"
 	line "error cost me…"
 	done
 
 RocketScientistMitchSeenText:
-	text "I don't care that"
+	ctxt "I don't care that"
 	line "#mon are hurt"
 	cont "by our experiment."
 	done
 
 RocketScientistMitchBeatenText:
-	text "Thinking is my"
+	ctxt "Thinking is my"
 	line "strong suit, not"
 	cont "battling."
 	done
 
 TeamRocketBaseB3FLockedDoorNeedsPasswordText:
-	text "The door's closed…"
+	ctxt "The door's closed…"
 
 	para "It needs two"
 	line "passwords to open."
 	done
 
 TeamRocketBaseB3FLockedDoorOpenSesameText:
-	text "The door's closed…"
+	ctxt "The door's closed…"
 
 	para "<PLAYER> entered"
 	line "the two passwords."

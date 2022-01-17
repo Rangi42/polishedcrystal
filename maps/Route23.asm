@@ -58,7 +58,7 @@ Route23_MapScriptHeader:
 	const ROUTE23_OFFICER8
 
 VictoryRoadSignText:
-	text "Victory Road"
+	ctxt "Victory Road"
 	done
 
 Route23ZephyrBadgeOfficerScript:
@@ -206,10 +206,10 @@ Route23RisingBadgeTriggerScript:
 	db "Rising Badge@"
 
 Route23OfficerNoBadgeText:
-	text "You don't have the"
+	ctxt "You don't have the"
 	line ""
 	text_ram wStringBuffer3
-	text " yet!"
+	ctxt " yet!"
 
 	para "You have to have"
 	line "it to get to the"
@@ -222,21 +222,21 @@ Route23OfficerHaveBadgeScript:
 	promptbutton
 	jumpthisopenedtext
 
-	text "OK then! Please,"
+	ctxt "OK then! Please,"
 	line "go right ahead!"
 	done
 
 .SeeBadgeText:
-	text "Oh! That is the"
+	ctxt "Oh! That is the"
 	line ""
 	text_ram wStringBuffer3
-	text "!"
+	ctxt "!"
 	done
 
 Route23OfficerNeedBadgeText:
-	text "You can pass here"
+	ctxt "You can pass here"
 	line "only if you have"
 	cont "the "
 	text_ram wStringBuffer3
-	text "."
+	ctxt "."
 	done

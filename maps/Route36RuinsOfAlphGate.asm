@@ -18,14 +18,14 @@ Route36RuinsOfAlphGate_MapScriptHeader:
 	object_event  7,  5, SPRITE_GRAMPS, SPRITEMOVEDATA_WANDER, 2, 1, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, Route36RuinsOfAlphGateGrampsText, -1
 
 Route36RuinsOfAlphGateOfficerText:
-	text "Don't you wonder"
+	ctxt "Don't you wonder"
 	line "who'd make some-"
 	cont "thing like this?"
 	cont "And why?"
 	done
 
 Route36RuinsOfAlphGateGrampsText:
-	text "Did you see that"
+	ctxt "Did you see that"
 	line "strange tree in"
 	cont "the road?"
 

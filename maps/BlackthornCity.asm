@@ -56,14 +56,14 @@ BlackthornCitySantosCallback:
 	endcallback
 
 BlackthornCitySignText:
-	text "Blackthorn City"
+	ctxt "Blackthorn City"
 
 	para "A Quiet Mountain"
 	line "Retreat"
 	done
 
 BlackthornGymSignText:
-	text "Blackthorn City"
+	ctxt "Blackthorn City"
 	line "#mon Gym"
 	cont "Leader: Clair"
 
@@ -72,17 +72,17 @@ BlackthornGymSignText:
 	done
 
 MoveDeletersHouseSignText:
-	text "Move Deleter's"
+	ctxt "Move Deleter's"
 	line "House"
 	done
 
 DragonDensSignText:
-	text "Dragon's Den"
+	ctxt "Dragon's Den"
 	line "Ahead"
 	done
 
 BlackthornCityTrainerTipsText:
-	text "Trainer Tips"
+	ctxt "Trainer Tips"
 
 	para "A #mon holding"
 	line "a Lum Berry"
@@ -112,7 +112,7 @@ SantosScript:
 	setevent EVENT_GOT_SPELL_TAG_FROM_SANTOS
 	jumpthisopenedtext
 
-	text "Santos: …"
+	ctxt "Santos: …"
 
 	para "Spell Tag…"
 
@@ -126,12 +126,12 @@ SantosScript:
 .NotSaturday:
 	jumpthistextfaceplayer
 
-	text "Santos: Today's"
+	ctxt "Santos: Today's"
 	line "not Saturday…"
 	done
 
 .MeetText:
-	text "Santos: …"
+	ctxt "Santos: …"
 
 	para "It's Saturday…"
 
@@ -140,11 +140,11 @@ SantosScript:
 	done
 
 .GivesGiftText:
-	text "You can have this…"
+	ctxt "You can have this…"
 	done
 
 .SaturdayText:
-	text "Santos: …"
+	ctxt "Santos: …"
 
 	para "See you again on"
 	line "another Saturday…"
@@ -160,7 +160,7 @@ BlackthornDragonTamer1Script:
 	iftrue_jumptextfaceplayer .ClairIsInText
 	jumpthistextfaceplayer
 
-	text "I am sorry."
+	ctxt "I am sorry."
 
 	para "Clair, our Gym"
 	line "Leader, entered"
@@ -174,7 +174,7 @@ BlackthornDragonTamer1Script:
 	done
 
 .ClairIsInText:
-	text "Clair, our Gym"
+	ctxt "Clair, our Gym"
 	line "Leader, is waiting"
 	cont "for you."
 
@@ -186,7 +186,7 @@ BlackthornDragonTamer1Script:
 	done
 
 .ClairIsBeatenText:
-	text "You defeated"
+	ctxt "You defeated"
 	line "Clair?"
 
 	para "That's amazing!"
@@ -203,13 +203,13 @@ BlackthornBlackbeltScript:
 	iftrue_jumptextfaceplayer .Text2
 	jumpthistextfaceplayer
 
-	text "My radio's busted?"
+	ctxt "My radio's busted?"
 	line "Lately, I only get"
 	cont "this weird signal."
 	done
 
 .Text2:
-	text "Arooo! Voices in"
+	ctxt "Arooo! Voices in"
 	line "my head!"
 
 	para "Huh? I'm listening"
@@ -217,7 +217,7 @@ BlackthornBlackbeltScript:
 	done
 
 BlackthornGramps1Text:
-	text "No. Only chosen"
+	ctxt "No. Only chosen"
 	line "trainers may train"
 	cont "here."
 
@@ -225,7 +225,7 @@ BlackthornGramps1Text:
 	done
 
 BlackthornGramps2Text:
-	text "If Clair allows"
+	ctxt "If Clair allows"
 	line "it, her grand-"
 	cont "father--our Master"
 	cont "--will also."
@@ -234,19 +234,19 @@ BlackthornGramps2Text:
 	done
 
 BlackthornLassText:
-	text "Are you going to"
+	ctxt "Are you going to"
 	line "make your #mon"
 	cont "forget some moves?"
 	done
 
 BlackthornYoungsterText:
-	text "Dragon masters all"
+	ctxt "Dragon masters all"
 	line "come from the city"
 	cont "of Blackthorn."
 	done
 
 BlackthornCooltrainerF1Text:
-	text "Wow, you came"
+	ctxt "Wow, you came"
 	line "through the Ice"
 	cont "Path?"
 
@@ -255,7 +255,7 @@ BlackthornCooltrainerF1Text:
 	done
 
 BlackthornCooltrainerF2Text:
-	text "The Fairy type was"
+	ctxt "The Fairy type was"
 	line "discovered only"
 	cont "recently."
 
@@ -264,7 +264,7 @@ BlackthornCooltrainerF2Text:
 	done
 
 BlackthornDragonTamer2Text:
-	text "When our Gym Lead-"
+	ctxt "When our Gym Lead-"
 	line "er was a young"
 
 	para "girl, she used to"
@@ -275,7 +275,7 @@ BlackthornDragonTamer2Text:
 	done
 
 BlackthornDragonTamer3Text:
-	text "Blackthorn City is"
+	ctxt "Blackthorn City is"
 	line "the home of many"
 
 	para "famous dragon"

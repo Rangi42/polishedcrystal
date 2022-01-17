@@ -196,12 +196,12 @@ Route22Past_CelebiFloatsMovementData:
 	step_end
 
 Route22PastLyraWhereAreWeText:
-	text "Lyra: Where are"
+	ctxt "Lyra: Where are"
 	line "we…?"
 	done
 
 Route22PastLyraIlexForestDisappearedText:
-	text "Lyra: Ilex Forest"
+	ctxt "Lyra: Ilex Forest"
 	line "has disappeared!"
 
 	para "…That's not it."
@@ -211,7 +211,7 @@ Route22PastLyraIlexForestDisappearedText:
 	done
 
 Route22PastLyraExplainsTimeTravelText:
-	text "Lyra: <PLAYER>, my"
+	ctxt "Lyra: <PLAYER>, my"
 	line "#gear radio"
 
 	para "said the date is"
@@ -226,7 +226,7 @@ Route22PastLyraExplainsTimeTravelText:
 	done
 
 Route22PastLyraHearsSomeoneText:
-	text "<PLAYER>, I hear"
+	ctxt "<PLAYER>, I hear"
 	line "someone else."
 
 	para "Let's find out"
@@ -234,7 +234,7 @@ Route22PastLyraHearsSomeoneText:
 	done
 
 Route22PastSilverQuestionsGiovanniText:
-	text "<RIVAL>: You told"
+	ctxt "<RIVAL>: You told"
 	line "me… you were the"
 
 	para "number one in the"
@@ -248,7 +248,7 @@ Route22PastSilverQuestionsGiovanniText:
 	done
 
 Route22PastGiovanniSilverArgumentText:
-	text "…… …… ……"
+	ctxt "…… …… ……"
 
 	para "One must acknow-"
 	line "ledge one's defeat"
@@ -301,7 +301,7 @@ Route22PastGiovanniSilverArgumentText:
 	done
 
 Route22PastSilverProtestsText:
-	text "<RIVAL>: I don't"
+	ctxt "<RIVAL>: I don't"
 	line "understand you!"
 
 	para "You don't make"
@@ -309,14 +309,14 @@ Route22PastSilverProtestsText:
 	done
 
 Route22PastGiovanniGoodbyeText:
-	text "…… …… ……"
+	ctxt "…… …… ……"
 
 	para "One day, you will"
 	line "understand."
 	done
 
 Route22PastSilverRantText:
-	text "<RIVAL>: I don't"
+	ctxt "<RIVAL>: I don't"
 	line "want to understand"
 	cont "you!"
 
@@ -344,12 +344,12 @@ Route22PastSilverRantText:
 	done
 
 Route22PastSilverInsultText:
-	text "<RIVAL>: …What are"
+	ctxt "<RIVAL>: …What are"
 	line "you staring at?"
 	done
 
 Route22PastLyraConclusionText:
-	text "Lyra: Who does he"
+	ctxt "Lyra: Who does he"
 	line "think he is?"
 
 	para "That was"
@@ -372,7 +372,7 @@ Route22PastLyraConclusionText:
 	done
 
 Route22PastLyraOhNoText:
-	text "Lyra: Oh no!"
+	ctxt "Lyra: Oh no!"
 	line "It's happening"
 	cont "again…!"
 

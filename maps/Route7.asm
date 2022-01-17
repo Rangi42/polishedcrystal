@@ -24,7 +24,7 @@ Route7_MapScriptHeader:
 GenericTrainerBreederCarlene:
 	generictrainer BREEDER, CARLENE, EVENT_BEAT_BREEDER_CARLENE, .SeenText, .BeatenText
 
-	text "I make my Smeargle"
+	ctxt "I make my Smeargle"
 	line "Sketch a move,"
 
 	para "then breed it"
@@ -35,13 +35,13 @@ GenericTrainerBreederCarlene:
 	done
 
 .SeenText:
-	text "My team is bred"
+	ctxt "My team is bred"
 	line "to handle any"
 	cont "situation!"
 	done
 
 .BeatenText:
-	text "We couldn't"
+	ctxt "We couldn't"
 	line "handle you!"
 	done
 
@@ -65,12 +65,12 @@ Route7Snorlax:
 	end
 
 .AsleepText:
-	text "Snorlax is snoring"
+	ctxt "Snorlax is snoring"
 	line "peacefully…"
 	done
 
 .AwakeText:
-	text "The #gear was"
+	ctxt "The #gear was"
 	line "placed near the"
 	cont "sleeping Snorlax…"
 
@@ -80,7 +80,7 @@ Route7Snorlax:
 	done
 
 Route7UndergroundPathSignText:
-	text "What's this flyer?"
+	ctxt "What's this flyer?"
 
 	para "“Uncouth trainers"
 	line "have been holding"
@@ -99,5 +99,5 @@ Route7UndergroundPathSignText:
 	done
 
 Route7LockedDoorText:
-	text "It's locked…"
+	ctxt "It's locked…"
 	done

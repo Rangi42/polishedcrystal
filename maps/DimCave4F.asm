@@ -56,14 +56,14 @@ DimCave4FSetUpStoneTable:
 	earthquake 80
 	jumpthistext
 
-	text "The boulder fell"
+	ctxt "The boulder fell"
 	line "through."
 	done
 
 GenericTrainerScientistJoseph:
 	generictrainer SCIENTIST, JOSEPH, EVENT_BEAT_SCIENTIST_JOSEPH, .SeenText, .BeatenText
 
-	text "Water underground"
+	ctxt "Water underground"
 	line "leaves behind"
 	cont "mineral deposits."
 
@@ -73,7 +73,7 @@ GenericTrainerScientistJoseph:
 	done
 
 .SeenText:
-	text "I'm studying the"
+	ctxt "I'm studying the"
 	line "ancient microbes"
 
 	para "preserved in these"
@@ -81,7 +81,7 @@ GenericTrainerScientistJoseph:
 	done
 
 .BeatenText:
-	text "It feels good to"
+	ctxt "It feels good to"
 	line "get out of the lab"
 	cont "and do some field"
 	cont "work."
@@ -90,7 +90,7 @@ GenericTrainerScientistJoseph:
 GenericTrainerScientistNigel:
 	generictrainer SCIENTIST, NIGEL, EVENT_BEAT_SCIENTIST_NIGEL, .SeenText, .BeatenText
 
-	text "The flowing water"
+	ctxt "The flowing water"
 	line "pushes through a"
 	cont "water wheel to"
 
@@ -106,7 +106,7 @@ GenericTrainerScientistNigel:
 	done
 
 .SeenText:
-	text "How do we get pow-"
+	ctxt "How do we get pow-"
 	line "er out of water?"
 
 	para "I'll tell you if"
@@ -114,12 +114,12 @@ GenericTrainerScientistNigel:
 	done
 
 .BeatenText:
-	text "Yikes! OK, I'll"
+	ctxt "Yikes! OK, I'll"
 	line "tell you."
 	done
 
 DimCave4FSuper_nerdText:
-	text "I'm walking along"
+	ctxt "I'm walking along"
 	line "the tracks, just"
 
 	para "like in that"

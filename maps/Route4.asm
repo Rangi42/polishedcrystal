@@ -30,7 +30,7 @@ Route4_MapScriptHeader:
 GenericTrainerYoungsterOliver:
 	generictrainer YOUNGSTER, OLIVER, EVENT_BEAT_YOUNGSTER_OLIVER, YoungsterOliverSeenText, YoungsterOliverBeatenText
 
-	text "People say that"
+	ctxt "People say that"
 	line "I ask too many"
 	cont "questions, but"
 
@@ -41,7 +41,7 @@ GenericTrainerYoungsterOliver:
 GenericTrainerLassJennifer:
 	generictrainer LASS, JENNIFER, EVENT_BEAT_LASS_JENNIFER, LassJenniferSeenText, LassJenniferBeatenText
 
-	text "#mon are so"
+	ctxt "#mon are so"
 	line "much fun."
 	cont "Don't you agree?"
 	done
@@ -49,7 +49,7 @@ GenericTrainerLassJennifer:
 GenericTrainerBird_keeperHank:
 	generictrainer BIRD_KEEPER, HANK, EVENT_BEAT_BIRD_KEEPER_HANK, Bird_keeperHankSeenText, Bird_keeperHankBeatenText
 
-	text "If you have a"
+	ctxt "If you have a"
 	line "specific #mon"
 
 	para "that you want to"
@@ -65,7 +65,7 @@ GenericTrainerBird_keeperHank:
 GenericTrainerPicnickerHope:
 	generictrainer PICNICKER, HOPE, EVENT_BEAT_PICNICKER_HOPE, PicnickerHopeSeenText, PicnickerHopeBeatenText
 
-	text "I heard Clefairy"
+	ctxt "I heard Clefairy"
 	line "appear at Mt.Moon."
 
 	para "But where could"
@@ -75,7 +75,7 @@ GenericTrainerPicnickerHope:
 GenericTrainerPicnickerSharon:
 	generictrainer PICNICKER, SHARON, EVENT_BEAT_PICNICKER_SHARON, PicnickerSharonSeenText, PicnickerSharonBeatenText
 
-	text "……I'll go train"
+	ctxt "……I'll go train"
 	line "some more…"
 	done
 
@@ -146,18 +146,18 @@ Route4EngineerScript:
 	end
 
 YoungsterOliverSeenText:
-	text "Hi! What's your"
+	ctxt "Hi! What's your"
 	line "name? Where are"
 	cont "you going?"
 	done
 
 YoungsterOliverBeatenText:
-	text "I was just"
+	ctxt "I was just"
 	line "asking…"
 	done
 
 LassJenniferSeenText:
-	text "I battle every"
+	ctxt "I battle every"
 	line "chance I get,"
 
 	para "just to spend time"
@@ -165,22 +165,22 @@ LassJenniferSeenText:
 	done
 
 LassJenniferBeatenText:
-	text "Wheeee!"
+	ctxt "Wheeee!"
 	done
 
 Bird_keeperHankSeenText:
-	text "I'm raising my"
+	ctxt "I'm raising my"
 	line "#mon. Want to"
 	cont "battle with me?"
 	done
 
 Bird_keeperHankBeatenText:
-	text "Ack! I lost that"
+	ctxt "Ack! I lost that"
 	line "one…"
 	done
 
 PicnickerHopeSeenText:
-	text "I have a feeling"
+	ctxt "I have a feeling"
 	line "that I can win."
 
 	para "Let's see if I'm"
@@ -188,21 +188,21 @@ PicnickerHopeSeenText:
 	done
 
 PicnickerHopeBeatenText:
-	text "Aww, you are too"
+	ctxt "Aww, you are too"
 	line "strong."
 	done
 
 PicnickerSharonSeenText:
-	text "Um…"
+	ctxt "Um…"
 	line "I…"
 	done
 
 PicnickerSharonBeatenText:
-	text "…"
+	ctxt "…"
 	done
 
 Route4SuperNerd1Text:
-	text "#mon with tough"
+	ctxt "#mon with tough"
 	line "heads are best!"
 
 	para "Arcanine, Golem,"
@@ -212,7 +212,7 @@ Route4SuperNerd1Text:
 	done
 
 Route4SuperNerd2Text:
-	text "#mon with long"
+	ctxt "#mon with long"
 	line "tails are best!"
 
 	para "Slowbro, Golduck,"
@@ -222,7 +222,7 @@ Route4SuperNerd2Text:
 	done
 
 Text_Route4TutorIronHead:
-	text "If you give me a"
+	ctxt "If you give me a"
 	line "Silver Leaf, I'll"
 
 	para "teach your #mon"
@@ -230,7 +230,7 @@ Text_Route4TutorIronHead:
 	done
 
 Text_Route4TutorAquaTail:
-	text "If you give me a"
+	ctxt "If you give me a"
 	line "Silver Leaf, I'll"
 
 	para "teach your #mon"
@@ -238,51 +238,51 @@ Text_Route4TutorAquaTail:
 	done
 
 Text_Route4TutorsNoSilverLeaf:
-	text "But you don't have"
+	ctxt "But you don't have"
 	line "a Silver Leaf."
 	done
 
 Text_Route4Tutor1Question:
-	text "Should I teach"
+	ctxt "Should I teach"
 	line "your #mon"
 	cont "Iron Head?"
 	done
 
 Text_Route4Tutor2Question:
-	text "Should I teach"
+	ctxt "Should I teach"
 	line "your #mon"
 	cont "Aqua Tail?"
 	done
 
 Text_Route4Tutor1Refused:
-	text "But it's better"
+	ctxt "But it's better"
 	line "than Aqua Tail!"
 	done
 
 Text_Route4Tutor2Refused:
-	text "But it's better"
+	ctxt "But it's better"
 	line "than Iron Head!"
 	done
 
 Text_Route4Tutor1Taught:
-	text "Now your #mon"
+	ctxt "Now your #mon"
 	line "knows how to use"
 	cont "Iron Head!"
 	done
 
 Text_Route4Tutor2Taught:
-	text "Now your #mon"
+	ctxt "Now your #mon"
 	line "knows how to use"
 	cont "Aqua Tail!"
 	done
 
 Route4EngineerText1:
-	text "Get those bolts"
+	ctxt "Get those bolts"
 	line "tighter!"
 	done
 
 Route4EngineerText2:
-	text "The cable car's"
+	ctxt "The cable car's"
 	line "out right now."
 
 	para "Until we're done"
@@ -293,10 +293,10 @@ Route4EngineerText2:
 	done
 
 MtMoonSignText:
-	text "Mt.Moon Tunnel"
+	ctxt "Mt.Moon Tunnel"
 	done
 
 CableCarSignText:
-	text "Cable Car to"
+	ctxt "Cable Car to"
 	line "Mt.Moon Square"
 	done

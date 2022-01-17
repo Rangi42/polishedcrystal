@@ -145,7 +145,7 @@ LanceScript:
 	end
 
 .SeenText:
-	text "Lance: I've been"
+	ctxt "Lance: I've been"
 	line "waiting for you."
 
 	para "<PLAYER>!"
@@ -177,7 +177,7 @@ LanceScript:
 	done
 
 .BeatenText:
-	text "…It's over."
+	ctxt "…It's over."
 
 	para "But it's an odd"
 	line "feeling."
@@ -194,7 +194,7 @@ LanceScript:
 	done
 
 .AfterText:
-	text "…Whew."
+	ctxt "…Whew."
 
 	para "You have become"
 	line "truly powerful,"
@@ -214,7 +214,7 @@ LanceScript:
 	done
 
 .SeenRematchText:
-	text "Lance: There's no"
+	ctxt "Lance: There's no"
 	line "need for words"
 	cont "now."
 
@@ -230,7 +230,7 @@ LanceScript:
 	done
 
 .AfterRematchText:
-	text "Just as I"
+	ctxt "Just as I"
 	line "expected."
 
 	para "You and your"
@@ -245,7 +245,7 @@ LanceScript:
 	done
 
 .MaryText1:
-	text "Mary: Oh, no!"
+	ctxt "Mary: Oh, no!"
 	line "It's all over!"
 
 	para "Prof.Oak, if you"
@@ -253,7 +253,7 @@ LanceScript:
 	done
 
 .OakSpeechText:
-	text "Prof.Oak: Ah,"
+	ctxt "Prof.Oak: Ah,"
 	line "<PLAYER>!"
 
 	para "It's been a long"
@@ -286,13 +286,13 @@ LanceScript:
 	done
 
 .MaryText2:
-	text "Mary: Let's inter-"
+	ctxt "Mary: Let's inter-"
 	line "view the brand new"
 	cont "Champion!"
 	done
 
 .LanceLeavingText:
-	text "Lance: This is"
+	ctxt "Lance: This is"
 	line "getting to be a"
 	cont "bit too noisy…"
 
@@ -301,7 +301,7 @@ LanceScript:
 	done
 
 .MaryText3:
-	text "Mary: Oh, wait!"
+	ctxt "Mary: Oh, wait!"
 	line "We haven't done"
 	cont "the interview!"
 	done

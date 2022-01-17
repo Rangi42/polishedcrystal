@@ -28,12 +28,12 @@ StormyBeach_MapScriptHeader:
 GenericTrainerSwimmerfBarbara:
 	generictrainer SWIMMERF, BARBARA, EVENT_BEAT_SWIMMERF_BARBARA, .SeenText, .BeatenText
 
-	text "I'm being dragged"
+	ctxt "I'm being dragged"
 	line "by the tides…"
 	done
 
 .SeenText:
-	text "I was resting for"
+	ctxt "I was resting for"
 	line "a while, but I am"
 
 	para "always ready to"
@@ -41,7 +41,7 @@ GenericTrainerSwimmerfBarbara:
 	done
 
 .BeatenText:
-	text "It was a good"
+	ctxt "It was a good"
 	line "battle, even if"
 	cont "I lost."
 	done
@@ -49,13 +49,13 @@ GenericTrainerSwimmerfBarbara:
 GenericTrainerBird_keeperJulian:
 	generictrainer BIRD_KEEPER, JULIAN, EVENT_BEAT_BIRD_KEEPER_JULIAN, .SeenText, .BeatenText
 
-	text "It's harder to fly"
+	ctxt "It's harder to fly"
 	line "in stormy places"
 	cont "like this."
 	done
 
 .SeenText:
-	text "I'm training my"
+	ctxt "I'm training my"
 	line "Flying-type #-"
 	cont "mon here."
 
@@ -63,14 +63,14 @@ GenericTrainerBird_keeperJulian:
 	done
 
 .BeatenText:
-	text "I lost…"
+	ctxt "I lost…"
 	line "What a pity!"
 	done
 
 GenericTrainerCamperFelix:
 	generictrainer CAMPER, FELIX, EVENT_BEAT_CAMPER_FELIX, .SeenText, .BeatenText
 
-	text "We're having a"
+	ctxt "We're having a"
 	line "barbecue later!"
 
 	para "All I need is some"
@@ -79,36 +79,36 @@ GenericTrainerCamperFelix:
 	done
 
 .SeenText:
-	text "I'm searching for"
+	ctxt "I'm searching for"
 	line "firewood."
 	cont "Wanna help?"
 	done
 
 .BeatenText:
-	text "I'll take that as"
+	ctxt "I'll take that as"
 	line "a no…"
 	done
 
 GenericTrainerPicnickerLily:
 	generictrainer PICNICKER, LILY, EVENT_BEAT_PICNICKER_LILY, .SeenText, .BeatenText
 
-	text "I came here for a"
+	ctxt "I came here for a"
 	line "picnic, but forgot"
 	cont "the food!"
 	cont "How embarrassing!"
 	done
 
 .SeenText:
-	text "I'm hungry!"
+	ctxt "I'm hungry!"
 	done
 
 .BeatenText:
-	text "I was battling on"
+	ctxt "I was battling on"
 	line "an empty stomach!"
 	done
 
 StormyBeachSwimmermText:
-	text "We're here on a"
+	ctxt "We're here on a"
 	line "camping trip,"
 
 	para "but the weather"
@@ -116,7 +116,7 @@ StormyBeachSwimmermText:
 	done
 
 StormyBeachGrampsText:
-	text "Can you feel it in"
+	ctxt "Can you feel it in"
 	line "the air? A storm"
 	cont "is brewing."
 

@@ -19,7 +19,7 @@ Route16Gate_MapScriptHeader:
 	end
 
 Route16GateOfficerText:
-	text "Route 16 is a bit"
+	ctxt "Route 16 is a bit"
 	line "untamed."
 
 	para "You'll need HM"

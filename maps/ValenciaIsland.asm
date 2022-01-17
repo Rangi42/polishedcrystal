@@ -22,7 +22,7 @@ ValenciaIsland_MapScriptHeader:
 	object_event 10, 18, SPRITE_YOUNGSTER, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, ValenciaIslandYoungsterScript, -1
 
 ValenciaIslandCooltrainermText:
-	text "A couple of strong"
+	ctxt "A couple of strong"
 	line "trainers live in"
 	cont "that house."
 
@@ -39,40 +39,40 @@ ValenciaIslandYoungsterScript:
 	iftrue_jumptextfaceplayer .Text2
 	jumpthistextfaceplayer
 
-	text "Prof.Ivy is"
+	ctxt "Prof.Ivy is"
 	line "smokin' hot,"
 	cont "don't you think?"
 	done
 
 .Text2:
-	text "You may be cute,"
+	ctxt "You may be cute,"
 	line "but Prof.Ivy is"
 	cont "smokin' hot!"
 	done
 
 ValenciaIslandSignText:
-	text "Valencia Island"
+	ctxt "Valencia Island"
 
 	para "Bitter Oranges"
 	line "and Sweet Breezes"
 	done
 
 ValenciaIslandGoneFishingSignText:
-	text "Gone Fishing"
+	ctxt "Gone Fishing"
 
 	para "(On vacation"
 	line "in Alola!)"
 	done
 
 ValenciaIslandLockedDoorText:
-	text "It's locked…"
+	ctxt "It's locked…"
 	done
 
 IvysLabSignText:
-	text "Ivy Research"
+	ctxt "Ivy Research"
 	line "№.2 Bayview"
 	done
 
 IvysHouseSignText:
-	text "Ivy's House"
+	ctxt "Ivy's House"
 	done

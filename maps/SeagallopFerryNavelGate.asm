@@ -88,18 +88,18 @@ SeagallopFerryNavelGateSailorArrive2MovementData:
 	step_end
 
 SeagallopFerryNavelToVermilionQuestionText:
-	text "Ready to head back"
+	ctxt "Ready to head back"
 	line "to Vermilion City?"
 	done
 
 SeagallopFerryNavelToVermilionText:
-	text "All right!"
+	ctxt "All right!"
 
 	para "All aboard the"
 	line "Seagallop Ferry!"
 	done
 
 SeagallopFerryNavelRockRefusedText:
-	text "I'll be waiting"
+	ctxt "I'll be waiting"
 	line "right here."
 	done

@@ -31,7 +31,7 @@ MountMortar1FInside_MapScriptHeader:
 GenericTrainerPokemaniacMiller:
 	generictrainer POKEMANIAC, MILLER, EVENT_BEAT_POKEMANIAC_MILLER, PokemaniacMillerSeenText, PokemaniacMillerBeatenText
 
-	text "A while back, this"
+	ctxt "A while back, this"
 	line "karate dude wanted"
 
 	para "to battle. He was"
@@ -50,7 +50,7 @@ GenericTrainerPokemaniacMiller:
 GenericTrainerSupernerdMarkus:
 	generictrainer SUPER_NERD, MARKUS, EVENT_BEAT_SUPER_NERD_MARKUS, SupernerdMarkusSeenText, SupernerdMarkusBeatenText
 
-	text "I came to explore"
+	ctxt "I came to explore"
 	line "Mt.Mortar, but I"
 
 	para "got separated from"
@@ -64,21 +64,21 @@ GenericTrainerSupernerdMarkus:
 	done
 
 PokemaniacMillerSeenText:
-	text "I'm not losing"
+	ctxt "I'm not losing"
 	line "this time!"
 	done
 
 PokemaniacMillerBeatenText:
-	text "I lost to some"
+	ctxt "I lost to some"
 	line "kid…?"
 	done
 
 SupernerdMarkusSeenText:
-	text "Hey! Hugh!"
+	ctxt "Hey! Hugh!"
 	done
 
 SupernerdMarkusBeatenText:
-	text "I mistook you for"
+	ctxt "I mistook you for"
 	line "someone else…"
 	done
 

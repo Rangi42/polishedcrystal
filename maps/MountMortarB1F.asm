@@ -75,7 +75,7 @@ MountMortarB1FKiyoScript:
 	jumpthisopenedtext
 
 MountMortarB1FKiyoGotTyrogueText:
-	text "Tyrogue is a"
+	ctxt "Tyrogue is a"
 	line "Fighting-type."
 
 	para "It evolves into a"
@@ -89,7 +89,7 @@ MountMortarB1FKiyoGotTyrogueText:
 	done
 
 MountMortarB1FHikerText:
-	text "My #mon used"
+	ctxt "My #mon used"
 if DEF(FAITHFUL)
 	line "Rock Smash on a"
 else
@@ -105,7 +105,7 @@ endc
 	done
 
 Text_MountMortarB1FTutorDefenseCurl:
-	text "I can teach your"
+	ctxt "I can teach your"
 	line "#mon to use"
 
 	para "Defense Curl for"
@@ -113,30 +113,30 @@ Text_MountMortarB1FTutorDefenseCurl:
 	done
 
 Text_MountMortarB1FTutorNoSilverLeaf:
-	text "Shucks, you don't"
+	ctxt "Shucks, you don't"
 	line "have a Silver"
 	cont "Leaf."
 	done
 
 Text_MountMortarB1FTutorQuestion:
-	text "Should I teach"
+	ctxt "Should I teach"
 	line "your #mon"
 	cont "Defense Curl?"
 	done
 
 Text_MountMortarB1FTutorRefused:
-	text "I'll be right here"
+	ctxt "I'll be right here"
 	line "waiting."
 	done
 
 Text_MountMortarB1FTutorTaught:
-	text "There! Now your"
+	ctxt "There! Now your"
 	line "#mon can use"
 	cont "Defense Curl!"
 	done
 
 MountMortarB1FKiyoIntroText:
-	text "Hey!"
+	ctxt "Hey!"
 
 	para "I am the Karate"
 	line "King!"
@@ -151,12 +151,12 @@ MountMortarB1FKiyoIntroText:
 	done
 
 MountMortarB1FKiyoWinText:
-	text "Waaaarggh!"
+	ctxt "Waaaarggh!"
 	line "I'm beaten!"
 	done
 
 MountMortarB1FTyrogueRewardText:
-	text "I… I'm crushed…"
+	ctxt "I… I'm crushed…"
 
 	para "My training is"
 	line "still not enough…"
@@ -172,7 +172,7 @@ MountMortarB1FTyrogueRewardText:
 	done
 
 MountMortarB1FKiyoFullPartyAndBoxText:
-	text "You have no room"
+	ctxt "You have no room"
 	line "in your party"
 	line "or box!"
 	done

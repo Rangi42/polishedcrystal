@@ -176,7 +176,7 @@ Route35NationalParkGateOfficerScript:
 Route35NationalParkGate_NoContestToday:
 	jumpthistextfaceplayer
 
-	text "We hold Contests"
+	ctxt "We hold Contests"
 	line "regularly in the"
 
 	para "park. You should"
@@ -195,9 +195,9 @@ Route35NationalParkGatePlayerGoAroundOfficerAndEnterParkMovement:
 	step_end
 
 Route35NationalParkGateOfficer1AskToParticipateText:
-	text "Today's "
+	ctxt "Today's "
 	text_ram wStringBuffer3
-	text "."
+	ctxt "."
 	line "That means the"
 
 	para "Bug-Catching Con-"
@@ -217,18 +217,18 @@ Route35NationalParkGateOfficer1AskToParticipateText:
 	done
 
 Route35NationalParkGateOfficer1GiveParkBallsText:
-	text "Here are the Park"
+	ctxt "Here are the Park"
 	line "Balls for the"
 	cont "Contest."
 	done
 
 Route35NationalParkGatePlayerReceivedParkBallsText:
-	text "<PLAYER> received"
+	ctxt "<PLAYER> received"
 	line "{d:BUG_CONTEST_BALLS} Park Balls."
 	done
 
 Route35NationalParkGateOfficer1ExplainsRulesText:
-	text "The person who"
+	ctxt "The person who"
 	line "gets the strong-"
 	cont "est bug #mon"
 	cont "is the winner."
@@ -252,7 +252,7 @@ Route35NationalParkGateOfficer1ExplainsRulesText:
 	done
 
 Route35NationalParkGateOfficer1AskToUseFirstMonText:
-	text "Uh-oh…"
+	ctxt "Uh-oh…"
 
 	para "You have more than"
 	line "one #mon."
@@ -260,7 +260,7 @@ Route35NationalParkGateOfficer1AskToUseFirstMonText:
 	para "You'll have to use"
 	line ""
 	text_ram wStringBuffer3
-	text ", the"
+	ctxt ", the"
 
 	para "first #mon in"
 	line "your party."
@@ -270,19 +270,19 @@ Route35NationalParkGateOfficer1AskToUseFirstMonText:
 	done
 
 Route35NationalParkGateOfficer1WellHoldYourMonText:
-	text "Fine, we'll hold"
+	ctxt "Fine, we'll hold"
 	line "your other #mon"
 	cont "while you compete."
 	done
 
 Route35NationalParkGatePlayersMonLeftWithHelperText:
-	text "<PLAYER>'s #mon"
+	ctxt "<PLAYER>'s #mon"
 	line "were left with the"
 	cont "Contest Helper."
 	done
 
 Route35NationalParkGateOfficer1ChooseMonAndComeBackText:
-	text "Please choose the"
+	ctxt "Please choose the"
 	line "#mon to be used"
 
 	para "in the Contest,"
@@ -290,13 +290,13 @@ Route35NationalParkGateOfficer1ChooseMonAndComeBackText:
 	done
 
 Route35NationalParkGateOfficer1TakePartInFutureText:
-	text "OK. We hope you'll"
+	ctxt "OK. We hope you'll"
 	line "take part in the"
 	cont "future."
 	done
 
 Route35NationalParkGateOfficer1FirstMonCantBattleText:
-	text "Uh-oh…"
+	ctxt "Uh-oh…"
 	line "The first #mon"
 
 	para "in your party"
@@ -310,7 +310,7 @@ Route35NationalParkGateOfficer1FirstMonCantBattleText:
 	done
 
 Route35NationalParkGateOfficer1MakeRoomText:
-	text "Uh-oh…"
+	ctxt "Uh-oh…"
 	line "Both your party"
 
 	para "and your PC Box"
@@ -328,7 +328,7 @@ Route35NationalParkGateOfficer1MakeRoomText:
 	done
 
 Route35NationalParkGateOfficer1EggAsFirstMonText:
-	text "Uh-oh…"
+	ctxt "Uh-oh…"
 	line "You have an Egg as"
 
 	para "the first #mon"
@@ -342,7 +342,7 @@ Route35NationalParkGateOfficer1EggAsFirstMonText:
 	done
 
 Route35NationalParkGateOfficer1WantToFinishText:
-	text "You still have "
+	ctxt "You still have "
 	text_ram wStringBuffer3
 	line "minute(s) left."
 
@@ -351,7 +351,7 @@ Route35NationalParkGateOfficer1WantToFinishText:
 	done
 
 Route35NationalParkGateOfficer1WaitAtNorthGateText:
-	text "OK. Please wait at"
+	ctxt "OK. Please wait at"
 	line "the North Gate for"
 
 	para "the announcement"
@@ -359,13 +359,13 @@ Route35NationalParkGateOfficer1WaitAtNorthGateText:
 	done
 
 Route35NationalParkGateOfficer1OkGoFinishText:
-	text "OK. Please get"
+	ctxt "OK. Please get"
 	line "back outside and"
 	cont "finish up."
 	done
 
 Route35NationalParkGateOfficer1ContestIsOverText:
-	text "Today's Contest is"
+	ctxt "Today's Contest is"
 	line "over. We hope you"
 
 	para "will participate"
@@ -373,13 +373,13 @@ Route35NationalParkGateOfficer1ContestIsOverText:
 	done
 
 Route35NationalParkGateYoungsterText:
-	text "When is the next"
+	ctxt "When is the next"
 	line "Bug-Catching Con-"
 	cont "test going to be?"
 	done
 
 BugCatchingContestExplanationText:
-	text "The Bug-Catching"
+	ctxt "The Bug-Catching"
 	line "Contest is held on"
 
 	para "Tuesday, Thursday"

@@ -92,13 +92,13 @@ SaffronMagnetTrainStationPlayerLeaveTrainAndEnterStationMovement:
 	step_end
 
 SaffronMagnetTrainStationOfficerTrainIsntOperatingText:
-	text "I'm sorry, but the"
+	ctxt "I'm sorry, but the"
 	line "Magnet Train isn't"
 	cont "operating now."
 	done
 
 SaffronMagnetTrainStationOfficerAreYouComingOnBoardText:
-	text "We'll soon depart"
+	ctxt "We'll soon depart"
 	line "for Goldenrod."
 
 	para "Are you coming on"
@@ -106,7 +106,7 @@ SaffronMagnetTrainStationOfficerAreYouComingOnBoardText:
 	done
 
 SaffronMagnetTrainStationOfficerRightThisWayText:
-	text "May I see your"
+	ctxt "May I see your"
 	line "rail pass, please?"
 
 	para "OK. Right this"
@@ -114,17 +114,17 @@ SaffronMagnetTrainStationOfficerRightThisWayText:
 	done
 
 SaffronMagnetTrainStationOfficerYouDontHaveAPassText:
-	text "Sorry, but you"
+	ctxt "Sorry, but you"
 	line "don't have a pass."
 	done
 
 SaffronMagnetTrainStationOfficerHopeToSeeYouAgainText:
-	text "We hope to see you"
+	ctxt "We hope to see you"
 	line "again."
 	done
 
 SaffronMagnetTrainStationOfficerArrivedInSaffronText:
-	text "We have arrived in"
+	ctxt "We have arrived in"
 	line "Saffron."
 
 	para "We hope to see you"
@@ -132,7 +132,7 @@ SaffronMagnetTrainStationOfficerArrivedInSaffronText:
 	done
 
 SaffronMagnetTrainStationGymGuideText:
-	text "The Magnet Train"
+	ctxt "The Magnet Train"
 	line "is a super modern"
 
 	para "rail liner that"
@@ -148,7 +148,7 @@ SaffronMagnetTrainStationGymGuideText:
 	done
 
 SaffronMagnetTrainStationGymGuideText_ReturnedMachinePart:
-	text "Whew…"
+	ctxt "Whew…"
 
 	para "How many times"
 	line "have I gone back"
@@ -158,7 +158,7 @@ SaffronMagnetTrainStationGymGuideText_ReturnedMachinePart:
 	done
 
 SaffronMagnetTrainStationTeacherText:
-	text "Before the Magnet"
+	ctxt "Before the Magnet"
 	line "Train Station was"
 
 	para "built, there was a"
@@ -170,7 +170,7 @@ SaffronMagnetTrainStationTeacherText:
 	done
 
 SaffronMagnetTrainStationLassText:
-	text "Hi. Do you have a"
+	ctxt "Hi. Do you have a"
 	line "rail pass? I have"
 
 	para "one. All the peo-"

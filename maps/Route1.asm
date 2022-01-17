@@ -21,7 +21,7 @@ Route1_MapScriptHeader:
 GenericTrainerSchoolboyDanny:
 	generictrainer SCHOOLBOY, DANNY, EVENT_BEAT_SCHOOLBOY_DANNY, SchoolboyDannySeenText, SchoolboyDannyBeatenText
 
-	text "For trainers, it's"
+	ctxt "For trainers, it's"
 	line "a given that we'll"
 
 	para "battle whenever we"
@@ -31,7 +31,7 @@ GenericTrainerSchoolboyDanny:
 GenericTrainerSchoolboySherman:
 	generictrainer SCHOOLBOY, SHERMAN, EVENT_BEAT_SCHOOLBOY_SHERMAN, SchoolboyShermanSeenText, SchoolboyShermanBeatenText
 
-	text "I should record"
+	ctxt "I should record"
 	line "all of today's"
 	cont "mistakes."
 	done
@@ -39,7 +39,7 @@ GenericTrainerSchoolboySherman:
 GenericTrainerCooltrainermFrench:
 	generictrainer COOLTRAINERM, FRENCH, EVENT_BEAT_COOLTRAINERM_FRENCH, CooltrainermFrenchSeenText, CooltrainermFrenchBeatenText
 
-	text "That was a great"
+	ctxt "That was a great"
 	line "fight!"
 	cont "Don't you agree?"
 	done
@@ -47,36 +47,36 @@ GenericTrainerCooltrainermFrench:
 GenericTrainerCooltrainerfQuinn:
 	generictrainer COOLTRAINERF, QUINN, EVENT_BEAT_COOLTRAINERF_QUINN, CooltrainerfQuinnSeenText, CooltrainerfQuinnBeatenText
 
-	text "You're strong."
+	ctxt "You're strong."
 
 	para "You obviously must"
 	line "have trained hard."
 	done
 
 SchoolboyDannySeenText:
-	text "If trainers meet,"
+	ctxt "If trainers meet,"
 	line "the first thing to"
 	cont "do is battle."
 	done
 
 SchoolboyDannyBeatenText:
-	text "Awww… I've got a"
+	ctxt "Awww… I've got a"
 	line "losing record…"
 	done
 
 SchoolboyShermanSeenText:
-	text "Right after class,"
+	ctxt "Right after class,"
 	line "I head outside to"
 	cont "practice!"
 	done
 
 SchoolboyShermanBeatenText:
-	text "I need to follow"
+	ctxt "I need to follow"
 	line "the textbook."
 	done
 
 CooltrainermFrenchSeenText:
-	text "You!"
+	ctxt "You!"
 
 	para "I've been waiting"
 	line "for someone like"
@@ -84,21 +84,21 @@ CooltrainermFrenchSeenText:
 	done
 
 CooltrainermFrenchBeatenText:
-	text "Yep, as strong as"
+	ctxt "Yep, as strong as"
 	line "expected!"
 	done
 
 CooltrainerfQuinnSeenText:
-	text "You there!"
+	ctxt "You there!"
 	line "Want to battle?"
 	done
 
 CooltrainerfQuinnBeatenText:
-	text "Down and out…"
+	ctxt "Down and out…"
 	done
 
 Route1SignText:
-	text "Route 1"
+	ctxt "Route 1"
 
 	para "Pallet Town -"
 	line "Viridian City"

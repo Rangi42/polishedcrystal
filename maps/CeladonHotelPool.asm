@@ -29,12 +29,12 @@ CeladonHotelPoolSwimmerMScript:
 	jumpthisopenedtext
 
 .Text2:
-	text "This is quite a"
+	ctxt "This is quite a"
 	line "relaxing swim…"
 	done
 
 .Text1:
-	text "For a slow back-"
+	ctxt "For a slow back-"
 	line "stroke, I don't"
 	cont "need my goggles."
 
@@ -42,7 +42,7 @@ CeladonHotelPoolSwimmerMScript:
 	done
 
 CeladonHotelPoolPokefanMText:
-	text "Well, color me"
+	ctxt "Well, color me"
 	line "impressed."
 
 	para "This hotel's"
@@ -51,5 +51,5 @@ CeladonHotelPoolPokefanMText:
 	done
 
 CeladonHotelPoolChildText:
-	text "Whee!"
+	ctxt "Whee!"
 	done

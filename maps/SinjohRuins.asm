@@ -15,5 +15,5 @@ SinjohRuins_MapScriptHeader:
 	def_object_events
 
 SinjohRuinsSignpostText:
-	text "The Sinjoh Ruins"
+	ctxt "The Sinjoh Ruins"
 	done

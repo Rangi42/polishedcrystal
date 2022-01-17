@@ -29,7 +29,7 @@ PokemonJournalLoreleiScript:
 	setflag ENGINE_READ_LORELEI_JOURNAL
 	jumpthistext
 
-	text "#mon Journal"
+	ctxt "#mon Journal"
 
 	para "Special Feature:"
 	line "Ex-Elite Lorelei!"
@@ -59,7 +59,7 @@ ShamoutiPokeCenter1FIvyScript:
 	ifequal $3, .Squirtle
 	jumpthisopenedtext
 
-	text "Ivy: Hm, I thought"
+	ctxt "Ivy: Hm, I thought"
 	line "you'd be happy to"
 
 	para "raise a rare"
@@ -115,14 +115,14 @@ ShamoutiPokeCenter1FIvyScript:
 	end
 
 .NoRoomText:
-	text "Alas, it seems"
+	ctxt "Alas, it seems"
 	line "there's no room in"
 	cont "either your party"
 	cont "or your box…"
 	done
 
 .GreetingText:
-	text "Ivy: Oh! You're"
+	ctxt "Ivy: Oh! You're"
 	line "<PLAYER>, the new"
 	cont "Champion!"
 
@@ -155,7 +155,7 @@ ShamoutiPokeCenter1FIvyScript:
 	done
 
 .OfferText:
-	text "Ivy: So you're"
+	ctxt "Ivy: So you're"
 	line "taking a whole new"
 
 	para "Gym challenge in"
@@ -170,13 +170,13 @@ ShamoutiPokeCenter1FIvyScript:
 	done
 
 .ChoseKantoStarterText:
-	text "Ivy: I think"
+	ctxt "Ivy: I think"
 	line "that's a great"
 	cont "#mon too!"
 	done
 
 .GoodbyeText:
-	text "Ivy: Prof.Elm"
+	ctxt "Ivy: Prof.Elm"
 	line "trusted you with"
 	cont "a #mon, and"
 
@@ -187,7 +187,7 @@ ShamoutiPokeCenter1FIvyScript:
 	line "good care of that"
 	cont ""
 	text_ram wStringBuffer3
-	text "."
+	ctxt "."
 
 	para "Well, I need to"
 	line "take a ferry back"

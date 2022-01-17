@@ -79,7 +79,7 @@ UnknownScript_0x76799:
 GenericTrainerSailorJeff:
 	generictrainer SAILOR, JEFF, EVENT_BEAT_SAILOR_JEFF, SailorJeffSeenText, SailorJeffBeatenText
 
-	text "I guess I can't"
+	ctxt "I guess I can't"
 	line "win if I don't get"
 	cont "serious."
 	done
@@ -87,7 +87,7 @@ GenericTrainerSailorJeff:
 GenericTrainerPicnickerDebra:
 	generictrainer PICNICKER, DEBRA, EVENT_BEAT_PICNICKER_DEBRA, PicnickerDebraSeenText, PicnickerDebraBeatenText
 
-	text "Saffron, Celadon…"
+	ctxt "Saffron, Celadon…"
 	line "I hear there are"
 
 	para "many big cities"
@@ -97,7 +97,7 @@ GenericTrainerPicnickerDebra:
 GenericTrainerJugglerFritz:
 	generictrainer JUGGLER, FRITZ, EVENT_BEAT_JUGGLER_FRITZ, JugglerFritzSeenText, JugglerFritzBeatenText
 
-	text "No more ships for"
+	ctxt "No more ships for"
 	line "me. Next time,"
 
 	para "I'm taking the"
@@ -107,7 +107,7 @@ GenericTrainerJugglerFritz:
 GenericTrainerBakerSharyn:
 	generictrainer BAKER, SHARYN, EVENT_BEAT_BAKER_SHARYN, BakerSharynSeenText, BakerSharynBeatenText
 
-	text "I may not be the"
+	ctxt "I may not be the"
 	line "best at battles,"
 
 	para "but people love"
@@ -117,7 +117,7 @@ GenericTrainerBakerSharyn:
 GenericTrainerSailorGarrett:
 	generictrainer SAILOR, GARRETT, EVENT_BEAT_SAILOR_GARRETT, SailorGarrettSeenText, SailorGarrettBeatenText
 
-	text "We get different"
+	ctxt "We get different"
 	line "passengers from"
 
 	para "Vermilion City to"
@@ -127,14 +127,14 @@ GenericTrainerSailorGarrett:
 GenericTrainerFisherJonah:
 	generictrainer FISHER, JONAH, EVENT_BEAT_FISHER_JONAH, FisherJonahSeenText, FisherJonahBeatenText
 
-	text "I plan to fish off"
+	ctxt "I plan to fish off"
 	line "Vermilion's pier."
 	done
 
 GenericTrainerBlackbeltWai:
 	generictrainer BLACKBELT_T, WAI, EVENT_BEAT_BLACKBELT_WAI, BlackbeltWaiSeenText, BlackbeltWaiBeatenText
 
-	text "I couldn't find"
+	ctxt "I couldn't find"
 	line "the Karate King in"
 	cont "Johto."
 
@@ -146,7 +146,7 @@ GenericTrainerBlackbeltWai:
 GenericTrainerSailorKenneth:
 	generictrainer SAILOR, KENNETH, EVENT_BEAT_SAILOR_KENNETH, SailorKennethSeenText, SailorKennethBeatenText
 
-	text "Eight Badges!"
+	ctxt "Eight Badges!"
 	line "They must prove"
 
 	para "that you've beaten"
@@ -159,7 +159,7 @@ GenericTrainerSailorKenneth:
 GenericTrainerTeacherShirley:
 	generictrainer TEACHER, SHIRLEY, EVENT_BEAT_TEACHER_SHIRLEY, TeacherShirleySeenText, TeacherShirleyBeatenText
 
-	text "We're on a field"
+	ctxt "We're on a field"
 	line "trip to the ruins"
 	cont "outside Violet."
 	done
@@ -167,7 +167,7 @@ GenericTrainerTeacherShirley:
 GenericTrainerSchoolboyNate:
 	generictrainer SCHOOLBOY, NATE, EVENT_BEAT_SCHOOLBOY_NATE, SchoolboyNateSeenText, SchoolboyNateBeatenText
 
-	text "Radios pick up"
+	ctxt "Radios pick up"
 	line "strange signals"
 	cont "inside the ruins."
 	done
@@ -175,7 +175,7 @@ GenericTrainerSchoolboyNate:
 GenericTrainerSchoolboyRicky:
 	generictrainer SCHOOLBOY, RICKY, EVENT_BEAT_SCHOOLBOY_RICKY, SchoolboyRickySeenText, SchoolboyRickyBeatenText
 
-	text "I read in a #-"
+	ctxt "I read in a #-"
 	line "mon Journal that"
 
 	para "there are four of"
@@ -198,7 +198,7 @@ FastShipB1FSailorBlocksLeftMovement:
 	step_end
 
 FastShipB1FOnDutySailorText:
-	text "Hey, kid. Could I"
+	ctxt "Hey, kid. Could I"
 	line "get you to look"
 	cont "for my buddy?"
 
@@ -212,14 +212,14 @@ FastShipB1FOnDutySailorText:
 	done
 
 FastShipB1FOnDutySailorRefusedText:
-	text "Oh, gee…"
+	ctxt "Oh, gee…"
 
 	para "The Captain will"
 	line "be furious…"
 	done
 
 FastShipB1FOnDutySailorThanksText:
-	text "Thanks, kid!"
+	ctxt "Thanks, kid!"
 	line "I chewed him out"
 
 	para "good so he'll quit"
@@ -227,14 +227,14 @@ FastShipB1FOnDutySailorThanksText:
 	done
 
 FastShipB1FOnDutySailorSawLittleGirlText:
-	text "A little girl?"
+	ctxt "A little girl?"
 
 	para "I may have seen"
 	line "her go by here."
 	done
 
 FastShipB1FOnDutySailorDirectionsText:
-	text "The dining room is"
+	ctxt "The dining room is"
 	line "up ahead."
 
 	para "The stairs at the"
@@ -243,59 +243,59 @@ FastShipB1FOnDutySailorDirectionsText:
 	done
 
 SailorJeffSeenText:
-	text "Nothing beats a"
+	ctxt "Nothing beats a"
 	line "battle when I'm"
 	cont "on my break."
 	done
 
 SailorJeffBeatenText:
-	text "Win or lose, my"
+	ctxt "Win or lose, my"
 	line "break's over!"
 	done
 
 PicnickerDebraSeenText:
-	text "I'm so bored."
+	ctxt "I'm so bored."
 	line "Want to battle?"
 	done
 
 PicnickerDebraBeatenText:
-	text "Yow! You're too"
+	ctxt "Yow! You're too"
 	line "strong!"
 	done
 
 JugglerFritzSeenText:
-	text "Urrf…"
+	ctxt "Urrf…"
 	line "I'm seasick!"
 	done
 
 JugglerFritzBeatenText:
-	text "I can't move any-"
+	ctxt "I can't move any-"
 	line "more…"
 	done
 
 BakerSharynSeenText:
-	text "As I bake bread,"
+	ctxt "As I bake bread,"
 	line "I will bake your"
 	cont "#mon, too!"
 	done
 
 BakerSharynBeatenText:
-	text "At least my bread"
+	ctxt "At least my bread"
 	line "is a winner."
 	done
 
 SailorGarrettSeenText:
-	text "This is where we"
+	ctxt "This is where we"
 	line "sailors work!"
 	done
 
 SailorGarrettBeatenText:
-	text "I lost on my home"
+	ctxt "I lost on my home"
 	line "field…"
 	done
 
 FisherJonahSeenText:
-	text "Even though we're"
+	ctxt "Even though we're"
 	line "out on the sea, I"
 	cont "can't fish!"
 
@@ -304,12 +304,12 @@ FisherJonahSeenText:
 	done
 
 FisherJonahBeatenText:
-	text "I… I'm not bored"
+	ctxt "I… I'm not bored"
 	line "anymore…"
 	done
 
 BlackbeltWaiSeenText:
-	text "I'm building up my"
+	ctxt "I'm building up my"
 	line "legs by bracing"
 
 	para "against the ship's"
@@ -317,12 +317,12 @@ BlackbeltWaiSeenText:
 	done
 
 BlackbeltWaiBeatenText:
-	text "Rocked and rolled"
+	ctxt "Rocked and rolled"
 	line "over!"
 	done
 
 SailorKennethSeenText:
-	text "I'm a sailor man!"
+	ctxt "I'm a sailor man!"
 
 	para "But I'm training"
 	line "#mon, so I can"
@@ -330,35 +330,35 @@ SailorKennethSeenText:
 	done
 
 SailorKennethBeatenText:
-	text "My lack of train-"
+	ctxt "My lack of train-"
 	line "ing is obvious…"
 	done
 
 TeacherShirleySeenText:
-	text "Don't lay a finger"
+	ctxt "Don't lay a finger"
 	line "on my students!"
 	done
 
 TeacherShirleyBeatenText:
-	text "Aaack!"
+	ctxt "Aaack!"
 	done
 
 SchoolboyNateSeenText:
-	text "Do you know the"
+	ctxt "Do you know the"
 	line "Ruins of Alph?"
 	done
 
 SchoolboyNateBeatenText:
-	text "Yaargh!"
+	ctxt "Yaargh!"
 	done
 
 SchoolboyRickySeenText:
-	text "There are some odd"
+	ctxt "There are some odd"
 	line "stone panels in"
 	cont "the Ruins of Alph."
 	done
 
 SchoolboyRickyBeatenText:
-	text "I was done in!"
+	ctxt "I was done in!"
 	done
 

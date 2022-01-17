@@ -24,7 +24,7 @@ PokemonJournalRedScript:
 	setflag ENGINE_READ_RED_JOURNAL
 	jumpthistext
 
-	text "#mon Journal"
+	ctxt "#mon Journal"
 
 	para "Special Feature:"
 	line "<PK><MN> Trainer Red!"
@@ -44,7 +44,7 @@ CherrygrovePokeCenter1FTeacherScript:
 	iftrue_jumptextfaceplayer .Text2
 	jumpthistextfaceplayer
 
-	text "The Communication"
+	ctxt "The Communication"
 	line "Center upstairs"
 	cont "was just built."
 
@@ -53,7 +53,7 @@ CherrygrovePokeCenter1FTeacherScript:
 	done
 
 .Text2:
-	text "The Communication"
+	ctxt "The Communication"
 	line "Center upstairs"
 	cont "was just built."
 
@@ -62,7 +62,7 @@ CherrygrovePokeCenter1FTeacherScript:
 	done
 
 CherrygrovePokeCenter1FFisherText:
-	text "It's great. I can"
+	ctxt "It's great. I can"
 	line "store any number"
 
 	para "of #mon, and"
@@ -70,13 +70,13 @@ CherrygrovePokeCenter1FFisherText:
 	done
 
 CherrygrovePokeCenter1FGentlemanText:
-	text "That PC is free"
+	ctxt "That PC is free"
 	line "for any trainer"
 	cont "to use."
 	done
 
 CherrygrovePokeCenter1FLadyText:
-	text "#mon Journal"
+	ctxt "#mon Journal"
 	line "has such fascin-"
 	cont "ating stories!"
 

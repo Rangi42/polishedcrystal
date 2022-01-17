@@ -215,7 +215,7 @@ RuinsOfAlphResearchCenterApproachesComputerMovement:
 	step_end
 
 RuinsOfAlphResearchCenterModifiedDexText:
-	text "Done!"
+	ctxt "Done!"
 
 	para "I modified your"
 	line "#dex."
@@ -232,12 +232,12 @@ RuinsOfAlphResearchCenterModifiedDexText:
 	done
 
 RuinsOfAlphResearchCenterDexUpgradedText:
-	text "<PLAYER>'s #dex"
+	ctxt "<PLAYER>'s #dex"
 	line "was upgraded."
 	done
 
 RuinsOfAlphResearchCenterScientist3Text:
-	text "The Unown you"
+	ctxt "The Unown you"
 	line "catch will all be"
 	cont "recorded."
 
@@ -253,7 +253,7 @@ RuinsOfAlphResearchCenterScientist3Text:
 	done
 
 RuinsOfAlphResearchCenterScientist3_PrinterAvailable:
-	text "You caught all the"
+	ctxt "You caught all the"
 	line "Unown variations?"
 
 	para "That's a great"
@@ -268,30 +268,30 @@ RuinsOfAlphResearchCenterScientist3_PrinterAvailable:
 	done
 
 GotUnownDollText:
-	text "<PLAYER> received"
+	ctxt "<PLAYER> received"
 	line "Unown Doll."
 	done
 
 UnownDollSentText:
-	text "Unown Doll"
+	ctxt "Unown Doll"
 	line "was sent home."
 	done
 
 RuinsofAlphResearchCenterScientistRewardText:
-	text "I designed that"
+	ctxt "I designed that"
 	line "doll myself!"
 	done
 
 RuinsofAlphResearchCenterScientistInterruptedText:
-	text "You can--"
+	ctxt "You can--"
 	done
 
 RuinsofAlphResearchCenterScientistShockedText:
-	text "What was THAT?!"
+	ctxt "What was THAT?!"
 	done
 
 RuinsofAlphResearchCenterScientistConclusionText:
-	text "We're going to"
+	ctxt "We're going to"
 	line "gradually study"
 
 	para "the chamber that"
@@ -303,7 +303,7 @@ RuinsofAlphResearchCenterScientistConclusionText:
 	done
 
 RuinsOfAlphResearchCenterScientist1Text:
-	text "The ruins are"
+	ctxt "The ruins are"
 	line "about 1,500 years"
 	cont "old."
 
@@ -313,13 +313,13 @@ RuinsOfAlphResearchCenterScientist1Text:
 	done
 
 RuinsOfAlphResearchCenterScientist1Text_GotUnownDex:
-	text "I wonder how many"
+	ctxt "I wonder how many"
 	line "kinds of #mon"
 	cont "are in the ruins?"
 	done
 
 RuinsOfAlphResearchCenterScientist1Text_UnownAppeared:
-	text "#mon appeared"
+	ctxt "#mon appeared"
 	line "in the ruins?"
 
 	para "That's incredible"
@@ -330,7 +330,7 @@ RuinsOfAlphResearchCenterScientist1Text_UnownAppeared:
 	done
 
 RuinsOfAlphResearchCenterScientist1Text_GotAllUnown:
-	text "Our investigation,"
+	ctxt "Our investigation,"
 	line "with your help, is"
 
 	para "giving us insight"
@@ -344,7 +344,7 @@ RuinsOfAlphResearchCenterScientist1Text_GotAllUnown:
 	done
 
 RuinsOfAlphResearchCenterScientist2Text:
-	text "There are odd pat-"
+	ctxt "There are odd pat-"
 	line "terns drawn on the"
 
 	para "walls of the"
@@ -357,7 +357,7 @@ RuinsOfAlphResearchCenterScientist2Text:
 	done
 
 RuinsOfAlphResearchCenterScientist2Text_UnownAppeared:
-	text "The strange #-"
+	ctxt "The strange #-"
 	line "mon you saw in the"
 	cont "ruins?"
 
@@ -375,7 +375,7 @@ RuinsOfAlphResearchCenterScientist2Text_UnownAppeared:
 	done
 
 RuinsOfAlphResearchCenterScientist2Text_FocusedOurStudies:
-	text "We think something"
+	ctxt "We think something"
 	line "caused the cryptic"
 
 	para "patterns to appear"
@@ -386,7 +386,7 @@ RuinsOfAlphResearchCenterScientist2Text_FocusedOurStudies:
 	done
 
 RuinsOfAlphResearchCenterScientist2Text_RadioWaves:
-	text "According to my"
+	ctxt "According to my"
 	line "research…"
 
 	para "Those mysterious"
@@ -403,7 +403,7 @@ RuinsOfAlphResearchCenterScientist2Text_RadioWaves:
 	done
 
 RuinsOfAlphResearchCenterScientist2Text_GotAllUnown:
-	text "Why did those"
+	ctxt "Why did those"
 	line "ancient patterns"
 
 	para "appear on the wall"
@@ -414,14 +414,14 @@ RuinsOfAlphResearchCenterScientist2Text_GotAllUnown:
 	done
 
 RuinsOfAlphResearchCenterComputerText:
-	text "Ruins of Alph"
+	ctxt "Ruins of Alph"
 
 	para "Exploration"
 	line "Year 10"
 	done
 
 RuinsOfAlphResearchCenterComputerText_GotAllUnown:
-	text "Mystery #mon"
+	ctxt "Mystery #mon"
 	line "Name: Unown"
 
 	para "A total of "
@@ -430,7 +430,7 @@ RuinsOfAlphResearchCenterComputerText_GotAllUnown:
 	done
 
 RuinsOfAlphResearchCenterPrinterText_DoesntWork:
-	text "It's a printer."
+	ctxt "It's a printer."
 	line "The display says"
 	cont "“PC LOAD LETTER”."
 
@@ -439,7 +439,7 @@ RuinsOfAlphResearchCenterPrinterText_DoesntWork:
 	done
 
 RuinsOfAlphResearchCenterProfSilktreePhotoText:
-	text "It's a photo of"
+	ctxt "It's a photo of"
 	line "the Research"
 
 	para "Center's founder,"
@@ -447,7 +447,7 @@ RuinsOfAlphResearchCenterProfSilktreePhotoText:
 	done
 
 RuinsOfAlphResearchCenterAcademicBooksText:
-	text "There are many"
+	ctxt "There are many"
 	line "academic books."
 
 	para "Ancient Ruins…"

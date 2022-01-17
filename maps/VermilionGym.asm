@@ -108,7 +108,7 @@ VermilionGymSurgeScript:
 GenericTrainerGentlemanGregory:
 	generictrainer GENTLEMAN, GREGORY, EVENT_BEAT_GENTLEMAN_GREGORY, GentlemanGregorySeenText, GentlemanGregoryBeatenText
 
-	text "When I was still"
+	ctxt "When I was still"
 	line "in the army, Lt."
 
 	para "Surge saved my"
@@ -118,7 +118,7 @@ GenericTrainerGentlemanGregory:
 GenericTrainerGuitaristmVincent:
 	generictrainer GUITARISTM, VINCENT, EVENT_BEAT_GUITARISTM_VINCENT, GuitaristmVincentSeenText, GuitaristmVincentBeatenText
 
-	text "Lt.Surge is pro-"
+	ctxt "Lt.Surge is pro-"
 	line "tected by electric"
 
 	para "fences so you"
@@ -129,7 +129,7 @@ GenericTrainerGuitaristmVincent:
 GenericTrainerJugglerHorton:
 	generictrainer JUGGLER, HORTON, EVENT_BEAT_JUGGLER_HORTON, JugglerHortonSeenText, JugglerHortonBeatenText
 
-	text "Don't get too com-"
+	ctxt "Don't get too com-"
 	line "fortable about"
 
 	para "beating me…"
@@ -139,7 +139,7 @@ GenericTrainerJugglerHorton:
 GenericTrainerGuitaristfJanet:
 	generictrainer GUITARISTF, JANET, EVENT_BEAT_GUITARISTF_JANET, GuitaristfJanetSeenText, GuitaristfJanetBeatenText
 
-	text "Lt.Surge hid both"
+	ctxt "Lt.Surge hid both"
 	line "switches for the"
 
 	para "electric fences"
@@ -203,7 +203,7 @@ VermilionGymStatue:
 	jumpstd gymstatue2
 
 LtSurgeIntroText:
-	text "Surge: Hey, you"
+	ctxt "Surge: Hey, you"
 	line "little tyke!"
 
 	para "I have to hand it"
@@ -226,7 +226,7 @@ LtSurgeIntroText:
 	done
 
 LtSurgeWinLossText:
-	text "Surge: Arrrgh!"
+	ctxt "Surge: Arrrgh!"
 	line "You are strong!"
 
 	para "OK, kid. You get"
@@ -234,12 +234,12 @@ LtSurgeWinLossText:
 	done
 
 ReceivedThunderBadgeText:
-	text "<PLAYER> received"
+	ctxt "<PLAYER> received"
 	line "the Thunder Badge."
 	done
 
 LtSurgeThunderBadgeText:
-	text "Surge: Consider it"
+	ctxt "Surge: Consider it"
 	line "proof that you"
 	cont "defeated me."
 
@@ -255,7 +255,7 @@ LtSurgeThunderBadgeText:
 	done
 
 SurgeOutroText:
-	text "That TM contains"
+	ctxt "That TM contains"
 	line "Wild Charge. Use"
 
 	para "it to go like"
@@ -263,7 +263,7 @@ SurgeOutroText:
 	done
 
 LtSurgeFightDoneText:
-	text "Surge: Hey, kid!"
+	ctxt "Surge: Hey, kid!"
 	line "Still slugging and"
 	cont "chugging away?"
 
@@ -272,7 +272,7 @@ LtSurgeFightDoneText:
 	done
 
 GentlemanGregorySeenText:
-	text "You're here to"
+	ctxt "You're here to"
 	line "defeat Lt.Surge?"
 
 	para "Not if I can help"
@@ -280,13 +280,13 @@ GentlemanGregorySeenText:
 	done
 
 GentlemanGregoryBeatenText:
-	text "Sorry I failed"
+	ctxt "Sorry I failed"
 	line "you, Lt.Surge,"
 	cont "sir!"
 	done
 
 GuitaristmVincentSeenText:
-	text "Lt.Surge recog-"
+	ctxt "Lt.Surge recog-"
 	line "nized my potential"
 
 	para "with Electric"
@@ -297,32 +297,32 @@ GuitaristmVincentSeenText:
 	done
 
 GuitaristmVincentBeatenText:
-	text "Ooh, how shocking!"
+	ctxt "Ooh, how shocking!"
 	done
 
 JugglerHortonSeenText:
-	text "I'm going to take"
+	ctxt "I'm going to take"
 	line "you down! Prepare"
 	cont "to be shocked!"
 	done
 
 JugglerHortonBeatenText:
-	text "Gwaaah!"
+	ctxt "Gwaaah!"
 	line "I was overpowered…"
 	done
 
 GuitaristfJanetSeenText:
-	text "I'm a lightweight,"
+	ctxt "I'm a lightweight,"
 	line "but I'm good with"
 	cont "electricity!"
 	done
 
 GuitaristfJanetBeatenText:
-	text "Fried!"
+	ctxt "Fried!"
 	done
 
 VermilionGymGuyText:
-	text "Yo! Champ in"
+	ctxt "Yo! Champ in"
 	line "making!"
 
 	para "Lt.Surge is very"
@@ -341,7 +341,7 @@ VermilionGymGuyText:
 	done
 
 VermilionGymGuyWinText:
-	text "Whew! That was an"
+	ctxt "Whew! That was an"
 	line "electrifying bout!"
 
 	para "It sure made me"
@@ -349,19 +349,19 @@ VermilionGymGuyWinText:
 	done
 
 VermilionGymFoundSwitchText:
-	text "A secret switch"
+	ctxt "A secret switch"
 	line "beneath the trash?"
 
 	para "Better press it."
 	done
 
 VermilionGymFoundFirstSwitchText:
-	text "The first electric"
+	ctxt "The first electric"
 	line "fence unlocked!"
 	done
 
 VermilionGymFoundSecondSwitchText:
-	text "The second"
+	ctxt "The second"
 	line "electric fence"
 
 	para "unlocked! The"
@@ -369,18 +369,18 @@ VermilionGymFoundSecondSwitchText:
 	done
 
 VermilionGymResetSwitchesText:
-	text "Oh no, the elec-"
+	ctxt "Oh no, the elec-"
 	line "tric fence locked"
 	cont "again!"
 	done
 
 VermilionGymTrashCanText:
-	text "Nope! Nothing here"
+	ctxt "Nope! Nothing here"
 	line "but trash."
 	done
 
 VermilionGymElectricFenceText:
-	text "An electric fence!"
+	ctxt "An electric fence!"
 	line "Don't touch it!"
 	done
 

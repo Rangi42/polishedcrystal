@@ -27,7 +27,7 @@ Celebrity:
 	endtext
 
 CelebrityText1:
-	text "Oh, dear."
+	ctxt "Oh, dear."
 	line "You've found me."
 
 	para "Please don't tell"
@@ -39,7 +39,7 @@ CelebrityText1:
 	done
 
 CelebrityText2:
-	text "It's tough being a"
+	ctxt "It's tough being a"
 	line "top celebrity."
 
 	para "Everywhere I go,"
@@ -50,5 +50,5 @@ CelebrityText2:
 	done
 
 CelebritysSkarmoryText:
-	text "Skarmory: Scree!"
+	ctxt "Skarmory: Scree!"
 	done

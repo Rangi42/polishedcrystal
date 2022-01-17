@@ -33,5 +33,5 @@ FarawayJungleMew:
 	end
 
 MewText:
-	text "Mew!"
+	ctxt "Mew!"
 	done

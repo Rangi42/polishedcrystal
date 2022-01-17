@@ -23,7 +23,7 @@ PokemonJournalKarenScript:
 	setflag ENGINE_READ_KAREN_JOURNAL
 	jumpthistext
 
-	text "#mon Journal"
+	ctxt "#mon Journal"
 
 	para "Special Feature:"
 	line "Elite Four Karen!"
@@ -39,7 +39,7 @@ PokemonJournalKarenScript:
 	done
 
 Route3PokeCenter1FPokefanM1Text:
-	text "A few years ago"
+	ctxt "A few years ago"
 	line "I sold a weird-"
 
 	para "colored Magikarp"
@@ -58,7 +58,7 @@ Route3PokeCenter1FPokefanM1Text:
 	done
 
 Route3PokeCenter1FPokefanM2Text:
-	text "I remember there"
+	ctxt "I remember there"
 	line "was nothing built"
 
 	para "here when I climb-"
@@ -69,7 +69,7 @@ Route3PokeCenter1FPokefanM2Text:
 	done
 
 Route3PokeCenter1FYoungsterText:
-	text "Many trainers are"
+	ctxt "Many trainers are"
 	line "on the mountain."
 
 	para "Many wild #mon"

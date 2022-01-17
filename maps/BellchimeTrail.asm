@@ -76,7 +76,7 @@ BellchimeTrailPanUpTrigger:
 	step_end
 
 TinTowerSignText:
-	text "Bell Tower"
+	ctxt "Bell Tower"
 
 	para "A legendary #-"
 	line "mon is said to"
@@ -158,7 +158,7 @@ BellchimeTrailValerieScript:
 	sjump .Depart
 
 .IntroText:
-	text "If it isn't the"
+	ctxt "If it isn't the"
 	line "trainer who faced"
 	cont "Suicune…"
 
@@ -185,7 +185,7 @@ BellchimeTrailValerieScript:
 	done
 
 .BattleText:
-	text "Valerie: I train"
+	ctxt "Valerie: I train"
 	line "the elusive Fairy"
 	cont "type."
 
@@ -198,11 +198,11 @@ BellchimeTrailValerieScript:
 	done
 
 .RefusedText:
-	text "Valerie: Alas…"
+	ctxt "Valerie: Alas…"
 	done
 
 .AcceptedText:
-	text "Valerie: I hope"
+	ctxt "Valerie: I hope"
 	line "our battle will"
 
 	para "prove entertaining"
@@ -210,7 +210,7 @@ BellchimeTrailValerieScript:
 	done
 
 .BeatenText:
-	text "I hope the sun is"
+	ctxt "I hope the sun is"
 	line "shining tomorrow…"
 
 	para "That would be"
@@ -219,7 +219,7 @@ BellchimeTrailValerieScript:
 	done
 
 .RewardText:
-	text "Valerie: Yes… that"
+	ctxt "Valerie: Yes… that"
 	line "was a fine battle."
 
 	para "I shall reward you"
@@ -232,7 +232,7 @@ BellchimeTrailValerieScript:
 	done
 
 .FarewellText:
-	text "Valerie: Oh? My,"
+	ctxt "Valerie: Oh? My,"
 	line "what a curious"
 	cont "feeling…"
 
@@ -257,7 +257,7 @@ BellchimeTrailValerieScript:
 	done
 
 .RematchText:
-	text "Valerie: Oh, if it"
+	ctxt "Valerie: Oh, if it"
 	line "isn't my young"
 	cont "trainer…"
 
@@ -282,7 +282,7 @@ BellchimeTrailValerieScript:
 	done
 
 .RematchBeatenText:
-	text "I hope that you"
+	ctxt "I hope that you"
 	line "will find things"
 
 	para "worth smiling"
@@ -290,7 +290,7 @@ BellchimeTrailValerieScript:
 	done
 
 .RematchFarewellText:
-	text "That was truly a"
+	ctxt "That was truly a"
 	line "captivating"
 	cont "battle."
 

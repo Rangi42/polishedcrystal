@@ -77,7 +77,7 @@ WillScript:
 	end
 
 .SeenText:
-	text "Welcome to the"
+	ctxt "Welcome to the"
 	line "#mon League,"
 	cont "<PLAYER>."
 
@@ -103,12 +103,12 @@ WillScript:
 	done
 
 .BeatenText:
-	text "I… I can't…"
+	ctxt "I… I can't…"
 	line "believe it…"
 	done
 
 .AfterText:
-	text "Even though I was"
+	ctxt "Even though I was"
 	line "defeated, I won't"
 	cont "change my course."
 
@@ -126,7 +126,7 @@ WillScript:
 	done
 
 .SeenRematchText:
-	text "So, you have"
+	ctxt "So, you have"
 	line "finally appeared."
 
 	para "I have observed"
@@ -142,7 +142,7 @@ WillScript:
 	done
 
 .AfterRematchText:
-	text "I've expended all"
+	ctxt "I've expended all"
 	line "my power."
 
 	para "I have no regrets"

@@ -126,7 +126,7 @@ LavenderTownSharedExpositionScript:
 	applymovement LAVENDERTOWN_YOUNGSTER1, .BumpMovement
 	jumpthistext
 
-	text "Aah! G-g-ghost!"
+	ctxt "Aah! G-g-ghost!"
 
 	para "The Radio Tower"
 	line "is teeming with"
@@ -167,14 +167,14 @@ LavenderTownFinishExpositionScript:
 	step_end
 
 LavenderTownSignText:
-	text "Lavender Town"
+	ctxt "Lavender Town"
 
 	para "The Noble Purple"
 	line "Town"
 	done
 
 KantoRadioStationSignText:
-	text "Kanto Radio"
+	ctxt "Kanto Radio"
 	line "Station"
 
 	para "Your Favorite"
@@ -183,19 +183,19 @@ KantoRadioStationSignText:
 	done
 
 VolunteerPokemonHouseSignText:
-	text "Lavender Volunteer"
+	ctxt "Lavender Volunteer"
 	line "#mon House"
 	done
 
 SoulHouseSignText:
-	text "House of Souls"
+	ctxt "House of Souls"
 
 	para "May the Souls of"
 	line "#mon Rest Easy"
 	done
 
 LavenderTownPokefanMText:
-	text "That's quite some"
+	ctxt "That's quite some"
 	line "building, eh?"
 
 	para "It's Kanto's Radio"
@@ -203,12 +203,12 @@ LavenderTownPokefanMText:
 	done
 
 LavenderTownTeacherText:
-	text "Kanto has many"
+	ctxt "Kanto has many"
 	line "good radio shows."
 	done
 
 LavenderTownGrampsText:
-	text "People come from"
+	ctxt "People come from"
 	line "all over to pay"
 
 	para "their respects to"
@@ -217,7 +217,7 @@ LavenderTownGrampsText:
 	done
 
 LavenderTownYoungsterText:
-	text "You need a #"
+	ctxt "You need a #"
 	line "Flute to wake"
 	cont "sleeping #mon."
 
@@ -226,7 +226,7 @@ LavenderTownYoungsterText:
 	done
 
 LavenderTownSuperNerdText:
-	text "Go back inside the"
+	ctxt "Go back inside the"
 	line "Radio Tower?"
 
 	para "You must be"
@@ -234,7 +234,7 @@ LavenderTownSuperNerdText:
 	done
 
 LavenderTownCooltrainerFText:
-	text "The Tower's"
+	ctxt "The Tower's"
 	line "haunted, I just"
 	cont "know it!"
 
@@ -243,7 +243,7 @@ LavenderTownCooltrainerFText:
 	done
 
 LavenderTownRockerText:
-	text "I thought a job at"
+	ctxt "I thought a job at"
 	line "the Radio Tower"
 
 	para "would be my big"

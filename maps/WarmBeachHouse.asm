@@ -37,7 +37,7 @@ WarmBeachHouseBookScript:
 	iffalse_endtext
 	jumpthisopenedtext
 
-	text "From the trio of"
+	ctxt "From the trio of"
 	line "islands, ancient"
 	cont "spheres shall you"
 	cont "take."
@@ -58,14 +58,14 @@ WarmBeachHouseBookScript:
 	done
 
 .Text0:
-	text "The Shamouti"
+	ctxt "The Shamouti"
 	line "Prophecy"
 
 	para "Want to read it?"
 	done
 
 .Text1:
-	text "Disturb not the"
+	ctxt "Disturb not the"
 	line "harmony of fire,"
 	cont "ice, or lightning,"
 
@@ -88,7 +88,7 @@ WarmBeachHouseBookScript:
 	done
 
 .Text2:
-	text "O Chosen One,"
+	ctxt "O Chosen One,"
 	line "into thine hands"
 	cont "bring together"
 	cont "all three."

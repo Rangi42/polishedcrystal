@@ -54,7 +54,7 @@ UnknownScript_0x7d7ac:
 	endcallback
 
 GoldenrodDeptStoreB1FBlackBelt1Text:
-	text "Hey, kid! You're"
+	ctxt "Hey, kid! You're"
 	line "holding us up!"
 
 	para "Our policy is to"
@@ -65,7 +65,7 @@ GoldenrodDeptStoreB1FBlackBelt1Text:
 	done
 
 GoldenrodDeptStoreB1FBlackBelt2Text:
-	text "I lose my passion"
+	ctxt "I lose my passion"
 	line "for work if some-"
 	cont "one's watching."
 
@@ -74,7 +74,7 @@ GoldenrodDeptStoreB1FBlackBelt2Text:
 	done
 
 GoldenrodDeptStoreB1FBlackBelt3Text:
-	text "Oohah! Oohah!"
+	ctxt "Oohah! Oohah!"
 
 	para "The stuff on the"
 	line "ground's junk."
@@ -84,5 +84,5 @@ GoldenrodDeptStoreB1FBlackBelt3Text:
 	done
 
 GoldenrodDeptStoreB1FMachokeText:
-	text "Machoke: Maaacho!"
+	ctxt "Machoke: Maaacho!"
 	done

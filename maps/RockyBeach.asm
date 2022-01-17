@@ -28,11 +28,11 @@ RockyBeach_MapScriptHeader:
 	object_event 23, 32, SPRITE_FAT_GUY, SPRITEMOVEDATA_SPINCOUNTERCLOCKWISE, 0, 0, -1, (1 << DAY), PAL_NPC_BROWN, OBJECTTYPE_COMMAND, jumptextfaceplayer, ShamoutiIslandFisherText, -1
 
 RockyBeachSign1Text:
-	text "Rocky Beach"
+	ctxt "Rocky Beach"
 	done
 
 RockyBeachSign2Text:
-	text "Noisy Forest"
+	ctxt "Noisy Forest"
 	line "Ahead"
 
 	para "Thru to"
@@ -42,23 +42,23 @@ RockyBeachSign2Text:
 GenericTrainerSightseermBlaise:
 	generictrainer SIGHTSEERM, BLAISE, EVENT_BEAT_SIGHTSEERM_BLAISE, .SeenText, .BeatenText
 
-	text "Je fais le tour"
+	ctxt "Je fais le tour"
 	line "du monde avec mon"
 	cont "#mon."
 	done
 
 .SeenText:
-	text "Allons-y!"
+	ctxt "Allons-y!"
 	done
 
 .BeatenText:
-	text "Sacre bleu!"
+	ctxt "Sacre bleu!"
 	done
 
 GenericTrainerBeautyIoana:
 	generictrainer BEAUTY, IOANA, EVENT_BEAT_BEAUTY_IOANA, .SeenText, .BeatenText
 
-	text "I have a naturally"
+	ctxt "I have a naturally"
 	line "pale complexion,"
 
 	para "so I have to be"
@@ -67,20 +67,20 @@ GenericTrainerBeautyIoana:
 	done
 
 .SeenText:
-	text "I come here every"
+	ctxt "I come here every"
 	line "year to work on"
 	cont "my tan."
 	done
 
 .BeatenText:
-	text "I just got"
+	ctxt "I just got"
 	line "burned!"
 	done
 
 GenericTrainerSightseerfKamila:
 	generictrainer SIGHTSEERF, KAMILA, EVENT_BEAT_SIGHTSEERF_KAMILA, .SeenText, .BeatenText
 
-	text "Alola is an archi-"
+	ctxt "Alola is an archi-"
 	line "pelago located far"
 	cont "away from here."
 
@@ -89,7 +89,7 @@ GenericTrainerSightseerfKamila:
 	done
 
 .SeenText:
-	text "Alola!"
+	ctxt "Alola!"
 
 	para "That's how we greet"
 	line "each other in my"
@@ -97,14 +97,14 @@ GenericTrainerSightseerfKamila:
 	done
 
 .BeatenText:
-	text "Cheehoo! You're"
+	ctxt "Cheehoo! You're"
 	line "pretty good!"
 	done
 
 GenericTrainerAromaLadyHeather:
 	generictrainer AROMA_LADY, HEATHER, EVENT_BEAT_AROMA_LADY_HEATHER, .SeenText, .BeatenText
 
-	text "I studied flower"
+	ctxt "I studied flower"
 	line "arranging with"
 
 	para "Erika at Celadon"
@@ -116,7 +116,7 @@ GenericTrainerAromaLadyHeather:
 	done
 
 .SeenText:
-	text "A deep red flower"
+	ctxt "A deep red flower"
 	line "grows all over"
 	cont "this island."
 
@@ -124,7 +124,7 @@ GenericTrainerAromaLadyHeather:
 	done
 
 .BeatenText:
-	text "A lovely battle,"
+	ctxt "A lovely battle,"
 	line "but what about"
 	cont "the flowers?"
 	done
@@ -132,7 +132,7 @@ GenericTrainerAromaLadyHeather:
 GenericTrainerBreederBrenda:
 	generictrainer BREEDER, BRENDA, EVENT_BEAT_BREEDER_BRENDA, .SeenText, .BeatenText
 
-	text "To hatch an Egg,"
+	ctxt "To hatch an Egg,"
 	line "you have to walk"
 	cont "a lot."
 
@@ -141,7 +141,7 @@ GenericTrainerBreederBrenda:
 	done
 
 .SeenText:
-	text "The key to good"
+	ctxt "The key to good"
 	line "#mon breeding"
 
 	para "is a good enviro-"
@@ -152,14 +152,14 @@ GenericTrainerBreederBrenda:
 	done
 
 .BeatenText:
-	text "Your #mon are"
+	ctxt "Your #mon are"
 	line "well-bred."
 	done
 
 GenericTrainerSwimmermEzra:
 	generictrainer SWIMMERM, EZRA, EVENT_BEAT_SWIMMERM_EZRA, .SeenText, .BeatenText
 
-	text "I like to go scuba"
+	ctxt "I like to go scuba"
 	line "diving here."
 
 	para "It's so amazing to"
@@ -168,7 +168,7 @@ GenericTrainerSwimmermEzra:
 	done
 
 .SeenText:
-	text "Have you ever won-"
+	ctxt "Have you ever won-"
 	line "dered what it's"
 
 	para "like to breathe"
@@ -176,14 +176,14 @@ GenericTrainerSwimmermEzra:
 	done
 
 .BeatenText:
-	text "Ran out of air!"
+	ctxt "Ran out of air!"
 	done
 
 RockyBeachYoungsterScript:
 	generictrainer 0, 0, EVENT_TOLD_ABOUT_PIKABLU, .Text1, 0
 
 .Text1
-	text "Oh, no. Oh, no…"
+	ctxt "Oh, no. Oh, no…"
 
 	para "My Pikablu is"
 	line "missing."

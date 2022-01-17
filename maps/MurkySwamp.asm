@@ -71,7 +71,7 @@ MurkySwampCherylScript:
 	end
 
 .ChallengeText:
-	text "Hello, my name's"
+	ctxt "Hello, my name's"
 	line "Cheryl."
 	cont "And you are…?"
 
@@ -90,20 +90,20 @@ MurkySwampCherylScript:
 	done
 
 .YesText:
-	text "I should warn you,"
+	ctxt "I should warn you,"
 	line "my #mon can be"
 	cont "quite rambunc-"
 	cont "tious."
 	done
 
 .NoText:
-	text "Oh, but my #mon"
+	ctxt "Oh, but my #mon"
 	line "were itching for"
 	cont "a battle…"
 	done
 
 .BeatenText:
-	text "Striking the right"
+	ctxt "Striking the right"
 	line "balance of offense"
 	cont "and defense…"
 
@@ -112,7 +112,7 @@ MurkySwampCherylScript:
 	done
 
 .ItemText:
-	text "Thank you,"
+	ctxt "Thank you,"
 	line "<PLAYER>!"
 
 	para "Now I can confi-"
@@ -130,7 +130,7 @@ MurkySwampCherylScript:
 	done
 
 .GoodbyeText:
-	text "I'm heading to the"
+	ctxt "I'm heading to the"
 	line "Battle Tower near"
 	cont "Olivine City."
 
@@ -146,7 +146,7 @@ MurkySwampCherylScript:
 GenericTrainerBug_catcherOscar:
 	generictrainer BUG_CATCHER, OSCAR, EVENT_BEAT_BUG_CATCHER_OSCAR, .SeenText, .BeatenText
 
-	text "I came here to"
+	ctxt "I came here to"
 	line "find bugs!"
 
 	para "Nobody warned me"
@@ -154,17 +154,17 @@ GenericTrainerBug_catcherOscar:
 	done
 
 .SeenText:
-	text "G-g-g-ghost!"
+	ctxt "G-g-g-ghost!"
 	done
 
 .BeatenText:
-	text "Get me outta here!"
+	ctxt "Get me outta here!"
 	done
 
 GenericTrainerBug_catcherCallum:
 	generictrainer BUG_CATCHER, CALLUM, EVENT_BEAT_BUG_CATCHER_CALLUM, .SeenText, .BeatenText
 
-	text "This close to the"
+	ctxt "This close to the"
 	line "coast, I guess the"
 
 	para "land becomes soak-"
@@ -172,7 +172,7 @@ GenericTrainerBug_catcherCallum:
 	done
 
 .SeenText:
-	text "I'm from Azalea,"
+	ctxt "I'm from Azalea,"
 	line "but I've never seen"
 
 	para "this part of the"
@@ -180,14 +180,14 @@ GenericTrainerBug_catcherCallum:
 	done
 
 .BeatenText:
-	text "This is no forest."
+	ctxt "This is no forest."
 	line "It's a swamp!"
 	done
 
 GenericTrainerBug_catcherDavid:
 	generictrainer BUG_CATCHER, DAVID, EVENT_BEAT_BUG_CATCHER_DAVID, .SeenText, .BeatenText
 
-	text "It must be the"
+	ctxt "It must be the"
 	line "trees blocking"
 	cont "the sun."
 
@@ -197,18 +197,18 @@ GenericTrainerBug_catcherDavid:
 	done
 
 .SeenText:
-	text "It feels so cold"
+	ctxt "It feels so cold"
 	line "in this swamp…"
 	done
 
 .BeatenText:
-	text "Brrr…"
+	ctxt "Brrr…"
 	done
 
 GenericTrainerPokemaniacClive:
 	generictrainer POKEMANIAC, CLIVE, EVENT_BEAT_POKEMANIAC_CLIVE, .SeenText, .BeatenText
 
-	text "I know a fellow"
+	ctxt "I know a fellow"
 	line "#maniac when I"
 	cont "see one."
 
@@ -218,20 +218,20 @@ GenericTrainerPokemaniacClive:
 	done
 
 .SeenText:
-	text "Don't tell me,"
+	ctxt "Don't tell me,"
 	line "you're here to"
 	cont "explore the swamp"
 	cont "too?"
 	done
 
 .BeatenText:
-	text "I knew it!"
+	ctxt "I knew it!"
 	done
 
 GenericTrainerHex_maniacMatilda:
 	generictrainer HEX_MANIAC, MATILDA, EVENT_BEAT_HEX_MANIAC_MATILDA, .SeenText, .BeatenText
 
-	text "So off into the"
+	ctxt "So off into the"
 	line "trees I stroll,"
 
 	para "to lose my mind"
@@ -239,25 +239,25 @@ GenericTrainerHex_maniacMatilda:
 	done
 
 .SeenText:
-	text "Within the dark-"
+	ctxt "Within the dark-"
 	line "ness, vast and"
 	cont "deep, I offer you"
 	cont "eternal sleep."
 	done
 
 .BeatenText:
-	text "Fufufufu…"
+	ctxt "Fufufufu…"
 	done
 
 GenericTrainerFirebreatherOleg:
 	generictrainer FIREBREATHER, OLEG, EVENT_BEAT_FIREBREATHER_OLEG, .SeenText, .BeatenText
 
-	text "It's cold and dark"
+	ctxt "It's cold and dark"
 	line "without a fire…"
 	done
 
 .SeenText:
-	text "I want to light a"
+	ctxt "I want to light a"
 	line "fire… but would it"
 
 	para "ignite the swamp"
@@ -267,30 +267,30 @@ GenericTrainerFirebreatherOleg:
 	done
 
 .BeatenText:
-	text "I risked and lost!"
+	ctxt "I risked and lost!"
 	done
 
 GenericTrainerFisherDundee:
 	generictrainer FISHER, DUNDEE, EVENT_BEAT_FISHER_DUNDEE, .SeenText, .BeatenText
 
-	text "I would go fish in"
+	ctxt "I would go fish in"
 	line "the ocean, but I'm"
 	cont "lost in here…"
 	done
 
 .SeenText:
-	text "All the #mon I"
+	ctxt "All the #mon I"
 	line "fish up here are"
 	cont "poisonous!"
 	done
 
 .BeatenText:
-	text "This is no place"
+	ctxt "This is no place"
 	line "for fishing…"
 	done
 
 MurkySwampYoungsterText:
-	text "Man! This place is"
+	ctxt "Man! This place is"
 	line "such a maze."
 
 	para "I'm not sure I'll"

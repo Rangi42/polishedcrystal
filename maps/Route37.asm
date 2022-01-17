@@ -39,7 +39,7 @@ SunnyCallback:
 GenericTrainerTwinsToriandtil1:
 	generictrainer TWINS, ANNANDANNE1, EVENT_BEAT_TWINS_ANN_AND_ANNE, TwinsToriandtil1SeenText, TwinsToriandtil1BeatenText
 
-	text "Til: I can tell"
+	ctxt "Til: I can tell"
 	line "what my sister and"
 
 	para "my #mon are"
@@ -49,7 +49,7 @@ GenericTrainerTwinsToriandtil1:
 GenericTrainerTwinsToriandtil2:
 	generictrainer TWINS, ANNANDANNE2, EVENT_BEAT_TWINS_ANN_AND_ANNE, TwinsToriandtil2SeenText, TwinsToriandtil2BeatenText
 
-	text "Tori: We share the"
+	ctxt "Tori: We share the"
 	line "same feelings as"
 	cont "our #mon."
 	done
@@ -57,7 +57,7 @@ GenericTrainerTwinsToriandtil2:
 GenericTrainerPsychicGreg:
 	generictrainer PSYCHIC_T, GREG, EVENT_BEAT_PSYCHIC_GREG, PsychicGregSeenText, PsychicGregBeatenText
 
-	text "Putting #mon to"
+	ctxt "Putting #mon to"
 	line "sleep or paralyz-"
 	cont "ing them are good"
 	cont "battle techniques."
@@ -102,14 +102,14 @@ SunnyNotSundayScript:
 GenericTrainerBeautyCallie:
 	generictrainer BEAUTY, CALLIE, EVENT_BEAT_BEAUTY_CALLIE, BeautyCallieSeenText, BeautyCallieBeatenText
 
-	text "Wow, you're cute"
+	ctxt "Wow, you're cute"
 	line "and skilled too!"
 	done
 
 GenericTrainerBeautyCassandra:
 	generictrainer BEAUTY, CASSANDRA, EVENT_BEAT_BEAUTY_CASSANDRA, BeautyCassandraSeenText, BeautyCassandraBeatenText
 
-	text "People like you"
+	ctxt "People like you"
 	line "are skilled even"
 
 	para "though they're"
@@ -117,25 +117,25 @@ GenericTrainerBeautyCassandra:
 	done
 
 TwinsToriandtil1SeenText:
-	text "Til: Tori and I"
+	ctxt "Til: Tori and I"
 	line "are in this to-"
 	cont "gether!"
 	done
 
 TwinsToriandtil1BeatenText:
 TwinsToriandtil2BeatenText:
-	text "Til & Tori: Nnn… A"
+	ctxt "Til & Tori: Nnn… A"
 	line "little too strong."
 	done
 
 TwinsToriandtil2SeenText:
-	text "Tori: Til and I"
+	ctxt "Tori: Til and I"
 	line "are in this to-"
 	cont "gether!"
 	done
 
 PsychicGregSeenText:
-	text "#mon can't do a"
+	ctxt "#mon can't do a"
 	line "thing if they are"
 	cont "asleep."
 
@@ -144,12 +144,12 @@ PsychicGregSeenText:
 	done
 
 PsychicGregBeatenText:
-	text "I lost. That's"
+	ctxt "I lost. That's"
 	line "pretty sad…"
 	done
 
 MeetSunnyText:
-	text "Sunny: Hi!"
+	ctxt "Sunny: Hi!"
 
 	para "I'm Sunny of Sun-"
 	line "day, meaning it's"
@@ -157,19 +157,19 @@ MeetSunnyText:
 	done
 
 SunnyGivesGiftText1:
-	text "I was told to give"
+	ctxt "I was told to give"
 	line "you this if I saw"
 	cont "you!"
 	done
 
 SunnyGivesGiftText2:
-	text "I was told to give"
+	ctxt "I was told to give"
 	line "you this if I saw"
 	cont "you!"
 	done
 
 SunnyGaveGiftText:
-	text "Sunny: That thing…"
+	ctxt "Sunny: That thing…"
 
 	para "Um…"
 
@@ -192,7 +192,7 @@ SunnyGaveGiftText:
 	done
 
 SunnySundayText:
-	text "Sunny: My sisters"
+	ctxt "Sunny: My sisters"
 	line "and brothers are"
 	cont "Monica, Tuscany,"
 	cont "Wesley, Arthur,"
@@ -203,13 +203,13 @@ SunnySundayText:
 	done
 
 SunnyNotSundayText:
-	text "Sunny: Isn't today"
+	ctxt "Sunny: Isn't today"
 	line "Sunday?"
 	cont "Um… I forgot!"
 	done
 
 BeautyCallieSeenText:
-	text "Oh, you're a cute"
+	ctxt "Oh, you're a cute"
 	line "little trainer!"
 
 	para "Why don't you"
@@ -217,11 +217,11 @@ BeautyCallieSeenText:
 	done
 
 BeautyCallieBeatenText:
-	text "You're good…"
+	ctxt "You're good…"
 	done
 
 BeautyCassandraSeenText:
-	text "Hey hey there,"
+	ctxt "Hey hey there,"
 	line "you young trainer!"
 
 	para "Won't you battle"
@@ -229,9 +229,9 @@ BeautyCassandraSeenText:
 	done
 
 BeautyCassandraBeatenText:
-	text "Wow, you're strong…"
+	ctxt "Wow, you're strong…"
 	done
 
 Route37SignText:
-	text "Route 37"
+	ctxt "Route 37"
 	done

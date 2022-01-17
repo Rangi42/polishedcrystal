@@ -20,7 +20,7 @@ MapCeladonMansionRoofSignpost0Script:
 	jumptext CeladonMansionRoofGraffitiText
 
 CeladonMansionRoofFisherText:
-	text "High places--I do"
+	ctxt "High places--I do"
 	line "love them so!"
 
 	para "I'd say the only"
@@ -31,7 +31,7 @@ CeladonMansionRoofFisherText:
 	done
 
 CeladonMansionRoofGraffitiText:
-	text "There's graffiti"
+	ctxt "There's graffiti"
 	line "on the wall…"
 
 	para "<PLAYER> added a"

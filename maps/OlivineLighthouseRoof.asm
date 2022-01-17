@@ -76,7 +76,7 @@ OlivineLighthouseRoofSkylaScript:
 	jumpthisopenedtext
 
 .WaitingText:
-	text "I saw a hurt #-"
+	ctxt "I saw a hurt #-"
 	line "mon from my plane,"
 
 	para "but I don't have"
@@ -91,7 +91,7 @@ OlivineLighthouseRoofSkylaScript:
 	done
 
 .IntroText:
-	text "Skyla: Who are"
+	ctxt "Skyla: Who are"
 	line "you?"
 
 	para "Oh, I see! You're"
@@ -113,7 +113,7 @@ OlivineLighthouseRoofSkylaScript:
 	done
 
 .ChallengeText:
-	text "I saw a hurt #-"
+	ctxt "I saw a hurt #-"
 	line "mon from my plane,"
 
 	para "but it looks just"
@@ -133,7 +133,7 @@ OlivineLighthouseRoofSkylaScript:
 	done
 
 .RematchText:
-	text "Hee-hee! I've been"
+	ctxt "Hee-hee! I've been"
 	line "waiting for you,"
 	cont "<PLAYER>."
 
@@ -149,17 +149,17 @@ OlivineLighthouseRoofSkylaScript:
 	done
 
 .RefusedText:
-	text "Come on, don't"
+	ctxt "Come on, don't"
 	line "be shy!"
 	done
 
 .SeenText:
-	text "It's finally time"
+	ctxt "It's finally time"
 	line "for a showdown!"
 	done
 
 .BeatenText:
-	text "I won't forget"
+	ctxt "I won't forget"
 	line "this battle!"
 
 	para "I'm glad that I"
@@ -168,7 +168,7 @@ OlivineLighthouseRoofSkylaScript:
 	done
 
 .AfterText:
-	text "You're an amazing"
+	ctxt "You're an amazing"
 	line "#mon trainer."
 
 	para "My #mon and I"

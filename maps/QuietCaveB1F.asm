@@ -30,7 +30,7 @@ QuietCaveB1F_MapScriptHeader:
 GenericTrainerBattleGirlKagami:
 	generictrainer BATTLE_GIRL, KAGAMI, EVENT_BEAT_BATTLE_GIRL_KAGAMI, BattleGirlKagamiSeenText, BattleGirlKagamiBeatenText
 
-	text "I come here to"
+	ctxt "I come here to"
 	line "train in peace"
 	cont "and solitude."
 	done
@@ -38,7 +38,7 @@ GenericTrainerBattleGirlKagami:
 GenericTrainerPokemaniacAidan:
 	generictrainer POKEMANIAC, AIDAN, EVENT_BEAT_POKEMANIAC_AIDAN, PokemaniacAidanSeenText, PokemaniacAidanBeatenText
 
-	text "Sometimes a"
+	ctxt "Sometimes a"
 	line "#mon in a"
 
 	para "certain area will"
@@ -48,7 +48,7 @@ GenericTrainerPokemaniacAidan:
 GenericTrainerHikerSteve:
 	generictrainer HIKER, STEVE, EVENT_BEAT_HIKER_STEVE, HikerSteveSeenText, HikerSteveBeatenText
 
-	text "Spelunking is also"
+	ctxt "Spelunking is also"
 	line "called caving."
 
 	para "It means exploring"
@@ -58,32 +58,32 @@ GenericTrainerHikerSteve:
 GenericTrainerPsychicVirgil:
 	generictrainer PSYCHIC_T, VIRGIL, EVENT_BEAT_PSYCHIC_VIRGIL, PsychicVirgilSeenText, PsychicVirgilBeatenText
 
-	text "The silence helps"
+	ctxt "The silence helps"
 	line "focus my ESP."
 	done
 
 BattleGirlKagamiSeenText:
-	text "Don't disturb my"
+	ctxt "Don't disturb my"
 	line "training!"
 	done
 
 BattleGirlKagamiBeatenText:
-	text "Not good enough…"
+	ctxt "Not good enough…"
 	done
 
 PokemaniacAidanSeenText:
-	text "My #mon!"
+	ctxt "My #mon!"
 
 	para "Let me show"
 	line "you them!"
 	done
 
 PokemaniacAidanBeatenText:
-	text "My #mon…"
+	ctxt "My #mon…"
 	done
 
 HikerSteveSeenText:
-	text "They call me a"
+	ctxt "They call me a"
 	line "Hiker, but right"
 
 	para "now I'm a spelunk-"
@@ -91,16 +91,16 @@ HikerSteveSeenText:
 	done
 
 HikerSteveBeatenText:
-	text "And now I'm a"
+	ctxt "And now I'm a"
 	line "loser…"
 	done
 
 PsychicVirgilSeenText:
-	text "Shh! Be quiet!"
+	ctxt "Shh! Be quiet!"
 	done
 
 PsychicVirgilBeatenText:
-	text "Why must battling"
+	ctxt "Why must battling"
 	line "be so loud?"
 	done
 

@@ -839,7 +839,7 @@ AfterChikoritaMovement:
 	step_end
 
 ElmText_Intro:
-	text "Elm: <PLAYER>!"
+	ctxt "Elm: <PLAYER>!"
 	line "There you are!"
 
 if !DEF(DEBUG)
@@ -874,19 +874,19 @@ endc
 	done
 
 ElmText_Accepted:
-	text "Thanks, <PLAYER>!"
+	ctxt "Thanks, <PLAYER>!"
 
 	para "You're a great"
 	line "help!"
 	done
 
 ElmText_Refused:
-	text "But… Please, I"
+	ctxt "But… Please, I"
 	line "need your help!"
 	done
 
 ElmText_ResearchAmbitions:
-	text "When I announce my"
+	ctxt "When I announce my"
 	line "findings, I'm sure"
 
 	para "we'll delve a bit"
@@ -900,7 +900,7 @@ ElmText_ResearchAmbitions:
 	done
 
 ElmText_GotAnEmail:
-	text "Oh, hey! I got an"
+	ctxt "Oh, hey! I got an"
 	line "e-mail!"
 
 	para "………………"
@@ -910,7 +910,7 @@ ElmText_GotAnEmail:
 	done
 
 ElmText_MissionFromMrPokemon:
-	text "Hey, listen."
+	ctxt "Hey, listen."
 
 	para "I have an acquain-"
 	line "tance called Mr."
@@ -943,7 +943,7 @@ ElmText_MissionFromMrPokemon:
 	done
 
 ElmText_ChooseAPokemon:
-	text "I want you to"
+	ctxt "I want you to"
 	line "raise one of the"
 
 	para "#mon contained"
@@ -957,36 +957,36 @@ ElmText_ChooseAPokemon:
 	done
 
 ElmText_LetYourMonBattleIt:
-	text "If a wild #mon"
+	ctxt "If a wild #mon"
 	line "appears, let your"
 	cont "#mon battle it!"
 	done
 
 LabWhereGoingText:
-	text "Elm: Wait! Where"
+	ctxt "Elm: Wait! Where"
 	line "are you going?"
 	done
 
 TakeCyndaquilText:
-	text "Elm: You'll take"
+	ctxt "Elm: You'll take"
 	line "Cyndaquil, the"
 	cont "fire #mon?"
 	done
 
 TakeTotodileText:
-	text "Elm: Do you want"
+	ctxt "Elm: Do you want"
 	line "Totodile, the"
 	cont "water #mon?"
 	done
 
 TakeChikoritaText:
-	text "Elm: So, you like"
+	ctxt "Elm: So, you like"
 	line "Chikorita, the"
 	cont "grass #mon?"
 	done
 
 DidntChooseStarterText:
-	text "Elm: Think it over"
+	ctxt "Elm: Think it over"
 	line "carefully."
 
 	para "Your partner is"
@@ -994,20 +994,20 @@ DidntChooseStarterText:
 	done
 
 ChoseStarterText:
-	text "Elm: I think"
+	ctxt "Elm: I think"
 	line "that's a great"
 	cont "#mon too!"
 	done
 
 ReceivedStarterText:
-	text "<PLAYER> received"
+	ctxt "<PLAYER> received"
 	line ""
 	text_ram wStringBuffer3
-	text "!"
+	ctxt "!"
 	done
 
 ElmDirectionsText1:
-	text "Mr.#mon lives a"
+	ctxt "Mr.#mon lives a"
 	line "little bit beyond"
 
 	para "Cherrygrove, the"
@@ -1027,7 +1027,7 @@ ElmDirectionsText1:
 	done
 
 ElmDirectionsText2:
-	text "If your #mon is"
+	ctxt "If your #mon is"
 	line "hurt, you should"
 
 	para "heal it with this"
@@ -1038,17 +1038,17 @@ ElmDirectionsText2:
 	done
 
 ElmDirectionsText3:
-	text "<PLAYER>, I'm"
+	ctxt "<PLAYER>, I'm"
 	line "counting on you!"
 	done
 
 GotElmsNumberText:
-	text "<PLAYER> got Elm's"
+	ctxt "<PLAYER> got Elm's"
 	line "phone number."
 	done
 
 ElmDescribesMrPokemonText:
-	text "Mr.#mon goes"
+	ctxt "Mr.#mon goes"
 	line "everywhere and"
 	cont "finds rarities."
 
@@ -1058,23 +1058,23 @@ ElmDescribesMrPokemonText:
 	done
 
 ElmPokeBallText:
-	text "It contains a"
+	ctxt "It contains a"
 	line "#mon caught by"
 	cont "Prof.Elm."
 	done
 
 ElmsLabHealingMachineText1:
-	text "I wonder what this"
+	ctxt "I wonder what this"
 	line "does?"
 	done
 
 ElmsLabHealingMachineText2:
-	text "Would you like to"
+	ctxt "Would you like to"
 	line "heal your #mon?"
 	done
 
 ElmAfterTheftText1:
-	text "Elm: <PLAYER>, this"
+	ctxt "Elm: <PLAYER>, this"
 	line "is terrible…"
 
 	para "Oh, yes, what was"
@@ -1083,17 +1083,17 @@ ElmAfterTheftText1:
 	done
 
 ElmAfterTheftText2:
-	text "<PLAYER> handed"
+	ctxt "<PLAYER> handed"
 	line "the Mystery Egg to"
 	cont "Prof.Elm."
 	done
 
 ElmAfterTheftText3:
-	text "Elm: This?"
+	ctxt "Elm: This?"
 	done
 
 ElmAfterTheftText4:
-	text "But… Is it a"
+	ctxt "But… Is it a"
 	line "#mon Egg?"
 
 	para "If it is, it is a"
@@ -1101,7 +1101,7 @@ ElmAfterTheftText4:
 	done
 
 ElmAfterTheftText5:
-	text "Elm: What?!"
+	ctxt "Elm: What?!"
 
 if !DEF(DEBUG)
 	para "Prof.Oak gave you"
@@ -1137,7 +1137,7 @@ endc
 	done
 
 ElmAfterTheftText6:
-	text "…<PLAYER>. The"
+	ctxt "…<PLAYER>. The"
 	line "road to the"
 
 	para "championship will"
@@ -1149,7 +1149,7 @@ ElmAfterTheftText6:
 	done
 
 ElmStudyingEggText:
-	text "Elm: Don't give"
+	ctxt "Elm: Don't give"
 	line "up! I'll call if"
 
 	para "I learn anything"
@@ -1157,7 +1157,7 @@ ElmStudyingEggText:
 	done
 
 ElmAideHasEggText:
-	text "Elm: <PLAYER>?"
+	ctxt "Elm: <PLAYER>?"
 	line "Didn't you meet my"
 	cont "assistant?"
 
@@ -1173,12 +1173,12 @@ ElmAideHasEggText:
 	done
 
 ElmWaitingEggHatchText:
-	text "Elm: Hey, has that"
+	ctxt "Elm: Hey, has that"
 	line "Egg changed any?"
 	done
 
 ElmThoughtEggHatchedText:
-	text "<PLAYER>? I thought"
+	ctxt "<PLAYER>? I thought"
 	line "the Egg hatched."
 
 	para "Where is the"
@@ -1186,17 +1186,17 @@ ElmThoughtEggHatchedText:
 	done
 
 ShowElmTogepiText1:
-	text "Elm: <PLAYER>, you"
+	ctxt "Elm: <PLAYER>, you"
 	line "look great!"
 	done
 
 ShowElmTogepiText2:
-	text "What?"
+	ctxt "What?"
 	line "That #mon?!"
 	done
 
 ShowElmTogepiText3:
-	text "The Egg hatched!"
+	ctxt "The Egg hatched!"
 	line "So, #mon are"
 	cont "born from Eggs…"
 
@@ -1209,7 +1209,7 @@ ShowElmTogepiText3:
 	done
 
 ElmGiveEverstoneText1:
-	text "Thanks, <PLAYER>!"
+	ctxt "Thanks, <PLAYER>!"
 	line "You're helping"
 
 	para "unravel #mon"
@@ -1221,7 +1221,7 @@ ElmGiveEverstoneText1:
 	done
 
 ElmGiveEverstoneText2:
-	text "That's an"
+	ctxt "That's an"
 	line "Everstone."
 
 	para "Some species of"
@@ -1240,13 +1240,13 @@ ElmGiveEverstoneText2:
 	done
 
 ElmText_CallYou:
-	text "Elm: <PLAYER>, I'll"
+	ctxt "Elm: <PLAYER>, I'll"
 	line "call you if any-"
 	cont "thing comes up."
 	done
 
 AideText_AfterTheft:
-	text "…sigh… That"
+	ctxt "…sigh… That"
 	line "stolen #mon."
 
 	para "I wonder how it's"
@@ -1260,7 +1260,7 @@ AideText_AfterTheft:
 	done
 
 AideText_ThiefReturnedMon:
-	text "<PLAYER>!"
+	ctxt "<PLAYER>!"
 	line "Guess what!"
 
 	para "The boy who took"
@@ -1295,7 +1295,7 @@ AideText_ThiefReturnedMon:
 	done
 
 ElmGiveMasterBallText1:
-	text "Elm: Hi, <PLAYER>!"
+	ctxt "Elm: Hi, <PLAYER>!"
 	line "Thanks to you, my"
 
 	para "research is going"
@@ -1307,7 +1307,7 @@ ElmGiveMasterBallText1:
 	done
 
 ElmGiveMasterBallText2:
-	text "The Master Ball is"
+	ctxt "The Master Ball is"
 	line "the best!"
 
 	para "It's the ultimate"
@@ -1328,7 +1328,7 @@ ElmGiveMasterBallText2:
 	done
 
 ElmChallengeText:
-	text "Elm: <PLAYER>!"
+	ctxt "Elm: <PLAYER>!"
 	line "There you are!"
 
 	para "I called because I"
@@ -1346,7 +1346,7 @@ ElmChallengeText:
 	done
 
 ElmSeenText:
-	text "Show me how much"
+	ctxt "Show me how much"
 	line "you've grown since"
 
 	para "you left New Bark"
@@ -1354,11 +1354,11 @@ ElmSeenText:
 	done
 
 ElmWinText:
-	text "Astounding!"
+	ctxt "Astounding!"
 	done
 
 ElmRefusedBattleText:
-	text "If your #mon"
+	ctxt "If your #mon"
 	line "need healing,"
 
 	para "just use the"
@@ -1366,7 +1366,7 @@ ElmRefusedBattleText:
 	done
 
 ElmGiveTicketText1:
-	text "Elm: I'm proud"
+	ctxt "Elm: I'm proud"
 	line "of you, <PLAYER>."
 
 	para "You're clearly"
@@ -1392,7 +1392,7 @@ ElmGiveTicketText1:
 	done
 
 ElmGiveTicketText2:
-	text "The ship departs"
+	ctxt "The ship departs"
 	line "from Olivine City."
 
 	para "But you knew that"
@@ -1415,7 +1415,7 @@ ElmGiveTicketText2:
 	done
 
 LyraAnnouncesGymChallengeText:
-	text "Lyra: There you"
+	ctxt "Lyra: There you"
 	line "are, <PLAYER>!"
 
 	para "I saw your battle"
@@ -1451,7 +1451,7 @@ LyraAnnouncesGymChallengeText:
 	done
 
 ElmAfterTicketText:
-	text "Elm: Well then,"
+	ctxt "Elm: Well then,"
 	line "<PLAYER>, you both"
 
 	para "have your own"
@@ -1466,19 +1466,19 @@ ElmAfterTicketText:
 	done
 
 AideText_GiveYouPotions:
-	text "<PLAYER>, I want"
+	ctxt "<PLAYER>, I want"
 	line "you to have this"
 	cont "for your errand."
 	done
 
 AideText_AlwaysBusy:
-	text "There are only two"
+	ctxt "There are only two"
 	line "of us, so we're"
 	cont "always busy."
 	done
 
 AideText_TheftTestimony:
-	text "There was a loud"
+	ctxt "There was a loud"
 	line "noise outside…"
 
 	para "When we went to"
@@ -1503,7 +1503,7 @@ AideText_TheftTestimony:
 	done
 
 ElmsLabOfficerText1:
-	text "I heard a #mon"
+	ctxt "I heard a #mon"
 	line "was stolen here."
 
 	para "Rule number one!"
@@ -1518,7 +1518,7 @@ ElmsLabOfficerText1:
 	done
 
 ElmsLabOfficerText2:
-	text "What?"
+	ctxt "What?"
 
 	para "You battled a"
 	line "trainer like that?"
@@ -1528,7 +1528,7 @@ ElmsLabOfficerText2:
 	done
 
 ElmsLabOfficerText3:
-	text "OK! So <RIVAL>"
+	ctxt "OK! So <RIVAL>"
 	line "was his name."
 
 	para "Thanks for helping"
@@ -1536,48 +1536,48 @@ ElmsLabOfficerText3:
 	done
 
 ElmsLabLyraWhichPokemonText:
-	text "Which #mon are"
+	ctxt "Which #mon are"
 	line "you going to pick,"
 	cont "<PLAYER>?"
 	done
 
 LyraChoosesStarterText:
-	text "Lyra: Then I'll"
+	ctxt "Lyra: Then I'll"
 	line "pick this one!"
 	done
 
 LyraReceivedStarterText:
-	text "Lyra received"
+	ctxt "Lyra received"
 	line ""
 	text_ram wStringBuffer3
-	text "!"
+	ctxt "!"
 	done
 
 LyraNicknamedChikoritaText:
-	text "Lyra: It's so"
+	ctxt "Lyra: It's so"
 	line "cute! I'll nick-"
 	cont "name it Chicory!"
 	done
 
 LyraNicknamedCyndaquilText:
-	text "Lyra: It's so"
+	ctxt "Lyra: It's so"
 	line "cute! I'll nick-"
 	cont "name it Cinder!"
 	done
 
 LyraNicknamedTotodileText:
-	text "Lyra: It's so"
+	ctxt "Lyra: It's so"
 	line "cute! I'll nick-"
 	cont "name it Toto!"
 	done
 
 ElmsLabLyraGoodChoiceText:
-	text "Your #mon"
+	ctxt "Your #mon"
 	line "looks cute too!"
 	done
 
 ElmsLabLyraChallengeText:
-	text "Lyra: <PLAYER>!"
+	ctxt "Lyra: <PLAYER>!"
 	line "Let's get to know"
 
 	para "our #mon with"
@@ -1585,28 +1585,28 @@ ElmsLabLyraChallengeText:
 	done
 
 ElmsLabLyraWinText:
-	text "Good job,"
+	ctxt "Good job,"
 	line "<PLAYER>!"
 	done
 
 ElmsLabLyraLossText:
-	text "Yay! I won!"
+	ctxt "Yay! I won!"
 	done
 
 ElmsLabLyraText_YouWon:
 ElmsLabLyraText_YouLost:
-	text "That was an"
+	ctxt "That was an"
 	line "exciting battle!"
 	done
 
 ElmsLabLyraThankYouText:
-	text "Thank you for the"
+	ctxt "Thank you for the"
 	line "#mon, Prof."
 	cont "Elm."
 	done
 
 ElmsLabLyraSeeYouText:
-	text "<PLAYER>, I'll"
+	ctxt "<PLAYER>, I'll"
 	line "see you later!"
 
 	para "Have fun on your"
@@ -1614,7 +1614,7 @@ ElmsLabLyraSeeYouText:
 	done
 
 ElmsLabLyraTheftInnocentText:
-	text "Lyra: Hold on!"
+	ctxt "Lyra: Hold on!"
 	line "<PLAYER> has noth-"
 	cont "ing to do with it!"
 
@@ -1624,7 +1624,7 @@ ElmsLabLyraTheftInnocentText:
 	done
 
 ElmsLabLyraTheftGoodbyeText:
-	text "Lyra: <PLAYER>,"
+	ctxt "Lyra: <PLAYER>,"
 	line "I'm glad he under-"
 
 	para "stood that you're"
@@ -1639,19 +1639,19 @@ ElmsLabLyraTheftGoodbyeText:
 	done
 
 ElmsLabWindowText1:
-	text "The window's open."
+	ctxt "The window's open."
 
 	para "A pleasant breeze"
 	line "is blowing in."
 	done
 
 ElmsLabWindowText2:
-	text "He broke in"
+	ctxt "He broke in"
 	line "through here!"
 	done
 
 ElmsLabTravelTip1Text:
-	text "<PLAYER> opened a"
+	ctxt "<PLAYER> opened a"
 	line "book."
 
 	para "Travel Tip 1:"
@@ -1661,7 +1661,7 @@ ElmsLabTravelTip1Text:
 	done
 
 ElmsLabTravelTip2Text:
-	text "<PLAYER> opened a"
+	ctxt "<PLAYER> opened a"
 	line "book."
 
 	para "Travel Tip 2:"
@@ -1671,7 +1671,7 @@ ElmsLabTravelTip2Text:
 	done
 
 ElmsLabTravelTip3Text:
-	text "<PLAYER> opened a"
+	ctxt "<PLAYER> opened a"
 	line "book."
 
 	para "Travel Tip 3:"
@@ -1682,7 +1682,7 @@ ElmsLabTravelTip3Text:
 	done
 
 ElmsLabTravelTip4Text:
-	text "<PLAYER> opened a"
+	ctxt "<PLAYER> opened a"
 	line "book."
 
 	para "Travel Tip 4:"
@@ -1695,13 +1695,13 @@ ElmsLabTravelTip4Text:
 	done
 
 ElmsLabTrashcanText:
-	text "The wrapper from"
+	ctxt "The wrapper from"
 	line "the snack Prof.Elm"
 	cont "ate is in there…"
 	done
 
 ElmsLabPCText:
-	text "Observations On"
+	ctxt "Observations On"
 	line "#mon Evolution"
 
 	para "…It says on the"

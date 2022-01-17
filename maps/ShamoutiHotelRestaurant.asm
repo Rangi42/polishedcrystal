@@ -60,7 +60,7 @@ ShamoutiHotelRestaurantChallengeScript:
 	sjump ShamoutiHotelRestaurantLeaveScript
 
 .GreetingText:
-	text "Welcome to the"
+	ctxt "Welcome to the"
 	line "Oasis Restaurant."
 
 	para "Here you can par-"
@@ -78,7 +78,7 @@ ShamoutiHotelRestaurantChallengeScript:
 	done
 
 .AlreadyAteText:
-	text "I'm so sorry, but"
+	ctxt "I'm so sorry, but"
 	line "you already came"
 	cont "here today."
 
@@ -87,12 +87,12 @@ ShamoutiHotelRestaurantChallengeScript:
 	done
 
 .NeverMindText:
-	text "I understand."
+	ctxt "I understand."
 	line "Have a nice day!"
 	done
 
 .NotEnoughMoneyText:
-	text "I'm so sorry, but"
+	ctxt "I'm so sorry, but"
 	line "you don't have"
 	cont "enough money."
 	done
@@ -117,12 +117,12 @@ ShamoutiHotelRestaurantLeavingTrigger1:
 	end
 
 .LeavingText:
-	text "Are you ready to"
+	ctxt "Are you ready to"
 	line "leave?"
 	done
 
 .GoodbyeText:
-	text "Thank you for"
+	ctxt "Thank you for"
 	line "coming."
 
 	para "Please do visit"
@@ -140,6 +140,6 @@ ShamoutiHotelRestaurantLeaveScript:
 	end
 
 ShamoutiHotelRestaurantReceptionistText:
-	text "Please enjoy a"
+	ctxt "Please enjoy a"
 	line "meal and a battle."
 	done

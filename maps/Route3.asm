@@ -41,12 +41,12 @@ Route3FlyPoint:
 GenericTrainerYoungsterRegis:
 	generictrainer YOUNGSTER, REGIS, EVENT_BEAT_YOUNGSTER_REGIS, .SeenText, .BeatenText
 
-	text "Looks like I need"
+	ctxt "Looks like I need"
 	line "more training!"
 	done
 
 .SeenText:
-	text "Youngster? Good-"
+	ctxt "Youngster? Good-"
 	line "ness, how rude!"
 
 	para "Call me Shorts"
@@ -54,14 +54,14 @@ GenericTrainerYoungsterRegis:
 	done
 
 .BeatenText:
-	text "That is…"
+	ctxt "That is…"
 	line "Fail Boy…"
 	done
 
 GenericTrainerYoungsterJimmy:
 	generictrainer YOUNGSTER, JIMMY, EVENT_BEAT_YOUNGSTER_JIMMY, .SeenText, .BeatenText
 
-	text "I wear shorts the"
+	ctxt "I wear shorts the"
 	line "whole year round."
 
 	para "That's my fashion"
@@ -69,54 +69,54 @@ GenericTrainerYoungsterJimmy:
 	done
 
 .SeenText:
-	text "I can run like the"
+	ctxt "I can run like the"
 	line "wind!"
 	done
 
 .BeatenText:
-	text "Blown away!"
+	ctxt "Blown away!"
 	done
 
 GenericTrainerYoungsterWarren:
 	generictrainer YOUNGSTER, WARREN, EVENT_BEAT_YOUNGSTER_WARREN, .SeenText, .BeatenText
 
-	text "You looked strong."
+	ctxt "You looked strong."
 
 	para "I was afraid to"
 	line "take you on…"
 	done
 
 .SeenText:
-	text "Hmmm… I don't know"
+	ctxt "Hmmm… I don't know"
 	line "what to do…"
 	done
 
 .BeatenText:
-	text "I knew I'd lose…"
+	ctxt "I knew I'd lose…"
 	done
 
 GenericTrainerFirebreatherOtis:
 	generictrainer FIREBREATHER, OTIS, EVENT_BEAT_FIREBREATHER_OTIS, .SeenText, .BeatenText
 
-	text "When it rains,"
+	ctxt "When it rains,"
 	line "it's hard to get"
 	cont "ignition…"
 	done
 
 .SeenText:
-	text "Ah! The weather's"
+	ctxt "Ah! The weather's"
 	line "as fine as ever."
 	done
 
 .BeatenText:
-	text "It's sunny, but"
+	ctxt "It's sunny, but"
 	line "I'm all wet…"
 	done
 
 GenericTrainerFirebreatherBurt:
 	generictrainer FIREBREATHER, BURT, EVENT_BEAT_FIREBREATHER_BURT, .SeenText, .BeatenText
 
-	text "The greatest fire-"
+	ctxt "The greatest fire-"
 	line "breather in Kanto,"
 	cont "that's me."
 
@@ -125,37 +125,37 @@ GenericTrainerFirebreatherBurt:
 	done
 
 .SeenText:
-	text "Step right up and"
+	ctxt "Step right up and"
 	line "take a look!"
 	done
 
 .BeatenText:
-	text "Yow! That's hot!"
+	ctxt "Yow! That's hot!"
 	done
 
 GenericTrainerBlackbeltManford:
 	generictrainer BLACKBELT_T, MANFORD, EVENT_BEAT_BLACKBELT_MANFORD, .SeenText, .BeatenText
 
-	text "You must have"
+	ctxt "You must have"
 	line "trained under a"
 	cont "well-known master!"
 	done
 
 .SeenText:
-	text "Slow down and give"
+	ctxt "Slow down and give"
 	line "me the chance to"
 	cont "defeat you!"
 	done
 
 .BeatenText:
-	text "I've been beaten"
+	ctxt "I've been beaten"
 	line "at my own game…"
 	done
 
 GenericTrainerBlackbeltAnder:
 	generictrainer BLACKBELT_T, ANDER, EVENT_BEAT_BLACKBELT_ANDER, .SeenText, .BeatenText
 
-	text "You came all the"
+	ctxt "You came all the"
 	line "way from Johto?"
 
 	para "You must be very"
@@ -163,24 +163,24 @@ GenericTrainerBlackbeltAnder:
 	done
 
 .SeenText:
-	text "Wait a moment!"
+	ctxt "Wait a moment!"
 	line "Come fight me!"
 	done
 
 .BeatenText:
-	text "You did it…"
+	ctxt "You did it…"
 	done
 
 GenericTrainerHikerBruce:
 	generictrainer HIKER, BRUCE, EVENT_BEAT_HIKER_BRUCE, .SeenText, .BeatenText
 
-	text "All right, guess I"
+	ctxt "All right, guess I"
 	line "should carry my"
 	cont "Bag again!"
 	done
 
 .SeenText:
-	text "My Bag is digging"
+	ctxt "My Bag is digging"
 	line "into my shoulders!"
 
 	para "I'll take a break"
@@ -188,13 +188,13 @@ GenericTrainerHikerBruce:
 	done
 
 .BeatenText:
-	text "Feh."
+	ctxt "Feh."
 	done
 
 GenericTrainerHikerDwight:
 	generictrainer HIKER, DWIGHT, EVENT_BEAT_HIKER_DWIGHT, .SeenText, .BeatenText
 
-	text "Greeting someone"
+	ctxt "Greeting someone"
 	line "you don't know…"
 
 	para "That's the best"
@@ -203,7 +203,7 @@ GenericTrainerHikerDwight:
 	done
 
 .SeenText:
-	text "Peace!"
+	ctxt "Peace!"
 
 	para "When you meet the"
 	line "unknown on a moun-"
@@ -214,19 +214,19 @@ GenericTrainerHikerDwight:
 	done
 
 .BeatenText:
-	text "Peace--even though"
+	ctxt "Peace--even though"
 	line "I lost!"
 	done
 
 GenericTrainerAceDuoZacandjen1:
 	generictrainer ACE_DUO, ZACANDJEN1, EVENT_BEAT_ACE_DUO_ZAC_AND_JEN, .SeenText, .BeatenText
 
-	text "Zac: Your future"
+	ctxt "Zac: Your future"
 	line "looks promising."
 	done
 
 .SeenText:
-	text "Zac: Really, you"
+	ctxt "Zac: Really, you"
 	line "want to battle us?"
 
 	para "You've got a lot"
@@ -235,14 +235,14 @@ GenericTrainerAceDuoZacandjen1:
 	done
 
 .BeatenText:
-	text "Zac: You weren't"
+	ctxt "Zac: You weren't"
 	line "bluffing…"
 	done
 
 GenericTrainerAceDuoZacandjen2:
 	generictrainer ACE_DUO, ZACANDJEN2, EVENT_BEAT_ACE_DUO_ZAC_AND_JEN, .SeenText, .BeatenText
 
-	text "Jen: I'm looking"
+	ctxt "Jen: I'm looking"
 	line "forward to seeing"
 
 	para "what kind of"
@@ -251,19 +251,19 @@ GenericTrainerAceDuoZacandjen2:
 	done
 
 .SeenText:
-	text "Jen: Huh? You'd"
+	ctxt "Jen: Huh? You'd"
 	line "like to go up"
 	cont "against us? Great!"
 	done
 
 .BeatenText:
-	text "Jen: You're so"
+	ctxt "Jen: You're so"
 	line "much stronger than"
 	cont "I thought."
 	done
 
 Route3MeteoriteText:
-	text "Never seen a stone"
+	ctxt "Never seen a stone"
 	line "like this before!"
 
 	para "Could it be…"
@@ -272,5 +272,5 @@ Route3MeteoriteText:
 	done
 
 Route3MtMoonSquareSignText:
-	text "Mt.Moon Tunnel"
+	ctxt "Mt.Moon Tunnel"
 	done

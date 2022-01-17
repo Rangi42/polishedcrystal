@@ -25,6 +25,6 @@ IcePathB2FMahoganySide_MapScriptHeader:
 	itemball_event  0,  2, MAX_POTION, 1, EVENT_ICE_PATH_B2F_MAHOGANY_SIDE_MAX_POTION
 
 IcePathB2FMahoganySideBoulderText:
-	text "It's immovably"
+	ctxt "It's immovably"
 	line "imbedded in ice."
 	done

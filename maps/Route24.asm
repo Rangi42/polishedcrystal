@@ -106,7 +106,7 @@ Route24RocketScript:
 	end
 
 Route24RocketSeenText:
-	text "Hey, kid! Me am a"
+	ctxt "Hey, kid! Me am a"
 	line "Team Rocket member"
 	cont "kind of guy!"
 
@@ -135,7 +135,7 @@ Route24RocketSeenText:
 	done
 
 Route24RocketBeatenText:
-	text "Ayieeeh! No, no,"
+	ctxt "Ayieeeh! No, no,"
 	line "no, believe it I"
 	cont "can't!"
 
@@ -145,7 +145,7 @@ Route24RocketBeatenText:
 	done
 
 Route24RocketAfterBattleText:
-	text "OK. Tell you mine"
+	ctxt "OK. Tell you mine"
 	line "secret will I."
 
 	para "Machine Part steal"
@@ -174,7 +174,7 @@ Route24RocketAfterBattleText:
 	done
 
 Route24RocketDisappearsText:
-	text "…"
+	ctxt "…"
 
 	para "You say what? Team"
 	line "Rocket bye-bye a"

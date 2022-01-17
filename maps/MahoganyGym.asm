@@ -64,7 +64,7 @@ MahoganyGymPryceScript:
 	setevent EVENT_GOT_TM67_AVALANCHE
 	jumpthisopenedtext
 
-	text "That TM contains"
+	ctxt "That TM contains"
 	line "Avalanche."
 
 	para "It deals more"
@@ -79,7 +79,7 @@ MahoganyGymPryceScript:
 GenericTrainerSkierRoxanne:
 	generictrainer SKIER, ROXANNE, EVENT_BEAT_SKIER_ROXANNE, SkierRoxanneSeenText, SkierRoxanneBeatenText
 
-	text "If you don't skate"
+	ctxt "If you don't skate"
 	line "with precision,"
 
 	para "you won't get far"
@@ -89,7 +89,7 @@ GenericTrainerSkierRoxanne:
 GenericTrainerSkierClarissa:
 	generictrainer SKIER, CLARISSA, EVENT_BEAT_SKIER_CLARISSA, SkierClarissaSeenText, SkierClarissaBeatenText
 
-	text "I shouldn't have"
+	ctxt "I shouldn't have"
 	line "been bragging"
 	cont "about my skiing…"
 	done
@@ -97,7 +97,7 @@ GenericTrainerSkierClarissa:
 GenericTrainerBoarderRonald:
 	generictrainer BOARDER, RONALD, EVENT_BEAT_BOARDER_RONALD, BoarderRonaldSeenText, BoarderRonaldBeatenText
 
-	text "I think there's a"
+	ctxt "I think there's a"
 	line "move a #mon"
 
 	para "can use while it's"
@@ -107,7 +107,7 @@ GenericTrainerBoarderRonald:
 GenericTrainerBoarderBrad:
 	generictrainer BOARDER, BRAD, EVENT_BEAT_BOARDER_BRAD, BoarderBradSeenText, BoarderBradBeatenText
 
-	text "This Gym is great."
+	ctxt "This Gym is great."
 	line "I love boarding"
 	cont "with my #mon!"
 	done
@@ -115,7 +115,7 @@ GenericTrainerBoarderBrad:
 GenericTrainerBoarderDouglas:
 	generictrainer BOARDER, DOUGLAS, EVENT_BEAT_BOARDER_DOUGLAS, BoarderDouglasSeenText, BoarderDouglasBeatenText
 
-	text "The secret behind"
+	ctxt "The secret behind"
 	line "Pryce's power…"
 
 	para "He meditates under"
@@ -143,7 +143,7 @@ MahoganyGymStatue:
 	jumpstd gymstatue3
 
 PryceText_Intro:
-	text "#mon have many"
+	ctxt "#mon have many"
 	line "experiences in"
 
 	para "their lives, just"
@@ -174,7 +174,7 @@ PryceText_Intro:
 	done
 
 PryceText_Impressed:
-	text "Ah, I am impressed"
+	ctxt "Ah, I am impressed"
 	line "by your prowess."
 
 	para "With your strong"
@@ -188,12 +188,12 @@ PryceText_Impressed:
 	done
 
 Text_ReceivedGlacierBadge:
-	text "<PLAYER> received"
+	ctxt "<PLAYER> received"
 	line "the Glacier Badge."
 	done
 
 PryceText_GlacierBadgeSpeech:
-	text "That Badge will"
+	ctxt "That Badge will"
 	line "let your #mon"
 
 	para "use Whirlpool to"
@@ -204,7 +204,7 @@ PryceText_GlacierBadgeSpeech:
 	done
 
 PryceText_CherishYourPokemon:
-	text "When the ice and"
+	ctxt "When the ice and"
 	line "snow melt, spring"
 	cont "arrives."
 
@@ -219,18 +219,18 @@ PryceText_CherishYourPokemon:
 	done
 
 BoarderRonaldSeenText:
-	text "I'll freeze your"
+	ctxt "I'll freeze your"
 	line "#mon, so you"
 	cont "can't do a thing!"
 	done
 
 BoarderRonaldBeatenText:
-	text "Darn. I couldn't"
+	ctxt "Darn. I couldn't"
 	line "do a thing."
 	done
 
 BoarderBradSeenText:
-	text "This Gym has a"
+	ctxt "This Gym has a"
 	line "slippery floor."
 
 	para "It's fun, isn't"
@@ -242,22 +242,22 @@ BoarderBradSeenText:
 	done
 
 BoarderBradBeatenText:
-	text "Do you see how"
+	ctxt "Do you see how"
 	line "serious we are?"
 	done
 
 BoarderDouglasSeenText:
-	text "I know Pryce's"
+	ctxt "I know Pryce's"
 	line "secret."
 	done
 
 BoarderDouglasBeatenText:
-	text "OK. I'll tell you"
+	ctxt "OK. I'll tell you"
 	line "Pryce's secret."
 	done
 
 SkierRoxanneSeenText:
-	text "To get to Pryce,"
+	ctxt "To get to Pryce,"
 	line "our Gym Leader,"
 
 	para "you need to think"
@@ -265,22 +265,22 @@ SkierRoxanneSeenText:
 	done
 
 SkierRoxanneBeatenText:
-	text "I wouldn't lose to"
+	ctxt "I wouldn't lose to"
 	line "you in skiing!"
 	done
 
 SkierClarissaSeenText:
-	text "Check out my"
+	ctxt "Check out my"
 	line "parallel turn!"
 	done
 
 SkierClarissaBeatenText:
-	text "No! You made me"
+	ctxt "No! You made me"
 	line "wipe out!"
 	done
 
 MahoganyGymGuyText:
-	text "Pryce is a veteran"
+	ctxt "Pryce is a veteran"
 	line "who has trained"
 
 	para "#mon for some"
@@ -300,7 +300,7 @@ MahoganyGymGuyText:
 	done
 
 MahoganyGymGuyWinText:
-	text "Pryce is some-"
+	ctxt "Pryce is some-"
 	line "thing, but you're"
 	cont "something else!"
 

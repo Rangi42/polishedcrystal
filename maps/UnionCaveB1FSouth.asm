@@ -35,27 +35,27 @@ UnionCaveB1FSouth_MapScriptHeader:
 GenericTrainerPokemaniacAndrew:
 	generictrainer POKEMANIAC, ANDREW, EVENT_BEAT_POKEMANIAC_ANDREW, PokemaniacAndrewSeenText, PokemaniacAndrewBeatenText
 
-	text "Just me and my"
+	ctxt "Just me and my"
 	line "#mon. I'm de-"
 	cont "lirious with joy."
 	done
 
 PokemaniacAndrewSeenText:
-	text "Who's there?"
+	ctxt "Who's there?"
 
 	para "Leave me and my"
 	line "#mon alone!"
 	done
 
 PokemaniacAndrewBeatenText:
-	text "Go…"
+	ctxt "Go…"
 	line "Go away!"
 	done
 
 GenericTrainerPokemaniacCalvin:
 	generictrainer POKEMANIAC, CALVIN, EVENT_BEAT_POKEMANIAC_CALVIN, PokemaniacCalvinSeenText, PokemaniacCalvinBeatenText
 
-	text "I should compile"
+	ctxt "I should compile"
 	line "and announce my"
 	cont "study findings."
 
@@ -65,7 +65,7 @@ GenericTrainerPokemaniacCalvin:
 	done
 
 PokemaniacCalvinSeenText:
-	text "I came all the way"
+	ctxt "I came all the way"
 	line "here to conduct my"
 	cont "#mon research."
 
@@ -75,14 +75,14 @@ PokemaniacCalvinSeenText:
 	done
 
 PokemaniacCalvinBeatenText:
-	text "You demonstrated"
+	ctxt "You demonstrated"
 	line "on me!"
 	done
 
 GenericTrainerHikerPhillip:
 	generictrainer HIKER, PHILLIP, EVENT_BEAT_HIKER_PHILLIP, HikerPhillipSeenText, HikerPhillipBeatenText
 
-	text "I've been lost for"
+	ctxt "I've been lost for"
 	line "a long time…"
 
 	para "I don't mind it"
@@ -91,7 +91,7 @@ GenericTrainerHikerPhillip:
 	done
 
 HikerPhillipSeenText:
-	text "It's been a while"
+	ctxt "It's been a while"
 	line "since I last saw"
 	cont "another person."
 
@@ -100,13 +100,13 @@ HikerPhillipSeenText:
 	done
 
 HikerPhillipBeatenText:
-	text "Uurggh…"
+	ctxt "Uurggh…"
 	done
 
 GenericTrainerHikerLeonard:
 	generictrainer HIKER, LEONARD, EVENT_BEAT_HIKER_LEONARD, HikerLeonardSeenText, HikerLeonardBeatenText
 
-	text "I live down here."
+	ctxt "I live down here."
 
 	para "You can, too, if"
 	line "you'd like."
@@ -116,19 +116,19 @@ GenericTrainerHikerLeonard:
 	done
 
 HikerLeonardSeenText:
-	text "What do you know!"
+	ctxt "What do you know!"
 	line "A visitor!"
 	done
 
 HikerLeonardBeatenText:
-	text "Wahahah! You're a"
+	ctxt "Wahahah! You're a"
 	line "feisty one!"
 	done
 
 GenericTrainerFirebreatherJay:
 	generictrainer FIREBREATHER, JAY, EVENT_BEAT_FIREBREATHER_JAY, .SeenText, .BeatenText
 
-	text "One time my hat"
+	ctxt "One time my hat"
 	line "caught on fire."
 
 	para "It looked kind of"
@@ -137,7 +137,7 @@ GenericTrainerFirebreatherJay:
 	done
 
 .SeenText:
-	text "I learned how to"
+	ctxt "I learned how to"
 	line "breathe fire by"
 
 	para "watching my #-"
@@ -145,14 +145,14 @@ GenericTrainerFirebreatherJay:
 	done
 
 .BeatenText:
-	text "Our fire couldn't"
+	ctxt "Our fire couldn't"
 	line "beat you…"
 	done
 
 GenericTrainerSuper_nerdRory:
 	generictrainer SUPER_NERD, RORY, EVENT_BEAT_SUPER_NERD_RORY, .SeenText, .BeatenText
 
-	text "A jiffy is the"
+	ctxt "A jiffy is the"
 	line "scientific name"
 
 	para "for 1/100th of a"
@@ -160,25 +160,25 @@ GenericTrainerSuper_nerdRory:
 	done
 
 .SeenText:
-	text "This'll be over"
+	ctxt "This'll be over"
 	line "in a jiffy."
 	done
 
 .BeatenText:
-	text "Maybe I was a bit"
+	ctxt "Maybe I was a bit"
 	line "off…"
 	done
 
 GenericTrainerRuin_maniacGlyn:
 	generictrainer RUIN_MANIAC, GLYN, EVENT_BEAT_RUIN_MANIAC_GLYN, .SeenText, .BeatenText
 
-	text "Rocks hide all"
+	ctxt "Rocks hide all"
 	line "sorts of interest-"
 	cont "ing items."
 	done
 
 .SeenText:
-	text "My #mon were"
+	ctxt "My #mon were"
 	line "born from fossils"
 
 	para "I found in this"
@@ -186,7 +186,7 @@ GenericTrainerRuin_maniacGlyn:
 	done
 
 .BeatenText:
-	text "And they lost in"
+	ctxt "And they lost in"
 	line "this very cave,"
 	cont "too!"
 	done

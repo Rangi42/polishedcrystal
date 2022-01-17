@@ -29,32 +29,32 @@ Route21_MapScriptHeader:
 GenericTrainerSwimmerfNikki:
 	generictrainer SWIMMERF, NIKKI, EVENT_BEAT_SWIMMERF_NIKKI, SwimmerfNikkiSeenText, SwimmerfNikkiBeatenText
 
-	text "I have to watch"
+	ctxt "I have to watch"
 	line "out for blemishes"
 	cont "caused by the sun."
 	done
 
 SwimmerfNikkiSeenText:
-	text "If I win, you have"
+	ctxt "If I win, you have"
 	line "to help me with my"
 	cont "suntan lotion!"
 	done
 
 SwimmerfNikkiBeatenText:
-	text "I'm worried about"
+	ctxt "I'm worried about"
 	line "sunburn…"
 	done
 
 GenericTrainerSwimmerfChelan:
 	generictrainer SWIMMERF, CHELAN, EVENT_BEAT_SWIMMERF_CHELAN, .SeenText, .BeatenText
 
-	text "I suppose an elec-"
+	ctxt "I suppose an elec-"
 	line "tric bikini would"
 	cont "give you a shock!"
 	done
 
 .SeenText:
-	text "I love bikinis!"
+	ctxt "I love bikinis!"
 
 	para "If I had an elec-"
 	line "tric bikini, I"
@@ -64,58 +64,58 @@ GenericTrainerSwimmerfChelan:
 	done
 
 .BeatenText:
-	text "Awww…"
+	ctxt "Awww…"
 	done
 
 GenericTrainerSwimmerfKendra:
 	generictrainer SWIMMERF, KENDRA, EVENT_BEAT_SWIMMERF_KENDRA, .SeenText, .BeatenText
 
-	text "I wonder if any"
+	ctxt "I wonder if any"
 	line "place sells swim-"
 	cont "suits for #-"
 	cont "mon?"
 	done
 
 .SeenText:
-	text "Hey, trainer!"
+	ctxt "Hey, trainer!"
 	line "How about you put"
 	cont "on a swimsuit too?"
 	done
 
 .BeatenText:
-	text "I didn't want to"
+	ctxt "I didn't want to"
 	line "lose…"
 	done
 
 GenericTrainerSwimmermEsteban:
 	generictrainer SWIMMERM, ESTEBAN, EVENT_BEAT_SWIMMERM_ESTEBAN, .SeenText, .BeatenText
 
-	text "We called our"
+	ctxt "We called our"
 	line "teacher Professor"
 	cont "Poliwhirl!"
 	done
 
 .SeenText:
-	text "My swimming teach-"
+	ctxt "My swimming teach-"
 	line "er had a face just"
 	cont "like a Poliwhirl."
 	done
 
 .BeatenText:
-	text "I'm sorry,"
+	ctxt "I'm sorry,"
 	line "Teacher…"
 	done
 
 GenericTrainerSwimmermDuane:
 	generictrainer SWIMMERM, DUANE, EVENT_BEAT_SWIMMERM_DUANE, .SeenText, .BeatenText
 
-	text "To win more, I"
+	ctxt "To win more, I"
 	line "need to work on"
 	cont "my stamina!"
 	done
 
 .SeenText:
-	text "Swimming is full-"
+	ctxt "Swimming is full-"
 	line "body exercise."
 
 	para "It really builds"
@@ -123,31 +123,31 @@ GenericTrainerSwimmermDuane:
 	done
 
 .BeatenText:
-	text "My #mon and I"
+	ctxt "My #mon and I"
 	line "have no strength…"
 	done
 
 GenericTrainerSwimmermSeth:
 	generictrainer SWIMMERM, SETH, EVENT_BEAT_SWIMMERM_SETH, SwimmermSethSeenText, SwimmermSethBeatenText
 
-	text "This arrogant guy"
+	ctxt "This arrogant guy"
 	line "was at Cinnabar's"
 	cont "volcano."
 	done
 
 SwimmermSethSeenText:
-	text "Land ho! Gotta"
+	ctxt "Land ho! Gotta"
 	line "keep going!"
 	done
 
 SwimmermSethBeatenText:
-	text "Glug…"
+	ctxt "Glug…"
 	done
 
 GenericTrainerFisherMurphy:
 	generictrainer FISHER, MURPHY, EVENT_BEAT_FISHER_MURPHY, .SeenText, .BeatenText
 
-	text "The #mon that"
+	ctxt "The #mon that"
 	line "escaped me was"
 	cont "huge."
 
@@ -155,36 +155,36 @@ GenericTrainerFisherMurphy:
 	done
 
 .SeenText:
-	text "Huh? I've caught"
+	ctxt "Huh? I've caught"
 	line "a trainer instead"
 	cont "of a #mon!"
 	done
 
 .BeatenText:
-	text "My fishing line"
+	ctxt "My fishing line"
 	line "got cut!"
 	done
 
 GenericTrainerFisherArnold:
 	generictrainer FISHER, ARNOLD, EVENT_BEAT_FISHER_ARNOLD, FisherArnoldSeenText, FisherArnoldBeatenText
 
-	text "I'll just go back"
+	ctxt "I'll just go back"
 	line "to fishing…"
 	done
 
 FisherArnoldSeenText:
-	text "I'm bored by fish-"
+	ctxt "I'm bored by fish-"
 	line "ing. Let's battle!"
 	done
 
 FisherArnoldBeatenText:
-	text "Utter failure…"
+	ctxt "Utter failure…"
 	done
 
 GenericTrainerFisherLiam:
 	generictrainer FISHER, LIAM, EVENT_BEAT_FISHER_LIAM, .SeenText, .BeatenText
 
-	text "I should've asked"
+	ctxt "I should've asked"
 	line "you to wait until"
 
 	para "I reeled that"
@@ -192,7 +192,7 @@ GenericTrainerFisherLiam:
 	done
 
 .SeenText:
-	text "Whoa! A nibble!"
+	ctxt "Whoa! A nibble!"
 
 	para "…Huh?"
 	line "A battle?"
@@ -201,7 +201,7 @@ GenericTrainerFisherLiam:
 	done
 
 .BeatenText:
-	text "If you chase two"
+	ctxt "If you chase two"
 	line "#mon, you"
 
 	para "won't catch either"
@@ -211,13 +211,13 @@ GenericTrainerFisherLiam:
 GenericTrainerFisherGideon:
 	generictrainer FISHER, GIDEON, EVENT_BEAT_FISHER_GIDEON, .SeenText, .BeatenText
 
-	text "What's the reason"
+	ctxt "What's the reason"
 	line "you became a"
 	cont "#mon trainer?"
 	done
 
 .SeenText:
-	text "Did I become a"
+	ctxt "Did I become a"
 	line "Fisherman because"
 	cont "I'm patient, or"
 
@@ -227,31 +227,31 @@ GenericTrainerFisherGideon:
 	done
 
 .BeatenText:
-	text "Ummm… Hmmm…"
+	ctxt "Ummm… Hmmm…"
 	done
 
 GenericTrainerBird_keeperKinsley:
 	generictrainer BIRD_KEEPER, KINSLEY, EVENT_BEAT_BIRD_KEEPER_KINSLEY, .SeenText, .BeatenText
 
-	text "I just need to"
+	ctxt "I just need to"
 	line "practice flapping"
 	cont "my wings more!"
 	done
 
 .SeenText:
-	text "Someday I might be"
+	ctxt "Someday I might be"
 	line "able to fly like"
 	cont "my bird #mon!"
 	done
 
 .BeatenText:
-	text "I couldn't fly…"
+	ctxt "I couldn't fly…"
 	done
 
 GenericTrainerBird_keeperEaston:
 	generictrainer BIRD_KEEPER, EASTON, EVENT_BEAT_BIRD_KEEPER_EASTON, .SeenText, .BeatenText
 
-	text "We think we're"
+	ctxt "We think we're"
 	line "using #mon."
 
 	para "But at some point,"
@@ -260,14 +260,14 @@ GenericTrainerBird_keeperEaston:
 	done
 
 .SeenText:
-	text "Bird Keepers are"
+	ctxt "Bird Keepers are"
 	line "so wonderful with"
 	cont "their bird #-"
 	cont "mon!"
 	done
 
 .BeatenText:
-	text "I couldn't handle"
+	ctxt "I couldn't handle"
 	line "it…"
 	done
 

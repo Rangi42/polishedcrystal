@@ -223,41 +223,41 @@ MagnetTunnelInsideMachine4:
 	step_end
 
 MagnetTunnelInsideMachineText0:
-	text "The machine is"
+	ctxt "The machine is"
 	line "off."
 	done
 
 MagnetTunnelInsideMachineText1:
-	text "The machine is"
+	ctxt "The machine is"
 	line "off."
 
 	para "Turn it on?"
 	done
 
 MagnetTunnelInsideMachineText2:
-	text "Ping! The machine"
+	ctxt "Ping! The machine"
 	line "turned on."
 	done
 
 MagnetTunnelInsideMachineText3:
-	text "The machine is"
+	ctxt "The machine is"
 	line "running smoothly."
 	done
 
 MagnetTunnelInsideMachineText4:
-	text "The machine is"
+	ctxt "The machine is"
 	line "running smoothly."
 
 	para "Turn it off?"
 	done
 
 MagnetTunnelInsideMachineText5:
-	text "Ping! The machine"
+	ctxt "Ping! The machine"
 	line "turned off."
 	done
 
 MagnetTunnelInsideLodestoneText:
-	text "The lodestone is"
+	ctxt "The lodestone is"
 	line "smooth and warm."
 
 	para "It has a faint"

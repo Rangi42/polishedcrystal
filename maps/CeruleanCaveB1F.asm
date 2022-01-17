@@ -36,5 +36,5 @@ CeruleanCaveMewtwo:
 	end
 
 MewtwoText:
-	text "Myuu!"
+	ctxt "Myuu!"
 	done

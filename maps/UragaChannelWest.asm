@@ -16,7 +16,7 @@ UragaChannelWest_MapScriptHeader:
 	object_event 13,  9, SPRITE_ENGINEER, SPRITEMOVEDATA_WALK_UP_DOWN, 2, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_COMMAND, jumptextfaceplayer, UragaChannelWestEngineerText, -1
 
 UragaChannelWestEngineerText:
-	text "The currents wash"
+	ctxt "The currents wash"
 	line "up all kinds of"
 	cont "debris here."
 
@@ -29,7 +29,7 @@ UragaChannelWestEngineerText:
 	done
 
 ScaryCaveWestSignText:
-	text "Uraga Channel"
+	ctxt "Uraga Channel"
 	line "Ahead"
 
 	para "Enter west from"

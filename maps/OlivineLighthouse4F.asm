@@ -26,7 +26,7 @@ OlivineLighthouse4F_MapScriptHeader:
 GenericTrainerLassConnie:
 	generictrainer LASS, CONNIE, EVENT_BEAT_LASS_CONNIE, LassConnieSeenText, LassConnieBeatenText
 
-	text "Right. Anybody"
+	ctxt "Right. Anybody"
 	line "would be worried"
 
 	para "if their own #-"
@@ -49,7 +49,7 @@ SailorKentScript:
 	jumptextfaceplayer SailorKentAfterBattleText
 
 SailorKentSeenText:
-	text "Jasmine must be"
+	ctxt "Jasmine must be"
 	line "worried sick about"
 	cont "the #mon here."
 
@@ -58,12 +58,12 @@ SailorKentSeenText:
 	done
 
 SailorKentBeatenText:
-	text "I can't manage a"
+	ctxt "I can't manage a"
 	line "smile either…"
 	done
 
 SailorKentAfterBattleText:
-	text "Speaking of sick,"
+	ctxt "Speaking of sick,"
 	line "I've heard there's"
 
 	para "a good Pharmacy in"
@@ -71,7 +71,7 @@ SailorKentAfterBattleText:
 	done
 
 SailorKentFinalText:
-	text "The #mon here"
+	ctxt "The #mon here"
 	line "is well again."
 
 	para "Cianwood Pharmacy"
@@ -80,7 +80,7 @@ SailorKentFinalText:
 	done
 
 LassConnieSeenText:
-	text "Jasmine is this"
+	ctxt "Jasmine is this"
 	line "city's Gym Leader."
 
 	para "I mean to bring"
@@ -91,6 +91,6 @@ LassConnieSeenText:
 	done
 
 LassConnieBeatenText:
-	text "Aaack! My #mon!"
+	ctxt "Aaack! My #mon!"
 	done
 

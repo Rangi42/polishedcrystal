@@ -180,7 +180,7 @@ BurnedTowerB1FEusineMovement1:
 	step_end
 
 BurnedTowerB1FEusineText:
-	text "Eusine: I dug a"
+	ctxt "Eusine: I dug a"
 	line "hole here, too…"
 
 	para "I was shocked!"

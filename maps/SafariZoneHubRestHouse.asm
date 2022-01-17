@@ -21,7 +21,7 @@ PokemonJournalKogaScript:
 	setflag ENGINE_READ_KOGA_JOURNAL
 	jumpthistext
 
-	text "#mon Journal"
+	ctxt "#mon Journal"
 
 	para "Special Feature:"
 	line "Elite Four Koga!"

@@ -81,7 +81,7 @@ ViridianCityTutorDreamEaterScript:
 	jumpopenedtext Text_ViridianCityTutorTaught
 
 ViridianCityCoffeeGrampsQuestionText:
-	text "Hey, kid! I just"
+	ctxt "Hey, kid! I just"
 	line "had a double shot"
 
 	para "of espresso, and"
@@ -101,7 +101,7 @@ ViridianCityCoffeeGrampsQuestionText:
 	done
 
 ViridianCityCoffeeGrampsBelievedText:
-	text "Good, good. Yes, I"
+	ctxt "Good, good. Yes, I"
 	line "was something out"
 
 	para "of the ordinary,"
@@ -109,7 +109,7 @@ ViridianCityCoffeeGrampsBelievedText:
 	done
 
 ViridianCityCoffeeGrampsDoubtedText:
-	text "What? You little"
+	ctxt "What? You little"
 	line "whelp!"
 
 	para "If I were just a"
@@ -120,7 +120,7 @@ ViridianCityCoffeeGrampsDoubtedText:
 	done
 
 ViridianCityGrampsNearGymText:
-	text "This Gym didn't"
+	ctxt "This Gym didn't"
 	line "have a Leader"
 	cont "until recently."
 
@@ -132,7 +132,7 @@ ViridianCityGrampsNearGymText:
 	done
 
 ViridianCityGrampsNearGymBlueReturnedText:
-	text "Are you going to"
+	ctxt "Are you going to"
 	line "battle the Leader?"
 
 	para "Good luck to you."
@@ -140,7 +140,7 @@ ViridianCityGrampsNearGymBlueReturnedText:
 	done
 
 ViridianCityDreamEaterFisherText:
-	text "Yawn!"
+	ctxt "Yawn!"
 
 	para "I must have dozed"
 	line "off in the sun."
@@ -160,7 +160,7 @@ ViridianCityDreamEaterFisherText:
 	done
 
 Text_ViridianCityTutorDreamEater:
-	text "I can teach your"
+	ctxt "I can teach your"
 	line "#mon to eat"
 	cont "dreams."
 
@@ -170,22 +170,22 @@ Text_ViridianCityTutorDreamEater:
 	done
 
 Text_ViridianCityTutorNoSilverLeaf:
-	text "You don't have any"
+	ctxt "You don't have any"
 	line "Silver Leaves…"
 	done
 
 Text_ViridianCityTutorQuestion:
-	text "Should I teach"
+	ctxt "Should I teach"
 	line "your #mon"
 	cont "Dream Eater?"
 	done
 
-Text_ViridianCityTutorRefused:
+Text_ViridianCityTutorRefused: ; ctxt > text
 	text "OK…"
 	done
 
 Text_ViridianCityTutorTaught:
-	text "Now your #mon"
+	ctxt "Now your #mon"
 	line "knows how to use"
 	cont "Dream Eater…"
 
@@ -193,7 +193,7 @@ Text_ViridianCityTutorTaught:
 	done
 
 ViridianCityYoungsterText:
-	text "I heard that there"
+	ctxt "I heard that there"
 	line "are many items on"
 
 	para "the ground in"
@@ -201,7 +201,7 @@ ViridianCityYoungsterText:
 	done
 
 ViridianCityYoungster2Text:
-	text "The leader of Team"
+	ctxt "The leader of Team"
 	line "Rocket was the Gym"
 
 	para "Leader here for a"
@@ -215,14 +215,14 @@ ViridianCityYoungster2Text:
 	done
 
 ViridianCitySignText:
-	text "Viridian City"
+	ctxt "Viridian City"
 
 	para "The Eternally"
 	line "Green Paradise"
 	done
 
 ViridianGymSignText:
-	text "Viridian City"
+	ctxt "Viridian City"
 	line "#mon Gym"
 	cont "Leader: …"
 
@@ -231,7 +231,7 @@ ViridianGymSignText:
 	done
 
 ViridianCityTrainerTips1Text:
-	text "Trainer Tips"
+	ctxt "Trainer Tips"
 
 	para "Catch #mon"
 	line "and expand your"
@@ -243,7 +243,7 @@ ViridianCityTrainerTips1Text:
 	done
 
 ViridianCityTrainerTips2Text:
-	text "Trainer Tips"
+	ctxt "Trainer Tips"
 
 	para "The world is a"
 	line "big place!"
@@ -257,7 +257,7 @@ ViridianCityTrainerTips2Text:
 	done
 
 TrainerHouseSignText:
-	text "Trainer House"
+	ctxt "Trainer House"
 
 	para "The Club for Top"
 	line "Trainer Battles"

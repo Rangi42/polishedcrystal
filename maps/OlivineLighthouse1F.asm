@@ -31,7 +31,7 @@ OlivineLighthouse1FSailorScript:
 	jumpthisopenedtext
 
 .Text2:
-	text "The trainers here"
+	ctxt "The trainers here"
 	line "are all keen to"
 	cont "battle."
 
@@ -39,7 +39,7 @@ OlivineLighthouse1FSailorScript:
 	done
 
 .Text1:
-	text "People are train-"
+	ctxt "People are train-"
 	line "ing hard at this"
 	cont "Lighthouse."
 
@@ -48,7 +48,7 @@ OlivineLighthouse1FSailorScript:
 	done
 
 OlivineLighthouse1FPokefanFText:
-	text "In the past, #-"
+	ctxt "In the past, #-"
 	line "mon used to light"
 
 	para "the sea around"

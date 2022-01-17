@@ -72,7 +72,7 @@ CianwoodGymChuckScript:
 GenericTrainerBlackbeltYoshi:
 	generictrainer BLACKBELT_T, YOSHI, EVENT_BEAT_BLACKBELT_YOSHI, BlackbeltYoshiSeenText, BlackbeltYoshiBeatenText
 
-	text "You seem to have a"
+	ctxt "You seem to have a"
 	line "strong bond with"
 	cont "your #mon too!"
 	done
@@ -80,7 +80,7 @@ GenericTrainerBlackbeltYoshi:
 GenericTrainerBlackbeltLao:
 	generictrainer BLACKBELT_T, LAO, EVENT_BEAT_BLACKBELT_LAO, BlackbeltLaoSeenText, BlackbeltLaoBeatenText
 
-	text "Fighting #mon"
+	ctxt "Fighting #mon"
 	line "are afraid of psy-"
 	cont "chics…"
 	done
@@ -88,14 +88,14 @@ GenericTrainerBlackbeltLao:
 GenericTrainerBlackbeltNob:
 	generictrainer BLACKBELT_T, NOB, EVENT_BEAT_BLACKBELT_NOB, BlackbeltNobSeenText, BlackbeltNobBeatenText
 
-	text "I lost!"
+	ctxt "I lost!"
 	line "I'm speechless!"
 	done
 
 GenericTrainerBlackbeltLung:
 	generictrainer BLACKBELT_T, LUNG, EVENT_BEAT_BLACKBELT_LUNG, BlackbeltLungSeenText, BlackbeltLungBeatenText
 
-	text "My #mon lost…"
+	ctxt "My #mon lost…"
 	line "My… my pride is"
 	cont "shattered…"
 	done
@@ -121,7 +121,7 @@ CianwoodGymMovement_ChuckChucksBoulder:
 	step_end
 
 ChuckIntroText1:
-	text "WAHAHAH!"
+	ctxt "WAHAHAH!"
 
 	para "So you've come"
 	line "this far!"
@@ -137,14 +137,14 @@ ChuckIntroText1:
 	done
 
 ChuckIntroText2:
-	text "Chuck: Urggh!"
+	ctxt "Chuck: Urggh!"
 	line "…"
 
 	para "Oooarrgh!"
 	done
 
 ChuckIntroText3:
-	text "There! Scared now,"
+	ctxt "There! Scared now,"
 	line "are you?"
 
 	para "What?"
@@ -158,7 +158,7 @@ ChuckIntroText3:
 	done
 
 ChuckLossText:
-	text "Wha? Huh?"
+	ctxt "Wha? Huh?"
 	line "I lost?"
 
 	para "How about that!"
@@ -167,12 +167,12 @@ ChuckLossText:
 	done
 
 GetStormBadgeText:
-	text "<PLAYER> received"
+	ctxt "<PLAYER> received"
 	line "the Storm Badge."
 	done
 
 ChuckExplainBadgeText:
-	text "The Storm Badge"
+	ctxt "The Storm Badge"
 	line "lets your #mon"
 
 	para "Fly to any city"
@@ -184,7 +184,7 @@ ChuckExplainBadgeText:
 	done
 
 ChuckExplainTMText:
-	text "That is Dynamic-"
+	ctxt "That is Dynamic-"
 	line "Punch."
 
 	para "It doesn't always"
@@ -195,7 +195,7 @@ ChuckExplainTMText:
 	done
 
 ChuckAfterText:
-	text "WAHAHAH! I enjoyed"
+	ctxt "WAHAHAH! I enjoyed"
 	line "battling you!"
 
 	para "But a loss is a"
@@ -207,7 +207,7 @@ ChuckAfterText:
 	done
 
 BlackbeltYoshiSeenText:
-	text "My #mon and I"
+	ctxt "My #mon and I"
 	line "are bound togeth-"
 	cont "er by friendship."
 
@@ -216,40 +216,40 @@ BlackbeltYoshiSeenText:
 	done
 
 BlackbeltYoshiBeatenText:
-	text "This isn't real!"
+	ctxt "This isn't real!"
 	done
 
 BlackbeltLaoSeenText:
-	text "We martial artists"
+	ctxt "We martial artists"
 	line "fear nothing!"
 	done
 
 BlackbeltLaoBeatenText:
-	text "That's shocking!"
+	ctxt "That's shocking!"
 	done
 
 BlackbeltNobSeenText:
-	text "Words are useless."
+	ctxt "Words are useless."
 	line "Let your fists do"
 	cont "the talking!"
 	done
 
 BlackbeltNobBeatenText:
-	text "…"
+	ctxt "…"
 	done
 
 BlackbeltLungSeenText:
-	text "My raging fists"
+	ctxt "My raging fists"
 	line "will shatter your"
 	cont "#mon!"
 	done
 
 BlackbeltLungBeatenText:
-	text "I got shattered!"
+	ctxt "I got shattered!"
 	done
 
 CianwoodGymBlackBeltText:
-	text "The Gym guide is"
+	ctxt "The Gym guide is"
 	line "too scared of us"
 	cont "to stay here."
 

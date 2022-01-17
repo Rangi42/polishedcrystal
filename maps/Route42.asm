@@ -271,7 +271,7 @@ UnknownScript_0x1a9311:
 GenericTrainerHikerBenjamin:
 	generictrainer HIKER, BENJAMIN, EVENT_BEAT_HIKER_BENJAMIN, HikerBenjaminSeenText, HikerBenjaminBeatenText
 
-	text "Losing feels in-"
+	ctxt "Losing feels in-"
 	line "significant if you"
 
 	para "look up at the big"
@@ -281,7 +281,7 @@ GenericTrainerHikerBenjamin:
 GenericTrainerPokemaniacShane:
 	generictrainer POKEMANIAC, SHANE, EVENT_BEAT_POKEMANIAC_SHANE, PokemaniacShaneSeenText, PokemaniacShaneBeatenText
 
-	text "You're working on"
+	ctxt "You're working on"
 	line "a #dex?"
 
 	para "Wow, you must know"
@@ -328,7 +328,7 @@ Route42SuicuneMovement:
 	step_end
 
 Route42LyraGreetingText:
-	text "Lyra: Hi, <PLAYER>!"
+	ctxt "Lyra: Hi, <PLAYER>!"
 
 	para "What a coinci-"
 	line "dence. I was just"
@@ -353,17 +353,17 @@ Route42LyraGreetingText:
 	done
 
 Route42LyraWinText:
-	text "You've earned this"
+	ctxt "You've earned this"
 	line "gift!"
 	done
 
 Route42LyraLossText:
-	text "Better luck next"
+	ctxt "Better luck next"
 	line "time…"
 	done
 
 Route42LyraPresentText:
-	text "Lyra: Wow, you're"
+	ctxt "Lyra: Wow, you're"
 	line "getting really"
 	cont "strong, <PLAYER>!"
 
@@ -376,7 +376,7 @@ Route42LyraPresentText:
 	done
 
 Route42LyraWhirlpoolText:
-	text "Lyra: That's"
+	ctxt "Lyra: That's"
 	line "Whirlpool."
 
 	para "Teach it to a"
@@ -393,18 +393,18 @@ Route42LyraWhirlpoolText:
 	done
 
 FisherTully1SeenText:
-	text "Let me demonstrate"
+	ctxt "Let me demonstrate"
 	line "the power of the"
 	cont "#mon I caught!"
 	done
 
 FisherTully1BeatenText:
-	text "What? That's not"
+	ctxt "What? That's not"
 	line "right."
 	done
 
 FisherTullyAfterBattleText:
-	text "I want to become"
+	ctxt "I want to become"
 	line "the trainer Champ"
 
 	para "using the #mon"
@@ -415,17 +415,17 @@ FisherTullyAfterBattleText:
 	done
 
 HikerBenjaminSeenText:
-	text "Ah, it's good to"
+	ctxt "Ah, it's good to"
 	line "be outside!"
 	cont "I feel so free!"
 	done
 
 HikerBenjaminBeatenText:
-	text "Gahahah!"
+	ctxt "Gahahah!"
 	done
 
 PokemaniacShaneSeenText:
-	text "HEY!"
+	ctxt "HEY!"
 
 	para "This is my secret"
 	line "place! Get lost,"
@@ -433,12 +433,12 @@ PokemaniacShaneSeenText:
 	done
 
 PokemaniacShaneBeatenText:
-	text "I should have used"
+	ctxt "I should have used"
 	line "my Moon Stone…"
 	done
 
 Route42OfficerText:
-	text "Sorry, you can't"
+	ctxt "Sorry, you can't"
 	line "come this way."
 
 	para "There's been an"
@@ -450,28 +450,28 @@ Route42OfficerText:
 	done
 
 Route42Sign1Text:
-	text "Route 42"
+	ctxt "Route 42"
 
 	para "Ecruteak City -"
 	line "Mahogany Town"
 	done
 
 MtMortarSign1Text:
-	text "Mt.Mortar"
+	ctxt "Mt.Mortar"
 
 	para "Waterfall Cave"
 	line "Inside"
 	done
 
 MtMortarSign2Text:
-	text "Mt.Mortar"
+	ctxt "Mt.Mortar"
 
 	para "Waterfall Cave"
 	line "Inside"
 	done
 
 Route42Sign2Text:
-	text "Route 42"
+	ctxt "Route 42"
 
 	para "Ecruteak City -"
 	line "Mahogany Town"

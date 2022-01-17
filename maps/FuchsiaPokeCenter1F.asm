@@ -26,7 +26,7 @@ PokemonJournalJanineScript:
 	setflag ENGINE_READ_JANINE_JOURNAL
 	jumpthistext
 
-	text "#mon Journal"
+	ctxt "#mon Journal"
 
 	para "Special Feature:"
 	line "Leader Janine!"
@@ -53,12 +53,12 @@ JanineImpersonatorScript:
 	end
 
 .Text1:
-	text "I'm Janine! Hocus-"
+	ctxt "I'm Janine! Hocus-"
 	line "pocus… Poof!"
 	done
 
 .Text2:
-	text "See? I look just"
+	ctxt "See? I look just"
 	line "like her now!"
 	done
 
@@ -73,7 +73,7 @@ endr
 	step_end
 
 FuchsiaPokeCenter1FCooltrainerMText:
-	text "Hey! You have a"
+	ctxt "Hey! You have a"
 	line "brand new kind of"
 	cont "#dex."
 
@@ -82,7 +82,7 @@ FuchsiaPokeCenter1FCooltrainerMText:
 	done
 
 FuchsiaPokeCenter1FCooltrainerFText:
-	text "I got quite a"
+	ctxt "I got quite a"
 	line "shock at the Gym."
 
 	para "There were all"

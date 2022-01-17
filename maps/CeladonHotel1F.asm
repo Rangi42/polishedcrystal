@@ -45,7 +45,7 @@ CeladonHotel1FRichBoyGeraldScript:
 	end
 
 CeladonHotel1FGrampsText:
-	text "#mon? No, this"
+	ctxt "#mon? No, this"
 	line "is a hotel for"
 	cont "people."
 
@@ -53,7 +53,7 @@ CeladonHotel1FGrampsText:
 	done
 
 CeladonHotel1FLadyText:
-	text "This is my first"
+	ctxt "This is my first"
 	line "trip to Kanto."
 
 	para "There's so much to"
@@ -61,13 +61,13 @@ CeladonHotel1FLadyText:
 	done
 
 CeladonHotel1FCooltrainerFText:
-	text "Ahh, I really"
+	ctxt "Ahh, I really"
 	line "needed this"
 	cont "vacation!"
 	done
 
 RichBoyGeraldGreetingText:
-	text "My sister's enjoy-"
+	ctxt "My sister's enjoy-"
 	line "ing our vacation,"
 
 	para "but I'm bored."
@@ -75,17 +75,17 @@ RichBoyGeraldGreetingText:
 	done
 
 RichBoyGeraldSeenText:
-	text "Then prepare to"
+	ctxt "Then prepare to"
 	line "lose!"
 	done
 
 RichBoyGeraldBeatenText:
-	text "At least you're"
+	ctxt "At least you're"
 	line "not boring."
 	done
 
 RichBoyGeraldAfterText:
-	text "Next time we ought"
+	ctxt "Next time we ought"
 	line "to vacation at"
 	cont "Olivine City."
 
@@ -95,23 +95,23 @@ RichBoyGeraldAfterText:
 	done
 
 RichBoyGeraldNoBattleText:
-	text "Hmph! Fine."
+	ctxt "Hmph! Fine."
 	done
 
 CeladonHotel1FSignpost1Text:
-	text "Celadon Hotel"
+	ctxt "Celadon Hotel"
 
 	para "Enjoy your stay!"
 	done
 
 CeladonHotel1FSignpost2Text:
-	text "Hotel Pool"
+	ctxt "Hotel Pool"
 
 	para "Please wear a swim"
 	line "cap in the water."
 	done
 
 CeladonHotel1FSignpost3Text:
-	text "Suites"
+	ctxt "Suites"
 	line "Upstairs"
 	done

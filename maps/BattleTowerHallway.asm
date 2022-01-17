@@ -66,7 +66,7 @@ BattleTowerHallwayFollowReceptionist:
 	end
 
 .PleaseStepThisWayText:
-	text "Please step this"
+	ctxt "Please step this"
 	line "way."
 	done
 

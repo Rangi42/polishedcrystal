@@ -18,7 +18,7 @@ Route5SaffronCityGate_MapScriptHeader:
 	object_event  6,  4, SPRITE_BLACK_BELT, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, Route5SaffronCityGateBlackBeltScript, -1
 
 Route5SaffronCityGateOfficerText:
-	text "You're from Johto,"
+	ctxt "You're from Johto,"
 	line "aren't you?"
 
 	para "How do you like"
@@ -39,13 +39,13 @@ Route5SaffronCityGateBlackBeltScript:
 	jumpthisopenedtext
 
 .Text2:
-	text "Eat lots of Pro-"
+	ctxt "Eat lots of Pro-"
 	line "tein and see your"
 	cont "strength grow!"
 	done
 
 .Text1:
-	text "Get a load of"
+	ctxt "Get a load of"
 	line "these muscles!"
 
 	para "Impressive, I"

@@ -17,7 +17,7 @@ BlackthornDragonSpeechHouse_MapScriptHeader:
 	pokemon_event  5,  5, DRATINI, SPRITEMOVEDATA_POKEMON, -1, -1, PAL_NPC_BLUE, BlackthornDragonSpeechHouseDratiniText, -1
 
 BlackthornDragonSpeechHouseGrannyText:
-	text "A clan of trainers"
+	ctxt "A clan of trainers"
 	line "who can freely"
 
 	para "command dragons"
@@ -32,5 +32,5 @@ BlackthornDragonSpeechHouseGrannyText:
 	done
 
 BlackthornDragonSpeechHouseDratiniText:
-	text "Dratini: Draa!"
+	ctxt "Dratini: Draa!"
 	done

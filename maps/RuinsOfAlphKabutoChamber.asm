@@ -132,7 +132,7 @@ MapRuinsofAlphKabutoChamberSignpost4Script:
 	endtext
 
 RuinsOfAlphKabutoChamberReceptionistText:
-	text "Welcome to this"
+	ctxt "Welcome to this"
 	line "chamber."
 
 	para "There are sliding"
@@ -157,7 +157,7 @@ RuinsOfAlphKabutoChamberReceptionistText:
 	done
 
 RuinsOfAlphKabutoChamberScientistCrypticText:
-	text "Recently, strange,"
+	ctxt "Recently, strange,"
 	line "cryptic patterns"
 	cont "have appeared."
 
@@ -170,7 +170,7 @@ RuinsOfAlphKabutoChamberScientistCrypticText:
 	done
 
 RuinsOfAlphKabutoChamberScientistHoleText:
-	text "Ah! Here's another"
+	ctxt "Ah! Here's another"
 	line "huge hole!"
 
 	para "It's big enough to"
@@ -178,7 +178,7 @@ RuinsOfAlphKabutoChamberScientistHoleText:
 	done
 
 RuinsOfAlphKabutoChamberScientistTremorText:
-	text "That tremor was"
+	ctxt "That tremor was"
 	line "pretty scary!"
 
 	para "But I'm more"
@@ -187,7 +187,7 @@ RuinsOfAlphKabutoChamberScientistTremorText:
 	done
 
 RuinsOfAlphKabutoChamberDescriptionText:
-	text "A #mon that hid"
+	ctxt "A #mon that hid"
 	line "on the sea floor."
 
 	para "Eyes on its back"

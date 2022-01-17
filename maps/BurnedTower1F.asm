@@ -122,7 +122,7 @@ BurnedTowerRivalBattleScript:
 GenericTrainerHexManiacTamara:
 	generictrainer HEX_MANIAC, TAMARA, EVENT_BEAT_HEX_MANIAC_TAMARA, HexManiacTamaraSeenText, HexManiacTamaraBeatenText
 
-	text "There are powers"
+	ctxt "There are powers"
 	line "beyond our under-"
 
 	para "standing in the"
@@ -132,7 +132,7 @@ GenericTrainerHexManiacTamara:
 GenericTrainerFirebreatherNed:
 	generictrainer FIREBREATHER, NED, EVENT_BEAT_FIREBREATHER_NED, FirebreatherNedSeenText, FirebreatherNedBeatenText
 
-	text "We Firebreathers"
+	ctxt "We Firebreathers"
 	line "know the true"
 
 	para "power of fire"
@@ -149,7 +149,7 @@ BurnedTower1FEusineMovement:
 	step_end
 
 BurnedTowerSilver_BeforeText:
-	text "…… …… ……"
+	ctxt "…… …… ……"
 
 	para "…Oh, it's you."
 
@@ -173,7 +173,7 @@ BurnedTowerSilver_BeforeText:
 	done
 
 BurnedTowerSilver_WinText:
-	text "…Humph!"
+	ctxt "…Humph!"
 
 	para "This is why I hate"
 	line "battling wimps."
@@ -183,7 +183,7 @@ BurnedTowerSilver_WinText:
 	done
 
 BurnedTowerSilver_AfterText1:
-	text "…Aw, whatever."
+	ctxt "…Aw, whatever."
 
 	para "You would never be"
 	line "able to catch a"
@@ -193,7 +193,7 @@ BurnedTowerSilver_AfterText1:
 	done
 
 BurnedTowerSilver_LossText:
-	text "…Humph!"
+	ctxt "…Humph!"
 
 	para "This is why I hate"
 	line "battling wimps."
@@ -203,7 +203,7 @@ BurnedTowerSilver_LossText:
 	done
 
 BurnedTowerSilver_AfterText2:
-	text "Humph!"
+	ctxt "Humph!"
 
 	para "What are you doing"
 	line "falling into a"
@@ -215,7 +215,7 @@ BurnedTowerSilver_AfterText2:
 	done
 
 BurnedTower1FEusineIntroText:
-	text "Eusine: My name's"
+	ctxt "Eusine: My name's"
 	line "Eusine."
 
 	para "I'm on the trail"
@@ -238,7 +238,7 @@ BurnedTower1FEusineIntroText:
 	done
 
 BurnedTower1FEusineText:
-	text "Eusine: I heard"
+	ctxt "Eusine: I heard"
 	line "that Suicune is in"
 
 	para "this Burned Tower,"
@@ -249,7 +249,7 @@ BurnedTower1FEusineText:
 	done
 
 BurnedTower1FMortyText:
-	text "Morty: Ecruteak's"
+	ctxt "Morty: Ecruteak's"
 	line "Gym Leader has to"
 
 	para "study what are"
@@ -267,16 +267,16 @@ BurnedTower1FMortyText:
 	done
 
 HexManiacTamaraSeenText:
-	text "A strange power is"
+	ctxt "A strange power is"
 	line "present here…"
 	done
 
 HexManiacTamaraBeatenText:
-	text "I have lost…"
+	ctxt "I have lost…"
 	done
 
 FirebreatherNedSeenText:
-	text "My soul is on"
+	ctxt "My soul is on"
 	line "fire. I'll show"
 
 	para "you how hot it"
@@ -284,7 +284,7 @@ FirebreatherNedSeenText:
 	done
 
 FirebreatherNedBeatenText:
-	text "Still not hot"
+	ctxt "Still not hot"
 	line "enough…"
 	done
 

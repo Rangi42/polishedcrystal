@@ -93,7 +93,7 @@ CeruleanCityYoungsterScript:
 	jumptext CeruleanCityYoungsterText2
 
 CeruleanCityCooltrainerMText1:
-	text "Kanto's Power"
+	ctxt "Kanto's Power"
 	line "Plant?"
 
 	para "It's near the end"
@@ -108,7 +108,7 @@ CeruleanCityCooltrainerMText1:
 	done
 
 CeruleanCityCooltrainerMText2:
-	text "You're collecting"
+	ctxt "You're collecting"
 	line "every single kind"
 	cont "of #mon?"
 
@@ -118,7 +118,7 @@ CeruleanCityCooltrainerMText2:
 	done
 
 CeruleanCitySuperNerdText:
-	text "The Cape in the"
+	ctxt "The Cape in the"
 	line "north is a good"
 
 	para "place for dates."
@@ -126,52 +126,52 @@ CeruleanCitySuperNerdText:
 	done
 
 CeruleanCitySlowbroText:
-	text "Slowbro: Yarah?"
+	ctxt "Slowbro: Yarah?"
 	done
 
 CeruleanCityCooltrainerFText1:
-	text "My Slowbro and I"
+	ctxt "My Slowbro and I"
 	line "make an awesome"
 	cont "combination!"
 	done
 
 CeruleanCityCooltrainerFText2:
-	text "Slowbro, show me"
+	ctxt "Slowbro, show me"
 	line "your Confusion!"
 	done
 
 CeruleanCityCooltrainerFText3:
-	text "…"
+	ctxt "…"
 	done
 
 CeruleanCityFisherText:
-	text "I'm a huge fan of"
+	ctxt "I'm a huge fan of"
 	line "Cerulean Gym's"
 	cont "Misty."
 	done
 
 CeruleanCityFisherRocketTipText:
-	text "I saw this shady"
+	ctxt "I saw this shady"
 	line "guy go off toward"
 	cont "Cerulean Cape."
 	done
 
 CeruleanCityYoungsterText1:
-	text "There's a cave"
+	ctxt "There's a cave"
 	line "here with scary-"
 	cont "powerful #mon"
 	cont "in it."
 	done
 
 CeruleanCityYoungsterText2:
-	text "Ayuh?"
+	ctxt "Ayuh?"
 
 	para "My Itemfinder is"
 	line "responding…"
 	done
 
 CeruleanCityYoungsterText:
-	text "My Itemfinder"
+	ctxt "My Itemfinder"
 	line "stopped respond-"
 	cont "ing…"
 
@@ -180,7 +180,7 @@ CeruleanCityYoungsterText:
 	done
 
 CeruleanCaveGuardText:
-	text "This is…"
+	ctxt "This is…"
 
 	para "The notorious"
 	line "Cerulean Cave!"
@@ -197,14 +197,14 @@ CeruleanCaveGuardText:
 	done
 
 CeruleanCitySignText:
-	text "Cerulean City"
+	ctxt "Cerulean City"
 
 	para "A Mysterious Blue"
 	line "Aura Surrounds It"
 	done
 
 CeruleanGymSignText:
-	text "Cerulean City"
+	ctxt "Cerulean City"
 	line "#mon Gym"
 	cont "Leader: Misty"
 
@@ -213,14 +213,14 @@ CeruleanGymSignText:
 	done
 
 CeruleanBikeShopSignText:
-	text "Trendsetter of"
+	ctxt "Trendsetter of"
 	line "the Bicycle Boom"
 
 	para "Miracle Cycle"
 	done
 
 CeruleanPoliceSignText:
-	text "There's a notice"
+	ctxt "There's a notice"
 	line "here…"
 
 	para "Stamp out thievery"
@@ -233,17 +233,17 @@ CeruleanPoliceSignText:
 	done
 
 CeruleanCapeSignText:
-	text "Cerulean Cape"
+	ctxt "Cerulean Cape"
 	line "Ahead"
 	done
 
 CeruleanBubblerText:
-	text "The water"
+	ctxt "The water"
 	line "tastes good!"
 	done
 
 CeruleanTrainerTipsText:
-	text "Trainer Tips"
+	ctxt "Trainer Tips"
 
 	para "Even without an"
 	line "ItemFinder, you"

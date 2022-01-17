@@ -94,16 +94,16 @@ Leaf:
 	end
 
 LeafText:
-	text "…………"
+	ctxt "…………"
 	line "…………!"
 	done
 
 LeafWinLossText:
-	text "…!"
+	ctxt "…!"
 	done
 
 LeafAfterText:
-	text "…………"
+	ctxt "…………"
 	line "…………"
 	done
 

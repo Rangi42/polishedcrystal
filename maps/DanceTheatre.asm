@@ -28,7 +28,7 @@ DanceTheatre_MapScriptHeader:
 GenericTrainerKimono_girlNaoko:
 	generictrainer KIMONO_GIRL_1, NAOKO, EVENT_BEAT_KIMONO_GIRL_NAOKO, Kimono_girlNaokoSeenText, Kimono_girlNaokoBeatenText
 
-	text "I enjoyed that"
+	ctxt "I enjoyed that"
 	line "bout. I would like"
 	cont "to see you again."
 	done
@@ -36,7 +36,7 @@ GenericTrainerKimono_girlNaoko:
 GenericTrainerKimono_girlSayo:
 	generictrainer KIMONO_GIRL_2, SAYO, EVENT_BEAT_KIMONO_GIRL_SAYO, Kimono_girlSayoSeenText, Kimono_girlSayoBeatenText
 
-	text "Rhythm is impor-"
+	ctxt "Rhythm is impor-"
 	line "tant for both"
 
 	para "dancing and #-"
@@ -46,7 +46,7 @@ GenericTrainerKimono_girlSayo:
 GenericTrainerKimono_girlZuki:
 	generictrainer KIMONO_GIRL_3, ZUKI, EVENT_BEAT_KIMONO_GIRL_ZUKI, Kimono_girlZukiSeenText, Kimono_girlZukiBeatenText
 
-	text "I put a different"
+	ctxt "I put a different"
 	line "flower in my bar-"
 	cont "rette every month."
 	done
@@ -54,7 +54,7 @@ GenericTrainerKimono_girlZuki:
 GenericTrainerKimono_girlKuni:
 	generictrainer KIMONO_GIRL_4, KUNI, EVENT_BEAT_KIMONO_GIRL_KUNI, Kimono_girlKuniSeenText, Kimono_girlKuniBeatenText
 
-	text "I trained a lot,"
+	ctxt "I trained a lot,"
 	line "so I thought I was"
 
 	para "a capable trainer."
@@ -64,7 +64,7 @@ GenericTrainerKimono_girlKuni:
 GenericTrainerKimono_girlMiki:
 	generictrainer KIMONO_GIRL_5, MIKI, EVENT_BEAT_KIMONO_GIRL_MIKI, Kimono_girlMikiSeenText, Kimono_girlMikiBeatenText
 
-	text "I can keep dancing"
+	ctxt "I can keep dancing"
 	line "because there are"
 
 	para "people who enjoy"
@@ -97,7 +97,7 @@ DanceTheaterSurfGuy:
 	setevent EVENT_GOT_HM03_SURF
 	jumpthisopenedtext
 
-	text "That's Surf."
+	ctxt "That's Surf."
 
 	para "It's a move that"
 	line "lets #mon swim"
@@ -110,7 +110,7 @@ DanceTheaterSurfGuy:
 	jumpthisopenedtext
 
 SurfGuyLadGiftText:
-	text "Lad! If you can"
+	ctxt "Lad! If you can"
 	line "defeat all the"
 
 	para "Kimono Girls, I'll"
@@ -121,18 +121,18 @@ MapDanceTheatreSignpost1Script:
 	jumptext DanceTheatreFancyPanelText
 
 Kimono_girlNaokoSeenText:
-	text "You have lovely"
+	ctxt "You have lovely"
 	line "#mon. May I see"
 	cont "them in battle?"
 	done
 
 Kimono_girlNaokoBeatenText:
-	text "Oh, you are very"
+	ctxt "Oh, you are very"
 	line "strong."
 	done
 
 Kimono_girlSayoSeenText:
-	text "I always dance"
+	ctxt "I always dance"
 	line "with my #mon."
 
 	para "Of course, I also"
@@ -140,12 +140,12 @@ Kimono_girlSayoSeenText:
 	done
 
 Kimono_girlSayoBeatenText:
-	text "Oh, so close!"
+	ctxt "Oh, so close!"
 	line "I almost had you."
 	done
 
 Kimono_girlZukiSeenText:
-	text "Isn't my barrette"
+	ctxt "Isn't my barrette"
 	line "pretty?"
 
 	para "Oh. A #mon"
@@ -153,34 +153,34 @@ Kimono_girlZukiSeenText:
 	done
 
 Kimono_girlZukiBeatenText:
-	text "I don't have any"
+	ctxt "I don't have any"
 	line "#mon left…"
 	done
 
 Kimono_girlKuniSeenText:
-	text "Oh, you're a cute"
+	ctxt "Oh, you're a cute"
 	line "trainer. Would you"
 	cont "like to battle?"
 	done
 
 Kimono_girlKuniBeatenText:
-	text "You're stronger"
+	ctxt "You're stronger"
 	line "than you look."
 	done
 
 Kimono_girlMikiSeenText:
-	text "Do you like my"
+	ctxt "Do you like my"
 	line "dancing? I'm good"
 	cont "at #mon too."
 	done
 
 Kimono_girlMikiBeatenText:
-	text "Ooh, you're good"
+	ctxt "Ooh, you're good"
 	line "at #mon too."
 	done
 
 SurfGuyNeverLeftAScratchText:
-	text "Not only are the"
+	ctxt "Not only are the"
 	line "Kimono Girls great"
 
 	para "dancers, they're"
@@ -195,7 +195,7 @@ SurfGuyNeverLeftAScratchText:
 	done
 
 SurfGuyLassieGiftText:
-	text "Lassie, if you can"
+	ctxt "Lassie, if you can"
 	line "defeat all the"
 
 	para "Kimono Girls, I'll"
@@ -203,7 +203,7 @@ SurfGuyLassieGiftText:
 	done
 
 SurfGuyLikeADanceText:
-	text "The way you bat-"
+	ctxt "The way you bat-"
 	line "tled, it was like"
 	cont "watching a dance."
 
@@ -216,18 +216,18 @@ SurfGuyLikeADanceText:
 	done
 
 SurfGuyElegantKimonoGirlsText:
-	text "I wish my #mon"
+	ctxt "I wish my #mon"
 	line "were as elegant as"
 	cont "the Kimono Girls."
 	done
 
 RhydonText:
-	text "Rhydon: Gugooh"
+	ctxt "Rhydon: Gugooh"
 	line "gugogooh!"
 	done
 
 DanceTheatreCooltrainerMText:
-	text "That man's always"
+	ctxt "That man's always"
 	line "with his Rhydon."
 
 	para "Says he wants a"
@@ -241,7 +241,7 @@ DanceTheatreCooltrainerMText:
 	done
 
 DanceTheatreGrannyText:
-	text "The Kimono Girls"
+	ctxt "The Kimono Girls"
 	line "are so beautiful…"
 
 	para "But they have to"
@@ -260,7 +260,7 @@ DanceTheatreGrannyText:
 	done
 
 DanceTheatreLadyText:
-	text "Eevee can evolve"
+	ctxt "Eevee can evolve"
 	line "into Leafeon, Gla-"
 	cont "ceon, or Sylveon,"
 
@@ -272,7 +272,7 @@ DanceTheatreLadyText:
 	done
 
 DanceTheatreFancyPanelText:
-	text "It's a fancy panel"
+	ctxt "It's a fancy panel"
 	line "that's decorated"
 	cont "with flowers."
 	done

@@ -129,13 +129,13 @@ TrainerHikerAnthony:
 GenericTrainerSchoolgirlImogen:
 	generictrainer SCHOOLGIRL, IMOGEN, EVENT_BEAT_SCHOOLGIRL_IMOGEN, SchoolgirlImogenSeenText, SchoolgirlImogenBeatenText
 
-	text "I'm trying hard so"
+	ctxt "I'm trying hard so"
 	line "I can be the star"
 	cont "in my class."
 	done
 
 HikerAnthony1SeenText:
-	text "I came through the"
+	ctxt "I came through the"
 	line "tunnel, but I"
 
 	para "still have plenty"
@@ -143,18 +143,18 @@ HikerAnthony1SeenText:
 	done
 
 HikerAnthony1BeatenText:
-	text "Whoa! You've got"
+	ctxt "Whoa! You've got"
 	line "more zip than me!"
 	done
 
 HikerAnthony1AfterText:
-	text "We Hikers are at"
+	ctxt "We Hikers are at"
 	line "our best in the"
 	cont "mountains."
 	done
 
 HikerAnthonyDunsparceText:
-	text "Hey, did you get a"
+	ctxt "Hey, did you get a"
 	line "Dunsparce?"
 
 	para "I caught one too."
@@ -165,15 +165,15 @@ HikerAnthonyDunsparceText:
 	done
 
 SchoolgirlImogenSeenText:
-	text "I'm the best in my"
+	ctxt "I'm the best in my"
 	line "class at #mon."
 	done
 
 SchoolgirlImogenBeatenText:
-	text "So there are bet-"
+	ctxt "So there are bet-"
 	line "ter trainers…"
 	done
 
 Route33SignText:
-	text "Route 33"
+	ctxt "Route 33"
 	done

@@ -123,18 +123,18 @@ CeladonHomeDecorStore3FClerk2Script:
 	jumpopenedtext CeladonHomeDecorStore3FNoMoneyText
 
 CeladonHomeDecorStore3FClerk1Text:
-	text "Welcome! Would"
+	ctxt "Welcome! Would"
 	line "you like a carpet?"
 	done
 
 CeladonHomeDecorStore3FClerk2Text:
-	text "Doesn't a carpet"
+	ctxt "Doesn't a carpet"
 	line "really tie your"
 	cont "room together?"
 	done
 
 CeladonHomeDecorStore3FClerk2SaleText:
-	text "Our imported"
+	ctxt "Our imported"
 	line "Royal Blue Carpet"
 
 	para "is on sale right"
@@ -145,77 +145,77 @@ CeladonHomeDecorStore3FClerk2SaleText:
 	done
 
 CeladonHomeDecorStore3FClerk2YesText:
-	text "Thank you!"
+	ctxt "Thank you!"
 	line "Have a nice day!"
 	done
 
 CeladonHomeDecorStore3FClerk2NoText:
-	text "Have a nice day!"
+	ctxt "Have a nice day!"
 	done
 
 BoughtRedCarpetText:
-	text "<PLAYER> bought"
+	ctxt "<PLAYER> bought"
 	line "Red Carpet."
 	done
 
 RedCarpetSentText:
-	text "Red Carpet"
+	ctxt "Red Carpet"
 	line "was sent home."
 	done
 
 BoughtBlueCarpetText:
-	text "<PLAYER> bought"
+	ctxt "<PLAYER> bought"
 	line "Blue Carpet."
 	done
 
 BlueCarpetSentText:
-	text "Blue Carpet"
+	ctxt "Blue Carpet"
 	line "was sent home."
 	done
 
 BoughtYellowCarpetText:
-	text "<PLAYER> bought"
+	ctxt "<PLAYER> bought"
 	line "Yellow Carpet."
 	done
 
 YellowCarpetSentText:
-	text "Yellow Carpet"
+	ctxt "Yellow Carpet"
 	line "was sent home."
 	done
 
 BoughtGreenCarpetText:
-	text "<PLAYER> bought"
+	ctxt "<PLAYER> bought"
 	line "Green Carpet."
 	done
 
 GreenCarpetSentText:
-	text "Green Carpet"
+	ctxt "Green Carpet"
 	line "was sent home."
 	done
 
 CeladonHomeDecorStore3FNoMoneyText:
-	text "You can't afford"
+	ctxt "You can't afford"
 	line "that!"
 	done
 
 CeladonHomeDecorStore3FAlreadyBoughtText:
-	text "You already have"
+	ctxt "You already have"
 	line "that!"
 	done
 
 CeladonHomeDecorStore3FYoungsterText:
-	text "This carpet feels"
+	ctxt "This carpet feels"
 	line "so plush!"
 	done
 
 CeladonHomeDecorStore3FBeautyText:
-	text "Some of these"
+	ctxt "Some of these"
 	line "carpets are im-"
 	cont "ported from Kalos!"
 	done
 
 CeladonHomeDecorStore3FDirectoryText:
-	text "Colorful Elegance"
+	ctxt "Colorful Elegance"
 
 	para "3F: Carpets"
 	done

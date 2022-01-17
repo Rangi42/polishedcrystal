@@ -30,7 +30,7 @@ Route12SuperRodHouseFishingGuruScript:
 	jumpthisopenedtext
 
 GaveSuperRodText:
-	text "Try your hand at"
+	ctxt "Try your hand at"
 	line "fishing wherever"
 	cont "there is water."
 
@@ -48,7 +48,7 @@ UnknownScript_0x7f4aa:
 	endtext
 
 OfferSuperRodText:
-	text "I'm the Fishing"
+	ctxt "I'm the Fishing"
 	line "Guru's younger"
 	cont "brother."
 
@@ -63,7 +63,7 @@ OfferSuperRodText:
 	done
 
 GiveSuperRodText:
-	text "Yes, yes. Just as"
+	ctxt "Yes, yes. Just as"
 	line "I thought!"
 
 	para "Here, fishing fan!"
@@ -72,6 +72,6 @@ GiveSuperRodText:
 	done
 
 DontWantSuperRodText:
-	text "Huh? My own eyes"
+	ctxt "Huh? My own eyes"
 	line "deceived me?"
 	done

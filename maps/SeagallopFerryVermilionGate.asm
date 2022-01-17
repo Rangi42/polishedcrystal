@@ -225,12 +225,12 @@ SeagallopFerryVermilionGateSailorArrive2MovementData:
 	step_end
 
 SeagallopFerryWelcomeText:
-	text "Welcome aboard the"
+	ctxt "Welcome aboard the"
 	line "Seagallop Ferry!"
 	done
 
 SeagallopFerryGiveOrangeTicketText:
-	text "The man who just"
+	ctxt "The man who just"
 	line "left said he didn't"
 
 	para "need this ticket."
@@ -238,12 +238,12 @@ SeagallopFerryGiveOrangeTicketText:
 	done
 
 SeagallopFerryClosedText:
-	text "I'm sorry, you don't"
+	ctxt "I'm sorry, you don't"
 	line "have a ticket."
 	done
 
 SeagallopFerryOrangeTicketQuestionText:
-	text "That OrangeTicket"
+	ctxt "That OrangeTicket"
 	line "is for a ride to"
 	cont "Shamouti Island."
 
@@ -253,7 +253,7 @@ SeagallopFerryOrangeTicketQuestionText:
 	done
 
 SeagallopFerryMysticTicketQuestionText:
-	text "Oh! That's a"
+	ctxt "Oh! That's a"
 	line "MysticTicket!"
 	cont "Now that is rare."
 
@@ -263,7 +263,7 @@ SeagallopFerryMysticTicketQuestionText:
 	done
 
 SeagallopFerryOldSeaMapQuestionText:
-	text "Oh! That Old Sea"
+	ctxt "Oh! That Old Sea"
 	line "Map you have…"
 
 	para "It looks like a"
@@ -275,17 +275,17 @@ SeagallopFerryOldSeaMapQuestionText:
 	done
 
 SeagallopFerryWhichTicketText:
-	text "Do you have a"
+	ctxt "Do you have a"
 	line "ticket?"
 	done
 
 SeagallopFerryDepartureText:
-	text "All right!"
+	ctxt "All right!"
 
 	para "All aboard the"
 	line "Seagallop Ferry!"
 	done
 
 SeagallopFerryVermilionCityRefusedText:
-	text "Come again!"
+	ctxt "Come again!"
 	done

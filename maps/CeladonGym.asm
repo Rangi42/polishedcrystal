@@ -72,14 +72,14 @@ CeladonGymErikaScript:
 GenericTrainerLassMichelle:
 	generictrainer LASS, MICHELLE, EVENT_BEAT_LASS_MICHELLE, LassMichelleSeenText, LassMichelleBeatenText
 
-	text "I just got care-"
+	ctxt "I just got care-"
 	line "less, that's all!"
 	done
 
 GenericTrainerPicnickerTanya:
 	generictrainer PICNICKER, TANYA, EVENT_BEAT_PICNICKER_TANYA, PicnickerTanyaSeenText, PicnickerTanyaBeatenText
 
-	text "Oh, look at all"
+	ctxt "Oh, look at all"
 	line "your Badges. No"
 
 	para "wonder I couldn't"
@@ -89,7 +89,7 @@ GenericTrainerPicnickerTanya:
 GenericTrainerBeautyJulia:
 	generictrainer BEAUTY, JULIA, EVENT_BEAT_BEAUTY_JULIA, BeautyJuliaSeenText, BeautyJuliaBeatenText
 
-	text "How do I go about"
+	ctxt "How do I go about"
 	line "becoming ladylike"
 	cont "like Erika?"
 	done
@@ -97,7 +97,7 @@ GenericTrainerBeautyJulia:
 GenericTrainerAroma_ladyDahlia:
 	generictrainer AROMA_LADY, DAHLIA, EVENT_BEAT_AROMA_LADY_DAHLIA, Aroma_ladyDahliaSeenText, Aroma_ladyDahliaBeatenText
 
-	text "Gloom releases a"
+	ctxt "Gloom releases a"
 	line "foul fragrance,"
 
 	para "but Erika knows"
@@ -110,14 +110,14 @@ GenericTrainerAroma_ladyDahlia:
 GenericTrainerTwinsJoandzoe1:
 	generictrainer TWINS, JOANDZOE1, EVENT_BEAT_TWINS_JO_AND_ZOE, TwinsJoandzoe1SeenText, TwinsJoandzoe1BeatenText
 
-	text "Erika will get you"
+	ctxt "Erika will get you"
 	line "back for us!"
 	done
 
 GenericTrainerTwinsJoandzoe2:
 	generictrainer TWINS, JOANDZOE2, EVENT_BEAT_TWINS_JO_AND_ZOE, TwinsJoandzoe2SeenText, TwinsJoandzoe2BeatenText
 
-	text "Erika is much,"
+	ctxt "Erika is much,"
 	line "much stronger!"
 	done
 
@@ -130,7 +130,7 @@ CeladonGymStatue:
 	jumpstd gymstatue2
 
 ErikaBeforeBattleText:
-	text "Erika: Hello…"
+	ctxt "Erika: Hello…"
 	line "Lovely weather,"
 
 	para "isn't it?"
@@ -158,7 +158,7 @@ ErikaBeforeBattleText:
 	done
 
 ErikaBeatenText:
-	text "Erika: Oh!"
+	ctxt "Erika: Oh!"
 	line "I concede defeat…"
 
 	para "You are remarkably"
@@ -169,12 +169,12 @@ ErikaBeatenText:
 	done
 
 PlayerReceivedRainbowBadgeText:
-	text "<PLAYER> received"
+	ctxt "<PLAYER> received"
 	line "the Rainbow Badge."
 	done
 
 ErikaExplainTMText:
-	text "Erika: That was a"
+	ctxt "Erika: That was a"
 	line "delightful match."
 
 	para "I felt inspired."
@@ -183,7 +183,7 @@ ErikaExplainTMText:
 	done
 
 ErikaOutroText:
-	text "It is Giga Drain."
+	ctxt "It is Giga Drain."
 
 	para "It is a wonderful"
 	line "move that drains"
@@ -197,7 +197,7 @@ ErikaOutroText:
 	done
 
 ErikaAfterBattleText:
-	text "Erika: Losing"
+	ctxt "Erika: Losing"
 	line "leaves a bitter"
 	cont "aftertaste…"
 
@@ -209,62 +209,62 @@ ErikaAfterBattleText:
 	done
 
 LassMichelleSeenText:
-	text "Do you think a"
+	ctxt "Do you think a"
 	line "girls-only Gym"
 	cont "is rare?"
 	done
 
 LassMichelleBeatenText:
-	text "Oh, bleah!"
+	ctxt "Oh, bleah!"
 	done
 
 PicnickerTanyaSeenText:
-	text "Oh, a battle?"
+	ctxt "Oh, a battle?"
 	line "That's kind of"
 	cont "scary, but OK!"
 	done
 
 PicnickerTanyaBeatenText:
-	text "Oh, that's it?"
+	ctxt "Oh, that's it?"
 	done
 
 BeautyJuliaSeenText:
-	text "Were you looking"
+	ctxt "Were you looking"
 	line "at these flowers"
 	cont "or at me?"
 	done
 
 BeautyJuliaBeatenText:
-	text "How annoying!"
+	ctxt "How annoying!"
 	done
 
 Aroma_ladyDahliaSeenText:
-	text "There is an in-"
+	ctxt "There is an in-"
 	line "triguing scent"
 	cont "around you…"
 	done
 
 Aroma_ladyDahliaBeatenText:
-	text "The foul scent"
+	ctxt "The foul scent"
 	line "of defeat…"
 	done
 
 TwinsJoandzoe1SeenText:
-	text "We'll show you"
+	ctxt "We'll show you"
 	line "#mon moves that"
 	cont "Erika taught us!"
 	done
 
 TwinsJoandzoe1BeatenText:
-	text "Oh… We lost…"
+	ctxt "Oh… We lost…"
 	done
 
 TwinsJoandzoe2SeenText:
-	text "We're going to"
+	ctxt "We're going to"
 	line "protect Erika!"
 	done
 
 TwinsJoandzoe2BeatenText:
-	text "We couldn't win…"
+	ctxt "We couldn't win…"
 	done
 

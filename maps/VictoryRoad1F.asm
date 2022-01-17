@@ -20,17 +20,17 @@ VictoryRoad1F_MapScriptHeader:
 GenericTrainerVeteranmMatt:
 	generictrainer VETERANM, MATT, EVENT_BEAT_VETERANM_MATT, VeteranmMattSeenText, VeteranmMattBeatenText
 
-	text "I concede, you're"
+	ctxt "I concede, you're"
 	line "better than me!"
 	done
 
 VeteranmMattSeenText:
-	text "I can see you're"
+	ctxt "I can see you're"
 	line "good! Let me see"
 	cont "exactly how good!"
 	done
 
 VeteranmMattBeatenText:
-	text "I had a chance…"
+	ctxt "I had a chance…"
 	done
 

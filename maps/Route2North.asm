@@ -27,13 +27,13 @@ Route2North_MapScriptHeader:
 GenericTrainerBug_maniacEd:
 	generictrainer BUG_MANIAC, ED, EVENT_BEAT_BUG_MANIAC_ED, Bug_maniacEdSeenText, Bug_maniacEdBeatenText
 
-	text "They'll really"
+	ctxt "They'll really"
 	line "sting when you"
 	cont "take a bath."
 	done
 
 Bug_maniacEdSeenText:
-	text "If you walk in"
+	ctxt "If you walk in"
 	line "tall grass wearing"
 
 	para "shorts, do you get"
@@ -41,11 +41,11 @@ Bug_maniacEdSeenText:
 	done
 
 Bug_maniacEdBeatenText:
-	text "Ouch, ouch, ouch!"
+	ctxt "Ouch, ouch, ouch!"
 	done
 
 Route2NorthCooltrainermText:
-	text "Diglett's Cave is"
+	ctxt "Diglett's Cave is"
 	line "just a dead end."
 
 	para "The Vermilion City"
@@ -56,5 +56,5 @@ Route2NorthCooltrainermText:
 	done
 
 Route2DiglettsCaveSignText:
-	text "Diglett's Cave"
+	ctxt "Diglett's Cave"
 	done

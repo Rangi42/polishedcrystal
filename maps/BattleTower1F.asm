@@ -47,7 +47,7 @@ BattleTower1FContinueChallenge:
 	; We saved in-between rounds. Resume Battle Tower challenge.
 	opentext
 	writethistext
-		text "We've been waiting"
+		ctxt "We've been waiting"
 		line "for you."
 		prompt
 
@@ -63,7 +63,7 @@ BattleTower1FContinueChallenge:
 .LeftWithoutSaving2:
 	opentext
 	writethistext
-		text "Excuse me!"
+		ctxt "Excuse me!"
 		line "You didn't save"
 
 		para "before exiting"
@@ -90,7 +90,7 @@ BattleTower1FContinueChallenge:
 .WonChallenge2:
 	opentext
 	writethistext
-		text "Congratulations!"
+		ctxt "Congratulations!"
 
 		para "You've beaten all"
 		line "the trainers!"
@@ -106,7 +106,7 @@ Script_CommitBattleTowerResult:
 	setevent EVENT_BEAT_PALMER
 .WeHopeToServeYouAgain:
 	writethistext
-		text "We hope to serve"
+		ctxt "We hope to serve"
 		line "you again."
 		done
 	waitbutton
@@ -115,7 +115,7 @@ Script_CommitBattleTowerResult:
 BattleTower1FRulesScript:
 	opentext
 	writethistext
-		text "Battle Tower rules"
+		ctxt "Battle Tower rules"
 		line "are written here."
 
 		para "Read the rules?"
@@ -123,7 +123,7 @@ BattleTower1FRulesScript:
 	yesorno
 	iffalse_endtext
 	jumpthisopenedtext
-		text "Three #mon may"
+		ctxt "Three #mon may"
 		line "enter battles."
 
 		para "All three must be"
@@ -140,18 +140,18 @@ BattleTower1FRulesScript:
 		done
 
 BattleTower1FStreakText:
-	text "Streak: "
+	ctxt "Streak: "
 	text_decimal wBattleTowerCurStreak, 2, 5
-	text " wins"
+	ctxt " wins"
 	line "Record: "
 	text_decimal wBattleTowerTopStreak, 2, 5
-	text " wins"
+	ctxt " wins"
 	done
 
 BattleTower1FReceptionistScript:
 	opentext
 	writethistext
-		text "Battle Tower"
+		ctxt "Battle Tower"
 		line "welcomes you!"
 
 		para "I could show you"
@@ -164,7 +164,7 @@ BattleTower1FReceptionistScript:
 	; only ask once, so set the flag regardless
 	setevent EVENT_BATTLE_TOWER_INTRO
 	writethistext
-		text "Would you like to"
+		ctxt "Would you like to"
 		line "hear about the"
 		cont "Battle Tower?"
 		done
@@ -173,7 +173,7 @@ BattleTower1FReceptionistScript:
 
 .Explanation:
 	writethistext
-		text "Battle Tower is a"
+		ctxt "Battle Tower is a"
 		line "facility made for"
 		cont "#mon battles."
 
@@ -210,7 +210,7 @@ BattleTower1FReceptionistScript:
 	; Setscene here in case the player aborted a quicksave prompted by challenge
 	setscene 1
 	writethistext
-		text "Want to go into a"
+		ctxt "Want to go into a"
 		line "Battle Room?"
 		done
 	loadmenu MenuDataHeader_BattleInfoCancel
@@ -219,20 +219,20 @@ BattleTower1FReceptionistScript:
 	ifequal $1, .Challenge
 	ifequal $2, .Explanation
 	writethistext
-		text "We hope to serve"
+		ctxt "We hope to serve"
 		line "you again."
 		prompt
 	endtext
 
 .Challenge:
 	writethistext
-		text "Choose #mon"
+		ctxt "Choose #mon"
 		line "to enter."
 		prompt
 	special Special_BattleTower_SelectParticipants
 	iffalse .BattleTowerMenu
 	writethistext
-		text "Before entering"
+		ctxt "Before entering"
 		line "the Battle Room,"
 
 		para "your progress will"
@@ -258,7 +258,7 @@ Script_ReturnToBattleTowerChallenge:
 
 	; Everything ready to go for challenge start
 	writethistext
-		text "Right this way to"
+		ctxt "Right this way to"
 		line "your Battle Room."
 		done
 	waitbutton
@@ -305,7 +305,7 @@ BattleTowerPharmacistScript:
 	checkevent EVENT_LISTENED_TO_TRICK_INTRO
 	iftrue BattleTowerTutorTrickScript
 	writethistext
-		text "The trainers here"
+		ctxt "The trainers here"
 		line "strategically use"
 		cont "held items."
 
@@ -320,7 +320,7 @@ BattleTowerPharmacistScript:
 	setevent EVENT_LISTENED_TO_TRICK_INTRO
 BattleTowerTutorTrickScript:
 	writethistext
-		text "I'll teach your"
+		ctxt "I'll teach your"
 		line "#mon how to"
 
 		para "use Trick…"
@@ -330,7 +330,7 @@ BattleTowerTutorTrickScript:
 	checkitem SILVER_LEAF
 	iffalse .NoSilverLeaf
 	writethistext
-		text "Should I teach"
+		ctxt "Should I teach"
 		line "your #mon"
 		cont "Trick?"
 		done
@@ -342,26 +342,26 @@ BattleTowerTutorTrickScript:
 	ifequal $0, .TeachMove
 .TutorRefused
 	jumpthisopenedtext
-		text "Talk to me if you"
+		ctxt "Talk to me if you"
 		line "change your mind."
 		done
 
 .NoSilverLeaf
 	jumpthisopenedtext
-		text "Tch. You don't have"
+		ctxt "Tch. You don't have"
 		line "a Silver Leaf…"
 		done
 
 .TeachMove
 	takeitem SILVER_LEAF
 	jumpthisopenedtext
-		text "Now your #mon"
+		ctxt "Now your #mon"
 		line "can use Trick too!"
 		cont "Isn't it devious?"
 		done
 
 Text_BattleTowerCooltrainerF:
-	text "There are lots of"
+	ctxt "There are lots of"
 	line "Battle Rooms, but"
 
 	para "I'm going to win"
@@ -369,7 +369,7 @@ Text_BattleTowerCooltrainerF:
 	done
 
 Text_BattleTowerGranny:
-	text "It's a grueling"
+	ctxt "It's a grueling"
 	line "task, not being"
 
 	para "able to use items"
@@ -383,7 +383,7 @@ Text_BattleTowerGranny:
 	done
 
 Text_BattleTowerBugCatcher:
-	text "I'm trying to see"
+	ctxt "I'm trying to see"
 	line "how far I can go"
 
 	para "using just bug"

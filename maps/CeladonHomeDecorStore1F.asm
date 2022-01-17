@@ -24,21 +24,21 @@ CeladonHomeDecorStore1F_MapScriptHeader:
 CeladonHomeDecorStore1FBulbasaurDollScript:
 	jumpthistext
 
-	text "It's a cute"
+	ctxt "It's a cute"
 	line "Bulbasaur doll!"
 	done
 
 CeladonHomeDecorStore1FCharmanderDollScript:
 	jumpthistext
 
-	text "It's a tough"
+	ctxt "It's a tough"
 	line "Charmander doll!"
 	done
 
 CeladonHomeDecorStore1FSquirtleDollScript:
 	jumpthistext
 
-	text "It's a cool"
+	ctxt "It's a cool"
 	line "Squirtle doll!"
 	done
 
@@ -124,7 +124,7 @@ CeladonHomeDecorStore1FClerkScript:
 	db "Cancel@"
 
 CeladonHomeDecorStore1FReceptionistText:
-	text "Hello! Welcome to"
+	ctxt "Hello! Welcome to"
 	line "Celadon Dept."
 	cont "Store Home Decor!"
 
@@ -133,53 +133,53 @@ CeladonHomeDecorStore1FReceptionistText:
 	done
 
 CeladonHomeDecorStore1FClerkText:
-	text "Welcome! Would you"
+	ctxt "Welcome! Would you"
 	line "like a doll as a"
 	cont "Celadon souvenir?"
 	done
 
 BoughtBulbasaurDollText:
-	text "<PLAYER> bought"
+	ctxt "<PLAYER> bought"
 	line "Bulbasaur Doll."
 	done
 
 BulbasaurDollSentText:
-	text "Bulbasaur Doll"
+	ctxt "Bulbasaur Doll"
 	line "was sent home."
 	done
 
 BoughtCharmanderDollText:
-	text "<PLAYER> bought"
+	ctxt "<PLAYER> bought"
 	line "Charmander Doll."
 	done
 
 CharmanderDollSentText:
-	text "Charmander Doll"
+	ctxt "Charmander Doll"
 	line "was sent home."
 	done
 
 BoughtSquirtleDollText:
-	text "<PLAYER> bought"
+	ctxt "<PLAYER> bought"
 	line "Squirtle Doll."
 	done
 
 SquirtleDollSentText:
-	text "Squirtle Doll"
+	ctxt "Squirtle Doll"
 	line "was sent home."
 	done
 
 CeladonHomeDecorStore1FNoMoneyText:
-	text "You can't afford"
+	ctxt "You can't afford"
 	line "that!"
 	done
 
 CeladonHomeDecorStore1FAlreadyBoughtText:
-	text "You already have"
+	ctxt "You already have"
 	line "that!"
 	done
 
 CeladonHomeDecorStore1FCooltrainerfText:
-	text "This new wing"
+	ctxt "This new wing"
 	line "feels more upscale"
 
 	para "than the main"
@@ -187,7 +187,7 @@ CeladonHomeDecorStore1FCooltrainerfText:
 	done
 
 CeladonHomeDecorStore1FDirectoryText:
-	text "1F: Lobby"
+	ctxt "1F: Lobby"
 
 	para "2F: Beds"
 

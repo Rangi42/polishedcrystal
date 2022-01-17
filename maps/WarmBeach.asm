@@ -28,7 +28,7 @@ WarmBeach_MapScriptHeader:
 GenericTrainerSightseermGareth:
 	generictrainer SIGHTSEERM, GARETH, EVENT_BEAT_SIGHTSEERM_GARETH, .SeenText, .BeatenText
 
-	text "Even outside of"
+	ctxt "Even outside of"
 	line "battle, these"
 
 	para "items make memor-"
@@ -36,7 +36,7 @@ GenericTrainerSightseermGareth:
 	done
 
 .SeenText:
-	text "I just picked up"
+	ctxt "I just picked up"
 	line "some useful items"
 
 	para "from the outdoor"
@@ -44,31 +44,31 @@ GenericTrainerSightseermGareth:
 	done
 
 .BeatenText:
-	text "My items weren't"
+	ctxt "My items weren't"
 	line "enough…"
 	done
 
 GenericTrainerAromaLadyHolly:
 	generictrainer AROMA_LADY, HOLLY, EVENT_BEAT_AROMA_LADY_HOLLY, .SeenText, .BeatenText
 
-	text "The sense of smell"
+	ctxt "The sense of smell"
 	line "is vital to living"
 	cont "in nature."
 	done
 
 .SeenText:
-	text "I am at one with"
+	ctxt "I am at one with"
 	line "the aromas of"
 	cont "nature."
 	done
 
 .BeatenText:
-	text "Defeat has its"
+	ctxt "Defeat has its"
 	line "own scent…"
 	done
 
 WarmBeachCooltrainermText:
-	text "There's a #mon"
+	ctxt "There's a #mon"
 	line "here that talks!"
 
 	para "I would never be-"
@@ -79,7 +79,7 @@ WarmBeachCooltrainermText:
 	done
 
 WarmBeachCooltrainerfText:
-	text "I've been selected"
+	ctxt "I've been selected"
 	line "as the festival"
 	cont "maiden this year,"
 
@@ -95,7 +95,7 @@ WarmBeachCooltrainerfText:
 WarmBeachSlowkingScript:
 	jumpthistext
 
-	text "I could use"
+	ctxt "I could use"
 	line "pants…"
 	done
 
@@ -119,19 +119,19 @@ WarmBeachLassScript:
 	special PlaceMoneyTopRight
 	jumpthisopenedtext
 
-	text "One Shell Bell,"
+	ctxt "One Shell Bell,"
 	line "just for you!"
 	done
 
 .NotEnoughMoney:
 	jumpthisopenedtext
 
-	text "You don't have"
+	ctxt "You don't have"
 	line "enough money…"
 	done
 
 .Text1:
-	text "I collect shells"
+	ctxt "I collect shells"
 	line "off the beach and"
 
 	para "turn them into"
@@ -145,21 +145,21 @@ WarmBeachLassScript:
 	done
 
 .Text3:
-	text "I only made one"
+	ctxt "I only made one"
 	line "Shell Bell today…"
 	done
 
 .Text4:
-	text "That's OK!"
+	ctxt "That's OK!"
 	done
 
 .Text6:
-	text "You don't have"
+	ctxt "You don't have"
 	line "enough room…"
 	done
 
 WarmBeachLadyText:
-	text "Those islands"
+	ctxt "Those islands"
 	line "across the water"
 
 	para "are known as the"
@@ -176,11 +176,11 @@ WarmBeachLadyText:
 	done
 
 WarmBeachShackSignText:
-	text "Beach Shack"
+	ctxt "Beach Shack"
 	done
 
 WarmBeachShrineText:
-	text "It's a shrine"
+	ctxt "It's a shrine"
 	line "dedicated to the"
 
 	para "Guardian of the"

@@ -101,7 +101,7 @@ CeladonCafeFisher3:
 	end
 
 ChefText_Eatathon:
-	text "Hi!"
+	ctxt "Hi!"
 
 	para "We're holding an"
 	line "eatathon contest."
@@ -111,22 +111,22 @@ ChefText_Eatathon:
 	done
 
 Fisher1Text_Snarfle:
-	text "…Snarfle, chew…"
+	ctxt "…Snarfle, chew…"
 	done
 
 Fisher1Text_Concentration:
-	text "Don't talk to me!"
+	ctxt "Don't talk to me!"
 
 	para "You'll break my"
 	line "concentration!"
 	done
 
 Fisher2Text_GulpChew:
-	text "…Gulp… Chew…"
+	ctxt "…Gulp… Chew…"
 	done
 
 Fisher2Text_Quantity:
-	text "I take quantity"
+	ctxt "I take quantity"
 	line "over quality!"
 
 	para "I'm happy when I'm"
@@ -134,22 +134,22 @@ Fisher2Text_Quantity:
 	done
 
 Fisher3Text_MunchMunch:
-	text "Munch, munch…"
+	ctxt "Munch, munch…"
 	done
 
 Fisher3Text_GoldenrodIsBest:
-	text "The food is good"
+	ctxt "The food is good"
 	line "here, but Golden-"
 	cont "rod has the best"
 	cont "food anywhere."
 	done
 
 TeacherText_CrunchCrunch:
-	text "Crunch… Crunch…"
+	ctxt "Crunch… Crunch…"
 	done
 
 TeacherText_NoCoinCase:
-	text "Nobody here will"
+	ctxt "Nobody here will"
 	line "give you a Coin"
 
 	para "Case. You should"
@@ -157,22 +157,22 @@ TeacherText_NoCoinCase:
 	done
 
 TeacherText_KeepEating:
-	text "Crunch… Crunch…"
+	ctxt "Crunch… Crunch…"
 
 	para "I can keep eating!"
 	done
 
 TeacherText_MoreChef:
-	text "More, Chef!"
+	ctxt "More, Chef!"
 	done
 
 MayleneText1:
-	text "Maylene: Munch"
+	ctxt "Maylene: Munch"
 	line "munch munch…"
 	done
 
 MayleneText2:
-	text "The eatathon"
+	ctxt "The eatathon"
 	line "contest!"
 
 	para "I never dreamed of"
@@ -192,7 +192,7 @@ MayleneText2:
 	done
 
 MayleneText3:
-	text "I'm starting to"
+	ctxt "I'm starting to"
 	line "feel full…"
 
 	para "Um, as a break,"
@@ -201,11 +201,11 @@ MayleneText3:
 	done
 
 MayleneRefusedText:
-	text "Sigh… OK."
+	ctxt "Sigh… OK."
 	done
 
 MayleneSeenText:
-	text "OK! Rei!"
+	ctxt "OK! Rei!"
 
 	para "Oh, that's my bow"
 	line "before a match."
@@ -216,7 +216,7 @@ MayleneSeenText:
 	done
 
 MayleneBeatenText:
-	text "I'm forced to admit"
+	ctxt "I'm forced to admit"
 	line "defeat…"
 
 	para "You are much too"
@@ -224,7 +224,7 @@ MayleneBeatenText:
 	done
 
 MayleneAfterText:
-	text "Thank you,"
+	ctxt "Thank you,"
 	line "<PLAYER>!"
 
 	para "I'm ready to keep"
@@ -232,7 +232,7 @@ MayleneAfterText:
 	done
 
 CeladonCafeBakerText:
-	text "I'm working here"
+	ctxt "I'm working here"
 	line "'cause I get to"
 
 	para "eat any time I"
@@ -240,7 +240,7 @@ CeladonCafeBakerText:
 	done
 
 EatathonContestPosterText:
-	text "Eatathon Contest!"
+	ctxt "Eatathon Contest!"
 	line "No time limit!"
 
 	para "A battle without"
@@ -251,7 +251,7 @@ EatathonContestPosterText:
 	done
 
 EatathonContestTrashCanText:
-	text "The trash is full"
+	ctxt "The trash is full"
 	line "of eatathon left-"
 	cont "overs…"
 	done

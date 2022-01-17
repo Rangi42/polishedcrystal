@@ -88,7 +88,7 @@ Route35GoldenrodGatePokefanFScript:
 	jumpopenedtext Route35GoldenrodGatePokefanFText_FoughtSudowoodo
 
 Route35GoldenrodGateRandyAskTakeThisMonToMyFriendText:
-	text "Excuse me, kid!"
+	ctxt "Excuse me, kid!"
 	line "Can you do a guy"
 	cont "a favor?"
 
@@ -100,7 +100,7 @@ Route35GoldenrodGateRandyAskTakeThisMonToMyFriendText:
 	done
 
 Route35GoldenrodGateRandyThanksText:
-	text "You will? Perfect!"
+	ctxt "You will? Perfect!"
 	line "Thanks, kid!"
 
 	para "My pal's a chubby"
@@ -112,12 +112,12 @@ Route35GoldenrodGateRandyThanksText:
 	done
 
 Route35GoldenrodGatePlayerReceivedAMonWithMailText:
-	text "<PLAYER> received a"
+	ctxt "<PLAYER> received a"
 	line "#mon with Mail."
 	done
 
 Route35GoldenrodGateRandyWeirdTreeBlockingRoadText:
-	text "You can read it,"
+	ctxt "You can read it,"
 	line "but don't lose it!"
 	cont "Route 31!"
 
@@ -130,17 +130,17 @@ Route35GoldenrodGateRandyWeirdTreeBlockingRoadText:
 	done
 
 Route35GoldenrodGateRandyCantCarryAnotherMonText:
-	text "You can't carry"
+	ctxt "You can't carry"
 	line "another #mon…"
 	done
 
 Route35GoldenrodGateRandyOhNeverMindThenText:
-	text "Oh… Never mind,"
+	ctxt "Oh… Never mind,"
 	line "then…"
 	done
 
 Route35GoldenrodGateRandySomethingForYourTroubleText:
-	text "Thanks, kid! You"
+	ctxt "Thanks, kid! You"
 	line "made the delivery"
 	cont "for me!"
 
@@ -149,13 +149,13 @@ Route35GoldenrodGateRandySomethingForYourTroubleText:
 	done
 
 Route35GoldenrodGateRandyMyPalWasSnoozingRightText:
-	text "My pal was snooz-"
+	ctxt "My pal was snooz-"
 	line "ing, right? Heh,"
 	cont "what'd I say?"
 	done
 
 Route35GoldenrodGatePokefanFText:
-	text "A strange tree is"
+	ctxt "A strange tree is"
 	line "blocking the road."
 
 	para "It wriggles around"
@@ -169,13 +169,13 @@ Route35GoldenrodGatePokefanFText:
 	done
 
 Route35GoldenrodGatePokefanFText_FoughtSudowoodo:
-	text "I like the #mon"
+	ctxt "I like the #mon"
 	line "Lullaby they play"
 	cont "on the radio."
 	done
 
 Route35GoldenrodGateFisherText:
-	text "I wonder how many"
+	ctxt "I wonder how many"
 	line "kinds of #mon"
 
 	para "there are in the"

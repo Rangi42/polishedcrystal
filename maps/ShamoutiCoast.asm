@@ -29,7 +29,7 @@ ShamoutiCoast_MapScriptHeader:
 GenericTrainerArtistRin:
 	generictrainer ARTIST, RIN, EVENT_BEAT_ARTIST_RIN, .SeenText, .BeatenText
 
-	text "There's a strange"
+	ctxt "There's a strange"
 	line "sense of power"
 	cont "from the islands."
 
@@ -39,7 +39,7 @@ GenericTrainerArtistRin:
 	done
 
 .SeenText:
-	text "I'm painting the"
+	ctxt "I'm painting the"
 	line "three islands!"
 
 	para "Please don't block"
@@ -47,7 +47,7 @@ GenericTrainerArtistRin:
 	done
 
 .BeatenText:
-	text "I can't paint and"
+	ctxt "I can't paint and"
 	line "battle at the same"
 	cont "time."
 	done
@@ -55,7 +55,7 @@ GenericTrainerArtistRin:
 GenericTrainerSwimmerfMarina:
 	generictrainer SWIMMERF, MARINA, EVENT_BEAT_SWIMMERF_MARINA, .SeenText, .BeatenText
 
-	text "If I were stran-"
+	ctxt "If I were stran-"
 	line "ded on a desert"
 	cont "island, I'd take…"
 
@@ -64,7 +64,7 @@ GenericTrainerSwimmerfMarina:
 	done
 
 .SeenText:
-	text "If you were stran-"
+	ctxt "If you were stran-"
 	line "ded on a desert"
 	cont "island, what three"
 
@@ -73,14 +73,14 @@ GenericTrainerSwimmerfMarina:
 	done
 
 .BeatenText:
-	text "Washed away with-"
+	ctxt "Washed away with-"
 	line "out a paddle!"
 	done
 
 GenericTrainerFisherDallas:
 	generictrainer FISHER, DALLAS, EVENT_BEAT_FISHER_DALLAS, .SeenText, .BeatenText
 
-	text "No matter where I"
+	ctxt "No matter where I"
 	line "fish, I just keep"
 
 	para "reeling in Bottle"
@@ -91,19 +91,19 @@ GenericTrainerFisherDallas:
 	done
 
 .SeenText:
-	text "Gah! Not another"
+	ctxt "Gah! Not another"
 	line "one!"
 	done
 
 .BeatenText:
-	text "Huh? Oh, not you--"
+	ctxt "Huh? Oh, not you--"
 	line "you're fine."
 	done
 
 GenericTrainerSightseerfPilar:
 	generictrainer SIGHTSEERF, PILAR, EVENT_BEAT_SIGHTSEERF_PILAR, .SeenText, .BeatenText
 
-	text "¡Qué fuertes son"
+	ctxt "¡Qué fuertes son"
 	line "tus #mon!"
 
 	para "Debes de haber"
@@ -114,7 +114,7 @@ GenericTrainerSightseerfPilar:
 	done
 
 .SeenText:
-	text "¡Hola! He venido"
+	ctxt "¡Hola! He venido"
 	line "hasta acá desde"
 	cont "muy lejos."
 
@@ -123,42 +123,42 @@ GenericTrainerSightseerfPilar:
 	done
 
 .BeatenText:
-	text "Pensé que duraría"
+	ctxt "Pensé que duraría"
 	line "más…"
 	done
 
 GenericTrainerSightseersCyandvi1:
 	generictrainer SIGHTSEERS, CYANDVI1, EVENT_BEAT_SIGHTSEERS_CY_AND_VI, .SeenText, .BeatenText
 
-	text "Cy: TODO"
+	ctxt "Cy: TODO"
 	done
 
 .SeenText:
-	text "Cy: TODO"
+	ctxt "Cy: TODO"
 	done
 
 .BeatenText:
-	text "Cy: TODO"
+	ctxt "Cy: TODO"
 	done
 
 GenericTrainerSightseersCyandvi2:
 	generictrainer SIGHTSEERS, CYANDVI2, EVENT_BEAT_SIGHTSEERS_CY_AND_VI, .SeenText, .BeatenText
 
-	text "Vi: TODO"
+	ctxt "Vi: TODO"
 	done
 
 .SeenText:
-	text "Vi: TODO"
+	ctxt "Vi: TODO"
 	done
 
 .BeatenText:
-	text "Vi: TODO"
+	ctxt "Vi: TODO"
 	done
 
 GenericTrainerSwimmermAshe:
 	generictrainer SWIMMERM, ASHE, EVENT_BEAT_SWIMMERM_ASHE, .SeenText, .BeatenText
 
-	text "I couldn't swim at"
+	ctxt "I couldn't swim at"
 	line "all a while ago."
 
 	para "Now I do it so"
@@ -169,12 +169,12 @@ GenericTrainerSwimmermAshe:
 	done
 
 .SeenText:
-	text "Swimming? Me?"
+	ctxt "Swimming? Me?"
 	line "Yeah, I dig it."
 	done
 
 .BeatenText:
-	text "I have that sink-"
+	ctxt "I have that sink-"
 	line "ing feeling…"
 	done
 

@@ -20,7 +20,7 @@ CeladonDeptStore1F_MapScriptHeader:
 	object_event  5,  3, SPRITE_POKEFAN_F, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_COMMAND, jumptextfaceplayer, CeladonDeptStore1FTeacherText, -1
 
 CeladonDeptStore1FReceptionistText:
-	text "Hello! Welcome to"
+	ctxt "Hello! Welcome to"
 	line "Celadon Dept."
 	cont "Store!"
 
@@ -29,7 +29,7 @@ CeladonDeptStore1FReceptionistText:
 	done
 
 CeladonDeptStore1FGentlemanText:
-	text "This Dept.Store is"
+	ctxt "This Dept.Store is"
 	line "part of the same"
 
 	para "chain as the one"
@@ -41,7 +41,7 @@ CeladonDeptStore1FGentlemanText:
 	done
 
 CeladonDeptStore1FTeacherText:
-	text "This is my first"
+	ctxt "This is my first"
 	line "time here."
 
 	para "It's so big…"
@@ -51,7 +51,7 @@ CeladonDeptStore1FTeacherText:
 	done
 
 CeladonDeptStore1FDirectoryText:
-	text "1F: Service"
+	ctxt "1F: Service"
 	line "    Counter"
 
 	para "2F: Trainer's"

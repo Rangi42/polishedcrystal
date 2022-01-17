@@ -26,7 +26,7 @@ Route9_MapScriptHeader:
 GenericTrainerCamperDean:
 	generictrainer CAMPER, DEAN, EVENT_BEAT_CAMPER_DEAN, CamperDeanSeenText, CamperDeanBeatenText
 
-	text "My #mon were"
+	ctxt "My #mon were"
 	line "hurt before even"
 
 	para "entering Rock"
@@ -40,7 +40,7 @@ GenericTrainerCamperDean:
 GenericTrainerPicnickerHeidi:
 	generictrainer PICNICKER, HEIDI, EVENT_BEAT_PICNICKER_HEIDI, PicnickerHeidiSeenText, PicnickerHeidiBeatenText
 
-	text "We bake lots of"
+	ctxt "We bake lots of"
 	line "goodies and share"
 
 	para "them all around."
@@ -50,7 +50,7 @@ GenericTrainerPicnickerHeidi:
 GenericTrainerCamperSid:
 	generictrainer CAMPER, SID, EVENT_BEAT_CAMPER_SID, CamperSidSeenText, CamperSidBeatenText
 
-	text "Sorry. You weren't"
+	ctxt "Sorry. You weren't"
 	line "littering. It was"
 	cont "my mistake."
 	done
@@ -58,7 +58,7 @@ GenericTrainerCamperSid:
 GenericTrainerPicnickerEdna:
 	generictrainer PICNICKER, EDNA, EVENT_BEAT_PICNICKER_EDNA, PicnickerEdnaSeenText, PicnickerEdnaBeatenText
 
-	text "Conserving energy"
+	ctxt "Conserving energy"
 	line "is important, but"
 
 	para "the environment is"
@@ -68,29 +68,29 @@ GenericTrainerPicnickerEdna:
 GenericTrainerHikerTim:
 	generictrainer HIKER, TIM, EVENT_BEAT_HIKER_TIM, HikerTimSeenText, HikerTimBeatenText
 
-	text "Battles are about"
+	ctxt "Battles are about"
 	line "concentration."
 	done
 
 GenericTrainerHikerSidney:
 	generictrainer HIKER, SIDNEY, EVENT_BEAT_HIKER_SIDNEY, HikerSidneySeenText, HikerSidneyBeatenText
 
-	text "The Power Plant is"
+	ctxt "The Power Plant is"
 	line "across a small"
 	cont "river."
 	done
 
 CamperDeanSeenText:
-	text "I came to explore"
+	ctxt "I came to explore"
 	line "Rock Tunnel."
 	done
 
 CamperDeanBeatenText:
-	text "Whoa! Danger, man."
+	ctxt "Whoa! Danger, man."
 	done
 
 PicnickerHeidiSeenText:
-	text "Have you ever been"
+	ctxt "Have you ever been"
 	line "to a picnic?"
 
 	para "They're so much"
@@ -98,31 +98,31 @@ PicnickerHeidiSeenText:
 	done
 
 PicnickerHeidiBeatenText:
-	text "Ohhhh!"
+	ctxt "Ohhhh!"
 	done
 
 CamperSidSeenText:
-	text "Hey, you!"
+	ctxt "Hey, you!"
 	line "Don't litter!"
 	done
 
 CamperSidBeatenText:
-	text "I was just point-"
+	ctxt "I was just point-"
 	line "ing out…"
 	done
 
 PicnickerEdnaSeenText:
-	text "People shouldn't"
+	ctxt "People shouldn't"
 	line "leave any litter"
 	cont "behind."
 	done
 
 PicnickerEdnaBeatenText:
-	text "Ohh… I lost…"
+	ctxt "Ohh… I lost…"
 	done
 
 HikerTimSeenText:
-	text "♪ She'll be coming"
+	ctxt "♪ She'll be coming"
 	line "'round Mt.Silver"
 	cont "when she comes… ♪"
 
@@ -131,12 +131,12 @@ HikerTimSeenText:
 	done
 
 HikerTimBeatenText:
-	text "I was too busy"
+	ctxt "I was too busy"
 	line "singing…"
 	done
 
 HikerSidneySeenText:
-	text "I'll tell you a"
+	ctxt "I'll tell you a"
 	line "secret."
 
 	para "But first, we"
@@ -144,12 +144,12 @@ HikerSidneySeenText:
 	done
 
 HikerSidneyBeatenText:
-	text "Oh, dang!"
+	ctxt "Oh, dang!"
 	line "I lost that…"
 	done
 
 Route9SignText:
-	text "Route 9"
+	ctxt "Route 9"
 
 	para "Cerulean City -"
 	line "Rock Tunnel"

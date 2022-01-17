@@ -252,18 +252,18 @@ OlivinePortApproachFastShipAfterHOFRightMovement:
 	step_end
 
 OlivinePortSailorGetOnBoardText:
-	text "We're departing"
+	ctxt "We're departing"
 	line "soon. Please get"
 	cont "on board."
 	done
 
 OlivinePortCantBoardText:
-	text "Sorry. You can't"
+	ctxt "Sorry. You can't"
 	line "board now."
 	done
 
 OlivinePortAskBoardText:
-	text "Welcome to Fast"
+	ctxt "Welcome to Fast"
 	line "Ship S.S.Aqua."
 
 	para "Will you be board-"
@@ -271,17 +271,17 @@ OlivinePortAskBoardText:
 	done
 
 OlivinePortAskTicketText:
-	text "May I see your"
+	ctxt "May I see your"
 	line "S.S.Ticket?"
 	done
 
 OlivinePortComeAgainText:
-	text "We hope to see you"
+	ctxt "We hope to see you"
 	line "again!"
 	done
 
 OlivinePortFlashTicketText:
-	text "<PLAYER> flashed"
+	ctxt "<PLAYER> flashed"
 	line "the S.S.Ticket."
 
 	para "That's it."
@@ -289,7 +289,7 @@ OlivinePortFlashTicketText:
 	done
 
 OlivinePortNoTicketText:
-	text "<PLAYER> tried to"
+	ctxt "<PLAYER> tried to"
 	line "show the S.S."
 	cont "Ticket…"
 
@@ -303,17 +303,17 @@ OlivinePortNoTicketText:
 	done
 
 OlivinePortMondayShipText:
-	text "The Fast Ship will"
+	ctxt "The Fast Ship will"
 	line "sail next Monday."
 	done
 
 OlivinePortFridayShipText:
-	text "The Fast Ship will"
+	ctxt "The Fast Ship will"
 	line "sail next Friday."
 	done
 
 OlivinePortFishingGuru1Text:
-	text "Shellder are easy"
+	ctxt "Shellder are easy"
 	line "to catch here."
 
 	para "They're kind of"
@@ -321,7 +321,7 @@ OlivinePortFishingGuru1Text:
 	done
 
 OlivinePortFishingGuru2Text:
-	text "How many Rods do"
+	ctxt "How many Rods do"
 	line "you have?"
 
 	para "Different Rods"
@@ -330,20 +330,20 @@ OlivinePortFishingGuru2Text:
 	done
 
 OlivinePortYoungsterText:
-	text "S.S.Aqua uses jets"
+	ctxt "S.S.Aqua uses jets"
 	line "to skim over the"
 	cont "waves!"
 	done
 
 OlivinePortCooltrainerFText:
-	text "There are lots of"
+	ctxt "There are lots of"
 	line "#mon in Kanto."
 
 	para "I wish I could go…"
 	done
 
 OlivinePortSailorBeforeHOFText:
-	text "We don't want you"
+	ctxt "We don't want you"
 	line "to fall into the"
 
 	para "sea, so you're not"

@@ -60,7 +60,7 @@ Route19ClearRocks:
 GenericTrainerSwimmerfDawn:
 	generictrainer SWIMMERF, DAWN, EVENT_BEAT_SWIMMERF_DAWN, SwimmerfDawnSeenText, SwimmerfDawnBeatenText
 
-	text "It's a quick swim"
+	ctxt "It's a quick swim"
 	line "between Fuchsia"
 
 	para "and Seafoam Is-"
@@ -74,7 +74,7 @@ GenericTrainerSwimmerfDawn:
 GenericTrainerSwimmermTucker:
 	generictrainer SWIMMERM, TUCKER, EVENT_BEAT_SWIMMERM_TUCKER, SwimmermTuckerSeenText, SwimmermTuckerBeatenText
 
-	text "I… asked my girl-"
+	ctxt "I… asked my girl-"
 	line "friend to swim to"
 	cont "Fuchsia… Gasp…"
 	done
@@ -82,7 +82,7 @@ GenericTrainerSwimmermTucker:
 GenericTrainerSwimmermJerome:
 	generictrainer SWIMMERM, JEROME, EVENT_BEAT_SWIMMERM_JEROME, SwimmermJeromeSeenText, SwimmermJeromeBeatenText
 
-	text "I might be bad at"
+	ctxt "I might be bad at"
 	line "swimming, but I"
 	cont "love the sea."
 	done
@@ -90,7 +90,7 @@ GenericTrainerSwimmermJerome:
 GenericTrainerSwimmermHarold:
 	generictrainer SWIMMERM, HAROLD, EVENT_BEAT_SWIMMERM_HAROLD, SwimmermHaroldSeenText, SwimmermHaroldBeatenText
 
-	text "At night, the sea"
+	ctxt "At night, the sea"
 	line "turns black. It"
 
 	para "feels like it will"
@@ -100,7 +100,7 @@ GenericTrainerSwimmermHarold:
 GenericTrainerCosplayerBrooke:
 	generictrainer COSPLAYER, BROOKE, EVENT_BEAT_COSPLAYER_BROOKE, CosplayerBrookeSeenText, CosplayerBrookeBeatenText
 
-	text "I made this outfit"
+	ctxt "I made this outfit"
 	line "for a fancy dress"
 	cont "party, but I love"
 
@@ -120,17 +120,17 @@ Route19Fisher2Script:
 	jumptextfaceplayer Route19EngineerText2
 
 SwimmerfDawnSeenText:
-	text "I'm disgusted by"
+	ctxt "I'm disgusted by"
 	line "wimpy people!"
 	done
 
 SwimmerfDawnBeatenText:
-	text "I could beat you"
+	ctxt "I could beat you"
 	line "at swimming…"
 	done
 
 SwimmermTuckerSeenText:
-	text "Pant, pant…"
+	ctxt "Pant, pant…"
 	line "Just… a little…"
 
 	para "farther… to…"
@@ -138,11 +138,11 @@ SwimmermTuckerSeenText:
 	done
 
 SwimmermTuckerBeatenText:
-	text "I'm drowning!"
+	ctxt "I'm drowning!"
 	done
 
 SwimmermJeromeSeenText:
-	text "Swimming?"
+	ctxt "Swimming?"
 	line "I'm lousy at it."
 
 	para "I'm just splashing"
@@ -151,33 +151,33 @@ SwimmermJeromeSeenText:
 	done
 
 SwimmermJeromeBeatenText:
-	text "I thought I could"
+	ctxt "I thought I could"
 	line "win."
 	done
 
 SwimmermHaroldSeenText:
-	text "Have you ever gone"
+	ctxt "Have you ever gone"
 	line "swimming in the"
 	cont "sea at night?"
 	done
 
 SwimmermHaroldBeatenText:
-	text "Glub…"
+	ctxt "Glub…"
 	done
 
 CosplayerBrookeSeenText:
-	text "Dressing up is"
+	ctxt "Dressing up is"
 	line "such fun!"
 	done
 
 CosplayerBrookeBeatenText:
-	text "You'd better not"
+	ctxt "You'd better not"
 	line "have damaged my"
 	cont "costume!"
 	done
 
 Route19Fisher1Text:
-	text "Sorry. This road"
+	ctxt "Sorry. This road"
 	line "is closed for"
 	cont "construction."
 
@@ -189,18 +189,18 @@ Route19Fisher1Text:
 	done
 
 Route19Fisher1Text_RocksCleared:
-	text "I'm all sweaty."
+	ctxt "I'm all sweaty."
 	line "Time for a swim!"
 	done
 
 Route19EngineerText1:
-	text "Who knows how long"
+	ctxt "Who knows how long"
 	line "it would take to"
 	cont "move this boulder…"
 	done
 
 Route19EngineerText2:
-	text "The roadwork is"
+	ctxt "The roadwork is"
 	line "finally finished."
 
 	para "Now I can go"
@@ -208,14 +208,14 @@ Route19EngineerText2:
 	done
 
 Route19SignText:
-	text "Route 19"
+	ctxt "Route 19"
 
 	para "Fuchsia City -"
 	line "Seafoam Islands"
 	done
 
 CarefulSwimmingSignText:
-	text "Please be careful"
+	ctxt "Please be careful"
 	line "if you are swim-"
 	cont "ming to Seafoam"
 	cont "Islands."

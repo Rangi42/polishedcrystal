@@ -59,10 +59,10 @@ Red:
 	end
 
 .Text1:
-	text "……"
+	ctxt "……"
 	line "……"
 	done
 
 .Text2:
-	text "…"
+	ctxt "…"
 	done

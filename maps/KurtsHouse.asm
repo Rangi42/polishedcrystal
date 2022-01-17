@@ -384,7 +384,7 @@ PokemonJournalProfWestwoodScript:
 	setflag ENGINE_READ_PROF_WESTWOOD_JOURNAL
 	jumpthistext
 
-	text "#mon Journal"
+	ctxt "#mon Journal"
 
 	para "Special Feature:"
 	line "Prof.Westwood!"
@@ -437,7 +437,7 @@ KurtsHouseStepAwayFromKurt_MovementData:
 	step_end
 
 KurtsHouseKurtMakingBallsMustWaitText:
-	text "Hm? Who are you?"
+	ctxt "Hm? Who are you?"
 
 	para "<PLAYER>, eh? You"
 	line "want me to make"
@@ -478,7 +478,7 @@ KurtsHouseKurtMakingBallsMustWaitText:
 	done
 
 KurtsHouseKurtHonoredToMakeBallsText:
-	text "Kurt: Hi, <PLAYER>!"
+	ctxt "Kurt: Hi, <PLAYER>!"
 
 	para "You handled your-"
 	line "self like a real"
@@ -500,7 +500,7 @@ KurtsHouseKurtHonoredToMakeBallsText:
 	done
 
 KurtsHouseKurtBallsFromApricornsText:
-	text "Kurt: I make Balls"
+	ctxt "Kurt: I make Balls"
 	line "from Apricorns."
 
 	para "Collect them from"
@@ -512,7 +512,7 @@ KurtsHouseKurtBallsFromApricornsText:
 	done
 
 KurtsHouseKurtAskYouHaveAnApricornText:
-	text "Kurt: You have an"
+	ctxt "Kurt: You have an"
 	line "Apricorn for me?"
 
 	para "Fine! I'll turn it"
@@ -520,12 +520,12 @@ KurtsHouseKurtAskYouHaveAnApricornText:
 	done
 
 KurtsHouseKurtGetStartedText:
-	text "Kurt: I'll get"
+	ctxt "Kurt: I'll get"
 	line "started right now!"
 	done
 
 KurtsHouseKurtItWillTakeADayText:
-	text "Kurt: It'll take a"
+	ctxt "Kurt: It'll take a"
 	line "while to make you"
 
 	para "a Ball. Come back"
@@ -533,23 +533,23 @@ KurtsHouseKurtItWillTakeADayText:
 	done
 
 KurtsHouseKurtThatsALetdownText:
-	text "Kurt: Oh…"
+	ctxt "Kurt: Oh…"
 	line "That's a letdown."
 	done
 
 KurtsHouseKurtDontBotherMeText:
-	text "Kurt: I'm working!"
+	ctxt "Kurt: I'm working!"
 	line "Don't bother me!"
 	done
 
 KurtsHouseKurtJustFinishedYourBallText:
-	text "Kurt: Ah, <PLAYER>!"
+	ctxt "Kurt: Ah, <PLAYER>!"
 	line "I just finished"
 	cont "your Ball. Here!"
 	done
 
 KurtsHouseKurtTurnedOutGreatText:
-	text "Kurt: That turned"
+	ctxt "Kurt: That turned"
 	line "out great."
 
 	para "Try catching"
@@ -557,7 +557,7 @@ KurtsHouseKurtTurnedOutGreatText:
 	done
 
 KurtsHouseKurtGranddaughterHelpingWorkFasterText:
-	text "Kurt: Now that my"
+	ctxt "Kurt: Now that my"
 	line "granddaughter is"
 
 	para "helping me, I can"
@@ -565,7 +565,7 @@ KurtsHouseKurtGranddaughterHelpingWorkFasterText:
 	done
 
 KurtsHouseKurtWhatIsThatText:
-	text "Wh-what is that?"
+	ctxt "Wh-what is that?"
 
 	para "I've never seen"
 	line "one before."
@@ -581,17 +581,17 @@ KurtsHouseKurtWhatIsThatText:
 	done
 
 KurtsHouseKurtImCheckingItNowText:
-	text "I'm checking it"
+	ctxt "I'm checking it"
 	line "now."
 	done
 
 KurtsHouseKurtAhHaISeeText:
-	text "Ah-ha! I see!"
+	ctxt "Ah-ha! I see!"
 	line "So…"
 	done
 
 KurtsHouseKurtThisBallStartedToShakeText:
-	text "<PLAYER>!"
+	ctxt "<PLAYER>!"
 
 	para "This Ball started"
 	line "to shake while I"
@@ -602,7 +602,7 @@ KurtsHouseKurtThisBallStartedToShakeText:
 	done
 
 KurtsGranddaughterSlowpokeGoneText:
-	text "The Slowpoke are"
+	ctxt "The Slowpoke are"
 	line "gone… Were they"
 
 	para "taken away by bad"
@@ -610,12 +610,12 @@ KurtsGranddaughterSlowpokeGoneText:
 	done
 
 KurtsGranddaughterLonelyText:
-	text "Grandpa's gone…"
+	ctxt "Grandpa's gone…"
 	line "I'm so lonely…"
 	done
 
 KurtsGranddaughterSlowpokeBackText:
-	text "The Slowpoke my"
+	ctxt "The Slowpoke my"
 	line "dad gave me came"
 
 	para "back! Its tail is"
@@ -623,7 +623,7 @@ KurtsGranddaughterSlowpokeBackText:
 	done
 
 KurtsGranddaughterDadText:
-	text "Dad works at Silph"
+	ctxt "Dad works at Silph"
 	line "where he studies"
 	cont "# Balls."
 
@@ -633,7 +633,7 @@ KurtsGranddaughterDadText:
 	done
 
 KurtsGranddaughterHelpText:
-	text "I get to help"
+	ctxt "I get to help"
 	line "Grandpa now!"
 
 	para "We'll make good"
@@ -642,12 +642,12 @@ KurtsGranddaughterHelpText:
 	done
 
 KurtsGranddaughterFunText:
-	text "It's fun to make"
+	ctxt "It's fun to make"
 	line "Balls!"
 	done
 
 KurtsGranddaughterGSBallText:
-	text "Grandpa's checking"
+	ctxt "Grandpa's checking"
 	line "a Ball right now."
 
 	para "So I'm waiting"
@@ -655,17 +655,17 @@ KurtsGranddaughterGSBallText:
 	done
 
 KurtsHouseSlowpokeText:
-	text "Slowpoke: …"
+	ctxt "Slowpoke: …"
 	line "Yawn?"
 	done
 
 KurtsHouseOakPhotoText:
-	text "…A young Prof."
+	ctxt "…A young Prof."
 	line "Oak?"
 	done
 
 KurtsHouseCelebiStatueText:
-	text "It's a statue of"
+	ctxt "It's a statue of"
 	line "the forest's pro-"
 	cont "tector."
 	done

@@ -18,7 +18,7 @@ Route1ViridianGate_MapScriptHeader:
 	object_event  6,  4, SPRITE_ROCKER, SPRITEMOVEDATA_WALK_UP_DOWN, 2, 0, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, Route1ViridianGateRockerText, -1
 
 Route1ViridianGateOfficerText:
-	text "To the south is"
+	ctxt "To the south is"
 	line "Pallet Town."
 
 	para "That's where"
@@ -26,7 +26,7 @@ Route1ViridianGateOfficerText:
 	done
 
 Route1ViridianGateRockerText:
-	text "If you really"
+	ctxt "If you really"
 	line "think about it,"
 
 	para "aren't we ALL on"

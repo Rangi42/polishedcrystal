@@ -172,7 +172,7 @@ LyraMovementData3:
 	step_end
 
 CatchingTutorialIntroText:
-	text "Lyra: <PLAYER>!"
+	ctxt "Lyra: <PLAYER>!"
 
 	para "You can catch wild"
 	line "#mon with #"
@@ -182,7 +182,7 @@ CatchingTutorialIntroText:
 	done
 
 CatchingTutorialDebriefText:
-	text "Lyra: See? Just"
+	ctxt "Lyra: See? Just"
 	line "like that!"
 
 	para "If you weaken them"
@@ -194,7 +194,7 @@ CatchingTutorialDebriefText:
 	done
 
 CatchingTutorialRefusedText:
-	text "Aww… I wanted to"
+	ctxt "Aww… I wanted to"
 	line "show off my cap-"
 	cont "turing skills a"
 	cont "little…"
@@ -205,11 +205,11 @@ CatchingTutorialRefusedText:
 	done
 
 CatchingTutorialGoodbyeText:
-	text "Lyra: See you!"
+	ctxt "Lyra: See you!"
 	done
 
 Route29YoungsterText:
-	text "Yo. How are your"
+	ctxt "Yo. How are your"
 	line "#mon?"
 
 	para "If they're weak"
@@ -220,7 +220,7 @@ Route29YoungsterText:
 	done
 
 Route29TeacherText:
-	text "See those ledges?"
+	ctxt "See those ledges?"
 	line "It's scary to jump"
 	cont "off them."
 
@@ -232,7 +232,7 @@ Route29TeacherText:
 	done
 
 Route29FisherText:
-	text "I wanted to take a"
+	ctxt "I wanted to take a"
 	line "break, so I saved"
 
 	para "to record my"
@@ -240,7 +240,7 @@ Route29FisherText:
 	done
 
 Text_WaitingForNight:
-	text "I'm waiting for"
+	ctxt "I'm waiting for"
 	line "#mon that"
 
 	para "appear only in"
@@ -249,7 +249,7 @@ Text_WaitingForNight:
 	done
 
 Text_WaitingForMorning:
-	text "I'm waiting for"
+	ctxt "I'm waiting for"
 	line "#mon that"
 
 	para "appear only in the"
@@ -257,7 +257,7 @@ Text_WaitingForMorning:
 	done
 
 MeetTuscanyText:
-	text "Tuscany: I do be-"
+	ctxt "Tuscany: I do be-"
 	line "lieve that this is"
 
 	para "the first time"
@@ -271,7 +271,7 @@ MeetTuscanyText:
 	done
 
 TuscanyGivesGiftText:
-	text "By way of intro-"
+	ctxt "By way of intro-"
 	line "duction, please"
 
 	para "accept this gift,"
@@ -279,7 +279,7 @@ TuscanyGivesGiftText:
 	done
 
 TuscanyGaveGiftText:
-	text "Tuscany: Wouldn't"
+	ctxt "Tuscany: Wouldn't"
 	line "you agree that it"
 	cont "is most elegant?"
 
@@ -291,7 +291,7 @@ TuscanyGaveGiftText:
 	done
 
 TuscanyTuesdayText:
-	text "Tuscany: Have you"
+	ctxt "Tuscany: Have you"
 	line "met Monica, my"
 	cont "older sister?"
 
@@ -303,27 +303,27 @@ TuscanyTuesdayText:
 	done
 
 TuscanyNotTuesdayText:
-	text "Tuscany: Today is"
+	ctxt "Tuscany: Today is"
 	line "not Tuesday. That"
 	cont "is unfortunate…"
 	done
 
 Route29Sign1Text:
-	text "Route 29"
+	ctxt "Route 29"
 
 	para "New Bark Town -"
 	line "Cherrygrove City"
 	done
 
 Route29Sign2Text:
-	text "Route 29"
+	ctxt "Route 29"
 
 	para "Cherrygrove City -"
 	line "New Bark Town"
 	done
 
 Route29AdvancedTipsSignText:
-	text "Advanced Tips!"
+	ctxt "Advanced Tips!"
 
 	para "Press Start in"
 	line "the Bag to sort"

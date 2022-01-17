@@ -46,10 +46,10 @@ BattleFactoryHallwayFollowReceptionist:
 .WonBattle:
 	opentext
 	writethistext
-		text "<PLAYER> received"
+		ctxt "<PLAYER> received"
 		line ""
 		text_ram wStringBuffer1
-		text " BP!"
+		ctxt " BP!"
 		done
 	waitsfx
 	specialsound
@@ -59,15 +59,15 @@ BattleFactoryHallwayFollowReceptionist:
 	ifequal BTCHALLENGE_FACILITYBRAIN, .WarnAboutHead
 .AskNextBattle:
 	writethistext
-		text "Next up, opponent"
+		ctxt "Next up, opponent"
 		line "No. "
 		text_decimal wStringBuffer3, 2, 5
-		text ". Ready?"
+		ctxt ". Ready?"
 		done
 	sjump .ShownText
 .WarnAboutHead:
 	writethistext
-		text "Congratulations"
+		ctxt "Congratulations"
 		line "on your winning"
 		cont "streak, trainer!"
 
@@ -90,7 +90,7 @@ BattleFactoryHallwayFollowReceptionist:
 
 .DontBattleNextOpponent:
 	writethistext
-		text "Save and end the"
+		ctxt "Save and end the"
 		line "session?"
 		done
 	yesorno
@@ -104,7 +104,7 @@ BattleFactoryHallwayFollowReceptionist:
 	special SoftReset
 .DontSaveAndEndTheSession:
 	writethistext
-		text "Cancel your Battle"
+		ctxt "Cancel your Battle"
 		line "Floor challenge?"
 
 		para "Beware, it counts"
@@ -129,7 +129,7 @@ BattleFactoryHallwayFollowReceptionist:
 	opentext
 .NextRentalBattle_AfterOpenText:
 	writethistext
-		text "I've researched the"
+		ctxt "I've researched the"
 		line "next opponent."
 		prompt
 
@@ -137,7 +137,7 @@ BattleFactoryHallwayFollowReceptionist:
 	iftrue .Continue
 
 	writethistext
-		text "Cancel your run?"
+		ctxt "Cancel your run?"
 		line "This counts as a"
 		cont "streak loss."
 		done
@@ -173,7 +173,7 @@ BattleFactoryHallwayFollowReceptionist:
 	step_end
 
 .PleaseStepThisWayText:
-	text "Please step this"
+	ctxt "Please step this"
 	line "way."
 	prompt
 

@@ -137,7 +137,7 @@ CianwoodCityEusineDepartMovement:
 	step_end
 
 ChucksWifeEasierToFlyText:
-	text "You crossed the"
+	ctxt "You crossed the"
 	line "sea to get here?"
 
 	para "That must have"
@@ -151,7 +151,7 @@ ChucksWifeEasierToFlyText:
 	done
 
 ChucksWifeChubbyText:
-	text "That's Cianwood's"
+	ctxt "That's Cianwood's"
 	line "Gym badge!"
 
 	para "My husband lost to"
@@ -170,7 +170,7 @@ ChucksWifeChubbyText:
 	done
 
 CianwoodCityYoungsterText:
-	text "If you use Fly,"
+	ctxt "If you use Fly,"
 	line "you can get back"
 
 	para "to Olivine in-"
@@ -178,7 +178,7 @@ CianwoodCityYoungsterText:
 	done
 
 CianwoodCityPokefanMText:
-	text "Boulders to the"
+	ctxt "Boulders to the"
 	line "north of town can"
 	cont "be crushed."
 
@@ -196,7 +196,7 @@ endc
 	done
 
 CianwoodCityLassText:
-	text "Chuck, the Gym"
+	ctxt "Chuck, the Gym"
 	line "Leader, spars with"
 
 	para "his fighting #-"
@@ -204,7 +204,7 @@ CianwoodCityLassText:
 	done
 
 CianwoodCityRocketText:
-	text "This way is off-"
+	ctxt "This way is off-"
 	line "limits!"
 
 	para "Why? Mind your"
@@ -212,13 +212,13 @@ CianwoodCityRocketText:
 	done
 
 CianwoodCitySailorText:
-	text "That cave is the"
+	ctxt "That cave is the"
 	line "only way to reach"
 	cont "Route 47."
 	done
 
 CianwoodCityFisherText:
-	text "Cianwood Pharmacy"
+	ctxt "Cianwood Pharmacy"
 	line "has been in busi-"
 	cont "ness for over"
 	cont "500 years."
@@ -229,7 +229,7 @@ CianwoodCityFisherText:
 	done
 
 EusineSuicuneText:
-	text "Eusine: Yo,"
+	ctxt "Eusine: Yo,"
 	line "<PLAYER>."
 
 	para "Wasn't that"
@@ -267,12 +267,12 @@ EusineSuicuneText:
 	done
 
 EusineBeatenText:
-	text "I hate to admit"
+	ctxt "I hate to admit"
 	line "it, but you win."
 	done
 
 EusineLossText:
-	text "Yes!"
+	ctxt "Yes!"
 
 	para "Surely Suicune"
 	line "will recognize"
@@ -280,7 +280,7 @@ EusineLossText:
 	done
 
 EusineAfterText:
-	text "You're amazing,"
+	ctxt "You're amazing,"
 	line "<PLAYER>!"
 
 	para "No wonder #mon"
@@ -299,14 +299,14 @@ EusineAfterText:
 	done
 
 CianwoodCitySignText:
-	text "Cianwood City"
+	ctxt "Cianwood City"
 
 	para "A Port Surrounded"
 	line "by Rough Seas"
 	done
 
 CianwoodGymSignText:
-	text "Cianwood City"
+	ctxt "Cianwood City"
 	line "#mon Gym"
 
 	para "Leader: Chuck"
@@ -316,7 +316,7 @@ CianwoodGymSignText:
 	done
 
 CianwoodPharmacySignText:
-	text "500 Years of"
+	ctxt "500 Years of"
 	line "Tradition"
 
 	para "Cianwood City"
@@ -327,7 +327,7 @@ CianwoodPharmacySignText:
 	done
 
 CianwoodPhotoStudioSignText:
-	text "Cianwood City"
+	ctxt "Cianwood City"
 	line "Photo Studio"
 
 	para "Take a Snapshot as"
@@ -335,13 +335,13 @@ CianwoodPhotoStudioSignText:
 	done
 
 CianwoodCliffEdgeGateSignText:
-	text "Cliff Edge Gate"
+	ctxt "Cliff Edge Gate"
 
 	para "Yellow Forest is"
 	line "just ahead!"
 	done
 
 CianwoodMoveManiacSignText:
-	text "The Move Maniac"
+	ctxt "The Move Maniac"
 	line "Ahead"
 	done

@@ -21,12 +21,12 @@ GoldenrodDeptStore1F_MapScriptHeader:
 	object_event 11,  5, SPRITE_GENTLEMAN, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, GoldenrodDeptStore1FGentlemanText, -1
 
 GoldenrodDeptStore1FReceptionistText:
-	text "Welcome to Golden-"
+	ctxt "Welcome to Golden-"
 	line "rod Dept.Store."
 	done
 
 GoldenrodDeptStore1FGentlemanText:
-	text "The Dept.Store"
+	ctxt "The Dept.Store"
 	line "has a decent se-"
 	cont "lection."
 
@@ -38,12 +38,12 @@ GoldenrodDeptStore1FGentlemanText:
 	done
 
 GoldenrodDeptStore1FPokefanFText:
-	text "I'm raring to shop"
+	ctxt "I'm raring to shop"
 	line "again today!"
 	done
 
 GoldenrodDeptStore1FBugCatcherText:
-	text "Mom's good at"
+	ctxt "Mom's good at"
 	line "bargain hunting."
 
 	para "She always buys"
@@ -52,7 +52,7 @@ GoldenrodDeptStore1FBugCatcherText:
 	done
 
 GoldenrodDeptStore1FDirectoryText:
-	text "1F Service Counter"
+	ctxt "1F Service Counter"
 
 	para "2F Trainer's"
 	line "   Market"

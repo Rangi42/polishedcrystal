@@ -29,13 +29,13 @@ DarkCaveBlackthornEntrancePharmacistScript:
 	jumpthisopenedtext
 
 .PharmacistText2:
-	text "BlackGlasses ups"
+	ctxt "BlackGlasses ups"
 	line "the power of Dark-"
 	cont "type moves."
 	done
 
 .PharmacistText1:
-	text "Whoa! You startled"
+	ctxt "Whoa! You startled"
 	line "me there!"
 
 	para "I had my Black-"

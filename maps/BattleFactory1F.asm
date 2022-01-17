@@ -39,7 +39,7 @@ BattleFactory1FContinueChallenge:
 	; We saved in-between rounds. Resume Battle Factory challenge.
 	opentext
 	writethistext
-		text "We've been waiting"
+		ctxt "We've been waiting"
 		line "for you."
 		prompt
 
@@ -54,7 +54,7 @@ BattleFactory1FContinueChallenge:
 .LeftWithoutSaving2:
 	opentext
 	writethistext
-		text "Excuse me!"
+		ctxt "Excuse me!"
 		line "You didn't save"
 
 		para "before exiting"
@@ -80,7 +80,7 @@ BattleFactory1FContinueChallenge:
 .WonChallenge2:
 	opentext
 	writethistext
-		text "Congratulations!"
+		ctxt "Congratulations!"
 
 		para "You've beaten all"
 		line "the trainers!"
@@ -96,7 +96,7 @@ Script_CommitBattleFactoryResult:
 	setevent EVENT_BEAT_PALMER
 .WeHopeToServeYouAgain:
 	writethistext
-		text "We hope to serve"
+		ctxt "We hope to serve"
 		line "you again."
 		done
 	waitbutton
@@ -105,7 +105,7 @@ Script_CommitBattleFactoryResult:
 BattleFactory1FRulesScript:
 	opentext
 	writethistext
-		text "Battle Factory"
+		ctxt "Battle Factory"
 		line "rules are written"
 		cont "here."
 
@@ -114,7 +114,7 @@ BattleFactory1FRulesScript:
 	yesorno
 	iffalse_endtext
 	jumpthisopenedtext
-		text "You are given six"
+		ctxt "You are given six"
 		line "rental #mon."
 
 		para "Three #mon may"
@@ -134,21 +134,21 @@ BattleFactory1FRulesScript:
 		done
 
 BattleFactory1FStreakText:
-	text "Streak: "
+	ctxt "Streak: "
 	text_decimal wBattleFactoryCurStreak, 2, 5
-	text " wins"
+	ctxt " wins"
 	line "Record: "
 	text_decimal wBattleFactoryTopStreak, 2, 5
-	text " wins"
+	ctxt " wins"
 	cont "Swaps this run: "
 	text_decimal wBattleFactorySwapCount, 1, 2
-	text ""
+	ctxt ""
 	done
 
 BattleFactory1FReceptionistScript:
 	opentext
 	writethistext
-		text "Battle Factory"
+		ctxt "Battle Factory"
 		line "welcomes you!"
 
 		para "I can show you to"
@@ -161,7 +161,7 @@ BattleFactory1FReceptionistScript:
 	; only ask once, so set the flag regardless
 	setevent EVENT_BATTLE_FACTORY_INTRO
 	writethistext
-		text "Would you like to"
+		ctxt "Would you like to"
 		line "hear about this"
 		cont "facility?"
 		done
@@ -170,7 +170,7 @@ BattleFactory1FReceptionistScript:
 
 .Explanation:
 	writethistext
-		text "Battle Factory is"
+		ctxt "Battle Factory is"
 		line "a facility where"
 		cont "you battle using"
 		cont "rental #mon."
@@ -202,7 +202,7 @@ BattleFactory1FReceptionistScript:
 	; Setscene here in case the player aborted a quicksave prompted by challenge
 	setscene $1
 	writethistext
-		text "Want to head onto"
+		ctxt "Want to head onto"
 		line "the Battle Floor?"
 		done
 	loadmenu MenuDataHeader_BattleInfoCancel
@@ -211,14 +211,14 @@ BattleFactory1FReceptionistScript:
 	ifequal $1, .Challenge
 	ifequal $2, .Explanation
 	writethistext
-		text "We hope to serve"
+		ctxt "We hope to serve"
 		line "you again."
 		prompt
 	endtext
 
 .Challenge:
 	writethistext
-		text "Before entering"
+		ctxt "Before entering"
 		line "the Battle Floor,"
 
 		para "your progress will"
@@ -250,7 +250,7 @@ Script_ReturnToRentalChallenge:
 
 	; Everything ready to go for challenge start
 	writethistext
-		text "Right this way to"
+		ctxt "Right this way to"
 		line "the Battle Floor."
 		done
 	waitbutton

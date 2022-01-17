@@ -49,5 +49,5 @@ TinTowerHoOh:
 	end
 
 HoOhText:
-	text "Shaoooh!"
+	ctxt "Shaoooh!"
 	done

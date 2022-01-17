@@ -201,18 +201,18 @@ VermilionPortApproachFastShipRightMovement:
 	step_end
 
 VermilionPortDepartingText:
-	text "We're departing"
+	ctxt "We're departing"
 	line "soon. Please get"
 	cont "on board."
 	done
 
 VermilionPortCantBoardText:
-	text "Sorry. You can't"
+	ctxt "Sorry. You can't"
 	line "board now."
 	done
 
 VermilionPortAskBoardingText:
-	text "Welcome to Fast"
+	ctxt "Welcome to Fast"
 	line "Ship S.S.Aqua."
 
 	para "Will you be board-"
@@ -220,17 +220,17 @@ VermilionPortAskBoardingText:
 	done
 
 VermilionPortAskTicketText:
-	text "May I see your"
+	ctxt "May I see your"
 	line "S.S.Ticket?"
 	done
 
 VermilionPortComeAgainText:
-	text "We hope to see you"
+	ctxt "We hope to see you"
 	line "again!"
 	done
 
 VermilionPortSSTicketText:
-	text "<PLAYER> flashed"
+	ctxt "<PLAYER> flashed"
 	line "the S.S.Ticket."
 
 	para "That's it."
@@ -238,7 +238,7 @@ VermilionPortSSTicketText:
 	done
 
 VermilionPortNoTicketText:
-	text "<PLAYER> tried to"
+	ctxt "<PLAYER> tried to"
 	line "show the S.S."
 	cont "Ticket…"
 
@@ -252,17 +252,17 @@ VermilionPortNoTicketText:
 	done
 
 VermilionPortSailMondayText:
-	text "The Fast Ship will"
+	ctxt "The Fast Ship will"
 	line "sail on Wednesday."
 	done
 
 VermilionPortSailSundayText:
-	text "The Fast Ship will"
+	ctxt "The Fast Ship will"
 	line "sail next Sunday."
 	done
 
 VermilionPortSuperNerdText:
-	text "You came from"
+	ctxt "You came from"
 	line "Johto?"
 
 	para "I hear many rare"

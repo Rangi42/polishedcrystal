@@ -64,7 +64,7 @@ PokemonJournalMortyScript:
 	setflag ENGINE_READ_MORTY_JOURNAL
 	jumpthistext
 
-	text "#mon Journal"
+	ctxt "#mon Journal"
 
 	para "Special Feature:"
 	line "Leader Morty!"
@@ -126,13 +126,13 @@ EcruteakPokeCenter1FBillScript:
 .NoRoom:
 	jumpthisopenedtext
 
-	text "Whoa, wait. You"
+	ctxt "Whoa, wait. You"
 	line "can't carry any"
 	cont "more #mon."
 	done
 
 .IntroText:
-	text "Hi, I'm Bill. And"
+	ctxt "Hi, I'm Bill. And"
 	line "who are you?"
 
 	para "Hmm, <PLAYER>, huh?"
@@ -147,7 +147,7 @@ EcruteakPokeCenter1FBillScript:
 	done
 
 .QuestionText:
-	text "Bill: This Eevee"
+	ctxt "Bill: This Eevee"
 	line "came over just"
 
 	para "before the Time"
@@ -165,7 +165,7 @@ EcruteakPokeCenter1FBillScript:
 	done
 
 .YesText:
-	text "Bill: I knew you'd"
+	ctxt "Bill: I knew you'd"
 	line "come through!"
 
 	para "Way to go! You're"
@@ -179,7 +179,7 @@ EcruteakPokeCenter1FBillScript:
 	done
 
 .GoodbyeText:
-	text "Bill: Prof.Elm"
+	ctxt "Bill: Prof.Elm"
 	line "claims Eevee may"
 
 	para "evolve in new and"
@@ -196,7 +196,7 @@ EcruteakPokeCenter1FBillScript:
 	done
 
 .NoText:
-	text "Oh… Now what to"
+	ctxt "Oh… Now what to"
 	line "do?"
 	done
 
@@ -237,7 +237,7 @@ EcruteakPokeCenter1FPokefanMScript:
 	iftrue_jumptextfaceplayer .SurfText
 	jumpthistextfaceplayer
 
-	text "The way the Kimono"
+	ctxt "The way the Kimono"
 	line "Girls dance is"
 
 	para "marvelous. Just"
@@ -246,7 +246,7 @@ EcruteakPokeCenter1FPokefanMScript:
 	done
 
 .SurfText:
-	text "You must be hoping"
+	ctxt "You must be hoping"
 	line "to battle more"
 	cont "people, right?"
 
@@ -270,7 +270,7 @@ EcruteakPokeCenter1FLassScript:
 	iffalse_jumpopenedtext .HereText
 	jumpthisopenedtext
 
-	text "I once heard that"
+	ctxt "I once heard that"
 	line "Bill's mother used"
 
 	para "to be a Kimono"
@@ -285,23 +285,23 @@ EcruteakPokeCenter1FLassScript:
 	iffalse_jumpopenedtext .HereText
 	jumpthisopenedtext
 
-	text "Oh… Never mind"
+	ctxt "Oh… Never mind"
 	line "then."
 	done
 
 .QuestionText:
-	text "Do you know who"
+	ctxt "Do you know who"
 	line "Bill is?"
 	done
 
 .HereText:
-	text "Then go talk to"
+	ctxt "Then go talk to"
 	line "him! He's right"
 	cont "by the counter!"
 	done
 
 EcruteakPokeCenter1FCooltrainerFText:
-	text "Morty, the Gym"
+	ctxt "Morty, the Gym"
 	line "Leader, is soooo"
 	cont "cool."
 
@@ -310,7 +310,7 @@ EcruteakPokeCenter1FCooltrainerFText:
 	done
 
 EcruteakPokeCenter1FGymGuyText:
-	text "Lake of Rage…"
+	ctxt "Lake of Rage…"
 
 	para "The appearance of"
 	line "a Gyarados swarm…"

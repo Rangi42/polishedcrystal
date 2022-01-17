@@ -29,7 +29,7 @@ SproutTower1FGrannyScript:
 	iftrue_jumptextfaceplayer .MetricText
 	jumpthistextfaceplayer
 
-	text "A Bellsprout over"
+	ctxt "A Bellsprout over"
 	line "100 feet tall…"
 
 	para "People say that it"
@@ -38,7 +38,7 @@ SproutTower1FGrannyScript:
 	done
 
 .MetricText:
-	text "A Bellsprout over"
+	ctxt "A Bellsprout over"
 	line "30 meters tall…"
 
 	para "People say that it"
@@ -49,7 +49,7 @@ SproutTower1FGrannyScript:
 GenericTrainerSageChow:
 	generictrainer SAGE, CHOW, EVENT_BEAT_SAGE_CHOW, SageChowSeenText, SageChowBeatenText
 
-	text "All living beings"
+	ctxt "All living beings"
 	line "coexist through"
 	cont "cooperation."
 
@@ -58,7 +58,7 @@ GenericTrainerSageChow:
 	done
 
 SageChowSeenText:
-	text "We stand guard in"
+	ctxt "We stand guard in"
 	line "this tower."
 
 	para "Here, we express"
@@ -67,17 +67,17 @@ SageChowSeenText:
 	done
 
 SageChowBeatenText:
-	text "Th-Thank you!"
+	ctxt "Th-Thank you!"
 	done
 
 SproutTower1FSage1Text:
-	text "Only if you reach"
+	ctxt "Only if you reach"
 	line "the top will you"
 	cont "obtain a TM."
 	done
 
 SproutTower1FSage2Text:
-	text "Sprout Tower was"
+	ctxt "Sprout Tower was"
 	line "built long ago"
 
 	para "as a place for"
@@ -85,7 +85,7 @@ SproutTower1FSage2Text:
 	done
 
 SproutTower1FTeacherText:
-	text "See the pillar"
+	ctxt "See the pillar"
 	line "shaking?"
 
 	para "People are train-"
@@ -93,7 +93,7 @@ SproutTower1FTeacherText:
 	done
 
 SproutTower1FStatueText:
-	text "A #mon statue…"
+	ctxt "A #mon statue…"
 
 	para "It looks very"
 	line "distinguished."

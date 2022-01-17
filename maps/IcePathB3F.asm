@@ -53,7 +53,7 @@ LoreleiAfterIntroScript:
 	jumpthisopenedtext
 
 LoreleiAfterText:
-	text "Go on ahead. You"
+	ctxt "Go on ahead. You"
 	line "can challenge the"
 
 	para "#mon League"
@@ -93,7 +93,7 @@ LoreleiAfterRematchIntroScript:
 	jumpthisopenedtext
 
 LoreleiRematchAfterText:
-	text "Your journey isn't"
+	ctxt "Your journey isn't"
 	line "over, you know."
 
 	para "You can earn more"
@@ -117,7 +117,7 @@ LoreleiReintroductionScript:
 	sjump LoreleiAfterRematchIntroScript
 
 Text_IcePathB3FIceRock:
-	text "The boulder is"
+	ctxt "The boulder is"
 	line "coated with ice."
 
 	para "It is bone-chill-"
@@ -125,7 +125,7 @@ Text_IcePathB3FIceRock:
 	done
 
 LoreleiIntroText:
-	text "Lorelei: Hello"
+	ctxt "Lorelei: Hello"
 	line "there, trainer."
 	cont "I am Lorelei."
 
@@ -146,7 +146,7 @@ LoreleiIntroText:
 	done
 
 LoreleiAfterIntroText:
-	text "Lorelei: You're"
+	ctxt "Lorelei: You're"
 	line "taking the #mon"
 
 	para "League challenge."
@@ -158,7 +158,7 @@ LoreleiAfterIntroText:
 	done
 
 LoreleiNoBattleText:
-	text "If you can't face"
+	ctxt "If you can't face"
 	line "me, you'll never"
 
 	para "be able to beat"
@@ -166,18 +166,18 @@ LoreleiNoBattleText:
 	done
 
 LoreleiSeenText:
-	text "Hahaha! Get ready"
+	ctxt "Hahaha! Get ready"
 	line "to be frozen"
 	cont "solid!"
 	done
 
 LoreleiBeatenText:
-	text "You're better than"
+	ctxt "You're better than"
 	line "I thought!"
 	done
 
 LoreleiRewardText:
-	text "You know how to"
+	ctxt "You know how to"
 	line "handle Ice-type"
 	cont "#mon."
 
@@ -186,12 +186,12 @@ LoreleiRewardText:
 	done
 
 LoreleiRematchIntroAgainText:
-	text "Lorelei: Hello"
+	ctxt "Lorelei: Hello"
 	line "again, <PLAYER>."
 	done
 
 LoreleiRematchSeenText:
-	text "So you battled"
+	ctxt "So you battled"
 	line "the Elite Four?"
 
 	para "I hope you took"
@@ -206,6 +206,6 @@ LoreleiRematchSeenText:
 	done
 
 LoreleiRematchBeatenText:
-	text "As expected of"
+	ctxt "As expected of"
 	line "the Champion!"
 	done

@@ -45,7 +45,7 @@ AzaleaGymBugsyScript:
 	setevent EVENT_BEAT_BUGSY
 	opentext
 	writethistext
-		text "<PLAYER> received"
+		ctxt "<PLAYER> received"
 		line "the Hive Badge."
 		done
 	playsound SFX_GET_BADGE
@@ -57,7 +57,7 @@ AzaleaGymBugsyScript:
 	setevent EVENT_BEAT_BUG_CATCHER_AL
 	setevent EVENT_BEAT_BUG_CATCHER_JOSH
 	writethistext
-		text "Do you know the"
+		ctxt "Do you know the"
 		line "benefits of the"
 		cont "Hive Badge?"
 
@@ -81,7 +81,7 @@ AzaleaGymBugsyScript:
 	setevent EVENT_GOT_TM69_U_TURN
 	jumpthisopenedtext
 
-	text "TM69 contains"
+	ctxt "TM69 contains"
 	line "U-turn."
 
 	para "It lets your #-"
@@ -95,7 +95,7 @@ AzaleaGymBugsyScript:
 	done
 
 .SeenText:
-	text "I'm Bugsy!"
+	ctxt "I'm Bugsy!"
 	line "I never lose when"
 
 	para "it comes to bug"
@@ -113,7 +113,7 @@ AzaleaGymBugsyScript:
 	done
 
 .BeatenText:
-	text "Whoa, amazing!"
+	ctxt "Whoa, amazing!"
 	line "You're an expert"
 	cont "on #mon!"
 
@@ -125,7 +125,7 @@ AzaleaGymBugsyScript:
 	done
 
 .AfterText:
-	text "Bug #mon are"
+	ctxt "Bug #mon are"
 	line "deep. There are"
 
 	para "many mysteries to"
@@ -140,7 +140,7 @@ AzaleaGymGuyScript:
 	iftrue_jumptextfaceplayer .WinText
 	jumpthistextfaceplayer
 
-	text "Yo, challenger!"
+	ctxt "Yo, challenger!"
 
 	para "Bugsy's young, but"
 	line "his knowledge of"
@@ -162,7 +162,7 @@ AzaleaGymGuyScript:
 	done
 
 .WinText:
-	text "Well done! That"
+	ctxt "Well done! That"
 	line "was a great clash"
 
 	para "of talented young"
@@ -176,13 +176,13 @@ AzaleaGymGuyScript:
 GenericTrainerBug_catcherBenny:
 	generictrainer BUG_CATCHER, BENNY, EVENT_BEAT_BUG_CATCHER_BENNY, .SeenText, .BeatenText
 
-	text "#mon become"
+	ctxt "#mon become"
 	line "stronger if they"
 	cont "evolve. Really!"
 	done
 
 .SeenText:
-	text "Bug #mon evolve"
+	ctxt "Bug #mon evolve"
 	line "young. So they get"
 
 	para "stronger that much"
@@ -190,14 +190,14 @@ GenericTrainerBug_catcherBenny:
 	done
 
 .BeatenText:
-	text "Just evolving"
+	ctxt "Just evolving"
 	line "isn't enough!"
 	done
 
 GenericTrainerBug_catcherAl:
 	generictrainer BUG_CATCHER, AL, EVENT_BEAT_BUG_CATCHER_AL, .SeenText, .BeatenText
 
-	text "They're so cool,"
+	ctxt "They're so cool,"
 	line "but most girls"
 
 	para "don't like bug"
@@ -207,7 +207,7 @@ GenericTrainerBug_catcherAl:
 	done
 
 .SeenText:
-	text "Bug #mon are"
+	ctxt "Bug #mon are"
 	line "cool and tough!"
 
 	para "I'll prove it to"
@@ -215,20 +215,20 @@ GenericTrainerBug_catcherAl:
 	done
 
 .BeatenText:
-	text "You proved how"
+	ctxt "You proved how"
 	line "tough you are…"
 	done
 
 GenericTrainerBug_catcherJosh:
 	generictrainer BUG_CATCHER, JOSH, EVENT_BEAT_BUG_CATCHER_JOSH, .SeenText, .BeatenText
 
-	text "I guess I should"
+	ctxt "I guess I should"
 	line "teach them better"
 	cont "moves…"
 	done
 
 .SeenText:
-	text "You saved all the"
+	ctxt "You saved all the"
 	line "Slowpoke? Whew,"
 	cont "you're mighty!"
 
@@ -238,18 +238,18 @@ GenericTrainerBug_catcherJosh:
 	done
 
 .BeatenText:
-	text "Urrgggh!"
+	ctxt "Urrgggh!"
 	done
 
 GenericTrainerTwinsAmyandmay1:
 	generictrainer TWINS, AMYANDMAY1, EVENT_BEAT_TWINS_AMY_AND_MAY, .SeenText, TrainerTwinsAmyandmayBeatenText
 
-	text "Amy: You're"
+	ctxt "Amy: You're"
 	line "really strong!"
 	done
 
 .SeenText:
-	text "Amy: Hi! Are you"
+	ctxt "Amy: Hi! Are you"
 	line "challenging the"
 	cont "Leader? No way!"
 	done
@@ -257,7 +257,7 @@ GenericTrainerTwinsAmyandmay1:
 GenericTrainerTwinsAmyandmay2:
 	generictrainer TWINS, AMYANDMAY2, EVENT_BEAT_TWINS_AMY_AND_MAY, .SeenText, TrainerTwinsAmyandmayBeatenText
 
-	text "Mimi: Our bug"
+	ctxt "Mimi: Our bug"
 	line "#mon lost!"
 
 	para "Oh, what a"
@@ -265,12 +265,12 @@ GenericTrainerTwinsAmyandmay2:
 	done
 
 .SeenText:
-	text "Mimi: You want to"
+	ctxt "Mimi: You want to"
 	line "see the Leader?"
 	cont "We come first!"
 	done
 
 TrainerTwinsAmyandmayBeatenText:
-	text "Amy & Mimi: Oh,"
+	ctxt "Amy & Mimi: Oh,"
 	line "double goodness!"
 	done

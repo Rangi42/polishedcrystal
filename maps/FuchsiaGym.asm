@@ -80,7 +80,7 @@ UnknownScript_0x195e02:
 	setevent EVENT_GOT_TM66_POISON_JAB
 	jumpthisopenedtext
 
-	text "It's Poison Jab,"
+	ctxt "It's Poison Jab,"
 	line "a powerful Poison-"
 
 	para "type move that"
@@ -218,7 +218,7 @@ Movement_NinjaSpin:
 	step_end
 
 JanineText_DisappointYou:
-	text "Fufufufu…"
+	ctxt "Fufufufu…"
 
 	para "I'm sorry to dis-"
 	line "appoint you…"
@@ -232,7 +232,7 @@ JanineText_DisappointYou:
 	done
 
 JanineText_ToughOne:
-	text "Janine: You're a"
+	ctxt "Janine: You're a"
 	line "tough one. You"
 	cont "definitely won…"
 
@@ -245,7 +245,7 @@ endc
 	done
 
 Text_ReceivedSoulBadge:
-	text "<PLAYER> received"
+	ctxt "<PLAYER> received"
 if DEF(FAITHFUL)
 	line "the Soul Badge."
 else
@@ -254,13 +254,13 @@ endc
 	done
 
 JanineText_ToxicSpeech:
-	text "Janine: You're so"
+	ctxt "Janine: You're so"
 	line "tough! I have a"
 	cont "special gift!"
 	done
 
 JanineText_ApplyMyself:
-	text "Janine: I'm going"
+	ctxt "Janine: I'm going"
 	line "to really apply"
 
 	para "myself and improve"
@@ -272,7 +272,7 @@ JanineText_ApplyMyself:
 	done
 
 LassAliceBeforeText:
-	text "Fufufu!"
+	ctxt "Fufufu!"
 
 	para "I'm Janine, the"
 	line "Gym Leader!"
@@ -282,32 +282,32 @@ LassAliceBeforeText:
 	done
 
 LassAliceBeatenText:
-	text "I had you fooled…"
+	ctxt "I had you fooled…"
 	done
 
 LassAliceAfterText:
-	text "How will you dis-"
+	ctxt "How will you dis-"
 	line "tinguish our real"
 	cont "Leader?"
 	done
 
 LassLindaBeforeText:
-	text "Fooled you!"
+	ctxt "Fooled you!"
 	line "Hahaha!"
 	done
 
 LassLindaBeatenText:
-	text "Ooh… I lost…"
+	ctxt "Ooh… I lost…"
 	line "You're not weak…"
 	done
 
 LassLindaAfterText:
-	text "Well? Wasn't my"
+	ctxt "Well? Wasn't my"
 	line "disguise perfect?"
 	done
 
 PicnickerCindyBeforeText:
-	text "I'm Janine!"
+	ctxt "I'm Janine!"
 
 	para "How did you know I"
 	line "was real?"
@@ -316,35 +316,35 @@ PicnickerCindyBeforeText:
 	done
 
 PicnickerCindyBeatenText:
-	text "Darn it!"
+	ctxt "Darn it!"
 	line "I wanted to win!"
 	done
 
 PicnickerCindyAfterText:
-	text "You must be"
+	ctxt "You must be"
 	line "getting tired."
 	done
 
 CamperBarryBeforeText:
-	text "Wahahaha!"
+	ctxt "Wahahaha!"
 
 	para "You betcha!"
 	line "I'm Janine!"
 	done
 
 CamperBarryBeatenText:
-	text "My disguise was"
+	ctxt "My disguise was"
 	line "right on! Dang!"
 	done
 
 CamperBarryAfterText:
-	text "Hey, you. Was my"
+	ctxt "Hey, you. Was my"
 	line "disguise cute or"
 	cont "what, huh?"
 	done
 
 FuchsiaGymGuyText:
-	text "Yo, Champ in"
+	ctxt "Yo, Champ in"
 	line "making!"
 
 	para "Whoops! Take a"
@@ -359,7 +359,7 @@ FuchsiaGymGuyText:
 	done
 
 FuchsiaGymGuyWinText:
-	text "That was a great"
+	ctxt "That was a great"
 	line "battle, trainer"
 	cont "from Johto!"
 	done

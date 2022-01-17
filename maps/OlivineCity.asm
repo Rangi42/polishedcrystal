@@ -102,7 +102,7 @@ OlivineCityYoungster1Script:
 	iffalse_jumptextfaceplayer OlivineCityStandingYoungsterPokedexText
 	jumpthistextfaceplayer
 
-	text "That thing you"
+	ctxt "That thing you"
 	line "have--it's a #-"
 	cont "gear, right? Wow,"
 	cont "that's cool."
@@ -150,7 +150,7 @@ OlivineCityMovementData_RivalLeavesLighthouse:
 	step_end
 
 OlivineCityRivalGymText:
-	text "…"
+	ctxt "…"
 
 	para "You again?"
 
@@ -190,7 +190,7 @@ OlivineCityRivalGymText:
 	done
 
 OlivineCityRivalLighthouseText:
-	text "…"
+	ctxt "…"
 
 	para "You again?"
 
@@ -226,7 +226,7 @@ OlivineCityRivalLighthouseText:
 	done
 
 OlivineCityStandingYoungsterPokedexText:
-	text "Wow, you have a"
+	ctxt "Wow, you have a"
 	line "#dex!"
 
 	para "That is just so"
@@ -234,7 +234,7 @@ OlivineCityStandingYoungsterPokedexText:
 	done
 
 OlivineCitySailor1Text:
-	text "Dark roads are"
+	ctxt "Dark roads are"
 	line "dangerous at"
 	cont "night."
 
@@ -252,7 +252,7 @@ OlivineCitySailor1Text:
 	done
 
 OlivineCitySailor2Text:
-	text "The sea is sweet!"
+	ctxt "The sea is sweet!"
 
 	para "Sunsets on the sea"
 	line "are marvelous!"
@@ -263,7 +263,7 @@ OlivineCitySailor2Text:
 	done
 
 OlivineCityFisherText:
-	text "You remind me of"
+	ctxt "You remind me of"
 	line "a kid who used to"
 	cont "live here."
 
@@ -276,7 +276,7 @@ OlivineCityFisherText:
 	done
 
 OlivineCitySailor3Text:
-	text "To see the Light-"
+	ctxt "To see the Light-"
 	line "house illuminate"
 
 	para "the sea at night--"
@@ -284,7 +284,7 @@ OlivineCitySailor3Text:
 	done
 
 OlivineCityPokefanFText:
-	text "Have you been to"
+	ctxt "Have you been to"
 	line "Olivine Café?"
 
 	para "The food is"
@@ -292,7 +292,7 @@ OlivineCityPokefanFText:
 	done
 
 OlivineCityPokefanMText:
-	text "Most trainers who"
+	ctxt "Most trainers who"
 	line "visit Olivine head"
 
 	para "straight for the"
@@ -303,7 +303,7 @@ OlivineCityPokefanMText:
 	done
 
 OlivineCitySailor4Text:
-	text "♪ A home like"
+	ctxt "♪ A home like"
 	line "O-li-vine,"
 
 	para "I'm so hap-py I"
@@ -320,7 +320,7 @@ OlivineCitySailor4Text:
 	done
 
 OlivineCitySailor5Text:
-	text "Us sailors love"
+	ctxt "Us sailors love"
 	line "a sing-song."
 	cont "Join in!"
 
@@ -335,7 +335,7 @@ OlivineCitySailor5Text:
 	done
 
 OlivineCityLass1Text:
-	text "The sailors here"
+	ctxt "The sailors here"
 	line "may seem like a"
 
 	para "handful, but"
@@ -343,7 +343,7 @@ OlivineCityLass1Text:
 	done
 
 OlivineCityYoungster2Text:
-	text "Sailors and camp-"
+	ctxt "Sailors and camp-"
 	line "ers have something"
 	cont "in common:"
 
@@ -356,7 +356,7 @@ OlivineCityYoungster2Text:
 	done
 
 OlivineCityLass2Text:
-	text "Jasmine, our Gym"
+	ctxt "Jasmine, our Gym"
 	line "Leader, is a shy"
 
 	para "girl. She's no"
@@ -364,19 +364,19 @@ OlivineCityLass2Text:
 	done
 
 OlivineCitySignText:
-	text "Olivine City"
+	ctxt "Olivine City"
 
 	para "The Port Closest"
 	line "to Foreign Lands"
 	done
 
 OlivineCityPortSignText:
-	text "Olivine Port"
+	ctxt "Olivine Port"
 	line "Fast Ship Pier"
 	done
 
 OlivineGymSignText:
-	text "Olivine City"
+	ctxt "Olivine City"
 	line "#mon Gym"
 	cont "Leader: Jasmine"
 
@@ -385,22 +385,22 @@ OlivineGymSignText:
 	done
 
 OlivineLighthouseSignText:
-	text "Olivine Lighthouse"
+	ctxt "Olivine Lighthouse"
 	line "Also known as the"
 	cont "Glitter Lighthouse"
 	done
 
 OlivineCityBattleTowerSignText:
-	text "Battle Tower Ahead"
+	ctxt "Battle Tower Ahead"
 	line "Opening Now!"
 	done
 
 OlivineCityPokeathlonDomeSignText:
-	text "The #athlon"
+	ctxt "The #athlon"
 	line "Project Has"
 	cont "Started!"
 	done
 
 OlivineCityCafeSignText:
-	text "Olivine Café"
+	ctxt "Olivine Café"
 	done

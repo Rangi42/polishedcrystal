@@ -38,7 +38,7 @@ VictoryRoadGateBadgeCheckScript:
 	end
 
 VictoryRoadGateOfficerText:
-	text "Only trainers who"
+	ctxt "Only trainers who"
 	line "have proven them-"
 	cont "selves may pass."
 
@@ -53,7 +53,7 @@ VictoryRoadGateOfficerText:
 	done
 
 VictoryRoadGateLeftBlackBeltText:
-	text "This way leads to"
+	ctxt "This way leads to"
 	line "Mt.Silver."
 
 	para "You'll see scary-"
@@ -62,7 +62,7 @@ VictoryRoadGateLeftBlackBeltText:
 	done
 
 VictoryRoadGateRightBlackBeltText:
-	text "Off to the #mon"
+	ctxt "Off to the #mon"
 	line "League, are you?"
 
 	para "The Elite Four are"

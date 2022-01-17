@@ -76,7 +76,7 @@ BlackthornGymClairScript:
 	end
 
 .IntroText:
-	text "I am Clair."
+	ctxt "I am Clair."
 
 	para "The world's best"
 	line "dragon master."
@@ -101,7 +101,7 @@ BlackthornGymClairScript:
 	done
 
 .WinText:
-	text "I lost?"
+	ctxt "I lost?"
 
 	para "I don't believe"
 	line "it. There must be"
@@ -109,7 +109,7 @@ BlackthornGymClairScript:
 	done
 
 .GoToDragonsDenText:
-	text "I won't admit"
+	ctxt "I won't admit"
 	line "this."
 
 	para "I may have lost,"
@@ -143,14 +143,14 @@ BlackthornGymClairScript:
 	done
 
 .TooMuchToExpectText:
-	text "What's the matter?"
+	ctxt "What's the matter?"
 
 	para "Is it too much to"
 	line "expect of you?"
 	done
 
 ClairPokemonLeagueDirectionsText:
-	text "What's the matter?"
+	ctxt "What's the matter?"
 
 	para "Aren't you headed"
 	line "to the #mon"
@@ -185,7 +185,7 @@ BlackthornGymGuyScript:
 	iftrue_jumptextfaceplayer .WinText
 	jumpthistextfaceplayer
 
-	text "Yo! Champ in"
+	ctxt "Yo! Champ in"
 	line "making!"
 
 	para "It's been a long"
@@ -210,7 +210,7 @@ BlackthornGymGuyScript:
 	done
 
 .WinText:
-	text "You were great to"
+	ctxt "You were great to"
 	line "beat Clair!"
 
 	para "All that's left is"
@@ -225,7 +225,7 @@ BlackthornGymGuyScript:
 GenericTrainerDragonTamerPaul:
 	generictrainer DRAGON_TAMER, PAUL, EVENT_BEAT_DRAGON_TAMER_PAUL, .SeenText, .BeatenText
 
-	text "Lance told you"
+	ctxt "Lance told you"
 	line "that he'd like to"
 
 	para "see you again?"
@@ -233,7 +233,7 @@ GenericTrainerDragonTamerPaul:
 	done
 
 .SeenText:
-	text "Your first battle"
+	ctxt "Your first battle"
 	line "against dragons?"
 
 	para "I'll show you how"
@@ -241,14 +241,14 @@ GenericTrainerDragonTamerPaul:
 	done
 
 .BeatenText:
-	text "My dragon #mon"
+	ctxt "My dragon #mon"
 	line "lost?"
 	done
 
 GenericTrainerCooltrainermMike:
 	generictrainer COOLTRAINERM, MIKE, EVENT_BEAT_COOLTRAINERM_MIKE, .SeenText, .BeatenText
 
-	text "I know my short-"
+	ctxt "I know my short-"
 	line "comings now."
 
 	para "Thanks for showing"
@@ -256,25 +256,25 @@ GenericTrainerCooltrainermMike:
 	done
 
 .SeenText:
-	text "My chance of"
+	ctxt "My chance of"
 	line "losing? Not even"
 	cont "one percent!"
 	done
 
 .BeatenText:
-	text "That's odd."
+	ctxt "That's odd."
 	done
 
 GenericTrainerCooltrainerfLola:
 	generictrainer COOLTRAINERF, LOLA, EVENT_BEAT_COOLTRAINERF_LOLA, .SeenText, .BeatenText
 
-	text "Dragons are weak"
+	ctxt "Dragons are weak"
 	line "against Dragon-"
 	cont "type moves."
 	done
 
 .SeenText:
-	text "Dragons are sacred"
+	ctxt "Dragons are sacred"
 	line "#mon."
 
 	para "They are full of"
@@ -288,5 +288,5 @@ GenericTrainerCooltrainerfLola:
 	done
 
 .BeatenText:
-	text "Way to go!"
+	ctxt "Way to go!"
 	done
