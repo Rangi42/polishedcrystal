@@ -15,14 +15,14 @@ _LoadStandardMaybeOpaqueFont:
 	ld d, h
 	ld e, l
 	ld hl, vTiles0 tile "A"
-	lb bc, BANK(FontTiles), 111
+	lb bc, BANK(FontTiles), 113
 	pop af
 	ldh [hRequestOpaque1bpp], a
 	push af
 	call GetMaybeOpaque1bpp
 	ld de, FontCommon
-	ld hl, vTiles0 tile "▷"
-	lb bc, BANK(FontCommon), 9
+	ld hl, vTiles0 tile "↑"
+	lb bc, BANK(FontCommon), 7
 	pop af
 	ldh [hRequestOpaque1bpp], a
 	jmp GetMaybeOpaque1bpp
