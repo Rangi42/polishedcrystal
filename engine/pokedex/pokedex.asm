@@ -1381,7 +1381,7 @@ endr
 	hldexcoord 2, 18
 	ld a, $16
 	ld [hli], a
-	ld a, $f2
+	ld a, "<BLACK>"
 	ld b, 15
 .botmenu_loop
 	ld [hli], a
