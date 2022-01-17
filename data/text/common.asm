@@ -3,13 +3,13 @@ INCLUDE "constants.asm"
 
 SECTION "_FruitBearingTreeText", ROMX
 _FruitBearingTreeText::
-	text "It's a fruit-"
+	ctxt "It's a fruit-"
 	line "bearing tree."
 	done
 
 SECTION "_HeyItsFruitText", ROMX
 _HeyItsFruitText::
-	text "Hey! It's"
+	ctxt "Hey! It's"
 	line ""
 	text_ram wStringBuffer3
 	text "!"
@@ -17,7 +17,7 @@ _HeyItsFruitText::
 
 SECTION "_ObtainedOneFruitText", ROMX
 _ObtainedOneFruitText::
-	text "Obtained a"
+	ctxt "Obtained a"
 	line ""
 	text_ram wStringBuffer3
 	text "!"
@@ -25,7 +25,7 @@ _ObtainedOneFruitText::
 
 SECTION "_ObtainedTwoFruitText", ROMX
 _ObtainedTwoFruitText::
-	text "Obtained two"
+	ctxt "Obtained two"
 	line ""
 	text_ram wStringBuffer3
 	text "!"
@@ -33,7 +33,7 @@ _ObtainedTwoFruitText::
 
 SECTION "_ObtainedThreeFruitText", ROMX
 _ObtainedThreeFruitText::
-	text "Obtained three"
+	ctxt "Obtained three"
 	line ""
 	text_ram wStringBuffer3
 	text "!"
@@ -41,46 +41,46 @@ _ObtainedThreeFruitText::
 
 SECTION "_FruitPackIsFullText", ROMX
 _FruitPackIsFullText::
-	text "But the Bag is"
+	ctxt "But the Bag is"
 	line "full…"
 	done
 
 SECTION "_NoApricornBoxText", ROMX
 _NoApricornBoxText::
-	text "But there's nothing"
+	ctxt "But there's nothing"
 	line "to put it in…"
 	done
 
 SECTION "_ApricornBoxIsFullText", ROMX
 _ApricornBoxIsFullText::
-	text "But the Apricorn"
+	ctxt "But the Apricorn"
 	line "Box is full…"
 	done
 
 SECTION "_PutAwayTheApricornText", ROMX
 _PutAwayTheApricornText::
-	text "<PLAYER> put the"
+	ctxt "<PLAYER> put the"
 	line ""
 	text_ram wStringBuffer3
-	text " in"
+	ctxt " in"
 	cont "the Apricorn Box."
 	done
 
 SECTION "_NothingHereText", ROMX
 _NothingHereText::
-	text "There's nothing"
+	ctxt "There's nothing"
 	line "here…"
 	done
 
 SECTION "_WantToUseMulchText", ROMX
 _WantToUseMulchText::
-	text "Want to use"
+	ctxt "Want to use"
 	line "Mulch?"
 	done
 
 SECTION "_UsedMulchText", ROMX
 _UsedMulchText::
-	text "<PLAYER> used"
+	ctxt "<PLAYER> used"
 	line "Mulch!"
 
 	para "The tree was"
@@ -89,13 +89,13 @@ _UsedMulchText::
 
 SECTION "_WhichApricornText", ROMX
 _WhichApricornText::
-	text "Which Apricorn"
+	ctxt "Which Apricorn"
 	line "should I use?"
 	done
 
 SECTION "_HowManyShouldIMakeText", ROMX
 _HowManyShouldIMakeText::
-	text "How many should I"
+	ctxt "How many should I"
 	line "make?"
 	done
 
@@ -110,21 +110,21 @@ _RecoveredSomeHPText::
 SECTION "_CuredOfPoisonText", ROMX
 _CuredOfPoisonText::
 	text_ram wStringBuffer1
-	text "'s"
+	ctxt "'s"
 	line "cured of poison."
 	done
 
 SECTION "_RidOfParalysisText", ROMX
 _RidOfParalysisText::
 	text_ram wStringBuffer1
-	text "'s"
+	ctxt "'s"
 	line "rid of paralysis."
 	done
 
 SECTION "_BurnWasHealedText", ROMX
 _BurnWasHealedText::
 	text_ram wStringBuffer1
-	text "'s"
+	ctxt "'s"
 	line "burn was healed."
 	done
 
@@ -143,7 +143,7 @@ _WokeUpText::
 SECTION "_HealthReturnedText", ROMX
 _HealthReturnedText::
 	text_ram wStringBuffer1
-	text "'s"
+	ctxt "'s"
 	line "health returned."
 	done
 
@@ -156,7 +156,7 @@ _RevitalizedText::
 SECTION "_GrewToLevelText", ROMX
 _GrewToLevelText::
 	text_ram wStringBuffer1
-	text " grew to"
+	ctxt " grew to"
 	line "level "
 	text_decimal wCurPartyLevel, 1, 3
 	text "!"
@@ -167,13 +167,13 @@ _GrewToLevelText::
 SECTION "_CameToItsSensesText", ROMX
 _CameToItsSensesText::
 	text_ram wStringBuffer1
-	text " came"
+	ctxt " came"
 	line "to its senses."
 	done
 
 SECTION "_OakTimeWokeUpText", ROMX
 _OakTimeWokeUpText::
-	text "………………………………"
+	ctxt "………………………………"
 	line "………………………………"
 
 	para "Zzz… Hm? Wha…?"
@@ -185,12 +185,12 @@ _OakTimeWokeUpText::
 
 SECTION "_OakTimeWhatTimeIsItText", ROMX
 _OakTimeWhatTimeIsItText::
-	text "What time is it?"
+	ctxt "What time is it?"
 	done
 
 SECTION "_OakTimeWhatHoursText", ROMX
 _OakTimeWhatHoursText::
-	text "What?"
+	ctxt "What?"
 	done
 
 SECTION "_OakTimeHoursQuestionMarkText", ROMX
@@ -200,12 +200,12 @@ _OakTimeHoursQuestionMarkText::
 
 SECTION "_OakTimeHowManyMinutesText", ROMX
 _OakTimeHowManyMinutesText::
-	text "How many minutes?"
+	ctxt "How many minutes?"
 	done
 
 SECTION "_OakTimeWhoaMinutesText", ROMX
 _OakTimeWhoaMinutesText::
-	text "Whoa!"
+	ctxt "Whoa!"
 	done
 
 SECTION "_OakTimeMinutesQuestionMarkText", ROMX
@@ -215,62 +215,62 @@ _OakTimeMinutesQuestionMarkText::
 
 SECTION "_OakTimeOversleptText", ROMX
 _OakTimeOversleptText::
-	text "!"
+	ctxt "!"
 	line "I overslept!"
 	done
 
 SECTION "_OakTimeYikesText", ROMX
 _OakTimeYikesText::
-	text "!"
+	ctxt "!"
 	line "Yikes! I over-"
 	cont "slept!"
 	done
 
 SECTION "ProfElmNappedText", ROMX
 ProfElmNappedText::
-	text "!"
+	ctxt "!"
 	line "I napped for"
 	cont "too long!"
 	done
 
 SECTION "_OakTimeSoDarkText", ROMX
 _OakTimeSoDarkText::
-	text "!"
+	ctxt "!"
 	line "No wonder it's so"
 	cont "dark!"
 	done
 
 SECTION "_OakTimeWhatDayIsItText", ROMX
 _OakTimeWhatDayIsItText::
-	text "What day is it?"
+	ctxt "What day is it?"
 	done
 
 SECTION "_OakTimeIsItText", ROMX
 _OakTimeIsItText::
-	text ", is it?"
+	ctxt ", is it?"
 	done
 
 SECTION "_NothingToChooseText", ROMX
 _NothingToChooseText::
-	text "There's nothing to"
+	ctxt "There's nothing to"
 	line "choose."
 	prompt
 
 SECTION "_WhichSidePutOnText", ROMX
 _WhichSidePutOnText::
-	text "Which side do you"
+	ctxt "Which side do you"
 	line "want to put it on?"
 	done
 
 SECTION "_WhichSidePutAwayText", ROMX
 _WhichSidePutAwayText::
-	text "Which side do you"
+	ctxt "Which side do you"
 	line "want to put away?"
 	done
 
 SECTION "_PutAwayTheDecoText", ROMX
 _PutAwayTheDecoText::
-	text "Put away the"
+	ctxt "Put away the"
 	line ""
 	text_ram wStringBuffer3
 	text "."
@@ -278,13 +278,13 @@ _PutAwayTheDecoText::
 
 SECTION "_NothingToPutAwayText", ROMX
 _NothingToPutAwayText::
-	text "There's nothing to"
+	ctxt "There's nothing to"
 	line "put away."
 	prompt
 
 SECTION "_SetUpTheDecoText", ROMX
 _SetUpTheDecoText::
-	text "Set up the"
+	ctxt "Set up the"
 	line ""
 	text_ram wStringBuffer3
 	text "."
@@ -292,7 +292,7 @@ _SetUpTheDecoText::
 
 SECTION "_PutAwayAndSetUpText", ROMX
 _PutAwayAndSetUpText::
-	text "Put away the"
+	ctxt "Put away the"
 	line ""
 	text_ram wStringBuffer3
 
@@ -304,36 +304,36 @@ _PutAwayAndSetUpText::
 
 SECTION "_AlreadySetUpText", ROMX
 _AlreadySetUpText::
-	text "That's already set"
+	ctxt "That's already set"
 	line "up."
 	prompt
 
 SECTION "_LookTownMapText", ROMX
 _LookTownMapText::
-	text "It's the Town Map."
+	ctxt "It's the Town Map."
 	done
 
 SECTION "_LookPikachuPosterText", ROMX
 _LookPikachuPosterText::
-	text "It's a poster of a"
+	ctxt "It's a poster of a"
 	line "cute Pikachu."
 	done
 
 SECTION "_LookClefairyPosterText", ROMX
 _LookClefairyPosterText::
-	text "It's a poster of a"
+	ctxt "It's a poster of a"
 	line "cute Clefairy."
 	done
 
 SECTION "_LookJigglypuffPosterText", ROMX
 _LookJigglypuffPosterText::
-	text "It's a poster of a"
+	ctxt "It's a poster of a"
 	line "cute Marill."
 	done
 
 SECTION "_LookAdorableDecoText", ROMX
 _LookAdorableDecoText::
-	text "It's an adorable"
+	ctxt "It's an adorable"
 	line ""
 	text_ram wStringBuffer3
 	text "."
@@ -341,7 +341,7 @@ _LookAdorableDecoText::
 
 SECTION "DecoConsoleText", ROMX
 DecoConsoleText::
-	text "It's a shiny"
+	ctxt "It's a shiny"
 	line ""
 	text_ram wStringBuffer3
 	text "."
@@ -349,51 +349,51 @@ DecoConsoleText::
 
 SECTION "_LookGiantDecoText", ROMX
 _LookGiantDecoText::
-	text "A giant doll! It's"
+	ctxt "A giant doll! It's"
 	line "fluffy and cuddly."
 	done
 
 SECTION "_MomHiHowAreYouText", ROMX
 _MomHiHowAreYouText::
-	text "Hi, <PLAYER>!"
+	ctxt "Hi, <PLAYER>!"
 	line "How are you?"
 	prompt
 
 SECTION "_MomFoundAnItemText", ROMX
 _MomFoundAnItemText::
-	text "I found a useful"
+	ctxt "I found a useful"
 	line "item shopping, so"
 	prompt
 
 SECTION "_MomBoughtWithYourMoneyText", ROMX
 _MomBoughtWithYourMoneyText::
-	text "I bought it with"
+	ctxt "I bought it with"
 	line "your money. Sorry!"
 	prompt
 
 SECTION "_MomItsInPCText", ROMX
 _MomItsInPCText::
-	text "It's in your PC."
+	ctxt "It's in your PC."
 	line "You'll like it!"
 	done
 
 SECTION "_MomFoundADollText", ROMX
 _MomFoundADollText::
-	text "While shopping"
+	ctxt "While shopping"
 	line "today, I saw this"
 	cont "adorable doll, so"
 	prompt
 
 SECTION "_MomItsInYourRoomText", ROMX
 _MomItsInYourRoomText::
-	text "It's in your room."
+	ctxt "It's in your room."
 	line "You'll love it!"
 	done
 
 SECTION "_MonWasSentToText", ROMX
 _MonWasSentToText::
 	text_ram wPlayerTrademonSpeciesName
-	text " was"
+	ctxt " was"
 	line "sent to "
 	text_ram wOTTrademonSenderName
 	text "."
@@ -402,7 +402,7 @@ _MonWasSentToText::
 SECTION "_BidsFarewellToMonText", ROMX
 _BidsFarewellToMonText::
 	text_ram wOTTrademonSenderName
-	text " bids"
+	ctxt " bids"
 	line "farewell to"
 	done
 
@@ -414,7 +414,7 @@ _MonNameBidsFarewellText::
 
 SECTION "_TakeGoodCareOfMonText", ROMX
 _TakeGoodCareOfMonText::
-	text "Take good care of"
+	ctxt "Take good care of"
 	line ""
 	text_ram wOTTrademonSpeciesName
 	text "."
@@ -433,7 +433,7 @@ _ForYourMonSendsText::
 SECTION "_OTSendsText", ROMX
 _OTSendsText::
 	text_ram wOTTrademonSenderName
-	text " sends"
+	ctxt " sends"
 	line ""
 	text_ram wOTTrademonSpeciesName
 	text "."
@@ -442,7 +442,7 @@ _OTSendsText::
 SECTION "_WillTradeText", ROMX
 _WillTradeText::
 	text_ram wOTTrademonSenderName
-	text " will"
+	ctxt " will"
 	line "trade "
 	text_ram wOTTrademonSpeciesName
 	text_end
@@ -1031,7 +1031,7 @@ _RocketRadioText7::
 	text_start
 	line "Giovanni! "
 	text_pause
-	text "Can you"
+	ctxt "Can you"
 	done
 
 SECTION "_RocketRadioText8", ROMX
@@ -1039,7 +1039,7 @@ _RocketRadioText8::
 	text_start
 	line "hear?"
 	text_pause
-	text " We did it!"
+	ctxt " We did it!"
 	done
 
 SECTION "_RocketRadioText9", ROMX
@@ -1047,7 +1047,7 @@ _RocketRadioText9::
 	text_start
 	line ""
 	text_pause
-	text "Where is our boss?"
+	ctxt "Where is our boss?"
 	done
 
 SECTION "_RocketRadioText10", ROMX
@@ -1055,7 +1055,7 @@ _RocketRadioText10::
 	text_start
 	line ""
 	text_pause
-	text "Is he listening?"
+	ctxt "Is he listening?"
 	done
 
 SECTION "_BuenaRadioText1", ROMX
@@ -1152,7 +1152,7 @@ _BuenaRadioMidnightText8::
 
 SECTION "_BuenaRadioMidnightText9", ROMX
 _BuenaRadioMidnightText9::
-	text "I'm outta here!"
+	ctxt "I'm outta here!"
 	done
 
 SECTION "_BuenaRadioMidnightText10", ROMX
@@ -1187,31 +1187,31 @@ Text_EnemyUsedOn::
 
 SECTION "_AskFloorElevatorText", ROMX
 _AskFloorElevatorText::
-	text "Which floor?"
+	ctxt "Which floor?"
 	done
 
 SECTION "_BugCatchingContestTimeUpText", ROMX
 _BugCatchingContestTimeUpText::
-	text "Announcer: BEEEP!"
+	ctxt "Announcer: BEEEP!"
 
 	para "Time's up!"
 	done
 
 SECTION "_BugCatchingContestIsOverText", ROMX
 _BugCatchingContestIsOverText::
-	text "Announcer: The"
+	ctxt "Announcer: The"
 	line "Contest is over!"
 	done
 
 SECTION "_RepelWoreOffText", ROMX
 _RepelWoreOffText::
-	text "Repel's effect"
+	ctxt "Repel's effect"
 	line "wore off."
 	done
 
 SECTION "UseAnotherRepelText", ROMX
 UseAnotherRepelText::
-	text "Repel's effect"
+	ctxt "Repel's effect"
 	line "wore off."
 
 	para "Use another?"
@@ -1219,13 +1219,13 @@ UseAnotherRepelText::
 
 SECTION "_JustSawSomeRareMonText", ROMX
 _JustSawSomeRareMonText::
-	text "I just saw some"
+	ctxt "I just saw some"
 	line "rare "
 	text_ram wStringBuffer1
 	text " in"
 	cont ""
 	text_ram wStringBuffer2
-	text "."
+	ctxt "."
 
 	para "I'll call you if I"
 	line "see another rare"
@@ -1234,30 +1234,30 @@ _JustSawSomeRareMonText::
 
 SECTION "_SavingRecordText", ROMX
 _SavingRecordText::
-	text "Saving record…"
+	ctxt "Saving record…"
 	line "Don't turn off!"
 	done
 
 SECTION "_NoCoinsText", ROMX
 _NoCoinsText::
-	text "You have no coins."
+	ctxt "You have no coins."
 	prompt
 
 SECTION "_NoCoinCaseText", ROMX
 _NoCoinCaseText::
-	text "You don't have a"
+	ctxt "You don't have a"
 	line "Coin Case."
 	prompt
 
 SECTION "_NPCTradeCableText", ROMX
 _NPCTradeCableText::
-	text "OK, connect the"
+	ctxt "OK, connect the"
 	line "Game Link Cable."
 	prompt
 
 SECTION "Text_NPCTraded", ROMX
 Text_NPCTraded::
-	text "<PLAYER> traded"
+	ctxt "<PLAYER> traded"
 	line ""
 	text_ram wMonOrItemNameBuffer
 	text " for"
@@ -1274,11 +1274,11 @@ _NPCTradeFanfareText::
 
 SECTION "_NPCTradeIntroText1", ROMX
 _NPCTradeIntroText1::
-	text "I collect #mon."
+	ctxt "I collect #mon."
 	line "Do you have"
 	cont ""
 	text_ram wStringBuffer1
-	text "?"
+	ctxt "?"
 
 	para "Want to trade it"
 	line "for my "
@@ -1288,45 +1288,45 @@ _NPCTradeIntroText1::
 
 SECTION "_NPCTradeCancelText1", ROMX
 _NPCTradeCancelText1::
-	text "You don't want to"
+	ctxt "You don't want to"
 	line "trade? Aww…"
 	done
 
 SECTION "_NPCTradeWrongText1", ROMX
 _NPCTradeWrongText1::
-	text "Huh? That's not"
+	ctxt "Huh? That's not"
 	line ""
 	text_ram wStringBuffer1
-	text "."
+	ctxt "."
 	cont "What a letdown…"
 	done
 
 SECTION "_NPCTradeCompleteText1", ROMX
 _NPCTradeCompleteText1::
-	text "Yay! I got myself"
+	ctxt "Yay! I got myself"
 	line ""
 	text_ram wStringBuffer1
-	text "!"
+	ctxt "!"
 	cont "Thanks!"
 	done
 
 SECTION "_NPCTradeAfterText1", ROMX
 _NPCTradeAfterText1::
-	text "Hi, how's my old"
+	ctxt "Hi, how's my old"
 	line ""
 	text_ram wStringBuffer2
-	text " doing?"
+	ctxt " doing?"
 	done
 
 SECTION "_NPCTradeIntroText2", ROMX
 _NPCTradeIntroText2::
-	text "Hi, I'm looking"
+	ctxt "Hi, I'm looking"
 	line "for this #mon."
 
 	para "If you have"
 	line ""
 	text_ram wStringBuffer1
-	text ", would"
+	ctxt ", would"
 
 	para "you trade it for"
 	line "my "
@@ -1336,7 +1336,7 @@ _NPCTradeIntroText2::
 
 SECTION "_NPCTradeCancelText2", ROMX
 _NPCTradeCancelText2::
-	text "You don't have"
+	ctxt "You don't have"
 	line "one either?"
 
 	para "Gee, that's really"
@@ -1345,16 +1345,16 @@ _NPCTradeCancelText2::
 
 SECTION "_NPCTradeWrongText2", ROMX
 _NPCTradeWrongText2::
-	text "You don't have"
+	ctxt "You don't have"
 	line ""
 	text_ram wStringBuffer1
-	text "? That's"
+	ctxt "? That's"
 	cont "too bad, then."
 	done
 
 SECTION "_NPCTradeCompleteText2", ROMX
 _NPCTradeCompleteText2::
-	text "Great! Thank you!"
+	ctxt "Great! Thank you!"
 
 	para "I finally got"
 	line ""
@@ -1364,7 +1364,7 @@ _NPCTradeCompleteText2::
 
 SECTION "_NPCTradeAfterText2", ROMX
 _NPCTradeAfterText2::
-	text "Hi! The "
+	ctxt "Hi! The "
 	text_ram wMonOrItemNameBuffer
 	line "you traded me is"
 	cont "doing great!"
@@ -1373,13 +1373,13 @@ _NPCTradeAfterText2::
 SECTION "_NPCTradeIntroText3", ROMX
 _NPCTradeIntroText3::
 	text_ram wMonOrItemNameBuffer
-	text "'s cute,"
+	ctxt "'s cute,"
 	line "but I don't have"
 
 	para "it. Do you have"
 	line ""
 	text_ram wStringBuffer1
-	text "?"
+	ctxt "?"
 
 	para "Want to trade it"
 	line "for my "
@@ -1389,16 +1389,16 @@ _NPCTradeIntroText3::
 
 SECTION "_NPCTradeCancelText3", ROMX
 _NPCTradeCancelText3::
-	text "You don't want to"
+	ctxt "You don't want to"
 	line "trade? Oh, darn…"
 	done
 
 SECTION "_NPCTradeWrongText3", ROMX
 _NPCTradeWrongText3::
-	text "That's not"
+	ctxt "That's not"
 	line ""
 	text_ram wStringBuffer1
-	text "."
+	ctxt "."
 
 	para "Please trade with"
 	line "me if you get one."
@@ -1406,7 +1406,7 @@ _NPCTradeWrongText3::
 
 SECTION "_NPCTradeCompleteText3", ROMX
 _NPCTradeCompleteText3::
-	text "Wow! Thank you!"
+	ctxt "Wow! Thank you!"
 	line "I always wanted"
 	cont ""
 	text_ram wMonOrItemNameBuffer
@@ -1415,26 +1415,26 @@ _NPCTradeCompleteText3::
 
 SECTION "_NPCTradeAfterText3", ROMX
 _NPCTradeAfterText3::
-	text "How is that"
+	ctxt "How is that"
 	line ""
 	text_ram wStringBuffer2
-	text " I"
+	ctxt " I"
 	cont "traded you doing?"
 
 	para "Your "
 	text_ram wMonOrItemNameBuffer
-	text "'s"
+	ctxt "'s"
 	line "so cute!"
 	done
 
 SECTION "_NPCTradeCompleteText4", ROMX
 _NPCTradeCompleteText4::
-	text "Uh? What happened?"
+	ctxt "Uh? What happened?"
 	done
 
 SECTION "_NPCTradeAfterText4", ROMX
 _NPCTradeAfterText4::
-	text "Trading is so odd…"
+	ctxt "Trading is so odd…"
 
 	para "I still have a lot"
 	line "to learn about it."
@@ -1442,7 +1442,7 @@ _NPCTradeAfterText4::
 
 SECTION "_MomLeavingText1", ROMX
 _MomLeavingText1::
-	text "Wow, that's a cute"
+	ctxt "Wow, that's a cute"
 	line "#mon."
 
 	para "Where did you get"
@@ -1471,7 +1471,7 @@ _MomLeavingText1::
 
 SECTION "_MomLeavingText2", ROMX
 _MomLeavingText2::
-	text "OK, I'll take care"
+	ctxt "OK, I'll take care"
 	line "of your money."
 
 	para "………………"
@@ -1479,7 +1479,7 @@ _MomLeavingText2::
 
 SECTION "_MomLeavingText3", ROMX
 _MomLeavingText3::
-	text "Be careful."
+	ctxt "Be careful."
 
 	para "#mon are your"
 	line "friends. You need"
@@ -1490,7 +1490,7 @@ _MomLeavingText3::
 
 SECTION "_MomIsThisAboutYourMoneyText", ROMX
 _MomIsThisAboutYourMoneyText::
-	text "Hi! Welcome home!"
+	ctxt "Hi! Welcome home!"
 	line "You're trying very"
 	cont "hard, I see."
 
@@ -1503,55 +1503,55 @@ _MomIsThisAboutYourMoneyText::
 
 SECTION "_MomBankWhatDoYouWantToDoText", ROMX
 _MomBankWhatDoYouWantToDoText::
-	text "What do you want"
+	ctxt "What do you want"
 	line "to do?"
 	done
 
 SECTION "_MomStoreMoneyText", ROMX
 _MomStoreMoneyText::
-	text "How much do you"
+	ctxt "How much do you"
 	line "want to save?"
 	done
 
 SECTION "_MomTakeMoneyText", ROMX
 _MomTakeMoneyText::
-	text "How much do you"
+	ctxt "How much do you"
 	line "want to take?"
 	done
 
 SECTION "_MomSaveMoneyText", ROMX
 _MomSaveMoneyText::
-	text "Do you want to"
+	ctxt "Do you want to"
 	line "save some money?"
 	done
 
 SECTION "_MomHaventSavedThatMuchText", ROMX
 _MomHaventSavedThatMuchText::
-	text "You haven't saved"
+	ctxt "You haven't saved"
 	line "that much."
 	prompt
 
 SECTION "_MomNotEnoughRoomInWalletText", ROMX
 _MomNotEnoughRoomInWalletText::
-	text "You can't take"
+	ctxt "You can't take"
 	line "that much."
 	prompt
 
 SECTION "_MomInsufficientFundsInWalletText", ROMX
 _MomInsufficientFundsInWalletText::
-	text "You don't have"
+	ctxt "You don't have"
 	line "that much."
 	prompt
 
 SECTION "_MomNotEnoughRoomInBankText", ROMX
 _MomNotEnoughRoomInBankText::
-	text "You can't save"
+	ctxt "You can't save"
 	line "that much."
 	prompt
 
 SECTION "_MomStartSavingMoneyText", ROMX
 _MomStartSavingMoneyText::
-	text "OK, I'll save your"
+	ctxt "OK, I'll save your"
 	line "money. Trust me!"
 
 	para "<PLAYER>, stick"
@@ -1560,32 +1560,32 @@ _MomStartSavingMoneyText::
 
 SECTION "_MomStoredMoneyText", ROMX
 _MomStoredMoneyText::
-	text "Your money's safe"
+	ctxt "Your money's safe"
 	line "here! Get going!"
 	done
 
 SECTION "_MomTakenMoneyText", ROMX
 _MomTakenMoneyText::
-	text "<PLAYER>, don't"
+	ctxt "<PLAYER>, don't"
 	line "give up!"
 	done
 
 SECTION "_MomJustDoWhatYouCanText", ROMX
 _MomJustDoWhatYouCanText::
-	text "Just do what"
+	ctxt "Just do what"
 	line "you can."
 	done
 
 SECTION "_DayCareManIntroText", ROMX
 _DayCareManIntroText::
-	text "I'm the Day-Care"
+	ctxt "I'm the Day-Care"
 	line "Man. Want me to"
 	cont "raise a #mon?"
 	done
 
 SECTION "_DayCareManIntroEggText", ROMX
 _DayCareManIntroEggText::
-	text "I'm the Day-Care"
+	ctxt "I'm the Day-Care"
 	line "Man. Do you know"
 	cont "about Eggs?"
 
@@ -1605,7 +1605,7 @@ _DayCareManIntroEggText::
 
 SECTION "_DayCareLadyIntroText", ROMX
 _DayCareLadyIntroText::
-	text "I'm the Day-Care"
+	ctxt "I'm the Day-Care"
 	line "Lady."
 
 	para "Should I raise a"
@@ -1614,7 +1614,7 @@ _DayCareLadyIntroText::
 
 SECTION "_DayCareLadyIntroEggText", ROMX
 _DayCareLadyIntroEggText::
-	text "I'm the Day-Care"
+	ctxt "I'm the Day-Care"
 	line "Lady. Do you know"
 	cont "about Eggs?"
 
@@ -1634,38 +1634,38 @@ _DayCareLadyIntroEggText::
 
 SECTION "_WhatShouldIRaiseText", ROMX
 _WhatShouldIRaiseText::
-	text "What should I"
+	ctxt "What should I"
 	line "raise for you?"
 	prompt
 
 SECTION "_OnlyOneMonText", ROMX
 _OnlyOneMonText::
-	text "Oh? But you have"
+	ctxt "Oh? But you have"
 	line "just one #mon."
 	prompt
 
 SECTION "_CantAcceptEggText", ROMX
 _CantAcceptEggText::
-	text "Sorry, but I can't"
+	ctxt "Sorry, but I can't"
 	line "accept an Egg."
 	prompt
 
 SECTION "_RemoveMailText", ROMX
 _RemoveMailText::
-	text "Remove Mail before"
+	ctxt "Remove Mail before"
 	line "you come see me."
 	prompt
 
 SECTION "_LastHealthyMonText", ROMX
 _LastHealthyMonText::
-	text "If you give me"
+	ctxt "If you give me"
 	line "that, what will"
 	cont "you battle with?"
 	prompt
 
 SECTION "_IllRaiseYourMonText", ROMX
 _IllRaiseYourMonText::
-	text "OK. I'll raise"
+	ctxt "OK. I'll raise"
 	line "your "
 	text_ram wStringBuffer1
 	text "."
@@ -1673,13 +1673,13 @@ _IllRaiseYourMonText::
 
 SECTION "_ComeBackLaterText", ROMX
 _ComeBackLaterText::
-	text "Come back for it"
+	ctxt "Come back for it"
 	line "later."
 	done
 
 SECTION "_AreWeGeniusesText", ROMX
 _AreWeGeniusesText::
-	text "Are we geniuses or"
+	ctxt "Are we geniuses or"
 	line "what? Want to see"
 	cont "your "
 	text_ram wStringBuffer1
@@ -1695,7 +1695,7 @@ _YourMonHasGrownText::
 	para "Its level grew"
 	line "by "
 	text_decimal wStringBuffer2 + 1, 1, 3
-	text "."
+	ctxt "."
 
 	para "If you want your"
 	line "#mon back, it"
@@ -1706,13 +1706,13 @@ _YourMonHasGrownText::
 
 SECTION "_PerfectHeresYourMonText", ROMX
 _PerfectHeresYourMonText::
-	text "Perfect! Here's"
+	ctxt "Perfect! Here's"
 	line "your #mon."
 	prompt
 
 SECTION "_GotBackMonText", ROMX
 _GotBackMonText::
-	text "<PLAYER> got back"
+	ctxt "<PLAYER> got back"
 	line ""
 	text_ram wStringBuffer1
 	text "."
@@ -1720,7 +1720,7 @@ _GotBackMonText::
 
 SECTION "_BackAlreadyText", ROMX
 _BackAlreadyText::
-	text "Huh? Back already?"
+	ctxt "Huh? Back already?"
 	line "Your "
 	text_ram wStringBuffer1
 
@@ -1734,34 +1734,34 @@ _BackAlreadyText::
 
 SECTION "_HaveNoRoomText", ROMX
 _HaveNoRoomText::
-	text "You have no room"
+	ctxt "You have no room"
 	line "for it."
 	prompt
 
 SECTION "_NotEnoughMoneyText", ROMX
 _NotEnoughMoneyText::
-	text "You don't have"
+	ctxt "You don't have"
 	line "enough money."
 	prompt
 
 SECTION "_OhFineThenText", ROMX
 _OhFineThenText::
-	text "Oh, fine then."
+	ctxt "Oh, fine then."
 	prompt
 
 SECTION "_ComeAgainText", ROMX
 _ComeAgainText::
-	text "Come again."
+	ctxt "Come again."
 	done
 
 SECTION "_NotYetText", ROMX
 _NotYetText::
-	text "Not yet…"
+	ctxt "Not yet…"
 	done
 
 SECTION "_FoundAnEggText", ROMX
 _FoundAnEggText::
-	text "Ah, it's you!"
+	ctxt "Ah, it's you!"
 
 	para "We were raising"
 	line "your #mon, and"
@@ -1781,25 +1781,25 @@ _FoundAnEggText::
 
 SECTION "_ReceivedEggText", ROMX
 _ReceivedEggText::
-	text "<PLAYER> received"
+	ctxt "<PLAYER> received"
 	line "the Egg!"
 	done
 
 SECTION "_TakeGoodCareOfEggText", ROMX
 _TakeGoodCareOfEggText::
-	text "Take good care of"
+	ctxt "Take good care of"
 	line "it."
 	done
 
 SECTION "_IllKeepItThanksText", ROMX
 _IllKeepItThanksText::
-	text "Well then, I'll"
+	ctxt "Well then, I'll"
 	line "keep it. Thanks!"
 	done
 
 SECTION "_NoRoomForEggText", ROMX
 _NoRoomForEggText::
-	text "You have no room"
+	ctxt "You have no room"
 	line "in your party"
 	cont "or your box."
 	cont "Come back later."
@@ -1807,7 +1807,7 @@ _NoRoomForEggText::
 
 SECTION "_NameRaterHelloText", ROMX
 _NameRaterHelloText::
-	text "Hello, hello! I'm"
+	ctxt "Hello, hello! I'm"
 	line "the Name Rater."
 
 	para "I rate the names"
@@ -1819,7 +1819,7 @@ _NameRaterHelloText::
 
 SECTION "_NameRaterWhichMonText", ROMX
 _NameRaterWhichMonText::
-	text "Which #mon's"
+	ctxt "Which #mon's"
 	line "nickname should I"
 	cont "rate for you?"
 	prompt
@@ -1828,7 +1828,7 @@ SECTION "_NameRaterBetterNameText", ROMX
 _NameRaterBetterNameText::
 	text "Hm… "
 	text_ram wStringBuffer1
-	text "…"
+	ctxt "…"
 	line "That's a fairly"
 	cont "decent name."
 
@@ -1842,14 +1842,14 @@ _NameRaterBetterNameText::
 
 SECTION "_NameRaterWhatNameText", ROMX
 _NameRaterWhatNameText::
-	text "All right. What"
+	ctxt "All right. What"
 	line "name should we"
 	cont "give it, then?"
 	prompt
 
 SECTION "_NameRaterFinishedText", ROMX
 _NameRaterFinishedText::
-	text "That's a better"
+	ctxt "That's a better"
 	line "name than before!"
 
 	para "Well done!"
@@ -1857,7 +1857,7 @@ _NameRaterFinishedText::
 
 SECTION "_NameRaterComeAgainText", ROMX
 _NameRaterComeAgainText::
-	text "OK, then. Come"
+	ctxt "OK, then. Come"
 	line "again sometime."
 	done
 
@@ -1865,7 +1865,7 @@ SECTION "_NameRaterPerfectNameText", ROMX
 _NameRaterPerfectNameText::
 	text "Hm… "
 	text_ram wStringBuffer1
-	text "?"
+	ctxt "?"
 	line "What a great name!"
 	cont "It's perfect."
 
@@ -1876,13 +1876,13 @@ _NameRaterPerfectNameText::
 
 SECTION "_NameRaterEggText", ROMX
 _NameRaterEggText::
-	text "Whoa… That's just"
+	ctxt "Whoa… That's just"
 	line "an Egg."
 	done
 
 SECTION "_NameRaterSameNameText", ROMX
 _NameRaterSameNameText::
-	text "It might look the"
+	ctxt "It might look the"
 	line "same as before,"
 
 	para "but this new name"
@@ -1893,7 +1893,7 @@ _NameRaterSameNameText::
 
 SECTION "_NameRaterNamedText", ROMX
 _NameRaterNamedText::
-	text "All right. This"
+	ctxt "All right. This"
 	line "#mon is now"
 	cont "named "
 	text_ram wStringBuffer1
@@ -1903,7 +1903,7 @@ _NameRaterNamedText::
 SECTION "Text_Gained", ROMX
 Text_Gained::
 	text_ram wStringBuffer1
-	text " gained@"
+	ctxt " gained@"
 	text_end
 
 SECTION "Text_ABoostedStringBuffer2ExpPoints", ROMX
@@ -1911,14 +1911,14 @@ Text_ABoostedStringBuffer2ExpPoints::
 	line "a boosted"
 	cont ""
 	text_decimal wStringBuffer2, 3, 6
-	text " Exp. Points!"
+	ctxt " Exp. Points!"
 	prompt
 
 SECTION "Text_StringBuffer2ExpPoints", ROMX
 Text_StringBuffer2ExpPoints::
 	line ""
 	text_decimal wStringBuffer2, 3, 6
-	text " Exp. Points!"
+	ctxt " Exp. Points!"
 	prompt
 
 SECTION "Text_GoPkmn", ROMX
@@ -1928,18 +1928,18 @@ Text_GoPkmn::
 
 SECTION "Text_DoItPkmn", ROMX
 Text_DoItPkmn::
-	text "Do it! @"
+	ctxt "Do it! @"
 	text_end
 
 SECTION "Text_GoForItPkmn", ROMX
 Text_GoForItPkmn::
-	text "Go for it,"
+	ctxt "Go for it,"
 	line "@"
 	text_end
 
 SECTION "Text_YourFoesWeakGetmPkmn", ROMX
 Text_YourFoesWeakGetmPkmn::
-	text "Your foe's weak!"
+	ctxt "Your foe's weak!"
 	line "Get'm, @"
 	text_end
 
@@ -1957,44 +1957,44 @@ Text_BattleMonNickComma::
 
 SECTION "Text_ThatsEnoughComeBack", ROMX
 Text_ThatsEnoughComeBack::
-	text " that's"
+	ctxt " that's"
 	line "enough! Come back!@"
 	text_end
 
 SECTION "Text_OKComeBack", ROMX
 Text_OKComeBack::
-	text " OK!"
+	ctxt " OK!"
 	line "Come back!@"
 	text_end
 
 SECTION "Text_GoodComeBack", ROMX
 Text_GoodComeBack::
-	text " good!"
+	ctxt " good!"
 	line "Come back!@"
 	text_end
 
 SECTION "Text_ComeBack", ROMX
 Text_ComeBack::
-	text " come"
+	ctxt " come"
 	line "back!"
 	done
 
 SECTION "_BootedTMText", ROMX
 _BootedTMText::
-	text "Booted up a TM."
+	ctxt "Booted up a TM."
 	done
 
 SECTION "_BootedHMText", ROMX
 _BootedHMText::
-	text "Booted up an HM."
+	ctxt "Booted up an HM."
 	done
 
 SECTION "_ContainedMoveText", ROMX
 _ContainedMoveText::
-	text "It contained"
+	ctxt "It contained"
 	line ""
 	text_ram wStringBuffer2
-	text "."
+	ctxt "."
 
 	para "Teach "
 	text_ram wStringBuffer2
@@ -2004,11 +2004,11 @@ _ContainedMoveText::
 SECTION "_TMHMNotCompatibleText", ROMX
 _TMHMNotCompatibleText::
 	text_ram wStringBuffer2
-	text " is"
+	ctxt " is"
 	line "not compatible"
 	cont "with "
 	text_ram wStringBuffer1
-	text "."
+	ctxt "."
 
 	para "It can't learn"
 	line ""
@@ -2018,38 +2018,38 @@ _TMHMNotCompatibleText::
 
 SECTION "_BadgeRequiredText", ROMX
 _BadgeRequiredText::
-	text "Sorry! A new Badge"
+	ctxt "Sorry! A new Badge"
 	line "is required."
 	prompt
 
 SECTION "_CantUseItemText", ROMX
 _CantUseItemText::
-	text "Can't use that"
+	ctxt "Can't use that"
 	line "here."
 	prompt
 
 SECTION "_UseCutText", ROMX
 _UseCutText::
 	text_ram wStringBuffer2
-	text " used"
+	ctxt " used"
 	line "Cut!"
 	prompt
 
 SECTION "_CutNothingText", ROMX
 _CutNothingText::
-	text "There's nothing to"
+	ctxt "There's nothing to"
 	line "Cut here."
 	prompt
 
 SECTION "_AskFlashText", ROMX
 _AskFlashText::
-	text "It's pitch black."
+	ctxt "It's pitch black."
 	line "Want to use Flash?"
 	done
 
 SECTION "_BlindingFlashText", ROMX
 _BlindingFlashText::
-	text "A blinding Flash"
+	ctxt "A blinding Flash"
 	line "lights the area!"
 	text_promptbutton
 	text_end
@@ -2057,69 +2057,69 @@ _BlindingFlashText::
 SECTION "_UsedSurfText", ROMX
 _UsedSurfText::
 	text_ram wStringBuffer2
-	text " used"
+	ctxt " used"
 	line "Surf!"
 	done
 
 SECTION "_CantSurfText", ROMX
 _CantSurfText::
-	text "You can't Surf"
+	ctxt "You can't Surf"
 	line "here."
 	prompt
 
 SECTION "_AlreadySurfingText", ROMX
 _AlreadySurfingText::
-	text "You're already"
+	ctxt "You're already"
 	line "Surfing."
 	prompt
 
 SECTION "_AskSurfText", ROMX
 _AskSurfText::
-	text "The water is calm."
+	ctxt "The water is calm."
 	line "Want to Surf?"
 	done
 
 SECTION "_UseWaterfallText", ROMX
 _UseWaterfallText::
 	text_ram wStringBuffer2
-	text " used"
+	ctxt " used"
 	line "Waterfall!"
 	done
 
 SECTION "_HugeWaterfallText", ROMX
 _HugeWaterfallText::
-	text "Wow, it's a huge"
+	ctxt "Wow, it's a huge"
 	line "waterfall."
 	done
 
 SECTION "_AskWaterfallText", ROMX
 _AskWaterfallText::
-	text "Do you want to use"
+	ctxt "Do you want to use"
 	line "Waterfall?"
 	done
 
 SECTION "_UseDigText", ROMX
 _UseDigText::
 	text_ram wStringBuffer2
-	text " used"
+	ctxt " used"
 	line "Dig!"
 	done
 
 SECTION "_UseEscapeRopeText", ROMX
 _UseEscapeRopeText::
-	text "<PLAYER> used an"
+	ctxt "<PLAYER> used an"
 	line "Escape Rope."
 	done
 
 SECTION "_CantUseDigText", ROMX
 _CantUseDigText::
-	text "Can't use that"
+	ctxt "Can't use that"
 	line "here."
 	done
 
 SECTION "_CantUseTeleportText", ROMX
 _CantUseTeleportText::
-	text "Can't use that"
+	ctxt "Can't use that"
 	line "here."
 
 	para ""
@@ -2128,20 +2128,20 @@ _CantUseTeleportText::
 SECTION "_UseStrengthText", ROMX
 _UseStrengthText::
 	text_ram wStringBuffer2
-	text " used"
+	ctxt " used"
 	line "Strength!"
 	done
 
 SECTION "_MoveBoulderText", ROMX
 _MoveBoulderText::
 	text_ram wStringBuffer1
-	text " can"
+	ctxt " can"
 	line "move boulders."
 	prompt
 
 SECTION "_AskStrengthText", ROMX
 _AskStrengthText::
-	text "A #mon may be"
+	ctxt "A #mon may be"
 	line "able to move this."
 
 	para "Want to use"
@@ -2150,26 +2150,26 @@ _AskStrengthText::
 
 SECTION "_BouldersMoveText", ROMX
 _BouldersMoveText::
-	text "Boulders may now"
+	ctxt "Boulders may now"
 	line "be moved!"
 	done
 
 SECTION "_BouldersMayMoveText", ROMX
 _BouldersMayMoveText::
-	text "A #mon may be"
+	ctxt "A #mon may be"
 	line "able to move this."
 	done
 
 SECTION "_UseWhirlpoolText", ROMX
 _UseWhirlpoolText::
 	text_ram wStringBuffer2
-	text " used"
+	ctxt " used"
 	line "Whirlpool!"
 	prompt
 
 SECTION "_MayPassWhirlpoolText", ROMX
 _MayPassWhirlpoolText::
-	text "It's a vicious"
+	ctxt "It's a vicious"
 	line "whirlpool!"
 
 	para "A #mon may be"
@@ -2178,7 +2178,7 @@ _MayPassWhirlpoolText::
 
 SECTION "_AskWhirlpoolText", ROMX
 _AskWhirlpoolText::
-	text "A whirlpool is in"
+	ctxt "A whirlpool is in"
 	line "the way."
 
 	para "Want to use"
@@ -2188,18 +2188,18 @@ _AskWhirlpoolText::
 SECTION "_UseHeadbuttText", ROMX
 _UseHeadbuttText::
 	text_ram wStringBuffer2
-	text " did a"
+	ctxt " did a"
 	line "Headbutt!"
 	prompt
 
 SECTION "_HeadbuttNothingText", ROMX
 _HeadbuttNothingText::
-	text "Nope. Nothing…"
+	ctxt "Nope. Nothing…"
 	done
 
 SECTION "_AskHeadbuttText", ROMX
 _AskHeadbuttText::
-	text "A #mon could be"
+	ctxt "A #mon could be"
 	line "in this tree."
 
 	para "Want to Headbutt"
@@ -2209,7 +2209,7 @@ _AskHeadbuttText::
 SECTION "_UseRockSmashText", ROMX
 _UseRockSmashText::
 	text_ram wStringBuffer2
-	text " used"
+	ctxt " used"
 if DEF(FAITHFUL)
 	line "Rock Smash!"
 else
@@ -2219,13 +2219,13 @@ endc
 
 SECTION "_MaySmashText", ROMX
 _MaySmashText::
-	text "Maybe a #mon"
+	ctxt "Maybe a #mon"
 	line "can break this."
 	done
 
 SECTION "_AskRockSmashText", ROMX
 _AskRockSmashText::
-	text "This rock looks"
+	ctxt "This rock looks"
 	line "breakable."
 
 if DEF(FAITHFUL)
@@ -2239,24 +2239,24 @@ endc
 
 SECTION "_RodBiteText", ROMX
 _RodBiteText::
-	text "Oh!"
+	ctxt "Oh!"
 	line "A bite!"
 	prompt
 
 SECTION "_RodNothingText", ROMX
 _RodNothingText::
-	text "Not even a nibble!"
+	ctxt "Not even a nibble!"
 	prompt
 
 SECTION "_CantGetOffBikeText", ROMX
 _CantGetOffBikeText::
-	text "You can't get off"
+	ctxt "You can't get off"
 	line "here!"
 	done
 
 SECTION "_GotOnBikeText", ROMX
 _GotOnBikeText::
-	text "<PLAYER> got on the"
+	ctxt "<PLAYER> got on the"
 	line ""
 	text_ram wStringBuffer2
 	text "."
@@ -2264,7 +2264,7 @@ _GotOnBikeText::
 
 SECTION "_GotOffBikeText", ROMX
 _GotOffBikeText::
-	text "<PLAYER> got off"
+	ctxt "<PLAYER> got off"
 	line "the "
 	text_ram wStringBuffer2
 	text "."
@@ -2272,7 +2272,7 @@ _GotOffBikeText::
 
 SECTION "_AskCutText", ROMX
 _AskCutText::
-	text "This tree can be"
+	ctxt "This tree can be"
 	line "Cut!"
 
 	para "Want to use Cut?"
@@ -2280,13 +2280,13 @@ _AskCutText::
 
 SECTION "_CanCutText", ROMX
 _CanCutText::
-	text "This tree can be"
+	ctxt "This tree can be"
 	line "Cut!"
 	done
 
 SECTION "_FoundItemText", ROMX
 _FoundItemText::
-	text "<PLAYER> found"
+	ctxt "<PLAYER> found"
 	line ""
 	text_ram wStringBuffer3
 	text "!"
@@ -2294,7 +2294,7 @@ _FoundItemText::
 
 SECTION "WhiteoutText", ROMX
 WhiteoutText::
-	text "<PLAYER> is out of"
+	ctxt "<PLAYER> is out of"
 	line "useable #mon!"
 
 	para "<PLAYER> blacked"
@@ -2303,14 +2303,14 @@ WhiteoutText::
 
 SECTION "WhiteoutToWildText", ROMX
 WhiteoutToWildText::
-	text "<PLAYER> is out of"
+	ctxt "<PLAYER> is out of"
 	line "useable #mon!"
 
 	para "<PLAYER> panicked"
 	line "and dropped"
 	cont "¥"
 	text_decimal hMoneyTemp, 3, 7
-	text "…"
+	ctxt "…"
 
 	para "………………"
 	line "………………"
@@ -2321,13 +2321,13 @@ WhiteoutToWildText::
 
 SECTION "WhiteoutToTrainerText", ROMX
 WhiteoutToTrainerText::
-	text "<PLAYER> is out of"
+	ctxt "<PLAYER> is out of"
 	line "useable #mon!"
 
 	para "<PLAYER> paid"
 	line "¥"
 	text_decimal hMoneyTemp, 3, 7
-	text " to the"
+	ctxt " to the"
 	cont "winner…"
 
 	para "………………"
@@ -2339,13 +2339,13 @@ WhiteoutToTrainerText::
 
 SECTION "ForfeitToTrainerText", ROMX
 ForfeitToTrainerText::
-	text "<PLAYER> forfeit-"
+	ctxt "<PLAYER> forfeit-"
 	line "ed the battle…"
 
 	para "<PLAYER> paid"
 	line "¥"
 	text_decimal hMoneyTemp, 3, 7
-	text " to the"
+	ctxt " to the"
 	cont "winner…"
 
 	para "………………"
@@ -2364,7 +2364,7 @@ _PoisonFaintText::
 
 SECTION "_SquirtbottleNothingText", ROMX
 _SquirtbottleNothingText::
-	text "<PLAYER> sprinkled"
+	ctxt "<PLAYER> sprinkled"
 	line "water."
 
 	para "But nothing"
@@ -2373,25 +2373,25 @@ _SquirtbottleNothingText::
 
 SECTION "_UseSacredAshText", ROMX
 _UseSacredAshText::
-	text "<PLAYER>'s #mon"
+	ctxt "<PLAYER>'s #mon"
 	line "were all healed!"
 	done
 
 SECTION "Text_AnEGGCantHoldAnItem", ROMX
 Text_AnEGGCantHoldAnItem::
-	text "An Egg can't hold"
+	ctxt "An Egg can't hold"
 	line "an item."
 	prompt
 
 SECTION "_AskThrowAwayText", ROMX
 _AskThrowAwayText::
-	text "Throw away how"
+	ctxt "Throw away how"
 	line "many?"
 	done
 
 SECTION "_AskQuantityThrowAwayText", ROMX
 _AskQuantityThrowAwayText::
-	text "Throw away "
+	ctxt "Throw away "
 	text_decimal wItemQuantityChangeBuffer, 1, 2
 	line ""
 	text_ram wStringBuffer2
@@ -2400,7 +2400,7 @@ _AskQuantityThrowAwayText::
 
 SECTION "_ThrewAwayText", ROMX
 _ThrewAwayText::
-	text "Threw away"
+	ctxt "Threw away"
 	line ""
 	text_ram wStringBuffer2
 	text "(s)."
@@ -2408,20 +2408,20 @@ _ThrewAwayText::
 
 SECTION "_OakThisIsntTheTimeText", ROMX
 _OakThisIsntTheTimeText::
-	text "Oak: <PLAYER>!"
+	ctxt "Oak: <PLAYER>!"
 	line "This isn't the"
 	cont "time to use that!"
 	prompt
 
 SECTION "Text_YouDontHaveAPkmn", ROMX
 Text_YouDontHaveAPkmn::
-	text "You don't have a"
+	ctxt "You don't have a"
 	line "#mon!"
 	prompt
 
 SECTION "_RegisteredItemText", ROMX
 _RegisteredItemText::
-	text "Registered the"
+	ctxt "Registered the"
 	line ""
 	text_ram wStringBuffer2
 	text "."
@@ -2429,7 +2429,7 @@ _RegisteredItemText::
 
 SECTION "UnregisteredItemText", ROMX
 UnregisteredItemText::
-	text "Unregistered the"
+	ctxt "Unregistered the"
 	line ""
 	text_ram wStringBuffer2
 	text "."
@@ -2437,30 +2437,30 @@ UnregisteredItemText::
 
 SECTION "_CantRegisterText", ROMX
 _CantRegisterText::
-	text "You can't register"
+	ctxt "You can't register"
 	line "that item."
 	prompt
 
 SECTION "_AskItemMoveText", ROMX
 _AskItemMoveText::
-	text "Where should this"
+	ctxt "Where should this"
 	line "be moved to?"
 	done
 
 SECTION "Text_AreYouABoyOrAreYouAGirl", ROMX
 Text_AreYouABoyOrAreYouAGirl::
-	text "Are you a boy?"
+	ctxt "Are you a boy?"
 	line "Or are you a girl?"
 	done
 
 SECTION "Text_SoYoureABoy", ROMX
 Text_SoYoureABoy::
-	text "So you're a boy?"
+	ctxt "So you're a boy?"
 	done
 
 SECTION "Text_SoYoureAGirl", ROMX
 Text_SoYoureAGirl::
-	text "So you're a girl?"
+	ctxt "So you're a girl?"
 	done
 
 SECTION "Text_BattleUser", ROMX
@@ -2492,7 +2492,7 @@ Text_BreedHuh::
 SECTION "_BreedEggHatchText", ROMX
 _BreedEggHatchText::
 	text_ram wStringBuffer1
-	text " came"
+	ctxt " came"
 	line "out of its Egg!"
 	text_sound SFX_CAUGHT_MON
 	text_promptbutton
@@ -2500,7 +2500,7 @@ _BreedEggHatchText::
 
 SECTION "_BreedAskNicknameText", ROMX
 _BreedAskNicknameText::
-	text "Give a nickname to"
+	ctxt "Give a nickname to"
 	line ""
 	text_ram wStringBuffer1
 	text "?"
@@ -2524,7 +2524,7 @@ _LeftWithDayCareManText::
 
 SECTION "_BreedNoInterestText", ROMX
 _BreedNoInterestText::
-	text "It has no interest"
+	ctxt "It has no interest"
 	line "in "
 	text_ram wStringBuffer1
 	text "."
@@ -2532,7 +2532,7 @@ _BreedNoInterestText::
 
 SECTION "_BreedAppearsToCareForText", ROMX
 _BreedAppearsToCareForText::
-	text "It appears to care"
+	ctxt "It appears to care"
 	line "for "
 	text_ram wStringBuffer1
 	text "."
@@ -2540,7 +2540,7 @@ _BreedAppearsToCareForText::
 
 SECTION "_BreedFriendlyText", ROMX
 _BreedFriendlyText::
-	text "It's friendly with"
+	ctxt "It's friendly with"
 	line ""
 	text_ram wStringBuffer1
 	text "."
@@ -2548,7 +2548,7 @@ _BreedFriendlyText::
 
 SECTION "_BreedShowsInterestText", ROMX
 _BreedShowsInterestText::
-	text "It shows interest"
+	ctxt "It shows interest"
 	line "in "
 	text_ram wStringBuffer1
 	text "."
@@ -2556,48 +2556,48 @@ _BreedShowsInterestText::
 
 SECTION "_EmptyMailboxText", ROMX
 _EmptyMailboxText::
-	text "There's no Mail"
+	ctxt "There's no Mail"
 	line "here."
 	prompt
 
 SECTION "ClearedMailPutAwayText", ROMX
 ClearedMailPutAwayText::
-	text "The cleared Mail"
+	ctxt "The cleared Mail"
 	line "was put away."
 	prompt
 
 SECTION "MailPackFullText", ROMX
 MailPackFullText::
-	text "The Bag is full."
+	ctxt "The Bag is full."
 	prompt
 
 SECTION "MailMessageLostText", ROMX
 MailMessageLostText::
-	text "The Mail's message"
+	ctxt "The Mail's message"
 	line "will be lost. OK?"
 	done
 
 SECTION "MailAlreadyHoldingItemText", ROMX
 MailAlreadyHoldingItemText::
-	text "It's already hold-"
+	ctxt "It's already hold-"
 	line "ing an item."
 	prompt
 
 SECTION "MailEggText", ROMX
 MailEggText::
-	text "An Egg can't hold"
+	ctxt "An Egg can't hold"
 	line "any Mail."
 	prompt
 
 SECTION "MailMovedFromBoxText", ROMX
 MailMovedFromBoxText::
-	text "The Mail was moved"
+	ctxt "The Mail was moved"
 	line "from the Mailbox."
 	prompt
 
 SECTION "_ReceivedGiftMonText", ROMX
 _ReceivedGiftMonText::
-	text "<PLAYER> received"
+	ctxt "<PLAYER> received"
 	line ""
 	text_ram wMonOrItemNameBuffer
 	text "!"
@@ -2605,7 +2605,7 @@ _ReceivedGiftMonText::
 
 SECTION "_EggSentToPCText", ROMX
 _EggSentToPCText::
-	text "The Egg was sent"
+	ctxt "The Egg was sent"
 	line "to "
 	text_ram wStringBuffer1
 	text "."
@@ -2613,18 +2613,18 @@ _EggSentToPCText::
 
 SECTION "_PCGottaHavePokemonText", ROMX
 _PCGottaHavePokemonText::
-	text "You gotta have"
+	ctxt "You gotta have"
 	line "#mon to call!"
 	prompt
 
 SECTION "_PCWhatText", ROMX
 _PCWhatText::
-	text "What?"
+	ctxt "What?"
 	done
 
 SECTION "_PCMonHoldingMailText", ROMX
 _PCMonHoldingMailText::
-	text "There is a #mon"
+	ctxt "There is a #mon"
 	line "holding Mail."
 
 	para "Please remove the"
@@ -2633,19 +2633,19 @@ _PCMonHoldingMailText::
 
 SECTION "_ContestCaughtMonText", ROMX
 _ContestCaughtMonText::
-	text "Caught "
+	ctxt "Caught "
 	text_ram wStringBuffer1
 	text "!"
 	prompt
 
 SECTION "_ContestAskSwitchText", ROMX
 _ContestAskSwitchText::
-	text "Switch #mon?"
+	ctxt "Switch #mon?"
 	done
 
 SECTION "_ContestAlreadyCaughtText", ROMX
 _ContestAlreadyCaughtText::
-	text "You already caught"
+	ctxt "You already caught"
 	line "a "
 	text_ram wStringBuffer1
 	text "."
@@ -2653,14 +2653,14 @@ _ContestAlreadyCaughtText::
 
 SECTION "ContestJudging_FirstPlaceText", ROMX
 ContestJudging_FirstPlaceText::
-	text "This Bug-Catching"
+	ctxt "This Bug-Catching"
 	line "Contest winner is"
 	text_pause
 	text "…"
 
 	para ""
 	text_ram wBugContestWinnerName
-	text ","
+	ctxt ","
 	line "who caught a"
 	cont ""
 	text_ram wStringBuffer1
@@ -2672,15 +2672,15 @@ ContestJudging_FirstPlaceScoreText::
 	para "The winning score"
 	line "was "
 	text_decimal wBugContestFirstPlaceScore, 2, 3
-	text " points!"
+	ctxt " points!"
 	prompt
 
 SECTION "ContestJudging_SecondPlaceText", ROMX
 ContestJudging_SecondPlaceText::
-	text "Placing second was"
+	ctxt "Placing second was"
 	line ""
 	text_ram wBugContestWinnerName
-	text ","
+	ctxt ","
 	para "who caught a"
 	line ""
 	text_ram wStringBuffer1
@@ -2692,15 +2692,15 @@ ContestJudging_SecondPlaceScoreText::
 	para "The score was"
 	line ""
 	text_decimal wBugContestSecondPlaceScore, 2, 3
-	text " points!"
+	ctxt " points!"
 	prompt
 
 SECTION "ContestJudging_ThirdPlaceText", ROMX
 ContestJudging_ThirdPlaceText::
-	text "Placing third was"
+	ctxt "Placing third was"
 	line ""
 	text_ram wBugContestWinnerName
-	text ","
+	ctxt ","
 	para "who caught a"
 	line ""
 	text_ram wStringBuffer1
@@ -2712,12 +2712,12 @@ ContestJudging_ThirdPlaceScoreText::
 	para "The score was"
 	line ""
 	text_decimal wBugContestThirdPlaceScore, 2, 3
-	text " points!"
+	ctxt " points!"
 	prompt
 
 SECTION "_MagikarpGuruMeasureText", ROMX
 _MagikarpGuruMeasureText::
-	text "Let me measure"
+	ctxt "Let me measure"
 	line "that Magikarp."
 
 	para "…Hm, it measures"
@@ -2728,10 +2728,10 @@ _MagikarpGuruMeasureText::
 
 SECTION "_KarpGuruRecordText", ROMX
 _KarpGuruRecordText::
-	text "Current Record"
+	ctxt "Current Record"
 	para ""
 	text_ram wStringBuffer1
-	text " caught by"
+	ctxt " caught by"
 	line ""
 	text_ram wMagikarpRecordHoldersName
 	text_promptbutton
@@ -2739,20 +2739,20 @@ _KarpGuruRecordText::
 
 SECTION "_LuckyNumberMatchPartyText", ROMX
 _LuckyNumberMatchPartyText::
-	text "Congratulations!"
+	ctxt "Congratulations!"
 
 	para "We have a match"
 	line "with the ID number"
 
 	para "of "
 	text_decimal wTempMonID, 2, 5
-	text " in"
+	ctxt " in"
 	line "your party."
 	prompt
 
 SECTION "_LuckyNumberMatchPCText", ROMX
 _LuckyNumberMatchPCText::
-	text "Congratulations!"
+	ctxt "Congratulations!"
 
 	para "We have a match"
 	line "with the ID number"
@@ -2767,41 +2767,41 @@ _LuckyNumberMatchPCText::
 
 SECTION "_CaughtAskNicknameText", ROMX
 _CaughtAskNicknameText::
-	text "Give a nickname to"
+	ctxt "Give a nickname to"
 	line "the "
 	text_ram wStringBuffer1
-	text " you"
+	ctxt " you"
 	cont "received?"
 	done
 
 SECTION "_PokecenterPCCantUseText", ROMX
 _PokecenterPCCantUseText::
-	text "Bzzzzt! You must"
+	ctxt "Bzzzzt! You must"
 	line "have a #mon to"
 	cont "use this!"
 	prompt
 
 SECTION "_PlayersPCTurnOnText", ROMX
 _PlayersPCTurnOnText::
-	text "<PLAYER> turned on"
+	ctxt "<PLAYER> turned on"
 	line "the PC."
 	prompt
 
 SECTION "_PlayersPCAskWhatDoText", ROMX
 _PlayersPCAskWhatDoText::
-	text "What do you want"
+	ctxt "What do you want"
 	line "to do?"
 	done
 
 SECTION "_PlayersPCHowManyWithdrawText", ROMX
 _PlayersPCHowManyWithdrawText::
-	text "How many do you"
+	ctxt "How many do you"
 	line "want to withdraw?"
 	done
 
 SECTION "_PlayersPCWithdrewItemsText", ROMX
 _PlayersPCWithdrewItemsText::
-	text "Withdrew "
+	ctxt "Withdrew "
 	text_decimal wItemQuantityChangeBuffer, 1, 2
 	line ""
 	text_ram wStringBuffer2
@@ -2810,30 +2810,30 @@ _PlayersPCWithdrewItemsText::
 
 SECTION "_PlayersPCNoRoomWithdrawText", ROMX
 _PlayersPCNoRoomWithdrawText::
-	text "There's no room"
+	ctxt "There's no room"
 	line "for more items."
 	prompt
 
 SECTION "_PlayersPCNoItemsText", ROMX
 _PlayersPCNoItemsText::
-	text "No items here!"
+	ctxt "No items here!"
 	prompt
 
 SECTION "_PlayersPCCantDepositItemText", ROMX
 _PlayersPCCantDepositItemText::
-	text "That item can't"
+	ctxt "That item can't"
 	line "be deposited."
 	prompt
 
 SECTION "_PlayersPCHowManyDepositText", ROMX
 _PlayersPCHowManyDepositText::
-	text "How many do you"
+	ctxt "How many do you"
 	line "want to deposit?"
 	done
 
 SECTION "_PlayersPCDepositItemsText", ROMX
 _PlayersPCDepositItemsText::
-	text "Deposited "
+	ctxt "Deposited "
 	text_decimal wItemQuantityChangeBuffer, 1, 2
 	line ""
 	text_ram wStringBuffer2
@@ -2842,24 +2842,24 @@ _PlayersPCDepositItemsText::
 
 SECTION "_PlayersPCNoRoomDepositText", ROMX
 _PlayersPCNoRoomDepositText::
-	text "There's no room to"
+	ctxt "There's no room to"
 	line "store items."
 	prompt
 
 SECTION "_PokecenterPCTurnOnText", ROMX
 _PokecenterPCTurnOnText::
-	text "<PLAYER> turned on"
+	ctxt "<PLAYER> turned on"
 	line "the PC."
 	prompt
 
 SECTION "_PokecenterPCWhoseText", ROMX
 _PokecenterPCWhoseText::
-	text "Access whose PC?"
+	ctxt "Access whose PC?"
 	done
 
 SECTION "_PokecenterBillsPCText", ROMX
 _PokecenterBillsPCText::
-	text "Bill's PC"
+	ctxt "Bill's PC"
 	line "accessed."
 
 	para "#mon Storage"
@@ -2868,7 +2868,7 @@ _PokecenterBillsPCText::
 
 SECTION "_PokecenterPlayersPCText", ROMX
 _PokecenterPlayersPCText::
-	text "Accessed own PC."
+	ctxt "Accessed own PC."
 
 	para "Item Storage"
 	line "System opened."
@@ -2876,7 +2876,7 @@ _PokecenterPlayersPCText::
 
 SECTION "_PokecenterOaksPCText", ROMX
 _PokecenterOaksPCText::
-	text "Prof.Oak's PC"
+	ctxt "Prof.Oak's PC"
 	line "accessed."
 
 	para "#dex Rating"
@@ -2885,29 +2885,29 @@ _PokecenterOaksPCText::
 
 SECTION "_PokecenterPCOaksClosedText", ROMX
 _PokecenterPCOaksClosedText::
-	text "…"
+	ctxt "…"
 	line "Link closed…"
 	done
 
 SECTION "_OakPCText1", ROMX
 _OakPCText1::
-	text "Want to get your"
+	ctxt "Want to get your"
 	line "#dex rated?"
 	done
 
 SECTION "_OakPCText2", ROMX
 _OakPCText2::
-	text "Current #dex"
+	ctxt "Current #dex"
 	line "completion level:"
 	prompt
 
 SECTION "_OakPCText3", ROMX
 _OakPCText3::
 	text_ram wStringBuffer3
-	text " #mon seen"
+	ctxt " #mon seen"
 	line ""
 	text_ram wStringBuffer4
-	text " #mon owned"
+	ctxt " #mon owned"
 
 	para "Prof.Oak's"
 	line "Rating:"
@@ -2915,20 +2915,20 @@ _OakPCText3::
 
 SECTION "_OakRating01", ROMX
 _OakRating01::
-	text "Look for #mon"
+	ctxt "Look for #mon"
 	line "in grassy areas!"
 	done
 
 SECTION "_OakRating02", ROMX
 _OakRating02::
-	text "Good. I see you"
+	ctxt "Good. I see you"
 	line "understand how to"
 	cont "use # Balls."
 	done
 
 SECTION "_OakRating03", ROMX
 _OakRating03::
-	text "You're getting"
+	ctxt "You're getting"
 	line "good at this."
 
 	para "But you have a"
@@ -2937,7 +2937,7 @@ _OakRating03::
 
 SECTION "_OakRating04", ROMX
 _OakRating04::
-	text "You need to fill"
+	ctxt "You need to fill"
 	line "up the #dex."
 
 	para "Catch different"
@@ -2946,7 +2946,7 @@ _OakRating04::
 
 SECTION "_OakRating05", ROMX
 _OakRating05::
-	text "You're trying--I"
+	ctxt "You're trying--I"
 	line "can see that."
 
 	para "Your #dex is"
@@ -2955,7 +2955,7 @@ _OakRating05::
 
 SECTION "_OakRating06", ROMX
 _OakRating06::
-	text "To evolve, some"
+	ctxt "To evolve, some"
 	line "#mon grow,"
 
 	para "others use the"
@@ -2964,7 +2964,7 @@ _OakRating06::
 
 SECTION "_OakRating07", ROMX
 _OakRating07::
-	text "Have you gotten a"
+	ctxt "Have you gotten a"
 	line "fishing Rod? You"
 
 	para "can catch #mon"
@@ -2973,14 +2973,14 @@ _OakRating07::
 
 SECTION "_OakRating08", ROMX
 _OakRating08::
-	text "Excellent! You"
+	ctxt "Excellent! You"
 	line "seem to like col-"
 	cont "lecting things!"
 	done
 
 SECTION "_OakRating09", ROMX
 _OakRating09::
-	text "Some #mon only"
+	ctxt "Some #mon only"
 	line "appear during"
 
 	para "certain times of"
@@ -2989,14 +2989,14 @@ _OakRating09::
 
 SECTION "_OakRating10", ROMX
 _OakRating10::
-	text "Your #dex is"
+	ctxt "Your #dex is"
 	line "filling up. Keep"
 	cont "up the good work!"
 	done
 
 SECTION "_OakRating11", ROMX
 _OakRating11::
-	text "I'm impressed."
+	ctxt "I'm impressed."
 	line "You're evolving"
 
 	para "#mon, not just"
@@ -3005,14 +3005,14 @@ _OakRating11::
 
 SECTION "_OakRating12", ROMX
 _OakRating12::
-	text "Have you met Kurt?"
+	ctxt "Have you met Kurt?"
 	line "His custom Balls"
 	cont "should help."
 	done
 
 SECTION "_OakRating13", ROMX
 _OakRating13::
-	text "Wow. You've found"
+	ctxt "Wow. You've found"
 	line "more #mon than"
 
 	para "the last #dex"
@@ -3021,7 +3021,7 @@ _OakRating13::
 
 SECTION "_OakRating14", ROMX
 _OakRating14::
-	text "Are you trading"
+	ctxt "Are you trading"
 	line "your #mon?"
 
 	para "It's tough to do"
@@ -3030,14 +3030,14 @@ _OakRating14::
 
 SECTION "_OakRating15", ROMX
 _OakRating15::
-	text "Wow! You've hit"
+	ctxt "Wow! You've hit"
 	line "200! Your #dex"
 	cont "is looking great!"
 	done
 
 SECTION "_OakRating16", ROMX
 _OakRating16::
-	text "You've found so"
+	ctxt "You've found so"
 	line "many #mon!"
 
 	para "You've really"
@@ -3046,7 +3046,7 @@ _OakRating16::
 
 SECTION "_OakRating17", ROMX
 _OakRating17::
-	text "Magnificent! You"
+	ctxt "Magnificent! You"
 	line "could become a"
 
 	para "#mon professor"
@@ -3055,7 +3055,7 @@ _OakRating17::
 
 SECTION "_OakRating18", ROMX
 _OakRating18::
-	text "Your #dex is"
+	ctxt "Your #dex is"
 	line "amazing! You're"
 
 	para "ready to turn"
@@ -3064,7 +3064,7 @@ _OakRating18::
 
 SECTION "_OakRating19", ROMX
 _OakRating19::
-	text "Whoa! A perfect"
+	ctxt "Whoa! A perfect"
 	line "#dex! I've"
 
 	para "dreamt about this!"
@@ -3073,29 +3073,29 @@ _OakRating19::
 
 SECTION "_OakPCText4", ROMX
 _OakPCText4::
-	text "The link to Prof."
+	ctxt "The link to Prof."
 	line "Oak's PC closed."
 	done
 
 SECTION "_MemoryGameYeahText", ROMX
 _MemoryGameYeahText::
-	text " , yeah!"
+	ctxt " , yeah!"
 	done
 
 SECTION "_MemoryGameDarnText", ROMX
 _MemoryGameDarnText::
-	text "Darn…"
+	ctxt "Darn…"
 	done
 
 SECTION "_StartMenuContestEndText", ROMX
 _StartMenuContestEndText::
-	text "Would you like to"
+	ctxt "Would you like to"
 	line "end the Contest?"
 	done
 
 SECTION "_ItemsTossOutHowManyText", ROMX
 _ItemsTossOutHowManyText::
-	text "Toss out how many"
+	ctxt "Toss out how many"
 	line ""
 	text_ram wStringBuffer2
 	text "(s)?"
@@ -3103,7 +3103,7 @@ _ItemsTossOutHowManyText::
 
 SECTION "_ItemsThrowAwayText", ROMX
 _ItemsThrowAwayText::
-	text "Throw away "
+	ctxt "Throw away "
 	text_decimal wItemQuantityChangeBuffer, 1, 2
 	line ""
 	text_ram wStringBuffer2
@@ -3112,7 +3112,7 @@ _ItemsThrowAwayText::
 
 SECTION "_ItemsDiscardedText", ROMX
 _ItemsDiscardedText::
-	text "Discarded"
+	ctxt "Discarded"
 	line ""
 	text_ram wStringBuffer1
 	text "(s)."
@@ -3120,7 +3120,7 @@ _ItemsDiscardedText::
 
 SECTION "_ItemsOakWarningText", ROMX
 _ItemsOakWarningText::
-	text "Oak: <PLAYER>!"
+	ctxt "Oak: <PLAYER>!"
 	line "This isn't the"
 	cont "time to use that!"
 	done
@@ -3132,7 +3132,7 @@ _PokemonSwapItemText::
 	text "'s"
 	line ""
 	text_ram wStringBuffer1
-	text " and"
+	ctxt " and"
 
 	para "made it hold"
 	line ""
@@ -3151,20 +3151,20 @@ _PokemonHoldItemText::
 
 SECTION "_PokemonRemoveMailText", ROMX
 _PokemonRemoveMailText::
-	text "Please remove the"
+	ctxt "Please remove the"
 	line "Mail first."
 	prompt
 
 SECTION "_PokemonNotHoldingText", ROMX
 _PokemonNotHoldingText::
 	text_ram wMonOrItemNameBuffer
-	text " isn't"
+	ctxt " isn't"
 	line "holding anything."
 	prompt
 
 SECTION "_ItemStorageFullText", ROMX
 _ItemStorageFullText::
-	text "Item storage space"
+	ctxt "Item storage space"
 	line "full."
 	prompt
 
@@ -3180,30 +3180,30 @@ _PokemonTookItemText::
 SECTION "_PokemonAskSwapItemText", ROMX
 _PokemonAskSwapItemText::
 	text_ram wMonOrItemNameBuffer
-	text " is"
+	ctxt " is"
 	line "already holding"
 
 	para ""
 	text_ram wStringBuffer1
-	text "."
+	ctxt "."
 	line "Switch items?"
 	done
 
 SECTION "_ItemCantHeldText", ROMX
 _ItemCantHeldText::
-	text "That item can't be"
+	ctxt "That item can't be"
 	line "held."
 	prompt
 
 SECTION "_MailLoseMessageText", ROMX
 _MailLoseMessageText::
-	text "The Mail will lose"
+	ctxt "The Mail will lose"
 	line "its message. OK?"
 	done
 
 SECTION "_MailDetachedText", ROMX
 _MailDetachedText::
-	text "Mail detached from"
+	ctxt "Mail detached from"
 	line ""
 	text_ram wStringBuffer1
 	text "."
@@ -3211,36 +3211,36 @@ _MailDetachedText::
 
 SECTION "_MailNoSpaceText", ROMX
 _MailNoSpaceText::
-	text "There's no space"
+	ctxt "There's no space"
 	line "for removing Mail."
 	prompt
 
 SECTION "_MailAskSendToPCText", ROMX
 _MailAskSendToPCText::
-	text "Send the removed"
+	ctxt "Send the removed"
 	line "Mail to your PC?"
 	done
 
 SECTION "_MailboxFullText", ROMX
 _MailboxFullText::
-	text "Your PC's Mailbox"
+	ctxt "Your PC's Mailbox"
 	line "is full."
 	prompt
 
 SECTION "_MailSentToPCText", ROMX
 _MailSentToPCText::
-	text "The Mail was sent"
+	ctxt "The Mail was sent"
 	line "to your PC."
 	prompt
 
 SECTION "_PokemonNotEnoughHPText", ROMX
 _PokemonNotEnoughHPText::
-	text "Not enough HP!"
+	ctxt "Not enough HP!"
 	prompt
 
 SECTION "_MayRegisterItemText", ROMX
 _MayRegisterItemText::
-	text "An item in your"
+	ctxt "An item in your"
 	line "Bag may be"
 
 	para "registered for use"
@@ -3249,14 +3249,14 @@ _MayRegisterItemText::
 
 SECTION "_InitialOptionsText", ROMX
 _InitialOptionsText::
-	text "Please choose how"
+	ctxt "Please choose how"
 	line "you want to play"
 	cont "Polished Crystal."
 	prompt
 
 SECTION "_ElmText1", ROMX
 _ElmText1::
-	text "Hello! Sorry to"
+	ctxt "Hello! Sorry to"
 	line "keep you waiting!"
 
 if !DEF(DEBUG)
@@ -3272,7 +3272,7 @@ endc
 
 SECTION "_ElmText2", ROMX
 _ElmText2::
-	text "This world is in-"
+	ctxt "This world is in-"
 	line "habited by crea-"
 	cont "tures that we call"
 	cont "#mon."
@@ -3280,7 +3280,7 @@ _ElmText2::
 
 SECTION "_ElmText4", ROMX
 _ElmText4::
-	text "People and #mon"
+	ctxt "People and #mon"
 	line "live together by"
 
 	para "supporting each"
@@ -3293,7 +3293,7 @@ _ElmText4::
 
 SECTION "_ElmText5", ROMX
 _ElmText5::
-	text "But we don't know"
+	ctxt "But we don't know"
 	line "everything about"
 	cont "#mon yet."
 
@@ -3307,13 +3307,13 @@ _ElmText5::
 
 SECTION "_ElmText6", ROMX
 _ElmText6::
-	text "Please tell me"
+	ctxt "Please tell me"
 	line "your name."
 	prompt
 
 SECTION "_ElmText7", ROMX
 _ElmText7::
-	text "<PLAYER>, are you"
+	ctxt "<PLAYER>, are you"
 	line "ready?"
 
 if !DEF(DEBUG)
@@ -3338,7 +3338,7 @@ endc
 
 SECTION "_WarnVBAText", ROMX
 _WarnVBAText::
-	text "Warning!"
+	ctxt "Warning!"
 
 	para "This Game Boy"
 	line "emulator has bugs"
@@ -3355,7 +3355,7 @@ _WarnVBAText::
 
 SECTION "_ClockTimeMayBeWrongText", ROMX
 _ClockTimeMayBeWrongText::
-	text "The clock's time"
+	ctxt "The clock's time"
 	line "may be wrong."
 
 	para "Please reset the"
@@ -3364,7 +3364,7 @@ _ClockTimeMayBeWrongText::
 
 SECTION "_ClockSetWithControlPadText", ROMX
 _ClockSetWithControlPadText::
-	text "Set with the"
+	ctxt "Set with the"
 	line "Control Pad."
 
 	para "Confirm: A Button"
@@ -3373,41 +3373,41 @@ _ClockSetWithControlPadText::
 
 SECTION "_ClockIsThisOKText", ROMX
 _ClockIsThisOKText::
-	text "Is this OK?"
+	ctxt "Is this OK?"
 	done
 
 SECTION "_ClockHasResetText", ROMX
 _ClockHasResetText::
-	text "The clock has been"
+	ctxt "The clock has been"
 	line "reset."
 	done
 
 SECTION "_LinkTimeoutText", ROMX
 _LinkTimeoutText::
-	text "Too much time has"
+	ctxt "Too much time has"
 	line "elapsed. Please"
 	cont "try again."
 	prompt
 
 SECTION "_LinkTradeCantBattleText", ROMX
 _LinkTradeCantBattleText::
-	text "If you trade that"
+	ctxt "If you trade that"
 	line "#mon, you won't"
 	cont "be able to battle."
 	prompt
 
 SECTION "_LinkAbnormalMonText", ROMX
 _LinkAbnormalMonText::
-	text "Your friend's"
+	ctxt "Your friend's"
 	line ""
 	text_ram wStringBuffer1
-	text " appears"
+	ctxt " appears"
 	cont "to be abnormal!"
 	prompt
 
 SECTION "_LinkAskTradeForText", ROMX
 _LinkAskTradeForText::
-	text "Trade "
+	ctxt "Trade "
 	text_ram wBufferTrademonNickname
 	line "for "
 	text_ram wStringBuffer1
@@ -3416,25 +3416,25 @@ _LinkAskTradeForText::
 
 SECTION "_WouldYouLikeToSaveTheGameText", ROMX
 _WouldYouLikeToSaveTheGameText::
-	text "Would you like to"
+	ctxt "Would you like to"
 	line "save the game?"
 	done
 
 SECTION "_SavingDontTurnOffThePowerText", ROMX
 _SavingDontTurnOffThePowerText::
-	text "Saving… Don't turn"
+	ctxt "Saving… Don't turn"
 	line "off the power!"
 	done
 
 SECTION "_SavedTheGameText", ROMX
 _SavedTheGameText::
-	text "<PLAYER> saved"
+	ctxt "<PLAYER> saved"
 	line "the game."
 	done
 
 SECTION "_AnotherSaveFileText", ROMX
 _AnotherSaveFileText::
-	text "Warning! There is"
+	ctxt "Warning! There is"
 	line "a save file from"
 	cont "another game."
 
@@ -3445,38 +3445,38 @@ _AnotherSaveFileText::
 
 SECTION "_SaveFileCorruptedText", ROMX
 _SaveFileCorruptedText::
-	text "The save file is"
+	ctxt "The save file is"
 	line "corrupted!"
 	prompt
 
 SECTION "_ChangeBoxSaveText", ROMX
 _ChangeBoxSaveText::
-	text "When you change a"
+	ctxt "When you change a"
 	line "#mon Box, data"
 	cont "will be saved. OK?"
 	done
 
 SECTION "_MoveMonWOMailSaveText", ROMX
 _MoveMonWOMailSaveText::
-	text "Each time you move"
+	ctxt "Each time you move"
 	line "a #mon, data"
 	cont "will be saved. OK?"
 	done
 
 SECTION "_WindowPoppingErrorText", ROMX
 _WindowPoppingErrorText::
-	text "No windows avail-"
+	ctxt "No windows avail-"
 	line "able for popping."
 	done
 
 SECTION "_ObjectEventText", ROMX
 _ObjectEventText::
-	text "Object event"
+	ctxt "Object event"
 	done
 
 SECTION "_ReceivedItemText", ROMX
 _ReceivedItemText::
-	text "<PLAYER> received"
+	ctxt "<PLAYER> received"
 	line ""
 	text_ram wStringBuffer4
 	text "."
@@ -3484,10 +3484,10 @@ _ReceivedItemText::
 
 SECTION "_PutItemInPocketText", ROMX
 _PutItemInPocketText::
-	text "<PLAYER> put the"
+	ctxt "<PLAYER> put the"
 	line ""
 	text_ram wStringBuffer1
-	text " in"
+	ctxt " in"
 	cont "the "
 	text_ram wStringBuffer3
 	text "."
@@ -3502,7 +3502,7 @@ _PocketIsFullText::
 
 SECTION "_CongratulationsYourPokemonText", ROMX
 _CongratulationsYourPokemonText::
-	text "Congratulations!"
+	ctxt "Congratulations!"
 	line "Your "
 	text_ram wStringBuffer2
 	text_end
@@ -3531,7 +3531,7 @@ _EvolvingText::
 
 SECTION "_MartHowManyText", ROMX
 _MartHowManyText::
-	text "How many?"
+	ctxt "How many?"
 	done
 
 SECTION "_MartFinalPriceText", ROMX
@@ -3539,7 +3539,7 @@ _MartFinalPriceText::
 	text_decimal wItemQuantityChangeBuffer, 1, 2
 	text " "
 	text_ram wStringBuffer2
-	text "(s)"
+	ctxt "(s)"
 	line "will be ¥"
 	text_decimal hMoneyTemp, 3, 7
 	text "."
@@ -3547,7 +3547,7 @@ _MartFinalPriceText::
 
 SECTION "_HerbShopLadyIntroText", ROMX
 _HerbShopLadyIntroText::
-	text "Hello, dear."
+	ctxt "Hello, dear."
 
 	para "I sell inexpensive"
 	line "herbal medicine."
@@ -3563,7 +3563,7 @@ _HerbShopLadyIntroText::
 
 SECTION "_HerbalLadyHowManyText", ROMX
 _HerbalLadyHowManyText::
-	text "How many?"
+	ctxt "How many?"
 	done
 
 SECTION "_HerbalLadyFinalPriceText", ROMX
@@ -3571,7 +3571,7 @@ _HerbalLadyFinalPriceText::
 	text_decimal wItemQuantityChangeBuffer, 1, 2
 	text " "
 	text_ram wStringBuffer2
-	text "(s)"
+	ctxt "(s)"
 	line "will be ¥"
 	text_decimal hMoneyTemp, 3, 7
 	text "."
@@ -3579,31 +3579,31 @@ _HerbalLadyFinalPriceText::
 
 SECTION "_HerbalLadyThanksText", ROMX
 _HerbalLadyThanksText::
-	text "Thank you, dear."
+	ctxt "Thank you, dear."
 	line "Hehehehe…"
 	done
 
 SECTION "_HerbalLadyPackFullText", ROMX
 _HerbalLadyPackFullText::
-	text "Oh? Your Bag is"
+	ctxt "Oh? Your Bag is"
 	line "full, dear."
 	done
 
 SECTION "_HerbalLadyNoMoneyText", ROMX
 _HerbalLadyNoMoneyText::
-	text "Hehehe… You don't"
+	ctxt "Hehehe… You don't"
 	line "have the money."
 	done
 
 SECTION "_HerbalLadyComeAgainText", ROMX
 _HerbalLadyComeAgainText::
-	text "Come again, dear."
+	ctxt "Come again, dear."
 	line "Hehehehe…"
 	done
 
 SECTION "_BargainShopIntroText", ROMX
 _BargainShopIntroText::
-	text "Hiya! Care to see"
+	ctxt "Hiya! Care to see"
 	line "some bargains?"
 
 	para "I sell rare items"
@@ -3616,51 +3616,51 @@ _BargainShopIntroText::
 SECTION "_BargainShopFinalPriceText", ROMX
 _BargainShopFinalPriceText::
 	text_ram wStringBuffer2
-	text " costs"
+	ctxt " costs"
 	line "¥"
 	text_decimal hMoneyTemp, 3, 7
-	text ". Want it?"
+	ctxt ". Want it?"
 	done
 
 SECTION "_BargainShopThanksText", ROMX
 _BargainShopThanksText::
-	text "Thanks."
+	ctxt "Thanks."
 	done
 
 SECTION "_BargainShopPackFullText", ROMX
 _BargainShopPackFullText::
-	text "Uh-oh, your Bag"
+	ctxt "Uh-oh, your Bag"
 	line "is chock-full."
 	done
 
 SECTION "_BargainShopSoldOutText", ROMX
 _BargainShopSoldOutText::
-	text "You bought that"
+	ctxt "You bought that"
 	line "already. I'm all"
 	cont "sold out of it."
 	done
 
 SECTION "_BargainShopNoFundsText", ROMX
 _BargainShopNoFundsText::
-	text "Uh-oh, you're"
+	ctxt "Uh-oh, you're"
 	line "short on funds."
 	done
 
 SECTION "_BargainShopComeAgainText", ROMX
 _BargainShopComeAgainText::
-	text "Come by again"
+	ctxt "Come by again"
 	line "sometime."
 	done
 
 SECTION "_PharmacyIntroText", ROMX
 _PharmacyIntroText::
-	text "What's up? Need"
+	ctxt "What's up? Need"
 	line "some medicine?"
 	done
 
 SECTION "_PharmacyHowManyText", ROMX
 _PharmacyHowManyText::
-	text "How many?"
+	ctxt "How many?"
 	done
 
 SECTION "_PharmacyFinalPriceText", ROMX
@@ -3668,7 +3668,7 @@ _PharmacyFinalPriceText::
 	text_decimal wItemQuantityChangeBuffer, 1, 2
 	text " "
 	text_ram wStringBuffer2
-	text "(s)"
+	ctxt "(s)"
 	line "will cost ¥"
 	text_decimal hMoneyTemp, 3, 7
 	text "."
@@ -3676,80 +3676,80 @@ _PharmacyFinalPriceText::
 
 SECTION "_PharmacyThanksText", ROMX
 _PharmacyThanksText::
-	text "Thanks much!"
+	ctxt "Thanks much!"
 	done
 
 SECTION "_PharmacyPackFullText", ROMX
 _PharmacyPackFullText::
-	text "You don't have any"
+	ctxt "You don't have any"
 	line "more space."
 	done
 
 SECTION "_PharmacyNoMoneyText", ROMX
 _PharmacyNoMoneyText::
-	text "Huh? That's not"
+	ctxt "Huh? That's not"
 	line "enough money."
 	done
 
 SECTION "_PharmacyComeAgainText", ROMX
 _PharmacyComeAgainText::
-	text "All right."
+	ctxt "All right."
 	line "See you around."
 	done
 
 SECTION "_MartSellHowManyText", ROMX
 _MartSellHowManyText::
-	text "How many?"
+	ctxt "How many?"
 	done
 
 SECTION "_MartSellPriceText", ROMX
 _MartSellPriceText::
-	text "I can pay you"
+	ctxt "I can pay you"
 	line "¥"
 	text_decimal hMoneyTemp, 3, 7
-	text "."
+	ctxt "."
 
 	para "Is that OK?"
 	done
 
 SECTION "_MartWelcomeText", ROMX
 _MartWelcomeText::
-	text "Welcome! How may I"
+	ctxt "Welcome! How may I"
 	line "help you?"
 	done
 
 SECTION "_MartThanksText", ROMX
 _MartThanksText::
-	text "Here you are."
+	ctxt "Here you are."
 	line "Thank you!"
 	done
 
 SECTION "_MartNoMoneyText", ROMX
 _MartNoMoneyText::
-	text "You don't have"
+	ctxt "You don't have"
 	line "enough money."
 	done
 
 SECTION "_MartPackFullText", ROMX
 _MartPackFullText::
-	text "You can't carry"
+	ctxt "You can't carry"
 	line "any more items."
 	done
 
 SECTION "_MartCantBuyText", ROMX
 _MartCantBuyText::
-	text "Sorry, I can't buy"
+	ctxt "Sorry, I can't buy"
 	line "that from you."
 	prompt
 
 SECTION "_MartComeAgainText", ROMX
 _MartComeAgainText::
-	text "Please come again!"
+	ctxt "Please come again!"
 	done
 
 SECTION "_MartAskMoreText", ROMX
 _MartAskMoreText::
-	text "Can I do anything"
+	ctxt "Can I do anything"
 	line "else for you?"
 	done
 
@@ -3765,7 +3765,7 @@ _MartBoughtText::
 
 SECTION "_SlotsBetHowManyCoinsText", ROMX
 _SlotsBetHowManyCoinsText::
-	text "Bet how many"
+	ctxt "Bet how many"
 	line "coins?"
 	done
 
@@ -3781,7 +3781,7 @@ TMMartCostsThisMuchText::
 
 SECTION "BTMartHowMayIHelpYouText", ROMX
 BTMartHowMayIHelpYouText::
-	text "Welcome to the"
+	ctxt "Welcome to the"
 	line "Exchange Service"
 	cont "Corner!"
 
@@ -3794,7 +3794,7 @@ BTMartCostsThisMuchText::
 	text_decimal wItemQuantityChangeBuffer, 1, 2
 	text " "
 	text_ram wStringBuffer1
-	text "(s)"
+	ctxt "(s)"
 	line "will cost "
 	text_decimal hMoneyTemp+1, 2, 4
 	text " BP."
@@ -3802,67 +3802,67 @@ BTMartCostsThisMuchText::
 
 SECTION "BTMartInsufficientFundsText", ROMX
 BTMartInsufficientFundsText::
-	text "I'm sorry, but you"
+	ctxt "I'm sorry, but you"
 	line "don't have enough"
 	cont "BP."
 	done
 
 SECTION "BTMartBagFullText", ROMX
 BTMartBagFullText::
-	text "I'm sorry, but your"
+	ctxt "I'm sorry, but your"
 	line "Bag is full."
 	done
 
 SECTION "BTMartComeAgainText", ROMX
 BTMartComeAgainText::
-	text "Please come back"
+	ctxt "Please come back"
 	line "any time you want!"
 	done
 
 SECTION "_SlotsStartText", ROMX
 _SlotsStartText::
-	text "Start!"
+	ctxt "Start!"
 	done
 
 SECTION "_SlotsNotEnoughCoinsText", ROMX
 _SlotsNotEnoughCoinsText::
-	text "Not enough"
+	ctxt "Not enough"
 	line "coins."
 	prompt
 
 SECTION "_SlotsRanOutOfCoinsText", ROMX
 _SlotsRanOutOfCoinsText::
-	text "Darn… Ran out of"
+	ctxt "Darn… Ran out of"
 	line "coins…"
 	done
 
 SECTION "_SlotsPlayAgainText", ROMX
 _SlotsPlayAgainText::
-	text "Play again?"
+	ctxt "Play again?"
 	done
 
 SECTION "_SlotsLinedUpText", ROMX
 _SlotsLinedUpText::
-	text "lined up!"
+	ctxt "lined up!"
 	line "Won "
 	text_ram wStringBuffer2
-	text " coins!"
+	ctxt " coins!"
 	done
 
 SECTION "_SlotsDarnText", ROMX
 _SlotsDarnText::
-	text "Darn!"
+	ctxt "Darn!"
 	done
 
 SECTION "_PhoneWrongNumberText", ROMX
 _PhoneWrongNumberText::
-	text "Huh? Sorry, wrong"
+	ctxt "Huh? Sorry, wrong"
 	line "number!"
 	done
 
 SECTION "_PhoneClickText", ROMX
 _PhoneClickText::
-	text "Click!"
+	ctxt "Click!"
 	done
 
 SECTION "_PhoneEllipseText", ROMX
@@ -3872,43 +3872,43 @@ _PhoneEllipseText::
 
 SECTION "_PhoneOutOfAreaText", ROMX
 _PhoneOutOfAreaText::
-	text "That number is out"
+	ctxt "That number is out"
 	line "of the area."
 	done
 
 SECTION "_PhoneJustTalkToThemText", ROMX
 _PhoneJustTalkToThemText::
-	text "Just go talk to"
+	ctxt "Just go talk to"
 	line "that person!"
 	done
 
 SECTION "_PasswordAskResetText", ROMX
 _PasswordAskResetText::
-	text "Select Continue to"
+	ctxt "Select Continue to"
 	line "set the time."
 	prompt
 
 SECTION "_PasswordAskResetClockText", ROMX
 _PasswordAskResetClockText::
-	text "Reset the clock?"
+	ctxt "Reset the clock?"
 	done
 
 SECTION "_ClearAllSaveDataText", ROMX
 _ClearAllSaveDataText::
-	text "Clear all save"
+	ctxt "Clear all save"
 	line "data?"
 	done
 
 SECTION "ResetInitialOptionsText", ROMX
 ResetInitialOptionsText::
-	text "Reset the initial"
+	ctxt "Reset the initial"
 	line "game options?"
 	done
 
 SECTION "_LearnedMoveText", ROMX
 _LearnedMoveText::
 	text_ram wMonOrItemNameBuffer
-	text " learned"
+	ctxt " learned"
 	line ""
 	text_ram wStringBuffer2
 	text "!"
@@ -3918,13 +3918,13 @@ _LearnedMoveText::
 
 SECTION "_MoveAskForgetText", ROMX
 _MoveAskForgetText::
-	text "Which move should"
+	ctxt "Which move should"
 	next "be forgotten?"
 	prompt
 
 SECTION "_StopLearningMoveText", ROMX
 _StopLearningMoveText::
-	text "Stop learning"
+	ctxt "Stop learning"
 	line ""
 	text_ram wStringBuffer2
 	text "?"
@@ -3945,7 +3945,7 @@ _AskForgetMoveText::
 	line "wants to learn"
 	cont ""
 	text_ram wStringBuffer2
-	text "!"
+	ctxt "!"
 
 	para "Should it forget"
 	line "an old move for"
@@ -3967,61 +3967,61 @@ _MoveForgotText::
 
 	para ""
 	text_ram wMonOrItemNameBuffer
-	text " forgot"
+	ctxt " forgot"
 	line ""
 	text_ram wStringBuffer1
-	text "."
+	ctxt "."
 
 	para "And…"
 	prompt
 
 SECTION "_MoveCantForgetHMText", ROMX
 _MoveCantForgetHMText::
-	text "HM moves can't be"
+	ctxt "HM moves can't be"
 	line "forgotten now."
 	prompt
 
 SECTION "_CardFlipPlayWithThreeCoinsText", ROMX
 _CardFlipPlayWithThreeCoinsText::
-	text "Play with three"
+	ctxt "Play with three"
 	line "coins?"
 	done
 
 SECTION "_CardFlipNotEnoughCoinsText", ROMX
 _CardFlipNotEnoughCoinsText::
-	text "Not enough coins…"
+	ctxt "Not enough coins…"
 	prompt
 
 SECTION "_CardFlipChooseACardText", ROMX
 _CardFlipChooseACardText::
-	text "Choose a card."
+	ctxt "Choose a card."
 	done
 
 SECTION "_CardFlipPlaceYourBetText", ROMX
 _CardFlipPlaceYourBetText::
-	text "Place your bet."
+	ctxt "Place your bet."
 	done
 
 SECTION "_CardFlipPlayAgainText", ROMX
 _CardFlipPlayAgainText::
-	text "Want to play"
+	ctxt "Want to play"
 	line "again?"
 	done
 
 SECTION "_CardFlipShuffledText", ROMX
 _CardFlipShuffledText::
-	text "The cards have"
+	ctxt "The cards have"
 	line "been shuffled."
 	prompt
 
 SECTION "_CardFlipYeahText", ROMX
 _CardFlipYeahText::
-	text "Yeah!"
+	ctxt "Yeah!"
 	done
 
 SECTION "_CardFlipDarnText", ROMX
 _CardFlipDarnText::
-	text "Darn…"
+	ctxt "Darn…"
 	done
 
 SECTION "_GearTodayText", ROMX
@@ -4036,31 +4036,31 @@ _GearEllipseText::
 
 SECTION "_GearOutOfServiceText", ROMX
 _GearOutOfServiceText::
-	text "You're out of the"
+	ctxt "You're out of the"
 	line "service area."
 	prompt
 
 SECTION "_PokegearAskWhoCallText", ROMX
 _PokegearAskWhoCallText::
-	text "Whom do you want"
+	ctxt "Whom do you want"
 	line "to call?"
 	done
 
 SECTION "_PokegearPressButtonText", ROMX
 _PokegearPressButtonText::
-	text "Press any button"
+	ctxt "Press any button"
 	line "to exit."
 	done
 
 SECTION "_PokegearAskDeleteText", ROMX
 _PokegearAskDeleteText::
-	text "Delete this stored"
+	ctxt "Delete this stored"
 	line "phone number?"
 	done
 
 SECTION "_BuenaAskWhichPrizeText", ROMX
 _BuenaAskWhichPrizeText::
-	text "You can cash in"
+	ctxt "You can cash in"
 	line "your saved points"
 
 	para "for a lovely prize"
@@ -4073,56 +4073,56 @@ _BuenaAskWhichPrizeText::
 SECTION "_BuenaIsThatRightText", ROMX
 _BuenaIsThatRightText::
 	text_ram wStringBuffer1
-	text "?"
+	ctxt "?"
 	line "Is that right?"
 	done
 
 SECTION "_BuenaHereYouGoText", ROMX
 _BuenaHereYouGoText::
-	text "Here you go!"
+	ctxt "Here you go!"
 	done
 
 SECTION "_BuenaNotEnoughPointsText", ROMX
 _BuenaNotEnoughPointsText::
-	text "You don't have"
+	ctxt "You don't have"
 	line "enough points."
 	done
 
 SECTION "_BuenaNoRoomText", ROMX
 _BuenaNoRoomText::
-	text "You have no room"
+	ctxt "You have no room"
 	line "for it."
 	done
 
 SECTION "_BuenaComeAgainText", ROMX
 _BuenaComeAgainText::
-	text "Oh. Please come"
+	ctxt "Oh. Please come"
 	line "back again!"
 	done
 
 SECTION "Text_ExcuseMeYoureNotReady", ROMX
 Text_ExcuseMeYoureNotReady::
-	text "Excuse me."
+	ctxt "Excuse me."
 	line "You're not ready."
 	para ""
 	done
 
 SECTION "_BattleTowerReturnWhenReadyText", ROMX
 _BattleTowerReturnWhenReadyText::
-	text "Please return when"
+	ctxt "Please return when"
 	line "you're ready."
 	done
 
 SECTION "Text_OnlyThreePkmnMayBeEntered", ROMX
 Text_OnlyThreePkmnMayBeEntered::
-	text "Three #mon"
+	ctxt "Three #mon"
 	line "must be entered."
 	para ""
 	done
 
 SECTION "Text_ThePkmnMustAllBeDifferentKinds", ROMX
 Text_ThePkmnMustAllBeDifferentKinds::
-	text "The three #mon"
+	ctxt "The three #mon"
 	line "must all be"
 	cont "different kinds."
 	para ""
@@ -4130,7 +4130,7 @@ Text_ThePkmnMustAllBeDifferentKinds::
 
 SECTION "Text_ThePkmnMustNotHoldTheSameItems", ROMX
 Text_ThePkmnMustNotHoldTheSameItems::
-	text "The three #mon"
+	ctxt "The three #mon"
 	line "must not hold the"
 	cont "same items."
 	para ""
@@ -4138,7 +4138,7 @@ Text_ThePkmnMustNotHoldTheSameItems::
 
 SECTION "Text_YouCantTakeAnEgg", ROMX
 Text_YouCantTakeAnEgg::
-	text "You can't take an"
+	ctxt "You can't take an"
 	line "Egg!"
 	para ""
 	done
@@ -4146,38 +4146,38 @@ Text_YouCantTakeAnEgg::
 SECTION "Text_UberRestriction", ROMX
 Text_UberRestriction::
 	text_ram wStringBuffer1
-	text " must be"
+	ctxt " must be"
 	line "<LV>70 or higher."
 	para ""
 	done
 
 SECTION "_BallBrokeFreeText", ROMX
 _BallBrokeFreeText::
-	text "Oh no! The #mon"
+	ctxt "Oh no! The #mon"
 	line "broke free!"
 	prompt
 
 SECTION "_BallAppearedCaughtText", ROMX
 _BallAppearedCaughtText::
-	text "Aww! It appeared"
+	ctxt "Aww! It appeared"
 	line "to be caught!"
 	prompt
 
 SECTION "_BallAlmostHadItText", ROMX
 _BallAlmostHadItText::
-	text "Aargh!"
+	ctxt "Aargh!"
 	line "Almost had it!"
 	prompt
 
 SECTION "_BallSoCloseText", ROMX
 _BallSoCloseText::
-	text "Shoot! It was so"
+	ctxt "Shoot! It was so"
 	line "close too!"
 	prompt
 
 SECTION "Text_BallCaught", ROMX
 Text_BallCaught::
-	text "Gotcha! "
+	ctxt "Gotcha! "
 	text_ram wEnemyMonNickname
 	line "was caught!"
 	text_sound SFX_CAUGHT_MON
@@ -4190,15 +4190,14 @@ Text_Waitbutton_2::
 
 SECTION "_CurBoxFullText", ROMX
 _CurBoxFullText::
-	text ""
 	text_ram wStringBuffer1
-	text " is full."
+	ctxt " is full."
 	prompt
 
 SECTION "_MonSentToPCText", ROMX
 _MonSentToPCText::
 	text_ram wMonOrItemNameBuffer
-	text " was"
+	ctxt " was"
 	line "sent to "
 	text_ram wStringBuffer1
 	text "."
@@ -4207,7 +4206,7 @@ _MonSentToPCText::
 SECTION "_NewDexDataText", ROMX
 _NewDexDataText::
 	text_ram wEnemyMonNickname
-	text "'s data"
+	ctxt "'s data"
 	line "was newly added to"
 	cont "the #dex."
 	text_sound SFX_SLOT_MACHINE_START
@@ -4216,7 +4215,7 @@ _NewDexDataText::
 
 SECTION "_AskGiveNicknameText", ROMX
 _AskGiveNicknameText::
-	text "Give a nickname to"
+	ctxt "Give a nickname to"
 	line ""
 	text_ram wStringBuffer1
 	text "?"
@@ -4225,11 +4224,11 @@ _AskGiveNicknameText::
 SECTION "_ItemHappinessRoseButStatFellText", ROMX
 _ItemHappinessRoseButStatFellText::
 	text_ram wStringBuffer1
-	text " became"
+	ctxt " became"
 	line "friendly. Base"
 	cont ""
 	text_ram wStringBuffer2
-	text " fell!"
+	ctxt " fell!"
 	prompt
 
 SECTION "_ItemStatRoseText", ROMX
@@ -4238,28 +4237,28 @@ _ItemStatRoseText::
 	text "'s"
 	line ""
 	text_ram wStringBuffer2
-	text " rose."
+	ctxt " rose."
 	prompt
 
 SECTION "_ItemCantUseOnMonText", ROMX
 _ItemCantUseOnMonText::
-	text "That can't be used"
+	ctxt "That can't be used"
 	line "on this #mon."
 	prompt
 
 SECTION "Text_RepelUsedEarlierIsStillInEffect", ROMX
 Text_RepelUsedEarlierIsStillInEffect::
-	text "The Repel used"
+	ctxt "The Repel used"
 	line "earlier is still"
 	cont "in effect."
 	prompt
 
 SECTION "_BlueCardBalanceText", ROMX
 _BlueCardBalanceText::
-	text "You now have"
+	ctxt "You now have"
 	line ""
 	text_decimal wBlueCardBalance, 1, 2
-	text " points."
+	ctxt " points."
 	done
 
 SECTION "_CoinCaseCountText", ROMX
@@ -4271,120 +4270,120 @@ _CoinCaseCountText::
 
 SECTION "Text_RaiseThePPOfWhichMove", ROMX
 Text_RaiseThePPOfWhichMove::
-	text "Raise the PP of"
+	ctxt "Raise the PP of"
 	line "which move?"
 	done
 
 SECTION "Text_RestoreThePPOfWhichMove", ROMX
 Text_RestoreThePPOfWhichMove::
-	text "Restore the PP of"
+	ctxt "Restore the PP of"
 	line "which move?"
 	done
 
 SECTION "Text_PPIsMaxedOut", ROMX
 Text_PPIsMaxedOut::
 	text_ram wStringBuffer2
-	text "'s PP"
+	ctxt "'s PP"
 	line "is maxed out."
 	prompt
 
 SECTION "Text_PPsIncreased", ROMX
 Text_PPsIncreased::
 	text_ram wStringBuffer2
-	text "'s PP"
+	ctxt "'s PP"
 	line "increased."
 	prompt
 
 SECTION "Text_PPsMaximized", ROMX
 Text_PPsMaximized::
 	text_ram wStringBuffer2
-	text "'s PP"
+	ctxt "'s PP"
 	line "maximized."
 	prompt
 
 SECTION "_PPRestoredText", ROMX
 _PPRestoredText::
-	text "PP was restored."
+	ctxt "PP was restored."
 	prompt
 
 SECTION "_ItemLooksBitterText", ROMX
 _ItemLooksBitterText::
-	text "It looks bitter…"
+	ctxt "It looks bitter…"
 	prompt
 
 SECTION "_ItemCantUseOnEggText", ROMX
 _ItemCantUseOnEggText::
-	text "That can't be used"
+	ctxt "That can't be used"
 	line "on an Egg."
 	prompt
 
 SECTION "_ItemOakWarningText", ROMX
 _ItemOakWarningText::
-	text "Oak: <PLAYER>!"
+	ctxt "Oak: <PLAYER>!"
 	line "This isn't the"
 	cont "time to use that!"
 	prompt
 
 SECTION "_ItemWontHaveEffectText", ROMX
 _ItemWontHaveEffectText::
-	text "It won't have any"
+	ctxt "It won't have any"
 	line "effect."
 	prompt
 
 SECTION "_BallBlockedText", ROMX
 _BallBlockedText::
-	text "The trainer"
+	ctxt "The trainer"
 	line "blocked the Ball!"
 	prompt
 
 SECTION "_BallDontBeAThiefText", ROMX
 _BallDontBeAThiefText::
-	text "Don't be a thief!"
+	ctxt "Don't be a thief!"
 	prompt
 
 SECTION "_BallStorageFullText", ROMX
 _BallStorageFullText::
-	text "The storage system"
+	ctxt "The storage system"
 	line "is full. That"
 	cont "can't be used now."
 	prompt
 
 SECTION "_BallDatabaseFullText", ROMX
 _BallDatabaseFullText::
-	text "The PC database is"
+	ctxt "The PC database is"
 	line "overtaxed. Please"
 	cont "save the game."
 	prompt
 
 SECTION "Text_MonIsHiddenFromBall", ROMX
 Text_MonIsHiddenFromBall::
-	text "The #mon can't"
+	ctxt "The #mon can't"
 	line "be seen!"
 	prompt
 
 SECTION "Text_MonCantBeCaught", ROMX
 Text_MonCantBeCaught::
-	text "The #mon can't"
+	ctxt "The #mon can't"
 	line "be caught!"
 	prompt
 
 SECTION "Text_NuzlockeBallFailure", ROMX
 Text_NuzlockeBallFailure::
-	text "You already"
+	ctxt "You already"
 	line "encountered a"
 	cont "#mon here."
 	prompt
 
 SECTION "Text_NuzlockeReviveFailure", ROMX
 Text_NuzlockeReviveFailure::
-	text "You can't revive"
+	ctxt "You can't revive"
 	line "#mon in"
 	cont "Nuzlocke mode!"
 	prompt
 
 SECTION "_ItemUsedText", ROMX
 _ItemUsedText::
-	text "<PLAYER> used the"
+	ctxt "<PLAYER> used the"
 	line ""
 	text_ram wStringBuffer2
 	text "."
@@ -4393,7 +4392,7 @@ _ItemUsedText::
 SECTION "_KnowsMoveText", ROMX
 _KnowsMoveText::
 	text_ram wStringBuffer1
-	text " knows"
+	ctxt " knows"
 	line ""
 	text_ram wStringBuffer2
 	text "."
@@ -4401,13 +4400,13 @@ _KnowsMoveText::
 
 SECTION "_MoveKnowsOneText", ROMX
 _MoveKnowsOneText::
-	text "That #mon knows"
+	ctxt "That #mon knows"
 	line "only one move."
 	done
 
 SECTION "_AskDeleteMoveText", ROMX
 _AskDeleteMoveText::
-	text "Oh, make it forget"
+	ctxt "Oh, make it forget"
 	line ""
 	text_ram wStringBuffer1
 	text "?"
@@ -4415,31 +4414,31 @@ _AskDeleteMoveText::
 
 SECTION "_DeleterForgotMoveText", ROMX
 _DeleterForgotMoveText::
-	text "Done! Your #mon"
+	ctxt "Done! Your #mon"
 	line "forgot the move."
 	done
 
 SECTION "_DeleterEggText", ROMX
 _DeleterEggText::
-	text "An Egg doesn't"
+	ctxt "An Egg doesn't"
 	line "know any moves!"
 	done
 
 SECTION "_DeleterNoComeAgainText", ROMX
 _DeleterNoComeAgainText::
-	text "No? Come visit me"
+	ctxt "No? Come visit me"
 	line "again."
 	done
 
 SECTION "_DeleterAskWhichMoveText", ROMX
 _DeleterAskWhichMoveText::
-	text "Which move should"
+	ctxt "Which move should"
 	line "it forget, then?"
 	prompt
 
 SECTION "_DeleterIntroText", ROMX
 _DeleterIntroText::
-	text "Um… Oh, yes, I'm"
+	ctxt "Um… Oh, yes, I'm"
 	line "the Move Deleter."
 
 	para "I can make #mon"
@@ -4451,50 +4450,50 @@ _DeleterIntroText::
 
 SECTION "_DeleterAskWhichMonText", ROMX
 _DeleterAskWhichMonText::
-	text "Which #mon?"
+	ctxt "Which #mon?"
 	prompt
 
 SECTION "Text_DSTIsThatOK", ROMX
 Text_DSTIsThatOK::
-	text " DST,"
+	ctxt " DST,"
 	line "is that OK?"
 	done
 
 SECTION "_TimeAskOkayText", ROMX
 _TimeAskOkayText::
-	text ","
+	ctxt ","
 	line "is that OK?"
 	done
 
 SECTION "_TimesetAskDSTText", ROMX
 _TimesetAskDSTText::
-	text "Do you want to"
+	ctxt "Do you want to"
 	line "switch to Daylight"
 	cont "Saving Time?"
 	done
 
 SECTION "_TimesetDSTText", ROMX
 _TimesetDSTText::
-	text "I set the clock"
+	ctxt "I set the clock"
 	line "forward by one"
 	cont "hour."
 	prompt
 
 SECTION "_TimesetAskNotDSTText", ROMX
 _TimesetAskNotDSTText::
-	text "Is Daylight Saving"
+	ctxt "Is Daylight Saving"
 	line "Time over?"
 	done
 
 SECTION "_TimesetNotDSTText", ROMX
 _TimesetNotDSTText::
-	text "I put the clock"
+	ctxt "I put the clock"
 	line "back one hour."
 	prompt
 
 SECTION "_TimesetAskAdjustDSTText", ROMX
 _TimesetAskAdjustDSTText::
-	text "Do you want to"
+	ctxt "Do you want to"
 	line "adjust your clock"
 
 	para "for Daylight"
@@ -4503,7 +4502,7 @@ _TimesetAskAdjustDSTText::
 
 SECTION "_MomLostGearBookletText", ROMX
 _MomLostGearBookletText::
-	text "I lost the in-"
+	ctxt "I lost the in-"
 	line "struction booklet"
 	cont "for the #gear."
 
@@ -4513,25 +4512,25 @@ _MomLostGearBookletText::
 
 SECTION "WonderTradeQuestionText", ROMX
 WonderTradeQuestionText::
-	text "Would you like to"
+	ctxt "Would you like to"
 	line "trade?"
 	done
 
 SECTION "WonderTradePromptText", ROMX
 WonderTradePromptText::
-	text "Which #mon do"
+	ctxt "Which #mon do"
 	line "you want to trade?"
 	prompt
 
 ;SECTION "WonderTradeCantTradeEggText", ROMX
 ;WonderTradeCantTradeEggText::
-;	text "Sorry. We can't"
+;	ctxt "Sorry. We can't"
 ;	line "accept an Egg."
 ;	prompt
 
 ;SECTION "WonderTradeCantAcceptAbnormalMonText", ROMX
 ;WonderTradeCantAcceptAbnormalMonText::
-;	text "Sorry, but your"
+;	ctxt "Sorry, but your"
 ;	line "#mon appears to"
 ;
 ;	para "be abnormal. We"
@@ -4540,7 +4539,7 @@ WonderTradePromptText::
 
 SECTION "WonderTradeConfirmText", ROMX
 WonderTradeConfirmText::
-	text "Offer to trade"
+	ctxt "Offer to trade"
 	line ""
 	text_ram wStringBuffer1
 	text "?"
@@ -4548,19 +4547,19 @@ WonderTradeConfirmText::
 
 SECTION "WonderTradeSetupText", ROMX
 WonderTradeSetupText::
-	text "Searching for a"
+	ctxt "Searching for a"
 	line "trade partner…"
 	prompt
 
 SECTION "WonderTradeReadyText", ROMX
 WonderTradeReadyText::
-	text "A trade partner"
+	ctxt "A trade partner"
 	line "has been found."
 	prompt
 
 SECTION "SilphMartIntroText", ROMX
 SilphMartIntroText::
-	text "Employees like me"
+	ctxt "Employees like me"
 	line "have access to"
 	cont "company swag!"
 
@@ -4569,55 +4568,55 @@ SilphMartIntroText::
 
 SECTION "SilphMartComeAgainText", ROMX
 SilphMartComeAgainText::
-	text "Come again! I"
+	ctxt "Come again! I"
 	line "could use the"
 	cont "side income."
 	done
 
 SECTION "AdventurerMartIntroText", ROMX
 AdventurerMartIntroText::
-	text "I picked up some"
+	ctxt "I picked up some"
 	line "rare items abroad!"
 	done
 
 SECTION "AdventurerMartComeAgainText", ROMX
 AdventurerMartComeAgainText::
-	text "Come by again!"
+	ctxt "Come by again!"
 	done
 
 SECTION "InformalMartIntroText", ROMX
 InformalMartIntroText::
-	text "What's up? Need"
+	ctxt "What's up? Need"
 	line "some supplies?"
 	done
 
 SECTION "BazaarMartIntroText", ROMX
 BazaarMartIntroText::
-	text "Come take a look"
+	ctxt "Come take a look"
 	line "at my wares!"
 	done
 
 SECTION "AlreadyHaveTMText", ROMX
 AlreadyHaveTMText::
-	text "You already have"
+	ctxt "You already have"
 	line "that TM."
 	done
 
 SECTION "MartPremierBallText", ROMX
 MartPremierBallText::
-	text "You also get a"
+	ctxt "You also get a"
 	line "Premier Ball as"
 	cont "an added bonus."
 	done
 
 SECTION "ItemCantBeSelectedText", ROMX
 ItemCantBeSelectedText::
-	text "That item can't be"
+	ctxt "That item can't be"
 	line "selected."
 	prompt
 
 SECTION "AlreadyInThatBallTextData", ROMX
 AlreadyInThatBallTextData::
-	text "Your #mon is in"
+	ctxt "Your #mon is in"
 	line "that Ball already."
 	prompt

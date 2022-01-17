@@ -1,23 +1,23 @@
 NurseMornText:
-	text "Good morning!"
+	ctxt "Good morning!"
 	line "Welcome to our"
 	cont "#mon Center."
 	done
 
 NurseDayText:
-	text "Hello!"
+	ctxt "Hello!"
 	line "Welcome to our"
 	cont "#mon Center."
 	done
 
 NurseEveText:
-	text "Good evening!"
+	ctxt "Good evening!"
 	line "Welcome to our"
 	cont "#mon Center."
 	done
 
 NurseNiteText:
-	text "Good evening!"
+	ctxt "Good evening!"
 	line "You're out late."
 
 	para "Welcome to our"
@@ -25,7 +25,7 @@ NurseNiteText:
 	done
 
 PokeComNurseMornText:
-	text "Good morning!"
+	ctxt "Good morning!"
 
 	para "This is the #-"
 	line "mon Communication"
@@ -35,7 +35,7 @@ PokeComNurseMornText:
 	done
 
 PokeComNurseDayText:
-	text "Hello!"
+	ctxt "Hello!"
 
 	para "This is the #-"
 	line "mon Communication"
@@ -45,7 +45,7 @@ PokeComNurseDayText:
 	done
 
 PokeComNurseEveText:
-	text "Good evening!"
+	ctxt "Good evening!"
 
 	para "This is the #-"
 	line "mon Communication"
@@ -55,7 +55,7 @@ PokeComNurseEveText:
 	done
 
 PokeComNurseNiteText:
-	text "Good to see you"
+	ctxt "Good to see you"
 	line "working so late."
 
 	para "This is the #-"
@@ -66,7 +66,7 @@ PokeComNurseNiteText:
 	done
 
 NurseAskHealText:
-	text "We can heal your"
+	ctxt "We can heal your"
 	line "#mon to perfect"
 	cont "health."
 
@@ -75,7 +75,7 @@ NurseAskHealText:
 	done
 
 NurseTrainerStarText:
-	text "We can heal your"
+	ctxt "We can heal your"
 	line "#mon to perfect"
 	cont "health."
 
@@ -97,7 +97,7 @@ NurseTrainerStarText:
 	done
 
 NurseTheUsualText:
-	text "Great to see you"
+	ctxt "Great to see you"
 	line "again, <PLAYER>!"
 
 	para "You want the"
@@ -105,12 +105,12 @@ NurseTheUsualText:
 	done
 
 NurseTakePokemonText:
-	text "OK, may I see your"
+	ctxt "OK, may I see your"
 	line "#mon?"
 	done
 
 NurseReturnPokemonText:
-	text "Thank you for"
+	ctxt "Thank you for"
 	line "waiting."
 
 	para "Your #mon are"
@@ -118,12 +118,12 @@ NurseReturnPokemonText:
 	done
 
 NurseGoodbyeText:
-	text "We hope to see you"
+	ctxt "We hope to see you"
 	line "again."
 	done
 
 NursePokerusText:
-	text "Your #mon"
+	ctxt "Your #mon"
 	line "appear to be"
 
 	para "infected by tiny"
@@ -141,7 +141,7 @@ NursePokerusText:
 	done
 
 PokeComNursePokerusText:
-	text "Your #mon"
+	ctxt "Your #mon"
 	line "appear to be"
 
 	para "infected by tiny"
@@ -156,18 +156,18 @@ PokeComNursePokerusText:
 	done
 
 DifficultBookshelfText:
-	text "It's full of"
+	ctxt "It's full of"
 	line "difficult books."
 	done
 
 PictureBookshelfText:
-	text "A whole collection"
+	ctxt "A whole collection"
 	line "of #mon picture"
 	cont "books!"
 	done
 
 MagazineBookshelfText:
-	text "#mon magazines…"
+	ctxt "#mon magazines…"
 	line "#mon Pal,"
 
 	para "#mon Handbook,"
@@ -175,7 +175,7 @@ MagazineBookshelfText:
 	done
 
 TeamRocketOathText:
-	text "Team Rocket Oath"
+	ctxt "Team Rocket Oath"
 
 	para "Steal #mon for"
 	line "profit!"
@@ -189,72 +189,72 @@ TeamRocketOathText:
 	done
 
 IncenseBurnerText:
-	text "It's an incense"
+	ctxt "It's an incense"
 	line "burner!"
 	done
 
 MerchandiseShelfText:
-	text "Lots of #mon"
+	ctxt "Lots of #mon"
 	line "merchandise!"
 	done
 
 TownMapText:
-	text "It's the Town Map."
+	ctxt "It's the Town Map."
 	done
 
 DiplomaText:
-	text "It's the Diploma."
+	ctxt "It's the Diploma."
 	done
 
 WindowText:
-	text "My reflection!"
+	ctxt "My reflection!"
 	line "Lookin' good!"
 	done
 
 TVText:
-	text "It's a TV."
+	ctxt "It's a TV."
 	done
 
 WrongSideText:
-	text "Oops, wrong side."
+	ctxt "Oops, wrong side."
 	done
 
 RadioOffAirText:
-	text "The radio is just"
+	ctxt "The radio is just"
 	line "playing static…"
 	done
 
 RefrigeratorText:
-	text "It's a fridge."
+	ctxt "It's a fridge."
 	done
 
 SinkText:
-	text "It's a sink."
+	ctxt "It's a sink."
 	done
 
 StoveText:
-	text "It's a stove."
+	ctxt "It's a stove."
 	done
 
 TrashCanText:
-	text "There's nothing in"
+	ctxt "There's nothing in"
 	line "here…"
 	done
 
 PokeCenterSignText:
-	text "Heal Your #mon!"
+	ctxt "Heal Your #mon!"
 	line "#mon Center"
 	done
 
 MartSignText:
-	text "For All Your"
+	ctxt "For All Your"
 	line "#mon Needs"
 
 	para "#mon Mart"
 	done
 
 ContestResults_ReadyToJudgeText:
-	text "We will now judge"
+	ctxt "We will now judge"
 	line "the #mon you've"
 	cont "caught."
 
@@ -269,7 +269,7 @@ ContestResults_ReadyToJudgeText:
 	done
 
 ContestResults_PlayerWonAPrizeText:
-	text "<PLAYER>, the No."
+	ctxt "<PLAYER>, the No."
 	text_ram wStringBuffer3
 	line "finisher, wins"
 	cont ""
@@ -278,32 +278,32 @@ ContestResults_PlayerWonAPrizeText:
 	done
 
 ReceivedItemText:
-	text "<PLAYER> received"
+	ctxt "<PLAYER> received"
 	line ""
 	text_ram wStringBuffer4
 	text "."
 	done
 
 ContestResults_JoinUsNextTimeText:
-	text "Please join us for"
+	ctxt "Please join us for"
 	line "the next Contest!"
 	done
 
 ContestResults_ConsolationPrizeText:
-	text "Everyone else gets"
+	ctxt "Everyone else gets"
 	line "a "
 	text_ram wStringBuffer4
-	text " as a"
+	ctxt " as a"
 	cont "consolation prize!"
 	done
 
 ContestResults_DidNotWinText:
-	text "We hope you do"
+	ctxt "We hope you do"
 	line "better next time."
 	done
 
 ContestResults_ReturnPartyText:
-	text "We'll return the"
+	ctxt "We'll return the"
 	line "#mon we kept"
 
 	para "for you."
@@ -311,7 +311,7 @@ ContestResults_ReturnPartyText:
 	done
 
 ContestResults_PartyFullText:
-	text "Your party's full,"
+	ctxt "Your party's full,"
 	line "so the #mon was"
 
 	para "sent to your BOX"
@@ -327,30 +327,30 @@ GymStatue_CityGymText:
 	done
 
 GymStatue_WinningTrainersText:
-	text "Winning Trainers:"
+	ctxt "Winning Trainers:"
 	line "<RIVAL>"
 	done
 
 GymStatue_TwoWinningTrainersText:
-	text "Winning Trainers:"
+	ctxt "Winning Trainers:"
 	line "<RIVAL>"
 	cont "<PLAYER>"
 	done
 
 GymStatue_ThreeWinningTrainersText:
-	text "Winning Trainers:"
+	ctxt "Winning Trainers:"
 	line "<RIVAL>"
 	cont "<PLAYER>"
 	cont "Lyra"
 	done
 
 CoinVendor_WelcomeText:
-	text "Welcome to the"
+	ctxt "Welcome to the"
 	line "Game Corner."
 	done
 
 CoinVendor_NoCoinCaseText:
-	text "Do you need game"
+	ctxt "Do you need game"
 	line "coins?"
 
 	para "Oh, you don't have"
@@ -359,7 +359,7 @@ CoinVendor_NoCoinCaseText:
 	done
 
 CoinVendor_IntroText:
-	text "Do you need some"
+	ctxt "Do you need some"
 	line "game coins?"
 
 	para "It costs ¥1000 for"
@@ -368,32 +368,32 @@ CoinVendor_IntroText:
 	done
 
 CoinVendor_Buy50CoinsText:
-	text "Thank you!"
+	ctxt "Thank you!"
 	line "Here are 50 coins."
 	done
 
 CoinVendor_Buy500CoinsText:
-	text "Thank you! Here"
+	ctxt "Thank you! Here"
 	line "are 500 coins."
 	done
 
 CoinVendor_NotEnoughMoneyText:
-	text "You don't have"
+	ctxt "You don't have"
 	line "enough money."
 	done
 
 CoinVendor_CoinCaseFullText:
-	text "Whoops! Your Coin"
+	ctxt "Whoops! Your Coin"
 	line "Case is full."
 	done
 
 CoinVendor_CancelText:
-	text "No coins for you?"
+	ctxt "No coins for you?"
 	line "Come again!"
 	done
 
 BugContestPrizeNoRoomText:
-	text "Oh? Your Bag is"
+	ctxt "Oh? Your Bag is"
 	line "full."
 
 	para "We'll keep this"
@@ -404,13 +404,13 @@ BugContestPrizeNoRoomText:
 	done
 
 HappinessText3:
-	text "Wow! You and your"
+	ctxt "Wow! You and your"
 	line "#mon are really"
 	cont "close!"
 	done
 
 HappinessText2:
-	text "#mon get more"
+	ctxt "#mon get more"
 	line "friendly if you"
 
 	para "spend time with"
@@ -418,7 +418,7 @@ HappinessText2:
 	done
 
 HappinessText1:
-	text "You haven't tamed"
+	ctxt "You haven't tamed"
 	line "your #mon."
 
 	para "If you aren't"
@@ -426,21 +426,21 @@ HappinessText1:
 	done
 
 RegisteredNumber1Text:
-	text "<PLAYER> registered"
+	ctxt "<PLAYER> registered"
 	line ""
 	text_ram wStringBuffer3
-	text "'s number."
+	ctxt "'s number."
 	done
 
 RegisteredNumber2Text:
-	text "<PLAYER> registered"
+	ctxt "<PLAYER> registered"
 	line ""
 	text_ram wStringBuffer3
-	text "'s number."
+	ctxt "'s number."
 	done
 
 VendingMachineText:
-	text "A vending machine!"
+	ctxt "A vending machine!"
 	line "Here's the menu."
 	done
 
@@ -453,24 +453,24 @@ VendingMachineClangText:
 	done
 
 VendingMachineScoreText:
-	text "Score! An extra"
+	ctxt "Score! An extra"
 	line ""
 	text_ram wStringBuffer3
 	cont "popped out."
 	done
 
 VendingMachineNoMoneyText:
-	text "Oops, not enough"
+	ctxt "Oops, not enough"
 	line "money…"
 	done
 
 VendingMachineNoSpaceText:
-	text "There's no more"
+	ctxt "There's no more"
 	line "room for stuff…"
 	done
 
 HiddenGrottoText:
-	text "Look! You've found"
+	ctxt "Look! You've found"
 	line "a narrow path!"
 
 	para "Will you follow"
