@@ -461,19 +461,19 @@ _ForYourMonWillTradeText::
 
 SECTION "_OPT_IntroText1", ROMX
 _OPT_IntroText1::
-	text_start
+	ctxt ""
 	line "Mary: Prof.Oak's"
 	done
 
 SECTION "_OPT_IntroText2", ROMX
 _OPT_IntroText2::
-	text_start
+	ctxt ""
 	line "#mon Talk!"
 	done
 
 SECTION "_OPT_IntroText3", ROMX
 _OPT_IntroText3::
-	text_start
+	ctxt ""
 	line "With me, Mary!"
 	done
 
@@ -486,7 +486,7 @@ _OPT_OakText1::
 
 SECTION "_OPT_OakText2", ROMX
 _OPT_OakText2::
-	text_start
+	ctxt ""
 	line "may be seen around"
 	done
 
@@ -508,193 +508,193 @@ _OPT_MaryText1::
 
 SECTION "OPT_SweetAdorably", ROMX
 OPT_SweetAdorably::
-	text_start
+	ctxt ""
 	line "sweet and adorably"
 	done
 
 SECTION "OPT_WigglySlickly", ROMX
 OPT_WigglySlickly::
-	text_start
+	ctxt ""
 	line "wiggly and slickly"
 	done
 
 SECTION "OPT_AptlyNamed", ROMX
 OPT_AptlyNamed::
-	text_start
+	ctxt ""
 	line "aptly named and"
 	done
 
 SECTION "OPT_UndeniablyKindOf", ROMX
 OPT_UndeniablyKindOf::
-	text_start
+	ctxt ""
 	line "undeniably kind of"
 	done
 
 SECTION "OPT_Unbearably", ROMX
 OPT_Unbearably::
-	text_start
+	ctxt ""
 	line "so, so unbearably"
 	done
 
 SECTION "OPT_WowImpressively", ROMX
 OPT_WowImpressively::
-	text_start
+	ctxt ""
 	line "wow, impressively"
 	done
 
 SECTION "OPT_AlmostPoisonously", ROMX
 OPT_AlmostPoisonously::
-	text_start
+	ctxt ""
 	line "almost poisonously"
 	done
 
 SECTION "OPT_Sensually", ROMX
 OPT_Sensually::
-	text_start
+	ctxt ""
 	line "ooh, so sensually"
 	done
 
 SECTION "OPT_Mischievously", ROMX
 OPT_Mischievously::
-	text_start
+	ctxt ""
 	line "so mischievously"
 	done
 
 SECTION "OPT_Topically", ROMX
 OPT_Topically::
-	text_start
+	ctxt ""
 	line "so very topically"
 	done
 
 SECTION "OPT_Addictively", ROMX
 OPT_Addictively::
-	text_start
+	ctxt ""
 	line "sure addictively"
 	done
 
 SECTION "OPT_LooksInWater", ROMX
 OPT_LooksInWater::
-	text_start
+	ctxt ""
 	line "looks in water is"
 	done
 
 SECTION "OPT_EvolutionMustBe", ROMX
 OPT_EvolutionMustBe::
-	text_start
+	ctxt ""
 	line "evolution must be"
 	done
 
 SECTION "OPT_Provocatively", ROMX
 OPT_Provocatively::
-	text_start
+	ctxt ""
 	line "provocatively"
 	done
 
 SECTION "OPT_FlippedOut", ROMX
 OPT_FlippedOut::
-	text_start
+	ctxt ""
 	line "so flipped out and"
 	done
 
 SECTION "OPT_HeartMeltingly", ROMX
 OPT_HeartMeltingly::
-	text_start
+	ctxt ""
 	line "heart-meltingly"
 	done
 
 SECTION "OPT_Cute", ROMX
 OPT_Cute::
-	text_start
+	ctxt ""
 	line "cute."
 	done
 
 SECTION "OPT_Weird", ROMX
 OPT_Weird::
-	text_start
+	ctxt ""
 	line "weird."
 	done
 
 SECTION "OPT_Pleasant", ROMX
 OPT_Pleasant::
-	text_start
+	ctxt ""
 	line "pleasant."
 	done
 
 SECTION "OPT_BoldSortOf", ROMX
 OPT_BoldSortOf::
-	text_start
+	ctxt ""
 	line "bold, sort of."
 	done
 
 SECTION "OPT_Frightening", ROMX
 OPT_Frightening::
-	text_start
+	ctxt ""
 	line "frightening."
 	done
 
 SECTION "OPT_SuaveDebonair", ROMX
 OPT_SuaveDebonair::
-	text_start
+	ctxt ""
 	line "suave & debonair!"
 	done
 
 SECTION "OPT_Powerful", ROMX
 OPT_Powerful::
-	text_start
+	ctxt ""
 	line "powerful."
 	done
 
 SECTION "OPT_Exciting", ROMX
 OPT_Exciting::
-	text_start
+	ctxt ""
 	line "exciting."
 	done
 
 SECTION "OPT_Groovy", ROMX
 OPT_Groovy::
-	text_start
+	ctxt ""
 	line "groovy!"
 	done
 
 SECTION "OPT_Inspiring", ROMX
 OPT_Inspiring::
-	text_start
+	ctxt ""
 	line "inspiring."
 	done
 
 SECTION "OPT_Friendly", ROMX
 OPT_Friendly::
-	text_start
+	ctxt ""
 	line "friendly."
 	done
 
 SECTION "OPT_HotHotHot", ROMX
 OPT_HotHotHot::
-	text_start
+	ctxt ""
 	line "hot, hot, hot!"
 	done
 
 SECTION "OPT_Stimulating", ROMX
 OPT_Stimulating::
-	text_start
+	ctxt ""
 	line "stimulating."
 	done
 
 SECTION "OPT_Guarded", ROMX
 OPT_Guarded::
-	text_start
+	ctxt ""
 	line "guarded."
 	done
 
 SECTION "OPT_Lovely", ROMX
 OPT_Lovely::
-	text_start
+	ctxt ""
 	line "lovely."
 	done
 
 SECTION "OPT_Speedy", ROMX
 OPT_Speedy::
-	text_start
+	ctxt ""
 	line "speedy."
 	done
 
@@ -714,37 +714,37 @@ _PokedexShowText::
 
 SECTION "_BenIntroText1", ROMX
 _BenIntroText1::
-	text_start
+	ctxt ""
 	line "Ben: #mon Music"
 	done
 
 SECTION "_BenIntroText2", ROMX
 _BenIntroText2::
-	text_start
+	ctxt ""
 	line "Channel! ♪"
 	done
 
 SECTION "_BenIntroText3", ROMX
 _BenIntroText3::
-	text_start
+	ctxt ""
 	line "It's me, DJ Ben! ♪"
 	done
 
 SECTION "_FernIntroText1", ROMX
 _FernIntroText1::
-	text_start
+	ctxt ""
 	line "Fern: #music! ♪"
 	done
 
 SECTION "_FernIntroText2", ROMX
 _FernIntroText2::
-	text_start
+	ctxt ""
 	line "With DJ Fern! ♪"
 	done
 
 SECTION "_BenFernText1", ROMX
 _BenFernText1::
-	text_start
+	ctxt ""
 	line "Today's "
 	text_today
 	text ","
@@ -752,25 +752,25 @@ _BenFernText1::
 
 SECTION "_BenFernText2A", ROMX
 _BenFernText2A::
-	text_start
+	ctxt ""
 	line "so let's jam to"
 	done
 
 SECTION "_BenFernText2B", ROMX
 _BenFernText2B::
-	text_start
+	ctxt ""
 	line "so chill out to"
 	done
 
 SECTION "_BenFernText3A", ROMX
 _BenFernText3A::
-	text_start
+	ctxt ""
 	line "#mon March!"
 	done
 
 SECTION "_BenFernText3B", ROMX
 _BenFernText3B::
-	text_start
+	ctxt ""
 	line "#mon Lullaby!"
 	done
 
@@ -778,49 +778,49 @@ _BenFernText3B::
 
 SECTION "_LC_Text1", ROMX
 _LC_Text1::
-	text_start
+	ctxt ""
 	line "Reed: Yeehaw! How"
 	done
 
 SECTION "_LC_Text2", ROMX
 _LC_Text2::
-	text_start
+	ctxt ""
 	line "y'all doin' now?"
 	done
 
 SECTION "_LC_Text3", ROMX
 _LC_Text3::
-	text_start
+	ctxt ""
 	line "Whether you're up"
 	done
 
 SECTION "_LC_Text4", ROMX
 _LC_Text4::
-	text_start
+	ctxt ""
 	line "or way down low,"
 	done
 
 SECTION "_LC_Text5", ROMX
 _LC_Text5::
-	text_start
+	ctxt ""
 	line "don't you miss the"
 	done
 
 SECTION "_LC_Text6", ROMX
 _LC_Text6::
-	text_start
+	ctxt ""
 	line "Lucky Number Show!"
 	done
 
 SECTION "_LC_Text7", ROMX
 _LC_Text7::
-	text_start
+	ctxt ""
 	line "This week's Lucky"
 	done
 
 SECTION "_LC_Text8", ROMX
 _LC_Text8::
-	text_start
+	ctxt ""
 	line "Number is "
 	text_pause
 	text_ram wStringBuffer1
@@ -829,31 +829,31 @@ _LC_Text8::
 
 SECTION "_LC_Text9", ROMX
 _LC_Text9::
-	text_start
+	ctxt ""
 	line "I'll repeat that!"
 	done
 
 SECTION "_LC_Text10", ROMX
 _LC_Text10::
-	text_start
+	ctxt ""
 	line "Match it and go to"
 	done
 
 SECTION "_LC_Text11", ROMX
 _LC_Text11::
-	text_start
+	ctxt ""
 	line "the Radio Tower!"
 	done
 
 SECTION "_LC_DragText1", ROMX
 _LC_DragText1::
-	text_start
+	ctxt ""
 	line "…Repeating myself"
 	done
 
 SECTION "_LC_DragText2", ROMX
 _LC_DragText2::
-	text_start
+	ctxt ""
 	line "gets to be a drag…"
 	done
 
@@ -861,19 +861,19 @@ _LC_DragText2::
 
 SECTION "_PnP_Text1", ROMX
 _PnP_Text1::
-	text_start
+	ctxt ""
 	line "Places and People!"
 	done
 
 SECTION "_PnP_Text2", ROMX
 _PnP_Text2::
-	text_start
+	ctxt ""
 	line "Brought to you by"
 	done
 
 SECTION "_PnP_Text3", ROMX
 _PnP_Text3::
-	text_start
+	ctxt ""
 	line "me, DJ Lily!"
 	done
 
@@ -882,104 +882,103 @@ _PnP_Text4::
 	text_start
 	line "@"
 	text_ram wStringBuffer2
-	text_start
 	text " @"
 	text_ram wStringBuffer1
 	text_end
 
 SECTION "_PnP_cute", ROMX
 _PnP_cute::
-	text_start
+	ctxt ""
 	line "is cute."
 	done
 
 SECTION "_PnP_lazy", ROMX
 _PnP_lazy::
-	text_start
+	ctxt ""
 	line "is sort of lazy."
 	done
 
 SECTION "_PnP_happy", ROMX
 _PnP_happy::
-	text_start
+	ctxt ""
 	line "is always happy."
 	done
 
 SECTION "_PnP_noisy", ROMX
 _PnP_noisy::
-	text_start
+	ctxt ""
 	line "is quite noisy."
 	done
 
 SECTION "_PnP_precocious", ROMX
 _PnP_precocious::
-	text_start
+	ctxt ""
 	line "is precocious."
 	done
 
 SECTION "_PnP_bold", ROMX
 _PnP_bold::
-	text_start
+	ctxt ""
 	line "is somewhat bold."
 	done
 
 SECTION "_PnP_picky", ROMX
 _PnP_picky::
-	text_start
+	ctxt ""
 	line "is too picky!"
 	done
 
 SECTION "_PnP_sortofok", ROMX
 _PnP_sortofok::
-	text_start
+	ctxt ""
 	line "is sort of OK."
 	done
 
 SECTION "_PnP_soso", ROMX
 _PnP_soso::
-	text_start
+	ctxt ""
 	line "is just so-so."
 	done
 
 SECTION "_PnP_great", ROMX
 _PnP_great::
-	text_start
+	ctxt ""
 	line "is actually great."
 	done
 
 SECTION "_PnP_mytype", ROMX
 _PnP_mytype::
-	text_start
+	ctxt ""
 	line "is just my type."
 	done
 
 SECTION "_PnP_cool", ROMX
 _PnP_cool::
-	text_start
+	ctxt ""
 	line "is so cool, no?"
 	done
 
 SECTION "_PnP_inspiring", ROMX
 _PnP_inspiring::
-	text_start
+	ctxt ""
 	line "is inspiring!"
 	done
 
 SECTION "_PnP_weird", ROMX
 _PnP_weird::
-	text_start
+	ctxt ""
 	line "is kind of weird."
 	done
 
 SECTION "_PnP_rightforme", ROMX
 _PnP_rightforme::
-	text_start
+	ctxt ""
 	line "is right for me?"
 	done
 
 SECTION "_PnP_odd", ROMX
 _PnP_odd::
-	text_start
+	ctxt ""
 	line "is definitely odd!"
 	done
 
@@ -992,43 +991,43 @@ _PnP_Text5::
 
 SECTION "_RocketRadioText1", ROMX
 _RocketRadioText1::
-	text_start
+	ctxt ""
 	line "… …Ahem, we are"
 	done
 
 SECTION "_RocketRadioText2", ROMX
 _RocketRadioText2::
-	text_start
+	ctxt ""
 	line "Team Rocket!"
 	done
 
 SECTION "_RocketRadioText3", ROMX
 _RocketRadioText3::
-	text_start
+	ctxt ""
 	line "After three years"
 	done
 
 SECTION "_RocketRadioText4", ROMX
 _RocketRadioText4::
-	text_start
+	ctxt ""
 	line "of preparation, we"
 	done
 
 SECTION "_RocketRadioText5", ROMX
 _RocketRadioText5::
-	text_start
+	ctxt ""
 	line "have risen again"
 	done
 
 SECTION "_RocketRadioText6", ROMX
 _RocketRadioText6::
-	text_start
+	ctxt ""
 	line "from the ashes!"
 	done
 
 SECTION "_RocketRadioText7", ROMX
 _RocketRadioText7::
-	text_start
+	ctxt ""
 	line "Giovanni! "
 	text_pause
 	ctxt "Can you"
@@ -1036,7 +1035,7 @@ _RocketRadioText7::
 
 SECTION "_RocketRadioText8", ROMX
 _RocketRadioText8::
-	text_start
+	ctxt ""
 	line "hear?"
 	text_pause
 	ctxt " We did it!"
@@ -1060,19 +1059,19 @@ _RocketRadioText10::
 
 SECTION "_BuenaRadioText1", ROMX
 _BuenaRadioText1::
-	text_start
+	ctxt ""
 	line "Buena: Buena here!"
 	done
 
 SECTION "_BuenaRadioText2", ROMX
 _BuenaRadioText2::
-	text_start
+	ctxt ""
 	line "Today's password!"
 	done
 
 SECTION "_BuenaRadioText3", ROMX
 _BuenaRadioText3::
-	text_start
+	ctxt ""
 	line "Let me think… It's"
 	done
 
@@ -1086,67 +1085,67 @@ _BuenaRadioText4::
 
 SECTION "_BuenaRadioText5", ROMX
 _BuenaRadioText5::
-	text_start
+	ctxt ""
 	line "Don't forget it!"
 	done
 
 SECTION "_BuenaRadioText6", ROMX
 _BuenaRadioText6::
-	text_start
+	ctxt ""
 	line "I'm in Goldenrod's"
 	done
 
 SECTION "_BuenaRadioText7", ROMX
 _BuenaRadioText7::
-	text_start
+	ctxt ""
 	line "Radio Tower!"
 	done
 
 SECTION "_BuenaRadioMidnightText1", ROMX
 _BuenaRadioMidnightText1::
-	text_start
+	ctxt ""
 	line "Buena: Oh my…"
 	done
 
 SECTION "_BuenaRadioMidnightText2", ROMX
 _BuenaRadioMidnightText2::
-	text_start
+	ctxt ""
 	line "It's midnight! I"
 	done
 
 SECTION "_BuenaRadioMidnightText3", ROMX
 _BuenaRadioMidnightText3::
-	text_start
+	ctxt ""
 	line "have to shut down!"
 	done
 
 SECTION "_BuenaRadioMidnightText4", ROMX
 _BuenaRadioMidnightText4::
-	text_start
+	ctxt ""
 	line "Thanks for tuning"
 	done
 
 SECTION "_BuenaRadioMidnightText5", ROMX
 _BuenaRadioMidnightText5::
-	text_start
+	ctxt ""
 	line "in to the end! But"
 	done
 
 SECTION "_BuenaRadioMidnightText6", ROMX
 _BuenaRadioMidnightText6::
-	text_start
+	ctxt ""
 	line "don't stay up too"
 	done
 
 SECTION "_BuenaRadioMidnightText7", ROMX
 _BuenaRadioMidnightText7::
-	text_start
+	ctxt ""
 	line "late! Presented to"
 	done
 
 SECTION "_BuenaRadioMidnightText8", ROMX
 _BuenaRadioMidnightText8::
-	text_start
+	ctxt ""
 	line "you by DJ Buena!"
 	done
 
