@@ -1,11 +1,15 @@
 NAME := polishedcrystal
+MODIFIERS :=
 VERSION := 3.0.0-beta
+
+ROM_NAME = $(NAME)$(MODIFIERS)-$(VERSION)
+EXTENSION := gbc
 
 TITLE := PKPCRYSTAL
 MCODE := PKPC
 ROMVERSION := 0x30
 
-FILLER = 0xff
+FILLER := 0xff
 
 ifneq ($(wildcard rgbds/.*),)
 RGBDS_DIR = rgbds/
@@ -13,31 +17,42 @@ else
 RGBDS_DIR =
 endif
 
+.SECONDEXPANSION:
+
 RGBASM_FLAGS = -E -Weverything -Wnumeric-string=2 -Wtruncation=1
 RGBLINK_FLAGS = -n $(ROM_NAME).sym -m $(ROM_NAME).map -l layout.link -p $(FILLER)
 RGBFIX_FLAGS = -csjv -t $(TITLE) -i $(MCODE) -n $(ROMVERSION) -p $(FILLER) -k 01 -l 0x33 -m 0x10 -r 3
 
 ifeq ($(filter faithful,$(MAKECMDGOALS)),faithful)
+MODIFIERS := $(MODIFIERS)-faithful
 RGBASM_FLAGS += -DFAITHFUL
 endif
 ifeq ($(filter nortc,$(MAKECMDGOALS)),nortc)
+MODIFIERS := $(MODIFIERS)-nortc
 RGBASM_FLAGS += -DNO_RTC
 endif
-ifeq ($(filter pocket,$(MAKECMDGOALS)),pocket)
-RGBASM_FLAGS += -DANALOGUE_POCKET -DNO_RTC
-RGBFIX_FLAGS = -csj -f hg -t $(TITLE) -i $(MCODE) -n $(ROMVERSION) -p $(FILLER) -k 01 -l 0x33 -m 0x1b -r 3
-endif
 ifeq ($(filter monochrome,$(MAKECMDGOALS)),monochrome)
+MODIFIERS := $(MODIFIERS)-monochrome
 RGBASM_FLAGS += -DMONOCHROME
 endif
 ifeq ($(filter noir,$(MAKECMDGOALS)),noir)
+MODIFIERS := $(MODIFIERS)-noir
 RGBASM_FLAGS += -DNOIR
 endif
 ifeq ($(filter hgss,$(MAKECMDGOALS)),hgss)
+MODIFIERS := $(MODIFIERS)-hgss
 RGBASM_FLAGS += -DHGSS
 endif
 ifeq ($(filter debug,$(MAKECMDGOALS)),debug)
+MODIFIERS := $(MODIFIERS)-debug
 RGBASM_FLAGS += -DDEBUG
+endif
+ifeq ($(filter pocket,$(MAKECMDGOALS)),pocket)
+MODIFIERS :=
+NAME := pkpc
+EXTENSION := pocket
+RGBASM_FLAGS += -DANALOGUE_POCKET -DNO_RTC
+RGBFIX_FLAGS = -csj -f hg -t $(TITLE) -i $(MCODE) -n $(ROMVERSION) -p $(FILLER) -k 01 -l 0x33 -m 0x10 -r 3
 endif
 
 crystal_obj := \
@@ -63,21 +78,18 @@ gfx/misc.o
 
 .SUFFIXES:
 .PHONY: clean tidy crystal faithful nortc pocket debug monochrome freespace tools bsp
-.SECONDEXPANSION:
 .PRECIOUS: %.2bpp %.1bpp
 .SECONDARY:
 .DEFAULT_GOAL: crystal
 
-crystal: ROM_NAME = $(NAME)-$(VERSION)
-crystal: $(NAME)-$(VERSION).gbc
-
+crystal:    $$(ROM_NAME).$$(EXTENSION)
 faithful: crystal
 nortc: crystal
-pocket: crystal
 monochrome: crystal
 noir: crystal
 hgss: crystal
 debug: crystal
+pocket: crystal
 
 tools:
 	$(MAKE) -C tools/
@@ -85,18 +97,19 @@ tools:
 clean: tidy
 	find gfx maps data/tilesets -name '*.lz' -delete
 	find gfx \( -name '*.[12]bpp' -o -name '*.2bpp.vram[012]' -o -name '*.2bpp.vram[012]p' \) -delete
-	find gfx/pokemon -mindepth 1 \( -name 'bitmask.asm' -o -name 'frames.asm' -o -name 'front.animated.tilemap' -o -name 'front.dimensions' \) -delete
+	find gfx/pokemon -mindepth 1 \( -name 'bitmask.asm' -o -name 'frames.asm' \
+		-o -name 'front.animated.tilemap' -o -name 'front.dimensions' \) -delete
 	find data/tilesets -name '*_collision.bin' -delete
 	$(MAKE) clean -C tools/
 
 tidy:
-	rm -f $(crystal_obj) $(wildcard $(NAME)-*.gbc) $(wildcard $(NAME)-*.map) $(wildcard $(NAME)-*.sym) $(wildcard $(NAME)-*.bsp) rgbdscheck.o
+	rm -f $(crystal_obj) $(wildcard $(NAME)-*.gbc) $(wildcard $(NAME)-*.pocket) $(wildcard $(NAME)-*.bsp) \
+		$(wildcard $(NAME)-*.map) $(wildcard $(NAME)-*.sym) rgbdscheck.o
 
-freespace: ROM_NAME = $(NAME)-$(VERSION)
 freespace: crystal tools/bankends
 	tools/bankends $(ROM_NAME).map > bank_ends.txt
 
-bsp: $(NAME)-$(VERSION).bsp
+bsp: $(ROM_NAME).bsp
 
 
 rgbdscheck.o: rgbdscheck.asm
@@ -113,8 +126,8 @@ $(foreach obj, $(crystal_obj), $(eval $(call DEP,$(obj),$(obj:.o=.asm))))
 endif
 
 
-.gbc: tools/bankends
-%.gbc: $(crystal_obj)
+.$(EXTENSION): tools/bankends
+%.$(EXTENSION): $(crystal_obj)
 	$(RGBDS_DIR)rgblink $(RGBLINK_FLAGS) -o $@ $^
 	$(RGBDS_DIR)rgbfix $(RGBFIX_FLAGS) $@
 	tools/bankends -q $(ROM_NAME).map
