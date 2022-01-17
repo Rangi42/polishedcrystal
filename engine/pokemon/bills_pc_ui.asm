@@ -521,7 +521,8 @@ BillsPC_PrintBoxName:
 	ld b, 0
 	hlcoord 9, 5
 	add hl, bc
-	jmp _PlaceString
+	rst PlaceString
+	ret
 
 SetPartyIcons:
 ; Writes party list

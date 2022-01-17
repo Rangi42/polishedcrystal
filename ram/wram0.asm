@@ -186,7 +186,9 @@ wTilePermissions::
 ; bit 0: right
 	db
 
-	ds 13
+wCompressedTextBuffer:: ds 2 ; one character and "@"
+
+	ds 11
 
 
 SECTION "Sprite Animations", WRAM0

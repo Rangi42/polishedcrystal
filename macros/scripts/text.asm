@@ -1,6 +1,8 @@
 ___compressing_text = 0
 ___ct_bits = 0
 ___ct_length = 0
+___ct_in_bytes = 0
+___ct_out_bytes = 0
 
 text_start EQUS "\n___compressing_text = 0\n db \"<START>\"" ; Enter text writing mode.
 text   EQUS "\n___compressing_text = 0\n db " ; Start writing text.
@@ -41,11 +43,16 @@ ___dchr: MACRO
 			db ___ct_bits >> (___ct_length - 8)
 			DEF ___ct_length = ___ct_length - 8
 			DEF ___ct_bits = ___ct_bits & ((1 << ___ct_length) - 1)
+			DEF ___ct_out_bytes += 1
 		endc
 	endr
+	DEF ___ct_in_bytes += 1
 	if ___chr == "@" || ___chr == "<DONE>" || ___chr == "<PROMPT>"
 		DEF ___compressing_text = 0
 		setcharmap default
+		if DEF(DEBUG)
+			assert warn, ___ct_out_bytes < ___ct_in_bytes, "ctxt can be text"
+		endc
 	endc
 ENDM
 
@@ -92,6 +99,8 @@ ctxt: MACRO
 ___compressing_text = 1
 ___ct_bits = 0
 ___ct_length = 0
+___ct_in_bytes = 0
+___ct_out_bytes = 0
 	setcharmap compressing
 	dtxt \#
 ENDM
