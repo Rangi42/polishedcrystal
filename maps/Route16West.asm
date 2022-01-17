@@ -64,37 +64,11 @@ GenericTrainerLassAlice:
 	line "so cruel?"
 	done
 
-<<<<<<< HEAD
-GenericTrainerCooltrainerfSera:
-	generictrainer COOLTRAINERF, SERA, EVENT_BEAT_COOLTRAINERF_SERA, .SeenText, .BeatenText
-
-	text "I've gone out as a"
-	line "a Cooltrainer, but"
-=======
-GenericTrainerCosplayerKuroko:
-	generictrainer COSPLAYER, KUROKO, EVENT_BEAT_COSPLAYER_KUROKO, .SeenText, .BeatenText
-
-	ctxt "One time a trainer"
-	line "threw a # Ball"
-	cont "at me!"
-	done
-
-.SeenText:
-	ctxt "See how lifelike"
-	line "my cosplay is?"
-	done
-
-.BeatenText:
-	ctxt "You just don't"
-	line "appreciate art!"
-	done
-
 GenericTrainerCooltrainerfSera:
 	generictrainer COOLTRAINERF, SERA, EVENT_BEAT_COOLTRAINERF_SERA, .SeenText, .BeatenText
 
 	ctxt "I've gone out as a"
 	line "a Cosplayer, but"
->>>>>>> a0f2dd10f66795468601166436c9ccef9b074e9d
 
 	para "an Ace Trainer's"
 	line "outfit is more"
@@ -107,11 +81,7 @@ GenericTrainerCooltrainerfSera:
 	done
 
 .BeatenText:
-<<<<<<< HEAD
-	text "Congrats!"
-=======
-	ctxt "Congrats! ♥"
->>>>>>> a0f2dd10f66795468601166436c9ccef9b074e9d
+	ctxt "Congrats!"
 	done
 
 GenericTrainerBeautyNicole:

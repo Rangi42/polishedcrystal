@@ -141,29 +141,6 @@ GenericTrainerBird_keeperPowell:
 	line "#mon!"
 	done
 
-<<<<<<< HEAD
-=======
-GenericTrainerCosplayerChloe:
-	generictrainer COSPLAYER, CHLOE, EVENT_BEAT_COSPLAYER_CHLOE, .SeenText, .BeatenText
-
-	ctxt "When I'm dressed"
-	line "like this, people"
-	para "say I'm the cutest"
-	line "wherever I go."
-	done
-
-.SeenText:
-	ctxt "Like my costume?"
-	line "It's super effect-"
-	cont "ive!"
-	done
-
-.BeatenText:
-	ctxt "Well, that wasn't"
-	line "very effective…"
-	done
-
->>>>>>> a0f2dd10f66795468601166436c9ccef9b074e9d
 GenericTrainerFisherKiley:
 	generictrainer FISHER, KILEY, EVENT_BEAT_FISHER_KILEY, .SeenText, .BeatenText
 

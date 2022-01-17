@@ -204,23 +204,7 @@ DayCareLyraHelloText2:
 	done
 
 DayCareLyraProtestText1:
-<<<<<<< HEAD
-	text "You must be sure"
-=======
-	ctxt "Lyra: What?"
-	line "Grandma…!"
-
-	para "What are you"
-	line "talking about?"
-
-	para "He just lives"
-	line "nearby…"
-
-	para "Grandma: Hahaha."
-	line "I know, I know."
-
-	para "You must be sure"
->>>>>>> a0f2dd10f66795468601166436c9ccef9b074e9d
+	ctxt "You must be sure"
 	line "he's talented."
 
 	para "Right, <PLAYER>?"
@@ -229,23 +213,7 @@ DayCareLyraProtestText1:
 	done
 
 DayCareLyraProtestText2:
-<<<<<<< HEAD
-	text "You must be sure"
-=======
-	ctxt "Lyra: What?"
-	line "Grandma…!"
-
-	para "What are you"
-	line "talking about?"
-
-	para "She just lives"
-	line "nearby…"
-
-	para "Grandma: Hahaha."
-	line "I know, I know."
-
-	para "You must be sure"
->>>>>>> a0f2dd10f66795468601166436c9ccef9b074e9d
+	ctxt "You must be sure"
 	line "she's talented."
 
 	para "Right, <PLAYER>?"

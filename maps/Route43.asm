@@ -163,11 +163,7 @@ Route43SightseerfScript:
 	done
 
 .BeatenText:
-<<<<<<< HEAD
-	text "Awesome!"
-=======
-	ctxt "Awesome! ♥"
->>>>>>> a0f2dd10f66795468601166436c9ccef9b074e9d
+	ctxt "Awesome!"
 	done
 
 .AfterText1:
