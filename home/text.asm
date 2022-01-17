@@ -450,6 +450,7 @@ TextCommands::
 	dw TextCommand_SOUND         ; $06 <SOUND>
 	dw TextCommand_DAY           ; $07 <DAY>
 	dw TextCommand_FAR           ; $08 <FAR>
+	dw TextCommand_CTXT          ; $09 <CTXT>
 	assert_table_length NGRAMS_START
 
 _ImplicitlyStartedText:

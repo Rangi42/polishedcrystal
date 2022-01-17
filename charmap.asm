@@ -18,8 +18,9 @@ ENDM
 	charmap "<SOUND>",  $06
 	charmap "<DAY>",    $07
 	charmap "<FAR>",    $08
+	charmap "<CTXT>",   $09
 
-	; n-grams: $09 - $52 (defined below)
+	; n-grams: $0a - $52 (defined below)
 
 	ctxtmap "@",        $53, 111101000
 	ctxtmap "<LNBRK>",  $54, 01011011000
@@ -226,76 +227,75 @@ FIRST_REGULAR_TEXT_CHAR EQU $7f
 
 	newcharmap default, no_ngrams
 
-NGRAMS_START EQU $09
+NGRAMS_START EQU $0a
 
-	charmap "e ",       $09
-	charmap " t",       $0a
-	charmap "ou",       $0b
-	charmap "in",       $0c
-	charmap "th",       $0d
-	charmap "he",       $0e
-	charmap "t ",       $0f
-	charmap "er",       $10
-	charmap "on",       $11
-	charmap "re",       $12
-	charmap "s ",       $13
-	charmap "at",       $14
-	charmap "an",       $15
-	charmap "to",       $16
-	charmap "ha",       $17
-	charmap "ng",       $18
-	charmap "it",       $19
-	charmap "is",       $1a
-	charmap "ea",       $1b
-	charmap "ve",       $1c
-	charmap "ar",       $1d
-	charmap "st",       $1e
-	charmap "le",       $1f
-	charmap "or",       $20
-	charmap "te",       $21
-	charmap "as",       $22
-	charmap "yo",       $23
-	charmap "y ",       $24
-	charmap "r ",       $25
-	charmap " b",       $26
-	charmap "en",       $27
-	charmap "me",       $28
-	charmap "e t",      $29
-	charmap ", ",       $2a
-	charmap "es",       $2b
-	charmap "e you",    $2c
-	charmap "se",       $2d
-	charmap "ne",       $2e
-	charmap " h",       $2f
-	charmap "I ",       $30
-	charmap "our",      $31
-	charmap "You",      $32
-	charmap "nd",       $33
-	charmap "ow",       $34
-	charmap " c",       $35
-	charmap " wa",      $36
-	charmap "ome",      $37
-	charmap "are",      $38
-	charmap "The",      $39
-	charmap "t's",      $3a
-	charmap "ut",       $3b
-	charmap "nt",       $3c
-	charmap "the",      $3d
-	charmap "you",      $3e
-	charmap "ing",      $3f
-	charmap "hat",      $40
-	charmap "and",      $41
-	charmap "for",      $42
-	charmap "all",      $43
-	charmap "here",     $44
-	charmap "that",     $45
-	charmap "have",     $46
-	charmap "rain",     $47
-	charmap "this",     $48
-	charmap "ight",     $49
-	charmap "with",     $4a
-	charmap "ould",     $4b
-	charmap "thing",    $4c
+	charmap "e ",       $0a
+	charmap " t",       $0b
+	charmap "ou",       $0c
+	charmap "in",       $0d
+	charmap "th",       $0e
+	charmap "he",       $0f
+	charmap "t ",       $10
+	charmap "er",       $11
+	charmap "on",       $12
+	charmap "re",       $13
+	charmap "s ",       $14
+	charmap "at",       $15
+	charmap "an",       $16
+	charmap "to",       $17
+	charmap "ha",       $18
+	charmap "ng",       $19
+	charmap "it",       $1a
+	charmap "is",       $1b
+	charmap "ea",       $1c
+	charmap "ve",       $1d
+	charmap "ar",       $1e
+	charmap "st",       $1f
+	charmap "le",       $20
+	charmap "or",       $21
+	charmap "te",       $22
+	charmap "as",       $23
+	charmap "yo",       $24
+	charmap "y ",       $25
+	charmap "r ",       $26
+	charmap " b",       $27
+	charmap "en",       $28
+	charmap "me",       $29
+	charmap "e t",      $2a
+	charmap ", ",       $2b
+	charmap "es",       $2c
+	charmap "e you",    $2d
+	charmap "se",       $2e
+	charmap "ne",       $2f
+	charmap " h",       $30
+	charmap "I ",       $31
+	charmap "our",      $32
+	charmap "You",      $33
+	charmap "nd",       $34
+	charmap "ow",       $35
+	charmap " c",       $36
+	charmap " wa",      $37
+	charmap "ome",      $38
+	charmap "are",      $39
+	charmap "The",      $3a
+	charmap "t's",      $3b
+	charmap "ut",       $3c
+	charmap "nt",       $3d
+	charmap "the",      $3e
+	charmap "you",      $3f
+	charmap "ing",      $40
+	charmap "hat",      $41
+	charmap "and",      $42
+	charmap "for",      $43
+	charmap "all",      $44
+	charmap "here",     $45
+	charmap "that",     $46
+	charmap "have",     $47
+	charmap "rain",     $48
+	charmap "this",     $49
+	charmap "ight",     $4a
+	charmap "with",     $4b
+	charmap "ould",     $4c
 	charmap "attle",    $4d
 	ctxtmap "#",        $4e, 10110001100
 	ctxtmap "#mon",     $4f, 01011010
