@@ -209,13 +209,13 @@ _bc_::
 
 SpecialCharacters:
 	dw FinishString     ; "@"
+	dw DoneText         ; "<DONE>"
+	dw PromptText       ; "<PROMPT>"
 	dw LineBreak        ; "<LNBRK>"
 	dw NextLineChar     ; "<NEXT>"
 	dw LineChar         ; "<LINE>"
 	dw ContText         ; "<CONT>"
 	dw Paragraph        ; "<PARA>"
-	dw DoneText         ; "<DONE>"
-	dw PromptText       ; "<PROMPT>"
 	dw PlaceTargetsName ; "<TARGET>"
 	dw PlaceUsersName   ; "<USER>"
 	dw PlaceEnemysName  ; "<ENEMY>"
@@ -675,7 +675,7 @@ TextCommand_CTXT::
 	push af
 	ld h, b
 	ld l, c
-	rst PlaceString ; -2 bytes, +2 cycles over "call _PlaceString"
+	call _PlaceString ; +2 bytes, -2 cycles over "rst PlaceString"
 	pop af
 
 	pop de ; pop bit-reading state
@@ -683,13 +683,14 @@ TextCommand_CTXT::
 
 	; check for characters that signal end of compression
 	; (same ones as DoTextUntilTerminator)
-	cp "<PROMPT>"
+	sub "@"
+	ret z ; return to DoTextUntilTerminator
+	assert "@" + 1 == "<DONE>"
+	dec a
 	jr z, .done
-	cp "<DONE>"
-	jr z, .done
-	cp "@"
-	ret z
-	jr .character_loop
+	assert "<DONE>" + 1 == "<PROMPT>"
+	dec a
+	jr nz, .character_loop
 .done
 	pop bc ; pop DoTextUntilTerminator call
 	ret

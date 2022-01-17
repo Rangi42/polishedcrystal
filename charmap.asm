@@ -23,13 +23,13 @@ ENDM
 	; n-grams: $0a - $52 (defined below)
 
 	ctxtmap "@",        $53, 111101000
-	ctxtmap "<LNBRK>",  $54, 01011011000
-	ctxtmap "<NEXT>",   $55, 00111010
-	ctxtmap "<LINE>",   $56, 00101
-	ctxtmap "<CONT>",   $57, 0101100
-	ctxtmap "<PARA>",   $58, 100010
-	ctxtmap "<DONE>",   $59, 001111
-	ctxtmap "<PROMPT>", $5a, 1101000010
+	ctxtmap "<DONE>",   $54, 001111
+	ctxtmap "<PROMPT>", $55, 1101000010
+	ctxtmap "<LNBRK>",  $56, 01011011000
+	ctxtmap "<NEXT>",   $57, 00111010
+	ctxtmap "<LINE>",   $58, 00101
+	ctxtmap "<CONT>",   $59, 0101100
+	ctxtmap "<PARA>",   $5a, 100010
 
 	ctxtmap "<TARGET>", $5b, 0101101111010
 	ctxtmap "<USER>",   $5c, 010110111110
