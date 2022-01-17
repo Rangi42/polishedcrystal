@@ -146,6 +146,9 @@ gfx/battle_anims/status.2bpp: tools/gfx += --remove-whitespace
 gfx/card_flip/card_flip_1.2bpp: tools/gfx += --trim-whitespace
 gfx/card_flip/card_flip_2.2bpp: tools/gfx += --remove-whitespace
 
+gfx/font/%.1bpp: tools/gfx += --trim-whitespace
+gfx/font/space.1bpp: tools/gfx =
+
 gfx/mail/dragonite.1bpp: tools/gfx += --remove-whitespace
 gfx/mail/flower_mail_border.1bpp: tools/gfx += --remove-whitespace
 gfx/mail/large_note.1bpp: tools/gfx += --remove-whitespace
