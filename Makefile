@@ -52,7 +52,7 @@ MODIFIERS :=
 NAME := pkpc
 EXTENSION := pocket
 RGBASM_FLAGS += -DANALOGUE_POCKET -DNO_RTC
-RGBFIX_FLAGS = -csj -f hg -t $(TITLE) -i $(MCODE) -n $(ROMVERSION) -p $(FILLER) -k 01 -l 0x33 -m 0x1b -r 3
+RGBFIX_FLAGS = -csj -f hg -t $(TITLE) -i $(MCODE) -n $(ROMVERSION) -p $(FILLER) -k 01 -l 0x33 -m 0x10 -r 3
 endif
 
 crystal_obj := \
