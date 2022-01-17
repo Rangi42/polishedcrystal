@@ -464,8 +464,8 @@ LassKriseSeenText:
 	para "Oh, a battle?"
 	done
 
-LassKriseBeatenText:
-	ctxt "…Hmmm…"
+LassKriseBeatenText: ; ctxt > text
+	text "…Hmmm…"
 	done
 
 BugManiacLouSeenText:

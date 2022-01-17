@@ -258,8 +258,8 @@ PsychicNathanSeenText:
 	line "strange place."
 	done
 
-PsychicNathanBeatenText:
-	ctxt "…"
+PsychicNathanBeatenText: ; ctxt > text
+	text "…"
 	done
 
 RuinsOfAlphOutsideMysteryChamberSignText:

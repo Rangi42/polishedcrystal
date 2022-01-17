@@ -369,7 +369,7 @@ MrPokemonText_SentToPC:
 	ctxt "The #mon was"
 	line "sent to "
 	text_ram wStringBuffer1
-	ctxt "."
+	text "."
 	done
 
 MrPokemonText_PartyAndBoxFull:

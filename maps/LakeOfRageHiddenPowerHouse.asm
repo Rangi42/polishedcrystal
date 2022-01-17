@@ -50,7 +50,7 @@ HiddenPowerGuy:
 	line "has a Hidden Power"
 	cont "of "
 	text_ram wStringBuffer1
-	ctxt "!"
+	text "!"
 	done
 
 .Egg:

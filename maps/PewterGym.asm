@@ -190,8 +190,8 @@ CamperJerryBeatenText:
 	line "these battles…"
 	done
 
-HikerEdwinSeenText:
-	ctxt "R-r-r-R-R--CRASH!"
+HikerEdwinSeenText: ; ctxt > text
+	text "R-r-r-R-R--CRASH!"
 	done
 
 HikerEdwinBeatenText: ; ctxt > text

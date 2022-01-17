@@ -91,7 +91,7 @@ PokemonMansion1FFoundItemText:
 	ctxt "<PLAYER> found"
 	line ""
 	text_ram wStringBuffer3
-	ctxt "!"
+	text "!"
 	done
 
 PokemonMansion1FNoRoomForItemText:

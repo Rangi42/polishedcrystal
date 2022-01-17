@@ -140,7 +140,7 @@ ManiaText_ShuckieSentToPC:
 	ctxt "The #mon was"
 	line "sent to "
 	text_ram wStringBuffer1
-	ctxt "."
+	text "."
 	done
 
 ManiaText_PartyAndBoxFull:

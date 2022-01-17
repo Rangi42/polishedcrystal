@@ -283,7 +283,7 @@ RadioTower1FLuckyNumberManThisWeeksIdIsText:
 	ctxt "This week's ID"
 	line "number is "
 	text_ram wStringBuffer3
-	ctxt "."
+	text "."
 	done
 
 RadioTower1FLuckyNumberManCheckIfMatchText:
@@ -291,8 +291,8 @@ RadioTower1FLuckyNumberManCheckIfMatchText:
 	line "have a match."
 	done
 
-RadioTower1FLuckyNumberManDotDotDotText:
-	ctxt "……"
+RadioTower1FLuckyNumberManDotDotDotText: ; ctxt > text
+	text "……"
 	line "……"
 	done
 

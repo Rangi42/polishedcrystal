@@ -64,8 +64,8 @@ SwimmerfLoriSeenText:
 	line "battle!"
 	done
 
-SwimmerfLoriBeatenText:
-	ctxt "No!"
+SwimmerfLoriBeatenText: ; ctxt > text
+	text "No!"
 	done
 
 GenericTrainerSwimmerfMina:
@@ -169,8 +169,8 @@ GenericTrainerSwimmermElmo:
 	line "swim trunks!"
 	done
 
-.BeatenText:
-	ctxt "Ulp…"
+.BeatenText: ; ctxt > text
+	text "Ulp…"
 	done
 
 GenericTrainerPicnickerCheyenne:

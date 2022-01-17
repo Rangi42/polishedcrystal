@@ -195,7 +195,7 @@ Route35NationalParkGatePlayerGoAroundOfficerAndEnterParkMovement:
 	step_end
 
 Route35NationalParkGateOfficer1AskToParticipateText:
-	ctxt "Today's "
+	text "Today's "
 	text_ram wStringBuffer3
 	ctxt "."
 	line "That means the"

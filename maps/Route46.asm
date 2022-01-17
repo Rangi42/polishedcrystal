@@ -248,8 +248,8 @@ CamperTedSeenText:
 	line "with me?"
 	done
 
-CamperTedBeatenText:
-	ctxt "Wha…?"
+CamperTedBeatenText: ; ctxt > text
+	text "Wha…?"
 	done
 
 PicnickerErin1SeenText:

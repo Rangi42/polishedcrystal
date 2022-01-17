@@ -1003,7 +1003,7 @@ ReceivedStarterText:
 	ctxt "<PLAYER> received"
 	line ""
 	text_ram wStringBuffer3
-	ctxt "!"
+	text "!"
 	done
 
 ElmDirectionsText1:
@@ -1550,7 +1550,7 @@ LyraReceivedStarterText:
 	ctxt "Lyra received"
 	line ""
 	text_ram wStringBuffer3
-	ctxt "!"
+	text "!"
 	done
 
 LyraNicknamedChikoritaText:

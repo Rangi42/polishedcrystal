@@ -78,8 +78,8 @@ CooltrainermHenriSeenText:
 	cont "#mon?"
 	done
 
-CooltrainermHenriBeatenText:
-	ctxt "I guess you can!"
+CooltrainermHenriBeatenText: ; ctxt > text
+	text "I guess you can!"
 	done
 
 HikerGradySeenText:

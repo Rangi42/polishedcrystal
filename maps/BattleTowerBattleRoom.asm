@@ -52,7 +52,7 @@ Script_BattleRoomLoop:
 		ctxt "<PLAYER> received"
 		line ""
 		text_ram wStringBuffer1
-		ctxt " BP!"
+		text " BP!"
 		done
 	waitsfx
 	specialsound

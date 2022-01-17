@@ -93,17 +93,17 @@ Leaf:
 	credits
 	end
 
-LeafText:
-	ctxt "…………"
+LeafText: ; ctxt > text
+	text "…………"
 	line "…………!"
 	done
 
-LeafWinLossText:
-	ctxt "…!"
+LeafWinLossText: ; ctxt > text
+	text "…!"
 	done
 
-LeafAfterText:
-	ctxt "…………"
+LeafAfterText: ; ctxt > text
+	text "…………"
 	line "…………"
 	done
 

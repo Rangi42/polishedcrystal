@@ -81,5 +81,5 @@ HiddenGrottoItemScript:
 	ctxt "<PLAYER> found"
 	line ""
 	text_ram wStringBuffer4
-	ctxt "!"
+	text "!"
 	done

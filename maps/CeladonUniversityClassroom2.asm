@@ -84,8 +84,8 @@ CeladonUniversityClassroom2CooltrainermScript:
 	turnobject LAST_TALKED, UP
 	end
 
-.Text1:
-	ctxt "…Zzz…"
+.Text1: ; ctxt > text
+	text "…Zzz…"
 	line "Aah!"
 	done
 

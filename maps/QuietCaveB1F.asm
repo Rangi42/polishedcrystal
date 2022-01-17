@@ -78,8 +78,8 @@ PokemaniacAidanSeenText:
 	line "you them!"
 	done
 
-PokemaniacAidanBeatenText:
-	ctxt "My #mon…"
+PokemaniacAidanBeatenText: ; ctxt > text
+	text "My #mon…"
 	done
 
 HikerSteveSeenText:
@@ -103,4 +103,3 @@ PsychicVirgilBeatenText:
 	ctxt "Why must battling"
 	line "be so loud?"
 	done
-
