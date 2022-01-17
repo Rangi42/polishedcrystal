@@ -37,12 +37,12 @@ ___dchr: MACRO
 		fail "encountered {#02X:___chr} byte while processing"
 	endc
 	DEF ___ct_bits = (___ct_bits << ___huffman_length_{02X:___chr}) | ___huffman_data_{02X:___chr}
-	DEF ___ct_length = ___ct_length + ___huffman_length_{02X:___chr}
+	DEF ___ct_length += ___huffman_length_{02X:___chr}
 	rept 3
 		if ___ct_length >= 8
 			db ___ct_bits >> (___ct_length - 8)
-			DEF ___ct_length = ___ct_length - 8
-			DEF ___ct_bits = ___ct_bits & ((1 << ___ct_length) - 1)
+			DEF ___ct_length -= 8
+			DEF ___ct_bits &= (1 << ___ct_length) - 1
 			DEF ___ct_out_bytes += 1
 		endc
 	endr
