@@ -225,9 +225,18 @@ FIRST_REGULAR_TEXT_CHAR EQU $7f
 	charmap "┘",        $ff
 
 
-	newcharmap default, no_ngrams
-
 NGRAMS_START EQU $0a
+
+	newcharmap compressing, no_ngrams
+
+	ctxtmap "#",        $4e, 10110001100
+	ctxtmap "#mon",     $4f, 01011010
+	; these below are implemented as n-grams whose string is stored in WRAM
+	ctxtmap "<PLAYER>", $50, 1101010010
+	ctxtmap "<RIVAL>",  $51, 001000111101101
+	ctxtmap "<TRENDY>", $52, 1101001100110001
+
+	newcharmap default, compressing
 
 	charmap "e ",       $0a
 	charmap " t",       $0b
@@ -297,12 +306,6 @@ NGRAMS_START EQU $0a
 	charmap "with",     $4b
 	charmap "ould",     $4c
 	charmap "attle",    $4d
-	ctxtmap "#",        $4e, 10110001100
-	ctxtmap "#mon",     $4f, 01011010
-	; these below are implemented as n-grams whose string is stored in WRAM
-	ctxtmap "<PLAYER>", $50, 1101010010
-	ctxtmap "<RIVAL>",  $51, 001000111101101
-	ctxtmap "<TRENDY>", $52, 1101001100110001
 
 NGRAMS_END EQU $52
 

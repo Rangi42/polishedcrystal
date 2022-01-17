@@ -18,13 +18,9 @@ dtxt: MACRO
 		db \#
 	else
 		rept _NARG
-			if (\1) > 0 && (\1) < $100
-				___dchr \1
-			else
-				for x, 1, CHARLEN(\1) + 1
-					___dchr CHARSUB(\1, x)
-				endr
-			endc
+			for x, 1, CHARLEN(\1) + 1
+				___dchr CHARSUB(\1, x)
+			endr
 			shift
 		endr
 		if !___compressing_text && ___ct_length > 0
@@ -35,7 +31,7 @@ ENDM
 
 ___dchr: MACRO
 	DEF ___chr = \1
-	if ___chr < LEAST_CHAR
+	if !DEF(___huffman_data_{02X:___chr}) || !DEF(___huffman_length_{02X:___chr})
 		fail "encountered {#02X:___chr} byte while processing"
 	endc
 	DEF ___ct_bits = (___ct_bits << ___huffman_length_{02X:___chr}) | ___huffman_data_{02X:___chr}
@@ -49,6 +45,7 @@ ___dchr: MACRO
 	endr
 	if ___chr == "@" || ___chr == "<DONE>" || ___chr == "<PROMPT>"
 		DEF ___compressing_text = 0
+		setcharmap default
 	endc
 ENDM
 
@@ -95,6 +92,7 @@ ctxt: MACRO
 ___compressing_text = 1
 ___ct_bits = 0
 ___ct_length = 0
+	setcharmap compressing
 	dtxt \#
 ENDM
 
