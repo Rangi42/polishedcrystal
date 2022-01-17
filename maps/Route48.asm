@@ -130,7 +130,7 @@ Archer2Script:
 	end
 
 Route48JessieJamesSeenText:
-	text "Stop right there,"
+	ctxt "Stop right there,"
 	line "twerp!"
 
 	para "You know what"
@@ -149,17 +149,17 @@ Route48JessieJamesSeenText:
 	done
 
 Route48JessieJamesBeatenText:
-	text "A brat beat us?"
+	ctxt "A brat beat us?"
 	done
 
 Route48JessieJamesAfterText:
-	text "Looks like Team"
+	ctxt "Looks like Team"
 	line "Rocket's blasting"
 	cont "off again!"
 	done
 
 Archer2SeenText:
-	text "So you want to"
+	ctxt "So you want to"
 	line "interfere with"
 
 	para "Team Rocket's"
@@ -178,12 +178,12 @@ Archer2SeenText:
 	done
 
 Archer2BeatenText:
-	text "This is so"
+	ctxt "This is so"
 	line "frustrating…"
 	done
 
 Archer2AfterText:
-	text "…Have it your"
+	ctxt "…Have it your"
 	line "way."
 
 	para "Team Rocket will"
@@ -195,7 +195,7 @@ Archer2AfterText:
 	done
 
 Route48NurseText1:
-	text "I saw your battle"
+	ctxt "I saw your battle"
 	line "from the window!"
 
 	para "You drove away"
@@ -212,7 +212,7 @@ Route48NurseText1:
 	done
 
 Route48NurseText2:
-	text "I like to relax"
+	ctxt "I like to relax"
 	line "here by the forest"
 	cont "and watch the"
 	cont "#mon play."
@@ -224,7 +224,7 @@ Route48NurseText2:
 	done
 
 Route48YellowForestSignText:
-	text "Route 48"
+	ctxt "Route 48"
 
 	para "North to"
 	line "Yellow Forest"

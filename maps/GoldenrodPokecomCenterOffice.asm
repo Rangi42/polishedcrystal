@@ -27,7 +27,7 @@ GoldenrodPokecomCenterOffice_MapScriptHeader:
 	const GOLDENRODPOKECOMCENTEROFFICE_RANGI
 
 AdminRangiText:
-	text "Rangi: I hope"
+	ctxt "Rangi: I hope"
 	line "you're enjoying"
 
 	para "your journey"
@@ -43,7 +43,7 @@ AdminRangiText:
 	done
 
 AdminLunaText:
-	text "Luna: When you"
+	ctxt "Luna: When you"
 	line "Wonder Traded"
 
 	para "with someone in"
@@ -59,7 +59,7 @@ AdminLunaText:
 	done
 
 AdminFredrikText:
-	text "Fredrik: Bill's PC"
+	ctxt "Fredrik: Bill's PC"
 	line "Storage System"
 	cont "is open-source,"
 
@@ -71,7 +71,7 @@ AdminFredrikText:
 	done
 
 AdminAizawaText:
-	text "Aizawa: Dialog,"
+	ctxt "Aizawa: Dialog,"
 	line "map designs,"
 	cont "character sprites,"
 	cont "trainer parties…"
@@ -84,7 +84,7 @@ AdminAizawaText:
 	done
 
 UnattendedComputerText:
-	text "There's a screen-"
+	ctxt "There's a screen-"
 	line "saver endlessly"
 
 	para "running through"
@@ -92,7 +92,7 @@ UnattendedComputerText:
 	done
 
 RangiComputerText:
-	text "“Optimizing…” is"
+	ctxt "“Optimizing…” is"
 	line "blinking on the"
 	cont "screen."
 
@@ -101,7 +101,7 @@ RangiComputerText:
 	done
 
 LunaComputerText:
-	text "Network traffic"
+	ctxt "Network traffic"
 	line "from Wonder Trades"
 
 	para "is streaming by"
@@ -109,7 +109,7 @@ LunaComputerText:
 	done
 
 FredrikComputerText:
-	text "A dozen windows"
+	ctxt "A dozen windows"
 	line "are open at once,"
 
 	para "each related to"
@@ -117,7 +117,7 @@ FredrikComputerText:
 	done
 
 AizawaComputerText:
-	text "A program called"
+	ctxt "A program called"
 	line "Polished Map is"
 	cont "displaying a"
 
@@ -130,7 +130,7 @@ RangiKeyboardScript:
 	showemote EMOTE_SHOCK, GOLDENRODPOKECOMCENTEROFFICE_RANGI, 10
 	jumpthistext
 
-	text "Rangi: Hey! If you"
+	ctxt "Rangi: Hey! If you"
 	line "want to hack the"
 	cont "game, use your"
 	cont "own computer!"

@@ -98,7 +98,7 @@ EusinesHouseGrampsScript:
 	jumptextfaceplayer EusinesHouseGrampsText1
 
 CeladonEusineText1:
-	text "Eusine: Hi!"
+	ctxt "Eusine: Hi!"
 
 	para "I'm back visiting"
 	line "my hometown."
@@ -108,7 +108,7 @@ CeladonEusineText1:
 	done
 
 EusineLeavesCeladonText:
-	text "<PLAYER>, have you"
+	ctxt "<PLAYER>, have you"
 	line "heard?"
 
 	para "There have been"
@@ -129,7 +129,7 @@ EusineLeavesCeladonText:
 	done
 
 EusineNoBeastsText:
-	text "Oh, by the way,"
+	ctxt "Oh, by the way,"
 	line "<PLAYER>."
 
 	para "Have you caught"
@@ -145,20 +145,20 @@ EusineNoBeastsText:
 	done
 
 EusineShowsRaikouText:
-	text "This is Raikou:"
+	ctxt "This is Raikou:"
 	done
 
 EusineShowsEnteiText:
-	text "This is Entei:"
+	ctxt "This is Entei:"
 	done
 
 EusineShowsSuicuneText:
-	text "This, of course,"
+	ctxt "This, of course,"
 	line "is Suicune:"
 	done
 
 EusineQuestHintText:
-	text "If you catch even"
+	ctxt "If you catch even"
 	line "one, I hope that"
 	cont "you'll inform me."
 
@@ -167,13 +167,13 @@ EusineQuestHintText:
 	done
 
 EusinesHouseGrampsText1:
-	text "My grandson came"
+	ctxt "My grandson came"
 	line "home!"
 	cont "I'm overjoyed!"
 	done
 
 EusinesHouseGrampsText2:
-	text "My grandson Eusine"
+	ctxt "My grandson Eusine"
 	line "is in Johto,"
 
 	para "searching far and"

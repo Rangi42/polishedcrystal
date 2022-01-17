@@ -19,7 +19,7 @@ Route40BattleTowerGate_MapScriptHeader:
 	object_event  7,  5, SPRITE_SCHOOLGIRL, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, Route40BattleTowerGateTwinScript, -1
 
 Route40BattleTowerGateOfficer:
-	text "Are you going to"
+	ctxt "Are you going to"
 	line "the Battle Tower?"
 
 	para "If you win a whole"
@@ -35,7 +35,7 @@ Route40BattleTowerGateRockerScript:
 	iftrue_jumptextfaceplayer .OpenText
 	jumpthistextfaceplayer
 
-	text "Did you come to"
+	ctxt "Did you come to"
 	line "see the Battle"
 	cont "Tower too?"
 
@@ -44,7 +44,7 @@ Route40BattleTowerGateRockerScript:
 	done
 
 .OpenText:
-	text "Battle Tower has"
+	ctxt "Battle Tower has"
 	line "opened."
 
 	para "I want to go, but"
@@ -59,7 +59,7 @@ Route40BattleTowerGateTwinScript:
 	iftrue_jumptextfaceplayer .OpenText
 	jumpthistextfaceplayer
 
-	text "I'm going to train"
+	ctxt "I'm going to train"
 	line "my #mon so I'll"
 
 	para "be all ready for"
@@ -67,7 +67,7 @@ Route40BattleTowerGateTwinScript:
 	done
 
 .OpenText:
-	text "The levels of the"
+	ctxt "The levels of the"
 	line "#mon I want to"
 
 	para "use are all"

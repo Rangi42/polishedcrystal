@@ -19,7 +19,7 @@ MrFujisHouse_MapScriptHeader:
 	pokemon_event  1,  3, PIDGEY, SPRITEMOVEDATA_POKEMON, -1, -1, PAL_NPC_BROWN, MrFujisPidgeyText, -1
 
 MrFujisHouseSuperNerdText:
-	text "Mr.Fuji does live"
+	ctxt "Mr.Fuji does live"
 	line "here, but he's not"
 	cont "home now."
 
@@ -28,7 +28,7 @@ MrFujisHouseSuperNerdText:
 	done
 
 MrFujisHouseLassText:
-	text "Some cold-hearted"
+	ctxt "Some cold-hearted"
 	line "people stop caring"
 	cont "for their #mon."
 
@@ -40,13 +40,13 @@ MrFujisHouseLassText:
 	done
 
 MrFujisPsyduckText:
-	text "Psyduck: Gu-guwa?"
+	ctxt "Psyduck: Gu-guwa?"
 	done
 
 MrFujisNidorinoText:
-	text "Nidorino: Gyun!"
+	ctxt "Nidorino: Gyun!"
 	done
 
 MrFujisPidgeyText:
-	text "Pidgey: Pijji!"
+	ctxt "Pidgey: Pijji!"
 	done

@@ -159,7 +159,7 @@ MapCeladonGameCornerSignpost9Script:
 	endtext
 
 CeladonGameCornerReceptionistText:
-	text "Welcome!"
+	ctxt "Welcome!"
 
 	para "You may exchange"
 	line "your coins for"
@@ -169,13 +169,13 @@ CeladonGameCornerReceptionistText:
 	done
 
 CeladonGameCornerPokefanMText:
-	text "The slot machines"
+	ctxt "The slot machines"
 	line "are all state of"
 	cont "the art."
 	done
 
 CeladonGameCornerTeacherText:
-	text "It's this machine"
+	ctxt "It's this machine"
 	line "I want."
 
 	para "It cleaned me out"
@@ -186,7 +186,7 @@ CeladonGameCornerTeacherText:
 	done
 
 CeladonGameCornerFishingGuruText:
-	text "I think this slot"
+	ctxt "I think this slot"
 	line "machine will pay"
 	cont "out…"
 
@@ -195,7 +195,7 @@ CeladonGameCornerFishingGuruText:
 	done
 
 CeladonGameCornerFisherText1:
-	text "Gahahaha!"
+	ctxt "Gahahaha!"
 
 	para "The coins just"
 	line "keep popping out!"
@@ -208,7 +208,7 @@ CeladonGameCornerFisherText1:
 	done
 
 CeladonGameCornerFisherText2:
-	text "Gahahaha!"
+	ctxt "Gahahaha!"
 
 	para "It makes me feel"
 	line "good to do nice"
@@ -218,7 +218,7 @@ CeladonGameCornerFisherText2:
 	done
 
 CeladonGameCornerFisherNoCoinCaseText:
-	text "Hey, you don't"
+	ctxt "Hey, you don't"
 	line "have a Coin Case."
 
 	para "How am I supposed"
@@ -227,7 +227,7 @@ CeladonGameCornerFisherNoCoinCaseText:
 	done
 
 CeladonGameCornerFisherFullCoinCaseText:
-	text "Hey, your Coin"
+	ctxt "Hey, your Coin"
 	line "Case is full, kid."
 
 	para "You must be riding"
@@ -236,7 +236,7 @@ CeladonGameCornerFisherFullCoinCaseText:
 	done
 
 FisherOfferText:
-	text "Hm? What, kid? You"
+	ctxt "Hm? What, kid? You"
 	line "still want to"
 	cont "play?"
 
@@ -248,7 +248,7 @@ FisherOfferText:
 	done
 
 FisherNotEnoughText:
-	text "Hey, your Coin"
+	ctxt "Hey, your Coin"
 	line "Case is almost"
 	cont "empty, kid."
 
@@ -257,7 +257,7 @@ FisherNotEnoughText:
 	done
 
 CeladonGymGuyText:
-	text "Hey! Champ in"
+	ctxt "Hey! Champ in"
 	line "making!"
 
 	para "Are you playing"
@@ -272,7 +272,7 @@ CeladonGymGuyText:
 	done
 
 CeladonGameCornerGrampsText:
-	text "Hmmm… The odds are"
+	ctxt "Hmmm… The odds are"
 	line "surely better for"
 
 	para "Pikachu's line,"
@@ -280,7 +280,7 @@ CeladonGameCornerGrampsText:
 	done
 
 CeladonGameCornerPoster1Text:
-	text "Hey!"
+	ctxt "Hey!"
 
 	para "Underneath this"
 	line "poster…"
@@ -289,7 +289,7 @@ CeladonGameCornerPoster1Text:
 	done
 
 CeladonGameCornerPoster2Text:
-	text "Hey!"
+	ctxt "Hey!"
 
 	para "Underneath this"
 	line "poster…"
@@ -298,12 +298,12 @@ CeladonGameCornerPoster2Text:
 	done
 
 CeladonGameCornerLighterText:
-	text "There's a lighter"
+	ctxt "There's a lighter"
 	line "here."
 	done
 
 CeladonGameCornerSodaCanText:
-	text "A can of soda…"
+	ctxt "A can of soda…"
 
 	para "Someone must be"
 	line "coming back…"

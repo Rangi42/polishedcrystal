@@ -28,7 +28,7 @@ CeruleanBerryPowderHouseGrampsScript:
 	jumpthisopenedtext
 
 .Text2:
-	text "Concocting med-"
+	ctxt "Concocting med-"
 	line "icines was a"
 	cont "rewarding job,"
 
@@ -37,7 +37,7 @@ CeruleanBerryPowderHouseGrampsScript:
 	done
 
 .Text1:
-	text "Berry Powder?"
+	ctxt "Berry Powder?"
 	line "Sorry, kid, I'm"
 	cont "retired now."
 

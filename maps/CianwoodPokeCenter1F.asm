@@ -24,7 +24,7 @@ PokemonJournalChuckScript:
 	setflag ENGINE_READ_CHUCK_JOURNAL
 	jumpthistext
 
-	text "#mon Journal"
+	ctxt "#mon Journal"
 
 	para "Special Feature:"
 	line "Leader Chuck!"
@@ -61,7 +61,7 @@ CianwoodGymGuyScript:
 	waitendtext
 
 .Text:
-	text "The #mon Gym"
+	ctxt "The #mon Gym"
 	line "trainers here are"
 	cont "macho bullies."
 
@@ -100,7 +100,7 @@ CianwoodGymGuyScript:
 	done
 
 .StrengthText1:
-	text "You can't move the"
+	ctxt "You can't move the"
 	line "boulders aside?"
 
 	para "Here, use this"
@@ -109,17 +109,17 @@ CianwoodGymGuyScript:
 	done
 
 .StrengthText2:
-	text "Good luck!"
+	ctxt "Good luck!"
 	done
 
 .WinText:
-	text "<PLAYER>! You won!"
+	ctxt "<PLAYER>! You won!"
 	line "I could tell by"
 	cont "looking at you!"
 	done
 
 CianwoodPokeCenter1FLassText:
-	text "Did you meet the"
+	ctxt "Did you meet the"
 	line "#Maniac?"
 
 	para "He's always brag-"
@@ -128,7 +128,7 @@ CianwoodPokeCenter1FLassText:
 	done
 
 CianwoodPokeCenter1FSuperNerdText:
-	text "I love showing off"
+	ctxt "I love showing off"
 	line "the #mon that"
 
 	para "I've raised."
@@ -142,7 +142,7 @@ CianwoodPokeCenter1FSuperNerdText:
 	done
 
 CianwoodPokeCenter1FRichBoyText:
-	text "There's no #"
+	ctxt "There's no #"
 	line "Mart in this town,"
 
 	para "so we have to im-"

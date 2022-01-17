@@ -121,7 +121,7 @@ EcruteakTinTowerEntranceSageBlocksRightMovement:
 	step_end
 
 EcruteakTinTowerEntranceSageText:
-	text "Bell Tower is off"
+	ctxt "Bell Tower is off"
 	line "limits to anyone"
 
 	para "without Ecruteak"
@@ -132,7 +132,7 @@ EcruteakTinTowerEntranceSageText:
 	done
 
 EcruteakTinTowerEntranceSageText_GotFogBadge:
-	text "Bell Tower is off"
+	ctxt "Bell Tower is off"
 	line "limits to anyone"
 
 	para "without Ecruteak"
@@ -146,7 +146,7 @@ EcruteakTinTowerEntranceSageText_GotFogBadge:
 	done
 
 EcruteakTinTowerEntranceSageText_NoClearBell:
-	text "A momentous event"
+	ctxt "A momentous event"
 	line "has occurred."
 
 	para "I beg your pardon,"
@@ -164,7 +164,7 @@ EcruteakTinTowerEntranceSageText_NoClearBell:
 	done
 
 EcruteakTinTowerEntranceSageText_HearsClearBell:
-	text "A momentous event"
+	ctxt "A momentous event"
 	line "has occurred."
 
 	para "I beg your pardon,"
@@ -198,11 +198,11 @@ EcruteakTinTowerEntranceSageText_HearsClearBell:
 	done
 
 EcruteakTinTowerEntranceSageText_PleaseDoGoOn:
-	text "Please, do go on."
+	ctxt "Please, do go on."
 	done
 
 EcruteakTinTowerEntranceSageText_HeardClearBell:
-	text "That bell's chime"
+	ctxt "That bell's chime"
 	line "is indicative of"
 	cont "the bearer's soul."
 
@@ -216,7 +216,7 @@ EcruteakTinTowerEntranceSageText_HeardClearBell:
 	done
 
 EcruteakTinTowerEntranceWanderingSageText:
-	text "The Bell Tower"
+	ctxt "The Bell Tower"
 	line "ahead is a nine-"
 
 	para "tier tower of"
@@ -228,7 +228,7 @@ EcruteakTinTowerEntranceWanderingSageText:
 	done
 
 EcruteakTinTowerEntranceWanderingSageText_GotClearBell:
-	text "The Bell Tower"
+	ctxt "The Bell Tower"
 	line "shook! A #mon"
 
 	para "must have returned"
@@ -236,7 +236,7 @@ EcruteakTinTowerEntranceWanderingSageText_GotClearBell:
 	done
 
 EcruteakTinTowerEntranceGrampsText:
-	text "Two towers…"
+	ctxt "Two towers…"
 	line "Two #mon…"
 
 	para "But when one"

@@ -67,7 +67,7 @@ GoldenrodGymWhitneyScript:
 	setevent EVENT_GOT_TM45_ATTRACT
 	jumpthisopenedtext
 
-	text "It's Attract!"
+	ctxt "It's Attract!"
 	line "It makes full use"
 
 	para "of a #mon's"
@@ -81,7 +81,7 @@ GoldenrodGymWhitneyScript:
 GenericTrainerLassCathy:
 	generictrainer LASS, CATHY, EVENT_BEAT_LASS_CATHY, LassCathySeenText, LassCathyBeatenText
 
-	text "Do my #mon"
+	ctxt "Do my #mon"
 	line "think I'm cute?"
 	done
 
@@ -98,7 +98,7 @@ WhitneyCriesScript:
 GenericTrainerSrandjrJoandcath1:
 	generictrainer SR_AND_JR, JOANDCATH1, EVENT_BEAT_SR_AND_JR_JO_AND_CATH, SrandjrJoandcath1SeenText, SrandjrJoandcath1BeatenText
 
-	text "Jo: I'm helping my"
+	ctxt "Jo: I'm helping my"
 	line "junior Cath to"
 
 	para "earn a badge"
@@ -111,7 +111,7 @@ GenericTrainerSrandjrJoandcath1:
 GenericTrainerSrandjrJoandcath2:
 	generictrainer SR_AND_JR, JOANDCATH2, EVENT_BEAT_SR_AND_JR_JO_AND_CATH, SrandjrJoandcath2SeenText, SrandjrJoandcath2BeatenText
 
-	text "Cath: I keep on"
+	ctxt "Cath: I keep on"
 	line "losing to Whitney."
 	cont "It's depressing."
 
@@ -123,7 +123,7 @@ GenericTrainerSrandjrJoandcath2:
 GenericTrainerBeautyVictoria:
 	generictrainer BEAUTY, VICTORIA, EVENT_BEAT_BEAUTY_VICTORIA, BeautyVictoriaSeenText, BeautyVictoriaBeatenText
 
-	text "Wow, you must be"
+	ctxt "Wow, you must be"
 	line "good to beat me!"
 	cont "Keep it up!"
 	done
@@ -131,7 +131,7 @@ GenericTrainerBeautyVictoria:
 GenericTrainerBeautySamantha:
 	generictrainer BEAUTY, SAMANTHA, EVENT_BEAT_BEAUTY_SAMANTHA, BeautySamanthaSeenText, BeautySamanthaBeatenText
 
-	text "I taught Meowth"
+	ctxt "I taught Meowth"
 	line "moves for taking"
 	cont "on any type…"
 	done
@@ -141,7 +141,7 @@ GoldenrodGymGuyScript:
 	iftrue_jumptextfaceplayer GoldenrodGymGuyWinText
 	jumpthistextfaceplayer
 
-	text "Yo! Champ in"
+	ctxt "Yo! Champ in"
 	line "making!"
 
 	para "This Gym is home"
@@ -185,7 +185,7 @@ JoWalksAwayMovement:
 	step_end
 
 WhitneyBeforeText:
-	text "Hi! I'm Whitney!"
+	ctxt "Hi! I'm Whitney!"
 
 	para "Everyone was into"
 	line "#mon, so I got"
@@ -200,7 +200,7 @@ WhitneyBeforeText:
 	done
 
 WhitneyShouldntBeSoSeriousText:
-	text "Sob…"
+	ctxt "Sob…"
 
 	para "…Waaaaaaah!"
 	line "You're mean!"
@@ -211,7 +211,7 @@ WhitneyShouldntBeSoSeriousText:
 	done
 
 WhitneyYouMeanieText:
-	text "Waaaaah!"
+	ctxt "Waaaaah!"
 
 	para "Waaaaah!"
 
@@ -220,7 +220,7 @@ WhitneyYouMeanieText:
 	done
 
 WhitneyWhatDoYouWantText:
-	text "…Sniff…"
+	ctxt "…Sniff…"
 
 	para "What? What do you"
 	line "want? A Badge?"
@@ -231,12 +231,12 @@ WhitneyWhatDoYouWantText:
 	done
 
 PlayerReceivedPlainBadgeText:
-	text "<PLAYER> received"
+	ctxt "<PLAYER> received"
 	line "the Plain Badge."
 	done
 
 WhitneyPlainBadgeText:
-	text "The Plain Badge"
+	ctxt "The Plain Badge"
 	line "lets your #mon"
 
 	para "use Strength out-"
@@ -247,7 +247,7 @@ WhitneyPlainBadgeText:
 	done
 
 WhitneyGoodCryText:
-	text "Ah, that was a"
+	ctxt "Ah, that was a"
 	line "good cry!"
 
 	para "Come for a visit"
@@ -255,7 +255,7 @@ WhitneyGoodCryText:
 	done
 
 LassCathySeenText:
-	text "Don't let my"
+	ctxt "Don't let my"
 	line "#mon's cute"
 
 	para "looks fool you."
@@ -263,12 +263,12 @@ LassCathySeenText:
 	done
 
 LassCathyBeatenText:
-	text "Darn… I thought"
+	ctxt "Darn… I thought"
 	line "you were weak…"
 	done
 
 SrandjrJoandcath1SeenText:
-	text "Jo: If you want to"
+	ctxt "Jo: If you want to"
 	line "face Whitney,"
 
 	para "you'll have to go"
@@ -279,12 +279,12 @@ SrandjrJoandcath1SeenText:
 	done
 
 SrandjrJoandcath1BeatenText:
-	text "Jo: Losing isn't"
+	ctxt "Jo: Losing isn't"
 	line "cool at all!"
 	done
 
 SrandjrJoandcath2SeenText:
-	text "Cath: I'm trying"
+	ctxt "Cath: I'm trying"
 	line "to beat Whitney,"
 	cont "but my senior and"
 
@@ -293,12 +293,12 @@ SrandjrJoandcath2SeenText:
 	done
 
 SrandjrJoandcath2BeatenText:
-	text "Cath: Oh, no,"
+	ctxt "Cath: Oh, no,"
 	line "no, no!"
 	done
 
 JoWhitneyCriesText:
-	text "Oh, no. You made"
+	ctxt "Oh, no. You made"
 	line "Whitney cry."
 
 	para "It's OK. She'll"
@@ -309,31 +309,36 @@ JoWhitneyCriesText:
 	done
 
 BeautyVictoriaSeenText:
+<<<<<<< HEAD
 	text "Oh, you are a cute"
 	line "little trainer!"
+=======
+	ctxt "Oh, you are a cute"
+	line "little trainer! ♥"
+>>>>>>> a0f2dd10f66795468601166436c9ccef9b074e9d
 
 	para "I like you, but I"
 	line "won't hold back!"
 	done
 
 BeautyVictoriaBeatenText:
-	text "Let's see… Oops,"
+	ctxt "Let's see… Oops,"
 	line "it's over?"
 	done
 
 BeautySamanthaSeenText:
-	text "Give it your best"
+	ctxt "Give it your best"
 	line "shot, or I'll take"
 	cont "you down!"
 	done
 
 BeautySamanthaBeatenText:
-	text "No! Oh, Meowth,"
+	ctxt "No! Oh, Meowth,"
 	line "I'm so sorry!"
 	done
 
 GoldenrodGymGuyWinText:
-	text "You won? Great! I"
+	ctxt "You won? Great! I"
 	line "was busy admiring"
 	cont "the ladies here."
 	done

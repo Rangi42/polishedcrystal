@@ -17,7 +17,7 @@ ViridianMart_MapScriptHeader:
 	object_event  1,  6, SPRITE_COOL_DUDE, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, ViridianMartCooltrainerMText, -1
 
 ViridianMartLassText:
-	text "The Gym Leader"
+	ctxt "The Gym Leader"
 	line "here is totally"
 	cont "cool."
 
@@ -30,7 +30,7 @@ ViridianMartLassText:
 	done
 
 ViridianMartCooltrainerMText:
-	text "Have you been to"
+	ctxt "Have you been to"
 	line "Cinnabar?"
 
 	para "It's an island way"

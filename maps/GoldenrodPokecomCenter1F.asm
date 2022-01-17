@@ -67,7 +67,7 @@ GoldenrodPokecenter1FNurseScript:
 	jumpstd pokecenternurse
 
 GoldenrodPokecenter1FGameboyKidText:
-	text "The Colosseum"
+	ctxt "The Colosseum"
 	line "upstairs is for"
 	cont "link battles."
 
@@ -79,7 +79,7 @@ GoldenrodPokecenter1FGameboyKidText:
 	done
 
 GoldenrodPokecenter1FLassText:
-	text "A higher level"
+	ctxt "A higher level"
 	line "#mon doesn't"
 	cont "always win."
 
@@ -116,7 +116,7 @@ GoldenrodPokecenter1FPokefanF:
 	setevent EVENT_GOT_EVIOLITE_IN_GOLDENROD
 	jumpthisopenedtext
 
-	text "My daughter will"
+	ctxt "My daughter will"
 	line "be delighted!"
 	done
 
@@ -124,12 +124,12 @@ GoldenrodPokecenter1FPokefanF:
 	giveitem EON_MAIL
 	jumpthisopenedtext
 
-	text "Oh… Well, another"
+	ctxt "Oh… Well, another"
 	line "time, then."
 	done
 
 GoldenrodPokecenter1FPokefanFDoYouHaveEonMailText:
-	text "Oh my, your bag"
+	ctxt "Oh my, your bag"
 	line "looks so heavy!"
 
 	para "Oh! Do you happen"
@@ -144,12 +144,12 @@ GoldenrodPokecenter1FPokefanFDoYouHaveEonMailText:
 	done
 
 GoldenrodPokecenter1FAskGiveAwayAnEonMailText:
-	text "Give away an Eon"
+	ctxt "Give away an Eon"
 	line "Mail?"
 	done
 
 GoldenrodPokecenter1FPokefanFThisIsForYouText:
-	text "Oh, that's great!"
+	ctxt "Oh, that's great!"
 	line "Thank you, honey!"
 
 	para "Here, this is for"
@@ -157,17 +157,17 @@ GoldenrodPokecenter1FPokefanFThisIsForYouText:
 	done
 
 GoldenrodPokecenter1FPokefanFTooBadText:
-	text "Oh? You don't have"
+	ctxt "Oh? You don't have"
 	line "one? Too bad."
 	done
 
 GoldenrodPokecenter1FPlayerGaveAwayTheEonMailText:
-	text "<PLAYER> gave away"
+	ctxt "<PLAYER> gave away"
 	line "the Eon Mail."
 	done
 
 GoldenrodPokecenter1FPokefanFGotEvioliteText:
-	text "Thank you for"
+	ctxt "Thank you for"
 	line "the Eon Mail!"
 
 	para "My daughter will"
@@ -205,24 +205,24 @@ WonderTradeReceptionistScript:
 	jumpopenedtext WonderTradeGoodbyeText
 
 WonderTradeIntroText:
-	text "Hello! Welcome to"
+	ctxt "Hello! Welcome to"
 	line "#Com Center"
 	cont "Wonder Trade Hub."
 	done
 
 IntroduceTealaText:
-	text "I'm Teala, your"
+	ctxt "I'm Teala, your"
 	line "trade attendant."
 	done
 
 WonderTradeExplanationText:
-	text "You can trade"
+	ctxt "You can trade"
 	line "#mon with other"
 	cont "people far away."
 	done
 
 WonderTradeCompleteText:
-	text "It's your new"
+	ctxt "It's your new"
 	line "partner."
 
 	para "Please take care"
@@ -230,12 +230,12 @@ WonderTradeCompleteText:
 	done
 
 WonderTradeGoodbyeText:
-	text "We hope to see you"
+	ctxt "We hope to see you"
 	line "again."
 	done
 
 WonderTradeForGSBallPichuText:
-	text "…But what's this?"
+	ctxt "…But what's this?"
 	line "Is something wrong"
 
 	para "with the Wonder"
@@ -269,7 +269,7 @@ WonderTradeForGSBallPichuText:
 	done
 
 WonderTradeForGSBallPichuText2:
-	text "It may be unusual,"
+	ctxt "It may be unusual,"
 	line "but a #mon"
 	cont "is a #mon."
 
@@ -280,7 +280,7 @@ WonderTradeForGSBallPichuText2:
 InfoSignScript:
 	jumpthistext
 
-	text "#Com Center"
+	ctxt "#Com Center"
 	line "1F Information"
 
 	para "Left:"
@@ -297,7 +297,7 @@ PokemonJournalWhitneyScript:
 	setflag ENGINE_READ_WHITNEY_JOURNAL
 	jumpthistext
 
-	text "#mon Journal"
+	ctxt "#mon Journal"
 
 	para "Special Feature:"
 	line "Leader Whitney!"
@@ -313,7 +313,7 @@ JudgeMachineScript:
 	waitendtext
 
 GoldenrodPokecenter1FSuperNerdText:
-	text "Whoa, this #mon"
+	ctxt "Whoa, this #mon"
 	line "Center is huge."
 
 	para "They just built"
@@ -324,7 +324,7 @@ GoldenrodPokecenter1FSuperNerdText:
 	done
 
 GoldenrodPokecenter1FLassText_PidgeyMail:
-	text "I thought up a fun"
+	ctxt "I thought up a fun"
 	line "new thing for the"
 	cont "Wonder Trade Hub!"
 
@@ -377,7 +377,7 @@ JudgeMachineEngineerScript:
 	end
 
 JudgeMachineEngineerWorkingText:
-	text "The #mon"
+	ctxt "The #mon"
 	line "Judge Machine…"
 
 	para "It's been my dream"
@@ -401,7 +401,7 @@ JudgeMachineEngineerWorkingText:
 	done
 
 JudgeMachineEngineerFinishedText:
-	text "The #mon"
+	ctxt "The #mon"
 	line "Judge Machine…"
 
 	para "It's finally done!"
@@ -446,7 +446,7 @@ JudgeMachineEngineerLeavesMovement:
 	step_end
 
 GoldenrodPokecenter1FPokefanFText_Sunflora:
-	text "Some girl I don't"
+	ctxt "Some girl I don't"
 	line "know sent me her"
 	cont "Sunflora."
 
@@ -456,7 +456,7 @@ GoldenrodPokecenter1FPokefanFText_Sunflora:
 	done
 
 GoldenrodPokecenter1FRockerText:
-	text "The machines here"
+	ctxt "The machines here"
 	line "can't all be used"
 	cont "yet."
 
@@ -468,7 +468,7 @@ GoldenrodPokecenter1FRockerText:
 	done
 
 GoldenrodPokecenter1FGrampsText:
-	text "Just seeing all"
+	ctxt "Just seeing all"
 	line "these new things"
 
 	para "here makes me feel"

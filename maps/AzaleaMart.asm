@@ -19,7 +19,7 @@ AzaleaMart_MapScriptHeader:
 	object_event  8,  6, SPRITE_ROCKER, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, (1 << EVE) | (1 << NITE), PAL_NPC_PURPLE, OBJECTTYPE_COMMAND, jumptextfaceplayer, AzaleaMartRockerText, -1
 
 AzaleaMartCooltrainermText:
-	text "There's no Great"
+	ctxt "There's no Great"
 	line "Ball here. #"
 
 	para "Balls will have"
@@ -31,7 +31,7 @@ AzaleaMartCooltrainermText:
 	done
 
 AzaleaMartBugCatcherText:
-	text "A Great Ball is"
+	ctxt "A Great Ball is"
 	line "better for catch-"
 	cont "ing #mon than a"
 	cont "# Ball."
@@ -42,7 +42,7 @@ AzaleaMartBugCatcherText:
 	done
 
 AzaleaMartLadyText:
-	text "I can buy many"
+	ctxt "I can buy many"
 	line "items at home in"
 	cont "Goldenrod City,"
 
@@ -54,7 +54,7 @@ AzaleaMartLadyText:
 	done
 
 AzaleaMartRockerText:
-	text "The prototype"
+	ctxt "The prototype"
 	line "versions of"
 
 	para "Kurt's balls had"

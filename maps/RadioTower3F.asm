@@ -49,7 +49,7 @@ RadioTower3FCooltrainerFScript:
 	iftrue_jumptextfaceplayer RadioTower3FCooltrainerFIsDirectorSafeText
 	jumpthistextfaceplayer
 
-	text "The Team Rocket"
+	ctxt "The Team Rocket"
 	line "boss has locked"
 	cont "himself in."
 
@@ -78,7 +78,7 @@ RadioTower3FCooltrainerFScript:
 GenericTrainerGruntM7:
 	generictrainer GRUNTM, 7, EVENT_BEAT_ROCKET_GRUNTM_7, GruntM7SeenText, GruntM7BeatenText
 
-	text "I failed in my"
+	ctxt "I failed in my"
 	line "duties…"
 
 	para "I'll be docked pay"
@@ -88,7 +88,7 @@ GenericTrainerGruntM7:
 GenericTrainerGruntM8:
 	generictrainer GRUNTM, 8, EVENT_BEAT_ROCKET_GRUNTM_8, GruntM8SeenText, GruntM8BeatenText
 
-	text "I feel lousy over"
+	ctxt "I feel lousy over"
 	line "losing!"
 
 	para "Darn it! I hate"
@@ -98,7 +98,7 @@ GenericTrainerGruntM8:
 GenericTrainerGruntM9:
 	generictrainer GRUNTM, 9, EVENT_BEAT_ROCKET_GRUNTM_9, GruntM9SeenText, GruntM9BeatenText
 
-	text "What?! You made it"
+	ctxt "What?! You made it"
 	line "past our men in"
 	cont "the Underground?"
 
@@ -108,7 +108,7 @@ GenericTrainerGruntM9:
 GenericTrainerRocketScientistMarc:
 	generictrainer ROCKET_SCIENTIST, MARC, EVENT_BEAT_ROCKET_SCIENTIST_MARC, RocketScientistMarcSeenText, RocketScientistMarcBeatenText
 
-	text "Bwahahaha…"
+	ctxt "Bwahahaha…"
 
 	para "I can transmit as"
 	line "strong a signal as"
@@ -139,7 +139,7 @@ CardKeySlotScript::
 	end
 
 RadioTower3FSuperNerdText:
-	text "We have recordings"
+	ctxt "We have recordings"
 	line "of the cries of"
 
 	para "all #mon that"
@@ -150,7 +150,7 @@ RadioTower3FSuperNerdText:
 	done
 
 RadioTower3FGymGuideText_Rockets:
-	text "To trainers, #-"
+	ctxt "To trainers, #-"
 	line "mon are their"
 	cont "beloved partners."
 
@@ -162,7 +162,7 @@ RadioTower3FGymGuideText_Rockets:
 	done
 
 RadioTower3FGymGuideText:
-	text "We run 24 hours a"
+	ctxt "We run 24 hours a"
 	line "day to broadcast"
 
 	para "entertaining pro-"
@@ -174,12 +174,12 @@ RadioTower3FGymGuideText:
 	done
 
 RadioTower3FCooltrainerFIsDirectorSafeText:
-	text "Is the Director"
+	ctxt "Is the Director"
 	line "safe?"
 	done
 
 RadioTower3FCooltrainerFYoureMyHeroText:
-	text "Thank you!"
+	ctxt "Thank you!"
 	line "You're my hero!"
 
 	para "This is a token of"
@@ -187,19 +187,19 @@ RadioTower3FCooltrainerFYoureMyHeroText:
 	done
 
 RadioTower3FCooltrainerFItsAHeatRockText:
-	text "It's a Heat Rock."
+	ctxt "It's a Heat Rock."
 	line "It makes the move"
 	cont "Sunny Day last"
 	cont "longer."
 	done
 
 RadioTower3FCooltrainerFYouWereMarvelousText:
-	text "You were simply"
+	ctxt "You were simply"
 	line "marvelous!"
 	done
 
 GruntM7SeenText:
-	text "I've been given"
+	ctxt "I've been given"
 	line "strict orders."
 
 	para "I'm to crush any-"
@@ -208,21 +208,21 @@ GruntM7SeenText:
 	done
 
 GruntM7BeatenText:
-	text "What?!"
+	ctxt "What?!"
 	done
 
 GruntM8SeenText:
-	text "It feels great"
+	ctxt "It feels great"
 	line "ordering #mon"
 	cont "to commit crimes."
 	done
 
 GruntM8BeatenText:
-	text "You're kidding!"
+	ctxt "You're kidding!"
 	done
 
 GruntM9SeenText:
-	text "Why did the shut-"
+	ctxt "Why did the shut-"
 	line "ter open? Did you"
 
 	para "have something to"
@@ -230,36 +230,36 @@ GruntM9SeenText:
 	done
 
 GruntM9BeatenText:
-	text "I'm done for!"
+	ctxt "I'm done for!"
 	done
 
 RocketScientistMarcSeenText:
-	text "An unknown child"
+	ctxt "An unknown child"
 	line "wandering here?"
 
 	para "Who are you?"
 	done
 
 RocketScientistMarcBeatenText:
-	text "Tch! I took you"
+	ctxt "Tch! I took you"
 	line "too lightly!"
 	done
 
 RadioTower3FCardKeySlotText:
-	text "It's the Card Key"
+	ctxt "It's the Card Key"
 	line "slot."
 	done
 
 InsertedTheCardKeyText:
-	text "<PLAYER> inserted"
+	ctxt "<PLAYER> inserted"
 	line "the Card Key."
 	done
 
 RadioTower3FPersonnelSignText:
-	text "3F Personnel"
+	ctxt "3F Personnel"
 	done
 
 RadioTower3FPokemonMusicSignText:
-	text "#mon Music with"
+	ctxt "#mon Music with"
 	line "Host DJ Ben"
 	done

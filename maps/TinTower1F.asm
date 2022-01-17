@@ -296,7 +296,7 @@ TinTower1FSage3EntersMovement:
 	step_end
 
 TinTowerEusineSuicuneText:
-	text "Eusine: Awesome!"
+	ctxt "Eusine: Awesome!"
 	line "Too awesome, even!"
 
 	para "I've never seen a"
@@ -334,7 +334,7 @@ TinTowerEusineSuicuneText:
 	done
 
 TinTower1FSage1Text:
-	text "According to"
+	ctxt "According to"
 	line "legend…"
 
 	para "When the souls of"
@@ -355,9 +355,9 @@ TinTower1FSage1Text:
 
 TinTower1FSage2Text:
 if DEF(FAITHFUL)
-	text "When the Brass"
+	ctxt "When the Brass"
 else
-	text "When the Gong"
+	ctxt "When the Gong"
 endc
 	line "Tower burned down,"
 
@@ -390,7 +390,7 @@ endc
 	done
 
 TinTower1FSage3Text:
-	text "The two towers are"
+	ctxt "The two towers are"
 	line "said to have been"
 
 	para "built to foster"
@@ -407,7 +407,7 @@ TinTower1FSage3Text:
 	done
 
 TinTower1FSage4Text1:
-	text "Ho-Oh appears to"
+	ctxt "Ho-Oh appears to"
 	line "have descended"
 
 	para "upon this, the"
@@ -415,16 +415,16 @@ TinTower1FSage4Text1:
 	done
 
 TinTower1FSage5Text1:
-	text "This will protect"
+	ctxt "This will protect"
 	line "you. Take it."
 	done
 
 TinTower1FSage5Text2:
-	text "Now, go."
+	ctxt "Now, go."
 	done
 
 TinTower1FSage6Text1:
-	text "I believe you are"
+	ctxt "I believe you are"
 	line "being tested."
 
 	para "Free your mind"
@@ -433,7 +433,7 @@ TinTower1FSage6Text1:
 	done
 
 TinTowerEusineHoOhText:
-	text "I knew it."
+	ctxt "I knew it."
 
 	para "I knew you'd get"
 	line "to see the #mon"
@@ -455,7 +455,7 @@ TinTowerEusineHoOhText:
 	done
 
 TinTower1FSage4Text2:
-	text "The legendary"
+	ctxt "The legendary"
 	line "#mon are said"
 
 	para "to embody three"
@@ -472,7 +472,7 @@ TinTower1FSage4Text2:
 	done
 
 TinTower1FSage5Text3:
-	text "When the legendary"
+	ctxt "When the legendary"
 	line "#mon appeared…"
 
 	para "They struck terror"
@@ -493,7 +493,7 @@ TinTower1FSage5Text3:
 	done
 
 TinTower1FSage6Text2:
-	text "Of the legendary"
+	ctxt "Of the legendary"
 	line "#mon, Suicune"
 
 	para "is said to be the"

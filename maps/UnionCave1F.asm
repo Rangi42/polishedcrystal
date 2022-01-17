@@ -31,7 +31,7 @@ UnionCave1F_MapScriptHeader:
 GenericTrainerPokemaniacLarry:
 	generictrainer POKEMANIAC, LARRY, EVENT_BEAT_POKEMANIAC_LARRY, PokemaniacLarrySeenText, PokemaniacLarryBeatenText
 
-	text "Every Friday, you"
+	ctxt "Every Friday, you"
 	line "can hear #mon"
 
 	para "roars from deep"
@@ -41,7 +41,7 @@ GenericTrainerPokemaniacLarry:
 GenericTrainerHikerRussell:
 	generictrainer HIKER, RUSSELL, EVENT_BEAT_HIKER_RUSSELL, HikerRussellSeenText, HikerRussellBeatenText
 
-	text "All right, then!"
+	ctxt "All right, then!"
 	line "I've decided."
 
 	para "I'm not leaving"
@@ -52,7 +52,7 @@ GenericTrainerHikerRussell:
 GenericTrainerHikerDaniel:
 	generictrainer HIKER, DANIEL, EVENT_BEAT_HIKER_DANIEL, HikerDanielSeenText, HikerDanielBeatenText
 
-	text "I was conned into"
+	ctxt "I was conned into"
 	line "buying a Slowpoke-"
 	cont "Tail."
 
@@ -63,7 +63,7 @@ GenericTrainerHikerDaniel:
 GenericTrainerFirebreatherBill:
 	generictrainer FIREBREATHER, BILL, EVENT_BEAT_FIREBREATHER_BILL, FirebreatherBillSeenText, FirebreatherBillBeatenText
 
-	text "On weekends, you"
+	ctxt "On weekends, you"
 	line "can hear strange"
 
 	para "roars from deep in"
@@ -73,7 +73,7 @@ GenericTrainerFirebreatherBill:
 GenericTrainerFirebreatherRay:
 	generictrainer FIREBREATHER, RAY, EVENT_BEAT_FIREBREATHER_RAY, FirebreatherRaySeenText, FirebreatherRayBeatenText
 
-	text "It's my #mon's"
+	ctxt "It's my #mon's"
 	line "fire that lights"
 	cont "up this cave."
 	done
@@ -81,13 +81,13 @@ GenericTrainerFirebreatherRay:
 GenericTrainerRuin_maniacJones:
 	generictrainer RUIN_MANIAC, JONES, EVENT_BEAT_RUIN_MANIAC_JONES, Ruin_maniacJonesSeenText, Ruin_maniacJonesBeatenText
 
-	text "The Ruins are hid-"
+	ctxt "The Ruins are hid-"
 	line "ing something…"
 	cont "I just know it!"
 	done
 
 HikerRussellSeenText:
-	text "You're headed to"
+	ctxt "You're headed to"
 	line "Azalea, are you?"
 
 	para "Let my #mon see"
@@ -96,11 +96,11 @@ HikerRussellSeenText:
 	done
 
 HikerRussellBeatenText:
-	text "Oh, oh, oh!"
+	ctxt "Oh, oh, oh!"
 	done
 
 PokemaniacLarrySeenText:
-	text "I roam far and"
+	ctxt "I roam far and"
 	line "wide in search of"
 	cont "#mon."
 
@@ -112,12 +112,12 @@ PokemaniacLarrySeenText:
 	done
 
 PokemaniacLarryBeatenText:
-	text "Ugh. My poor #-"
+	ctxt "Ugh. My poor #-"
 	line "mon…"
 	done
 
 HikerDanielSeenText:
-	text "Whoa! What a"
+	ctxt "Whoa! What a"
 	line "surprise!"
 
 	para "I didn't expect to"
@@ -125,12 +125,12 @@ HikerDanielSeenText:
 	done
 
 HikerDanielBeatenText:
-	text "Whoa! I'm beaten"
+	ctxt "Whoa! I'm beaten"
 	line "big time!"
 	done
 
 FirebreatherBillSeenText:
-	text "Zubat's Supersonic"
+	ctxt "Zubat's Supersonic"
 	line "keeps confusing"
 	cont "my #mon."
 
@@ -139,11 +139,11 @@ FirebreatherBillSeenText:
 	done
 
 FirebreatherBillBeatenText:
-	text "I flamed out!"
+	ctxt "I flamed out!"
 	done
 
 FirebreatherRaySeenText:
-	text "If it's light, a"
+	ctxt "If it's light, a"
 	line "cave isn't scary."
 
 	para "If you're strong,"
@@ -152,15 +152,15 @@ FirebreatherRaySeenText:
 	done
 
 FirebreatherRayBeatenText:
-	text "Flash!"
+	ctxt "Flash!"
 	done
 
 Ruin_maniacJonesSeenText:
-	text "Have you explored"
+	ctxt "Have you explored"
 	line "the Ruins of Alph?"
 	done
 
 Ruin_maniacJonesBeatenText:
-	text "Gahahah!"
+	ctxt "Gahahah!"
 	done
 

@@ -34,7 +34,7 @@ Route35_MapScriptHeader:
 GenericTrainerBreederTheresa:
 	generictrainer BREEDER, THERESA, EVENT_BEAT_BREEDER_THERESA, BreederTheresaSeenText, BreederTheresaBeatenText
 
-	text "I take my #mon"
+	ctxt "I take my #mon"
 	line "to get haircuts"
 
 	para "in Goldenrod City,"
@@ -94,7 +94,7 @@ Route35RematchM:
 GenericTrainerCamperIvan:
 	generictrainer CAMPER, IVAN, EVENT_BEAT_CAMPER_IVAN, CamperIvanSeenText, CamperIvanBeatenText
 
-	text "Music on the radio"
+	ctxt "Music on the radio"
 	line "changes the moods"
 	cont "of wild #mon."
 	done
@@ -102,7 +102,7 @@ GenericTrainerCamperIvan:
 GenericTrainerCoupleGailandeli1:
 	generictrainer COUPLE, GAILANDELI1, EVENT_BEAT_COUPLE_GAIL_AND_ELI, CoupleGailandeli1SeenText, CoupleGailandeli1BeatenText
 
-	text "Eli: I was humili-"
+	ctxt "Eli: I was humili-"
 	line "ated in front of"
 	cont "my girlfriend…"
 	done
@@ -110,7 +110,7 @@ GenericTrainerCoupleGailandeli1:
 GenericTrainerCoupleGailandeli2:
 	generictrainer COUPLE, GAILANDELI2, EVENT_BEAT_COUPLE_GAIL_AND_ELI, CoupleGailandeli2SeenText, CoupleGailandeli2BeatenText
 
-	text "Gail: I can count"
+	ctxt "Gail: I can count"
 	line "on my #mon more"
 	cont "than my boyfriend."
 	done
@@ -118,7 +118,7 @@ GenericTrainerCoupleGailandeli2:
 GenericTrainerPicnickerKim:
 	generictrainer PICNICKER, KIM, EVENT_BEAT_PICNICKER_KIM, PicnickerKimSeenText, PicnickerKimBeatenText
 
-	text "The Gym Badges are"
+	ctxt "The Gym Badges are"
 	line "pretty. I collect"
 	cont "them."
 	done
@@ -220,7 +220,7 @@ TrainerBug_catcherArnie1:
 GenericTrainerFirebreatherWalt:
 	generictrainer FIREBREATHER, WALT, EVENT_BEAT_FIREBREATHER_WALT, FirebreatherWaltSeenText, FirebreatherWaltBeatenText
 
-	text "The #mon March"
+	ctxt "The #mon March"
 	line "on the radio lures"
 	cont "wild #mon."
 	done
@@ -251,7 +251,7 @@ TrainerOfficerDirk:
 	jumpopenedtext OfficerDirkPrettyToughText
 
 CamperIvanSeenText:
-	text "I've been getting"
+	ctxt "I've been getting"
 	line "#mon data off"
 
 	para "my radio. I think"
@@ -259,63 +259,63 @@ CamperIvanSeenText:
 	done
 
 CamperIvanBeatenText:
-	text "I give!"
+	ctxt "I give!"
 	done
 
 CoupleGailandeli1SeenText:
-	text "Eli: I'm gonna"
+	ctxt "Eli: I'm gonna"
 	line "show my girlfriend"
 	cont "I'm hot stuff!"
 	done
 
 CoupleGailandeli1BeatenText:
-	text "Eli: I wish you'd"
+	ctxt "Eli: I wish you'd"
 	line "have lost for me…"
 	done
 
 CoupleGailandeli2SeenText:
-	text "Gail: My boy-"
+	ctxt "Gail: My boy-"
 	line "friend's weak, so I"
 	cont "can't rely on him."
 	done
 
 CoupleGailandeli2BeatenText:
-	text "Gail: Oh, my!"
+	ctxt "Gail: Oh, my!"
 	line "You're so strong!"
 	done
 
 PicnickerKimSeenText:
-	text "Are you going to"
+	ctxt "Are you going to"
 	line "the Gym? Me too!"
 	done
 
 PicnickerKimBeatenText:
-	text "Oh. I couldn't"
+	ctxt "Oh. I couldn't"
 	line "win…"
 	done
 
 BreederTheresaSeenText:
-	text "How do you care"
+	ctxt "How do you care"
 	line "for your #mon?"
 	done
 
 BreederTheresaBeatenText:
-	text "Ah! You take good"
+	ctxt "Ah! You take good"
 	line "care of them!"
 	done
 
 JugglerIrwin1SeenText:
-	text "Behold my graceful"
+	ctxt "Behold my graceful"
 	line "Ball dexterity!"
 	done
 
 JugglerIrwin1BeatenText:
-	text "Whew! That was a"
+	ctxt "Whew! That was a"
 	line "jolt!"
 	done
 
 JugglerIrwinAfterBattleText:
-	text "I was going to"
+	ctxt "I was going to"
 	line "dazzle you with my"
 	cont "prize #mon."
 
@@ -324,18 +324,18 @@ JugglerIrwinAfterBattleText:
 	done
 
 Bug_catcherArnie1SeenText:
-	text "I'll go anywhere"
+	ctxt "I'll go anywhere"
 	line "if bug #mon"
 	cont "appear there."
 	done
 
 Bug_catcherArnie1BeatenText:
-	text "Huh? I shouldn't"
+	ctxt "Huh? I shouldn't"
 	line "have lost that…"
 	done
 
 BugCatcherArnieAfterBattleText:
-	text "My Venonat won me"
+	ctxt "My Venonat won me"
 	line "the Bug-Catching"
 
 	para "Contest at the"
@@ -343,7 +343,7 @@ BugCatcherArnieAfterBattleText:
 	done
 
 BugCatcherArnieYanmaText:
-	text "Wow… Look at all"
+	ctxt "Wow… Look at all"
 	line "those Yanma!"
 
 	para "I'm so blown away,"
@@ -351,26 +351,26 @@ BugCatcherArnieYanmaText:
 	done
 
 FirebreatherWaltSeenText:
-	text "I'm practicing my"
+	ctxt "I'm practicing my"
 	line "fire breathing."
 	done
 
 FirebreatherWaltBeatenText:
-	text "Ow! I scorched the"
+	ctxt "Ow! I scorched the"
 	line "tip of my nose!"
 	done
 
 OfficerDirkSeenText:
-	text "Danger lurks in"
+	ctxt "Danger lurks in"
 	line "the night!"
 	done
 
 OfficerDirkBeatenText:
-	text "Whoops!"
+	ctxt "Whoops!"
 	done
 
 OfficerDirkAfterBattleText:
-	text "You know, night-"
+	ctxt "You know, night-"
 	line "time is fun in its"
 	cont "own ways."
 
@@ -379,7 +379,7 @@ OfficerDirkAfterBattleText:
 	done
 
 OfficerDirkPrettyToughText:
-	text "Your #mon look"
+	ctxt "Your #mon look"
 	line "pretty tough."
 
 	para "You could go any-"
@@ -387,5 +387,5 @@ OfficerDirkPrettyToughText:
 	done
 
 Route35SignText:
-	text "Route 35"
+	ctxt "Route 35"
 	done

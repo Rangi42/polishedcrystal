@@ -16,7 +16,7 @@ OlivinePunishmentSpeechHouse_MapScriptHeader:
 	object_event  5,  5, SPRITE_CUTE_GIRL, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 2, -1, -1, PAL_NPC_RED, OBJECTTYPE_COMMAND, jumptextfaceplayer, OlivinePunishmentSpeechHouseDaughterText, -1
 
 OlivinePunishmentSpeechHouseDadText:
-	text "Along the way to"
+	ctxt "Along the way to"
 	line "Cianwood, there"
 
 	para "are four deserted"
@@ -28,7 +28,7 @@ OlivinePunishmentSpeechHouseDadText:
 	done
 
 OlivinePunishmentSpeechHouseDaughterText:
-	text "Whenever I get in"
+	ctxt "Whenever I get in"
 	line "trouble, Daddy"
 	cont "always scares me."
 	done

@@ -39,7 +39,7 @@ SilphCo3FSilphEmployeeScript:
 	jumpthisopenedtext
 
 .Text2:
-	text "That's a very"
+	ctxt "That's a very"
 	line "rare type of"
 	cont "# Ball."
 
@@ -47,7 +47,7 @@ SilphCo3FSilphEmployeeScript:
 	done
 
 .Text1:
-	text "I'm from a family"
+	ctxt "I'm from a family"
 	line "of # Ball"
 	cont "creators."
 
@@ -71,7 +71,7 @@ SilphCo3FSilphEmployeeScript:
 	done
 
 SilphCo3FScientist1Text:
-	text "Silph just entered"
+	ctxt "Silph just entered"
 	line "a partnership with"
 	cont "Devon Corp."
 
@@ -81,7 +81,7 @@ SilphCo3FScientist1Text:
 	done
 
 SilphCo3FScientist2Text:
-	text "# Balls work on"
+	ctxt "# Balls work on"
 	line "the same principle"
 
 	para "as the PC Storage"
@@ -96,7 +96,7 @@ SilphCo3FScientist2Text:
 	done
 
 SilphCo3FOfficerText:
-	text "I can't let you on"
+	ctxt "I can't let you on"
 	line "the upper floors,"
 
 	para "even if you are"
@@ -107,7 +107,7 @@ SilphCo3FOfficerText:
 	done
 
 SilphCo3FGentlemanText:
-	text "I'm visiting from"
+	ctxt "I'm visiting from"
 	line "Devon Corporation."
 
 	para "We are working to-"
@@ -118,10 +118,10 @@ SilphCo3FGentlemanText:
 	done
 
 SilphCo3FDeptSignText:
-	text "Silph Co. 3F"
+	ctxt "Silph Co. 3F"
 	line "# Ball Tech"
 	done
 
 SilphCo3FElevatorText:
-	text "Out Of Order"
+	ctxt "Out Of Order"
 	done

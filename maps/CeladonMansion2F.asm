@@ -22,7 +22,7 @@ CeladonMansion2FSign:
 	jumptext CeladonMansion2FSignText
 
 CeladonMansion2FComputerText:
-	text "<PLAYER> turned on"
+	ctxt "<PLAYER> turned on"
 	line "the PC."
 
 	para "…"
@@ -52,6 +52,6 @@ CeladonMansion2FComputerText:
 	done
 
 CeladonMansion2FSignText:
-	text "GAME FREAK"
+	ctxt "GAME FREAK"
 	line "Meeting Room"
 	done

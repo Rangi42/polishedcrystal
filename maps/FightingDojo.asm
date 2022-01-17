@@ -323,7 +323,7 @@ RematchBrown2Script:
 	sjump RematchAgathaScript
 
 FightingDojoBlackBeltText:
-	text "Hello!"
+	ctxt "Hello!"
 
 	para "Karate King, the"
 	line "Fighting Dojo's"
@@ -334,7 +334,7 @@ FightingDojoBlackBeltText:
 	done
 
 BlackBeltText_ExplainsRematches:
-	text "Gym Leaders from"
+	ctxt "Gym Leaders from"
 	line "Kanto and Johto"
 
 	para "come to this"
@@ -346,12 +346,12 @@ BlackBeltText_ExplainsRematches:
 	done
 
 FightingDojoSign1Text:
-	text "What goes around"
+	ctxt "What goes around"
 	line "comes around!"
 	done
 
 FightingDojoSign2Text:
-	text "Enemies on every"
+	ctxt "Enemies on every"
 	line "side!"
 	done
 
@@ -438,7 +438,7 @@ RematchYellowScript:
 	rematch_script Yellow, YELLOW, ENGINE_GYM_LEADER_REMATCH_3
 
 BrockText_Greeting:
-	text "I like Rock-type"
+	ctxt "I like Rock-type"
 	line "#mon best."
 
 	para "They're solid and"
@@ -453,7 +453,7 @@ BrockText_Greeting:
 	done
 
 MistyText_Greeting:
-	text "I've heard a lot"
+	ctxt "I've heard a lot"
 	line "of good things"
 
 	para "about you since"
@@ -464,7 +464,7 @@ MistyText_Greeting:
 	done
 
 SurgeText_Greeting:
-	text "I can feel great"
+	ctxt "I can feel great"
 	line "electric power"
 
 	para "around the Magnet"
@@ -476,7 +476,7 @@ SurgeText_Greeting:
 	done
 
 ErikaText_Greeting:
-	text "Good to see you"
+	ctxt "Good to see you"
 	line "again!"
 
 	para "How are you?"
@@ -490,7 +490,7 @@ ErikaText_Greeting:
 	done
 
 JanineText_Greeting:
-	text "I can't use my"
+	ctxt "I can't use my"
 	line "ninja technique,"
 
 	para "but I won't let"
@@ -498,14 +498,14 @@ JanineText_Greeting:
 	done
 
 SabrinaText_Greeting:
-	text "I knew you'd come"
+	ctxt "I knew you'd come"
 	line "battle me again."
 
 	para "I had a feeling."
 	done
 
 BlaineText_Greeting:
-	text "My Gym is still"
+	ctxt "My Gym is still"
 	line "gone, so let's"
 
 	para "hold our rematch"
@@ -513,7 +513,7 @@ BlaineText_Greeting:
 	done
 
 BlueText_Greeting:
-	text "Good! You're"
+	ctxt "Good! You're"
 	line "here too."
 
 	para "Thanks for coming"
@@ -521,7 +521,7 @@ BlueText_Greeting:
 	done
 
 FalknerText_Greeting:
-	text "I'm in top form"
+	ctxt "I'm in top form"
 	line "today."
 
 	para "It's a pleasure to"
@@ -530,13 +530,13 @@ FalknerText_Greeting:
 	done
 
 BugsyText_Greeting:
-	text "Good to see you"
+	ctxt "Good to see you"
 	line "again! Behold my"
 	cont "bug research!"
 	done
 
 WhitneyText_Greeting:
-	text "Hi, <PLAYER>!"
+	ctxt "Hi, <PLAYER>!"
 	line "Since we're both"
 
 	para "here, let's have"
@@ -546,7 +546,7 @@ WhitneyText_Greeting:
 	done
 
 MortyText_Greeting:
-	text "The legendary"
+	ctxt "The legendary"
 	line "#mon did not"
 	cont "choose me…"
 
@@ -558,14 +558,14 @@ MortyText_Greeting:
 	done
 
 ChuckText_Greeting:
-	text "There you are!"
+	ctxt "There you are!"
 
 	para "Taste my 24-hour"
 	line "training!"
 	done
 
 JasmineText_Greeting:
-	text "Hello, <PLAYER>…"
+	ctxt "Hello, <PLAYER>…"
 	line "How are you?"
 	cont "I'm doing well…"
 
@@ -575,7 +575,7 @@ JasmineText_Greeting:
 	done
 
 PryceText_Greeting:
-	text "No need for words."
+	ctxt "No need for words."
 	line "A #mon battle"
 
 	para "is the way for us"
@@ -583,13 +583,13 @@ PryceText_Greeting:
 	done
 
 ClairText_Greeting:
-	text "…So you are here."
+	ctxt "…So you are here."
 
 	para "Now let's battle!"
 	done
 
 PalmerText_Greeting:
-	text "So, you've come"
+	ctxt "So, you've come"
 	line "this far!"
 
 	para "As the Tower"
@@ -612,7 +612,7 @@ PalmerText_Greeting:
 	done
 
 LoreleiText_Greeting:
-	text "Hello again,"
+	ctxt "Hello again,"
 	line "<PLAYER>."
 
 	para "We're on my home"
@@ -622,7 +622,7 @@ LoreleiText_Greeting:
 	done
 
 AgathaText_Greeting:
-	text "Hello, child."
+	ctxt "Hello, child."
 
 	para "You're still"
 	line "filling a Pokedex"
@@ -639,7 +639,7 @@ AgathaText_Greeting:
 	done
 
 WalkerText_Greeting:
-	text "Hey there,"
+	ctxt "Hey there,"
 	line "<PLAYER>!"
 
 	para "Seems like I just"
@@ -653,7 +653,7 @@ WalkerText_Greeting:
 	done
 
 YellowText_Greeting:
-	text "Hi, <PLAYER>!"
+	ctxt "Hi, <PLAYER>!"
 
 	para "Let me see…"
 
@@ -667,7 +667,7 @@ YellowText_Greeting:
 	done
 
 BrockText_WinLoss:
-	text "I've lost again…"
+	ctxt "I've lost again…"
 
 	para "You aren't adven-"
 	line "turing around"
@@ -675,13 +675,13 @@ BrockText_WinLoss:
 	done
 
 MistyText_WinLoss:
-	text "Wow! You're"
+	ctxt "Wow! You're"
 	line "getting stronger"
 	cont "by the battle!"
 	done
 
 SurgeText_WinLoss:
-	text "You're very"
+	ctxt "You're very"
 	line "strong!"
 
 	para "But I'll repay my"
@@ -689,28 +689,28 @@ SurgeText_WinLoss:
 	done
 
 ErikaText_WinLoss:
-	text "You have grown"
+	ctxt "You have grown"
 	line "even stronger…"
 	done
 
 JanineText_WinLoss:
-	text "I lost today, but"
+	ctxt "I lost today, but"
 	line "I'll win next time!"
 	done
 
 SabrinaText_WinLoss:
-	text "I know… we will"
+	ctxt "I know… we will"
 	line "meet again some-"
 	cont "time."
 	done
 
 BlaineText_WinLoss:
-	text "Waaah! I've burned"
+	ctxt "Waaah! I've burned"
 	line "out again!"
 	done
 
 BlueText_WinLoss:
-	text "Just as I"
+	ctxt "Just as I"
 	line "expected!"
 
 	para "No wonder you've"
@@ -719,19 +719,19 @@ BlueText_WinLoss:
 	done
 
 FalknerText_WinLoss:
-	text "Mmm… It's still a"
+	ctxt "Mmm… It's still a"
 	line "long way to become"
 	cont "the best trainer…"
 	done
 
 BugsyText_WinLoss:
-	text "You must have"
+	ctxt "You must have"
 	line "studied a lot"
 	cont "about #mon!"
 	done
 
 WhitneyText_WinLoss:
-	text "You really are"
+	ctxt "You really are"
 	line "strong!"
 
 	para "But I won't lose"
@@ -739,7 +739,7 @@ WhitneyText_WinLoss:
 	done
 
 MortyText_WinLoss:
-	text "I've lost again…"
+	ctxt "I've lost again…"
 	line "You have something"
 
 	para "more than just"
@@ -747,22 +747,22 @@ MortyText_WinLoss:
 	done
 
 ChuckText_WinLoss:
-	text "Wahaha!"
+	ctxt "Wahaha!"
 	line "A battle with you"
 	cont "is never boring!"
 	done
 
 JasmineText_WinLoss:
-	text "True to your"
+	ctxt "True to your"
 	line "reputation…"
 	done
 
 PryceText_WinLoss:
-	text "Mmm… Impressive!"
+	ctxt "Mmm… Impressive!"
 	done
 
 ClairText_WinLoss:
-	text "Way to go."
+	ctxt "Way to go."
 	line "…"
 
 	para "Now give it"
@@ -770,26 +770,26 @@ ClairText_WinLoss:
 	done
 
 PalmerText_WinLoss:
-	text "Bravo! I feel"
+	ctxt "Bravo! I feel"
 	line "inspired in my"
 	cont "heart!"
 	done
 
 LoreleiText_WinLoss:
-	text "How dare you!"
+	ctxt "How dare you!"
 	done
 
 AgathaText_WinLoss:
-	text "Woo-hoo!"
+	ctxt "Woo-hoo!"
 	done
 
 WalkerText_WinLoss:
-	text "I was no match"
+	ctxt "I was no match"
 	line "for you!"
 	done
 
 YellowText_WinLoss:
-	text "Hahaha!"
+	ctxt "Hahaha!"
 	done
 
 BrockText_Done:
@@ -813,71 +813,71 @@ LoreleiText_Done:
 AgathaText_Done:
 WalkerText_Done:
 YellowText_Done:
-	text "I'm done battling"
+	ctxt "I'm done battling"
 	line "for today."
 	done
 
 FightingDojoScheduleQuestionText:
-	text "It's a training"
+	ctxt "It's a training"
 	line "schedule! Read it?"
 	done
 
 FightingDojoScheduleSundayText:
-	text "Sunday: Jasmine,"
+	ctxt "Sunday: Jasmine,"
 	line "Erika, Sabrina"
 	done
 
 FightingDojoScheduleMondayText:
-	text "Monday: Falkner,"
+	ctxt "Monday: Falkner,"
 	line "Janine, ???"
 	done
 
 FightingDojoScheduleMondayWalkerText:
-	text "Monday: Falkner,"
+	ctxt "Monday: Falkner,"
 	line "Janine, Walker"
 	done
 
 FightingDojoScheduleTuesdayText:
-	text "Tuesday: Pryce,"
+	ctxt "Tuesday: Pryce,"
 	line "Blaine, ???"
 	done
 
 FightingDojoScheduleTuesdayLoreleiText:
-	text "Tuesday: Pryce,"
+	ctxt "Tuesday: Pryce,"
 	line "Blaine, Lorelei"
 	done
 
 FightingDojoScheduleWednesdayText:
-	text "Wednesday: Brock,"
+	ctxt "Wednesday: Brock,"
 	line "Misty, Blue"
 	done
 
 FightingDojoScheduleThursdayText:
-	text "Thursday: Bugsy,"
+	ctxt "Thursday: Bugsy,"
 	line "???, Morty"
 	done
 
 FightingDojoScheduleThursdayPalmerText:
-	text "Thursday: Bugsy,"
+	ctxt "Thursday: Bugsy,"
 	line "Palmer, Morty"
 	done
 
 FightingDojoScheduleFridayText:
-	text "Friday: Lt.Surge,"
+	ctxt "Friday: Lt.Surge,"
 	line "???, Clair"
 	done
 
 FightingDojoScheduleFridayYellowText:
-	text "Friday: Lt.Surge,"
+	ctxt "Friday: Lt.Surge,"
 	line "Yellow, Clair"
 	done
 
 FightingDojoScheduleSaturdayText:
-	text "Saturday: Whitney,"
+	ctxt "Saturday: Whitney,"
 	line "Chuck, ???"
 	done
 
 FightingDojoScheduleSaturdayAgathaText:
-	text "Saturday: Whitney,"
+	ctxt "Saturday: Whitney,"
 	line "Chuck, Agatha"
 	done

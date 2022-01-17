@@ -78,7 +78,7 @@ KogaScript:
 	end
 
 .SeenText:
-	text "Fwahahahaha!"
+	ctxt "Fwahahahaha!"
 
 	para "I am Koga of the"
 	line "Elite Four."
@@ -107,13 +107,13 @@ KogaScript:
 	done
 
 .BeatenText:
-	text "Ah!"
+	ctxt "Ah!"
 	line "You have proven"
 	cont "your worth!"
 	done
 
 .AfterText:
-	text "I subjected you to"
+	ctxt "I subjected you to"
 	line "everything I could"
 	cont "muster."
 
@@ -127,7 +127,7 @@ KogaScript:
 	done
 
 .SeenRematchText:
-	text "Your arrival is"
+	ctxt "Your arrival is"
 	line "indeed impressive,"
 	cont "as is your look of"
 	cont "resolve."
@@ -142,7 +142,7 @@ KogaScript:
 	done
 
 .AfterRematchText:
-	text "Never have I met"
+	ctxt "Never have I met"
 	line "the likes of you."
 
 	para "I must devote"

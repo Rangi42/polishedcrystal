@@ -142,7 +142,7 @@ OlivineLighthouseJasmineLeavesRightMovement:
 	step_end
 
 JasmineCianwoodPharmacyText:
-	text "Jasmine: …This"
+	ctxt "Jasmine: …This"
 	line "#mon always"
 
 	para "kept the sea lit"
@@ -166,25 +166,25 @@ JasmineCianwoodPharmacyText:
 	done
 
 JasmineGetSomeMedicineText:
-	text "…May I ask you to"
+	ctxt "…May I ask you to"
 	line "get some medicine"
 	cont "for me? Please?"
 	done
 
 JasmineCureAmphyText:
-	text "Jasmine: …Will"
+	ctxt "Jasmine: …Will"
 	line "that medicine cure"
 	cont "Amphy?"
 	done
 
 PlayerHandedSecretpotionText:
-	text "<PLAYER> handed the"
+	ctxt "<PLAYER> handed the"
 	line "SecretPotion to"
 	cont "Jasmine."
 	done
 
 JasmineDontBeOffendedText:
-	text "Jasmine: …Um,"
+	ctxt "Jasmine: …Um,"
 	line "please don't be"
 	cont "offended…"
 
@@ -194,14 +194,14 @@ JasmineDontBeOffendedText:
 	done
 
 JasmineAmphyHowAreYouFeelingText:
-	text "Jasmine: …"
+	ctxt "Jasmine: …"
 
 	para "Amphy, how are you"
 	line "feeling?"
 	done
 
 JasmineThankYouText:
-	text "Jasmine: …Oh, I'm"
+	ctxt "Jasmine: …Oh, I'm"
 	line "so relieved…"
 
 	para "This is just so"
@@ -215,24 +215,24 @@ JasmineThankYouText:
 	done
 
 JasmineISeeText:
-	text "Jasmine: …I see…"
+	ctxt "Jasmine: …I see…"
 	done
 
 JasmineAmphyHangOnText:
-	text "…Amphy, hang on!"
+	ctxt "…Amphy, hang on!"
 	done
 
 AmphyPalPalooText:
-	text "Amphy: …"
+	ctxt "Amphy: …"
 	line "…Pa… paloo…"
 	done
 
 AmphyBreathingLaboredText:
-	text "Its breathing is"
+	ctxt "Its breathing is"
 	line "terribly labored…"
 	done
 
 AmphyPaluPaluluText:
-	text "Amphy: Palu!"
+	ctxt "Amphy: Palu!"
 	line "Palulu!"
 	done

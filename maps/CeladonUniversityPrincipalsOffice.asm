@@ -31,7 +31,7 @@ CeladonUniversityPrincipalsOfficeMatsumotoScript:
 	jumpthisopenedtext
 
 .Text2:
-	text "I work hard to"
+	ctxt "I work hard to"
 	line "keep this place"
 	cont "running smoothly,"
 
@@ -41,7 +41,7 @@ CeladonUniversityPrincipalsOfficeMatsumotoScript:
 	done
 
 .Text1:
-	text "Hello there,"
+	ctxt "Hello there,"
 	line "young trainer!"
 
 	para "I am Professor"
@@ -60,13 +60,13 @@ CeladonUniversityPrincipalsOfficeMatsumotoScript:
 	done
 
 CeladonUniversityPrincipalsOfficeSignpost1Text:
-	text "It's Prof.Matsu-"
+	ctxt "It's Prof.Matsu-"
 	line "moto's degree in"
 	cont "Education."
 	done
 
 CeladonUniversityPrincipalsOfficeSignpost2Text:
-	text "It's a picture of"
+	ctxt "It's a picture of"
 	line "Prof.Matsumoto in"
 
 	para "front of a grad-"
@@ -76,7 +76,7 @@ CeladonUniversityPrincipalsOfficeSignpost2Text:
 CeladonUniversityPrincipalsOfficeComputer:
 	jumpthistext
 
-	text "There's a draft"
+	ctxt "There's a draft"
 	line "email asking"
 
 	para "alumni for"
@@ -84,7 +84,7 @@ CeladonUniversityPrincipalsOfficeComputer:
 	done
 
 CeladonUniversityPrincipalsOfficeBookshelfText:
-	text "It's a complete set"
+	ctxt "It's a complete set"
 	line "of books of the"
 
 	para "Encyclopedia"

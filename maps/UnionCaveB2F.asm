@@ -48,7 +48,7 @@ UnionCaveLapras:
 GenericTrainerCooltrainermNick:
 	generictrainer COOLTRAINERM, NICK, EVENT_BEAT_COOLTRAINERM_NICK, CooltrainermNickSeenText, CooltrainermNickBeatenText
 
-	text "Your #mon style"
+	ctxt "Your #mon style"
 	line "is stunning and"
 	cont "colorful, I admit."
 
@@ -59,7 +59,7 @@ GenericTrainerCooltrainermNick:
 GenericTrainerCooltrainerfGwen:
 	generictrainer COOLTRAINERF, GWEN, EVENT_BEAT_COOLTRAINERF_GWEN, CooltrainerfGwenSeenText, CooltrainerfGwenBeatenText
 
-	text "I'm going to train"
+	ctxt "I'm going to train"
 	line "by myself until I"
 	cont "improve."
 	done
@@ -67,7 +67,7 @@ GenericTrainerCooltrainerfGwen:
 GenericTrainerCooltrainerfEmma:
 	generictrainer COOLTRAINERF, EMMA, EVENT_BEAT_COOLTRAINERF_EMMA, CooltrainerfEmmaSeenText, CooltrainerfEmmaBeatenText
 
-	text "Just once a week,"
+	ctxt "Just once a week,"
 	line "a #mon comes to"
 	cont "the water's edge."
 
@@ -76,7 +76,7 @@ GenericTrainerCooltrainerfEmma:
 	done
 
 CooltrainermNickSeenText:
-	text "There are two"
+	ctxt "There are two"
 	line "kinds of people."
 
 	para "Those who have"
@@ -88,22 +88,22 @@ CooltrainermNickSeenText:
 	done
 
 CooltrainermNickBeatenText:
-	text "You've got"
+	ctxt "You've got"
 	line "dazzling style!"
 	done
 
 CooltrainerfGwenSeenText:
-	text "I'm in training."
+	ctxt "I'm in training."
 	line "Care for a round?"
 	done
 
 CooltrainerfGwenBeatenText:
-	text "Aww, no! You're"
+	ctxt "Aww, no! You're"
 	line "too good for me."
 	done
 
 CooltrainerfEmmaSeenText:
-	text "If the #mon I"
+	ctxt "If the #mon I"
 	line "liked were there,"
 	cont "I'd go anywhere."
 
@@ -112,7 +112,7 @@ CooltrainerfEmmaSeenText:
 	done
 
 CooltrainerfEmmaBeatenText:
-	text "I'd rather pet my"
+	ctxt "I'd rather pet my"
 	line "babies than this!"
 	done
 

@@ -18,7 +18,7 @@ SaffronBookSpeechHouse_MapScriptHeader:
 	object_event  3,  3, SPRITE_BOOK_PAPER_POKEDEX, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_COMMAND, jumptext, SaffronBookSpeechHouseBookText, -1
 
 SaffronBookSpeechHouseLassText:
-	text "I absolutely love"
+	ctxt "I absolutely love"
 	line "to read!"
 
 	para "I borrowed a bunch"
@@ -29,7 +29,7 @@ SaffronBookSpeechHouseLassText:
 	done
 
 SaffronBookSpeechHouseBookText:
-	text "It's a stack of"
+	ctxt "It's a stack of"
 	line "story books."
 
 	para "The Princess and"

@@ -762,7 +762,7 @@ LoadMapPals:
 	ret z
 
 	; overcast maps have their own roof color table
-	call GetOvercastIndex
+	farcall GetOvercastIndex
 	and a
 	jr z, .not_overcast
 	dec a

@@ -27,7 +27,7 @@ SlowpokeWellB2FGymGuideScript:
 	endtext
 
 SlowpokeWellB2FGymGuideText:
-	text "I'm waiting to see"
+	ctxt "I'm waiting to see"
 	line "Slowpoke's moment"
 	cont "of evolution."
 
@@ -47,7 +47,7 @@ SlowpokeWellB2FGymGuideText:
 	done
 
 SlowpokeWellB2FGymGuideText_GotKingsRock:
-	text "I'm going to be"
+	ctxt "I'm going to be"
 	line "like Slowpoke."
 
 	para "I'll wait patient-"

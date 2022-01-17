@@ -59,7 +59,7 @@ SafariZoneWestRestHouse2FlanneryScript:
 	jumpopenedtext .RefusedText
 
 .IntroText:
-	text "Hi there!"
+	ctxt "Hi there!"
 
 	para "Good to see some-"
 	line "one else exploring"
@@ -82,7 +82,7 @@ SafariZoneWestRestHouse2FlanneryScript:
 	done
 
 .RematchText:
-	text "Hi there,"
+	ctxt "Hi there,"
 	line "<PLAYER>!"
 
 	para "Good to see you"
@@ -98,7 +98,7 @@ SafariZoneWestRestHouse2FlanneryScript:
 	done
 
 .SeenText:
-	text "I'm going to demo-"
+	ctxt "I'm going to demo-"
 	line "nstrate the hot"
 
 	para "moves I honed"
@@ -107,12 +107,12 @@ SafariZoneWestRestHouse2FlanneryScript:
 	done
 
 .BeatenText:
-	text "Whew! On the verge"
+	ctxt "Whew! On the verge"
 	line "of eruption!"
 	done
 
 .AfterText:
-	text "I lost the match,"
+	ctxt "I lost the match,"
 	line "but I'm completely"
 	cont "satisfied."
 
@@ -128,7 +128,7 @@ SafariZoneWestRestHouse2FlanneryScript:
 	done
 
 .RefusedText:
-	text "OK then… Uh…"
+	ctxt "OK then… Uh…"
 	line "Don't be shy about"
 	cont "it if you return!"
 	done

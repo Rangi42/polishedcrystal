@@ -38,7 +38,7 @@ ShamoutiIslandVileplumeScript:
 	jumpthistext
 
 .VileplumeText:
-	text "Vileplume is fast"
+	ctxt "Vileplume is fast"
 	line "asleep…"
 	done
 
@@ -58,7 +58,7 @@ ShamoutiIslandVileplumeScript:
 	end
 
 .PokeFluteText:
-	text "The #gear was"
+	ctxt "The #gear was"
 	line "placed near the"
 
 	para "sleeping Vile-"
@@ -66,7 +66,7 @@ ShamoutiIslandVileplumeScript:
 	done
 
 .WokeUpText:
-	text "Vileplume woke up!"
+	ctxt "Vileplume woke up!"
 	done
 
 ShamoutiIslandYoungsterScript:
@@ -82,7 +82,7 @@ ShamoutiIslandYoungsterScript:
 	jumpthisopenedtext
 
 .Text2:
-	text "A shiny Pikachu"
+	ctxt "A shiny Pikachu"
 	line "would be a real"
 	cont "Pikablu."
 
@@ -92,17 +92,17 @@ ShamoutiIslandYoungsterScript:
 	done
 
 .Text1:
-	text "Hello again! Let"
+	ctxt "Hello again! Let"
 	line "me give you that"
 	cont "souvenir."
 	done
 
 ShamoutiIslandPikabluText:
-	text "Pikablu: Rill!"
+	ctxt "Pikablu: Rill!"
 	done
 
 ShamoutiIslandFisherText:
-	text "Today we're dancing"
+	ctxt "Today we're dancing"
 	line "for no reason. ♪"
 
 	para "Someday we'll"
@@ -117,14 +117,14 @@ ShamoutiIslandFisherText:
 	done
 
 ShamoutiIslandSignText:
-	text "Shamouti Island"
+	ctxt "Shamouti Island"
 	done
 
 ShamoutiHotelSignText:
-	text "Shamouti Hotel"
+	ctxt "Shamouti Hotel"
 	done
 
 ShamoutiTouristCenterSignText:
-	text "Shamouti Tourist"
+	ctxt "Shamouti Tourist"
 	line "Center"
 	done

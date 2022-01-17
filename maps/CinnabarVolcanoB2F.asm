@@ -110,11 +110,11 @@ CinnabarVolcanoMoltres:
 	end
 
 MoltresText:
-	text "Gyaoo!"
+	ctxt "Gyaoo!"
 	done
 
 CinnabarVolcanoB2FLawrenceSpeechText:
-	text "Lawrence: Hello"
+	ctxt "Lawrence: Hello"
 	line "again, <PLAYER>."
 
 	para "So you are search-"
@@ -160,7 +160,7 @@ CinnabarVolcanoB2FLawrenceSpeechText:
 	done
 
 CinnabarVolcanoB2FLawrenceEscapeRopeText:
-	text "Lawrence used an"
+	ctxt "Lawrence used an"
 	line "Escape Rope!"
 	done
 

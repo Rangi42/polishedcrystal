@@ -1,3 +1,7 @@
+ClearText::
+	text_start
+	done
+
 ClearSpeechBox::
 	hlcoord TEXTBOX_INNERX, TEXTBOX_INNERY
 	lb bc, TEXTBOX_INNERH - 1, TEXTBOX_INNERW
@@ -621,6 +625,71 @@ PrintDayOfWeek::
 .Satur:  db "Satur@"
 .Day:    db "day@"
 
-ClearText::
-	text_start
-	done
+TextCommand_CTXT::
+; decompress and print text
+	ld d, 1 ; start with no bits to read a byte right away
+.character_loop
+
+	push bc ; push coords
+
+	xor a ; start at node $00
+.tree_loop
+	; "e = [hli]" when d reaches 0, then carry = next bit from e
+	dec d
+	jr nz, .no_reload
+	ld e, [hl]
+	inc hl
+	ld d, 8
+.no_reload
+	sla e
+	; bc = TextCompressionHuffmanTree[node=a][branch=carry]
+	adc a
+	add LOW(TextCompressionHuffmanTree)
+	ld c, a
+	adc HIGH(TextCompressionHuffmanTree)
+	sub c
+	ld b, a
+	; keep traversing the tree until a leaf node ($7f and above)
+	ld a, [bc]
+	cp $7f
+	jr c, .tree_loop
+
+	; leaf node IDs $ec-$fb correspond to characters $4e-$5d
+	cp $ec
+	jr c, .ok
+	sub $ec - $4e
+.ok
+	; write printable string to wCompressedTextBuffer
+	ld [wCompressedTextBuffer], a
+	ld a, "@"
+	ld [wCompressedTextBuffer+1], a
+
+	pop bc ; pop coords
+
+	push hl ; push string position
+	push de ; push bit-reading state
+
+	; PlaceString expects de = start of string, hl = coords
+	ld de, wCompressedTextBuffer
+	ld a, [de]
+	push af
+	ld h, b
+	ld l, c
+	rst PlaceString ; -2 bytes, +2 cycles over "call _PlaceString"
+	pop af
+
+	pop de ; pop bit-reading state
+	pop hl ; pop string position
+
+	; check for characters that signal end of compression
+	; (same ones as DoTextUntilTerminator)
+	cp "<PROMPT>"
+	jr z, .done
+	cp "<DONE>"
+	jr z, .done
+	cp "@"
+	ret z
+	jr .character_loop
+.done
+	pop bc ; pop DoTextUntilTerminator call
+	ret

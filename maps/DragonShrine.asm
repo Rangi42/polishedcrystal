@@ -328,7 +328,7 @@ DragonShrineClairWalkOutMovement:
 	step_end
 
 DragonShrineElderGreetingText:
-	text "Hm… Good to see"
+	ctxt "Hm… Good to see"
 	line "you here."
 
 	para "No need to explain"
@@ -351,29 +351,29 @@ DragonShrineElderGreetingText:
 	done
 
 DragonShrineQuestion1Text:
-	text "What are #mon"
+	ctxt "What are #mon"
 	line "to you?"
 	done
 
 DragonShrineQuestion2Text:
-	text "What helps you to"
+	ctxt "What helps you to"
 	line "win battles?"
 	done
 
 DragonShrineQuestion3Text:
-	text "What kind of"
+	ctxt "What kind of"
 	line "trainer do you"
 	cont "wish to battle?"
 	done
 
 DragonShrineQuestion4Text:
-	text "What is most"
+	ctxt "What is most"
 	line "important for"
 	cont "raising #mon?"
 	done
 
 DragonShrineQuestion5Text:
-	text "Strong #mon."
+	ctxt "Strong #mon."
 	line "Weak #mon."
 
 	para "Which is more"
@@ -381,7 +381,7 @@ DragonShrineQuestion5Text:
 	done
 
 DragonShrinePassedTestText:
-	text "Hm… I see…"
+	ctxt "Hm… I see…"
 
 	para "You care deeply"
 	line "for #mon."
@@ -400,7 +400,7 @@ DragonShrinePassedTestText:
 	done
 
 DragonShrineMustIInformLanceText:
-	text "Clair!"
+	ctxt "Clair!"
 
 	para "This child is"
 	line "impeccable, in"
@@ -415,7 +415,7 @@ DragonShrineMustIInformLanceText:
 	done
 
 DragonShrineElderScoldsClairText:
-	text "Clair…"
+	ctxt "Clair…"
 
 	para "Reflect upon what"
 	line "it is that you"
@@ -425,12 +425,12 @@ DragonShrineElderScoldsClairText:
 	done
 
 DragonShrineComeAgainText:
-	text "Come again, if you"
+	ctxt "Come again, if you"
 	line "so desire."
 	done
 
 DragonShrineTakeThisDratiniText:
-	text "Hm… Good to see"
+	ctxt "Hm… Good to see"
 	line "you here."
 
 	para "Your arrival is"
@@ -447,12 +447,12 @@ DragonShrineTakeThisDratiniText:
 	done
 
 DragonShrinePartyAndBoxFullText:
-	text "Hm? Your party and"
+	ctxt "Hm? Your party and"
 	line "box are both full."
 	done
 
 DragonShrineSymbolicDragonText:
-	text "Dragon #mon are"
+	ctxt "Dragon #mon are"
 	line "symbolic of our"
 	cont "clan."
 
@@ -464,7 +464,7 @@ DragonShrineSymbolicDragonText:
 	done
 
 DragonShrineClairsGrandfatherText:
-	text "Clair appears to"
+	ctxt "Clair appears to"
 	line "have learned an"
 
 	para "invaluable lesson"
@@ -475,7 +475,7 @@ DragonShrineClairsGrandfatherText:
 	done
 
 DragonShrineSilverIsInTrainingText:
-	text "A boy close to"
+	ctxt "A boy close to"
 	line "your age is in"
 	cont "training here."
 
@@ -487,21 +487,21 @@ DragonShrineSilverIsInTrainingText:
 	done
 
 DragonShrineWrongAnswerText1:
-	text "Hah? I didn't"
+	ctxt "Hah? I didn't"
 	line "quite catch that…"
 	done
 
 DragonShrineWrongAnswerText2:
-	text "What was it you"
+	ctxt "What was it you"
 	line "said?"
 	done
 
 DragonShrineRightAnswerText:
-	text "Oh, I understand…"
+	ctxt "Oh, I understand…"
 	done
 
 DragonShrineElder2Text:
-	text "It's been quite"
+	ctxt "It's been quite"
 	line "some time since a"
 
 	para "trainer has gained"
@@ -513,7 +513,7 @@ DragonShrineElder2Text:
 	done
 
 DragonShrineElder3Text:
-	text "You know young"
+	ctxt "You know young"
 	line "Master Lance?"
 
 	para "He looks so much"
@@ -525,7 +525,7 @@ DragonShrineElder3Text:
 	done
 
 DragonShrineClairYouPassedText:
-	text "So how did it go?"
+	ctxt "So how did it go?"
 
 	para "I guess there's no"
 	line "point in asking."
@@ -538,34 +538,34 @@ DragonShrineClairYouPassedText:
 	done
 
 DragonShrineClairThatCantBeText:
-	text "That can't be!"
+	ctxt "That can't be!"
 	done
 
 DragonShrineClairYoureLyingText:
-	text "You're lying!"
+	ctxt "You're lying!"
 
 	para "Even I haven't"
 	line "been approved!"
 	done
 
 DragonShrineIUnderstandText:
-	text "I-I understand…"
+	ctxt "I-I understand…"
 	done
 
 DragonShrineHereRisingBadgeText:
-	text "Here, this is the"
+	ctxt "Here, this is the"
 	line "Rising Badge…"
 
 	para "Hurry up! Take it!"
 	done
 
 DragonShrinePlayerReceivedRisingBadgeText:
-	text "<PLAYER> received"
+	ctxt "<PLAYER> received"
 	line "the Rising Badge."
 	done
 
 DragonShrineRisingBadgeExplanationText:
-	text "The Rising Badge"
+	ctxt "The Rising Badge"
 	line "will enable your"
 
 	para "#mon to use the"
@@ -583,5 +583,5 @@ DragonShrineRisingBadgeExplanationText:
 	done
 
 DragonShrineSpeechlessText:
-	text "………………………………"
+	ctxt "………………………………"
 	done

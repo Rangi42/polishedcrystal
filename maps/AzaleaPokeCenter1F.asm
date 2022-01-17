@@ -24,7 +24,7 @@ PokemonJournalBugsyScript:
 	setflag ENGINE_READ_BUGSY_JOURNAL
 	jumpthistext
 
-	text "#mon Journal"
+	ctxt "#mon Journal"
 
 	para "Special Feature:"
 	line "Leader Bugsy!"
@@ -44,7 +44,7 @@ AzaleaPokeCenter1FCooltrainermScript:
 	iftrue_jumptextfaceplayer .NiteText
 	jumpthistextfaceplayer
 
-	text "For a guy who"
+	ctxt "For a guy who"
 	line "makes # Balls,"
 
 	para "Kurt isn't much of"
@@ -58,7 +58,7 @@ AzaleaPokeCenter1FCooltrainermScript:
 	done
 
 .NiteText:
-	text "Kurt and Prof.Oak"
+	ctxt "Kurt and Prof.Oak"
 	line "are old friends."
 
 	para "They're also close"
@@ -69,7 +69,7 @@ AzaleaPokeCenter1FCooltrainermScript:
 	done
 
 AzaleaPokeCenter1FGentlemanText:
-	text "Do your #mon"
+	ctxt "Do your #mon"
 	line "know HM moves?"
 
 	para "Those moves can"
@@ -80,7 +80,7 @@ AzaleaPokeCenter1FGentlemanText:
 	done
 
 AzaleaPokeCenter1FSightseermText:
-	text "This Bill guy"
+	ctxt "This Bill guy"
 	line "created the system"
 
 	para "for storing"
@@ -92,7 +92,7 @@ AzaleaPokeCenter1FSightseermText:
 	done
 
 AzaleaPokeCenter1FPokefanfText:
-	text "Do you know about"
+	ctxt "Do you know about"
 	line "Apricorns?"
 
 	para "Crack one open,"

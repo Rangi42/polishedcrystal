@@ -24,25 +24,25 @@ DimCave1F_MapScriptHeader:
 GenericTrainerSuper_nerdGregg:
 	generictrainer SUPER_NERD, GREGG, EVENT_BEAT_SUPER_NERD_GREGG, .SeenText, .BeatenText
 
-	text "The Magnet Train"
+	ctxt "The Magnet Train"
 	line "is fast, but it"
 	cont "can't drift."
 	done
 
 .SeenText:
-	text "These carts are"
+	ctxt "These carts are"
 	line "lame! They can't"
 	cont "drift at all!"
 	done
 
 .BeatenText:
-	text "I don't care!"
+	ctxt "I don't care!"
 	done
 
 GenericTrainerScientistDexter:
 	generictrainer SCIENTIST, DEXTER, EVENT_BEAT_SCIENTIST_DEXTER, .SeenText, .BeatenText
 
-	text "I work for the"
+	ctxt "I work for the"
 	line "Power Plant."
 
 	para "We use the water-"
@@ -52,30 +52,30 @@ GenericTrainerScientistDexter:
 	done
 
 .SeenText:
-	text "I'm a hydrologist"
+	ctxt "I'm a hydrologist"
 	line "first, and a"
 	cont "trainer second."
 	done
 
 .BeatenText:
-	text "I should stick to"
+	ctxt "I should stick to"
 	line "hydrology…"
 	done
 
 GenericTrainerGuitaristmBiff:
 	generictrainer GUITARISTM, BIFF, EVENT_BEAT_GUITARISTM_BIFF, .SeenText, .BeatenText
 
-	text "I love heavy metal"
+	ctxt "I love heavy metal"
 	line "and heavy metals!"
 	done
 
 .SeenText:
-	text "I dig rock and"
+	ctxt "I dig rock and"
 	line "dig rock!"
 	done
 
 .BeatenText:
-	text "Ground into the"
+	ctxt "Ground into the"
 	line "ground!"
 	done
 

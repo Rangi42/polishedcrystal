@@ -47,7 +47,7 @@ LavRadioTower1FGentlemanScript:
 	jumpthisopenedtext
 
 .GotExpnCardText:
-	text "With that thing,"
+	ctxt "With that thing,"
 	line "you can tune into"
 
 	para "the radio programs"
@@ -57,7 +57,7 @@ LavRadioTower1FGentlemanScript:
 	done
 
 .OffTheAirText:
-	text "Oh, no, no, no!"
+	ctxt "Oh, no, no, no!"
 
 	para "We've been off the"
 	line "air ever since the"
@@ -75,7 +75,7 @@ LavRadioTower1FGentlemanScript:
 	done
 
 .ReturnedMachinePartText:
-	text "Ah! So you're the"
+	ctxt "Ah! So you're the"
 	line "<PLAYER> who solved"
 
 	para "the Power Plant's"
@@ -99,7 +99,7 @@ LavRadioTower1FSuperNerd2Script:
 	iftrue_jumptextfaceplayer LavRadioTower1FSuperNerd2Text_GotExpnCard
 	jumpthistextfaceplayer
 
-	text "Hey there!"
+	ctxt "Hey there!"
 
 	para "I am the super"
 	line "Music Director!"
@@ -118,7 +118,7 @@ LavRadioTower1FSuperNerd2Script:
 	done
 
 LavRadioTower1FReceptionistText:
-	text "Welcome!"
+	ctxt "Welcome!"
 	line "Feel free to look"
 
 	para "around anywhere on"
@@ -126,7 +126,7 @@ LavRadioTower1FReceptionistText:
 	done
 
 LavRadioTower1FOfficerText:
-	text "Sorry, but you can"
+	ctxt "Sorry, but you can"
 	line "only tour the"
 	cont "ground floor."
 
@@ -141,7 +141,7 @@ LavRadioTower1FOfficerText:
 	done
 
 LavRadioTower1FSuperNerd1Text:
-	text "Many people are"
+	ctxt "Many people are"
 	line "hard at work here"
 
 	para "in the Radio"
@@ -153,7 +153,7 @@ LavRadioTower1FSuperNerd1Text:
 	done
 
 LavRadioTower1FSuperNerd2Text_GotExpnCard:
-	text "Hey there!"
+	ctxt "Hey there!"
 
 	para "I am the super"
 	line "Music Director!"
@@ -170,7 +170,7 @@ LavRadioTower1FSuperNerd2Text_GotExpnCard:
 	done
 
 LavRadioTower1FDirectoryText:
-	text "1F Reception"
+	ctxt "1F Reception"
 	line "2F Sales"
 
 	para "3F Personnel"
@@ -181,7 +181,7 @@ LavRadioTower1FDirectoryText:
 	done
 
 LavRadioTower1FPokeFluteSignText:
-	text "Perk Up #mon"
+	ctxt "Perk Up #mon"
 	line "with Mellow Sounds"
 
 	para "of the # Flute"
@@ -190,7 +190,7 @@ LavRadioTower1FPokeFluteSignText:
 
 ; TODO: use this text
 LavRadioTower1FReferenceLibraryText:
-	text "Wow! A full rack"
+	ctxt "Wow! A full rack"
 	line "of #mon CDs and"
 	cont "videos."
 

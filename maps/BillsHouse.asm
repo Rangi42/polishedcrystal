@@ -21,7 +21,7 @@ PokemonJournalBillScript:
 	setflag ENGINE_READ_BILL_JOURNAL
 	jumpthistext
 
-	text "#mon Journal"
+	ctxt "#mon Journal"
 
 	para "Special Feature:"
 	line "#Maniac Bill!"
@@ -41,7 +41,7 @@ PokemonJournalBillScript:
 	done
 
 BillsHousePCText:
-	text "There's a spinning"
+	ctxt "There's a spinning"
 	line "3D model of a"
 	cont "Porygon."
 	done
@@ -66,7 +66,7 @@ BillsHouseBillScript:
 	jumpthistext
 
 .AfterText:
-	text "That was one rad"
+	ctxt "That was one rad"
 	line "battle!"
 
 	para "Any #Maniac"
@@ -77,7 +77,7 @@ BillsHouseBillScript:
 	done
 
 .IntroText:
-	text "Bill: Eevee is"
+	ctxt "Bill: Eevee is"
 	line "such a fascinating"
 	cont "#mon."
 
@@ -98,7 +98,7 @@ BillsHouseBillScript:
 	done
 
 .SeenText:
-	text "You caught all"
+	ctxt "You caught all"
 	line "three of the"
 	cont "legendary beasts?"
 
@@ -121,5 +121,5 @@ BillsHouseBillScript:
 	done
 
 .BeatenText:
-	text "Yeehah!"
+	ctxt "Yeehah!"
 	done

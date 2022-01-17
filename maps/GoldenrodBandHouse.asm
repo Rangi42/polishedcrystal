@@ -17,7 +17,7 @@ GoldenrodBandHouse_MapScriptHeader:
 	object_event  2,  4, SPRITE_BATTLE_GIRL, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, GoldenrodBandHouseCooltrainerFText, -1
 
 GoldenrodBandHouseRocker1Text:
-	text "I play guitar in"
+	ctxt "I play guitar in"
 	line "our cover band."
 
 	para "Give us a listen"
@@ -26,7 +26,7 @@ GoldenrodBandHouseRocker1Text:
 	done
 
 GoldenrodBandHouseRocker2Text:
-	text "Music and passion"
+	ctxt "Music and passion"
 	line "are always in"
 
 	para "fashion. Don't"
@@ -34,7 +34,7 @@ GoldenrodBandHouseRocker2Text:
 	done
 
 GoldenrodBandHouseCooltrainerFText:
-	text "People like diff-"
+	ctxt "People like diff-"
 	line "erent types of"
 	cont "music, but every-"
 

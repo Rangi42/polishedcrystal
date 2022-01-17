@@ -29,7 +29,7 @@ Route26_MapScriptHeader:
 GenericTrainerDragonTamerKazu:
 	generictrainer DRAGON_TAMER, KAZU, EVENT_BEAT_DRAGON_TAMER_KAZU, DragonTamerKazuSeenText, DragonTamerKazuBeatenText
 
-	text "It's going to be"
+	ctxt "It's going to be"
 	line "tough to win at"
 	cont "the League."
 
@@ -131,7 +131,7 @@ TrainerCooltrainermGaven1:
 GenericTrainerCooltrainerfJoyce:
 	generictrainer COOLTRAINERF, JOYCE, EVENT_BEAT_COOLTRAINERF_JOYCE, CooltrainerfJoyceSeenText, CooltrainerfJoyceBeatenText
 
-	text "I've defeated"
+	ctxt "I've defeated"
 	line "eight Gym Leaders,"
 
 	para "so I was feeling"
@@ -229,7 +229,7 @@ TrainerCooltrainerfBeth1:
 GenericTrainerPsychicRichard:
 	generictrainer PSYCHIC_T, RICHARD, EVENT_BEAT_PSYCHIC_RICHARD, PsychicRichardSeenText, PsychicRichardBeatenText
 
-	text "People and #mon"
+	ctxt "People and #mon"
 	line "grow from their"
 	cont "experiences."
 
@@ -240,7 +240,7 @@ GenericTrainerPsychicRichard:
 GenericTrainerBattleGirlRonda:
 	generictrainer BATTLE_GIRL, RONDA, EVENT_BEAT_BATTLE_GIRL_RONDA, BattleGirlRondaSeenText, BattleGirlRondaBeatenText
 
-	text "You see some of"
+	ctxt "You see some of"
 	line "the world's str-"
 
 	para "ongest trainers"
@@ -253,7 +253,7 @@ GenericTrainerBattleGirlRonda:
 GenericTrainerFisherScott:
 	generictrainer FISHER, SCOTT, EVENT_BEAT_FISHER_SCOTT, FisherScottSeenText, FisherScottBeatenText
 
-	text "Just like in fish-"
+	ctxt "Just like in fish-"
 	line "ing, it's all over"
 
 	para "in #mon if you"
@@ -263,7 +263,7 @@ GenericTrainerFisherScott:
 GenericTrainerDragonTamerErick:
 	generictrainer DRAGON_TAMER, ERICK, EVENT_BEAT_DRAGON_TAMER_ERICK, DragonTamerErickSeenText, DragonTamerErickBeatenText
 
-	text "Victory Road is"
+	ctxt "Victory Road is"
 	line "harsh."
 
 	para "Every trainer must"
@@ -272,7 +272,7 @@ GenericTrainerDragonTamerErick:
 	done
 
 DragonTamerKazuSeenText:
-	text "I'm making my"
+	ctxt "I'm making my"
 	line "final preparations"
 
 	para "for the #mon"
@@ -280,22 +280,22 @@ DragonTamerKazuSeenText:
 	done
 
 DragonTamerKazuBeatenText:
-	text "I blew it!"
+	ctxt "I blew it!"
 	done
 
 CooltrainermGaven1SeenText:
-	text "By experiencing"
+	ctxt "By experiencing"
 	line "tough battles, you"
 	cont "gain power."
 	done
 
 CooltrainermGaven1BeatenText:
-	text "Gaah! Life is even"
+	ctxt "Gaah! Life is even"
 	line "tougher!"
 	done
 
 CooltrainermGavenAfterText:
-	text "To get to the"
+	ctxt "To get to the"
 	line "#mon League,"
 
 	para "you have to get"
@@ -310,7 +310,7 @@ CooltrainermGavenAfterText:
 	done
 
 CooltrainerfJoyceSeenText:
-	text "Since you've come"
+	ctxt "Since you've come"
 	line "this far, you must"
 	cont "be good."
 
@@ -320,12 +320,12 @@ CooltrainerfJoyceSeenText:
 	done
 
 CooltrainerfJoyceBeatenText:
-	text "No! I don't"
+	ctxt "No! I don't"
 	line "believe this!"
 	done
 
 CooltrainerfBeth1SeenText:
-	text "I lost to a train-"
+	ctxt "I lost to a train-"
 	line "er named <RIVAL>."
 
 	para "He was really"
@@ -340,18 +340,18 @@ CooltrainerfBeth1SeenText:
 	done
 
 CooltrainerfBeth1BeatenText:
-	text "#mon aren't"
+	ctxt "#mon aren't"
 	line "tools of war."
 	done
 
 CooltrainerfBethAfterText:
-	text "#mon are in-"
+	ctxt "#mon are in-"
 	line "valuable, lifelong"
 	cont "partners."
 	done
 
 PsychicRichardSeenText:
-	text "Wow, look at all"
+	ctxt "Wow, look at all"
 	line "those Badges!"
 	cont "I'm impressed."
 
@@ -363,20 +363,20 @@ PsychicRichardSeenText:
 	done
 
 PsychicRichardBeatenText:
-	text "Good battle!"
+	ctxt "Good battle!"
 	done
 
 BattleGirlRondaSeenText:
-	text "Stop! I challenge"
+	ctxt "Stop! I challenge"
 	line "you to a duel!"
 	done
 
 BattleGirlRondaBeatenText:
-	text "Victory is yours!"
+	ctxt "Victory is yours!"
 	done
 
 FisherScottSeenText:
-	text "I'm feeling great"
+	ctxt "I'm feeling great"
 	line "today!"
 
 	para "I feel like I"
@@ -385,21 +385,21 @@ FisherScottSeenText:
 	done
 
 FisherScottBeatenText:
-	text "No! Not in this"
+	ctxt "No! Not in this"
 	line "battle!"
 	done
 
 DragonTamerErickSeenText:
-	text "Here be dragons!"
+	ctxt "Here be dragons!"
 	done
 
 DragonTamerErickBeatenText:
-	text "My dragons were"
+	ctxt "My dragons were"
 	line "conquered…"
 	done
 
 Route26SignText:
-	text "Route 26"
+	ctxt "Route 26"
 
 	para "#mon League"
 	line "Reception Gate"

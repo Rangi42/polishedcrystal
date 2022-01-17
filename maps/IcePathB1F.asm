@@ -72,7 +72,7 @@ IcePathB1FSetUpStoneTable:
 	earthquake 80
 	jumpthistext
 
-	text "The boulder fell"
+	ctxt "The boulder fell"
 	line "through."
 	done
 
@@ -109,18 +109,18 @@ IcePathB1FTutorIcyWindScript:
 GenericTrainerBoarderMax:
 	generictrainer BOARDER, MAX, EVENT_BEAT_BOARDER_MAX, BoarderMaxSeenText, BoarderMaxBeatenText
 
-	text "I'm not giving up!"
+	ctxt "I'm not giving up!"
 	done
 
 GenericTrainerSkierBecky:
 	generictrainer SKIER, BECKY, EVENT_BEAT_SKIER_BECKY, SkierBeckySeenText, SkierBeckyBeatenText
 
-	text "Don't forget to"
+	ctxt "Don't forget to"
 	line "wear a scarf!"
 	done
 
 IcePathB1FSkierText:
-	text "It's really cold"
+	ctxt "It's really cold"
 	line "in here!"
 
 	para "The pits in the"
@@ -137,7 +137,7 @@ IcePathB1FSkierText:
 	done
 
 Text_IcePathB1FTutorIcyWind:
-	text "I'll teach a #-"
+	ctxt "I'll teach a #-"
 	line "mon of yours to"
 
 	para "use Icy Wind if"
@@ -146,41 +146,41 @@ Text_IcePathB1FTutorIcyWind:
 	done
 
 Text_IcePathB1FTutorNoSilverLeaf:
-	text "Oh, but you don't"
+	ctxt "Oh, but you don't"
 	line "have a Silver"
 	cont "Leaf."
 	done
 
 Text_IcePathB1FTutorQuestion:
-	text "Should I teach"
+	ctxt "Should I teach"
 	line "your #mon"
 	cont "Icy Wind?"
 	done
 
 Text_IcePathB1FTutorRefused:
-	text "Brr…"
+	ctxt "Brr…"
 	done
 
 Text_IcePathB1FTutorTaught:
-	text "OK! Now your"
+	ctxt "OK! Now your"
 	line "#mon knows"
 	cont "Icy Wind!"
 	done
 
 BoarderMaxSeenText:
-	text "Blackthorn can't be"
+	ctxt "Blackthorn can't be"
 	line "much farther…"
 	done
 
 BoarderMaxBeatenText:
-	text "Wiped out!"
+	ctxt "Wiped out!"
 	done
 
 SkierBeckySeenText:
-	text "I can see my"
+	ctxt "I can see my"
 	line "breath freezing!"
 	done
 
 SkierBeckyBeatenText:
-	text "Achoo!"
+	ctxt "Achoo!"
 	done

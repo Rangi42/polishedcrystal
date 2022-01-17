@@ -19,7 +19,7 @@ Route13West_MapScriptHeader:
 GenericTrainerCamperClark:
 	generictrainer CAMPER, CLARK, EVENT_BEAT_CAMPER_CLARK, .SeenText, .BeatenText
 
-	text "It doesn't matter"
+	ctxt "It doesn't matter"
 	line "what kind of prep"
 	cont "work you've done."
 
@@ -28,7 +28,7 @@ GenericTrainerCamperClark:
 	done
 
 .SeenText:
-	text "Collect water!"
+	ctxt "Collect water!"
 	line "Don't let the fire"
 	cont "go out!"
 
@@ -40,13 +40,13 @@ GenericTrainerCamperClark:
 	done
 
 .BeatenText:
-	text "Pfuuuuhh…"
+	ctxt "Pfuuuuhh…"
 	done
 
 GenericTrainerPicnickerGinger:
 	generictrainer PICNICKER, GINGER, EVENT_BEAT_PICNICKER_GINGER, .SeenText, .BeatenText
 
-	text "You can communi-"
+	ctxt "You can communi-"
 	line "cate with #mon"
 
 	para "through whistling"
@@ -54,19 +54,19 @@ GenericTrainerPicnickerGinger:
 	done
 
 .SeenText:
-	text "Why do I always"
+	ctxt "Why do I always"
 	line "get the urge to"
 	cont "whistle outdoors?"
 	done
 
 .BeatenText:
-	text "Tweeee!"
+	ctxt "Tweeee!"
 	done
 
 GenericTrainerHikerKenny:
 	generictrainer HIKER, KENNY, EVENT_BEAT_HIKER_KENNY, HikerKennySeenText, HikerKennyBeatenText
 
-	text "Geological fea-"
+	ctxt "Geological fea-"
 	line "tures don't appear"
 	cont "to change."
 
@@ -76,17 +76,17 @@ GenericTrainerHikerKenny:
 	done
 
 HikerKennySeenText:
-	text "I should go to"
+	ctxt "I should go to"
 	line "Rock Tunnel to get"
 	cont "myself an Onix."
 	done
 
 HikerKennyBeatenText:
-	text "I lost…"
+	ctxt "I lost…"
 	done
 
 Route13DirectionsSignText:
-	text "North to Lavender"
+	ctxt "North to Lavender"
 	line "Town"
 
 	para "West to Fuchsia"

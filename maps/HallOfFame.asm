@@ -105,7 +105,7 @@ HallOfFameEntranceTrigger:
 	step_end
 
 .LanceText1:
-	text "Lance: It's been a"
+	ctxt "Lance: It's been a"
 	line "long time since I"
 	cont "last came here."
 
@@ -121,7 +121,7 @@ HallOfFameEntranceTrigger:
 	done
 
 .LanceTrophyText:
-	text "Take this as a"
+	ctxt "Take this as a"
 	line "memento of what"
 
 	para "you accomplished"
@@ -129,7 +129,7 @@ HallOfFameEntranceTrigger:
 	done
 
 .LanceText2:
-	text "Here today, we"
+	ctxt "Here today, we"
 	line "witnessed the rise"
 
 	para "of a new League"
@@ -161,21 +161,21 @@ HallOfFameEntranceTrigger:
 	done
 
 .GoldTrophyText:
-	text "<PLAYER> received"
+	ctxt "<PLAYER> received"
 	line "Gold Trophy."
 	done
 
 .GoldTrophySentText:
-	text "Gold Trophy"
+	ctxt "Gold Trophy"
 	line "was sent home."
 	done
 
 .SilverTrophyText:
-	text "<PLAYER> received"
+	ctxt "<PLAYER> received"
 	line "Silver Trophy."
 	done
 
 .SilverTrophySentText:
-	text "Silver Trophy"
+	ctxt "Silver Trophy"
 	line "was sent home."
 	done

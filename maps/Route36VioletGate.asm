@@ -28,7 +28,7 @@ Route36VioletGateOfficerScript:
 	jumpopenedtext Route36VioletGateOfficerText2
 
 Route36VioletGateOfficerText1:
-	text "Lately, I don't"
+	ctxt "Lately, I don't"
 	line "see people coming"
 
 	para "from Goldenrod"
@@ -36,7 +36,7 @@ Route36VioletGateOfficerText1:
 	done
 
 Route36VioletGateOfficerText2:
-	text "Things are busy"
+	ctxt "Things are busy"
 	line "lately, because"
 
 	para "many people are"
@@ -47,7 +47,7 @@ Route36VioletGateOfficerText2:
 	done
 
 Route36VioletGateYoungsterText:
-	text "Plants are living"
+	ctxt "Plants are living"
 	line "things too!"
 
 	para "They would want to"

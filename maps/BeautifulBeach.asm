@@ -26,7 +26,7 @@ BeautifulBeach_MapScriptHeader:
 	fruittree_event -2, 13, FRUITTREE_SHAMOUTI_ISLAND, FIGY_BERRY, PAL_NPC_BROWN
 
 BeautifulBeachWelcomeSignText:
-	text "Welcome to"
+	ctxt "Welcome to"
 	line "Shamouti Island!"
 
 	para "The main island"
@@ -34,19 +34,19 @@ BeautifulBeachWelcomeSignText:
 	done
 
 BeautifulBeachVillaSignText:
-	text "Island Villa"
+	ctxt "Island Villa"
 	done
 
 GenericTrainerAromaLadyBryony:
 	generictrainer AROMA_LADY, BRYONY, EVENT_BEAT_AROMA_LADY_BRYONY, .SeenText, .BeatenText
 
-	text "I am always in-"
+	ctxt "I am always in-"
 	line "vigorated by the"
 	cont "scents here."
 	done
 
 .SeenText:
-	text "Tropical flowers,"
+	ctxt "Tropical flowers,"
 	line "a sea breeze…"
 
 	para "Shamouti Island"
@@ -55,7 +55,7 @@ GenericTrainerAromaLadyBryony:
 	done
 
 .BeatenText:
-	text "Did the island's"
+	ctxt "Did the island's"
 	line "scent inspire you"
 	cont "to win?"
 	done
@@ -63,7 +63,7 @@ GenericTrainerAromaLadyBryony:
 GenericTrainerSightseermJaska:
 	generictrainer SIGHTSEERM, JASKA, EVENT_BEAT_SIGHTSEERM_JASKA, .SeenText, .BeatenText
 
-	text "I know it's silly,"
+	ctxt "I know it's silly,"
 	line "but I feel safer"
 
 	para "traveling with a"
@@ -71,20 +71,20 @@ GenericTrainerSightseermJaska:
 	done
 
 .SeenText:
-	text "My lucky socks"
+	ctxt "My lucky socks"
 	line "keep me safe dur-"
 	cont "ing my travels."
 	done
 
 .BeatenText:
-	text "They don't help"
+	ctxt "They don't help"
 	line "me win battles…"
 	done
 
 GenericTrainerTamerVince:
 	generictrainer TAMER, VINCE, EVENT_BEAT_TAMER_VINCE, .SeenText, .BeatenText
 
-	text "My #mon are"
+	ctxt "My #mon are"
 	line "expertly tamed,"
 
 	para "but I remain as"
@@ -92,19 +92,19 @@ GenericTrainerTamerVince:
 	done
 
 .SeenText:
-	text "My roaring spirit"
+	ctxt "My roaring spirit"
 	line "shall never be"
 	cont "tamed!"
 	done
 
 .BeatenText:
-	text "Nyuh?! ROAR!"
+	ctxt "Nyuh?! ROAR!"
 	done
 
 GenericTrainerSightseerfRosie:
 	generictrainer SIGHTSEERF, ROSIE, EVENT_BEAT_SIGHTSEERF_ROSIE, .SeenText, .BeatenText
 
-	text "Shamouti Island"
+	ctxt "Shamouti Island"
 	line "has so much"
 	cont "history!"
 
@@ -113,14 +113,14 @@ GenericTrainerSightseerfRosie:
 	done
 
 .SeenText:
-	text "The shrine, the"
+	ctxt "The shrine, the"
 	line "three temples,"
 	cont "the old ruins…"
 	cont "Where to first?"
 	done
 
 .BeatenText:
-	text "I guess the #-"
+	ctxt "I guess the #-"
 	line "mon Center is"
 	cont "first."
 	done
@@ -128,12 +128,12 @@ GenericTrainerSightseerfRosie:
 GenericTrainerSwimmerfRachel:
 	generictrainer SWIMMERF, RACHEL, EVENT_BEAT_SWIMMERF_RACHEL, .SeenText, .BeatenText
 
-	text "I could spend all"
+	ctxt "I could spend all"
 	line "day in this water."
 	done
 
 .SeenText:
-	text "White sand and"
+	ctxt "White sand and"
 	line "blue water…"
 
 	para "Beautiful Beach"
@@ -142,14 +142,14 @@ GenericTrainerSwimmerfRachel:
 	done
 
 .BeatenText:
-	text "You fight"
+	ctxt "You fight"
 	line "beautifully!"
 	done
 
 GenericTrainerArtistMarlene:
 	generictrainer ARTIST, MARLENE, EVENT_BEAT_ARTIST_MARLENE, .SeenText, .BeatenText
 
-	text "The three primary"
+	ctxt "The three primary"
 	line "colors of paint"
 
 	para "are red, blue,"
@@ -161,12 +161,12 @@ GenericTrainerArtistMarlene:
 	done
 
 .SeenText:
-	text "My Smeargle trio"
+	ctxt "My Smeargle trio"
 	line "can paint any"
 	cont "scene!"
 	done
 
 .BeatenText:
-	text "They couldn't win"
+	ctxt "They couldn't win"
 	line "a battle…"
 	done

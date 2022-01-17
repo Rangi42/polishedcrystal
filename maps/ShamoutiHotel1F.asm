@@ -27,7 +27,7 @@ ShamoutiHotel1FRestaurantTrigger:
 	endcallback
 
 ShamoutiHotel1FReceptionistText:
-	text "Welcome to the"
+	ctxt "Welcome to the"
 	line "Shamouti Hotel."
 
 	para "I'm afraid our"
@@ -59,7 +59,7 @@ ShamoutiHotel1FArtistScript:
 	jumpopenedtext .Text5
 
 .Text1:
-	text "No matter where"
+	ctxt "No matter where"
 	line "you go, <TRENDY>"
 
 	para "is the coolest"
@@ -68,7 +68,7 @@ ShamoutiHotel1FArtistScript:
 	done
 
 .Text2:
-	text "What?! <TRENDY>"
+	ctxt "What?! <TRENDY>"
 	line "isn't the coolest"
 	cont "thing around?"
 
@@ -78,7 +78,7 @@ ShamoutiHotel1FArtistScript:
 	done
 
 .Text3:
-	text "Oh, yeah! I've got"
+	ctxt "Oh, yeah! I've got"
 	line "it now!"
 
 	para "<TRENDY> is"
@@ -87,27 +87,27 @@ ShamoutiHotel1FArtistScript:
 	done
 
 .Text4:
-	text "<TRENDY> is the"
+	ctxt "<TRENDY> is the"
 	line "hip and happening"
 	cont "thing right now!"
 	done
 
 .Text5:
-	text "You know it!"
+	ctxt "You know it!"
 	line "I just can't get"
 	cont "enough of"
 	cont "<TRENDY>!"
 	done
 
 ShamoutiHotel1FCooltrainermText:
-	text "So <TRENDY> is"
+	ctxt "So <TRENDY> is"
 	line "the hot new thing?"
 
 	cont "That's so cool!"
 	done
 
 ShamoutiHotel1FLadyText:
-	text "Have you ever"
+	ctxt "Have you ever"
 	line "found a Bottle Cap"
 	cont "while fishing?"
 
@@ -124,11 +124,11 @@ ShamoutiHotel1FLadyText:
 	done
 
 ShamoutiHotel1FYoungsterText:
-	text "I heard that"
+	ctxt "I heard that"
 	line "<TRENDY> is “in”"
 	cont "right now!"
 	done
 
 ShamoutiHotelRestaurantSignText:
-	text "Oasis Restaurant"
+	ctxt "Oasis Restaurant"
 	done

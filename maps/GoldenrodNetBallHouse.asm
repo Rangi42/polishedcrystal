@@ -28,7 +28,7 @@ GoldenrodNetBallHouseYoungsterScript:
 	jumpthisopenedtext
 
 .Text2:
-	text "Sometimes you get"
+	ctxt "Sometimes you get"
 	line "really lucky and"
 	cont "catch a #mon at"
 
@@ -37,7 +37,7 @@ GoldenrodNetBallHouseYoungsterScript:
 	done
 
 .Text1:
-	text "I stocked up on"
+	ctxt "I stocked up on"
 	line "Net Balls to catch"
 	cont "a Pineco, but got"
 
@@ -49,7 +49,7 @@ GoldenrodNetBallHouseYoungsterScript:
 	done
 
 GoldenrodNetBallHouseBugCatcherText:
-	text "They hold Bug-"
+	ctxt "They hold Bug-"
 	line "Catching Contests"
 
 	para "in National Park"

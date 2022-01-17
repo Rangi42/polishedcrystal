@@ -27,7 +27,7 @@ Route26HealHouseTeacherScript:
 	jumptext Route26HealHouseKeepAtItText
 
 Route26HealHouseRestAWhileText:
-	text "Your #mon look"
+	ctxt "Your #mon look"
 	line "a little tired."
 
 	para "You should rest"
@@ -35,7 +35,7 @@ Route26HealHouseRestAWhileText:
 	done
 
 Route26HealHouseKeepAtItText:
-	text "There!"
+	ctxt "There!"
 
 	para "Your #mon are"
 	line "looking good!"

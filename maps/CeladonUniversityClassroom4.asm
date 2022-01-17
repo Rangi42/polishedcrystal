@@ -70,7 +70,7 @@ CeladonUniversityClassroom4RaymondScript:
 	jumpopenedtext .FinalText
 
 .IntroText1:
-	text "Hey! I'm Raymond!"
+	ctxt "Hey! I'm Raymond!"
 	line "Just call me Ray."
 
 	para "I'm one of top four"
@@ -89,7 +89,7 @@ CeladonUniversityClassroom4RaymondScript:
 	done
 
 .IntroText2:
-	text "Hey! I'm Raymond!"
+	ctxt "Hey! I'm Raymond!"
 	line "Just call me Ray."
 
 	para "I'm one of the"
@@ -104,20 +104,20 @@ CeladonUniversityClassroom4RaymondScript:
 	done
 
 .NoBattleText:
-	text "I knew you were"
+	ctxt "I knew you were"
 	line "scared."
 	done
 
 .SeenText:
-	text "Let's do this!"
+	ctxt "Let's do this!"
 	done
 
 .BeatenText:
-	text "Ohhhh nooooo!"
+	ctxt "Ohhhh nooooo!"
 	done
 
 .AfterText1:
-	text "How could this be?"
+	ctxt "How could this be?"
 	line "I'm one of the"
 	cont "Celadon Four!"
 
@@ -130,7 +130,7 @@ CeladonUniversityClassroom4RaymondScript:
 	done
 
 .AfterText2:
-	text "You've beaten all"
+	ctxt "You've beaten all"
 	line "of the Celadon"
 	cont "Four?"
 
@@ -141,7 +141,7 @@ CeladonUniversityClassroom4RaymondScript:
 	done
 
 .FinalText:
-	text "If you've conquered"
+	ctxt "If you've conquered"
 	line "the Celadon Four,"
 
 	para "you can bear any"
@@ -149,7 +149,7 @@ CeladonUniversityClassroom4RaymondScript:
 	done
 
 CeladonUniversityClassroom4CandelaText:
-	text "Hi! I'm Candela."
+	ctxt "Hi! I'm Candela."
 	line "I teach #mon"
 	cont "Battling!"
 
@@ -162,7 +162,7 @@ CeladonUniversityClassroom4CandelaText:
 	done
 
 CeladonUniversityClassroom4TeacherText:
-	text "I'm just a sub-"
+	ctxt "I'm just a sub-"
 	line "stitute."
 
 	para "The usual instruc-"
@@ -174,7 +174,7 @@ CeladonUniversityClassroom4TeacherText:
 	done
 
 CeladonUniversityClassroom4Bug_catcherText:
-	text "My lecturer said"
+	ctxt "My lecturer said"
 	line "my #mon could"
 
 	para "really battle with"
@@ -186,7 +186,7 @@ CeladonUniversityClassroom4Bug_catcherText:
 	done
 
 CeladonUniversityClassroom4FisherText:
-	text "The prof said my"
+	ctxt "The prof said my"
 	line "#mon was a"
 	cont "wonder!"
 
@@ -195,7 +195,7 @@ CeladonUniversityClassroom4FisherText:
 	done
 
 CeladonUniversityClassroom4LadyText:
-	text "The professor said"
+	ctxt "The professor said"
 	line "my #mon simply"
 	cont "amazed her."
 
@@ -219,7 +219,7 @@ CeladonUniversityClassroom4Rich_boyScript:
 	waitendtext
 
 .Text1:
-	text "We're learning"
+	ctxt "We're learning"
 	line "about #mon"
 	cont "abilities."
 
@@ -232,7 +232,7 @@ CeladonUniversityClassroom4Rich_boyScript:
 	done
 
 .Text2:
-	text "There are some"
+	ctxt "There are some"
 	line "rare “hidden"
 	cont "abilities” that"
 
@@ -250,7 +250,7 @@ CeladonUniversityClassroom4Rich_boyScript:
 	done
 
 CeladonUniversityClassroom4BlackboardText:
-	text "Be aware of these"
+	ctxt "Be aware of these"
 	line "factors in battle:"
 	cont "- Type chart"
 	cont "- Move effects"
@@ -277,7 +277,7 @@ CeladonUniversityClassroom4Bookshelf1:
 	endtext
 
 .Text1:
-	text "This bookcase is"
+	ctxt "This bookcase is"
 	line "a mess!"
 
 	para "<PLAYER> straight-"
@@ -287,12 +287,12 @@ CeladonUniversityClassroom4Bookshelf1:
 	done
 
 .Text2:
-	text "This bookcase is"
+	ctxt "This bookcase is"
 	line "all neat and tidy."
 	done
 
 CeladonUniversityClassroom4Bookshelf2Text:
-	text "It's a #mon"
+	ctxt "It's a #mon"
 	line "coloring book."
 
 	para "What's this doing"

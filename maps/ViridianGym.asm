@@ -63,7 +63,7 @@ ViridianGymGuyScript:
 GenericTrainerAceDuoAraandbela1:
 	generictrainer ACE_DUO, ARAANDBELA1, EVENT_BEAT_ACE_DUO_ARA_AND_BELA, AceDuoAraandbela1SeenText, AceDuoAraandbela1BeatenText
 
-	text "Ara: Me, I should"
+	ctxt "Ara: Me, I should"
 	line "be a pretty good"
 	cont "practice partner…"
 	done
@@ -71,7 +71,7 @@ GenericTrainerAceDuoAraandbela1:
 GenericTrainerAceDuoAraandbela2:
 	generictrainer ACE_DUO, ARAANDBELA2, EVENT_BEAT_ACE_DUO_ARA_AND_BELA, AceDuoAraandbela2SeenText, AceDuoAraandbela2BeatenText
 
-	text "Bela: Our practice"
+	ctxt "Bela: Our practice"
 	line "battles didn't pre-"
 	cont "pare us for this."
 	done
@@ -79,7 +79,7 @@ GenericTrainerAceDuoAraandbela2:
 GenericTrainerCooltrainerfSalma:
 	generictrainer COOLTRAINERF, SALMA, EVENT_BEAT_COOLTRAINERF_SALMA, CooltrainerfSalmaSeenText, CooltrainerfSalmaBeatenText
 
-	text "There are many"
+	ctxt "There are many"
 	line "Gyms in the world,"
 
 	para "but I really like"
@@ -89,7 +89,7 @@ GenericTrainerCooltrainerfSalma:
 GenericTrainerCooltrainerfBonita:
 	generictrainer COOLTRAINERF, BONITA, EVENT_BEAT_COOLTRAINERF_BONITA, CooltrainerfBonitaSeenText, CooltrainerfBonitaBeatenText
 
-	text "Looks like you've"
+	ctxt "Looks like you've"
 	line "still got some"
 	cont "energy left."
 	done
@@ -97,7 +97,7 @@ GenericTrainerCooltrainerfBonita:
 GenericTrainerAceDuoElanandida1:
 	generictrainer ACE_DUO, ELANANDIDA1, EVENT_BEAT_ACE_DUO_ELAN_AND_IDA, AceDuoElanandida1SeenText, AceDuoElanandida1BeatenText
 
-	text "Elan: You're"
+	ctxt "Elan: You're"
 	line "stronger than we"
 	cont "anticipated!"
 	done
@@ -105,7 +105,7 @@ GenericTrainerAceDuoElanandida1:
 GenericTrainerAceDuoElanandida2:
 	generictrainer ACE_DUO, ELANANDIDA2, EVENT_BEAT_ACE_DUO_ELAN_AND_IDA, AceDuoElanandida2SeenText, AceDuoElanandida2BeatenText
 
-	text "Ida: If all you"
+	ctxt "Ida: If all you"
 	line "have is strength,"
 	cont "you won't do well."
 
@@ -122,7 +122,7 @@ ViridianGymStatue:
 	jumpstd gymstatue2
 
 LeaderBlueBeforeText:
-	text "Blue: Yo! Finally"
+	ctxt "Blue: Yo! Finally"
 	line "got here, huh?"
 
 	para "I wasn't in the"
@@ -155,7 +155,7 @@ LeaderBlueBeforeText:
 	done
 
 LeaderBlueWinText:
-	text "Blue: What?"
+	ctxt "Blue: What?"
 
 	para "How the heck did I"
 	line "lose to you?"
@@ -170,17 +170,17 @@ LeaderBlueWinText:
 	done
 
 Text_ReceivedEarthBadge:
-	text "<PLAYER> received"
+	ctxt "<PLAYER> received"
 	line "the Earth Badge."
 	done
 
 LeaderBlueAfterText:
-	text "Blue: Here! Take"
+	ctxt "Blue: Here! Take"
 	line "this as well!"
 	done
 
 BlueOutroText:
-	text "It contains Stone"
+	ctxt "It contains Stone"
 	line "Edge. It's not only"
 
 	para "for Rock-type"
@@ -223,7 +223,7 @@ BlueOutroText:
 	done
 
 LeaderBlueEpilogueText:
-	text "Blue: Listen, you."
+	ctxt "Blue: Listen, you."
 
 	para "You'd better not"
 	line "lose until I beat"
@@ -231,7 +231,7 @@ LeaderBlueEpilogueText:
 	done
 
 ViridianGymGuyText:
-	text "Yo, Champ in"
+	ctxt "Yo, Champ in"
 	line "making!"
 
 	para "How's it going?"
@@ -251,7 +251,7 @@ ViridianGymGuyText:
 	done
 
 ViridianGymGuyWinText:
-	text "Man, you are truly"
+	ctxt "Man, you are truly"
 	line "tough…"
 
 	para "That was a heck of"
@@ -262,29 +262,29 @@ ViridianGymGuyWinText:
 	done
 
 AceDuoAraandbela1SeenText:
-	text "Ara: Come on,"
+	ctxt "Ara: Come on,"
 	line "fight us and see"
 	cont "how good we are!"
 	done
 
 AceDuoAraandbela1BeatenText:
-	text "Ara: We were"
+	ctxt "Ara: We were"
 	line "deceived!"
 	done
 
 AceDuoAraandbela2SeenText:
-	text "Bela: Come on,"
+	ctxt "Bela: Come on,"
 	line "fight us and see"
 	cont "how good we are!"
 	done
 
 AceDuoAraandbela2BeatenText:
-	text "Bela: We were"
+	ctxt "Bela: We were"
 	line "deceived!"
 	done
 
 CooltrainerfSalmaSeenText:
-	text "What do you think?"
+	ctxt "What do you think?"
 
 	para "You've never seen"
 	line "such a wonderful"
@@ -292,35 +292,35 @@ CooltrainerfSalmaSeenText:
 	done
 
 CooltrainerfSalmaBeatenText:
-	text "Whatever!"
+	ctxt "Whatever!"
 	done
 
 CooltrainerfBonitaSeenText:
-	text "Looking around the"
+	ctxt "Looking around the"
 	line "room, doesn't it"
 	cont "make you dizzy?"
 	done
 
 CooltrainerfBonitaBeatenText:
-	text "All of my #mon…"
+	ctxt "All of my #mon…"
 
 	para "All dizzy and"
 	line "fainting…"
 	done
 
 AceDuoElanandida1SeenText:
-	text "Elan: All right,"
+	ctxt "Elan: All right,"
 	line "let's get this"
 	cont "fight started!"
 	done
 
 AceDuoElanandida1BeatenText:
-	text "Elan: Well, this"
+	ctxt "Elan: Well, this"
 	line "is surprising."
 	done
 
 AceDuoElanandida2SeenText:
-	text "Ida: I'm Ida! Next"
+	ctxt "Ida: I'm Ida! Next"
 	line "to me is Elan!"
 
 	para "Together, we're an"
@@ -328,7 +328,7 @@ AceDuoElanandida2SeenText:
 	done
 
 AceDuoElanandida2BeatenText:
-	text "Ida: Wow. You're"
+	ctxt "Ida: Wow. You're"
 	line "really something."
 	done
 

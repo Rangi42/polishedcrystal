@@ -19,7 +19,7 @@ ElmsHouse_MapScriptHeader:
 	object_event  4,  5, SPRITE_CHILD, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_COMMAND, jumptextfaceplayer, ElmsSonText, -1
 
 ElmsWifeText:
-	text "Hi, <PLAYER>! My"
+	ctxt "Hi, <PLAYER>! My"
 	line "husband's always"
 
 	para "so busy--I hope"
@@ -33,7 +33,7 @@ ElmsWifeText:
 	done
 
 ElmsSonText:
-	text "When I grow up,"
+	ctxt "When I grow up,"
 	line "I'm going to help"
 	cont "my dad!"
 
@@ -43,13 +43,13 @@ ElmsSonText:
 	done
 
 ElmsHouseFridgeText:
-	text "There's some food"
+	ctxt "There's some food"
 	line "here. This must be"
 	cont "for #mon."
 	done
 
 ElmsHousePCText:
-	text "#mon. Where do"
+	ctxt "#mon. Where do"
 	line "they come from?"
 
 	para "Where are they"

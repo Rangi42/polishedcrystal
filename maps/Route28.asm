@@ -16,5 +16,5 @@ Route28_MapScriptHeader:
 	def_object_events
 
 Route28SignText:
-	text "Route 28"
+	ctxt "Route 28"
 	done

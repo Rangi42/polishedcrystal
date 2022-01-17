@@ -130,13 +130,13 @@ MahoganyMart1FLanceApproachHiddenStairsMovement:
 	step_end
 
 MahoganyMart1FPharmacistText_LanceEntered:
-	text "Arrgh… You found"
+	ctxt "Arrgh… You found"
 	line "the secret stair-"
 	cont "way…"
 	done
 
 MahoganyMart1FBlackBeltText:
-	text "Heheh! The experi-"
+	ctxt "Heheh! The experi-"
 	line "ment worked like a"
 	cont "charm."
 
@@ -148,19 +148,19 @@ MahoganyMart1FBlackBeltText:
 	done
 
 MahoganyMart1FBlackBeltText_LanceEntered:
-	text "Urrgh…"
+	ctxt "Urrgh…"
 
 	para "That guy's dragon"
 	line "#mon are tough…"
 	done
 
 MahoganyMart1FLanceDragoniteHyperBeamText:
-	text "Lance: Dragonite,"
+	ctxt "Lance: Dragonite,"
 	line "Hyper Beam."
 	done
 
 MahoganyMart1FLanceRadioText:
-	text "What took you,"
+	ctxt "What took you,"
 	line "<PLAYER>?"
 
 	para "Just as I thought,"
@@ -171,12 +171,12 @@ MahoganyMart1FLanceRadioText:
 	done
 
 MahoganyMart1FLanceStairsText:
-	text "The stairs are"
+	ctxt "The stairs are"
 	line "right here."
 	done
 
 MahoganyMart1FLanceSplitUpText:
-	text "Lance: <PLAYER>, we"
+	ctxt "Lance: <PLAYER>, we"
 	line "should split up to"
 
 	para "check this place."

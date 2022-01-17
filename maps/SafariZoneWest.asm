@@ -31,7 +31,7 @@ SafariZoneWest_MapScriptHeader:
 GenericTrainerLassDuplica:
 	generictrainer LASS, DUPLICA, EVENT_BEAT_LASS_DUPLICA, LassDuplicaSeenText, LassDuplicaBeatenText
 
-	text "I'm really good at"
+	ctxt "I'm really good at"
 	line "impressions!"
 
 	para "Someday I'll become"
@@ -44,7 +44,7 @@ GenericTrainerLassDuplica:
 GenericTrainerCamperAmos:
 	generictrainer CAMPER, AMOS, EVENT_BEAT_CAMPER_AMOS, CamperAmosSeenText, CamperAmosBeatenText
 
-	text "I'll search far"
+	ctxt "I'll search far"
 	line "and wide for new"
 	cont "#mon."
 	done
@@ -52,7 +52,7 @@ GenericTrainerCamperAmos:
 GenericTrainerTamerBrett:
 	generictrainer TAMER, BRETT, EVENT_BEAT_TAMER_BRETT, TamerBrettSeenText, TamerBrettBeatenText
 
-	text "You have to com-"
+	ctxt "You have to com-"
 	line "mand #mon with"
 	cont "confidence."
 
@@ -61,18 +61,18 @@ GenericTrainerTamerBrett:
 	done
 
 LassDuplicaSeenText:
-	text "To truly use"
+	ctxt "To truly use"
 	line "Ditto, you must"
 	cont "know all #mon!"
 	done
 
 LassDuplicaBeatenText:
-	text "I've got a lot"
+	ctxt "I've got a lot"
 	line "to learn."
 	done
 
 CamperAmosSeenText:
-	text "Plenty of #mon"
+	ctxt "Plenty of #mon"
 	line "live in the Safari"
 	cont "Zone."
 
@@ -81,32 +81,32 @@ CamperAmosSeenText:
 	done
 
 CamperAmosBeatenText:
-	text "I lost 'cause I"
+	ctxt "I lost 'cause I"
 	line "have to train"
 	cont "them!"
 	done
 
 TamerBrettSeenText:
-	text "Do you know how to"
+	ctxt "Do you know how to"
 	line "handle aggressive"
 	cont "#mon?"
 	done
 
 TamerBrettBeatenText:
-	text "Yeah, you do!"
+	ctxt "Yeah, you do!"
 	done
 
 SafariZoneWestAreaSignText:
-	text "Safari Zone"
+	ctxt "Safari Zone"
 	line "West Area"
 	done
 
 SafariZoneWestRestHouseSignText:
-	text "Rest House"
+	ctxt "Rest House"
 	done
 
 SafariZoneWestTrainerTips1SignText:
-	text "Trainer Tips"
+	ctxt "Trainer Tips"
 
 	para "Fire-type #mon"
 	line "cannot be burnt,"
@@ -119,7 +119,7 @@ SafariZoneWestTrainerTips1SignText:
 	done
 
 SafariZoneWestTrainerTips2SignText:
-	text "Trainer Tips"
+	ctxt "Trainer Tips"
 
 	para "In a sandstorm,"
 	line "Rock-type #mon"

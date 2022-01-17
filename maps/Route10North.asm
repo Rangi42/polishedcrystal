@@ -217,11 +217,11 @@ Route10Zapdos:
 	end
 
 ZapdosText:
-	text "Gyaoo!"
+	ctxt "Gyaoo!"
 	done
 
 Route10NorthLawrenceGreetingText:
-	text "Lawrence: We meet"
+	ctxt "Lawrence: We meet"
 	line "again, <PLAYER>."
 
 	para "I came here in"
@@ -236,7 +236,7 @@ Route10NorthLawrenceGreetingText:
 	done
 
 Route10NorthLawrenceZapdosText:
-	text "Lawrence: That's"
+	ctxt "Lawrence: That's"
 	line "a Zapdos."
 
 	para "It must have been"
@@ -258,12 +258,12 @@ Route10NorthLawrenceZapdosText:
 	done
 
 Route10NorthLawrenceFlyText:
-	text "Lawrence: Zapdos,"
+	ctxt "Lawrence: Zapdos,"
 	line "Fly!"
 	done
 
 Route10NorthLawrenceSpeechText:
-	text "Lawrence: Hello"
+	ctxt "Lawrence: Hello"
 	line "again, <PLAYER>."
 
 	para "So you wanted that"
@@ -312,11 +312,11 @@ Route10NorthLawrenceSpeechText:
 	done
 
 RockTunnelSignText:
-	text "Rock Tunnel"
+	ctxt "Rock Tunnel"
 	done
 
 PowerPlantSignText:
-	text "Kanto Power Plant"
+	ctxt "Kanto Power Plant"
 	done
 
 Route10NorthMovementData_LawrenceApproach1:

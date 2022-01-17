@@ -153,28 +153,28 @@ UnknownScript_0x5b076:
 	jumpstd rematchgiftm
 
 SailorHuey1SeenText:
-	text "Men of the sea are"
+	ctxt "Men of the sea are"
 	line "always spoiling"
 	cont "for a good fight!"
 	done
 
 SailorHuey1BeatenText:
-	text "Urf!"
+	ctxt "Urf!"
 	line "I lose!"
 	done
 
 GentlemanAlfredSeenText:
-	text "Hm? This is no"
+	ctxt "Hm? This is no"
 	line "place for playing."
 	done
 
 GentlemanAlfredBeatenText:
-	text "Ah! I can see that"
+	ctxt "Ah! I can see that"
 	line "you're serious."
 	done
 
 GentlemanAlfredAfterBattleText:
-	text "Up top is a #-"
+	ctxt "Up top is a #-"
 	line "mon that keeps the"
 	cont "Lighthouse lit."
 
@@ -186,7 +186,7 @@ GentlemanAlfredAfterBattleText:
 	done
 
 GentlemanAlfredFinalText:
-	text "Up top is a #-"
+	ctxt "Up top is a #-"
 	line "mon that keeps the"
 	cont "Lighthouse lit."
 
@@ -198,7 +198,7 @@ GentlemanAlfredFinalText:
 	done
 
 SailorHueyGiveProteinText:
-	text "Man! You're as"
+	ctxt "Man! You're as"
 	line "tough as ever!"
 
 	para "Anyway, here's"

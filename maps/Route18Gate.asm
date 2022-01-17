@@ -66,13 +66,13 @@ Route17Route18GateCannotPassMovement:
 	step_end
 
 Route17Route18GateOfficerText:
-	text "Cycling Road"
+	ctxt "Cycling Road"
 	line "starts going"
 	cont "uphill here."
 	done
 
 Route17Route18GateCannotPassText:
-	text "Hang on! Don't you"
+	ctxt "Hang on! Don't you"
 	line "have a Bicycle?"
 
 	para "The Cycling Road"

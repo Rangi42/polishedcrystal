@@ -70,7 +70,7 @@ ShamoutiShrineRuinsLawrenceScript:
 	end
 
 .SeenText:
-	text "Lawrence: I sought"
+	ctxt "Lawrence: I sought"
 	line "across many"
 
 	para "regions to catch"
@@ -90,13 +90,13 @@ ShamoutiShrineRuinsLawrenceScript:
 	done
 
 .BeatenText:
-	text "Unbelievable."
+	ctxt "Unbelievable."
 	line "You beat my legen-"
 	cont "dary collection…"
 	done
 
 .AfterText:
-	text "Lawrence: Your"
+	ctxt "Lawrence: Your"
 	line "#mon aren't"
 
 	para "just a collection"
@@ -115,7 +115,7 @@ ShamoutiShrineRuinsLawrenceScript:
 	done
 
 .SilverWingText:
-	text "That Silver Wing"
+	ctxt "That Silver Wing"
 	line "feather comes from"
 
 	para "the guardian of"
@@ -138,7 +138,7 @@ ShamoutiShrineRuinsLawrenceScript:
 	done
 
 .GoodbyeText:
-	text "My dream was to"
+	ctxt "My dream was to"
 	line "own that #mon,"
 
 	para "but you've proven"
@@ -152,7 +152,7 @@ ShamoutiShrineRuinsLawrenceScript:
 	done
 
 ShamoutiShrineRuinsGrampsText:
-	text "This shrine was"
+	ctxt "This shrine was"
 	line "magnificent when"
 	cont "I was a child."
 
@@ -177,7 +177,7 @@ ShamoutiShrineRuinsGrampsText:
 	done
 
 ShamoutiShrineRuinsLadyText:
-	text "I simply had to"
+	ctxt "I simply had to"
 	line "stop at Shamouti"
 
 	para "Island on my"

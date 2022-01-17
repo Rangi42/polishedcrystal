@@ -98,53 +98,53 @@ CeladonHomeDecorStore2FClerkScript:
 	db "Cancel@"
 
 CeladonHomeDecorStore2FClerkText:
-	text "Welcome! Are you"
+	ctxt "Welcome! Are you"
 	line "in the market for"
 	cont "a new bed?"
 	done
 
 BoughtPinkBedText:
-	text "<PLAYER> bought"
+	ctxt "<PLAYER> bought"
 	line "Pink Bed."
 	done
 
 PinkBedSentText:
-	text "Pink Bed"
+	ctxt "Pink Bed"
 	line "was sent home."
 	done
 
 BoughtPolkaDotBedText:
-	text "<PLAYER> bought"
+	ctxt "<PLAYER> bought"
 	line "PolkaDot Bed."
 	done
 
 PolkaDotBedSentText:
-	text "PolkaDot Bed"
+	ctxt "PolkaDot Bed"
 	line "was sent home."
 	done
 
 BoughtPikachuBedText:
-	text "<PLAYER> bought"
+	ctxt "<PLAYER> bought"
 	line "Pikachu Bed."
 	done
 
 PikachuBedSentText:
-	text "Pikachu Bed"
+	ctxt "Pikachu Bed"
 	line "was sent home."
 	done
 
 CeladonHomeDecorStore2FNoMoneyText:
-	text "You can't afford"
+	ctxt "You can't afford"
 	line "that!"
 	done
 
 CeladonHomeDecorStore2FAlreadyBoughtText:
-	text "You already have"
+	ctxt "You already have"
 	line "that!"
 	done
 
 CeladonHomeDecorStore2FPokefanfText:
-	text "Brand-name items"
+	ctxt "Brand-name items"
 	line "cost more than"
 	cont "generic ones."
 
@@ -153,7 +153,7 @@ CeladonHomeDecorStore2FPokefanfText:
 	done
 
 CeladonHomeDecorStore2FDirectoryText:
-	text "Soft and Fluffy!"
+	ctxt "Soft and Fluffy!"
 
 	para "2F: Beds"
 	done

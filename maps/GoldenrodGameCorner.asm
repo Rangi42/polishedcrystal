@@ -311,7 +311,7 @@ GoldenrodGameCornerCardFlipMachineScript:
 	endtext
 
 GoldenrodGameCornerPrizeVendorIntroText:
-	text "Welcome!"
+	ctxt "Welcome!"
 
 	para "We exchange your"
 	line "game coins for"
@@ -319,32 +319,32 @@ GoldenrodGameCornerPrizeVendorIntroText:
 	done
 
 GoldenrodGameCornerPrizeVendorWhichPrizeText:
-	text "Which prize would"
+	ctxt "Which prize would"
 	line "you like?"
 	done
 
 GoldenrodGameCornerPrizeVendorConfirmPrizeText:
 	text_ram wStringBuffer3
-	text "."
+	ctxt "."
 	line "Is that right?"
 	done
 
 GoldenrodGameCornerPrizeVendorHereYouGoText:
-	text "Here you go!"
+	ctxt "Here you go!"
 	done
 
 GoldenrodGameCornerPrizeVendorAlreadyHaveTMText:
-	text "But you already"
+	ctxt "But you already"
 	line "have that TM!"
 	done
 
 GoldenrodGameCornerPrizeVendorNeedMoreCoinsText:
-	text "Sorry! You need"
+	ctxt "Sorry! You need"
 	line "more coins."
 	done
 
 GoldenrodGameCornerPrizeVendorNoMoreRoomText:
-	text "Oh, no. You can't"
+	ctxt "Oh, no. You can't"
 	line "carry any more and"
 	cont "your box is full."
 
@@ -353,18 +353,18 @@ GoldenrodGameCornerPrizeVendorNoMoreRoomText:
 	done
 
 GoldenrodGameCornerPrizeVendorQuitText:
-	text "OK. Please save"
+	ctxt "OK. Please save"
 	line "your coins and"
 	cont "come again!"
 	done
 
 GoldenrodGameCornerPrizeVendorNoCoinCaseText:
-	text "Oh? You don't have"
+	ctxt "Oh? You don't have"
 	line "a Coin Case."
 	done
 
 GoldenrodGameCornerFisherText:
-	text "Today's my pay day!"
+	ctxt "Today's my pay day!"
 	line "Time to celebrate"
 	cont "with some slots!"
 
@@ -373,7 +373,7 @@ GoldenrodGameCornerFisherText:
 	done
 
 Text_GoldenrodGameCornerTutorPayDayQuestion:
-	text "If you give me a"
+	ctxt "If you give me a"
 	line "Silver Leaf, I'll"
 
 	para "teach Pay Day to"
@@ -381,17 +381,17 @@ Text_GoldenrodGameCornerTutorPayDayQuestion:
 	done
 
 Text_GoldenrodGameCornerTutorNoSilverLeaf:
-	text "You don't have a"
+	ctxt "You don't have a"
 	line "Silver Leaf?"
 	cont "Never mind then."
 	done
 
 Text_GoldenrodGameCornerTutorRefused:
-	text "Never mind then."
+	ctxt "Never mind then."
 	done
 
 Text_GoldenrodGameCornerTutorTaught:
-	text "Pay Day nets you"
+	ctxt "Pay Day nets you"
 	line "more money after a"
 	cont "battle."
 
@@ -400,7 +400,7 @@ Text_GoldenrodGameCornerTutorTaught:
 	done
 
 GoldenrodGameCornerPharmacistText:
-	text "I always play this"
+	ctxt "I always play this"
 	line "slot machine. It"
 
 	para "pays out more than"
@@ -408,7 +408,7 @@ GoldenrodGameCornerPharmacistText:
 	done
 
 GoldenrodGameCornerPokefanM1Text:
-	text "I just love this"
+	ctxt "I just love this"
 	line "new slot machine."
 
 	para "It's more of a"
@@ -417,13 +417,13 @@ GoldenrodGameCornerPokefanM1Text:
 	done
 
 GoldenrodGameCornerCooltrainerMText:
-	text "Life is a gamble."
+	ctxt "Life is a gamble."
 	line "I'm going to flip"
 	cont "cards till I drop!"
 	done
 
 GoldenrodGameCornerPokefanFText:
-	text "Card flip…"
+	ctxt "Card flip…"
 
 	para "I prefer it over"
 	line "the slots because"
@@ -436,12 +436,12 @@ GoldenrodGameCornerPokefanFText:
 	done
 
 GoldenrodGameCornerCooltrainerFText:
-	text "I won't quit until"
+	ctxt "I won't quit until"
 	line "I win!"
 	done
 
 GoldenrodGameCornerGentlemanText:
-	text "I taught Ice Beam"
+	ctxt "I taught Ice Beam"
 	line "to my #mon."
 
 	para "It was hard to get"
@@ -452,7 +452,7 @@ GoldenrodGameCornerGentlemanText:
 	done
 
 GoldenrodGameCornerPokefanM2Text:
-	text "I couldn't win at"
+	ctxt "I couldn't win at"
 	line "the slots, and I"
 
 	para "blew it on card"
@@ -466,12 +466,12 @@ GoldenrodGameCornerPokefanM2Text:
 	done
 
 GoldenrodGameCornerPokefanM3Text:
-	text "Wahahah! The coins"
+	ctxt "Wahahah! The coins"
 	line "keep rolling in!"
 	done
 
 GoldenrodGameCornerLeftTheirDrinkText:
-	text "Someone left their"
+	ctxt "Someone left their"
 	line "drink."
 
 	para "It smells sweet."

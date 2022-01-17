@@ -43,26 +43,26 @@ HiddenPowerGuy:
 	ifequal $1, .Egg
 	jumpthisopenedtext
 
-	text "I can sense it…"
+	ctxt "I can sense it…"
 
 	para "Your "
 	text_ram wStringBuffer3
 	line "has a Hidden Power"
 	cont "of "
 	text_ram wStringBuffer1
-	text "!"
+	ctxt "!"
 	done
 
 .Egg:
 	jumpthisopenedtext
 
-	text "An Egg has not yet"
+	ctxt "An Egg has not yet"
 	line "developed a Hidden"
 	cont "Power…"
 	done
 
 .Text1:
-	text "…You have strayed"
+	ctxt "…You have strayed"
 	line "far…"
 
 	para "Here I have medi-"
@@ -79,7 +79,7 @@ HiddenPowerGuy:
 	done
 
 .Text2:
-	text "Do you see it? It"
+	ctxt "Do you see it? It"
 	line "is Hidden Power!"
 
 	para "It draws out the"
@@ -93,21 +93,21 @@ HiddenPowerGuy:
 	done
 
 .Text3:
-	text "Shall I divine"
+	ctxt "Shall I divine"
 	line "the Hidden Power"
 	cont "of your #mon?"
 	done
 
 .Text4:
-	text "I am meditating…"
+	ctxt "I am meditating…"
 	done
 
 .Text5:
-	text "Which #mon's"
+	ctxt "Which #mon's"
 	line "Hidden Power"
 	cont "should I find?"
 	done
 
 .Text7:
-	text "…Very well…"
+	ctxt "…Very well…"
 	done

@@ -46,8 +46,22 @@ CeladonUniversityLibrary2F_MapScriptHeader:
 	object_event 11, 10, SPRITE_SCHOOLBOY, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, CeladonUniversityLibrary2FYoungsterText, -1
 	itemball_event  0,  1, TIMER_BALL, 1, EVENT_CELADON_UNIVERSITY_LIBRARY_2F_TIMER_BALL
 
+<<<<<<< HEAD
+=======
+CeladonUniversityLibrary2FCosplayerText:
+	ctxt "It's great being"
+	line "in the city!"
+
+	para "I can wear my cos-"
+	line "tume in public and"
+
+	para "people don't bat"
+	line "an eye!"
+	done
+
+>>>>>>> a0f2dd10f66795468601166436c9ccef9b074e9d
 CeladonUniversityLibrary2FLassText:
-	text "Never judge a book"
+	ctxt "Never judge a book"
 	line "by its cover."
 
 	para "Sometimes even the"
@@ -64,13 +78,13 @@ CeladonUniversityLibrary2FArtistScript:
 	end
 
 .Text1:
-	text "“Jasmine gazed"
+	ctxt "“Jasmine gazed"
 	line "into Erika's deep"
 	cont "brown eyes…”"
 	done
 
 .Text2:
-	text "Huh? Go away!"
+	ctxt "Huh? Go away!"
 
 	para "It's rude to read"
 	line "over someone's"
@@ -78,7 +92,7 @@ CeladonUniversityLibrary2FArtistScript:
 	done
 
 CeladonUniversityLibrary2FSuper_nerdText:
-	text "The “net send”"
+	ctxt "The “net send”"
 	line "command will show"
 
 	para "a message on"
@@ -95,13 +109,13 @@ CeladonUniversityLibrary2FSuper_nerdText:
 	done
 
 CeladonUniversityLibrary2FCooltrainerfText:
-	text "This is my book."
+	ctxt "This is my book."
 	line "And I'm going to"
 	cont "READ IT!"
 	done
 
 CeladonUniversityLibrary2FYoungsterText:
-	text "I'm reading about a"
+	ctxt "I'm reading about a"
 	line "legendary #mon"
 
 	para "with the power to"
@@ -111,7 +125,7 @@ CeladonUniversityLibrary2FYoungsterText:
 	done
 
 CeladonUniversityLibrary2FBookshelf1Text:
-	text "It's a book con-"
+	ctxt "It's a book con-"
 	line "taining #mon"
 
 	para "of an ancient"
@@ -123,7 +137,7 @@ CeladonUniversityLibrary2FBookshelf1Text:
 	done
 
 CeladonUniversityLibrary2FBookshelf2Text:
-	text "This book is"
+	ctxt "This book is"
 	line "falling apart."
 
 	para "The title is no"
@@ -137,7 +151,7 @@ CeladonUniversityLibrary2FBookshelf2Text:
 	done
 
 CeladonUniversityLibrary2FBookshelf3Text:
-	text "It's a book with a"
+	ctxt "It's a book with a"
 	line "giant padlock on"
 	cont "the cover."
 
@@ -146,7 +160,7 @@ CeladonUniversityLibrary2FBookshelf3Text:
 	done
 
 CeladonUniversityLibrary2FBookshelf4Text:
-	text "This book's written"
+	ctxt "This book's written"
 	line "in a foreign"
 	cont "language!"
 
@@ -155,7 +169,7 @@ CeladonUniversityLibrary2FBookshelf4Text:
 	done
 
 CeladonUniversityLibrary2FBookshelf5Text:
-	text "Behind these"
+	ctxt "Behind these"
 	line "books…"
 
 	para "Nope. There's"
@@ -163,7 +177,7 @@ CeladonUniversityLibrary2FBookshelf5Text:
 	done
 
 CeladonUniversityLibrary2FBookshelf6Text:
-	text "It's a book about"
+	ctxt "It's a book about"
 	line "#mon that have"
 
 	para "regional diff-"
@@ -176,7 +190,7 @@ CeladonUniversityLibrary2FBookshelf6Text:
 	done
 
 CeladonUniversityLibrary2FBookshelf7Text:
-	text "It's a book about"
+	ctxt "It's a book about"
 	line "#mon Contests."
 
 	para "An impressive-"
@@ -187,7 +201,7 @@ CeladonUniversityLibrary2FBookshelf7Text:
 	done
 
 CeladonUniversityLibrary2FBookshelf8Text:
-	text "A boy is shown"
+	ctxt "A boy is shown"
 	line "riding a #mon"
 
 	para "on the cover"
@@ -199,7 +213,7 @@ CeladonUniversityLibrary2FBookshelf8Text:
 	done
 
 CeladonUniversityLibrary2FBookshelf9Text:
-	text "It's a book de-"
+	ctxt "It's a book de-"
 	line "picting a world"
 
 	para "inhabited entirely"
@@ -213,7 +227,7 @@ CeladonUniversityLibrary2FBookshelf9Text:
 	done
 
 CeladonUniversityLibrary2FBookshelf10Text:
-	text "It's a book about"
+	ctxt "It's a book about"
 	line "an island of giant"
 	cont "#mon robots."
 
@@ -222,7 +236,7 @@ CeladonUniversityLibrary2FBookshelf10Text:
 	done
 
 CeladonUniversityLibrary2FBookshelf11Text:
-	text "“Forgive and"
+	ctxt "“Forgive and"
 	line "Forget” by Saul"
 	cont "Goode."
 
@@ -232,13 +246,13 @@ CeladonUniversityLibrary2FBookshelf11Text:
 	done
 
 CeladonUniversityLibrary2FBookshelf12Text:
-	text "“Weightlessness”"
+	ctxt "“Weightlessness”"
 	line "by Andy Gravity."
 	cont "Sounds flighty!"
 	done
 
 CeladonUniversityLibrary2FBookshelf13Text:
-	text "It's a book"
+	ctxt "It's a book"
 	line "explaining the"
 
 	para "biology of"
@@ -248,7 +262,7 @@ CeladonUniversityLibrary2FBookshelf13Text:
 	done
 
 CeladonUniversityLibrary2FBookshelf14Text:
-	text "This book is"
+	ctxt "This book is"
 	line "covered in"
 	cont "cobwebs."
 
@@ -258,7 +272,7 @@ CeladonUniversityLibrary2FBookshelf14Text:
 	done
 
 CeladonUniversityLibrary2FBookshelf15Text:
-	text "It's a book de-"
+	ctxt "It's a book de-"
 	line "picting a fearsome"
 	cont "#mon."
 
@@ -270,7 +284,7 @@ CeladonUniversityLibrary2FBookshelf15Text:
 	done
 
 CeladonUniversityLibrary2FBookshelf16Text:
-	text "“Ancient #-"
+	ctxt "“Ancient #-"
 	line "mopolis: A History"
 
 	para "of Extinct"
@@ -281,7 +295,7 @@ CeladonUniversityLibrary2FBookshelf16Text:
 	done
 
 CeladonUniversityLibrary2FBookshelf17Text:
-	text "It's a book titled"
+	ctxt "It's a book titled"
 	line "“Typecasting: The"
 
 	para "Mystery of"
@@ -289,7 +303,7 @@ CeladonUniversityLibrary2FBookshelf17Text:
 	done
 
 CeladonUniversityLibrary2FBookshelf18Text:
-	text "It's a book about"
+	ctxt "It's a book about"
 	line "an ancient tree"
 
 	para "guarded by three"
@@ -300,7 +314,7 @@ CeladonUniversityLibrary2FBookshelf18Text:
 	done
 
 CeladonUniversityLibrary2FBookshelf19Text:
-	text "It's a copy of the"
+	ctxt "It's a copy of the"
 	line "original route for"
 	cont "the Magnet Train!"
 
@@ -310,7 +324,7 @@ CeladonUniversityLibrary2FBookshelf19Text:
 	done
 
 CeladonUniversityLibrary2FBookshelf20Text:
-	text "Red books,"
+	ctxt "Red books,"
 	line "blue books,"
 	cont "yellow books,"
 	cont "green books…"
@@ -322,7 +336,7 @@ CeladonUniversityLibrary2FBookshelf20Text:
 CeladonUniversityLibrary2FComputer1:
 	jumpthistext
 
-	text "There's a login"
+	ctxt "There's a login"
 	line "screen with a"
 
 	para "background image"
@@ -332,14 +346,14 @@ CeladonUniversityLibrary2FComputer1:
 CeladonUniversityLibrary2FComputer2:
 	jumpthistext
 
-	text "Someone forgot to"
+	ctxt "Someone forgot to"
 	line "log out!"
 	done
 
 CeladonUniversityLibrary2FComputer3:
 	jumpthistext
 
-	text "There's a story"
+	ctxt "There's a story"
 	line "full of grammar"
 	cont "and spelling"
 	cont "errors."
@@ -348,7 +362,7 @@ CeladonUniversityLibrary2FComputer3:
 CeladonUniversityLibrary2FComputer4:
 	jumpthistext
 
-	text "There's a web page"
+	ctxt "There's a web page"
 	line "about how to be a"
 	cont "“l33t h4x0r”."
 	done

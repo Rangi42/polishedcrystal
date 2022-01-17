@@ -8468,7 +8468,7 @@ AutomaticRainWhenOvercast:
 	ld a, [wInBattleTowerBattle]
 	and a
 	ret nz
-	call GetOvercastIndex
+	farcall GetOvercastIndex
 	and a
 	ret z
 	ld a, WEATHER_RAIN

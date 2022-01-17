@@ -168,7 +168,7 @@ PokeDollVendingMachine:
 	db "Cancel@"
 
 GoldenrodDeptStoreRoofPokefanFText:
-	text "Whew, I'm tired."
+	ctxt "Whew, I'm tired."
 
 	para "I sometimes come"
 	line "up to the rooftop"
@@ -178,7 +178,7 @@ GoldenrodDeptStoreRoofPokefanFText:
 	done
 
 GoldenrodDeptStoreRoofFisherText:
-	text "Pardon? Who says"
+	ctxt "Pardon? Who says"
 	line "an adult can't get"
 	cont "into this?"
 
@@ -190,43 +190,43 @@ GoldenrodDeptStoreRoofFisherText:
 	done
 
 GoldenrodDeptStoreRoofFisherDuplicateText:
-	text "This one is a"
+	ctxt "This one is a"
 	line "duplicate. Here,"
 	cont "you can have it."
 	done
 
 GotVoltorbDollText:
-	text "<PLAYER> received"
+	ctxt "<PLAYER> received"
 	line "Voltorb Doll."
 	done
 
 VoltorbDollSentText:
-	text "Voltorb Doll"
+	ctxt "Voltorb Doll"
 	line "was sent home."
 	done
 
 GoldenrodDeptStoreRoofFisherCatchEmAllText:
-	text "I heard there are"
+	ctxt "I heard there are"
 	line "30 kinds of dolls."
 	done
 
 GoldenrodDeptStoreRoofTwinText:
-	text "They have bargain"
+	ctxt "They have bargain"
 	line "sales here every"
 	cont "so often."
 	done
 
 GoldenrodDeptStoreRoofSuperNerdOhWowText:
-	text "Oh, wow!"
+	ctxt "Oh, wow!"
 	done
 
 GoldenrodDeptStoreRoofSuperNerdQuitBotheringMeText:
-	text "Will you quit"
+	ctxt "Will you quit"
 	line "bothering me?"
 	done
 
 GoldenrodDeptStoreRoofPokefanMText:
-	text "There's something"
+	ctxt "There's something"
 	line "I really want, but"
 
 	para "I don't have the"
@@ -238,7 +238,7 @@ GoldenrodDeptStoreRoofPokefanMText:
 	done
 
 GoldenrodDeptStoreRoofTeacherText:
-	text "Oh, everything is"
+	ctxt "Oh, everything is"
 	line "so cheap!"
 
 	para "I bought so much,"
@@ -246,7 +246,7 @@ GoldenrodDeptStoreRoofTeacherText:
 	done
 
 GoldenrodDeptStoreRoofBugCatcherText:
-	text "My #mon always"
+	ctxt "My #mon always"
 	line "get paralyzed or"
 
 	para "poisoned when the"
@@ -260,7 +260,7 @@ GoldenrodDeptStoreRoofBugCatcherText:
 	done
 
 Binoculars1Text:
-	text "These binoculars"
+	ctxt "These binoculars"
 	line "let me see far"
 
 	para "away. Maybe I can"
@@ -271,7 +271,7 @@ Binoculars1Text:
 	done
 
 Binoculars2Text:
-	text "Hey! Some trainers"
+	ctxt "Hey! Some trainers"
 	line "are battling on"
 	cont "the road!"
 
@@ -284,7 +284,7 @@ Binoculars2Text:
 	done
 
 Binoculars3Text:
-	text "A Fisher caught a"
+	ctxt "A Fisher caught a"
 	line "lot of Magikarp…"
 
 	para "They're Splashing"
@@ -295,44 +295,44 @@ Binoculars3Text:
 	done
 
 PokeDollVendingMachineText:
-	text "A vending machine"
+	ctxt "A vending machine"
 	line "for #mon dolls!"
 	done
 
 PokeDollVendingMachineNoMoneyText:
-	text "It costs too much!"
+	ctxt "It costs too much!"
 	done
 
 PokeDollVendingMachineAlreadyBoughtText:
-	text "It's a duplicate!"
+	ctxt "It's a duplicate!"
 	done
 
 BoughtJigglypuffDollText:
-	text "<PLAYER> bought"
+	ctxt "<PLAYER> bought"
 	line "Jigglypuff Doll."
 	done
 
 JigglypuffDollSentText:
-	text "Jigglypuff Doll"
+	ctxt "Jigglypuff Doll"
 	line "was sent home."
 	done
 
 BoughtDittoDollText:
-	text "<PLAYER> bought"
+	ctxt "<PLAYER> bought"
 	line "Ditto Doll."
 	done
 
 DittoDollSentText:
-	text "Ditto Doll"
+	ctxt "Ditto Doll"
 	line "was sent home."
 	done
 
 BoughtMeowthDollText:
-	text "<PLAYER> bought"
+	ctxt "<PLAYER> bought"
 	line "Meowth Doll."
 	done
 
 MeowthDollSentText:
-	text "Meowth Doll"
+	ctxt "Meowth Doll"
 	line "was sent home."
 	done

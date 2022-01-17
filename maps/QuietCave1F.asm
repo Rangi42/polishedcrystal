@@ -28,14 +28,14 @@ QuietCave1F_MapScriptHeader:
 GenericTrainerHexManiacAshley:
 	generictrainer HEX_MANIAC, ASHLEY, EVENT_BEAT_HEX_MANIAC_ASHLEY, HexManiacAshleySeenText, HexManiacAshleyBeatenText
 
-	text "I see things that"
+	ctxt "I see things that"
 	line "others can't see…"
 	done
 
 GenericTrainerCooltrainermHenri:
 	generictrainer COOLTRAINERM, HENRI, EVENT_BEAT_COOLTRAINERM_HENRI, CooltrainermHenriSeenText, CooltrainermHenriBeatenText
 
-	text "Having a diverse"
+	ctxt "Having a diverse"
 	line "team to support"
 
 	para "each others' weak-"
@@ -45,7 +45,7 @@ GenericTrainerCooltrainermHenri:
 GenericTrainerHikerGrady:
 	generictrainer HIKER, GRADY, EVENT_BEAT_HIKER_GRADY, HikerGradySeenText, HikerGradyBeatenText
 
-	text "You could hear a"
+	ctxt "You could hear a"
 	line "pin drop in this"
 	cont "place!"
 	done
@@ -53,7 +53,7 @@ GenericTrainerHikerGrady:
 GenericTrainerScientistCarl:
 	generictrainer SCIENTIST, CARL, EVENT_BEAT_SCIENTIST_CARL, ScientistCarlSeenText, ScientistCarlBeatenText
 
-	text "It's interesting"
+	ctxt "It's interesting"
 	line "that such a quiet"
 	cont "environment can"
 
@@ -62,43 +62,43 @@ GenericTrainerScientistCarl:
 	done
 
 HexManiacAshleySeenText:
-	text "The spirits have"
+	ctxt "The spirits have"
 	line "shown me your"
 	cont "defeat!"
 	done
 
 HexManiacAshleyBeatenText:
-	text "No! The spirits"
+	ctxt "No! The spirits"
 	line "can't be wrong!"
 	done
 
 CooltrainermHenriSeenText:
-	text "Can you handle my"
+	ctxt "Can you handle my"
 	line "balanced team of"
 	cont "#mon?"
 	done
 
 CooltrainermHenriBeatenText:
-	text "I guess you can!"
+	ctxt "I guess you can!"
 	done
 
 HikerGradySeenText:
-	text "I heard you long"
+	ctxt "I heard you long"
 	line "before I saw you!"
 	done
 
 HikerGradyBeatenText:
-	text "Ach!"
+	ctxt "Ach!"
 	done
 
 ScientistCarlSeenText:
-	text "I'm studying the"
+	ctxt "I'm studying the"
 	line "acoustics of this"
 	cont "cave system."
 	done
 
 ScientistCarlBeatenText:
-	text "My studies don't"
+	ctxt "My studies don't"
 	line "apply to battles!"
 	done
 

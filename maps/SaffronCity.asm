@@ -74,7 +74,7 @@ SaffronCityFisherScript:
 	jumptextfaceplayer SaffronCityFisherText
 
 SaffronCityLass1Text:
-	text "A little girl who"
+	ctxt "A little girl who"
 	line "is an expert at"
 
 	para "mimicking people"
@@ -88,7 +88,7 @@ SaffronCityLass1Text:
 	done
 
 SaffronCityLass1Text_ReturnedMachinePart:
-	text "The Copycat girl"
+	ctxt "The Copycat girl"
 	line "looked unhappy."
 
 	para "She said she lost"
@@ -97,7 +97,7 @@ SaffronCityLass1Text_ReturnedMachinePart:
 	done
 
 SaffronCityPokefanMText:
-	text "You came out from"
+	ctxt "You came out from"
 	line "Johto?"
 
 	para "You can zip back"
@@ -106,7 +106,7 @@ SaffronCityPokefanMText:
 	done
 
 SaffronCityPokefanMText_ReturnedMachinePart:
-	text "You came out from"
+	ctxt "You came out from"
 	line "Johto?"
 
 	para "You can zip back"
@@ -115,7 +115,7 @@ SaffronCityPokefanMText_ReturnedMachinePart:
 	done
 
 SaffronCityCooltrainerMText:
-	text "I went to the Gym,"
+	ctxt "I went to the Gym,"
 	line "raring for battles"
 	cont "against trainers…"
 
@@ -130,7 +130,7 @@ SaffronCityCooltrainerMText:
 	done
 
 SaffronCityCooltrainerFText:
-	text "This is Silph Co.,"
+	ctxt "This is Silph Co.,"
 	line "famous for #mon"
 	cont "merchandise."
 
@@ -142,7 +142,7 @@ SaffronCityCooltrainerFText:
 	done
 
 SaffronCityFisherText:
-	text "Chew… Chew…"
+	ctxt "Chew… Chew…"
 
 	para "I hear there's big"
 	line "trouble brewing at"
@@ -152,7 +152,7 @@ SaffronCityFisherText:
 	done
 
 SaffronCityFisherText_ReturnedMachinePart:
-	text "Chew… Chew…"
+	ctxt "Chew… Chew…"
 
 	para "I hear there was"
 	line "big trouble at the"
@@ -163,7 +163,7 @@ SaffronCityFisherText_ReturnedMachinePart:
 	done
 
 SaffronCityYoungster1Text:
-	text "Going into an"
+	ctxt "Going into an"
 	line "alley for the"
 
 	para "first time makes"
@@ -171,7 +171,7 @@ SaffronCityYoungster1Text:
 	done
 
 SaffronCityYoungster2Text:
-	text "There's a place"
+	ctxt "There's a place"
 	line "called Trainer"
 
 	para "House in Viridian"
@@ -182,7 +182,7 @@ SaffronCityYoungster2Text:
 	done
 
 SaffronCityLass2Text:
-	text "Our city was"
+	ctxt "Our city was"
 	line "featured on a"
 	cont "radio program."
 
@@ -195,7 +195,7 @@ SaffronCityLass2Text:
 	done
 
 SaffronCityBlackBelt1Text:
-	text "Every morning when"
+	ctxt "Every morning when"
 	line "I wake up I run"
 
 	para "two laps around"
@@ -206,7 +206,7 @@ SaffronCityBlackBelt1Text:
 	done
 
 SaffronCityBlackBelt2Text:
-	text "If I was an item,"
+	ctxt "If I was an item,"
 	line "I'd be X Attack."
 
 	para "I'm just brimming"
@@ -217,7 +217,7 @@ SaffronCityBlackBelt2Text:
 	done
 
 SaffronCitySuperNerdText:
-	text "There was a time"
+	ctxt "There was a time"
 	line "when Psychic-type"
 
 	para "#mon were be-"
@@ -232,7 +232,7 @@ SaffronCitySuperNerdText:
 	done
 
 SaffronCityScientistText:
-	text "The original Silph"
+	ctxt "The original Silph"
 	line "Scope had some"
 	cont "bugs, so we've been"
 
@@ -242,7 +242,7 @@ SaffronCityScientistText:
 	done
 
 SaffronCitySilphEmployeeText:
-	text "Silph is named"
+	ctxt "Silph is named"
 	line "after a mythical"
 	cont "spirit of the air."
 
@@ -254,14 +254,14 @@ SaffronCitySilphEmployeeText:
 	done
 
 SaffronCitySignText:
-	text "Saffron City"
+	ctxt "Saffron City"
 
 	para "Shining, Golden"
 	line "Land of Commerce"
 	done
 
 SaffronGymSignText:
-	text "Saffron City"
+	ctxt "Saffron City"
 	line "#mon Gym"
 	cont "Leader: Sabrina"
 
@@ -270,28 +270,28 @@ SaffronGymSignText:
 	done
 
 FightingDojoSignText:
-	text "Everyone Welcome!"
+	ctxt "Everyone Welcome!"
 	line "Fighting Dojo"
 	done
 
 SilphCoSignText:
-	text "Silph Co."
+	ctxt "Silph Co."
 	line "Office Building"
 	done
 
 MrPsychicsHouseSignText:
-	text "Mr.Psychic's"
+	ctxt "Mr.Psychic's"
 	line "House"
 	done
 
 SaffronCityMagnetTrainStationSignText:
-	text "Saffron City"
+	ctxt "Saffron City"
 	line "Magnet Train"
 	cont "Station"
 	done
 
 PokemonTrainerFanClubSignText:
-	text "#mon Trainer"
+	ctxt "#mon Trainer"
 	line "Fan Club"
 
 	para "Many trainers have"
@@ -300,7 +300,7 @@ PokemonTrainerFanClubSignText:
 	done
 
 SaffronTrainerTips1Text:
-	text "Trainer Tips"
+	ctxt "Trainer Tips"
 
 	para "New SilphScope2"
 	line "identifies even"
@@ -310,7 +310,7 @@ SaffronTrainerTips1Text:
 	done
 
 SaffronTrainerTips2Text:
-	text "Trainer Tips"
+	ctxt "Trainer Tips"
 
 	para "Use Quick Balls"
 	line "early during a"

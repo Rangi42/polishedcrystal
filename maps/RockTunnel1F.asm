@@ -27,18 +27,18 @@ RockTunnel1F_MapScriptHeader:
 GenericTrainerHikerSeamus:
 	generictrainer HIKER, SEAMUS, EVENT_BEAT_HIKER_SEAMUS, HikerSeamusSeenText, HikerSeamusBeatenText
 
-	text "Was Rock Tunnel"
+	ctxt "Was Rock Tunnel"
 	line "always this much"
 	cont "of a trek?"
 	done
 
 HikerSeamusSeenText:
-	text "Almost…"
+	ctxt "Almost…"
 	line "there…"
 	done
 
 HikerSeamusBeatenText:
-	text "Where do you get"
+	ctxt "Where do you get"
 	line "your energy?"
 	done
 

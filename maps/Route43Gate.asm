@@ -176,7 +176,7 @@ Rocket2Script_LetsYouPassNorth:
 	step_end
 
 RocketText_TollFee:
-	text "Hold it there,"
+	ctxt "Hold it there,"
 	line "kiddo!"
 
 	para "The toll is ¥{d:ROUTE43GATE_TOLL}"
@@ -184,17 +184,17 @@ RocketText_TollFee:
 	done
 
 RocketText_ThankYou:
-	text "Thank you very"
+	ctxt "Thank you very"
 	line "much!"
 	done
 
 RocketText_AllYouGot:
-	text "Then pay what you"
+	ctxt "Then pay what you"
 	line "have, please."
 	done
 
 RocketText_MakingABundle:
-	text "He-he-he. We're"
+	ctxt "He-he-he. We're"
 	line "making a bundle."
 
 	para "Everyone wants to"
@@ -205,7 +205,7 @@ RocketText_MakingABundle:
 	done
 
 OfficerText_FoundTM:
-	text "I got chased from"
+	ctxt "I got chased from"
 	line "my post by these"
 	cont "thugs in black."
 
@@ -218,7 +218,7 @@ OfficerText_FoundTM:
 	done
 
 OfficerText_AvoidGrass:
-	text "Use this gate to"
+	ctxt "Use this gate to"
 	line "avoid walking in"
 	cont "the grass."
 	done

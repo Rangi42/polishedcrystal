@@ -23,7 +23,7 @@ ViridianSchoolHouse_MapScriptHeader:
 	object_event  3,  6, SPRITE_GAMEBOY_KID, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, ViridianSchoolHouseGameBoyKidScript, -1
 
 ViridianSchoolHouseTeacherText:
-	text "I know this is a"
+	ctxt "I know this is a"
 	line "lot of material,"
 
 	para "but please pay"
@@ -31,14 +31,14 @@ ViridianSchoolHouseTeacherText:
 	done
 
 ViridianSchoolHouseNotesText:
-	text "The page is cover-"
+	ctxt "The page is cover-"
 	line "ed in doodles."
 	para "A maze, flowers,"
 	line "the letter S…"
 	done
 
 ViridianSchoolHouseLass1Text:
-	text "Wait! I thought"
+	ctxt "Wait! I thought"
 	line "that, like, all"
 
 	para "Fire-type moves"
@@ -58,7 +58,7 @@ ViridianSchoolHouseYoungsterScript:
 	jumpthisopenedtext
 
 .Text2:
-	text "“What doesn't KO"
+	ctxt "“What doesn't KO"
 	line "a #mon makes"
 	cont "it stronger.”"
 
@@ -67,7 +67,7 @@ ViridianSchoolHouseYoungsterScript:
 	done
 
 .Text1:
-	text "The teacher gave"
+	ctxt "The teacher gave"
 	line "me extra copies of"
 
 	para "these. Here,"
@@ -80,7 +80,7 @@ ViridianSchoolHouseGameBoyKidScript:
 	end
 
 ViridianSchoolHouseGameBoyKidText:
-	text "I'm taking notes"
+	ctxt "I'm taking notes"
 	line "on my phone!"
 
 	para "I'm not goofing"
@@ -88,7 +88,7 @@ ViridianSchoolHouseGameBoyKidText:
 	done
 
 ViridianSchoolHouseLass2Text:
-	text "I'm in the pro-"
+	ctxt "I'm in the pro-"
 	line "tagonist's seat!"
 
 	para "So why is my life"
@@ -96,7 +96,7 @@ ViridianSchoolHouseLass2Text:
 	done
 
 ViridianSchoolHouseBlackboardText:
-	text "Physical moves use"
+	ctxt "Physical moves use"
 	line "the Attack and"
 	cont "Defense stats."
 
@@ -110,7 +110,7 @@ ViridianSchoolHouseBlackboardText:
 	done
 
 ViridianSchoolHouseBookshelfText:
-	text "It's full of text-"
+	ctxt "It's full of text-"
 	line "books and study"
 	cont "guides."
 	done

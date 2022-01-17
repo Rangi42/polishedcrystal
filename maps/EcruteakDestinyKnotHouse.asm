@@ -36,7 +36,7 @@ EcruteakDestinyKnotHouseCooltrainerFScript:
 	jumpthisopenedtext
 
 .Text4:
-	text "The red string of"
+	ctxt "The red string of"
 	line "fate ties you to"
 
 	para "the legendary"
@@ -47,7 +47,7 @@ EcruteakDestinyKnotHouseCooltrainerFScript:
 	done
 
 .Text1:
-	text "Two mighty bird"
+	ctxt "Two mighty bird"
 	line "#mon of Johto,"
 
 	para "each guarding a"
@@ -59,7 +59,7 @@ EcruteakDestinyKnotHouseCooltrainerFScript:
 	done
 
 .Text2:
-	text "What if a trainer"
+	ctxt "What if a trainer"
 	line "were to catch all"
 	cont "of them?"
 
@@ -68,7 +68,7 @@ EcruteakDestinyKnotHouseCooltrainerFScript:
 	done
 
 .Text3:
-	text "What? You've seen"
+	ctxt "What? You've seen"
 	line "them? And you even"
 	cont "caught them?!"
 

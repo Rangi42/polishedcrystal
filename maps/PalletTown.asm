@@ -27,7 +27,7 @@ PalletTownFlyPoint:
 	endcallback
 
 PalletTownTeacherText:
-	text "I'm raising #-"
+	ctxt "I'm raising #-"
 	line "mon too."
 
 	para "They serve as my"
@@ -35,7 +35,7 @@ PalletTownTeacherText:
 	done
 
 PalletTownFisherText:
-	text "Technology is"
+	ctxt "Technology is"
 	line "incredible!"
 
 	para "You can now make"
@@ -47,7 +47,7 @@ PalletTownFisherText:
 	done
 
 PalletTownYoungsterText:
-	text "Smell ya later!"
+	ctxt "Smell ya later!"
 
 	para "…People started"
 	line "saying that around"
@@ -58,21 +58,21 @@ PalletTownYoungsterText:
 	done
 
 PalletTownSignText:
-	text "Pallet Town"
+	ctxt "Pallet Town"
 
 	para "A Tranquil Setting"
 	line "of Peace & Purity"
 	done
 
 RedsHouseSignText:
-	text "Red's House"
+	ctxt "Red's House"
 	done
 
 OaksLabSignText:
-	text "Oak #mon"
+	ctxt "Oak #mon"
 	line "Research Lab"
 	done
 
 BluesHouseSignText:
-	text "Blue's House"
+	ctxt "Blue's House"
 	done

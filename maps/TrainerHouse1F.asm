@@ -23,7 +23,7 @@ TrainerHouse1F_MapScriptHeader:
 	object_event  2,  4, SPRITE_GENTLEMAN, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, TrainerHouse1FGentlemanText, -1
 
 TrainerHouse1FReceptionistText:
-	text "Welcome to Trainer"
+	ctxt "Welcome to Trainer"
 	line "House, the newest"
 
 	para "and most happening"
@@ -40,7 +40,7 @@ TrainerHouse1FReceptionistText:
 	done
 
 TrainerHouse1FCooltrainerMText:
-	text "Viridian is the"
+	ctxt "Viridian is the"
 	line "town closest to"
 	cont "Indigo Plateau."
 
@@ -59,7 +59,7 @@ TrainerHouse1FCooltrainerMText:
 	done
 
 TrainerHouse1FCooltrainerFText:
-	text "They hold practice"
+	ctxt "They hold practice"
 	line "battles downstairs"
 	cont "here."
 
@@ -71,7 +71,7 @@ TrainerHouse1FCooltrainerFText:
 	done
 
 TrainerHouse1FYoungsterText:
-	text "I guess you can't"
+	ctxt "I guess you can't"
 	line "become the Champ"
 
 	para "unless you go all"
@@ -88,13 +88,13 @@ TrainerHouse1FYoungsterText:
 	done
 
 TrainerHouse1FGentlemanText:
-	text "Whew… I'm taking a"
+	ctxt "Whew… I'm taking a"
 	line "rest from #mon"
 	cont "battles."
 	done
 
 TrainerHouseSign1Text:
-	text "Practice battles"
+	ctxt "Practice battles"
 	line "are held in the"
 
 	para "Training Hall"
@@ -106,7 +106,7 @@ TrainerHouseSign1Text:
 	done
 
 TrainerHouseSign2Text:
-	text "There are no rules"
+	ctxt "There are no rules"
 	line "or regulations for"
 
 	para "practice matches."
@@ -117,7 +117,7 @@ TrainerHouseSign2Text:
 	done
 
 TrainerHouseIllegibleText:
-	text "…What's this?"
+	ctxt "…What's this?"
 	line "A strategy memo?"
 
 	para "This writing looks"

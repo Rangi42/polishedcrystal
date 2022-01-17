@@ -79,7 +79,7 @@ Route45Dragon_tamerScript:
 	jumpthisopenedtext
 
 .AfterText2:
-	text "The art of train-"
+	ctxt "The art of train-"
 	line "ing Dragon-type"
 	cont "#mon is just"
 	cont "amazing."
@@ -90,7 +90,7 @@ Route45Dragon_tamerScript:
 	done
 
 .IntroText:
-	text "I'm training my"
+	ctxt "I'm training my"
 	line "dragons here."
 
 	para "Huh? A battle?"
@@ -107,7 +107,7 @@ Route45Dragon_tamerScript:
 	done
 
 .QuestionText:
-	text "Oh, you're ready."
+	ctxt "Oh, you're ready."
 	line "It's time for a"
 	cont "duel: your #mon"
 	cont "versus my dragons."
@@ -117,13 +117,13 @@ Route45Dragon_tamerScript:
 	done
 
 .RefusedText:
-	text "No problem."
+	ctxt "No problem."
 	line "I'll keep on"
 	cont "training."
 	done
 
 .SeenText:
-	text "Let's see if you"
+	ctxt "Let's see if you"
 	line "can handle my"
 
 	para "dragons' unyield-"
@@ -132,13 +132,13 @@ Route45Dragon_tamerScript:
 	done
 
 .BeatenText:
-	text "How powerful!"
+	ctxt "How powerful!"
 	line "My #mon were"
 	cont "no match for you."
 	done
 
 .AfterText1:
-	text "Your strength"
+	ctxt "Your strength"
 	line "rivals my own!"
 
 	para "Take this. You"
@@ -148,7 +148,7 @@ Route45Dragon_tamerScript:
 GenericTrainerBattleGirlNozomi:
 	generictrainer BATTLE_GIRL, NOZOMI, EVENT_BEAT_BATTLE_GIRL_NOZOMI, BattleGirlNozomiSeenText, BattleGirlNozomiBeatenText
 
-	text "Thanks for the"
+	ctxt "Thanks for the"
 	line "workout, <PLAYER>!"
 	done
 
@@ -242,7 +242,7 @@ Route45RematchGiftM:
 GenericTrainerHikerErik:
 	generictrainer HIKER, ERIK, EVENT_BEAT_HIKER_ERIK, HikerErikSeenText, HikerErikBeatenText
 
-	text "I'll head back to"
+	ctxt "I'll head back to"
 	line "Blackthorn's Ice"
 
 	para "Path and train"
@@ -252,7 +252,7 @@ GenericTrainerHikerErik:
 GenericTrainerHikerMichael:
 	generictrainer HIKER, MICHAEL, EVENT_BEAT_HIKER_MICHAEL, HikerMichaelSeenText, HikerMichaelBeatenText
 
-	text "Boy, do I love"
+	ctxt "Boy, do I love"
 	line "HP Up! Mmmm, yum!"
 
 	para "I keep drinking my"
@@ -349,7 +349,7 @@ UnknownScript_0x19e219:
 GenericTrainerHikerTimothy:
 	generictrainer HIKER, TIMOTHY, EVENT_BEAT_HIKER_TIMOTHY, HikerTimothySeenText, HikerTimothyBeatenText
 
-	text "The best thing to"
+	ctxt "The best thing to"
 	line "ever happen to me"
 
 	para "was discovering"
@@ -359,7 +359,7 @@ GenericTrainerHikerTimothy:
 GenericTrainerCooltrainermRyan:
 	generictrainer COOLTRAINERM, RYAN, EVENT_BEAT_COOLTRAINERM_RYAN, CooltrainermRyanSeenText, CooltrainermRyanBeatenText
 
-	text "I see you're rais-"
+	ctxt "I see you're rais-"
 	line "ing your #mon"
 	cont "with care."
 
@@ -371,7 +371,7 @@ GenericTrainerCooltrainermRyan:
 GenericTrainerCooltrainerfKelly:
 	generictrainer COOLTRAINERF, KELLY, EVENT_BEAT_COOLTRAINERF_KELLY, CooltrainerfKellySeenText, CooltrainerfKellyBeatenText
 
-	text "I'm not in favor"
+	ctxt "I'm not in favor"
 	line "of overly power-"
 	cont "ful moves."
 
@@ -383,7 +383,7 @@ GenericTrainerCooltrainerfKelly:
 GenericTrainerCamperQuentin:
 	generictrainer CAMPER, QUENTIN, EVENT_BEAT_CAMPER_QUENTIN, CamperQuentinSeenText, CamperQuentinBeatenText
 
-	text "Have you been to"
+	ctxt "Have you been to"
 	line "the Battle Tower?"
 
 	para "I never, ever lose"
@@ -391,16 +391,16 @@ GenericTrainerCamperQuentin:
 	done
 
 BattleGirlNozomiSeenText:
-	text "This is no place"
+	ctxt "This is no place"
 	line "for weak #mon!"
 	done
 
 BattleGirlNozomiBeatenText:
-	text "What a fight!"
+	ctxt "What a fight!"
 	done
 
 HikerErikSeenText:
-	text "Be prepared for"
+	ctxt "Be prepared for"
 	line "anything!"
 
 	para "Let me see if your"
@@ -409,11 +409,11 @@ HikerErikSeenText:
 	done
 
 HikerErikBeatenText:
-	text "Oh, I lost that!"
+	ctxt "Oh, I lost that!"
 	done
 
 HikerMichaelSeenText:
-	text "Yo! You're spunky!"
+	ctxt "Yo! You're spunky!"
 	line "But you know what?"
 
 	para "When it comes to"
@@ -422,22 +422,22 @@ HikerMichaelSeenText:
 	done
 
 HikerMichaelBeatenText:
-	text "My #mon weren't"
+	ctxt "My #mon weren't"
 	line "spunky enough!"
 	done
 
 HikerParry1SeenText:
-	text "My #mon are"
+	ctxt "My #mon are"
 	line "power packed!"
 	done
 
 HikerParry1BeatenText:
-	text "Wahahah! I'm the"
+	ctxt "Wahahah! I'm the"
 	line "big loser!"
 	done
 
 HikerParryAfterBattleText:
-	text "I'm not much good"
+	ctxt "I'm not much good"
 	line "at thinking, see?"
 
 	para "So, I just plow"
@@ -445,7 +445,7 @@ HikerParryAfterBattleText:
 	done
 
 HikerTimothySeenText:
-	text "Why do I climb"
+	ctxt "Why do I climb"
 	line "mountains?"
 
 	para "Because they're"
@@ -459,12 +459,12 @@ HikerTimothySeenText:
 	done
 
 HikerTimothyBeatenText:
-	text "Losses…"
+	ctxt "Losses…"
 	line "They're there too!"
 	done
 
 HikerParryGivesIronText:
-	text "I just can't find"
+	ctxt "I just can't find"
 	line "a way to win!"
 
 	para "Keep it up!"
@@ -477,7 +477,7 @@ HikerParryGivesIronText:
 	done
 
 BlackbeltKenji1SeenText:
-	text "I was training"
+	ctxt "I was training"
 	line "here alone."
 
 	para "Behold the fruits"
@@ -485,11 +485,11 @@ BlackbeltKenji1SeenText:
 	done
 
 BlackbeltKenji1BeatenText:
-	text "Waaaargh!"
+	ctxt "Waaaargh!"
 	done
 
 BlackbeltKenjiAfterBattleText:
-	text "This calls for"
+	ctxt "This calls for"
 	line "extreme measures."
 
 	para "I must take to the"
@@ -498,13 +498,13 @@ BlackbeltKenjiAfterBattleText:
 	done
 
 BlackbeltKenjiMorningText:
-	text "I'm going to train"
+	ctxt "I'm going to train"
 	line "a bit more before"
 	cont "I break for lunch."
 	done
 
 BlackbeltKenjiNightText:
-	text "We had plenty of"
+	ctxt "We had plenty of"
 	line "rest at lunch, so"
 
 	para "now we're all"
@@ -515,18 +515,18 @@ BlackbeltKenjiNightText:
 	done
 
 CooltrainermRyanSeenText:
-	text "What are your"
+	ctxt "What are your"
 	line "thoughts on rais-"
 	cont "ing #mon?"
 	done
 
 CooltrainermRyanBeatenText:
-	text "You've won my"
+	ctxt "You've won my"
 	line "respect."
 	done
 
 CooltrainerfKellySeenText:
-	text "What is your"
+	ctxt "What is your"
 	line "battle strategy?"
 
 	para "It is foolish to"
@@ -535,11 +535,11 @@ CooltrainerfKellySeenText:
 	done
 
 CooltrainerfKellyBeatenText:
-	text "Fine. I lost."
+	ctxt "Fine. I lost."
 	done
 
 CamperQuentinSeenText:
-	text "I'm really, really"
+	ctxt "I'm really, really"
 	line "tough!"
 
 	para "Is there anywhere"
@@ -548,11 +548,11 @@ CamperQuentinSeenText:
 	done
 
 CamperQuentinBeatenText:
-	text "I was tough at the"
+	ctxt "I was tough at the"
 	line "Battle Tower…"
 	done
 
 Route45SignText:
-	text "Route 45"
+	ctxt "Route 45"
 	line "Mountain Rd. Ahead"
 	done

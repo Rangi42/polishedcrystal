@@ -26,12 +26,12 @@ CeladonMansion1F_MapScriptHeader:
 CeladonMansionManagersSuiteSign:
 	jumpthistext
 
-	text "Celadon Condo"
+	ctxt "Celadon Condo"
 	line "Manager's Suite"
 	done
 
 CeladonMansionManagerText:
-	text "My dear #mon"
+	ctxt "My dear #mon"
 	line "keep me company,"
 
 	para "so I don't ever"
@@ -42,15 +42,15 @@ CeladonMansionManagerText:
 	done
 
 CeladonMansion1FMeowthText:
-	text "Meowth: Meow!"
+	ctxt "Meowth: Meow!"
 	done
 
 CeladonMansion1FClefairyText:
-	text "Clefairy: Clef"
+	ctxt "Clefairy: Clef"
 	line "cleff!"
 	done
 
 CeladonMansion1FNidoranFText:
-	text "Nidoran: Kya"
+	ctxt "Nidoran: Kya"
 	line "kyaoo!"
 	done

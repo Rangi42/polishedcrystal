@@ -45,24 +45,24 @@ ValenciaPortSailorScript:
 	jumpopenedtext .RefuseText
 
 .QuestionText:
-	text "Going back to"
+	ctxt "Going back to"
 	line "Shamouti Island?"
 	done
 
 .DepartText:
-	text "All right!"
+	ctxt "All right!"
 
 	para "All aboard the"
 	line "Seagallop Ferry!"
 	done
 
 .RefuseText:
-	text "I'll be waiting"
+	ctxt "I'll be waiting"
 	line "right here."
 	done
 
 ValenciaPortFisherText:
-	text "Have you noticed"
+	ctxt "Have you noticed"
 	line "the sea?"
 
 	para "These waters are"

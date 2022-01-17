@@ -29,7 +29,7 @@ Route15_MapScriptHeader:
 GenericTrainerTeacherColette:
 	generictrainer TEACHER, COLETTE, EVENT_BEAT_TEACHER_COLETTE, TeacherColetteSeenText, TeacherColetteBeatenText
 
-	text "Before I became a"
+	ctxt "Before I became a"
 	line "teacher, I used to"
 
 	para "forget a lot of"
@@ -39,7 +39,7 @@ GenericTrainerTeacherColette:
 GenericTrainerTeacherHillary:
 	generictrainer TEACHER, HILLARY, EVENT_BEAT_TEACHER_HILLARY, TeacherHillarySeenText, TeacherHillaryBeatenText
 
-	text "Studying is impor-"
+	ctxt "Studying is impor-"
 	line "tant, but exercise"
 	cont "is just as vital."
 	done
@@ -47,7 +47,7 @@ GenericTrainerTeacherHillary:
 GenericTrainerSchoolboyKipp:
 	generictrainer SCHOOLBOY, KIPP, EVENT_BEAT_SCHOOLBOY_KIP, SchoolboyKippSeenText, SchoolboyKippBeatenText
 
-	text "My mom worries so"
+	ctxt "My mom worries so"
 	line "much about me, I"
 
 	para "have to phone her"
@@ -57,7 +57,7 @@ GenericTrainerSchoolboyKipp:
 GenericTrainerSchoolboyTommy:
 	generictrainer SCHOOLBOY, TOMMY, EVENT_BEAT_SCHOOLBOY_TOMMY, SchoolboyTommySeenText, SchoolboyTommyBeatenText
 
-	text "Sayonara! I just"
+	ctxt "Sayonara! I just"
 	line "learned that in my"
 	cont "Japanese class."
 	done
@@ -65,7 +65,7 @@ GenericTrainerSchoolboyTommy:
 GenericTrainerSchoolboyBilly:
 	generictrainer SCHOOLBOY, BILLY, EVENT_BEAT_SCHOOLBOY_BILLY, SchoolboyBillySeenText, SchoolboyBillyBeatenText
 
-	text "If #mon were a"
+	ctxt "If #mon were a"
 	line "subject at school,"
 	cont "I'd be the best!"
 	done
@@ -73,7 +73,7 @@ GenericTrainerSchoolboyBilly:
 GenericTrainerSchoolgirlFaith:
 	generictrainer SCHOOLGIRL, FAITH, EVENT_BEAT_SCHOOLGIRL_FAITH, SchoolgirlFaithSeenText, SchoolgirlFaithBeatenText
 
-	text "I'm tired of walk-"
+	ctxt "I'm tired of walk-"
 	line "ing. I need to"
 	cont "take a break."
 	done
@@ -81,7 +81,7 @@ GenericTrainerSchoolgirlFaith:
 GenericTrainerPokefanfBoone:
 	generictrainer POKEFANF, BOONE, EVENT_BEAT_POKEFANF_BOONE, PokefanfBooneSeenText, PokefanfBooneBeatenText
 
-	text "When you battle,"
+	ctxt "When you battle,"
 	line "you get to see"
 	cont "#mon you've"
 	cont "never seen before."
@@ -92,7 +92,7 @@ GenericTrainerPokefanfBoone:
 GenericTrainerPokefanfEleanor:
 	generictrainer POKEFANF, ELEANOR, EVENT_BEAT_POKEFANF_ELEANOR, PokefanfEleanorSeenText, PokefanfEleanorBeatenText
 
-	text "My #mon aren't"
+	ctxt "My #mon aren't"
 	line "weak! Your #mon"
 	cont "are too strong!"
 	done
@@ -100,28 +100,28 @@ GenericTrainerPokefanfEleanor:
 GenericTrainerTwinsKayandtia1:
 	generictrainer TWINS, KAYANDTIA1, EVENT_BEAT_TWINS_KAY_AND_TIA, TwinsKayandtia1SeenText, TwinsKayandtia1BeatenText
 
-	text "Absolute truth--"
+	ctxt "Absolute truth--"
 	line "I'm Kay! Maybe…"
 	done
 
 GenericTrainerTwinsKayandtia2:
 	generictrainer TWINS, KAYANDTIA2, EVENT_BEAT_TWINS_KAY_AND_TIA, TwinsKayandtia2SeenText, TwinsKayandtia2BeatenText
 
-	text "Maybe truth--I'm"
+	ctxt "Maybe truth--I'm"
 	line "Tia! Absolutely!"
 	done
 
 TeacherColetteSeenText:
-	text "Have you forgotten"
+	ctxt "Have you forgotten"
 	line "anything?"
 	done
 
 TeacherColetteBeatenText:
-	text "Kyaaah!"
+	ctxt "Kyaaah!"
 	done
 
 TeacherHillarySeenText:
-	text "On sunny days, I"
+	ctxt "On sunny days, I"
 	line "think that the"
 
 	para "kids would rather"
@@ -132,32 +132,32 @@ TeacherHillarySeenText:
 	done
 
 TeacherHillaryBeatenText:
-	text "I didn't want to"
+	ctxt "I didn't want to"
 	line "lose…"
 	done
 
 SchoolboyKippSeenText:
-	text "Hang on. I have to"
+	ctxt "Hang on. I have to"
 	line "phone my mom."
 	done
 
 SchoolboyKippBeatenText:
-	text "Sorry, Mom!"
+	ctxt "Sorry, Mom!"
 	line "I was beaten!"
 	done
 
 SchoolboyTommySeenText:
-	text "Let's battle."
+	ctxt "Let's battle."
 	line "I won't lose!"
 	done
 
 SchoolboyTommyBeatenText:
-	text "I forgot to do my"
+	ctxt "I forgot to do my"
 	line "homework!"
 	done
 
 SchoolgirlFaithSeenText:
-	text "We're on a field"
+	ctxt "We're on a field"
 	line "trip to Lavender"
 
 	para "Radio Tower for"
@@ -165,22 +165,22 @@ SchoolgirlFaithSeenText:
 	done
 
 SchoolgirlFaithBeatenText:
-	text "You're wickedly"
+	ctxt "You're wickedly"
 	line "tough!"
 	done
 
 SchoolboyBillySeenText:
-	text "My favorite class"
+	ctxt "My favorite class"
 	line "is gym!"
 	done
 
 SchoolboyBillyBeatenText:
-	text "Oh, no!"
+	ctxt "Oh, no!"
 	line "How could I lose?"
 	done
 
 PokefanfBooneSeenText:
-	text "Hey, your"
+	ctxt "Hey, your"
 	line "#mon…"
 
 	para "Show me. Show me."
@@ -188,22 +188,22 @@ PokefanfBooneSeenText:
 	done
 
 PokefanfBooneBeatenText:
-	text "Yay! That was"
+	ctxt "Yay! That was"
 	line "great!"
 	done
 
 PokefanfEleanorSeenText:
-	text "All right,"
+	ctxt "All right,"
 	line "#mon, time for"
 	cont "a battle!"
 	done
 
 PokefanfEleanorBeatenText:
-	text "Oh, well…"
+	ctxt "Oh, well…"
 	done
 
 TwinsKayandtia1SeenText:
-	text "We're the twins"
+	ctxt "We're the twins"
 	line "Kay and Tia!"
 
 	para "Do you know which"
@@ -211,12 +211,12 @@ TwinsKayandtia1SeenText:
 	done
 
 TwinsKayandtia1BeatenText:
-	text "Tia and Kay both"
+	ctxt "Tia and Kay both"
 	line "lost…"
 	done
 
 TwinsKayandtia2SeenText:
-	text "We're the twins"
+	ctxt "We're the twins"
 	line "Kay and Tia!"
 
 	para "Do you know which"
@@ -224,12 +224,12 @@ TwinsKayandtia2SeenText:
 	done
 
 TwinsKayandtia2BeatenText:
-	text "Tia and Kay both"
+	ctxt "Tia and Kay both"
 	line "lost…"
 	done
 
 Route15SignText:
-	text "Route 15"
+	ctxt "Route 15"
 
 	para "Fuchsia City -"
 	line "Lavender Town"

@@ -24,7 +24,7 @@ PokemonJournalClairScript:
 	setflag ENGINE_READ_CLAIR_JOURNAL
 	jumpthistext
 
-	text "#mon Journal"
+	ctxt "#mon Journal"
 
 	para "Special Feature:"
 	line "Leader Clair!"
@@ -49,12 +49,12 @@ ProfOaksAide4Script:
 	iftrue .HereYouGo
 	jumpthisopenedtext
 
-	text "Let's see…"
+	ctxt "Let's see…"
 	line "Uh-oh! You've only"
 
 	para "caught "
 	text_decimal wTempDexOwn, 2, 3
-	text " kinds"
+	ctxt " kinds"
 	line "of #mon."
 
 	para "Come back and see"
@@ -71,7 +71,7 @@ ProfOaksAide4Script:
 	jumpthisopenedtext
 
 .ExplainText:
-	text "That Lucky Egg"
+	ctxt "That Lucky Egg"
 	line "helps a #mon"
 
 	para "gain more exper-"
@@ -82,7 +82,7 @@ ProfOaksAide4Script:
 	done
 
 .HiText:
-	text "Hello there! I'm"
+	ctxt "Hello there! I'm"
 	line "Prof.Oak's aide."
 
 	para "If you caught 60"
@@ -99,12 +99,12 @@ ProfOaksAide4Script:
 	done
 
 .HereYouGoText:
-	text "Let's see…"
+	ctxt "Let's see…"
 	line "Great job! You've"
 
 	para "caught "
 	text_decimal wTempDexOwn, 2, 3
-	text " kinds"
+	ctxt " kinds"
 	line "of #mon."
 
 	para "Congratulations!"
@@ -112,13 +112,13 @@ ProfOaksAide4Script:
 	done
 
 .NoRoomText:
-	text "Oh! I see you"
+	ctxt "Oh! I see you"
 	line "don't have any"
 	cont "room for this."
 	done
 
 BlackthornPokeCenter1FGentlemanText:
-	text "Deep inside far-"
+	ctxt "Deep inside far-"
 	line "off Indigo Plateau"
 
 	para "is the #mon"
@@ -132,7 +132,7 @@ BlackthornPokeCenter1FGentlemanText:
 	done
 
 BlackthornPokeCenter1FTwinText:
-	text "There was this"
+	ctxt "There was this"
 	line "move I just had"
 
 	para "to teach my #-"

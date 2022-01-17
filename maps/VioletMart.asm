@@ -17,7 +17,7 @@ VioletMart_MapScriptHeader:
 	object_event  5,  2, SPRITE_ACE_TRAINER_M, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, VioletMartCooltrainerMText, -1
 
 VioletMartGrannyText:
-	text "When you first"
+	ctxt "When you first"
 	line "catch a #mon,"
 	cont "it may be weak."
 
@@ -31,7 +31,7 @@ VioletMartGrannyText:
 	done
 
 VioletMartCooltrainerMText:
-	text "#mon can hold"
+	ctxt "#mon can hold"
 	line "items like Potion"
 	cont "and Antidote."
 

@@ -117,7 +117,7 @@ FlowerShopFloriaScript:
 	jumpopenedtext GoldenrodFlowerShopFloriaItReallyWasAMonText
 
 GoldenrodFlowerShopTeacherMySisterWentToSeeWigglyTreeRoute36Text:
-	text "Have you seen that"
+	ctxt "Have you seen that"
 	line "wiggly tree that's"
 
 	para "growing on Route"
@@ -134,7 +134,7 @@ GoldenrodFlowerShopTeacherMySisterWentToSeeWigglyTreeRoute36Text:
 	done
 
 GoldenrodFlowerShopTeacherAskWantToBorrowWaterBottleText:
-	text "Do you want to"
+	ctxt "Do you want to"
 	line "borrow the water"
 
 	para "bottle too?"
@@ -145,7 +145,7 @@ GoldenrodFlowerShopTeacherAskWantToBorrowWaterBottleText:
 	done
 
 GoldenrodFlowerShopTeacherHeresTheSquirtbottleText:
-	text "Oh, you're better"
+	ctxt "Oh, you're better"
 	line "than Whitney…"
 
 	para "You'll be OK,"
@@ -154,18 +154,18 @@ GoldenrodFlowerShopTeacherHeresTheSquirtbottleText:
 	done
 
 GoldenrodFlowerShopTeacherDontDoAnythingDangerousText:
-	text "Don't do anything"
+	ctxt "Don't do anything"
 	line "too dangerous!"
 	done
 
 GoldenrodFlowerShopTeacherLalalaHavePlentyOfWaterText:
-	text "Lalala lalalala."
+	ctxt "Lalala lalalala."
 	line "Have plenty of"
 	cont "water, my lovely!"
 	done
 
 GoldenrodFlowerShopFloriaWonderIfSisWillLendWaterBottleText:
-	text "When I told my sis"
+	ctxt "When I told my sis"
 	line "about the jiggly"
 
 	para "tree, she told me"
@@ -179,17 +179,17 @@ GoldenrodFlowerShopFloriaWonderIfSisWillLendWaterBottleText:
 	done
 
 GoldenrodFlowerShopFloriaYouBeatWhitneyText:
-	text "Wow, you beat"
+	ctxt "Wow, you beat"
 	line "Whitney? Cool!"
 	done
 
 GoldenrodFlowerShopFloriaItReallyWasAMonText:
-	text "So it really was a"
+	ctxt "So it really was a"
 	line "#mon!"
 	done
 
 WoukdYouLikeMulchText:
-	text "Care to buy some"
+	ctxt "Care to buy some"
 	line "Mulch?"
 
 	para "It makes Berries"
@@ -197,27 +197,27 @@ WoukdYouLikeMulchText:
 	done
 
 BoughtMulchText:
-	text "Thank you!"
+	ctxt "Thank you!"
 	line "Please come again!"
 	done
 
 DontBuyMulchText:
-	text "Please come again!"
+	ctxt "Please come again!"
 	done
 
 NotEnoughMulchMoneyText:
-	text "Well… Excuse me,"
+	ctxt "Well… Excuse me,"
 	line "but you're short"
 	cont "of money."
 	done
 
 NoRoomForMulchText:
-	text "Oh no, your Bag"
+	ctxt "Oh no, your Bag"
 	line "is full!"
 	done
 
 DescribeMulchText:
-	text "Our Mulch is a"
+	ctxt "Our Mulch is a"
 	line "mix of high-qual-"
 
 	para "ity soil and #-"
@@ -228,7 +228,7 @@ DescribeMulchText:
 	done
 
 FlowerShopGentlemanText:
-	text "I've been working"
+	ctxt "I've been working"
 	line "late a lot recent-"
 	cont "ly, so I'm buying"
 

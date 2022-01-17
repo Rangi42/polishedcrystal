@@ -26,7 +26,7 @@ SeafoamGym_MapScriptHeader:
 GenericTrainerScientistLowell:
 	generictrainer SCIENTIST, LOWELL, EVENT_BEAT_SCIENTIST_LOWELL, ScientistLowellSeenText, ScientistLowellBeatenText
 
-	text "We may be in a"
+	ctxt "We may be in a"
 	line "cave, but we"
 	cont "always do the"
 	cont "laundry."
@@ -35,7 +35,7 @@ GenericTrainerScientistLowell:
 GenericTrainerScientistDennett:
 	generictrainer SCIENTIST, DENNETT, EVENT_BEAT_SCIENTIST_DENNETT, ScientistDennettSeenText, ScientistDennettBeatenText
 
-	text "Together with"
+	ctxt "Together with"
 	line "Blaine, we will"
 	cont "rebuild our Gym!"
 	done
@@ -43,28 +43,28 @@ GenericTrainerScientistDennett:
 GenericTrainerSupernerdCary:
 	generictrainer SUPER_NERD, CARY, EVENT_BEAT_SUPER_NERD_CARY, SupernerdCarySeenText, SupernerdCaryBeatenText
 
-	text "Bitterness leads"
+	ctxt "Bitterness leads"
 	line "to improvement."
 	done
 
 GenericTrainerScientistLinden:
 	generictrainer SCIENTIST, LINDEN, EVENT_BEAT_SCIENTIST_LINDEN, ScientistLindenSeenText, ScientistLindenBeatenText
 
-	text "Not all scientists"
+	ctxt "Not all scientists"
 	line "help the bad guys."
 	done
 
 GenericTrainerSupernerdWaldo:
 	generictrainer SUPER_NERD, WALDO, EVENT_BEAT_SUPER_NERD_WALDO, SupernerdWaldoSeenText, SupernerdWaldoBeatenText
 
-	text "Who in the world"
+	ctxt "Who in the world"
 	line "are you?"
 	done
 
 GenericTrainerSupernerdMerle:
 	generictrainer SUPER_NERD, MERLE, EVENT_BEAT_SUPER_NERD_MERLE, SupernerdMerleSeenText, SupernerdMerleBeatenText
 
-	text "I failed to"
+	ctxt "I failed to"
 	line "sense how strong"
 	cont "you are."
 	done
@@ -120,7 +120,7 @@ SeafoamGymBlaineScript:
 	setevent EVENT_GOT_TM61_WILL_O_WISP
 	jumpthisopenedtext
 
-	text "It's called Will-"
+	ctxt "It's called Will-"
 	line "O-Wisp!"
 
 	para "It weakens your"
@@ -144,7 +144,7 @@ SeafoamGymGuyScript:
 	setevent EVENT_TALKED_TO_SEAFOAM_GYM_GUY_ONCE
 	jumpthistextfaceplayer
 
-	text "Yo!"
+	ctxt "Yo!"
 
 	para "…Huh? It's over"
 	line "already?"
@@ -165,31 +165,31 @@ SeafoamGymGuyScript:
 	done
 
 ScientistLowellSeenText:
-	text "This lab coat"
+	ctxt "This lab coat"
 	line "makes me feel"
 	cont "smarter for some"
 	cont "reason."
 	done
 
 ScientistLowellBeatenText:
-	text "A white lab coat"
+	ctxt "A white lab coat"
 	line "is a researcher's"
 	cont "life."
 	done
 
 ScientistDennettSeenText:
-	text "Blaine may have"
+	ctxt "Blaine may have"
 	line "lost his Gym, but"
 	cont "he never gives up!"
 	done
 
 ScientistDennettBeatenText:
-	text "Blaine's persever-"
+	ctxt "Blaine's persever-"
 	line "ance motivates me!"
 	done
 
 SupernerdCarySeenText:
-	text "Wow, a Gym in a"
+	ctxt "Wow, a Gym in a"
 	line "cave like this?"
 
 	para "I'd love to"
@@ -197,45 +197,45 @@ SupernerdCarySeenText:
 	done
 
 SupernerdCaryBeatenText:
-	text "A bitter"
+	ctxt "A bitter"
 	line "defeat…"
 	done
 
 ScientistLindenSeenText:
-	text "We lost the Gym on"
+	ctxt "We lost the Gym on"
 	line "Cinnabar Island,"
 	cont "but we came here."
 	done
 
 ScientistLindenBeatenText:
-	text "We accept defeat"
+	ctxt "We accept defeat"
 	line "gracefully…"
 	done
 
 SupernerdWaldoSeenText:
-	text "I am collecting"
+	ctxt "I am collecting"
 	line "battle records."
 
 	para "Can you help me?"
 	done
 
 SupernerdWaldoBeatenText:
-	text "I didn't expect"
+	ctxt "I didn't expect"
 	line "you to be so good!"
 	done
 
 SupernerdMerleSeenText:
-	text "Ooh!"
+	ctxt "Ooh!"
 	line "You look easily"
 	cont "defeated!"
 	done
 
 SupernerdMerleBeatenText:
-	text "Pardon me!"
+	ctxt "Pardon me!"
 	done
 
 BlaineIntroText:
-	text "Blaine: Waaah!"
+	ctxt "Blaine: Waaah!"
 
 	para "My Gym in Cinnabar"
 	line "burned down."
@@ -263,7 +263,7 @@ BlaineIntroText:
 	done
 
 BlaineWinLossText:
-	text "Blaine: Awesome."
+	ctxt "Blaine: Awesome."
 	line "I've burned out…"
 
 	para "You've earned the"
@@ -271,17 +271,17 @@ BlaineWinLossText:
 	done
 
 ReceivedVolcanoBadgeText:
-	text "<PLAYER> received"
+	ctxt "<PLAYER> received"
 	line "the Volcano Badge."
 	done
 
 BlaineAfterBattleText:
-	text "Here, I'll give you"
+	ctxt "Here, I'll give you"
 	line "this, too."
 	done
 
 BlaineFightDoneText:
-	text "Blaine: My fire"
+	ctxt "Blaine: My fire"
 	line "#mon will be"
 
 	para "even stronger."
@@ -289,7 +289,7 @@ BlaineFightDoneText:
 	done
 
 SeafoamGymGuyWinText2:
-	text "A #mon Gym can"
+	ctxt "A #mon Gym can"
 	line "be anywhere as"
 
 	para "long as the Gym"

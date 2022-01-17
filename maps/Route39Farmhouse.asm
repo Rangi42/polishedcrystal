@@ -112,7 +112,7 @@ PokefanF_AcrobaticsFarmer:
 	jumpopenedtext FarmerFText_AcrobaticsSpeech
 
 FarmerMText_SickCow:
-	text "My Miltank ain't"
+	ctxt "My Miltank ain't"
 	line "givin' me milk"
 	cont "n'more."
 
@@ -130,7 +130,7 @@ FarmerMText_SickCow:
 	done
 
 FarmerMText_BuyMilk:
-	text "How'd you like my"
+	ctxt "How'd you like my"
 	line "Moomoo Milk?"
 
 	para "It's my pride and"
@@ -144,32 +144,32 @@ FarmerMText_BuyMilk:
 	done
 
 FarmerMText_GotMilk:
-	text "Here ya go!"
+	ctxt "Here ya go!"
 	line "Drink up'n enjoy!"
 	done
 
 FarmerMText_NoMoney:
-	text "Sorry, there."
+	ctxt "Sorry, there."
 	line "No cash, no sale!"
 	done
 
 FarmerMText_NoRoom:
-	text "I reckon yer"
+	ctxt "I reckon yer"
 	line "Bag's full."
 	done
 
 FarmerMText_NoSale:
-	text "You don't want it?"
+	ctxt "You don't want it?"
 	line "Come again, hear?"
 	done
 
 FarmerMText_Milking:
-	text "I best go do my"
+	ctxt "I best go do my"
 	line "milkin'."
 	done
 
 FarmerFText_InTrouble:
-	text "Our milk even goes"
+	ctxt "Our milk even goes"
 	line "out to Kanto."
 
 	para "So if our own"
@@ -180,7 +180,7 @@ FarmerFText_InTrouble:
 	done
 
 FarmerFText_HealedMiltank:
-	text "You fixed our"
+	ctxt "You fixed our"
 	line "Miltank, hon. Now"
 
 	para "it gives Moomoo"
@@ -191,7 +191,7 @@ FarmerFText_HealedMiltank:
 	done
 
 FarmerFText_AcrobaticsSpeech:
-	text "That there's"
+	ctxt "That there's"
 	line "Acrobatics."
 
 	para "It's a move that"

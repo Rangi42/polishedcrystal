@@ -17,7 +17,7 @@ CeladonHotelRoom1_MapScriptHeader:
 	itemball_event  3,  1, POKE_DOLL, 1, EVENT_CELADON_HOTEL_ROOM_1_POKE_DOLL
 
 CeladonHotelRoom1CooltrainerMText:
-	text "Where I come from,"
+	ctxt "Where I come from,"
 	line "there aren't any"
 	cont "# Balls."
 
@@ -27,7 +27,7 @@ CeladonHotelRoom1CooltrainerMText:
 	done
 
 CeladonHotelRoom1LassText:
-	text "The staff here"
+	ctxt "The staff here"
 	line "fold our towels"
 	cont "into flower shapes"
 	cont "every day."

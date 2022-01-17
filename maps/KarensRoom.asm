@@ -78,7 +78,7 @@ KarenScript:
 	end
 
 .SeenText:
-	text "I am Karen of the"
+	ctxt "I am Karen of the"
 	line "Elite Four."
 
 	para "You're <PLAYER>?"
@@ -101,13 +101,13 @@ KarenScript:
 	done
 
 .BeatenText:
-	text "Well, aren't you"
+	ctxt "Well, aren't you"
 	line "good. I like that"
 	cont "in a trainer."
 	done
 
 .AfterText:
-	text "Strong #mon."
+	ctxt "Strong #mon."
 
 	para "Weak #mon."
 
@@ -130,7 +130,7 @@ KarenScript:
 	done
 
 .SeenRematchText:
-	text "You fought through"
+	ctxt "You fought through"
 	line "the ranks to reach"
 	cont "me. I'm impressed."
 
@@ -144,7 +144,7 @@ KarenScript:
 	done
 
 .AfterRematchText:
-	text "I will not stray"
+	ctxt "I will not stray"
 	line "from my chosen"
 	cont "path."
 

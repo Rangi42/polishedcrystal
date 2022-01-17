@@ -215,7 +215,7 @@ VermilionMachokeOwnerScript:
 	iftrue_jumptextfaceplayer VermilionMachokeOwnerText
 	jumpthistextfaceplayer
 
-	text "My #mon"
+	ctxt "My #mon"
 	line "prepared the land"
 
 	para "to construct that"
@@ -231,7 +231,7 @@ VermilionCitySuperNerd2Script:
 	iftrue_jumptextfaceplayer VermilionCitySuperNerd2Text
 	jumpthistextfaceplayer
 
-	text "The Battle Factory"
+	ctxt "The Battle Factory"
 	line "is brand-new!"
 
 	para "But it draws a"
@@ -244,7 +244,7 @@ VermilionCitySuperNerd2Script:
 	done
 
 VermilionCityBadgeGuyBattleEdgeText:
-	text "Having a variety"
+	ctxt "Having a variety"
 	line "of #mon types"
 
 	para "should give you an"
@@ -256,7 +256,7 @@ VermilionCityBadgeGuyBattleEdgeText:
 	done
 
 LawrenceOverheardText:
-	text "…So the legendary"
+	ctxt "…So the legendary"
 	line "#mon was not"
 	cont "on that island…"
 
@@ -265,7 +265,7 @@ LawrenceOverheardText:
 	done
 
 LawrenceIntroText:
-	text "Lawrence: Please"
+	ctxt "Lawrence: Please"
 	line "excuse me for"
 	cont "bumping into you."
 
@@ -307,7 +307,7 @@ LawrenceIntroText:
 	done
 
 VermilionCityTeacherText:
-	text "Vermilion Port is"
+	ctxt "Vermilion Port is"
 	line "Kanto's seaside"
 	cont "gateway."
 
@@ -317,7 +317,7 @@ VermilionCityTeacherText:
 	done
 
 VermilionMachokeOwnerText:
-	text "My #mon"
+	ctxt "My #mon"
 	line "prepared the land"
 
 	para "to construct that"
@@ -331,12 +331,12 @@ VermilionMachokeOwnerText:
 	done
 
 VermilionMachokeText:
-	text "Machoke: Guooh"
+	ctxt "Machoke: Guooh"
 	line "gogogoh!"
 	done
 
 VermilionCitySuperNerdText:
-	text "There are eight"
+	ctxt "There are eight"
 	line "Gyms in Kanto."
 
 	para "That big building"
@@ -345,7 +345,7 @@ VermilionCitySuperNerdText:
 	done
 
 VermilionCitySuperNerd2Text:
-	text "The Battle Factory"
+	ctxt "The Battle Factory"
 	line "is brand-new, but"
 
 	para "trainers are al-"
@@ -357,7 +357,7 @@ VermilionCitySuperNerd2Text:
 	done
 
 VermilionCityOfficerFText:
-	text "The Power Plant's"
+	ctxt "The Power Plant's"
 	line "generator is shut"
 	cont "down, so it's not"
 
@@ -366,7 +366,7 @@ VermilionCityOfficerFText:
 	done
 
 VermilionCityOfficerText:
-	text "Sorry, the Battle"
+	ctxt "Sorry, the Battle"
 	line "Factory is closed"
 
 	para "until the Power"
@@ -375,17 +375,17 @@ VermilionCityOfficerText:
 	done
 
 VermilionCitySailorText:
-	text "Nothing beats"
+	ctxt "Nothing beats"
 	line "good sea air!"
 	done
 
 VermilionCitySnorlaxSleepingText:
-	text "Snorlax is snoring"
+	ctxt "Snorlax is snoring"
 	line "peacefully…"
 	done
 
 VermilionCityRadioNearSnorlaxText:
-	text "The #gear was"
+	ctxt "The #gear was"
 	line "placed near the"
 	cont "sleeping Snorlax…"
 
@@ -395,7 +395,7 @@ VermilionCityRadioNearSnorlaxText:
 	done
 
 VermilionCityBadgeGuyTrainerText:
-	text "Skilled trainers"
+	ctxt "Skilled trainers"
 	line "gather in Kanto."
 
 	para "Gym Leaders are"
@@ -406,7 +406,7 @@ VermilionCityBadgeGuyTrainerText:
 	done
 
 VermilionCityBadgeGuySomeBadgesText:
-	text "You've started to"
+	ctxt "You've started to"
 	line "collect Kanto Gym"
 	cont "Badges?"
 
@@ -416,7 +416,7 @@ VermilionCityBadgeGuySomeBadgesText:
 	done
 
 VermilionCityBadgeGuyMostBadgesText:
-	text "I guess you'll be"
+	ctxt "I guess you'll be"
 	line "finished with your"
 
 	para "conquest of Kanto"
@@ -428,7 +428,7 @@ VermilionCityBadgeGuyMostBadgesText:
 	done
 
 VermilionCityBadgeGuyAllBadgesText:
-	text "Congratulations!"
+	ctxt "Congratulations!"
 
 	para "You got all the"
 	line "Kanto Gym Badges."
@@ -438,14 +438,14 @@ VermilionCityBadgeGuyAllBadgesText:
 	done
 
 VermilionCitySignText:
-	text "Vermilion City"
+	ctxt "Vermilion City"
 
 	para "The Port of"
 	line "Exquisite Sunsets"
 	done
 
 VermilionGymSignText:
-	text "Vermilion City"
+	ctxt "Vermilion City"
 	line "#mon Gym"
 	cont "Leader: Lt.Surge"
 
@@ -454,23 +454,23 @@ VermilionGymSignText:
 	done
 
 PokemonFanClubSignText:
-	text "#mon Fan Club"
+	ctxt "#mon Fan Club"
 
 	para "All #mon Fans"
 	line "Welcome!"
 	done
 
 VermilionCityDiglettsCaveSignText:
-	text "Diglett's Cave"
+	ctxt "Diglett's Cave"
 	done
 
 VermilionCityPortSignText:
-	text "Vermilion Port"
+	ctxt "Vermilion Port"
 	line "Entrance"
 	done
 
 VermilionCityAdvancedTipsSignText:
-	text "Advanced Tips!"
+	ctxt "Advanced Tips!"
 
 	para "Your Trainer Card"
 	line "has room to show"
@@ -478,7 +478,7 @@ VermilionCityAdvancedTipsSignText:
 	done
 
 VermilionCityBattleFactorySignText:
-	text "Battle Factory"
+	ctxt "Battle Factory"
 
 	para "Win it All with"
 	line "Rental #mon!"

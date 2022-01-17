@@ -27,7 +27,7 @@ OlivineLighthouse5F_MapScriptHeader:
 GenericTrainerBird_keeperDenis:
 	generictrainer BIRD_KEEPER, DENIS, EVENT_BEAT_BIRD_KEEPER_DENIS, Bird_keeperDenisSeenText, Bird_keeperDenisBeatenText
 
-	text "My #mon learned"
+	ctxt "My #mon learned"
 	line "how to use Fly in"
 	cont "the Yellow Forest."
 
@@ -39,7 +39,7 @@ GenericTrainerBird_keeperDenis:
 GenericTrainerSailorErnest:
 	generictrainer SAILOR, ERNEST, EVENT_BEAT_SAILOR_ERNEST, SailorErnestSeenText, SailorErnestBeatenText
 
-	text "A Gym Leader isn't"
+	ctxt "A Gym Leader isn't"
 	line "just about being"
 
 	para "strong. A Leader"
@@ -48,7 +48,7 @@ GenericTrainerSailorErnest:
 	done
 
 SailorErnestSeenText:
-	text "I wanted to battle"
+	ctxt "I wanted to battle"
 	line "Jasmine, but she's"
 
 	para "not up to it now."
@@ -56,12 +56,12 @@ SailorErnestSeenText:
 	done
 
 SailorErnestBeatenText:
-	text "Whoa, whoa. You're"
+	ctxt "Whoa, whoa. You're"
 	line "overwhelming!"
 	done
 
 Bird_keeperDenisSeenText:
-	text "We're pretty high"
+	ctxt "We're pretty high"
 	line "up here. My bird"
 
 	para "#mon are in"
@@ -69,6 +69,6 @@ Bird_keeperDenisSeenText:
 	done
 
 Bird_keeperDenisBeatenText:
-	text "Oops…They crashed…"
+	ctxt "Oops…They crashed…"
 	done
 

@@ -21,7 +21,7 @@ CeladonUniversityWillowsOffice_MapScriptHeader:
 	object_event  4,  3, SPRITE_SCIENTIST, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_COMMAND, jumptextfaceplayer, CeladonUniversityWillowsOfficeScientistText, -1
 
 CeladonUniversityWillowsOfficeWillowText:
-	text "Hello there!"
+	ctxt "Hello there!"
 	line "I am Prof.Willow."
 
 	para "I supervise"
@@ -46,7 +46,7 @@ CeladonUniversityWillowsOfficeWillowText:
 	done
 
 CeladonUniversityWillowsOfficeScientistText:
-	text "I get to work as"
+	ctxt "I get to work as"
 	line "Prof.Willow's"
 	cont "aide!"
 
@@ -61,7 +61,7 @@ CeladonUniversityWillowsOfficeScientistText:
 	done
 
 CeladonUniversityWillowsOfficeBlackboardText:
-	text "Someone wrote “DO"
+	ctxt "Someone wrote “DO"
 	line "NOT ERASE” with"
 
 	para "an arrow toward"
@@ -70,7 +70,7 @@ CeladonUniversityWillowsOfficeBlackboardText:
 	done
 
 CeladonUniversityWillowsOfficeBookshelf1Text:
-	text "It's a book about"
+	ctxt "It's a book about"
 	line "ecological niches"
 
 	para "and how #mon"
@@ -79,7 +79,7 @@ CeladonUniversityWillowsOfficeBookshelf1Text:
 	done
 
 CeladonUniversityWillowsOfficeBookshelf2Text:
-	text "It's a promotional"
+	ctxt "It's a promotional"
 	line "flyer for the"
 	cont "Safari Zone."
 
@@ -91,7 +91,7 @@ CeladonUniversityWillowsOfficeBookshelf2Text:
 CeladonUniversityWillowsOfficeComputer:
 	jumpthistext
 
-	text "“#mon Transfer"
+	ctxt "“#mon Transfer"
 	line "System” is on the"
 	cont "screen."
 	done

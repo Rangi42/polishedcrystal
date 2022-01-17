@@ -40,13 +40,13 @@ SilphCoOfficerScript:
 	jumpopenedtext SilphCoOfficerText_GotUpGrade
 
 SilphCoReceptionistText:
-	text "Welcome. This is"
+	ctxt "Welcome. This is"
 	line "Silph Co.'s Head"
 	cont "Office Building."
 	done
 
 SilphCoOfficerText:
-	text "Only employees are"
+	ctxt "Only employees are"
 	line "permitted to go"
 	cont "upstairs."
 
@@ -65,7 +65,7 @@ SilphCoOfficerText:
 	done
 
 SilphCoOfficerText_GotUpGrade:
-	text "You're responsible"
+	ctxt "You're responsible"
 	line "for restoring the"
 	cont "power supply?"
 
@@ -77,7 +77,7 @@ SilphCoOfficerText_GotUpGrade:
 	done
 
 SilphCo1FGentlemanText:
-	text "I have an appoint-"
+	ctxt "I have an appoint-"
 	line "ment with the"
 
 	para "chief engineer"
@@ -85,7 +85,7 @@ SilphCo1FGentlemanText:
 	done
 
 SilphCo1FCooltrainerfText:
-	text "I'm trying to"
+	ctxt "I'm trying to"
 	line "pluck up the"
 	cont "courage to ask"
 

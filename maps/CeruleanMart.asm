@@ -17,7 +17,7 @@ CeruleanMart_MapScriptHeader:
 	object_event  7,  2, SPRITE_BATTLE_GIRL, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 2, -1, -1, PAL_NPC_RED, OBJECTTYPE_COMMAND, jumptextfaceplayer, CeruleanMart_CooltrainerFText, -1
 
 CeruleanMart_CooltrainerMText:
-	text "You'll run into"
+	ctxt "You'll run into"
 	line "many trainers on"
 
 	para "the way to Ceru-"
@@ -31,7 +31,7 @@ CeruleanMart_CooltrainerMText:
 	done
 
 CeruleanMart_CooltrainerFText:
-	text "Misty is about the"
+	ctxt "Misty is about the"
 	line "only person in"
 
 	para "town who can beat"

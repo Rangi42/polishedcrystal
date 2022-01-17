@@ -134,7 +134,7 @@ WarehouseEntranceCheckDayOfWeek:
 GenericTrainerSupernerdEric:
 	generictrainer SUPER_NERD, ERIC, EVENT_BEAT_SUPER_NERD_ERIC, SupernerdEricSeenText, SupernerdEricBeatenText
 
-	text "I guess I have to"
+	ctxt "I guess I have to"
 	line "do things fair and"
 	cont "square…"
 	done
@@ -142,7 +142,7 @@ GenericTrainerSupernerdEric:
 GenericTrainerSupernerdTeru:
 	generictrainer SUPER_NERD, TERU, EVENT_BEAT_SUPER_NERD_TERU, SupernerdTeruSeenText, SupernerdTeruBeatenText
 
-	text "I know my #mon"
+	ctxt "I know my #mon"
 	line "type alignments."
 
 	para "But I only use one"
@@ -152,7 +152,7 @@ GenericTrainerSupernerdTeru:
 GenericTrainerPokemaniacIssac:
 	generictrainer POKEMANIAC, ISSAC, EVENT_BEAT_POKEMANIAC_ISSAC, PokemaniacIssacSeenText, PokemaniacIssacBeatenText
 
-	text "Your #mon will"
+	ctxt "Your #mon will"
 	line "like you more if"
 
 	para "you give them"
@@ -162,7 +162,7 @@ GenericTrainerPokemaniacIssac:
 GenericTrainerPokemaniacDonald:
 	generictrainer POKEMANIAC, DONALD, EVENT_BEAT_POKEMANIAC_DONALD, PokemaniacDonaldSeenText, PokemaniacDonaldBeatenText
 
-	text "Are you making a"
+	ctxt "Are you making a"
 	line "#dex? Here's a"
 	cont "hot tip."
 
@@ -175,6 +175,16 @@ GenericTrainerPokemaniacDonald:
 	cont "#mon."
 	done
 
+<<<<<<< HEAD
+=======
+GenericTrainerCosplayerClara:
+	generictrainer COSPLAYER, CLARA, EVENT_BEAT_COSPLAYER_CLARA, CosplayerClaraSeenText, CosplayerClaraBeatenText
+
+	ctxt "I made this cos-"
+	line "tume myself!"
+	done
+
+>>>>>>> a0f2dd10f66795468601166436c9ccef9b074e9d
 BitterMerchantScript:
 	readvar VAR_WEEKDAY
 	ifequal SUNDAY, .Open
@@ -375,7 +385,7 @@ BasementDoorScript::
 	endtext
 
 SupernerdEricSeenText:
-	text "I got booted out"
+	ctxt "I got booted out"
 	line "of the Game Cor-"
 	cont "ner."
 
@@ -385,11 +395,11 @@ SupernerdEricSeenText:
 	done
 
 SupernerdEricBeatenText:
-	text "…Grumble…"
+	ctxt "…Grumble…"
 	done
 
 SupernerdTeruSeenText:
-	text "Do you consider"
+	ctxt "Do you consider"
 	line "type alignments in"
 	cont "battle?"
 
@@ -401,11 +411,11 @@ SupernerdTeruSeenText:
 	done
 
 SupernerdTeruBeatenText:
-	text "Ow, ow, ow!"
+	ctxt "Ow, ow, ow!"
 	done
 
 PokemaniacIssacSeenText:
-	text "My #mon just"
+	ctxt "My #mon just"
 	line "got a haircut!"
 
 	para "I'll show you how"
@@ -413,11 +423,11 @@ PokemaniacIssacSeenText:
 	done
 
 PokemaniacIssacBeatenText:
-	text "Aiyeeee!"
+	ctxt "Aiyeeee!"
 	done
 
 PokemaniacDonaldSeenText:
-	text "I think you have"
+	ctxt "I think you have"
 	line "some rare #mon"
 	cont "with you."
 
@@ -425,25 +435,40 @@ PokemaniacDonaldSeenText:
 	done
 
 PokemaniacDonaldBeatenText:
-	text "Gaah! I lost!"
+	ctxt "Gaah! I lost!"
 	line "That makes me mad!"
 	done
 
+<<<<<<< HEAD
+=======
+CosplayerClaraSeenText:
+	ctxt "Pix! Vul, pix! ♥"
+	done
+
+CosplayerClaraBeatenText:
+	ctxt "You thought I was"
+	line "a #mon?"
+
+	para "Nope! It's just"
+	line "quality cosplay."
+	done
+
+>>>>>>> a0f2dd10f66795468601166436c9ccef9b074e9d
 GoldenrodUndergroundTheDoorsLockedText:
-	text "The door's locked…"
+	ctxt "The door's locked…"
 	done
 
 GoldenrodUndergroundTheDoorIsOpenText:
-	text "The door is open."
+	ctxt "The door is open."
 	done
 
 GoldenrodUndergroundBasementKeyOpenedDoorText:
-	text "The Basement Key"
+	ctxt "The Basement Key"
 	line "opened the door."
 	done
 
 GoldenrodUndergroundOlderHaircutBrotherOfferHaircutText:
-	text "Welcome!"
+	ctxt "Welcome!"
 
 	para "I run the #mon"
 	line "Salon!"
@@ -461,37 +486,37 @@ GoldenrodUndergroundOlderHaircutBrotherOfferHaircutText:
 	done
 
 GoldenrodUndergroundOlderHaircutBrotherAskWhichMonText:
-	text "Which #mon"
+	ctxt "Which #mon"
 	line "should I work on?"
 	done
 
 GoldenrodUndergroundOlderHaircutBrotherWatchItBecomeBeautifulText:
-	text "OK! Watch it"
+	ctxt "OK! Watch it"
 	line "become beautiful!"
 	done
 
 GoldenrodUndergroundOlderHaircutBrotherAllDoneText:
-	text "There! All done!"
+	ctxt "There! All done!"
 	done
 
 GoldenrodUndergroundOlderHaircutBrotherThatsAShameText:
-	text "Is that right?"
+	ctxt "Is that right?"
 	line "That's a shame!"
 	done
 
 GoldenrodUndergroundOlderHaircutBrotherYoullNeedMoreMoneyText:
-	text "You'll need more"
+	ctxt "You'll need more"
 	line "money than that."
 	done
 
 GoldenrodUndergroundOlderHaircutBrotherOneHaircutADayText:
-	text "I do only one"
+	ctxt "I do only one"
 	line "haircut a day. I'm"
 	cont "done for today."
 	done
 
 GoldenrodUndergroundYoungerHaircutBrotherOfferHaircutText:
-	text "Welcome to the"
+	ctxt "Welcome to the"
 	line "#mon Salon!"
 
 	para "I'm the younger"
@@ -507,32 +532,32 @@ GoldenrodUndergroundYoungerHaircutBrotherOfferHaircutText:
 	done
 
 GoldenrodUndergroundYoungerHaircutBrotherAskWhichMonText:
-	text "OK, which #mon"
+	ctxt "OK, which #mon"
 	line "should I do?"
 	done
 
 GoldenrodUndergroundYoungerHaircutBrotherIllMakeItLookCoolText:
-	text "OK! I'll make it"
+	ctxt "OK! I'll make it"
 	line "look cool!"
 	done
 
 GoldenrodUndergroundYoungerHaircutBrotherAllDoneText:
-	text "There we go!"
+	ctxt "There we go!"
 	line "All done!"
 	done
 
 GoldenrodUndergroundYoungerHaircutBrotherHowDisappointingText:
-	text "No?"
+	ctxt "No?"
 	line "How disappointing!"
 	done
 
 GoldenrodUndergroundYoungerHaircutBrotherShortOnFundsText:
-	text "You're a little"
+	ctxt "You're a little"
 	line "short on funds."
 	done
 
 GoldenrodUndergroundYoungerHaircutBrotherOneHaircutADayText:
-	text "I can do only one"
+	ctxt "I can do only one"
 	line "haircut a day."
 
 	para "Sorry, but I'm all"
@@ -541,28 +566,28 @@ GoldenrodUndergroundYoungerHaircutBrotherOneHaircutADayText:
 
 HaircutBrosText_SlightlyHappier:
 	text_ram wStringBuffer3
-	text " looks a"
+	ctxt " looks a"
 	line "little happier."
 	done
 
 HaircutBrosText_Happier:
 	text_ram wStringBuffer3
-	text " looks"
+	ctxt " looks"
 	line "happy."
 	done
 
 HaircutBrosText_MuchHappier:
 	text_ram wStringBuffer3
-	text " looks"
+	ctxt " looks"
 	line "delighted!"
 	done
 
 GoldenrodUndergroundWeAreNotOpenTodayText:
-	text "We're not open"
+	ctxt "We're not open"
 	line "today."
 	done
 
-GoldenrodUndergroundNoEntryText:
+GoldenrodUndergroundNoEntryText: ; ctxt > text
 	text "NO ENTRY BEYOND"
 	line "THIS POINT"
 	done

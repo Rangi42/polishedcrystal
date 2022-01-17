@@ -21,7 +21,7 @@ Route43MahoganyGateOfficer:
 	iftrue_jumptextfaceplayer Route43MahoganyGateOfficerRocketsClearedText
 	jumpthistextfaceplayer
 
-	text "Only people headed"
+	ctxt "Only people headed"
 	line "up to Lake of Rage"
 
 	para "have been through"
@@ -29,7 +29,7 @@ Route43MahoganyGateOfficer:
 	done
 
 Route43MahoganyGateOfficerRocketsClearedText:
-	text "Nobody goes up to"
+	ctxt "Nobody goes up to"
 	line "Lake of Rage these"
 	cont "days."
 	done

@@ -57,6 +57,6 @@ MapColosseumSignpost1Script:
 CableClubFriendScript:
 	jumpthistext
 
-	text "Your friend is"
+	ctxt "Your friend is"
 	line "ready."
 	done

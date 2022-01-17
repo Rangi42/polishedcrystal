@@ -66,7 +66,7 @@ CeladonUniversityCafeteriaCoreyScript:
 	jumpthisopenedtext
 
 .FinalText:
-	text "You'd be a star"
+	ctxt "You'd be a star"
 	line "student if you"
 	cont "enrolled here."
 
@@ -75,7 +75,7 @@ CeladonUniversityCafeteriaCoreyScript:
 	done
 
 .IntroText1:
-	text "I'm Corey! I'm one"
+	ctxt "I'm Corey! I'm one"
 	line "of top four train-"
 	cont "ers at Celadon"
 	cont "University."
@@ -91,7 +91,7 @@ CeladonUniversityCafeteriaCoreyScript:
 	done
 
 .IntroText2:
-	text "I'm Corey! I'm one"
+	ctxt "I'm Corey! I'm one"
 	line "of the Celadon"
 	cont "Four!"
 
@@ -106,22 +106,22 @@ CeladonUniversityCafeteriaCoreyScript:
 	done
 
 .NoBattleText:
-	text "Yeah, we can be"
+	ctxt "Yeah, we can be"
 	line "intimidating."
 	done
 
 .SeenText:
-	text "Winning this will"
+	ctxt "Winning this will"
 	line "be a breeze!"
 	done
 
 .BeatenText:
-	text "I underestimated"
+	ctxt "I underestimated"
 	line "you…"
 	done
 
 .AfterText1:
-	text "You're a strong"
+	ctxt "You're a strong"
 	line "trainer!"
 
 	para "But I'm just one of"
@@ -135,7 +135,7 @@ CeladonUniversityCafeteriaCoreyScript:
 	done
 
 .AfterText2:
-	text "You beat all of"
+	ctxt "You beat all of"
 	line "the Celadon Four?"
 
 	para "Congratulations!"
@@ -145,7 +145,7 @@ CeladonUniversityCafeteriaCoreyScript:
 	done
 
 CeladonUniversityCafeteriaCooltrainerfText:
-	text "This place makes"
+	ctxt "This place makes"
 	line "the best Cinnabar-"
 	cont "style hamburger"
 
@@ -157,7 +157,7 @@ CeladonUniversityCafeteriaCooltrainerfText:
 	done
 
 CeladonUniversityCafeteriaBeautyText:
-	text "The cook finally"
+	ctxt "The cook finally"
 	line "made another batch"
 	cont "of Old Gateau!"
 
@@ -166,7 +166,7 @@ CeladonUniversityCafeteriaBeautyText:
 	done
 
 CeladonUniversityCafeteriaYoungster1Text:
-	text "I asked the cafe-"
+	ctxt "I asked the cafe-"
 	line "teria to stock"
 	cont "Casteliacones."
 
@@ -176,7 +176,7 @@ CeladonUniversityCafeteriaYoungster1Text:
 	done
 
 CeladonUniversityCafeteriaLadyText:
-	text "I'm on a diet."
+	ctxt "I'm on a diet."
 	line "Today it's a"
 	para "nutritious Slip"
 	line "Seed salad for me."
@@ -195,7 +195,7 @@ CeladonUniversityCafeteriaYoungster2Script:
 	jumpopenedtext .Text2
 
 .Text1:
-	text "The vending ma-"
+	ctxt "The vending ma-"
 	line "chine gave me an"
 	cont "extra drink!"
 
@@ -204,7 +204,7 @@ CeladonUniversityCafeteriaYoungster2Script:
 	done
 
 .Text2:
-	text "I love a cold"
+	ctxt "I love a cold"
 	line "Lemonade after a"
 	cont "tough battle."
 	done
@@ -230,19 +230,19 @@ CeladonUniversityCafeteriaBakerScript:
 	jumpthisopenedtext
 
 .Text2:
-	text "Here you go, hon!"
+	ctxt "Here you go, hon!"
 	line "Enjoy it!"
 	done
 
 .NotEnoughMoney:
 	jumpthisopenedtext
 
-	text "You don't have"
+	ctxt "You don't have"
 	line "enough money…"
 	done
 
 .Text1:
-	text "What's that, hon?"
+	ctxt "What's that, hon?"
 
 	para "Sorry, we're done"
 	line "serving dinner."
@@ -255,22 +255,22 @@ CeladonUniversityCafeteriaBakerScript:
 	done
 
 .Text3:
-	text "There aren't any"
+	ctxt "There aren't any"
 	line "more Leftovers"
 	cont "today."
 	done
 
 .Text4:
-	text "Have a nice day!"
+	ctxt "Have a nice day!"
 	done
 
 .Text6:
-	text "You can't carry"
+	ctxt "You can't carry"
 	line "it, hon."
 	done
 
 CeladonUniversityCafeteriaSignText:
-	text "Please clean up"
+	ctxt "Please clean up"
 	line "when you are"
 	cont "finished eating."
 	done

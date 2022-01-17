@@ -125,11 +125,11 @@ SeafoamIslandsArticuno:
 	end
 
 ArticunoText:
-	text "Gyaoo!"
+	ctxt "Gyaoo!"
 	done
 
 SeafoamIslandsB4FLawrenceSpeechText:
-	text "Lawrence: Hello"
+	ctxt "Lawrence: Hello"
 	line "again, <PLAYER>."
 
 	para "So you are collec-"
@@ -173,7 +173,7 @@ SeafoamIslandsB4FLawrenceSpeechText:
 	done
 
 SeafoamIslandsB4FLawrenceEscapeRopeText:
-	text "Lawrence used an"
+	ctxt "Lawrence used an"
 	line "Escape Rope!"
 	done
 

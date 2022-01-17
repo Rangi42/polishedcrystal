@@ -182,7 +182,7 @@ EeveeDollScript:
 	jumpopenedtext ProfOakAfterTradeText
 
 OakWelcomeKantoText:
-	text "Oak: Ah, <PLAYER>!"
+	ctxt "Oak: Ah, <PLAYER>!"
 	line "It's good of you"
 
 	para "to come all this"
@@ -196,7 +196,7 @@ OakWelcomeKantoText:
 	done
 
 OakLabGiveStarterText:
-	text "Oak: Oh, so Prof."
+	ctxt "Oak: Oh, so Prof."
 	line "Ivy says hello?"
 
 	para "Thanks for convey-"
@@ -216,20 +216,20 @@ OakLabGiveStarterText:
 	done
 
 OakLabPartyAndBoxFullText:
-	text "Hm, you don't have"
+	ctxt "Hm, you don't have"
 	line "room for it, and"
 	line "your box is full."
 	done
 
 OakLabDexCheckText:
-	text "How is your #-"
+	ctxt "How is your #-"
 	line "dex coming?"
 
 	para "Let's see…"
 	done
 
 OakLabSeenAllText:
-	text "You've been meeting"
+	ctxt "You've been meeting"
 	line "new #mon at a"
 
 	para "good clip, haven't"
@@ -241,7 +241,7 @@ OakLabSeenAllText:
 	done
 
 OakLabOvalCharmText:
-	text "Holding an Oval"
+	ctxt "Holding an Oval"
 	line "Charm will improve"
 
 	para "your chances of"
@@ -250,7 +250,7 @@ OakLabOvalCharmText:
 	done
 
 OakLabCaughtAllText:
-	text "I was completely"
+	ctxt "I was completely"
 	line "justified in"
 
 	para "giving you that"
@@ -273,7 +273,7 @@ OakLabCaughtAllText:
 	done
 
 OakLabShinyCharmText:
-	text "Holding a Shiny"
+	ctxt "Holding a Shiny"
 	line "Charm will improve"
 
 	para "your chances of"
@@ -282,13 +282,13 @@ OakLabShinyCharmText:
 	done
 
 OakLabGoodbyeText:
-	text "If you're in the"
+	ctxt "If you're in the"
 	line "area, I hope you"
 	cont "come visit again."
 	done
 
 OakMightBeReadyText:
-	text "Oak: Incredible,"
+	ctxt "Oak: Incredible,"
 	line "<PLAYER>!"
 
 	para "You won against"
@@ -301,7 +301,7 @@ OakMightBeReadyText:
 	done
 
 OakChallengeText:
-	text "Oak: Mt.Silver is"
+	ctxt "Oak: Mt.Silver is"
 	line "a tall mountain"
 
 	para "that is home to"
@@ -322,23 +322,23 @@ OakChallengeText:
 	done
 
 OakRefusedText:
-	text "Oak: Come back"
+	ctxt "Oak: Come back"
 	line "when you're ready."
 	done
 
 OakSeenText:
-	text "Oak: Put every-"
+	ctxt "Oak: Put every-"
 	line "thing you have"
 	cont "into this battle!"
 	done
 
 OakWinText:
-	text "I was right in my"
+	ctxt "I was right in my"
 	line "assessment of you!"
 	done
 
 OakOpenMtSilverText:
-	text "Oak: Spectacular,"
+	ctxt "Oak: Spectacular,"
 	line "<PLAYER>!"
 
 	para "I'll make arrange-"
@@ -372,7 +372,7 @@ OakOpenMtSilverText:
 	done
 
 OakNoKantoBadgesText:
-	text "Oak: Hmm? You're"
+	ctxt "Oak: Hmm? You're"
 	line "not collecting"
 	cont "Kanto Gym Badges?"
 
@@ -388,7 +388,7 @@ OakNoKantoBadgesText:
 	done
 
 OakNoEliteFourRematchText:
-	text "Oak: Wow! That's"
+	ctxt "Oak: Wow! That's"
 	line "excellent!"
 
 	para "You collected the"
@@ -406,7 +406,7 @@ OakNoEliteFourRematchText:
 	done
 
 OakYesKantoBadgesText:
-	text "Oak: Ah, you're"
+	ctxt "Oak: Ah, you're"
 	line "collecting Kanto"
 	cont "Gym Badges."
 
@@ -428,7 +428,7 @@ OakYesKantoBadgesText:
 	done
 
 OaksAssistant1Text:
-	text "The Prof's #mon"
+	ctxt "The Prof's #mon"
 	line "Talk radio program"
 
 	para "isn't aired here"
@@ -439,7 +439,7 @@ OaksAssistant1Text:
 	done
 
 OaksAssistant2Text:
-	text "Thanks to your"
+	ctxt "Thanks to your"
 	line "work on the #-"
 	cont "dex, the Prof's"
 
@@ -448,7 +448,7 @@ OaksAssistant2Text:
 	done
 
 OaksAssistant3Text:
-	text "Don't tell anyone,"
+	ctxt "Don't tell anyone,"
 	line "but Prof.Oak's"
 
 	para "#mon Talk isn't"
@@ -456,12 +456,12 @@ OaksAssistant3Text:
 	done
 
 OaksLabPoster1Text:
-	text "Press Start to"
+	ctxt "Press Start to"
 	line "open the Menu."
 	done
 
 OaksLabPoster2Text:
-	text "The Save option is"
+	ctxt "The Save option is"
 	line "on the Menu."
 
 	para "Use it in a timely"
@@ -469,12 +469,12 @@ OaksLabPoster2Text:
 	done
 
 OaksLabTrashcanText:
-	text "There's nothing in"
+	ctxt "There's nothing in"
 	line "here…"
 	done
 
 OaksLabPCText:
-	text "There's an e-mail"
+	ctxt "There's an e-mail"
 	line "message on the PC."
 
 	para "…"
@@ -500,7 +500,7 @@ OaksLabPCText:
 	done
 
 ProfOakEeveeDollTradeText:
-	text "Oak: Oh, are you"
+	ctxt "Oak: Oh, are you"
 	line "admiring my"
 	cont "Eevee Doll?"
 
@@ -510,38 +510,38 @@ ProfOakEeveeDollTradeText:
 	done
 
 NoEverstoneText:
-	text "But you don't have"
+	ctxt "But you don't have"
 	line "one of those…"
 	done
 
 WantToTradeText:
-	text "Do you want to"
+	ctxt "Do you want to"
 	line "trade?"
 	done
 
 NoTradeText:
-	text "It will still be"
+	ctxt "It will still be"
 	line "here if you change"
 	cont "your mind."
 	done
 
 EeveeDollText:
-	text "<PLAYER> received"
+	ctxt "<PLAYER> received"
 	line "Eevee Doll."
 	done
 
 EeveeDollSentText:
-	text "Eevee Doll"
+	ctxt "Eevee Doll"
 	line "was sent home."
 	done
 
 ProfOakAfterTradeText:
-	text "Prof.Oak: Set it"
+	ctxt "Prof.Oak: Set it"
 	line "somewhere you can"
 	cont "appreciate it!"
 	done
 
 OaksLabPokedexText:
-	text "It's Prof.Oak's"
+	ctxt "It's Prof.Oak's"
 	line "#dex."
 	done

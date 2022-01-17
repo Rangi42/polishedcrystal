@@ -110,14 +110,14 @@ CeruleanGymMistyScript:
 GenericTrainerSwimmerfDiana:
 	generictrainer SWIMMERF, DIANA, EVENT_BEAT_SWIMMERF_DIANA, SwimmerfDianaSeenText, SwimmerfDianaBeatenText
 
-	text "I'll be swimming"
+	ctxt "I'll be swimming"
 	line "quietly."
 	done
 
 GenericTrainerSwimmerfViola:
 	generictrainer SWIMMERF, VIOLA, EVENT_BEAT_SWIMMERF_VIOLA, SwimmerfViolaSeenText, SwimmerfViolaBeatenText
 
-	text "Swimming is good"
+	ctxt "Swimming is good"
 	line "for both beauty"
 	cont "and health!"
 
@@ -128,7 +128,7 @@ GenericTrainerSwimmerfViola:
 GenericTrainerSwimmerfBriana:
 	generictrainer SWIMMERF, BRIANA, EVENT_BEAT_SWIMMERF_BRIANA, SwimmerfBrianaSeenText, SwimmerfBrianaBeatenText
 
-	text "Don't be too smug"
+	ctxt "Don't be too smug"
 	line "about beating me."
 
 	para "Misty will destroy"
@@ -139,7 +139,7 @@ GenericTrainerSwimmerfBriana:
 GenericTrainerSailorParker:
 	generictrainer SAILOR, PARKER, EVENT_BEAT_SAILOR_PARKER, SailorParkerSeenText, SailorParkerBeatenText
 
-	text "Misty has gotten"
+	ctxt "Misty has gotten"
 	line "much better in the"
 	cont "past few years."
 
@@ -151,7 +151,7 @@ GenericTrainerSailorParker:
 GenericTrainerSailorEddie:
 	generictrainer SAILOR, EDDIE, EVENT_BEAT_SAILOR_EDDIE, SailorEddieSeenText, SailorEddieBeatenText
 
-	text "Hey, let's go for"
+	ctxt "Hey, let's go for"
 	line "a swim!"
 
 	para "Sailors have to"
@@ -226,7 +226,7 @@ CeruleanGymGruntBacksAwayMovement:
 	step_end
 
 CeruleanGymGruntIntroText:
-	text "Oops! I so sorry!"
+	ctxt "Oops! I so sorry!"
 	line "You not hurt,"
 	cont "okay?"
 
@@ -238,13 +238,13 @@ CeruleanGymGruntIntroText:
 	done
 
 CeruleanGymGruntBigMistakeText:
-	text "Oh no! You seen"
+	ctxt "Oh no! You seen"
 	line "me already! I make"
 	cont "big mistake!"
 	done
 
 CeruleanGymGruntByeText:
-	text "Hey, you! Forget"
+	ctxt "Hey, you! Forget"
 	line "you see me, okay?"
 
 	para "You see, hear,"
@@ -257,19 +257,19 @@ CeruleanGymGruntByeText:
 	done
 
 CeruleanGymNote1:
-	text "Sorry, I'll be out"
+	ctxt "Sorry, I'll be out"
 	line "for a while."
 	cont "Misty, Gym Leader"
 	done
 
 CeruleanGymNote2:
-	text "Since Misty's out,"
+	ctxt "Since Misty's out,"
 	line "we'll be away too."
 	cont "Gym Trainers"
 	done
 
 MistyIntroText:
-	text "Misty: I was ex-"
+	ctxt "Misty: I was ex-"
 	line "pecting you, you"
 	cont "pest!"
 
@@ -285,7 +285,7 @@ MistyIntroText:
 	done
 
 MistyWinLossText:
-	text "Misty: You really"
+	ctxt "Misty: You really"
 	line "are good…"
 
 	para "I'll admit that"
@@ -296,12 +296,12 @@ MistyWinLossText:
 	done
 
 ReceivedCascadeBadgeText:
-	text "<PLAYER> received"
+	ctxt "<PLAYER> received"
 	line "the Cascade Badge."
 	done
 
 MistyGiveTMText:
-	text "Misty: Here's"
+	ctxt "Misty: Here's"
 	line "another memento"
 
 	para "from this battle."
@@ -309,7 +309,7 @@ MistyGiveTMText:
 	done
 
 MistyOutroText:
-	text "It contains the"
+	ctxt "It contains the"
 	line "move Water Pulse."
 
 	para "It can sometimes"
@@ -317,7 +317,7 @@ MistyOutroText:
 	done
 
 MistyFightDoneText:
-	text "Misty: Are there"
+	ctxt "Misty: Are there"
 	line "many strong train-"
 	cont "ers in Johto? Like"
 	cont "you, I mean."
@@ -330,18 +330,18 @@ MistyFightDoneText:
 	done
 
 SwimmerfDianaSeenText:
-	text "Sorry about being"
+	ctxt "Sorry about being"
 	line "away. Let's get on"
 	cont "with it!"
 	done
 
 SwimmerfDianaBeatenText:
-	text "I give up! You're"
+	ctxt "I give up! You're"
 	line "the winner!"
 	done
 
 SwimmerfViolaSeenText:
-	text "Swimming isn't"
+	ctxt "Swimming isn't"
 	line "just about speed!"
 
 	para "It's also about"
@@ -349,44 +349,44 @@ SwimmerfViolaSeenText:
 	done
 
 SwimmerfViolaBeatenText:
-	text "I lost"
+	ctxt "I lost"
 	line "beautifully…"
 	done
 
 SwimmerfBrianaSeenText:
-	text "Don't let my ele-"
+	ctxt "Don't let my ele-"
 	line "gant swimming un-"
 	cont "nerve you."
 	done
 
 SwimmerfBrianaBeatenText:
-	text "Ooh, you calmly"
+	ctxt "Ooh, you calmly"
 	line "disposed of me…"
 	done
 
 SailorParkerSeenText:
-	text "Alright! Come"
+	ctxt "Alright! Come"
 	line "and get me!"
 	done
 
 SailorParkerBeatenText:
-	text "This can't be…"
+	ctxt "This can't be…"
 	done
 
 SailorEddieSeenText:
-	text "I've been relaxing"
+	ctxt "I've been relaxing"
 	line "poolside, so"
 	cont "I've got enough"
 	cont "strength!"
 	done
 
 SailorEddieBeatenText:
-	text "You can't win with"
+	ctxt "You can't win with"
 	line "strength alone."
 	done
 
 CeruleanGymGuyText:
-	text "Yo! Champ in"
+	ctxt "Yo! Champ in"
 	line "making!"
 
 	para "Since Misty was"
@@ -397,7 +397,7 @@ CeruleanGymGuyText:
 	done
 
 CeruleanGymGuyWinText:
-	text "Hoo, you showed me"
+	ctxt "Hoo, you showed me"
 	line "how tough you are."
 
 	para "As always, that"
@@ -406,12 +406,12 @@ CeruleanGymGuyWinText:
 	done
 
 CeruleanGymFoundMachinePartText:
-	text "<PLAYER> found"
+	ctxt "<PLAYER> found"
 	line "Machine Part!"
 	done
 
 CeruleanGymSomethingUnderwaterText:
-	text "There's something"
+	ctxt "There's something"
 	line "under the water…"
 	cont "Wonder what it is?"
 	done

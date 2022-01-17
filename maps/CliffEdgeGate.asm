@@ -45,7 +45,7 @@ ProfOaksAide3Script:
 GenericTrainerGruntM12:
 	generictrainer GRUNTM, 12, EVENT_BEAT_ROCKET_GRUNTM_12, GruntM12SeenText, GruntM12BeatenText
 
-	text "Yellow Forest is"
+	ctxt "Yellow Forest is"
 	line "full of rare"
 	cont "#mon."
 
@@ -54,7 +54,7 @@ GenericTrainerGruntM12:
 	done
 
 CliffEdgeGateReceptionistText:
-	text "Yellow Forest is"
+	ctxt "Yellow Forest is"
 	line "this way!"
 
 	para "It's a popular"
@@ -62,7 +62,7 @@ CliffEdgeGateReceptionistText:
 	done
 
 ProfOaksAide3HiText:
-	text "Hello there! I'm"
+	ctxt "Hello there! I'm"
 	line "Prof.Oak's aide."
 
 	para "If you caught 45"
@@ -79,12 +79,12 @@ ProfOaksAide3HiText:
 	done
 
 ProfOaksAide3UhOhText:
-	text "Let's see…"
+	ctxt "Let's see…"
 	line "Uh-oh! You've only"
 
 	para "caught "
 	text_decimal wTempDexOwn, 2, 3
-	text " kinds"
+	ctxt " kinds"
 	line "of #mon."
 
 	para "Come back and see"
@@ -93,12 +93,12 @@ ProfOaksAide3UhOhText:
 	done
 
 ProfOaksAide3HereYouGoText:
-	text "Let's see…"
+	ctxt "Let's see…"
 	line "Great job! You've"
 
 	para "caught "
 	text_decimal wTempDexOwn, 2, 3
-	text " kinds"
+	ctxt " kinds"
 	line "of #mon."
 
 	para "Congratulations!"
@@ -106,13 +106,13 @@ ProfOaksAide3HereYouGoText:
 	done
 
 ProfOaksAide3NoRoomText:
-	text "Oh! I see you"
+	ctxt "Oh! I see you"
 	line "don't have any"
 	cont "room for this."
 	done
 
 ProfOaksAide3ExplainText:
-	text "That Macho Brace"
+	ctxt "That Macho Brace"
 	line "helps a #mon"
 
 	para "grow more from"
@@ -131,7 +131,7 @@ ProfOaksAide3ExplainText:
 	done
 
 GruntM12SeenText:
-	text "You're curious"
+	ctxt "You're curious"
 	line "about our plans?"
 
 	para "Beat me and I'll"
@@ -139,7 +139,7 @@ GruntM12SeenText:
 	done
 
 GruntM12BeatenText:
-	text "You were supposed"
+	ctxt "You were supposed"
 	line "to lose!"
 	done
 

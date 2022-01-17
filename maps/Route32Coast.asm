@@ -35,13 +35,13 @@ Route32Coast_MapScriptHeader:
 GenericTrainerSwimmermMichel:
 	generictrainer SWIMMERM, MICHEL, EVENT_BEAT_SWIMMERM_MICHEL, .SeenText, .BeatenText
 
-	text "Lesson learned--"
+	ctxt "Lesson learned--"
 	line "do warm-up exer-"
 	cont "cises."
 	done
 
 .SeenText:
-	text "I was waiting"
+	ctxt "I was waiting"
 	line "for you!"
 
 	para "Let's battle!"
@@ -49,14 +49,14 @@ GenericTrainerSwimmermMichel:
 	done
 
 .BeatenText:
-	text "Oh, ouch!"
+	ctxt "Oh, ouch!"
 	line "I got a cramp!"
 	done
 
 GenericTrainerSwimmermLucas:
 	generictrainer SWIMMERM, LUCAS, EVENT_BEAT_SWIMMERM_LUCAS, .SeenText, .BeatenText
 
-	text "Rainbows caused by"
+	ctxt "Rainbows caused by"
 	line "sunlight appear"
 
 	para "opposite the sun"
@@ -66,7 +66,7 @@ GenericTrainerSwimmermLucas:
 	done
 
 .SeenText:
-	text "Reflecting and re-"
+	ctxt "Reflecting and re-"
 	line "fracting light"
 
 	para "through water"
@@ -75,14 +75,14 @@ GenericTrainerSwimmermLucas:
 	done
 
 .BeatenText:
-	text "That battle was"
+	ctxt "That battle was"
 	line "full of color!"
 	done
 
 GenericTrainerSwimmerfAlison:
 	generictrainer SWIMMERF, ALISON, EVENT_BEAT_SWIMMERF_ALISON, .SeenText, .BeatenText
 
-	text "Inhale…"
+	ctxt "Inhale…"
 	line "Exhale…"
 
 	para "Isn't this"
@@ -90,20 +90,20 @@ GenericTrainerSwimmerfAlison:
 	done
 
 .SeenText:
-	text "Before battling"
+	ctxt "Before battling"
 	line "you must breathe"
 	cont "deeply."
 	done
 
 .BeatenText:
-	text "Glub… I inhaled"
+	ctxt "Glub… I inhaled"
 	line "some seawater…"
 	done
 
 GenericTrainerSwimmerfStephanie:
 	generictrainer SWIMMERF, STEPHANIE, EVENT_BEAT_SWIMMERF_STEPHANIE, .SeenText, .BeatenText
 
-	text "Sound travels"
+	ctxt "Sound travels"
 	line "faster in water"
 	cont "than in air."
 
@@ -111,17 +111,17 @@ GenericTrainerSwimmerfStephanie:
 	done
 
 .SeenText:
-	text "Did you hear that?"
+	ctxt "Did you hear that?"
 	done
 
 .BeatenText:
-	text "Boo!"
+	ctxt "Boo!"
 	done
 
 GenericTrainerBird_keeperPowell:
 	generictrainer BIRD_KEEPER, POWELL, EVENT_BEAT_BIRD_KEEPER_POWELL, .SeenText, .BeatenText
 
-	text "My #mon can"
+	ctxt "My #mon can"
 	line "use Fly even while"
 
 	para "fainted, so I can"
@@ -131,20 +131,43 @@ GenericTrainerBird_keeperPowell:
 	done
 
 .SeenText:
-	text "I can't swim, so"
+	ctxt "I can't swim, so"
 	line "I flew here on my"
 	cont "#mon."
 	done
 
 .BeatenText:
-	text "Oh no! My"
+	ctxt "Oh no! My"
 	line "#mon!"
 	done
 
+<<<<<<< HEAD
+=======
+GenericTrainerCosplayerChloe:
+	generictrainer COSPLAYER, CHLOE, EVENT_BEAT_COSPLAYER_CHLOE, .SeenText, .BeatenText
+
+	ctxt "When I'm dressed"
+	line "like this, people"
+	para "say I'm the cutest"
+	line "wherever I go."
+	done
+
+.SeenText:
+	ctxt "Like my costume?"
+	line "It's super effect-"
+	cont "ive!"
+	done
+
+.BeatenText:
+	ctxt "Well, that wasn't"
+	line "very effective…"
+	done
+
+>>>>>>> a0f2dd10f66795468601166436c9ccef9b074e9d
 GenericTrainerFisherKiley:
 	generictrainer FISHER, KILEY, EVENT_BEAT_FISHER_KILEY, .SeenText, .BeatenText
 
-	text "You have to have a"
+	ctxt "You have to have a"
 	line "good Rod if you"
 
 	para "want to catch good"
@@ -152,20 +175,20 @@ GenericTrainerFisherKiley:
 	done
 
 .SeenText:
-	text "Heh, I'm on a roll"
+	ctxt "Heh, I'm on a roll"
 	line "today. How about a"
 	cont "battle, kid?"
 	done
 
 .BeatenText:
-	text "Oof. I wasn't"
+	ctxt "Oof. I wasn't"
 	line "lucky that time."
 	done
 
 GenericTrainerCamperCraig:
 	generictrainer CAMPER, CRAIG, EVENT_BEAT_CAMPER_CRAIG, .SeenText, .BeatenText
 
-	text "Adventure lives"
+	ctxt "Adventure lives"
 	line "outside your tent,"
 
 	para "so get out there"
@@ -173,74 +196,74 @@ GenericTrainerCamperCraig:
 	done
 
 .SeenText:
-	text "Nothing beats the"
+	ctxt "Nothing beats the"
 	line "great outdoors!"
 	done
 
 .BeatenText:
-	text "I'm one happy"
+	ctxt "I'm one happy"
 	line "Camper."
 	done
 
 GenericTrainerLassLayla:
 	generictrainer LASS, LAYLA, EVENT_BEAT_LASS_LAYLA, .SeenText, .BeatenText
 
-	text "If you make a wish"
+	ctxt "If you make a wish"
 	line "and tell someone"
 	cont "what it is, it"
 	cont "won't come true!"
 	done
 
 .SeenText:
-	text "If you had one"
+	ctxt "If you had one"
 	line "wish, what would"
 	cont "it be?"
 	done
 
 .BeatenText:
-	text "Don't tell me your"
+	ctxt "Don't tell me your"
 	line "wish, though!"
 	done
 
 GenericTrainerCoupleFoxandrae1:
 	generictrainer COUPLE, FOXANDRAE1, EVENT_BEAT_COUPLE_FOX_AND_RAE, .SeenText, .BeatenText
 
-	text "Fox: Our teamwork"
+	ctxt "Fox: Our teamwork"
 	line "as a Couple wasn't"
 	cont "enough this time."
 	done
 
 .SeenText:
-	text "Fox: Come on, Rae,"
+	ctxt "Fox: Come on, Rae,"
 	line "let's battle!"
 	done
 
 .BeatenText:
-	text "Fox: You beat Rae"
+	ctxt "Fox: You beat Rae"
 	line "and me…"
 	done
 
 GenericTrainerCoupleFoxandrae2:
 	generictrainer COUPLE, FOXANDRAE2, EVENT_BEAT_COUPLE_FOX_AND_RAE, .SeenText, .BeatenText
 
-	text "Rae: We lost, but"
+	ctxt "Rae: We lost, but"
 	line "we're still a"
 	cont "happy Couple."
 	done
 
 .SeenText:
-	text "Rae: Hey Fox, why"
+	ctxt "Rae: Hey Fox, why"
 	line "don't we have a"
 	cont "battle?"
 	done
 
 .BeatenText:
-	text "Rae: How could you"
+	ctxt "Rae: How could you"
 	line "beat Fox and me?"
 	done
 
 Route32CoastLassText:
-	text "Pant, pant…"
+	ctxt "Pant, pant…"
 
 	para "I finally got"
 	line "through that cave."
@@ -256,7 +279,7 @@ Route32CoastLassText:
 	done
 
 Route32CoastTrainerTipsText:
-	text "Trainer Tips"
+	ctxt "Trainer Tips"
 
 	para "A #mon with the"
 	line "Pickup ability"
@@ -266,6 +289,6 @@ Route32CoastTrainerTipsText:
 	done
 
 Route32CoastUnionCaveSignText:
-	text "Union Cave"
+	ctxt "Union Cave"
 	line "Ahead"
 	done

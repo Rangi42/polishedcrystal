@@ -20,7 +20,7 @@ CeruleanBikeShopClerkScript:
 	end
 
 CeruleanBikeShopClerkText:
-	text "A long time ago,"
+	ctxt "A long time ago,"
 	line "this cool boy rode"
 	cont "my Bike around,"
 

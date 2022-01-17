@@ -213,7 +213,7 @@ UndergroundSilverBattleScript:
 GenericTrainerGruntM11:
 	generictrainer GRUNTM, 11, EVENT_BEAT_ROCKET_GRUNTM_11, GruntM11SeenText, GruntM11BeatenText
 
-	text "I'm confused too…"
+	ctxt "I'm confused too…"
 	line "The switch on the"
 
 	para "end is the one to"
@@ -223,7 +223,7 @@ GenericTrainerGruntM11:
 GenericTrainerGruntM25:
 	generictrainer GRUNTM, 25, EVENT_BEAT_ROCKET_GRUNTM_25, GruntM25SeenText, GruntM25BeatenText
 
-	text "All right. A hint!"
+	ctxt "All right. A hint!"
 
 	para "Change the order"
 	line "of switching."
@@ -236,7 +236,7 @@ GenericTrainerGruntM25:
 GenericTrainerBurglarDuncan:
 	generictrainer BURGLAR, DUNCAN, EVENT_BEAT_BURGLAR_DUNCAN, BurglarDuncanSeenText, BurglarDuncanBeatenText
 
-	text "Steal and sell!"
+	ctxt "Steal and sell!"
 	line "That's basic in"
 	cont "crime, kid!"
 	done
@@ -244,7 +244,7 @@ GenericTrainerBurglarDuncan:
 GenericTrainerBurglarOrson:
 	generictrainer BURGLAR, ORSON, EVENT_BEAT_BURGLAR_ORSON, BurglarOrsonSeenText, BurglarOrsonBeatenText
 
-	text "Underground Ware-"
+	ctxt "Underground Ware-"
 	line "house?"
 
 	para "What do you want"
@@ -257,7 +257,7 @@ GenericTrainerBurglarOrson:
 GenericTrainerGruntM13:
 	generictrainer GRUNTM, 13, EVENT_BEAT_ROCKET_GRUNTM_13, GruntM13SeenText, GruntM13BeatenText
 
-	text "You must have ice"
+	ctxt "You must have ice"
 	line "in your veins to"
 	cont "dis Team Rocket."
 	done
@@ -265,7 +265,7 @@ GenericTrainerGruntM13:
 GenericTrainerGruntF3:
 	generictrainer GRUNTF, 3, EVENT_BEAT_ROCKET_GRUNTF_3, GruntF3SeenText, GruntF3BeatenText
 
-	text "Go wherever you'd"
+	ctxt "Go wherever you'd"
 	line "like! Get lost!"
 	cont "See if I care!"
 	done
@@ -645,7 +645,7 @@ UndergroundSilverRetreatMovement2:
 	step_end
 
 UndergroundSilverBeforeText:
-	text "Hold it!"
+	ctxt "Hold it!"
 
 	para "I saw you, so I"
 	line "tailed you."
@@ -668,7 +668,7 @@ UndergroundSilverBeforeText:
 	done
 
 UndergroundSilverWinText:
-	text "…Why…"
+	ctxt "…Why…"
 	line "Why do I lose?"
 
 	para "I've assembled the"
@@ -681,7 +681,7 @@ UndergroundSilverWinText:
 	done
 
 UndergroundSilverAfterText:
-	text "…I don't under-"
+	ctxt "…I don't under-"
 	line "stand…"
 
 	para "Is what that Lance"
@@ -717,7 +717,7 @@ UndergroundSilverAfterText:
 	done
 
 UndergroundSilverLossText:
-	text "Humph. This is my"
+	ctxt "Humph. This is my"
 	line "real power, wimp."
 
 	para "I'll make Team"
@@ -729,7 +729,7 @@ UndergroundSilverLossText:
 	done
 
 UndergroundPathSwitchRoomEntrances_TeacherText:
-	text "There are some"
+	ctxt "There are some"
 	line "shops downstairs…"
 
 	para "But there are"
@@ -740,7 +740,7 @@ UndergroundPathSwitchRoomEntrances_TeacherText:
 	done
 
 UndergroundPathSwitchRoomEntrances_SuperNerd1Text:
-	text "This tunnel was"
+	ctxt "This tunnel was"
 	line "originally made"
 	cont "for deliveries to"
 
@@ -753,7 +753,7 @@ UndergroundPathSwitchRoomEntrances_SuperNerd1Text:
 	done
 
 UndergroundPathSwitchRoomEntrances_SuperNerd2Text:
-	text "I was challenged"
+	ctxt "I was challenged"
 	line "to a battle down-"
 	cont "stairs."
 
@@ -763,7 +763,7 @@ UndergroundPathSwitchRoomEntrances_SuperNerd2Text:
 	done
 
 GruntM11SeenText:
-	text "Open one shutter,"
+	ctxt "Open one shutter,"
 	line "another closes."
 
 	para "Bet you can't get"
@@ -771,12 +771,12 @@ GruntM11SeenText:
 	done
 
 GruntM11BeatenText:
-	text "Drat! I was sunk"
+	ctxt "Drat! I was sunk"
 	line "by indecision!"
 	done
 
 GruntM25SeenText:
-	text "Kwahaha!"
+	ctxt "Kwahaha!"
 
 	para "Confounded by the"
 	line "shutters, are we?"
@@ -787,21 +787,21 @@ GruntM25SeenText:
 	done
 
 GruntM25BeatenText:
-	text "Uwww…"
+	ctxt "Uwww…"
 	line "I blew it."
 	done
 
 BurglarDuncanSeenText:
-	text "Fork over your"
+	ctxt "Fork over your"
 	line "goodies!"
 	done
 
 BurglarDuncanBeatenText:
-	text "Mercy!"
+	ctxt "Mercy!"
 	done
 
 BurglarOrsonSeenText:
-	text "They ditched this"
+	ctxt "They ditched this"
 	line "project before"
 	cont "they finished."
 
@@ -810,11 +810,11 @@ BurglarOrsonSeenText:
 	done
 
 BurglarOrsonBeatenText:
-	text "Over the top!"
+	ctxt "Over the top!"
 	done
 
 GruntM13SeenText:
-	text "I don't care if"
+	ctxt "I don't care if"
 	line "you're lost."
 
 	para "You show up here,"
@@ -823,17 +823,17 @@ GruntM13SeenText:
 	done
 
 GruntM13BeatenText:
-	text "Urk! Yeah, think"
+	ctxt "Urk! Yeah, think"
 	line "you're cool, huh?"
 	done
 
 SwitchRoomText_Switch1:
-	text "It's labeled"
+	ctxt "It's labeled"
 	line "Switch 1."
 	done
 
 GruntF3SeenText:
-	text "Are you lost? No,"
+	ctxt "Are you lost? No,"
 	line "you can't be."
 
 	para "You don't have"
@@ -845,30 +845,30 @@ GruntF3SeenText:
 	done
 
 GruntF3BeatenText:
-	text "How could you?"
+	ctxt "How could you?"
 	done
 
 SwitchRoomText_OffTurnOn:
-	text "It's off."
+	ctxt "It's off."
 	line "Turn it on?"
 	done
 
 SwitchRoomText_OnTurnOff:
-	text "It's on."
+	ctxt "It's on."
 	line "Turn it off?"
 	done
 
 SwitchRoomText_Switch2:
-	text "It's labeled"
+	ctxt "It's labeled"
 	line "Switch 2."
 	done
 
 SwitchRoomText_Switch3:
-	text "It's labeled"
+	ctxt "It's labeled"
 	line "Switch 3."
 	done
 
 SwitchRoomText_Emergency:
-	text "It's labeled"
+	ctxt "It's labeled"
 	line "Emergency."
 	done

@@ -210,7 +210,7 @@ Museum1FReceptionistScript:
 	ifequal LEFT, .Sneak
 	jumpthistextfaceplayer
 
-	text "Welcome!"
+	ctxt "Welcome!"
 
 	para "Thanks to a gene-"
 	line "rous donation"
@@ -225,7 +225,7 @@ Museum1FReceptionistScript:
 .Sneak:
 	jumpthistextfaceplayer
 
-	text "You can't sneak"
+	ctxt "You can't sneak"
 	line "in the back way!"
 	done
 
@@ -236,7 +236,7 @@ KabutopsFossilSignpostScript:
 	closepokepic
 	jumpthistext
 
-	text "Kabutops Fossil"
+	ctxt "Kabutops Fossil"
 	line "(Dome)"
 
 	para "A primitive and"
@@ -250,7 +250,7 @@ OmastarFossilSignpostScript:
 	closepokepic
 	jumpthistext
 
-	text "Omastar Fossil"
+	ctxt "Omastar Fossil"
 	line "(Helix)"
 
 	para "A primitive and"
@@ -264,14 +264,14 @@ AerodactylFossilSignpostScript:
 	closepokepic
 	jumpthistext
 
-	text "Aerodactyl Fossil"
+	ctxt "Aerodactyl Fossil"
 
 	para "A primitive and"
 	line "rare #mon."
 	done
 
 Museum1FScientistText:
-	text "We are proud of"
+	ctxt "We are proud of"
 	line "three fossils of"
 
 	para "rare, prehistoric"
@@ -282,7 +282,7 @@ Museum1FScientistText:
 	done
 
 Museum1FFossilScientistText:
-	text "Did you know that"
+	ctxt "Did you know that"
 	line "you can extract"
 
 	para "#mon from"
@@ -294,13 +294,13 @@ Museum1FFossilScientistText:
 	done
 
 Museum1FGrampsText:
-	text "That is one"
+	ctxt "That is one"
 	line "magnificent"
 	cont "fossil!"
 	done
 
 Museum1FYoungsterText:
-	text "There are two"
+	ctxt "There are two"
 	line "places that I"
 	cont "love!"
 
@@ -316,7 +316,7 @@ Museum1FYoungsterText:
 	done
 
 Museum1FBookshelfSignpostText:
-	text "Thick and well-"
+	ctxt "Thick and well-"
 	line "read books!"
 
 	para "Archaeology Man-"
@@ -329,47 +329,47 @@ Museum1FBookshelfSignpostText:
 	done
 
 AskHelixFossilText:
-	text "Do you want to"
+	ctxt "Do you want to"
 	line "resurrect the"
 	cont "Helix Fossil?"
 	done
 
 AskDomeFossilText:
-	text "Do you want to"
+	ctxt "Do you want to"
 	line "resurrect the"
 	cont "Dome Fossil?"
 	done
 
 AskOldAmberText:
-	text "Do you want to"
+	ctxt "Do you want to"
 	line "resurrect the"
 	cont "Old Amber?"
 	done
 
 NoFossilsText:
-	text "Hey! You don't"
+	ctxt "Hey! You don't"
 	line "have any fossils."
 	done
 
 MaybeLaterText:
-	text "Just talk to me"
+	ctxt "Just talk to me"
 	line "if you change"
 	cont "your mind."
 	done
 
 ResurrectingPokemonText:
-	text "OK! I'll resurrect"
+	ctxt "OK! I'll resurrect"
 	line "the #mon!"
 	done
 
 NoRoomForFossilPokemonText:
-	text "Hey! You can't"
+	ctxt "Hey! You can't"
 	line "carry another"
 	cont "#mon, and your"
 	cont "box is full, too!"
 	done
 
 TakeGoodCareOfItText:
-	text "Take good care"
+	ctxt "Take good care"
 	line "of it!"
 	done

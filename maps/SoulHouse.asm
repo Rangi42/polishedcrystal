@@ -45,7 +45,7 @@ AgathaAfterScript:
 	jumpopenedtext AgathaAfterText
 
 MrFujiText:
-	text "Mr.Fuji: Welcome."
+	ctxt "Mr.Fuji: Welcome."
 
 	para "Hmm… You appear to"
 	line "be raising your"
@@ -70,7 +70,7 @@ MrFujiText:
 	done
 
 SoulHouseTeacherText:
-	text "There are other"
+	ctxt "There are other"
 	line "graves of #mon"
 	cont "here, I think."
 
@@ -80,13 +80,13 @@ SoulHouseTeacherText:
 	done
 
 SoulHouseLassText:
-	text "I came with my mom"
+	ctxt "I came with my mom"
 	line "to visit #mon"
 	cont "graves…"
 	done
 
 SoulHouseGrannyText:
-	text "The #mon that"
+	ctxt "The #mon that"
 	line "lived with me…"
 
 	para "I loved them like"
@@ -94,7 +94,7 @@ SoulHouseGrannyText:
 	done
 
 AgathaSeenText:
-	text "Agatha: Hello,"
+	ctxt "Agatha: Hello,"
 	line "child."
 
 	para "My name is"
@@ -145,11 +145,11 @@ AgathaSeenText:
 	done
 
 AgathaBeatenText:
-	text "Oh, my!"
+	ctxt "Oh, my!"
 	done
 
 AgathaRewardText:
-	text "You're quite"
+	ctxt "You're quite"
 	line "something, child."
 
 	para "A strong trainer"
@@ -163,7 +163,7 @@ AgathaRewardText:
 	done
 
 AgathaAfterText:
-	text "I expect great"
+	ctxt "I expect great"
 	line "things from you,"
 	cont "if you will them."
 	done

@@ -22,7 +22,7 @@ RedsMom:
 	setevent EVENT_MET_REDS_MOM
 	jumpthistextfaceplayer
 
-	text "Hi!"
+	ctxt "Hi!"
 
 	para "Red's been away"
 	line "for a long time."
@@ -43,7 +43,7 @@ RedsMom:
 	done
 
 .Text2:
-	text "I worry about Red"
+	ctxt "I worry about Red"
 	line "getting hurt or"
 
 	para "sick, but he's a"
@@ -58,7 +58,7 @@ RedsMom:
 RedsHouse1FTVScript:
 	jumpthistext
 
-	text "They have programs"
+	ctxt "They have programs"
 	line "that aren't shown"
 	cont "in Johto…"
 	done

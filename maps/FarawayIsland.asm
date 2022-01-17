@@ -139,24 +139,24 @@ FarawayIslandSailorArrive2MovementData:
 	step_end
 
 SeagallopFerryFarawayToVermilionQuestionText:
-	text "Ready to head back"
+	ctxt "Ready to head back"
 	line "to Vermilion City?"
 	done
 
 SeagallopFerryFarawayToVermilionText:
-	text "All right!"
+	ctxt "All right!"
 
 	para "All aboard the"
 	line "Seagallop Ferry!"
 	done
 
 SeagallopFerryFarawayIslandRefusedText:
-	text "I'll be waiting"
+	ctxt "I'll be waiting"
 	line "right here."
 	done
 
 FarawayIslandLawrenceText1:
-	text "Lawrence: Well,"
+	ctxt "Lawrence: Well,"
 	line "this certainly is"
 
 	para "a pleasure, though"
@@ -185,20 +185,20 @@ FarawayIslandLawrenceText1:
 	done
 
 FarawayIslandLawrenceYesText:
-	text "Excellent!"
+	ctxt "Excellent!"
 	done
 
 FarawayIslandLawrenceNoText:
-	text "…Very well."
+	ctxt "…Very well."
 	done
 
 FarawayIslandLawrenceBeatenText:
-	text "You beat me once"
+	ctxt "You beat me once"
 	line "again…"
 	done
 
 FarawayIslandLawrenceText2:
-	text "Lawrence: …I see."
+	ctxt "Lawrence: …I see."
 	line "I still have far"
 	cont "to go before I"
 
@@ -209,7 +209,7 @@ FarawayIslandLawrenceText2:
 	done
 
 FarawayIslandSignText:
-	text "The writing is"
+	ctxt "The writing is"
 	line "fading as if it"
 
 	para "was written a long"

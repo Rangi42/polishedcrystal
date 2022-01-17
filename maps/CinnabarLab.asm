@@ -316,19 +316,19 @@ CinnabarLabCelebiFloatsMovementData:
 	step_end
 
 CinnabarLabRoom1SignText:
-	text "Cloning Room"
+	ctxt "Cloning Room"
 	done
 
 CinnabarLabRoom2SignText:
-	text "Cybernetics Room"
+	ctxt "Cybernetics Room"
 	done
 
 CinnabarLabRoom3SignText:
-	text "Storage Room"
+	ctxt "Storage Room"
 	done
 
 CinnabarLabRoom4SignText:
-	text "Project Amber"
+	ctxt "Project Amber"
 	line "Testing Room"
 
 	para "ABSOLUTELY NO"
@@ -337,11 +337,11 @@ CinnabarLabRoom4SignText:
 	done
 
 CinnabarLabLockedDoorText:
-	text "It's locked…"
+	ctxt "It's locked…"
 	done
 
 CinnabarLabContinueTestingText:
-	text "Continue the"
+	ctxt "Continue the"
 	line "tests. Your"
 
 	para "creation has per-"
@@ -350,7 +350,7 @@ CinnabarLabContinueTestingText:
 	done
 
 CinnabarLabGiovanniWhoAreYouText:
-	text "Who are you?!"
+	ctxt "Who are you?!"
 	line "You aren't part"
 	cont "of Team Rocket."
 
@@ -367,16 +367,16 @@ CinnabarLabGiovanniWhoAreYouText:
 	done
 
 CinnabarLabGiovanniAttackText:
-	text "Giovanni: Attack!"
+	ctxt "Giovanni: Attack!"
 	done
 
 CinnabarLabGiovanniBeatenText:
-	text "Giovanni: What?!"
+	ctxt "Giovanni: What?!"
 	line "Impossible!"
 	done
 
 CinnabarLabGiovanniAfterText:
-	text "Giovanni: How was"
+	ctxt "Giovanni: How was"
 	line "a kid like you"
 
 	para "able to beat the"
@@ -390,14 +390,14 @@ CinnabarLabGiovanniAfterText:
 	done
 
 CinnabarLabMewtwoText:
-	text "???: Myuu!"
+	ctxt "???: Myuu!"
 	done
 
 CinnabarLabGiovanniStopText:
-	text "Giovanni: Stop"
+	ctxt "Giovanni: Stop"
 	line "this now!"
 	done
 
 CinnabarLabCelebiText:
-	text "Celebi: Biii!"
+	ctxt "Celebi: Biii!"
 	done

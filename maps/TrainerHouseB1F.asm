@@ -132,7 +132,7 @@ Movement_TrainerHouseTurnBack:
 	step_end
 
 TrainerHouseB1FIntroText:
-	text "Hi. Welcome to our"
+	ctxt "Hi. Welcome to our"
 	line "Training Hall."
 
 	para "You may battle a"
@@ -142,17 +142,17 @@ TrainerHouseB1FIntroText:
 
 TrainerHouseB1FYourOpponentIsText:
 	text_ram wStringBuffer3
-	text " is your"
+	ctxt " is your"
 	line "opponent today."
 	done
 
 TrainerHouseB1FAskWantToBattleText:
-	text "Would you like to"
+	ctxt "Would you like to"
 	line "battle?"
 	done
 
 TrainerHouseB1FGoRightInText:
-	text "Please go right"
+	ctxt "Please go right"
 	line "through."
 
 	para "You may begin"
@@ -160,7 +160,7 @@ TrainerHouseB1FGoRightInText:
 	done
 
 TrainerHouseB1FPleaseComeAgainText:
-	text "Sorry. Only those"
+	ctxt "Sorry. Only those"
 	line "trainers who will"
 
 	para "be battling are"
@@ -168,7 +168,7 @@ TrainerHouseB1FPleaseComeAgainText:
 	done
 
 TrainerHouseB1FSecondChallengeDeniedText:
-	text "I'm sorry."
+	ctxt "I'm sorry."
 	line "This would be your"
 
 	para "second time today."
@@ -179,17 +179,17 @@ TrainerHouseB1FSecondChallengeDeniedText:
 	done
 
 TrainerHouseB1FCalBeatenText:
-	text "I lost…"
+	ctxt "I lost…"
 	line "Darn…"
 	done
 
 TrainerHouseB1FCalBeforeText:
-	text "I traveled out"
+	ctxt "I traveled out"
 	line "here just so I"
 	cont "could battle you."
 	done
 
 TrainerHouseB1FEarnedBattlePointText:
-	text "<PLAYER> earned"
+	ctxt "<PLAYER> earned"
 	line "1 Battle Point!"
 	done

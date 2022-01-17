@@ -29,7 +29,7 @@ CeladonDeptStore3FGameboyKid2Script:
 	end
 
 CeladonDeptStore6FSuperNerdText:
-	text "A vending machine"
+	ctxt "A vending machine"
 	line "with a prize rou-"
 	cont "lette…"
 
@@ -38,7 +38,7 @@ CeladonDeptStore6FSuperNerdText:
 	done
 
 CeladonDeptStore6FYoungsterText:
-	text "I can play games"
+	ctxt "I can play games"
 	line "on the third"
 	cont "floor, then come"
 
@@ -50,7 +50,7 @@ CeladonDeptStore6FYoungsterText:
 	done
 
 CeladonDeptStore3FGameboyKid1Text:
-	text "I traded my"
+	ctxt "I traded my"
 	line "#mon while"
 
 	para "it was holding"
@@ -58,7 +58,7 @@ CeladonDeptStore3FGameboyKid1Text:
 	done
 
 CeladonDeptStore3FGameboyKid2Text:
-	text "Yay! I'm finally"
+	ctxt "Yay! I'm finally"
 	line "getting a Porygon!"
 
 	para "I'm no good at the"
@@ -73,6 +73,6 @@ CeladonDeptStore3FGameboyKid2Text:
 	done
 
 CeladonDeptStore6FDirectoryText:
-	text "6F: Rooftop Atrium"
+	ctxt "6F: Rooftop Atrium"
 	line "Vending Machines"
 	done

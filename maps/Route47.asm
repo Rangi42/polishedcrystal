@@ -207,7 +207,7 @@ Route47Bridge4UnderfootTrigger:
 GenericTrainerHikerDevin:
 	generictrainer HIKER, DEVIN, EVENT_BEAT_HIKER_DEVIN, HikerDevinSeenText, HikerDevinBeatenText
 
-	text "After a battle,"
+	ctxt "After a battle,"
 	line "you should part"
 	cont "with a laugh!"
 	done
@@ -215,13 +215,13 @@ GenericTrainerHikerDevin:
 GenericTrainerCamperGrant:
 	generictrainer CAMPER, GRANT, EVENT_BEAT_CAMPER_GRANT, CamperGrantSeenText, CamperGrantBeatenText
 
-	text "See ya!"
+	ctxt "See ya!"
 	done
 
 GenericTrainerAceDuoThomandkae1:
 	generictrainer ACE_DUO, THOMANDKAE1, EVENT_BEAT_ACE_DUO_THOM_AND_KAE, AceDuoThomandkae1SeenText, AceDuoThomandkae1BeatenText
 
-	text "Thom: Your power"
+	ctxt "Thom: Your power"
 	line "is impossible to"
 	cont "predict!"
 	done
@@ -229,7 +229,7 @@ GenericTrainerAceDuoThomandkae1:
 GenericTrainerAceDuoThomandkae2:
 	generictrainer ACE_DUO, THOMANDKAE2, EVENT_BEAT_ACE_DUO_THOM_AND_KAE, AceDuoThomandkae2SeenText, AceDuoThomandkae2BeatenText
 
-	text "Kae: I figured you"
+	ctxt "Kae: I figured you"
 	line "were an ordinary"
 
 	para "lone trainer."
@@ -239,7 +239,7 @@ GenericTrainerAceDuoThomandkae2:
 GenericTrainerCoupleDuffandeda1:
 	generictrainer COUPLE, DUFFANDEDA1, EVENT_BEAT_COUPLE_DUFF_AND_EDA, CoupleDuffandeda1SeenText, CoupleDuffandeda1BeatenText
 
-	text "Duff: Thank you"
+	ctxt "Duff: Thank you"
 	line "for the awe-"
 	cont "inspiring battle!"
 	done
@@ -247,7 +247,7 @@ GenericTrainerCoupleDuffandeda1:
 GenericTrainerCoupleDuffandeda2:
 	generictrainer COUPLE, DUFFANDEDA2, EVENT_BEAT_COUPLE_DUFF_AND_EDA, CoupleDuffandeda2SeenText, CoupleDuffandeda2BeatenText
 
-	text "Eda: You should"
+	ctxt "Eda: You should"
 	line "find a wonderful"
 	cont "partner, too."
 	done
@@ -255,7 +255,7 @@ GenericTrainerCoupleDuffandeda2:
 GenericTrainerCowgirlDaniela:
 	generictrainer COWGIRL, DANIELA, EVENT_BEAT_COWGIRL_DANIELA, CowgirlDanielaSeenText, CowgirlDanielaBeatenText
 
-	text "Have you ever"
+	ctxt "Have you ever"
 	line "tried to ride a"
 	cont "Tauros?"
 	done
@@ -263,7 +263,7 @@ GenericTrainerCowgirlDaniela:
 GenericTrainerGruntF6:
 	generictrainer GRUNTF, 6, EVENT_BEAT_ROCKET_GRUNTF_6, GruntF6SeenText, GruntF6BeatenText
 
-	text "If we treated"
+	ctxt "If we treated"
 	line "every single"
 	cont "#mon well,"
 
@@ -274,7 +274,7 @@ GenericTrainerGruntF6:
 GenericTrainerGruntM23:
 	generictrainer GRUNTM, 23, EVENT_BEAT_ROCKET_GRUNTM_23, GruntM23SeenText, GruntM23BeatenText
 
-	text "It doesn't matter."
+	ctxt "It doesn't matter."
 	line "You can't beat"
 	cont "all of us!"
 	done
@@ -282,36 +282,36 @@ GenericTrainerGruntM23:
 GenericTrainerGruntM26:
 	generictrainer GRUNTM, 26, EVENT_BEAT_ROCKET_GRUNTM_26, GruntM26SeenText, GruntM26BeatenText
 
-	text "How we treat"
+	ctxt "How we treat"
 	line "#mon is none"
 	cont "of your business!"
 	done
 
 HikerDevinSeenText:
-	text "Battles are"
+	ctxt "Battles are"
 	line "battles, so"
 	cont "let's go!"
 	done
 
 HikerDevinBeatenText:
-	text "Wah ha ha!"
+	ctxt "Wah ha ha!"
 	done
 
 CamperGrantSeenText:
-	text "I'm not good with"
+	ctxt "I'm not good with"
 	line "crowds, so I'm"
 	cont "camping out here"
 	cont "with my #mon!"
 	done
 
 CamperGrantBeatenText:
-	text "I should head"
+	ctxt "I should head"
 	line "deeper into the"
 	cont "mountain…"
 	done
 
 AceDuoThomandkae1SeenText:
-	text "Thom: One plus one"
+	ctxt "Thom: One plus one"
 	line "is two. But the"
 
 	para "two of us together"
@@ -319,23 +319,23 @@ AceDuoThomandkae1SeenText:
 	done
 
 AceDuoThomandkae1BeatenText:
-	text "Thom: That wasn't"
+	ctxt "Thom: That wasn't"
 	line "what I expected…"
 	done
 
 AceDuoThomandkae2SeenText:
-	text "Kae: The two of us"
+	ctxt "Kae: The two of us"
 	line "aren't just some"
 	cont "boring pair!"
 	done
 
 AceDuoThomandkae2BeatenText:
-	text "Kae: You're"
+	ctxt "Kae: You're"
 	line "unusual, too!"
 	done
 
 CoupleDuffandeda1SeenText:
-	text "Duff: Watching"
+	ctxt "Duff: Watching"
 	line "over my girlfriend"
 
 	para "makes my heart"
@@ -343,12 +343,12 @@ CoupleDuffandeda1SeenText:
 	done
 
 CoupleDuffandeda1BeatenText:
-	text "Duff: I was no"
+	ctxt "Duff: I was no"
 	line "match for you…"
 	done
 
 CoupleDuffandeda2SeenText:
-	text "Eda: My feelings"
+	ctxt "Eda: My feelings"
 	line "for my boyfriend"
 
 	para "are as wide and"
@@ -356,21 +356,21 @@ CoupleDuffandeda2SeenText:
 	done
 
 CoupleDuffandeda2BeatenText:
-	text "Eda: You're really"
+	ctxt "Eda: You're really"
 	line "something…"
 	done
 
 CowgirlDanielaSeenText:
-	text "Hiya, cutie!"
+	ctxt "Hiya, cutie!"
 	done
 
 CowgirlDanielaBeatenText:
-	text "Well aren't you a"
+	ctxt "Well aren't you a"
 	line "feisty one?"
 	done
 
 GruntF6SeenText:
-	text "Why should we"
+	ctxt "Why should we"
 	line "raise #mon like"
 	cont "ordinary trainers?"
 
@@ -378,32 +378,32 @@ GruntF6SeenText:
 	done
 
 GruntF6BeatenText:
-	text "Who are you?!"
+	ctxt "Who are you?!"
 	done
 
 GruntM23SeenText:
-	text "Aww, are you here"
+	ctxt "Aww, are you here"
 	line "to save the cute"
 	cont "little #mon?"
 	done
 
 GruntM23BeatenText:
-	text "Ack!"
+	ctxt "Ack!"
 	line "You're tough!"
 	done
 
 GruntM26SeenText:
-	text "Stop meddling with"
+	ctxt "Stop meddling with"
 	line "our plans!"
 	done
 
 GruntM26BeatenText:
-	text "Just leave us"
+	ctxt "Just leave us"
 	line "alone…"
 	done
 
 Route47RocketGirlText:
-	text "What are you head-"
+	ctxt "What are you head-"
 	line "ing this way for,"
 	cont "you brat?"
 	done
@@ -412,13 +412,13 @@ Route47SealedCaveSign:
 	dw EVENT_DOOR_OPENED_IN_RUINS_OF_ALPH
 	jumpthistext
 
-	text "There's a door-"
+	ctxt "There's a door-"
 	line "shaped groove in"
 	cont "the rock."
 	done
 
 Route47QuietCaveSignText:
-	text "Route 47"
+	ctxt "Route 47"
 
 	para "West to"
 	line "Quiet Cave"
