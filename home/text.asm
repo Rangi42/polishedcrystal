@@ -683,12 +683,13 @@ TextCommand_CTXT::
 
 	; check for characters that signal end of compression
 	; (same ones as DoTextUntilTerminator)
-	cp "@"
+	cp "<PROMPT>"
 	jr z, .done
 	cp "<DONE>"
 	jr z, .done
-	cp "<PROMPT>"
-	jr nz, .character_loop
+	cp "@"
+	ret z
+	jr .character_loop
 .done
 	pop bc ; pop DoTextUntilTerminator call
 	ret
