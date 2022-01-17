@@ -56,45 +56,61 @@ ___dchr: MACRO
 	endc
 ENDM
 
+stop_compressing_text: MACRO
+	if ___compressing_text
+		DEF ___ct_in_bytes -= 1 ; 'text' wouldn't need this "@"
+		dtxt "@"
+	endc
+ENDM
+
 text_ram: MACRO
+	stop_compressing_text
 	db "<RAM>"
 	dw \1
 ENDM
 
 text_promptbutton: MACRO
+	stop_compressing_text
 	db "<WAIT>"
 ENDM
 
 text_asm: MACRO
+	stop_compressing_text
 	db "<ASM>"
 ENDM
 
 text_decimal: MACRO
+	stop_compressing_text
 	db "<NUM>"
 	dw \1 ; address
 	dn \2, \3 ; bytes, digits
 ENDM
 
 text_pause: MACRO
+	stop_compressing_text
 	db "<PAUSE>"
 ENDM
 
 text_sound: MACRO
+	stop_compressing_text
 	db "<SOUND>"
 	db \1 ; sfx
 ENDM
 
 text_today: MACRO
+	stop_compressing_text
 	db "<DAY>"
 ENDM
 
 text_far: MACRO
+	stop_compressing_text
 	db "<FAR>"
 	dw \1
 	db BANK(\1)
 ENDM
 
 ctxt: MACRO
+	stop_compressing_text
 	db "<CTXT>"
 ___compressing_text = 1
 ___ct_bits = 0
@@ -106,5 +122,6 @@ ___ct_out_bytes = 1 ; count the "<CTXT>"
 ENDM
 
 text_end: MACRO
+	stop_compressing_text
 	db "@"
 ENDM
