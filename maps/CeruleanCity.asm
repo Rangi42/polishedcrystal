@@ -140,8 +140,8 @@ CeruleanCityCooltrainerFText2:
 	line "your Confusion!"
 	done
 
-CeruleanCityCooltrainerFText3:
-	ctxt "…"
+CeruleanCityCooltrainerFText3: ; ctxt > text
+	text "…"
 	done
 
 CeruleanCityFisherText:

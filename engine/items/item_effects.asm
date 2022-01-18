@@ -2304,7 +2304,7 @@ Ball_ReplacePartyMonCaughtBall:
 BallReplacedText:
 	text "Put "
 	text_ram wStringBuffer1
-	text " in"
+	ctxt " in"
 	line "the "
 	text_ram wStringBuffer2
 	text "."
@@ -2705,14 +2705,14 @@ AbilityCap:
 	jr .loop
 
 ChangeAbilityToText:
-	text "Change ability to"
+	ctxt "Change ability to"
 	line ""
 	text_ram wStringBuffer1
 	text "?"
 	done
 
 AbilityChangedText:
-	text "The ability was"
+	ctxt "The ability was"
 	line "changed!"
 	prompt
 

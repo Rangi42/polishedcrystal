@@ -1,5 +1,5 @@
 ReenaAskNumber1Text:
-	text "Not bad…"
+	ctxt "Not bad…"
 	line "It's something to"
 
 	para "beat me, even by"
@@ -13,7 +13,7 @@ ReenaAskNumber1Text:
 	done
 
 ReenaAskNumber2Text:
-	text "Give me your phone"
+	ctxt "Give me your phone"
 	line "number!"
 
 	para "You are going to"
@@ -22,24 +22,24 @@ ReenaAskNumber2Text:
 	done
 
 ReenaNumberAcceptedText:
-	text "Don't be too proud"
+	ctxt "Don't be too proud"
 	line "about beating me!"
 
 	para "It was a fluke!"
 	done
 
 ReenaNumberDeclinedText:
-	text "I don't believe"
+	ctxt "I don't believe"
 	line "it! You're going"
 	cont "to regret this!"
 	done
 
 ReenaPhoneFullText:
-	text "What? Your phone"
+	ctxt "What? Your phone"
 	line "list has no room!"
 	done
 
 ReenaRematchText:
-	text "What took you?"
+	ctxt "What took you?"
 	line "Start right away!"
 	done

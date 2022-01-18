@@ -1,5 +1,5 @@
 RalphAskNumber1Text:
-	text "Don't young people"
+	ctxt "Don't young people"
 	line "fish anymore?"
 
 	para "I've seen rare"
@@ -17,13 +17,13 @@ RalphAskNumber1Text:
 	done
 
 RalphAskNumber2Text:
-	text "Hm? So you do want"
+	ctxt "Hm? So you do want"
 	line "me to phone if I"
 	cont "see rare #mon?"
 	done
 
 RalphNumberAcceptedText:
-	text "Yep, phone if I"
+	ctxt "Yep, phone if I"
 	line "see rare #mon."
 
 	para "Don't worry, I"
@@ -31,7 +31,7 @@ RalphNumberAcceptedText:
 	done
 
 RalphNumberDeclinedText:
-	text "Oh…"
+	ctxt "Oh…"
 	line "My own kids won't"
 
 	para "even give me their"
@@ -42,7 +42,7 @@ RalphNumberDeclinedText:
 	done
 
 RalphPhoneFullText:
-	text "Your phone's"
+	ctxt "Your phone's"
 	line "memory is full."
 
 	para "It seems that"
@@ -51,7 +51,7 @@ RalphPhoneFullText:
 	done
 
 RalphRematchText:
-	text "Hey, kid!"
+	ctxt "Hey, kid!"
 
 	para "No losing for me"
 	line "this day!"

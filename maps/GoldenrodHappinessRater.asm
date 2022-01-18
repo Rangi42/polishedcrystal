@@ -83,7 +83,7 @@ GoldenrodHappinessRaterTeacherText:
 	para "Oh? Let me see"
 	line "your "
 	text_ram wStringBuffer3
-	ctxt "…"
+	text "…"
 	done
 
 GoldenrodHappinessRaterPokefanMText:

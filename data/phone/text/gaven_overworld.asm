@@ -1,5 +1,5 @@
 GavenAskNumber1Text:
-	text "Wow, you're tough."
+	ctxt "Wow, you're tough."
 	line "I haven't battled"
 
 	para "that seriously in"
@@ -13,12 +13,12 @@ GavenAskNumber1Text:
 
 	para ""
 	text_ram wStringBuffer4
-	text " and the"
+	ctxt " and the"
 	line "rest of my team."
 	done
 
 GavenAskNumber2Text:
-	text "Could I get your"
+	ctxt "Could I get your"
 	line "phone number?"
 
 	para "I'd like to battle"
@@ -26,12 +26,12 @@ GavenAskNumber2Text:
 
 	para ""
 	text_ram wStringBuffer4
-	text " and the"
+	ctxt " and the"
 	line "rest of my team."
 	done
 
 GavenNumberAcceptedText:
-	text "How should I beat"
+	ctxt "How should I beat"
 	line "you? I'm tormented"
 
 	para "by those thoughts"
@@ -39,7 +39,7 @@ GavenNumberAcceptedText:
 	done
 
 GavenNumberDeclinedText:
-	text "OK… I understand…"
+	ctxt "OK… I understand…"
 	line "But if you change"
 
 	para "your mind, give me"
@@ -47,7 +47,7 @@ GavenNumberDeclinedText:
 	done
 
 GavenPhoneFullText:
-	text "Your phone's"
+	ctxt "Your phone's"
 	line "memory is full."
 
 	para "You can't register"
@@ -55,7 +55,7 @@ GavenPhoneFullText:
 	done
 
 GavenRematchText:
-	text "Hi! I've been"
+	ctxt "Hi! I've been"
 	line "waiting for you!"
 
 	para "This time, I'm"

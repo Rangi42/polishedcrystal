@@ -148,8 +148,8 @@ SwimmermHaroldSeenText:
 	cont "sea at night?"
 	done
 
-SwimmermHaroldBeatenText:
-	ctxt "Glub…"
+SwimmermHaroldBeatenText: ; ctxt > text
+	text "Glub…"
 	done
 
 Route19Fisher1Text:

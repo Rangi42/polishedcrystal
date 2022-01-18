@@ -67,7 +67,7 @@ OreManiacScript:
 	para "Will you sell it"
 	line "for ¥"
 	text_decimal hMoneyTemp, 3, 7
-	ctxt "?"
+	text "?"
 	done
 
 .WrongItemText:

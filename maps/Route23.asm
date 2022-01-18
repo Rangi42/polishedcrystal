@@ -230,7 +230,7 @@ Route23OfficerHaveBadgeScript:
 	ctxt "Oh! That is the"
 	line ""
 	text_ram wStringBuffer3
-	ctxt "!"
+	text "!"
 	done
 
 Route23OfficerNeedBadgeText:
@@ -238,5 +238,5 @@ Route23OfficerNeedBadgeText:
 	line "only if you have"
 	cont "the "
 	text_ram wStringBuffer3
-	ctxt "."
+	text "."
 	done

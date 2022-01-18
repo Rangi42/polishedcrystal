@@ -582,6 +582,6 @@ DragonShrineRisingBadgeExplanationText:
 	line "question."
 	done
 
-DragonShrineSpeechlessText:
-	ctxt "………………………………"
+DragonShrineSpeechlessText: ; ctxt > text
+	text "………………………………"
 	done

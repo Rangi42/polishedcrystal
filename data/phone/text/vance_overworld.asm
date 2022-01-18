@@ -1,5 +1,5 @@
 VanceAskNumber1Text:
-	text "You know, you are"
+	ctxt "You know, you are"
 	line "really strong."
 
 	para "But I don't want"
@@ -13,7 +13,7 @@ VanceAskNumber1Text:
 	done
 
 VanceAskNumber2Text:
-	text "I want to battle"
+	ctxt "I want to battle"
 	line "tough trainers as"
 	cont "often as I can!"
 
@@ -25,13 +25,13 @@ VanceAskNumber2Text:
 	done
 
 VanceNumberAcceptedText:
-	text "Don't forget to"
+	ctxt "Don't forget to"
 	line "come see me when I"
 	cont "challenge you!"
 	done
 
 VanceNumberDeclinedText:
-	text "A bird-user friend"
+	ctxt "A bird-user friend"
 	line "isn't a bad thing"
 	cont "to have, I think…"
 
@@ -40,18 +40,18 @@ VanceNumberDeclinedText:
 	done
 
 VancePhoneFullText:
-	text "Your phone's out"
+	ctxt "Your phone's out"
 	line "of memory. Delete"
 	cont "a number for me!"
 	done
 
 VanceRematchText:
-	text "Am I happy to see"
+	ctxt "Am I happy to see"
 	line "you! I won't lose!"
 	done
 
 VancePackFullText:
-	text "Oh, too bad. You"
+	ctxt "Oh, too bad. You"
 	line "don't have room."
 
 	para "I'll give it to"
@@ -59,7 +59,7 @@ VancePackFullText:
 	done
 
 VanceRematchGiftText:
-	text "You are really,"
+	ctxt "You are really,"
 	line "really strong!"
 
 	para "Thanks for taking"

@@ -452,8 +452,8 @@ CooltrainermBlakeSeenText:
 	cont "Let me battle you!"
 	done
 
-CooltrainermBlakeBeatenText:
-	ctxt "Yow!"
+CooltrainermBlakeBeatenText: ; ctxt > text
+	text "Yow!"
 	done
 
 AceDuoJakeandbri1SeenText:

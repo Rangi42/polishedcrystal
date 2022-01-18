@@ -31,7 +31,7 @@ Pokedex_Area:
 	ldh [rSVBK], a
 	; fallthrough
 Pokedex_Area_ResetLocationData:
-; For when scrolling to a new species or forme.
+; For when scrolling to a new species or form.
 	; Write palette data. Not redundant, because scrolling reloads
 	; BG7, i.e. type icon palettes.
 	ldh a, [rSVBK]

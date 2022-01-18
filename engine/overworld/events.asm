@@ -559,7 +559,7 @@ endr
 	ld a, c
 	ld [de], a
 	inc de
-	ld b, a
+	ld a, b
 	ld [de], a
 	inc de
 	ld a, end_command

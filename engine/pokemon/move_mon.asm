@@ -750,24 +750,24 @@ Special_HyperTrain:
 	db "Spcl.Def@"
 
 .TrainWhichStat:
-	text "Train which of"
+	ctxt "Train which of"
 	line ""
 	text_ram wStringBuffer1
-	text "'s stats?"
+	ctxt "'s stats?"
 	done
 
 .TextCantTrainEgg:
-	text "An Egg? I get that"
+	ctxt "An Egg? I get that"
 	line "you're hyped to"
 	cont "have it, but I"
 	cont "can't train it yet!"
 	prompt
 
 .TextNotMaxEffort:
-	text "Oh no… No, no, no!"
+	ctxt "Oh no… No, no, no!"
 	line ""
 	text_ram wStringBuffer1
-	text " hasn't"
+	ctxt " hasn't"
 	cont "maxed their effort"
 	cont "in that stat!"
 	prompt
@@ -775,7 +775,7 @@ Special_HyperTrain:
 .TextAlreadyHypedUp:
 	text "But "
 	text_ram wStringBuffer1
-	text " is"
+	ctxt " is"
 	line "already hyped up"
 	cont "in that stat!"
 	prompt

@@ -1,5 +1,5 @@
 IrwinAskNumber1Text:
-	text "You're the best"
+	ctxt "You're the best"
 	line "I've ever battled!"
 
 	para "Huh? You're the"
@@ -18,12 +18,12 @@ IrwinAskNumber1Text:
 	done
 
 IrwinAskNumber2Text:
-	text "You will tell me"
+	ctxt "You will tell me"
 	line "your phone number?"
 	done
 
 IrwinNumberAcceptedText:
-	text "Wow! Gee, thanks!"
+	ctxt "Wow! Gee, thanks!"
 	line "Now I can call you"
 
 	para "anytime, whether"
@@ -34,7 +34,7 @@ IrwinNumberAcceptedText:
 	done
 
 IrwinNumberDeclinedText:
-	text "Oh, but…"
+	ctxt "Oh, but…"
 	line "I'm not dangerous!"
 
 	para "I just want to"
@@ -45,7 +45,7 @@ IrwinNumberDeclinedText:
 	done
 
 IrwinPhoneFullText:
-	text "Your phone list is"
+	ctxt "Your phone list is"
 	line "already full…"
 
 	para "You must be really"

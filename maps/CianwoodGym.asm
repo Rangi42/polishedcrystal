@@ -234,8 +234,8 @@ BlackbeltNobSeenText:
 	cont "the talking!"
 	done
 
-BlackbeltNobBeatenText:
-	ctxt "…"
+BlackbeltNobBeatenText: ; ctxt > text
+	text "…"
 	done
 
 BlackbeltLungSeenText:

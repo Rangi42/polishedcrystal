@@ -899,8 +899,8 @@ Bird_keeperPeterBeatenText:
 	line "weaknesses are."
 	done
 
-Text_RoarIntro:
-	ctxt "WROOOOAR!"
+Text_RoarIntro: ; ctxt > text
+	text "WROOOOAR!"
 	line "PEOPLE RUN WHEN I"
 
 	para "ROAR! BUT YOU"

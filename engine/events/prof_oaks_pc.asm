@@ -98,7 +98,7 @@ Rate:
 	ld a, "@"
 	ld bc, ITEM_NAME_LENGTH
 	rst ByteFill
-	ld hl, sp + 2
+	ld hl, sp+$2
 	ld d, h
 	ld e, l
 	pop hl

@@ -195,7 +195,7 @@ Route35NationalParkGatePlayerGoAroundOfficerAndEnterParkMovement:
 	step_end
 
 Route35NationalParkGateOfficer1AskToParticipateText:
-	ctxt "Today's "
+	text "Today's "
 	text_ram wStringBuffer3
 	ctxt "."
 	line "That means the"
@@ -344,6 +344,7 @@ Route35NationalParkGateOfficer1EggAsFirstMonText:
 Route35NationalParkGateOfficer1WantToFinishText:
 	ctxt "You still have "
 	text_ram wStringBuffer3
+	ctxt ""
 	line "minute(s) left."
 
 	para "Do you want to"

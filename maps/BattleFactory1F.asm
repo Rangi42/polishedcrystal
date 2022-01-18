@@ -142,7 +142,7 @@ BattleFactory1FStreakText:
 	ctxt " wins"
 	cont "Swaps this run: "
 	text_decimal wBattleFactorySwapCount, 1, 2
-	ctxt ""
+	text ""
 	done
 
 BattleFactory1FReceptionistScript:

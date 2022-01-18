@@ -2225,21 +2225,17 @@ _Pokedex_Mode:
 	db "Unown Mode@"
 
 .MenuDescriptions:
-	text "<PK><MN> are listed in"
-	next "regional order."
-	text_end
+	db   "<PK><MN> are listed in"
+	next "regional order.@"
 
-	text "<PK><MN> are listed in"
-	next "national order."
-	text_end
+	db   "<PK><MN> are listed in"
+	next "national order.@"
 
-	text "Display Unown"
-	next "information."
-	text_end
+	db   "Display Unown"
+	next "information.@"
 
-	text "Return to the <PK><MN>"
-	next "list."
-	text_end
+	db   "Return to the <PK><MN>"
+	next "list.@"
 
 Pokedex_Search:
 ; Call to fully initialize Search page and reset cursor pos
@@ -2644,12 +2640,12 @@ Pokedex_GetSearchResults:
 
 	; Check if we're doing a null search. - 1 to exclude search order.
 	ld hl, wPokedex_SearchData
-	ld b, NUM_DEXSEARCH - 1
+	ld d, NUM_DEXSEARCH - 1
 	xor a
 .check_null_search
 	or [hl]
 	inc hl
-	dec b
+	dec d
 	jr nz, .check_null_search
 
 	; If we aren't, skip this entry.
@@ -2982,7 +2978,7 @@ Pokedex_IterateSpeciesWithMode:
 	xor 1
 Pokedex_IterateSpecies:
 ; Iterates all species. For each iteration, use hl as callback for a function to
-; call for each valid species ID including all formes. bc contains species+form
+; call for each valid species ID including all forms. bc contains species+form
 ; being checked. and de contains the resulting variant (not cosmetic) index.
 ; Iterate in the following order depending on a: 0 (natdex), 1 (johto), 2 (a-z)
 	ld b, 0
@@ -3007,7 +3003,7 @@ Pokedex_IterateSpecies:
 	srl d
 	dec de
 
-	; Begin at forme 1, not forme 0.
+	; Begin at form 1, not form 0.
 	inc b
 
 	push hl

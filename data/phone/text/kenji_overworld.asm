@@ -1,5 +1,5 @@
 KenjiAskNumber1Text:
-	text "Our battle was"
+	ctxt "Our battle was"
 	line "remarkable!"
 
 	para "I wish for some-"
@@ -15,7 +15,7 @@ KenjiAskNumber1Text:
 	done
 
 KenjiAskNumber2Text:
-	text "My training makes"
+	ctxt "My training makes"
 	line "chatting tough,"
 
 	para "but will you take"
@@ -23,26 +23,26 @@ KenjiAskNumber2Text:
 	done
 
 KenjiNumberAcceptedText:
-	text "I must train"
+	ctxt "I must train"
 	line "harder to become"
 	cont "the mightiest!"
 	done
 
 KenjiNumberDeclinedText:
-	text "If you decide you"
+	ctxt "If you decide you"
 	line "want my number,"
 	cont "come see me."
 	done
 
 KenjiPhoneFullText:
-	text "Your phone appears"
+	ctxt "Your phone appears"
 	line "to be full."
 
 	para "Come back later!"
 	done
 
 KenjiGiftText:
-	text "I wish to thank"
+	ctxt "I wish to thank"
 	line "you, <PLAYER>!"
 
 	para "I've been training"
@@ -56,7 +56,7 @@ KenjiGiftText:
 	done
 
 KenjiPackFullText:
-	text "Your strength will"
+	ctxt "Your strength will"
 	line "not let you carry"
 
 	para "another thing!"

@@ -192,13 +192,13 @@ PicnickerHopeBeatenText:
 	line "strong."
 	done
 
-PicnickerSharonSeenText:
-	ctxt "Um…"
+PicnickerSharonSeenText: ; ctxt > text
+	text "Um…"
 	line "I…"
 	done
 
-PicnickerSharonBeatenText:
-	ctxt "…"
+PicnickerSharonBeatenText: ; ctxt > text
+	text "…"
 	done
 
 Route4SuperNerd1Text:

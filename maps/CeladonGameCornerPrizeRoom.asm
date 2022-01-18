@@ -236,14 +236,14 @@ CeladonPrizeRoom_ConfirmPurchaseText:
 	ctxt "OK, so you wanted"
 	line "a "
 	text_ram wStringBuffer3
-	ctxt "?"
+	text "?"
 	done
 
 CeladonPrizeRoom_ConfirmTMPurchaseText:
 	ctxt "OK, so you wanted"
 	line ""
 	text_ram wStringBuffer3
-	ctxt "?"
+	text "?"
 	done
 
 CeladonPrizeRoom_HereYouGoText:
