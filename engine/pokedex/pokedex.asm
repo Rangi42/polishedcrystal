@@ -1438,6 +1438,8 @@ endr
 	ld a, [wPokedex_DisplayMode]
 	cp DEXDISP_NEWDESC
 	jr nz, .joypad_loop
+	call Pokedex_GetCursorSpecies
+	call PlayCry
 
 .newdesc_joypad
 	call Pokedex_GetInput
