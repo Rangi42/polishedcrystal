@@ -47,6 +47,7 @@ HiddenPowerGuy:
 
 	para "Your "
 	text_ram wStringBuffer3
+	ctxt ""
 	line "has a Hidden Power"
 	cont "of "
 	text_ram wStringBuffer1

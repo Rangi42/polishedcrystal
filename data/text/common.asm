@@ -102,6 +102,7 @@ _HowManyShouldIMakeText::
 SECTION "_RecoveredSomeHPText", ROMX
 _RecoveredSomeHPText::
 	text_ram wStringBuffer1
+	ctxt ""
 	line "recovered "
 	text_decimal wCurHPAnimDeltaHP, 2, 3
 	text "HP!"
@@ -131,12 +132,14 @@ _BurnWasHealedText::
 SECTION "_WasDefrostedText", ROMX
 _WasDefrostedText::
 	text_ram wStringBuffer1
+	ctxt ""
 	line "was defrosted."
 	done
 
 SECTION "_WokeUpText", ROMX
 _WokeUpText::
 	text_ram wStringBuffer1
+	ctxt ""
 	line "woke up."
 	done
 
@@ -150,6 +153,7 @@ _HealthReturnedText::
 SECTION "_RevitalizedText", ROMX
 _RevitalizedText::
 	text_ram wStringBuffer1
+	ctxt ""
 	line "is revitalized."
 	done
 
@@ -295,6 +299,7 @@ _PutAwayAndSetUpText::
 	ctxt "Put away the"
 	line ""
 	text_ram wStringBuffer3
+	ctxt ""
 
 	para "and set up the"
 	line ""
@@ -1365,6 +1370,7 @@ SECTION "_NPCTradeAfterText2", ROMX
 _NPCTradeAfterText2::
 	ctxt "Hi! The "
 	text_ram wMonOrItemNameBuffer
+	ctxt ""
 	line "you traded me is"
 	cont "doing great!"
 	done
@@ -1689,6 +1695,7 @@ SECTION "_YourMonHasGrownText", ROMX
 _YourMonHasGrownText::
 	text "Your "
 	text_ram wStringBuffer1
+	ctxt ""
 	line "has grown a lot."
 
 	para "Its level grew"
@@ -1722,6 +1729,7 @@ _BackAlreadyText::
 	ctxt "Huh? Back already?"
 	line "Your "
 	text_ram wStringBuffer1
+	ctxt ""
 
 	para "needs a little"
 	line "more time with us."
@@ -1870,6 +1878,7 @@ _NameRaterPerfectNameText::
 
 	para "Treat "
 	text_ram wStringBuffer1
+	ctxt ""
 	line "with loving care."
 	done
 
@@ -1997,6 +2006,7 @@ _ContainedMoveText::
 
 	para "Teach "
 	text_ram wStringBuffer2
+	ctxt ""
 	line "to a #mon?"
 	done
 
@@ -2357,6 +2367,7 @@ ForfeitToTrainerText::
 SECTION "_PoisonFaintText", ROMX
 _PoisonFaintText::
 	text_ram wStringBuffer3
+	ctxt ""
 	line "recovered from"
 	cont "its poisoning!"
 	prompt
@@ -2509,6 +2520,7 @@ SECTION "_LeftWithDayCareLadyText", ROMX
 _LeftWithDayCareLadyText::
 	text "It's "
 	text_ram wBreedMon2Nickname
+	ctxt ""
 	line "that was left with"
 	cont "the Day-Care Lady."
 	done
@@ -2517,6 +2529,7 @@ SECTION "_LeftWithDayCareManText", ROMX
 _LeftWithDayCareManText::
 	text "It's "
 	text_ram wBreedMon1Nickname
+	ctxt ""
 	line "that was left with"
 	cont "the Day-Care Man."
 	done
@@ -3143,6 +3156,7 @@ SECTION "_PokemonHoldItemText", ROMX
 _PokemonHoldItemText::
 	text "Made "
 	text_ram wMonOrItemNameBuffer
+	ctxt ""
 	line "hold "
 	text_ram wStringBuffer2
 	text "."
@@ -3171,6 +3185,7 @@ SECTION "_PokemonTookItemText", ROMX
 _PokemonTookItemText::
 	text "Took "
 	text_ram wStringBuffer1
+	ctxt ""
 	line "from "
 	text_ram wMonOrItemNameBuffer
 	text "."
@@ -3496,6 +3511,7 @@ SECTION "_PocketIsFullText", ROMX
 _PocketIsFullText::
 	text "The "
 	text_ram wStringBuffer3
+	ctxt ""
 	line "is full…"
 	prompt
 
@@ -3518,6 +3534,7 @@ SECTION "_StoppedEvolvingText", ROMX
 _StoppedEvolvingText::
 	text "Huh? "
 	text_ram wStringBuffer2
+	ctxt ""
 	line "stopped evolving!"
 	prompt
 
@@ -3525,6 +3542,7 @@ SECTION "_EvolvingText", ROMX
 _EvolvingText::
 	text "What? "
 	text_ram wStringBuffer2
+	ctxt ""
 	line "is evolving!"
 	done
 
@@ -3773,6 +3791,7 @@ TMMartCostsThisMuchText::
 	text_ram wStringBuffer2
 	text " "
 	text_ram wStringBuffer1
+	ctxt ""
 	line "will be ¥"
 	text_decimal hMoneyTemp, 3, 7
 	text "."
@@ -3932,6 +3951,7 @@ _StopLearningMoveText::
 SECTION "_DidNotLearnMoveText", ROMX
 _DidNotLearnMoveText::
 	text_ram wMonOrItemNameBuffer
+	ctxt ""
 	line "did not learn"
 	cont ""
 	text_ram wStringBuffer2
@@ -3941,6 +3961,7 @@ _DidNotLearnMoveText::
 SECTION "_AskForgetMoveText", ROMX
 _AskForgetMoveText::
 	text_ram wMonOrItemNameBuffer
+	ctxt ""
 	line "wants to learn"
 	cont ""
 	text_ram wStringBuffer2
@@ -4178,6 +4199,7 @@ SECTION "Text_BallCaught", ROMX
 Text_BallCaught::
 	ctxt "Gotcha! "
 	text_ram wEnemyMonNickname
+	ctxt ""
 	line "was caught!"
 	text_sound SFX_CAUGHT_MON
 	text_end

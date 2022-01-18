@@ -19,6 +19,7 @@ WildPokemonAppearedText:
 	ctxt "A wild "
 LegendaryAppearedText:
 	text_ram wEnemyMonNickname
+	ctxt ""
 	line "appeared!"
 	prompt
 
@@ -26,6 +27,7 @@ HookedPokemonAttackedText:
 	ctxt "The hooked"
 	line ""
 	text_ram wEnemyMonNickname
+	ctxt ""
 	cont "attacked!"
 	prompt
 
@@ -49,12 +51,14 @@ BattleText_WildFled:
 	text "Wild "
 BattleText_LegendaryFled:
 	text_ram wEnemyMonNickname
+	ctxt ""
 	line "fled!"
 	prompt
 
 BattleText_EnemyFled:
 	ctxt "The foe "
 	text_ram wEnemyMonNickname
+	ctxt ""
 	line "fled!"
 	prompt
 
@@ -182,6 +186,7 @@ BrokeReflectText:
 BattleText_ItemLowered:
 	text "The "
 	text_ram wStringBuffer1
+	ctxt ""
 	line "lowered"
 	cont "<USER>'s"
 	cont ""
@@ -192,6 +197,7 @@ BattleText_ItemLowered:
 BattleText_ItemHarshlyLowered:
 	text "The "
 	text_ram wStringBuffer1
+	ctxt ""
 	line "sharply lowered"
 	cont "<USER>'s"
 	cont ""
@@ -202,6 +208,7 @@ BattleText_ItemHarshlyLowered:
 BattleText_ItemSeverelyLowered:
 	text "The "
 	text_ram wStringBuffer1
+	ctxt ""
 	line "severely lowered"
 	cont "<USER>'s"
 	cont ""
@@ -212,6 +219,7 @@ BattleText_ItemSeverelyLowered:
 BattleText_ItemRaised:
 	text "The "
 	text_ram wStringBuffer1
+	ctxt ""
 	line "raised"
 	cont "<USER>'s"
 	cont ""
@@ -222,6 +230,7 @@ BattleText_ItemRaised:
 BattleText_ItemSharplyRaised:
 	text "The "
 	text_ram wStringBuffer1
+	ctxt ""
 	line "sharply raised"
 	cont "<USER>'s"
 	cont ""
@@ -232,6 +241,7 @@ BattleText_ItemSharplyRaised:
 BattleText_ItemDrasticallyRaised:
 	text "The "
 	text_ram wStringBuffer1
+	ctxt ""
 	line "drastically raised"
 	cont "<USER>'s"
 	cont ""
@@ -243,6 +253,7 @@ BattleText_ItemRaisedCrit:
 	text "<USER>"
 	line "used "
 	text_ram wStringBuffer1
+	ctxt ""
 	cont "to get pumped!"
 	prompt
 
@@ -314,12 +325,14 @@ BattleText_TheHailStopped:
 BattleText_EnemyPkmnFainted:
 	ctxt "The foe "
 	text_ram wEnemyMonNickname
+	ctxt ""
 	line "fainted!"
 	prompt
 
 GotMoneyForWinningText:
 	text "<PLAYER> got ¥"
 	text_decimal wBattleReward, 3, 6
+	ctxt ""
 	line "for winning!"
 	prompt
 
@@ -341,6 +354,7 @@ TiedAgainstText:
 SentSomeToMomText:
 	text "<PLAYER> got ¥"
 	text_decimal wBattleReward, 3, 6
+	ctxt ""
 	line "for winning!"
 	cont "Sent some to Mom!"
 	prompt
@@ -355,6 +369,7 @@ SentAllToMomText:
 
 BattleText_PkmnFainted:
 	text_ram wBattleMonNickname
+	ctxt ""
 	line "fainted!"
 	prompt
 
@@ -469,6 +484,7 @@ BattleText_UsersStringBuffer1Activated:
 	text "<USER>'s"
 	line ""
 	text_ram wStringBuffer1
+	ctxt ""
 	cont "activated!"
 	prompt
 
@@ -479,11 +495,13 @@ BattleText_ItemsCantBeUsedHere:
 
 BattleText_PkmnIsAlreadyOut:
 	text_ram wBattleMonNickname
+	ctxt ""
 	line "is already out."
 	prompt
 
 BattleText_PkmnCantBeRecalled:
 	text_ram wBattleMonNickname
+	ctxt ""
 	line "can't be recalled!"
 	prompt
 
@@ -492,6 +510,7 @@ BattleText_PkmnCantBeRecalledAbility:
 	text "'s"
 	line ""
 	text_ram wStringBuffer1
+	ctxt ""
 	cont "prevents escape!"
 	prompt
 
@@ -503,6 +522,7 @@ BattleText_TheresNoPPLeftForThisMove:
 BattleText_ItemOnlyAllowsMove: ; choice items
 	text "The "
 	text_ram wStringBuffer1
+	ctxt ""
 	line "only allows use"
 	cont "of "
 	text_ram wStringBuffer2
@@ -520,6 +540,7 @@ BattleText_MonCanOnlyUseMove:
 BattleText_ItemPreventsStatusMoves: ; assault vest
 	text "The "
 	text_ram wStringBuffer1
+	ctxt ""
 	line "prevents usage"
 	cont "of status moves!"
 	prompt
@@ -531,6 +552,7 @@ BattleText_TheMoveIsDisabled:
 
 BattleText_PkmnHasNoMovesLeft:
 	text_ram wBattleMonNickname
+	ctxt ""
 	line "has no moves left!"
 	done
 
@@ -551,12 +573,14 @@ BattleText_StringBuffer1GrewToLevel:
 BattleText_WildPkmnIsEating:
 	text "Wild "
 	text_ram wEnemyMonNickname
+	ctxt ""
 	line "is eating!"
 	prompt
 
 BattleText_WildPkmnIsAngry:
 	text "Wild "
 	text_ram wEnemyMonNickname
+	ctxt ""
 	line "is angry!"
 	prompt
 
@@ -706,9 +730,11 @@ ObliviousPreventedDestinyKnot:
 	text "<USER>'s"
 	line ""
 	text_ram wStringBuffer1
+	ctxt ""
 	cont "prevents"
 	cont ""
 	text_ram wStringBuffer2
+	ctxt ""
 	cont "infatuating it!"
 	prompt
 
@@ -716,6 +742,7 @@ DestinyKnotInfatuatedUser:
 	text "<TARGET>'s"
 	line ""
 	text_ram wStringBuffer1
+	ctxt ""
 	cont "infatuated"
 
 	para "<USER>!"
@@ -740,6 +767,7 @@ UsedMoveInsteadText:
 	text "<USER>"
 	line "used "
 	text_ram wStringBuffer2
+	ctxt ""
 	cont "instead!"
 	done
 
@@ -1250,6 +1278,7 @@ StoleText:
 	ctxt "<USER>"
 	line "stole "
 	text_ram wStringBuffer1
+	ctxt ""
 	cont "from its foe!"
 	prompt
 
@@ -1440,6 +1469,7 @@ BattleText_IntimidateResisted:
 	text "<TARGET>'s"
 	line ""
 	text_ram wStringBuffer1
+	ctxt ""
 
 	para "protects it from"
 	line "Intimidate!"

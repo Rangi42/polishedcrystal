@@ -88,6 +88,7 @@ PhotoStudioPrestoText:
 
 	para "Your "
 	text_ram wStringBuffer3
+	ctxt ""
 	line "looks happier!"
 	done
 
