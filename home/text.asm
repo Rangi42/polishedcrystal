@@ -701,9 +701,11 @@ TextCommand_CTXT::
 	pop af
 
 	; write starting coords to the stack
+	di
 	add sp, $6
 	push hl
 	add sp, -$4
+	ei
 
 	pop de ; pop bit-reading state
 	pop hl ; pop string position
