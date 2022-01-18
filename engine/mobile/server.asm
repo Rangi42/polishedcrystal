@@ -646,6 +646,25 @@ PO_ExchangeData:
 	call ExchangeTCPData
 	jr c, .disconnected
 	jr z, .got_required_data
+	push af
+	push bc
+	ld c, a
+	ld a, [wMobilePacketSize]
+	dec a
+	cp c
+	pop bc
+	jr nz, .not_enough_data
+	pop af
+	ld hl, wMobilePacketContent + 1
+	ld de, wPO_Data
+	ld b, 0
+	ld a, [wMobilePacketSize]
+	dec a
+	ld c, a
+	rst CopyBytes
+	jr .got_required_data
+.not_enough_data
+	pop af
 	call ForceContinueExchangeTCPData
 	jr c, .disconnected
 .got_required_data

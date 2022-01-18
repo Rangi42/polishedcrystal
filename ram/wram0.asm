@@ -929,6 +929,9 @@ wMobileConnectionID:: db
 wMobileSessionEnabled:: db ; used to check if we're connected to a MA
 wMobileDNSResponse:: ds 4 ; IP returned from DNS query
 
+wMobileCallbackBank:: db
+wMobileCallbackAddr:: dw
+
 wPO_Data::
 wPO_Command:: db
 

@@ -306,7 +306,7 @@ _GotRequestedTCPLength:
 	ld c, a
 	ld b, 0
 	ld hl, wMobilePacketContent + 1
-	call CopyBytes
+	rst CopyBytes
 	pop af
 	pop bc
 	ret z ; got the requested amount of bytes
@@ -320,6 +320,20 @@ _NextTCPSend:
 	pop bc
 	ret c
 	jr ContinueExchangeTCPData
+
+SetTCPCallback:
+; Sets callback function to signal upon async TCP handling to a:hl.
+	ld [wMobileCallbackBank], a
+	ld a, l
+	ld [wMobileCallbackAddr], a
+	ld a, h
+	ld [wMobileCallbackAddr + 1], a
+	ret
+
+AsyncTCP::
+; Send TCP data for connection b, length c from hl. If a is zero, return after
+; staging data for sending
+	ret
 
 SendMobileString::
 ; Sends ASCII string in hl up to but not including null terminator as a packet,
