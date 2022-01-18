@@ -438,7 +438,8 @@ PlayRoughDescription:
 RockSmashDescription:
 if !DEF(FAITHFUL)
 	ctxt "Removes Reflect"
-	next "and Light Screen.@"
+	next "and Light Screen."
+	done
 endc
 CrunchDescription:
 IronTailDescription:

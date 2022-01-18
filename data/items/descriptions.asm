@@ -1434,7 +1434,8 @@ LaggingTailDesc:
 
 IronBallDesc:
 	ctxt "Lowers Speed and"
-	next "grounds. (Hold)@" 
+	next "grounds. (Hold)"
+	done
 
 RingTargetDesc:
 	ctxt "Loses type immun-"
