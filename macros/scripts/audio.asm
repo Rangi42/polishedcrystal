@@ -254,6 +254,8 @@ ENDM
 	const loopchannel_cmd
 loopchannel: MACRO
 	db loopchannel_cmd
+	assert (\1) != 0, "'loopchannel 0' can be 'jumpchannel'"
+	assert (\1) != 1, "'loopchannel 1' is pointless"
 	db \1 ; count
 	dw \2 ; address
 ENDM
