@@ -518,7 +518,7 @@ CantBeHeldText:
 	text_end
 
 CantPlaceMailInStorageText:
-	text "Can't place Mail in"
+	ctxt "Can't place Mail in"
 	line "storage."
 	prompt
 
@@ -1301,7 +1301,7 @@ MoveScreenLoop:
 	ret
 
 .MustSaveFirst:
-	text "Please save the"
+	ctxt "Please save the"
 	line "game first."
 	prompt
 

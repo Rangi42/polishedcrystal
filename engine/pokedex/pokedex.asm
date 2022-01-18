@@ -2225,21 +2225,17 @@ _Pokedex_Mode:
 	db "Unown Mode@"
 
 .MenuDescriptions:
-	text "<PK><MN> are listed in"
-	next "regional order."
-	text_end
+	db   "<PK><MN> are listed in"
+	next "regional order.@"
 
-	text "<PK><MN> are listed in"
-	next "national order."
-	text_end
+	db   "<PK><MN> are listed in"
+	next "national order.@"
 
-	text "Display Unown"
-	next "information."
-	text_end
+	db   "Display Unown"
+	next "information.@"
 
-	text "Return to the <PK><MN>"
-	next "list."
-	text_end
+	db   "Return to the <PK><MN>"
+	next "list.@"
 
 Pokedex_Search:
 ; Call to fully initialize Search page and reset cursor pos

@@ -54,12 +54,12 @@ ItemFinder:
 	iffalse_jumpopenedtext .UnderfootText
 	jumpthisopenedtext
 
-	text "Yes! Itemfinder"
+	ctxt "Yes! Itemfinder"
 	line "is responding!"
 	done
 
 .UnderfootText:
-	text "Oh! Itemfinder is"
+	ctxt "Oh! Itemfinder is"
 	line "shaking wildly!"
 	done
 
@@ -68,7 +68,7 @@ ItemFinder:
 	special UpdateTimePals
 	jumpthisopenedtext
 
-	text "…Nope! Itemfinder"
+	ctxt "…Nope! Itemfinder"
 	line "isn't responding."
 	done
 
@@ -77,6 +77,6 @@ ItemFinder:
 	special UpdateTimePals
 	jumpthisopenedtext
 
-	text "Nope! There's no-"
+	ctxt "Nope! There's no-"
 	line "thing hidden here."
 	done
