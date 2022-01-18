@@ -1333,8 +1333,7 @@ endr
 .pikachu_move_loop
 	ld a, [hli]
 	cp FLY
-	ld a, PIKACHU_FLY_FORM
-	jr z, .got_pikachu_move
+	jr z, .got_pikachu_fly
 	cp SURF
 	ld a, PIKACHU_SURF_FORM
 	jr z, .got_pikachu_move
@@ -1342,12 +1341,16 @@ endr
 	jr z, .enemy_extras_done
 	jr .pikachu_move_loop
 
+.got_pikachu_fly
+	ld a, PIKACHU_FLY_FORM
 .got_pikachu_move
 	ld c, a
 	ld a, b
 	and $ff - FORM_MASK
 	or c
 	ld [wCurForm], a
+	ld [wOTPartyMon1Form], a
+	ld [wEnemyMonForm], a
 
 .enemy_extras_done
 	; Send-out animation
