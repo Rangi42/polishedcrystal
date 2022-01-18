@@ -1,5 +1,5 @@
 BeverlyAskNumber1Text:
-	text "Your Marill is so"
+	ctxt "Your Marill is so"
 	line "cute and adorable!"
 
 	para "You love #mon"
@@ -13,7 +13,7 @@ BeverlyAskNumber1Text:
 	done
 
 BeverlyAskNumber2Text:
-	text "Your Marill is so"
+	ctxt "Your Marill is so"
 	line "cute and adorable!"
 
 	para "We should chat, it"
@@ -24,7 +24,7 @@ BeverlyAskNumber2Text:
 	done
 
 BeverlyNumberAcceptedText:
-	text "To be honest, I"
+	ctxt "To be honest, I"
 	line "want a Marill."
 
 	para "But I make do with"
@@ -32,19 +32,19 @@ BeverlyNumberAcceptedText:
 	done
 
 BeverlyNumberDeclinedText:
-	text "Oh… That's"
+	ctxt "Oh… That's"
 	line "disappointing…"
 
 	para "Goodbye, Marill…"
 	done
 
 BeverlyPhoneFullText:
-	text "Oh? Your phone's"
+	ctxt "Oh? Your phone's"
 	line "memory is full."
 	done
 
 BeverlyGiftText:
-	text "Oh? <PLAYER>?"
+	ctxt "Oh? <PLAYER>?"
 	line "I waited here for"
 
 	para "you. I brought you"
@@ -52,7 +52,7 @@ BeverlyGiftText:
 	done
 
 BeverlyPackFullText:
-	text "Oh?"
+	ctxt "Oh?"
 	line "You have no room."
 
 	para "Please come back"

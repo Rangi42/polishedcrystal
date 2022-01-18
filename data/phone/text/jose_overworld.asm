@@ -1,6 +1,7 @@
 JoseAskNumber1Text:
 	text "If my "
 	text_ram wStringBuffer4
+	ctxt ""
 	line "sees anything"
 
 	para "pretty, it goes"
@@ -20,7 +21,7 @@ JoseAskNumber1Text:
 	done
 
 JoseAskNumber2Text:
-	text "Do you like pretty"
+	ctxt "Do you like pretty"
 	line "things?"
 
 	para "I could share if"
@@ -32,31 +33,31 @@ JoseAskNumber2Text:
 	done
 
 JoseNumberAcceptedText:
-	text "I'll call you as"
+	ctxt "I'll call you as"
 	line "soon as I get"
 	cont "something pretty."
 	done
 
 JoseNumberDeclinedText:
-	text "You sure? Well,"
+	ctxt "You sure? Well,"
 	line "tell me if you"
 	cont "change your mind."
 	done
 
 JosePhoneFullText:
-	text "Huh? Your phone"
+	ctxt "Huh? Your phone"
 	line "list is full."
 	done
 
 JoseRematchText:
-	text "Tweet! Tweeeet!"
+	ctxt "Tweet! Tweeeet!"
 
 	para "Kept me waiting!"
 	line "Go, Farfetch'd!"
 	done
 
 JoseGiftText:
-	text "Kept me waiting!"
+	ctxt "Kept me waiting!"
 	line "Look, this is it!"
 
 	para "See? Isn't it some"
@@ -64,7 +65,7 @@ JoseGiftText:
 	done
 
 JosePackFullText:
-	text "Huh? You don't"
+	ctxt "Huh? You don't"
 	line "have anywhere to"
 
 	para "put this. Better"

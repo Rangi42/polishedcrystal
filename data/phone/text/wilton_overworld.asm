@@ -1,5 +1,5 @@
 WiltonAskNumber1Text:
-	text "Eh, our battle was"
+	ctxt "Eh, our battle was"
 	line "fun, I'd say…"
 
 	para "When I'm fishing,"
@@ -13,7 +13,7 @@ WiltonAskNumber1Text:
 	done
 
 WiltonAskNumber2Text:
-	text "If I snag an item"
+	ctxt "If I snag an item"
 	line "while I'm fishing,"
 
 	para "it's yours. What's"
@@ -21,30 +21,30 @@ WiltonAskNumber2Text:
 	done
 
 WiltonNumberAcceptedText:
-	text "If I snag anything"
+	ctxt "If I snag anything"
 	line "good, I'll be sure"
 	cont "to let you know."
 	done
 
 WiltonNumberDeclinedText:
-	text "All right… Come"
+	ctxt "All right… Come"
 	line "back if you have a"
 	cont "change of heart."
 	done
 
 WiltonPhoneFullText:
-	text "You can't register"
+	ctxt "You can't register"
 	line "another number."
 	done
 
 WiltonRematchText:
-	text "Argh! You startled"
+	ctxt "Argh! You startled"
 	line "Poliwag into"
 	cont "fleeing again!"
 	done
 
 WiltonGiftText:
-	text "So here you are."
+	ctxt "So here you are."
 
 	para "See this?"
 	line "I snagged it just"
@@ -54,7 +54,7 @@ WiltonGiftText:
 	done
 
 WiltonPackFullText:
-	text "Your Bag's full?"
+	ctxt "Your Bag's full?"
 
 	para "I'll give it to"
 	line "you later."

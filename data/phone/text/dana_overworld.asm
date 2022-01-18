@@ -1,5 +1,5 @@
 DanaAskNumber1Text:
-	text "You're really good"
+	ctxt "You're really good"
 	line "at #mon!"
 
 	para "Boys give me items"
@@ -16,7 +16,7 @@ DanaAskNumber1Text:
 	done
 
 DanaAskNumber2Text:
-	text "I'll share my"
+	ctxt "I'll share my"
 	line "gifts with you."
 
 	para "Let me get your"
@@ -24,7 +24,7 @@ DanaAskNumber2Text:
 	done
 
 DanaNumberAcceptedText:
-	text "Next time a boy"
+	ctxt "Next time a boy"
 	line "gives me something"
 
 	para "after a battle,"
@@ -35,7 +35,7 @@ DanaNumberAcceptedText:
 	done
 
 DanaNumberDeclinedText:
-	text "Aww, you don't"
+	ctxt "Aww, you don't"
 	line "want anything?"
 
 	para "But it's all for"
@@ -43,12 +43,12 @@ DanaNumberDeclinedText:
 	done
 
 DanaPhoneFullText:
-	text "But your phone's"
+	ctxt "But your phone's"
 	line "out of memory!"
 	done
 
 DanaRematchText:
-	text "You're really"
+	ctxt "You're really"
 	line "late!"
 
 	para "I'm eager to get"
@@ -56,7 +56,7 @@ DanaRematchText:
 	done
 
 DanaGiftText:
-	text "Hi! Are you here"
+	ctxt "Hi! Are you here"
 	line "for your gift?"
 
 	para "This should really"
@@ -64,7 +64,7 @@ DanaGiftText:
 	done
 
 DanaPackFullText:
-	text "Where are you"
+	ctxt "Where are you"
 	line "going to put this?"
 
 	para "I'll keep it, so"

@@ -1,5 +1,5 @@
 ArnieAskNumber1Text:
-	text "Do you get the"
+	ctxt "Do you get the"
 	line "feeling that there"
 
 	para "are more rare"
@@ -20,7 +20,7 @@ ArnieAskNumber1Text:
 	done
 
 ArnieAskNumber2Text:
-	text "I want to let"
+	ctxt "I want to let"
 	line "people know if I"
 	cont "see rare #mon."
 
@@ -29,7 +29,7 @@ ArnieAskNumber2Text:
 	done
 
 ArnieNumberAcceptedText:
-	text "If I spot any"
+	ctxt "If I spot any"
 	line "awesome #mon,"
 
 	para "I'll be sure to"
@@ -37,13 +37,13 @@ ArnieNumberAcceptedText:
 	done
 
 ArnieNumberDeclinedText:
-	text "Aww! I want to"
+	ctxt "Aww! I want to"
 	line "tell someone about"
 	cont "my discoveries!"
 	done
 
 ArniePhoneFullText:
-	text "There's no space"
+	ctxt "There's no space"
 	line "for my number."
 
 	para "If you make room,"
@@ -51,7 +51,7 @@ ArniePhoneFullText:
 	done
 
 ArnieRematchText:
-	text "It's my turn to"
+	ctxt "It's my turn to"
 	line "win now!"
 
 	para "I've turned over a"

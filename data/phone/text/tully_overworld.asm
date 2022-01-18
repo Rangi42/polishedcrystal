@@ -1,5 +1,5 @@
 TullyAskNumber1Text:
-	text "Hey, you're trying"
+	ctxt "Hey, you're trying"
 	line "to be the ultimate"
 
 	para "trainer too? Then"
@@ -16,7 +16,7 @@ TullyAskNumber1Text:
 	done
 
 TullyAskNumber2Text:
-	text "If I find any more"
+	ctxt "If I find any more"
 	line "items by the"
 
 	para "water, I'll give"
@@ -27,19 +27,19 @@ TullyAskNumber2Text:
 	done
 
 TullyNumberAcceptedText:
-	text "You'll be hearing"
+	ctxt "You'll be hearing"
 	line "from me if I find"
 	cont "something good."
 	done
 
 TullyNumberDeclinedText:
-	text "Is that so? Then"
+	ctxt "Is that so? Then"
 	line "I'll just have to"
 	cont "use them myself."
 	done
 
 TullyPhoneFullText:
-	text "Your phone list is"
+	ctxt "Your phone list is"
 	line "all filled up."
 
 	para "Come back if you"
@@ -47,7 +47,7 @@ TullyPhoneFullText:
 	done
 
 TullyRematchText:
-	text "I've been doing"
+	ctxt "I've been doing"
 	line "more than just"
 
 	para "fishing since we"
@@ -58,7 +58,7 @@ TullyRematchText:
 	done
 
 TullyGiftText:
-	text "Hey, there you"
+	ctxt "Hey, there you"
 	line "are!"
 
 	para "Here's a gift, as"
@@ -66,7 +66,7 @@ TullyGiftText:
 	done
 
 TullyPackFullText:
-	text "Your Bag's full?"
+	ctxt "Your Bag's full?"
 
 	para "Come back later--"
 	line "that'll do it."

@@ -1,5 +1,5 @@
 ChadAskNumber1Text:
-	text "Huh? Is that thing"
+	ctxt "Huh? Is that thing"
 	line "a #dex? Have"
 	cont "you met Prof.Oak?"
 
@@ -23,7 +23,7 @@ ChadAskNumber1Text:
 	done
 
 ChadAskNumber2Text:
-	text "May I please have"
+	ctxt "May I please have"
 	line "your phone number?"
 
 	para "We should chat"
@@ -34,23 +34,23 @@ ChadAskNumber2Text:
 	done
 
 ChadNumberAcceptedText:
-	text "You must listen to"
+	ctxt "You must listen to"
 	line "Prof.Oak's #mon"
 	cont "Talk, right?"
 	done
 
 ChadNumberDeclinedText:
-	text "Oh… I wish I had a"
+	ctxt "Oh… I wish I had a"
 	line "chance to meet"
 	cont "Prof.Oak…"
 	done
 
 ChadPhoneFullText:
-	text "Your phone list is"
+	ctxt "Your phone list is"
 	line "completely full!"
 	done
 
 ChadRematchText:
-	text "I've been waiting!"
+	ctxt "I've been waiting!"
 	line "Let's battle now!"
 	done

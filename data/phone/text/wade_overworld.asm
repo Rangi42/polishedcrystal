@@ -1,5 +1,5 @@
 WadeAskNumber1Text:
-	text "You're awesome!"
+	ctxt "You're awesome!"
 	line "I like you!"
 
 	para "I look for #mon"
@@ -17,7 +17,7 @@ WadeAskNumber1Text:
 	done
 
 WadeAskNumber2Text:
-	text "When I'm in the"
+	ctxt "When I'm in the"
 	line "grass, I find all"
 	cont "kinds of Berries."
 
@@ -29,7 +29,7 @@ WadeAskNumber2Text:
 	done
 
 WadeNumberAcceptedText:
-	text "You'll hear from"
+	ctxt "You'll hear from"
 	line "me as soon as I"
 
 	para "find anything that"
@@ -37,24 +37,24 @@ WadeNumberAcceptedText:
 	done
 
 WadeNumberDeclinedText:
-	text "Oh well. Don't be"
+	ctxt "Oh well. Don't be"
 	line "shy if you want to"
 	cont "get my number."
 	done
 
 WadePhoneFullText:
-	text "Your phone list"
+	ctxt "Your phone list"
 	line "has no room for my"
 	cont "number."
 	done
 
 WadeRematchText:
-	text "I was waiting for"
+	ctxt "I was waiting for"
 	line "you. Let's battle!"
 	done
 
 WadeGiftText:
-	text "Good to see you!"
+	ctxt "Good to see you!"
 	line "See? This is what"
 
 	para "I found."
@@ -62,7 +62,7 @@ WadeGiftText:
 	done
 
 WadePackFullText:
-	text "Oops, your Bag's"
+	ctxt "Oops, your Bag's"
 	line "full. Too bad."
 
 	para "You should come"

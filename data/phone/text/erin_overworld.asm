@@ -1,5 +1,5 @@
 ErinAskNumber1Text:
-	text "It really made me"
+	ctxt "It really made me"
 	line "angry to lose."
 
 	para "I'll have to train"
@@ -13,7 +13,7 @@ ErinAskNumber1Text:
 	done
 
 ErinAskNumber2Text:
-	text "I want to battle"
+	ctxt "I want to battle"
 	line "with you again."
 
 	para "Do you want to"
@@ -21,13 +21,13 @@ ErinAskNumber2Text:
 	done
 
 ErinNumberAcceptedText:
-	text "I'll remember to"
+	ctxt "I'll remember to"
 	line "call when I want"
 	cont "to battle again!"
 	done
 
 ErinNumberDeclinedText:
-	text "Oh… I'm sad…"
+	ctxt "Oh… I'm sad…"
 	line "If you do want to"
 
 	para "battle, come see"
@@ -35,17 +35,17 @@ ErinNumberDeclinedText:
 	done
 
 ErinPhoneFullText:
-	text "Oh no. Your phone"
+	ctxt "Oh no. Your phone"
 	line "is all filled up."
 	done
 
 ErinRematchText:
-	text "Yay! I waited!"
+	ctxt "Yay! I waited!"
 	line "Let's start now!"
 	done
 
 ErinPackFullText:
-	text "That's too bad!"
+	ctxt "That's too bad!"
 	line "You have no room…"
 
 	para "I'll give it to"
@@ -53,7 +53,7 @@ ErinPackFullText:
 	done
 
 ErinRematchGiftText:
-	text "Aww… I lost again!"
+	ctxt "Aww… I lost again!"
 
 	para "I wonder how many"
 	line "times that is…"

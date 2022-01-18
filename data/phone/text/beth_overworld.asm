@@ -1,5 +1,5 @@
 BethAskNumber1Text:
-	text "It's been a while"
+	ctxt "It's been a while"
 	line "since I lost…"
 
 	para "You're very good"
@@ -21,7 +21,7 @@ BethAskNumber1Text:
 	done
 
 BethAskNumber2Text:
-	text "By challenging a"
+	ctxt "By challenging a"
 	line "tough trainer like"
 
 	para "you, I think I can"
@@ -34,23 +34,23 @@ BethAskNumber2Text:
 	done
 
 BethNumberAcceptedText:
-	text "Let's battle again"
+	ctxt "Let's battle again"
 	line "sometime!"
 	done
 
 BethNumberDeclinedText:
-	text "That's too bad…"
+	ctxt "That's too bad…"
 
 	para "Let me know if you"
 	line "change your mind."
 	done
 
 BethPhoneFullText:
-	text "Oh no. Your phone"
+	ctxt "Oh no. Your phone"
 	line "is out of memory."
 	done
 
 BethRematchText:
-	text "You sure kept me"
+	ctxt "You sure kept me"
 	line "waiting! Let's go!"
 	done

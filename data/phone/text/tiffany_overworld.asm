@@ -1,5 +1,5 @@
 TiffanyAskNumber1Text:
-	text "Hey! You like"
+	ctxt "Hey! You like"
 	line "Clefairy too?"
 
 	para "They're so very"
@@ -16,7 +16,7 @@ TiffanyAskNumber1Text:
 	done
 
 TiffanyAskNumber2Text:
-	text "I want to know"
+	ctxt "I want to know"
 	line "your phone number!"
 
 	para "Let's talk about"
@@ -24,12 +24,12 @@ TiffanyAskNumber2Text:
 	done
 
 TiffanyNumberAcceptedText:
-	text "Isn't my Clefairy"
+	ctxt "Isn't my Clefairy"
 	line "super adorable?"
 	done
 
 TiffanyNumberDeclinedText:
-	text "Aww… Oh well."
+	ctxt "Aww… Oh well."
 	line "Look for me if you"
 
 	para "want to talk about"
@@ -37,19 +37,19 @@ TiffanyNumberDeclinedText:
 	done
 
 TiffanyPhoneFullText:
-	text "Oh? Your phone"
+	ctxt "Oh? Your phone"
 	line "registry is full."
 	done
 
 TiffanyRematchText:
-	text "There you are!"
+	ctxt "There you are!"
 
 	para "Clefairy, I want"
 	line "you to try hard!"
 	done
 
 TiffanyGiftText:
-	text "You took a long"
+	ctxt "You took a long"
 	line "time. See this?"
 
 	para "Isn't it cute?"
@@ -57,6 +57,6 @@ TiffanyGiftText:
 	done
 
 TiffanyPackFullText:
-	text "Uh-oh. Your Bag"
+	ctxt "Uh-oh. Your Bag"
 	line "is crammed full."
 	done
