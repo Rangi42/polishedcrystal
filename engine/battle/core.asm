@@ -1349,6 +1349,8 @@ endr
 	and $ff - FORM_MASK
 	or c
 	ld [wCurForm], a
+	ld [wOTPartyMon1Form], a
+	ld [wEnemyMonForm], a
 
 .enemy_extras_done
 	; Send-out animation
