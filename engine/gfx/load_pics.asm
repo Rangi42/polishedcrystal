@@ -61,8 +61,6 @@ _GetPreparedFrontpic:
 	ret
 
 _PrepareFrontpic:
-	ld a, BANK(sScratch)
-	call GetSRAMBank
 	push de
 	call GetBaseData ; [wCurSpecies] and [wCurForm] are already set
 	ld a, [wBasePicSize]
@@ -76,6 +74,8 @@ _PrepareFrontpic:
 	; Save decompressed size
 	swap e
 	swap d
+	ld a, BANK(sScratch)
+	call GetSRAMBank
 	ld a, d
 	and $f0
 	or e
@@ -357,6 +357,11 @@ PadFrontpic:
 	jr z, .five
 	dec a
 	jr z, .six
+	dec a
+	jr z, .seven_loop
+	call CloseSRAM ; just in case
+	ld a, ERR_FRONTPIC
+	jmp Crash
 
 .seven_loop
 	ld c, 7 tiles
