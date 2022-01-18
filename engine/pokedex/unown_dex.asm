@@ -62,7 +62,7 @@ _Pokedex_Unown:
 	rst ByteFill
 
 .current_done
-	; Print a table of Unown characters for all formes we've caught.
+	; Print a table of Unown characters for all forms we've caught.
 	hlcoord 4, 10
 	lb bc, UNOWN_A_FORM, LOW(UNOWN)
 	ld d, 4
@@ -228,7 +228,7 @@ Pokedex_GetUnownCursorForm:
 	; Add horizontal position
 	add b
 
-	; Formes are 1-indexed
+	; Forms are 1-indexed
 	inc a
 
 	; Now we have the form.

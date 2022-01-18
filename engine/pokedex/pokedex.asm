@@ -2978,7 +2978,7 @@ Pokedex_IterateSpeciesWithMode:
 	xor 1
 Pokedex_IterateSpecies:
 ; Iterates all species. For each iteration, use hl as callback for a function to
-; call for each valid species ID including all formes. bc contains species+form
+; call for each valid species ID including all forms. bc contains species+form
 ; being checked. and de contains the resulting variant (not cosmetic) index.
 ; Iterate in the following order depending on a: 0 (natdex), 1 (johto), 2 (a-z)
 	ld b, 0
@@ -3003,7 +3003,7 @@ Pokedex_IterateSpecies:
 	srl d
 	dec de
 
-	; Begin at forme 1, not forme 0.
+	; Begin at form 1, not form 0.
 	inc b
 
 	push hl
