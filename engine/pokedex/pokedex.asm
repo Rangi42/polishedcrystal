@@ -419,9 +419,24 @@ Pokedex_ScrollPageMon:
 
 Pokedex_GetCursorSpecies:
 ; Returns species in c and a, form+ext in b that cursor is hovering.
+; For a new dex entry, return species+form from wTempMon.
+	ld a, [wPokedex_DisplayMode]
+	cp DEXDISP_NEWDESC
+	jr nz, .not_newdesc
+	ld a, BANK(wTempSpecies)
+	call StackCallInWRAMBankA
+.StackCall1:
+	ld a, [wTempSpecies]
+	ld c, a
+	ld a, [wTempForm]
+	set MON_CAUGHT_F, a
+	ld b, a
+	ret
+
+.not_newdesc
 	ld a, BANK(wDexMons)
 	call StackCallInWRAMBankA
-.Function:
+.StackCall2:
 	ld a, [wPokedex_CursorPos]
 	push af
 	swap a
@@ -1344,12 +1359,12 @@ endr
 	xor b
 	ld [hli], a
 
+.sel_shiny
 	; Don't display bottom menu or shiny hint in new dex entry mode.
 	ld a, [wPokedex_DisplayMode]
 	cp DEXDISP_NEWDESC
 	jr z, .botmenu_done
 
-.sel_shiny
 	; Sel/Shiny indicator
 	ld a, SHINY_CHARM
 	ld [wCurKeyItem], a
@@ -3477,33 +3492,16 @@ NewPokedexEntry:
 	ld hl, rIE
 	res LCD_STAT, [hl]
 
-	ld hl, wNamedObjectIndex
-	ld a, [hli]
-	ld b, [hl]
-	ld c, a
-
-	; Convert dex number to (simplified) cursor position.
-	call GetPokedexNumber
-	dec bc
-	ld hl, hDividend + 1
-	ld a, c
-	ld [hld], a
-	ld [hl], b
-	ld a, 5
-	ldh [hDivisor], a
-	ld b, 2
-	call Divide
-	ldh a, [hQuotient + 2]
-	ld [wPokedex_Offset], a
-	ldh a, [hRemainder]
-	ld [wPokedex_CursorPos], a
-
 	call ClearPalettes
 	call DelayFrame
 	call StackDexGraphics
 
 	ld a, DEXDISP_NEWDESC
 	ld [wPokedex_DisplayMode], a
+
+	; Ensure that we write the mon graphics to vbk0.
+	ld a, 1 ; will be switched to 0 upon next Pokedex_GetCursorMon call.
+	ld [wPokedex_MonInfoBank], a
 	jmp Pokedex_Description
 
 Pokedex_GetDexEntryPointer:

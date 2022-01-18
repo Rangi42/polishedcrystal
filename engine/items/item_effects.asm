@@ -426,6 +426,10 @@ PokeBallEffect:
 	ld [wWildMon], a
 	ld [wCurPartySpecies], a
 	ld [wTempSpecies], a
+	ld a, [wOTPartyMon1Form]
+	and SPECIESFORM_MASK
+	ld [wCurForm], a
+	ld [wTempForm], a
 	ld a, [wBattleType]
 	cp BATTLETYPE_TUTORIAL
 	jmp z, .FinishTutorial
