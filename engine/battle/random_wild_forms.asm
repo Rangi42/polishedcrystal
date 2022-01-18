@@ -4,7 +4,7 @@ GenerateWildForm:
 	push bc
 	ld a, [wWildMonForm]
 	ld b, a
-	and SPECIESFORM_MASK
+	and FORM_MASK
 	ld a, b
 	jr nz, .done
 	ld a, [wTempEnemyMonSpecies]
@@ -35,7 +35,6 @@ GenerateWildForm:
 	jmp PopBCDEHL
 
 random_wild_form: MACRO
-	assert !HIGH(\1)
 	if _NARG == 3
 		dp \1, \2
 		dw \3
@@ -76,7 +75,9 @@ RandomWildSpeciesForms:
 	ret
 
 .Default:
-	ld a, PLAIN_FORM
+	ld a, [wWildMonForm]
+	and EXTSPECIES_MASK
+	inc a ; or PLAIN_FORM
 	ret
 
 CheckUnownLetter:
