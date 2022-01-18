@@ -2915,10 +2915,10 @@ _OakPCText2::
 
 SECTION "_OakPCText3", ROMX
 _OakPCText3::
-	text_ram wStringBuffer3
+	text_decimal wTempDexSeen, 2, 3
 	ctxt " #mon seen"
 	line ""
-	text_ram wStringBuffer4
+	text_decimal wTempDexOwn, 2, 3
 	ctxt " #mon owned"
 
 	para "Prof.Oak's"
