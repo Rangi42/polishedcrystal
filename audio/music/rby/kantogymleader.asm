@@ -551,7 +551,7 @@ Music_GymLeaderBattle_branch_223b0:
 	note A_, 2
 	note G#, 4
 	note E_, 6
-	loopchannel 0, Music_GymLeaderBattle_branch_223b0
+	jumpchannel Music_GymLeaderBattle_branch_223b0
 Music_GymLeaderBattle_Ch2: 
 	dutycycle 3
 	vibrato $8, $25
@@ -849,7 +849,7 @@ Music_GymLeaderBattle_branch_225e0:
 	intensity $c3
 	octave 4
 	note A_, 6
-	loopchannel 0, Music_GymLeaderBattle_branch_225e0
+	jumpchannel Music_GymLeaderBattle_branch_225e0
 Music_GymLeaderBattle_Ch3: 
 	vibrato $0, $20
 	notetype $c, $13
@@ -1398,5 +1398,5 @@ Music_GymLeaderBattle_branch_227b1:
 	note B_, 2
 	octave 4
 	note G_, 6
-	loopchannel 0, Music_GymLeaderBattle_branch_227b1
+	jumpchannel Music_GymLeaderBattle_branch_227b1
 

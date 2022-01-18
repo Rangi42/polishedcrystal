@@ -385,7 +385,7 @@ Music_KantoChampionBattle_branch_23429:
 	note E_, 8
 	intensity $b7
 	note E_, 8
-	loopchannel 0, Music_KantoChampionBattle_branch_23429
+	jumpchannel Music_KantoChampionBattle_branch_23429
 Music_KantoChampionBattle_Ch2: 
 	dutycycle 3
 	vibrato $8, $25
@@ -711,7 +711,7 @@ Music_KantoChampionBattle_branch_235e6:
 	note E_, 8
 	note A#, 4
 	note B_, 12
-	loopchannel 0, Music_KantoChampionBattle_branch_235e6
+	jumpchannel Music_KantoChampionBattle_branch_235e6
 Music_KantoChampionBattle_branch_23704:
 	octave 4
 	note E_, 1
@@ -1302,7 +1302,7 @@ Music_KantoChampionBattle_branch_2377d:
 	note E_, 2
 	note A_, 2
 	note B_, 4
-	loopchannel 0, Music_KantoChampionBattle_branch_2377d
+	jumpchannel Music_KantoChampionBattle_branch_2377d
 Music_KantoChampionBattle_branch_2395b:
 	octave 4
 	note F#, 2
