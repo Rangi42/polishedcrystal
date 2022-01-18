@@ -17,8 +17,14 @@ CheckUniqueWildMove:
 	ld a, [wCurPartySpecies]
 	cp b
 	jr nz, .inc2andloop
+
+	; Convert form 0 to form 1 if applicable.
 	ld a, [hli] ; form
 	ld b, a
+	and FORM_MASK
+	jr nz, .got_form
+	inc b
+.got_form
 	ld a, [wCurForm]
 	and SPECIESFORM_MASK
 	cp b
@@ -50,7 +56,7 @@ CheckUniqueWildMove:
 	jr .TeachMove
 .ChanceToTeach
 	call Random
-	cp 50 percent + 1
+	add a
 	ret nc
 .TeachMove
 	ld hl, wOTPartyMon1Moves + 1 ; second move

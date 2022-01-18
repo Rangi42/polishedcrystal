@@ -359,6 +359,9 @@ PadFrontpic:
 	jr z, .six
 	dec a
 	jr z, .seven_loop
+
+	; This particular check should NOT be removed for "optimization", because it
+	; is a failsafe against save corruption issues.
 	call CloseSRAM ; just in case
 	ld a, ERR_FRONTPIC
 	jmp Crash
