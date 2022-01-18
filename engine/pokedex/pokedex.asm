@@ -2640,6 +2640,7 @@ Pokedex_GetSearchResults:
 
 	; Check if we're doing a null search. - 1 to exclude search order.
 	ld hl, wPokedex_SearchData
+	push bc
 	ld b, NUM_DEXSEARCH - 1
 	xor a
 .check_null_search
@@ -2647,6 +2648,7 @@ Pokedex_GetSearchResults:
 	inc hl
 	dec b
 	jr nz, .check_null_search
+	pop bc
 
 	; If we aren't, skip this entry.
 	and a
