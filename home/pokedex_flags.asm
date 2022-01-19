@@ -3,26 +3,21 @@ CountSetBits::
 ; Return in a, c and [wNumSetBits].
 
 	ld c, 0
-.next
+.outer_loop
 	ld a, [hli]
-	ld e, a
-	ld d, 8
-
-.count
-	srl e
-	jr nc, .no_carry
-	inc c
-.no_carry
-
-	dec d
-	jr nz, .count
-
+.zerocheck
+	and a
+	jr nz, .inner_loop
 	dec b
-	jr nz, .next
-
+	jr nz, .outer_loop
 	ld a, c
 	ld [wNumSetBits], a
 	ret
+.inner_loop
+	add a
+	jr nc, .inner_loop
+	inc c
+	jr .zerocheck
 
 GetWeekday::
 	ld a, [wCurDay]
