@@ -357,13 +357,17 @@ TrainerCard_Page1_PrintDexCaught_GameTime:
 	hlcoord 18, 16
 	ld [hl], "▶"
 
-	ld hl, wPokedexCaught
-	ld b, wEndPokedexCaught - wPokedexCaught
-	call CountSetBits
-	ld de, wNumSetBits
+	ldh a, [hBGMapMode]
+	push af
+	xor a
+	ldh [hBGMapMode], a
+	farcall Pokedex_CountSeenOwn
+	ld de, wTempDexOwn
 	hlcoord 15, 10
-	lb bc, 1, 3
+	lb bc, 2, 3
 	call PrintNum
+	pop af
+	ldh [hBGMapMode], a
 
 	ld de, wBattlePoints
 	hlcoord 13, 14
