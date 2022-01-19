@@ -1568,22 +1568,7 @@ Pokedex_Main:
 
 	ld hl, DexTilemap_Main
 	call Pokedex_LoadTilemapWithPokepic
-	ld de, wStringBuffer1
-	hlcoord 9, 2
-	rst PlaceString
 
-	ld a, [wPokedex_MonInfoBank]
-	and a
-	jr nz, .vram_bank_1
-	xor a
-	hlcoord 18, 3, wAttrmap
-	ld [hli], a
-	ld [hl], a
-	hlcoord 18, 4, wAttrmap
-	ld [hli], a
-	ld [hl], a
-
-.vram_bank_1
 	xor a
 	ld [wPokedex_DisplayMode], a
 
