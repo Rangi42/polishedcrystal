@@ -1845,7 +1845,7 @@ ApricornBox:
 	db 0 ; default option
 
 .Text
-	text  " Red   Blu"
+	ctxt  " Red   Blu"
 	next1 "   ×     ×"
 	next1 " Ylw   Grn"
 	next1 "   ×     ×"
