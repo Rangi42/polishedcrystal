@@ -7942,17 +7942,22 @@ ReadAndPrintLinkBattleRecord:
 	ret
 
 .Scores:
-	db "   0    0    0@"
+	ctxt "   0    0    0"
+	done
 
 .Format:
-	db "  ---  <LNBRK>"
-	db "         -    -    -@"
+	ctxt "  ---  "
+	next1 "         -    -    -"
+	done
 .Record:
-	db "<PLAYER>'s Record@"
+	ctxt "<PLAYER>'s Record"
+	done
 .Result:
-	db "Result Win Lose Draw@"
+	ctxt "Result Win Lose Draw"
+	done
 .Total:
-	db "Total  Win Lose Draw@"
+	ctxt "Total  Win Lose Draw"
+	done
 
 BattleEnd_HandleRoamMons:
 	ld a, [wBattleType]

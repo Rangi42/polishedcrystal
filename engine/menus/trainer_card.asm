@@ -336,13 +336,13 @@ TrainerCard_PrintTopHalfOfCard:
 	jmp PrintNum
 
 .Top_Headings:
-	db "┌" - 4, "Name/<LNBRK>"
-	db "┌" - 4, "<ID>№.<LNBRK>"
-	db "┌" - 3
+	db     "┌" - 4, "Name/"
+	next1  "┌" - 4, "<ID>№."
+	next1  "┌" - 3
 	ds 11, "┌" - 2
-	db "┌" - 1, "<LNBRK>"
-	db "<LNBRK>"
-	db " Money@"
+	db     "┌" - 1
+	next1  ""
+	next1  " Money@"
 
 TrainerCardSetup_ClearBottomHalf:
 	hlcoord 1, 10
