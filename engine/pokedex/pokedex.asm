@@ -1451,8 +1451,6 @@ endr
 .newdesc_a
 	call .SwitchPage
 	jr z, .newdesc_joypad
-.newdesc_done
-	; Exited early
 	pop af
 	pop hl
 	pop hl
