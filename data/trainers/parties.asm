@@ -4576,8 +4576,10 @@ CosplayerGroup:
 	db "Kuroko@"
 	db TRAINERTYPE_ITEM
 	; party
-	dbp 60, VULPIX, EVIOLITE
-	dbp 62, NINETALES, CHARCOAL
+	dbp 60, VULPIX
+		db EVIOLITE
+	dbp 62, NINETALES
+		db CHARCOAL
 	db -1 ; end
 
 
@@ -4949,7 +4951,8 @@ endc
 	db "Gina@"
 	db TRAINERTYPE_ITEM | TRAINERTYPE_MOVES
 	; party
-	dbp 63, RAICHU, LEFTOVERS
+	dbp 63, RAICHU
+		db LEFTOVERS
 		db THUNDERBOLT, SURF, THUNDER_WAVE, SUBSTITUTE
 	db -1 ; end
 
@@ -6472,8 +6475,10 @@ RichBoyGroup:
 	db "Gerald@"
 	db TRAINERTYPE_ITEM
 	; party
-	dbp 42, AZUMARILL, NUGGET
-	dbp 40, BLISSEY, NUGGET
+	dbp 42, AZUMARILL
+		db NUGGET
+	dbp 40, BLISSEY
+		db NUGGET
 	db -1 ; end
 
 	; RICH_BOY
@@ -6504,8 +6509,10 @@ LadyGroup:
 	db "Jessica@"
 	db TRAINERTYPE_ITEM
 	; party
-	dbp 55, BLISSEY, NUGGET
-	dbp 54, FURRET, NUGGET
+	dbp 55, BLISSEY
+		db NUGGET
+	dbp 54, FURRET
+		db NUGGET
 	db -1 ; end
 
 
@@ -8574,11 +8581,14 @@ CooltrainerMGroup:
 	db "Gaven@"
 	db TRAINERTYPE_ITEM | TRAINERTYPE_MOVES
 	; party
-	dbp 45, VICTREEBEL, NO_ITEM
+	dbp 45, VICTREEBEL
+		db NO_ITEM
 		db GIGA_DRAIN, TOXIC, SLUDGE_BOMB, RAZOR_LEAF
-	dbp 45, KINGLER, KINGS_ROCK
+	dbp 45, KINGLER
+		db KINGS_ROCK
 		db SURF, STOMP, DIG, BLIZZARD
-	dbp 45, FLAREON, NO_ITEM
+	dbp 45, FLAREON
+		db NO_ITEM
 		db FLAMETHROWER, QUICK_ATTACK, BITE, FIRE_SPIN
 	db -1 ; end
 
