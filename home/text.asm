@@ -643,7 +643,11 @@ PrintDayOfWeek::
 
 TextCommand_CTXT::
 ; decompress and print text
-	push bc ; push starting coords
+	; save starting coords
+	ld a, c
+	ldh [hPlaceStringCoords], a
+	ld a, b
+	ldh [hPlaceStringCoords+1], a
 
 	ld d, 1 ; start with no bits to read a byte right away
 .character_loop
@@ -687,25 +691,26 @@ TextCommand_CTXT::
 	push hl ; push string position
 	push de ; push bit-reading state
 
-	; read starting coords from the stack
-	ld hl, sp+$4
-	ld a, [hli]
-	ld h, [hl]
+	; read saved starting coords
+	ldh a, [hPlaceStringCoords]
 	ld l, a
+	ldh a, [hPlaceStringCoords+1]
+	ld h, a
 
-	; print string de at coord bc, having started from coord hl
 	ld de, wCompressedTextBuffer
 	ld a, [de]
 	push af
-	call PlaceSubstring
-	pop af
 
-	; write starting coords to the stack
-	di
-	add sp, $6
-	push hl
-	add sp, -$4
-	ei
+	; print string de at coord bc, having started from coord hl
+	call PlaceSubstring
+
+	; write saved starting coords
+	ld a, l
+	ldh [hPlaceStringCoords], a
+	ld a, h
+	ldh [hPlaceStringCoords+1], a
+
+	pop af
 
 	pop de ; pop bit-reading state
 	pop hl ; pop string position
@@ -721,8 +726,12 @@ TextCommand_CTXT::
 	dec a
 	jr nz, .character_loop
 
-.done ; return to DoTextUntilTerminator caller
-	pop bc
-.end ; return to DoTextUntilTerminator
-	pop bc
+.done
+	pop bc ; pop DoTextUntilTerminator return address
+.end
+	; restore starting coords
+	ldh a, [hPlaceStringCoords]
+	ld c, a
+	ldh a, [hPlaceStringCoords+1]
+	ld b, a
 	ret
