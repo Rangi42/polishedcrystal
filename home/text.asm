@@ -176,11 +176,12 @@ PlaceNextChar::
 	jr nc, _PlaceSpecialChar
 	cp NGRAMS_START
 	jr nc, _PlaceNgramChar
-	pop bc
-	push bc
-	ld h, d
-	ld l, e
-	call DoTextUntilTerminator
+;	pop bc
+;	push bc
+;	ld h, d
+;	ld l, e
+;	call DoTextUntilTerminator
+	dec de
 	jmp FinishString
 
 SpaceChar::
