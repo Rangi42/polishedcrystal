@@ -153,7 +153,36 @@ LyraPhoneMagnetonText:
 	cont "Elm about their"
 	cont "evolution."
 
-	para "He said it evolves"
+	para "Would you like"
+	line "to hear it?"
+	done
+
+LyraPhoneAncientPowerMonText:
+	text "Oh! That"
+	line ""
+	text_ram wStringBuffer3
+	text "!"
+
+	para "I can tell you"
+	line "something cool"
+	cont "about it!"
+
+	para "Would you like"
+	line "to hear it?"
+	done
+
+LyraPhoneAncientPowerEvoText:
+	text "I heard it evolves"
+	line "when it knows the"
+	cont "move Ancient Power"
+	cont "when it levels up."
+
+	para "I never knew that"
+	line "before, did you?"
+	done
+
+LyraPhoneMagnetonEvoText:
+	text "He said it evolves"
 	line "when it levels up"
 	cont "in a special"
 	cont "magnetic field."
@@ -166,13 +195,4 @@ LyraPhoneMagnetonText:
 	para "You didn't already"
 	line "know that,"
 	cont "did you?"
-
-	done
-
-LyraPhoneEndText:
-	text "Anyway… So nice"
-	line "to catch up with"
-	cont "you, <PLAYER>."
-
-	para "See you later!"
 	done

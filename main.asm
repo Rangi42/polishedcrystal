@@ -332,6 +332,7 @@ INCLUDE "engine/games/slot_machine.asm"
 
 SECTION "Phone Scripts", ROMX
 
+INCLUDE "engine/phone/lyra_phone_scripts.asm"
 INCLUDE "engine/phone/more_phone_scripts.asm"
 INCLUDE "engine/phone/buena_phone_scripts.asm"
 INCLUDE "engine/events/trainer_scripts.asm"
