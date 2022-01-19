@@ -1446,8 +1446,7 @@ endr
 	rrca
 	jr c, .newdesc_a
 	rrca
-	jr c, .newdesc_done
-	jr .newdesc_joypad
+	jr nc, .newdesc_joypad
 
 .newdesc_a
 	call .SwitchPage
