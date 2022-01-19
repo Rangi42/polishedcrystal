@@ -26,6 +26,7 @@ LyraPhoneScript:
 
 .main
 	scall MagnetonEvo
+	scall PoliwhirlEvo
 	scall AncientPowerEvo
 	farwritetext LyraPhoneMainText
 	end
@@ -75,6 +76,22 @@ AncientPowerEvo:
 
 .ancient_power_evolution
 	farwritetext LyraPhoneAncientPowerEvoText
+	promptbutton
+	end
+
+PoliwhirlEvo:
+	checkpoke POLIWHIRL
+	iftrue .poliwhirl
+	end
+
+.poliwhirl
+	farwritetext LyraPhonePoliwhirlText
+	yesorno
+	iftrue .poliwhirl_evolution
+	end
+
+.poliwhirl_evolution
+	farwritetext LyraPhonePoliwhirlEvoText
 	promptbutton
 	end
 

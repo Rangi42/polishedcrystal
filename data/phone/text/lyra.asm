@@ -157,6 +157,17 @@ LyraPhoneMagnetonText:
 	line "to hear it?"
 	done
 
+LyraPhonePoliwhirlText:
+	text "Do you want to"
+	line "evolve your"
+	cont "Poliwhirl?"
+
+	para "Prof. Elm told me"
+	line "me about it."
+
+	para "Wanna hear?"
+	done
+
 LyraPhoneAncientPowerMonText:
 	text "Oh! That"
 	line ""
@@ -195,4 +206,23 @@ LyraPhoneMagnetonEvoText:
 	para "You didn't already"
 	line "know that,"
 	cont "did you?"
+	done
+
+LyraPhonePoliwhirlEvoText:
+	text "He said it evolves"
+	line "in two ways."
+
+	para "First, it will"
+	line "evolve when you"
+	cont "use a Water Stone"
+	cont "on it."
+
+	para "But if it levels"
+	line "up holding a"
+	cont "King's Rock, it"
+	cont "evolves into a"
+	cont "different #mon."
+
+	para "That's pretty cool,"
+	line "don't you think?"
 	done
