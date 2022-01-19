@@ -336,13 +336,13 @@ TrainerCard_PrintTopHalfOfCard:
 	jmp PrintNum
 
 .Top_Headings:
-	db "┌" - 4, "Name/<LNBRK>"
-	db "┌" - 4, "<ID>№.<LNBRK>"
-	db "┌" - 3
+	db     "┌" - 4, "Name/"
+	next1  "┌" - 4, "<ID>№."
+	next1  "┌" - 3
 	ds 11, "┌" - 2
-	db "┌" - 1, "<LNBRK>"
-	db "<LNBRK>"
-	db " Money@"
+	db     "┌" - 1
+	next1  ""
+	next1  " Money@"
 
 TrainerCardSetup_ClearBottomHalf:
 	hlcoord 1, 10
@@ -353,6 +353,9 @@ TrainerCard_Page1_PrintDexCaught_GameTime:
 	hlcoord 2, 10
 	ld de, .Dex_PlayTime_BP
 	rst PlaceString
+
+	hlcoord 18, 16
+	ld [hl], "▶"
 
 	ld hl, wPokedexCaught
 	ld b, wEndPokedexCaught - wPokedexCaught
@@ -400,10 +403,15 @@ TrainerCard_Page1_PrintDexCaught_GameTime:
 	jr .star_loop
 
 .Dex_PlayTime_BP:
-	db   "#dex"
+	ctxt "#dex"
 	next "Play Time"
 	next "Battle Pts"
-	next "          Badges▶@"
+	next "          Badges"
+	; if this used 'text' instead of 'ctxt', the "▶"
+	; could go at the end of this string, instead of
+	; being placed with 5-byte 'hlcoord' and 'ld'
+	DEF ___ct_in_bytes -= 5 - 1
+	done
 
 TrainerCard_Page1_PrintGameTime:
 	hlcoord 11, 12

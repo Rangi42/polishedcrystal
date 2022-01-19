@@ -211,7 +211,9 @@ ENDU
 
 hCrashCode:: db
 
-	ds 7
+	ds 5
+
+hPlaceStringCoords:: dw
 
 hAppendVWFText:: ds 4
 

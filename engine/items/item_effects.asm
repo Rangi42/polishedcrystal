@@ -426,6 +426,10 @@ PokeBallEffect:
 	ld [wWildMon], a
 	ld [wCurPartySpecies], a
 	ld [wTempSpecies], a
+	ld a, [wOTPartyMon1Form]
+	and SPECIESFORM_MASK
+	ld [wCurForm], a
+	ld [wTempForm], a
 	ld a, [wBattleType]
 	cp BATTLETYPE_TUTORIAL
 	jmp z, .FinishTutorial
@@ -1841,7 +1845,7 @@ ApricornBox:
 	db 0 ; default option
 
 .Text
-	text  " Red   Blu"
+	ctxt  " Red   Blu"
 	next1 "   ×     ×"
 	next1 " Ylw   Grn"
 	next1 "   ×     ×"

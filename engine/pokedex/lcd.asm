@@ -289,7 +289,6 @@ StackDexGraphics:
 	ldh [hSCX], a
 	ldh [hSCY], a
 
-	call Pokedex_GetCursorMonInVBK1
 	pop de
 	call _de_
 

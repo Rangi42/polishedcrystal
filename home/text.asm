@@ -128,6 +128,8 @@ _CreateBoxBorders:
 	ret
 
 PrintText::
+; input: hl = string, bc = coords
+; output: hl = advanced string, bc = advanced coords
 	call SetUpTextbox
 PrintTextNoBox::
 	push hl
@@ -153,7 +155,17 @@ SetUpTextbox::
 	pop hl
 	ret
 
+PlaceSubstring:
+; input: de = string, hl = starting coords, bc = current coords
+; output: de = advanced string, hl = starting coords advanced by "<NEXT>"/"<LNBRK>", bc = advanced coords
+	push hl
+	ld h, b
+	ld l, c
+	jr PlaceNextChar
+
 _PlaceString::
+; input: de = string, hl = coords
+; output: de = advanced string, hl = starting coords advanced by "<NEXT>"/"<LNBRK>", bc = advanced coords
 	push hl
 PlaceNextChar::
 	; charmap order: commands, then ngrams, then specials, then literals
@@ -164,7 +176,11 @@ PlaceNextChar::
 	jr nc, _PlaceSpecialChar
 	cp NGRAMS_START
 	jr nc, _PlaceNgramChar
-	dec de
+	pop bc
+	push bc
+	ld h, d
+	ld l, e
+	call DoTextUntilTerminator
 	jmp FinishString
 
 SpaceChar::
@@ -627,10 +643,16 @@ PrintDayOfWeek::
 
 TextCommand_CTXT::
 ; decompress and print text
+	; save starting coords
+	ld a, c
+	ldh [hPlaceStringCoords], a
+	ld a, b
+	ldh [hPlaceStringCoords+1], a
+
 	ld d, 1 ; start with no bits to read a byte right away
 .character_loop
 
-	push bc ; push coords
+	push bc ; push current coords
 
 	xor a ; start at node $00
 .tree_loop
@@ -656,26 +678,38 @@ TextCommand_CTXT::
 
 	; leaf node IDs $ec-$fb correspond to characters $4e-$5d
 	cp $ec
-	jr c, .ok
+	jr c, .got_char
 	sub $ec - $4e
-.ok
+.got_char
 	; write printable string to wCompressedTextBuffer
 	ld [wCompressedTextBuffer], a
 	ld a, "@"
 	ld [wCompressedTextBuffer+1], a
 
-	pop bc ; pop coords
+	pop bc ; pop current coords
 
 	push hl ; push string position
 	push de ; push bit-reading state
 
-	; PlaceString expects de = start of string, hl = coords
+	; read saved starting coords
+	ldh a, [hPlaceStringCoords]
+	ld l, a
+	ldh a, [hPlaceStringCoords+1]
+	ld h, a
+
 	ld de, wCompressedTextBuffer
 	ld a, [de]
 	push af
-	ld h, b
-	ld l, c
-	call _PlaceString ; +2 bytes, -2 cycles over "rst PlaceString"
+
+	; print string de at coord bc, having started from coord hl
+	call PlaceSubstring
+
+	; write saved starting coords
+	ld a, l
+	ldh [hPlaceStringCoords], a
+	ld a, h
+	ldh [hPlaceStringCoords+1], a
+
 	pop af
 
 	pop de ; pop bit-reading state
@@ -684,13 +718,20 @@ TextCommand_CTXT::
 	; check for characters that signal end of compression
 	; (same ones as DoTextUntilTerminator)
 	sub "@"
-	ret z ; return to DoTextUntilTerminator
+	jr z, .end
 	assert "@" + 1 == "<DONE>"
 	dec a
 	jr z, .done
 	assert "<DONE>" + 1 == "<PROMPT>"
 	dec a
 	jr nz, .character_loop
+
 .done
-	pop bc ; pop DoTextUntilTerminator call
+	pop bc ; pop DoTextUntilTerminator return address
+.end
+	; restore starting coords
+	ldh a, [hPlaceStringCoords]
+	ld c, a
+	ldh a, [hPlaceStringCoords+1]
+	ld b, a
 	ret

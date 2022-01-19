@@ -261,7 +261,8 @@ MoveDescriptions::
 	assert_table_length $100
 
 Move00Description:
-	db "?@"
+	text "?"
+	done
 
 KarateChopDescription:
 RazorLeafDescription:
@@ -272,16 +273,18 @@ CrossChopDescription:
 NightSlashDescription:
 ShadowClawDescription:
 StoneEdgeDescription:
-	db   "Has a high criti-"
-	next "cal hit ratio.@"
+	ctxt "Has a high criti-"
+	next "cal hit ratio."
+	done
 
 SwiftDescription:
 FeintAttackDescription:
 DisarmVoiceDescription:
 AerialAceDescription:
 AuraSphereDescription:
-	db   "An attack that"
-	next "never misses.@"
+	ctxt "An attack that"
+	next "never misses."
+	done
 
 AbsorbDescription:
 MegaDrainDescription:
@@ -289,39 +292,47 @@ LeechLifeDescription:
 GigaDrainDescription:
 DrainKissDescription:
 DrainPunchDescription:
-	db   "Steals 1/2 of the"
-	next "damage inflicted.@"
+	ctxt "Steals 1/2 of the"
+	next "damage inflicted."
+	done
 
 DoubleSlapDescription:
-	db   "Repeatedly slaps"
-	next "2-5 times.@"
+	ctxt "Repeatedly slaps"
+	next "2-5 times."
+	done
 
 FuryStrikesDescription:
-	db   "Scratches or jabs"
-	next "2-5 times.@"
+	ctxt "Scratches or jabs"
+	next "2-5 times."
+	done
 
 PinMissileDescription:
-	db   "Fires pins that"
-	next "strike 2-5 times.@"
+	ctxt "Fires pins that"
+	next "strike 2-5 times."
+	done
 
 IcicleSpearDescription:
-	db   "Fires icicles to"
-	next "hit 2-5 times.@"
+	ctxt "Fires icicles to"
+	next "hit 2-5 times."
+	done
 
 RockBlastDescription:
-	db   "Hurls boulders to"
-	next "hit 2-5 times.@"
+	ctxt "Hurls boulders to"
+	next "hit 2-5 times."
+	done
 
 TakeDownDescription:
 DoubleEdgeDescription:
-	db   "A tackle that also"
-	next "hurts the user.@"
+	ctxt "A tackle that also"
+	next "hurts the user."
+	done
 
 FlareBlitzDescription:
 WildChargeDescription:
 BraveBirdDescription:
-	db   "A charge that also"
-	next "hurts the user.@"
+	ctxt "A charge that also"
+	next "hurts the user."
+	done
 
 StompDescription:
 HeadbuttDescription:
@@ -337,23 +348,26 @@ ExtrasensoryDescription:
 DarkPulseDescription:
 AstonishDescription:
 IcicleCrashDescription:
-	db   "An attack that may"
-	next "cause flinching.@"
+	ctxt "An attack that may"
+	next "cause flinching."
+	done
 
 PoisonStingDescription:
 SludgeBombDescription:
 PoisonJabDescription:
 GunkShotDescription:
-	db   "An attack that may"
-	next "poison the foe.@"
+	ctxt "An attack that may"
+	next "poison the foe."
+	done
 
 EmberDescription:
 FlamethrowerDescription:
 FireBlastDescription:
 SacredFireDescription:
 ScaldDescription:
-	db   "An attack that may"
-	next "inflict a burn.@"
+	ctxt "An attack that may"
+	next "inflict a burn."
+	done
 
 BodySlamDescription:
 ThundershockDescription:
@@ -361,80 +375,97 @@ ThunderboltDescription:
 ThunderDescription:
 LickDescription:
 SparkDescription:
-	db   "An attack that may"
-	next "cause paralysis.@"
+	ctxt "An attack that may"
+	next "cause paralysis."
+	done
 
 ZapCannonDescription:
-	db   "An attack that"
-	next "always paralyzes.@"
+	ctxt "An attack that"
+	next "always paralyzes."
+	done
 
 IceBeamDescription:
 BlizzardDescription:
-	db   "An attack that may"
-	next "freeze the foe.@"
+	ctxt "An attack that may"
+	next "freeze the foe."
+	done
 
 PsybeamDescription:
 ConfusionDescription:
 DizzyPunchDescription:
 WaterPulseDescription:
 HurricaneDescription:
-	db   "An attack that may"
-	next "confuse the foe.@"
+	ctxt "An attack that may"
+	next "confuse the foe."
+	done
 
 DynamicpunchDescription:
-	db   "An attack that"
-	next "confuses the foe.@"
+	ctxt "An attack that"
+	next "confuses the foe."
+	done
 
 MetalClawDescription:
-	db   "An attack that may"
-	next "up user's Attack.@"
+	ctxt "An attack that may"
+	next "up user's Attack."
+	done
 
 SteelWingDescription:
-	db   "An attack that may"
-	next "up user's Defense.@"
+	ctxt "An attack that may"
+	next "up user's Defense."
+	done
 
 FlameChargeDescription:
-	db   "An attack that may"
-	next "up user's Speed.@"
+	ctxt "An attack that may"
+	next "up user's Speed."
+	done
 
 AncientpowerDescription:
-	db   "An attack that may"
-	next "raise all stats.@"
+	ctxt "An attack that may"
+	next "raise all stats."
+	done
 
 CloseCombatDescription:
-	db   "Lowers the user's"
-	next "Def and Sp.Def.@"
+	ctxt "Lowers the user's"
+	next "Def and Sp.Def."
+	done
 
 AuroraBeamDescription:
 PlayRoughDescription:
-	db   "An attack that may"
-	next "lower Attack.@"
+	ctxt "An attack that may"
+	next "lower Attack."
+	done
 
 RockSmashDescription:
 if !DEF(FAITHFUL)
-	db   "Removes Reflect"
-	next "and Light Screen.@"
+	ctxt "Removes Reflect"
+	next "and Light Screen."
+	done
 endc
 CrunchDescription:
 IronTailDescription:
-	db   "An attack that may"
-	next "lower Defense.@"
+	ctxt "An attack that may"
+	next "lower Defense."
+	done
 
 BubbleBeamDescription:
-	db   "An attack that may"
-	next "lower Speed.@"
+	ctxt "An attack that may"
+	next "lower Speed."
+	done
 
 BulldozeDescription:
-	db   "A Ground attack"
-	next "that lowers Speed.@"
+	ctxt "A Ground attack"
+	next "that lowers Speed."
+	done
 
 IcyWindDescription:
-	db   "An icy attack that"
-	next "lowers Speed.@"
+	ctxt "An icy attack that"
+	next "lowers Speed."
+	done
 
 MoonblastDescription:
-	db   "An attack that may"
-	next "lower Spcl.Atk.@"
+	ctxt "An attack that may"
+	next "lower Spcl.Atk."
+	done
 
 AcidDescription:
 PsychicMDescription:
@@ -444,620 +475,771 @@ EarthPowerDescription:
 EnergyBallDescription:
 FlashCannonDescription:
 FocusBlastDescription:
-	db   "An attack that may"
-	next "lower Spcl.Def.@"
+	ctxt "An attack that may"
+	next "lower Spcl.Def."
+	done
 
 MudSlapDescription:
-	db   "An attack that"
-	next "lowers accuracy.@"
+	ctxt "An attack that"
+	next "lowers accuracy."
+	done
 
 OctazookaDescription:
-	db   "An attack that may"
-	next "lower accuracy.@"
+	ctxt "An attack that may"
+	next "lower accuracy."
+	done
 
 SonicboomDescription:
-	db   "Always inflicts"
-	next "20HP damage.@"
+	ctxt "Always inflicts"
+	next "20HP damage."
+	done
 
 DragonRageDescription:
-	db   "Always inflicts"
-	next "40HP damage.@"
+	ctxt "Always inflicts"
+	next "40HP damage."
+	done
 
 SeismicTossDescription:
 NightShadeDescription:
-	db   "Damage equals the"
-	next "user's level.@"
+	ctxt "Damage equals the"
+	next "user's level."
+	done
 
 PoisonpowderDescription:
-	db   "A move that may"
-	next "poison the foe.@"
+	ctxt "A move that may"
+	next "poison the foe."
+	done
 
 WillOWispDescription:
-	db   "A move that may"
-	next "burn the foe.@"
+	ctxt "A move that may"
+	next "burn the foe."
+	done
 
 StunSporeDescription:
 ThunderWaveDescription:
 GlareDescription:
-	db   "A move that may"
-	next "paralyze the foe.@"
+	ctxt "A move that may"
+	next "paralyze the foe."
+	done
 
 SingDescription:
 SleepPowderDescription:
 HypnosisDescription:
-	db   "May cause the foe"
-	next "to fall asleep.@"
+	ctxt "May cause the foe"
+	next "to fall asleep."
+	done
 
 SporeDescription:
-	db   "A move that puts"
-	next "the foe to sleep.@"
+	ctxt "A move that puts"
+	next "the foe to sleep."
+	done
 
 ToxicDescription:
-	db   "A Poison move with"
-	next "increasing damage.@"
+	ctxt "A Poison move with"
+	next "increasing damage."
+	done
 
 ConfuseRayDescription:
 SupersonicDescription:
 SweetKissDescription:
-	db   "A move that may"
-	next "confuse the foe.@"
+	ctxt "A move that may"
+	next "confuse the foe."
+	done
 
 DefenseCurlDescription:
-	db   "Raises the user's"
-	next "Defense.@"
+	ctxt "Raises the user's"
+	next "Defense."
+	done
 
 DoubleTeamDescription:
-	db   "Raises the user's"
-	next "evasiveness.@"
+	ctxt "Raises the user's"
+	next "evasiveness."
+	done
 
 FocusEnergyDescription:
-	db   "Raises the criti-"
-	next "cal hit ratio.@"
+	ctxt "Raises the criti-"
+	next "cal hit ratio."
+	done
 
 SwordsDanceDescription:
-	db   "Sharply raises the"
-	next "user's Attack.@"
+	ctxt "Sharply raises the"
+	next "user's Attack."
+	done
 
 BarrierDescription:
-	db   "Sharply raises the"
-	next "user's Defense.@"
+	ctxt "Sharply raises the"
+	next "user's Defense."
+	done
 
 AgilityDescription:
-	db   "Sharply raises the"
-	next "user's Speed.@"
+	ctxt "Sharply raises the"
+	next "user's Speed."
+	done
 
 NastyPlotDescription:
-	db   "Sharply raises the"
-	next "user's Spcl.Atk.@"
+	ctxt "Sharply raises the"
+	next "user's Spcl.Atk."
+	done
 
 AmnesiaDescription:
-	db   "Sharply raises the"
-	next "user's Spcl.Def.@"
+	ctxt "Sharply raises the"
+	next "user's Spcl.Def."
+	done
 
 MinimizeDescription:
-	db   "Sharply raises the"
-	next "user's evasiveness.@"
+	ctxt "Sharply raises the"
+	next "user's evasiveness."
+	done
 
 GrowthDescription:
-	db   "Raises the user's"
-	next "Atk and Spcl.Atk.@"
+	ctxt "Raises the user's"
+	next "Atk and Spcl.Atk."
+	done
 
 BulkUpDescription:
-	db   "Raises the user's"
-	next "Atk and Def.@"
+	ctxt "Raises the user's"
+	next "Atk and Def."
+	done
 
 CalmMindDescription:
-	db   "Raises the user's"
-	next "Sp.Atk and Sp.Def.@"
+	ctxt "Raises the user's"
+	next "Sp.Atk and Sp.Def."
+	done
 
 DragonDanceDescription:
-	db   "Raises the user's"
-	next "Attack and Speed.@"
+	ctxt "Raises the user's"
+	next "Attack and Speed."
+	done
 
 HoneClawsDescription:
-	db   "Raises the user's"
-	next "Atk and accuracy.@"
+	ctxt "Raises the user's"
+	next "Atk and accuracy."
+	done
 
 GrowlDescription:
-	db   "A move that lowers"
-	next "the foe's Attack.@"
+	ctxt "A move that lowers"
+	next "the foe's Attack."
+	done
 
 LeerDescription:
-	db   "A move that lowers"
-	next "the foe's Defense.@"
+	ctxt "A move that lowers"
+	next "the foe's Defense."
+	done
 
 StringShotDescription:
-	db   "A move that lowers"
-	next "the foe's Speed.@"
+	ctxt "A move that lowers"
+	next "the foe's Speed."
+	done
 
 SmokescreenDescription:
 FlashDescription:
-	db   "A move that lowers"
-	next "the foe's accuracy.@"
+	ctxt "A move that lowers"
+	next "the foe's accuracy."
+	done
 
 CharmDescription:
-	db   "Sharply lowers the"
-	next "foe's Attack.@"
+	ctxt "Sharply lowers the"
+	next "foe's Attack."
+	done
 
 ScreechDescription:
-	db   "Sharply lowers the"
-	next "foe's Defense.@"
+	ctxt "Sharply lowers the"
+	next "foe's Defense."
+	done
 
 ScaryFaceDescription:
-	db   "Sharply lowers the"
-	next "foe's Speed.@"
+	ctxt "Sharply lowers the"
+	next "foe's Speed."
+	done
 
 HazeDescription:
-	db   "Eliminates all"
-	next "stat changes.@"
+	ctxt "Eliminates all"
+	next "stat changes."
+	done
 
 SafeguardDescription:
-	db   "Prevents all"
-	next "status problems.@"
+	ctxt "Prevents all"
+	next "status problems."
+	done
 
 ReflectDescription:
-	db   "Raises Defense"
-	next "with a barrier.@"
+	ctxt "Raises Defense"
+	next "with a barrier."
+	done
 
 LightScreenDescription:
-	db   "Ups Spcl.Def with"
-	next "a wall of light.@"
+	ctxt "Ups Spcl.Def with"
+	next "a wall of light."
+	done
 
 RecoverDescription:
-	db   "Restores HP by 1/2"
-	next "the max HP.@"
+	ctxt "Restores HP by 1/2"
+	next "the max HP."
+	done
 
 FreshSnackDescription:
-	db   "Restores HP by 1/2"
-	next "the user's max HP.@"
+	ctxt "Restores HP by 1/2"
+	next "the user's max HP."
+	done
 
 RoostDescription:
-	db   "Lands to restore"
-	next "1/2 the max HP.@"
+	ctxt "Lands to restore"
+	next "1/2 the max HP."
+	done
 
 ThrashDescription:
 PetalDanceDescription:
 OutrageDescription:
-	db   "Works 2-3 turns"
-	next "and confuses user.@"
+	ctxt "Works 2-3 turns"
+	next "and confuses user."
+	done
 
 FireSpinDescription:
 WhirlpoolDescription:
 WrapDescription:
-	db   "Traps the foe for"
-	next "2-5 turns.@"
+	ctxt "Traps the foe for"
+	next "2-5 turns."
+	done
 
 TrickRoomDescription:
-	db   "Slow #mon move"
-	next "first for 5 turns.@"
+	ctxt "Slow #mon move"
+	next "first for 5 turns."
+	done
 
 ExplosionDescription:
-	db   "Very powerful but"
-	next "makes user faint.@"
+	ctxt "Very powerful but"
+	next "makes user faint."
+	done
 
 EndureDescription:
-	db   "Endures any hit"
-	next "with at least 1HP.@"
+	ctxt "Endures any hit"
+	next "with at least 1HP."
+	done
 
 FalseSwipeDescription:
-	db   "Leaves the foe"
-	next "with at least 1HP.@"
+	ctxt "Leaves the foe"
+	next "with at least 1HP."
+	done
 
 SolarBeamDescription:
-	db   "1st turn: Prepare"
-	next "2nd turn: Attack@"
+	ctxt "1st turn: Prepare"
+	next "2nd turn: Attack"
+	done
 
 FlyDescription:
-	db   "1st turn: Fly"
-	next "2nd turn: Attack@"
+	ctxt "1st turn: Fly"
+	next "2nd turn: Attack"
+	done
 
 HyperBeamDescription:
 GigaImpactDescription:
-	db   "1st turn: Attack"
-	next "2nd turn: Rest@"
+	ctxt "1st turn: Attack"
+	next "2nd turn: Rest"
+	done
 
 DigDescription:
-	db   "1st turn: Burrow"
-	next "2nd turn: Attack@"
+	ctxt "1st turn: Burrow"
+	next "2nd turn: Attack"
+	done
 
 AcrobaticsDescription:
-	db   "Damage doubles if"
-	next "user has no item.@"
+	ctxt "Damage doubles if"
+	next "user has no item."
+	done
 
 HexDescription:
-	db   "Damage doubles if"
-	next "foe has status.@"
+	ctxt "Damage doubles if"
+	next "foe has status."
+	done
 
 AvalancheDescription:
-	db   "Damage doubles if"
-	next "user is hit first.@"
+	ctxt "Damage doubles if"
+	next "user is hit first."
+	done
 
 VenoshockDescription:
-	db   "Damage doubles if"
-	next "foe is poisoned.@"
+	ctxt "Damage doubles if"
+	next "foe is poisoned."
+	done
 
 RainDanceDescription:
-	db   "Boosts Water-type"
-	next "moves for 5 turns.@"
+	ctxt "Boosts Water-type"
+	next "moves for 5 turns."
+	done
 
 SunnyDayDescription:
-	db   "Boosts Fire-type"
-	next "moves for 5 turns.@"
+	ctxt "Boosts Fire-type"
+	next "moves for 5 turns."
+	done
 
 SandstormDescription:
 HailDescription:
-	db   "Inflicts damage"
-	next "every turn.@"
+	ctxt "Inflicts damage"
+	next "every turn."
+	done
 
 UTurnDescription:
 VoltSwitchDescription:
-	db   "Switches out after"
-	next "making its attack.@"
+	ctxt "Switches out after"
+	next "making its attack."
+	done
 
 FirePunchDescription:
-	db   "A fiery punch. May"
-	next "cause a burn.@"
+	ctxt "A fiery punch. May"
+	next "cause a burn."
+	done
 
 IcePunchDescription:
-	db   "An icy punch. May"
-	next "cause freezing.@"
+	ctxt "An icy punch. May"
+	next "cause freezing."
+	done
 
 ThunderpunchDescription:
-	db   "An electric punch."
-	next "It may paralyze.@"
+	ctxt "An electric punch."
+	next "It may paralyze."
+	done
 
 CounterDescription:
-	db   "Returns a physical"
-	next "attack double.@"
+	ctxt "Returns a physical"
+	next "attack double."
+	done
 
 MirrorCoatDescription:
-	db   "Returns a special"
-	next "attack double.@"
+	ctxt "Returns a special"
+	next "attack double."
+	done
 
 SpikesDescription:
-	db   "Hurts foes when"
-	next "they switch in.@"
+	ctxt "Hurts foes when"
+	next "they switch in."
+	done
 
 ToxicSpikesDescription:
-	db   "Poisons foes when"
-	next "they switch in.@"
+	ctxt "Poisons foes when"
+	next "they switch in."
+	done
 
 QuickAttackDescription:
-	db   "Lets the user get"
-	next "in the first hit.@"
+	ctxt "Lets the user get"
+	next "in the first hit."
+	done
 
 AquaJetDescription:
-	db   "A speedy lunge."
-	next "Always goes first.@"
+	ctxt "A speedy lunge."
+	next "Always goes first."
+	done
 
 IceShardDescription:
-	db   "Hurls icy shards."
-	next "Always goes first.@"
+	ctxt "Hurls icy shards."
+	next "Always goes first."
+	done
 
 MachPunchDescription:
-	db   "A fast punch that"
-	next "always goes first.@"
+	ctxt "A fast punch that"
+	next "always goes first."
+	done
 
 BulletPunchDescription:
-	db   "A tough punch that"
-	next "always goes first.@"
+	ctxt "A tough punch that"
+	next "always goes first."
+	done
 
 ExtremespeedDescription:
-	db   "A powerful first-"
-	next "strike attack.@"
+	ctxt "A powerful first-"
+	next "strike attack."
+	done
 
 ScratchDescription:
-	db   "Scratches with"
-	next "sharp claws.@"
+	ctxt "Scratches with"
+	next "sharp claws."
+	done
 
 PeckDescription:
-	db   "Jabs the foe with"
-	next "a beak, etc.@"
+	ctxt "Jabs the foe with"
+	next "a beak, etc."
+	done
 
 VineWhipDescription:
-	db   "Whips the foe with"
-	next "slender vines.@"
+	ctxt "Whips the foe with"
+	next "slender vines."
+	done
 
 DragonClawDescription:
-	db   "Slashes the foe"
-	next "with sharp claws.@"
+	ctxt "Slashes the foe"
+	next "with sharp claws."
+	done
 
 CutDescription:
-	db   "Cuts using claws,"
-	next "scythes, etc.@"
+	ctxt "Cuts using claws,"
+	next "scythes, etc."
+	done
 
 XScissorDescription:
-	db   "Slashes foe with"
-	next "scythes or claws.@"
+	ctxt "Slashes foe with"
+	next "scythes or claws."
+	done
 
 GustDescription:
-	db   "Whips up a strong"
-	next "gust of wind.@"
+	ctxt "Whips up a strong"
+	next "gust of wind."
+	done
 
 WingAttackDescription:
-	db   "Strikes the foe"
-	next "with wings.@"
+	ctxt "Strikes the foe"
+	next "with wings."
+	done
 
 TackleDescription:
-	db   "A full-body charge"
-	next "attack.@"
+	ctxt "A full-body charge"
+	next "attack."
+	done
 
 HornAttackDescription:
-	db   "An attack using a"
-	next "horn to jab.@"
+	ctxt "An attack using a"
+	next "horn to jab."
+	done
 
 DoubleKickDescription:
-	db   "A double kicking"
-	next "attack.@"
+	ctxt "A double kicking"
+	next "attack."
+	done
 
 PayDayDescription:
-	db   "Throws coins. Gets"
-	next "them back later.@"
+	ctxt "Throws coins. Gets"
+	next "them back later."
+	done
 
 SuckerPunchDescription:
-	db   "Attacks before the"
-	next "foe does.@"
+	ctxt "Attacks before the"
+	next "foe does."
+	done
 
 DazzlingleamDescription:
-	db   "Dazzles with a"
-	next "powerful flash.@"
+	ctxt "Dazzles with a"
+	next "powerful flash."
+	done
 
 RoarDescription:
-	db   "Scares wild foes"
-	next "to end battle.@"
+	ctxt "Scares wild foes"
+	next "to end battle."
+	done
 
 DisableDescription:
-	db   "Disables the foe's"
-	next "most recent move.@"
+	ctxt "Disables the foe's"
+	next "most recent move."
+	done
 
 WaterGunDescription:
-	db   "Squirts water to"
-	next "attack.@"
+	ctxt "Squirts water to"
+	next "attack."
+	done
 
 SurfDescription:
-	db   "A strong Water-"
-	next "type attack.@"
+	ctxt "A strong Water-"
+	next "type attack."
+	done
 
 HydroPumpDescription:
-	db   "A powerful Water-"
-	next "type attack.@"
+	ctxt "A powerful Water-"
+	next "type attack."
+	done
 
 DrillPeckDescription:
-	db   "A strong, spin-"
-	next "ning-peck attack.@"
+	ctxt "A strong, spin-"
+	next "ning-peck attack."
+	done
 
 StrengthDescription:
-	db   "A powerful physi-"
-	next "cal attack.@"
+	ctxt "A powerful physi-"
+	next "cal attack."
+	done
 
 LeechSeedDescription:
-	db   "Steals HP from the"
-	next "foe on every turn.@"
+	ctxt "Steals HP from the"
+	next "foe on every turn."
+	done
 
 RockThrowDescription:
-	db   "Drops rocks on the"
-	next "enemy.@"
+	ctxt "Drops rocks on the"
+	next "enemy."
+	done
 
 EarthquakeDescription:
-	db   "Tough but useless"
-	next "vs. flying foes.@"
+	ctxt "Tough but useless"
+	next "vs. flying foes."
+	done
 
 RageDescription:
-	db   "Raises Attack if"
-	next "the user is hit.@"
+	ctxt "Raises Attack if"
+	next "the user is hit."
+	done
 
 TeleportDescription:
-	db   "A move for fleeing"
-	next "from battle.@"
+	ctxt "A move for fleeing"
+	next "from battle."
+	done
 
 DragonPulseDescription:
-	db   "Attacks foe with"
-	next "a shock wave.@"
+	ctxt "Attacks foe with"
+	next "a shock wave."
+	done
 
 AquaTailDescription:
-	db   "Swings tail like a"
-	next "wave in a storm.@"
+	ctxt "Swings tail like a"
+	next "wave in a storm."
+	done
 
 MetronomeDescription:
-	db   "Randomly uses any"
-	next "#mon move.@"
+	ctxt "Randomly uses any"
+	next "#mon move."
+	done
 
 SkillSwapDescription:
-	db   "Swaps abilities"
-	next "with the foe.@"
+	ctxt "Swaps abilities"
+	next "with the foe."
+	done
 
 HiJumpKickDescription:
-	db   "May miss and hurt"
-	next "the user.@"
+	ctxt "May miss and hurt"
+	next "the user."
+	done
 
 DreamEaterDescription:
-	db   "Steals HP from a"
-	next "sleeping victim.@"
+	ctxt "Steals HP from a"
+	next "sleeping victim."
+	done
 
 TransformDescription:
-	db   "The user assumes"
-	next "the foe's guise.@"
+	ctxt "The user assumes"
+	next "the foe's guise."
+	done
 
 SplashDescription:
-	db   "Has no effect"
-	next "whatsoever.@"
+	ctxt "Has no effect"
+	next "whatsoever."
+	done
 
 BonemerangDescription:
-	db   "An attack that"
-	next "strikes twice.@"
+	ctxt "An attack that"
+	next "strikes twice."
+	done
 
 RestDescription:
-	db   "Sleep for 2 turns"
-	next "to fully recover.@"
+	ctxt "Sleep for 2 turns"
+	next "to fully recover."
+	done
 
 ConversionDescription:
-	db   "Change user's type"
-	next "to a move's type.@"
+	ctxt "Change user's type"
+	next "to a move's type."
+	done
 
 TriAttackDescription:
-	db   "Fires three kinds"
-	next "of beams at once.@"
+	ctxt "Fires three kinds"
+	next "of beams at once."
+	done
 
 SuperFangDescription:
-	db   "Cuts the foe's HP"
-	next "by 1/2.@"
+	ctxt "Cuts the foe's HP"
+	next "by 1/2."
+	done
 
 SubstituteDescription:
-	db   "Makes a decoy with"
-	next "1/4 user's max HP.@"
+	ctxt "Makes a decoy with"
+	next "1/4 user's max HP."
+	done
 
 StruggleDescription:
-	db   "Used only if all"
-	next "PP are exhausted.@"
+	ctxt "Used only if all"
+	next "PP are exhausted."
+	done
 
 SketchDescription:
-	db   "Copies the foe's"
-	next "move permanently.@"
+	ctxt "Copies the foe's"
+	next "move permanently."
+	done
 
 ThiefDescription:
-	db   "An attack that may"
-	next "steal a held item.@"
+	ctxt "An attack that may"
+	next "steal a held item."
+	done
 
 FacadeDescription:
-	db   "Double damage with"
-	next "Psn, Brn, or Prz.@"
+	ctxt "Double damage with"
+	next "Psn, Brn, or Prz."
+	done
 
 HyperVoiceDescription:
-	db   "Attack the foe"
-	next "with sound waves.@"
+	ctxt "Attack the foe"
+	next "with sound waves."
+	done
 
 CurseDescription:
-	db   "Works differently"
-	next "for Ghost-types.@"
+	ctxt "Works differently"
+	next "for Ghost-types."
+	done
 
 ReversalDescription:
-	db   "Stronger if the"
-	next "user's HP is low.@"
+	ctxt "Stronger if the"
+	next "user's HP is low."
+	done
 
 SeedBombDescription:
-	db   "Slams a barrage of"
-	next "seeds at the foe.@"
+	ctxt "Slams a barrage of"
+	next "seeds at the foe."
+	done
 
 ProtectDescription:
-	db   "Foils attack that"
-	next "turn. It may fail.@"
+	ctxt "Foils attack that"
+	next "turn. It may fail."
+	done
 
 BellyDrumDescription:
-	db   "Sacrifices HP to"
-	next "maximize Attack.@"
+	ctxt "Sacrifices HP to"
+	next "maximize Attack."
+	done
 
 ForesightDescription:
-	db   "Negates foe's eva-"
-	next "sion and immunity.@"
+	ctxt "Negates foe's eva-"
+	next "sion and immunity."
+	done
 
 DestinyBondDescription:
-	db   "The foe faints if"
-	next "the user does.@"
+	ctxt "The foe faints if"
+	next "the user does."
+	done
 
 PerishSongDescription:
-	db   "Both user and foe"
-	next "faint in 3 turns.@"
+	ctxt "Both user and foe"
+	next "faint in 3 turns."
+	done
 
 PowerGemDescription:
-	db   "Attacks with a ray"
-	next "of gem-like light.@"
+	ctxt "Attacks with a ray"
+	next "of gem-like light."
+	done
 
 RolloutDescription:
-	db   "Attacks 5 turns"
-	next "with rising power.@"
+	ctxt "Attacks 5 turns"
+	next "with rising power."
+	done
 
 SwaggerDescription:
-	db   "Causes confusion"
-	next "but raises Attack.@"
+	ctxt "Causes confusion"
+	next "but raises Attack."
+	done
 
 ShellSmashDescription:
-	db   "Lowers defenses,"
-	next "raises offenses.@"
+	ctxt "Lowers defenses,"
+	next "raises offenses."
+	done
 
 BugBiteDescription:
-	db   "Bites the foe and"
-	next "eats a held Berry.@"
+	ctxt "Bites the foe and"
+	next "eats a held Berry."
+	done
 
 MeanLookDescription:
-	db   "Prevents fleeing"
-	next "or switching.@"
+	ctxt "Prevents fleeing"
+	next "or switching."
+	done
 
 AttractDescription:
-	db   "Makes the opposite"
-	next "gender infatuated.@"
+	ctxt "Makes the opposite"
+	next "gender infatuated."
+	done
 
 SleepTalkDescription:
-	db   "Randomly attacks"
-	next "while asleep.@"
+	ctxt "Randomly attacks"
+	next "while asleep."
+	done
 
 HealBellDescription:
-	db   "Eliminates all"
-	next "status problems.@"
+	ctxt "Eliminates all"
+	next "status problems."
+	done
 
 ReturnDescription:
-	db   "An attack that is"
-	next "based on loyalty.@"
+	ctxt "An attack that is"
+	next "based on loyalty."
+	done
 
 PsystrikeDescription:
-	db   "A wave that does"
-	next "physical damage.@"
+	ctxt "A wave that does"
+	next "physical damage."
+	done
 
 PainSplitDescription:
-	db   "Adds user & foe's"
-	next "HPs. Shares total.@"
+	ctxt "Adds user & foe's"
+	next "HPs. Shares total."
+	done
 
 MagnitudeDescription:
-	db   "A Ground attack"
-	next "with random power.@"
+	ctxt "A Ground attack"
+	next "with random power."
+	done
 
 MegahornDescription:
-	db   "A powerful charge"
-	next "attack.@"
+	ctxt "A powerful charge"
+	next "attack."
+	done
 
 PowerWhipDescription:
-	db   "A violent lash"
-	next "attack.@"
+	ctxt "A violent lash"
+	next "attack."
+	done
 
 DragonbreathDescription:
-	db   "A strong breath"
-	next "attack.@"
+	ctxt "A strong breath"
+	next "attack."
+	done
 
 BatonPassDescription:
-	db   "Switches while"
-	next "keeping effects.@"
+	ctxt "Switches while"
+	next "keeping effects."
+	done
 
 EncoreDescription:
-	db   "Makes the foe re-"
-	next "peat 2-6 times.@"
+	ctxt "Makes the foe re-"
+	next "peat 2-6 times."
+	done
 
 PursuitDescription:
-	db   "Heavily strikes"
-	next "switching #mon.@"
+	ctxt "Heavily strikes"
+	next "switching #mon."
+	done
 
 RapidSpinDescription:
-	db   "A high-speed"
-	next "spinning attack.@"
+	ctxt "A high-speed"
+	next "spinning attack."
+	done
 
 HealingLightDescription:
-	db   "Restores HP based"
-	next "on weather.@"
+	ctxt "Restores HP based"
+	next "on weather."
+	done
 
 KnockOffDescription:
-	db   "Slaps down the"
-	next "foe's held item.@"
+	ctxt "Slaps down the"
+	next "foe's held item."
+	done
 
 HiddenPowerDescription:
-	db   "The type varies"
-	next "with the #mon.@"
+	ctxt "The type varies"
+	next "with the #mon."
+	done
 
 FutureSightDescription:
-	db   "An attack that"
-	next "hits on 3rd turn.@"
+	ctxt "An attack that"
+	next "hits on 3rd turn."
+	done
 
 GyroBallDescription:
-	db   "Does more damage"
-	next "at lower speed.@"
+	ctxt "Does more damage"
+	next "at lower speed."
+	done
 
 TrickDescription:
-	db   "Swaps held items"
-	next "with the foe.@"
+	ctxt "Swaps held items"
+	next "with the foe."
+	done
