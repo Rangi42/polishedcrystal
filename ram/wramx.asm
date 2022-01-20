@@ -1575,7 +1575,7 @@ wDexAreaModeCopy:: db ; written to from hPokedexAreaMode on screen reload
 
 	; Used to align wDexAreaMons2. Feel free to add more data here, just don't
 	; let wDexAreaMons2 be misaligned (an assert will tell you if you do).
-	ds $2c
+	ds $2b
 
 wDexAreaMons2:: ds (wDexAreaMonsEnd - wDexAreaMons)
 

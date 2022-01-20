@@ -133,6 +133,8 @@ PrintRadioLine:
 	ld a, [wNumRadioLinesPrinted]
 	cp 2
 	jr nc, .print
+	inc hl
+	ld [hl], "<START>"
 	inc a
 	ld [wNumRadioLinesPrinted], a
 	cp 2
