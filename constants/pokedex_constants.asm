@@ -61,6 +61,7 @@ DEXAREA_FISH EQU const_value ; Areas above are handled by GetFishLocations
 	const DEXAREA_HEADBUTT
 	const DEXAREA_ROCK_SMASH
 	const DEXAREA_CONTEST
+	const DEXAREA_ROAMING
 NUM_DEXAREAS EQU const_value
 
 DEXAREA_UNKNOWN_MASK EQU %10000000
