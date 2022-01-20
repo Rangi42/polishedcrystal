@@ -74,9 +74,9 @@ ___dchr: MACRO
 				DEF ___ct_out_bytes += 1
 			endc
 			setcharmap default
-			if DEF(DEBUG)
-				assert warn, ___ct_out_bytes < ___ct_in_bytes, "ctxt can be text"
-			endc
+;			if DEF(DEBUG)
+;				assert warn, ___ct_out_bytes < ___ct_in_bytes, "ctxt can be text"
+;			endc
 		endc
 	endc
 ENDM
