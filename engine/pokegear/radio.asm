@@ -133,13 +133,11 @@ PrintRadioLine:
 	ld a, [wNumRadioLinesPrinted]
 	cp 2
 	jr nc, .print
-	inc hl
-	ld [hl], "<START>"
 	inc a
 	ld [wNumRadioLinesPrinted], a
 	cp 2
 	jr nz, .print
-	bccoord 1, 16
+	bccoord TEXTBOX_INNERX, TEXTBOX_INNERY + 2
 	call PlaceWholeStringInBoxAtOnce
 	jr .skip
 .print
