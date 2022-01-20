@@ -9,10 +9,20 @@ LyraPhoneDayGreetingText:
 	done
 
 LyraPhoneEveGreetingText:
-LyraPhoneNiteGreetingText:
 	text "Oh, <PLAYER>!"
 	line "Good evening!"
 	done
+
+LyraPhoneNiteGreetingText:
+	text "Oh, <PLAYER>!"
+
+	para "So you like to"
+	line "explore at night"
+	cont "too?"
+
+	para "Look at all the"
+	line "pretty stars…"
+	done 
 
 LyraPhoneMainText:
 	text "You know, my dad"

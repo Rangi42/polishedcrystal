@@ -2,7 +2,7 @@ LyraPhoneScript:
 	checktime 1 << DAY
 	iftrue .daygreet
 	checktime 1 << EVE
-	iftrue .nitegreet
+	iftrue .evegreet
 	checktime 1 << NITE
 	iftrue .nitegreet
 	farwritetext LyraPhoneMornGreetingText
