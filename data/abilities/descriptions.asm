@@ -132,6 +132,7 @@ AbilityDescriptions:
 	dw PranksterDescription
 	dw SandForceDescription
 	dw FurCoatDescription
+	dw BulletproofDescription
 	dw CompetitiveDescription
 	dw MegaLauncherDescription
 	dw ToughClawsDescription
@@ -794,6 +795,11 @@ SandForceDescription:
 FurCoatDescription:
 	ctxt  "Halves damage from"
 	next1 "physical moves."
+	done
+
+BulletproofDescription:
+	ctxt  "Protects from ball"
+	next1 "and bomb moves."
 	done
 
 CompetitiveDescription:

@@ -132,6 +132,7 @@
 	const PRANKSTER
 	const SAND_FORCE
 	const FUR_COAT
+	const BULLETPROOF
 	const COMPETITIVE
 	const MEGA_LAUNCHER
 	const TOUGH_CLAWS
