@@ -1,3 +1,4 @@
+___might_compress_text = 0
 ___compressing_text = 0
 ___ct_bits = 0
 ___ct_length = 0
@@ -16,13 +17,21 @@ prompt EQUS "dtxt \"<PROMPT>\"" ; Prompt the player to end a text box (initiatin
 page   EQUS "dtxt \"@\","       ; Start a new Pokedex page.
 
 dtxt: MACRO
-	if !___compressing_text
+	if !___compressing_text && !___might_compress_text
 		db \#
 	else
 		rept _NARG
-			for x, 1, CHARLEN(\1) + 1
-				___dchr CHARSUB(\1, x)
+			DEF ___str EQUS \1
+			rept $7fff_ffff
+				if !STRLEN("{___str}")
+					break
+				endc
+				DEF ___sub EQUS CHARSUB("{___str}", 1)
+				REDEF ___str EQUS STRSUB("{___str}", STRLEN("{___sub}") + 1)
+				___dchr "{___sub}"
+				PURGE ___sub
 			endr
+			PURGE ___str
 			shift
 		endr
 		if !___compressing_text && ___ct_length > 0
@@ -33,25 +42,41 @@ ENDM
 
 ___dchr: MACRO
 	DEF ___chr = \1
-	if !DEF(___huffman_data_{02X:___chr}) || !DEF(___huffman_length_{02X:___chr})
-		fail "encountered {#02X:___chr} byte while processing"
-	endc
-	DEF ___ct_bits = (___ct_bits << ___huffman_length_{02X:___chr}) | ___huffman_data_{02X:___chr}
-	DEF ___ct_length += ___huffman_length_{02X:___chr}
-	rept 3
-		if ___ct_length >= 8
-			db ___ct_bits >> (___ct_length - 8)
-			DEF ___ct_length -= 8
-			DEF ___ct_bits &= (1 << ___ct_length) - 1
-			DEF ___ct_out_bytes += 1
+	if ___might_compress_text && DEF(___huffman_data_{02X:___chr}) && DEF(___huffman_length_{02X:___chr})
+		if ___huffman_length_{02X:___chr} < 8
+			DEF ___compressing_text = 1
+			DEF ___might_compress_text = 0
+			db "<CTXT>"
+			setcharmap compressing
 		endc
-	endr
-	DEF ___ct_in_bytes += 1
-	if ___chr == "@" || ___chr == "<DONE>" || ___chr == "<PROMPT>"
-		DEF ___compressing_text = 0
-		setcharmap default
-		if DEF(DEBUG)
-			assert warn, ___ct_out_bytes < ___ct_in_bytes, "ctxt can be text"
+	endc
+	if !___compressing_text
+		db ___chr
+	else
+		if !DEF(___huffman_data_{02X:___chr}) || !DEF(___huffman_length_{02X:___chr})
+			fail "encountered {#02X:___chr} byte while processing"
+		endc
+		DEF ___ct_bits = (___ct_bits << ___huffman_length_{02X:___chr}) | ___huffman_data_{02X:___chr}
+		DEF ___ct_length += ___huffman_length_{02X:___chr}
+		rept 3
+			if ___ct_length >= 8
+				db ___ct_bits >> (___ct_length - 8)
+				DEF ___ct_length -= 8
+				DEF ___ct_bits &= (1 << ___ct_length) - 1
+				DEF ___ct_out_bytes += 1
+			endc
+		endr
+		DEF ___ct_in_bytes += 1
+		if ___chr == "@" || ___chr == "<DONE>" || ___chr == "<PROMPT>"
+			DEF ___compressing_text = 0
+			DEF ___might_compress_text = 0
+			if ___ct_length > 0
+				DEF ___ct_out_bytes += 1
+			endc
+			setcharmap default
+			if DEF(DEBUG)
+				assert warn, ___ct_out_bytes < ___ct_in_bytes, "ctxt can be text"
+			endc
 		endc
 	endc
 ENDM
@@ -111,13 +136,12 @@ ENDM
 
 ctxt: MACRO
 	stop_compressing_text
-	db "<CTXT>"
-___compressing_text = 1
+___might_compress_text = 1
+___compressing_text = 0
 ___ct_bits = 0
 ___ct_length = 0
 ___ct_in_bytes = 0
 ___ct_out_bytes = 1 ; count the "<CTXT>"
-	setcharmap compressing
 	dtxt \#
 ENDM
 
