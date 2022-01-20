@@ -17,6 +17,7 @@ BattleText_PlayerPickedUpPayDayMoney:
 
 WildPokemonAppearedText:
 	ctxt "A wild "
+	stop_compressing_text ; fallthrough
 LegendaryAppearedText:
 	text_ram wEnemyMonNickname
 	ctxt ""
@@ -49,6 +50,7 @@ WantToBattleText::
 
 BattleText_WildFled:
 	text "Wild "
+	stop_compressing_text ; fallthrough
 BattleText_LegendaryFled:
 	text_ram wEnemyMonNickname
 	ctxt ""

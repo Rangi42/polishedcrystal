@@ -110,20 +110,15 @@ text_far: MACRO
 ENDM
 
 ctxt: MACRO
-;	stop_compressing_text
-;	db "<CTXT>"
-;___compressing_text = 1
-;___ct_bits = 0
-;___ct_length = 0
-;___ct_in_bytes = 0
-;___ct_out_bytes = 1 ; count the "<CTXT>"
-;	setcharmap compressing
-;	dtxt \#
-	if _NARG == 1 && !STRCMP("\1", "\"\"")
-		text_start
-	else
-		dtxt \#
-	endc
+	stop_compressing_text
+	db "<CTXT>"
+___compressing_text = 1
+___ct_bits = 0
+___ct_length = 0
+___ct_in_bytes = 0
+___ct_out_bytes = 1 ; count the "<CTXT>"
+	setcharmap compressing
+	dtxt \#
 ENDM
 
 text_end: MACRO
