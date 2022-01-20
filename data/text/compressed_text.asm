@@ -17,9 +17,9 @@ _parent_node: MACRO
 		if $7f <= \1 && \1 <= $eb
 			; characters $7f-$eb correspond to leaf nodes $7f-$eb
 			db \1
-		elif $4e <= \1 && \1 <= $5d
-			; characters $4e-$5d correspond to leaf nodes $ec-$fb
-			db \1 + $ec - $4e
+		elif $4d <= \1 && \1 <= $5c
+			; characters $4d-$5c correspond to leaf nodes $ec-$fb
+			db \1 + $ec - $4d
 		else
 			; other characters are unmapped; leaf nodes $fd-$ff are unused
 			fail "unmapped leaf node character \1"
