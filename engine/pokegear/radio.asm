@@ -137,7 +137,7 @@ PrintRadioLine:
 	ld [wNumRadioLinesPrinted], a
 	cp 2
 	jr nz, .print
-	bccoord 1, 16
+	bccoord TEXTBOX_INNERX, TEXTBOX_INNERY + 2
 	call PlaceWholeStringInBoxAtOnce
 	jr .skip
 .print
