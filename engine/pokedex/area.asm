@@ -559,7 +559,7 @@ Pokedex_GetMonLocations:
 	call DexCompareWildForm
 	jr nz, .next
 	push hl
-	ld e, wRoamMon1MapGroup - wRoamMon1Form
+	ld de, wRoamMon1MapGroup - wRoamMon1Form
 	add hl, de
 	ld a, [hli]
 	ld e, [hl]
