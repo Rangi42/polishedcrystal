@@ -65,9 +65,7 @@ wNextRadioLine:: db
 wRadioTextDelay:: db
 wNumRadioLinesPrinted:: db
 wOaksPkmnTalkSegmentCounter:: db
-	ds 5
 wRadioText:: ds 2 * SCREEN_WIDTH
-wRadioTextEnd::
 
 NEXTU
 ; movement buffer data
