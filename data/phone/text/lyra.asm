@@ -228,6 +228,16 @@ LyraPhoneAncientPowerMonText:
 	line "to hear it?"
 	done
 
+LyraPhoneHappinessMonText:
+	text "Oh! You have a"
+	line ""
+	text_ram wStringBuffer3
+	text "!"
+
+	para "I know how they"
+	line "evolve, do you?"
+	done
+
 LyraPhoneAncientPowerEvoText:
 	text "I heard it evolves"
 	line "when it knows the"
@@ -252,6 +262,18 @@ LyraPhoneMagnetonEvoText:
 	para "You didn't already"
 	line "know that,"
 	cont "did you?"
+	done
+
+LyraPhoneHappinessEvoText:
+	text "It will evolve"
+	line "if it levels up"
+	cont "with high friend-"
+	cont "ship."
+
+	para "So, take good care"
+	line "of "
+	text_ram wStringBuffer3
+	text "!"
 	done
 
 LyraPhonePoliwhirlEvoText:

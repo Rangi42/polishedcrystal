@@ -30,6 +30,7 @@ LyraPhoneScript:
 	scall GloomEvo
 	scall SlowpokeEvo
 	scall EeveeEvo
+	scall HappinessEvo
 	scall AncientPowerEvo
 	farwritetext LyraPhoneMainText
 	end
@@ -127,6 +128,50 @@ AncientPowerEvo:
 
 .ancient_power_evolution
 	farwritetext LyraPhoneAncientPowerEvoText
+	promptbutton
+	end
+
+HappinessEvo:
+	checkpoke PICHU
+	iftrue .pichu
+	checkpoke MUNCHLAX
+	iftrue .munchlax
+	checkpoke GOLBAT
+	iftrue .golbat
+	checkpoke CHANSEY
+	iftrue .chansey
+	checkpoke TOGEPI
+	iftrue .togepi
+	end
+
+.pichu
+	getmonname PICHU, STRING_BUFFER_3
+	sjump .happiness
+
+.munchlax
+	getmonname MUNCHLAX, STRING_BUFFER_3
+	sjump .happiness
+
+.golbat
+	getmonname GOLBAT, STRING_BUFFER_3
+	sjump .happiness
+
+.chansey
+	getmonname CHANSEY, STRING_BUFFER_3
+	sjump .happiness
+
+.togepi
+	getmonname TOGEPI, STRING_BUFFER_3
+	iftrue .happiness
+
+.happiness
+	farwritetext LyraPhoneHappinessMonText
+	yesorno
+	iffalse .happiness_evolution
+	end
+
+.happiness_evolution
+	farwritetext LyraPhoneHappinessEvoText
 	promptbutton
 	end
 
