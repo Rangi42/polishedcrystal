@@ -191,6 +191,18 @@ LyraPhoneSlowpokeText:
 	line "to know it too?"
 	done
 
+LyraPhoneEeveeText:
+	text "Both my grand-"
+	line "parents told me"
+	cont "all about Eevee."
+
+	para "It has so many"
+	line "ways to evolve!"
+
+	para "If you'd like,"
+	line "I can tell you?"
+	done
+
 LyraPhonePoliwhirlText:
 	text "Do you want to"
 	line "evolve your"
@@ -295,4 +307,41 @@ LyraPhoneSlowpokeEvoText:
 
 	para "Hope that info"
 	line "helps you!"
+	done
+
+LyraPhoneEeveeEvoText:
+	text "You better take a"
+	line "seat for all this!"
+
+	para "You can use many"
+	line "of the evolution"
+	cont "stones on Eevee."
+
+	para "More specifically,"
+	line "Thunder, Water,"
+	cont "Fire and Shiny"
+	cont "Stones."
+
+	para "It can also evolve"
+	line "if it levels up"
+	cont "in Ilex Forest or"
+	cont "Ice Path."
+
+	para "Lastly, Eevee will"
+	line "evolve if it"
+	cont "levels up with"
+	cont "high friendship."
+
+	para "It'll even evolve"
+	line "into a different"
+	cont "form depending on"
+	cont "the time of day!"
+
+	para "Wow, it feels"
+	line "like I just gave"
+	cont "you a lecture."
+
+	para "I hope you"
+	line "learned something"
+	cont "new though!"
 	done

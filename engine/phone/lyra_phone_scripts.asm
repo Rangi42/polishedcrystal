@@ -29,6 +29,7 @@ LyraPhoneScript:
 	scall PoliwhirlEvo
 	scall GloomEvo
 	scall SlowpokeEvo
+	scall EeveeEvo
 	scall AncientPowerEvo
 	farwritetext LyraPhoneMainText
 	end
@@ -79,7 +80,23 @@ SlowpokeEvo:
 .slowpoke_evolution
 	farwritetext LyraPhoneSlowpokeEvoText
 	promptbutton
-	end	
+	end
+
+EeveeEvo:
+	checkpoke EEVEE
+	iftrue .eevee
+	end
+
+.eevee
+	farwritetext LyraPhoneEeveeText
+	yesorno
+	iftrue .eevee_evolution
+	end
+
+.eevee_evolution
+	farwritetext LyraPhoneEeveeEvoText
+	promptbutton
+	end
 
 AncientPowerEvo:
 	checkpoke PILOSWINE
