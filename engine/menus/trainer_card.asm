@@ -407,7 +407,7 @@ TrainerCard_Page1_PrintDexCaught_GameTime:
 	jr .star_loop
 
 .Dex_PlayTime_BP:
-	ctxt "#dex"
+	text "#dex"
 	next "Play Time"
 	next "Battle Pts"
 	next "          Badges"

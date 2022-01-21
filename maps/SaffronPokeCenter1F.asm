@@ -23,7 +23,7 @@ PokemonJournalSabrinaScript:
 	setflag ENGINE_READ_SABRINA_JOURNAL
 	jumpthistext
 
-	ctxt "#mon Journal"
+	text "#mon Journal"
 
 	para "Special Feature:"
 	line "Leader Sabrina!"
@@ -42,7 +42,7 @@ SaffronPokeCenter1FFisherScript:
 	iftrue_jumptextfaceplayer .Text2
 	jumpthistextfaceplayer
 
-	ctxt "I just happened to"
+	text "I just happened to"
 	line "come through Rock"
 
 	para "Tunnel. There was"
@@ -51,7 +51,7 @@ SaffronPokeCenter1FFisherScript:
 	done
 
 .Text2:
-	ctxt "Caves collapse"
+	text "Caves collapse"
 	line "easily."
 
 	para "Several caves have"
@@ -67,7 +67,7 @@ SaffronPokeCenter1FFisherScript:
 	done
 
 SaffronPokeCenter1FTeacherText:
-	ctxt "What are Johto's"
+	text "What are Johto's"
 	line "#mon Centers"
 	cont "like?"
 
@@ -83,7 +83,7 @@ SaffronPokeCenter1FTeacherText:
 	done
 
 SaffronPokeCenter1FYoungsterText:
-	ctxt "Silph Co.'s Head"
+	text "Silph Co.'s Head"
 	line "Office and the"
 
 	para "Magnet Train Sta-"

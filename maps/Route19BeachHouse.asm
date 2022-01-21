@@ -50,7 +50,7 @@ Route19BeachHouseVictorScript:
 	jumpopenedtext .NoBattleText
 
 .GreetingText:
-	ctxt "Hey there, friend!"
+	text "Hey there, friend!"
 	line "The name's Victor."
 
 	para "I love to Surf,"
@@ -59,7 +59,7 @@ Route19BeachHouseVictorScript:
 	done
 
 .ChallengeText:
-	ctxt "Whoa!"
+	text "Whoa!"
 
 	para "Your Pikachu knows"
 	line "how to Surf! So,"
@@ -75,18 +75,18 @@ Route19BeachHouseVictorScript:
 	done
 
 .SeenText:
-	ctxt "The sea unites"
+	text "The sea unites"
 	line "all in surfdom!"
 	cont "Let's go!"
 	done
 
 .BeatenText:
-	ctxt "I knew you could"
+	text "I knew you could"
 	line "do it!"
 	done
 
 .AfterText:
-	ctxt "I hear some Pika-"
+	text "I hear some Pika-"
 	line "chu in Johto"
 
 	para "taught themselves"
@@ -104,7 +104,7 @@ Route19BeachHouseVictorScript:
 	done
 
 .NoPikachuText:
-	ctxt "You can do it,"
+	text "You can do it,"
 	line "too!"
 
 	para "Go out there and"
@@ -116,7 +116,7 @@ Route19BeachHouseVictorScript:
 	done
 
 .NoBattleText:
-	ctxt "Shucks. Come Surf"
+	text "Shucks. Come Surf"
 	line "anytime, friend!"
 	done
 
@@ -126,5 +126,5 @@ Route19BeachHouseSurfingPikachuScript:
 	end
 
 .Text:
-	ctxt "Puka: Pi-kaa!"
+	text "Puka: Pi-kaa!"
 	done

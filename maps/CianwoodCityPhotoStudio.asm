@@ -49,7 +49,7 @@ CianwoodPhotoStudioFishingGuruScript:
 	waitbutton
 	jumpthisopenedtext
 
-	ctxt "Come again, OK?"
+	text "Come again, OK?"
 	done
 
 .NoPicture:
@@ -59,7 +59,7 @@ CianwoodPhotoStudioFishingGuruScript:
 	jumpopenedtext PhotoStudioEggPictureText
 
 PhotoStudioGreetingText:
-	ctxt "I am Cameron"
+	text "I am Cameron"
 	line "the Photographer."
 
 	para "You have magnifi-"
@@ -71,7 +71,7 @@ PhotoStudioGreetingText:
 	done
 
 PhotoStudioWhichMonText:
-	ctxt "OK! Big smile now!"
+	text "OK! Big smile now!"
 
 	para "Which #mon"
 	line "should I photo-"
@@ -79,21 +79,21 @@ PhotoStudioWhichMonText:
 	done
 
 PhotoStudioHoldStillText:
-	ctxt "All righty. Hold"
+	text "All righty. Hold"
 	line "still for a bit."
 	done
 
 PhotoStudioPrestoText:
-	ctxt "Presto! All done."
+	text "Presto! All done."
 
 	para "Your "
 	text_ram wStringBuffer3
-	ctxt ""
+	text ""
 	line "looks happier!"
 	done
 
 PhotoStudioAlreadyDoneText:
-	ctxt "I've already taken"
+	text "I've already taken"
 	line "a photo for you"
 	cont "today."
 
@@ -102,7 +102,7 @@ PhotoStudioAlreadyDoneText:
 	done
 
 PhotoStudioRefusedText:
-	ctxt "Oh, that's too"
+	text "Oh, that's too"
 	line "bad. I thought it"
 
 	para "would be a great"
@@ -110,11 +110,11 @@ PhotoStudioRefusedText:
 	done
 
 PhotoStudioNoPictureText:
-	ctxt "Oh, no picture?"
+	text "Oh, no picture?"
 	line "Come again, OK?"
 	done
 
 PhotoStudioEggPictureText:
-	ctxt "An Egg? My talent"
+	text "An Egg? My talent"
 	line "is worth more…"
 	done

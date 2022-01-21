@@ -299,7 +299,7 @@ Route36NationalParkGatePlayerWaitWithContestantsMovement:
 	step_end
 
 Route36NationalParkGateOfficer1WaitHereForAnnouncementText:
-	ctxt "OK. Please wait"
+	text "OK. Please wait"
 	line "here for the"
 
 	para "announcement of"
@@ -307,19 +307,19 @@ Route36NationalParkGateOfficer1WaitHereForAnnouncementText:
 	done
 
 Route36NationalParkGateOfficer1SomeMonOnlySeenInParkText:
-	ctxt "Some #mon can"
+	text "Some #mon can"
 	line "only be seen in"
 	cont "the Park."
 	done
 
 BugCatchingContestant1BText:
-	ctxt "Don: Wow, you beat"
+	text "Don: Wow, you beat"
 	line "me. You're pretty"
 	cont "good."
 	done
 
 BugCatchingContestant1BStillCompetingText:
-	ctxt "Don: Luck plays a"
+	text "Don: Luck plays a"
 	line "big part in this."
 
 	para "You never know"
@@ -328,24 +328,24 @@ BugCatchingContestant1BStillCompetingText:
 	done
 
 BugCatchingContestant2BText:
-	ctxt "Lou: I envy you."
+	text "Lou: I envy you."
 	line "I just couldn't"
 	cont "do it this time."
 	done
 
 BugCatchingContestant2BStillCompetingText:
-	ctxt "Lou: Maybe you win"
+	text "Lou: Maybe you win"
 	line "with big #mon?"
 	done
 
 BugCatchingContestant3BText:
-	ctxt "Nick: Well done!"
+	text "Nick: Well done!"
 	line "I'm going to raise"
 	cont "my #mon better."
 	done
 
 BugCatchingContestant3BStillCompetingText:
-	ctxt "Nick: Maybe you"
+	text "Nick: Maybe you"
 	line "get a higher score"
 
 	para "for a #mon of"
@@ -353,13 +353,13 @@ BugCatchingContestant3BStillCompetingText:
 	done
 
 BugCatchingContestant4BText:
-	ctxt "William: You're"
+	text "William: You're"
 	line "the winner? What"
 	cont "did you catch?"
 	done
 
 BugCatchingContestant4BStillCompetingText:
-	ctxt "William: Well, I'm"
+	text "William: Well, I'm"
 	line "satisfied because"
 
 	para "I caught a #mon"
@@ -367,25 +367,25 @@ BugCatchingContestant4BStillCompetingText:
 	done
 
 BugCatchingContestant5BText:
-	ctxt "Benny: Congrats!"
+	text "Benny: Congrats!"
 	line "You have earned my"
 	cont "respect!"
 	done
 
 BugCatchingContestant5BStillCompetingText:
-	ctxt "Benny: I caught a"
+	text "Benny: I caught a"
 	line "Scyther before,"
 	cont "but I didn't win."
 	done
 
 BugCatchingContestant6BText:
-	ctxt "Barry: That #-"
+	text "Barry: That #-"
 	line "mon you caught…"
 	cont "it's awesome!"
 	done
 
 BugCatchingContestant6BStillCompetingText:
-	ctxt "Barry: It's easier"
+	text "Barry: It's easier"
 	line "to win if you get"
 
 	para "a high-level bug"
@@ -397,7 +397,7 @@ BugCatchingContestant6BStillCompetingText:
 	done
 
 BugCatchingContestant7BText:
-	ctxt "Cindy: You won?"
+	text "Cindy: You won?"
 	line "That's great!"
 
 	para "Do you feel like"
@@ -406,35 +406,35 @@ BugCatchingContestant7BText:
 	done
 
 BugCatchingContestant7BStillCompetingText:
-	ctxt "Cindy: I really"
+	text "Cindy: I really"
 	line "love bug #mon!"
 	done
 
 BugCatchingContestant8BText:
-	ctxt "Josh: I… I can't"
+	text "Josh: I… I can't"
 	line "believe I lost at"
 	cont "bug-catching…"
 	done
 
 BugCatchingContestant8BStillCompetingText:
-	ctxt "Josh: I heard that"
+	text "Josh: I heard that"
 	line "somebody won with"
 	cont "a Caterpie!"
 	done
 
 BugCatchingContestant9BText:
-	ctxt "Johnny: Next time,"
+	text "Johnny: Next time,"
 	line "I'm going to win."
 	done
 
 BugCatchingContestant9BStillCompetingText:
-	ctxt "Johnny: Darn."
+	text "Johnny: Darn."
 	line "I thought I would"
 	cont "score higher…"
 	done
 
 BugCatchingContestant10BText:
-	ctxt "Kipp: Could you"
+	text "Kipp: Could you"
 	line "give me some tips?"
 
 	para "I want to study"
@@ -442,7 +442,7 @@ BugCatchingContestant10BText:
 	done
 
 BugCatchingContestant10BStillCompetingText:
-	ctxt "Kipp: I study a"
+	text "Kipp: I study a"
 	line "lot, but that's"
 
 	para "not good enough to"
@@ -450,7 +450,7 @@ BugCatchingContestant10BStillCompetingText:
 	done
 
 Route36NationalParkGateOfficer1WellHoldPrizeText:
-	ctxt "Uh-oh… Your Bag"
+	text "Uh-oh… Your Bag"
 	line "is full."
 
 	para "We'll hold on to"
@@ -462,7 +462,7 @@ Route36NationalParkGateOfficer1WellHoldPrizeText:
 	done
 
 Route36NationalParkGateOfficer1HeresThePrizeText:
-	ctxt "<PLAYER>?"
+	text "<PLAYER>?"
 
 	para "Here's the prize"
 	line "we were holding"

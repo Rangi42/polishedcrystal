@@ -1,5 +1,5 @@
 BillPhoneMornGreetingText:
-	ctxt "Good morning!"
+	text "Good morning!"
 
 	para "This is the #-"
 	line "mon Storage System"
@@ -9,7 +9,7 @@ BillPhoneMornGreetingText:
 	done
 
 BillPhoneDayGreetingText:
-	ctxt "Good day!"
+	text "Good day!"
 
 	para "This is the #-"
 	line "mon Storage System"
@@ -19,7 +19,7 @@ BillPhoneDayGreetingText:
 	done
 
 BillPhoneNiteGreetingText:
-	ctxt "Good evening!"
+	text "Good evening!"
 
 	para "This is the #-"
 	line "mon Storage System"
@@ -29,7 +29,7 @@ BillPhoneNiteGreetingText:
 	done
 
 BillPhoneGenericText:
-	ctxt "Who's calling?"
+	text "Who's calling?"
 
 	para "<PLAYER>, is it?"
 	line "Hang on a sec…"
@@ -39,7 +39,7 @@ BillPhoneGenericText:
 	done
 
 BillPhoneNotFullText:
-	ctxt "Thanks for"
+	text "Thanks for"
 	line "waiting!"
 
 	para "<PLAYER>, your"
@@ -51,7 +51,7 @@ BillPhoneNotFullText:
 	done
 
 BillPhoneNearlyFullText:
-	ctxt "Thanks for"
+	text "Thanks for"
 	line "waiting!"
 
 	para "<PLAYER>, your"
@@ -63,7 +63,7 @@ BillPhoneNearlyFullText:
 	done
 
 BillPhoneFullText:
-	ctxt "Thanks for"
+	text "Thanks for"
 	line "waiting!"
 
 	para "<PLAYER>, your"
@@ -72,7 +72,7 @@ BillPhoneFullText:
 	prompt
 
 BillPhoneNewlyFullText:
-	ctxt "Hi, <PLAYER>?"
+	text "Hi, <PLAYER>?"
 	line "It's me, Bill!"
 
 	para "Thanks for using"
@@ -84,7 +84,7 @@ BillPhoneNewlyFullText:
 	prompt
 
 BillWholePCFullText:
-	ctxt "Wow, you filled"
+	text "Wow, you filled"
 	line "a whole server."
 
 	para "You'll have to"
@@ -93,7 +93,7 @@ BillWholePCFullText:
 	done
 
 BillFlushBySaving:
-	ctxt "It needs to run"
+	text "It needs to run"
 	line "garbage collection"
 	cont "before more use."
 
@@ -106,13 +106,13 @@ BillFlushBySaving:
 	done
 
 BillThankYouText:
-	ctxt "Thank you for"
+	text "Thank you for"
 	line "using the PC"
 	cont "Storage System!"
 	done
 
 BillCallMeToSwitch:
-	ctxt "OK, I'll leave it"
+	text "OK, I'll leave it"
 	line "alone."
 
 	para "Save the game if"
@@ -121,7 +121,7 @@ BillCallMeToSwitch:
 	prompt
 
 BillPhoneSecondBadgeText:
-	ctxt "Hey there,"
+	text "Hey there,"
 	line "trainers!"
 	cont "It's me, Bill!"
 

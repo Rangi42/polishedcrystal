@@ -73,7 +73,7 @@ OfficermKeithScript:
 GenericTrainerBugManiacLou:
 	generictrainer BUG_MANIAC, LOU, EVENT_BEAT_BUG_MANIAC_LOU, BugManiacLouSeenText, BugManiacLouBeatenText
 
-	ctxt "I used to be just"
+	text "I used to be just"
 	line "a Bug Catcher,"
 
 	para "but I evolved into"
@@ -83,7 +83,7 @@ GenericTrainerBugManiacLou:
 GenericTrainerSchoolgirlEliza:
 	generictrainer SCHOOLGIRL, ELIZA, EVENT_BEAT_SCHOOLGIRL_ELIZA, SchoolgirlElizaSeenText, SchoolgirlElizaBeatenText
 
-	ctxt "I don't care!"
+	text "I don't care!"
 	line "I still love"
 	cont "Oddish."
 	done
@@ -91,7 +91,7 @@ GenericTrainerSchoolgirlEliza:
 GenericTrainerSchoolboyJohnny:
 	generictrainer SCHOOLBOY, JOHNNY, EVENT_BEAT_SCHOOLBOY_JOHNNY, SchoolboyJohnnySeenText, SchoolboyJohnnyBeatenText
 
-	ctxt "Yeah, well, I"
+	text "Yeah, well, I"
 	line "still prefer"
 	cont "Bellsprout."
 	done
@@ -213,7 +213,7 @@ UnknownScript_0x5c114:
 GenericTrainerPokefanmWilliam:
 	generictrainer POKEFANM, WILLIAM, EVENT_BEAT_POKEFANM_WILLIAM, PokefanmWilliamSeenText, PokefanmWilliamBeatenText
 
-	ctxt "I lost the battle,"
+	text "I lost the battle,"
 	line "but my #mon win"
 
 	para "the prize for"
@@ -290,13 +290,13 @@ UnknownScript_0x5c1ab:
 GenericTrainerLassKrise:
 	generictrainer LASS, KRISE, EVENT_BEAT_LASS_KRISE, LassKriseSeenText, LassKriseBeatenText
 
-	ctxt "I thought you were"
+	text "I thought you were"
 	line "staring at me"
 	cont "because I'm cute!"
 	done
 
 NationalParkLassText:
-	ctxt "Look! Check out my"
+	text "Look! Check out my"
 	line "bag!"
 
 	para "I pinned my badges"
@@ -304,13 +304,13 @@ NationalParkLassText:
 	done
 
 NationalParkPokefanFText:
-	ctxt "This is Mail I got"
+	text "This is Mail I got"
 	line "from my daughter."
 	cont "It cheers me up."
 	done
 
 NationalParkTeacher1Text:
-	ctxt "Pay attention,"
+	text "Pay attention,"
 	line "please!"
 
 	para "…Oops, I have to"
@@ -330,7 +330,7 @@ NationalParkTeacher1Text:
 	done
 
 NationalParkTeacher1Text_GotQuickClaw:
-	ctxt "Let a #mon hold"
+	text "Let a #mon hold"
 	line "that Quick Claw."
 
 	para "Sometimes it will"
@@ -339,29 +339,29 @@ NationalParkTeacher1Text_GotQuickClaw:
 	done
 
 SchoolgirlElizaSeenText:
-	ctxt "Oddish is just"
+	text "Oddish is just"
 	line "the cutest!"
 
 	para "Don't you agree?"
 	done
 
 SchoolgirlElizaBeatenText:
-	ctxt "My poor Oddish…"
+	text "My poor Oddish…"
 	done
 
 SchoolboyJohnnySeenText:
-	ctxt "Bellsprout is just"
+	text "Bellsprout is just"
 	line "the coolest!"
 
 	para "Aren't I right?"
 	done
 
 SchoolboyJohnnyBeatenText:
-	ctxt "Bellsprout, no…"
+	text "Bellsprout, no…"
 	done
 
 NationalParkTeacher2Text:
-	ctxt "Those kids should"
+	text "Those kids should"
 	line "battle inside the"
 	cont "grass."
 
@@ -370,11 +370,11 @@ NationalParkTeacher2Text:
 	done
 
 NationalParkPersianText:
-	ctxt "Persian: Fufushaa!"
+	text "Persian: Fufushaa!"
 	done
 
 NationalParkGameboyKidText:
-	ctxt "I'm studying my"
+	text "I'm studying my"
 	line "#dex."
 
 	para "I want to collect"
@@ -385,7 +385,7 @@ NationalParkGameboyKidText:
 	done
 
 SchoolboyJack1SeenText:
-	ctxt "The world of"
+	text "The world of"
 	line "#mon is deep."
 
 	para "There are still"
@@ -397,11 +397,11 @@ SchoolboyJack1SeenText:
 	done
 
 SchoolboyJack1BeatenText:
-	ctxt "Wha-wha-what?"
+	text "Wha-wha-what?"
 	done
 
 SchoolboyJackTradeMonText:
-	ctxt "There is a lot"
+	text "There is a lot"
 	line "to learn."
 
 	para "For example…"
@@ -414,7 +414,7 @@ SchoolboyJackTradeMonText:
 	done
 
 PokefanfBeverly1SeenText:
-	ctxt "My #mon are"
+	text "My #mon are"
 	line "simply darling."
 
 	para "Let me tell you"
@@ -423,18 +423,18 @@ PokefanfBeverly1SeenText:
 	done
 
 PokefanfBeverly1BeatenText:
-	ctxt "I can beat you in"
+	text "I can beat you in"
 	line "pride, but…"
 	done
 
 PokefanBeverlyCuteMonText:
-	ctxt "I must say, your"
+	text "I must say, your"
 	line "#mon are quite"
 	cont "cute, too."
 	done
 
 PokefanmWilliamSeenText:
-	ctxt "We adore our #-"
+	text "We adore our #-"
 	line "mon, even if they"
 	cont "dislike us."
 
@@ -443,11 +443,11 @@ PokefanmWilliamSeenText:
 	done
 
 PokefanmWilliamBeatenText:
-	ctxt "M-my #mon!"
+	text "M-my #mon!"
 	done
 
 PokefanFBeverlyMarillFriendText:
-	ctxt "My friend keeps a"
+	text "My friend keeps a"
 	line "Marill!"
 
 	para "I find them very"
@@ -458,39 +458,39 @@ PokefanFBeverlyMarillFriendText:
 	done
 
 LassKriseSeenText:
-	ctxt "Hello? Why are you"
+	text "Hello? Why are you"
 	line "staring at me?"
 
 	para "Oh, a battle?"
 	done
 
-LassKriseBeatenText: ; ctxt > text
+LassKriseBeatenText: ; text > text
 	text "…Hmmm…"
 	done
 
 BugManiacLouSeenText:
-	ctxt "Nobody can beat"
+	text "Nobody can beat"
 	line "my passion for"
 	cont "bug #mon!"
 	done
 
 BugManiacLouBeatenText:
-	ctxt "How can this be?!"
+	text "How can this be?!"
 	done
 
 OfficermKeithSeenText:
-	ctxt "Halt! What are"
+	text "Halt! What are"
 	line "you doing out"
 	cont "this late?"
 	done
 
 OfficermKeithWinText:
-	ctxt "You know how to"
+	text "You know how to"
 	line "defend yourself!"
 	done
 
 OfficermKeithAfterText:
-	ctxt "The park stays"
+	text "The park stays"
 	line "open at night,"
 
 	para "because Officers"
@@ -499,7 +499,7 @@ OfficermKeithAfterText:
 	done
 
 OfficermKeithDaytimeText:
-	ctxt "Enjoying the"
+	text "Enjoying the"
 	line "park, are you?"
 
 	para "Always take a"
@@ -510,12 +510,12 @@ OfficermKeithDaytimeText:
 	done
 
 NationalParkRelaxationSquareText:
-	ctxt "Relaxation Square"
+	text "Relaxation Square"
 	line "National Park"
 	done
 
 NationalParkBattleNoticeText:
-	ctxt "What is this"
+	text "What is this"
 	line "notice?"
 
 	para "Please battle only"
@@ -526,7 +526,7 @@ NationalParkBattleNoticeText:
 	done
 
 NationalParkTrainerTipsText:
-	ctxt "Trainer Tips"
+	text "Trainer Tips"
 
 	para "#mon become"
 	line "happier from"

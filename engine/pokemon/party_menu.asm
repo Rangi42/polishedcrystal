@@ -169,7 +169,7 @@ BT_SwapRentals:
 	farjp BT_SetRentalOT
 
 .MustSwapBetweenTeams:
-	ctxt "You must trade <PK><MN>"
+	text "You must trade <PK><MN>"
 	line "between the teams!"
 	prompt
 
@@ -276,7 +276,7 @@ BT_PartySelect:
 	jmp .loop
 
 .too_many_mons_text
-	ctxt "You may only enter"
+	text "You may only enter"
 	line "with 3 #mon!"
 	prompt
 
@@ -341,13 +341,13 @@ BTText_EnterBattle:
 	db "Enter battle?@"
 
 BTText_SameSpecies:
-	ctxt "The #mon must"
+	text "The #mon must"
 	line "be of different"
 	cont "species!"
 	prompt
 
 BTText_SameItem:
-	ctxt "The #mon's held"
+	text "The #mon's held"
 	line "items must differ!"
 	prompt
 

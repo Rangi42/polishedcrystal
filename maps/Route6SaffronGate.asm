@@ -21,7 +21,7 @@ Route6SaffronGuardScript:
 	iftrue_jumptextfaceplayer Route6SaffronGuardMagnetTrainText
 	jumpthistextfaceplayer
 
-	ctxt "Welcome to Saffron"
+	text "Welcome to Saffron"
 	line "City, home of the"
 	cont "Magnet Train!"
 
@@ -42,7 +42,7 @@ Route6SaffronGuardScript:
 	done
 
 Route6SaffronGuardMagnetTrainText:
-	ctxt "The Magnet Train"
+	text "The Magnet Train"
 	line "is the most famous"
 
 	para "thing about Saf-"

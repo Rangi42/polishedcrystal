@@ -130,7 +130,7 @@ CeladonDeptStore3FWiiScript:
 	jumpopenedtext WiiSentText
 
 CeladonDeptStore3FClerk2Text:
-	ctxt "There's a neat move"
+	text "There's a neat move"
 	line "called Counter."
 
 	para "Not the kind of"
@@ -139,7 +139,7 @@ CeladonDeptStore3FClerk2Text:
 	done
 
 Text_CeladonDeptStore3FTutorCounter:
-	ctxt "I'll teach your"
+	text "I'll teach your"
 	line "#mon how to use"
 
 	para "Counter if you pay"
@@ -147,27 +147,27 @@ Text_CeladonDeptStore3FTutorCounter:
 	done
 
 Text_CeladonDeptStore3FTutorNoSilverLeaf:
-	ctxt "You don't have a"
+	text "You don't have a"
 	line "Silver Leaf…"
 	done
 
 Text_CeladonDeptStore3FTutorQuestion:
-	ctxt "Should I teach"
+	text "Should I teach"
 	line "your #mon"
 	cont "Counter?"
 	done
 
 Text_CeladonDeptStore3FTutorRefused:
-	ctxt "Never mind."
+	text "Never mind."
 	done
 
 Text_CeladonDeptStore3FTutorTaught:
-	ctxt "Now your #mon"
+	text "Now your #mon"
 	line "knows Counter."
 	done
 
 VideoGameClerkText:
-	ctxt "We sell brand-new"
+	text "We sell brand-new"
 	line "and vintage game"
 	cont "systems!"
 
@@ -176,17 +176,17 @@ VideoGameClerkText:
 	done
 
 VideoGameClerkNoSaleText:
-	ctxt "Clerk: Well, if"
+	text "Clerk: Well, if"
 	line "you say so."
 	done
 
 VideoGameClerkNoMoneyText:
-	ctxt "Clerk: You can't"
+	text "Clerk: You can't"
 	line "afford it!"
 	done
 
 VideoGameClerkSellSnesText:
-	ctxt "Clerk: That SNES"
+	text "Clerk: That SNES"
 	line "can be yours for"
 
 	para "just ¥20,000!"
@@ -194,7 +194,7 @@ VideoGameClerkSellSnesText:
 	done
 
 VideoGameClerkSellN64Text:
-	ctxt "Clerk: That N64"
+	text "Clerk: That N64"
 	line "can be yours for"
 
 	para "just ¥25,000!"
@@ -202,7 +202,7 @@ VideoGameClerkSellN64Text:
 	done
 
 VideoGameClerkSellGameCubeText:
-	ctxt "Clerk: That Game-"
+	text "Clerk: That Game-"
 	line "Cube can be yours"
 
 	para "for just ¥30,000!"
@@ -210,7 +210,7 @@ VideoGameClerkSellGameCubeText:
 	done
 
 VideoGameClerkSellWiiText:
-	ctxt "Clerk: That Wii"
+	text "Clerk: That Wii"
 	line "can be yours for"
 
 	para "just ¥40,000!"
@@ -218,47 +218,47 @@ VideoGameClerkSellWiiText:
 	done
 
 BoughtSnesText:
-	ctxt "<PLAYER> bought"
+	text "<PLAYER> bought"
 	line "Super NES."
 	done
 
 SnesSentText:
-	ctxt "Super NES"
+	text "Super NES"
 	line "was sent home."
 	done
 
 BoughtN64Text:
-	ctxt "<PLAYER> bought"
+	text "<PLAYER> bought"
 	line "Nintendo 64."
 	done
 
 N64SentText:
-	ctxt "Nintendo 64"
+	text "Nintendo 64"
 	line "was sent home."
 	done
 
 BoughtGameCubeText:
-	ctxt "<PLAYER> bought"
+	text "<PLAYER> bought"
 	line "GameCube."
 	done
 
 GameCubeSentText:
-	ctxt "GameCube"
+	text "GameCube"
 	line "was sent home."
 	done
 
 BoughtWiiText:
-	ctxt "<PLAYER> bought"
+	text "<PLAYER> bought"
 	line "Wii."
 	done
 
 WiiSentText:
-	ctxt "Wii"
+	text "Wii"
 	line "was sent home."
 	done
 
 CeladonDeptStore3FYoungsterText:
-	ctxt "I can't decide"
+	text "I can't decide"
 	line "which #mon I"
 
 	para "should use this"
@@ -269,62 +269,62 @@ CeladonDeptStore3FYoungsterText:
 	done
 
 CeladonDeptStore3FSuperNerdText:
-	ctxt "The Tech Shop"
+	text "The Tech Shop"
 	line "sells some cool"
 	cont "game systems."
 	done
 
 CeladonDeptStore3FDirectoryText:
-	ctxt "Make Your #mon"
+	text "Make Your #mon"
 	line "Stronger!"
 
 	para "3F: Tech Shop"
 	done
 
 CeladonDeptStore3FSnesText:
-	ctxt "It's a Super NES!"
+	text "It's a Super NES!"
 
 	para "I have one of"
 	line "those at home!"
 	done
 
 CeladonDeptStore3FN64Text:
-	ctxt "It's an N64!"
+	text "It's an N64!"
 
 	para "I have one of"
 	line "those at home!"
 	done
 
 CeladonDeptStore3FGameCubeText:
-	ctxt "It's a GameCube!"
+	text "It's a GameCube!"
 
 	para "I have one of"
 	line "those at home!"
 	done
 
 CeladonDeptStore3FWiiText:
-	ctxt "It's a Wii!"
+	text "It's a Wii!"
 
 	para "I have one of"
 	line "those at home!"
 	done
 
 CeladonDeptStore3FRPGText:
-	ctxt "An RPG! There's"
+	text "An RPG! There's"
 	line "no time for that!"
 	done
 
 CeladonDeptStore3FSportsGameText:
-	ctxt "A sports game!"
+	text "A sports game!"
 	line "Dad'll like that!"
 	done
 
 CeladonDeptStore3FPuzzleGameText:
-	ctxt "A puzzle game!"
+	text "A puzzle game!"
 	line "Looks addictive!"
 	done
 
 CeladonDeptStore3FFightingGameText:
-	ctxt "A fighting game!"
+	text "A fighting game!"
 	line "Looks tough!"
 	done

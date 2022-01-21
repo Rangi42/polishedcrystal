@@ -95,8 +95,6 @@ text: MACRO
 	_dtxt \#
 ENDM
 
-ctxt EQUS "text"
-
 next1: MACRO
 ; Move one screen row down.
 	_dtxt "<LNBRK>", \#

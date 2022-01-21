@@ -97,7 +97,7 @@ GoldenrodMagnetTrainStationPlayerLeaveTrainAndEnterStationMovement:
 	step_end
 
 GoldenrodMagnetTrainStationOfficerTheTrainHasntComeInText:
-	ctxt "The train hasn't"
+	text "The train hasn't"
 	line "come in…"
 
 	para "I know! I'll carry"
@@ -108,7 +108,7 @@ GoldenrodMagnetTrainStationOfficerTheTrainHasntComeInText:
 	done
 
 GoldenrodMagnetTrainStationOfficerAreYouComingAboardText:
-	ctxt "We'll soon depart"
+	text "We'll soon depart"
 	line "for Saffron."
 
 	para "Are you coming"
@@ -116,7 +116,7 @@ GoldenrodMagnetTrainStationOfficerAreYouComingAboardText:
 	done
 
 GoldenrodMagnetTrainStationOfficerRightThisWayText:
-	ctxt "May I see your"
+	text "May I see your"
 	line "rail pass, please?"
 
 	para "OK. Right this"
@@ -124,17 +124,17 @@ GoldenrodMagnetTrainStationOfficerRightThisWayText:
 	done
 
 GoldenrodMagnetTrainStationOfficerYouDontHaveARailPassText:
-	ctxt "Sorry. You don't"
+	text "Sorry. You don't"
 	line "have a rail pass."
 	done
 
 GoldenrodMagnetTrainStationOfficerHopeToSeeYouAgainText:
-	ctxt "We hope to see you"
+	text "We hope to see you"
 	line "again!"
 	done
 
 GoldenrodMagnetTrainStationOfficerArrivedInGoldenrodText:
-	ctxt "We have arrived in"
+	text "We have arrived in"
 	line "Goldenrod."
 
 	para "We hope to see you"
@@ -142,7 +142,7 @@ GoldenrodMagnetTrainStationOfficerArrivedInGoldenrodText:
 	done
 
 GoldenrodMagnetTrainStationGentlemanText:
-	ctxt "I'm the President."
+	text "I'm the President."
 
 	para "My dream was to"
 	line "build a train that"
@@ -156,7 +156,7 @@ GoldenrodMagnetTrainStationGentlemanText:
 	done
 
 GoldenrodMagnetTrainStationCooltrainerfText1:
-	ctxt "The Magnet Train"
+	text "The Magnet Train"
 	line "is like, zoooom,"
 	cont "byun! Shuuu!"
 
@@ -165,7 +165,7 @@ GoldenrodMagnetTrainStationCooltrainerfText1:
 	done
 
 GoldenrodMagnetTrainStationCooltrainerfText2:
-	ctxt "The Magnet Train"
+	text "The Magnet Train"
 	line "is like, zoooom,"
 	cont "byun! Shuuu!"
 

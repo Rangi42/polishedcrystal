@@ -43,7 +43,7 @@ ProfOaksAide2Script:
 	jumpopenedtext ProfOaksAide2NoRoomText
 
 Route38EcruteakGateOfficerText:
-	ctxt "Where did you say"
+	text "Where did you say"
 	line "you're from?"
 
 	para "New Bark Town?"
@@ -56,7 +56,7 @@ Route38EcruteakGateOfficerText:
 	done
 
 ProfOaksAide2HiText:
-	ctxt "Hello there! I'm"
+	text "Hello there! I'm"
 	line "Prof.Oak's aide."
 
 	para "If you caught 30"
@@ -73,12 +73,12 @@ ProfOaksAide2HiText:
 	done
 
 ProfOaksAide2UhOhText:
-	ctxt "Let's see…"
+	text "Let's see…"
 	line "Uh-oh! You've only"
 
 	para "caught "
 	text_decimal wTempDexOwn, 2, 3
-	ctxt " kinds"
+	text " kinds"
 	line "of #mon."
 
 	para "Come back and see"
@@ -87,12 +87,12 @@ ProfOaksAide2UhOhText:
 	done
 
 ProfOaksAide2HereYouGoText:
-	ctxt "Let's see…"
+	text "Let's see…"
 	line "Great job! You've"
 
 	para "caught "
 	text_decimal wTempDexOwn, 2, 3
-	ctxt " kinds"
+	text " kinds"
 	line "of #mon."
 
 	para "Congratulations!"
@@ -100,13 +100,13 @@ ProfOaksAide2HereYouGoText:
 	done
 
 ProfOaksAide2NoRoomText:
-	ctxt "Oh! I see you"
+	text "Oh! I see you"
 	line "don't have any"
 	cont "room for this."
 	done
 
 ProfOaksAide2ExplainText:
-	ctxt "That Exp.Share"
+	text "That Exp.Share"
 	line "helps a #mon"
 
 	para "gain experience"

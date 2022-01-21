@@ -17,13 +17,13 @@ SaffronMart_MapScriptHeader:
 	object_event  7,  6, SPRITE_BATTLE_GIRL, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_COMMAND, jumptextfaceplayer, SaffronMartCooltrainerFText, -1
 
 SaffronMartCooltrainerMText:
-	ctxt "There's a big"
+	text "There's a big"
 	line "Radio Tower in"
 	cont "Lavender."
 	done
 
 SaffronMartCooltrainerFText:
-	ctxt "I want to become"
+	text "I want to become"
 	line "stronger, but I'm"
 	cont "not good yet…"
 

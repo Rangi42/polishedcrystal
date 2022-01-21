@@ -67,7 +67,7 @@ OptionsMenu_LoadOptions:
 	jmp ApplyTilemapInVBlank
 
 StringOptions1:
-	ctxt  "Text Speed"
+	text  "Text Speed"
 	next1 "        :"
 	next1 "Battle Effects"
 	next1 "        :"
@@ -85,7 +85,7 @@ StringOptions1:
 	done
 
 StringOptions2:
-	ctxt  "Clock Format"
+	text  "Clock Format"
 	next1 "        :"
 	next1 "#dex Units"
 	next1 "        :"

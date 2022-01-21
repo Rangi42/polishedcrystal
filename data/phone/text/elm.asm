@@ -1,5 +1,5 @@
 ElmPhoneStartText:
-	ctxt "Hello, <PLAYER>?"
+	text "Hello, <PLAYER>?"
 
 	para "Try not to overdo"
 	line "it."
@@ -10,7 +10,7 @@ ElmPhoneStartText:
 	done
 
 ElmPhoneSawMrPokemonText:
-	ctxt "Hello, <PLAYER>?"
+	text "Hello, <PLAYER>?"
 
 	para "Did you meet Mr."
 	line "#mon? Great!"
@@ -18,7 +18,7 @@ ElmPhoneSawMrPokemonText:
 	done
 
 ElmPhonePokemonStolenText:
-	ctxt "<PLAYER>? I'm very"
+	text "<PLAYER>? I'm very"
 	line "upset now."
 
 	para "We had a #mon"
@@ -29,7 +29,7 @@ ElmPhonePokemonStolenText:
 	done
 
 ElmPhoneCheckingEggText:
-	ctxt "Hello, <PLAYER>?"
+	text "Hello, <PLAYER>?"
 
 	para "We're checking the"
 	line "Egg now. It does"
@@ -39,7 +39,7 @@ ElmPhoneCheckingEggText:
 	done
 
 ElmPhoneAssistantText:
-	ctxt "Hello, <PLAYER>?"
+	text "Hello, <PLAYER>?"
 
 	para "Did you see my"
 	line "assistant? He's at"
@@ -49,7 +49,7 @@ ElmPhoneAssistantText:
 	done
 
 ElmPhoneEggUnhatchedText:
-	ctxt "Hello, <PLAYER>?"
+	text "Hello, <PLAYER>?"
 
 	para "How's the Egg? Has"
 	line "anything changed?"
@@ -59,7 +59,7 @@ ElmPhoneEggUnhatchedText:
 	done
 
 ElmPhoneEggHatchedText:
-	ctxt "Hello, <PLAYER>?"
+	text "Hello, <PLAYER>?"
 	line "How is the Egg?"
 
 	para "What? It hatched?"
@@ -71,7 +71,7 @@ ElmPhoneEggHatchedText:
 	done
 
 ElmPhoneDiscovery1Text:
-	ctxt "Hello, <PLAYER>?"
+	text "Hello, <PLAYER>?"
 
 	para "I just made a new"
 	line "discovery."
@@ -84,7 +84,7 @@ ElmPhoneDiscovery1Text:
 	done
 
 ElmPhoneDiscovery2Text:
-	ctxt "Hello, <PLAYER>?"
+	text "Hello, <PLAYER>?"
 
 	para "It's still a"
 	line "mystery what kinds"
@@ -97,7 +97,7 @@ ElmPhoneDiscovery2Text:
 	done
 
 ElmPhonePokerusText:
-	ctxt "Hello, <PLAYER>?"
+	text "Hello, <PLAYER>?"
 
 	para "I discovered an"
 	line "odd thing."
@@ -130,7 +130,7 @@ ElmPhonePokerusText:
 	done
 
 ElmPhoneDisasterText:
-	ctxt "H-hello? <PLAYER>?"
+	text "H-hello? <PLAYER>?"
 	line "It's a disaster!"
 
 	para "Uh, um, it's just"
@@ -144,7 +144,7 @@ ElmPhoneDisasterText:
 	done
 
 ElmPhoneEggAssistantText:
-	ctxt "Hello, <PLAYER>? We"
+	text "Hello, <PLAYER>? We"
 	line "discovered some-"
 
 	para "thing about the"
@@ -159,7 +159,7 @@ ElmPhoneEggAssistantText:
 	done
 
 ElmPhoneRocketText:
-	ctxt "<PLAYER>, how are"
+	text "<PLAYER>, how are"
 	line "things going?"
 
 	para "I called because"
@@ -186,7 +186,7 @@ ElmPhoneRocketText:
 	done
 
 ElmPhoneGiftText:
-	ctxt "Hello, <PLAYER>?"
+	text "Hello, <PLAYER>?"
 
 	para "I have something"
 	line "here for you."

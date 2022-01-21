@@ -24,19 +24,19 @@ UnionCaveB1FNorth_MapScriptHeader:
 GenericTrainerRuin_maniacLeland:
 	generictrainer RUIN_MANIAC, LELAND, EVENT_BEAT_RUIN_MANIAC_LELAND, .SeenText, .BeatenText
 
-	ctxt "Someday I'll dis-"
+	text "Someday I'll dis-"
 	line "cover a new ruin"
 	cont "and become famous."
 	done
 
 .SeenText:
-	ctxt "I'm on the trail of"
+	text "I'm on the trail of"
 	line "an ancient ruin"
 	cont "site!"
 	done
 
 .BeatenText:
-	ctxt "I was distracted"
+	text "I was distracted"
 	line "by clues the"
 	cont "ancients left."
 	done
@@ -44,7 +44,7 @@ GenericTrainerRuin_maniacLeland:
 GenericTrainerRuin_maniacPetry:
 	generictrainer RUIN_MANIAC, PETRY, EVENT_BEAT_RUIN_MANIAC_PETRY, .SeenText, .BeatenText
 
-	ctxt "Ancient history"
+	text "Ancient history"
 	line "is my passion,"
 
 	para "but to investigate"
@@ -53,14 +53,14 @@ GenericTrainerRuin_maniacPetry:
 	done
 
 .SeenText:
-	ctxt "I'll go anywhere"
+	text "I'll go anywhere"
 	line "to investigate"
 	cont "old secrets and"
 	cont "legends."
 	done
 
 .BeatenText:
-	ctxt "What is the secret"
+	text "What is the secret"
 	line "of your power?"
 	done
 

@@ -16,7 +16,7 @@ VermilionMagnetTrainSpeechHouse_MapScriptHeader:
 	object_event  0,  3, SPRITE_SCHOOLBOY, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_COMMAND, jumptextfaceplayer, VermilionMagnetTrainSpeechHouseYoungsterText, -1
 
 VermilionMagnetTrainSpeechHousePokefanFText:
-	ctxt "Do you know about"
+	text "Do you know about"
 	line "the Magnet Train?"
 
 	para "It's a railway"
@@ -25,7 +25,7 @@ VermilionMagnetTrainSpeechHousePokefanFText:
 	done
 
 VermilionMagnetTrainSpeechHouseYoungsterText:
-	ctxt "I want to go to"
+	text "I want to go to"
 	line "Saffron to see"
 	cont "the Magnet Train."
 	done

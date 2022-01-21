@@ -17,7 +17,7 @@ Route8SaffronGate_MapScriptHeader:
 	object_event  5,  1, SPRITE_OFFICER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_COMMAND, jumptextfaceplayer, Route8SaffronGateOfficerText, -1
 
 Route8SaffronGateOfficerText:
-	ctxt "Have you been to"
+	text "Have you been to"
 	line "Lavender Town?"
 
 	para "There's a tall"

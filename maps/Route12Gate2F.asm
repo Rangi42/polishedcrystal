@@ -21,14 +21,14 @@ Route12Gate2FBinoculars2:
 	jumptext Route12Gate2FBinoculars2Text
 
 Route12Gate2FBinoculars1Text:
-	ctxt "Looked into the"
+	text "Looked into the"
 	line "binoculars."
 
 	para "A man fishing!"
 	done
 
 Route12Gate2FBinoculars2Text:
-	ctxt "Looked into the"
+	text "Looked into the"
 	line "binoculars."
 
 	para "It's the Radio"

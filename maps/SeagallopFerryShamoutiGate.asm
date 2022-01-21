@@ -120,29 +120,29 @@ SeagallopFerryShamoutiGateSailorArrive2MovementData:
 	step_end
 
 SeagallopFerryShamoutiWhichIslandText:
-	ctxt "Welcome back!"
+	text "Welcome back!"
 	line "Where to now?"
 	done
 
 SeagallopFerryShamoutiToVermilionQuestionText:
-	ctxt "Ready to head back"
+	text "Ready to head back"
 	line "to Vermilion City?"
 	done
 
 SeagallopFerryShamoutiDepartureText:
-	ctxt "All right!"
+	text "All right!"
 
 	para "All aboard the"
 	line "Seagallop Ferry!"
 	done
 
 SeagallopFerryShamoutiIslandRefusedText:
-	ctxt "I'll be waiting"
+	text "I'll be waiting"
 	line "right here."
 	done
 
 SeagallopFerryShamoutiGateTwinText:
-	ctxt "I'm here to greet"
+	text "I'm here to greet"
 	line "the tourists."
 
 	para "Have a nice stay!"

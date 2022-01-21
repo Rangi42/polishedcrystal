@@ -111,13 +111,13 @@ Route27VeteranfScript:
 	jumpthisopenedtext
 
 .AfterText2:
-	ctxt "Good luck! Say"
+	text "Good luck! Say"
 	line "hello to Lance"
 	cont "for me."
 	done
 
 .IntroText:
-	ctxt "Hm! If you're here,"
+	text "Hm! If you're here,"
 	line "then you must be"
 
 	para "heading for the"
@@ -135,7 +135,7 @@ Route27VeteranfScript:
 	done
 
 .QuestionText:
-	ctxt "Hm. You beat the"
+	text "Hm. You beat the"
 	line "rest faster than"
 	cont "I expected."
 
@@ -143,12 +143,12 @@ Route27VeteranfScript:
 	done
 
 .RefusedText:
-	ctxt "It's okay."
+	text "It's okay."
 	line "I can wait."
 	done
 
 .SeenText:
-	ctxt "My #mon are"
+	text "My #mon are"
 	line "all wearing"
 	cont "Choice Specs."
 
@@ -158,13 +158,13 @@ Route27VeteranfScript:
 	done
 
 .BeatenText:
-	ctxt "You're ready for"
+	text "You're ready for"
 	line "the #mon"
 	cont "League, I'm sure!"
 	done
 
 .AfterText1:
-	ctxt "Choice Specs will"
+	text "Choice Specs will"
 	line "boost a #mon's"
 	cont "Special Attack,"
 
@@ -178,7 +178,7 @@ Route27VeteranfScript:
 GenericTrainerPsychicGilbert:
 	generictrainer PSYCHIC_T, GILBERT, EVENT_BEAT_PSYCHIC_GILBERT, PsychicGilbertSeenText, PsychicGilbertBeatenText
 
-	ctxt "With your skills,"
+	text "With your skills,"
 	line "you'll do well at"
 	cont "the League."
 
@@ -292,7 +292,7 @@ UnknownScript_0x1a0977:
 GenericTrainerCooltrainermBlake:
 	generictrainer COOLTRAINERM, BLAKE, EVENT_BEAT_COOLTRAINERM_BLAKE, CooltrainermBlakeSeenText, CooltrainermBlakeBeatenText
 
-	ctxt "If you prevail on"
+	text "If you prevail on"
 	line "this harsh trek,"
 
 	para "the truth will be"
@@ -306,7 +306,7 @@ GenericTrainerCooltrainermBlake:
 GenericTrainerAceDuoJakeandbri1:
 	generictrainer ACE_DUO, JAKEANDBRI1, EVENT_BEAT_ACE_DUO_JAKE_AND_BRI, AceDuoJakeandbri1SeenText, AceDuoJakeandbri1BeatenText
 
-	ctxt "Jake: A good"
+	text "Jake: A good"
 	line "trainer can recog-"
 
 	para "nize other good"
@@ -316,7 +316,7 @@ GenericTrainerAceDuoJakeandbri1:
 GenericTrainerAceDuoJakeandbri2:
 	generictrainer ACE_DUO, JAKEANDBRI2, EVENT_BEAT_ACE_DUO_JAKE_AND_BRI, AceDuoJakeandbri2SeenText, AceDuoJakeandbri2BeatenText
 
-	ctxt "Bri: Good trainers"
+	text "Bri: Good trainers"
 	line "also know how to"
 
 	para "fight alongside"
@@ -411,7 +411,7 @@ UnknownScript_0x1a0a47:
 GenericTrainerCooltrainerfMegan:
 	generictrainer COOLTRAINERF, MEGAN, EVENT_BEAT_COOLTRAINERF_MEGAN, CooltrainerfMeganSeenText, CooltrainerfMeganBeatenText
 
-	ctxt "I'm checking out"
+	text "I'm checking out"
 	line "pre- and post-"
 	cont "evolution #mon."
 
@@ -431,11 +431,11 @@ Route27FisherStepLeftTwiceMovement:
 	step_end
 
 Route27FisherHeyText:
-	ctxt "Hey!"
+	text "Hey!"
 	done
 
 Route27FisherText:
-	ctxt "Do you know what"
+	text "Do you know what"
 	line "you just did?"
 
 	para "You've taken your"
@@ -447,38 +447,38 @@ Route27FisherText:
 	done
 
 CooltrainermBlakeSeenText:
-	ctxt "You look pretty"
+	text "You look pretty"
 	line "strong."
 	cont "Let me battle you!"
 	done
 
-CooltrainermBlakeBeatenText: ; ctxt > text
+CooltrainermBlakeBeatenText: ; text > text
 	text "Yow!"
 	done
 
 AceDuoJakeandbri1SeenText:
-	ctxt "Jake: Hm? You're"
+	text "Jake: Hm? You're"
 	line "good, aren't you?"
 	done
 
 AceDuoJakeandbri1BeatenText:
-	ctxt "Jake: Just as I"
+	text "Jake: Just as I"
 	line "thought!"
 	done
 
 AceDuoJakeandbri2SeenText:
-	ctxt "Bri: The two of"
+	text "Bri: The two of"
 	line "us together are"
 	cont "unstoppable!"
 	done
 
 AceDuoJakeandbri2BeatenText:
-	ctxt "Bri: Our teamwork"
+	text "Bri: Our teamwork"
 	line "wasn't enough…"
 	done
 
 CooltrainerfReena1SeenText:
-	ctxt "You shouldn't"
+	text "You shouldn't"
 	line "underestimate the"
 
 	para "wild #mon in"
@@ -486,12 +486,12 @@ CooltrainerfReena1SeenText:
 	done
 
 CooltrainerfReena1BeatenText:
-	ctxt "Oh! You're much"
+	text "Oh! You're much"
 	line "too strong!"
 	done
 
 CooltrainerfReenaAfterBattleText:
-	ctxt "You're just a kid,"
+	text "You're just a kid,"
 	line "but you're not to"
 
 	para "be underestimated"
@@ -499,7 +499,7 @@ CooltrainerfReenaAfterBattleText:
 	done
 
 CooltrainerfMeganSeenText:
-	ctxt "It's rare to see"
+	text "It's rare to see"
 	line "anyone come here."
 
 	para "Are you training"
@@ -507,12 +507,12 @@ CooltrainerfMeganSeenText:
 	done
 
 CooltrainerfMeganBeatenText:
-	ctxt "Oh! You're really"
+	text "Oh! You're really"
 	line "strong!"
 	done
 
 PsychicGilbertSeenText:
-	ctxt "Don't say a thing!"
+	text "Don't say a thing!"
 
 	para "Let me guess what"
 	line "you're thinking."
@@ -525,20 +525,20 @@ PsychicGilbertSeenText:
 	done
 
 PsychicGilbertBeatenText:
-	ctxt "You're too much!"
+	text "You're too much!"
 	done
 
 Bird_keeperJose1SeenText:
-	ctxt "Tweet! Tweet!"
+	text "Tweet! Tweet!"
 	line "Tetweet!"
 	done
 
 Bird_keeperJose1BeatenText:
-	ctxt "Tweet!"
+	text "Tweet!"
 	done
 
 BirdKeeperJose2AfterBattleText:
-	ctxt "Bird Keepers like"
+	text "Bird Keepers like"
 	line "me mimic bird"
 
 	para "whistles to com-"
@@ -546,7 +546,7 @@ BirdKeeperJose2AfterBattleText:
 	done
 
 TohjoFallsSignText:
-	ctxt "Tohjo Falls"
+	text "Tohjo Falls"
 
 	para "The Link Between"
 	line "Kanto and Johto"

@@ -1,5 +1,5 @@
 JackAskNumber1Text:
-	ctxt "Your knowledge is"
+	text "Your knowledge is"
 	line "impressive!"
 
 	para "I like that!"
@@ -15,7 +15,7 @@ JackAskNumber1Text:
 	done
 
 JackAskNumber2Text:
-	ctxt "Want to trade"
+	text "Want to trade"
 	line "battle tips?"
 
 	para "I'll phone if I"
@@ -26,12 +26,12 @@ JackAskNumber2Text:
 	done
 
 JackNumberAcceptedText:
-	ctxt "I'll call you if I"
+	text "I'll call you if I"
 	line "hear anything!"
 	done
 
 JackNumberDeclinedText:
-	ctxt "Oh, OK. Too bad…"
+	text "Oh, OK. Too bad…"
 
 	para "Well, if you ever"
 	line "want my number,"
@@ -39,7 +39,7 @@ JackNumberDeclinedText:
 	done
 
 JackPhoneFullText:
-	ctxt "Oh?"
+	text "Oh?"
 	line "Your phone's full."
 
 	para "It can't register"
@@ -47,7 +47,7 @@ JackPhoneFullText:
 	done
 
 JackRematchText:
-	ctxt "Hi, I was waiting"
+	text "Hi, I was waiting"
 	line "for you to show!"
 
 	para "Let's get started"

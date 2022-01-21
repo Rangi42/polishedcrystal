@@ -15,7 +15,7 @@ SaffronRichSpeechHouse_MapScriptHeader:
 	object_event  5,  3, SPRITE_RICH_BOY, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, SaffronRichSpeechHouseRichBoyText, -1
 
 SaffronRichSpeechHouseRichBoyText:
-	ctxt "Houses are expen-"
+	text "Houses are expen-"
 	line "sive in Saffron."
 
 	para "If you want to"

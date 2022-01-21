@@ -111,14 +111,14 @@ EcruteakGymClosed:
 GenericTrainerSageJeffrey:
 	generictrainer SAGE, JEFFREY, EVENT_BEAT_SAGE_JEFFREY, SageJeffreySeenText, SageJeffreyBeatenText
 
-	ctxt "Where did #mon"
+	text "Where did #mon"
 	line "come from?"
 	done
 
 GenericTrainerSagePing:
 	generictrainer SAGE, PING, EVENT_BEAT_SAGE_PING, SagePingSeenText, SagePingBeatenText
 
-	ctxt "We use only Ghost-"
+	text "We use only Ghost-"
 	line "type #mon."
 
 	para "No Normal-type"
@@ -129,14 +129,14 @@ GenericTrainerSagePing:
 GenericTrainerMediumMartha:
 	generictrainer MEDIUM, MARTHA, EVENT_BEAT_MEDIUM_MARTHA, MediumMarthaSeenText, MediumMarthaBeatenText
 
-	ctxt "The one who wants"
+	text "The one who wants"
 	line "to win most--will!"
 	done
 
 GenericTrainerMediumGrace:
 	generictrainer MEDIUM, GRACE, EVENT_BEAT_MEDIUM_GRACE, MediumGraceSeenText, MediumGraceBeatenText
 
-	ctxt "Fine. I shall tell"
+	text "Fine. I shall tell"
 	line "you the secret of"
 
 	para "the invisible"
@@ -170,7 +170,7 @@ EcruteakGymPlayerSlowStepDownMovement:
 	step_end
 
 MortyIntroText:
-	ctxt "Good of you to"
+	text "Good of you to"
 	line "have come."
 
 	para "Here in Ecruteak,"
@@ -211,7 +211,7 @@ MortyIntroText:
 	done
 
 MortyWinLossText:
-	ctxt "I'm not good"
+	text "I'm not good"
 	line "enough yet…"
 
 	para "All right. This"
@@ -219,12 +219,12 @@ MortyWinLossText:
 	done
 
 Text_ReceivedFogBadge:
-	ctxt "<PLAYER> received"
+	text "<PLAYER> received"
 	line "the Fog Badge."
 	done
 
 MortyText_FogBadgeSpeech:
-	ctxt "By having the Fog"
+	text "By having the Fog"
 	line "Badge, #mon up"
 
 	para "to <LV>50 will obey"
@@ -241,7 +241,7 @@ MortyText_FogBadgeSpeech:
 	done
 
 MortyText_ShadowBallSpeech:
-	ctxt "It's Shadow Ball."
+	text "It's Shadow Ball."
 	line "It causes damage"
 
 	para "and may reduce"
@@ -252,7 +252,7 @@ MortyText_ShadowBallSpeech:
 	done
 
 MortyFightDoneText:
-	ctxt "I see…"
+	text "I see…"
 
 	para "Your journey has"
 	line "taken you to far-"
@@ -267,7 +267,7 @@ MortyFightDoneText:
 	done
 
 SageJeffreySeenText:
-	ctxt "I spent the spring"
+	text "I spent the spring"
 	line "with my #mon."
 
 	para "Then summer, fall"
@@ -281,30 +281,30 @@ SageJeffreySeenText:
 	done
 
 SageJeffreyBeatenText:
-	ctxt "Wins and losses, I"
+	text "Wins and losses, I"
 	line "experienced both."
 	done
 
 SagePingSeenText:
-	ctxt "Can you inflict"
+	text "Can you inflict"
 	line "any damage on our"
 	cont "#mon?"
 	done
 
 SagePingBeatenText:
-	ctxt "Ah! Well done!"
+	text "Ah! Well done!"
 	done
 
 MediumMarthaSeenText:
-	ctxt "I shall win!"
+	text "I shall win!"
 	done
 
 MediumMarthaBeatenText:
-	ctxt "I, I, I lost!"
+	text "I, I, I lost!"
 	done
 
 MediumGraceSeenText:
-	ctxt "Stumped by our in-"
+	text "Stumped by our in-"
 	line "visible floor?"
 
 	para "Defeat me if you"
@@ -312,11 +312,11 @@ MediumGraceSeenText:
 	done
 
 MediumGraceBeatenText:
-	ctxt "Wha-what?"
+	text "Wha-what?"
 	done
 
 EcruteakGymGuyText:
-	ctxt "The trainers here"
+	text "The trainers here"
 	line "have secret mo-"
 	cont "tives."
 
@@ -328,7 +328,7 @@ EcruteakGymGuyText:
 	done
 
 EcruteakGymGuyWinText:
-	ctxt "Whew, <PLAYER>."
+	text "Whew, <PLAYER>."
 	line "You did great!"
 
 	para "I was cowering in"
@@ -337,7 +337,7 @@ EcruteakGymGuyWinText:
 	done
 
 EcruteakGymClosedText:
-	ctxt "Morty, the Gym"
+	text "Morty, the Gym"
 	line "Leader, is absent."
 
 	para "Sorry, but you'll"

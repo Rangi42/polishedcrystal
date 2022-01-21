@@ -26,7 +26,7 @@ FastShipCabins_SW_SSW_NW_MapScriptHeader:
 GenericTrainerFirebreatherLyle:
 	generictrainer FIREBREATHER, LYLE, EVENT_BEAT_FIREBREATHER_LYLE, FirebreatherLyleSeenText, FirebreatherLyleBeatenText
 
-	ctxt "I guess fire is"
+	text "I guess fire is"
 	line "weak on the sea."
 
 	para "It doesn't matter?"
@@ -36,7 +36,7 @@ GenericTrainerFirebreatherLyle:
 GenericTrainerBug_catcherKen:
 	generictrainer BUG_CATCHER, KEN, EVENT_BEAT_BUG_CATCHER_KEN, Bug_catcherKenSeenText, Bug_catcherKenBeatenText
 
-	ctxt "You can find lots"
+	text "You can find lots"
 	line "of #mon in the"
 	cont "trees of Johto!"
 	done
@@ -44,14 +44,14 @@ GenericTrainerBug_catcherKen:
 GenericTrainerRichBoyWinston:
 	generictrainer RICH_BOY, WINSTON, EVENT_BEAT_RICH_BOY_WINSTON, RichBoyWinstonSeenText, RichBoyWinstonBeatenText
 
-	ctxt "This boat is so"
+	text "This boat is so"
 	line "drab."
 	done
 
 GenericTrainerBeautyCassie:
 	generictrainer BEAUTY, CASSIE, EVENT_BEAT_BEAUTY_CASSIE, BeautyCassieSeenText, BeautyCassieBeatenText
 
-	ctxt "A voyage is best"
+	text "A voyage is best"
 	line "for getting over"
 	cont "a broken heart."
 
@@ -107,29 +107,29 @@ UnknownScript_0x75af7:
 	end
 
 FirebreatherLyleSeenText:
-	ctxt "I'm going to Kanto"
+	text "I'm going to Kanto"
 	line "to put on fire-"
 	cont "breathing shows!"
 	done
 
 FirebreatherLyleBeatenText:
-	ctxt "Fizzle… The"
+	text "Fizzle… The"
 	line "flame's tiny…"
 	done
 
 Bug_catcherKenSeenText:
-	ctxt "I'm visiting my"
+	text "I'm visiting my"
 	line "grandma to catch"
 	cont "me some bugs!"
 	done
 
 Bug_catcherKenBeatenText:
-	ctxt "Ooh, wow."
+	text "Ooh, wow."
 	line "You're tough!"
 	done
 
 RichBoyWinstonSeenText:
-	ctxt "There's no way you"
+	text "There's no way you"
 	line "could afford a"
 	cont "ticket."
 
@@ -138,22 +138,22 @@ RichBoyWinstonSeenText:
 	done
 
 RichBoyWinstonBeatenText:
-	ctxt "Wow! Who'd you buy"
+	text "Wow! Who'd you buy"
 	line "your #mon from?"
 	done
 
 BeautyCassieSeenText:
-	ctxt "I'm trying to"
+	text "I'm trying to"
 	line "forget my woes."
 	cont "Let's battle!"
 	done
 
 BeautyCassieBeatenText:
-	ctxt "My heart weeps…"
+	text "My heart weeps…"
 	done
 
 GuitaristmClydeSeenText:
-	ctxt "I'm going to audi-"
+	text "I'm going to audi-"
 	line "tion my songs at"
 
 	para "Goldenrod's Radio"
@@ -161,12 +161,12 @@ GuitaristmClydeSeenText:
 	done
 
 GuitaristmClydeBeatenText:
-	ctxt "Yowza!"
+	text "Yowza!"
 	line "Total distortion!"
 	done
 
 GuitaristClydeAfterBattleText:
-	ctxt "Speaking of the"
+	text "Speaking of the"
 	line "Radio Station,"
 
 	para "what's this week's"
@@ -174,7 +174,7 @@ GuitaristClydeAfterBattleText:
 	done
 
 GuitaristClydeAfterBattleMobileText:
-	ctxt "I was going to"
+	text "I was going to"
 	line "make my debut at"
 	cont "the Battle Tower…"
 
@@ -184,23 +184,23 @@ GuitaristClydeAfterBattleMobileText:
 	done
 
 FastShipBedText1:
-	ctxt "A comfy bed!"
+	text "A comfy bed!"
 	line "Time to sleep…"
 	done
 
 FastShipBedText2:
-	ctxt "Ah, refreshed and"
+	text "Ah, refreshed and"
 	line "restored!"
 	done
 
 FastShipArrivedOlivineText:
-	ctxt "Fast Ship S.S.Aqua"
+	text "Fast Ship S.S.Aqua"
 	line "has arrived in"
 	cont "Olivine City."
 	done
 
 FastShipArrivedVermilionText:
-	ctxt "Fast Ship S.S.Aqua"
+	text "Fast Ship S.S.Aqua"
 	line "has arrived in"
 	cont "Vermilion City."
 	done

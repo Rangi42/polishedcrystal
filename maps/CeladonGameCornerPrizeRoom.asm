@@ -203,13 +203,13 @@ CeladonGameCornerPokemonVendor:
 	db "Cancel@"
 
 CeladonGameCornerPrizeRoomGentlemanText:
-	ctxt "I wanted Porygon,"
+	text "I wanted Porygon,"
 	line "but I was short by"
 	cont "100 coins…"
 	done
 
 CeladonGameCornerPrizeRoomPharmacistText:
-	ctxt "Whew…"
+	text "Whew…"
 
 	para "I've got to stay"
 	line "calm and cool…"
@@ -220,7 +220,7 @@ CeladonGameCornerPrizeRoomPharmacistText:
 	done
 
 CeladonPrizeRoom_PrizeVendorIntroText:
-	ctxt "Welcome!"
+	text "Welcome!"
 
 	para "We exchange your"
 	line "coins for fabulous"
@@ -228,40 +228,40 @@ CeladonPrizeRoom_PrizeVendorIntroText:
 	done
 
 CeladonPrizeRoom_AskWhichPrizeText:
-	ctxt "Which prize would"
+	text "Which prize would"
 	line "you like?"
 	done
 
 CeladonPrizeRoom_ConfirmPurchaseText:
-	ctxt "OK, so you wanted"
+	text "OK, so you wanted"
 	line "a "
 	text_ram wStringBuffer3
 	text "?"
 	done
 
 CeladonPrizeRoom_ConfirmTMPurchaseText:
-	ctxt "OK, so you wanted"
+	text "OK, so you wanted"
 	line ""
 	text_ram wStringBuffer3
 	text "?"
 	done
 
 CeladonPrizeRoom_HereYouGoText:
-	ctxt "Here you go!"
+	text "Here you go!"
 	done
 
 CeladonPrizeRoom_AlreadyHaveTMText:
-	ctxt "You already have"
+	text "You already have"
 	line "that TM."
 	done
 
 CeladonPrizeRoom_NotEnoughCoinsText:
-	ctxt "You don't have"
+	text "You don't have"
 	line "enough coins."
 	done
 
 CeladonPrizeRoom_NotEnoughRoomText:
-	ctxt "Wait, no, you have"
+	text "Wait, no, you have"
 	line "no room for it."
 
 	para "I'll return your"
@@ -269,11 +269,11 @@ CeladonPrizeRoom_NotEnoughRoomText:
 	done
 
 CeladonPrizeRoom_ComeAgainText:
-	ctxt "Oh. Please come"
+	text "Oh. Please come"
 	line "back with coins!"
 	done
 
 CeladonPrizeRoom_NoCoinCaseText:
-	ctxt "Oh? You don't have"
+	text "Oh? You don't have"
 	line "a Coin Case."
 	done

@@ -171,7 +171,7 @@ endc
 Script_TradeCenterClosed:
 	jumpthistextfaceplayer
 
-	ctxt "I'm sorry--the"
+	text "I'm sorry--the"
 	line "Trade Machine is"
 	cont "being adjusted."
 	done
@@ -238,7 +238,7 @@ endc
 Script_BattleRoomClosed:
 	jumpthistextfaceplayer
 
-	ctxt "I'm sorry--the"
+	text "I'm sorry--the"
 	line "Battle Machine is"
 	cont "being adjusted."
 	done
@@ -311,7 +311,7 @@ PokeCenter2FMovementData_PlayerSpinsClockwiseEndsFacingLeft:
 	step_end
 
 Text_BattleReceptionistIntro:
-	ctxt "Welcome to Cable"
+	text "Welcome to Cable"
 	line "Club Colosseum."
 
 	para "You may battle a"
@@ -322,7 +322,7 @@ Text_BattleReceptionistIntro:
 	done
 
 Text_TradeReceptionistIntro:
-	ctxt "Welcome to Cable"
+	text "Welcome to Cable"
 	line "Trade Center."
 
 	para "You may trade your"
@@ -334,22 +334,22 @@ Text_TradeReceptionistIntro:
 	done
 
 Text_FriendNotReady:
-	ctxt "Your friend is not"
+	text "Your friend is not"
 	line "ready."
 	prompt
 
 Text_MustSaveGame:
-	ctxt "Before opening the"
+	text "Before opening the"
 	line "link, you must"
 	cont "save your game."
 	done
 
 Text_PleaseWait:
-	ctxt "Please wait."
+	text "Please wait."
 	done
 
 Text_LinkTimedOut:
-	ctxt "The link has been"
+	text "The link has been"
 	line "closed because of"
 	cont "inactivity."
 
@@ -359,43 +359,43 @@ Text_LinkTimedOut:
 	prompt
 
 Text_PleaseComeAgain:
-	ctxt "Please come again."
+	text "Please come again."
 	prompt
 
 Text_PleaseComeIn:
-	ctxt "Please come in."
+	text "Please come in."
 	prompt
 
 Text_CantLinkToThePast:
-	ctxt "You can't link to"
+	text "You can't link to"
 	line "the past here."
 	prompt
 
 Text_IncompatibleRooms:
-	ctxt "Incompatible rooms"
+	text "Incompatible rooms"
 	line "were chosen."
 	prompt
 
 Text_PleaseComeIn2:
-	ctxt "Please come in."
+	text "Please come in."
 	done
 
 Text_TimeCapsuleClosed:
-	ctxt "I'm sorry--the"
+	text "I'm sorry--the"
 	line "Time Capsule is"
 	cont "inoperative."
 	done
 
 Text_OhPleaseWait:
-	ctxt "Oh, please wait."
+	text "Oh, please wait."
 	done
 
 Text_ChangeTheLook:
-	ctxt "We need to change"
+	text "We need to change"
 	line "the look here…"
 	done
 
 Text_LikeTheLook:
-	ctxt "How does this"
+	text "How does this"
 	line "style look to you?"
 	done

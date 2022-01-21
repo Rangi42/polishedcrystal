@@ -25,7 +25,7 @@ Route6_MapScriptHeader:
 GenericTrainerPokefanmRex:
 	generictrainer POKEFANM, REX, EVENT_BEAT_POKEFANM_REX, PokefanmRexSeenText, PokefanmRexBeatenText
 
-	ctxt "Look how adorable"
+	text "Look how adorable"
 	line "my Phanpy acts!"
 
 	para "Isn't it cute"
@@ -34,19 +34,19 @@ GenericTrainerPokefanmRex:
 	done
 
 PokefanmRexSeenText:
-	ctxt "My Phanpy is the"
+	text "My Phanpy is the"
 	line "cutest in the"
 	cont "world."
 	done
 
 PokefanmRexBeatenText:
-	ctxt "My Phanpy!"
+	text "My Phanpy!"
 	done
 
 GenericTrainerPokefanmAllan:
 	generictrainer POKEFANM, ALLAN, EVENT_BEAT_POKEFANM_ALLAN, PokefanmAllanSeenText, PokefanmAllanBeatenText
 
-	ctxt "Look how adorable"
+	text "Look how adorable"
 	line "my Teddiursa acts!"
 
 	para "Isn't it cute"
@@ -55,55 +55,55 @@ GenericTrainerPokefanmAllan:
 	done
 
 PokefanmAllanSeenText:
-	ctxt "My Teddiursa is"
+	text "My Teddiursa is"
 	line "the cutest in the"
 	cont "world."
 	done
 
 PokefanmAllanBeatenText:
-	ctxt "My Teddiursa!"
+	text "My Teddiursa!"
 	done
 
 GenericTrainerTwinsDayanddani1:
 	generictrainer TWINS, DAYANDDANI1, EVENT_BEAT_TWINS_DAY_AND_DANI, TwinsDayanddani1SeenText, TwinsDayanddani1BeatenText
 
-	ctxt "Day: You beat us…"
+	text "Day: You beat us…"
 	done
 
 TwinsDayanddani1SeenText:
-	ctxt "Day: Are you going"
+	text "Day: Are you going"
 	line "to beat us?"
 	done
 
 TwinsDayanddani1BeatenText:
-	ctxt "Day: Waah!"
+	text "Day: Waah!"
 	done
 
 GenericTrainerTwinsDayanddani2:
 	generictrainer TWINS, DAYANDDANI2, EVENT_BEAT_TWINS_DAY_AND_DANI, TwinsDayanddani2SeenText, TwinsDayanddani2BeatenText
 
-	ctxt "Dani: Looks like"
+	text "Dani: Looks like"
 	line "we got bounced."
 	done
 
 TwinsDayanddani2SeenText:
-	ctxt "Dani: We'll knock"
+	text "Dani: We'll knock"
 	line "you flat!"
 	done
 
 TwinsDayanddani2BeatenText:
-	ctxt "Dani: Eeeeh!"
+	text "Dani: Eeeeh!"
 	done
 
 GenericTrainerYoungsterChaz:
 	generictrainer YOUNGSTER, CHAZ, EVENT_BEAT_YOUNGSTER_CHAZ, .SeenText, .BeatenText
 
-	ctxt "Me and my big"
+	text "Me and my big"
 	line "mouth…"
 	done
 
 .SeenText:
-	ctxt "Do I see a strong"
+	text "Do I see a strong"
 	line "trainer?"
 
 	para "Nope, there's only"
@@ -111,22 +111,22 @@ GenericTrainerYoungsterChaz:
 	done
 
 .BeatenText:
-	ctxt "The trash was me…"
+	text "The trash was me…"
 	done
 
 GenericTrainerGuitaristfWanda:
 	generictrainer GUITARISTF, WANDA, EVENT_BEAT_GUITARISTF_WANDA, .SeenText, .BeatenText
 
-	ctxt "Just move along…"
+	text "Just move along…"
 	done
 
 .SeenText:
-	ctxt "You'd better"
+	text "You'd better"
 	line "scatter and run!"
 	done
 
 .BeatenText:
-	ctxt "The battle's lost"
+	text "The battle's lost"
 	line "and not won…"
 	done
 
@@ -155,13 +155,13 @@ OfficerfJennyScript:
 	jumptextfaceplayer .AfterTextMale
 
 .DaytimeText:
-	ctxt "Us Officers are"
+	text "Us Officers are"
 	line "here to keep the"
 	cont "peace."
 	done
 
 .SeenText:
-	ctxt "You don't look"
+	text "You don't look"
 	line "familiar."
 
 	para "Squirtle Squad,"
@@ -169,12 +169,12 @@ OfficerfJennyScript:
 	done
 
 .BeatenText:
-	ctxt "Squirtle Squad,"
+	text "Squirtle Squad,"
 	line "retreat…"
 	done
 
 .AfterTextMale:
-	ctxt "Sorry to bother"
+	text "Sorry to bother"
 	line "you, sir."
 
 	para "I get jumpy at"
@@ -182,7 +182,7 @@ OfficerfJennyScript:
 	done
 
 .AfterTextFemale:
-	ctxt "Sorry to bother"
+	text "Sorry to bother"
 	line "you, miss."
 
 	para "I get jumpy at"
@@ -190,7 +190,7 @@ OfficerfJennyScript:
 	done
 
 Route6PokefanMText:
-	ctxt "The road is closed"
+	text "The road is closed"
 	line "until the problem"
 
 	para "at the Power Plant"
@@ -198,7 +198,7 @@ Route6PokefanMText:
 	done
 
 Route6UndergroundPathSignText:
-	ctxt "Underground Path"
+	text "Underground Path"
 
 	para "Cerulean City -"
 	line "Vermilion City"

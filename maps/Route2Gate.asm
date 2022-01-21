@@ -17,7 +17,7 @@ Route2Gate_MapScriptHeader:
 	object_event  6,  4, SPRITE_SCIENTIST, SPRITEMOVEDATA_WALK_UP_DOWN, 2, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_COMMAND, jumptextfaceplayer, Route2GateScientistText, -1
 
 Route2GateScientistText:
-	ctxt "Are you <PLAYER>?"
+	text "Are you <PLAYER>?"
 
 	para "I work as Prof."
 	line "Oak's Aide."

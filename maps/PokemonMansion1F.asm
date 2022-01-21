@@ -31,7 +31,7 @@ PokemonMansion1F_MapScriptHeader:
 GenericTrainerBurglarPete:
 	generictrainer BURGLAR, PETE, EVENT_BEAT_BURGLAR_PETE, BurglarPeteSeenText, BurglarPeteBeatenText
 
-	ctxt "Some valuable"
+	text "Some valuable"
 	line "items probably"
 
 	para "survived the"
@@ -41,7 +41,7 @@ GenericTrainerBurglarPete:
 GenericTrainerBurglarLouis:
 	generictrainer BURGLAR, LOUIS, EVENT_BEAT_BURGLAR_LOUIS, BurglarLouisSeenText, BurglarLouisBeatenText
 
-	ctxt "I just want to"
+	text "I just want to"
 	line "find some loot"
 	cont "and get out."
 	done
@@ -69,44 +69,44 @@ PokemonMansion1FHiddenPPUp:
 	jumpopenedtext PokemonMansion1FNoRoomForItemText
 
 BurglarPeteSeenText:
-	ctxt "Who are you? There"
+	text "Who are you? There"
 	line "shouldn't be"
 	cont "anyone here."
 	done
 
 BurglarPeteBeatenText:
-	ctxt "Ouch!"
+	text "Ouch!"
 	done
 
 BurglarLouisSeenText:
-	ctxt "This place is"
+	text "This place is"
 	line "creepy!"
 	done
 
 BurglarLouisBeatenText:
-	ctxt "Ayah!"
+	text "Ayah!"
 	done
 
 PokemonMansion1FFoundItemText:
-	ctxt "<PLAYER> found"
+	text "<PLAYER> found"
 	line ""
 	text_ram wStringBuffer3
 	text "!"
 	done
 
 PokemonMansion1FNoRoomForItemText:
-	ctxt "But <PLAYER> can't"
+	text "But <PLAYER> can't"
 	line "hold another item…"
 	done
 
 PokemonMansion1FMewtwoStatueText:
-	ctxt "A #mon statue…"
+	text "A #mon statue…"
 
 	para "It looks very"
 	line "threatening."
 	done
 
 PokemonMansion1FFlowerPotText:
-	ctxt "It's filled with"
+	text "It's filled with"
 	line "soil and ashes…"
 	done

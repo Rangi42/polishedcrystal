@@ -51,7 +51,7 @@ KukuiScript:
 	jumpthistext
 
 .AfterText:
-	ctxt "Amazing! I went"
+	text "Amazing! I went"
 	line "right at you, and"
 	cont "you still won!"
 
@@ -70,7 +70,7 @@ KukuiScript:
 	done
 
 .IntroText:
-	ctxt "Hey there!"
+	text "Hey there!"
 	line "The name's Kukui."
 
 	para "So, you go by"
@@ -103,7 +103,7 @@ KukuiScript:
 	done
 
 .RematchText:
-	ctxt "Hey there,"
+	text "Hey there,"
 	line "<PLAYER>!"
 
 	para "I've been training"
@@ -118,19 +118,19 @@ KukuiScript:
 	done
 
 .SeenText:
-	ctxt "Let's have a battle"
+	text "Let's have a battle"
 	line "worthy of this"
 	cont "moment!"
 	done
 
 .BeatenText:
-	ctxt "I couldn't win"
+	text "I couldn't win"
 	line "even though I"
 	cont "went all out…"
 	done
 
 .RefusedText:
-	ctxt "Totally focused on"
+	text "Totally focused on"
 	line "your own quest,"
 	cont "yeah?"
 
@@ -138,7 +138,7 @@ KukuiScript:
 	done
 
 Route22CooltrainerfText:
-	ctxt "The name “Kanto”"
+	text "The name “Kanto”"
 	line "means “east of the"
 	cont "barrier.”"
 
@@ -148,7 +148,7 @@ Route22CooltrainerfText:
 	done
 
 VictoryRoadEntranceSignText:
-	ctxt "Route 22"
+	text "Route 22"
 
 	para "#mon League"
 	line "Reception Gate"

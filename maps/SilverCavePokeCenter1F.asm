@@ -22,7 +22,7 @@ PokemonJournalLanceScript:
 	setflag ENGINE_READ_LANCE_JOURNAL
 	jumpthistext
 
-	ctxt "#mon Journal"
+	text "#mon Journal"
 
 	para "Special Feature:"
 	line "Champion Lance!"
@@ -46,9 +46,9 @@ SilverCavePokeCenterGrampsScript:
 	ifequal NUM_POKEMON_JOURNALS, .ReadThemAll
 	jumpthisopenedtext
 
-	ctxt "Oh, you've read "
+	text "Oh, you've read "
 	text_decimal hScriptVar, 1, 2
-	ctxt ""
+	text ""
 	line "of them?"
 
 	para "Not bad, but I've"
@@ -58,7 +58,7 @@ SilverCavePokeCenterGrampsScript:
 .ReadNone:
 	jumpthisopenedtext
 
-	ctxt "You haven't read"
+	text "You haven't read"
 	line "any? What a shame."
 
 	para "#mon Centers"
@@ -79,7 +79,7 @@ SilverCavePokeCenterGrampsScript:
 	jumpthisopenedtext
 
 .AfterText:
-	ctxt "That Belt's not"
+	text "That Belt's not"
 	line "just for show."
 
 	para "It'll power up your"
@@ -88,7 +88,7 @@ SilverCavePokeCenterGrampsScript:
 	done
 
 .GreetingText:
-	ctxt "In my youth I was"
+	text "In my youth I was"
 	line "a talented trainer"
 	cont "myself."
 
@@ -101,7 +101,7 @@ SilverCavePokeCenterGrampsScript:
 	done
 
 .ReadAllText:
-	ctxt "You've read them"
+	text "You've read them"
 	line "all? Then you're"
 
 	para "a Journal expert"
@@ -112,7 +112,7 @@ SilverCavePokeCenterGrampsScript:
 	done
 
 SilverCavePokeCenter1FGrannyText:
-	ctxt "Trainers who seek"
+	text "Trainers who seek"
 	line "power climb Mt."
 
 	para "Silver despite its"

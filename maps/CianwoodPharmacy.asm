@@ -43,7 +43,7 @@ CianwoodPharmacist:
 	pokemart MARTTYPE_PHARMACY, MART_CIANWOOD
 
 PharmacistGiveSecretpotionText:
-	ctxt "Your #mon"
+	text "Your #mon"
 	line "appear to be fine."
 
 	para "Is something"
@@ -62,7 +62,7 @@ PharmacistGiveSecretpotionText:
 	done
 
 PharmacistDescribeSecretpotionText:
-	ctxt "My SecretPotion is"
+	text "My SecretPotion is"
 	line "a tad too strong."
 
 	para "I only offer it in"

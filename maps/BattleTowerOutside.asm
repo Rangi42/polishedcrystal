@@ -73,7 +73,7 @@ BattleTowerOutsidePanUpHelperScript:
 	step_end
 
 BattleTowerOutsideSignText:
-	ctxt "Battle Tower"
+	text "Battle Tower"
 
 	para "Take the Ultimate"
 	line "Trainer Challenge!"
@@ -84,7 +84,7 @@ BattleTowerOutsideYoungsterScript:
 	iftrue_jumptextfaceplayer .OpenText
 	jumpthistextfaceplayer
 
-	ctxt "Wow, the Battle"
+	text "Wow, the Battle"
 	line "Tower is huge! My"
 
 	para "neck is tired from"
@@ -92,7 +92,7 @@ BattleTowerOutsideYoungsterScript:
 	done
 
 .OpenText:
-	ctxt "Wow, the Battle"
+	text "Wow, the Battle"
 	line "Tower is huge!"
 
 	para "There must be many"
@@ -105,7 +105,7 @@ BattleTowerOutsideBeautyScript:
 	iftrue_jumptextfaceplayer .OpenText
 	jumpthistextfaceplayer
 
-	ctxt "What on earth do"
+	text "What on earth do"
 	line "they do here?"
 
 	para "If the name says"
@@ -116,7 +116,7 @@ BattleTowerOutsideBeautyScript:
 	done
 
 .OpenText:
-	ctxt "You can use only"
+	text "You can use only"
 	line "three #mon."
 
 	para "It's so hard to"
@@ -127,7 +127,7 @@ BattleTowerOutsideBeautyScript:
 	done
 
 BattleTowerOutsideSailorText:
-	ctxt "Hehehe, I snuck"
+	text "Hehehe, I snuck"
 	line "out from work."
 
 	para "I can't bail out"
@@ -138,6 +138,6 @@ BattleTowerOutsideSailorText:
 	done
 
 BattleTowerOutsideDoorsClosedText:
-	ctxt "The Battle Tower's"
+	text "The Battle Tower's"
 	line "doors are closed…"
 	done

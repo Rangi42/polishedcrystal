@@ -60,7 +60,7 @@ GoldenrodDeptStore5FReceptionistScript:
 .EventIsOver:
 	jumpthisopenedtext
 
-	ctxt "There are sure to"
+	text "There are sure to"
 	line "be TMs that are"
 
 	para "just perfect for"
@@ -83,18 +83,18 @@ GoldenrodDeptStore5FTwinScript:
 	jumpthisopenedtext
 
 .ComeBackText:
-	ctxt "You can have"
+	text "You can have"
 	line "another Berry"
 	cont "tomorrow."
 	done
 
 GoldenrodDeptStore5FReceptionistOhYourMonDotDotDotText:
-	ctxt "Hello. Oh, your"
+	text "Hello. Oh, your"
 	line "#mon…"
 	done
 
 GoldenrodDeptStore5FReceptionistThisMoveShouldBePerfectText:
-	ctxt "It's very attached"
+	text "It's very attached"
 	line "to you."
 
 	para "This move should"
@@ -103,14 +103,14 @@ GoldenrodDeptStore5FReceptionistThisMoveShouldBePerfectText:
 	done
 
 GoldenrodDeptStore5FReceptionistItsAdorableText:
-	ctxt "It's adorable!"
+	text "It's adorable!"
 
 	para "You should teach"
 	line "it good TM moves."
 	done
 
 GoldenrodDeptStore5FCarrieMysteryGiftRequiresGBCText:
-	ctxt "Looking at the"
+	text "Looking at the"
 	line "ground while I was"
 
 	para "walking made me"
@@ -121,12 +121,12 @@ GoldenrodDeptStore5FCarrieMysteryGiftRequiresGBCText:
 	done
 
 MysteryGiftGirl_NoRoomText:
-	ctxt "But you can't"
+	text "But you can't"
 	line "carry it…"
 	done
 
 GoldenrodDeptStore5FLassText:
-	ctxt "On Sundays, a lady"
+	text "On Sundays, a lady"
 	line "comes to check out"
 	cont "#mon."
 
@@ -135,7 +135,7 @@ GoldenrodDeptStore5FLassText:
 	done
 
 GoldenrodDeptStore5FPokefanMText:
-	ctxt "You can't rename a"
+	text "You can't rename a"
 	line "#mon you get in"
 	cont "a trade."
 
@@ -147,7 +147,7 @@ GoldenrodDeptStore5FPokefanMText:
 	done
 
 GoldenrodDeptStore5FDirectoryText:
-	ctxt "Customize Your"
+	text "Customize Your"
 	line "#mon"
 
 	para "5F TM Corner"

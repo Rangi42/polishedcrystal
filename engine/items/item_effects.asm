@@ -1845,7 +1845,7 @@ ApricornBox:
 	db 0 ; default option
 
 .Text
-	ctxt  " Red   Blu"
+	text  " Red   Blu"
 	next1 "   ×     ×"
 	next1 " Ylw   Grn"
 	next1 "   ×     ×"
@@ -2308,7 +2308,7 @@ Ball_ReplacePartyMonCaughtBall:
 BallReplacedText:
 	text "Put "
 	text_ram wStringBuffer1
-	ctxt " in"
+	text " in"
 	line "the "
 	text_ram wStringBuffer2
 	text "."
@@ -2709,14 +2709,14 @@ AbilityCap:
 	jr .loop
 
 ChangeAbilityToText:
-	ctxt "Change ability to"
+	text "Change ability to"
 	line ""
 	text_ram wStringBuffer1
 	text "?"
 	done
 
 AbilityChangedText:
-	ctxt "The ability was"
+	text "The ability was"
 	line "changed!"
 	prompt
 

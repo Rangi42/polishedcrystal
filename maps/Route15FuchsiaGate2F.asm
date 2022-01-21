@@ -22,7 +22,7 @@ Route15FuchsiaGate2FBinoculars2:
 
 Route15FuchsiaGate2FBinoculars1Text:
 Route15FuchsiaGate2FBinoculars2Text:
-	ctxt "Looked into the"
+	text "Looked into the"
 	line "binoculars."
 
 	para "It looks like a"

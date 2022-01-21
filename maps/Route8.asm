@@ -33,7 +33,7 @@ Route8_MapScriptHeader:
 GenericTrainerBikerDwayne:
 	generictrainer BIKER, DWAYNE, EVENT_BEAT_BIKER_DWAYNE, BikerDwayneSeenText, BikerDwayneBeatenText
 
-	ctxt "The Kanto #mon"
+	text "The Kanto #mon"
 	line "Federation will"
 	cont "never fall!"
 	done
@@ -41,14 +41,14 @@ GenericTrainerBikerDwayne:
 GenericTrainerBikerHarris:
 	generictrainer BIKER, HARRIS, EVENT_BEAT_BIKER_HARRIS, BikerHarrisSeenText, BikerHarrisBeatenText
 
-	ctxt "Wiped out by some"
+	text "Wiped out by some"
 	line "punk from Johto…"
 	done
 
 GenericTrainerBikerZeke:
 	generictrainer BIKER, ZEKE, EVENT_BEAT_BIKER_ZEKE, BikerZekeSeenText, BikerZekeBeatenText
 
-	ctxt "We'll try not to"
+	text "We'll try not to"
 	line "disturb anyone"
 	cont "from now on…"
 	done
@@ -56,14 +56,14 @@ GenericTrainerBikerZeke:
 GenericTrainerSupernerdSam:
 	generictrainer SUPER_NERD, SAM, EVENT_BEAT_SUPER_NERD_SAM, SupernerdSamSeenText, SupernerdSamBeatenText
 
-	ctxt "The power of mag-"
+	text "The power of mag-"
 	line "nets is awesome!"
 	done
 
 GenericTrainerSupernerdTom:
 	generictrainer SUPER_NERD, TOM, EVENT_BEAT_SUPER_NERD_TOM, SupernerdTomSeenText, SupernerdTomBeatenText
 
-	ctxt "Gym Badges are"
+	text "Gym Badges are"
 	line "proof of your"
 	cont "skill at battles."
 	done
@@ -71,7 +71,7 @@ GenericTrainerSupernerdTom:
 GenericTrainerGentlemanMilton:
 	generictrainer GENTLEMAN, MILTON, EVENT_BEAT_GENTLEMAN_MILTON, GentlemanMiltonSeenText, GentlemanMiltonBeatenText
 
-	ctxt "Stopping in the"
+	text "Stopping in the"
 	line "road for a battle"
 	cont "isn't rude."
 
@@ -83,7 +83,7 @@ GenericTrainerGentlemanMilton:
 GenericTrainerCoupleMoeandlulu1:
 	generictrainer COUPLE, MOEANDLULU1, EVENT_BEAT_COUPLE_MOE_AND_LULU, CoupleMoeandlulu1SeenText, CoupleMoeandlulu1BeatenText
 
-	ctxt "Moe: In short,"
+	text "Moe: In short,"
 	line "you're just too"
 	cont "strong…"
 	done
@@ -91,7 +91,7 @@ GenericTrainerCoupleMoeandlulu1:
 GenericTrainerCoupleMoeandlulu2:
 	generictrainer COUPLE, MOEANDLULU2, EVENT_BEAT_COUPLE_MOE_AND_LULU, CoupleMoeandlulu2SeenText, CoupleMoeandlulu2BeatenText
 
-	ctxt "Lulu: It's not that"
+	text "Lulu: It's not that"
 	line "Moe's weak, it's"
 
 	para "that you're too"
@@ -101,7 +101,7 @@ GenericTrainerCoupleMoeandlulu2:
 GenericTrainerLassMeadow:
 	generictrainer LASS, MEADOW, EVENT_BEAT_LASS_MEADOW, LassMeadowSeenText, LassMeadowBeatenText
 
-	ctxt "Oh well, I'm more"
+	text "Oh well, I'm more"
 	line "worried about"
 
 	para "having fun than"
@@ -109,7 +109,7 @@ GenericTrainerLassMeadow:
 	done
 
 Route8BikerDwayneProtestText:
-	ctxt "We're the Kanto"
+	text "We're the Kanto"
 	line "#mon Federation"
 	cont "trainer group."
 
@@ -118,7 +118,7 @@ Route8BikerDwayneProtestText:
 	done
 
 Route8BikerZekeProtestText:
-	ctxt "We're the Kanto"
+	text "We're the Kanto"
 	line "#mon Federa-"
 	cont "tion!"
 
@@ -130,7 +130,7 @@ Route8BikerZekeProtestText:
 	done
 
 BikerDwayneSeenText:
-	ctxt "We're the Kanto"
+	text "We're the Kanto"
 	line "#mon Federation"
 	cont "trainer group."
 
@@ -139,12 +139,12 @@ BikerDwayneSeenText:
 	done
 
 BikerDwayneBeatenText:
-	ctxt "S-sorry!"
+	text "S-sorry!"
 	done
 
 Route8BikerHarrisProtestText:
 BikerHarrisSeenText:
-	ctxt "The cops shut down"
+	text "The cops shut down"
 	line "our Underground"
 
 	para "Path! That really"
@@ -152,53 +152,53 @@ BikerHarrisSeenText:
 	done
 
 BikerHarrisBeatenText:
-	ctxt "F-forgive me!"
+	text "F-forgive me!"
 	done
 
 BikerZekeSeenText:
-	ctxt "We're the Kanto"
+	text "We're the Kanto"
 	line "#mon Federa-"
 	cont "tion!"
 	cont "Right on!"
 	done
 
 BikerZekeBeatenText:
-	ctxt "Yikes! Sorry!"
+	text "Yikes! Sorry!"
 	done
 
 SupernerdSamSeenText:
-	ctxt "How does the Mag-"
+	text "How does the Mag-"
 	line "net Train work?"
 	done
 
 SupernerdSamBeatenText:
-	ctxt "I just want to see"
+	text "I just want to see"
 	line "the Magnet Train…"
 	done
 
 SupernerdTomSeenText:
-	ctxt "Hm… You've got"
+	text "Hm… You've got"
 	line "many Gym Badges."
 	done
 
 SupernerdTomBeatenText:
-	ctxt "Just as I thought…"
+	text "Just as I thought…"
 	line "You're tough!"
 	done
 
 GentlemanMiltonSeenText:
-	ctxt "Would you care to"
+	text "Would you care to"
 	line "join me in a"
 	cont "quick contest?"
 	done
 
 GentlemanMiltonBeatenText:
-	ctxt "You were very"
+	text "You were very"
 	line "skillful."
 	done
 
 CoupleMoeandlulu1SeenText:
-	ctxt "Moe: Do I look"
+	text "Moe: Do I look"
 	line "weak? Don't make"
 	cont "me laugh!"
 
@@ -208,11 +208,11 @@ CoupleMoeandlulu1SeenText:
 	done
 
 CoupleMoeandlulu1BeatenText:
-	ctxt "Moe: Uwaaaahhh…"
+	text "Moe: Uwaaaahhh…"
 	done
 
 CoupleMoeandlulu2SeenText:
-	ctxt "Lulu: Moe and I"
+	text "Lulu: Moe and I"
 	line "make a great pair!"
 
 	para "You should prepare"
@@ -220,25 +220,25 @@ CoupleMoeandlulu2SeenText:
 	done
 
 CoupleMoeandlulu2BeatenText:
-	ctxt "Lulu: Eeek!"
+	text "Lulu: Eeek!"
 	done
 
 LassMeadowSeenText:
-	ctxt "I like skirts!"
+	text "I like skirts!"
 	line "They're cute and"
 	cont "comfy to wear!"
 	done
 
 LassMeadowBeatenText:
-	ctxt "Oh my!"
+	text "Oh my!"
 	done
 
 Route8LockedDoorText:
-	ctxt "It's locked…"
+	text "It's locked…"
 	done
 
 Route8UndergroundPathSignText:
-	ctxt "The flyer's torn."
+	text "The flyer's torn."
 
 	para "It's impossible to"
 	line "read…"

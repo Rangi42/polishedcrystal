@@ -106,7 +106,7 @@ EcruteakShrineInsideReiScript:
 	db "Cancel@"
 
 EcruteakShrineInsideReiGreetingText:
-	ctxt "Rei: Oh, hello."
+	text "Rei: Oh, hello."
 	line "Welcome to our"
 	cont "shrine."
 
@@ -119,57 +119,57 @@ EcruteakShrineInsideReiGreetingText:
 	done
 
 EcruteakShrineInsideReiBlessText:
-	ctxt "Rei: OK, which"
+	text "Rei: OK, which"
 	line "#mon should I"
 	cont "bless?"
 	done
 
 EcruteakShrineInsideReiBlessingText:
-	ctxt "Rei: May you be"
+	text "Rei: May you be"
 	line "at ease, and find"
 	cont "peace."
 	done
 
 EcruteakShrineInsideHappinessText:
 	text_ram wStringBuffer3
-	ctxt " looks"
+	text " looks"
 	line "content."
 	done
 
 EcruteakShrineInsideReiBlessEggText:
-	ctxt "Rei: I can't"
+	text "Rei: I can't"
 	line "bless an Egg."
 	done
 
 EcruteakShrineInsideReiBattleText:
-	ctxt "Rei: Very well."
+	text "Rei: Very well."
 	line "Evil spirits,"
 	cont "begone!"
 	done
 
 EcruteakShrineInsideReiBeatenText:
-	ctxt "I admit defeat!"
+	text "I admit defeat!"
 	done
 
 EcruteakShrineInsideReiComeAgainText:
-	ctxt "Rei: Please come"
+	text "Rei: Please come"
 	line "again tomorrow."
 	done
 
 EcruteakShrineInsideReiCancelText:
-	ctxt "Rei: Please come"
+	text "Rei: Please come"
 	line "back if you change"
 	cont "your mind."
 	done
 
 EcruteakShrineInsideGrampsText:
-	ctxt "The shrine maiden"
+	text "The shrine maiden"
 	line "here is my grand-"
 	cont "daughter."
 	done
 
 EcruteakShrineInsideSageText:
-	ctxt "Most of us here at"
+	text "Most of us here at"
 	line "the shrine train"
 
 	para "Hoothoot and"
@@ -182,7 +182,7 @@ EcruteakShrineInsideSageText:
 	done
 
 EcruteakShrineInsideGrannyText:
-	ctxt "I'm glad they didn't"
+	text "I'm glad they didn't"
 	line "approve a stop in"
 	cont "Ecruteak for the"
 	cont "Magnet Train."
@@ -193,7 +193,7 @@ EcruteakShrineInsideGrannyText:
 	done
 
 EcruteakShrineInsideAltarText:
-	ctxt "Please show honor"
+	text "Please show honor"
 	line "and respect while"
 	cont "visiting."
 	done

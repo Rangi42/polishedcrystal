@@ -180,7 +180,7 @@ DayCareMovementData_LyraLeaves:
 	step_end
 
 DayCareLyraHelloText1:
-	ctxt "Lyra: Grandma!"
+	text "Lyra: Grandma!"
 
 	para "Let me introduce"
 	line "my friend."
@@ -196,7 +196,7 @@ DayCareLyraHelloText1:
 	done
 
 DayCareLyraHelloText2:
-	ctxt "Lyra: Grandma!"
+	text "Lyra: Grandma!"
 
 	para "Let me introduce"
 	line "my friend."
@@ -212,7 +212,7 @@ DayCareLyraHelloText2:
 	done
 
 DayCareLyraProtestText1:
-	ctxt "Lyra: What?"
+	text "Lyra: What?"
 	line "Grandma…!"
 
 	para "What are you"
@@ -233,7 +233,7 @@ DayCareLyraProtestText1:
 	done
 
 DayCareLyraProtestText2:
-	ctxt "Lyra: What?"
+	text "Lyra: What?"
 	line "Grandma…!"
 
 	para "What are you"
@@ -254,13 +254,13 @@ DayCareLyraProtestText2:
 	done
 
 DayCareLyraGoodbyeText:
-	ctxt "Lyra: Well, I'd"
+	text "Lyra: Well, I'd"
 	line "better go now…"
 	cont "See ya!"
 	done
 
 DayCareLyraForgotText:
-	ctxt "Lyra: Oh!"
+	text "Lyra: Oh!"
 	line "I almost forgot!"
 
 	para "Here! This is my"
@@ -268,12 +268,12 @@ DayCareLyraForgotText:
 	done
 
 GotLyrasNumberText:
-	ctxt "<PLAYER> got Lyra's"
+	text "<PLAYER> got Lyra's"
 	line "phone number."
 	done
 
 DayCareLyraEmbarassedText:
-	ctxt "Lyra: Grandma!"
+	text "Lyra: Grandma!"
 
 	para "Don't you say"
 	line "anything."
@@ -287,12 +287,12 @@ DayCareLyraEmbarassedText:
 	done
 
 Text_GrampsLookingForYou:
-	ctxt "Gramps was looking"
+	text "Gramps was looking"
 	line "for you."
 	done
 
 DayCareManText_GiveOddEgg:
-	ctxt "I'm the Day-Care"
+	text "I'm the Day-Care"
 	line "Man."
 
 	para "Do you know about"
@@ -316,12 +316,12 @@ DayCareManText_GiveOddEgg:
 	done
 
 DayCareText_GotOddEgg:
-	ctxt "<PLAYER> received"
+	text "<PLAYER> received"
 	line "the Odd Egg!"
 	done
 
 DayCareText_DescribeOddEgg:
-	ctxt "I found that when"
+	text "I found that when"
 	line "I was caring for"
 
 	para "someone's #mon"
@@ -335,7 +335,7 @@ DayCareText_DescribeOddEgg:
 	done
 
 DayCareLadyText_GiveLyrasEgg:
-	ctxt "Hello, dear."
+	text "Hello, dear."
 
 	para "Lyra told me this"
 	line "Egg was a gift for"
@@ -343,7 +343,7 @@ DayCareLadyText_GiveLyrasEgg:
 	done
 
 DayCareLadyText_DescribeLyrasEgg:
-	ctxt "That Egg came from"
+	text "That Egg came from"
 	line "her first #mon."
 
 	para "She must really"
@@ -352,7 +352,7 @@ DayCareLadyText_DescribeLyrasEgg:
 	done
 
 DayCareText_PartyAndBoxFull:
-	ctxt "You have no room"
+	text "You have no room"
 	line "for this, even in"
 	cont "your box."
 	done

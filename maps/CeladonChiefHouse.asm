@@ -16,7 +16,7 @@ CeladonChiefHouse_MapScriptHeader:
 	object_event  1,  3, SPRITE_COOL_DUDE, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_COMMAND, jumptextfaceplayer, CeladonChiefHouseCooltrainerMText, -1
 
 CeladonChiefHouseCooltrainerMText:
-	ctxt "The Game Corner is"
+	text "The Game Corner is"
 	line "making us a lot"
 	cont "of money!"
 

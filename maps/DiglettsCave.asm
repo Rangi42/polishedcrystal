@@ -48,7 +48,7 @@ DiglettsCaveFossilManiacScript:
 	special PlaceMoneyTopRight
 	jumpthisopenedtext
 
-	ctxt "Hey, thanks!"
+	text "Hey, thanks!"
 
 	para "I bet I can sell"
 	line "this for way more"
@@ -60,7 +60,7 @@ DiglettsCaveFossilManiacScript:
 	done
 
 .GreetingText:
-	ctxt "Hey, check it out."
+	text "Hey, check it out."
 	line "I've got a sweet"
 	cont "deal for ya!"
 
@@ -76,24 +76,24 @@ DiglettsCaveFossilManiacScript:
 	done
 
 .OfferText:
-	ctxt "Hey, nice! Let me"
+	text "Hey, nice! Let me"
 	line "check that out."
 
 	para "I'll give you"
 	line "¥"
 	text_decimal hMoneyTemp, 3, 7
-	ctxt " for it."
+	text " for it."
 	cont "Whaddaya say?"
 	done
 
 .WrongItemText:
-	ctxt "Nope, this is no"
+	text "Nope, this is no"
 	line "good. Not worth"
 	cont "my while."
 	done
 
 .NoItemText:
-	ctxt "…Nope, nothing"
+	text "…Nope, nothing"
 	line "cool in your Bag."
 
 	para "Oh well. Maybe"
@@ -103,7 +103,7 @@ DiglettsCaveFossilManiacScript:
 GenericTrainerHikerGerard:
 	generictrainer HIKER, GERARD, EVENT_BEAT_HIKER_GERARD, .SeenText, .BeatenText
 
-	ctxt "This place makes"
+	text "This place makes"
 	line "me so nervous."
 
 	para "What if a Diglett"
@@ -112,25 +112,25 @@ GenericTrainerHikerGerard:
 	done
 
 .SeenText:
-	ctxt "Aah! I think that"
+	text "Aah! I think that"
 	line "rock just moved!"
 	done
 
 .BeatenText:
-	ctxt "Must have been"
+	text "Must have been"
 	line "my imagination."
 	done
 
 GenericTrainerHikerDent:
 	generictrainer HIKER, DENT, EVENT_BEAT_HIKER_DENT, .SeenText, .BeatenText
 
-	ctxt "I'll fit right in"
+	text "I'll fit right in"
 	line "with Pewter Gym's"
 	cont "buff crew. Hohoh!"
 	done
 
 .SeenText:
-	ctxt "I'm headed to"
+	text "I'm headed to"
 	line "Pewter."
 
 	para "Its Rock-type Gym"
@@ -139,7 +139,7 @@ GenericTrainerHikerDent:
 	done
 
 .BeatenText:
-	ctxt "Hohoh!"
+	text "Hohoh!"
 	line "Someone more buff"
 	cont "than me!"
 	done
@@ -147,7 +147,7 @@ GenericTrainerHikerDent:
 GenericTrainerBlackbeltInigo:
 	generictrainer BLACKBELT_T, INIGO, EVENT_BEAT_BLACKBELT_INIGO, .SeenText, .BeatenText
 
-	ctxt "Making noises won't"
+	text "Making noises won't"
 	line "make you a better"
 	cont "fighter, but it"
 
@@ -156,35 +156,35 @@ GenericTrainerBlackbeltInigo:
 	done
 
 .SeenText:
-	ctxt "Prepare for"
+	text "Prepare for"
 	line "battle!"
 	cont "HOO-HAH!"
 	done
 
 .BeatenText:
-	ctxt "HIIYAAAH!"
+	text "HIIYAAAH!"
 	done
 
 GenericTrainerEngineerSmith:
 	generictrainer ENGINEER, SMITH, EVENT_BEAT_ENGINEER_SMITH, .SeenText, .BeatenText
 
-	ctxt "Those Diglett are"
+	text "Those Diglett are"
 	line "just natural"
 	cont "engineers."
 	done
 
 .SeenText:
-	ctxt "How did Diglett"
+	text "How did Diglett"
 	line "create such a long"
 	cont "tunnel?"
 	done
 
 .BeatenText:
-	ctxt "Amazing!"
+	text "Amazing!"
 	done
 
 DiglettsCaveCooltrainerfText:
-	ctxt "Look at all these"
+	text "Look at all these"
 	line "cute Diglett!"
 
 	para "I swear I saw one"
@@ -193,13 +193,13 @@ DiglettsCaveCooltrainerfText:
 
 DiglettsCavePokefanMText:
 if DEF(FAITHFUL)
-	ctxt "A bunch of Diglett"
+	text "A bunch of Diglett"
 	line "popped out of the"
 
 	para "ground! That was"
 	line "shocking."
 else
-	ctxt "When the volcano"
+	text "When the volcano"
 	line "on Cinnabar Island"
 	cont "erupted, it radic-"
 

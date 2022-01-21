@@ -48,7 +48,7 @@ OlivineGymJasmineScript:
 	setevent EVENT_GOT_TM23_IRON_TAIL
 	jumpthisopenedtext
 
-	ctxt "…You could use"
+	text "…You could use"
 	line "that TM to teach"
 	cont "Iron Tail."
 	done
@@ -60,7 +60,7 @@ OlivineGymGuyScript:
 	iffalse_jumptextfaceplayer OlivineGymGuyPreText
 	jumpthistextfaceplayer
 
-	ctxt "Jasmine uses the"
+	text "Jasmine uses the"
 	line "newly discovered"
 	cont "Steel-type."
 
@@ -78,7 +78,7 @@ OlivineGymLassConnie:
 	jumpthistextfaceplayer
 
 .SeenText:
-	ctxt "Giggle… I know"
+	text "Giggle… I know"
 	line "how capable you"
 
 	para "are from the"
@@ -92,7 +92,7 @@ OlivineGymLassConnie:
 	done
 
 .AfterText:
-	ctxt "You are amazing…"
+	text "You are amazing…"
 	line "You should aim"
 
 	para "even higher, with"
@@ -112,7 +112,7 @@ OlivineGymGentlemanPreston:
 	jumpthistextfaceplayer
 
 .SeenText:
-	ctxt "I knew you'd"
+	text "I knew you'd"
 	line "come here."
 
 	para "Thank you for"
@@ -126,7 +126,7 @@ OlivineGymGentlemanPreston:
 	done
 
 .AfterText:
-	ctxt "Impressive!"
+	text "Impressive!"
 	line "You should earn"
 
 	para "more badges with"
@@ -150,7 +150,7 @@ OlivineGymStatue:
 	jumpstd gymstatue3
 
 Jasmine_SteelTypeIntro:
-	ctxt "…Thank you for"
+	text "…Thank you for"
 	line "your help at the"
 	cont "Lighthouse…"
 
@@ -175,7 +175,7 @@ Jasmine_SteelTypeIntro:
 	done
 
 Jasmine_BetterTrainer:
-	ctxt "…You are a better"
+	text "…You are a better"
 	line "trainer than me,"
 
 	para "in both skill and"
@@ -189,12 +189,12 @@ Jasmine_BetterTrainer:
 	done
 
 Text_ReceivedMineralBadge:
-	ctxt "<PLAYER> received"
+	text "<PLAYER> received"
 	line "the Mineral Badge."
 	done
 
 Jasmine_BadgeSpeech:
-	ctxt "With that Badge,"
+	text "With that Badge,"
 	line "all #mon up"
 
 	para "to <LV>70, even"
@@ -208,13 +208,13 @@ Jasmine_BadgeSpeech:
 	done
 
 Jasmine_GoodLuck:
-	ctxt "Um… I don't know"
+	text "Um… I don't know"
 	line "how to say this,"
 	cont "but good luck…"
 	done
 
 OlivineGymGuyWinText:
-	ctxt "That was awesome."
+	text "That was awesome."
 
 	para "The Steel-type,"
 	line "huh?"
@@ -225,7 +225,7 @@ OlivineGymGuyWinText:
 	done
 
 OlivineGymGuyPreText:
-	ctxt "Jasmine, the Gym"
+	text "Jasmine, the Gym"
 	line "Leader, is at the"
 	cont "Lighthouse."
 

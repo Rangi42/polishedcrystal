@@ -57,14 +57,14 @@ DimCave3FSetUpStoneTable:
 	earthquake 80
 	jumpthistext
 
-	ctxt "The boulder fell"
+	text "The boulder fell"
 	line "through."
 	done
 
 GenericTrainerEngineerHugo:
 	generictrainer ENGINEER, HUGO, EVENT_BEAT_ENGINEER_HUGO, .SeenText, .BeatenText
 
-	ctxt "The noise of that"
+	text "The noise of that"
 	line "mine cart gave me"
 	cont "a scare."
 
@@ -74,23 +74,23 @@ GenericTrainerEngineerHugo:
 	done
 
 .SeenText:
-	ctxt "Cave-in!"
+	text "Cave-in!"
 	done
 
 .BeatenText:
-	ctxt "Oh, you just"
+	text "Oh, you just"
 	line "pushed a boulder!"
 	done
 
 GenericTrainerBlackbeltTakeo:
 	generictrainer BLACKBELT_T, TAKEO, EVENT_BEAT_BLACKBELT_TAKEO, .SeenText, .BeatenText
 
-	ctxt "All I want is to"
+	text "All I want is to"
 	line "train in peace."
 	done
 
 .SeenText:
-	ctxt "I'm training here"
+	text "I'm training here"
 	line "alone with my"
 	cont "#mon."
 
@@ -98,14 +98,14 @@ GenericTrainerBlackbeltTakeo:
 	done
 
 .BeatenText:
-	ctxt "Clearly I need"
+	text "Clearly I need"
 	line "more training…"
 	done
 
 GenericTrainerHikerFloyd:
 	generictrainer HIKER, FLOYD, EVENT_BEAT_HIKER_FLOYD, .SeenText, .BeatenText
 
-	ctxt "I am SO lost in"
+	text "I am SO lost in"
 	line "here!"
 
 	para "I should stick to"
@@ -113,7 +113,7 @@ GenericTrainerHikerFloyd:
 	done
 
 .SeenText:
-	ctxt "This cave makes me"
+	text "This cave makes me"
 	line "so ANGRY!"
 
 	para "I'll battle to let"
@@ -121,7 +121,7 @@ GenericTrainerHikerFloyd:
 	done
 
 .BeatenText:
-	ctxt "I got beat down by"
+	text "I got beat down by"
 	line "a kid!"
 	done
 
@@ -133,16 +133,16 @@ DimCave3FPokefanmScript:
 	iftrue_jumpopenedtext .YesText
 	jumpthisopenedtext
 
-	ctxt "What?! Do you"
+	text "What?! Do you"
 	line "have a map?"
 	done
 
 .QuestionText:
-	ctxt "Are you lost?"
+	text "Are you lost?"
 	done
 
 .YesText:
-	ctxt "Me too!"
+	text "Me too!"
 
 	para "The Power Plant"
 	line "messes with my"

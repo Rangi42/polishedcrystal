@@ -37,7 +37,7 @@ CeladonUniversityLibrary1F_MapScriptHeader:
 	object_event 10,  3, SPRITE_BOOK_PAPER_POKEDEX, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_COMMAND, jumptext, CeladonUniversityLibrary1FBookText, -1
 
 CeladonUniversityLibrary1FLadyText:
-	ctxt "This library is on"
+	text "This library is on"
 	line "university"
 	cont "grounds, but it's"
 
@@ -48,12 +48,12 @@ CeladonUniversityLibrary1FLadyText:
 	done
 
 CeladonUniversityLibrary1FGentlemanText:
-	ctxt "Shh! Can't you see"
+	text "Shh! Can't you see"
 	line "I'm reading here?"
 	done
 
 CeladonUniversityLibrary1FCooltrainerfText:
-	ctxt "Prof.Oak used to"
+	text "Prof.Oak used to"
 	line "teach here, so the"
 
 	para "library has copies"
@@ -70,14 +70,14 @@ CeladonUniversityLibrary1FGameboyKidScript:
 	end
 
 .Text:
-	ctxt "My #dex has a"
+	text "My #dex has a"
 	line "game upgrade."
 
 	para "I'm playing Tetris!"
 	done
 
 CeladonUniversityLibrary1FPokefan_fText:
-	ctxt "We have a mutual"
+	text "We have a mutual"
 	line "lending agreement"
 
 	para "with Canalave"
@@ -97,7 +97,7 @@ CeladonUniversityLibrary1FCooltrainermScript:
 	jumpopenedtext .Text2
 
 .Text1:
-	ctxt "I have a big test"
+	text "I have a big test"
 	line "coming up, so I'm"
 
 	para "planning to be"
@@ -111,14 +111,14 @@ CeladonUniversityLibrary1FCooltrainermScript:
 	done
 
 .Text2:
-	ctxt "If you want your"
+	text "If you want your"
 	line "#mon to hang in"
 	cont "there, give them"
 	cont "that Focus Band."
 	done
 
 CeladonUniversityLibrary1FTeacherText:
-	ctxt "I'm the head"
+	text "I'm the head"
 	line "librarian."
 
 	para "If you need any-"
@@ -129,7 +129,7 @@ CeladonUniversityLibrary1FTeacherText:
 	done
 
 CeladonUniversityLibrary1FBookText:
-	ctxt "It's a book about"
+	text "It's a book about"
 	line "flower arranging."
 
 	para "A Sunflora is on"
@@ -137,7 +137,7 @@ CeladonUniversityLibrary1FBookText:
 	done
 
 CeladonUniversityLibrary1FSignpost1Text:
-	ctxt "Please do not"
+	text "Please do not"
 	line "disturb students"
 
 	para "reading in the"
@@ -145,7 +145,7 @@ CeladonUniversityLibrary1FSignpost1Text:
 	done
 
 CeladonUniversityLibrary1FSignpost2Text:
-	ctxt "Please do not"
+	text "Please do not"
 	line "bring food or"
 
 	para "beverages into"
@@ -153,7 +153,7 @@ CeladonUniversityLibrary1FSignpost2Text:
 	done
 
 CeladonUniversityLibrary1FBookshelf1Text:
-	ctxt "Huh? Someone left"
+	text "Huh? Someone left"
 	line "an old photograph"
 	cont "in this book."
 
@@ -166,7 +166,7 @@ CeladonUniversityLibrary1FBookshelf1Text:
 	done
 
 CeladonUniversityLibrary1FBookshelf2Text:
-	ctxt "It's a photo album"
+	text "It's a photo album"
 	line "containing many"
 
 	para "pictures of"
@@ -178,7 +178,7 @@ CeladonUniversityLibrary1FBookshelf2Text:
 	done
 
 CeladonUniversityLibrary1FBookshelf3Text:
-	ctxt "It's a book about"
+	text "It's a book about"
 	line "a man who taught"
 
 	para "his #mon to"
@@ -190,7 +190,7 @@ CeladonUniversityLibrary1FBookshelf3Text:
 	done
 
 CeladonUniversityLibrary1FBookshelf4Text:
-	ctxt "It's a book about"
+	text "It's a book about"
 	line "#mon palin-"
 	cont "dromes."
 
@@ -200,7 +200,7 @@ CeladonUniversityLibrary1FBookshelf4Text:
 	done
 
 CeladonUniversityLibrary1FBookshelf5Text:
-	ctxt "This book is about"
+	text "This book is about"
 	line "Toy #mon that"
 
 	para "come to life after"
@@ -212,7 +212,7 @@ CeladonUniversityLibrary1FBookshelf5Text:
 	done
 
 CeladonUniversityLibrary1FBookshelf6Text:
-	ctxt "It's a book about"
+	text "It's a book about"
 	line "a #mon puppet"
 	cont "that can't tell"
 	cont "lies."
@@ -223,7 +223,7 @@ CeladonUniversityLibrary1FBookshelf6Text:
 	done
 
 CeladonUniversityLibrary1FBookshelf7Text:
-	ctxt "It's a bo…"
+	text "It's a bo…"
 	line "wait…"
 
 	para "This is a video"
@@ -237,7 +237,7 @@ CeladonUniversityLibrary1FBookshelf7Text:
 	done
 
 CeladonUniversityLibrary1FBookshelf8Text:
-	ctxt "It's a book writ-"
+	text "It's a book writ-"
 	line "ten by a fishing"
 	cont "guru providing"
 
@@ -250,7 +250,7 @@ CeladonUniversityLibrary1FBookshelf8Text:
 	done
 
 CeladonUniversityLibrary1FBookshelf9Text:
-	ctxt "It's a manual"
+	text "It's a manual"
 	line "explaining the"
 
 	para "#mon Trading"
@@ -258,7 +258,7 @@ CeladonUniversityLibrary1FBookshelf9Text:
 	done
 
 CeladonUniversityLibrary1FBookshelf10Text:
-	ctxt "It's a cookbook"
+	text "It's a cookbook"
 	line "full of #mon-"
 	cont "themed recipes!"
 
@@ -269,7 +269,7 @@ CeladonUniversityLibrary1FBookshelf10Text:
 	done
 
 CeladonUniversityLibrary1FBookshelf11Text:
-	ctxt "It's a guide to"
+	text "It's a guide to"
 	line "Poffin blending."
 
 	para "A famous #mon"
@@ -278,7 +278,7 @@ CeladonUniversityLibrary1FBookshelf11Text:
 	done
 
 CeladonUniversityLibrary1FBookshelf12Text:
-	ctxt "“The Secret Life"
+	text "“The Secret Life"
 	line "of Laughter” by"
 	cont "Joe King."
 	cont "Puntastic!"

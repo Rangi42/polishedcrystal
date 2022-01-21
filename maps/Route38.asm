@@ -25,7 +25,7 @@ Route38_MapScriptHeader:
 GenericTrainerBird_keeperToby:
 	generictrainer BIRD_KEEPER, TOBY, EVENT_BEAT_BIRD_KEEPER_TOBY, Bird_keeperTobySeenText, Bird_keeperTobyBeatenText
 
-	ctxt "I plan to train in"
+	text "I plan to train in"
 	line "the Yellow Forest"
 
 	para "to teach my #-"
@@ -35,7 +35,7 @@ GenericTrainerBird_keeperToby:
 GenericTrainerSailorHarry:
 	generictrainer SAILOR, HARRY, EVENT_BEAT_SAILOR_HARRY, SailorHarrySeenText, SailorHarryBeatenText
 
-	ctxt "All kinds of peo-"
+	text "All kinds of peo-"
 	line "ple around the"
 
 	para "world live happily"
@@ -252,7 +252,7 @@ TrainerSchoolboyChad1:
 GenericTrainerBeautyValencia:
 	generictrainer BEAUTY, VALENCIA, EVENT_BEAT_BEAUTY_VALENCIA, BeautyValenciaSeenText, BeautyValenciaBeatenText
 
-	ctxt "When I see #-"
+	text "When I see #-"
 	line "mon, it seems to"
 	cont "soothe my nerves."
 	done
@@ -260,7 +260,7 @@ GenericTrainerBeautyValencia:
 GenericTrainerBeautyOlivia:
 	generictrainer BEAUTY, OLIVIA, EVENT_BEAT_BEAUTY_OLIVIA, BeautyOliviaSeenText, BeautyOliviaBeatenText
 
-	ctxt "Moomoo Milk is"
+	text "Moomoo Milk is"
 	line "good for beauty"
 	cont "and health."
 
@@ -270,29 +270,29 @@ GenericTrainerBeautyOlivia:
 	done
 
 Bird_keeperTobySeenText:
-	ctxt "Fly high into the"
+	text "Fly high into the"
 	line "sky, my beloved"
 	cont "bird #mon!"
 	done
 
 Bird_keeperTobyBeatenText:
-	ctxt "I feel like just"
+	text "I feel like just"
 	line "flying away now."
 	done
 
 SchoolboyChad1SeenText:
-	ctxt "Let me try some-"
+	text "Let me try some-"
 	line "thing I learned"
 	cont "today."
 	done
 
 SchoolboyChad1BeatenText:
-	ctxt "I didn't study"
+	text "I didn't study"
 	line "enough, I guess."
 	done
 
 SchoolboyChadSoManyTestsText:
-	ctxt "I have to take so"
+	text "I have to take so"
 	line "many tests, I"
 
 	para "don't have much"
@@ -304,7 +304,7 @@ SchoolboyChadSoManyTestsText:
 	done
 
 LassDana1SeenText:
-	ctxt "You seem to be"
+	text "You seem to be"
 	line "good at #mon."
 
 	para "If you are, how"
@@ -313,12 +313,12 @@ LassDana1SeenText:
 	done
 
 LassDana1BeatenText:
-	ctxt "I see. So you can"
+	text "I see. So you can"
 	line "battle that way."
 	done
 
 LassDanaMoomooMilkText:
-	ctxt "I know something"
+	text "I know something"
 	line "good!"
 
 	para "Moomoo Farm's milk"
@@ -327,7 +327,7 @@ LassDanaMoomooMilkText:
 	done
 
 BeautyValenciaSeenText:
-	ctxt "Hi! Aren't you a"
+	text "Hi! Aren't you a"
 	line "cute trainer!"
 
 	para "May I see your"
@@ -335,12 +335,12 @@ BeautyValenciaSeenText:
 	done
 
 BeautyValenciaBeatenText:
-	ctxt "I'm glad I got to"
+	text "I'm glad I got to"
 	line "see your #mon!"
 	done
 
 SailorHarrySeenText:
-	ctxt "I've been over-"
+	text "I've been over-"
 	line "seas, so I know"
 
 	para "about all sorts of"
@@ -348,30 +348,30 @@ SailorHarrySeenText:
 	done
 
 SailorHarryBeatenText:
-	ctxt "Your skill is"
+	text "Your skill is"
 	line "world class!"
 	done
 
 BeautyOliviaSeenText:
-	ctxt "Don't you think my"
+	text "Don't you think my"
 	line "#mon and I are"
 	cont "beautiful?"
 	done
 
 BeautyOliviaBeatenText:
-	ctxt "We drink Moomoo"
+	text "We drink Moomoo"
 	line "Milk every day."
 	done
 
 Route38SignText:
-	ctxt "Route 38"
+	text "Route 38"
 
 	para "Olivine City -"
 	line "Ecruteak City"
 	done
 
 Route38TrainerTipsText:
-	ctxt "Trainer Tips"
+	text "Trainer Tips"
 
 	para "If a #mon is"
 	line "trying to evolve,"

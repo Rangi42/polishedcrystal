@@ -20,7 +20,7 @@ IndigoPlateauFlyPoint:
 	endcallback
 
 IndigoPlateauSignText:
-	ctxt "Indigo Plateau"
+	text "Indigo Plateau"
 
 	para "The Ultimate Goal"
 	line "for Trainers!"

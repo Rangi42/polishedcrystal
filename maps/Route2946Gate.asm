@@ -18,7 +18,7 @@ Route2946Gate_MapScriptHeader:
 	object_event  6,  4, SPRITE_CAMPER, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, Route29Route46GateYoungsterText, -1
 
 Route29Route46GateOfficerText:
-	ctxt "You can't climb"
+	text "You can't climb"
 	line "ledges."
 
 	para "But you can jump"
@@ -27,7 +27,7 @@ Route29Route46GateOfficerText:
 	done
 
 Route29Route46GateYoungsterText:
-	ctxt "Different kinds of"
+	text "Different kinds of"
 	line "#mon appear"
 	cont "past here."
 

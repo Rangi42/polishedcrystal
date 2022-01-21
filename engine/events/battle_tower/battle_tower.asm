@@ -478,7 +478,7 @@ Special_BattleTower_NextRentalBattle:
 	ret
 
 .NewRentalsText:
-	ctxt "We'll hold your"
+	text "We'll hold your"
 	line "#mon safe and"
 	cont "offer you 6 rental"
 	cont "#mon."
@@ -488,13 +488,13 @@ Special_BattleTower_NextRentalBattle:
 	prompt
 
 .TradeBeforeBattle:
-	ctxt "Would you like to"
+	text "Would you like to"
 	line "trade a #mon"
 	cont "before the battle?"
 	done
 
 .ExpectThese3:
-	ctxt "You can expect to"
+	text "You can expect to"
 	line "see "
 	text_ram wOTPartyMonNicknames
 	text ","
@@ -507,7 +507,7 @@ Special_BattleTower_NextRentalBattle:
 	prompt
 
 .ExpectThese2:
-	ctxt "You can expect to"
+	text "You can expect to"
 	line "see "
 	text_ram wOTPartyMonNicknames
 	text " and"
@@ -517,17 +517,17 @@ Special_BattleTower_NextRentalBattle:
 	prompt
 
 .ExactMonUsingMove:
-	ctxt "You can expect to"
+	text "You can expect to"
 	line "see a "
 	text_ram wOTPartyMonNicknames
-	ctxt ""
+	text ""
 	cont "with "
 	text_ram wStringBuffer1
 	text "."
 	prompt
 
 .SomeMonUsingMove:
-	ctxt "You can expect to"
+	text "You can expect to"
 	line "see a #mon"
 	cont "with "
 	text_ram wStringBuffer1
@@ -535,16 +535,16 @@ Special_BattleTower_NextRentalBattle:
 	prompt
 
 .NoTypePreference:
-	ctxt "The opponent"
+	text "The opponent"
 	line "doesn't have a"
 	cont "type preference."
 	prompt
 
 .PrefersType:
-	ctxt "The opponent"
+	text "The opponent"
 	line "favors "
 	text_ram wStringBuffer1
-	ctxt "-"
+	text "-"
 	cont "type #mon."
 	prompt
 

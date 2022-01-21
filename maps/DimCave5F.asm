@@ -45,7 +45,7 @@ DimCave5FSetUpStoneTable:
 	earthquake 80
 	jumpthistext
 
-	ctxt "The boulder fell"
+	text "The boulder fell"
 	line "through."
 	done
 
@@ -84,7 +84,7 @@ DimCave5FRileyScript:
 	end
 
 .ChallengeText:
-	ctxt "…You are?"
+	text "…You are?"
 
 	para "OK, you're"
 	line "<PLAYER>."
@@ -103,7 +103,7 @@ DimCave5FRileyScript:
 	done
 
 .YesText:
-	ctxt "We're pulling out"
+	text "We're pulling out"
 	line "all the stops to"
 
 	para "put your #mon"
@@ -111,13 +111,13 @@ DimCave5FRileyScript:
 	done
 
 .NoText:
-	ctxt "Oh, all right."
+	text "Oh, all right."
 	line "Then we'll continue"
 	cont "training here."
 	done
 
 .BeatenText:
-	ctxt "At times we bat-"
+	text "At times we bat-"
 	line "tle, and sometimes"
 	cont "we team up."
 
@@ -127,7 +127,7 @@ DimCave5FRileyScript:
 	done
 
 .ItemText:
-	ctxt "Know your enemy."
+	text "Know your enemy."
 
 	para "If you know your"
 	line "opponent's #mon"
@@ -145,7 +145,7 @@ DimCave5FRileyScript:
 	done
 
 .GoodbyeText:
-	ctxt "Battling with you"
+	text "Battling with you"
 	line "was very enjoy-"
 	cont "able."
 
@@ -162,7 +162,7 @@ DimCave5FRileyScript:
 GenericTrainerSuper_nerdFoote:
 	generictrainer SUPER_NERD, FOOTE, EVENT_BEAT_SUPER_NERD_FOOTE, .SeenText, .BeatenText
 
-	ctxt "Save one life or"
+	text "Save one life or"
 	line "save five?"
 
 	para "As a #mon"
@@ -173,7 +173,7 @@ GenericTrainerSuper_nerdFoote:
 	done
 
 .SeenText:
-	ctxt "I have a conundrum"
+	text "I have a conundrum"
 	line "for you!"
 
 	para "Would you push one"
@@ -184,7 +184,7 @@ GenericTrainerSuper_nerdFoote:
 	done
 
 .BeatenText:
-	ctxt "You answered"
+	text "You answered"
 	line "without words…"
 	cont "How Zen!"
 	done
@@ -192,7 +192,7 @@ GenericTrainerSuper_nerdFoote:
 GenericTrainerEngineerHoward:
 	generictrainer ENGINEER, HOWARD, EVENT_BEAT_ENGINEER_HOWARD, .SeenText, .BeatenText
 
-	ctxt "Water flows south"
+	text "Water flows south"
 	line "from Cerulean Cape"
 
 	para "and follows a"
@@ -201,19 +201,19 @@ GenericTrainerEngineerHoward:
 	done
 
 .SeenText:
-	ctxt "This waterfall"
+	text "This waterfall"
 	line "provides energy"
 	cont "throughout Kanto!"
 	done
 
 .BeatenText:
-	ctxt "No! A blackout…"
+	text "No! A blackout…"
 	done
 
 GenericTrainerSuper_nerdDave:
 	generictrainer SUPER_NERD, DAVE, EVENT_BEAT_SUPER_NERD_DAVE, .SeenText, .BeatenText
 
-	ctxt "You need a mining"
+	text "You need a mining"
 	line "pick to mine."
 
 	para "But you can't get"
@@ -221,7 +221,7 @@ GenericTrainerSuper_nerdDave:
 	done
 
 .SeenText:
-	ctxt "I've maxed out my"
+	text "I've maxed out my"
 	line "mining, jeweling,"
 
 	para "smelting, and"
@@ -229,7 +229,7 @@ GenericTrainerSuper_nerdDave:
 	done
 
 .BeatenText:
-	ctxt "But not"
+	text "But not"
 	line "battling…"
 	done
 

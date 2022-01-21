@@ -112,7 +112,7 @@ WiseTriosRoomSageAllowsPassageMovement:
 	step_end
 
 WiseTriosRoomSage1Text:
-	ctxt "Astounding…"
+	text "Astounding…"
 
 	para "Suicune, Entei and"
 	line "Raikou have arisen"
@@ -123,7 +123,7 @@ WiseTriosRoomSage1Text:
 	done
 
 WiseTriosRoomSage2Text:
-	ctxt "We train at the"
+	text "We train at the"
 	line "Burned Tower, but"
 
 	para "we've never heard"
@@ -137,7 +137,7 @@ WiseTriosRoomSage2Text:
 	done
 
 WiseTriosRoomSage3BlocksExitText:
-	ctxt "Bell Tower may be"
+	text "Bell Tower may be"
 	line "entered by those"
 
 	para "bearing Ecruteak's"
@@ -154,7 +154,7 @@ WiseTriosRoomSage3BlocksExitText:
 	done
 
 WiseTriosRoomSage3Text:
-	ctxt "We, the Wise Trio,"
+	text "We, the Wise Trio,"
 	line "are the protectors"
 
 	para "of the legendary"
@@ -162,7 +162,7 @@ WiseTriosRoomSage3Text:
 	done
 
 ElderGakuSeenText:
-	ctxt "Legend has it that"
+	text "Legend has it that"
 	line "upon the emergence"
 
 	para "of a trainer who"
@@ -192,12 +192,12 @@ ElderGakuSeenText:
 	done
 
 ElderGakuBeatenText:
-	ctxt "Stronger than we"
+	text "Stronger than we"
 	line "thought? Perhaps…"
 	done
 
 SageGakuAfterBattleText:
-	ctxt "Ah, so it is you"
+	text "Ah, so it is you"
 	line "who claim to have"
 
 	para "seen Suicune,"
@@ -212,7 +212,7 @@ SageGakuAfterBattleText:
 	done
 
 ElderMasaSeenText:
-	ctxt "Can you be trusted"
+	text "Can you be trusted"
 	line "with the truth?"
 
 	para "I must ascertain"
@@ -220,12 +220,12 @@ ElderMasaSeenText:
 	done
 
 ElderMasaBeatenText:
-	ctxt "…I will tell you"
+	text "…I will tell you"
 	line "the truth…"
 	done
 
 SageMasaAfterBattleText:
-	ctxt "In the past, there"
+	text "In the past, there"
 	line "were two nine-tier"
 	cont "towers here."
 
@@ -283,17 +283,17 @@ endc
 	done
 
 ElderKojiSeenText:
-	ctxt "Let me see your"
+	text "Let me see your"
 	line "power!"
 	done
 
 ElderKojiBeatenText:
-	ctxt "Too strong!"
+	text "Too strong!"
 	line "Why?"
 	done
 
 SageKojiAfterBattleQuestionText:
-	ctxt "You… Are you the"
+	text "You… Are you the"
 	line "trainer who is"
 
 	para "awaited by the"
@@ -301,7 +301,7 @@ SageKojiAfterBattleQuestionText:
 	done
 
 SageKojiAfterBattleSpeechText:
-	ctxt "I see…"
+	text "I see…"
 
 	para "We, the Wise Trio,"
 	line "have been given"
@@ -327,7 +327,7 @@ SageKojiAfterBattleSpeechText:
 	done
 
 SageKojiAfterBattleFinalText:
-	ctxt "Please, do go on."
+	text "Please, do go on."
 
 	para "Suicune will put"
 	line "you to the test."

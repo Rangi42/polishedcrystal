@@ -20,7 +20,7 @@ PokemonJournalProfOakScript:
 	setflag ENGINE_READ_PROF_OAK_JOURNAL
 	jumpthistext
 
-	ctxt "#mon Journal"
+	text "#mon Journal"
 
 	para "Special Feature:"
 	line "#mon Prof.Oak!"
@@ -40,13 +40,13 @@ PokemonJournalProfOakScript:
 	done
 
 RedsHouse2FPCText:
-	ctxt "It looks like it"
+	text "It looks like it"
 	line "hasn't been used"
 	cont "in a long time…"
 	done
 
 RedsHouse2FSNESText:
-	ctxt "<PLAYER> played the"
+	text "<PLAYER> played the"
 	line "SNES."
 
 	para "Better get going--"

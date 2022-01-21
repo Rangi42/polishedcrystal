@@ -112,7 +112,7 @@ SSAquaFoundGranddaughter:
 GenericTrainerPokefanmColin:
 	generictrainer POKEFANM, COLIN, EVENT_BEAT_POKEFANM_COLIN, PokefanmColinSeenText, PokefanmColinBeatenText
 
-	ctxt "You're traveling"
+	text "You're traveling"
 	line "all alone?"
 
 	para "Isn't your mom"
@@ -122,7 +122,7 @@ GenericTrainerPokefanmColin:
 GenericTrainerTwinsMegandpeg1:
 	generictrainer TWINS, MEGANDPEG1, EVENT_BEAT_TWINS_MEG_AND_PEG, TwinsMegandpeg1SeenText, TwinsMegandpeg1BeatenText
 
-	ctxt "Baby is a rude"
+	text "Baby is a rude"
 	line "name to call us"
 	cont "girls!"
 	done
@@ -130,7 +130,7 @@ GenericTrainerTwinsMegandpeg1:
 GenericTrainerTwinsMegandpeg2:
 	generictrainer TWINS, MEGANDPEG2, EVENT_BEAT_TWINS_MEG_AND_PEG, TwinsMegandpeg2SeenText, TwinsMegandpeg2BeatenText
 
-	ctxt "Sometimes, kids"
+	text "Sometimes, kids"
 	line "are smarter than"
 	cont "grown-ups!"
 	done
@@ -138,7 +138,7 @@ GenericTrainerTwinsMegandpeg2:
 GenericTrainerPsychicRodney:
 	generictrainer PSYCHIC_T, RODNEY, EVENT_BEAT_PSYCHIC_RODNEY, PsychicRodneySeenText, PsychicRodneyBeatenText
 
-	ctxt "I get it. You can"
+	text "I get it. You can"
 	line "hear Johto's radio"
 	cont "on the Fast Ship."
 	done
@@ -146,7 +146,7 @@ GenericTrainerPsychicRodney:
 GenericTrainerPokefanmJeremy:
 	generictrainer POKEFANM, JEREMY, EVENT_BEAT_POKEFANM_JEREMY, PokefanmJeremySeenText, PokefanmJeremyBeatenText
 
-	ctxt "I must go to the"
+	text "I must go to the"
 	line "#mon Salon and"
 	cont "fix them up nice!"
 	done
@@ -154,7 +154,7 @@ GenericTrainerPokefanmJeremy:
 GenericTrainerPokefanfGeorgia:
 	generictrainer POKEFANF, GEORGIA, EVENT_BEAT_POKEFANF_GEORGIA, PokefanfGeorgiaSeenText, PokefanfGeorgiaBeatenText
 
-	ctxt "Oh, yes! I have to"
+	text "Oh, yes! I have to"
 	line "get my #mon out"
 	cont "of Day-Care!"
 	done
@@ -162,7 +162,7 @@ GenericTrainerPokefanfGeorgia:
 GenericTrainerSupernerdShawn:
 	generictrainer SUPER_NERD, SHAWN, EVENT_BEAT_SUPER_NERD_SHAWN, SupernerdShawnSeenText, SupernerdShawnBeatenText
 
-	ctxt "You should use the"
+	text "You should use the"
 	line "right Balls to fit"
 	cont "the situation."
 	done
@@ -184,7 +184,7 @@ SSAquaGranddaughterEntersCabinMovement:
 	step_end
 
 SSAquaCaptainExhaustingText:
-	ctxt "Whew! Thanks for"
+	text "Whew! Thanks for"
 	line "coming along."
 
 	para "Keeping that lit-"
@@ -193,7 +193,7 @@ SSAquaCaptainExhaustingText:
 	done
 
 SSAquaCaptainHowDoYouLikeText:
-	ctxt "How do you like"
+	text "How do you like"
 	line "S.S.Aqua's ride?"
 
 	para "She practically"
@@ -202,7 +202,7 @@ SSAquaCaptainHowDoYouLikeText:
 	done
 
 SSAquaCantFindGranddaughterText:
-	ctxt "Oh, hello…"
+	text "Oh, hello…"
 
 	para "I still can't find"
 	line "my granddaughter."
@@ -218,7 +218,7 @@ SSAquaCantFindGranddaughterText:
 	done
 
 SSAquaEntertainedGranddaughterText:
-	ctxt "<PLAYER>, was it?"
+	text "<PLAYER>, was it?"
 	line "I heard you enter-"
 	cont "tained my grand-"
 	cont "daughter."
@@ -228,17 +228,17 @@ SSAquaEntertainedGranddaughterText:
 	done
 
 SSAquaGrandpaHaveThisText:
-	ctxt "I know! I'd like"
+	text "I know! I'd like"
 	line "you to have this!"
 	done
 
 SSAquaGrandpaTravellingText:
-	ctxt "We're traveling"
+	text "We're traveling"
 	line "around the world."
 	done
 
 SSAquaGranddaughterCaptainPlayWithMeText:
-	ctxt "Captain, play with"
+	text "Captain, play with"
 	line "me, please?"
 
 	para "I'm bored! I want"
@@ -246,7 +246,7 @@ SSAquaGranddaughterCaptainPlayWithMeText:
 	done
 
 SSAquaGranddaughterHasToFindGrandpaText:
-	ctxt "Hi! Will you play"
+	text "Hi! Will you play"
 	line "with me?"
 
 	para "…Oh!"
@@ -261,7 +261,7 @@ SSAquaGranddaughterHasToFindGrandpaText:
 	done
 
 SSAquaGranddaughterWasPlayingMText:
-	ctxt "Grandpa, here I"
+	text "Grandpa, here I"
 	line "am! I was playing"
 
 	para "with the Captain"
@@ -269,7 +269,7 @@ SSAquaGranddaughterWasPlayingMText:
 	done
 
 SSAquaGranddaughterWasPlayingFText:
-	ctxt "Grandpa, here I"
+	text "Grandpa, here I"
 	line "am! I was playing"
 
 	para "with the Captain"
@@ -277,86 +277,86 @@ SSAquaGranddaughterWasPlayingFText:
 	done
 
 SSAquaGranddaughterHadFunText:
-	ctxt "I had lots of fun"
+	text "I had lots of fun"
 	line "playing!"
 	done
 
 PokefanmColinSeenText:
-	ctxt "Hey, kid! Want to"
+	text "Hey, kid! Want to"
 	line "battle with me?"
 	done
 
 PokefanmColinBeatenText:
-	ctxt "You're strong!"
+	text "You're strong!"
 	done
 
 TwinsMegandpeg1SeenText:
-	ctxt "You think I'm a"
+	text "You think I'm a"
 	line "baby?"
 	cont "That's not fair!"
 	done
 
 TwinsMegandpeg1BeatenText:
-	ctxt "Oh! We lost!"
+	text "Oh! We lost!"
 	done
 
 TwinsMegandpeg2SeenText:
-	ctxt "I'm not a baby!"
+	text "I'm not a baby!"
 
 	para "That's not nice to"
 	line "say to a lady!"
 	done
 
 TwinsMegandpeg2BeatenText:
-	ctxt "Oh! We lost!"
+	text "Oh! We lost!"
 	done
 
 PsychicRodneySeenText:
-	ctxt "Ssh! My brain is"
+	text "Ssh! My brain is"
 	line "picking up radio"
 	cont "signals!"
 	done
 
 PsychicRodneyBeatenText:
-	ctxt "…I hear some-"
+	text "…I hear some-"
 	line "thing!"
 	done
 
 PokefanmJeremySeenText:
-	ctxt "What do you think?"
+	text "What do you think?"
 	line "My #mon are"
 	cont "beautiful, yes?"
 	done
 
 PokefanmJeremyBeatenText:
-	ctxt "Oh, no! My beauti-"
+	text "Oh, no! My beauti-"
 	line "ful #mon!"
 	done
 
 PokefanfGeorgiaSeenText:
-	ctxt "I'm going to shop"
+	text "I'm going to shop"
 	line "at the Dept.Store"
 	cont "and then…"
 	done
 
 PokefanfGeorgiaBeatenText:
-	ctxt "What was I going"
+	text "What was I going"
 	line "to do?"
 	done
 
 SupernerdShawnSeenText:
-	ctxt "What kinds of #"
+	text "What kinds of #"
 	line "Balls do you have"
 	cont "with you?"
 	done
 
 SupernerdShawnBeatenText:
-	ctxt "Wait! Stop! Don't!"
+	text "Wait! Stop! Don't!"
 	line "Please!"
 	done
 
 SSAquaHasArrivedVermilionText:
-	ctxt "Fast Ship S.S.Aqua"
+	text "Fast Ship S.S.Aqua"
 	line "has arrived in"
 	cont "Vermilion City."
 	done

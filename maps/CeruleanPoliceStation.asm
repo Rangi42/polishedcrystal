@@ -17,7 +17,7 @@ CeruleanPoliceStation_MapScriptHeader:
 	pokemon_event  3,  5, DIGLETT, SPRITEMOVEDATA_POKEMON, -1, -1, PAL_NPC_BROWN, CeruleanDiglettText, -1
 
 CeruleanPoliceStationFishingGuruText:
-	ctxt "I heard that some"
+	text "I heard that some"
 	line "shady character is"
 	cont "skulking about."
 
@@ -27,10 +27,10 @@ CeruleanPoliceStationFishingGuruText:
 	done
 
 CeruleanPoliceStationPokefanFText:
-	ctxt "We were held up by"
+	text "We were held up by"
 	line "robbers before."
 	done
 
 CeruleanDiglettText:
-	ctxt "Diglett: Dug dug."
+	text "Diglett: Dug dug."
 	done

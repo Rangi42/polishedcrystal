@@ -57,7 +57,7 @@ SinjohRuinsHouseCynthiaScript:
 	jumpthistext
 
 SinjohRuinsHouseCynthiaAfterText:
-	ctxt "Cynthia: What an"
+	text "Cynthia: What an"
 	line "incredible battle!"
 
 	para "You're a great"
@@ -69,7 +69,7 @@ SinjohRuinsHouseCynthiaAfterText:
 	done
 
 SinjohRuinsHousePokefanmText:
-	ctxt "A long time ago,"
+	text "A long time ago,"
 	line "people used to"
 
 	para "have closer bonds"
@@ -95,7 +95,7 @@ SinjohRuinsHousePokefanmText:
 	done
 
 SinjohRuinsHouseGrampsText:
-	ctxt "You seem so out"
+	text "You seem so out"
 	line "of place, not even"
 
 	para "knowing why you"
@@ -107,22 +107,22 @@ SinjohRuinsHouseGrampsText:
 	done
 
 SinjohRuinsHouseGrampsYesText:
-	ctxt "OK, OK. Picture"
+	text "OK, OK. Picture"
 	line "your house in your"
 	cont "mind…"
 	done
 
 SinjohRuinsHouseGrampsNoText:
-	ctxt "OK, OK. The best"
+	text "OK, OK. The best"
 	line "of luck to you!"
 	done
 
 SinjohRuinsHouseAbraText:
-	ctxt "Abra: Aabra…"
+	text "Abra: Aabra…"
 	done
 
 SinjohRuinsHouseCynthiaChallengeText:
-	ctxt "Cynthia: Hello,"
+	text "Cynthia: Hello,"
 	line "<PLAYER>."
 
 	para "Have you been"
@@ -141,13 +141,13 @@ SinjohRuinsHouseCynthiaChallengeText:
 	done
 
 SinjohRuinsHouseCynthiaNoText:
-	ctxt "Cynthia: Come back"
+	text "Cynthia: Come back"
 	line "any time if you"
 	cont "change your mind."
 	done
 
 SinjohRuinsHouseCynthiaYesText:
-	ctxt "Cynthia: Before"
+	text "Cynthia: Before"
 	line "I send out my"
 	cont "#mon,"
 
@@ -156,7 +156,7 @@ SinjohRuinsHouseCynthiaYesText:
 	done
 
 SinjohRuinsHouseCynthiaWinText:
-	ctxt "I can't remember"
+	text "I can't remember"
 	line "the last time I"
 
 	para "was outclassed"

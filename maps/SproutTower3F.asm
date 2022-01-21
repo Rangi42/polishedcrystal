@@ -79,7 +79,7 @@ ElderLiScript:
 	setevent EVENT_BEAT_ELDER_LI
 	jumpthisopenedtext
 
-	ctxt "Flash illuminates"
+	text "Flash illuminates"
 	line "even the darkest"
 	cont "of all places."
 	done
@@ -87,7 +87,7 @@ ElderLiScript:
 GenericTrainerSageJin:
 	generictrainer SAGE, JIN, EVENT_BEAT_SAGE_JIN, SageJinSeenText, SageJinBeatenText
 
-	ctxt "As #mon grow"
+	text "As #mon grow"
 	line "stronger, so does"
 	cont "the trainer."
 
@@ -101,14 +101,14 @@ GenericTrainerSageJin:
 GenericTrainerSageTroy:
 	generictrainer SAGE, TROY, EVENT_BEAT_SAGE_TROY, SageTroySeenText, SageTroyBeatenText
 
-	ctxt "It is not far to"
+	text "It is not far to"
 	line "the Elder."
 	done
 
 GenericTrainerSageNeal:
 	generictrainer SAGE, NEAL, EVENT_BEAT_SAGE_NEAL, SageNealSeenText, SageNealBeatenText
 
-	ctxt "Let there be light"
+	text "Let there be light"
 	line "on your journey."
 	done
 
@@ -125,7 +125,7 @@ SproutTower3FRivalLeavesElderMovement:
 	step_end
 
 SproutTowerElderLecturesRivalText:
-	ctxt "Elder: You are in-"
+	text "Elder: You are in-"
 	line "deed skilled as a"
 	cont "trainer."
 
@@ -146,7 +146,7 @@ SproutTowerElderLecturesRivalText:
 	done
 
 SproutTowerRivalOnlyCareAboutStrongText:
-	ctxt "…"
+	text "…"
 	line "…Humph!"
 
 	para "He claims to be"
@@ -172,12 +172,12 @@ SproutTowerRivalOnlyCareAboutStrongText:
 	done
 
 SproutTowerRivalUsedEscapeRopeText:
-	ctxt "<RIVAL> used an"
+	text "<RIVAL> used an"
 	line "Escape Rope!"
 	done
 
 SageLiSeenText:
-	ctxt "So good of you to"
+	text "So good of you to"
 	line "come here!"
 
 	para "Sprout Tower is a"
@@ -200,11 +200,11 @@ SageLiSeenText:
 	done
 
 SageLiBeatenText:
-	ctxt "Ah, excellent!"
+	text "Ah, excellent!"
 	done
 
 SageLiTakeThisFlashText:
-	ctxt "You and your #-"
+	text "You and your #-"
 	line "mon should have"
 
 	para "no problem using"
@@ -215,52 +215,52 @@ SageLiTakeThisFlashText:
 	done
 
 SageLiAfterBattleText:
-	ctxt "I hope you learn"
+	text "I hope you learn"
 	line "and grow from your"
 	cont "journey."
 	done
 
 SageJinSeenText:
-	ctxt "I train to find"
+	text "I train to find"
 	line "enlightenment in"
 	cont "#mon!"
 	done
 
 SageJinBeatenText:
-	ctxt "My training is"
+	text "My training is"
 	line "incomplete…"
 	done
 
 SageTroySeenText:
-	ctxt "Let me see how"
+	text "Let me see how"
 	line "much you trust"
 	cont "your #mon."
 	done
 
 SageTroyBeatenText:
-	ctxt "Yes, your trust is"
+	text "Yes, your trust is"
 	line "real!"
 	done
 
 SageNealSeenText:
-	ctxt "The Elder's TM"
+	text "The Elder's TM"
 	line "lights even pitch-"
 	cont "black darkness."
 	done
 
 SageNealBeatenText:
-	ctxt "It is my head that"
+	text "It is my head that"
 	line "is bright!"
 	done
 
 SproutTower3FPaintingText:
-	ctxt "It's a powerful"
+	text "It's a powerful"
 	line "painting of a"
 	cont "Bellsprout."
 	done
 
 SproutTower3FStatueText:
-	ctxt "A #mon statue…"
+	text "A #mon statue…"
 
 	para "It looks very"
 	line "distinguished."

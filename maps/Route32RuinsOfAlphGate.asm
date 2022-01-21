@@ -19,7 +19,7 @@ Route32RuinsOfAlphGate_MapScriptHeader:
 	object_event  1,  6, SPRITE_CAMPER, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, Route32RuinsOfAlphGateYoungsterText, -1
 
 Route32RuinsOfAlphGateOfficerText:
-	ctxt "Ruins of Alph"
+	text "Ruins of Alph"
 
 	para "A Look-and-Touch"
 	line "Tourist Site"
@@ -29,7 +29,7 @@ Route32RuinsOfAlphGateOfficerText:
 	done
 
 Route32RuinsOfAlphGatePokefanMText:
-	ctxt "You're studying"
+	text "You're studying"
 	line "the ruins?"
 
 	para "I see a scientist"
@@ -37,7 +37,7 @@ Route32RuinsOfAlphGatePokefanMText:
 	done
 
 Route32RuinsOfAlphGateYoungsterText:
-	ctxt "There are drawings"
+	text "There are drawings"
 	line "on stone panels."
 
 	para "I tried moving"

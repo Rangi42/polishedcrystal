@@ -26,7 +26,7 @@ Route14_MapScriptHeader:
 GenericTrainerPokefanmTrevor:
 	generictrainer POKEFANM, TREVOR, EVENT_BEAT_POKEFANM_TREVOR, PokefanmTrevorSeenText, PokefanmTrevorBeatenText
 
-	ctxt "If only there were"
+	text "If only there were"
 	line "an easy way to"
 
 	para "identify where I"
@@ -37,7 +37,7 @@ GenericTrainerPokefanmTrevor:
 	done
 
 PokefanmTrevorSeenText:
-	ctxt "Hi. Did you know…?"
+	text "Hi. Did you know…?"
 
 	para "#mon get more"
 	line "friendly if you"
@@ -48,14 +48,14 @@ PokefanmTrevorSeenText:
 	done
 
 PokefanmTrevorBeatenText:
-	ctxt "Where did I meet"
+	text "Where did I meet"
 	line "this Psyduck?"
 	done
 
 GenericTrainerPokefanmCarter:
 	generictrainer POKEFANM, CARTER, EVENT_BEAT_POKEFANM_CARTER, PokefanmCarterSeenText, PokefanmCarterBeatenText
 
-	ctxt "Squirtle, Charman-"
+	text "Squirtle, Charman-"
 	line "der and Bulbasaur…"
 
 	para "I think that's a"
@@ -63,7 +63,7 @@ GenericTrainerPokefanmCarter:
 	done
 
 PokefanmCarterSeenText:
-	ctxt "Let me tell you,"
+	text "Let me tell you,"
 	line "I had a hard time"
 
 	para "catching my prized"
@@ -71,13 +71,13 @@ PokefanmCarterSeenText:
 	done
 
 PokefanmCarterBeatenText:
-	ctxt "Awaaah!"
+	text "Awaaah!"
 	done
 
 GenericTrainerBird_keeperRoy:
 	generictrainer BIRD_KEEPER, ROY, EVENT_BEAT_BIRD_KEEPER_ROY, Bird_keeperRoySeenText, Bird_keeperRoyBeatenText
 
-	ctxt "You have #mon"
+	text "You have #mon"
 	line "that know the HM"
 
 	para "move Fly, don't"
@@ -85,26 +85,26 @@ GenericTrainerBird_keeperRoy:
 	done
 
 Bird_keeperRoySeenText:
-	ctxt "My dream is to fly"
+	text "My dream is to fly"
 	line "with my beloved"
 	cont "bird #mon."
 	done
 
 Bird_keeperRoyBeatenText:
-	ctxt "I can dream, but I"
+	text "I can dream, but I"
 	line "can't ever fly…"
 	done
 
 GenericTrainerBird_keeperJosh:
 	generictrainer BIRD_KEEPER, BIRD_KEEPER_JOSH, EVENT_BEAT_BIRD_KEEPER_JOSH, .SeenText, .BeatenText
 
-	ctxt "Maybe I should lie"
+	text "Maybe I should lie"
 	line "and say I'm in the"
 	cont "heavyweight class…"
 	done
 
 .SeenText:
-	ctxt "My weight puts me"
+	text "My weight puts me"
 	line "in the feather-"
 	cont "weight class!"
 
@@ -114,7 +114,7 @@ GenericTrainerBird_keeperJosh:
 	done
 
 .BeatenText:
-	ctxt "I lost as lightly"
+	text "I lost as lightly"
 	line "as a feather"
 	cont "floats!"
 	done
@@ -122,7 +122,7 @@ GenericTrainerBird_keeperJosh:
 GenericTrainerSchoolboyConnor:
 	generictrainer SCHOOLBOY, SCHOOLBOY_CONNOR, EVENT_BEAT_SCHOOLBOY_CONNOR, .SeenText, .BeatenText
 
-	ctxt "Don't rush, and"
+	text "Don't rush, and"
 	line "take the road one"
 	cont "step at a time."
 
@@ -130,56 +130,56 @@ GenericTrainerSchoolboyConnor:
 	done
 
 .SeenText:
-	ctxt "I can't wait to go"
+	text "I can't wait to go"
 	line "home and drop off"
 	cont "my Bag!"
 	done
 
 .BeatenText:
-	ctxt "I was in too much"
+	text "I was in too much"
 	line "of a hurry."
 	done
 
 GenericTrainerSchoolboyTorin:
 	generictrainer SCHOOLBOY, TORIN, EVENT_BEAT_SCHOOLBOY_TORIN, .SeenText, .BeatenText
 
-	ctxt "All right! Next"
+	text "All right! Next"
 	line "time, I won't make"
 	cont "any mistakes!"
 	done
 
 .SeenText:
-	ctxt "It's good to put"
+	text "It's good to put"
 	line "what you learn to"
 	cont "use immediately!"
 	done
 
 .BeatenText:
-	ctxt "I see. I see."
+	text "I see. I see."
 	done
 
 GenericTrainerSchoolboyTravis:
 	generictrainer SCHOOLBOY, TRAVIS, EVENT_BEAT_SCHOOLBOY_TRAVIS, .SeenText, .BeatenText
 
-	ctxt "Maybe I should"
+	text "Maybe I should"
 	line "join your study"
 	cont "sessions!"
 	done
 
 .SeenText:
-	ctxt "Do you have after-"
+	text "Do you have after-"
 	line "school study"
 	cont "sessions?"
 	done
 
 .BeatenText:
-	ctxt "So strong…"
+	text "So strong…"
 	done
 
 GenericTrainerTeacherClarice:
 	generictrainer TEACHER, CLARICE, EVENT_BEAT_TEACHER_CLARICE, .SeenText, .BeatenText
 
-	ctxt "Don't relax just"
+	text "Don't relax just"
 	line "'cause you won."
 
 	para "Once you get home,"
@@ -188,13 +188,13 @@ GenericTrainerTeacherClarice:
 	done
 
 .SeenText:
-	ctxt "All right, let's"
+	text "All right, let's"
 	line "get this #mon"
 	cont "battle started!"
 	done
 
 .BeatenText:
-	ctxt "All right! That"
+	text "All right! That"
 	line "concludes today's"
 	cont "battle."
 	done

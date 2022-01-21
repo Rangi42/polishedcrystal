@@ -103,7 +103,7 @@ SaffronGymSabrinaScript:
 	setevent EVENT_GOT_TM29_PSYCHIC
 	jumpthisopenedtext
 
-	ctxt "TM29 is Psychic."
+	text "TM29 is Psychic."
 
 	para "It may lower the"
 	line "target's Spcl.Def."
@@ -117,7 +117,7 @@ SaffronGymSabrinaScript:
 GenericTrainerMediumDoris:
 	generictrainer MEDIUM, DORIS, EVENT_BEAT_MEDIUM_DORIS, MediumDorisSeenText, MediumDorisBeatenText
 
-	ctxt "Darn! I forgot"
+	text "Darn! I forgot"
 	line "that I predicted I"
 	cont "would lose to you."
 	done
@@ -125,14 +125,14 @@ GenericTrainerMediumDoris:
 GenericTrainerPsychicLeon:
 	generictrainer PSYCHIC_T, LEON, EVENT_BEAT_PSYCHIC_LEON, PsychicLeonSeenText, PsychicLeonBeatenText
 
-	ctxt "Sabrina's power is"
+	text "Sabrina's power is"
 	line "greater than mine!"
 	done
 
 GenericTrainerPsychicJared:
 	generictrainer PSYCHIC_T, JARED, EVENT_BEAT_PSYCHIC_JARED, PsychicJaredSeenText, PsychicJaredBeatenText
 
-	ctxt "Karate King, the"
+	text "Karate King, the"
 	line "master of the"
 
 	para "Fighting Dojo, was"
@@ -143,7 +143,7 @@ GenericTrainerPsychicJared:
 GenericTrainerHexManiacLuna:
 	generictrainer HEX_MANIAC, LUNA, EVENT_BEAT_HEX_MANIAC_LUNA, HexManiacLunaSeenText, HexManiacLunaBeatenText
 
-	ctxt "Alakazam is a pow-"
+	text "Alakazam is a pow-"
 	line "erful #mon,"
 
 	para "so Hex Maniacs use"
@@ -154,7 +154,7 @@ GenericTrainerHexManiacLuna:
 GenericTrainerHexManiacNatalie:
 	generictrainer HEX_MANIAC, NATALIE, EVENT_BEAT_HEX_MANIAC_NATALIE, HexManiacNatalieSeenText, HexManiacNatalieBeatenText
 
-	ctxt "Maybe I'm not cut"
+	text "Maybe I'm not cut"
 	line "out to be a Hex"
 	cont "Maniac…"
 	done
@@ -162,7 +162,7 @@ GenericTrainerHexManiacNatalie:
 GenericTrainerPsychicFranklin:
 	generictrainer PSYCHIC_T, FRANKLIN, EVENT_BEAT_PSYCHIC_FRANKLIN, PsychicFranklinSeenText, PsychicFranklinBeatenText
 
-	ctxt "You made your soul"
+	text "You made your soul"
 	line "stronger, not just"
 	cont "your abilities."
 	done
@@ -170,7 +170,7 @@ GenericTrainerPsychicFranklin:
 GenericTrainerMediumRebecca:
 	generictrainer MEDIUM, REBECCA, EVENT_BEAT_MEDIUM_REBECCA, MediumRebeccaSeenText, MediumRebeccaBeatenText
 
-	ctxt "What is the source"
+	text "What is the source"
 	line "of your power?"
 	done
 
@@ -188,7 +188,7 @@ SaffronGymStatue:
 	jumpstd gymstatue2
 
 SabrinaIntroText:
-	ctxt "Sabrina: I knew"
+	text "Sabrina: I knew"
 	line "you were coming…"
 
 	para "Three years ago I"
@@ -214,7 +214,7 @@ SabrinaIntroText:
 	done
 
 SabrinaWinLossText:
-	ctxt "Sabrina: Your"
+	text "Sabrina: Your"
 	line "power…"
 
 	para "It far exceeds"
@@ -236,7 +236,7 @@ endc
 	done
 
 ReceivedMarshBadgeText:
-	ctxt "<PLAYER> received"
+	text "<PLAYER> received"
 if DEF(FAITHFUL)
 	line "the Marsh Badge."
 else
@@ -245,7 +245,7 @@ endc
 	done
 
 SabrinaMarshBadgeText:
-	ctxt "Sabrina: I failed"
+	text "Sabrina: I failed"
 	line "to accurately pre-"
 
 	para "dict your power."
@@ -259,7 +259,7 @@ SabrinaMarshBadgeText:
 	done
 
 SabrinaFightDoneText:
-	ctxt "Sabrina: Your love"
+	text "Sabrina: Your love"
 	line "for your #mon"
 
 	para "overwhelmed my"
@@ -273,7 +273,7 @@ SabrinaFightDoneText:
 	done
 
 MediumDorisSeenText:
-	ctxt "Fufufufu…"
+	text "Fufufufu…"
 	line "I see it clearly."
 
 	para "I can see into"
@@ -281,72 +281,72 @@ MediumDorisSeenText:
 	done
 
 MediumDorisBeatenText:
-	ctxt "Though I read you,"
+	text "Though I read you,"
 	line "I still lost…"
 	done
 
 PsychicLeonSeenText:
-	ctxt "You cannot resist"
+	text "You cannot resist"
 	line "my psychic power!"
 	done
 
 PsychicLeonBeatenText:
-	ctxt "My prediction was"
+	text "My prediction was"
 	line "inaccurate…"
 	done
 
 PsychicJaredSeenText:
-	ctxt "The Fighting Dojo"
+	text "The Fighting Dojo"
 	line "next door was once"
 	cont "this city's Gym."
 	done
 
 PsychicJaredBeatenText:
-	ctxt "I was no match…"
+	text "I was no match…"
 	done
 
 HexManiacLunaSeenText:
-	ctxt "Abra, Kadabra,"
+	text "Abra, Kadabra,"
 	line "Alakazam!"
 	done
 
 HexManiacLunaBeatenText:
-	ctxt "My curse failed?"
+	text "My curse failed?"
 	done
 
 HexManiacNatalieSeenText:
-	ctxt "Let us do battle!"
+	text "Let us do battle!"
 	line "Mwahaha!"
 	done
 
 HexManiacNatalieBeatenText:
-	ctxt "Mwaha--cough!"
+	text "Mwaha--cough!"
 	done
 
 PsychicFranklinSeenText:
-	ctxt "Psychic power is"
+	text "Psychic power is"
 	line "the power of your"
 	cont "soul."
 	done
 
 PsychicFranklinBeatenText:
-	ctxt "Your soul has more"
+	text "Your soul has more"
 	line "power than mine!"
 	done
 
 MediumRebeccaSeenText:
-	ctxt "The power of all"
+	text "The power of all"
 	line "those you defeated"
 	cont "comes to me!"
 	done
 
 MediumRebeccaBeatenText:
-	ctxt "Strong…"
+	text "Strong…"
 	line "Far too strong…"
 	done
 
 SaffronGymGuyText:
-	ctxt "Yo, Champ in"
+	text "Yo, Champ in"
 	line "making!"
 
 	para "A trainer as"
@@ -365,6 +365,6 @@ SaffronGymGuyText:
 	done
 
 SaffronGymGuyWinText:
-	ctxt "That was another"
+	text "That was another"
 	line "fantastic battle!"
 	done

@@ -22,7 +22,7 @@ SproutTower2F_MapScriptHeader:
 GenericTrainerSageNico:
 	generictrainer SAGE, NICO, EVENT_BEAT_SAGE_NICO, SageNicoSeenText, SageNicoBeatenText
 
-	ctxt "The flexible pil-"
+	text "The flexible pil-"
 	line "lar protects the"
 
 	para "tower, even from"
@@ -32,7 +32,7 @@ GenericTrainerSageNico:
 GenericTrainerSageEdmond:
 	generictrainer SAGE, EDMOND, EVENT_BEAT_SAGE_EDMOND, SageEdmondSeenText, SageEdmondBeatenText
 
-	ctxt "I tried to copy"
+	text "I tried to copy"
 	line "Bellsprout's"
 
 	para "gentle movements"
@@ -43,27 +43,27 @@ GenericTrainerSageEdmond:
 	done
 
 SageNicoSeenText:
-	ctxt "However hard we"
+	text "However hard we"
 	line "battle, the tower"
 	cont "will stand strong."
 	done
 
 SageNicoBeatenText:
-	ctxt "I fought hard but"
+	text "I fought hard but"
 	line "I'm too weak."
 	done
 
 SageEdmondSeenText:
-	ctxt "…Sway like leaves"
+	text "…Sway like leaves"
 	line "in the wind…"
 	done
 
 SageEdmondBeatenText:
-	ctxt "Oh, I'm weak!"
+	text "Oh, I'm weak!"
 	done
 
 SproutTower2FStatueText:
-	ctxt "A #mon statue…"
+	text "A #mon statue…"
 
 	para "It looks very"
 	line "distinguished."

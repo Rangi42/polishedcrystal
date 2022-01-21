@@ -1,69 +1,69 @@
 JackAnswerPhoneText:
-	ctxt "Hello. This is"
+	text "Hello. This is"
 	line ""
 	text_ram wStringBuffer3
-	ctxt "…"
+	text "…"
 
 	para "Good morning,"
 	line "<PLAYER>!"
 	done
 
 JackAnswerPhoneDayText:
-	ctxt "Hello. This is"
+	text "Hello. This is"
 	line ""
 	text_ram wStringBuffer3
-	ctxt "…"
+	text "…"
 
 	para "How's it going,"
 	line "<PLAYER>?"
 	done
 
 JackAnswerPhoneNiteText:
-	ctxt "Hello. This is"
+	text "Hello. This is"
 	line ""
 	text_ram wStringBuffer3
-	ctxt "…"
+	text "…"
 
 	para "Good evening,"
 	line "<PLAYER>!"
 	done
 
 JackGreetText:
-	ctxt "<PLAYER>, good"
+	text "<PLAYER>, good"
 	line "morning!"
 
 	para "It's me, "
 	text_ram wStringBuffer3
-	ctxt "."
+	text "."
 	line "How are you doing?"
 	done
 
 JackGreetDayText:
-	ctxt "<PLAYER>, howdy!"
+	text "<PLAYER>, howdy!"
 
 	para "It's me, "
 	text_ram wStringBuffer3
-	ctxt "."
+	text "."
 	line "Isn't it nice out?"
 	done
 
 JackGreetNiteText:
-	ctxt "<PLAYER>, good"
+	text "<PLAYER>, good"
 	line "evening!"
 
 	para "It's me, "
 	text_ram wStringBuffer3
-	ctxt "."
+	text "."
 	line "Got a minute?"
 	done
 
 JackGenericText:
-	ctxt "How are your"
+	text "How are your"
 	line "#mon doing?"
 
 	para "My "
 	text_ram wStringBuffer4
-	ctxt " is"
+	text " is"
 	line "so curious, it's a"
 
 	para "problem. Maybe"
@@ -71,136 +71,136 @@ JackGenericText:
 	done
 
 BeverlyAnswerPhoneText:
-	ctxt "Hello, this is"
+	text "Hello, this is"
 	line ""
 	text_ram wStringBuffer3
-	ctxt "."
+	text "."
 
 	para "Oh! Good morning,"
 	line "<PLAYER>."
 	done
 
 BeverlyAnswerPhoneDayText:
-	ctxt "Hello, this is"
+	text "Hello, this is"
 	line ""
 	text_ram wStringBuffer3
-	ctxt "."
+	text "."
 
 	para "Oh! Good day,"
 	line "<PLAYER>."
 	done
 
 BeverlyAnswerPhoneNiteText:
-	ctxt "Hello, this is"
+	text "Hello, this is"
 	line ""
 	text_ram wStringBuffer3
-	ctxt "."
+	text "."
 
 	para "Oh! Good evening,"
 	line "<PLAYER>."
 	done
 
 BeverlyGreetText:
-	ctxt "Hello, <PLAYER>."
+	text "Hello, <PLAYER>."
 	line "Good morning."
 
 	para "This is "
 	text_ram wStringBuffer3
-	ctxt "."
+	text "."
 	line "Were you asleep?"
 	done
 
 BeverlyGreetDayText:
-	ctxt "Hi, <PLAYER>."
+	text "Hi, <PLAYER>."
 	line "This is "
 	text_ram wStringBuffer3
-	ctxt "."
+	text "."
 
 	para "How are you doing?"
 	done
 
 BeverlyGreetNiteText:
-	ctxt "Hi, <PLAYER>."
+	text "Hi, <PLAYER>."
 	line "This is "
 	text_ram wStringBuffer3
-	ctxt "."
+	text "."
 
 	para "Were you awake?"
 	done
 
 BeverlyGenericText:
-	ctxt "Keeping your"
+	text "Keeping your"
 	line "#mon happy?"
 
 	para "My "
 	text_ram wStringBuffer4
-	ctxt " is"
+	text " is"
 	line "healthy. It eats a"
 	cont "lot every day."
 	done
 
 HueyAnswerPhoneText:
-	ctxt "Yeah, this is"
+	text "Yeah, this is"
 	line ""
 	text_ram wStringBuffer3
-	ctxt "."
+	text "."
 
 	para "Huh? What's up,"
 	line "<PLAYER>?"
 	done
 
 HueyAnswerPhoneDayText:
-	ctxt "Yeah, this is"
+	text "Yeah, this is"
 	line ""
 	text_ram wStringBuffer3
-	ctxt "."
+	text "."
 
 	para "Huh? What's up"
 	line "<PLAYER>?"
 	done
 
 HueyAnswerPhoneNiteText:
-	ctxt "Yeah, this is"
+	text "Yeah, this is"
 	line ""
 	text_ram wStringBuffer3
-	ctxt "."
+	text "."
 
 	para "Huh? What's up"
 	line "<PLAYER>?"
 	done
 
 HueyGreetText:
-	ctxt "Yo, <PLAYER>!"
+	text "Yo, <PLAYER>!"
 	line "You awake?"
 
 	para "It's me, "
 	text_ram wStringBuffer3
-	ctxt "!"
+	text "!"
 	line "How's it going?"
 	done
 
 HueyGreetDayText:
-	ctxt "Yo, <PLAYER>! You"
+	text "Yo, <PLAYER>! You"
 	line "free right now?"
 
 	para "It's me, "
 	text_ram wStringBuffer3
-	ctxt "!"
+	text "!"
 	line "How's it going?"
 	done
 
 HueyGreetNiteText:
-	ctxt "Yo, <PLAYER>!"
+	text "Yo, <PLAYER>!"
 	line "Were you asleep?"
 
 	para "It's me, "
 	text_ram wStringBuffer3
-	ctxt "!"
+	text "!"
 	line "How's it going?"
 	done
 
 UnknownGenericText:
-	ctxt "How are your"
+	text "How are your"
 	line "#mon doing?"
 
 	para "My #mon are a"
@@ -208,7 +208,7 @@ UnknownGenericText:
 
 	para ""
 	text_ram wStringBuffer4
-	ctxt ","
+	text ","
 	line "especially."
 
 	para "Every time it"
@@ -222,7 +222,7 @@ UnknownGenericText:
 UnknownTougherThanEverText:
 	text "My "
 	text_ram wStringBuffer4
-	ctxt "'s"
+	text "'s"
 	line "looking tougher"
 	cont "than ever."
 
@@ -231,70 +231,70 @@ UnknownTougherThanEverText:
 	done
 
 GavenAnswerPhoneText:
-	ctxt "Hello, this is"
+	text "Hello, this is"
 	line ""
 	text_ram wStringBuffer3
-	ctxt " speaking…"
+	text " speaking…"
 
 	para "Hi, <PLAYER>!"
 	line "Good morning!"
 	done
 
 GavenAnswerPhoneDayText:
-	ctxt "Hello, this is"
+	text "Hello, this is"
 	line ""
 	text_ram wStringBuffer3
-	ctxt " speaking…"
+	text " speaking…"
 
 	para "Hi, <PLAYER>!"
 	done
 
 GavenAnswerPhoneNiteText:
-	ctxt "Hello, this is"
+	text "Hello, this is"
 	line ""
 	text_ram wStringBuffer3
-	ctxt " speaking…"
+	text " speaking…"
 
 	para "Hi, <PLAYER>!"
 	line "Good evening!"
 	done
 
 GavenGreetText:
-	ctxt "<PLAYER>, good"
+	text "<PLAYER>, good"
 	line "morning!"
 
 	para "It's me, "
 	text_ram wStringBuffer3
-	ctxt "."
+	text "."
 	line "How are you doing?"
 	done
 
 GavenGreetDayText:
-	ctxt "Hi, <PLAYER>!"
+	text "Hi, <PLAYER>!"
 
 	para "It's me, "
 	text_ram wStringBuffer3
-	ctxt "."
+	text "."
 	line "How are you doing?"
 	done
 
 GavenGreetNiteText:
-	ctxt "<PLAYER>, good"
+	text "<PLAYER>, good"
 	line "evening!"
 
 	para "It's me, "
 	text_ram wStringBuffer3
-	ctxt "."
+	text "."
 	line "How are you doing?"
 	done
 
 GavenGenericText:
-	ctxt "How are your"
+	text "How are your"
 	line "#mon doing?"
 
 	para "My "
 	text_ram wStringBuffer4
-	ctxt "'s"
+	text "'s"
 	line "doing as great as"
 	cont "ever."
 
@@ -304,68 +304,68 @@ GavenGenericText:
 	done
 
 BethAnswerPhoneText:
-	ctxt "Hello, this is"
+	text "Hello, this is"
 	line ""
 	text_ram wStringBuffer3
-	ctxt "."
+	text "."
 	para "Oh, <PLAYER>."
 	line "Good morning."
 	para ""
 	done
 
 BethAnswerPhoneDayText:
-	ctxt "Hello, this is"
+	text "Hello, this is"
 	line ""
 	text_ram wStringBuffer3
-	ctxt "."
+	text "."
 
 	para "Oh. Hi, <PLAYER>."
 	done
 
 BethAnswerPhoneNiteText:
-	ctxt "Hello, this is"
+	text "Hello, this is"
 	line ""
 	text_ram wStringBuffer3
-	ctxt "."
+	text "."
 
 	para "Oh, <PLAYER>."
 	line "Good evening."
 	done
 
 BethGreetText:
-	ctxt "Good morning,"
+	text "Good morning,"
 	line "<PLAYER>!"
 
 	para "This is "
 	text_ram wStringBuffer3
-	ctxt "."
+	text "."
 	line "Were you sleeping?"
 	done
 
 BethGreetDayText:
-	ctxt "<PLAYER>, hi!"
+	text "<PLAYER>, hi!"
 	line "This is "
 	text_ram wStringBuffer3
-	ctxt "."
+	text "."
 
 	para "Do you have some"
 	line "time?"
 	done
 
 BethGreetNiteText:
-	ctxt "Hi, <PLAYER>."
+	text "Hi, <PLAYER>."
 	line "Good evening."
 
 	para "This is "
 	text_ram wStringBuffer3
-	ctxt "."
+	text "."
 
 	para "I hope you were"
 	line "awake."
 	done
 
 BethGenericText:
-	ctxt "Are you the kind"
+	text "Are you the kind"
 	line "of person who goes"
 
 	para "to #mon Centers"
@@ -382,36 +382,36 @@ BethGenericText:
 	done
 
 JoseAnswerPhoneText:
-	ctxt "Hello, this is"
+	text "Hello, this is"
 	line ""
 	text_ram wStringBuffer3
-	ctxt "…"
+	text "…"
 
 	para "Oh, <PLAYER>?"
 	line "Good morning!"
 	done
 
 JoseAnswerPhoneDayText:
-	ctxt "Hello, this is"
+	text "Hello, this is"
 	line ""
 	text_ram wStringBuffer3
-	ctxt "…"
+	text "…"
 
 	para "Oh, <PLAYER>? Hi!"
 	done
 
 JoseAnswerPhoneNiteText:
-	ctxt "Hello, this is"
+	text "Hello, this is"
 	line ""
 	text_ram wStringBuffer3
-	ctxt "…"
+	text "…"
 
 	para "Oh, <PLAYER>?"
 	line "Good evening!"
 	done
 
 JoseGreetText:
-	ctxt "Oh, <PLAYER>?"
+	text "Oh, <PLAYER>?"
 
 	para "Tweet! Yeah, it's"
 	line "me, "
@@ -420,7 +420,7 @@ JoseGreetText:
 	done
 
 JoseGreetDayText:
-	ctxt "Oh, <PLAYER>?"
+	text "Oh, <PLAYER>?"
 
 	para "Tweet! Yeah, it's"
 	line "me, "
@@ -429,7 +429,7 @@ JoseGreetDayText:
 	done
 
 JoseGreetNiteText:
-	ctxt "Oh, <PLAYER>?"
+	text "Oh, <PLAYER>?"
 
 	para "Tweet! Yeah, it's"
 	line "me, "
@@ -438,12 +438,12 @@ JoseGreetNiteText:
 	done
 
 JoseGenericText:
-	ctxt "Are your #mon"
+	text "Are your #mon"
 	line "still cooking?"
 
 	para "My "
 	text_ram wStringBuffer4
-	ctxt " has"
+	text " has"
 	line "too much energy."
 
 	para "Once it takes off,"
@@ -452,37 +452,37 @@ JoseGenericText:
 	done
 
 ReenaAnswerPhoneText:
-	ctxt "Hello, this is"
+	text "Hello, this is"
 	line ""
 	text_ram wStringBuffer3
-	ctxt "…"
+	text "…"
 
 	para "Oh. Hi, <PLAYER>."
 	line "What's up?"
 	done
 
 ReenaAnswerPhoneDayText:
-	ctxt "Hello, this is"
+	text "Hello, this is"
 	line ""
 	text_ram wStringBuffer3
-	ctxt "…"
+	text "…"
 
 	para "Oh, hi, <PLAYER>,"
 	line "what's up?"
 	done
 
 ReenaAnswerPhoneNiteText:
-	ctxt "Hello, this is"
+	text "Hello, this is"
 	line ""
 	text_ram wStringBuffer3
-	ctxt "…"
+	text "…"
 
 	para "Oh, hi, <PLAYER>,"
 	line "what's up?"
 	done
 
 ReenaGreetText:
-	ctxt "You're slow! Hurry"
+	text "You're slow! Hurry"
 	line "up and answer!"
 
 	para "It's me, "
@@ -491,7 +491,7 @@ ReenaGreetText:
 	done
 
 ReenaGreetDayText:
-	ctxt "You're slow! Hurry"
+	text "You're slow! Hurry"
 	line "up and answer!"
 
 	para "It's me, "
@@ -500,7 +500,7 @@ ReenaGreetDayText:
 	done
 
 ReenaGreetNiteText:
-	ctxt "You're slow! Hurry"
+	text "You're slow! Hurry"
 	line "up and answer!"
 
 	para "It's me, "
@@ -509,7 +509,7 @@ ReenaGreetNiteText:
 	done
 
 ReenaGenericText:
-	ctxt "Hey, how are your"
+	text "Hey, how are your"
 	line "#mon doing?"
 
 	para "What? Great?"
@@ -527,7 +527,7 @@ ReenaGenericText:
 JoeyAnswerPhoneText:
 	text "Hi, "
 	text_ram wStringBuffer3
-	ctxt " here!"
+	text " here!"
 
 	para "Oh, <PLAYER>? You"
 	line "doing well?"
@@ -536,7 +536,7 @@ JoeyAnswerPhoneText:
 JoeyAnswerPhoneDayText:
 	text "Hi, "
 	text_ram wStringBuffer3
-	ctxt " here!"
+	text " here!"
 
 	para "Oh, <PLAYER>? You"
 	line "doing well?"
@@ -545,49 +545,49 @@ JoeyAnswerPhoneDayText:
 JoeyAnswerPhoneNiteText:
 	text "Hi, "
 	text_ram wStringBuffer3
-	ctxt " here!"
+	text " here!"
 
 	para "Oh, <PLAYER>? You"
 	line "doing well?"
 	done
 
 JoeyGreetText:
-	ctxt "Yo, <PLAYER>!"
+	text "Yo, <PLAYER>!"
 	line "How're you doing?"
 
 	para "This is "
 	text_ram wStringBuffer3
-	ctxt ","
+	text ","
 	line "got a minute?"
 	done
 
 JoeyGreetDayText:
-	ctxt "Yo, <PLAYER>! How's"
+	text "Yo, <PLAYER>! How's"
 	line "it going?"
 
 	para "This is "
 	text_ram wStringBuffer3
-	ctxt "."
+	text "."
 	line "Got a minute?"
 	done
 
 JoeyGreetNiteText:
-	ctxt "Yo, <PLAYER>!"
+	text "Yo, <PLAYER>!"
 	line "How're you doing?"
 
 	para "This is "
 	text_ram wStringBuffer3
-	ctxt ","
+	text ","
 	line "got a minute?"
 	done
 
 JoeyGenericText:
-	ctxt "How are your"
+	text "How are your"
 	line "#mon doing?"
 
 	para "My "
 	text_ram wStringBuffer4
-	ctxt "'s"
+	text "'s"
 	line "raring to go, just"
 	cont "like always."
 
@@ -599,65 +599,65 @@ JoeyGenericText:
 	done
 
 WadeAnswerPhoneText:
-	ctxt "Hello? This is"
+	text "Hello? This is"
 	line ""
 	text_ram wStringBuffer3
-	ctxt " speaking."
+	text " speaking."
 
 	para "Oh. Hi, <PLAYER>!"
 	line "Good morning!"
 	done
 
 WadeAnswerPhoneDayText:
-	ctxt "Hello? This is"
+	text "Hello? This is"
 	line ""
 	text_ram wStringBuffer3
-	ctxt " speaking."
+	text " speaking."
 
 	para "Oh, hi, <PLAYER>!"
 	done
 
 WadeAnswerPhoneNiteText:
-	ctxt "Hello? This is"
+	text "Hello? This is"
 	line ""
 	text_ram wStringBuffer3
-	ctxt " speaking."
+	text " speaking."
 
 	para "Oh, hi, <PLAYER>!"
 	line "Good evening!"
 	done
 
 WadeGreetText:
-	ctxt "<PLAYER>, good"
+	text "<PLAYER>, good"
 	line "morning!"
 
 	para "It's me, "
 	text_ram wStringBuffer3
-	ctxt "."
+	text "."
 	line "Isn't it nice out?"
 	done
 
 WadeGreetDayText:
-	ctxt "<PLAYER>, howdy!"
+	text "<PLAYER>, howdy!"
 
 	para "It's me, "
 	text_ram wStringBuffer3
-	ctxt "."
+	text "."
 	line "Isn't it nice out?"
 	done
 
 WadeGreetNiteText:
-	ctxt "Good evening,"
+	text "Good evening,"
 	line "<PLAYER>!"
 
 	para "It's me, "
 	text_ram wStringBuffer3
-	ctxt "."
+	text "."
 	line "Were you awake?"
 	done
 
 WadeGenericText:
-	ctxt "How are your"
+	text "How are your"
 	line "#mon doing?"
 
 	para "My #mon have"
@@ -669,7 +669,7 @@ WadeGenericText:
 	para "Of all my #mon,"
 	line ""
 	text_ram wStringBuffer4
-	ctxt " is the"
+	text " is the"
 	cont "hardest to handle."
 
 	para "Working with it is"
@@ -677,7 +677,7 @@ WadeGenericText:
 	done
 
 RalphAnswerPhoneText:
-	ctxt "Yes? Ah, <PLAYER>."
+	text "Yes? Ah, <PLAYER>."
 
 	para "You're courteous"
 	line "enough to state"
@@ -687,7 +687,7 @@ RalphAnswerPhoneText:
 	done
 
 RalphAnswerPhoneDayText:
-	ctxt "Yes? Ah, <PLAYER>."
+	text "Yes? Ah, <PLAYER>."
 
 	para "You're courteous"
 	line "enough to state"
@@ -697,7 +697,7 @@ RalphAnswerPhoneDayText:
 	done
 
 RalphAnswerPhoneNiteText:
-	ctxt "Yes? Ah, <PLAYER>."
+	text "Yes? Ah, <PLAYER>."
 
 	para "You're courteous"
 	line "enough to state"
@@ -707,28 +707,28 @@ RalphAnswerPhoneNiteText:
 	done
 
 RalphGreetText:
-	ctxt "Hiya, it's Uncle"
+	text "Hiya, it's Uncle"
 	line ""
 	text_ram wStringBuffer3
 	text "."
 	done
 
 RalphGreetDayText:
-	ctxt "Hiya, it's Uncle"
+	text "Hiya, it's Uncle"
 	line ""
 	text_ram wStringBuffer3
 	text "."
 	done
 
 RalphGreetNiteText:
-	ctxt "Hiya, it's Uncle"
+	text "Hiya, it's Uncle"
 	line ""
 	text_ram wStringBuffer3
 	text "."
 	done
 
 RalphGenericText:
-	ctxt "Are you taking"
+	text "Are you taking"
 	line "good care of your"
 
 	para "#mon? You have"
@@ -737,9 +737,9 @@ RalphGenericText:
 	done
 
 LizAnswerPhoneText:
-	ctxt "Hello, "
+	text "Hello, "
 	text_ram wStringBuffer3
-	ctxt ""
+	text ""
 	line "speaking."
 
 	para "Oh, <PLAYER>."
@@ -747,9 +747,9 @@ LizAnswerPhoneText:
 	done
 
 LizAnswerPhoneDayText:
-	ctxt "Hello, "
+	text "Hello, "
 	text_ram wStringBuffer3
-	ctxt ""
+	text ""
 	line "speaking."
 
 	para "Oh, <PLAYER>."
@@ -757,9 +757,9 @@ LizAnswerPhoneDayText:
 	done
 
 LizAnswerPhoneNiteText:
-	ctxt "Hello, "
+	text "Hello, "
 	text_ram wStringBuffer3
-	ctxt ""
+	text ""
 	line "speaking."
 
 	para "Oh, <PLAYER>."
@@ -767,37 +767,37 @@ LizAnswerPhoneNiteText:
 	done
 
 LizGreetText:
-	ctxt "Good morning,"
+	text "Good morning,"
 	line "<PLAYER>."
 
 	para "This is "
 	text_ram wStringBuffer3
-	ctxt "."
+	text "."
 	line "Were you sleeping?"
 	done
 
 LizGreetDayText:
-	ctxt "Hi, <PLAYER>."
+	text "Hi, <PLAYER>."
 	line "This is "
 	text_ram wStringBuffer3
-	ctxt "."
+	text "."
 
 	para "How are things"
 	line "going for you?"
 	done
 
 LizGreetNiteText:
-	ctxt "Good evening,"
+	text "Good evening,"
 	line "<PLAYER>."
 
 	para "This is "
 	text_ram wStringBuffer3
-	ctxt "."
+	text "."
 	line "Are you awake?"
 	done
 
 LizGenericText:
-	ctxt "I had some time,"
+	text "I had some time,"
 	line "so I called you."
 
 	para "So anyway, how are"
@@ -806,7 +806,7 @@ LizGenericText:
 	para "Me, I take my"
 	line ""
 	text_ram wStringBuffer4
-	ctxt " to the"
+	text " to the"
 
 	para "#mon Center in"
 	line "Violet every day,"
@@ -821,7 +821,7 @@ LizGenericText:
 AnthonyAnswerPhoneText:
 	text "Yeah, "
 	text_ram wStringBuffer3
-	ctxt " the"
+	text " the"
 	line "Hiker here."
 
 	para "Ah, <PLAYER>!"
@@ -830,7 +830,7 @@ AnthonyAnswerPhoneText:
 AnthonyAnswerPhoneDayText:
 	text "Yeah, "
 	text_ram wStringBuffer3
-	ctxt " the"
+	text " the"
 	line "Hiker here."
 
 	para "Ah, <PLAYER>,"
@@ -840,7 +840,7 @@ AnthonyAnswerPhoneDayText:
 AnthonyAnswerPhoneNiteText:
 	text "Yeah, "
 	text_ram wStringBuffer3
-	ctxt " the"
+	text " the"
 	line "Hiker here."
 
 	para "Ah, <PLAYER>, isn't"
@@ -848,41 +848,41 @@ AnthonyAnswerPhoneNiteText:
 	done
 
 AnthonyGreetText:
-	ctxt "Yo, <PLAYER>?"
+	text "Yo, <PLAYER>?"
 
 	para "This is "
 	text_ram wStringBuffer3
-	ctxt ""
+	text ""
 	line "the Hiker!"
 	done
 
 AnthonyGreetDayText:
-	ctxt "Hey, is this"
+	text "Hey, is this"
 	line "<PLAYER>?"
 
 	para "This is "
 	text_ram wStringBuffer3
-	ctxt ""
+	text ""
 	line "the Hiker!"
 	done
 
 AnthonyGreetNiteText:
-	ctxt "<PLAYER>, you still"
+	text "<PLAYER>, you still"
 	line "awake?"
 
 	para "This is "
 	text_ram wStringBuffer3
-	ctxt ""
+	text ""
 	line "the Hiker!"
 	done
 
 AnthonyGenericText:
-	ctxt "Are your #mon"
+	text "Are your #mon"
 	line "as feisty as ever?"
 
 	para "My "
 	text_ram wStringBuffer4
-	ctxt " and"
+	text " and"
 	line "me--we have energy"
 
 	para "to burn. We hike"
@@ -893,64 +893,64 @@ AnthonyGenericText:
 	done
 
 ToddAnswerPhoneText:
-	ctxt "Yes? This is"
+	text "Yes? This is"
 	line ""
 	text_ram wStringBuffer3
-	ctxt " speaking."
+	text " speaking."
 
 	para "Hey, <PLAYER>!"
 	done
 
 ToddAnswerPhoneDayText:
-	ctxt "Yes? This is"
+	text "Yes? This is"
 	line ""
 	text_ram wStringBuffer3
-	ctxt " speaking."
+	text " speaking."
 
 	para "This must be"
 	line "<PLAYER>."
 	done
 
 ToddAnswerPhoneNiteText:
-	ctxt "Yes? This is"
+	text "Yes? This is"
 	line ""
 	text_ram wStringBuffer3
-	ctxt " speaking."
+	text " speaking."
 
 	para "Ah, <PLAYER>!"
 	done
 
 ToddGreetText:
-	ctxt "Hello, this is"
+	text "Hello, this is"
 	line ""
 	text_ram wStringBuffer3
-	ctxt "."
+	text "."
 
 	para "<PLAYER>, right?"
 	done
 
 ToddGreetDayText:
-	ctxt "Hello, this is"
+	text "Hello, this is"
 	line ""
 	text_ram wStringBuffer3
-	ctxt "."
+	text "."
 
 	para "<PLAYER>, what are"
 	line "you doing?"
 	done
 
 ToddGreetNiteText:
-	ctxt "Hello, this is"
+	text "Hello, this is"
 	line ""
 	text_ram wStringBuffer3
-	ctxt "."
+	text "."
 
 	para "<PLAYER>, sorry to"
 	line "call you so late."
 	done
 
 ToddGenericText:
-	ctxt "How do you raise"
+	text "How do you raise"
 	line "your #mon?"
 
 	para "I do all sorts"
@@ -964,30 +964,30 @@ ToddGenericText:
 	done
 
 GinaAnswerPhoneText:
-	ctxt "Hello? This is"
+	text "Hello? This is"
 	line ""
 	text_ram wStringBuffer3
-	ctxt "…"
+	text "…"
 
 	para "Oh, <PLAYER>!"
 	line "Good morning!"
 	done
 
 GinaAnswerPhoneDayText:
-	ctxt "Hello? This is"
+	text "Hello? This is"
 	line ""
 	text_ram wStringBuffer3
-	ctxt "…"
+	text "…"
 
 	para "Oh, <PLAYER>!"
 	line "Hi, how are you?"
 	done
 
 GinaAnswerPhoneNiteText:
-	ctxt "Hello? This is"
+	text "Hello? This is"
 	line ""
 	text_ram wStringBuffer3
-	ctxt "…"
+	text "…"
 
 	para "Oh, <PLAYER>!"
 	line "Good evening!"
@@ -998,7 +998,7 @@ GinaGreetText:
 
 	para "It's "
 	text_ram wStringBuffer3
-	ctxt "."
+	text "."
 	line "Good morning!"
 	done
 
@@ -1007,7 +1007,7 @@ GinaGreetDayText:
 
 	para "It's "
 	text_ram wStringBuffer3
-	ctxt ". Is"
+	text ". Is"
 	line "this a bad time?"
 	done
 
@@ -1016,12 +1016,12 @@ GinaGreetNiteText:
 
 	para "It's "
 	text_ram wStringBuffer3
-	ctxt "."
+	text "."
 	line "Got time to chat?"
 	done
 
 GinaGenericText:
-	ctxt "Are your #mon"
+	text "Are your #mon"
 	line "still tough?"
 
 	para "I train every day"
@@ -1031,34 +1031,34 @@ GinaGenericText:
 	done
 
 IrwinAnswerPhoneText:
-	ctxt "Hello? "
+	text "Hello? "
 	text_ram wStringBuffer3
-	ctxt ""
+	text ""
 	line "here…"
 
 	para "Hey, <PLAYER>!"
 	done
 
 IrwinAnswerPhoneDayText:
-	ctxt "Hello? "
+	text "Hello? "
 	text_ram wStringBuffer3
-	ctxt ""
+	text ""
 	line "here…"
 
 	para "Wow, <PLAYER>!"
 	done
 
 IrwinAnswerPhoneNiteText:
-	ctxt "Hello? "
+	text "Hello? "
 	text_ram wStringBuffer3
-	ctxt ""
+	text ""
 	line "here…"
 
 	para "Yippee, <PLAYER>!"
 	done
 
 IrwinGreetText:
-	ctxt "Uh, hello."
+	text "Uh, hello."
 	line "<PLAYER>?"
 
 	para "It's your pal,"
@@ -1068,7 +1068,7 @@ IrwinGreetText:
 	done
 
 IrwinGreetDayText:
-	ctxt "Uh, hello,"
+	text "Uh, hello,"
 	line "<PLAYER>?"
 
 	para "It's your buddy"
@@ -1078,7 +1078,7 @@ IrwinGreetDayText:
 	done
 
 IrwinGreetNiteText:
-	ctxt "Uh, hello,"
+	text "Uh, hello,"
 	line "<PLAYER>?"
 
 	para "It's your sidekick"
@@ -1088,117 +1088,117 @@ IrwinGreetNiteText:
 	done
 
 ArnieAnswerPhoneText:
-	ctxt "Yeah, hello."
+	text "Yeah, hello."
 	line "This is "
 	text_ram wStringBuffer3
-	ctxt "."
+	text "."
 
 	para "…Huh, <PLAYER>? Yo!"
 	done
 
 ArnieAnswerPhoneDayText:
-	ctxt "Yeah, hello, you"
+	text "Yeah, hello, you"
 	line "got "
 	text_ram wStringBuffer3
-	ctxt "."
+	text "."
 
 	para "…Huh, <PLAYER>? Yo!"
 	done
 
 ArnieAnswerPhoneNiteText:
-	ctxt "Yeah, hello, you"
+	text "Yeah, hello, you"
 	line "got "
 	text_ram wStringBuffer3
-	ctxt "."
+	text "."
 
 	para "…Huh, <PLAYER>? Yo!"
 	done
 
 ArnieGreetText:
-	ctxt "Yeah, hello?"
+	text "Yeah, hello?"
 	line ""
 	text_ram wStringBuffer3
-	ctxt " calling."
+	text " calling."
 
 	para "What are you up"
 	line "to, <PLAYER>?"
 	done
 
 ArnieGreetDayText:
-	ctxt "Yeah, hello?"
+	text "Yeah, hello?"
 	line ""
 	text_ram wStringBuffer3
-	ctxt " calling."
+	text " calling."
 
 	para "Where are you now,"
 	line "<PLAYER>?"
 	done
 
 ArnieGreetNiteText:
-	ctxt "Yeah, hello?"
+	text "Yeah, hello?"
 	line ""
 	text_ram wStringBuffer3
-	ctxt " calling."
+	text " calling."
 
 	para "Are you awake now,"
 	line "<PLAYER>?"
 	done
 
 ArnieGenericText:
-	ctxt "I bet your #mon"
+	text "I bet your #mon"
 	line "are a lot stronger"
 	cont "than before."
 	done
 
 AlanAnswerPhoneText:
-	ctxt "Yup, it's "
+	text "Yup, it's "
 	text_ram wStringBuffer3
-	ctxt "!"
+	text "!"
 
 	para "Is this <PLAYER>?"
 	line "Good morning!"
 	done
 
 AlanAnswerPhoneDayText:
-	ctxt "Yup, it's "
+	text "Yup, it's "
 	text_ram wStringBuffer3
-	ctxt "!"
+	text "!"
 
 	para "Is that <PLAYER>?"
 	done
 
 AlanAnswerPhoneNiteText:
-	ctxt "Yup, it's "
+	text "Yup, it's "
 	text_ram wStringBuffer3
-	ctxt "!"
+	text "!"
 
 	para "Is that <PLAYER>?"
 	line "Good evening!"
 	done
 
 AlanGreetText:
-	ctxt "Hello! It's me,"
+	text "Hello! It's me,"
 	line ""
 	text_ram wStringBuffer3
 	text "!"
 	done
 
 AlanGreetDayText:
-	ctxt "Hello! It's me,"
+	text "Hello! It's me,"
 	line ""
 	text_ram wStringBuffer3
 	text "!"
 	done
 
 AlanGreetNiteText:
-	ctxt "Hello! It's me,"
+	text "Hello! It's me,"
 	line ""
 	text_ram wStringBuffer3
 	text "!"
 	done
 
 AlanGenericText:
-	ctxt "<PLAYER>, are you"
+	text "<PLAYER>, are you"
 	line "raising your"
 	cont "#mon properly?"
 
@@ -1213,7 +1213,7 @@ AlanGenericText:
 DanaAnswerPhoneText:
 	text "Hi, "
 	text_ram wStringBuffer3
-	ctxt " on the"
+	text " on the"
 	line "line."
 
 	para "Hey! It's <PLAYER>!"
@@ -1222,7 +1222,7 @@ DanaAnswerPhoneText:
 DanaAnswerPhoneDayText:
 	text "Hi, "
 	text_ram wStringBuffer3
-	ctxt " on the"
+	text " on the"
 	line "line."
 
 	para "I know!"
@@ -1232,7 +1232,7 @@ DanaAnswerPhoneDayText:
 DanaAnswerPhoneNiteText:
 	text "Hi, "
 	text_ram wStringBuffer3
-	ctxt " on the"
+	text " on the"
 	line "line."
 
 	para "<PLAYER>?"
@@ -1240,7 +1240,7 @@ DanaAnswerPhoneNiteText:
 	done
 
 DanaGreetText:
-	ctxt "Uh, <PLAYER>?"
+	text "Uh, <PLAYER>?"
 
 	para "It's me!"
 	line "It's me, "
@@ -1249,7 +1249,7 @@ DanaGreetText:
 	done
 
 DanaGreetDayText:
-	ctxt "Uh, <PLAYER>?"
+	text "Uh, <PLAYER>?"
 
 	para "It's me!"
 	line "It's me, "
@@ -1258,7 +1258,7 @@ DanaGreetDayText:
 	done
 
 DanaGreetNiteText:
-	ctxt "Uh, <PLAYER>?"
+	text "Uh, <PLAYER>?"
 
 	para "It's me!"
 	line "It's me, "
@@ -1269,7 +1269,7 @@ DanaGreetNiteText:
 DanaGenericText:
 	text "My "
 	text_ram wStringBuffer4
-	ctxt " is"
+	text " is"
 	line "so full of energy,"
 
 	para "it's a little"
@@ -1280,67 +1280,67 @@ DanaGenericText:
 	done
 
 ChadAnswerPhoneText:
-	ctxt "Hello, this is"
+	text "Hello, this is"
 	line ""
 	text_ram wStringBuffer3
-	ctxt "…"
+	text "…"
 
 	para "Hi, <PLAYER>!"
 	line "Good morning!"
 	done
 
 ChadAnswerPhoneDayText:
-	ctxt "Hello, this is"
+	text "Hello, this is"
 	line ""
 	text_ram wStringBuffer3
-	ctxt "…"
+	text "…"
 
 	para "Hi, <PLAYER>, good"
 	line "day!"
 	done
 
 ChadAnswerPhoneNiteText:
-	ctxt "Hello, this is"
+	text "Hello, this is"
 	line ""
 	text_ram wStringBuffer3
-	ctxt "…"
+	text "…"
 
 	para "Hi, <PLAYER>, good"
 	line "evening!"
 	done
 
 ChadGreetText:
-	ctxt "Hi, <PLAYER>, good"
+	text "Hi, <PLAYER>, good"
 	line "morning!"
 
 	para "It's "
 	text_ram wStringBuffer3
-	ctxt "."
+	text "."
 	line "How are you?"
 	done
 
 ChadGreetDayText:
-	ctxt "Hi, <PLAYER>, good"
+	text "Hi, <PLAYER>, good"
 	line "day!"
 
 	para "It's "
 	text_ram wStringBuffer3
-	ctxt "."
+	text "."
 	line "How are you?"
 	done
 
 ChadGreetNiteText:
-	ctxt "Hi, <PLAYER>, good"
+	text "Hi, <PLAYER>, good"
 	line "evening!"
 
 	para "It's "
 	text_ram wStringBuffer3
-	ctxt "."
+	text "."
 	line "How are you?"
 	done
 
 ChadGenericText:
-	ctxt "How are your"
+	text "How are your"
 	line "#mon doing?"
 
 	para "You know Prof.Oak,"
@@ -1359,63 +1359,63 @@ ChadGenericText:
 	done
 
 DerekAnswerPhoneText:
-	ctxt "Hi, <PLAYER>?"
+	text "Hi, <PLAYER>?"
 
 	para "Good morning pika."
 	line "What's up pika?"
 	done
 
 DerekAnswerPhoneDayText:
-	ctxt "Hi, <PLAYER>?"
+	text "Hi, <PLAYER>?"
 
 	para "Good day pika,"
 	line "what's up pika?"
 	done
 
 DerekAnswerPhoneNiteText:
-	ctxt "Hi, <PLAYER>?"
+	text "Hi, <PLAYER>?"
 
 	para "Good evening pika,"
 	line "what's up pika?"
 	done
 
 DerekGreetText:
-	ctxt "<PLAYER> pika, good"
+	text "<PLAYER> pika, good"
 	line "morning!"
 
 	para "It's "
 	text_ram wStringBuffer3
-	ctxt ", how"
+	text ", how"
 	line "pika are you?"
 	done
 
 DerekGreetDayText:
-	ctxt "<PLAYER> pika, good"
+	text "<PLAYER> pika, good"
 	line "pika day!"
 
 	para "It's "
 	text_ram wStringBuffer3
-	ctxt ", how"
+	text ", how"
 	line "pika are you?"
 	done
 
 DerekGreetNiteText:
-	ctxt "<PLAYER> pika, good"
+	text "<PLAYER> pika, good"
 	line "evening!"
 
 	para "It's "
 	text_ram wStringBuffer3
-	ctxt ". Were"
+	text ". Were"
 	line "you pika awake?"
 	done
 
 DerekGenericText:
-	ctxt "You have to hear"
+	text "You have to hear"
 	line "this! My lovable"
 
 	para ""
 	text_ram wStringBuffer4
-	ctxt " looked"
+	text " looked"
 	line "at me and grinned!"
 
 	para "It must be because"
@@ -1424,67 +1424,67 @@ DerekGenericText:
 	done
 
 TullyAnswerPhoneText:
-	ctxt "Hello, this is"
+	text "Hello, this is"
 	line ""
 	text_ram wStringBuffer3
-	ctxt "…"
+	text "…"
 
 	para "Oh, Good morning,"
 	line "<PLAYER>."
 	done
 
 TullyAnswerPhoneDayText:
-	ctxt "Hello, this is"
+	text "Hello, this is"
 	line ""
 	text_ram wStringBuffer3
-	ctxt "…"
+	text "…"
 
 	para "That voice…"
 	line "<PLAYER>, right?"
 	done
 
 TullyAnswerPhoneNiteText:
-	ctxt "Hello, this is"
+	text "Hello, this is"
 	line ""
 	text_ram wStringBuffer3
-	ctxt "…"
+	text "…"
 
 	para "This must be"
 	line "<PLAYER>!"
 	done
 
 TullyGreetText:
-	ctxt "Hello!"
+	text "Hello!"
 	line ""
 	text_ram wStringBuffer3
-	ctxt " here…"
+	text " here…"
 
 	para "Good morning! The"
 	line "weather's great!"
 	done
 
 TullyGreetDayText:
-	ctxt "Hello!"
+	text "Hello!"
 	line ""
 	text_ram wStringBuffer3
-	ctxt " here…"
+	text " here…"
 
 	para "What a perfect day"
 	line "for fishing!"
 	done
 
 TullyGreetNiteText:
-	ctxt "Hello!"
+	text "Hello!"
 	line ""
 	text_ram wStringBuffer3
-	ctxt " here…"
+	text " here…"
 
 	para "It's a great night"
 	line "for fishing!"
 	done
 
 TullyGenericText:
-	ctxt "How's your trip"
+	text "How's your trip"
 	line "coming along?"
 
 	para "I can't complain"
@@ -1494,7 +1494,7 @@ TullyGenericText:
 BrentAnswerPhoneText:
 	text "Yes? "
 	text_ram wStringBuffer3
-	ctxt " here…"
+	text " here…"
 
 	para "Ah, <PLAYER>. What"
 	line "can I do for you?"
@@ -1503,7 +1503,7 @@ BrentAnswerPhoneText:
 BrentAnswerPhoneDayText:
 	text "Yes? "
 	text_ram wStringBuffer3
-	ctxt " here…"
+	text " here…"
 
 	para "Ah, <PLAYER>. What"
 	line "can I do for you?"
@@ -1512,14 +1512,14 @@ BrentAnswerPhoneDayText:
 BrentAnswerPhoneNiteText:
 	text "Yes? "
 	text_ram wStringBuffer3
-	ctxt " here…"
+	text " here…"
 
 	para "Ah, <PLAYER>. What"
 	line "can I do for you?"
 	done
 
 BrentGreetText:
-	ctxt "Hiya, <PLAYER>. How"
+	text "Hiya, <PLAYER>. How"
 	line "are you doing?"
 
 	para "Hey! It's me,"
@@ -1529,7 +1529,7 @@ BrentGreetText:
 	done
 
 BrentGreetDayText:
-	ctxt "Hiya, <PLAYER>, how"
+	text "Hiya, <PLAYER>, how"
 	line "are you doing?"
 
 	para "Hey, it's me,"
@@ -1539,7 +1539,7 @@ BrentGreetDayText:
 	done
 
 BrentGreetNiteText:
-	ctxt "Hiya, <PLAYER>, how"
+	text "Hiya, <PLAYER>, how"
 	line "are you doing?"
 
 	para "Hey, it's me,"
@@ -1549,7 +1549,7 @@ BrentGreetNiteText:
 	done
 
 BrentGenericText:
-	ctxt "Oh yeah, I saw you"
+	text "Oh yeah, I saw you"
 	line "coming out of a"
 
 	para "#mon Center the"
@@ -1563,7 +1563,7 @@ BrentGenericText:
 
 	para "Heh, my "
 	text_ram wStringBuffer4
-	ctxt ""
+	text ""
 	line "is so tough, it"
 
 	para "doesn't need to go"
@@ -1572,37 +1572,37 @@ BrentGenericText:
 	done
 
 TiffanyAnswerPhoneText:
-	ctxt "Yes? This is"
+	text "Yes? This is"
 	line ""
 	text_ram wStringBuffer3
-	ctxt "."
+	text "."
 
 	para "Oh, <PLAYER>."
 	line "Good morning."
 	done
 
 TiffanyAnswerPhoneDayText:
-	ctxt "Yes? This is"
+	text "Yes? This is"
 	line ""
 	text_ram wStringBuffer3
-	ctxt "."
+	text "."
 
 	para "Oh, <PLAYER>."
 	line "Hello."
 	done
 
 TiffanyAnswerPhoneNiteText:
-	ctxt "Yes? This is"
+	text "Yes? This is"
 	line ""
 	text_ram wStringBuffer3
-	ctxt "."
+	text "."
 
 	para "Oh, <PLAYER>, good"
 	line "evening."
 	done
 
 TiffanyGreetText:
-	ctxt "Is this <PLAYER>?"
+	text "Is this <PLAYER>?"
 
 	para "Good morning. This"
 	line "is "
@@ -1611,7 +1611,7 @@ TiffanyGreetText:
 	done
 
 TiffanyGreetDayText:
-	ctxt "Is this <PLAYER>?"
+	text "Is this <PLAYER>?"
 
 	para "Hi, it's "
 	text_ram wStringBuffer3
@@ -1619,7 +1619,7 @@ TiffanyGreetDayText:
 	done
 
 TiffanyGreetNiteText:
-	ctxt "Is this <PLAYER>?"
+	text "Is this <PLAYER>?"
 
 	para "Good evening. This"
 	line "is "
@@ -1628,7 +1628,7 @@ TiffanyGreetNiteText:
 	done
 
 TiffanyGenericText:
-	ctxt "Are your #mon"
+	text "Are your #mon"
 	line "doing well?"
 
 	para "I hope you take"
@@ -1640,7 +1640,7 @@ TiffanyGenericText:
 
 	para "My "
 	text_ram wStringBuffer4
-	ctxt " is"
+	text " is"
 	line "cute and lively"
 
 	para "precisely because"
@@ -1651,10 +1651,10 @@ TiffanyGenericText:
 	done
 
 VanceAnswerPhoneText:
-	ctxt "Yes, hello?"
+	text "Yes, hello?"
 	line ""
 	text_ram wStringBuffer3
-	ctxt " here!"
+	text " here!"
 
 	para "Morning, <PLAYER>!"
 
@@ -1663,10 +1663,10 @@ VanceAnswerPhoneText:
 	done
 
 VanceAnswerPhoneDayText:
-	ctxt "Yes, hello?"
+	text "Yes, hello?"
 	line ""
 	text_ram wStringBuffer3
-	ctxt " here!"
+	text " here!"
 
 	para "Hi, <PLAYER>!"
 
@@ -1675,10 +1675,10 @@ VanceAnswerPhoneDayText:
 	done
 
 VanceAnswerPhoneNiteText:
-	ctxt "Yes, hello?"
+	text "Yes, hello?"
 	line ""
 	text_ram wStringBuffer3
-	ctxt " here!"
+	text " here!"
 
 	para "Evening, <PLAYER>!"
 	line "Are you letting"
@@ -1688,41 +1688,41 @@ VanceAnswerPhoneNiteText:
 	done
 
 VanceGreetText:
-	ctxt "Good morning,"
+	text "Good morning,"
 	line "<PLAYER>!"
 
 	para "It's "
 	text_ram wStringBuffer3
-	ctxt "!"
+	text "!"
 	line "Good morning!"
 	done
 
 VanceGreetDayText:
-	ctxt "Hi, <PLAYER>!"
+	text "Hi, <PLAYER>!"
 
 	para "It's "
 	text_ram wStringBuffer3
-	ctxt "!"
+	text "!"
 	line "Remember me?"
 	done
 
 VanceGreetNiteText:
-	ctxt "Good evening,"
+	text "Good evening,"
 	line "<PLAYER>!"
 
 	para "It's "
 	text_ram wStringBuffer3
-	ctxt "!"
+	text "!"
 	line "Are you free now?"
 	done
 
 VanceGenericText:
-	ctxt "Are you and your"
+	text "Are you and your"
 	line "#mon fine?"
 
 	para "My "
 	text_ram wStringBuffer4
-	ctxt ""
+	text ""
 	line "looks like it will"
 
 	para "get tough enough"
@@ -1733,73 +1733,73 @@ VanceGenericText:
 	done
 
 WiltonAnswerPhoneText:
-	ctxt "Hello, you have"
+	text "Hello, you have"
 	line "reached "
 	text_ram wStringBuffer3
-	ctxt "…"
+	text "…"
 
 	para "Ah, <PLAYER>."
 	done
 
 WiltonAnswerPhoneDayText:
-	ctxt "Hello, you have"
+	text "Hello, you have"
 	line "reached "
 	text_ram wStringBuffer3
-	ctxt "…"
+	text "…"
 
 	para "Ah, <PLAYER>, is"
 	line "it?"
 	done
 
 WiltonAnswerPhoneNiteText:
-	ctxt "Hello, you have"
+	text "Hello, you have"
 	line "reached "
 	text_ram wStringBuffer3
-	ctxt "…"
+	text "…"
 
 	para "Ah, if it isn't"
 	line "<PLAYER>."
 	done
 
 WiltonGreetText:
-	ctxt "Ah, it's "
+	text "Ah, it's "
 	text_ram wStringBuffer3
-	ctxt "…"
+	text "…"
 
 	para "Have you got a"
 	line "moment?"
 	done
 
 WiltonGreetDayText:
-	ctxt "Ah, it's "
+	text "Ah, it's "
 	text_ram wStringBuffer3
-	ctxt "…"
+	text "…"
 
 	para "Can you talk now?"
 	done
 
 WiltonGreetNiteText:
-	ctxt "Ah, it's "
+	text "Ah, it's "
 	text_ram wStringBuffer3
-	ctxt "…"
+	text "…"
 
 	para "Sorry for calling"
 	line "so late."
 	done
 
 WiltonGenericText:
-	ctxt "Have your #mon"
+	text "Have your #mon"
 	line "grown any?"
 
 	para "My "
 	text_ram wStringBuffer4
-	ctxt " has"
+	text " has"
 	line "grown quite a bit."
 	done
 
 KenjiAnswerPhoneText:
 	text_ram wStringBuffer3
-	ctxt " here…"
+	text " here…"
 
 	para "<PLAYER>! Beautiful"
 	line "morning, hey?"
@@ -1807,7 +1807,7 @@ KenjiAnswerPhoneText:
 
 KenjiAnswerPhoneDayText:
 	text_ram wStringBuffer3
-	ctxt " here…"
+	text " here…"
 
 	para "<PLAYER>! Beautiful"
 	line "weather, hey?"
@@ -1815,58 +1815,58 @@ KenjiAnswerPhoneDayText:
 
 KenjiAnswerPhoneNiteText:
 	text_ram wStringBuffer3
-	ctxt " here…"
+	text " here…"
 
 	para "<PLAYER>! Beautiful"
 	line "moonlight, hey?"
 	done
 
 KenjiGreetText:
-	ctxt "Hey, <PLAYER>!"
+	text "Hey, <PLAYER>!"
 	line "This is "
 	text_ram wStringBuffer3
 	text "!"
 	done
 
 KenjiGreetDayText:
-	ctxt "Hey, <PLAYER>!"
+	text "Hey, <PLAYER>!"
 	line "This is "
 	text_ram wStringBuffer3
 	text "!"
 	done
 
 KenjiGreetNiteText:
-	ctxt "Hey, <PLAYER>!"
+	text "Hey, <PLAYER>!"
 	line "This is "
 	text_ram wStringBuffer3
 	text "!"
 	done
 
 ParryAnswerPhoneText:
-	ctxt "Yup, yup!"
+	text "Yup, yup!"
 	line "It's "
 	text_ram wStringBuffer3
-	ctxt "!"
+	text "!"
 
 	para "Hah, and here's"
 	line "<PLAYER>!"
 	done
 
 ParryAnswerPhoneDayText:
-	ctxt "Yup, yup!"
+	text "Yup, yup!"
 	line "It's "
 	text_ram wStringBuffer3
-	ctxt "!"
+	text "!"
 
 	para "Hah, and here's"
 	line "<PLAYER>!"
 	done
 
 ParryAnswerPhoneNiteText:
-	ctxt "Yup, yup!"
+	text "Yup, yup!"
 	line "It's "
 	text_ram wStringBuffer3
-	ctxt "!"
+	text "!"
 
 	para "Hah, and here's"
 	line "<PLAYER>!"
@@ -1876,7 +1876,7 @@ ParryGreetText:
 	text "<PLAYER>, it's"
 	line ""
 	text_ram wStringBuffer3
-	ctxt "!"
+	text "!"
 
 	para "Have you had a"
 	line "proper breakfast?"
@@ -1886,7 +1886,7 @@ ParryGreetDayText:
 	text "<PLAYER>, it's"
 	line ""
 	text_ram wStringBuffer3
-	ctxt "!"
+	text "!"
 
 	para "Have you had a"
 	line "proper lunch?"
@@ -1896,19 +1896,19 @@ ParryGreetNiteText:
 	text "<PLAYER>, it's"
 	line ""
 	text_ram wStringBuffer3
-	ctxt "!"
+	text "!"
 
 	para "Have you had a"
 	line "proper dinner?"
 	done
 
 ParryGenericText:
-	ctxt "Are your #mon"
+	text "Are your #mon"
 	line "looking good?"
 
 	para "My "
 	text_ram wStringBuffer4
-	ctxt " and"
+	text " and"
 	line "me--we're looking"
 
 	para "mighty dandy!"
@@ -1916,30 +1916,30 @@ ParryGenericText:
 	done
 
 ErinAnswerPhoneText:
-	ctxt "Yes, this is"
+	text "Yes, this is"
 	line ""
 	text_ram wStringBuffer3
-	ctxt "…"
+	text "…"
 
 	para "Oh. Hi, <PLAYER>!"
 	line "Good morning!"
 	done
 
 ErinAnswerPhoneDayText:
-	ctxt "Yes, this is"
+	text "Yes, this is"
 	line ""
 	text_ram wStringBuffer3
-	ctxt "…"
+	text "…"
 
 	para "Oh, hi, <PLAYER>!"
 	line "Yahoo!"
 	done
 
 ErinAnswerPhoneNiteText:
-	ctxt "Yes, this is"
+	text "Yes, this is"
 	line ""
 	text_ram wStringBuffer3
-	ctxt "…"
+	text "…"
 
 	para "Oh, hi, <PLAYER>!"
 	done
@@ -1949,7 +1949,7 @@ ErinGreetText:
 
 	para "It's "
 	text_ram wStringBuffer3
-	ctxt "!"
+	text "!"
 	line "Good morning!"
 	done
 
@@ -1958,7 +1958,7 @@ ErinGreetDayText:
 
 	para "It's "
 	text_ram wStringBuffer3
-	ctxt "!"
+	text "!"
 	line "Working hard?"
 	done
 
@@ -1967,12 +1967,12 @@ ErinGreetNiteText:
 
 	para "It's "
 	text_ram wStringBuffer3
-	ctxt "!"
+	text "!"
 	line "Were you up?"
 	done
 
 ErinGenericText:
-	ctxt "Are you raising"
+	text "Are you raising"
 	line "your #mon?"
 
 	para "Hey, "
@@ -1980,7 +1980,7 @@ ErinGenericText:
 	text "'s"
 	line ""
 	text_ram wStringBuffer4
-	ctxt " is"
+	text " is"
 	cont "looking good!"
 	done
 

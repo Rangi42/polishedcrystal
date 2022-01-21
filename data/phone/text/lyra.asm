@@ -1,21 +1,21 @@
 LyraPhoneMornGreetingText:
-	ctxt "Oh, <PLAYER>!"
+	text "Oh, <PLAYER>!"
 	line "Good morning!"
 	done
 
 LyraPhoneDayGreetingText:
-	ctxt "Oh, <PLAYER>!"
+	text "Oh, <PLAYER>!"
 	line "How are you?"
 	done
 
 LyraPhoneEveGreetingText:
 LyraPhoneNiteGreetingText:
-	ctxt "Oh, <PLAYER>!"
+	text "Oh, <PLAYER>!"
 	line "Good evening!"
 	done
 
 LyraPhoneMainText:
-	ctxt "You know, my dad"
+	text "You know, my dad"
 	line "thinks you'll be-"
 
 	para "come an incredible"
@@ -35,7 +35,7 @@ LyraPhoneMainText:
 	done
 
 LyraPhoneYellowForestText:
-	ctxt "Hi, <PLAYER>!"
+	text "Hi, <PLAYER>!"
 	line "How are you?"
 
 	para "Have you been to"
@@ -66,7 +66,7 @@ LyraPhoneYellowForestText:
 	done
 
 LyraPhoneFirstBadgeText:
-	ctxt "<PLAYER>! Hi!"
+	text "<PLAYER>! Hi!"
 
 	para "I just got my"
 	line "first Gym Badge!"
@@ -91,7 +91,7 @@ LyraPhoneFirstBadgeText:
 	done
 
 LyraPhoneLyrasEggIntroText:
-	ctxt "Hi, <PLAYER>!"
+	text "Hi, <PLAYER>!"
 
 	para "Are you doing well"
 	line "against Kanto's Gym"
@@ -103,22 +103,22 @@ LyraPhoneLyrasEggIntroText:
 	done
 
 LyraPhoneLyrasEggChikoritaText:
-	ctxt "I left my Chicory"
+	text "I left my Chicory"
 	line "at the Day-Care"
 	done
 
 LyraPhoneLyrasEggCyndaquilText:
-	ctxt "I left my Cinder"
+	text "I left my Cinder"
 	line "at the Day-Care"
 	done
 
 LyraPhoneLyrasEggTotodileText:
-	ctxt "I left my Toto"
+	text "I left my Toto"
 	line "at the Day-Care"
 	done
 
 LyraPhoneLyrasEggEndText:
-	ctxt "with Grandma and"
+	text "with Grandma and"
 	line "Grandpa, and they"
 	cont "found an Egg!"
 
@@ -144,7 +144,7 @@ LyraPhoneLyrasEggEndText:
 	done
 
 LyraPhoneMagnetonText:
-	ctxt "What? You have a"
+	text "What? You have a"
 	line "Magneton now?"
 	cont "That's so cool!"
 
@@ -170,7 +170,7 @@ LyraPhoneMagnetonText:
 	done
 
 LyraPhoneEndText:
-	ctxt "Anyway… So nice"
+	text "Anyway… So nice"
 	line "to catch up with"
 	cont "you, <PLAYER>."
 

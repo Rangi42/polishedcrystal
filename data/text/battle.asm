@@ -1,7 +1,7 @@
 BattleText::
 
 LinkBattleErrorText::
-	ctxt "There was a link"
+	text "There was a link"
 	line "error."
 
 	para "The game will now"
@@ -9,42 +9,42 @@ LinkBattleErrorText::
 	prompt
 
 BattleText_PlayerPickedUpPayDayMoney:
-	ctxt "<PLAYER> picked up"
+	text "<PLAYER> picked up"
 	line "¥"
 	text_decimal wPayDayMoney, 3, 6
 	text "!"
 	prompt
 
 WildPokemonAppearedText:
-	ctxt "A wild "
+	text "A wild "
 	stop_compressing_text ; fallthrough
 LegendaryAppearedText:
 	text_ram wEnemyMonNickname
-	ctxt ""
+	text ""
 	line "appeared!"
 	prompt
 
 HookedPokemonAttackedText:
-	ctxt "The hooked"
+	text "The hooked"
 	line ""
 	text_ram wEnemyMonNickname
-	ctxt ""
+	text ""
 	cont "attacked!"
 	prompt
 
 PokemonFellFromTreeText:
 	text_ram wEnemyMonNickname
-	ctxt " fell"
+	text " fell"
 	line "out of the tree!"
 	prompt
 
 WantsToBattleText::
-	ctxt "<ENEMY>"
+	text "<ENEMY>"
 	line "wants to battle!"
 	prompt
 
 WantToBattleText::
-	ctxt "<ENEMY>"
+	text "<ENEMY>"
 	line "want to battle!"
 	prompt
 
@@ -53,86 +53,86 @@ BattleText_WildFled:
 	stop_compressing_text ; fallthrough
 BattleText_LegendaryFled:
 	text_ram wEnemyMonNickname
-	ctxt ""
+	text ""
 	line "fled!"
 	prompt
 
 BattleText_EnemyFled:
-	ctxt "The foe "
+	text "The foe "
 	text_ram wEnemyMonNickname
-	ctxt ""
+	text ""
 	line "fled!"
 	prompt
 
 BattleText_EnemyCantEscape:
-	ctxt "<USER>"
+	text "<USER>"
 	line "can't escape!"
 	prompt
 
 if DEF(DEBUG)
 DealtXDamageText:
-	ctxt "Dealt "
+	text "Dealt "
 	text_decimal wCurDamage, 2, 5
-	ctxt " dmg"
+	text " dmg"
 	line "before roll."
 	prompt
 endc
 
 HurtByPoisonText:
-	ctxt "<USER> is"
+	text "<USER> is"
 	line "hurt by poison!"
 	prompt
 
 HurtByBurnText:
-	ctxt "<USER> is"
+	text "<USER> is"
 	line "hurt by its burn!"
 	prompt
 
 LeechSeedSapsText:
-	ctxt "Leech Seed saps"
+	text "Leech Seed saps"
 	line "<USER>!"
 	prompt
 
 HurtByCurseText:
-	ctxt "<USER> is"
+	text "<USER> is"
 	line "hurt by the curse!"
 	prompt
 
 SandstormHitsText:
-	ctxt "<USER> is"
+	text "<USER> is"
 	line "buffeted by"
 	cont "the sandstorm!"
 	prompt
 
 HailHitsText:
-	ctxt "<USER> is"
+	text "<USER> is"
 	line "buffeted by"
 	cont "the hail!"
 	prompt
 
 PerishCountText:
-	ctxt "<USER>'s"
+	text "<USER>'s"
 	line "Perish count is "
 	text_decimal wTextDecimalByte, 1, 1
 	text "!"
 	prompt
 
 BattleText_UserLostSomeOfItsHP:
-	ctxt "<USER>"
+	text "<USER>"
 	line "lost some of its"
 	cont "HP!"
 	prompt
 
 BattleText_PickedUpItem:
 	; assumes player (enemy might overflow text-wise)
-	ctxt "<USER> picked"
+	text "<USER> picked"
 	line "up "
 	text_ram wStringBuffer2
 	text "."
 	prompt
 
 BattleText_UserRecoveredWithItem:
-	ctxt "<USER>"
+	text "<USER>"
 	line "recovered with"
 	cont ""
 	text_ram wStringBuffer1
@@ -147,7 +147,7 @@ BattleText_UserAteItem:
 	prompt
 
 BattleText_UserHurtByItem:
-	ctxt "<USER>"
+	text "<USER>"
 	line "was hurt by"
 	cont ""
 	text_ram wStringBuffer1
@@ -158,29 +158,29 @@ BattleText_UserItemLetItMoveFirst::
 	text "<USER>'s"
 	line ""
 	text_ram wStringBuffer1
-	ctxt " let"
+	text " let"
 	cont "it move first."
 	prompt
 
 BattleText_UserRecoveredPPUsing:
-	ctxt "<USER>"
+	text "<USER>"
 	line "restored PP of"
 	cont ""
 	text_ram wStringBuffer2
-	ctxt " using"
+	text " using"
 	cont ""
 	text_ram wStringBuffer1
 	text "!"
 	prompt
 
 BrokeLightScreenText:
-	ctxt "<USER>"
+	text "<USER>"
 	line "broke the target's"
 	cont "Light Screen!"
 	prompt
 
 BrokeReflectText:
-	ctxt "<USER>"
+	text "<USER>"
 	line "broke the target's"
 	cont "Reflect!"
 	prompt
@@ -188,7 +188,7 @@ BrokeReflectText:
 BattleText_ItemLowered:
 	text "The "
 	text_ram wStringBuffer1
-	ctxt ""
+	text ""
 	line "lowered"
 	cont "<USER>'s"
 	cont ""
@@ -199,7 +199,7 @@ BattleText_ItemLowered:
 BattleText_ItemHarshlyLowered:
 	text "The "
 	text_ram wStringBuffer1
-	ctxt ""
+	text ""
 	line "sharply lowered"
 	cont "<USER>'s"
 	cont ""
@@ -210,7 +210,7 @@ BattleText_ItemHarshlyLowered:
 BattleText_ItemSeverelyLowered:
 	text "The "
 	text_ram wStringBuffer1
-	ctxt ""
+	text ""
 	line "severely lowered"
 	cont "<USER>'s"
 	cont ""
@@ -221,7 +221,7 @@ BattleText_ItemSeverelyLowered:
 BattleText_ItemRaised:
 	text "The "
 	text_ram wStringBuffer1
-	ctxt ""
+	text ""
 	line "raised"
 	cont "<USER>'s"
 	cont ""
@@ -232,7 +232,7 @@ BattleText_ItemRaised:
 BattleText_ItemSharplyRaised:
 	text "The "
 	text_ram wStringBuffer1
-	ctxt ""
+	text ""
 	line "sharply raised"
 	cont "<USER>'s"
 	cont ""
@@ -243,7 +243,7 @@ BattleText_ItemSharplyRaised:
 BattleText_ItemDrasticallyRaised:
 	text "The "
 	text_ram wStringBuffer1
-	ctxt ""
+	text ""
 	line "drastically raised"
 	cont "<USER>'s"
 	cont ""
@@ -255,12 +255,12 @@ BattleText_ItemRaisedCrit:
 	text "<USER>"
 	line "used "
 	text_ram wStringBuffer1
-	ctxt ""
+	text ""
 	cont "to get pumped!"
 	prompt
 
 BattleText_UserChargedWithItem:
-	ctxt "<USER>"
+	text "<USER>"
 	line "became charged"
 	cont "using "
 	text_ram wStringBuffer1
@@ -270,144 +270,144 @@ BattleText_UserChargedWithItem:
 BattleText_UsersFutureSightMissed:
 ; used when Future Sight can't hit anything because there was
 ; no target (so <TARGET> is undefined)
-	ctxt "The Future Sight"
+	text "The Future Sight"
 	line "arrived!"
 
 	para "But it failed!"
 	prompt
 
 BattleText_TargetWasHitByFutureSight:
-	ctxt "<TARGET>"
+	text "<TARGET>"
 	line "took the"
 	cont "Future Sight!"
 	prompt
 
 BattleText_MistFaded:
 	text_ram wStringBuffer1
-	ctxt " #mon's"
+	text " #mon's"
 	line "mist faded!"
 	prompt
 
 BattleText_SafeguardFaded:
 	text_ram wStringBuffer1
-	ctxt " #mon's"
+	text " #mon's"
 	line "Safeguard faded!"
 	prompt
 
 BattleText_LightScreenFell:
 	text_ram wStringBuffer1
-	ctxt " #mon's"
+	text " #mon's"
 	line "Light Screen fell!"
 	prompt
 
 BattleText_ReflectFaded:
 	text_ram wStringBuffer1
-	ctxt " #mon's"
+	text " #mon's"
 	line "Reflect faded!"
 	prompt
 
 BattleText_TheRainStopped:
-	ctxt "The rain stopped."
+	text "The rain stopped."
 	prompt
 
 BattleText_TheSunlightFaded:
-	ctxt "The sunlight"
+	text "The sunlight"
 	line "faded."
 	prompt
 
 BattleText_TheSandstormSubsided:
-	ctxt "The sandstorm"
+	text "The sandstorm"
 	line "subsided."
 	prompt
 
 BattleText_TheHailStopped:
-	ctxt "The hail stopped."
+	text "The hail stopped."
 	prompt
 
 BattleText_EnemyPkmnFainted:
-	ctxt "The foe "
+	text "The foe "
 	text_ram wEnemyMonNickname
-	ctxt ""
+	text ""
 	line "fainted!"
 	prompt
 
 GotMoneyForWinningText:
 	text "<PLAYER> got ¥"
 	text_decimal wBattleReward, 3, 6
-	ctxt ""
+	text ""
 	line "for winning!"
 	prompt
 
 BattleText_EnemyWasDefeated:
-	ctxt "<ENEMY>"
+	text "<ENEMY>"
 	line "was defeated!"
 	prompt
 
 BattleText_EnemyWereDefeated:
-	ctxt "<ENEMY>"
+	text "<ENEMY>"
 	line "were defeated!"
 	prompt
 
 TiedAgainstText:
-	ctxt "Tied against"
+	text "Tied against"
 	line "<ENEMY>!"
 	prompt
 
 SentSomeToMomText:
 	text "<PLAYER> got ¥"
 	text_decimal wBattleReward, 3, 6
-	ctxt ""
+	text ""
 	line "for winning!"
 	cont "Sent some to Mom!"
 	prompt
 
 SentHalfToMomText:
-	ctxt "Sent half to Mom!"
+	text "Sent half to Mom!"
 	prompt
 
 SentAllToMomText:
-	ctxt "Sent all to Mom!"
+	text "Sent all to Mom!"
 	prompt
 
 BattleText_PkmnFainted:
 	text_ram wBattleMonNickname
-	ctxt ""
+	text ""
 	line "fainted!"
 	prompt
 
 BattleText_UseNextMon:
-	ctxt "Use next #mon?"
+	text "Use next #mon?"
 	done
 
 LostAgainstText:
-	ctxt "Lost against"
+	text "Lost against"
 	line "<ENEMY>!"
 	prompt
 
 BattleText_EnemyIsAboutToUseWillPlayerSwitchPkmn:
-	ctxt "<ENEMY>"
+	text "<ENEMY>"
 	line "is about to use"
 	cont ""
 	text_ram wEnemyMonNickname
-	ctxt "."
+	text "."
 
 	para "Will you switch"
 	line "your #mon?"
 	done
 
 BattleText_EnemyAreAboutToUseWillPlayerSwitchPkmn:
-	ctxt "<ENEMY>"
+	text "<ENEMY>"
 	line "are about to use"
 	cont ""
 	text_ram wEnemyMonNickname
-	ctxt "."
+	text "."
 
 	para "Will you switch"
 	line "your #mon?"
 	done
 
 BattleText_EnemyIsAboutToSwitchWillPlayerSwitchPkmn:
-	ctxt "<ENEMY>"
+	text "<ENEMY>"
 	line "is about to switch"
 	cont "#mon."
 
@@ -416,7 +416,7 @@ BattleText_EnemyIsAboutToSwitchWillPlayerSwitchPkmn:
 	done
 
 BattleText_EnemyAreAboutToSwitchWillPlayerSwitchPkmn:
-	ctxt "<ENEMY>"
+	text "<ENEMY>"
 	line "are about to"
 	cont "switch #mon."
 
@@ -425,7 +425,7 @@ BattleText_EnemyAreAboutToSwitchWillPlayerSwitchPkmn:
 	done
 
 BattleText_EnemySentOut:
-	ctxt "<ENEMY>"
+	text "<ENEMY>"
 	line "sent out"
 	cont ""
 	text_ram wEnemyMonNickname
@@ -433,30 +433,30 @@ BattleText_EnemySentOut:
 	done
 
 BattleText_TheresNoWillToBattle:
-	ctxt "There's no will to"
+	text "There's no will to"
 	line "battle!"
 	prompt
 
 BattleText_AnEGGCantBattle:
-	ctxt "An Egg can't"
+	text "An Egg can't"
 	line "battle!"
 	prompt
 
 BattleText_CantEscape:
-	ctxt "Can't escape!"
+	text "Can't escape!"
 	prompt
 
 BattleText_AskForfeitTrainerBattle:
-	ctxt "Are you sure you"
+	text "Are you sure you"
 	line "want to forfeit?"
 	done
 
 BattleText_GotAwaySafely:
-	ctxt "Got away safely!"
+	text "Got away safely!"
 	prompt
 
 BattleText_UserFledUsingAStringBuffer1:
-	ctxt "<USER>"
+	text "<USER>"
 	line "fled using a"
 	cont ""
 	text_ram wStringBuffer1
@@ -464,12 +464,12 @@ BattleText_UserFledUsingAStringBuffer1:
 	prompt
 
 BattleText_UserHurtBySpikes:
-	ctxt "<USER> is"
+	text "<USER> is"
 	line "hurt by spikes!"
 	prompt
 
 RecoveredUsingText:
-	ctxt "<USER>"
+	text "<USER>"
 	line "recovered using a"
 	cont ""
 	text_ram wStringBuffer1
@@ -477,7 +477,7 @@ RecoveredUsingText:
 	prompt
 
 AirBalloonPoppedText:
-	ctxt "<TARGET>'s"
+	text "<TARGET>'s"
 	line "Air Balloon"
 	cont "popped!"
 	prompt
@@ -486,24 +486,24 @@ BattleText_UsersStringBuffer1Activated:
 	text "<USER>'s"
 	line ""
 	text_ram wStringBuffer1
-	ctxt ""
+	text ""
 	cont "activated!"
 	prompt
 
 BattleText_ItemsCantBeUsedHere:
-	ctxt "Items can't be"
+	text "Items can't be"
 	line "used here."
 	prompt
 
 BattleText_PkmnIsAlreadyOut:
 	text_ram wBattleMonNickname
-	ctxt ""
+	text ""
 	line "is already out."
 	prompt
 
 BattleText_PkmnCantBeRecalled:
 	text_ram wBattleMonNickname
-	ctxt ""
+	text ""
 	line "can't be recalled!"
 	prompt
 
@@ -512,19 +512,19 @@ BattleText_PkmnCantBeRecalledAbility:
 	text "'s"
 	line ""
 	text_ram wStringBuffer1
-	ctxt ""
+	text ""
 	cont "prevents escape!"
 	prompt
 
 BattleText_TheresNoPPLeftForThisMove:
-	ctxt "There's no PP left"
+	text "There's no PP left"
 	line "for this move!"
 	prompt
 
 BattleText_ItemOnlyAllowsMove: ; choice items
 	text "The "
 	text_ram wStringBuffer1
-	ctxt ""
+	text ""
 	line "only allows use"
 	cont "of "
 	text_ram wStringBuffer2
@@ -532,7 +532,7 @@ BattleText_ItemOnlyAllowsMove: ; choice items
 	prompt
 
 BattleText_MonCanOnlyUseMove:
-	ctxt "<USER> can"
+	text "<USER> can"
 	line "only use"
 	cont ""
 	text_ram wStringBuffer1
@@ -542,30 +542,30 @@ BattleText_MonCanOnlyUseMove:
 BattleText_ItemPreventsStatusMoves: ; assault vest
 	text "The "
 	text_ram wStringBuffer1
-	ctxt ""
+	text ""
 	line "prevents usage"
 	cont "of status moves!"
 	prompt
 
 BattleText_TheMoveIsDisabled:
-	ctxt "The move is"
+	text "The move is"
 	line "disabled!"
 	prompt
 
 BattleText_PkmnHasNoMovesLeft:
 	text_ram wBattleMonNickname
-	ctxt ""
+	text ""
 	line "has no moves left!"
 	done
 
 BattleText_UserEncoreEnded:
-	ctxt "<USER>'s"
+	text "<USER>'s"
 	line "encore ended!"
 	prompt
 
 BattleText_StringBuffer1GrewToLevel:
 	text_ram wStringBuffer1
-	ctxt " grew to"
+	text " grew to"
 	line "level "
 	text_decimal wCurPartyLevel, 1, 3
 	text "!"
@@ -575,79 +575,79 @@ BattleText_StringBuffer1GrewToLevel:
 BattleText_WildPkmnIsEating:
 	text "Wild "
 	text_ram wEnemyMonNickname
-	ctxt ""
+	text ""
 	line "is eating!"
 	prompt
 
 BattleText_WildPkmnIsAngry:
 	text "Wild "
 	text_ram wEnemyMonNickname
-	ctxt ""
+	text ""
 	line "is angry!"
 	prompt
 
 BattleText_ThrewRock:
-	ctxt "<PLAYER> threw a"
+	text "<PLAYER> threw a"
 	line "rock."
 	prompt
 
 BattleText_ThrewBait:
-	ctxt "<PLAYER> threw"
+	text "<PLAYER> threw"
 	line "some bait."
 	prompt
 
 FastAsleepText:
-	ctxt "<USER>"
+	text "<USER>"
 	line "is fast asleep!"
 	prompt
 
 WokeUpText:
-	ctxt "<USER>"
+	text "<USER>"
 	line "woke up!"
 	prompt
 
 FrozenSolidText:
-	ctxt "<USER>"
+	text "<USER>"
 	line "is frozen solid!"
 	prompt
 
 FlinchedText:
-	ctxt "<USER>"
+	text "<USER>"
 	line "flinched!"
 	prompt
 
 MustRechargeText:
-	ctxt "<USER>"
+	text "<USER>"
 	line "must recharge!"
 	prompt
 
 DisabledNoMoreText:
-	ctxt "<USER> is"
+	text "<USER> is"
 	line "disabled no more!"
 	prompt
 
 IsConfusedText:
-	ctxt "<USER>"
+	text "<USER>"
 	line "is confused!"
 	prompt
 
 HurtItselfText:
-	ctxt "It hurt itself in"
+	text "It hurt itself in"
 	line "its confusion!"
 	prompt
 
 ConfusedNoMoreText:
-	ctxt "<USER> is"
+	text "<USER> is"
 	line "confused no more!"
 	prompt
 
 BecameConfusedText:
-	ctxt "<TARGET>"
+	text "<TARGET>"
 	line "became confused!"
 	prompt
 
 BecameConfusedDueToFatigueText:
-	ctxt "<TARGET>"
+	text "<TARGET>"
 	line "became confused"
 	cont "due to fatigue!"
 	prompt
@@ -655,18 +655,18 @@ BecameConfusedDueToFatigueText:
 BattleText_ItemHealedConfusion: ; ItemHealedConfusion
 	text "A "
 	text_ram wStringBuffer1
-	ctxt " rid"
+	text " rid"
 	line "<USER>"
 	cont "of its confusion."
 	prompt
 
 AlreadyConfusedText:
-	ctxt "<TARGET> is"
+	text "<TARGET> is"
 	line "already confused!"
 	prompt
 
 BattleText_UsersHurtByStringBuffer1:
-	ctxt "<USER> is"
+	text "<USER> is"
 	line "hurt by"
 	cont ""
 	text_ram wStringBuffer1
@@ -674,7 +674,7 @@ BattleText_UsersHurtByStringBuffer1:
 	prompt
 
 BattleText_UserWasReleasedFromStringBuffer1:
-	ctxt "<USER>"
+	text "<USER>"
 	line "was released from"
 	cont ""
 	text_ram wStringBuffer1
@@ -682,23 +682,23 @@ BattleText_UserWasReleasedFromStringBuffer1:
 	prompt
 
 WhirlpoolTrapText:
-	ctxt "<TARGET>"
+	text "<TARGET>"
 	line "was trapped!"
 	prompt
 
 FireSpinTrapText:
-	ctxt "<TARGET>"
+	text "<TARGET>"
 	line "was trapped!"
 	prompt
 
 WrappedByText:
-	ctxt "<TARGET>"
+	text "<TARGET>"
 	line "was wrapped by"
 	cont "<USER>!"
 	prompt
 
 HungOnText:
-	ctxt "<TARGET>"
+	text "<TARGET>"
 	line "hung on with"
 	cont ""
 	text_ram wStringBuffer1
@@ -706,24 +706,24 @@ HungOnText:
 	prompt
 
 EnduredText:
-	ctxt "<TARGET>"
+	text "<TARGET>"
 	line "endured the hit!"
 	prompt
 
 InLoveWithText:
-	ctxt "<USER>"
+	text "<USER>"
 	line "is in love with"
 	cont "<TARGET>!"
 	prompt
 
 InfatuationText:
-	ctxt "<USER>'s"
+	text "<USER>'s"
 	line "infatuation kept"
 	cont "it from attacking!"
 	prompt
 
 NoLongerInfatuatedText:
-	ctxt "<USER>'s"
+	text "<USER>'s"
 	line "no longer"
 	cont "infatuated!"
 	prompt
@@ -732,11 +732,11 @@ ObliviousPreventedDestinyKnot:
 	text "<USER>'s"
 	line ""
 	text_ram wStringBuffer1
-	ctxt ""
+	text ""
 	cont "prevents"
 	cont ""
 	text_ram wStringBuffer2
-	ctxt ""
+	text ""
 	cont "infatuating it!"
 	prompt
 
@@ -744,7 +744,7 @@ DestinyKnotInfatuatedUser:
 	text "<TARGET>'s"
 	line ""
 	text_ram wStringBuffer1
-	ctxt ""
+	text ""
 	cont "infatuated"
 
 	para "<USER>!"
@@ -754,7 +754,7 @@ DisabledMoveText:
 	text "<USER>'s"
 	line ""
 	text_ram wStringBuffer1
-	ctxt " is"
+	text " is"
 	cont "disabled!"
 	prompt
 
@@ -769,53 +769,53 @@ UsedMoveInsteadText:
 	text "<USER>"
 	line "used "
 	text_ram wStringBuffer2
-	ctxt ""
+	text ""
 	cont "instead!"
 	done
 
 LoafingAroundText:
 	text_ram wBattleMonNickname
-	ctxt " is"
+	text " is"
 	line "loafing around."
 	prompt
 
 BeganToNapText:
 	text_ram wBattleMonNickname
-	ctxt " began"
+	text " began"
 	line "to nap!"
 	prompt
 
 WontObeyText:
 	text_ram wBattleMonNickname
-	ctxt " won't"
+	text " won't"
 	line "obey!"
 	prompt
 
 TurnedAwayText:
 	text_ram wBattleMonNickname
-	ctxt " turned"
+	text " turned"
 	line "away!"
 	prompt
 
 IgnoredOrdersText:
 	text_ram wBattleMonNickname
-	ctxt " ignored"
+	text " ignored"
 	line "orders!"
 	prompt
 
 IgnoredSleepingText:
 	text_ram wBattleMonNickname
-	ctxt " ignored"
+	text " ignored"
 	line "orders…sleeping!"
 	prompt
 
 NoPPLeftText:
-	ctxt "But no PP is left"
+	text "But no PP is left"
 	line "for the move!"
 	prompt
 
 HasNoPPLeftText:
-	ctxt "<USER>"
+	text "<USER>"
 	line "has no PP left for"
 	cont ""
 	text_ram wStringBuffer2
@@ -823,104 +823,104 @@ HasNoPPLeftText:
 	prompt
 
 WentToSleepText:
-	ctxt "<USER>"
+	text "<USER>"
 	line "went to sleep!"
 	done
 
 RestedText:
-	ctxt "<USER>"
+	text "<USER>"
 	line "fell asleep and"
 	cont "became healthy!"
 	done
 
 RegainedHealthText:
-	ctxt "<USER>"
+	text "<USER>"
 	line "regained health!"
 	prompt
 
 IsHurtText:
-	ctxt "<USER>"
+	text "<USER>"
 	line "is hurt!"
 	prompt
 
 AttackMissedText:
-	ctxt "<USER>'s"
+	text "<USER>'s"
 	line "attack missed!"
 	prompt
 
 CrashedText:
-	ctxt "<USER>"
+	text "<USER>"
 	line "kept going and"
 	cont "crashed!"
 	prompt
 
 UnaffectedText:
-	ctxt "<TARGET> is"
+	text "<TARGET> is"
 	line "unaffected!"
 	prompt
 
 DoesntAffectText:
-	ctxt "It doesn't affect"
+	text "It doesn't affect"
 	line "<TARGET>!"
 	prompt
 
 CriticalHitText:
-	ctxt "A critical hit!"
+	text "A critical hit!"
 	prompt
 
 SuperEffectiveText:
-	ctxt "It's super"
+	text "It's super"
 	line "effective!"
 	prompt
 
 NotVeryEffectiveText:
-	ctxt "It's not very"
+	text "It's not very"
 	line "effective…"
 	prompt
 
 TookDownWithItText:
-	ctxt "<TARGET>"
+	text "<TARGET>"
 	line "took <USER>"
 	cont "down with it!"
 	prompt
 
 RageBuildingText:
-	ctxt "<USER>'s"
+	text "<USER>'s"
 	line "rage is building!"
 	prompt
 
 GotAnEncoreText:
-	ctxt "<TARGET>"
+	text "<TARGET>"
 	line "got an encore!"
 	prompt
 
 SharedPainText:
-	ctxt "The battlers"
+	text "The battlers"
 	line "shared pain!"
 	prompt
 
 SwappedAbilitiesText:
-	ctxt "The battlers"
+	text "The battlers"
 	line "swapped abilities!"
 	prompt
 
 SwappedItemsText:
-	ctxt "The battlers"
+	text "The battlers"
 	line "swapped items!"
 	prompt
 
 ChangeIntoTypeText:
-	ctxt "Change into what"
+	text "Change into what"
 	line "move's type?"
 	prompt
 
 InvalidTypeChangeText:
-	ctxt "You can't choose"
+	text "You can't choose"
 	line "that move's type!"
 	prompt
 
 SketchedText:
-	ctxt "<USER>"
+	text "<USER>"
 	line "sketched"
 	cont ""
 	text_ram wStringBuffer1
@@ -928,68 +928,68 @@ SketchedText:
 	prompt
 
 DestinyBondEffectText:
-	ctxt "<USER> is"
+	text "<USER> is"
 	line "trying to take its"
 	cont "opponent with it!"
 	prompt
 
 BellChimedText:
-	ctxt "A bell chimed!"
+	text "A bell chimed!"
 	line ""
 	prompt
 
 FellAsleepText:
-	ctxt "<TARGET>"
+	text "<TARGET>"
 	line "fell asleep!"
 	prompt
 
 AlreadyAsleepText:
-	ctxt "<TARGET> is"
+	text "<TARGET> is"
 	line "already asleep!"
 	prompt
 
 WasPoisonedText:
-	ctxt "<TARGET>"
+	text "<TARGET>"
 	line "was poisoned!"
 	prompt
 
 BadlyPoisonedText:
-	ctxt "<TARGET> is"
+	text "<TARGET> is"
 	line "badly poisoned!"
 	prompt
 
 AlreadyPoisonedText:
-	ctxt "<TARGET> is"
+	text "<TARGET> is"
 	line "already poisoned!"
 	prompt
 
 SuckedHealthText:
-	ctxt "Sucked health from"
+	text "Sucked health from"
 	line "<TARGET>!"
 	prompt
 
 DreamEatenText:
-	ctxt "<TARGET>'s"
+	text "<TARGET>'s"
 	line "dream was eaten!"
 	prompt
 
 WasBurnedText:
-	ctxt "<TARGET>"
+	text "<TARGET>"
 	line "was burned!"
 	prompt
 
 DefrostedOpponentText:
-	ctxt "<TARGET>"
+	text "<TARGET>"
 	line "was defrosted!"
 	prompt
 
 AlreadyBurnedText:
-	ctxt "<TARGET> is"
+	text "<TARGET> is"
 	line "already burned!"
 	prompt
 
 WasFrozenText:
-	ctxt "<TARGET>"
+	text "<TARGET>"
 	line "was frozen solid!"
 	prompt
 
@@ -997,7 +997,7 @@ WontRiseAnymoreText:
 	text "<USER>'s"
 	line ""
 	text_ram wStringBuffer2
-	ctxt " won't go"
+	text " won't go"
 	cont "any higher!"
 	prompt
 
@@ -1005,7 +1005,7 @@ WontDropAnymoreText:
 	text "<USER>'s"
 	line ""
 	text_ram wStringBuffer2
-	ctxt " won't go"
+	text " won't go"
 	cont "any lower!"
 	prompt
 
@@ -1013,14 +1013,14 @@ StatRoseText:
 	text "<USER>'s"
 	line ""
 	text_ram wStringBuffer2
-	ctxt " rose!"
+	text " rose!"
 	prompt
 
 StatRoseSharplyText:
 	text "<USER>'s"
 	line ""
 	text_ram wStringBuffer2
-	ctxt " rose"
+	text " rose"
 	cont "sharply!"
 	prompt
 
@@ -1028,7 +1028,7 @@ StatRoseDrasticallyText:
 	text "<USER>'s"
 	line ""
 	text_ram wStringBuffer2
-	ctxt " rose"
+	text " rose"
 	cont "drastically!"
 	prompt
 
@@ -1036,14 +1036,14 @@ StatFellText:
 	text "<USER>'s"
 	line ""
 	text_ram wStringBuffer2
-	ctxt " fell!"
+	text " fell!"
 	prompt
 
 StatHarshlyFellText:
 	text "<USER>'s"
 	line ""
 	text_ram wStringBuffer2
-	ctxt " harshly"
+	text " harshly"
 	cont "fell!"
 	prompt
 
@@ -1051,86 +1051,86 @@ StatSeverelyFellText:
 	text "<USER>'s"
 	line ""
 	text_ram wStringBuffer2
-	ctxt " severely"
+	text " severely"
 	cont "fell!"
 	prompt
 
 FledFromBattleText::
-	ctxt "<USER>"
+	text "<USER>"
 	line "fled from battle!"
 	prompt
 
 FledInFearText:
-	ctxt "<TARGET>"
+	text "<TARGET>"
 	line "fled in fear!"
 	prompt
 
 Hit1TimeText:
 	text "Hit "
 	text_decimal wStringBuffer1, 1, 1
-	ctxt " time!"
+	text " time!"
 	prompt
 
 HitNTimesText:
 	text "Hit "
 	text_decimal wStringBuffer1, 1, 1
-	ctxt " times!"
+	text " times!"
 	prompt
 
 MistText:
-	ctxt "<USER>'s"
+	text "<USER>'s"
 	line "shrouded in mist!"
 	prompt
 
 ProtectedByMistText:
-	ctxt "<TARGET> is"
+	text "<TARGET> is"
 	line "protected by mist."
 	prompt
 
 GettingPumpedText:
 	text_pause
-	ctxt "<USER> is"
+	text "<USER> is"
 	line "getting pumped!"
 	prompt
 
 RecoilText:
-	ctxt "<USER> is"
+	text "<USER> is"
 	line "hit with recoil!"
 	prompt
 
 MadeSubstituteText:
-	ctxt "<USER>"
+	text "<USER>"
 	line "made a substitute!"
 	prompt
 
 HasSubstituteText:
-	ctxt "<USER>"
+	text "<USER>"
 	line "has a substitute!"
 	prompt
 
 TooWeakSubText:
-	ctxt "Too weak to make"
+	text "Too weak to make"
 	line "a substitute!"
 	prompt
 
 SubTookDamageText:
-	ctxt "The substitute"
+	text "The substitute"
 	line "took damage for"
 	cont "<TARGET>!"
 	prompt
 
 SubFadedText:
-	ctxt "<TARGET>'s"
+	text "<TARGET>'s"
 	line "substitute faded!"
 	prompt
 
 WasSeededText:
-	ctxt "<TARGET>"
+	text "<TARGET>"
 	line "was seeded!"
 	prompt
 
 EvadedText:
-	ctxt "<TARGET>"
+	text "<TARGET>"
 	line "evaded the attack!"
 	prompt
 
@@ -1138,30 +1138,30 @@ WasDisabledText:
 	text "<TARGET>'s"
 	line ""
 	text_ram wStringBuffer2
-	ctxt " was"
+	text " was"
 	cont "disabled!"
 	prompt
 
 CoinsScatteredText:
-	ctxt "Coins scattered"
+	text "Coins scattered"
 	line "everywhere!"
 	prompt
 
 TransformedTypeText:
-	ctxt "<USER>"
+	text "<USER>"
 	line "became the"
 	cont ""
 	text_ram wStringBuffer1
-	ctxt "-type!"
+	text "-type!"
 	prompt
 
 EliminatedStatsText:
-	ctxt "All stat changes"
+	text "All stat changes"
 	line "were eliminated!"
 	prompt
 
 TransformedText:
-	ctxt "<USER>"
+	text "<USER>"
 	line "transformed into"
 	cont ""
 	text_ram wStringBuffer1
@@ -1169,13 +1169,13 @@ TransformedText:
 	prompt
 
 TrickRoomText:
-	ctxt "<USER>"
+	text "<USER>"
 	line "twisted the"
 	cont "dimensions!"
 	prompt
 
 TrickRoomEndedText:
-	ctxt "The twisted"
+	text "The twisted"
 	line "dimensions"
 
 	para "returned to"
@@ -1183,61 +1183,61 @@ TrickRoomEndedText:
 	prompt
 
 LightScreenEffectText:
-	ctxt "<USER>'s"
+	text "<USER>'s"
 	line "Spcl.Def rose!"
 	prompt
 
 ReflectEffectText:
-	ctxt "<USER>'s"
+	text "<USER>'s"
 	line "Defense rose!"
 	prompt
 
 NothingHappenedText:
-	ctxt "But nothing"
+	text "But nothing"
 	line "happened."
 	prompt
 
 ButItFailedText:
-	ctxt "But it failed!"
+	text "But it failed!"
 	prompt
 
 ItFailedText:
-	ctxt "It failed!"
+	text "It failed!"
 	prompt
 
 DidntAffectText:
-	ctxt "It didn't affect"
+	text "It didn't affect"
 	line "<TARGET>!"
 	prompt
 
 HPIsFullText:
-	ctxt "<USER>'s"
+	text "<USER>'s"
 	line "HP is full!"
 	prompt
 
 DraggedOutText:
-	ctxt "<USER>"
+	text "<USER>"
 	line "was dragged out!"
 	prompt
 
 ParalyzedText:
-	ctxt "<TARGET> is"
+	text "<TARGET> is"
 	line "paralyzed! It"
 	cont "might not attack!"
 	prompt
 
 FullyParalyzedText:
-	ctxt "<USER> is"
+	text "<USER> is"
 	line "fully paralyzed!"
 	prompt
 
 AlreadyParalyzedText:
-	ctxt "<TARGET> is"
+	text "<TARGET> is"
 	line "already paralyzed!"
 	prompt
 
 ProtectedByText:
-	ctxt "<TARGET> is"
+	text "<TARGET> is"
 	line "protected by"
 	cont ""
 	text_ram wStringBuffer1
@@ -1245,7 +1245,7 @@ ProtectedByText:
 	prompt
 
 RegainedStatsWithItem:
-	ctxt "<USER>"
+	text "<USER>"
 	line "regained stats"
 	cont "with "
 	text_ram wStringBuffer1
@@ -1253,7 +1253,7 @@ RegainedStatsWithItem:
 	prompt
 
 CuredInfatuationWithItem:
-	ctxt "<USER>"
+	text "<USER>"
 	line "cured infatuation"
 	cont "with "
 	text_ram wStringBuffer1
@@ -1261,7 +1261,7 @@ CuredInfatuationWithItem:
 	prompt
 
 CuredEncoreWithItem:
-	ctxt "<USER>"
+	text "<USER>"
 	line "cured Encore"
 	cont "with "
 	text_ram wStringBuffer1
@@ -1269,7 +1269,7 @@ CuredEncoreWithItem:
 	prompt
 
 CuredDisableWithItem:
-	ctxt "<USER>"
+	text "<USER>"
 	line "cured Disable"
 	cont "with "
 	text_ram wStringBuffer1
@@ -1277,15 +1277,15 @@ CuredDisableWithItem:
 	prompt
 
 StoleText:
-	ctxt "<USER>"
+	text "<USER>"
 	line "stole "
 	text_ram wStringBuffer1
-	ctxt ""
+	text ""
 	cont "from its foe!"
 	prompt
 
 KnockedOffItemText:
-	ctxt "<USER>"
+	text "<USER>"
 	line "knocked off"
 	cont ""
 	text_ram wStringBuffer1
@@ -1293,17 +1293,17 @@ KnockedOffItemText:
 	prompt
 
 CantEscapeNowText:
-	ctxt "<TARGET>"
+	text "<TARGET>"
 	line "can't escape now!"
 	prompt
 
 WasDefrostedText:
-	ctxt "<USER>"
+	text "<USER>"
 	line "was defrosted!"
 	prompt
 
 PutACurseText:
-	ctxt "<USER>"
+	text "<USER>"
 	line "cut its own HP and"
 
 	para "put a curse on"
@@ -1311,142 +1311,142 @@ PutACurseText:
 	prompt
 
 ProtectedItselfText:
-	ctxt "<USER>"
+	text "<USER>"
 	line "protected itself!"
 	prompt
 
 ProtectingItselfText:
-	ctxt "<TARGET> is"
+	text "<TARGET> is"
 	line "protecting itself!"
 	done
 
 SpikesText:
-	ctxt "Spikes scattered"
+	text "Spikes scattered"
 	line "all around"
 	cont "<TARGET>!"
 	prompt
 
 ToxicSpikesText:
-	ctxt "Toxic spikes"
+	text "Toxic spikes"
 	line "scattered around"
 	cont "<TARGET>!"
 	prompt
 
 IdentifiedText:
-	ctxt "<USER>"
+	text "<USER>"
 	line "identified"
 	cont "<TARGET>!"
 	prompt
 
 StartPerishSongText:
-	ctxt "#mon that heard"
+	text "#mon that heard"
 	line "the song will"
 	cont "faint in 3 turns!"
 	prompt
 
 StartPerishBodyText:
-	ctxt "Both #mon will"
+	text "Both #mon will"
 	line "faint in 3 turns!"
 	prompt
 
 SandstormBrewedText:
-	ctxt "A sandstorm"
+	text "A sandstorm"
 	line "brewed!"
 	prompt
 
 HailStartedText:
-	ctxt "It started to"
+	text "It started to"
 	line "hail!"
 	prompt
 
 BracedItselfText:
-	ctxt "<USER>"
+	text "<USER>"
 	line "braced itself!"
 	prompt
 
 FellInLoveText:
-	ctxt "<TARGET>"
+	text "<TARGET>"
 	line "fell in love!"
 	prompt
 
 CoveredByVeilText:
-	ctxt "<USER> is"
+	text "<USER> is"
 	line "covered by a veil!"
 	prompt
 
 SafeguardProtectText:
-	ctxt "<TARGET>"
+	text "<TARGET>"
 	line "is protected by"
 	cont "Safeguard!"
 	prompt
 
 MagnitudeText:
-	ctxt "Magnitude "
+	text "Magnitude "
 	text_decimal wTextDecimalByte, 1, 2
 	text "!"
 	prompt
 
 ReleasedByText:
-	ctxt "<USER>"
+	text "<USER>"
 	line "was released by"
 	cont "<TARGET>!"
 	prompt
 
 ShedLeechSeedText:
-	ctxt "<USER>"
+	text "<USER>"
 	line "shed Leech Seed!"
 	prompt
 
 BlewSpikesText:
-	ctxt "<USER>"
+	text "<USER>"
 	line "blew away Spikes!"
 	prompt
 
 BlewToxicSpikesText:
-	ctxt "<USER>"
+	text "<USER>"
 	line "blew away Toxic"
 	cont "Spikes!"
 	prompt
 
 DownpourText:
-	ctxt "It started"
+	text "It started"
 	line "to rain!"
 	prompt
 
 SunGotBrightText:
-	ctxt "The sunlight"
+	text "The sunlight"
 	line "turned harsh!"
 	prompt
 
 BellyDrumText:
-	ctxt "<USER>"
+	text "<USER>"
 	line "cut its HP and"
 	cont "maximized Attack!"
 	prompt
 
 BellyDrumContraryText:
-	ctxt "<USER>"
+	text "<USER>"
 	line "cut its HP and"
 	cont "minimized Attack!"
 	prompt
 
 ForesawAttackText:
-	ctxt "<USER>"
+	text "<USER>"
 	line "foresaw an attack!"
 	prompt
 
 IgnoredOrders2Text:
-	ctxt "<USER>"
+	text "<USER>"
 	line "ignored orders!"
 	prompt
 
 BecameHealthyText:
-	ctxt "<USER>"
+	text "<USER>"
 	line "became healthy!"
 	prompt
 
 NotifyAirBalloonText:
-	ctxt "<USER>"
+	text "<USER>"
 	line "floats in the air"
 	cont "with "
 	text_ram wStringBuffer1
@@ -1454,7 +1454,7 @@ NotifyAirBalloonText:
 	prompt
 
 TraceActivationText:
-	ctxt "<USER>"
+	text "<USER>"
 	line "traced"
 	cont ""
 	text_ram wStringBuffer1
@@ -1462,7 +1462,7 @@ TraceActivationText:
 	prompt
 
 TraceFailureText:
-	ctxt "<USER>"
+	text "<USER>"
 	line "failed to trace"
 	cont "<TARGET>!"
 	prompt
@@ -1471,41 +1471,41 @@ BattleText_IntimidateResisted:
 	text "<TARGET>'s"
 	line ""
 	text_ram wStringBuffer1
-	ctxt ""
+	text ""
 
 	para "protects it from"
 	line "Intimidate!"
 	prompt
 
 NotifyCloudNine:
-	ctxt "The weather was"
+	text "The weather was"
 	line "suppressed!"
 	prompt
 
 NotifyPressure:
-	ctxt "<USER> is"
+	text "<USER> is"
 	line "exerting its"
 	cont "pressure!"
 	prompt
 
 NotifyMoldBreaker:
-	ctxt "<USER>"
+	text "<USER>"
 	line "breaks the mold!"
 	prompt
 
 NotifyUnnerve:
-	ctxt "<TARGET> is"
+	text "<TARGET> is"
 	line "too afraid to eat"
 	cont "Berries!"
 	prompt
 
 NotifyNeutralizingGas:
-	ctxt "Neutralizing gas"
+	text "Neutralizing gas"
 	line "filled the area!"
 	prompt
 
 FriskedItemText:
-	ctxt "<USER>"
+	text "<USER>"
 	line "frisked its foe"
 
 	para "and found a"
@@ -1515,7 +1515,7 @@ FriskedItemText:
 	prompt
 
 PickedItemText:
-	ctxt "<USER>"
+	text "<USER>"
 	line "picked up"
 	cont ""
 	text_ram wStringBuffer1
@@ -1523,7 +1523,7 @@ PickedItemText:
 	prompt
 
 HarvestedItemText:
-	ctxt "<USER>"
+	text "<USER>"
 	line "harvested"
 	cont ""
 	text_ram wStringBuffer1
@@ -1531,18 +1531,18 @@ HarvestedItemText:
 	prompt
 
 FirePoweredUpText:
-	ctxt "<USER>'s"
+	text "<USER>'s"
 	line "Fire-type moves"
 	cont "were powered up!"
 	prompt
 
 AngerPointMaximizedAttackText:
-	ctxt "<USER>"
+	text "<USER>"
 	line "maxed its Attack!"
 	prompt
 
 CannotUseText:
-	ctxt "<TARGET>"
+	text "<TARGET>"
 	line "cannot use"
 	cont ""
 	text_ram wStringBuffer1
@@ -1552,7 +1552,7 @@ CannotUseText:
 ShudderedText:
 ; since the ability works with the opponent move data,
 ; it is on the opponent turn mostly
-	ctxt "<TARGET>"
+	text "<TARGET>"
 	line "shuddered!"
 	prompt
 
@@ -1564,27 +1564,27 @@ ForewarnText:
 	prompt
 
 BouncedBackText:
-	ctxt "<USER>"
+	text "<USER>"
 	line "bounced the"
 	cont ""
 	text_ram wStringBuffer1
-	ctxt " back!"
+	text " back!"
 	prompt
 
 ItemCantBeStolenText:
-	ctxt "<TARGET>'s"
+	text "<TARGET>'s"
 	line "item cannot be"
 	cont "stolen!"
 	prompt
 
 SuckedUpOozeText:
-	ctxt "<USER>"
+	text "<USER>"
 	line "sucked up the"
 	cont "liquid ooze!"
 	prompt
 
 BattleText_EnemyWithdrew::
-	ctxt "<ENEMY>"
+	text "<ENEMY>"
 	line "withdrew"
 	cont ""
 	text_ram wEnemyMonNickname
@@ -1592,39 +1592,39 @@ BattleText_EnemyWithdrew::
 	prompt
 
 BattleText_WentBackToPlayer:
-	ctxt "<USER> went"
+	text "<USER> went"
 	line "back to <PLAYER>!"
 	prompt
 
 BattleText_WentBackToEnemy:
-	ctxt "<USER>"
+	text "<USER>"
 	line "went back to"
 	cont "<ENEMY>!"
 	prompt
 
 ScaredText:
-	ctxt "<USER> is too"
+	text "<USER> is too"
 	line "scared to move!"
 	prompt
 
 GetOutText:
-	ctxt "Ghost: Get out…"
+	text "Ghost: Get out…"
 	line "Get out…"
 	prompt
 
 CarrieFinalPkmnText:
 CalFinalPkmnText:
-	ctxt "I still have one"
+	text "I still have one"
 	line "#mon!"
 	prompt
 
 FalknerFinalPkmnText:
-	ctxt "The wind is"
+	text "The wind is"
 	line "finally with us!"
 	prompt
 
 BugsyFinalPkmnText:
-	ctxt "Even though it's"
+	text "Even though it's"
 	line "my last #mon,"
 
 	para "Bug #mon are"
@@ -1632,7 +1632,7 @@ BugsyFinalPkmnText:
 	prompt
 
 WhitneyFinalPkmnText:
-	ctxt "H-hey! Just one"
+	text "H-hey! Just one"
 	line "left? But…"
 
 	para "I ain't losin',"
@@ -1640,40 +1640,40 @@ WhitneyFinalPkmnText:
 	prompt
 
 MortyFinalPkmnText:
-	ctxt "I still believe"
+	text "I still believe"
 	line "we can do it!"
 	prompt
 
 ChuckFinalPkmnText:
-	ctxt "We haven't lost"
+	text "We haven't lost"
 	line "yet!"
 	prompt
 
 JasmineFinalPkmnText:
-	ctxt "Well-tempered"
+	text "Well-tempered"
 	line "steel will hang on"
 	cont "to the very last!"
 	prompt
 
 PryceFinalPkmnText:
-	ctxt "Humph… You are"
+	text "Humph… You are"
 	line "quite the Trainer."
 	prompt
 
 ClairFinalPkmnText:
-	ctxt "One last #mon?"
+	text "One last #mon?"
 	line "This is where the"
 	cont "real fight begins!"
 	prompt
 
 WillFinalPkmnText:
-	ctxt "We Psychics don't"
+	text "We Psychics don't"
 	line "give up until we"
 	cont "reach zero!"
 	prompt
 
 KogaFinalPkmnText:
-	ctxt "Fwahaha! I've been"
+	text "Fwahaha! I've been"
 	line "counting on this"
 
 	para "one from the very"
@@ -1681,89 +1681,89 @@ KogaFinalPkmnText:
 	prompt
 
 BrunoFinalPkmnText:
-	ctxt "Fight as hard as"
+	text "Fight as hard as"
 	line "you can 'til you"
 	cont "faint!"
 	prompt
 
 KarenFinalPkmnText:
-	ctxt "This is far from"
+	text "This is far from"
 	line "being backed into"
 	cont "a corner!"
 	prompt
 
 ChampionFinalPkmnText:
-	ctxt "All right! I"
+	text "All right! I"
 	line "thought this would"
 	cont "never happen!"
 	prompt
 
 BrockFinalPkmnText:
-	ctxt "Ah ha ha!"
+	text "Ah ha ha!"
 	line "It itches!"
 	prompt
 
 MistyFinalPkmnText:
-	ctxt "Hmm… You're"
+	text "Hmm… You're"
 	line "pretty good…"
 	prompt
 
 LtSurgeFinalPkmnText:
-	ctxt "It's not over yet."
+	text "It's not over yet."
 	line "It's just getting"
 	cont "started!"
 	prompt
 
 ErikaFinalPkmnText:
-	ctxt "Don't go easy on"
+	text "Don't go easy on"
 	line "me. Give me every-"
 	cont "thing you've got!"
 	prompt
 
 JanineFinalPkmnText:
-	ctxt "You've got a great"
+	text "You've got a great"
 	line "battle technique!"
 	prompt
 
 SabrinaFinalPkmnText:
-	ctxt "What will happen"
+	text "What will happen"
 	line "after this?"
 	cont "I already know."
 	prompt
 
 BlaineFinalPkmnText:
-	ctxt "I'll show you the"
+	text "I'll show you the"
 	line "spirit of my cave"
 	cont "Gym!"
 	prompt
 
 BlueFinalPkmnText:
-	ctxt "Heh heh heh…"
+	text "Heh heh heh…"
 	line "You're unprepared"
 
 	para "for this. We'll"
 	line "knock you down!"
 	prompt
 
-RedFinalPkmnText: ; ctxt > text
+RedFinalPkmnText: ; text > text
 LeafFinalPkmnText:
 	text "………………"
 	prompt
 
 Rival1_1FinalPkmnText:
-	ctxt "…Humph!"
+	text "…Humph!"
 	line "You're doing OK"
 	cont "for someone weak."
 	prompt
 
 Rival1_2FinalPkmnText:
-	ctxt "Say, you've got a"
+	text "Say, you've got a"
 	line "lot of nerve,"
 	cont "coming here…"
 	prompt
 
 Rival1_3FinalPkmnText:
-	ctxt "Out of despera-"
+	text "Out of despera-"
 	line "tion, weak people"
 
 	para "sometimes do OK"
@@ -1771,12 +1771,12 @@ Rival1_3FinalPkmnText:
 	prompt
 
 Rival1_4FinalPkmnText:
-	ctxt "Hey, hey!"
+	text "Hey, hey!"
 	line "Why so serious?"
 	prompt
 
 Rival1_5FinalPkmnText:
-	ctxt "I see. Seems like"
+	text "I see. Seems like"
 	line "it wasn't just luck"
 
 	para "that's gotten you"
@@ -1784,18 +1784,18 @@ Rival1_5FinalPkmnText:
 	prompt
 
 Rival2_1FinalPkmnText:
-	ctxt "I see. You weren't"
+	text "I see. You weren't"
 	line "coming to Kanto"
 	cont "just to show off…"
 	prompt
 
 Rival2_2FinalPkmnText:
-	ctxt "Why?! I've still"
+	text "Why?! I've still"
 	line "got one left!"
 	prompt
 
 Lyra1_1FinalPkmnText:
-	ctxt "You've never had a"
+	text "You've never had a"
 	line "#mon battle"
 	cont "before, have you?"
 
@@ -1810,49 +1810,49 @@ Lyra1_1FinalPkmnText:
 	prompt
 
 Lyra1_2FinalPkmnText:
-	ctxt "You're learning"
+	text "You're learning"
 	line "quickly, <PLAYER>!"
 	prompt
 
 Lyra1_3FinalPkmnText:
-	ctxt "OK! Time for my"
+	text "OK! Time for my"
 	line "last #mon!"
 	prompt
 
 Lyra1_4FinalPkmnText:
-	ctxt "Whether I win or"
+	text "Whether I win or"
 	line "lose, this has"
 	cont "been fun!"
 	prompt
 
 Lyra2_1FinalPkmnText:
-	ctxt "You've brought me"
+	text "You've brought me"
 	line "down to my last"
 	cont "#mon…"
 	prompt
 
 Proton1FinalPkmnText:
-	ctxt "Seriously, you'd"
+	text "Seriously, you'd"
 	line "chase me this far?"
 	prompt
 
 Proton2FinalPkmnText:
-	ctxt "Everywhere we go,"
+	text "Everywhere we go,"
 	line "someone always"
 	cont "disagrees with us…"
 	prompt
 
 Petrel1FinalPkmnText:
-	ctxt "What? Am I"
+	text "What? Am I"
 	line "losing?"
 	prompt
 
 Petrel2FinalPkmnText:
-	ctxt "Hey, you're good!"
+	text "Hey, you're good!"
 	prompt
 
 Archer1FinalPkmnText:
-	ctxt "We can't have you"
+	text "We can't have you"
 	line "getting in the way"
 
 	para "before Giovanni"
@@ -1860,29 +1860,29 @@ Archer1FinalPkmnText:
 	prompt
 
 Archer2FinalPkmnText:
-	ctxt "Ah, you are indeed"
+	text "Ah, you are indeed"
 	line "strong, but…"
 	cont "I wonder…"
 	prompt
 
 Ariana1FinalPkmnText:
-	ctxt "Wh… Wha… Why are"
+	text "Wh… Wha… Why are"
 	line "you so strong?!"
 	prompt
 
 Ariana2FinalPkmnText:
-	ctxt "Hey, what do you"
+	text "Hey, what do you"
 	line "think you're"
 	cont "doing?!"
 	prompt
 
 Giovanni1FinalPkmnText:
-	ctxt "My #mon is"
+	text "My #mon is"
 	line "invincible!"
 	prompt
 
 Giovanni2FinalPkmnText:
-	ctxt "Don't tell me some"
+	text "Don't tell me some"
 	line "inexperienced kid"
 
 	para "can possibly be"
@@ -1890,135 +1890,135 @@ Giovanni2FinalPkmnText:
 	prompt
 
 ProfOakFinalPkmnText:
-	ctxt "Hm! Excellent!"
+	text "Hm! Excellent!"
 	line "But we aren't"
 	cont "done yet!"
 	prompt
 
 ProfElmFinalPkmnText:
-	ctxt "It's almost"
+	text "It's almost"
 	line "over…"
 	prompt
 
 ProfIvyFinalPkmnText:
-	ctxt "I'm down, but"
+	text "I'm down, but"
 	line "not out!"
 	prompt
 
 MysticalManFinalPkmnText:
-	ctxt "Time for a dra-"
+	text "Time for a dra-"
 	line "matic comeback!"
 	prompt
 
 KarateKingFinalPkmnText:
-	ctxt "Yaaarggh!"
+	text "Yaaarggh!"
 	prompt
 
 PalmerFinalPkmnText:
-	ctxt "Bravo!"
+	text "Bravo!"
 	prompt
 
 JessieJamesFinalPkmnText:
-	ctxt "We have a proud"
+	text "We have a proud"
 	line "tradition of fail-"
 	cont "ure to uphold!"
 	prompt
 
 LoreleiFinalPkmnText:
-	ctxt "You only got a"
+	text "You only got a"
 	line "taste of my power!"
 	prompt
 
 AgathaFinalPkmnText:
-	ctxt "Don't assume that"
+	text "Don't assume that"
 	line "you've won, child!"
 	prompt
 
 StevenFinalPkmnText:
-	ctxt "I knew you would"
+	text "I knew you would"
 	line "be strong…"
 	prompt
 
 CynthiaFinalPkmnText:
-	ctxt "I won't let this"
+	text "I won't let this"
 	line "end yet!"
 	prompt
 
 InverFinalPkmnText:
-	ctxt "You're getting the"
+	text "You're getting the"
 	line "hang of this!"
 	prompt
 
 CherylFinalPkmnText:
-	ctxt "I can't keep up"
+	text "I can't keep up"
 	line "with healing…"
 	prompt
 
 RileyFinalPkmnText:
-	ctxt "Your team! I sense"
+	text "Your team! I sense"
 	line "your strong aura!"
 	prompt
 
 BuckFinalPkmnText:
-	ctxt "Now this! This is"
+	text "Now this! This is"
 	line "a smoking-hot sit-"
 	cont "uation!"
 	prompt
 
 MarleyFinalPkmnText:
-	ctxt "…My time with you"
+	text "…My time with you"
 	line "is drawing to a"
 	cont "close."
 	prompt
 
 MiraFinalPkmnText:
-	ctxt "Oh, no! You're"
+	text "Oh, no! You're"
 	line "too much for me!"
 	prompt
 
 AnabelFinalPkmnText:
-	ctxt "Your talent…"
+	text "Your talent…"
 	line "It's real."
 	prompt
 
 DarachFinalPkmnText:
-	ctxt "My last stand!"
+	text "My last stand!"
 	line "Allez!"
 	prompt
 
 CaitlinFinalPkmnText:
-	ctxt "Even at this time,"
+	text "Even at this time,"
 	line "I should stay cool"
 	cont "and collected…"
 	prompt
 
 CandelaFinalPkmnText:
-	ctxt "Down to the wire!"
+	text "Down to the wire!"
 	line "How exciting!"
 	prompt
 
 BlancheFinalPkmnText:
-	ctxt "I am certainly"
+	text "I am certainly"
 	line "impressed so far."
 	prompt
 
 SparkFinalPkmnText:
-	ctxt "You're good!"
+	text "You're good!"
 	line "No doubt about it!"
 	prompt
 
 FlanneryFinalPkmnText:
-	ctxt "Um… what should"
+	text "Um… what should"
 	line "I do now?"
 	prompt
 
 MayleneFinalPkmnText:
-	ctxt "This isn't the"
+	text "This isn't the"
 	line "end, my friend!"
 	prompt
 
 SkylaFinalPkmnText:
-	ctxt "This is my last"
+	text "This is my last"
 	line "#mon…"
 
 	para "But I'll never"
@@ -2026,38 +2026,38 @@ SkylaFinalPkmnText:
 	prompt
 
 ValerieFinalPkmnText:
-	ctxt "Oh my…"
+	text "Oh my…"
 	prompt
 
 KukuiFinalPkmnText:
-	ctxt "My soul burns hot,"
+	text "My soul burns hot,"
 	line "yeah!"
 	prompt
 
 BillFinalPkmnText:
-	ctxt "Yeehah!"
+	text "Yeehah!"
 	line "What a battle!"
 	prompt
 
 YellowFinalPkmnText:
-	ctxt "My last #mon…"
+	text "My last #mon…"
 	line "Lend me your"
 	cont "power!"
 	prompt
 
 WalkerFinalPkmnText:
-	ctxt "We can still fly!"
+	text "We can still fly!"
 	prompt
 
 ImakuniFinalPkmnText:
-	ctxt "I'm running away!"
+	text "I'm running away!"
 	line "…I can't?"
 	prompt
 
 LawrenceFinalPkmnText:
-	ctxt "Inconceivable!"
+	text "Inconceivable!"
 	prompt
 
 ReiFinalPkmnText:
-	ctxt "I'm not done yet."
+	text "I'm not done yet."
 	prompt

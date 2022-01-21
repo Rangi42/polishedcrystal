@@ -82,7 +82,7 @@ BigOnixDollScript:
 	jumpopenedtext BigOnixDollSentText
 
 BigDollClerkText:
-	ctxt "Aren't our jumbo"
+	text "Aren't our jumbo"
 	line "dolls impressive?"
 
 	para "They're so big,"
@@ -91,17 +91,17 @@ BigDollClerkText:
 	done
 
 BigDollClerkNoSaleText:
-	ctxt "Clerk: Well, if"
+	text "Clerk: Well, if"
 	line "you say so."
 	done
 
 BigDollClerkNoMoneyText:
-	ctxt "Clerk: You can't"
+	text "Clerk: You can't"
 	line "afford it!"
 	done
 
 BigDollClerkSellLaprasText:
-	ctxt "Clerk: You like"
+	text "Clerk: You like"
 	line "the Lapras doll?"
 
 	para "It'll cost you"
@@ -109,7 +109,7 @@ BigDollClerkSellLaprasText:
 	done
 
 BigDollClerkSellSnorlaxText:
-	ctxt "Clerk: You like"
+	text "Clerk: You like"
 	line "the Snorlax doll?"
 
 	para "It'll cost you"
@@ -117,7 +117,7 @@ BigDollClerkSellSnorlaxText:
 	done
 
 BigDollClerkSellOnixText:
-	ctxt "Clerk: You like"
+	text "Clerk: You like"
 	line "the Onix doll?"
 
 	para "It'll cost you"
@@ -125,52 +125,52 @@ BigDollClerkSellOnixText:
 	done
 
 BoughtBigLaprasDollText:
-	ctxt "<PLAYER> bought"
+	text "<PLAYER> bought"
 	line "Big Lapras Doll."
 	done
 
 BigLaprasDollSentText:
-	ctxt "Big Lapras Doll"
+	text "Big Lapras Doll"
 	line "was sent home."
 	done
 
 BoughtBigSnorlaxDollText:
-	ctxt "<PLAYER> bought"
+	text "<PLAYER> bought"
 	line "Big Snorlax Doll."
 	done
 
 BigSnorlaxDollSentText:
-	ctxt "Big Snorlax Doll"
+	text "Big Snorlax Doll"
 	line "was sent home."
 	done
 
 BoughtBigOnixDollText:
-	ctxt "<PLAYER> bought"
+	text "<PLAYER> bought"
 	line "Big Onix Doll."
 	done
 
 BigOnixDollSentText:
-	ctxt "Big Onix Doll"
+	text "Big Onix Doll"
 	line "was sent home."
 	done
 
 BigLaprasDollText:
-	ctxt "It's a jumbo-size"
+	text "It's a jumbo-size"
 	line "Lapras Doll!"
 	done
 
 BigSnorlaxDollText:
-	ctxt "It's a jumbo-size"
+	text "It's a jumbo-size"
 	line "Snorlax Doll!"
 	done
 
 BigOnixDollText:
-	ctxt "It's a jumbo-size"
+	text "It's a jumbo-size"
 	line "Onix Doll!"
 	done
 
 CeladonHomeDecorStore4FDirectoryText:
-	ctxt "A Stuffed"
+	text "A Stuffed"
 	line "Companion!"
 
 	para "4F: Jumbo Dolls"

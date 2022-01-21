@@ -101,7 +101,7 @@ ShuckieOTIDAndCaughtGender:
 	db MALE
 
 ManiaText_AskLookAfterShuckie:
-	ctxt "I, I'm in shock!"
+	text "I, I'm in shock!"
 
 	para "A guy about your"
 	line "age with piercing"
@@ -125,37 +125,37 @@ ManiaText_AskLookAfterShuckie:
 	done
 
 ManiaText_TakeCareOfShuckie:
-	ctxt "Oh, thank you!"
+	text "Oh, thank you!"
 
 	para "Take good care of"
 	line "it, please!"
 	done
 
 ManiaText_GotShuckie:
-	ctxt "<PLAYER> received a"
+	text "<PLAYER> received a"
 	line "#mon."
 	done
 
 ManiaText_ShuckieSentToPC:
-	ctxt "The #mon was"
+	text "The #mon was"
 	line "sent to "
 	text_ram wStringBuffer1
 	text "."
 	done
 
 ManiaText_PartyAndBoxFull:
-	ctxt "Your #mon party"
+	text "Your #mon party"
 	line "and box are full."
 	done
 
 ManiaText_IfHeComesBack:
-	ctxt "Oh, no… What'll"
+	text "Oh, no… What'll"
 	line "I do if he comes"
 	cont "back?"
 	done
 
 ManiaText_CanIHaveMyMonBack:
-	ctxt "Hi! How's my #-"
+	text "Hi! How's my #-"
 	line "mon?"
 
 	para "I think I'm safe"
@@ -164,17 +164,17 @@ ManiaText_CanIHaveMyMonBack:
 	done
 
 ManiaText_ThankYou:
-	ctxt "Thank you!"
+	text "Thank you!"
 	done
 
 ManiaText_ShuckieNotThere:
-	ctxt "Hey, you don't"
+	text "Hey, you don't"
 	line "have my #mon"
 	cont "with you."
 	done
 
 ManiaText_ShuckieLikesYou:
-	ctxt "My #mon has"
+	text "My #mon has"
 	line "come to like you."
 
 	para "All right, you"
@@ -185,13 +185,13 @@ ManiaText_ShuckieLikesYou:
 	done
 
 ManiaText_SameAsBeingRobbed:
-	ctxt "Oh, no, no… That's"
+	text "Oh, no, no… That's"
 	line "the same as being"
 	cont "robbed."
 	done
 
 ManiaText_HappinessSpeech:
-	ctxt "For #mon, hap-"
+	text "For #mon, hap-"
 	line "piness is being"
 
 	para "with a person who"
@@ -199,7 +199,7 @@ ManiaText_HappinessSpeech:
 	done
 
 ManiaText_ShuckieIsYourLastMon:
-	ctxt "If I take my #-"
+	text "If I take my #-"
 	line "mon back, what are"
 
 	para "you going to use"

@@ -20,7 +20,7 @@ CeladonDeptStore2F_MapScriptHeader:
 	object_event  6,  2, SPRITE_SCHOOLBOY, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_COMMAND, jumptextfaceplayer, CeladonDeptStore2FYoungsterText, -1
 
 CeladonDeptStore2FPokefanMText:
-	ctxt "I just recently"
+	text "I just recently"
 	line "became a trainer."
 
 	para "My son encouraged"
@@ -32,7 +32,7 @@ CeladonDeptStore2FPokefanMText:
 	done
 
 CeladonDeptStore2FYoungsterText:
-	ctxt "My dad's having a"
+	text "My dad's having a"
 	line "hard time learning"
 
 	para "the names of items"
@@ -43,7 +43,7 @@ CeladonDeptStore2FYoungsterText:
 	done
 
 CeladonDeptStore2FDirectoryText:
-	ctxt "Top Grade Items"
+	text "Top Grade Items"
 	line "for Trainers!"
 
 	para "2F: Trainer's"

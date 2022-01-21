@@ -70,7 +70,7 @@ ScaryCave1FMiraScript:
 	end
 
 .ChallengeText:
-	ctxt "I'm Mira…"
+	text "I'm Mira…"
 	line "I was catching"
 
 	para "#mon, but this"
@@ -86,23 +86,23 @@ ScaryCave1FMiraScript:
 	done
 
 .YesText:
-	ctxt "Yes! Mira will"
+	text "Yes! Mira will"
 	line "show you her #-"
 	cont "mon!"
 	done
 
 .NoText:
-	ctxt "Mira is sad…"
+	text "Mira is sad…"
 	done
 
 .BeatenText:
-	ctxt "Mira wants to get"
+	text "Mira wants to get"
 	line "a lot, lot strong-"
 	cont "er, like <PLAYER>!"
 	done
 
 .ItemText:
-	ctxt "<PLAYER>, did you"
+	text "<PLAYER>, did you"
 	line "get to be so good"
 
 	para "because you're al-"
@@ -123,7 +123,7 @@ ScaryCave1FMiraScript:
 	done
 
 .GoodbyeText:
-	ctxt "Mira will try like"
+	text "Mira will try like"
 	line "you, <PLAYER>!"
 
 	para "I'll get stronger"
@@ -155,11 +155,11 @@ ScaryCave1FPharmacistScript:
 .TutorRefused
 	jumpthisopenedtext
 
-	ctxt "It's your funeral."
+	text "It's your funeral."
 	done
 
 .IntroText:
-	ctxt "Ghosts are masters"
+	text "Ghosts are masters"
 	line "of the cheap shot."
 
 	para "The way to deal"
@@ -172,7 +172,7 @@ ScaryCave1FPharmacistScript:
 	done
 
 .QuestionText:
-	ctxt "I'll teach you to"
+	text "I'll teach you to"
 	line "Sucker Punch, but"
 
 	para "I want a Silver"
@@ -183,7 +183,7 @@ ScaryCave1FPharmacistScript:
 	waitbutton
 	jumpthisopenedtext
 
-	ctxt "No Silver Leaf?"
+	text "No Silver Leaf?"
 	line "Forget it then."
 	done
 
@@ -191,7 +191,7 @@ ScaryCave1FPharmacistScript:
 	takeitem SILVER_LEAF
 	jumpthisopenedtext
 
-	ctxt "Now you can use"
+	text "Now you can use"
 	line "Sucker Punch!"
 
 	para "If a foe is about"
@@ -202,7 +202,7 @@ ScaryCave1FPharmacistScript:
 GenericTrainerRuin_maniacSmilte:
 	generictrainer RUIN_MANIAC, SMILTE, EVENT_BEAT_RUIN_MANIAC_SMILTE, .SeenText, .BeatenText
 
-	ctxt "I hear an echo."
+	text "I hear an echo."
 	line "There's a deeper"
 	cont "cave nearby!"
 
@@ -212,7 +212,7 @@ GenericTrainerRuin_maniacSmilte:
 	done
 
 .SeenText:
-	ctxt "I'm on the edge of"
+	text "I'm on the edge of"
 	line "a big discovery!"
 
 	para "I can just feel"
@@ -220,26 +220,26 @@ GenericTrainerRuin_maniacSmilte:
 	done
 
 .BeatenText:
-	ctxt "Are you after my"
+	text "Are you after my"
 	line "discovery?!"
 	done
 
 GenericTrainerSuper_nerdMako:
 	generictrainer SUPER_NERD, MAKO, EVENT_BEAT_SUPER_NERD_MAKO, .SeenText, .BeatenText
 
-	ctxt "I guess even the"
+	text "I guess even the"
 	line "best-laid plans"
 	cont "can be ruined."
 	done
 
 .SeenText:
-	ctxt "You can't beat me!"
+	text "You can't beat me!"
 	line "I've got the per-"
 	cont "fect plan!"
 	done
 
 .BeatenText:
-	ctxt "My plan failed?!"
+	text "My plan failed?!"
 
 	para "Back to the draw-"
 	line "ing board…"
@@ -248,7 +248,7 @@ GenericTrainerSuper_nerdMako:
 GenericTrainerCoupleJoeandjo1:
 	generictrainer COUPLE, JOEANDJO1, EVENT_BEAT_COUPLE_JOE_AND_JO, .SeenText, .BeatenText
 
-	ctxt "Joe: We're on a"
+	text "Joe: We're on a"
 	line "ghost hunt, but"
 
 	para "I'm not scared as"
@@ -257,20 +257,20 @@ GenericTrainerCoupleJoeandjo1:
 	done
 
 .SeenText:
-	ctxt "Joe: A ghost!"
+	text "Joe: A ghost!"
 	line "Stay close, my"
 	cont "dear Jo!"
 	done
 
 .BeatenText:
-	ctxt "Joe: Oh. It was"
+	text "Joe: Oh. It was"
 	line "just a trainer."
 	done
 
 GenericTrainerCoupleJoeandjo2:
 	generictrainer COUPLE, JOEANDJO2, EVENT_BEAT_COUPLE_JOE_AND_JO, .SeenText, .BeatenText
 
-	ctxt "Jo: I'm so lucky"
+	text "Jo: I'm so lucky"
 	line "to have my wonder-"
 	cont "ful Joe to ward"
 
@@ -279,36 +279,36 @@ GenericTrainerCoupleJoeandjo2:
 	done
 
 .SeenText:
-	ctxt "Jo: Eek! Hold me"
+	text "Jo: Eek! Hold me"
 	line "tight, Joe!"
 	done
 
 .BeatenText:
-	ctxt "Jo: Aren't you"
+	text "Jo: Aren't you"
 	line "scared?"
 	done
 
 GenericTrainerHex_maniacBethany:
 	generictrainer HEX_MANIAC, BETHANY, EVENT_BEAT_HEX_MANIAC_BETHANY, .SeenText, .BeatenText
 
-	ctxt "The aura of fear"
+	text "The aura of fear"
 	line "in this cave is"
 	cont "delightful…"
 	cont "Fufufufu…"
 	done
 
-.SeenText: ; ctxt > text
+.SeenText: ; text > text
 	text "BOO!"
 	done
 
 .BeatenText:
-	ctxt "Did I scare you?"
+	text "Did I scare you?"
 	done
 
 GenericTrainerScientistPiotr:
 	generictrainer SCIENTIST, PIOTR, EVENT_BEAT_SCIENTIST_PIOTR, .SeenText, .BeatenText
 
-	ctxt "Algae grow here"
+	text "Algae grow here"
 	line "and release a red"
 
 	para "pigment in the"
@@ -319,13 +319,13 @@ GenericTrainerScientistPiotr:
 	done
 
 .SeenText:
-	ctxt "Do you know why"
+	text "Do you know why"
 	line "the water here is"
 	cont "blood-red?"
 	done
 
 .BeatenText:
-	ctxt "Fine, I'll tell"
+	text "Fine, I'll tell"
 	line "you!"
 	done
 

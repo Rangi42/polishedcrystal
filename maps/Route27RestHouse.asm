@@ -31,7 +31,7 @@ Route27RestHouseGranny:
 	ifgreater $95, .Loyal
 	jumpthisopenedtext
 
-	ctxt "If it doesn't come"
+	text "If it doesn't come"
 	line "to trust you some"
 
 	para "more, it could be"
@@ -59,7 +59,7 @@ Route27RestHouseGranny:
 	waitbutton
 	jumpthisopenedtext
 
-	ctxt "You've not found"
+	text "You've not found"
 	line "any Silver Leaves…"
 	done
 
@@ -67,7 +67,7 @@ Route27RestHouseGranny:
 	takeitem SILVER_LEAF
 	jumpthisopenedtext
 
-	ctxt "Skill Swap is a"
+	text "Skill Swap is a"
 	line "move that swaps"
 
 	para "your ability with"
@@ -82,7 +82,7 @@ Route27RestHouseGranny:
 	done
 
 .IntroText:
-	ctxt "Where are you off"
+	text "Where are you off"
 	line "to with #mon?"
 
 	para "The #mon"
@@ -96,12 +96,12 @@ Route27RestHouseGranny:
 	done
 
 .HeardIntroText:
-	ctxt "Let me see your"
+	text "Let me see your"
 	line "#mon…"
 	done
 
 .QuestionText:
-	ctxt "Ah! Your #mon"
+	text "Ah! Your #mon"
 	line "trusts you very"
 	cont "much."
 
@@ -116,6 +116,6 @@ Route27RestHouseGranny:
 	done
 
 .RefusedText:
-	ctxt "Good luck on your"
+	text "Good luck on your"
 	line "journey."
 	done

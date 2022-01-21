@@ -17,7 +17,7 @@ PewterMart_MapScriptHeader:
 	object_event  6,  6, SPRITE_POKEMANIAC, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_COMMAND, jumptextfaceplayer, PewterMartSuperNerdText, -1
 
 PewterMartYoungsterText:
-	ctxt "Hi! Check out my"
+	text "Hi! Check out my"
 	line "Gyarados!"
 
 	para "I raised it from a"
@@ -28,7 +28,7 @@ PewterMartYoungsterText:
 	done
 
 PewterMartSuperNerdText:
-	ctxt "There once was a"
+	text "There once was a"
 	line "weird old man who"
 	cont "sold Magikarp."
 

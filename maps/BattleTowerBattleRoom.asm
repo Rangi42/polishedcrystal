@@ -49,7 +49,7 @@ Script_BattleRoomLoop:
 	applyonemovement PLAYER, turn_head_down
 	opentext
 	writethistext
-		ctxt "<PLAYER> received"
+		text "<PLAYER> received"
 		line ""
 		text_ram wStringBuffer1
 		text " BP!"
@@ -61,15 +61,15 @@ Script_BattleRoomLoop:
 	ifequal BTCHALLENGE_FACILITYBRAIN, .WarnAboutTycoon
 .AskNextBattle:
 	writethistext
-		ctxt "Next up, opponent"
+		text "Next up, opponent"
 		line "No. "
 		text_decimal wStringBuffer3, 2, 5
-		ctxt ". Ready?"
+		text ". Ready?"
 		done
 	sjump .ShownText
 .WarnAboutTycoon
 	writethistext
-		ctxt "Congratulations"
+		text "Congratulations"
 		line "on your winning"
 		cont "streak, trainer!"
 
@@ -93,7 +93,7 @@ Script_BattleRoomLoop:
 
 .DontBattleNextOpponent:
 	writethistext
-		ctxt "Save and end the"
+		text "Save and end the"
 		line "session?"
 		done
 	yesorno
@@ -107,7 +107,7 @@ Script_BattleRoomLoop:
 	special SoftReset
 .DontSaveAndEndTheSession:
 	writethistext
-		ctxt "Cancel your Battle"
+		text "Cancel your Battle"
 		line "Room challenge?"
 
 		para "Beware, it counts"

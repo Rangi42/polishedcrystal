@@ -120,7 +120,7 @@ Route32CooltrainerMTrigger:
 	jumpthisopenedtext
 
 .AfterText2:
-	ctxt "Your experiences"
+	text "Your experiences"
 	line "in Violet City"
 
 	para "should be useful"
@@ -128,7 +128,7 @@ Route32CooltrainerMTrigger:
 	done
 
 .IntroText:
-	ctxt "You have some good"
+	text "You have some good"
 	line "#mon there."
 
 	para "It must be from"
@@ -149,7 +149,7 @@ Route32CooltrainerMTrigger:
 	done
 
 .QuestionText:
-	ctxt "It looks like you"
+	text "It looks like you"
 	line "beat everyone else"
 	cont "here."
 
@@ -167,12 +167,12 @@ Route32CooltrainerMTrigger:
 	done
 
 .RefusedText:
-	ctxt "So you would ra-"
+	text "So you would ra-"
 	line "ther journey on…"
 	done
 
 .SeenText:
-	ctxt "My training in"
+	text "My training in"
 	line "Sprout Tower over-"
 	cont "came even Falkner."
 
@@ -181,12 +181,12 @@ Route32CooltrainerMTrigger:
 	done
 
 .BeatenText:
-	ctxt "My team was up-"
+	text "My team was up-"
 	line "rooted!"
 	done
 
 .AfterText1:
-	ctxt "Your training was"
+	text "Your training was"
 	line "superior to mine."
 
 	para "As a souvenir of"
@@ -292,12 +292,12 @@ Route32LyraIntroducesHiddenGrottoesMainScript:
 	end
 
 .GreetingText:
-	ctxt "<PLAYER>!"
+	text "<PLAYER>!"
 	line "Hi there!"
 	done
 
 .NoEggText:
-	ctxt "Prof.Elm said his"
+	text "Prof.Elm said his"
 	line "aide was deliver-"
 	cont "ing an Egg to you."
 
@@ -309,7 +309,7 @@ Route32LyraIntroducesHiddenGrottoesMainScript:
 	done
 
 .HaveEggText:
-	ctxt "Oh good! You're"
+	text "Oh good! You're"
 	line "carrying that Egg"
 
 	para "just like Prof."
@@ -321,7 +321,7 @@ Route32LyraIntroducesHiddenGrottoesMainScript:
 	done
 
 .QuestionText:
-	ctxt "<PLAYER>, did you"
+	text "<PLAYER>, did you"
 	line "hear that?"
 
 	para "It came from some-"
@@ -361,7 +361,7 @@ Route32LyraIntroducesHiddenGrottoesOutroScript:
 	end
 
 .GrottoText:
-	ctxt "Here it is!"
+	text "Here it is!"
 	line "There's a gap in"
 	cont "the trees!"
 
@@ -437,7 +437,7 @@ Route32RoarTMGuyScript:
 GenericTrainerCamperRoland:
 	generictrainer CAMPER, ROLAND, EVENT_BEAT_CAMPER_ROLAND, CamperRolandSeenText, CamperRolandBeatenText
 
-	ctxt "If you don't want"
+	text "If you don't want"
 	line "to battle, just"
 	cont "avoid eye contact."
 	done
@@ -445,7 +445,7 @@ GenericTrainerCamperRoland:
 GenericTrainerFisherJustin:
 	generictrainer FISHER, JUSTIN, EVENT_BEAT_FISHER_JUSTIN, FisherJustinSeenText, FisherJustinBeatenText
 
-	ctxt "Calm, collected…"
+	text "Calm, collected…"
 	line "The essence of"
 
 	para "fishing and #-"
@@ -557,7 +557,7 @@ TrainerFisherRalph1:
 GenericTrainerFisherHenry:
 	generictrainer FISHER, HENRY, EVENT_BEAT_FISHER_HENRY, FisherHenrySeenText, FisherHenryBeatenText
 
-	ctxt "Freshly caught"
+	text "Freshly caught"
 	line "#mon are no"
 
 	para "match for properly"
@@ -664,7 +664,7 @@ TrainerPicnickerLiz1:
 GenericTrainerYoungsterAlbert:
 	generictrainer YOUNGSTER, ALBERT, EVENT_BEAT_YOUNGSTER_ALBERT, YoungsterAlbertSeenText, YoungsterAlbertBeatenText
 
-	ctxt "I'm going to try"
+	text "I'm going to try"
 	line "to be the best"
 	cont "with my favorites."
 
@@ -676,14 +676,14 @@ GenericTrainerYoungsterAlbert:
 GenericTrainerYoungsterGordon:
 	generictrainer YOUNGSTER, GORDON, EVENT_BEAT_YOUNGSTER_GORDON, YoungsterGordonSeenText, YoungsterGordonBeatenText
 
-	ctxt "The grass is full"
+	text "The grass is full"
 	line "of clingy things."
 	done
 
 GenericTrainerBird_keeperPeter:
 	generictrainer BIRD_KEEPER, PETER, EVENT_BEAT_BIRD_KEEPER_PETER, Bird_keeperPeterSeenText, Bird_keeperPeterBeatenText
 
-	ctxt "I should train"
+	text "I should train"
 	line "again at the Gym"
 	cont "in Violet City."
 	done
@@ -722,12 +722,12 @@ Movement_Route32CooltrainerMReset:
 	step_end
 
 Route32CooltrainerMText_WhatsTheHurry:
-	ctxt "Wait up!"
+	text "Wait up!"
 	line "What's the hurry?"
 	done
 
 Route32CooltrainerMText_AideIsWaiting:
-	ctxt "<PLAYER>, right?"
+	text "<PLAYER>, right?"
 	line "Some guy wearing"
 
 	para "glasses was look-"
@@ -741,7 +741,7 @@ Route32CooltrainerMText_AideIsWaiting:
 	done
 
 Route32CooltrainerMText_VioletGym:
-	ctxt "Have you gone to"
+	text "Have you gone to"
 	line "the #mon Gym?"
 
 	para "You can test your"
@@ -754,7 +754,7 @@ Route32CooltrainerMText_VioletGym:
 	done
 
 Text_MillionDollarSlowpokeTail:
-	ctxt "How would you like"
+	text "How would you like"
 	line "to have this"
 
 	para "tasty, nutritious"
@@ -767,29 +767,29 @@ Text_MillionDollarSlowpokeTail:
 	done
 
 Text_ThoughtKidsWereLoaded:
-	ctxt "Tch! I thought"
+	text "Tch! I thought"
 	line "kids these days"
 	cont "were loaded…"
 	done
 
 Text_RefusedToBuySlowpokeTail:
-	ctxt "You don't want it?"
+	text "You don't want it?"
 	line "Then scram. Shoo!"
 	done
 
 FisherJustinSeenText:
-	ctxt "Whoa!"
+	text "Whoa!"
 
 	para "You made me lose"
 	line "that fish!"
 	done
 
 FisherJustinBeatenText:
-	ctxt "Sploosh!"
+	text "Sploosh!"
 	done
 
 FisherRalph1SeenText:
-	ctxt "I'm really good at"
+	text "I'm really good at"
 	line "both fishing and"
 	cont "#mon."
 
@@ -798,12 +798,12 @@ FisherRalph1SeenText:
 	done
 
 FisherRalph1BeatenText:
-	ctxt "Tch! I tried to"
+	text "Tch! I tried to"
 	line "rush things…"
 	done
 
 FisherRalphAfterText:
-	ctxt "Fishing is a life-"
+	text "Fishing is a life-"
 	line "long passion."
 
 	para "#mon are life-"
@@ -811,7 +811,7 @@ FisherRalphAfterText:
 	done
 
 FisherRalphSwarmText:
-	ctxt "One, two, three…"
+	text "One, two, three…"
 	line "Muahahaha, what a"
 
 	para "great haul!"
@@ -822,16 +822,16 @@ FisherRalphSwarmText:
 	done
 
 FisherHenrySeenText:
-	ctxt "My #mon?"
+	text "My #mon?"
 	line "Freshly caught!"
 	done
 
 FisherHenryBeatenText:
-	ctxt "Splash?"
+	text "Splash?"
 	done
 
 YoungsterAlbertSeenText:
-	ctxt "I haven't seen you"
+	text "I haven't seen you"
 	line "around before."
 
 	para "So you think you"
@@ -839,11 +839,11 @@ YoungsterAlbertSeenText:
 	done
 
 YoungsterAlbertBeatenText:
-	ctxt "You're strong!"
+	text "You're strong!"
 	done
 
 YoungsterGordonSeenText:
-	ctxt "I found some good"
+	text "I found some good"
 	line "#mon in the"
 	cont "grass!"
 
@@ -852,22 +852,22 @@ YoungsterGordonSeenText:
 	done
 
 YoungsterGordonBeatenText:
-	ctxt "Darn. I thought I"
+	text "Darn. I thought I"
 	line "could win."
 	done
 
 CamperRolandSeenText:
-	ctxt "That glance…"
+	text "That glance…"
 	line "It's intriguing."
 	done
 
 CamperRolandBeatenText:
-	ctxt "Hmmm. This is"
+	text "Hmmm. This is"
 	line "disappointing."
 	done
 
 PicnickerLiz1SeenText:
-	ctxt "Uh-huh. Yeah, and"
+	text "Uh-huh. Yeah, and"
 	line "you know…"
 
 	para "Pardon? Battle?"
@@ -878,28 +878,28 @@ PicnickerLiz1SeenText:
 	done
 
 PicnickerLiz1BeatenText:
-	ctxt "Oh! I've got to"
+	text "Oh! I've got to"
 	line "relieve my anger!"
 	done
 
 PicnickerLiz1AfterText:
-	ctxt "I was having a"
+	text "I was having a"
 	line "nice chat too."
 	done
 
 Bird_keeperPeterSeenText:
-	ctxt "That Badge! It's"
+	text "That Badge! It's"
 	line "from Violet City!"
 
 	para "You beat Falkner?"
 	done
 
 Bird_keeperPeterBeatenText:
-	ctxt "I know what my"
+	text "I know what my"
 	line "weaknesses are."
 	done
 
-Text_RoarIntro: ; ctxt > text
+Text_RoarIntro: ; text > text
 	text "WROOOOAR!"
 	line "PEOPLE RUN WHEN I"
 
@@ -910,7 +910,7 @@ Text_RoarIntro: ; ctxt > text
 	line "NOW TAKE THIS!"
 	done
 
-Text_RoarOutro: ; ctxt > text
+Text_RoarOutro: ; text > text
 	text "WROOOAR!"
 	line "IT'S ROAR!"
 
@@ -919,7 +919,7 @@ Text_RoarOutro: ; ctxt > text
 	done
 
 MeetFriedaText:
-	ctxt "Frieda: Yahoo!"
+	text "Frieda: Yahoo!"
 	line "It's Friday!"
 
 	para "I'm Frieda of"
@@ -929,12 +929,12 @@ MeetFriedaText:
 	done
 
 FriedaGivesGiftText:
-	ctxt "Here's a Poison"
+	text "Here's a Poison"
 	line "Barb for you!"
 	done
 
 FriedaGaveGiftText:
-	ctxt "Frieda: Give it to"
+	text "Frieda: Give it to"
 	line "a #mon that has"
 	cont "Poison-type moves."
 
@@ -948,7 +948,7 @@ FriedaGaveGiftText:
 	done
 
 FriedaFridayText:
-	ctxt "Frieda: Hiya! What"
+	text "Frieda: Hiya! What"
 	line "day do you like?"
 
 	para "I love Friday. No"
@@ -959,7 +959,7 @@ FriedaFridayText:
 	done
 
 FriedaNotFridayText:
-	ctxt "Frieda: Isn't it"
+	text "Frieda: Isn't it"
 	line "Friday today?"
 
 	para "It's so boring"
@@ -967,18 +967,18 @@ FriedaNotFridayText:
 	done
 
 Route32SignText:
-	ctxt "Route 32"
+	text "Route 32"
 
 	para "Violet City -"
 	line "Azalea Town"
 	done
 
 Route32RuinsSignText:
-	ctxt "Ruins of Alph"
+	text "Ruins of Alph"
 	line "East Entrance"
 	done
 
 Route32UnionCaveSignText:
-	ctxt "Union Cave"
+	text "Union Cave"
 	line "Ahead"
 	done

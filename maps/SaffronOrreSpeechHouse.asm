@@ -16,7 +16,7 @@ SaffronOrreSpeechHouse_MapScriptHeader:
 	object_event  5,  4, SPRITE_COOL_DUDE, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, SaffronOrreSpeechHouseCooltrainerMText, -1
 
 SaffronOrreSpeechHouseSilphEmployeeText:
-	ctxt "I heard about a"
+	text "I heard about a"
 	line "method to seal off"
 	cont "a #mon's heart"
 
@@ -29,7 +29,7 @@ SaffronOrreSpeechHouseSilphEmployeeText:
 	done
 
 SaffronOrreSpeechHouseCooltrainerMText:
-	ctxt "We just got back"
+	text "We just got back"
 	line "from seeing a"
 
 	para "friend in another"

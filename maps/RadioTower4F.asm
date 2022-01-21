@@ -36,7 +36,7 @@ RadioTower4FDJMaryScript:
 	iftrue .ClearedRockets
 	jumpthisopenedtext
 
-	ctxt "Mary: Why? Why do"
+	text "Mary: Why? Why do"
 	line "I have to suffer"
 	cont "through this?"
 
@@ -51,7 +51,7 @@ RadioTower4FDJMaryScript:
 	setevent EVENT_GOT_PINK_BOW_FROM_MARY
 	jumpthisopenedtext
 
-	ctxt "Mary: It's just"
+	text "Mary: It's just"
 	line "right for #mon"
 
 	para "that know Fairy-"
@@ -61,14 +61,14 @@ RadioTower4FDJMaryScript:
 GenericTrainerGruntM10:
 	generictrainer GRUNTM, 10, EVENT_BEAT_ROCKET_GRUNTM_10, GruntM10SeenText, GruntM10BeatenText
 
-	ctxt "I don't believe"
+	text "I don't believe"
 	line "it! I was beaten!"
 	done
 
 GenericTrainerProton1:
 	generictrainer PROTON, PROTON1, EVENT_BEAT_PROTON_1, Proton1SeenText, Proton1BeatenText
 
-	ctxt "You've earned my"
+	text "You've earned my"
 	line "respect, so here's"
 	cont "some advice."
 
@@ -80,7 +80,7 @@ GenericTrainerProton1:
 GenericTrainerGruntF4:
 	generictrainer GRUNTF, 4, EVENT_BEAT_ROCKET_GRUNTF_4, GruntF4SeenText, GruntF4BeatenText
 
-	ctxt "I love my"
+	text "I love my"
 	line "beautiful self!"
 
 	para "Who cares about"
@@ -90,13 +90,13 @@ GenericTrainerGruntF4:
 GenericTrainerRocketScientistRich:
 	generictrainer ROCKET_SCIENTIST, RICH, EVENT_BEAT_ROCKET_SCIENTIST_RICH, RocketScientistRichSeenText, RocketScientistRichBeatenText
 
-	ctxt "Do you honestly"
+	text "Do you honestly"
 	line "believe you can"
 	cont "stop Team Rocket?"
 	done
 
 RadioTower4FFisherText:
-	ctxt "I listened to the"
+	text "I listened to the"
 	line "radio while I was"
 	cont "at the ruins."
 
@@ -105,7 +105,7 @@ RadioTower4FFisherText:
 	done
 
 RadioTower4FDJMaryText_ClearedRockets:
-	ctxt "Mary: Oh! You're"
+	text "Mary: Oh! You're"
 	line "my little savior!"
 
 	para "Will you take this"
@@ -113,7 +113,7 @@ RadioTower4FDJMaryText_ClearedRockets:
 	done
 
 RadioTower4FDJMaryText_After:
-	ctxt "Mary: Please tune"
+	text "Mary: Please tune"
 	line "into me on Prof."
 
 	para "Oak's #mon Talk"
@@ -121,11 +121,11 @@ RadioTower4FDJMaryText_After:
 	done
 
 RadioTowerMeowthText:
-	ctxt "Meowth: Meowth…"
+	text "Meowth: Meowth…"
 	done
 
 GruntM10SeenText:
-	ctxt "You plan to rescue"
+	text "You plan to rescue"
 	line "the Director?"
 
 	para "That won't be pos-"
@@ -134,11 +134,11 @@ GruntM10SeenText:
 	done
 
 GruntM10BeatenText:
-	ctxt "No! Unbelievable!"
+	text "No! Unbelievable!"
 	done
 
 Proton1SeenText:
-	ctxt "Stop! I'm known as"
+	text "Stop! I'm known as"
 	line "the Team Rocket"
 	cont "fortress!"
 
@@ -147,12 +147,12 @@ Proton1SeenText:
 	done
 
 Proton1BeatenText:
-	ctxt "The fortress came"
+	text "The fortress came"
 	line "down!"
 	done
 
 GruntF4SeenText:
-	ctxt "Don't I think"
+	text "Don't I think"
 	line "#mon are cute?"
 
 	para "I'll think my"
@@ -163,12 +163,12 @@ GruntF4SeenText:
 	done
 
 GruntF4BeatenText:
-	ctxt "Oh, no! They're so"
+	text "Oh, no! They're so"
 	line "useless!"
 	done
 
 RocketScientistRichSeenText:
-	ctxt "Most excellent."
+	text "Most excellent."
 
 	para "This Radio Tower"
 	line "will fulfill our"
@@ -176,16 +176,16 @@ RocketScientistRichSeenText:
 	done
 
 RocketScientistRichBeatenText:
-	ctxt "Hmmm…"
+	text "Hmmm…"
 
 	para "All grand plans"
 	line "come with snags."
 	done
 
 RadioTower4FProductionSignText:
-	ctxt "4F Production"
+	text "4F Production"
 	done
 
 RadioTower4FStudio2SignText:
-	ctxt "4F Studio 2"
+	text "4F Studio 2"
 	done

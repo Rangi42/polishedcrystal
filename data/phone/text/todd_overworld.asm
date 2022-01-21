@@ -1,5 +1,5 @@
 ToddAskNumber1Text:
-	ctxt "From here, I can"
+	text "From here, I can"
 	line "see Goldenrod's"
 
 	para "Dept.Store. They"
@@ -16,7 +16,7 @@ ToddAskNumber1Text:
 	done
 
 ToddAskNumber2Text:
-	ctxt "If you give me"
+	text "If you give me"
 	line "your number, I'll"
 
 	para "call you when they"
@@ -24,7 +24,7 @@ ToddAskNumber2Text:
 	done
 
 ToddNumberAcceptedText:
-	ctxt "I check Goldenrod"
+	text "I check Goldenrod"
 	line "Dept.Store every"
 
 	para "day, so I know"
@@ -33,7 +33,7 @@ ToddNumberAcceptedText:
 	done
 
 ToddNumberDeclinedText:
-	ctxt "Anyway…"
+	text "Anyway…"
 
 	para "If you're short on"
 	line "money, take down"
@@ -44,13 +44,13 @@ ToddNumberDeclinedText:
 	done
 
 ToddPhoneFullText:
-	ctxt "Your phone doesn't"
+	text "Your phone doesn't"
 	line "have enough memory"
 	cont "for more numbers."
 	done
 
 ToddRematchText:
-	ctxt "I waited for you!"
+	text "I waited for you!"
 	line "I even cut back my"
 
 	para "shopping to raise"

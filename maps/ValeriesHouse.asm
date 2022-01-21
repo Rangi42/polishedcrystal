@@ -88,7 +88,7 @@ SetupFairyBookScript:
 	endcallback
 
 ValeriesHouseValerieText:
-	ctxt "Valerie: My"
+	text "Valerie: My"
 	line "fashion designs"
 
 	para "are said to be"
@@ -121,7 +121,7 @@ ValeriesHouseValerieText:
 	done
 
 ValeriesHouseRedFairyBookText:
-	ctxt "It's a book of"
+	text "It's a book of"
 	line "fairy tales."
 
 	para "A girl with very"
@@ -130,7 +130,7 @@ ValeriesHouseRedFairyBookText:
 	done
 
 ValeriesHouseBlueFairyBookText:
-	ctxt "It's a book of"
+	text "It's a book of"
 	line "fairy tales."
 
 	para "A beautiful girl"
@@ -139,7 +139,7 @@ ValeriesHouseBlueFairyBookText:
 	done
 
 ValeriesHouseGreenFairyBookText:
-	ctxt "It's a book of"
+	text "It's a book of"
 	line "fairy tales."
 
 	para "A talking fish"
@@ -148,7 +148,7 @@ ValeriesHouseGreenFairyBookText:
 	done
 
 ValeriesHouseBrownFairyBookText:
-	ctxt "It's a book of"
+	text "It's a book of"
 	line "fairy tales."
 
 	para "A peasant's house"
@@ -157,7 +157,7 @@ ValeriesHouseBrownFairyBookText:
 	done
 
 ValeriesHouseVioletFairyBookText:
-	ctxt "It's a book of"
+	text "It's a book of"
 	line "fairy tales."
 
 	para "A dog digs in the"
@@ -166,7 +166,7 @@ ValeriesHouseVioletFairyBookText:
 	done
 
 ValeriesHousePinkFairyBookText:
-	ctxt "It's a book of"
+	text "It's a book of"
 	line "fairy tales."
 
 	para "A man is being"
@@ -175,7 +175,7 @@ ValeriesHousePinkFairyBookText:
 	done
 
 ValeriesHouseYellowFairyBookText:
-	ctxt "It's a book of"
+	text "It's a book of"
 	line "fairy tales."
 
 	para "A golden apple"

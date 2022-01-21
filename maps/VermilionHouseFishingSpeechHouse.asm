@@ -16,7 +16,7 @@ VermilionHouseFishingSpeechHouse_MapScriptHeader:
 	object_event  2,  4, SPRITE_FISHING_GURU, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_COMMAND, jumptextfaceplayer, FishingDudeText, -1
 
 FishingDudeText:
-	ctxt "I am the Fishing"
+	text "I am the Fishing"
 	line "Dude, the elder of"
 	cont "the Fishing Bros."
 
@@ -40,7 +40,7 @@ FishingDudeText:
 	done
 
 FishingDudesHousePhotoText:
-	ctxt "It's a photo of"
+	text "It's a photo of"
 	line "people fishing…"
 
 	para "They're having a"

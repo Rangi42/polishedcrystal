@@ -26,7 +26,7 @@ FuchsiaSafariBallHouseOfficerScript:
 	ifequal $2, .Buy10
 	jumpthisopenedtext ; cancel
 
-	ctxt "What will I do"
+	text "What will I do"
 	line "with them all?"
 	done
 
@@ -57,12 +57,12 @@ FuchsiaSafariBallHouseOfficerScript:
 .NotEnoughMoney:
 	jumpthisopenedtext
 
-	ctxt "You don't have"
+	text "You don't have"
 	line "enough money."
 	done
 
 .IntroText:
-	ctxt "I used to manage"
+	text "I used to manage"
 	line "the Safari Game."
 
 	para "Now that it's"
@@ -80,11 +80,11 @@ FuchsiaSafariBallHouseOfficerScript:
 	done
 
 .GoodbyeText:
-	ctxt "Thanks, pal!"
+	text "Thanks, pal!"
 	done
 
 .BagFullText:
-	ctxt "You can't carry"
+	text "You can't carry"
 	line "them!"
 	done
 

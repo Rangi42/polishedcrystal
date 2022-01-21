@@ -48,7 +48,7 @@ FuchsiaCityFlyPoint:
 	endcallback
 
 FuchsiaCityYoungsterText:
-	ctxt "One of the Elite"
+	text "One of the Elite"
 	line "Four used to be"
 
 	para "the Leader of"
@@ -56,7 +56,7 @@ FuchsiaCityYoungsterText:
 	done
 
 FuchsiaCityPokefanMText:
-	ctxt "Koga's daughter"
+	text "Koga's daughter"
 	line "succeeded him as"
 
 	para "the Gym Leader"
@@ -65,7 +65,7 @@ FuchsiaCityPokefanMText:
 	done
 
 FuchsiaCityTeacherText:
-	ctxt "The Safari Game is"
+	text "The Safari Game is"
 	line "canceled…"
 
 	para "At least the"
@@ -80,7 +80,7 @@ FuchsiaCityTeacherText:
 	done
 
 FuchsiaCityPokefanFText:
-	ctxt "When the Safari"
+	text "When the Safari"
 	line "Zone Warden left,"
 
 	para "there was nobody"
@@ -93,14 +93,14 @@ FuchsiaCityPokefanFText:
 	done
 
 FuchsiaCitySignText:
-	ctxt "Fuchsia City"
+	text "Fuchsia City"
 
 	para "Behold! It's"
 	line "Passion Pink!"
 	done
 
 FuchsiaGymSignText:
-	ctxt "Fuchsia City"
+	text "Fuchsia City"
 	line "#mon Gym"
 	cont "Leader: Janine"
 
@@ -109,7 +109,7 @@ FuchsiaGymSignText:
 	done
 
 SafariZoneOfficeSignText:
-	ctxt "There's a notice"
+	text "There's a notice"
 	line "here…"
 
 	para "Safari Zone Office"
@@ -118,16 +118,16 @@ SafariZoneOfficeSignText:
 	done
 
 SafariZoneOfficeClosedSignText:
-	ctxt "It's locked…"
+	text "It's locked…"
 	done
 
 WardensHomeSignText:
-	ctxt "Safari Zone"
+	text "Safari Zone"
 	line "Warden's Home"
 	done
 
 SafariZoneClosedSignText:
-	ctxt "The Warden is"
+	text "The Warden is"
 	line "traveling abroad."
 
 	para "Therefore, the"
@@ -136,26 +136,26 @@ SafariZoneClosedSignText:
 	done
 
 NoLitteringSignText:
-	ctxt "No littering."
+	text "No littering."
 
 	para "Please take your"
 	line "waste with you."
 	done
 
 SafariZoneExhibitSignText:
-	ctxt "The sign has been"
+	text "The sign has been"
 	line "torn away…"
 	done
 
 HouseForSaleSignText:
-	ctxt "What's this?"
+	text "What's this?"
 
 	para "House for Sale…"
 	line "Nobody lives here."
 	done
 
 FuchsiaCityCarefulSwimmingSignText:
-	ctxt "Please be careful"
+	text "Please be careful"
 	line "if you are swim-"
 	cont "ming to Seafoam"
 	cont "Islands."

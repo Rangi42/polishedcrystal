@@ -57,7 +57,7 @@ QuietCaveB3FMarleyScript:
 	end
 
 .ChallengeText:
-	ctxt "…I'm Marley."
+	text "…I'm Marley."
 	line "…You are?"
 
 	para "Oh… <PLAYER>,"
@@ -66,20 +66,20 @@ QuietCaveB3FMarleyScript:
 	done
 
 .YesText:
-	ctxt "…OK. I'll do my"
+	text "…OK. I'll do my"
 	line "best."
 	done
 
 .NoText:
-	ctxt "…Too bad…"
+	text "…Too bad…"
 	done
 
 .BeatenText:
-	ctxt "…Awww."
+	text "…Awww."
 	done
 
 .ItemText:
-	ctxt "I… I don't like to"
+	text "I… I don't like to"
 	line "talk…"
 
 	para "I choose my words"
@@ -95,7 +95,7 @@ QuietCaveB3FMarleyScript:
 	done
 
 .GoodbyeText:
-	ctxt "…I appreciate your"
+	text "…I appreciate your"
 	line "battling with me…"
 	cont "…Just a little…"
 

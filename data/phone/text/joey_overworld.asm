@@ -1,5 +1,5 @@
 JoeyAskNumber1Text:
-	ctxt "Listen, can I get"
+	text "Listen, can I get"
 	line "your phone number?"
 
 	para "I'll ring you for"
@@ -11,7 +11,7 @@ JoeyAskNumber1Text:
 	done
 
 JoeyAskNumber2Text:
-	ctxt "Can I get your"
+	text "Can I get your"
 	line "phone number?"
 
 	para "I don't want to"
@@ -22,25 +22,25 @@ JoeyAskNumber2Text:
 	done
 
 JoeyNumberAcceptedText:
-	ctxt "I'll ring you"
+	text "I'll ring you"
 	line "whenever I get the"
 	cont "urge to battle!"
 	done
 
 JoeyNumberDeclinedText:
-	ctxt "Oh, all right…"
+	text "Oh, all right…"
 
 	para "But I won't lose"
 	line "to you again!"
 	done
 
 JoeyPhoneFullText:
-	ctxt "Huh, what? Your"
+	text "Huh, what? Your"
 	line "phone's full."
 	done
 
 JoeyTopPercentageText:
-	ctxt "Hey, do you remem-"
+	text "Hey, do you remem-"
 	line "ber my super cool"
 	cont ""
 	text_ram wStringBuffer4
@@ -48,29 +48,29 @@ JoeyTopPercentageText:
 
 	para "My "
 	text_ram wStringBuffer4
-	ctxt " is"
+	text " is"
 	line "different from"
 	cont "regular "
 	text_ram wStringBuffer4
-	ctxt "."
+	text "."
 
 	para "It's in the top"
 	line "percentage of"
 	cont ""
 	text_ram wStringBuffer4
-	ctxt "."
+	text "."
 
 	para "Do you know what"
 	line "I'm saying?"
 	done
 
 JoeyRematchText:
-	ctxt "I've been waiting!"
+	text "I've been waiting!"
 	line "Let's battle now!"
 	done
 
 JoeyPackFullText:
-	ctxt "Hey, wait! Your"
+	text "Hey, wait! Your"
 	line "Bag is stuffed!"
 
 	para "Well, we'll leave"
@@ -78,7 +78,7 @@ JoeyPackFullText:
 	done
 
 JoeyRematchGiftText:
-	ctxt "And yet another"
+	text "And yet another"
 	line "loss…"
 
 	para "No doubt about"

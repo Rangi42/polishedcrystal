@@ -35,7 +35,7 @@ LyrasDadScript:
 	jumpopenedtext LyrasDadTrainingText
 
 LyrasDadInsideText:
-	ctxt "Hi, <PLAYER>!"
+	text "Hi, <PLAYER>!"
 	line "Lyra is upstairs."
 
 	para "She's playing"
@@ -44,7 +44,7 @@ LyrasDadInsideText:
 	done
 
 LyrasDadHelpingText:
-	ctxt "Hi, <PLAYER>!"
+	text "Hi, <PLAYER>!"
 	line "Lyra isn't here."
 
 	para "She's been busy"
@@ -53,7 +53,7 @@ LyrasDadHelpingText:
 	done
 
 LyrasDadTrainingText:
-	ctxt "Hi, <PLAYER>!"
+	text "Hi, <PLAYER>!"
 	line "Lyra isn't here."
 
 	para "She's collecting"
@@ -64,7 +64,7 @@ LyrasDadTrainingText:
 LyrasFridgeScript:
 	jumpthistext
 
-	ctxt "Let's see what's"
+	text "Let's see what's"
 	line "in the fridge…"
 
 	para "Fresh Water and"
@@ -72,19 +72,19 @@ LyrasFridgeScript:
 	done
 
 LyrasSinkText:
-	ctxt "The sink is spot-"
+	text "The sink is spot-"
 	line "less."
 	done
 
 LyrasStoveText:
-	ctxt "Curry is simmering"
+	text "Curry is simmering"
 	line "on the stove."
 	done
 
 LyrasTVScript:
 	jumpthistext
 
-	ctxt "There's a movie on"
+	text "There's a movie on"
 	line "TV: A girl with"
 
 	para "her hair in pig-"

@@ -131,7 +131,7 @@ CeruleanCapeDateInterruptedTrigger3:
 GenericTrainerSwimmermRomeo:
 	generictrainer SWIMMERM, ROMEO, EVENT_BEAT_SWIMMERM_ROMEO, .SeenText, .BeatenText
 
-	ctxt "Being a good"
+	text "Being a good"
 	line "Swimmer doesn't"
 
 	para "make me a good"
@@ -139,19 +139,19 @@ GenericTrainerSwimmermRomeo:
 	done
 
 .SeenText:
-	ctxt "Admire my fitness!"
+	text "Admire my fitness!"
 	line "My victory is"
 	cont "assured!"
 	done
 
 .BeatenText:
-	ctxt "Oh! That's it?"
+	text "Oh! That's it?"
 	done
 
 GenericTrainerSwimmermMalcolm:
 	generictrainer SWIMMERM, MALCOLM, EVENT_BEAT_SWIMMERM_MALCOLM, .SeenText, .BeatenText
 
-	ctxt "Don't tell me,"
+	text "Don't tell me,"
 	line "you visit lots of"
 
 	para "#mon Gyms,"
@@ -159,7 +159,7 @@ GenericTrainerSwimmermMalcolm:
 	done
 
 .SeenText:
-	ctxt "My #mon and I"
+	text "My #mon and I"
 	line "swim together,"
 
 	para "but we also"
@@ -167,14 +167,14 @@ GenericTrainerSwimmermMalcolm:
 	done
 
 .BeatenText:
-	ctxt "I wish I were as"
+	text "I wish I were as"
 	line "strong as you."
 	done
 
 GenericTrainerSwimmermArmand:
 	generictrainer SWIMMERM, ARMAND, EVENT_BEAT_SWIMMERM_ARMAND, .SeenText, .BeatenText
 
-	ctxt "That gal on the"
+	text "That gal on the"
 	line "shore… Her music"
 	cont "is good, but she's"
 
@@ -183,7 +183,7 @@ GenericTrainerSwimmermArmand:
 	done
 
 .SeenText:
-	ctxt "Ugh. Would that"
+	text "Ugh. Would that"
 	line "Guitarist on the"
 
 	para "shore keep it"
@@ -191,32 +191,32 @@ GenericTrainerSwimmermArmand:
 	done
 
 .BeatenText:
-	ctxt "The guitar put me"
+	text "The guitar put me"
 	line "off my stride!"
 	done
 
 GenericTrainerBeautyBridget:
 	generictrainer BEAUTY, BRIDGET, EVENT_BEAT_BEAUTY_BRIDGET, .SeenText, .BeatenText
 
-	ctxt "I think the view"
+	text "I think the view"
 	line "here is beautiful."
 	cont "Don't you agree?"
 	done
 
 .SeenText:
-	ctxt "Hey! You're block-"
+	text "Hey! You're block-"
 	line "ing my view!"
 	done
 
 .BeatenText:
-	ctxt "I was just trying"
+	text "I was just trying"
 	line "to enjoy the view…"
 	done
 
 GenericTrainerBeautyVeronica:
 	generictrainer BEAUTY, VERONICA, EVENT_BEAT_BEAUTY_VERONICA, .SeenText, .BeatenText
 
-	ctxt "Treat me mean and"
+	text "Treat me mean and"
 	line "I'll tell you where"
 	cont "to go!"
 
@@ -225,7 +225,7 @@ GenericTrainerBeautyVeronica:
 	done
 
 .SeenText:
-	ctxt "I don't date much,"
+	text "I don't date much,"
 	line "but when I do,"
 
 	para "Cerulean Cape is"
@@ -233,7 +233,7 @@ GenericTrainerBeautyVeronica:
 	done
 
 .BeatenText:
-	ctxt "Treat 'em mean,"
+	text "Treat 'em mean,"
 	line "keep 'em keen,"
 	cont "right?"
 	done
@@ -241,7 +241,7 @@ GenericTrainerBeautyVeronica:
 GenericTrainerGentlemanCamus:
 	generictrainer GENTLEMAN, CAMUS, EVENT_BEAT_GENTLEMAN_CAMUS, .SeenText, .BeatenText
 
-	ctxt "I was once a ta-"
+	text "I was once a ta-"
 	line "lented trainer,"
 
 	para "but now I'm just an"
@@ -252,20 +252,20 @@ GenericTrainerGentlemanCamus:
 	done
 
 .SeenText:
-	ctxt "Seeing you reminds"
+	text "Seeing you reminds"
 	line "me of my own wild"
 	cont "youth."
 	done
 
 .BeatenText:
-	ctxt "What a wild"
+	text "What a wild"
 	line "battle!"
 	done
 
 GenericTrainerGentlemanGeoffrey:
 	generictrainer GENTLEMAN, GEOFFREY, EVENT_BEAT_GENTLEMAN_GEOFFREY, .SeenText, .BeatenText
 
-	ctxt "Sometimes a change"
+	text "Sometimes a change"
 	line "is as good as a"
 	cont "rest."
 
@@ -274,32 +274,32 @@ GenericTrainerGentlemanGeoffrey:
 	done
 
 .SeenText:
-	ctxt "I wanted a change,"
+	text "I wanted a change,"
 	line "so I got into"
 	cont "#mon!"
 	done
 
 .BeatenText:
-	ctxt "Despite my age, I'm"
+	text "Despite my age, I'm"
 	line "still a beginner."
 	done
 
 GenericTrainerGuitaristfMorgan:
 	generictrainer GUITARISTF, MORGAN, EVENT_BEAT_GUITARISTF_MORGAN, .SeenText, .BeatenText
 
-	ctxt "The echoing cliffs"
+	text "The echoing cliffs"
 	line "make the Cape a"
 	cont "perfect sound-"
 	cont "board!"
 	done
 
 .SeenText:
-	ctxt "Listen to that"
+	text "Listen to that"
 	line "reverb!"
 	done
 
 .BeatenText:
-	ctxt "What a rockin'"
+	text "What a rockin'"
 	line "battle!"
 	done
 
@@ -321,25 +321,25 @@ TrainerLadyJessica:
 	waitendtext
 
 .SeenText:
-	ctxt "Ah! You there!"
+	text "Ah! You there!"
 	line "Care to battle"
 	cont "with me?"
 	done
 
 .BeatenText:
-	ctxt "Oh no! I got my"
+	text "Oh no! I got my"
 	line "dress all wet!"
 	done
 
 .AfterText1:
-	ctxt "I'll have to buy a"
+	text "I'll have to buy a"
 	line "better #mon…"
 	cont "………………"
 	cont "And a new dress…"
 	done
 
 .AfterText2:
-	ctxt "Why are you still"
+	text "Why are you still"
 	line "here?"
 
 	para "Stop staring at"
@@ -351,7 +351,7 @@ TrainerLadyJessica:
 GenericTrainerFisherLeroy:
 	generictrainer FISHER, LEROY, EVENT_BEAT_FISHER_LEROY, .SeenText, .BeatenText
 
-	ctxt "All I ever catch"
+	text "All I ever catch"
 	line "are Magikarp…"
 
 	para "At least they all"
@@ -359,7 +359,7 @@ GenericTrainerFisherLeroy:
 	done
 
 .SeenText:
-	ctxt "I keep catching"
+	text "I keep catching"
 	line "the same #mon…"
 
 	para "Maybe a battle"
@@ -368,7 +368,7 @@ GenericTrainerFisherLeroy:
 	done
 
 .BeatenText:
-	ctxt "Nothing ever goes"
+	text "Nothing ever goes"
 	line "right for me now…"
 	done
 
@@ -406,7 +406,7 @@ Route25MistyLeavesMovement:
 	step_end
 
 Route25MistyDateText:
-	ctxt "Misty: Aww! Why"
+	text "Misty: Aww! Why"
 	line "did you have to"
 
 	para "show up and bug us"
@@ -440,6 +440,6 @@ Route25MistyDateText:
 	done
 
 BillsHouseSignText:
-	ctxt "Sea Cottage"
+	text "Sea Cottage"
 	line "Bill's House"
 	done

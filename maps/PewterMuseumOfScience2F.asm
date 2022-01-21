@@ -63,7 +63,7 @@ Museum2FMoonStoneSignpostScript:
 	jumptext Museum2FMoonStoneSignpostText
 
 Museum2FScientistText:
-	ctxt "Meteorites struck"
+	text "Meteorites struck"
 	line "Mt.Moon near"
 	cont "Pewter City."
 
@@ -76,7 +76,7 @@ Museum2FScientistText:
 
 
 Museum2FLassText:
-	ctxt "#mon revived"
+	text "#mon revived"
 	line "from fossils are"
 
 	para "all part Rock-"
@@ -91,7 +91,7 @@ Museum2FLassText:
 	done
 
 Museum2FPokefanMImperialText:
-	ctxt "This space shuttle"
+	text "This space shuttle"
 	line "used to fly 160"
 
 	para "miles above the"
@@ -106,7 +106,7 @@ Museum2FPokefanMImperialText:
 	done
 
 Museum2FChildText:
-	ctxt "Stuff and rocks"
+	text "Stuff and rocks"
 	line "and rocks and"
 
 	para "stuff. Can we go"
@@ -114,7 +114,7 @@ Museum2FChildText:
 	done
 
 Museum2FTeacherText:
-	ctxt "Sigh… My son isn't"
+	text "Sigh… My son isn't"
 	line "enjoying the mu-"
 
 	para "seum as much as I"
@@ -124,7 +124,7 @@ Museum2FTeacherText:
 	done
 
 Museum2FPokefanMMetricText:
-	ctxt "This space shuttle"
+	text "This space shuttle"
 	line "used to fly 250"
 
 	para "kilometers above"
@@ -139,7 +139,7 @@ Museum2FPokefanMMetricText:
 	done
 
 Text_Museum2FTutorSeismicToss:
-	ctxt "I can teach your"
+	text "I can teach your"
 	line "#mon to use"
 
 	para "Seismic Toss for"
@@ -147,32 +147,32 @@ Text_Museum2FTutorSeismicToss:
 	done
 
 Text_Museum2FTutorNoSilverLeaf:
-	ctxt "You don't have a"
+	text "You don't have a"
 	line "Silver Leaf!"
 	done
 
 Text_Museum2FTutorQuestion:
-	ctxt "Should I teach"
+	text "Should I teach"
 	line "your #mon"
 	cont "Seismic Toss?"
 	done
 
 Text_Museum2FTutorRefused:
-	ctxt "If you say so."
+	text "If you say so."
 	done
 
 Text_Museum2FTutorTaught:
-	ctxt "Now your #mon"
+	text "Now your #mon"
 	line "knows how to use"
 	cont "Seismic Toss!"
 	done
 
 Museum2FMoonStoneSignpostText:
-	ctxt "Meteorite that"
+	text "Meteorite that"
 	line "fell on Mt.Moon."
 	cont "(Moon Stone)"
 	done
 
 Museum2FSpaceShuttleSignpostText:
-	ctxt "Space Shuttle"
+	text "Space Shuttle"
 	done

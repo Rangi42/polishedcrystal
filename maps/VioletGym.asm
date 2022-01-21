@@ -74,7 +74,7 @@ VioletGymFalknerScript:
 GenericTrainerBird_keeperRod:
 	generictrainer BIRD_KEEPER, ROD, EVENT_BEAT_BIRD_KEEPER_ROD, Bird_keeperRodSeenText, Bird_keeperRodBeatenText
 
-	ctxt "Falkner's skills"
+	text "Falkner's skills"
 	line "are for real!"
 
 	para "Don't get cocky"
@@ -85,7 +85,7 @@ GenericTrainerBird_keeperRod:
 GenericTrainerBird_keeperAbe:
 	generictrainer BIRD_KEEPER, ABE, EVENT_BEAT_BIRD_KEEPER_ABE, Bird_keeperAbeSeenText, Bird_keeperAbeBeatenText
 
-	ctxt "This is pathetic,"
+	text "This is pathetic,"
 	line "losing to some"
 	cont "rookie trainer…"
 	done
@@ -108,7 +108,7 @@ VioletGymStatue:
 	jumpstd gymstatue3
 
 FalknerIntroText:
-	ctxt "I'm Falkner, the"
+	text "I'm Falkner, the"
 	line "Violet #mon Gym"
 	cont "Leader!"
 
@@ -131,7 +131,7 @@ FalknerIntroText:
 	done
 
 FalknerWinLossText:
-	ctxt "…Darn! My dad's"
+	text "…Darn! My dad's"
 	line "cherished bird"
 	cont "#mon…"
 
@@ -144,12 +144,12 @@ FalknerWinLossText:
 	done
 
 ReceivedZephyrBadgeText:
-	ctxt "<PLAYER> received"
+	text "<PLAYER> received"
 	line "the Zephyr Badge."
 	done
 
 FalknerZephyrBadgeText:
-	ctxt "The Zephyr Badge"
+	text "The Zephyr Badge"
 	line "enables you to"
 
 	para "command #mon,"
@@ -161,7 +161,7 @@ FalknerZephyrBadgeText:
 	done
 
 FalknerTMMudSlapText:
-	ctxt "By using a TM, a"
+	text "By using a TM, a"
 	line "#mon will"
 
 	para "instantly learn a"
@@ -180,7 +180,7 @@ FalknerTMMudSlapText:
 	done
 
 FalknerFightDoneText:
-	ctxt "There are #mon"
+	text "There are #mon"
 	line "Gyms in cities and"
 	cont "towns ahead."
 
@@ -196,7 +196,7 @@ FalknerFightDoneText:
 	done
 
 Bird_keeperRodSeenText:
-	ctxt "The keyword is"
+	text "The keyword is"
 	line "guts!"
 
 	para "Those here are"
@@ -209,22 +209,22 @@ Bird_keeperRodSeenText:
 	done
 
 Bird_keeperRodBeatenText:
-	ctxt "Gaaah!"
+	text "Gaaah!"
 	done
 
 Bird_keeperAbeSeenText:
-	ctxt "Let me see if you"
+	text "Let me see if you"
 	line "are good enough to"
 	cont "face Falkner!"
 	done
 
 Bird_keeperAbeBeatenText:
-	ctxt "This can't be"
+	text "This can't be"
 	line "true!"
 	done
 
 VioletGymGuyText:
-	ctxt "Hey! I'm no train-"
+	text "Hey! I'm no train-"
 	line "er but I can give"
 	cont "some advice!"
 
@@ -245,7 +245,7 @@ VioletGymGuyText:
 	done
 
 VioletGymGuyWinText:
-	ctxt "Nice battle! Keep"
+	text "Nice battle! Keep"
 	line "it up, and you'll"
 
 	para "be the Champ in no"
@@ -253,7 +253,7 @@ VioletGymGuyWinText:
 	done
 
 VioletGymGuyFalknerAwayText:
-	ctxt "Hey! You can't"
+	text "Hey! You can't"
 	line "challenge Falkner"
 	cont "right now."
 

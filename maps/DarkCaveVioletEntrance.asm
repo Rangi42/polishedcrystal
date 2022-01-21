@@ -119,28 +119,28 @@ DarkCaveVioletEntranceMovementData_FalknerLeave:
 	step_end
 
 DarkCaveVioletEntranceFalknerAttackText:
-	ctxt "Falkner: Use Wing"
+	text "Falkner: Use Wing"
 	line "Attack, Pidgeotto!"
 	done
 
 DarkCaveVioletEntranceFalknerReturnText:
-	ctxt "Good job,"
+	text "Good job,"
 	line "Pidgeotto."
 	done
 
 DarkCaveVioletEntranceFalknerIntroText:
-	ctxt "Oh! You must be"
+	text "Oh! You must be"
 	line "a trainer."
 	prompt
 
 DarkCaveVioletEntranceFalknerDarkIntroText:
-	ctxt "You must be brave"
+	text "You must be brave"
 	line "to come here in"
 	cont "pitch darkness."
 	prompt
 
 DarkCaveVioletEntranceFalknerExplanationText:
-	ctxt "I'm Falkner, the"
+	text "I'm Falkner, the"
 	line "Violet #mon"
 	cont "Gym Leader."
 
@@ -168,7 +168,7 @@ DarkCaveVioletEntranceFalknerExplanationText:
 	done
 
 DarkCaveVioletEntranceFalknerDarknessText:
-	ctxt "Falkner: Is"
+	text "Falkner: Is"
 	line "someone there?"
 
 	para "Don't come any"
@@ -179,7 +179,7 @@ DarkCaveVioletEntranceFalknerDarknessText:
 	done
 
 DarkCaveVioletEntranceFalknerProgressAnywayText:
-	ctxt "Falkner: Is"
+	text "Falkner: Is"
 	line "someone there?"
 
 	para "It's reckless to"

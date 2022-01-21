@@ -1,5 +1,5 @@
 HueyAskNumber1Text:
-	ctxt "Cool! That's the"
+	text "Cool! That's the"
 	line "first time I've"
 	cont "lost in a while!"
 
@@ -14,7 +14,7 @@ HueyAskNumber1Text:
 	done
 
 HueyAskNumber2Text:
-	ctxt "Hey, give me your"
+	text "Hey, give me your"
 	line "phone number."
 
 	para "You'd be fun to"
@@ -25,33 +25,33 @@ HueyAskNumber2Text:
 	done
 
 HueyNumberAcceptedText:
-	ctxt "Hey, let's battle"
+	text "Hey, let's battle"
 	line "again!"
 	done
 
 HueyNumberDeclinedText:
-	ctxt "Looks like you're"
+	text "Looks like you're"
 	line "a wimp…"
 	done
 
 HueyPhoneFullText:
-	ctxt "Hey! Your phone's"
+	text "Hey! Your phone's"
 	line "already full!"
 	done
 
 HueyRematchText:
-	ctxt "Hey! I'm tired of"
+	text "Hey! I'm tired of"
 	line "waiting for you!"
 	done
 
 HueyPackFullText:
-	ctxt "Oh… Your Bag's"
+	text "Oh… Your Bag's"
 	line "full. I'll give it"
 	cont "to you later."
 	done
 
 HueyRematchGiftText:
-	ctxt "Man! You're as"
+	text "Man! You're as"
 	line "tough as ever!"
 
 	para "I've battled you"

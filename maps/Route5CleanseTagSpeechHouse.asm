@@ -33,7 +33,7 @@ UnknownScript_0x18b64d:
 	endtext
 
 Route5CleanseTagHouseGrannyText1:
-	ctxt "Eeyaaaah!"
+	text "Eeyaaaah!"
 
 	para "I sense a sinister"
 	line "shadow hovering"
@@ -44,13 +44,13 @@ Route5CleanseTagHouseGrannyText1:
 	done
 
 Route5CleanseTagHouseGrannyText2:
-	ctxt "You were in mortal"
+	text "You were in mortal"
 	line "danger, but you"
 	cont "are protected now."
 	done
 
 Route5CleanseTagHouseTeacherText:
-	ctxt "My grandma is into"
+	text "My grandma is into"
 	line "warding off what"
 
 	para "she believes to be"

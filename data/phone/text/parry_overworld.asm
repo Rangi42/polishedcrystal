@@ -1,5 +1,5 @@
 ParryAskNumber1Text:
-	ctxt "Sheesh, the way"
+	text "Sheesh, the way"
 	line "you attacked! That"
 
 	para "was something! We"
@@ -10,7 +10,7 @@ ParryAskNumber1Text:
 	done
 
 ParryAskNumber2Text:
-	ctxt "So you want to"
+	text "So you want to"
 	line "register my phone"
 
 	para "number for a re-"
@@ -18,13 +18,13 @@ ParryAskNumber2Text:
 	done
 
 ParryNumberAcceptedText:
-	ctxt "I'll call you"
+	text "I'll call you"
 	line "whenever I feel"
 	cont "like battling!"
 	done
 
 ParryNumberDeclinedText:
-	ctxt "No? That's fine."
+	text "No? That's fine."
 
 	para "A definite no is"
 	line "easy to take!"
@@ -35,13 +35,13 @@ ParryNumberDeclinedText:
 	done
 
 ParryPhoneFullText:
-	ctxt "Oh? There's no"
+	text "Oh? There's no"
 	line "room to register"
 	cont "my phone number."
 	done
 
 ParryRematchText:
-	ctxt "Hey, here comes"
+	text "Hey, here comes"
 	line "the kid! Let's go!"
 
 	para "Ready for my usual"
@@ -50,7 +50,7 @@ ParryRematchText:
 	done
 
 ParryPackFullText:
-	ctxt "Your Bag looks"
+	text "Your Bag looks"
 	line "stuffed full!"
 
 	para "You can't have"
@@ -58,7 +58,7 @@ ParryPackFullText:
 	done
 
 ParryRematchGiftText:
-	ctxt "Well, you're"
+	text "Well, you're"
 	line "special all right."
 
 	para "If only I'd begun"

@@ -67,18 +67,18 @@ RuinsOfAlphInnerChamberStrangePresenceScript:
 	end
 
 RuinsOfAlphStrangePresenceText:
-	ctxt "There is a strange"
+	text "There is a strange"
 	line "presence here…"
 	done
 
 RuinsOfAlphInnerChamberFisherText:
-	ctxt "This is a big"
+	text "This is a big"
 	line "room, but there's"
 	cont "nothing here."
 	done
 
 RuinsOfAlphInnerChamberTeacherText:
-	ctxt "This place has a"
+	text "This place has a"
 	line "mystical quality"
 	cont "to it."
 
@@ -87,7 +87,7 @@ RuinsOfAlphInnerChamberTeacherText:
 	done
 
 RuinsOfAlphInnerChamberGrampsText:
-	ctxt "The ruins have not"
+	text "The ruins have not"
 	line "been robbed or"
 	cont "tampered with."
 
@@ -98,7 +98,7 @@ RuinsOfAlphInnerChamberGrampsText:
 	done
 
 RuinsOfAlphInnerChamberScientistText:
-	ctxt "The patterns on"
+	text "The patterns on"
 	line "the wall appear to"
 	cont "be words!"
 

@@ -15,7 +15,7 @@ CeladonHotelRoom3_MapScriptHeader:
 	object_event  2,  2, SPRITE_GRAMPS, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, CeladonHotelRoom3GrampsText, -1
 
 CeladonHotelRoom3GrampsText:
-	ctxt "I've been staying"
+	text "I've been staying"
 	line "at this hotel"
 	cont "every year since"
 	cont "I was a wee lad."

@@ -102,7 +102,7 @@ ProfIvyScript:
 	jumpthisopenedtext
 
 .NoBerryText:
-	ctxt "Ivy: I under-"
+	text "Ivy: I under-"
 	line "stand…"
 
 	para "You don't have"
@@ -111,7 +111,7 @@ ProfIvyScript:
 	done
 
 .RequestText:
-	ctxt "Ivy: Hello again,"
+	text "Ivy: Hello again,"
 	line "<PLAYER>!"
 
 	para "Can I ask you to"
@@ -129,7 +129,7 @@ ProfIvyScript:
 	done
 
 .OkayText:
-	ctxt "Ivy: Perfect!"
+	text "Ivy: Perfect!"
 	line "Thanks, <PLAYER>!"
 
 	para "Let's see if this"
@@ -137,7 +137,7 @@ ProfIvyScript:
 	done
 
 .ThanksText:
-	ctxt "Ivy: Thank you,"
+	text "Ivy: Thank you,"
 	line "<PLAYER>!"
 
 	para "Nidorino looks"
@@ -148,7 +148,7 @@ ProfIvyScript:
 	done
 
 .ChallengeText:
-	ctxt "Ivy: I could use a"
+	text "Ivy: I could use a"
 	line "break from work."
 
 	para "How about a quick"
@@ -156,23 +156,23 @@ ProfIvyScript:
 	done
 
 .NoText:
-	ctxt "Ah well, I'll just"
+	text "Ah well, I'll just"
 	line "keep on with my"
 	cont "research."
 	done
 
 .SeenText:
-	ctxt "Professor versus"
+	text "Professor versus"
 	line "Champion--let's go!"
 	done
 
 .BeatenText:
-	ctxt "No surprises"
+	text "No surprises"
 	line "here!"
 	done
 
 .AfterText:
-	ctxt "Ivy: That was an"
+	text "Ivy: That was an"
 	line "exhilarating"
 	cont "battle!"
 	done
@@ -182,7 +182,7 @@ IvysLabHopeScript:
 	iftrue_jumptextfaceplayer .Text2
 	jumpthistextfaceplayer
 
-	ctxt "Hope: Prof.Ivy"
+	text "Hope: Prof.Ivy"
 	line "takes care of the"
 
 	para "#mon on this"
@@ -194,7 +194,7 @@ IvysLabHopeScript:
 	done
 
 .Text2:
-	ctxt "Hope: Thanks for"
+	text "Hope: Thanks for"
 	line "helping out with"
 	cont "that Nidorino!"
 	done
@@ -209,11 +209,11 @@ IvysLabNidorinoScript:
 	promptbutton
 	jumpthisopenedtext
 
-	ctxt "Its cry is weak…"
+	text "Its cry is weak…"
 	done
 
 .WeakCry:
-	ctxt "Nidorino: Gyun…"
+	text "Nidorino: Gyun…"
 	done
 
 .Healed:
@@ -221,11 +221,11 @@ IvysLabNidorinoScript:
 	end
 
 IvysLabNidorinoText:
-	ctxt "Nidorino: Gyun!"
+	text "Nidorino: Gyun!"
 	done
 
 IvysLabWindowText:
-	ctxt "The window's open."
+	text "The window's open."
 
 	para "An ocean breeze"
 	line "is blowing in."
@@ -249,7 +249,7 @@ IvysLabHealingMachine:
 	endtext
 
 .Text:
-	ctxt "Would you like to"
+	text "Would you like to"
 	line "heal your #mon?"
 	done
 
@@ -257,7 +257,7 @@ PokemonJournalProfIvyScript:
 	setflag ENGINE_READ_PROF_IVY_JOURNAL
 	jumpthistext
 
-	ctxt "#mon Journal"
+	text "#mon Journal"
 
 	para "Special Feature:"
 	line "#mon Prof.Ivy!"

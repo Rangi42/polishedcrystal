@@ -74,7 +74,7 @@ CeladonUniversityClassroom1ImakuniScript:
 	jumpthisopenedtext
 
 .Text6:
-	ctxt "In both battle and"
+	text "In both battle and"
 	line "dance, soul and"
 	cont "rhythm are the"
 	cont "secret."
@@ -87,7 +87,7 @@ CeladonUniversityClassroom1ImakuniScript:
 	done
 
 .Text1:
-	ctxt "Huh? W…Who are"
+	text "Huh? W…Who are"
 	line "you?"
 
 	para "Who? Me? You don't"
@@ -114,7 +114,7 @@ CeladonUniversityClassroom1ImakuniScript:
 	done
 
 .Text2:
-	ctxt "Come on, don't be"
+	text "Come on, don't be"
 	line "cruel!"
 
 	para "You're going to"
@@ -122,17 +122,17 @@ CeladonUniversityClassroom1ImakuniScript:
 	done
 
 .Text3:
-	ctxt "OK, but if I win,"
+	text "OK, but if I win,"
 	line "you dance!"
 	done
 
 .Text4:
-	ctxt "Even if I lost, is"
+	text "Even if I lost, is"
 	line "it really so bad?"
 	done
 
 .Text5:
-	ctxt "Hey! You're pretty"
+	text "Hey! You're pretty"
 	line "good!"
 
 	para "I'll give you this"
@@ -143,7 +143,7 @@ CeladonUniversityClassroom1ImakuniScript:
 	done
 
 CeladonUniversityClassroom1AndyText:
-	ctxt "Hello there!"
+	text "Hello there!"
 	line "I'm Prof.Andy,"
 
 	para "and I teach what"
@@ -161,13 +161,13 @@ CeladonUniversityClassroom1AndyText:
 	done
 
 CeladonUniversityClassroom1Dragon_tamerText:
-	ctxt "I've been holding"
+	text "I've been holding"
 	line "this pose for a"
 	cont "while now."
 	done
 
 CeladonUniversityClassroom1LadyText:
-	ctxt "You meet some"
+	text "You meet some"
 	line "unique people in"
 	cont "art class, but"
 
@@ -177,13 +177,13 @@ CeladonUniversityClassroom1LadyText:
 	done
 
 CeladonUniversityClassroom1Artist1Text:
-	ctxt "It's tough getting"
+	text "It's tough getting"
 	line "the folds of this"
 	cont "cape just right."
 	done
 
 CeladonUniversityClassroom1Artist2Text:
-	ctxt "Aah-choo!"
+	text "Aah-choo!"
 
 	para "Ugh. We just had a"
 	line "flower-arranging"
@@ -197,7 +197,7 @@ CeladonUniversityClassroom1Artist2Text:
 	done
 
 CeladonUniversityClassroom1Artist3Text:
-	ctxt "I work a lot dur-"
+	text "I work a lot dur-"
 	line "ing the day, so I"
 
 	para "take classes in"
@@ -205,7 +205,7 @@ CeladonUniversityClassroom1Artist3Text:
 	done
 
 CeladonUniversityClassroom1BlackboardText:
-	ctxt "There's a descrip-"
+	text "There's a descrip-"
 	line "tion of two-point"
 
 	para "and three-point"
@@ -213,7 +213,7 @@ CeladonUniversityClassroom1BlackboardText:
 	done
 
 CeladonUniversityClassroom1Bookshelf1Text:
-	ctxt "It's a book about"
+	text "It's a book about"
 	line "Smeargle, a"
 	cont "#mon artist."
 
@@ -222,7 +222,7 @@ CeladonUniversityClassroom1Bookshelf1Text:
 	done
 
 CeladonUniversityClassroom1Bookshelf2Text:
-	ctxt "It's a brochure"
+	text "It's a brochure"
 	line "showcasing fine"
 	cont "art from a place"
 

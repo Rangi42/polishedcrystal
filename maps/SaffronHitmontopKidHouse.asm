@@ -35,17 +35,17 @@ SaffronHitmontopKidHouseChildScript:
 	end
 
 .Text1:
-	ctxt "Top! Top!"
+	text "Top! Top!"
 	line "Hit-mon-TOP!"
 	done
 
 .Text2:
-	ctxt "Top… Top? TOP!"
+	text "Top… Top? TOP!"
 	line "HITMONTOP! ♥"
 	done
 
 .Text3:
-	ctxt "That's a"
+	text "That's a"
 	line "Hitmontop!"
 	cont "Oh boy! So cool!"
 	done
@@ -82,13 +82,13 @@ SaffronHitmontopKidHouseTeacherScript:
 	jumpthisopenedtext
 
 .Text3:
-	ctxt "My son finally got"
+	text "My son finally got"
 	line "to meet his favor-"
 	cont "ite #mon."
 	done
 
 .Text1:
-	ctxt "My son likes to"
+	text "My son likes to"
 	line "pretend he's a"
 	cont "#mon."
 
@@ -102,7 +102,7 @@ SaffronHitmontopKidHouseTeacherScript:
 	done
 
 .Text2:
-	ctxt "Oh my! You made my"
+	text "Oh my! You made my"
 	line "son so happy!"
 
 	para "It's not much of a"

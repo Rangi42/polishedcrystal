@@ -43,13 +43,13 @@ OreManiacScript:
 	special PlaceMoneyTopRight
 	jumpthisopenedtext
 
-	ctxt "The deal is done!"
+	text "The deal is done!"
 	line "I've scored an ore"
 	cont "I can adore!"
 	done
 
 .GreetingText:
-	ctxt "Ore, ore, ore…"
+	text "Ore, ore, ore…"
 	line "Ores that I adore!"
 
 	para "I'll pay you well"
@@ -61,7 +61,7 @@ OreManiacScript:
 	done
 
 .OfferText:
-	ctxt "That ore, it's"
+	text "That ore, it's"
 	line "shaking me!"
 
 	para "Will you sell it"
@@ -71,7 +71,7 @@ OreManiacScript:
 	done
 
 .WrongItemText:
-	ctxt "Huh? What on earth"
+	text "Huh? What on earth"
 	line "is this?"
 
 	para "You can't shake my"
@@ -80,7 +80,7 @@ OreManiacScript:
 	done
 
 .NoItemText:
-	ctxt "Hmmm. My core won't"
+	text "Hmmm. My core won't"
 	line "change."
 
 	para "I hope you sell"
@@ -90,7 +90,7 @@ OreManiacScript:
 GenericTrainerTamerOswald:
 	generictrainer TAMER, OSWALD, EVENT_BEAT_TAMER_OSWALD, .SeenText, .BeatenText
 
-	ctxt "I'm a Tamer now,"
+	text "I'm a Tamer now,"
 	line "but when I first"
 
 	para "started out in"
@@ -101,7 +101,7 @@ GenericTrainerTamerOswald:
 	done
 
 .SeenText:
-	ctxt "I was born a"
+	text "I was born a"
 	line "circus man."
 
 	para "Now I'm also a"
@@ -109,14 +109,14 @@ GenericTrainerTamerOswald:
 	done
 
 .BeatenText:
-	ctxt "I couldn't tame"
+	text "I couldn't tame"
 	line "your #mon…"
 	done
 
 GenericTrainerFirebreatherTala:
 	generictrainer FIREBREATHER, TALA, EVENT_BEAT_FIREBREATHER_TALA, .SeenText, .BeatenText
 
-	ctxt "My fire-breathing"
+	text "My fire-breathing"
 	line "act is really"
 
 	para "popular with the"
@@ -127,21 +127,21 @@ GenericTrainerFirebreatherTala:
 	done
 
 .SeenText:
-	ctxt "Roll up, roll up,"
+	text "Roll up, roll up,"
 	line "for my spectacular"
 	cont "fire-breathing"
 	cont "extravaganza!"
 	done
 
 .BeatenText:
-	ctxt "Burned out"
+	text "Burned out"
 	line "already!"
 	done
 
 GenericTrainerSightseerfNoelle:
 	generictrainer SIGHTSEERF, NOELLE, EVENT_BEAT_SIGHTSEERF_NOELLE, .SeenText, .BeatenText
 
-	ctxt "I'm making a photo"
+	text "I'm making a photo"
 	line "album to show my"
 	cont "parents."
 
@@ -150,7 +150,7 @@ GenericTrainerSightseerfNoelle:
 	done
 
 .SeenText:
-	ctxt "Oh my gosh!"
+	text "Oh my gosh!"
 	line "You have #mon"
 
 	para "that I haven't"
@@ -161,7 +161,7 @@ GenericTrainerSightseerfNoelle:
 	done
 
 .BeatenText:
-	ctxt "Aww… I lost?"
+	text "Aww… I lost?"
 	line "No problem!"
 
 	para "Selfie! ♥"
@@ -171,7 +171,7 @@ GenericTrainerSightseerfNoelle:
 GenericTrainerSightseermChester:
 	generictrainer SIGHTSEERM, CHESTER, EVENT_BEAT_SIGHTSEERM_CHESTER, .SeenText, .BeatenText
 
-	ctxt "So you're from"
+	text "So you're from"
 	line "Johto? I haven't"
 	cont "been there!"
 
@@ -181,7 +181,7 @@ GenericTrainerSightseermChester:
 	done
 
 .SeenText:
-	ctxt "I'm traveling"
+	text "I'm traveling"
 	line "around the world."
 
 	para "Which region"
@@ -190,7 +190,7 @@ GenericTrainerSightseermChester:
 	done
 
 .BeatenText:
-	ctxt "What a great"
+	text "What a great"
 	line "experience!"
 	done
 

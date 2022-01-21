@@ -49,13 +49,13 @@ ProfOaksAide1Script:
 	jumpopenedtext ProfOaksAide1NoRoomText
 
 IlexForestAzaleaGateOfficerText:
-	ctxt "Ilex Forest is"
+	text "Ilex Forest is"
 	line "big. Be careful!"
 	cont "Don't get lost."
 	done
 
 IlexForestAzaleaGateGrannyText:
-	ctxt "The Forest is"
+	text "The Forest is"
 	line "watched over by"
 	cont "its protector."
 
@@ -64,7 +64,7 @@ IlexForestAzaleaGateGrannyText:
 	done
 
 ProfOaksAide1HiText:
-	ctxt "Hello there! I'm"
+	text "Hello there! I'm"
 	line "Prof.Oak's aide."
 
 	para "If you caught 15"
@@ -81,12 +81,12 @@ ProfOaksAide1HiText:
 	done
 
 ProfOaksAide1UhOhText:
-	ctxt "Let's see…"
+	text "Let's see…"
 	line "Uh-oh! You've only"
 
 	para "caught "
 	text_decimal wTempDexOwn, 2, 3
-	ctxt " kinds"
+	text " kinds"
 	line "of #mon."
 
 	para "Come back and see"
@@ -95,12 +95,12 @@ ProfOaksAide1UhOhText:
 	done
 
 ProfOaksAide1HereYouGoText:
-	ctxt "Let's see…"
+	text "Let's see…"
 	line "Great job! You've"
 
 	para "caught "
 	text_decimal wTempDexOwn, 2, 3
-	ctxt " kinds"
+	text " kinds"
 	line "of #mon."
 
 	para "Congratulations!"
@@ -108,18 +108,18 @@ ProfOaksAide1HereYouGoText:
 	done
 
 ProfOaksAide1NoRoomText:
-	ctxt "Oh! I see you"
+	text "Oh! I see you"
 	line "don't have any"
 	cont "room for this."
 	done
 
 ProfOaksAide1NestBallText:
-	ctxt "<PLAYER> received"
+	text "<PLAYER> received"
 	line "5 Nest Balls."
 	done
 
 ProfOaksAide1ExplainText:
-	ctxt "Those Nest Balls"
+	text "Those Nest Balls"
 	line "are like Apricorn"
 
 	para "Balls, but they're"

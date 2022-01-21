@@ -16,13 +16,13 @@ FuchsiaBillSpeechHouse_MapScriptHeader:
 	object_event  6,  4, SPRITE_SCHOOLBOY, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, BillsBrothersHouseYoungsterText, -1
 
 BillsBrotherText:
-	ctxt "My grandpa is at"
+	text "My grandpa is at"
 	line "my brother Bill's"
 	cont "in Goldenrod City."
 	done
 
 BillsBrothersHouseYoungsterText:
-	ctxt "I saw these weird,"
+	text "I saw these weird,"
 	line "slow #mon on"
 	cont "Cycling Road."
 	done

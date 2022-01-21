@@ -63,7 +63,7 @@ CeladonUniversityPoolFergusScript:
 	jumpopenedtext .FinalText
 
 .IntroText1:
-	ctxt "The name's Fergus!"
+	text "The name's Fergus!"
 	line "I'm one of top four"
 
 	para "trainers at Cela-"
@@ -78,7 +78,7 @@ CeladonUniversityPoolFergusScript:
 	done
 
 .IntroText2:
-	ctxt "The name's Fergus!"
+	text "The name's Fergus!"
 	line "I'm one of the"
 	cont "Celadon Four!"
 
@@ -90,21 +90,21 @@ CeladonUniversityPoolFergusScript:
 	done
 
 .NoBattleText:
-	ctxt "Then don't get in"
+	text "Then don't get in"
 	line "my way."
 	done
 
 .SeenText:
-	ctxt "We'll show you!"
+	text "We'll show you!"
 	line "Let's go!"
 	done
 
 .BeatenText:
-	ctxt "No way!"
+	text "No way!"
 	done
 
 .AfterText1:
-	ctxt "I've spent so much"
+	text "I've spent so much"
 	line "time training my"
 	cont "team, but you beat"
 	cont "us anyway."
@@ -117,7 +117,7 @@ CeladonUniversityPoolFergusScript:
 	done
 
 .AfterText2:
-	ctxt "All of the Celadon"
+	text "All of the Celadon"
 	line "Four lost to you?"
 
 	para "You really are"
@@ -128,7 +128,7 @@ CeladonUniversityPoolFergusScript:
 	done
 
 .FinalText:
-	ctxt "The Celadon Four"
+	text "The Celadon Four"
 	line "are a big deal"
 	cont "here, but you're"
 
@@ -139,14 +139,14 @@ CeladonUniversityPoolFergusScript:
 	done
 
 CeladonUniversityPoolLassText:
-	ctxt "Ouch!"
+	text "Ouch!"
 
 	para "I'm working out a"
 	line "cramp in my leg."
 	done
 
 CeladonUniversityPoolSwimmer_girlText:
-	ctxt "I applied for a"
+	text "I applied for a"
 	line "special program to"
 
 	para "study in the Sea-"
@@ -158,7 +158,7 @@ CeladonUniversityPoolSwimmer_girlText:
 	done
 
 CeladonUniversityPoolTeacherText:
-	ctxt "OK, five more"
+	text "OK, five more"
 	line "laps!"
 	done
 

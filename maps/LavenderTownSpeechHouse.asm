@@ -15,7 +15,7 @@ LavenderTownSpeechHouse_MapScriptHeader:
 	object_event  2,  3, SPRITE_MATRON, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_COMMAND, jumptextfaceplayer, LavenderSpeechHousePokefanFText, -1
 
 LavenderSpeechHousePokefanFText:
-	ctxt "Lavender is a"
+	text "Lavender is a"
 	line "tiny, quiet town"
 
 	para "at the foot of the"

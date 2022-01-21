@@ -102,7 +102,7 @@ Route43SightseerfScript:
 	jumpthisopenedtext
 
 .AfterText2:
-	ctxt "I love visiting"
+	text "I love visiting"
 	line "new places and"
 
 	para "challenging every"
@@ -114,7 +114,7 @@ Route43SightseerfScript:
 	done
 
 .IntroText:
-	ctxt "I'm seeking out"
+	text "I'm seeking out"
 	line "strong trainers"
 
 	para "in Johto, but I"
@@ -137,7 +137,7 @@ Route43SightseerfScript:
 	done
 
 .QuestionText:
-	ctxt "Excellent! Time to"
+	text "Excellent! Time to"
 	line "test my new stra-"
 	cont "tegy…"
 
@@ -146,7 +146,7 @@ Route43SightseerfScript:
 	done
 
 .RefusedText:
-	ctxt "Aw… I was so"
+	text "Aw… I was so"
 	line "anxious!"
 
 	para "Don't make me"
@@ -154,7 +154,7 @@ Route43SightseerfScript:
 	done
 
 .SeenText:
-	ctxt "Let's see how"
+	text "Let's see how"
 	line "strong Johto's"
 	cont "trainers can be."
 
@@ -163,11 +163,11 @@ Route43SightseerfScript:
 	done
 
 .BeatenText:
-	ctxt "Awesome! ♥"
+	text "Awesome! ♥"
 	done
 
 .AfterText1:
-	ctxt "Wow! I've finally"
+	text "Wow! I've finally"
 	line "found what I was"
 	cont "looking for!"
 
@@ -182,7 +182,7 @@ Route43SightseerfScript:
 GenericTrainerBreederJody:
 	generictrainer BREEDER, JODY, EVENT_BEAT_BREEDER_JODY, BreederJodySeenText, BreederJodyBeatenText
 
-	ctxt "A baby #mon"
+	text "A baby #mon"
 	line "can sometimes"
 
 	para "inherit a move"
@@ -196,7 +196,7 @@ GenericTrainerBreederJody:
 GenericTrainerSrandjrIvyandamy1:
 	generictrainer SR_AND_JR, IVYANDAMY1, EVENT_BEAT_SR_AND_JR_IVY_AND_AMY, SrandjrIvyandamy1SeenText, SrandjrIvyandamy1BeatenText
 
-	ctxt "Ivy: I don't want"
+	text "Ivy: I don't want"
 	line "my junior to think"
 	cont "I can't help her."
 	done
@@ -204,7 +204,7 @@ GenericTrainerSrandjrIvyandamy1:
 GenericTrainerSrandjrIvyandamy2:
 	generictrainer SR_AND_JR, IVYANDAMY2, EVENT_BEAT_SR_AND_JR_IVY_AND_AMY, SrandjrIvyandamy2SeenText, SrandjrIvyandamy2BeatenText
 
-	ctxt "Amy: I hope my"
+	text "Amy: I hope my"
 	line "senior noticed"
 	cont "how hard I tried."
 	done
@@ -212,7 +212,7 @@ GenericTrainerSrandjrIvyandamy2:
 GenericTrainerCamperSpencer:
 	generictrainer CAMPER, SPENCER, EVENT_BEAT_CAMPER_SPENCER, CamperSpencerSeenText, CamperSpencerBeatenText
 
-	ctxt "What is going on"
+	text "What is going on"
 	line "at Lake of Rage?"
 
 	para "We were planning"
@@ -222,7 +222,7 @@ GenericTrainerCamperSpencer:
 GenericTrainerPokemaniacBen:
 	generictrainer POKEMANIAC, BEN, EVENT_BEAT_POKEMANIAC_BEN, PokemaniacBenSeenText, PokemaniacBenBeatenText
 
-	ctxt "What else do I"
+	text "What else do I"
 	line "like besides"
 	cont "#mon?"
 
@@ -330,7 +330,7 @@ UnknownScript_0x19d144:
 GenericTrainerPokemaniacRon:
 	generictrainer POKEMANIAC, RON, EVENT_BEAT_POKEMANIAC_RON, PokemaniacRonSeenText, PokemaniacRonBeatenText
 
-	ctxt "It's OK for people"
+	text "It's OK for people"
 	line "to like different"
 	cont "types of #mon."
 
@@ -342,7 +342,7 @@ GenericTrainerPokemaniacRon:
 GenericTrainerFisherMarvin:
 	generictrainer FISHER, MARVIN, EVENT_BEAT_FISHER_MARVIN, FisherMarvinSeenText, FisherMarvinBeatenText
 
-	ctxt "Kurt's Lure Ball"
+	text "Kurt's Lure Ball"
 	line "is the best for"
 
 	para "catching hooked"
@@ -475,7 +475,7 @@ UnknownScript_0x19d259:
 	jumpstd packfullf
 
 PokemaniacBenSeenText:
-	ctxt "I love #mon!"
+	text "I love #mon!"
 
 	para "That's why I"
 	line "started--and why"
@@ -485,28 +485,28 @@ PokemaniacBenSeenText:
 	done
 
 PokemaniacBenBeatenText:
-	ctxt "How could you do"
+	text "How could you do"
 	line "this to me?"
 	done
 
 PokemaniacBrent1SeenText:
-	ctxt "Hey! Do you have"
+	text "Hey! Do you have"
 	line "any rare #mon?"
 	done
 
 PokemaniacBrent1BeatenText:
-	ctxt "Oh, my poor #-"
+	text "Oh, my poor #-"
 	line "mon! Darlings!"
 	done
 
 PokemaniacBrentAfterBattleText:
-	ctxt "I'd be happy just"
+	text "I'd be happy just"
 	line "to own a single"
 	cont "rare #mon."
 	done
 
 PokemaniacRonSeenText:
-	ctxt "Would you get"
+	text "Would you get"
 	line "this?"
 
 	para "Some <RIVAL> guy"
@@ -518,12 +518,12 @@ PokemaniacRonSeenText:
 	done
 
 PokemaniacRonBeatenText:
-	ctxt "My Nidoking did"
+	text "My Nidoking did"
 	line "pretty right on!"
 	done
 
 FisherMarvinSeenText:
-	ctxt "I'm in a slump."
+	text "I'm in a slump."
 
 	para "Maybe it's the"
 	line "gear I'm using."
@@ -533,23 +533,23 @@ FisherMarvinSeenText:
 	done
 
 FisherMarvinBeatenText:
-	ctxt "I lost, but I feel"
+	text "I lost, but I feel"
 	line "better anyway."
 	done
 
 CamperSpencerSeenText:
-	ctxt "I can do so much"
+	text "I can do so much"
 	line "with my #mon--"
 	cont "it's super fun!"
 	done
 
 CamperSpencerBeatenText:
-	ctxt "Losing isn't fun"
+	text "Losing isn't fun"
 	line "at all…"
 	done
 
 PicnickerTiffany1SeenText:
-	ctxt "Are you going to"
+	text "Are you going to"
 	line "Lake of Rage too?"
 
 	para "Let's play for a"
@@ -557,71 +557,71 @@ PicnickerTiffany1SeenText:
 	done
 
 PicnickerTiffany1BeatenText:
-	ctxt "I played too much!"
+	text "I played too much!"
 	done
 
 PicnickerTiffanyWantsPicnicText:
-	ctxt "I'm having a pic-"
+	text "I'm having a pic-"
 	line "nic with #mon."
 
 	para "Won't you join us?"
 	done
 
 PicnickerTiffanyClefairyText:
-	ctxt "Isn't my Clefairy"
+	text "Isn't my Clefairy"
 	line "just the most"
 	cont "adorable thing?"
 	done
 
 BreederJodySeenText:
-	ctxt "I bred my #mon"
+	text "I bred my #mon"
 	line "so they know"
 	cont "special moves!"
 	done
 
 BreederJodyBeatenText:
-	ctxt "I lost anyway!"
+	text "I lost anyway!"
 	done
 
 SrandjrIvyandamy1SeenText:
-	ctxt "Ivy: I'll show my"
+	text "Ivy: I'll show my"
 	line "junior how it's"
 	cont "done!"
 	done
 
 SrandjrIvyandamy1BeatenText:
-	ctxt "Ivy: You embarass-"
+	text "Ivy: You embarass-"
 	line "ed me in front of"
 	cont "my junior…"
 	done
 
 SrandjrIvyandamy2SeenText:
-	ctxt "Amy: A trainer!"
+	text "Amy: A trainer!"
 	line "Senior, please"
 	cont "help me win!"
 	done
 
 SrandjrIvyandamy2BeatenText:
-	ctxt "Amy: We couldn't"
+	text "Amy: We couldn't"
 	line "do it…"
 	done
 
 Route43Sign1Text:
-	ctxt "Route 43"
+	text "Route 43"
 
 	para "Lake of Rage -"
 	line "Mahogany Town"
 	done
 
 Route43Sign2Text:
-	ctxt "Route 43"
+	text "Route 43"
 
 	para "Lake of Rage -"
 	line "Mahogany Town"
 	done
 
 Route43TrainerTipsText:
-	ctxt "Trainer Tips"
+	text "Trainer Tips"
 
 	para "All #mon have"
 	line "pros and cons"

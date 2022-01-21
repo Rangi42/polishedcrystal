@@ -24,7 +24,7 @@ Route2South_MapScriptHeader:
 GenericTrainerBug_maniacRob:
 	generictrainer BUG_MANIAC, ROB, EVENT_BEAT_BUG_MANIAC_ROB, Bug_maniacRobSeenText, Bug_maniacRobBeatenText
 
-	ctxt "I'm going to look"
+	text "I'm going to look"
 	line "for stronger bug"
 	cont "#mon."
 	done
@@ -32,7 +32,7 @@ GenericTrainerBug_maniacRob:
 GenericTrainerBug_maniacDoug:
 	generictrainer BUG_MANIAC, DOUG, EVENT_BEAT_BUG_MANIAC_DOUG, Bug_maniacDougSeenText, Bug_maniacDougBeatenText
 
-	ctxt "Bug #mon squish"
+	text "Bug #mon squish"
 	line "like plush toys"
 
 	para "when you squeeze"
@@ -43,26 +43,26 @@ GenericTrainerBug_maniacDoug:
 	done
 
 Bug_maniacRobSeenText:
-	ctxt "My bug #mon are"
+	text "My bug #mon are"
 	line "tough. Prepare to"
 	cont "lose!"
 	done
 
 Bug_maniacRobBeatenText:
-	ctxt "I was whipped…"
+	text "I was whipped…"
 	done
 
 Bug_maniacDougSeenText:
-	ctxt "Why don't girls"
+	text "Why don't girls"
 	line "like bug #mon?"
 	done
 
 Bug_maniacDougBeatenText:
-	ctxt "No good!"
+	text "No good!"
 	done
 
 Route2SignText:
-	ctxt "Route 2"
+	text "Route 2"
 
 	para "Viridian City -"
 	line "Pewter City"

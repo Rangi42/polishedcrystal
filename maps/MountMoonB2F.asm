@@ -32,7 +32,7 @@ MountMoonB2F_MapScriptHeader:
 GenericTrainerYoungsterJosh:
 	generictrainer YOUNGSTER, YOUNGSTER_JOSH, EVENT_BEAT_YOUNGSTER_JOSH, YoungsterJoshSeenText, YoungsterJoshBeatenText
 
-	ctxt "With that team of"
+	text "With that team of"
 	line "#mon, you must"
 
 	para "have explored a"
@@ -46,7 +46,7 @@ GenericTrainerYoungsterJosh:
 GenericTrainerBird_keeperMick:
 	generictrainer BIRD_KEEPER, MICK, EVENT_BEAT_BIRD_KEEPER_MICK, Bird_keeperMickSeenText, Bird_keeperMickBeatenText
 
-	ctxt "Birds of a feather"
+	text "Birds of a feather"
 	line "flock together."
 
 	para "I should go hang"
@@ -59,7 +59,7 @@ GenericTrainerBird_keeperMick:
 GenericTrainerHexManiacEsther:
 	generictrainer HEX_MANIAC, ESTHER, EVENT_BEAT_HEX_MANIAC_ESTHER, HexManiacEstherSeenText, HexManiacEstherBeatenText
 
-	ctxt "Magic mirror,"
+	text "Magic mirror,"
 	line "great and wise,"
 
 	para "failed to see my"
@@ -69,7 +69,7 @@ GenericTrainerHexManiacEsther:
 GenericTrainerCooltrainermConnor:
 	generictrainer COOLTRAINERM, CONNOR, EVENT_BEAT_COOLTRAINERM_CONNOR, CooltrainermConnorSeenText, CooltrainermConnorBeatenText
 
-	ctxt "Style and charm"
+	text "Style and charm"
 	line "go hand in hand."
 
 	para "They're the cool-"
@@ -79,12 +79,12 @@ GenericTrainerCooltrainermConnor:
 GenericTrainerSuperNerdMiguel:
 	generictrainer SUPER_NERD, MIGUEL, EVENT_BEAT_SUPER_NERD_MIGUEL, SuperNerdMiguelSeenText, SuperNerdMiguelBeatenText
 
-	ctxt "Maybe if I had"
+	text "Maybe if I had"
 	line "an Aerodactyl…"
 	done
 
 YoungsterJoshSeenText:
-	ctxt "You came to ex-"
+	text "You came to ex-"
 	line "plore the cave,"
 	cont "right?"
 
@@ -93,12 +93,12 @@ YoungsterJoshSeenText:
 	done
 
 YoungsterJoshBeatenText:
-	ctxt "You're not lost"
+	text "You're not lost"
 	line "at all."
 	done
 
 Bird_keeperMickSeenText:
-	ctxt "I'm not sure why"
+	text "I'm not sure why"
 	line "I came here."
 
 	para "My birds can't fly"
@@ -106,12 +106,12 @@ Bird_keeperMickSeenText:
 	done
 
 Bird_keeperMickBeatenText:
-	ctxt "Yeah, this was a"
+	text "Yeah, this was a"
 	line "bad idea."
 	done
 
 HexManiacEstherSeenText:
-	ctxt "Mirror, mirror,"
+	text "Mirror, mirror,"
 	line "on the wall,"
 
 	para "who will throw"
@@ -119,21 +119,21 @@ HexManiacEstherSeenText:
 	done
 
 HexManiacEstherBeatenText:
-	ctxt "You will!"
+	text "You will!"
 	done
 
 CooltrainermConnorSeenText:
-	ctxt "You've either got"
+	text "You've either got"
 	line "it or you don't."
 	done
 
 CooltrainermConnorBeatenText:
-	ctxt "Whoa!"
+	text "Whoa!"
 	line "You've got it!"
 	done
 
 SuperNerdMiguelSeenText:
-	ctxt "I found these"
+	text "I found these"
 	line "fossils and re-"
 	cont "vived them!"
 
@@ -142,7 +142,7 @@ SuperNerdMiguelSeenText:
 	done
 
 SuperNerdMiguelBeatenText:
-	ctxt "My fossils were"
+	text "My fossils were"
 	line "crushed!"
 	done
 

@@ -33,24 +33,24 @@ Route12South_MapScriptHeader:
 GenericTrainerFisherMartin:
 	generictrainer FISHER, MARTIN, EVENT_BEAT_FISHER_MARTIN, FisherMartinSeenText, FisherMartinBeatenText
 
-	ctxt "I'm too impatient"
+	text "I'm too impatient"
 	line "for fishing…"
 	done
 
 FisherMartinSeenText:
-	ctxt "Patience is the"
+	text "Patience is the"
 	line "key to both fish-"
 	cont "ing and #mon."
 	done
 
 FisherMartinBeatenText:
-	ctxt "Gwaaah!"
+	text "Gwaaah!"
 	done
 
 GenericTrainerFisherStephen:
 	generictrainer FISHER, STEPHEN, EVENT_BEAT_FISHER_STEPHEN, FisherStephenSeenText, FisherStephenBeatenText
 
-	ctxt "Have you checked"
+	text "Have you checked"
 	line "out Kanto's radio"
 
 	para "programs? We get a"
@@ -58,21 +58,21 @@ GenericTrainerFisherStephen:
 	done
 
 FisherStephenSeenText:
-	ctxt "I feel so content,"
+	text "I feel so content,"
 	line "fishing while lis-"
 	cont "tening to some"
 	cont "tunes on my radio."
 	done
 
 FisherStephenBeatenText:
-	ctxt "My stupid radio"
+	text "My stupid radio"
 	line "distracted me!"
 	done
 
 GenericTrainerFisherBarney:
 	generictrainer FISHER, BARNEY, EVENT_BEAT_FISHER_BARNEY, FisherBarneySeenText, FisherBarneyBeatenText
 
-	ctxt "I think electric-"
+	text "I think electric-"
 	line "ity is the most"
 
 	para "important thing in"
@@ -89,20 +89,20 @@ GenericTrainerFisherBarney:
 	done
 
 FisherBarneySeenText:
-	ctxt "What's most impor-"
+	text "What's most impor-"
 	line "tant in our every-"
 	cont "day lives?"
 	done
 
 FisherBarneyBeatenText:
-	ctxt "The answer is"
+	text "The answer is"
 	line "coming up next!"
 	done
 
 GenericTrainerFisherKyler:
 	generictrainer FISHER, KYLER, EVENT_BEAT_FISHER_KYLER, .SeenText, .BeatenText
 
-	ctxt "Really? Rather"
+	text "Really? Rather"
 	line "than always catch-"
 	cont "ing new #mon,"
 
@@ -111,89 +111,89 @@ GenericTrainerFisherKyler:
 	done
 
 .SeenText:
-	ctxt "#mon battles"
+	text "#mon battles"
 	line "lure people in!"
 	done
 
 .BeatenText:
-	ctxt "My #mon bucket"
+	text "My #mon bucket"
 	line "is empty!"
 	done
 
 GenericTrainerBird_keeperJustin:
 	generictrainer BIRD_KEEPER, BIRD_KEEPER_JUSTIN, EVENT_BEAT_BIRD_KEEPER_JUSTIN, .SeenText, .BeatenText
 
-	ctxt "Since the wind has"
+	text "Since the wind has"
 	line "changed, I'll lay"
 	cont "low…"
 	done
 
 .SeenText:
-	ctxt "Huh? The wind has"
+	text "Huh? The wind has"
 	line "changed direction!"
 	done
 
 .BeatenText:
-	ctxt "Phew…"
+	text "Phew…"
 	done
 
 GenericTrainerBird_keeperGail:
 	generictrainer BIRD_KEEPER, GAIL, EVENT_BEAT_BIRD_KEEPER_GAIL, .SeenText, .BeatenText
 
-	ctxt "Chuun-Chuun?"
+	text "Chuun-Chuun?"
 	line "Chunchun!"
 	done
 
 .SeenText:
-	ctxt "BASABASABASA-"
+	text "BASABASABASA-"
 	line "BASABASA!"
 	done
 
 .BeatenText:
-	ctxt "Pyopyopyopyo…"
+	text "Pyopyopyopyo…"
 	done
 
 GenericTrainerCoupleVicandtara1:
 	generictrainer COUPLE, VICANDTARA1, EVENT_BEAT_COUPLE_VIC_AND_TARA, .SeenText, .BeatenText
 
-	ctxt "Vic: Tara already"
+	text "Vic: Tara already"
 	line "saw me humiliated…"
 	done
 
 .SeenText:
-	ctxt "Vic: All right!"
+	text "Vic: All right!"
 	line "I'll be able to"
 	cont "show off for Tara!"
 	done
 
 .BeatenText:
-	ctxt "Vic: Oh no, my"
+	text "Vic: Oh no, my"
 	line "plans!"
 	done
 
 GenericTrainerCoupleVicandtara2:
 	generictrainer COUPLE, VICANDTARA2, EVENT_BEAT_COUPLE_VIC_AND_TARA, .SeenText, .BeatenText
 
-	ctxt "Tara: Even though"
+	text "Tara: Even though"
 	line "my boyfriend lost,"
 	cont "he's still wonder-"
 	cont "ful."
 	done
 
 .SeenText:
-	ctxt "Tara: I love to"
+	text "Tara: I love to"
 	line "look at my boy-"
 	cont "friend's face while"
 	cont "he's battling!"
 	done
 
 .BeatenText:
-	ctxt "Tara: Oh no,"
+	text "Tara: Oh no,"
 	line "oh no…"
 	done
 
 Route12SignText:
-	ctxt "Route 12"
+	text "Route 12"
 
 	para "North to Lavender"
 	line "Town"

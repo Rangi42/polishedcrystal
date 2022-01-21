@@ -28,14 +28,14 @@ QuietCave1F_MapScriptHeader:
 GenericTrainerHexManiacAshley:
 	generictrainer HEX_MANIAC, ASHLEY, EVENT_BEAT_HEX_MANIAC_ASHLEY, HexManiacAshleySeenText, HexManiacAshleyBeatenText
 
-	ctxt "I see things that"
+	text "I see things that"
 	line "others can't see…"
 	done
 
 GenericTrainerCooltrainermHenri:
 	generictrainer COOLTRAINERM, HENRI, EVENT_BEAT_COOLTRAINERM_HENRI, CooltrainermHenriSeenText, CooltrainermHenriBeatenText
 
-	ctxt "Having a diverse"
+	text "Having a diverse"
 	line "team to support"
 
 	para "each others' weak-"
@@ -45,7 +45,7 @@ GenericTrainerCooltrainermHenri:
 GenericTrainerHikerGrady:
 	generictrainer HIKER, GRADY, EVENT_BEAT_HIKER_GRADY, HikerGradySeenText, HikerGradyBeatenText
 
-	ctxt "You could hear a"
+	text "You could hear a"
 	line "pin drop in this"
 	cont "place!"
 	done
@@ -53,7 +53,7 @@ GenericTrainerHikerGrady:
 GenericTrainerScientistCarl:
 	generictrainer SCIENTIST, CARL, EVENT_BEAT_SCIENTIST_CARL, ScientistCarlSeenText, ScientistCarlBeatenText
 
-	ctxt "It's interesting"
+	text "It's interesting"
 	line "that such a quiet"
 	cont "environment can"
 
@@ -62,43 +62,43 @@ GenericTrainerScientistCarl:
 	done
 
 HexManiacAshleySeenText:
-	ctxt "The spirits have"
+	text "The spirits have"
 	line "shown me your"
 	cont "defeat!"
 	done
 
 HexManiacAshleyBeatenText:
-	ctxt "No! The spirits"
+	text "No! The spirits"
 	line "can't be wrong!"
 	done
 
 CooltrainermHenriSeenText:
-	ctxt "Can you handle my"
+	text "Can you handle my"
 	line "balanced team of"
 	cont "#mon?"
 	done
 
-CooltrainermHenriBeatenText: ; ctxt > text
+CooltrainermHenriBeatenText: ; text > text
 	text "I guess you can!"
 	done
 
 HikerGradySeenText:
-	ctxt "I heard you long"
+	text "I heard you long"
 	line "before I saw you!"
 	done
 
 HikerGradyBeatenText:
-	ctxt "Ach!"
+	text "Ach!"
 	done
 
 ScientistCarlSeenText:
-	ctxt "I'm studying the"
+	text "I'm studying the"
 	line "acoustics of this"
 	cont "cave system."
 	done
 
 ScientistCarlBeatenText:
-	ctxt "My studies don't"
+	text "My studies don't"
 	line "apply to battles!"
 	done
 

@@ -16,7 +16,7 @@ CherrygroveGymSpeechHouse_MapScriptHeader:
 	object_event  5,  5, SPRITE_CHILD, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, PAL_NPC_RED, OBJECTTYPE_COMMAND, jumptextfaceplayer, CherrygroveGymSpeechHouseBugCatcherText, -1
 
 CherrygroveGymSpeechHousePokefanMText:
-	ctxt "You're trying to"
+	text "You're trying to"
 	line "see how good you"
 
 	para "are as a #mon"
@@ -30,7 +30,7 @@ CherrygroveGymSpeechHousePokefanMText:
 	done
 
 CherrygroveGymSpeechHouseBugCatcherText:
-	ctxt "When I get older,"
+	text "When I get older,"
 	line "I'm going to be a"
 	cont "Gym Leader!"
 

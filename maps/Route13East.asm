@@ -28,31 +28,31 @@ Route13East_MapScriptHeader:
 GenericTrainerBird_keeperPerry:
 	generictrainer BIRD_KEEPER, PERRY, EVENT_BEAT_BIRD_KEEPER_PERRY, Bird_keeperPerrySeenText, Bird_keeperPerryBeatenText
 
-	ctxt "Your #mon are"
+	text "Your #mon are"
 	line "remarkably well-"
 	cont "trained."
 	done
 
 Bird_keeperPerrySeenText:
-	ctxt "Agility is the key"
+	text "Agility is the key"
 	line "attribute of bird"
 	cont "#mon."
 	done
 
 Bird_keeperPerryBeatenText:
-	ctxt "You beat me with"
+	text "You beat me with"
 	line "your speed…"
 	done
 
 GenericTrainerBird_keeperBret:
 	generictrainer BIRD_KEEPER, BRET, EVENT_BEAT_BIRD_KEEPER_BRET, Bird_keeperBretSeenText, Bird_keeperBretBeatenText
 
-	ctxt "If you groom them,"
+	text "If you groom them,"
 	line "#mon get happy."
 	done
 
 Bird_keeperBretSeenText:
-	ctxt "Check out my #-"
+	text "Check out my #-"
 	line "mon. Just look at"
 
 	para "their coloring and"
@@ -60,38 +60,38 @@ Bird_keeperBretSeenText:
 	done
 
 Bird_keeperBretBeatenText:
-	ctxt "Shoot!"
+	text "Shoot!"
 	line "Not good enough!"
 	done
 
 GenericTrainerCamperTanner:
 	generictrainer CAMPER, TANNER, EVENT_BEAT_CAMPER_TANNER, .SeenText, .BeatenText
 
-	ctxt "I figured it would"
+	text "I figured it would"
 	line "be easy to knock"
 	cont "you out…"
 	done
 
 .SeenText:
-	ctxt "I can fit in a"
+	text "I can fit in a"
 	line "quick battle while"
 	cont "preparing a meal!"
 	done
 
 .BeatenText:
-	ctxt "Oh, I'm hungry…"
+	text "Oh, I'm hungry…"
 	done
 
 GenericTrainerPicnickerPiper:
 	generictrainer PICNICKER, PIPER, EVENT_BEAT_PICNICKER_PIPER, .SeenText, .BeatenText
 
-	ctxt "The way you were"
+	text "The way you were"
 	line "walking made me"
 	cont "think I could win."
 	done
 
 .SeenText:
-	ctxt "How about we bring"
+	text "How about we bring"
 	line "out your #mon"
 
 	para "and mine for a"
@@ -99,20 +99,20 @@ GenericTrainerPicnickerPiper:
 	done
 
 .BeatenText:
-	ctxt "Oh, that's too"
+	text "Oh, that's too"
 	line "bad…"
 	done
 
 GenericTrainerCoupleTimandsue1:
 	generictrainer COUPLE, TIMANDSUE1, EVENT_BEAT_COUPLE_TIM_AND_SUE, .SeenText, .BeatenText
 
-	ctxt "Tim: If you've"
+	text "Tim: If you've"
 	line "beaten her, you"
 	cont "must be strong!"
 	done
 
 .SeenText:
-	ctxt "Tim: I'll give you"
+	text "Tim: I'll give you"
 	line "a little hint."
 
 	para "My girlfriend's"
@@ -120,14 +120,14 @@ GenericTrainerCoupleTimandsue1:
 	done
 
 .BeatenText:
-	ctxt "Tim: You're the"
+	text "Tim: You're the"
 	line "strongest!"
 	done
 
 GenericTrainerCoupleTimandsue2:
 	generictrainer COUPLE, TIMANDSUE2, EVENT_BEAT_COUPLE_TIM_AND_SUE, .SeenText, .BeatenText
 
-	ctxt "Sue: That strength"
+	text "Sue: That strength"
 	line "of yours…"
 	cont "I've got it!"
 
@@ -135,7 +135,7 @@ GenericTrainerCoupleTimandsue2:
 	done
 
 .SeenText:
-	ctxt "Sue: Women who"
+	text "Sue: Women who"
 	line "don't take love"
 
 	para "seriously might"
@@ -143,31 +143,31 @@ GenericTrainerCoupleTimandsue2:
 	done
 
 .BeatenText:
-	ctxt "Sue: Wa ha…"
+	text "Sue: Wa ha…"
 	done
 
 GenericTrainerPokefanmAlex:
 	generictrainer POKEFANM, ALEX, EVENT_BEAT_POKEFANM_ALEX, PokefanmAlexSeenText, PokefanmAlexBeatenText
 
-	ctxt "Doesn't everyone"
+	text "Doesn't everyone"
 	line "wish to someday be"
 	cont "a king?"
 	done
 
 PokefanmAlexSeenText:
-	ctxt "Bow down before my"
+	text "Bow down before my"
 	line "regal #mon!"
 	done
 
 PokefanmAlexBeatenText:
-	ctxt "How… How dare you"
+	text "How… How dare you"
 	line "mock royalty!"
 	done
 
 GenericTrainerPokefanmJoshua:
 	generictrainer POKEFANM, JOSHUA, EVENT_BEAT_POKEFANM_JOSHUA, PokefanmJoshuaSeenText, PokefanmJoshuaBeatenText
 
-	ctxt "You look like you"
+	text "You look like you"
 	line "have many #mon,"
 
 	para "but Pikachu is"
@@ -175,13 +175,13 @@ GenericTrainerPokefanmJoshua:
 	done
 
 PokefanmJoshuaSeenText:
-	ctxt "Nihihi! Would you"
+	text "Nihihi! Would you"
 	line "like to battle my"
 	cont "Pikachu gang?"
 	done
 
 PokefanmJoshuaBeatenText:
-	ctxt "Pi-Pikachu!"
+	text "Pi-Pikachu!"
 	done
 
 Route13EastGrampsScript:
@@ -193,7 +193,7 @@ Route13EastGrampsScript:
 	jumptextfaceplayer Route13EastGrampsText2
 
 Route13EastGrampsText1:
-	ctxt "I can't see Lucky"
+	text "I can't see Lucky"
 	line "Island today…"
 
 	para "But I know it's"
@@ -201,13 +201,13 @@ Route13EastGrampsText1:
 	done
 
 Route13EastGrampsText2:
-	ctxt "I can see Lucky"
+	text "I can see Lucky"
 	line "Island today!"
 	cont "What a spectacle!"
 	done
 
 Route13TrainerTips1Text:
-	ctxt "Trainer Tips"
+	text "Trainer Tips"
 
 	para "Look! Right there,"
 	line "at the left side"
@@ -215,7 +215,7 @@ Route13TrainerTips1Text:
 	done
 
 Route13TrainerTips2Text:
-	ctxt "Trainer Tips"
+	text "Trainer Tips"
 
 	para "Some #mon need"
 	line "items to evolve."
@@ -229,7 +229,7 @@ Route13TrainerTips2Text:
 	done
 
 Route13SignText:
-	ctxt "Route 13"
+	text "Route 13"
 
 	para "North to Silence"
 	line "Bridge"

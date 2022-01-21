@@ -28,14 +28,14 @@ DayOfWeekSiblingsHousePokedexScript:
 	endtext
 
 DayOfWeekSiblingsHousePokedexText1:
-	ctxt "There's something"
+	text "There's something"
 	line "written here."
 
 	para "Read it?"
 	done
 
 DayOfWeekSiblingsHousePokedexText2:
-	ctxt "To my brothers and"
+	text "To my brothers and"
 	line "sisters:"
 
 	para "We take pride in"
@@ -53,7 +53,7 @@ DayOfWeekSiblingsHousePokedexText2:
 	done
 
 DayOfWeekSiblingsHousePokedexText3:
-	ctxt "Monday, Monica"
+	text "Monday, Monica"
 	line "Route 40"
 
 	para "Tuesday, Tuscany"

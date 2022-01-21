@@ -31,7 +31,7 @@ WardensGranddaughter:
 	jumpopenedtext WardensGranddaughterText2
 
 WardensGranddaughterText1:
-	ctxt "My grandpa is the"
+	text "My grandpa is the"
 	line "Safari Zone War-"
 	cont "den."
 
@@ -49,7 +49,7 @@ WardensGranddaughterText1:
 	done
 
 WardensGranddaughterText2:
-	ctxt "Many people were"
+	text "Many people were"
 	line "disappointed that"
 
 	para "Safari Zone closed"
@@ -58,7 +58,7 @@ WardensGranddaughterText2:
 	done
 
 WardenPhotoText:
-	ctxt "It's a photo of a"
+	text "It's a photo of a"
 	line "grinning old man"
 
 	para "who's surrounded"
@@ -66,7 +66,7 @@ WardenPhotoText:
 	done
 
 SafariZonePhotoText:
-	ctxt "It's a photo of a"
+	text "It's a photo of a"
 	line "huge grassy plain"
 
 	para "with rare #mon"

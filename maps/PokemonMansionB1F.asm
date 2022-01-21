@@ -30,7 +30,7 @@ PokemonMansionB1F_MapScriptHeader:
 GenericTrainerScientistBraydon:
 	generictrainer SCIENTIST, BRAYDON, EVENT_BEAT_SCIENTIST_BRAYDON, ScientistBraydonSeenText, ScientistBraydonBeatenText
 
-	ctxt "This place was"
+	text "This place was"
 	line "once the site of"
 
 	para "serious #mon"
@@ -82,17 +82,17 @@ PokemonMansionB1FHiddenBerserkGene:
 	jumpopenedtext PokemonMansion1FNoRoomForItemText
 
 ScientistBraydonSeenText:
-	ctxt "I miss the old"
+	text "I miss the old"
 	line "Cinnabar Lab…"
 	done
 
 ScientistBraydonBeatenText:
-	ctxt "Whew!"
+	text "Whew!"
 	line "Overwhelming!"
 	done
 
 PokemonMansionDiaryText:
-	ctxt "Diary: July 5"
+	text "Diary: July 5"
 
 	para "A new #mon was"
 	line "discovered deep in"

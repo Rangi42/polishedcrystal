@@ -101,58 +101,58 @@ PosterClerkScript:
 	db "Cancel@"
 
 PosterClerkText:
-	ctxt "Welcome! Would you"
+	text "Welcome! Would you"
 	line "like a poster?"
 	done
 
 PosterClerkNoMoneyText:
-	ctxt "You don't have"
+	text "You don't have"
 	line "enough money."
 	done
 
 PosterClerkAlreadyBoughtText:
-	ctxt "You bought that"
+	text "You bought that"
 	line "already."
 	done
 
 BoughtMarillPosterText:
-	ctxt "<PLAYER> bought"
+	text "<PLAYER> bought"
 	line "Marill Poster."
 	done
 
 MarillPosterSentText:
-	ctxt "Marill Poster"
+	text "Marill Poster"
 	line "was sent home."
 	done
 
 BoughtClefairyPosterText:
-	ctxt "<PLAYER> bought"
+	text "<PLAYER> bought"
 	line "Clefairy Poster."
 	done
 
 ClefairyPosterSentText:
-	ctxt "Clefairy Poster"
+	text "Clefairy Poster"
 	line "was sent home."
 	done
 
 BoughtPikachuPosterText:
-	ctxt "<PLAYER> bought"
+	text "<PLAYER> bought"
 	line "Pikachu Poster."
 	done
 
 PikachuPosterSentText:
-	ctxt "Pikachu Poster"
+	text "Pikachu Poster"
 	line "was sent home."
 	done
 
 CeladonDeptStore4FSuperNerdText:
-	ctxt "I'm here to buy"
+	text "I'm here to buy"
 	line "Lovely Mail for"
 	cont "my girlfriend."
 	done
 
 CeladonDeptStore4FYoungsterText:
-	ctxt "This is the only"
+	text "This is the only"
 	line "place where you"
 
 	para "can buy posters."
@@ -160,7 +160,7 @@ CeladonDeptStore4FYoungsterText:
 	done
 
 CeladonDeptStore4FDirectoryText:
-	ctxt "Express Yourself"
+	text "Express Yourself"
 	line "With Gifts!"
 
 	para "4F: Wiseman Gifts"

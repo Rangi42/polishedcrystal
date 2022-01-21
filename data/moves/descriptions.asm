@@ -273,7 +273,7 @@ CrossChopDescription:
 NightSlashDescription:
 ShadowClawDescription:
 StoneEdgeDescription:
-	ctxt "Has a high criti-"
+	text "Has a high criti-"
 	next "cal hit ratio."
 	done
 
@@ -282,7 +282,7 @@ FeintAttackDescription:
 DisarmVoiceDescription:
 AerialAceDescription:
 AuraSphereDescription:
-	ctxt "An attack that"
+	text "An attack that"
 	next "never misses."
 	done
 
@@ -292,45 +292,45 @@ LeechLifeDescription:
 GigaDrainDescription:
 DrainKissDescription:
 DrainPunchDescription:
-	ctxt "Steals 1/2 of the"
+	text "Steals 1/2 of the"
 	next "damage inflicted."
 	done
 
 DoubleSlapDescription:
-	ctxt "Repeatedly slaps"
+	text "Repeatedly slaps"
 	next "2-5 times."
 	done
 
 FuryStrikesDescription:
-	ctxt "Scratches or jabs"
+	text "Scratches or jabs"
 	next "2-5 times."
 	done
 
 PinMissileDescription:
-	ctxt "Fires pins that"
+	text "Fires pins that"
 	next "strike 2-5 times."
 	done
 
 IcicleSpearDescription:
-	ctxt "Fires icicles to"
+	text "Fires icicles to"
 	next "hit 2-5 times."
 	done
 
 RockBlastDescription:
-	ctxt "Hurls boulders to"
+	text "Hurls boulders to"
 	next "hit 2-5 times."
 	done
 
 TakeDownDescription:
 DoubleEdgeDescription:
-	ctxt "A tackle that also"
+	text "A tackle that also"
 	next "hurts the user."
 	done
 
 FlareBlitzDescription:
 WildChargeDescription:
 BraveBirdDescription:
-	ctxt "A charge that also"
+	text "A charge that also"
 	next "hurts the user."
 	done
 
@@ -348,7 +348,7 @@ ExtrasensoryDescription:
 DarkPulseDescription:
 AstonishDescription:
 IcicleCrashDescription:
-	ctxt "An attack that may"
+	text "An attack that may"
 	next "cause flinching."
 	done
 
@@ -356,7 +356,7 @@ PoisonStingDescription:
 SludgeBombDescription:
 PoisonJabDescription:
 GunkShotDescription:
-	ctxt "An attack that may"
+	text "An attack that may"
 	next "poison the foe."
 	done
 
@@ -365,7 +365,7 @@ FlamethrowerDescription:
 FireBlastDescription:
 SacredFireDescription:
 ScaldDescription:
-	ctxt "An attack that may"
+	text "An attack that may"
 	next "inflict a burn."
 	done
 
@@ -375,18 +375,18 @@ ThunderboltDescription:
 ThunderDescription:
 LickDescription:
 SparkDescription:
-	ctxt "An attack that may"
+	text "An attack that may"
 	next "cause paralysis."
 	done
 
 ZapCannonDescription:
-	ctxt "An attack that"
+	text "An attack that"
 	next "always paralyzes."
 	done
 
 IceBeamDescription:
 BlizzardDescription:
-	ctxt "An attack that may"
+	text "An attack that may"
 	next "freeze the foe."
 	done
 
@@ -395,75 +395,75 @@ ConfusionDescription:
 DizzyPunchDescription:
 WaterPulseDescription:
 HurricaneDescription:
-	ctxt "An attack that may"
+	text "An attack that may"
 	next "confuse the foe."
 	done
 
 DynamicpunchDescription:
-	ctxt "An attack that"
+	text "An attack that"
 	next "confuses the foe."
 	done
 
 MetalClawDescription:
-	ctxt "An attack that may"
+	text "An attack that may"
 	next "up user's Attack."
 	done
 
 SteelWingDescription:
-	ctxt "An attack that may"
+	text "An attack that may"
 	next "up user's Defense."
 	done
 
 FlameChargeDescription:
-	ctxt "An attack that may"
+	text "An attack that may"
 	next "up user's Speed."
 	done
 
 AncientpowerDescription:
-	ctxt "An attack that may"
+	text "An attack that may"
 	next "raise all stats."
 	done
 
 CloseCombatDescription:
-	ctxt "Lowers the user's"
+	text "Lowers the user's"
 	next "Def and Sp.Def."
 	done
 
 AuroraBeamDescription:
 PlayRoughDescription:
-	ctxt "An attack that may"
+	text "An attack that may"
 	next "lower Attack."
 	done
 
 RockSmashDescription:
 if !DEF(FAITHFUL)
-	ctxt "Removes Reflect"
+	text "Removes Reflect"
 	next "and Light Screen."
 	done
 endc
 CrunchDescription:
 IronTailDescription:
-	ctxt "An attack that may"
+	text "An attack that may"
 	next "lower Defense."
 	done
 
 BubbleBeamDescription:
-	ctxt "An attack that may"
+	text "An attack that may"
 	next "lower Speed."
 	done
 
 BulldozeDescription:
-	ctxt "A Ground attack"
+	text "A Ground attack"
 	next "that lowers Speed."
 	done
 
 IcyWindDescription:
-	ctxt "An icy attack that"
+	text "An icy attack that"
 	next "lowers Speed."
 	done
 
 MoonblastDescription:
-	ctxt "An attack that may"
+	text "An attack that may"
 	next "lower Spcl.Atk."
 	done
 
@@ -475,771 +475,771 @@ EarthPowerDescription:
 EnergyBallDescription:
 FlashCannonDescription:
 FocusBlastDescription:
-	ctxt "An attack that may"
+	text "An attack that may"
 	next "lower Spcl.Def."
 	done
 
 MudSlapDescription:
-	ctxt "An attack that"
+	text "An attack that"
 	next "lowers accuracy."
 	done
 
 OctazookaDescription:
-	ctxt "An attack that may"
+	text "An attack that may"
 	next "lower accuracy."
 	done
 
 SonicboomDescription:
-	ctxt "Always inflicts"
+	text "Always inflicts"
 	next "20HP damage."
 	done
 
 DragonRageDescription:
-	ctxt "Always inflicts"
+	text "Always inflicts"
 	next "40HP damage."
 	done
 
 SeismicTossDescription:
 NightShadeDescription:
-	ctxt "Damage equals the"
+	text "Damage equals the"
 	next "user's level."
 	done
 
 PoisonpowderDescription:
-	ctxt "A move that may"
+	text "A move that may"
 	next "poison the foe."
 	done
 
 WillOWispDescription:
-	ctxt "A move that may"
+	text "A move that may"
 	next "burn the foe."
 	done
 
 StunSporeDescription:
 ThunderWaveDescription:
 GlareDescription:
-	ctxt "A move that may"
+	text "A move that may"
 	next "paralyze the foe."
 	done
 
 SingDescription:
 SleepPowderDescription:
 HypnosisDescription:
-	ctxt "May cause the foe"
+	text "May cause the foe"
 	next "to fall asleep."
 	done
 
 SporeDescription:
-	ctxt "A move that puts"
+	text "A move that puts"
 	next "the foe to sleep."
 	done
 
 ToxicDescription:
-	ctxt "A Poison move with"
+	text "A Poison move with"
 	next "increasing damage."
 	done
 
 ConfuseRayDescription:
 SupersonicDescription:
 SweetKissDescription:
-	ctxt "A move that may"
+	text "A move that may"
 	next "confuse the foe."
 	done
 
 DefenseCurlDescription:
-	ctxt "Raises the user's"
+	text "Raises the user's"
 	next "Defense."
 	done
 
 DoubleTeamDescription:
-	ctxt "Raises the user's"
+	text "Raises the user's"
 	next "evasiveness."
 	done
 
 FocusEnergyDescription:
-	ctxt "Raises the criti-"
+	text "Raises the criti-"
 	next "cal hit ratio."
 	done
 
 SwordsDanceDescription:
-	ctxt "Sharply raises the"
+	text "Sharply raises the"
 	next "user's Attack."
 	done
 
 BarrierDescription:
-	ctxt "Sharply raises the"
+	text "Sharply raises the"
 	next "user's Defense."
 	done
 
 AgilityDescription:
-	ctxt "Sharply raises the"
+	text "Sharply raises the"
 	next "user's Speed."
 	done
 
 NastyPlotDescription:
-	ctxt "Sharply raises the"
+	text "Sharply raises the"
 	next "user's Spcl.Atk."
 	done
 
 AmnesiaDescription:
-	ctxt "Sharply raises the"
+	text "Sharply raises the"
 	next "user's Spcl.Def."
 	done
 
 MinimizeDescription:
-	ctxt "Sharply raises the"
+	text "Sharply raises the"
 	next "user's evasiveness."
 	done
 
 GrowthDescription:
-	ctxt "Raises the user's"
+	text "Raises the user's"
 	next "Atk and Spcl.Atk."
 	done
 
 BulkUpDescription:
-	ctxt "Raises the user's"
+	text "Raises the user's"
 	next "Atk and Def."
 	done
 
 CalmMindDescription:
-	ctxt "Raises the user's"
+	text "Raises the user's"
 	next "Sp.Atk and Sp.Def."
 	done
 
 DragonDanceDescription:
-	ctxt "Raises the user's"
+	text "Raises the user's"
 	next "Attack and Speed."
 	done
 
 HoneClawsDescription:
-	ctxt "Raises the user's"
+	text "Raises the user's"
 	next "Atk and accuracy."
 	done
 
 GrowlDescription:
-	ctxt "A move that lowers"
+	text "A move that lowers"
 	next "the foe's Attack."
 	done
 
 LeerDescription:
-	ctxt "A move that lowers"
+	text "A move that lowers"
 	next "the foe's Defense."
 	done
 
 StringShotDescription:
-	ctxt "A move that lowers"
+	text "A move that lowers"
 	next "the foe's Speed."
 	done
 
 SmokescreenDescription:
 FlashDescription:
-	ctxt "A move that lowers"
+	text "A move that lowers"
 	next "the foe's accuracy."
 	done
 
 CharmDescription:
-	ctxt "Sharply lowers the"
+	text "Sharply lowers the"
 	next "foe's Attack."
 	done
 
 ScreechDescription:
-	ctxt "Sharply lowers the"
+	text "Sharply lowers the"
 	next "foe's Defense."
 	done
 
 ScaryFaceDescription:
-	ctxt "Sharply lowers the"
+	text "Sharply lowers the"
 	next "foe's Speed."
 	done
 
 HazeDescription:
-	ctxt "Eliminates all"
+	text "Eliminates all"
 	next "stat changes."
 	done
 
 SafeguardDescription:
-	ctxt "Prevents all"
+	text "Prevents all"
 	next "status problems."
 	done
 
 ReflectDescription:
-	ctxt "Raises Defense"
+	text "Raises Defense"
 	next "with a barrier."
 	done
 
 LightScreenDescription:
-	ctxt "Ups Spcl.Def with"
+	text "Ups Spcl.Def with"
 	next "a wall of light."
 	done
 
 RecoverDescription:
-	ctxt "Restores HP by 1/2"
+	text "Restores HP by 1/2"
 	next "the max HP."
 	done
 
 FreshSnackDescription:
-	ctxt "Restores HP by 1/2"
+	text "Restores HP by 1/2"
 	next "the user's max HP."
 	done
 
 RoostDescription:
-	ctxt "Lands to restore"
+	text "Lands to restore"
 	next "1/2 the max HP."
 	done
 
 ThrashDescription:
 PetalDanceDescription:
 OutrageDescription:
-	ctxt "Works 2-3 turns"
+	text "Works 2-3 turns"
 	next "and confuses user."
 	done
 
 FireSpinDescription:
 WhirlpoolDescription:
 WrapDescription:
-	ctxt "Traps the foe for"
+	text "Traps the foe for"
 	next "2-5 turns."
 	done
 
 TrickRoomDescription:
-	ctxt "Slow #mon move"
+	text "Slow #mon move"
 	next "first for 5 turns."
 	done
 
 ExplosionDescription:
-	ctxt "Very powerful but"
+	text "Very powerful but"
 	next "makes user faint."
 	done
 
 EndureDescription:
-	ctxt "Endures any hit"
+	text "Endures any hit"
 	next "with at least 1HP."
 	done
 
 FalseSwipeDescription:
-	ctxt "Leaves the foe"
+	text "Leaves the foe"
 	next "with at least 1HP."
 	done
 
 SolarBeamDescription:
-	ctxt "1st turn: Prepare"
+	text "1st turn: Prepare"
 	next "2nd turn: Attack"
 	done
 
 FlyDescription:
-	ctxt "1st turn: Fly"
+	text "1st turn: Fly"
 	next "2nd turn: Attack"
 	done
 
 HyperBeamDescription:
 GigaImpactDescription:
-	ctxt "1st turn: Attack"
+	text "1st turn: Attack"
 	next "2nd turn: Rest"
 	done
 
 DigDescription:
-	ctxt "1st turn: Burrow"
+	text "1st turn: Burrow"
 	next "2nd turn: Attack"
 	done
 
 AcrobaticsDescription:
-	ctxt "Damage doubles if"
+	text "Damage doubles if"
 	next "user has no item."
 	done
 
 HexDescription:
-	ctxt "Damage doubles if"
+	text "Damage doubles if"
 	next "foe has status."
 	done
 
 AvalancheDescription:
-	ctxt "Damage doubles if"
+	text "Damage doubles if"
 	next "user is hit first."
 	done
 
 VenoshockDescription:
-	ctxt "Damage doubles if"
+	text "Damage doubles if"
 	next "foe is poisoned."
 	done
 
 RainDanceDescription:
-	ctxt "Boosts Water-type"
+	text "Boosts Water-type"
 	next "moves for 5 turns."
 	done
 
 SunnyDayDescription:
-	ctxt "Boosts Fire-type"
+	text "Boosts Fire-type"
 	next "moves for 5 turns."
 	done
 
 SandstormDescription:
 HailDescription:
-	ctxt "Inflicts damage"
+	text "Inflicts damage"
 	next "every turn."
 	done
 
 UTurnDescription:
 VoltSwitchDescription:
-	ctxt "Switches out after"
+	text "Switches out after"
 	next "making its attack."
 	done
 
 FirePunchDescription:
-	ctxt "A fiery punch. May"
+	text "A fiery punch. May"
 	next "cause a burn."
 	done
 
 IcePunchDescription:
-	ctxt "An icy punch. May"
+	text "An icy punch. May"
 	next "cause freezing."
 	done
 
 ThunderpunchDescription:
-	ctxt "An electric punch."
+	text "An electric punch."
 	next "It may paralyze."
 	done
 
 CounterDescription:
-	ctxt "Returns a physical"
+	text "Returns a physical"
 	next "attack double."
 	done
 
 MirrorCoatDescription:
-	ctxt "Returns a special"
+	text "Returns a special"
 	next "attack double."
 	done
 
 SpikesDescription:
-	ctxt "Hurts foes when"
+	text "Hurts foes when"
 	next "they switch in."
 	done
 
 ToxicSpikesDescription:
-	ctxt "Poisons foes when"
+	text "Poisons foes when"
 	next "they switch in."
 	done
 
 QuickAttackDescription:
-	ctxt "Lets the user get"
+	text "Lets the user get"
 	next "in the first hit."
 	done
 
 AquaJetDescription:
-	ctxt "A speedy lunge."
+	text "A speedy lunge."
 	next "Always goes first."
 	done
 
 IceShardDescription:
-	ctxt "Hurls icy shards."
+	text "Hurls icy shards."
 	next "Always goes first."
 	done
 
 MachPunchDescription:
-	ctxt "A fast punch that"
+	text "A fast punch that"
 	next "always goes first."
 	done
 
 BulletPunchDescription:
-	ctxt "A tough punch that"
+	text "A tough punch that"
 	next "always goes first."
 	done
 
 ExtremespeedDescription:
-	ctxt "A powerful first-"
+	text "A powerful first-"
 	next "strike attack."
 	done
 
 ScratchDescription:
-	ctxt "Scratches with"
+	text "Scratches with"
 	next "sharp claws."
 	done
 
 PeckDescription:
-	ctxt "Jabs the foe with"
+	text "Jabs the foe with"
 	next "a beak, etc."
 	done
 
 VineWhipDescription:
-	ctxt "Whips the foe with"
+	text "Whips the foe with"
 	next "slender vines."
 	done
 
 DragonClawDescription:
-	ctxt "Slashes the foe"
+	text "Slashes the foe"
 	next "with sharp claws."
 	done
 
 CutDescription:
-	ctxt "Cuts using claws,"
+	text "Cuts using claws,"
 	next "scythes, etc."
 	done
 
 XScissorDescription:
-	ctxt "Slashes foe with"
+	text "Slashes foe with"
 	next "scythes or claws."
 	done
 
 GustDescription:
-	ctxt "Whips up a strong"
+	text "Whips up a strong"
 	next "gust of wind."
 	done
 
 WingAttackDescription:
-	ctxt "Strikes the foe"
+	text "Strikes the foe"
 	next "with wings."
 	done
 
 TackleDescription:
-	ctxt "A full-body charge"
+	text "A full-body charge"
 	next "attack."
 	done
 
 HornAttackDescription:
-	ctxt "An attack using a"
+	text "An attack using a"
 	next "horn to jab."
 	done
 
 DoubleKickDescription:
-	ctxt "A double kicking"
+	text "A double kicking"
 	next "attack."
 	done
 
 PayDayDescription:
-	ctxt "Throws coins. Gets"
+	text "Throws coins. Gets"
 	next "them back later."
 	done
 
 SuckerPunchDescription:
-	ctxt "Attacks before the"
+	text "Attacks before the"
 	next "foe does."
 	done
 
 DazzlingleamDescription:
-	ctxt "Dazzles with a"
+	text "Dazzles with a"
 	next "powerful flash."
 	done
 
 RoarDescription:
-	ctxt "Scares wild foes"
+	text "Scares wild foes"
 	next "to end battle."
 	done
 
 DisableDescription:
-	ctxt "Disables the foe's"
+	text "Disables the foe's"
 	next "most recent move."
 	done
 
 WaterGunDescription:
-	ctxt "Squirts water to"
+	text "Squirts water to"
 	next "attack."
 	done
 
 SurfDescription:
-	ctxt "A strong Water-"
+	text "A strong Water-"
 	next "type attack."
 	done
 
 HydroPumpDescription:
-	ctxt "A powerful Water-"
+	text "A powerful Water-"
 	next "type attack."
 	done
 
 DrillPeckDescription:
-	ctxt "A strong, spin-"
+	text "A strong, spin-"
 	next "ning-peck attack."
 	done
 
 StrengthDescription:
-	ctxt "A powerful physi-"
+	text "A powerful physi-"
 	next "cal attack."
 	done
 
 LeechSeedDescription:
-	ctxt "Steals HP from the"
+	text "Steals HP from the"
 	next "foe on every turn."
 	done
 
 RockThrowDescription:
-	ctxt "Drops rocks on the"
+	text "Drops rocks on the"
 	next "enemy."
 	done
 
 EarthquakeDescription:
-	ctxt "Tough but useless"
+	text "Tough but useless"
 	next "vs. flying foes."
 	done
 
 RageDescription:
-	ctxt "Raises Attack if"
+	text "Raises Attack if"
 	next "the user is hit."
 	done
 
 TeleportDescription:
-	ctxt "A move for fleeing"
+	text "A move for fleeing"
 	next "from battle."
 	done
 
 DragonPulseDescription:
-	ctxt "Attacks foe with"
+	text "Attacks foe with"
 	next "a shock wave."
 	done
 
 AquaTailDescription:
-	ctxt "Swings tail like a"
+	text "Swings tail like a"
 	next "wave in a storm."
 	done
 
 MetronomeDescription:
-	ctxt "Randomly uses any"
+	text "Randomly uses any"
 	next "#mon move."
 	done
 
 SkillSwapDescription:
-	ctxt "Swaps abilities"
+	text "Swaps abilities"
 	next "with the foe."
 	done
 
 HiJumpKickDescription:
-	ctxt "May miss and hurt"
+	text "May miss and hurt"
 	next "the user."
 	done
 
 DreamEaterDescription:
-	ctxt "Steals HP from a"
+	text "Steals HP from a"
 	next "sleeping victim."
 	done
 
 TransformDescription:
-	ctxt "The user assumes"
+	text "The user assumes"
 	next "the foe's guise."
 	done
 
 SplashDescription:
-	ctxt "Has no effect"
+	text "Has no effect"
 	next "whatsoever."
 	done
 
 BonemerangDescription:
-	ctxt "An attack that"
+	text "An attack that"
 	next "strikes twice."
 	done
 
 RestDescription:
-	ctxt "Sleep for 2 turns"
+	text "Sleep for 2 turns"
 	next "to fully recover."
 	done
 
 ConversionDescription:
-	ctxt "Change user's type"
+	text "Change user's type"
 	next "to a move's type."
 	done
 
 TriAttackDescription:
-	ctxt "Fires three kinds"
+	text "Fires three kinds"
 	next "of beams at once."
 	done
 
 SuperFangDescription:
-	ctxt "Cuts the foe's HP"
+	text "Cuts the foe's HP"
 	next "by 1/2."
 	done
 
 SubstituteDescription:
-	ctxt "Makes a decoy with"
+	text "Makes a decoy with"
 	next "1/4 user's max HP."
 	done
 
 StruggleDescription:
-	ctxt "Used only if all"
+	text "Used only if all"
 	next "PP are exhausted."
 	done
 
 SketchDescription:
-	ctxt "Copies the foe's"
+	text "Copies the foe's"
 	next "move permanently."
 	done
 
 ThiefDescription:
-	ctxt "An attack that may"
+	text "An attack that may"
 	next "steal a held item."
 	done
 
 FacadeDescription:
-	ctxt "Double damage with"
+	text "Double damage with"
 	next "Psn, Brn, or Prz."
 	done
 
 HyperVoiceDescription:
-	ctxt "Attack the foe"
+	text "Attack the foe"
 	next "with sound waves."
 	done
 
 CurseDescription:
-	ctxt "Works differently"
+	text "Works differently"
 	next "for Ghost-types."
 	done
 
 ReversalDescription:
-	ctxt "Stronger if the"
+	text "Stronger if the"
 	next "user's HP is low."
 	done
 
 SeedBombDescription:
-	ctxt "Slams a barrage of"
+	text "Slams a barrage of"
 	next "seeds at the foe."
 	done
 
 ProtectDescription:
-	ctxt "Foils attack that"
+	text "Foils attack that"
 	next "turn. It may fail."
 	done
 
 BellyDrumDescription:
-	ctxt "Sacrifices HP to"
+	text "Sacrifices HP to"
 	next "maximize Attack."
 	done
 
 ForesightDescription:
-	ctxt "Negates foe's eva-"
+	text "Negates foe's eva-"
 	next "sion and immunity."
 	done
 
 DestinyBondDescription:
-	ctxt "The foe faints if"
+	text "The foe faints if"
 	next "the user does."
 	done
 
 PerishSongDescription:
-	ctxt "Both user and foe"
+	text "Both user and foe"
 	next "faint in 3 turns."
 	done
 
 PowerGemDescription:
-	ctxt "Attacks with a ray"
+	text "Attacks with a ray"
 	next "of gem-like light."
 	done
 
 RolloutDescription:
-	ctxt "Attacks 5 turns"
+	text "Attacks 5 turns"
 	next "with rising power."
 	done
 
 SwaggerDescription:
-	ctxt "Causes confusion"
+	text "Causes confusion"
 	next "but raises Attack."
 	done
 
 ShellSmashDescription:
-	ctxt "Lowers defenses,"
+	text "Lowers defenses,"
 	next "raises offenses."
 	done
 
 BugBiteDescription:
-	ctxt "Bites the foe and"
+	text "Bites the foe and"
 	next "eats a held Berry."
 	done
 
 MeanLookDescription:
-	ctxt "Prevents fleeing"
+	text "Prevents fleeing"
 	next "or switching."
 	done
 
 AttractDescription:
-	ctxt "Makes the opposite"
+	text "Makes the opposite"
 	next "gender infatuated."
 	done
 
 SleepTalkDescription:
-	ctxt "Randomly attacks"
+	text "Randomly attacks"
 	next "while asleep."
 	done
 
 HealBellDescription:
-	ctxt "Eliminates all"
+	text "Eliminates all"
 	next "status problems."
 	done
 
 ReturnDescription:
-	ctxt "An attack that is"
+	text "An attack that is"
 	next "based on loyalty."
 	done
 
 PsystrikeDescription:
-	ctxt "A wave that does"
+	text "A wave that does"
 	next "physical damage."
 	done
 
 PainSplitDescription:
-	ctxt "Adds user & foe's"
+	text "Adds user & foe's"
 	next "HPs. Shares total."
 	done
 
 MagnitudeDescription:
-	ctxt "A Ground attack"
+	text "A Ground attack"
 	next "with random power."
 	done
 
 MegahornDescription:
-	ctxt "A powerful charge"
+	text "A powerful charge"
 	next "attack."
 	done
 
 PowerWhipDescription:
-	ctxt "A violent lash"
+	text "A violent lash"
 	next "attack."
 	done
 
 DragonbreathDescription:
-	ctxt "A strong breath"
+	text "A strong breath"
 	next "attack."
 	done
 
 BatonPassDescription:
-	ctxt "Switches while"
+	text "Switches while"
 	next "keeping effects."
 	done
 
 EncoreDescription:
-	ctxt "Makes the foe re-"
+	text "Makes the foe re-"
 	next "peat 2-6 times."
 	done
 
 PursuitDescription:
-	ctxt "Heavily strikes"
+	text "Heavily strikes"
 	next "switching #mon."
 	done
 
 RapidSpinDescription:
-	ctxt "A high-speed"
+	text "A high-speed"
 	next "spinning attack."
 	done
 
 HealingLightDescription:
-	ctxt "Restores HP based"
+	text "Restores HP based"
 	next "on weather."
 	done
 
 KnockOffDescription:
-	ctxt "Slaps down the"
+	text "Slaps down the"
 	next "foe's held item."
 	done
 
 HiddenPowerDescription:
-	ctxt "The type varies"
+	text "The type varies"
 	next "with the #mon."
 	done
 
 FutureSightDescription:
-	ctxt "An attack that"
+	text "An attack that"
 	next "hits on 3rd turn."
 	done
 
 GyroBallDescription:
-	ctxt "Does more damage"
+	text "Does more damage"
 	next "at lower speed."
 	done
 
 TrickDescription:
-	ctxt "Swaps held items"
+	text "Swaps held items"
 	next "with the foe."
 	done

@@ -54,7 +54,7 @@ CinnabarIslandBlue:
 	end
 
 CinnabarIslandBlueText:
-	ctxt "Who are you?"
+	text "Who are you?"
 
 if !DEF(DEBUG)
 	para "Well, it's plain"
@@ -113,13 +113,13 @@ endc
 	done
 
 CinnabarIslandBlueBattleText:
-	ctxt "If I see a strong"
+	text "If I see a strong"
 	line "opponent, it makes"
 	cont "me want to battle."
 	done
 
 CinnabarIslandBlueReadyText:
-	ctxt "If you want to"
+	text "If you want to"
 	line "battle me, come to"
 	cont "the Viridian Gym."
 
@@ -128,7 +128,7 @@ CinnabarIslandBlueReadyText:
 	done
 
 CinnabarIslandBlueNotReadyText:
-	ctxt "If you want to"
+	text "If you want to"
 	line "battle me, show me"
 
 	para "how many Kanto"
@@ -140,7 +140,7 @@ CinnabarIslandBlueNotReadyText:
 	done
 
 CinnabarIslandGymSignText:
-	ctxt "There's a notice"
+	text "There's a notice"
 	line "here…"
 
 	para "“Cinnabar Gym has"
@@ -151,14 +151,14 @@ CinnabarIslandGymSignText:
 	done
 
 CinnabarIslandSignText:
-	ctxt "Cinnabar Island"
+	text "Cinnabar Island"
 
 	para "The Fiery Town of"
 	line "Burning Desire"
 	done
 
 CinnabarIslandVolcanoWarningSignText:
-	ctxt "CAUTION"
+	text "CAUTION"
 
 	para "Cinnabar Volcano"
 	line "is dormant, but"

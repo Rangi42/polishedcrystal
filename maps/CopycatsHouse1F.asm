@@ -18,7 +18,7 @@ CopycatsHouse1F_MapScriptHeader:
 	pokemon_event  4,  5, BLISSEY, SPRITEMOVEDATA_POKEMON, -1, -1, PAL_NPC_RED, CopycatsHouse1FBlisseyText, -1
 
 CopycatsHouse1FPokefanMText:
-	ctxt "My daughter likes"
+	text "My daughter likes"
 	line "to mimic people."
 
 	para "Her mimicry has"
@@ -33,7 +33,7 @@ CopycatsHouse1FPokefanFScript:
 	iftrue_jumptextfaceplayer .Text2
 	jumpthistextfaceplayer
 
-	ctxt "My daughter is so"
+	text "My daughter is so"
 	line "self-centered…"
 
 	para "She only has a few"
@@ -41,7 +41,7 @@ CopycatsHouse1FPokefanFScript:
 	done
 
 .Text2:
-	ctxt "She recently lost"
+	text "She recently lost"
 	line "the # Doll that"
 
 	para "a boy gave her"
@@ -53,5 +53,5 @@ CopycatsHouse1FPokefanFScript:
 	done
 
 CopycatsHouse1FBlisseyText:
-	ctxt "Blissey: Bliisii!"
+	text "Blissey: Bliisii!"
 	done

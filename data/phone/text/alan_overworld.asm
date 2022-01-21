@@ -1,5 +1,5 @@
 AlanAskNumber1Text:
-	ctxt "Reading textbooks"
+	text "Reading textbooks"
 	line "is worthwhile"
 	cont "every so often."
 
@@ -19,7 +19,7 @@ AlanAskNumber1Text:
 	done
 
 AlanAskNumber2Text:
-	ctxt "If I find some-"
+	text "If I find some-"
 	line "thing, it's yours."
 
 	para "So may I have your"
@@ -27,7 +27,7 @@ AlanAskNumber2Text:
 	done
 
 AlanNumberAcceptedText:
-	ctxt "I'll call you as"
+	text "I'll call you as"
 	line "soon as I find"
 
 	para "something. You can"
@@ -35,7 +35,7 @@ AlanNumberAcceptedText:
 	done
 
 AlanNumberDeclinedText:
-	ctxt "Oh… I thought it"
+	text "Oh… I thought it"
 	line "would be a good"
 
 	para "break to call you"
@@ -43,12 +43,12 @@ AlanNumberDeclinedText:
 	done
 
 AlanPhoneFullText:
-	ctxt "There's no room"
+	text "There's no room"
 	line "for my number."
 	done
 
 AlanRematchText:
-	ctxt "I waited around"
+	text "I waited around"
 	line "for you!"
 
 	para "I'm thoroughly"
@@ -56,12 +56,12 @@ AlanRematchText:
 	done
 
 AlanGiftText:
-	ctxt "This, this! This"
+	text "This, this! This"
 	line "is yours! Ta-da!"
 	done
 
 AlanPackFullText:
-	ctxt "Whoops!"
+	text "Whoops!"
 
 	para "You can't carry"
 	line "any more items!"

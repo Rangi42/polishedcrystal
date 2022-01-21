@@ -26,26 +26,26 @@ UragaChannelEast_MapScriptHeader:
 GenericTrainerSwimmerfWoda:
 	generictrainer SWIMMERF, WODA, EVENT_BEAT_SWIMMERF_WODA, .SeenText, .BeatenText
 
-	ctxt "The strong curr-"
+	text "The strong curr-"
 	line "ents here make it"
 	cont "a good place to"
 	cont "train."
 	done
 
 .SeenText:
-	ctxt "Did you come here"
+	text "Did you come here"
 	line "to train too?"
 	done
 
 .BeatenText:
-	ctxt "You don't need"
+	text "You don't need"
 	line "more training!"
 	done
 
 GenericTrainerCooltrainermKieran:
 	generictrainer COOLTRAINERM, KIERAN, EVENT_BEAT_COOLTRAINERM_KIERAN, .SeenText, .BeatenText
 
-	ctxt "I couldn't get my"
+	text "I couldn't get my"
 	line "#m-on."
 
 	para "I need to get my"
@@ -54,18 +54,18 @@ GenericTrainerCooltrainermKieran:
 	done
 
 .SeenText:
-	ctxt "It's on like"
+	text "It's on like"
 	line "#mon!"
 	done
 
 .BeatenText:
-	ctxt "Game over."
+	text "Game over."
 	done
 
 GenericTrainerBikerTyrone:
 	generictrainer BIKER, TYRONE, EVENT_BEAT_BIKER_TYRONE, .SeenText, .BeatenText
 
-	ctxt "I fell in the"
+	text "I fell in the"
 	line "water while show-"
 	cont "ing off on Cycling"
 	cont "Road."
@@ -76,19 +76,19 @@ GenericTrainerBikerTyrone:
 	done
 
 .SeenText:
-	ctxt "Cough! Splutter!"
+	text "Cough! Splutter!"
 	done
 
 .BeatenText:
-	ctxt "…Gasp!"
+	text "…Gasp!"
 	done
 
 UragaChannelSignText:
-	ctxt "Uraga Channel"
+	text "Uraga Channel"
 	done
 
 ScaryCaveEastSignText:
-	ctxt "There's graffiti"
+	text "There's graffiti"
 	line "on this sign…"
 
 	para "“This cave is"

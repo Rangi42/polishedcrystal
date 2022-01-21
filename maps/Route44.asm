@@ -73,7 +73,7 @@ Route44VeteranmScript:
 	jumpthisopenedtext
 
 .AfterText2:
-	ctxt "You're a very"
+	text "You're a very"
 	line "quiet person."
 
 	para "Has anybody told"
@@ -81,7 +81,7 @@ Route44VeteranmScript:
 	done
 
 .IntroText:
-	ctxt "My #mon are"
+	text "My #mon are"
 	line "wearing Rocky"
 	cont "Helmets."
 
@@ -96,7 +96,7 @@ Route44VeteranmScript:
 	done
 
 .QuestionText:
-	ctxt "I saw your"
+	text "I saw your"
 	line "battles."
 
 	para "Your #mon are"
@@ -106,7 +106,7 @@ Route44VeteranmScript:
 	done
 
 .RefusedText:
-	ctxt "You beat Team"
+	text "You beat Team"
 	line "Rocket and you're"
 	cont "scared of me?"
 
@@ -115,18 +115,18 @@ Route44VeteranmScript:
 	done
 
 .SeenText:
-	ctxt "I'll show you the"
+	text "I'll show you the"
 	line "power of my Rocky"
 	cont "Helmets!"
 	done
 
 .BeatenText:
-	ctxt "Bah. These Helmets"
+	text "Bah. These Helmets"
 	line "weren't enough."
 	done
 
 .AfterText1:
-	ctxt "You're really"
+	text "You're really"
 	line "strong for someone"
 	cont "so young."
 	cont "Keep it up!"
@@ -261,7 +261,7 @@ Route44RematchGiftM:
 GenericTrainerPsychicPhil:
 	generictrainer PSYCHIC_T, PHIL, EVENT_BEAT_PSYCHIC_PHIL, PsychicPhilSeenText, PsychicPhilBeatenText
 
-	ctxt "It's important to"
+	text "It's important to"
 	line "have conviction"
 	cont "on your side."
 	done
@@ -369,7 +369,7 @@ FisherWilton1Script:
 GenericTrainerFisherEdgar:
 	generictrainer FISHER, EDGAR, EVENT_BEAT_FISHER_EDGAR, FisherEdgarSeenText, FisherEdgarBeatenText
 
-	ctxt "That's 100 wins"
+	text "That's 100 wins"
 	line "to 101 losses."
 
 	para "I won't battle"
@@ -379,7 +379,7 @@ GenericTrainerFisherEdgar:
 GenericTrainerCooltrainerfCybil:
 	generictrainer COOLTRAINERF, CYBIL, EVENT_BEAT_COOLTRAINERF_CYBIL, CooltrainerfCybilSeenText, CooltrainerfCybilBeatenText
 
-	ctxt "We all get better"
+	text "We all get better"
 	line "by experiencing"
 	cont "many battles."
 
@@ -391,7 +391,7 @@ GenericTrainerCooltrainerfCybil:
 GenericTrainerPokemaniacZach:
 	generictrainer POKEMANIAC, ZACH, EVENT_BEAT_POKEMANIAC_ZACH, PokemaniacZachSeenText, PokemaniacZachBeatenText
 
-	ctxt "If a #mon has"
+	text "If a #mon has"
 	line "different colors"
 
 	para "from usual, it's"
@@ -404,7 +404,7 @@ GenericTrainerPokemaniacZach:
 GenericTrainerCooltrainermAllen:
 	generictrainer COOLTRAINERM, ALLEN, EVENT_BEAT_COOLTRAINERM_ALLEN, CooltrainermAllenSeenText, CooltrainermAllenBeatenText
 
-	ctxt "Wow. You have a"
+	text "Wow. You have a"
 	line "lot of Badges."
 
 	para "No wonder you're"
@@ -421,7 +421,7 @@ GenericTrainerCooltrainermAllen:
 	done
 
 FisherWilton1SeenText:
-	ctxt "Aack! You made me"
+	text "Aack! You made me"
 	line "lose a Poliwag!"
 
 	para "What are you going"
@@ -429,12 +429,12 @@ FisherWilton1SeenText:
 	done
 
 FisherWilton1BeatenText:
-	ctxt "Just forget about"
+	text "Just forget about"
 	line "it."
 	done
 
 FisherWiltonHugePoliwagText_Imperial:
-	ctxt "That Poliwag that"
+	text "That Poliwag that"
 	line "got away…"
 	cont "It was huge."
 
@@ -443,7 +443,7 @@ FisherWiltonHugePoliwagText_Imperial:
 	done
 
 FisherWiltonHugePoliwagText_Metric:
-	ctxt "That Poliwag that"
+	text "That Poliwag that"
 	line "got away…"
 	cont "It was huge."
 
@@ -453,7 +453,7 @@ FisherWiltonHugePoliwagText_Metric:
 	done
 
 FisherEdgarSeenText:
-	ctxt "I fish until I"
+	text "I fish until I"
 	line "can't anymore."
 
 	para "I also battle"
@@ -465,23 +465,23 @@ FisherEdgarSeenText:
 	done
 
 FisherEdgarBeatenText:
-	ctxt "Hmmmm…"
+	text "Hmmmm…"
 	line "This isn't right."
 	done
 
 Bird_keeperVance1SeenText:
-	ctxt "Do you know about"
+	text "Do you know about"
 	line "the legendary bird"
 	cont "#mon?"
 	done
 
 Bird_keeperVance1BeatenText:
-	ctxt "Whew! You're hot"
+	text "Whew! You're hot"
 	line "stuff."
 	done
 
 BirdKeeperVanceLegendaryBirdsText:
-	ctxt "Articuno, Zapdos"
+	text "Articuno, Zapdos"
 	line "and Moltres are"
 
 	para "the three legend-"
@@ -493,7 +493,7 @@ BirdKeeperVanceLegendaryBirdsText:
 	done
 
 BirdKeeperVance2BeatenText:
-	ctxt "Why can't I ever"
+	text "Why can't I ever"
 	line "beat you?"
 
 	para "Oh yeah, here you"
@@ -504,28 +504,28 @@ BirdKeeperVance2BeatenText:
 	done
 
 PsychicPhilSeenText:
-	ctxt "I'm gonna win,"
+	text "I'm gonna win,"
 	line "for sure!"
 	done
 
 PsychicPhilBeatenText:
-	ctxt "Arrgh… That's a"
+	text "Arrgh… That's a"
 	line "shocking loss…"
 	done
 
 PokemaniacZachSeenText:
-	ctxt "I'll do anything"
+	text "I'll do anything"
 	line "to get my hands on"
 	cont "rare #mon!"
 	done
 
 PokemaniacZachBeatenText:
-	ctxt "Oooh, your #mon"
+	text "Oooh, your #mon"
 	line "are so appealing."
 	done
 
 CooltrainermAllenSeenText:
-	ctxt "I can tell you're"
+	text "I can tell you're"
 	line "a good trainer by"
 	cont "looking at you."
 
@@ -535,12 +535,12 @@ CooltrainermAllenSeenText:
 	done
 
 CooltrainermAllenBeatenText:
-	ctxt "Tch! It's a total"
+	text "Tch! It's a total"
 	line "loss on my part."
 	done
 
 CooltrainerfCybilSeenText:
-	ctxt "You look strong."
+	text "You look strong."
 
 	para "Good trainers seek"
 	line "tough opponents"
@@ -548,17 +548,17 @@ CooltrainerfCybilSeenText:
 	done
 
 CooltrainerfCybilBeatenText:
-	ctxt "Nope! This won't"
+	text "Nope! This won't"
 	line "do at all."
 	done
 
 Route44Sign1Text:
-	ctxt "Route 44"
+	text "Route 44"
 	line "Ice Path Ahead"
 	done
 
 Route44Sign2Text:
-	ctxt "Route 44"
+	text "Route 44"
 
 	para "Mahogany Town -"
 	line "Blackthorn City"

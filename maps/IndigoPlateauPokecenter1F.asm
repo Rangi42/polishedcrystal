@@ -194,7 +194,7 @@ PlateauRivalBattleTrigger2:
 	end
 
 PlateauRivalText1:
-	ctxt "Hold it."
+	text "Hold it."
 
 	para "You're going to"
 	line "take the #mon"
@@ -216,13 +216,13 @@ PlateauRivalText1:
 	done
 
 PlateauRivalWinText:
-	ctxt "…"
+	text "…"
 
 	para "OK--I lost…"
 	done
 
 PlateauRivalText2:
-	ctxt "…Darn… I still"
+	text "…Darn… I still"
 	line "can't win…"
 
 	para "I… I have to think"
@@ -234,7 +234,7 @@ PlateauRivalText2:
 	done
 
 PlateauRivalLoseText:
-	ctxt "…"
+	text "…"
 
 	para "Whew…"
 	line "With my partners,"
@@ -244,7 +244,7 @@ PlateauRivalLoseText:
 	done
 
 PlateauLyraText1:
-	ctxt "<PLAYER>!"
+	text "<PLAYER>!"
 
 	para "I've been travel-"
 	line "ing around Johto,"
@@ -270,21 +270,21 @@ PlateauLyraText1:
 	done
 
 PlateauLyraText2:
-	ctxt "as the #mon"
+	text "as the #mon"
 	line "League Champion!"
 	done
 
 PlateauLyraWinText:
-	ctxt "So you're still"
+	text "So you're still"
 	line "stronger than me…"
 	done
 
 PlateauLyraLoseText:
-	ctxt "…I won?"
+	text "…I won?"
 	done
 
 PlateauLyraText3:
-	ctxt "I'm not angry that"
+	text "I'm not angry that"
 	line "I lost."
 
 	para "I got to explore"
@@ -326,7 +326,7 @@ PokemonJournalGiovanniScript:
 	setflag ENGINE_READ_GIOVANNI_JOURNAL
 	jumpthistext
 
-	ctxt "#mon Journal"
+	text "#mon Journal"
 
 	para "Special Feature:"
 	line "Boss Giovanni!"
@@ -389,7 +389,7 @@ IndigoPlateauYellowScript:
 	end
 
 .PartyAndBoxFullText:
-	ctxt "Yellow: Oh…"
+	text "Yellow: Oh…"
 	line "You can't carry"
 
 	para "another #mon"
@@ -400,7 +400,7 @@ IndigoPlateauYellowScript:
 	done
 
 .GreetingText:
-	ctxt "Yellow: Hi,"
+	text "Yellow: Hi,"
 	line "<PLAYER>!"
 
 	para "I was watching the"
@@ -418,7 +418,7 @@ IndigoPlateauYellowScript:
 	done
 
 .QuestionText:
-	ctxt "Yellow: <PLAYER>,"
+	text "Yellow: <PLAYER>,"
 	line "can you do me a"
 	cont "favor?"
 
@@ -434,24 +434,24 @@ IndigoPlateauYellowScript:
 	done
 
 .GiveStarterText:
-	ctxt "Yellow: Thanks,"
+	text "Yellow: Thanks,"
 	line "<PLAYER>! Here"
 	cont "you go!"
 	done
 
 .RefusedText:
-	ctxt "Yellow: Oh…"
+	text "Yellow: Oh…"
 	line "But what about the"
 	cont "#mon?"
 	done
 
 .GoodbyeText:
-	ctxt "Yellow: You take"
+	text "Yellow: You take"
 	line "good care of that"
 
 	para ""
 	text_ram wStringBuffer3
-	ctxt ","
+	text ","
 	line "<PLAYER>!"
 
 	para "I hope we'll meet"
@@ -482,7 +482,7 @@ IndigoPlateauTeleportGuyScript:
 	end
 
 .Text:
-	ctxt "Ah! You're chal-"
+	text "Ah! You're chal-"
 	line "lenging the Elite"
 
 	para "Four? Are you sure"
@@ -502,22 +502,22 @@ IndigoPlateauTeleportGuyScript:
 	done
 
 .YesText:
-	ctxt "OK, OK. Picture"
+	text "OK, OK. Picture"
 	line "your house in your"
 	cont "mind…"
 	done
 
 .NoText:
-	ctxt "OK, OK. The best"
+	text "OK, OK. The best"
 	line "of luck to you!"
 	done
 
 IndigoPlateauAbraText:
-	ctxt "Abra: Aabra…"
+	text "Abra: Aabra…"
 	done
 
 IndigoPlateauCooltrainermText:
-	ctxt "At the #mon"
+	text "At the #mon"
 	line "League, you'll get"
 
 	para "tested by the"

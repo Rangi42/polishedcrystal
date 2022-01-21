@@ -31,7 +31,7 @@ YellowForestGateNurseScript:
 	jumptext YellowForestGateNurseHealedText
 
 YellowForestGateOfficerText:
-	ctxt "There are rare"
+	text "There are rare"
 	line "#mon in"
 	cont "Yellow Forest!"
 
@@ -43,7 +43,7 @@ YellowForestGateOfficerText:
 	done
 
 YellowForestGateNurseText:
-	ctxt "Your #mon look"
+	text "Your #mon look"
 	line "worn out."
 
 	para "Let me heal them"
@@ -51,12 +51,12 @@ YellowForestGateNurseText:
 	done
 
 YellowForestGateNurseHealedText:
-	ctxt "All done!"
+	text "All done!"
 
 	para "Your #mon"
 	line "are fully healed."
 	done
 
 YellowForestGateChanseyText:
-	ctxt "Chansey: Sii!"
+	text "Chansey: Sii!"
 	done

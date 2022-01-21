@@ -30,7 +30,7 @@ Route11_MapScriptHeader:
 GenericTrainerYoungsterOwen:
 	generictrainer YOUNGSTER, OWEN, EVENT_BEAT_YOUNGSTER_OWEN, YoungsterOwenSeenText, YoungsterOwenBeatenText
 
-	ctxt "I fought fair and"
+	text "I fought fair and"
 	line "square with honor."
 
 	para "I don't regret"
@@ -38,7 +38,7 @@ GenericTrainerYoungsterOwen:
 	done
 
 YoungsterOwenSeenText:
-	ctxt "There's no cheat-"
+	text "There's no cheat-"
 	line "ing in #mon."
 
 	para "Let's keep it fair"
@@ -46,20 +46,20 @@ YoungsterOwenSeenText:
 	done
 
 YoungsterOwenBeatenText:
-	ctxt "Huh? How did this"
+	text "Huh? How did this"
 	line "happen?"
 	done
 
 GenericTrainerYoungsterJason:
 	generictrainer YOUNGSTER, JASON, EVENT_BEAT_YOUNGSTER_JASON, YoungsterJasonSeenText, YoungsterJasonBeatenText
 
-	ctxt "I'm going to catch"
+	text "I'm going to catch"
 	line "more #mon in"
 	cont "the grass."
 	done
 
 YoungsterJasonSeenText:
-	ctxt "It itches and"
+	text "It itches and"
 	line "tickles a bit when"
 
 	para "I wear shorts in"
@@ -67,37 +67,37 @@ YoungsterJasonSeenText:
 	done
 
 YoungsterJasonBeatenText:
-	ctxt "Aiyaaah!"
+	text "Aiyaaah!"
 	line "I got stomped!"
 	done
 
 GenericTrainerYoungsterAlfie:
 	generictrainer YOUNGSTER, ALFIE, EVENT_BEAT_YOUNGSTER_ALFIE, .SeenText, .BeatenText
 
-	ctxt "Everything's more"
+	text "Everything's more"
 	line "fun when it's a"
 	cont "competition."
 	done
 
 .SeenText:
-	ctxt "Three, two, one,"
+	text "Three, two, one,"
 	line "GO!"
 	done
 
 .BeatenText:
-	ctxt "Game, set, match."
+	text "Game, set, match."
 	done
 
 GenericTrainerPsychicHerman:
 	generictrainer PSYCHIC_T, HERMAN, EVENT_BEAT_PSYCHIC_HERMAN, PsychicHermanSeenText, PsychicHermanBeatenText
 
-	ctxt "…"
+	text "…"
 
 	para "I lost while I had"
 	line "my eyes closed…"
 	done
 
-PsychicHermanSeenText: ; ctxt > text
+PsychicHermanSeenText: ; text > text
 PsychicHermanBeatenText:
 	text "…"
 	done
@@ -105,7 +105,7 @@ PsychicHermanBeatenText:
 GenericTrainerPsychicFidel:
 	generictrainer PSYCHIC_T, FIDEL, EVENT_BEAT_PSYCHIC_FIDEL, PsychicFidelSeenText, PsychicFidelBeatenText
 
-	ctxt "Strength in con-"
+	text "Strength in con-"
 	line "viction…"
 
 	para "You're strong be-"
@@ -114,27 +114,27 @@ GenericTrainerPsychicFidel:
 	done
 
 PsychicFidelSeenText:
-	ctxt "I can see it…"
+	text "I can see it…"
 
 	para "Everything to see"
 	line "about you…"
 	done
 
 PsychicFidelBeatenText:
-	ctxt "I couldn't foresee"
+	text "I couldn't foresee"
 	line "your power…"
 	done
 
 GenericTrainerPsychicUri:
 	generictrainer PSYCHIC_T, URI, EVENT_BEAT_PSYCHIC_URI, .SeenText, .BeatenText
 
-	ctxt "Prof.Oak won't"
+	text "Prof.Oak won't"
 	line "give me a #dex."
 	cont "I wonder why?"
 	done
 
 .SeenText:
-	ctxt "It happened one"
+	text "It happened one"
 	line "morning--a boy"
 	cont "with ESP awoke in"
 
@@ -143,32 +143,32 @@ GenericTrainerPsychicUri:
 	done
 
 .BeatenText:
-	ctxt "Urban legend?"
+	text "Urban legend?"
 	line "What's that?"
 	done
 
 GenericTrainerEngineerBernie:
 	generictrainer ENGINEER, BERNIE, EVENT_BEAT_ENGINEER_BERNIE, .SeenText, .BeatenText
 
-	ctxt "Spread the word"
+	text "Spread the word"
 	line "to save energy!"
 	done
 
 .SeenText:
-	ctxt "Careful!"
+	text "Careful!"
 	line "I'm laying down"
 	cont "some cables!"
 	done
 
 .BeatenText:
-	ctxt "That was"
+	text "That was"
 	line "electric!"
 	done
 
 GenericTrainerEngineerCamden:
 	generictrainer ENGINEER, CAMDEN, EVENT_BEAT_ENGINEER_CAMDEN, .SeenText, .BeatenText
 
-	ctxt "Building a bridge"
+	text "Building a bridge"
 	line "and building a"
 	cont "team of #mon"
 
@@ -177,24 +177,24 @@ GenericTrainerEngineerCamden:
 	done
 
 .SeenText:
-	ctxt "I learned engin-"
+	text "I learned engin-"
 	line "eering at Celadon"
 	cont "University!"
 	done
 
 .BeatenText:
-	ctxt "Shut down!"
+	text "Shut down!"
 	done
 
 GenericTrainerGuitaristmRoger:
 	generictrainer GUITARISTM, ROGER, EVENT_BEAT_GUITARISTM_ROGER, .SeenText, .BeatenText
 
-	ctxt "Don't give in"
+	text "Don't give in"
 	line "without a fight!"
 	done
 
 .SeenText:
-	ctxt "Strangers passing"
+	text "Strangers passing"
 	line "in the street,"
 
 	para "by chance two"
@@ -203,26 +203,26 @@ GenericTrainerGuitaristmRoger:
 	done
 
 .BeatenText:
-	ctxt "Shine on, you"
+	text "Shine on, you"
 	line "crazy diamond!"
 	done
 
 GenericTrainerGuitaristfRitsuko:
 	generictrainer GUITARISTF, RITSUKO, EVENT_BEAT_GUITARISTF_RITSUKO, .SeenText, .BeatenText
 
-	ctxt "♪ Rock'n, rock'n'"
+	text "♪ Rock'n, rock'n'"
 	line "roll radio… ♪"
 	done
 
 .SeenText:
-	ctxt "Hey ho, let's go!"
+	text "Hey ho, let's go!"
 	done
 
 .BeatenText:
-	ctxt "There's no success"
+	text "There's no success"
 	line "for me…"
 	done
 
 Route11SignText:
-	ctxt "Route 11"
+	text "Route 11"
 	done

@@ -18,20 +18,20 @@ CeruleanTradeSpeechHouse_MapScriptHeader:
 	pokemon_event  5,  6, IVYSAUR, SPRITEMOVEDATA_POKEMON, -1, -1, PAL_NPC_GREEN, CeruleanTradeSpeechHouseZubatText, -1
 
 CeruleanTradeSpeechHouseGrannyText:
-	ctxt "My husband lives"
+	text "My husband lives"
 	line "happily with #-"
 	cont "mon he got through"
 	cont "trades."
 	done
 
 CeruleanTradeSpeechHouseGrampsText:
-	ctxt "Ah… I'm so happy…"
+	text "Ah… I'm so happy…"
 	done
 
 CeruleanTradeSpeechHouseRhydonText:
-	ctxt "Poliwrath: Ribbit!"
+	text "Poliwrath: Ribbit!"
 	done
 
 CeruleanTradeSpeechHouseZubatText:
-	ctxt "Ivysaur: Sauur!"
+	text "Ivysaur: Sauur!"
 	done

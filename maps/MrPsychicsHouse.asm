@@ -46,7 +46,7 @@ MrPsychicsHouseTutorZenHeadbuttScript:
 	jumpopenedtext Text_MrPsychicsHouseTutorTaught
 
 MrPsychicText:
-	ctxt "…"
+	text "…"
 
 	para "…"
 
@@ -59,7 +59,7 @@ MrPsychicText:
 	done
 
 Text_MrPsychicsHouseTutorZenHeadbutt:
-	ctxt "I will teach your"
+	text "I will teach your"
 	line "#mon to use Zen"
 
 	para "Headbutt for a"
@@ -67,22 +67,22 @@ Text_MrPsychicsHouseTutorZenHeadbutt:
 	done
 
 Text_MrPsychicsHouseTutorNoSilverLeaf:
-	ctxt "You don't have a"
+	text "You don't have a"
 	line "Silver Leaf…"
 	done
 
 Text_MrPsychicsHouseTutorQuestion:
-	ctxt "Should I teach"
+	text "Should I teach"
 	line "your #mon"
 	cont "Zen Headbutt?"
 	done
 
 Text_MrPsychicsHouseTutorRefused:
-	ctxt "…I was wrong?"
+	text "…I was wrong?"
 	done
 
 Text_MrPsychicsHouseTutorTaught:
-	ctxt "Your #mon now"
+	text "Your #mon now"
 	line "knows how to use"
 	cont "Zen Headbutt."
 	done

@@ -144,12 +144,12 @@ CeladonUniversityHyperTestRoomWestwoodScript:
 	jumpopenedtext .WrongAnswerText
 
 .GreetingText:
-	ctxt "Prof.Westwood?"
+	text "Prof.Westwood?"
 	line "That would be me."
 	done
 
 .IntroText:
-	ctxt "A researcher"
+	text "A researcher"
 	line "extraordinaire!"
 
 	para "My findings are"
@@ -161,7 +161,7 @@ CeladonUniversityHyperTestRoomWestwoodScript:
 	done
 
 .QuestionText:
-	ctxt "Ahem. What was"
+	text "Ahem. What was"
 	line "that?"
 
 	para "You came to take"
@@ -170,7 +170,7 @@ CeladonUniversityHyperTestRoomWestwoodScript:
 	done
 
 .BeginText:
-	ctxt "Excellent!"
+	text "Excellent!"
 
 	para "The Hyper Test is"
 	line "a series of six"
@@ -187,69 +187,69 @@ CeladonUniversityHyperTestRoomWestwoodScript:
 	done
 
 .CorrectText:
-	ctxt "Correct!"
+	text "Correct!"
 	done
 
 .Question1IntroText:
-	ctxt "Question 1:"
+	text "Question 1:"
 	line "Look closely!"
 	done
 
 .Question1QuestionText:
-	ctxt "What #mon's sil-"
+	text "What #mon's sil-"
 	line "houette is this?"
 	done
 
 .Question2IntroText:
-	ctxt "Question 2:"
+	text "Question 2:"
 	line "Listen carefully!"
 	done
 
 .Question2QuestionText:
-	ctxt "What #mon's cry"
+	text "What #mon's cry"
 	line "is this?"
 	done
 
 .Question3IntroText:
-	ctxt "Question 3:"
+	text "Question 3:"
 	done
 
 .Question3QuestionText:
-	ctxt "Which medicine"
+	text "Which medicine"
 	line "tastes bitter?"
 	done
 
 .Question4IntroText:
-	ctxt "Question 4:"
+	text "Question 4:"
 	done
 
 .Question4QuestionText:
-	ctxt "Which #mon"
+	text "Which #mon"
 	line "has Dry Skin?"
 	done
 
 .Question5IntroText:
-	ctxt "Question 5:"
+	text "Question 5:"
 	done
 
 .Question5QuestionText:
-	ctxt "Which Berry"
+	text "Which Berry"
 	line "smells blue?"
 	done
 
 .Question6IntroText:
-	ctxt "Question 6:"
+	text "Question 6:"
 	line "Think wisely!"
 	done
 
 .Question6QuestionText:
-	ctxt "Who is the most"
+	text "Who is the most"
 	line "accomplished"
 	cont "professor?"
 	done
 
 .CongratulationsText:
-	ctxt "Congratulations!"
+	text "Congratulations!"
 
 	para "You passed the"
 	line "Hyper Test with"
@@ -263,7 +263,7 @@ CeladonUniversityHyperTestRoomWestwoodScript:
 	done
 
 .TestOverText:
-	ctxt "Our students have"
+	text "Our students have"
 	line "the tenacity of a"
 
 	para "Magikarp strugg-"
@@ -272,17 +272,17 @@ CeladonUniversityHyperTestRoomWestwoodScript:
 	done
 
 .PartyAndBoxFullText:
-	ctxt "Oh no! Your party"
+	text "Oh no! Your party"
 	line "and box are full…"
 	done
 
 .RefusedText:
-	ctxt "Well, if you're"
+	text "Well, if you're"
 	line "certain."
 	done
 
 .AlreadyTookText:
-	ctxt "But you already"
+	text "But you already"
 	line "attempted the test"
 	cont "today!"
 
@@ -291,7 +291,7 @@ CeladonUniversityHyperTestRoomWestwoodScript:
 	done
 
 .WrongAnswerText:
-	ctxt "I'm sorry, that's"
+	text "I'm sorry, that's"
 	line "incorrect!"
 
 	para "You may try and"
@@ -390,7 +390,7 @@ CeladonUniversityHyperTestRoomWestwoodScript:
 	db "Prof.Westwood@"
 
 CeladonUniversityHyperTestRoomScientistText:
-	ctxt "The Hyper Test is"
+	text "The Hyper Test is"
 	line "a rite of passage"
 
 	para "for all Celadon"
@@ -403,12 +403,12 @@ CeladonUniversityHyperTestRoomScientistText:
 	done
 
 CeladonUniversityHyperTestRoomTwin1Text:
-	ctxt "I'll pass the Hyper"
+	text "I'll pass the Hyper"
 	line "Test before you!"
 	done
 
 CeladonUniversityHyperTestRoomTwin2Text:
-	ctxt "No, I'll pass the"
+	text "No, I'll pass the"
 	line "Hyper Test before"
 	cont "you!"
 	done
@@ -421,12 +421,12 @@ CeladonUniversityHyperTestRoomMagikarpSign:
 	closepokepic
 	jumpthistext
 
-	ctxt "A Magikarp is"
+	text "A Magikarp is"
 	line "swimming around."
 	done
 
 CeladonUniversityHyperTestRoomBookshelf1Text:
-	ctxt "This book has a"
+	text "This book has a"
 	line "bookmark in it."
 
 	para "Someone's not done"
@@ -434,7 +434,7 @@ CeladonUniversityHyperTestRoomBookshelf1Text:
 	done
 
 CeladonUniversityHyperTestRoomBookshelf2Text:
-	ctxt "It's a copy of"
+	text "It's a copy of"
 	line "Nintendo Power!"
 
 	para "A Pikachu picture"
@@ -445,7 +445,7 @@ CeladonUniversityHyperTestRoomBookshelf2Text:
 CeladonUniversityHyperTestRoomComputer:
 	jumpthistext
 
-	ctxt "There's a file on"
+	text "There's a file on"
 	line "the desktop named"
 	cont "questions.txt."
 

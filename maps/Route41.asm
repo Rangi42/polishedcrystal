@@ -30,7 +30,7 @@ Route41_MapScriptHeader:
 GenericTrainerSwimmerfKaylee:
 	generictrainer SWIMMERF, KAYLEE, EVENT_BEAT_SWIMMERF_KAYLEE, SwimmerfKayleeSeenText, SwimmerfKayleeBeatenText
 
-	ctxt "There's supposed"
+	text "There's supposed"
 	line "to be a big #-"
 	cont "mon deep beneath"
 	cont "Whirl Islands."
@@ -42,7 +42,7 @@ GenericTrainerSwimmerfKaylee:
 GenericTrainerSwimmerfSusie:
 	generictrainer SWIMMERF, SUSIE, EVENT_BEAT_SWIMMERF_SUSIE, SwimmerfSusieSeenText, SwimmerfSusieBeatenText
 
-	ctxt "Wasn't there a hit"
+	text "Wasn't there a hit"
 	line "song about a boy"
 	cont "riding a Lapras?"
 	done
@@ -50,7 +50,7 @@ GenericTrainerSwimmerfSusie:
 GenericTrainerSwimmerfDenise:
 	generictrainer SWIMMERF, DENISE, EVENT_BEAT_SWIMMERF_DENISE, SwimmerfDeniseSeenText, SwimmerfDeniseBeatenText
 
-	ctxt "A sunburn is the"
+	text "A sunburn is the"
 	line "worst for skin."
 
 	para "But I don't use a"
@@ -63,7 +63,7 @@ GenericTrainerSwimmerfDenise:
 GenericTrainerSwimmerfKara:
 	generictrainer SWIMMERF, KARA, EVENT_BEAT_SWIMMERF_KARA, SwimmerfKaraSeenText, SwimmerfKaraBeatenText
 
-	ctxt "I heard roars from"
+	text "I heard roars from"
 	line "deep inside the"
 	cont "Islands."
 	done
@@ -71,7 +71,7 @@ GenericTrainerSwimmerfKara:
 GenericTrainerSwimmerfWendy:
 	generictrainer SWIMMERF, WENDY, EVENT_BEAT_SWIMMERF_WENDY, SwimmerfWendySeenText, SwimmerfWendyBeatenText
 
-	ctxt "The clusters of"
+	text "The clusters of"
 	line "Staryu light up"
 	cont "at the same time."
 
@@ -82,7 +82,7 @@ GenericTrainerSwimmerfWendy:
 GenericTrainerSwimmermCharlie:
 	generictrainer SWIMMERM, CHARLIE, EVENT_BEAT_SWIMMERM_CHARLIE, SwimmermCharlieSeenText, SwimmermCharlieBeatenText
 
-	ctxt "Isn't it relaxing"
+	text "Isn't it relaxing"
 	line "just floating like"
 	cont "this?"
 	done
@@ -90,7 +90,7 @@ GenericTrainerSwimmermCharlie:
 GenericTrainerSwimmermGeorge:
 	generictrainer SWIMMERM, GEORGE, EVENT_BEAT_SWIMMERM_GEORGE, SwimmermGeorgeSeenText, SwimmermGeorgeBeatenText
 
-	ctxt "It's so far to"
+	text "It's so far to"
 	line "Cianwood."
 
 	para "But it's no easy"
@@ -103,7 +103,7 @@ GenericTrainerSwimmermGeorge:
 GenericTrainerSwimmermBerke:
 	generictrainer SWIMMERM, BERKE, EVENT_BEAT_SWIMMERM_BERKE, SwimmermBerkeSeenText, SwimmermBerkeBeatenText
 
-	ctxt "It was a dark and"
+	text "It was a dark and"
 	line "stormy night…"
 
 	para "I saw this giant"
@@ -118,7 +118,7 @@ GenericTrainerSwimmermBerke:
 GenericTrainerSwimmermKirk:
 	generictrainer SWIMMERM, KIRK, EVENT_BEAT_SWIMMERM_KIRK, SwimmermKirkSeenText, SwimmermKirkBeatenText
 
-	ctxt "The currents keep"
+	text "The currents keep"
 	line "me from reaching"
 	cont "that island."
 	done
@@ -126,7 +126,7 @@ GenericTrainerSwimmermKirk:
 GenericTrainerSwimmermMathew:
 	generictrainer SWIMMERM, MATHEW, EVENT_BEAT_SWIMMERM_MATHEW, SwimmermMathewSeenText, SwimmermMathewBeatenText
 
-	ctxt "A secret about"
+	text "A secret about"
 	line "Whirl Islands…"
 
 	para "It's pitch-black"
@@ -136,7 +136,7 @@ GenericTrainerSwimmermMathew:
 GenericTrainerSwimmermLewis:
 	generictrainer SWIMMERM, LEWIS, EVENT_BEAT_SWIMMERM_LEWIS, SwimmermLewisSeenText, SwimmermLewisBeatenText
 
-	ctxt "It takes knowledge"
+	text "It takes knowledge"
 	line "and experience"
 
 	para "to not get lost"
@@ -144,7 +144,7 @@ GenericTrainerSwimmermLewis:
 	done
 
 SwimmermCharlieSeenText:
-	ctxt "The water's warm"
+	text "The water's warm"
 	line "here. I'm loose"
 	cont "and limber."
 
@@ -153,22 +153,22 @@ SwimmermCharlieSeenText:
 	done
 
 SwimmermCharlieBeatenText:
-	ctxt "Yikes! I've got"
+	text "Yikes! I've got"
 	line "prune skin!"
 	done
 
 SwimmermGeorgeSeenText:
-	ctxt "I'm a bit tired."
+	text "I'm a bit tired."
 	line "If I win, lend me"
 	cont "your #mon."
 	done
 
 SwimmermGeorgeBeatenText:
-	ctxt "Pant, pant…"
+	text "Pant, pant…"
 	done
 
 SwimmermBerkeSeenText:
-	ctxt "See those islands"
+	text "See those islands"
 	line "that are blocked"
 	cont "by whirlpools?"
 
@@ -177,12 +177,12 @@ SwimmermBerkeSeenText:
 	done
 
 SwimmermBerkeBeatenText:
-	ctxt "What's the secret"
+	text "What's the secret"
 	line "to your strength?"
 	done
 
 SwimmermKirkSeenText:
-	ctxt "The waves are wild"
+	text "The waves are wild"
 	line "here."
 
 	para "They tire you out"
@@ -190,32 +190,32 @@ SwimmermKirkSeenText:
 	done
 
 SwimmermKirkBeatenText:
-	ctxt "I'm beat!"
+	text "I'm beat!"
 	done
 
 SwimmermMathewSeenText:
-	ctxt "Are you seeking"
+	text "Are you seeking"
 	line "the secrets of"
 	cont "Whirl Islands?"
 	done
 
 SwimmermMathewBeatenText:
-	ctxt "Ooh, you've got"
+	text "Ooh, you've got"
 	line "great endurance!"
 	done
 
 SwimmermLewisSeenText:
-	ctxt "I feel right at"
+	text "I feel right at"
 	line "home in the sea!"
 	done
 
 SwimmermLewisBeatenText:
-	ctxt "Beaten in my own"
+	text "Beaten in my own"
 	line "home?"
 	done
 
 SwimmerfKayleeSeenText:
-	ctxt "I'm on my way to"
+	text "I'm on my way to"
 	line "Whirl Islands."
 
 	para "I'm going explor-"
@@ -223,32 +223,32 @@ SwimmerfKayleeSeenText:
 	done
 
 SwimmerfKayleeBeatenText:
-	ctxt "Is that how you do"
+	text "Is that how you do"
 	line "it?"
 	done
 
 SwimmerfSusieSeenText:
-	ctxt "You look so ele-"
+	text "You look so ele-"
 	line "gant, riding your"
 	cont "#mon."
 	done
 
 SwimmerfSusieBeatenText:
-	ctxt "I'm crushed…"
+	text "I'm crushed…"
 	done
 
 SwimmerfDeniseSeenText:
-	ctxt "The weather is so"
+	text "The weather is so"
 	line "beautiful, I'm in"
 	cont "a daze!"
 	done
 
 SwimmerfDeniseBeatenText:
-	ctxt "Ohhh!"
+	text "Ohhh!"
 	done
 
 SwimmerfKaraSeenText:
-	ctxt "If you need to"
+	text "If you need to"
 	line "rest, just tread"
 	cont "water."
 
@@ -260,17 +260,17 @@ SwimmerfKaraSeenText:
 	done
 
 SwimmerfKaraBeatenText:
-	ctxt "Oh! You have more"
+	text "Oh! You have more"
 	line "energy than I do."
 	done
 
 SwimmerfWendySeenText:
-	ctxt "At night, Staryu"
+	text "At night, Staryu"
 	line "gather near the"
 	cont "water's surface."
 	done
 
 SwimmerfWendyBeatenText:
-	ctxt "Oh, dear…"
+	text "Oh, dear…"
 	done
 

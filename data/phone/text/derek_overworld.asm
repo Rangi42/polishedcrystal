@@ -1,5 +1,5 @@
 DerekAskNumber1Text:
-	ctxt "Oh, wow! Pikachu!"
+	text "Oh, wow! Pikachu!"
 	line "It's so soft and"
 	cont "furry! How cute!"
 
@@ -15,7 +15,7 @@ DerekAskNumber1Text:
 	done
 
 DerekAskNumber2Text:
-	ctxt "Let's chat about"
+	text "Let's chat about"
 	line "Pikachu!"
 
 	para "Can I get your"
@@ -23,7 +23,7 @@ DerekAskNumber2Text:
 	done
 
 DerekNumberAcceptedText:
-	ctxt "Pikachu is the"
+	text "Pikachu is the"
 	line "one! If anything"
 
 	para "comes up, I'll"
@@ -31,19 +31,19 @@ DerekNumberAcceptedText:
 	done
 
 DerekNumberDeclinedText:
-	ctxt "You…"
+	text "You…"
 
 	para "I bet you don't"
 	line "even like Pikachu…"
 	done
 
 DerekPhoneFullText:
-	ctxt "Wait a sec! Your"
+	text "Wait a sec! Your"
 	line "phone list's full!"
 	done
 
 DerekGiftText:
-	ctxt "I've been looking"
+	text "I've been looking"
 	line "for you! Here, see"
 	cont "this? This is it!"
 
@@ -53,7 +53,7 @@ DerekGiftText:
 	done
 
 DerekPackFullText:
-	ctxt "Uh-oh, too bad."
+	text "Uh-oh, too bad."
 	line "You don't have any"
 
 	para "room. Be sure to"

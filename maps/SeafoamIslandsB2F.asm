@@ -28,54 +28,54 @@ SeafoamIslandsB2F_MapScriptHeader:
 GenericTrainerSkierCady:
 	generictrainer SKIER, CADY, EVENT_BEAT_SKIER_CADY, SkierCadySeenText, SkierCadyBeatenText
 
-	ctxt "That was a hot"
+	text "That was a hot"
 	line "battle!"
 	done
 
 GenericTrainerBoarderShaun:
 	generictrainer BOARDER, SHAUN, EVENT_BEAT_BOARDER_SHAUN, BoarderShaunSeenText, BoarderShaunBeatenText
 
-	ctxt "All right, please"
+	text "All right, please"
 	line "pass through!"
 	done
 
 GenericTrainerBoarderBryce:
 	generictrainer BOARDER, BRYCE, EVENT_BEAT_BOARDER_BRYCE, BoarderBryceSeenText, BoarderBryceBeatenText
 
-	ctxt "Trainers are"
+	text "Trainers are"
 	line "everywhere."
 	done
 
 SkierCadySeenText:
-	ctxt "To beat the cold,"
+	text "To beat the cold,"
 	line "try warm clothes"
 	cont "and a hot drink!"
 	done
 
 SkierCadyBeatenText:
-	ctxt "Argh, all the way"
+	text "Argh, all the way"
 	line "out here!"
 	done
 
 BoarderShaunSeenText:
-	ctxt "Hey, hey, you're"
+	text "Hey, hey, you're"
 	line "in my way! Right!"
 	done
 
 BoarderShaunBeatenText:
-	ctxt "I got kicked"
+	text "I got kicked"
 	line "around…"
 	done
 
 BoarderBryceSeenText:
-	ctxt "What did you"
+	text "What did you"
 	line "come all the way"
 	cont "out here for,"
 	cont "I wonder."
 	done
 
 BoarderBryceBeatenText:
-	ctxt "I lost all the"
+	text "I lost all the"
 	line "way out here…"
 	done
 

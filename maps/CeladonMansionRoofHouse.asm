@@ -30,7 +30,7 @@ CeladonMansionRoofHousePharmacistScript:
 	jumpthisopenedtext
 
 .CurseText:
-	ctxt "TM03 is Curse."
+	text "TM03 is Curse."
 
 	para "It's a terrifying"
 	line "move that slowly"
@@ -40,12 +40,12 @@ CeladonMansionRoofHousePharmacistScript:
 	done
 
 .IntroText:
-	ctxt "Let me recount a"
+	text "Let me recount a"
 	line "terrifying tale…"
 	done
 
 .NotNiteText:
-	ctxt "Then again, it's"
+	text "Then again, it's"
 	line "not as scary while"
 
 	para "it's still light"
@@ -56,7 +56,7 @@ CeladonMansionRoofHousePharmacistScript:
 	done
 
 .StoryText:
-	ctxt "Once upon a time,"
+	text "Once upon a time,"
 	line "there was a little"
 
 	para "boy who was given"

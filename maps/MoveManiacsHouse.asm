@@ -41,7 +41,7 @@ MoveReminderScript:
 	jumpopenedtext MoveReminderCancelText
 
 MoveReminderIntroText::
-	ctxt "Me? I'm the"
+	text "Me? I'm the"
 	line "Move Maniac."
 
 	para "I'll make your"
@@ -53,18 +53,18 @@ MoveReminderIntroText::
 	done
 
 MoveReminderPromptText::
-	ctxt "Do you want me to"
+	text "Do you want me to"
 	line "teach one of your"
 	cont "#mon a move?"
 	done
 
 MoveReminderWhichMonText::
-	ctxt "Yay! Which #mon"
+	text "Yay! Which #mon"
 	line "needs tutoring?"
 	done
 
 MoveReminderNoGoldLeafText::
-	ctxt "Huh? You don't"
+	text "Huh? You don't"
 	line "have any Gold"
 	cont "Leaves."
 
@@ -74,7 +74,7 @@ MoveReminderNoGoldLeafText::
 	done
 
 MoveReminderNoMovesText::
-	ctxt "Sorry… There isn't"
+	text "Sorry… There isn't"
 	line "any move I can"
 
 	para "make that #mon"
@@ -82,7 +82,7 @@ MoveReminderNoMovesText::
 	done
 
 MoveReminderCancelText::
-	ctxt "If your #mon"
+	text "If your #mon"
 	line "needs to learn a"
 
 	para "move, come back"

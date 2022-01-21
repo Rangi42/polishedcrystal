@@ -21,7 +21,7 @@ Route18Gate2FBinoculars2:
 	jumptext Route18Gate2FBinoculars2Text
 
 Route18Gate2FBinoculars1Text:
-	ctxt "Looked into the"
+	text "Looked into the"
 	line "binoculars."
 
 	para "Pallet Town is in"
@@ -29,7 +29,7 @@ Route18Gate2FBinoculars1Text:
 	done
 
 Route18Gate2FBinoculars2Text:
-	ctxt "Looked into the"
+	text "Looked into the"
 	line "binoculars."
 
 	para "There are people"

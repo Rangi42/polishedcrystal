@@ -23,7 +23,7 @@ PokemonJournalBlueScript:
 	setflag ENGINE_READ_BLUE_JOURNAL
 	jumpthistext
 
-	ctxt "#mon Journal"
+	text "#mon Journal"
 
 	para "Special Feature:"
 	line "Leader Blue!"
@@ -41,7 +41,7 @@ ViridianPokeCenter1FCooltrainermScript:
 	iftrue_jumptextfaceplayer .BlueText
 	jumpthistextfaceplayer
 
-	ctxt "Where in the world"
+	text "Where in the world"
 	line "is Viridian's Gym"
 
 	para "Leader? I wanted"
@@ -49,7 +49,7 @@ ViridianPokeCenter1FCooltrainermScript:
 	done
 
 .BlueText:
-	ctxt "There are strong"
+	text "There are strong"
 	line "Gym Trainers at"
 	cont "the Viridian Gym."
 
@@ -58,7 +58,7 @@ ViridianPokeCenter1FCooltrainermScript:
 	done
 
 ViridianPokeCenter1FCooltrainerfText:
-	ctxt "I heard that the"
+	text "I heard that the"
 	line "Gym in Cinnabar is"
 	cont "gone."
 
@@ -68,6 +68,6 @@ ViridianPokeCenter1FCooltrainerfText:
 	done
 
 ViridianPokeCenter1FBugCatcherText:
-	ctxt "My dream is to be-"
+	text "My dream is to be-"
 	line "come a Gym Leader."
 	done

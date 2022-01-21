@@ -42,7 +42,7 @@ SilphCo2FScientist1NoRoomForUpGradeScript:
 	endtext
 
 SilphCo2FScientist1Text1:
-	ctxt "You traveled here"
+	text "You traveled here"
 	line "from Johto?"
 
 	para "Since you came"
@@ -53,7 +53,7 @@ SilphCo2FScientist1Text1:
 	done
 
 SilphCo2FScientist1Text2:
-	ctxt "It's Silph Co.'s"
+	text "It's Silph Co.'s"
 	line "latest product."
 
 	para "It's not for sale"
@@ -61,13 +61,13 @@ SilphCo2FScientist1Text2:
 	done
 
 SilphCo2FScientist2Text:
-	ctxt "I'm coding! Don't"
+	text "I'm coding! Don't"
 	line "break my concen-"
 	cont "tration!"
 	done
 
 SilphCo2FSilphEmployee1Text:
-	ctxt "We used to use"
+	text "We used to use"
 	line "teleporters to get"
 
 	para "around, but they"
@@ -78,7 +78,7 @@ SilphCo2FSilphEmployee1Text:
 	done
 
 SilphCo2FSilphEmployee2Text:
-	ctxt "We're always work-"
+	text "We're always work-"
 	line "ing on new TMs."
 
 	para "Some have been"
@@ -92,10 +92,10 @@ SilphCo2FSilphEmployee2Text:
 	done
 
 SilphCo2FDeptSignText:
-	ctxt "Silph Co. 2F"
+	text "Silph Co. 2F"
 	line "Software Dev."
 	done
 
 SilphCo2FElevatorText:
-	ctxt "Out Of Order"
+	text "Out Of Order"
 	done

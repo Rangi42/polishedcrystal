@@ -35,7 +35,7 @@ GourmetManiacScript:
 	special PlaceMoneyTopRight
 	jumpthisopenedtext
 
-	ctxt "Merci! Thank you!"
+	text "Merci! Thank you!"
 
 	para "With this, I can"
 	line "create something"
@@ -43,7 +43,7 @@ GourmetManiacScript:
 	done
 
 .GreetingText:
-	ctxt "Hi there! I am"
+	text "Hi there! I am"
 	line "a gourmet Baker!"
 
 	para "I cook wonderful"
@@ -57,22 +57,22 @@ GourmetManiacScript:
 	done
 
 .OfferText:
-	ctxt "Oh, it smells so"
+	text "Oh, it smells so"
 	line "good!"
 
 	para "Would you accept"
 	line "¥"
 	text_decimal hMoneyTemp, 3, 7
-	ctxt " for it?"
+	text " for it?"
 	done
 
 .WrongItemText:
-	ctxt "Hmmm… This is not"
+	text "Hmmm… This is not"
 	line "quite what I'm"
 	cont "looking for."
 	done
 
 .NoItemText:
-	ctxt "Aww… Well,"
+	text "Aww… Well,"
 	line "that's OK."
 	done

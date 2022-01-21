@@ -20,7 +20,7 @@ CeladonHotel2F_MapScriptHeader:
 	object_event 11,  2, SPRITE_POKEFAN_F, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_COMMAND, jumptextfaceplayer, CeladonHotel2FTeacherText, -1
 
 CeladonHotel2FTeacherText:
-	ctxt "I'm on a surprise"
+	text "I'm on a surprise"
 	line "visit to see my"
 	cont "son at university!"
 
@@ -29,13 +29,13 @@ CeladonHotel2FTeacherText:
 	done
 
 CeladonHotel2FRoom1Text:
-	ctxt "Room 1"
+	text "Room 1"
 	done
 
 CeladonHotel2FRoom2Text:
-	ctxt "Room 2"
+	text "Room 2"
 	done
 
 CeladonHotel2FRoom3Text:
-	ctxt "Room 3"
+	text "Room 3"
 	done

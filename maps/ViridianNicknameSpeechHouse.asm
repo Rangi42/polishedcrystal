@@ -18,7 +18,7 @@ ViridianNicknameSpeechHouse_MapScriptHeader:
 	pokemon_event  6,  3, RATTATA, SPRITEMOVEDATA_POKEMON, -1, -1, PAL_NPC_PURPLE, RatteyText, -1
 
 ViridianNicknameSpeechHousePokefanMText:
-	ctxt "Do you put a lot"
+	text "Do you put a lot"
 	line "of thought into"
 
 	para "naming your"
@@ -32,15 +32,15 @@ ViridianNicknameSpeechHousePokefanMText:
 	done
 
 ViridianNicknameSpeechHouseLassText:
-	ctxt "They're Hooty--"
+	text "They're Hooty--"
 	line "a Hoothoot--and"
 	cont "Rattey--a Rattata."
 	done
 
 HootyText:
-	ctxt "Hooty: Hoot!"
+	text "Hooty: Hoot!"
 	done
 
 RatteyText:
-	ctxt "Rattey: Kikiii!"
+	text "Rattey: Kikiii!"
 	done

@@ -277,7 +277,7 @@ BillsGrandpa:
 .WrongPokemon:
 	jumpthisopenedtext
 
-	ctxt "Hm?"
+	text "Hm?"
 
 	para "That's not the"
 	line "#mon that I was"
@@ -313,7 +313,7 @@ BillsSister:
 .Refused:
 	jumpthisopenedtext
 
-	ctxt "My brother made"
+	text "My brother made"
 	line "the PC #mon"
 	cont "storage system."
 
@@ -323,7 +323,7 @@ BillsSister:
 	done
 
 BillsGrandpaIntroText:
-	ctxt "Hm? You know Bill?"
+	text "Hm? You know Bill?"
 	line "He's my grandson."
 
 	para "He's in Kanto. He"
@@ -334,26 +334,26 @@ BillsGrandpaIntroText:
 	done
 
 BillsGrandpaAskToSeeMonText:
-	ctxt "If you have that"
+	text "If you have that"
 	line "#mon, may I see"
 	cont "it, please?"
 	done
 
 BillsGrandpaExcitedToSeeText:
-	ctxt "You will show me?"
+	text "You will show me?"
 	line "How good of you!"
 	done
 
 BillsGrandpaYouDontHaveItTextText:
-	ctxt "You don't have it?"
+	text "You don't have it?"
 	line "That's too bad…"
 	done
 
 BillsGrandpaShownPokemonText:
-	ctxt "Ah, so that is"
+	text "Ah, so that is"
 	line ""
 	text_ram wStringBuffer3
-	ctxt "?"
+	text "?"
 
 	para "Isn't it cute!"
 	line "That's so kind of"
@@ -361,19 +361,19 @@ BillsGrandpaShownPokemonText:
 	done
 
 BillsGrandpaTokenOfAppreciationText:
-	ctxt "Thanks!"
+	text "Thanks!"
 
 	para "This is a token of"
 	line "my appreciation."
 	done
 
 BillsGrandpaComeAgainText:
-	ctxt "Come visit again"
+	text "Come visit again"
 	line "sometime."
 	done
 
 BillsGrandpaShownAllThePokemonText:
-	ctxt "Thanks for showing"
+	text "Thanks for showing"
 	line "me so many cute"
 	cont "#mon."
 
@@ -385,7 +385,7 @@ BillsGrandpaShownAllThePokemonText:
 	done
 
 BillsGrandpaSnubbullText:
-	ctxt "My grandson Bill"
+	text "My grandson Bill"
 	line "told me about a"
 
 	para "short, pink canine"
@@ -394,7 +394,7 @@ BillsGrandpaSnubbullText:
 	done
 
 BillsGrandpaTogepiText:
-	ctxt "Do you know of a"
+	text "Do you know of a"
 	line "#mon that has a"
 
 	para "shell covered in"
@@ -407,7 +407,7 @@ BillsGrandpaTogepiText:
 	done
 
 BillsGrandpaMurkrowText:
-	ctxt "Do you know of a"
+	text "Do you know of a"
 	line "bird #mon that"
 
 	para "has a crooked"
@@ -422,7 +422,7 @@ BillsGrandpaMurkrowText:
 	done
 
 BillsGrandpaOddishText:
-	ctxt "Ah, my grandson"
+	text "Ah, my grandson"
 	line "mentioned a round,"
 
 	para "blue #mon that"
@@ -431,7 +431,7 @@ BillsGrandpaOddishText:
 	done
 
 BillsGrandpaJigglypuffText:
-	ctxt "Bill told me about"
+	text "Bill told me about"
 	line "a pink #mon"
 
 	para "with a hypnotic"
@@ -439,7 +439,7 @@ BillsGrandpaJigglypuffText:
 	done
 
 BillsGrandpaBellsproutText:
-	ctxt "My grandson Bill"
+	text "My grandson Bill"
 	line "mentioned a green"
 
 	para "#mon that walks"
@@ -447,7 +447,7 @@ BillsGrandpaBellsproutText:
 	done
 
 BillsGrandpaStaryuText:
-	ctxt "Do you know of a"
+	text "Do you know of a"
 	line "sea #mon that"
 
 	para "has a red sphere"
@@ -465,7 +465,7 @@ BillsGrandpaStaryuText:
 	done
 
 BillsGrandpaGrowlitheText:
-	ctxt "Bill told me about"
+	text "Bill told me about"
 	line "a #mon that is"
 
 	para "very loyal to its"
@@ -476,7 +476,7 @@ BillsGrandpaGrowlitheText:
 	done
 
 BillsGrandpaPichuText:
-	ctxt "Do you know that"
+	text "Do you know that"
 	line "hugely popular"
 	cont "#mon?"
 
@@ -492,7 +492,7 @@ BillsGrandpaPichuText:
 	done
 
 BillsMomText_BeforeEcruteak:
-	ctxt "Oh, you collect"
+	text "Oh, you collect"
 	line "#mon? My son"
 	cont "Bill is an expert."
 
@@ -510,7 +510,7 @@ BillsMomText_BeforeEcruteak:
 	done
 
 BillsMomText_AfterEcruteak:
-	ctxt "My husband was"
+	text "My husband was"
 	line "once known as a"
 
 	para "#Maniac."
@@ -527,7 +527,7 @@ BillsMomText_AfterEcruteak:
 	done
 
 BillsSisterUsefulNumberText:
-	ctxt "Are you a trainer?"
+	text "Are you a trainer?"
 
 	para "I've got a useful"
 	line "phone number for"
@@ -535,17 +535,17 @@ BillsSisterUsefulNumberText:
 	done
 
 RecordedBillsNumberText:
-	ctxt "<PLAYER> recorded"
+	text "<PLAYER> recorded"
 	line "Bill's number."
 	done
 
 BillsSisterPhoneFullText:
-	ctxt "You can't record"
+	text "You can't record"
 	line "any more numbers."
 	done
 
 BillsSisterStorageSystemText:
-	ctxt "My big brother"
+	text "My big brother"
 	line "Bill made the PC"
 
 	para "#mon storage"

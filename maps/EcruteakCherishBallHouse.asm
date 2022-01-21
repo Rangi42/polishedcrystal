@@ -29,7 +29,7 @@ EcruteakCherishBallHouseGrampsScript:
 	jumpthisopenedtext
 
 .Text2:
-	ctxt "I will always"
+	text "I will always"
 	line "cherish the time"
 
 	para "I spent with"
@@ -37,7 +37,7 @@ EcruteakCherishBallHouseGrampsScript:
 	done
 
 .Text1:
-	ctxt "I've lived a long"
+	text "I've lived a long"
 	line "life, and I have"
 
 	para "memories that I"
@@ -50,7 +50,7 @@ EcruteakCherishBallHouseGrampsScript:
 	done
 
 EcruteakCherishBallHouseGrannyText:
-	ctxt "Fashions change"
+	text "Fashions change"
 	line "over the years,"
 
 	para "but Ecruteak re-"

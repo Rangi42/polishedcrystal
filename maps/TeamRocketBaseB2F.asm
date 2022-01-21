@@ -194,7 +194,7 @@ LanceHealsScript:
 GenericTrainerGruntM17:
 	generictrainer GRUNTM, 17, EVENT_BEAT_ROCKET_GRUNTM_17, GruntM17SeenText, GruntM17BeatenText
 
-	ctxt "Heh, I'm just a"
+	text "Heh, I'm just a"
 	line "Grunt."
 
 	para "I don't know the"
@@ -205,7 +205,7 @@ GenericTrainerGruntM17:
 GenericTrainerGruntM18:
 	generictrainer GRUNTM, 18, EVENT_BEAT_ROCKET_GRUNTM_18, GruntM18SeenText, GruntM18BeatenText
 
-	ctxt "I got wiped out on"
+	text "I got wiped out on"
 	line "the last mission"
 	cont "by a kid too."
 
@@ -222,7 +222,7 @@ GenericTrainerGruntM18:
 GenericTrainerGruntM19:
 	generictrainer GRUNTM, 19, EVENT_BEAT_ROCKET_GRUNTM_19, GruntM19SeenText, GruntM19BeatenText
 
-	ctxt "Heh, only the boss"
+	text "Heh, only the boss"
 	line "knows the password"
 	cont "for that door."
 
@@ -341,7 +341,7 @@ TeamRocketBaseB2FTransmitterScript:
 	iftrue_jumptext .DeactivateTransmitterText
 	jumpthistext
 
-	ctxt "It's the radio"
+	text "It's the radio"
 	line "transmitter that's"
 
 	para "sending the"
@@ -352,7 +352,7 @@ TeamRocketBaseB2FTransmitterScript:
 	done
 
 .DeactivateTransmitterText:
-	ctxt "The radio trans-"
+	text "The radio trans-"
 	line "mitter has finally"
 
 	para "stopped its evil"
@@ -542,12 +542,12 @@ RocketBasePlayerLeavesElectrodesMovement3:
 	step_end
 
 RocketBaseExecutiveFHoldItText:
-	ctxt "Hold it right"
+	text "Hold it right"
 	line "there!"
 	done
 
 RocketBaseBossFThrashText:
-	ctxt "We can't have a"
+	text "We can't have a"
 	line "brat like you on"
 	cont "the loose."
 
@@ -567,13 +567,13 @@ RocketBaseBossFThrashText:
 	done
 
 RocketBaseLanceShareFunText:
-	ctxt "Hey! Don't be so"
+	text "Hey! Don't be so"
 	line "selfish. Spread"
 	cont "the fun around."
 	done
 
 RocketBaseBossDontMeddleText:
-	ctxt "What? You had an"
+	text "What? You had an"
 	line "accomplice?"
 
 	para "Where is your"
@@ -590,7 +590,7 @@ RocketBaseBossDontMeddleText:
 	done
 
 RocketBaseBossWinText:
-	ctxt "Tch, you really"
+	text "Tch, you really"
 	line "are strong."
 
 	para "It's too bad."
@@ -603,7 +603,7 @@ RocketBaseBossWinText:
 	done
 
 RocketBaseBossRetreatText:
-	ctxt "…This hideout is"
+	text "…This hideout is"
 	line "done for…"
 
 	para "But that's fine."
@@ -631,7 +631,7 @@ RocketBaseBossRetreatText:
 	done
 
 RocketBaseLancePostBattleText:
-	ctxt "Lance: That did"
+	text "Lance: That did"
 	line "it. We defeated"
 
 	para "all the Rockets"
@@ -645,7 +645,7 @@ RocketBaseLancePostBattleText:
 	done
 
 RocketBaseLancePowerOffText:
-	ctxt "Sorry, <PLAYER>."
+	text "Sorry, <PLAYER>."
 	line "I saw how well you"
 
 	para "were doing, so I"
@@ -659,7 +659,7 @@ RocketBaseLancePowerOffText:
 	done
 
 RockerBaseLanceElectrodeFaintText:
-	ctxt "It's this machine"
+	text "It's this machine"
 	line "that's causing all"
 	cont "the problems."
 
@@ -689,12 +689,12 @@ RockerBaseLanceElectrodeFaintText:
 	done
 
 RocketBaseLancesSideText:
-	ctxt "Lance: Leave this"
+	text "Lance: Leave this"
 	line "side to me."
 	done
 
 RocketBaseLanceElectrodeDoneText:
-	ctxt "Lance: That odd"
+	text "Lance: That odd"
 	line "signal has finally"
 	cont "stopped."
 
@@ -716,7 +716,7 @@ RocketBaseLanceElectrodeDoneText:
 	done
 
 RocketBaseLanceWhirlpoolText:
-	ctxt "That's Thief."
+	text "That's Thief."
 	line "I trust you won't"
 
 	para "abuse it the way"
@@ -724,7 +724,7 @@ RocketBaseLanceWhirlpoolText:
 	done
 
 RocketBaseLanceMonMasterText:
-	ctxt "<PLAYER>…"
+	text "<PLAYER>…"
 
 	para "The journey to be-"
 	line "coming the #mon"
@@ -754,7 +754,7 @@ RocketBaseLanceMonMasterText:
 	done
 
 LanceHealsText1:
-	ctxt "Lance: Are you all"
+	text "Lance: Are you all"
 	line "right?"
 
 	para "Your #mon are"
@@ -766,13 +766,13 @@ LanceHealsText1:
 	done
 
 LanceHealsText2:
-	ctxt "Lance: <PLAYER>,"
+	text "Lance: <PLAYER>,"
 	line "let's give it our"
 	cont "best for #mon."
 	done
 
 GruntM17SeenText:
-	ctxt "The door won't"
+	text "The door won't"
 	line "open?"
 
 	para "Well, duh."
@@ -783,11 +783,11 @@ GruntM17SeenText:
 	done
 
 GruntM17BeatenText:
-	ctxt "What? I lost?"
+	text "What? I lost?"
 	done
 
 GruntM18SeenText:
-	ctxt "Oh, a kid? I don't"
+	text "Oh, a kid? I don't"
 	line "really like this,"
 
 	para "but eliminate you"
@@ -795,27 +795,27 @@ GruntM18SeenText:
 	done
 
 GruntM18BeatenText:
-	ctxt "I knew I'd lose…"
+	text "I knew I'd lose…"
 	done
 
 GruntM19SeenText:
-	ctxt "You rotten little"
+	text "You rotten little"
 	line "pest!"
 	done
 
 GruntM19BeatenText:
-	ctxt "Grrrr…"
+	text "Grrrr…"
 	done
 
 RocketBaseDoorNoPasswordText:
-	ctxt "The door's closed…"
+	text "The door's closed…"
 
 	para "It needs a pass-"
 	line "word to open."
 	done
 
 RocketBaseDoorKnowPasswordText:
-	ctxt "The door's closed…"
+	text "The door's closed…"
 
 	para "<PLAYER> entered"
 	line "the password."

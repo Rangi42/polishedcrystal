@@ -1421,7 +1421,7 @@ ManageBoxes:
 	jmp .loop
 
 .ContinueBoxUse:
-	ctxt "Continue Box"
+	text "Continue Box"
 	line "operations?"
 	done
 
@@ -2101,7 +2101,7 @@ BillsPC_Moves:
 	jr BillsPC_ReturnFromTransistion
 
 .CantCheckEggMoves:
-	ctxt "You can't check"
+	text "You can't check"
 	line "an Egg's moves!"
 	prompt
 
@@ -2472,18 +2472,18 @@ BillsPC_UpdateStorage_CheckMewtwo:
 	jmp PopBCDEHL
 
 BillsPC_CantPutMailIntoPackText:
-	ctxt "The Mail would"
+	text "The Mail would"
 	line "lose its message."
 	prompt
 
 BillsPC_PackFullText:
-	ctxt "The Bag is full…"
+	text "The Bag is full…"
 	prompt
 
 BillsPC_MovedToPackText:
 	text "Moved "
 	text_ram wStringBuffer1
-	ctxt ""
+	text ""
 	line "to Bag."
 	prompt
 
@@ -2546,13 +2546,13 @@ BillsPC_Item:
 
 .ItemIsSelected:
 	text_ram wStringBuffer2
-	ctxt " is"
+	text " is"
 	line "selected."
 	done
 
 .ItCanHoldAnItem:
 	text_ram wTempMonNickname
-	ctxt " can"
+	text " can"
 	line "hold an item."
 	done
 
@@ -2620,7 +2620,7 @@ BillsPC_Item:
 	db -1
 
 BillsPC_EggsCantHoldItemsText:
-	ctxt "Eggs can't hold"
+	text "Eggs can't hold"
 	line "items."
 	prompt
 
@@ -2809,34 +2809,34 @@ BillsPC_ReleaseAll:
 	jmp CloseWindow
 
 .ReallyReleaseBox:
-	ctxt "Really release the"
+	text "Really release the"
 	line "entire box?"
 	done
 
 .CantRecallReleasedMons:
-	ctxt "You can't recall"
+	text "You can't recall"
 	line "released #mon."
 	cont "Are you sure?"
 	done
 
 .NothingThere:
-	ctxt "This box is empty."
+	text "This box is empty."
 	prompt
 
 .NothingReleased:
-	ctxt "You can't release"
+	text "You can't release"
 	line "Eggs or #mon"
 	cont "with HM moves."
 	prompt
 
 .ReleasedXMon:
-	ctxt "Released "
+	text "Released "
 	text_decimal wTextDecimalByte, 1, 2
 	line "#mon."
 	prompt
 
 .TheRestWasnt:
-	ctxt "The rest are Eggs"
+	text "The rest are Eggs"
 	line "or know HM moves."
 	prompt
 
@@ -2892,17 +2892,17 @@ BillsPC_Release:
 	jmp BillsPC_PrintText
 
 .CantReleaseEgg:
-	ctxt "You can't release"
+	text "You can't release"
 	line "an Egg!"
 	prompt
 
 .CantReleaseHMMons:
-	ctxt "You can't release"
+	text "You can't release"
 	line "<PK><MN> with HM moves!"
 	prompt
 
 .ReallyReleaseMon:
-	ctxt "Really release"
+	text "Really release"
 	line ""
 	text_ram wTempMonNickname
 	text "?"
@@ -2910,7 +2910,7 @@ BillsPC_Release:
 
 .WasReleasedOutside:
 	text_ram wStringBuffer1
-	ctxt " was"
+	text " was"
 	line "released outside."
 	cont "Bye, "
 	text_ram wStringBuffer1
@@ -2970,7 +2970,7 @@ BillsPC_Theme:
 	jmp BillsPC_RefreshTheme
 
 .PickAThemeText:
-	ctxt "Please"
+	text "Please"
 	line "pick a theme."
 	done
 
@@ -3303,30 +3303,30 @@ BillsPC_SwapStorage:
 	ret
 
 .PartyIsFull:
-	ctxt "The party is full."
+	text "The party is full."
 	prompt
 
 .BoxIsFull:
-	ctxt "The box is full."
+	text "The box is full."
 	prompt
 
 .IsHoldingMail:
-	ctxt "Held Mail must be"
+	text "Held Mail must be"
 	line "removed first."
 	prompt
 
 .CantStoreMail:
-	ctxt "Can't place Mail in"
+	text "Can't place Mail in"
 	line "storage."
 	prompt
 
 BillsPC_LastPartyMon:
-	ctxt "That's your last"
+	text "That's your last"
 	line "healthy #mon!"
 	prompt
 
 BillsPC_MustSaveToContinue:
-	ctxt "Save the game to"
+	text "Save the game to"
 	line "do this?"
 	done
 

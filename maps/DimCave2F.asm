@@ -40,7 +40,7 @@ DimCave2FBouldersLand:
 GenericTrainerEngineerLang:
 	generictrainer ENGINEER, LANG, EVENT_BEAT_ENGINEER_LANG, .SeenText, .BeatenText
 
-	ctxt "Three years ago"
+	text "Three years ago"
 	line "the Power Plant"
 	cont "was a wreck."
 
@@ -52,7 +52,7 @@ GenericTrainerEngineerLang:
 	done
 
 .SeenText:
-	ctxt "We mined ore from"
+	text "We mined ore from"
 	line "this mountain to"
 
 	para "refurbish the"
@@ -60,13 +60,13 @@ GenericTrainerEngineerLang:
 	done
 
 .BeatenText:
-	ctxt "A power failure!"
+	text "A power failure!"
 	done
 
 GenericTrainerHikerDerrick:
 	generictrainer HIKER, DERRICK, EVENT_BEAT_HIKER_DERRICK, .SeenText, .BeatenText
 
-	ctxt "It goes without"
+	text "It goes without"
 	line "saying, but I love"
 
 	para "hiking with my"
@@ -74,18 +74,18 @@ GenericTrainerHikerDerrick:
 	done
 
 .SeenText:
-	ctxt "♪ A-hiking we"
+	text "♪ A-hiking we"
 	line "will go, a-hiking"
 	cont "we will go… ♪"
 	done
 
 .BeatenText:
-	ctxt "♪ Eee-iiii-ah-"
+	text "♪ Eee-iiii-ah-"
 	line "dee-oh, a-hiking"
 	cont "we will go! ♪"
 	done
 
 DimCaveFallenBoulderText:
-	ctxt "It's stuck on the"
+	text "It's stuck on the"
 	line "button."
 	done
