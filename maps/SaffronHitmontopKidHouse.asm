@@ -40,13 +40,8 @@ SaffronHitmontopKidHouseChildScript:
 	done
 
 .Text2:
-<<<<<<< HEAD
-	ctxt "Top… Top? TOP!"
-	line "HITMONTOP!"
-=======
 	text "Top… Top? TOP!"
-	line "HITMONTOP! ♥"
->>>>>>> 931c97da6e1b93e60670a6ef3c598ac9ee8a2a17
+	line "HITMONTOP!"
 	done
 
 .Text3:

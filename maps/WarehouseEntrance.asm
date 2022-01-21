@@ -175,16 +175,6 @@ GenericTrainerPokemaniacDonald:
 	cont "#mon."
 	done
 
-<<<<<<< HEAD
-=======
-GenericTrainerCosplayerClara:
-	generictrainer COSPLAYER, CLARA, EVENT_BEAT_COSPLAYER_CLARA, CosplayerClaraSeenText, CosplayerClaraBeatenText
-
-	text "I made this cos-"
-	line "tume myself!"
-	done
-
->>>>>>> 931c97da6e1b93e60670a6ef3c598ac9ee8a2a17
 BitterMerchantScript:
 	readvar VAR_WEEKDAY
 	ifequal SUNDAY, .Open
@@ -439,21 +429,6 @@ PokemaniacDonaldBeatenText:
 	line "That makes me mad!"
 	done
 
-<<<<<<< HEAD
-=======
-CosplayerClaraSeenText:
-	text "Pix! Vul, pix! ♥"
-	done
-
-CosplayerClaraBeatenText:
-	text "You thought I was"
-	line "a #mon?"
-
-	para "Nope! It's just"
-	line "quality cosplay."
-	done
-
->>>>>>> 931c97da6e1b93e60670a6ef3c598ac9ee8a2a17
 GoldenrodUndergroundTheDoorsLockedText:
 	text "The door's locked…"
 	done

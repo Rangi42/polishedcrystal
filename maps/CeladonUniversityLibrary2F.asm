@@ -46,20 +46,6 @@ CeladonUniversityLibrary2F_MapScriptHeader:
 	object_event 11, 10, SPRITE_SCHOOLBOY, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, CeladonUniversityLibrary2FYoungsterText, -1
 	itemball_event  0,  1, TIMER_BALL, 1, EVENT_CELADON_UNIVERSITY_LIBRARY_2F_TIMER_BALL
 
-<<<<<<< HEAD
-=======
-CeladonUniversityLibrary2FCosplayerText:
-	text "It's great being"
-	line "in the city!"
-
-	para "I can wear my cos-"
-	line "tume in public and"
-
-	para "people don't bat"
-	line "an eye!"
-	done
-
->>>>>>> 931c97da6e1b93e60670a6ef3c598ac9ee8a2a17
 CeladonUniversityLibrary2FLassText:
 	text "Never judge a book"
 	line "by its cover."

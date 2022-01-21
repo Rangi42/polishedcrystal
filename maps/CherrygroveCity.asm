@@ -383,14 +383,8 @@ SilverCherrygroveLossText:
 	line "waste of time."
 	done
 
-<<<<<<< HEAD
 CherrygroveRivalTextAfter:
-	ctxt "…… …… ……"
-=======
-CherrygroveRivalTextAfter1:
 	text "…… …… ……"
-
->>>>>>> 931c97da6e1b93e60670a6ef3c598ac9ee8a2a17
 	para "You want to know"
 	line "who I am?"
 
@@ -400,17 +394,6 @@ CherrygroveRivalTextAfter1:
 	cont "trainer."
 	done
 
-<<<<<<< HEAD
-=======
-CherrygroveRivalTextAfter2:
-	text "Hey! Give back my"
-	line "Trainer Card!"
-
-	para "Oh no… You saw"
-	line "my name…"
-	done
-
->>>>>>> 931c97da6e1b93e60670a6ef3c598ac9ee8a2a17
 CherrygroveTeacherText_HaveMapCard:
 	text "When you're with"
 	line "#mon, going"

@@ -96,21 +96,6 @@ GenericTrainerSwimmermHarold:
 	line "swallow you up."
 	done
 
-<<<<<<< HEAD
-=======
-GenericTrainerCosplayerBrooke:
-	generictrainer COSPLAYER, BROOKE, EVENT_BEAT_COSPLAYER_BROOKE, CosplayerBrookeSeenText, CosplayerBrookeBeatenText
-
-	text "I made this outfit"
-	line "for a fancy dress"
-	cont "party, but I love"
-
-	para "it so much that I"
-	line "wear it elsewhere"
-	cont "too."
-	done
-
->>>>>>> 931c97da6e1b93e60670a6ef3c598ac9ee8a2a17
 Route19Fisher1Script:
 	checkevent EVENT_CINNABAR_ROCKS_CLEARED
 	iffalse_jumptextfaceplayer Route19Fisher1Text
@@ -167,20 +152,6 @@ SwimmermHaroldBeatenText: ; text > text
 	text "Glub…"
 	done
 
-<<<<<<< HEAD
-=======
-CosplayerBrookeSeenText:
-	text "Dressing up is"
-	line "such fun!"
-	done
-
-CosplayerBrookeBeatenText:
-	text "You'd better not"
-	line "have damaged my"
-	cont "costume!"
-	done
-
->>>>>>> 931c97da6e1b93e60670a6ef3c598ac9ee8a2a17
 Route19Fisher1Text:
 	text "Sorry. This road"
 	line "is closed for"

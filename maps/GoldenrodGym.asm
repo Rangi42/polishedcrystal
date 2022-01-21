@@ -309,13 +309,8 @@ JoWhitneyCriesText:
 	done
 
 BeautyVictoriaSeenText:
-<<<<<<< HEAD
-	ctxt "Oh, you are a cute"
-	line "little trainer!"
-=======
 	text "Oh, you are a cute"
-	line "little trainer! ♥"
->>>>>>> 931c97da6e1b93e60670a6ef3c598ac9ee8a2a17
+	line "little trainer!"
 
 	para "I like you, but I"
 	line "won't hold back!"
