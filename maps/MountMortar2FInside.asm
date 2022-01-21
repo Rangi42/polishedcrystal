@@ -24,7 +24,7 @@ MountMortar2FInside_MapScriptHeader:
 GenericTrainerSupernerdHugh:
 	generictrainer SUPER_NERD, HUGH, EVENT_BEAT_SUPER_NERD_HUGH, SupernerdHughSeenText, SupernerdHughBeatenText
 
-	ctxt "I'm investigating"
+	text "I'm investigating"
 	line "Mt.Mortar, but my"
 	cont "pal's gone AWOL."
 
@@ -36,10 +36,10 @@ GenericTrainerSupernerdHugh:
 	done
 
 SupernerdHughSeenText:
-	ctxt "Yo! Markus!"
+	text "Yo! Markus!"
 	done
 
 SupernerdHughBeatenText:
-	ctxt "Sorry, my mistake."
+	text "Sorry, my mistake."
 	done
 

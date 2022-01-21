@@ -44,28 +44,28 @@ Script_ChangeLuckyIslandMap:
 GenericTrainerFisherHall:
 	generictrainer FISHER, HALL, EVENT_BEAT_FISHER_HALL, .SeenText, .BeatenText
 
-	ctxt "You just don't"
+	text "You just don't"
 	line "appreciate my"
 	cont "sense of humor."
 	done
 
 .SeenText:
-	ctxt "Dopefish lives!"
+	text "Dopefish lives!"
 	done
 
 .BeatenText:
-	ctxt "Swim swim hungry,"
+	text "Swim swim hungry,"
 	line "swim swim hungry!"
 	done
 
 GenericTrainerBakerMargaret:
 	generictrainer BAKER, MARGARET, EVENT_BEAT_BAKER_MARGARET, .SeenText, .BeatenText
 
-	ctxt "I'm eggs-hausted."
+	text "I'm eggs-hausted."
 	done
 
 .SeenText:
-	ctxt "If an egg tumbles"
+	text "If an egg tumbles"
 	line "downhill, does"
 
 	para "that make it an"
@@ -73,14 +73,14 @@ GenericTrainerBakerMargaret:
 	done
 
 .BeatenText:
-	ctxt "Guess I'm the"
+	text "Guess I'm the"
 	line "eggroll now."
 	done
 
 GenericTrainerBakerOlga:
 	generictrainer BAKER, OLGA, EVENT_BEAT_BAKER_OLGA, .SeenText, .BeatenText
 
-	ctxt "The first step to"
+	text "The first step to"
 	line "healthy living is"
 
 	para "to eat a good"
@@ -88,45 +88,45 @@ GenericTrainerBakerOlga:
 	done
 
 .SeenText:
-	ctxt "Hey, you!"
+	text "Hey, you!"
 	line "Do you eat a good"
 	cont "breakfast every"
 	cont "day?"
 	done
 
 .BeatenText:
-	ctxt "Wow! Looks like"
+	text "Wow! Looks like"
 	line "you do."
 	done
 
 GenericTrainerArtistReina:
 	generictrainer ARTIST, REINA, EVENT_BEAT_ARTIST_REINA, .SeenText, .BeatenText
 
-	ctxt "I'll add a happy"
+	text "I'll add a happy"
 	line "little tree to"
 	cont "cover that up."
 	done
 
 .SeenText:
-	ctxt "This sunny meadow"
+	text "This sunny meadow"
 	line "will make a lovely"
 	cont "painting!"
 	done
 
 .BeatenText:
-	ctxt "My brush slipped!"
+	text "My brush slipped!"
 	done
 
 GenericTrainerArtistAlina:
 	generictrainer ARTIST, ALINA, EVENT_BEAT_ARTIST_ALINA, .SeenText, .BeatenText
 
-	ctxt "I wonder what"
+	text "I wonder what"
 	line "caused this island"
 	cont "to appear?"
 	done
 
 .SeenText:
-	ctxt "This island hardly"
+	text "This island hardly"
 	line "ever appears."
 
 	para "I was so lucky to"
@@ -134,19 +134,19 @@ GenericTrainerArtistAlina:
 	done
 
 .BeatenText:
-	ctxt "My luck ran out…"
+	text "My luck ran out…"
 	done
 
 GenericTrainerSightseersLiandsu1:
 	generictrainer SIGHTSEERS, LIANDSU1, EVENT_BEAT_SIGHTSEERS_LI_AND_SU, .SeenText, .BeatenText
 
-	ctxt "Li: Su and I keep"
+	text "Li: Su and I keep"
 	line "arguing about"
 	cont "this."
 	done
 
 .SeenText:
-	ctxt "Li: What came"
+	text "Li: What came"
 	line "first?"
 
 	para "The #mon or"
@@ -154,20 +154,20 @@ GenericTrainerSightseersLiandsu1:
 	done
 
 .BeatenText:
-	ctxt "Li: I say it's the"
+	text "Li: I say it's the"
 	line "#mon!"
 	done
 
 GenericTrainerSightseersLiandsu2:
 	generictrainer SIGHTSEERS, LIANDSU2, EVENT_BEAT_SIGHTSEERS_LI_AND_SU, .SeenText, .BeatenText
 
-	ctxt "Su: Are there any"
+	text "Su: Are there any"
 	line "#mon that don't"
 	cont "come from Eggs?"
 	done
 
 .SeenText:
-	ctxt "Su: What came"
+	text "Su: What came"
 	line "first?"
 
 	para "The #mon or"
@@ -175,7 +175,7 @@ GenericTrainerSightseersLiandsu2:
 	done
 
 .BeatenText:
-	ctxt "Su: I think the"
+	text "Su: I think the"
 	line "Egg came first!"
 	done
 
@@ -199,6 +199,6 @@ LuckyIslandLuckyEgg:
 	endtext
 
 .Text:
-	ctxt "<PLAYER> found"
+	text "<PLAYER> found"
 	line "Lucky Egg!"
 	done

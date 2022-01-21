@@ -58,14 +58,14 @@ BlackthornGym2FBoulders:
 	earthquake 80
 	jumpthistext
 
-	ctxt "The boulder fell"
+	text "The boulder fell"
 	line "through!"
 	done
 
 GenericTrainerCooltrainermCody:
 	generictrainer COOLTRAINERM, CODY, EVENT_BEAT_COOLTRAINERM_CODY, .SeenText, .BeatenText
 
-	ctxt "Members of our"
+	text "Members of our"
 	line "dragon-user clan"
 
 	para "can use dragon"
@@ -76,25 +76,25 @@ GenericTrainerCooltrainermCody:
 	done
 
 .SeenText:
-	ctxt "It's not as if we"
+	text "It's not as if we"
 	line "all use Dragon-"
 	cont "type #mon."
 	done
 
 .BeatenText:
-	ctxt "Rats! If only I"
+	text "Rats! If only I"
 	line "had a dragon!"
 	done
 
 GenericTrainerCooltrainerfFran:
 	generictrainer COOLTRAINERF, FRAN, EVENT_BEAT_COOLTRAINERF_FRAN, .SeenText, .BeatenText
 
-	ctxt "Uh-oh… Clair is"
+	text "Uh-oh… Clair is"
 	line "going to be mad…"
 	done
 
 .SeenText:
-	ctxt "I can't allow a"
+	text "I can't allow a"
 	line "nameless trainer"
 	cont "past me!"
 
@@ -103,5 +103,5 @@ GenericTrainerCooltrainerfFran:
 	done
 
 .BeatenText:
-	ctxt "Awww… I lost…"
+	text "Awww… I lost…"
 	done

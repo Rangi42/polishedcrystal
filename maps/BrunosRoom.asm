@@ -78,7 +78,7 @@ BrunoScript:
 	end
 
 .SeenText:
-	ctxt "I am Bruno of the"
+	text "I am Bruno of the"
 	line "Elite Four."
 
 	para "I always train to"
@@ -108,12 +108,12 @@ BrunoScript:
 	done
 
 .BeatenText:
-	ctxt "Why? How could we"
+	text "Why? How could we"
 	line "lose?"
 	done
 
 .AfterText:
-	ctxt "Having lost, I"
+	text "Having lost, I"
 	line "have no right to"
 	cont "say anything…"
 
@@ -122,7 +122,7 @@ BrunoScript:
 	done
 
 .SeenRematchText:
-	ctxt "Hello again."
+	text "Hello again."
 
 	para "As one of the"
 	line "Elite Four, I will"
@@ -138,7 +138,7 @@ BrunoScript:
 	done
 
 .AfterRematchText:
-	ctxt "We tried hard."
+	text "We tried hard."
 
 	para "Continue on!"
 	done

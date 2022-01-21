@@ -43,14 +43,14 @@ MrHyperScript:
 	jumpthisopenedtext
 
 .TextComeBackAnytime:
-	ctxt "Come back anytime!"
+	text "Come back anytime!"
 	line "Mr. Hyper will"
 	cont "always be hyped up"
 	cont "to see you!"
 	done
 
 .TextIntro:
-	ctxt "I'm Mr. Hyper!"
+	text "I'm Mr. Hyper!"
 	line "Want to know why?"
 
 	para "Because I can help"
@@ -73,13 +73,13 @@ MrHyperScript:
 	done
 
 .TextAskTrain:
-	ctxt "What do you say?"
+	text "What do you say?"
 	line "Want to try my"
 	cont "Hyper Training?"
 	done
 
 .TextNoBottleCaps:
-	ctxt "You don't have any"
+	text "You don't have any"
 	line "Bottle Caps?"
 
 	para "I know Fishermen"
@@ -88,19 +88,19 @@ MrHyperScript:
 	done
 
 .TextTrainWho:
-	ctxt "Hyper Train which"
+	text "Hyper Train which"
 	line "#mon?"
 	done
 
 .TextGotStronger:
-	ctxt "All done! My Hyper"
+	text "All done! My Hyper"
 	line "training improved"
 	cont ""
 	text_ram wStringBuffer1
-	ctxt "'s stats!"
+	text "'s stats!"
 	done
 
 .TextTrainSomeMore:
-	ctxt "Hyper Train more"
+	text "Hyper Train more"
 	line "#mon?"
 	done

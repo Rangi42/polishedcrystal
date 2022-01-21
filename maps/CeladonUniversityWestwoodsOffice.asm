@@ -32,13 +32,13 @@ CeladonUniversityWestwoodsOfficeChildScript:
 	jumpthisopenedtext
 
 .Text2:
-	ctxt "I'll just buy some"
+	text "I'll just buy some"
 	line "ramen in the cafe-"
 	cont "teria."
 	done
 
 .Text1:
-	ctxt "I was told there"
+	text "I was told there"
 	line "would be free"
 	cont "pizza here!"
 
@@ -59,7 +59,7 @@ endc
 	done
 
 CeladonUniversityWestwoodsOfficeBookText:
-	ctxt "Dear Diary,"
+	text "Dear Diary,"
 
 	para "My work compiling"
 	line "entries for the"
@@ -82,17 +82,17 @@ CeladonUniversityWestwoodsOfficeBookText:
 	done
 
 CeladonUniversityWestwoodsOfficeSignpost1Text:
-	ctxt "It's a portrait of"
+	text "It's a portrait of"
 	line "Westwood I."
 	done
 
 CeladonUniversityWestwoodsOfficeSignpost2Text:
-	ctxt "It's a portrait of"
+	text "It's a portrait of"
 	line "Westwood III."
 	done
 
 CeladonUniversityWestwoodsOfficeBookshelfText:
-	ctxt "The Complete Works"
+	text "The Complete Works"
 	line "of Prof.Westwood."
 
 	para "…Might give that"

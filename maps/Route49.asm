@@ -25,7 +25,7 @@ Route49_MapScriptHeader:
 	cuttree_event 20, 15, EVENT_ROUTE_49_CUT_TREE_2
 
 Route49LadyText:
-	ctxt "Look at the grass"
+	text "Look at the grass"
 	line "and trees here!"
 
 	para "Valencia is full"
@@ -33,7 +33,7 @@ Route49LadyText:
 	done
 
 Route49YoungsterText:
-	ctxt "This landscape"
+	text "This landscape"
 	line "makes me feel like"
 
 	para "an adventurer in"
@@ -44,7 +44,7 @@ Route49YoungsterText:
 GenericTrainerSightseermHari:
 	generictrainer SIGHTSEERM, HARI, EVENT_BEAT_SIGHTSEERM_HARI, .SeenText, .BeatenText
 
-	ctxt "I've been traveling"
+	text "I've been traveling"
 	line "a lot just to meet"
 
 	para "every #mon"
@@ -55,19 +55,19 @@ GenericTrainerSightseermHari:
 	done
 
 .SeenText:
-	ctxt "Hey! I came here"
+	text "Hey! I came here"
 	line "to meet Prof.Ivy!"
 	done
 
 .BeatenText:
-	ctxt "What? You already"
+	text "What? You already"
 	line "know her?"
 	done
 
 GenericTrainerTamerJordan:
 	generictrainer TAMER, JORDAN, EVENT_BEAT_TAMER_JORDAN, .SeenText, .BeatenText
 
-	ctxt "How did you tame"
+	text "How did you tame"
 	line "your #mon so"
 	cont "well?"
 
@@ -77,20 +77,20 @@ GenericTrainerTamerJordan:
 	done
 
 .SeenText:
-	ctxt "Be careful! #-"
+	text "Be careful! #-"
 	line "mon here can be"
 	cont "really wild!"
 	done
 
 .BeatenText:
-	ctxt "Whoa! Looks like"
+	text "Whoa! Looks like"
 	line "yours are wilder."
 	done
 
 GenericTrainerAromaLadyPeony:
 	generictrainer AROMA_LADY, PEONY, EVENT_BEAT_AROMA_LADY_PEONY, .SeenText, .BeatenText
 
-	ctxt "My Bellossom loves"
+	text "My Bellossom loves"
 	line "living on this"
 
 	para "peaceful little"
@@ -98,12 +98,12 @@ GenericTrainerAromaLadyPeony:
 	done
 
 .SeenText:
-	ctxt "Do you want to see"
+	text "Do you want to see"
 	line "my Bellossom?"
 	done
 
 .BeatenText:
-	ctxt "Aww… Bellossom"
+	text "Aww… Bellossom"
 	line "didn't want to"
 	cont "battle…"
 	done
@@ -111,7 +111,7 @@ GenericTrainerAromaLadyPeony:
 GenericTrainerGuitaristmGeddy:
 	generictrainer GUITARISTM, GEDDY, EVENT_BEAT_GUITARISTM_GEDDY, .SeenText, .BeatenText
 
-	ctxt "You think that I'm"
+	text "You think that I'm"
 	line "playing a guitar?"
 	cont "Wrong!"
 
@@ -120,7 +120,7 @@ GenericTrainerGuitaristmGeddy:
 	done
 
 .SeenText:
-	ctxt "It seems to me I"
+	text "It seems to me I"
 	line "could live my life"
 
 	para "a lot better than"
@@ -134,12 +134,12 @@ GenericTrainerGuitaristmGeddy:
 	done
 
 .BeatenText:
-	ctxt "Good battle!"
+	text "Good battle!"
 	line "I may write a"
 	cont "song about it."
 	done
 
 Route49SignText:
-	ctxt "Route 49"
+	text "Route 49"
 	line "Valencia Island"
 	done

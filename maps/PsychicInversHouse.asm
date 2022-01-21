@@ -80,7 +80,7 @@ PsychicInverScript:
 	sjump .Reward
 
 PsychicInverGreetingText:
-	ctxt "Oh. I wasn't ex-"
+	text "Oh. I wasn't ex-"
 	line "pecting a vistor"
 	cont "here. Hmm…"
 
@@ -98,7 +98,7 @@ PsychicInverGreetingText:
 	done
 
 PsychicInverNoText:
-	ctxt "Oh, I see… That's"
+	text "Oh, I see… That's"
 	line "too bad."
 
 	para "If you change your"
@@ -106,14 +106,14 @@ PsychicInverNoText:
 	done
 
 PsychicInverYesText:
-	ctxt "Super effective"
+	text "Super effective"
 	line "moves will not be"
 	cont "very effective,"
 	cont "and vice-versa."
 	done
 
 PsychicInverBeatenText:
-	ctxt "That battle may"
+	text "That battle may"
 	line "have tired me out"
 
 	para "even more than my"
@@ -121,30 +121,30 @@ PsychicInverBeatenText:
 	done
 
 InverseBattle0PointRewardText:
-	ctxt "I'm not sure if"
+	text "I'm not sure if"
 	line "you understand"
 	cont "Inverse Battles…"
 	done
 
 InverseBattle1_3PointRewardText:
-	ctxt "You understand"
+	text "You understand"
 	line "Inverse Battles…"
 	done
 
 InverseBattle4_6PointRewardText:
-	ctxt "You understand"
+	text "You understand"
 	line "Inverse Battles"
 	cont "pretty well."
 	done
 
 InverseBattle7_9PointRewardText:
-	ctxt "You understand"
+	text "You understand"
 	line "Inverse Battles"
 	cont "perfectly!"
 	done
 
 InverseBattle10PointRewardText:
-	ctxt "You're an expert at"
+	text "You're an expert at"
 	line "Inverse Battles."
 
 	para "I'm no match for"
@@ -152,14 +152,14 @@ InverseBattle10PointRewardText:
 	done
 
 PsychicInverZeroRewardText:
-	ctxt "Still, I'll give"
+	text "Still, I'll give"
 	line "you a little some-"
 	cont "thing, so be sure"
 	cont "to come try again!"
 	done
 
 PsychicInverRewardText:
-	ctxt "I've got a little"
+	text "I've got a little"
 	line "something for an"
 	cont "opponent like you!"
 
@@ -167,7 +167,7 @@ PsychicInverRewardText:
 	done
 
 PsychicInverTomorrowText:
-	ctxt "This strange power"
+	text "This strange power"
 	line "that reverses type"
 	cont "matchups…"
 
@@ -179,7 +179,7 @@ PsychicInverTomorrowText:
 	done
 
 PsychicInversHouseHexManiacText:
-	ctxt "My brother has a"
+	text "My brother has a"
 	line "mysterious power!"
 
 	para "He can reverse"

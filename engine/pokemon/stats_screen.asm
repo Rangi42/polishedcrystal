@@ -563,19 +563,23 @@ StatsScreen_LoadGFX:
 	ret
 
 .Status_Type:
-	db   "Status/"
-	next "Type/@"
+	text "Status/"
+	next "Type/"
+	done
 
 .OK_str:
-	db " OK@"
+	text " OK"
+	done
 
 .OT_ID_str:
-	db   "OT/"
-	next "<ID>№.@"
+	text "OT/"
+	next "<ID>№."
+	done
 
 .Rental_OT:
-	db "Rental"
-	next1 "#mon@"
+	text  "Rental"
+	next1 "#mon"
+	done
 
 .ExpPointStr:
 	db "Exp.Points@"
@@ -1017,30 +1021,35 @@ EggStatsScreen:
 	jmp PlaySFX
 
 EggString:
-	db   "Egg"
+	text "Egg"
 	next "OT/?????"
-	next "<ID>№.?????@"
+	next "<ID>№.?????"
+	done
 
 EggSoonString:
-	db   "It's making sounds"
+	text "It's making sounds"
 	next "inside. It's going"
-	next "to hatch soon!@"
+	next "to hatch soon!"
+	done
 
 EggCloseString:
-	db   "It moves around"
+	text "It moves around"
 	next "inside sometimes."
 	next "It must be close"
-	next "to hatching.@"
+	next "to hatching."
+	done
 
 EggMoreTimeString:
-	db   "Wonder what's"
+	text "Wonder what's"
 	next "inside? It needs"
-	next "more time, though.@"
+	next "more time, though."
+	done
 
 EggALotMoreTimeString:
-	db   "This Egg needs a"
+	text "This Egg needs a"
 	next "lot more time to"
-	next "hatch.@"
+	next "hatch."
+	done
 
 StatsScreen_AnimateEgg:
 	call StatsScreen_GetAnimationParam

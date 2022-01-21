@@ -63,7 +63,7 @@ PewterGymBrockScript:
 	setevent EVENT_GOT_TM48_ROCK_SLIDE
 	jumpthisopenedtext
 
-	ctxt "It can sometimes"
+	text "It can sometimes"
 	line "cause your foe to"
 	cont "flinch."
 	done
@@ -71,7 +71,7 @@ PewterGymBrockScript:
 GenericTrainerCamperJerry:
 	generictrainer CAMPER, JERRY, EVENT_BEAT_CAMPER_JERRY, CamperJerrySeenText, CamperJerryBeatenText
 
-	ctxt "Hey, you! Trainer"
+	text "Hey, you! Trainer"
 	line "from Johto! Brock"
 
 	para "is tough. He'll"
@@ -84,7 +84,7 @@ GenericTrainerCamperJerry:
 GenericTrainerHikerEdwin:
 	generictrainer HIKER, EDWIN, EVENT_BEAT_HIKER_EDWIN, HikerEdwinSeenText, HikerEdwinBeatenText
 
-	ctxt "Phew… Broken"
+	text "Phew… Broken"
 	line "in pieces."
 	done
 
@@ -102,7 +102,7 @@ PewterGymStatue:
 	jumpstd gymstatue2
 
 BrockIntroText:
-	ctxt "Brock: Wow, it's"
+	text "Brock: Wow, it's"
 	line "not often that we"
 
 	para "get a challenger"
@@ -127,7 +127,7 @@ BrockIntroText:
 	done
 
 BrockWinLossText:
-	ctxt "Brock: Your #-"
+	text "Brock: Your #-"
 	line "mon's powerful at-"
 	cont "tacks overcame my"
 	cont "rock-hard defense…"
@@ -140,12 +140,12 @@ BrockWinLossText:
 	done
 
 ReceivedBoulderBadgeText:
-	ctxt "<PLAYER> received"
+	text "<PLAYER> received"
 	line "the Boulder Badge."
 	done
 
 BrockBoulderBadgeText:
-	ctxt "Brock: <PLAYER>,"
+	text "Brock: <PLAYER>,"
 	line "thanks. I enjoyed"
 
 	para "battling you, even"
@@ -158,7 +158,7 @@ BrockBoulderBadgeText:
 	done
 
 BrockFightDoneText:
-	ctxt "Brock: The world"
+	text "Brock: The world"
 	line "is huge. There are"
 
 	para "still many strong"
@@ -171,7 +171,7 @@ BrockFightDoneText:
 	done
 
 CamperJerrySeenText:
-	ctxt "The trainers of"
+	text "The trainers of"
 	line "this Gym use Rock-"
 	cont "type #mon."
 
@@ -186,20 +186,20 @@ CamperJerrySeenText:
 	done
 
 CamperJerryBeatenText:
-	ctxt "I have to win"
+	text "I have to win"
 	line "these battles…"
 	done
 
-HikerEdwinSeenText: ; ctxt > text
+HikerEdwinSeenText: ; text > text
 	text "R-r-r-R-R--CRASH!"
 	done
 
-HikerEdwinBeatenText: ; ctxt > text
+HikerEdwinBeatenText: ; text > text
 	text "BOOM!"
 	done
 
 PewterGymGuyText:
-	ctxt "Yo! Champ in"
+	text "Yo! Champ in"
 	line "making! You're"
 
 	para "really rocking."
@@ -216,7 +216,7 @@ PewterGymGuyText:
 	done
 
 PewterGymGuyWinText:
-	ctxt "Yo! Champ in"
+	text "Yo! Champ in"
 	line "making! That Gym"
 
 	para "didn't give you"

@@ -18,7 +18,7 @@ GoldenrodDeptStore6F_MapScriptHeader:
 	object_event  8,  2, SPRITE_POKEMANIAC, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_COMMAND, jumptextfaceplayer, GoldenrodDeptStore6FSuperNerdText, -1
 
 GoldenrodDeptStore6FLassText:
-	ctxt "Do you listen to"
+	text "Do you listen to"
 	line "Lucky Channel?"
 
 	para "If you want to"
@@ -32,7 +32,7 @@ GoldenrodDeptStore6FLassText:
 	done
 
 GoldenrodDeptStore6FSuperNerdText:
-	ctxt "If you're tired,"
+	text "If you're tired,"
 	line "try the vending"
 	cont "machine's drinks."
 
@@ -41,7 +41,7 @@ GoldenrodDeptStore6FSuperNerdText:
 	done
 
 GoldenrodDeptStore6FDirectoryText:
-	ctxt "Take a Break from"
+	text "Take a Break from"
 	line "Shopping!"
 
 	para "6F Tranquil Square"

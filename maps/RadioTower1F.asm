@@ -131,7 +131,7 @@ RadioTower1FLuckyNumberManScript:
 	jumpthisopenedtext
 
 RadioTower1FLuckyNumberManComeAgainText:
-	ctxt "Please come back"
+	text "Please come back"
 	line "next week for the"
 	cont "next Lucky Number."
 	done
@@ -196,7 +196,7 @@ RadioTower1FRadioCardWomanScript:
 	playsound SFX_WRONG
 	jumpthisopenedtext
 
-	ctxt "Oh, dear."
+	text "Oh, dear."
 	line "Sorry, but you"
 
 	para "got it wrong."
@@ -206,7 +206,7 @@ RadioTower1FRadioCardWomanScript:
 GenericTrainerGruntM3:
 	generictrainer GRUNTM, 3, EVENT_BEAT_ROCKET_GRUNTM_3, GruntM3SeenText, GruntM3BeatenText
 
-	ctxt "You're too strong."
+	text "You're too strong."
 
 	para "Our plan could be"
 	line "ruined. I must"
@@ -248,30 +248,30 @@ RadioTower1FWhitneyLeaves2MovementData:
 	step_end
 
 RadioTower1FReceptionistWelcomeText:
-	ctxt "Welcome!"
+	text "Welcome!"
 	done
 
 RadioTower1FReceptionistNoToursText:
-	ctxt "Hello. I'm sorry,"
+	text "Hello. I'm sorry,"
 	line "but we're not"
 	cont "offering any tours"
 	cont "today."
 	done
 
 RadioTower1FLuckyNumberManAskToPlayText:
-	ctxt "Hi, are you here"
+	text "Hi, are you here"
 	line "for the Lucky Num-"
 	cont "ber Show?"
 	done
 
 IntroduceFelicityText:
-	ctxt "I'm Felicity,"
+	text "I'm Felicity,"
 	line "your attendant"
 	cont "today."
 	done
 
 ExplainLuckyNumberShowText:
-	ctxt "Want me to check"
+	text "Want me to check"
 	line "the ID numbers of"
 	cont "your #mon?"
 
@@ -280,24 +280,24 @@ ExplainLuckyNumberShowText:
 	done
 
 RadioTower1FLuckyNumberManThisWeeksIdIsText:
-	ctxt "This week's ID"
+	text "This week's ID"
 	line "number is "
 	text_ram wStringBuffer3
 	text "."
 	done
 
 RadioTower1FLuckyNumberManCheckIfMatchText:
-	ctxt "Let's see if you"
+	text "Let's see if you"
 	line "have a match."
 	done
 
-RadioTower1FLuckyNumberManDotDotDotText: ; ctxt > text
+RadioTower1FLuckyNumberManDotDotDotText: ; text > text
 	text "……"
 	line "……"
 	done
 
 WonFirstPlaceText:
-	ctxt "Wow! You have a"
+	text "Wow! You have a"
 	line "perfect match of"
 	cont "all five numbers!"
 
@@ -309,7 +309,7 @@ WonFirstPlaceText:
 	done
 
 WonSecondPlaceText:
-	ctxt "Hey! You've"
+	text "Hey! You've"
 	line "matched the last"
 	cont "four numbers!"
 
@@ -319,7 +319,7 @@ WonSecondPlaceText:
 	done
 
 WonThirdPlaceText:
-	ctxt "Hey! You've"
+	text "Hey! You've"
 	line "matched the last"
 	cont "three numbers!"
 
@@ -328,7 +328,7 @@ WonThirdPlaceText:
 	done
 
 WonFourthPlaceText:
-	ctxt "Ooh, you've"
+	text "Ooh, you've"
 	line "matched the last"
 	cont "two numbers."
 
@@ -337,7 +337,7 @@ WonFourthPlaceText:
 	done
 
 WonFifthPlaceText:
-	ctxt "Ooh, you've"
+	text "Ooh, you've"
 	line "matched the last"
 	cont "number."
 
@@ -347,12 +347,12 @@ WonFifthPlaceText:
 	done
 
 RadioTower1FLuckyNumberManNoneOfYourIDNumbersMatchText:
-	ctxt "Nope, none of your"
+	text "Nope, none of your"
 	line "ID numbers match."
 	done
 
 RadioTower1FLuckyNumberManNoRoomForYourPrizeText:
-	ctxt "You've got no room"
+	text "You've got no room"
 	line "for your prize."
 
 	para "Make room and come"
@@ -360,7 +360,7 @@ RadioTower1FLuckyNumberManNoRoomForYourPrizeText:
 	done
 
 RadioTower1FRadioCardWomanOfferQuizText:
-	ctxt "We have a special"
+	text "We have a special"
 	line "quiz campaign on"
 	cont "right now."
 
@@ -379,7 +379,7 @@ RadioTower1FRadioCardWomanOfferQuizText:
 	done
 
 RadioTower1FRadioCardWomanQuestion1Text:
-	ctxt "Question 1:"
+	text "Question 1:"
 
 	para "Is there a #mon"
 	line "that appears only"
@@ -387,7 +387,7 @@ RadioTower1FRadioCardWomanQuestion1Text:
 	done
 
 RadioTower1FRadioCardWomanQuestion2Text:
-	ctxt "Correct!"
+	text "Correct!"
 	line "Question 2:"
 
 	para "Nidorina can only"
@@ -395,7 +395,7 @@ RadioTower1FRadioCardWomanQuestion2Text:
 	done
 
 RadioTower1FRadioCardWomanQuestion3Text:
-	ctxt "Bull's-eye!"
+	text "Bull's-eye!"
 	line "Question 3:"
 
 	para "Can Magikarp learn"
@@ -403,7 +403,7 @@ RadioTower1FRadioCardWomanQuestion3Text:
 	done
 
 RadioTower1FRadioCardWomanQuestion4Text:
-	ctxt "So far so good!"
+	text "So far so good!"
 	line "Question 4:"
 
 	para "Does Kurt, the"
@@ -414,7 +414,7 @@ RadioTower1FRadioCardWomanQuestion4Text:
 	done
 
 RadioTower1FRadioCardWomanQuestion5Text:
-	ctxt "Wow! Right again!"
+	text "Wow! Right again!"
 	line "Here's the final"
 	cont "question:"
 
@@ -426,7 +426,7 @@ RadioTower1FRadioCardWomanQuestion5Text:
 	done
 
 RadioTower1FRadioCardWomanYouWinText:
-	ctxt "Bingo! You got it!"
+	text "Bingo! You got it!"
 	line "Congratulations!"
 
 	para "Here's your prize,"
@@ -434,24 +434,24 @@ RadioTower1FRadioCardWomanYouWinText:
 	done
 
 RadioTower1FPokegearIsARadioText:
-	ctxt "<PLAYER>'s #gear"
+	text "<PLAYER>'s #gear"
 	line "can now double as"
 	cont "a radio!"
 	done
 
 RadioTower1FRadioCardWomanTuneInText:
-	ctxt "Please tune in to"
+	text "Please tune in to"
 	line "our radio shows."
 	done
 
 RadioTower1FRadioCardWomanNotTakingQuizText:
-	ctxt "Oh. I see. Please"
+	text "Oh. I see. Please"
 	line "see me if you"
 	cont "change your mind."
 	done
 
 RadioTower1FLassText:
-	ctxt "Ben is a fabulous"
+	text "Ben is a fabulous"
 	line "DJ."
 
 	para "His sweet voice"
@@ -459,7 +459,7 @@ RadioTower1FLassText:
 	done
 
 RadioTower1FYoungsterText:
-	ctxt "I love Mary, from"
+	text "I love Mary, from"
 	line "#mon Talk."
 
 	para "I only know what"
@@ -468,7 +468,7 @@ RadioTower1FYoungsterText:
 	done
 
 GruntM3SeenText:
-	ctxt "We've finally"
+	text "We've finally"
 	line "taken over the"
 	cont "Radio Tower!"
 
@@ -483,12 +483,12 @@ GruntM3SeenText:
 	done
 
 GruntM3BeatenText:
-	ctxt "Too strong! We"
+	text "Too strong! We"
 	line "must watch you…"
 	done
 
 RadioTower1FWhitney1Text:
-	ctxt "Hi! I'm Whitney!"
+	text "Hi! I'm Whitney!"
 
 	para "I heard about the"
 	line "quiz to win a"
@@ -502,7 +502,7 @@ RadioTower1FWhitney1Text:
 	done
 
 RadioTower1FWhitney2Text:
-	ctxt "Whitney: Wow, you"
+	text "Whitney: Wow, you"
 	line "did it!"
 
 	para "I thought the"
@@ -514,7 +514,7 @@ RadioTower1FWhitney2Text:
 	done
 
 RadioTower1FDirectoryText:
-	ctxt "1F Reception"
+	text "1F Reception"
 	line "2F Sales"
 
 	para "3F Personnel"
@@ -525,7 +525,7 @@ RadioTower1FDirectoryText:
 	done
 
 RadioTower1FLuckyChannelSignText:
-	ctxt "Lucky Channel!"
+	text "Lucky Channel!"
 
 	para "Win with #mon"
 	line "ID numbers!"

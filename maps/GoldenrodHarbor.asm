@@ -63,7 +63,7 @@ GoldenrodHarborTutorHyperVoiceScript:
 GenericTrainerFisherPaton:
 	generictrainer FISHER, PATON, EVENT_BEAT_FISHER_PATON, FisherPatonSeenText, FisherPatonBeatenText
 
-	ctxt "You're working"
+	text "You're working"
 	line "on a #dex?"
 	cont "That's neat!"
 	done
@@ -71,7 +71,7 @@ GenericTrainerFisherPaton:
 GenericTrainerSwimmerfKatie:
 	generictrainer SWIMMERF, KATIE, EVENT_BEAT_SWIMMERF_KATIE, SwimmerfKatieSeenText, SwimmerfKatieBeatenText
 
-	ctxt "Why is the sea"
+	text "Why is the sea"
 	line "blue?"
 
 	para "I heard it ref-"
@@ -84,7 +84,7 @@ GenericTrainerSwimmerfKatie:
 GenericTrainerSwimmermJames:
 	generictrainer SWIMMERM, JAMES, EVENT_BEAT_SWIMMERM_JAMES, SwimmermJamesSeenText, SwimmermJamesBeatenText
 
-	ctxt "Can't a Swimmer"
+	text "Can't a Swimmer"
 	line "use a rowboat"
 	cont "sometimes?"
 	done
@@ -93,7 +93,7 @@ GenericTrainerSwimmermJames:
 GoldenrodHarborMagikarpScript:
 	jumpthistext
 
-	ctxt "This is a Fish"
+	text "This is a Fish"
 	line "#mon! Huh?"
 
 	para "It's only a doll…"
@@ -262,7 +262,7 @@ GoldenrodHarborYoungsterScript:
 	db "Cancel@"
 
 GoldenrodHarborFisherText:
-	ctxt "If you're fishing,"
+	text "If you're fishing,"
 	line "you have to be"
 
 	para "quiet so you don't"
@@ -276,7 +276,7 @@ GoldenrodHarborFisherText:
 	done
 
 Text_GoldenrodHarborTutorHyperVoice:
-	ctxt "I can teach your"
+	text "I can teach your"
 	line "#mon how to"
 
 	para "use Hyper Voice"
@@ -284,106 +284,106 @@ Text_GoldenrodHarborTutorHyperVoice:
 	done
 
 Text_GoldenrodHarborTutorNoSilverLeaf:
-	ctxt "You don't have a"
+	text "You don't have a"
 	line "Silver Leaf!"
 	done
 
 Text_GoldenrodHarborTutorQuestion:
-	ctxt "Should I teach"
+	text "Should I teach"
 	line "your #mon"
 	cont "Hyper Voice?"
 	done
 
 Text_GoldenrodHarborTutorRefused:
-	ctxt "OK then."
+	text "OK then."
 	done
 
 Text_GoldenrodHarborTutorTaught:
-	ctxt "Now your #mon"
+	text "Now your #mon"
 	line "knows how to use"
 	cont "Hyper Voice!"
 	done
 
 FisherPatonSeenText:
-	ctxt "The fish I caught"
+	text "The fish I caught"
 	line "was attached to"
 	cont "another #mon!"
 	done
 
 FisherPatonBeatenText:
-	ctxt "Aren't #mon"
+	text "Aren't #mon"
 	line "interesting?"
 	done
 
 SwimmerfKatieSeenText:
-	ctxt "Swimming in the"
+	text "Swimming in the"
 	line "deep blue sea"
 	cont "feels wonderful!"
 	done
 
 SwimmerfKatieBeatenText:
-	ctxt "I lost…"
+	text "I lost…"
 	line "Now I feel blue…"
 	done
 
 SwimmermJamesSeenText:
-	ctxt "I can swim, but"
+	text "I can swim, but"
 	line "I can also row!"
 	done
 
 SwimmermJamesBeatenText:
-	ctxt "Maybe I can't"
+	text "Maybe I can't"
 	line "battle…"
 	done
 
 GoldenrodHarborDollVendorText:
-	ctxt "Welcome! I have"
+	text "Welcome! I have"
 	line "adorable aquatic"
 	cont "dolls for sale."
 	done
 
 GoldenrodHarborMagikarpDollText:
-	ctxt "<PLAYER> bought"
+	text "<PLAYER> bought"
 	line "Magikarp Doll."
 	done
 
 GoldenrodHarborMagikarpDollSentText:
-	ctxt "Magikarp Doll"
+	text "Magikarp Doll"
 	line "was sent home."
 	done
 
 GoldenrodHarborMarillDollText:
-	ctxt "<PLAYER> bought"
+	text "<PLAYER> bought"
 	line "Marill Doll."
 	done
 
 GoldenrodHarborMarillDollSentText:
-	ctxt "Marill Doll"
+	text "Marill Doll"
 	line "was sent home."
 	done
 
 GoldenrodHarborOctilleryDollText:
-	ctxt "<PLAYER> bought"
+	text "<PLAYER> bought"
 	line "Octillery Doll."
 	done
 
 GoldenrodHarborOctilleryDollSentText:
-	ctxt "Octillery Doll"
+	text "Octillery Doll"
 	line "was sent home."
 	done
 
 GoldenrodHarborNoMoneyText:
-	ctxt "You can't afford"
+	text "You can't afford"
 	line "that!"
 	done
 
 GoldenrodHarborAlreadyBoughtText:
-	ctxt "You already have"
+	text "You already have"
 	line "that!"
 	done
 
 GoldenrodHarborPlantVendorText:
-	ctxt "Welcome! I have"
+	text "Welcome! I have"
 	line "a selection of"
 
 	para "exotic plants to"
@@ -391,37 +391,37 @@ GoldenrodHarborPlantVendorText:
 	done
 
 GoldenrodHarborMagnaPlantText:
-	ctxt "<PLAYER> bought"
+	text "<PLAYER> bought"
 	line "Magna Plant."
 	done
 
 GoldenrodHarborMagnaPlantSentText:
-	ctxt "Magna Plant"
+	text "Magna Plant"
 	line "was sent home."
 	done
 
 GoldenrodHarborTropicPlantText:
-	ctxt "<PLAYER> bought"
+	text "<PLAYER> bought"
 	line "Tropic Plant."
 	done
 
 GoldenrodHarborTropicPlantSentText:
-	ctxt "Tropic Plant"
+	text "Tropic Plant"
 	line "was sent home."
 	done
 
 GoldenrodHarborJumboPlantText:
-	ctxt "<PLAYER> bought"
+	text "<PLAYER> bought"
 	line "Jumbo Plant."
 	done
 
 GoldenrodHarborJumboPlantSentText:
-	ctxt "Jumbo Plant"
+	text "Jumbo Plant"
 	line "was sent home."
 	done
 
 GoldenrodHarborLass2Text:
-	ctxt "All this water,"
+	text "All this water,"
 	line "it's totally…"
 
 	para "bloop-bloop,"
@@ -431,10 +431,10 @@ GoldenrodHarborLass2Text:
 	done
 
 GoldenrodHarborSignText:
-	ctxt "Goldenrod Harbor"
+	text "Goldenrod Harbor"
 	done
 
 GoldenrodHarborCrateSignText:
-	ctxt "A crate full of"
+	text "A crate full of"
 	line "rare items!"
 	done

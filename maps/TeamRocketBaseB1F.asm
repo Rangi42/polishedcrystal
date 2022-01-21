@@ -546,7 +546,7 @@ NoExplodingTrap:
 GenericTrainerRocketScientistJed:
 	generictrainer ROCKET_SCIENTIST, JED, EVENT_BEAT_ROCKET_SCIENTIST_JED, RocketScientistJedSeenText, RocketScientistJedBeatenText
 
-	ctxt "All right. I'll"
+	text "All right. I'll"
 	line "divulge a secret"
 	cont "about our hideout."
 
@@ -564,7 +564,7 @@ GenericTrainerRocketScientistJed:
 GenericTrainerGruntM16:
 	generictrainer GRUNTM, 16, EVENT_BEAT_ROCKET_GRUNTM_16, GruntM16SeenText, GruntM16BeatenText
 
-	ctxt "I don't even know"
+	text "I don't even know"
 	line "where the traps"
 	cont "are planted."
 
@@ -684,21 +684,21 @@ SecurityCameraMovement9:
 	step_end
 
 CameraGrunt1SeenText:
-	ctxt "Hey!"
+	text "Hey!"
 	line "Intruder alert!"
 	done
 
 CameraGrunt1BeatenText:
-	ctxt "Dang… I failed…"
+	text "Dang… I failed…"
 	done
 
 CameraGrunt2SeenText:
-	ctxt "It's my turn!"
+	text "It's my turn!"
 	line "There's no escape!"
 	done
 
 CameraGrunt2BeatenText:
-	ctxt "Surveillance cams"
+	text "Surveillance cams"
 	line "are in the #mon"
 	cont "statues."
 
@@ -708,7 +708,7 @@ CameraGrunt2BeatenText:
 	done
 
 RocketScientistJedSeenText:
-	ctxt "This was once a"
+	text "This was once a"
 	line "ninja hideout."
 
 	para "There are traps to"
@@ -717,11 +717,11 @@ RocketScientistJedSeenText:
 	done
 
 RocketScientistJedBeatenText:
-	ctxt "I get it…"
+	text "I get it…"
 	done
 
 GruntM16SeenText:
-	ctxt "Heheh. Feeling"
+	text "Heheh. Feeling"
 	line "lucky, punk?"
 
 	para "Go ahead, take"
@@ -732,11 +732,11 @@ GruntM16SeenText:
 	done
 
 GruntM16BeatenText:
-	ctxt "Kaboom!"
+	text "Kaboom!"
 	done
 
 SecurityCameraText:
-	ctxt "It's a Persian"
+	text "It's a Persian"
 	line "statue…"
 
 	para "Its eyes are oddly"
@@ -744,11 +744,11 @@ SecurityCameraText:
 	done
 
 TeamRocketBaseB1FSecretSwitchText:
-	ctxt "A secret switch!"
+	text "A secret switch!"
 	line "Better press it."
 	done
 
 TeamRocketBaseB1FSwitchOffText:
-	ctxt "The switch is"
+	text "The switch is"
 	line "turned off."
 	done

@@ -22,7 +22,7 @@ PokemonJournalMistyScript:
 	setflag ENGINE_READ_MISTY_JOURNAL
 	jumpthistext
 
-	ctxt "#mon Journal"
+	text "#mon Journal"
 
 	para "Special Feature:"
 	line "Leader Misty!"
@@ -39,7 +39,7 @@ CeruleanPokeCenter1FGymGuyScript:
 	iftrue_jumptextfaceplayer .MetricText
 	jumpthistextfaceplayer
 
-	ctxt "The Magnet Train"
+	text "The Magnet Train"
 	line "travels at over"
 
 	para "340 mph. It goes"
@@ -53,7 +53,7 @@ CeruleanPokeCenter1FGymGuyScript:
 	done
 
 .MetricText:
-	ctxt "The Magnet Train"
+	text "The Magnet Train"
 	line "travels at over"
 
 	para "550 kph. It goes"
@@ -67,7 +67,7 @@ CeruleanPokeCenter1FGymGuyScript:
 	done
 
 CeruleanPokeCenter1FSuperNerdText:
-	ctxt "For battles, I'd"
+	text "For battles, I'd"
 	line "much rather use"
 
 	para "#mon I've been"

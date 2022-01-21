@@ -76,7 +76,7 @@ NoisyForestAnabelScript:
 	end
 
 .ChallengeText:
-	ctxt "Greetings… My name"
+	text "Greetings… My name"
 	line "is Anabel."
 
 	para "…You are <PLAYER>?"
@@ -90,28 +90,28 @@ NoisyForestAnabelScript:
 	done
 
 .YesText:
-	ctxt "Let's begin,"
+	text "Let's begin,"
 	line "shall we?"
 	done
 
 .NoText:
-	ctxt "It's very dis-"
+	text "It's very dis-"
 	line "appointing…"
 	done
 
 .BeatenText:
-	ctxt "OK, I understand…"
+	text "OK, I understand…"
 	done
 
 .ItemText:
-	ctxt "Fufufu, nicely"
+	text "Fufufu, nicely"
 	line "done…"
 
 	para "Take this, please…"
 	done
 
 .GoodbyeText:
-	ctxt "I urge you to keep"
+	text "I urge you to keep"
 	line "battling and keep"
 	cont "on winning."
 
@@ -126,14 +126,14 @@ NoisyForestAnabelScript:
 GenericTrainerBug_maniacPierre:
 	generictrainer BUG_MANIAC, PIERRE, EVENT_BEAT_BUG_MANIAC_PIERRE, .SeenText, .BeatenText
 
-	ctxt "Bzzz… Bzzz…"
+	text "Bzzz… Bzzz…"
 
 	para "That noise is"
 	line "stuck in my head…"
 	done
 
 .SeenText:
-	ctxt "My #mon love"
+	text "My #mon love"
 	line "this forest."
 
 	para "They buzz nonstop"
@@ -141,13 +141,13 @@ GenericTrainerBug_maniacPierre:
 	done
 
 .BeatenText:
-	ctxt "Bzzz! I lost!"
+	text "Bzzz! I lost!"
 	done
 
 GenericTrainerBug_maniacDylan:
 	generictrainer BUG_MANIAC, DYLAN, EVENT_BEAT_BUG_MANIAC_DYLAN, .SeenText, .BeatenText
 
-	ctxt "There's something"
+	text "There's something"
 	line "about the buzz of"
 
 	para "this forest that"
@@ -155,37 +155,37 @@ GenericTrainerBug_maniacDylan:
 	done
 
 .SeenText:
-	ctxt "I've never seen my"
+	text "I've never seen my"
 	line "bugs this happy!"
 	done
 
 .BeatenText:
-	ctxt "Aw, but they were"
+	text "Aw, but they were"
 	line "so happy!"
 	done
 
 GenericTrainerGuitaristfJaclyn:
 	generictrainer GUITARISTF, JACLYN, EVENT_BEAT_GUITARISTF_JACLYN, .SeenText, .BeatenText
 
-	ctxt "Wait up! I'm not"
+	text "Wait up! I'm not"
 	line "done singing!"
 	done
 
 .SeenText:
-	ctxt "Let my guitar"
+	text "Let my guitar"
 	line "howl!"
 
 	para "Hear me scream!"
 	done
 
 .BeatenText:
-	ctxt "Giyaaaah!"
+	text "Giyaaaah!"
 	done
 
 GenericTrainerGuitaristmEzekiel:
 	generictrainer GUITARISTM, EZEKIEL, EVENT_BEAT_GUITARISTM_EZEKIEL, .SeenText, .BeatenText
 
-	ctxt "If you listen"
+	text "If you listen"
 	line "carefully, you can"
 
 	para "hear the rhythm of"
@@ -193,18 +193,18 @@ GenericTrainerGuitaristmEzekiel:
 	done
 
 .SeenText:
-	ctxt "Battle? Yeah, I'm"
+	text "Battle? Yeah, I'm"
 	line "up for that."
 	done
 
 .BeatenText:
-	ctxt "Wow. Good stuff."
+	text "Wow. Good stuff."
 	done
 
 GenericTrainerHikerLester:
 	generictrainer HIKER, LESTER, EVENT_BEAT_HIKER_LESTER, .SeenText, .BeatenText
 
-	ctxt "What, can't a Hiker"
+	text "What, can't a Hiker"
 	line "explore a forest"
 
 	para "instead of a moun-"
@@ -212,11 +212,11 @@ GenericTrainerHikerLester:
 	done
 
 .SeenText:
-	ctxt "Yahoo!"
+	text "Yahoo!"
 	done
 
 .BeatenText:
-	ctxt "Gweh! Cough!"
+	text "Gweh! Cough!"
 
 	para "Hollering choked"
 	line "me up!"
@@ -225,7 +225,7 @@ GenericTrainerHikerLester:
 GenericTrainerBird_keeperTrent:
 	generictrainer BIRD_KEEPER, TRENT, EVENT_BEAT_BIRD_KEEPER_TRENT, .SeenText, .BeatenText
 
-	ctxt "I get up early"
+	text "I get up early"
 	line "every day to train"
 	cont "my birds here."
 
@@ -234,17 +234,17 @@ GenericTrainerBird_keeperTrent:
 	done
 
 .SeenText:
-	ctxt "The early bird"
+	text "The early bird"
 	line "catches the worm!"
 	done
 
 .BeatenText:
-	ctxt "Looks like I was"
+	text "Looks like I was"
 	line "the worm…"
 	done
 
 NoisyForestTeacherText:
-	ctxt "I come here for my"
+	text "I come here for my"
 	line "morning stroll."
 
 	para "I even have a ped-"
@@ -253,7 +253,7 @@ NoisyForestTeacherText:
 	done
 
 NoisyForestChildText:
-	ctxt "Gah! This place"
+	text "Gah! This place"
 	line "is deafening!"
 	done
 
@@ -284,22 +284,22 @@ NoisyForestPikabluScript:
 	sjump .Leave
 
 .PikabluText:
-	ctxt "Marill: Rill!"
+	text "Marill: Rill!"
 	done
 
 .OwnerText1:
-	ctxt "You found my"
+	text "You found my"
 	line "Pikablu!"
 	cont "Thank you!"
 	done
 
 .OwnerText2:
-	ctxt "Let me give you a"
+	text "Let me give you a"
 	line "little something."
 	done
 
 .OwnerText3:
-	ctxt "A souvenir of your"
+	text "A souvenir of your"
 	line "time on Shamouti"
 	cont "Island!"
 
@@ -311,7 +311,7 @@ NoisyForestPikabluScript:
 	done
 
 .OwnerText4:
-	ctxt "Oh, you can't carry"
+	text "Oh, you can't carry"
 	line "it right now."
 
 	para "Come find me by"
@@ -342,5 +342,5 @@ NoisyForestPikabluScript:
 	step_end
 
 NoisyForestSignpostText:
-	ctxt "Noisy Forest"
+	text "Noisy Forest"
 	done

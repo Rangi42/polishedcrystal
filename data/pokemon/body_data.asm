@@ -289,10 +289,17 @@ PokemonBodyData:
 	body_data  10,    4, HEAD_ARMS,    WHITE  ; CURSOLA
 	body_data   8, 1170, WINGS,        WHITE  ; SIRFETCH_D
 	body_data  15,  582, BIPEDAL,      PURPLE ; MR__RIME
+	body_data  18,  951, QUADRUPED,    GRAY   ; WYRDEER
+	body_data  18,  890, MULTIWINGS,   BROWN  ; KLEAVOR
+	body_data  24, 2900, BIPEDAL_TAIL, BROWN  ; URSALUNA
+	body_data  13,  430, BIPEDAL_TAIL, GRAY   ; SNEASLER
+	body_data  25,  605, FINS,         BLACK  ; OVERQWIL
 	assert_table_length NUM_SPECIES
 
 	body_data  65, 2350, SERPENTINE,   RED    ; GYARADOS (GYARADOS_RED_FORM)
+
 	body_data  22, 1370, BIPEDAL_TAIL, GRAY   ; MEWTWO (MEWTWO_ARMORED_FORM)
+
 	body_data   3,   38, QUADRUPED,    BLACK  ; RATTATA (ALOLAN_FORM)
 	body_data   7,  255, QUADRUPED,    BLACK  ; RATICATE (ALOLAN_FORM)
 	body_data   7,  210, BIPEDAL_TAIL, BROWN  ; RAICHU (ALOLAN_FORM)
@@ -311,6 +318,7 @@ PokemonBodyData:
 	body_data  10,  520, HEAD_ARMS,    GREEN  ; MUK (ALOLAN_FORM)
 	body_data 109, 4156, HEAD_LEGS,    YELLOW ; EXEGGUTOR (ALOLAN_FORM)
 	body_data  10,  340, BIPEDAL_TAIL, PURPLE ; MAROWAK (ALOLAN_FORM)
+
 	body_data   4,   75, BIPEDAL_TAIL, BROWN  ; MEOWTH (GALARIAN_FORM)
 	body_data   8,  240, QUADRUPED,    WHITE  ; PONYTA (GALARIAN_FORM)
 	body_data  17,  800, QUADRUPED,    WHITE  ; RAPIDASH (GALARIAN_FORM)
@@ -324,4 +332,12 @@ PokemonBodyData:
 	body_data  20,  660, WINGS,        RED    ; MOLTRES (GALARIAN_FORM)
 	body_data  18,  795, BIPEDAL_TAIL, PINK   ; SLOWKING (GALARIAN_FORM)
 	body_data   6,    5, INSECTOID,    WHITE  ; CORSOLA (GALARIAN_FORM)
+
+	body_data   8,  227, QUADRUPED,    RED    ; GROWLITHE (HISUIAN_FORM)
+	body_data  20, 1680, QUADRUPED,    RED    ; ARCANINE (HISUIAN_FORM)
+	body_data   5,  130, HEAD,         BROWN  ; VOLTORB (HISUIAN_FORM)
+	body_data  12,  710, HEAD,         BROWN  ; ELECTRODE (HISUIAN_FORM)
+	body_data   5,   39, FINS,         BLACK  ; QWILFISH (HISUIAN_FORM)
+	body_data   9,  270, BIPEDAL_TAIL, GRAY   ; SNEASEL (HISUIAN_FORM)
+
 	assert_table_length NUM_EXT_POKEMON

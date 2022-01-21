@@ -17,7 +17,7 @@ EcruteakLugiaSpeechHouse_MapScriptHeader:
 	object_event  5,  4, SPRITE_SCHOOLBOY, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, EcruteakLugiaSpeechHouseYoungsterText, -1
 
 EcruteakLugiaSpeechHouseGrampsText:
-	ctxt "This happened when"
+	text "This happened when"
 	line "I was young."
 
 	para "The sky suddenly"
@@ -35,7 +35,7 @@ EcruteakLugiaSpeechHouseGrampsText:
 	done
 
 EcruteakLugiaSpeechHouseYoungsterText:
-	ctxt "Is there really a"
+	text "Is there really a"
 	line "#mon that big?"
 
 	para "If it exists, it"

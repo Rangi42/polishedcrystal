@@ -45,7 +45,7 @@ PlayersNeighborsHouseRadio:
 	endtext
 
 PlayersNeighborsDaughterText:
-	ctxt "Pikachu is an"
+	text "Pikachu is an"
 	line "evolved #mon."
 
 	para "I was amazed by"
@@ -64,7 +64,7 @@ PlayersNeighborsDaughterText:
 	done
 
 PlayersNeighborsHusbandText:
-	ctxt "This town is the"
+	text "This town is the"
 	line "farthest south-"
 
 	para "east one in all"
@@ -72,7 +72,7 @@ PlayersNeighborsHusbandText:
 	done
 
 PlayersNeighborText:
-	ctxt "My daughter is"
+	text "My daughter is"
 	line "adamant about"
 
 	para "becoming Prof."
@@ -85,21 +85,21 @@ PlayersNeighborText:
 	done
 
 PlayerNeighborRadioText1:
-	ctxt "Prof.Oak's #mon"
+	text "Prof.Oak's #mon"
 	line "Talk! Please tune"
 	cont "in next time!"
 	done
 
 PlayerNeighborRadioText2:
-	ctxt "#mon Channel!"
+	text "#mon Channel!"
 	done
 
 PlayerNeighborRadioText3:
-	ctxt "This is DJ Mary,"
+	text "This is DJ Mary,"
 	line "your co-host!"
 	done
 
 PlayerNeighborRadioText4:
-	ctxt "#mon!"
+	text "#mon!"
 	line "#mon Channel…"
 	done

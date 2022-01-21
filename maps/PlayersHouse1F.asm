@@ -107,7 +107,7 @@ GearName:
 	db "#gear@"
 
 PlayersHouse1FFridgeText:
-	ctxt "Let's see what's"
+	text "Let's see what's"
 	line "in the fridge…"
 
 	para "Fresh Water and"
@@ -115,13 +115,13 @@ PlayersHouse1FFridgeText:
 	done
 
 PlayersHouse1FSinkText:
-	ctxt "The sink is spot-"
+	text "The sink is spot-"
 	line "less. Mom likes it"
 	cont "clean."
 	done
 
 PlayersHouse1FStoveText:
-	ctxt "Mom's specialty!"
+	text "Mom's specialty!"
 
 	para "Cinnabar Volcano"
 	line "Burger!"
@@ -130,7 +130,7 @@ PlayersHouse1FStoveText:
 PlayersHouse1FTVScript:
 	jumpthistext
 
-	ctxt "There's a movie on"
+	text "There's a movie on"
 	line "TV: Stars dot the"
 
 	para "sky as two boys"
@@ -155,7 +155,7 @@ MomScript:
 	iftrue_jumpopenedtext MomErrandText
 	jumpthisopenedtext
 
-	ctxt "Prof.Elm is wait-"
+	text "Prof.Elm is wait-"
 	line "ing for you."
 
 	para "Hurry up, baby!"
@@ -174,11 +174,11 @@ MomScript:
 
 MomIntroText:
 if DEF(DEBUG)
-	ctxt "Don't forget to use"
+	text "Don't forget to use"
 	line "your debug radio!"
 	done
 else
-	ctxt "Oh, <PLAYER>!"
+	text "Oh, <PLAYER>!"
 	line "You're awake."
 
 	para "Your friend Lyra"
@@ -201,7 +201,7 @@ else
 endc
 
 MomPokegearText:
-	ctxt "#mon Gear, or"
+	text "#mon Gear, or"
 	line "just #gear."
 
 	para "It's essential if"
@@ -216,12 +216,12 @@ MomPokegearText:
 	done
 
 MomDSTText:
-	ctxt "Is it Daylight"
+	text "Is it Daylight"
 	line "Saving Time now?"
 	done
 
 MomRunningShoesText:
-	ctxt "Come home to"
+	text "Come home to"
 	line "adjust your clock"
 
 	para "for Daylight"
@@ -235,7 +235,7 @@ MomRunningShoesText:
 	done
 
 MomInstructionsText:
-	ctxt "I'll read the"
+	text "I'll read the"
 	line "instructions."
 
 	para "Just hold down the"
@@ -248,12 +248,12 @@ MomInstructionsText:
 	done
 
 MomOutroText:
-	ctxt "Gee, aren't they"
+	text "Gee, aren't they"
 	line "convenient?"
 	done
 
 MomErrandText:
-	ctxt "So, what was Prof."
+	text "So, what was Prof."
 	line "Elm's errand?"
 
 	para "…"
@@ -267,7 +267,7 @@ MomErrandText:
 	done
 
 MomDoItText:
-	ctxt "<PLAYER>, do it!"
+	text "<PLAYER>, do it!"
 
 	para "I'm behind you all"
 	line "the way!"
@@ -306,26 +306,26 @@ NeighborScript:
 	end
 
 .MornIntroText:
-	ctxt "Good morning,"
+	text "Good morning,"
 	line "<PLAYER>!"
 
 	para "I'm visiting!"
 	done
 
 .DayIntroText:
-	ctxt "Hello, <PLAYER>!"
+	text "Hello, <PLAYER>!"
 	line "I'm visiting!"
 	done
 
 .NiteIntroText:
-	ctxt "Good evening,"
+	text "Good evening,"
 	line "<PLAYER>!"
 
 	para "I'm visiting!"
 	done
 
 .NeighborText:
-	ctxt "<PLAYER>, have you"
+	text "<PLAYER>, have you"
 	line "heard?"
 
 	para "My daughter is"

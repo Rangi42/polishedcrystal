@@ -233,7 +233,7 @@ GoldenrodCityPanUpMovementData:
 	step_end
 
 GoldenrodCityPokefanMText:
-	ctxt "They built the new"
+	text "They built the new"
 	line "Radio Tower to"
 
 	para "replace the old,"
@@ -247,7 +247,7 @@ GoldenrodCityPokefanMText:
 	done
 
 GoldenrodCityYoungster1Text:
-	ctxt "I know there's a"
+	text "I know there's a"
 	line "new bike shop, but"
 
 	para "I can't find it"
@@ -255,7 +255,7 @@ GoldenrodCityYoungster1Text:
 	done
 
 GoldenrodCityCooltrainerF1Text:
-	ctxt "Is that man in"
+	text "Is that man in"
 	line "black dressed up"
 
 	para "like a Team Rocket"
@@ -263,7 +263,7 @@ GoldenrodCityCooltrainerF1Text:
 	done
 
 GoldenrodCityCooltrainerF1Text_ClearedRadioTower:
-	ctxt "Was that man in"
+	text "Was that man in"
 	line "black really part"
 
 	para "of Team Rocket? I"
@@ -271,7 +271,7 @@ GoldenrodCityCooltrainerF1Text_ClearedRadioTower:
 	done
 
 GoldenrodCityCooltrainerF2Text:
-	ctxt "The Radio Tower in"
+	text "The Radio Tower in"
 	line "Goldenrod City is"
 	cont "a landmark."
 
@@ -287,7 +287,7 @@ GoldenrodCityCooltrainerF2Text:
 	done
 
 GoldenrodCityCooltrainerFOlivineText:
-	ctxt "I came here on"
+	text "I came here on"
 	line "the S.S.Aqua."
 
 	para "It's slower than"
@@ -296,7 +296,7 @@ GoldenrodCityCooltrainerFOlivineText:
 	done
 
 GoldenrodCityCooltrainerF2Text_GotRadioCard:
-	ctxt "I came here on the"
+	text "I came here on the"
 	line "Magnet Train."
 
 	para "Time to do some"
@@ -304,12 +304,12 @@ GoldenrodCityCooltrainerF2Text_GotRadioCard:
 	done
 
 GoldenrodCityYoungsterDayText:
-;	ctxt "Have you been to"
+;	text "Have you been to"
 ;	line "the Museum?"
 ;
 ;	para "It's full of cool"
 ;	line "exhibits!"
-	ctxt "I can't wait to"
+	text "I can't wait to"
 	line "visit the Museum"
 	cont "once it's open!"
 
@@ -319,7 +319,7 @@ GoldenrodCityYoungsterDayText:
 	done
 
 GoldenrodCityYoungster2Text:
-	ctxt "E-he-he-he…"
+	text "E-he-he-he…"
 
 	para "I got in trouble"
 	line "for playing in the"
@@ -329,7 +329,7 @@ GoldenrodCityYoungster2Text:
 	done
 
 GoldenrodCityLassText:
-	ctxt "The man at that"
+	text "The man at that"
 	line "house rates your"
 	cont "#mon names."
 
@@ -342,7 +342,7 @@ GoldenrodCityLassText:
 	done
 
 GoldenrodCityGrampsText:
-	ctxt "Whew! This is one"
+	text "Whew! This is one"
 	line "big town. I don't"
 
 	para "know where any-"
@@ -350,22 +350,22 @@ GoldenrodCityGrampsText:
 	done
 
 GoldenrodCityRocketScoutText1:
-	ctxt "So this is the"
+	text "So this is the"
 	line "Radio Tower…"
 	done
 
 GoldenrodCityRocketScoutText2:
-	ctxt "What do you want,"
+	text "What do you want,"
 	line "you pest? Scram!"
 	done
 
 GoldenrodCityRocket1Text:
-	ctxt "Stay out of the"
+	text "Stay out of the"
 	line "way! Beat it!"
 	done
 
 GoldenrodCityRocket2Text:
-	ctxt "Take over the"
+	text "Take over the"
 	line "Radio Tower…"
 
 	para "What? It's none of"
@@ -373,7 +373,7 @@ GoldenrodCityRocket2Text:
 	done
 
 GoldenrodCityRocket3Text:
-	ctxt "#mon? They're"
+	text "#mon? They're"
 	line "nothing more than"
 
 	para "tools for making"
@@ -381,7 +381,7 @@ GoldenrodCityRocket3Text:
 	done
 
 GoldenrodCityRocket4Text:
-	ctxt "Our dream will"
+	text "Our dream will"
 	line "soon come true…"
 
 	para "It was such a long"
@@ -389,19 +389,19 @@ GoldenrodCityRocket4Text:
 	done
 
 GoldenrodCityRocket5Text:
-	ctxt "Hey, brat! You"
+	text "Hey, brat! You"
 	line "don't belong here!"
 	cont "Get lost!"
 	done
 
 GoldenrodCityRocket6Text:
-	ctxt "Come taste the"
+	text "Come taste the"
 	line "true terror of"
 	cont "Team Rocket!"
 	done
 
 GoldenrodCityGymLassText:
-	ctxt "The Gym Leader,"
+	text "The Gym Leader,"
 	line "Whitney, went"
 	cont "flying by saying,"
 
@@ -410,7 +410,7 @@ GoldenrodCityGymLassText:
 	done
 
 GoldenrodCityBeautyText:
-	ctxt "I went on a tour"
+	text "I went on a tour"
 	line "of the Radio"
 
 	para "Tower. I saw all"
@@ -421,17 +421,17 @@ GoldenrodCityBeautyText:
 	done
 
 GoldenrodCityStationSignText:
-	ctxt "Goldenrod City"
+	text "Goldenrod City"
 	line "Station"
 	done
 
 GoldenrodCityRadioTowerSignText:
-	ctxt "Goldenrod City"
+	text "Goldenrod City"
 	line "Radio Tower"
 	done
 
 GoldenrodDeptStoreSignText:
-	ctxt "Full Selection of"
+	text "Full Selection of"
 	line "#mon Goods!"
 
 	para "Goldenrod City"
@@ -439,7 +439,7 @@ GoldenrodDeptStoreSignText:
 	done
 
 GoldenrodGymSignText:
-	ctxt "Goldenrod City"
+	text "Goldenrod City"
 	line "#mon Gym"
 	cont "Leader: Whitney"
 
@@ -448,60 +448,60 @@ GoldenrodGymSignText:
 	done
 
 GoldenrodCitySignText:
-	ctxt "Goldenrod City"
+	text "Goldenrod City"
 
 	para "The Festive City"
 	line "of Opulent Charm"
 	done
 
 GoldenrodCityBikeShopSignText:
-	ctxt "The World is a"
+	text "The World is a"
 	line "Cycle Path!"
 
 	para "Miracle Cycle"
 	done
 
 GoldenrodCityGameCornerSignText:
-	ctxt "Your Playground!"
+	text "Your Playground!"
 
 	para "Goldenrod City"
 	line "Game Corner"
 	done
 
 GoldenrodCityNameRaterSignText:
-	ctxt "Name Rater"
+	text "Name Rater"
 
 	para "Get Your #mon"
 	line "Nicknames Rated"
 	done
 
 GoldenrodCityUndergroundSignNorthText:
-	ctxt "Underground"
+	text "Underground"
 	line "Entrance"
 	done
 
 GoldenrodCityUndergroundSignSouthText:
-	ctxt "Underground"
+	text "Underground"
 	line "Entrance"
 	done
 
 PokeComCenterSignText:
-	ctxt "Connect the World!"
+	text "Connect the World!"
 	line "#Com Center"
 	done
 
 GoldenrodCityFlowerShopSignText:
-	ctxt "Blooming Beautiful"
+	text "Blooming Beautiful"
 	line "Flower Shop"
 	done
 
 GoldenrodMuseumSignText:
-	ctxt "Goldenrod Museum"
+	text "Goldenrod Museum"
 	line "Opening Soon!"
 	done
 
 GoldenrodCityMoveTutorAskTeachAMoveText:
-	ctxt "I can teach your"
+	text "I can teach your"
 	line "#mon amazing"
 
 	para "moves if you'd"
@@ -512,17 +512,17 @@ GoldenrodCityMoveTutorAskTeachAMoveText:
 	done
 
 GoldenrodCityMoveTutorAsk4000CoinsOkayText:
-	ctxt "It will cost you"
+	text "It will cost you"
 	line "200 coins. OK?"
 	done
 
 GoldenrodCityMoveTutorAwwButTheyreAmazingText:
-	ctxt "Aww… But they're"
+	text "Aww… But they're"
 	line "amazing…"
 	done
 
 GoldenrodCityMoveTutorWhichMoveShouldITeachText:
-	ctxt "Wahahah! You won't"
+	text "Wahahah! You won't"
 	line "regret it!"
 
 	para "Which move should"
@@ -530,13 +530,13 @@ GoldenrodCityMoveTutorWhichMoveShouldITeachText:
 	done
 
 GoldenrodCityMoveTutorHmTooBadText:
-	ctxt "Hm, too bad. I'll"
+	text "Hm, too bad. I'll"
 	line "have to get some"
 	cont "cash from home…"
 	done
 
 GoldenrodCityMoveTutorIfYouUnderstandYouveMadeItText:
-	ctxt "If you understand"
+	text "If you understand"
 	line "what's so amazing"
 
 	para "about this move,"
@@ -545,15 +545,15 @@ GoldenrodCityMoveTutorIfYouUnderstandYouveMadeItText:
 	done
 
 GoldenrodCityMoveTutorFarewellKidText:
-	ctxt "Wahahah!"
+	text "Wahahah!"
 	line "Good day, kid!"
 	done
 
 GoldenrodCityMoveTutorBButText:
-	ctxt "B-but…"
+	text "B-but…"
 	done
 
 GoldenrodCityMoveTutorYouDontHaveEnoughCoinsText:
-	ctxt "…You don't have"
+	text "…You don't have"
 	line "enough coins here…"
 	done

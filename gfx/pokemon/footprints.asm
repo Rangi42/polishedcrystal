@@ -283,8 +283,14 @@ INCBIN "gfx/footprints/perrserker.1bpp"
 INCBIN "gfx/footprints/cursola.1bpp"
 INCBIN "gfx/footprints/sirfetch_d.1bpp"
 INCBIN "gfx/footprints/mr__rime.1bpp"
+INCBIN "gfx/footprints/wyrdeer.1bpp"
+INCBIN "gfx/footprints/kleavor.1bpp"
+INCBIN "gfx/footprints/ursaluna.1bpp"
+INCBIN "gfx/footprints/sneasler.1bpp"
+INCBIN "gfx/footprints/overqwil.1bpp"
 
 INCBIN "gfx/footprints/gyarados.1bpp"
+
 INCBIN "gfx/footprints/mewtwo.1bpp"
 
 INCBIN "gfx/footprints/rattata.1bpp"
@@ -319,4 +325,12 @@ INCBIN "gfx/footprints/zapdos.1bpp"
 INCBIN "gfx/footprints/moltres.1bpp"
 INCBIN "gfx/footprints/slowking.1bpp"
 INCBIN "gfx/footprints/corsola.1bpp"
+
+INCBIN "gfx/footprints/growlithe.1bpp"
+INCBIN "gfx/footprints/arcanine.1bpp"
+INCBIN "gfx/footprints/voltorb.1bpp"
+INCBIN "gfx/footprints/electrode.1bpp"
+INCBIN "gfx/footprints/qwilfish.1bpp"
+INCBIN "gfx/footprints/sneasel.1bpp"
+
 	assert_table_length NUM_EXT_POKEMON

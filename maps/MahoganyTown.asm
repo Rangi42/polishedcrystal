@@ -64,13 +64,13 @@ RageCandyBarMerchantScript:
 	special PlaceMoneyTopRight
 	jumpthisopenedtext
 
-	ctxt "Good! Savor it!"
+	text "Good! Savor it!"
 	done
 
 UnknownScript_0x19006c:
 	jumpthisopenedtext
 
-	ctxt "You don't have"
+	text "You don't have"
 	line "enough money."
 	done
 
@@ -84,7 +84,7 @@ MahoganyTownSouvenirShopSign:
 	iftrue_jumptext MahoganyTownSouvenirShopSignText1
 	jumpthistext
 
-	ctxt "Grandma's"
+	text "Grandma's"
 	line "Souvenir Shop"
 	done
 
@@ -100,7 +100,7 @@ MahoganyTownRageCandyBarMerchantReturnsMovement:
 	step_end
 
 RageCandyBarMerchantTryOneText:
-	ctxt "Hiya, kid!"
+	text "Hiya, kid!"
 
 	para "I see you're new"
 	line "in Mahogany Town."
@@ -122,19 +122,19 @@ endc
 	done
 
 RageCandyBarMerchantRefusedText:
-	ctxt "Oh, fine then…"
+	text "Oh, fine then…"
 	done
 
 RageCandyBarMerchantNoRoomText:
-	ctxt "You don't have"
+	text "You don't have"
 	line "room for this."
 	done
 
 RageCandyBarMerchantSoldOutText:
 if DEF(FAITHFUL)
-	ctxt "RageCandyBars are"
+	text "RageCandyBars are"
 else
-	ctxt "Cakes of Rage are"
+	text "Cakes of Rage are"
 endc
 	line "sold out."
 
@@ -144,13 +144,13 @@ endc
 	done
 
 MahoganyTownGrampsText:
-	ctxt "Are you off to see"
+	text "Are you off to see"
 	line "the Gyarados ram-"
 	cont "page at the lake?"
 	done
 
 MahoganyTownGrampsText_ClearedRocketHideout:
-	ctxt "Magikarp have"
+	text "Magikarp have"
 	line "returned to Lake"
 	cont "of Rage."
 
@@ -160,7 +160,7 @@ MahoganyTownGrampsText_ClearedRocketHideout:
 	done
 
 MahoganyTownFisherText:
-	ctxt "Since you came"
+	text "Since you came"
 	line "this far, take the"
 
 	para "time to do some"
@@ -174,7 +174,7 @@ MahoganyTownFisherText:
 	done
 
 MahoganyTownLassText:
-	ctxt "Visit Grandma's"
+	text "Visit Grandma's"
 	line "shop. She sells"
 
 	para "stuff that nobody"
@@ -182,14 +182,14 @@ MahoganyTownLassText:
 	done
 
 MahoganyTownSignText:
-	ctxt "Mahogany Town"
+	text "Mahogany Town"
 
 	para "Welcome to the"
 	line "Home of the Ninja"
 	done
 
 MahoganyTownSouvenirShopSignText1:
-	ctxt "Just a Souvenir"
+	text "Just a Souvenir"
 	line "Shop"
 
 	para "Nothing Suspicious"
@@ -200,7 +200,7 @@ MahoganyTownSouvenirShopSignText1:
 	done
 
 MahoganyGymSignText:
-	ctxt "Mahogany Town"
+	text "Mahogany Town"
 	line "#mon Gym"
 	cont "Leader: Pryce"
 

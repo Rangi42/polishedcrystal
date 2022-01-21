@@ -282,10 +282,10 @@ SRAM $1
 	"SRAM Battle Tower"
 
 SRAM $2
-	"Boxes 1-7"
+	"Main PokeDB bank 1"
 
 SRAM $3
-	"Boxes 8-14"
+	"Main PokeDB bank 2"
 
 HRAM
 	"OAM DMA"

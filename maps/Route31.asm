@@ -79,7 +79,7 @@ TrainerCooltrainermFinch:
 	jumpthisopenedtext
 
 .AfterText2:
-	ctxt "You saw the effect"
+	text "You saw the effect"
 	line "of an Air Balloon"
 	cont "in our battle."
 
@@ -95,7 +95,7 @@ TrainerCooltrainermFinch:
 	done
 
 .IntroText:
-	ctxt "I am a trainer who"
+	text "I am a trainer who"
 	line "uses Air Balloons"
 	cont "in battle."
 
@@ -110,7 +110,7 @@ TrainerCooltrainermFinch:
 	done
 
 .QuestionText:
-	ctxt "So you've defeated"
+	text "So you've defeated"
 	line "all of the train-"
 	cont "ers here!"
 
@@ -121,7 +121,7 @@ TrainerCooltrainermFinch:
 	done
 
 .RefusedText:
-	ctxt "You don't want to"
+	text "You don't want to"
 	line "test your strength"
 	cont "with mine?"
 
@@ -131,7 +131,7 @@ TrainerCooltrainermFinch:
 	done
 
 .SeenText:
-	ctxt "Well met! I will"
+	text "Well met! I will"
 	line "stand before you"
 
 	para "as an Air Balloon"
@@ -139,12 +139,12 @@ TrainerCooltrainermFinch:
 	done
 
 .BeatenText:
-	ctxt "You've brought me"
+	text "You've brought me"
 	line "to the ground…"
 	done
 
 .AfterText1:
-	ctxt "A fine battle!"
+	text "A fine battle!"
 	line "You are a rising"
 
 	para "star among train-"
@@ -349,17 +349,17 @@ ReceivedSpearowMailText:
 	next "to another road@"
 
 Bug_catcherWade1SeenText:
-	ctxt "I caught a bunch"
+	text "I caught a bunch"
 	line "of #mon. Let me"
 	cont "battle with you!"
 	done
 
 Bug_catcherWade1BeatenText:
-	ctxt "Awwwww…"
+	text "Awwwww…"
 	done
 
 Bug_catcherWade1AfterText:
-	ctxt "You can catch"
+	text "You can catch"
 	line "#mon even if"
 
 	para "you have six with"
@@ -371,7 +371,7 @@ Bug_catcherWade1AfterText:
 	done
 
 Text_Route31SleepyMan:
-	ctxt "…Hnuurg… Huh?"
+	text "…Hnuurg… Huh?"
 
 	para "I walked too far"
 	line "today looking for"
@@ -388,20 +388,20 @@ Text_Route31SleepyMan:
 	done
 
 Text_Route31SleepyManGotMail:
-	ctxt "…Zzzz… Huh?"
+	text "…Zzzz… Huh?"
 
 	para "What's that? You"
 	line "have Mail for me?"
 	done
 
 Text_Route31HandOverMailMon:
-	ctxt "<PLAYER> handed"
+	text "<PLAYER> handed"
 	line "over the #mon"
 	cont "holding the Mail."
 	done
 
 Text_Route31ReadingMail:
-	ctxt "Let's see…"
+	text "Let's see…"
 
 	para "…Dark Cave leads"
 	line "to another road…"
@@ -422,7 +422,7 @@ Text_Route31ReadingMail:
 	done
 
 Text_Route31TutorSleepTalk:
-	ctxt "For just one"
+	text "For just one"
 	line "Silver Leaf,"
 
 	para "I can teach your"
@@ -431,34 +431,34 @@ Text_Route31TutorSleepTalk:
 	done
 
 Text_Route31TutorNoSilverLeaf:
-	ctxt "You don't have a"
+	text "You don't have a"
 	line "Silver Leaf,"
 	cont "though…"
 	done
 
 Text_Route31TutorQuestion:
-	ctxt "Should I teach"
+	text "Should I teach"
 	line "your #mon"
 	cont "Sleep Talk?"
 	done
 
 Text_Route31TutorRefused:
-	ctxt "OK then…"
+	text "OK then…"
 	done
 
 Text_Route31TutorTaught:
-	ctxt "There! Now your"
+	text "There! Now your"
 	line "#mon knows"
 	cont "Sleep Talk!"
 	done
 
 Text_Route31WrongMail:
-	ctxt "This Mail isn't"
+	text "This Mail isn't"
 	line "for me."
 	done
 
 Text_Route31MissingMail:
-	ctxt "Why is this #-"
+	text "Why is this #-"
 	line "mon so special?"
 
 	para "It doesn't have"
@@ -466,12 +466,12 @@ Text_Route31MissingMail:
 	done
 
 Text_Route31DeclinedToHandOverMail:
-	ctxt "What? You don't"
+	text "What? You don't"
 	line "want anything?"
 	done
 
 Text_Route31CantTakeLastMon:
-	ctxt "If I take that"
+	text "If I take that"
 	line "#mon from you,"
 
 	para "what are you going"
@@ -479,7 +479,7 @@ Text_Route31CantTakeLastMon:
 	done
 
 Route31YoungsterText:
-	ctxt "I found a good"
+	text "I found a good"
 	line "#mon in Dark"
 	cont "Cave."
 
@@ -492,12 +492,12 @@ Route31YoungsterText:
 	done
 
 Route31SignText:
-	ctxt "Route 31"
+	text "Route 31"
 
 	para "Violet City -"
 	line "Cherrygrove City"
 	done
 
 DarkCaveSignText:
-	ctxt "Dark Cave"
+	text "Dark Cave"
 	done

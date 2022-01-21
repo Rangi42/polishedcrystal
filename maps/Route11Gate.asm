@@ -18,7 +18,7 @@ Route11Gate_MapScriptHeader:
 	object_event  5,  1, SPRITE_OFFICER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_COMMAND, jumptextfaceplayer, Route11GateOfficerText, -1
 
 Route11GateOfficerText:
-	ctxt "When you catch"
+	text "When you catch"
 	line "lots of #mon,"
 	cont "isn't it hard to"
 	cont "think up names?"

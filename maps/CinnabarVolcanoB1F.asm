@@ -70,6 +70,6 @@ CinnabarVolcanoB1FBouldersFall:
 	earthquake 80
 	jumpthistext
 
-	ctxt "The boulder fell"
+	text "The boulder fell"
 	line "through!"
 	done

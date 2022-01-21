@@ -45,7 +45,7 @@ UndergroundWarehouseResetSwitches:
 GenericTrainerGruntM24:
 	generictrainer GRUNTM, 24, EVENT_BEAT_ROCKET_GRUNTM_24, GruntM24SeenText, GruntM24BeatenText
 
-	ctxt "Team Rocket will"
+	text "Team Rocket will"
 	line "keep going, wait-"
 	cont "ing for the return"
 	cont "of Giovanni."
@@ -57,7 +57,7 @@ GenericTrainerGruntM24:
 GenericTrainerGruntM14:
 	generictrainer GRUNTM, 14, EVENT_BEAT_ROCKET_GRUNTM_14, GruntM14SeenText, GruntM14BeatenText
 
-	ctxt "I lost…"
+	text "I lost…"
 
 	para "Please forgive me,"
 	line "Giovanni!"
@@ -66,7 +66,7 @@ GenericTrainerGruntM14:
 GenericTrainerGruntM15:
 	generictrainer GRUNTM, 15, EVENT_BEAT_ROCKET_GRUNTM_15, GruntM15SeenText, GruntM15BeatenText
 
-	ctxt "Hyuck-hyuck-hyuck!"
+	text "Hyuck-hyuck-hyuck!"
 	line "That was a blast!"
 	cont "I'll remember you!"
 	done
@@ -88,7 +88,7 @@ GoldenrodUndergroundWarehouseDirectorScript:
 	jumpopenedtext DirectorAfterText
 
 GruntM24SeenText:
-	ctxt "How did you get"
+	text "How did you get"
 	line "this far?"
 
 	para "I guess it can't"
@@ -97,11 +97,11 @@ GruntM24SeenText:
 	done
 
 GruntM24BeatenText:
-	ctxt "I got disposed of…"
+	text "I got disposed of…"
 	done
 
 GruntM14SeenText:
-	ctxt "You're not going"
+	text "You're not going"
 	line "any farther!"
 
 	para "I don't show mercy"
@@ -110,11 +110,11 @@ GruntM14SeenText:
 	done
 
 GruntM14BeatenText:
-	ctxt "Blast it!"
+	text "Blast it!"
 	done
 
 GruntM15SeenText:
-	ctxt "Hyuck-hyuck-hyuck!"
+	text "Hyuck-hyuck-hyuck!"
 	line "I remember you!"
 
 	para "You got me good"
@@ -122,12 +122,12 @@ GruntM15SeenText:
 	done
 
 GruntM15BeatenText:
-	ctxt "Hyuck-hyuck-hyuck!"
+	text "Hyuck-hyuck-hyuck!"
 	line "So, that's how?"
 	done
 
 DirectorIntroText:
-	ctxt "Director: Who?"
+	text "Director: Who?"
 	line "What? You came to"
 	cont "rescue me?"
 
@@ -146,13 +146,13 @@ DirectorIntroText:
 	done
 
 DirectorCardKeyText:
-	ctxt "Director: Use that"
+	text "Director: Use that"
 	line "to open the shut-"
 	cont "ters on 3F."
 	done
 
 DirectorAfterText:
-	ctxt "I'm begging you to"
+	text "I'm begging you to"
 	line "help."
 
 	para "There's no telling"

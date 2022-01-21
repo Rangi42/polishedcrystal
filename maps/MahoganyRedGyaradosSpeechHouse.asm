@@ -20,13 +20,13 @@ MahoganyRedGyaradosSpeechHouseTeacherScript:
 	iftrue_jumptextfaceplayer MahoganyRedGyaradosSpeechHouseTeacherText_RocketsInRadioTower
 	jumpthistextfaceplayer
 
-	ctxt "My favorite radio"
+	text "My favorite radio"
 	line "program? I'd say"
 	cont "#mon Music."
 	done
 
 MahoganyRedGyaradosSpeechHouseBlackBeltText:
-	ctxt "I heard that a red"
+	text "I heard that a red"
 	line "Gyarados appeared"
 	cont "at the lake."
 
@@ -38,7 +38,7 @@ MahoganyRedGyaradosSpeechHouseBlackBeltText:
 	done
 
 MahoganyRedGyaradosSpeechHouseTeacherText_RocketsInRadioTower:
-	ctxt "I've been hearing"
+	text "I've been hearing"
 	line "laughter on the"
 
 	para "radio…"

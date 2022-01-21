@@ -52,31 +52,31 @@ CherrygroveBayTutorEarthPowerScript:
 GenericTrainerSwimmermThomas:
 	generictrainer SWIMMERM, THOMAS, EVENT_BEAT_SWIMMERM_THOMAS, .SeenText, .BeatenText
 
-	ctxt "My #mon knows"
+	text "My #mon knows"
 	line "how to Surf, but"
 	cont "I prefer swimming."
 	done
 
 .SeenText:
-	ctxt "Do you know how to"
+	text "Do you know how to"
 	line "swim? I can teach"
 	cont "you, if you want."
 	done
 
 .BeatenText:
-	ctxt "Glub, glub, glub…"
+	text "Glub, glub, glub…"
 	done
 
 GenericTrainerSwimmerfSally:
 	generictrainer SWIMMERF, SALLY, EVENT_BEAT_SWIMMERF_SALLY, .SeenText, .BeatenText
 
-	ctxt "I like drifting on"
+	text "I like drifting on"
 	line "the waves along-"
 	cont "side my #mon!"
 	done
 
 .SeenText:
-	ctxt "I like this bay."
+	text "I like this bay."
 	line "Its waters are so"
 
 	para "much calmer than"
@@ -84,14 +84,14 @@ GenericTrainerSwimmerfSally:
 	done
 
 .BeatenText:
-	ctxt "I don't like"
+	text "I don't like"
 	line "losing, however…"
 	done
 
 GenericTrainerSwimmerfTara:
 	generictrainer SWIMMERF, TARA, EVENT_BEAT_SWIMMERF_TARA, .SeenText, .BeatenText
 
-	ctxt "There's a grove of"
+	text "There's a grove of"
 	line "golden trees north"
 	cont "of Ecruteak City."
 
@@ -100,20 +100,20 @@ GenericTrainerSwimmerfTara:
 	done
 
 .SeenText:
-	ctxt "Ah, swimming amid"
+	text "Ah, swimming amid"
 	line "cherry blossoms is"
 	cont "so relaxing!"
 	done
 
 .BeatenText:
-	ctxt "I don't even mind"
+	text "I don't even mind"
 	line "losing…"
 	done
 
 GenericTrainerHikerTony:
 	generictrainer HIKER, TONY, EVENT_BEAT_HIKER_TONY, .SeenText, .BeatenText
 
-	ctxt "After a long hike,"
+	text "After a long hike,"
 	line "resting under the"
 
 	para "cherry trees hits"
@@ -121,17 +121,17 @@ GenericTrainerHikerTony:
 	done
 
 .SeenText:
-	ctxt "I hiked through"
+	text "I hiked through"
 	line "miles of woods"
 	cont "to get here!"
 	done
 
 .BeatenText:
-	ctxt "I'm exhausted…"
+	text "I'm exhausted…"
 	done
 
 CherrygroveBayFisherText:
-	ctxt "I can watch"
+	text "I can watch"
 	line "Cherrygrove City"
 
 	para "from afar while"
@@ -139,7 +139,7 @@ CherrygroveBayFisherText:
 	done
 
 CherrygroveBayHikerText:
-	ctxt "I don't believe in"
+	text "I don't believe in"
 	line "legendary #mon"
 	cont "creation myths."
 
@@ -151,7 +151,7 @@ CherrygroveBayHikerText:
 	done
 
 Text_CherrygroveBayTutorEarthPower:
-	ctxt "I can teach your"
+	text "I can teach your"
 	line "#mon how to"
 
 	para "use Earth Power"
@@ -159,22 +159,22 @@ Text_CherrygroveBayTutorEarthPower:
 	done
 
 Text_CherrygroveBayTutorNoSilverLeaf:
-	ctxt "You don't have any"
+	text "You don't have any"
 	line "Silver Leaves…"
 	done
 
 Text_CherrygroveBayTutorQuestion:
-	ctxt "Should I teach"
+	text "Should I teach"
 	line "your #mon"
 	cont "Earth Power?"
 	done
 
 Text_CherrygroveBayTutorRefused:
-	ctxt "Oh well."
+	text "Oh well."
 	done
 
 Text_CherrygroveBayTutorTaught:
-	ctxt "Now your #mon"
+	text "Now your #mon"
 	line "knows how to use"
 	cont "Earth Power."
 	done

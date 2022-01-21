@@ -65,7 +65,7 @@ EcruteakCityFisherScript:
 	jumptextfaceplayer EcruteakCityFisherText
 
 EcruteakCityGramps1Text:
-	ctxt "Ecruteak used to"
+	text "Ecruteak used to"
 	line "have two towers:"
 
 	para "one each in the"
@@ -73,7 +73,7 @@ EcruteakCityGramps1Text:
 	done
 
 EcruteakCityGramps2Text:
-	ctxt "Ah, child."
+	text "Ah, child."
 	line "Have you learned"
 
 	para "to dance like the"
@@ -88,7 +88,7 @@ EcruteakCityGramps2Text:
 	done
 
 EcruteakCityLass1Text:
-	ctxt "I'm going to get"
+	text "I'm going to get"
 	line "my #mon blessed"
 
 	para "at the shrine."
@@ -96,12 +96,12 @@ EcruteakCityLass1Text:
 	done
 
 EcruteakCityHexManiacText:
-	ctxt "Spirits of #mon"
+	text "Spirits of #mon"
 	line "haunt this place…"
 	done
 
 EcruteakCitySightseerMText:
-	ctxt "Ecruteak has such"
+	text "Ecruteak has such"
 	line "an incredible"
 	cont "history."
 
@@ -111,11 +111,11 @@ EcruteakCitySightseerMText:
 	done
 
 EcruteakCitySmeargleText:
-	ctxt "Smeargle: Smeer!"
+	text "Smeargle: Smeer!"
 	done
 
 EcruteakCityLass2Text:
-	ctxt "The tower that"
+	text "The tower that"
 	line "used to be here…"
 
 	para "My grandma told me"
@@ -124,14 +124,14 @@ EcruteakCityLass2Text:
 	done
 
 EcruteakCityLass2Text_ReleasedBeasts:
-	ctxt "Three big #mon"
+	text "Three big #mon"
 	line "ran off in differ-"
 	cont "ent directions."
 	cont "What were they?"
 	done
 
 EcruteakCityFisherText:
-	ctxt "I heard a rumor"
+	text "I heard a rumor"
 	line "about Olivine"
 	cont "Lighthouse."
 
@@ -144,7 +144,7 @@ EcruteakCityFisherText:
 	done
 
 EcruteakCityFisherText_JasmineReturned:
-	ctxt "The #mon at"
+	text "The #mon at"
 	line "Olivine Lighthouse"
 	cont "has been cured."
 
@@ -154,7 +154,7 @@ EcruteakCityFisherText_JasmineReturned:
 	done
 
 EcruteakCityYoungsterText:
-	ctxt "I hear #mon are"
+	text "I hear #mon are"
 	line "rampaging at the"
 
 	para "Lake of Rage. I'd"
@@ -162,7 +162,7 @@ EcruteakCityYoungsterText:
 	done
 
 EcruteakCityGramps3Text:
-	ctxt "In the distant"
+	text "In the distant"
 	line "past…"
 
 	para "This tower burned"
@@ -191,7 +191,7 @@ EcruteakCityGramps3Text:
 	done
 
 EcruteakCitySignText:
-	ctxt "Ecruteak City"
+	text "Ecruteak City"
 	line "A Historical City"
 
 	para "Where the Past"
@@ -199,7 +199,7 @@ EcruteakCitySignText:
 	done
 
 EcruteakGymSignText:
-	ctxt "Ecruteak City"
+	text "Ecruteak City"
 	line "#mon Gym"
 	cont "Leader: Morty"
 
@@ -208,12 +208,12 @@ EcruteakGymSignText:
 	done
 
 EcruteakDanceTheaterSignText:
-	ctxt "Ecruteak Dance"
+	text "Ecruteak Dance"
 	line "Theater"
 	done
 
 BurnedTowerSignText:
-	ctxt "Burned Tower"
+	text "Burned Tower"
 
 	para "It was destroyed"
 	line "by a mysterious"
@@ -224,7 +224,7 @@ BurnedTowerSignText:
 	done
 
 EcruteakShrineSignText:
-	ctxt "Ecruteak Shrine"
+	text "Ecruteak Shrine"
 
 	para "“Life is a lamp-"
 	line "flame before a"
@@ -232,7 +232,7 @@ EcruteakShrineSignText:
 	done
 
 EcruteakBarrierStationSignText:
-	ctxt "Barrier Station"
+	text "Barrier Station"
 	line "to Bell Tower"
 
 	para "No Trespassing by"

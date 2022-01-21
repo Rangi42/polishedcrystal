@@ -34,7 +34,7 @@ LugiaPaintingScript:
 	closepokepic
 	jumpthistext
 
-	ctxt "  The Leviathan"
+	text "  The Leviathan"
 	line "     Awakens"
 	done
 
@@ -45,7 +45,7 @@ HoOhPaintingScript:
 	closepokepic
 	jumpthistext
 
-	ctxt "   The Phoenix"
+	text "   The Phoenix"
 	line "    Ascending"
 	done
 
@@ -56,7 +56,7 @@ BellTowerPaintingScript:
 	closepokepic
 	jumpthistext
 
-	ctxt "    Friendship"
+	text "    Friendship"
 	line "     and Hope"
 	done
 
@@ -69,7 +69,7 @@ KabutoPuzzleScript:
 	closepokepic
 	jumpthistext
 
-	ctxt "It's the completed"
+	text "It's the completed"
 	line "Kabuto panel!"
 	done
 
@@ -82,7 +82,7 @@ OmanytePuzzleScript:
 	closepokepic
 	jumpthistext
 
-	ctxt "It's the completed"
+	text "It's the completed"
 	line "Omanyte panel!"
 	done
 
@@ -95,7 +95,7 @@ AerodactylPuzzleScript:
 	closepokepic
 	jumpthistext
 
-	ctxt "It's the completed"
+	text "It's the completed"
 	line "Aerodactyl panel!"
 	done
 
@@ -108,17 +108,17 @@ HoOhPuzzleScript:
 	closepokepic
 	jumpthistext
 
-	ctxt "It's the completed"
+	text "It's the completed"
 	line "Ho-Oh panel!"
 	done
 
 UnsolvedPuzzleText:
-	ctxt "The display is"
+	text "The display is"
 	line "still empty…"
 	done
 
 GoldenrodMuseum2FBigPearlText:
-	ctxt "It's a huge pearl"
+	text "It's a huge pearl"
 	line "fished up from"
 	cont "Goldenrod Harbor."
 	done

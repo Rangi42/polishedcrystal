@@ -1690,12 +1690,12 @@ PC_Mart_KeyItemsPocketMenuDataHeader:
 	dba UpdateItemIconAndDescription
 
 Text_SortItemsHow:
-	ctxt "How do you want"
+	text "How do you want"
 	line "to sort items?"
 	done
 
 Text_NoEmptySlot:
-	ctxt "There are no free"
+	text "There are no free"
 	line "register slots."
 
 	para "Unregister another"

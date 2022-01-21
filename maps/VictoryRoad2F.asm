@@ -80,7 +80,7 @@ UnknownScript_0x7451f:
 GenericTrainerVeteranfJoanne:
 	generictrainer VETERANF, JOANNE, EVENT_BEAT_VETERANF_JOANNE, VeteranfJoanneSeenText, VeteranfJoanneBeatenText
 
-	ctxt "You earned the"
+	text "You earned the"
 	line "right to be on"
 	cont "Victory Road!"
 	done
@@ -88,7 +88,7 @@ GenericTrainerVeteranfJoanne:
 GenericTrainerVeteranfSylvie:
 	generictrainer VETERANF, SYLVIE, EVENT_BEAT_VETERANF_SYLVIE, VeteranfSylvieSeenText, VeteranfSylvieBeatenText
 
-	ctxt "Did somebody"
+	text "Did somebody"
 	line "capture Moltres"
 	cont "already?"
 	done
@@ -108,7 +108,7 @@ VictoryRoadRivalBattleExitMovement1:
 	step_end
 
 VictoryRoadRivalBeforeText:
-	ctxt "Hold it."
+	text "Hold it."
 
 	para "…Are you going to"
 	line "take the #mon"
@@ -134,7 +134,7 @@ VictoryRoadRivalBeforeText:
 	done
 
 VictoryRoadRivalDefeatText:
-	ctxt "…I couldn't win…"
+	text "…I couldn't win…"
 
 	para "I gave it every-"
 	line "thing I had…"
@@ -150,7 +150,7 @@ VictoryRoadRivalDefeatText:
 	done
 
 VictoryRoadRivalAfterText:
-	ctxt "…I haven't given up"
+	text "…I haven't given up"
 	line "on becoming the"
 	cont "greatest trainer…"
 
@@ -172,7 +172,7 @@ VictoryRoadRivalAfterText:
 	done
 
 VictoryRoadRivalVictoryText:
-	ctxt "…Humph!"
+	text "…Humph!"
 
 	para "When it comes down"
 	line "to it, nothing can"
@@ -183,17 +183,17 @@ VictoryRoadRivalVictoryText:
 	done
 
 VeteranfJoanneSeenText:
-	ctxt "Victory Road is"
+	text "Victory Road is"
 	line "the final test"
 	cont "for trainers!"
 	done
 
 VeteranfJoanneBeatenText:
-	ctxt "Aiyah!"
+	text "Aiyah!"
 	done
 
 VeteranfSylvieSeenText:
-	ctxt "There's supposed"
+	text "There's supposed"
 	line "to be a Moltres"
 	cont "roosting here."
 
@@ -202,7 +202,7 @@ VeteranfSylvieSeenText:
 	done
 
 VeteranfSylvieBeatenText:
-	ctxt "I'd have won if"
+	text "I'd have won if"
 	line "I had a legendary"
 	cont "#mon…"
 	done

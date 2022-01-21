@@ -186,7 +186,7 @@ MrPokemonsHouse_OakExits:
 	step_end
 
 MrPokemonIntroText1:
-	ctxt "Hello, hello! You"
+	text "Hello, hello! You"
 	line "must be <PLAYER>."
 
 	para "Prof.Elm said that"
@@ -194,13 +194,13 @@ MrPokemonIntroText1:
 	done
 
 MrPokemonIntroText2:
-	ctxt "This is what I"
+	text "This is what I"
 	line "want Prof.Elm to"
 	cont "examine."
 	done
 
 MrPokemonIntroText3:
-	ctxt "I know a couple"
+	text "I know a couple"
 	line "who run a #mon"
 	cont "Day-Care service."
 
@@ -217,18 +217,18 @@ MrPokemonIntroText3:
 	done
 
 MrPokemonIntroText4:
-	ctxt "Even Prof.Oak here"
+	text "Even Prof.Oak here"
 	line "recognizes that."
 	done
 
 MrPokemonIntroText5:
-	ctxt "If my assumption"
+	text "If my assumption"
 	line "is correct, Prof."
 	cont "Elm will know it."
 	done
 
 MrPokemonsHouse_MrPokemonHealText:
-	ctxt "You are returning"
+	text "You are returning"
 	line "to Prof.Elm?"
 
 	para "Here. Your #mon"
@@ -237,12 +237,12 @@ MrPokemonsHouse_MrPokemonHealText:
 	done
 
 MrPokemonText_ImDependingOnYou:
-	ctxt "I'm depending on"
+	text "I'm depending on"
 	line "you!"
 	done
 
 MrPokemonText_AlwaysNewDiscoveries:
-	ctxt "Life is delight-"
+	text "Life is delight-"
 	line "ful! Always, new"
 
 	para "discoveries to be"
@@ -250,7 +250,7 @@ MrPokemonText_AlwaysNewDiscoveries:
 	done
 
 MrPokemonsHouse_OakText1:
-	ctxt "Oak: Aha! So"
+	text "Oak: Aha! So"
 	line "you're <PLAYER>!"
 
 if !DEF(DEBUG)
@@ -316,12 +316,12 @@ endc
 	done
 
 MrPokemonsHouse_GetDexText:
-	ctxt "<PLAYER> received"
+	text "<PLAYER> received"
 	line "#dex!"
 	done
 
 MrPokemonsHouse_OakText2:
-	ctxt "Go meet many kinds"
+	text "Go meet many kinds"
 	line "of #mon and"
 
 	para "complete that"
@@ -341,7 +341,7 @@ endc
 	done
 
 MrPokemonText_GimmeTheScale:
-	ctxt "Hm? That Scale!"
+	text "Hm? That Scale!"
 	line "What's that?"
 	cont "A red Gyarados?"
 
@@ -361,31 +361,31 @@ MrPokemonText_GimmeTheScale:
 	done
 
 MrPokemonText_GotShinyDitto:
-	ctxt "<PLAYER> received a"
+	text "<PLAYER> received a"
 	line "#mon."
 	done
 
 MrPokemonText_SentToPC:
-	ctxt "The #mon was"
+	text "The #mon was"
 	line "sent to "
 	text_ram wStringBuffer1
 	text "."
 	done
 
 MrPokemonText_PartyAndBoxFull:
-	ctxt "You don't have any"
+	text "You don't have any"
 	line "room for this,"
 	cont "even in your box!"
 	done
 
 MrPokemonText_Disappointed:
-	ctxt "That's disappoint-"
+	text "That's disappoint-"
 	line "ing. That happens"
 	cont "to be very rare."
 	done
 
 MrPokemonsHouse_ForeignMagazinesText:
-	ctxt "It's packed with"
+	text "It's packed with"
 	line "foreign magazines."
 
 	para "Can't even read"
@@ -393,13 +393,13 @@ MrPokemonsHouse_ForeignMagazinesText:
 	done
 
 MrPokemonsHouse_BrokenComputerText:
-	ctxt "It's a big com-"
+	text "It's a big com-"
 	line "puter. Hmm. It's"
 	cont "broken."
 	done
 
 MrPokemonsHouse_StrangeCoinsText:
-	ctxt "A whole pile of"
+	text "A whole pile of"
 	line "strange coins!"
 
 	para "Maybe they're from"
@@ -407,12 +407,12 @@ MrPokemonsHouse_StrangeCoinsText:
 	done
 
 MrPokemonsHouse_CabinetText:
-	ctxt "A collection of"
+	text "A collection of"
 	line "rare curiosities"
 	cont "from all over!"
 	done
 
 MrPokemonsHouse_RedScaleCabinetText:
-	ctxt "One of them is the"
+	text "One of them is the"
 	line "shiny red scale!"
 	done

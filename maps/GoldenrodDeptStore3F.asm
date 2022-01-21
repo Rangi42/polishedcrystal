@@ -19,7 +19,7 @@ GoldenrodDeptStore3F_MapScriptHeader:
 	object_event  2,  5, SPRITE_ROCKER, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_COMMAND, jumptextfaceplayer, GoldenrodDeptStore3FRockerText, -1
 
 GoldenrodDeptStore3FSuperNerdText:
-	ctxt "I, I, I'm really"
+	text "I, I, I'm really"
 	line "impatient!"
 
 	para "I use X Speed in"
@@ -28,7 +28,7 @@ GoldenrodDeptStore3FSuperNerdText:
 	done
 
 GoldenrodDeptStore3FRockerText:
-	ctxt "Hey! When you bat-"
+	text "Hey! When you bat-"
 	line "tle, do you use X"
 	cont "Spcl.Atk?"
 
@@ -38,7 +38,7 @@ GoldenrodDeptStore3FRockerText:
 	done
 
 GoldenrodDeptStore3FDirectoryText:
-	ctxt "For Victory"
+	text "For Victory"
 	line "Seekers"
 
 	para "3F Battle"

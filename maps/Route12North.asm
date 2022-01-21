@@ -18,7 +18,7 @@ Route12North_MapScriptHeader:
 GenericTrainerFisherKyle:
 	generictrainer FISHER, KYLE, EVENT_BEAT_FISHER_KYLE, FisherKyleSeenText, FisherKyleBeatenText
 
-	ctxt "The tug you feel"
+	text "The tug you feel"
 	line "on the Rod when"
 
 	para "you hook a #-"
@@ -26,13 +26,13 @@ GenericTrainerFisherKyle:
 	done
 
 FisherKyleSeenText:
-	ctxt "Do you remember?"
+	text "Do you remember?"
 	done
 
 FisherKyleBeatenText:
-	ctxt "You do remember?"
+	text "You do remember?"
 	done
 
 FishingSpotSignText:
-	ctxt "Fishing Spot"
+	text "Fishing Spot"
 	done

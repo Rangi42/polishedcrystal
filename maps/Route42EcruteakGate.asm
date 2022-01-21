@@ -17,7 +17,7 @@ Route42EcruteakGate_MapScriptHeader:
 	object_event  5,  2, SPRITE_OFFICER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_COMMAND, jumptextfaceplayer, Route42EcruteakGateOfficerText, -1
 
 Route42EcruteakGateOfficerText:
-	ctxt "Mt.Mortar is like"
+	text "Mt.Mortar is like"
 	line "a maze inside."
 
 	para "Be careful. Don't"

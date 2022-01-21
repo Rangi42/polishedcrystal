@@ -24,7 +24,7 @@ Route35Coast_MapScriptHeader:
 GenericTrainerSwimmermWalter:
 	generictrainer SWIMMERM, WALTER, EVENT_BEAT_SWIMMERM_WALTER, SwimmermWalterSeenText, SwimmermWalterBeatenText
 
-	ctxt "The sun reflects"
+	text "The sun reflects"
 	line "off the water"
 
 	para "and it burned me"
@@ -34,7 +34,7 @@ GenericTrainerSwimmermWalter:
 GenericTrainerSwimmerfLisa:
 	generictrainer SWIMMERF, LISA, EVENT_BEAT_SWIMMERF_LISA, SwimmerfLisaSeenText, SwimmerfLisaBeatenText
 
-	ctxt "There's enough"
+	text "There's enough"
 	line "room in the sea"
 
 	para "for fishing and"
@@ -44,14 +44,14 @@ GenericTrainerSwimmerfLisa:
 GenericTrainerSwimmerfJill:
 	generictrainer SWIMMERF, JILL, EVENT_BEAT_SWIMMERF_JILL, SwimmerfJillSeenText, SwimmerfJillBeatenText
 
-	ctxt "I'll forget my"
+	text "I'll forget my"
 	line "loss with a swim."
 	done
 
 GenericTrainerBird_keeperBryan:
 	generictrainer BIRD_KEEPER, BRYAN, EVENT_BEAT_BIRD_KEEPER_BRYAN, Bird_keeperBryanSeenText, Bird_keeperBryanBeatenText
 
-	ctxt "Some #mon flee"
+	text "Some #mon flee"
 	line "right away."
 
 	para "Try catching them"
@@ -69,7 +69,7 @@ GenericTrainerBird_keeperBryan:
 GenericTrainerSrandjrBeaandmay1:
 	generictrainer SR_AND_JR, BEAANDMAY1, EVENT_BEAT_SR_AND_JR_BEA_AND_MAY, SrandjrBeaandmay1SeenText, SrandjrBeaandmay1BeatenText
 
-	ctxt "Bea: I'll teach"
+	text "Bea: I'll teach"
 	line "May how to become"
 	cont "stronger."
 	done
@@ -77,7 +77,7 @@ GenericTrainerSrandjrBeaandmay1:
 GenericTrainerSrandjrBeaandmay2:
 	generictrainer SR_AND_JR, BEAANDMAY2, EVENT_BEAT_SR_AND_JR_BEA_AND_MAY, SrandjrBeaandmay2SeenText, SrandjrBeaandmay2BeatenText
 
-	ctxt "May: I'll ask Bea"
+	text "May: I'll ask Bea"
 	line "how to become"
 	cont "stronger."
 	done
@@ -85,7 +85,7 @@ GenericTrainerSrandjrBeaandmay2:
 GenericTrainerSailorHarvey:
 	generictrainer SAILOR, HARVEY, EVENT_BEAT_SAILOR_HARVEY, SailorHarveySeenText, SailorHarveyBeatenText
 
-	ctxt "On the sea, the"
+	text "On the sea, the"
 	line "only thing you can"
 
 	para "count on is your"
@@ -98,7 +98,7 @@ GenericTrainerSailorHarvey:
 GenericTrainerLassRose:
 	generictrainer LASS, ROSE, EVENT_BEAT_LASS_ROSE, LassRoseSeenText, LassRoseBeatenText
 
-	ctxt "You hurt my poor"
+	text "You hurt my poor"
 	line "worldly #mon!"
 
 	para "I demand that you"
@@ -107,7 +107,7 @@ GenericTrainerLassRose:
 	done
 
 SwimmermWalterSeenText:
-	ctxt "I forgot to wear"
+	text "I forgot to wear"
 	line "sunscreen, so I'm"
 
 	para "hiding by these"
@@ -115,41 +115,41 @@ SwimmermWalterSeenText:
 	done
 
 SwimmermWalterBeatenText:
-	ctxt "Ouch!"
+	text "Ouch!"
 	done
 
 SwimmerfLisaSeenText:
-	ctxt "The fishermen"
+	text "The fishermen"
 	line "yelled at me for"
 	cont "bugging them…"
 	done
 
 SwimmerfLisaBeatenText:
-	ctxt "I only wanted"
+	text "I only wanted"
 	line "to battle…"
 	done
 
 SwimmerfJillSeenText:
-	ctxt "Don't I look good"
+	text "Don't I look good"
 	line "in this bikini?"
 	done
 
 SwimmerfJillBeatenText:
-	ctxt "Hmph!"
+	text "Hmph!"
 	done
 
 Bird_keeperBryanSeenText:
-	ctxt "What kinds of"
+	text "What kinds of"
 	line "Balls do you use?"
 	done
 
 Bird_keeperBryanBeatenText:
-	ctxt "Yikes! Not fast"
+	text "Yikes! Not fast"
 	line "enough!"
 	done
 
 SrandjrBeaandmay1SeenText:
-	ctxt "Bea: I like strong"
+	text "Bea: I like strong"
 	line "#mon better"
 
 	para "than cute"
@@ -161,13 +161,13 @@ SrandjrBeaandmay1SeenText:
 	done
 
 SrandjrBeaandmay1BeatenText:
-	ctxt "Bea: Strength and"
+	text "Bea: Strength and"
 	line "cuteness weren't"
 	cont "enough!"
 	done
 
 SrandjrBeaandmay2SeenText:
-	ctxt "May: I like cute"
+	text "May: I like cute"
 	line "#mon better"
 
 	para "than strong"
@@ -179,19 +179,19 @@ SrandjrBeaandmay2SeenText:
 	done
 
 SrandjrBeaandmay2BeatenText:
-	ctxt "May: Cuteness and"
+	text "May: Cuteness and"
 	line "strength weren't"
 	cont "enough!"
 	done
 
 SailorHarveySeenText:
-	ctxt "Hah! Your #mon"
+	text "Hah! Your #mon"
 	line "sure look like"
 	cont "lightweights!"
 	done
 
 SailorHarveyBeatenText:
-	ctxt "What power!"
+	text "What power!"
 	line "How would you like"
 
 	para "to sail the seas"
@@ -199,13 +199,13 @@ SailorHarveyBeatenText:
 	done
 
 LassRoseSeenText:
-	ctxt "I collected these"
+	text "I collected these"
 	line "#mon from all"
 	cont "around the world!"
 	done
 
 LassRoseBeatenText:
-	ctxt "Oh no!"
+	text "Oh no!"
 	line "I went around the"
 	cont "world for these!"
 	done

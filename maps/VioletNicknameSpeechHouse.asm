@@ -23,7 +23,7 @@ VioletNicknameSpeechHouseBirdScript:
 	end
 
 VioletNicknameSpeechHouseTeacherText:
-	ctxt "She uses the names"
+	text "She uses the names"
 	line "of her favorite"
 	cont "things to eat."
 
@@ -33,12 +33,12 @@ VioletNicknameSpeechHouseTeacherText:
 	done
 
 VioletNicknameSpeechHouseLassText:
-	ctxt "I call my Eevee"
+	text "I call my Eevee"
 	line "Strawberry!"
 	done
 
 VioletNicknameSpeechHouseGrampsText:
-	ctxt "The Zephyr Badge"
+	text "The Zephyr Badge"
 	line "is named after an"
 
 	para "ancient god of the"
@@ -49,5 +49,5 @@ VioletNicknameSpeechHouseGrampsText:
 	done
 
 VioletNicknameSpeechHouseBirdText:
-	ctxt "Strawberry: Eevee!"
+	text "Strawberry: Eevee!"
 	done

@@ -75,7 +75,7 @@ OlivineLighthouse3FBattleGirlEmy:
 	jumpthisopenedtext
 
 .AfterText2:
-	ctxt "One of the Elite"
+	text "One of the Elite"
 	line "Four, Bruno, is a"
 	cont "fighter like me."
 
@@ -85,7 +85,7 @@ OlivineLighthouse3FBattleGirlEmy:
 	done
 
 .IntroText:
-	ctxt "As a Battle Girl,"
+	text "As a Battle Girl,"
 	line "I train intensely"
 	cont "every day."
 
@@ -101,7 +101,7 @@ OlivineLighthouse3FBattleGirlEmy:
 	done
 
 .QuestionText:
-	ctxt "So you've bested"
+	text "So you've bested"
 	line "this entire tower?"
 
 	para "Then you have one"
@@ -113,23 +113,23 @@ OlivineLighthouse3FBattleGirlEmy:
 	done
 
 .RefusedText:
-	ctxt "Back to training"
+	text "Back to training"
 	line "on my own…"
 	done
 
 .SeenText:
-	ctxt "From behind my"
+	text "From behind my"
 	line "Protect Pads, I"
 	cont "attack! Ki-yaah!"
 	done
 
 .BeatenText:
-	ctxt "You broke through"
+	text "You broke through"
 	line "my defense!"
 	done
 
 .AfterText1:
-	ctxt "Your team is"
+	text "Your team is"
 	line "formidable!"
 
 	para "But you can become"
@@ -155,7 +155,7 @@ Bird_keeperTheoScript:
 GenericTrainerGentlemanPreston:
 	generictrainer GENTLEMAN, PRESTON, EVENT_BEAT_GENTLEMAN_PRESTON, GentlemanPrestonSeenText, GentlemanPrestonBeatenText
 
-	ctxt "Jasmine used to"
+	text "Jasmine used to"
 	line "use Rock #mon"
 	cont "like Onix."
 	done
@@ -163,7 +163,7 @@ GenericTrainerGentlemanPreston:
 GenericTrainerSailorTerrell:
 	generictrainer SAILOR, TERRELL, EVENT_BEAT_SAILOR_TERRELL, SailorTerrellSeenText, SailorTerrellBeatenText
 
-	ctxt "Every time I come"
+	text "Every time I come"
 	line "back to Olivine, I"
 	cont "visit the Gym."
 
@@ -175,7 +175,7 @@ GenericTrainerSailorTerrell:
 	done
 
 Bird_keeperTheoSeenText:
-	ctxt "Why are you here?"
+	text "Why are you here?"
 	line "Are you just going"
 
 	para "to gawk? I suggest"
@@ -183,12 +183,12 @@ Bird_keeperTheoSeenText:
 	done
 
 Bird_keeperTheoBeatenText:
-	ctxt "You really are"
+	text "You really are"
 	line "concerned…"
 	done
 
 BirdKeeperTheoAfterBattleText:
-	ctxt "How the heck do"
+	text "How the heck do"
 	line "you go up?"
 
 	para "I want to visit"
@@ -199,7 +199,7 @@ BirdKeeperTheoAfterBattleText:
 	done
 
 Bird_keeperTheoFinalText:
-	ctxt "How the heck do"
+	text "How the heck do"
 	line "you go up?"
 
 	para "I heard the sick"
@@ -209,25 +209,25 @@ Bird_keeperTheoFinalText:
 	done
 
 SailorTerrellSeenText:
-	ctxt "Sailors are both"
+	text "Sailors are both"
 	line "kind and strong."
 	cont "How about you?"
 	done
 
 SailorTerrellBeatenText:
-	ctxt "You are both kind"
+	text "You are both kind"
 	line "and strong…"
 	done
 
 GentlemanPrestonSeenText:
-	ctxt "I travel the world"
+	text "I travel the world"
 	line "to train my #-"
 	cont "mon. I wish to"
 	cont "battle with you."
 	done
 
 GentlemanPrestonBeatenText:
-	ctxt "…sigh… I must"
+	text "…sigh… I must"
 	line "train some more…"
 	done
 

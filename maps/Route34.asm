@@ -431,7 +431,7 @@ OfficerfMaraScript:
 GenericTrainerBreederJulie:
 	generictrainer BREEDER, JULIE, EVENT_BEAT_BREEDER_JULIE, BreederJulieSeenText, BreederJulieBeatenText
 
-	ctxt "One of my #mon"
+	text "One of my #mon"
 	line "has an Adamant"
 
 	para "nature. Another"
@@ -481,13 +481,13 @@ Route34RichBoyIrvingScript:
 	jumpthisopenedtext
 
 .AfterText2:
-	ctxt "There are some"
+	text "There are some"
 	line "things that money"
 	cont "can't buy."
 	done
 
 .IntroText:
-	ctxt "I don't need to"
+	text "I don't need to"
 	line "gamble for Coins."
 
 	para "I'm rich, so I"
@@ -506,7 +506,7 @@ Route34RichBoyIrvingScript:
 	done
 
 .QuestionText:
-	ctxt "You really did it!"
+	text "You really did it!"
 	line "Well then,"
 	cont "noblesse oblige."
 
@@ -516,24 +516,24 @@ Route34RichBoyIrvingScript:
 	done
 
 .RefusedText:
-	ctxt "Not so desperate"
+	text "Not so desperate"
 	line "for prize money"
 	cont "after all?"
 	done
 
 .SeenText:
-	ctxt "I'm a cut above"
+	text "I'm a cut above"
 	line "the commoners"
 	cont "you beat here!"
 	done
 
 .BeatenText:
-	ctxt "No! My money"
+	text "No! My money"
 	line "wasn't enough…"
 	done
 
 .AfterText1:
-	ctxt "You've clearly"
+	text "You've clearly"
 	line "earned this item."
 
 	para "Sell it and go on"
@@ -547,7 +547,7 @@ Route34RichBoyIrvingScript:
 GenericTrainerPokefanmBrandon:
 	generictrainer POKEFANM, BRANDON, EVENT_BEAT_POKEFANM_BRANDON, PokefanmBrandonSeenText, PokefanmBrandonBeatenText
 
-	ctxt "My #mon knew"
+	text "My #mon knew"
 	line "moves I didn't"
 	cont "know it had."
 
@@ -564,7 +564,7 @@ TrainerCooltrainerfIrene:
 	iftrue_jumptext CooltrainerfIreneAfterText2
 	jumpthistext
 
-	ctxt "Irene: My sister"
+	text "Irene: My sister"
 	line "Kate will get you"
 	cont "for this!"
 	done
@@ -578,7 +578,7 @@ TrainerCooltrainerfJenn:
 	iftrue_jumptext CooltrainerfJennAfterText2
 	jumpthistext
 
-	ctxt "Jenn: Don't get"
+	text "Jenn: Don't get"
 	line "cocky! My sister"
 	cont "Kate is tough!"
 	done
@@ -599,7 +599,7 @@ TrainerCooltrainerfKate:
 	jumpthisopenedtext
 
 CooltrainerfKateAfterText:
-	ctxt "Kate: I'm sorry we"
+	text "Kate: I'm sorry we"
 	line "jumped you."
 
 	para "We never expected"
@@ -627,11 +627,11 @@ Route34MovementData_LyraEntersDayCare:
 	step_end
 
 Route34LyraText_Grandpa:
-	ctxt "Lyra: Grandpa!"
+	text "Lyra: Grandpa!"
 	done
 
 Route34LyraGoodWorkText:
-	ctxt "Lyra: Good work,"
+	text "Lyra: Good work,"
 	line "Grandpa!"
 
 	para "The #mon you"
@@ -643,11 +643,11 @@ Route34LyraGoodWorkText:
 	done
 
 Route34LyraGreetingText:
-	ctxt "Lyra: Hi, <PLAYER>!"
+	text "Lyra: Hi, <PLAYER>!"
 	done
 
 Route34LyraIntroductionText1:
-	ctxt "This is <PLAYER>."
+	text "This is <PLAYER>."
 	line "He's a trainer."
 
 	para "He's quite good at"
@@ -658,7 +658,7 @@ Route34LyraIntroductionText1:
 	done
 
 Route34LyraIntroductionText2:
-	ctxt "This is <PLAYER>."
+	text "This is <PLAYER>."
 	line "She's a trainer."
 
 	para "She's quite good at"
@@ -669,40 +669,40 @@ Route34LyraIntroductionText2:
 	done
 
 Route34LyraChallengeText:
-	ctxt "<PLAYER>, why don't"
+	text "<PLAYER>, why don't"
 	line "we show Grandpa"
 	cont "how good you are?"
 	done
 
 Route34LyraWinText:
-	ctxt "You're even better"
+	text "You're even better"
 	line "than I thought!"
 	done
 
 Route34LyraLossText:
-	ctxt "Well, you're still"
+	text "Well, you're still"
 	line "getting better…"
 	done
 
 Route34LyraFollowMeText:
-	ctxt "Lyra: Let me"
+	text "Lyra: Let me"
 	line "introduce you to"
 	cont "Grandma, too!"
 	done
 
 BreederJulieSeenText:
-	ctxt "This is where I"
+	text "This is where I"
 	line "train my baby"
 	cont "#mon!"
 	done
 
 BreederJulieBeatenText:
-	ctxt "Beaten by a"
+	text "Beaten by a"
 	line "passing stranger!"
 	done
 
 CamperTodd1SeenText:
-	ctxt "I'm confident in"
+	text "I'm confident in"
 	line "my ability to"
 	cont "raise #mon."
 
@@ -710,12 +710,12 @@ CamperTodd1SeenText:
 	done
 
 CamperTodd1BeatenText:
-	ctxt "Did I screw up my"
+	text "Did I screw up my"
 	line "training?"
 	done
 
 CamperTodd1AfterText:
-	ctxt "Maybe I should"
+	text "Maybe I should"
 	line "take one to a Day-"
 
 	para "Care. Or maybe use"
@@ -723,7 +723,7 @@ CamperTodd1AfterText:
 	done
 
 CamperToddSaleText:
-	ctxt "Shopping under the"
+	text "Shopping under the"
 	line "sky!"
 
 	para "It feels so nice"
@@ -731,36 +731,36 @@ CamperToddSaleText:
 	done
 
 PicnickerGina1SeenText:
-	ctxt "Are you a trainer?"
+	text "Are you a trainer?"
 
 	para "Let's have a"
 	line "practice battle."
 	done
 
 PicnickerGina1BeatenText:
-	ctxt "Oh, no! I just"
+	text "Oh, no! I just"
 	line "can't win…"
 	done
 
 PicnickerGina1AfterText:
-	ctxt "You're too strong"
+	text "You're too strong"
 	line "to be a practice"
 	cont "partner."
 	done
 
 OfficerfMaraSeenText:
-	ctxt "Who goes there?"
+	text "Who goes there?"
 	line "What are you up"
 	cont "to?"
 	done
 
 OfficerfMaraWinText:
-	ctxt "You're a tough"
+	text "You're a tough"
 	line "little kid."
 	done
 
 OfficerfMaraAfterText:
-	ctxt "Yes, I see nothing"
+	text "Yes, I see nothing"
 	line "wrong today. You"
 
 	para "be good and stay"
@@ -768,13 +768,13 @@ OfficerfMaraAfterText:
 	done
 
 OfficerfMaraDaytimeText:
-	ctxt "I'm on patrol for"
+	text "I'm on patrol for"
 	line "suspicious indi-"
 	cont "viduals."
 	done
 
 PokefanmBrandonSeenText:
-	ctxt "I just got my"
+	text "I just got my"
 	line "#mon back from"
 	cont "Day-Care."
 
@@ -783,22 +783,22 @@ PokefanmBrandonSeenText:
 	done
 
 PokefanmBrandonBeatenText:
-	ctxt "Why does it end"
+	text "Why does it end"
 	line "this way?"
 	done
 
 CooltrainerfIreneSeenText:
-	ctxt "Irene: Kyaaah!"
+	text "Irene: Kyaaah!"
 	line "Someone found us!"
 	done
 
 CooltrainerfIreneBeatenText:
-	ctxt "Irene: Ohhh!"
+	text "Irene: Ohhh!"
 	line "Too strong!"
 	done
 
 CooltrainerfIreneAfterText2:
-	ctxt "Irene: Isn't this"
+	text "Irene: Isn't this"
 	line "beach great?"
 
 	para "It's our secret"
@@ -806,35 +806,35 @@ CooltrainerfIreneAfterText2:
 	done
 
 CooltrainerfJennSeenText:
-	ctxt "Jenn: You can't"
+	text "Jenn: You can't"
 	line "beat Irene and go"
 	cont "unpunished!"
 	done
 
 CooltrainerfJennBeatenText:
-	ctxt "Jenn: So sorry,"
+	text "Jenn: So sorry,"
 	line "Irene! Sis!"
 	done
 
 CooltrainerfJennAfterText2:
-	ctxt "Jenn: Sunlight"
+	text "Jenn: Sunlight"
 	line "makes your body"
 	cont "stronger."
 	done
 
 CooltrainerfKateSeenText:
-	ctxt "Kate: You sure"
+	text "Kate: You sure"
 	line "were mean to my"
 	cont "little sisters!"
 	done
 
 CooltrainerfKateBeatenText:
-	ctxt "Kate: No! I can't"
+	text "Kate: No! I can't"
 	line "believe I lost."
 	done
 
 CooltrainerfKateOfferPowerHerbText:
-	ctxt "Kate: You're too"
+	text "Kate: You're too"
 	line "strong. I didn't"
 	cont "stand a chance."
 
@@ -843,7 +843,7 @@ CooltrainerfKateOfferPowerHerbText:
 	done
 
 Route34SignText:
-	ctxt "Route 34"
+	text "Route 34"
 
 	para "Goldenrod City -"
 	line "Azalea Town"
@@ -853,7 +853,7 @@ Route34SignText:
 	done
 
 Route34TrainerTipsText:
-	ctxt "Trainer Tips"
+	text "Trainer Tips"
 
 	para "Berry trees grow"
 	line "new Berries"
@@ -865,7 +865,7 @@ Route34TrainerTipsText:
 	done
 
 DayCareSignText:
-	ctxt "Day-Care"
+	text "Day-Care"
 
 	para "Let Us Raise Your"
 	line "#mon For You!"

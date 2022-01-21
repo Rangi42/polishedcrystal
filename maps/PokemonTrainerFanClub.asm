@@ -19,7 +19,7 @@ PokemonJournalBrunoScript:
 	setflag ENGINE_READ_BRUNO_JOURNAL
 	jumpthistext
 
-	ctxt "#mon Journal"
+	text "#mon Journal"
 
 	para "Special Feature:"
 	line "Elite Four Bruno!"

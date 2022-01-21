@@ -72,25 +72,25 @@ BugCatchingContestant10AScript:
 	jumptext BugCatchingContestant10AText
 
 BugCatchingContestant1AText:
-	ctxt "Don: I'm going to"
+	text "Don: I'm going to"
 	line "win! Don't bother"
 	cont "me."
 	done
 
 BugCatchingContestant2AText:
-	ctxt "Lou: My Parasect"
+	text "Lou: My Parasect"
 	line "puts #mon to"
 	cont "sleep with Spore."
 	done
 
 BugCatchingContestant3AText:
-	ctxt "Nick: I'm raising"
+	text "Nick: I'm raising"
 	line "fast #mon for"
 	cont "battles."
 	done
 
 BugCatchingContestant4AText:
-	ctxt "William: I'm not"
+	text "William: I'm not"
 	line "concerned about"
 	cont "winning."
 
@@ -99,7 +99,7 @@ BugCatchingContestant4AText:
 	done
 
 BugCatchingContestant5AText:
-	ctxt "Benny: Ssh! You'll"
+	text "Benny: Ssh! You'll"
 	line "scare off Scyther."
 
 	para "I'll talk to you"
@@ -107,7 +107,7 @@ BugCatchingContestant5AText:
 	done
 
 BugCatchingContestant6AText:
-	ctxt "Barry: You should"
+	text "Barry: You should"
 	line "weaken Bug #mon"
 
 	para "first, then throw"
@@ -115,7 +115,7 @@ BugCatchingContestant6AText:
 	done
 
 BugCatchingContestant7AText:
-	ctxt "Cindy: I love Bug"
+	text "Cindy: I love Bug"
 	line "#mon."
 
 	para "I guess you must"
@@ -123,7 +123,7 @@ BugCatchingContestant7AText:
 	done
 
 BugCatchingContestant8AText:
-	ctxt "Josh: I've been"
+	text "Josh: I've been"
 	line "collecting Bug"
 
 	para "#mon since I"
@@ -134,7 +134,7 @@ BugCatchingContestant8AText:
 	done
 
 BugCatchingContestant9AText:
-	ctxt "Johnny: If you've"
+	text "Johnny: If you've"
 	line "got the time to"
 
 	para "chat, go find some"
@@ -142,7 +142,7 @@ BugCatchingContestant9AText:
 	done
 
 BugCatchingContestant10AText:
-	ctxt "Kipp: I've studied"
+	text "Kipp: I've studied"
 	line "about Bug #mon"
 	cont "a lot."
 

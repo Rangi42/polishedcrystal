@@ -23,7 +23,7 @@ PokemonJournalLtSurgeScript:
 	setflag ENGINE_READ_LT_SURGE_JOURNAL
 	jumpthistext
 
-	ctxt "#mon Journal"
+	text "#mon Journal"
 
 	para "Special Feature:"
 	line "Leader Lt.Surge!"
@@ -46,7 +46,7 @@ VermilionPokeCenter1FSightseerMScript:
 	iftrue_jumptextfaceplayer .SnorlaxText
 	jumpthistextfaceplayer
 
-	ctxt "A sleeping #mon"
+	text "A sleeping #mon"
 	line "is lying in front"
 	cont "of Diglett's Cave."
 
@@ -58,7 +58,7 @@ VermilionPokeCenter1FSightseerMScript:
 	done
 
 .SnorlaxText:
-	ctxt "There used to be a"
+	text "There used to be a"
 	line "sleeping #mon"
 
 	para "lying in front of"
@@ -69,7 +69,7 @@ VermilionPokeCenter1FSightseerMScript:
 	done
 
 VermilionPokeCenter1FSailorText:
-	ctxt "The Fast Ship is a"
+	text "The Fast Ship is a"
 	line "great place to"
 
 	para "meet and battle"
@@ -77,7 +77,7 @@ VermilionPokeCenter1FSailorText:
 	done
 
 VermilionPokeCenter1FBugCatcherText:
-	ctxt "Oh? You have some"
+	text "Oh? You have some"
 	line "Badges I've never"
 	cont "seen before."
 

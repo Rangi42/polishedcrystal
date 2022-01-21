@@ -57,8 +57,8 @@ BitmasksPointers:
 	dw GolduckBitmasks
 	dw MankeyBitmasks
 	dw PrimeapeBitmasks
-	dw GrowlitheBitmasks
-	dw ArcanineBitmasks
+	dw GrowlithePlainBitmasks
+	dw ArcaninePlainBitmasks
 	dw PoliwagBitmasks
 	dw PoliwhirlBitmasks
 	dw PoliwrathBitmasks
@@ -99,8 +99,8 @@ BitmasksPointers:
 	dw HypnoBitmasks
 	dw KrabbyBitmasks
 	dw KinglerBitmasks
-	dw VoltorbBitmasks
-	dw ElectrodeBitmasks
+	dw VoltorbPlainBitmasks
+	dw ElectrodePlainBitmasks
 	dw ExeggcuteBitmasks
 	dw ExeggutorPlainBitmasks
 	dw CuboneBitmasks
@@ -210,11 +210,11 @@ BitmasksPointers:
 	dw SteelixBitmasks
 	dw SnubbullBitmasks
 	dw GranbullBitmasks
-	dw QwilfishBitmasks
+	dw QwilfishPlainBitmasks
 	dw ScizorBitmasks
 	dw ShuckleBitmasks
 	dw HeracrossBitmasks
-	dw SneaselBitmasks
+	dw SneaselPlainBitmasks
 	dw TeddiursaBitmasks
 	dw UrsaringBitmasks
 	dw SlugmaBitmasks
@@ -282,6 +282,11 @@ BitmasksPointers:
 	dw CursolaBitmasks
 	dw SirfetchDBitmasks
 	dw MrRimeBitmasks
+	dw WyrdeerBitmasks
+	dw KleavorBitmasks
+	dw UrsalunaBitmasks
+	dw SneaslerBitmasks
+	dw OverqwilBitmasks
 	assert_table_length NUM_SPECIES
 
 	dw UnownBBitmasks
@@ -342,7 +347,9 @@ BitmasksPointers:
 	dw MagikarpRaindropBitmasks
 
 	dw GyaradosRedBitmasks
+
 	dw MewtwoArmoredBitmasks
+
 	dw RattataAlolanBitmasks
 	dw RaticateAlolanBitmasks
 	dw RaichuAlolanBitmasks
@@ -361,6 +368,7 @@ BitmasksPointers:
 	dw MukAlolanBitmasks
 	dw ExeggutorAlolanBitmasks
 	dw MarowakAlolanBitmasks
+
 	dw MeowthGalarianBitmasks
 	dw PonytaGalarianBitmasks
 	dw RapidashGalarianBitmasks
@@ -374,5 +382,12 @@ BitmasksPointers:
 	dw MoltresGalarianBitmasks
 	dw SlowkingGalarianBitmasks
 	dw CorsolaGalarianBitmasks
+
+	dw GrowlitheHisuianBitmasks
+	dw ArcanineHisuianBitmasks
+	dw VoltorbHisuianBitmasks
+	dw ElectrodeHisuianBitmasks
+	dw QwilfishHisuianBitmasks
+	dw SneaselHisuianBitmasks
 
 	assert_table_length NUM_UNIQUE_POKEMON

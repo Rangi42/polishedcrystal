@@ -407,14 +407,10 @@ TrainerCard_Page1_PrintDexCaught_GameTime:
 	jr .star_loop
 
 .Dex_PlayTime_BP:
-	ctxt "#dex"
+	text "#dex"
 	next "Play Time"
 	next "Battle Pts"
 	next "          Badges"
-	; if this used 'text' instead of 'ctxt', the "▶"
-	; could go at the end of this string, instead of
-	; being placed with 5-byte 'hlcoord' and 'ld'
-	DEF ___ct_in_bytes -= 5 - 1
 	done
 
 TrainerCard_Page1_PrintGameTime:

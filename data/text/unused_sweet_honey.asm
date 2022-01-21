@@ -9,7 +9,7 @@
 ; The last text is associated with a second NPC, probably a Butterfree.
 
 UnusedSweetHoneyText:
-	ctxt "My #mon is an"
+	text "My #mon is an"
 	line "expert at collect-"
 	cont "ing Sweet Honey."
 
@@ -18,7 +18,7 @@ UnusedSweetHoneyText:
 	done
 
 UnusedSweetHoneyBagFullText:
-	ctxt "I want to give you"
+	text "I want to give you"
 	line "some Sweet Honey,"
 
 	para "but you have no"
@@ -26,17 +26,17 @@ UnusedSweetHoneyBagFullText:
 	done
 
 UnusedSweetHoneyGiveText:
-	ctxt "Here you go! Have"
+	text "Here you go! Have"
 	line "some Sweet Honey!"
 	done
 
 UnusedGotSweetHoneyText:
-	ctxt "<PLAYER> received"
+	text "<PLAYER> received"
 	line "Sweet Honey."
 	done
 
 UnusedSweetHoneyAfterText1:
-	ctxt "My little brother"
+	text "My little brother"
 	line "takes Sweet Honey"
 
 	para "and goes somewhere"
@@ -47,7 +47,7 @@ UnusedSweetHoneyAfterText1:
 	done
 
 UnusedSweetHoneyAfterText2:
-	ctxt "Did you put Sweet"
+	text "Did you put Sweet"
 	line "Honey on a tree?"
 
 	para "What happened to"
@@ -55,7 +55,7 @@ UnusedSweetHoneyAfterText2:
 	done
 
 UnusedSweetHoneyAfterText3:
-	ctxt "Did you put Sweet"
+	text "Did you put Sweet"
 	line "Honey on a tree?"
 
 	para "It takes about a"
@@ -64,5 +64,5 @@ UnusedSweetHoneyAfterText3:
 	done
 
 UnusedSweetHoneyButterfreeText:
-	ctxt "Butterfree: Freeh!"
+	text "Butterfree: Freeh!"
 	done

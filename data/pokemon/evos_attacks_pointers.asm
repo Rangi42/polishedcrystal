@@ -61,8 +61,8 @@ EvosAttacksPointers::
 	dw GolduckEvosAttacks
 	dw MankeyEvosAttacks
 	dw PrimeapeEvosAttacks
-	dw GrowlitheEvosAttacks
-	dw ArcanineEvosAttacks
+	dw GrowlithePlainEvosAttacks
+	dw ArcaninePlainEvosAttacks
 	dw PoliwagEvosAttacks
 	dw PoliwhirlEvosAttacks
 	dw PoliwrathEvosAttacks
@@ -103,8 +103,8 @@ EvosAttacksPointers::
 	dw HypnoEvosAttacks
 	dw KrabbyEvosAttacks
 	dw KinglerEvosAttacks
-	dw VoltorbEvosAttacks
-	dw ElectrodeEvosAttacks
+	dw VoltorbPlainEvosAttacks
+	dw ElectrodePlainEvosAttacks
 	dw ExeggcuteEvosAttacks
 	dw ExeggutorPlainEvosAttacks
 	dw CuboneEvosAttacks
@@ -214,11 +214,11 @@ EvosAttacksPointers::
 	dw SteelixEvosAttacks
 	dw SnubbullEvosAttacks
 	dw GranbullEvosAttacks
-	dw QwilfishEvosAttacks
+	dw QwilfishPlainEvosAttacks
 	dw ScizorEvosAttacks
 	dw ShuckleEvosAttacks
 	dw HeracrossEvosAttacks
-	dw SneaselEvosAttacks
+	dw SneaselPlainEvosAttacks
 	dw TeddiursaEvosAttacks
 	dw UrsaringEvosAttacks
 	dw SlugmaEvosAttacks
@@ -286,10 +286,17 @@ EvosAttacksPointers::
 	dw CursolaEvosAttacks
 	dw SirfetchDEvosAttacks
 	dw MrRimeEvosAttacks
+	dw WyrdeerEvosAttacks
+	dw KleavorEvosAttacks
+	dw UrsalunaEvosAttacks
+	dw SneaslerEvosAttacks
+	dw OverqwilEvosAttacks
 	assert_table_length NUM_SPECIES
 
 	dw GyaradosEvosAttacks
+
 	dw MewtwoEvosAttacks
+
 	dw RattataAlolanEvosAttacks
 	dw RaticateAlolanEvosAttacks
 	dw RaichuAlolanEvosAttacks
@@ -308,6 +315,7 @@ EvosAttacksPointers::
 	dw MukAlolanEvosAttacks
 	dw ExeggutorAlolanEvosAttacks
 	dw MarowakAlolanEvosAttacks
+
 	dw MeowthGalarianEvosAttacks
 	dw PonytaGalarianEvosAttacks
 	dw RapidashGalarianEvosAttacks
@@ -321,4 +329,12 @@ EvosAttacksPointers::
 	dw MoltresGalarianEvosAttacks
 	dw SlowkingGalarianEvosAttacks
 	dw CorsolaGalarianEvosAttacks
+
+	dw GrowlitheHisuianEvosAttacks
+	dw ArcanineHisuianEvosAttacks
+	dw VoltorbHisuianEvosAttacks
+	dw ElectrodeHisuianEvosAttacks
+	dw QwilfishHisuianEvosAttacks
+	dw SneaselHisuianEvosAttacks
+
 	assert_table_length NUM_EXT_POKEMON

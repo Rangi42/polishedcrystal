@@ -236,7 +236,7 @@ Movement_LyraSaysGoodbye3_NBT:
 	step_end
 
 Text_GearIsImpressive:
-	ctxt "Wow, your #gear"
+	text "Wow, your #gear"
 	line "is impressive!"
 
 	para "Did your mom get"
@@ -244,22 +244,22 @@ Text_GearIsImpressive:
 	done
 
 Text_RefreshingBreeze:
-	ctxt "There's always"
+	text "There's always"
 	line "such a refreshing"
 	cont "breeze here."
 	done
 
 Text_WaitPlayer:
-	ctxt "Wait, <PLAYER>!"
+	text "Wait, <PLAYER>!"
 	done
 
 Text_WhatDoYouThinkYoureDoing:
-	ctxt "What do you think"
+	text "What do you think"
 	line "you're doing?"
 	done
 
 Text_ItsDangerousToGoAlone:
-	ctxt "It's dangerous to"
+	text "It's dangerous to"
 	line "go out without a"
 	cont "#mon!"
 
@@ -271,13 +271,13 @@ Text_ItsDangerousToGoAlone:
 	done
 
 Text_YourMonIsAdorable:
-	ctxt "Oh! Your #mon"
+	text "Oh! Your #mon"
 	line "is adorable!"
 	cont "I wish I had one!"
 	done
 
 Text_TellMomIfLeaving:
-	ctxt "Hi, <PLAYER>!"
+	text "Hi, <PLAYER>!"
 	line "Leaving again?"
 
 	para "You should tell"
@@ -286,7 +286,7 @@ Text_TellMomIfLeaving:
 	done
 
 Text_CallMomOnGear:
-	ctxt "Call your mom on"
+	text "Call your mom on"
 	line "your #gear to"
 
 	para "let her know how"
@@ -294,7 +294,7 @@ Text_CallMomOnGear:
 	done
 
 Text_ElmDiscoveredNewMon:
-	ctxt "Yo, <PLAYER>!"
+	text "Yo, <PLAYER>!"
 
 	para "I hear Prof.Elm"
 	line "discovered some"
@@ -302,7 +302,7 @@ Text_ElmDiscoveredNewMon:
 	done
 
 NewBarkTownRivalText1:
-	ctxt "……"
+	text "……"
 
 	para "So this is the"
 	line "famous Elm #mon"
@@ -310,12 +310,12 @@ NewBarkTownRivalText1:
 	done
 
 NewBarkTownRivalText2:
-	ctxt "…What are you"
+	text "…What are you"
 	line "staring at?"
 	done
 
 Text_LyraIntro:
-	ctxt "Lyra: Oh, hello,"
+	text "Lyra: Oh, hello,"
 	line "<PLAYER>!"
 
 	para "I came by your"
@@ -339,7 +339,7 @@ Text_LyraIntro:
 	done
 
 Text_LyraGoodbye1:
-	ctxt "Lyra: <PLAYER>!"
+	text "Lyra: <PLAYER>!"
 
 	para "I heard that you"
 	line "have all the Gym"
@@ -373,17 +373,17 @@ Text_LyraGoodbye1:
 	done
 
 Text_LyraGoodbyeWin:
-	ctxt "You're as talented"
+	text "You're as talented"
 	line "as I expected!"
 	done
 
 Text_LyraGoodbyeLoss:
-	ctxt "I hope you didn't"
+	text "I hope you didn't"
 	line "let me win…"
 	done
 
 Text_LyraGoodbye2:
-	ctxt "…Thanks, <PLAYER>."
+	text "…Thanks, <PLAYER>."
 
 	para "I can tell how"
 	line "much work and"
@@ -404,7 +404,7 @@ Text_LyraGoodbye2:
 	done
 
 NewBarkTownSignText:
-	ctxt "New Bark Town"
+	text "New Bark Town"
 
 	para "The Town Where the"
 	line "Winds of a New"
@@ -412,13 +412,13 @@ NewBarkTownSignText:
 	done
 
 PlayersHouseSignText:
-	ctxt "<PLAYER>'s House"
+	text "<PLAYER>'s House"
 	done
 
 ElmsLabSignText:
-	ctxt "Elm #mon Lab"
+	text "Elm #mon Lab"
 	done
 
 LyrasHouseSignText:
-	ctxt "Lyra's House"
+	text "Lyra's House"
 	done

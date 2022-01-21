@@ -141,7 +141,7 @@ PowerPlantOfficer1ReturnToPostMovement:
 	step_end
 
 PowerPlantOfficer1AThiefBrokeInText:
-	ctxt "A thief broke into"
+	text "A thief broke into"
 	line "the Power Plant…"
 
 	para "What is the world"
@@ -149,7 +149,7 @@ PowerPlantOfficer1AThiefBrokeInText:
 	done
 
 PowerPlantOfficer1CeruleanShadyCharacterText:
-	ctxt "I just got word"
+	text "I just got word"
 	line "from Cerulean."
 
 	para "It appears that a"
@@ -160,18 +160,18 @@ PowerPlantOfficer1CeruleanShadyCharacterText:
 	done
 
 PowerPlantOfficer1CouldIAskForYourCooperationText:
-	ctxt "Could I ask for"
+	text "Could I ask for"
 	line "your cooperation?"
 	done
 
 PowerPlantOfficer1HaveToBeefUpSecurityText:
-	ctxt "We'll have to beef"
+	text "We'll have to beef"
 	line "up our security"
 	cont "presence."
 	done
 
 PowerPlantGymGuide1SomeoneStoleAPartText:
-	ctxt "Someone made off"
+	text "Someone made off"
 	line "with a part that's"
 
 	para "essential for the"
@@ -183,7 +183,7 @@ PowerPlantGymGuide1SomeoneStoleAPartText:
 	done
 
 PowerPlantGymGuide1GeneratorUpAndRunningText:
-	ctxt "The generator's up"
+	text "The generator's up"
 	line "and running. It's"
 
 	para "making electricity"
@@ -191,7 +191,7 @@ PowerPlantGymGuide1GeneratorUpAndRunningText:
 	done
 
 PowerPlantGymGuide2PowerPlantUpAndRunningText:
-	ctxt "This Power Plant"
+	text "This Power Plant"
 	line "had been abandoned"
 	cont "in the past."
 
@@ -203,12 +203,12 @@ PowerPlantGymGuide2PowerPlantUpAndRunningText:
 	done
 
 PowerPlantGymGuide2GeneratorIsRunningAgainText:
-	ctxt "The generator's"
+	text "The generator's"
 	line "running again!"
 	done
 
 PowerPlantOfficer2ManagerHasBeenSadAndFuriousText:
-	ctxt "The Power Plant's"
+	text "The Power Plant's"
 	line "Manager is up"
 	cont "ahead."
 
@@ -220,7 +220,7 @@ PowerPlantOfficer2ManagerHasBeenSadAndFuriousText:
 	done
 
 PowerPlantOfficer2ManagerHasBeenCheerfulText:
-	ctxt "Since the gener-"
+	text "Since the gener-"
 	line "ator's been fixed,"
 
 	para "the Manager has"
@@ -228,7 +228,7 @@ PowerPlantOfficer2ManagerHasBeenCheerfulText:
 	done
 
 PowerPlantGymGuide4MagnetTrainConsumesElectricityText:
-	ctxt "The Magnet Train"
+	text "The Magnet Train"
 	line "consumes a lot of"
 	cont "electricity."
 
@@ -238,7 +238,7 @@ PowerPlantGymGuide4MagnetTrainConsumesElectricityText:
 	done
 
 PowerPlantGymGuide4WeCanGetMagnetTrainRunningText:
-	ctxt "All right! We can"
+	text "All right! We can"
 	line "finally get the"
 
 	para "Magnet Train"
@@ -246,7 +246,7 @@ PowerPlantGymGuide4WeCanGetMagnetTrainRunningText:
 	done
 
 PowerPlantManagerWhoWouldRuinMyGeneratorText:
-	ctxt "Manager: I, I, I'm"
+	text "Manager: I, I, I'm"
 	line "ready to blast"
 	cont "someone!"
 
@@ -264,7 +264,7 @@ PowerPlantManagerWhoWouldRuinMyGeneratorText:
 	done
 
 PowerPlantManagerIWontForgiveCulpritText:
-	ctxt "Manager: I won't"
+	text "Manager: I won't"
 	line "forgive him!"
 
 	para "The culprit can"
@@ -277,7 +277,7 @@ PowerPlantManagerIWontForgiveCulpritText:
 	done
 
 PowerPlantManagerThatsThePartText:
-	ctxt "Manager: Ah! Yeah!"
+	text "Manager: Ah! Yeah!"
 
 	para "That's the missing"
 	line "part from my be-"
@@ -286,13 +286,13 @@ PowerPlantManagerThatsThePartText:
 	done
 
 PowerPlantManagerTakeThisTMText:
-	ctxt "Wahah! Thanks!"
+	text "Wahah! Thanks!"
 	line "You deserve a"
 	cont "reward!"
 	done
 
 Text_PowerPlantTutorZapCannon:
-	ctxt "Manager: I can"
+	text "Manager: I can"
 	line "teach your"
 
 	para "#mon to use"
@@ -309,30 +309,30 @@ Text_PowerPlantTutorZapCannon:
 	done
 
 Text_PowerPlantTutorNoSilverLeaf:
-	ctxt "Sorry, but I can't"
+	text "Sorry, but I can't"
 	line "teach Zap Cannon"
 	cont "without that Leaf!"
 	done
 
 Text_PowerPlantTutorQuestion:
-	ctxt "Should I teach"
+	text "Should I teach"
 	line "your #mon"
 	cont "Zap Cannon?"
 	done
 
 Text_PowerPlantTutorRefused:
-	ctxt "Have it your way."
+	text "Have it your way."
 	done
 
 Text_PowerPlantTutorTaught:
-	ctxt "Now your #mon"
+	text "Now your #mon"
 	line "knows Zap Cannon!"
 
 	para "Wahahah!"
 	done
 
 PowerPlantForestText:
-	ctxt "Magneton behaves"
+	text "Magneton behaves"
 	line "strangely in Rock"
 	cont "Tunnel."
 

@@ -108,21 +108,21 @@ MapRuinsofAlphAerodactylChamberSignpost4Script:
 	endtext
 
 RuinsOfAlphAerodactylChamberWallPatternLeftText:
-	ctxt "Patterns appeared"
+	text "Patterns appeared"
 	line "on the walls…"
 	done
 
 RuinsOfAlphChambersItsUnownText:
-	ctxt "It's Unown text!"
+	text "It's Unown text!"
 	done
 
 RuinsOfAlphAerodactylChamberWallHoleText:
-	ctxt "There's a big hole"
+	text "There's a big hole"
 	line "in the wall!"
 	done
 
 RuinsOfAlphAerodactylChamberDescriptionText:
-	ctxt "This flying #-"
+	text "This flying #-"
 	line "mon attacked its"
 
 	para "prey with saw-like"

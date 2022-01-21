@@ -32,7 +32,7 @@ SlowpokeWellB1F_MapScriptHeader:
 GenericTrainerGruntM29:
 	generictrainer GRUNTM, 29, EVENT_BEAT_ROCKET_GRUNTM_29, GruntM29SeenText, GruntM29BeatenText
 
-	ctxt "Sure, we've been"
+	text "Sure, we've been"
 	line "hacking the tails"
 
 	para "off Slowpoke and"
@@ -87,7 +87,7 @@ Proton2Script:
 GenericTrainerGruntM2:
 	generictrainer GRUNTM, 2, EVENT_BEAT_ROCKET_GRUNTM_2, GruntM2SeenText, GruntM2BeatenText
 
-	ctxt "We need the money,"
+	text "We need the money,"
 	line "but selling Slow-"
 	cont "pokeTails?"
 
@@ -98,7 +98,7 @@ GenericTrainerGruntM2:
 GenericTrainerGruntF1:
 	generictrainer GRUNTF, 1, EVENT_BEAT_ROCKET_GRUNTF_1, GruntF1SeenText, GruntF1BeatenText
 
-	ctxt "SlowpokeTails"
+	text "SlowpokeTails"
 	line "grow back fast!"
 
 	para "What's wrong with"
@@ -137,7 +137,7 @@ KurtSlowpokeWellVictoryMovementData:
 	step_end
 
 KurtLeaveSlowpokeWellText:
-	ctxt "Kurt: Way to go,"
+	text "Kurt: Way to go,"
 	line "<PLAYER>!"
 
 	para "Team Rocket has"
@@ -149,7 +149,7 @@ KurtLeaveSlowpokeWellText:
 	done
 
 GruntM29SeenText:
-	ctxt "Darn! I was stand-"
+	text "Darn! I was stand-"
 	line "ing guard up top"
 
 	para "when some old coot"
@@ -165,12 +165,12 @@ GruntM29SeenText:
 	done
 
 GruntM29BeatenText:
-	ctxt "Arrgh! This is NOT"
+	text "Arrgh! This is NOT"
 	line "my day!"
 	done
 
 Proton2SeenText:
-	ctxt "What do you want?"
+	text "What do you want?"
 
 	para "I'm known as the"
 	line "scariest and"
@@ -184,13 +184,13 @@ Proton2SeenText:
 	done
 
 Proton2BeatenText:
-	ctxt "You did OK today,"
+	text "You did OK today,"
 	line "but wait till next"
 	cont "time!"
 	done
 
 TrainerProton2WhenTalkText:
-	ctxt "Yeah, Team Rocket"
+	text "Yeah, Team Rocket"
 	line "was broken up"
 	cont "three years ago."
 
@@ -204,7 +204,7 @@ TrainerProton2WhenTalkText:
 	done
 
 GruntM2SeenText:
-	ctxt "Quit taking Slow-"
+	text "Quit taking Slow-"
 	line "pokeTails?"
 
 	para "If we obeyed you,"
@@ -213,23 +213,23 @@ GruntM2SeenText:
 	done
 
 GruntM2BeatenText:
-	ctxt "Just…"
+	text "Just…"
 	line "Too strong…"
 	done
 
 GruntF1SeenText:
-	ctxt "Stop taking Tails?"
+	text "Stop taking Tails?"
 
 	para "Yeah, just try to"
 	line "defeat all of us!"
 	done
 
 GruntF1BeatenText:
-	ctxt "You rotten brat!"
+	text "You rotten brat!"
 	done
 
 SlowpokeWellB1FSlowpokeWithMailText:
-	ctxt "A Slowpoke with"
+	text "A Slowpoke with"
 	line "its tail cut off…"
 
 	para "Huh? It has Mail."
@@ -237,7 +237,7 @@ SlowpokeWellB1FSlowpokeWithMailText:
 	done
 
 SlowpokeWellB1FSlowpokeMailText:
-	ctxt "<PLAYER> read the"
+	text "<PLAYER> read the"
 	line "Mail."
 
 	para "Be good and look"
@@ -250,6 +250,6 @@ SlowpokeWellB1FSlowpokeMailText:
 	done
 
 SlowpokeWellB1FTaillessSlowpokeText:
-	ctxt "A Slowpoke with"
+	text "A Slowpoke with"
 	line "its tail cut off…"
 	done

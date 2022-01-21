@@ -1854,6 +1854,7 @@ Pokedex_Bio:
 
 .AllString
 	db "All @"
+
 INCLUDE "data/pokedex_bio.asm"
 
 Pokedex_Stats:

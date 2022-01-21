@@ -79,7 +79,7 @@ EmbeddedTowerSteven2Script:
 	jumpopenedtext EmbeddedTowerSteven2AfterText
 
 EmbeddedTowerSteven1IntroText:
-	ctxt "Hello! I'm Steven."
+	text "Hello! I'm Steven."
 	line "Rare stones are"
 	cont "my passion."
 
@@ -97,7 +97,7 @@ EmbeddedTowerSteven1IntroText:
 	done
 
 EmbeddedTowerSteven1TowerText:
-	ctxt "Steven: I'm here in"
+	text "Steven: I'm here in"
 	line "search of stones"
 	cont "for my collection."
 
@@ -113,7 +113,7 @@ EmbeddedTowerSteven1TowerText:
 	done
 
 EmbeddedTowerSteven1NotNowText:
-	ctxt "Steven: Your"
+	text "Steven: Your"
 	line "#mon are look-"
 	cont "ing pretty good."
 
@@ -125,7 +125,7 @@ EmbeddedTowerSteven1NotNowText:
 	done
 
 EmbeddedTowerSteven1ChallengeText:
-	ctxt "Steven: Your"
+	text "Steven: Your"
 	line "#mon are look-"
 	cont "ing pretty good."
 
@@ -136,7 +136,7 @@ EmbeddedTowerSteven1ChallengeText:
 
 EmbeddedTowerSteven1NoText:
 EmbeddedTowerSteven2NoText:
-	ctxt "Steven: Hmm."
+	text "Steven: Hmm."
 	line "If you change"
 
 	para "your mind, I'll"
@@ -145,7 +145,7 @@ EmbeddedTowerSteven2NoText:
 
 EmbeddedTowerSteven1YesText:
 EmbeddedTowerSteven2YesText:
-	ctxt "Steven: I want"
+	text "Steven: I want"
 	line "you to hit me"
 
 	para "with it all!"
@@ -154,13 +154,13 @@ EmbeddedTowerSteven2YesText:
 
 EmbeddedTowerSteven1WinText:
 EmbeddedTowerSteven2WinText:
-	ctxt "You are a truly"
+	text "You are a truly"
 	line "noble #mon"
 	cont "trainer!"
 	done
 
 EmbeddedTowerSteven1ItemText:
-	ctxt "Steven: Congratu-"
+	text "Steven: Congratu-"
 	line "lations!"
 
 	para "The feelings you"
@@ -190,12 +190,12 @@ EmbeddedTowerSteven1ItemText:
 	done
 
 EmbeddedTowerSteven1AfterText:
-	ctxt "Steven: May our"
+	text "Steven: May our"
 	line "paths cross again."
 	done
 
 EmbeddedTowerSteven2ChallengeText:
-	ctxt "Steven: We meet"
+	text "Steven: We meet"
 	line "again, <PLAYER>!"
 
 	para "I've found some"
@@ -214,7 +214,7 @@ EmbeddedTowerSteven2ChallengeText:
 	done
 
 EmbeddedTowerSteven2AfterText:
-	ctxt "Steven: In the"
+	text "Steven: In the"
 	line "end, you are still"
 	cont "the strongest."
 

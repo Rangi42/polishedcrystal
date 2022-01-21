@@ -872,6 +872,8 @@ CheckNullificationAbilities:
 	jr z, .damp
 	cp SOUNDPROOF
 	jr z, .soundproof
+	cp BULLETPROOF
+	jr z, .bulletproof
 	cp FLASH_FIRE
 	jr z, .flash_fire
 	cp LIGHTNING_ROD
@@ -909,10 +911,16 @@ CheckNullificationAbilities:
 	jr z, .ability_ok
 	ret
 
+.bulletproof
+	ld hl, BulletMoves
+	jr z, .movelist_nullification
+
 .soundproof
+	ld hl, SoundMoves
+	; fallthrough
+.movelist_nullification
 	ld a, BATTLE_VARS_MOVE
 	call GetBattleVar
-	ld hl, SoundMoves
 	call IsInByteArray
 	jr c, .ability_ok
 	ret
@@ -1693,6 +1701,7 @@ MegaLauncherAbility:
 	ln b, 3, 2 ; x1.5
 	jr MoveBoostAbility
 
+INCLUDE "data/moves/bullet_moves.asm"
 INCLUDE "data/moves/launcher_moves.asm"
 
 IronFistAbility:

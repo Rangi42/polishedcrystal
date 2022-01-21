@@ -16,7 +16,7 @@ CeruleanCoupleHouse_MapScriptHeader:
 	object_event  2,  3, SPRITE_MATRON, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_COMMAND, jumptextfaceplayer, CeruleanCoupleHousePokefanFText, -1
 
 CeruleanCoupleHousePokefanMText:
-	ctxt "I first met my"
+	text "I first met my"
 	line "dear wife in this"
 	cont "city."
 
@@ -25,7 +25,7 @@ CeruleanCoupleHousePokefanMText:
 	done
 
 CeruleanCoupleHousePokefanFText:
-	ctxt "The language of"
+	text "The language of"
 	line "love needs no"
 	cont "translation."
 

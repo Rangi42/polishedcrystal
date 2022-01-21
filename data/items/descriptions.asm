@@ -289,374 +289,374 @@ KeyItemDescriptions:
 	dw TypeChartDesc
 
 PokeBallDesc:
-	ctxt "An item for catch-"
+	text "An item for catch-"
 	next "ing #mon."
 	done
 
 GreatBallDesc:
-	ctxt "A Ball with a de-"
+	text "A Ball with a de-"
 	next "cent success rate."
 	done
 
 UltraBallDesc:
-	ctxt "A Ball with a high"
+	text "A Ball with a high"
 	next "rate of success."
 	done
 
 MasterBallDesc:
-	ctxt "The best Ball. It"
+	text "The best Ball. It"
 	next "never misses."
 	done
 
 SafariBallDesc:
-	ctxt "The Safari Game"
+	text "The Safari Game"
 	next "Ball."
 	done
 
 LevelBallDesc:
-	ctxt "A Ball for lower-"
+	text "A Ball for lower-"
 	next "level #mon."
 	done
 
 LureBallDesc:
-	ctxt "A Ball for #mon"
+	text "A Ball for #mon"
 	next "hooked by a Rod."
 	done
 
 MoonBallDesc:
-	ctxt "A Ball for Moon"
+	text "A Ball for Moon"
 	next "Stone evolvers."
 	done
 
 FriendBallDesc:
-	ctxt "A Ball that makes"
+	text "A Ball that makes"
 	next "#mon friendly."
 	done
 
 FastBallDesc:
-	ctxt "A Ball for catch-"
+	text "A Ball for catch-"
 	next "ing fast #mon."
 	done
 
 HeavyBallDesc:
-	ctxt "A Ball for catch-"
+	text "A Ball for catch-"
 	next "ing heavy #mon."
 	done
 
 LoveBallDesc:
-	ctxt "A Ball for the"
+	text "A Ball for the"
 	next "opposite gender."
 	done
 
 AbilityPatchDesc:
-	ctxt "Switches to a"
+	text "Switches to a"
 	next "rare ability."
 	done
 
 RepeatBallDesc:
-	ctxt "A Ball for #mon"
+	text "A Ball for #mon"
 	next "caught before."
 	done
 
 TimerBallDesc:
-	ctxt "A Ball for late"
+	text "A Ball for late"
 	next "in a battle."
 	done
 
 NestBallDesc:
-	ctxt "A Ball for weaker"
+	text "A Ball for weaker"
 	next "#mon."
 	done
 
 NetBallDesc:
-	ctxt "A Ball for Water"
+	text "A Ball for Water"
 	next "or Bug #mon."
 	done
 
 DiveBallDesc:
-	ctxt "A Ball for under-"
+	text "A Ball for under-"
 	next "water #mon."
 	done
 
 LuxuryBallDesc:
-	ctxt "A cozy Ball to"
+	text "A cozy Ball to"
 	next "befriend #mon."
 	done
 
 HealBallDesc:
-	ctxt "A remedial Ball to"
+	text "A remedial Ball to"
 	next "heal #mon."
 	done
 
 QuickBallDesc:
-	ctxt "A Ball for early"
+	text "A Ball for early"
 	next "in a battle."
 	done
 
 DuskBallDesc:
-	ctxt "A Ball for night-"
+	text "A Ball for night-"
 	next "time or caves."
 	done
 
 DreamBallDesc:
-	ctxt "A Ball for sleep-"
+	text "A Ball for sleep-"
 	next "ing #mon."
 	done
 
 PremierBallDesc:
-	ctxt "A rare commemor-"
+	text "A rare commemor-"
 	next "ative Ball."
 	done
 
 CherishBallDesc:
-	ctxt "A quite rare com-"
+	text "A quite rare com-"
 	next "memorative Ball."
 	done
 
 PotionDesc:
-	ctxt "Restores #mon"
+	text "Restores #mon"
 	next "HP by 20."
 	done
 
 SuperPotionDesc:
-	ctxt "Restores #mon"
+	text "Restores #mon"
 	next "HP by 60."
 	done
 
 HyperPotionDesc:
-	ctxt "Restores #mon"
+	text "Restores #mon"
 	next "HP by 120."
 	done
 
 MaxPotionDesc:
-	ctxt "Fully restores"
+	text "Fully restores"
 	next "#mon HP."
 	done
 
 AntidoteDesc:
-	ctxt "Cures poisoned"
+	text "Cures poisoned"
 	next "#mon."
 	done
 
 BurnHealDesc:
-	ctxt "Heals burned"
+	text "Heals burned"
 	next "#mon."
 	done
 
 ParlyzHealDesc:
-	ctxt "Heals paralyzed"
+	text "Heals paralyzed"
 	next "#mon."
 	done
 
 AwakeningDesc:
-	ctxt "Awakens sleeping"
+	text "Awakens sleeping"
 	next "#mon."
 	done
 
 IceHealDesc:
-	ctxt "Defrosts frozen"
+	text "Defrosts frozen"
 	next "#mon."
 	done
 
 FullHealDesc:
 RageCandyBarDesc:
 PewterCrunchDesc:
-	ctxt "Eliminates all"
+	text "Eliminates all"
 	next "status problems."
 	done
 
 FullRestoreDesc:
-	ctxt "Fully restores HP"
+	text "Fully restores HP"
 	next "& status."
 	done
 
 ReviveDesc:
-	ctxt "Restores a fainted"
+	text "Restores a fainted"
 	next "#mon to 1/2 HP."
 	done
 
 MaxReviveDesc:
-	ctxt "Fully restores a"
+	text "Fully restores a"
 	next "fainted #mon."
 	done
 
 EtherDesc:
-	ctxt "Restores PP of one"
+	text "Restores PP of one"
 	next "move by 10."
 	done
 
 MaxEtherDesc:
-	ctxt "Fully restores PP"
+	text "Fully restores PP"
 	next "of one move."
 	done
 
 ElixirDesc:
-	ctxt "Restores PP of all"
+	text "Restores PP of all"
 	next "moves by 10."
 	done
 
 MaxElixirDesc:
-	ctxt "Fully restores the"
+	text "Fully restores the"
 	next "PP of one #mon."
 	done
 
 HPUpDesc:
-	ctxt "Raises the HP of"
+	text "Raises the HP of"
 	next "one #mon."
 	done
 
 ProteinDesc:
-	ctxt "Raises Attack of"
+	text "Raises Attack of"
 	next "one #mon."
 	done
 
 IronDesc:
-	ctxt "Raises Defense of"
+	text "Raises Defense of"
 	next "one #mon."
 	done
 
 CarbosDesc:
-	ctxt "Raises Speed of"
+	text "Raises Speed of"
 	next "one #mon."
 	done
 
 CalciumDesc:
-	ctxt "Raises Spcl.Atk"
+	text "Raises Spcl.Atk"
 	next "of one #mon."
 	done
 
 ZincDesc:
-	ctxt "Raises Spcl.Def"
+	text "Raises Spcl.Def"
 	next "of one #mon."
 	done
 
 RareCandyDesc:
-	ctxt "Raises level of a"
+	text "Raises level of a"
 	next "#mon by one."
 	done
 
 PPUpDesc:
-	ctxt "Raises max PP of"
+	text "Raises max PP of"
 	next "a selected move."
 	done
 
 PPMaxDesc:
-	ctxt "Maximizes PP of"
+	text "Maximizes PP of"
 	next "a selected move."
 	done
 
 FreshWaterDesc:
-	ctxt "Restores #mon"
+	text "Restores #mon"
 	next "HP by 30."
 	done
 
 SodaPopDesc:
-	ctxt "Restores #mon"
+	text "Restores #mon"
 	next "HP by 50."
 	done
 
 LemonadeDesc:
-	ctxt "Restores #mon"
+	text "Restores #mon"
 	next "HP by 70."
 	done
 
 MoomooMilkDesc:
-	ctxt "Restores #mon"
+	text "Restores #mon"
 	next "HP by 100."
 	done
 
 SacredAshDesc:
-	ctxt "Fully revives all"
+	text "Fully revives all"
 	next "fainted #mon."
 	done
 
 EnergyPowderDesc:
-	ctxt "Restores #mon"
+	text "Restores #mon"
 	next "HP by 60. Bitter."
 	done
 
 EnergyRootDesc:
-	ctxt "Restores #mon"
+	text "Restores #mon"
 	next "HP by 120. Bitter."
 	done
 
 HealPowderDesc:
-	ctxt "Cures all status"
+	text "Cures all status"
 	next "problems. Bitter."
 	done
 
 RevivalHerbDesc:
-	ctxt "Revives fainted"
+	text "Revives fainted"
 	next "#mon. Bitter."
 	done
 
 XAttackDesc:
-	ctxt "Raises Attack."
+	text "Raises Attack."
 	next "(1 battle)"
 	done
 
 XDefendDesc:
-	ctxt "Raises Defense."
+	text "Raises Defense."
 	next "(1 battle)"
 	done
 
 XSpeedDesc:
-	ctxt "Raises Speed."
+	text "Raises Speed."
 	next "(1 battle)"
 	done
 
 XSpclAtkDesc:
-	ctxt "Raises Spcl. Atk."
+	text "Raises Spcl. Atk."
 	next "(1 battle)"
 	done
 
 XSpclDefDesc:
-	ctxt "Raises Spcl. Def."
+	text "Raises Spcl. Def."
 	next "(1 battle)"
 	done
 
 DireHitDesc:
-	ctxt "Ups critical hit"
+	text "Ups critical hit"
 	next "ratio. (1 battle)"
 	done
 
 GuardSpecDesc:
-	ctxt "Prevents stat"
+	text "Prevents stat"
 	next "drops. (1 battle)"
 	done
 
 XAccuracyDesc:
-	ctxt "Raises accuracy."
+	text "Raises accuracy."
 	next "(1 battle)"
 	done
 
 RepelDesc:
-	ctxt "Repels weak #-"
+	text "Repels weak #-"
 	next "mon for 100 steps."
 	done
 
 SuperRepelDesc:
-	ctxt "Repels weak #-"
+	text "Repels weak #-"
 	next "mon for 200 steps."
 	done
 
 MaxRepelDesc:
-	ctxt "Repels weak #-"
+	text "Repels weak #-"
 	next "mon for 250 steps."
 	done
 
 EscapeRopeDesc:
-	ctxt "Use for escaping"
+	text "Use for escaping"
 	next "from caves, etc."
 	done
 
 PokeDollDesc:
-	ctxt "Use to escape from"
+	text "Use to escape from"
 	next "a wild #mon."
 	done
 
 AbilityCapDesc:
-	ctxt "Switches a #-"
+	text "Switches a #-"
 	next "mon's ability."
 	done
 
@@ -670,979 +670,979 @@ DuskStoneDesc:
 DawnStoneDesc:
 ShinyStoneDesc:
 IceStoneDesc:
-	ctxt "Evolves certain"
+	text "Evolves certain"
 	next "kinds of #mon."
 	done
 
 EverstoneDesc:
-	ctxt "Stops evolution."
+	text "Stops evolution."
 	next "(Hold)"
 	done
 
 ExpShareDesc:
-	ctxt "Shares battle Exp."
+	text "Shares battle Exp."
 	next "Points. (Hold)"
 	done
 
 CheriBerryDesc:
-	ctxt "A self-cure for"
+	text "A self-cure for"
 	next "paralysis. (Hold)"
 	done
 
 ChestoBerryDesc:
-	ctxt "A self-awakening"
+	text "A self-awakening"
 	next "for sleep. (Hold)"
 	done
 
 PechaBerryDesc:
-	ctxt "A self-cure for"
+	text "A self-cure for"
 	next "poison. (Hold)"
 	done
 
 RawstBerryDesc:
-	ctxt "A self-heal for a"
+	text "A self-heal for a"
 	next "burn. (Hold)"
 	done
 
 AspearBerryDesc:
-	ctxt "A self-cure for"
+	text "A self-cure for"
 	next "freezing. (Hold)"
 	done
 
 LeppaBerryDesc:
-	ctxt "A self-restore"
+	text "A self-restore"
 	next "item. (10<BOLDP><BOLDP>, Hold)"
 	done
 
 OranBerryDesc:
-	ctxt "A self-restore"
+	text "A self-restore"
 	next "item. (10HP, Hold)"
 	done
 
 PersimBerryDesc:
-	ctxt "A self-cure for"
+	text "A self-cure for"
 	next "confusion. (Hold)"
 	done
 
 LumBerryDesc:
-	ctxt "Cures all status"
+	text "Cures all status"
 	next "problems. (Hold)"
 	done
 
 SitrusBerryDesc:
-	ctxt "Self-restore item."
+	text "Self-restore item."
 	next "(1/4 max HP, Hold)"
 	done
 
 FigyBerryDesc:
-	ctxt "Self-restore item."
+	text "Self-restore item."
 	next "(1/3 max HP, Hold)"
 	done
 
 PomegBerryDesc:
-	ctxt "Raises friendship"
+	text "Raises friendship"
 	next "but lowers HP."
 	done
 
 KelpsyBerryDesc:
-	ctxt "Raises friendship"
+	text "Raises friendship"
 	next "but lowers Attack."
 	done
 
 QualotBerryDesc:
-	ctxt "Raises friendship,"
+	text "Raises friendship,"
 	next "lowers Defense."
 	done
 
 HondewBerryDesc:
-	ctxt "Raises friendship,"
+	text "Raises friendship,"
 	next "lowers Spcl.Atk."
 	done
 
 GrepaBerryDesc:
-	ctxt "Raises friendship,"
+	text "Raises friendship,"
 	next "lowers Spcl.Def."
 	done
 
 TamatoBerryDesc:
-	ctxt "Raises friendship"
+	text "Raises friendship"
 	next "but lowers Speed."
 	done
 
 LiechiBerryDesc:
-	ctxt "Raises Attack in"
+	text "Raises Attack in"
 	next "a pinch."
 	done
 
 GanlonBerryDesc:
-	ctxt "Raises Defense in"
+	text "Raises Defense in"
 	next "a pinch."
 	done
 
 SalacBerryDesc:
-	ctxt "Raises Speed in"
+	text "Raises Speed in"
 	next "a pinch."
 	done
 
 PetayaBerryDesc:
-	ctxt "Raises Spcl.Atk"
+	text "Raises Spcl.Atk"
 	next "in a pinch."
 	done
 
 ApicotBerryDesc:
-	ctxt "Raises Spcl.Def"
+	text "Raises Spcl.Def"
 	next "in a pinch."
 	done
 
 LansatBerryDesc:
-	ctxt "Ups critical hit"
+	text "Ups critical hit"
 	next "ratio in a pinch."
 	done
 
 StarfBerryDesc:
-	ctxt "Ups a random stat"
+	text "Ups a random stat"
 	next "in a pinch."
 	done
 
 EnigmaBerryDesc:
-	ctxt "Restores HP on su-"
+	text "Restores HP on su-"
 	next "per-effective hit."
 	done
 
 CustapBerryDesc:
-	ctxt "Moves first in"
+	text "Moves first in"
 	next "a pinch."
 	done
 
 JabocaBerryDesc:
-	ctxt "Damages foe on"
+	text "Damages foe on"
 	next "a physical hit."
 	done
 
 RowapBerryDesc:
-	ctxt "Damages foe on"
+	text "Damages foe on"
 	next "a special hit."
 	done
 
 KeeBerryDesc:
-	ctxt "Raises Defense on"
+	text "Raises Defense on"
 	next "a physical hit."
 	done
 
 MarangaBerryDesc:
-	ctxt "Raises Spcl.Def on"
+	text "Raises Spcl.Def on"
 	next "a special hit."
 	done
 
 BerryJuiceDesc:
-	ctxt "A self-restore"
+	text "A self-restore"
 	next "item. (20HP, Hold)"
 	done
 
 SilkScarfDesc:
-	ctxt "Powers up Normal-"
+	text "Powers up Normal-"
 	next "type moves. (Hold)"
 	done
 
 BlackBeltDesc:
-	ctxt "Boosts Fighting-"
+	text "Boosts Fighting-"
 	next "type moves. (Hold)"
 	done
 
 SharpBeakDesc:
-	ctxt "Powers up Flying-"
+	text "Powers up Flying-"
 	next "type moves. (Hold)"
 	done
 
 PoisonBarbDesc:
-	ctxt "Powers up Poison-"
+	text "Powers up Poison-"
 	next "type moves. (Hold)"
 	done
 
 SoftSandDesc:
-	ctxt "Powers up Ground-"
+	text "Powers up Ground-"
 	next "type moves. (Hold)"
 	done
 
 HardStoneDesc:
-	ctxt "Powers up Rock-"
+	text "Powers up Rock-"
 	next "type moves. (Hold)"
 	done
 
 SilverPowderDesc:
-	ctxt "Powers up Bug-type"
+	text "Powers up Bug-type"
 	next "moves. (Hold)"
 	done
 
 SpellTagDesc:
-	ctxt "Powers up Ghost-"
+	text "Powers up Ghost-"
 	next "type moves. (Hold)"
 	done
 
 MetalCoatDesc:
-	ctxt "Powers up Steel-"
+	text "Powers up Steel-"
 	next "type moves. (Hold)"
 	done
 
 CharcoalDesc:
-	ctxt "Powers up Fire-"
+	text "Powers up Fire-"
 	next "type moves. (Hold)"
 	done
 
 MysticWaterDesc:
-	ctxt "Powers up Water-"
+	text "Powers up Water-"
 	next "type moves. (Hold)"
 	done
 
 MiracleSeedDesc:
-	ctxt "Powers up Grass-"
+	text "Powers up Grass-"
 	next "type moves. (Hold)"
 	done
 
 MagnetDesc:
-	ctxt "Boosts Electric-"
+	text "Boosts Electric-"
 	next "type moves. (Hold)"
 	done
 
 TwistedSpoonDesc:
-	ctxt "Powers up Psychic-"
+	text "Powers up Psychic-"
 	next "type moves. (Hold)"
 	done
 
 NeverMeltIceDesc:
-	ctxt "Powers up Ice-type"
+	text "Powers up Ice-type"
 	next "moves. (Hold)"
 	done
 
 DragonFangDesc:
-	ctxt "Powers up Dragon-"
+	text "Powers up Dragon-"
 	next "type moves. (Hold)"
 	done
 
 BlackGlassesDesc:
-	ctxt "Powers up Dark-"
+	text "Powers up Dark-"
 	next "type moves. (Hold)"
 	done
 
 PinkBowDesc:
-	ctxt "Powers up Fairy-"
+	text "Powers up Fairy-"
 	next "type moves. (Hold)"
 	done
 
 BrightPowderDesc:
-	ctxt "Lowers the foe's"
+	text "Lowers the foe's"
 	next "accuracy. (Hold)"
 	done
 
 ScopeLensDesc:
 RazorClawDesc:
-	ctxt "Raises critical"
+	text "Raises critical"
 	next "hit ratio. (Hold)"
 	done
 
 QuickClawDesc:
-	ctxt "Boosts chances of"
+	text "Boosts chances of"
 	next "moving 1st. (Hold)"
 	done
 
 KingsRockDesc:
 RazorFangDesc:
-	ctxt "May make the foe"
+	text "May make the foe"
 	next "flinch. (Hold)"
 	done
 
 FocusBandDesc:
-	ctxt "May prevent faint-"
+	text "May prevent faint-"
 	next "ing. (Hold)"
 	done
 
 LeftoversDesc:
-	ctxt "Restores HP during"
+	text "Restores HP during"
 	next "battle. (Hold)"
 	done
 
 LuckyEggDesc:
-	ctxt "Earns extra Exp."
+	text "Earns extra Exp."
 	next "points. (Hold)"
 	done
 
 AmuletCoinDesc:
-	ctxt "Doubles monetary"
+	text "Doubles monetary"
 	next "earnings. (Hold)"
 	done
 
 CleanseTagDesc:
-	ctxt "Helps repel wild"
+	text "Helps repel wild"
 	next "#mon. (Hold)"
 	done
 
 SmokeBallDesc:
-	ctxt "Escape from wild"
+	text "Escape from wild"
 	next "#mon. (Hold)"
 	done
 
 BerserkGeneDesc:
-	ctxt "Boosts Attack but"
+	text "Boosts Attack but"
 	next "causes confusion."
 	done
 
 LightBallDesc:
-	ctxt "An odd, electrical"
+	text "An odd, electrical"
 	next "orb. (Hold)"
 	done
 
 StickDesc:
-	ctxt "An ordinary stick."
+	text "An ordinary stick."
 	next "Sell low."
 	done
 
 ThickClubDesc:
-	ctxt "A bone of some"
+	text "A bone of some"
 	next "sort. Sell low."
 	done
 
 LuckyPunchDesc:
-	ctxt "Ups critical hit"
+	text "Ups critical hit"
 	next "ratio of Chansey."
 	done
 
 MetalPowderDesc:
-	ctxt "Raises Defense of"
+	text "Raises Defense of"
 	next "Ditto. (Hold)"
 	done
 
 QuickPowderDesc:
-	ctxt "Raises Speed of"
+	text "Raises Speed of"
 	next "Ditto. (Hold)"
 	done
 
 ArmorSuitDesc:
-	ctxt "A suit of armor"
+	text "A suit of armor"
 	next "for some #mon."
 	done
 
 AirBalloonDesc:
-	ctxt "Avoids one Ground"
+	text "Avoids one Ground"
 	next "attack. (Hold)"
 	done
 
 AssaultVestDesc:
-	ctxt "Ups Spcl.Def, but"
+	text "Ups Spcl.Def, but"
 	next "bans status moves."
 	done
 
 BigRootDesc:
-	ctxt "Powers up draining"
+	text "Powers up draining"
 	next "moves. (Hold)"
 	done
 
 BindingBandDesc:
-	ctxt "Powers up trapping"
+	text "Powers up trapping"
 	next "moves. (Hold)"
 	done
 
 DestinyKnotDesc:
-	ctxt "Infatuates the foe"
+	text "Infatuates the foe"
 	next "back. (Hold)"
 	done
 
 ExpertBeltDesc:
-	ctxt "Ups super effect-"
+	text "Ups super effect-"
 	next "ive moves. (Hold)"
 	done
 
 FocusSashDesc:
-	ctxt "Endures one OHKO"
+	text "Endures one OHKO"
 	next "move at full HP."
 	done
 
 GripClawDesc:
-	ctxt "Extends duration"
+	text "Extends duration"
 	next "of trapping moves."
 	done
 
 LifeOrbDesc:
-	ctxt "Powers up moves"
+	text "Powers up moves"
 	next "with HP. (Hold)"
 	done
 
 LightClayDesc:
-	ctxt "Extends duration"
+	text "Extends duration"
 	next "of barrier moves."
 	done
 
 MetronomeIDesc:
-	ctxt "Powers up moves"
+	text "Powers up moves"
 	next "used again. (Hold)"
 	done
 
 ProtectPadsDesc:
-	ctxt "Protects from"
+	text "Protects from"
 	next "contact effects."
 	done
 
 RockyHelmetDesc:
-	ctxt "Damages foe on"
+	text "Damages foe on"
 	next "contact. (Hold)"
 	done
 
 SafeGogglesDesc:
-	ctxt "Protects from"
+	text "Protects from"
 	next "weather damage."
 	done
 
 ShedShellDesc:
-	ctxt "Allows switching"
+	text "Allows switching"
 	next "out. (Hold)"
 	done
 
 ShellBellDesc:
-	ctxt "Self-restore item."
+	text "Self-restore item."
 	next "(1/8 damage, Hold)"
 	done
 
 SootheBellDesc:
-	ctxt "Calms and fosters"
+	text "Calms and fosters"
 	next "friendship. (Hold)"
 	done
 
 WeakPolicyDesc:
-	ctxt "Super effective"
+	text "Super effective"
 	next "hit ups offenses."
 	done
 
 WideLensDesc:
-	ctxt "Slightly boosts"
+	text "Slightly boosts"
 	next "accuracy. (Hold)"
 	done
 
 ZoomLensDesc:
-	ctxt "Boosts accuracy"
+	text "Boosts accuracy"
 	next "when moving 2nd."
 	done
 
 MentalHerbDesc:
-	ctxt "A self-cure for"
+	text "A self-cure for"
 	next "infatuation."
 	done
 
 PowerHerbDesc:
-	ctxt "Skips charging"
+	text "Skips charging"
 	next "of moves. (Hold)"
 	done
 
 WhiteHerbDesc:
-	ctxt "A self-cure for"
+	text "A self-cure for"
 	next "lowered stats."
 	done
 
 DampRockDesc:
-	ctxt "Extends duration"
+	text "Extends duration"
 	next "of rain. (Hold)"
 	done
 
 HeatRockDesc:
-	ctxt "Extends duration"
+	text "Extends duration"
 	next "of sun. (Hold)"
 	done
 
 SmoothRockDesc:
-	ctxt "Extends duration"
+	text "Extends duration"
 	next "of sandstorms."
 	done
 
 IcyRockDesc:
-	ctxt "Extends duration"
+	text "Extends duration"
 	next "of hail. (Hold)"
 	done
 
 ChoiceBandDesc:
-	ctxt "Boosts Attack, but"
+	text "Boosts Attack, but"
 	next "allows one move."
 	done
 
 ChoiceScarfDesc:
-	ctxt "Boosts Speed, but"
+	text "Boosts Speed, but"
 	next "allows one move."
 	done
 
 ChoiceSpecsDesc:
-	ctxt "Boosts Sp.Atk, but"
+	text "Boosts Sp.Atk, but"
 	next "allows one move."
 	done
 
 FlameOrbDesc:
-	ctxt "Causes a burn."
+	text "Causes a burn."
 	next "(Hold)"
 	done
 
 ToxicOrbDesc:
-	ctxt "Causes bad poison."
+	text "Causes bad poison."
 	next "(Hold)"
 	done
 
 BlackSludgeDesc:
-	ctxt "Restores HP for"
+	text "Restores HP for"
 	next "Poison #mon."
 	done
 
 MachoBraceDesc:
-	ctxt "Boosts stat gain,"
+	text "Boosts stat gain,"
 	next "but lowers Speed."
 	done
 
 PowerWeightDesc:
-	ctxt "Boosts HP gain,"
+	text "Boosts HP gain,"
 	next "but lowers Speed."
 	done
 
 PowerBracerDesc:
-	ctxt "Ups Attack gain,"
+	text "Ups Attack gain,"
 	next "but lowers Speed."
 	done
 
 PowerBeltDesc:
-	ctxt "Ups Defense gain,"
+	text "Ups Defense gain,"
 	next "but lowers Speed."
 	done
 
 PowerLensDesc:
-	ctxt "Ups Spcl.Atk gain,"
+	text "Ups Spcl.Atk gain,"
 	next "but lowers Speed."
 	done
 
 PowerBandDesc:
-	ctxt "Ups Spcl.Def gain,"
+	text "Ups Spcl.Def gain,"
 	next "but lowers Speed."
 	done
 
 PowerAnkletDesc:
-	ctxt "Ups Speed gain,"
+	text "Ups Speed gain,"
 	next "but lowers Speed."
 	done
 
 MulchDesc:
-	ctxt "Plant fertilizer"
+	text "Plant fertilizer"
 	next "for Berry trees."
 	done
 
 SweetHoneyDesc:
-	ctxt "The aroma attracts"
+	text "The aroma attracts"
 	next "wild #mon."
 	done
 
 EvioliteDesc:
-	ctxt "Ups Def and Spcl."
+	text "Ups Def and Spcl."
 	next "Def of evolvers."
 	done
 
 MuscleBandDesc:
-	ctxt "Powers up physical"
+	text "Powers up physical"
 	next "moves. (Hold)"
 	done
 
 WiseGlassesDesc:
-	ctxt "Powers up special"
+	text "Powers up special"
 	next "moves. (Hold)"
 	done
 
 DragonScaleDesc:
-	ctxt "A rare Dragon-type"
+	text "A rare Dragon-type"
 	next "item."
 	done
 
 UpGradeDesc:
-	ctxt "A mysterious box"
+	text "A mysterious box"
 	next "made by Silph Co."
 	done
 
 DubiousDiscDesc:
-	ctxt "A transparent disc"
+	text "A transparent disc"
 	next "of unknown origin."
 	done
 
 ProtectorDesc:
-	ctxt "A protective item."
+	text "A protective item."
 	next "Stiff and heavy."
 	done
 
 ElectirizerDesc:
-	ctxt "A box packed with"
+	text "A box packed with"
 	next "electric energy."
 	done
 
 MagmarizerDesc:
-	ctxt "A box packed with"
+	text "A box packed with"
 	next "magma energy."
 	done
 
 OddSouvenirDesc:
-	ctxt "An ornament from"
+	text "An ornament from"
 	next "a far-away place."
 	done
 
 NuggetDesc:
-	ctxt "Made of pure gold."
+	text "Made of pure gold."
 	next "Sell high."
 	done
 
 BigNuggetDesc:
-	ctxt "Made of pure gold."
+	text "Made of pure gold."
 	next "Sell very high."
 	done
 
 TinyMushroomDesc:
-	ctxt "An ordinary mush-"
+	text "An ordinary mush-"
 	next "room. Sell low."
 	done
 
 BigMushroomDesc:
-	ctxt "A rare mushroom."
+	text "A rare mushroom."
 	next "Sell high."
 	done
 
 BalmMushroomDesc:
-	ctxt "A rare mushroom."
+	text "A rare mushroom."
 	next "Sell very high."
 	done
 
 PearlDesc:
-	ctxt "A beautiful pearl."
+	text "A beautiful pearl."
 	next "Sell low."
 	done
 
 BigPearlDesc:
-	ctxt "A big, beautiful"
+	text "A big, beautiful"
 	next "pearl. Sell high."
 	done
 
 PearlStringDesc:
-	ctxt "Big, shiny pearls."
+	text "Big, shiny pearls."
 	next "Sell very high."
 	done
 
 StardustDesc:
-	ctxt "Pretty, red sand."
+	text "Pretty, red sand."
 	next "Sell high."
 	done
 
 StarPieceDesc:
-	ctxt "A hunk of red gem."
+	text "A hunk of red gem."
 	next "Sell very high."
 	done
 
 BrickPieceDesc:
-	ctxt "A rare chunk of"
+	text "A rare chunk of"
 	next "tile."
 	done
 
 RareBoneDesc:
-	ctxt "A rare bone for"
+	text "A rare bone for"
 	next "archaeologists."
 	done
 
 SilverLeafDesc:
-	ctxt "A strange, silver-"
+	text "A strange, silver-"
 	next "colored leaf."
 	done
 
 GoldLeafDesc:
-	ctxt "A strange, gold-"
+	text "A strange, gold-"
 	next "colored leaf."
 	done
 
 SlowpokeTailDesc:
-	ctxt "Very tasty. Sell"
+	text "Very tasty. Sell"
 	next "high."
 	done
 
 BottleCapDesc:
-	ctxt "A shiny, rare"
+	text "A shiny, rare"
 	next "bottle cap."
 	done
 
 HelixFossilDesc:
 DomeFossilDesc:
-	ctxt "A fossilized"
+	text "A fossilized"
 	next "#mon shell."
 	done
 
 OldAmberDesc:
-	ctxt "Fossilized resin"
+	text "Fossilized resin"
 	next "containing DNA."
 	done
 
 FlowerMailDesc:
-	ctxt "Flower-print Mail."
+	text "Flower-print Mail."
 	next "(Hold)"
 	done
 
 SurfMailDesc:
-	ctxt "Lapras-print Mail."
+	text "Lapras-print Mail."
 	next "(Hold)"
 	done
 
 LiteBlueMailDesc:
-	ctxt "Dratini-print"
+	text "Dratini-print"
 	next "Mail. (Hold)"
 	done
 
 PortraitMailDesc:
-	ctxt "Mail featuring the"
+	text "Mail featuring the"
 	next "holder's likeness."
 	done
 
 LovelyMailDesc:
-	ctxt "Heart-print Mail."
+	text "Heart-print Mail."
 	next "(Hold)"
 	done
 
 EonMailDesc:
-	ctxt "Eevee-print Mail."
+	text "Eevee-print Mail."
 	next "(Hold)"
 	done
 
 MorphMailDesc:
-	ctxt "Ditto-print Mail."
+	text "Ditto-print Mail."
 	next "(Hold)"
 	done
 
 BlueSkyMailDesc:
-	ctxt "Sky-print Mail."
+	text "Sky-print Mail."
 	next "(Hold)"
 	done
 
 MusicMailDesc:
-	ctxt "Natu-print Mail."
+	text "Natu-print Mail."
 	next "(Hold)"
 	done
 
 MirageMailDesc:
-	ctxt "Mew-print Mail."
+	text "Mew-print Mail."
 	next "(Hold)"
 	done
 
 EjectButtonDesc:
-	ctxt "Switches out when"
+	text "Switches out when"
 	next "hit. (Hold)"
 	done
 
 LaggingTailDesc:
-	ctxt "Always moves last."
+	text "Always moves last."
 	next "(Hold)"
 	done
 
 IronBallDesc:
-	ctxt "Lowers Speed and"
+	text "Lowers Speed and"
 	next "grounds. (Hold)"
 	done
 
 RingTargetDesc:
-	ctxt "Loses type immun-"
+	text "Loses type immun-"
 	next "ities. (Hold)"
 	done
 
 RedCardDesc:
-	ctxt "Switches out foe"
+	text "Switches out foe"
 	next "when hit. (Hold)"
 	done
 
 AbsorbBulbDesc:
-	ctxt "Raises Spcl.Atk on"
+	text "Raises Spcl.Atk on"
 	next "a Water hit."
 	done
 
 CellBatteryDesc:
-	ctxt "Raises Attack on"
+	text "Raises Attack on"
 	next "an Electric hit."
 	done
 
 LuminousMossDesc:
-	ctxt "Raises Spcl.Def on"
+	text "Raises Spcl.Def on"
 	next "a Water hit."
 	done
 
 SnowballDesc:
-	ctxt "Raises Attack on"
+	text "Raises Attack on"
 	next "an Ice hit."
 	done
 
 EjectPackDesc:
-	ctxt "Switches out when"
+	text "Switches out when"
 	next "stats fall. (Hold)"
 	done
 
 RoomServiceDesc:
-	ctxt "Lowers Speed in"
+	text "Lowers Speed in"
 	next "Trick Room. (Hold)"
 	done
 
 BlundrPolicyDesc:
-	ctxt "Raises Speed when"
+	text "Raises Speed when"
 	next "a move misses."
 	done
 
 ThroatSprayDesc:
-	ctxt "Raises Spcl.Atk on"
+	text "Raises Spcl.Atk on"
 	next "a sound move."
 	done
 
 HeavyBootsDesc:
-	ctxt "Protects from"
+	text "Protects from"
 	next "traps. (Hold)"
 	done
 
 UtilUmbrellaDesc:
-	ctxt "Protects from"
+	text "Protects from"
 	next "weather effects."
 	done
 
 MintLeafDesc:
-	ctxt "A fragrant sprig"
+	text "A fragrant sprig"
 	next "of mint."
 	done
 
 BicycleDesc:
-	ctxt "A collapsible bike"
+	text "A collapsible bike"
 	next "for fast movement."
 	done
 
 OldRodDesc:
-	ctxt "Use by water to"
+	text "Use by water to"
 	next "fish for #mon."
 	done
 
 GoodRodDesc:
-	ctxt "A good Rod for"
+	text "A good Rod for"
 	next "catching #mon."
 	done
 
 SuperRodDesc:
-	ctxt "The best Rod for"
+	text "The best Rod for"
 	next "catching #mon."
 	done
 
 CoinCaseDesc:
-	ctxt "Holds up to 50K"
+	text "Holds up to 50K"
 	next "game coins."
 	done
 
 ItemfinderDesc:
-	ctxt "Checks for unseen"
+	text "Checks for unseen"
 	next "items in the area."
 	done
 
 MysteryEggDesc:
-	ctxt "An Egg obtained"
+	text "An Egg obtained"
 	next "from Mr.#mon."
 	done
 
 SquirtBottleDesc:
-	ctxt "A bottle used for"
+	text "A bottle used for"
 	next "watering plants."
 	done
 
 SecretPotionDesc:
-	ctxt "Fully heals any"
+	text "Fully heals any"
 	next "#mon."
 	done
 
 RedScaleDesc:
-	ctxt "A scale from the"
+	text "A scale from the"
 	next "red Gyarados."
 	done
 
 CardKeyDesc:
-	ctxt "Opens shutters in"
+	text "Opens shutters in"
 	next "the Radio Tower."
 	done
 
 BasementKeyDesc:
-	ctxt "Opens doors."
+	text "Opens doors."
 	done
 
 SSTicketDesc:
-	ctxt "A ticket for the"
+	text "A ticket for the"
 	next "S.S.Aqua."
 	done
 
 PassDesc:
-	ctxt "A ticket for the"
+	text "A ticket for the"
 	next "Magnet Train."
 	done
 
 MachinePartDesc:
-	ctxt "A machine part for"
+	text "A machine part for"
 	next "the Power Plant."
 	done
 
 LostItemDesc:
-	ctxt "The # Doll lost"
+	text "The # Doll lost"
 	next "by the Copycat."
 	done
 
 RainbowWingDesc:
-	ctxt "A mystical feather"
+	text "A mystical feather"
 	next "of rainbow colors."
 	done
 
 SilverWingDesc:
-	ctxt "A strange, silver-"
+	text "A strange, silver-"
 	next "colored feather."
 	done
 
 ClearBellDesc:
-	ctxt "Makes a gentle"
+	text "Makes a gentle"
 	next "ringing."
 	done
 
 GSBallDesc:
-	ctxt "The mysterious"
+	text "The mysterious"
 	next "Ball."
 	done
 
 BlueCardDesc:
-	ctxt "Card to save"
+	text "Card to save"
 	next "points."
 	done
 
 OrangeTicketDesc:
 MysticTicketDesc:
-	ctxt "A ticket for the"
+	text "A ticket for the"
 	next "Seagallop Ferry."
 	done
 
 OldSeaMapDesc:
-	ctxt "A faded sea chart"
+	text "A faded sea chart"
 	next "of a small island."
 	done
 
 ShinyCharmDesc:
-	ctxt "A charm for find-"
+	text "A charm for find-"
 	next "ing shiny #mon."
 	done
 
 OvalCharmDesc:
-	ctxt "A charm for find-"
+	text "A charm for find-"
 	next "ing Eggs."
 	done
 
 CatchCharmDesc:
-	ctxt "A charm for catch-"
+	text "A charm for catch-"
 	next "ing #mon."
 	done
 
 SilphScope2Desc:
-	ctxt "A scope to see in-"
+	text "A scope to see in-"
 	next "visible #mon."
 	done
 
 ApricornBoxDesc:
-	ctxt "Holds up to 99 of"
+	text "Holds up to 99 of"
 	next "each Apricorn."
 	done
 
 TypeChartDesc:
-	ctxt "Summarizes all"
+	text "Summarizes all"
 	next "type advantages."
 	done

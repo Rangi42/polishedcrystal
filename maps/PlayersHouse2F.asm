@@ -323,7 +323,7 @@ PokemonJournalProfElmScript:
 	setflag ENGINE_READ_PROF_ELM_JOURNAL
 	jumpthistext
 
-	ctxt "#mon Journal"
+	text "#mon Journal"
 
 	para "Special Feature:"
 	line "#mon Prof.Elm!"
@@ -347,21 +347,21 @@ PlayersHousePC:
 	end
 
 PlayerRadioText1:
-	ctxt "Prof.Oak's #mon"
+	text "Prof.Oak's #mon"
 	line "Talk! Please tune"
 	cont "in next time!"
 	done
 
 PlayerRadioText2:
-	ctxt "#mon Channel!"
+	text "#mon Channel!"
 	done
 
 PlayerRadioText3:
-	ctxt "This is DJ Mary,"
+	text "This is DJ Mary,"
 	line "your co-host!"
 	done
 
 PlayerRadioText4:
-	ctxt "#mon!"
+	text "#mon!"
 	line "#mon Channel…"
 	done

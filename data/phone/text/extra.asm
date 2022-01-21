@@ -1,13 +1,13 @@
 
 IrwinHangUpText:
-	ctxt "I hate having to"
+	text "I hate having to"
 	line "hang up on you!"
 
 	para "Call you later!"
 	done
 
 IrwinRocketTakeoverRumorText:
-	ctxt "<PLAYER>, have you"
+	text "<PLAYER>, have you"
 	line "heard?"
 
 	para "Goldenrod's Radio"
@@ -21,7 +21,7 @@ IrwinRocketTakeoverRumorText:
 	done
 
 IrwinPlainBadgeGossipText:
-	ctxt "<PLAYER>, I heard!"
+	text "<PLAYER>, I heard!"
 
 	para "You defeated that"
 	line "Whitney?"
@@ -31,7 +31,7 @@ IrwinPlainBadgeGossipText:
 	done
 
 IrwinJasmineReturnedGossipText:
-	ctxt "Hey, I heard about"
+	text "Hey, I heard about"
 	line "you!"
 
 	para "You saved that"
@@ -48,7 +48,7 @@ IrwinJasmineReturnedGossipText:
 	done
 
 IrwinRocketHideoutGossipText:
-	ctxt "I heard, I heard,"
+	text "I heard, I heard,"
 	line "I heard!"
 
 	para "You smashed Team"
@@ -62,7 +62,7 @@ IrwinRocketHideoutGossipText:
 	done
 
 IrwinRadioTowerGossipText:
-	ctxt "I heard, I heard,"
+	text "I heard, I heard,"
 	line "I heard!"
 
 	para "About your heroic"
@@ -73,7 +73,7 @@ IrwinRadioTowerGossipText:
 	done
 
 IrwinRisingBadgeGossipText:
-	ctxt "I saw, I saw!"
+	text "I saw, I saw!"
 
 	para "I saw you go into"
 	line "the Dragon's Den!"
@@ -86,7 +86,7 @@ IrwinRisingBadgeGossipText:
 	done
 
 IrwinEliteFourGossipText:
-	ctxt "Yesterday, I went"
+	text "Yesterday, I went"
 	line "out to New Bark"
 
 	para "Town.  There was a"
@@ -115,7 +115,7 @@ IrwinEliteFourGossipText:
 	done
 
 IrwinVermilionCityGossipText:
-	ctxt "I saw, I saw,"
+	text "I saw, I saw,"
 	line "I saw!"
 
 	para "You striding onto"
@@ -129,7 +129,7 @@ IrwinVermilionCityGossipText:
 	done
 
 IrwinTrainPassGossipText:
-	ctxt "I heard, I heard!"
+	text "I heard, I heard!"
 
 	para "You got a Magnet"
 	line "Train Pass!"
@@ -157,7 +157,7 @@ IrwinTrainPassGossipText:
 	done
 
 IrwinSnorlaxGossipText:
-	ctxt "I saw, I saw!"
+	text "I saw, I saw!"
 
 	para "You waking up"
 	line "Snorlax!"
@@ -176,7 +176,7 @@ IrwinSnorlaxGossipText:
 	done
 
 IrwinMtSilverGossipText:
-	ctxt "I hear rumors"
+	text "I hear rumors"
 	line "about you all over"
 	cont "the place."
 
@@ -194,7 +194,7 @@ IrwinMtSilverGossipText:
 	done
 
 IrwinCalledRightAwayText:
-	ctxt "Hehe, I called"
+	text "Hehe, I called"
 	line "right away!"
 
 	para "I think we can be"
@@ -202,7 +202,7 @@ IrwinCalledRightAwayText:
 	done
 
 IrwinFogBadgeGossipText:
-	ctxt "I saw, I heard!"
+	text "I saw, I heard!"
 
 	para "You beat Morty of"
 	line "Ecruteak Gym!"
@@ -227,7 +227,7 @@ IrwinFogBadgeGossipText:
 	done
 
 IrwinMarshBadgeGossipText:
-	ctxt "<PLAYER>, I heard!"
+	text "<PLAYER>, I heard!"
 
 	para "You're kicking up"
 	line "a mighty ruckus"
@@ -242,7 +242,7 @@ IrwinMarshBadgeGossipText:
 	done
 
 IrwinYourEscapadesRockText:
-	ctxt "Hearing about your"
+	text "Hearing about your"
 	line "escapades rocks my"
 
 	para "soul!"
@@ -250,7 +250,7 @@ IrwinYourEscapadesRockText:
 	done
 
 IrwinGoodMatchText:
-	ctxt "I'm so glad you"
+	text "I'm so glad you"
 	line "called!"
 
 	para "I was just about"
@@ -261,7 +261,7 @@ IrwinGoodMatchText:
 	done
 
 IrwinSoMuchToChatAboutText:
-	ctxt "How are you?"
+	text "How are you?"
 
 	para "What are you"
 	line "doing?"
@@ -290,22 +290,22 @@ IrwinSoMuchToChatAboutText:
 	done
 
 ArnieMonIsSoCuteText:
-	ctxt "I'm always with my"
+	text "I'm always with my"
 	line ""
 	text_ram wStringBuffer4
-	ctxt "!"
+	text "!"
 
 	para "It's so cute!"
 	line "I just love it!"
 	done
 
 ArnieDefeatedMonText:
-	ctxt "Changing the topic"
+	text "Changing the topic"
 	line "here, I saw this"
 
 	para ""
 	text_ram wStringBuffer4
-	ctxt " for the"
+	text " for the"
 	line "first time."
 
 	para "It was easy to"
@@ -313,11 +313,11 @@ ArnieDefeatedMonText:
 	done
 
 ArnieLostAMonText:
-	ctxt "I was wondering,"
+	text "I was wondering,"
 	line "do you happen to"
 	cont "have "
 	text_ram wStringBuffer4
-	ctxt "?"
+	text "?"
 
 	para "I can't seem to"
 	line "catch one. What is"
@@ -327,7 +327,7 @@ ArnieLostAMonText:
 	done
 
 ArnieBattleRematchText:
-	ctxt "Hey, let's battle"
+	text "Hey, let's battle"
 	line "our #mon!"
 
 	para "I won't lose to"
@@ -343,30 +343,30 @@ ArnieBattleRematchText:
 	done
 
 ArnieHangUpText:
-	ctxt "Let's talk again,"
+	text "Let's talk again,"
 	line "huh?"
 	done
 
 ArnieSwarmText:
-	ctxt "Boy, am I glad I"
+	text "Boy, am I glad I"
 	line "caught you!"
 
 	para "A whole bunch of"
 	line ""
 	text_ram wStringBuffer4
-	ctxt " have"
+	text " have"
 
 	para "appeared around"
 	line ""
 	text_ram wStringBuffer5
-	ctxt "!"
+	text "!"
 
 	para "You have to see"
 	line "this!"
 	done
 
 ArnieHaventSeenRareMonText:
-	ctxt "I haven't had any"
+	text "I haven't had any"
 	line "luck seeing rare"
 	cont "#mon lately…"
 
@@ -375,7 +375,7 @@ ArnieHaventSeenRareMonText:
 	done
 
 ArnieReminderText:
-	ctxt "Hey, where are you"
+	text "Hey, where are you"
 	line "now?"
 
 	para "Let's battle. I'll"
@@ -386,7 +386,7 @@ ArnieReminderText:
 	done
 
 ArnieHurryText:
-	ctxt "Hello? Are you"
+	text "Hello? Are you"
 	line "coming or what?"
 
 	para "You're missing out"
@@ -399,7 +399,7 @@ ArnieHurryText:
 AlanGettingStrongerText:
 	text "My "
 	text_ram wStringBuffer4
-	ctxt "'s"
+	text "'s"
 	line "getting stronger,"
 
 	para "exactly as I"
@@ -407,12 +407,12 @@ AlanGettingStrongerText:
 	done
 
 AlanDefeatedMonText:
-	ctxt "By the way, we"
+	text "By the way, we"
 	line "knocked out a wild"
 
 	para ""
 	text_ram wStringBuffer4
-	ctxt " just"
+	text " just"
 	line "the other day."
 
 	para "Studying up in"
@@ -420,10 +420,10 @@ AlanDefeatedMonText:
 	done
 
 AlanLostAMonText:
-	ctxt "By the way, a wild"
+	text "By the way, a wild"
 	line ""
 	text_ram wStringBuffer4
-	ctxt " escaped"
+	text " escaped"
 	cont "on me yesterday."
 
 	para "A computational"
@@ -431,7 +431,7 @@ AlanLostAMonText:
 	done
 
 AlanBattleRematchText:
-	ctxt "I've studied quite"
+	text "I've studied quite"
 	line "a bit since then,"
 
 	para "and I've gotten a"
@@ -440,18 +440,18 @@ AlanBattleRematchText:
 	para "I'm hanging out on"
 	line ""
 	text_ram wStringBuffer5
-	ctxt "."
+	text "."
 
 	para "Can you come down"
 	line "for a battle?"
 	done
 
 AlanHangUpText:
-	ctxt "See you later!"
+	text "See you later!"
 	done
 
 AlanFoundItemText:
-	ctxt "Hehehe, I picked"
+	text "Hehehe, I picked"
 	line "up something nice!"
 
 	para "You can have it!"
@@ -459,12 +459,12 @@ AlanFoundItemText:
 
 	para "to "
 	text_ram wStringBuffer5
-	ctxt ""
+	text ""
 	line "and pick it up?"
 	done
 
 AlanHaventPickedUpAnythingText:
-	ctxt "I haven't picked"
+	text "I haven't picked"
 	line "up anything yet."
 
 	para "I'll call you if I"
@@ -472,7 +472,7 @@ AlanHaventPickedUpAnythingText:
 	done
 
 AlanReminderText:
-	ctxt "If we don't battle"
+	text "If we don't battle"
 	line "soon, I'll forget"
 	cont "my strategy!"
 
@@ -483,7 +483,7 @@ AlanReminderText:
 	done
 
 AlanComePickUpGiftText:
-	ctxt "I have to do my"
+	text "I have to do my"
 	line "homework, so can"
 
 	para "you come get your"
@@ -498,7 +498,7 @@ AlanComePickUpGiftText:
 DanaTakingPhotosText:
 	text "My "
 	text_ram wStringBuffer4
-	ctxt " is"
+	text " is"
 	line "getting prettier!"
 
 	para "I've been taking"
@@ -506,11 +506,11 @@ DanaTakingPhotosText:
 	done
 
 DanaDefeatedMonText:
-	ctxt "It took only an"
+	text "It took only an"
 	line "instant to KO a"
 	cont "wild "
 	text_ram wStringBuffer4
-	ctxt "."
+	text "."
 
 	para "It must be because"
 	line "you gave me some"
@@ -520,10 +520,10 @@ DanaDefeatedMonText:
 	done
 
 DanaLostAMonText:
-	ctxt "You know what?"
+	text "You know what?"
 	line "A wild "
 	text_ram wStringBuffer4
-	ctxt ""
+	text ""
 
 	para "got away from me"
 	line "again."
@@ -536,10 +536,10 @@ DanaLostAMonText:
 	done
 
 DanaBattleRematchText:
-	ctxt "Right now, I'm on"
+	text "Right now, I'm on"
 	line ""
 	text_ram wStringBuffer5
-	ctxt "."
+	text "."
 
 	para "If you're close"
 	line "by, let's battle!"
@@ -549,11 +549,11 @@ DanaBattleRematchText:
 	done
 
 DanaHangUpText:
-	ctxt "See you!"
+	text "See you!"
 	done
 
 DanaFoundItemText:
-	ctxt "You know what?"
+	text "You know what?"
 	line "I got a good gift!"
 
 	para "As I promised,"
@@ -569,7 +569,7 @@ DanaFoundItemText:
 	done
 
 DanaCanYouWaitABitLongerText:
-	ctxt "Oh! You wanted a"
+	text "Oh! You wanted a"
 	line "gift, right?"
 
 	para "I got one, but I"
@@ -580,7 +580,7 @@ DanaCanYouWaitABitLongerText:
 	done
 
 DanaReminderText:
-	ctxt "Hi! You haven't"
+	text "Hi! You haven't"
 	line "forgotten about"
 
 	para "your promise to"
@@ -593,7 +593,7 @@ DanaReminderText:
 	done
 
 DanaComePickUpText:
-	ctxt "Hello?"
+	text "Hello?"
 
 	para "If you don't come"
 	line "get your present"
@@ -608,11 +608,11 @@ DanaComePickUpText:
 	done
 
 ChadObservingWildText:
-	ctxt "I recently began"
+	text "I recently began"
 	line "observing wild"
 	cont ""
 	text_ram wStringBuffer4
-	ctxt "."
+	text "."
 
 	para "I've been learning"
 	line "all sorts of new"
@@ -628,12 +628,12 @@ ChadObservingWildText:
 	done
 
 ChadDefeatedMonText:
-	ctxt "Oh yes, I managed"
+	text "Oh yes, I managed"
 	line "to knock out a"
 
 	para "wild "
 	text_ram wStringBuffer4
-	ctxt " a"
+	text " a"
 	line "while back."
 
 	para "Well, considering"
@@ -644,12 +644,12 @@ ChadDefeatedMonText:
 	done
 
 ChadLostAMonText:
-	ctxt "Oh yes, I came"
+	text "Oh yes, I came"
 	line "close to catching"
 
 	para "a wild "
 	text_ram wStringBuffer4
-	ctxt ","
+	text ","
 	line "but it got away."
 
 	para "For the longest"
@@ -658,11 +658,11 @@ ChadLostAMonText:
 	para "wanting to observe"
 	line ""
 	text_ram wStringBuffer4
-	ctxt ". Rats…"
+	text ". Rats…"
 	done
 
 ChadBattleRematchText:
-	ctxt "Want to battle?"
+	text "Want to battle?"
 	line "I have to battle"
 
 	para "every so often to"
@@ -675,11 +675,11 @@ ChadBattleRematchText:
 	done
 
 ChadHangUpText:
-	ctxt "See you later!"
+	text "See you later!"
 	done
 
 ChadBlueGossipText:
-	ctxt "Do you know Blue?"
+	text "Do you know Blue?"
 
 	para "He's Prof.Oak's"
 	line "grandson and a"
@@ -692,7 +692,7 @@ ChadBlueGossipText:
 	done
 
 ChadDaisyGossipText:
-	ctxt "Prof.Oak has a"
+	text "Prof.Oak has a"
 	line "granddaughter"
 	cont "named Daisy."
 
@@ -704,7 +704,7 @@ ChadDaisyGossipText:
 	done
 
 ChadProfElmGossipText:
-	ctxt "Everyone's talking"
+	text "Everyone's talking"
 	line "about Prof.Elm."
 
 	para "He used to be an"
@@ -716,7 +716,7 @@ ChadProfElmGossipText:
 	done
 
 ChadProfOaksDreamGossipText:
-	ctxt "Prof.Oak's dream"
+	text "Prof.Oak's dream"
 	line "is to compile a"
 
 	para "comprehensive"
@@ -728,7 +728,7 @@ ChadProfOaksDreamGossipText:
 	done
 
 ChadKurtGossipText:
-	ctxt "Do you know Kurt,"
+	text "Do you know Kurt,"
 	line "the Ball creator?"
 
 	para "He and Prof.Oak go"
@@ -740,7 +740,7 @@ ChadKurtGossipText:
 	done
 
 ChadLeagueGossipText:
-	ctxt "#mon League is"
+	text "#mon League is"
 	line "the great gather-"
 	cont "ing place for all"
 
@@ -758,7 +758,7 @@ ChadLeagueGossipText:
 	done
 
 ChadPokemonTalkGossipText:
-	ctxt "Prof.Oak's #mon"
+	text "Prof.Oak's #mon"
 	line "Talk is a popular"
 	cont "radio show, right?"
 
@@ -777,7 +777,7 @@ ChadPokemonTalkGossipText:
 	done
 
 ChadProfOakTrainerGossipText:
-	ctxt "Prof.Oak used to"
+	text "Prof.Oak used to"
 	line "be a trainer a"
 	cont "long time ago."
 
@@ -795,7 +795,7 @@ ChadProfOakTrainerGossipText:
 	done
 
 ChadDaisyTeaGossipText:
-	ctxt "Prof.Oak has a"
+	text "Prof.Oak has a"
 	line "granddaughter"
 	cont "named Daisy."
 
@@ -813,7 +813,7 @@ ChadDaisyTeaGossipText:
 	done
 
 ChadProfOakTravelingGossipText:
-	ctxt "Did you know?"
+	text "Did you know?"
 	line "Prof.Oak traveled"
 
 	para "all over the world"
@@ -833,7 +833,7 @@ ChadProfOakTravelingGossipText:
 	done
 
 ChadGoingToStudyHardText:
-	ctxt "I'm going to study"
+	text "I'm going to study"
 	line "hard so Prof.Oak"
 
 	para "will make me his"
@@ -841,23 +841,23 @@ ChadGoingToStudyHardText:
 	done
 
 ChadReminderText:
-	ctxt "Do you remember"
+	text "Do you remember"
 	line "about our battle?"
 
 	para "The place is"
 	line ""
 	text_ram wStringBuffer5
-	ctxt "."
+	text "."
 
 	para "Hurry over--I'm"
 	line "waiting."
 	done
 
 DerekCheekPinchingText:
-	ctxt "Listen to this."
+	text "Listen to this."
 	line "My "
 	text_ram wStringBuffer4
-	ctxt ""
+	text ""
 
 	para "grins happily when"
 	line "I pinch its cheek."
@@ -869,15 +869,15 @@ DerekCheekPinchingText:
 	done
 
 DerekDefeatedMonText:
-	ctxt "Oh, and recently,"
+	text "Oh, and recently,"
 	line "my Pikachu beat a"
 	cont "wild "
 	text_ram wStringBuffer4
-	ctxt "!"
+	text "!"
 
 	para "A wild "
 	text_ram wStringBuffer4
-	ctxt ","
+	text ","
 	line "I tell you!"
 
 	para "Don't you think"
@@ -891,10 +891,10 @@ DerekDefeatedMonText:
 	done
 
 DerekLostAMonText:
-	ctxt "Oh, and I saw a"
+	text "Oh, and I saw a"
 	line "wild "
 	text_ram wStringBuffer4
-	ctxt " a"
+	text " a"
 	cont "little while ago."
 
 	para "But it wasn't very"
@@ -908,12 +908,12 @@ DerekLostAMonText:
 	done
 
 DerekHangUpText:
-	ctxt "Well, let's talk"
+	text "Well, let's talk"
 	line "again!"
 	done
 
 DerekBugCatchingContestText:
-	ctxt "Did you remember?"
+	text "Did you remember?"
 	line "The Bug-Catching"
 	cont "Contest is today."
 
@@ -928,7 +928,7 @@ DerekBugCatchingContestText:
 	done
 
 DerekFoundItemText:
-	ctxt "I'd like you to"
+	text "I'd like you to"
 	line "have a Nugget."
 
 	para "My Pikachu just"
@@ -940,7 +940,7 @@ DerekFoundItemText:
 	done
 
 DerekLetsGetTogetherText:
-	ctxt "How is your"
+	text "How is your"
 	line "Pikachu doing?"
 
 	para "Let's get together"
@@ -949,12 +949,12 @@ DerekLetsGetTogetherText:
 	done
 
 DerekComePickUpText:
-	ctxt "What's wrong?"
+	text "What's wrong?"
 
 	para "I'm waiting on"
 	line ""
 	text_ram wStringBuffer5
-	ctxt "."
+	text "."
 
 	para "Come pick this up"
 	line "anytime."
@@ -963,7 +963,7 @@ DerekComePickUpText:
 TullyMonHasGrownText:
 	text "My "
 	text_ram wStringBuffer4
-	ctxt " has"
+	text " has"
 	line "grown again."
 
 	para "It was only about"
@@ -974,10 +974,10 @@ TullyMonHasGrownText:
 	done
 
 TullyDefeatedMonText:
-	ctxt "Oh yeah, I KO'd a"
+	text "Oh yeah, I KO'd a"
 	line "wild "
 	text_ram wStringBuffer4
-	ctxt "."
+	text "."
 
 	para "It was huge, like"
 	line "this big even."
@@ -988,10 +988,10 @@ TullyDefeatedMonText:
 	done
 
 TullyLostAMonText:
-	ctxt "Oh yeah, I lost a"
+	text "Oh yeah, I lost a"
 	line "wild "
 	text_ram wStringBuffer4
-	ctxt "."
+	text "."
 
 	para "It was huge, like"
 	line "this big even."
@@ -1002,25 +1002,25 @@ TullyLostAMonText:
 	done
 
 TullyBattleRematchText:
-	ctxt "We should get a"
+	text "We should get a"
 	line "battle going!"
 
 	para "I'll be fishing on"
 	line ""
 	text_ram wStringBuffer5
-	ctxt "."
+	text "."
 
 	para "Swing by if you"
 	line "have the time."
 	done
 
 TullyHangUpText:
-	ctxt "Well, I'll be"
+	text "Well, I'll be"
 	line "seeing you."
 	done
 
 TullyFoundItemText:
-	ctxt "I picked up a good"
+	text "I picked up a good"
 	line "little thing at"
 	cont "the water's edge."
 
@@ -1034,7 +1034,7 @@ TullyFoundItemText:
 	done
 
 TullyNoItemText:
-	ctxt "Have I found"
+	text "Have I found"
 	line "anything good?"
 
 	para "Nope, not yet."
@@ -1044,7 +1044,7 @@ TullyNoItemText:
 	done
 
 TullyForwardText:
-	ctxt "Yup, Tully here…"
+	text "Yup, Tully here…"
 
 	para "<PLAYER>? What?"
 	line "You're lost?"
@@ -1056,7 +1056,7 @@ TullyForwardText:
 	done
 
 TullyHurryText:
-	ctxt "I've got something"
+	text "I've got something"
 	line "good for you."
 
 	para "Hustle over to"
@@ -1066,7 +1066,7 @@ TullyHurryText:
 	done
 
 BrentRareTradeText:
-	ctxt "Oh yeah, I got an"
+	text "Oh yeah, I got an"
 	line "extremely rare"
 
 	para "#mon in a trade"
@@ -1080,12 +1080,12 @@ BrentRareTradeText:
 	done
 
 BrentDefeatedMonText:
-	ctxt "Oh yeah, I took"
+	text "Oh yeah, I took"
 	line "down this wild"
 
 	para ""
 	text_ram wStringBuffer4
-	ctxt "."
+	text "."
 	line "It wasn't rare"
 
 	para "enough to bother"
@@ -1093,7 +1093,7 @@ BrentDefeatedMonText:
 	done
 
 BrentLostAMonText:
-	ctxt "Oh yeah, I saw a"
+	text "Oh yeah, I saw a"
 	line "rare #mon about"
 	cont "an hour ago."
 
@@ -1108,7 +1108,7 @@ BrentLostAMonText:
 	done
 
 BrentBattleRematchText:
-	ctxt "You've got time"
+	text "You've got time"
 	line "like usual, right?"
 
 	para "Feel like having a"
@@ -1127,11 +1127,11 @@ BrentBattleRematchText:
 	done
 
 BrentHangUpText:
-	ctxt "So that's it then."
+	text "So that's it then."
 	done
 
 BrentFatherGossipText:
-	ctxt "Did you know…?"
+	text "Did you know…?"
 	line "Bill's father is"
 
 	para "supposed to be a"
@@ -1139,7 +1139,7 @@ BrentFatherGossipText:
 	done
 
 BrentGrandpaGossipText:
-	ctxt "Did you know…?"
+	text "Did you know…?"
 	line "Apparently Bill's"
 
 	para "grandpa isn't a"
@@ -1147,13 +1147,13 @@ BrentGrandpaGossipText:
 	done
 
 BrentGoldenrodGossipText:
-	ctxt "Did you know…?"
+	text "Did you know…?"
 	line "Bill's originally"
 	cont "from Goldenrod."
 	done
 
 BrentRoute25GossipText:
-	ctxt "Did you know…?"
+	text "Did you know…?"
 	line "Bill evidently"
 
 	para "lives on Route 25"
@@ -1161,7 +1161,7 @@ BrentRoute25GossipText:
 	done
 
 BrentAbraGossipText:
-	ctxt "Did you know…?"
+	text "Did you know…?"
 	line "Abra was the first"
 
 	para "#mon that Bill"
@@ -1169,7 +1169,7 @@ BrentAbraGossipText:
 	done
 
 BrentSisterGossipText:
-	ctxt "Did you know…?"
+	text "Did you know…?"
 	line "Bill's younger"
 
 	para "sister apparently"
@@ -1177,7 +1177,7 @@ BrentSisterGossipText:
 	done
 
 BrentMilkGossipText:
-	ctxt "Did you know…?"
+	text "Did you know…?"
 	line "Bill supposedly"
 
 	para "hates milk and"
@@ -1185,7 +1185,7 @@ BrentMilkGossipText:
 	done
 
 BrentBattlingGossipText:
-	ctxt "Did you know…?"
+	text "Did you know…?"
 	line "Evidently, Bill"
 
 	para "isn't very good at"
@@ -1193,7 +1193,7 @@ BrentBattlingGossipText:
 	done
 
 BrentFlowerShopGossipText:
-	ctxt "Did you know…?"
+	text "Did you know…?"
 	line "Bill appears to"
 
 	para "like the lady at"
@@ -1201,7 +1201,7 @@ BrentFlowerShopGossipText:
 	done
 
 BrentKimonoGirlGossipText:
-	ctxt "Did you know…?"
+	text "Did you know…?"
 	line "Bill's mother is"
 
 	para "said to have been"
@@ -1209,7 +1209,7 @@ BrentKimonoGirlGossipText:
 	done
 
 BrentSorryImTooBusyText:
-	ctxt "You wanted to hear"
+	text "You wanted to hear"
 	line "about Bill?"
 
 	para "Sorry, but I'm too"
@@ -1220,7 +1220,7 @@ BrentSorryImTooBusyText:
 	done
 
 BrentReminderText:
-	ctxt "You want to see my"
+	text "You want to see my"
 	line "rare #mon."
 
 	para "Hurry over to"
@@ -1232,7 +1232,7 @@ BrentReminderText:
 TiffanyMonIsAdorableText:
 	text "My "
 	text_ram wStringBuffer4
-	ctxt "'s"
+	text "'s"
 	line "adorable, don't"
 
 	para "you think so?"
@@ -1243,12 +1243,12 @@ TiffanyMonIsAdorableText:
 	done
 
 TiffanyDefeatedMonText:
-	ctxt "Oh, and we had to"
+	text "Oh, and we had to"
 	line "battle a wild"
 
 	para ""
 	text_ram wStringBuffer4
-	ctxt " a while"
+	text " a while"
 	line "ago…"
 
 	para "My Clefairy came"
@@ -1263,12 +1263,12 @@ TiffanyDefeatedMonText:
 	done
 
 TiffanyLostAMonText:
-	ctxt "Oh, and we had to"
+	text "Oh, and we had to"
 	line "battle a wild"
 
 	para ""
 	text_ram wStringBuffer4
-	ctxt " a while"
+	text " a while"
 	line "ago…"
 
 	para "My Clefairy got"
@@ -1283,7 +1283,7 @@ TiffanyLostAMonText:
 	done
 
 TiffanyBattleRematchText:
-	ctxt "I know this might"
+	text "I know this might"
 	line "surprise you, but"
 
 	para "would you like to"
@@ -1298,7 +1298,7 @@ TiffanyBattleRematchText:
 
 TiffanyItsAwfulText:
 	text_ram wStringBuffer4
-	ctxt "!"
+	text "!"
 
 	para "It's awful."
 	line "My Clefairy…"
@@ -1313,11 +1313,11 @@ TiffanyItsAwfulText:
 	done
 
 TiffanyHangUpText:
-	ctxt "Bye-bye!"
+	text "Bye-bye!"
 	done
 
 TiffanyFoundItemText:
-	ctxt "I bought some Pink"
+	text "I bought some Pink"
 	line "Bows at Goldenrod"
 
 	para "Dept.Store for my"
@@ -1333,12 +1333,12 @@ TiffanyFoundItemText:
 	done
 
 TiffanyNoItemText:
-	ctxt "I love dressing up"
+	text "I love dressing up"
 	line "my Clefairy!"
 	done
 
 TiffanyAsleepText:
-	ctxt "What's wrong?"
+	text "What's wrong?"
 	line "Can't you visit?"
 
 	para "Clefairy got tired"
@@ -1354,7 +1354,7 @@ TiffanyAsleepText:
 	done
 
 TiffanyHurryText:
-	ctxt "What's wrong?"
+	text "What's wrong?"
 	line "Can't you visit?"
 
 	para "I'm sure this will"
@@ -1370,7 +1370,7 @@ TiffanyHurryText:
 VanceMonHasBecomeTougherText:
 	text "My "
 	text_ram wStringBuffer4
-	ctxt "'s"
+	text "'s"
 	line "become tougher."
 
 	para "We've achieved"
@@ -1378,20 +1378,20 @@ VanceMonHasBecomeTougherText:
 	done
 
 VanceDefeatedMonText:
-	ctxt "We can easily beat"
+	text "We can easily beat"
 	line ""
 	text_ram wStringBuffer4
-	ctxt "!"
+	text "!"
 
 	para "…Huh? You too?"
 	line "Isn't that great?"
 	done
 
 VanceLostAMonText:
-	ctxt "But get this, a"
+	text "But get this, a"
 	line "wild "
 	text_ram wStringBuffer4
-	ctxt ""
+	text ""
 
 	para "just barely eluded"
 	line "us."
@@ -1401,10 +1401,10 @@ VanceLostAMonText:
 	done
 
 VanceBattleRematchText:
-	ctxt "Right now, I'm on"
+	text "Right now, I'm on"
 	line ""
 	text_ram wStringBuffer5
-	ctxt "."
+	text "."
 
 	para "You know, where I"
 	line "first met you?"
@@ -1414,29 +1414,29 @@ VanceBattleRematchText:
 	done
 
 VanceHangUpText:
-	ctxt "OK, bye for now!"
+	text "OK, bye for now!"
 	done
 
 VanceLookingForwardText:
-	ctxt "I'll be looking"
+	text "I'll be looking"
 	line "forward to our"
 	cont "next battle!"
 	done
 
 VanceHurryHurryText:
-	ctxt "Oh, <PLAYER>!"
+	text "Oh, <PLAYER>!"
 	line "Hurry, hurry!"
 
 	para ""
 	text_ram wStringBuffer5
-	ctxt "!"
+	text "!"
 	line "Fly over now!"
 	done
 
 WiltonMonHasGrownText:
 	text "My "
 	text_ram wStringBuffer4
-	ctxt "'s"
+	text "'s"
 	line "grown impressive!"
 
 	para "My fishing skills"
@@ -1444,10 +1444,10 @@ WiltonMonHasGrownText:
 	done
 
 WiltonDefeatedMonText:
-	ctxt "We beat a wild"
+	text "We beat a wild"
 	line ""
 	text_ram wStringBuffer4
-	ctxt "…"
+	text "…"
 
 	para "You know, I have"
 	line "more fun fishing"
@@ -1457,23 +1457,23 @@ WiltonDefeatedMonText:
 	done
 
 WiltonLostAMonText:
-	ctxt "But a while back,"
+	text "But a while back,"
 	line "we came this close"
 
 	para "to landing a wild"
 	line ""
 	text_ram wStringBuffer4
-	ctxt "."
+	text "."
 
 	para "I tell you, it was"
 	line "huge. Believe me."
 	done
 
 WiltonBattleRematchText:
-	ctxt "I'm fishing on"
+	text "I'm fishing on"
 	line ""
 	text_ram wStringBuffer5
-	ctxt ","
+	text ","
 
 	para "but nothing's"
 	line "biting today."
@@ -1484,11 +1484,11 @@ WiltonBattleRematchText:
 	done
 
 WiltonHangUpText:
-	ctxt "All right, later."
+	text "All right, later."
 	done
 
 WiltonFoundItemText:
-	ctxt "I snagged an item"
+	text "I snagged an item"
 	line "while fishing."
 
 	para "Come pick it up on"
@@ -1498,7 +1498,7 @@ WiltonFoundItemText:
 	done
 
 WiltonHaventFoundAnythingText:
-	ctxt "Nah, I haven't"
+	text "Nah, I haven't"
 	line "found anything"
 
 	para "that's worth your"
@@ -1509,20 +1509,20 @@ WiltonHaventFoundAnythingText:
 	done
 
 WiltonNotBitingText:
-	ctxt "Sigh…"
+	text "Sigh…"
 	line "They're not biting"
 
 	para "like before on"
 	line ""
 	text_ram wStringBuffer5
-	ctxt "…"
+	text "…"
 
 	para "You have to come"
 	line "for a battle!"
 	done
 
 WiltonWantThisText:
-	ctxt "Don't you want"
+	text "Don't you want"
 	line "this item?"
 
 	para "Hah? You don't"
@@ -1530,7 +1530,7 @@ WiltonWantThisText:
 
 	para ""
 	text_ram wStringBuffer5
-	ctxt "…"
+	text "…"
 	line "Just head from"
 
 	para "Mahogany toward"
@@ -1538,12 +1538,12 @@ WiltonWantThisText:
 	done
 
 KenjiHangUpText:
-	ctxt "Anyway, we'll chat"
+	text "Anyway, we'll chat"
 	line "again!"
 	done
 
 KenjiRemainDedicatedText:
-	ctxt "Are you still on"
+	text "Are you still on"
 	line "your journey?"
 
 	para "I remain dedicated"
@@ -1553,7 +1553,7 @@ KenjiRemainDedicatedText:
 	done
 
 KenjiCallMeBackAnotherTimeText:
-	ctxt "I'm in training"
+	text "I'm in training"
 	line "now. I apologize,"
 
 	para "but call me back"
@@ -1563,7 +1563,7 @@ KenjiCallMeBackAnotherTimeText:
 	done
 
 KenjiIllHaveTimeToChatTomorrowText:
-	ctxt "I apologize, but I"
+	text "I apologize, but I"
 	line "don't have time to"
 
 	para "chat while I am in"
@@ -1576,7 +1576,7 @@ KenjiIllHaveTimeToChatTomorrowText:
 	done
 
 KenjiHangUpMorningText:
-	ctxt "I plan to take a"
+	text "I plan to take a"
 	line "lunch break, so"
 
 	para "come see me then!"
@@ -1584,7 +1584,7 @@ KenjiHangUpMorningText:
 	done
 
 KenjiTakingABreakText:
-	ctxt "I'm taking a break"
+	text "I'm taking a break"
 	line "on Route 45!"
 
 	para "Why not drop by if"
@@ -1592,7 +1592,7 @@ KenjiTakingABreakText:
 	done
 
 KenjiHangUpNightText:
-	ctxt "I rested up over"
+	text "I rested up over"
 	line "my lunch break."
 
 	para "Now it's time to"
@@ -1602,29 +1602,29 @@ KenjiHangUpNightText:
 	done
 
 ParryNothingCanMatchText:
-	ctxt "Nothing can match"
+	text "Nothing can match"
 	line "my "
 	text_ram wStringBuffer4
-	ctxt " now."
+	text " now."
 	done
 
 ParryDefeatedMonText:
-	ctxt "Yeah, we KO'd a"
+	text "Yeah, we KO'd a"
 	line "wild "
 	text_ram wStringBuffer4
-	ctxt "!"
+	text "!"
 
 	para "That was OK, but I"
 	line "wanted to get it…"
 	done
 
 ParryLostAMonText:
-	ctxt "And yesterday, we"
+	text "And yesterday, we"
 	line "spotted a wild"
 
 	para ""
 	text_ram wStringBuffer4
-	ctxt "."
+	text "."
 	line "We were debating"
 
 	para "whether to catch"
@@ -1638,7 +1638,7 @@ ParryLostAMonText:
 	done
 
 ParryBattleRematchText:
-	ctxt "You're thinking"
+	text "You're thinking"
 	line "you'd like to"
 
 	para "battle me. Am I"
@@ -1651,20 +1651,20 @@ ParryBattleRematchText:
 	done
 
 ParryHangUpText:
-	ctxt "OK, give me a call"
+	text "OK, give me a call"
 	line "again!"
 	done
 
 ParryBattleWithMeText:
-	ctxt "You'll battle with"
+	text "You'll battle with"
 	line "me again, right?"
 	done
 
 ParryHaventYouGottenToText:
-	ctxt "Haven't you gotten"
+	text "Haven't you gotten"
 	line "to "
 	text_ram wStringBuffer5
-	ctxt "?"
+	text "?"
 
 	para "Waiting here isn't"
 	line "bad, but I'd sure"
@@ -1675,28 +1675,28 @@ ErinMonIsMuchStrongerText:
 	text_ram wStringBuffer3
 	text "'s "
 	text_ram wStringBuffer4
-	ctxt ""
+	text ""
 	line "is much stronger"
 	cont "than before!"
 	done
 
 ErinDefeatedMonText:
-	ctxt "And, and…"
+	text "And, and…"
 	line "I just battled and"
 	cont "beat "
 	text_ram wStringBuffer4
-	ctxt "!"
+	text "!"
 
 	para "I've raised my"
 	line "#mon properly!"
 	done
 
 ErinLostAMonText:
-	ctxt "But, but…"
+	text "But, but…"
 
 	para "A wild "
 	text_ram wStringBuffer4
-	ctxt ""
+	text ""
 	line "got away from me"
 
 	para "again. It's just"
@@ -1704,7 +1704,7 @@ ErinLostAMonText:
 	done
 
 ErinBattleRematchText:
-	ctxt "I'm Erin. Want to"
+	text "I'm Erin. Want to"
 	line "battle me again?"
 
 	para "I won't lose this"
@@ -1717,11 +1717,11 @@ ErinBattleRematchText:
 	done
 
 ErinHangUpText:
-	ctxt "See you. Bye-bye!"
+	text "See you. Bye-bye!"
 	done
 
 ErinWorkingHardText:
-	ctxt "I'm working hard"
+	text "I'm working hard"
 	line "to raise my"
 	cont "#mon!"
 
@@ -1730,7 +1730,7 @@ ErinWorkingHardText:
 	done
 
 ErinComeBattleText:
-	ctxt "Oh, <PLAYER>!"
+	text "Oh, <PLAYER>!"
 	line "Come battle Erin!"
 
 	para "I'll be waiting on"

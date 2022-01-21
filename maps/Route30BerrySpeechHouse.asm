@@ -27,13 +27,13 @@ Route30BerryHousePokefanMScript:
 .GotMulch:
 	jumpthisopenedtext
 
-	ctxt "I buy top-quality"
+	text "I buy top-quality"
 	line "Mulch in Goldenrod"
 	cont "City."
 	done
 
 Route30BerrySpeechHouseMonEatBerriesText:
-	ctxt "You know, #mon"
+	text "You know, #mon"
 	line "eat Berries."
 
 	para "They take time to"

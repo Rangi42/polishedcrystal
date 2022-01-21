@@ -1,5 +1,5 @@
 BuenaPhoneMorningAnswerText:
-	ctxt "Hi, this is Buena…"
+	text "Hi, this is Buena…"
 
 	para "Oh! Good morning,"
 	line "<PLAYER>!"
@@ -9,7 +9,7 @@ BuenaPhoneMorningAnswerText:
 	done
 
 BuenaPhoneDayAnswerText:
-	ctxt "Hi, this is Buena…"
+	text "Hi, this is Buena…"
 	line "Oh! Hi, <PLAYER>!"
 
 	para "Do you tune into"
@@ -17,7 +17,7 @@ BuenaPhoneDayAnswerText:
 	done
 
 BuenaPhoneMidnightAnswerText:
-	ctxt "This is Buena."
+	text "This is Buena."
 	line "I can't come to"
 
 	para "the phone right"
@@ -34,7 +34,7 @@ BuenaPhoneMidnightAnswerText:
 	done
 
 BuenaPhoneNiteAnswerText:
-	ctxt "Hi, this is Buena…"
+	text "Hi, this is Buena…"
 	line "Oh! Hi, <PLAYER>!"
 
 	para "I just got off"
@@ -45,7 +45,7 @@ BuenaPhoneNiteAnswerText:
 	done
 
 BuenaPhoneMorningText:
-	ctxt "<PLAYER>!"
+	text "<PLAYER>!"
 	line "Hi, it's Buena!"
 
 	para "I got up early, so"
@@ -53,7 +53,7 @@ BuenaPhoneMorningText:
 	done
 
 BuenaPhoneDayText:
-	ctxt "<PLAYER>!"
+	text "<PLAYER>!"
 	line "Hi, it's Buena!"
 
 	para "I needed someone"
@@ -61,7 +61,7 @@ BuenaPhoneDayText:
 	done
 
 BuenaPhoneMidnightText:
-	ctxt "<PLAYER>!"
+	text "<PLAYER>!"
 	line "Hi, it's Buena!"
 
 	para "I'm just on my"
@@ -69,7 +69,7 @@ BuenaPhoneMidnightText:
 	done
 
 BuenaPhoneNiteText:
-	ctxt "<PLAYER>!"
+	text "<PLAYER>!"
 	line "Hi, it's Buena!"
 
 	para "I couldn't sleep,"
@@ -77,7 +77,7 @@ BuenaPhoneNiteText:
 	done
 
 BuenaPhoneRocketText:
-	ctxt "Oh. Hi, <PLAYER>!"
+	text "Oh. Hi, <PLAYER>!"
 
 	para "You are how?"
 
@@ -95,7 +95,7 @@ BuenaPhoneRocketText:
 	done
 
 BuenaPhoneWentOutWithBenText:
-	ctxt "The other day, I"
+	text "The other day, I"
 	line "went out to eat"
 
 	para "with DJ Ben!"
@@ -118,7 +118,7 @@ BuenaPhoneWentOutWithBenText:
 	done
 
 BuenaPhoneReceptionistText:
-	ctxt "You know the"
+	text "You know the"
 	line "receptionist at"
 	cont "the Radio Tower?"
 
@@ -141,7 +141,7 @@ BuenaPhoneReceptionistText:
 	done
 
 BuenaPhoneLuckyNumberShowText:
-	ctxt "Tell me, <PLAYER>."
+	text "Tell me, <PLAYER>."
 	line "Have you ever won"
 
 	para "a prize on the"
@@ -158,7 +158,7 @@ BuenaPhoneLuckyNumberShowText:
 	done
 
 BuenaPhoneStressedFromWorkText:
-	ctxt "You know, last"
+	text "You know, last"
 	line "night…"
 
 	para "I was so stressed"
@@ -188,7 +188,7 @@ BuenaPhoneStressedFromWorkText:
 	done
 
 BuenaPhoneProfessorOakText:
-	ctxt "Yesterday, Prof."
+	text "Yesterday, Prof."
 	line "Oak was in the"
 
 	para "studio to tape his"
@@ -210,7 +210,7 @@ BuenaPhoneProfessorOakText:
 	done
 
 BuenaPhoneGotAColdText:
-	ctxt "…Cough, cough!"
+	text "…Cough, cough!"
 
 	para "Uhm sorry uh got"
 	line "uh code dite now."
@@ -230,7 +230,7 @@ BuenaPhoneGotAColdText:
 	done
 
 BuenaPhoneRadioCardQuestionsText:
-	ctxt "Hey, <PLAYER>."
+	text "Hey, <PLAYER>."
 	line "You won that Radio"
 
 	para "Card by beating"
@@ -250,7 +250,7 @@ BuenaPhoneRadioCardQuestionsText:
 	done
 
 BuenaPhonePikachuFanClubText:
-	ctxt "I'm elated that"
+	text "I'm elated that"
 	line "more people are"
 
 	para "taking part in my"
@@ -284,7 +284,7 @@ BuenaPhonePikachuFanClubText:
 	done
 
 BuenaPhoneRadioTowerDirectorText:
-	ctxt "Guess what?"
+	text "Guess what?"
 	line "The Radio Tower's"
 
 	para "Director is a big"
@@ -316,7 +316,7 @@ BuenaPhoneRadioTowerDirectorText:
 	done
 
 BuenaPhoneWhenDoYouRelaxText:
-	ctxt "<PLAYER>, tell me."
+	text "<PLAYER>, tell me."
 
 	para "When do you relax"
 	line "the most?"
@@ -348,7 +348,7 @@ BuenaPhoneWhenDoYouRelaxText:
 	done
 
 BuenaPhoneStarterPokemonText:
-	ctxt "<PLAYER>, what was"
+	text "<PLAYER>, what was"
 	line "the first #mon"
 	cont "you ever caught?"
 
@@ -388,7 +388,7 @@ BuenaPhoneStarterPokemonText:
 	done
 
 BuenaPhoneCompanyVacationText:
-	ctxt "Guess what? All of"
+	text "Guess what? All of"
 	line "us from the Radio"
 
 	para "Tower are going on"
@@ -416,7 +416,7 @@ BuenaPhoneCompanyVacationText:
 	done
 
 BuenaPhoneBenAndFernText:
-	ctxt "Did you know…?"
+	text "Did you know…?"
 
 	para "Ben and Fern talk"
 	line "on the phone for"
@@ -446,7 +446,7 @@ BuenaPhoneBenAndFernText:
 	done
 
 BuenaPhoneGoingShoppingText:
-	ctxt "I'm going shopping"
+	text "I'm going shopping"
 	line "with Mary and Lily"
 	cont "soon."
 
@@ -463,7 +463,7 @@ BuenaPhoneGoingShoppingText:
 	done
 
 BuenaPhoneFavoriteSlotMachineAnswerText:
-	ctxt "I'm thinking of"
+	text "I'm thinking of"
 	line "going to the Game"
 
 	para "Corner tomorrow."
@@ -485,7 +485,7 @@ BuenaPhoneFavoriteSlotMachineAnswerText:
 	done
 
 BuenaPhonePokegearAnswerText:
-	ctxt "Hey, <PLAYER>. You"
+	text "Hey, <PLAYER>. You"
 	line "use your #gear"
 
 	para "to listen to the"
@@ -508,7 +508,7 @@ BuenaPhonePokegearAnswerText:
 	done
 
 BuenaPhoneCoopedUpInRadioTowerAnswerText:
-	ctxt "Is it sunny"
+	text "Is it sunny"
 	line "outside today?"
 
 	para "When you're cooped"

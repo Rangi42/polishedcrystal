@@ -57,7 +57,7 @@ PewterCityYoungsterScript:
 	jumpopenedtext PewterCityYoungsterText2
 
 PewterCityCooltrainerFText:
-	ctxt "#mon can only"
+	text "#mon can only"
 	line "be two types at"
 	cont "once, but if it"
 	cont "were possible for"
@@ -75,7 +75,7 @@ PewterCityCooltrainerFText:
 	done
 
 PewterCityCooltrainermText:
-	ctxt "This gal thinks"
+	text "This gal thinks"
 	line "Rock-type #mon"
 	cont "are all that,"
 
@@ -89,7 +89,7 @@ PewterCityCooltrainermText:
 	done
 
 PewterCityBugCatcherText:
-	ctxt "At night, Clefairy"
+	text "At night, Clefairy"
 	line "come out to play"
 	cont "at Mt.Moon."
 
@@ -98,7 +98,7 @@ PewterCityBugCatcherText:
 	done
 
 PewterCityGrampsText:
-	ctxt "Ah, you came all"
+	text "Ah, you came all"
 	line "the way out here"
 	cont "from Johto?"
 
@@ -120,7 +120,7 @@ PewterCityGrampsText:
 	done
 
 PewterCityGrampsText_GotSilverWing:
-	ctxt "Going to new, un-"
+	text "Going to new, un-"
 	line "known places and"
 	cont "seeing new people…"
 
@@ -129,7 +129,7 @@ PewterCityGrampsText_GotSilverWing:
 	done
 
 PewterCityYoungsterText1:
-	ctxt "The Pewter Gym is"
+	text "The Pewter Gym is"
 	line "as rough and tough"
 	cont "as rock itself."
 
@@ -138,18 +138,18 @@ PewterCityYoungsterText1:
 	done
 
 PewterCityYoungsterText2:
-	ctxt "You beat the Gym?"
+	text "You beat the Gym?"
 	line "Then you're tough"
 	cont "as rock too!"
 	done
 
 PewterCitySignText:
-	ctxt "Pewter City"
+	text "Pewter City"
 	line "A Stone Gray City"
 	done
 
 PewterGymSignText:
-	ctxt "Pewter City"
+	text "Pewter City"
 	line "#mon Gym"
 	cont "Leader: Brock"
 
@@ -158,12 +158,12 @@ PewterGymSignText:
 	done
 
 PewterMuseumOfScienceSignText:
-	ctxt "Pewter Museum of"
+	text "Pewter Museum of"
 	line "Science"
 	done
 
 PewterCityMtMoonGiftShopSignText:
-	ctxt "There's a notice"
+	text "There's a notice"
 	line "here…"
 
 	para "Mt.Moon Gift Shop"
@@ -171,7 +171,7 @@ PewterCityMtMoonGiftShopSignText:
 	done
 
 PewterCityTrainerTipsText:
-	ctxt "Trainer Tips"
+	text "Trainer Tips"
 
 	para "A #mon holding"
 	line "an Ability Cap"

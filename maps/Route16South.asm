@@ -40,22 +40,22 @@ OfficerfJamieScript:
 	endtext
 
 OfficerfJamieSeenText:
-	ctxt "Hey you! Are you"
+	text "Hey you! Are you"
 	line "causing trouble?"
 	done
 
 OfficerfJamieBeatenText:
-	ctxt "Hmph!"
+	text "Hmph!"
 	done
 
 OfficerfJamieAfterText:
-	ctxt "Riding around late"
+	text "Riding around late"
 	line "at night just"
 	cont "looks suspicious."
 	done
 
 OfficerfJamieDaytimeText:
-	ctxt "Bikers and"
+	text "Bikers and"
 	line "Roughnecks like"
 
 	para "to make trouble"
@@ -66,7 +66,7 @@ OfficerfJamieDaytimeText:
 	done
 
 CyclingRoadSignText:
-	ctxt "Cycling Road"
+	text "Cycling Road"
 
 	para "Downhill coasting"
 	line "all the way!"

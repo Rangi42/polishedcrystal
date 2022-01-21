@@ -74,7 +74,7 @@ Copycat1Script:
 	sjump CopycatFinalScript
 
 .Greeting1Text:
-	ctxt "<PLAYER>: Hi! Do"
+	text "<PLAYER>: Hi! Do"
 	line "you like #mon?"
 
 	para "<PLAYER>: Uh, no, I"
@@ -85,7 +85,7 @@ Copycat1Script:
 	done
 
 .LostDoll1Text:
-	ctxt "<PLAYER>: Hi!"
+	text "<PLAYER>: Hi!"
 	line "I heard that you"
 
 	para "lost your favorite"
@@ -104,7 +104,7 @@ Copycat1Script:
 	done
 
 .Thanks1Text:
-	ctxt "<PLAYER>: Hi!"
+	text "<PLAYER>: Hi!"
 	line "Thanks a lot for"
 	cont "the rail pass!"
 
@@ -152,7 +152,7 @@ Copycat2Script:
 	sjump CopycatFinalScript
 
 .Greeting2Text:
-	ctxt "<PLAYER>: Hi. You"
+	text "<PLAYER>: Hi. You"
 	line "must like #mon."
 
 	para "<PLAYER>: No, not"
@@ -163,7 +163,7 @@ Copycat2Script:
 	done
 
 .LostDoll2Text:
-	ctxt "<PLAYER>: Hi. Did"
+	text "<PLAYER>: Hi. Did"
 	line "you really lose"
 	cont "your # Doll?"
 
@@ -182,7 +182,7 @@ Copycat2Script:
 	done
 
 .Thanks2Text:
-	ctxt "<PLAYER>: Thank you"
+	text "<PLAYER>: Thank you"
 	line "for the rail pass!"
 
 	para "<PLAYER>: …Pardon?"
@@ -201,7 +201,7 @@ CopycatRetortScript:
 	special RefreshSprites
 	jumpthistext
 
-	ctxt "Copycat: Hmm?"
+	text "Copycat: Hmm?"
 	line "Quit mimicking?"
 
 	para "But that's my"
@@ -217,7 +217,7 @@ CopycatWorriedScript:
 	setevent EVENT_MET_COPYCAT_FOUND_OUT_ABOUT_LOST_ITEM
 	jumpthistext
 
-	ctxt "Copycat: Pardon?"
+	text "Copycat: Pardon?"
 
 	para "I shouldn't decide"
 	line "what you should"
@@ -238,7 +238,7 @@ CopycatFoundLostItemScript:
 	sjump CopycatGivePassScript
 
 .FoundDollText:
-	ctxt "Copycat: Yay!"
+	text "Copycat: Yay!"
 	line "That's my Clefairy"
 	cont "# Doll!"
 
@@ -259,7 +259,7 @@ CopycatGivePassScript:
 	setevent EVENT_GOT_PASS_FROM_COPYCAT
 	jumpthisopenedtext
 
-	ctxt "Copycat: That's"
+	text "Copycat: That's"
 	line "the pass for the"
 	cont "Magnet Train."
 
@@ -272,7 +272,7 @@ CopycatGivePassScript:
 	done
 
 .GivePassText:
-	ctxt "OK. Here's the"
+	text "OK. Here's the"
 	line "Magnet Train Pass"
 	cont "like I promised!"
 	done
@@ -285,7 +285,7 @@ CopycatFinalScript:
 	special RefreshSprites
 	jumpthistext
 
-	ctxt "Copycat: You bet!"
+	text "Copycat: You bet!"
 	line "It's a scream!"
 	done
 
@@ -306,7 +306,7 @@ CopycatsDodrioScript:
 	promptbutton
 	jumpthisopenedtext
 
-	ctxt "Mirror, mirror on"
+	text "Mirror, mirror on"
 	line "the wall, who's"
 
 	para "the fairest one of"
@@ -314,18 +314,18 @@ CopycatsDodrioScript:
 	done
 
 .Text1:
-	ctxt "Dodrio: Gii giii!"
+	text "Dodrio: Gii giii!"
 	done
 
 CopycatsHouse2FDollScript:
 	jumpthistext
 
-	ctxt "This is a rare"
+	text "This is a rare"
 	line "#mon! Huh?"
 
 	para "It's only a doll…"
 	done
 
 CopycatsHouse2FDittoText:
-	ctxt "Ditto: Dii…"
+	text "Ditto: Dii…"
 	done

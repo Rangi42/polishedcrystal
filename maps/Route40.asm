@@ -44,7 +44,7 @@ MonicaCallback:
 GenericTrainerSwimmerfElaine:
 	generictrainer SWIMMERF, ELAINE, EVENT_BEAT_SWIMMERF_ELAINE, SwimmerfElaineSeenText, SwimmerfElaineBeatenText
 
-	ctxt "I'd say I'm a bet-"
+	text "I'd say I'm a bet-"
 	line "ter swimmer than"
 	cont "you. Yeah!"
 	done
@@ -52,7 +52,7 @@ GenericTrainerSwimmerfElaine:
 GenericTrainerSwimmerfPaula:
 	generictrainer SWIMMERF, PAULA, EVENT_BEAT_SWIMMERF_PAULA, SwimmerfPaulaSeenText, SwimmerfPaulaBeatenText
 
-	ctxt "While I float like"
+	text "While I float like"
 	line "this, the waves"
 	cont "carry me along."
 	done
@@ -60,7 +60,7 @@ GenericTrainerSwimmerfPaula:
 GenericTrainerSwimmermSimon:
 	generictrainer SWIMMERM, SIMON, EVENT_BEAT_SWIMMERM_SIMON, SwimmermSimonSeenText, SwimmermSimonBeatenText
 
-	ctxt "Cianwood City is"
+	text "Cianwood City is"
 	line "a good distance"
 	cont "away from here."
 	done
@@ -68,7 +68,7 @@ GenericTrainerSwimmermSimon:
 GenericTrainerSwimmermRandall:
 	generictrainer SWIMMERM, RANDALL, EVENT_BEAT_SWIMMERM_RANDALL, SwimmermRandallSeenText, SwimmermRandallBeatenText
 
-	ctxt "Swimming exercises"
+	text "Swimming exercises"
 	line "your entire body."
 	cont "It's healthy."
 	done
@@ -104,12 +104,12 @@ Route40FisherScript:
 .TutorRefused
 	jumpthisopenedtext
 
-	ctxt "I'll find something"
+	text "I'll find something"
 	line "else to do…"
 	done
 
 .IntroText:
-	ctxt "I was fishing when"
+	text "I was fishing when"
 	line "some #mon leap-"
 	cont "ed up and knocked"
 
@@ -125,7 +125,7 @@ Route40FisherScript:
 	done
 
 .QuestionText:
-	ctxt "You give me a"
+	text "You give me a"
 	line "Silver Leaf and"
 
 	para "I'll teach your"
@@ -138,7 +138,7 @@ Route40FisherScript:
 	waitbutton
 	jumpthisopenedtext
 
-	ctxt "No Leaf, no move."
+	text "No Leaf, no move."
 	line "My time isn't free."
 	done
 
@@ -146,7 +146,7 @@ Route40FisherScript:
 	takeitem SILVER_LEAF
 	jumpthisopenedtext
 
-	ctxt "Knock Off knocks"
+	text "Knock Off knocks"
 	line "a held item away"
 
 	para "so it can't be used"
@@ -183,7 +183,7 @@ MonicaDoneScript:
 	end
 
 SwimmermSimonSeenText:
-	ctxt "You have to warm"
+	text "You have to warm"
 	line "up before going"
 	cont "into the water."
 
@@ -191,11 +191,11 @@ SwimmermSimonSeenText:
 	done
 
 SwimmermSimonBeatenText:
-	ctxt "OK! Uncle! I give!"
+	text "OK! Uncle! I give!"
 	done
 
 SwimmermRandallSeenText:
-	ctxt "Hey, you're young"
+	text "Hey, you're young"
 	line "and fit!"
 
 	para "Don't ride your"
@@ -203,11 +203,11 @@ SwimmermRandallSeenText:
 	done
 
 SwimmermRandallBeatenText:
-	ctxt "Uh-oh. I lost…"
+	text "Uh-oh. I lost…"
 	done
 
 SwimmerfElaineSeenText:
-	ctxt "Are you going to"
+	text "Are you going to"
 	line "Cianwood?"
 
 	para "How about a quick"
@@ -215,11 +215,11 @@ SwimmerfElaineSeenText:
 	done
 
 SwimmerfElaineBeatenText:
-	ctxt "I lost that one!"
+	text "I lost that one!"
 	done
 
 SwimmerfPaulaSeenText:
-	ctxt "No inner tube for"
+	text "No inner tube for"
 	line "me."
 
 	para "I'm hanging on to"
@@ -227,12 +227,12 @@ SwimmerfPaulaSeenText:
 	done
 
 SwimmerfPaulaBeatenText:
-	ctxt "Ooh, I'm feeling"
+	text "Ooh, I'm feeling"
 	line "dizzy!"
 	done
 
 Route40Lass1Text:
-	ctxt "Although you can't"
+	text "Although you can't"
 	line "see it from here,"
 
 	para "Cianwood is across"
@@ -240,14 +240,14 @@ Route40Lass1Text:
 	done
 
 Route40PokefanMText:
-	ctxt "Hm! There's a big"
+	text "Hm! There's a big"
 	line "building up ahead!"
 
 	para "What is it?"
 	done
 
 Route40PokefanMText2:
-	ctxt "Hm! Look at all"
+	text "Hm! Look at all"
 	line "those serious-"
 	cont "looking trainers"
 	cont "streaming in."
@@ -256,7 +256,7 @@ Route40PokefanMText2:
 	done
 
 Route40Lass2Text:
-	ctxt "I came to Olivine"
+	text "I came to Olivine"
 	line "by ship to see the"
 
 	para "sights and soak up"
@@ -268,7 +268,7 @@ Route40Lass2Text:
 	done
 
 Route40YoungsterText:
-	ctxt "The Battle Tower"
+	text "The Battle Tower"
 	line "is almost ready!"
 
 	para "Trainers are head-"
@@ -280,7 +280,7 @@ Route40YoungsterText:
 	done
 
 Route40StandingYoungsterText:
-	ctxt "Have you gone to"
+	text "Have you gone to"
 	line "the Battle Tower?"
 
 	para "I think a lot of"
@@ -297,20 +297,20 @@ Route40StandingYoungsterText:
 	done
 
 MeetMonicaText:
-	ctxt "Monica: Glad to"
+	text "Monica: Glad to"
 	line "meet you. I'm"
 
 	para "Monica of Monday."
 	done
 
 MonicaGivesGiftText:
-	ctxt "As a token of our"
+	text "As a token of our"
 	line "friendship, I have"
 	cont "a gift for you!"
 	done
 
 MonicaGaveGiftText:
-	ctxt "Monica: It's an"
+	text "Monica: It's an"
 	line "item that raises"
 
 	para "the power of Fly-"
@@ -322,7 +322,7 @@ MonicaGaveGiftText:
 	done
 
 MonicaMondayText:
-	ctxt "Monica: My broth-"
+	text "Monica: My broth-"
 	line "ers and sisters"
 
 	para "are all over the"
@@ -333,13 +333,13 @@ MonicaMondayText:
 	done
 
 MonicaNotMondayText:
-	ctxt "Monica: I don't"
+	text "Monica: I don't"
 	line "think today is"
 	cont "Monday. How sad…"
 	done
 
 Route40SignText:
-	ctxt "Route 40"
+	text "Route 40"
 
 	para "Cianwood City -"
 	line "Olivine City"

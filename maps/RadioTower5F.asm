@@ -65,7 +65,7 @@ Petrel1Script:
 GenericTrainerAriana1:
 	generictrainer ARIANA, ARIANA1, EVENT_BEAT_ARIANA_1, Ariana1SeenText, Ariana1BeatenText
 
-	ctxt "<PLAYER>, isn't it?"
+	text "<PLAYER>, isn't it?"
 
 	para "A brat like you"
 	line "won't appreciate"
@@ -188,12 +188,12 @@ RadioTower5FPlayerTwoStepsLeftMovement:
 	step_end
 
 FakeDirectorTextBefore1:
-	ctxt "Y-you! You came to"
+	text "Y-you! You came to"
 	line "rescue me?"
 	done
 
 FakeDirectorTextBefore2:
-	ctxt "Is that what you"
+	text "Is that what you"
 	line "were expecting?"
 
 	para "Wrong!"
@@ -201,7 +201,7 @@ FakeDirectorTextBefore2:
 	done
 
 FakeDirectorTextBefore3:
-	ctxt "I pretended to be"
+	text "I pretended to be"
 	line "the real thing to"
 
 	para "prepare for our"
@@ -217,12 +217,12 @@ FakeDirectorTextBefore3:
 	done
 
 FakeDirectorWinText:
-	ctxt "OK, OK. I'll tell"
+	text "OK, OK. I'll tell"
 	line "you where he is."
 	done
 
 FakeDirectorTextAfter:
-	ctxt "We stashed the"
+	text "We stashed the"
 	line "real Director in"
 
 	para "the Underground"
@@ -237,7 +237,7 @@ FakeDirectorTextAfter:
 	done
 
 Ariana1SeenText:
-	ctxt "Remember me from"
+	text "Remember me from"
 	line "the hideout in"
 	cont "Mahogany Town?"
 
@@ -246,7 +246,7 @@ Ariana1SeenText:
 	done
 
 Ariana1BeatenText:
-	ctxt "This can't be"
+	text "This can't be"
 	line "happening!"
 
 	para "I fought hard, but"
@@ -254,7 +254,7 @@ Ariana1BeatenText:
 	done
 
 RadioTower5FRocketBossBeforeText:
-	ctxt "Oh? You managed to"
+	text "Oh? You managed to"
 	line "get this far?"
 
 	para "You must be quite"
@@ -283,12 +283,12 @@ RadioTower5FRocketBossBeforeText:
 	done
 
 RadioTower5FRocketBossWinText:
-	ctxt "No! Forgive me,"
+	text "No! Forgive me,"
 	line "Giovanni!"
 	done
 
 RadioTower5FRocketBossAfterText:
-	ctxt "How could this be?"
+	text "How could this be?"
 
 	para "Our dreams have"
 	line "come to naught."
@@ -306,7 +306,7 @@ RadioTower5FRocketBossAfterText:
 	done
 
 RadioTower5FDirectorThankYouText:
-	ctxt "Director: <PLAYER>,"
+	text "Director: <PLAYER>,"
 	line "thank you!"
 
 	para "Your courageous"
@@ -321,7 +321,7 @@ RadioTower5FDirectorThankYouText:
 	done
 
 RadioTower5FDirectorDescribeClearBellText:
-	ctxt "There used to be a"
+	text "There used to be a"
 	line "tower right here"
 	cont "in Goldenrod City."
 
@@ -372,7 +372,7 @@ RadioTower5FDirectorDescribeClearBellText:
 	done
 
 RadioTower5FDirectorText:
-	ctxt "Director: Hello,"
+	text "Director: Hello,"
 	line "<PLAYER>!"
 
 	para "You know, I love"
@@ -390,15 +390,15 @@ RadioTower5FDirectorText:
 	done
 
 BenText:
-	ctxt "Ben: Do you listen"
+	text "Ben: Do you listen"
 	line "to our music?"
 	done
 
 SignpostRadioTower5FOffice:
-	ctxt "5F Director's"
+	text "5F Director's"
 	line "   Office"
 	done
 
 SignpostRadioTower5FStudio:
-	ctxt "5F Studio 1"
+	text "5F Studio 1"
 	done

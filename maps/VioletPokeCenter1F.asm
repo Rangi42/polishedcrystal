@@ -27,7 +27,7 @@ PokemonJournalFalknerScript:
 	setflag ENGINE_READ_FALKNER_JOURNAL
 	jumpthistext
 
-	ctxt "#mon Journal"
+	text "#mon Journal"
 
 	para "Special Feature:"
 	line "Leader Falkner!"
@@ -78,7 +78,7 @@ VioletPokeCenter1FElmsAideScript:
 	end
 
 .PartyAndBoxFull:
-	ctxt "Oh, no. You can't"
+	text "Oh, no. You can't"
 	line "carry any more"
 	cont "#mon with you."
 
@@ -94,12 +94,12 @@ VioletPokeCenter1FElmsAideScript:
 	setevent EVENT_REFUSED_TO_TAKE_EGG_FROM_ELMS_AIDE
 	jumpthisopenedtext
 
-	ctxt "B-but… Prof.Elm"
+	text "B-but… Prof.Elm"
 	line "asked for you…"
 	done
 
 .IntroText:
-	ctxt "<PLAYER>, long"
+	text "<PLAYER>, long"
 	line "time, no see."
 
 	para "I was browsing the"
@@ -118,12 +118,12 @@ VioletPokeCenter1FElmsAideScript:
 	done
 
 .QuestionText:
-	ctxt "<PLAYER>, will you"
+	text "<PLAYER>, will you"
 	line "take the Egg?"
 	done
 
 .GoodbyeText:
-	ctxt "We discovered that"
+	text "We discovered that"
 	line "a #mon will not"
 
 	para "hatch until it"
@@ -164,13 +164,13 @@ VioletPokeCenter1FElmsAideScript:
 	step_end
 
 VioletPokeCenter1FGameboyKidText:
-	ctxt "A guy named Bill"
+	text "A guy named Bill"
 	line "made the #mon"
 	cont "PC storage system."
 	done
 
 VioletPokeCenter1FGentlemanText:
-	ctxt "It was around"
+	text "It was around"
 	line "three years ago."
 
 	para "Team Rocket was up"
@@ -183,7 +183,7 @@ VioletPokeCenter1FGentlemanText:
 	done
 
 VioletPokeCenter1FYoungsterText:
-	ctxt "#mon are smart."
+	text "#mon are smart."
 	line "They won't obey a"
 
 	para "trainer they don't"

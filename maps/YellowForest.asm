@@ -93,7 +93,7 @@ YellowForest_FinishBridge:
 GenericTrainerSchoolgirlSarah:
 	generictrainer SCHOOLGIRL, SARAH, EVENT_BEAT_SCHOOLGIRL_SARAH, SchoolgirlSarahSeenText, SchoolgirlSarahBeatenText
 
-	ctxt "If we were at my"
+	text "If we were at my"
 	line "school, I'd have"
 	cont "beaten you!"
 	done
@@ -101,7 +101,7 @@ GenericTrainerSchoolgirlSarah:
 GenericTrainerSchoolgirlIsabel:
 	generictrainer SCHOOLGIRL, ISABEL, EVENT_BEAT_SCHOOLGIRL_ISABEL, SchoolgirlIsabelSeenText, SchoolgirlIsabelBeatenText
 
-	ctxt "We're learning"
+	text "We're learning"
 	line "about how #mon"
 
 	para "thrive together"
@@ -111,7 +111,7 @@ GenericTrainerSchoolgirlIsabel:
 GenericTrainerTeacherKathryn:
 	generictrainer TEACHER, KATHRYN, EVENT_BEAT_TEACHER_KATHRYN, TeacherKathrynSeenText, TeacherKathrynBeatenText
 
-	ctxt "Keeping an eye on"
+	text "Keeping an eye on"
 	line "everyone during a"
 
 	para "field trip is"
@@ -121,7 +121,7 @@ GenericTrainerTeacherKathryn:
 GenericTrainerBreederSophie:
 	generictrainer BREEDER, SOPHIE, EVENT_BEAT_BREEDER_SOPHIE, BreederSophieSeenText, BreederSophieBeatenText
 
-	ctxt "Sometimes Pikachu"
+	text "Sometimes Pikachu"
 	line "use their electric"
 
 	para "shocks to revive"
@@ -249,28 +249,28 @@ YellowForestSurfPikachuDoll:
 	jumpopenedtext YellowForestSurfPikachuDollSentText
 
 SchoolgirlSarahSeenText:
-	ctxt "Ooh, a trainer!"
+	text "Ooh, a trainer!"
 	line "I want to battle!"
 	done
 
 SchoolgirlSarahBeatenText:
-	ctxt "Sniff…"
+	text "Sniff…"
 	line "You made me lose!"
 	done
 
 SchoolgirlIsabelSeenText:
-	ctxt "Do you have cute"
+	text "Do you have cute"
 	line "#mon like the"
 	cont "ones here?"
 	done
 
 SchoolgirlIsabelBeatenText:
-	ctxt "You have really"
+	text "You have really"
 	line "strong #mon!"
 	done
 
 TeacherKathrynSeenText:
-	ctxt "You there!"
+	text "You there!"
 	line "You're a trainer?"
 
 	para "You had better not"
@@ -279,22 +279,22 @@ TeacherKathrynSeenText:
 	done
 
 TeacherKathrynBeatenText:
-	ctxt "I won't let this"
+	text "I won't let this"
 	line "make me cry…"
 	done
 
 BreederSophieSeenText:
-	ctxt "Did you know that"
+	text "Did you know that"
 	line "Pikachu is an"
 	cont "evolved #mon?"
 	done
 
 BreederSophieBeatenText:
-	ctxt "I thought so!"
+	text "I thought so!"
 	done
 
 YellowForestWalkerSeenText:
-	ctxt "Hello there!"
+	text "Hello there!"
 	line "The name's Walker."
 
 	para "I was once the Gym"
@@ -328,12 +328,12 @@ YellowForestWalkerSeenText:
 	done
 
 YellowForestWalkerBeatenText:
-	ctxt "My bird #mon…"
+	text "My bird #mon…"
 	line "Taken down!"
 	done
 
 YellowForestWalkerAfterText:
-	ctxt "Walker: Well, I"
+	text "Walker: Well, I"
 	line "can see why you"
 
 	para "won against"
@@ -348,7 +348,7 @@ YellowForestWalkerAfterText:
 	done
 
 YellowForestWalkerFinalText:
-	ctxt "Walker: Bird"
+	text "Walker: Bird"
 	line "#mon soar"
 
 	para "through the sky"
@@ -371,12 +371,12 @@ YellowForestWalkerFinalText:
 	done
 
 YellowForestWalkerFlyText:
-	ctxt "Skarmory,"
+	text "Skarmory,"
 	line "let's Fly!"
 	done
 
 YellowForestYellowGreetingText:
-	ctxt "Yellow: Hi!"
+	text "Yellow: Hi!"
 	line "I'm Yellow!"
 
 	para "This forest full"
@@ -410,12 +410,12 @@ YellowForestYellowGreetingText:
 	done
 
 YellowForestYellowWinLossText:
-	ctxt "Haha! What a"
+	text "Haha! What a"
 	line "battle!"
 	done
 
 YellowForestYellowAfterText:
-	ctxt "Yellow: Wow!"
+	text "Yellow: Wow!"
 	line "You really are a"
 
 	para "good trainer."
@@ -426,7 +426,7 @@ YellowForestYellowAfterText:
 	done
 
 YellowForestYellowGoodbyeText:
-	ctxt "Yellow: Give that"
+	text "Yellow: Give that"
 	line "Light Ball to a"
 
 	para "Pikachu to raise"
@@ -434,7 +434,7 @@ YellowForestYellowGoodbyeText:
 	done
 
 YellowForestCooltrainerMText:
-	ctxt "Seeds are surpris-"
+	text "Seeds are surpris-"
 	line "ingly powerful."
 
 	para "Over many years,"
@@ -449,7 +449,7 @@ YellowForestCooltrainerMText:
 	done
 
 Text_YellowForestTutorSeedBomb:
-	ctxt "I can teach your"
+	text "I can teach your"
 	line "#mon how to"
 
 	para "use Seed Bomb"
@@ -457,29 +457,29 @@ Text_YellowForestTutorSeedBomb:
 	done
 
 Text_YellowForestTutorNoSilverLeaf:
-	ctxt "Aw, you don't have"
+	text "Aw, you don't have"
 	line "a Silver Leaf."
 	done
 
 Text_YellowForestTutorQuestion:
-	ctxt "Should I teach"
+	text "Should I teach"
 	line "your #mon"
 	cont "Seed Bomb?"
 	done
 
 Text_YellowForestTutorRefused:
-	ctxt "Talk to me if you"
+	text "Talk to me if you"
 	line "change your mind!"
 	done
 
 Text_YellowForestTutorTaught:
-	ctxt "Now your #mon"
+	text "Now your #mon"
 	line "knows how to use"
 	cont "Seed Bomb!"
 	done
 
 YellowForestSuperNerdText:
-	ctxt "There's a protein"
+	text "There's a protein"
 	line "in your body"
 	cont "called pikachurin."
 
@@ -491,11 +491,11 @@ YellowForestSuperNerdText:
 	done
 
 YellowForestSurfPikachuDollText:
-	ctxt "<PLAYER> found"
+	text "<PLAYER> found"
 	line "Surf Pikachu Doll."
 	done
 
 YellowForestSurfPikachuDollSentText:
-	ctxt "Surf Pikachu Doll"
+	text "Surf Pikachu Doll"
 	line "was sent home."
 	done

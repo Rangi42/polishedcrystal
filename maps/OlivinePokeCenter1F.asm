@@ -27,7 +27,7 @@ PokemonJournalJasmineScript:
 	setflag ENGINE_READ_JASMINE_JOURNAL
 	jumpthistext
 
-	ctxt "#mon Journal"
+	text "#mon Journal"
 
 	para "Special Feature:"
 	line "Leader Jasmine!"
@@ -60,13 +60,13 @@ BeautyCharlotteScript:
 	jumpthistext
 
 .AfterText:
-	ctxt "How cool is it"
+	text "How cool is it"
 	line "to have such a"
 	cont "special #mon?"
 	done
 
 .GreetingText:
-	ctxt "Oh, are you a"
+	text "Oh, are you a"
 	line "trainer?"
 
 	para "You came at just"
@@ -84,7 +84,7 @@ BeautyCharlotteScript:
 	done
 
 .NoBattleText:
-	ctxt "Oh, really? Talk"
+	text "Oh, really? Talk"
 	line "to me if you want"
 
 	para "to battle some"
@@ -92,16 +92,16 @@ BeautyCharlotteScript:
 	done
 
 .SeenText:
-	ctxt "All right!"
+	text "All right!"
 	line "Here I come!"
 	done
 
 .BeatenText:
-	ctxt "Amazing battle!"
+	text "Amazing battle!"
 	done
 
 OlivinePokeCenter1FFisherText:
-	ctxt "There's this guy in"
+	text "There's this guy in"
 	line "Cianwood City who"
 	cont "looks weak, but he"
 
@@ -113,7 +113,7 @@ OlivinePokeCenter1FFisherText:
 	done
 
 OlivinePokeCenter1FTeacherText:
-	ctxt "There's a person"
+	text "There's a person"
 	line "in Cianwood City"
 	cont "across the sea."
 

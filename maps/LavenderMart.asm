@@ -17,7 +17,7 @@ LavenderMart_MapScriptHeader:
 	object_event  9,  2, SPRITE_ROCKER, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_COMMAND, jumptextfaceplayer, LavenderMartRockerText, -1
 
 LavenderMartPokefanMText:
-	ctxt "Repel is a neces-"
+	text "Repel is a neces-"
 	line "sity if you are"
 
 	para "going to explore a"
@@ -31,7 +31,7 @@ LavenderMartPokefanMText:
 	done
 
 LavenderMartRockerText:
-	ctxt "I heard about a"
+	text "I heard about a"
 	line "craftsman who"
 
 	para "makes custom Balls"

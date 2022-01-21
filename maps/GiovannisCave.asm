@@ -99,13 +99,13 @@ GiovannisCaveRadioScript:
 	jumptext GiovannisCaveRadioAfterTimeTravelText
 
 GiovannisCaveRadioText:
-	ctxt "There is a radio"
+	text "There is a radio"
 	line "that no longer"
 	cont "works…"
 	done
 
 GiovannisCaveRadioAfterTimeTravelText:
-	ctxt "You cannot turn on"
+	text "You cannot turn on"
 	line "the radio."
 
 	para "Giovanni must have"
@@ -154,7 +154,7 @@ GiovannisCave_CelebiFloatsMovementData:
 	step_end
 
 GiovannisCaveGiovanniIntroText:
-	ctxt "…"
+	text "…"
 
 	para "I don't know why"
 	line "you came here,"
@@ -172,7 +172,7 @@ GiovannisCaveGiovanniIntroText:
 	done
 
 GiovannisCaveGiovanniMemoriesText:
-	ctxt "You have a certain"
+	text "You have a certain"
 	line "look…"
 
 	para "I remember you!"
@@ -199,13 +199,13 @@ GiovannisCaveGiovanniMemoriesText:
 	done
 
 GiovannisCaveLyraQuestionsText:
-	ctxt "Lyra: Three years"
+	text "Lyra: Three years"
 	line "ago…? Goldenrod"
 	cont "City…?"
 	done
 
 GiovannisCaveLyraRecognizesGiovanniText:
-	ctxt "This is who Team"
+	text "This is who Team"
 	line "Rocket was trying"
 	cont "to reach!"
 
@@ -218,7 +218,7 @@ GiovannisCaveLyraRecognizesGiovanniText:
 	done
 
 GiovannisCaveBroadcastText:
-	ctxt "“… …Ahem, we are"
+	text "“… …Ahem, we are"
 	line "Team Rocket!"
 	cont "After three years"
 	cont "of preparation, we"
@@ -240,7 +240,7 @@ GiovannisCaveBroadcastText:
 	done
 
 GiovannisCaveGiovanniIMustGoText:
-	ctxt "Giovanni: My old"
+	text "Giovanni: My old"
 	line "associates need"
 	cont "me…"
 
@@ -268,12 +268,12 @@ GiovannisCaveGiovanniIMustGoText:
 	done
 
 GiovannisCaveGiovanniBeatenText:
-	ctxt "What in the world"
+	text "What in the world"
 	line "are you?"
 	done
 
 GiovannisCaveGiovanniAfterText:
-	ctxt "Giovanni: How is"
+	text "Giovanni: How is"
 	line "this possible…?"
 
 	para "The past three"
@@ -288,7 +288,7 @@ GiovannisCaveGiovanniAfterText:
 	done
 
 GiovannisCaveBroadcastAfterText:
-	ctxt "“… …Hey! Where has"
+	text "“… …Hey! Where has"
 	line "Giovanni gone?"
 	cont "I wonder if he is"
 	cont "listening to our"
@@ -296,7 +296,7 @@ GiovannisCaveBroadcastAfterText:
 	done
 
 GiovannisCaveLyraFeelsSorryText:
-	ctxt "Lyra: They keep"
+	text "Lyra: They keep"
 	line "calling for their"
 	cont "boss."
 
@@ -310,7 +310,7 @@ GiovannisCaveLyraFeelsSorryText:
 	done
 
 GiovannisCaveLyraWantsToLeaveText:
-	ctxt "Lyra: Not again…!"
+	text "Lyra: Not again…!"
 	line "I've had enough!"
 
 	para "Please let us go"

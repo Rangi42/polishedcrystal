@@ -90,7 +90,7 @@ MountMoon1FTrigger0:
 GenericTrainerBugManiacKenta:
 	generictrainer BUG_MANIAC, KENTA, EVENT_BEAT_BUG_MANIAC_KENTA, BugManiacKentaSeenText, BugManiacKentaBeatenText
 
-	ctxt "Team Rocket used"
+	text "Team Rocket used"
 	line "to lurk around"
 	cont "here."
 
@@ -103,7 +103,7 @@ GenericTrainerBugManiacKenta:
 GenericTrainerLassMiriam:
 	generictrainer LASS, MIRIAM, EVENT_BEAT_LASS_MIRIAM, LassMiriamSeenText, LassMiriamBeatenText
 
-	ctxt "Mt.Moon is big,"
+	text "Mt.Moon is big,"
 	line "but you'll get"
 	cont "used to it soon."
 	done
@@ -111,7 +111,7 @@ GenericTrainerLassMiriam:
 GenericTrainerSuperNerdJovan:
 	generictrainer SUPER_NERD, JOVAN, EVENT_BEAT_SUPER_NERD_JOVAN, SuperNerdJovanSeenText, SuperNerdJovanBeatenText
 
-	ctxt "I have yet to find"
+	text "I have yet to find"
 	line "stronger #mon."
 
 	para "Where might they"
@@ -121,7 +121,7 @@ GenericTrainerSuperNerdJovan:
 GenericTrainerBugManiacRobby:
 	generictrainer BUG_MANIAC, ROBBY, EVENT_BEAT_BUG_MANIAC_ROBBY, BugManiacRobbySeenText, BugManiacRobbyBeatenText
 
-	ctxt "I used to only"
+	text "I used to only"
 	line "catch bug #mon"
 	cont "as a hobby,"
 
@@ -132,7 +132,7 @@ GenericTrainerBugManiacRobby:
 GenericTrainerLassIris:
 	generictrainer LASS, IRIS, EVENT_BEAT_LASS_IRIS, LassIrisSeenText, LassIrisBeatenText
 
-	ctxt "I come here every"
+	text "I come here every"
 	line "day just to catch"
 	cont "a Clefairy, but"
 
@@ -143,7 +143,7 @@ GenericTrainerLassIris:
 GenericTrainerHikerMarcos:
 	generictrainer HIKER, MARCOS, EVENT_BEAT_HIKER_MARCOS, HikerMarcosSeenText, HikerMarcosBeatenText
 
-	ctxt "A long time ago,"
+	text "A long time ago,"
 	line "I was beaten by a"
 	cont "kid just like you."
 	done
@@ -167,7 +167,7 @@ MountMoon1FSilverMovementAfter:
 	step_end
 
 MountMoonSilverTextBefore:
-	ctxt "…… …… ……"
+	text "…… …… ……"
 
 	para "It's been a while,"
 	line "<PLAYER>."
@@ -187,7 +187,7 @@ MountMoonSilverTextBefore:
 	done
 
 MountMoonSilverTextWin:
-	ctxt "…… …… ……"
+	text "…… …… ……"
 
 	para "I thought I raised"
 	line "my #mon to be"
@@ -200,7 +200,7 @@ MountMoonSilverTextWin:
 	done
 
 MountMoonSilverTextAfter:
-	ctxt "…… …… ……"
+	text "…… …… ……"
 
 	para "…You won, fair"
 	line "and square."
@@ -230,7 +230,7 @@ MountMoonSilverTextAfter:
 	done
 
 MountMoonSilverTextLoss:
-	ctxt "…… …… ……"
+	text "…… …… ……"
 
 	para "I've repaid my"
 	line "debt to you."
@@ -244,7 +244,7 @@ MountMoonSilverTextLoss:
 	done
 
 BugManiacKentaSeenText:
-	ctxt "I saw a red-haired"
+	text "I saw a red-haired"
 	line "boy training here."
 
 	para "Have you battled"
@@ -252,11 +252,11 @@ BugManiacKentaSeenText:
 	done
 
 BugManiacKentaBeatenText:
-	ctxt "You got me!"
+	text "You got me!"
 	done
 
 LassMiriamSeenText:
-	ctxt "When I was young-"
+	text "When I was young-"
 	line "er, I always used"
 
 	para "to get lost in"
@@ -264,21 +264,21 @@ LassMiriamSeenText:
 	done
 
 LassMiriamBeatenText:
-	ctxt "Oh! I lost it!"
+	text "Oh! I lost it!"
 	done
 
 SuperNerdJovanSeenText:
-	ctxt "What! Don't sneak"
+	text "What! Don't sneak"
 	line "up on me!"
 	done
 
 SuperNerdJovanBeatenText:
-	ctxt "My #mon"
+	text "My #mon"
 	line "won't do!"
 	done
 
 BugManiacRobbySeenText:
-	ctxt "You need to go"
+	text "You need to go"
 	line "through this cave"
 
 	para "to get to Cerulean"
@@ -286,22 +286,22 @@ BugManiacRobbySeenText:
 	done
 
 BugManiacRobbyBeatenText:
-	ctxt "I lost…"
+	text "I lost…"
 	done
 
 LassIrisSeenText:
-	ctxt "Have you seen a"
+	text "Have you seen a"
 	line "Clefairy?"
 
 	para "They're so cute!"
 	done
 
 LassIrisBeatenText:
-	ctxt "That was so fast…"
+	text "That was so fast…"
 	done
 
 HikerMarcosSeenText:
-	ctxt "Kids like you"
+	text "Kids like you"
 	line "shouldn't be"
 
 	para "wandering around"
@@ -309,7 +309,7 @@ HikerMarcosSeenText:
 	done
 
 HikerMarcosBeatenText:
-	ctxt "Woah!"
+	text "Woah!"
 	line "You're strong!"
 	done
 

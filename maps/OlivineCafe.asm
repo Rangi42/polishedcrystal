@@ -45,7 +45,7 @@ OlivineCafeStrengthSailorScript:
 	jumpthisopenedtext
 
 BakerChelsieAfterText:
-	ctxt "I always add vita-"
+	text "I always add vita-"
 	line "mins to my bread."
 
 	para "They make my #-"
@@ -80,7 +80,7 @@ OlivineCafeMovementData_LyraLeaves:
 	step_end
 
 OlivineCafeFishingGuruText:
-	ctxt "Olivine Café's"
+	text "Olivine Café's"
 	line "menu is chock full"
 
 	para "of hearty fare for"
@@ -88,7 +88,7 @@ OlivineCafeFishingGuruText:
 	done
 
 OlivineCafeSailorText:
-	ctxt "Whenever I roll"
+	text "Whenever I roll"
 	line "into this town, I"
 
 	para "always visit the"
@@ -102,7 +102,7 @@ OlivineCafeSailorText:
 	done
 
 BakerChelsieGreetingText:
-	ctxt "My #mon are on"
+	text "My #mon are on"
 	line "the rise!"
 
 	para "I raised them with"
@@ -114,24 +114,24 @@ BakerChelsieGreetingText:
 	done
 
 BakerChelsieSeenText:
-	ctxt "You'll see what my"
+	text "You'll see what my"
 	line "bread can do!"
 	done
 
 BakerChelsieBeatenText:
-	ctxt "You are strong."
+	text "You are strong."
 	line "Are you eating my"
 	cont "special bread?"
 	done
 
 BakerChelsieNoBattleText:
-	ctxt "My bread-raised"
+	text "My bread-raised"
 	line "#mon are un-"
 	cont "beatable!"
 	done
 
 OlivineCafeLyraText1:
-	ctxt "Lyra: Hi, <PLAYER>!"
+	text "Lyra: Hi, <PLAYER>!"
 	line "You should try the"
 
 	para "food here. It's"
@@ -149,7 +149,7 @@ OlivineCafeLyraText1:
 	done
 
 OlivineCafeLyraText2:
-	ctxt "Isn't it pretty?"
+	text "Isn't it pretty?"
 	line "And useful, too."
 
 	para "Well, I should"
@@ -166,7 +166,7 @@ OlivineCafeLyraText2:
 	done
 
 OlivineCafeOfficerText:
-	ctxt "I know it's cli-"
+	text "I know it's cli-"
 	line "ché, but I always"
 
 	para "come to this place"
@@ -176,7 +176,7 @@ OlivineCafeOfficerText:
 	done
 
 OlivineCafeYoungsterText:
-	ctxt "These doughnuts"
+	text "These doughnuts"
 	line "are great."
 
 	para "Jelly-filled ones"
@@ -188,7 +188,7 @@ OlivineCafeYoungsterText:
 	done
 
 OlivineCafeFisherText:
-	ctxt "I'd go for a run,"
+	text "I'd go for a run,"
 	line "but I wouldn't"
 
 	para "want to ruin my"

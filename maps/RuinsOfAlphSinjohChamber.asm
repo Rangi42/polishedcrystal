@@ -106,11 +106,11 @@ MovementData_WarpToSinjohRuins:
 	step_end
 
 RuinsofAlphSinjohChamberMystriText:
-	ctxt "The lead enters"
+	text "The lead enters"
 	line "the Mystri Stage"
 	cont "at last."
 	done
 
-RuinsofAlphSinjohChamberSurpriseText: ; ctxt > text
+RuinsofAlphSinjohChamberSurpriseText: ; text > text
 	text "…!"
 	done

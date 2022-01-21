@@ -16,7 +16,7 @@ CherrygroveEvolutionSpeechHouse_MapScriptHeader:
 	object_event  2,  5, SPRITE_SCHOOLBOY, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_COMMAND, jumptext, CherrygroveEvolutionSpeechHouseYoungsterText, -1
 
 CherrygroveEvolutionSpeechHouseYoungsterText:
-	ctxt "#mon gain expe-"
+	text "#mon gain expe-"
 	line "rience in battle"
 
 	para "and change their"
@@ -24,7 +24,7 @@ CherrygroveEvolutionSpeechHouseYoungsterText:
 	done
 
 CherrygroveEvolutionSpeechHouseLassText:
-	ctxt "#mon change?"
+	text "#mon change?"
 
 	para "I would be shocked"
 	line "if one did that!"

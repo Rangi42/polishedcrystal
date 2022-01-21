@@ -301,7 +301,7 @@ Route36CooltrainerfChiaraScript:
 	jumpthisopenedtext
 
 .AfterText2:
-	ctxt "With skill like"
+	text "With skill like"
 	line "yours, I'm not the"
 
 	para "only elite trainer"
@@ -310,7 +310,7 @@ Route36CooltrainerfChiaraScript:
 	done
 
 .IntroText:
-	ctxt "I saw how you woke"
+	text "I saw how you woke"
 	line "up that Sudowoodo."
 
 	para "You did great!"
@@ -330,7 +330,7 @@ Route36CooltrainerfChiaraScript:
 	done
 
 .QuestionText:
-	ctxt "So you beat every-"
+	text "So you beat every-"
 	line "one else in the"
 	cont "area."
 
@@ -346,23 +346,23 @@ Route36CooltrainerfChiaraScript:
 	done
 
 .RefusedText:
-	ctxt "Well, I'm ready"
+	text "Well, I'm ready"
 	line "when you are!"
 	done
 
 .SeenText:
-	ctxt "You won't last"
+	text "You won't last"
 	line "long against my"
 	cont "technique!"
 	done
 
 .BeatenText:
-	ctxt "I'm the one who"
+	text "I'm the one who"
 	line "didn't last?!"
 	done
 
 .AfterText1:
-	ctxt "You observed my"
+	text "You observed my"
 	line "technique and"
 	cont "countered it."
 
@@ -376,7 +376,7 @@ Route36CooltrainerfChiaraScript:
 GenericTrainerPsychicMark:
 	generictrainer PSYCHIC_T, MARK, EVENT_BEAT_PSYCHIC_MARK, PsychicMarkSeenText, PsychicMarkBeatenText
 
-	ctxt "I'd be strong if"
+	text "I'd be strong if"
 	line "only I could tell"
 
 	para "what my opponent"
@@ -386,7 +386,7 @@ GenericTrainerPsychicMark:
 GenericTrainerSchoolgirlMolly:
 	generictrainer SCHOOLGIRL, MOLLY, EVENT_BEAT_SCHOOLGIRL_MOLLY, SchoolgirlMollySeenText, SchoolgirlMollyBeatenText
 
-	ctxt "I still have a"
+	text "I still have a"
 	line "lot to learn."
 	done
 
@@ -459,17 +459,17 @@ Route36SuicuneMovement:
 	step_end
 
 UseSquirtbottleText:
-	ctxt "It's a weird tree."
+	text "It's a weird tree."
 	line "Use SquirtBottle?"
 	done
 
 UsedSquirtbottleText:
-	ctxt "<PLAYER> used the"
+	text "<PLAYER> used the"
 	line "SquirtBottle."
 	done
 
 SudowoodoAttackedText:
-	ctxt "The weird tree"
+	text "The weird tree"
 	line "doesn't like the"
 	cont "SquirtBottle!"
 
@@ -478,7 +478,7 @@ SudowoodoAttackedText:
 	done
 
 FloriaText1:
-	ctxt "I'm the Flower"
+	text "I'm the Flower"
 	line "Shop's Floria!"
 
 	para "Listen, listen!"
@@ -504,7 +504,7 @@ FloriaText1:
 	done
 
 FloriaText2:
-	ctxt "When I told my sis"
+	text "When I told my sis"
 	line "about the jiggly"
 
 	para "tree, she said"
@@ -518,7 +518,7 @@ FloriaText2:
 	done
 
 RockSmashGuyText1:
-	ctxt "Wa-hey!"
+	text "Wa-hey!"
 
 	para "I was going to"
 	line "snap that tree"
@@ -531,7 +531,7 @@ RockSmashGuyText1:
 	done
 
 RockSmashGuyText2:
-	ctxt "Did you clear that"
+	text "Did you clear that"
 	line "wretched tree?"
 
 	para "I'm impressed!"
@@ -540,7 +540,7 @@ RockSmashGuyText2:
 	done
 
 RockSmashGuyText3:
-	ctxt "That happens to be"
+	text "That happens to be"
 if DEF(FAITHFUL)
 	line "Rock Smash."
 else
@@ -563,7 +563,7 @@ endc
 	done
 
 Route36LassText_OddTree:
-	ctxt "An odd tree is"
+	text "An odd tree is"
 	line "blocking the way"
 	cont "to Goldenrod City."
 
@@ -575,7 +575,7 @@ Route36LassText_OddTree:
 	done
 
 Route36LassText_ClearedSudowoodo:
-	ctxt "That odd tree dis-"
+	text "That odd tree dis-"
 	line "appeared without a"
 	cont "trace."
 
@@ -584,37 +584,37 @@ Route36LassText_ClearedSudowoodo:
 	done
 
 PsychicMarkSeenText:
-	ctxt "I'm going to read"
+	text "I'm going to read"
 	line "your thoughts!"
 	done
 
 PsychicMarkBeatenText:
-	ctxt "I misread you!"
+	text "I misread you!"
 	done
 
 SchoolgirlMollySeenText:
-	ctxt "Mr.Earl taught me"
+	text "Mr.Earl taught me"
 	line "how to battle with"
 	cont "#mon!"
 	done
 
 SchoolgirlMollyBeatenText:
-	ctxt "My studying…"
+	text "My studying…"
 	done
 
 SchoolboyAlan1SeenText:
-	ctxt "Thanks to my stud-"
+	text "Thanks to my stud-"
 	line "ies, I'm ready for"
 	cont "any #mon!"
 	done
 
 SchoolboyAlan1BeatenText:
-	ctxt "Oops! Computation"
+	text "Oops! Computation"
 	line "error?"
 	done
 
 SchoolboyAlanBooksText:
-	ctxt "Darn. I study five"
+	text "Darn. I study five"
 	line "hours a day too."
 
 	para "There's more to"
@@ -623,7 +623,7 @@ SchoolboyAlanBooksText:
 	done
 
 MeetArthurText:
-	ctxt "Arthur: Who are"
+	text "Arthur: Who are"
 	line "you?"
 
 	para "I'm Arthur of"
@@ -631,12 +631,12 @@ MeetArthurText:
 	done
 
 ArthurGivesGiftText:
-	ctxt "Here. You can have"
+	text "Here. You can have"
 	line "this."
 	done
 
 ArthurGaveGiftText:
-	ctxt "Arthur: A #mon"
+	text "Arthur: A #mon"
 	line "that uses Rock-"
 
 	para "type moves should"
@@ -647,7 +647,7 @@ ArthurGaveGiftText:
 	done
 
 ArthurThursdayText:
-	ctxt "Arthur: I'm Arthur"
+	text "Arthur: I'm Arthur"
 	line "of Thursday. I'm"
 
 	para "the second son out"
@@ -655,22 +655,22 @@ ArthurThursdayText:
 	done
 
 ArthurNotThursdayText:
-	ctxt "Arthur: Today's"
+	text "Arthur: Today's"
 	line "not Thursday. How"
 	cont "disappointing."
 	done
 
 Route36SignText:
-	ctxt "Route 36"
+	text "Route 36"
 	done
 
 RuinsOfAlphNorthSignText:
-	ctxt "Ruins of Alph"
+	text "Ruins of Alph"
 	line "North Entrance"
 	done
 
 Route36TrainerTips1Text:
-	ctxt "Trainer Tips"
+	text "Trainer Tips"
 
 	para "#mon stats"
 	line "vary--even within"
@@ -687,7 +687,7 @@ Route36TrainerTips1Text:
 	done
 
 Route36TrainerTips2Text:
-	ctxt "Trainer Tips"
+	text "Trainer Tips"
 
 	para "Use Dig to return"
 	line "to the entrance of"

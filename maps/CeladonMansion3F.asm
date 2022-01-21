@@ -64,7 +64,7 @@ MapCeladonMansion3FSignpost3Script:
 	jumptext CeladonMansion3FReferenceMaterialText
 
 GameFreakGameDesignerText:
-	ctxt "Is that right?"
+	text "Is that right?"
 
 	para "I'm the Game"
 	line "Designer!"
@@ -75,7 +75,7 @@ GameFreakGameDesignerText:
 	done
 
 GameFreakGameDesignerCompletedPokedexText:
-	ctxt "Wow! Excellent!"
+	text "Wow! Excellent!"
 	line "You completed your"
 	cont "#dex!"
 
@@ -83,7 +83,7 @@ GameFreakGameDesignerCompletedPokedexText:
 	done
 
 GameFreakGameDesignerPauseForDiplomaText:
-	ctxt "To recognize your"
+	text "To recognize your"
 	line "achievement…"
 	cont "here you go!"
 
@@ -92,22 +92,22 @@ GameFreakGameDesignerPauseForDiplomaText:
 	done
 
 GameFreakGameDesignerGiveDiplomaText:
-	ctxt "<PLAYER> received"
+	text "<PLAYER> received"
 	line "Diploma!"
 	done
 
 GameFreakGameDesignerDiplomaSentText:
-	ctxt "Diploma"
+	text "Diploma"
 	line "was sent home."
 	done
 
 GameFreakGameDesignerAfterDiplomaText:
-	ctxt "You should go show"
+	text "You should go show"
 	line "that off!"
 	done
 
 GameFreakDesignerGaveDiplomaText:
-	ctxt "Congratulations"
+	text "Congratulations"
 	line "for completing"
 	cont "your #dex!"
 
@@ -116,14 +116,14 @@ GameFreakDesignerGaveDiplomaText:
 	done
 
 GameFreakGraphicArtistText:
-	ctxt "I'm the Graphic"
+	text "I'm the Graphic"
 	line "Artist."
 
 	para "I drew you!"
 	done
 
 GameFreakProgrammerText:
-	ctxt "Who, me? I'm the"
+	text "Who, me? I'm the"
 	line "Programmer."
 
 	para "Use the Wonder"
@@ -131,7 +131,7 @@ GameFreakProgrammerText:
 	done
 
 GameFreakCharacterDesignerText:
-	ctxt "Isn't Lyra"
+	text "Isn't Lyra"
 	line "adorable?"
 
 	para "Jasmine's pretty"
@@ -141,18 +141,18 @@ GameFreakCharacterDesignerText:
 	done
 
 CeladonMansion3FDevRoomSignText:
-	ctxt "GAME FREAK"
+	text "GAME FREAK"
 	line "Development Room"
 	done
 
 CeladonMansion3FDrawingText:
-	ctxt "It's a detailed"
+	text "It's a detailed"
 	line "drawing of a"
 	cont "pretty girl."
 	done
 
 CeladonMansion3FGameProgramText:
-	ctxt "It's the game"
+	text "It's the game"
 	line "program. Messing"
 
 	para "with it could put"
@@ -160,7 +160,7 @@ CeladonMansion3FGameProgramText:
 	done
 
 CeladonMansion3FReferenceMaterialText:
-	ctxt "It's crammed with"
+	text "It's crammed with"
 	line "reference materi-"
 	cont "als. There's even"
 	cont "a # Doll."

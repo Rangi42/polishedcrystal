@@ -22,7 +22,7 @@ PokemonJournalBlaineScript:
 	setflag ENGINE_READ_BLAINE_JOURNAL
 	jumpthistext
 
-	ctxt "#mon Journal"
+	text "#mon Journal"
 
 	para "Special Feature:"
 	line "Leader Blaine!"
@@ -36,7 +36,7 @@ PokemonJournalBlaineScript:
 	done
 
 CinnabarPokeCenter1FCooltrainerfText:
-	ctxt "Cinnabar Gym's"
+	text "Cinnabar Gym's"
 	line "Blaine apparently"
 
 	para "lives alone in the"
@@ -45,7 +45,7 @@ CinnabarPokeCenter1FCooltrainerfText:
 	done
 
 CinnabarPokeCenter1FFisherText:
-	ctxt "It's been a year"
+	text "It's been a year"
 	line "since the volcano"
 	cont "erupted."
 	done

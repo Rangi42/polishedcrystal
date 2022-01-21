@@ -399,7 +399,7 @@ IlexForestTutorHeadbuttScript:
 GenericTrainerBug_catcherWayne:
 	generictrainer BUG_CATCHER, WAYNE, EVENT_BEAT_BUG_CATCHER_WAYNE, Bug_catcherWayneSeenText, Bug_catcherWayneBeatenText
 
-	ctxt "A #mon I've"
+	text "A #mon I've"
 	line "never seen before"
 
 	para "fell out of the"
@@ -810,7 +810,7 @@ MovementData_IlexForestLyraLeaves:
 	step_end
 
 IlexForestApprenticeIntroText:
-	ctxt "Oh, man… My boss"
+	text "Oh, man… My boss"
 	line "is going to be"
 	cont "steaming…"
 
@@ -829,7 +829,7 @@ IlexForestApprenticeIntroText:
 	done
 
 IlexForestApprenticeAfterText:
-	ctxt "Wow! Thanks a"
+	text "Wow! Thanks a"
 	line "whole bunch!"
 
 	para "My boss's #mon"
@@ -839,16 +839,16 @@ IlexForestApprenticeAfterText:
 	done
 
 Text_ItsTheMissingPokemon:
-	ctxt "It's the missing"
+	text "It's the missing"
 	line "#mon!"
 	done
 
 Text_Kwaaaa:
-	ctxt "Farfetch'd: Kwaa!"
+	text "Farfetch'd: Kwaa!"
 	done
 
 Text_CharcoalMasterIntro:
-	ctxt "Ah! My Farfetch'd!"
+	text "Ah! My Farfetch'd!"
 
 	para "You found it for"
 	line "us, kid?"
@@ -869,7 +869,7 @@ Text_CharcoalMasterIntro:
 	done
 
 Text_CharcoalMasterOutro:
-	ctxt "That's the Cut HM."
+	text "That's the Cut HM."
 	line "Teach that to a"
 
 	para "#mon to clear"
@@ -883,7 +883,7 @@ Text_CharcoalMasterOutro:
 	done
 
 Text_CharcoalMasterTalkAfter:
-	ctxt "Do you want to"
+	text "Do you want to"
 	line "apprentice as a"
 
 	para "charcoal maker"
@@ -894,7 +894,7 @@ Text_CharcoalMasterTalkAfter:
 	done
 
 Text_HeadbuttIntro:
-	ctxt "What am I doing?"
+	text "What am I doing?"
 
 	para "I'm shaking trees"
 	line "using Headbutt."
@@ -904,7 +904,7 @@ Text_HeadbuttIntro:
 	done
 
 Text_IlexForestTutorHeadbutt:
-	ctxt "I can teach your"
+	text "I can teach your"
 	line "#mon to use"
 
 	para "Headbutt in ex-"
@@ -913,7 +913,7 @@ Text_IlexForestTutorHeadbutt:
 	done
 
 Text_IlexForestTutorNoSilverLeaf:
-	ctxt "Oh, but you don't"
+	text "Oh, but you don't"
 	line "have any Silver"
 	cont "Leaves."
 
@@ -925,30 +925,30 @@ Text_IlexForestTutorNoSilverLeaf:
 	done
 
 Text_IlexForestTutorQuestion:
-	ctxt "Should I teach"
+	text "Should I teach"
 	line "your #mon"
 	cont "Headbutt?"
 	done
 
 Text_IlexForestTutorRefused:
-	ctxt "Alright then."
+	text "Alright then."
 	done
 
 Text_IlexForestTutorTaught:
-	ctxt "Rattle trees with"
+	text "Rattle trees with"
 	line "Headbutt. Some-"
 	cont "times, sleeping"
 	cont "#mon fall out."
 	done
 
 Text_IlexForestLass:
-	ctxt "Did something"
+	text "Did something"
 	line "happen to the"
 	cont "forest's guardian?"
 	done
 
 Text_IlexForestMossRock:
-	ctxt "The rock is cover-"
+	text "The rock is cover-"
 	line "ed in moss."
 
 	para "It feels pleasant-"
@@ -956,7 +956,7 @@ Text_IlexForestMossRock:
 	done
 
 Text_IlexForestSignpost0:
-	ctxt "Ilex Forest is"
+	text "Ilex Forest is"
 	line "so overgrown with"
 
 	para "trees that you"
@@ -968,7 +968,7 @@ Text_IlexForestSignpost0:
 	done
 
 Text_IlexForestShrine:
-	ctxt "Ilex Forest"
+	text "Ilex Forest"
 	line "Shrine…"
 
 	para "It's in honor of"
@@ -977,7 +977,7 @@ Text_IlexForestShrine:
 	done
 
 Text_ShrineCelebiEvent:
-	ctxt "Ilex Forest"
+	text "Ilex Forest"
 	line "Shrine…"
 
 	para "It's in honor of"
@@ -997,12 +997,12 @@ Text_ShrineCelebiEvent:
 	done
 
 Text_InsertGSBall:
-	ctxt "<PLAYER> put in the"
+	text "<PLAYER> put in the"
 	line "GS Ball."
 	done
 
 Text_KurtCaughtCelebi:
-	ctxt "Whew, wasn't that"
+	text "Whew, wasn't that"
 	line "something!"
 
 	para "<PLAYER>, that was"
@@ -1029,12 +1029,12 @@ Text_KurtCaughtCelebi:
 	done
 
 Text_CelebiDancedBeautifully:
-	ctxt "Celebi danced"
+	text "Celebi danced"
 	line "beautifully!"
 	done
 
 Text_IlexForestLyraHello:
-	ctxt "Lyra: Hi, <PLAYER>."
+	text "Lyra: Hi, <PLAYER>."
 	line "Have you heard of"
 
 	para "the legend of the"
@@ -1048,12 +1048,12 @@ Text_IlexForestLyraHello:
 	done
 
 Text_IlexForestLyraWhatWasThat:
-	ctxt "Lyra: …"
+	text "Lyra: …"
 	line "What was that?"
 	done
 
 Text_IlexForestLyraWorried:
-	ctxt "Lyra: …<PLAYER>?"
+	text "Lyra: …<PLAYER>?"
 	line "You're really back?"
 
 	para "I missed you so"
@@ -1074,7 +1074,7 @@ Text_IlexForestLyraWorried:
 	done
 
 Text_IlexForestLyraArmorSuit:
-	ctxt "Lyra: What strange"
+	text "Lyra: What strange"
 	line "adventure did you"
 	cont "have by yourself?"
 
@@ -1084,7 +1084,7 @@ Text_IlexForestLyraArmorSuit:
 	done
 
 Text_IlexForestLyraGoodbye:
-	ctxt "Lyra: This sure"
+	text "Lyra: This sure"
 	line "was a bizarre day."
 
 	para "I'm exhausted, I"
@@ -1098,7 +1098,7 @@ Text_IlexForestLyraGoodbye:
 	done
 
 Bug_catcherWayneSeenText:
-	ctxt "Don't sneak up on"
+	text "Don't sneak up on"
 	line "me like that!"
 
 	para "You frightened a"
@@ -1106,7 +1106,7 @@ Bug_catcherWayneSeenText:
 	done
 
 Bug_catcherWayneBeatenText:
-	ctxt "I hadn't seen that"
+	text "I hadn't seen that"
 	line "#mon before…"
 	done
 

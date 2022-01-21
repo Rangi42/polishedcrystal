@@ -66,7 +66,7 @@ Route34IlexForestGateTeacherScript:
 	jumpthisopenedtext
 
 Route34IlexForestGateTeacher_GotSweetScent:
-	ctxt "It's False Swipe."
+	text "It's False Swipe."
 
 	para "Teach it to a"
 	line "special #mon."
@@ -83,7 +83,7 @@ Route34IlexForestGateTeacherReturnsMovement:
 	step_end
 
 Route34IlexForestGateTeacherText:
-	ctxt "Oh, honey. You're"
+	text "Oh, honey. You're"
 	line "making a #dex?"
 
 	para "It must be hard to"
@@ -95,7 +95,7 @@ Route34IlexForestGateTeacherText:
 	done
 
 Route34IlexForestGateTeacher_ForestIsRestless:
-	ctxt "Something's wrong"
+	text "Something's wrong"
 	line "in Ilex Forest…"
 
 	para "You should stay"
@@ -103,11 +103,11 @@ Route34IlexForestGateTeacher_ForestIsRestless:
 	done
 
 Route34IlexForestGateHeracrossText:
-	ctxt "Heracross: Cross!"
+	text "Heracross: Cross!"
 	done
 
 Route34IlexForestGateLassText:
-	ctxt "Did you see the"
+	text "Did you see the"
 	line "shrine honoring"
 	cont "the protector?"
 

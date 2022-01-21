@@ -19,7 +19,7 @@ Route18East_MapScriptHeader:
 GenericTrainerBird_keeperBoris:
 	generictrainer BIRD_KEEPER, BORIS, EVENT_BEAT_BIRD_KEEPER_BORIS, Bird_keeperBorisSeenText, Bird_keeperBorisBeatenText
 
-	ctxt "Since you're so"
+	text "Since you're so"
 	line "strong, it must be"
 	cont "fun to battle."
 	done
@@ -27,7 +27,7 @@ GenericTrainerBird_keeperBoris:
 GenericTrainerBird_keeperBob:
 	generictrainer BIRD_KEEPER, BOB, EVENT_BEAT_BIRD_KEEPER_BOB, Bird_keeperBobSeenText, Bird_keeperBobBeatenText
 
-	ctxt "If you don't have"
+	text "If you don't have"
 	line "a Bicycle, you're"
 
 	para "not allowed to use"
@@ -35,7 +35,7 @@ GenericTrainerBird_keeperBob:
 	done
 
 Bird_keeperBorisSeenText:
-	ctxt "If you're looking"
+	text "If you're looking"
 	line "for #mon, you"
 
 	para "have to look in"
@@ -43,21 +43,21 @@ Bird_keeperBorisSeenText:
 	done
 
 Bird_keeperBorisBeatenText:
-	ctxt "Ayieee!"
+	text "Ayieee!"
 	done
 
 Bird_keeperBobSeenText:
-	ctxt "Cycling Road is a"
+	text "Cycling Road is a"
 	line "quick shortcut to"
 	cont "Celadon."
 	done
 
 Bird_keeperBobBeatenText:
-	ctxt "…Whew!"
+	text "…Whew!"
 	done
 
 Route18SignText:
-	ctxt "Route 18"
+	text "Route 18"
 
 	para "Celadon City -"
 	line "Fuchsia City"

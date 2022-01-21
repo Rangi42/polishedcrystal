@@ -28,7 +28,7 @@ FastShipCabins_NNW_NNE_NE_MapScriptHeader:
 GenericTrainerPILooker:
 	generictrainer PI, LOOKER, EVENT_BEAT_PI_LOOKER, PILookerSeenText, PILookerBeatenText
 
-	ctxt "My code name,"
+	text "My code name,"
 	line "it is Looker."
 
 	para "It is what they"
@@ -47,7 +47,7 @@ GenericTrainerPILooker:
 GenericTrainerCooltrainermSean:
 	generictrainer COOLTRAINERM, SEAN, EVENT_BEAT_COOLTRAINERM_SEAN, CooltrainermSeanSeenText, CooltrainermSeanBeatenText
 
-	ctxt "Trainers from"
+	text "Trainers from"
 	line "Johto can battle"
 
 	para "with Kanto Gym"
@@ -57,14 +57,14 @@ GenericTrainerCooltrainermSean:
 GenericTrainerCooltrainerfCarol:
 	generictrainer COOLTRAINERF, CAROL, EVENT_BEAT_COOLTRAINERF_CAROL, CooltrainerfCarolSeenText, CooltrainerfCarolBeatenText
 
-	ctxt "I'm going to beat"
+	text "I'm going to beat"
 	line "you someday!"
 	done
 
 GenericTrainerPokemaniacEthan:
 	generictrainer POKEMANIAC, ETHAN, EVENT_BEAT_POKEMANIAC_ETHAN, PokemaniacEthanSeenText, PokemaniacEthanBeatenText
 
-	ctxt "Lily's nice, but"
+	text "Lily's nice, but"
 	line "Mary's the best!"
 
 	para "I want to check"
@@ -75,7 +75,7 @@ GenericTrainerPokemaniacEthan:
 GenericTrainerHikerNoland:
 	generictrainer HIKER, NOLAND, EVENT_BEAT_HIKER_NOLAND, HikerNolandSeenText, HikerNolandBeatenText
 
-	ctxt "I wonder if there"
+	text "I wonder if there"
 	line "are any mountains"
 
 	para "worth climbing in"
@@ -85,7 +85,7 @@ GenericTrainerHikerNoland:
 GenericTrainerGentlemanEdward:
 	generictrainer GENTLEMAN, EDWARD, EVENT_BEAT_GENTLEMAN_EDWARD, GentlemanEdwardSeenText, GentlemanEdwardBeatenText
 
-	ctxt "I give up."
+	text "I give up."
 	line "You don't have to"
 
 	para "look. Just forget"
@@ -95,7 +95,7 @@ GenericTrainerGentlemanEdward:
 GenericTrainerBurglarCorey:
 	generictrainer BURGLAR, COREY, EVENT_BEAT_BURGLAR_COREY, BurglarCoreySeenText, BurglarCoreyBeatenText
 
-	ctxt "I found a pretty"
+	text "I found a pretty"
 	line "coin here."
 
 	para "Someone must have"
@@ -148,7 +148,7 @@ FastShipLazySailorLeavesMovement2:
 	step_end
 
 PILookerSeenText:
-	ctxt "WHAAAT?!"
+	text "WHAAAT?!"
 
 	para "…How did you know?"
 	line "How did you unmask"
@@ -159,51 +159,51 @@ PILookerSeenText:
 	done
 
 PILookerBeatenText:
-	ctxt "Quite admirable,"
+	text "Quite admirable,"
 	line "you are!"
 	done
 
 CooltrainermSeanSeenText:
-	ctxt "I'm going to Kanto"
+	text "I'm going to Kanto"
 	line "to test my skills."
 	done
 
 CooltrainermSeanBeatenText:
-	ctxt "I wanted to win!"
+	text "I wanted to win!"
 	done
 
 CooltrainerfCarolSeenText:
-	ctxt "I'm training to"
+	text "I'm training to"
 	line "become the Champ!"
 	done
 
 CooltrainerfCarolBeatenText:
-	ctxt "What's so differ-"
+	text "What's so differ-"
 	line "ent between us?"
 	done
 
 PokemaniacEthanSeenText:
-	ctxt "Do you know Lily?"
+	text "Do you know Lily?"
 	line "She's a hot DJ in"
 	cont "Kanto."
 	done
 
 PokemaniacEthanBeatenText:
-	ctxt "Gyaaaah!"
+	text "Gyaaaah!"
 	done
 
 HikerNolandSeenText:
-	ctxt "Are you alone?"
+	text "Are you alone?"
 	line "Then let's battle!"
 	done
 
 HikerNolandBeatenText:
-	ctxt "That's too much to"
+	text "That's too much to"
 	line "handle!"
 	done
 
 SailorStanlySeenText:
-	ctxt "Yeah, I'm a sail-"
+	text "Yeah, I'm a sail-"
 	line "or, all right."
 
 	para "I wasn't goofing"
@@ -218,35 +218,35 @@ SailorStanlySeenText:
 	done
 
 SailorStanlyBeatenText:
-	ctxt "Sorry! It's all my"
+	text "Sorry! It's all my"
 	line "fault!"
 	done
 
 SailorStanlyAfterBattleText:
-	ctxt "Being a sailor, I"
+	text "Being a sailor, I"
 	line "have to do phys-"
 	cont "ical labor. It's"
 	cont "exhausting!"
 	done
 
 GentlemanEdwardSeenText:
-	ctxt "Oh, no. I've lost"
+	text "Oh, no. I've lost"
 	line "something that's"
 	cont "very important."
 	done
 
 GentlemanEdwardBeatenText:
-	ctxt "I… I can't find"
+	text "I… I can't find"
 	line "it…"
 	done
 
 BurglarCoreySeenText:
-	ctxt "Yeehaw!"
+	text "Yeehaw!"
 	line "Lucky!"
 	done
 
 BurglarCoreyBeatenText:
-	ctxt "How unlucky!"
+	text "How unlucky!"
 	line "I lost!"
 	done
 

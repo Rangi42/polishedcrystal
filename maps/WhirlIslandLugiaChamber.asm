@@ -48,5 +48,5 @@ Lugia:
 	end
 
 LugiaText:
-	ctxt "Gyaaas!"
+	text "Gyaaas!"
 	done

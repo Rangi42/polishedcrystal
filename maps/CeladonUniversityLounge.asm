@@ -67,7 +67,7 @@ CeladonUniversityLoungeNeeshaScript:
 	jumpopenedtext .FinalText
 
 .IntroText1:
-	ctxt "Hi! I'm Neesha!"
+	text "Hi! I'm Neesha!"
 	line "I'm one of top four"
 
 	para "trainers in Cela-"
@@ -84,7 +84,7 @@ CeladonUniversityLoungeNeeshaScript:
 	done
 
 .IntroText2:
-	ctxt "Hi! I'm Neesha!"
+	text "Hi! I'm Neesha!"
 	line "I'm one of the"
 	cont "Celadon Four!"
 
@@ -95,21 +95,21 @@ CeladonUniversityLoungeNeeshaScript:
 	done
 
 .NoBattleText:
-	ctxt "Not interested in"
+	text "Not interested in"
 	line "a challenge?"
 	done
 
 .SeenText:
-	ctxt "We'll blow you"
+	text "We'll blow you"
 	line "away!"
 	done
 
 .BeatenText:
-	ctxt "A painful loss…"
+	text "A painful loss…"
 	done
 
 .AfterText1:
-	ctxt "You're a worthy"
+	text "You're a worthy"
 	line "opponent!"
 
 	para "But you haven't"
@@ -124,7 +124,7 @@ CeladonUniversityLoungeNeeshaScript:
 	done
 
 .AfterText2:
-	ctxt "So you beat all of"
+	text "So you beat all of"
 	line "the Celadon Four…"
 
 	para "That's so cool!"
@@ -134,7 +134,7 @@ CeladonUniversityLoungeNeeshaScript:
 	done
 
 .FinalText:
-	ctxt "It's not often that"
+	text "It's not often that"
 	line "someone gives us"
 
 	para "Celadon Four a"
@@ -145,7 +145,7 @@ CeladonUniversityLoungeNeeshaScript:
 	done
 
 CeladonUniversityLoungeLassText:
-	ctxt "Next month we're"
+	text "Next month we're"
 	line "going on a trip"
 	cont "to Mt.Moon."
 
@@ -154,7 +154,7 @@ CeladonUniversityLoungeLassText:
 	done
 
 CeladonUniversityLoungeRichBoyText:
-	ctxt "Have you ever"
+	text "Have you ever"
 	line "wondered why"
 
 	para "Ultra Balls have"
@@ -167,7 +167,7 @@ CeladonUniversityLoungeRichBoyText:
 	done
 
 CeladonUniversityLoungeCooltrainerfText:
-	ctxt "#mon with"
+	text "#mon with"
 	line "reduced physical"
 
 	para "strength instinct-"
@@ -176,7 +176,7 @@ CeladonUniversityLoungeCooltrainerfText:
 	done
 
 CeladonUniversityLoungeSuper_nerd1Text:
-	ctxt "What do you get if"
+	text "What do you get if"
 	line "you cross a joke"
 
 	para "with a rhetorical"
@@ -186,7 +186,7 @@ CeladonUniversityLoungeSuper_nerd1Text:
 	done
 
 CeladonUniversityLoungeSuper_nerd2Text:
-	ctxt "I'm writing scripts"
+	text "I'm writing scripts"
 	line "for a game."
 
 	para "Do not said use"
@@ -194,7 +194,7 @@ CeladonUniversityLoungeSuper_nerd2Text:
 	done
 
 CeladonUniversityLoungeBookshelf1Text:
-	ctxt "It's stuffed full"
+	text "It's stuffed full"
 	line "of copies of"
 	cont "#mon manga!"
 	done
@@ -215,7 +215,7 @@ CeladonUniversityLoungeBookshelf2:
 	jumpopenedtext .Text2
 
 .Text1:
-	ctxt "This book has a"
+	text "This book has a"
 	line "secret compartment"
 
 	para "where the pages"
@@ -223,14 +223,14 @@ CeladonUniversityLoungeBookshelf2:
 	done
 
 .Text2:
-	ctxt "Too bad--it's"
+	text "Too bad--it's"
 	line "empty."
 	done
 
 CeladonUniversityLoungeComputer:
 	jumpthistext
 
-	ctxt "There's a player"
+	text "There's a player"
 	line "character running"
 
 	para "around a 2D"

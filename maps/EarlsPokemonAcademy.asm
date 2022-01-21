@@ -134,7 +134,7 @@ PokemonJournalWillScript:
 	setflag ENGINE_READ_WILL_JOURNAL
 	jumpthistext
 
-	ctxt "#mon Journal"
+	text "#mon Journal"
 
 	para "Special Feature:"
 	line "Elite Four Will!"
@@ -170,7 +170,7 @@ AcademyEarlSpinMovement:
 	step_end
 
 AcademyEarlIntroText:
-	ctxt "Earl, I am!"
+	text "Earl, I am!"
 
 	para "Wonderful are"
 	line "#mon, yes!"
@@ -185,7 +185,7 @@ AcademyEarlIntroText:
 	done
 
 AcademyEarlTeachHowToWinText:
-	ctxt "Good! Teach you,"
+	text "Good! Teach you,"
 	line "I will!"
 
 	para "In battle, #mon"
@@ -201,13 +201,13 @@ AcademyEarlTeachHowToWinText:
 	done
 
 AcademyEarlTeachMoreText:
-	ctxt "So, want to know"
+	text "So, want to know"
 	line "how to raise"
 	cont "#mon well?"
 	done
 
 AcademyEarlTeachHowToRaiseWellText:
-	ctxt "Fine! Teach you,"
+	text "Fine! Teach you,"
 	line "I will!"
 
 	para "If #mon come"
@@ -228,7 +228,7 @@ AcademyEarlTeachHowToRaiseWellText:
 	done
 
 AcademyEarlNoMoreToTeachText:
-	ctxt "Oh! Smart student"
+	text "Oh! Smart student"
 	line "you are! Nothing"
 	cont "more do I teach!"
 
@@ -237,7 +237,7 @@ AcademyEarlNoMoreToTeachText:
 	done
 
 EarlsPokemonAcademyYoungster1Text:
-	ctxt "I'm taking notes"
+	text "I'm taking notes"
 	line "of the teacher's"
 	cont "lecture."
 
@@ -247,19 +247,19 @@ EarlsPokemonAcademyYoungster1Text:
 	done
 
 EarlsPokemonAcademyGameboyKid1Text:
-	ctxt "I traded my best"
+	text "I traded my best"
 	line "#mon to the"
 	cont "guy beside me."
 	done
 
 EarlsPokemonAcademyGameboyKid2Text:
-	ctxt "Huh? The #mon I"
+	text "Huh? The #mon I"
 	line "just got is hold-"
 	cont "ing something!"
 	done
 
 EarlsPokemonAcademyYoungster2Text:
-	ctxt "A #mon holding"
+	text "A #mon holding"
 	line "a Berry will heal"
 	cont "itself in battle."
 
@@ -272,7 +272,7 @@ EarlsPokemonAcademyYoungster2Text:
 	done
 
 AcademyBlackboardText:
-	ctxt "The blackboard"
+	text "The blackboard"
 	line "describes #mon"
 
 	para "status changes in"
@@ -280,7 +280,7 @@ AcademyBlackboardText:
 	done
 
 AcademyPoisonText:
-	ctxt "If poisoned, a"
+	text "If poisoned, a"
 	line "#mon steadily"
 	cont "loses HP."
 
@@ -295,7 +295,7 @@ AcademyPoisonText:
 	done
 
 AcademyParalysisText:
-	ctxt "Paralysis reduces"
+	text "Paralysis reduces"
 	line "speed and may"
 	cont "prevent movement."
 
@@ -305,7 +305,7 @@ AcademyParalysisText:
 	done
 
 AcademySleepText:
-	ctxt "If asleep, your"
+	text "If asleep, your"
 	line "#mon can't make"
 	cont "a move."
 
@@ -318,7 +318,7 @@ AcademySleepText:
 	done
 
 AcademyBurnText:
-	ctxt "A burn steadily"
+	text "A burn steadily"
 	line "consumes HP."
 
 	para "It also reduces"
@@ -332,7 +332,7 @@ AcademyBurnText:
 	done
 
 AcademyFreezeText:
-	ctxt "If your #mon is"
+	text "If your #mon is"
 	line "frozen, it can't"
 	cont "do a thing."
 
@@ -344,7 +344,7 @@ AcademyFreezeText:
 	done
 
 AcademyNotebookText:
-	ctxt "It's this kid's"
+	text "It's this kid's"
 	line "notebook…"
 
 	para "Catch #mon"
@@ -357,7 +357,7 @@ AcademyNotebookText:
 	done
 
 AcademyNotebookText1:
-	ctxt "Before throwing a"
+	text "Before throwing a"
 	line "# Ball, weaken"
 	cont "the target first."
 
@@ -369,7 +369,7 @@ AcademyNotebookText1:
 	done
 
 AcademyNotebookText2:
-	ctxt "Some moves may"
+	text "Some moves may"
 	line "cause confusion."
 
 	para "Confusion may make"
@@ -384,7 +384,7 @@ AcademyNotebookText2:
 	done
 
 AcademyNotebookText3:
-	ctxt "People who catch"
+	text "People who catch"
 	line "and use #mon"
 
 	para "in battle are"

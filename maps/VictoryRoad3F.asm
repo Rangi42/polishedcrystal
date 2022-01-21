@@ -19,7 +19,7 @@ VictoryRoad3F_MapScriptHeader:
 GenericTrainerVeteranmRemy:
 	generictrainer VETERANM, REMY, EVENT_BEAT_VETERANM_REMY, VeteranmRemySeenText, VeteranmRemyBeatenText
 
-	ctxt "I can beat you"
+	text "I can beat you"
 	line "when it comes to"
 
 	para "knowledge about"
@@ -27,7 +27,7 @@ GenericTrainerVeteranmRemy:
 	done
 
 VeteranmRemySeenText:
-	ctxt "If you can get"
+	text "If you can get"
 	line "through here, you"
 
 	para "can challenge the"
@@ -35,7 +35,7 @@ VeteranmRemySeenText:
 	done
 
 VeteranmRemyBeatenText:
-	ctxt "No!"
+	text "No!"
 	line "Inconceivable!"
 	done
 

@@ -38,23 +38,23 @@ Route17AlwaysOnBikeCallback:
 GenericTrainerBikerReilly:
 	generictrainer BIKER, REILLY, EVENT_BEAT_BIKER_REILLY, BikerReillySeenText, BikerReillyBeatenText
 
-	ctxt "Don't get cocky,"
+	text "Don't get cocky,"
 	line "you Johto punk!"
 	done
 
 BikerReillySeenText:
-	ctxt "Hey, you! You're"
+	text "Hey, you! You're"
 	line "from Johto, huh?"
 	done
 
 BikerReillyBeatenText:
-	ctxt "Whoa, you kick!"
+	text "Whoa, you kick!"
 	done
 
 GenericTrainerBikerJoel:
 	generictrainer BIKER, JOEL, EVENT_BEAT_BIKER_JOEL, BikerJoelSeenText, BikerJoelBeatenText
 
-	ctxt "I look cool, but"
+	text "I look cool, but"
 	line "I'm weak, so I'm"
 	cont "not really cool."
 
@@ -63,61 +63,61 @@ GenericTrainerBikerJoel:
 	done
 
 BikerJoelSeenText:
-	ctxt "Wow. That's a cool"
+	text "Wow. That's a cool"
 	line "Bicycle!"
 	done
 
 BikerJoelBeatenText:
-	ctxt "But you don't just"
+	text "But you don't just"
 	line "look cool…"
 	done
 
 GenericTrainerBikerGlenn:
 	generictrainer BIKER, GLENN, EVENT_BEAT_BIKER_GLENN, BikerGlennSeenText, BikerGlennBeatenText
 
-	ctxt "Hands-free riding"
+	text "Hands-free riding"
 	line "is considered cool"
 	cont "on Cycling Road."
 	done
 
 BikerGlennSeenText:
-	ctxt "Hey! Want to have"
+	text "Hey! Want to have"
 	line "a speed battle?"
 	done
 
 BikerGlennBeatenText:
-	ctxt "Yikes! You've got"
+	text "Yikes! You've got"
 	line "awesome torque!"
 	done
 
 GenericTrainerBikerDale:
 	generictrainer BIKER, DALE, EVENT_BEAT_BIKER_DALE, BikerDaleSeenText, BikerDaleBeatenText
 
-	ctxt "You're so cool!"
+	text "You're so cool!"
 	line "You don't do any-"
 	cont "thing halfway!"
 	done
 
 BikerDaleSeenText:
-	ctxt "You're gonna lose!"
+	text "You're gonna lose!"
 	line "I've got a hunch!"
 	done
 
 BikerDaleBeatenText:
-	ctxt "Maybe my hunch was"
+	text "Maybe my hunch was"
 	line "a little off…"
 	done
 
 GenericTrainerBikerJacob:
 	generictrainer BIKER, JACOB, EVENT_BEAT_BIKER_JACOB, BikerJacobSeenText, BikerJacobBeatenText
 
-	ctxt "Chopper? Oh, I"
+	text "Chopper? Oh, I"
 	line "was talking about"
 	cont "my Bicycle!"
 	done
 
 BikerJacobSeenText:
-	ctxt "Modding my"
+	text "Modding my"
 	line "chopper costs a"
 
 	para "bunch of money!"
@@ -125,13 +125,13 @@ BikerJacobSeenText:
 	done
 
 BikerJacobBeatenText:
-	ctxt "Argh. I failed!"
+	text "Argh. I failed!"
 	done
 
 GenericTrainerBikerAiden:
 	generictrainer BIKER, AIDEN, EVENT_BEAT_BIKER_AIDEN, BikerAidenSeenText, BikerAidenBeatenText
 
-	ctxt "Gaon gaooon!"
+	text "Gaon gaooon!"
 	line "Buwaribaribari…!"
 
 	para "There, my engine"
@@ -140,7 +140,7 @@ GenericTrainerBikerAiden:
 	done
 
 BikerAidenSeenText:
-	ctxt "Vroom vroom!"
+	text "Vroom vroom!"
 	line "Baribaribaribari!"
 
 	para "What do you think"
@@ -149,14 +149,14 @@ BikerAidenSeenText:
 	done
 
 BikerAidenBeatenText:
-	ctxt "Hnnff… hnnff…"
+	text "Hnnff… hnnff…"
 	line "I'm out of breath…"
 	done
 
 GenericTrainerBikerDan:
 	generictrainer BIKER, DAN, EVENT_BEAT_BIKER_DAN, BikerDanSeenText, BikerDanBeatenText
 
-	ctxt "I love this melan-"
+	text "I love this melan-"
 	line "choly melody."
 
 	para "It really suits me"
@@ -164,7 +164,7 @@ GenericTrainerBikerDan:
 	done
 
 BikerDanSeenText:
-	ctxt "Parara parapara"
+	text "Parara parapara"
 	line "para-parara!"
 
 	para "My horn's got a"
@@ -173,48 +173,48 @@ BikerDanSeenText:
 	done
 
 BikerDanBeatenText:
-	ctxt "Paaraaraaaaa…"
+	text "Paaraaraaaaa…"
 	done
 
 GenericTrainerBikerTeddy:
 	generictrainer BIKER, TEDDY, EVENT_BEAT_BIKER_TEDDY, BikerTeddySeenText, BikerTeddyBeatenText
 
-	ctxt "I love the way you"
+	text "I love the way you"
 	line "do battle, too!"
 
 	cont "Consider me a fan!"
 	done
 
 BikerTeddySeenText:
-	ctxt "Hey, that's a cool"
+	text "Hey, that's a cool"
 	line "Bike you're riding!"
 	done
 
 BikerTeddyBeatenText:
-	ctxt "Great job."
+	text "Great job."
 	done
 
 GenericTrainerRoughneckBrian:
 	generictrainer ROUGHNECK, BRIAN, EVENT_BEAT_ROUGHNECK_BRIAN, RoughneckBrianSeenText, RoughneckBrianBeatenText
 
-	ctxt "See you later!"
+	text "See you later!"
 	line "Come back anytime!"
 	done
 
 RoughneckBrianSeenText:
-	ctxt "Hey, who told you"
+	text "Hey, who told you"
 	line "you could ride"
 	cont "on this road?"
 	done
 
 RoughneckBrianBeatenText:
-	ctxt "Crash!"
+	text "Crash!"
 	done
 
 GenericTrainerRoughneckTheron:
 	generictrainer ROUGHNECK, THERON, EVENT_BEAT_ROUGHNECK_THERON, RoughneckTheronSeenText, RoughneckTheronBeatenText
 
-	ctxt "You wanna join"
+	text "You wanna join"
 	line "my team?"
 
 	para "Won't you give it"
@@ -222,44 +222,44 @@ GenericTrainerRoughneckTheron:
 	done
 
 RoughneckTheronSeenText:
-	ctxt "I'll toughen you"
+	text "I'll toughen you"
 	line "up. Now, you come"
 	cont "along with me."
 	done
 
 RoughneckTheronBeatenText:
-	ctxt "I lost. I lost!"
+	text "I lost. I lost!"
 	done
 
 GenericTrainerRoughneckMarkey:
 	generictrainer ROUGHNECK, MARKEY, EVENT_BEAT_ROUGHNECK_MARKEY, RoughneckMarkeySeenText, RoughneckMarkeyBeatenText
 
-	ctxt "All right!"
+	text "All right!"
 
 	para "That fighting"
 	line "yell was great!"
 	done
 
 RoughneckMarkeySeenText:
-	ctxt "Hey hey hey!"
+	text "Hey hey hey!"
 	line "You're in my way!"
 
 	para "IN MY WAY!"
 	done
 
 RoughneckMarkeyBeatenText:
-	ctxt "All right, thanks!"
+	text "All right, thanks!"
 	done
 
 Route17Notice1Text:
-	ctxt "It's a notice."
+	text "It's a notice."
 
 	para "Watch out for"
 	line "discarded items!"
 	done
 
 Route17TrainerTips1Text:
-	ctxt "Trainer Tips"
+	text "Trainer Tips"
 
 	para "All #mon are"
 	line "unique."
@@ -273,7 +273,7 @@ Route17TrainerTips1Text:
 	done
 
 Route17TrainerTips2Text:
-	ctxt "Trainer Tips"
+	text "Trainer Tips"
 
 	para "Open the Start"
 	line "menu to stay in"
@@ -282,7 +282,7 @@ Route17TrainerTips2Text:
 	done
 
 Route17Notice2Text:
-	ctxt "It's a notice."
+	text "It's a notice."
 
 	para "Don't throw the"
 	line "game, throw #"

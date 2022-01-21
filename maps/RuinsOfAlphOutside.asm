@@ -125,7 +125,7 @@ RuinsOfAlphOutsideFisherScript:
 	jumpthisopenedtext
 
 RuinsOfAlphOutsideFisherText2:
-	ctxt "The ruins hide a"
+	text "The ruins hide a"
 	line "huge secret!"
 
 	para "…I think…"
@@ -143,14 +143,14 @@ RuinsOfAlphOutsideYoungster2Script:
 GenericTrainerPsychicNathan:
 	generictrainer PSYCHIC_T, NATHAN, EVENT_BEAT_PSYCHIC_NATHAN, PsychicNathanSeenText, PsychicNathanBeatenText
 
-	ctxt "I like thinking"
+	text "I like thinking"
 	line "here."
 	done
 
 GenericTrainerSuperNerdStan:
 	generictrainer SUPER_NERD, STAN, EVENT_BEAT_SUPER_NERD_STAN, SuperNerdStanSeenText, SuperNerdStanBeatenText
 
-	ctxt "The ruins are from"
+	text "The ruins are from"
 	line "about 1,500 years"
 	cont "ago."
 
@@ -211,7 +211,7 @@ RuinsofAlphScientistClimaxLeaveMovementData:
 	step_end
 
 RuinsOfAlphOutsideScientistText:
-	ctxt "Hm? That's a #-"
+	text "Hm? That's a #-"
 	line "dex, isn't it?"
 	cont "May I see it?"
 
@@ -240,13 +240,13 @@ RuinsOfAlphOutsideScientistText:
 	done
 
 SuperNerdStanSeenText:
-	ctxt "What do you want?"
+	text "What do you want?"
 	line "I'm studying--"
 	cont "don't disturb me!"
 	done
 
 SuperNerdStanBeatenText:
-	ctxt "Sorry…"
+	text "Sorry…"
 	line "I'm frustrated by"
 
 	para "our lack of real"
@@ -254,26 +254,26 @@ SuperNerdStanBeatenText:
 	done
 
 PsychicNathanSeenText:
-	ctxt "Hmmm… This is a"
+	text "Hmmm… This is a"
 	line "strange place."
 	done
 
-PsychicNathanBeatenText: ; ctxt > text
+PsychicNathanBeatenText: ; text > text
 	text "…"
 	done
 
 RuinsOfAlphOutsideMysteryChamberSignText:
-	ctxt "Mystery Stone"
+	text "Mystery Stone"
 	line "Panel Chamber"
 	done
 
 RuinsOfAlphSignText:
-	ctxt "Ruins of Alph"
+	text "Ruins of Alph"
 	line "Visitors Welcome"
 	done
 
 RuinsOfAlphResearchCenterSignText:
-	ctxt "Ruins of Alph"
+	text "Ruins of Alph"
 	line "Research Center"
 
 	para "The Authority On"
@@ -284,13 +284,13 @@ MapRuinsofAlphOutsideSealedCaveSign:
 	dw EVENT_DOOR_OPENED_IN_RUINS_OF_ALPH
 	jumpthistext
 
-	ctxt "There's a door-"
+	text "There's a door-"
 	line "shaped groove in"
 	cont "the rock."
 	done
 
 RuinsOfAlphOutsideFisherText1:
-	ctxt "While exploring"
+	text "While exploring"
 	line "the ruins, we"
 
 	para "suddenly noticed"
@@ -304,7 +304,7 @@ RuinsOfAlphOutsideFisherText1:
 	done
 
 RuinsOfAlphOutsideYoungster1Text:
-	ctxt "There are many"
+	text "There are many"
 	line "kinds of Unown, so"
 
 	para "we use them for"
@@ -312,7 +312,7 @@ RuinsOfAlphOutsideYoungster1Text:
 	done
 
 RuinsOfAlphOutsideYoungster2Text:
-	ctxt "A… H… E… A… D…"
+	text "A… H… E… A… D…"
 	line "Hmm…"
 
 	para "What?"
@@ -322,13 +322,13 @@ RuinsOfAlphOutsideYoungster2Text:
 	done
 
 RuinsofAlphScientistClimax1Text:
-	ctxt "That sounded like"
+	text "That sounded like"
 	line "it came from over"
 	cont "here…"
 	done
 
 RuinsofAlphScientistClimax2Text:
-	ctxt "Incredible!"
+	text "Incredible!"
 
 	para "Another chamber"
 	line "was hidden here"

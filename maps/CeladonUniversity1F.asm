@@ -43,7 +43,7 @@ CeladonUniversity1F_MapScriptHeader:
 	object_event 23, 13, SPRITE_BATTLE_GIRL, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_COMMAND, jumptextfaceplayer, CeladonUniversity1FCooltrainerfText, -1
 
 CeladonUniversity1FSuperNerdText:
-	ctxt "Some academics be-"
+	text "Some academics be-"
 	line "lieve there are"
 
 	para "other universes"
@@ -61,7 +61,7 @@ CeladonUniversity1FSuperNerdText:
 	done
 
 CeladonUniversity1FLassText:
-	ctxt "This place offers"
+	text "This place offers"
 	line "courses of study"
 
 	para "in everything from"
@@ -72,7 +72,7 @@ CeladonUniversity1FLassText:
 	done
 
 CeladonUniversity1FCooltrainermText:
-	ctxt "Everyone at this"
+	text "Everyone at this"
 	line "university is a"
 	cont "#mon trainer."
 
@@ -85,7 +85,7 @@ CeladonUniversity1FCooltrainermText:
 	done
 
 CeladonUniversity1FYoungsterText:
-	ctxt "Magikarp is the"
+	text "Magikarp is the"
 	line "university's mascot"
 	cont "#mon."
 
@@ -95,21 +95,21 @@ CeladonUniversity1FYoungsterText:
 	done
 
 CeladonUniversity1FChildText:
-	ctxt "Ugh! I can't find"
+	text "Ugh! I can't find"
 	line "my next class…"
 
 	para "I'm gonna be late!"
 	done
 
 CeladonUniversity1FPokefanmText:
-	ctxt "I'm the janitor!"
+	text "I'm the janitor!"
 
 	para "Be careful, the"
 	line "floor is wet!"
 	done
 
 CeladonUniversity1FReceptionistText:
-	ctxt "Welcome to Celadon"
+	text "Welcome to Celadon"
 	line "University!"
 
 	para "Classrooms and the"
@@ -130,7 +130,7 @@ CeladonUniversity1FReceptionistText:
 	done
 
 CeladonUniversity1FCooltrainerfText:
-	ctxt "I'm studying to be"
+	text "I'm studying to be"
 	line "a #mon nurse."
 
 	para "With so many spe-"
@@ -141,41 +141,41 @@ CeladonUniversity1FCooltrainerfText:
 	done
 
 CeladonUniversity1FPrincipalsOfficeSignText:
-	ctxt "Principal's Office"
+	text "Principal's Office"
 	done
 
 CeladonUniversity1FClassroom1SignText:
-	ctxt "W2 Art"
+	text "W2 Art"
 	done
 
 CeladonUniversity1FClassroom2SignText:
-	ctxt "W1 History"
+	text "W1 History"
 	done
 
 CeladonUniversity1FClassroom3SignText:
-	ctxt "E1 Science"
+	text "E1 Science"
 	done
 
 CeladonUniversity1FClassroom4SignText:
-	ctxt "E2 Battling"
+	text "E2 Battling"
 	done
 
 CeladonUniversity1FStudentLoungeSignText:
-	ctxt "Student Lounge"
+	text "Student Lounge"
 	done
 
 CeladonUniversity1FLibrarySignText:
-	ctxt "Library"
+	text "Library"
 	done
 
 CeladonUniversity1FTrophyCaseSignText:
-	ctxt "The case is full"
+	text "The case is full"
 	line "of trophies and"
 	cont "medals."
 	done
 
 CeladonUniversity1FBookshelfText:
-	ctxt "There are tons of"
+	text "There are tons of"
 	line "yearbooks here."
 
 	para "Students have"

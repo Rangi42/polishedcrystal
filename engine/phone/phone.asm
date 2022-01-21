@@ -632,22 +632,22 @@ NonTrainerCallerNames:
 	text  "Mom:"
 	done
 .bill:
-	ctxt  "Bill:"
+	text  "Bill:"
 	next1 "   #maniac"
 	done
 .elm:
-	ctxt  "Prof.Elm:"
+	text  "Prof.Elm:"
 	next1 "   #mon Prof."
 	done
 .bikeshop:
-	ctxt  "Miracle Cycle:"
+	text  "Miracle Cycle:"
 	done
 .lyra:
-	ctxt  "Lyra:"
+	text  "Lyra:"
 	next1 "   <PK><MN> Trainer"
 	done
 .buena:
-	ctxt  "Buena:"
+	text  "Buena:"
 	next1 "   Disc Jockey"
 	done
 

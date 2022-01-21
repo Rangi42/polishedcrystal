@@ -17,7 +17,7 @@ GoldenrodPPSpeechHouse_MapScriptHeader:
 	object_event  5,  3, SPRITE_CUTE_GIRL, SPRITEMOVEDATA_STANDING_LEFT, 1, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_COMMAND, jumptextfaceplayer, GoldenrodPPSpeechHouseLassText, -1
 
 GoldenrodPPSpeechHouseFisherText:
-	ctxt "Once while I was"
+	text "Once while I was"
 	line "battling, my"
 
 	para "#mon couldn't"
@@ -31,7 +31,7 @@ GoldenrodPPSpeechHouseFisherText:
 	done
 
 GoldenrodPPSpeechHouseLassText:
-	ctxt "Sometimes, a"
+	text "Sometimes, a"
 	line "healthy #mon"
 
 	para "may be unable to"

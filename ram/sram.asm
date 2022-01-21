@@ -144,11 +144,11 @@ sBT_OTMonParty2:: ds BATTLETOWER_PARTYDATA_SIZE ; trainer before prev
 sBT_OTMonParty3:: ds BATTLETOWER_PARTYDATA_SIZE ; previous trainer
 
 
-SECTION "Boxes 1-7",  SRAM
+SECTION "Main PokeDB bank 1",  SRAM
 
 sBoxMons1:: pokedb sBoxMons1
 
 
-SECTION "Boxes 8-14", SRAM
+SECTION "Main PokeDB bank 2", SRAM
 
 sBoxMons2:: pokedb sBoxMons2

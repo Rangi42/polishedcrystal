@@ -139,7 +139,7 @@ MystriStageEggScript:
 	waitendtext
 
 MystriStageCynthiaIntroText:
-	ctxt "My name is"
+	text "My name is"
 	line "Cynthia. I am a"
 	cont "#mon trainer."
 
@@ -151,7 +151,7 @@ MystriStageCynthiaIntroText:
 	done
 
 MystriStageCynthiaSpeechText:
-	ctxt "Cynthia: These are"
+	text "Cynthia: These are"
 	line "the Sinjoh Ruins."
 
 	para "A long time ago…"
@@ -195,7 +195,7 @@ MystriStageCynthiaSpeechText:
 	done
 
 MystriStageCynthiaLeadText2:
-	ctxt "Cynthia: What?"
+	text "Cynthia: What?"
 	line "You read that"
 
 	para "phrase in the"
@@ -210,7 +210,7 @@ MystriStageCynthiaLeadText2:
 	done
 
 MystriStageCynthiaIdeaText:
-	ctxt "Cynthia: …I have"
+	text "Cynthia: …I have"
 	line "an idea. Call it"
 
 	para "a trainer's"
@@ -224,7 +224,7 @@ MystriStageCynthiaIdeaText:
 	done
 
 MystriStageCynthiaNotNowText:
-	ctxt "Cynthia: But I"
+	text "Cynthia: But I"
 	line "don't think we"
 
 	para "should battle now."
@@ -236,18 +236,18 @@ MystriStageCynthiaNotNowText:
 	done
 
 MystriStageCynthiaChallengeText:
-	ctxt "Cynthia: Are you"
+	text "Cynthia: Are you"
 	line "prepared to be my"
 	cont "opponent?"
 	done
 
 MystriStageCynthiaNoText:
-	ctxt "Cynthia: Come back"
+	text "Cynthia: Come back"
 	line "when you're ready."
 	done
 
 MystriStageCynthiaYesText:
-	ctxt "Cynthia: Before"
+	text "Cynthia: Before"
 	line "I send out my"
 	cont "#mon,"
 
@@ -256,7 +256,7 @@ MystriStageCynthiaYesText:
 	done
 
 MystriStageCynthiaWinText:
-	ctxt "I can't remember"
+	text "I can't remember"
 	line "the last time I"
 
 	para "was outclassed"
@@ -264,7 +264,7 @@ MystriStageCynthiaWinText:
 	done
 
 MystriStageCynthiaItemText:
-	ctxt "Cynthia: That was"
+	text "Cynthia: That was"
 	line "beyond my expec-"
 	cont "tation!"
 
@@ -279,13 +279,13 @@ MystriStageCynthiaItemText:
 	done
 
 MystriStageCynthiaAfterText:
-	ctxt "Cynthia: But did"
+	text "Cynthia: But did"
 	line "our battle affect"
 	cont "the Mystri Stage?"
 	done
 
 MystriStageCynthiaEggText:
-	ctxt "Cynthia: Could it"
+	text "Cynthia: Could it"
 	line "be… an Egg?"
 
 	para "Did we just"
@@ -300,7 +300,7 @@ MystriStageCynthiaEggText:
 	done
 
 MystriStageCynthiaFinalText:
-	ctxt "Cynthia: An Egg"
+	text "Cynthia: An Egg"
 	line "is the cradle of"
 	cont "every being."
 
@@ -317,12 +317,12 @@ MystriStageCynthiaFinalText:
 	done
 
 MystriStageEggText:
-	ctxt "<PLAYER> received"
+	text "<PLAYER> received"
 	line "a mysterious Egg!"
 	done
 
 MystriStageNoRoomText:
-	ctxt "You don't have"
+	text "You don't have"
 	line "room for this,"
 	cont "even in your box!"
 	done

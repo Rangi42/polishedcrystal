@@ -25,7 +25,7 @@ GoldenrodDeptStore4FGameboyKidScript:
 	end
 
 GoldenrodDeptStore4FCooltrainerMText:
-	ctxt "Hey. I love strong"
+	text "Hey. I love strong"
 	line "#mon."
 
 	para "I feed them Pro-"
@@ -34,12 +34,12 @@ GoldenrodDeptStore4FCooltrainerMText:
 	done
 
 GoldenrodDeptStore4FBugCatcherText:
-	ctxt "Iron adds to your"
+	text "Iron adds to your"
 	line "#mon's Defense."
 	done
 
 GoldenrodDeptStore4FGameboyKidText:
-	ctxt "Some #mon"
+	text "Some #mon"
 	line "evolve only"
 
 	para "when they hold"
@@ -56,7 +56,7 @@ GoldenrodDeptStore4FGameboyKidText:
 	done
 
 GoldenrodDeptStore4FDirectoryText:
-	ctxt "Let Us Pump Up"
+	text "Let Us Pump Up"
 	line "Your #mon!"
 
 	para "4F Medicine Box"

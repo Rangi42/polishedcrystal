@@ -22,7 +22,7 @@ Route7SaffronGuardScript:
 	iftrue_jumptextfaceplayer Route7SaffronGuardSeriousText
 	jumpthistextfaceplayer
 
-	ctxt "Did you hear about"
+	text "Did you hear about"
 	line "the accident at"
 	cont "the Power Plant?"
 
@@ -32,7 +32,7 @@ Route7SaffronGuardScript:
 	done
 
 Route7SaffronGuardSeriousText:
-	ctxt "I take my guard"
+	text "I take my guard"
 	line "job seriously."
 
 	para "Hey! You have a"
@@ -43,7 +43,7 @@ Route7SaffronGuardSeriousText:
 	done
 
 Route7SaffronGateSilphEmployeeText:
-	ctxt "The Elite Four's"
+	text "The Elite Four's"
 	line "Bruno used to hone"
 
 	para "his skills in"

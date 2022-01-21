@@ -18,7 +18,7 @@ Route5_MapScriptHeader:
 	object_event 17, 28, SPRITE_POKEFAN_M, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_COMMAND, jumptextfaceplayer, Route5PokefanMText, EVENT_ROUTE_5_6_POKEFAN_M_BLOCKS_UNDERGROUND_PATH
 
 Route5PokefanMText:
-	ctxt "The road is closed"
+	text "The road is closed"
 	line "until the problem"
 
 	para "at the Power Plant"
@@ -26,7 +26,7 @@ Route5PokefanMText:
 	done
 
 Route5UndergroundPathSignText:
-	ctxt "Underground Path"
+	text "Underground Path"
 
 	para "Cerulean City -"
 	line "Vermilion City"

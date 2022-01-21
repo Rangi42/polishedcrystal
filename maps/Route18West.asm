@@ -32,23 +32,23 @@ Route18WestBikeCheckScript:
 GenericTrainerBikerCharles:
 	generictrainer BIKER, CHARLES, EVENT_BEAT_BIKER_CHARLES, BikerCharlesSeenText, BikerCharlesBeatenText
 
-	ctxt "Reckless driving"
+	text "Reckless driving"
 	line "causes accidents!"
 	cont "Take it easy!"
 	done
 
 BikerCharlesSeenText:
-	ctxt "We're fearless"
+	text "We're fearless"
 	line "highway stars!"
 	done
 
 BikerCharlesBeatenText:
-	ctxt "Arrrgh! Crash and"
+	text "Arrrgh! Crash and"
 	line "burn!"
 	done
 
 Route18WestBikeWarningText:
-	ctxt "You have to be on"
+	text "You have to be on"
 	line "a Bicycle to go"
 	cont "on Cycling Road!"
 	done

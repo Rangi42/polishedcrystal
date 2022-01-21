@@ -45,7 +45,7 @@ WarmBeachShackTutorBodySlamScript:
 	jumpopenedtext Text_WarmBeachShackTutorTaught
 
 WarmBeachShackFisherText:
-	ctxt "Ready?"
+	text "Ready?"
 	line "Boing!"
 
 	para "We're having a"
@@ -56,7 +56,7 @@ WarmBeachShackFisherText:
 	done
 
 Text_WarmBeachShackTutorBodySlamQuestion:
-	ctxt "How about I teach"
+	text "How about I teach"
 	line "Body Slam to a"
 
 	para "#mon of yours"
@@ -64,15 +64,15 @@ Text_WarmBeachShackTutorBodySlamQuestion:
 	done
 
 Text_WarmBeachShackTutorNoSilverLeaf:
-	ctxt "Huh? You don't"
+	text "Huh? You don't"
 	line "have any!"
 	done
 
 Text_WarmBeachShackTutorRefused:
-	ctxt "Alright then."
+	text "Alright then."
 	done
 
 Text_WarmBeachShackTutorTaught:
-	ctxt "Come again!"
+	text "Come again!"
 	line "Boioing!"
 	done

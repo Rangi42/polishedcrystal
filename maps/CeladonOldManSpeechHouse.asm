@@ -16,13 +16,13 @@ CeladonOldManSpeechHouse_MapScriptHeader:
 	object_event  5,  4, SPRITE_AROMA_LADY, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, CeladonOldManSpeechHouseLadyText, -1
 
 CeladonOldManSpeechHouseGrampsText:
-	ctxt "Whashat?"
+	text "Whashat?"
 	line "#-mon?"
 	cont "Never heard of it."
 	done
 
 CeladonOldManSpeechHouseLadyText:
-	ctxt "I'm sorry about"
+	text "I'm sorry about"
 	line "my grandpa."
 
 	para "Age hasn't been"

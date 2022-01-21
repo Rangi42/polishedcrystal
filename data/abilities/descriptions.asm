@@ -132,6 +132,7 @@ AbilityDescriptions:
 	dw PranksterDescription
 	dw SandForceDescription
 	dw FurCoatDescription
+	dw BulletproofDescription
 	dw CompetitiveDescription
 	dw MegaLauncherDescription
 	dw ToughClawsDescription
@@ -152,726 +153,731 @@ AbilityDescriptions:
 	assert_table_length NUM_ABILITIES
 
 NoAbilityDescription:
-	ctxt  "Abilities are"
+	text  "Abilities are"
 	next1 "disabled."
 	done
 
 StenchDescription:
-	ctxt  "May cause the foe"
+	text  "May cause the foe"
 	next1 "to flinch."
 	done
 
 DrizzleDescription:
-	ctxt  "Summons rain when"
+	text  "Summons rain when"
 	next1 "switched in."
 	done
 
 SpeedBoostDescription:
-	ctxt  "Its Speed stat is"
+	text  "Its Speed stat is"
 	next1 "gradually boosted."
 	done
 
 BattleArmorDescription:
 ShellArmorDescription:
-	ctxt  "Protects from"
+	text  "Protects from"
 	next1 "critical hits."
 	done
 
 SturdyDescription:
-	ctxt  "Cannot be knocked"
+	text  "Cannot be knocked"
 	next1 "out with one hit."
 	done
 
 DampDescription:
-	ctxt  "Prevents self-"
+	text  "Prevents self-"
 	next1 "destructing moves."
 	done
 
 LimberDescription:
-	ctxt  "Protects from"
+	text  "Protects from"
 	next1 "paralysis."
 	done
 
 SandVeilDescription:
-	ctxt  "Boosts evasion in"
+	text  "Boosts evasion in"
 	next1 "a sandstorm."
 	done
 
 StaticDescription:
-	ctxt  "Contact may cause"
+	text  "Contact may cause"
 	next1 "paralysis."
 	done
 
 VoltAbsorbDescription:
-	ctxt  "Restores HP if hit"
+	text  "Restores HP if hit"
 	next1 "by Electric moves."
 	done
 
 WaterAbsorbDescription:
-	ctxt  "Restores HP if hit"
+	text  "Restores HP if hit"
 	next1 "by Water moves."
 	done
 
 ObliviousDescription:
-	ctxt  "Prevents it from"
+	text  "Prevents it from"
 	next1 "being infatuated."
 	done
 
 CloudNineDescription:
-	ctxt  "Eliminates effects"
+	text  "Eliminates effects"
 	next1 "of weather. "
 	done
 
 CompoundEyesDescription:
-	ctxt  "Boosts the Poké-"
+	text  "Boosts the Poké-"
 	next1 "mon's accuracy."
 	done
 
 InsomniaDescription:
 VitalSpiritDescription:
-	ctxt  "Prevents it from"
+	text  "Prevents it from"
 	next1 "falling asleep."
 	done
 
 ImmunityDescription:
 PastelVeilDescription:
-	ctxt  "Prevents it from"
+	text  "Prevents it from"
 	next1 "getting poisoned."
 	done
 
 FlashFireDescription:
-	ctxt  "Boosts Fire moves"
+	text  "Boosts Fire moves"
 	next1 "if hit by one."
 	done
 
 ShieldDustDescription:
-	ctxt  "Blocks additional"
+	text  "Blocks additional"
 	next1 "attack effects."
 	done
 
 OwnTempoDescription:
-	ctxt  "Prevents it from"
+	text  "Prevents it from"
 	next1 "becoming confused."
 	done
 
 SuctionCupsDescription:
-	ctxt  "Negates forced"
+	text  "Negates forced"
 	next1 "switch-outs."
 	done
 
 IntimidateDescription:
-	ctxt  "Lowers the foe's"
+	text  "Lowers the foe's"
 	next1 "Attack stat."
 	done
 
 ShadowTagDescription:
-	ctxt  "Prevents the foe"
+	text  "Prevents the foe"
 	next1 "from escaping."
 	done
 
 LevitateDescription:
-	ctxt  "Gives immunity to"
+	text  "Gives immunity to"
 	next1 "Ground-type moves."
 	done
 
 EffectSporeDescription:
-	ctxt  "Contact may cause"
+	text  "Contact may cause"
 	next1 "Par, Psn, or Slp."
 	done
 
 SynchronizeDescription:
-	ctxt  "Passes Psn, Par,"
+	text  "Passes Psn, Par,"
 	next1 "or Brn to foes."
 	done
 
 ClearBodyDescription:
 WhiteSmokeDescription:
-	ctxt  "Prevents foes from"
+	text  "Prevents foes from"
 	next1 "lowering stats."
 	done
 
 NaturalCureDescription:
-	ctxt  "Switch-outs heal"
+	text  "Switch-outs heal"
 	next1 "status problems."
 	done
 
 LightningRodDescription:
-	ctxt  "Electric moves"
+	text  "Electric moves"
 	next1 "boost Spcl.Atk."
 	done
 
 SereneGraceDescription:
-	ctxt  "Boosts the rate of"
+	text  "Boosts the rate of"
 	next1 "added effects."
 	done
 
 SwiftSwimDescription:
-	ctxt  "Boosts its Speed"
+	text  "Boosts its Speed"
 	next1 "in rain."
 	done
 
 ChlorophyllDescription:
-	ctxt  "Boosts its Speed"
+	text  "Boosts its Speed"
 	next1 "in sunshine."
 	done
 
 IlluminateDescription:
-	ctxt  "Raises the rate"
+	text  "Raises the rate"
 	next1 "of wild #mon."
 	done
 
 TraceDescription:
-	ctxt  "Copies the foe's"
+	text  "Copies the foe's"
 	next1 "Ability."
 	done
 
 HugePowerDescription:
-	ctxt  "Boosts its Attack"
+	text  "Boosts its Attack"
 	next1 "stat."
 	done
 
 PoisonPointDescription:
-	ctxt  "Contact may poison"
+	text  "Contact may poison"
 	next1 "the foe."
 	done
 
 InnerFocusDescription:
-	ctxt  "Protects it from"
+	text  "Protects it from"
 	next1 "flinching."
 	done
 
 MagmaArmorDescription:
-	ctxt  "Prevents it from"
+	text  "Prevents it from"
 	next1 "becoming frozen."
 	done
 
 WaterVeilDescription:
-	ctxt  "Prevents it from"
+	text  "Prevents it from"
 	next1 "getting a burn."
 	done
 
 MagnetPullDescription:
-	ctxt  "Prevents escape by"
+	text  "Prevents escape by"
 	next1 "Steel-type foes."
 	done
 
 SoundproofDescription:
-	ctxt  "Gives immunity to"
+	text  "Gives immunity to"
 	next1 "sound-based moves."
 	done
 
 RainDishDescription:
-	ctxt  "Gradually regains"
+	text  "Gradually regains"
 	next1 "HP in rain."
 	done
 
 SandStreamDescription:
-	ctxt  "Summons sandstorm"
+	text  "Summons sandstorm"
 	next1 "when switched in."
 	done
 
 PressureDescription:
-	ctxt  "Raises the foe's"
+	text  "Raises the foe's"
 	next1 "PP usage."
 	done
 
 ThickFatDescription:
-	ctxt  "Ups resistance to"
+	text  "Ups resistance to"
 	next1 "Fire and Ice."
 	done
 
 EarlyBirdDescription:
-	ctxt  "Awakens quickly"
+	text  "Awakens quickly"
 	next1 "from sleep."
 	done
 
 FlameBodyDescription:
-	ctxt  "Contact may burn"
+	text  "Contact may burn"
 	next1 "the foe."
 	done
 
 RunAwayDescription:
-	ctxt  "Sure getaway from"
+	text  "Sure getaway from"
 	next1 "wild #mon."
 	done
 
 KeenEyeDescription:
-	ctxt  "Prevents foes from"
+	text  "Prevents foes from"
 	next1 "lowering accuracy."
 	done
 
 HyperCutterDescription:
-	ctxt  "Prevents foes from"
+	text  "Prevents foes from"
 	next1 "lowering Attack."
 	done
 
 PickupDescription:
-	ctxt  "The #mon may"
+	text  "The #mon may"
 	next1 "pick up items."
 	done
 
 HustleDescription:
-	ctxt  "Boosts Attack, but"
+	text  "Boosts Attack, but"
 	next1 "lowers accuracy."
 	done
 
 CuteCharmDescription:
-	ctxt  "Contact may cause"
+	text  "Contact may cause"
 	next1 "infatuation."
 	done
 
 StickyHoldDescription:
-	ctxt  "Protects it from"
+	text  "Protects it from"
 	next1 "item theft."
 	done
 
 ShedSkinDescription:
-	ctxt  "May heal its own"
+	text  "May heal its own"
 	next1 "status problems."
 	done
 
 GutsDescription:
-	ctxt  "Boosts Attack on"
+	text  "Boosts Attack on"
 	next1 "status problems."
 	done
 
 MarvelScaleDescription:
-	ctxt  "Boosts Defense on"
+	text  "Boosts Defense on"
 	next1 "status problems."
 	done
 
 LiquidOozeDescription:
-	ctxt  "Damages foes using"
+	text  "Damages foes using"
 	next1 "draining moves."
 	done
 
 OvergrowDescription:
-	ctxt  "Boosts Grass moves"
+	text  "Boosts Grass moves"
 	next1 "in a pinch."
 	done
 
 BlazeDescription:
-	ctxt  "Boosts Fire moves"
+	text  "Boosts Fire moves"
 	next1 "in a pinch."
 	done
 
 TorrentDescription:
-	ctxt  "Boosts Water moves"
+	text  "Boosts Water moves"
 	next1 "in a pinch."
 	done
 
 SwarmDescription:
-	ctxt  "Boosts Bug moves"
+	text  "Boosts Bug moves"
 	next1 "in a pinch."
 	done
 
 RockHeadDescription:
-	ctxt  "Protects it from"
+	text  "Protects it from"
 	next1 "recoil damage."
 	done
 
 DroughtDescription:
-	ctxt  "Summons sunlight"
+	text  "Summons sunlight"
 	next1 "when switched in."
 	done
 
 ArenaTrapDescription:
-	ctxt  "Prevents the foe"
+	text  "Prevents the foe"
 	next1 "from fleeing."
 	done
 
 TangledFeetDescription:
-	ctxt  "Boosts evasion if"
+	text  "Boosts evasion if"
 	next1 "it is confused."
 	done
 
 MotorDriveDescription:
-	ctxt  "Electric moves"
+	text  "Electric moves"
 	next1 "boost Speed."
 	done
 
 RivalryDescription:
-	ctxt  "Boosts damage to"
+	text  "Boosts damage to"
 	next1 "same-gender foes."
 	done
 
 SteadfastDescription:
-	ctxt  "Boosts Speed when"
+	text  "Boosts Speed when"
 	next1 "it flinches."
 	done
 
 SnowCloakDescription:
-	ctxt  "Boosts evasion in"
+	text  "Boosts evasion in"
 	next1 "hailstorms."
 	done
 
 GluttonyDescription:
-	ctxt  "Encourages early"
+	text  "Encourages early"
 	next1 "Berry use."
 	done
 
 AngerPointDescription:
-	ctxt  "Maxes Attack after"
+	text  "Maxes Attack after"
 	next1 "a critical hit."
 	done
 
 UnburdenDescription:
-	ctxt  "Boosts Speed when"
+	text  "Boosts Speed when"
 	next1 "held item is lost."
 	done
 
 DrySkinDescription:
-	ctxt  "Reduces HP in sun."
+	text  "Reduces HP in sun."
 	next1 "Water restores HP."
 	done
 
 DownloadDescription:
-	ctxt  "Adjusts stats based"
+	text  "Adjusts stats based"
 	next1 "on foe's defenses."
 	done
 
 IronFistDescription:
-	ctxt  "Boosts power of"
+	text  "Boosts power of"
 	next1 "punching moves."
 	done
 
 PoisonHealDescription:
-	ctxt  "Restores HP if"
+	text  "Restores HP if"
 	next1 "it is poisoned."
 	done
 
 AdaptabilityDescription:
-	ctxt  "Powers up same-"
+	text  "Powers up same-"
 	next1 "type moves."
 	done
 
 SkillLinkDescription:
-	ctxt  "Increases multi-"
+	text  "Increases multi-"
 	next1 "strike move hits."
 	done
 
 HydrationDescription:
-	ctxt  "Heals status"
+	text  "Heals status"
 	next1 "problems in rain."
 	done
 
 SolarPowerDescription:
-	ctxt  "Ups Spcl.Atk but"
+	text  "Ups Spcl.Atk but"
 	next1 "lowers HP in sun."
 	done
 
 QuickFeetDescription:
-	ctxt  "Boosts Speed with"
+	text  "Boosts Speed with"
 	next1 "status problems."
 	done
 
 SniperDescription:
-	ctxt  "Powers up critical"
+	text  "Powers up critical"
 	next1 "hits."
 	done
 
 MagicGuardDescription:
-	ctxt  "Only takes damage"
+	text  "Only takes damage"
 	next1 "from attacks."
 	done
 
 NoGuardDescription:
-	ctxt  "Insures attacks by"
+	text  "Insures attacks by"
 	next1 "or against it hit."
 	done
 
 TechnicianDescription:
-	ctxt  "Powers up its"
+	text  "Powers up its"
 	next1 "weaker moves."
 	done
 
 LeafGuardDescription:
-	ctxt  "Prevents status"
+	text  "Prevents status"
 	next1 "problems in sun."
 	done
 
 MoldBreakerDescription:
-	ctxt  "Moves disregard"
+	text  "Moves disregard"
 	next1 "the foe's ability."
 	done
 
 SuperLuckDescription:
-	ctxt  "Boosts the rate"
+	text  "Boosts the rate"
 	next1 "of critical hits."
 	done
 
 AftermathDescription:
-	ctxt  "Damages the foe on"
+	text  "Damages the foe on"
 	next1 "fainting."
 	done
 
 AnticipationDescription:
-	ctxt  "Senses the foe's"
+	text  "Senses the foe's"
 	next1 "dangerous moves."
 	done
 
 ForewarnDescription:
-	ctxt  "Determines the"
+	text  "Determines the"
 	next1 "foe's moves."
 	done
 
 UnawareDescription:
-	ctxt  "Ignores the foe's"
+	text  "Ignores the foe's"
 	next1 "stat changes."
 	done
 
 TintedLensDescription:
-	ctxt  "Powers up not very"
+	text  "Powers up not very"
 	next1 "effective moves."
 	done
 
 FilterDescription:
 SolidRockDescription:
-	ctxt  "Reduces super"
+	text  "Reduces super"
 	next1 "effective damage."
 	done
 
 ScrappyDescription:
-	ctxt  "Enables moves to"
+	text  "Enables moves to"
 	next1 "hit Ghost-types."
 	done
 
 IceBodyDescription:
-	ctxt  "Gradually regains"
+	text  "Gradually regains"
 	next1 "HP in hail."
 	done
 
 SnowWarningDescription:
-	ctxt  "Summons hailstorm"
+	text  "Summons hailstorm"
 	next1 "when switched in."
 	done
 
 FriskDescription:
-	ctxt  "Checks the foe's"
+	text  "Checks the foe's"
 	next1 "held item."
 	done
 
 RecklessDescription:
-	ctxt  "Powers up moves"
+	text  "Powers up moves"
 	next1 "that recoil."
 	done
 
 PickpocketDescription:
-	ctxt  "Steals foe's item"
+	text  "Steals foe's item"
 	next1 "when contacted."
 	done
 
 SheerForceDescription:
-	ctxt  "Removes effects to"
+	text  "Removes effects to"
 	next1 "increase damage."
 	done
 
 ContraryDescription:
-	ctxt  "Inverts the effect"
+	text  "Inverts the effect"
 	next1 "of stat changes."
 	done
 
 UnnerveDescription:
-	ctxt  "Prevents foes from"
+	text  "Prevents foes from"
 	next1 "eating Berries."
 	done
 
 DefiantDescription:
-	ctxt  "Boosts Attack when"
+	text  "Boosts Attack when"
 	next1 "stats are lowered."
 	done
 
 CursedBodyDescription:
-	ctxt  "May disable a move"
+	text  "May disable a move"
 	next1 "used on it."
 	done
 
 WeakArmorDescription:
-	ctxt  "Physical attacks"
+	text  "Physical attacks"
 	next1 "trade Def for Spd."
 	done
 
 LightMetalDescription:
-	ctxt  "Halves the Poké-"
+	text  "Halves the Poké-"
 	next1 "mon's weight."
 	done
 
 MultiscaleDescription:
-	ctxt  "Reduces damage"
+	text  "Reduces damage"
 	next1 "when HP is full."
 	done
 
 HarvestDescription:
-	ctxt  "May recreate a"
+	text  "May recreate a"
 	next1 "Berry after use."
 	done
 
 MoodyDescription:
-	ctxt  "Raises a stat and"
+	text  "Raises a stat and"
 	next1 "lowers another."
 	done
 
 OvercoatDescription:
-	ctxt  "Protects it from"
+	text  "Protects it from"
 	next1 "weather damage."
 	done
 
 PoisonTouchDescription:
-	ctxt  "May poison the foe"
+	text  "May poison the foe"
 	next1 "on contact."
 	done
 
 RegeneratorDescription:
-	ctxt  "Restores HP when"
+	text  "Restores HP when"
 	next1 "withdrawn."
 	done
 
 BigPecksDescription:
-	ctxt  "Prevents foes from"
+	text  "Prevents foes from"
 	next1 "lowering Defense."
 	done
 
 SandRushDescription:
-	ctxt  "Boosts Speed in"
+	text  "Boosts Speed in"
 	next1 "a sandstorm."
 	done
 
 WonderSkinDescription:
-	ctxt  "Makes status moves"
+	text  "Makes status moves"
 	next1 "miss more often."
 	done
 
 AnalyticDescription:
-	ctxt  "Boosts move power"
+	text  "Boosts move power"
 	next1 "when moving last."
 	done
 
 ImposterDescription:
-	ctxt  "Transforms itself"
+	text  "Transforms itself"
 	next1 "into the foe."
 	done
 
 InfiltratorDescription:
-	ctxt  "Attacks bypass the"
+	text  "Attacks bypass the"
 	next1 "foe's barriers."
 	done
 
 MoxieDescription:
-	ctxt  "Boosts Attack when"
+	text  "Boosts Attack when"
 	next1 "knocking out foes."
 	done
 
 JustifiedDescription:
-	ctxt  "Boosts Attack when"
+	text  "Boosts Attack when"
 	next1 "hit by Dark moves."
 	done
 
 RattledDescription:
-	ctxt  "Some scary move"
+	text  "Some scary move"
 	next1 "types boost Speed."
 	done
 
 MagicBounceDescription:
-	ctxt  "Reflects status-"
+	text  "Reflects status-"
 	next1 "changing moves."
 	done
 
 SapSipperDescription:
-	ctxt  "Boosts Attack when"
+	text  "Boosts Attack when"
 	next1 "hit by Grass."
 	done
 
 PranksterDescription:
-	ctxt  "Gives priority to"
+	text  "Gives priority to"
 	next1 "a status move."
 	done
 
 SandForceDescription:
-	ctxt  "Boosts some moves"
+	text  "Boosts some moves"
 	next1 "in a sandstorm."
 	done
 
 FurCoatDescription:
-	ctxt  "Halves damage from"
+	text  "Halves damage from"
 	next1 "physical moves."
 	done
 
+BulletproofDescription:
+	text  "Protects from ball"
+	next1 "and bomb moves."
+	done
+
 CompetitiveDescription:
-	ctxt  "Boosts Spcl.Atk on"
+	text  "Boosts Spcl.Atk on"
 	next1 "stat reduction."
 	done
 
 MegaLauncherDescription:
-	ctxt  "Powers up aura"
+	text  "Powers up aura"
 	next1 "and pulse moves."
 	done
 
 ToughClawsDescription:
-	ctxt  "Boosts moves that"
+	text  "Boosts moves that"
 	next1 "makes contact."
 	done
 
 PixilateDescription:
-	ctxt  "Normal-type moves"
+	text  "Normal-type moves"
 	next1 "become Fairy-type."
 	done
 
 ParentalBondDescription:
-	ctxt  "Parent and child"
+	text  "Parent and child"
 	next1 "attack together."
 	done
 
 BerserkDescription:
-	ctxt  "Ups Spcl.Atk. when"
+	text  "Ups Spcl.Atk. when"
 	next1 "damaged over half."
 	done
 
 SlushRushDescription:
-	ctxt  "Boosts Speed in"
+	text  "Boosts Speed in"
 	next1 "a hailstorm."
 	done
 
 GalvanizeDescription:
-	ctxt  "Normal-type moves"
+	text  "Normal-type moves"
 	next1 "become Electric."
 	done
 
 CorrosionDescription:
-	ctxt  "Foes of any type"
+	text  "Foes of any type"
 	next1 "can be poisoned."
 	done
 
 TanglingHairDescription:
-	ctxt  "Contact may lower"
+	text  "Contact may lower"
 	next1 "the foe's Speed."
 	done
 
 GorillaTacticsDescription:
-	ctxt  "Boosts Attack, but"
+	text  "Boosts Attack, but"
 	next1 "allows one move."
 	done
 
 NeutralizingGasDescription:
-	ctxt  "Suppresses all"
+	text  "Suppresses all"
 	next1 "other Abilities."
 	done
 
 QuickDrawDescription:
-	ctxt  "Moves first"
+	text  "Moves first"
 	next1 "occasionally."
 	done
 
 SteelySpiritDescription:
-	ctxt  "Boosts Steel-type"
+	text  "Boosts Steel-type"
 	next1 "moves."
 	done
 
 PerishBodyDescription:
-	ctxt  "Contact causes Pe-"
+	text  "Contact causes Pe-"
 	next1 "rish Song status."
 	done
 
 ScreenCleanerDescription:
-	ctxt  "Removes screens"
+	text  "Removes screens"
 	next1 "when switched in."
 	done

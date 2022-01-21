@@ -31,7 +31,7 @@ EcruteakItemfinderGuy:
 	jumpthisopenedtext
 
 ItemfinderExplanationText:
-	ctxt "There are many"
+	text "There are many"
 	line "items lying about"
 
 	para "that aren't ob-"
@@ -66,7 +66,7 @@ EcruteakHistoryBook:
 	iffalse_endtext
 	jumpthisopenedtext
 
-	ctxt "Ecruteak was also"
+	text "Ecruteak was also"
 	line "home to three"
 
 	para "#mon that raced"
@@ -90,7 +90,7 @@ EcruteakHistoryBook:
 	done
 
 EcruteakItemfinderAdventureText:
-	ctxt "Ah. You're on an"
+	text "Ah. You're on an"
 	line "adventure with"
 	cont "your #mon?"
 
@@ -103,7 +103,7 @@ EcruteakItemfinderAdventureText:
 	done
 
 EcruteakItemfinderTrueSpiritText:
-	ctxt "Good! You under-"
+	text "Good! You under-"
 	line "stand the true"
 
 	para "spirit of adven-"
@@ -114,19 +114,19 @@ EcruteakItemfinderTrueSpiritText:
 	done
 
 EcruteakItemfinderToEachHisOwnText:
-	ctxt "Oh… To each his"
+	text "Oh… To each his"
 	line "own, I suppose…"
 	done
 
 EcruteakHistoryBookText:
-	ctxt "History of"
+	text "History of"
 	line "Ecruteak"
 
 	para "Want to read it?"
 	done
 
 EcruteakTwoTowersText:
-	ctxt "In Ecruteak, there"
+	text "In Ecruteak, there"
 	line "were two towers."
 
 	para "Each tower was the"

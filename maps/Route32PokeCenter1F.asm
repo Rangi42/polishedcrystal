@@ -23,7 +23,7 @@ PokemonJournalKurtScript:
 	setflag ENGINE_READ_KURT_JOURNAL
 	jumpthistext
 
-	ctxt "#mon Journal"
+	text "#mon Journal"
 
 	para "Special Feature:"
 	line "Craftsman Kurt!"
@@ -56,7 +56,7 @@ Route32Pokecenter1FFishingGuruScript:
 	end
 
 .IntroText:
-	ctxt "This is a great"
+	text "This is a great"
 	line "fishing spot."
 
 	para "You saw people"
@@ -68,7 +68,7 @@ Route32Pokecenter1FFishingGuruScript:
 	done
 
 .YesText:
-	ctxt "Heh, that's good"
+	text "Heh, that's good"
 	line "to hear."
 
 	para "Now you're an"
@@ -76,7 +76,7 @@ Route32Pokecenter1FFishingGuruScript:
 	done
 
 .AfterText:
-	ctxt "Fishing is great!"
+	text "Fishing is great!"
 
 	para "If there's water,"
 	line "be it the sea or a"
@@ -86,12 +86,12 @@ Route32Pokecenter1FFishingGuruScript:
 	done
 
 .NoText:
-	ctxt "Oh. That's rather"
+	text "Oh. That's rather"
 	line "disappointing…"
 	done
 
 .DoneText:
-	ctxt "Yo, kid. How are"
+	text "Yo, kid. How are"
 	line "they biting?"
 	done
 
@@ -114,7 +114,7 @@ Route32PokeCenter1FPokefanMScript:
 	setevent EVENT_GOT_LURE_BALL_FROM_FRENCHMAN
 	jumpthisopenedtext
 
-	ctxt "This Ball easily"
+	text "This Ball easily"
 	line "catches #mon"
 	cont "hooked on a Rod!"
 
@@ -130,13 +130,13 @@ Route32PokeCenter1FPokefanMScript:
 	endtext
 
 .Text1:
-	ctxt "Bonjour. How are"
+	text "Bonjour. How are"
 	line "you? Do you know"
 	cont "about Apricorns?"
 	done
 
 .Text2:
-	ctxt "Non? What a waste!"
+	text "Non? What a waste!"
 	line "I will show you"
 
 	para "how great Apri-"
@@ -144,7 +144,7 @@ Route32PokeCenter1FPokefanMScript:
 	done
 
 .Text3:
-	ctxt "Youpi! Way to go!"
+	text "Youpi! Way to go!"
 	line "I feel so great,"
 
 	para "I want to give you"
@@ -152,7 +152,7 @@ Route32PokeCenter1FPokefanMScript:
 	done
 
 .Text5:
-	ctxt "Kurt is the hero"
+	text "Kurt is the hero"
 	line "of every Apricorn"
 	cont "collector."
 
@@ -161,7 +161,7 @@ Route32PokeCenter1FPokefanMScript:
 	done
 
 Route32Pokecenter1FCooltrainerFText:
-	ctxt "What should I make"
+	text "What should I make"
 	line "my #mon hold?"
 
 	para "Maybe an item that"

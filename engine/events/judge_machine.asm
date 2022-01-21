@@ -54,7 +54,7 @@ JudgeMachine:
 	jmp PrintText
 
 NewsMachineOffText:
-	ctxt "It's the #mon"
+	text "It's the #mon"
 	line "Judge Machine!"
 
 	para "It's not in"
@@ -62,7 +62,7 @@ NewsMachineOffText:
 	done
 
 NewsMachineIntroText:
-	ctxt "It's the #mon"
+	text "It's the #mon"
 	line "Judge Machine!"
 
 	para "Would you like to"
@@ -71,27 +71,27 @@ NewsMachineIntroText:
 	done
 
 NewsMachineWhichMonText:
-	ctxt "Please select"
+	text "Please select"
 	line "a #mon."
 	prompt
 
 NewsMachinePrepText:
-	ctxt "Visualizing your"
+	text "Visualizing your"
 	line "#mon's power…"
 	prompt
 
 NewsMachineContinueText:
-	ctxt "Would you like"
+	text "Would you like"
 	line "to judge another"
 	cont "#mon?"
 	done
 
 NewsMachineCancelText:
-	ctxt "Goodbye!"
+	text "Goodbye!"
 	done
 
 NewsMachineEggText:
-	ctxt "An Egg doesn't"
+	text "An Egg doesn't"
 	line "have any power"
 	cont "yet to judge!"
 	done

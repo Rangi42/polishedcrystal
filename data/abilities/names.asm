@@ -132,6 +132,7 @@ AbilityNames:
 	dw Prankster
 	dw SandForce
 	dw FurCoat
+	dw Bulletproof
 	dw Competitive
 	dw MegaLauncher
 	dw ToughClaws
@@ -283,6 +284,7 @@ SapSipper:       rawchar "Sap Sipper@"
 Prankster:       rawchar "Prankster@"
 SandForce:       rawchar "Sand Force@"
 FurCoat:         rawchar "Fur Coat@"
+Bulletproof:     rawchar "Bulletproof@"
 Competitive:     rawchar "Competitive@"
 MegaLauncher:    rawchar "Mega Launcher@"
 ToughClaws:      rawchar "Tough Claws@"

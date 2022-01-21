@@ -56,7 +56,7 @@ Route46TutorRoute46Script:
 GenericTrainerCamperTed:
 	generictrainer CAMPER, TED, EVENT_BEAT_CAMPER_TED, CamperTedSeenText, CamperTedBeatenText
 
-	ctxt "I did my best but"
+	text "I did my best but"
 	line "came up short."
 
 	para "No excuses--I"
@@ -180,13 +180,13 @@ Route46RematchGiftF:
 GenericTrainerHikerBailey:
 	generictrainer HIKER, BAILEY, EVENT_BEAT_HIKER_BAILEY, HikerBaileySeenText, HikerBaileyBeatenText
 
-	ctxt "It's over. I don't"
+	text "It's over. I don't"
 	line "mind. We Hikers"
 	cont "are like that."
 	done
 
 Route46HikerText:
-	ctxt "A Donphan charged"
+	text "A Donphan charged"
 	line "at me and I roll-"
 
 	para "ed all the way"
@@ -200,7 +200,7 @@ Route46HikerText:
 	done
 
 Text_Route46TutorRollout:
-	ctxt "I'll teach your"
+	text "I'll teach your"
 	line "#mon how to"
 
 	para "use Rollout for"
@@ -208,52 +208,52 @@ Text_Route46TutorRollout:
 	done
 
 Text_Route46TutorNoSilverLeaf:
-	ctxt "Ah well, you don't"
+	text "Ah well, you don't"
 	line "have a Silver"
 	cont "Leaf."
 	done
 
 Text_Route46TutorQuestion:
-	ctxt "Should I teach"
+	text "Should I teach"
 	line "your #mon"
 	cont "Rollout?"
 	done
 
 Text_Route46TutorRefused:
-	ctxt "Suit yourself."
+	text "Suit yourself."
 	done
 
 Text_Route46TutorTaught:
-	ctxt "All done! Your"
+	text "All done! Your"
 	line "#mon learned"
 	cont "to use Rollout!"
 	done
 
 HikerBaileySeenText:
-	ctxt "Awright! I'll show"
+	text "Awright! I'll show"
 	line "you the power of"
 	cont "mountain #mon!"
 	done
 
 HikerBaileyBeatenText:
-	ctxt "Mercy! You showed"
+	text "Mercy! You showed"
 	line "me your power!"
 	done
 
 CamperTedSeenText:
-	ctxt "I'm raising #-"
+	text "I'm raising #-"
 	line "mon too!"
 
 	para "Will you battle"
 	line "with me?"
 	done
 
-CamperTedBeatenText: ; ctxt > text
+CamperTedBeatenText: ; text > text
 	text "Wha…?"
 	done
 
 PicnickerErin1SeenText:
-	ctxt "I raise #mon"
+	text "I raise #mon"
 	line "too!"
 
 	para "Will you battle"
@@ -261,11 +261,11 @@ PicnickerErin1SeenText:
 	done
 
 PicnickerErin1BeatenText:
-	ctxt "Oh, rats!"
+	text "Oh, rats!"
 	done
 
 PicnickerErinAfterBattleText:
-	ctxt "I've been to many"
+	text "I've been to many"
 	line "Gyms, but the Gym"
 
 	para "in Goldenrod is my"
@@ -276,7 +276,7 @@ PicnickerErinAfterBattleText:
 	done
 
 PicnickerErin2BeatenText:
-	ctxt "Aww… I keep losing"
+	text "Aww… I keep losing"
 	line "all the time!"
 
 	para "I'll just have to"
@@ -291,12 +291,12 @@ PicnickerErin2BeatenText:
 	done
 
 Route46SignText:
-	ctxt "Route 46"
+	text "Route 46"
 	line "Mountain Rd. Ahead"
 	done
 
 Route46LassText:
-	ctxt "A dead end…?"
+	text "A dead end…?"
 
 	para "Did I take the"
 	line "wrong path?"

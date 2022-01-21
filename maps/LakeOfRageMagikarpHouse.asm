@@ -68,7 +68,7 @@ MagikarpLengthRaterScript:
 .TooShort:
 	jumpthisopenedtext
 
-	ctxt "Wow! This one is"
+	text "Wow! This one is"
 	line "outstanding!"
 
 	para "…I wish I could"
@@ -81,7 +81,7 @@ MagikarpLengthRaterScript:
 .Refused:
 	jumpthisopenedtext
 
-	ctxt "Oh… So you didn't"
+	text "Oh… So you didn't"
 	line "get one good"
 
 	para "enough to show me?"
@@ -89,7 +89,7 @@ MagikarpLengthRaterScript:
 	done
 
 MagikarpLengthRaterText_LakeOfRageHistory:
-	ctxt "Lake of Rage is"
+	text "Lake of Rage is"
 	line "actually a crater"
 
 	para "made by rampaging"
@@ -118,7 +118,7 @@ MagikarpLengthRaterText_LakeOfRageHistory:
 	done
 
 MagikarpLengthRaterText_MenInBlack:
-	ctxt "The lake hasn't"
+	text "The lake hasn't"
 	line "been normal since"
 
 	para "those men wearing"
@@ -126,7 +126,7 @@ MagikarpLengthRaterText_MenInBlack:
 	done
 
 MagikarpLengthRaterText_WorldsLargestMagikarp:
-	ctxt "Lake of Rage is"
+	text "Lake of Rage is"
 	line "back to normal."
 
 	para "The Magikarp have"
@@ -143,7 +143,7 @@ MagikarpLengthRaterText_WorldsLargestMagikarp:
 	done
 
 MagikarpLengthRaterText_YouHaveAMagikarp:
-	ctxt "Ah, you have a"
+	text "Ah, you have a"
 	line "Magikarp! Let's"
 
 	para "see how big that"
@@ -151,7 +151,7 @@ MagikarpLengthRaterText_YouHaveAMagikarp:
 	done
 
 MagikarpLengthRaterText_Memento:
-	ctxt "Wow! This one is"
+	text "Wow! This one is"
 	line "outstanding!"
 
 	para "I tip my hat to"
@@ -162,7 +162,7 @@ MagikarpLengthRaterText_Memento:
 	done
 
 MagikarpLengthRaterText_Bonus:
-	ctxt "The record is the"
+	text "The record is the"
 	line "important thing."
 
 	para "Think of that as"
@@ -170,6 +170,6 @@ MagikarpLengthRaterText_Bonus:
 	done
 
 MagikarpLengthRaterText_NotMagikarp:
-	ctxt "What? That's not a"
+	text "What? That's not a"
 	line "Magikarp!"
 	done

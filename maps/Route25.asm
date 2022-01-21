@@ -31,49 +31,49 @@ Route25_MapScriptHeader:
 GenericTrainerSchoolboyDudley:
 	generictrainer SCHOOLBOY, DUDLEY, EVENT_BEAT_SCHOOLBOY_DUDLEY, SchoolboyDudleySeenText, SchoolboyDudleyBeatenText
 
-	ctxt "I did my best."
+	text "I did my best."
 	line "I have no regrets."
 	done
 
 GenericTrainerLassEllen:
 	generictrainer LASS, ELLEN, EVENT_BEAT_LASS_ELLEN, LassEllenSeenText, LassEllenBeatenText
 
-	ctxt "I did my best."
+	text "I did my best."
 	line "I have no regrets."
 	done
 
 GenericTrainerSchoolboyJoe:
 	generictrainer SCHOOLBOY, JOE, EVENT_BEAT_SCHOOLBOY_JOE, SchoolboyJoeSeenText, SchoolboyJoeBeatenText
 
-	ctxt "I did my best."
+	text "I did my best."
 	line "I have no regrets."
 	done
 
 GenericTrainerLassLaura:
 	generictrainer LASS, LAURA, EVENT_BEAT_LASS_LAURA, LassLauraSeenText, LassLauraBeatenText
 
-	ctxt "I did my best."
+	text "I did my best."
 	line "I have no regrets."
 	done
 
 GenericTrainerCamperLloyd:
 	generictrainer CAMPER, LLOYD, EVENT_BEAT_CAMPER_LLOYD, CamperLloydSeenText, CamperLloydBeatenText
 
-	ctxt "I did my best."
+	text "I did my best."
 	line "I have no regrets."
 	done
 
 GenericTrainerLassShannon:
 	generictrainer LASS, SHANNON, EVENT_BEAT_LASS_SHANNON, LassShannonSeenText, LassShannonBeatenText
 
-	ctxt "I did my best."
+	text "I did my best."
 	line "I have no regrets."
 	done
 
 GenericTrainerSupernerdPat:
 	generictrainer SUPER_NERD, PAT, EVENT_BEAT_SUPER_NERD_PAT, SupernerdPatSeenText, SupernerdPatBeatenText
 
-	ctxt "I'm sorry… I won't"
+	text "I'm sorry… I won't"
 	line "cheat anymore…"
 	done
 
@@ -120,7 +120,7 @@ Route25CooltrainerMovementData:
 	step_end
 
 SchoolboyDudleySeenText:
-	ctxt "Beat the six of us"
+	text "Beat the six of us"
 	line "trainers to win a"
 	cont "fabulous prize!"
 
@@ -129,57 +129,57 @@ SchoolboyDudleySeenText:
 	done
 
 SchoolboyDudleyBeatenText:
-	ctxt "Whoo! Good stuff."
+	text "Whoo! Good stuff."
 	done
 
 LassEllenSeenText:
-	ctxt "I'm second."
+	text "I'm second."
 	line "Now it's serious!"
 	done
 
 LassEllenBeatenText:
-	ctxt "How could I lose?"
+	text "How could I lose?"
 	done
 
 SchoolboyJoeSeenText:
-	ctxt "Here's No. 3!"
+	text "Here's No. 3!"
 	line "I won't be easy."
 	done
 
 SchoolboyJoeBeatenText:
-	ctxt "Ow! Stomped flat!"
+	text "Ow! Stomped flat!"
 	done
 
 LassLauraSeenText:
-	ctxt "I'm No. 4!"
+	text "I'm No. 4!"
 	line "Getting tired?"
 	done
 
 LassLauraBeatenText:
-	ctxt "I lost too…"
+	text "I lost too…"
 	done
 
 CamperLloydSeenText:
-	ctxt "OK! I'm No. 5."
+	text "OK! I'm No. 5."
 	line "I'll stomp you!"
 	done
 
 CamperLloydBeatenText:
-	ctxt "Whoa! Too much."
+	text "Whoa! Too much."
 	done
 
 LassShannonSeenText:
-	ctxt "I'm the last in"
+	text "I'm the last in"
 	line "line, but I tell"
 	cont "you, I'm tough!"
 	done
 
 LassShannonBeatenText:
-	ctxt "You're kidding."
+	text "You're kidding."
 	done
 
 SupernerdPatSeenText:
-	ctxt "Mufufufu…"
+	text "Mufufufu…"
 
 	para "I have nothing to"
 	line "do with the six-"
@@ -193,12 +193,12 @@ SupernerdPatSeenText:
 	done
 
 SupernerdPatBeatenText:
-	ctxt "Aren't you tired"
+	text "Aren't you tired"
 	line "at all?"
 	done
 
 Route25MewYoungsterText:
-	ctxt "One time I saw a"
+	text "One time I saw a"
 	line "Mew around here!"
 
 	para "You don't believe"
@@ -207,17 +207,17 @@ Route25MewYoungsterText:
 	done
 
 Route25SlowpokeText1:
-	ctxt "Slowpoke: …"
+	text "Slowpoke: …"
 
 	para "…… …… ……"
 	done
 
 Route25SlowpokeText2:
-	ctxt "…… ……Yawn?"
+	text "…… ……Yawn?"
 	done
 
 CooltrainermKevinNuggetText:
-	ctxt "You took on one"
+	text "You took on one"
 	line "more battle than"
 
 	para "you expected, but"
@@ -228,7 +228,7 @@ CooltrainermKevinNuggetText:
 	done
 
 CooltrainermKevinSeenText:
-	ctxt "But after seeing"
+	text "But after seeing"
 	line "how you battle, I"
 
 	para "want to see how"
@@ -239,12 +239,12 @@ CooltrainermKevinSeenText:
 	done
 
 CooltrainermKevinBeatenText:
-	ctxt "I've never had a"
+	text "I've never had a"
 	line "battle this good!"
 	done
 
 CooltrainermKevinAfterBattleText:
-	ctxt "That was a great"
+	text "That was a great"
 	line "battle!"
 
 	para "You and your #-"
@@ -253,7 +253,7 @@ CooltrainermKevinAfterBattleText:
 	done
 
 NuggetBridgeNotClearedText:
-	ctxt "Hey there!"
+	text "Hey there!"
 
 	para "Six trainers and"
 	line "I are hosting a"

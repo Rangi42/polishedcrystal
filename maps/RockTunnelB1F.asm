@@ -26,7 +26,7 @@ RockTunnelB1F_MapScriptHeader:
 GenericTrainerFirebreatherDick:
 	generictrainer FIREBREATHER, DICK, EVENT_BEAT_FIREBREATHER_DICK, FirebreatherDickSeenText, FirebreatherDickBeatenText
 
-	ctxt "A #mon that"
+	text "A #mon that"
 	line "knows Flash is"
 
 	para "helpful in dark"
@@ -36,7 +36,7 @@ GenericTrainerFirebreatherDick:
 GenericTrainerHexManiacVivian:
 	generictrainer HEX_MANIAC, VIVIAN, EVENT_BEAT_HEX_MANIAC_VIVIAN, HexManiacVivianSeenText, HexManiacVivianBeatenText
 
-	ctxt "This spooky hex"
+	text "This spooky hex"
 	line "maniac persona"
 
 	para "actually takes"
@@ -44,22 +44,22 @@ GenericTrainerHexManiacVivian:
 	done
 
 FirebreatherDickSeenText:
-	ctxt "I'm using fire to"
+	text "I'm using fire to"
 	line "to see my way out!"
 	done
 
 FirebreatherDickBeatenText:
-	ctxt "Help! The fire"
+	text "Help! The fire"
 	line "went out!"
 	done
 
 HexManiacVivianSeenText:
-	ctxt "Do you hear the"
+	text "Do you hear the"
 	line "voices calling?"
 	done
 
 HexManiacVivianBeatenText:
-	ctxt "It was only an"
+	text "It was only an"
 	line "echo?!"
 	done
 

@@ -29,7 +29,7 @@ CherrygroveMartCooltrainerMScript:
 	iftrue_jumptextfaceplayer CherrygroveMartCooltrainerMText_PokeBallsInStock
 	jumpthistextfaceplayer
 
-	ctxt "They're fresh out"
+	text "They're fresh out"
 	line "of # Balls!"
 
 	para "When will they get"
@@ -37,13 +37,13 @@ CherrygroveMartCooltrainerMScript:
 	done
 
 CherrygroveMartCooltrainerMText_PokeBallsInStock:
-	ctxt "# Balls are in"
+	text "# Balls are in"
 	line "stock! Now I can"
 	cont "catch #mon!"
 	done
 
 CherrygroveMartYoungsterText:
-	ctxt "When I was walking"
+	text "When I was walking"
 	line "in the grass, a"
 
 	para "bug #mon poi-"

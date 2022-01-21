@@ -182,7 +182,7 @@ TrainerYoungsterJoey:
 GenericTrainerYoungsterMikey:
 	generictrainer YOUNGSTER, MIKEY, EVENT_BEAT_YOUNGSTER_MIKEY, YoungsterMikeySeenText, YoungsterMikeyBeatenText
 
-	ctxt "Becoming a good"
+	text "Becoming a good"
 	line "trainer is really"
 	cont "tough."
 
@@ -194,7 +194,7 @@ GenericTrainerYoungsterMikey:
 GenericTrainerBug_catcherDon:
 	generictrainer BUG_CATCHER, DON, EVENT_BEAT_BUG_CATCHER_DON, Bug_catcherDonSeenText, Bug_catcherDonBeatenText
 
-	ctxt "I ran out of #"
+	text "I ran out of #"
 	line "Balls while I was"
 	cont "catching #mon."
 
@@ -218,19 +218,19 @@ Route30_MikeysPidgeyAttacksMovement:
 	step_end
 
 Text_UseTackle:
-	ctxt "Go, Rattata!"
+	text "Go, Rattata!"
 
 	para "Tackle!"
 	done
 
 Text_ThisIsABigBattle:
-	ctxt "What? This is a"
+	text "What? This is a"
 	line "big battle!"
 	cont "Leave me alone!"
 	done
 
 YoungsterJoey1SeenText:
-	ctxt "I just lost, so"
+	text "I just lost, so"
 	line "I'm trying to find"
 	cont "more #mon."
 
@@ -240,12 +240,12 @@ YoungsterJoey1SeenText:
 	done
 
 YoungsterJoey1BeatenText:
-	ctxt "Ack! I lost again!"
+	text "Ack! I lost again!"
 	line "Doggone it!"
 	done
 
 YoungsterJoey1AfterText:
-	ctxt "Do I have to have"
+	text "Do I have to have"
 	line "more #mon in"
 
 	para "order to battle"
@@ -257,7 +257,7 @@ YoungsterJoey1AfterText:
 	done
 
 YoungsterMikeySeenText:
-	ctxt "You're a #mon"
+	text "You're a #mon"
 	line "trainer, right?"
 
 	para "Then you have to"
@@ -265,35 +265,35 @@ YoungsterMikeySeenText:
 	done
 
 YoungsterMikeyBeatenText:
-	ctxt "That's strange."
+	text "That's strange."
 	line "I won before."
 	done
 
 Bug_catcherDonSeenText:
-	ctxt "Instead of a bug"
+	text "Instead of a bug"
 	line "#mon, I found"
 	cont "a trainer!"
 	done
 
 Bug_catcherDonBeatenText:
-	ctxt "Argh! You're too"
+	text "Argh! You're too"
 	line "strong!"
 	done
 
 Route30YoungsterText_DirectionsToMrPokemonsHouse:
-	ctxt "Mr.#mon's"
+	text "Mr.#mon's"
 	line "house? It's a bit"
 	cont "farther ahead."
 	done
 
 Route30YoungsterText_EveryoneIsBattling:
-	ctxt "Everyone's having"
+	text "Everyone's having"
 	line "fun battling!"
 	cont "You should too!"
 	done
 
 Route30CooltrainerFText:
-	ctxt "I'm not a trainer."
+	text "I'm not a trainer."
 
 	para "But if you look"
 	line "one in the eyes,"
@@ -301,28 +301,28 @@ Route30CooltrainerFText:
 	done
 
 Route30SignText:
-	ctxt "Route 30"
+	text "Route 30"
 
 	para "Cherrygrove City -"
 	line "Violet City"
 	done
 
 MrPokemonsHouseDirectionsSignText:
-	ctxt "Mr.#mon's House"
+	text "Mr.#mon's House"
 	line "Straight Ahead!"
 	done
 
 MrPokemonsHouseSignText:
-	ctxt "Mr.#mon's House"
+	text "Mr.#mon's House"
 	done
 
 BerryMastersHouseSignText:
-	ctxt "Berry Master's"
+	text "Berry Master's"
 	line "House"
 	done
 
 Route30TrainerTipsText:
-	ctxt "Trainer Tips"
+	text "Trainer Tips"
 
 	para "No stealing other"
 	line "people's #mon!"
@@ -333,7 +333,7 @@ Route30TrainerTipsText:
 	done
 
 YoungsterJoeyText_GiveHPUpAfterBattle:
-	ctxt "I lost again…"
+	text "I lost again…"
 	line "Gee, you're tough!"
 
 	para "Oh yeah, I almost"

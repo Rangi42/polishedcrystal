@@ -30,7 +30,7 @@ GoldenrodHappinessRaterTeacherScript:
 	ifgreater $31, .NotUsedToYou
 	jumpthisopenedtext
 
-	ctxt "It doesn't seem to"
+	text "It doesn't seem to"
 	line "like you at all."
 	cont "It looks mean."
 	done
@@ -38,7 +38,7 @@ GoldenrodHappinessRaterTeacherScript:
 .LovesYouALot:
 	jumpthisopenedtext
 
-	ctxt "It looks really"
+	text "It looks really"
 	line "happy! It must"
 	cont "love you a lot."
 	done
@@ -46,7 +46,7 @@ GoldenrodHappinessRaterTeacherScript:
 .ReallyTrustsYou:
 	jumpthisopenedtext
 
-	ctxt "I get the feeling"
+	text "I get the feeling"
 	line "that it really"
 	cont "trusts you."
 	done
@@ -54,7 +54,7 @@ GoldenrodHappinessRaterTeacherScript:
 .SortOfHappy:
 	jumpthisopenedtext
 
-	ctxt "It's friendly to-"
+	text "It's friendly to-"
 	line "ward you. It looks"
 	cont "sort of happy."
 	done
@@ -62,19 +62,19 @@ GoldenrodHappinessRaterTeacherScript:
 .QuiteCute:
 	jumpthisopenedtext
 
-	ctxt "It's quite cute."
+	text "It's quite cute."
 	done
 
 .NotUsedToYou:
 	jumpthisopenedtext
 
-	ctxt "You should treat"
+	text "You should treat"
 	line "it better. It's"
 	cont "not used to you."
 	done
 
 GoldenrodHappinessRaterTeacherText:
-	ctxt "If you treat your"
+	text "If you treat your"
 	line "#mon nicely,"
 
 	para "they will love you"
@@ -87,7 +87,7 @@ GoldenrodHappinessRaterTeacherText:
 	done
 
 GoldenrodHappinessRaterPokefanMText:
-	ctxt "I keep losing in"
+	text "I keep losing in"
 	line "battles, and my"
 
 	para "#mon end up"
@@ -99,7 +99,7 @@ GoldenrodHappinessRaterPokefanMText:
 	done
 
 GoldenrodHappinessRaterTwinText:
-	ctxt "When I use an item"
+	text "When I use an item"
 	line "on my #mon, it"
 	cont "acts really glad!"
 	done

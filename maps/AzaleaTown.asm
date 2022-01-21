@@ -120,7 +120,7 @@ AzaleaTownRivalBattleTrigger2:
 	end
 
 .SeenText:
-	ctxt "…Tell me some-"
+	text "…Tell me some-"
 	line "thing."
 
 	para "Is it true that"
@@ -137,7 +137,7 @@ AzaleaTownRivalBattleTrigger2:
 	done
 
 .WinText:
-	ctxt "…Humph! Useless"
+	text "…Humph! Useless"
 	line "#mon!"
 
 	para "Listen, you. You"
@@ -148,12 +148,12 @@ AzaleaTownRivalBattleTrigger2:
 	done
 
 .LossText:
-	ctxt "…Humph! I knew"
+	text "…Humph! I knew"
 	line "you were lying."
 	done
 
 .AfterText:
-	ctxt "I hate the weak."
+	text "I hate the weak."
 
 	para "#mon, trainers."
 	line "It doesn't matter"
@@ -201,7 +201,7 @@ AzaleaTown_CelebiTrigger:
 	applymovement PLAYER, .WalkOutOfKurtsHouseMovement
 	opentext
 	writethistext
-		ctxt "Ilex Forest is"
+		text "Ilex Forest is"
 		line "restless!"
 
 		para "What is going on?"
@@ -209,7 +209,7 @@ AzaleaTown_CelebiTrigger:
 	promptbutton
 	turnobject AZALEATOWN_KURT, RIGHT
 	writethistext
-		ctxt "<PLAYER>, here's"
+		text "<PLAYER>, here's"
 		line "your GS Ball back!"
 		done
 	promptbutton
@@ -231,7 +231,7 @@ AzaleaTown_CelebiTrigger:
 	step_end
 
 AzaleaTownSignText:
-	ctxt "Azalea Town"
+	text "Azalea Town"
 	line "Where People and"
 
 	para "#mon Live in"
@@ -239,11 +239,11 @@ AzaleaTownSignText:
 	done
 
 KurtsHouseSignText:
-	ctxt "Kurt's House"
+	text "Kurt's House"
 	done
 
 AzaleaGymSignText:
-	ctxt "Azalea Town"
+	text "Azalea Town"
 	line "#mon Gym"
 	cont "Leader: Bugsy"
 
@@ -253,7 +253,7 @@ AzaleaGymSignText:
 	done
 
 SlowpokeWellSignText:
-	ctxt "Slowpoke Well"
+	text "Slowpoke Well"
 
 	para "Also known as the"
 	line "Rainmaker Well."
@@ -270,11 +270,11 @@ SlowpokeWellSignText:
 	done
 
 CharcoalKilnSignText:
-	ctxt "Charcoal Kiln"
+	text "Charcoal Kiln"
 	done
 
 AzaleaTownIlexForestSignText:
-	ctxt "Ilex Forest"
+	text "Ilex Forest"
 
 	para "Enter through the"
 	line "gate."
@@ -285,7 +285,7 @@ AzaleaTownGrampsScript:
 	iftrue_jumptextfaceplayer .Text2
 	jumpthistextfaceplayer
 
-	ctxt "The Slowpoke have"
+	text "The Slowpoke have"
 	line "disappeared from"
 	cont "town…"
 
@@ -295,7 +295,7 @@ AzaleaTownGrampsScript:
 	done
 
 .Text2:
-	ctxt "The Slowpoke have"
+	text "The Slowpoke have"
 	line "returned."
 
 	para "Knowing them, they"
@@ -306,7 +306,7 @@ AzaleaTownGrampsScript:
 	done
 
 AzaleaTownTeacherText:
-	ctxt "Did you come to"
+	text "Did you come to"
 	line "get Kurt to make"
 	cont "some Balls?"
 
@@ -315,7 +315,7 @@ AzaleaTownTeacherText:
 	done
 
 AzaleaTownYoungsterText:
-	ctxt "Cut through Azalea"
+	text "Cut through Azalea"
 	line "and you'll be in"
 	cont "Ilex Forest."
 
@@ -331,7 +331,7 @@ AzaleaTownYoungsterText:
 	done
 
 AzaleaTownRocket1Text:
-	ctxt "It's unsafe to go"
+	text "It's unsafe to go"
 	line "in there, so I'm"
 	cont "standing guard."
 
@@ -340,7 +340,7 @@ AzaleaTownRocket1Text:
 	done
 
 AzaleaTownRocket2Text:
-	ctxt "Do you know about"
+	text "Do you know about"
 	line "SlowpokeTail? I"
 	cont "heard it's tasty!"
 
@@ -351,13 +351,13 @@ AzaleaTownRocket2Text:
 AzaleaTownSlowpokeScript:
 	opentext
 	writethistext
-		ctxt "Slowpoke: …"
+		text "Slowpoke: …"
 
 		para "…… …… ……"
 		done
 	pause 60
 	writethistext
-		ctxt "…… ……Yawn?"
+		text "…… ……Yawn?"
 		done
 	cry SLOWPOKE
 	waitendtext
@@ -368,7 +368,7 @@ AzaleaTownKurtScript:
 	end
 
 AzaleaTownKurtText:
-	ctxt "Could you go see"
+	text "Could you go see"
 	line "why Ilex Forest is"
 	cont "so restless?"
 	done

@@ -16,7 +16,7 @@ VioletOnixTradeHouse_MapScriptHeader:
 	object_event  6,  5, SPRITE_SCHOOLBOY, SPRITEMOVEDATA_WALK_UP_DOWN, 2, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_COMMAND, trade, NPC_TRADE_KYLE, -1
 
 VioletKylesHousePokefanMText:
-	ctxt "A #mon you get"
+	text "A #mon you get"
 	line "in a trade grows"
 	cont "quickly."
 

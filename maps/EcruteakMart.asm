@@ -17,7 +17,7 @@ EcruteakMart_MapScriptHeader:
 	object_event  6,  6, SPRITE_RICH_BOY, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, PAL_NPC_PURPLE, OBJECTTYPE_COMMAND, jumptextfaceplayer, EcruteakMartGrannyText, -1
 
 EcruteakMartSuperNerdText:
-	ctxt "My Eevee evolved"
+	text "My Eevee evolved"
 	line "into an Espeon."
 
 	para "But my friend's"
@@ -32,7 +32,7 @@ EcruteakMartSuperNerdText:
 	done
 
 EcruteakMartGrannyText:
-	ctxt "The Magnet Train"
+	text "The Magnet Train"
 	line "in Goldenrod is"
 	cont "great, but there"
 

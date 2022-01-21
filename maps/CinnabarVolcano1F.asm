@@ -78,7 +78,7 @@ CinnabarVolcano1FBouldersFall:
 	earthquake 80
 	jumpthistext
 
-	ctxt "The boulder fell"
+	text "The boulder fell"
 	line "through!"
 	done
 
@@ -117,7 +117,7 @@ CinnabarVolcano1FBuckScript:
 	end
 
 .ChallengeText:
-	ctxt "Howdy! I'm Buck."
+	text "Howdy! I'm Buck."
 	line "And you're…"
 	cont "<PLAYER>?"
 
@@ -141,24 +141,24 @@ CinnabarVolcano1FBuckScript:
 	done
 
 .YesText:
-	ctxt "OK! I'm telling you"
+	text "OK! I'm telling you"
 	line "right now. I'm ser-"
 	cont "iously tough."
 	done
 
 .NoText:
-	ctxt "I'll keep asking"
+	text "I'll keep asking"
 	line "until you say"
 	cont "“Yes!”"
 	done
 
 .BeatenText:
-	ctxt "Heeheehee!"
+	text "Heeheehee!"
 	line "So hot, you!"
 	done
 
 .ItemText:
-	ctxt "Fweh! Too much!"
+	text "Fweh! Too much!"
 
 	para "This volcano's"
 	line "treasure isn't for"
@@ -173,7 +173,7 @@ CinnabarVolcano1FBuckScript:
 	done
 
 .GoodbyeText:
-	ctxt "I guess I'll better"
+	text "I guess I'll better"
 	line "my team at the"
 	cont "Battle Tower."
 
@@ -185,7 +185,7 @@ CinnabarVolcano1FBuckScript:
 GenericTrainerScientistOskar:
 	generictrainer SCIENTIST, OSKAR, EVENT_BEAT_SCIENTIST_OSKAR, ScientistOskarSeenText, ScientistOskarBeatenText
 
-	ctxt "It's important to"
+	text "It's important to"
 	line "study natural"
 	cont "disasters so we"
 
@@ -196,7 +196,7 @@ GenericTrainerScientistOskar:
 GenericTrainerSuperNerdLuis:
 	generictrainer SUPER_NERD, LUIS, EVENT_BEAT_SUPER_NERD_LUIS, SuperNerdLuisSeenText, SuperNerdLuisBeatenText
 
-	ctxt "It's so thrilling"
+	text "It's so thrilling"
 	line "to be inside a"
 	cont "volcano!"
 
@@ -205,18 +205,18 @@ GenericTrainerSuperNerdLuis:
 	done
 
 ScientistOskarSeenText:
-	ctxt "I'm studying the"
+	text "I'm studying the"
 	line "volcano to learn"
 	cont "why it erupted."
 	done
 
 ScientistOskarBeatenText:
-	ctxt "Better luck next"
+	text "Better luck next"
 	line "time!"
 	done
 
 SuperNerdLuisSeenText:
-	ctxt "Did you know that"
+	text "Did you know that"
 	line "magma is only"
 
 	para "called lava once"
@@ -227,6 +227,6 @@ SuperNerdLuisSeenText:
 	done
 
 SuperNerdLuisBeatenText:
-	ctxt "You just taught"
+	text "You just taught"
 	line "me…"
 	done

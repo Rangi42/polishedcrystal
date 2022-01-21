@@ -23,7 +23,7 @@ IcePath1F_MapScriptHeader:
 GenericTrainerSkierMaria:
 	generictrainer SKIER, MARIA, EVENT_BEAT_SKIER_MARIA, SkierMariaSeenText, SkierMariaBeatenText
 
-	ctxt "It took me a while"
+	text "It took me a while"
 	line "to get comfortable"
 	cont "on skis."
 	done
@@ -31,23 +31,23 @@ GenericTrainerSkierMaria:
 GenericTrainerBoarderStefan:
 	generictrainer BOARDER, STEFAN, EVENT_BEAT_BOARDER_STEFAN, BoarderStefanSeenText, BoarderStefanBeatenText
 
-	ctxt "I'll keep warm by"
+	text "I'll keep warm by"
 	line "snowboarding!"
 	done
 
 SkierMariaSeenText:
-	ctxt "Were you admiring"
+	text "Were you admiring"
 	line "my ski technique?"
 	done
 
 SkierMariaBeatenText:
-	ctxt "Your battling"
+	text "Your battling"
 	line "technique is"
 	cont "admirable!"
 	done
 
 BoarderStefanSeenText:
-	ctxt "Brrr… It's so"
+	text "Brrr… It's so"
 	line "cold!"
 
 	para "Let's warm up with"
@@ -55,7 +55,7 @@ BoarderStefanSeenText:
 	done
 
 BoarderStefanBeatenText:
-	ctxt "This cold is the"
+	text "This cold is the"
 	line "shame of defeat…"
 	done
 

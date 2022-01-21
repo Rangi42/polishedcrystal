@@ -32,7 +32,7 @@ GoodRodGuru:
 	end
 
 OfferGoodRodText:
-	ctxt "Olivine is on the"
+	text "Olivine is on the"
 	line "sea!"
 
 	para "And if it's on the"
@@ -48,13 +48,13 @@ OfferGoodRodText:
 	done
 
 GiveGoodRodText:
-	ctxt "Ah, hahah!"
+	text "Ah, hahah!"
 	line "We have ourselves"
 	cont "a new angler!"
 	done
 
 GaveGoodRodText:
-	ctxt "Fish aren't found"
+	text "Fish aren't found"
 	line "in the sea alone."
 
 	para "They go wherever"
@@ -62,12 +62,12 @@ GaveGoodRodText:
 	done
 
 DontWantGoodRodText:
-	ctxt "Whaaat? You don't"
+	text "Whaaat? You don't"
 	line "like to fish?!"
 	cont "Incomprehensible!"
 	done
 
 HaveGoodRodText:
-	ctxt "How are things?"
+	text "How are things?"
 	line "Land the big one?"
 	done

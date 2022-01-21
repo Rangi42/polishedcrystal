@@ -24,7 +24,7 @@ PokemonJournalBrockScript:
 	setflag ENGINE_READ_BROCK_JOURNAL
 	jumpthistext
 
-	ctxt "#mon Journal"
+	text "#mon Journal"
 
 	para "Special Feature:"
 	line "Leader Brock!"
@@ -38,12 +38,12 @@ PokemonJournalBrockScript:
 	done
 
 PewterJigglypuffText:
-	ctxt "Jigglypuff:"
+	text "Jigglypuff:"
 	line "♪ Puu pupuu. ♪"
 	done
 
 PewterPokeCenter1FTeacherText:
-	ctxt "…Yeah, and the"
+	text "…Yeah, and the"
 	line "Gym in Cinnabar's"
 
 	para "gone. I was really"
@@ -54,7 +54,7 @@ PewterPokeCenter1FTeacherText:
 	done
 
 PewterPokeCenter1FChildText:
-	ctxt "Most #mon get"
+	text "Most #mon get"
 	line "drowsy if they"
 
 	para "hear a Jigglypuff"

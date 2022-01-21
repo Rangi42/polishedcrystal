@@ -1,5 +1,5 @@
 GinaAskNumber1Text:
-	ctxt "Whenever I see a"
+	text "Whenever I see a"
 	line "strong trainer, I"
 
 	para "want to be their"
@@ -20,7 +20,7 @@ GinaAskNumber1Text:
 	done
 
 GinaAskNumber2Text:
-	ctxt "If I find an item,"
+	text "If I find an item,"
 	line "you can have it!"
 
 	para "Want to give me"
@@ -28,30 +28,30 @@ GinaAskNumber2Text:
 	done
 
 GinaNumberAcceptedText:
-	ctxt "I'll call as soon"
+	text "I'll call as soon"
 	line "as I get anything!"
 	done
 
 GinaNumberDeclinedText:
-	ctxt "Is that so? Well,"
+	text "Is that so? Well,"
 	line "I'll still be"
 	cont "rooting for you!"
 	done
 
 GinaPhoneFullText:
-	ctxt "But your phone is"
+	text "But your phone is"
 	line "all filled up!"
 	done
 
 GinaRematchText:
-	ctxt "I've been waiting!"
+	text "I've been waiting!"
 
 	para "I've gotten a bit"
 	line "better at this!"
 	done
 
 GinaGiftText:
-	ctxt "So you're finally"
+	text "So you're finally"
 	line "here!"
 
 	para "I think this will"
@@ -59,7 +59,7 @@ GinaGiftText:
 	done
 
 GinaPackFullText:
-	ctxt "Your Bag looks"
+	text "Your Bag looks"
 	line "completely full."
 
 	para "I'll have to hold"

@@ -23,7 +23,7 @@ PokemonJournalMrFujiScript:
 	setflag ENGINE_READ_MR_FUJI_JOURNAL
 	jumpthistext
 
-	ctxt "#mon Journal"
+	text "#mon Journal"
 
 	para "Editor: The shy"
 	line "Mr.Fuji turned"
@@ -45,7 +45,7 @@ LavenderPokeCenter1FYoungsterScript:
 	iffalse_jumptextfaceplayer .NoExorcismText
 	jumpthistextfaceplayer
 
-	ctxt "The Director of"
+	text "The Director of"
 	line "the Radio Station"
 	cont "sure was happy."
 
@@ -55,7 +55,7 @@ LavenderPokeCenter1FYoungsterScript:
 	done
 
 .NoMachinePartText:
-	ctxt "If the Power Plant"
+	text "If the Power Plant"
 	line "isn't running, the"
 
 	para "Magnet Train won't"
@@ -67,7 +67,7 @@ LavenderPokeCenter1FYoungsterScript:
 	done
 
 .NoExorcismText:
-	ctxt "The Power Plant is"
+	text "The Power Plant is"
 	line "running smoothly"
 	cont "again, but the"
 
@@ -79,7 +79,7 @@ LavenderPokeCenter1FYoungsterScript:
 	done
 
 LavenderPokeCenter1FGentlemanText:
-	ctxt "To the north of"
+	text "To the north of"
 	line "Lavender is Rock"
 
 	para "Tunnel. Go through"
@@ -88,7 +88,7 @@ LavenderPokeCenter1FGentlemanText:
 	done
 
 LavenderPokeCenter1FTeacherText:
-	ctxt "There's a radio"
+	text "There's a radio"
 	line "program that plays"
 	cont "# Flute music."
 

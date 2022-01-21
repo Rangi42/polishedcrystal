@@ -90,7 +90,7 @@ CeladonCityTutorSwaggerScript:
 	jumpopenedtext Text_CeladonCityTutorTaught
 
 CeladonCityRichBoyText:
-	ctxt "Is my suit not"
+	text "Is my suit not"
 	line "bedazzling?"
 
 	para "It turns heads"
@@ -105,7 +105,7 @@ CeladonCityRichBoyText:
 	done
 
 Text_CeladonCityTutorSwagger:
-	ctxt "I shall teach"
+	text "I shall teach"
 	line "your #mon to"
 
 	para "Swagger like me"
@@ -114,29 +114,29 @@ Text_CeladonCityTutorSwagger:
 	done
 
 Text_CeladonCityTutorNoSilverLeaf:
-	ctxt "…You have no"
+	text "…You have no"
 	line "Silver Leaf?"
 	cont "What a pity."
 	done
 
 Text_CeladonCityTutorQuestion:
-	ctxt "You wish me to"
+	text "You wish me to"
 	line "teach your #-"
 	cont "mon Swagger?"
 	done
 
 Text_CeladonCityTutorRefused:
-	ctxt "Then goodbye!"
+	text "Then goodbye!"
 	done
 
 Text_CeladonCityTutorTaught:
-	ctxt "Behold! Your #-"
+	text "Behold! Your #-"
 	line "mon has learned"
 	cont "to Swagger!"
 	done
 
 CeladonCityFisherText:
-	ctxt "This Poliwrath is"
+	text "This Poliwrath is"
 	line "my partner."
 
 	para "I wonder if it'll"
@@ -145,11 +145,11 @@ CeladonCityFisherText:
 	done
 
 CeladonCityPoliwrathText:
-	ctxt "Poliwrath: Croak!"
+	text "Poliwrath: Croak!"
 	done
 
 CeladonCityTeacher1Text:
-	ctxt "I lost at the slot"
+	text "I lost at the slot"
 	line "machines again…"
 
 	para "We girls also play"
@@ -160,7 +160,7 @@ CeladonCityTeacher1Text:
 	done
 
 CeladonCityGramps1Text:
-	ctxt "Grimer have been"
+	text "Grimer have been"
 	line "appearing lately."
 
 	para "See that pond out"
@@ -175,7 +175,7 @@ CeladonCityGramps1Text:
 	done
 
 CeladonCityGramps2Text:
-	ctxt "Nihihi! This Gym"
+	text "Nihihi! This Gym"
 	line "is great! Only"
 
 	para "girls are allowed"
@@ -183,7 +183,7 @@ CeladonCityGramps2Text:
 	done
 
 CeladonCityYoungster1Text:
-	ctxt "Want to know a"
+	text "Want to know a"
 	line "secret?"
 
 	para "Celadon Condo"
@@ -192,7 +192,7 @@ CeladonCityYoungster1Text:
 	done
 
 CeladonCityYoungster2Text:
-	ctxt "The restaurant"
+	text "The restaurant"
 	line "there is having an"
 	cont "eating contest."
 
@@ -208,7 +208,7 @@ CeladonCityYoungster2Text:
 	done
 
 CeladonCityTeacher2Text:
-	ctxt "Celadon Dept.Store"
+	text "Celadon Dept.Store"
 	line "has the biggest"
 
 	para "and best selection"
@@ -225,7 +225,7 @@ CeladonCityTeacher2Text:
 	done
 
 CeladonCityLassText_PCC:
-	ctxt "I love being"
+	text "I love being"
 	line "surrounded by tall"
 	cont "buildings!"
 
@@ -243,7 +243,7 @@ CeladonCityLassText_PCC:
 	done
 
 CeladonCityLassText:
-	ctxt "#mon are offer-"
+	text "#mon are offer-"
 	line "ed as prizes at"
 	cont "the Game Corner."
 
@@ -251,14 +251,14 @@ CeladonCityLassText:
 	done
 
 CeladonCitySignText:
-	ctxt "Celadon City"
+	text "Celadon City"
 
 	para "The City of"
 	line "Rainbow Dreams"
 	done
 
 CeladonGymSignText:
-	ctxt "Celadon City"
+	text "Celadon City"
 	line "#mon Gym"
 	cont "Leader: Erika"
 
@@ -267,53 +267,53 @@ CeladonGymSignText:
 	done
 
 CeladonUniversitySignText:
-	ctxt "Celadon University"
+	text "Celadon University"
 	done
 
 CeladonCityDeptStoreSignText:
-	ctxt "Find What You"
+	text "Find What You"
 	line "Need at Celadon"
 	cont "Dept.Store!"
 	done
 
 CeladonCityHomeDecorStoreSignText:
-	ctxt "Celadon Dept.Store"
+	text "Celadon Dept.Store"
 	line "Home Decor Wing"
 	done
 
 CeladonCityMansionSignText:
-	ctxt "Celadon"
+	text "Celadon"
 	line "Condominium"
 	done
 
 CeladonCityGameCornerSignText:
-	ctxt "The Playground for"
+	text "The Playground for"
 	line "Everybody--Celadon"
 	cont "Game Corner"
 	done
 
 CeladonCityPrizeExchangeSignText:
-	ctxt "Coins exchanged"
+	text "Coins exchanged"
 	line "for prizes!"
 	cont "Prize Exchange"
 	done
 
 CeladonCityCafeSignText:
-	ctxt "Celadon Diner"
+	text "Celadon Diner"
 
 	para "Eatathon Contest"
 	line "all day today!"
 	done
 
 CeladonCityHotelSignText:
-	ctxt "Celadon Hotel"
+	text "Celadon Hotel"
 
 	para "Relax in our"
 	line "swimming pool!"
 	done
 
 CeladonCityTrainerTips1Text:
-	ctxt "Trainer Tips"
+	text "Trainer Tips"
 
 if DEF(FAITHFUL)
 	para "Guard Spec."
@@ -331,7 +331,7 @@ endc
 	done
 
 CeladonCityTrainerTips2Text:
-	ctxt "Trainer Tips"
+	text "Trainer Tips"
 
 	para "Eevee is a #mon"
 	line "full of potential."

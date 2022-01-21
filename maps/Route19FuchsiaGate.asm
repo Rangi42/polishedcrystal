@@ -21,7 +21,7 @@ Route19FuchsiaGateOfficerScript:
 	iftrue_jumptextfaceplayer Route19FuchsiaGateOfficerText_RocksCleared
 	jumpthistextfaceplayer
 
-	ctxt "Cinnabar's volcano"
+	text "Cinnabar's volcano"
 	line "erupted."
 
 	para "It hurled boulders"
@@ -34,7 +34,7 @@ Route19FuchsiaGateOfficerScript:
 	done
 
 Route19FuchsiaGateOfficerText_RocksCleared:
-	ctxt "No Cinnabar citi-"
+	text "No Cinnabar citi-"
 	line "zens were injured"
 
 	para "by the eruption."

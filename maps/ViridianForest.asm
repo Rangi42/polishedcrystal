@@ -35,7 +35,7 @@ ViridianForest_MapScriptHeader:
 GenericTrainerBug_maniacDane:
 	generictrainer BUG_MANIAC, DANE, EVENT_BEAT_BUG_MANIAC_DANE, BugManiacDaneSeenText, BugManiacDaneBeatenText
 
-	ctxt "Pretty impressive!"
+	text "Pretty impressive!"
 
 	para "I'm sure you can"
 	line "go anywhere with"
@@ -45,7 +45,7 @@ GenericTrainerBug_maniacDane:
 GenericTrainerBug_maniacDion:
 	generictrainer BUG_MANIAC, DION, EVENT_BEAT_BUG_MANIAC_DION, BugManiacDionSeenText, BugManiacDionBeatenText
 
-	ctxt "Bug-type #mon"
+	text "Bug-type #mon"
 	line "make all kinds of"
 	cont "sounds."
 
@@ -58,7 +58,7 @@ GenericTrainerBug_maniacDion:
 GenericTrainerBug_maniacStacey:
 	generictrainer BUG_MANIAC, STACEY, EVENT_BEAT_BUG_MANIAC_STACEY, BugManiacStaceySeenText, BugManiacStaceyBeatenText
 
-	ctxt "Has anyone ever"
+	text "Has anyone ever"
 	line "told you that from"
 	cont "behind you look"
 	cont "like a Venonat?"
@@ -67,7 +67,7 @@ GenericTrainerBug_maniacStacey:
 GenericTrainerBug_maniacEllis:
 	generictrainer BUG_MANIAC, ELLIS, EVENT_BEAT_BUG_MANIAC_ELLIS, BugManiacEllisSeenText, BugManiacEllisBeatenText
 
-	ctxt "If this is it,"
+	text "If this is it,"
 	line "then I don't mind"
 	cont "losing!"
 	done
@@ -75,7 +75,7 @@ GenericTrainerBug_maniacEllis:
 GenericTrainerBug_maniacAbner:
 	generictrainer BUG_MANIAC, ABNER, EVENT_BEAT_BUG_MANIAC_ABNER, BugManiacAbnerSeenText, BugManiacAbnerBeatenText
 
-	ctxt "Doesn't matter what"
+	text "Doesn't matter what"
 	line "kind of #mon--"
 
 	para "as long as you"
@@ -84,28 +84,28 @@ GenericTrainerBug_maniacAbner:
 	done
 
 BugManiacDaneSeenText:
-	ctxt "Welcome to"
+	text "Welcome to"
 	line "Viridian Forest."
 	cont "Enjoy my Bug-type"
 	cont "#mon."
 	done
 
 BugManiacDaneBeatenText:
-	ctxt "That's wonderful…"
+	text "That's wonderful…"
 	done
 
 BugManiacDionSeenText:
-	ctxt "Shh! Be quiet! The"
+	text "Shh! Be quiet! The"
 	line "bug #mon will"
 	cont "run away!"
 	done
 
 BugManiacDionBeatenText:
-	ctxt "Phew…"
+	text "Phew…"
 	done
 
 BugManiacStaceySeenText:
-	ctxt "Wow, that's a HUGE"
+	text "Wow, that's a HUGE"
 	line "#mon!"
 
 	para "…"
@@ -114,43 +114,43 @@ BugManiacStaceySeenText:
 	done
 
 BugManiacStaceyBeatenText:
-	ctxt "I couldn't catch"
+	text "I couldn't catch"
 	line "it!"
 	done
 
 BugManiacEllisSeenText:
-	ctxt "There's nothing"
+	text "There's nothing"
 	line "more efficient and"
 	cont "beautiful than a"
 	cont "Bug-type #mon."
 	done
 
 BugManiacEllisBeatenText:
-	ctxt "I lost"
+	text "I lost"
 	line "beautifully!"
 	done
 
 BugManiacAbnerSeenText:
-	ctxt "Many people prefer"
+	text "Many people prefer"
 	line "solid bug #mon"
 	cont "over squishy bug"
 	cont "#mon."
 	done
 
 BugManiacAbnerBeatenText:
-	ctxt "Thanks for your"
+	text "Thanks for your"
 	line "hard work, my"
 	cont "lovely #mon…"
 	done
 
 ViridianForestSignText1:
-	ctxt "Leaving"
+	text "Leaving"
 	line "Viridian Forest"
 	cont "Pewter City Ahead"
 	done
 
 ViridianForestSignText2:
-	ctxt "Trainer Tips"
+	text "Trainer Tips"
 
 	para "Hold on to that"
 	line "Big Mushroom!"
@@ -161,7 +161,7 @@ ViridianForestSignText2:
 	done
 
 ViridianForestSignText3:
-	ctxt "Trainer Tips"
+	text "Trainer Tips"
 
 	para "Grass-type #mon"
 	line "are unaffected by"
@@ -171,13 +171,13 @@ ViridianForestSignText3:
 	done
 
 ViridianForestSignText4:
-	ctxt "For poison, use"
+	text "For poison, use"
 	line "Antidote! Get it"
 	cont "at #mon Marts!"
 	done
 
 ViridianForestSignText5:
-	ctxt "Trainer Tips"
+	text "Trainer Tips"
 
 	para "Poison-type #-"
 	line "mon can't be poi-"
@@ -185,7 +185,7 @@ ViridianForestSignText5:
 	done
 
 ViridianForestSignText6:
-	ctxt "Trainer Tips"
+	text "Trainer Tips"
 
 	para "Weaken #mon"
 	line "before attempting"

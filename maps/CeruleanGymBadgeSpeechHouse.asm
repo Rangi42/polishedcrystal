@@ -25,13 +25,13 @@ CeruleanGymBadgeSpeechHouseGentlemanScript:
 	jumpthisopenedtext
 
 .Text2:
-	ctxt "You're collecting"
+	text "You're collecting"
 	line "Kanto Gym Badges?"
 	cont "Good luck!"
 	done
 
 .Text1:
-	ctxt "We had a spate of"
+	text "We had a spate of"
 	line "burglaries a few"
 
 	para "years back, so now"

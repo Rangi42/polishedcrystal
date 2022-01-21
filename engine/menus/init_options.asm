@@ -139,7 +139,7 @@ endc
 INCBIN "gfx/new_game/init_bg.2bpp"
 
 .InitialOptionsString:
-	ctxt  "Natures"
+	text  "Natures"
 	next1 "            :"
 	next1 "Abilities"
 	next1 "            :"

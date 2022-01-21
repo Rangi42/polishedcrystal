@@ -148,7 +148,7 @@ CherrygroveYoungsterScript:
 	iftrue_jumptextfaceplayer CherrygroveYoungsterText_HavePokedex
 	jumpthistextfaceplayer
 
-	ctxt "Mr.#mon's house"
+	text "Mr.#mon's house"
 	line "is still farther"
 	cont "up ahead."
 	done
@@ -166,7 +166,7 @@ MysticWaterGuy:
 	jumpthisopenedtext
 
 MysticWaterGuyTextAfter:
-	ctxt "Back to fishing"
+	text "Back to fishing"
 	line "for me, then."
 	done
 
@@ -269,7 +269,7 @@ CherrygroveCity_RivalExitsStageLeft:
 	step_end
 
 GuideGentIntroText:
-	ctxt "You're a rookie"
+	text "You're a rookie"
 	line "trainer, aren't"
 	cont "you? I can tell!"
 
@@ -283,7 +283,7 @@ GuideGentIntroText:
 	done
 
 GuideGentPokeCenterText:
-	ctxt "This is a #mon"
+	text "This is a #mon"
 	line "Center. They heal"
 
 	para "your #mon in no"
@@ -297,7 +297,7 @@ GuideGentPokeCenterText:
 	done
 
 GuideGentMartText:
-	ctxt "This is a #mon"
+	text "This is a #mon"
 	line "Mart, or just"
 	cont "# Mart."
 
@@ -309,7 +309,7 @@ GuideGentMartText:
 	done
 
 GuideGentRoute30Text:
-	ctxt "Route 30 is out"
+	text "Route 30 is out"
 	line "this way."
 
 	para "Trainers will be"
@@ -320,7 +320,7 @@ GuideGentRoute30Text:
 	done
 
 GuideGentSeaText:
-	ctxt "This is the sea,"
+	text "This is the sea,"
 	line "as you can see."
 
 	para "Route 32 is just"
@@ -328,7 +328,7 @@ GuideGentSeaText:
 	done
 
 GuideGentGiftText:
-	ctxt "Here…"
+	text "Here…"
 
 	para "It's my house!"
 	line "Thanks for your"
@@ -339,12 +339,12 @@ GuideGentGiftText:
 	done
 
 GotMapCardText:
-	ctxt "<PLAYER>'s #gear"
+	text "<PLAYER>'s #gear"
 	line "now has a Map!"
 	done
 
 GuideGentPokegearText:
-	ctxt "#gear becomes"
+	text "#gear becomes"
 	line "more useful as you"
 	cont "add Cards."
 
@@ -353,7 +353,7 @@ GuideGentPokegearText:
 	done
 
 CherrygroveRivalText_Seen:
-	ctxt "…… …… ……"
+	text "…… …… ……"
 
 	para "You got a #mon"
 	line "at the Lab."
@@ -374,17 +374,23 @@ CherrygroveRivalText_Seen:
 	done
 
 SilverCherrygroveWinText:
-	ctxt "Humph. Are you"
+	text "Humph. Are you"
 	line "happy you won?"
 	done
 
 SilverCherrygroveLossText:
-	ctxt "Humph. That was a"
+	text "Humph. That was a"
 	line "waste of time."
 	done
 
+<<<<<<< HEAD
 CherrygroveRivalTextAfter:
 	ctxt "…… …… ……"
+=======
+CherrygroveRivalTextAfter1:
+	text "…… …… ……"
+
+>>>>>>> 931c97da6e1b93e60670a6ef3c598ac9ee8a2a17
 	para "You want to know"
 	line "who I am?"
 
@@ -394,14 +400,25 @@ CherrygroveRivalTextAfter:
 	cont "trainer."
 	done
 
+<<<<<<< HEAD
+=======
+CherrygroveRivalTextAfter2:
+	text "Hey! Give back my"
+	line "Trainer Card!"
+
+	para "Oh no… You saw"
+	line "my name…"
+	done
+
+>>>>>>> 931c97da6e1b93e60670a6ef3c598ac9ee8a2a17
 CherrygroveTeacherText_HaveMapCard:
-	ctxt "When you're with"
+	text "When you're with"
 	line "#mon, going"
 	cont "anywhere is fun."
 	done
 
 CherrygroveYoungsterText_HavePokedex:
-	ctxt "I battled the"
+	text "I battled the"
 	line "trainers on the"
 	cont "road."
 
@@ -413,7 +430,7 @@ CherrygroveYoungsterText_HavePokedex:
 	done
 
 MysticWaterGuyTextBefore:
-	ctxt "A #mon I caught"
+	text "A #mon I caught"
 	line "had an item."
 
 	para "I think it's"
@@ -424,16 +441,16 @@ MysticWaterGuyTextBefore:
 	done
 
 CherrygrovePidgeyText:
-	ctxt "Pidgey: Pijji!"
+	text "Pidgey: Pijji!"
 	done
 
 CherrygroveCitySignText:
-	ctxt "Cherrygrove City"
+	text "Cherrygrove City"
 
 	para "The City of Cute,"
 	line "Fragrant Flowers"
 	done
 
 GuideGentsHouseSignText:
-	ctxt "Guide Gent's House"
+	text "Guide Gent's House"
 	done

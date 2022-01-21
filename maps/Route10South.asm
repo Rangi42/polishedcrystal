@@ -21,7 +21,7 @@ Route10South_MapScriptHeader:
 GenericTrainerHikerJim:
 	generictrainer HIKER, JIM, EVENT_BEAT_HIKER_JIM, HikerJimSeenText, HikerJimBeatenText
 
-	ctxt "Hay fever is"
+	text "Hay fever is"
 	line "making me sneeze!"
 	cont "Ahahah-CHOO!"
 	done
@@ -29,7 +29,7 @@ GenericTrainerHikerJim:
 GenericTrainerPokefanmRobert:
 	generictrainer POKEFANM, ROBERT, EVENT_BEAT_POKEFANM_ROBERT, PokefanmRobertSeenText, PokefanmRobertBeatenText
 
-	ctxt "Look what you did"
+	text "Look what you did"
 	line "to my #mon…"
 
 	para "I won't forget"
@@ -39,46 +39,46 @@ GenericTrainerPokefanmRobert:
 GenericTrainerHexManiacAmy:
 	generictrainer HEX_MANIAC, AMY, EVENT_BEAT_HEX_MANIAC_AMY, HexManiacAmySeenText, HexManiacAmyBeatenText
 
-	ctxt "A Hex Maniac is"
+	text "A Hex Maniac is"
 	line "at peace among"
 	cont "the spirits…"
 	done
 
 HikerJimSeenText:
-	ctxt "Hahahah!"
+	text "Hahahah!"
 	done
 
 HikerJimBeatenText:
-	ctxt "Hahaha-hachoo!"
+	text "Hahaha-hachoo!"
 	done
 
 PokefanmRobertSeenText:
-	ctxt "You like #mon,"
+	text "You like #mon,"
 	line "don't you?"
 
 	para "Me too!"
 	done
 
 PokefanmRobertBeatenText:
-	ctxt "I'd have to say"
+	text "I'd have to say"
 	line "that's my loss."
 	done
 
 HexManiacAmySeenText:
-	ctxt "Lavender Town…"
+	text "Lavender Town…"
 
 	para "Where the spirits"
 	line "of #mon sleep…"
 	done
 
 HexManiacAmyBeatenText:
-	ctxt "Your #mon are"
+	text "Your #mon are"
 	line "overflowing with"
 	cont "vitality…"
 	done
 
 Route10SignText:
-	ctxt "Route 10"
+	text "Route 10"
 
 	para "Cerulean City -"
 	line "Lavender Town"

@@ -17,7 +17,7 @@ ViridianForestViridianGate_MapScriptHeader:
 	object_event  0,  4, SPRITE_OFFICER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_COMMAND, jumptextfaceplayer, ViridianForestViridianGateOfficerText, -1
 
 ViridianForestViridianGateOfficerText:
-	ctxt "Be careful,"
+	text "Be careful,"
 	line "Viridian Forest"
 
 	para "is a natural"

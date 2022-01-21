@@ -159,7 +159,7 @@ VioletCitySpinningEarl_MovementData:
 	step_end
 
 Text_EarlAsksIfYouBeatFalkner:
-	ctxt "Hello!"
+	text "Hello!"
 	line "You are trainer?"
 
 	para "Battle Gym Leader,"
@@ -167,18 +167,18 @@ Text_EarlAsksIfYouBeatFalkner:
 	done
 
 Text_VeryNiceIndeed:
-	ctxt "Ooh, la la!"
+	text "Ooh, la la!"
 	line "Very indeed nice!"
 	done
 
 Text_FollowEarl:
-	ctxt "Is that so? Then"
+	text "Is that so? Then"
 	line "study shall you!"
 	cont "Follow me!"
 	done
 
 Text_HereTeacherIAm:
-	ctxt "Here, teacher I"
+	text "Here, teacher I"
 	line "am. Good it is"
 	cont "you study here!"
 
@@ -187,7 +187,7 @@ Text_HereTeacherIAm:
 	done
 
 Text_EarlsTypeChart:
-	ctxt "In battle, type"
+	text "In battle, type"
 	line "advantages you"
 	cont "must know!"
 
@@ -197,7 +197,7 @@ Text_EarlsTypeChart:
 	done
 
 VioletCityLassText:
-	ctxt "Ghosts are rumored"
+	text "Ghosts are rumored"
 	line "to appear in"
 	cont "Sprout Tower."
 
@@ -209,7 +209,7 @@ VioletCityLassText:
 	done
 
 VioletCityCooltrainerM1Text:
-	ctxt "Hey, you're a"
+	text "Hey, you're a"
 	line "#mon trainer?"
 
 	para "If you beat the"
@@ -220,7 +220,7 @@ VioletCityCooltrainerM1Text:
 	done
 
 VioletCityCooltrainerFText:
-	ctxt "Bellsprout is a"
+	text "Bellsprout is a"
 	line "popular #mon"
 	cont "in this town."
 
@@ -230,7 +230,7 @@ VioletCityCooltrainerFText:
 	done
 
 VioletCityGrampsText:
-	ctxt "Falkner, from the"
+	text "Falkner, from the"
 	line "Violet #mon"
 
 	para "Gym, is a fine"
@@ -244,7 +244,7 @@ VioletCityGrampsText:
 	done
 
 VioletCityYoungsterText:
-	ctxt "I saw a wiggly"
+	text "I saw a wiggly"
 	line "tree up ahead!"
 
 	para "If you touch it,"
@@ -253,7 +253,7 @@ VioletCityYoungsterText:
 	done
 
 VioletCityFisherText:
-	ctxt "How does such a"
+	text "How does such a"
 	line "wobbly building"
 
 	para "survive an earth-"
@@ -262,7 +262,7 @@ VioletCityFisherText:
 	done
 
 VioletCityCooltrainerM2Text:
-	ctxt "We care about the"
+	text "We care about the"
 	line "traditional build-"
 	cont "ings around here."
 
@@ -274,14 +274,14 @@ VioletCityCooltrainerM2Text:
 	done
 
 VioletCitySignText:
-	ctxt "Violet City"
+	text "Violet City"
 
 	para "The City of"
 	line "Nostalgic Scents"
 	done
 
 VioletGymSignText:
-	ctxt "Violet City"
+	text "Violet City"
 	line "#mon Gym"
 	cont "Leader: Falkner"
 
@@ -290,13 +290,13 @@ VioletGymSignText:
 	done
 
 SproutTowerSignText:
-	ctxt "Sprout Tower"
+	text "Sprout Tower"
 
 	para "Experience the"
 	line "Way of #mon"
 	done
 
 EarlsPokemonAcademySignText:
-	ctxt "Earl's #mon"
+	text "Earl's #mon"
 	line "Academy"
 	done

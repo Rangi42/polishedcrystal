@@ -26,18 +26,18 @@ Route16West_MapScriptHeader:
 GenericTrainerLassGina:
 	generictrainer LASS, GINA, EVENT_BEAT_LASS_GINA, .SeenText, .BeatenText
 
-	ctxt "My strappy sandals"
+	text "My strappy sandals"
 	line "look sooo cute,"
 	cont "though!"
 	done
 
 .SeenText:
-	ctxt "Check out my new"
+	text "Check out my new"
 	line "outfit!"
 	done
 
 .BeatenText:
-	ctxt "If I'd spent money"
+	text "If I'd spent money"
 	line "on Potions instead"
 	cont "of clothes…"
 	done
@@ -45,12 +45,12 @@ GenericTrainerLassGina:
 GenericTrainerLassAlice:
 	generictrainer LASS, ALICE, EVENT_BEAT_LASS_ALICE, .SeenText, .BeatenText
 
-	ctxt "I'm really a guy…"
+	text "I'm really a guy…"
 	line "Don't tell anyone!"
 	done
 
 .SeenText:
-	ctxt "Our eyes met!"
+	text "Our eyes met!"
 
 	para "Now you must date"
 	line "me!"
@@ -60,14 +60,35 @@ GenericTrainerLassAlice:
 	done
 
 .BeatenText:
-	ctxt "How could you be"
+	text "How could you be"
 	line "so cruel?"
 	done
 
+<<<<<<< HEAD
+=======
+GenericTrainerCosplayerKuroko:
+	generictrainer COSPLAYER, KUROKO, EVENT_BEAT_COSPLAYER_KUROKO, .SeenText, .BeatenText
+
+	text "One time a trainer"
+	line "threw a # Ball"
+	cont "at me!"
+	done
+
+.SeenText:
+	text "See how lifelike"
+	line "my cosplay is?"
+	done
+
+.BeatenText:
+	text "You just don't"
+	line "appreciate art!"
+	done
+
+>>>>>>> 931c97da6e1b93e60670a6ef3c598ac9ee8a2a17
 GenericTrainerCooltrainerfSera:
 	generictrainer COOLTRAINERF, SERA, EVENT_BEAT_COOLTRAINERF_SERA, .SeenText, .BeatenText
 
-	ctxt "I've gone out as a"
+	text "I've gone out as a"
 	line "a Cosplayer, but"
 
 	para "an Ace Trainer's"
@@ -76,32 +97,36 @@ GenericTrainerCooltrainerfSera:
 	done
 
 .SeenText:
-	ctxt "Do you think you"
+	text "Do you think you"
 	line "can handle me?"
 	done
 
 .BeatenText:
+<<<<<<< HEAD
 	ctxt "Congrats!"
+=======
+	text "Congrats! ♥"
+>>>>>>> 931c97da6e1b93e60670a6ef3c598ac9ee8a2a17
 	done
 
 GenericTrainerBeautyNicole:
 	generictrainer BEAUTY, BEAUTY_NICOLE, EVENT_BEAT_BEAUTY_NICOLE, .SeenText, .BeatenText
 
-	ctxt "Cute #mon can"
+	text "Cute #mon can"
 	line "be strong too,"
 	cont "you know!"
 	done
 
 .SeenText:
-	ctxt "Aren't my #mon"
+	text "Aren't my #mon"
 	line "the cutest?"
 	done
 
 .BeatenText:
-	ctxt "They're even cute"
+	text "They're even cute"
 	line "while fainted…"
 	done
 
 Route16WestSignpostText:
-	ctxt "Route 16"
+	text "Route 16"
 	done

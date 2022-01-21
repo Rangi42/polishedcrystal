@@ -371,7 +371,8 @@ ExchangeBytes:
 	ret
 
 String_PleaseWait:
-	db "Please wait!@"
+	text "Please wait!"
+	done
 
 ClearLinkData:
 	ld hl, wLinkData
@@ -676,7 +677,8 @@ InitTradeSpeciesList:
 INCBIN "gfx/trade/border.tilemap"
 
 .Cancel:
-	db "Cancel@"
+	text "Cancel"
+	done
 
 PlaceTradePartnerNamesAndParty:
 	hlcoord 4, 0
@@ -1214,7 +1216,8 @@ LinkTrade_TradeStatsMenu:
 	text_end
 
 .String_Stats_Trade:
-	db "Stats     Trade@"
+	text "Stats     Trade"
+	done
 
 .Text_Abnormal:
 	; Your friend's @  appears to be abnormal!
@@ -1705,8 +1708,9 @@ LinkTrade:
 	jmp Gen2ToGen2LinkComms
 
 .TradeCancel:
-	db   "Trade"
-	next "Cancel@"
+	text "Trade"
+	next "Cancel"
+	done
 
 .TradeThisForThat:
 	; Trade @ for @ ?
@@ -1714,11 +1718,13 @@ LinkTrade:
 	text_end
 
 .TradeCompleted:
-	db "Trade completed!@"
+	text "Trade completed!"
+	done
 
 String_TooBadTheTradeWasCanceled:
-	db   "Too bad! The trade"
-	next "was canceled!@"
+	text "Too bad! The trade"
+	next "was canceled!"
+	done
 
 LinkTextbox::
 	push bc
@@ -1804,7 +1810,8 @@ PrintWaitingTextAndSyncAndExchangeNybble:
 	jmp ApplyAttrAndTilemapInVBlank
 
 .Waiting:
-	db "Waiting…!@"
+	text "Waiting…!"
+	done
 
 LoadTradeScreenGFX:
 	ld hl, TradeScreenGFX

@@ -23,7 +23,7 @@ DaisyScript:
 	iftrue .After
 	jumpthistextfaceplayer
 
-	ctxt "Daisy: Hi! My kid"
+	text "Daisy: Hi! My kid"
 	line "brother is the Gym"
 
 	para "Leader in Viridian"
@@ -64,7 +64,7 @@ DaisyScript:
 	promptbutton
 	jumpthisopenedtext
 
-	ctxt "Daisy: There you"
+	text "Daisy: There you"
 	line "go! All done."
 
 	para "See? Doesn't it"
@@ -75,7 +75,7 @@ DaisyScript:
 	done
 
 .IntroText:
-	ctxt "Daisy: Hi! Good"
+	text "Daisy: Hi! Good"
 	line "timing. I'm about"
 	cont "to have some tea."
 
@@ -92,7 +92,7 @@ DaisyScript:
 .After:
 	jumpthistextfaceplayer
 
-	ctxt "Daisy: I always"
+	text "Daisy: I always"
 	line "have tea around"
 
 	para "this time. Come"
@@ -102,7 +102,7 @@ DaisyScript:
 .NoMassage:
 	jumpthistext
 
-	ctxt "Daisy: You don't"
+	text "Daisy: You don't"
 	line "want to have one"
 
 	para "groomed? OK, we'll"
@@ -110,26 +110,26 @@ DaisyScript:
 	done
 
 .QuestionText:
-	ctxt "Daisy: Which one"
+	text "Daisy: Which one"
 	line "should I groom?"
 	done
 
 .OkayText:
-	ctxt "Daisy: OK, I'll"
+	text "Daisy: OK, I'll"
 	line "get it looking"
 	cont "nice in no time."
 	done
 
 .LooksContentText:
 	text_ram wStringBuffer3
-	ctxt " looks"
+	text " looks"
 	line "content."
 	done
 
 .EggMassage:
 	jumpthistext
 
-	ctxt "Daisy: Oh, sorry."
+	text "Daisy: Oh, sorry."
 	line "I honestly can't"
 	cont "groom an Egg."
 	done

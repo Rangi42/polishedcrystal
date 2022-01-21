@@ -23,5 +23,5 @@ SilverCaveOutsideFlyPoint:
 	endcallback
 
 MtSilverSignText:
-	ctxt "Mt.Silver"
+	text "Mt.Silver"
 	done
