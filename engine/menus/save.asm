@@ -699,7 +699,7 @@ VerifyGameVersion:
 	jr .infinite_loop
 
 .SaveUpgradeScreen:
-	db    "Your save file does"
+	text  "Your save file does"
 	next1 "not match the game"
 	next1 "version of this ROM."
 	next1 ""
