@@ -8,7 +8,11 @@
 	db QUICK_CLAW ; item 2
 	dn GENDER_F50, 3 ; gender ratio, step cycles to hatch
 	INCBIN "gfx/pokemon/sneasler/front.dimensions"
+if DEF(FAITHFUL)
 	abilities_for SNEASLER, PRESSURE, PRESSURE, POISON_TOUCH
+else
+	abilities_for SNEASLER, PRESSURE, TECHNICIAN, POISON_TOUCH
+endc
 	db GROWTH_MEDIUM_SLOW ; growth rate
 	dn EGG_GROUND, EGG_GROUND ; egg groups
 
