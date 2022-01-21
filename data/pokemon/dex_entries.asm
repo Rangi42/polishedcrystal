@@ -2805,6 +2805,56 @@ MrRimePokedexEntry::
 	next "its graceful"
 	next "movements.@"
 
+SECTION "WyrdeerPokedexEntry", ROMX
+WyrdeerPokedexEntry::
+	db "Big Horn@"
+	db   "This is a newly"
+	next "discovered #-"
+	next "mon. It is under"
+	page "investigation."
+	next "No information"
+	next "is available.@"
+
+SECTION "KleavorPokedexEntry", ROMX
+KleavorPokedexEntry::
+	db "Axe@"
+	db   "This is a newly"
+	next "discovered #-"
+	next "mon. It is under"
+	page "investigation."
+	next "No information"
+	next "is available.@"
+
+SECTION "UrsalunaPokedexEntry", ROMX
+UrsalunaPokedexEntry::
+	db "?????@"
+	db   "This is a newly"
+	next "discovered #-"
+	next "mon. It is under"
+	page "investigation."
+	next "No information"
+	next "is available.@"
+
+SECTION "SneaslerPokedexEntry", ROMX
+SneaslerPokedexEntry::
+	db "?????@"
+	db   "This is a newly"
+	next "discovered #-"
+	next "mon. It is under"
+	page "investigation."
+	next "No information"
+	next "is available.@"
+
+SECTION "OverqwilPokedexEntry", ROMX
+OverqwilPokedexEntry::
+	db "?????@"
+	db   "This is a newly"
+	next "discovered #-"
+	next "mon. It is under"
+	page "investigation."
+	next "No information"
+	next "is available.@"
+
 SECTION "GyaradosRedPokedexEntry", ROMX
 GyaradosRedPokedexEntry::
 	db "Atrocious@"
@@ -3137,3 +3187,63 @@ CorsolaGalarianPokedexEntry::
 	page "It absorbs others'"
 	next "life-force through"
 	next "its branches.@"
+
+SECTION "GrowlitheHisuianPokedexEntry", ROMX
+GrowlitheHisuianPokedexEntry::
+	db "Scout@"
+	db   "This is a newly"
+	next "discovered #-"
+	next "mon. It is under"
+	page "investigation."
+	next "No information"
+	next "is available.@"
+
+SECTION "ArcanineHisuianPokedexEntry", ROMX
+ArcanineHisuianPokedexEntry::
+	db "?????@"
+	db   "This is a newly"
+	next "discovered #-"
+	next "mon. It is under"
+	page "investigation."
+	next "No information"
+	next "is available.@"
+
+SECTION "VoltorbHisuianPokedexEntry", ROMX
+VoltorbHisuianPokedexEntry::
+	db "Sphere@"
+	db   "This is a newly"
+	next "discovered #-"
+	next "mon. It is under"
+	page "investigation."
+	next "No information"
+	next "is available.@"
+
+SECTION "ElectrodeHisuianPokedexEntry", ROMX
+ElectrodeHisuianPokedexEntry::
+	db "?????@"
+	db   "This is a newly"
+	next "discovered #-"
+	next "mon. It is under"
+	page "investigation."
+	next "No information"
+	next "is available.@"
+
+SECTION "QwilfishHisuianPokedexEntry", ROMX
+QwilfishHisuianPokedexEntry::
+	db "?????@"
+	db   "This is a newly"
+	next "discovered #-"
+	next "mon. It is under"
+	page "investigation."
+	next "No information"
+	next "is available.@"
+
+SECTION "SneaselHisuianPokedexEntry", ROMX
+SneaselHisuianPokedexEntry::
+	db "?????@"
+	db   "This is a newly"
+	next "discovered #-"
+	next "mon. It is under"
+	page "investigation."
+	next "No information"
+	next "is available.@"

@@ -283,4 +283,9 @@ PokemonNames::
 	rawchar "Cursola@@@"
 	rawchar "Sirfetch'd@"
 	rawchar "Mr.Rime@@@"
+	rawchar "Wyrdeer@@@"
+	rawchar "Kleavor@@@"
+	rawchar "Ursaluna@@"
+	rawchar "Sneasler@@"
+	rawchar "Overqwil@@"
 	assert_table_length NUM_SPECIES + 1

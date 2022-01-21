@@ -1249,7 +1249,7 @@ PrimeapeEvosAttacks:
 	db 53, OUTRAGE
 	db -1 ; no more level-up moves
 
-GrowlitheEvosAttacks:
+GrowlithePlainEvosAttacks:
 	evo_data EVOLVE_ITEM, FIRE_STONE, ARCANINE
 	db -1 ; no more evolutions
 	db 1, GROWL
@@ -1274,7 +1274,7 @@ GrowlitheEvosAttacks:
 	db 49, FLARE_BLITZ
 	db -1 ; no more level-up moves
 
-ArcanineEvosAttacks:
+ArcaninePlainEvosAttacks:
 	db -1 ; no more evolutions
 	db 1, DRAGON_DANCE ; new move
 	db 1, GROWL
@@ -1283,6 +1283,17 @@ ArcanineEvosAttacks:
 	db 1, FLAME_CHARGE
 	db 1, TAKE_DOWN
 	db 1, EXTREMESPEED ; evolution move
+	db -1 ; no more level-up moves
+
+GrowlitheHisuianEvosAttacks:
+	evo_data EVOLVE_ITEM, FIRE_STONE, ARCANINE, HISUIAN_FORM
+	db -1 ; no more evolutions
+	db 1, TACKLE
+	db -1 ; no more level-up moves
+
+ArcanineHisuianEvosAttacks:
+	db -1 ; no more evolutions
+	db 1, TACKLE
 	db -1 ; no more level-up moves
 
 PoliwagEvosAttacks:
@@ -2296,7 +2307,7 @@ KinglerEvosAttacks:
 	db 63, REVERSAL ; Flail → new move
 	db -1 ; no more level-up moves
 
-VoltorbEvosAttacks:
+VoltorbPlainEvosAttacks:
 	evo_data EVOLVE_LEVEL, 30, ELECTRODE
 	db -1 ; no more evolutions
 	db 1, TACKLE
@@ -2318,7 +2329,7 @@ VoltorbEvosAttacks:
 	db 48, MIRROR_COAT
 	db -1 ; no more level-up moves
 
-ElectrodeEvosAttacks:
+ElectrodePlainEvosAttacks:
 	db -1 ; no more evolutions
 	db 1, TACKLE
 	db 1, THUNDERSHOCK ; Let's Go move
@@ -2337,6 +2348,17 @@ ElectrodeEvosAttacks:
 	db 47, BUG_BUZZ ; Explosion → new move
 	db 54, GYRO_BALL
 	db 58, MIRROR_COAT
+	db -1 ; no more level-up moves
+
+VoltorbHisuianEvosAttacks:
+	evo_data EVOLVE_LEVEL, 30, ELECTRODE, HISUIAN_FORM
+	db -1 ; no more evolutions
+	db 1, TACKLE
+	db -1 ; no more level-up moves
+
+ElectrodeHisuianEvosAttacks:
+	db -1 ; no more evolutions
+	db 1, TACKLE
 	db -1 ; no more level-up moves
 
 ExeggcuteEvosAttacks:
@@ -2810,6 +2832,7 @@ MrMimePlainEvosAttacks:
 
 ScytherEvosAttacks:
 	evo_data EVOLVE_HOLDING, METAL_COAT, TR_ANYTIME, SCIZOR
+	evo_data EVOLVE_HOLDING, HARD_STONE, TR_ANYTIME, KLEAVOR
 	db -1 ; no more evolutions
 	db 1, QUICK_ATTACK
 	db 1, LEER
@@ -4668,7 +4691,7 @@ GranbullEvosAttacks:
 	db 67, OUTRAGE
 	db -1 ; no more level-up moves
 
-QwilfishEvosAttacks:
+QwilfishPlainEvosAttacks:
 	db -1 ; no more evolutions
 	db 1, WATER_GUN
 	db 1, SPIKES
@@ -4689,6 +4712,12 @@ QwilfishEvosAttacks:
 	db 53, DESTINY_BOND
 	db 57, HYDRO_PUMP
 	db 60, DOUBLE_EDGE ; Fell Stinger → event move
+	db -1 ; no more level-up moves
+
+QwilfishHisuianEvosAttacks:
+	evo_data EVOLVE_LEVEL, 30, OVERQWIL
+	db -1 ; no more evolutions
+	db 1, TACKLE
 	db -1 ; no more level-up moves
 
 ScizorEvosAttacks:
@@ -4754,8 +4783,9 @@ HeracrossEvosAttacks:
 	db 46, REVERSAL
 	db -1 ; no more level-up moves
 
-SneaselEvosAttacks:
+SneaselPlainEvosAttacks:
 	evo_data EVOLVE_HOLDING, RAZOR_CLAW, TR_EVENITE, WEAVILE
+	evo_data EVOLVE_LOCATION, SINJOH_RUINS, SNEASLER
 	db -1 ; no more evolutions
 	db 1, SCRATCH
 	db 1, LEER
@@ -4773,6 +4803,12 @@ SneaselEvosAttacks:
 	db 40, HEALINGLIGHT ; Snatch → event move (Moonlight)
 	db 44, X_SCISSOR ; Punishment → TM move
 	db 47, CRUNCH ; Ice Shard → new move
+	db -1 ; no more level-up moves
+
+SneaselHisuianEvosAttacks:
+	evo_data EVOLVE_LEVEL, 30, SNEASLER
+	db -1 ; no more evolutions
+	db 1, TACKLE
 	db -1 ; no more level-up moves
 
 TeddiursaEvosAttacks:
@@ -4796,6 +4832,7 @@ TeddiursaEvosAttacks:
 	db -1 ; no more level-up moves
 
 UrsaringEvosAttacks:
+	evo_data EVOLVE_ITEM, MOON_STONE, URSALUNA
 	db -1 ; no more evolutions
 	db 1, GUNK_SHOT ; HGSS tutor move
 	db 1, THIEF ; Covet → TM move
@@ -5157,6 +5194,7 @@ Porygon2EvosAttacks:
 	db -1 ; no more level-up moves
 
 StantlerEvosAttacks:
+	evo_data EVOLVE_LOCATION, SINJOH_RUINS, WYRDEER
 	db -1 ; no more evolutions
 	db 1, TACKLE
 	db 3, LEER
@@ -6058,6 +6096,31 @@ MrRimeEvosAttacks:
 	db 44, ICE_BEAM ; Freeze-Dry → TR move
 	db 48, PSYCHIC_M
 	db 52, CONFUSE_RAY ; Teeter Dance → egg move
+	db -1 ; no more level-up moves
+
+WyrdeerEvosAttacks:
+	db -1 ; no more evolutions
+	db 1, TACKLE
+	db -1 ; no more level-up moves
+
+KleavorEvosAttacks:
+	db -1 ; no more evolutions
+	db 1, TACKLE
+	db -1 ; no more level-up moves
+
+UrsalunaEvosAttacks:
+	db -1 ; no more evolutions
+	db 1, TACKLE
+	db -1 ; no more level-up moves
+
+SneaslerEvosAttacks:
+	db -1 ; no more evolutions
+	db 1, TACKLE
+	db -1 ; no more level-up moves
+
+OverqwilEvosAttacks:
+	db -1 ; no more evolutions
+	db 1, TACKLE
 	db -1 ; no more level-up moves
 
 EggEvosAttacks::

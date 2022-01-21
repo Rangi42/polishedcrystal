@@ -283,4 +283,9 @@ ValidPokemonLevels: ; for Wonder Trade
 	db  38, 100 ; Cursola
 	db  20, 100 ; Sirfetch'd
 	db  42, 100 ; Mr. Rime
+	db 255, 255 ; Wyrdeer
+	db 255, 255 ; Kleavor
+	db 255, 255 ; Ursaluna
+	db 255, 255 ; Sneasler
+	db 255, 255 ; Overqwil
 	assert_table_length NUM_SPECIES

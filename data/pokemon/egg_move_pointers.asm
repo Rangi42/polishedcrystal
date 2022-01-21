@@ -282,10 +282,17 @@ EggMovePointers::
 	dw NoEggMoves
 	dw NoEggMoves
 	dw NoEggMoves
+	dw NoEggMoves
+	dw NoEggMoves
+	dw NoEggMoves
+	dw NoEggMoves
+	dw NoEggMoves
 	assert_table_length NUM_SPECIES
 
 	dw NoEggMoves
+
 	dw NoEggMoves
+
 	dw RattataAlolanEggMoves
 	dw NoEggMoves
 	dw NoEggMoves
@@ -304,6 +311,7 @@ EggMovePointers::
 	dw NoEggMoves
 	dw NoEggMoves
 	dw NoEggMoves
+
 	dw MeowthGalarianEggMoves
 	dw PonytaGalarianEggMoves
 	dw NoEggMoves
@@ -317,4 +325,12 @@ EggMovePointers::
 	dw NoEggMoves
 	dw NoEggMoves
 	dw CorsolaGalarianEggMoves
+
+	dw GrowlitheHisuianEggMoves
+	dw NoEggMoves
+	dw NoEggMoves
+	dw NoEggMoves
+	dw QwilfishHisuianEggMoves
+	dw SneaselHisuianEggMoves
+
 	assert_table_length NUM_EXT_POKEMON

@@ -223,6 +223,9 @@ GrowlitheEggMoves:
 	db CLOSE_COMBAT
 	db $ff
 
+GrowlitheHisuianEggMoves:
+	db $ff
+
 PoliwagEggMoves:
 	db ENCORE
 	db HAZE
@@ -769,6 +772,9 @@ QwilfishEggMoves:
 	db WATER_PULSE
 	db $ff
 
+QwilfishHisuianEggMoves:
+	db $ff
+
 ShuckleEggMoves:
 	db ROLLOUT
 	db ACID
@@ -791,6 +797,9 @@ SneaselEggMoves:
 	db REFLECT
 	db ICICLE_CRASH
 	db ICE_SHARD
+	db $ff
+
+SneaselHisuianEggMoves:
 	db $ff
 
 TeddiursaEggMoves:

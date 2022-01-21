@@ -1913,22 +1913,6 @@ GetWorldMapLocation::
 	ld a, c
 	jmp PopBCDEHL
 
-RandomRegionCheck::
-; Returns current region, like RegionCheck, except that Mt. Silver and Route 28
-; is considered Kanto or Johto at random.
-; e returns 0 in Johto, 1 in Kanto and 2 in Shamouti Island.
-	call GetCurrentLandmark
-	cp SILVER_CAVE
-	jr z, .random
-	cp ROUTE_28
-	jr nz, RegionCheck
-	; fallthrough
-.random
-	call Random
-	and 1
-	ld e, a
-	ret
-
 RegionCheck::
 ; Checks if the player is in Kanto or Johto.
 ; If in Johto, returns 0 in e.

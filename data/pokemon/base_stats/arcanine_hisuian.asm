@@ -1,14 +1,14 @@
-	db  90, 110,  80,  95, 100,  80 ; 555 BST
+	db  95, 115,  80,  90,  95,  80 ; 555 BST
 	;   hp  atk  def  spd  sat  sdf
 
-	db FIRE, FIRE ; type
+	db FIRE, ROCK ; type
 	db 75 ; catch rate
 	db 213 ; base exp
 	db NO_ITEM ; item 1
 	db ASPEAR_BERRY ; item 2
 	dn GENDER_F25, 3 ; gender ratio, step cycles to hatch
-	INCBIN "gfx/pokemon/arcanine/front.dimensions"
-	abilities_for ARCANINE, INTIMIDATE, FLASH_FIRE, JUSTIFIED
+	INCBIN "gfx/pokemon/arcanine_hisuian/front.dimensions"
+	abilities_for ARCANINE_HISUIAN, INTIMIDATE, FLASH_FIRE, JUSTIFIED
 	db GROWTH_SLOW ; growth rate
 	dn EGG_GROUND, EGG_GROUND ; egg groups
 

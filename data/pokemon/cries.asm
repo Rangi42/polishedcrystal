@@ -288,4 +288,9 @@ PokemonCries::
 	mon_cry CRY_MAGCARGO,    $0a1,  $0e8 ; Cursola
 	mon_cry CRY_FARFETCH_D,  $0dd,  $081 ; SirfetchD
 	mon_cry CRY_KRABBY,      $008,  $0c0 ; Mr.Rime
+	mon_cry CRY_TYROGUE,    -$160,  $180 ; Wyrdeer
+	mon_cry CRY_CATERPIE,    $000,  $100 ; Kleavor
+	mon_cry CRY_TEDDIURSA,   $640,  $0d8 ; Ursaluna
+	mon_cry CRY_WOOPER,      $053,  $0af ; Sneasler
+	mon_cry CRY_SLOWKING,    $160,  $0e0 ; Overqwil
 	assert_table_length NUM_SPECIES

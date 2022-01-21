@@ -117,6 +117,7 @@ NewPokedexOrder:
 	dp VENOMOTH
 	dp SCYTHER
 	dp SCIZOR
+	dp KLEAVOR
 	dp PINSIR
 	dp HERACROSS
 	dp KOFFING
@@ -137,6 +138,7 @@ NewPokedexOrder:
 	dp GROWLITHE
 	dp ARCANINE
 	dp STANTLER
+	dp WYRDEER
 	dp AZURILL
 	dp MARILL
 	dp AZUMARILL
@@ -176,6 +178,7 @@ NewPokedexOrder:
 	dp NATU
 	dp XATU
 	dp QWILFISH
+	dp OVERQWIL
 	dp TENTACOOL
 	dp TENTACRUEL
 	dp KRABBY
@@ -217,6 +220,7 @@ NewPokedexOrder:
 	dp MAMOSWINE
 	dp TEDDIURSA
 	dp URSARING
+	dp URSALUNA
 	dp PHANPY
 	dp DONPHAN
 	dp MANTINE
@@ -240,6 +244,7 @@ NewPokedexOrder:
 	dp MAGCARGO
 	dp SNEASEL
 	dp WEAVILE
+	dp SNEASLER
 	dp MISDREAVUS
 	dp MISMAGIUS
 	dp PORYGON
