@@ -179,6 +179,18 @@ LyraPhoneGloomText:
 	line "to know more?"
 	done
 
+LyraPhoneSlowpokeText:
+	text "Ah, I love"
+	line "Slowpoke! It's"
+	cont "so adorable!"
+
+	para "Grandpa taught"
+	line "me how it evolves."
+
+	para "Would you like"
+	line "to know it too?"
+	done
+
 LyraPhonePoliwhirlText:
 	text "Do you want to"
 	line "evolve your"
@@ -266,4 +278,21 @@ LyraPhoneGloomEvoText:
 
 	para "I hope you learned"
 	line "something new!"
+	done
+
+LyraPhoneSlowpokeEvoText:
+	text "He said it has"
+	line "two evolutions."
+
+	para "First, it will"
+	line "evolve if you"
+	cont "level it up."
+
+	para "But it can also"
+	line "evolve if it"
+	cont "levels up holding"
+	cont "a King's Rock."
+
+	para "Hope that info"
+	line "helps you!"
 	done
