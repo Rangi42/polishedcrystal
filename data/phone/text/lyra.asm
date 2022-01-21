@@ -167,6 +167,18 @@ LyraPhoneMagnetonText:
 	line "to hear it?"
 	done
 
+LyraPhoneGloomText:
+	text "Your Gloom looks"
+	line "pretty good!"
+
+	para "My grandma told"
+	line "me about its"
+	cont "evolutions."
+
+	para "Would you like"
+	line "to know more?"
+	done
+
 LyraPhonePoliwhirlText:
 	text "Do you want to"
 	line "evolve your"
@@ -235,4 +247,23 @@ LyraPhonePoliwhirlEvoText:
 
 	para "That's pretty cool,"
 	line "don't you think?"
+	done
+
+LyraPhoneGloomEvoText:
+	text "She said it has"
+	line "two evolutions!"
+
+	para "It will evolve"
+	line "with a Leaf Stone."
+
+	para "You probably knew"
+	line "that, didn't you?"
+
+	para "However, with a"
+	line "Sun Stone it"
+	cont "evolves into a"
+	cont "different #mon."
+
+	para "I hope you learned"
+	line "something new!"
 	done

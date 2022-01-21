@@ -27,6 +27,7 @@ LyraPhoneScript:
 .main
 	scall MagnetonEvo
 	scall PoliwhirlEvo
+	scall GloomEvo
 	scall AncientPowerEvo
 	farwritetext LyraPhoneMainText
 	end
@@ -37,13 +38,29 @@ MagnetonEvo:
 	end
 
 .magneton
-	farwritetext LyraPhoneMagnetonText	
+	farwritetext LyraPhoneMagnetonText
 	yesorno
 	iftrue .magneton_evolution
 	end
 
 .magneton_evolution
 	farwritetext LyraPhoneMagnetonEvoText
+	promptbutton
+	end
+
+GloomEvo:
+	checkpoke GLOOM
+	iftrue .gloom
+	end
+
+.gloom
+	farwritetext LyraPhoneGloomText
+	yesorno
+	iftrue .gloom_evolution
+	end
+
+.gloom_evolution
+	farwritetext LyraPhoneGloomEvoText
 	promptbutton
 	end
 
