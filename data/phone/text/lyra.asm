@@ -238,6 +238,19 @@ LyraPhoneHappinessMonText:
 	line "evolve, do you?"
 	done
 
+LyraPhoneDvsMonText:
+	text "Oh! You have a"
+	line ""
+	text_ram wStringBuffer3
+	text "!"
+
+	para "It evolves in a"
+	line "very specal way."
+
+	para "Would you like me"
+	line "to tell you how?"
+	done
+
 LyraPhoneAncientPowerEvoText:
 	text "I heard it evolves"
 	line "when it knows the"
@@ -246,6 +259,30 @@ LyraPhoneAncientPowerEvoText:
 
 	para "I never knew that"
 	line "before, did you?"
+	done
+
+LyraPhoneDvsEvoText:
+	text "Well, it has to"
+	line "become stronger in"
+	cont "it's "
+	text_ram wStringBuffer4
+	text "!"
+
+	para "Either defeat more"
+	line "#mon, or feed"
+	cont "it "
+	text_ram wStringBuffer5
+	text "."
+
+	para "I know how much"
+	line "you care for"
+	cont "your #mon."
+
+	para "So I'm sure you'll"
+	line "be able to evolve"
+	cont "your "
+	text_ram wStringBuffer3
+	text "!"
 	done
 
 LyraPhoneMagnetonEvoText:

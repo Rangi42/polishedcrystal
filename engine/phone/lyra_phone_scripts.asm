@@ -32,6 +32,7 @@ LyraPhoneScript:
 	scall EeveeEvo
 	scall HappinessEvo
 	scall AncientPowerEvo
+	scall DvsEvo
 	farwritetext LyraPhoneMainText
 	end
 
@@ -175,6 +176,52 @@ HappinessEvo:
 	promptbutton
 	end
 
+DvsEvo:
+	checkpoke GRAVELER
+	iftrue .graveler
+	checkpoke HAUNTER
+	iftrue .haunter
+	checkpoke KADABRA
+	iftrue .kadabra
+	checkpoke MACHOKE
+	iftrue .machoke
+	end
+
+.graveler
+	getmonname GRAVELER, STRING_BUFFER_3
+	getstring DefenseString, STRING_BUFFER_4
+	getitemname IRON, STRING_BUFFER_5
+	sjump .dvs
+
+.haunter
+	getmonname HAUNTER, STRING_BUFFER_3
+	getstring SpeedString, STRING_BUFFER_4
+	getitemname CARBOS, STRING_BUFFER_5
+	sjump .dvs
+
+.kadabra
+	getmonname KADABRA, STRING_BUFFER_3
+	getstring SpecialAttackString, STRING_BUFFER_4
+	getitemname CALCIUM, STRING_BUFFER_5
+	sjump .dvs
+
+.machoke
+	getmonname MACHOKE, STRING_BUFFER_3
+	getstring AttackString, STRING_BUFFER_4
+	getitemname PROTEIN, STRING_BUFFER_5
+	sjump .dvs
+
+.dvs
+	farwritetext LyraPhoneDvsMonText
+	yesorno
+	iftrue .dvs_evolution
+	end
+
+.dvs_evolution
+	farwritetext LyraPhoneDvsEvoText
+	promptbutton
+	end
+
 PoliwhirlEvo:
 	checkpoke POLIWHIRL
 	iftrue .poliwhirl
@@ -231,3 +278,8 @@ LyraPhoneScript2:
 	setevent EVENT_LYRA_GAVE_AWAY_EGG
 	specialphonecall SPECIALCALL_NONE
 	end
+
+AttackString: db "Attack@"
+DefenseString: db "Defense@"
+SpecialAttackString: db "Spcl. Attack@"
+SpeedString: db "Speed"
