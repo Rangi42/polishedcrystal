@@ -174,6 +174,9 @@ _dchr: MACRO
 	endc
 	if _compressing_text && (!DEF(___huffman_data_{02X:_chr}) || !DEF(___huffman_length_{02X:_chr}))
 		; We're compressing text, but this character does not have a Huffman code; don't compress after all
+		if DEF(DEBUG)
+			assert warn 0, "Uncompressible character in text: {#02X:_chr}"
+		endc
 		DEF _might_compress_text = 0
 		DEF _compressing_text = 0
 		DEF _compression_bias = 0
@@ -191,6 +194,9 @@ _dchr: MACRO
 		endc
 	else
 		; We're compressing text; count up the raw and compressed data
+		if DEF(HUFFMAN)
+			println "\1"
+		endc
 		; Append the raw character
 		DEF _raw_byte_{d:_raw_bytes} = _chr
 		DEF _raw_bytes += 1
