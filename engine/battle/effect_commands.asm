@@ -5414,7 +5414,6 @@ BattleCommand_charge:
 
 .not_charging
 	push hl
-	call BattleCommand_cleartext
 	pop hl
 	ld a, BATTLE_VARS_STATUS
 	call GetBattleVar
