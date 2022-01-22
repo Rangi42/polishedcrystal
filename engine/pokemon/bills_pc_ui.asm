@@ -2948,7 +2948,7 @@ BillsPC_Theme:
 	ld hl, .ThemeMenuDataHeader
 	call CopyMenuHeader
 	call InitScrollingMenu
-	xor a
+	call GetBoxTheme
 	ld [wMenuScrollPosition], a
 	call ScrollingMenu
 
@@ -2959,10 +2959,6 @@ BillsPC_Theme:
 	cp B_BUTTON
 	jr z, .refresh_theme ; revert back to what it used to be
 
-	; [sNewBox[wCurBox]Theme] = [wScrollingMenuCursorPosition]
-	ld a, [wCurBox]
-	ld b, a
-	inc b
 	ld a, [wScrollingMenuCursorPosition]
 	call SetBoxTheme
 

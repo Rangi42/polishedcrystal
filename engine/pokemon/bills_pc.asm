@@ -1132,31 +1132,28 @@ InitializeBoxes:
 
 INCLUDE "data/pc/default_box_themes.asm"
 
-GetBoxTheme:
-; Returns box b's theme in a.
-	ld c, 0
-	jr CopyBoxTheme
-
-SetBoxTheme:
-; Sets box b's theme to a.
-	ld c, 1
-	; fallthrough
-CopyBoxTheme:
-	push af
+_PointBoxTheme:
+; Return's [wCurBox]'s theme pointer in hl.
+; Also opens [wCurBox]'s SRAM bank.
 	ld a, BANK(sNewBox1)
 	call GetSRAMBank
 	ld hl, sNewBox1Theme
-	ld a, b
-	dec a
-	push bc
+	ld a, [wCurBox]
 	ld bc, sNewBox2 - sNewBox1
 	rst AddNTimes
-	pop bc
-	pop af
-	dec c
-	jr z, .set_theme
+	ret
+
+GetBoxTheme:
+; Returns [wCurBox]'s theme in a.
+	call _PointBoxTheme
 	ld a, [hl]
-.set_theme
+	jmp CloseSRAM
+
+SetBoxTheme:
+; Sets [wCurBox]'s theme to a.
+	push af
+	call _PointBoxTheme
+	pop af
 	ld [hl], a
 	jmp CloseSRAM
 
