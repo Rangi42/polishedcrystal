@@ -341,8 +341,12 @@ FramesPointers:
 	dw MagikarpZebraFrames
 	dw MagikarpStripeFrames
 	dw MagikarpBubblesFrames
-	dw MagikarpForeheadFrames
-	dw MagikarpMaskFrames
+	dw MagikarpDiamondsFrames
+	dw MagikarpPatchesFrames
+	dw MagikarpForehead1Frames
+	dw MagikarpMask1Frames
+	dw MagikarpForehead2Frames
+	dw MagikarpMask2Frames
 	dw MagikarpSaucyFrames
 	dw MagikarpRaindropFrames
 

@@ -299,8 +299,12 @@ MagikarpTigerAnimationExtra:
 MagikarpZebraAnimationExtra:
 MagikarpStripeAnimationExtra:
 MagikarpBubblesAnimationExtra:
-MagikarpForeheadAnimationExtra:
-MagikarpMaskAnimationExtra:
+MagikarpDiamondsAnimationExtra:
+MagikarpPatchesAnimationExtra:
+MagikarpForehead1AnimationExtra:
+MagikarpMask1AnimationExtra:
+MagikarpForehead2AnimationExtra:
+MagikarpMask2AnimationExtra:
 MagikarpSaucyAnimationExtra:
 MagikarpRaindropAnimationExtra: INCLUDE "gfx/pokemon/magikarp/anim_idle.asm"
 

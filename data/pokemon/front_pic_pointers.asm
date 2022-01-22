@@ -341,8 +341,12 @@ FrontPicPointers::
 	dba MagikarpZebraFrontpic
 	dba MagikarpStripeFrontpic
 	dba MagikarpBubblesFrontpic
-	dba MagikarpForeheadFrontpic
-	dba MagikarpMaskFrontpic
+	dba MagikarpDiamondsFrontpic
+	dba MagikarpPatchesFrontpic
+	dba MagikarpForehead1Frontpic
+	dba MagikarpMask1Frontpic
+	dba MagikarpForehead2Frontpic
+	dba MagikarpMask2Frontpic
 	dba MagikarpSaucyFrontpic
 	dba MagikarpRaindropFrontpic
 

@@ -341,8 +341,12 @@ BitmasksPointers:
 	dw MagikarpZebraBitmasks
 	dw MagikarpStripeBitmasks
 	dw MagikarpBubblesBitmasks
-	dw MagikarpForeheadBitmasks
-	dw MagikarpMaskBitmasks
+	dw MagikarpDiamondsBitmasks
+	dw MagikarpPatchesBitmasks
+	dw MagikarpForehead1Bitmasks
+	dw MagikarpMask1Bitmasks
+	dw MagikarpForehead2Bitmasks
+	dw MagikarpMask2Bitmasks
 	dw MagikarpSaucyBitmasks
 	dw MagikarpRaindropBitmasks
 

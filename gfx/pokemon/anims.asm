@@ -301,8 +301,12 @@ MagikarpTigerAnimation:
 MagikarpZebraAnimation:
 MagikarpStripeAnimation:
 MagikarpBubblesAnimation:
-MagikarpForeheadAnimation:
-MagikarpMaskAnimation:
+MagikarpDiamondsAnimation:
+MagikarpPatchesAnimation:
+MagikarpForehead1Animation:
+MagikarpMask1Animation:
+MagikarpForehead2Animation:
+MagikarpMask2Animation:
 MagikarpSaucyAnimation:
 MagikarpRaindropAnimation: INCLUDE "gfx/pokemon/magikarp/anim.asm"
 
