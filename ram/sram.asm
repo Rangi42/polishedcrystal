@@ -166,9 +166,9 @@ sBoxMons2C:: pokedb sBoxMons2C, MONDB_ENTRIES_C
 
 SECTION "PokeDB bank 1A",  SRAM
 
-sBoxMons1:: pokedb sBoxMons1, MONDB_ENTRIES_A
+sBoxMons1A:: pokedb sBoxMons1A, MONDB_ENTRIES_A
 
 
 SECTION "PokeDB bank 2A", SRAM
 
-sBoxMons2:: pokedb sBoxMons2, MONDB_ENTRIES_A
+sBoxMons2A:: pokedb sBoxMons2A, MONDB_ENTRIES_A
