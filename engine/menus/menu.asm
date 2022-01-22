@@ -596,6 +596,28 @@ _PushWindow::
 	jr nz, .row
 	ret
 
+PushWindow_MenuBoxCoordToTile::
+	bccoord 0, 0
+	jr PushWindow_MenuBoxCoordToAbsolute
+
+PushWindow_MenuBoxCoordToAttr::
+	bccoord 0, 0, wAttrmap
+
+; fallthrough
+PushWindow_MenuBoxCoordToAbsolute:
+	push bc
+	call LoadMenuBoxCoords
+	ld a, [wMenuFlags]
+	bit 1, a
+	jr z, .noDec
+	dec b
+	dec c
+.noDec
+	call Coord2Absolute
+	pop bc
+	add hl, bc
+	ret
+
 _ExitMenu::
 	xor a
 	ldh [hBGMapMode], a
