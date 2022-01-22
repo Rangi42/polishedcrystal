@@ -966,6 +966,8 @@ CheckObjectMask::
 	ld a, [hl]
 	ret
 
+DeleteObjectStruct::
+	call ApplyDeletionToMapObject
 MaskObject::
 	call _GetObjectMask
 	ld [hl], -1 ; , masked
@@ -1461,13 +1463,11 @@ GetCoordTile::
 	rr d
 	jr nc, .nocarry
 	inc hl
-
 .nocarry
 	rr e
 	jr nc, .nocarry2
 	inc hl
 	inc hl
-
 .nocarry2
 	ld a, BANK(wDecompressedCollisions)
 	jmp GetFarWRAMByte
@@ -1635,34 +1635,6 @@ CheckCurrentMapCoordEvents::
 	scf
 	ret
 
-FadeToMenu::
-	xor a
-	ldh [hBGMapMode], a
-	call LoadStandardMenuHeader
-	farcall FadeOutPalettes
-	call ClearSprites
-	jmp DisableSpriteUpdates
-
-CloseSubmenu::
-	call ClearBGPalettes
-	call ReloadTilesetAndPalettes
-	call UpdateSprites
-	call ExitMenu
-	jr FinishExitMenu
-
-ExitAllMenus::
-	call ClearBGPalettes
-	call ExitMenu
-	call ReloadTilesetAndPalettes
-	call UpdateSprites
-FinishExitMenu::
-	ld a, CGB_MAPPALS
-	call GetCGBLayout
-	farcall LoadBlindingFlashPalette
-	call ApplyAttrAndTilemapInVBlank
-	farcall FadeInPalettes
-	jmp EnableSpriteUpdates
-
 ReturnToMapWithSpeechTextbox::
 	push af
 	ld a, $1
@@ -1707,8 +1679,13 @@ ReloadTilesetAndPalettes::
 	call SkipMusic
 	pop af
 	rst Bankswitch
+	; fallthrough
 
-	jmp EnableLCD
+EnableLCD::
+	ldh a, [rLCDC]
+	set rLCDC_ENABLE, a
+	ldh [rLCDC], a
+	ret
 
 GetMapPointer::
 	ld a, [wMapGroup]

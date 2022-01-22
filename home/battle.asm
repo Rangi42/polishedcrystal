@@ -135,24 +135,31 @@ GetThirdMaxHP::
 
 GetSixteenthMaxHP::
 	call GetEighthMaxHP
-	jr HalfHP
+	jr HalveBC
 
 GetEighthMaxHP::
 	call GetQuarterMaxHP
-	jr HalfHP
+	jr HalveBC
 
 GetSixthMaxHP::
 	call GetThirdMaxHP
-	jr HalfHP
+	jr HalveBC
 
 GetQuarterMaxHP::
 	call GetHalfMaxHP
-	jr HalfHP
+	jr HalveBC
 
 GetHalfMaxHP::
 	call GetMaxHP
-HalfHP::
-	jmp HalveBC
+HalveBC::
+	srl b
+	rr c
+FloorBC::
+	ld a, c
+	or b
+	ret nz
+	inc c
+	ret
 
 GetMaxHP::
 ; output: bc, wBuffer1-2
@@ -869,16 +876,6 @@ GetBattleAnimByte::
 	pop hl
 
 	ld a, [wBattleAnimByte]
-	ret
-
-HalveBC::
-	srl b
-	rr c
-FloorBC::
-	ld a, c
-	or b
-	ret nz
-	inc c
 	ret
 
 PushLYOverrides::

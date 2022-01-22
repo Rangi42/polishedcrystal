@@ -125,7 +125,11 @@ Print8BitNumRightAlign::
 	ld [wTextDecimalByte], a
 	ld de, wTextDecimalByte
 	ld b, PRINTNUM_LEFTALIGN | 1
-	jmp PrintNum
+	; fallthrough
+
+PrintNum::
+	homecall _PrintNum
+	ret
 
 GetBaseDataFromIndexBC::
 	push hl

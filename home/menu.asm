@@ -1,6 +1,8 @@
 InitVerticalMenuCursor::
 	farjp _InitVerticalMenuCursor
 
+MenuTextboxBackup::
+	call MenuTextbox
 CloseWindow::
 	push af
 	call ExitMenu
@@ -9,6 +11,9 @@ CloseWindow::
 	pop af
 	ret
 
+MenuTextboxWaitButton::
+	call MenuTextbox
+	call WaitButton
 ExitMenu::
 	push af
 	farcall _ExitMenu
@@ -150,6 +155,10 @@ PlaceVerticalMenuItems::
 	rst PlaceString
 	ret
 
+DrawVariableLengthMenuBox::
+	call CopyMenuData2
+	call GetMenuIndexSet
+	call AutomaticGetMenuBottomCoord
 MenuBox::
 	call MenuBoxCoord2Tile
 	call GetMenuBoxDims
@@ -236,16 +245,6 @@ CopyMenuHeader::
 	ldh a, [hROMBank]
 	ld [wMenuDataBank], a
 	ret
-
-MenuTextbox::
-	push hl
-	call LoadMenuTextbox
-	pop hl
-	jmp PrintText
-
-MenuTextboxBackup::
-	call MenuTextbox
-	jmp CloseWindow
 
 LoadMenuTextbox::
 	ld hl, MenuTextboxDataHeader
@@ -421,14 +420,6 @@ _OffsetMenuDataHeader::
 	ld [wMenuBorderBottomCoord], a
 	ret
 
-DoNthMenu::
-	call DrawVariableLengthMenuBox
-	call MenuWriteText
-	call InitMenuCursorAndButtonPermissions
-	call GetStaticMenuJoypad
-	call GetMenuJoypad
-	jmp MenuClickSound
-
 SetUpMenu::
 	call DrawVariableLengthMenuBox ; ???
 	call MenuWriteText
@@ -436,12 +427,6 @@ SetUpMenu::
 	ld hl, w2DMenuFlags1
 	set 7, [hl]
 	ret
-
-DrawVariableLengthMenuBox::
-	call CopyMenuData2
-	call GetMenuIndexSet
-	call AutomaticGetMenuBottomCoord
-	jmp MenuBox
 
 SetUpVariableDataMenu:
 	ld hl, wMenuFlags
@@ -644,13 +629,13 @@ GetMenuDataPointerTableEntry::
 	ret
 
 ClearWindowData::
-	ld hl, wWindowStackPointer
+	ld hl, wMenuMetadata
 	call .bytefill
 	ld hl, wMenuHeader
 	call .bytefill
-	ld hl, wMenuDataFlags
+	ld hl, wMenuData
 	call .bytefill
-	ld hl, w2DMenuCursorInitY
+	ld hl, w2DMenuData
 	call .bytefill
 
 	ldh a, [rSVBK]
@@ -672,11 +657,20 @@ ClearWindowData::
 	ret
 
 .bytefill
-	ld bc, $0010
+	ld bc, wMenuMetadataEnd - wMenuMetadata
+	assert wMenuMetadataEnd - wMenuMetadata == wMenuHeaderEnd - wMenuHeader
+	assert wMenuMetadataEnd - wMenuMetadata == wMenuDataEnd - wMenuData
+	assert wMenuMetadataEnd - wMenuMetadata == w2DMenuDataEnd - w2DMenuData
 	xor a
 	rst ByteFill
 	ret
 
+DoNthMenu::
+	call DrawVariableLengthMenuBox
+	call MenuWriteText
+	call InitMenuCursorAndButtonPermissions
+	call GetStaticMenuJoypad
+	call GetMenuJoypad
 MenuClickSound::
 	push af
 	and A_BUTTON | B_BUTTON
@@ -694,11 +688,6 @@ PlayClickSFX::
 	call PlaySFX
 	pop de
 	ret
-
-MenuTextboxWaitButton::
-	call MenuTextbox
-	call WaitButton
-	jmp ExitMenu
 
 _2DMenu::
 	ldh a, [hROMBank]

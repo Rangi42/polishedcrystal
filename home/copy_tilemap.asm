@@ -12,14 +12,6 @@ LoadTileMapToTempTileMap::
 	ldh [rSVBK], a
 	ret
 
-Call_LoadTempTileMapToTileMap::
-	xor a
-	ldh [hBGMapMode], a
-	call LoadTempTileMapToTileMap
-	ld a, 1
-	ldh [hBGMapMode], a
-	ret
-
 LoadTempTileMapToTileMap::
 ; Load wTempTileMap into wTilemap
 	ldh a, [rSVBK]
