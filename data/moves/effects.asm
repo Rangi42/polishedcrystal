@@ -2149,8 +2149,8 @@ Teleport:
 Fly:
 Dig:
 	checkobedience
-	usedmovetext
 	doturn
+	usedmovetext
 	hastarget
 	charge
 	checkhit
