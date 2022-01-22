@@ -216,6 +216,13 @@ PushWindow_MenuBoxCoordToAbsolute:
 	add hl, bc
 	ret
 
+LoadMenuBoxCoords:
+	ld a, [wMenuBorderLeftCoord]
+	ld c, a
+	ld a, [wMenuBorderTopCoord]
+	ld b, a
+	ret
+
 MenuBoxCoord2Tile::
 	call LoadMenuBoxCoords
 	; fallthrough
@@ -226,17 +233,6 @@ Coord2Tile::
 	bccoord 0, 0
 	add hl, bc
 	ret
-
-LoadMenuBoxCoords:
-	ld a, [wMenuBorderLeftCoord]
-	ld c, a
-	ld a, [wMenuBorderTopCoord]
-	ld b, a
-	ret
-
-MenuBoxCoord2Attr::
-	call LoadMenuBoxCoords
-	; fallthrough
 
 Coord2Attr::
 ; Return the address of wAttrmap(c, b) in hl.

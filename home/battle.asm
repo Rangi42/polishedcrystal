@@ -512,29 +512,11 @@ GetOpponentAbilityAfterMoldBreaker::
 CheckIfTargetIsGrassType::
 	ld a, GRASS
 	jr CheckIfTargetIsSomeType
-CheckIfTargetIsPoisonType::
-	ld a, POISON
-	jr CheckIfTargetIsSomeType
-CheckIfTargetIsElectricType::
-	ld a, ELECTRIC
-	jr CheckIfTargetIsSomeType
-CheckIfTargetIsSteelType::
-	ld a, STEEL
-	jr CheckIfTargetIsSomeType
-CheckIfTargetIsFireType::
-	ld a, FIRE
-	jr CheckIfTargetIsSomeType
 CheckIfTargetIsIceType::
 	ld a, ICE
 	jr CheckIfTargetIsSomeType
 CheckIfTargetIsDarkType::
 	ld a, DARK
-	jr CheckIfTargetIsSomeType
-CheckIfTargetIsRockType::
-	ld a, ROCK
-	jr CheckIfTargetIsSomeType
-CheckIfTargetIsGroundType::
-	ld a, GROUND
 	jr CheckIfTargetIsSomeType
 CheckIfTargetIsGhostType::
 	ld a, GHOST

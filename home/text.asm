@@ -78,9 +78,7 @@ TextboxBorder::
 	; fallthrough
 CreateBoxBorders::
 	ld a, SCREEN_WIDTH
-	; fallthrough
-_CreateBoxBorders:
-; a: Screen width to consider (dex uses a custom size).
+
 	; Top
 	call .PlaceRow
 	jr .row
