@@ -94,11 +94,6 @@ CheckWarpTile::
 	scf
 	ret
 
-WarpCheck::
-	call GetDestinationWarpNumber
-	ret nc
-	jr CopyWarpData
-
 GetDestinationWarpNumber::
 	farcall CheckWarpCollision
 	ret nc
@@ -165,6 +160,9 @@ GetDestinationWarpNumber::
 	scf
 	ret
 
+WarpCheck::
+	call GetDestinationWarpNumber
+	ret nc
 CopyWarpData::
 	ldh a, [hROMBank]
 	push af
@@ -955,30 +953,26 @@ ObjectEvent::
 DoNothingScript::
 	end
 
-CheckObjectMask::
+_GetObjectMask:
 	ldh a, [hMapObjectIndexBuffer]
 	ld e, a
-	ld d, $0
+	ld d, 0
 	ld hl, wObjectMasks
 	add hl, de
+	ret
+
+CheckObjectMask::
+	call _GetObjectMask
 	ld a, [hl]
 	ret
 
 MaskObject::
-	ldh a, [hMapObjectIndexBuffer]
-	ld e, a
-	ld d, $0
-	ld hl, wObjectMasks
-	add hl, de
+	call _GetObjectMask
 	ld [hl], -1 ; , masked
 	ret
 
 UnmaskObject::
-	ldh a, [hMapObjectIndexBuffer]
-	ld e, a
-	ld d, $0
-	ld hl, wObjectMasks
-	add hl, de
+	call _GetObjectMask
 	ld [hl], 0 ; unmasked
 	ret
 
