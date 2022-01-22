@@ -2,8 +2,8 @@
 _might_compress_text = 0
 ; 'text' has started being compressible; we are counting to see if compression will save space.
 _compressing_text = 0
-; Bias the evaluation of whether compression saves space by this number of bytes.
-_compression_bias = 0
+; Add an "@" terminator to compressed 'text' which uncompressed does not need.
+_compression_terminator = 0
 
 ; Text commands
 
@@ -76,7 +76,7 @@ stop_compressing_text: MACRO
 ; Stops text compression if it is ongoing.
 	DEF _might_compress_text = 0
 	if _compressing_text
-		DEF _compression_bias = 1 ; uncompressed text doesn't need this "@"
+		DEF _compression_terminator = 1
 		_dtxt "@"
 	endc
 ENDM
@@ -91,7 +91,7 @@ text: MACRO
 	endc
 	DEF _might_compress_text = 1
 	DEF _compressing_text = 0
-	DEF _compression_bias = 0
+	DEF _compression_terminator = 0
 	_dtxt \#
 ENDM
 
@@ -179,7 +179,7 @@ _dchr: MACRO
 		endc
 		DEF _might_compress_text = 0
 		DEF _compressing_text = 0
-		DEF _compression_bias = 0
+		DEF _compression_terminator = 0
 		; Declare the raw bytes we've accumulated so far
 		for _text_idx, _raw_bytes
 			db _raw_byte_{d:_text_idx}
@@ -228,18 +228,18 @@ _dchr: MACRO
 			DEF _might_compress_text = 0
 			setcharmap default
 			; Declare the accumulated bytes
-			if _compressed_bytes < _raw_bytes - _compression_bias
+			if _compressed_bytes < _raw_bytes - !!_compression_terminator
 				; Compression saves space; declare the compressed bytes
 				for _text_idx, _compressed_bytes
 					db _compressed_byte_{d:_text_idx}
 				endr
 			else
 				; Compression does not save space; declare the raw bytes
-				for _text_idx, _raw_bytes - _compression_bias
+				for _text_idx, _raw_bytes - !!_compression_terminator
 					db _raw_byte_{d:_text_idx}
 				endr
 			endc
-			DEF _compression_bias = 0
+			DEF _compression_terminator = 0
 		endc
 	endc
 ENDM

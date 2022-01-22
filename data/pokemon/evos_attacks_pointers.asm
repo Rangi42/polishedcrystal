@@ -160,7 +160,7 @@ EvosAttacksPointers::
 	dw MeganiumEvosAttacks
 	dw CyndaquilEvosAttacks
 	dw QuilavaEvosAttacks
-	dw TyphlosionEvosAttacks
+	dw TyphlosionPlainEvosAttacks
 	dw TotodileEvosAttacks
 	dw CroconawEvosAttacks
 	dw FeraligatrEvosAttacks
@@ -334,6 +334,7 @@ EvosAttacksPointers::
 	dw ArcanineHisuianEvosAttacks
 	dw VoltorbHisuianEvosAttacks
 	dw ElectrodeHisuianEvosAttacks
+	dw TyphlosionHisuianEvosAttacks
 	dw QwilfishHisuianEvosAttacks
 	dw SneaselHisuianEvosAttacks
 

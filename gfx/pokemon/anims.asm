@@ -119,7 +119,6 @@ BayleefAnimation:    INCLUDE "gfx/pokemon/bayleef/anim.asm"
 MeganiumAnimation:   INCLUDE "gfx/pokemon/meganium/anim.asm"
 CyndaquilAnimation:  INCLUDE "gfx/pokemon/cyndaquil/anim.asm"
 QuilavaAnimation:    INCLUDE "gfx/pokemon/quilava/anim.asm"
-TyphlosionAnimation: INCLUDE "gfx/pokemon/typhlosion/anim.asm"
 TotodileAnimation:   INCLUDE "gfx/pokemon/totodile/anim.asm"
 CroconawAnimation:   INCLUDE "gfx/pokemon/croconaw/anim.asm"
 FeraligatrAnimation: INCLUDE "gfx/pokemon/feraligatr/anim.asm"
@@ -415,6 +414,9 @@ VoltorbHisuianAnimation: INCLUDE "gfx/pokemon/voltorb_hisuian/anim.asm"
 
 ElectrodePlainAnimation:   INCLUDE "gfx/pokemon/electrode_plain/anim.asm"
 ElectrodeHisuianAnimation: INCLUDE "gfx/pokemon/electrode_hisuian/anim.asm"
+
+TyphlosionPlainAnimation:   INCLUDE "gfx/pokemon/typhlosion_plain/anim.asm"
+TyphlosionHisuianAnimation: INCLUDE "gfx/pokemon/typhlosion_hisuian/anim.asm"
 
 QwilfishPlainAnimation:   INCLUDE "gfx/pokemon/qwilfish_plain/anim.asm"
 QwilfishHisuianAnimation: INCLUDE "gfx/pokemon/qwilfish_hisuian/anim.asm"

@@ -466,11 +466,12 @@ HISUIAN_FORM EQU 4
 	const_skip ; 176 arcanine
 	const_skip ; 177 voltorb
 	const_skip ; 178 electrode
-	const_skip ; 179 qwilfish
-	const_skip ; 17a sneasel
+	const_skip ; 179 typhlosion
+	const_skip ; 17a qwilfish
+	const_skip ; 17b sneasel
 
-NUM_VARIANT_FORMS EQU const_value - FIRST_VARIANT_FORM_MON ; 27
+NUM_VARIANT_FORMS EQU const_value - FIRST_VARIANT_FORM_MON ; 28
 
 ; these constants include EGG and a dummy entry as species
-NUM_UNIQUE_POKEMON EQU const_value - 1 ; 17a
-NUM_EXT_POKEMON EQU NUM_UNIQUE_POKEMON - NUM_COSMETIC_FORMS ; 146
+NUM_UNIQUE_POKEMON EQU const_value - 1 ; 17b
+NUM_EXT_POKEMON EQU NUM_UNIQUE_POKEMON - NUM_COSMETIC_FORMS ; 147

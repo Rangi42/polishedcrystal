@@ -1565,8 +1565,8 @@ QuilavaPokedexEntry::
 	next "ferociously its"
 	next "fire blazes.@"
 
-SECTION "TyphlosionPokedexEntry", ROMX
-TyphlosionPokedexEntry::
+SECTION "TyphlosionPlainPokedexEntry", ROMX
+TyphlosionPlainPokedexEntry::
 	db "Volcano@"
 	db   "When heat from its"
 	next "body causes the"
@@ -3220,6 +3220,16 @@ VoltorbHisuianPokedexEntry::
 
 SECTION "ElectrodeHisuianPokedexEntry", ROMX
 ElectrodeHisuianPokedexEntry::
+	db "?????@"
+	db   "This is a newly"
+	next "discovered #-"
+	next "mon. It is under"
+	page "investigation."
+	next "No information"
+	next "is available.@"
+
+SECTION "TyphlosionHisuianPokedexEntry", ROMX
+TyphlosionHisuianPokedexEntry::
 	db "?????@"
 	db   "This is a newly"
 	next "discovered #-"

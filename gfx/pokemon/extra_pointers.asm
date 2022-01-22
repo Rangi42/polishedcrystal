@@ -156,7 +156,7 @@ AnimationExtraPointers:
 	dw MeganiumAnimationExtra
 	dw CyndaquilAnimationExtra
 	dw QuilavaAnimationExtra
-	dw TyphlosionAnimationExtra
+	dw TyphlosionPlainAnimationExtra
 	dw TotodileAnimationExtra
 	dw CroconawAnimationExtra
 	dw FeraligatrAnimationExtra
@@ -385,6 +385,7 @@ AnimationExtraPointers:
 	dw ArcanineHisuianAnimationExtra
 	dw VoltorbHisuianAnimationExtra
 	dw ElectrodeHisuianAnimationExtra
+	dw TyphlosionHisuianAnimationExtra
 	dw QwilfishHisuianAnimationExtra
 	dw SneaselHisuianAnimationExtra
 

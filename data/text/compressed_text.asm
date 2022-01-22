@@ -14,6 +14,7 @@ _parent_node: MACRO
 		if !DEF(___huffman_data_{02X:x})
 			fail "invalid leaf node character \1"
 		endc
+		DEF ___huffman_leaf_node_{02X:x} = 1
 		if $7f <= \1 && \1 <= $eb
 			; characters $7f-$eb correspond to leaf nodes $7f-$eb
 			db \1
@@ -155,3 +156,9 @@ TextCompressionHuffmanTree:
 	parent_node "'m",       $7b        ; $7a - 111101011
 	parent_node "K",        "N"        ; $7b - 1111010111
 	; parent nodes $7c-$7e are unused
+
+for x, 256
+	if DEF(___huffman_data_{02X:x}) && !DEF(___huffman_leaf_node_{02X:x})
+		fail "unreachable leaf node character {#02X:x}"
+	endc
+endr

@@ -977,13 +977,21 @@ SECTION "QuilavaBackpic", ROMX
 QuilavaBackpic:
 	INCBIN "gfx/pokemon/quilava/back.2bpp.lz"
 
-SECTION "TyphlosionFrontpic", ROMX
-TyphlosionFrontpic:
-	INCBIN "gfx/pokemon/typhlosion/front.animated.2bpp.lz"
+SECTION "TyphlosionPlainFrontpic", ROMX
+TyphlosionPlainFrontpic:
+	INCBIN "gfx/pokemon/typhlosion_plain/front.animated.2bpp.lz"
 
-SECTION "TyphlosionBackpic", ROMX
-TyphlosionBackpic:
-	INCBIN "gfx/pokemon/typhlosion/back.2bpp.lz"
+SECTION "TyphlosionPlainBackpic", ROMX
+TyphlosionPlainBackpic:
+	INCBIN "gfx/pokemon/typhlosion_plain/back.2bpp.lz"
+
+SECTION "TyphlosionHisuianFrontpic", ROMX
+TyphlosionHisuianFrontpic:
+	INCBIN "gfx/pokemon/typhlosion_hisuian/front.animated.2bpp.lz"
+
+SECTION "TyphlosionHisuianBackpic", ROMX
+TyphlosionHisuianBackpic:
+	INCBIN "gfx/pokemon/typhlosion_hisuian/back.2bpp.lz"
 
 SECTION "TotodileFrontpic", ROMX
 TotodileFrontpic:

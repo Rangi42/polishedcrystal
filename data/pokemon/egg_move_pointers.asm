@@ -330,6 +330,7 @@ EggMovePointers::
 	dw NoEggMoves
 	dw NoEggMoves
 	dw NoEggMoves
+	dw NoEggMoves
 	dw QwilfishHisuianEggMoves
 	dw SneaselHisuianEggMoves
 

@@ -376,6 +376,7 @@ endr
 	dba ArcanineIcon ; TODO
 	dba VoltorbIcon ; TODO
 	dba ElectrodeIcon ; TODO
+	dba TyphlosionIcon ; TODO
 	dba QwilfishIcon ; TODO
 	dba SneaselIcon ; TODO
 
