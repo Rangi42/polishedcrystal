@@ -341,8 +341,12 @@ BackPicPointers::
 	dba MagikarpZebraBackpic
 	dba MagikarpStripeBackpic
 	dba MagikarpBubblesBackpic
-	dba MagikarpForeheadBackpic
-	dba MagikarpMaskBackpic
+	dba MagikarpDiamondsBackpic
+	dba MagikarpPatchesBackpic
+	dba MagikarpForehead1Backpic
+	dba MagikarpMask1Backpic
+	dba MagikarpForehead2Backpic
+	dba MagikarpMask2Backpic
 	dba MagikarpSaucyBackpic
 	dba MagikarpRaindropBackpic
 

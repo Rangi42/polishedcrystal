@@ -2304,21 +2304,53 @@ SECTION "MagikarpBubblesBackpic", ROMX
 MagikarpBubblesBackpic:
 	INCBIN "gfx/pokemon/magikarp_bubbles/back.2bpp.lz"
 
-SECTION "MagikarpForeheadFrontpic", ROMX
-MagikarpForeheadFrontpic:
-	INCBIN "gfx/pokemon/magikarp_forehead/front.animated.2bpp.lz"
+SECTION "MagikarpDiamondsFrontpic", ROMX
+MagikarpDiamondsFrontpic:
+	INCBIN "gfx/pokemon/magikarp_diamonds/front.animated.2bpp.lz"
 
-SECTION "MagikarpForeheadBackpic", ROMX
-MagikarpForeheadBackpic:
-	INCBIN "gfx/pokemon/magikarp_forehead/back.2bpp.lz"
+SECTION "MagikarpDiamondsBackpic", ROMX
+MagikarpDiamondsBackpic:
+	INCBIN "gfx/pokemon/magikarp_diamonds/back.2bpp.lz"
 
-SECTION "MagikarpMaskFrontpic", ROMX
-MagikarpMaskFrontpic:
-	INCBIN "gfx/pokemon/magikarp_mask/front.animated.2bpp.lz"
+SECTION "MagikarpPatchesFrontpic", ROMX
+MagikarpPatchesFrontpic:
+	INCBIN "gfx/pokemon/magikarp_patches/front.animated.2bpp.lz"
 
-SECTION "MagikarpMaskBackpic", ROMX
-MagikarpMaskBackpic:
-	INCBIN "gfx/pokemon/magikarp_mask/back.2bpp.lz"
+SECTION "MagikarpPatchesBackpic", ROMX
+MagikarpPatchesBackpic:
+	INCBIN "gfx/pokemon/magikarp_patches/back.2bpp.lz"
+
+SECTION "MagikarpForehead1Frontpic", ROMX
+MagikarpForehead1Frontpic:
+	INCBIN "gfx/pokemon/magikarp_forehead1/front.animated.2bpp.lz"
+
+SECTION "MagikarpForehead1Backpic", ROMX
+MagikarpForehead1Backpic:
+	INCBIN "gfx/pokemon/magikarp_forehead1/back.2bpp.lz"
+
+SECTION "MagikarpMask1Frontpic", ROMX
+MagikarpMask1Frontpic:
+	INCBIN "gfx/pokemon/magikarp_mask1/front.animated.2bpp.lz"
+
+SECTION "MagikarpMask1Backpic", ROMX
+MagikarpMask1Backpic:
+	INCBIN "gfx/pokemon/magikarp_mask1/back.2bpp.lz"
+
+SECTION "MagikarpForehead2Frontpic", ROMX
+MagikarpForehead2Frontpic:
+	INCBIN "gfx/pokemon/magikarp_forehead2/front.animated.2bpp.lz"
+
+SECTION "MagikarpForehead2Backpic", ROMX
+MagikarpForehead2Backpic:
+	INCBIN "gfx/pokemon/magikarp_forehead2/back.2bpp.lz"
+
+SECTION "MagikarpMask2Frontpic", ROMX
+MagikarpMask2Frontpic:
+	INCBIN "gfx/pokemon/magikarp_mask2/front.animated.2bpp.lz"
+
+SECTION "MagikarpMask2Backpic", ROMX
+MagikarpMask2Backpic:
+	INCBIN "gfx/pokemon/magikarp_mask2/back.2bpp.lz"
 
 SECTION "MagikarpSaucyFrontpic", ROMX
 MagikarpSaucyFrontpic:

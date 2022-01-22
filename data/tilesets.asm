@@ -821,7 +821,7 @@ INCBIN "data/tilesets/battle_factory_collision.bin.lz"
 
 SECTION "Tileset Data - GFX2", ROMX
 
-; None of the tilesets need "★" GFX, so consolidate them here.
+; None of the tilesets need GFX2, so consolidate them here.
 TilesetJohto1GFX2::
 TilesetJohto2GFX2::
 TilesetJohto3GFX2::

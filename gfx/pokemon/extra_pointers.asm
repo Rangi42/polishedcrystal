@@ -341,8 +341,12 @@ AnimationExtraPointers:
 	dw MagikarpZebraAnimationExtra
 	dw MagikarpStripeAnimationExtra
 	dw MagikarpBubblesAnimationExtra
-	dw MagikarpForeheadAnimationExtra
-	dw MagikarpMaskAnimationExtra
+	dw MagikarpDiamondsAnimationExtra
+	dw MagikarpPatchesAnimationExtra
+	dw MagikarpForehead1AnimationExtra
+	dw MagikarpMask1AnimationExtra
+	dw MagikarpForehead2AnimationExtra
+	dw MagikarpMask2AnimationExtra
 	dw MagikarpSaucyAnimationExtra
 	dw MagikarpRaindropAnimationExtra
 

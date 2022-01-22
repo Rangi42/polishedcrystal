@@ -271,21 +271,25 @@ WRAMX $7
 SRAM $0
 	"Scratch"
 	"SRAM Bank 0"
+	"PokeDB bank 1B"
 	org $b200
 	"Backup Save"
+	"Link Battle Data"
+	"SRAM Battle Tower"
 
 SRAM $1
 	"Save"
-	"Active Box"
-	"Link Battle Data"
 	"SRAM Hall of Fame"
-	"SRAM Battle Tower"
+	"Active Box"
+	"PokeDB bank 2B"
+	"PokeDB bank 1C"
+	"PokeDB bank 2C"
 
 SRAM $2
-	"Main PokeDB bank 1"
+	"PokeDB bank 1A"
 
 SRAM $3
-	"Main PokeDB bank 2"
+	"PokeDB bank 2A"
 
 HRAM
 	"OAM DMA"

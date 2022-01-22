@@ -665,13 +665,8 @@ AddStorageMon:
 	push de
 	call EncodeTempMon
 	pop de
-	call OpenStorageDB
+	call OpenPokeDB
 
-	ld hl, sBoxMons1Mons
-	ld bc, SAVEMON_STRUCT_LENGTH
-	ld a, e
-	dec a
-	rst AddNTimes
 	ld d, h
 	ld e, l
 	ld hl, wEncodedTempMon
@@ -682,15 +677,47 @@ AddStorageMon:
 	call CloseSRAM
 	jmp PopBCDEHL
 
-OpenStorageDB:
-; Opens pokedb bank given by d (1 or 2). Leaves SRAM open, obviously.
+OpenPokeDB:
+; Opens pokedb bank and sets hl to relevant entry in de.
 	ld a, d
 	dec a
-	ld a, BANK(sBoxMons1)
+	ld hl, .Bank1Pointers
 	jr z, .got_bank
-	ld a, BANK(sBoxMons2)
+	ld hl, .Bank2Pointers
 .got_bank
-	jmp GetSRAMBank
+	ld a, e
+	dec a
+	sub MONDB_ENTRIES_A
+	call nc, .NextPointer
+	; for optimization purposes, pointer list is A -> C -> B
+	sub MONDB_ENTRIES_B
+	call c, .NextPointer
+
+	ld a, [hli]
+	call GetSRAMBank
+	ld a, [hli]
+	ld h, [hl]
+	ld l, a
+	ld bc, SAVEMON_STRUCT_LENGTH
+	ld a, e
+	dec a
+	rst AddNTimes
+	ret
+
+.NextPointer:
+	inc hl
+	inc hl
+	inc hl
+	ret
+
+.Bank1Pointers:
+	dba sBoxMons1AMons
+	dba sBoxMons1CMons
+	dba sBoxMons1BMons
+.Bank2Pointers:
+	dba sBoxMons2AMons
+	dba sBoxMons2CMons
+	dba sBoxMons2BMons
 
 EncodeTempMon:
 ; Encodes party_struct wTempMon in-place to savemon_struct wEncodedTempMon.
@@ -1027,7 +1054,7 @@ InitializeBoxes:
 	ld hl, sNewBox1
 .name_loop
 	push bc
-	ld d, b
+	ld e, b
 	ld bc, sNewBox1Name - sNewBox1
 	xor a
 	rst ByteFill
@@ -1038,15 +1065,13 @@ InitializeBoxes:
 	dec hl
 	pop de
 	ld a, NUM_BOXES + 1
-	sub d
-	sub 10
-	add "0" + 10
-	jr c, .next
-	ld [hl], "1" ; no-optimize *hl++|*hl-- = N
-	inc hl
-	sub 10
-.next
-	ld [hli], a
+	sub e
+	ld e, a
+	ld d, 0
+	push bc
+	lb bc, PRINTNUM_LEFTALIGN, 2
+	call PrintNumFromReg
+	pop bc
 	ld [hl], "@"
 	pop hl
 	ld c, sNewBox2 - sNewBox1Name
@@ -1105,31 +1130,28 @@ InitializeBoxes:
 
 INCLUDE "data/pc/default_box_themes.asm"
 
-GetBoxTheme:
-; Returns box b's theme in a.
-	ld c, 0
-	jr CopyBoxTheme
-
-SetBoxTheme:
-; Sets box b's theme to a.
-	ld c, 1
-	; fallthrough
-CopyBoxTheme:
-	push af
+_PointBoxTheme:
+; Return's [wCurBox]'s theme pointer in hl.
+; Also opens [wCurBox]'s SRAM bank.
 	ld a, BANK(sNewBox1)
 	call GetSRAMBank
 	ld hl, sNewBox1Theme
-	ld a, b
-	dec a
-	push bc
+	ld a, [wCurBox]
 	ld bc, sNewBox2 - sNewBox1
 	rst AddNTimes
-	pop bc
-	pop af
-	dec c
-	jr z, .set_theme
+	ret
+
+GetBoxTheme:
+; Returns [wCurBox]'s theme in a.
+	call _PointBoxTheme
 	ld a, [hl]
-.set_theme
+	jmp CloseSRAM
+
+SetBoxTheme:
+; Sets [wCurBox]'s theme to a.
+	push af
+	call _PointBoxTheme
+	pop af
 	ld [hl], a
 	jmp CloseSRAM
 
@@ -1294,14 +1316,7 @@ GetStorageMon:
 	call IsStorageUsed
 	jr z, .done ; entry not found
 
-	call OpenStorageDB
-
-	; Get the correct pointer
-	ld hl, sBoxMons1Mons
-	ld bc, SAVEMON_STRUCT_LENGTH
-	ld a, e
-	dec a
-	rst AddNTimes
+	call OpenPokeDB
 
 	; Write to wEncodedTempMon and then decode it.
 	ld de, wEncodedTempMon

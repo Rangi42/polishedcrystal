@@ -135,7 +135,7 @@ ENDM
 
 pokedb: MACRO
 \1Mons::
-for n, 1, MONDB_ENTRIES + 1
+for n, 1, \2 + 1
 \1Mon{d:n}:: savemon_struct \1Mon{d:n}
 endr
 \1End::

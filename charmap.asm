@@ -202,18 +202,19 @@ FIRST_REGULAR_TEXT_CHAR EQU $7f
 
 	ctxtmap "…",        $eb, 11010001
 
-	charmap "▲",        $ec
+	charmap "★",        $ec
+
 	charmap "▼",        $ed
-	charmap "◀",        $ee
-	charmap "▶",        $ef
-	charmap "▷",        $f0
+	charmap "▲",        $ee
+	charmap "◀",        $ef
+	charmap "▶",        $f0
+	charmap "▷",        $f1
 
 ; common font:
-	charmap "↑",        $f1
-	charmap "↓",        $f2
-	charmap "′",        $f3
-	charmap "″",        $f4
-	charmap "★",        $f5
+	charmap "↑",        $f2
+	charmap "↓",        $f3
+	charmap "′",        $f4
+	charmap "″",        $f5
 	charmap "<PHONE>",  $f6
 	charmap "<BLACK>",  $f7
 

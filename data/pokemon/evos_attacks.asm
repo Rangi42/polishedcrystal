@@ -4790,7 +4790,6 @@ HeracrossEvosAttacks:
 
 SneaselPlainEvosAttacks:
 	evo_data EVOLVE_HOLDING, RAZOR_CLAW, TR_EVENITE, WEAVILE
-	evo_data EVOLVE_LOCATION, SINJOH_RUINS, SNEASLER
 	db -1 ; no more evolutions
 	db 1, SCRATCH
 	db 1, LEER
@@ -4811,7 +4810,7 @@ SneaselPlainEvosAttacks:
 	db -1 ; no more level-up moves
 
 SneaselHisuianEvosAttacks:
-	evo_data EVOLVE_LEVEL, 30, SNEASLER
+	evo_data EVOLVE_HOLDING, RAZOR_CLAW, TR_MORNDAY, SNEASLER
 	db -1 ; no more evolutions
 	db 1, TACKLE
 	db -1 ; no more level-up moves

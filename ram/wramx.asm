@@ -1328,13 +1328,13 @@ wPokedexFlags::
 wPokedexCaught:: flag_array NUM_UNIQUE_POKEMON
 wEndPokedexCaught::
 
-	ds 4 ; unused
+	ds 2 ; unused
 
 wPokedexSeen:: flag_array NUM_UNIQUE_POKEMON
 wEndPokedexSeen::
 wEndPokedexFlags::
 
-	ds 4 ; unused
+	ds 2 ; unused
 
 wUnlockedUnowns:: db
 
