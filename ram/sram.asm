@@ -80,17 +80,6 @@ sChecksum:: dw
 sCheckValue2:: db ; loaded with 127, used to check save corruption
 
 
-SECTION "Active Box", SRAM
-
-for n, 1, NUM_BOXES + 1
-sNewBox{d:n}:: newbox sNewBox{d:n}
-endr
-sNewBoxEnd::
-
-for n, 1, NUM_BOXES + 1
-sBackupNewBox{d:n}:: newbox sBackupNewBox{d:n}
-endr
-
 SECTION "Link Battle Data", SRAM
 
 sLinkBattleResults:: ds $c
@@ -144,11 +133,42 @@ sBT_OTMonParty2:: ds BATTLETOWER_PARTYDATA_SIZE ; trainer before prev
 sBT_OTMonParty3:: ds BATTLETOWER_PARTYDATA_SIZE ; previous trainer
 
 
-SECTION "Main PokeDB bank 1",  SRAM
+SECTION "Active Box", SRAM
 
-sBoxMons1:: pokedb sBoxMons1
+for n, 1, NUM_BOXES + 1
+sNewBox{d:n}:: newbox sNewBox{d:n}
+endr
+sNewBoxEnd::
+
+for n, 1, NUM_BOXES + 1
+sBackupNewBox{d:n}:: newbox sBackupNewBox{d:n}
+endr
+
+SECTION "PokeDB bank 1B",  SRAM
+
+sBoxMons1B:: pokedb sBoxMons1B, MONDB_ENTRIES_B
 
 
-SECTION "Main PokeDB bank 2", SRAM
+SECTION "PokeDB bank 2B", SRAM
 
-sBoxMons2:: pokedb sBoxMons2
+sBoxMons2B:: pokedb sBoxMons2B, MONDB_ENTRIES_B
+
+
+SECTION "PokeDB bank 1C",  SRAM
+
+sBoxMons1C:: pokedb sBoxMons1C, MONDB_ENTRIES_C
+
+
+SECTION "PokeDB bank 2C", SRAM
+
+sBoxMons2C:: pokedb sBoxMons2C, MONDB_ENTRIES_C
+
+
+SECTION "PokeDB bank 1A",  SRAM
+
+sBoxMons1:: pokedb sBoxMons1, MONDB_ENTRIES_A
+
+
+SECTION "PokeDB bank 2A", SRAM
+
+sBoxMons2:: pokedb sBoxMons2, MONDB_ENTRIES_A
