@@ -5413,8 +5413,6 @@ BattleCommand_charge:
 	ret
 
 .not_charging
-	push hl
-	pop hl
 	ld a, BATTLE_VARS_STATUS
 	call GetBattleVar
 	and SLP
