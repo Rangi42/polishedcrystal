@@ -337,6 +337,7 @@ PokemonBodyData:
 	body_data  20, 1680, QUADRUPED,    RED    ; ARCANINE (HISUIAN_FORM)
 	body_data   5,  130, HEAD,         BROWN  ; VOLTORB (HISUIAN_FORM)
 	body_data  12,  710, HEAD,         BROWN  ; ELECTRODE (HISUIAN_FORM)
+	body_data  16,  698, QUADRUPED,    YELLOW ; TYPHLOSION (HISUIAN_FORM)
 	body_data   5,   39, FINS,         BLACK  ; QWILFISH (HISUIAN_FORM)
 	body_data   9,  270, BIPEDAL_TAIL, GRAY   ; SNEASEL (HISUIAN_FORM)
 

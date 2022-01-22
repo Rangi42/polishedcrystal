@@ -330,6 +330,7 @@ INCBIN "gfx/footprints/growlithe.1bpp"
 INCBIN "gfx/footprints/arcanine.1bpp"
 INCBIN "gfx/footprints/voltorb.1bpp"
 INCBIN "gfx/footprints/electrode.1bpp"
+INCBIN "gfx/footprints/typhlosion.1bpp"
 INCBIN "gfx/footprints/qwilfish.1bpp"
 INCBIN "gfx/footprints/sneasel.1bpp"
 

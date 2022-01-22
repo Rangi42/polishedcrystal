@@ -5,7 +5,6 @@ BayleefFrames:    INCLUDE "gfx/pokemon/bayleef/frames.asm"
 MeganiumFrames:   INCLUDE "gfx/pokemon/meganium/frames.asm"
 CyndaquilFrames:  INCLUDE "gfx/pokemon/cyndaquil/frames.asm"
 QuilavaFrames:    INCLUDE "gfx/pokemon/quilava/frames.asm"
-TyphlosionFrames: INCLUDE "gfx/pokemon/typhlosion/frames.asm"
 TotodileFrames:   INCLUDE "gfx/pokemon/totodile/frames.asm"
 CroconawFrames:   INCLUDE "gfx/pokemon/croconaw/frames.asm"
 FeraligatrFrames: INCLUDE "gfx/pokemon/feraligatr/frames.asm"
@@ -168,6 +167,9 @@ SlowkingGalarianFrames: INCLUDE "gfx/pokemon/slowking_galarian/frames.asm"
 
 CorsolaPlainFrames:    INCLUDE "gfx/pokemon/corsola_plain/frames.asm"
 CorsolaGalarianFrames: INCLUDE "gfx/pokemon/corsola_galarian/frames.asm"
+
+TyphlosionPlainFrames:   INCLUDE "gfx/pokemon/typhlosion_plain/frames.asm"
+TyphlosionHisuianFrames: INCLUDE "gfx/pokemon/typhlosion_hisuian/frames.asm"
 
 QwilfishPlainFrames:   INCLUDE "gfx/pokemon/qwilfish_plain/frames.asm"
 QwilfishHisuianFrames: INCLUDE "gfx/pokemon/qwilfish_hisuian/frames.asm"

@@ -157,7 +157,7 @@ PokedexDataPointerTable:
 	dba MeganiumPokedexEntry
 	dba CyndaquilPokedexEntry
 	dba QuilavaPokedexEntry
-	dba TyphlosionPokedexEntry
+	dba TyphlosionPlainPokedexEntry
 	dba TotodilePokedexEntry
 	dba CroconawPokedexEntry
 	dba FeraligatrPokedexEntry
@@ -331,6 +331,7 @@ PokedexDataPointerTable:
 	dba ArcanineHisuianPokedexEntry
 	dba VoltorbHisuianPokedexEntry
 	dba ElectrodeHisuianPokedexEntry
+	dba TyphlosionHisuianPokedexEntry
 	dba QwilfishHisuianPokedexEntry
 	dba SneaselHisuianPokedexEntry
 

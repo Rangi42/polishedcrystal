@@ -156,7 +156,7 @@ BackPicPointers::
 	dba MeganiumBackpic
 	dba CyndaquilBackpic
 	dba QuilavaBackpic
-	dba TyphlosionBackpic
+	dba TyphlosionPlainBackpic
 	dba TotodileBackpic
 	dba CroconawBackpic
 	dba FeraligatrBackpic
@@ -387,6 +387,7 @@ BackPicPointers::
 	dba ArcanineHisuianBackpic
 	dba VoltorbHisuianBackpic
 	dba ElectrodeHisuianBackpic
+	dba TyphlosionHisuianBackpic
 	dba QwilfishHisuianBackpic
 	dba SneaselHisuianBackpic
 

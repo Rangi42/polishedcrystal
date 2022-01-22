@@ -156,7 +156,7 @@ FramesPointers:
 	dw MeganiumFrames
 	dw CyndaquilFrames
 	dw QuilavaFrames
-	dw TyphlosionFrames
+	dw TyphlosionPlainFrames
 	dw TotodileFrames
 	dw CroconawFrames
 	dw FeraligatrFrames
@@ -387,6 +387,7 @@ FramesPointers:
 	dw ArcanineHisuianFrames
 	dw VoltorbHisuianFrames
 	dw ElectrodeHisuianFrames
+	dw TyphlosionHisuianFrames
 	dw QwilfishHisuianFrames
 	dw SneaselHisuianFrames
 

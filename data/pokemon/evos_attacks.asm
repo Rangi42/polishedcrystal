@@ -3572,7 +3572,7 @@ QuilavaEvosAttacks:
 	db 75, FLARE_BLITZ ; Eruption → egg move
 	db -1 ; no more level-up moves
 
-TyphlosionEvosAttacks:
+TyphlosionPlainEvosAttacks:
 	db -1 ; no more evolutions
 	db 1, FIRE_PUNCH ; evolution move
 	db 1, TACKLE
@@ -3591,6 +3591,11 @@ TyphlosionEvosAttacks:
 	db 69, DOUBLE_EDGE
 	db 74, EARTHQUAKE ; Burn Up → TM move
 	db 81, FLARE_BLITZ ; Eruption → egg move
+	db -1 ; no more level-up moves
+
+TyphlosionHisuianEvosAttacks:
+	db -1 ; no more evolutions
+	db 1, TACKLE
 	db -1 ; no more level-up moves
 
 TotodileEvosAttacks:

@@ -156,7 +156,7 @@ FrontPicPointers::
 	dba MeganiumFrontpic
 	dba CyndaquilFrontpic
 	dba QuilavaFrontpic
-	dba TyphlosionFrontpic
+	dba TyphlosionPlainFrontpic
 	dba TotodileFrontpic
 	dba CroconawFrontpic
 	dba FeraligatrFrontpic
@@ -387,6 +387,7 @@ FrontPicPointers::
 	dba ArcanineHisuianFrontpic
 	dba VoltorbHisuianFrontpic
 	dba ElectrodeHisuianFrontpic
+	dba TyphlosionHisuianFrontpic
 	dba QwilfishHisuianFrontpic
 	dba SneaselHisuianFrontpic
 
