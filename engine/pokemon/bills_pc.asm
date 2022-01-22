@@ -1054,7 +1054,7 @@ InitializeBoxes:
 	ld hl, sNewBox1
 .name_loop
 	push bc
-	ld d, b
+	ld e, b
 	ld bc, sNewBox1Name - sNewBox1
 	xor a
 	rst ByteFill
@@ -1065,15 +1065,13 @@ InitializeBoxes:
 	dec hl
 	pop de
 	ld a, NUM_BOXES + 1
-	sub d
-	sub 10
-	add "0" + 10
-	jr c, .next
-	ld [hl], "1" ; no-optimize *hl++|*hl-- = N
-	inc hl
-	sub 10
-.next
-	ld [hli], a
+	sub e
+	ld e, a
+	ld d, 0
+	push bc
+	lb bc, PRINTNUM_LEFTALIGN, 2
+	call PrintNumFromReg
+	pop bc
 	ld [hl], "@"
 	pop hl
 	ld c, sNewBox2 - sNewBox1Name
