@@ -616,6 +616,7 @@ HitConfusion:
 	call HitSelfInConfusion
 	call ConfusedDamageCalc
 	call BattleCommand_lowersub
+	call GenericHitAnim
 
 	ldh a, [hBattleTurn]
 	and a
