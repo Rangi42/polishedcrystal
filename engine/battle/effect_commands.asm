@@ -475,10 +475,11 @@ CantMove:
 	ld a, BATTLE_VARS_MOVE_ANIM
 	call GetBattleVarAddr
 	cp FLY
-	jmp z, AppearUserRaiseSub
+	jr z, .fly_dig
 	cp DIG
-	jmp z, AppearUserRaiseSub
-	ret
+	ret nz
+.fly_dig
+	jmp AppearUserRaiseSub
 
 IncreaseMetronomeCount:
 	; Don't arbitrarily boost usage counter twice on a turn
