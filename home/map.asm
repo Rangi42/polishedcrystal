@@ -789,6 +789,14 @@ FillSouthConnectionStrip::
 	ldh [rSVBK], a
 	ret
 
+CallMapScript::
+; Call a script at hl in the current bank if there isn't already a script running
+	ld a, [wScriptRunning]
+	and a
+	ret nz
+	ld a, [wMapScriptsBank]
+	; fallthrough
+
 CallScript::
 ; Call a script at a:hl.
 
@@ -803,14 +811,6 @@ CallScript::
 
 	scf
 	ret
-
-CallMapScript::
-; Call a script at hl in the current bank if there isn't already a script running
-	ld a, [wScriptRunning]
-	and a
-	ret nz
-	ld a, [wMapScriptsBank]
-	jr CallScript
 
 RunMapCallback::
 ; Will run the first callback found in the map header with execution index equal to a.

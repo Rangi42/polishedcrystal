@@ -448,9 +448,6 @@ GetFixedCategory::
 	inc a ; SPECIAL
 	ret
 
-DisappearUser::
-	farjp _DisappearUser
-
 ApplyPhysicalDefenseDamageMod::
 	push bc
 	ld c, a
@@ -460,15 +457,11 @@ ApplyPhysicalDefenseDamageMod::
 	ld a, c
 	pop bc
 	jr z, ApplySpecialAttackDamageMod
-; Damage modifiers. a contains $xy where damage is multiplied by x, then divided by y
 ApplyPhysicalAttackDamageMod::
 	push bc
 	ld b, PHYSICAL
-	jr ApplyAttackDamageMod
-ApplySpecialAttackDamageMod::
-	push bc
-	ld b, SPECIAL
 ApplyAttackDamageMod::
+; Damage modifiers. a contains $xy where damage is multiplied by x, then divided by y
 	ld c, a
 	ld a, BATTLE_VARS_MOVE_CATEGORY
 	call GetBattleVar
@@ -487,7 +480,10 @@ ApplySpecialDefenseDamageMod::
 	ld a, c
 	pop bc
 	ret z
-	jr ApplySpecialAttackDamageMod
+ApplySpecialAttackDamageMod::
+	push bc
+	ld b, SPECIAL
+	jr ApplyAttackDamageMod
 
 GetOpponentAbility::
 	ld a, BATTLE_VARS_ABILITY_OPP

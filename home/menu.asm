@@ -252,11 +252,10 @@ LoadMenuTextbox::
 
 LoadStandardMenuHeader::
 	ld hl, StandardMenuDataHeader
-	; fallthrough
-
 LoadMenuHeader::
 	call CopyMenuHeader
-	jmp PushWindow
+PushWindow::
+	farjp _PushWindow
 
 StandardMenuDataHeader:
 	db $40 ; tile backup

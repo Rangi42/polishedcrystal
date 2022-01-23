@@ -144,6 +144,17 @@ for n, 1, NUM_BOXES + 1
 sBackupNewBox{d:n}:: newbox sBackupNewBox{d:n}
 endr
 
+
+SECTION "PokeDB bank 1A",  SRAM
+
+sBoxMons1A:: pokedb sBoxMons1A, MONDB_ENTRIES_A
+
+
+SECTION "PokeDB bank 2A", SRAM
+
+sBoxMons2A:: pokedb sBoxMons2A, MONDB_ENTRIES_A
+
+
 SECTION "PokeDB bank 1B",  SRAM
 
 sBoxMons1B:: pokedb sBoxMons1B, MONDB_ENTRIES_B
@@ -162,13 +173,3 @@ sBoxMons1C:: pokedb sBoxMons1C, MONDB_ENTRIES_C
 SECTION "PokeDB bank 2C", SRAM
 
 sBoxMons2C:: pokedb sBoxMons2C, MONDB_ENTRIES_C
-
-
-SECTION "PokeDB bank 1A",  SRAM
-
-sBoxMons1A:: pokedb sBoxMons1A, MONDB_ENTRIES_A
-
-
-SECTION "PokeDB bank 2A", SRAM
-
-sBoxMons2A:: pokedb sBoxMons2A, MONDB_ENTRIES_A

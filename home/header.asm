@@ -8,8 +8,8 @@ EntryPoint::
 	di
 	jmp Rst0Crash
 
-PushWindow::
-	farjp _PushWindow
+DisappearUser::
+	farjp _DisappearUser
 
 
 SECTION "rst08 FarCall", ROM0[$0008]
