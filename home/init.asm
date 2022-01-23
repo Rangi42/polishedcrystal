@@ -243,12 +243,3 @@ ClearWRAM::
 	cp 8
 	jr c, .bank_loop
 	ret
-
-ClearsScratch::
-	xor a
-	call GetSRAMBank
-	ld hl, sScratch
-	ld bc, $20
-	xor a
-	rst ByteFill
-	jmp CloseSRAM

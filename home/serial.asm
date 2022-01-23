@@ -261,7 +261,13 @@ Serial_PlaceWaitingTextAndSyncAndExchangeNybble::
 	call LoadTileMapToTempTileMap
 	call PlaceWaitingText
 	call Serial_SyncAndExchangeNybble
-	jmp Call_LoadTempTileMapToTileMap
+Call_LoadTempTileMapToTileMap::
+	xor a
+	ldh [hBGMapMode], a
+	call LoadTempTileMapToTileMap
+	ld a, 1
+	ldh [hBGMapMode], a
+	ret
 
 PlaceWaitingText::
 	hlcoord 4, 10

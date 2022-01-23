@@ -47,8 +47,8 @@ DecompressRequest2bpp::
 	pop bc
 	pop hl
 	ld de, wDecompressScratch
+	; fallthrough
 
-; fallthrough
 Request2bppInWRA6::
 	ldh a, [hROMBank]
 	ld b, a

@@ -402,13 +402,11 @@ GetBugCatchingContestMusic:
 
 GetPlayerStateMusic:
 	ld a, [wPlayerState]
-	cp PLAYER_SURF
-	jr z, .surf
 	cp PLAYER_SURF_PIKA
-	jr z, .surf_pikachu
-	jmp GetMapMusic
-
-.surf:
+	ld de, MUSIC_SURFING_PIKACHU
+	ret z
+	cp PLAYER_SURF
+	jmp nz, GetMapMusic
 	call RegionCheck
 	ld a, e
 	ld de, MUSIC_SURF_KANTO
@@ -418,10 +416,6 @@ GetPlayerStateMusic:
 	cp ORANGE_REGION
 	ret z
 	ld de, MUSIC_SURF
-	ret
-
-.surf_pikachu:
-	ld de, MUSIC_SURFING_PIKACHU
 	ret
 
 CheckSFX::

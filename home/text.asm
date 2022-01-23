@@ -125,6 +125,12 @@ CreateBoxBorders::
 	pop bc
 	ret
 
+MenuTextbox::
+	push hl
+	call LoadMenuTextbox
+	pop hl
+	; fallthrough
+
 PrintText::
 ; input: hl = string, bc = coords
 ; output: hl = advanced string, bc = advanced coords
