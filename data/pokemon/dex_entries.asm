@@ -2827,7 +2827,7 @@ KleavorPokedexEntry::
 
 SECTION "UrsalunaPokedexEntry", ROMX
 UrsalunaPokedexEntry::
-	db "?????@"
+	db "Peat@"
 	db   "This is a newly"
 	next "discovered #-"
 	next "mon. It is under"
@@ -2837,7 +2837,7 @@ UrsalunaPokedexEntry::
 
 SECTION "SneaslerPokedexEntry", ROMX
 SneaslerPokedexEntry::
-	db "?????@"
+	db "Free Climb@"
 	db   "This is a newly"
 	next "discovered #-"
 	next "mon. It is under"
@@ -2847,7 +2847,7 @@ SneaslerPokedexEntry::
 
 SECTION "OverqwilPokedexEntry", ROMX
 OverqwilPokedexEntry::
-	db "?????@"
+	db "Pin Cluster@"
 	db   "This is a newly"
 	next "discovered #-"
 	next "mon. It is under"
@@ -3200,7 +3200,7 @@ GrowlitheHisuianPokedexEntry::
 
 SECTION "ArcanineHisuianPokedexEntry", ROMX
 ArcanineHisuianPokedexEntry::
-	db "?????@"
+	db "Legendary@"
 	db   "This is a newly"
 	next "discovered #-"
 	next "mon. It is under"
@@ -3220,7 +3220,7 @@ VoltorbHisuianPokedexEntry::
 
 SECTION "ElectrodeHisuianPokedexEntry", ROMX
 ElectrodeHisuianPokedexEntry::
-	db "?????@"
+	db "Sphere@"
 	db   "This is a newly"
 	next "discovered #-"
 	next "mon. It is under"
@@ -3230,7 +3230,7 @@ ElectrodeHisuianPokedexEntry::
 
 SECTION "TyphlosionHisuianPokedexEntry", ROMX
 TyphlosionHisuianPokedexEntry::
-	db "?????@"
+	db "Ghost Flame@"
 	db   "This is a newly"
 	next "discovered #-"
 	next "mon. It is under"
@@ -3240,7 +3240,7 @@ TyphlosionHisuianPokedexEntry::
 
 SECTION "QwilfishHisuianPokedexEntry", ROMX
 QwilfishHisuianPokedexEntry::
-	db "?????@"
+	db "Balloon@"
 	db   "This is a newly"
 	next "discovered #-"
 	next "mon. It is under"
@@ -3250,7 +3250,7 @@ QwilfishHisuianPokedexEntry::
 
 SECTION "SneaselHisuianPokedexEntry", ROMX
 SneaselHisuianPokedexEntry::
-	db "?????@"
+	db "Sharp Claw@"
 	db   "This is a newly"
 	next "discovered #-"
 	next "mon. It is under"
