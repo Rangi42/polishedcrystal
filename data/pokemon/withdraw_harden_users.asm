@@ -35,4 +35,5 @@ HardenUsers:
 	dp TYRANITAR
 	dp GLISCOR
 	dp CURSOLA
+	dp KLEAVOR
 	dw 0
