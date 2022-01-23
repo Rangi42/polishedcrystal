@@ -100,9 +100,9 @@ RuinsOfAlphOutsideScientistCallback:
 	endcallback
 
 RuinsOfAlphOutsideScientistScene1:
+RuinsOfAlphOutsideScientistScript:
 	faceobject RUINSOFALPHOUTSIDE_SCIENTIST1, PLAYER
 	faceobject PLAYER, RUINSOFALPHOUTSIDE_SCIENTIST1
-RuinsOfAlphOutsideScientistScript:
 	showtext RuinsOfAlphOutsideScientistText
 	playmusic MUSIC_SHOW_ME_AROUND
 	follow RUINSOFALPHOUTSIDE_SCIENTIST1, PLAYER
