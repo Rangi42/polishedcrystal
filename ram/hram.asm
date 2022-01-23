@@ -211,8 +211,9 @@ ENDU
 
 hCrashCode:: db
 
-	ds 5
+	ds 4 ; unused
 
+hStopPrintingString:: db
 hPlaceStringCoords:: dw
 
 hAppendVWFText:: ds 4

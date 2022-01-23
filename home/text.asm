@@ -432,6 +432,12 @@ FarString::
 	ret
 
 DoTextUntilTerminator::
+	xor a
+	ldh [hStopPrintingString], a
+.loop
+	ldh a, [hStopPrintingString]
+	and a
+	ret nz
 	ld a, [hli]
 	cp "@"
 	ret z
@@ -440,7 +446,7 @@ DoTextUntilTerminator::
 	cp "<PROMPT>"
 	ret z
 	call .TextCommand
-	jr DoTextUntilTerminator
+	jr .loop
 
 .TextCommand:
 	cp NGRAMS_START
@@ -738,7 +744,8 @@ DecompressString::
 	jr nz, .character_loop
 
 .done
-	ld hl, EmptyString ; for DoTextUntilTerminator
+	inc a ; ld a, 1 since it's zero
+	ldh [hStopPrintingString], a
 
 .end
 	pop bc ; pop starting coords
