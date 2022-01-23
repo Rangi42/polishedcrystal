@@ -456,7 +456,8 @@ EndTurn:
 OpponentCantMove:
 	call CallOpponentTurn
 CantMove:
-	call CheckRampageStatusAndGetRolloutCount ; ; hl becomes pointer to user substatus3
+	call .cancel_fly_dig
+	call CheckRampageStatusAndGetRolloutCount ; hl becomes pointer to user substatus3
 	jr z, .rampage_done
 	ld a, [de]
 	dec a
@@ -465,14 +466,18 @@ CantMove:
 	pop hl
 .rampage_done
 	ld a, [hl]
-	push hl
-	and (1 << SUBSTATUS_FLYING | 1 << SUBSTATUS_UNDERGROUND)
-	call nz, AppearUserRaiseSub
-	pop hl
 	ld a, ~(1 << SUBSTATUS_RAMPAGE | 1 << SUBSTATUS_CHARGED | 1 << SUBSTATUS_FLYING | 1 << SUBSTATUS_UNDERGROUND | 1 << SUBSTATUS_ROLLOUT)
 	and [hl]
 	ld [hl], a
 	ret
+
+.cancel_fly_dig
+	ld a, BATTLE_VARS_MOVE_ANIM
+	call GetBattleVarAddr
+	cp FLY
+	jp AppearUserRaiseSub
+	cp DIG
+	jp AppearUserRaiseSub
 
 IncreaseMetronomeCount:
 	; Don't arbitrarily boost usage counter twice on a turn
