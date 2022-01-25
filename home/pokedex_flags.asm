@@ -53,6 +53,16 @@ CheckDexMon::
 	; fallthrough
 
 PokedexFlagAction::
+	; Unless we're just checking dex flags, invalidate the dex cache.
+	cp CHECK_FLAG
+	jr z, .cache_done
+
+	push af
+	xor a
+	ld [wDexCacheValid], a
+	pop af
+
+.cache_done
 	push af
 	push hl
 	call GetCosmeticSpeciesAndFormIndex
