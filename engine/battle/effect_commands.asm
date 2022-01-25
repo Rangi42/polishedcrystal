@@ -4569,7 +4569,7 @@ CanStatusTarget:
 	ld a, BATTLE_VARS_STATUS_OPP
 	call GetBattleVar
 	and h
-	jr nz, .already_statused
+	jmp nz, .already_statused
 
 	; Corrosion bypasses everything except existing status problems
 	ld a, h
@@ -4628,6 +4628,9 @@ CanStatusTarget:
 	pop af
 	and a
 	jr nz, .no_mold_breaker
+	call SafeCheckSafeguard
+	ld hl, SafeguardProtectText
+	jr nz, .end
 	call CheckSubstituteOpp
 	ld hl, ButItFailedText
 	jr nz, .end
