@@ -24,6 +24,7 @@ BattleCommand_futuresight:
 	or $3
 	ld [hl], a
 
+	call BattleCommand_movedelay
 	ld hl, ForesawAttackText
 	call StdBattleTextbox
 	jmp EndMoveEffect
