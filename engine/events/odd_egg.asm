@@ -9,7 +9,6 @@ GiveOddEgg:
 	ld a, LOW(OddEggProbabilities)
 	sub l
 	cpl
-	inc a
 	ld hl, OddEggs
 	ld bc, ODD_EGG_LENGTH
 	rst AddNTimes
