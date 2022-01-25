@@ -1017,6 +1017,7 @@ BattleCommand_hastarget:
 	call HasOpponentFainted
 	jr nz, .not_fainted
 
+	call BattleCommand_movedelay
 	ld hl, ButItFailedText
 	call StdBattleTextbox
 	call CantMove
