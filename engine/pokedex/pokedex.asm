@@ -2896,13 +2896,33 @@ Pokedex_CountSeenOwn:
 	push de
 	push bc
 	push af
+	ld hl, wDexCacheValid
+	ld a, [hli]
+	and a
+	ld de, wTempDexSeen
+	ld bc, 4
+	jr z, .cache_not_valid
+	rst CopyBytes
+	jr .done
+
+.cache_not_valid
 	; Reset temp dex data.
+	push hl
+	push de
+	push bc
 	ld hl, wTempDex
 	ld bc, wTempDexEnd - wTempDex
 	xor a
 	rst ByteFill
 	ld hl, Pokedex_HandleSeenOwn
 	call Pokedex_IterateSpecies
+	pop bc
+	pop hl
+	pop de
+	rst CopyBytes
+	ld a, 1
+	ld [wDexCacheValid], a
+.done
 	jmp PopAFBCDEHL
 
 Pokedex_HandleSeenOwn:

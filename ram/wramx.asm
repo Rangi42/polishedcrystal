@@ -486,7 +486,11 @@ ENDU
 wTempMonBox:: db
 wTempMonSlot:: db
 
-	ds 39 ; unused
+wDexCacheValid:: db
+wDexCacheSeen:: dw
+wDexCacheOwn:: dw
+
+	ds 34 ; unused
 
 wOverworldMapAnchor:: dw
 wMetatileStandingY:: db
