@@ -472,7 +472,7 @@ PokeBallEffect:
 	ld c, a
 	ld b, [hl]
 	push bc
-	call CheckCaughtMon
+	call CheckCosmeticCaughtMon
 	ld a, c
 	pop bc
 	push af

@@ -409,7 +409,7 @@ RepeatBallMultiplier:
 	ld c, a
 	ld a, [wOTPartyMon1Form]
 	ld b, a
-	call CheckCaughtMon
+	call CheckCosmeticCaughtMon
 	pop bc
 	ret z
 

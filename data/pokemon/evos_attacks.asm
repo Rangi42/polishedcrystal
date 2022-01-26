@@ -3576,10 +3576,11 @@ MeganiumEvosAttacks:
 	db 9, POISONPOWDER
 	db 12, HEALINGLIGHT ; Synthesis → similar move
 	db 18, REFLECT
+	db 18, LIGHT_SCREEN
 	db 22, DISARM_VOICE ; Magical Leaf → new move
 	db 26, ENERGY_BALL ; Natural Gift → tutor move
 	db 34, ANCIENTPOWER ; Sweet Scent → HGSS tutor move
-	db 40, LIGHT_SCREEN
+	db 40, DAZZLINGLEAM ; Light Screen → TM move
 	db 46, BODY_SLAM
 	db 50, SAFEGUARD
 	db 56, PLAY_ROUGH ; Aromatherapy → new move
