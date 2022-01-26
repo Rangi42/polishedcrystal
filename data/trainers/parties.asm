@@ -98,10 +98,10 @@ FalknerGroup:
 	; party
 	dbp 11, PIDGEY
 		db NO_ITEM, 16
-		db TACKLE, GUST, MUD_SLAP, ROOST
+		db TACKLE, GUST, MUD_SLAP, NO_MOVE
 	dbp 11, HOOTHOOT
 		db NO_ITEM, 16
-		db TACKLE, HYPNOSIS, CONFUSION, ROOST
+		db TACKLE, HYPNOSIS, PECK, CONFUSION
 	dbp 13, PIDGEOTTO
 		db PECHA_BERRY, 16
 		db GUST, MUD_SLAP, QUICK_ATTACK, ROOST
@@ -5706,7 +5706,7 @@ SchoolgirlGroup:
 	; party
 	dbp 6, TEDDIURSA
 		db "Teddy@"
-	dbp 6, PHANPY
+	dbp 5, PHANPY
 		db "@"
 	db -1 ; end
 
