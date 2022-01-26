@@ -27,6 +27,51 @@ GetWeekday::
 	add 7
 	ret
 
+CheckCosmeticCaughtMon:
+; Same as CheckCaughtMon (check if mon is caught) if mon isn't cosmetic.
+; Counts species c form b as caught if the player has caught any other
+; mon of the same species if the mon is cosmetic.
+	push bc
+	farcall _Pokedex_MonHasCosmeticForms
+	pop bc
+	jr c, CheckCaughtMon
+
+	; Begin by checking the base form.
+	ld a, b
+	and EXTSPECIES_MASK
+	inc a
+	push bc
+	call CheckCaughtMon
+	pop bc
+	ret nz
+
+	; Now check all entries in the cosmetic table.
+	ld hl, CosmeticSpeciesAndFormTable
+.loop
+	ld a, [hli]
+	cp c
+	ld a, [hl]
+	jr nz, .next
+	xor b
+	and EXTSPECIES_MASK
+	jr nz, .next
+	ld b, [hl]
+	push hl
+	push bc
+	call CheckCaughtMon
+	pop bc
+	pop hl
+	ret nz
+.next
+	inc hl
+	ld a, h
+	cp HIGH(VariantSpeciesAndFormTable)
+	jr nz, .loop
+	ld a, l
+	cp LOW(VariantSpeciesAndFormTable)
+	jr nz, .loop
+	ret
+
 ; Pokedex Flag Actions:
 ; Input: bc = form, species
 SetSeenAndCaughtMon::

@@ -204,7 +204,8 @@ Pokedex_ChangeForm:
 Pokedex_MonHasCosmeticForms:
 ; Returns carry if the given mon on the cursor doesn't have cosmetic forms.
 	call Pokedex_GetCursorSpecies
-
+	; fallthrough
+_Pokedex_MonHasCosmeticForms:
 	; Used to track when we reach the end of the cosmetic table
 	ld de, -VariantSpeciesAndFormTable
 	ld hl, CosmeticSpeciesAndFormTable

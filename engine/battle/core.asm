@@ -7707,7 +7707,7 @@ HandleNuzlockeFlags:
 	ld c, a
 	ld a, [wOTPartyMon1Form]
 	ld b, a
-	call CheckCaughtMon
+	call CheckCosmeticCaughtMon
 	ret nz
 
 	; Only flag landmarks for Nuzlocke runs after getting Poké Balls

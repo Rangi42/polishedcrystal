@@ -30,7 +30,7 @@ Special_GameCornerPrizeMonCheckDex:
 	ldh a, [hScriptVar+1]
 	ld b, a
 	push bc
-	call CheckCaughtMon
+	call CheckCosmeticCaughtMon
 	pop bc
 	ret nz
 	call SetSeenAndCaughtMon

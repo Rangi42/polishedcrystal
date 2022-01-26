@@ -679,7 +679,7 @@ PokedexShow1:
 	rla
 	ld b, a
 	push bc
-	call CheckCaughtMon
+	call CheckCosmeticCaughtMon
 	pop bc
 	jr z, .loop
 	ld hl, wNamedObjectIndex
