@@ -419,11 +419,12 @@ ElmGiveTicketScript:
 	writetext ElmSeenText
 	waitbutton
 	closetext
-	winlosstext ElmWinText, 0
+	winlosstext ElmWinText, ElmLoseText
 	setlasttalked ELMSLAB_ELM
 	loadtrainer PROF_ELM, 1
+	loadvar VAR_BATTLETYPE, BATTLETYPE_CANLOSE
 	startbattle
-	reloadmapafterbattle
+	reloadmap
 	opentext
 	writetext ElmGiveTicketText1
 	promptbutton
@@ -1355,6 +1356,11 @@ ElmSeenText:
 
 ElmWinText:
 	text "Astounding!"
+	done
+
+ElmLoseText:
+	text "…Were you going"
+	line "easy on me?"
 	done
 
 ElmRefusedBattleText:
