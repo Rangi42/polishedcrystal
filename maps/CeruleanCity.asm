@@ -53,11 +53,19 @@ CeruleanCityCooltrainerMScript:
 	jumptextfaceplayer CeruleanCityCooltrainerMText1
 
 CeruleanCityCooltrainerFScript:
-	showtextfaceplayer CeruleanCityCooltrainerFText1
+	faceplayer
+	opentext
+	writetext CeruleanCityCooltrainerFText1
+	waitbutton
 	turnobject CERULEANCITY_COOLTRAINER_F, LEFT
-	showtext CeruleanCityCooltrainerFText2
-	showcrytext CeruleanCitySlowbroText, SLOWBRO
-	jumptext CeruleanCityCooltrainerFText3
+	writetext CeruleanCityCooltrainerFText2
+	waitbutton
+	writetext CeruleanCitySlowbroText
+	cry SLOWBRO
+	waitbutton
+	writetext CeruleanCityCooltrainerFText3
+	waitendtext
+	end
 
 CeruleanCityFisherScript:
 	checkevent EVENT_RESTORED_POWER_TO_KANTO
