@@ -3532,10 +3532,11 @@ ChikoritaEvosAttacks:
 	db 9, POISONPOWDER
 	db 12, HEALINGLIGHT ; Synthesis → similar move
 	db 17, REFLECT
+	db 17, LIGHT_SCREEN
 	db 20, DISARM_VOICE ; Magical Leaf → new move
 	db 23, ENERGY_BALL ; Natural Gift → tutor move
 	db 28, ANCIENTPOWER ; Sweet Scent → HGSS tutor move
-	db 31, LIGHT_SCREEN
+	db 31, DAZZLINGLEAM ; Light Screen → TM move
 	db 34, BODY_SLAM
 	db 39, SAFEGUARD
 	db 42, PLAY_ROUGH ; Aromatherapy → new move
@@ -3554,10 +3555,11 @@ BayleefEvosAttacks:
 	db 9, POISONPOWDER
 	db 12, HEALINGLIGHT ; Synthesis → similar move
 	db 18, REFLECT
+	db 18, LIGHT_SCREEN
 	db 22, DISARM_VOICE ; Magical Leaf → new move
 	db 26, ENERGY_BALL ; Natural Gift → tutor move
 	db 32, ANCIENTPOWER ; Sweet Scent → HGSS tutor move
-	db 36, LIGHT_SCREEN
+	db 36, DAZZLINGLEAM ; Light Screen → TM move
 	db 40, BODY_SLAM
 	db 43, SAFEGUARD
 	db 47, PLAY_ROUGH ; Aromatherapy → new move

@@ -30,8 +30,8 @@ CinnabarVolcanoB1F_MapScriptHeader:
 	smashrock_event  8, 28
 	smashrock_event 28, 17
 	smashrock_event 27, 5
-	itemball_event  2, 18, FIRE_STONE, 1, EVENT_CINNABAR_VOLCANO_B1F_NUGGET
-	itemball_event  4, 29, NUGGET, 1, EVENT_CINNABAR_VOLCANO_B1F_FIRE_STONE
+	itemball_event  2, 18, NUGGET, 1, EVENT_CINNABAR_VOLCANO_B1F_NUGGET
+	itemball_event  4, 29, FIRE_STONE, 1, EVENT_CINNABAR_VOLCANO_B1F_FIRE_STONE
 
 	object_const_def
 	const CINNABARVOLCANOB1F_BOULDER
