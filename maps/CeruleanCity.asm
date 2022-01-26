@@ -246,7 +246,7 @@ CeruleanTrainerTipsText:
 	text "Trainer Tips"
 
 	para "Even without an"
-	line "ItemFinder, you"
+	line "Itemfinder, you"
 
 	para "can find useful"
 	line "items in trees,"
