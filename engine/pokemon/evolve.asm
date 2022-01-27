@@ -493,7 +493,6 @@ CancelEvolution:
 	ld hl, Text_StoppedEvolving
 	call PrintText
 	call ClearTileMap
-	pop hl
 	jmp EvolveAfterBattle_MasterLoop
 
 IsMonHoldingEverstone:
