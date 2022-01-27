@@ -18,6 +18,10 @@ CeruleanCity_MapScriptHeader:
 	warp_event 29,  7, CERULEAN_WATER_SHOW_SPEECH_HOUSE, 1
 
 	def_coord_events
+	coord_event 20,  3, 0, Route24BridgeUnderfootTrigger
+	coord_event 21,  3, 0, Route24BridgeUnderfootTrigger
+	coord_event 20,  4, 1, Route24BridgeOverheadTrigger
+	coord_event 21,  4, 1, Route24BridgeOverheadTrigger
 
 	def_bg_events
 	bg_event 17, 20, BGEVENT_JUMPTEXT, CeruleanCitySignText
