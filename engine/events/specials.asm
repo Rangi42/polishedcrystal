@@ -283,7 +283,7 @@ StoreSwarmMapIndices::
 	ret
 
 Special_ResetLuckyNumberShowFlag:
-	farcall RestartLuckyNumberCountdown
+	farcall RestartDailyResetTimer
 	ld hl, wLuckyNumberShowFlag
 	res 0, [hl]
 	farjp LoadOrRegenerateLuckyIDNumber
