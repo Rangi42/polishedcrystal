@@ -336,8 +336,25 @@ PidgeotEvosAttacks:
 	db -1 ; no more level-up moves
 
 RattataPlainEvosAttacks:
-RattataAlolanEvosAttacks:
 	evo_data EVOLVE_LEVEL, 20, RATICATE
+	db -1 ; no more evolutions
+	db 1, TACKLE
+	db 1, LEER ; Tail Whip → similar move
+	db 4, QUICK_ATTACK
+	db 7, FOCUS_ENERGY
+	db 10, BITE
+	db 13, PURSUIT
+	db 16, HYPER_FANG
+	db 19, SUCKER_PUNCH
+	db 22, CRUNCH
+	db 25, FEINT_ATTACK ; Assurance → similar move
+	db 28, SUPER_FANG
+	db 31, DOUBLE_EDGE
+	db 34, COUNTER ; Endeavor → egg move
+	db -1 ; no more level-up moves
+
+RattataAlolanEvosAttacks:
+	evo_data EVOLVE_LEVEL, 20, RATICATE, ALOLAN_FORM
 	db -1 ; no more evolutions
 	db 1, TACKLE
 	db 1, LEER ; Tail Whip → similar move
