@@ -820,7 +820,7 @@ _LC_Text6::
 SECTION "_LC_Text7", ROMX
 _LC_Text7::
 	text_start
-	line "This week's Lucky"
+	line "Today's Lucky"
 	done
 
 SECTION "_LC_Text8", ROMX
