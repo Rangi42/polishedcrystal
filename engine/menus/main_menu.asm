@@ -129,7 +129,7 @@ MainMenuJoypadLoop:
 	ret
 
 .BuildTime:
-	db "BUILD TIME"
+	db "9BIT ALPHA BUILT ON"
 	next1 __ISO_8601_UTC__
 	db "@"
 
