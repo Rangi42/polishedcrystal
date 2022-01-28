@@ -570,7 +570,7 @@ Pokedex_GetMonLocations:
 	ld a, BANK(wDexAreaMons)
 	ldh [rSVBK], a
 	pop af
-	call Pokedex_SetWildLandmark
+	call Pokedex_SetWildLandmark_MaintainNoCarry
 	push af
 
 .next

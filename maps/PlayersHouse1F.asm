@@ -128,6 +128,10 @@ PlayersHouse1FStoveText:
 	done
 
 PlayersHouse1FTVScript:
+	opentext
+	givepoke KLEAVOR, PLAIN_FORM, 50
+	closetext
+	end
 	jumpthistext
 
 	text "There's a movie on"

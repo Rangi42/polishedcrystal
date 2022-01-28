@@ -838,6 +838,10 @@ BattleTextbox::
 	pop hl
 	jmp PrintTextboxText
 
+BattleMoveDescTextbox::
+	homecall BattleTextbox, BANK(MoveDescriptions)
+	ret
+
 GetBattleAnimPointer::
 	anonbankpush BattleAnimations
 

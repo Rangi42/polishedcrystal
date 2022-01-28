@@ -88,7 +88,7 @@ Var_UnownCaught:
 .loop
 	push de
 	push bc
-	call PokedexFlagAction
+	call CheckCaughtMon
 	pop bc
 	pop de
 	jr z, .not_captured

@@ -233,7 +233,7 @@ GetTreeOrRockLocations:
 	pop af
 
 	; Resets carry if insertion succeeded.
-	farcall Pokedex_SetWildLandmark
+	call Pokedex_SetWildLandmark_MaintainNoCarry
 	push af
 	jr .loop
 
