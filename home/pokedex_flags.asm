@@ -19,6 +19,17 @@ CountSetBits::
 	inc c
 	jr .zerocheck
 
+Pokedex_SetWildLandmark_MaintainNoCarry:
+; Calls SetWildLandmark. If carry is currently set, calls it directly.
+; Otherwise, reset carry no matter what it returns for the carry flag.
+	jr nc, .no_carry
+	farjp Pokedex_SetWildLandmark
+.no_carry
+	push af
+	farcall Pokedex_SetWildLandmark
+	pop af
+	ret
+
 GetWeekday::
 	ld a, [wCurDay]
 .mod
