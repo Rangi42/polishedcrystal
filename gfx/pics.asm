@@ -3491,6 +3491,10 @@ SECTION "TowerTycoonPic", ROMX
 TowerTycoonPic:
 	INCBIN "gfx/trainers/towertycoon.2bpp.lz"
 
+SECTION "FactoryHeadPic", ROMX
+FactoryHeadPic:
+	INCBIN "gfx/trainers/factoryhead.2bpp.lz"
+
 SECTION "JessieJamesPic", ROMX
 JessieJamesPic:
 	INCBIN "gfx/trainers/jessie_james.2bpp.lz"

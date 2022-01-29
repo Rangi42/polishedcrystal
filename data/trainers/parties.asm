@@ -9679,11 +9679,6 @@ TowerTycoonGroup:
 	; TOWERTYCOON
 	db "Palmer@"
 	db TRAINERTYPE_NORMAL
-
-;	; party
-;	dbp 50, GYARADOS
-;	dbp 50, RHYPERIOR
-;	dbp 50, DRAGONITE
 	db -1 ; end
 
 	; TOWERTYCOON
@@ -9708,6 +9703,21 @@ TowerTycoonGroup:
 	dbp 72, HERACROSS
 		db BLACK_BELT
 		db MEGAHORN, CROSS_CHOP, SEISMIC_TOSS, NIGHT_SLASH
+	db -1 ; end
+
+
+SECTION "FactoryHeadGroup", ROMX
+FactoryHeadGroup:
+
+	; unused
+	; FACTORYHEAD
+	db "Thorton@"
+	db TRAINERTYPE_NORMAL
+	db -1 ; end
+
+	; FACTORYHEAD
+	db "Thorton@"
+	db TRAINERTYPE_NORMAL
 	db -1 ; end
 
 

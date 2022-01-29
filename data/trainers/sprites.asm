@@ -117,4 +117,5 @@ BTTrainerClassSprites:
 	db SPRITE_EUSINE        ; MYSTICALMAN
 	db SPRITE_BLACK_BELT    ; KARATE_KING
 	db SPRITE_PALMER        ; TOWERTYCOON
-	assert_table_length TOWERTYCOON
+	db SPRITE_DARACH        ; FACTORYHEAD (TODO: Thorton)
+	assert_table_length FACTORYHEAD

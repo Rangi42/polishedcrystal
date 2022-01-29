@@ -119,6 +119,7 @@ TrainerGroups:
 	dba MysticalmanGroup
 	dba KarateKingGroup
 	dba TowerTycoonGroup
+	dba FactoryHeadGroup
 	dba JessieJamesGroup
 	dba LoreleiGroup
 	dba AgathaGroup

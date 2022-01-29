@@ -117,6 +117,7 @@ TrainerClassNames::
 	li "Mystery Man"      ; MYSTICALMAN
 	li "Karate King"      ; KARATE_KING
 	li "TowerTycoon"      ; TOWERTYCOON
+	li "FactryHead"       ; FACTORYHEAD
 	li "Jessie"           ; JESSIE_JAMES
 	li "Ex-Elite"         ; LORELEI
 	li "Ex-Elite"         ; AGATHA

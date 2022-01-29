@@ -73,6 +73,7 @@ FinalText_SinglePhrases:
 	dw MysticalManFinalPkmnText
 	dw KarateKingFinalPkmnText
 	dw PalmerFinalPkmnText
+	dw ThortonFinalPkmnText
 	dw JessieJamesFinalPkmnText
 	dw LoreleiFinalPkmnText
 	dw AgathaFinalPkmnText
