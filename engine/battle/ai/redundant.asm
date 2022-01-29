@@ -222,4 +222,3 @@ AI_Redundant:
 	ld a, [wEnemySubStatus2]
 	bit SUBSTATUS_DESTINY_BOND, a
 	ret
-	
