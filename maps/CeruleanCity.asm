@@ -18,6 +18,10 @@ CeruleanCity_MapScriptHeader:
 	warp_event 29,  7, CERULEAN_WATER_SHOW_SPEECH_HOUSE, 1
 
 	def_coord_events
+	coord_event 20,  3, 0, Route24BridgeUnderfootTrigger
+	coord_event 21,  3, 0, Route24BridgeUnderfootTrigger
+	coord_event 20,  4, 1, Route24BridgeOverheadTrigger
+	coord_event 21,  4, 1, Route24BridgeOverheadTrigger
 
 	def_bg_events
 	bg_event 17, 20, BGEVENT_JUMPTEXT, CeruleanCitySignText
@@ -53,11 +57,19 @@ CeruleanCityCooltrainerMScript:
 	jumptextfaceplayer CeruleanCityCooltrainerMText1
 
 CeruleanCityCooltrainerFScript:
-	showtextfaceplayer CeruleanCityCooltrainerFText1
+	faceplayer
+	opentext
+	writetext CeruleanCityCooltrainerFText1
+	waitbutton
 	turnobject CERULEANCITY_COOLTRAINER_F, LEFT
-	showtext CeruleanCityCooltrainerFText2
-	showcrytext CeruleanCitySlowbroText, SLOWBRO
-	jumptext CeruleanCityCooltrainerFText3
+	writetext CeruleanCityCooltrainerFText2
+	waitbutton
+	writetext CeruleanCitySlowbroText
+	cry SLOWBRO
+	waitbutton
+	writetext CeruleanCityCooltrainerFText3
+	waitendtext
+	end
 
 CeruleanCityFisherScript:
 	checkevent EVENT_RESTORED_POWER_TO_KANTO
@@ -246,7 +258,7 @@ CeruleanTrainerTipsText:
 	text "Trainer Tips"
 
 	para "Even without an"
-	line "ItemFinder, you"
+	line "Itemfinder, you"
 
 	para "can find useful"
 	line "items in trees,"

@@ -43,6 +43,7 @@ AI_Redundant:
 	dbw EFFECT_BATON_PASS,    .BatonPass
 	dbw EFFECT_ROOST,         .Roost
 	dbw EFFECT_TRICK_ROOM,    .TrickRoom
+	dbw EFFECT_DESTINY_BOND,  .DestinyBond
 	db -1
 
 .Confuse:
@@ -215,4 +216,9 @@ AI_Redundant:
 .Redundant:
 	ld a, 1
 	and a
+	ret
+
+.DestinyBond:
+	ld a, [wEnemySubStatus2]
+	bit SUBSTATUS_DESTINY_BOND, a
 	ret
