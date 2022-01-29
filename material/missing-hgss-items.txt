@@ -41,9 +41,6 @@ Full Heal	Left path
 
 ----- Johto -----
 
-cherrygrove city:
-nugget in surf grass next to pokémon center
-
 dark cave:
 Poké Ball	In a rock northeast of the Potion
 Max Ether	Southeast of Hyper Potion (requires Rock Smash)
