@@ -5768,6 +5768,7 @@ BonslyEvosAttacks:
 
 MimeJrEvosAttacks:
 	evo_data EVOLVE_LEVEL, 30, MR__MIME, PLAIN_FORM
+	evo_data EVOLVE_ITEM, ICE_STONE, MR__MIME, GALARIAN_FORM
 	evo_data EVOLVE_LOCATION, ICE_PATH, MR__MIME, GALARIAN_FORM
 	db -1 ; no more evolutions
 	db 1, BARRIER
