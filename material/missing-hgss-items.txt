@@ -51,14 +51,6 @@ Elixir	Southwest of entrance from Route 45
 Max Revive	On a rock, north of the man who gives BlackGlasses (requires Surf)
 Hyper Potion	On a rock north of the exit to the Violet City side (requires Surf)
 
-violet city:
-poke ball on island in front of sprout tower
-
-route 32:
-Super Potion	Next to the trees west of the man who gives TM05 (Roar) (requires Cut)
-Heart Scale	In the small rock in the water to the east of the fishermen, next to the leg of the train bridge (requires Surf)
-Great Ball	Outside the entrance to Union Cave
-
 ruins of alph:
 Potion	In the left wall of the building, southmost of the three in the northeast
 Great Ball	In the central solid rock among a group near the southern entrance
