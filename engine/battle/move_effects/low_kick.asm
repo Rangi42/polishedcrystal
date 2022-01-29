@@ -8,7 +8,6 @@ BattleCommand_lowkick:
 	ld hl, wEnemyMonSpecies
 .got_opp_species
 	ld c, [hl]
-	assert wBattleMonForm - wBattleMonSpecies == wEnemyMonForm - wEnemyMonSpecies
 	ld de, wBattleMonForm - wBattleMonSpecies
 	add hl, de
 	ld b, [hl]
