@@ -11,12 +11,20 @@ Route24_MapScriptHeader:
 	coord_event 20, 14, 1, Route24BridgeOverheadTrigger
 	coord_event 21, 14, 1, Route24BridgeOverheadTrigger
 	coord_event 22, 15, 1, Route24BridgeOverheadTrigger
-	coord_event 20, 39, 1, Route24BridgeOverheadTrigger
-	coord_event 21, 39, 1, Route24BridgeOverheadTrigger
 	coord_event 20, 15, 0, Route24BridgeUnderfootTrigger
 	coord_event 21, 15, 0, Route24BridgeUnderfootTrigger
-	coord_event 20, 38, 0, Route24BridgeUnderfootTrigger
-	coord_event 21, 38, 0, Route24BridgeUnderfootTrigger
+	coord_event 20, 39, 0, Route24BridgeUnderfootTrigger
+	coord_event 21, 39, 0, Route24BridgeUnderfootTrigger
+	coord_event 25, 13, 1, Route24BridgeOverheadTrigger
+	coord_event 25, 15, 1, Route24BridgeOverheadTrigger
+	coord_event 25, 16, 1, Route24BridgeOverheadTrigger
+	coord_event 25, 17, 1, Route24BridgeOverheadTrigger
+	coord_event 25, 18, 1, Route24BridgeOverheadTrigger
+	coord_event 25, 19, 1, Route24BridgeOverheadTrigger
+	coord_event 25, 20, 1, Route24BridgeOverheadTrigger
+	coord_event 25, 21, 1, Route24BridgeOverheadTrigger
+	coord_event 25, 22, 1, Route24BridgeOverheadTrigger
+	coord_event 25, 23, 1, Route24BridgeOverheadTrigger
 
 	def_bg_events
 	bg_event 16,  5, BGEVENT_ITEM + POTION, EVENT_ROUTE_24_HIDDEN_POTION
