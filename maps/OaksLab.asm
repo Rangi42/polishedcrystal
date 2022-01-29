@@ -111,6 +111,7 @@ Oak:
 	iftrue .NoShinyCharm
 	setval16 NUM_SPECIES - 2
 	special CountCaught
+	iffalse .NoShinyCharm
 	writetext OakLabCaughtAllText
 	promptbutton
 	verbosegivekeyitem SHINY_CHARM
