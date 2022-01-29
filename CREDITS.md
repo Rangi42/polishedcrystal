@@ -55,11 +55,11 @@ Pokémon Polished Crystal would never have been finished without the help of man
 * Megaman-Omega for some of Prism's overworld sprites.
 * SoupPotato (aka SourApple) for some move animations, sprites of Red Gyarados and Ace Duo, and Berry tree tiles.
 * flempa for some Pokémon sprites and move animations and for Galarian Articuno and Galarian Zapdos animations.
+* Scarlax for many new Pokémon animations.
 * ShadowOne333 for many new Pokémon animations.
 * spritershawn for sprites of Red, Blue, and Green.
 * isamuakai01 for sprites of Steven and Cynthia.
 * Maddalena for sprites of Imakuni and the Ghost.
-* Scarlax for most 8th gen backpics and Mr. Rime, Galarian Rapidash, Galarian Farfetch'd, Galarian Corola, Cursola, Sirfetch'd and Spiky-eared Pichu animations.
 * EeveeEe1999 for 8th gen menu icons and Lickilicky and Galarian Slowking animations.
 * Luna for some sprites and tiles.
 * Twilir for Lyra's back sprite.
