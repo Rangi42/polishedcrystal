@@ -117,6 +117,7 @@ TrainerPicPointers::
 	dba MysticalmanPic
 	dba KarateKingPic
 	dba TowerTycoonPic
+	dba FactoryHeadPic
 	dba JessieJamesPic
 	dba LoreleiPic
 	dba AgathaPic

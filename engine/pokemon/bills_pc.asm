@@ -1383,35 +1383,30 @@ StorageFlagAction:
 	predef_jump FlagPredef
 
 Special_CurBoxFullCheck:
-; Returns 0 if wTempMonBox = wCurBox
-; Returns 1 if wTempMonBox != wCurBox
+; Returns [hScriptVar] = zero if wTempMonBox == wCurBox
+; Returns [hScriptVar] = nonzero if wTempMonBox != wCurBox
 	call CurBoxFullCheck
-	ld a, TRUE
-	jr nz, .ok
-	dec a
-.ok
 	ldh [hScriptVar], a
 	ret
 
 CurBoxFullCheck:
 ; Requires wTempMonBox to have sent mon box (returned in b)
-; Returns 0 if wTempMonBox = wCurBox (or wTempMonBox = 0)
-; Returns 1 if wTempMonBox != wCurBox
+; Returns z if wTempMonBox == wCurBox (or wTempMonBox = 0)
+; Returns nz if wTempMonBox != wCurBox
 ;   Also returns name of old wCurBox in wStringBuffer1
 ;   and sets wCurBox to wTempMonBox in this case
 	ld a, [wTempMonBox]
 	and a
 	ret z
+	dec a
 	ld b, a
 	ld a, [wCurBox]
-	inc a
 	cp b
 	ret z
 	push bc
 	call GetCurBoxName
 	pop bc
 	ld a, b
-	dec a
 	ld [wCurBox], a
 	or 1
 	ret

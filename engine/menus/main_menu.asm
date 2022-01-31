@@ -103,9 +103,9 @@ MainMenu_GetWhichMenu:
 
 MainMenuJoypadLoop:
 	; TODO: get rid of this once 9bit is release-ready
-	hlcoord 0, 11
-	ld de, .BuildTime
-	rst PlaceString
+	;hlcoord 0, 11
+	;ld de, .BuildTime
+	;rst PlaceString
 	call SetUpMenu
 .loop
 	call MainMenu_PrintCurrentTimeAndDay
@@ -128,10 +128,10 @@ MainMenuJoypadLoop:
 	scf
 	ret
 
-.BuildTime:
-	db "9BIT ALPHA BUILT ON"
-	next1 __ISO_8601_UTC__
-	db "@"
+;.BuildTime:
+	;db "9BIT ALPHA BUILT ON"
+	;next1 __ISO_8601_UTC__
+	;db "@"
 
 MainMenu_PrintCurrentTimeAndDay:
 	ld a, [wSaveFileExists]

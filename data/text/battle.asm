@@ -1918,6 +1918,10 @@ PalmerFinalPkmnText:
 	text "Bravo!"
 	prompt
 
+ThortonFinalPkmnText:
+	text "Wow!"
+	prompt
+
 JessieJamesFinalPkmnText:
 	text "We have a proud"
 	line "tradition of fail-"

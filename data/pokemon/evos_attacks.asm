@@ -3092,8 +3092,8 @@ EeveeEvosAttacks:
 	evo_data EVOLVE_ITEM, FIRE_STONE, FLAREON
 	evo_data EVOLVE_ITEM, SHINY_STONE, SYLVEON
 	evo_data EVOLVE_ITEM, LEAF_STONE, LEAFEON
-	evo_data EVOLVE_LOCATION, ILEX_FOREST, LEAFEON
 	evo_data EVOLVE_ITEM, ICE_STONE, GLACEON
+	evo_data EVOLVE_LOCATION, ILEX_FOREST, LEAFEON
 	evo_data EVOLVE_LOCATION, ICE_PATH, GLACEON
 	evo_data EVOLVE_HAPPINESS, TR_MORNDAY, ESPEON
 	evo_data EVOLVE_HAPPINESS, TR_EVENITE, UMBREON
@@ -5767,7 +5767,8 @@ BonslyEvosAttacks:
 	db -1 ; no more level-up moves
 
 MimeJrEvosAttacks:
-	evo_data EVOLVE_MOVE, PROTECT, MR__MIME, PLAIN_FORM
+	evo_data EVOLVE_LEVEL, 30, MR__MIME, PLAIN_FORM
+	evo_data EVOLVE_ITEM, ICE_STONE, MR__MIME, GALARIAN_FORM
 	evo_data EVOLVE_LOCATION, ICE_PATH, MR__MIME, GALARIAN_FORM
 	db -1 ; no more evolutions
 	db 1, BARRIER
@@ -5792,7 +5793,7 @@ MimeJrEvosAttacks:
 	db -1 ; no more level-up moves
 
 HappinyEvosAttacks:
-	evo_data EVOLVE_LEVEL, 20, CHANSEY
+	evo_data EVOLVE_LEVEL, 20, CHANSEY ; TODO: Oval Stone
 	db -1 ; no more evolutions
 	db 1, MINIMIZE
 	db 1, TACKLE ; Pound → similar move

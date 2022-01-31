@@ -9,4 +9,3 @@
 	frame 1, 04
 	dorepeat 1
 	endanim
-; 0xd1ecc

@@ -18,6 +18,10 @@ CeruleanCity_MapScriptHeader:
 	warp_event 29,  7, CERULEAN_WATER_SHOW_SPEECH_HOUSE, 1
 
 	def_coord_events
+	coord_event 20,  3, 0, Route24BridgeUnderfootTrigger
+	coord_event 21,  3, 0, Route24BridgeUnderfootTrigger
+	coord_event 20,  4, 1, Route24BridgeOverheadTrigger
+	coord_event 21,  4, 1, Route24BridgeOverheadTrigger
 
 	def_bg_events
 	bg_event 17, 20, BGEVENT_JUMPTEXT, CeruleanCitySignText
@@ -34,7 +38,7 @@ CeruleanCity_MapScriptHeader:
 	object_event  6,  8, SPRITE_SCHOOLBOY, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 1, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, CeruleanCityYoungsterScript, -1
 	object_event 30, 22, SPRITE_COOL_DUDE, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, CeruleanCityCooltrainerMScript, -1
 	object_event 23, 11, SPRITE_POKEMANIAC, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_COMMAND, jumptextfaceplayer, CeruleanCitySuperNerdText, -1
-	pokemon_event 20, 20, SLOWBRO, GALARIAN_FORM, SPRITEMOVEDATA_STILL, -1, -1, PAL_NPC_RED, CeruleanCitySlowbroText, -1
+	pokemon_event 20, 20, SLOWBRO, SPRITEMOVEDATA_STILL, -1, -1, PAL_NPC_RED, CeruleanCitySlowbroText, -1
 	object_event 13, 18, SPRITE_FAT_GUY, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, CeruleanCityFisherScript, -1
 	object_event  2, 10, SPRITE_ACE_TRAINER_M, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, CeruleanCaveGuardText, EVENT_BEAT_BLUE
 	object_event 44, 16, SPRITE_BALL_CUT_FRUIT, SPRITEMOVEDATA_CUTTABLE_TREE, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_ROUTE_9_CUT_TREE
@@ -53,11 +57,19 @@ CeruleanCityCooltrainerMScript:
 	jumptextfaceplayer CeruleanCityCooltrainerMText1
 
 CeruleanCityCooltrainerFScript:
-	showtextfaceplayer CeruleanCityCooltrainerFText1
+	faceplayer
+	opentext
+	writetext CeruleanCityCooltrainerFText1
+	waitbutton
 	turnobject CERULEANCITY_COOLTRAINER_F, LEFT
-	showtext CeruleanCityCooltrainerFText2
-	showcrytext CeruleanCitySlowbroText, SLOWBRO
-	jumptext CeruleanCityCooltrainerFText3
+	writetext CeruleanCityCooltrainerFText2
+	waitbutton
+	writetext CeruleanCitySlowbroText
+	cry SLOWBRO
+	waitbutton
+	writetext CeruleanCityCooltrainerFText3
+	waitendtext
+	end
 
 CeruleanCityFisherScript:
 	checkevent EVENT_RESTORED_POWER_TO_KANTO
@@ -246,7 +258,7 @@ CeruleanTrainerTipsText:
 	text "Trainer Tips"
 
 	para "Even without an"
-	line "ItemFinder, you"
+	line "Itemfinder, you"
 
 	para "can find useful"
 	line "items in trees,"
