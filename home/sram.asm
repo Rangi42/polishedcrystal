@@ -3,18 +3,19 @@ GetSRAMBank::
 ; if invalid bank, sram is disabled
 	cp NUM_SRAM_BANKS
 	jr nc, CloseSRAM
-	; fallthrough
 
-OpenSRAM::
-; switch to sram bank a
+	; switch to sram bank a
 	push af
-; latch clock data
+
+	; latch clock data
 	ld a, 1
 	ld [MBC3LatchClock], a
-; enable sram/clock write
+
+	; enable sram/clock write
 	ld a, SRAM_ENABLE
 	ld [MBC3SRamEnable], a
-; select sram bank
+
+	; select sram bank
 	pop af
 	ld [MBC3SRamBank], a
 	ret

@@ -1,6 +1,6 @@
 KeyItemNames::
 	list_start KeyItemNames
-	li "?"
+	li "Cancel"
 	li "Bicycle"
 	li "Old Rod"
 	li "Good Rod"

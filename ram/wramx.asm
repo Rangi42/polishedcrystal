@@ -986,8 +986,10 @@ wPokemonJournalsEnd::
 wTMsHMs:: flag_array NUM_TMS + NUM_HMS
 wTMsHMsEnd::
 
-wKeyItems:: flag_array NUM_KEY_ITEMS
+wKeyItems:: ds NUM_KEY_ITEMS + 1
 wKeyItemsEnd::
+
+	ds 6 ; unused
 
 wNumItems:: db
 wItems:: ds MAX_ITEMS * 2 + 1
@@ -1161,7 +1163,7 @@ wEventFlags:: flag_array NUM_EVENTS
 
 wCurBox:: db
 
-	ds 103 ; unused
+	ds 70 ; unused
 
 wCelebiEvent:: db
 
