@@ -1,5 +1,7 @@
 PhoneFlagAction:
+; Valid contacts start from index 1, but the flag array starts at index 0.
 	push bc
+	dec c
 	ld d, 0
 	ld hl, wPhoneList
 	predef FlagPredef
@@ -98,7 +100,7 @@ ChooseRandomCaller:
 	ld d, c
 	xor a
 	ld b, a
-	ld c, a
+	ld c, NUM_PHONE_CONTACTS ; also the last phone contact.
 	push af
 .loop
 	call .IsValidCaller
@@ -117,9 +119,7 @@ ChooseRandomCaller:
 	push af
 
 .next
-	inc c
-	ld a, c
-	cp NUM_PHONE_CONTACTS
+	dec c
 	jr nz, .loop
 	pop af
 	ret
