@@ -241,14 +241,6 @@ wTempScriptBuffer:: db
 wJumpStdScriptBuffer:: ds 15
 
 NEXTU
-; phone script data
-wCheckedTime:: db
-wPhoneListIndex:: db
-wNumAvailableCallers:: db
-wAvailableCallers:: ds CONTACT_LIST_SIZE - 4 ; bug: available callers list affects mem addresses outside union (up to 4 bytes)
-wAvailableCallersEnd::
-
-NEXTU
 ; phone caller contact
 	ds 1
 wCallerContact:: ds PHONE_CONTACT_SIZE
@@ -1163,7 +1155,7 @@ wEventFlags:: flag_array NUM_EVENTS
 
 wCurBox:: db
 
-	ds 70 ; unused
+	ds 95 ; unused
 
 wCelebiEvent:: db
 
@@ -1254,9 +1246,9 @@ wBattlePointsEnd::
 wStepCount:: db
 wPoisonStepCount:: db
 
-wPhoneList:: ds CONTACT_LIST_SIZE + 1
+wPhoneList:: flag_array NUM_PHONE_CONTACTS
 
-	ds 1 ; unused
+	ds 2 ; unused
 
 wParkBallsRemaining::
 wSafariBallsRemaining:: db
