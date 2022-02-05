@@ -121,7 +121,7 @@ KeyItems_ScrollPocket:
 	ld hl, wKeyItemsPocketScrollPosition
 	ld a, [hl]
 	and a
-	jmp z, KeyItems_JoypadLoop
+	jr z, KeyItems_JoypadLoop
 	dec [hl]
 	jr .display_and_show
 
