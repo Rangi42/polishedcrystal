@@ -72,11 +72,6 @@ Super Potion	Northwest of the lamppost south of the Bike Shop
 route 36:
 Awakening	In one of the trees north of the large patch of grass
 
-ecruteak city:
-Ether	On the burned logs east of the Burned Tower
-Ultra Ball	West side of town in a lamp post
-Rare Candy	South of the water
-
 burned tower:
 Revive	B1F; south-center in a boulder just west of the smashable rocks
 
