@@ -1,3 +1,7 @@
+ClearText::
+	text_start
+	done
+
 ClearSpeechBox::
 	hlcoord TEXTBOX_INNERX, TEXTBOX_INNERY
 	lb bc, TEXTBOX_INNERH - 1, TEXTBOX_INNERW
@@ -33,7 +37,7 @@ ClearTileMap::
 	rst ByteFill
 	; Update the BG Map.
 	ldh a, [rLCDC]
-	bit 7, a
+	bit rLCDC_ENABLE, a
 	ret z
 	jmp ApplyTilemapInVBlank
 
@@ -74,9 +78,7 @@ TextboxBorder::
 	; fallthrough
 CreateBoxBorders::
 	ld a, SCREEN_WIDTH
-	; fallthrough
-_CreateBoxBorders:
-; a: Screen width to consider (dex uses a custom size).
+
 	; Top
 	call .PlaceRow
 	jr .row
@@ -123,7 +125,15 @@ _CreateBoxBorders:
 	pop bc
 	ret
 
+MenuTextbox::
+	push hl
+	call LoadMenuTextbox
+	pop hl
+	; fallthrough
+
 PrintText::
+; input: hl = string, bc = coords
+; output: hl = advanced string, bc = advanced coords
 	call SetUpTextbox
 PrintTextNoBox::
 	push hl
@@ -149,14 +159,22 @@ SetUpTextbox::
 	pop hl
 	ret
 
+PlaceSubstring:
+; input: de = string, hl = current coords, bc = starting coords
+; output: de = advanced string, hl = starting coords advanced by "<NEXT>"/"<LNBRK>", bc = advanced coords
+	push bc
+	jr PlaceNextChar
+
 _PlaceString::
+; input: de = string, hl = coords
+; output: de = advanced string, hl = starting coords advanced by "<NEXT>"/"<LNBRK>", bc = advanced coords
 	push hl
 PlaceNextChar::
 	; charmap order: commands, then ngrams, then specials, then literals
 	ld a, [de]
 	cp BATTLEEXTRA_GFX_START
 	jr nc, _PlaceLiteralChar
-	cp "@"
+	cp SPECIALS_START
 	jr nc, _PlaceSpecialChar
 	cp NGRAMS_START
 	jr nc, _PlaceNgramChar
@@ -188,7 +206,7 @@ _PlaceNgramChar:
 	jmp PlaceCommandCharacter
 
 _PlaceSpecialChar:
-	sub "@"
+	sub SPECIALS_START
 	push hl
 	add a
 	ld c, a
@@ -204,18 +222,19 @@ _bc_::
 	ret
 
 SpecialCharacters:
+	dw DoneText         ; "<DONE>"
 	dw FinishString     ; "@"
-	dw SpaceChar        ; "¯"
+	dw PromptText       ; "<PROMPT>"
 	dw LineBreak        ; "<LNBRK>"
 	dw NextLineChar     ; "<NEXT>"
 	dw LineChar         ; "<LINE>"
 	dw ContText         ; "<CONT>"
 	dw Paragraph        ; "<PARA>"
-	dw DoneText         ; "<DONE>"
-	dw PromptText       ; "<PROMPT>"
 	dw PlaceTargetsName ; "<TARGET>"
 	dw PlaceUsersName   ; "<USER>"
 	dw PlaceEnemysName  ; "<ENEMY>"
+	dw DecompressString ; "<CTXT>"
+	dw SpaceChar        ; "¯"
 
 NextLineChar::
 	ld a, [wTextboxFlags]
@@ -413,6 +432,12 @@ FarString::
 	ret
 
 DoTextUntilTerminator::
+	xor a
+	ldh [hStopPrintingString], a
+.loop
+	ldh a, [hStopPrintingString]
+	and a
+	ret nz
 	ld a, [hli]
 	cp "@"
 	ret z
@@ -421,7 +446,7 @@ DoTextUntilTerminator::
 	cp "<PROMPT>"
 	ret z
 	call .TextCommand
-	jr DoTextUntilTerminator
+	jr .loop
 
 .TextCommand:
 	cp NGRAMS_START
@@ -620,6 +645,123 @@ PrintDayOfWeek::
 .Satur:  db "Satur@"
 .Day:    db "day@"
 
-ClearText::
-	text_start
-	done
+DecompressString::
+	; save starting coords
+	pop bc
+	push bc
+	ld a, c
+	ldh [hPlaceStringCoords], a
+	ld a, b
+	ldh [hPlaceStringCoords+1], a
+
+	call SwapHLDE ; hl = string, de = current coords
+
+	inc hl ; skip "<CTXT>"
+
+	ld b, 1 ; start with no bits to read a byte right away
+.character_loop
+
+	push de ; push current coords
+
+	xor a ; start at node $00
+.tree_loop
+	; "c = [hli]" when b reaches 0, then carry = next bit from c
+	dec b
+	jr nz, .no_reload
+	ld c, [hl]
+	inc hl
+	ld b, 8
+.no_reload
+	sla c
+	; de = TextCompressionHuffmanTree[node=a][branch=carry]
+	adc a
+	add LOW(TextCompressionHuffmanTree)
+	ld e, a
+	adc HIGH(TextCompressionHuffmanTree)
+	sub e
+	ld d, a
+	; keep traversing the tree until a leaf node ($7f and above)
+	ld a, [de]
+	cp $7f
+	jr c, .tree_loop
+
+	; leaf node IDs $ec-$fb correspond to characters $4d-$5c
+	cp $ec
+	jr c, .got_char
+	sub $ec - $4d
+.got_char
+	; write printable string to wCompressedTextBuffer
+	ld [wCompressedTextBuffer], a
+	ld a, "@"
+	ld [wCompressedTextBuffer+1], a
+
+	pop de ; pop current coords
+
+	push hl ; push string position
+	push bc ; push bit-reading state
+
+	; hl = current coords
+	ld h, d
+	ld l, e
+
+	; read saved starting coords
+	ldh a, [hPlaceStringCoords]
+	ld c, a
+	ldh a, [hPlaceStringCoords+1]
+	ld b, a
+
+	ld de, wCompressedTextBuffer
+	ld a, [de]
+	push af
+
+	; print string de at coord hl, having started from coord bc
+	call PlaceSubstring
+
+	; write updated starting coords
+	ld a, l
+	ldh [hPlaceStringCoords], a
+	ld a, h
+	ldh [hPlaceStringCoords+1], a
+
+	; update current coords
+	ld d, b
+	ld e, c
+
+	pop af
+
+	pop bc ; pop bit-reading state
+	pop hl ; pop string position
+
+	; check for characters that signal end of compression
+	; (same ones that finish PlaceString)
+	sub "<DONE>"
+	jr z, .done
+	assert "<DONE>" + 1 == "@"
+	dec a
+	jr z, .end
+	assert "@" + 1 == "<PROMPT>"
+	dec a
+	jr nz, .character_loop
+
+.done
+	inc a ; ld a, 1 since it's zero
+	ldh [hStopPrintingString], a
+
+.end
+	pop bc ; pop starting coords
+
+	; update current coords
+	ld b, d
+	ld c, e
+
+	; update string position
+	ld d, h
+	ld e, l
+	dec de
+
+	; restore starting coords
+	ldh a, [hPlaceStringCoords]
+	ld l, a
+	ldh a, [hPlaceStringCoords+1]
+	ld h, a
+	ret

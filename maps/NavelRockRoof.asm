@@ -93,16 +93,16 @@ Leaf:
 	credits
 	end
 
-LeafText:
+LeafText: ; text > text
 	text "…………"
 	line "…………!"
 	done
 
-LeafWinLossText:
+LeafWinLossText: ; text > text
 	text "…!"
 	done
 
-LeafAfterText:
+LeafAfterText: ; text > text
 	text "…………"
 	line "…………"
 	done

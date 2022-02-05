@@ -190,11 +190,11 @@ CamperJerryBeatenText:
 	line "these battles…"
 	done
 
-HikerEdwinSeenText:
+HikerEdwinSeenText: ; text > text
 	text "R-r-r-R-R--CRASH!"
 	done
 
-HikerEdwinBeatenText:
+HikerEdwinBeatenText: ; text > text
 	text "BOOM!"
 	done
 

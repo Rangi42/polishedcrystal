@@ -34,8 +34,12 @@ GoldenrodDeptStore4FCooltrainerMText:
 	done
 
 GoldenrodDeptStore4FBugCatcherText:
-	text "Iron adds to your"
-	line "#mon's Defense."
+	text "There are some"
+	line "#mon that"
+
+	para "evolve if they"
+	line "eat enough of a"
+	cont "certain vitamin."
 	done
 
 GoldenrodDeptStore4FGameboyKidText:

@@ -111,6 +111,6 @@ RuinsofAlphSinjohChamberMystriText:
 	cont "at last."
 	done
 
-RuinsofAlphSinjohChamberSurpriseText:
+RuinsofAlphSinjohChamberSurpriseText: ; text > text
 	text "…!"
 	done

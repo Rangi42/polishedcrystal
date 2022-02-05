@@ -65,9 +65,7 @@ wNextRadioLine:: db
 wRadioTextDelay:: db
 wNumRadioLinesPrinted:: db
 wOaksPkmnTalkSegmentCounter:: db
-	ds 5
 wRadioText:: ds 2 * SCREEN_WIDTH
-wRadioTextEnd::
 
 NEXTU
 ; movement buffer data
@@ -241,14 +239,6 @@ NEXTU
 ; temporary script buffers
 wTempScriptBuffer:: db
 wJumpStdScriptBuffer:: ds 15
-
-NEXTU
-; phone script data
-wCheckedTime:: db
-wPhoneListIndex:: db
-wNumAvailableCallers:: db
-wAvailableCallers:: ds CONTACT_LIST_SIZE - 4 ; bug: available callers list affects mem addresses outside union (up to 4 bytes)
-wAvailableCallersEnd::
 
 NEXTU
 ; phone caller contact
@@ -488,7 +478,11 @@ ENDU
 wTempMonBox:: db
 wTempMonSlot:: db
 
-	ds 39 ; unused
+wDexCacheValid:: db
+wDexCacheSeen:: dw
+wDexCacheOwn:: dw
+
+	ds 34 ; unused
 
 wOverworldMapAnchor:: dw
 wMetatileStandingY:: db
@@ -725,7 +719,8 @@ wOTPartyData::
 wOTPlayerName:: ds NAME_LENGTH
 wOTPlayerID:: dw
 wOTPartyCount:: db
-wOTPartySpecies:: ds PARTY_LENGTH + 1 ; dereferenced, delete before savepatch
+
+	ds 7 ; unused
 
 
 UNION
@@ -747,7 +742,7 @@ endr
 wOTPartyDataEnd::
 
 NEXTU
-	ds 48
+	ds PARTYMON_STRUCT_LENGTH ; skip first OT partymon since wildmon use that
 
 ; catch tutorial dude bag
 wDudeBag::
@@ -983,8 +978,10 @@ wPokemonJournalsEnd::
 wTMsHMs:: flag_array NUM_TMS + NUM_HMS
 wTMsHMsEnd::
 
-wKeyItems:: flag_array NUM_KEY_ITEMS
+wKeyItems:: ds NUM_KEY_ITEMS + 1
 wKeyItemsEnd::
+
+	ds 6 ; unused
 
 wNumItems:: db
 wItems:: ds MAX_ITEMS * 2 + 1
@@ -1158,7 +1155,7 @@ wEventFlags:: flag_array NUM_EVENTS
 
 wCurBox:: db
 
-	ds 103 ; unused
+	ds 95 ; unused
 
 wCelebiEvent:: db
 
@@ -1249,9 +1246,9 @@ wBattlePointsEnd::
 wStepCount:: db
 wPoisonStepCount:: db
 
-wPhoneList:: ds CONTACT_LIST_SIZE + 1
+wPhoneList:: flag_array NUM_PHONE_CONTACTS
 
-	ds 1 ; unused
+	ds 2 ; unused
 
 wParkBallsRemaining::
 wSafariBallsRemaining:: db
@@ -1301,8 +1298,8 @@ SECTION "Party", WRAMX
 wPokemonData::
 
 wPartyCount::   db ; number of Pokémon in party
-wPartySpecies:: ds PARTY_LENGTH ; deferenced, delete before patch
-wPartyEnd::     db ; older code doesn't check wPartyCount
+
+	ds 7 ; unused
 
 wPartyMons::
 for n, 1, PARTY_LENGTH + 1
@@ -1329,13 +1326,13 @@ wPokedexFlags::
 wPokedexCaught:: flag_array NUM_UNIQUE_POKEMON
 wEndPokedexCaught::
 
-	ds 4 ; unused
+	ds 2 ; unused
 
 wPokedexSeen:: flag_array NUM_UNIQUE_POKEMON
 wEndPokedexSeen::
 wEndPokedexFlags::
 
-	ds 4 ; unused
+	ds 2 ; unused
 
 wUnlockedUnowns:: db
 
@@ -1576,7 +1573,7 @@ wDexAreaModeCopy:: db ; written to from hPokedexAreaMode on screen reload
 
 	; Used to align wDexAreaMons2. Feel free to add more data here, just don't
 	; let wDexAreaMons2 be misaligned (an assert will tell you if you do).
-	ds $2c
+	ds $2b
 
 wDexAreaMons2:: ds (wDexAreaMonsEnd - wDexAreaMons)
 

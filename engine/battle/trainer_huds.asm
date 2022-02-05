@@ -131,7 +131,7 @@ DrawEnemyHUDBorder:
 	ld c, a
 	ld a, [wOTPartyMon1Form]
 	ld b, a
-	call CheckCaughtMon
+	call CheckCosmeticCaughtMon
 	ret z
 	hlcoord 1, 1
 	ld [hl], "<BALL>"

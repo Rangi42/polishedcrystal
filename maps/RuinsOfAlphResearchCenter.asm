@@ -426,6 +426,7 @@ RuinsOfAlphResearchCenterComputerText_GotAllUnown:
 
 	para "A total of "
 	text_decimal hScriptVar, 1, 2
+	text ""
 	line "kinds found."
 	done
 

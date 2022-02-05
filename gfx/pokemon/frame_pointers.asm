@@ -57,8 +57,8 @@ FramesPointers:
 	dw GolduckFrames
 	dw MankeyFrames
 	dw PrimeapeFrames
-	dw GrowlitheFrames
-	dw ArcanineFrames
+	dw GrowlithePlainFrames
+	dw ArcaninePlainFrames
 	dw PoliwagFrames
 	dw PoliwhirlFrames
 	dw PoliwrathFrames
@@ -99,8 +99,8 @@ FramesPointers:
 	dw HypnoFrames
 	dw KrabbyFrames
 	dw KinglerFrames
-	dw VoltorbFrames
-	dw ElectrodeFrames
+	dw VoltorbPlainFrames
+	dw ElectrodePlainFrames
 	dw ExeggcuteFrames
 	dw ExeggutorPlainFrames
 	dw CuboneFrames
@@ -156,7 +156,7 @@ FramesPointers:
 	dw MeganiumFrames
 	dw CyndaquilFrames
 	dw QuilavaFrames
-	dw TyphlosionFrames
+	dw TyphlosionPlainFrames
 	dw TotodileFrames
 	dw CroconawFrames
 	dw FeraligatrFrames
@@ -210,11 +210,11 @@ FramesPointers:
 	dw SteelixFrames
 	dw SnubbullFrames
 	dw GranbullFrames
-	dw QwilfishFrames
+	dw QwilfishPlainFrames
 	dw ScizorFrames
 	dw ShuckleFrames
 	dw HeracrossFrames
-	dw SneaselFrames
+	dw SneaselPlainFrames
 	dw TeddiursaFrames
 	dw UrsaringFrames
 	dw SlugmaFrames
@@ -282,6 +282,11 @@ FramesPointers:
 	dw CursolaFrames
 	dw SirfetchDFrames
 	dw MrRimeFrames
+	dw WyrdeerFrames
+	dw KleavorFrames
+	dw UrsalunaFrames
+	dw SneaslerFrames
+	dw OverqwilFrames
 	assert_table_length NUM_SPECIES
 
 	dw UnownBFrames
@@ -336,13 +341,19 @@ FramesPointers:
 	dw MagikarpZebraFrames
 	dw MagikarpStripeFrames
 	dw MagikarpBubblesFrames
-	dw MagikarpForeheadFrames
-	dw MagikarpMaskFrames
+	dw MagikarpDiamondsFrames
+	dw MagikarpPatchesFrames
+	dw MagikarpForehead1Frames
+	dw MagikarpMask1Frames
+	dw MagikarpForehead2Frames
+	dw MagikarpMask2Frames
 	dw MagikarpSaucyFrames
 	dw MagikarpRaindropFrames
 
 	dw GyaradosRedFrames
+
 	dw MewtwoArmoredFrames
+
 	dw RattataAlolanFrames
 	dw RaticateAlolanFrames
 	dw RaichuAlolanFrames
@@ -361,6 +372,7 @@ FramesPointers:
 	dw MukAlolanFrames
 	dw ExeggutorAlolanFrames
 	dw MarowakAlolanFrames
+
 	dw MeowthGalarianFrames
 	dw PonytaGalarianFrames
 	dw RapidashGalarianFrames
@@ -374,5 +386,13 @@ FramesPointers:
 	dw MoltresGalarianFrames
 	dw SlowkingGalarianFrames
 	dw CorsolaGalarianFrames
+
+	dw GrowlitheHisuianFrames
+	dw ArcanineHisuianFrames
+	dw VoltorbHisuianFrames
+	dw ElectrodeHisuianFrames
+	dw TyphlosionHisuianFrames
+	dw QwilfishHisuianFrames
+	dw SneaselHisuianFrames
 
 	assert_table_length NUM_UNIQUE_POKEMON

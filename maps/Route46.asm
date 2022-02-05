@@ -248,7 +248,7 @@ CamperTedSeenText:
 	line "with me?"
 	done
 
-CamperTedBeatenText:
+CamperTedBeatenText: ; text > text
 	text "Wha…?"
 	done
 

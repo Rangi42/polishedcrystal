@@ -204,7 +204,8 @@ Pokedex_ChangeForm:
 Pokedex_MonHasCosmeticForms:
 ; Returns carry if the given mon on the cursor doesn't have cosmetic forms.
 	call Pokedex_GetCursorSpecies
-
+	; fallthrough
+_Pokedex_MonHasCosmeticForms:
 	; Used to track when we reach the end of the cosmetic table
 	ld de, -VariantSpeciesAndFormTable
 	ld hl, CosmeticSpeciesAndFormTable
@@ -419,9 +420,24 @@ Pokedex_ScrollPageMon:
 
 Pokedex_GetCursorSpecies:
 ; Returns species in c and a, form+ext in b that cursor is hovering.
+; For a new dex entry, return species+form from wTempMon.
+	ld a, [wPokedex_DisplayMode]
+	cp DEXDISP_NEWDESC
+	jr nz, .not_newdesc
+	ld a, BANK(wTempSpecies)
+	call StackCallInWRAMBankA
+.StackCall1:
+	ld a, [wTempSpecies]
+	ld c, a
+	ld a, [wTempForm]
+	set MON_CAUGHT_F, a
+	ld b, a
+	ret
+
+.not_newdesc
 	ld a, BANK(wDexMons)
 	call StackCallInWRAMBankA
-.Function:
+.StackCall2:
 	ld a, [wPokedex_CursorPos]
 	push af
 	swap a
@@ -1344,12 +1360,12 @@ endr
 	xor b
 	ld [hli], a
 
+.sel_shiny
 	; Don't display bottom menu or shiny hint in new dex entry mode.
 	ld a, [wPokedex_DisplayMode]
 	cp DEXDISP_NEWDESC
 	jr z, .botmenu_done
 
-.sel_shiny
 	; Sel/Shiny indicator
 	ld a, SHINY_CHARM
 	ld [wCurKeyItem], a
@@ -1381,7 +1397,7 @@ endr
 	hldexcoord 2, 18
 	ld a, $16
 	ld [hli], a
-	ld a, $f2
+	ld a, "<BLACK>"
 	ld b, 15
 .botmenu_loop
 	ld [hli], a
@@ -1423,20 +1439,19 @@ endr
 	ld a, [wPokedex_DisplayMode]
 	cp DEXDISP_NEWDESC
 	jr nz, .joypad_loop
+	call Pokedex_GetCursorSpecies
+	call PlayCry
 
 .newdesc_joypad
 	call Pokedex_GetInput
 	rrca
 	jr c, .newdesc_a
 	rrca
-	jr c, .newdesc_done
-	jr .newdesc_joypad
+	jr nc, .newdesc_joypad
 
 .newdesc_a
 	call .SwitchPage
 	jr z, .newdesc_joypad
-.newdesc_done
-	; Exited early
 	pop af
 	pop hl
 	pop hl
@@ -1554,22 +1569,7 @@ Pokedex_Main:
 
 	ld hl, DexTilemap_Main
 	call Pokedex_LoadTilemapWithPokepic
-	ld de, wStringBuffer1
-	hlcoord 9, 2
-	rst PlaceString
 
-	ld a, [wPokedex_MonInfoBank]
-	and a
-	jr nz, .vram_bank_1
-	xor a
-	hlcoord 18, 3, wAttrmap
-	ld [hli], a
-	ld [hl], a
-	hlcoord 18, 4, wAttrmap
-	ld [hli], a
-	ld [hl], a
-
-.vram_bank_1
 	xor a
 	ld [wPokedex_DisplayMode], a
 
@@ -1752,7 +1752,7 @@ Pokedex_Bio:
 
 	; Print hatch rate
 	ld a, [wBaseEggSteps]
-	and $f
+	and $f ; no-optimize a & X == X
 	cp $f
 	ld de, Unknown
 	jr z, .goteggsteps
@@ -1855,6 +1855,7 @@ Pokedex_Bio:
 
 .AllString
 	db "All @"
+
 INCLUDE "data/pokedex_bio.asm"
 
 Pokedex_Stats:
@@ -2225,21 +2226,17 @@ _Pokedex_Mode:
 	db "Unown Mode@"
 
 .MenuDescriptions:
-	text "<PK><MN> are listed in"
-	next "regional order."
-	text_end
+	db   "<PK><MN> are listed in"
+	next "regional order.@"
 
-	text "<PK><MN> are listed in"
-	next "national order."
-	text_end
+	db   "<PK><MN> are listed in"
+	next "national order.@"
 
-	text "Display Unown"
-	next "information."
-	text_end
+	db   "Display Unown"
+	next "information.@"
 
-	text "Return to the <PK><MN>"
-	next "list."
-	text_end
+	db   "Return to the <PK><MN>"
+	next "list.@"
 
 Pokedex_Search:
 ; Call to fully initialize Search page and reset cursor pos
@@ -2299,7 +2296,7 @@ _Pokedex_Search:
 	add b
 	add 4 ; shape, not mini
 	xor $80
-	hlcoord 7, 15
+	hlcoord 8, 15
 	ld [hli], a
 	inc a
 	ld [hld], a
@@ -2644,12 +2641,12 @@ Pokedex_GetSearchResults:
 
 	; Check if we're doing a null search. - 1 to exclude search order.
 	ld hl, wPokedex_SearchData
-	ld b, NUM_DEXSEARCH - 1
+	ld d, NUM_DEXSEARCH - 1
 	xor a
 .check_null_search
 	or [hl]
 	inc hl
-	dec b
+	dec d
 	jr nz, .check_null_search
 
 	; If we aren't, skip this entry.
@@ -2900,13 +2897,33 @@ Pokedex_CountSeenOwn:
 	push de
 	push bc
 	push af
+	ld hl, wDexCacheValid
+	ld a, [hli]
+	and a
+	ld de, wTempDexSeen
+	ld bc, 4
+	jr z, .cache_not_valid
+	rst CopyBytes
+	jr .done
+
+.cache_not_valid
 	; Reset temp dex data.
+	push hl
+	push de
+	push bc
 	ld hl, wTempDex
 	ld bc, wTempDexEnd - wTempDex
 	xor a
 	rst ByteFill
 	ld hl, Pokedex_HandleSeenOwn
 	call Pokedex_IterateSpecies
+	pop bc
+	pop hl
+	pop de
+	rst CopyBytes
+	ld a, 1
+	ld [wDexCacheValid], a
+.done
 	jmp PopAFBCDEHL
 
 Pokedex_HandleSeenOwn:
@@ -2982,7 +2999,7 @@ Pokedex_IterateSpeciesWithMode:
 	xor 1
 Pokedex_IterateSpecies:
 ; Iterates all species. For each iteration, use hl as callback for a function to
-; call for each valid species ID including all formes. bc contains species+form
+; call for each valid species ID including all forms. bc contains species+form
 ; being checked. and de contains the resulting variant (not cosmetic) index.
 ; Iterate in the following order depending on a: 0 (natdex), 1 (johto), 2 (a-z)
 	ld b, 0
@@ -3007,7 +3024,7 @@ Pokedex_IterateSpecies:
 	srl d
 	dec de
 
-	; Begin at forme 1, not forme 0.
+	; Begin at form 1, not form 0.
 	inc b
 
 	push hl
@@ -3453,7 +3470,7 @@ Pokedex_ScheduleScreenUpdateWithHBlank:
 	; Needs to be set up immediately during init.
 	call Pokedex_RefreshScreen
 
-	ld a, 1 << 6
+	ld a, 1 << rSTAT_INT_LYC
 	ldh [rSTAT], a
 	ld hl, rIF
 	res LCD_STAT, [hl]
@@ -3481,33 +3498,16 @@ NewPokedexEntry:
 	ld hl, rIE
 	res LCD_STAT, [hl]
 
-	ld hl, wNamedObjectIndex
-	ld a, [hli]
-	ld b, [hl]
-	ld c, a
-
-	; Convert dex number to (simplified) cursor position.
-	call GetPokedexNumber
-	dec bc
-	ld hl, hDividend + 1
-	ld a, c
-	ld [hld], a
-	ld [hl], b
-	ld a, 5
-	ldh [hDivisor], a
-	ld b, 2
-	call Divide
-	ldh a, [hQuotient + 2]
-	ld [wPokedex_Offset], a
-	ldh a, [hRemainder]
-	ld [wPokedex_CursorPos], a
-
 	call ClearPalettes
 	call DelayFrame
 	call StackDexGraphics
 
 	ld a, DEXDISP_NEWDESC
 	ld [wPokedex_DisplayMode], a
+
+	; Ensure that we write the mon graphics to vbk0.
+	ld a, 1 ; will be switched to 0 upon next Pokedex_GetCursorMon call.
+	ld [wPokedex_MonInfoBank], a
 	jmp Pokedex_Description
 
 Pokedex_GetDexEntryPointer:

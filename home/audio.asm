@@ -268,33 +268,6 @@ WaitSFX::
 	pop hl
 	ret
 
-IsSFXPlaying::
-; Return carry if no sound effect is playing.
-; The inverse of CheckSFX.
-	push hl
-
-	ld hl, wChannel5Flags
-	bit 0, [hl]
-	jr nz, .playing
-	ld hl, wChannel6Flags
-	bit 0, [hl]
-	jr nz, .playing
-	ld hl, wChannel7Flags
-	bit 0, [hl]
-	jr nz, .playing
-	ld hl, wChannel8Flags
-	bit 0, [hl]
-	jr nz, .playing
-
-	pop hl
-	scf
-	ret
-
-.playing
-	pop hl
-	and a
-	ret
-
 MaxVolume::
 	ld a, $77 ; max
 	ld [wVolume], a
@@ -429,13 +402,11 @@ GetBugCatchingContestMusic:
 
 GetPlayerStateMusic:
 	ld a, [wPlayerState]
-	cp PLAYER_SURF
-	jr z, .surf
 	cp PLAYER_SURF_PIKA
-	jr z, .surf_pikachu
-	jmp GetMapMusic
-
-.surf:
+	ld de, MUSIC_SURFING_PIKACHU
+	ret z
+	cp PLAYER_SURF
+	jmp nz, GetMapMusic
 	call RegionCheck
 	ld a, e
 	ld de, MUSIC_SURF_KANTO
@@ -445,10 +416,6 @@ GetPlayerStateMusic:
 	cp ORANGE_REGION
 	ret z
 	ld de, MUSIC_SURF
-	ret
-
-.surf_pikachu:
-	ld de, MUSIC_SURFING_PIKACHU
 	ret
 
 CheckSFX::

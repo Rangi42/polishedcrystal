@@ -111,14 +111,10 @@ UpdateTimeRemaining:
 RestartDailyResetTimer:
 	ld hl, wDailyResetTimer
 	ld a, 1
-	; fallthrough
-
-InitNDaysCountdown:
-	ld [hl], a
+	ld [hli], a
 	push hl
 	call UpdateTime
 	pop hl
-	inc hl
 	jr CopyDayToHL
 
 InitializeStartDay:
@@ -127,22 +123,6 @@ InitializeStartDay:
 CopyDayToHL:
 	ld a, [wCurDay]
 	ld [hl], a
-	ret
-
-RestartLuckyNumberCountdown:
-	call .GetDaysUntilNextFriday
-	ld hl, wLuckyNumberDayBuffer
-	jr InitNDaysCountdown
-
-.GetDaysUntilNextFriday:
-	call GetWeekday
-	cpl
-	add FRIDAY + 1 ; a = FRIDAY - a
-	jr z, .friday_saturday
-	ret nc
-
-.friday_saturday
-	add 7
 	ret
 
 CheckDailyResetTimer::

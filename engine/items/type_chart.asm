@@ -48,7 +48,7 @@ _TypeChart:
 	ld a, 8
 	call SkipMusic
 
-	ld a, %11100111
+	ld a, (1 << rLCDC_ENABLE) | (1 << rLCDC_WINDOW_TILEMAP) | (1 << rLCDC_WINDOW_ENABLE) | (1 << rLCDC_SPRITE_SIZE) | (1 << rLCDC_SPRITES_ENABLE) | (1 << rLCDC_BG_PRIORITY)
 	ldh [rLCDC], a
 
 	xor a
@@ -83,7 +83,7 @@ _TypeChart:
 	jr .loop
 
 .done
-	ld a, %11100011
+	ld a, LCDC_DEFAULT
 	ldh [rLCDC], a
 
 	pop af

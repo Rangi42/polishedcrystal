@@ -452,7 +452,7 @@ CooltrainermBlakeSeenText:
 	cont "Let me battle you!"
 	done
 
-CooltrainermBlakeBeatenText:
+CooltrainermBlakeBeatenText: ; text > text
 	text "Yow!"
 	done
 

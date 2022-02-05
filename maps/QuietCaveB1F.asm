@@ -78,7 +78,7 @@ PokemaniacAidanSeenText:
 	line "you them!"
 	done
 
-PokemaniacAidanBeatenText:
+PokemaniacAidanBeatenText: ; text > text
 	text "My #mon…"
 	done
 
@@ -103,4 +103,3 @@ PsychicVirgilBeatenText:
 	text "Why must battling"
 	line "be so loud?"
 	done
-

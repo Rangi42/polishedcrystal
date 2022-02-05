@@ -130,28 +130,30 @@ GenericTrainerSightseerfPilar:
 GenericTrainerSightseersCyandvi1:
 	generictrainer SIGHTSEERS, CYANDVI1, EVENT_BEAT_SIGHTSEERS_CY_AND_VI, .SeenText, .BeatenText
 
+; text > text
 	text "Cy: TODO"
 	done
 
-.SeenText:
+.SeenText: ; text > text
 	text "Cy: TODO"
 	done
 
-.BeatenText:
+.BeatenText: ; text > text
 	text "Cy: TODO"
 	done
 
 GenericTrainerSightseersCyandvi2:
 	generictrainer SIGHTSEERS, CYANDVI2, EVENT_BEAT_SIGHTSEERS_CY_AND_VI, .SeenText, .BeatenText
 
+; text > text
 	text "Vi: TODO"
 	done
 
-.SeenText:
+.SeenText: ; text > text
 	text "Vi: TODO"
 	done
 
-.BeatenText:
+.BeatenText: ; text > text
 	text "Vi: TODO"
 	done
 

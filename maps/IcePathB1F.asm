@@ -157,7 +157,7 @@ Text_IcePathB1FTutorQuestion:
 	cont "Icy Wind?"
 	done
 
-Text_IcePathB1FTutorRefused:
+Text_IcePathB1FTutorRefused: ; text > text
 	text "Brr…"
 	done
 

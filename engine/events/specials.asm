@@ -30,7 +30,7 @@ Special_GameCornerPrizeMonCheckDex:
 	ldh a, [hScriptVar+1]
 	ld b, a
 	push bc
-	call CheckCaughtMon
+	call CheckCosmeticCaughtMon
 	pop bc
 	ret nz
 	call SetSeenAndCaughtMon
@@ -283,7 +283,7 @@ StoreSwarmMapIndices::
 	ret
 
 Special_ResetLuckyNumberShowFlag:
-	farcall RestartLuckyNumberCountdown
+	farcall RestartDailyResetTimer
 	ld hl, wLuckyNumberShowFlag
 	res 0, [hl]
 	farjp LoadOrRegenerateLuckyIDNumber

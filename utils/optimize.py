@@ -152,6 +152,13 @@ patterns = {
 	(lambda line6, prev: line6.code == prev[2].code
 		or line6.code.rstrip(':') == prev[2].code.split(maxsplit=1)[-1].strip()),
 ],
+'a & X == X': [
+	# Bad: and N / cp N
+	# Good: or ~N / inc a (unless you need the masked value or the carry flag)
+	(lambda line1, prev: re.match(r'and (?:a, )?[^afbcdehl\[]', line1.code)),
+	(lambda line2, prev: re.match(r'cp (?:a, )?[^afbcdehl\[]', line2.code)
+		and prev[0].code[4:] == line2.code[3:]),
+],
 'hl|bc|de += a|N': [
 	# Bad: add l|N / ld l, a / ld a, h|0 / adc 0|h / ld h, a (hl or bc or de)
 	# Good: add l|N / ld l, a / adc h / sub l / ld h, a

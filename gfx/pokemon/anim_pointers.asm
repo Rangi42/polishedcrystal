@@ -57,8 +57,8 @@ AnimationPointers:
 	dw GolduckAnimation
 	dw MankeyAnimation
 	dw PrimeapeAnimation
-	dw GrowlitheAnimation
-	dw ArcanineAnimation
+	dw GrowlithePlainAnimation
+	dw ArcaninePlainAnimation
 	dw PoliwagAnimation
 	dw PoliwhirlAnimation
 	dw PoliwrathAnimation
@@ -99,8 +99,8 @@ AnimationPointers:
 	dw HypnoAnimation
 	dw KrabbyAnimation
 	dw KinglerAnimation
-	dw VoltorbAnimation
-	dw ElectrodeAnimation
+	dw VoltorbPlainAnimation
+	dw ElectrodePlainAnimation
 	dw ExeggcuteAnimation
 	dw ExeggutorPlainAnimation
 	dw CuboneAnimation
@@ -156,7 +156,7 @@ AnimationPointers:
 	dw MeganiumAnimation
 	dw CyndaquilAnimation
 	dw QuilavaAnimation
-	dw TyphlosionAnimation
+	dw TyphlosionPlainAnimation
 	dw TotodileAnimation
 	dw CroconawAnimation
 	dw FeraligatrAnimation
@@ -210,11 +210,11 @@ AnimationPointers:
 	dw SteelixAnimation
 	dw SnubbullAnimation
 	dw GranbullAnimation
-	dw QwilfishAnimation
+	dw QwilfishPlainAnimation
 	dw ScizorAnimation
 	dw ShuckleAnimation
 	dw HeracrossAnimation
-	dw SneaselAnimation
+	dw SneaselPlainAnimation
 	dw TeddiursaAnimation
 	dw UrsaringAnimation
 	dw SlugmaAnimation
@@ -282,6 +282,11 @@ AnimationPointers:
 	dw CursolaAnimation
 	dw SirfetchDAnimation
 	dw MrRimeAnimation
+	dw WyrdeerAnimation
+	dw KleavorAnimation
+	dw UrsalunaAnimation
+	dw SneaslerAnimation
+	dw OverqwilAnimation
 	assert_table_length NUM_SPECIES
 
 	dw UnownBAnimation
@@ -336,13 +341,19 @@ AnimationPointers:
 	dw MagikarpZebraAnimation
 	dw MagikarpStripeAnimation
 	dw MagikarpBubblesAnimation
-	dw MagikarpForeheadAnimation
-	dw MagikarpMaskAnimation
+	dw MagikarpDiamondsAnimation
+	dw MagikarpPatchesAnimation
+	dw MagikarpForehead1Animation
+	dw MagikarpMask1Animation
+	dw MagikarpForehead2Animation
+	dw MagikarpMask2Animation
 	dw MagikarpSaucyAnimation
 	dw MagikarpRaindropAnimation
 
 	dw GyaradosRedAnimation
+
 	dw MewtwoArmoredAnimation
+
 	dw RattataAlolanAnimation
 	dw RaticateAlolanAnimation
 	dw RaichuAlolanAnimation
@@ -361,6 +372,7 @@ AnimationPointers:
 	dw MukAlolanAnimation
 	dw ExeggutorAlolanAnimation
 	dw MarowakAlolanAnimation
+
 	dw MeowthGalarianAnimation
 	dw PonytaGalarianAnimation
 	dw RapidashGalarianAnimation
@@ -374,5 +386,13 @@ AnimationPointers:
 	dw MoltresGalarianAnimation
 	dw SlowkingGalarianAnimation
 	dw CorsolaGalarianAnimation
+
+	dw GrowlitheHisuianAnimation
+	dw ArcanineHisuianAnimation
+	dw VoltorbHisuianAnimation
+	dw ElectrodeHisuianAnimation
+	dw TyphlosionHisuianAnimation
+	dw QwilfishHisuianAnimation
+	dw SneaselHisuianAnimation
 
 	assert_table_length NUM_UNIQUE_POKEMON

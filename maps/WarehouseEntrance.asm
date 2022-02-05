@@ -582,7 +582,7 @@ GoldenrodUndergroundWeAreNotOpenTodayText:
 	line "today."
 	done
 
-GoldenrodUndergroundNoEntryText:
+GoldenrodUndergroundNoEntryText: ; text > text
 	text "NO ENTRY BEYOND"
 	line "THIS POINT"
 	done

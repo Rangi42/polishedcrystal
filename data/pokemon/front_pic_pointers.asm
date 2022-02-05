@@ -57,8 +57,8 @@ FrontPicPointers::
 	dba GolduckFrontpic
 	dba MankeyFrontpic
 	dba PrimeapeFrontpic
-	dba GrowlitheFrontpic
-	dba ArcanineFrontpic
+	dba GrowlithePlainFrontpic
+	dba ArcaninePlainFrontpic
 	dba PoliwagFrontpic
 	dba PoliwhirlFrontpic
 	dba PoliwrathFrontpic
@@ -99,8 +99,8 @@ FrontPicPointers::
 	dba HypnoFrontpic
 	dba KrabbyFrontpic
 	dba KinglerFrontpic
-	dba VoltorbFrontpic
-	dba ElectrodeFrontpic
+	dba VoltorbPlainFrontpic
+	dba ElectrodePlainFrontpic
 	dba ExeggcuteFrontpic
 	dba ExeggutorPlainFrontpic
 	dba CuboneFrontpic
@@ -156,7 +156,7 @@ FrontPicPointers::
 	dba MeganiumFrontpic
 	dba CyndaquilFrontpic
 	dba QuilavaFrontpic
-	dba TyphlosionFrontpic
+	dba TyphlosionPlainFrontpic
 	dba TotodileFrontpic
 	dba CroconawFrontpic
 	dba FeraligatrFrontpic
@@ -210,11 +210,11 @@ FrontPicPointers::
 	dba SteelixFrontpic
 	dba SnubbullFrontpic
 	dba GranbullFrontpic
-	dba QwilfishFrontpic
+	dba QwilfishPlainFrontpic
 	dba ScizorFrontpic
 	dba ShuckleFrontpic
 	dba HeracrossFrontpic
-	dba SneaselFrontpic
+	dba SneaselPlainFrontpic
 	dba TeddiursaFrontpic
 	dba UrsaringFrontpic
 	dba SlugmaFrontpic
@@ -282,6 +282,11 @@ FrontPicPointers::
 	dba CursolaFrontpic
 	dba SirfetchDFrontpic
 	dba MrRimeFrontpic
+	dba WyrdeerFrontpic
+	dba KleavorFrontpic
+	dba UrsalunaFrontpic
+	dba SneaslerFrontpic
+	dba OverqwilFrontpic
 	assert_table_length NUM_SPECIES
 
 	dba UnownBFrontpic
@@ -336,13 +341,19 @@ FrontPicPointers::
 	dba MagikarpZebraFrontpic
 	dba MagikarpStripeFrontpic
 	dba MagikarpBubblesFrontpic
-	dba MagikarpForeheadFrontpic
-	dba MagikarpMaskFrontpic
+	dba MagikarpDiamondsFrontpic
+	dba MagikarpPatchesFrontpic
+	dba MagikarpForehead1Frontpic
+	dba MagikarpMask1Frontpic
+	dba MagikarpForehead2Frontpic
+	dba MagikarpMask2Frontpic
 	dba MagikarpSaucyFrontpic
 	dba MagikarpRaindropFrontpic
 
 	dba GyaradosRedFrontpic
+
 	dba MewtwoArmoredFrontpic
+
 	dba RattataAlolanFrontpic
 	dba RaticateAlolanFrontpic
 	dba RaichuAlolanFrontpic
@@ -361,6 +372,7 @@ FrontPicPointers::
 	dba MukAlolanFrontpic
 	dba ExeggutorAlolanFrontpic
 	dba MarowakAlolanFrontpic
+
 	dba MeowthGalarianFrontpic
 	dba PonytaGalarianFrontpic
 	dba RapidashGalarianFrontpic
@@ -374,4 +386,13 @@ FrontPicPointers::
 	dba MoltresGalarianFrontpic
 	dba SlowkingGalarianFrontpic
 	dba CorsolaGalarianFrontpic
+
+	dba GrowlitheHisuianFrontpic
+	dba ArcanineHisuianFrontpic
+	dba VoltorbHisuianFrontpic
+	dba ElectrodeHisuianFrontpic
+	dba TyphlosionHisuianFrontpic
+	dba QwilfishHisuianFrontpic
+	dba SneaselHisuianFrontpic
+
 	assert_table_length NUM_UNIQUE_POKEMON

@@ -192,12 +192,12 @@ PicnickerHopeBeatenText:
 	line "strong."
 	done
 
-PicnickerSharonSeenText:
+PicnickerSharonSeenText: ; text > text
 	text "Um…"
 	line "I…"
 	done
 
-PicnickerSharonBeatenText:
+PicnickerSharonBeatenText: ; text > text
 	text "…"
 	done
 

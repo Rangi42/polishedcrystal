@@ -161,7 +161,7 @@ SwimmermHaroldSeenText:
 	cont "sea at night?"
 	done
 
-SwimmermHaroldBeatenText:
+SwimmermHaroldBeatenText: ; text > text
 	text "Glub…"
 	done
 

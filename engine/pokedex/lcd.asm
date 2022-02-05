@@ -289,7 +289,6 @@ StackDexGraphics:
 	ldh [hSCX], a
 	ldh [hSCY], a
 
-	call Pokedex_GetCursorMonInVBK1
 	pop de
 	call _de_
 
@@ -306,7 +305,7 @@ StackDexGraphics:
 .done_update
 	ld hl, rIE
 	res LCD_STAT, [hl]
-	ld a, 1 << 3
+	ld a, 1 << rSTAT_INT_DEFAULT
 	ldh [rSTAT], a
 	ld a, LOW(LCDGeneric)
 	ldh [hFunctionTargetLo], a
@@ -408,7 +407,7 @@ Pokedex_RefreshOAM:
 .indicator_oam
 	pop af
 
-	; In description mode, only display indicator if we have seen formes.
+	; In description mode, only display indicator if we have seen forms.
 	; This is specifically in regular description mode, we don't want to
 	; display it in the "new dex entry".
 	assert DEXDISP_SEARCH + 1 == DEXDISP_DESC
@@ -677,7 +676,7 @@ PHB_WaitUntilLY_Mode0:
 	jr nz, .busyloop
 .busyloop2
 	ldh a, [rSTAT]
-	and $3
+	and rSTAT_MODE_MASK ; wait until mode 0
 	jr nz, .busyloop2
 	ret
 
@@ -715,7 +714,7 @@ PHB_DoSwitchSCY:
 	push bc
 .loop
 	ldh a, [rSTAT]
-	and %11
+	and rSTAT_MODE_MASK
 	jr nz, .loop
 	ld a, h
 	ldh [rSCY], a
@@ -729,7 +728,7 @@ PHB_DescSwitchSCY:
 	push bc
 .busyloop
 	ldh a, [rSTAT]
-	and %11
+	and rSTAT_MODE_MASK ; wait until mode 0
 	jr nz, .busyloop
 	ld a, 8
 	ldh [rSCY], a
@@ -835,7 +834,7 @@ PHB_MainResetLCDC:
 	call Pokedex_UnsafeSetHBlankFunction
 .loop
 	ldh a, [rSTAT]
-	and %11
+	and rSTAT_MODE_MASK ; wait until mode 0
 	jr nz, .loop
 	ld hl, rLCDC
 	res rLCDC_TILE_DATA, [hl]

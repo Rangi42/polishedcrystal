@@ -15,6 +15,6 @@ Route28_MapScriptHeader:
 
 	def_object_events
 
-Route28SignText:
+Route28SignText: ; text > text
 	text "Route 28"
 	done

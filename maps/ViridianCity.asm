@@ -180,7 +180,7 @@ Text_ViridianCityTutorQuestion:
 	cont "Dream Eater?"
 	done
 
-Text_ViridianCityTutorRefused:
+Text_ViridianCityTutorRefused: ; text > text
 	text "OK…"
 	done
 

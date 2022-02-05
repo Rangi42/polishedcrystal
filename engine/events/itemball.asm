@@ -39,6 +39,8 @@ FindItemInBallScript::
 
 .ShowItemIcon:
 	ld a, [wItemBallItemID]
+	; fallthrough
+ItemGet_ShowItemIconFromA:
 	call LoadItemIconForOverworld
 	farcall LoadItemIconPalette
 	jmp PrintOverworldItemIcon

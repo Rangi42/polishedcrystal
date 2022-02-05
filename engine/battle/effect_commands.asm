@@ -3651,6 +3651,9 @@ SpeciesItemBoost:
 ; If the attacking monster is species b or c and
 ; it's holding item d, double it.
 
+	assert !HIGH(PIKACHU)
+	assert !HIGH(CUBONE)
+	assert !HIGH(MAROWAK)
 	ld a, [hli]
 	ld l, [hl]
 	ld h, a
@@ -3666,6 +3669,12 @@ SpeciesItemBoost:
 	ret nz
 
 .GetItemHeldEffect:
+	push hl
+	ld a, MON_FORM
+	call TrueUserPartyAttr
+	and EXTSPECIES_MASK
+	pop hl
+	ret nz
 	push hl
 	call GetUserItem
 	ld a, [hl]
@@ -4569,7 +4578,7 @@ CanStatusTarget:
 	ld a, BATTLE_VARS_STATUS_OPP
 	call GetBattleVar
 	and h
-	jr nz, .already_statused
+	jmp nz, .already_statused
 
 	; Corrosion bypasses everything except existing status problems
 	ld a, h
@@ -4628,6 +4637,9 @@ CanStatusTarget:
 	pop af
 	and a
 	jr nz, .no_mold_breaker
+	call SafeCheckSafeguard
+	ld hl, SafeguardProtectText
+	jr nz, .end
 	call CheckSubstituteOpp
 	ld hl, ButItFailedText
 	jr nz, .end

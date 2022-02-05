@@ -139,7 +139,7 @@ PrintRadioLine:
 	ld [wNumRadioLinesPrinted], a
 	cp 2
 	jr nz, .print
-	bccoord 1, 16
+	bccoord TEXTBOX_INNERX, TEXTBOX_INNERY + 2
 	call PlaceWholeStringInBoxAtOnce
 	jr .skip
 .print
@@ -230,7 +230,7 @@ endr
 	; (Disallows EVE.)
 .loop2
 	call Random
-	and 3
+	and 3 ; no-optimize a & X == X
 	cp 3
 	jr z, .loop2
 
@@ -679,7 +679,7 @@ PokedexShow1:
 	rla
 	ld b, a
 	push bc
-	call CheckCaughtMon
+	call CheckCosmeticCaughtMon
 	pop bc
 	jr z, .loop
 	ld hl, wNamedObjectIndex
@@ -711,20 +711,6 @@ PokedexShow2:
 	pop hl
 	pop af
 	call CopyDexEntryPart2
-;	call GetFarByte
-;	cp $2f
-;	jr nz, .load
-;	inc hl
-;	ld a, [wOptions2]
-;	bit POKEDEX_UNITS, a
-;	jr z, .imperial
-;	ld a, d
-;	call GetFarWord
-;	jr .load
-;.imperial
-;	inc hl
-;	inc hl
-;.load
 	ld a, l
 	ld [wPokedexShowPointerAddr], a
 	ld a, h
@@ -777,25 +763,6 @@ CopyDexEntry:
 	call CopyRadioTextToRAM
 	pop hl
 	pop af
-	jr CopyDexEntryPart2
-
-CopyDexEntryPart1:
-	ld de, wPokedexShowPointerBank
-	ld bc, SCREEN_WIDTH - 1
-	call FarCopyBytes
-	ld hl, wPokedexShowPointerAddr
-	ld a, "<START>"
-	ld [hli], a
-	ld a, "<LINE>"
-	ld [hli], a
-.loop
-	ld a, [hli]
-	cp "@"
-	ret z
-	cp "<NEXT>"
-	ret z
-	jr .loop
-
 CopyDexEntryPart2:
 	ld d, a
 .loop
@@ -814,6 +781,23 @@ CopyDexEntryPart2:
 	ld a, d
 	ld [wPokedexShowPointerBank], a
 	ret
+
+CopyDexEntryPart1:
+	ld de, wPokedexShowPointerBank
+	ld bc, SCREEN_WIDTH - 1
+	call FarCopyBytes
+	ld hl, wPokedexShowPointerAddr
+	ld a, "<START>"
+	ld [hli], a
+	ld a, "<LINE>"
+	ld [hli], a
+.loop
+	ld a, [hli]
+	cp "@"
+	ret z
+	cp "<NEXT>"
+	ret z
+	jr .loop
 
 PokedexShowText:
 	; @ @

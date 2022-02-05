@@ -318,13 +318,11 @@ endr
 	and FORM_MASK
 	ld a, [wTempMonForm]
 	jr z, .keep_old_form
-	and $ff - FORM_MASK
+	and ~SPECIESFORM_MASK
 .keep_old_form
-	and $ff - EXTSPECIES_MASK
+	and ~EXTSPECIES_MASK
 	or c
 	ld [wEvolutionNewForm], a
-	and SPECIESFORM_MASK
-	ld [wCurForm], a
 	ld a, [wCurPartyMon]
 	ld hl, wPartyMonNicknames
 	call GetNickname
@@ -495,7 +493,6 @@ CancelEvolution:
 	ld hl, Text_StoppedEvolving
 	call PrintText
 	call ClearTileMap
-	pop hl
 	jmp EvolveAfterBattle_MasterLoop
 
 IsMonHoldingEverstone:

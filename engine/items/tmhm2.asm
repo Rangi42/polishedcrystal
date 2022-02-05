@@ -266,8 +266,11 @@ TMHM_GetCurrentPocketPosition:
 .loop
 	inc c
 	ld a, c
+	cp NUM_TMS + NUM_HMS + 1
+	jr z, .cancel
 	call InnerCheckTMHM
 	jr z, .loop
+.cancel
 	dec b
 	jr nz, .loop
 	dec c

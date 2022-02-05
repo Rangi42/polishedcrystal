@@ -1201,9 +1201,9 @@ endr
 	jr z, .got_partymon
 	ld hl, wOTPartyMon1Species
 .got_partymon
-	push hl
 	ld a, [wCurPartyMon]
 	call GetPartyLocation
+	push hl
 	ld de, wBattleMonSpecies
 	call GetUserMonAttr_de
 	push de
@@ -1333,8 +1333,7 @@ endr
 .pikachu_move_loop
 	ld a, [hli]
 	cp FLY
-	ld a, PIKACHU_FLY_FORM
-	jr z, .got_pikachu_move
+	jr z, .got_pikachu_fly
 	cp SURF
 	ld a, PIKACHU_SURF_FORM
 	jr z, .got_pikachu_move
@@ -1342,12 +1341,16 @@ endr
 	jr z, .enemy_extras_done
 	jr .pikachu_move_loop
 
+.got_pikachu_fly
+	ld a, PIKACHU_FLY_FORM
 .got_pikachu_move
 	ld c, a
 	ld a, b
 	and $ff - FORM_MASK
 	or c
 	ld [wCurForm], a
+	ld [wOTPartyMon1Form], a
+	ld [wEnemyMonForm], a
 
 .enemy_extras_done
 	; Send-out animation
@@ -4778,12 +4781,12 @@ MoveSelectionScreen:
 	ld c, $2c
 
 	ld a, [wMoveSelectionMenuType]
-	ld b, D_DOWN | D_UP | A_BUTTON | B_BUTTON
+	ld b, D_DOWN | D_UP | A_BUTTON | B_BUTTON | START
 	and a
 	jr z, .check_link
 	dec a
 	jr z, .okay
-	ld b, D_DOWN | D_UP | A_BUTTON
+	ld b, D_DOWN | D_UP | A_BUTTON | START
 .check_link
 	ld a, [wLinkMode]
 	and a
@@ -4826,6 +4829,8 @@ MoveSelectionScreen:
 	jmp nz, .pressed_down
 	bit SELECT_F, a
 	jmp nz, .pressed_select
+	bit START_F, a
+	jmp nz, .pressed_start
 	bit B_BUTTON_F, a
 	; A button
 	push af
@@ -4926,6 +4931,7 @@ MoveSelectionScreen:
 	call ClearSprites
 	pop hl
 	call StdBattleTextbox
+.start_over
 	call Call_LoadTempTileMapToTileMap
 	jmp MoveSelectionScreen
 
@@ -4973,6 +4979,27 @@ MoveSelectionScreen:
 	call DelayFrames
 	xor a
 	ret
+
+.pressed_start
+	ld hl, wBattleMonMoves
+	ld a, [wMenuCursorY]
+	dec a
+	ld b, 0
+	ld c, a
+	add hl, bc
+	ld c, [hl]
+	dec c
+	ld hl, MoveDescriptions
+	add hl, bc
+	add hl, bc
+	ld a, BANK(MoveDescriptions)
+	call GetFarWord
+	push hl
+	call ClearSprites
+	pop hl
+	call BattleMoveDescTextbox
+	call WaitPressAorB_BlinkCursor
+	jr .start_over
 
 SetChoiceLock:
 ; Set choice lock to move choice c (0-3)
@@ -7520,11 +7547,11 @@ BattleIntro:
 	ld a, CGB_BATTLE_GRAYSCALE
 	call GetCGBLayout
 	ld hl, rLCDC
-	res 6, [hl] ; win tilemap 0
+	res rLCDC_WINDOW_TILEMAP, [hl]
 	call InitBattleDisplay
 	call BattleStartMessage
 	ld hl, rLCDC
-	set 6, [hl] ; win tilemap 1
+	set rLCDC_WINDOW_TILEMAP, [hl]
 	xor a
 	ldh [hBGMapMode], a
 	call EmptyBattleTextbox
@@ -7704,7 +7731,7 @@ HandleNuzlockeFlags:
 	ld c, a
 	ld a, [wOTPartyMon1Form]
 	ld b, a
-	call CheckCaughtMon
+	call CheckCosmeticCaughtMon
 	ret nz
 
 	; Only flag landmarks for Nuzlocke runs after getting Poké Balls
@@ -7939,17 +7966,22 @@ ReadAndPrintLinkBattleRecord:
 	ret
 
 .Scores:
-	db "   0    0    0@"
+	text "   0    0    0"
+	done
 
 .Format:
-	db "  ---  <LNBRK>"
-	db "         -    -    -@"
+	text "  ---  "
+	next1 "         -    -    -"
+	done
 .Record:
-	db "<PLAYER>'s Record@"
+	text "<PLAYER>'s Record"
+	done
 .Result:
-	db "Result Win Lose Draw@"
+	text "Result Win Lose Draw"
+	done
 .Total:
-	db "Total  Win Lose Draw@"
+	text "Total  Win Lose Draw"
+	done
 
 BattleEnd_HandleRoamMons:
 	ld a, [wBattleType]
@@ -8468,7 +8500,7 @@ AutomaticRainWhenOvercast:
 	ld a, [wInBattleTowerBattle]
 	and a
 	ret nz
-	call GetOvercastIndex
+	farcall GetOvercastIndex
 	and a
 	ret z
 	ld a, WEATHER_RAIN

@@ -132,6 +132,7 @@ AbilityDescriptions:
 	dw PranksterDescription
 	dw SandForceDescription
 	dw FurCoatDescription
+	dw BulletproofDescription
 	dw CompetitiveDescription
 	dw MegaLauncherDescription
 	dw ToughClawsDescription
@@ -152,582 +153,731 @@ AbilityDescriptions:
 	assert_table_length NUM_ABILITIES
 
 NoAbilityDescription:
-	db    "Abilities are"
-	next1 "disabled.@"
+	text  "Abilities are"
+	next1 "disabled."
+	done
 
 StenchDescription:
-	db    "May cause the foe"
-	next1 "to flinch.@"
+	text  "May cause the foe"
+	next1 "to flinch."
+	done
 
 DrizzleDescription:
-	db    "Summons rain when"
-	next1 "switched in.@"
+	text  "Summons rain when"
+	next1 "switched in."
+	done
 
 SpeedBoostDescription:
-	db    "Its Speed stat is"
-	next1 "gradually boosted.@"
+	text  "Its Speed stat is"
+	next1 "gradually boosted."
+	done
 
 BattleArmorDescription:
 ShellArmorDescription:
-	db    "Protects from"
-	next1 "critical hits.@"
+	text  "Protects from"
+	next1 "critical hits."
+	done
 
 SturdyDescription:
-	db    "Cannot be knocked"
-	next1 "out with one hit.@"
+	text  "Cannot be knocked"
+	next1 "out with one hit."
+	done
 
 DampDescription:
-	db    "Prevents self-"
-	next1 "destructing moves.@"
+	text  "Prevents self-"
+	next1 "destructing moves."
+	done
 
 LimberDescription:
-	db    "Protects from"
-	next1 "paralysis.@"
+	text  "Protects from"
+	next1 "paralysis."
+	done
 
 SandVeilDescription:
-	db    "Boosts evasion in"
-	next1 "a sandstorm.@"
+	text  "Boosts evasion in"
+	next1 "a sandstorm."
+	done
 
 StaticDescription:
-	db    "Contact may cause"
-	next1 "paralysis.@"
+	text  "Contact may cause"
+	next1 "paralysis."
+	done
 
 VoltAbsorbDescription:
-	db    "Restores HP if hit"
-	next1 "by Electric moves.@"
+	text  "Restores HP if hit"
+	next1 "by Electric moves."
+	done
 
 WaterAbsorbDescription:
-	db    "Restores HP if hit"
-	next1 "by Water moves.@"
+	text  "Restores HP if hit"
+	next1 "by Water moves."
+	done
 
 ObliviousDescription:
-	db    "Prevents it from"
-	next1 "being infatuated.@"
+	text  "Prevents it from"
+	next1 "being infatuated."
+	done
 
 CloudNineDescription:
-	db    "Eliminates effects"
-	next1 "of weather. @"
+	text  "Eliminates effects"
+	next1 "of weather. "
+	done
 
 CompoundEyesDescription:
-	db    "Boosts the Poké-"
-	next1 "mon's accuracy.@"
+	text  "Boosts the Poké-"
+	next1 "mon's accuracy."
+	done
 
 InsomniaDescription:
 VitalSpiritDescription:
-	db    "Prevents it from"
-	next1 "falling asleep.@"
+	text  "Prevents it from"
+	next1 "falling asleep."
+	done
 
 ImmunityDescription:
 PastelVeilDescription:
-	db    "Prevents it from"
-	next1 "getting poisoned.@"
+	text  "Prevents it from"
+	next1 "getting poisoned."
+	done
 
 FlashFireDescription:
-	db    "Boosts Fire moves"
-	next1 "if hit by one.@"
+	text  "Boosts Fire moves"
+	next1 "if hit by one."
+	done
 
 ShieldDustDescription:
-	db    "Blocks additional"
-	next1 "attack effects.@"
+	text  "Blocks additional"
+	next1 "attack effects."
+	done
 
 OwnTempoDescription:
-	db    "Prevents it from"
-	next1 "becoming confused.@"
+	text  "Prevents it from"
+	next1 "becoming confused."
+	done
 
 SuctionCupsDescription:
-	db    "Negates forced"
-	next1 "switch-outs.@"
+	text  "Negates forced"
+	next1 "switch-outs."
+	done
 
 IntimidateDescription:
-	db    "Lowers the foe's"
-	next1 "Attack stat.@"
+	text  "Lowers the foe's"
+	next1 "Attack stat."
+	done
 
 ShadowTagDescription:
-	db    "Prevents the foe"
-	next1 "from escaping.@"
+	text  "Prevents the foe"
+	next1 "from escaping."
+	done
 
 LevitateDescription:
-	db    "Gives immunity to"
-	next1 "Ground-type moves.@"
+	text  "Gives immunity to"
+	next1 "Ground-type moves."
+	done
 
 EffectSporeDescription:
-	db    "Contact may cause"
-	next1 "Par, Psn, or Slp.@"
+	text  "Contact may cause"
+	next1 "Par, Psn, or Slp."
+	done
 
 SynchronizeDescription:
-	db    "Passes Psn, Par,"
-	next1 "or Brn to foes.@"
+	text  "Passes Psn, Par,"
+	next1 "or Brn to foes."
+	done
 
 ClearBodyDescription:
 WhiteSmokeDescription:
-	db    "Prevents foes from"
-	next1 "lowering stats.@"
+	text  "Prevents foes from"
+	next1 "lowering stats."
+	done
 
 NaturalCureDescription:
-	db    "Switch-outs heal"
-	next1 "status problems.@"
+	text  "Switch-outs heal"
+	next1 "status problems."
+	done
 
 LightningRodDescription:
-	db    "Electric moves"
-	next1 "boost Spcl.Atk.@"
+	text  "Electric moves"
+	next1 "boost Spcl.Atk."
+	done
 
 SereneGraceDescription:
-	db    "Boosts the rate of"
-	next1 "added effects.@"
+	text  "Boosts the rate of"
+	next1 "added effects."
+	done
 
 SwiftSwimDescription:
-	db    "Boosts its Speed"
-	next1 "in rain.@"
+	text  "Boosts its Speed"
+	next1 "in rain."
+	done
 
 ChlorophyllDescription:
-	db    "Boosts its Speed"
-	next1 "in sunshine.@"
+	text  "Boosts its Speed"
+	next1 "in sunshine."
+	done
 
 IlluminateDescription:
-	db    "Raises the rate"
-	next1 "of wild #mon.@"
+	text  "Raises the rate"
+	next1 "of wild #mon."
+	done
 
 TraceDescription:
-	db    "Copies the foe's"
-	next1 "Ability.@"
+	text  "Copies the foe's"
+	next1 "Ability."
+	done
 
 HugePowerDescription:
-	db    "Boosts its Attack"
-	next1 "stat.@"
+	text  "Boosts its Attack"
+	next1 "stat."
+	done
 
 PoisonPointDescription:
-	db    "Contact may poison"
-	next1 "the foe.@"
+	text  "Contact may poison"
+	next1 "the foe."
+	done
 
 InnerFocusDescription:
-	db    "Protects it from"
-	next1 "flinching.@"
+	text  "Protects it from"
+	next1 "flinching."
+	done
 
 MagmaArmorDescription:
-	db    "Prevents it from"
-	next1 "becoming frozen.@"
+	text  "Prevents it from"
+	next1 "becoming frozen."
+	done
 
 WaterVeilDescription:
-	db    "Prevents it from"
-	next1 "getting a burn.@"
+	text  "Prevents it from"
+	next1 "getting a burn."
+	done
 
 MagnetPullDescription:
-	db    "Prevents escape by"
-	next1 "Steel-type foes.@"
+	text  "Prevents escape by"
+	next1 "Steel-type foes."
+	done
 
 SoundproofDescription:
-	db    "Gives immunity to"
-	next1 "sound-based moves.@"
+	text  "Gives immunity to"
+	next1 "sound-based moves."
+	done
 
 RainDishDescription:
-	db    "Gradually regains"
-	next1 "HP in rain.@"
+	text  "Gradually regains"
+	next1 "HP in rain."
+	done
 
 SandStreamDescription:
-	db    "Summons sandstorm"
-	next1 "when switched in.@"
+	text  "Summons sandstorm"
+	next1 "when switched in."
+	done
 
 PressureDescription:
-	db    "Raises the foe's"
-	next1 "PP usage.@"
+	text  "Raises the foe's"
+	next1 "PP usage."
+	done
 
 ThickFatDescription:
-	db    "Ups resistance to"
-	next1 "Fire and Ice.@"
+	text  "Ups resistance to"
+	next1 "Fire and Ice."
+	done
 
 EarlyBirdDescription:
-	db    "Awakens quickly"
-	next1 "from sleep.@"
+	text  "Awakens quickly"
+	next1 "from sleep."
+	done
 
 FlameBodyDescription:
-	db    "Contact may burn"
-	next1 "the foe.@"
+	text  "Contact may burn"
+	next1 "the foe."
+	done
 
 RunAwayDescription:
-	db    "Sure getaway from"
-	next1 "wild #mon.@"
+	text  "Sure getaway from"
+	next1 "wild #mon."
+	done
 
 KeenEyeDescription:
-	db    "Prevents foes from"
-	next1 "lowering accuracy.@"
+	text  "Prevents foes from"
+	next1 "lowering accuracy."
+	done
 
 HyperCutterDescription:
-	db    "Prevents foes from"
-	next1 "lowering Attack.@"
+	text  "Prevents foes from"
+	next1 "lowering Attack."
+	done
 
 PickupDescription:
-	db    "The #mon may"
-	next1 "pick up items.@"
+	text  "The #mon may"
+	next1 "pick up items."
+	done
 
 HustleDescription:
-	db    "Boosts Attack, but"
-	next1 "lowers accuracy.@"
+	text  "Boosts Attack, but"
+	next1 "lowers accuracy."
+	done
 
 CuteCharmDescription:
-	db    "Contact may cause"
-	next1 "infatuation.@"
+	text  "Contact may cause"
+	next1 "infatuation."
+	done
 
 StickyHoldDescription:
-	db    "Protects it from"
-	next1 "item theft.@"
+	text  "Protects it from"
+	next1 "item theft."
+	done
 
 ShedSkinDescription:
-	db    "May heal its own"
-	next1 "status problems.@"
+	text  "May heal its own"
+	next1 "status problems."
+	done
 
 GutsDescription:
-	db    "Boosts Attack on"
-	next1 "status problems.@"
+	text  "Boosts Attack on"
+	next1 "status problems."
+	done
 
 MarvelScaleDescription:
-	db    "Boosts Defense on"
-	next1 "status problems.@"
+	text  "Boosts Defense on"
+	next1 "status problems."
+	done
 
 LiquidOozeDescription:
-	db    "Damages foes using"
-	next1 "draining moves.@"
+	text  "Damages foes using"
+	next1 "draining moves."
+	done
 
 OvergrowDescription:
-	db    "Boosts Grass moves"
-	next1 "in a pinch.@"
+	text  "Boosts Grass moves"
+	next1 "in a pinch."
+	done
 
 BlazeDescription:
-	db    "Boosts Fire moves"
-	next1 "in a pinch.@"
+	text  "Boosts Fire moves"
+	next1 "in a pinch."
+	done
 
 TorrentDescription:
-	db    "Boosts Water moves"
-	next1 "in a pinch.@"
+	text  "Boosts Water moves"
+	next1 "in a pinch."
+	done
 
 SwarmDescription:
-	db    "Boosts Bug moves"
-	next1 "in a pinch.@"
+	text  "Boosts Bug moves"
+	next1 "in a pinch."
+	done
 
 RockHeadDescription:
-	db    "Protects it from"
-	next1 "recoil damage.@"
+	text  "Protects it from"
+	next1 "recoil damage."
+	done
 
 DroughtDescription:
-	db    "Summons sunlight"
-	next1 "when switched in.@"
+	text  "Summons sunlight"
+	next1 "when switched in."
+	done
 
 ArenaTrapDescription:
-	db    "Prevents the foe"
-	next1 "from fleeing.@"
+	text  "Prevents the foe"
+	next1 "from fleeing."
+	done
 
 TangledFeetDescription:
-	db    "Boosts evasion if"
-	next1 "it is confused.@"
+	text  "Boosts evasion if"
+	next1 "it is confused."
+	done
 
 MotorDriveDescription:
-	db    "Electric moves"
-	next1 "boost Speed.@"
+	text  "Electric moves"
+	next1 "boost Speed."
+	done
 
 RivalryDescription:
-	db    "Boosts damage to"
-	next1 "same-gender foes.@"
+	text  "Boosts damage to"
+	next1 "same-gender foes."
+	done
 
 SteadfastDescription:
-	db    "Boosts Speed when"
-	next1 "it flinches.@"
+	text  "Boosts Speed when"
+	next1 "it flinches."
+	done
 
 SnowCloakDescription:
-	db    "Boosts evasion in"
-	next1 "hailstorms.@"
+	text  "Boosts evasion in"
+	next1 "hailstorms."
+	done
 
 GluttonyDescription:
-	db    "Encourages early"
-	next1 "Berry use.@"
+	text  "Encourages early"
+	next1 "Berry use."
+	done
 
 AngerPointDescription:
-	db    "Maxes Attack after"
-	next1 "a critical hit.@"
+	text  "Maxes Attack after"
+	next1 "a critical hit."
+	done
 
 UnburdenDescription:
-	db    "Boosts Speed when"
-	next1 "held item is lost.@"
+	text  "Boosts Speed when"
+	next1 "held item is lost."
+	done
 
 DrySkinDescription:
-	db    "Reduces HP in sun."
-	next1 "Water restores HP.@"
+	text  "Reduces HP in sun."
+	next1 "Water restores HP."
+	done
 
 DownloadDescription:
-	db    "Adjusts stats based"
-	next1 "on foe's defenses.@"
+	text  "Adjusts stats based"
+	next1 "on foe's defenses."
+	done
 
 IronFistDescription:
-	db    "Boosts power of"
-	next1 "punching moves.@"
+	text  "Boosts power of"
+	next1 "punching moves."
+	done
 
 PoisonHealDescription:
-	db    "Restores HP if"
-	next1 "it is poisoned.@"
+	text  "Restores HP if"
+	next1 "it is poisoned."
+	done
 
 AdaptabilityDescription:
-	db    "Powers up same-"
-	next1 "type moves.@"
+	text  "Powers up same-"
+	next1 "type moves."
+	done
 
 SkillLinkDescription:
-	db    "Increases multi-"
-	next1 "strike move hits.@"
+	text  "Increases multi-"
+	next1 "strike move hits."
+	done
 
 HydrationDescription:
-	db    "Heals status"
-	next1 "problems in rain.@"
+	text  "Heals status"
+	next1 "problems in rain."
+	done
 
 SolarPowerDescription:
-	db    "Ups Spcl.Atk but"
-	next1 "lowers HP in sun.@"
+	text  "Ups Spcl.Atk but"
+	next1 "lowers HP in sun."
+	done
 
 QuickFeetDescription:
-	db    "Boosts Speed with"
-	next1 "status problems.@"
+	text  "Boosts Speed with"
+	next1 "status problems."
+	done
 
 SniperDescription:
-	db    "Powers up critical"
-	next1 "hits.@"
+	text  "Powers up critical"
+	next1 "hits."
+	done
 
 MagicGuardDescription:
-	db    "Only takes damage"
-	next1 "from attacks.@"
+	text  "Only takes damage"
+	next1 "from attacks."
+	done
 
 NoGuardDescription:
-	db    "Insures attacks by"
-	next1 "or against it hit.@"
+	text  "Insures attacks by"
+	next1 "or against it hit."
+	done
 
 TechnicianDescription:
-	db    "Powers up its"
-	next1 "weaker moves.@"
+	text  "Powers up its"
+	next1 "weaker moves."
+	done
 
 LeafGuardDescription:
-	db    "Prevents status"
-	next1 "problems in sun.@"
+	text  "Prevents status"
+	next1 "problems in sun."
+	done
 
 MoldBreakerDescription:
-	db    "Moves disregard"
-	next1 "the foe's ability.@"
+	text  "Moves disregard"
+	next1 "the foe's ability."
+	done
 
 SuperLuckDescription:
-	db    "Boosts the rate"
-	next1 "of critical hits.@"
+	text  "Boosts the rate"
+	next1 "of critical hits."
+	done
 
 AftermathDescription:
-	db    "Damages the foe on"
-	next1 "fainting.@"
+	text  "Damages the foe on"
+	next1 "fainting."
+	done
 
 AnticipationDescription:
-	db    "Senses the foe's"
-	next1 "dangerous moves.@"
+	text  "Senses the foe's"
+	next1 "dangerous moves."
+	done
 
 ForewarnDescription:
-	db    "Determines the"
-	next1 "foe's moves.@"
+	text  "Determines the"
+	next1 "foe's moves."
+	done
 
 UnawareDescription:
-	db    "Ignores the foe's"
-	next1 "stat changes.@"
+	text  "Ignores the foe's"
+	next1 "stat changes."
+	done
 
 TintedLensDescription:
-	db    "Powers up not very"
-	next1 "effective moves.@"
+	text  "Powers up not very"
+	next1 "effective moves."
+	done
 
 FilterDescription:
 SolidRockDescription:
-	db    "Reduces super"
-	next1 "effective damage.@"
+	text  "Reduces super"
+	next1 "effective damage."
+	done
 
 ScrappyDescription:
-	db    "Enables moves to"
-	next1 "hit Ghost-types.@"
+	text  "Enables moves to"
+	next1 "hit Ghost-types."
+	done
 
 IceBodyDescription:
-	db    "Gradually regains"
-	next1 "HP in hail.@"
+	text  "Gradually regains"
+	next1 "HP in hail."
+	done
 
 SnowWarningDescription:
-	db    "Summons hailstorm"
-	next1 "when switched in.@"
+	text  "Summons hailstorm"
+	next1 "when switched in."
+	done
 
 FriskDescription:
-	db    "Checks the foe's"
-	next1 "held item.@"
+	text  "Checks the foe's"
+	next1 "held item."
+	done
 
 RecklessDescription:
-	db    "Powers up moves"
-	next1 "that recoil.@"
+	text  "Powers up moves"
+	next1 "that recoil."
+	done
 
 PickpocketDescription:
-	db    "Steals foe's item"
-	next1 "when contacted.@"
+	text  "Steals foe's item"
+	next1 "when contacted."
+	done
 
 SheerForceDescription:
-	db    "Removes effects to"
-	next1 "increase damage.@"
+	text  "Removes effects to"
+	next1 "increase damage."
+	done
 
 ContraryDescription:
-	db    "Inverts the effect"
-	next1 "of stat changes.@"
+	text  "Inverts the effect"
+	next1 "of stat changes."
+	done
 
 UnnerveDescription:
-	db    "Prevents foes from"
-	next1 "eating Berries.@"
+	text  "Prevents foes from"
+	next1 "eating Berries."
+	done
 
 DefiantDescription:
-	db    "Boosts Attack when"
-	next1 "stats are lowered.@"
+	text  "Boosts Attack when"
+	next1 "stats are lowered."
+	done
 
 CursedBodyDescription:
-	db    "May disable a move"
-	next1 "used on it.@"
+	text  "May disable a move"
+	next1 "used on it."
+	done
 
 WeakArmorDescription:
-	db    "Physical attacks"
-	next1 "trade Def for Spd.@"
+	text  "Physical attacks"
+	next1 "trade Def for Spd."
+	done
 
 LightMetalDescription:
-	db    "Halves the Poké-"
-	next1 "mon's weight.@"
+	text  "Halves the Poké-"
+	next1 "mon's weight."
+	done
 
 MultiscaleDescription:
-	db    "Reduces damage"
-	next1 "when HP is full.@"
+	text  "Reduces damage"
+	next1 "when HP is full."
+	done
 
 HarvestDescription:
-	db    "May recreate a"
-	next1 "Berry after use.@"
+	text  "May recreate a"
+	next1 "Berry after use."
+	done
 
 MoodyDescription:
-	db    "Raises a stat and"
-	next1 "lowers another.@"
+	text  "Raises a stat and"
+	next1 "lowers another."
+	done
 
 OvercoatDescription:
-	db    "Protects it from"
-	next1 "weather damage.@"
+	text  "Protects it from"
+	next1 "weather damage."
+	done
 
 PoisonTouchDescription:
-	db    "May poison the foe"
-	next1 "on contact.@"
+	text  "May poison the foe"
+	next1 "on contact."
+	done
 
 RegeneratorDescription:
-	db    "Restores HP when"
-	next1 "withdrawn.@"
+	text  "Restores HP when"
+	next1 "withdrawn."
+	done
 
 BigPecksDescription:
-	db    "Prevents foes from"
-	next1 "lowering Defense.@"
+	text  "Prevents foes from"
+	next1 "lowering Defense."
+	done
 
 SandRushDescription:
-	db    "Boosts Speed in"
-	next1 "a sandstorm.@"
+	text  "Boosts Speed in"
+	next1 "a sandstorm."
+	done
 
 WonderSkinDescription:
-	db    "Makes status moves"
-	next1 "miss more often.@"
+	text  "Makes status moves"
+	next1 "miss more often."
+	done
 
 AnalyticDescription:
-	db    "Boosts move power"
-	next1 "when moving last.@"
+	text  "Boosts move power"
+	next1 "when moving last."
+	done
 
 ImposterDescription:
-	db    "Transforms itself"
-	next1 "into the foe.@"
+	text  "Transforms itself"
+	next1 "into the foe."
+	done
 
 InfiltratorDescription:
-	db    "Attacks bypass the"
-	next1 "foe's barriers.@"
+	text  "Attacks bypass the"
+	next1 "foe's barriers."
+	done
 
 MoxieDescription:
-	db    "Boosts Attack when"
-	next1 "knocking out foes.@"
+	text  "Boosts Attack when"
+	next1 "knocking out foes."
+	done
 
 JustifiedDescription:
-	db    "Boosts Attack when"
-	next1 "hit by Dark moves.@"
+	text  "Boosts Attack when"
+	next1 "hit by Dark moves."
+	done
 
 RattledDescription:
-	db    "Some scary move"
-	next1 "types boost Speed.@"
+	text  "Some scary move"
+	next1 "types boost Speed."
+	done
 
 MagicBounceDescription:
-	db    "Reflects status-"
-	next1 "changing moves.@"
+	text  "Reflects status-"
+	next1 "changing moves."
+	done
 
 SapSipperDescription:
-	db    "Boosts Attack when"
-	next1 "hit by Grass.@"
+	text  "Boosts Attack when"
+	next1 "hit by Grass."
+	done
 
 PranksterDescription:
-	db    "Gives priority to"
-	next1 "a status move.@"
+	text  "Gives priority to"
+	next1 "a status move."
+	done
 
 SandForceDescription:
-	db    "Boosts some moves"
-	next1 "in a sandstorm.@"
+	text  "Boosts some moves"
+	next1 "in a sandstorm."
+	done
 
 FurCoatDescription:
-	db    "Halves damage from"
-	next1 "physical moves.@"
+	text  "Halves damage from"
+	next1 "physical moves."
+	done
+
+BulletproofDescription:
+	text  "Protects from ball"
+	next1 "and bomb moves."
+	done
 
 CompetitiveDescription:
-	db    "Boosts Spcl.Atk on"
-	next1 "stat reduction.@"
+	text  "Boosts Spcl.Atk on"
+	next1 "stat reduction."
+	done
 
 MegaLauncherDescription:
-	db    "Powers up aura"
-	next1 "and pulse moves.@"
+	text  "Powers up aura"
+	next1 "and pulse moves."
+	done
 
 ToughClawsDescription:
-	db    "Boosts moves that"
-	next1 "makes contact.@"
+	text  "Boosts moves that"
+	next1 "makes contact."
+	done
 
 PixilateDescription:
-	db    "Normal-type moves"
-	next1 "become Fairy-type.@"
+	text  "Normal-type moves"
+	next1 "become Fairy-type."
+	done
 
 ParentalBondDescription:
-	db    "Parent and child"
-	next1 "attack together.@"
+	text  "Parent and child"
+	next1 "attack together."
+	done
 
 BerserkDescription:
-	db    "Ups Spcl.Atk. when"
-	next1 "damaged over half.@"
+	text  "Ups Spcl.Atk. when"
+	next1 "damaged over half."
+	done
 
 SlushRushDescription:
-	db    "Boosts Speed in"
-	next1 "a hailstorm.@"
+	text  "Boosts Speed in"
+	next1 "a hailstorm."
+	done
 
 GalvanizeDescription:
-	db    "Normal-type moves"
-	next1 "become Electric.@"
+	text  "Normal-type moves"
+	next1 "become Electric."
+	done
 
 CorrosionDescription:
-	db    "Foes of any type"
-	next1 "can be poisoned.@"
+	text  "Foes of any type"
+	next1 "can be poisoned."
+	done
 
 TanglingHairDescription:
-	db    "Contact may lower"
-	next1 "the foe's Speed.@"
+	text  "Contact may lower"
+	next1 "the foe's Speed."
+	done
 
 GorillaTacticsDescription:
-	db    "Boosts Attack, but"
-	next1 "allows one move.@"
+	text  "Boosts Attack, but"
+	next1 "allows one move."
+	done
 
 NeutralizingGasDescription:
-	db    "Suppresses all"
-	next1 "other Abilities.@"
+	text  "Suppresses all"
+	next1 "other Abilities."
+	done
 
 QuickDrawDescription:
-	db    "Moves first"
-	next1 "occasionally.@"
+	text  "Moves first"
+	next1 "occasionally."
+	done
 
 SteelySpiritDescription:
-	db    "Boosts Steel-type"
-	next1 "moves.@"
+	text  "Boosts Steel-type"
+	next1 "moves."
+	done
 
 PerishBodyDescription:
-	db    "Contact causes Pe-"
-	next1 "rish Song status.@"
+	text  "Contact causes Pe-"
+	next1 "rish Song status."
+	done
 
 ScreenCleanerDescription:
-	db    "Removes screens"
-	next1 "when switched in.@"
+	text  "Removes screens"
+	next1 "when switched in."
+	done

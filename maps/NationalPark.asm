@@ -464,7 +464,7 @@ LassKriseSeenText:
 	para "Oh, a battle?"
 	done
 
-LassKriseBeatenText:
+LassKriseBeatenText: ; text > text
 	text "…Hmmm…"
 	done
 

@@ -115,6 +115,7 @@ AlphabeticalPokedexOrder:
 	dp KANGASKHAN
 	dp KINGDRA
 	dp KINGLER
+	dp KLEAVOR
 	dp KOFFING
 	dp KRABBY
 	dp LANTURN
@@ -173,6 +174,7 @@ AlphabeticalPokedexOrder:
 	dp OMANYTE
 	dp OMASTAR
 	dp ONIX
+	dp OVERQWIL
 	dp PARAS
 	dp PARASECT
 	dp PERRSERKER
@@ -229,6 +231,7 @@ AlphabeticalPokedexOrder:
 	dp SMEARGLE
 	dp SMOOCHUM
 	dp SNEASEL
+	dp SNEASLER
 	dp SNORLAX
 	dp SNUBBULL
 	dp SPEAROW
@@ -259,6 +262,7 @@ AlphabeticalPokedexOrder:
 	dp TYROGUE
 	dp UMBREON
 	dp UNOWN
+	dp URSALUNA
 	dp URSARING
 	dp VAPOREON
 	dp VENOMOTH
@@ -277,6 +281,7 @@ AlphabeticalPokedexOrder:
 	dp WOBBUFFET
 	dp WOOPER
 	dp WYNAUT
+	dp WYRDEER
 	dp XATU
 	dp YANMA
 	dp YANMEGA

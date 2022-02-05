@@ -72,39 +72,19 @@ Rate:
 ; calculate Seen/Owned
 	farcall Pokedex_CountSeenOwn
 
-; print appropriate rating, we start on bc = pokedex caught due to Pokedex_CountSeenOwn
-	ld hl, wStringBuffer4
-	call .UpdateRatingBuffer
-	ld hl, wTempDexSeen
-	ld a, [hli]
-	ld b, a
-	ld c, [hl]
-	ld hl, wStringBuffer3
-	call .UpdateRatingBuffer
 	ld hl, OakPCText3
 	call PrintText
 	call JoyWaitAorB
 	pop bc
+	ld hl, wTempDexOwn
+	ld a, [hli]
+	ld c, [hl]
+	ld b, a
 	ld hl, OakRatings
 	call FindOakRating
 	push de
 	call PrintText
 	pop de
-	ret
-
-.UpdateRatingBuffer:
-	push hl
-	push bc
-	ld a, "@"
-	ld bc, ITEM_NAME_LENGTH
-	rst ByteFill
-	ld hl, sp + 2
-	ld d, h
-	ld e, l
-	pop hl
-	lb bc, PRINTNUM_LEFTALIGN | 2, 3
-	call PrintNum
-	pop bc
 	ret
 
 FindOakRating:

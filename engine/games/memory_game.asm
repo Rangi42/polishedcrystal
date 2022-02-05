@@ -34,7 +34,7 @@ _MemoryGame:
 	ld [wJumptableIndex], a
 	ld a, $1
 	ldh [hBGMapMode], a
-	ld a, %11100011
+	ld a, rLCDC_DEFAULT
 	ldh [rLCDC], a
 	ld a, $e4
 	call DmgToCgbBGPals

@@ -283,6 +283,11 @@ IconPointers:
 	dba CursolaIcon
 	dba SirfetchDIcon
 	dba MrRimeIcon
+	dba StantlerIcon ; TODO
+	dba ScytherIcon ; TODO
+	dba UrsaringIcon ; TODO
+	dba SneaselIcon ; TODO
+	dba QwilfishIcon ; TODO
 	assert_table_length NUM_SPECIES + 1
 
 	dba UnownBIcon
@@ -331,7 +336,9 @@ rept NUM_MAGIKARP - 1
 endr
 
 	dba GyaradosIcon ; Red
+
 	dba MewtwoArmoredIcon
+
 	dba RattataIcon ; TODO
 	dba RaticateIcon ; TODO
 	dba RaichuIcon ; TODO
@@ -350,6 +357,7 @@ endr
 	dba MukIcon ; TODO
 	dba ExeggutorAlolanIcon
 	dba MarowakIcon ; TODO
+
 	dba MeowthGalarianIcon
 	dba PonytaIcon ; TODO
 	dba RapidashIcon ; TODO
@@ -363,5 +371,13 @@ endr
 	dba MoltresIcon ; TODO
 	dba SlowkingIcon ; TODO
 	dba CorsolaGalarianIcon
+
+	dba GrowlitheIcon ; TODO
+	dba ArcanineIcon ; TODO
+	dba VoltorbIcon ; TODO
+	dba ElectrodeIcon ; TODO
+	dba TyphlosionIcon ; TODO
+	dba QwilfishIcon ; TODO
+	dba SneaselIcon ; TODO
 
 	assert_table_length NUM_UNIQUE_POKEMON + 1

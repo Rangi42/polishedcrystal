@@ -94,11 +94,6 @@ CheckWarpTile::
 	scf
 	ret
 
-WarpCheck::
-	call GetDestinationWarpNumber
-	ret nc
-	jr CopyWarpData
-
 GetDestinationWarpNumber::
 	farcall CheckWarpCollision
 	ret nc
@@ -165,6 +160,9 @@ GetDestinationWarpNumber::
 	scf
 	ret
 
+WarpCheck::
+	call GetDestinationWarpNumber
+	ret nc
 CopyWarpData::
 	ldh a, [hROMBank]
 	push af
@@ -791,6 +789,14 @@ FillSouthConnectionStrip::
 	ldh [rSVBK], a
 	ret
 
+CallMapScript::
+; Call a script at hl in the current bank if there isn't already a script running
+	ld a, [wScriptRunning]
+	and a
+	ret nz
+	ld a, [wMapScriptsBank]
+	; fallthrough
+
 CallScript::
 ; Call a script at a:hl.
 
@@ -805,14 +811,6 @@ CallScript::
 
 	scf
 	ret
-
-CallMapScript::
-; Call a script at hl in the current bank if there isn't already a script running
-	ld a, [wScriptRunning]
-	and a
-	ret nz
-	ld a, [wMapScriptsBank]
-	jr CallScript
 
 RunMapCallback::
 ; Will run the first callback found in the map header with execution index equal to a.
@@ -955,30 +953,28 @@ ObjectEvent::
 DoNothingScript::
 	end
 
-CheckObjectMask::
+_GetObjectMask:
 	ldh a, [hMapObjectIndexBuffer]
 	ld e, a
-	ld d, $0
+	ld d, 0
 	ld hl, wObjectMasks
 	add hl, de
+	ret
+
+CheckObjectMask::
+	call _GetObjectMask
 	ld a, [hl]
 	ret
 
+DeleteObjectStruct::
+	call ApplyDeletionToMapObject
 MaskObject::
-	ldh a, [hMapObjectIndexBuffer]
-	ld e, a
-	ld d, $0
-	ld hl, wObjectMasks
-	add hl, de
+	call _GetObjectMask
 	ld [hl], -1 ; , masked
 	ret
 
 UnmaskObject::
-	ldh a, [hMapObjectIndexBuffer]
-	ld e, a
-	ld d, $0
-	ld hl, wObjectMasks
-	add hl, de
+	call _GetObjectMask
 	ld [hl], 0 ; unmasked
 	ret
 
@@ -1467,13 +1463,11 @@ GetCoordTile::
 	rr d
 	jr nc, .nocarry
 	inc hl
-
 .nocarry
 	rr e
 	jr nc, .nocarry2
 	inc hl
 	inc hl
-
 .nocarry2
 	ld a, BANK(wDecompressedCollisions)
 	jmp GetFarWRAMByte
@@ -1641,34 +1635,6 @@ CheckCurrentMapCoordEvents::
 	scf
 	ret
 
-FadeToMenu::
-	xor a
-	ldh [hBGMapMode], a
-	call LoadStandardMenuHeader
-	farcall FadeOutPalettes
-	call ClearSprites
-	jmp DisableSpriteUpdates
-
-CloseSubmenu::
-	call ClearBGPalettes
-	call ReloadTilesetAndPalettes
-	call UpdateSprites
-	call ExitMenu
-	jr FinishExitMenu
-
-ExitAllMenus::
-	call ClearBGPalettes
-	call ExitMenu
-	call ReloadTilesetAndPalettes
-	call UpdateSprites
-FinishExitMenu::
-	ld a, CGB_MAPPALS
-	call GetCGBLayout
-	farcall LoadBlindingFlashPalette
-	call ApplyAttrAndTilemapInVBlank
-	farcall FadeInPalettes
-	jmp EnableSpriteUpdates
-
 ReturnToMapWithSpeechTextbox::
 	push af
 	ld a, $1
@@ -1713,8 +1679,13 @@ ReloadTilesetAndPalettes::
 	call SkipMusic
 	pop af
 	rst Bankswitch
+	; fallthrough
 
-	jmp EnableLCD
+EnableLCD::
+	ldh a, [rLCDC]
+	set rLCDC_ENABLE, a
+	ldh [rLCDC], a
+	ret
 
 GetMapPointer::
 	ld a, [wMapGroup]
@@ -1913,22 +1884,6 @@ GetWorldMapLocation::
 	ld a, c
 	jmp PopBCDEHL
 
-RandomRegionCheck::
-; Returns current region, like RegionCheck, except that Mt. Silver and Route 28
-; is considered Kanto or Johto at random.
-; e returns 0 in Johto, 1 in Kanto and 2 in Shamouti Island.
-	call GetCurrentLandmark
-	cp SILVER_CAVE
-	jr z, .random
-	cp ROUTE_28
-	jr nz, RegionCheck
-	; fallthrough
-.random
-	call Random
-	and 1
-	ld e, a
-	ret
-
 RegionCheck::
 ; Checks if the player is in Kanto or Johto.
 ; If in Johto, returns 0 in e.
@@ -2035,82 +1990,4 @@ LoadMapTileset::
 
 	pop bc
 	pop hl
-	ret
-
-GetOvercastIndex::
-; Some maps are overcast, depending on certain conditions
-	ld a, [wMapGroup]
-	cp GROUP_AZALEA_TOWN ; GROUP_ROUTE_33
-	jr z, .azalea_route_33
-	cp GROUP_LAKE_OF_RAGE ; GROUP_ROUTE_43
-	jr z, .lake_of_rage_route_43
-	cp GROUP_STORMY_BEACH ; GROUP_GOLDENROD_CITY, GROUP_ROUTE_34, GROUP_ROUTE_34_COAST
-	jr z, .stormy_beach
-.not_overcast:
-	xor a ; NOT_OVERCAST
-	ret
-
-.azalea_route_33:
-; Azalea Town and Route 33
-	ld a, [wMapNumber]
-	cp MAP_AZALEA_TOWN
-	jr z, .azalea_town
-	cp MAP_ROUTE_33
-	jr nz, .not_overcast
-.azalea_town
-; Not overcast until Slowpokes appear (Team Rocket beaten)
-	eventflagcheck EVENT_AZALEA_TOWN_SLOWPOKES
-	jr nz, .not_overcast
-; Overcast on Sunday, Tuesday, Thursday, and Saturday
-	call GetWeekday
-	cp MONDAY
-	jr z, .not_overcast
-	cp WEDNESDAY
-	jr z, .not_overcast
-	cp FRIDAY
-	jr z, .not_overcast
-	ld a, AZALEA_OVERCAST
-	ret
-
-.lake_of_rage_route_43:
-; Lake of Rage and Route 43
-	ld a, [wMapNumber]
-	cp MAP_LAKE_OF_RAGE
-	jr z, .lake_of_rage
-	cp MAP_ROUTE_43
-	jr nz, .not_overcast
-.lake_of_rage
-; Always overcast until civilians appear (Team Rocket beaten)
-	eventflagcheck EVENT_LAKE_OF_RAGE_CIVILIANS
-	jr nz, .overcast_lake_of_rage
-; Overcast on Monday, Wednesday, and Friday
-	call GetWeekday
-	cp MONDAY
-	jr z, .overcast_lake_of_rage
-	cp WEDNESDAY
-	jr z, .overcast_lake_of_rage
-	cp FRIDAY
-	jr nz, .not_overcast
-.overcast_lake_of_rage
-	ld a, LAKE_OF_RAGE_OVERCAST
-	ret
-
-.stormy_beach:
-; Stormy Beach or Goldenrod City, Route 34, and Route 34 Coast
-	ld a, [wMapNumber]
-; Stormy Beach is always overcast
-	cp MAP_STORMY_BEACH
-	jr z, .overcast_stormy_beach
-	cp MAP_ROUTE_34_COAST
-	jr z, .maybe_stormy_beach
-	cp MAP_ROUTE_34
-	jr z, .maybe_stormy_beach
-	cp MAP_GOLDENROD_CITY
-	jr nz, .not_overcast
-; Only overcast while Team Rocket is present
-.maybe_stormy_beach
-	eventflagcheck EVENT_GOLDENROD_CITY_ROCKET_TAKEOVER
-	jr nz, .not_overcast
-.overcast_stormy_beach
-	ld a, STORMY_BEACH_OVERCAST
 	ret

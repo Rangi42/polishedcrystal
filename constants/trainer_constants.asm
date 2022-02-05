@@ -1038,76 +1038,78 @@ KRIS EQU __trainer_class__
 
 	trainerclass TOWERTYCOON ; 74
 
-	trainerclass JESSIE_JAMES ; 75
+	trainerclass FACTORYHEAD ; 75
 
-	trainerclass LORELEI ; 76
+	trainerclass JESSIE_JAMES ; 76
 
-	trainerclass AGATHA ; 77
+	trainerclass LORELEI ; 77
 
-	trainerclass STEVEN ; 78
+	trainerclass AGATHA ; 78
 
-	trainerclass CYNTHIA ; 79
+	trainerclass STEVEN ; 79
 
-	trainerclass INVER ; 7a
+	trainerclass CYNTHIA ; 7a
 
-	trainerclass CHERYL ; 7b
+	trainerclass INVER ; 7b
 
-	trainerclass RILEY ; 7c
+	trainerclass CHERYL ; 7c
 
-	trainerclass BUCK ; 7d
+	trainerclass RILEY ; 7d
 
-	trainerclass MARLEY ; 7e
+	trainerclass BUCK ; 7e
 
-	trainerclass MIRA ; 7f
+	trainerclass MARLEY ; 7f
 
-	trainerclass ANABEL ; 80
+	trainerclass MIRA ; 80
 
-	trainerclass DARACH ; 81
+	trainerclass ANABEL ; 81
 
-	trainerclass CAITLIN ; 82
+	trainerclass DARACH ; 82
 
-	trainerclass CANDELA ; 83
+	trainerclass CAITLIN ; 83
 
-	trainerclass BLANCHE ; 84
+	trainerclass CANDELA ; 84
 
-	trainerclass SPARK_T ; 85
+	trainerclass BLANCHE ; 85
 
-	trainerclass FLANNERY ; 86
+	trainerclass SPARK_T ; 86
 
-	trainerclass MAYLENE ; 87
+	trainerclass FLANNERY ; 87
 
-	trainerclass SKYLA ; 88
+	trainerclass MAYLENE ; 88
 
-	trainerclass VALERIE ; 89
+	trainerclass SKYLA ; 89
 
-	trainerclass KUKUI ; 8a
+	trainerclass VALERIE ; 8a
 
-	trainerclass VICTOR  ; 8b
+	trainerclass KUKUI ; 8b
 
-	trainerclass BILL_T ; 8c
+	trainerclass VICTOR  ; 8c
 
-	trainerclass YELLOW ; 8d
+	trainerclass BILL_T ; 8d
 
-	trainerclass WALKER ; 8e
+	trainerclass YELLOW ; 8e
 
-	trainerclass IMAKUNI ; 8f
+	trainerclass WALKER ; 8f
 
-	trainerclass LAWRENCE ; 90
+	trainerclass IMAKUNI ; 90
 
-	trainerclass REI ; 91
+	trainerclass LAWRENCE ; 91
+
+	trainerclass REI ; 92
 
 NUM_TRAINER_CLASSES EQU __trainer_class__ - 1
 
-	trainerclass OMASTAR_FOSSIL ; 92
+	trainerclass OMASTAR_FOSSIL ; 93
 
-	trainerclass KABUTOPS_FOSSIL ; 93
+	trainerclass KABUTOPS_FOSSIL ; 94
 
-	trainerclass AERODACTYL_FOSSIL ; 94
+	trainerclass AERODACTYL_FOSSIL ; 95
 
-	trainerclass CUBONE_ARMOR ; 95
+	trainerclass CUBONE_ARMOR ; 96
 
-	trainerclass METEORITE ; 96
+	trainerclass METEORITE ; 97
 
-	trainerclass SILHOUETTE ; 97
+	trainerclass SILHOUETTE ; 98
 
 NUM_TRAINER_CLASS_PICS EQU __trainer_class__ - 1

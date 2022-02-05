@@ -48,6 +48,7 @@ SilverCavePokeCenterGrampsScript:
 
 	text "Oh, you've read "
 	text_decimal hScriptVar, 1, 2
+	text ""
 	line "of them?"
 
 	para "Not bad, but I've"

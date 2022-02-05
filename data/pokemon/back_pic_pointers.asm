@@ -57,8 +57,8 @@ BackPicPointers::
 	dba GolduckBackpic
 	dba MankeyBackpic
 	dba PrimeapeBackpic
-	dba GrowlitheBackpic
-	dba ArcanineBackpic
+	dba GrowlithePlainBackpic
+	dba ArcaninePlainBackpic
 	dba PoliwagBackpic
 	dba PoliwhirlBackpic
 	dba PoliwrathBackpic
@@ -99,8 +99,8 @@ BackPicPointers::
 	dba HypnoBackpic
 	dba KrabbyBackpic
 	dba KinglerBackpic
-	dba VoltorbBackpic
-	dba ElectrodeBackpic
+	dba VoltorbPlainBackpic
+	dba ElectrodePlainBackpic
 	dba ExeggcuteBackpic
 	dba ExeggutorPlainBackpic
 	dba CuboneBackpic
@@ -156,7 +156,7 @@ BackPicPointers::
 	dba MeganiumBackpic
 	dba CyndaquilBackpic
 	dba QuilavaBackpic
-	dba TyphlosionBackpic
+	dba TyphlosionPlainBackpic
 	dba TotodileBackpic
 	dba CroconawBackpic
 	dba FeraligatrBackpic
@@ -210,11 +210,11 @@ BackPicPointers::
 	dba SteelixBackpic
 	dba SnubbullBackpic
 	dba GranbullBackpic
-	dba QwilfishBackpic
+	dba QwilfishPlainBackpic
 	dba ScizorBackpic
 	dba ShuckleBackpic
 	dba HeracrossBackpic
-	dba SneaselBackpic
+	dba SneaselPlainBackpic
 	dba TeddiursaBackpic
 	dba UrsaringBackpic
 	dba SlugmaBackpic
@@ -282,6 +282,11 @@ BackPicPointers::
 	dba CursolaBackpic
 	dba SirfetchDBackpic
 	dba MrRimeBackpic
+	dba WyrdeerBackpic
+	dba KleavorBackpic
+	dba UrsalunaBackpic
+	dba SneaslerBackpic
+	dba OverqwilBackpic
 	assert_table_length NUM_SPECIES
 
 	dba UnownBBackpic
@@ -336,13 +341,19 @@ BackPicPointers::
 	dba MagikarpZebraBackpic
 	dba MagikarpStripeBackpic
 	dba MagikarpBubblesBackpic
-	dba MagikarpForeheadBackpic
-	dba MagikarpMaskBackpic
+	dba MagikarpDiamondsBackpic
+	dba MagikarpPatchesBackpic
+	dba MagikarpForehead1Backpic
+	dba MagikarpMask1Backpic
+	dba MagikarpForehead2Backpic
+	dba MagikarpMask2Backpic
 	dba MagikarpSaucyBackpic
 	dba MagikarpRaindropBackpic
 
 	dba GyaradosRedBackpic
+
 	dba MewtwoArmoredBackpic
+
 	dba RattataAlolanBackpic
 	dba RaticateAlolanBackpic
 	dba RaichuAlolanBackpic
@@ -361,6 +372,7 @@ BackPicPointers::
 	dba MukAlolanBackpic
 	dba ExeggutorAlolanBackpic
 	dba MarowakAlolanBackpic
+
 	dba MeowthGalarianBackpic
 	dba PonytaGalarianBackpic
 	dba RapidashGalarianBackpic
@@ -374,4 +386,13 @@ BackPicPointers::
 	dba MoltresGalarianBackpic
 	dba SlowkingGalarianBackpic
 	dba CorsolaGalarianBackpic
+
+	dba GrowlitheHisuianBackpic
+	dba ArcanineHisuianBackpic
+	dba VoltorbHisuianBackpic
+	dba ElectrodeHisuianBackpic
+	dba TyphlosionHisuianBackpic
+	dba QwilfishHisuianBackpic
+	dba SneaselHisuianBackpic
+
 	assert_table_length NUM_UNIQUE_POKEMON

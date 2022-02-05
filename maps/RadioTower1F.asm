@@ -52,7 +52,7 @@ RadioTower1FLuckyNumberManScript:
 	special Special_PrintTodaysLuckyNumber
 	checkflag ENGINE_LUCKY_NUMBER_SHOW
 	iftrue_jumpopenedtext RadioTower1FLuckyNumberManComeAgainText
-	writetext RadioTower1FLuckyNumberManThisWeeksIdIsText
+	writetext RadioTower1FLuckyNumberManTodayIdIsText
 	promptbutton
 	closetext
 	applymovement RADIOTOWER1F_FELICITY, RadioTower1FLuckyNumberManGoToPCMovement
@@ -132,7 +132,7 @@ RadioTower1FLuckyNumberManScript:
 
 RadioTower1FLuckyNumberManComeAgainText:
 	text "Please come back"
-	line "next week for the"
+	line "tomorrow for the"
 	cont "next Lucky Number."
 	done
 
@@ -279,8 +279,8 @@ ExplainLuckyNumberShowText:
 	line "you win a prize."
 	done
 
-RadioTower1FLuckyNumberManThisWeeksIdIsText:
-	text "This week's ID"
+RadioTower1FLuckyNumberManTodayIdIsText:
+	text "Today's lucky ID"
 	line "number is "
 	text_ram wStringBuffer3
 	text "."
@@ -291,7 +291,7 @@ RadioTower1FLuckyNumberManCheckIfMatchText:
 	line "have a match."
 	done
 
-RadioTower1FLuckyNumberManDotDotDotText:
+RadioTower1FLuckyNumberManDotDotDotText: ; text > text
 	text "……"
 	line "……"
 	done

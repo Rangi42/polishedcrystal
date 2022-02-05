@@ -492,10 +492,7 @@ _CGB_Evolution:
 	jr .got_palette
 
 .pokemon
-	ld hl, wPartyMon1Personality
-	ld bc, PARTYMON_STRUCT_LENGTH
-	ld a, [wCurPartyMon]
-	rst AddNTimes
+	ld hl, wTempMonPersonality
 	ld c, l
 	ld b, h
 	ld a, [wPlayerHPPal]
@@ -906,10 +903,6 @@ _CGB_PokedexUnownMode:
 	jmp _CGB_FinishLayout
 
 _CGB_BillsPC:
-	; Get box theme
-	ld a, [wCurBox]
-	ld b, a
-	inc b
 	farcall GetBoxTheme
 BillsPC_PreviewTheme:
 	; hl = BillsPC_ThemePals + a * 6 * 2

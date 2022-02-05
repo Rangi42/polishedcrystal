@@ -1565,8 +1565,8 @@ QuilavaPokedexEntry::
 	next "ferociously its"
 	next "fire blazes.@"
 
-SECTION "TyphlosionPokedexEntry", ROMX
-TyphlosionPokedexEntry::
+SECTION "TyphlosionPlainPokedexEntry", ROMX
+TyphlosionPlainPokedexEntry::
 	db "Volcano@"
 	db   "When heat from its"
 	next "body causes the"
@@ -2805,6 +2805,56 @@ MrRimePokedexEntry::
 	next "its graceful"
 	next "movements.@"
 
+SECTION "WyrdeerPokedexEntry", ROMX
+WyrdeerPokedexEntry::
+	db "Big Horn@"
+	db   "This is a newly"
+	next "discovered #-"
+	next "mon. It is under"
+	page "investigation."
+	next "No information"
+	next "is available.@"
+
+SECTION "KleavorPokedexEntry", ROMX
+KleavorPokedexEntry::
+	db "Axe@"
+	db   "This is a newly"
+	next "discovered #-"
+	next "mon. It is under"
+	page "investigation."
+	next "No information"
+	next "is available.@"
+
+SECTION "UrsalunaPokedexEntry", ROMX
+UrsalunaPokedexEntry::
+	db "Peat@"
+	db   "This is a newly"
+	next "discovered #-"
+	next "mon. It is under"
+	page "investigation."
+	next "No information"
+	next "is available.@"
+
+SECTION "SneaslerPokedexEntry", ROMX
+SneaslerPokedexEntry::
+	db "Free Climb@"
+	db   "This is a newly"
+	next "discovered #-"
+	next "mon. It is under"
+	page "investigation."
+	next "No information"
+	next "is available.@"
+
+SECTION "OverqwilPokedexEntry", ROMX
+OverqwilPokedexEntry::
+	db "Pin Cluster@"
+	db   "This is a newly"
+	next "discovered #-"
+	next "mon. It is under"
+	page "investigation."
+	next "No information"
+	next "is available.@"
+
 SECTION "GyaradosRedPokedexEntry", ROMX
 GyaradosRedPokedexEntry::
 	db "Atrocious@"
@@ -3137,3 +3187,73 @@ CorsolaGalarianPokedexEntry::
 	page "It absorbs others'"
 	next "life-force through"
 	next "its branches.@"
+
+SECTION "GrowlitheHisuianPokedexEntry", ROMX
+GrowlitheHisuianPokedexEntry::
+	db "Scout@"
+	db   "This is a newly"
+	next "discovered #-"
+	next "mon. It is under"
+	page "investigation."
+	next "No information"
+	next "is available.@"
+
+SECTION "ArcanineHisuianPokedexEntry", ROMX
+ArcanineHisuianPokedexEntry::
+	db "Legendary@"
+	db   "This is a newly"
+	next "discovered #-"
+	next "mon. It is under"
+	page "investigation."
+	next "No information"
+	next "is available.@"
+
+SECTION "VoltorbHisuianPokedexEntry", ROMX
+VoltorbHisuianPokedexEntry::
+	db "Sphere@"
+	db   "This is a newly"
+	next "discovered #-"
+	next "mon. It is under"
+	page "investigation."
+	next "No information"
+	next "is available.@"
+
+SECTION "ElectrodeHisuianPokedexEntry", ROMX
+ElectrodeHisuianPokedexEntry::
+	db "Sphere@"
+	db   "This is a newly"
+	next "discovered #-"
+	next "mon. It is under"
+	page "investigation."
+	next "No information"
+	next "is available.@"
+
+SECTION "TyphlosionHisuianPokedexEntry", ROMX
+TyphlosionHisuianPokedexEntry::
+	db "Ghost Flame@"
+	db   "This is a newly"
+	next "discovered #-"
+	next "mon. It is under"
+	page "investigation."
+	next "No information"
+	next "is available.@"
+
+SECTION "QwilfishHisuianPokedexEntry", ROMX
+QwilfishHisuianPokedexEntry::
+	db "Balloon@"
+	db   "This is a newly"
+	next "discovered #-"
+	next "mon. It is under"
+	page "investigation."
+	next "No information"
+	next "is available.@"
+
+SECTION "SneaselHisuianPokedexEntry", ROMX
+SneaselHisuianPokedexEntry::
+	db "Sharp Claw@"
+	db   "This is a newly"
+	next "discovered #-"
+	next "mon. It is under"
+	page "investigation."
+	next "No information"
+	next "is available.@"

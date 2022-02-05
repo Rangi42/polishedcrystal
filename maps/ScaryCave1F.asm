@@ -297,7 +297,7 @@ GenericTrainerHex_maniacBethany:
 	cont "Fufufufu…"
 	done
 
-.SeenText:
+.SeenText: ; text > text
 	text "BOO!"
 	done
 

@@ -75,7 +75,9 @@ RandomWildSpeciesForms:
 	ret
 
 .Default:
-	ld a, PLAIN_FORM
+	ld a, [wWildMonForm]
+	and EXTSPECIES_MASK
+	inc a ; or PLAIN_FORM
 	ret
 
 CheckUnownLetter:

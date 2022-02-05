@@ -234,7 +234,7 @@ BlackbeltNobSeenText:
 	cont "the talking!"
 	done
 
-BlackbeltNobBeatenText:
+BlackbeltNobBeatenText: ; text > text
 	text "…"
 	done
 

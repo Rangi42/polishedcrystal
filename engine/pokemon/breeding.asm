@@ -802,7 +802,7 @@ Hatch_LoadFrontpicPal:
 EggHatch_CrackShell:
 	ld a, [wFrameCounter]
 	dec a
-	and $7
+	and $7 ; no-optimize a & X == X
 	cp $7
 	ret z
 	srl a

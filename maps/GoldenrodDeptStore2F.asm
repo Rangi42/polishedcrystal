@@ -29,9 +29,8 @@ GoldenrodDeptStore2FClerk2Script:
 	pokemart MARTTYPE_STANDARD, MART_GOLDENROD_2F_2_EEVEE
 
 GoldenrodDeptStore2FYoungsterText:
-	text "#gear can store"
-	line "up to thirty" ; CONTACT_LIST_SIZE
-	cont "phone numbers."
+	text "#gear has no"
+	line "storage limit."
 
 	para "But getting too"
 	line "many phone calls"

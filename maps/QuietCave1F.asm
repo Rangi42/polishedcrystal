@@ -78,7 +78,7 @@ CooltrainermHenriSeenText:
 	cont "#mon?"
 	done
 
-CooltrainermHenriBeatenText:
+CooltrainermHenriBeatenText: ; text > text
 	text "I guess you can!"
 	done
 

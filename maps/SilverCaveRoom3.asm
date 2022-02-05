@@ -58,11 +58,11 @@ Red:
 	playmapmusic
 	end
 
-.Text1:
+.Text1: ; text > text
 	text "……"
 	line "……"
 	done
 
-.Text2:
+.Text2: ; text > text
 	text "…"
 	done

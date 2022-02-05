@@ -459,6 +459,7 @@ AlanFoundItemText:
 
 	para "to "
 	text_ram wStringBuffer5
+	text ""
 	line "and pick it up?"
 	done
 
@@ -522,6 +523,7 @@ DanaLostAMonText:
 	text "You know what?"
 	line "A wild "
 	text_ram wStringBuffer4
+	text ""
 
 	para "got away from me"
 	line "again."
@@ -855,6 +857,7 @@ DerekCheekPinchingText:
 	text "Listen to this."
 	line "My "
 	text_ram wStringBuffer4
+	text ""
 
 	para "grins happily when"
 	line "I pinch its cheek."
@@ -1388,6 +1391,7 @@ VanceLostAMonText:
 	text "But get this, a"
 	line "wild "
 	text_ram wStringBuffer4
+	text ""
 
 	para "just barely eluded"
 	line "us."
@@ -1671,6 +1675,7 @@ ErinMonIsMuchStrongerText:
 	text_ram wStringBuffer3
 	text "'s "
 	text_ram wStringBuffer4
+	text ""
 	line "is much stronger"
 	cont "than before!"
 	done
@@ -1691,6 +1696,7 @@ ErinLostAMonText:
 
 	para "A wild "
 	text_ram wStringBuffer4
+	text ""
 	line "got away from me"
 
 	para "again. It's just"

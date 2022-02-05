@@ -521,7 +521,8 @@ BillsPC_PrintBoxName:
 	ld b, 0
 	hlcoord 9, 5
 	add hl, bc
-	jmp _PlaceString
+	rst PlaceString
+	ret
 
 SetPartyIcons:
 ; Writes party list
@@ -2831,7 +2832,6 @@ BillsPC_ReleaseAll:
 .ReleasedXMon:
 	text "Released "
 	text_decimal wTextDecimalByte, 1, 2
-	text ""
 	line "#mon."
 	prompt
 
@@ -2909,7 +2909,6 @@ BillsPC_Release:
 	done
 
 .WasReleasedOutside:
-	text ""
 	text_ram wStringBuffer1
 	text " was"
 	line "released outside."
@@ -2949,7 +2948,7 @@ BillsPC_Theme:
 	ld hl, .ThemeMenuDataHeader
 	call CopyMenuHeader
 	call InitScrollingMenu
-	xor a
+	call GetBoxTheme
 	ld [wMenuScrollPosition], a
 	call ScrollingMenu
 
@@ -2960,10 +2959,6 @@ BillsPC_Theme:
 	cp B_BUTTON
 	jr z, .refresh_theme ; revert back to what it used to be
 
-	; [sNewBox[wCurBox]Theme] = [wScrollingMenuCursorPosition]
-	ld a, [wCurBox]
-	ld b, a
-	inc b
 	ld a, [wScrollingMenuCursorPosition]
 	call SetBoxTheme
 

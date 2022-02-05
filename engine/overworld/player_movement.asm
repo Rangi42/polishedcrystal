@@ -642,8 +642,8 @@ DoPlayerMovement::
 	ld l, a
 if DEF(DEBUG)
 	ldh a, [hJoyDown]
-	and A_BUTTON | B_BUTTON
-	cp A_BUTTON | B_BUTTON
+	or ~(A_BUTTON | B_BUTTON)
+	inc a
 	ld a, [hl]
 	jr nz, .no_wtw
 	cp COLL_VOID

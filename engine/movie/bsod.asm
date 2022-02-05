@@ -101,7 +101,7 @@ else
 endc
 
 BSODMessage:
-	db    "      #mon"
+	text  "      #mon"
 	next1 " Polished Crystal"
 	next  "       ERROR"
 	next1 "------------------"
@@ -109,10 +109,11 @@ BSODMessage:
 	next1 "crash to the deve-"
 	next1 "loper, Rangi42, at"
 	next1 "tinyurl.com/pkpc3."
-	next  "Error:@"
+	next  "Error:"
+	done
 
 VBABSODMessage:
-	db    "      #mon"
+	text  "      #mon"
 	next1 " Polished Crystal"
 	next  "       ERROR"
 	next1 "------------------"
@@ -120,7 +121,8 @@ VBABSODMessage:
 	next1 "accurate emulator,"
 	next1 "such as BGB, mGBA,"
 	next1 "or Gambatte."
-	next  "Error:@"
+	next  "Error:"
+	done
 
 BSODErrorStrings:
 	table_width 2, BSODErrorStrings
@@ -135,18 +137,20 @@ BSODErrorStrings:
 	dw .OldBox           ; ERR_OLDBOX
 	dw .NewBox           ; ERR_NEWBOX
 	dw .WinStackOverflow ; ERR_WINSTACK_OVERFLOW
+	dw .Frontpic         ; ERR_FRONTPIC
 	dw .UnknownError     ; unknown
 	assert_table_length NUM_ERR_CODES + 1
 
-.Rst0:             db "rst 0@"
-.DivZero:          db "Division by zero@"
-.EggSpecies:       db "<PK><MN> species is Egg@"
-.ExecutingRAM:     db "Executing RAM@"
-.StackOverflow:    db "Stack overflow@"
-.StackUnderflow:   db "Stack underflow@"
-.OldBTState:       db "Old Battle Tower@"
-.VersionMismatch:  db "Version mismatch@"
-.OldBox:           db "Old PC box storage@"
-.NewBox:           db "Fatal PC box error@"
-.WinStackOverflow: db "Win.stack overflow@"
-.UnknownError:     db "Unknown error@"
+.Rst0:             text "rst 0@"
+.DivZero:          text "Division by zero@"
+.EggSpecies:       text "<PK><MN> species is Egg@"
+.ExecutingRAM:     text "Executing RAM@"
+.StackOverflow:    text "Stack overflow@"
+.StackUnderflow:   text "Stack underflow@"
+.OldBTState:       text "Old Battle Tower@"
+.VersionMismatch:  text "Version mismatch@"
+.OldBox:           text "Old PC box storage@"
+.NewBox:           text "Fatal PC box error@"
+.WinStackOverflow: text "Win.stack overflow@"
+.Frontpic:         text "Corrupted frontpic@"
+.UnknownError:     text "Unknown error@"

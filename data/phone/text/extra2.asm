@@ -291,6 +291,7 @@ BeverlyComePickUpText:
 
 	para "in "
 	text_ram wStringBuffer5
+	text ""
 	line "when you can."
 	done
 
@@ -341,6 +342,7 @@ HueyReminderText:
 GavenMonGreaterThanImaginedText:
 	text "My "
 	text_ram wStringBuffer4
+	text ""
 	line "might be greater"
 	cont "than I imagined."
 
@@ -445,6 +447,7 @@ BethDefeatedMonText:
 	text "Oh, have you ever"
 	line "seen a "
 	text_ram wStringBuffer4
+	text ""
 	cont "before?"
 
 	para "I just battled"
@@ -744,6 +747,7 @@ JoeyDefeatedMonText:
 	text "Oh yeah, I took"
 	line "down a "
 	text_ram wStringBuffer4
+	text ""
 
 	para "in the wild the"
 	line "other day."
@@ -841,6 +845,7 @@ WadeDefeatedMonText:
 	text "Oh yeah, we KO'd a"
 	line "wild "
 	text_ram wStringBuffer4
+	text ""
 
 	para "with one hit a"
 	line "while back."
@@ -1426,6 +1431,7 @@ AnthonyDefeatedMonText:
 
 	para "wild "
 	text_ram wStringBuffer4
+	text ""
 	line "quite often."
 
 	para "They're easily"
@@ -1477,11 +1483,13 @@ AnthonySwarmText:
 	para "I took a hike in"
 	line ""
 	text_ram wStringBuffer5
+	text ""
 	cont "yesterday, see?"
 
 	para "Well, there were"
 	line "tons of "
 	text_ram wStringBuffer4
+	text ""
 
 	para "around! You have"
 	line "to see it!"
@@ -1489,6 +1497,7 @@ AnthonySwarmText:
 	para "I get this feeling"
 	line "that "
 	text_ram wStringBuffer4
+	text ""
 
 	para "may be timid."
 	line "I didn't see any"

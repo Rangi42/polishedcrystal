@@ -15,6 +15,7 @@ else
 	li "Brick Break"
 endc
 	li "Bug Contest"
+	li "Roaming"
 	setcharmap default
 	assert_list_length NUM_DEXAREAS
 
@@ -31,7 +32,7 @@ Pokedex_Area:
 	ldh [rSVBK], a
 	; fallthrough
 Pokedex_Area_ResetLocationData:
-; For when scrolling to a new species or forme.
+; For when scrolling to a new species or form.
 	; Write palette data. Not redundant, because scrolling reloads
 	; BG7, i.e. type icon palettes.
 	ldh a, [rSVBK]
@@ -536,8 +537,54 @@ Pokedex_GetMonLocations:
 	jr z, .headbutt
 	dec a ; cp DEXAREA_ROCK_SMASH
 	jr z, .rock_smash
-	farjp GetContestLocations
+	dec a
+	jr z, .contest
 
+	; Roamers.
+	ld hl, wRoamMon1Species
+	ld a, d ; region
+	ld e, 3 ; iterator
+	scf ; Mark as unknown unless otherwise specified later.
+.loop
+	push de
+	push af
+	ld a, BANK(wRoamMon1)
+	ldh [rSVBK], a
+	ld a, [hl]
+	ld de, wRoamMon1Form - wRoamMon1Species
+	add hl, de
+	cp c
+	jr nz, .next
+	ld a, [hl]
+	call DexCompareWildForm
+	jr nz, .next
+	push hl
+	ld de, wRoamMon1MapGroup - wRoamMon1Form
+	add hl, de
+	ld a, [hli]
+	ld e, [hl]
+	ld d, a
+	pop hl
+	inc a
+	jr z, .next
+	ld a, BANK(wDexAreaMons)
+	ldh [rSVBK], a
+	pop af
+	call Pokedex_SetWildLandmark_MaintainNoCarry
+	push af
+
+.next
+	ld de, wRoamMon2Species - wRoamMon1Form
+.next_add
+	add hl, de
+	pop af
+	pop de
+	dec e
+	jr nz, .loop
+	ret
+
+.contest
+	farjp GetContestLocations
 .wild
 	farjp GetWildLocations
 .fish
@@ -549,7 +596,7 @@ Pokedex_GetMonLocations:
 
 Pokedex_SetWildLandmark:
 ; Add landmark for map group d, map number e.
-; Parameters: a = region of map id de, or -1 if any region is allowed.
+; Parameters: a = allowed region, or -1 if any region is allowed.
 ; Returns carry if insertion failed (a != -1).
 	push hl
 	push de
@@ -830,7 +877,7 @@ PHB_AreaSwitchTileMode2:
 	ld hl, rSTAT
 .busyloop
 	ld a, [hl]
-	and $3
+	and rSTAT_MODE_MASK ; wait until mode 0
 	jr nz, .busyloop
 
 	ld a, 4

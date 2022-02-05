@@ -64,7 +64,7 @@ SwimmerfLoriSeenText:
 	line "battle!"
 	done
 
-SwimmerfLoriBeatenText:
+SwimmerfLoriBeatenText: ; text > text
 	text "No!"
 	done
 
@@ -169,7 +169,7 @@ GenericTrainerSwimmermElmo:
 	line "swim trunks!"
 	done
 
-.BeatenText:
+.BeatenText: ; text > text
 	text "Ulp…"
 	done
 

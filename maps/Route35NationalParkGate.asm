@@ -344,6 +344,7 @@ Route35NationalParkGateOfficer1EggAsFirstMonText:
 Route35NationalParkGateOfficer1WantToFinishText:
 	text "You still have "
 	text_ram wStringBuffer3
+	text ""
 	line "minute(s) left."
 
 	para "Do you want to"
