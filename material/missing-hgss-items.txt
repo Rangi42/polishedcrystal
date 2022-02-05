@@ -56,10 +56,6 @@ Rare Candy	In a solid rock west of a smashable rock to the west of the northern 
 Nugget	On a boulder outside the third chamber (accessed via Union Cave)
 Big Mushroom	On a boulder outside the third chamber (accessed via Union Cave)
 
-union cave:
-Ultra Ball	B2F, on stalagmite northwest of Ace Trainer Emma
-Calcium	B2F, northwest of Ace Trainer Gwen
-
 ilex forest:
 TinyMushroom ×3
     At the top-right flower patch, where most of the sticks are
