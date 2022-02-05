@@ -1,8 +1,8 @@
 TreeItemEncounter:
 	call Random
-	cp 15 percent
+	cp 5 percent
 	jr c, .silver_leaf
-	cp 30 percent
+	cp 10 percent
 	jr c, .gold_leaf
 	ld a, NO_ITEM
 	jr .item
