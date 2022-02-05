@@ -435,40 +435,56 @@ ElmGiveTicketScript:
 	special Special_FadeOutMusic
 	pause 10
 	readvar VAR_FACING
-	ifequal UP, .Longest
-	ifequal DOWN, .Shortest
+	ifequal UP, .Shortest
+	ifequal DOWN, .Longest
 	disappear ELMSLAB_LYRA
 	moveobject ELMSLAB_LYRA, 4, 7
-	appear ELMSLAB_LYRA
-	applymovement ELMSLAB_LYRA, LyraRunsInMovement
+	scall .LyraEntryShort
+	scall .LyraAnnouncesGymChallenge
+	turnobject PLAYER, RIGHT
 	sjump .Continue
 
 .Longest
 	disappear ELMSLAB_LYRA
-	moveobject ELMSLAB_LYRA, 5, 8
+	moveobject ELMSLAB_LYRA, 4, 6
 	appear ELMSLAB_LYRA
-	applymovement ELMSLAB_LYRA, LyraRunsInMovement
+	applymovement ELMSLAB_LYRA, LyraRunsInMoreMovement
+	turnobject ELMSLAB_ELM, UP
+	turnobject ELMSLAB_LYRA, RIGHT
+	turnobject PLAYER, LEFT
+	scall .LyraAnnouncesGymChallenge
+	turnobject PLAYER, DOWN
 	sjump .Continue
 
 .Shortest
 	disappear ELMSLAB_LYRA
-	moveobject ELMSLAB_LYRA, 5, 6
-	appear ELMSLAB_LYRA
-	applymovement ELMSLAB_LYRA, LyraRunsInLessMovement
+	moveobject ELMSLAB_LYRA, 5, 8
+	scall .LyraEntryShort
+	scall .LyraAnnouncesGymChallenge
+	turnobject PLAYER, UP
 
 .Continue
-	turnobject ELMSLAB_ELM, DOWN
-	turnobject PLAYER, DOWN
-	playmusic MUSIC_LYRA_ENCOUNTER_HGSS
-	showtext LyraAnnouncesGymChallengeText
-	applymovement ELMSLAB_LYRA, LyraLeavesMovement
-	disappear ELMSLAB_LYRA
-	pause 10
 	faceplayer
 	playmusic MUSIC_PROF_ELM
 	showtext ElmAfterTicketText
 	setevent EVENT_LYRA_IN_HER_ROOM
 	setevent EVENT_GOT_SS_TICKET_FROM_ELM
+	end
+
+.LyraAnnouncesGymChallenge
+	playmusic MUSIC_LYRA_ENCOUNTER_HGSS
+	showtext LyraAnnouncesGymChallengeText
+	applymovement ELMSLAB_LYRA, LyraLeavesMovement
+	disappear ELMSLAB_LYRA
+	pause 10
+	end
+
+.LyraEntryShort
+	appear ELMSLAB_LYRA
+	applymovement ELMSLAB_LYRA, LyraRunsInMovement
+	turnobject ELMSLAB_ELM, DOWN
+	turnobject ELMSLAB_LYRA, UP
+	turnobject PLAYER, DOWN
 	end
 
 ElmJumpBackScript1:
@@ -716,9 +732,10 @@ LyraLeavesMovement:
 	step_down
 	step_end
 
+LyraRunsInMoreMovement:
+	step_up
 LyraRunsInMovement:
 	step_up
-LyraRunsInLessMovement:
 	step_up
 	step_up
 	step_up

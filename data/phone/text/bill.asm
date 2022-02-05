@@ -148,4 +148,4 @@ BillPhoneSecondBadgeText:
 
 	para "That's all."
 	line "Buh-bye!"
-	prompt
+	done

@@ -128,15 +128,16 @@ LawrenceIntroScript:
 .continue
 	playmusic MUSIC_ZINNIA_ENCOUNTER_ORAS
 	showtext LawrenceIntroText
-	applyonemovement VERMILIONCITY_LAWRENCE, turn_head_down
-	pause 15
-	playsound SFX_EXIT_BUILDING
+	applymovement VERMILIONCITY_LAWRENCE, LawrenceWalkAwayMovementData
 	disappear VERMILIONCITY_LAWRENCE
 	setscene $1
 	setflag ENGINE_FLYPOINT_VERMILION
 	special RestartMapMusic
 	end
 
+LawrenceWalkAwayMovementData:
+	step_down
+	step_down
 LawrenceApproachMovementData:
 	step_down
 	step_down
