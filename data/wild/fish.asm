@@ -1,5 +1,5 @@
 fishgroup: MACRO
-; mon chance, mon/item chance, old rod, good rod, super rod
+; mon chance, mon+item chance, old rod, good rod, super rod
 	db \1, \2
 	dw \3, \4, \5
 ENDM
@@ -7,20 +7,20 @@ ENDM
 FishGroups:
 ; entries correspond to FISHGROUP_* constants
 	table_width FISHGROUP_DATA_LENGTH, FishGroups
-	fishgroup 65 percent + 1, 85 percent + 1, .Shore_Old,            .Shore_Good,            .Shore_Super
-	fishgroup 75 percent + 1, 85 percent + 1, .Ocean_Old,            .Ocean_Good,            .Ocean_Super
-	fishgroup 70 percent + 1, 85 percent + 1, .Lake_Old,             .Lake_Good,             .Lake_Super
-	fishgroup 70 percent + 1, 85 percent + 1, .River_Old,            .River_Good,            .River_Super
-	fishgroup 55 percent + 1, 65 percent + 1, .Pond_Old,             .Pond_Good,             .Pond_Super
-	fishgroup 60 percent + 1, 70 percent + 1, .Dratini_Old,          .Dratini_Good,          .Dratini_Super
-	fishgroup 60 percent + 1, 70 percent + 1, .Qwilfish_Swarm_Old,   .Qwilfish_Swarm_Good,   .Qwilfish_Swarm_Super
-	fishgroup 60 percent + 1, 70 percent + 1, .Remoraid_Swarm_Old,   .Remoraid_Swarm_Good,   .Remoraid_Swarm_Super
-	fishgroup 60 percent + 1, 70 percent + 1, .Gyarados_Old,         .Gyarados_Good,         .Gyarados_Super
-	fishgroup 60 percent + 1, 70 percent + 1, .Dratini_2_Old,        .Dratini_2_Good,        .Dratini_2_Super
-	fishgroup 60 percent + 1, 70 percent + 1, .WhirlIslands_Old,     .WhirlIslands_Good,     .WhirlIslands_Super
-	fishgroup 60 percent + 1, 70 percent + 1, .Qwilfish_Old,         .Qwilfish_Good,         .Qwilfish_Super
-	fishgroup 60 percent + 1, 70 percent + 1, .Remoraid_Old,         .Remoraid_Good,         .Remoraid_Super
-	fishgroup 60 percent + 1, 70 percent + 1, .Qwilfish_NoSwarm_Old, .Qwilfish_NoSwarm_Good, .Qwilfish_NoSwarm_Super
+	fishgroup 65 percent, (65 + 5) percent, .Shore_Old,            .Shore_Good,            .Shore_Super
+	fishgroup 75 percent, (75 + 1) percent, .Ocean_Old,            .Ocean_Good,            .Ocean_Super
+	fishgroup 70 percent, (70 + 5) percent, .Lake_Old,             .Lake_Good,             .Lake_Super
+	fishgroup 70 percent, (70 + 3) percent, .River_Old,            .River_Good,            .River_Super
+	fishgroup 55 percent, (55 + 5) percent, .Pond_Old,             .Pond_Good,             .Pond_Super
+	fishgroup 60 percent, (60 + 3) percent, .Dratini_Old,          .Dratini_Good,          .Dratini_Super
+	fishgroup 60 percent, (65 + 5) percent, .Qwilfish_Swarm_Old,   .Qwilfish_Swarm_Good,   .Qwilfish_Swarm_Super
+	fishgroup 60 percent, (60 + 3) percent, .Remoraid_Swarm_Old,   .Remoraid_Swarm_Good,   .Remoraid_Swarm_Super
+	fishgroup 60 percent, (60 + 3) percent, .Gyarados_Old,         .Gyarados_Good,         .Gyarados_Super
+	fishgroup 55 percent, (55 + 1) percent, .Dratini_2_Old,        .Dratini_2_Good,        .Dratini_2_Super
+	fishgroup 60 percent, (60 + 3) percent, .WhirlIslands_Old,     .WhirlIslands_Good,     .WhirlIslands_Super
+	fishgroup 60 percent, (60 + 3) percent, .Qwilfish_Old,         .Qwilfish_Good,         .Qwilfish_Super
+	fishgroup 60 percent, (60 + 3) percent, .Remoraid_Old,         .Remoraid_Good,         .Remoraid_Super
+	fishgroup 65 percent, (65 + 5) percent, .Qwilfish_NoSwarm_Old, .Qwilfish_NoSwarm_Good, .Qwilfish_NoSwarm_Super
 	assert_table_length NUM_FISHGROUPS
 
 fishentry: MACRO
