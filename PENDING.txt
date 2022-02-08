@@ -1,13 +1,17 @@
 Back sprites:
-	All except Typhlosion
+	Electrode
+	Arcanine
+	Overqwil
+	Kleavor
+	Sneasel
+	Sneasler
+	Ursaluna
 
 Front:
 	Arcanine
-	Qwilfish
 	Overqwil
 	Kleavor
 	Sneasel
 	Sneasler
 	Electrode
-	Ursaluna
 	

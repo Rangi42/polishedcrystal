@@ -129,7 +129,7 @@ PlayersHouse1FStoveText:
 
 PlayersHouse1FTVScript:
 	opentext
-	givepoke KLEAVOR, PLAIN_FORM, 50
+	givepoke URSALUNA, PLAIN_FORM, 50
 	closetext
 	end
 	jumpthistext
