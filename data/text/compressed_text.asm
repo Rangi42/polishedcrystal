@@ -14,6 +14,9 @@ _parent_node: MACRO
 		if !DEF(___huffman_data_{02X:x})
 			fail "invalid leaf node character \1"
 		endc
+		if DEF(___huffman_leaf_node_{02X:x})
+			fail "already mapped leaf node character \1"
+		endc
 		DEF ___huffman_leaf_node_{02X:x} = 1
 		if $7f <= \1 && \1 <= $eb
 			; characters $7f-$eb correspond to leaf nodes $7f-$eb

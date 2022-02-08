@@ -786,7 +786,7 @@ PokegearRadio_Joypad:
 .no_map
 	lb bc, CLOCK_CARD, $0
 .switch_page
-	jmp Pokegear_SwitchPage
+	jr Pokegear_SwitchPage
 
 .cancel
 	ld hl, wJumptableIndex
