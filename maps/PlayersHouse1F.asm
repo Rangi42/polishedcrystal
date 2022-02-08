@@ -128,12 +128,11 @@ PlayersHouse1FStoveText:
 	done
 
 PlayersHouse1FTVScript:
-	opentext
-	givepoke URSALUNA, PLAIN_FORM, 50
-	closetext
-	end
-	jumpthistext
-
+	;opentext
+	;givepoke URSALUNA, PLAIN_FORM, 50
+	;closetext
+	;end
+	;jumpthistext
 	text "There's a movie on"
 	line "TV: Stars dot the"
 

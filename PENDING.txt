@@ -5,7 +5,7 @@ Back sprites:
 	Kleavor
 	Sneasel
 	Sneasler
-	Ursaluna
+	Wyrdeer
 
 Front:
 	Arcanine
