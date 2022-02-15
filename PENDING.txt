@@ -1,17 +1,9 @@
 Back sprites:
-	Electrode
-	Arcanine
 	Overqwil
-	Kleavor
-	Sneasel
 	Sneasler
-	Wyrdeer
 
 Front:
-	Arcanine
 	Overqwil
 	Kleavor
-	Sneasel
 	Sneasler
-	Electrode
 	
