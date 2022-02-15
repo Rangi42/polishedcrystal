@@ -8,7 +8,11 @@ endc
 
 	db WATER, WATER ; type
 	db 60 ; catch rate
+if DEF(FAITHFUL)
 	db 170 ; base exp
+else
+	db 180 ; base exp
+endc
 	db NO_ITEM, NO_ITEM ; items
 	dn GENDER_F50, 3 ; gender ratio
 	INCBIN "gfx/pokemon/seaking/front.dimensions"
