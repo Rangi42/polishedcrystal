@@ -8,7 +8,11 @@ endc
 
 	db NORMAL, FLYING ; type
 	db 90 ; catch rate
+if DEF(FAITHFUL)
 	db 162 ; base exp
+else
+	db 169 ; base exp
+endc
 	db NO_ITEM ; item 1
 	db SHARP_BEAK ; item 2
 	dn GENDER_F50, 2 ; gender ratio, step cycles to hatch

@@ -2,13 +2,18 @@ if DEF(FAITHFUL)
 	db  45,  55,  45,  75,  65,  45 ; 330 BST
 	;   hp  atk  def  spd  sat  sdf
 else
-	db  55,  85,  55, 105,  95,  45 ; 440 BST
+	db  55,  85,  55, 105,  95,  55 ; 450 BST
 	;   hp  atk  def  spd  sat  sdf
 endc
 
 	db ICE, FLYING ; type
+if DEF(FAITHFUL)
 	db 45 ; catch rate
 	db 183 ; base exp
+else
+	db 35 ; catch rate
+	db 193 ; base exp
+endc
 	db NO_ITEM ; item 1
 	db NEVERMELTICE ; item 2
 	dn GENDER_F50, 2 ; gender ratio, step cycles to hatch
