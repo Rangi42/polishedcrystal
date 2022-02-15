@@ -192,28 +192,18 @@ _OakTimeWhatTimeIsItText::
 	text "What time is it?"
 	done
 
-SECTION "_OakTimeWhatHoursText", ROMX
-_OakTimeWhatHoursText::
-	text "What?"
-	done
-
-SECTION "_OakTimeHoursQuestionMarkText", ROMX
-_OakTimeHoursQuestionMarkText::
-	text "?"
-	done
-
 SECTION "_OakTimeHowManyMinutesText", ROMX
 _OakTimeHowManyMinutesText::
 	text "How many minutes?"
 	done
 
-SECTION "_OakTimeWhoaMinutesText", ROMX
-_OakTimeWhoaMinutesText::
+SECTION "_OakTimeWhoaText", ROMX
+_OakTimeWhoaText::
 	text "Whoa!"
 	done
 
-SECTION "_OakTimeMinutesQuestionMarkText", ROMX
-_OakTimeMinutesQuestionMarkText::
+SECTION "_OakTimeQuestionMarkText", ROMX
+_OakTimeQuestionMarkText::
 	text "?"
 	done
 
