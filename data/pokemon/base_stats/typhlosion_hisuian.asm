@@ -1,4 +1,4 @@
-	db  73,  84,  78,  95,  85, 119 ; 534 BST
+	db  73,  84,  78,  95, 119,  85 ; 534 BST
 	;   hp  atk  def  spd  sat  sdf
 
 	db FIRE, GHOST ; type
