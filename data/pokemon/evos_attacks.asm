@@ -98,6 +98,7 @@ CharmanderEvosAttacks:
 	db 37, FLAMETHROWER
 	db 43, FIRE_SPIN
 	db 46, CRUNCH
+	db 52, FLARE_BLITZ ; Sw/Sh move
 	db -1 ; no more level-up moves
 
 CharmeleonEvosAttacks:
@@ -115,6 +116,7 @@ CharmeleonEvosAttacks:
 	db 43, FLAMETHROWER
 	db 50, FIRE_SPIN
 	db 54, CRUNCH
+	db 61, FLARE_BLITZ ; Sw/Sh move
 	db -1 ; no more level-up moves
 
 CharizardEvosAttacks:
@@ -139,6 +141,7 @@ CharizardEvosAttacks:
 	db 56, FIRE_SPIN
 	db 62, CRUNCH
 	db 71, FLARE_BLITZ
+	db 77, HURRICANE ; Sw/Sh move
 	db -1 ; no more level-up moves
 
 SquirtleEvosAttacks:
@@ -1321,7 +1324,7 @@ GrowlitheHisuianEvosAttacks:
 	db 32, ROCK_SLIDE
 	db 34, FLAMETHROWER
 	db 39, CRUNCH
-	db 41, SUNNY_DAY ; Heat Wave → TM move
+	db 41, POWER_GEM ; Heat Wave → new move
 	db 43, OUTRAGE
 	db 45, PLAY_ROUGH ; Flare Blitz → Let's Go move
 	db 49, FLARE_BLITZ
@@ -4624,6 +4627,9 @@ GirafarigEvosAttacks:
 	db 41, BATON_PASS
 	db 46, NASTY_PLOT
 	db 50, PSYCHIC_M
+if !DEF(FAITHFUL)
+	db 55, DARK_PULSE ; new move
+endc
 	db -1 ; no more level-up moves
 
 PinecoEvosAttacks:
