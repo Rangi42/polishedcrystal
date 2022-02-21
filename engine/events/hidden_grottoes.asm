@@ -135,7 +135,7 @@ GetHiddenGrottoDataMember:
 
 GetHiddenGrottoContentPointer:
 	ld hl, wHiddenGrottoContents
-	ld bc, 2
+	ld bc, 3
 AddCurHiddenGrottoTimes:
 	ld a, [wCurHiddenGrotto]
 	dec a ; since hidden grotto IDs start at 1

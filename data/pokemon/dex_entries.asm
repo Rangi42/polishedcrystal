@@ -116,7 +116,7 @@ ButterfreePokedexEntry::
 	db "Butterfly@"
 	db   "It flits from"
 	next "flower to flower,"
-	next "collecting honey."
+	next "collecting nectar."
 	page "It can even"
 	next "identify distant"
 	next "flowers in bloom.@"

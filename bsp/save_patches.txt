@@ -273,54 +273,6 @@ ChangeCheckValue:
 	writebyte 0x61
 	return
 
-ConvertUnownDexToBitArray:
-	set #1, UNOWN_DEX_OFFSET_v7
-	call GetGameDataPointer
-	seek #result
-	getfileword #2
-	writeword #zero
-
-.dex_loop_1
-	and #1, #2, 0xff
-	jumpz #1, .done_loop_1
-	decrement #1
-	push #2
-	call .set_flag
-	pop #2
-	shiftright #2, 8 ; TODO: check if this should be shiftleft instead
-	jump .dex_loop_1
-
-.done_loop_1
-	pushpos
-	set #length, 24
-.dex_loop_2
-	readbyte #1
-	jumpz #1, .done_loop_2
-	decrement #1
-	call .set_flag
-	decrement #length
-	jumpnz #length, .dex_loop_2
-
-.done_loop_2
-	poppos
-	fillbyte 24, #zero
-	seek #result
-	getfileword #result
-	writeword #zero
-	seekfwd 20
-	writeword #zero
-	return
-
-.set_flag
-	pushpos
-	seek #result
-	push #result
-	set #2, 1
-	call FlagAction
-	pop #result
-	poppos
-	return
-
 ConvertMonIndexesTo9Bit:
 ; First, we need to shift existing caught flags into their new indexes,
 ; then we need to shift caught data/unown dex forward to account for the bigger seen flag array
@@ -334,18 +286,69 @@ ConvertMonIndexesTo9Bit:
 	call ShiftSaveDataBack
 	writeword #zero
 	writeword #zero ; effectively fillbyte 8, #zero
+	pos #3 ; file pointer is at pokedex seen
+
+; Since Unown data is becoming part of the main seen/caught array, wUnownDex must be converted
+; to the appropriate flags. Flags will be written to the caught array and copied later to the seen array
+; Miraculously, Unown flags in 9bit are one byte shy from interfering with seen flags in their current location,
+; so no extra shifting is necessary
+
+; First, Unown A data is cleared in seen and caught arrays (note that it's index $c6, we haven't modified indexes to 9bit yet)
+	set #1, 0xc5
+	set #2, #zero
+	push #1
+	call FlagAction
+	pop #1
+
+	seek #result
+	call FlagAction
+
+	set #4, #result
+	set #1, UNOWN_DEX_OFFSET_v7
+	call GetGameDataPointer
+
+; Next, go to wUnownDex and convert the index to a flag in the wCaughtMon array
+	seek #result
+.unown_loop
+	getfilebyte #1
+	writebyte #zero
+	jumpz #1, .done_unown
+	add #1, 0x11d ; NUM_SPECIES + unown form - 2 (wPokedexCaught is 1-indexed, first variant Unown is form 2)
+	set #2, 1
+	pushpos
+	ifgt #1, 0x11e, .unown_loop_cont
+	set #1, 0xc5 ; special case for form A, since it is not a variant
+	seek #3 ; unown form A gets set in seen array as well, just easier this way
+	push #1
+	call FlagAction
+	pop #1
+.unown_loop_cont
+	seek #4
+	call FlagAction
+	poppos
+	jump .unown_loop
+
+.done_unown
+	set #1, 32
+	set #2, 10
+	set #4, #3
+	call ShiftSaveDataForward ; seen data gets shifted forward 10 bytes (#3 already contains save data)
+	seek #4
+	fillbyte #2, #zero
 
 	set #r0, .mon_indexes
 	set #r1, .mon_forms
 
 ; modify pokedex flags
+; caught
 	seek #result
-	set #1, 320
+	set #1, 384
 	set #2, #r0
 	jump ShiftFlags
 
+;seen
 	seekfwd 40
-	set #1, 320
+	set #1, 384
 	set #2, #r0
 	jump ShiftFlags
 
@@ -365,7 +368,7 @@ ConvertMonIndexesTo9Bit:
 .done_loop
 	iflt #result, 0xff, .got_result
 	pushpos
-	seekfwd 21 ; to extspecies
+	seekfwd FORM_MASK ; to extspecies
 	getfilebyte #temp
 	add #temp, 0x20
 	writebyte #temp
@@ -375,12 +378,13 @@ ConvertMonIndexesTo9Bit:
 	writebyte #result
 
 	; Special case for Pikachu, need to set fly form or surf form
-	ifeq #result, 0x19, .not_pikachu ; mons like Sirfetch'd ($119) didn't exist yet, so there's no conflicts
+	ifne #result, 0x19, .not_pikachu ; mons like Sirfetch'd ($119) didn't exist yet, so there's no conflicts
+	pushpos
 	readbyte #temp ; item -> moves
 	readword #temp ; all four moves
 .move_loop
 	and #1, #temp, 0xff
-	jumpz #1, .done
+	jumpz #1, .not_pikachu_form
 	set #2, 2 ; FLY_FORM
 	ifeq #1, 0x13, .got_form
 	increment #2 ; SURF_FORM
@@ -392,9 +396,41 @@ ConvertMonIndexesTo9Bit:
 	and #1, 0xe0 ; ~FORM_MASK
 	or #1, #2
 	writebyte #1
-	jump .done
+.not_pikachu_form
+	poppos
 
 .not_pikachu
+	ifne #result, 0x82, .not_gyarados
+	pushpos
+	seekfwd 20 ; to forms (file pointer is at items here, not species)
+	getfilebyte #1
+	and #temp, #1, FORM_MASK
+	ifne #temp, 0x11, .not_gyarados_form
+	increment #1
+	increment #1
+	increment #1 ; #1 = GENDER_MASK | 0x14
+	writebyte #1
+.not_gyarados_form
+	poppos
+
+.not_gyarados
+	ifne #result, 0x81, .not_magikarp
+	pushpos
+	seekfwd 20
+	getfilebyte #1
+	and #temp, #1, FORM_MASK
+	iflt #temp, 0x0f, .not_saucy_raindrop
+	increment #1
+	increment #1
+.not_saucy_raindrop
+	iflt #temp, 0x0d, .not_magikarp_form
+	increment #1
+	increment #1
+	writebyte #1
+.not_magikarp_form
+	poppos
+
+.not_magikarp
 	; Galarian form indexes shift from 2 to 3, and Pokedex flags need to be set
 	set #address, #r1
 .form_loop
@@ -406,11 +442,16 @@ ConvertMonIndexesTo9Bit:
 	seekfwd 20 ; to forms (file pointer is at items here, not species)
 	getfilebyte #3
 	and #temp, #3, 0x20 ; check extspecies
-	jumpz #temp, .done
+	jumpnz #temp, .done ; conveniently, no pokemon with variant forms is over index 0xff
 	and #temp, #3, FORM_MASK
+	jumpz #temp, .done
+	decrement #temp
+	jumpz #temp, .done ; form indexes 0 and 1 already have dex flags set
+	increment #temp
+	subtract #5, #address, #r1 ; get the form+species index of the current variant form, needed for pokedex flags
+	shiftright #5, 1
 	ifeq #temp, #2, .set_pokedex
-	ifne #temp, 2, .done ; special case where Galarian form now = 3, not 2
-	ifne #2, 3, .done
+	iflt #2, 50, .form_loop ; index of first Galarian form in .mon_forms table + 1; if not Galarian (i.e. cosmetic), loop for matching form
 
 	increment #temp
 	writebyte #temp
@@ -418,14 +459,12 @@ ConvertMonIndexesTo9Bit:
 	set #1, POKEDEX_CAUGHT_OFFSET
 	call GetGameDataPointer
 	seek #result
-	subtract #temp, #address, #r1 ; get the form+species index of the current variant form, needed for pokedex flags
-	shiftright #temp, 1
-	add #1, #temp, 0x118 ; note that #temp is off by +1 for actual index, since #address is +2 bytes ahead of form actually being checked
+	add #1, #5, 0x13a ; note that #5 is off by +1 for actual index, since #address is +2 bytes ahead of form actually being checked
 	set #2, 1
 	push #1
 	call FlagAction
 	pop #1
-	seekfwd 40
+	seekfwd 50
 	call FlagAction
 	
 .done
@@ -472,7 +511,36 @@ ConvertMonIndexesTo9Bit:
 	dh -1
 
 .mon_forms:
-	db 0x82, 18 ; GYARADOS, RED
+	db 0x18, 2 ; ARBOK, KANTO
+	db 0x18, 3 ; ARBOK, KOGA
+	db 0x18, 4 ; ARBOK, AGATHA
+	db 0x18, 5 ; ARBOK, ARIANA
+	db 0x19, 2 ; PIKACHU, FLY
+	db 0x19, 3 ; PIKACHU, SURF
+	db 0x19, 4 ; PIKACHU, RED
+	db 0x19, 5 ; PIKACHU, YELLOW
+	db 0x19, 6 ; PIKACHU, SPARK
+	db 0xac, 2 ; PIKACHU, SPIKY_EARED
+	db 0x81, 2 ; MAGIKARP, SKELLY
+	db 0x81, 3 ; MAGIKARP, CALICO1
+	db 0x81, 4 ; MAGIKARP, CALICO2
+	db 0x81, 5 ; MAGIKARP, CALICO3
+	db 0x81, 6 ; MAGIKARP, TWO_TONE
+	db 0x81, 7 ; MAGIKARP, ORCA
+	db 0x81, 8 ; MAGIKARP, DAPPLES
+	db 0x81, 9 ; MAGIKARP, TIGER
+	db 0x81, 10 ; MAGIKARP, ZEBRA
+	db 0x81, 11 ; MAGIKARP, STRIPE
+	db 0x81, 12 ; MAGIKARP, BUBBLES
+	db 0x81, 13 ; MAGIKARP, DIAMOND
+	db 0x81, 14 ; MAGIKARP, PATCHES
+	db 0x81, 15 ; MAGIKARP, FOREHEAD1
+	db 0x81, 16 ; MAGIKARP, MASK1
+	db 0x81, 17 ; MAGIKARP, FOREHEAD2
+	db 0x81, 18 ; MAGIKARP, MASK2
+	db 0x81, 19 ; MAGIKARP, SAUCY
+	db 0x81, 20 ; MAGIKARP, RAINDROP
+	db 0x82, 21 ; GYARADOS, RED
 	db 0x96, 2 ; MEWTWO, ARMORED
 	db 0x13, 2 ; RATTATA, ALOLAN
 	db 0x14, 2 ; RATICATE, ALOLAN
@@ -492,19 +560,19 @@ ConvertMonIndexesTo9Bit:
 	db 0x59, 2 ; MUK, ALOLAN
 	db 0x67, 2 ; EXEGGUTOR, ALOLAN
 	db 0x69, 2 ; MAROWAK, ALOLAN
-	;db 0x34, 3 ; MEOWTH, GALARIAN
+	db 0x34, 3 ; MEOWTH, GALARIAN
 	db 0x4d, 3 ; PONYTA, GALARIAN
 	db 0x4e, 3 ; RAPIDASH, GALARIAN
 	db 0x4f, 3 ; SLOWPOKE, GALARIAN
 	db 0x50, 3 ; SLOWBRO, GALARIAN
-	;db 0x53, 3 ; FARFETCH_D, GALARIAN
+	db 0x53, 3 ; FARFETCH_D, GALARIAN
 	db 0x6e, 3 ; WEEZING, GALARIAN
-	;db 0x7a, 3 ; MR__MIME, GALARIAN
+	db 0x7a, 3 ; MR__MIME, GALARIAN
 	db 0x90, 3 ; ARTICUNO, GALARIAN
 	db 0x91, 3 ; ZAPDOS, GALARIAN
 	db 0x92, 3 ; MOLTRES, GALARIAN
 	db 0xc7, 3 ; SLOWKING, GALARIAN
-	;db 0xde, 3 ; CORSOLA, GALARIAN
+	db 0xde, 3 ; CORSOLA, GALARIAN
 	db -1
 
 ConvertPokerusToNybble:
@@ -531,18 +599,122 @@ ConvertPokerusToNybble:
 	writebyte #result
 	return
 
-ShiftHiddenGrottoContents:
-	set #1, CELEBI_EVENT_OFFSET
+RemovePartySpecies:
+	set #1, PARTY_SPECIES_OFFSET_v7
 	call GetGameDataPointer
 	seek #result
-	set #1, 76
-	set #2, 23
-	call ShiftSaveDataBack
+	fillbyte 7, #zero
+	return
 
-.shift_loop
+ConvertPhoneListToFlagArray:
+	set #1, PHONE_LIST_OFFSET_v7
+	call GetGameDataPointer
+	seek #result
+	pushpos
+	readword #2
+	readbyte #3 ; need to clear up 5 bytes for bit array
+	poppos
+	writeword #zero
 	writebyte #zero
-	decrement #2
-	retz #2
-	set #1, 2
-	call ShiftSaveDataBack
-	jump .shift_loop
+
+; Convert first four bytes
+.phone_loop_1
+	and #1, #2, 0xff
+	push #2
+	call .SetFlag
+	pop #2
+	shiftright #2, 8 ; TODO: check if this should be shiftleft instead
+	jump .phone_loop_1
+
+; Convert 5th byte
+	set #1, #3
+	call .SetFlag
+
+; Convert remaining 25 bytes
+	pushpos
+	set #length, 25
+.phone_loop_2
+	readbyte #1
+	decrement #1
+	call .SetFlag
+	decrement #length
+	jumpnz #length, .phone_loop_2
+
+; Clear unused data
+.done_loop_2
+	poppos
+	fillbyte 27, #zero
+	return
+
+.SetFlag
+	pushpos
+	seek #result
+	push #result
+	set #2, 1
+	call FlagAction
+	pop #result
+	poppos
+	return
+
+ShiftHiddenGrottoContents:
+; Extend end of hidden grotto list
+	set #1, CUR_GROTTO_OFFSET_v7
+	call GetGameDataPointer
+	set #3, #result
+	set #1, 41 ; wCurHiddenGrotto -> wPhoneList+0005
+	set #2, 25
+	call ShiftSaveDataForward
+	
+; Shift data up to and including grotto list
+	set #1, CELEBI_EVENT_OFFSET_v7
+	call GetGameDataPointer
+	set #3, #result
+	set #1, 71 ; wCelebiEvent -> end of wHiddenGrottoContents
+	set #2, 2
+	call ShiftSaveDataForward
+
+	seek #result
+	writehalfword #zero
+
+; Reset all grotto entries (just easier to manage than worrying about species data)
+	set #1, HIDDEN_GROTTO_OFFSET
+	call GetGameDataPointer
+	seek #result
+	fillbyte 69, #zero ; 23 * 3, nice
+	return
+
+RevertKeyItemsToIndexList:
+; shift all save data forward
+	set #1, NUM_ITEMS_OFFSET_v7
+	call GetGameDataPointer
+	set #3, #result
+	set #1, 980 ; wNumItems -> wCelebiEvent-0001
+	set #2, 33
+	call ShiftSaveDataForward
+
+	seek #result
+	fillbyte #2, #zero
+
+	set #1, KEY_ITEMS_OFFSET
+	call GetGameDataPointer
+	seek #result
+	getfileword #2 ; bit array fits in four bytes
+	writeword #zero
+	seek #result
+	set #1, #zero
+
+.loop
+	increment #1
+	and #temp, #2, 1
+	jumpz #temp, .cont
+	writebyte #1
+.cont
+	shiftright #2, 8 ; TODO: check if this is shiftleft
+	jumpnz #2, .loop
+	return
+
+RearrangeEventFlags:
+	return
+
+ClearNewPokedbSpace:
+	return
