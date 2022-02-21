@@ -1418,11 +1418,9 @@ GivePoke::
 	farcall CurBoxFullCheck
 	jr z, .box_not_full
 	ld hl, GiftMonBoxFullText
-	push bc
 	call PrintText
-	pop bc
 .box_not_full
-	farcall GetBoxName
+	farcall GetCurBoxName
 	ld a, [wTempMonForm]
 	bit MON_IS_EGG_F, a
 	ld hl, GiftEggSentToPCText

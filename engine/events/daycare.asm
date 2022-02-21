@@ -415,11 +415,9 @@ Special_DayCareManOutside:
 	farcall CurBoxFullCheck
 	jr z, .box_not_full
 	ld hl, .CurBoxFullText
-	push bc
 	call PrintText
-	pop bc
 .box_not_full
-	farcall GetBoxName
+	farcall GetCurBoxName
 	ld hl, .SentToPCText
 	call PrintText
 .done
