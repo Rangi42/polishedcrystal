@@ -14,7 +14,6 @@ SpecialBeastsCheck:
 	ldh [hScriptVar], a
 	ld a, HIGH(ENTEI) << MON_EXTSPECIES_F
 	ldh [hScriptVar+1], a
-	ldh [hScriptVar], a
 	call CheckOwnMonAnywhere
 	jr nc, SpecialMonCheckFailed
 
@@ -22,7 +21,6 @@ SpecialBeastsCheck:
 	ldh [hScriptVar], a
 	ld a, HIGH(SUICUNE) << MON_EXTSPECIES_F
 	ldh [hScriptVar+1], a
-	ldh [hScriptVar], a
 	call CheckOwnMonAnywhere
 	jr nc, SpecialMonCheckFailed
 
