@@ -165,6 +165,7 @@ DisplayHourOClock:
 _DisplayHourOClock:
 	push hl
 	ld a, [wInitHourBuffer]
+	ld [wStringBuffer2 + 1], a
 	ld c, a
 	ld e, l
 	ld d, h
@@ -226,6 +227,8 @@ SetMinutes:
 
 DisplayMinutesWithMinString:
 	ld de, wInitMinuteBuffer
+	ld a, [de]
+	ld [wStringBuffer2 + 2], a
 	call PrintTwoDigitNumberRightAlign
 	inc hl
 	ld de, String_min
