@@ -1510,7 +1510,8 @@ GivePoke::
 	call SetSeenAndCaughtMon
 .done
 	ld d, BOXMON
-	and a
+	xor a ; resets wCurPartyMon for nickname screen, also clears carry flag
+	ld [wCurPartyMon], a
 	ret
 
 GiftMonBoxFullText:
