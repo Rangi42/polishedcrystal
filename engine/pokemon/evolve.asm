@@ -798,10 +798,15 @@ GetPreEvolution:
 	ret
 
 .found_preevo
-	inc c
+	inc bc
 	ld a, c
 	ld [wCurPartySpecies], a
-	ld b, [hl] ; we're pointing to mon form
+	ld a, b ; convert b to extspecies
+	assert (EXTSPECIES_MASK > %00011111) && (EXTSPECIES_MASK & %00100000)
+	swap a
+	rlca
+	or [hl] ; we're pointing to mon form
+	ld b, a
 	push bc
 	call GetSpeciesAndFormIndex ; checks if current form is a valid form for this species
 	pop bc

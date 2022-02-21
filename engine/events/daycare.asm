@@ -748,8 +748,12 @@ DayCare_GenerateEgg:
 	; Must assign [wCurForm] before GetBaseData.
 	ld hl, wBreedMon1Form
 	call .inherit_mother_unless_samespecies ; this should preserve c!
+	ld a, [wCurForm]
+	and EXTSPECIES_MASK ; get extspecies of child
+	ld b, a
 	ld a, [hl]
-	and SPECIESFORM_MASK
+	and FORM_MASK ; get form of parent
+	or b
 	ld [wCurForm], a
 	ld b, a
 
