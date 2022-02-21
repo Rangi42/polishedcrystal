@@ -8,7 +8,11 @@
 	db ASPEAR_BERRY ; item 2
 	dn GENDER_F25, 3 ; gender ratio, step cycles to hatch
 	INCBIN "gfx/pokemon/arcanine_hisuian/front.dimensions"
+if DEF(FAITHFUL)
 	abilities_for ARCANINE_HISUIAN, INTIMIDATE, FLASH_FIRE, JUSTIFIED
+else
+	abilities_for ARCANINE_HISUIAN, INTIMIDATE, FLASH_FIRE, ROCK_HEAD
+endc
 	db GROWTH_SLOW ; growth rate
 	dn EGG_GROUND, EGG_GROUND ; egg groups
 

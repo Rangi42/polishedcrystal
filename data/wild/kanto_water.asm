@@ -114,9 +114,9 @@
 
 	def_water_wildmons ROUTE_23
 	db 6 percent ; encounter rate
-	wildmon  35, TENTACOOL
-	wildmon  35, KINGLER
 	wildmon  35, TENTACRUEL
+	wildmon  35, KINGLER
+	wildmon  35, GYARADOS
 	end_water_wildmons
 
 	def_water_wildmons ROUTE_24

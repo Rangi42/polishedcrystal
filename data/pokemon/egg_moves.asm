@@ -28,6 +28,7 @@ CharmanderEggMoves:
 
 SquirtleEggMoves:
 	db CONFUSION
+	db CRUNCH
 	db FORESIGHT
 	db HAZE
 	db MIRROR_COAT
@@ -93,7 +94,7 @@ NidoranFEggMoves:
 	db DISABLE
 	db FOCUS_ENERGY
 	db PURSUIT
-	db SUPERSONIC ; requires Lickitung
+	db SUPERSONIC
 	db TAKE_DOWN
 	db $ff
 
@@ -101,7 +102,7 @@ NidoranMEggMoves:
 	db AMNESIA
 	db CONFUSION
 	db DISABLE
-	db SUPERSONIC ; requires Lickitung
+	db SUPERSONIC
 	db TAKE_DOWN
 	db CALM_MIND
 	db COUNTER
@@ -212,6 +213,7 @@ MankeyEggMoves:
 	db $ff
 
 GrowlitheEggMoves:
+GrowlitheHisuianEggMoves:
 	db DOUBLE_KICK
 	db FIRE_SPIN
 	db HEALINGLIGHT
@@ -221,9 +223,6 @@ GrowlitheEggMoves:
 	db BODY_SLAM
 	db SAFEGUARD
 	db CLOSE_COMBAT
-	db $ff
-
-GrowlitheHisuianEggMoves:
 	db $ff
 
 PoliwagEggMoves:
@@ -252,7 +251,7 @@ MachopEggMoves:
 	db $ff
 
 BellsproutEggMoves:
-	db ENCORE ; requires Hoppip
+	db ENCORE
 	db LEECH_LIFE
 	db SWORDS_DANCE
 	db REFLECT
@@ -437,7 +436,7 @@ RhyhornEggMoves:
 
 TangelaEggMoves:
 	db CONFUSION
-	db AMNESIA ; requires Hoppip
+	db AMNESIA
 	db LEECH_SEED
 	db $ff
 
@@ -590,7 +589,7 @@ HoothootEggMoves:
 
 LedybaEggMoves:
 	db DIZZY_PUNCH
-	db ENCORE ; requires Shuckle
+	db ENCORE
 	db PSYBEAM
 	db SCREECH
 	db LIGHT_SCREEN
@@ -611,7 +610,7 @@ SpinarakEggMoves:
 	db $ff
 
 ChinchouEggMoves:
-	db AGILITY ; requires Goldeen
+	db AGILITY
 	db HAZE
 	db PSYBEAM
 	db SCREECH

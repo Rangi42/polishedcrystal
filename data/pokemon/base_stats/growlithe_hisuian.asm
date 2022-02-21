@@ -8,7 +8,11 @@
 	db ASPEAR_BERRY ; item 2
 	dn GENDER_F25, 3 ; gender ratio, step cycles to hatch
 	INCBIN "gfx/pokemon/growlithe_hisuian/front.dimensions"
+if DEF(FAITHFUL)
 	abilities_for GROWLITHE_HISUIAN, INTIMIDATE, FLASH_FIRE, JUSTIFIED
+else
+	abilities_for GROWLITHE_HISUIAN, INTIMIDATE, FLASH_FIRE, ROCK_HEAD
+endc
 	db GROWTH_SLOW ; growth rate
 	dn EGG_GROUND, EGG_GROUND ; egg groups
 
