@@ -44,9 +44,6 @@ SavePatches:
 	dw ChangeCheckValue
 
 	dh 8
-	dw ConvertUnownDexToBitArray
-
-	dh 8
 	dw ConvertMonIndexesTo9Bit
 
 	dh 8
@@ -56,6 +53,18 @@ SavePatches:
 	dw RemovePartySpecies
 
 	dh 8
+	dw ConvertPhoneListToFlagArray
+
+	dh 8
 	dw ShiftHiddenGrottoContents
+
+	dh 8
+	dw RevertKeyItemsToIndexList
+
+	dh 8
+	dw RearrangeEventFlags
+
+	dh 8
+	dw ClearNewPokedbSpace
 
 	dh 0

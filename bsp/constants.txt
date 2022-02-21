@@ -31,13 +31,9 @@
 
 ; game data offsets
 	define PLAYER_NAME_OFFSET,                 0x003
-	define ITEMS_OFFSET,                       0x38d
-	define MEDICINE_OFFSET,                    0x425
-	define BALLS_OFFSET,                       0x471
-	define BERRIES_OFFSET,                     0x4a5
-	define PC_ITEMS_OFFSET,                    0x4e5
+	define KEY_ITEMS_OFFSET,                   0x388
 	define BOX_NAMES_OFFSET,                   0x6e1
-	define CELEBI_EVENT_OFFSET,                0x748
+	define HIDDEN_GROTTO_OFFSET,               0x7ab
 	define MAP_GROUP_OFFSET,                   0x834
 	define PARTY_COUNT_OFFSET,                 0x856
 	define PARTY_MON_OT_OFFSET,                0x97e
@@ -47,7 +43,7 @@
 	define BREED_MON_1_OT_OFFSET,              0xa76
 	define DAYCARE_LADY_OFFSET,                0xaa1
 	define BREED_MON_2_NICK_OFFSET,            0xaa4
-	define BREED_MON_2_OT_OFFSET,              0Xaaf
+	define BREED_MON_2_OT_OFFSET,              0xaaf
 	define EGG_MON_NICK_OFFSET,                0xada
 	define MAGIKARP_RECORD_HOLDER_NAME_OFFSET, 0xb6b
 
