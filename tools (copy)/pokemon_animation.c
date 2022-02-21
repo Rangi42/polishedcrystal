@@ -200,3 +200,4 @@ int main(int argc, char *argv[]) {
 	free(tilemap);
 	return 0;
 }
+
