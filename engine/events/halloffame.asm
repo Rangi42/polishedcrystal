@@ -447,9 +447,11 @@ DisplayHOFMon:
 	call Textbox
 	ld a, [wTempMonSpecies]
 	ld [wCurPartySpecies], a
+	ld [wNamedObjectIndex], a
 	ld c, a
 	ld a, [wTempMonForm]
 	ld [wCurForm], a
+	ld [wNamedObjectIndex+1], a
 	ld b, a
 	hlcoord 6, 5
 	push bc
