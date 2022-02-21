@@ -1,8 +1,4 @@
 CanLearnTMHMMove:
-	ld a, [wPutativeTMHMMove]
-	and a
-	jmp z, GetForgottenMoves
-
 	ld a, [wCurPartySpecies]
 	ld [wCurSpecies], a
 	call GetBaseData
