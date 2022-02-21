@@ -672,10 +672,7 @@ PokeBallEffect:
 	pop bc
 
 .box_not_full
-	ld a, [wCurBox]
-	inc a
-	ld b, a
-	farcall GetBoxName
+	farcall GetCurBoxName
 	ld hl, Text_SentToBillsPC
 	call PrintText
 
