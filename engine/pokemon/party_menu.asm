@@ -932,19 +932,14 @@ PlacePartyMonGender:
 	push hl
 	call PartyMenuCheckEgg
 	jr nz, .next
-	; push hl
-	; ld hl, wPartySpecies
-	; ld e, b
-	; ld d, 0
-	; add hl, de
-	; ld a, [hl]
-	; ld [wCurPartySpecies], a
-	; pop hl
 	ld a, [wCurPartyMon]
 	push af
 	ld a, b
 	ld [wCurPartyMon], a
 	push hl
+	ld a, MON_SPECIES
+	call GetPartyParamLocationAndValue
+	ld [wCurPartySpecies], a
 	xor a
 	ld [wMonType], a
 	call GetGender
