@@ -42,14 +42,16 @@ CheckCanLearnMoveTutorMove:
 	call GetPartyParamLocationAndValue
 	and SPECIESFORM_MASK
 	ld [wCurForm], a
-	predef CanLearnTMHMMove
 
-	push bc
 	ld a, [wCurPartyMon]
 	ld hl, wPartyMonNicknames
 	call GetNickname
-	pop bc
 
+	ld a, [wPutativeTMHMMove]
+	and a
+	jr z, .reminder
+
+	predef CanLearnTMHMMove
 	ld a, c
 	and a
 	jr nz, .can_learn
@@ -63,9 +65,6 @@ CheckCanLearnMoveTutorMove:
 	jr .didnt_learn
 
 .can_learn
-	ld a, [wPutativeTMHMMove]
-	and a
-	jr z, .reminder
 	farcall KnowsMove
 	jr c, .didnt_learn
 

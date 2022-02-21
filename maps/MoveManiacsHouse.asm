@@ -79,7 +79,7 @@ MoveReminderNoMovesText::
 
 	para "make that #mon"
 	line "remember."
-	done
+	prompt
 
 MoveReminderCancelText::
 	text "If your #mon"
