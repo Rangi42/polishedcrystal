@@ -159,16 +159,16 @@ ConvertToNewbox:
 
 ; we can now fill sBackupNewBox with newbox
 	set #a, #zero
-	set #target, sBackupNewBox1
+	set #target, sBackupNewBox1_v7
 	set #source, sBoxMons1UsedEntries
 	call .newbox_outer_loop
 
-	; #a = 7, #target = sBackupNewBox8
+	; #a = 7, #target = sBackupNewBox8_v7
 	set #source, sBoxMons2UsedEntries
 	call .newbox_outer_loop
 
 ; add boxes 15 and 16
-	seek #target ; sBackupNewBox15
+	seek #target ; sBackupNewBox15_v7
 	set #1, 0x1B ; our exit condition, since box 15 has default theme 0x1B and box 16 has default theme 0x1C
 	set #2, .box15
 	set #3, 6
@@ -189,9 +189,9 @@ ConvertToNewbox:
 	fillbyte #2, #zero
 
 ; copy backup new box into active new box
-	set #1, sBackupNewBox1
-	set #2, sNewBox1
-	subtract #3, sBackupNewBox1, sNewBox1
+	set #1, sBackupNewBox1_v7
+	set #2, sNewBox1_v7
+	subtract #3, sBackupNewBox1_v7, sNewBox1_v7
 	call CopyFrom1To2
 
 ; clear old box names
@@ -472,42 +472,42 @@ ConvertMonIndexesTo9Bit:
 	return
 
 .mon_indexes
-	; upper bound, offset
-	dh 0x14, 0   ; RATICATE
-	dh 0x16, 162 ; AZUMARILL
-	dh 0x6b, 0   ; HITMONCHAN
-	dh 0x74, 1   ; SEADRA
-	dh 0x76, 57  ; TOGETIC
-	db 0x77, 152 ; TOGEKISS
-	dh 0xac, 0   ; PICHU
-	dh 0xad, 89  ; MUNCHLAX
-	dh 0xae, 91  ; MAGNEZONE
-	dh 0xb0, 92  ; TANGROWTH
-	dh 0xb6, 0   ; BELLOSSOM
-	dh 0xb8, 2   ; SUDOWOODO
-	dh 0xbb, 6   ; YANMA
-	dh 0xbc, 84  ; YANMEGA
-	dh 0xc1, 5   ; MURKROW
-	dh 0xc2, 64  ; HONCHKROW
-	dh 0xc4, 4   ; MISDREAVUS
-	dh 0xc5, 60  ; MISMAGIUS
-	dh 0xcc, 3   ; GLIGAR
-	dh 0xcd, 70  ; GLISCOR
-	dh 0xd5, 2   ; SNEASEL
-	dh 0xd6, 50  ; WEAVILE
-	dh 0xdc, 1   ; PILOSWINE
-	dh 0xdd, 55  ; MAMOSWINE
-	dh 0xe0, 0   ; OCTILLERY
-	dh 0xe8, 1   ; PORYGON2
-	dh 0xe9, 44  ; PORYGON_Z
-	dh 0xec, 1   ; HITMONTOP
-	dh 0xed, 2   ; ELEKID
-	dh 0xee, 31  ; ELECTIVIRE
-	dh 0xef, 1   ; MAGBY
-	dh 0xf0, 30  ; MAGMORTAR
-	dh 0xfb, 0   ; CELEBI
-	dh 0xfd, 21  ; GLACEON
-	dh 0xfe, 24  ; SYLVEON
+	; upper bound (exclusive), offset
+	dh 0x15, 0   ; RATICATE
+	dh 0x17, 162 ; AZUMARILL
+	dh 0x6c, 0   ; HITMONCHAN
+	dh 0x75, 1   ; SEADRA
+	dh 0x77, 57  ; TOGETIC
+	db 0x78, 152 ; TOGEKISS
+	dh 0xad, 0   ; PICHU
+	dh 0xae, 89  ; MUNCHLAX
+	dh 0xaf, 91  ; MAGNEZONE
+	dh 0xb1, 92  ; TANGROWTH
+	dh 0xb7, 0   ; BELLOSSOM
+	dh 0xb9, 2   ; SUDOWOODO
+	dh 0xbc, 6   ; YANMA
+	dh 0xbd, 84  ; YANMEGA
+	dh 0xc2, 5   ; MURKROW
+	dh 0xc3, 64  ; HONCHKROW
+	dh 0xc5, 4   ; MISDREAVUS
+	dh 0xc6, 60  ; MISMAGIUS
+	dh 0xcd, 3   ; GLIGAR
+	dh 0xce, 70  ; GLISCOR
+	dh 0xd6, 2   ; SNEASEL
+	dh 0xd7, 50  ; WEAVILE
+	dh 0xdd, 1   ; PILOSWINE
+	dh 0xde, 55  ; MAMOSWINE
+	dh 0xe1, 0   ; OCTILLERY
+	dh 0xe9, 1   ; PORYGON2
+	dh 0xea, 44  ; PORYGON_Z
+	dh 0xed, 1   ; HITMONTOP
+	dh 0xee, 2   ; ELEKID
+	dh 0xef, 31  ; ELECTIVIRE
+	dh 0xf0, 1   ; MAGBY
+	dh 0xf1, 30  ; MAGMORTAR
+	dh 0xfc, 0   ; CELEBI
+	dh 0xfe, 21  ; GLACEON
+	dh 0xff, 24  ; SYLVEON
 	dh -1
 
 .mon_forms:
@@ -714,7 +714,77 @@ RevertKeyItemsToIndexList:
 	return
 
 RearrangeEventFlags:
-	return
+; NOTE: even though Cinnabar Volcano flags were moved, that doesn't require a unique patch
+	set #1, EVENT_FLAGS_OFFSET
+	call GetGameDataPointer
+	seek #result
+
+	set #1, 0x893
+	set #2, .flag_adjust_table
+	jump ShiftFlags
+
+.flag_adjust_table
+	dh 0x0ab, 0
+	dh 0x0ce, 3
+	dh 0x0d0, 6
+	dh 0x0d2, 7
+	dh 0x0db, 8
+	dh 0x0df, 9
+	dh 0x20e, 12
+	dh 0x291, 13
+	dh 0x65b, 15
+	dh 0x881, 16
+	dh 0x882, -535
+	dh 0x883, -1529
+	dh 0x884, -1965
+	dh 0x885, -2007
+	dh 0x887, -1511
+	dh 0x888, -1889
+	dh 0x889, -1646
+	dh 0x88a, -1958
+	dh 0x88d, -1977
+	dh 0x88e, -1972
+	dh 0x890, -2019
+	dh 0x893, -1960
+	dh -1
 
 ClearNewPokedbSpace:
+; rearranges sram space to allow for more boxes
+; copy link battle records and battle tower data (later probably doesn't need to be copied)
+	set #1, sLinkBattleResults_v7
+	set #2, sLinkBattleResults
+	set #3, 108 ; sLinkBattleStatsEnd - sLinkBattleResults
+	call CopyFrom1To2
+
+	set #1, sBattleTowerChallengeState_v7
+	set #2, sBattleTowerChallengeState
+	set #3, 35
+	call CopyFrom1To2
+
+; temporarily store newbox data in sScratch before HoF data is moved
+	set #1, sNewBox1_v7
+	set #2, #zero ; sScratch
+	set #3, 1056 ; end of sBackupNewbox15 - sNewBox1
+	call CopyFrom1To2
+
+; copy first 10 entries of hall of fame, since stored entries is down from 30 to 10
+	set #1, sHallOfFame_v7
+	set #2, sHallOfFame
+	set #3, 980 ; sHallOfFameEnd - sHallOfFame, we only want the first 10 HoF entries
+	call CopyFrom1To2
+
+; copy sNewBox from sScratch to new location, then clear data afterwards
+	set #1, #zero ; sNewBox1
+	set #2, sNewBox1
+	set #3, 528 ; sNewBox17 - sNewBox
+	push #3
+	call CopyFrom1To2
+	fillbyte 132, #zero ; sNewBoxEnd - sNewBox17
+
+; do the same for sBackupNewBox
+	pop #3
+	set #1, #3 ; sBackupNewBox1 is at memory address 0x210 (decimal 528)
+	set #2, sBackupNewBox1
+	call CopyFrom1To2
+	fillbyte 132, #zero
 	return

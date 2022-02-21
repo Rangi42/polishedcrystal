@@ -6,32 +6,34 @@
 	define SAVE_SIZE,    0x8000
 
 ; SRAM pointers
-	define sPartyMail,            0x0600
-	define sMailbox,              0x0835
-	define sBackupMailbox,        0x0a0c
-	define sSaveVersion,          0x0be2
-	define sBackupOptions,        0x1200
-	define sBackupCheckValue1,    0x1207
-	define sBackupGameData,       0x1208
-	define sBackupChecksum,       0x1f0d
-	define sBackupCheckValue2,    0x1f0f
-	define sOptions,              0x2000
-	define sCheckValue1,          0x2007
-	define sGameData,             0x2008
-	define sChecksum,             0x2d0d
-	define sCheckValue2,          0x2d0f
-	define sNewBox1,              0x2d10
-	define sBackupNewBox1,        0x2f20
-	define sLinkBattleRecord,     0x3266
-	define sByteBeforeHallOfFame, 0x32bf
-	define sBoxMons1,             0x4000
-	define sBoxMons1UsedEntries,  0x5fc6
-	define sBoxMons2,             0x6000
-	define sBoxMons2UsedEntries,  0x7fc6
+	define sPartyMail,                 0x0600
+	define sMailbox,                   0x0835
+	define sBackupMailbox,             0x0a0c
+	define sSaveVersion,               0x0be2
+	define sBackupOptions,             0x1200
+	define sBackupCheckValue1,         0x1207
+	define sBackupGameData,            0x1208
+	define sBackupChecksum,            0x1f0d
+	define sBackupCheckValue2,         0x1f0f
+	define sLinkBattleResults,         0x1f10
+	define sBattleTowerChallengeState, 0x1f7c
+	define sOptions,                   0x2000
+	define sCheckValue1,               0x2007
+	define sGameData,                  0x2008
+	define sChecksum,                  0x2d0d
+	define sCheckValue2,               0x2d0f
+	define sHallOfFame,                0x2d10
+	define sNewBox1,                   0x30e4
+	define sBackupNewBox1,             0x3378
+	define sBoxMons1,                  0x4000
+	define sBoxMons1UsedEntries,       0x5fc6
+	define sBoxMons2,                  0x6000
+	define sBoxMons2UsedEntries,       0x7fc6
 
 ; game data offsets
 	define PLAYER_NAME_OFFSET,                 0x003
 	define KEY_ITEMS_OFFSET,                   0x388
+	define EVENT_FLAGS_OFFSET,                 0x5e1
 	define BOX_NAMES_OFFSET,                   0x6e1
 	define HIDDEN_GROTTO_OFFSET,               0x7ab
 	define MAP_GROUP_OFFSET,                   0x834
