@@ -41,6 +41,7 @@ struct Frame {
 struct Frames {
 	struct Frame *frames;
 	int num_frames;
+	int num_tiles_per_frame;
 };
 
 struct Bitmask {
@@ -80,6 +81,7 @@ void make_frames(const uint8_t *tilemap, long tilemap_size, int width, struct Fr
 
 	frames->frames = malloc_verbose((sizeof *frames->frames) * num_frames);
 	frames->num_frames = num_frames;
+	frames->num_tiles_per_frame = num_tiles_per_frame;
 
 	bitmasks->bitmasks = malloc_verbose((sizeof *bitmasks->bitmasks) * num_frames);
 	bitmasks->num_bitmasks = 0;
@@ -107,8 +109,7 @@ void make_frames(const uint8_t *tilemap, long tilemap_size, int width, struct Fr
 			}
 			bitmask->bitlength++;
 		}
-		// I don't remember exactly why this works.
-		// I think it was that the bits are read backwards, but not indexed backwards.
+		// tile order ABCDEFGHIJKLMNOP... becomes db order %HGFEDCBA %PONMLKJI ...
 		int last = bitmask->bitlength - 1;
 		bitmask->data[last / 8] >>= (7 - (last % 8));
 
@@ -127,6 +128,7 @@ void make_frames(const uint8_t *tilemap, long tilemap_size, int width, struct Fr
 }
 
 void print_frames(struct Frames *frames) {
+	uint8_t limit = 0x7f - (7 * 7 - frames->num_tiles_per_frame);
 	for (int i = 0; i < frames->num_frames; i++) {
 		printf("\tdw .frame%d\n", i + 1);
 	}
@@ -136,13 +138,17 @@ void print_frames(struct Frames *frames) {
 		printf("\tdb $%02x ; bitmask\n", frame->bitmask);
 		if (frame->size > 0) {
 			for (int j = 0; j < frame->size; j++) {
+				uint8_t offset = frame->data[j];
+				if (offset >= limit) {
+					offset++;
+				}
 				if (j % 12 == 0) {
 					if (j) {
 						putchar('\n');
 					}
-					printf("\tdb $%02x", frame->data[j]);
+					printf("\tdb $%02x", offset);
 				} else {
-					printf(", $%02x", frame->data[j]);
+					printf(", $%02x", offset);
 				}
 			}
 			putchar('\n');
