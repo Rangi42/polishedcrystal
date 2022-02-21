@@ -753,11 +753,16 @@ DayCare_GenerateEgg:
 	ld [wCurForm], a
 	ld b, a
 
-; it's useful for mons to have forms not found in CosmeticSpeciesAndFormTable (see: Ekans)
+; it's useful for mons to have forms found only in CosmeticSpeciesAndFormTable (see: Ekans)
 ; but we don't want to breed mons that shouldn't be hatched (see: Spiky-eared Pichu)
+	push bc
+	call GetCosmeticSpeciesAndFormIndex ; first, ensure the form even exists for this mon
+	pop bc
+	jr nc, .clear_form
 	ld hl, InvalidBreedmons
 	call GetSpeciesAndFormIndexFromHL
 	jr nc, .form_ok
+.clear_form
 	ld hl, wCurForm
 	ld a, [hl]
 	and EXTSPECIES_MASK
