@@ -761,9 +761,10 @@ GetPreEvolution:
 	jr z, .no_evolve ; If we jump, this Pokemon does not evolve into wCurPartySpecies.
 	dec a
 	cp EVOLVE_STAT ; This evolution type has the extra parameter of stat comparison.
+	jr z, .inc
+	cp EVOLVE_HOLDING  ; This evolution type has the extra parameter of stat comparison.
 	jr nz, .not_inc
-	cp EVOLVE_HOLDING
-	jr nz, .not_inc
+.inc
 	inc hl
 
 .not_inc
@@ -797,10 +798,23 @@ GetPreEvolution:
 	ret
 
 .found_preevo
-	inc c
+	inc bc
 	ld a, c
 	ld [wCurPartySpecies], a
-	ld a, [hl] ; we're pointing to mon form
+	ld a, b ; convert b to extspecies
+	assert (EXTSPECIES_MASK > %00011111) && (EXTSPECIES_MASK & %00100000)
+	swap a
+	rlca
+	or [hl] ; we're pointing to mon form
+	ld b, a
+	push bc
+	call GetSpeciesAndFormIndex ; checks if current form is a valid form for this species
+	pop bc
+	ld a, b
+	jr c, .got_form
+	and a, EXTSPECIES_MASK
+	inc a
+.got_form
 	ld [wCurForm], a
 	scf
 	ret

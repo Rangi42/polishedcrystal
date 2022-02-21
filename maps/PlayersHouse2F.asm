@@ -249,12 +249,8 @@ endr
 	loadmem wPartyMon3PP+2, 15
 	loadmem wPartyMon3PP+3, 15
 	; variant form test
-	givepoke ARTICUNO, GALARIAN_FORM, 50
-	givepoke ZAPDOS, GALARIAN_FORM, 50
-	givepoke MOLTRES, GALARIAN_FORM, 50
-;	givepoke ARTICUNO, GALARIAN_FORM, 50
-;	givepoke ZAPDOS, GALARIAN_FORM, 50
-;	givepoke MOLTRES, GALARIAN_FORM, 50
+	givepoke RAICHU, ALOLAN_FORM, 50
+	givepoke DITTO, 50
 	; fill pokedex
 ;	callasm FillPokedex
 	; intro events

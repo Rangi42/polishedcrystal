@@ -481,7 +481,7 @@ UpdateCharset:
 	set #4, #b
 	call .fix_sram_loop
 
-	seek sLinkBattleRecord
+	seek sLinkBattleRecord_v6
 	set #1, 5
 	set #2, #length
 	decrement #2 ; NAME_LENGTH - 1
@@ -489,7 +489,7 @@ UpdateCharset:
 	call .fix_sram_loop
 
 	; hall of fame nicknames
-	seek sByteBeforeHallOfFame ; literally, the byte right before sHallOfFame
+	seek sByteBeforeHallOfFame_v6 ; literally, the byte right before sHallOfFame
 	set #a, 30
 .hof_loop
 	seekfwd 8 ; go from end to mon 1 nickname

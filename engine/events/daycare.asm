@@ -748,16 +748,25 @@ DayCare_GenerateEgg:
 	; Must assign [wCurForm] before GetBaseData.
 	ld hl, wBreedMon1Form
 	call .inherit_mother_unless_samespecies ; this should preserve c!
+	ld a, [wCurForm]
+	and EXTSPECIES_MASK ; get extspecies of child
+	ld b, a
 	ld a, [hl]
-	and SPECIESFORM_MASK
+	and FORM_MASK ; get form of parent
+	or b
 	ld [wCurForm], a
 	ld b, a
 
-; it's useful for mons to have forms not found in CosmeticSpeciesAndFormTable (see: Ekans)
+; it's useful for mons to have forms found only in CosmeticSpeciesAndFormTable (see: Ekans)
 ; but we don't want to breed mons that shouldn't be hatched (see: Spiky-eared Pichu)
+	push bc
+	call GetCosmeticSpeciesAndFormIndex ; first, ensure the form even exists for this mon
+	pop bc
+	jr nc, .clear_form
 	ld hl, InvalidBreedmons
 	call GetSpeciesAndFormIndexFromHL
 	jr nc, .form_ok
+.clear_form
 	ld hl, wCurForm
 	ld a, [hl]
 	and EXTSPECIES_MASK
