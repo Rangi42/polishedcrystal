@@ -150,4 +150,5 @@
 	define EVENT_NOISY_FOREST_PIKABLU_GUY, 2027
 
 ; old data sizes
+	define BOXMON_STRUCT_LENGTH_v6, 32
 	define BOX_SIZE_v6, 0x450
