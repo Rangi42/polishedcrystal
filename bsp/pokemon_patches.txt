@@ -18,15 +18,17 @@ FixNewboxChecksum:
 	iflt #1, 50, .loop2
 
 	poppos
+	rotateleft #result, -15
 	set #3, 16
 .write_loop
 	getfilebyte #1
 	shiftleft #2, #result, 7
+	and #1, 0x7f
 	or #1, #2
 	writebyte #1
-	rotateleft #2, 1
+	rotateleft #result, 1
 	decrement #3
-	jumpz #3, .write_loop
+	jumpnz #3, .write_loop
 	return
 
 AdjustPokemonIndexes:

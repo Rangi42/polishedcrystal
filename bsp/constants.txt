@@ -40,6 +40,7 @@
 	define PARTY_COUNT_OFFSET,                 0x856
 	define PARTY_MON_OT_OFFSET,                0x97e
 	define POKEDEX_CAUGHT_OFFSET,              0xa03
+	define UNOWN_CAUGHT_OFFSET,                0xa26
 	define DAYCARE_MAN_OFFSET,                 0xa6a
 	define BREED_MON_1_NICK_OFFSET,            0xa6b
 	define BREED_MON_1_OT_OFFSET,              0xa76
@@ -68,10 +69,11 @@
 	define CAUGHTBALL_OFFSET, 28
 
 ; pokemon struct constants
-	define NUM_MOVES,     4
-	define PP_MASK,    0x3f
-	define PP_UP_MASK, 0xc0
-	define FORM_MASK,  0x1f
+	define NUM_MOVES,          4
+	define PP_MASK,         0x3f
+	define PP_UP_MASK,      0xc0
+	define FORM_MASK,       0x1f
+	define EXTSPECIES_MASK, 0x20
 
 ; pokemon constants
 	define GYARADOS, 0x82

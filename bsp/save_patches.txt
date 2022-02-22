@@ -284,9 +284,9 @@ ConvertMonIndexesTo9Bit:
 	set #1, 32
 	set #2, 8
 	call ShiftSaveDataBack
-	writeword #zero
-	writeword #zero ; effectively fillbyte 8, #zero
+	fillbyte #2, #zero
 	pos #3 ; file pointer is at pokedex seen
+	set #4, #result
 
 ; Since Unown data is becoming part of the main seen/caught array, wUnownDex must be converted
 ; to the appropriate flags. Flags will be written to the caught array and copied later to the seen array
@@ -298,22 +298,21 @@ ConvertMonIndexesTo9Bit:
 	set #2, #zero
 	push #1
 	call FlagAction
-	pop #1
 
-	seek #result
+	pop #1
+	seek #4
 	call FlagAction
 
-	set #4, #result
 	set #1, UNOWN_DEX_OFFSET_v7
 	call GetGameDataPointer
 ; Next, go to wUnownDex and convert the index to a flag in the wCaughtMon array
 	seek #result
+	set #2, 1
 .unown_loop
 	getfilebyte #1
 	writebyte #zero
 	jumpz #1, .done_unown
 	add #1, 0x11d ; NUM_SPECIES + unown form - 2 (wPokedexCaught is 1-indexed, first variant Unown is form 2)
-	set #2, 1
 	pushpos
 	ifgt #1, 0x11e, .unown_loop_cont
 	set #1, 0xc5 ; special case for form A, since it is not a variant
@@ -330,56 +329,69 @@ ConvertMonIndexesTo9Bit:
 .done_unown
 	set #1, 32
 	set #2, 10
-	set #4, #3
+	push #3
 	call ShiftSaveDataForward ; seen data gets shifted forward 10 bytes (#3 already contains save data)
-	seek #4
+	pop #3
+	seek #3
 	fillbyte #2, #zero
+
+	set #1, UNOWN_CAUGHT_OFFSET
+	call GetGameDataPointer ; copy caught unown flags to seen unown flags
+	set #1, #result
+	add #2, #1, 50
+	set #3, 5 ; unown variant flags cover bit 7 of byte 0 to bit 2 of byte 5 (no other bits are set)
+	call CopyFrom1To2
 
 	set #r0, .mon_indexes
 	set #r1, .mon_forms
 
 ; modify pokedex flags
 ; caught
-	seek #result
+	seek #4
 	set #1, 384
 	set #2, #r0
 	call ShiftFlags
+	call .ClearNewIndexes
 
 ;seen
-	seekfwd 40
+	seekfwd 50
 	set #1, 384
 	set #2, #r0
 	call ShiftFlags
+	call .ClearNewIndexes
 
 	set #1, .mon_callback
 	jump ApplyPartyPatches ; normally, I'd generalize this (as in AdjustPokemonIndexes), but there's some special cases here
 
 .mon_callback
 	seek #1
+	pushpos
 	getfilebyte #result
 	set #address, #r0
 .index_loop
-	gethalfwordinc #temp, #address ; get offset index upper bound
+	gethalfwordinc #temp, #address ; get index upper bound
 	ifeq #temp, 0xffff, .done_loop
 	gethalfwordinc #offset, #address ; get offset
 	ifgt #result, #temp, .index_loop
 	add #result, #offset
 .done_loop
-	iflt #result, 0xff, .got_result
+	iflt #result, 0x100, .got_result
 	pushpos
-	seekfwd FORM_MASK ; to extspecies
+	seekfwd FORM_OFFSET ; to extspecies
 	getfilebyte #temp
-	add #temp, 0x20
+	or #temp, 0x20
 	writebyte #temp
 	poppos
-	subtract #result, 0xfe
+	subtract #result, 0x100
 .got_result
+	lockpos
 	writebyte #result
+	unlockpos
 
 	; Special case for Pikachu, need to set fly form or surf form
 	ifne #result, 0x19, .not_pikachu ; mons like Sirfetch'd ($119) didn't exist yet, so there's no conflicts
 	pushpos
-	readbyte #temp ; item -> moves
+	readhalfword #temp ; species -> moves
 	readword #temp ; all four moves
 .move_loop
 	and #1, #temp, 0xff
@@ -401,13 +413,11 @@ ConvertMonIndexesTo9Bit:
 .not_pikachu
 	ifne #result, 0x82, .not_gyarados
 	pushpos
-	seekfwd 20 ; to forms (file pointer is at items here, not species)
+	seekfwd FORM_OFFSET
 	getfilebyte #1
 	and #temp, #1, FORM_MASK
 	ifne #temp, 0x11, .not_gyarados_form
-	increment #1
-	increment #1
-	increment #1 ; #1 = GENDER_MASK | 0x14
+	add #1, 4
 	writebyte #1
 .not_gyarados_form
 	poppos
@@ -415,7 +425,7 @@ ConvertMonIndexesTo9Bit:
 .not_gyarados
 	ifne #result, 0x81, .not_magikarp
 	pushpos
-	seekfwd 20
+	seekfwd FORM_OFFSET
 	getfilebyte #1
 	and #temp, #1, FORM_MASK
 	iflt #temp, 0x0f, .not_saucy_raindrop
@@ -432,16 +442,16 @@ ConvertMonIndexesTo9Bit:
 .not_magikarp
 	; Galarian form indexes shift from 2 to 3, and Pokedex flags need to be set
 	set #address, #r1
+	seekfwd FORM_OFFSET
 .form_loop
 	getbyteinc #1, #address
 	ifeq #1, 0xff, .done
 	getbyteinc #2, #address
 	ifne #1, #result, .form_loop
 
-	seekfwd 20 ; to forms (file pointer is at items here, not species)
 	getfilebyte #3
-	and #temp, #3, 0x20 ; check extspecies
-	jumpnz #temp, .done ; conveniently, no pokemon with variant forms is over index 0xff
+	and #temp, #3, EXTSPECIES_MASK ; check extspecies
+	jumpnz #temp, .done ; conveniently, no pokemon with cosmetic/variant forms is over index 0xff
 	and #temp, #3, FORM_MASK
 	jumpz #temp, .done
 	decrement #temp
@@ -450,7 +460,7 @@ ConvertMonIndexesTo9Bit:
 	subtract #5, #address, #r1 ; get the form+species index of the current variant form, needed for pokedex flags
 	shiftright #5, 1
 	ifeq #temp, #2, .set_pokedex
-	iflt #2, 50, .form_loop ; index of first Galarian form in .mon_forms table + 1; if not Galarian (i.e. cosmetic), loop for matching form
+	iflt #5, 50, .form_loop ; index of first Galarian form in .mon_forms table + 1; if not Galarian (i.e. cosmetic), loop for matching form
 
 	increment #temp
 	writebyte #temp
@@ -458,7 +468,7 @@ ConvertMonIndexesTo9Bit:
 	set #1, POKEDEX_CAUGHT_OFFSET
 	call GetGameDataPointer
 	seek #result
-	add #1, #5, 0x13a ; note that #5 is off by +1 for actual index, since #address is +2 bytes ahead of form actually being checked
+	add #1, #5, 0x139 ; note that #5 is off by +1 for actual index, since #address is +2 bytes ahead of form actually being checked
 	set #2, 1
 	push #1
 	call FlagAction
@@ -467,46 +477,61 @@ ConvertMonIndexesTo9Bit:
 	call FlagAction
 
 .done
-	ifeq #4, 1, FixNewboxChecksum
+	poppos
+	decrement #4
+	jumpz #4, FixNewboxChecksum
 	return
 
+.ClearNewIndexes
+	set #3, .new_indexes
+	set #2, #zero
+.clear_loop
+	getbyteinc #1, #3
+	retz #1
+	pushpos
+	call FlagAction
+	poppos
+	jump .clear_loop
+
 .mon_indexes
-	; upper bound (exclusive), offset
-	dh 0x15, 0   ; RATICATE
-	dh 0x17, 162 ; AZUMARILL
-	dh 0x6c, 0   ; HITMONCHAN
-	dh 0x75, 1   ; SEADRA
-	dh 0x77, 57  ; TOGETIC
-	dh 0x78, 152 ; TOGEKISS
-	dh 0xad, 0   ; PICHU
-	dh 0xae, 89  ; MUNCHLAX
-	dh 0xaf, 91  ; MAGNEZONE
-	dh 0xb1, 92  ; TANGROWTH
-	dh 0xb7, 0   ; BELLOSSOM
-	dh 0xb9, 2   ; SUDOWOODO
-	dh 0xbc, 6   ; YANMA
-	dh 0xbd, 84  ; YANMEGA
-	dh 0xc2, 5   ; MURKROW
-	dh 0xc3, 64  ; HONCHKROW
-	dh 0xc5, 4   ; MISDREAVUS
-	dh 0xc6, 60  ; MISMAGIUS
-	dh 0xcd, 3   ; GLIGAR
-	dh 0xce, 70  ; GLISCOR
-	dh 0xd6, 2   ; SNEASEL
-	dh 0xd7, 50  ; WEAVILE
-	dh 0xdd, 1   ; PILOSWINE
-	dh 0xde, 55  ; MAMOSWINE
-	dh 0xe1, 0   ; OCTILLERY
-	dh 0xe9, 1   ; PORYGON2
-	dh 0xea, 44  ; PORYGON_Z
-	dh 0xed, 1   ; HITMONTOP
-	dh 0xee, 2   ; ELEKID
-	dh 0xef, 31  ; ELECTIVIRE
-	dh 0xf0, 1   ; MAGBY
-	dh 0xf1, 30  ; MAGMORTAR
-	dh 0xfc, 0   ; CELEBI
-	dh 0xfe, 21  ; GLACEON
-	dh 0xff, 24  ; SYLVEON
+	; upper bound, offset
+	; note that while upper bounds are usually exclusive here, for dex flags,
+	; we do need to convert mon indexes to be 0-indexed, so it's effectively inclusive
+	dh 0x14, 0   ; RATICATE
+	dh 0x16, 162 ; AZUMARILL
+	dh 0x6b, 0   ; HITMONCHAN
+	dh 0x74, 1   ; SEADRA
+	dh 0x76, 57  ; TOGETIC
+	dh 0x77, 152 ; TOGEKISS
+	dh 0xac, 0   ; PICHU
+	dh 0xad, 89  ; MUNCHLAX
+	dh 0xae, 91  ; MAGNEZONE
+	dh 0xb0, 92  ; TANGROWTH
+	dh 0xb6, 0   ; BELLOSSOM
+	dh 0xb8, 2   ; SUDOWOODO
+	dh 0xbb, 6   ; YANMA
+	dh 0xbc, 84  ; YANMEGA
+	dh 0xc1, 5   ; MURKROW
+	dh 0xc2, 64  ; HONCHKROW
+	dh 0xc4, 4   ; MISDREAVUS
+	dh 0xc5, 60  ; MISMAGIUS
+	dh 0xcc, 3   ; GLIGAR
+	dh 0xcd, 70  ; GLISCOR
+	dh 0xd5, 2   ; SNEASEL
+	dh 0xd6, 50  ; WEAVILE
+	dh 0xdc, 1   ; PILOSWINE
+	dh 0xdd, 55  ; MAMOSWINE
+	dh 0xe0, 0   ; OCTILLERY
+	dh 0xe8, 1   ; PORYGON2
+	dh 0xe9, 44  ; PORYGON_Z
+	dh 0xec, 1   ; HITMONTOP
+	dh 0xed, 2   ; ELEKID
+	dh 0xee, 31  ; ELECTIVIRE
+	dh 0xef, 1   ; MAGBY
+	dh 0xf0, 30  ; MAGMORTAR
+	dh 0xfb, 0   ; CELEBI
+	dh 0xfd, 21  ; GLACEON
+	dh 0xfe, 24  ; SYLVEON
 	dh -1
 
 .mon_forms:
@@ -519,7 +544,7 @@ ConvertMonIndexesTo9Bit:
 	db 0x19, 4 ; PIKACHU, RED
 	db 0x19, 5 ; PIKACHU, YELLOW
 	db 0x19, 6 ; PIKACHU, SPARK
-	db 0xac, 2 ; PIKACHU, SPIKY_EARED
+	db 0xac, 2 ; PICHU, SPIKY_EARED
 	db 0x81, 2 ; MAGIKARP, SKELLY
 	db 0x81, 3 ; MAGIKARP, CALICO1
 	db 0x81, 4 ; MAGIKARP, CALICO2
@@ -574,6 +599,28 @@ ConvertMonIndexesTo9Bit:
 	db 0xde, 3 ; CORSOLA, GALARIAN
 	db -1
 
+.new_indexes
+; terimated with zero, not -1
+; converted to 0-indexed
+	db 0x14 ; SPEAROW
+	db 0x15 ; FEAROW
+	db 0x6b ; LICKITUNG
+	db 0x75 ; GOLDEEN
+	db 0x76 ; SEAKING
+	db 0xac ; IGGLYBUFF
+	db 0xad ; CLEFFA
+	db 0xba ; HOPPIP
+	db 0xbb ; SKIPLOOM
+	db 0xbc ; JUMPLUFF
+	db 0xbd ; AIPOM
+	db 0xe0 ; DELIBIRD
+	db 0xe9 ; STANTLER
+	db 0xed ; SMOOCHUM
+	db 0xfb ; AZURILL
+	db 0xfc ; WYNAUT
+	db 0xfd ; AMBIPOM
+	db 0
+
 ConvertPokerusToNybble:
 ; If a mon has an active infection, it will get reset
 ; to its full days count. Cured infections remain cured
@@ -581,10 +628,13 @@ ConvertPokerusToNybble:
 	call ApplyPartyPatches
 
 .mon_callback
+	set #temp, #1
 	add #1, POKERUS_OFFSET
 	seek #1
 	getfilebyte #1
 	retz #1
+
+	push #temp
 	set #2, 0xf
 	and #temp, #1, #2
 	set #result, 13
@@ -596,6 +646,10 @@ ConvertPokerusToNybble:
 	rotateleft #result, #2, #temp
 .got_value
 	writebyte #result
+	pop #1
+	seek #1
+	decrement #4
+	jumpz #4, FixNewboxChecksum
 	return
 
 RemovePartySpecies:
