@@ -14,8 +14,7 @@ ApplyPartyPatches:
 	call GetGameDataPointer
 	seek #result
 	readbyte #temp
-	set #1, #result
-	increment #1
+	add #1, #result, 8 ; still skip deprecated wPartySpecies
 	add #2, #result, 0x163 ; wPartyMon1Nickname - wPartyCount
 	add #3, #result, 0x121 ; wPartyMon1OT - wPartyCount
 	set #4, #zero

@@ -43,6 +43,9 @@ SavePatches:
 	dh 7
 	dw ChangeCheckValue
 
+	; dh 8
+	; ConvertSaveFileTo9Bit ; TODO: make this the wrapper function for all the below functions
+
 	dh 8
 	dw ConvertMonIndexesTo9Bit
 
