@@ -408,13 +408,13 @@ BT_AppendOTMon:
 
 	; Now we can actually start adding data.
 	ld a, [hli]
-	ld b, a
 	ld [wNamedObjectIndex], a ; for later nickname setup
 	ld a, [hld]
 	ld [wNamedObjectIndex+1], a
 	push hl
 
 	; Set de to the relevant partymon struct.
+	ld a, [wOTPartyCount]
 	ld hl, wOTPartyMon1
 	call GetPartyLocation
 	ld d, h
