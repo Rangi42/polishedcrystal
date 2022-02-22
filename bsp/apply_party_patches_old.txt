@@ -81,7 +81,7 @@ ApplyPartyPatchesOld:
 	pop #1
 	set #4, PARTYMON_STRUCT_LENGTH
 	jumpz #e, .length_OK
-	set #4, BOXMON_STRUCT_LENGTH
+	set #4, BOXMON_STRUCT_LENGTH_v6
 .length_OK
 	add #1, #4
 	pop #2

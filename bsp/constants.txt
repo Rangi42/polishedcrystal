@@ -55,7 +55,7 @@
 
 ; struct lengths
 	define PARTYMON_STRUCT_LENGTH, 48
-	define BOXMON_STRUCT_LENGTH,   32
+	define BOXMON_STRUCT_LENGTH,   49
 	define NAME_LENGTH,            11
 	define BOX_NAME_LENGTH,         9
 	define PLAYER_NAME_LENGTH,      8

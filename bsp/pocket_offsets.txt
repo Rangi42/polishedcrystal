@@ -43,7 +43,7 @@ PocketOffsetsByBuild:
 	dh DAYCARE_LADY_OFFSET_v4
 	dh 0
 
-	dh 6
+	dh 8
 	dh ITEMS_OFFSET_v7
 	dh MEDICINE_OFFSET_v7
 	dh BALLS_OFFSET_v7

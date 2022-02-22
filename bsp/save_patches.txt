@@ -273,11 +273,16 @@ ChangeCheckValue:
 	writebyte 0x61
 	return
 
+CMIStr:
+	string "ConvertMonIndexesTo9Bit"
+
 ConvertMonIndexesTo9Bit:
 ; First, we need to shift existing caught flags into their new indexes,
 ; then we need to shift caught data/unown dex forward to account for the bigger seen flag array
 ; (we've already converted unown dex to a flag array, so we have a buffer to work with).
 ; We'll handle caught data for forms later.
+	bufstring CMIStr
+	printbuf
 	set #1, POKEDEX_CAUGHT_OFFSET
 	call GetGameDataPointer
 	seek #result
@@ -306,7 +311,6 @@ ConvertMonIndexesTo9Bit:
 	set #4, #result
 	set #1, UNOWN_DEX_OFFSET_v7
 	call GetGameDataPointer
-
 ; Next, go to wUnownDex and convert the index to a flag in the wCaughtMon array
 	seek #result
 .unown_loop
@@ -344,13 +348,13 @@ ConvertMonIndexesTo9Bit:
 	seek #result
 	set #1, 384
 	set #2, #r0
-	jump ShiftFlags
+	call ShiftFlags
 
 ;seen
 	seekfwd 40
 	set #1, 384
 	set #2, #r0
-	jump ShiftFlags
+	call ShiftFlags
 
 	set #1, .mon_callback
 	jump ApplyPartyPatches ; normally, I'd generalize this (as in AdjustPokemonIndexes), but there's some special cases here
@@ -478,7 +482,7 @@ ConvertMonIndexesTo9Bit:
 	dh 0x6c, 0   ; HITMONCHAN
 	dh 0x75, 1   ; SEADRA
 	dh 0x77, 57  ; TOGETIC
-	db 0x78, 152 ; TOGEKISS
+	dh 0x78, 152 ; TOGEKISS
 	dh 0xad, 0   ; PICHU
 	dh 0xae, 89  ; MUNCHLAX
 	dh 0xaf, 91  ; MAGNEZONE
@@ -575,9 +579,14 @@ ConvertMonIndexesTo9Bit:
 	db 0xde, 3 ; CORSOLA, GALARIAN
 	db -1
 
+CPNStr:
+	string "ConvertPokerusToNybble"
+
 ConvertPokerusToNybble:
 ; If a mon has an active infection, it will get reset
 ; to its full days count. Cured infections remain cured
+	bufstring CPNStr
+	printbuf
 	set #1, .mon_callback
 	call ApplyPartyPatches
 
@@ -606,7 +615,12 @@ RemovePartySpecies:
 	fillbyte 7, #zero
 	return
 
+CPFStr:
+	string "ConvertPhoneListToFlagArray"
+
 ConvertPhoneListToFlagArray:
+	bufstring CPFStr
+	printbuf
 	set #1, PHONE_LIST_OFFSET_v7
 	call GetGameDataPointer
 	seek #result
@@ -624,7 +638,7 @@ ConvertPhoneListToFlagArray:
 	call .SetFlag
 	pop #2
 	shiftright #2, 8 ; TODO: check if this should be shiftleft instead
-	jump .phone_loop_1
+	jumpnz #2, .phone_loop_1
 
 ; Convert 5th byte
 	set #1, #3
@@ -634,8 +648,8 @@ ConvertPhoneListToFlagArray:
 	pushpos
 	set #length, 25
 .phone_loop_2
+	pos #temp
 	readbyte #1
-	decrement #1
 	call .SetFlag
 	decrement #length
 	jumpnz #length, .phone_loop_2
@@ -656,7 +670,12 @@ ConvertPhoneListToFlagArray:
 	poppos
 	return
 
+SHGStr:
+	string "ShiftHiddenGrottoContents"
+
 ShiftHiddenGrottoContents:
+	bufstring SHGStr
+	printbuf
 ; Extend end of hidden grotto list
 	set #1, CUR_GROTTO_OFFSET_v7
 	call GetGameDataPointer

@@ -55,6 +55,7 @@ ApplyPartyPatches:
 	pop #c
 	pop #d
 	pop #e
+	return
 
 .box_loop
 	; note that unlike vanilla box, newbox combines nickname and OT data into the mon struct, so they're handled slightly differently
