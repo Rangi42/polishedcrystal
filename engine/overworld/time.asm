@@ -247,7 +247,7 @@ CheckPokerusTick::
 	ld a, [hl]
 	and POKERUS_MASK
 	jr z, .next
-	assert POKERUS_CURED & %1000 == 1
+	assert POKERUS_CURED & %1000
 	ld d, POKERUS_CURED ; no need to check if pokerus status = POKERUS_CURED, bit 3 is already set
 	ld e, b
 .inner_loop

@@ -283,11 +283,11 @@ IconPointers:
 	dba CursolaIcon
 	dba SirfetchDIcon
 	dba MrRimeIcon
-	dba StantlerIcon ; TODO
-	dba ScytherIcon ; TODO
-	dba UrsaringIcon ; TODO
-	dba SneaselIcon ; TODO
-	dba QwilfishIcon ; TODO
+	dba WyrdeerIcon ; TODO
+	dba KleavorIcon ; TODO
+	dba UrsalunaIcon ; TODO
+	dba SneaslerIcon ; TODO
+	dba OverqwilIcon ; TODO
 	assert_table_length NUM_SPECIES + 1
 
 	dba UnownBIcon
@@ -339,45 +339,45 @@ endr
 
 	dba MewtwoArmoredIcon
 
-	dba RattataIcon ; TODO
-	dba RaticateIcon ; TODO
-	dba RaichuIcon ; TODO
-	dba SandshrewIcon ; TODO
-	dba SandslashIcon ; TODO
-	dba VulpixIcon ; TODO
-	dba NinetalesIcon ; TODO
-	dba DiglettIcon ; TODO
-	dba DugtrioIcon ; TODO
-	dba MeowthPlainIcon ; TODO
-	dba PersianIcon ; TODO
-	dba GeodudeIcon ; TODO
-	dba GravelerIcon ; TODO
-	dba GolemIcon ; TODO
-	dba GrimerIcon ; TODO
-	dba MukIcon ; TODO
+	dba RattataAlolanIcon ; TODO
+	dba RaticateAlolanIcon ; TODO
+	dba RaichuAlolanIcon ; TODO
+	dba SandshrewAlolanIcon ; TODO
+	dba SandslashAlolanIcon ; TODO
+	dba VulpixAlolanIcon ; TODO
+	dba NinetalesAlolanIcon ; TODO
+	dba DiglettAlolanIcon ; TODO
+	dba DugtrioAlolanIcon ; TODO
+	dba MeowthAlolanIcon ; TODO
+	dba PersianAlolanIcon ; TODO
+	dba GeodudeAlolanIcon ; TODO
+	dba GravelerAlolanIcon ; TODO
+	dba GolemAlolanIcon ; TODO
+	dba GrimerAlolanIcon ; TODO
+	dba MukAlolanIcon ; TODO
 	dba ExeggutorAlolanIcon
-	dba MarowakIcon ; TODO
+	dba MarowakAlolanIcon ; TODO
 
 	dba MeowthGalarianIcon
-	dba PonytaIcon ; TODO
-	dba RapidashIcon ; TODO
-	dba SlowpokeIcon ; TODO
-	dba SlowbroIcon ; TODO
+	dba PonytaGalarianIcon ; TODO
+	dba RapidashGalarianIcon ; TODO
+	dba SlowpokeGalarianIcon ; TODO
+	dba SlowbroGalarianIcon ; TODO
 	dba FarfetchDGalarianIcon
-	dba WeezingIcon ; TODO
+	dba WeezingGalarianIcon ; TODO
 	dba MrMimeGalarianIcon
-	dba ArticunoIcon ; TODO
-	dba ZapdosIcon ; TODO
-	dba MoltresIcon ; TODO
-	dba SlowkingIcon ; TODO
+	dba ArticunoGalarianIcon ; TODO
+	dba ZapdosGalarianIcon ; TODO
+	dba MoltresGalarianIcon ; TODO
+	dba SlowkingGalarianIcon ; TODO
 	dba CorsolaGalarianIcon
 
-	dba GrowlitheIcon ; TODO
-	dba ArcanineIcon ; TODO
-	dba VoltorbIcon ; TODO
-	dba ElectrodeIcon ; TODO
-	dba TyphlosionIcon ; TODO
-	dba QwilfishIcon ; TODO
-	dba SneaselIcon ; TODO
+	dba GrowlitheHisuianIcon ; TODO
+	dba ArcanineHisuianIcon ; TODO
+	dba VoltorbHisuianIcon ; TODO
+	dba ElectrodeHisuianIcon ; TODO
+	dba TyphlosionHisuianIcon ; TODO
+	dba QwilfishHisuianIcon ; TODO
+	dba SneaselHisuianIcon ; TODO
 
 	assert_table_length NUM_UNIQUE_POKEMON + 1
