@@ -676,7 +676,7 @@ ConvertPhoneListToFlagArray:
 	push #2
 	call .SetFlag
 	pop #2
-	shiftright #2, 8 ; TODO: check if this should be shiftleft instead
+	shiftright #2, 8
 	jumpnz #2, .phone_loop_1
 
 ; Convert 5th byte
@@ -762,7 +762,7 @@ RevertKeyItemsToIndexList:
 	jumpz #temp, .cont
 	writebyte #1
 .cont
-	shiftright #2, 8 ; TODO: check if this is shiftleft
+	shiftright #2, 1
 	jumpnz #2, .loop
 	return
 

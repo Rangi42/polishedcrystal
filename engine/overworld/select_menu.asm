@@ -22,19 +22,13 @@ CheckRegisteredItem::
 	ld a, [hl]
 	and a
 	jr z, .next
+	ld [wCurKeyItem], a
 	push hl
 	push bc
-	push af
 	call CheckKeyItem
-	jr nc, .next
-
-.registration_ok
-	pop af
 	pop bc
 	pop hl
-
-	; Useful if we only have a single registered item
-	ld [wCurKeyItem], a
+	jr nc, .next
 	inc c
 .next
 	inc hl
