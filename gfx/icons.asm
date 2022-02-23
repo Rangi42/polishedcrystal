@@ -424,6 +424,7 @@ ArticunoGalarianIcon:: INCBIN "gfx/icons/articuno_galarian.2bpp.lz"
 
 
 SECTION "Mon Icons 22", ROMX
+
 WeezingGalarianIcon:: INCBIN "gfx/icons/weezing_galarian.2bpp.lz"
 ZapdosGalarianIcon:: INCBIN "gfx/icons/zapdos_galarian.2bpp.lz"
 MoltresGalarianIcon:: INCBIN "gfx/icons/moltres_galarian.2bpp.lz"

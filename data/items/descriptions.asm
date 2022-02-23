@@ -83,7 +83,7 @@ ItemDescriptions:
 	dw MoonStoneDesc
 	dw SunStoneDesc
 	dw DuskStoneDesc
-	dw DawnStoneDesc
+	dw OvalStoneDesc
 	dw ShinyStoneDesc
 	dw IceStoneDesc
 	dw EverstoneDesc
@@ -667,7 +667,6 @@ ThunderStoneDesc:
 MoonStoneDesc:
 SunStoneDesc:
 DuskStoneDesc:
-DawnStoneDesc:
 ShinyStoneDesc:
 IceStoneDesc:
 	text "Evolves certain"
@@ -1274,6 +1273,11 @@ ElectirizerDesc:
 MagmarizerDesc:
 	text "A box packed with"
 	next "magma energy."
+	done
+
+OvalStoneDesc:
+	text "A stone as round"
+	next "as a #mon Egg."
 	done
 
 OddSouvenirDesc:
