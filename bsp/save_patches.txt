@@ -837,16 +837,18 @@ ClearNewPokedbSpace:
 	poppos
 	set #1, .box17
 	set #2, .default_themes
-	set #temp, 4
+	set #3, 4
 .default_loop_1
 	seekfwd 23
-	writedata #1, 6
-	add #1, 6
+	getwordinc #temp, #1
+	writeword #temp
+	gethalfwordinc #temp, #1
+	writehalfword #temp
 	seekfwd 3
-	writedata #2, 1
-	increment #2
-	decrement #temp
-	jumpnz #temp, .default_loop_1
+	getbyteinc #temp, #2
+	writebyte #temp
+	decrement #3
+	jumpnz #3, .default_loop_1
 
 ; do the same for sBackupNewBox
 	pop #3
@@ -858,16 +860,18 @@ ClearNewPokedbSpace:
 	poppos
 	set #1, .box17
 	set #2, .default_themes
-	set #temp, 4
+	set #3, 4
 .default_loop_2
 	seekfwd 23
-	writedata #1, 6
-	add #1, 6
+	getwordinc #temp, #1
+	writeword #temp
+	gethalfwordinc #temp, #1
+	writehalfword #temp
 	seekfwd 3
-	writedata #2, 1
-	increment #2
-	decrement #temp
-	jumpnz #temp, .default_loop_2
+	getbyteinc #temp, #2
+	writebyte #temp
+	decrement #3
+	jumpnz #3, .default_loop_2
 	return
 
 .box17
