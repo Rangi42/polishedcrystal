@@ -311,10 +311,11 @@ ConvertMonIndexesTo9Bit:
 ; Next, go to wUnownDex and convert the index to a flag in the wCaughtMon array
 	seek #result
 	set #2, 1
+	set #length, 28
 .unown_loop
 	getfilebyte #1
 	writebyte #zero
-	jumpz #1, .done_unown
+	jumpz #1, .unown_loop_skip
 	add #1, 0x11d ; NUM_SPECIES + unown form - 2 (wPokedexCaught is 1-indexed, first variant Unown is form 2)
 	pushpos
 	ifgt #1, 0x11e, .unown_loop_cont
@@ -326,10 +327,11 @@ ConvertMonIndexesTo9Bit:
 .unown_loop_cont
 	seek #4
 	call FlagAction
+.unown_loop_skip
 	poppos
-	jump .unown_loop
+	decrement #length
+	jumpnz #length, .unown_loop
 
-.done_unown
 	set #1, 32
 	set #2, 10
 	push #3
@@ -538,7 +540,7 @@ ConvertMonIndexesTo9Bit:
 	dh 0x16, 162 ; AZUMARILL
 	dh 0x6b, 0   ; HITMONCHAN
 	dh 0x74, 1   ; SEADRA
-	dh 0x76, 57  ; TOGETIC
+	dh 0x76, 58  ; TOGETIC
 	dh 0x77, 152 ; TOGEKISS
 	dh 0xac, 0   ; PICHU
 	dh 0xad, 89  ; MUNCHLAX
