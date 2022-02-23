@@ -274,6 +274,9 @@ ChangeCheckValue:
 	return
 
 ConvertMonIndexesTo9Bit:
+	set #r0, .mon_indexes
+	set #r1, .mon_forms
+
 ; First, we need to shift existing caught flags into their new indexes,
 ; then we need to shift caught data/unown dex forward to account for the bigger seen flag array
 ; (we've already converted unown dex to a flag array, so we have a buffer to work with).
@@ -342,9 +345,6 @@ ConvertMonIndexesTo9Bit:
 	set #3, 5 ; unown variant flags cover bit 7 of byte 0 to bit 2 of byte 5 (no other bits are set)
 	call CopyFrom1To2
 
-	set #r0, .mon_indexes
-	set #r1, .mon_forms
-
 ; modify pokedex flags
 ; caught
 	seek #4
@@ -360,13 +360,48 @@ ConvertMonIndexesTo9Bit:
 	call ShiftFlags
 	call .ClearNewIndexes
 
+; convert HoF mon indexes to 9bit and add entries to the pokedex
+; (only the first 10 entries need to be converted)
+; TODO: generalize this for v4
+	set #1, sHallOfFame_v7
+	seek #1
+	readbyte #a
+	ifle #a, 10, .hof_outer_loop
+	set #a, 10
+.hof_outer_loop
+	jumpz #a, .done_hof
+	increment #1
+	set #b, 6
+.hof_inner_loop
+	set #4, -1
+	jumpz #b, .done_hof_inner
+	push #1
+	call .mon_callback
+	pop #1
+	add #1, 16
+	decrement #b
+	jump .hof_inner_loop
+.done_hof_inner
+	increment #1
+	decrement #a
+	jump .hof_outer_loop
+
+.done_hof
 	set #1, .mon_callback
 	jump ApplyPartyPatches ; normally, I'd generalize this (as in AdjustPokemonIndexes), but there's some special cases here
 
 .mon_callback
 	seek #1
 	pushpos
+	increment #4 ; #4 = -1 as input for HoF mons
 	getfilebyte #result
+	jumpz #result, .done
+	ifeq #result, 0xff, .done
+	set #length, FORM_OFFSET
+	jumpnz #4, .got_offset
+	set #length, 4
+
+.got_offset
 	set #address, #r0
 .index_loop
 	gethalfwordinc #temp, #address ; get index upper bound
@@ -374,10 +409,9 @@ ConvertMonIndexesTo9Bit:
 	gethalfwordinc #offset, #address ; get offset
 	ifgt #result, #temp, .index_loop
 	add #result, #offset
-.done_loop
 	iflt #result, 0x100, .got_result
 	pushpos
-	seekfwd FORM_OFFSET ; to extspecies
+	seekfwd #length ; to extspecies
 	getfilebyte #temp
 	or #temp, 0x20
 	writebyte #temp
@@ -388,8 +422,10 @@ ConvertMonIndexesTo9Bit:
 	writebyte #result
 	unlockpos
 
+.done_loop
 	; Special case for Pikachu, need to set fly form or surf form
 	ifne #result, 0x19, .not_pikachu ; mons like Sirfetch'd ($119) didn't exist yet, so there's no conflicts
+	jumpz #4, .not_pikachu ; HoF mons don't have move data
 	pushpos
 	readhalfword #temp ; species -> moves
 	readword #temp ; all four moves
@@ -425,7 +461,7 @@ ConvertMonIndexesTo9Bit:
 .not_gyarados
 	ifne #result, 0x81, .not_magikarp
 	pushpos
-	seekfwd FORM_OFFSET
+	seekfwd #length
 	getfilebyte #1
 	and #temp, #1, FORM_MASK
 	iflt #temp, 0x0f, .not_saucy_raindrop
@@ -442,7 +478,7 @@ ConvertMonIndexesTo9Bit:
 .not_magikarp
 	; Galarian form indexes shift from 2 to 3, and Pokedex flags need to be set
 	set #address, #r1
-	seekfwd FORM_OFFSET
+	seekfwd #length
 .form_loop
 	getbyteinc #1, #address
 	ifeq #1, 0xff, .done
@@ -478,6 +514,7 @@ ConvertMonIndexesTo9Bit:
 
 .done
 	poppos
+	decrement #4
 	decrement #4
 	jumpz #4, FixNewboxChecksum
 	return
@@ -700,6 +737,7 @@ ConvertPhoneListToFlagArray:
 	return
 
 .SetFlag
+	retz #1
 	pushpos
 	seek #result
 	push #result
