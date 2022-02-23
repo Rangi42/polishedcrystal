@@ -84,7 +84,7 @@ ItemIconPointers:
 	dba MoonStoneIcon
 	dba SunStoneIcon
 	dba DuskStoneIcon
-	dba DawnStoneIcon
+	dba OvalStoneIcon
 	dba ShinyStoneIcon
 	dba IceStoneIcon
 	dba EverstoneIcon

@@ -95,7 +95,7 @@ endc
 	li "Moon Stone"
 	li "Sun Stone"
 	li "Dusk Stone"
-	li "Dawn Stone"
+	li "Oval Stone"
 	li "Shiny Stone"
 	li "Ice Stone"
 	li "Everstone"

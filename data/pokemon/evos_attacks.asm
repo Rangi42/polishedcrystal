@@ -5799,7 +5799,7 @@ MimeJrEvosAttacks:
 	db -1 ; no more level-up moves
 
 HappinyEvosAttacks:
-	evo_data EVOLVE_LEVEL, 20, CHANSEY ; TODO: Oval Stone
+	evo_data EVOLVE_HOLDING, OVAL_STONE, TR_MORNDAY, CHANSEY
 	db -1 ; no more evolutions
 	db 1, MINIMIZE
 	db 1, TACKLE ; Pound → similar move
