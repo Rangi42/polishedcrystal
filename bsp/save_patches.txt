@@ -741,7 +741,7 @@ RevertKeyItemsToIndexList:
 	set #1, NUM_ITEMS_OFFSET_v7
 	call GetGameDataPointer
 	set #3, #result
-	set #1, 980 ; wNumItems -> wCelebiEvent-0001
+	set #1, 885 ; wNumItems -> wCurBox
 	set #2, 33
 	call ShiftSaveDataForward
 
@@ -826,18 +826,61 @@ ClearNewPokedbSpace:
 	set #3, 980 ; sHallOfFameEnd - sHallOfFame, we only want the first 10 HoF entries
 	call CopyFrom1To2
 
-; copy sNewBox from sScratch to new location, then clear data afterwards
+; copy sNewBox from sScratch to new location, clear data for new boxes, then set default values
 	set #1, #zero ; sNewBox1
 	set #2, sNewBox1
 	set #3, 528 ; sNewBox17 - sNewBox
 	push #3
 	call CopyFrom1To2
+	pushpos
 	fillbyte 132, #zero ; sNewBoxEnd - sNewBox17
+	poppos
+	set #1, .box17
+	set #2, .default_themes
+	set #temp, 4
+.default_loop_1
+	seekfwd 23
+	writedata #1, 6
+	add #1, 6
+	seekfwd 3
+	writedata #2, 1
+	increment #2
+	decrement #temp
+	jumpnz #temp, .default_loop_1
 
 ; do the same for sBackupNewBox
 	pop #3
 	set #1, #3 ; sBackupNewBox1 is at memory address 0x210 (decimal 528)
 	set #2, sBackupNewBox1
 	call CopyFrom1To2
+	pushpos
 	fillbyte 132, #zero
+	poppos
+	set #1, .box17
+	set #2, .default_themes
+	set #temp, 4
+.default_loop_2
+	seekfwd 23
+	writedata #1, 6
+	add #1, 6
+	seekfwd 3
+	writedata #2, 1
+	increment #2
+	decrement #temp
+	jumpnz #temp, .default_loop_2
 	return
+
+.box17
+	db 0x81, 0xae, 0xb7, 0xe1, 0xe7, 0x53 ; "Box17@"
+
+; .box18
+	db 0x81, 0xae, 0xb7, 0xe1, 0xe8, 0x53 ; "Box18@"
+
+; .box19
+	db 0x81, 0xae, 0xb7, 0xe1, 0xe9, 0x53 ; "Box19@"
+
+; .box20
+	db 0x81, 0xae, 0xb7, 0xe2, 0xe0, 0x53 ; "Box20@"
+
+.default_themes
+	db 0x14, 0x1d, 0x07, 0x08
