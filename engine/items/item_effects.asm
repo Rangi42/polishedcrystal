@@ -24,7 +24,6 @@ ItemEffects:
 	dw PokeBallEffect     ; FAST_BALL
 	dw PokeBallEffect     ; HEAVY_BALL
 	dw PokeBallEffect     ; LOVE_BALL
-	dw AbilityPatch       ; ABILITYPATCH
 	dw PokeBallEffect     ; REPEAT_BALL
 	dw PokeBallEffect     ; TIMER_BALL
 	dw PokeBallEffect     ; NEST_BALL
@@ -69,37 +68,11 @@ ItemEffects:
 	dw RestoreHPEffect    ; MOOMOO_MILK
 	dw HealStatusEffect   ; RAGECANDYBAR
 	dw HealStatusEffect   ; PEWTERCRUNCH
-	dw SacredAsh          ; SACRED_ASH
 	dw EnergyPowder       ; ENERGYPOWDER
 	dw EnergyRoot         ; ENERGY_ROOT
 	dw HealPowder         ; HEAL_POWDER
 	dw RevivalHerb        ; REVIVAL_HERB
-	dw XItemEffect        ; X_ATTACK
-	dw XItemEffect        ; X_DEFEND
-	dw XItemEffect        ; X_SPEED
-	dw XItemEffect        ; X_SPCL_ATK
-	dw XItemEffect        ; X_SPCL_DEF
-	dw XItemEffect        ; X_ACCURACY
-	dw DireHit            ; DIRE_HIT
-	dw GuardSpec          ; GUARD_SPEC
-	dw RepelEffect        ; REPEL
-	dw RepelEffect        ; SUPER_REPEL
-	dw RepelEffect        ; MAX_REPEL
-	dw EscapeRope         ; ESCAPE_ROPE
-	dw PokeDoll           ; POKE_DOLL
-	dw AbilityCap         ; ABILITY_CAP
-	dw EvoStoneEffect     ; LEAF_STONE
-	dw EvoStoneEffect     ; FIRE_STONE
-	dw EvoStoneEffect     ; WATER_STONE
-	dw EvoStoneEffect     ; THUNDERSTONE
-	dw EvoStoneEffect     ; MOON_STONE
-	dw EvoStoneEffect     ; SUN_STONE
-	dw EvoStoneEffect     ; DUSK_STONE
-	dw IsntTheTimeMessage ; OVAL_STONE
-	dw EvoStoneEffect     ; SHINY_STONE
-	dw EvoStoneEffect     ; ICE_STONE
-	dw IsntTheTimeMessage ; EVERSTONE
-	dw IsntTheTimeMessage ; EXP_SHARE
+	dw SacredAsh          ; SACRED_ASH
 	dw HealStatusEffect   ; CHERI_BERRY
 	dw HealStatusEffect   ; CHESTO_BERRY
 	dw HealStatusEffect   ; PECHA_BERRY
@@ -131,6 +104,34 @@ ItemEffects:
 	dw IsntTheTimeMessage ; KEE_BERRY
 	dw IsntTheTimeMessage ; MARANGABERRY
 	dw RestoreHPEffect    ; BERRY_JUICE
+	dw RepelEffect        ; REPEL
+	dw RepelEffect        ; SUPER_REPEL
+	dw RepelEffect        ; MAX_REPEL
+	dw EscapeRope         ; ESCAPE_ROPE
+	dw PokeDoll           ; POKE_DOLL
+	dw IsntTheTimeMessage ; MULCH
+	dw IsntTheTimeMessage ; SWEET_HONEY
+	dw XItemEffect        ; X_ATTACK
+	dw XItemEffect        ; X_DEFEND
+	dw XItemEffect        ; X_SPEED
+	dw XItemEffect        ; X_SPCL_ATK
+	dw XItemEffect        ; X_SPCL_DEF
+	dw XItemEffect        ; X_ACCURACY
+	dw DireHit            ; DIRE_HIT
+	dw GuardSpec          ; GUARD_SPEC
+	dw AbilityCap         ; ABILITY_CAP
+	dw AbilityPatch       ; ABILITYPATCH
+	dw EvoStoneEffect     ; LEAF_STONE
+	dw EvoStoneEffect     ; FIRE_STONE
+	dw EvoStoneEffect     ; WATER_STONE
+	dw EvoStoneEffect     ; THUNDERSTONE
+	dw EvoStoneEffect     ; ICE_STONE
+	dw EvoStoneEffect     ; MOON_STONE
+	dw EvoStoneEffect     ; SUN_STONE
+	dw EvoStoneEffect     ; DUSK_STONE
+	dw EvoStoneEffect     ; SHINY_STONE
+	dw IsntTheTimeMessage ; EVERSTONE
+	dw IsntTheTimeMessage ; EXP_SHARE
 	dw IsntTheTimeMessage ; SILK_SCARF
 	dw IsntTheTimeMessage ; BLACK_BELT
 	dw IsntTheTimeMessage ; SHARP_BEAK
@@ -149,17 +150,52 @@ ItemEffects:
 	dw IsntTheTimeMessage ; DRAGON_FANG
 	dw IsntTheTimeMessage ; BLACKGLASSES
 	dw IsntTheTimeMessage ; PINK_BOW
+	dw IsntTheTimeMessage ; BERSERK_GENE
 	dw IsntTheTimeMessage ; BRIGHTPOWDER
-	dw IsntTheTimeMessage ; SCOPE_LENS
 	dw IsntTheTimeMessage ; QUICK_CLAW
 	dw IsntTheTimeMessage ; KINGS_ROCK
-	dw IsntTheTimeMessage ; FOCUS_BAND
-	dw IsntTheTimeMessage ; LEFTOVERS
-	dw IsntTheTimeMessage ; LUCKY_EGG
 	dw IsntTheTimeMessage ; AMULET_COIN
 	dw IsntTheTimeMessage ; CLEANSE_TAG
 	dw IsntTheTimeMessage ; SMOKE_BALL
-	dw IsntTheTimeMessage ; BERSERK_GENE
+	dw IsntTheTimeMessage ; FOCUS_BAND
+	dw IsntTheTimeMessage ; LUCKY_EGG
+	dw IsntTheTimeMessage ; LEFTOVERS
+	dw IsntTheTimeMessage ; SOOTHE_BELL
+	dw IsntTheTimeMessage ; SHELL_BELL
+	dw IsntTheTimeMessage ; MUSCLE_BAND
+	dw IsntTheTimeMessage ; WISE_GLASSES
+	dw IsntTheTimeMessage ; EXPERT_BELT
+	dw IsntTheTimeMessage ; LIGHT_CLAY
+	dw IsntTheTimeMessage ; LIFE_ORB
+	dw IsntTheTimeMessage ; FOCUS_SASH
+	dw IsntTheTimeMessage ; METRONOME_I
+	dw IsntTheTimeMessage ; IRON_BALL
+	dw IsntTheTimeMessage ; LAGGING_TAIL
+	dw IsntTheTimeMessage ; DESTINY_KNOT
+	dw IsntTheTimeMessage ; GRIP_CLAW
+	dw IsntTheTimeMessage ; SHED_SHELL
+	dw IsntTheTimeMessage ; BIG_ROOT
+	dw IsntTheTimeMessage ; EVIOLITE
+	dw IsntTheTimeMessage ; ROCKY_HELMET
+	dw IsntTheTimeMessage ; AIR_BALLOON
+	dw IsntTheTimeMessage ; RED_CARD
+	dw IsntTheTimeMessage ; RING_TARGET
+	dw IsntTheTimeMessage ; BINDING_BAND
+	dw IsntTheTimeMessage ; ABSORB_BULB
+	dw IsntTheTimeMessage ; CELL_BATTERY
+	dw IsntTheTimeMessage ; EJECT_BUTTON
+	dw IsntTheTimeMessage ; WEAK_POLICY
+	dw IsntTheTimeMessage ; ASSAULT_VEST
+	dw IsntTheTimeMessage ; LUMINOUSMOSS
+	dw IsntTheTimeMessage ; SNOWBALL
+	dw IsntTheTimeMessage ; SAFE_GOGGLES
+	dw IsntTheTimeMessage ; PROTECT_PADS
+	dw IsntTheTimeMessage ; THROAT_SPRAY
+	dw IsntTheTimeMessage ; EJECT_PACK
+	dw IsntTheTimeMessage ; HEAVY_BOOTS
+	dw IsntTheTimeMessage ; BLUNDRPOLICY
+	dw IsntTheTimeMessage ; ROOM_SERVICE
+	dw IsntTheTimeMessage ; UTILUMBRELLA
 	dw IsntTheTimeMessage ; LIGHT_BALL
 	dw IsntTheTimeMessage ; LEEK
 	dw IsntTheTimeMessage ; THICK_CLUB
@@ -167,44 +203,9 @@ ItemEffects:
 	dw IsntTheTimeMessage ; METAL_POWDER
 	dw IsntTheTimeMessage ; QUICK_POWDER
 	dw IsntTheTimeMessage ; ARMOR_SUIT
-	dw IsntTheTimeMessage ; AIR_BALLOON
-	dw IsntTheTimeMessage ; ASSAULT_VEST
-	dw IsntTheTimeMessage ; BIG_ROOT
-	dw IsntTheTimeMessage ; BINDING_BAND
-	dw IsntTheTimeMessage ; DESTINY_KNOT
-	dw IsntTheTimeMessage ; EVIOLITE
-	dw IsntTheTimeMessage ; EXPERT_BELT
-	dw IsntTheTimeMessage ; FOCUS_SASH
-	dw IsntTheTimeMessage ; GRIP_CLAW
-	dw IsntTheTimeMessage ; LIFE_ORB
-	dw IsntTheTimeMessage ; LIGHT_CLAY
-	dw IsntTheTimeMessage ; METRONOME_I
-	dw IsntTheTimeMessage ; MUSCLE_BAND
-	dw IsntTheTimeMessage ; PROTECT_PADS
-	dw IsntTheTimeMessage ; ROCKY_HELMET
-	dw IsntTheTimeMessage ; SAFE_GOGGLES
-	dw IsntTheTimeMessage ; SHED_SHELL
-	dw IsntTheTimeMessage ; SHELL_BELL
-	dw IsntTheTimeMessage ; SOOTHE_BELL
-	dw IsntTheTimeMessage ; WEAK_POLICY
+	dw IsntTheTimeMessage ; SCOPE_LENS
 	dw IsntTheTimeMessage ; WIDE_LENS
-	dw IsntTheTimeMessage ; WISE_GLASSES
 	dw IsntTheTimeMessage ; ZOOM_LENS
-	dw IsntTheTimeMessage ; EJECT_BUTTON
-	dw IsntTheTimeMessage ; LAGGING_TAIL
-	dw IsntTheTimeMessage ; IRON_BALL
-	dw IsntTheTimeMessage ; RING_TARGET
-	dw IsntTheTimeMessage ; RED_CARD
-	dw IsntTheTimeMessage ; ABSORB_BULB
-	dw IsntTheTimeMessage ; CELL_BATTERY
-	dw IsntTheTimeMessage ; LUMINOUSMOSS
-	dw IsntTheTimeMessage ; SNOWBALL
-	dw IsntTheTimeMessage ; EJECT_PACK
-	dw IsntTheTimeMessage ; ROOM_SERVICE
-	dw IsntTheTimeMessage ; BLUNDRPOLICY
-	dw IsntTheTimeMessage ; THROAT_SPRAY
-	dw IsntTheTimeMessage ; HEAVY_BOOTS
-	dw IsntTheTimeMessage ; UTILUMBRELLA
 	dw IsntTheTimeMessage ; MENTAL_HERB
 	dw IsntTheTimeMessage ; POWER_HERB
 	dw IsntTheTimeMessage ; WHITE_HERB
@@ -233,7 +234,12 @@ ItemEffects:
 	dw IsntTheTimeMessage ; MAGMARIZER
 	dw IsntTheTimeMessage ; RAZOR_FANG
 	dw IsntTheTimeMessage ; RAZOR_CLAW
+	dw IsntTheTimeMessage ; OVAL_STONE
 	dw EvoStoneEffect     ; ODD_SOUVENIR
+	dw IsntTheTimeMessage ; SILVER_LEAF
+	dw IsntTheTimeMessage ; GOLD_LEAF
+	dw IsntTheTimeMessage ; MINT_LEAF
+	dw IsntTheTimeMessage ; BOTTLE_CAP
 	dw IsntTheTimeMessage ; NUGGET
 	dw IsntTheTimeMessage ; BIG_NUGGET
 	dw IsntTheTimeMessage ; TINYMUSHROOM
@@ -246,16 +252,10 @@ ItemEffects:
 	dw IsntTheTimeMessage ; STAR_PIECE
 	dw IsntTheTimeMessage ; BRICK_PIECE
 	dw IsntTheTimeMessage ; RARE_BONE
-	dw IsntTheTimeMessage ; SILVER_LEAF
-	dw IsntTheTimeMessage ; GOLD_LEAF
 	dw IsntTheTimeMessage ; SLOWPOKETAIL
-	dw IsntTheTimeMessage ; BOTTLE_CAP
 	dw IsntTheTimeMessage ; HELIX_FOSSIL
 	dw IsntTheTimeMessage ; DOME_FOSSIL
 	dw IsntTheTimeMessage ; OLD_AMBER
-	dw IsntTheTimeMessage ; MULCH
-	dw IsntTheTimeMessage ; SWEET_HONEY
-	dw IsntTheTimeMessage ; MINT_LEAF
 	dw IsntTheTimeMessage ; FLOWER_MAIL
 	dw IsntTheTimeMessage ; SURF_MAIL
 	dw IsntTheTimeMessage ; LITEBLUEMAIL
@@ -286,32 +286,32 @@ KeyItemEffects:
 	dw OldRod             ; OLD_ROD
 	dw GoodRod            ; GOOD_ROD
 	dw SuperRod           ; SUPER_ROD
-	dw CoinCase           ; COIN_CASE
 	dw Itemfinder         ; ITEMFINDER
-	dw IsntTheTimeMessage ; MYSTERY_EGG
+	dw CoinCase           ; COIN_CASE
+	dw ApricornBox        ; APRICORN_BOX
+	dw TypeChart          ; TYPE_CHART
+	dw BlueCard           ; BLUE_CARD
 	dw SquirtBottle       ; SQUIRTBOTTLE
+	dw IsntTheTimeMessage ; SILPHSCOPE2
+	dw IsntTheTimeMessage ; MYSTERY_EGG
 	dw IsntTheTimeMessage ; SECRETPOTION
 	dw IsntTheTimeMessage ; RED_SCALE
 	dw CardKey            ; CARD_KEY
 	dw BasementKey        ; BASEMENT_KEY
-	dw IsntTheTimeMessage ; S_S_TICKET
-	dw IsntTheTimeMessage ; PASS
-	dw IsntTheTimeMessage ; MACHINE_PART
 	dw IsntTheTimeMessage ; LOST_ITEM
+	dw IsntTheTimeMessage ; MACHINE_PART
 	dw IsntTheTimeMessage ; RAINBOW_WING
 	dw IsntTheTimeMessage ; SILVER_WING
 	dw IsntTheTimeMessage ; CLEAR_BELL
 	dw IsntTheTimeMessage ; GS_BALL
-	dw BlueCard           ; BLUE_CARD
+	dw IsntTheTimeMessage ; S_S_TICKET
+	dw IsntTheTimeMessage ; PASS
 	dw IsntTheTimeMessage ; ORANGETICKET
 	dw IsntTheTimeMessage ; MYSTICTICKET
 	dw IsntTheTimeMessage ; OLD_SEA_MAP
 	dw IsntTheTimeMessage ; SHINY_CHARM
 	dw IsntTheTimeMessage ; OVAL_CHARM
 	dw IsntTheTimeMessage ; CATCH_CHARM
-	dw IsntTheTimeMessage ; SILPHSCOPE2
-	dw ApricornBox        ; APRICORN_BOX
-	dw TypeChart          ; TYPE_CHART
 	assert_table_length NUM_KEY_ITEMS
 
 PokeBallEffect:

@@ -12,7 +12,6 @@ ItemDescriptions:
 	dw FastBallDesc
 	dw HeavyBallDesc
 	dw LoveBallDesc
-	dw AbilityPatchDesc
 	dw RepeatBallDesc
 	dw TimerBallDesc
 	dw NestBallDesc
@@ -31,7 +30,7 @@ ItemDescriptions:
 	dw MaxPotionDesc
 	dw AntidoteDesc
 	dw BurnHealDesc
-	dw ParlyzHealDesc
+	dw ParalyzeHealDesc
 	dw AwakeningDesc
 	dw IceHealDesc
 	dw FullHealDesc
@@ -57,37 +56,11 @@ ItemDescriptions:
 	dw MoomooMilkDesc
 	dw RageCandyBarDesc
 	dw PewterCrunchDesc
-	dw SacredAshDesc
 	dw EnergyPowderDesc
 	dw EnergyRootDesc
 	dw HealPowderDesc
 	dw RevivalHerbDesc
-	dw XAttackDesc
-	dw XDefendDesc
-	dw XSpeedDesc
-	dw XSpclAtkDesc
-	dw XSpclDefDesc
-	dw XAccuracyDesc
-	dw DireHitDesc
-	dw GuardSpecDesc
-	dw RepelDesc
-	dw SuperRepelDesc
-	dw MaxRepelDesc
-	dw EscapeRopeDesc
-	dw PokeDollDesc
-	dw AbilityCapDesc
-	dw LeafStoneDesc
-	dw FireStoneDesc
-	dw WaterStoneDesc
-	dw ThunderStoneDesc
-	dw MoonStoneDesc
-	dw SunStoneDesc
-	dw DuskStoneDesc
-	dw OvalStoneDesc
-	dw ShinyStoneDesc
-	dw IceStoneDesc
-	dw EverstoneDesc
-	dw ExpShareDesc
+	dw SacredAshDesc
 	dw CheriBerryDesc
 	dw ChestoBerryDesc
 	dw PechaBerryDesc
@@ -119,6 +92,34 @@ ItemDescriptions:
 	dw KeeBerryDesc
 	dw MarangaBerryDesc
 	dw BerryJuiceDesc
+	dw RepelDesc
+	dw SuperRepelDesc
+	dw MaxRepelDesc
+	dw EscapeRopeDesc
+	dw PokeDollDesc
+	dw MulchDesc
+	dw SweetHoneyDesc
+	dw XAttackDesc
+	dw XDefendDesc
+	dw XSpeedDesc
+	dw XSpclAtkDesc
+	dw XSpclDefDesc
+	dw XAccuracyDesc
+	dw DireHitDesc
+	dw GuardSpecDesc
+	dw AbilityCapDesc
+	dw AbilityPatchDesc
+	dw LeafStoneDesc
+	dw FireStoneDesc
+	dw WaterStoneDesc
+	dw ThunderStoneDesc
+	dw IceStoneDesc
+	dw MoonStoneDesc
+	dw SunStoneDesc
+	dw DuskStoneDesc
+	dw ShinyStoneDesc
+	dw EverstoneDesc
+	dw ExpShareDesc
 	dw SilkScarfDesc
 	dw BlackBeltDesc
 	dw SharpBeakDesc
@@ -137,62 +138,62 @@ ItemDescriptions:
 	dw DragonFangDesc
 	dw BlackGlassesDesc
 	dw PinkBowDesc
+	dw BerserkGeneDesc
 	dw BrightPowderDesc
-	dw ScopeLensDesc
 	dw QuickClawDesc
 	dw KingsRockDesc
-	dw FocusBandDesc
-	dw LeftoversDesc
-	dw LuckyEggDesc
 	dw AmuletCoinDesc
 	dw CleanseTagDesc
 	dw SmokeBallDesc
-	dw BerserkGeneDesc
+	dw FocusBandDesc
+	dw LuckyEggDesc
+	dw LeftoversDesc
+	dw SootheBellDesc
+	dw ShellBellDesc
+	dw MuscleBandDesc
+	dw WiseGlassesDesc
+	dw ExpertBeltDesc
+	dw LightClayDesc
+	dw LifeOrbDesc
+	dw FocusSashDesc
+	dw MetronomeIDesc
+	dw IronBallDesc
+	dw LaggingTailDesc
+	dw DestinyKnotDesc
+	dw GripClawDesc
+	dw ShedShellDesc
+	dw BigRootDesc
+	dw EvioliteDesc
+	dw RockyHelmetDesc
+	dw AirBalloonDesc
+	dw RedCardDesc
+	dw RingTargetDesc
+	dw BindingBandDesc
+	dw AbsorbBulbDesc
+	dw CellBatteryDesc
+	dw EjectButtonDesc
+	dw WeakPolicyDesc
+	dw AssaultVestDesc
+	dw LuminousMossDesc
+	dw SnowballDesc
+	dw SafeGogglesDesc
+	dw ProtectPadsDesc
+	dw ThroatSprayDesc
+	dw EjectPackDesc
+	dw HeavyBootsDesc
+	dw BlundrPolicyDesc
+	dw RoomServiceDesc
+	dw UtilUmbrellaDesc
 	dw LightBallDesc
-	dw StickDesc
+	dw LeekDesc
 	dw ThickClubDesc
 	dw LuckyPunchDesc
 	dw MetalPowderDesc
 	dw QuickPowderDesc
 	dw ArmorSuitDesc
-	dw AirBalloonDesc
-	dw AssaultVestDesc
-	dw BigRootDesc
-	dw BindingBandDesc
-	dw DestinyKnotDesc
-	dw EvioliteDesc
-	dw ExpertBeltDesc
-	dw FocusSashDesc
-	dw GripClawDesc
-	dw LifeOrbDesc
-	dw LightClayDesc
-	dw MetronomeIDesc
-	dw MuscleBandDesc
-	dw ProtectPadsDesc
-	dw RockyHelmetDesc
-	dw SafeGogglesDesc
-	dw ShedShellDesc
-	dw ShellBellDesc
-	dw SootheBellDesc
-	dw WeakPolicyDesc
+	dw ScopeLensDesc
 	dw WideLensDesc
-	dw WiseGlassesDesc
 	dw ZoomLensDesc
-	dw EjectButtonDesc
-	dw LaggingTailDesc
-	dw IronBallDesc
-	dw RingTargetDesc
-	dw RedCardDesc
-	dw AbsorbBulbDesc
-	dw CellBatteryDesc
-	dw LuminousMossDesc
-	dw SnowballDesc
-	dw EjectPackDesc
-	dw RoomServiceDesc
-	dw BlundrPolicyDesc
-	dw ThroatSprayDesc
-	dw HeavyBootsDesc
-	dw UtilUmbrellaDesc
 	dw MentalHerbDesc
 	dw PowerHerbDesc
 	dw WhiteHerbDesc
@@ -221,7 +222,12 @@ ItemDescriptions:
 	dw MagmarizerDesc
 	dw RazorFangDesc
 	dw RazorClawDesc
+	dw OvalStoneDesc
 	dw OddSouvenirDesc
+	dw SilverLeafDesc
+	dw GoldLeafDesc
+	dw MintLeafDesc
+	dw BottleCapDesc
 	dw NuggetDesc
 	dw BigNuggetDesc
 	dw TinyMushroomDesc
@@ -234,16 +240,10 @@ ItemDescriptions:
 	dw StarPieceDesc
 	dw BrickPieceDesc
 	dw RareBoneDesc
-	dw SilverLeafDesc
-	dw GoldLeafDesc
 	dw SlowpokeTailDesc
-	dw BottleCapDesc
 	dw HelixFossilDesc
 	dw DomeFossilDesc
 	dw OldAmberDesc
-	dw MulchDesc
-	dw SweetHoneyDesc
-	dw MintLeafDesc
 	dw FlowerMailDesc
 	dw SurfMailDesc
 	dw LiteBlueMailDesc
@@ -257,36 +257,38 @@ ItemDescriptions:
 	assert_table_length NUM_ITEMS
 
 KeyItemDescriptions:
+	table_width 2, KeyItemDescriptions
 	dw BicycleDesc
 	dw OldRodDesc
 	dw GoodRodDesc
 	dw SuperRodDesc
-	dw CoinCaseDesc
 	dw ItemfinderDesc
-	dw MysteryEggDesc
+	dw CoinCaseDesc
+	dw ApricornBoxDesc
+	dw TypeChartDesc
+	dw BlueCardDesc
 	dw SquirtBottleDesc
+	dw SilphScope2Desc
+	dw MysteryEggDesc
 	dw SecretPotionDesc
 	dw RedScaleDesc
 	dw CardKeyDesc
 	dw BasementKeyDesc
-	dw SSTicketDesc
-	dw PassDesc
-	dw MachinePartDesc
 	dw LostItemDesc
+	dw MachinePartDesc
 	dw RainbowWingDesc
 	dw SilverWingDesc
 	dw ClearBellDesc
 	dw GSBallDesc
-	dw BlueCardDesc
+	dw SSTicketDesc
+	dw PassDesc
 	dw OrangeTicketDesc
 	dw MysticTicketDesc
 	dw OldSeaMapDesc
 	dw ShinyCharmDesc
 	dw OvalCharmDesc
 	dw CatchCharmDesc
-	dw SilphScope2Desc
-	dw ApricornBoxDesc
-	dw TypeChartDesc
+	assert_table_length NUM_KEY_ITEMS
 
 PokeBallDesc:
 	text "An item for catch-"
@@ -443,7 +445,7 @@ BurnHealDesc:
 	next "#mon."
 	done
 
-ParlyzHealDesc:
+ParalyzeHealDesc:
 	text "Heals paralyzed"
 	next "#mon."
 	done
@@ -990,8 +992,8 @@ LightBallDesc:
 	next "orb. (Hold)"
 	done
 
-StickDesc:
-	text "An ordinary stick."
+LeekDesc:
+	text "An ordinary leek."
 	next "Sell low."
 	done
 

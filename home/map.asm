@@ -1780,11 +1780,6 @@ CopyMapPartial::
 	rst CopyBytes
 	ret
 
-SwitchToMapScriptsBank::
-	ld a, [wMapScriptsBank]
-	rst Bankswitch
-	ret
-
 GetAnyMapBlocksBank::
 ; Return the blockdata bank for group b map c.
 	push de
