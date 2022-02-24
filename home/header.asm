@@ -127,7 +127,12 @@ GetCGBLayout::
 SECTION "timer", ROM0[$0050]
 ; TIMER is never enabled
 
-	ds 8 ; unused
+	ds 3 ; unused
+
+SwitchToMapScriptsBank::
+	ld a, [wMapScriptsBank]
+	rst Bankswitch
+	ret
 
 
 SECTION "serial", ROM0[$0058]

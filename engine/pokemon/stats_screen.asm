@@ -17,7 +17,7 @@ StatsScreenInit:
 	call LoadFontsBattleExtra
 	ld hl, GFX_Stats
 	ld de, vTiles2 tile $31
-	lb bc, BANK(GFX_Stats), 42
+	lb bc, BANK(GFX_Stats), 41
 	call DecompressRequest2bpp
 	ld a, [wTempMonBox]
 	ld b, a
