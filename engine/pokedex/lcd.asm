@@ -1086,13 +1086,14 @@ PVB_UpdateDexMap::
 
 	ld a, [wPokedex_MonInfoBank]
 	ldh [rVBK], a
-	ld de, sScratch + 1 tiles
+	ld a, BANK(wDecompressScratch)
+	ldh [rSVBK], a
+	call GetPaddedFrontpicAddress
 	ld bc, vTiles2 tile $40
-	ld a, BANK(sScratch)
-	call GetSRAMBank
-	ld a, 48
+	ld a, 7 * 7 - 1
 	call GDMACopy
-	call CloseSRAM
+	ld a, BANK(wDex2bpp)
+	ldh [rSVBK], a
 
 .frontpic_done
 	bit DEXGFX_POKEINFO, [hl]

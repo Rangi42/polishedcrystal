@@ -53,6 +53,17 @@ DrawBattleHPBar::
 .done
 	jmp PopBCDEHL
 
+GetPaddedFrontpicAddress::
+; 5x5 or 6x6 pics padded to 7x7 tiles are stored at the tail end of wDecompressScratch.
+; 7x7 pics may have enough animation tiles that there are not 7x7 free tiles at the end;
+; but since the beginning is already 7x7 it can reuse that space.
+	ld a, [wMonPicSize]
+	cp 7
+	ld de, wDecompressScratch
+	ret z
+	ld de, wDecompressScratch + $100 tiles - (7 * 7) tiles
+	ret
+
 PlaceFrontpicAtHL:
 	xor a
 _PlaceFrontpicAtHL:

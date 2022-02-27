@@ -1018,7 +1018,13 @@ _GetCursorMon:
 	ld a, 1
 	ldh [rVBK], a
 .dont_switch_vbk
+	ldh a, [rSVBK]
+	push af
+	ld a, BANK(wDecompressScratch)
+	ldh [rSVBK], a
 	farcall GetPreparedFrontpic
+	pop af
+	ldh [rSVBK], a
 	xor a
 	ldh [rVBK], a
 	ld hl, wBillsPC_ItemVWF

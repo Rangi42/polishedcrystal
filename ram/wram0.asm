@@ -1238,6 +1238,9 @@ wCursorCurrentTile:: dw
 	ds 3
 w2DMenuDataEnd::
 
+wMonPicSize:: db
+wMonAnimationSize:: db
+
 wBTTempOTSprite:: db
 
 wPendingOverworldGraphics:: db

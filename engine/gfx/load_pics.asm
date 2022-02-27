@@ -8,7 +8,7 @@ GetFrontpic:
 	call _GetFrontpic
 	pop af
 	ldh [rSVBK], a
-	jmp CloseSRAM
+	ret
 
 PrepareFrontpic:
 	ld a, [wCurPartySpecies]
@@ -20,13 +20,7 @@ PrepareFrontpic:
 	call _PrepareFrontpic
 	pop af
 	ldh [rSVBK], a
-	jmp CloseSRAM
-
-GetPreparedFrontpic:
-	ld a, BANK(sScratch)
-	call GetSRAMBank
-	call _GetPreparedFrontpic
-	jmp CloseSRAM
+	ret
 
 FrontpicPredef:
 	ld a, [wCurPartySpecies]
@@ -45,14 +39,14 @@ FrontpicPredef:
 	ldh [rVBK], a
 	pop af
 	ldh [rSVBK], a
-	jmp CloseSRAM
+	ret
 
 _GetFrontpic:
 	call _PrepareFrontpic
 	; fallthrough
-_GetPreparedFrontpic:
+GetPreparedFrontpic:
 	push hl
-	ld de, sScratch + 1 tiles
+	call GetPaddedFrontpicAddress
 	ld c, 7 * 7
 	ldh a, [hROMBank]
 	ld b, a
@@ -66,6 +60,7 @@ _PrepareFrontpic:
 	ld a, [wBasePicSize]
 	and $f
 	ld b, a
+	ld [wMonPicSize], a
 	push bc
 	call GetFrontpicPointer
 	ld a, BANK(wDecompressScratch)
@@ -74,14 +69,14 @@ _PrepareFrontpic:
 	; Save decompressed size
 	swap e
 	swap d
-	ld a, BANK(sScratch)
-	call GetSRAMBank
 	ld a, d
 	and $f0
 	or e
-	ld [sScratch], a
+	ld [wMonAnimationSize], a
 	pop bc
-	ld hl, sScratch + 1 tiles
+	call GetPaddedFrontpicAddress
+	ld h, d
+	ld l, e
 	ld de, wDecompressScratch
 	call PadFrontpic
 	pop hl
@@ -114,7 +109,7 @@ GetAnimatedFrontpic:
 	ld a, $1
 	ldh [rVBK], a
 	push hl
-	ld de, sScratch + 1 tiles
+	call GetPaddedFrontpicAddress
 	ld c, 7 * 7
 	ldh a, [hROMBank]
 	ld b, a
@@ -122,12 +117,7 @@ GetAnimatedFrontpic:
 	pop hl
 	ld de, 7 * 7 tiles
 	add hl, de
-	push hl
-	ld a, BANK(wBasePicSize)
-	ld hl, wBasePicSize
-	call GetFarWRAMByte
-	pop hl
-	and $f
+	ld a, [wMonPicSize]
 	ld de, wDecompressScratch + 5 * 5 tiles
 	ld c, 5 * 5
 	cp 5
@@ -137,9 +127,10 @@ GetAnimatedFrontpic:
 	cp 6
 	jr z, .got_dims
 	ld de, wDecompressScratch + 7 * 7 tiles
+	ld c, 7 * 7
 .got_dims
 	; Get animation size (total - base sprite size)
-	ld a, [sScratch]
+	ld a, [wMonAnimationSize]
 	sub c
 	ret z ; Return if there's no animation
 	ld c, a
@@ -155,19 +146,19 @@ GetAnimatedFrontpic:
 ; https://gitgud.io/pfero/axyllagame/commit/486f4ed432ca49e5d1305b6402cc5540fe9d3aaa
 	; If we can load it in a single pass, just do it
 	ld a, c
-	sub (128 - 7 * 7)
+	sub 128 - 7 * 7
 	jr c, .no_overflow
 	; Otherwise, we load the first part...
 	inc a
-	ld [sScratch], a
-	ld c, (127 - 7 * 7)
+	ld [wMonAnimationSize], a
+	ld c, 127 - 7 * 7
 	call Get2bpp
 	; Then move up a bit and load the rest
 	ld de, wDecompressScratch + (127 - 7 * 7) tiles
 	ld hl, vTiles4
 	ldh a, [hROMBank]
 	ld b, a
-	ld a, [sScratch]
+	ld a, [wMonAnimationSize]
 	ld c, a
 .no_overflow
 	jmp Get2bpp
@@ -362,7 +353,6 @@ PadFrontpic:
 
 	; This particular check should NOT be removed for "optimization", because it
 	; is a failsafe against save corruption issues.
-	call CloseSRAM ; just in case
 	ld a, ERR_FRONTPIC
 	jmp Crash
 

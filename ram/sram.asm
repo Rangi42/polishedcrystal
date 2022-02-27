@@ -1,8 +1,3 @@
-SECTION "Scratch", SRAM
-
-sScratch:: ds $600
-
-
 SECTION "SRAM Bank 0", SRAM
 
 sPartyMail::

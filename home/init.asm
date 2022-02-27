@@ -107,7 +107,6 @@ Init::
 	ldh [rSVBK], a
 	call ClearVRAM
 	call ClearSprites
-	call ClearsScratch
 
 	; Write game version to WRAM.
 	ldh a, [rSVBK]
