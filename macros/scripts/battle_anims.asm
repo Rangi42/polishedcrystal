@@ -135,10 +135,7 @@ anim_cry: MACRO
 	db \1 ; pitch
 ENDM
 
-	const anim_minimizeopp_command ; e2
-anim_minimizeopp: MACRO
-	db anim_minimizeopp_command
-ENDM
+	const_skip ; e2
 
 	const anim_oamon_command ; e3
 anim_oamon: MACRO
@@ -160,40 +157,22 @@ anim_beatup: MACRO
 	db anim_beatup_command
 ENDM
 
-	const anim_0xe7_command ; e7
-anim_0xe7: MACRO
-	db anim_0xe7_command
-ENDM
+	const_skip ; e7
 
 	const anim_updateactorpic_command ; e8
 anim_updateactorpic: MACRO
 	db anim_updateactorpic_command
 ENDM
 
-	const anim_minimize_command ; e9
-anim_minimize: MACRO
-	db anim_minimize_command
-ENDM
+	const_skip ; e9
 
-	const anim_0xea_command ; ea
-anim_0xea: MACRO
-	db anim_0xea_command
-ENDM
+	const_skip ; ea
 
-	const anim_0xeb_command ; eb
-anim_0xeb: MACRO
-	db anim_0xeb_command
-ENDM
+	const_skip ; eb
 
-	const anim_0xec_command ; ec
-anim_0xec: MACRO
-	db anim_0xec_command
-ENDM
+	const_skip ; ec
 
-	const anim_0xed_command ; ed
-anim_0xed: MACRO
-	db anim_0xed_command
-ENDM
+	const_skip ; ed
 
 	const anim_jumpand_command ; ee
 anim_jumpand: MACRO
@@ -240,20 +219,11 @@ anim_clearsprites: MACRO
 	db anim_clearsprites_command
 ENDM
 
-	const anim_0xf5_command ; f5
-anim_0xf5: MACRO
-	db anim_0xf5_command
-ENDM
+	const_skip ; f5
 
-	const anim_0xf6_command ; f6
-anim_0xf6: MACRO
-	db anim_0xf6_command
-ENDM
+	const_skip ; f6
 
-	const anim_0xf7_command ; f7
-anim_0xf7: MACRO
-	db anim_0xf7_command
-ENDM
+	const_skip ; f7
 
 	const anim_jumpif_command ; f8
 anim_jumpif: MACRO

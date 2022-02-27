@@ -3145,13 +3145,18 @@ Pokedex_GetInput:
 
 Pokedex_LoadUndiscoveredPokepic:
 ; Always returns z.
+	ldh a, [rSVBK]
+	push af
+	ld a, BANK(wDecompressScratch)
+	ldh [rSVBK], a
+	ld a, 7
+	ld [wMonPicSize], a
 	ld hl, QuestionMarkLZ
-	ld de, sScratch + 1 tiles
-	ld a, BANK(sScratch)
-	call GetSRAMBank
+	call GetPaddedFrontpicAddress
 	ld a, BANK(QuestionMarkLZ)
 	call FarDecompressToDE
-	call CloseSRAM
+	pop af
+	ldh [rSVBK], a
 	ld hl, wPokedex_GFXFlags
 	set DEXGFX_FRONTPIC, [hl]
 
@@ -3288,7 +3293,13 @@ _Pokedex_GetCursorMon:
 
 	; Frontpic
 	call GetBaseData
+	ldh a, [rSVBK]
+	push af
+	ld a, BANK(wCurPartySpecies)
+	ldh [rSVBK], a
 	farcall PrepareFrontpic
+	pop af
+	ldh [rSVBK], a
 	ld hl, wPokedex_GFXFlags
 	set DEXGFX_FRONTPIC, [hl]
 

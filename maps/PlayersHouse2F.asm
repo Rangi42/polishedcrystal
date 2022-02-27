@@ -249,7 +249,8 @@ endr
 	loadmem wPartyMon3PP+2, 15
 	loadmem wPartyMon3PP+3, 15
 	; variant form test
-	givepoke RAICHU, ALOLAN_FORM, 50
+	givepoke GRAVELER, ALOLAN_FORM, 50
+	givepoke WEEZING, GALARIAN_FORM, 50
 	givepoke DITTO, 50
 	; fill pokedex
 ;	callasm FillPokedex

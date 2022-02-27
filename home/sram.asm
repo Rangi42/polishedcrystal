@@ -20,15 +20,6 @@ GetSRAMBank::
 	ld [MBC3SRamBank], a
 	ret
 
-ClearsScratch::
-	xor a
-	call GetSRAMBank
-	ld hl, sScratch
-	ld bc, 2 tiles
-	xor a
-	rst ByteFill
-	; fallthrough
-
 CloseSRAM::
 	push af
 	ld a, SRAM_DISABLE

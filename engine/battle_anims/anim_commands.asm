@@ -278,18 +278,18 @@ BattleAnimCommands::
 	dw BattleAnimCmd_ResetObp0
 	dw BattleAnimCmd_Sound
 	dw BattleAnimCmd_Cry
-	dw BattleAnimCmd_MinimizeOpp
+	dw DoNothing
 	dw BattleAnimCmd_OAMOn
 	dw BattleAnimCmd_OAMOff
 	dw BattleAnimCmd_ClearObjs
 	dw BattleAnimCmd_BeatUp
-	dw BattleAnimCmd_E7 ; dummy
+	dw DoNothing
 	dw BattleAnimCmd_UpdateActorPic
-	dw BattleAnimCmd_Minimize
-	dw BattleAnimCmd_EA ; dummy
-	dw BattleAnimCmd_EB ; dummy
-	dw BattleAnimCmd_EC ; dummy
-	dw BattleAnimCmd_ED ; dummy
+	dw DoNothing
+	dw DoNothing
+	dw DoNothing
+	dw DoNothing
+	dw DoNothing
 	dw BattleAnimCmd_IfParamAnd
 	dw BattleAnimCmd_JumpUntil
 	dw BattleAnimCmd_BGEffect
@@ -297,9 +297,9 @@ BattleAnimCommands::
 	dw BattleAnimCmd_OBP0
 	dw BattleAnimCmd_OBP1
 	dw BattleAnimCmd_ClearSprites
-	dw BattleAnimCmd_F5 ; dummy
-	dw BattleAnimCmd_F6 ; dummy
-	dw BattleAnimCmd_F7 ; dummy
+	dw DoNothing
+	dw DoNothing
+	dw DoNothing
 	dw BattleAnimCmd_IfParamEqual
 	dw BattleAnimCmd_SetVar
 	dw BattleAnimCmd_IncVar
@@ -309,16 +309,6 @@ BattleAnimCommands::
 	dw BattleAnimCmd_Call
 	dw BattleAnimCmd_Ret
 	assert_table_length $100 - FIRST_BATTLE_ANIM_CMD
-
-BattleAnimCmd_E7:
-BattleAnimCmd_EA:
-BattleAnimCmd_EB:
-BattleAnimCmd_EC:
-BattleAnimCmd_ED:
-BattleAnimCmd_F5:
-BattleAnimCmd_F6:
-BattleAnimCmd_F7:
-	ret ; no-optimize stub function
 
 BattleAnimCmd_Ret:
 	ld hl, wBattleAnimFlags
@@ -821,15 +811,15 @@ BattleAnimCmd_Transform:
 	push af
 	ld a, 1
 	ldh [rSVBK], a
-	ld a, [wCurPartySpecies] ; CurPartySpecies
+	ld a, [wCurPartySpecies]
 	push af
 
 	ldh a, [hBattleTurn]
 	and a
 	jr z, .player
 
-	ld a, [wTempBattleMonSpecies] ; TempBattleMonSpecies
-	ld [wCurPartySpecies], a ; CurPartySpecies
+	ld a, [wTempBattleMonSpecies]
+	ld [wCurPartySpecies], a
 	ld a, [wBattleMonForm]
 	ld [wCurForm], a
 	ld de, vTiles0 tile $00
@@ -837,8 +827,8 @@ BattleAnimCmd_Transform:
 	jr .done
 
 .player
-	ld a, [wTempEnemyMonSpecies] ; TempEnemyMonSpecies
-	ld [wCurPartySpecies], a ; CurPartySpecies
+	ld a, [wTempEnemyMonSpecies]
+	ld [wCurPartySpecies], a
 	ld a, [wEnemyMonForm]
 	ld [wCurForm], a
 	ld de, vTiles0 tile $00
@@ -846,7 +836,7 @@ BattleAnimCmd_Transform:
 
 .done
 	pop af
-	ld [wCurPartySpecies], a ; CurPartySpecies
+	ld [wCurPartySpecies], a
 	pop af
 	ldh [rSVBK], a
 	ret
@@ -876,180 +866,22 @@ BattleAnimCmd_RaiseSub:
 	call GetSRAMBank
 
 GetSubstitutePic:
-	ld hl, sScratch
-	ld bc, 7 * 7 tiles
-.loop
-	xor a
-	ld [hli], a
-	dec bc
-	ld a, c
-	or b
-	jr nz, .loop
-
 	ldh a, [hBattleTurn]
 	and a
 	jr z, .player
 
 	ld hl, SubstituteFrontpic
-	ld a, BANK(SubstituteFrontpic)
-	assert wTempTileMap == WRAM1_Begin
-	call FarDecompress
-	call .CopyPic
-	ld hl, vTiles2 tile $00
-	ld de, sScratch
-	lb bc, BANK(GetSubstitutePic), 7 * 7
-	call Request2bpp
+	lb bc, BANK(SubstituteFrontpic), 7 * 7
+	ld de, vTiles2 tile $00
 	jr .done
 
 .player
 	ld hl, SubstituteBackpic
-	ld a, BANK(SubstituteBackpic)
-	assert wTempTileMap == WRAM1_Begin
-	call FarDecompress
-	call .CopyPic
-	ld hl, vTiles2 tile $31
-	ld de, sScratch
-	lb bc, BANK(GetSubstitutePic), 6 * 6
-	call Request2bpp
+	lb bc, BANK(SubstituteBackpic), 6 * 6
+	ld de, vTiles2 tile $31
 
 .done
-	call CloseSRAM
-	pop af
-	ldh [rSVBK], a
-	ret
-
-.CopyPic
-	ld b, 4
-.loop1
-	push bc
-	ld c, 4
-.loop2
-	push bc
-	call .GetTile
-	call .CopyTile
-	pop bc
-	dec c
-	jr nz, .loop2
-	pop bc
-	dec b
-	jr nz, .loop1
-	ret
-
-.GetTile:
-	; hl = wTempTileMap + (4 - b) * 4 tiles + (4 - c) tiles
-	; de = sScratch + (1 + 4 - c) * 7 tiles + (2 + 4 - b) tiles if enemy
-	; de = sScratch + (1 + 4 - c) * 6 tiles + (1 + 4-b) tiles if player
-	ld a, 4
-	sub b
-	ld b, a
-	ld a, 4
-	sub c
-	ld c, a
-	push bc
-	push bc
-	inc c
-	ldh a, [hBattleTurn]
-	and a
-	ld a, c
-	ld bc, 6 tiles
-	ld hl, sScratch
-	jr z, .okay1
-	ld bc, 7 tiles
-	ld hl, sScratch + 1 tiles
-.okay1
-	rst AddNTimes
-	pop bc
-	inc b
-	ldh a, [hBattleTurn]
-	and a
-	jr nz, .okay2
-	inc b
-.okay2
-	ld a, b
-	ld bc, 1 tiles
-	rst AddNTimes
-	ld d, h
-	ld e, l
-	pop bc
-	push bc
-	ld a, b
-	ld hl, wTempTileMap
-	ld bc, 4 tiles
-	rst AddNTimes
-	pop bc
-	swap c
-	ld b, 0
-	add hl, bc
-	ret
-
-.CopyTile
-	ld bc, 1 tiles
-	ld a, BANK(GetSubstitutePic)
-	jmp FarCopyBytes
-
-BattleAnimCmd_MinimizeOpp:
-	ldh a, [rSVBK]
-	push af
-	ld a, $1
-	ldh [rSVBK], a
-	xor a
-	call GetSRAMBank
-	call GetMinimizePic
-	call Request2bpp
-	call CloseSRAM
-	pop af
-	ldh [rSVBK], a
-	ret
-
-GetMinimizePic:
-	ld hl, sScratch
-	ld bc, 7 * 7 tiles
-.loop
-	xor a
-	ld [hli], a
-	dec bc
-	ld a, c
-	or b
-	jr nz, .loop
-
-	ldh a, [hBattleTurn]
-	and a
-	jr z, .player
-
-	ld de, sScratch + $1a tiles
-	call CopyMinimizePic
-	ld hl, vTiles2 tile $00
-	ld de, sScratch
-	lb bc, BANK(GetMinimizePic), 7 * 7
-	ret
-
-.player
-	ld de, sScratch + $16 tiles
-	call CopyMinimizePic
-	ld hl, vTiles2 tile $31
-	ld de, sScratch
-	lb bc, BANK(GetMinimizePic), 6 * 6
-	ret
-
-CopyMinimizePic:
-	ld hl, MinimizePic
-	ld bc, 1 tiles
-	ld a, BANK(MinimizePic)
-	jmp FarCopyBytes
-
-MinimizePic:
-INCBIN "gfx/battle/minimize.2bpp"
-
-BattleAnimCmd_Minimize:
-	ldh a, [rSVBK]
-	push af
-	ld a, $1
-	ldh [rSVBK], a
-	xor a
-	call GetSRAMBank
-	call GetMinimizePic
-	ld hl, vTiles0 tile $00
-	call Request2bpp
+	call DecompressRequest2bpp
 	call CloseSRAM
 	pop af
 	ldh [rSVBK], a
@@ -1061,7 +893,7 @@ BattleAnimCmd_DropSub:
 	ld a, $1
 	ldh [rSVBK], a
 
-	ld a, [wCurPartySpecies] ; CurPartySpecies
+	ld a, [wCurPartySpecies]
 	push af
 	ldh a, [hBattleTurn]
 	and a
@@ -1075,7 +907,7 @@ BattleAnimCmd_DropSub:
 
 .done
 	pop af
-	ld [wCurPartySpecies], a ; CurPartySpecies
+	ld [wCurPartySpecies], a
 	pop af
 	ldh [rSVBK], a
 	ret
@@ -1085,11 +917,11 @@ BattleAnimCmd_BeatUp:
 	push af
 	ld a, $1
 	ldh [rSVBK], a
-	ld a, [wCurPartySpecies] ; CurPartySpecies
+	ld a, [wCurPartySpecies]
 	push af
 
 	ld a, [wBattleAnimParam]
-	ld [wCurPartySpecies], a ; CurPartySpecies
+	ld [wCurPartySpecies], a
 
 	ldh a, [hBattleTurn]
 	and a
@@ -1109,7 +941,7 @@ BattleAnimCmd_BeatUp:
 
 .done
 	pop af
-	ld [wCurPartySpecies], a ; CurPartySpecies
+	ld [wCurPartySpecies], a
 	ld a, CGB_BATTLE_COLORS
 	call GetCGBLayout
 	pop af
@@ -1139,7 +971,7 @@ BattleAnimCmd_Sound:
 	ld [wSFXDuration], a
 	call .GetCryTrack
 	and 3
-	ld [wCryTracks], a ; CryTracks
+	ld [wCryTracks], a
 
 	ld e, a
 	ld d, 0
@@ -1189,8 +1021,8 @@ endr
 	jr nz, .enemy
 
 	ld a, $f0
-	ld [wCryTracks], a ; CryTracks
-	ld a, [wBattleMonSpecies] ; BattleMonSpecies
+	ld [wCryTracks], a
+	ld a, [wBattleMonSpecies]
 	ld c, a
 	ld a, [wBattleMonForm]
 	ld b, a
@@ -1198,8 +1030,8 @@ endr
 
 .enemy
 	ld a, $f
-	ld [wCryTracks], a ; CryTracks
-	ld a, [wEnemyMonSpecies] ; wEnemyMon
+	ld [wCryTracks], a
+	ld a, [wEnemyMonSpecies]
 	ld c, a
 	ld a, [wEnemyMonForm]
 	ld b, a
@@ -1230,14 +1062,14 @@ endr
 	ld a, [hli]
 	ld c, a
 	ld b, [hl]
-	ld hl, wCryLength ; CryLength
+	ld hl, wCryLength
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
 	add hl, bc
 
 	ld a, l
-	ld [wCryLength], a ; CryLength
+	ld [wCryLength], a
 	ld a, h
 	ld [wCryLength + 1], a
 	ld a, 1
