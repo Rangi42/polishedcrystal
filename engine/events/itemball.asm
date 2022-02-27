@@ -60,7 +60,6 @@ FindKeyItemInBallScript::
 	xor a
 	ldh [hScriptVar], a
 	ld a, [wItemBallItemID]
-	inc a
 	ld [wNamedObjectIndex], a
 	call GetKeyItemName
 	ld hl, wStringBuffer3
