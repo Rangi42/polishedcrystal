@@ -7434,13 +7434,10 @@ GetMonBackpic:
 	ld a, [wPlayerSubStatus4]
 	bit SUBSTATUS_SUBSTITUTE, a
 	ld hl, BattleAnimCmd_RaiseSub
-	jr nz, GetBackpic_DoAnim ; substitute
+	jr nz, GetBackpic_DoAnim
+	; fallthrough
 
 DropPlayerSub:
-	ld a, [wPlayerSubStatus2]
-	bit SUBSTATUS_MINIMIZED, a
-	ld hl, BattleAnimCmd_MinimizeOpp
-	jr nz, GetBackpic_DoAnim
 	ld a, [wCurPartySpecies]
 	push af
 	ld a, [wCurForm]
@@ -7473,13 +7470,9 @@ GetMonFrontpic:
 	bit SUBSTATUS_SUBSTITUTE, a
 	ld hl, BattleAnimCmd_RaiseSub
 	jr nz, GetFrontpic_DoAnim
+	; fallthrough
 
 DropEnemySub:
-	ld a, [wEnemySubStatus2]
-	bit SUBSTATUS_MINIMIZED, a
-	ld hl, BattleAnimCmd_MinimizeOpp
-	jr nz, GetFrontpic_DoAnim
-
 	ld a, [wCurPartySpecies]
 	push af
 	ld a, [wCurForm]
