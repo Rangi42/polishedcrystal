@@ -1,4 +1,6 @@
-SECTION "SRAM Bank 0", SRAM
+SECTION "SRAM Mail", SRAM
+
+	ds $600 ; unused
 
 sPartyMail::
 for n, 1, PARTY_LENGTH + 1
@@ -22,11 +24,14 @@ for n, 1, MAILBOX_CAPACITY + 1
 sMailbox{d:n}Backup:: mailmsg sMailbox{d:n}Backup
 endr
 
+
+SECTION "SRAM Bank 0", SRAM
+
 sSaveVersion:: dw
 sUpgradeStep:: db
 sWritingBackup:: db ; 1 if we're saving, anything else if not.
 
-	ds 160
+	ds 160 ; unused
 
 sRTCStatusFlags:: ds 8
 sLuckyNumberDay:: db
@@ -47,7 +52,7 @@ sBackupGameDataEnd::
 
 sBackupOptions3:: db
 
-	ds 393
+	ds 393 ; unused
 
 sBackupChecksum:: dw
 
@@ -68,7 +73,7 @@ sGameDataEnd::
 
 sOptions3:: db
 
-	ds 393
+	ds 393 ; unused
 
 sChecksum:: dw
 

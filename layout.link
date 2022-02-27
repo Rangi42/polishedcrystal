@@ -269,7 +269,7 @@ WRAMX $7
 	"Window Stack"
 
 SRAM $0
-	org $a600
+	"SRAM Mail"
 	"SRAM Bank 0"
 	"PokeDB bank 1B"
 	org $b200
