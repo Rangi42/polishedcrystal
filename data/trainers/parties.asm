@@ -10231,15 +10231,21 @@ AnabelGroup:
 
 	; ANABEL
 	db "Anabel@"
-	db TRAINERTYPE_NORMAL
+	db TRAINERTYPE_EVS
 	; party
 	; TODO: movesets, etc
-	dbp 57, ESPEON
-	dbp 55, SNORLAX
-	dbp 56, SLOWKING
-	dbp 54, BELLOSSOM
-	dbp 55, POLITOED
-	dbp 56, ALAKAZAM
+	dbp 30, ESPEON
+		db 68
+	dbp 28, SNORLAX
+		db 68
+	dbp 29, SLOWKING
+		db 68
+	dbp 27, BELLOSSOM
+		db 68
+	dbp 28, POLITOED
+		db 68
+	dbp 29, ALAKAZAM
+		db 68
 	db -1 ; end
 
 	; ANABEL
