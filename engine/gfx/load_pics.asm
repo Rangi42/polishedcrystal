@@ -163,7 +163,7 @@ LoadFrontpicTiles:
 	ld c, a
 ; load the first c bytes to round down bc to a multiple of $100
 	push bc
-	call LoadFrontpic
+	call LoadAlignedFrontpic
 	pop bc
 ; don't access echo ram
 	ld a, c
@@ -174,8 +174,8 @@ LoadFrontpicTiles:
 ; load the remaining bytes in batches of $100
 .loop
 	push bc
-	ld c, $0
-	call LoadFrontpic
+	ld c, 0
+	call LoadAlignedFrontpic
 	pop bc
 .handle_loop
 	dec b
@@ -212,12 +212,12 @@ endr
 	pop af
 	call FarDecompress
 	ld hl, wDecompressScratch
-	ld c, 6 * 6
 	call FixBackpicAlignment
 	pop hl
 	ld de, wDecompressScratch
 	ldh a, [hROMBank]
 	ld b, a
+	ld c, 6 * 6
 	call Get2bpp
 	pop af
 	ldh [rSVBK], a
@@ -288,21 +288,12 @@ GetPaintingPic:
 	jr _Decompress7x7Pic
 
 FixBackpicAlignment:
-	push de
-	push bc
 	ld a, [wBoxAlignment]
 	and a
-	jr z, .keep_dims
-	ld a, c
-	cp 7 * 7
-	ld de, 7 * 7 tiles
-	jr z, .got_dims
-	cp 6 * 6
-	ld de, 6 * 6 tiles
-	jr z, .got_dims
-	ld de, 5 * 5 tiles
+	ret z
 
-.got_dims
+	ld de, 6 * 6 tiles
+.loop
 	ld a, [hl]
 
 ; https://github.com/pret/pokecrystal/wiki/Optimizing-assembly-code#reverse-the-bits-of-a
@@ -323,11 +314,7 @@ FixBackpicAlignment:
 	dec de
 	ld a, e
 	or d
-	jr nz, .got_dims
-
-.keep_dims
-	pop bc
-	pop de
+	jr nz, .loop
 	ret
 
 PadFrontpic:
@@ -344,7 +331,7 @@ PadFrontpic:
 
 .seven_loop
 	ld c, 7 tiles
-	call LoadFrontpic
+	call LoadAlignedFrontpic
 	dec b
 	jr nz, .seven_loop
 	ret
@@ -356,7 +343,7 @@ PadFrontpic:
 	ld c, 1 tiles
 	call .Fill
 	ld c, 6 tiles
-	call LoadFrontpic
+	call LoadAlignedFrontpic
 	dec b
 	jr nz, .six_loop
 	ret
@@ -368,7 +355,7 @@ PadFrontpic:
 	ld c, 2 tiles
 	call .Fill
 	ld c, 5 tiles
-	call LoadFrontpic
+	call LoadAlignedFrontpic
 	dec b
 	jr nz, .five_loop
 	ld c, 7 tiles
@@ -382,7 +369,7 @@ PadFrontpic:
 	jr nz, .fill_loop
 	ret
 
-LoadFrontpic:
+LoadAlignedFrontpic:
 	ld a, [wBoxAlignment]
 	and a
 	jr nz, .x_flip
