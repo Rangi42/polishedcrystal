@@ -91,6 +91,7 @@ ROMX $11
 
 ROMX $12
 	"Crystal Features 1"
+	"Bill's PC"
 
 ROMX $13
 	"bank13"
@@ -230,6 +231,9 @@ WRAM0
 	"Misc 1300"
 	org $ced0
 	"Video"
+	"More WRAM 0"
+	org $cff0
+	"Options"
 
 WRAMX $1
 	org $d000

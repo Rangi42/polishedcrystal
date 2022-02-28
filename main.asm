@@ -49,7 +49,7 @@ SECTION "Print Number", ROMX
 INCLUDE "engine/math/print_num.asm"
 
 
-SECTION "Bills PC", ROMX
+SECTION "Bill's PC", ROMX
 
 INCLUDE "engine/pokemon/bills_pc.asm"
 INCLUDE "engine/pokemon/bills_pc_ui.asm"

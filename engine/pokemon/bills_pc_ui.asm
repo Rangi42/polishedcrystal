@@ -1003,7 +1003,7 @@ _GetCursorMon:
 .delay_loop
 	; Delay first before finishing frontpic. Retry if it puts us too late.
 	; If we try to proceed otherwise, we might run past the hblank interrupt
-	; window with GetPreparedFrontpic.
+	; window with Get2bpp.
 	call DelayFrame
 	ldh a, [rLY]
 	cp $13
@@ -1022,7 +1022,9 @@ _GetCursorMon:
 	push af
 	ld a, BANK(wDecompressScratch)
 	ldh [rSVBK], a
-	farcall GetPreparedFrontpic
+	call GetPaddedFrontpicAddress
+	lb bc, BANK(_GetCursorMon), 7 * 7
+	call Get2bpp
 	pop af
 	ldh [rSVBK], a
 	xor a

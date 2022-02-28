@@ -43,13 +43,11 @@ FrontpicPredef:
 
 _GetFrontpic:
 	call _PrepareFrontpic
-	; fallthrough
-GetPreparedFrontpic:
-	push hl
 	call GetPaddedFrontpicAddress
 	ld c, 7 * 7
 	ldh a, [hROMBank]
 	ld b, a
+	push hl
 	call Get2bpp
 	pop hl
 	ret
@@ -62,35 +60,12 @@ _PrepareFrontpic:
 	ld b, a
 	ld [wMonPicSize], a
 	push bc
-	call GetFrontpicPointer
-	ld a, BANK(wDecompressScratch)
-	ldh [rSVBK], a
-	call FarDecompressInB
-	; Save decompressed size
-	swap e
-	swap d
-	ld a, d
-	and $f0
-	or e
-	ld [wMonAnimationSize], a
-	pop bc
-	call GetPaddedFrontpicAddress
-	ld h, d
-	ld l, e
-	ld de, wDecompressScratch
-	call PadFrontpic
-	pop hl
-	ret
 
-GetFrontpicPointer:
-	; c = species
+	; Get frontpic pointer
 	ld a, [wCurPartySpecies]
 	ld c, a
-	; b = form
 	ld a, [wCurForm]
 	ld b, a
-	; bc = index
-_GetFrontpicPointer:
 	call GetCosmeticSpeciesAndFormIndex
 	ld hl, FrontPicPointers
 rept 3
@@ -103,11 +78,24 @@ endr
 	ld a, BANK(FrontPicPointers)
 	call GetFarWord
 	pop bc
+
+	ld a, BANK(wDecompressScratch)
+	ldh [rSVBK], a
+	call FarDecompressInB
+	; Save decompressed size
+	swap e
+	swap d
+	ld a, d
+	and $f0
+	or e
+	ld [wMonAnimationSize], a
+
+	pop bc
+	call PadFrontpic
+	pop hl
 	ret
 
 GetAnimatedFrontpic:
-	ld a, $1
-	ldh [rVBK], a
 	push hl
 	call GetPaddedFrontpicAddress
 	ld c, 7 * 7
@@ -343,18 +331,16 @@ FixBackpicAlignment:
 	ret
 
 PadFrontpic:
+	call GetPaddedFrontpicAddress
+	ld h, d
+	ld l, e
+	ld de, wDecompressScratch
+
 	ld a, b
 	sub 5
 	jr z, .five
 	dec a
 	jr z, .six
-	dec a
-	jr z, .seven_loop
-
-	; This particular check should NOT be removed for "optimization", because it
-	; is a failsafe against save corruption issues.
-	ld a, ERR_FRONTPIC
-	jmp Crash
 
 .seven_loop
 	ld c, 7 tiles

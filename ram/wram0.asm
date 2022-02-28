@@ -1017,20 +1017,21 @@ wBGMapBuffer:: ds 48
 wBGMapPalBuffer:: ds 48
 wBGMapBufferPtrs:: ds 48 ; 24 bg map addresses (16x8 tiles)
 
+
+SECTION "More WRAM 0", WRAM0
+
 wMemCGBLayout:: db
 
 UNION
 wCreditsPos:: dw
 wCreditsTimer:: db
 wTrainerCardBadgePaletteAddr:: dw
-
 NEXTU
 wPlayerHPPal:: db
 wEnemyHPPal:: db
 wHPPals:: ds PARTY_LENGTH
 wCurHPPal:: db
 wHPPalIndex:: db
-
 ENDU
 
 wTileAnimBuffer:: ds 1 tiles
@@ -1288,6 +1289,9 @@ wOBP0:: db
 wOBP1:: db
 
 wNumHits:: db
+
+
+SECTION "Options", WRAM0
 
 wOptions3::
 ; bit 0: keyword abc/qwerty
