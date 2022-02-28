@@ -89,12 +89,8 @@ endr
 	and $f0
 	or e
 	ld [wMonAnimationSize], a
-	pop bc
 
-	call GetPaddedFrontpicAddress
-	ld h, d
-	ld l, e
-	ld de, wDecompressScratch
+	pop bc
 	call PadFrontpic
 	pop hl
 	ret
@@ -335,18 +331,16 @@ FixBackpicAlignment:
 	ret
 
 PadFrontpic:
+	call GetPaddedFrontpicAddress
+	ld h, d
+	ld l, e
+	ld de, wDecompressScratch
+
 	ld a, b
 	sub 5
 	jr z, .five
 	dec a
 	jr z, .six
-	dec a
-	jr z, .seven_loop
-
-	; This particular check should NOT be removed for "optimization", because it
-	; is a failsafe against save corruption issues.
-	ld a, ERR_FRONTPIC
-	jmp Crash
 
 .seven_loop
 	ld c, 7 tiles

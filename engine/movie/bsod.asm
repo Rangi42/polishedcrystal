@@ -137,7 +137,6 @@ BSODErrorStrings:
 	dw .OldBox           ; ERR_OLDBOX
 	dw .NewBox           ; ERR_NEWBOX
 	dw .WinStackOverflow ; ERR_WINSTACK_OVERFLOW
-	dw .Frontpic         ; ERR_FRONTPIC
 	dw .UnknownError     ; unknown
 	assert_table_length NUM_ERR_CODES + 1
 
@@ -152,5 +151,4 @@ BSODErrorStrings:
 .OldBox:           text "Old PC box storage@"
 .NewBox:           text "Fatal PC box error@"
 .WinStackOverflow: text "Win.stack overflow@"
-.Frontpic:         text "Corrupted frontpic@"
 .UnknownError:     text "Unknown error@"
