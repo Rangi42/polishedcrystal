@@ -113,7 +113,7 @@ CheckOwnMonAnywhere:
 	jr z, .loop
 	ld c, MONS_PER_BOX
 .loop
-	farcall GetStorageBoxMon
+	call GetStorageBoxMon ; different section, same bank
 	jr z, .next
 
 	; Check if the species is correct

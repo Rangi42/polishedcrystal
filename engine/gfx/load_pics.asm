@@ -43,13 +43,11 @@ FrontpicPredef:
 
 _GetFrontpic:
 	call _PrepareFrontpic
-	; fallthrough
-GetPreparedFrontpic:
-	push hl
 	call GetPaddedFrontpicAddress
 	ld c, 7 * 7
 	ldh a, [hROMBank]
 	ld b, a
+	push hl
 	call Get2bpp
 	pop hl
 	ret
