@@ -110,12 +110,8 @@ sBattleTowerChallengeState:: db ; current challenge progress status
 sBattleTower::
 sBT_CurTrainerAndSwap:: db
 
-	ds 1 ; unused, may be 0-4 in old saves
-
 ; Battle Tower trainers are saved here, so nobody appears more than once
 sBTTrainers:: ds BATTLETOWER_STREAK_LENGTH
-
-	ds 1 ; unused, may be 0 or 2 in old saves
 
 UNION
 sBT_PartySelections:: ds PARTY_LENGTH
