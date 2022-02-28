@@ -1,62 +1,13 @@
-SECTION "SRAM Mail", SRAM
-
-	ds $600 ; unused
-
-sPartyMail::
-for n, 1, PARTY_LENGTH + 1
-sPartyMon{d:n}Mail:: mailmsg sPartyMon{d:n}Mail
-endr
-
-sPartyMailBackup::
-for n, 1, PARTY_LENGTH + 1
-sPartyMon{d:n}MailBackup:: mailmsg sPartyMon{d:n}MailBackup
-endr
-
-sMailboxCount:: db
-sMailbox::
-for n, 1, MAILBOX_CAPACITY + 1
-sMailbox{d:n}:: mailmsg sMailbox{d:n}
-endr
-
-sMailboxCountBackup:: db
-sMailboxBackup::
-for n, 1, MAILBOX_CAPACITY + 1
-sMailbox{d:n}Backup:: mailmsg sMailbox{d:n}Backup
-endr
-
-
 SECTION "SRAM Bank 0", SRAM
 
 sSaveVersion:: dw
 sUpgradeStep:: db
 sWritingBackup:: db ; 1 if we're saving, anything else if not.
 
-	ds 160 ; unused
-
 sRTCStatusFlags:: ds 8
+
 sLuckyNumberDay:: db
 sLuckyIDNumber:: dw
-
-
-SECTION "Backup Save", SRAM
-
-sBackupOptions:: ds wOptionsEnd - wOptions
-
-sBackupCheckValue1:: db ; loaded with 99, used to check save corruption
-
-sBackupGameData::
-sBackupPlayerData::  ds wPlayerDataEnd - wPlayerData
-sBackupMapData::     ds wCurMapDataEnd - wCurMapData
-sBackupPokemonData:: ds wPokemonDataEnd - wPokemonData
-sBackupGameDataEnd::
-
-sBackupOptions3:: db
-
-	ds 393 ; unused
-
-sBackupChecksum:: dw
-
-sBackupCheckValue2:: db ; loaded with 127, used to check save corruption
 
 
 SECTION "Save", SRAM
@@ -78,6 +29,27 @@ sOptions3:: db
 sChecksum:: dw
 
 sCheckValue2:: db ; loaded with 127, used to check save corruption
+
+
+SECTION "Backup Save", SRAM
+
+sBackupOptions:: ds wOptionsEnd - wOptions
+
+sBackupCheckValue1:: db ; loaded with 99, used to check save corruption
+
+sBackupGameData::
+sBackupPlayerData::  ds wPlayerDataEnd - wPlayerData
+sBackupMapData::     ds wCurMapDataEnd - wCurMapData
+sBackupPokemonData:: ds wPokemonDataEnd - wPokemonData
+sBackupGameDataEnd::
+
+sBackupOptions3:: db
+
+	ds 393 ; unused
+
+sBackupChecksum:: dw
+
+sBackupCheckValue2:: db ; loaded with 127, used to check save corruption
 
 
 SECTION "Link Battle Data", SRAM
@@ -103,6 +75,31 @@ for n, 1, NUM_HOF_TEAMS + 1
 sHallOfFame{02d:n}:: hall_of_fame sHallOfFame{02d:n}
 endr
 sHallOfFameEnd::
+
+
+SECTION "SRAM Mail", SRAM
+
+sPartyMail::
+for n, 1, PARTY_LENGTH + 1
+sPartyMon{d:n}Mail:: mailmsg sPartyMon{d:n}Mail
+endr
+
+sPartyMailBackup::
+for n, 1, PARTY_LENGTH + 1
+sPartyMon{d:n}MailBackup:: mailmsg sPartyMon{d:n}MailBackup
+endr
+
+sMailboxCount:: db
+sMailbox::
+for n, 1, MAILBOX_CAPACITY + 1
+sMailbox{d:n}:: mailmsg sMailbox{d:n}
+endr
+
+sMailboxCountBackup:: db
+sMailboxBackup::
+for n, 1, MAILBOX_CAPACITY + 1
+sMailbox{d:n}Backup:: mailmsg sMailbox{d:n}Backup
+endr
 
 
 SECTION "SRAM Battle Tower", SRAM

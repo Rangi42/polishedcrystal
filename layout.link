@@ -273,19 +273,20 @@ WRAMX $7
 	"Window Stack"
 
 SRAM $0
+	"PokeDB bank 1B"
+	"SRAM Battle Tower"
+	org $a600
 	"SRAM Mail"
 	"SRAM Bank 0"
-	"PokeDB bank 1B"
+	"PokeDB bank 2B"
 	org $b200
 	"Backup Save"
 	"Link Battle Data"
-	"SRAM Battle Tower"
 
 SRAM $1
 	"Save"
 	"SRAM Hall of Fame"
 	"Active Box"
-	"PokeDB bank 2B"
 	"PokeDB bank 1C"
 	"PokeDB bank 2C"
 
