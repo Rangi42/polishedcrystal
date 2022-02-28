@@ -60,35 +60,12 @@ _PrepareFrontpic:
 	ld b, a
 	ld [wMonPicSize], a
 	push bc
-	call GetFrontpicPointer
-	ld a, BANK(wDecompressScratch)
-	ldh [rSVBK], a
-	call FarDecompressInB
-	; Save decompressed size
-	swap e
-	swap d
-	ld a, d
-	and $f0
-	or e
-	ld [wMonAnimationSize], a
-	pop bc
-	call GetPaddedFrontpicAddress
-	ld h, d
-	ld l, e
-	ld de, wDecompressScratch
-	call PadFrontpic
-	pop hl
-	ret
 
-GetFrontpicPointer:
-	; c = species
+	; Get frontpic pointer
 	ld a, [wCurPartySpecies]
 	ld c, a
-	; b = form
 	ld a, [wCurForm]
 	ld b, a
-	; bc = index
-_GetFrontpicPointer:
 	call GetCosmeticSpeciesAndFormIndex
 	ld hl, FrontPicPointers
 rept 3
@@ -101,11 +78,28 @@ endr
 	ld a, BANK(FrontPicPointers)
 	call GetFarWord
 	pop bc
+
+	ld a, BANK(wDecompressScratch)
+	ldh [rSVBK], a
+	call FarDecompressInB
+	; Save decompressed size
+	swap e
+	swap d
+	ld a, d
+	and $f0
+	or e
+	ld [wMonAnimationSize], a
+	pop bc
+
+	call GetPaddedFrontpicAddress
+	ld h, d
+	ld l, e
+	ld de, wDecompressScratch
+	call PadFrontpic
+	pop hl
 	ret
 
 GetAnimatedFrontpic:
-	ld a, $1
-	ldh [rVBK], a
 	push hl
 	call GetPaddedFrontpicAddress
 	ld c, 7 * 7
