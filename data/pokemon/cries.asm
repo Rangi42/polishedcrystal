@@ -257,40 +257,40 @@ PokemonCries::
 	mon_cry CRY_TYPHLOSION,  $000,  $100 ; Lugia
 	mon_cry CRY_TYROGUE,     $000,  $180 ; HoOh
 	mon_cry CRY_ENTEI,       $14a,  $111 ; Celebi
-	mon_cry CRY_MARILL,      $11b,  $120 ; Azurill
-	mon_cry CRY_AMPHAROS,    $27b,  $144 ; Wynaut
-	mon_cry CRY_TYROGUE,    -$051,  $0e8 ; Ambipom
+	mon_cry CRY_MARILL,      $124,  $0d0 ; Azurill
+	mon_cry CRY_AMPHAROS,    $27b,  $144 ; Wynaut !
+	mon_cry CRY_TYROGUE,    -$051,  $0e8 ; Ambipom !
 	mon_cry CRY_NIDORAN_M,      0,     0 ; Egg
 	mon_cry CRY_NIDORAN_M,      0,     0 ; $100
-	mon_cry CRY_HOOTHOOT,    $130,  $0e8 ; Mismagius
-	mon_cry CRY_MARILL,     -$01f,  $180 ; Honchkrow
-	mon_cry CRY_BELLOSSOM,   $f40,  $180 ; Bonsly
-	mon_cry CRY_KRABBY,      $008,  $0c0 ; Mime Jr.
-	mon_cry CRY_PIDGEOTTO,   $00a,  $140 ; Happiny
-	mon_cry CRY_GRIMER,      $055,  $081 ; Munchlax
-	mon_cry CRY_MANTINE,    -$0be,  $0f0 ; Mantyke
-	mon_cry CRY_WOOPER,      $053,  $0af ; Weavile
-	mon_cry CRY_METAPOD,     $020,  $140 ; Magnezone
-	mon_cry CRY_SEEL,        $000,  $100 ; Lickilicky
-	mon_cry CRY_RHYDON,      $000,  $100 ; Rhyperior
-	mon_cry CRY_GOLEM,       $000,  $100 ; Tangrowth
-	mon_cry CRY_VOLTORB,     $08f,  $17f ; Electivire
-	mon_cry CRY_CHARMANDER,  $0ff,  $0b0 ; Magmortar
-	mon_cry CRY_TOGETIC,     $03b,  $038 ; Togekiss
-	mon_cry CRY_TOTODILE,    $031,  $0c8 ; Yanmega
-	mon_cry CRY_VENONAT,     $03d,  $160 ; Leafeon
-	mon_cry CRY_VENONAT,     $0b0,  $16f ; Glaceon
-	mon_cry CRY_GLIGAR,     -$102,  $100 ; Gliscor
-	mon_cry CRY_MAGCARGO,   -$109,  $100 ; Mamoswine
-	mon_cry CRY_GIRAFARIG,   $073,  $240 ; PorygonZ
-	mon_cry CRY_VENONAT,     $0b0,  $16f ; Sylveon
-	mon_cry CRY_CLEFAIRY,    $077,  $090 ; Perrserker
-	mon_cry CRY_MAGCARGO,    $0a1,  $0e8 ; Cursola
-	mon_cry CRY_FARFETCH_D,  $0dd,  $081 ; SirfetchD
-	mon_cry CRY_KRABBY,      $008,  $0c0 ; Mr.Rime
-	mon_cry CRY_TYROGUE,    -$160,  $180 ; Wyrdeer
-	mon_cry CRY_CATERPIE,    $000,  $100 ; Kleavor
-	mon_cry CRY_TEDDIURSA,   $640,  $0d8 ; Ursaluna
-	mon_cry CRY_WOOPER,      $053,  $0af ; Sneasler
-	mon_cry CRY_SLOWKING,    $160,  $0e0 ; Overqwil
+	mon_cry CRY_HOOTHOOT,    $130,  $0e8 ; Mismagius !
+	mon_cry CRY_MARILL,     -$01f,  $180 ; Honchkrow !
+	mon_cry CRY_SLOWPOKE,    $03c,  $15a ; Bonsly
+	mon_cry CRY_KRABBY,      $008,  $0c0 ; Mime Jr.	!
+	mon_cry CRY_PIDGEOTTO,   $00a,  $140 ; Happiny !
+	mon_cry CRY_GRIMER,      $065,  $080 ; Munchlax
+	mon_cry CRY_MANTINE,    -$0be,  $0f0 ; Mantyke !
+	mon_cry CRY_WOOPER,      $053,  $0af ; Weavile !
+	mon_cry CRY_METAPOD,     $020,  $140 ; Magnezone !
+	mon_cry CRY_SEEL,        $000,  $100 ; Lickilicky !
+	mon_cry CRY_RHYDON,      $000,  $100 ; Rhyperior !
+	mon_cry CRY_GOLEM,       $000,  $100 ; Tangrowth !
+	mon_cry CRY_VOLTORB,     $08f,  $17f ; Electivire !
+	mon_cry CRY_CHARMANDER,  $0ff,  $0b0 ; Magmortar !
+	mon_cry CRY_TOGETIC,     $03b,  $038 ; Togekiss !
+	mon_cry CRY_TOTODILE,    $031,  $0c8 ; Yanmega !
+	mon_cry CRY_VENONAT,     $03d,  $160 ; Leafeon !
+	mon_cry CRY_METAPOD,     $fc6,  $1aa ; Glaceon
+	mon_cry CRY_GLIGAR,     -$102,  $100 ; Gliscor !
+	mon_cry CRY_MAGCARGO,   -$109,  $100 ; Mamoswine !
+	mon_cry CRY_SEEL,        $212,  $270 ; PorygonZ, Girafarig 073,240
+	mon_cry CRY_VENONAT,     $0b0,  $16f ; Sylveon !
+	mon_cry CRY_CLEFAIRY,    $077,  $090 ; Perrserker !
+	mon_cry CRY_MAGCARGO,    $0a1,  $0e8 ; Cursola !
+	mon_cry CRY_FARFETCH_D,  $0dd,  $081 ; SirfetchD !
+	mon_cry CRY_KRABBY,      $008,  $0c0 ; Mr.Rime !
+	mon_cry CRY_TYROGUE,    -$160,  $180 ; Wyrdeer !
+	mon_cry CRY_CATERPIE,    $000,  $100 ; Kleavor !
+	mon_cry CRY_TEDDIURSA,   $640,  $0d8 ; Ursaluna !
+	mon_cry CRY_WOOPER,      $053,  $0af ; Sneasler !
+	mon_cry CRY_SLOWKING,    $160,  $0e0 ; Overqwil !
 	assert_table_length NUM_SPECIES
