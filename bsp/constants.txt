@@ -6,17 +6,18 @@
 	define SAVE_SIZE,    0x8000
 
 ; SRAM pointers
+	define sLinkBattleResults,         0x055c
+	define sBattleTowerChallengeState, 0x05c8
 	define sPartyMail,                 0x0600
 	define sMailbox,                   0x0835
 	define sBackupMailbox,             0x0a0c
 	define sSaveVersion,               0x0be2
+	define sRTCStatusFlags,            0x0c86
 	define sBackupOptions,             0x1200
 	define sBackupCheckValue1,         0x1207
 	define sBackupGameData,            0x1208
 	define sBackupChecksum,            0x1f0d
 	define sBackupCheckValue2,         0x1f0f
-	define sLinkBattleResults,         0x1f10
-	define sBattleTowerChallengeState, 0x1f7c
 	define sOptions,                   0x2000
 	define sCheckValue1,               0x2007
 	define sGameData,                  0x2008
@@ -33,6 +34,11 @@
 ; game data offsets
 	define PLAYER_NAME_OFFSET,                 0x003
 	define KEY_ITEMS_OFFSET,                   0x388
+	define ITEMS_OFFSET,                       0x3ae
+	define MEDICINE_OFFSET,                    0x446
+	define BALLS_OFFSET,                       0x492
+	define BERRIES_OFFSET,                     0x4c6
+	define PC_ITEMS_OFFSET,                    0x506
 	define EVENT_FLAGS_OFFSET,                 0x5e1
 	define BOX_NAMES_OFFSET,                   0x6e1
 	define HIDDEN_GROTTO_OFFSET,               0x7ab
@@ -49,6 +55,7 @@
 	define BREED_MON_2_OT_OFFSET,              0xaaf
 	define EGG_MON_NICK_OFFSET,                0xada
 	define MAGIKARP_RECORD_HOLDER_NAME_OFFSET, 0xb6b
+	define REGISTERED_ITEMS_OFFSET,            0xb77
 
 ; SRAM sizes
 	define GAME_DATA_SIZE,  0xb7b

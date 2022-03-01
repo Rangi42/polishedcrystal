@@ -176,9 +176,10 @@ ResizePocketsToBuild4:
 AdjustItemIndexesToBuild4:
 	; note: this function can be generalized for any build,
 	; but you'd need to modify the ItemIndexOffsets tables for each update
+	; NOTE: do not do this generalization, this was a terrible idea
 	ifne #curbuild, 4, .error ; debug statement
 	set #1, .pointer_table
-	jump AdjustItemIndexes
+	jump AdjustItemIndexesByPointerTable
 
 .error
 	bufstring .error_string_build_1

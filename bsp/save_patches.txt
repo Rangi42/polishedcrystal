@@ -327,8 +327,8 @@ ConvertMonIndexesTo9Bit:
 .unown_loop_cont
 	seek #4
 	call FlagAction
-.unown_loop_skip
 	poppos
+.unown_loop_skip
 	decrement #length
 	jumpnz #length, .unown_loop
 
@@ -361,7 +361,6 @@ ConvertMonIndexesTo9Bit:
 	set #2, #r0
 	call ShiftFlags
 	call .ClearNewIndexes
-
 ; convert HoF mon indexes to 9bit and add entries to the pokedex
 ; (only the first 10 entries need to be converted)
 ; TODO: generalize this for v4
@@ -788,6 +787,21 @@ RevertKeyItemsToIndexList:
 	seek #result
 	fillbyte #2, #zero
 
+	set #1, REGISTERED_ITEMS_OFFSET
+	call GetGameDataPointer
+	seek #result
+	set #length, 4
+.reg_loop
+	getfilebyte #1
+	iflt #1, 5, .reg_loop_cont
+	add #temp, .index_adjustment, #1
+	subtract #temp, 5
+	getbyte #1, #temp
+.reg_loop_cont
+	writebyte #1
+	decrement #length
+	jumpnz #length, .reg_loop
+
 	set #1, KEY_ITEMS_OFFSET
 	call GetGameDataPointer
 	seek #result
@@ -800,11 +814,124 @@ RevertKeyItemsToIndexList:
 	increment #1
 	and #temp, #2, 1
 	jumpz #temp, .cont
-	writebyte #1
+	set #temp, #1
+	iflt #1, 5, .cont2
+	add #temp, .index_adjustment, #1
+	subtract #temp, 5
+	getbyte #temp, #temp
+.cont2
+	writebyte #temp
 .cont
 	shiftright #2, 1
 	jumpnz #2, .loop
 	return
+
+.index_adjustment
+	; new index (list index = key item index + 5)
+	db 6
+	db 5
+	db 12
+	db 10
+	db 13
+	db 14
+	db 15
+	db 16
+	db 23
+	db 24
+	db 18
+	db 17
+	db 19
+	db 20
+	db 21
+	db 22
+	db 9
+	db 25
+	db 26
+	db 27
+	db 28
+	db 29
+	db 30
+	db 11
+	db 7
+	db 8
+
+AdjustItemIndexesToBuild8:
+	set #r0, .index_adjustment
+	jump AdjustItemIndexes
+
+.index_adjustment
+	; old index, offset
+	db 0x0c, 0    ; LOVE_BALL
+	db 0x0d, 96   ; ABILITYPATCH
+	db 0x39, -1   ; PEWTERCRUNCH
+	db 0x3a, 3    ; SACRED_ASH
+	db 0x3e, -2   ; REVIVAL_HERB
+	db 0x46, 37   ; GUARD_SPEC
+	db 0x4b, 22   ; POKE_DOLL
+	db 0x4c, 32   ; ABILITY_CAP
+	db 0x50, 33   ; THUNDERSTONE
+	db 0x53, 34   ; DUSK_STONE
+	db 0x54, 139  ; OVAL_STONE (originally Dawn Stone)
+	db 0x55, 33   ; SHINY_STONE
+	db 0x56, 28   ; ICE_STONE
+	db 0x58, 32   ; EXP_SHARE
+	db 0x77, -27  ; BERRY_JUICE
+	db 0x89, 1    ; PINK_BOW
+	db 0x8a, 2    ; BRIGHTPOWDER
+	db 0x8b, 53   ; SCOPE_LENS
+	db 0x8d, 1    ; KINGS_ROCK
+	db 0x8e, 4    ; FOCUS_BAND
+	db 0x8f, 5    ; LEFTOVERS
+	db 0x90, 3    ; LUCKY_EGG
+	db 0x93, -2   ; SMOKE_BALL
+	db 0x94, -9   ; BERSERK_GENE
+	db 0x9b, 36   ; ARMOR_SUIT
+	db 0x9c, 10   ; AIR_BALLOON
+	db 0x9d, 17   ; ASSAULT_VEST
+	db 0x9e, 5    ; BIG_ROOT
+	db 0x9f, 10   ; BINDING_BAND
+	db 0xa0, 0    ; DESTINY_KNOT
+	db 0xa1, 3    ; EVIOLITE
+	db 0xa2, -9   ; EXPERT_BELT
+	db 0xa3, -7   ; FOCUS_SASH
+	db 0xa4, -3   ; GRIP_CLAW
+	db 0xa5, -10  ; LIFE_ORB
+	db 0xa6, -12  ; LIGHT_CLAY
+	db 0xa7, -10  ; METRONOME
+	db 0xa8, -17  ; MUSCLE_BAND
+	db 0xa9, 9    ; PROTECT_PADS
+	db 0xaa, -5   ; ROCKY_HELMET
+	db 0xab, 6    ; SAFE_GOGGLES
+	db 0xac, -10  ; SHED_SHELL
+	db 0xad, -23  ; SHELL_BELL
+	db 0xae, -25  ; SOOTHE_BELL
+	db 0xaf, -2   ; WEAK_POLICY
+	db 0xb0, 17   ; WIDE_LENS
+	db 0xb1, -25  ; WISE_GLASSES
+	db 0xb2, 16   ; ZOOM_LENS
+	db 0xb3, -7   ; EJECT_BUTTON
+	db 0xb4, -21  ; LAGGING_TAIL
+	db 0xb5, -23  ; IRON_BALL
+	db 0xb6, -14  ; RING_TARGET
+	db 0xb7, -16  ; RED_CARD
+	db 0xb9, -14  ; CELL_BATTERY
+	db 0xbb, -11  ; SNOWBALL
+	db 0xbc, -8   ; EJECT_PACK
+	db 0xbd, -6   ; ROOM_SERVICE
+	db 0xbe, -8   ; BLUNDRPOLICY
+	db 0xbf, -12  ; THROAT_SPRAY
+	db 0xc0, -11  ; HEAVY_BOOTS
+	db 0xc1, -9   ; UTILUMBRELLA
+	db 0xdd, 1    ; RAZOR_CLAW
+	db 0xde, 2    ; ODD_SOUVENIR
+	db 0xea, 6    ; RARE_BONE
+	db 0xec, -10  ; GOLD_LEAF
+	db 0xed, 4    ; SLOWPOKETAIL
+	db 0xee, -10  ; BOTTLE_CAP
+	db 0xf1, 3    ; OLD_AMBER
+	db 0xf3, -144 ; SWEET_HONEY
+	db 0xf4, -17  ; MINT_LEAF
+	db 0
 
 RearrangeEventFlags:
 ; NOTE: even though Cinnabar Volcano flags were moved, that doesn't require a unique patch
@@ -854,10 +981,15 @@ ClearNewPokedbSpace:
 	set #3, 35
 	call CopyFrom1To2
 
-; temporarily store newbox data in sScratch before HoF data is moved
+	set #1, sRTCStatusFlags_v7
+	set #2, sRTCStatusFlags
+	set #3, 11 ; sLuckyNumberID+0001 - sRTCStatusFlags
+	call CopyFrom1To2
+
+; temporarily store newbox data in old sScratch before HoF data is moved
 	set #1, sNewBox1_v7
-	set #2, #zero ; sScratch
-	set #3, 1056 ; end of sBackupNewbox15 - sNewBox1
+	set #2, #zero ; what was once sScratch
+	set #3, 1056 ; end of sBackupNewbox15 - sNewBox1, does not impact sLinkBattleResults
 	call CopyFrom1To2
 
 ; copy first 10 entries of hall of fame, since stored entries is down from 30 to 10
