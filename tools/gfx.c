@@ -212,7 +212,7 @@ const uint8_t flipped[256] = {
 };
 
 bool flip_exists(const uint8_t *tile, const uint8_t *tiles, int tile_size, int num_tiles, bool xflip, bool yflip) {
-	uint8_t flip[tile_size];
+	uint8_t flip[tile_size]; // VLA
 	memset(flip, 0, tile_size);
 	int half_size = tile_size / 2;
 	for (int i = 0; i < tile_size; i++) {
