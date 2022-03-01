@@ -65,6 +65,9 @@ SavePatches:
 	dw RevertKeyItemsToIndexList
 
 	dh 8
+	dw AdjustItemIndexesToBuild8
+
+	dh 8
 	dw RearrangeEventFlags
 
 	dh 8
