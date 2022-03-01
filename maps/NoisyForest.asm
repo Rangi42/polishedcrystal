@@ -19,7 +19,6 @@ NoisyForest_MapScriptHeader:
 	bg_event  7, 29, BGEVENT_ITEM + FULL_RESTORE, EVENT_NOISY_FOREST_HIDDEN_FULL_RESTORE
 
 	def_object_events
-	object_event 20, 19, SPRITE_ANABEL, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, NoisyForestAnabelScript, EVENT_NOISY_FOREST_ANABEL
 	object_event 19, 36, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_TOLD_ABOUT_PIKABLU
 	object_event 24, 31, SPRITE_MON_ICON, SPRITEMOVEDATA_POKEMON, 0, MARILL, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, NO_FORM, NoisyForestPikabluScript, EVENT_NOISY_FOREST_PIKABLU
 	object_event 10, 15, SPRITE_BIRD_KEEPER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 4, GenericTrainerBird_keeperTrent, -1
@@ -32,96 +31,13 @@ NoisyForest_MapScriptHeader:
 	object_event 40, 15, SPRITE_CHILD, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_COMMAND, jumptextfaceplayer, NoisyForestChildText, -1
 	itemball_event 41,  2, BALMMUSHROOM, 1, EVENT_NOISY_FOREST_BALMMUSHROOM
 	itemball_event 16, 28, MULCH, 1, EVENT_NOISY_FOREST_MULCH
-	tmhmball_event 17, 23, TM_DRAIN_PUNCH, EVENT_NOISY_FOREST_TM_DRAIN_PUNCH
+	tmhmball_event 20, 19, TM_DRAIN_PUNCH, EVENT_NOISY_FOREST_TM_DRAIN_PUNCH
 	cuttree_event 40, 12, EVENT_NOISY_FOREST_CUT_TREE_1
 	cuttree_event 12, 21, EVENT_NOISY_FOREST_CUT_TREE_2
 
 	object_const_def
-	const NOISYFOREST_ANABEL
 	const NOISYFOREST_YOUNGSTER
 	const NOISYFOREST_MARILL
-
-NoisyForestAnabelScript:
-	faceplayer
-	checkevent EVENT_BEAT_ANABEL
-	iftrue .Beaten
-	opentext
-	writetext .ChallengeText
-	yesorno
-	iffalse_jumpopenedtext .NoText
-	writetext .YesText
-	waitbutton
-	closetext
-	winlosstext .BeatenText, 0
-	setlasttalked NOISYFOREST_ANABEL
-	loadtrainer ANABEL, 1
-	startbattle
-	reloadmapafterbattle
-	setevent EVENT_BEAT_ANABEL
-.Beaten
-	opentext
-	writetext .ItemText
-	promptbutton
-	verbosegiveitem POWER_BAND
-	iffalse_endtext
-	writetext .GoodbyeText
-	waitbutton
-	closetext
-	special Special_FadeBlackQuickly
-	special Special_ReloadSpritesNoPalettes
-	disappear NOISYFOREST_ANABEL
-	pause 15
-	special Special_FadeInQuickly
-	clearevent EVENT_BATTLE_TOWER_ANABEL
-	end
-
-.ChallengeText:
-	text "Greetings… My name"
-	line "is Anabel."
-
-	para "…You are <PLAYER>?"
-	line "I have heard sev-"
-	cont "eral rumors about"
-	cont "you…"
-
-	para "Let me see your"
-	line "talent in its"
-	cont "entirety…"
-	done
-
-.YesText:
-	text "Let's begin,"
-	line "shall we?"
-	done
-
-.NoText:
-	text "It's very dis-"
-	line "appointing…"
-	done
-
-.BeatenText:
-	text "OK, I understand…"
-	done
-
-.ItemText:
-	text "Fufufu, nicely"
-	line "done…"
-
-	para "Take this, please…"
-	done
-
-.GoodbyeText:
-	text "I urge you to keep"
-	line "battling and keep"
-	cont "on winning."
-
-	para "I will be waiting"
-	line "for you in Battle"
-	cont "Tower."
-
-	para "Until the next"
-	line "time we meet…"
-	done
 
 GenericTrainerBug_maniacPierre:
 	generictrainer BUG_MANIAC, PIERRE, EVENT_BEAT_BUG_MANIAC_PIERRE, .SeenText, .BeatenText
