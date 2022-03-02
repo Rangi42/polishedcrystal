@@ -474,6 +474,7 @@ CheckRepelEffect::
 ApplyAbilityEffectsOnEncounterMon:
 ; Consider making the abilities more useful in non-faithful
 	call GetLeadAbility
+	and a
 	ret z
 	ld hl, .AbilityEffects
 	jmp BattleJumptable
