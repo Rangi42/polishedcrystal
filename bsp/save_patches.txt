@@ -663,7 +663,7 @@ ConvertPokerusToNybble:
 ; If a mon has an active infection, it will get reset
 ; to its full days count. Cured infections remain cured
 	set #1, .mon_callback
-	call ApplyPartyPatches
+	jump ApplyPartyPatches
 
 .mon_callback
 	set #temp, #1

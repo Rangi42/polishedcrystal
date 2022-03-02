@@ -1247,6 +1247,7 @@ wStepCount:: db
 wPoisonStepCount:: db
 
 wPhoneList:: flag_array NUM_PHONE_CONTACTS
+wPhoneListEnd::
 
 	ds 2 ; unused
 

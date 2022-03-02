@@ -201,13 +201,12 @@ GetLeadAbility::
 	ld c, a
 	ld hl, wPartyMon1Personality
 	call GetAbility
-	ld a, b
 	jmp PopBCDEHL
 
 GetAbility::
 ; 'hl' contains the target personality to check (ability and form)
 ; 'c' contains the target species
-; returns ability in b
+; returns ability in a and b
 ; preserves curspecies and base data
 	anonbankpush BaseData
 
