@@ -133,9 +133,9 @@ ChooseRandomCaller:
 	jr nc, .invalid
 
 	; Check if the trainer is active during this time.
+	ld a, c
 	ld hl, PhoneContacts + PHONE_CONTACT_SCRIPT2_TIME
 	ld bc, PHONE_CONTACT_SIZE
-	ld a, c
 	rst AddNTimes
 	ld a, d
 	and [hl]
