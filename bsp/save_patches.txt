@@ -739,6 +739,7 @@ ConvertPhoneListToFlagArray:
 
 .SetFlag
 	retz #1
+	decrement #1
 	pushpos
 	seek #result
 	push #result
