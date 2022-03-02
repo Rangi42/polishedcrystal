@@ -57,16 +57,8 @@ PokegearPhone_Joypad:
 	ret
 
 .a
-	ld hl, wPhoneList
-	ld a, [wPokegearPhoneScrollPosition]
-	ld e, a
-	ld d, 0
-	add hl, de
-	ld a, [wPokegearPhoneCursorPosition]
-	ld e, a
-	ld d, 0
-	add hl, de
-	ld a, [hl]
+	call PokegearPhone_GetCellNumber
+	ld a, c
 	and a
 	ret z
 	ld [wPokegearPhoneSelectedPerson], a
@@ -183,9 +175,11 @@ PokegearPhone_GetDPad:
 
 .scroll_page_down
 	ld hl, wPokegearPhoneScrollPosition
-	ld a, [hl]
-	cp CONTACT_LIST_SIZE - 4
-	ret nc
+	ld a, [wNumSetBits]
+	sub 4
+	ret c
+	cp [hl]
+	ret z
 	inc [hl]
 	jr .done_joypad_update_page
 
@@ -217,32 +211,28 @@ PokegearPhone_UpdateDisplayList:
 	jr nz, .row
 	ld a, [wPokegearPhoneScrollPosition]
 	ld e, a
-	ld d, $0
-	ld hl, wPhoneList
-	add hl, de
 	xor a
 	ld [wPokegearPhoneLoadNameBuffer], a
 .loop
-	ld a, [hli]
-	push hl
-	push af
+	push de
+	call PokegearPhone_GetCellNumberFromE
+	ld d, c
 	hlcoord 2, 4
 	ld a, [wPokegearPhoneLoadNameBuffer]
 	ld bc, 2 * SCREEN_WIDTH
 	rst AddNTimes
+	ld b, d
 	ld d, h
 	ld e, l
-	pop af
-	ld b, a
 	call GetCallerClassAndName
+	pop de
+	inc e
 	ld hl, wPokegearPhoneLoadNameBuffer
 	inc [hl]
 	ld a, [hl]
-	pop hl
-	cp $4 ; 4 entries fit on the screen
+	cp 4 ; 4 entries fit on the screen
 	jr c, .loop
 	; fallthrough
-
 PokegearPhone_UpdateCursor:
 	ld a, " "
 	hlcoord 1, 4
@@ -261,41 +251,54 @@ PokegearPhone_UpdateCursor:
 	ret
 
 PokegearPhone_DeletePhoneNumber:
-	ld hl, wPhoneList
+	call PokegearPhone_GetCellNumber
+	call DelCellNum
+; Check if scroll position should be decremented as a result
+	ld hl, wNumSetBits
+	dec [hl]
+	ld a, [wPokegearPhoneScrollPosition]
+	and a
+	ret z
+	add 3 ; assume cursor position is at the bottom for this calculation
+	cp [hl]
+	ret c
+	sub 4
+	ld [wPokegearPhoneScrollPosition], a
+	ret
+
+PokegearPhone_GetCellNumber:
+; Returns nth contact from wPhoneList in c, c=0 for invalid contact
+; Input: wPokegearPhoneCursorPosition + wPokegearPhoneCursorPosition
 	ld a, [wPokegearPhoneScrollPosition]
 	ld e, a
-	ld d, 0
-	add hl, de
 	ld a, [wPokegearPhoneCursorPosition]
+	add e
 	ld e, a
-	ld d, 0
-	add hl, de
-	ld [hl], 0
-	ld hl, wPhoneList
-	ld c, CONTACT_LIST_SIZE
+	;fallthrough
+PokegearPhone_GetCellNumberFromE:
+; Returns e-th contact from wPhoneList in c, c=0 for invalid contact
+; Input: e
+	inc e
+	call PokegearPhone_CountSetBits
+	cp e ; result is returned in a
+	ld c, 0
+	ret c
 .loop
-	ld a, [hli]
-	and a
-	jr nz, .skip
-	ld a, [hld]
-	ld [hli], a
-	ld [hl], 0
-.skip
-	dec c
+	inc c
+	call CheckCellNum
+	jr z, .loop
+	dec e
 	jr nz, .loop
 	ret
 
-PokegearPhoneContactSubmenu:
+PokegearPhone_CountSetBits:
+; Returns result in wNumSetBits
 	ld hl, wPhoneList
-	ld a, [wPokegearPhoneScrollPosition]
-	ld e, a
-	ld d, 0
-	add hl, de
-	ld a, [wPokegearPhoneCursorPosition]
-	ld e, a
-	ld d, 0
-	add hl, de
-	ld c, [hl]
+	ld b, wPhoneListEnd - wPhoneList
+	jmp CountSetBits
+
+PokegearPhoneContactSubmenu:
+	call PokegearPhone_GetCellNumber
 	call CheckCanDeletePhoneNumber
 	ld a, c
 	and a

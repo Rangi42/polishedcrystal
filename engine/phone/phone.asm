@@ -418,23 +418,12 @@ GetCallerName:
 	ret
 
 .Blank:
-	ld a, "<SHARP>"
-	ld [hli], a
-	ld a, [wPokegearPhoneScrollPosition]
-	ld b, a
-	ld a, [wPokegearPhoneLoadNameBuffer]
-	add b
-	inc a
-	ld de, wPokegearNumberBuffer
-	ld [de], a
-	lb bc, PRINTNUM_LEFTALIGN | 1, 2
-	call PrintNum
 	ld de, .filler
 	rst PlaceString
 	ret
 
 .filler
-	db " -------@"
+	db "----------@"
 
 Phone_NoSignal:
 	ld de, SFX_NO_SIGNAL
