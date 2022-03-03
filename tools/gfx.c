@@ -61,7 +61,7 @@ void parse_args(int argc, char *argv[]) {
 			break;
 		case 'r':
 			for (char *token = strtok(optarg, ","); token; token = strtok(NULL, ",")) {
-				options.preserved = realloc(options.preserved, ++options.num_preserved * sizeof(*options.preserved));
+				options.preserved = xrealloc(options.preserved, ++options.num_preserved * sizeof(*options.preserved));
 				options.preserved[options.num_preserved-1] = strtoul(token, NULL, 0);
 			}
 			break;
@@ -250,7 +250,7 @@ void interleave(struct Graphic *graphic, int width) {
 	int tile_size = options.depth * 8;
 	int width_tiles = width / 8;
 	int num_tiles = graphic->size / tile_size;
-	uint8_t *interleaved = malloc(graphic->size);
+	uint8_t *interleaved = xmalloc(graphic->size);
 	for (int i = 0; i < num_tiles; i++) {
 		int row = i / width_tiles;
 		int tile = i * 2 - (row % 2 ? width_tiles * (row + 1) - 1 : width_tiles * row);
@@ -280,7 +280,7 @@ int main(int argc, char *argv[]) {
 		if (!options.png_file) {
 			error_exit("--interleave needs --png to infer dimensions");
 		}
-		int width = read_png_width_verbose(options.png_file);
+		int width = read_png_width(options.png_file);
 		interleave(&graphic, width);
 	}
 	if (options.remove_duplicates) {

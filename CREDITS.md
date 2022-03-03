@@ -57,6 +57,7 @@ Pokémon Polished Crystal would never have been finished without the help of man
 * flempa for some Pokémon sprites and move animations and for Galarian Articuno and Galarian Zapdos animations.
 * Scarlax for many new Pokémon animations.
 * ShadowOne333 for many new Pokémon animations.
+* octorox for Galarian Rapidash and Galarian Slowking's backpics.
 * spritershawn for sprites of Red, Blue, and Green.
 * isamuakai01 for sprites of Steven and Cynthia.
 * Maddalena for sprites of Imakuni and the Ghost.
