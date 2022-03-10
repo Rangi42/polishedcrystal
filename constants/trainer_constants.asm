@@ -1084,32 +1084,34 @@ KRIS EQU __trainer_class__
 
 	trainerclass KUKUI ; 8b
 
-	trainerclass VICTOR  ; 8c
+	trainerclass MELONY ; 8c
 
-	trainerclass BILL_T ; 8d
+	trainerclass VICTOR  ; 8d
 
-	trainerclass YELLOW ; 8e
+	trainerclass BILL_T ; 8e
 
-	trainerclass WALKER ; 8f
+	trainerclass YELLOW ; 8f
 
-	trainerclass IMAKUNI ; 90
+	trainerclass WALKER ; 90
 
-	trainerclass LAWRENCE ; 91
+	trainerclass IMAKUNI ; 91
 
-	trainerclass REI ; 92
+	trainerclass LAWRENCE ; 92
+
+	trainerclass REI ; 93
 
 NUM_TRAINER_CLASSES EQU __trainer_class__ - 1
 
-	trainerclass OMASTAR_FOSSIL ; 93
+	trainerclass OMASTAR_FOSSIL ; 94
 
-	trainerclass KABUTOPS_FOSSIL ; 94
+	trainerclass KABUTOPS_FOSSIL ; 95
 
-	trainerclass AERODACTYL_FOSSIL ; 95
+	trainerclass AERODACTYL_FOSSIL ; 96
 
-	trainerclass CUBONE_ARMOR ; 96
+	trainerclass CUBONE_ARMOR ; 97
 
-	trainerclass METEORITE ; 97
+	trainerclass METEORITE ; 98
 
-	trainerclass SILHOUETTE ; 98
+	trainerclass SILHOUETTE ; 99
 
 NUM_TRAINER_CLASS_PICS EQU __trainer_class__ - 1

@@ -142,6 +142,7 @@ TrainerGroups:
 	dba SkylaGroup
 	dba ValerieGroup
 	dba KukuiGroup
+	dba MelonyGroup
 	dba VictorGroup
 	dba BillGroup
 	dba YellowGroup
