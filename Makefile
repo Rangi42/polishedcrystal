@@ -109,7 +109,7 @@ clean: tidy
 	$(MAKE) clean -C tools/
 
 tidy:
-	rm -f $(crystal_obj) $(wildcard $(NAME)-*.gbc) $(wildcard $(NAME)-*.pocket) $(wildcard $(NAME)-*.bsp) \
+	$(RM) $(crystal_obj) $(wildcard $(NAME)-*.gbc) $(wildcard $(NAME)-*.pocket) $(wildcard $(NAME)-*.bsp) \
 		$(wildcard $(NAME)-*.map) $(wildcard $(NAME)-*.sym) rgbdscheck.o
 
 freespace: crystal tools/bankends
