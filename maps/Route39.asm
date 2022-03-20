@@ -41,7 +41,7 @@ Route39_MapScriptHeader:
 	const ROUTE39_COWGIRL
 
 Route39TileScript:
-	checkevent EVENT_ROUTE_39_BOULDER
+	checkflag ENGINE_FLYPOINT_SNOWTOP
 	iffalse .End
 	changeblock 10, 8, $f4
 	changeblock 12, 8, $01
