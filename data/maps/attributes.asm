@@ -199,12 +199,12 @@ ENDM
 	connection south, Route36, ROUTE_36, -12
 
 	map_attributes Route38, ROUTE_38, $5, WEST | EAST
-	connection west, Route39, ROUTE_39, -6
+	connection west, Route39, ROUTE_39, -7
 	connection east, EcruteakCity, ECRUTEAK_CITY, -5
 
 	map_attributes Route39, ROUTE_39, $5, SOUTH | EAST
 	connection south, OlivineCity, OLIVINE_CITY, -5
-	connection east, Route38, ROUTE_38, 6
+	connection east, Route38, ROUTE_38, 7
 
 	map_attributes Route40, ROUTE_40, $35, SOUTH | EAST
 	connection south, Route41, ROUTE_41, -15
@@ -915,6 +915,7 @@ ENDM
 	map_attributes CeruleanCave1F, CERULEAN_CAVE_1F, $9, 0
 	map_attributes CeruleanCave2F, CERULEAN_CAVE_2F, $9, 0
 	map_attributes CeruleanCaveB1F, CERULEAN_CAVE_B1F, $9, 0
+	map_attributes Route39RuggedRoadGate, ROUTE_39_RUGGED_ROAD_GATE, $0, 0
 	map_attributes RuggedRoad, RUGGED_ROAD, $0, 0
 	map_attributes SnowtopMountain, SNOWTOP_MOUNTAIN, $0, 0
 	map_attributes YellowForestGate, YELLOW_FOREST_GATE, $0, 0

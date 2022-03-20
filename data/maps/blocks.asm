@@ -52,6 +52,7 @@ Route2946Gate_BlockData:
 Route34IlexForestGate_BlockData:
 Route35GoldenrodGate_BlockData:
 Route36RuinsOfAlphGate_BlockData:
+Route39RuggedRoadGate_BlockData:
 Route40BattleTowerGate_BlockData:
 YellowForestGate_BlockData:
 Route43Gate_BlockData:

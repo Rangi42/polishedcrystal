@@ -38,7 +38,7 @@ ENDM
 	map_const ROUTE_39_BARN,                               4,  4 ; 10
 	map_const ROUTE_39_FARMHOUSE,                          4,  4 ; 11
 	map_const ROUTE_38,                                   20,  9 ; 12
-	map_const ROUTE_39,                                   10, 26 ; 13
+	map_const ROUTE_39,                                   10, 27 ; 13
 	map_const OLIVINE_CITY,                               33, 16 ; 14
 	map_const ROUTE_35_COAST,                             26, 14 ; 15
 
@@ -692,5 +692,6 @@ ENDM
 	newgroup                                                     ; 36
 	map_const RUGGED_ROAD,                                10, 27 ;  1
 	map_const SNOWTOP_MOUNTAIN,                           20, 18 ;  2
+	map_const ROUTE_39_RUGGED_ROAD_GATE,                   5,  4 ;  3
 
 NUM_MAP_GROUPS EQU const_value ; 37
