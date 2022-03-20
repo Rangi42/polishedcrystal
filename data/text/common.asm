@@ -3275,7 +3275,7 @@ _ElmText2::
 	text "This world is in-"
 	line "habited by crea-"
 	cont "tures that we call"
-	cont "#mon."
+	cont "#mon.@"
 	text_end
 
 SECTION "_ElmText4", ROMX
