@@ -3276,7 +3276,7 @@ _ElmText2::
 	line "habited by crea-"
 	cont "tures that we call"
 	cont "#mon."
-	done
+	text_end
 
 SECTION "_ElmText4", ROMX
 _ElmText4::
