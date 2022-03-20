@@ -4,31 +4,36 @@ Route39_MapScriptHeader:
 	def_callbacks
 
 	def_warp_events
-	warp_event  1,  3, ROUTE_39_BARN, 1
-	warp_event  5,  3, ROUTE_39_FARMHOUSE, 1
+	warp_event  1, 15, ROUTE_39_BARN, 1
+	warp_event  5, 15, ROUTE_39_FARMHOUSE, 1
 
 	def_coord_events
 
 	def_bg_events
-	bg_event  5, 31, BGEVENT_JUMPTEXT, Route39TrainerTipsText
-	bg_event  9,  5, BGEVENT_JUMPTEXT, MoomooFarmSignText
-	bg_event 15,  7, BGEVENT_JUMPTEXT, Route39SignText
-	bg_event  5, 13, BGEVENT_ITEM + NUGGET, EVENT_ROUTE_39_HIDDEN_NUGGET
+	bg_event  5, 43, BGEVENT_JUMPTEXT, Route39TrainerTipsText
+	bg_event  9, 17, BGEVENT_JUMPTEXT, MoomooFarmSignText
+	bg_event 15,  7, BGEVENT_JUMPTEXT, RuggedRoadAheadSignText
+	bg_event 15, 19, BGEVENT_JUMPTEXT, Route39SignText
+	bg_event  5, 25, BGEVENT_ITEM + NUGGET, EVENT_ROUTE_39_HIDDEN_NUGGET
 
 	def_object_events
-	object_event  7, 14, SPRITE_COWGIRL, SPRITEMOVEDATA_WANDER, 1, 2, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, Route39CowgirlAnnieScript, -1
-	object_event 13, 29, SPRITE_SAILOR, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 5, GenericTrainerSailorEugene, -1
-	object_event 10, 22, SPRITE_POKEFAN_M, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, OBJECTTYPE_TRAINER, 4, TrainerPokefanmDerek1, -1
-	object_event 11, 19, SPRITE_POKEFAN_F, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 4, GenericTrainerPokefanfRuth, -1
-	pokemon_event  3, 12, MILTANK, SPRITEMOVEDATA_POKEMON, -1, -1, PAL_NPC_RED, Route39MiltankText, -1
-	pokemon_event  6, 11, MILTANK, SPRITEMOVEDATA_POKEMON, -1, -1, PAL_NPC_RED, Route39MiltankText, -1
-	pokemon_event  4, 15, MILTANK, SPRITEMOVEDATA_POKEMON, -1, -1, PAL_NPC_RED, Route39MiltankText, -1
-	pokemon_event  8, 13, MILTANK, SPRITEMOVEDATA_POKEMON, -1, -1, PAL_NPC_RED, Route39MiltankText, -1
-	object_event 13,  7, SPRITE_PSYCHIC, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 1, GenericTrainerPsychicNorman, -1
-	fruittree_event  9,  3, FRUITTREE_ROUTE_39, CHESTO_BERRY, PAL_NPC_PURPLE
-	object_event  4, 22, SPRITE_POKEFAN_F, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, TrainerPokefanfJaime, -1
-	object_event  4, 30, SPRITE_BEAUTY, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_COMMAND, jumptextfaceplayer, Route39BeautyText, -1
-	tmhmball_event  1,  7, TM_BULLDOZE, EVENT_ROUTE_39_TM_BULLDOZE
+	object_event  7, 26, SPRITE_COWGIRL, SPRITEMOVEDATA_WANDER, 1, 2, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, Route39CowgirlAnnieScript, -1
+	object_event 13, 41, SPRITE_SAILOR, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 5, GenericTrainerSailorEugene, -1
+	object_event 10, 34, SPRITE_POKEFAN_M, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, OBJECTTYPE_TRAINER, 4, TrainerPokefanmDerek1, -1
+	object_event 11, 31, SPRITE_POKEFAN_F, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 4, GenericTrainerPokefanfRuth, -1
+	pokemon_event  3, 24, MILTANK, SPRITEMOVEDATA_POKEMON, -1, -1, PAL_NPC_RED, Route39MiltankText, -1
+	pokemon_event  6, 23, MILTANK, SPRITEMOVEDATA_POKEMON, -1, -1, PAL_NPC_RED, Route39MiltankText, -1
+	pokemon_event  4, 27, MILTANK, SPRITEMOVEDATA_POKEMON, -1, -1, PAL_NPC_RED, Route39MiltankText, -1
+	pokemon_event  8, 25, MILTANK, SPRITEMOVEDATA_POKEMON, -1, -1, PAL_NPC_RED, Route39MiltankText, -1
+	object_event 13, 19, SPRITE_PSYCHIC, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 1, GenericTrainerPsychicNorman, -1
+	fruittree_event  9, 15, FRUITTREE_ROUTE_39, CHESTO_BERRY, PAL_NPC_PURPLE
+	object_event  4, 34, SPRITE_POKEFAN_F, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, TrainerPokefanfJaime, -1
+	object_event  4, 42, SPRITE_BEAUTY, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_COMMAND, jumptextfaceplayer, Route39BeautyText, -1
+	object_event 14, 12, SPRITE_HIKER, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, Route39HikerText, -1
+	tmhmball_event  1, 19, TM_BULLDOZE, EVENT_ROUTE_39_TM_BULLDOZE
+	smashrock_event 10,  7
+	smashrock_event 17,  8
+	strengthboulder_event 13,  6
 
 	object_const_def
 	const ROUTE39_COWGIRL
@@ -390,11 +395,36 @@ Route39BeautyText:
 	line "no doubt!"
 	done
 
+Route39HikerText:
+	text "North of Olivine,"
+	line "the mountains get"
+	cont "steep and icy!"
+
+	para "I've heard that"
+	line "some unusual #-"
+	cont "mon have adapted"
+	cont "to that climate."
+
+	para "But with so many"
+	line "fallen rocks,"
+
+	para "I can't even start"
+	line "to hike…"
+	done
+
 Route39SignText:
 	text "Route 39"
 
 	para "Olivine City -"
 	line "Ecruteak City"
+	done
+
+RuggedRoadAheadSignText:
+	text "Rugged Road"
+	line "ahead"
+
+	para "North to"
+	line "Snowtop Mountain"
 	done
 
 MoomooFarmSignText:
