@@ -38,4 +38,5 @@ MapGroupRoofs:
 	db -1 ; group 33
 	db  2 ; group 34 (Sinjoh Ruins)
 	db -1 ; group 35
+	db  1 ; group 36 (Rugged Road)
 	assert_table_length NUM_MAP_GROUPS + 1

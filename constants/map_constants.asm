@@ -689,4 +689,8 @@ ENDM
 	map_const SAFFRON_CITY,                               20, 19 ;  1
 	map_const SHAMOUTI_SHRINE_RUINS,                      12, 17 ;  2
 
-NUM_MAP_GROUPS EQU const_value ; 36
+	newgroup                                                     ; 36
+	map_const RUGGED_ROAD,                                10, 27 ;  1
+	map_const SNOWTOP_MOUNTAIN,                           20, 18 ;  2
+
+NUM_MAP_GROUPS EQU const_value ; 37

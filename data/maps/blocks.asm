@@ -633,6 +633,14 @@ SECTION "BurnedTowerB1F_BlockData", ROMX
 BurnedTowerB1F_BlockData:
 	INCBIN "maps/BurnedTowerB1F.ablk.lz"
 
+SECTION "RuggedRoad_BlockData", ROMX
+RuggedRoad_BlockData:
+	INCBIN "maps/RuggedRoad.ablk.lz"
+
+SECTION "SnowtopMountain_BlockData", ROMX
+SnowtopMountain_BlockData:
+	INCBIN "maps/SnowtopMountain.ablk.lz"
+
 SECTION "OlivineGym_BlockData", ROMX
 OlivineGym_BlockData:
 	INCBIN "maps/OlivineGym.ablk.lz"

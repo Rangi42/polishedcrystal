@@ -106,6 +106,7 @@ EngineFlags:
 	engine_flag wVisitedSpawns, 21 ; goldenrod
 	engine_flag wVisitedSpawns, 22 ; olivine
 	engine_flag wVisitedSpawns, 23 ; ecruteak
+	engine_flag wVisitedSpawns, 29 ; snowtop
 	engine_flag wVisitedSpawns, 24 ; mahogany
 	engine_flag wVisitedSpawns, 25 ; yellow forest
 	engine_flag wVisitedSpawns, 26 ; lake of rage
