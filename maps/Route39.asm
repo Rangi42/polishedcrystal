@@ -7,14 +7,14 @@ Route39_MapScriptHeader:
 	def_warp_events
 	warp_event  1, 17, ROUTE_39_BARN, 1
 	warp_event  5, 17, ROUTE_39_FARMHOUSE, 1
-	warp_event 13,  5, ROUTE_39_RUGGED_ROAD_GATE, 3
+	warp_event  9,  5, ROUTE_39_RUGGED_ROAD_GATE, 3
 
 	def_coord_events
 
 	def_bg_events
 	bg_event  5, 45, BGEVENT_JUMPTEXT, Route39TrainerTipsText
 	bg_event  9, 19, BGEVENT_JUMPTEXT, MoomooFarmSignText
-	bg_event 15,  7, BGEVENT_JUMPTEXT, RuggedRoadAheadSignText
+	bg_event 11,  7, BGEVENT_JUMPTEXT, RuggedRoadAheadSignText
 	bg_event 15, 21, BGEVENT_JUMPTEXT, Route39SignText
 	bg_event  5, 27, BGEVENT_ITEM + NUGGET, EVENT_ROUTE_39_HIDDEN_NUGGET
 
@@ -31,10 +31,10 @@ Route39_MapScriptHeader:
 	fruittree_event  9, 17, FRUITTREE_ROUTE_39, CHESTO_BERRY, PAL_NPC_PURPLE
 	object_event  4, 36, SPRITE_POKEFAN_F, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, TrainerPokefanfJaime, -1
 	object_event  4, 44, SPRITE_BEAUTY, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_COMMAND, jumptextfaceplayer, Route39BeautyText, -1
-	object_event 14, 11, SPRITE_HIKER, SPRITEMOVEDATA_WALK_UP_DOWN, 2, 0, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, Route39HikerText, -1
+	object_event 15, 11, SPRITE_HIKER, SPRITEMOVEDATA_WALK_UP_DOWN, 2, 0, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, Route39HikerText, -1
 	tmhmball_event  1, 21, TM_BULLDOZE, EVENT_ROUTE_39_TM_BULLDOZE
-	smashrock_event 10,  8
-	smashrock_event 17,  9
+	smashrock_event  8,  9
+	smashrock_event 15,  8
 
 	object_const_def
 	const ROUTE39_COWGIRL
