@@ -324,17 +324,18 @@ ItemfinderIcon::   INCBIN "gfx/items/itemfinder.2bpp.lz"
 MysteryEggIcon::   INCBIN "gfx/items/mystery_egg.2bpp.lz"
 SquirtBottleIcon:: INCBIN "gfx/items/squirtbottle.2bpp.lz"
 SecretPotionIcon:: INCBIN "gfx/items/secretpotion.2bpp.lz"
+GoGogglesIcon::    INCBIN "gfx/items/go_goggles.2bpp.lz"
 RedScaleIcon::     INCBIN "gfx/items/red_scale.2bpp.lz"
 CardKeyIcon::      INCBIN "gfx/items/card_key.2bpp.lz"
 BasementKeyIcon::  INCBIN "gfx/items/basement_key.2bpp.lz"
 SSTicketIcon::     INCBIN "gfx/items/s_s_ticket.2bpp.lz"
 PassIcon::         INCBIN "gfx/items/pass.2bpp.lz"
 MachinePartIcon::  INCBIN "gfx/items/machine_part.2bpp.lz"
-LostItemIcon::     INCBIN "gfx/items/lost_item.2bpp.lz"
 
 
 SECTION "Key Item Icons 2", ROMX
 
+LostItemIcon::     INCBIN "gfx/items/lost_item.2bpp.lz"
 RainbowWingIcon::  INCBIN "gfx/items/rainbow_wing.2bpp.lz"
 SilverWingIcon::   INCBIN "gfx/items/silver_wing.2bpp.lz"
 ClearBellIcon::    INCBIN "gfx/items/clear_bell.2bpp.lz"

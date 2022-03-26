@@ -31,11 +31,10 @@ Route39_MapScriptHeader:
 	fruittree_event  9, 17, FRUITTREE_ROUTE_39, CHESTO_BERRY, PAL_NPC_PURPLE
 	object_event  4, 36, SPRITE_POKEFAN_F, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, TrainerPokefanfJaime, -1
 	object_event  4, 44, SPRITE_BEAUTY, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_COMMAND, jumptextfaceplayer, Route39BeautyText, -1
-	object_event 14, 14, SPRITE_HIKER, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, Route39HikerScript, -1
+	object_event 14, 11, SPRITE_HIKER, SPRITEMOVEDATA_WALK_UP_DOWN, 2, 0, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, Route39HikerText, -1
 	tmhmball_event  1, 21, TM_BULLDOZE, EVENT_ROUTE_39_TM_BULLDOZE
 	smashrock_event 10,  8
 	smashrock_event 17,  9
-	strengthboulder_event 13, 11, EVENT_ROUTE_39_BOULDER
 
 	object_const_def
 	const ROUTE39_COWGIRL
@@ -243,20 +242,6 @@ Route39CowgirlAnnieScript:
 	line "ya!"
 	done
 
-Route39HikerScript:
-	checkevent EVENT_ROUTE_39_BOULDER
-	iffalse_jumptextfaceplayer Route39HikerText
-	jumpthistextfaceplayer
-
-	text "The rockfall off"
-	line "Rugged Road was"
-	cont "cleared away!"
-
-	para "Now I can hike"
-	line "along the fron-"
-	cont "tier of Johto!"
-	done
-
 GenericTrainerSailorEugene:
 	generictrainer SAILOR, EUGENE, EVENT_BEAT_SAILOR_EUGENE, SailorEugeneSeenText, SailorEugeneBeatenText
 
@@ -421,20 +406,30 @@ Route39BeautyText:
 	done
 
 Route39HikerText:
-	text "North of Olivine,"
-	line "the mountains get"
-	cont "steep and icy!"
+	text "North of Olivine"
+	line "is the frontier"
+	cont "of Johto!"
+
+	para "An intense hike"
+	line "through rugged"
+
+	para "terrain, then"
+	line "scaling an icy"
+	cont "mountain…"
 
 	para "I've heard that"
-	line "some unusual #-"
-	cont "mon have adapted"
-	cont "to that climate."
+	line "some #mon have"
 
-	para "But with so many"
-	line "fallen rocks,"
+	para "adapted to sur-"
+	line "vive the harsh"
+	cont "climate."
+
+	para "…But without a"
+	line "pair of Go-Goggles"
+	cont "for safety,"
 
 	para "I can't even start"
-	line "to hike…"
+	line "on the hike…"
 	done
 
 Route39SignText:

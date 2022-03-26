@@ -272,6 +272,7 @@ KeyItemIconPointers:
 	dba SilphScope2Icon
 	dba MysteryEggIcon
 	dba SecretPotionIcon
+	dba GoGogglesIcon
 	dba RedScaleIcon
 	dba CardKeyIcon
 	dba BasementKeyIcon

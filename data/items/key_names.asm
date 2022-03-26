@@ -14,6 +14,7 @@ KeyItemNames::
 	li "SilphScope2"
 	li "Mystery Egg"
 	li "SecretPotion"
+	li "Go-Goggles"
 	li "Red Scale"
 	li "Card Key"
 	li "Basement Key"

@@ -551,6 +551,8 @@ KeyItemAttributes:
 	key_item_attribute 0, ITEMMENU_NOUSE, ITEMMENU_NOUSE
 ; SECRETPOTION
 	key_item_attribute 0, ITEMMENU_NOUSE, ITEMMENU_NOUSE
+; GO GOGGLES
+	key_item_attribute 0, ITEMMENU_NOUSE, ITEMMENU_NOUSE
 ; RED SCALE
 	key_item_attribute 0, ITEMMENU_NOUSE, ITEMMENU_NOUSE
 ; CARD KEY
