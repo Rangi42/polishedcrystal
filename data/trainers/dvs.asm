@@ -142,6 +142,7 @@ TrainerClassDVsAndPersonality:
 	db 252, PERFECT_DVS,   ABILITY_1 | QUIRKY, FEMALE ; skyla
 	db 252, PERFECT_DVS,   ABILITY_1 | QUIRKY, FEMALE ; valerie
 	db 252, PERFECT_DVS,   ABILITY_1 | QUIRKY, MALE   ; kukui
+	db 252, PERFECT_DVS,   ABILITY_1 | QUIRKY, FEMALE ; melony
 	db 192, $EE, $EE, $EE, ABILITY_1 | QUIRKY, MALE   ; victor
 	db 252, PERFECT_DVS,   ABILITY_1 | QUIRKY, MALE   ; bill
 	db 252, $EE, $EE, $EE, ABILITY_1 | QUIRKY, FEMALE ; yellow

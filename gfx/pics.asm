@@ -3583,6 +3583,10 @@ SECTION "KukuiPic", ROMX
 KukuiPic:
 	INCBIN "gfx/trainers/kukui.2bpp.lz"
 
+SECTION "MelonyPic", ROMX
+MelonyPic:
+	INCBIN "gfx/trainers/melony.2bpp.lz"
+
 SECTION "VictorPic", ROMX
 VictorPic:
 	INCBIN "gfx/trainers/victor.2bpp.lz"

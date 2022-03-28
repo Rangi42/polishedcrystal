@@ -295,6 +295,7 @@ KeyItemEffects:
 	dw IsntTheTimeMessage ; SILPHSCOPE2
 	dw IsntTheTimeMessage ; MYSTERY_EGG
 	dw IsntTheTimeMessage ; SECRETPOTION
+	dw IsntTheTimeMessage ; GO_GOGGLES
 	dw IsntTheTimeMessage ; RED_SCALE
 	dw CardKey            ; CARD_KEY
 	dw BasementKey        ; BASEMENT_KEY

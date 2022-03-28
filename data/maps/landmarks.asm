@@ -43,6 +43,8 @@ Landmarks:
 	landmark  66,  42, BurnedTowerName
 	landmark  52,  44, Route38Name
 	landmark  36,  48, Route39Name
+	landmark  36,  36, RuggedRoadName
+	landmark  36,  28, SnowtopMountainName
 	landmark  36,  60, OlivineCityName
 	landmark  38,  62, LighthouseName
 	landmark  28,  64, Route40Name
@@ -275,6 +277,8 @@ Route34CoastName:      rawchar "Route 34¯Coast@"
 Route35CoastName:      rawchar "Route 35¯Coast@"
 StormyBeachName:       rawchar "Stormy¯Beach@"
 MurkySwampName:        rawchar "Murky¯Swamp@"
+RuggedRoadName:        rawchar "Rugged¯Road@"
+SnowtopMountainName:   rawchar "Snowtop¯Mountain@"
 ScaryCaveName:         rawchar "Scary¯Cave@"
 DimCaveName:           rawchar "Dim Cave@"
 UragaChannelName:      rawchar "Uraga¯Channel@"

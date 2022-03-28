@@ -52,6 +52,7 @@ Route2946Gate_BlockData:
 Route34IlexForestGate_BlockData:
 Route35GoldenrodGate_BlockData:
 Route36RuinsOfAlphGate_BlockData:
+Route39RuggedRoadGate_BlockData:
 Route40BattleTowerGate_BlockData:
 YellowForestGate_BlockData:
 Route43Gate_BlockData:
@@ -632,6 +633,14 @@ BurnedTower1F_BlockData:
 SECTION "BurnedTowerB1F_BlockData", ROMX
 BurnedTowerB1F_BlockData:
 	INCBIN "maps/BurnedTowerB1F.ablk.lz"
+
+SECTION "RuggedRoad_BlockData", ROMX
+RuggedRoad_BlockData:
+	INCBIN "maps/RuggedRoad.ablk.lz"
+
+SECTION "SnowtopMountain_BlockData", ROMX
+SnowtopMountain_BlockData:
+	INCBIN "maps/SnowtopMountain.ablk.lz"
 
 SECTION "OlivineGym_BlockData", ROMX
 OlivineGym_BlockData:

@@ -10622,6 +10622,11 @@ KukuiGroup:
 	db -1 ; end
 
 
+SECTION "MelonyGroup", ROMX
+MelonyGroup:
+	; TODO
+
+
 SECTION "VictorGroup", ROMX
 VictorGroup:
 

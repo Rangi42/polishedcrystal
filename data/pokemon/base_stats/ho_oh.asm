@@ -11,7 +11,7 @@
 if DEF(FAITHFUL)
 	abilities_for HO_OH, PRESSURE, PRESSURE, REGENERATOR
 else
-	abilities_for HO_OH, PRESSURE, CLOUD_NINE, REGENERATOR
+	abilities_for HO_OH, PRESSURE, DROUGHT, REGENERATOR
 endc
 	db GROWTH_SLOW ; growth rate
 	dn EGG_NONE, EGG_NONE ; egg groups

@@ -307,6 +307,13 @@ INCLUDE "maps/BurnedTower1F.asm"
 INCLUDE "maps/BurnedTowerB1F.asm"
 
 
+SECTION "Rugged Road + Snowtop Mountain Scripts", ROMX
+
+INCLUDE "maps/RuggedRoad.asm"
+INCLUDE "maps/SnowtopMountain.asm"
+INCLUDE "maps/Route39RuggedRoadGate.asm"
+
+
 SECTION "Olivine Scripts", ROMX
 
 INCLUDE "maps/OlivineCity.asm"

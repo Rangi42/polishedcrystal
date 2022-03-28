@@ -613,21 +613,22 @@ NUM_APRICORNS EQU const_value - 1
 	const SILPHSCOPE2  ; 0b
 	const MYSTERY_EGG  ; 0c
 	const SECRETPOTION ; 0d
-	const RED_SCALE    ; 0e
-	const CARD_KEY     ; 0f
-	const BASEMENT_KEY ; 10
-	const LOST_ITEM    ; 11
-	const MACHINE_PART ; 12
-	const RAINBOW_WING ; 13
-	const SILVER_WING  ; 14
-	const CLEAR_BELL   ; 15
-	const GS_BALL      ; 16
-	const S_S_TICKET   ; 17
-	const PASS         ; 18
-	const ORANGETICKET ; 19
-	const MYSTICTICKET ; 1a
-	const OLD_SEA_MAP  ; 1b
-	const SHINY_CHARM  ; 1c
-	const OVAL_CHARM   ; 1d
-	const CATCH_CHARM  ; 1e
+	const GO_GOGGLES   ; 0e
+	const RED_SCALE    ; 0f
+	const CARD_KEY     ; 10
+	const BASEMENT_KEY ; 11
+	const LOST_ITEM    ; 12
+	const MACHINE_PART ; 13
+	const RAINBOW_WING ; 14
+	const SILVER_WING  ; 15
+	const CLEAR_BELL   ; 16
+	const GS_BALL      ; 17
+	const S_S_TICKET   ; 18
+	const PASS         ; 19
+	const ORANGETICKET ; 1a
+	const MYSTICTICKET ; 1b
+	const OLD_SEA_MAP  ; 1c
+	const SHINY_CHARM  ; 1d
+	const OVAL_CHARM   ; 1e
+	const CATCH_CHARM  ; 1f
 NUM_KEY_ITEMS EQU const_value - 1

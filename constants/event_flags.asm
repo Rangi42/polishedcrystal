@@ -1579,6 +1579,12 @@
 	const EVENT_BEAT_VALERIE
 ; Kukui
 	const EVENT_BEAT_KUKUI
+; Melony
+	const EVENT_BEAT_MELONY
+	const EVENT_BEAT_MELONY_AGAIN
+; Gen 9 placeholder
+	const_skip
+	const_skip
 ; Victor
 	const EVENT_BEAT_VICTOR
 ; Bill

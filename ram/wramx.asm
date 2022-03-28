@@ -1035,7 +1035,8 @@ wFarfetchdPosition:: db
 wAlways0SceneID:: db
 wAzaleaTownSceneID:: db
 wBattleFacilitySceneID:: db
-	ds 3 ; unused
+wRoute39RuggedRoadGateSceneID:: db
+	ds 2 ; unused
 wBattleTowerOutsideSceneID:: db
 wBellchimeTrailSceneID:: db
 wBrunosRoomSceneID:: db

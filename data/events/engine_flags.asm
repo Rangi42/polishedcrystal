@@ -106,11 +106,12 @@ EngineFlags:
 	engine_flag wVisitedSpawns, 21 ; goldenrod
 	engine_flag wVisitedSpawns, 22 ; olivine
 	engine_flag wVisitedSpawns, 23 ; ecruteak
-	engine_flag wVisitedSpawns, 24 ; mahogany
-	engine_flag wVisitedSpawns, 25 ; yellow forest
-	engine_flag wVisitedSpawns, 26 ; lake of rage
-	engine_flag wVisitedSpawns, 27 ; blackthorn
-	engine_flag wVisitedSpawns, 28 ; silver cave
+	engine_flag wVisitedSpawns, 24 ; snowtop
+	engine_flag wVisitedSpawns, 25 ; mahogany
+	engine_flag wVisitedSpawns, 26 ; yellow forest
+	engine_flag wVisitedSpawns, 27 ; lake of rage
+	engine_flag wVisitedSpawns, 28 ; blackthorn
+	engine_flag wVisitedSpawns, 29 ; silver cave
 
 	engine_flag wLuckyNumberShowFlag, 0 ; lucky number show
 

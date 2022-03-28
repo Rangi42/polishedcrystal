@@ -140,6 +140,7 @@ TrainerClassNames::
 	li "Pilot"            ; SKYLA
 	li "Designer"         ; VALERIE
 	li "<PK><MN> Trainer" ; KUKUI
+	li "Tourist"          ; MELONY
 	li "Surfer"           ; VICTOR
 	li "#Maniac"          ; BILL_T
 	li "<PK><MN> Trainer" ; YELLOW

@@ -4,7 +4,7 @@
 if DEF(FAITHFUL)
 	db PSYCHIC, FLYING ; type
 else
-	db FLYING, PSYCHIC ; type
+	db WATER, FLYING ; type
 endc
 	db 3 ; catch rate
 	db 220 ; base exp
@@ -15,7 +15,7 @@ endc
 if DEF(FAITHFUL)
 	abilities_for LUGIA, PRESSURE, PRESSURE, MULTISCALE
 else
-	abilities_for LUGIA, PRESSURE, CLOUD_NINE, MULTISCALE
+	abilities_for LUGIA, PRESSURE, DRIZZLE, MULTISCALE
 endc
 	db GROWTH_SLOW ; growth rate
 	dn EGG_NONE, EGG_NONE ; egg groups

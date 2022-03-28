@@ -271,6 +271,7 @@ KeyItemDescriptions:
 	dw SilphScope2Desc
 	dw MysteryEggDesc
 	dw SecretPotionDesc
+	dw GoGogglesDesc
 	dw RedScaleDesc
 	dw CardKeyDesc
 	dw BasementKeyDesc
@@ -1546,6 +1547,11 @@ MysteryEggDesc:
 SquirtBottleDesc:
 	text "A bottle used for"
 	next "watering plants."
+	done
+
+GoGogglesDesc:
+	text "Nifty goggles for"
+	next "sand or hail."
 	done
 
 SecretPotionDesc:
