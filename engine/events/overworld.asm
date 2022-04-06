@@ -1877,3 +1877,42 @@ AskCutTreeScript:
 
 .no
 	farjumptext _CanCutText
+
+PokewalkerFunction:
+	call .Pokewalker
+	and $7f
+	ld [wFieldMoveSucceeded], a
+	ret
+
+.Pokewalker
+	ld hl, Script_Pokewalker
+	ld de, Script_Pokewalker_Register
+	call CheckIfRegistered
+	call QueueScript
+	ld a, $1
+	ret
+
+Script_Pokewalker:
+	reloadmappart
+	opentext
+	special UpdateTimePals
+	special Pokewalker
+	endtext
+	reloadmappart
+	end
+
+Script_Pokewalker_Register:
+	opentext
+	special UpdateTimePals
+	special Pokewalker
+	endtext
+	reloadmappart
+	end
+
+CheckIfRegistered:
+	ld a, [wUsingItemWithSelect]
+	and a
+	ret z
+	ld h, d
+	ld l, e
+	ret

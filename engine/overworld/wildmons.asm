@@ -93,7 +93,7 @@ FindNest:
 	inc hl
 	inc hl
 	ld a, NUM_GRASSMON * 3
-	call .SearchMapForMon
+	call .ScanMapLoop
 	jr nc, .next_grass
 	ld [de], a
 	inc de
@@ -115,7 +115,7 @@ FindNest:
 	ld c, a
 	inc hl
 	ld a, 3
-	call .SearchMapForMon
+	call .ScanMapLoop
 	jr nc, .next_water
 	ld [de], a
 	inc de
@@ -126,8 +126,6 @@ FindNest:
 	add hl, bc
 	jr .FindWater
 
-.SearchMapForMon:
-	inc hl
 .ScanMapLoop:
 	push af
 	ld a, [wNamedObjectIndex]
@@ -142,7 +140,6 @@ FindNest:
 	jr z, .found
 
 .not_found
-	inc hl
 	inc hl
 	pop af
 	dec a
@@ -324,10 +321,10 @@ _ChooseWildEncounter:
 	inc hl
 	call GetTimeOfDayNotEve
 	push bc
-	ld bc, NUM_GRASSMON * 3
+	ld de, GrassMonProbTable
+	ld bc, NUM_GRASSMON * 2
 	rst AddNTimes
 	pop bc
-	ld de, GrassMonProbTable
 	ld b, NUM_GRASSMON
 
 .got_table
@@ -379,9 +376,8 @@ _ChooseWildEncounter:
 	jr nc, .prob_bracket_loop
 
 	; At this point, b contains wildmon index to encounter.
-	; Since each entry is 3 bytes, add b*3 to hl.
+	; Since each entry is 2 bytes, add b*2 to hl.
 	ld a, b
-	add b
 	add b
 	pop hl
 	push hl
@@ -390,33 +386,20 @@ _ChooseWildEncounter:
 	adc h
 	sub l
 	ld h, a
-
-	; Get level
-	ld a, [hli]
-	ld b, a
-
-	; Mons encountered while surfing sometimes get a minor level boost.
-	push bc
-	call CheckOnWater
-	pop bc
-	jr nz, .ok
-	call Random
-	cp 35 percent
-	jr c, .ok
-	inc b
-	cp 65 percent
-	jr c, .ok
-	inc b
-	cp 85 percent
-	jr c, .ok
-	inc b
-	cp 95 percent
-	jr c, .ok
-	inc b
-; Store the level
 .ok
-	ld a, b
+	; calc level
+	push bc
+	ld a, [wPokewalker]
+	ld c, WILD_MON_LVL_SCALE_FACTOR
+	call SimpleMultiply
+	add WILD_MON_VARIANCE_MIN
+	ld b, a
+	ld a, WILD_MON_VARIANCE
+	call RandomRange
+	add b
+	; store level
 	ld [wCurPartyLevel], a
+	pop bc
 	ld a, [hli]
 	ld b, [hl]
 	pop hl
@@ -998,10 +981,10 @@ RandomPhoneRareWildMon:
 
 .GetGrassmon:
 	push hl
-	ld bc, 5 + 4 * 3 ; Location of the level of the 5th wild Pokemon in that map
+	ld bc, 5 + 4 * 2 ; Location of the level of the 5th wild Pokemon in that map
 	add hl, bc
 	call GetTimeOfDayNotEve
-	ld bc, NUM_GRASSMON * 3
+	ld bc, NUM_GRASSMON * 2
 	rst AddNTimes
 	ld a, 3
 	call RandomRange
@@ -1018,7 +1001,7 @@ RandomPhoneRareWildMon:
 	ld b, a
 	ld [wCurForm], a
 	pop hl
-	ld de, 5 + 0 * 3
+	ld de, 5 + 0 * 2
 	add hl, de
 	inc hl ; Species index of the most common Pokemon on that route
 	ld d, 4
@@ -1078,7 +1061,7 @@ RandomPhoneWildMon:
 	ld bc, 5 + 0 * 3
 	add hl, bc
 	call GetTimeOfDayNotEve
-	ld bc, NUM_GRASSMON * 3
+	ld bc, NUM_GRASSMON * 2
 	rst AddNTimes
 
 	call Random

@@ -65,12 +65,10 @@ end_water_wildmons: MACRO
 ENDM
 
 wildmon: MACRO
-	if _NARG == 3
-		db \1
-		dp \2, \3
+	if _NARG == 2
+		dp \1, \2
 	else
-		db \1
-		dp \2
+		dp \1
 	endc
 ENDM
 

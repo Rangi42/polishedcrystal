@@ -3,6 +3,11 @@ MAX_LEVEL EQU 100
 MIN_LEVEL EQU 2
 EGG_LEVEL EQU 1
 
+; scaling wild mon level values
+WILD_MON_LVL_SCALE_FACTOR EQU 5 ; each badge ups wild mon lvls by 5
+WILD_MON_VARIANCE_MIN EQU 2
+WILD_MON_VARIANCE EQU 6 ; range of levels 0-6 not inclusive
+
 ; maximum moves known per mon
 NUM_MOVES EQU 4
 

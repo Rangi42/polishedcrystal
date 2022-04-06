@@ -288,3 +288,4 @@ KeyItemIconPointers:
 	dba SilphScope2Icon
 	dba ApricornBoxIcon
 	dba TypeChartIcon
+	dba PokewalkerIcon

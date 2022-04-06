@@ -312,6 +312,7 @@ KeyItemEffects:
 	dw IsntTheTimeMessage ; SILPHSCOPE2
 	dw ApricornBox        ; APRICORN_BOX
 	dw TypeChart          ; TYPE_CHART
+	dw PokeWalker         ; POKEWALKER
 	assert_table_length NUM_KEY_ITEMS
 
 PokeBallEffect:
@@ -1901,6 +1902,10 @@ TypeChart:
 	farcall Pack_InitGFX
 	farcall WaitBGMap_DrawPackGFX
 	farjp Pack_InitColors
+
+PokeWalker:
+	farcall PokewalkerFunction
+	ret
 
 OldRod:
 	ld e, $0

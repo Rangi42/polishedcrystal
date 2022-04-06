@@ -2634,3 +2634,15 @@ Script_keyitemnotify:
 	ld b, BANK(_PutItemInPocketText)
 	ld hl, _PutItemInPocketText
 	jmp MapTextbox
+
+; increments pokewalker while setting
+;badge flag
+Script_givebadge:
+	ld hl, wPokewalker
+	inc [hl]
+	call GetScriptByte
+	ld e, a
+	call GetScriptByte
+	ld d, a
+	ld b, SET_FLAG
+	farjp EngineFlagAction
