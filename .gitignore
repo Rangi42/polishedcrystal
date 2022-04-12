@@ -19,6 +19,7 @@ data/tilesets/*_collision.bin
 # compiled roms
 *.gbc
 *.pocket
+*.patch
 
 # compiled patch
 *.bsp

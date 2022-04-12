@@ -5588,6 +5588,7 @@ LinkBattleSendReceiveAction:
 ; of linking we are performing.
 	call .StageForSend
 	ld [wLinkBattleSentAction], a
+	vc_hook send_byt2
 	call PlaceWaitingText
 	ld a, [wLinkBattleSentAction]
 	ld [wPlayerLinkAction], a
@@ -5601,20 +5602,35 @@ LinkBattleSendReceiveAction:
 	inc a
 	jr z, .waiting
 
+	vc_hook send_byt2_ret
+	vc_patch send_byt2_wait
+if DEF(VC)
+	ld b, 26
+else
 	ld b, 10
+endc
+	vc_patch_end
 .receive
 	call DelayFrame
 	call LinkTransfer
 	dec b
 	jr nz, .receive
 
+	vc_hook send_dummy
+	vc_patch send_dummy_wait
+if DEF(VC)
+	ld b, 26
+else
 	ld b, 10
+endc
+	vc_patch_end
 .acknowledge
 	call DelayFrame
 	call LinkDataReceived
 	dec b
 	jr nz, .acknowledge
 
+	vc_hook send_dummy_end
 	ld a, [wOtherPlayerLinkAction]
 	ld [wBattleAction], a
 	ret

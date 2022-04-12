@@ -61,7 +61,13 @@ Gen2ToGen2LinkComms:
 .player_1:
 	ld de, MUSIC_NONE
 	call PlayMusic
+	vc_patch NetworkDelay4
+if DEF(VC)
+	ld c, 26
+else
 	ld c, 3
+endc
+	vc_patch_end
 	call DelayFrames
 	xor a
 	ldh [rIF], a
@@ -71,6 +77,7 @@ Gen2ToGen2LinkComms:
 	ld hl, wLinkBattleRNPreamble
 	ld de, wEnemyMon
 	ld bc, SERIAL_RN_PREAMBLE_LENGTH + SERIAL_RNS_LENGTH
+	vc_hook Network360
 	call Serial_ExchangeBytes
 	ld a, SERIAL_NO_DATA_BYTE
 	ld [de], a
@@ -78,6 +85,7 @@ Gen2ToGen2LinkComms:
 	ld hl, wLinkData
 	ld de, wOTPartyData
 	ld bc, wOTPartyDataEnd - wOTPartyData
+	vc_hook Network361
 	call Serial_ExchangeBytes
 	ld a, SERIAL_NO_DATA_BYTE
 	ld [de], a
@@ -85,6 +93,7 @@ Gen2ToGen2LinkComms:
 	ld hl, wLinkMisc
 	ld de, wPlayerTrademonSpecies
 	ld bc, wPlayerTrademonSpecies - wLinkMisc
+	vc_hook Network362
 	call Serial_ExchangeBytes
 
 	ld a, [wLinkMode]
@@ -93,6 +102,7 @@ Gen2ToGen2LinkComms:
 	ld hl, wLinkPlayerMail
 	ld de, wLinkOTMail
 	ld bc, wLinkPlayerMailEnd - wLinkPlayerMail
+	vc_hook Network363
 	call ExchangeBytes
 
 .not_trading
@@ -1332,6 +1342,7 @@ ExitLinkCommunications:
 	ldh [rSC], a
 	ld a, START_TRANSFER_INTERNAL_CLOCK
 	ldh [rSC], a
+	vc_hook ret_heya
 	ret
 
 LinkTrade:
@@ -1703,6 +1714,7 @@ LinkTrade:
 	ld de, .TradeCompleted
 	rst PlaceString
 	call Link_WaitBGMap
+	vc_hook save_game_end
 	ld c, 50
 	call DelayFrames
 	jmp Gen2ToGen2LinkComms
@@ -1869,6 +1881,7 @@ WaitForOtherPlayerToExit:
 	ld [hl], a
 	ldh [hVBlank], a
 	ld [wLinkMode], a
+	vc_hook term_exit
 	ret
 
 Special_SetBitsForLinkTradeRequest:
@@ -1894,6 +1907,7 @@ Special_WaitForLinkedFriend:
 	xor a ; redundant?
 	ldh [rSC], a
 	ld a, START_TRANSFER_EXTERNAL_CLOCK
+	vc_hook linkCable_fake_begin
 	ldh [rSC], a
 	call DelayFrame
 	call DelayFrame
@@ -2002,7 +2016,13 @@ CheckLinkTimeout_Gen2:
 	ld a, $6
 	ld [wPlayerLinkAction], a
 	ld hl, wLinkTimeoutFrames
-	ld a, $1
+	vc_patch NetworkDelay6
+if DEF(VC)
+	ld a, $3
+else
+	ld a, 1
+endc
+	vc_patch_end
 	ld [hli], a
 	ld [hl], $32
 	call Link_CheckCommunicationError
@@ -2023,6 +2043,7 @@ CheckLinkTimeout_Gen2:
 Link_CheckCommunicationError:
 	xor a
 	ldh [hSerialReceivedNewData], a
+	vc_hook linkCable_fake_end
 	ld hl, wLinkTimeoutFrames
 	ld a, [hli]
 	ld l, [hl]
@@ -2053,6 +2074,7 @@ Link_CheckCommunicationError:
 .CheckConnected:
 	call Serial_SyncAndExchangeNybble
 	ld hl, wLinkTimeoutFrames
+	vc_hook Network_RECHECK
 	ld a, [hli]
 	inc a
 	ret nz
@@ -2061,7 +2083,13 @@ Link_CheckCommunicationError:
 	ret
 
 .AcknowledgeSerial:
-	ld b, $a
+	vc_patch NetworkDelay3
+if DEF(VC)
+	ld b, 26
+else
+	ld b, 10
+endc
+	vc_patch_end
 .loop
 	call DelayFrame
 	call LinkDataReceived
@@ -2086,8 +2114,10 @@ Special_TryQuickSave:
 	ld a, [wChosenCableClubRoom]
 	push af
 	farcall Link_SaveGame
+	vc_hook linkCable_block_input
 	; a = carry ? FALSE (0) : TRUE
 	sbc a
+	vc_hook linkCable_block_input2 ; Not sure on the placement of this.
 	inc a
 	ldh [hScriptVar], a
 	pop af
@@ -2121,10 +2151,12 @@ Special_CheckBothSelectedSameRoom:
 	ret
 
 Special_TradeCenter:
+	vc_hook to_play2_trade
 	ld a, LINK_TRADECENTER
 	jr _Special_LinkCommunications
 
 Special_Colosseum:
+	vc_hook to_play2_battle
 	ld a, LINK_COLOSSEUM
 _Special_LinkCommunications:
 	ld [wLinkMode], a
@@ -2140,6 +2172,7 @@ Special_CloseLink:
 	ld [wLinkMode], a
 	ld c, $3
 	call DelayFrames
+	vc_hook room_check
 	; fallthrough
 
 Link_ResetSerialRegistersAfterLinkClosure:

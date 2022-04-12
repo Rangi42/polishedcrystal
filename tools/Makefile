@@ -28,15 +28,16 @@ CFLAGS = -O3 -flto -std=c17 -Wall -Wextra -pedantic \
          -Wwrite-strings
 
 tools := \
+	bankends \
 	bpp2png \
+	bspcomp \
+	gfx \
 	lzcomp \
+	make_patch \
 	png_dimensions \
-	scan_includes \
 	pokemon_animation \
 	pokemon_animation_graphics \
-	gfx \
-	bankends \
-	bspcomp
+	scan_includes
 
 all: $(tools)
 	@:

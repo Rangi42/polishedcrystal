@@ -21,9 +21,11 @@ Q :=
 
 .SECONDEXPANSION:
 
-RGBASM_FLAGS = -E -Weverything -Wnumeric-string=2 -Wtruncation=1
-RGBLINK_FLAGS = -n $(ROM_NAME).sym -m $(ROM_NAME).map -l layout.link -p $(FILLER)
-RGBFIX_FLAGS = -csjv -t $(TITLE) -i $(MCODE) -n $(ROMVERSION) -p $(FILLER) -k 01 -l 0x33 -m 0x10 -r 3
+RGBASM_FLAGS     = -E -Weverything -Wnumeric-string=2 -Wtruncation=1
+RGBASM_VC_FLAGS  = -E -Weverything -Wnumeric-string=2 -Wtruncation=1
+RGBLINK_FLAGS    = -n $(ROM_NAME).sym -m $(ROM_NAME).map -l layout.link -p $(FILLER)
+RGBLINK_VC_FLAGS = -n $(ROM_NAME)_vc.sym -m $(ROM_NAME)_vc.map -l layout.link -p $(FILLER)
+RGBFIX_FLAGS     = -csjv -t $(TITLE) -i $(MCODE) -n $(ROMVERSION) -p $(FILLER) -k 01 -l 0x33 -m 0x10 -r 3
 
 ifeq ($(filter faithful,$(MAKECMDGOALS)),faithful)
 MODIFIERS := $(MODIFIERS)-faithful
@@ -60,8 +62,11 @@ ifeq ($(filter huffman,$(MAKECMDGOALS)),huffman)
 Q := @
 RGBASM_FLAGS += -DHUFFMAN
 endif
+ifeq ($(filter vc,$(MAKECMDGOALS)),vc)
+RGBASM_VC_FLAGS += $(RGBASM_FLAGS) -DVC
+endif
 
-crystal_obj := \
+rom_obj := \
 main.o \
 home.o \
 ram.o \
@@ -81,9 +86,11 @@ gfx/sprites.o \
 gfx/items.o \
 gfx/misc.o
 
+crystal_obj    := $(rom_obj:.o=.o)
+crystal_vc_obj :=$(rom_obj:.o=vc.o)
 
 .SUFFIXES:
-.PHONY: clean tidy crystal faithful nortc pocket debug monochrome freespace tools bsp huffman
+.PHONY: clean tidy crystal faithful nortc pocket debug monochrome freespace tools bsp huffman vc
 .PRECIOUS: %.2bpp %.1bpp
 .SECONDARY:
 .DEFAULT_GOAL: crystal
@@ -96,6 +103,7 @@ noir: crystal
 hgss: crystal
 debug: crystal
 pocket: crystal
+vc: $$(ROM_NAME).patch
 
 tools:
 	$(MAKE) -C tools/
@@ -109,8 +117,8 @@ clean: tidy
 	$(MAKE) clean -C tools/
 
 tidy:
-	$(RM) $(crystal_obj) $(wildcard $(NAME)-*.gbc) $(wildcard $(NAME)-*.pocket) $(wildcard $(NAME)-*.bsp) \
-		$(wildcard $(NAME)-*.map) $(wildcard $(NAME)-*.sym) rgbdscheck.o
+	$(RM) $(crystal_obj) $(crystal_vc_obj) $(wildcard $(NAME)-*.gbc) $(wildcard $(NAME)-*.pocket) $(wildcard $(NAME)-*.bsp) \
+		$(wildcard $(NAME)-*.map) $(wildcard $(NAME)-*.sym) $(wildcard $(NAME)-*.patch) rgbdscheck.o
 
 freespace: crystal tools/bankends
 	tools/bankends $(ROM_NAME).map > bank_ends.txt
@@ -128,17 +136,34 @@ $1: $2 $$(shell tools/scan_includes $2) | rgbdscheck.o
 	$Q$$(RGBDS_DIR)rgbasm $$(RGBASM_FLAGS) -L -o $$@ $$<
 endef
 
+define VCDEP
+$1: $2 $$(shell tools/scan_includes $2) | rgbdscheck.o
+	$Q$$(RGBDS_DIR)rgbasm $$(RGBASM_VC_FLAGS) -L -o $$@ $$<
+endef
+
 ifeq (,$(filter clean tidy tools,$(MAKECMDGOALS)))
 $(info $(shell $(MAKE) -C tools))
 $(foreach obj, $(crystal_obj), $(eval $(call DEP,$(obj),$(obj:.o=.asm))))
+$(foreach obj, $(crystal_vc_obj), $(eval $(call VCDEP,$(obj),$(obj:vc.o=.asm))))
+
+# Dependencies for VC files that need to run scan_includes
+vc/polishedcrystal.constants.sym: vc/polishedcrystal.constants.asm $(shell tools/scan_includes vc/polishedcrystal.constants.asm) | rgbdscheck.o
+	$(RGBDS_DIR)rgbasm $< > $@
 endif
 
+$(ROM_NAME).patch: vc/polishedcrystal.constants.sym $(ROM_NAME)_vc.gbc $(ROM_NAME).$(EXTENSION) vc/polishedcrystal.patch.template
+	tools/make_patch $(ROM_NAME)_vc.sym $^ $@
 
 .$(EXTENSION): tools/bankends
-%.$(EXTENSION): $(crystal_obj)
+$(ROM_NAME).$(EXTENSION): $(crystal_obj)
 	$Q$(RGBDS_DIR)rgblink $(RGBLINK_FLAGS) -o $@ $^
 	$Q$(RGBDS_DIR)rgbfix $(RGBFIX_FLAGS) $@
 	$Qtools/bankends -q $(ROM_NAME).map >&2
+
+$(ROM_NAME)_vc.gbc: $(crystal_vc_obj)
+	$Q$(RGBDS_DIR)rgblink $(RGBLINK_VC_FLAGS) -o $@ $^
+	$Q$(RGBDS_DIR)rgbfix $(RGBFIX_FLAGS) $@
+	$Qtools/bankends -q $(ROM_NAME)_vc.map >&2
 
 .bsp: tools/bspcomp
 %.bsp: $(wildcard bsp/*.txt)

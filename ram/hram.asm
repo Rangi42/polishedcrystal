@@ -120,7 +120,7 @@ hLYOverrideStart:: db
 hLYOverrideEnd::   db
 
 hSerialReceivedNewData::     db
-hSerialConnectionStatus::    db
+
 hSerialIgnoringInitialData:: db
 hSerialSend::                db
 hSerialReceive::             db
@@ -146,6 +146,7 @@ hBGMapHalf::     db
 hBGMapAddress::  dw
 
 hOAMUpdate:: db
+hSerialConnectionStatus::    db ; This address is Hardcoded by 3DS Virtual Console [linkCable fake begin]
 
 hSPBuffer:: dw
 
