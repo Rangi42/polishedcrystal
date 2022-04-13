@@ -1,215 +1,151 @@
 ﻿;Format Sample
 ;[xxxx]			;User-defined Name (Max:31 chars)
 ;Mode = 1		;1:Fixcode; 2:Fixvalue; 3:Mask; 4:Palette; 5:Double Frame Buffer
-;Type = 0		;0:Begin 1:End
-;Index = 0		;Index
-;Address = x1F8000	;ROM Address
-;MemAddress = x2000	;RAM Address
-;Fixcode = 0		;Mode1: Fixed Rom Code; Mode2: Fixed Value
-;DelayFrame = 0		;Delay Frame
-;FadeFrame = 0		;Fade Frame 0:Off
-;DarkEnable0 = 0	;0:Off, 1:On (for Normal Mode)
-;ReduceEnable0 = 0	;0:Off, 1:On (for Normal Mode)
-;MotionBEnable0 = 0	;0:Off, 1:Black Fade, 2:, 3:Frame Blend (for Normal Mode)
-;Dark0 = 10		;0~10 (for Normal Mode)
-;ReduceColorR0 = 0	;0~31 (for Normal Mode)
-;ReduceColorG0 = 0	;0~31 (for Normal Mode)
-;ReduceColorB0 = 0	;0~31 (for Normal Mode)
-;MotionBlur0 = 31	;0~31 (for Normal Mode)
-;DarkEnable1 = 0	;0:Off, 1:On (for Green Mode)
-;ReduceEnable1 = 0	;0:Off, 1:On (for Green Mode)
-;MotionBEnable1 = 0	;0:Off, 1:Black Fade, 2:, 3:Frame Blend (for Green Mode)
-;Dark1 = 10		;0~10 (for Green Mode)
-;ReduceColorR1 = 0	;0~31 (for Green Mode)
-;ReduceColorG1 = 0	;0~31 (for Green Mode)
-;ReduceColorB1 = 0	;0~31 (for Green Mode)
-;MotionBlur1 = 31	;0~31 (for Green Mode)
-;PaletteX = c31,31,31	;X:0~15, cR,G,B (0~31)
+;Address = 0x1f8000	;ROM Address
+;Fixcode = a2:00 00	;Mode1: Fixed Rom Code; Mode2: Fixed Value
+;Type = 0		;0:Begin; 1:End
 
 [Network10]
 Mode = 1
-Address = {HEX @+1 4}
-Fixcode = {PATCH +1}
+Address = {hex @+1 4}
+Fixcode = {patch +1}
 
 [Network11]
 Mode = 1
-Address = {HEX @+1 4}
-Fixcode = {PATCH +1}
+Address = {hex @+1 4}
+Fixcode = {patch +1}
 
 [send_send_buf2]
 Mode = 2
-Address = {HEX @ 4}
+Address = {hex @ 4}
 Type = 29
 
 [send_send_buf2_ret]
 Mode = 2
-Address = {HEX @ 4}
+Address = {hex @ 4}
 Type = 30
-
-;[Network358]
-;Mode = 2
-;Address = {HEX @}
-;Type = 4
-
-;[Network359]
-;Mode = 2
-;Address = {HEX @}
-;Type = 4
-
-;[Network364]
-;Mode = 2
-;Address = {HEX @}
-;fix pokemon ?? in name
-;Type = 26
 
 [Network360]
 Mode = 2
-Address = {HEX @}
+Address = {hex @}
 Type = 4
 
 [Network361]
 Mode = 2
-Address = {HEX @}
+Address = {hex @}
 Type = 4
 
 [Network362]
 Mode = 2
-Address = {HEX @}
+Address = {hex @}
 Type = 4
 
 [Network363]
 Mode = 2
-Address = {HEX @}
+Address = {hex @}
 Type = 4
 
 [Network_RECHECK]
 Mode = 2
-Address = {HEX @}
+Address = {hex @}
 Type = 7
 
 [send_byt2]
 Mode = 2
-Address = {HEX @+5}
+Address = {hex @+5}
 Type = 31
 
 [send_byt2_ret]
 Mode = 2
-Address = {HEX @}
+Address = {hex @}
 Type = 32
 
 [send_byt2_wait]
 Mode = 1
-Address = {HEX @+1}
-Fixcode = {PATCH +1}
+Address = {hex @+1}
+Fixcode = {patch +1}
 
 [send_dummy]
 Mode = 2
-Address = {HEX @}
+Address = {hex @}
 Type = 33
 
 [send_dummy_wait]
 Mode = 1
-Address = {HEX @+1}
-Fixcode = {PATCH +1} 
+Address = {hex @+1}
+Fixcode = {patch +1}
 
 [send_dummy_end]
 Mode = 2
-Address = {HEX @}
+Address = {hex @}
 Type = 34
-
-;[NetworkDelay1]
-;Mode = 1
-;Address = {HEX @+1}
-;Fixcode = {PATCH +1}
-
-;[NetworkDelay2]
-;Mode = 1
-;Address = {HEX @+1}
-;Fixcode = {PATCH +1}
 
 [NetworkDelay3]
 Mode = 1
-Address = {HEX @+1}
-Fixcode = {PATCH +1}
+Address = {hex @+1}
+Fixcode = {patch +1}
 
 [NetworkDelay4]
 Mode = 1
-Address = {HEX @+1}
-Fixcode = {PATCH +1}
+Address = {hex @+1}
+Fixcode = {patch +1}
 
 [NetworkDelay6]
 Mode = 1
-Address = {HEX @+1}
-Fixcode = {PATCH +1}
-
-;no use[Network_STOP]
-;Mode = 2
-;Address = 0xF4D34
-;Type = 8
-
-;no use[Network_END]
-;Mode = 2
-;Address = 0xF4D3C
-;Type = 9
-
-; [Network_RESET]
-; Mode = 2
-; Address = {HEX @ 5}
-; Type = 10
+Address = {hex @+1}
+Fixcode = {patch +1}
 
 [E_YESNO]
 Mode = 2
-Address = {HEX @}
+Address = {hex @}
 Type = 15
 
 [linkCable fake begin]
 Mode = 2
-Address = {HEX @}
+Address = {hex @}
 Type = 16
 
 [linkCable fake end]
 Mode = 2
-Address = {HEX @}
-Type = 17  
+Address = {hex @}
+Type = 17
 
-;MURIYARI
 [linkCable block input]
 Mode = 2
-Address = {HEX @}
+Address = {hex @}
 Type = 18
+
 [linkCable block input2]
 Mode = 2
-Address = {HEX @}
+Address = {hex @}
 Type = 24
+
 [save game end]
 Mode = 2
-Address = {HEX @}
+Address = {hex @}
 Type = 20
+
 [term_exit]
 Mode = 2
-Address = {HEX @}
+Address = {hex @}
 Type = 25
+
 [room_check]
 Mode = 2
-Address = {HEX @}
+Address = {hex @}
 Type = 27
-;[to_play2_mons1]
-;Mode = 2
-;Address = {HEX @}
-;Type = 11
+
 [to_play2_trade]
 Mode = 2
-Address = {HEX @}
+Address = {hex @}
 Type = 12
+
 [to_play2_battle]
 Mode = 2
-Address = {HEX @}
+Address = {hex @}
 Type = 13
+
 [ret_heya]
 Mode = 2
-Address = {HEX @}
+Address = {hex @}
 Type = 14
-
-
-
-              

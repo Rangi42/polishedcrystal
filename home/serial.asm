@@ -322,7 +322,7 @@ Serial_SyncAndExchangeNybble::
 	jr z, .loop
 
 	vc_patch Network10
-if DEF(VC)
+if DEF(VIRTUAL_CONSOLE)
 	ld b, 26
 else
 	ld b, 10
@@ -335,7 +335,7 @@ endc
 	jr nz, .receive
 
 	vc_patch Network11
-if DEF(VC)
+if DEF(VIRTUAL_CONSOLE)
 	ld b, 26
 else
 	ld b, 10

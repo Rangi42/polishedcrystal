@@ -119,12 +119,6 @@ hLCDCPointer::     db
 hLYOverrideStart:: db
 hLYOverrideEnd::   db
 
-hSerialReceivedNewData::     db
-
-hSerialIgnoringInitialData:: db
-hSerialSend::                db
-hSerialReceive::             db
-
 hSCX:: db
 hSCY:: db
 hWX::  db
@@ -145,8 +139,17 @@ hBGMapMode::
 hBGMapHalf::     db
 hBGMapAddress::  dw
 
+	ds 4 ; unused
+
+hSerialReceivedNewData::     db
+hSerialConnectionStatus::    db
+	vc_assert hSerialConnectionStatus == $ffcb, \
+		"hSerialConnectionStatus is no longer located at 00:ffcb."
+hSerialIgnoringInitialData:: db
+hSerialSend::                db
+hSerialReceive::             db
+
 hOAMUpdate:: db
-hSerialConnectionStatus::    db ; This address is Hardcoded by 3DS Virtual Console [linkCable fake begin]
 
 hSPBuffer:: dw
 
@@ -211,8 +214,6 @@ hErr:: db
 ENDU
 
 hCrashCode:: db
-
-	ds 4 ; unused
 
 hStopPrintingString:: db
 hPlaceStringCoords:: dw

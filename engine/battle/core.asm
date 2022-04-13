@@ -5604,7 +5604,7 @@ LinkBattleSendReceiveAction:
 
 	vc_hook send_byt2_ret
 	vc_patch send_byt2_wait
-if DEF(VC)
+if DEF(VIRTUAL_CONSOLE)
 	ld b, 26
 else
 	ld b, 10
@@ -5618,7 +5618,7 @@ endc
 
 	vc_hook send_dummy
 	vc_patch send_dummy_wait
-if DEF(VC)
+if DEF(VIRTUAL_CONSOLE)
 	ld b, 26
 else
 	ld b, 10

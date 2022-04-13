@@ -62,7 +62,7 @@ Gen2ToGen2LinkComms:
 	ld de, MUSIC_NONE
 	call PlayMusic
 	vc_patch NetworkDelay4
-if DEF(VC)
+if DEF(VIRTUAL_CONSOLE)
 	ld c, 26
 else
 	ld c, 3
@@ -1908,6 +1908,8 @@ Special_WaitForLinkedFriend:
 	ldh [rSC], a
 	ld a, START_TRANSFER_EXTERNAL_CLOCK
 	vc_hook linkCable_fake_begin
+	vc_assert hSerialConnectionStatus == $ffcb, \
+		"hSerialConnectionStatus is no longer located at 00:ffcb."
 	ldh [rSC], a
 	call DelayFrame
 	call DelayFrame
@@ -2017,7 +2019,7 @@ CheckLinkTimeout_Gen2:
 	ld [wPlayerLinkAction], a
 	ld hl, wLinkTimeoutFrames
 	vc_patch NetworkDelay6
-if DEF(VC)
+if DEF(VIRTUAL_CONSOLE)
 	ld a, $3
 else
 	ld a, 1
@@ -2084,7 +2086,7 @@ Link_CheckCommunicationError:
 
 .AcknowledgeSerial:
 	vc_patch NetworkDelay3
-if DEF(VC)
+if DEF(VIRTUAL_CONSOLE)
 	ld b, 26
 else
 	ld b, 10
@@ -2115,10 +2117,11 @@ Special_TryQuickSave:
 	push af
 	farcall Link_SaveGame
 	vc_hook linkCable_block_input
-	; a = carry ? FALSE (0) : TRUE
-	sbc a
-	vc_hook linkCable_block_input2 ; Not sure on the placement of this.
-	inc a
+	ld a, TRUE
+	jr nc, .return_result
+	vc_hook linkCable_block_input2
+	xor a ; FALSE
+.return_result
 	ldh [hScriptVar], a
 	pop af
 	ld [wChosenCableClubRoom], a

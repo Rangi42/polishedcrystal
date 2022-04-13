@@ -22,9 +22,9 @@ Q :=
 .SECONDEXPANSION:
 
 RGBASM_FLAGS     = -E -Weverything -Wnumeric-string=2 -Wtruncation=1
-RGBASM_VC_FLAGS  = -E -Weverything -Wnumeric-string=2 -Wtruncation=1
-RGBLINK_FLAGS    = -n $(ROM_NAME).sym -m $(ROM_NAME).map -l layout.link -p $(FILLER)
-RGBLINK_VC_FLAGS = -n $(ROM_NAME)_vc.sym -m $(ROM_NAME)_vc.map -l layout.link -p $(FILLER)
+RGBASM_VC_FLAGS  =
+RGBLINK_FLAGS    = -n $(ROM_NAME).sym    -m $(ROM_NAME).map    -p $(FILLER)
+RGBLINK_VC_FLAGS = -n $(ROM_NAME)_vc.sym -m $(ROM_NAME)_vc.map -p $(FILLER)
 RGBFIX_FLAGS     = -csjv -t $(TITLE) -i $(MCODE) -n $(ROMVERSION) -p $(FILLER) -k 01 -l 0x33 -m 0x10 -r 3
 
 ifeq ($(filter faithful,$(MAKECMDGOALS)),faithful)
@@ -63,7 +63,7 @@ Q := @
 RGBASM_FLAGS += -DHUFFMAN
 endif
 ifeq ($(filter vc,$(MAKECMDGOALS)),vc)
-RGBASM_VC_FLAGS += $(RGBASM_FLAGS) -DVC
+RGBASM_VC_FLAGS += $(RGBASM_FLAGS) -DVIRTUAL_CONSOLE
 endif
 
 rom_obj := \
@@ -87,7 +87,7 @@ gfx/items.o \
 gfx/misc.o
 
 crystal_obj    := $(rom_obj:.o=.o)
-crystal_vc_obj :=$(rom_obj:.o=vc.o)
+crystal_vc_obj :=$(rom_obj:.o=_vc.o)
 
 .SUFFIXES:
 .PHONY: clean tidy crystal faithful nortc pocket debug monochrome freespace tools bsp huffman vc
@@ -144,7 +144,7 @@ endef
 ifeq (,$(filter clean tidy tools,$(MAKECMDGOALS)))
 $(info $(shell $(MAKE) -C tools))
 $(foreach obj, $(crystal_obj), $(eval $(call DEP,$(obj),$(obj:.o=.asm))))
-$(foreach obj, $(crystal_vc_obj), $(eval $(call VCDEP,$(obj),$(obj:vc.o=.asm))))
+$(foreach obj, $(crystal_vc_obj), $(eval $(call VCDEP,$(obj),$(obj:_vc.o=.asm))))
 
 # Dependencies for VC files that need to run scan_includes
 vc/polishedcrystal.constants.sym: vc/polishedcrystal.constants.asm $(shell tools/scan_includes vc/polishedcrystal.constants.asm) | rgbdscheck.o
@@ -155,13 +155,13 @@ $(ROM_NAME).patch: vc/polishedcrystal.constants.sym $(ROM_NAME)_vc.gbc $(ROM_NAM
 	tools/make_patch $(ROM_NAME)_vc.sym $^ $@
 
 .$(EXTENSION): tools/bankends
-$(ROM_NAME).$(EXTENSION): $(crystal_obj)
-	$Q$(RGBDS_DIR)rgblink $(RGBLINK_FLAGS) -o $@ $^
+$(ROM_NAME).$(EXTENSION): $(crystal_obj) layout.link
+	$Q$(RGBDS_DIR)rgblink $(RGBLINK_FLAGS) -l layout.link -o $@ $(filter %.o,$^)
 	$Q$(RGBDS_DIR)rgbfix $(RGBFIX_FLAGS) $@
 	$Qtools/bankends -q $(ROM_NAME).map >&2
 
-$(ROM_NAME)_vc.gbc: $(crystal_vc_obj)
-	$Q$(RGBDS_DIR)rgblink $(RGBLINK_VC_FLAGS) -o $@ $^
+$(ROM_NAME)_vc.gbc: $(crystal_vc_obj) layout.link
+	$Q$(RGBDS_DIR)rgblink $(RGBLINK_VC_FLAGS) -l layout.link -o $@ $(filter %.o,$^)
 	$Q$(RGBDS_DIR)rgbfix $(RGBFIX_FLAGS) $@
 	$Qtools/bankends -q $(ROM_NAME)_vc.map >&2
 
