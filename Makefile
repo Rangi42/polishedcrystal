@@ -95,7 +95,7 @@ crystal_vc_obj :=$(rom_obj:.o=_vc.o)
 .SECONDARY:
 .DEFAULT_GOAL: crystal
 
-crystal:    $$(ROM_NAME).$$(EXTENSION)
+crystal: $$(ROM_NAME).$$(EXTENSION)
 faithful: crystal
 nortc: crystal
 monochrome: crystal
@@ -145,13 +145,9 @@ ifeq (,$(filter clean tidy tools,$(MAKECMDGOALS)))
 $(info $(shell $(MAKE) -C tools))
 $(foreach obj, $(crystal_obj), $(eval $(call DEP,$(obj),$(obj:.o=.asm))))
 $(foreach obj, $(crystal_vc_obj), $(eval $(call VCDEP,$(obj),$(obj:_vc.o=.asm))))
-
-# Dependencies for VC files that need to run scan_includes
-vc/polishedcrystal.constants.sym: vc/polishedcrystal.constants.asm $(shell tools/scan_includes vc/polishedcrystal.constants.asm) | rgbdscheck.o
-	$(RGBDS_DIR)rgbasm $< > $@
 endif
 
-$(ROM_NAME).patch: vc/polishedcrystal.constants.sym $(ROM_NAME)_vc.gbc $(ROM_NAME).$(EXTENSION) vc/polishedcrystal.patch.template
+$(ROM_NAME).patch: $(ROM_NAME)_vc.gbc $(ROM_NAME).$(EXTENSION) vc_patch.template
 	tools/make_patch $(ROM_NAME)_vc.sym $^ $@
 
 .$(EXTENSION): tools/bankends

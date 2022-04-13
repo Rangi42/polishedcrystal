@@ -1,5 +1,5 @@
 #define PROGRAM_NAME "make_patch"
-#define USAGE_OPTS "labels.sym constants.sym patched.gbc original.gbc vc.patch.template vc.patch"
+#define USAGE_OPTS "labels.sym patched.gbc original.gbc vc.patch.template vc.patch"
 
 #include "common.h"
 
@@ -443,20 +443,19 @@ bool verify_completeness(FILE *restrict orig_rom, FILE *restrict new_rom, struct
 }
 
 int main(int argc, char *argv[]) {
-	if (argc != 7) {
+	if (argc != 6) {
 		usage_exit(1);
 	}
 
 	struct Symbol *symbols = NULL;
 	parse_symbols(argv[1], &symbols);
-	parse_symbols(argv[2], &symbols);
 
-	FILE *new_rom = xfopen(argv[3], 'r');
-	FILE *orig_rom = xfopen(argv[4], 'r');
-	struct Buffer *patches = process_template(argv[5], argv[6], new_rom, orig_rom, symbols);
+	FILE *new_rom = xfopen(argv[2], 'r');
+	FILE *orig_rom = xfopen(argv[3], 'r');
+	struct Buffer *patches = process_template(argv[4], argv[5], new_rom, orig_rom, symbols);
 
 	if (!verify_completeness(orig_rom, new_rom, patches)) {
-		fprintf(stderr, PROGRAM_NAME ": Warning: Not all ROM differences are defined by \"%s\"\n", argv[6]);
+		fprintf(stderr, PROGRAM_NAME ": Warning: Not all ROM differences are defined by \"%s\"\n", argv[5]);
 	}
 
 	symbol_free(symbols);
