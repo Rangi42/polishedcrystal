@@ -52,7 +52,7 @@ Type = 7
 
 [send_byt2]
 Mode = 2
-Address = {hex @+5}
+Address = {hex @}
 Type = 31
 
 [send_byt2_ret]
