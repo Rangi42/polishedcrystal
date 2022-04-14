@@ -2818,7 +2818,7 @@ BillsPC_ReleaseAll:
 
 .ReallyReleaseBox:
 	text "Really release the"
-	line "entire box?"
+	line "entire Box?"
 	done
 
 .CantRecallReleasedMons:
@@ -2828,7 +2828,7 @@ BillsPC_ReleaseAll:
 	done
 
 .NothingThere:
-	text "This box is empty."
+	text "The Box is empty."
 	prompt
 
 .NothingReleased:
@@ -3311,7 +3311,7 @@ BillsPC_SwapStorage:
 	prompt
 
 .BoxIsFull:
-	text "The box is full."
+	text "The Box is full."
 	prompt
 
 .IsHoldingMail:

@@ -219,7 +219,7 @@ OakLabGiveStarterText:
 OakLabPartyAndBoxFullText:
 	text "Hm, you don't have"
 	line "room for it, and"
-	line "your box is full."
+	line "your Box is full."
 	done
 
 OakLabDexCheckText:

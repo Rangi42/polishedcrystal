@@ -83,7 +83,7 @@ VioletPokeCenter1FElmsAideScript:
 	cont "#mon with you."
 
 	para "You have no space"
-	line "in your box, too."
+	line "in your Box, too."
 
 	para "I'll wait here"
 	line "while you make"

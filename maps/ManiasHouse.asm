@@ -145,7 +145,7 @@ ManiaText_ShuckieSentToPC:
 
 ManiaText_PartyAndBoxFull:
 	text "Your #mon party"
-	line "and box are full."
+	line "and Box are full."
 	done
 
 ManiaText_IfHeComesBack:

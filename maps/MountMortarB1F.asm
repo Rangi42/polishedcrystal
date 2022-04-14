@@ -174,5 +174,5 @@ MountMortarB1FTyrogueRewardText:
 MountMortarB1FKiyoFullPartyAndBoxText:
 	text "You have no room"
 	line "in your party"
-	line "or box!"
+	line "or Box!"
 	done
