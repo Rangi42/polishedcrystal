@@ -77,7 +77,7 @@ endc
 	ld hl, wLinkBattleRNPreamble
 	ld de, wEnemyMon
 	ld bc, SERIAL_RN_PREAMBLE_LENGTH + SERIAL_RNS_LENGTH
-	vc_hook Network360
+	vc_hook ExchangeBytes1 ; VC hook that is called right before a routine to Exchange Bytes occurs.
 	call Serial_ExchangeBytes
 	ld a, SERIAL_NO_DATA_BYTE
 	ld [de], a
@@ -85,7 +85,7 @@ endc
 	ld hl, wLinkData
 	ld de, wOTPartyData
 	ld bc, wOTPartyDataEnd - wOTPartyData
-	vc_hook Network361
+	vc_hook ExchangeBytes2 ; VC hook that is called right before a routine to Exchange Bytes occurs.
 	call Serial_ExchangeBytes
 	ld a, SERIAL_NO_DATA_BYTE
 	ld [de], a
@@ -93,7 +93,7 @@ endc
 	ld hl, wLinkMisc
 	ld de, wPlayerTrademonSpecies
 	ld bc, wPlayerTrademonSpecies - wLinkMisc
-	vc_hook Network362
+	vc_hook ExchangeBytes3 ; VC hook that is called right before a routine to Exchange Bytes occurs.
 	call Serial_ExchangeBytes
 
 	ld a, [wLinkMode]
@@ -102,7 +102,7 @@ endc
 	ld hl, wLinkPlayerMail
 	ld de, wLinkOTMail
 	ld bc, wLinkPlayerMailEnd - wLinkPlayerMail
-	vc_hook Network363
+	vc_hook ExchangeBytes4 ; VC hook that is called right before a routine to Exchange Bytes occurs.
 	call ExchangeBytes
 
 .not_trading
@@ -1907,7 +1907,7 @@ Special_WaitForLinkedFriend:
 	xor a ; redundant?
 	ldh [rSC], a
 	ld a, START_TRANSFER_EXTERNAL_CLOCK
-	vc_hook linkCable_fake_begin
+	vc_hook linkCable_fake_begin ; VC hook that sets the value of hSerialConnectionStatus to fake an active connection.
 	vc_assert hSerialConnectionStatus == $ffcb, \
 		"hSerialConnectionStatus is no longer located at 00:ffcb."
 	ldh [rSC], a
@@ -2045,7 +2045,7 @@ endc
 Link_CheckCommunicationError:
 	xor a
 	ldh [hSerialReceivedNewData], a
-	vc_hook linkCable_fake_end
+	vc_hook linkCable_fake_end ; VC hook the ends faking a Connection through hSerialConnectionStatus.
 	ld hl, wLinkTimeoutFrames
 	ld a, [hli]
 	ld l, [hl]

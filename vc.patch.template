@@ -20,22 +20,22 @@ Mode = 2
 Address = {hex @}
 Type = 30
 
-[Network360]
+[ExchangeBytes1]
 Mode = 2
 Address = {hex @}
 Type = 4
 
-[Network361]
+[ExchangeBytes2]
 Mode = 2
 Address = {hex @}
 Type = 4
 
-[Network362]
+[ExchangeBytes3]
 Mode = 2
 Address = {hex @}
 Type = 4
 
-[Network363]
+[ExchangeBytes4]
 Mode = 2
 Address = {hex @}
 Type = 4
