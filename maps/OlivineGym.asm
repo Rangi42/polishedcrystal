@@ -36,7 +36,7 @@ OlivineGymJasmineScript:
 	writetext Text_ReceivedMineralBadge
 	playsound SFX_GET_BADGE
 	waitsfx
-	setflag ENGINE_MINERALBADGE
+	givebadge ENGINE_MINERALBADGE
 	clearevent EVENT_GOLDENROD_CITY_ROCKET_TAKEOVER
 	setmapscene ROUTE_42, $1
 .FightDone:

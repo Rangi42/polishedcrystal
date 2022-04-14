@@ -38,7 +38,7 @@ PewterGymBrockScript:
 	writetext ReceivedBoulderBadgeText
 	playsound SFX_GET_BADGE
 	waitsfx
-	setflag ENGINE_BOULDERBADGE
+	givebadge ENGINE_BOULDERBADGE
 	readvar VAR_BADGES
 	ifequal 9, .FirstBadge
 	ifequal 10, .SecondBadge

@@ -57,7 +57,7 @@ VioletGymFalknerScript:
 	writetext ReceivedZephyrBadgeText
 	playsound SFX_GET_BADGE
 	waitsfx
-	setflag ENGINE_ZEPHYRBADGE
+	givebadge ENGINE_ZEPHYRBADGE
 .FightDone:
 	checkevent EVENT_GOT_TM31_ROOST
 	iftrue_jumpopenedtext FalknerFightDoneText

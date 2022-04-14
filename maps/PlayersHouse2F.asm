@@ -138,22 +138,22 @@ endr
 	loadmem wBattlePoints+0, 0
 	loadmem wBattlePoints+1, 250
 	; all badges
-	setflag ENGINE_ZEPHYRBADGE
-	setflag ENGINE_HIVEBADGE
-	setflag ENGINE_PLAINBADGE
-	setflag ENGINE_FOGBADGE
-	setflag ENGINE_STORMBADGE
-	setflag ENGINE_MINERALBADGE
-	setflag ENGINE_GLACIERBADGE
-	setflag ENGINE_RISINGBADGE
-	setflag ENGINE_BOULDERBADGE
-	setflag ENGINE_CASCADEBADGE
-	setflag ENGINE_THUNDERBADGE
-	setflag ENGINE_RAINBOWBADGE
-	setflag ENGINE_MARSHBADGE
-	setflag ENGINE_SOULBADGE
-	setflag ENGINE_VOLCANOBADGE
-	setflag ENGINE_EARTHBADGE
+	givebadge ENGINE_ZEPHYRBADGE
+	givebadge ENGINE_HIVEBADGE
+	givebadge ENGINE_PLAINBADGE
+	givebadge ENGINE_FOGBADGE
+	givebadge ENGINE_STORMBADGE
+	givebadge ENGINE_MINERALBADGE
+	givebadge ENGINE_GLACIERBADGE
+	givebadge ENGINE_RISINGBADGE
+	givebadge ENGINE_BOULDERBADGE
+	givebadge ENGINE_CASCADEBADGE
+	givebadge ENGINE_THUNDERBADGE
+	givebadge ENGINE_RAINBOWBADGE
+	givebadge ENGINE_MARSHBADGE
+	givebadge ENGINE_SOULBADGE
+	givebadge ENGINE_VOLCANOBADGE
+	givebadge ENGINE_EARTHBADGE
 	setevent EVENT_BEAT_FALKNER
 	setevent EVENT_BEAT_BUGSY
 	setevent EVENT_BEAT_WHITNEY
@@ -251,11 +251,11 @@ endr
 	loadmem wPartyMon3PP+3, 15
 	; variant form test
 	givepoke SLOWKING, GALARIAN_FORM, 50
-;	givepoke ARTICUNO, GALARIAN_FORM, 50
-;	givepoke ZAPDOS, GALARIAN_FORM, 50
-;	givepoke MOLTRES, GALARIAN_FORM, 50
+	givepoke ARTICUNO, GALARIAN_FORM, 50
+	givepoke ZAPDOS, GALARIAN_FORM, 50
+	givepoke MOLTRES, GALARIAN_FORM, 50
 	; fill pokedex
-;	callasm FillPokedex
+	callasm FillPokedex
 	; intro events
 	addcellnum PHONE_MOM
 	setmapscene PLAYERS_HOUSE_1F, $1

@@ -54,7 +54,7 @@ CianwoodGymChuckScript:
 	writetext GetStormBadgeText
 	playsound SFX_GET_BADGE
 	waitsfx
-	setflag ENGINE_STORMBADGE
+	givebadge ENGINE_STORMBADGE
 	specialphonecall SPECIALCALL_YELLOWFOREST
 .FightDone:
 	checkevent EVENT_GOT_TM01_DYNAMICPUNCH

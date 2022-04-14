@@ -615,5 +615,5 @@ NUM_APRICORNS EQU const_value - 1
 	const SILPHSCOPE2  ; 1b
 	const APRICORN_BOX ; 1c
 	const TYPE_CHART   ; 1d
-	const POKEWALKER   ; 1e PokeWalker
-,UM_KEY_ITEMS EQU const_value
+    const POKEWALKER   ; 1e PokeWalker
+NUM_KEY_ITEMS EQU const_value

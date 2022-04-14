@@ -1259,6 +1259,8 @@ wBikeStep:: dw
 
 wKurtApricornQuantity:: db
 
+wPokewalker:: db
+
 wPlayerDataEnd::
 
 wCurMapData::

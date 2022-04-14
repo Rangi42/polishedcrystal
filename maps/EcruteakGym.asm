@@ -78,7 +78,7 @@ EcruteakGymMortyScript:
 	writetext Text_ReceivedFogBadge
 	playsound SFX_GET_BADGE
 	waitsfx
-	setflag ENGINE_FOGBADGE
+	givebadge ENGINE_FOGBADGE
 	setmapscene ECRUTEAK_HOUSE, $1
 	setevent EVENT_RANG_CLEAR_BELL_1
 	setevent EVENT_RANG_CLEAR_BELL_2

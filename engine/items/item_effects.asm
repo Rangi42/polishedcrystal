@@ -312,7 +312,7 @@ KeyItemEffects:
 	dw IsntTheTimeMessage ; SILPHSCOPE2
 	dw ApricornBox        ; APRICORN_BOX
 	dw TypeChart          ; TYPE_CHART
-	dw PokeWalker         ; POKEWALKER
+    dw PokeWalker         ; POKEWALKER
 	assert_table_length NUM_KEY_ITEMS
 
 PokeBallEffect:

@@ -82,7 +82,7 @@ CeruleanGymMistyScript:
 	writetext ReceivedCascadeBadgeText
 	playsound SFX_GET_BADGE
 	waitsfx
-	setflag ENGINE_CASCADEBADGE
+	givebadge ENGINE_CASCADEBADGE
 	readvar VAR_BADGES
 	ifequal 9, .FirstBadge
 	ifequal 10, .SecondBadge

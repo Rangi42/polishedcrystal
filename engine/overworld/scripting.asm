@@ -263,6 +263,7 @@ ScriptCommandTable:
 	dw Script_givebp                     ; cc
 	dw Script_takebp                     ; cd
 	dw Script_checkbp                    ; ce
+	dw Script_givebadge                  ; cf
 	assert_table_length NUM_EVENT_COMMANDS
 
 StartScript:

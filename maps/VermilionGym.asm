@@ -80,7 +80,7 @@ VermilionGymSurgeScript:
 	writetext ReceivedThunderBadgeText
 	playsound SFX_GET_BADGE
 	waitsfx
-	setflag ENGINE_THUNDERBADGE
+	givebadge ENGINE_THUNDERBADGE
 	readvar VAR_BADGES
 	ifequal 9, .FirstBadge
 	ifequal 10, .SecondBadge

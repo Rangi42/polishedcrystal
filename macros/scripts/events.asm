@@ -1312,4 +1312,10 @@ checkbp: MACRO
 	dw \1 ; bp
 ENDM
 
+    const givebadge_command
+givebadge: MACRO
+    db givebadge_command
+	dw \1 ; engine_badge_flag
+ENDM
+
 NUM_EVENT_COMMANDS EQU const_value

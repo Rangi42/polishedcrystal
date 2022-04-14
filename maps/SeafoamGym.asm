@@ -95,7 +95,7 @@ SeafoamGymBlaineScript:
 	writetext ReceivedVolcanoBadgeText
 	playsound SFX_GET_BADGE
 	waitsfx
-	setflag ENGINE_VOLCANOBADGE
+	givebadge ENGINE_VOLCANOBADGE
 	readvar VAR_BADGES
 	ifequal 9, .FirstBadge
 	ifequal 10, .SecondBadge

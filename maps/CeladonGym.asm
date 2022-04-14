@@ -44,7 +44,7 @@ CeladonGymErikaScript:
 	writetext PlayerReceivedRainbowBadgeText
 	playsound SFX_GET_BADGE
 	waitsfx
-	setflag ENGINE_RAINBOWBADGE
+	givebadge ENGINE_RAINBOWBADGE
 	readvar VAR_BADGES
 	ifequal 9, .FirstBadge
 	ifequal 10, .SecondBadge

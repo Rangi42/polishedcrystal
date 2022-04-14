@@ -59,7 +59,7 @@ GoldenrodGymWhitneyScript:
 	writetext PlayerReceivedPlainBadgeText
 	playsound SFX_GET_BADGE
 	waitsfx
-	setflag ENGINE_PLAINBADGE
+	givebadge ENGINE_PLAINBADGE
 .GotPlainBadge:
 	writetext WhitneyPlainBadgeText
 	promptbutton

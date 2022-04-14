@@ -78,7 +78,7 @@ SaffronGymSabrinaScript:
 	writetext ReceivedMarshBadgeText
 	playsound SFX_GET_BADGE
 	waitsfx
-	setflag ENGINE_SOULBADGE
+	givebadge ENGINE_SOULBADGE
 	readvar VAR_BADGES
 	ifequal 9, .FirstBadge
 	ifequal 10, .SecondBadge

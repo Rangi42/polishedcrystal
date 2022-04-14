@@ -145,7 +145,7 @@ DragonShrineTestScript:
 	opentext
 	writetext DragonShrineHereRisingBadgeText
 	waitbutton
-	setflag ENGINE_RISINGBADGE
+	givebadge ENGINE_RISINGBADGE
 	playsound SFX_GET_BADGE
 	waitsfx
 	special RestartMapMusic

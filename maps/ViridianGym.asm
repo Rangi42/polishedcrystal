@@ -44,7 +44,7 @@ ViridianGymBlueScript:
 	writetext Text_ReceivedEarthBadge
 	playsound SFX_GET_BADGE
 	waitsfx
-	setflag ENGINE_EARTHBADGE
+	givebadge ENGINE_EARTHBADGE
 	setevent EVENT_FINAL_BATTLE_WITH_LYRA
 .FightDone:
 	checkevent EVENT_GOT_TM71_STONE_EDGE

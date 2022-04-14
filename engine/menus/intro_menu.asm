@@ -194,7 +194,7 @@ endr
 
 	ld [wJohtoBadges], a
 	ld [wKantoBadges], a
-	ld [wPokewalker], a
+    ld [wPokewalker], a
 
 	ld [wCoins], a
 	ld [wCoins + 1], a

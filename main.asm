@@ -551,6 +551,9 @@ SECTION "Type Chart", ROMX
 
 INCLUDE "engine/items/type_chart.asm"
 
+SECTION "PokeWalker" ROMX
+
+INCLUDE "engine/events/pokewalker.asm"
 
 SECTION "VWF", ROMX
 

@@ -180,17 +180,7 @@ GiveTogepi:
 	done
 
 .IntroText:
-	text "<PLAYER>, long"
-	line "time, no see."
-
-	para "I was browsing the"
-	line "#mon Journal"
-	cont "while I waited."
-
-	para "Its gossip is a"
-	line "good pastime…"
-
-	para "Anyway, Prof.Elm"
+	text "Anyway, Prof.Elm"
 	line "has another favor"
 	cont "to ask you."
 

@@ -287,7 +287,7 @@ KeyItemDescriptions:
 	dw SilphScope2Desc
 	dw ApricornBoxDesc
 	dw TypeChartDesc
-	dw PokeWalkerDesc
+    dw PokeWalkerDesc
 
 PokeBallDesc:
 	db   "An item for catch-"
@@ -1379,5 +1379,5 @@ TypeChartDesc:
 	db   "Summarizes all"
 	next "type advantages.@"
 PokeWalkerDesc:
-	db   "Sets the level"
-	next "of wild #mon.@"
+    db   "Sets the level"
+    next "of wild #mon.@"

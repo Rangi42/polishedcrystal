@@ -39,7 +39,7 @@ MahoganyGymPryceScript:
 	writetext Text_ReceivedGlacierBadge
 	playsound SFX_GET_BADGE
 	waitsfx
-	setflag ENGINE_GLACIERBADGE
+	givebadge ENGINE_GLACIERBADGE
 	; Begin Team Rocket takeover of Radio Tower
 	setflag ENGINE_ROCKETS_IN_RADIO_TOWER
 	setevent EVENT_GOLDENROD_CITY_CIVILIANS
