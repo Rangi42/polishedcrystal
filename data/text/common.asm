@@ -1798,7 +1798,7 @@ SECTION "_NoRoomForEggText", ROMX
 _NoRoomForEggText::
 	text "You have no room"
 	line "in your party"
-	cont "or your boxes."
+	cont "or your Box."
 	cont "Come back later."
 	done
 
