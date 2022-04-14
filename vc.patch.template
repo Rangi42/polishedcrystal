@@ -2,22 +2,22 @@
 
 [Network10]
 Mode = 1
-Address = {hex @+1 4}
+Address = {hex @+1}
 Fixcode = {patch +1}
 
 [Network11]
 Mode = 1
-Address = {hex @+1 4}
+Address = {hex @+1}
 Fixcode = {patch +1}
 
 [send_send_buf2]
 Mode = 2
-Address = {hex @ 4}
+Address = {hex @}
 Type = 29
 
 [send_send_buf2_ret]
 Mode = 2
-Address = {hex @ 4}
+Address = {hex @}
 Type = 30
 
 [Network360]
