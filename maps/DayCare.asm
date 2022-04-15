@@ -322,5 +322,5 @@ DayCareLadyText_DescribeLyrasEgg:
 DayCareText_PartyAndBoxFull:
 	text "You have no room"
 	line "for this, even in"
-	cont "your box."
+	cont "your Box."
 	done

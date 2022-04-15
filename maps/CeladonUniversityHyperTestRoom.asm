@@ -273,7 +273,7 @@ CeladonUniversityHyperTestRoomWestwoodScript:
 
 .PartyAndBoxFullText:
 	text "Oh no! Your party"
-	line "and box are full…"
+	line "and Box are full…"
 	done
 
 .RefusedText:

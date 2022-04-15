@@ -448,7 +448,7 @@ DragonShrineTakeThisDratiniText:
 
 DragonShrinePartyAndBoxFullText:
 	text "Hm? Your party and"
-	line "box are both full."
+	line "Box are both full."
 	done
 
 DragonShrineSymbolicDragonText:

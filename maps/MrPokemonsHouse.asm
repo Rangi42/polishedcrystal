@@ -375,7 +375,7 @@ MrPokemonText_SentToPC:
 MrPokemonText_PartyAndBoxFull:
 	text "You don't have any"
 	line "room for this,"
-	cont "even in your box!"
+	cont "even in your Box!"
 	done
 
 MrPokemonText_Disappointed:

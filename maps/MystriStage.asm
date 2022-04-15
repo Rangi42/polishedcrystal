@@ -324,7 +324,7 @@ MystriStageEggText:
 MystriStageNoRoomText:
 	text "You don't have"
 	line "room for this,"
-	cont "even in your box!"
+	cont "even in your Box!"
 	done
 
 MystriStageMovementData_CynthiaStepsUp:

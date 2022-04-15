@@ -210,7 +210,7 @@ DragonsDenB1FSilverScript:
 .PartyAndBoxFullText:
 	text "Humph. You don't"
 	line "have any room…"
-	cont "Even in your box…"
+	cont "Even in your Box…"
 	done
 
 .Training1Text:

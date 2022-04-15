@@ -187,4 +187,7 @@ MapSetupScript_Continue:
 MapSetupScript_Submenu:
 	mapsetup LoadBlockData
 	mapsetup LoadConnectionBlockData
+	mapsetup DisableLCD
+	mapsetup LoadMapTilesetGFX
+	mapsetup EnableLCD
 	db -1 ; end

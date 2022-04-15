@@ -395,7 +395,7 @@ IndigoPlateauYellowScript:
 	para "another #mon"
 	line "either…"
 
-	para "And your box is"
+	para "And your Box is"
 	line "full, too…"
 	done
 

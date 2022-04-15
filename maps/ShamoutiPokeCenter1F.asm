@@ -118,7 +118,7 @@ ShamoutiPokeCenter1FIvyScript:
 	text "Alas, it seems"
 	line "there's no room in"
 	cont "either your party"
-	cont "or your box…"
+	cont "or your Box…"
 	done
 
 .GreetingText:

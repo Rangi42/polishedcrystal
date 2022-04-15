@@ -346,7 +346,7 @@ GoldenrodGameCornerPrizeVendorNeedMoreCoinsText:
 GoldenrodGameCornerPrizeVendorNoMoreRoomText:
 	text "Oh, no. You can't"
 	line "carry any more and"
-	cont "your box is full."
+	cont "your Box is full."
 
 	para "I'll return your"
 	line "coins to you."

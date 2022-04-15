@@ -366,7 +366,7 @@ NoRoomForFossilPokemonText:
 	text "Hey! You can't"
 	line "carry another"
 	cont "#mon, and your"
-	cont "box is full, too!"
+	cont "Box is full, too!"
 	done
 
 TakeGoodCareOfItText:
