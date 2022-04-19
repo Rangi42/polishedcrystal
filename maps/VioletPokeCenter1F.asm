@@ -52,7 +52,6 @@ VioletPokeCenter1FElmsAideScript:
 .AskTakeEgg:
 	yesorno
 	iffalse .RefusedEgg
-	readvar VAR_PARTYCOUNT
 	giveegg TOGEPI
 	iffalse_jumpopenedtext .PartyAndBoxFull
 	setevent EVENT_GOT_TOGEPI_EGG_FROM_ELMS_AIDE
