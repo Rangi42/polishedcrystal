@@ -2082,11 +2082,13 @@ Script_giveegg:
 	xor a
 	ld [wCurItem], a
 	ld [wCurPlayerMove], a
+	ld b, a
 	inc a
 	assert EGG_LEVEL == 1
 	ld [wCurPartyLevel], a
 	assert POKE_BALL == 1
 	ld [wGiftMonBall], a
+
 	farcall GivePoke
 	ld a, b
 	ldh [hScriptVar], a
