@@ -287,7 +287,7 @@ Script_ReturnToBattleTowerChallenge:
 
 MenuDataHeader_BattleInfoCancel:
 	db MENU_BACKUP_TILES
-    menu_coords 11, 4, 19, 11
+	menu_coords 11, 4, 19, 11
 	dw MenuData2_BattleInfoCancel
 	db 1 ; default option
 

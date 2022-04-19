@@ -83,7 +83,7 @@ SeagallopFerryShamoutiDepartureScript:
 
 VermilionValenciaMenuDataHeader:
 	db MENU_BACKUP_TILES
-    menu_coords 0, 4, 18, 11
+	menu_coords 0, 4, 18, 11
 	dw .MenuData2
 	db 1 ; default option
 

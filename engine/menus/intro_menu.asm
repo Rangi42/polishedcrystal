@@ -452,8 +452,8 @@ Continue_LoadMenuHeader:
 	jmp PlaceVerticalMenuItems
 
 .MenuDataHeader_Dex:
-	db MENU_BACKUP_TILES
-    menu_coords 0, 0, 15, 9
+	db MENU_BACKUP_TILE
+	menu_coords 0, 0, 15, 9
 	dw .MenuData2_Dex
 	db 1 ; default option
 
@@ -467,7 +467,7 @@ Continue_LoadMenuHeader:
 
 .MenuDataHeader_NoDex:
 	db MENU_BACKUP_TILES
-    menu_coords 0, 0, 15, 9
+	menu_coords 0, 0, 15, 9
 	dw .MenuData2_NoDex
 	db 1 ; default option
 
@@ -741,7 +741,7 @@ endc
 
 .MenuDataHeader:
 	db $40 ; flags
-    menu_coords 13, 7, 19, 11
+	menu_coords 13, 7, 19, 11
 	dw .MenuData2
 	db 1 ; default option
 

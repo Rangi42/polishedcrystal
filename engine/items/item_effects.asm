@@ -1856,7 +1856,7 @@ ApricornBox:
 
 .MenuDataHeader:
 	db MENU_BACKUP_TILES
-    menu_coords 5, 1, 19, 11
+	menu_coords 5, 1, 19, 11
 	dw vTiles0
 	db 0 ; default option
 

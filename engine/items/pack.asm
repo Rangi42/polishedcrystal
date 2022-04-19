@@ -323,7 +323,7 @@ PackScrollingMenu:
 
 MenuDataHeader_SortTMs:
 	db MENU_BACKUP_TILES
-    menu_coords 8, 5, 19, 11
+	menu_coords 8, 5, 19, 11
 	dw .MenuData2
 	db 1 ; default option
 
@@ -336,7 +336,7 @@ MenuDataHeader_SortTMs:
 
 MenuDataHeader_SortItems:
 	db MENU_BACKUP_TILES
-    menu_coords 10, 5, 19, 11
+	menu_coords 10, 5, 19, 11
 	dw .MenuData2
 	db 1 ; default option
 
@@ -373,7 +373,7 @@ SortItemsName:
 
 MenuDataHeader_UseGiveToss:
 	db MENU_BACKUP_TILES
-    menu_coords 13, 3, 19, 11
+	menu_coords 13, 3, 19, 11
 	dw .MenuData2
 	db 1 ; default option
 
@@ -393,7 +393,7 @@ Jumptable_UseGiveTossQuit:
 
 MenuDataHeader_Use:
 	db MENU_BACKUP_TILES
-    menu_coords 13, 7, 19, 11
+	menu_coords 13, 7, 19, 11
 	dw .MenuData2
 	db 1 ; default option
 
@@ -405,7 +405,7 @@ MenuDataHeader_Use:
 
 MenuDataHeader_Quit:
 	db MENU_BACKUP_TILES
-    menu_coords 13, 9, 19, 11
+	menu_coords 13, 9, 19, 11
 	dw .MenuData2
 	db 1 ; default option
 
@@ -424,7 +424,7 @@ Jumptable_KeyItem_UseQuit:
 
 MenuDataHeader_UseSel:
 	db MENU_BACKUP_TILES
-    menu_coords 13, 5, 19, 11
+	menu_coords 13, 5, 19, 11
 	dw .MenuData2
 	db 1 ; default option
 
@@ -442,7 +442,7 @@ Jumptable_KeyItem_UseRegisterQuit:
 
 MenuDataHeader_GiveToss:
 	db MENU_BACKUP_TILES
-    menu_coords 13, 5, 19, 11
+	menu_coords 13, 5, 19, 11
 	dw .MenuData2
 	db 1 ; default option
 
@@ -1187,7 +1187,7 @@ TutorialPack:
 
 .ItemsMenuDataHeader:
 	db MENU_BACKUP_TILES
-    menu_coords 7, 1, 19, 11
+	menu_coords 7, 1, 19, 11
 	dw .ItemsMenuData2
 	db 1 ; default option
 
@@ -1207,7 +1207,7 @@ TutorialPack:
 
 .MedicineMenuDataHeader:
 	db MENU_BACKUP_TILES
-    menu_coords 7, 1, 19, 11
+	menu_coords 7, 1, 19, 11
 	dw .MedicineMenuData2
 	db 1 ; default option
 
@@ -1227,7 +1227,7 @@ TutorialPack:
 
 .BallsMenuDataHeader:
 	db MENU_BACKUP_TILES
-    menu_coords 7, 1, 19, 11
+	menu_coords 7, 1, 19, 11
 	dw .BallsMenuData2
 	db 1 ; default option
 
@@ -1516,7 +1516,7 @@ Pack_InitColors:
 
 ItemsPocketMenuDataHeader:
 	db MENU_BACKUP_TILES
-    menu_coords 7, 1, 19, 11
+	menu_coords 7, 1, 19, 11
 	dw .MenuData2
 	db 1 ; default option
 
@@ -1531,7 +1531,7 @@ ItemsPocketMenuDataHeader:
 
 PC_Mart_ItemsPocketMenuDataHeader:
 	db MENU_BACKUP_TILES
-    menu_coords 7, 1, 19, 11
+	menu_coords 7, 1, 19, 11
 	dw .MenuData2
 	db 1 ; default option
 
@@ -1546,7 +1546,7 @@ PC_Mart_ItemsPocketMenuDataHeader:
 
 MedicinePocketMenuDataHeader:
 	db MENU_BACKUP_TILES
-    menu_coords 7, 1, 19, 11
+	menu_coords 7, 1, 19, 11
 	dw .MenuData2
 	db 1 ; default option
 
@@ -1561,7 +1561,7 @@ MedicinePocketMenuDataHeader:
 
 PC_Mart_MedicinePocketMenuDataHeader:
 	db MENU_BACKUP_TILES
-    menu_coords 7, 1, 19, 11
+	menu_coords 7, 1, 19, 11
 	dw .MenuData2
 	db 1 ; default option
 
@@ -1576,7 +1576,7 @@ PC_Mart_MedicinePocketMenuDataHeader:
 
 BallsPocketMenuDataHeader:
 	db MENU_BACKUP_TILES
-    menu_coords 7, 1, 19, 11
+	menu_coords 7, 1, 19, 11
 	dw .MenuData2
 	db 1 ; default option
 
@@ -1591,7 +1591,7 @@ BallsPocketMenuDataHeader:
 
 PC_Mart_BallsPocketMenuDataHeader:
 	db MENU_BACKUP_TILES
-    menu_coords 7, 1, 19, 11
+	menu_coords 7, 1, 19, 11
 	dw .MenuData2
 	db 1 ; default option
 
@@ -1606,7 +1606,7 @@ PC_Mart_BallsPocketMenuDataHeader:
 
 BerriesPocketMenuDataHeader:
 	db MENU_BACKUP_TILES
-    menu_coords 7, 1, 19, 11
+	menu_coords 7, 1, 19, 11
 	dw .MenuData2
 	db 1 ; default option
 
@@ -1621,7 +1621,7 @@ BerriesPocketMenuDataHeader:
 
 PC_Mart_BerriesPocketMenuDataHeader:
 	db MENU_BACKUP_TILES
-    menu_coords 7, 1, 19, 11
+	menu_coords 7, 1, 19, 11
 	dw .MenuData2
 	db 1 ; default option
 
@@ -1636,7 +1636,7 @@ PC_Mart_BerriesPocketMenuDataHeader:
 
 KeyItemsPocketMenuDataHeader:
 	db MENU_BACKUP_TILES
-    menu_coords 7, 1, 19, 11
+	menu_coords 7, 1, 19, 11
 	dw .MenuData2
 	db 1 ; default option
 
@@ -1651,7 +1651,7 @@ KeyItemsPocketMenuDataHeader:
 
 PC_Mart_KeyItemsPocketMenuDataHeader:
 	db MENU_BACKUP_TILES
-    menu_coords 7, 1, 19, 11
+	menu_coords 7, 1, 19, 11
 	dw .MenuData2
 	db 1 ; default option
 

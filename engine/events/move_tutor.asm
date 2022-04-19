@@ -116,4 +116,4 @@ CheckCanLearnMoveTutorMove:
 
 .MenuDataHeader:
 	db MENU_BACKUP_TILES
-    menu_coords 0, 12, 19, 17
+	menu_coords 0, 12, 19, 17

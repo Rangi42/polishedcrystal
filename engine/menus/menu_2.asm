@@ -78,13 +78,13 @@ PlaceMoneyDataHeader:
 
 MoneyTopRightMenuHeader:
 	db MENU_BACKUP_TILES
-    menu_coords 10, 0, 19, 2
+	menu_coords 10, 0, 19, 2
 	dw NULL
 	db 1 ; default option
 
 MoneyBottomLeftMenuHeader:
 	db MENU_BACKUP_TILES ; flags
-    menu_coords 0, 11, 9, 13
+	menu_coords 0, 11, 9, 13
 	dw NULL
 	db 1 ; default option
 

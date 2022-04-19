@@ -94,7 +94,7 @@ AcademyBlackboard:
 
 .MenuHeader:
 	db MENU_BACKUP_TILES
-    menu_coords 0, 0, 11, 8
+	menu_coords 0, 0, 11, 8
 	dw .Data
 	db 1 ; default option
 

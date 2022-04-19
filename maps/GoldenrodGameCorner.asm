@@ -166,7 +166,7 @@ GoldenrodGameCornerPrizeVendor_NotEnoughCoinsScript:
 
 GoldenrodGameCornerTMVendorMenuData:
 	db MENU_BACKUP_TILES
-    menu_coords 0, 2, 15, 11
+	menu_coords 0, 2, 15, 11
 	dw .MenuData2
 	db 1 ; default option
 
@@ -249,7 +249,7 @@ GoldenrodGameCornerPrizeMonVendorScript:
 
 .MenuDataHeader:
 	db MENU_BACKUP_TILES
-    menu_coords 0, 2, 17, 11
+	menu_coords 0, 2, 17, 11
 	dw .MenuData2
 	db 1 ; default option
 

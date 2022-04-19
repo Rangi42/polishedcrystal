@@ -170,7 +170,7 @@ Elevator_GetCurrentFloorString:
 
 Elevator_MenuDataHeader:
 	db MENU_BACKUP_TILES
-    menu_coords 12, 1, 18, 9
+	menu_coords 12, 1, 18, 9
 	dw Elevator_MenuData2
 	db 1 ; default option
 

@@ -122,13 +122,13 @@ StartMenu::
 
 .MenuDataHeader:
 	db MENU_BACKUP_TILES
-    menu_coords 10, 0, 19, 17
+	menu_coords 10, 0, 19, 17
 	dw .MenuData
 	db 1 ; default selection
 
 .ContestMenuDataHeader:
 	db MENU_BACKUP_TILES
-    menu_coords 10, 2, 19, 17
+	menu_coords 10, 2, 19, 17
 	dw .MenuData
 	db 1 ; default selection
 

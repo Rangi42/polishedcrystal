@@ -661,7 +661,7 @@ Mom_HeldString:
 
 BankOfMom_MenuHeader:
 	db MENU_BACKUP_TILES
-    menu_coords 0, 0, 10, 10
+	menu_coords 0, 0, 10, 10
 	dw .MenuData
 	db 1 ; default option
 

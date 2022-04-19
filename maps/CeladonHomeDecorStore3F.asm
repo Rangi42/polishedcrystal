@@ -86,7 +86,7 @@ CeladonHomeDecorStore3FClerk1Script:
 
 .MenuData:
 	db MENU_BACKUP_TILES
-    menu_coords 0, 2, 19, 11
+	menu_coords 0, 2, 19, 11
 	dw .MenuData2
 	db 1 ; default option
 

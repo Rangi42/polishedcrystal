@@ -22,7 +22,7 @@ MainMenu:
 
 .MenuDataHeader:
 	db MENU_BACKUP_TILES
-    menu_coords 0, 0, 16, 7
+	menu_coords 0, 0, 16, 7
 	dw .MenuData2
 	db 1 ; default option
 

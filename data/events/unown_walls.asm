@@ -7,13 +7,13 @@ UnownWalls:
 MenuHeaders_UnownWalls:
 ; ESCAPE
 	db MENU_BACKUP_TILES
-    menu_coords 3, 4, 16, 9
+	menu_coords 3, 4, 16, 9
 ; LIGHT
 	db MENU_BACKUP_TILES
-    menu_coords 4, 4, 15, 9
+	menu_coords 4, 4, 15, 9
 ; WATER
 	db MENU_BACKUP_TILES
-    menu_coords 4, 4, 15, 9
+	menu_coords 4, 4, 15, 9
 ; FAIRY
 	db MENU_BACKUP_TILES
-    menu_coords 4, 4, 15, 9
+	menu_coords 4, 4, 15, 9

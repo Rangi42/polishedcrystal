@@ -27,7 +27,7 @@ PokemonCenterPC:
 
 .TopMenu:
 	db MENU_BACKUP_TILES | MENU_NO_CLICK_SFX
-    menu_coords 0, 0, 15, 12
+	menu_coords 0, 0, 15, 12
 	dw .MenuData2
 	db 1 ; default option
 
@@ -592,7 +592,7 @@ PCItemsJoypad:
 
 .PCItemsMenuData:
 	db MENU_BACKUP_TILES
-    menu_coords 4, 1, 18, 10
+	menu_coords 4, 1, 18, 10
 	dw .MenuData2
 	db 1 ; default option
 

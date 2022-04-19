@@ -108,7 +108,7 @@ Museum1FFossilScientistScript:
 
 HelixDomeMenuDataHeader:
 	db MENU_BACKUP_TILES
-    menu_coords 0, 4, 15, 11
+	menu_coords 0, 4, 15, 11
 	dw .MenuData2
 	db 1 ; default option
 
@@ -121,7 +121,7 @@ HelixDomeMenuDataHeader:
 
 HelixAmberMenuDataHeader:
 	db MENU_BACKUP_TILES
-    menu_coords 0, 4, 15, 11
+	menu_coords 0, 4, 15, 11
 	dw .MenuData2
 	db 1 ; default option
 
@@ -134,7 +134,7 @@ HelixAmberMenuDataHeader:
 
 DomeAmberMenuDataHeader:
 	db MENU_BACKUP_TILES
-    menu_coords 0, 4, 14, 11
+	menu_coords 0, 4, 14, 11
 	dw .MenuData2
 	db 1 ; default option
 
@@ -147,7 +147,7 @@ DomeAmberMenuDataHeader:
 
 HelixDomeAmberMenuDataHeader:
 	db MENU_BACKUP_TILES
-    menu_coords 0, 2, 15, 11
+	menu_coords 0, 2, 15, 11
 	dw .MenuData2
 	db 1 ; default option
 

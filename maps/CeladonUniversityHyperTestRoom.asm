@@ -301,7 +301,7 @@ CeladonUniversityHyperTestRoomWestwoodScript:
 
 .Question1MenuData:
 	db MENU_BACKUP_TILES
-    menu_coords 0, 1, 11, 11
+	menu_coords 0, 1, 11, 11
 	dw .Question1MenuData2
 	db 1 ; default option
 
@@ -315,7 +315,7 @@ CeladonUniversityHyperTestRoomWestwoodScript:
 
 .Question2MenuData:
 	db MENU_BACKUP_TILES
-    menu_coords 0, 1, 10, 11
+	menu_coords 0, 1, 10, 11
 	dw .Question2MenuData2
 	db 1 ; default option
 
@@ -329,7 +329,7 @@ CeladonUniversityHyperTestRoomWestwoodScript:
 
 .Question3MenuData:
 	db MENU_BACKUP_TILES
-    menu_coords 0, 1, 13, 11
+	menu_coords 0, 1, 13, 11
 	dw .Question3MenuData2
 	db 1 ; default option
 
@@ -343,7 +343,7 @@ CeladonUniversityHyperTestRoomWestwoodScript:
 
 .Question4MenuData:
 	db MENU_BACKUP_TILES
-    menu_coords 0, 1, 12, 11
+	menu_coords 0, 1, 12, 11
 	dw .Question4MenuData2
 	db 1 ; default option
 
@@ -357,7 +357,7 @@ CeladonUniversityHyperTestRoomWestwoodScript:
 
 .Question5MenuData:
 	db MENU_BACKUP_TILES
-    menu_coords 0, 1, 13, 11
+	menu_coords 0, 1, 13, 11
 	dw .Question5MenuData2
 	db 1 ; default option
 
@@ -371,7 +371,7 @@ CeladonUniversityHyperTestRoomWestwoodScript:
 
 .Question6MenuData:
 	db MENU_BACKUP_TILES
-    menu_coords 1, 0, 15, 11
+	menu_coords 1, 0, 15, 11
 	dw .Question6MenuData2
 	db 1 ; default option
 

@@ -79,7 +79,7 @@ FarmerMScript_SellMilk:
 
 .MenuDataHeader:
 	db MENU_BACKUP_TILES
-    menu_coords 0, 4, 14, 11
+	menu_coords 0, 4, 14, 11
 	dw .MenuData2
 	db 1 ; default option
 

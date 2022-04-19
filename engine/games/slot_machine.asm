@@ -1495,7 +1495,7 @@ Slots_AskBet:
 
 .MenuDataHeader:
 	db MENU_BACKUP_TILES
-    menu_coords 14, 10, 19, 17
+	menu_coords 14, 10, 19, 17
 	dw .MenuData2
 	db 1 ; default option
 

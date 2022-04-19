@@ -93,6 +93,6 @@ ClosePokepic::
 
 PokepicMenuDataHeader:
 	db MENU_BACKUP_TILES
-    menu_coords 6, 4, 14, 12
+	menu_coords 6, 4, 14, 12
 	dw NULL
 	db 1 ; default option

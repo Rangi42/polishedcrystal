@@ -287,13 +287,13 @@ LoadMenuHeader::
 
 StandardMenuDataHeader:
 	db MENU_BACKUP_TILES
-    menu_coords 0, 0, 19, 17
+	menu_coords 0, 0, 19, 17
 	dw 0
 	db 1 ; default option
 
 MenuTextboxDataHeader:
 	db MENU_BACKUP_TILES
-    menu_coords 0, 12, 19, 17
+	menu_coords 0, 12, 19, 17
 	dw vTiles0
 	db 0 ; default option
 
@@ -393,7 +393,7 @@ HandleYesNoMenu:
 
 YesNoMenuDataHeader::
 	db MENU_BACKUP_TILES
-    menu_coords 10, 5, 15, 9
+	menu_coords 10, 5, 15, 9
 	dw .MenuData2
 	db 1 ; default option
 
@@ -405,7 +405,7 @@ YesNoMenuDataHeader::
 
 NoYesMenuDataHeader::
 	db MENU_BACKUP_TILES
-    menu_coords 14, 7, 19, 11
+	menu_coords 14, 7, 19, 11
 	dw .MenuData2
 	db 1 ; default option
 

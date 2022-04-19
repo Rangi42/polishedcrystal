@@ -1060,7 +1060,7 @@ Text_AdventurerMart_CostsThisMuch:
 
 MenuDataHeader_Buy:
 	db MENU_BACKUP_TILES
-    menu_coords 6, 3, 19, 11
+	menu_coords 6, 3, 19, 11
 	dw .menudata2
 	db 1 ; default option
 
@@ -1075,7 +1075,7 @@ MenuDataHeader_Buy:
 
 TMMenuDataHeader_Buy:
 	db MENU_BACKUP_TILES
-    menu_coords 6, 3, 19, 11
+	menu_coords 6, 3, 19, 11
 	dw .menudata2
 	db 1 ; default option
 
@@ -1104,7 +1104,7 @@ MartMenu_PrintBCDPrices:
 
 BlueCardMenuDataHeader_Buy:
 	db MENU_BACKUP_TILES
-    menu_coords 6, 3, 19, 11
+	menu_coords 6, 3, 19, 11
 	dw .menudata2
 	db 1 ; default option
 
@@ -1132,7 +1132,7 @@ BlueCardMenuDataHeader_Buy:
 
 BTMenuDataHeader_Buy:
 	db MENU_BACKUP_TILES
-    menu_coords 6, 3, 19, 11
+	menu_coords 6, 3, 19, 11
 	dw .menudata2
 	db 1 ; default option
 
@@ -1465,7 +1465,7 @@ Text_Mart_HowMayIHelpYou:
 
 MenuDataHeader_BuySell:
 	db MENU_BACKUP_TILES
-    menu_coords 0, 0, 7, 8
+	menu_coords 0, 0, 7, 8
 	dw .menudata2
 	db 1 ; default option
 

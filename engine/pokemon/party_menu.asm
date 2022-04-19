@@ -297,7 +297,7 @@ BT_PartySelect:
 
 .EggMenuHeader:
 	db $00 ; flags
-    menu_coords 11, 13, 19, 17
+	menu_coords 11, 13, 19, 17
 	dw .EggMenuData
 	db 1 ; default option
 
@@ -309,7 +309,7 @@ BT_PartySelect:
 
 .MenuHeader:
 	db $00 ; flags
-    menu_coords 11, 9, 19, 17
+	menu_coords 11, 9, 19, 17
 	dw .MenuData
 	db 1 ; default option
 
@@ -323,7 +323,7 @@ BT_PartySelect:
 
 .BannedMenuHeader:
 	db $00 ; flags
-    menu_coords 11, 11, 19, 17
+	menu_coords 11, 11, 19, 17
 	dw .BannedMenuData
 	db 1 ; default option
 
@@ -362,7 +362,7 @@ BT_ConfirmPartySelection:
 .YesNoMenuHeader:
 ; the regular yes/no prompt position is unsuitable, so make our own here
 	db $00 ; flags
-    menu_coords 14, 13, 19, 17
+	menu_coords 14, 13, 19, 17
 	dw .YesNoMenuData
 	db 1 ; default option
 

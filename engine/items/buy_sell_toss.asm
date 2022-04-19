@@ -292,24 +292,24 @@ DisplayPurchasePriceCommon:
 
 TossItem_MenuDataHeader:
 	db MENU_BACKUP_TILES
-    menu_coords 15, 9, 19, 11
+	menu_coords 15, 9, 19, 11
 	dw DoNothing
 	db 0 ; default option
 
 BuyItem_MenuDataHeader:
 	db MENU_BACKUP_TILES
-    menu_coords 7, 15, 19, 17
+	menu_coords 7, 15, 19, 17
 	dw DisplayPurchasePrice
 	db -1 ; default option
 
 SellItem_MenuDataHeader:
 	db MENU_BACKUP_TILES
-    menu_coords 7, 15, 19, 17
+	menu_coords 7, 15, 19, 17
 	dw DisplaySellingPrice
 	db 0 ; default option
 
 BTBuyItem_MenuDataHeader:
 	db MENU_BACKUP_TILES
-    menu_coords 7, 15, 19, 17
+	menu_coords 7, 15, 19, 17
 	dw BTDisplayPurchaseCost
 	db -1 ; default option

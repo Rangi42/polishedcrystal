@@ -526,7 +526,7 @@ MailboxPC:
 
 .TopMenuDataHeader:
 	db MENU_BACKUP_TILES
-    menu_coords 8, 1, 18, 10
+	menu_coords 8, 1, 18, 10
 	dw .TopMenuData2
 	db 1 ; default option
 
@@ -541,7 +541,7 @@ MailboxPC:
 
 .SubMenuDataHeader:
 	db MENU_BACKUP_TILES
-    menu_coords 0, 0, 13, 9
+	menu_coords 0, 0, 13, 9
 	dw .SubMenuData2
 	db 1 ; default option
 

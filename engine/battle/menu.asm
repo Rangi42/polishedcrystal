@@ -37,7 +37,7 @@ _BattleMenuCommon:
 
 BattleMenuDataHeader:
 	db MENU_BACKUP_TILES
-    menu_coords 8, 12, 19, 17
+	menu_coords 8, 12, 19, 17
 	dw .MenuData2
 	db 1 ; default option
 
@@ -56,7 +56,7 @@ BattleMenuDataHeader:
 
 ContestBattleMenuDataHeader:
 	db MENU_BACKUP_TILES
-    menu_coords 5, 12, 19, 17
+	menu_coords 5, 12, 19, 17
 	dw .MenuData2
 	db 1 ; default option
 
@@ -81,7 +81,7 @@ ShowParkBallsRemaining:
 
 SafariBattleMenuDataHeader:
 	db MENU_BACKUP_TILES
-    menu_coords 4, 12, 19, 17
+	menu_coords 4, 12, 19, 17
 	dw .MenuData2
 	db 1 ; default option
 
