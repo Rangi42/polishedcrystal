@@ -115,6 +115,5 @@ CheckCanLearnMoveTutorMove:
 	ret
 
 .MenuDataHeader:
-	db $40 ; flags
-	db 12, 00 ; start coords
-	db 17, 19 ; end coords
+	db MENU_BACKUP_TILES
+    menu_coords 0, 12, 19, 17

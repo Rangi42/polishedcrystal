@@ -1494,9 +1494,8 @@ Slots_AskBet:
 	text_end
 
 .MenuDataHeader:
-	db $40 ; flags
-	db 10, 14 ; start coords
-	db 17, 19 ; end coords
+	db MENU_BACKUP_TILES
+    menu_coords 14, 10, 19, 17
 	dw .MenuData2
 	db 1 ; default option
 

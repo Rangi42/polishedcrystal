@@ -121,16 +121,14 @@ StartMenu::
 	jmp .Reopen
 
 .MenuDataHeader:
-	db $40 ; tile backup
-	db 0, 10 ; start coords
-	db 17, 19 ; end coords
+	db MENU_BACKUP_TILES
+    menu_coords 10, 0, 19, 17
 	dw .MenuData
 	db 1 ; default selection
 
 .ContestMenuDataHeader:
-	db $40 ; tile backup
-	db 2, 10 ; start coords
-	db 17, 19 ; end coords
+	db MENU_BACKUP_TILES
+    menu_coords 10, 2, 19, 17
 	dw .MenuData
 	db 1 ; default selection
 

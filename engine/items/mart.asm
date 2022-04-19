@@ -1059,9 +1059,8 @@ Text_AdventurerMart_CostsThisMuch:
 	text_end
 
 MenuDataHeader_Buy:
-	db $40 ; flags
-	db 03, 06 ; start coords
-	db 11, 19 ; end coords
+	db MENU_BACKUP_TILES
+    menu_coords 6, 3, 19, 11
 	dw .menudata2
 	db 1 ; default option
 
@@ -1075,9 +1074,8 @@ MenuDataHeader_Buy:
 	dba UpdateItemIconAndDescriptionAndBagQuantity
 
 TMMenuDataHeader_Buy:
-	db $40 ; flags
-	db 03, 06 ; start coords
-	db 11, 19 ; end coords
+	db MENU_BACKUP_TILES
+    menu_coords 6, 3, 19, 11
 	dw .menudata2
 	db 1 ; default option
 
@@ -1105,9 +1103,8 @@ MartMenu_PrintBCDPrices:
 	jmp PrintBCDNumber
 
 BlueCardMenuDataHeader_Buy:
-	db $40 ; flags
-	db 03, 06 ; start coords
-	db 11, 19 ; end coords
+	db MENU_BACKUP_TILES
+    menu_coords 6, 3, 19, 11
 	dw .menudata2
 	db 1 ; default option
 
@@ -1134,9 +1131,8 @@ BlueCardMenuDataHeader_Buy:
 	db " Pts@"
 
 BTMenuDataHeader_Buy:
-	db $40 ; flags
-	db 03, 06 ; start coords
-	db 11, 19 ; end coords
+	db MENU_BACKUP_TILES
+    menu_coords 6, 3, 19, 11
 	dw .menudata2
 	db 1 ; default option
 
@@ -1468,9 +1464,8 @@ Text_Mart_HowMayIHelpYou:
 	text_end
 
 MenuDataHeader_BuySell:
-	db $40 ; flags
-	db 00, 00 ; start coords
-	db 08, 07 ; end coords
+	db MENU_BACKUP_TILES
+    menu_coords 0, 0, 7, 8
 	dw .menudata2
 	db 1 ; default option
 

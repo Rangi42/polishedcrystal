@@ -322,9 +322,8 @@ PackScrollingMenu:
 	ret
 
 MenuDataHeader_SortTMs:
-	db $40 ; flags
-	db 05, 08 ; start coords
-	db 11, 19 ; end coords
+	db MENU_BACKUP_TILES
+    menu_coords 8, 5, 19, 11
 	dw .MenuData2
 	db 1 ; default option
 
@@ -336,9 +335,8 @@ MenuDataHeader_SortTMs:
 	db "Quit@"
 
 MenuDataHeader_SortItems:
-	db $40 ; flags
-	db 05, 10 ; start coords
-	db 11, 19 ; end coords
+	db MENU_BACKUP_TILES
+    menu_coords 10, 5, 19, 11
 	dw .MenuData2
 	db 1 ; default option
 
@@ -374,9 +372,8 @@ SortItemsName:
 	farjp SortItemsInBag
 
 MenuDataHeader_UseGiveToss:
-	db $40 ; flags
-	db 03, 13 ; start coords
-	db 11, 19 ; end coords
+	db MENU_BACKUP_TILES
+    menu_coords 13, 3, 19, 11
 	dw .MenuData2
 	db 1 ; default option
 
@@ -395,9 +392,8 @@ Jumptable_UseGiveTossQuit:
 	dw DoNothing
 
 MenuDataHeader_Use:
-	db %01000000 ; flags
-	db 07, 13 ; start coords
-	db 11, 19 ; end coords
+	db MENU_BACKUP_TILES
+    menu_coords 13, 7, 19, 11
 	dw .MenuData2
 	db 1 ; default option
 
@@ -408,9 +404,8 @@ MenuDataHeader_Use:
 	db "Quit@"
 
 MenuDataHeader_Quit:
-	db %01000000 ; flags
-	db 09, 13 ; start coords
-	db 11, 19 ; end coords
+	db MENU_BACKUP_TILES
+    menu_coords 13, 9, 19, 11
 	dw .MenuData2
 	db 1 ; default option
 
@@ -428,9 +423,8 @@ Jumptable_KeyItem_UseQuit:
 	dw DoNothing
 
 MenuDataHeader_UseSel:
-	db %01000000 ; flags
-	db 05, 13 ; start coords
-	db 11, 19 ; end coords
+	db MENU_BACKUP_TILES
+    menu_coords 13, 5, 19, 11
 	dw .MenuData2
 	db 1 ; default option
 
@@ -447,9 +441,8 @@ Jumptable_KeyItem_UseRegisterQuit:
 	dw DoNothing
 
 MenuDataHeader_GiveToss:
-	db $40 ; flags
-	db 05, 13 ; start coords
-	db 11, 19 ; end coords
+	db MENU_BACKUP_TILES
+    menu_coords 13, 5, 19, 11
 	dw .MenuData2
 	db 1 ; default option
 
@@ -1193,9 +1186,8 @@ TutorialPack:
 	jr .DisplayPocket
 
 .ItemsMenuDataHeader:
-	db $40 ; flags
-	db 01, 07 ; start coords
-	db 11, 19 ; end coords
+	db MENU_BACKUP_TILES
+    menu_coords 7, 1, 19, 11
 	dw .ItemsMenuData2
 	db 1 ; default option
 
@@ -1214,9 +1206,8 @@ TutorialPack:
 	jr .DisplayPocket
 
 .MedicineMenuDataHeader:
-	db $40 ; flags
-	db 01, 07 ; start coords
-	db 11, 19 ; end coords
+	db MENU_BACKUP_TILES
+    menu_coords 7, 1, 19, 11
 	dw .MedicineMenuData2
 	db 1 ; default option
 
@@ -1235,9 +1226,8 @@ TutorialPack:
 	jr .DisplayPocket
 
 .BallsMenuDataHeader:
-	db $40 ; flags
-	db 01, 07 ; start coords
-	db 11, 19 ; end coords
+	db MENU_BACKUP_TILES
+    menu_coords 7, 1, 19, 11
 	dw .BallsMenuData2
 	db 1 ; default option
 
@@ -1525,9 +1515,8 @@ Pack_InitColors:
 	jmp SetPalettes
 
 ItemsPocketMenuDataHeader:
-	db $40 ; flags
-	db 01, 07 ; start coords
-	db 11, 19 ; end coords
+	db MENU_BACKUP_TILES
+    menu_coords 7, 1, 19, 11
 	dw .MenuData2
 	db 1 ; default option
 
@@ -1541,9 +1530,8 @@ ItemsPocketMenuDataHeader:
 	dba UpdateItemIconAndDescription
 
 PC_Mart_ItemsPocketMenuDataHeader:
-	db $40 ; flags
-	db 01, 07 ; start coords
-	db 11, 19 ; end coords
+	db MENU_BACKUP_TILES
+    menu_coords 7, 1, 19, 11
 	dw .MenuData2
 	db 1 ; default option
 
@@ -1557,9 +1545,8 @@ PC_Mart_ItemsPocketMenuDataHeader:
 	dba UpdateItemIconAndDescription
 
 MedicinePocketMenuDataHeader:
-	db $40 ; flags
-	db 01, 07 ; start coords
-	db 11, 19 ; end coords
+	db MENU_BACKUP_TILES
+    menu_coords 7, 1, 19, 11
 	dw .MenuData2
 	db 1 ; default option
 
@@ -1573,9 +1560,8 @@ MedicinePocketMenuDataHeader:
 	dba UpdateItemIconAndDescription
 
 PC_Mart_MedicinePocketMenuDataHeader:
-	db $40 ; flags
-	db 01, 07 ; start coords
-	db 11, 19 ; end coords
+	db MENU_BACKUP_TILES
+    menu_coords 7, 1, 19, 11
 	dw .MenuData2
 	db 1 ; default option
 
@@ -1589,9 +1575,8 @@ PC_Mart_MedicinePocketMenuDataHeader:
 	dba UpdateItemIconAndDescription
 
 BallsPocketMenuDataHeader:
-	db $40 ; flags
-	db 01, 07 ; start coords
-	db 11, 19 ; end coords
+	db MENU_BACKUP_TILES
+    menu_coords 7, 1, 19, 11
 	dw .MenuData2
 	db 1 ; default option
 
@@ -1605,9 +1590,8 @@ BallsPocketMenuDataHeader:
 	dba UpdateItemIconAndDescription
 
 PC_Mart_BallsPocketMenuDataHeader:
-	db $40 ; flags
-	db 01, 07 ; start coords
-	db 11, 19 ; end coords
+	db MENU_BACKUP_TILES
+    menu_coords 7, 1, 19, 11
 	dw .MenuData2
 	db 1 ; default option
 
@@ -1621,9 +1605,8 @@ PC_Mart_BallsPocketMenuDataHeader:
 	dba UpdateItemIconAndDescription
 
 BerriesPocketMenuDataHeader:
-	db $40 ; flags
-	db 01, 07 ; start coords
-	db 11, 19 ; end coords
+	db MENU_BACKUP_TILES
+    menu_coords 7, 1, 19, 11
 	dw .MenuData2
 	db 1 ; default option
 
@@ -1637,9 +1620,8 @@ BerriesPocketMenuDataHeader:
 	dba UpdateItemIconAndDescription
 
 PC_Mart_BerriesPocketMenuDataHeader:
-	db $40 ; flags
-	db 01, 07 ; start coords
-	db 11, 19 ; end coords
+	db MENU_BACKUP_TILES
+    menu_coords 7, 1, 19, 11
 	dw .MenuData2
 	db 1 ; default option
 
@@ -1653,9 +1635,8 @@ PC_Mart_BerriesPocketMenuDataHeader:
 	dba UpdateItemIconAndDescription
 
 KeyItemsPocketMenuDataHeader:
-	db $40 ; flags
-	db 01, 07 ; start coords
-	db 11, 19 ; end coords
+	db MENU_BACKUP_TILES
+    menu_coords 7, 1, 19, 11
 	dw .MenuData2
 	db 1 ; default option
 
@@ -1669,9 +1650,8 @@ KeyItemsPocketMenuDataHeader:
 	dba UpdateItemIconAndDescription
 
 PC_Mart_KeyItemsPocketMenuDataHeader:
-	db $40 ; flags
-	db 01, 07 ; start coords
-	db 11, 19 ; end coords
+	db MENU_BACKUP_TILES
+    menu_coords 7, 1, 19, 11
 	dw .MenuData2
 	db 1 ; default option
 

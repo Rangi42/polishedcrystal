@@ -300,9 +300,8 @@ CeladonUniversityHyperTestRoomWestwoodScript:
 	done
 
 .Question1MenuData:
-	db $40 ; flags
-	db 01, 00 ; start coords
-	db 11, 11 ; end coords
+	db MENU_BACKUP_TILES
+    menu_coords 0, 1, 11, 11
 	dw .Question1MenuData2
 	db 1 ; default option
 
@@ -315,9 +314,8 @@ CeladonUniversityHyperTestRoomWestwoodScript:
 	db "Girafarig@"
 
 .Question2MenuData:
-	db $40 ; flags
-	db 01, 00 ; start coords
-	db 11, 10 ; end coords
+	db MENU_BACKUP_TILES
+    menu_coords 0, 1, 10, 11
 	dw .Question2MenuData2
 	db 1 ; default option
 
@@ -330,9 +328,8 @@ CeladonUniversityHyperTestRoomWestwoodScript:
 	db "Venomoth@"
 
 .Question3MenuData:
-	db $40 ; flags
-	db 01, 00 ; start coords
-	db 11, 13 ; end coords
+	db MENU_BACKUP_TILES
+    menu_coords 0, 1, 13, 11
 	dw .Question3MenuData2
 	db 1 ; default option
 
@@ -345,9 +342,8 @@ CeladonUniversityHyperTestRoomWestwoodScript:
 	db "Heal Powder@"
 
 .Question4MenuData:
-	db $40 ; flags
-	db 01, 00 ; start coords
-	db 11, 12 ; end coords
+	db MENU_BACKUP_TILES
+    menu_coords 0, 1, 12, 11
 	dw .Question4MenuData2
 	db 1 ; default option
 
@@ -360,9 +356,8 @@ CeladonUniversityHyperTestRoomWestwoodScript:
 	db "Victreebel@"
 
 .Question5MenuData:
-	db $40 ; flags
-	db 01, 00 ; start coords
-	db 11, 13 ; end coords
+	db MENU_BACKUP_TILES
+    menu_coords 0, 1, 13, 11
 	dw .Question5MenuData2
 	db 1 ; default option
 
@@ -375,9 +370,8 @@ CeladonUniversityHyperTestRoomWestwoodScript:
 	db "Pecha Berry@"
 
 .Question6MenuData:
-	db $40 ; flags
-	db 01, 00 ; start coords
-	db 11, 15 ; end coords
+	db MENU_BACKUP_TILES
+    menu_coords 1, 0, 15, 11
 	dw .Question6MenuData2
 	db 1 ; default option
 

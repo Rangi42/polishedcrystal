@@ -127,9 +127,8 @@ SeagallopFerryVermilionGateSailorScript:
 	jumpopenedtext SeagallopFerryVermilionCityRefusedText
 
 OrangeMysticMenuDataHeader:
-	db $40 ; flags
-	db 04, 00 ; start coords
-	db 11, 15 ; end coords
+	db MENU_BACKUP_TILES
+    menu_coords 0, 4, 15, 11
 	dw .MenuData2
 	db 1 ; default option
 
@@ -141,9 +140,8 @@ OrangeMysticMenuDataHeader:
 	db "Cancel@"
 
 MysticOldSeaMapMenuDataHeader:
-	db $40 ; flags
-	db 04, 00 ; start coords
-	db 11, 15 ; end coords
+	db MENU_BACKUP_TILES
+    menu_coords 0, 4, 15, 11
 	dw .MenuData2
 	db 1 ; default option
 
@@ -155,9 +153,8 @@ MysticOldSeaMapMenuDataHeader:
 	db "Cancel@"
 
 OrangeOldSeaMapMenuDataHeader:
-	db $40 ; flags
-	db 04, 00 ; start coords
-	db 11, 15 ; end coords
+	db MENU_BACKUP_TILES
+    menu_coords 0, 4, 15, 11
 	dw .MenuData2
 	db 1 ; default option
 
@@ -169,9 +166,8 @@ OrangeOldSeaMapMenuDataHeader:
 	db "Cancel@"
 
 ThreeTicketsMenuDataHeader:
-	db $40 ; flags
-	db 02, 00 ; start coords
-	db 11, 15 ; end coords
+	db MENU_BACKUP_TILES
+    menu_coords 0, 2, 15, 11
 	dw .MenuData2
 	db 1 ; default option
 

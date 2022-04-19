@@ -660,9 +660,8 @@ Mom_HeldString:
 	db "Held@"
 
 BankOfMom_MenuHeader:
-	db $40 ; flags
-	db 00, 00 ; start coords
-	db 10, 10 ; end coords
+	db MENU_BACKUP_TILES
+    menu_coords 0, 0, 10, 10
 	dw .MenuData
 	db 1 ; default option
 

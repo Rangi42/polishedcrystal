@@ -1855,9 +1855,8 @@ ApricornBox:
 	jmp ExitMenu
 
 .MenuDataHeader:
-	db $40 ; flags
-	db 01, 05 ; start coords
-	db 11, 19 ; end coords
+	db MENU_BACKUP_TILES
+    menu_coords 5, 1, 19, 11
 	dw vTiles0
 	db 0 ; default option
 

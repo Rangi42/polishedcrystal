@@ -4278,8 +4278,7 @@ BattleMenuPKMN_Loop:
 
 .MenuHeader:
 	db $00 ; flags
-	db 9, 11 ; start coords
-	db 17, 19 ; end coords
+    menu_coords 11, 9, 19, 17
 	dw .MenuData
 	db 1 ; default option
 
@@ -4293,8 +4292,7 @@ BattleMenuPKMN_Loop:
 
 .EggMenuHeader:
 	db $00 ; flags
-	db 11, 11 ; start coords
-	db 17, 19 ; end coords
+    menu_coords 11, 11, 19, 17
 	dw .EggMenuData
 	db 1 ; default option
 

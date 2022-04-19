@@ -18,9 +18,8 @@ MonSubmenu:
 	jmp ExitMenu
 
 .MenuDataHeader:
-	db $40 ; tile backup
-	db 00, 06 ; start coords
-	db 17, 19 ; end coords
+	db MENU_BACKUP_TILES
+    menu_coords 6, 0, 19, 17
 	dw 0
 	db 1 ; default option
 

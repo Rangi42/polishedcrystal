@@ -78,9 +78,8 @@ FarmerMScript_SellMilk:
 	jumpopenedtext FarmerMText_NoRoom
 
 .MenuDataHeader:
-	db $40 ; flags
-	db 04, 00 ; start coords
-	db 11, 14 ; end coords
+	db MENU_BACKUP_TILES
+    menu_coords 0, 4, 14, 11
 	dw .MenuData2
 	db 1 ; default option
 

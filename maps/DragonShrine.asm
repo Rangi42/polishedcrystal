@@ -199,9 +199,8 @@ DragonShrineElder1Script:
 	jumpopenedtext DragonShrineSymbolicDragonText
 
 DragonShrineQuestion1_MenuHeader:
-	db $40 ; flags
-	db 04, 08 ; start coords
-	db 11, 19 ; end coords
+	db MENU_BACKUP_TILES
+    menu_coords 8, 4, 19, 11
 	dw .MenuData
 	db 1 ; default option
 
@@ -213,9 +212,8 @@ DragonShrineQuestion1_MenuHeader:
 	db "Friend@"
 
 DragonShrineQuestion2_MenuHeader:
-	db $40 ; flags
-	db 04, 09 ; start coords
-	db 11, 19 ; end coords
+	db MENU_BACKUP_TILES
+    menu_coords 9, 4, 19, 11
 	dw .MenuData
 	db 1 ; default option
 
@@ -227,9 +225,8 @@ DragonShrineQuestion2_MenuHeader:
 	db "Cheating@"
 
 DragonShrineQuestion3_MenuHeader:
-	db $40 ; flags
-	db 04, 05 ; start coords
-	db 11, 19 ; end coords
+	db MENU_BACKUP_TILES
+    menu_coords 5, 4, 19, 11
 	dw .MenuData
 	db 1 ; default option
 
@@ -241,9 +238,8 @@ DragonShrineQuestion3_MenuHeader:
 	db "Anybody@"
 
 DragonShrineQuestion4_MenuHeader:
-	db $40 ; flags
-	db 04, 08 ; start coords
-	db 11, 19 ; end coords
+	db MENU_BACKUP_TILES
+    menu_coords 8, 4, 19, 11
 	dw .MenuData
 	db 1 ; default option
 
@@ -255,9 +251,8 @@ DragonShrineQuestion4_MenuHeader:
 	db "Knowledge@"
 
 DragonShrineQuestion5_MenuHeader:
-	db $40 ; flags
-	db 04, 11 ; start coords
-	db 11, 19 ; end coords
+	db MENU_BACKUP_TILES
+    menu_coords 11, 4, 19, 11
 	dw .MenuData
 	db 1 ; default option
 

@@ -156,9 +156,8 @@ GoldenrodHarborPokefanmScript:
 	sjump .Start
 
 .MenuData:
-	db $40 ; flags
-	db 02, 00 ; start coords
-	db 11, 19 ; end coords
+	db MENU_BACKUP_TILES
+    menu_coords 0, 2, 19, 11
 	dw .MenuData2
 	db 1 ; default option
 
@@ -237,9 +236,8 @@ GoldenrodHarborYoungsterScript:
 	sjump .Start
 
 .MenuData:
-	db $40 ; flags
-	db 02, 00 ; start coords
-	db 11, 19 ; end coords
+	db MENU_BACKUP_TILES
+    menu_coords 0, 2, 19, 11
 	dw .MenuData2
 	db 1 ; default option
 

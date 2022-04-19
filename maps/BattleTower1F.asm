@@ -286,9 +286,8 @@ Script_ReturnToBattleTowerChallenge:
 	step_end
 
 MenuDataHeader_BattleInfoCancel:
-	db $40 ; flags
-	db  4, 11 ; start coords
-	db 11, 19 ; end coords
+	db MENU_BACKUP_TILES
+    menu_coords 11, 4, 19, 11
 	dw MenuData2_BattleInfoCancel
 	db 1 ; default option
 

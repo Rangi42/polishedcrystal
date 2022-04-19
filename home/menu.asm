@@ -286,16 +286,14 @@ LoadMenuHeader::
 	jmp PushWindow
 
 StandardMenuDataHeader:
-	db $40 ; tile backup
-	db 0, 0 ; start coords
-	db 17, 19 ; end coords
+	db MENU_BACKUP_TILES
+    menu_coords 0, 0, 19, 17
 	dw 0
 	db 1 ; default option
 
 MenuTextboxDataHeader:
-	db $40 ; tile backup
-	db 12, 0 ; start coords
-	db 17, 19 ; end coords
+	db MENU_BACKUP_TILES
+    menu_coords 0, 12, 19, 17
 	dw vTiles0
 	db 0 ; default option
 
@@ -394,9 +392,8 @@ HandleYesNoMenu:
 	ret
 
 YesNoMenuDataHeader::
-	db $40 ; tile backup
-	db 5, 10 ; start coords
-	db 9, 15 ; end coords
+	db MENU_BACKUP_TILES
+    menu_coords 10, 5, 15, 9
 	dw .MenuData2
 	db 1 ; default option
 
@@ -407,9 +404,8 @@ YesNoMenuDataHeader::
 	db "No@"
 
 NoYesMenuDataHeader::
-	db $40 ; tile backup
-	db  7, 14 ; start coords
-	db 11, 19 ; end coords
+	db MENU_BACKUP_TILES
+    menu_coords 14, 7, 19, 11
 	dw .MenuData2
 	db 1 ; default option
 

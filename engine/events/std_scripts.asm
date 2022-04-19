@@ -1589,9 +1589,8 @@ CoinVendor_IntroScript:
 	waitendtext
 
 .MenuDataHeader:
-	db $40 ; flags
-	db 04, 00 ; start coords
-	db 11, 15 ; end coords
+	db MENU_BACKUP_TILES
+    menu_coords 0, 4, 15, 11
 	dw .MenuData2
 	db 1 ; default option
 
@@ -1713,9 +1712,8 @@ VendingMachineScript:
 	sjump .Start
 
 .MenuData:
-	db $40 ; flags
-	db 02, 00 ; start coords
-	db 11, 19 ; end coords
+	db MENU_BACKUP_TILES
+    menu_coords 0, 2, 19, 11
 	dw .MenuData2
 	db 1 ; default option
 

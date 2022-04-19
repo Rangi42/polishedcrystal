@@ -107,9 +107,8 @@ Museum1FFossilScientistScript:
 	jumpopenedtext MaybeLaterText
 
 HelixDomeMenuDataHeader:
-	db $40 ; flags
-	db 04, 00 ; start coords
-	db 11, 15 ; end coords
+	db MENU_BACKUP_TILES
+    menu_coords 0, 4, 15, 11
 	dw .MenuData2
 	db 1 ; default option
 
@@ -121,9 +120,8 @@ HelixDomeMenuDataHeader:
 	db "Cancel@"
 
 HelixAmberMenuDataHeader:
-	db $40 ; flags
-	db 04, 00 ; start coords
-	db 11, 15 ; end coords
+	db MENU_BACKUP_TILES
+    menu_coords 0, 4, 15, 11
 	dw .MenuData2
 	db 1 ; default option
 
@@ -135,9 +133,8 @@ HelixAmberMenuDataHeader:
 	db "Cancel@"
 
 DomeAmberMenuDataHeader:
-	db $40 ; flags
-	db 04, 00 ; start coords
-	db 11, 14 ; end coords
+	db MENU_BACKUP_TILES
+    menu_coords 0, 4, 14, 11
 	dw .MenuData2
 	db 1 ; default option
 
@@ -149,9 +146,8 @@ DomeAmberMenuDataHeader:
 	db "Cancel@"
 
 HelixDomeAmberMenuDataHeader:
-	db $40 ; flags
-	db 02, 00 ; start coords
-	db 11, 15 ; end coords
+	db MENU_BACKUP_TILES
+    menu_coords 0, 2, 15, 11
 	dw .MenuData2
 	db 1 ; default option
 
