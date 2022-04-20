@@ -1343,6 +1343,7 @@ GivePoke::
 	add a
 	add b
 	ld [wTempMonHappiness], a
+	jr .try_add
 .not_egg
 	ld de, wTempMonNickname
 	ld hl, wMonOrItemNameBuffer
