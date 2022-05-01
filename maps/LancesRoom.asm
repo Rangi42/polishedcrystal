@@ -115,7 +115,15 @@ LanceScript:
 	stopfollow
 	turnobject LANCESROOM_OAK, UP
 	turnobject LANCESROOM_LANCE, LEFT
+	readvar VAR_BADGES
+	ifnotequal 16, .DefaultOakSpeech
+	checkevent EVENT_OPENED_MT_SILVER
+	iffalse .DefaultOakSpeech
+	showtext .OakRematchSpeechText
+	sjump .OakSpeechDone
+.DefaultOakSpeech
 	showtext .OakSpeechText
+.OakSpeechDone
 	applymovement LANCESROOM_MARY, .ApproachPlayerMovement
 	turnobject PLAYER, LEFT
 	showtext .MaryText2
@@ -283,6 +291,35 @@ LanceScript:
 
 	para "Congratulations,"
 	line "<PLAYER>!"
+	done
+
+.OakRematchSpeechText:
+	text "Prof.Oak: Ah,"
+	line "<PLAYER>!"
+
+	para "Your rematch with"
+	line "the League was"
+	cont "just fantastic!"
+
+	para "It's clear to me"
+	line "that you deeply"
+
+	para "understand, trust,"
+	line "and love #mon."
+
+	para "Your team's out-"
+	line "standing skills"
+	cont "demonstrate that."
+
+	para "I think you just"
+	line "might be capable"
+
+	para "of handling a"
+	line "certain dangerous"
+	cont "challenge."
+
+	para "Come see me in my"
+	line "lab after this!"
 	done
 
 .MaryText2:

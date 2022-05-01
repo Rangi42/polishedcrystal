@@ -21,6 +21,7 @@ The final, non-beta 3.0 release should include all of these.
 
 ### Mechanics
 
+* Initial option for EVs (no limit, 510 total limit, or disabled)
 * Add hidden grottoes throughout Johto
 * Variety Channel with daily unique music
 * Separate radio channels for March and Lullaby, available every day
@@ -46,16 +47,14 @@ The final, non-beta 3.0 release should include all of these.
 ### Events
 
 * Soul House + Radio Tower event to get Expn Card (see [tentative dialog](https://docs.google.com/document/d/1_IDuWAP-QBRC5l4grKZKKlfWKQ2BjC2Yo0aynmli1Ac/view))
-* Saffron Trainer Fan Club, where meeting certain conditions turns NPCs into you fan, whereupon they give you items (see [material/trainer-fan-club.txt](material/trainer-fan-club.txt))
+* Saffron Trainer Fan Club, where meeting certain conditions turns NPCs into your fan, whereupon they give you items (see [material/trainer-fan-club.txt](material/trainer-fan-club.txt))
 * Rematch Eusine in Celadon City if you have Suicune in your party
 * Rematch Bill in his house somehow
-* Calling Lyra should have more varied messages (see [material/lyra-dialog.txt](material/lyra-dialog.txt))
+* Calling Lyra should have more varied messages giving evolution advice like [B2/W2](https://bulbapedia.bulbagarden.net/wiki/Professor_Juniper/Quotes#Evolution_hints_.28Xtransceiver.29) (see [material/lyra-dialog.txt](material/lyra-dialog.txt))
 * Name trainers after anime characters (Jackson, Ritchie, Liza, Kidd, Lisa)
 * Acquire dolls from NPCs throughout the regions
-* Red goes back home after you battle him, and returns to Mt. Silver after you battle Green
+* Red goes back home after you battle him, and returns to Mt. Silver after you battle Green; Green disappears until you battle Red
 * Clarify that Silver dropped his trainer card, like in HGSS
-* Oak tells you to meet him in his lab after the Lance rematch to unlock Mt. Silver
-* Replace Skyla with Marlon (team: Politoed, Tentacruel, Blastoise, Starmie, Mantine, Cloyster, Vaporeon)
 * Nurse trainer class (heals you afterwards)
 * Gambler trainer class (uses Game Corner mons)
 * Soldier trainer class (in Lt. Surge's Gym; also ones elsewhere with Remoraid, Octillery, Forretress, Skarmory, Electrode, Donphan)
@@ -101,16 +100,6 @@ Shamouti Island:
 Some of these may never be added; they're just suggestions.
 
 * More Pokémon
-   * Rewrite everything to use two-byte IDs, allowing 65,534 Pokémon
-   * Restore Stantler as a Normal/Psychic type, and make Girafarig Psychic/Dark
-   * Add all the new babies and evolutions of Gen 1 and 2 Pokémon
-      * Lickilicky
-      * Ambipom
-      * Azurill
-      * Wynaut
-      * Happiny
-      * Bonsly
-      * Mantyke
    * Add Gen 3 and 4 Pokémon from [Hoenn Sound](https://bulbapedia.bulbagarden.net/wiki/Hoenn_Sound#Hoenn_Sound) and [Sinnoh Sound](https://bulbapedia.bulbagarden.net/wiki/Hoenn_Sound#Sinnoh_Sound)
       * Zigzagoon → Linoone
       * Whismur → Loudred → Exploud
@@ -175,7 +164,6 @@ Some of these may never be added; they're just suggestions.
 * Seasons with appropriate day/night lengths from B/W (affects palettes, tiles, wild Pokémon, dialog, accessible areas, etc)
 * Dive areas
 * Rock Climb areas
-* Battle Factory
 * Medals for achievements
 * Take photos with your team against backdrops
 * Something like Habitat Lists or DexNav via the Town Map
