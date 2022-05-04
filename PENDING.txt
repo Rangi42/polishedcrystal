@@ -1,9 +1,6 @@
-Back sprites:
-	Overqwil
-	Sneasler
-
-Front:
-	Overqwil
-	Kleavor
-	Sneasler
-	
+Make Exp Share behave like it does in the later games:
+	pokecrystal/engine/battle/core.asm
+	Disable line 2154 (srl [hl]) - Disables split EXP
+	Disable line 2166 (call GiveExperiencePoints) - Disables normal EXP gain
+	Disable line 2211 (jr nz, .next) - Enables EXP Share for all party members
+	Disable line 6982 (call .EvenlyDivideExpAmongParticipants) - Disables evenly divided EXP
