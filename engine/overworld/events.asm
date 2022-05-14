@@ -1204,7 +1204,6 @@ GetContestLocations:
 _TryWildEncounter_BugContest:
 	call TryWildEncounter_BugContest
 	ret nc
-_ChooseWildEncounter_BugContest:
 ; Pick a random mon out of ContestMons.
 .loop
 	call Random

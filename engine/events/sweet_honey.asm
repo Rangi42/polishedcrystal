@@ -6,20 +6,15 @@ _SweetHoney:
 	and a
 	jr z, .no_battle
 	ld hl, wStatusFlags2
+	; Items can't be used during the Bug-Catching Contest anyway
 	bit STATUSFLAGS2_BUG_CONTEST_TIMER_F, [hl]
-	jr nz, .contest
+	jr nz, .no_battle
 	farcall ChooseWildEncounter
 	jr nz, .no_battle
 	ld a, [wPartyMon1Level]
 	ld [wCurPartyLevel], a
-.battle
 	ld a, TRUE
 	jr .done
-.contest
-	; Leave [wCurPartyLevel] alone during the Bug-Catching Contest
-	; so the score formula won't get too high
-	farcall _ChooseWildEncounter_BugContest
-	jr c, .battle
 .no_battle
 	xor a
 	ld [wBattleType], a
