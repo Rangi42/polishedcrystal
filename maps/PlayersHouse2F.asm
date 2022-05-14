@@ -104,21 +104,21 @@ endr
 	giveitem FIRE_STONE, 99
 	giveitem WATER_STONE, 99
 	giveitem THUNDERSTONE, 99
+	giveitem ICE_STONE, 99
 	giveitem MOON_STONE, 99
 	giveitem SUN_STONE, 99
 	giveitem DUSK_STONE, 99
 	giveitem SHINY_STONE, 99
+	giveitem ODD_SOUVENIR, 99
 	giveitem EXP_SHARE, 99
 	giveitem LEFTOVERS, 99
-	giveitem BIG_NUGGET, 99
+	giveitem MULCH, 99
+	giveitem SWEET_HONEY, 99
 	giveitem SILVER_LEAF, 99
 	giveitem GOLD_LEAF, 99
-	giveitem BOTTLE_CAP, 99
-	giveitem MULCH, 99
 	giveitem MINT_LEAF, 99
-	giveitem ODD_SOUVENIR, 10
-	giveitem OVAL_STONE, 10
-	giveitem ARMOR_SUIT, 1
+	giveitem BOTTLE_CAP, 99
+	giveitem BIG_NUGGET, 99
 	; all decorations except Diploma
 for x, EVENT_DECO_BED_1, EVENT_DECO_BIG_LAPRAS_DOLL + 1
 	setevent x
