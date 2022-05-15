@@ -1104,39 +1104,16 @@ BattleCommand_critical:
 	call GetFutureSightUser
 	ld c, 0
 	jr nz, .Ability
-	ldh a, [hBattleTurn]
-	and a
-	jr nz, .EnemyTurn
 
-	ld hl, wBattleMonItem
-	ld a, [wBattleMonSpecies]
-	jr .Item
-
-.EnemyTurn:
-	ld hl, wEnemyMonItem
-	ld a, [wEnemyMonSpecies]
-
-.Item:
-	ld c, 0
-
-	cp CHANSEY
-	jr nz, .Farfetchd
+	call GetUserItemAfterUnnerve
 	ld a, [hl]
 	cp LUCKY_PUNCH
-	jr nz, .FocusEnergy
-
-; +2 critical level
-	ld c, 2
-	jr .FocusEnergy
-
-.Farfetchd:
-	cp FARFETCH_D
-	jr nz, .FocusEnergy
-	ld a, [hl]
+	jr z, .crit_item
 	cp LEEK
 	jr nz, .FocusEnergy
-
-; +2 critical level
+.crit_item
+	call UserValidBattleItem
+	jr nz, .FocusEnergy
 	ld c, 2
 	; fallthrough
 
@@ -1196,6 +1173,92 @@ BattleCommand_critical:
 	ld a, 1
 	ld [wCriticalHit], a
 	ret
+
+TrueUserValidBattleItem:
+; Items (and Abilities) never apply to external Future Sight users.
+	call GetFutureSightUser
+	ret nz
+	jr UserValidBattleItem
+
+OpponentValidBattleItem:
+	call CallOpponentTurn
+UserValidBattleItem:
+; Checks if the user's held item applies to the species+form.
+; Used for items like Leek, Lucky Punch, Thick Club, etc.
+; Returns z if the item is valid.
+	push hl
+	push de
+	push bc
+
+	; Get item, species and form data.
+	ld hl, wBattleMonItem
+	call GetUserMonAttr
+	ld a, [hl]
+	ld de, wBattleMonSpecies - wBattleMonItem
+	add hl, de
+	ld c, [hl]
+	ld de, wBattleMonForm - wBattleMonSpecies
+	add hl, de
+	ld b, [hl]
+	ld d, a
+	ld hl, .ValidBattleItemTable
+
+.loop
+	; Check if we reached the end of the table.
+	ld a, [hli]
+	inc a
+	jr z, .failed
+
+	; Does the item match the held one?
+	dec a
+	cp d
+	ld a, [hli]
+	jr nz, .next
+
+	; Does the item apply to the species?
+	cp c
+	jr nz, .next
+
+	; Check exact species+form.
+	ld a, [hl]
+	xor b
+	jr z, .matched
+
+	; If this isn't just a form mismatch, species is wrong.
+	cp EXTSPECIES_MASK
+	jr nc, .next
+
+	; Otherwise, see if the table explicitly defines a form. If it doesn't,
+	; i.e. form=0, any form is OK.
+	xor b ; Reverses previous xor
+	and FORM_MASK
+	jr z, .matched
+.next
+	inc hl
+	jr .loop
+.matched
+	xor a
+	jr .done
+.failed
+	or 1
+.done
+	jmp PopBCDEHL
+
+.ValidBattleItemTable:
+	; no dbp?
+	db LIGHT_BALL
+	dp PIKACHU
+	db LEEK
+	dp FARFETCH_D
+	db LEEK
+	dp SIRFETCH_D
+	db LUCKY_PUNCH
+	dp CHANSEY
+	db THICK_CLUB
+	dp CUBONE
+	db THICK_CLUB
+	dp MAROWAK
+	db -1
 
 CheckAirBalloon:
 ; Returns z if the user is holding an Air Balloon
@@ -3616,17 +3679,14 @@ ThickClubOrLightBallBoost:
 	push bc
 	push de
 	push hl
-	ld a, MON_SPECIES
+	ld a, MON_ITEM
 	call TrueUserPartyAttr
+	cp LIGHT_BALL
+	jr z, .item_boost
+	cp THICK_CLUB
+.item_boost
 	pop hl
-	cp PIKACHU
-	lb bc, PIKACHU, PIKACHU
-	ld d, LIGHT_BALL
-	jr z, .ok
-	lb bc, CUBONE, MAROWAK
-	ld d, THICK_CLUB
-.ok
-	call SpeciesItemBoost
+	call z, SpeciesItemBoost
 	pop de
 	pop bc
 	ret
@@ -3634,55 +3694,28 @@ ThickClubOrLightBallBoost:
 LightBallBoost:
 ; Return in hl the stat value at hl.
 
-; If the attacking monster is Pikachu and it's
-; holding a Light Ball, double it.
+; If the attacking monster is Cubone or Marowak and
+; it's holding a Thick Club, or if it's Pikachu and
+; it's holding a Light Ball, double it.
 	push bc
 	push de
-	lb bc, PIKACHU, PIKACHU
-	ld d, LIGHT_BALL
-	call SpeciesItemBoost
+	push hl
+	ld a, MON_ITEM
+	call TrueUserPartyAttr
+	cp LIGHT_BALL
+	pop hl
+	call z, SpeciesItemBoost
 	pop de
 	pop bc
 	ret
 
 SpeciesItemBoost:
-; Return in hl the stat value at hl.
-
-; If the attacking monster is species b or c and
-; it's holding item d, double it.
-
-	assert !HIGH(PIKACHU)
-	assert !HIGH(CUBONE)
-	assert !HIGH(MAROWAK)
-	ld a, [hli]
-	ld l, [hl]
-	ld h, a
-
-	push hl
-	ld a, MON_SPECIES
-	call TrueUserPartyAttr
-	pop hl
-
-	cp b
-	jr z, .GetItemHeldEffect
-	cp c
+; Helper function for items boosting (Spcl.) Atk, i.e. Thick Club/Light Ball.
+; We've found the item relevant, now check if species is proper for the item.
+	call TrueUserValidBattleItem
 	ret nz
 
-.GetItemHeldEffect:
-	push hl
-	ld a, MON_FORM
-	call TrueUserPartyAttr
-	and EXTSPECIES_MASK
-	pop hl
-	ret nz
-	push hl
-	call GetUserItem
-	ld a, [hl]
-	pop hl
-	cp d
-	ret nz
-
-; Double the stat
+	; Double the stat
 	add hl, hl
 	ret
 
