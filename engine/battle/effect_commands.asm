@@ -3435,12 +3435,24 @@ RaiseStatWithItem:
 	jmp ConsumeUserItem
 
 DittoMetalPowder:
+	assert !HIGH(DITTO)
 if !DEF(FAITHFUL)
 	; grabs true species -- works even if transformed to non-Ditto
+	ld a, MON_FORM
+	call OpponentPartyAttr
+	and EXTSPECIES_MASK
+	ret nz
 	ld a, MON_SPECIES
 	call OpponentPartyAttr
 else
 	; only works if current species is Ditto
+	push hl
+	ld hl, wBattleMonForm
+	call GetOpponentMonAttr
+	ld a, [hl]
+	and EXTSPECIES_MASK
+	pop hl
+	ret nz
 	push hl
 	ld hl, wBattleMonSpecies
 	call GetOpponentMonAttr
