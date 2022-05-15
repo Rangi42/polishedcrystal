@@ -1251,12 +1251,12 @@ species_battle_item: MACRO
 ENDM
 
 .ValidBattleItemTable:
-	sspecies_battle_item LIGHT_BALL, PIKACHU
-	sspecies_battle_item LEEK, FARFETCH_D
-	sspecies_battle_item LEEK, SIRFETCH_D
-	sspecies_battle_item LUCKY_PUNCH, CHANSEY
-	sspecies_battle_item THICK_CLUB, CUBONE
-	sspecies_battle_item THICK_CLUB, MAROWAK
+	species_battle_item LIGHT_BALL, PIKACHU
+	species_battle_item LEEK, FARFETCH_D
+	species_battle_item LEEK, SIRFETCH_D
+	species_battle_item LUCKY_PUNCH, CHANSEY
+	species_battle_item THICK_CLUB, CUBONE
+	species_battle_item THICK_CLUB, MAROWAK
 	db -1
 
 CheckAirBalloon:
