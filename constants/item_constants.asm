@@ -415,6 +415,9 @@ endc
 	const NAM_HEAVY_BOOTS
 	const NAM_HELIX_FOSSIL
 	const NAM_HONDEW_BERRY
+if DEF(FAITHFUL)
+	const NAM_SWEET_HONEY
+endc
 	const NAM_HP_UP
 	const NAM_HYPER_POTION
 	const NAM_ICE_HEAL
@@ -556,7 +559,9 @@ endc
 	const NAM_SUPER_POTION
 	const NAM_SUPER_REPEL
 	const NAM_SURF_MAIL
+if !DEF(FAITHFUL)
 	const NAM_SWEET_HONEY
+endc
 	const NAM_TAMATO_BERRY
 	const NAM_THICK_CLUB
 	const NAM_THROAT_SPRAY

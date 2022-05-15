@@ -102,6 +102,7 @@ AbilityDescriptions:
 	dw IceBodyDescription
 	dw SolidRockDescription
 	dw SnowWarningDescription
+	dw HoneyGatherDescription
 	dw FriskDescription
 	dw RecklessDescription
 	dw PickpocketDescription
@@ -645,6 +646,15 @@ IceBodyDescription:
 SnowWarningDescription:
 	text  "Summons hailstorm"
 	next1 "when switched in."
+	done
+
+HoneyGatherDescription:
+	text  "The #mon may"
+if DEF(FAITHFUL)
+	next1 "gather Honey."
+else
+	next1 "find Sweet Honey."
+endc
 	done
 
 FriskDescription:

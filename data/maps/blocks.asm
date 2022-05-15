@@ -119,7 +119,7 @@ IvysHouse_BlockData:
 
 GoldenrodHappinessRater_BlockData:
 GoldenrodPPSpeechHouse_BlockData:
-GoldenrodHPUpHouse_BlockData:
+GoldenrodHoneyHouse_BlockData:
 GuideGentsHouse_BlockData:
 CeruleanGymBadgeSpeechHouse_BlockData:
 CeruleanTradeSpeechHouse_BlockData:

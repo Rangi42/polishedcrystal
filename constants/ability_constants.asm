@@ -102,6 +102,7 @@
 	const ICE_BODY
 	const SOLID_ROCK
 	const SNOW_WARNING
+	const HONEY_GATHER
 	const FRISK
 	const RECKLESS
 	const PICKPOCKET

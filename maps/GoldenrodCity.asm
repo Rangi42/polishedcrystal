@@ -27,7 +27,7 @@ GoldenrodCity_MapScriptHeader:
 	warp_event 30, 15, GOLDENROD_MUSEUM_1F, 2
 	warp_event 37, 19, GOLDENROD_NET_BALL_HOUSE, 1
 	warp_event 33, 23, GOLDENROD_BAND_HOUSE, 1
-	warp_event 13, 21, GOLDENROD_HP_UP_HOUSE, 1
+	warp_event 13, 21, GOLDENROD_HONEY_HOUSE, 1
 
 	def_coord_events
 	coord_event  9, 15, 1, GoldenrodCityPanUpScript

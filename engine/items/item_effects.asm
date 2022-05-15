@@ -110,7 +110,7 @@ ItemEffects:
 	dw EscapeRope         ; ESCAPE_ROPE
 	dw PokeDoll           ; POKE_DOLL
 	dw IsntTheTimeMessage ; MULCH
-	dw IsntTheTimeMessage ; SWEET_HONEY
+	dw SweetHoney         ; SWEET_HONEY
 	dw XItemEffect        ; X_ATTACK
 	dw XItemEffect        ; X_DEFEND
 	dw XItemEffect        ; X_SPEED
@@ -2014,8 +2014,6 @@ RestorePPEffect:
 	ld hl, PPsMaximizedText
 .ppup3
 	call PrintText
-
-FinishPPRestore:
 	jmp UseDisposableItem
 
 BattleRestorePP:
@@ -2033,8 +2031,7 @@ BattleRestorePP:
 .not_in_battle
 	call Play_SFX_FULL_HEAL
 	ld hl, PPRestoredText
-	call PrintText
-	jr FinishPPRestore
+	jr RestorePPEffect.ppup3
 
 .UpdateBattleMonPP:
 	ld a, [wCurPartyMon]
@@ -2184,12 +2181,19 @@ CardKey:
 BasementKey:
 	farjp _BasementKey
 
+SweetHoney:
+	farcall _SweetHoney
+	jr _UseDisposableItemIfEffectSucceeded
+
 SacredAsh:
 	ld a, [wInitialOptions]
 	bit NUZLOCKE_MODE, a
 	jr nz, Revive_NuzlockeFailureMessage
 
 	farcall _SacredAsh
+	; fallthrough
+
+_UseDisposableItemIfEffectSucceeded:
 	ld a, [wItemEffectSucceeded]
 	dec a
 	ret nz

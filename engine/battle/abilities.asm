@@ -1991,8 +1991,7 @@ RunPostBattleAbilities::
 	ld a, b
 	cp NATURAL_CURE
 	jr z, .natural_cure
-	cp PICKUP
-	call z, .Pickup
+	call .HoneyOrPickup
 	jr .loop
 
 .natural_cure
@@ -2003,38 +2002,72 @@ RunPostBattleAbilities::
 	ld [hl], a
 	jr .loop
 
-.Pickup:
+.HoneyOrPickup:
+	; These abilities are ignored if we already hold an item.
 	ld a, MON_ITEM
 	call GetPartyParamLocationAndValue
 	and a
 	ret nz
 
-	call Random
-	cp 1 + (10 percent)
-	ret nc
+	ld a, b
+	cp PICKUP
+	jr z, .Pickup
+	cp HONEY_GATHER
+	ret nz
 
-	call DisableAnimations
+	; Honey Gather gives a (Level + 9 / 2) chance floored to nearest 5%.
+	; 5% at 1-10, 10% at 11-20, etc up to 50% at 91-100.
+
+	; Get a random value between 1-20.
+	ld a, 20
+	call BattleRandomRange
+	inc a ; BattleRandomRange returns 0-19.
+	ld c, a
+
+	; Get battler level.
+	ld a, MON_LEVEL
+	call GetPartyParamLocationAndValue
+	add 9
+
+	; If level + 9 / random(1-20) is 10+, we passed the check.
+	call SimpleDivide
+	ld a, b
+	cp 11
+	ret c
+
+	; We got honey.
+	lb bc, HONEY_GATHER, SWEET_HONEY
+	jr .GotItemAfterBattle
+
+.Pickup:
+	ld a, 10
+	call BattleRandomRange
+	and a
+	ret nz
 
 	ld a, MON_LEVEL
 	call GetPartyParamLocationAndValue
 	call GetRandomPickupItem
-	ld b, a
+	ld c, a
+	ld b, PICKUP ; ability to display slideout for
+	; fallthrough
+.GotItemAfterBattle:
 	ld a, MON_ITEM
 	call GetPartyParamLocationAndValue
-	ld a, b
+	ld a, c
 	ld [hl], a
-	push bc
 	push de
+	push bc
 	ld [wNamedObjectIndex], a
 	call GetItemName
 	ld hl, wStringBuffer1
 	ld de, wStringBuffer2
 	ld bc, ITEM_NAME_LENGTH
 	rst CopyBytes
-	pop de
 	pop bc
-	push bc
+	pop de
 	push de
+	push bc
 	ld a, MON_SPECIES
 	call GetPartyParamLocationAndValue
 	ld bc, MON_FORM - MON_SPECIES
@@ -2048,12 +2081,17 @@ RunPostBattleAbilities::
 	ld de, wBattleMonNickname
 	ld bc, MON_NAME_LENGTH
 	rst CopyBytes
-	ld b, PICKUP
+
+	call DisableAnimations
+
+	; This retrieves the relevant ability in question in b.
+	pop bc
+	push bc
 	call PerformAbilityGFX
 	ld hl, BattleText_PickedUpItem
 	call StdBattleTextbox
-	pop de
 	pop bc
+	pop de
 	jmp EnableAnimations
 
 GetRandomPickupItem::

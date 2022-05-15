@@ -279,7 +279,7 @@ ENDM
 	map_const ILEX_FOREST_AZALEA_GATE,                     5,  4 ; 26
 	map_const ROUTE_34_ILEX_FOREST_GATE,                   5,  4 ; 27
 	map_const ROUTE_35_GOLDENROD_GATE,                     5,  4 ; 28
-	map_const GOLDENROD_HP_UP_HOUSE,                       4,  4 ; 29
+	map_const GOLDENROD_HONEY_HOUSE,                       4,  4 ; 29
 	map_const GOLDENROD_NET_BALL_HOUSE,                    4,  4 ; 30
 	map_const GOLDENROD_BAND_HOUSE,                        4,  4 ; 31
 	map_const GOLDENROD_MUSEUM_1F,                         7,  4 ; 32

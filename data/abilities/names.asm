@@ -102,6 +102,7 @@ AbilityNames:
 	dw IceBody
 	dw SolidRock
 	dw SnowWarning
+	dw HoneyGather
 	dw Frisk
 	dw Reckless
 	dw Pickpocket
@@ -254,6 +255,7 @@ Scrappy:         rawchar "Scrappy@"
 IceBody:         rawchar "Ice Body@"
 SolidRock:       rawchar "Solid Rock@"
 SnowWarning:     rawchar "Snow Warning@"
+HoneyGather:     rawchar "Honey Gather@"
 Frisk:           rawchar "Frisk@"
 Reckless:        rawchar "Reckless@"
 Pickpocket:      rawchar "Pickpocket@"

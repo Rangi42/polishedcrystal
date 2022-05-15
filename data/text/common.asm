@@ -2362,6 +2362,22 @@ _PoisonFaintText::
 	cont "its poisoning!"
 	prompt
 
+SECTION "_UseSweetHoneyText", ROMX
+_UseSweetHoneyText::
+	text "<PLAYER> spread"
+if DEF(FAITHFUL)
+	line "the Honey!"
+else
+	line "the Sweet Honey!"
+endc
+	done
+
+SECTION "_SweetHoneyNothingText", ROMX
+_SweetHoneyNothingText::
+	text "Looks like there's"
+	line "nothing here…"
+	done
+
 SECTION "_SquirtbottleNothingText", ROMX
 _SquirtbottleNothingText::
 	text "<PLAYER> sprinkled"

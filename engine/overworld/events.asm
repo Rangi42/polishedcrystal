@@ -1105,7 +1105,7 @@ RandomEncounter::
 ; Random encounter
 	call CheckWildEncounterCooldown
 	jr c, .nope
-	call CanUseSweetScent
+	call CanUseSweetHoney
 	jr nc, .nope
 	ld hl, wStatusFlags2
 	bit STATUSFLAGS2_SAFARI_GAME_F, [hl]
@@ -1147,7 +1147,7 @@ WildBattleScript:
 	reloadmapafterbattle
 	end
 
-CanUseSweetScent::
+CanUseSweetHoney::
 	ld hl, wStatusFlags
 	bit STATUSFLAGS_NO_WILD_ENCOUNTERS_F, [hl]
 	jr nz, .no

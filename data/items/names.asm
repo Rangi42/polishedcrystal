@@ -132,7 +132,11 @@ endc
 
 	li "Mulch"
 
+if DEF(FAITHFUL)
+	li "Honey"
+else
 	li "Sweet Honey"
+endc
 
 	li "X Attack"
 	li "X Defend"
