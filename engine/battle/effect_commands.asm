@@ -1245,17 +1245,18 @@ UserValidBattleItem:
 	jmp PopBCDEHL
 
 species_battle_item: MACRO
-	db \2
-	dp \1
+	db \1
+	shift
+	dp \#
 ENDM
 
 .ValidBattleItemTable:
-	species_battle_item PIKACHU, LIGHT_BALL
-	species_battle_item FARFETCH_D, LEEK
-	species_battle_item SIRFETCH_D, LEEK
-	species_battle_item CHANSEY, LUCKY_PUNCH
-	species_battle_item CUBONE, THICK_CLUB
-	species_battle_item MAROWAK, THICK_CLUB
+	sspecies_battle_item LIGHT_BALL, PIKACHU
+	sspecies_battle_item LEEK, FARFETCH_D
+	sspecies_battle_item LEEK, SIRFETCH_D
+	sspecies_battle_item LUCKY_PUNCH, CHANSEY
+	sspecies_battle_item THICK_CLUB, CUBONE
+	sspecies_battle_item THICK_CLUB, MAROWAK
 	db -1
 
 CheckAirBalloon:
