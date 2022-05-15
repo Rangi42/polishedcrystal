@@ -2365,7 +2365,11 @@ _PoisonFaintText::
 SECTION "_UseSweetHoneyText", ROMX
 _UseSweetHoneyText::
 	text "<PLAYER> spread"
-	line "Sweet Honey!"
+if DEF(FAITHFUL)
+	line "the Honey!"
+else
+	line "the Sweet Honey!"
+endc
 	done
 
 SECTION "_SweetHoneyNothingText", ROMX
