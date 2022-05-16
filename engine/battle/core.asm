@@ -5588,7 +5588,7 @@ LinkBattleSendReceiveAction:
 ; of linking we are performing.
 	call .StageForSend
 	ld [wLinkBattleSentAction], a
-	vc_hook send_byt2 ; VC hook that emulates the function of exchanging pure data over the link cable.
+	vc_hook Wireless_start_exchange
 	call PlaceWaitingText
 	ld a, [wLinkBattleSentAction]
 	ld [wPlayerLinkAction], a
@@ -5602,8 +5602,8 @@ LinkBattleSendReceiveAction:
 	inc a
 	jr z, .waiting
 
-	vc_hook send_byt2_ret ; VC hook that marks the end of the data exchange.
-	vc_patch send_byt2_wait ; VC patch that increases the b loop counter, presumably due to wireless being slower.
+	vc_hook Wireless_end_exchange
+	vc_patch Wireless_net_delay_3
 if DEF(VIRTUAL_CONSOLE)
 	ld b, 26
 else
@@ -5616,8 +5616,8 @@ endc
 	dec b
 	jr nz, .receive
 
-	vc_hook send_dummy ; VC hook that is called when sending zero bytes.
-	vc_patch send_dummy_wait ; VC patch that increases the b loop counter, presumably due to wireless being slower.
+	vc_hook Wireless_start_send_zero_bytes
+	vc_patch Wireless_net_delay_4
 if DEF(VIRTUAL_CONSOLE)
 	ld b, 26
 else
@@ -5630,7 +5630,7 @@ endc
 	dec b
 	jr nz, .acknowledge
 
-	vc_hook send_dummy_end ; VC hook the marks the end of sending zero bytes.
+	vc_hook Wireless_end_send_zero_bytes
 	ld a, [wOtherPlayerLinkAction]
 	ld [wBattleAction], a
 	ret

@@ -61,7 +61,7 @@ Gen2ToGen2LinkComms:
 .player_1:
 	ld de, MUSIC_NONE
 	call PlayMusic
-	vc_patch NetworkDelay4
+	vc_patch Wireless_net_delay_6
 if DEF(VIRTUAL_CONSOLE)
 	ld c, 26
 else
@@ -77,7 +77,7 @@ endc
 	ld hl, wLinkBattleRNPreamble
 	ld de, wEnemyMon
 	ld bc, SERIAL_RN_PREAMBLE_LENGTH + SERIAL_RNS_LENGTH
-	vc_hook ExchangeBytes1 ; VC hook that is called right before a routine to Exchange Bytes occurs.
+	vc_hook ExchangeBytes1
 	call Serial_ExchangeBytes
 	ld a, SERIAL_NO_DATA_BYTE
 	ld [de], a
@@ -85,7 +85,7 @@ endc
 	ld hl, wLinkData
 	ld de, wOTPartyData
 	ld bc, wOTPartyDataEnd - wOTPartyData
-	vc_hook ExchangeBytes2 ; VC hook that is called right before a routine to Exchange Bytes occurs.
+	vc_hook ExchangeBytes2
 	call Serial_ExchangeBytes
 	ld a, SERIAL_NO_DATA_BYTE
 	ld [de], a
@@ -93,7 +93,7 @@ endc
 	ld hl, wLinkMisc
 	ld de, wPlayerTrademonSpecies
 	ld bc, wPlayerTrademonSpecies - wLinkMisc
-	vc_hook ExchangeBytes3 ; VC hook that is called right before a routine to Exchange Bytes occurs.
+	vc_hook ExchangeBytes3
 	call Serial_ExchangeBytes
 
 	ld a, [wLinkMode]
@@ -102,7 +102,7 @@ endc
 	ld hl, wLinkPlayerMail
 	ld de, wLinkOTMail
 	ld bc, wLinkPlayerMailEnd - wLinkPlayerMail
-	vc_hook ExchangeBytes4 ; VC hook that is called right before a routine to Exchange Bytes occurs.
+	vc_hook ExchangeBytes4
 	call ExchangeBytes
 
 .not_trading
@@ -1342,7 +1342,7 @@ ExitLinkCommunications:
 	ldh [rSC], a
 	ld a, START_TRANSFER_INTERNAL_CLOCK
 	ldh [rSC], a
-	vc_hook ret_heya
+	vc_hook ExitLinkCommunications_ret
 	ret
 
 LinkTrade:
@@ -1714,7 +1714,7 @@ LinkTrade:
 	ld de, .TradeCompleted
 	rst PlaceString
 	call Link_WaitBGMap
-	vc_hook save_game_end
+	vc_hook Trade_save_game_end
 	ld c, 50
 	call DelayFrames
 	jmp Gen2ToGen2LinkComms
@@ -1881,7 +1881,7 @@ WaitForOtherPlayerToExit:
 	ld [hl], a
 	ldh [hVBlank], a
 	ld [wLinkMode], a
-	vc_hook term_exit
+	vc_hook Wireless_term_exit
 	ret
 
 Special_SetBitsForLinkTradeRequest:
@@ -1907,7 +1907,7 @@ Special_WaitForLinkedFriend:
 	xor a ; redundant?
 	ldh [rSC], a
 	ld a, START_TRANSFER_EXTERNAL_CLOCK
-	vc_hook linkCable_fake_begin ; VC hook that sets the value of hSerialConnectionStatus to fake an active connection.
+	vc_hook Link_fake_connection_status
 	vc_assert hSerialConnectionStatus == $ffcb, \
 		"hSerialConnectionStatus is no longer located at 00:ffcb."
 	ldh [rSC], a
@@ -2018,7 +2018,7 @@ CheckLinkTimeout_Gen2:
 	ld a, $6
 	ld [wPlayerLinkAction], a
 	ld hl, wLinkTimeoutFrames
-	vc_patch NetworkDelay6
+	vc_patch Wireless_net_delay_7
 if DEF(VIRTUAL_CONSOLE)
 	ld a, $3
 else
@@ -2045,7 +2045,7 @@ endc
 Link_CheckCommunicationError:
 	xor a
 	ldh [hSerialReceivedNewData], a
-	vc_hook linkCable_fake_end ; VC hook the ends faking a Connection through hSerialConnectionStatus.
+	vc_hook Wireless_prompt
 	ld hl, wLinkTimeoutFrames
 	ld a, [hli]
 	ld l, [hl]
@@ -2076,7 +2076,7 @@ Link_CheckCommunicationError:
 .CheckConnected:
 	call Serial_SyncAndExchangeNybble
 	ld hl, wLinkTimeoutFrames
-	vc_hook Network_RECHECK
+	vc_hook Wireless_net_recheck
 	ld a, [hli]
 	inc a
 	ret nz
@@ -2085,7 +2085,7 @@ Link_CheckCommunicationError:
 	ret
 
 .AcknowledgeSerial:
-	vc_patch NetworkDelay3
+	vc_patch Wireless_net_delay_5
 if DEF(VIRTUAL_CONSOLE)
 	ld b, 26
 else
@@ -2116,10 +2116,10 @@ Special_TryQuickSave:
 	ld a, [wChosenCableClubRoom]
 	push af
 	farcall Link_SaveGame
-	vc_hook linkCable_block_input
+	vc_hook Wireless_TryQuickSave_block_input_1
 	ld a, TRUE
 	jr nc, .return_result
-	vc_hook linkCable_block_input2
+	vc_hook Wireless_TryQuickSave_block_input_2
 	xor a ; FALSE
 .return_result
 	ldh [hScriptVar], a
@@ -2154,12 +2154,12 @@ Special_CheckBothSelectedSameRoom:
 	ret
 
 Special_TradeCenter:
-	vc_hook to_play2_trade
+	vc_hook Wireless_TradeCenter
 	ld a, LINK_TRADECENTER
 	jr _Special_LinkCommunications
 
 Special_Colosseum:
-	vc_hook to_play2_battle
+	vc_hook Wireless_Colosseum
 	ld a, LINK_COLOSSEUM
 _Special_LinkCommunications:
 	ld [wLinkMode], a
@@ -2175,7 +2175,7 @@ Special_CloseLink:
 	ld [wLinkMode], a
 	ld c, $3
 	call DelayFrames
-	vc_hook room_check
+	vc_hook Wireless_room_check
 	; fallthrough
 
 Link_ResetSerialRegistersAfterLinkClosure:

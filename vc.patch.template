@@ -1,21 +1,21 @@
 ﻿; Template for a .patch file for the Nintendo 3DS Virtual Console.
 
-[Network10]
+[Wireless_net_delay_1]
 Mode = 1
 Address = {hex @+1}
 Fixcode = {patch +1}
 
-[Network11]
+[Wireless_net_delay_2]
 Mode = 1
 Address = {hex @+1}
 Fixcode = {patch +1}
 
-[send_send_buf2]
+[Wireless_WaitLinkTransfer]
 Mode = 2
 Address = {hex @}
 Type = 29
 
-[send_send_buf2_ret]
+[Wireless_WaitLinkTransfer_ret]
 Mode = 2
 Address = {hex @}
 Type = 30
@@ -40,107 +40,107 @@ Mode = 2
 Address = {hex @}
 Type = 4
 
-[Network_RECHECK]
+[Wireless_net_recheck]
 Mode = 2
 Address = {hex @}
 Type = 7
 
-[send_byt2]
+[Wireless_start_exchange]
 Mode = 2
 Address = {hex @}
 Type = 31
 
-[send_byt2_ret]
+[Wireless_end_exchange]
 Mode = 2
 Address = {hex @}
 Type = 32
 
-[send_byt2_wait]
+[Wireless_net_delay_3]
 Mode = 1
 Address = {hex @+1}
 Fixcode = {patch +1}
 
-[send_dummy]
+[Wireless_start_send_zero_bytes]
 Mode = 2
 Address = {hex @}
 Type = 33
 
-[send_dummy_wait]
+[Wireless_net_delay_4]
 Mode = 1
 Address = {hex @+1}
 Fixcode = {patch +1}
 
-[send_dummy_end]
+[Wireless_end_send_zero_bytes]
 Mode = 2
 Address = {hex @}
 Type = 34
 
-[NetworkDelay3]
+[Wireless_net_delay_5]
 Mode = 1
 Address = {hex @+1}
 Fixcode = {patch +1}
 
-[NetworkDelay4]
+[Wireless_net_delay_6]
 Mode = 1
 Address = {hex @+1}
 Fixcode = {patch +1}
 
-[NetworkDelay6]
+[Wireless_net_delay_7]
 Mode = 1
 Address = {hex @+1}
 Fixcode = {patch +1}
 
-[E_YESNO]
+[Script_yesorno_ret]
 Mode = 2
 Address = {hex @}
 Type = 15
 
-[linkCable fake begin]
+[Link_fake_connection_status]
 Mode = 2
 Address = {hex @}
 Type = 16
 
-[linkCable fake end]
+[Wireless_prompt]
 Mode = 2
 Address = {hex @}
 Type = 17
 
-[linkCable block input]
+[Wireless_TryQuickSave_block_input_1]
 Mode = 2
 Address = {hex @}
 Type = 18
 
-[linkCable block input2]
+[Wireless_TryQuickSave_block_input_2]
 Mode = 2
 Address = {hex @}
 Type = 24
 
-[save game end]
+[Trade_save_game_end]
 Mode = 2
 Address = {hex @}
 Type = 20
 
-[term_exit]
+[Wireless_term_exit]
 Mode = 2
 Address = {hex @}
 Type = 25
 
-[room_check]
+[Wireless_room_check]
 Mode = 2
 Address = {hex @}
 Type = 27
 
-[to_play2_trade]
+[Wireless_TradeCenter]
 Mode = 2
 Address = {hex @}
 Type = 12
 
-[to_play2_battle]
+[Wireless_Colosseum]
 Mode = 2
 Address = {hex @}
 Type = 13
 
-[ret_heya]
+[ExitLinkCommunications_ret]
 Mode = 2
 Address = {hex @}
 Type = 14
