@@ -28,6 +28,11 @@ def isVolatile(code):
 		'[rJOYP]', '[rBGPD]', '[rOBPD]'
 	})
 
+def isNotReallyHram(code):
+	return any(r in code for r in {
+		'rROMB0', 'rROMB1', 'rRAMG', 'rRAMB'
+	})
+
 # Each line has five properties:
 # - num (1, 2, 3, etc)
 # - code (no indent or comment)
@@ -68,13 +73,13 @@ patterns = {
 	# Bad: ld a, [hFoo] (or [rFoo])
 	# Good: ldh a, [hFoo]
 	(lambda line1, prev: re.match(r'ld a, \[[hr][^l]', line1.code)
-		and 'rROMB0' not in line1.code),
+		and not isNotReallyHram(line1.code)),
 ],
 'Inefficient HRAM store': [
 	# Bad: ld [hFoo], a (or [rFoo])
 	# Good: ldh [hFoo], a
 	(lambda line1, prev: re.match(r'ld \[[hr][^l]', line1.code)
-		and 'rROMB0' not in line1.code and line1.code.endswith(', a')),
+		and not isNotReallyHram(line1.code) and line1.code.endswith(', a')),
 ],
 # 'a = 0': [
 # 	# Bad: ld a, 0
