@@ -28,6 +28,11 @@ def isVolatile(code):
 		'[rJOYP]', '[rBGPD]', '[rOBPD]'
 	})
 
+def isNotReallyHram(code):
+	return any(r in code for r in {
+		'rROMB0', 'rROMB1', 'rRAMG', 'rRAMB'
+	})
+
 # Each line has five properties:
 # - num (1, 2, 3, etc)
 # - code (no indent or comment)
@@ -67,13 +72,14 @@ patterns = {
 'Inefficient HRAM load': [
 	# Bad: ld a, [hFoo] (or [rFoo])
 	# Good: ldh a, [hFoo]
-	(lambda line1, prev: re.match(r'ld a, \[[hr][^l]', line1.code)),
+	(lambda line1, prev: re.match(r'ld a, \[[hr][^l]', line1.code)
+		and not isNotReallyHram(line1.code)),
 ],
 'Inefficient HRAM store': [
 	# Bad: ld [hFoo], a (or [rFoo])
 	# Good: ldh [hFoo], a
 	(lambda line1, prev: re.match(r'ld \[[hr][^l]', line1.code)
-		and line1.code.endswith(', a')),
+		and not isNotReallyHram(line1.code) and line1.code.endswith(', a')),
 ],
 # 'a = 0': [
 # 	# Bad: ld a, 0
@@ -386,7 +392,8 @@ patterns = {
 	(lambda line1, prev: (line1.code.startswith('ld ') or line1.code.startswith('ldh '))
 		and ',' in line1.code and not isVolatile(line1.code)),
 	(lambda line2, prev: (line2.code.startswith('ld ') or line2.code.startswith('ldh '))
-		and ',' in line2.code and line2.code.split(',')[0] == prev[0].code.split(',')[0]),
+		and ',' in line2.code and line2.code.split(',')[0] == prev[0].code.split(',')[0]
+		and line2.code not in {'ld h, [hl]', 'ld l, [hl]'}),
 ],
 'Redundant loads': [
 	# Bad: ld P, Q / ld Q, P (unless the lds have side effects)
