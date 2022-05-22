@@ -3495,15 +3495,12 @@ UnevolvedEviolite:
 	ret nz
 	; fallthrough
 SetDefenseBoost:
+; Boosts defense in bc by x1.5. Assumes bc<43690
 	ld h, b
 	ld l, c
-	add hl, hl
-	jr c, .overflow
+	srl b
+	rr c
 	add hl, bc
-	jr nc, .overflow_done
-.overflow
-	ld hl, 65535
-.overflow_done
 	ld b, h
 	ld c, l
 	ret
