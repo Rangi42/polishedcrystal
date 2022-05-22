@@ -1106,6 +1106,7 @@ BattleCommand_critical:
 	jr nz, .Ability
 
 	call GetUserItemAfterUnnerve
+	ld c, 0
 	ld a, [hl]
 	cp LUCKY_PUNCH
 	jr z, .crit_item
@@ -1255,6 +1256,7 @@ ENDM
 	species_battle_item LEEK, FARFETCH_D
 	species_battle_item LEEK, SIRFETCH_D
 	species_battle_item LUCKY_PUNCH, CHANSEY
+	species_battle_item QUICK_POWDER, DITTO
 	species_battle_item THICK_CLUB, CUBONE
 	species_battle_item THICK_CLUB, MAROWAK
 	db -1
@@ -3445,18 +3447,14 @@ if !DEF(FAITHFUL)
 	call OpponentPartyAttr
 else
 	; only works if current species is Ditto
-	push hl
 	ld hl, wBattleMonForm
 	call GetOpponentMonAttr
 	ld a, [hl]
 	and EXTSPECIES_MASK
-	pop hl
 	ret nz
-	push hl
 	ld hl, wBattleMonSpecies
 	call GetOpponentMonAttr
 	ld a, [hl]
-	pop hl
 endc
 	cp DITTO
 	ret nz
@@ -3467,22 +3465,7 @@ endc
 	cp METAL_POWDER
 	pop bc
 	ret nz
-
-	ld a, c
-	srl a
-	add c
-	ld c, a
-	ret nc
-
-	srl b
-	ld a, b
-	and a
-	jr nz, .done
-	inc b
-.done
-	scf
-	rr c
-	ret
+	jr SetDefenseBoost
 
 UnevolvedEviolite:
 	push hl
@@ -3511,21 +3494,16 @@ UnevolvedEviolite:
 	cp EVIOLITE
 	pop bc
 	ret nz
-
-	ld a, c
-	srl a
-	add c
-	ld c, a
-	ret nc
-
+	; fallthrough
+SetDefenseBoost:
+; Boosts defense in bc by x1.5. Assumes bc<43690
+	ld h, b
+	ld l, c
 	srl b
-	ld a, b
-	and a
-	jr nz, .done
-	inc b
-.done
-	scf
 	rr c
+	add hl, bc
+	ld b, h
+	ld c, l
 	ret
 
 BattleCommand_damagestats:
@@ -3555,6 +3533,8 @@ BattleCommand_damagestats:
 if !DEF(FAITHFUL)
 	call HailDefenseBoost
 endc
+	call DittoMetalPowder
+	call UnevolvedEviolite
 
 	ld hl, wBattleMonAttack
 	call GetUserMonAttr
@@ -3594,6 +3574,7 @@ endc
 	ld c, [hl]
 
 	call SandstormSpDefBoost
+	call UnevolvedEviolite
 
 	jr .lightscreen
 
@@ -3631,11 +3612,17 @@ endc
 
 .lightball
 ; Note: Returns player special attack at hl in hl.
+	ld a, [hli]
+	ld l, [hl]
+	ld h, a
 	call LightBallBoost
 	jr .done
 
 .thickcluborlightball
 ; Note: Returns player attack at hl in hl.
+	ld a, [hli]
+	ld l, [hl]
+	ld h, a
 	call ThickClubOrLightBallBoost
 
 .done
@@ -3646,8 +3633,6 @@ endc
 	call TrueUserPartyAttr
 	pop hl
 	ld e, a
-	call DittoMetalPowder
-	call UnevolvedEviolite
 
 	ld a, 1
 	and a
@@ -3682,38 +3667,22 @@ TruncateHL_BC:
 	ret
 
 ThickClubOrLightBallBoost:
-; Return in hl the stat value at hl.
-
 ; If the attacking monster is Cubone or Marowak and
 ; it's holding a Thick Club, or if it's Pikachu and
 ; it's holding a Light Ball, double it.
-	push bc
-	push de
-	push hl
-	ld a, MON_ITEM
-	call TrueUserPartyAttr
-	cp LIGHT_BALL
-	jr z, .item_boost
-	cp THICK_CLUB
-.item_boost
-	pop hl
-	call z, SpeciesItemBoost
-	pop de
-	pop bc
-	ret
-
+	ld a, THICK_CLUB
+	call CheckAttackItemBoost
+	; fallthrough
 LightBallBoost:
-; Return in hl the stat value at hl.
-
-; If the attacking monster is Cubone or Marowak and
-; it's holding a Thick Club, or if it's Pikachu and
-; it's holding a Light Ball, double it.
+	ld a, LIGHT_BALL
+	; fallthrough
+CheckAttackItemBoost:
 	push bc
 	push de
 	push hl
-	ld a, MON_ITEM
+	ld b, a
 	call TrueUserPartyAttr
-	cp LIGHT_BALL
+	cp b
 	pop hl
 	call z, SpeciesItemBoost
 	pop de
@@ -3722,7 +3691,6 @@ LightBallBoost:
 
 SpeciesItemBoost:
 ; Helper function for items boosting (Spcl.) Atk, i.e. Thick Club/Light Ball.
-; We've found the item relevant, now check if species is proper for the item.
 	call TrueUserValidBattleItem
 	ret nz
 
