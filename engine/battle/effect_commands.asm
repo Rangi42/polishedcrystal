@@ -3450,7 +3450,7 @@ else
 	call GetOpponentMonAttr
 	ld a, [hl]
 	and EXTSPECIES_MASK
-	jr nz, .done
+	ret nz
 	ld hl, wBattleMonSpecies
 	call GetOpponentMonAttr
 	ld a, [hl]
