@@ -380,13 +380,7 @@ GetSpeed::
 	jr .apply_item_mod
 .quick_powder
 	; Double speed, but only for Ditto
-	ldh a, [hBattleTurn]
-	and a
-	ld hl, wBattleMonSpecies
-	jr z, .got_species
-	ld hl, wEnemyMonSpecies
-.got_species
-	cp DITTO
+	farcall UserValidBattleItem
 	jr nz, .done
 	ln a, 2, 1 ; x2
 .apply_item_mod
