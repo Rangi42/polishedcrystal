@@ -60,8 +60,7 @@ UnknownScript_0x185050:
 	checkevent EVENT_FOUGHT_SUICUNE
 	iftruefwd UnknownScript_0x185077
 	appear TINTOWER1F_SUICUNE
-	setmonval RAIKOU
-	special SpecialMonCheck
+	checkflag ENGINE_PLAYER_CAUGHT_RAIKOU
 	iftruefwd UnknownScript_0x185065
 	appear TINTOWER1F_RAIKOU
 	sjumpfwd UnknownScript_0x185067
@@ -69,8 +68,7 @@ UnknownScript_0x185050:
 UnknownScript_0x185065:
 	disappear TINTOWER1F_RAIKOU
 UnknownScript_0x185067:
-	setmonval ENTEI
-	special SpecialMonCheck
+	checkflag ENGINE_PLAYER_CAUGHT_ENTEI
 	iftruefwd UnknownScript_0x185074
 	appear TINTOWER1F_ENTEI
 	sjumpfwd UnknownScript_0x185076
@@ -98,8 +96,7 @@ TinTowerStairsCallback:
 SuicuneBattle:
 	applymovement PLAYER, TinTowerPlayerMovement1
 	pause 15
-	setmonval RAIKOU
-	special SpecialMonCheck
+	checkflag ENGINE_PLAYER_CAUGHT_RAIKOU
 	iftruefwd .Next1 ; if player caught Raikou, he doesn't appear in Tin Tower
 	applymovement TINTOWER1F_RAIKOU, TinTowerRaikouMovement1
 	turnobject PLAYER, LEFT
@@ -111,8 +108,7 @@ SuicuneBattle:
 	playsound SFX_EXIT_BUILDING
 	waitsfx
 .Next1:
-	setmonval ENTEI
-	special SpecialMonCheck
+	checkflag ENGINE_PLAYER_CAUGHT_ENTEI
 	iftruefwd .Next2 ; if player caught Entei, he doesn't appear in Tin Tower
 	applymovement TINTOWER1F_ENTEI, TinTowerEnteiMovement1
 	turnobject PLAYER, RIGHT
@@ -145,6 +141,10 @@ SuicuneBattle:
 	setscene $1
 	clearevent EVENT_EUSINES_HOUSE_EUSINE
 	reloadmapafterbattle
+	special CheckBattleCaughtResult
+	iffalse .nocatch
+	setflag ENGINE_PLAYER_CAUGHT_SUICUNE
+.nocatch
 	turnobject PLAYER, DOWN
 	pause 20
 	playmusic MUSIC_MYSTICALMAN_ENCOUNTER

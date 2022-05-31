@@ -501,10 +501,15 @@ PokeBallEffect:
 	cp BATTLETYPE_CONTEST
 	jmp z, .catch_bug_contest_mon
 	cp BATTLETYPE_LEGENDARY
-	jr nz, .not_celebi ; false positive for other legendaries, but that's okay
+	jr nz, .not_legendary
 	ld hl, wBattleResult
 	set 6, [hl]
-.not_celebi
+.not_legendary
+	cp BATTLETYPE_ROAMING
+	jr nz, .not_roaming
+	ld hl, wBattleResult
+	set 6, [hl]
+.not_roaming
 
 	ld a, [wPartyCount]
 	cp PARTY_LENGTH

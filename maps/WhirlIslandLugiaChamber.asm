@@ -45,6 +45,10 @@ Lugia:
 	startbattle
 	disappear WHIRLISLANDLUGIACHAMBER_LUGIA
 	reloadmapafterbattle
+	special CheckBattleCaughtResult
+	iffalse .nocatch
+	setflag ENGINE_PLAYER_CAUGHT_LUGIA
+.nocatch
 	end
 
 LugiaText:

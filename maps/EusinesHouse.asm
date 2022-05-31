@@ -28,8 +28,7 @@ CeladonEusine:
 	writetext EusineNoBeastsText
 	waitbutton
 	closetext
-	setmonval RAIKOU
-	special SpecialMonCheck
+	checkflag ENGINE_PLAYER_CAUGHT_RAIKOU
 	iftruefwd .OwnRaikou
 	showtext EusineShowsRaikouText
 	refreshscreen
@@ -40,8 +39,7 @@ CeladonEusine:
 	setmonval RAIKOU
 	special SpecialSeenMon
 .OwnRaikou
-	setmonval ENTEI
-	special SpecialMonCheck
+	checkflag ENGINE_PLAYER_CAUGHT_ENTEI
 	iftruefwd .OwnEntei
 	showtext EusineShowsEnteiText
 	refreshscreen
@@ -52,8 +50,7 @@ CeladonEusine:
 	setmonval ENTEI
 	special SpecialSeenMon
 .OwnEntei
-	setmonval SUICUNE
-	special SpecialMonCheck
+	checkflag ENGINE_PLAYER_CAUGHT_SUICUNE
 	iftruefwd .OwnSuicune
 	showtext EusineShowsSuicuneText
 	refreshscreen

@@ -272,4 +272,17 @@ EngineFlags:
 
 	engine_flag wStatusFlags3, 0 ; judge machine
 
+	engine_flag wPlayerCaught, 0 ; Ho-Oh
+	engine_flag wPlayerCaught, 1 ; Lugia
+	engine_flag wPlayerCaught, 2 ; Raikou
+	engine_flag wPlayerCaught, 3 ; Entei
+	engine_flag wPlayerCaught, 4 ; Suicune
+	engine_flag wPlayerCaught, 5 ; Articuno
+	engine_flag wPlayerCaught, 6 ; Zapdos
+	engine_flag wPlayerCaught, 7 ; Moltres
+
+	engine_flag wPlayerCaught2, 0 ; Mew
+	engine_flag wPlayerCaught2, 1 ; Mewtwo
+	engine_flag wPlayerCaught2, 2 ; Sudowoodo
+
 	assert_table_length NUM_ENGINE_FLAGS

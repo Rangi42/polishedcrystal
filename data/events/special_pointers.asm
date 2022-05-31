@@ -111,14 +111,13 @@ SpecialsPointers::
 	add_special Special_DisplayUnownWords
 	add_special SpecialHoOhChamber
 	add_special Special_CelebiShrineEvent
-	add_special CheckCaughtCelebi
+	add_special CheckBattleCaughtResult
 	add_special JudgeMachine
 	add_special SpecialBuenasPassword
 	add_special Special_SampleKenjiBreakCountdown
 	add_special SpecialBeastsCheck
 	add_special SpecialBirdsCheck
 	add_special SpecialDuoCheck
-	add_special SpecialMonCheck
 	add_special Special_SetPlayerPalette
 	add_special AskRememberPassword
 	add_special LoadMapPalettes

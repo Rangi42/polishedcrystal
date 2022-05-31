@@ -454,7 +454,7 @@ MapIlexForestSignpost4Script:
 	startbattle
 	reloadmapafterbattle
 	pause 20
-	special CheckCaughtCelebi
+	special CheckBattleCaughtResult
 	iffalse DoNothingScript
 	appear ILEXFOREST_KURT
 	applymovement ILEXFOREST_KURT, IlexForestKurtStepsUpMovement

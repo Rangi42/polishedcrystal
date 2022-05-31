@@ -93,9 +93,9 @@ CinnabarVolcanoMoltres:
 	disappear CINNABARVOLCANOB2F_MOLTRES
 	setevent EVENT_CINNABAR_VOLCANO_MOLTRES
 	reloadmapafterbattle
-	setmonval MOLTRES
-	special SpecialMonCheck
+	special CheckBattleCaughtResult
 	iffalsefwd .NoCandela
+	setflag ENGINE_PLAYER_CAUGHT_MOLTRES
 	setevent EVENT_CELADON_UNIVERSITY_CANDELA
 	clearevent EVENT_SHAMOUTI_COAST_CANDELA
 .NoCandela

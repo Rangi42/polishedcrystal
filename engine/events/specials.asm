@@ -372,45 +372,66 @@ RespawnOneOffs:
 	eventflagreset EVENT_BEAT_CYNTHIA
 .SkipCynthia
 
-	ld bc, SUDOWOODO
-	call CheckCaughtMon
+	ld de, ENGINE_PLAYER_CAUGHT_SUDOWOODO
+	ld b, 2 ; check
+	call _EngineFlagAction
+	ld a, c
+	and a
 	jr nz, .CaughtSudowoodo
 	eventflagreset EVENT_ROUTE_36_SUDOWOODO
 .CaughtSudowoodo
 
-	ld bc, ARTICUNO
-	call CheckCaughtMon
+	ld de, ENGINE_PLAYER_CAUGHT_ARTICUNO
+	ld b, 2 ; check
+	call _EngineFlagAction
+	ld a, c
+	and a
 	jr nz, .CaughtArticuno
 	eventflagreset EVENT_SEAFOAM_ISLANDS_ARTICUNO
 .CaughtArticuno
 
-	ld bc, ZAPDOS
-	call CheckCaughtMon
+	ld de, ENGINE_PLAYER_CAUGHT_ZAPDOS
+	ld b, 2 ; check
+	call _EngineFlagAction
+	ld a, c
+	and a
 	jr nz, .CaughtZapdos
 	eventflagreset EVENT_ROUTE_10_ZAPDOS
 	eventflagreset EVENT_ZAPDOS_GONE
 .CaughtZapdos
 
-	ld bc, MOLTRES
-	call CheckCaughtMon
+	ld de, ENGINE_PLAYER_CAUGHT_MOLTRES
+	ld b, 2 ; check
+	call _EngineFlagAction
+	ld a, c
+	and a
 	jr nz, .CaughtMoltres
 	eventflagreset EVENT_CINNABAR_VOLCANO_MOLTRES
 .CaughtMoltres
 
-	ld bc, MEWTWO
-	call CheckCaughtMon
+	ld de, ENGINE_PLAYER_CAUGHT_MEWTWO
+	ld b, 2 ; check
+	call _EngineFlagAction
+	ld a, c
+	and a
 	jr nz, .CaughtMewtwo
 	eventflagreset EVENT_CERULEAN_CAVE_MEWTWO
 .CaughtMewtwo
 
-	ld bc, MEW
-	call CheckCaughtMon
+	ld de, ENGINE_PLAYER_CAUGHT_MEW
+	ld b, 2 ; check
+	call _EngineFlagAction
+	ld a, c
+	and a
 	jr nz, .CaughtMew
 	eventflagreset EVENT_FARAWAY_JUNGLE_MEW
 .CaughtMew
 
-	ld bc, RAIKOU
-	call CheckCaughtMon
+	ld de, ENGINE_PLAYER_CAUGHT_RAIKOU
+	ld b, 2 ; check
+	call _EngineFlagAction
+	ld a, c
+	and a
 	jr nz, .CaughtRaikou
 	ld hl, wRoamMon1Species
 	ld a, [hl]
@@ -418,8 +439,11 @@ RespawnOneOffs:
 	call z, RespawnRoamingRaikou
 .CaughtRaikou
 
-	ld bc, ENTEI
-	call CheckCaughtMon
+	ld de, ENGINE_PLAYER_CAUGHT_ENTEI
+	ld b, 2 ; check
+	call _EngineFlagAction
+	ld a, c
+	and a
 	jr nz, .CaughtEntei
 	ld hl, wRoamMon2Species
 	ld a, [hl]
@@ -429,8 +453,11 @@ RespawnOneOffs:
 
 	eventflagcheck EVENT_FOUGHT_SUICUNE
 	jr z, .CaughtSuicune
-	ld bc, SUICUNE
-	call CheckCaughtMon
+	ld de, ENGINE_PLAYER_CAUGHT_SUICUNE
+	ld b, 2 ; check
+	call _EngineFlagAction
+	ld a, c
+	and a
 	jr nz, .CaughtSuicune
 	ld hl, wRoamMon3Species
 	ld a, [hl]
@@ -438,15 +465,21 @@ RespawnOneOffs:
 	call z, RespawnRoamingSuicune
 .CaughtSuicune
 
-	ld bc, LUGIA
-	call CheckCaughtMon
+	ld de, ENGINE_PLAYER_CAUGHT_LUGIA
+	ld b, 2 ; check
+	call _EngineFlagAction
+	ld a, c
+	and a
 	jr nz, .CaughtLugia
 	eventflagreset EVENT_WHIRL_ISLAND_LUGIA_CHAMBER_LUGIA
 	eventflagreset EVENT_FOUGHT_LUGIA
 .CaughtLugia
 
-	ld bc, HO_OH
-	call CheckCaughtMon
+	ld de, ENGINE_PLAYER_CAUGHT_HO_OH
+	ld b, 2 ; check
+	call _EngineFlagAction
+	ld a, c
+	and a
 	ret nz
 	eventflagreset EVENT_TIN_TOWER_ROOF_HO_OH
 	eventflagreset EVENT_FOUGHT_HO_OH
