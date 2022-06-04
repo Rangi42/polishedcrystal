@@ -500,16 +500,11 @@ PokeBallEffect:
 	ld a, [wBattleType]
 	cp BATTLETYPE_CONTEST
 	jmp z, .catch_bug_contest_mon
-	cp BATTLETYPE_LEGENDARY
-	jr nz, .not_legendary
+
+	; Set wBattleResult bit 6 to record
+	; that the pokémon was caught.
 	ld hl, wBattleResult
-	set 6, [hl]
-.not_legendary
-	cp BATTLETYPE_ROAMING
-	jr nz, .not_roaming
-	ld hl, wBattleResult
-	set 6, [hl]
-.not_roaming
+	set BATTLERESULT_CAUGHT_POKEMON, [hl]
 
 	ld a, [wPartyCount]
 	cp PARTY_LENGTH
