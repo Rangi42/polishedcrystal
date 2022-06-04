@@ -373,7 +373,7 @@ RespawnOneOffs:
 .SkipCynthia
 
 	ld de, ENGINE_PLAYER_CAUGHT_SUDOWOODO
-	ld b, 2 ; check
+	ld b, CHECK_FLAG
 	call _EngineFlagAction
 	ld a, c
 	and a
@@ -382,7 +382,7 @@ RespawnOneOffs:
 .CaughtSudowoodo
 
 	ld de, ENGINE_PLAYER_CAUGHT_ARTICUNO
-	ld b, 2 ; check
+	ld b, CHECK_FLAG
 	call _EngineFlagAction
 	ld a, c
 	and a
@@ -391,7 +391,7 @@ RespawnOneOffs:
 .CaughtArticuno
 
 	ld de, ENGINE_PLAYER_CAUGHT_ZAPDOS
-	ld b, 2 ; check
+	ld b, CHECK_FLAG
 	call _EngineFlagAction
 	ld a, c
 	and a
@@ -401,7 +401,7 @@ RespawnOneOffs:
 .CaughtZapdos
 
 	ld de, ENGINE_PLAYER_CAUGHT_MOLTRES
-	ld b, 2 ; check
+	ld b, CHECK_FLAG
 	call _EngineFlagAction
 	ld a, c
 	and a
@@ -410,7 +410,7 @@ RespawnOneOffs:
 .CaughtMoltres
 
 	ld de, ENGINE_PLAYER_CAUGHT_MEWTWO
-	ld b, 2 ; check
+	ld b, CHECK_FLAG
 	call _EngineFlagAction
 	ld a, c
 	and a
@@ -419,7 +419,7 @@ RespawnOneOffs:
 .CaughtMewtwo
 
 	ld de, ENGINE_PLAYER_CAUGHT_MEW
-	ld b, 2 ; check
+	ld b, CHECK_FLAG
 	call _EngineFlagAction
 	ld a, c
 	and a
@@ -428,7 +428,7 @@ RespawnOneOffs:
 .CaughtMew
 
 	ld de, ENGINE_PLAYER_CAUGHT_RAIKOU
-	ld b, 2 ; check
+	ld b, CHECK_FLAG
 	call _EngineFlagAction
 	ld a, c
 	and a
@@ -440,7 +440,7 @@ RespawnOneOffs:
 .CaughtRaikou
 
 	ld de, ENGINE_PLAYER_CAUGHT_ENTEI
-	ld b, 2 ; check
+	ld b, CHECK_FLAG
 	call _EngineFlagAction
 	ld a, c
 	and a
@@ -454,7 +454,7 @@ RespawnOneOffs:
 	eventflagcheck EVENT_FOUGHT_SUICUNE
 	jr z, .CaughtSuicune
 	ld de, ENGINE_PLAYER_CAUGHT_SUICUNE
-	ld b, 2 ; check
+	ld b, CHECK_FLAG
 	call _EngineFlagAction
 	ld a, c
 	and a
@@ -466,7 +466,7 @@ RespawnOneOffs:
 .CaughtSuicune
 
 	ld de, ENGINE_PLAYER_CAUGHT_LUGIA
-	ld b, 2 ; check
+	ld b, CHECK_FLAG
 	call _EngineFlagAction
 	ld a, c
 	and a
@@ -476,7 +476,7 @@ RespawnOneOffs:
 .CaughtLugia
 
 	ld de, ENGINE_PLAYER_CAUGHT_HO_OH
-	ld b, 2 ; check
+	ld b, CHECK_FLAG
 	call _EngineFlagAction
 	ld a, c
 	and a
