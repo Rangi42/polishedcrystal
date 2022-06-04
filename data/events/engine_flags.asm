@@ -283,6 +283,7 @@ EngineFlags:
 
 	engine_flag wPlayerCaught2, 0 ; Mew
 	engine_flag wPlayerCaught2, 1 ; Mewtwo
-	engine_flag wPlayerCaught2, 2 ; Sudowoodo
+	engine_flag wPlayerCaught2, 2 ; Celebi
+	engine_flag wPlayerCaught2, 3 ; Sudowoodo
 
 	assert_table_length NUM_ENGINE_FLAGS

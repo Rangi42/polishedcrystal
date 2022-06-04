@@ -456,6 +456,7 @@ MapIlexForestSignpost4Script:
 	pause 20
 	special CheckBattleCaughtResult
 	iffalse DoNothingScript
+	setflag ENGINE_PLAYER_CAUGHT_CELEBI
 	appear ILEXFOREST_KURT
 	applymovement ILEXFOREST_KURT, IlexForestKurtStepsUpMovement
 	showtext Text_KurtCaughtCelebi
