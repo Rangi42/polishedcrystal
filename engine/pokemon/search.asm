@@ -3,8 +3,8 @@ SpecialBeastsCheck:
 ; Return the result in hScriptVar.
 
 	ld a, [wPlayerCaught]
-	and CAUGHT_BEASTS_MASK
-	cp CAUGHT_BEASTS_MASK
+	or ~CAUGHT_BEASTS_MASK
+	inc a
 	jr nz, SpecialMonCheckFailed
 	ld a, 1
 	ldh [hScriptVar], a
@@ -15,8 +15,8 @@ SpecialBirdsCheck:
 ; Return the result in hScriptVar.
 
 	ld a, [wPlayerCaught]
-	and CAUGHT_BIRDS_MASK
-	cp CAUGHT_BIRDS_MASK
+	or ~CAUGHT_BIRDS_MASK
+	inc a
 	jr nz, SpecialMonCheckFailed
 	ld a, 1
 	ldh [hScriptVar], a
@@ -27,8 +27,8 @@ SpecialDuoCheck:
 ; Return the result in hScriptVar.
 
 	ld a, [wPlayerCaught]
-	and CAUGHT_DUO_MASK
-	cp CAUGHT_DUO_MASK
+	or ~CAUGHT_DUO_MASK
+	inc a
 	jr nz, SpecialMonCheckFailed
 	ld a, 1
 	ldh [hScriptVar], a
@@ -41,9 +41,9 @@ SpecialMonCheckFailed:
 
 CheckBattleCaughtResult:
 	ld a, [wBattleResult]
-	bit 6, a
-	jr z, .false
-	ld a, $1
+	and 1 << 6
+	rlca
+	rlca
 	ldh [hScriptVar], a
 	ret
 
