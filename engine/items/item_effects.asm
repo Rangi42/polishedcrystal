@@ -624,7 +624,7 @@ PokeBallEffect:
 	farcall NewStorageBoxPointer
 	jr nc, .BoxNotFullYet
 	ld hl, wBattleResult
-	set 7, [hl]
+	set BATTLERESULT_BOX_FULL, [hl]
 .BoxNotFullYet:
 	ld a, [wCurItem]
 	cp FRIEND_BALL
@@ -1756,8 +1756,8 @@ PokeDoll:
 	inc a
 	ld [wBattleEnded], a
 	ld a, [wBattleResult]
-	and 3 << 6
-	or $2
+	and BATTLERESULT_BITMASK
+	or DRAW
 	ld [wBattleResult], a
 	jmp UseItemText
 

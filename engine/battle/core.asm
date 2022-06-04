@@ -103,8 +103,8 @@ DoBattle:
 WildFled_EnemyFled_LinkBattleCanceled:
 	call Call_LoadTempTileMapToTileMap
 	ld a, [wBattleResult]
-	and $c0
-	add $2
+	and BATTLERESULT_BITMASK
+	add DRAW
 	ld [wBattleResult], a
 
 	ld hl, BattleText_LegendaryFled
@@ -120,7 +120,7 @@ WildFled_EnemyFled_LinkBattleCanceled:
 	jr z, .print_text
 
 	ld a, [wBattleResult]
-	and $c0
+	and BATTLERESULT_BITMASK
 	ld [wBattleResult], a
 	ld hl, BattleText_EnemyFled
 
@@ -409,8 +409,8 @@ CheckContestBattleOver:
 	and a
 	jr nz, .contest_not_over
 	ld a, [wBattleResult]
-	and $c0
-	add $2
+	and BATTLERESULT_BITMASK
+	add DRAW
 	ld [wBattleResult], a
 	scf
 	ret
@@ -424,8 +424,8 @@ CheckSafariBattleOver:
 	and a
 	ret nz
 	ld a, [wBattleResult]
-	and $c0
-	add $2
+	and BATTLERESULT_BITMASK
+	add DRAW
 	ld [wBattleResult], a
 	scf
 	ret
@@ -2541,8 +2541,8 @@ LostBattle:
 	jr nz, .not_tied
 	ld hl, TiedAgainstText
 	ld a, [wBattleResult]
-	and $c0
-	add 2
+	and BATTLERESULT_BITMASK
+	add DRAW
 	ld [wBattleResult], a
 	jr .text
 
@@ -4172,7 +4172,7 @@ BattleMenu_SafariBall:
 	xor a
 	ld [wWildMon], a
 	ld a, [wBattleResult]
-	and $c0
+	and BATTLERESULT_BITMASK
 	ld [wBattleResult], a
 	call ClearWindowData
 	call SetPalettes
@@ -4657,7 +4657,7 @@ endr
 .fled
 	ld b, a
 	ld a, [wBattleResult]
-	and $c0
+	and BATTLERESULT_BITMASK
 	add b
 	ld [wBattleResult], a
 	call StopDangerSound

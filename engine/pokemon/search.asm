@@ -41,7 +41,7 @@ SpecialMonCheckFailed:
 
 CheckBattleCaughtResult:
 	ld a, [wBattleResult]
-	and 1 << 6
+	and 1 << BATTLERESULT_CAUGHT_POKEMON
 	rlca
 	rlca
 	ldh [hScriptVar], a
