@@ -93,9 +93,11 @@ CeladonEusine:
 	step_end
 
 EusinesHouseGrampsScript:
-	iftrue_jumptextfaceplayer EusinesHouseGrampsText2
 	checkevent EVENT_EUSINES_HOUSE_EUSINE
-	jumptextfaceplayer EusinesHouseGrampsText1
+	iffalse_jumptextfaceplayer EusinesHouseGrampsText1
+	checkevent EVENT_FOUGHT_HO_OH
+	iftrue_jumptextfaceplayer EusinesHouseGrampsText3
+	jumptextfaceplayer EusinesHouseGrampsText2
 
 CeladonEusineText1:
 	text "Eusine: Hi!"
@@ -182,4 +184,14 @@ EusinesHouseGrampsText2:
 	para "I taught him all"
 	line "about the legend-"
 	cont "ary #mon!"
+	done
+
+EusinesHouseGrampsText3:
+	text "My grandson Eusine"
+	line "is on another"
+	cont "adventure."
+
+	para "He left to visit"
+	line "Bell Tower in"
+	cont "Ecruteak City."
 	done
