@@ -12,7 +12,7 @@ EusinesHouse_MapScriptHeader:
 	def_bg_events
 
 	def_object_events
-	object_event  2,  3, SPRITE_EUSINE, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, CeladonEusine, EVENT_SET_WHEN_FOUGHT_HO_OH
+	object_event  2,  3, SPRITE_EUSINE, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, CeladonEusine, EVENT_EUSINES_HOUSE_EUSINE
 	object_event  5,  3, SPRITE_GRAMPS, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, EusinesHouseGrampsScript, -1
 
 	object_const_def
@@ -93,8 +93,8 @@ CeladonEusine:
 	step_end
 
 EusinesHouseGrampsScript:
-	checkevent EVENT_SET_WHEN_FOUGHT_HO_OH
 	iftrue_jumptextfaceplayer EusinesHouseGrampsText2
+	checkevent EVENT_EUSINES_HOUSE_EUSINE
 	jumptextfaceplayer EusinesHouseGrampsText1
 
 CeladonEusineText1:
