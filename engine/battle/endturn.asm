@@ -416,7 +416,8 @@ HandleFutureSight:
 	xor a
 	ld [wAttackMissed], a
 	ld [wAlreadyDisobeyed], a
-	ld a, $10
+	; Future Sight does typeless damage
+	ld a, EFFECTIVE
 	ld [wTypeModifier], a
 	farcall DoMove
 	xor a
