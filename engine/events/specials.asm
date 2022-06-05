@@ -373,65 +373,44 @@ RespawnOneOffs:
 .SkipCynthia
 
 	ld de, ENGINE_PLAYER_CAUGHT_SUDOWOODO
-	ld b, CHECK_FLAG
-	call _EngineFlagAction
-	ld a, c
-	and a
+	call CheckCaughtFlag
 	jr nz, .CaughtSudowoodo
 	eventflagreset EVENT_ROUTE_36_SUDOWOODO
 .CaughtSudowoodo
 
 	ld de, ENGINE_PLAYER_CAUGHT_ARTICUNO
-	ld b, CHECK_FLAG
-	call _EngineFlagAction
-	ld a, c
-	and a
+	call CheckCaughtFlag
 	jr nz, .CaughtArticuno
 	eventflagreset EVENT_SEAFOAM_ISLANDS_ARTICUNO
 .CaughtArticuno
 
 	ld de, ENGINE_PLAYER_CAUGHT_ZAPDOS
-	ld b, CHECK_FLAG
-	call _EngineFlagAction
-	ld a, c
-	and a
+	call CheckCaughtFlag
 	jr nz, .CaughtZapdos
 	eventflagreset EVENT_ROUTE_10_ZAPDOS
 	eventflagreset EVENT_ZAPDOS_GONE
 .CaughtZapdos
 
 	ld de, ENGINE_PLAYER_CAUGHT_MOLTRES
-	ld b, CHECK_FLAG
-	call _EngineFlagAction
-	ld a, c
-	and a
+	call CheckCaughtFlag
 	jr nz, .CaughtMoltres
 	eventflagreset EVENT_CINNABAR_VOLCANO_MOLTRES
 .CaughtMoltres
 
 	ld de, ENGINE_PLAYER_CAUGHT_MEWTWO
-	ld b, CHECK_FLAG
-	call _EngineFlagAction
-	ld a, c
-	and a
+	call CheckCaughtFlag
 	jr nz, .CaughtMewtwo
 	eventflagreset EVENT_CERULEAN_CAVE_MEWTWO
 .CaughtMewtwo
 
 	ld de, ENGINE_PLAYER_CAUGHT_MEW
-	ld b, CHECK_FLAG
-	call _EngineFlagAction
-	ld a, c
-	and a
+	call CheckCaughtFlag
 	jr nz, .CaughtMew
 	eventflagreset EVENT_FARAWAY_JUNGLE_MEW
 .CaughtMew
 
 	ld de, ENGINE_PLAYER_CAUGHT_RAIKOU
-	ld b, CHECK_FLAG
-	call _EngineFlagAction
-	ld a, c
-	and a
+	call CheckCaughtFlag
 	jr nz, .CaughtRaikou
 	ld hl, wRoamMon1Species
 	ld a, [hl]
@@ -440,10 +419,7 @@ RespawnOneOffs:
 .CaughtRaikou
 
 	ld de, ENGINE_PLAYER_CAUGHT_ENTEI
-	ld b, CHECK_FLAG
-	call _EngineFlagAction
-	ld a, c
-	and a
+	call CheckCaughtFlag
 	jr nz, .CaughtEntei
 	ld hl, wRoamMon2Species
 	ld a, [hl]
@@ -454,10 +430,7 @@ RespawnOneOffs:
 	eventflagcheck EVENT_FOUGHT_SUICUNE
 	jr z, .CaughtSuicune
 	ld de, ENGINE_PLAYER_CAUGHT_SUICUNE
-	ld b, CHECK_FLAG
-	call _EngineFlagAction
-	ld a, c
-	and a
+	call CheckCaughtFlag
 	jr nz, .CaughtSuicune
 	ld hl, wRoamMon3Species
 	ld a, [hl]
@@ -466,24 +439,25 @@ RespawnOneOffs:
 .CaughtSuicune
 
 	ld de, ENGINE_PLAYER_CAUGHT_LUGIA
-	ld b, CHECK_FLAG
-	call _EngineFlagAction
-	ld a, c
-	and a
+	call CheckCaughtFlag
 	jr nz, .CaughtLugia
 	eventflagreset EVENT_WHIRL_ISLAND_LUGIA_CHAMBER_LUGIA
 	eventflagreset EVENT_FOUGHT_LUGIA
 .CaughtLugia
 
 	ld de, ENGINE_PLAYER_CAUGHT_HO_OH
-	ld b, CHECK_FLAG
-	call _EngineFlagAction
-	ld a, c
-	and a
+	call CheckCaughtFlag
 	ret nz
 	eventflagreset EVENT_TIN_TOWER_ROOF_HO_OH
 	eventflagreset EVENT_FOUGHT_HO_OH
 	eventflagreset EVENT_EUSINES_HOUSE_EUSINE
+	ret
+
+CheckCaughtFlag:
+	ld b, CHECK_FLAG
+	call _EngineFlagAction
+	ld a, c
+	and a
 	ret
 
 RespawnRoamingRaikou:
