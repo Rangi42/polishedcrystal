@@ -428,15 +428,15 @@ RespawnOneOffs:
 .CaughtEntei
 
 	eventflagcheck EVENT_FOUGHT_SUICUNE
-	jr z, .CaughtSuicune
+	jr z, .CaughtOrNeverFoughtSuicune
 	ld de, ENGINE_PLAYER_CAUGHT_SUICUNE
 	call CheckCaughtFlag
-	jr nz, .CaughtSuicune
+	jr nz, .CaughtOrNeverFoughtSuicune
 	ld hl, wRoamMon3Species
 	ld a, [hl]
 	and a
 	call z, RespawnRoamingSuicune
-.CaughtSuicune
+.CaughtOrNeverFoughtSuicune
 
 	ld de, ENGINE_PLAYER_CAUGHT_LUGIA
 	call CheckCaughtFlag
