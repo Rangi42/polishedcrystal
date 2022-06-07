@@ -294,6 +294,7 @@ PlaceWaitingText::
 	db "Waiting…!@"
 
 Serial_SyncAndExchangeNybble::
+	vc_hook Wireless_WaitLinkTransfer
 	ld a, $ff
 	ld [wOtherPlayerLinkAction], a
 .loop
@@ -320,14 +321,26 @@ Serial_SyncAndExchangeNybble::
 	inc a
 	jr z, .loop
 
+	vc_patch Wireless_net_delay_1
+if DEF(VIRTUAL_CONSOLE)
+	ld b, 26
+else
 	ld b, 10
+endc
+	vc_patch_end
 .receive
 	call DelayFrame
 	call LinkTransfer
 	dec b
 	jr nz, .receive
 
+	vc_patch Wireless_net_delay_2
+if DEF(VIRTUAL_CONSOLE)
+	ld b, 26
+else
 	ld b, 10
+endc
+	vc_patch_end
 .acknowledge
 	call DelayFrame
 	call LinkDataReceived
@@ -336,6 +349,7 @@ Serial_SyncAndExchangeNybble::
 
 	ld a, [wOtherPlayerLinkAction]
 	ld [wOtherPlayerLinkMode], a
+	vc_hook Wireless_WaitLinkTransfer_ret
 	ret
 
 LinkTransfer::

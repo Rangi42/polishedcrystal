@@ -495,6 +495,7 @@ Script_yesorno:
 	sbc a
 	inc a
 	ldh [hScriptVar], a
+	vc_hook Script_yesorno_ret
 	ret
 
 Script_loadmenu:

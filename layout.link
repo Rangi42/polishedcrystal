@@ -33,6 +33,8 @@ ROM0
 	"Header"
 	org $0150
 	"Home"
+	org $3fd7
+	"Build Timestamp"
 
 ROMX $01
 	"bank1"

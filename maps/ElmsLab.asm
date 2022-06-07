@@ -217,6 +217,7 @@ CyndaquilPokeBallScript:
 	promptbutton
 	waitsfx
 	givepoke CYNDAQUIL, PLAIN_FORM, 5, ORAN_BERRY
+	;givepoke PIKACHU, PIKACHU_RED_FORM, 5, ORAN_BERRY
 	writetext LyraChoosesStarterText
 	waitbutton
 	closetext

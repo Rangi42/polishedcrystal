@@ -3,7 +3,8 @@ How to solve personal PRs on GitHub
 	* Copy current folder repository into a clean folder for testing and merging for safety purposes. We can also start right away in the current folder repo, but better safe than sorry.
 	* Enter directory and continue with line commands:
 	     git checkout -b Rangi42-9bit 9bit
-	* git pull git://github.com/Rangi42/polishedcrystal.git 9bit
+	* git pull git@github.com:Rangi42/polishedcrystal.git 9bit
+
 	  Cloned Rangi's 9bit branch, and then the following appears:
 	hint: You have divergent branches and need to specify how to reconcile them.
 	hint: You can do so by running one of the following commands sometime before

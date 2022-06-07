@@ -25,20 +25,24 @@ jobs:
         git clone https://github.com/Rangi42/polishedcrystal.git
         pushd polishedcrystal
         mkdir build
-        make -j4
+        make -j4 vc
         mv polishedcrystal-3.0.0-beta.gbc build/
+        mv polishedcrystal-3.0.0-beta.patch build/
         mv polishedcrystal-3.0.0-beta.sym build/
         make tidy
-        make -j4 faithful
+        make -j4 faithful vc
         mv polishedcrystal-faithful-3.0.0-beta.gbc build/
+        mv polishedcrystal-faithful-3.0.0-beta.patch build/
         mv polishedcrystal-faithful-3.0.0-beta.sym build/
         make tidy
-        make -j4 noir
+        make -j4 noir vc
         mv polishedcrystal-noir-3.0.0-beta.gbc build/
+        mv polishedcrystal-noir-3.0.0-beta.patch build/
         mv polishedcrystal-noir-3.0.0-beta.sym build/
         make tidy
-        make -j4 debug
+        make -j4 debug vc
         mv polishedcrystal-debug-3.0.0-beta.gbc build/polisheddebug-3.0.0-beta.gbc
+        mv polishedcrystal-debug-3.0.0-beta.patch build/polisheddebug-3.0.0-beta.patch
         mv polishedcrystal-debug-3.0.0-beta.sym build/polisheddebug-3.0.0-beta.sym
         make tidy
         make bsp
@@ -74,6 +78,8 @@ jobs:
           
           The **.sym** assets are "symbol files". They're useful for debugging, or for [discovering cheat codes](https://github.com/pret/pokecrystal/wiki/Discovering-GameShark-cheat-codes), although cheats are *not* officially supported and may cause bugs or crashes. (Do ***not*** ask the developers for cheat codes.)
           
+          The **.patch** assets are 3DS Virtual Console patches to enable trading and battling over Wi-Fi. You can bundle the .gbc and corresponding .patch into a playable .cia file using [poke-cia](https://github.com/vulcandth/poke-cia).
+          
           The **.bsp** asset is a [BSP](https://github.com/aaaaaa123456789/bsp) save file patch in case you need to upgrade a save file from an older 3.0.0 beta build, using a patcher like the one for [Pokémon Prism](http://pokemonprism.com/patcher.html).
           
           The **polisheddebug** assets are ROMs and symbol files with extra features to help debug the game. Do ***not*** download these to just play with; use them to help the developers diagnose and fix bugs, or create new features.
@@ -88,6 +94,16 @@ jobs:
         upload_url: ${{ steps.create_release.outputs.upload_url }}
         asset_path: ./polishedcrystal/build/polishedcrystal-3.0.0-beta.gbc
         asset_name: polishedcrystal-3.0.0-beta-${{ env.SHORT_SHA }}.gbc
+        asset_content_type: application/octet-stream
+    - name: Upload PATCH
+      id: upload-patch
+      uses: actions/upload-release-asset@v1.0.1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        upload_url: ${{ steps.create_release.outputs.upload_url }}
+        asset_path: ./polishedcrystal/build/polishedcrystal-3.0.0-beta.patch
+        asset_name: polishedcrystal-3.0.0-beta-${{ env.SHORT_SHA }}.patch
         asset_content_type: application/octet-stream
     - name: Upload SYM
       id: upload-sym
@@ -109,6 +125,16 @@ jobs:
         asset_path: ./polishedcrystal/build/polishedcrystal-faithful-3.0.0-beta.gbc
         asset_name: polishedcrystal-faithful-3.0.0-beta-${{ env.SHORT_SHA }}.gbc
         asset_content_type: application/octet-stream
+    - name: Upload faithful PATCH
+      id: upload-faithful-patch
+      uses: actions/upload-release-asset@v1.0.1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        upload_url: ${{ steps.create_release.outputs.upload_url }}
+        asset_path: ./polishedcrystal/build/polishedcrystal-faithful-3.0.0-beta.patch
+        asset_name: polishedcrystal-faithful-3.0.0-beta-${{ env.SHORT_SHA }}.patch
+        asset_content_type: application/octet-stream
     - name: Upload faithful SYM
       id: upload-faithful-sym
       uses: actions/upload-release-asset@v1.0.1
@@ -129,6 +155,16 @@ jobs:
         asset_path: ./polishedcrystal/build/polishedcrystal-noir-3.0.0-beta.gbc
         asset_name: polishedcrystal-noir-3.0.0-beta-${{ env.SHORT_SHA }}.gbc
         asset_content_type: application/octet-stream
+    - name: Upload noir PATCH
+      id: upload-noir-patch
+      uses: actions/upload-release-asset@v1.0.1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        upload_url: ${{ steps.create_release.outputs.upload_url }}
+        asset_path: ./polishedcrystal/build/polishedcrystal-noir-3.0.0-beta.patch
+        asset_name: polishedcrystal-noir-3.0.0-beta-${{ env.SHORT_SHA }}.patch
+        asset_content_type: application/octet-stream
     - name: Upload noir SYM
       id: upload-noir-sym
       uses: actions/upload-release-asset@v1.0.1
@@ -148,6 +184,16 @@ jobs:
         upload_url: ${{ steps.create_release.outputs.upload_url }}
         asset_path: ./polishedcrystal/build/polisheddebug-3.0.0-beta.gbc
         asset_name: polisheddebug-3.0.0-beta-${{ env.SHORT_SHA }}.gbc
+        asset_content_type: application/octet-stream
+    - name: Upload debug PATCH
+      id: upload-debug-patch
+      uses: actions/upload-release-asset@v1.0.1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        upload_url: ${{ steps.create_release.outputs.upload_url }}
+        asset_path: ./polishedcrystal/build/polisheddebug-3.0.0-beta.patch
+        asset_name: polisheddebug-3.0.0-beta-${{ env.SHORT_SHA }}.patch
         asset_content_type: application/octet-stream
     - name: Upload debug SYM
       id: upload-debug-sym
