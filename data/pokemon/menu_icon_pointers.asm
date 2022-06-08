@@ -52,7 +52,7 @@ IconPointers:
 	dba VenomothIcon
 	dba DiglettIcon
 	dba DugtrioIcon
-	dba MeowthPlainIcon
+	dba MeowthIcon
 	dba PersianIcon
 	dba PsyduckIcon
 	dba GolduckIcon
@@ -83,7 +83,7 @@ IconPointers:
 	dba SlowbroIcon
 	dba MagnemiteIcon
 	dba MagnetonIcon
-	dba FarfetchDPlainIcon
+	dba FarfetchDIcon
 	dba DoduoIcon
 	dba DodrioIcon
 	dba SeelIcon
@@ -103,7 +103,7 @@ IconPointers:
 	dba VoltorbIcon
 	dba ElectrodeIcon
 	dba ExeggcuteIcon
-	dba ExeggutorPlainIcon
+	dba ExeggutorIcon
 	dba CuboneIcon
 	dba MarowakIcon
 	dba HitmonleeIcon
@@ -122,7 +122,7 @@ IconPointers:
 	dba SeakingIcon
 	dba StaryuIcon
 	dba StarmieIcon
-	dba MrMimePlainIcon
+	dba MrMimeIcon
 	dba ScytherIcon
 	dba JynxIcon
 	dba ElectabuzzIcon
@@ -222,7 +222,7 @@ IconPointers:
 	dba MagcargoIcon
 	dba SwinubIcon
 	dba PiloswineIcon
-	dba CorsolaPlainIcon
+	dba CorsolaIcon
 	dba RemoraidIcon
 	dba OctilleryIcon
 	dba DelibirdIcon

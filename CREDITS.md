@@ -55,6 +55,7 @@ Pokémon Polished Crystal would never have been finished without the help of man
 * Megaman-Omega for some of Prism's overworld sprites.
 * SoupPotato (aka SourApple) for some move animations, sprites of Red Gyarados and Ace Duo, and Berry tree tiles.
 * flempa for some Pokémon sprites and move animations and for Galarian Articuno and Galarian Zapdos animations.
+* ShockSlayer for the mini icons and Yellow's overworld sprite.
 * Scarlax for many new Pokémon animations.
 * ShadowOne333 for many new Pokémon animations.
 * octorox for Galarian Rapidash and Galarian Slowking's backpics.
@@ -71,7 +72,6 @@ Pokémon Polished Crystal would never have been finished without the help of man
 * Pyro for Tamer's sprite.
 * Constantine for Nurse's sprite.
 * Paps for Twins' sprite.
-* ShockSlayer for Yellow's overworld sprite.
 * coraldev for rowboat and sakura petal tiles.
 * lilbluedemon for some bridge tiles.
 * WhoaMan for some MICR font characters.
