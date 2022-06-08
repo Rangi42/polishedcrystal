@@ -83,6 +83,7 @@ engine/overworld/events.o \
 gfx/pics.o \
 gfx/icons.o \
 gfx/minis.o \
+gfx/mini_masks.o \
 gfx/sprites.o \
 gfx/items.o \
 gfx/misc.o
