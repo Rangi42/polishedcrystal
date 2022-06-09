@@ -710,14 +710,23 @@ OpenPokeDB:
 	inc hl
 	ret
 
+pokedb_section: MACRO
+	db BANK(\1)
+	dw (\1) - (\2) * SAVEMON_STRUCT_LENGTH
+ENDM
+
 .Bank1Pointers:
-	dba sBoxMons1AMons
-	dba sBoxMons1CMons
-	dba sBoxMons1BMons
+	; Because we want to point starting from entry 0, and e ends up being above
+	; MONDB_ENTRIES_A (and beyond) for section C and B, include the offset.
+	; This means that for example e=len(A)+1 points to the first entry in
+	; pokedb section B.
+	pokedb_section sBoxMons1AMons, 0
+	pokedb_section sBoxMons1CMons, MONDB_ENTRIES_A + MONDB_ENTRIES_B
+	pokedb_section sBoxMons1BMons, MONDB_ENTRIES_A
 .Bank2Pointers:
-	dba sBoxMons2AMons
-	dba sBoxMons2CMons
-	dba sBoxMons2BMons
+	pokedb_section sBoxMons2AMons, 0
+	pokedb_section sBoxMons2CMons, MONDB_ENTRIES_A + MONDB_ENTRIES_B
+	pokedb_section sBoxMons2BMons, MONDB_ENTRIES_A
 
 EncodeTempMon:
 ; Encodes party_struct wTempMon in-place to savemon_struct wEncodedTempMon.
