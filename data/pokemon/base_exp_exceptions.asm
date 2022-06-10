@@ -6,5 +6,5 @@ ENDM
 
 NewBaseExpExceptions:
 	base_exception CHANSEY, 395
-	base_exception BLISSEY, 608
+	base_exception BLISSEY, 635
 	dw -1
