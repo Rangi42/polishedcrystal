@@ -7079,7 +7079,7 @@ _GetNewBaseExp:
 	jr c, .legendary
 	farcall GetPreEvolution
 .legendary
-	ld a, 9 ; stage 2 or legendary: *9/20 -> *0.45
+	ld a, 10 ; stage 2 or legendary: *10/20 -> *0.5
 	jr c, .got_multiplier
 .stage_1_or_nonevolver
 	ld a, 7 ; stage 1 or non-evolver: *7/20 -> *0.35
