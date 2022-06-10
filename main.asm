@@ -334,6 +334,7 @@ INCLUDE "engine/events/magnet_train.asm"
 INCLUDE "engine/gfx/sprites.asm"
 INCLUDE "engine/gfx/mon_icons.asm"
 INCLUDE "data/pokemon/menu_icon_pointers.asm"
+INCLUDE "data/pokemon/mini_pointers.asm"
 
 
 SECTION "bank24", ROMX
