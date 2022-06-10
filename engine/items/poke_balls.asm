@@ -137,12 +137,12 @@ CheckCriticalCapture:
 	ld d, 0
 .loop
 	ld a, [hli]
-	cp c
+	cp b
 	ld a, [hli]
 	jr c, .next
 	jr nz, .got_multiplier
-	cp b
-	jr c, .got_multiplier
+	cp c
+	jr nc, .got_multiplier
 .next
 	inc d
 	jr .loop
@@ -169,15 +169,15 @@ CheckCriticalCapture:
 	ret
 
 .multipliers
-	; Taken from Prism. Vanilla numbers don't work since we only have ~270 mons.
 	; Multiplier applies if we have less than that amount of mons.
+	; Uses custom values, since we have far less species than vanilla.
 	; This probably should change as we add more mons to the game.
-	dw 30 ; x0
-	dw 100 ; x0.5
-	dw 150 ; x1
-	dw 200 ; x1.5
-	dw 250 ; x2
-	dw -1 ; x2.5
+	bigdw 30 ; x0
+	bigdw 100 ; x0.5
+	bigdw 150 ; x1
+	bigdw 200 ; x1.5
+	bigdw 250 ; x2
+	bigdw 65535 ; x2.5
 
 CheckBallOverflow:
 ; Returns z if capture rate math is currently more than 24bit, which means
