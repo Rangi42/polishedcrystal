@@ -252,42 +252,42 @@ MiniPointers:
 	dba LugiaMini
 	dba HoOhMini
 	dba CelebiMini
-	dba AzurillMini
-	dba WynautMini
-	dba AmbipomMini
+	dba AzurillIcon ; TODO
+	dba WynautIcon ; TODO
+	dba AmbipomIcon ; TODO
 	dba EggMini
 	dba NullMini ; $100
-	dba MismagiusMini
-	dba HonchkrowMini
-	dba BonslyMini
-	dba MimeJrMini
-	dba HappinyMini
-	dba MunchlaxMini
-	dba MantykeMini
-	dba WeavileMini
-	dba MagnezoneMini
-	dba LickilickyMini
-	dba RhyperiorMini
-	dba TangrowthMini
-	dba ElectivireMini
-	dba MagmortarMini
-	dba TogekissMini
-	dba YanmegaMini
-	dba LeafeonMini
-	dba GlaceonMini
-	dba GliscorMini
-	dba MamoswineMini
-	dba PorygonZMini
-	dba SylveonMini
-	dba PerrserkerMini
-	dba CursolaMini
-	dba SirfetchDMini
-	dba MrRimeMini
-	dba WyrdeerMini ; TODO
-	dba KleavorMini ; TODO
-	dba UrsalunaMini ; TODO
-	dba SneaslerMini ; TODO
-	dba OverqwilMini ; TODO
+	dba MismagiusIcon ; TODO
+	dba HonchkrowIcon ; TODO
+	dba BonslyIcon ; TODO
+	dba MimeJrIcon ; TODO
+	dba HappinyIcon ; TODO
+	dba MunchlaxIcon ; TODO
+	dba MantykeIcon ; TODO
+	dba WeavileIcon ; TODO
+	dba MagnezoneIcon ; TODO
+	dba LickilickyIcon ; TODO
+	dba RhyperiorIcon ; TODO
+	dba TangrowthIcon ; TODO
+	dba ElectivireIcon ; TODO
+	dba MagmortarIcon ; TODO
+	dba TogekissIcon ; TODO
+	dba YanmegaIcon ; TODO
+	dba LeafeonIcon ; TODO
+	dba GlaceonIcon ; TODO
+	dba GliscorIcon ; TODO
+	dba MamoswineIcon ; TODO
+	dba PorygonZIcon ; TODO
+	dba SylveonIcon ; TODO
+	dba PerrserkerIcon ; TODO
+	dba CursolaIcon ; TODO
+	dba SirfetchDIcon ; TODO
+	dba MrRimeIcon ; TODO
+	dba WyrdeerIcon ; TODO
+	dba KleavorIcon ; TODO
+	dba UrsalunaIcon ; TODO
+	dba SneaslerIcon ; TODO
+	dba OverqwilIcon ; TODO
 	assert_table_length NUM_SPECIES + 1
 
 	dba UnownBMini
@@ -315,8 +315,8 @@ MiniPointers:
 	dba UnownXMini
 	dba UnownYMini
 	dba UnownZMini
-	dba UnownExclamationMini
-	dba UnownQuestionMini
+	dba UnownExclamationIcon ; TODO
+	dba UnownQuestionIcon ; TODO
 
 	dba ArbokMini ; Kanto
 	dba ArbokMini ; Koga
@@ -337,47 +337,47 @@ endr
 
 	dba GyaradosMini ; Red
 
-	dba MewtwoArmoredMini
+	dba MewtwoArmoredIcon ; TODO
 
-	dba RattataAlolanMini ; TODO
-	dba RaticateAlolanMini ; TODO
-	dba RaichuAlolanMini ; TODO
-	dba SandshrewAlolanMini ; TODO
-	dba SandslashAlolanMini ; TODO
-	dba VulpixAlolanMini ; TODO
-	dba NinetalesAlolanMini ; TODO
-	dba DiglettAlolanMini ; TODO
-	dba DugtrioAlolanMini ; TODO
-	dba MeowthAlolanMini ; TODO
-	dba PersianAlolanMini ; TODO
-	dba GeodudeAlolanMini ; TODO
-	dba GravelerAlolanMini ; TODO
-	dba GolemAlolanMini ; TODO
-	dba GrimerAlolanMini ; TODO
-	dba MukAlolanMini ; TODO
-	dba ExeggutorAlolanMini
-	dba MarowakAlolanMini ; TODO
+	dba RattataAlolanIcon ; TODO
+	dba RaticateAlolanIcon ; TODO
+	dba RaichuAlolanIcon ; TODO
+	dba SandshrewAlolanIcon ; TODO
+	dba SandslashAlolanIcon ; TODO
+	dba VulpixAlolanIcon ; TODO
+	dba NinetalesAlolanIcon ; TODO
+	dba DiglettAlolanIcon ; TODO
+	dba DugtrioAlolanIcon ; TODO
+	dba MeowthAlolanIcon ; TODO
+	dba PersianAlolanIcon ; TODO
+	dba GeodudeAlolanIcon ; TODO
+	dba GravelerAlolanIcon ; TODO
+	dba GolemAlolanIcon ; TODO
+	dba GrimerAlolanIcon ; TODO
+	dba MukAlolanIcon ; TODO
+	dba ExeggutorAlolanIcon ; TODO
+	dba MarowakAlolanIcon ; TODO
 
-	dba MeowthGalarianMini
-	dba PonytaGalarianMini ; TODO
-	dba RapidashGalarianMini ; TODO
-	dba SlowpokeGalarianMini ; TODO
-	dba SlowbroGalarianMini ; TODO
-	dba FarfetchDGalarianMini
-	dba WeezingGalarianMini ; TODO
-	dba MrMimeGalarianMini
-	dba ArticunoGalarianMini ; TODO
-	dba ZapdosGalarianMini ; TODO
-	dba MoltresGalarianMini ; TODO
-	dba SlowkingGalarianMini ; TODO
-	dba CorsolaGalarianMini
+	dba MeowthGalarianIcon ; TODO
+	dba PonytaGalarianIcon ; TODO
+	dba RapidashGalarianIcon ; TODO
+	dba SlowpokeGalarianIcon ; TODO
+	dba SlowbroGalarianIcon ; TODO
+	dba FarfetchDGalarianIcon ; TODO
+	dba WeezingGalarianIcon ; TODO
+	dba MrMimeGalarianIcon ; TODO
+	dba ArticunoGalarianIcon ; TODO
+	dba ZapdosGalarianIcon ; TODO
+	dba MoltresGalarianIcon ; TODO
+	dba SlowkingGalarianIcon ; TODO
+	dba CorsolaGalarianIcon ; TODO
 
-	dba GrowlitheHisuianMini ; TODO
-	dba ArcanineHisuianMini ; TODO
-	dba VoltorbHisuianMini ; TODO
-	dba ElectrodeHisuianMini ; TODO
-	dba TyphlosionHisuianMini ; TODO
-	dba QwilfishHisuianMini ; TODO
-	dba SneaselHisuianMini ; TODO
+	dba GrowlitheHisuianIcon ; TODO
+	dba ArcanineHisuianIcon ; TODO
+	dba VoltorbHisuianIcon ; TODO
+	dba ElectrodeHisuianIcon ; TODO
+	dba TyphlosionHisuianIcon ; TODO
+	dba QwilfishHisuianIcon ; TODO
+	dba SneaselHisuianIcon ; TODO
 
 	assert_table_length NUM_UNIQUE_POKEMON + 1

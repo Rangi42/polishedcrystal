@@ -999,11 +999,13 @@ GetPlayerSwitchTarget:
 	ld a, [wCurPartyMon]
 	inc a
 	ld [wPlayerSwitchTarget], a
+	call LoadTileMapToTempTileMap
 	ld a, [wLinkMode]
 	and a
 	ld a, 1
 	ld [wBattlePlayerAction], a
 	call nz, LinkBattleSendReceiveAction
+	call Call_LoadTempTileMapToTileMap
 	xor a
 	ld [wBattlePlayerAction], a
 	ld a, [wPlayerSwitchTarget]
@@ -1052,9 +1054,11 @@ GetUserSwitchTarget:
 	jr z, GetPlayerSwitchTarget
 
 .enemy_switch
+	call LoadTileMapToTempTileMap
 	ld a, [wLinkMode]
 	and a
 	call nz, LinkBattleSendReceiveAction
+	call Call_LoadTempTileMapToTileMap
 	jr GetEnemySwitchTarget
 
 .random_select
@@ -4635,11 +4639,11 @@ endr
 	jmp LostBattle
 
 .can_escape
+	call LoadTileMapToTempTileMap
 	ld a, [wLinkMode]
 	and a
 	ld a, DRAW
 	jr z, .fled
-	call LoadTileMapToTempTileMap
 	xor a
 	ld [wBattlePlayerAction], a
 	ld a, $f
@@ -5448,9 +5452,11 @@ ParseEnemyAction:
 	call ClearSprites
 
 	; Unconditionally perform at least one link exchange
+	call LoadTileMapToTempTileMap
 	ld a, [wLinkMode]
 	and a
 	call nz, LinkBattleSendReceiveAction
+	call Call_LoadTempTileMapToTileMap
 	call SetEnemyTurn
 	call CheckLockedIn
 	ret nz

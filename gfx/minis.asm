@@ -1,81 +1,5 @@
 SECTION "Mon Minis 1", ROMX
 
-AzurillMini::
-WynautMini::
-AmbipomMini::
-MismagiusMini::
-HonchkrowMini::
-BonslyMini::
-MimeJrMini::
-HappinyMini::
-MunchlaxMini::
-MantykeMini::
-WeavileMini::
-MagnezoneMini::
-LickilickyMini::
-RhyperiorMini::
-TangrowthMini::
-ElectivireMini::
-MagmortarMini::
-TogekissMini::
-YanmegaMini::
-LeafeonMini::
-GlaceonMini::
-GliscorMini::
-MamoswineMini::
-PorygonZMini::
-SylveonMini::
-PerrserkerMini::
-CursolaMini::
-SirfetchDMini::
-MrRimeMini::
-WyrdeerMini::
-KleavorMini::
-UrsalunaMini::
-SneaslerMini::
-OverqwilMini::
-UnownExclamationMini::
-UnownQuestionMini::
-MewtwoArmoredMini::
-RattataAlolanMini::
-RaticateAlolanMini::
-RaichuAlolanMini::
-SandshrewAlolanMini::
-SandslashAlolanMini::
-VulpixAlolanMini::
-NinetalesAlolanMini::
-DiglettAlolanMini::
-DugtrioAlolanMini::
-MeowthAlolanMini::
-PersianAlolanMini::
-GeodudeAlolanMini::
-GravelerAlolanMini::
-GolemAlolanMini::
-GrimerAlolanMini::
-MukAlolanMini::
-ExeggutorAlolanMini::
-MarowakAlolanMini::
-MeowthGalarianMini::
-PonytaGalarianMini::
-RapidashGalarianMini::
-SlowpokeGalarianMini::
-SlowbroGalarianMini::
-FarfetchDGalarianMini::
-WeezingGalarianMini::
-MrMimeGalarianMini::
-ArticunoGalarianMini::
-ZapdosGalarianMini::
-MoltresGalarianMini::
-SlowkingGalarianMini::
-CorsolaGalarianMini::
-GrowlitheHisuianMini::
-ArcanineHisuianMini::
-VoltorbHisuianMini::
-ElectrodeHisuianMini::
-TyphlosionHisuianMini::
-QwilfishHisuianMini::
-SneaselHisuianMini::
-; TODO
 NullMini::
 BulbasaurMini::         INCBIN "gfx/minis/bulbasaur.2bpp.lz"
 IvysaurMini::           INCBIN "gfx/minis/ivysaur.2bpp.lz"
@@ -463,7 +387,7 @@ UnownVMini::            INCBIN "gfx/minis/unown_v.2bpp.lz"
 UnownWMini::            INCBIN "gfx/minis/unown_w.2bpp.lz"
 UnownXMini::            INCBIN "gfx/minis/unown_x.2bpp.lz"
 UnownYMini::            INCBIN "gfx/minis/unown_y.2bpp.lz"
-UnownZMini::            INCBIN "gfx/minis/unown_y.2bpp.lz"
+UnownZMini::            INCBIN "gfx/minis/unown_z.2bpp.lz"
 ;UnownExclamationMini::  INCBIN "gfx/minis/unown_exclamation.2bpp.lz"
 ;UnownQuestionMini::     INCBIN "gfx/minis/unown_question.2bpp.lz"
 ;MewtwoArmoredMini::     INCBIN "gfx/minis/mewtwo_armored.2bpp.lz"
