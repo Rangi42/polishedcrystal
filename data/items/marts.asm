@@ -40,6 +40,9 @@ Marts:
 	dw BattleTowerMart1
 	dw BattleTowerMart2
 	dw BattleTowerMart3
+	dw BattleFactoryMart1
+	dw BattleFactoryMart2
+	dw BattleFactoryMart3
 	assert_table_length NUM_MARTS
 
 CherrygroveMart:
@@ -271,7 +274,7 @@ BlackthornMart:
 	db -1
 
 IndigoPlateauMart:
-	db 7 ; # items
+	db 8 ; # items
 	db ULTRA_BALL
 	db MAX_REPEL
 	db HYPER_POTION
@@ -279,6 +282,7 @@ IndigoPlateauMart:
 	db FULL_RESTORE
 	db REVIVE
 	db FULL_HEAL
+	db EXP_SHARE
 	db -1
 
 ViridianMart:
@@ -494,10 +498,32 @@ BattleTowerMart2:
 BattleTowerMart3:
 	db 7 ; # items
 	db MACHO_BRACE,  16
+	db POWER_WEIGHT, 24
+	db POWER_BRACER, 24
+	db POWER_BELT,   24
+	db POWER_LENS,   24
+	db POWER_BAND,   24
+	db POWER_ANKLET, 24
+	db -1
+
+; TODO: Battle Factory items
+
+BattleFactoryMart1:
+	db 6 ; # items
 	db FOCUS_BAND,   16
 	db FOCUS_SASH,   48
 	db ASSAULT_VEST, 48
 	db PROTECT_PADS, 16
 	db ROCKY_HELMET, 48
 	db SAFE_GOGGLES, 32
+	db -1
+
+BattleFactoryMart2:
+	db 1 ; # items
+	db POTION, 1
+	db -1
+
+BattleFactoryMart3:
+	db 1 ; # items
+	db POTION, 1
 	db -1
