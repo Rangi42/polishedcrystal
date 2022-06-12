@@ -1,5 +1,20 @@
 INCLUDE "data/pokemon/menu_icon_pals.asm"
 
+LoadMini:
+; Load mini using species+form in wCurIcon* as input.
+	ld a, [wCurIconSpecies]
+	ld c, a
+	; b = form
+	ld a, [wCurIconForm]
+	ld b, a
+	; fallthrough
+_LoadMini:
+; c = species, b = form
+	call GetCosmeticSpeciesAndFormIndex
+	inc bc
+	ld hl, MiniPointers
+	jr DoLoadMonIcon
+
 LoadOverworldMonIcon:
 	; c = species
 	ld a, [wCurIconSpecies]
@@ -7,12 +22,13 @@ LoadOverworldMonIcon:
 	; b = form
 	ld a, [wCurIconForm]
 	ld b, a
-	; bc = index
 	; fallthrough
 _LoadOverworldMonIcon:
 	call GetCosmeticSpeciesAndFormIndex
 	inc bc
 	ld hl, IconPointers
+	; fallthrough
+DoLoadMonIcon:
 	add hl, bc
 	add hl, bc
 	add hl, bc
@@ -127,6 +143,7 @@ ProcessMenuMonIconColor:
 GetMenuMonIconTruePalette:
 ; Returns icon col1/col2 palette in bcde (col0/col3 as white/black is implicit)
 ; with species+form in bc and shininess in a.
+; TODO: get rid of this.
 if DEF(MONOCHROME)
 	ld bc, PAL_MONOCHROME_WHITE
 	ld de, PAL_MONOCHROME_LIGHT
