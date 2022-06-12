@@ -342,7 +342,7 @@ Pokedex_GetMonIconPalette:
 	ld a, [wCurIconForm]
 	ld b, a
 	ld a, [wPokedex_Shiny]
-	farcall GetMenuMonIconTruePalette
+	farcall GetMonPalInBCDE
 	ld hl, wBGPals1 palette 2 + 5
 	ld a, d
 	ld [hld], a
@@ -778,7 +778,7 @@ Pokedex_UpdateRow:
 	push af
 	push hl
 	xor a
-	farcall GetMenuMonIconTruePalette
+	farcall GetMonPalInBCDE
 	pop hl
 	pop af
 	push af
@@ -840,7 +840,7 @@ Pokedex_UpdateRow:
 	; Icon
 	pop bc
 	push af
-	farcall _LoadOverworldMonIcon
+	farcall _LoadMini
 	pop af
 	ld a, b
 	pop bc
@@ -3403,7 +3403,7 @@ _Pokedex_GetCursorMon:
 	cp DEXDISP_DESC
 	jr c, .done_2
 
-	farcall LoadOverworldMonIcon
+	farcall LoadMini
 	ld h, d
 	ld l, e
 	ld a, BANK(wDexMonIconTiles)

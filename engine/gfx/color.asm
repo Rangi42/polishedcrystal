@@ -520,7 +520,10 @@ GetMonPalettePointer:
 	ld a, [hl]
 	and SPECIESFORM_MASK
 	ld b, a
+	pop af
+_GetMonPalettePointer:
 	; bc = index
+	push af
 	call GetSpeciesAndFormIndex
 	ld h, b
 	ld l, c
@@ -531,6 +534,26 @@ GetMonPalettePointer:
 	ld bc, PokemonPalettes
 	add hl, bc
 	pop af
+	ret
+
+GetMonPalInBCDE:
+; Returns (non-shiny) mon palette for species+form bc in bcde.
+	call _GetMonPalettePointer
+	and SHINY_MASK
+	jr z, .shiny_done
+	; Shiny is the pal right below.
+	inc hl
+	inc hl
+	inc hl
+	inc hl
+.shiny_done
+	ld a, [hli]
+	ld c, a
+	ld a, [hli]
+	ld b, a
+	ld a, [hli]
+	ld e, a
+	ld d, [hl]
 	ret
 
 GetMonNormalOrShinyPalettePointer:
