@@ -2534,7 +2534,7 @@ MarowakAlolanEvosAttacks:
 	db 1, GROWL
 	db 3, TACKLE ; Tail Whip → new move
 	db 7, ASTONISH ; Bone Club → new move
-	db 11, FLAME_CHARGE ; Flame Wheel → LGPE move
+	db 11, FIRE_SPIN ; Flame Wheel → LGPE move
 	db 13, LEER
 	db 17, HEX
 	db 21, BONEMERANG
