@@ -726,25 +726,55 @@ GenderMenu::
 	xor a
 	ldh [hBGMapMode], a
 
-.loop
+.set_gender_cursor
 	ld a, [wPlayerGender]
 	and a
+	ld hl, wBGPals2 palette 2 + 2
 	ld a, "▼"
 	jr z, .got_cursor
+	ld hl, wBGPals2 palette 0 + 2
 	ld a, " "
 .got_cursor
-	hlcoord 6, 3
-	ld [hl], a
+	bccoord 6, 3
+	ld [bc], a
 	xor "▼" ^ " "
-	hlcoord 13, 3
-	ld [hl], a
+	bccoord 13, 3
+	ld [bc], a
 
-	ld a, $1
-	ldh [hBGMapMode], a
-	call Delay2
-	xor a
-	ldh [hBGMapMode], a
+	; Apply transparency to the unselected option.
+	jr z, .got_pal
+.got_pal
 
+	; First, undo any previously applied transparency effect.
+	push hl
+	call SetPalettes
+	pop hl
+
+	ld a, BANK(wBGPals2)
+	ldh [rSVBK], a
+
+	ld d, 3
+.transparency_loop
+	ld a, [hli]
+	ld c, a
+	ld a, [hld]
+	ld b, a
+	farcall ApplyWhiteTransparency
+	ld a, c
+	ld [hli], a
+	ld a, b
+	ld [hli], a
+	dec d
+	jr nz, .transparency_loop
+
+	ld a, BANK(wPlayerGender)
+	ldh [rSVBK], a
+
+	ld b, 1
+	call SafeCopyTilemapAtOnce
+
+.loop
+	call DelayFrame
 	call GetJoypad
 	ldh a, [hJoyDown]
 	bit A_BUTTON_F, a
@@ -760,7 +790,7 @@ GenderMenu::
 	ld a, 1 << PLAYERGENDER_FEMALE_F
 .got_gender
 	ld [wPlayerGender], a
-	jr .loop
+	jr .set_gender_cursor
 
 AreYouABoyOrAreYouAGirlText:
 	; Are you a boy? Or are you a girl?
