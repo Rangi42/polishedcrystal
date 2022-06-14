@@ -2465,18 +2465,13 @@ _AskItemMoveText::
 
 SECTION "Text_AreYouABoyOrAreYouAGirl", ROMX
 Text_AreYouABoyOrAreYouAGirl::
-	text "Are you a boy?"
-	line "Or are you a girl?"
+	text "Which photo is on"
+	line "your Trainer Card?"
 	done
 
-SECTION "Text_SoYoureABoy", ROMX
-Text_SoYoureABoy::
-	text "So you're a boy?"
-	done
-
-SECTION "Text_SoYoureAGirl", ROMX
-Text_SoYoureAGirl::
-	text "So you're a girl?"
+SECTION "Text_SoThisIsYou", ROMX
+Text_SoThisIsYou::
+	text "So this is you?"
 	done
 
 SECTION "Text_BattleUser", ROMX

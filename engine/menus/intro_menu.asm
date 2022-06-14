@@ -673,21 +673,17 @@ ElmText7:
 	text_end
 
 InitGender:
-	ld hl, .WhitePal
-	ld de, wBGPals1 palette 0
-	ld bc, 1 palettes
-	call FarCopyColorWRAM
 	ld c, 15
-	call FadePalettes
-
+	call FadeToWhite
 	call ClearTileMap
-	call ApplyAttrAndTilemapInVBlank
-	call SetPalettes
 
-	ld a, CGB_INTRO_PALS
+	call InitGenderGraphics
+	;call ApplyAttrAndTilemapInVBlank
+
+	ld a, CGB_INTRO_GENDER_PALS
 	call GetCGBLayout
 	call InitIntroGradient
-	call SetPalettes
+	call Intro_RotatePalettesLeftFrontpic
 
 	ld hl, AreYouABoyOrAreYouAGirlText
 	call PrintText
@@ -701,7 +697,11 @@ InitGender:
 	dec a
 	ld [wPlayerGender], a
 
+	ld c, 15
+	call FadeToWhite
 	call ClearTileMap
+	call ClearTileMap
+
 	call DrawIntroPlayerPic
 
 	ld a, CGB_INTRO_PALS
@@ -709,12 +709,7 @@ InitGender:
 	call InitIntroGradient
 	call Intro_RotatePalettesLeftFrontpic
 
-	ld hl, SoYoureABoyText
-	ld a, [wPlayerGender]
-	and a
-	jr z, .boy
-	ld hl, SoYoureAGirlText
-.boy
+	ld hl, SoThisIsYouText
 	call PrintText
 
 	call YesNoBox
@@ -752,15 +747,30 @@ AreYouABoyOrAreYouAGirlText:
 	text_far Text_AreYouABoyOrAreYouAGirl
 	text_end
 
-SoYoureABoyText:
-	; So you're a boy?
-	text_far Text_SoYoureABoy
+SoThisIsYouText:
+	; So this is you?
+	text_far Text_SoThisIsYou
 	text_end
 
-SoYoureAGirlText:
-	; So you're a girl?
-	text_far Text_SoYoureAGirl
-	text_end
+InitGenderGraphics:
+	ld hl, CalPic
+	ld de, vTiles2 tile $00
+	lb bc, BANK(CalPic), 7 * 7
+	call DecompressRequest2bpp
+	ld hl, CarriePic
+	ld de, vTiles2 tile $31
+	lb bc, BANK(CarriePic), 7 * 7
+	call DecompressRequest2bpp
+	xor a
+	ldh [hGraphicStartTile], a
+	hlcoord 3, 4
+	lb bc, 7, 7
+	predef PlaceGraphic
+	ld a, $31
+	ldh [hGraphicStartTile], a
+	hlcoord 10, 4
+	lb bc, 7, 7
+	predef_jump PlaceGraphic
 
 NamePlayer:
 	ld b, $1 ; player

@@ -35,6 +35,7 @@ LoadCGBLayout::
 	dw _CGB_GameFreakLogo
 	dw _CGB_TradeTube
 	dw _CGB_IntroPals
+	dw _CGB_IntroGenderPals
 	dw _CGB_PlayerOrMonFrontpicPals
 	dw _CGB_TrainerOrMonFrontpicPals
 	dw _CGB_JudgeSystem
@@ -1106,7 +1107,7 @@ _CGB_IntroPals:
 	call VaryBGPal0ByTempMonDVs
 	pop de
 
-	ld hl, .IntroGradientPalette
+	ld hl, IntroGradientPalette
 	call LoadOnePalette
 
 	call WipeAttrMap
@@ -1119,7 +1120,31 @@ _CGB_IntroPals:
 	call ApplyAttrMap
 	jmp ApplyPals
 
-.IntroGradientPalette:
+_CGB_IntroGenderPals:
+	ld de, wBGPals1
+	ld hl, ChrisPalette
+	call LoadPalette_White_Col1_Col2_Black
+	ld hl, IntroGradientPalette
+	call LoadOnePalette
+	ld hl, KrisPalette
+	call LoadPalette_White_Col1_Col2_Black
+
+	call WipeAttrMap
+
+	hlcoord 0, 0, wAttrmap
+	lb bc, 3, 20
+	ld a, $1
+	call FillBoxWithByte
+
+	hlcoord 10, 4, wAttrmap
+	lb bc, 7, 7
+	ld a, $2
+	call FillBoxWithByte
+
+	call ApplyAttrMap
+	jmp ApplyPals
+
+IntroGradientPalette:
 if !DEF(MONOCHROME)
 	RGB 31, 31, 31
 	RGB 27, 31, 31
