@@ -454,11 +454,10 @@ RespawnOneOffs:
 	ret
 
 CheckCaughtFlag:
-; Sets the z flag if the player has not caught the mon
+; EngineFlagAction sets the z flag if the player has not caught the mon
 ; input: de = ENGINE_PLAYER_CAUGHT_*
 	ld b, CHECK_FLAG
-	call _EngineFlagAction
-	dec c
+	farcall EngineFlagAction
 	ret
 
 RespawnRoamingRaikou:
