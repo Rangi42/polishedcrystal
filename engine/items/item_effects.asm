@@ -501,8 +501,6 @@ PokeBallEffect:
 	cp BATTLETYPE_CONTEST
 	jmp z, .catch_bug_contest_mon
 
-	; Set wBattleResult bit 6 to record
-	; that the pokémon was caught.
 	ld hl, wBattleResult
 	set BATTLERESULT_CAUGHT_POKEMON_F, [hl]
 
