@@ -678,7 +678,6 @@ InitGender:
 	call ClearTileMap
 
 	call InitGenderGraphics
-	;call ApplyAttrAndTilemapInVBlank
 
 	ld a, CGB_INTRO_GENDER_PALS
 	call GetCGBLayout
@@ -688,14 +687,8 @@ InitGender:
 	ld hl, AreYouABoyOrAreYouAGirlText
 	call PrintText
 
-	ld hl, .MenuDataHeader
-	call LoadMenuHeader
 	call ApplyAttrAndTilemapInVBlank
-	call VerticalMenu
-	call CloseWindow
-	ld a, [wMenuCursorY]
-	dec a
-	ld [wPlayerGender], a
+	call GenderMenu
 
 	ld c, 15
 	call FadeToWhite
@@ -729,18 +722,45 @@ else
 	RGB_MONOCHROME_WHITE
 endc
 
-.MenuDataHeader:
-	db $40 ; flags
-	db 7, 13 ; start coords
-	db 11, 19 ; end coords
-	dw .MenuData2
-	db 1 ; default option
+GenderMenu::
+	xor a
+	ldh [hBGMapMode], a
 
-.MenuData2:
-	db $c1 ; flags
-	db 2 ; items
-	db "Boy@"
-	db "Girl@"
+.loop
+	ld a, [wPlayerGender]
+	and a
+	ld a, "▼"
+	jr z, .got_cursor
+	ld a, " "
+.got_cursor
+	hlcoord 6, 3
+	ld [hl], a
+	xor "▼" ^ " "
+	hlcoord 13, 3
+	ld [hl], a
+
+	ld a, $1
+	ldh [hBGMapMode], a
+	call Delay2
+	xor a
+	ldh [hBGMapMode], a
+
+	call GetJoypad
+	ldh a, [hJoyDown]
+	bit A_BUTTON_F, a
+	ret nz
+	bit D_RIGHT_F, a
+	jr nz, .d_right
+	bit D_LEFT_F, a
+	jr z, .loop
+
+	xor a
+	jr .got_gender
+.d_right
+	ld a, 1 << PLAYERGENDER_FEMALE_F
+.got_gender
+	ld [wPlayerGender], a
+	jr .loop
 
 AreYouABoyOrAreYouAGirlText:
 	; Are you a boy? Or are you a girl?
