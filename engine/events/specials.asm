@@ -372,45 +372,47 @@ RespawnOneOffs:
 	eventflagreset EVENT_BEAT_CYNTHIA
 .SkipCynthia
 
+	; Set CHECK_FLAG once to be used multiple times
+	ld b, CHECK_FLAG
 	ld de, ENGINE_PLAYER_CAUGHT_SUDOWOODO
-	call CheckCaughtFlag
+	farcall EngineFlagAction
 	jr nz, .CaughtSudowoodo
 	eventflagreset EVENT_ROUTE_36_SUDOWOODO
 .CaughtSudowoodo
 
 	ld de, ENGINE_PLAYER_CAUGHT_ARTICUNO
-	call CheckCaughtFlag
+	farcall EngineFlagAction
 	jr nz, .CaughtArticuno
 	eventflagreset EVENT_SEAFOAM_ISLANDS_ARTICUNO
 .CaughtArticuno
 
 	ld de, ENGINE_PLAYER_CAUGHT_ZAPDOS
-	call CheckCaughtFlag
+	farcall EngineFlagAction
 	jr nz, .CaughtZapdos
 	eventflagreset EVENT_ROUTE_10_ZAPDOS
 	eventflagreset EVENT_ZAPDOS_GONE
 .CaughtZapdos
 
 	ld de, ENGINE_PLAYER_CAUGHT_MOLTRES
-	call CheckCaughtFlag
+	farcall EngineFlagAction
 	jr nz, .CaughtMoltres
 	eventflagreset EVENT_CINNABAR_VOLCANO_MOLTRES
 .CaughtMoltres
 
 	ld de, ENGINE_PLAYER_CAUGHT_MEWTWO
-	call CheckCaughtFlag
+	farcall EngineFlagAction
 	jr nz, .CaughtMewtwo
 	eventflagreset EVENT_CERULEAN_CAVE_MEWTWO
 .CaughtMewtwo
 
 	ld de, ENGINE_PLAYER_CAUGHT_MEW
-	call CheckCaughtFlag
+	farcall EngineFlagAction
 	jr nz, .CaughtMew
 	eventflagreset EVENT_FARAWAY_JUNGLE_MEW
 .CaughtMew
 
 	ld de, ENGINE_PLAYER_CAUGHT_RAIKOU
-	call CheckCaughtFlag
+	farcall EngineFlagAction
 	jr nz, .CaughtRaikou
 	ld hl, wRoamMon1Species
 	ld a, [hl]
@@ -419,7 +421,7 @@ RespawnOneOffs:
 .CaughtRaikou
 
 	ld de, ENGINE_PLAYER_CAUGHT_ENTEI
-	call CheckCaughtFlag
+	farcall EngineFlagAction
 	jr nz, .CaughtEntei
 	ld hl, wRoamMon2Species
 	ld a, [hl]
@@ -430,7 +432,7 @@ RespawnOneOffs:
 	eventflagcheck EVENT_FOUGHT_SUICUNE
 	jr z, .CaughtOrNeverFoughtSuicune
 	ld de, ENGINE_PLAYER_CAUGHT_SUICUNE
-	call CheckCaughtFlag
+	farcall EngineFlagAction
 	jr nz, .CaughtOrNeverFoughtSuicune
 	ld hl, wRoamMon3Species
 	ld a, [hl]
@@ -439,25 +441,18 @@ RespawnOneOffs:
 .CaughtOrNeverFoughtSuicune
 
 	ld de, ENGINE_PLAYER_CAUGHT_LUGIA
-	call CheckCaughtFlag
+	farcall EngineFlagAction
 	jr nz, .CaughtLugia
 	eventflagreset EVENT_WHIRL_ISLAND_LUGIA_CHAMBER_LUGIA
 	eventflagreset EVENT_FOUGHT_LUGIA
 .CaughtLugia
 
 	ld de, ENGINE_PLAYER_CAUGHT_HO_OH
-	call CheckCaughtFlag
+	farcall EngineFlagAction
 	ret nz
 	eventflagreset EVENT_TIN_TOWER_ROOF_HO_OH
 	eventflagreset EVENT_FOUGHT_HO_OH
 	eventflagreset EVENT_EUSINES_HOUSE_EUSINE
-	ret
-
-CheckCaughtFlag:
-; EngineFlagAction sets the z flag if the player has not caught the mon
-; input: de = ENGINE_PLAYER_CAUGHT_*
-	ld b, CHECK_FLAG
-	farcall EngineFlagAction
 	ret
 
 RespawnRoamingRaikou:
