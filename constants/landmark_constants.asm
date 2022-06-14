@@ -69,7 +69,7 @@
 	const FAST_SHIP          ; 41
 	const SINJOH_RUINS       ; 42
 	const MYSTRI_STAGE       ; 43
-KANTO_LANDMARK EQU const_value
+DEF KANTO_LANDMARK EQU const_value
 	const PALLET_TOWN        ; 44
 	const ROUTE_1            ; 45
 	const VIRIDIAN_CITY      ; 46
@@ -133,7 +133,7 @@ KANTO_LANDMARK EQU const_value
 	const INDIGO_PLATEAU     ; 80
 	const ROUTE_28           ; 81
 	const CINNABAR_LAB       ; 82
-SHAMOUTI_LANDMARK EQU const_value
+DEF SHAMOUTI_LANDMARK EQU const_value
 	const SHAMOUTI_ISLAND    ; 83
 	const BEAUTIFUL_BEACH    ; 84
 	const ROCKY_BEACH        ; 85
@@ -149,14 +149,14 @@ SHAMOUTI_LANDMARK EQU const_value
 	const VALENCIA_ISLAND    ; 8f
 	const NAVEL_ROCK         ; 90
 	const FARAWAY_ISLAND     ; 91
-NUM_LANDMARKS EQU const_value
+DEF NUM_LANDMARKS EQU const_value
 
 ; used in CaughtData
-LANDMARK_EVENT EQU $ff
+DEF LANDMARK_EVENT EQU $ff
 
 ; Regions
 	const_def
 	const JOHTO_REGION  ; 0
 	const KANTO_REGION  ; 1
 	const ORANGE_REGION ; 2
-NUM_REGIONS EQU const_value
+DEF NUM_REGIONS EQU const_value

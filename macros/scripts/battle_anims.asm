@@ -1,6 +1,6 @@
 ; BattleAnimCommands indexes (see engine/battle_anims/anim_commands.asm)
 	const_def $cf
-FIRST_BATTLE_ANIM_CMD EQU const_value
+DEF FIRST_BATTLE_ANIM_CMD EQU const_value
 
 anim_wait: MACRO
 	assert (\1) < FIRST_BATTLE_ANIM_CMD, "anim_wait argument must be less than {FIRST_BATTLE_ANIM_CMD}"

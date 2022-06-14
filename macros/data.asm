@@ -1,6 +1,6 @@
 ; Value macros
 
-percent EQUS "* $ff / 100"
+DEF percent EQUS "* $ff / 100"
 
 
 ; Constant data (db, dw, dl) macros

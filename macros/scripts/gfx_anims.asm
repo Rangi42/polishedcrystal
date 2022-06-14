@@ -33,7 +33,7 @@ endanim: MACRO
 	db endanim_command
 ENDM
 
-const_value = $fe
+DEF const_value = $fe
 
 	const dorestart_command ; $fe
 dorestart: MACRO ; used for oam

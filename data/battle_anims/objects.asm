@@ -1,5 +1,5 @@
-ABSOLUTE_X EQU $00
-RELATIVE_X EQU $01
+DEF ABSOLUTE_X EQU $00
+DEF RELATIVE_X EQU $01
 
 battleanimobj: MACRO
 	db \1 ; flags

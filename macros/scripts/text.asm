@@ -1,9 +1,9 @@
 ; 'text' has started; we are waiting to see if compression will be tried.
-_might_compress_text = 0
+DEF _might_compress_text = 0
 ; 'text' has started being compressible; we are counting to see if compression will save space.
-_compressing_text = 0
+DEF _compressing_text = 0
 ; Add an "@" terminator to compressed 'text' which uncompressed does not need.
-_compression_terminator = 0
+DEF _compression_terminator = 0
 
 ; Text commands
 

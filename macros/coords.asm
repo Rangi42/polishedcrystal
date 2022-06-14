@@ -1,6 +1,6 @@
-hlcoord EQUS "coord hl,"
-bccoord EQUS "coord bc,"
-decoord EQUS "coord de,"
+DEF hlcoord EQUS "coord hl,"
+DEF bccoord EQUS "coord bc,"
+DEF decoord EQUS "coord de,"
 
 coord: MACRO
 ; register, x, y[, origin]
@@ -11,9 +11,9 @@ coord: MACRO
 	endc
 ENDM
 
-hldexcoord EQUS "dexcoord hl,"
-bcdexcoord EQUS "dexcoord bc,"
-dedexcoord EQUS "dexcoord de,"
+DEF hldexcoord EQUS "dexcoord hl,"
+DEF bcdexcoord EQUS "dexcoord bc,"
+DEF dedexcoord EQUS "dexcoord de,"
 
 dexcoord: MACRO
 ; register, x, y[, origin]
@@ -24,9 +24,9 @@ dexcoord: MACRO
 	endc
 ENDM
 
-hlbgcoord EQUS "bgcoord hl,"
-bcbgcoord EQUS "bgcoord bc,"
-debgcoord EQUS "bgcoord de,"
+DEF hlbgcoord EQUS "bgcoord hl,"
+DEF bcbgcoord EQUS "bgcoord bc,"
+DEF debgcoord EQUS "bgcoord de,"
 
 bgcoord: MACRO
 ; register, x, y[, origin]

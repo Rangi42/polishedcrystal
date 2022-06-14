@@ -1,7 +1,7 @@
-MAJOR EQU 0
-MINOR EQU 5
-PATCH EQU 2
-RC    EQU 0
+DEF MAJOR EQU 0
+DEF MINOR EQU 5
+DEF PATCH EQU 2
+DEF RC    EQU 0
 
 wrong_rgbds: MACRO
 	fail "polishedcrystal requires rgbds v0.5.2 or newer."

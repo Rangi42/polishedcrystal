@@ -2,7 +2,7 @@ map_id: MACRO
 	db GROUP_\1, MAP_\1
 ENDM
 
-object_const_def EQUS "const_def 1"
+DEF object_const_def EQUS "const_def 1"
 
 def_scene_scripts: MACRO
 	REDEF _NUM_SCENE_SCRIPTS EQUS "_NUM_SCENE_SCRIPTS_\@"
