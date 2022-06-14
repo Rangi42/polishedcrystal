@@ -3,7 +3,7 @@ DEF MINOR EQU 5
 DEF PATCH EQU 2
 DEF RC    EQU 0
 
-wrong_rgbds: MACRO
+MACRO wrong_rgbds
 	fail "polishedcrystal requires rgbds v0.5.2 or newer."
 ENDM
 

@@ -14,7 +14,7 @@ TreeMons:
 
 ; Two tables each (normal, rare).
 
-tree_mon: MACRO
+MACRO tree_mon
 ; %, species, level
 	db \1
 	dp \2

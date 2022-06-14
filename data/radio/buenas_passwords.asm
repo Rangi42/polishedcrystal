@@ -1,4 +1,4 @@
-password_group: MACRO
+MACRO password_group
 	db \1, \2
 	if \1 == BUENA_MON
 		dp \3, NO_FORM

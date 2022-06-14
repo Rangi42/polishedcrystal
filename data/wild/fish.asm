@@ -1,4 +1,4 @@
-fishgroup: MACRO
+MACRO fishgroup
 ; mon chance, mon+item chance, old rod, good rod, super rod
 	db \1, \2
 	dw \3, \4, \5
@@ -23,7 +23,7 @@ FishGroups:
 	fishgroup 65 percent, (65 + 5) percent, .Qwilfish_NoSwarm_Old, .Qwilfish_NoSwarm_Good, .Qwilfish_NoSwarm_Super
 	assert_table_length NUM_FISHGROUPS
 
-fishentry: MACRO
+MACRO fishentry
 ; % chance, species, level
 	db \1
 	if _NARG == 4

@@ -1,4 +1,4 @@
-contest_mon: MACRO
+MACRO contest_mon
 	db \1
 	dp \2
 	db \3, \4

@@ -710,7 +710,7 @@ OpenPokeDB:
 	inc hl
 	ret
 
-pokedb_section: MACRO
+MACRO pokedb_section
 	db BANK(\1)
 	dw (\1) - (\2) * SAVEMON_STRUCT_LENGTH
 ENDM

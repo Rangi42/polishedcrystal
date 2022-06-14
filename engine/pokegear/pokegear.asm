@@ -1833,7 +1833,7 @@ GetNextTownMapTilePalette:
 	ret
 
 .PalMap:
-townmappals: MACRO
+MACRO townmappals
 rept _NARG / 2
 	dn \2, \1
 	shift 2

@@ -43,7 +43,7 @@ FightingDojoSetupRematchesCallback:
 	iftrue .SetupDailyRematches
 	endcallback
 
-rematch: MACRO
+MACRO rematch
 	; rematch person, varsprite, sprite, y, x, face
 	moveobject \1, \5, \4
 	turnobject \1, \6
@@ -51,12 +51,12 @@ rematch: MACRO
 	variablesprite \2, \3
 ENDM
 
-rematch_left: MACRO
+MACRO rematch_left
 	; rematch_left person, varsprite, sprite
 	rematch \1, \2, \3, 6, 3, RIGHT
 ENDM
 
-rematch_right: MACRO
+MACRO rematch_right
 	; rematch_right person, varsprite, sprite
 	rematch \1, \2, \3, 6, 6, LEFT
 ENDM
@@ -355,7 +355,7 @@ FightingDojoSign2Text:
 	line "side!"
 	done
 
-rematch_script: MACRO
+MACRO rematch_script
 	; rematch_script name, trainer, flag
 	faceplayer
 	opentext

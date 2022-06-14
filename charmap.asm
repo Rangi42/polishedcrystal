@@ -1,4 +1,4 @@
-ctxtmap: MACRO
+MACRO ctxtmap
 DEF x = \2
 DEF ___huffman_data_{02X:x} EQU %\3
 DEF ___huffman_length_{02X:x} EQU STRLEN("\3")
@@ -316,7 +316,7 @@ DEF NGRAMS_END EQU $51
 	setcharmap default
 
 
-rawchar: MACRO
+MACRO rawchar
 	setcharmap no_ngrams
 	db \#
 	setcharmap default

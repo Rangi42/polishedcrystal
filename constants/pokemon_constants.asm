@@ -319,7 +319,7 @@ DEF CANCEL EQU -1
 ; - CosmeticSpeciesAndFormTable (see data/pokemon/variant_forms.asm)
 ; - ValidVariantRanges (see data/pokemon/valid_variants.asm)
 
-ext_const_def: MACRO
+MACRO ext_const_def
 	if _NARG >= 1
 		def ext_const_value = \1
 	else
@@ -331,7 +331,7 @@ ext_const_def: MACRO
 	endc
 ENDM
 
-ext_const: MACRO
+MACRO ext_const
 	const_skip
 	DEF \1 EQU ext_const_value
 	redef ext_const_value += const_inc

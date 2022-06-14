@@ -1,6 +1,6 @@
 DEF __trainer_class__ = 0
 
-trainerclass: MACRO
+MACRO trainerclass
 DEF \1 EQU __trainer_class__
 DEF __trainer_class__ += 1
 	const_def 1

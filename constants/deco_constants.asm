@@ -68,7 +68,7 @@ DEF NUM_DECO_ACTIONS EQU const_value - 1
 
 DEF __deco_value__ = 0
 
-deco: MACRO
+MACRO deco
 	const DECO_\1
 DEF DECOFLAG_\1 EQU __deco_value__
 DEF __deco_value__ += 1

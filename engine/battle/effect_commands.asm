@@ -1244,7 +1244,7 @@ UserValidBattleItem:
 .done
 	jmp PopBCDEHL
 
-species_battle_item: MACRO
+MACRO species_battle_item
 	db \1
 	shift
 	dp \#
@@ -5096,7 +5096,7 @@ DisplayStatusProblem:
 	ld l, a
 	jmp StdBattleTextbox
 
-status_problem: MACRO
+MACRO status_problem
 	db \1 ; status mask
 	dw \2 ; animation
 	dw \3 ; text

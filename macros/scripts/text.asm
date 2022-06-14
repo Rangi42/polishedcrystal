@@ -7,32 +7,32 @@ DEF _compression_terminator = 0
 
 ; Text commands
 
-text_start: MACRO
+MACRO text_start
 ; Enter text writing mode.
 	stop_compressing_text
 	db "<START>"
 ENDM
 
-text_ram: MACRO
+MACRO text_ram
 ; Write text from a RAM address.
 	stop_compressing_text
 	db "<RAM>"
 	dw \1 ; address
 ENDM
 
-text_promptbutton: MACRO
+MACRO text_promptbutton
 ; Wait for button press; show arrow.
 	stop_compressing_text
 	db "<WAIT>"
 ENDM
 
-text_asm: MACRO
+MACRO text_asm
 ; Start interpreting assembly code.
 	stop_compressing_text
 	db "<ASM>"
 ENDM
 
-text_decimal: MACRO
+MACRO text_decimal
 ; Read bytes from address and print them as a number.
 	stop_compressing_text
 	db "<NUM>"
@@ -40,39 +40,39 @@ text_decimal: MACRO
 	dn \2, \3 ; bytes, digits
 ENDM
 
-text_pause: MACRO
+MACRO text_pause
 ; Pause for 30 frames unless A or B is pressed.
 	stop_compressing_text
 	db "<PAUSE>"
 ENDM
 
-text_sound: MACRO
+MACRO text_sound
 ; Play a sound effect.
 	stop_compressing_text
 	db "<SOUND>"
 	db \1 ; sfx
 ENDM
 
-text_today: MACRO
+MACRO text_today
 ; Print the weekday.
 	stop_compressing_text
 	db "<DAY>"
 ENDM
 
-text_far: MACRO
+MACRO text_far
 ; Write text from a different bank.
 	stop_compressing_text
 	db "<FAR>"
 	dab \1 ; text_pointer
 ENDM
 
-text_end: MACRO
+MACRO text_end
 ; Stops processing text commands.
 	stop_compressing_text
 	db "@"
 ENDM
 
-stop_compressing_text: MACRO
+MACRO stop_compressing_text
 ; Stops text compression if it is ongoing.
 	DEF _might_compress_text = 0
 	if _compressing_text
@@ -84,7 +84,7 @@ ENDM
 
 ; Special characters
 
-text: MACRO
+MACRO text
 ; Start writing text.
 	if _might_compress_text || _compressing_text
 		fail "'text' was already started!"
@@ -95,47 +95,47 @@ text: MACRO
 	_dtxt \#
 ENDM
 
-next1: MACRO
+MACRO next1
 ; Move one screen row down.
 	_dtxt "<LNBRK>", \#
 ENDM
 
-next: MACRO
+MACRO next
 ; Move one line down (two rows).
 	_dtxt "<NEXT>", \#
 ENDM
 
-line: MACRO
+MACRO line
 ; Start writing at the bottom line.
 	_dtxt "<LINE>", \#
 ENDM
 
-cont: MACRO
+MACRO cont
 ; Scroll to the next line.
 	_dtxt "<CONT>", \#
 ENDM
 
-para: MACRO
+MACRO para
 ; Start a new paragraph.
 	_dtxt "<PARA>", \#
 ENDM
 
-done: MACRO
+MACRO done
 ; End a text box.
 	_dtxt "<DONE>", \#
 ENDM
 
-prompt: MACRO
+MACRO prompt
 ; Prompt the player to end a text box (initiating some other event).
 	_dtxt "<PROMPT>", \#
 ENDM
 
-page: MACRO
+MACRO page
 ; Start a new Pokedex page.
 	_dtxt "@", \#
 ENDM
 
-_dtxt: MACRO
+MACRO _dtxt
 	if !_might_compress_text && !_compressing_text
 		db \#
 	else
@@ -156,7 +156,7 @@ _dtxt: MACRO
 	endc
 ENDM
 
-_dchr: MACRO
+MACRO _dchr
 	DEF _chr = \1
 	if _might_compress_text && DEF(___huffman_data_{02X:_chr}) && DEF(___huffman_length_{02X:_chr})
 		; We might compress text, and this character has a Huffman code

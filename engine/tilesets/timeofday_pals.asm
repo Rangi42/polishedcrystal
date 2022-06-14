@@ -155,7 +155,7 @@ endr
 	ldh [rSVBK], a
 	ret
 
-brightlevel: MACRO
+MACRO brightlevel
 	db (\1 << 6) | (\2 << 4) | (\3 << 2) | \4
 ENDM
 

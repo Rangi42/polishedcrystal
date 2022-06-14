@@ -1,16 +1,16 @@
-command: MACRO
+MACRO command
 	const \1_command
 DEF \1 EQUS "db \1_command"
 	dw BattleCommand_\1
 ENDM
 
-commandx: MACRO
+MACRO commandx
 	const \1_command
 DEF \1 EQUS "db \1_command,"
 	dw BattleCommand_\1
 ENDM
 
-commandonly: MACRO
+MACRO commandonly
 	const \1_command
 DEF \1 EQUS "db \1_command"
 ENDM

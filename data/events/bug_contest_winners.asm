@@ -13,7 +13,7 @@ BugContestantPointers:
 	dw BugContestant_SchoolboyKipp
 	assert_table_length NUM_BUG_CONTESTANTS + 1
 
-contest_winner: MACRO
+MACRO contest_winner
 ; species, score
 	dp \1
 	dw \2
