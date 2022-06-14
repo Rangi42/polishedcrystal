@@ -615,6 +615,7 @@ PokeBallEffect:
 
 	farcall SetBoxMonCaughtData
 
+	; We don't care for the pointer, but we want to know about full storage.
 	farcall NewStorageBoxPointer
 	jr nc, .BoxNotFullYet
 	ld hl, wBattleResult

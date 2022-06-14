@@ -485,8 +485,8 @@ UpdateStorageBoxMonFromTemp:
 	; Erase the current entry before trying to find a new one.
 	; This code exists to gurantee that should the storage commit work once,
 	; it will always continue to work for the same tempmon session without an
-	; enforced save inbetween. Without it, the code could write a new 314th
-	; entry the first write, then fail to reuse the same entry later.
+	; enforced save inbetween. Without it, the code could use up the last entry
+	; the first write, then fail to reuse the same entry later.
 	call GetStorageBoxPointer
 	push de
 	ld e, 0
@@ -496,6 +496,8 @@ UpdateStorageBoxMonFromTemp:
 	pop bc
 	jr nc, .found_entry
 	pop de
+
+	; We failed to find a new entry. Restore the current box pointer.
 	call SetStorageBoxPointer
 	or 1
 	ret

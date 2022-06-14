@@ -785,39 +785,14 @@ Pokedex_UpdateRow:
 	jr nz, .species_caught
 
 	; Apply transparency
-	push hl
-	; Remove least significant bit from each pal color.
-	ld hl, palred 30 + palgreen 30 + palblue 30
-	ld a, c
-	and l
-	ld c, a
-	ld a, b
-	and h
-	ld b, a
-	ld a, e
-	and l
-	ld e, a
-	ld a, d
-	and h
-	ld d, a
-
-	; Halve all palette colors
-	srl b
-	rr c
-	srl d
-	rr e
-
-	; Add 16 to each palette color.
-	ld hl, palred 16 + palgreen 16 + palblue 16
-	push hl
-	add hl, de
-	ld d, h
-	ld e, l
-	pop hl
-	add hl, bc
-	ld b, h
-	ld c, l
-	pop hl
+	push bc
+	ld b, d
+	ld c, e
+	farcall ApplyWhiteTransparency
+	ld d, b
+	ld e, c
+	pop bc
+	farcall ApplyWhiteTransparency
 
 .species_caught
 	ld a, c

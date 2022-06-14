@@ -673,35 +673,28 @@ ElmText7:
 	text_end
 
 InitGender:
-	ld hl, .WhitePal
-	ld de, wBGPals1 palette 0
-	ld bc, 1 palettes
-	call FarCopyColorWRAM
 	ld c, 15
-	call FadePalettes
-
+	call FadeToWhite
 	call ClearTileMap
-	call ApplyAttrAndTilemapInVBlank
-	call SetPalettes
 
-	ld a, CGB_INTRO_PALS
+	call InitGenderGraphics
+
+	ld a, CGB_INTRO_GENDER_PALS
 	call GetCGBLayout
 	call InitIntroGradient
-	call SetPalettes
+	call Intro_RotatePalettesLeftFrontpic
 
 	ld hl, AreYouABoyOrAreYouAGirlText
 	call PrintText
 
-	ld hl, .MenuDataHeader
-	call LoadMenuHeader
 	call ApplyAttrAndTilemapInVBlank
-	call VerticalMenu
-	call CloseWindow
-	ld a, [wMenuCursorY]
-	dec a
-	ld [wPlayerGender], a
+	call GenderMenu
 
+	ld c, 15
+	call FadeToWhite
 	call ClearTileMap
+	call ClearTileMap
+
 	call DrawIntroPlayerPic
 
 	ld a, CGB_INTRO_PALS
@@ -709,12 +702,7 @@ InitGender:
 	call InitIntroGradient
 	call Intro_RotatePalettesLeftFrontpic
 
-	ld hl, SoYoureABoyText
-	ld a, [wPlayerGender]
-	and a
-	jr z, .boy
-	ld hl, SoYoureAGirlText
-.boy
+	ld hl, SoThisIsYouText
 	call PrintText
 
 	call YesNoBox
@@ -734,33 +722,105 @@ else
 	RGB_MONOCHROME_WHITE
 endc
 
-.MenuDataHeader:
-	db $40 ; flags
-	db 7, 13 ; start coords
-	db 11, 19 ; end coords
-	dw .MenuData2
-	db 1 ; default option
+GenderMenu::
+	xor a
+	ldh [hBGMapMode], a
 
-.MenuData2:
-	db $c1 ; flags
-	db 2 ; items
-	db "Boy@"
-	db "Girl@"
+.set_gender_cursor
+	ld a, [wPlayerGender]
+	and a
+	ld hl, wBGPals2 palette 2 + 2
+	ld a, "▼"
+	jr z, .got_cursor
+	ld hl, wBGPals2 palette 0 + 2
+	ld a, " "
+.got_cursor
+	bccoord 6, 3
+	ld [bc], a
+	xor "▼" ^ " "
+	bccoord 13, 3
+	ld [bc], a
+
+	; Apply transparency to the unselected option.
+	jr z, .got_pal
+.got_pal
+
+	; First, undo any previously applied transparency effect.
+	push hl
+	call SetPalettes
+	pop hl
+
+	ld a, BANK(wBGPals2)
+	ldh [rSVBK], a
+
+	ld d, 3
+.transparency_loop
+	ld a, [hli]
+	ld c, a
+	ld a, [hld]
+	ld b, a
+	farcall ApplyWhiteTransparency
+	ld a, c
+	ld [hli], a
+	ld a, b
+	ld [hli], a
+	dec d
+	jr nz, .transparency_loop
+
+	ld a, BANK(wPlayerGender)
+	ldh [rSVBK], a
+
+	ld b, 1
+	call SafeCopyTilemapAtOnce
+
+.loop
+	call DelayFrame
+	call GetJoypad
+	ldh a, [hJoyDown]
+	bit A_BUTTON_F, a
+	ret nz
+	bit D_RIGHT_F, a
+	jr nz, .d_right
+	bit D_LEFT_F, a
+	jr z, .loop
+
+	xor a
+	jr .got_gender
+.d_right
+	ld a, 1 << PLAYERGENDER_FEMALE_F
+.got_gender
+	ld [wPlayerGender], a
+	jr .set_gender_cursor
 
 AreYouABoyOrAreYouAGirlText:
 	; Are you a boy? Or are you a girl?
 	text_far Text_AreYouABoyOrAreYouAGirl
 	text_end
 
-SoYoureABoyText:
-	; So you're a boy?
-	text_far Text_SoYoureABoy
+SoThisIsYouText:
+	; So this is you?
+	text_far Text_SoThisIsYou
 	text_end
 
-SoYoureAGirlText:
-	; So you're a girl?
-	text_far Text_SoYoureAGirl
-	text_end
+InitGenderGraphics:
+	ld hl, CalPic
+	ld de, vTiles2 tile $00
+	lb bc, BANK(CalPic), 7 * 7
+	call DecompressRequest2bpp
+	ld hl, CarriePic
+	ld de, vTiles2 tile $31
+	lb bc, BANK(CarriePic), 7 * 7
+	call DecompressRequest2bpp
+	xor a
+	ldh [hGraphicStartTile], a
+	hlcoord 3, 4
+	lb bc, 7, 7
+	predef PlaceGraphic
+	ld a, $31
+	ldh [hGraphicStartTile], a
+	hlcoord 10, 4
+	lb bc, 7, 7
+	predef_jump PlaceGraphic
 
 NamePlayer:
 	ld b, $1 ; player

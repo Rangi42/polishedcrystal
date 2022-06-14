@@ -812,7 +812,7 @@ GetPreEvolution:
 	pop bc
 	ld a, b
 	jr c, .got_form
-	and a, EXTSPECIES_MASK
+	and EXTSPECIES_MASK
 	inc a
 .got_form
 	ld [wCurForm], a

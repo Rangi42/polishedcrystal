@@ -330,6 +330,31 @@ endc
 
 	jmp PopAFBCDEHL
 
+ApplyWhiteTransparency:
+; Apply transparency for colors in bc towards white.
+	push hl
+
+	; Remove least significant bit from each pal color.
+	ld hl, palred 30 + palgreen 30 + palblue 30
+	ld a, c
+	and l
+	ld c, a
+	ld a, b
+	and h
+	ld b, a
+
+	; Halve all palette colors
+	srl b
+	rr c
+
+	; Add 16 to each palette color.
+	ld hl, palred 16 + palgreen 16 + palblue 16
+	add hl, bc
+	ld b, h
+	ld c, l
+	pop hl
+	ret
+
 WipeAttrMap:
 	hlcoord 0, 0, wAttrmap
 	ld bc, SCREEN_WIDTH * SCREEN_HEIGHT
