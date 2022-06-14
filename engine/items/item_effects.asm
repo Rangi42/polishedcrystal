@@ -504,7 +504,7 @@ PokeBallEffect:
 	; Set wBattleResult bit 6 to record
 	; that the pokémon was caught.
 	ld hl, wBattleResult
-	set BATTLERESULT_CAUGHT_POKEMON, [hl]
+	set BATTLERESULT_CAUGHT_POKEMON_F, [hl]
 
 	ld a, [wPartyCount]
 	cp PARTY_LENGTH
@@ -619,7 +619,7 @@ PokeBallEffect:
 	farcall NewStorageBoxPointer
 	jr nc, .BoxNotFullYet
 	ld hl, wBattleResult
-	set BATTLERESULT_BOX_FULL, [hl]
+	set BATTLERESULT_BOX_FULL_F, [hl]
 .BoxNotFullYet:
 	ld a, [wCurItem]
 	cp FRIEND_BALL

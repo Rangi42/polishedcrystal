@@ -1286,7 +1286,7 @@ Script_reloadmapafterbattle:
 	farcall RunPostBattleAbilities
 .skip_pickup
 	ld a, [wBattleResult]
-	bit BATTLERESULT_BOX_FULL, a
+	bit BATTLERESULT_BOX_FULL_F, a
 	jr z, .done
 	ld b, BANK(Script_SpecialBillCall)
 	ld de, Script_SpecialBillCall
