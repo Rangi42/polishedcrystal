@@ -1,17 +1,17 @@
 MACRO newgroup
-DEF const_value += 1
-DEF __map_value__ = 1
+	DEF const_value += 1
+	DEF __map_value__ = 1
 ENDM
 
 MACRO map_const
 ;\1: map id
 ;\2: width: in blocks
 ;\3: height: in blocks
-DEF GROUP_\1 EQU const_value
-DEF MAP_\1 EQU __map_value__
-DEF __map_value__ += 1
-DEF \1_WIDTH  EQU \2
-DEF \1_HEIGHT EQU \3
+	DEF GROUP_\1 EQU const_value
+	DEF MAP_\1 EQU __map_value__
+	DEF __map_value__ += 1
+	DEF \1_WIDTH  EQU \2
+	DEF \1_HEIGHT EQU \3
 ENDM
 
 ; map group ids

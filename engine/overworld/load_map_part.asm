@@ -137,15 +137,15 @@ MACRO loadmappart_function_macro
 	ld d, a
 
 	rept 3
-	ld a, [de]
-	inc e
-	ld [hli], a
-	ld a, [de]
-	inc e
-	inc e
-	inc e
-	ld [hl], a
-	add hl, bc
+		ld a, [de]
+		inc e
+		ld [hli], a
+		ld a, [de]
+		inc e
+		inc e
+		inc e
+		ld [hl], a
+		add hl, bc
 	endr
 
 	ld a, [de]
@@ -298,15 +298,15 @@ MACRO loadmappart_function_macro
 	ld d, a
 
 	rept 3
-	ld a, [de]
-	inc e
-	ld [hli], a
-	ld a, [de]
-	inc e
-	inc e
-	inc e
-	ld [hl], a
-	add hl, bc
+		ld a, [de]
+		inc e
+		ld [hli], a
+		ld a, [de]
+		inc e
+		inc e
+		inc e
+		ld [hl], a
+		add hl, bc
 	endr
 
 	ld a, [de]

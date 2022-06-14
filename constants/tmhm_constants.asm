@@ -6,14 +6,14 @@
 DEF __tmhm_value__ = 1
 
 MACRO add_tmnum
-DEF \1_TMNUM EQU __tmhm_value__
-DEF __tmhm_value__ += 1
+	DEF \1_TMNUM EQU __tmhm_value__
+	DEF __tmhm_value__ += 1
 ENDM
 
 MACRO add_tm
-if !DEF(TM01)
-DEF TM01 = const_value
-endc
+	if !DEF(TM01)
+		DEF TM01 = const_value
+	endc
 	const TM_\1
 	add_tmnum \1
 ENDM
@@ -100,9 +100,9 @@ endc
 DEF NUM_TMS = __tmhm_value__ - 1
 
 MACRO add_hm
-if !DEF(HM01)
-DEF HM01 = const_value
-endc
+	if !DEF(HM01)
+		DEF HM01 = const_value
+	endc
 	const HM_\1
 	add_tmnum \1
 ENDM
@@ -116,9 +116,9 @@ ENDM
 DEF NUM_HMS = __tmhm_value__ - NUM_TMS - 1
 
 MACRO add_mt
-if !DEF(MT01)
-DEF MT01 = const_value
-endc
+	if !DEF(MT01)
+		DEF MT01 = const_value
+	endc
 	add_tmnum \1
 ENDM
 

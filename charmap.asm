@@ -1,7 +1,7 @@
 MACRO ctxtmap
-DEF x = \2
-DEF ___huffman_data_{02X:x} EQU %\3
-DEF ___huffman_length_{02X:x} EQU STRLEN("\3")
+	DEF x = \2
+	DEF ___huffman_data_{02X:x} EQU %\3
+	DEF ___huffman_length_{02X:x} EQU STRLEN("\3")
 	charmap \1, \2
 ENDM
 

@@ -135,9 +135,9 @@ ENDM
 
 MACRO pokedb
 \1Mons::
-for n, 1, \2 + 1
-\1Mon{d:n}:: savemon_struct \1Mon{d:n}
-endr
+	for n, 1, \2 + 1
+	\1Mon{d:n}:: savemon_struct \1Mon{d:n}
+	endr
 \1End::
 ENDM
 
@@ -245,9 +245,9 @@ ENDM
 
 MACRO hall_of_fame
 \1WinCount:: db
-for n, 1, PARTY_LENGTH + 1
-\1Mon{d:n}:: hof_mon \1Mon{d:n}
-endr
+	for n, 1, PARTY_LENGTH + 1
+	\1Mon{d:n}:: hof_mon \1Mon{d:n}
+	endr
 \1End:: db
 ENDM
 

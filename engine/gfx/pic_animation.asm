@@ -1,9 +1,9 @@
 ; Pic animation arrangement.
 
 MACRO POKEANIM
-for i, 1, _NARG + 1
-	db (PokeAnim_\<i>_ - PokeAnim_SetupCommands) / 2
-endr
+	for i, 1, _NARG + 1
+		db (PokeAnim_\<i>_ - PokeAnim_SetupCommands) / 2
+	endr
 	db (PokeAnim_Finish_ - PokeAnim_SetupCommands) / 2
 ENDM
 
@@ -604,11 +604,11 @@ PokeAnim_ConvertAndApplyBitmask:
 	ret
 
 MACRO poke_anim_box
-for y, 7, 7 * (\1 + 1), 7
-for x, 7 - \1, 7
-	db x + y
-endr
-endr
+	for y, 7, 7 * (\1 + 1), 7
+		for x, 7 - \1, 7
+			db x + y
+		endr
+	endr
 ENDM
 
 ._5by5:

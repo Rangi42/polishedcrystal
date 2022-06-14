@@ -4,11 +4,11 @@
 MACRO roam_map
 	map_id \1
 	db _NARG - 1
-for i, 2, _NARG + 1
-	map_id \<i>
-endr
+	for i, 2, _NARG + 1
+		map_id \<i>
+	endr
 	db 0
-DEF list_index += 1
+	DEF list_index += 1
 ENDM
 
 RoamMaps:

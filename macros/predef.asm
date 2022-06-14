@@ -1,5 +1,5 @@
 MACRO add_predef
-	\1Predef::
+\1Predef::
 	dbw BANK(\1), \1
 ENDM
 

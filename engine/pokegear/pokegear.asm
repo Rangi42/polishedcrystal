@@ -1834,10 +1834,10 @@ GetNextTownMapTilePalette:
 
 .PalMap:
 MACRO townmappals
-rept _NARG / 2
-	dn \2, \1
-	shift 2
-endr
+	rept _NARG / 2
+		dn \2, \1
+		shift 2
+	endr
 ENDM
 	townmappals 2, 2, 2, 3, 3, 6, 1, 1, 4, 4, 4, 5, 6, 7, 7, 6
 	townmappals 2, 2, 2, 3, 3, 6, 1, 1, 4, 4, 4, 6, 4, 4, 1, 1
