@@ -774,18 +774,17 @@ PokegearRadio_Joypad:
 	bit 2, a
 	jr z, .no_phone
 	lb bc, PHONE_CARD, $9
-	jr .switch_page
+	jr Pokegear_SwitchPage
 
 .no_phone
 	ld a, [wPokegearFlags]
 	bit 0, a
 	jr z, .no_map
 	lb bc, MAP_CARD, $2
-	jr .switch_page
+	jr Pokegear_SwitchPage
 
 .no_map
 	lb bc, CLOCK_CARD, $0
-.switch_page
 	jr Pokegear_SwitchPage
 
 .cancel

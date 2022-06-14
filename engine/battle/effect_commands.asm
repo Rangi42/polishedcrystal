@@ -462,10 +462,9 @@ CantMove:
 	ld a, [de]
 	dec a
 	push hl
-	call z, HandleRampage_ConfuseUser  ; confuses user on last turn of rampage
+	call z, HandleRampage_ConfuseUser ; confuses user on last turn of rampage
 	pop hl
 .rampage_done
-	ld a, [hl]
 	ld a, ~(1 << SUBSTATUS_RAMPAGE | 1 << SUBSTATUS_CHARGED | 1 << SUBSTATUS_FLYING | 1 << SUBSTATUS_UNDERGROUND | 1 << SUBSTATUS_ROLLOUT)
 	and [hl]
 	ld [hl], a
