@@ -723,27 +723,27 @@ else
 endc
 
 GenderMenu::
-	xor a
-	ldh [hBGMapMode], a
-
-.set_gender_cursor
 	ld a, [wPlayerGender]
 	and a
 	ld hl, wBGPals2 palette 2 + 2
-	ld a, "▼"
-	jr z, .got_cursor
-	ld hl, wBGPals2 palette 0 + 2
-	ld a, " "
-.got_cursor
 	bccoord 6, 3
-	ld [bc], a
-	xor "▼" ^ " "
+	decoord 13, 3
+	jr z, .got_coords
+	ld hl, wBGPals2 palette 0 + 2
 	bccoord 13, 3
+	decoord 6, 3
+.got_coords
+	ld a, $62
 	ld [bc], a
+	inc bc
+	inc a
+	ld [bc], a
+	ld a, " "
+	ld [de], a
+	inc de
+	ld [de], a
 
 	; Apply transparency to the unselected option.
-	jr z, .got_pal
-.got_pal
 
 	; First, undo any previously applied transparency effect.
 	push hl
@@ -790,7 +790,7 @@ GenderMenu::
 	ld a, 1 << PLAYERGENDER_FEMALE_F
 .got_gender
 	ld [wPlayerGender], a
-	jr .set_gender_cursor
+	jr GenderMenu
 
 AreYouABoyOrAreYouAGirlText:
 	; Are you a boy? Or are you a girl?
@@ -811,6 +811,40 @@ InitGenderGraphics:
 	ld de, vTiles2 tile $31
 	lb bc, BANK(CarriePic), 7 * 7
 	call DecompressRequest2bpp
+
+; Shift the "▼" character three pixels to the right across two tiles
+	farcall LoadStandardFontPointer
+	ld de, ("▼" - $80) * LEN_1BPP_TILE
+	add hl, de
+	ld de, wOverworldMapBlocks
+	ld c, LEN_1BPP_TILE
+.loop
+	ld a, BANK(FontTiles)
+	call GetFarByte
+	ld b, 0
+rept 3
+	srl a
+	rr b
+endr
+	ld [de], a
+	push hl
+	ld hl, LEN_2BPP_TILE
+	add hl, de
+	ld [hl], b
+	inc hl
+	ld [hl], b
+	pop hl
+	inc hl
+	inc de
+	ld [de], a
+	inc de
+	dec c
+	jr nz, .loop
+	ld hl, vTiles2 tile $62
+	ld de, wOverworldMapBlocks
+	lb bc, BANK(wOverworldMapBlocks), 2
+	call Request2bppInWRA6
+
 	xor a
 	ldh [hGraphicStartTile], a
 	hlcoord 3, 4

@@ -330,6 +330,12 @@ patterns = {
 	(lambda line1, prev: line1.code.startswith('call ') and ',' not in line1.code),
 	(lambda line2, prev: line2.code == 'ret'),
 ],
+'Tail farcall': [
+	# Bad: farcall Foo / ret (unless Foo messes with the stack)
+	# Good: farjp Foo
+	(lambda line1, prev: line1.code.startswith('farcall ') and ',' not in line1.code),
+	(lambda line2, prev: line2.code == 'ret'),
+],
 'Tail predef': [
 	# Bad: predef Foo / ret
 	# Good: predef_jump Foo

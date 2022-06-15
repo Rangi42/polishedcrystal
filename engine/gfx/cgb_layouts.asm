@@ -1136,8 +1136,8 @@ _CGB_IntroGenderPals:
 	ld a, $1
 	call FillBoxWithByte
 
-	hlcoord 10, 4, wAttrmap
-	lb bc, 7, 7
+	hlcoord 10, 3, wAttrmap
+	lb bc, 8, 7
 	ld a, $2
 	call FillBoxWithByte
 
