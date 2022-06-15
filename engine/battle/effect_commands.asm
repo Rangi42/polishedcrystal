@@ -4294,9 +4294,7 @@ PlayFXAnimID:
 	ld c, 3
 	call DelayFrames
 
-	farcall PlayBattleAnim
-
-	ret
+	farjp PlayBattleAnim
 
 TakeOpponentDamage:
 ; user takes damage, doesn't apply berserk so don't run the regular damage func

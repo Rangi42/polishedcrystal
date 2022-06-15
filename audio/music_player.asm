@@ -534,8 +534,7 @@ SongEditor:
 	or b
 	ld [wChannel3Intensity], a
 	ld [wCurTrackIntensity], a
-	farcall ReloadWaveform
-	ret
+	farjp ReloadWaveform
 
 .up_noise:
 ; next noise set
