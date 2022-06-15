@@ -678,18 +678,27 @@ DayCare_InitBreeding:
 DayCare_GenerateEgg:
 	ld a, [wBreedMon1Species]
 	ld [wCurPartySpecies], a
-	ld a, [wBreedMon1Gender]
-	ld [wTempMonGender], a
+
+	assert !HIGH(DITTO)
+	ld a, [wBreedMon1Form]
+	ld [wTempMonForm], a
+	and EXTSPECIES_MASK
 	ld a, $3
 	ld [wMonType], a
+	jr nz, .first_dittocheck_done
 	ld a, [wBreedMon1Species]
 	cp DITTO
 	ld a, 1
 	jr z, .LoadWhichBreedmonIsTheMother
+.first_dittocheck_done
+	ld a, [wBreedMon2Form]
+	and EXTSPECIES_MASK
+	jr nz, .second_dittocheck_done
 	ld a, [wBreedMon2Species]
 	cp DITTO
 	ld a, 0
 	jr z, .LoadWhichBreedmonIsTheMother
+.second_dittocheck_done
 	farcall GetGender
 	ld a, 0
 	jr z, .LoadWhichBreedmonIsTheMother
@@ -714,12 +723,13 @@ DayCare_GenerateEgg:
 	ld [wCurPartyLevel], a
 
 	ld a, [wCurPartySpecies]
+	ld [wCurSpecies], a
 	cp NIDORAN_F
-	jr nz, .GotEggSpecies
+	jr nz, .nidoran_check_done
 	assert !HIGH(NIDORAN_F)
 	ld a, [wCurForm]
 	and EXTSPECIES_MASK
-	jr nz, .GotEggSpecies
+	jr nz, .nidoran_check_done
 
 	; random Nidoran offspring
 	call Random
@@ -728,9 +738,10 @@ DayCare_GenerateEgg:
 	sbc a
 	and NIDORAN_F - NIDORAN_M
 	add NIDORAN_M
-.GotEggSpecies:
 	ld [wCurPartySpecies], a
 	ld [wCurSpecies], a
+
+.nidoran_check_done
 	; Clear tempmon struct
 	xor a
 	ld hl, wTempMon
@@ -1043,9 +1054,9 @@ DayCare_GenerateEgg:
 	add b
 	ld hl, wTempMonHappiness
 	ld [hli], a
+
+	; Clear pokérus status
 	xor a
-	ld [hli], a
-	ld [hli], a
 	ld [hl], a
 	ld a, [wCurPartyLevel]
 	ld [wTempMonLevel], a

@@ -224,9 +224,9 @@ SetEggMonCaughtData:
 	call GetPartyLocation
 	ld a, [wCurPartyLevel]
 	push af
-	ld a, EGG_LEVEL
+	ld a, -1 ; marks that the mon is hatched
 	ld [wCurPartyLevel], a
-	ld a, POKE_BALL
+	ld a, [hl] ; reused poke ball data
 	ld [wCurItem], a
 	call SetBoxmonOrEggmonCaughtData
 	pop af

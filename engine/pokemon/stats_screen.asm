@@ -774,10 +774,10 @@ TN_PrintLV:
 	ld l, c
 	inc hl
 ;	hlcoord 11, 9
-	and a
-	jr z, .traded
-	cp 1
+	inc a
 	jr z, .hatched
+	dec a
+	jr z, .traded
 	ld [wBuffer2], a
 	ld de, .str_level
 	rst PlaceString
