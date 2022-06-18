@@ -7735,6 +7735,14 @@ HandleNuzlockeFlags:
 	dec a
 	ret nz
 
+	; Roaming mons don't count
+	ld a, [wBattleType]
+	cp BATTLETYPE_ROAMING
+	ret z
+	; Uncatchable ghosts don't count
+	cp BATTLETYPE_GHOST
+	ret z
+
 	; Dupes clause: don't count duplicate encounters
 	ld a, [wOTPartyMon1Species]
 	ld c, a
