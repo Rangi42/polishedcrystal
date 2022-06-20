@@ -223,8 +223,8 @@ NewPokedexOrder:
 	dp URSALUNA
 	dp PHANPY
 	dp DONPHAN
-	dp MANTINE
 	dp MANTYKE
+	dp MANTINE
 	dp SKARMORY
 	dp DODUO
 	dp DODRIO
