@@ -348,7 +348,11 @@ ApplyWhiteTransparency:
 	rr c
 
 	; Add 16 to each palette color.
+if DEF(MONOCHROME)
+	ld hl, (PAL_MONOCHROME_WHITE >> 1) & %01111_01111_01111
+else
 	ld hl, palred 16 + palgreen 16 + palblue 16
+endc
 	add hl, bc
 	ld b, h
 	ld c, l
