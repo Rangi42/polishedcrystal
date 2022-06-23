@@ -264,6 +264,11 @@ Move00Description:
 	text "?"
 	done
 
+LowKickDescription:
+	text "Deals more damage"
+	next "to heavier foes."
+	done
+
 KarateChopDescription:
 RazorLeafDescription:
 CrabhammerDescription:
@@ -337,7 +342,6 @@ BraveBirdDescription:
 StompDescription:
 HeadbuttDescription:
 BiteDescription:
-LowKickDescription:
 WaterfallDescription:
 RockSlideDescription:
 HyperFangDescription:
