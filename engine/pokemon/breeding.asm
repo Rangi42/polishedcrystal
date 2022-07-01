@@ -319,7 +319,7 @@ HatchEggs:
 	ld hl, wStringBuffer1
 	ld bc, MON_NAME_LENGTH
 	rst CopyBytes
-	call GetBaseData
+	predef CopyPkmnToTempMon
 	ld a, [wCurPartyMon]
 	ld hl, wPartyMons
 	ld bc, PARTYMON_STRUCT_LENGTH
