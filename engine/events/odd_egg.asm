@@ -56,10 +56,16 @@ GiveSpecialEgg:
 	ld a, 20
 	ld [hli], a
 	xor a
-rept MON_LEVEL - MON_PKRUS
+rept MON_CAUGHTDATA - MON_PKRUS
 	ld [hli], a
 endr
-	ld a, EGG_LEVEL
+	ld a, POKE_BALL
+	ld [hli], a
+	xor a
+	ld [hli], a ; caught level
+	ld [hli], a ; caught location
+	assert EGG_LEVEL == 1
+	inc a
 	ld [hl], a
 	ld hl, wTempMonNickname
 	ld de, .EggName

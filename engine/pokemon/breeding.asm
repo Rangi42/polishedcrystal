@@ -718,7 +718,7 @@ EggHatch_AnimationSequence:
 	rst ByteFill
 	ld hl, EggHatchGFX
 	ld de, vTiles0 tile $00
-	ld bc, $20
+	ld bc, 2 tiles
 	ld a, BANK(EggHatchGFX)
 	call FarCopyBytes
 	call ClearSpriteAnims
