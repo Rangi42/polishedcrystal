@@ -1,5 +1,5 @@
-FIRST_VWF_CHAR EQU " " ; first printable character
-FAILSAFE_VWF_CHAR EQU "."
+DEF FIRST_VWF_CHAR EQU " " ; first printable character
+DEF FAILSAFE_VWF_CHAR EQU "."
 
 _BuildAppendVFWTextFunction::
 ; Build a function to write pixels in hAppendVWFText.

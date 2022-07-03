@@ -1,6 +1,6 @@
 ; Boolean checks
-FALSE EQU 0
-TRUE  EQU 1
+DEF FALSE EQU 0
+DEF TRUE  EQU 1
 
 ; FlagAction arguments (see home/flag.asm)
 	const_def
@@ -9,41 +9,41 @@ TRUE  EQU 1
 	const CHECK_FLAG
 
 ; save file corruption check values
-SAVE_CHECK_VALUE_1     EQU 97
-SAVE_CHECK_VALUE_2     EQU 127
-SAVE_CHECK_VALUE_1_OLD EQU 99 ; check digit before save version 7
+DEF SAVE_CHECK_VALUE_1     EQU 97
+DEF SAVE_CHECK_VALUE_2     EQU 127
+DEF SAVE_CHECK_VALUE_1_OLD EQU 99 ; check digit before save version 7
 
 ; save file version
-SAVE_VERSION EQU 8
+DEF SAVE_VERSION EQU 8
 
 ; time of day boundaries
-MORN_HOUR EQU  5 ; 5 AM - 9 AM (4 hours)
-DAY_HOUR  EQU  9 ; 9 AM - 5 PM (8 hours)
-EVE_HOUR  EQU 17 ; 5 PM - 9 PM (4 hours)
-NITE_HOUR EQU 21 ; 9 PM - 5 AM (8 hours)
-MAX_HOUR  EQU 24 ; 12 AM - 12 AM (24 hours)
+DEF MORN_HOUR EQU  5 ; 5 AM - 9 AM (4 hours)
+DEF DAY_HOUR  EQU  9 ; 9 AM - 5 PM (8 hours)
+DEF EVE_HOUR  EQU 17 ; 5 PM - 9 PM (4 hours)
+DEF NITE_HOUR EQU 21 ; 9 PM - 5 AM (8 hours)
+DEF MAX_HOUR  EQU 24 ; 12 AM - 12 AM (24 hours)
 
 if DEF(NO_RTC)
-NO_RTC_SPEEDUP EQU 6
+DEF NO_RTC_SPEEDUP EQU 6
 endc
 
 ; significant money values
-START_MONEY EQU 3000
-MOM_MONEY   EQU 2300
-MAX_MONEY   EQU 9999999
-MAX_COINS   EQU 99999
+DEF START_MONEY EQU 3000
+DEF MOM_MONEY   EQU 2300
+DEF MAX_MONEY   EQU 9999999
+DEF MAX_COINS   EQU 99999
 
 ; link record
-MAX_LINK_RECORD EQU 9999
+DEF MAX_LINK_RECORD EQU 9999
 
 ; day-care
-MAX_DAY_CARE_EXP EQU $500000
+DEF MAX_DAY_CARE_EXP EQU $500000
 
 ; hall of fame
-HOF_MASTER_COUNT EQU 200
+DEF HOF_MASTER_COUNT EQU 200
 
 ; Kirk ID
-KIRK_SHUCKIE_ID EQU 00518
+DEF KIRK_SHUCKIE_ID EQU 00518
 
 ; crash error codes
 	const_def
@@ -58,4 +58,4 @@ KIRK_SHUCKIE_ID EQU 00518
 	const ERR_OLDBOX
 	const ERR_NEWBOX
 	const ERR_WINSTACK_OVERFLOW
-NUM_ERR_CODES EQU const_value
+DEF NUM_ERR_CODES EQU const_value

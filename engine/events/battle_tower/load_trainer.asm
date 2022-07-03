@@ -1,4 +1,4 @@
-BTMON_SIZE EQU 9 ; species + personality extspecies/gender/form + item + 4 moves + DV index + personality ability/nature
+DEF BTMON_SIZE EQU 9 ; species + personality extspecies/gender/form + item + 4 moves + DV index + personality ability/nature
 
 INCLUDE "data/battle_tower/classes.asm"
 INCLUDE "data/battle_tower/tiers.asm"

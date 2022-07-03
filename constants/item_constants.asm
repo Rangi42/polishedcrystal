@@ -312,12 +312,12 @@
 	const BLUESKY_MAIL ; fc
 	const MUSIC_MAIL   ; fd
 	const MIRAGE_MAIL  ; fe
-NUM_ITEMS EQU const_value - 1
+DEF NUM_ITEMS EQU const_value - 1
 
-PARK_BALL      EQU $00
-USE_SCRIPT_VAR EQU $00
-ITEM_FROM_MEM  EQU $ff
-ALWAYS_ITEM_2  EQU $ff
+DEF PARK_BALL      EQU $00
+DEF USE_SCRIPT_VAR EQU $00
+DEF ITEM_FROM_MEM  EQU $ff
+DEF ALWAYS_ITEM_2  EQU $ff
 
 ; Alphabetical order (see data/items/name_order.asm)
 	const_def
@@ -596,7 +596,7 @@ endc
 	const WHT_APRICORN ; 5
 	const BLK_APRICORN ; 6
 	const PNK_APRICORN ; 7
-NUM_APRICORNS EQU const_value - 1
+DEF NUM_APRICORNS EQU const_value - 1
 
 ; key item ids
 ; indexes for:
@@ -636,4 +636,4 @@ NUM_APRICORNS EQU const_value - 1
 	const SHINY_CHARM  ; 1d
 	const OVAL_CHARM   ; 1e
 	const CATCH_CHARM  ; 1f
-NUM_KEY_ITEMS EQU const_value - 1
+DEF NUM_KEY_ITEMS EQU const_value - 1

@@ -309,17 +309,17 @@
 	const URSALUNA   ; 11d
 	const SNEASLER   ; 11e
 	const OVERQWIL   ; 11f
-NUM_SPECIES EQU const_value - 1 ; 11f
-NUM_POKEMON EQU NUM_SPECIES - (2 * HIGH(NUM_SPECIES)) ; 11d
+DEF NUM_SPECIES EQU const_value - 1 ; 11f
+DEF NUM_POKEMON EQU NUM_SPECIES - (2 * HIGH(NUM_SPECIES)) ; 11d
 
-CANCEL EQU -1
+DEF CANCEL EQU -1
 
 ; form values
 ; related to:
 ; - CosmeticSpeciesAndFormTable (see data/pokemon/variant_forms.asm)
 ; - ValidVariantRanges (see data/pokemon/valid_variants.asm)
 
-ext_const_def: MACRO
+MACRO ext_const_def
 	if _NARG >= 1
 		def ext_const_value = \1
 	else
@@ -331,16 +331,16 @@ ext_const_def: MACRO
 	endc
 ENDM
 
-ext_const: MACRO
+MACRO ext_const
 	const_skip
 	DEF \1 EQU ext_const_value
 	redef ext_const_value += const_inc
 ENDM
 
-NO_FORM EQU 0
-PLAIN_FORM EQU 1
+DEF NO_FORM EQU 0
+DEF PLAIN_FORM EQU 1
 
-FIRST_COSMETIC_FORM_MON EQU const_value ; 120
+DEF FIRST_COSMETIC_FORM_MON EQU const_value ; 120
 
 ; unown
 	ext_const_def 1, UNOWN_A_FORM    ;     (01)
@@ -371,7 +371,7 @@ FIRST_COSMETIC_FORM_MON EQU const_value ; 120
 	ext_const UNOWN_Z_FORM           ; 138 (1a)
 	ext_const UNOWN_EXCLAMATION_FORM ; 139 (1b)
 	ext_const UNOWN_QUESTION_FORM    ; 13a (1c)
-NUM_UNOWN EQU ext_const_value - 1
+DEF NUM_UNOWN EQU ext_const_value - 1
 
 ; arbok
 	ext_const_def 1, ARBOK_JOHTO_FORM ; (1)
@@ -413,11 +413,11 @@ NUM_UNOWN EQU ext_const_value - 1
 	ext_const MAGIKARP_MASK2_FORM     ; 155 (12)
 	ext_const MAGIKARP_SAUCY_FORM     ; 156 (13)
 	ext_const MAGIKARP_RAINDROP_FORM  ; 157 (14)
-NUM_MAGIKARP EQU ext_const_value - 1 ; 14
+DEF NUM_MAGIKARP EQU ext_const_value - 1 ; 14
 
-NUM_COSMETIC_FORMS EQU const_value - FIRST_COSMETIC_FORM_MON ; 38
+DEF NUM_COSMETIC_FORMS EQU const_value - FIRST_COSMETIC_FORM_MON ; 38
 
-FIRST_VARIANT_FORM_MON EQU const_value ; 158
+DEF FIRST_VARIANT_FORM_MON EQU const_value ; 158
 
 ; gyarados
 	ext_const_def NUM_MAGIKARP + 1
@@ -428,7 +428,7 @@ FIRST_VARIANT_FORM_MON EQU const_value ; 158
 	ext_const MEWTWO_ARMORED_FORM ; 159 (2)
 
 ; alolan forms
-ALOLAN_FORM EQU 2
+DEF ALOLAN_FORM EQU 2
 	const_skip ; 15a rattata
 	const_skip ; 15b raticate
 	const_skip ; 15c raichu
@@ -449,7 +449,7 @@ ALOLAN_FORM EQU 2
 	const_skip ; 16b marowak
 
 ; galarian forms
-GALARIAN_FORM EQU 3
+DEF GALARIAN_FORM EQU 3
 	const_skip ; 16c meowth
 	const_skip ; 16d ponyta
 	const_skip ; 16e rapidash
@@ -465,7 +465,7 @@ GALARIAN_FORM EQU 3
 	const_skip ; 178 corsola
 
 ; hisuian forms
-HISUIAN_FORM EQU 4
+DEF HISUIAN_FORM EQU 4
 	const_skip ; 179 growlithe
 	const_skip ; 17a arcanine
 	const_skip ; 17b voltorb
@@ -474,8 +474,8 @@ HISUIAN_FORM EQU 4
 	const_skip ; 17e qwilfish
 	const_skip ; 17f sneasel
 
-NUM_VARIANT_FORMS EQU const_value - FIRST_VARIANT_FORM_MON ; 28
+DEF NUM_VARIANT_FORMS EQU const_value - FIRST_VARIANT_FORM_MON ; 28
 
 ; these constants include EGG and a dummy entry as species
-NUM_UNIQUE_POKEMON EQU const_value - 1 ; 17f
-NUM_EXT_POKEMON EQU NUM_UNIQUE_POKEMON - NUM_COSMETIC_FORMS ; 14b
+DEF NUM_UNIQUE_POKEMON EQU const_value - 1 ; 17f
+DEF NUM_EXT_POKEMON EQU NUM_UNIQUE_POKEMON - NUM_COSMETIC_FORMS ; 14b

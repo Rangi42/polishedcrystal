@@ -48,11 +48,11 @@ MainMenu:
 	dw MainMenu_Options
 	dw MainMenu_MusicPlayer
 
-CONTINUE       EQU 0
-NEW_GAME       EQU 1
-NEW_GAME_PLUS  EQU 2
-OPTION         EQU 3
-MUSIC_PLAYER   EQU 4
+DEF CONTINUE       EQU 0
+DEF NEW_GAME       EQU 1
+DEF NEW_GAME_PLUS  EQU 2
+DEF OPTION         EQU 3
+DEF MUSIC_PLAYER   EQU 4
 
 MainMenuItems:
 ; .NewGameMenu:

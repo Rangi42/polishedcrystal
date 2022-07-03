@@ -1,22 +1,22 @@
-special_pal_for: MACRO
-if !STRCMP("\1", "map")
-	db PAL_FOR_MAP
-	map_id \2 ; map id
-elif !STRCMP("\1", "landmark")
-	db PAL_FOR_LANDMARK
-	db \2 ; landmark
-elif !STRCMP("\1", "tileset")
-	db PAL_FOR_TILESET
-	db \2 ; tileset
-elif !STRCMP("\1", "overcast")
-	db PAL_FOR_OVERCAST
-elif !STRCMP("\1", "darkness")
-	db PAL_FOR_DARKNESS
-endc
+MACRO special_pal_for
+	if !STRCMP("\1", "map")
+		db PAL_FOR_MAP
+		map_id \2 ; map id
+	elif !STRCMP("\1", "landmark")
+		db PAL_FOR_LANDMARK
+		db \2 ; landmark
+	elif !STRCMP("\1", "tileset")
+		db PAL_FOR_TILESET
+		db \2 ; tileset
+	elif !STRCMP("\1", "overcast")
+		db PAL_FOR_OVERCAST
+	elif !STRCMP("\1", "darkness")
+		db PAL_FOR_DARKNESS
+	endc
 ENDM
 
 SpecialBGPalettes:
-special_bg_pal: MACRO
+MACRO special_bg_pal
 	special_pal_for \1, \2
 	db \3 ; type
 	dw \4 ; source
@@ -94,14 +94,14 @@ ENDM
 	db 0 ; end
 
 SpecialOBPalettes:
-special_ob_pal: MACRO
+MACRO special_ob_pal
 	special_pal_for \1, \2
 	dw \3 ; source
-if _NARG == 6
-	db \6 palettes ; skip this [wTimeOfDay] times
-else
-	db 0
-endc
+	if _NARG == 6
+		db \6 palettes ; skip this [wTimeOfDay] times
+	else
+		db 0
+	endc
 	dw wOBPals1 palette \4 ; destination
 	db \5 palettes ; length
 ENDM

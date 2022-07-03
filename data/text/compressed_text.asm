@@ -1,9 +1,9 @@
-parent_node: MACRO
+MACRO parent_node
 	_parent_node \1 ; left branch for bit 0
 	_parent_node \2 ; right branch for bit 1
 ENDM
 
-_parent_node: MACRO
+MACRO _parent_node
 	if STRIN("\1", "$") == 1
 		; hex literals indicate parent nodes
 		assert $00 < \1 && \1 < $7f, "invalid parent node value \1"

@@ -1,4 +1,4 @@
-BLUE_CARD_POINT_CAP EQU 30
+DEF BLUE_CARD_POINT_CAP EQU 30
 
 RadioTower2F_MapScriptHeader:
 	def_scene_scripts

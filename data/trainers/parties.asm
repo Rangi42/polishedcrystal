@@ -26,7 +26,7 @@ INCLUDE "data/trainers/party_pointers.asm"
 
 
 ; TODO: do `dp mon[, form] / db level` and eliminate this macro
-dbp: MACRO
+MACRO dbp
 	db (\1)
 	shift
 	dp \#

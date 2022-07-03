@@ -199,7 +199,7 @@ TypeChartAttrmap:
 INCBIN "gfx/type_chart/type_chart.attrmap"
 
 TypeChartOAMData:
-oamdata: MACRO
+MACRO oamdata
 	; x, y, tile id, attributes
 	db (\2) + 16, (\1) + 8, (\3), (\4)
 ENDM
