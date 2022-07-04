@@ -90,6 +90,7 @@ SpriteAnimOAMData:
 	dbw $46, .OAMData_DexSlowpoke        ; SPRITE_ANIM_OAMSET_DEX_SLOWPOKE_3
 	dbw $49, .OAMData_DexSlowpoke        ; SPRITE_ANIM_OAMSET_DEX_SLOWPOKE_4
 	dbw $4c, .OAMData_DexSlowpoke        ; SPRITE_ANIM_OAMSET_DEX_SLOWPOKE_5
+	dbw $09, .OAMData_TownMapFly         ; SPRITE_ANIM_OAMSET_TOWN_MAP_FLY
 	assert_table_length NUM_SPRITE_ANIM_OAMSETS
 
 .OAMData_1x1_Palette0:
@@ -734,3 +735,10 @@ SpriteAnimOAMData:
 	dsprite  2,  0,  0,  0, $1e, $0 | VRAM_BANK_1
 	dsprite  2,  0,  1,  0, $1f, $0 | VRAM_BANK_1
 	dsprite  2,  0,  2,  0, $20, $0 | VRAM_BANK_1
+
+.OAMData_TownMapFly:
+	db 4
+	dsprite  0,  0,  0,  0, $00, $2
+	dsprite  0,  0,  1,  0, $01, $2
+	dsprite  0,  0,  2,  0, $02, $2
+	dsprite  0,  0,  3,  0, $03, $2

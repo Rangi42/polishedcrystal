@@ -64,6 +64,7 @@ PokeGear:
 	call Pokegear_LoadGFX
 	call ClearSpriteAnims
 	call InitPokegearModeIndicatorArrow
+	call TownMap_InitFlyPossible
 	ld a, 8
 	call SkipMusic
 	ld a, LCDC_DEFAULT
@@ -488,6 +489,13 @@ PokegearMap_Init:
 	ld [wPokegearMapCursorObjectPointer], a
 	ld a, b
 	ld [wPokegearMapCursorObjectPointer + 1], a
+	ld a, [wTownMapCanShowFly]
+	and a
+	jr z, .no_fly
+	depixel 18, 13, 0, 0
+	ld a, SPRITE_ANIM_INDEX_TOWN_MAP_FLY
+	call InitSpriteAnimStruct
+.no_fly
 	ld hl, wJumptableIndex
 	inc [hl]
 	ret
@@ -1178,6 +1186,7 @@ _TownMap:
 	farcall InitPokegearPalettes
 	call Pokegear_LoadGFX
 	call ClearSpriteAnims
+	call TownMap_InitFlyPossible
 	ld a, 8
 	call SkipMusic
 	ld a, LCDC_DEFAULT
@@ -1314,6 +1323,51 @@ _TownMap:
 	cp KANTO_LANDMARK
 	jmp nc, TownMapKantoFlips
 	jmp TownMapJohtoFlips
+
+TownMap_InitFlyPossible:
+	ld de, ENGINE_STORMBADGE
+	farcall CheckBadge
+	jr c, .no_fly
+	farcall CheckFlyAllowedOnMap
+	jr nz, .no_fly
+	ld a, TRUE
+	jr .done
+.no_fly
+	xor a ; FALSE
+	ld [wTownMapCanFlyHere], a
+.done
+	ld [wTownMapCanShowFly], a
+	ret
+
+AnimateTownMapFly:
+	push bc
+	ld a, [wPokegearMapCursorLandmark]
+	ld b, a
+	ld hl, Flypoints
+.loop
+	ld a, [hli]
+	inc a
+	jr z, .done
+	dec a
+	cp b
+	jr nz, .skip
+	ld a, [hli]
+	ld c, a
+	call HasVisitedSpawn
+	and a
+	jr z, .loop
+	ld a, 144
+	jr .done
+.skip
+	inc hl
+	jr .loop
+.done
+	pop bc
+	ld hl, SPRITEANIMSTRUCT_YCOORD
+	add hl, bc
+	ld [hl], a
+	ld [wTownMapCanFlyHere], a
+	ret
 
 PlayRadio:
 	ld hl, wOptions1

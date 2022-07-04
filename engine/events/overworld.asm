@@ -661,34 +661,40 @@ AskSurfScript:
 
 CheckFlyAllowedOnMap:
 ; returns z is fly is allowed
+	call RegionCheck
+	cp ORANGE_REGION
+	jr nz, .not_orange
+	assert ORANGE_REGION != 0
+	and a ; nz
+	ret
+.not_orange
 	call GetMapEnvironment
 	call CheckOutdoorMap
 	ret z
-; assumes all special roof maps are in different groups
 	ld a, [wMapGroup]
-	cp GROUP_GOLDENROD_DEPT_STORE_ROOF
-	jr z, .goldenrod_dept_store_roof_group
-	cp GROUP_CELADON_MANSION_ROOF
-	jr z, .celadon_mansion_roof_group
-	cp GROUP_TIN_TOWER_ROOF
-	jr z, .tin_tower_roof_group
-	cp GROUP_OLIVINE_LIGHTHOUSE_ROOF
-	ret nz
+	ld d, a
 	ld a, [wMapNumber]
-	cp MAP_OLIVINE_LIGHTHOUSE_ROOF
+	ld e, a
+	ld hl, IndoorFlyMaps
+.loop
+	ld a, [hli]
+	and a
+	jr z, .no_fly
+	cp d
+	jr nz, .skip
+	ld a, [hli]
+	cp e
+	ret z
+	jr .loop
+.skip
+	inc hl
+	jr .loop
+.no_fly
+	inc a
+	and a ; nz
 	ret
-.goldenrod_dept_store_roof_group
-	ld a, [wMapNumber]
-	cp MAP_GOLDENROD_DEPT_STORE_ROOF
-	ret
-.celadon_mansion_roof_group
-	ld a, [wMapNumber]
-	cp MAP_CELADON_MANSION_ROOF
-	ret
-.tin_tower_roof_group
-	ld a, [wMapNumber]
-	cp MAP_TIN_TOWER_ROOF
-	ret
+
+INCLUDE "data/maps/indoor_fly_maps.asm"
 
 FlyFunction:
 	call FieldMoveJumptableReset
@@ -713,18 +719,6 @@ FlyFunction:
 	call CheckFlyAllowedOnMap
 	jr nz, .indoors
 
-	ld a, [wMapGroup]
-	cp GROUP_SHAMOUTI_ISLAND
-	jr z, .indoors
-	cp GROUP_VALENCIA_ISLAND
-	jr z, .indoors
-	cp GROUP_SHAMOUTI_SHRINE_RUINS
-	jr nz, .outdoors
-	ld a, [wMapNumber]
-	cp MAP_SHAMOUTI_SHRINE_RUINS
-	jr z, .indoors
-
-.outdoors
 	xor a
 	ldh [hMapAnims], a
 	call LoadStandardMenuHeader
