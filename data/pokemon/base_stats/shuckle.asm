@@ -4,8 +4,7 @@
 	db BUG, ROCK ; type
 	db 190 ; catch rate
 	db 80 ; base exp
-	db ALWAYS_ITEM_2 ; item 1
-	db BERRY_JUICE ; item 2
+	db ALWAYS_ITEM_2, BERRY_JUICE ; held items
 	dn GENDER_F50, 3 ; gender ratio, step cycles to hatch
 	INCBIN "gfx/pokemon/shuckle/front.dimensions"
 if DEF(FAITHFUL)

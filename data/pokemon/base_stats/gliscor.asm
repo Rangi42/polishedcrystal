@@ -4,8 +4,7 @@
 	db GROUND, FLYING ; type
 	db 30 ; catch rate
 	db 192 ; base exp
-	db NO_ITEM ; item 1
-	db NO_ITEM ; item 2
+	db NO_ITEM, NO_ITEM ; held items
 	dn GENDER_F50, 3 ; gender ratio, step cycles to hatch
 	INCBIN "gfx/pokemon/gliscor/front.dimensions"
 	abilities_for GLISCOR, HYPER_CUTTER, SAND_VEIL, POISON_HEAL

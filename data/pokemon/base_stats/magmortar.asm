@@ -13,8 +13,7 @@ else
 endc
 	db 30 ; catch rate
 	db 199 ; base exp
-	db ASPEAR_BERRY ; item 1
-	db MAGMARIZER ; item 2
+	db ASPEAR_BERRY, MAGMARIZER ; held items
 	dn GENDER_F25, 4 ; gender ratio, step cycles to hatch
 	INCBIN "gfx/pokemon/magmortar/front.dimensions"
 	abilities_for MAGMORTAR, FLAME_BODY, FLAME_BODY, VITAL_SPIRIT

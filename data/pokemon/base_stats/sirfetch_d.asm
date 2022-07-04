@@ -4,8 +4,7 @@
 	db FIGHTING, FIGHTING ; type
 	db 45 ; catch rate
 	db 178 ; base exp
-	db NO_ITEM ; item 1
-	db LEEK ; item 2
+	db NO_ITEM, LEEK ; held items
 	dn GENDER_F50, 3 ; gender ratio, step cycles to hatch
 	INCBIN "gfx/pokemon/sirfetch_d/front.dimensions"
 	abilities_for SIRFETCH_D, STEADFAST, STEADFAST, SCRAPPY

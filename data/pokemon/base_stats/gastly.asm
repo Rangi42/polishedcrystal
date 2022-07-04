@@ -4,8 +4,7 @@
 	db GHOST, POISON ; type
 	db 190 ; catch rate
 	db 95 ; base exp
-	db NO_ITEM ; item 1
-	db NO_ITEM ; item 2
+	db NO_ITEM, NO_ITEM ; held items
 	dn GENDER_F50, 3 ; gender ratio, step cycles to hatch
 	INCBIN "gfx/pokemon/gastly/front.dimensions"
 	abilities_for GASTLY, LEVITATE, LEVITATE, LEVITATE

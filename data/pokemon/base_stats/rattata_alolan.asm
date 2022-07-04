@@ -4,8 +4,7 @@
 	db DARK, NORMAL ; type
 	db 255 ; catch rate
 	db 57 ; base exp
-	db NO_ITEM ; item 1
-	db PECHA_BERRY ; item 2
+	db NO_ITEM, PECHA_BERRY ; held items
 	dn GENDER_F50, 2 ; gender ratio, step cycles to hatch
 	INCBIN "gfx/pokemon/rattata_alolan/front.dimensions"
 	abilities_for RATTATA_ALOLAN, GLUTTONY, HUSTLE, THICK_FAT

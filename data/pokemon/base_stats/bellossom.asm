@@ -17,8 +17,7 @@ if DEF(FAITHFUL)
 else
 	db 192 ; base exp
 endc
-	db NO_ITEM ; item 1
-	db ABSORB_BULB ; item 2
+	db NO_ITEM, ABSORB_BULB ; held items
 	dn GENDER_F50, 3 ; gender ratio, step cycles to hatch
 	INCBIN "gfx/pokemon/bellossom/front.dimensions"
 if DEF(FAITHFUL)

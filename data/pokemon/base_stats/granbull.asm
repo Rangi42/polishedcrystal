@@ -4,8 +4,7 @@
 	db FAIRY, FAIRY ; type
 	db 75 ; catch rate
 	db 178 ; base exp
-	db NO_ITEM ; item 1
-	db NO_ITEM ; item 2
+	db NO_ITEM, NO_ITEM ; held items
 	dn GENDER_F75, 3 ; gender ratio, step cycles to hatch
 	INCBIN "gfx/pokemon/granbull/front.dimensions"
 	abilities_for GRANBULL, INTIMIDATE, QUICK_FEET, RATTLED

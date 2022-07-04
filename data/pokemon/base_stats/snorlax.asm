@@ -4,8 +4,7 @@
 	db NORMAL, NORMAL ; type
 	db 25 ; catch rate
 	db 154 ; base exp
-	db ALWAYS_ITEM_2 ; item 1
-	db LEFTOVERS ; item 2
+	db ALWAYS_ITEM_2, LEFTOVERS ; held items
 	dn GENDER_F12_5, 7 ; gender ratio, step cycles to hatch
 	INCBIN "gfx/pokemon/snorlax/front.dimensions"
 	abilities_for SNORLAX, IMMUNITY, THICK_FAT, GLUTTONY

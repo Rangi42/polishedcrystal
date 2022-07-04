@@ -9,8 +9,7 @@ endc
 	db WATER, ICE ; type
 	db 75 ; catch rate
 	db 176 ; base exp
-	db RAWST_BERRY ; item 1
-	db NEVERMELTICE ; item 2
+	db RAWST_BERRY, NEVERMELTICE ; held items
 	dn GENDER_F50, 3 ; gender ratio, step cycles to hatch
 	INCBIN "gfx/pokemon/dewgong/front.dimensions"
 	abilities_for DEWGONG, THICK_FAT, HYDRATION, ICE_BODY

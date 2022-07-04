@@ -9,8 +9,7 @@ endc
 	db ICE, PSYCHIC ; type
 	db 45 ; catch rate
 	db 137 ; base exp
-	db RAWST_BERRY ; item 1
-	db RAWST_BERRY ; item 2
+	db RAWST_BERRY, RAWST_BERRY ; held items
 	dn GENDER_F100, 4 ; gender ratio, step cycles to hatch
 	INCBIN "gfx/pokemon/jynx/front.dimensions"
 if DEF(FAITHFUL)

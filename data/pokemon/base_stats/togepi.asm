@@ -4,8 +4,7 @@
 	db FAIRY, FAIRY ; type
 	db 190 ; catch rate
 	db 74 ; base exp
-	db NO_ITEM ; item 1
-	db NO_ITEM ; item 2
+	db NO_ITEM, NO_ITEM ; held items
 	dn GENDER_F12_5, 1 ; gender ratio, step cycles to hatch
 	INCBIN "gfx/pokemon/togepi/front.dimensions"
 	abilities_for TOGEPI, HUSTLE, SERENE_GRACE, SUPER_LUCK

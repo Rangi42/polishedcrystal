@@ -4,8 +4,7 @@
 	db FIGHTING, FIGHTING ; type
 	db 45 ; catch rate
 	db 193 ; base exp
-	db NO_ITEM ; item 1
-	db FOCUS_BAND ; item 2
+	db NO_ITEM, FOCUS_BAND ; held items
 	dn GENDER_F25, 3 ; gender ratio, step cycles to hatch
 	INCBIN "gfx/pokemon/machamp/front.dimensions"
 	abilities_for MACHAMP, GUTS, NO_GUARD, STEADFAST

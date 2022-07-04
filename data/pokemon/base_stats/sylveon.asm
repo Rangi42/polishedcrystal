@@ -4,8 +4,7 @@
 	db FAIRY, FAIRY ; type
 	db 45 ; catch rate
 	db 196 ; base exp
-	db NO_ITEM ; item 1
-	db PINK_BOW ; item 2
+	db NO_ITEM, PINK_BOW ; held items
 	dn GENDER_F12_5, 6 ; gender ratio, step cycles to hatch
 	INCBIN "gfx/pokemon/sylveon/front.dimensions"
 if DEF(FAITHFUL)

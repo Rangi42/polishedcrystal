@@ -18,8 +18,7 @@ if DEF(FAITHFUL)
 else
 	db 185 ; base exp
 endc
-	db SHED_SHELL ; item 1
-	db SILVERPOWDER ; item 2
+	db SHED_SHELL, SILVERPOWDER ; held items
 	dn GENDER_F50, 2 ; gender ratio, step cycles to hatch
 	INCBIN "gfx/pokemon/butterfree/front.dimensions"
 if DEF(FAITHFUL)

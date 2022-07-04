@@ -4,8 +4,7 @@
 	db POISON, POISON ; type
 	db 120 ; catch rate
 	db 118 ; base exp
-	db NO_ITEM ; item 1
-	db NO_ITEM ; item 2
+	db NO_ITEM, NO_ITEM ; held items
 	dn GENDER_F0, 3 ; gender ratio, step cycles to hatch
 	INCBIN "gfx/pokemon/nidorino/front.dimensions"
 	abilities_for NIDORINO, POISON_POINT, RIVALRY, HUSTLE

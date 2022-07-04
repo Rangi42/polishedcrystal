@@ -13,8 +13,7 @@ if DEF(FAITHFUL)
 else
 	db 169 ; base exp
 endc
-	db NO_ITEM ; item 1
-	db SHARP_BEAK ; item 2
+	db NO_ITEM, SHARP_BEAK ; held items
 	dn GENDER_F50, 2 ; gender ratio, step cycles to hatch
 	INCBIN "gfx/pokemon/fearow/front.dimensions"
 	abilities_for FEAROW, KEEN_EYE, KEEN_EYE, SNIPER

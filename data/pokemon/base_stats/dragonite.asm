@@ -4,8 +4,7 @@
 	db DRAGON, FLYING ; type
 	db 45 ; catch rate
 	db 218 ; base exp
-	db NO_ITEM ; item 1
-	db DRAGON_SCALE ; item 2
+	db NO_ITEM, DRAGON_SCALE ; held items
 	dn GENDER_F50, 7 ; gender ratio, step cycles to hatch
 	INCBIN "gfx/pokemon/dragonite/front.dimensions"
 if DEF(FAITHFUL)

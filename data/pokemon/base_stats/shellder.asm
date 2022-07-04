@@ -4,8 +4,7 @@
 	db WATER, WATER ; type
 	db 190 ; catch rate
 	db 97 ; base exp
-	db PEARL ; item 1
-	db BIG_PEARL ; item 2
+	db PEARL, BIG_PEARL ; held items
 	dn GENDER_F50, 3 ; gender ratio, step cycles to hatch
 	INCBIN "gfx/pokemon/shellder/front.dimensions"
 	abilities_for SHELLDER, SHELL_ARMOR, SKILL_LINK, OVERCOAT

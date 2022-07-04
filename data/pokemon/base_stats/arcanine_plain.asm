@@ -4,8 +4,7 @@
 	db FIRE, FIRE ; type
 	db 75 ; catch rate
 	db 213 ; base exp
-	db NO_ITEM ; item 1
-	db ASPEAR_BERRY ; item 2
+	db NO_ITEM, ASPEAR_BERRY ; held items
 	dn GENDER_F25, 3 ; gender ratio, step cycles to hatch
 	INCBIN "gfx/pokemon/arcanine_plain/front.dimensions"
 	abilities_for ARCANINE, INTIMIDATE, FLASH_FIRE, JUSTIFIED

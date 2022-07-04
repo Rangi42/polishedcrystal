@@ -4,8 +4,7 @@
 	db WATER, WATER ; type
 	db 225 ; catch rate
 	db 106 ; base exp
-	db STARDUST ; item 1
-	db STAR_PIECE ; item 2
+	db STARDUST, STAR_PIECE ; held items
 	dn GENDER_UNKNOWN, 3 ; gender ratio, step cycles to hatch
 	INCBIN "gfx/pokemon/staryu/front.dimensions"
 	abilities_for STARYU, ILLUMINATE, NATURAL_CURE, ANALYTIC

@@ -4,8 +4,7 @@
 	db NORMAL, NORMAL ; type
 	db 45 ; catch rate
 	db 130 ; base exp
-	db NO_ITEM ; item 1
-	db UP_GRADE ; item 2
+	db NO_ITEM, UP_GRADE ; held items
 	dn GENDER_UNKNOWN, 3 ; gender ratio, step cycles to hatch
 	INCBIN "gfx/pokemon/porygon/front.dimensions"
 	abilities_for PORYGON, TRACE, DOWNLOAD, ANALYTIC

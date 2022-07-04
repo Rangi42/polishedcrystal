@@ -4,8 +4,7 @@
 	db WATER, ELECTRIC ; type
 	db 190 ; catch rate
 	db 90 ; base exp
-	db NO_ITEM ; item 1
-	db BRIGHTPOWDER ; item 2
+	db NO_ITEM, BRIGHTPOWDER ; held items
 	dn GENDER_F50, 3 ; gender ratio, step cycles to hatch
 	INCBIN "gfx/pokemon/chinchou/front.dimensions"
 	abilities_for CHINCHOU, VOLT_ABSORB, ILLUMINATE, WATER_ABSORB

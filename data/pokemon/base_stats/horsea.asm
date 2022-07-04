@@ -4,8 +4,7 @@
 	db WATER, WATER ; type
 	db 225 ; catch rate
 	db 83 ; base exp
-	db NO_ITEM ; item 1
-	db DRAGON_SCALE ; item 2
+	db NO_ITEM, DRAGON_SCALE ; held items
 	dn GENDER_F50, 3 ; gender ratio, step cycles to hatch
 	INCBIN "gfx/pokemon/horsea/front.dimensions"
 	abilities_for HORSEA, SWIFT_SWIM, SNIPER, DAMP

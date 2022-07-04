@@ -13,8 +13,7 @@ else
 endc
 	db 45 ; catch rate
 	db 187 ; base exp
-	db NO_ITEM ; item 1
-	db SPELL_TAG ; item 2
+	db NO_ITEM, SPELL_TAG ; held items
 	dn GENDER_F50, 4 ; gender ratio, step cycles to hatch
 	INCBIN "gfx/pokemon/mismagius/front.dimensions"
 	abilities_for MISMAGIUS, LEVITATE, LEVITATE, LEVITATE

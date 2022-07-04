@@ -4,8 +4,7 @@
 	db NORMAL, NORMAL ; type
 	db 255 ; catch rate
 	db 57 ; base exp
-	db NO_ITEM ; item 1
-	db ORAN_BERRY ; item 2
+	db NO_ITEM, ORAN_BERRY ; held items
 	dn GENDER_F50, 2 ; gender ratio, step cycles to hatch
 	INCBIN "gfx/pokemon/sentret/front.dimensions"
 	abilities_for SENTRET, RUN_AWAY, KEEN_EYE, FRISK

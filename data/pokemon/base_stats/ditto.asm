@@ -9,8 +9,7 @@ endc
 	db NORMAL, NORMAL ; type
 	db 35 ; catch rate
 	db 61 ; base exp
-	db QUICK_POWDER ; item 1
-	db METAL_POWDER ; item 2
+	db QUICK_POWDER, METAL_POWDER ; held items
 	dn GENDER_UNKNOWN, 3 ; gender ratio, step cycles to hatch
 	INCBIN "gfx/pokemon/ditto/front.dimensions"
 	abilities_for DITTO, LIMBER, LIMBER, IMPOSTER

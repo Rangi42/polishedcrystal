@@ -4,8 +4,7 @@
 	db DARK, FIRE ; type
 	db 120 ; catch rate
 	db 114 ; base exp
-	db NO_ITEM ; item 1
-	db NO_ITEM ; item 2
+	db NO_ITEM, NO_ITEM ; held items
 	dn GENDER_F50, 3 ; gender ratio, step cycles to hatch
 	INCBIN "gfx/pokemon/houndour/front.dimensions"
 	abilities_for HOUNDOUR, EARLY_BIRD, FLASH_FIRE, UNNERVE

@@ -4,8 +4,7 @@
 	db BUG, POISON ; type
 	db 120 ; catch rate
 	db 71 ; base exp
-	db NO_ITEM ; item 1
-	db NO_ITEM ; item 2
+	db NO_ITEM, NO_ITEM ; held items
 	dn GENDER_F50, 2 ; gender ratio, step cycles to hatch
 	INCBIN "gfx/pokemon/kakuna/front.dimensions"
 	abilities_for KAKUNA, SHED_SKIN, SHED_SKIN, SHED_SKIN

@@ -4,8 +4,7 @@
 	db NORMAL, FAIRY ; type
 	db 170 ; catch rate
 	db 76 ; base exp
-	db ORAN_BERRY ; item 1
-	db ORAN_BERRY ; item 2
+	db ORAN_BERRY, ORAN_BERRY ; held items
 	dn GENDER_F75, 1 ; gender ratio, step cycles to hatch
 	INCBIN "gfx/pokemon/jigglypuff/front.dimensions"
 if DEF(FAITHFUL)

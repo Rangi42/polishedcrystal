@@ -4,8 +4,7 @@
 	db NORMAL, NORMAL ; type
 	db 130 ; catch rate
 	db 255 ; base exp
-	db HARD_STONE ; item 1
-	db LUCKY_EGG ; item 2
+	db HARD_STONE, LUCKY_EGG ; held items
 	dn GENDER_F100, 7 ; gender ratio, step cycles to hatch
 	INCBIN "gfx/pokemon/happiny/front.dimensions"
 	abilities_for HAPPINY, NATURAL_CURE, SERENE_GRACE, NATURAL_CURE

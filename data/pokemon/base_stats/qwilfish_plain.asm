@@ -13,8 +13,7 @@ if DEF(FAITHFUL)
 else
 	db 109 ; base exp
 endc
-	db NO_ITEM ; item 1
-	db POISON_BARB ; item 2
+	db NO_ITEM, POISON_BARB ; held items
 	dn GENDER_F50, 3 ; gender ratio, step cycles to hatch
 	INCBIN "gfx/pokemon/qwilfish_plain/front.dimensions"
 	abilities_for QWILFISH, POISON_POINT, SWIFT_SWIM, INTIMIDATE

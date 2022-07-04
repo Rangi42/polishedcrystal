@@ -4,8 +4,7 @@
 	db WATER, WATER ; type
 	db 75 ; catch rate
 	db 155 ; base exp
-	db NO_ITEM ; item 1
-	db DRAGON_SCALE ; item 2
+	db NO_ITEM, DRAGON_SCALE ; held items
 	dn GENDER_F50, 3 ; gender ratio, step cycles to hatch
 	INCBIN "gfx/pokemon/seadra/front.dimensions"
 	abilities_for SEADRA, POISON_POINT, SNIPER, DAMP

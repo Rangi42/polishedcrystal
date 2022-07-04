@@ -13,8 +13,7 @@ if DEF(FAITHFUL)
 else
 	db 128 ; base exp
 endc
-	db LAGGING_TAIL ; item 1
-	db HARD_STONE ; item 2
+	db LAGGING_TAIL, HARD_STONE ; held items
 	dn GENDER_F50, 4 ; gender ratio, step cycles to hatch
 	INCBIN "gfx/pokemon/onix/front.dimensions"
 	abilities_for ONIX, ROCK_HEAD, STURDY, WEAK_ARMOR

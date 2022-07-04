@@ -9,8 +9,7 @@ endc
 	db BUG, POISON ; type
 	db 75 ; catch rate
 	db 138 ; base exp
-	db SHED_SHELL ; item 1
-	db SILVERPOWDER ; item 2
+	db SHED_SHELL, SILVERPOWDER ; held items
 	dn GENDER_F50, 3 ; gender ratio, step cycles to hatch
 	INCBIN "gfx/pokemon/venomoth/front.dimensions"
 	abilities_for VENOMOTH, SHIELD_DUST, TINTED_LENS, WONDER_SKIN

@@ -4,8 +4,7 @@
 	db PSYCHIC, PSYCHIC ; type
 	db 50 ; catch rate
 	db 186 ; base exp
-	db NO_ITEM ; item 1
-	db TWISTEDSPOON ; item 2
+	db NO_ITEM, TWISTEDSPOON ; held items
 	dn GENDER_F25, 3 ; gender ratio, step cycles to hatch
 	INCBIN "gfx/pokemon/alakazam/front.dimensions"
 	abilities_for ALAKAZAM, SYNCHRONIZE, MAGIC_GUARD, TRACE

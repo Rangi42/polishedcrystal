@@ -4,8 +4,7 @@
 	db BUG, FIGHTING ; type
 	db 45 ; catch rate
 	db 200 ; base exp
-	db NO_ITEM ; item 1
-	db NO_ITEM ; item 2
+	db NO_ITEM, NO_ITEM ; held items
 	dn GENDER_F50, 4 ; gender ratio, step cycles to hatch
 	INCBIN "gfx/pokemon/heracross/front.dimensions"
 	abilities_for HERACROSS, MOXIE, GUTS, SKILL_LINK

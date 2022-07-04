@@ -4,8 +4,7 @@
 	db FIGHTING, FIGHTING ; type
 	db 75 ; catch rate
 	db 91 ; base exp
-	db NO_ITEM ; item 1
-	db NO_ITEM ; item 2
+	db NO_ITEM, NO_ITEM ; held items
 	dn GENDER_F0, 4 ; gender ratio, step cycles to hatch
 	INCBIN "gfx/pokemon/tyrogue/front.dimensions"
 	abilities_for TYROGUE, GUTS, STEADFAST, VITAL_SPIRIT

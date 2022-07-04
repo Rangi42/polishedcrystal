@@ -9,8 +9,7 @@ endc
 	db WATER, FIGHTING ; type
 	db 45 ; catch rate
 	db 185 ; base exp
-	db NO_ITEM ; item 1
-	db KINGS_ROCK ; item 2
+	db NO_ITEM, KINGS_ROCK ; held items
 	dn GENDER_F50, 3 ; gender ratio, step cycles to hatch
 	INCBIN "gfx/pokemon/poliwrath/front.dimensions"
 	abilities_for POLIWRATH, WATER_ABSORB, DAMP, SWIFT_SWIM

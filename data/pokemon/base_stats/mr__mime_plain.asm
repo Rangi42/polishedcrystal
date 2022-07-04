@@ -9,8 +9,7 @@ endc
 	db PSYCHIC, FAIRY ; type
 	db 45 ; catch rate
 	db 136 ; base exp
-	db PERSIM_BERRY ; item 1
-	db PERSIM_BERRY ; item 2
+	db PERSIM_BERRY, PERSIM_BERRY ; held items
 	dn GENDER_F50, 4 ; gender ratio, step cycles to hatch
 	INCBIN "gfx/pokemon/mr__mime_plain/front.dimensions"
 	abilities_for MR__MIME, SOUNDPROOF, FILTER, TECHNICIAN

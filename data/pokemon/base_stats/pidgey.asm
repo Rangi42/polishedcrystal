@@ -4,8 +4,7 @@
 	db NORMAL, FLYING ; type
 	db 255 ; catch rate
 	db 55 ; base exp
-	db NO_ITEM ; item 1
-	db NO_ITEM ; item 2
+	db NO_ITEM, NO_ITEM ; held items
 	dn GENDER_F50, 2 ; gender ratio, step cycles to hatch
 	INCBIN "gfx/pokemon/pidgey/front.dimensions"
 	abilities_for PIDGEY, KEEN_EYE, TANGLED_FEET, BIG_PECKS

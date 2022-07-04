@@ -4,8 +4,7 @@
 	db ROCK, DARK ; type
 	db 45 ; catch rate
 	db 218 ; base exp
-	db NO_ITEM ; item 1
-	db NO_ITEM ; item 2
+	db NO_ITEM, NO_ITEM ; held items
 	dn GENDER_F50, 7 ; gender ratio, step cycles to hatch
 	INCBIN "gfx/pokemon/tyranitar/front.dimensions"
 if DEF(FAITHFUL)

@@ -4,8 +4,7 @@
 	db ICE, PSYCHIC ; type
 	db 45 ; catch rate
 	db 207 ; base exp
-	db NO_ITEM ; item 1
-	db NO_ITEM ; item 2
+	db NO_ITEM, NO_ITEM ; held items
 	dn GENDER_F50, 4; gender ratio, step cycles to hatch
 	INCBIN "gfx/pokemon/mr__rime/front.dimensions"
 	abilities_for MR__RIME, TANGLED_FEET, SCREEN_CLEANER, ICE_BODY

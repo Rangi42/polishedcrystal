@@ -13,8 +13,7 @@ if DEF(FAITHFUL)
 else
 	db 192 ; base exp
 endc
-	db ALWAYS_ITEM_2 ; item 1
-	db ABSORB_BULB ; item 2
+	db ALWAYS_ITEM_2, ABSORB_BULB ; held items
 	dn GENDER_F50, 3 ; gender ratio, step cycles to hatch
 	INCBIN "gfx/pokemon/vileplume/front.dimensions"
 	abilities_for VILEPLUME, CHLOROPHYLL, CHLOROPHYLL, EFFECT_SPORE
