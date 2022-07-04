@@ -1238,13 +1238,17 @@ AdjustLevelForBadges:
 	ld b, a
 	ld a, [wBadgeBaseLevel]
 	add b
+; cap underflow at level 2
+	cp 2
+	jr c, .underflow
 	cp MAX_LEVEL
 	ret c
-; cap overflowflow at level 99
+; cap overflow at level 99
 	cp LEVEL_FROM_BADGES
 	ld a, MAX_LEVEL - 1
 	ret c
 ; cap overflow at level 2
+.underflow
 	ld a, 2
 	ret
 
