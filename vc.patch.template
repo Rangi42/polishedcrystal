@@ -10,15 +10,30 @@ Mode = 1
 Address = {hex @+1}
 Fixcode = {patch +1}
 
-[Wireless_WaitLinkTransfer]
-Mode = 2
-Address = {hex @}
-Type = 29
+[Wireless_net_delay_3]
+Mode = 1
+Address = {hex @+1}
+Fixcode = {patch +1}
 
-[Wireless_WaitLinkTransfer_ret]
-Mode = 2
-Address = {hex @}
-Type = 30
+[Wireless_net_delay_4]
+Mode = 1
+Address = {hex @+1}
+Fixcode = {patch +1}
+
+[Wireless_net_delay_5]
+Mode = 1
+Address = {hex @+1}
+Fixcode = {patch +1}
+
+[Wireless_net_delay_6]
+Mode = 1
+Address = {hex @+1}
+Fixcode = {patch +1}
+
+[Wireless_net_delay_7]
+Mode = 1
+Address = {hex @+1}
+Fixcode = {patch +1}
 
 [ExchangeBytes1]
 Mode = 2
@@ -45,50 +60,20 @@ Mode = 2
 Address = {hex @}
 Type = 7
 
-[Wireless_start_exchange]
+[Wireless_TradeCenter]
 Mode = 2
 Address = {hex @}
-Type = 31
+Type = 12
 
-[Wireless_end_exchange]
+[Wireless_Colosseum]
 Mode = 2
 Address = {hex @}
-Type = 32
+Type = 13
 
-[Wireless_net_delay_3]
-Mode = 1
-Address = {hex @+1}
-Fixcode = {patch +1}
-
-[Wireless_start_send_zero_bytes]
+[ExitLinkCommunications_ret]
 Mode = 2
 Address = {hex @}
-Type = 33
-
-[Wireless_net_delay_4]
-Mode = 1
-Address = {hex @+1}
-Fixcode = {patch +1}
-
-[Wireless_end_send_zero_bytes]
-Mode = 2
-Address = {hex @}
-Type = 34
-
-[Wireless_net_delay_5]
-Mode = 1
-Address = {hex @+1}
-Fixcode = {patch +1}
-
-[Wireless_net_delay_6]
-Mode = 1
-Address = {hex @+1}
-Fixcode = {patch +1}
-
-[Wireless_net_delay_7]
-Mode = 1
-Address = {hex @+1}
-Fixcode = {patch +1}
+Type = 14
 
 [Script_yesorno_ret]
 Mode = 2
@@ -110,15 +95,15 @@ Mode = 2
 Address = {hex @}
 Type = 18
 
-[Wireless_TryQuickSave_block_input_2]
-Mode = 2
-Address = {hex @}
-Type = 24
-
 [Trade_save_game_end]
 Mode = 2
 Address = {hex @}
 Type = 20
+
+[Wireless_TryQuickSave_block_input_2]
+Mode = 2
+Address = {hex @}
+Type = 24
 
 [Wireless_term_exit]
 Mode = 2
@@ -130,17 +115,32 @@ Mode = 2
 Address = {hex @}
 Type = 27
 
-[Wireless_TradeCenter]
+[Wireless_WaitLinkTransfer]
 Mode = 2
 Address = {hex @}
-Type = 12
+Type = 29
 
-[Wireless_Colosseum]
+[Wireless_WaitLinkTransfer_ret]
 Mode = 2
 Address = {hex @}
-Type = 13
+Type = 30
 
-[ExitLinkCommunications_ret]
+[Wireless_start_exchange]
 Mode = 2
 Address = {hex @}
-Type = 14
+Type = 31
+
+[Wireless_end_exchange]
+Mode = 2
+Address = {hex @}
+Type = 32
+
+[Wireless_start_send_zero_bytes]
+Mode = 2
+Address = {hex @}
+Type = 33
+
+[Wireless_end_send_zero_bytes]
+Mode = 2
+Address = {hex @}
+Type = 34
