@@ -662,6 +662,7 @@ AskSurfScript:
 CheckFlyAllowedOnMap:
 ; returns z is fly is allowed
 	call RegionCheck
+	ld a, e
 	cp ORANGE_REGION
 	jr nz, .not_orange
 	assert ORANGE_REGION != 0
