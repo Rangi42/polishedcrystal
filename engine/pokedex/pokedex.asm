@@ -1728,7 +1728,8 @@ Pokedex_Bio:
 	; Print hatch rate
 	ld de, Unknown
 	ld a, [wBaseEggGroups]
-	cp EGG_NONE * $11
+	assert EGG_NONE * $11 == $ff
+	inc a
 	jr z, .goteggsteps
 	ld a, [wBaseEggSteps]
 	and $f ; no-optimize a & X == X
