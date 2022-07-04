@@ -65,7 +65,7 @@ LoseMoney:
 	ld a, FALSE
 	jr z, .load
 	ld hl, wBadges
-	ld b, 2
+	ld b, wBadgesEnd - wBadges
 	call CountSetBits
 	cp 9
 	jr c, .okay

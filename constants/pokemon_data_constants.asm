@@ -328,6 +328,8 @@ DEF FISHGROUP_DATA_LENGTH EQU 2 + 2 * 3
 
 DEF NUM_ROAMMON_MAPS EQU 16 ; RoamMaps table size (see data/wild/roammon_maps.asm)
 
+DEF LEVEL_FROM_BADGES EQU 178 ; allows ±77 in either direction
+
 ; treemon sets
 ; TreeMons indexes (see data/wild/treemons.asm)
 	const_def
