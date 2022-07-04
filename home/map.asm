@@ -1540,6 +1540,19 @@ CheckIfFacingTileCoordIsBGEvent::
 	jr nz, .next
 	ld a, [hli]
 	cp d
+	jr nz, .next
+	ld a, [hli]
+	cp BGEVENT_ITEM
+	jr c, .copysign
+	push bc
+	push de
+	ld a, [hli]
+	ld d, [hl]
+	ld e, a
+	ld b, CHECK_FLAG
+	call EventFlagAction
+	pop de
+	pop bc
 	jr z, .copysign
 
 .next

@@ -12,7 +12,8 @@ PokemonMansion1F_MapScriptHeader:
 
 	def_bg_events
 	bg_event 21, 12, BGEVENT_ITEM + FULL_RESTORE, EVENT_POKEMON_MANSION_1F_HIDDEN_FULL_RESTORE
-	bg_event 14, 23, BGEVENT_READ, PokemonMansion1FHiddenPPUp
+	bg_event 14, 23, BGEVENT_ITEM + PP_UP, EVENT_POKEMON_MANSION_1F_HIDDEN_PP_UP
+	bg_event 14, 23, BGEVENT_JUMPTEXT, PokemonMansion1FFlowerPotText
 	bg_event  2,  5, BGEVENT_JUMPTEXT, PokemonMansion1FMewtwoStatueText
 	bg_event 15, 23, BGEVENT_JUMPTEXT, PokemonMansion1FFlowerPotText
 	bg_event 18, 23, BGEVENT_JUMPTEXT, PokemonMansion1FFlowerPotText
@@ -46,28 +47,6 @@ GenericTrainerBurglarLouis:
 	cont "and get out."
 	done
 
-PokemonMansion1FHiddenPPUp:
-	checkevent EVENT_POKEMON_MANSION_1F_HIDDEN_PP_UP
-	iftrue_jumptext PokemonMansion1FFlowerPotText
-	giveitem PP_UP
-	iffalse .PackFull
-	opentext
-	getitemname PP_UP, $0
-	writetext PokemonMansion1FFoundItemText
-	playsound SFX_ITEM
-	waitsfx
-	itemnotify
-	closetext
-	setevent EVENT_POKEMON_MANSION_1F_HIDDEN_PP_UP
-	end
-
-.PackFull:
-	opentext
-	getitemname PP_UP, $0
-	writetext PokemonMansion1FFoundItemText
-	promptbutton
-	jumpopenedtext PokemonMansion1FNoRoomForItemText
-
 BurglarPeteSeenText:
 	text "Who are you? There"
 	line "shouldn't be"
@@ -85,18 +64,6 @@ BurglarLouisSeenText:
 
 BurglarLouisBeatenText:
 	text "Ayah!"
-	done
-
-PokemonMansion1FFoundItemText:
-	text "<PLAYER> found"
-	line ""
-	text_ram wStringBuffer3
-	text "!"
-	done
-
-PokemonMansion1FNoRoomForItemText:
-	text "But <PLAYER> can't"
-	line "hold another item…"
 	done
 
 PokemonMansion1FMewtwoStatueText:
