@@ -63,10 +63,14 @@ CheckBadge:
 	text_end
 
 CheckPartyMove:
-; Check if a monster in your party has or can have move d.
+; Check if a monster in your party has move d, or
+; can have move d and you have TM/HM e.
 
 	xor a
 	ld [wCurPartyMon], a
+
+	ld a, e
+	ld [wCurTMHM], a
 
 	ld e, 0
 .loop1
@@ -94,6 +98,11 @@ CheckPartyMove:
 .maybe
 	ld a, d
 	ld [wPutativeTMHMMove], a
+	ld a, [wCurTMHM]
+	inc a
+	jr z, .no
+	call CheckTMHM
+	jr nc, .no
 	ld e, 0
 .loop2
 	ld a, [wPartyCount]
@@ -130,7 +139,7 @@ CheckPartyMove:
 	ret
 
 CheckForSurfingPikachu:
-	ld d, SURF
+	lb de, SURF, HM_SURF
 	call CheckPartyMove
 	jr c, .no
 	ld a, MON_SPECIES
@@ -373,7 +382,7 @@ TryFlashOW::
 	ld a, [wTimeOfDayPalset]
 	cp DARKNESS_PALSET
 	jr nz, .quit
-	ld d, FLASH
+	lb de, FLASH, TM_FLASH
 	call CheckPartyMove
 	jr c, .quit
 	call GetPartyNickname
@@ -618,7 +627,7 @@ TrySurfOW::
 	call CheckEngineFlag
 	jr c, .quit
 
-	ld d, SURF
+	lb de, SURF, HM_SURF
 	call CheckPartyMove
 	jr c, .quit
 
@@ -855,7 +864,7 @@ Script_AutoWaterfall:
 	step_end
 
 TryWaterfallOW::
-	ld d, WATERFALL
+	lb de, WATERFALL, HM_WATERFALL
 	call CheckPartyMove
 	jr c, .failed
 	ld de, ENGINE_RISINGBADGE
@@ -1154,7 +1163,7 @@ AskStrengthScript:
 	endtext
 
 TryStrengthOW:
-	ld d, STRENGTH
+	lb de, STRENGTH, HM_STRENGTH
 	call CheckPartyMove
 	jr c, .nope
 
@@ -1304,7 +1313,7 @@ Script_AutoWhirlpool:
 	step_end
 
 TryWhirlpoolOW::
-	ld d, WHIRLPOOL
+	lb de, WHIRLPOOL, HM_WHIRLPOOL
 	call CheckPartyMove
 	jr c, .failed
 	ld de, ENGINE_GLACIERBADGE
@@ -1392,7 +1401,7 @@ AutoHeadbuttScript:
 	farjumptext _HeadbuttNothingText
 
 TryHeadbuttOW::
-	ld d, HEADBUTT
+	lb de, HEADBUTT, -1 ; you need the tutor for Headbutt
 	call CheckPartyMove
 	jr c, .no
 
@@ -1514,7 +1523,7 @@ AskRockSmashScript:
 	farjumptext _MaySmashText
 
 HasRockSmash:
-	ld d, ROCK_SMASH
+	lb de, ROCK_SMASH, TM_ROCK_SMASH
 	call CheckPartyMove
 	; a = carry ? 1 : 0
 	sbc a
@@ -1870,7 +1879,7 @@ Script_CantGetOffBike:
 	waitendtext
 
 HasCutAvailable::
-	ld d, CUT
+	lb de, CUT, HM_CUT
 	call CheckPartyMove
 	jr c, .no
 
