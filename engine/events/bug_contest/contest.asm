@@ -515,8 +515,6 @@ Special_SelectRandomBugContestContestants:
 	ld b, CHECK_FLAG
 	call EventFlagAction
 	pop de
-	ld a, c
-	and a
 	jr nz, .next
 ; Set the flag.  This will cause that sprite to not be visible in the contest.
 	ld b, SET_FLAG
