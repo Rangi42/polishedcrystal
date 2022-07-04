@@ -229,25 +229,16 @@ endr
 	loadmem wPartyMon1Stats+7, LOW(999)
 	loadmem wPartyMon1Stats+8, HIGH(999)
 	loadmem wPartyMon1Stats+9, LOW(999)
-	; hm slaves
+	; hm slave
 	givepoke MEW, PLAIN_FORM, 100, LEFTOVERS
-	givepoke MEW, PLAIN_FORM, 100, LEFTOVERS
-	loadmem wPartyMon2Moves+0, FLY
-	loadmem wPartyMon2Moves+1, SURF
-	loadmem wPartyMon2Moves+2, STRENGTH
-	loadmem wPartyMon2Moves+3, CUT
-	loadmem wPartyMon2PP+0, 15
+	loadmem wPartyMon2Moves+0, AEROBLAST
+	loadmem wPartyMon2Moves+1, FLY
+	loadmem wPartyMon2Moves+2, DIG
+	loadmem wPartyMon2Moves+3, FRESH_SNACK
+	loadmem wPartyMon2PP+0, 5
 	loadmem wPartyMon2PP+1, 15
-	loadmem wPartyMon2PP+2, 15
-	loadmem wPartyMon2PP+3, 30
-	loadmem wPartyMon3Moves+0, FLASH
-	loadmem wPartyMon3Moves+1, ROCK_SMASH
-	loadmem wPartyMon3Moves+2, HEADBUTT
-	loadmem wPartyMon3Moves+3, WATERFALL
-	loadmem wPartyMon3PP+0, 20
-	loadmem wPartyMon3PP+1, 15
-	loadmem wPartyMon3PP+2, 15
-	loadmem wPartyMon3PP+3, 15
+	loadmem wPartyMon2PP+2, 10
+	loadmem wPartyMon2PP+3, 10
 	; variant form test
 	givepoke GRAVELER, ALOLAN_FORM, 50
 	givepoke WEEZING, GALARIAN_FORM, 50
