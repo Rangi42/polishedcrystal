@@ -80,7 +80,7 @@ PokeGear:
 	ld [wPokegearRadioChannelBank], a
 	ld [wPokegearRadioChannelAddr], a
 	ld [wPokegearRadioChannelAddr + 1], a
-	ld [wTownMapCanFlyHere], a
+	ld [wDefaultSpawnpoint], a
 	call Pokegear_InitJumptableIndices
 	call InitPokegearTilemap
 	ld a, CGB_POKEGEAR_PALS
@@ -1348,7 +1348,6 @@ TownMap_InitFlyPossible:
 	farcall CheckFlyAllowedOnMap
 	jr nz, .no_fly
 	ld a, TRUE
-	; TODO: set [wPokegearMapCursorSpawnpoint] to the right index
 	jr .done
 .no_fly
 	xor a ; FALSE

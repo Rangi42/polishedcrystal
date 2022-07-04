@@ -342,7 +342,7 @@ StartMenu_Pokegear:
 	call FadeToMenu
 	farcall InitPokegearPalettes
 	farcall PokeGear
-	ld a, [wTownMapCanFlyHere]
+	ld a, [wDefaultSpawnpoint]
 	and a
 	jr nz, _ExitStartMenuAndDoScript
 	call CloseSubmenu
