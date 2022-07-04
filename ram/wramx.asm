@@ -53,7 +53,6 @@ wStartFlypoint:: db
 wEndFlypoint:: db
 ENDU
 wTownMapCanShowFly:: db
-wTownMapCanFlyHere:: db
 
 NEXTU
 ; phone call data

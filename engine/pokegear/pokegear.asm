@@ -80,6 +80,7 @@ PokeGear:
 	ld [wPokegearRadioChannelBank], a
 	ld [wPokegearRadioChannelAddr], a
 	ld [wPokegearRadioChannelAddr + 1], a
+	ld [wTownMapCanFlyHere], a
 	call Pokegear_InitJumptableIndices
 	call InitPokegearTilemap
 	ld a, CGB_POKEGEAR_PALS
@@ -513,6 +514,9 @@ PokegearMap_OrangeMap:
 PokegearMap_ContinueMap:
 	ld hl, hJoyLast
 	ld a, [hl]
+	and A_BUTTON
+	jr nz, .fly
+	ld a, [hl]
 	and B_BUTTON
 	jr nz, .cancel
 	ld a, [hl]
@@ -542,6 +546,16 @@ PokegearMap_ContinueMap:
 .done
 	jmp Pokegear_SwitchPage
 
+.fly
+	ld a, [wTownMapCanFlyHere]
+	and a
+	ret z
+	ld a, [wPokegearMapCursorSpawnpoint]
+	ld [wDefaultSpawnpoint], a
+	ld a, BANK(FlyFunction.FlyScript)
+	ld hl, FlyFunction.FlyScript
+	call FarQueueScript
+	; fallthrough
 .cancel
 	ld hl, wJumptableIndex
 	set 7, [hl]
@@ -1325,12 +1339,16 @@ _TownMap:
 	jmp TownMapJohtoFlips
 
 TownMap_InitFlyPossible:
+	lb de, FLY, HM_FLY
+	farcall CheckPartyMove
+	jr c, .no_fly
 	ld de, ENGINE_STORMBADGE
 	farcall CheckBadge
 	jr c, .no_fly
 	farcall CheckFlyAllowedOnMap
 	jr nz, .no_fly
 	ld a, TRUE
+	; TODO: set [wPokegearMapCursorSpawnpoint] to the right index
 	jr .done
 .no_fly
 	xor a ; FALSE
@@ -1353,6 +1371,7 @@ AnimateTownMapFly:
 	jr nz, .skip
 	ld a, [hli]
 	ld c, a
+	ld [wPokegearMapCursorSpawnpoint], a
 	call HasVisitedSpawn
 	and a
 	jr z, .loop
