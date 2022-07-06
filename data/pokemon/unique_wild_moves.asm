@@ -1,4 +1,4 @@
-unique_moves: MACRO
+MACRO unique_moves
 	db \1 ; landmark
 	dp \2 ; species
 	db \3 ; move

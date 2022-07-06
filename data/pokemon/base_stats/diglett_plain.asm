@@ -4,8 +4,7 @@
 	db GROUND, GROUND ; type
 	db 255 ; catch rate
 	db 81 ; base exp
-	db NO_ITEM ; item 1
-	db SOFT_SAND ; item 2
+	db NO_ITEM, SOFT_SAND ; held items
 	dn GENDER_F50, 3 ; gender ratio, step cycles to hatch
 	INCBIN "gfx/pokemon/diglett_plain/front.dimensions"
 	abilities_for DIGLETT, SAND_VEIL, ARENA_TRAP, SAND_FORCE

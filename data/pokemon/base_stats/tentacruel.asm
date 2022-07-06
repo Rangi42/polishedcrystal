@@ -4,8 +4,7 @@
 	db WATER, POISON ; type
 	db 60 ; catch rate
 	db 205 ; base exp
-	db NO_ITEM ; item 1
-	db POISON_BARB ; item 2
+	db NO_ITEM, POISON_BARB ; held items
 	dn GENDER_F50, 3 ; gender ratio, step cycles to hatch
 	INCBIN "gfx/pokemon/tentacruel/front.dimensions"
 	abilities_for TENTACRUEL, CLEAR_BODY, LIQUID_OOZE, RAIN_DISH

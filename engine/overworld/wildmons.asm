@@ -267,6 +267,7 @@ ChooseWildEncounter:
 	ld c, $ff
 _ChooseWildEncounter:
 	push bc
+	call SetBadgeBaseLevel
 	call LoadWildMonDataPointer
 	pop bc
 	jmp nc, .nowildbattle
@@ -382,6 +383,7 @@ _ChooseWildEncounter:
 ; Store the level
 .ok
 	ld a, b
+	call AdjustLevelForBadges
 	ld [wCurPartyLevel], a
 	ld a, [hli]
 	ld b, [hl]
@@ -1211,6 +1213,43 @@ GetTimeOfDayNotEve:
 	ld a, DAY
 	ret c
 	inc a ; NITE
+	ret
+
+SetBadgeBaseLevel:
+	ld hl, wBadges
+	ld b, wBadgesEnd - wBadges
+	call CountSetBits
+	ld hl, .BadgeBaseLevels
+	ld b, 0
+	add hl, bc
+	ld a, [hl]
+	ld [wBadgeBaseLevel], a
+	ret
+
+.BadgeBaseLevels:
+	db 4
+	db 8, 12, 16, 20, 24, 28, 30, 32
+	db 40, 43, 46, 49, 52, 55, 58, 61
+
+AdjustLevelForBadges:
+	cp MAX_LEVEL + 1
+	ret c
+	sub LEVEL_FROM_BADGES
+	ld b, a
+	ld a, [wBadgeBaseLevel]
+	add b
+; cap underflow at level 2
+	cp 2
+	jr c, .underflow
+	cp MAX_LEVEL
+	ret c
+; cap overflow at level 99
+	cp LEVEL_FROM_BADGES
+	ld a, MAX_LEVEL - 1
+	ret c
+; cap overflow at level 2
+.underflow
+	ld a, 2
 	ret
 
 JohtoGrassWildMons:

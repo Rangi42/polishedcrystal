@@ -59,6 +59,7 @@ SpriteAnimFrameData:
 	dw .Frameset_DexCursor
 	dw .Frameset_DexUnownCursor
 	dw .Frameset_DexSlowpoke
+	dw .Frameset_TownMapFly
 	assert_table_length NUM_SPRITE_ANIM_FRAMESETS
 
 .Frameset_00:
@@ -376,4 +377,8 @@ SpriteAnimFrameData:
 	frame SPRITE_ANIM_OAMSET_DEX_SLOWPOKE_3, 3
 	frame SPRITE_ANIM_OAMSET_DEX_SLOWPOKE_4, 3
 	frame SPRITE_ANIM_OAMSET_DEX_SLOWPOKE_5, 3
+	dorestart
+
+.Frameset_TownMapFly:
+	frame SPRITE_ANIM_OAMSET_TOWN_MAP_FLY, 32
 	dorestart

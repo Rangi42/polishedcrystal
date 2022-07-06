@@ -9,8 +9,7 @@ endc
 	db BUG, GRASS ; type
 	db 75 ; catch rate
 	db 128 ; base exp
-	db TINYMUSHROOM ; item 1
-	db BIG_MUSHROOM ; item 2
+	db TINYMUSHROOM, BIG_MUSHROOM ; held items
 	dn GENDER_F50, 3 ; gender ratio, step cycles to hatch
 	INCBIN "gfx/pokemon/parasect/front.dimensions"
 	abilities_for PARASECT, EFFECT_SPORE, DRY_SKIN, DAMP

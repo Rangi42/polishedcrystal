@@ -4,8 +4,7 @@
 	db FIGHTING, FIGHTING ; type
 	db 45 ; catch rate
 	db 94 ; base exp
-	db NO_ITEM ; item 1
-	db LEEK ; item 2
+	db NO_ITEM, LEEK ; held items
 	dn GENDER_F50, 3 ; gender ratio, step cycles to hatch
 	INCBIN "gfx/pokemon/farfetch_d_galarian/front.dimensions"
 	abilities_for FARFETCH_D_GALARIAN, STEADFAST, STEADFAST, SCRAPPY

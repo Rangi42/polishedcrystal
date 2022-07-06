@@ -804,8 +804,6 @@ Script_trainerflagaction:
 	call GetScriptByte
 	ld b, a
 	call EventFlagAction
-	ld a, c
-	and a
 	ret z
 	ld a, TRUE
 	ldh [hScriptVar], a
@@ -2118,8 +2116,6 @@ Script_checkevent:
 	ld d, a
 	ld b, CHECK_FLAG
 	call EventFlagAction
-	ld a, c
-	and a
 	jr z, .false
 	ld a, TRUE
 .false

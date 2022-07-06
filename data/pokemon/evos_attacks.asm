@@ -1,6 +1,6 @@
 INCLUDE "constants.asm"
 
-evo_data: MACRO
+MACRO evo_data
 	db \1, \2 ; evolution type, parameter
 	if (\1 == EVOLVE_STAT) || (\1 == EVOLVE_HOLDING)
 		db \3 ;  ATK_*_DEF | time of day

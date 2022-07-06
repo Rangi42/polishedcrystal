@@ -4,8 +4,7 @@
 	db FIRE, FLYING ; type
 	db 3 ; catch rate
 	db 220 ; base exp
-	db ALWAYS_ITEM_2 ; item 1
-	db SACRED_ASH ; item 2
+	db ALWAYS_ITEM_2, SACRED_ASH ; held items
 	dn GENDER_UNKNOWN, 15 ; gender ratio, step cycles to hatch
 	dn 7 , 7 ; frontpic dimensions
 if DEF(FAITHFUL)

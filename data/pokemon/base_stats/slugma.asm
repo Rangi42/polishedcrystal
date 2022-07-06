@@ -4,8 +4,7 @@
 	db FIRE, FIRE ; type
 	db 190 ; catch rate
 	db 78 ; base exp
-	db NO_ITEM ; item 1
-	db NO_ITEM ; item 2
+	db NO_ITEM, NO_ITEM ; held items
 	dn GENDER_F50, 3 ; gender ratio, step cycles to hatch
 	INCBIN "gfx/pokemon/slugma/front.dimensions"
 	abilities_for SLUGMA, MAGMA_ARMOR, FLAME_BODY, WEAK_ARMOR

@@ -9,7 +9,7 @@
 	const PC_MENU_MODE ; 0
 	const PC_SWAP_MODE ; 1
 	const PC_ITEM_MODE ; 2
-NUM_PC_MODES EQU const_value
+DEF NUM_PC_MODES EQU const_value
 
 ; BillsPC_MenuStrings indexes
 ; BillsPC_MenuJumptable indexes

@@ -13,8 +13,7 @@ if DEF(FAITHFUL)
 else
 	db 126 ; base exp
 endc
-	db ORAN_BERRY ; item 1
-	db SITRUS_BERRY ; item 2
+	db ORAN_BERRY, SITRUS_BERRY ; held items
 	dn GENDER_F50, 2 ; gender ratio, step cycles to hatch
 	INCBIN "gfx/pokemon/furret/front.dimensions"
 	abilities_for FURRET, RUN_AWAY, KEEN_EYE, FRISK

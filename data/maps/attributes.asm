@@ -1,7 +1,7 @@
-map_attributes: MACRO
+MACRO map_attributes
 ; label, map, border block, connections
-CURRENT_MAP_WIDTH = \2_WIDTH
-CURRENT_MAP_HEIGHT = \2_HEIGHT
+	DEF CURRENT_MAP_WIDTH = \2_WIDTH
+	DEF CURRENT_MAP_HEIGHT = \2_HEIGHT
 \1_MapAttributes::
 	db \3
 	db \2_HEIGHT, \2_WIDTH
@@ -13,7 +13,7 @@ CURRENT_MAP_HEIGHT = \2_HEIGHT
 ENDM
 
 ; Connections go in order: north, south, west, east
-connection: MACRO
+MACRO connection
 ;\1: direction
 ;\2: map name
 ;\3: map id
@@ -21,60 +21,60 @@ connection: MACRO
 ;    (x offset for east/west, y offset for north/south)
 
 ; Calculate tile offsets for source (current) and target maps
-_src = 0
-_tgt = (\4) + 3
-if _tgt < 0
-_src = -_tgt
-_tgt = 0
-endc
+	DEF _src = 0
+	DEF _tgt = (\4) + 3
+	if _tgt < 0
+		DEF _src = -_tgt
+		DEF _tgt = 0
+	endc
 
-if !STRCMP("\1", "north")
-_blk = \3_WIDTH * (\3_HEIGHT - 3) + _src
-_map = _tgt
-_win = (\3_WIDTH + 6) * \3_HEIGHT + 1
-_y = \3_HEIGHT * 2 - 1
-_x = (\4) * -2
-_len = CURRENT_MAP_WIDTH + 3 - (\4)
-if _len > \3_WIDTH
-_len = \3_WIDTH
-endc
+	if !STRCMP("\1", "north")
+		DEF _blk = \3_WIDTH * (\3_HEIGHT - 3) + _src
+		DEF _map = _tgt
+		DEF _win = (\3_WIDTH + 6) * \3_HEIGHT + 1
+		DEF _y = \3_HEIGHT * 2 - 1
+		DEF _x = (\4) * -2
+		DEF _len = CURRENT_MAP_WIDTH + 3 - (\4)
+		if _len > \3_WIDTH
+			DEF _len = \3_WIDTH
+		endc
 
-elif !STRCMP("\1", "south")
-_blk = _src
-_map = (CURRENT_MAP_WIDTH + 6) * (CURRENT_MAP_HEIGHT + 3) + _tgt
-_win = \3_WIDTH + 7
-_y = 0
-_x = (\4) * -2
-_len = CURRENT_MAP_WIDTH + 3 - (\4)
-if _len > \3_WIDTH
-_len = \3_WIDTH
-endc
+	elif !STRCMP("\1", "south")
+		DEF _blk = _src
+		DEF _map = (CURRENT_MAP_WIDTH + 6) * (CURRENT_MAP_HEIGHT + 3) + _tgt
+		DEF _win = \3_WIDTH + 7
+		DEF _y = 0
+		DEF _x = (\4) * -2
+		DEF _len = CURRENT_MAP_WIDTH + 3 - (\4)
+		if _len > \3_WIDTH
+			DEF _len = \3_WIDTH
+		endc
 
-elif !STRCMP("\1", "west")
-_blk = (\3_WIDTH * _src) + \3_WIDTH - 3
-_map = (CURRENT_MAP_WIDTH + 6) * _tgt
-_win = (\3_WIDTH + 6) * 2 - 6
-_y = (\4) * -2
-_x = \3_WIDTH * 2 - 1
-_len = CURRENT_MAP_HEIGHT + 3 - (\4)
-if _len > \3_HEIGHT
-_len = \3_HEIGHT
-endc
+	elif !STRCMP("\1", "west")
+		DEF _blk = (\3_WIDTH * _src) + \3_WIDTH - 3
+		DEF _map = (CURRENT_MAP_WIDTH + 6) * _tgt
+		DEF _win = (\3_WIDTH + 6) * 2 - 6
+		DEF _y = (\4) * -2
+		DEF _x = \3_WIDTH * 2 - 1
+		DEF _len = CURRENT_MAP_HEIGHT + 3 - (\4)
+		if _len > \3_HEIGHT
+			DEF _len = \3_HEIGHT
+		endc
 
-elif !STRCMP("\1", "east")
-_blk = (\3_WIDTH * _src)
-_map = (CURRENT_MAP_WIDTH + 6) * _tgt + CURRENT_MAP_WIDTH + 3
-_win = \3_WIDTH + 7
-_y = (\4) * -2
-_x = 0
-_len = CURRENT_MAP_HEIGHT + 3 - (\4)
-if _len > \3_HEIGHT
-_len = \3_HEIGHT
-endc
+	elif !STRCMP("\1", "east")
+		DEF _blk = (\3_WIDTH * _src)
+		DEF _map = (CURRENT_MAP_WIDTH + 6) * _tgt + CURRENT_MAP_WIDTH + 3
+		DEF _win = \3_WIDTH + 7
+		DEF _y = (\4) * -2
+		DEF _x = 0
+		DEF _len = CURRENT_MAP_HEIGHT + 3 - (\4)
+		if _len > \3_HEIGHT
+			DEF _len = \3_HEIGHT
+		endc
 
-else
-fail "Invalid direction for 'connection'."
-endc
+	else
+		fail "Invalid direction for 'connection'."
+	endc
 
 	map_id \3
 	dw wDecompressScratch + _blk
@@ -916,7 +916,7 @@ ENDM
 	map_attributes CeruleanCave2F, CERULEAN_CAVE_2F, $9, 0
 	map_attributes CeruleanCaveB1F, CERULEAN_CAVE_B1F, $9, 0
 	map_attributes Route39RuggedRoadGate, ROUTE_39_RUGGED_ROAD_GATE, $0, 0
-	map_attributes RuggedRoad, RUGGED_ROAD, $0, 0
+	map_attributes RuggedRoad, RUGGED_ROAD, $71, 0
 	map_attributes SnowtopMountain, SNOWTOP_MOUNTAIN, $0, 0
 	map_attributes YellowForestGate, YELLOW_FOREST_GATE, $0, 0
 	map_attributes YellowForest, YELLOW_FOREST, $55, 0

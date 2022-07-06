@@ -14,8 +14,7 @@ else
 	db 35 ; catch rate
 	db 193 ; base exp
 endc
-	db NO_ITEM ; item 1
-	db NEVERMELTICE ; item 2
+	db NO_ITEM, NEVERMELTICE ; held items
 	dn GENDER_F50, 2 ; gender ratio, step cycles to hatch
 	INCBIN "gfx/pokemon/delibird/front.dimensions"
 	abilities_for DELIBIRD, VITAL_SPIRIT, HUSTLE, INSOMNIA

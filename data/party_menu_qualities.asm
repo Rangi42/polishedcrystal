@@ -10,10 +10,10 @@
 	const PLACE_PARTYMON_RELEARNER
 	const PLACE_PARTYMON_BATTLETOWER
 
-partymenuqualities: MACRO
-for i, 1, _NARG + 1
-	db PLACE_PARTYMON_\<i>
-endr
+MACRO partymenuqualities
+	for i, 1, _NARG + 1
+		db PLACE_PARTYMON_\<i>
+	endr
 	db -1 ; end
 ENDM
 

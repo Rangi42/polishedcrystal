@@ -4,8 +4,7 @@
 	db GROUND, GROUND ; type
 	db 190 ; catch rate
 	db 87 ; base exp
-	db NO_ITEM ; item 1
-	db THICK_CLUB ; item 2
+	db NO_ITEM, THICK_CLUB ; held items
 	dn GENDER_F50, 3 ; gender ratio, step cycles to hatch
 	INCBIN "gfx/pokemon/cubone/front.dimensions"
 if DEF(FAITHFUL)

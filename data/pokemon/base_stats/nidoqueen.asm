@@ -4,8 +4,7 @@
 	db POISON, GROUND ; type
 	db 45 ; catch rate
 	db 194 ; base exp
-	db NO_ITEM ; item 1
-	db NO_ITEM ; item 2
+	db NO_ITEM, NO_ITEM ; held items
 	dn GENDER_F100, 3 ; gender ratio, step cycles to hatch
 	INCBIN "gfx/pokemon/nidoqueen/front.dimensions"
 	abilities_for NIDOQUEEN, POISON_POINT, RIVALRY, SHEER_FORCE

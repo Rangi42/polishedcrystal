@@ -52,6 +52,7 @@ wTownMapCursorCoordinates:: dw
 wStartFlypoint:: db
 wEndFlypoint:: db
 ENDU
+wTownMapCanShowFly:: db
 
 NEXTU
 ; phone call data

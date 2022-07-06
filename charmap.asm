@@ -1,7 +1,7 @@
-ctxtmap: MACRO
-x = \2
-___huffman_data_{02X:x} EQU %\3
-___huffman_length_{02X:x} EQU STRLEN("\3")
+MACRO ctxtmap
+	DEF x = \2
+	DEF ___huffman_data_{02X:x} EQU %\3
+	DEF ___huffman_length_{02X:x} EQU STRLEN("\3")
 	charmap \1, \2
 ENDM
 
@@ -21,7 +21,7 @@ ENDM
 
 	; n-grams: $09 - $51 (defined below)
 
-SPECIALS_START EQU $52
+DEF SPECIALS_START EQU $52
 
 	ctxtmap "<DONE>",   $52, 001111
 	ctxtmap "@",        $53, 111101000
@@ -42,7 +42,7 @@ SPECIALS_START EQU $52
 
 ; Battle characters
 
-BATTLEEXTRA_GFX_START EQU $5f
+DEF BATTLEEXTRA_GFX_START EQU $5f
 
 	charmap "<MALE>",   $5f
 	charmap "<FEMALE>", $60
@@ -70,7 +70,7 @@ BATTLEEXTRA_GFX_START EQU $5f
 
 ; Actual characters
 
-FIRST_REGULAR_TEXT_CHAR EQU $7f
+DEF FIRST_REGULAR_TEXT_CHAR EQU $7f
 
 ; map tiles:
 
@@ -229,7 +229,7 @@ FIRST_REGULAR_TEXT_CHAR EQU $7f
 	charmap "┘",        $ff
 
 
-NGRAMS_START EQU $09
+DEF NGRAMS_START EQU $09
 
 	newcharmap compressing, no_ngrams
 
@@ -311,12 +311,12 @@ NGRAMS_START EQU $09
 	charmap "ould",     $4b
 	charmap "attle",    $4c
 
-NGRAMS_END EQU $51
+DEF NGRAMS_END EQU $51
 
 	setcharmap default
 
 
-rawchar: MACRO
+MACRO rawchar
 	setcharmap no_ngrams
 	db \#
 	setcharmap default

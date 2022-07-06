@@ -73,7 +73,8 @@ CheckBreedmonCompatibility:
 	ld [wCurForm], a
 	call GetBaseData
 	ld a, [wBaseEggGroups]
-	cp EGG_NONE * $11
+	assert EGG_NONE * $11 == $ff
+	inc a
 	jr z, .Incompatible
 
 	ld a, [wBreedMon1Species]
@@ -83,7 +84,8 @@ CheckBreedmonCompatibility:
 	ld [wCurForm], a
 	call GetBaseData
 	ld a, [wBaseEggGroups]
-	cp EGG_NONE * $11
+	assert EGG_NONE * $11 == $ff
+	inc a
 	jr z, .Incompatible
 
 ; Ditto is automatically compatible with everything.

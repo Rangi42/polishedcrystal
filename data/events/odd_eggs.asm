@@ -1,5 +1,5 @@
-NUM_ODD_EGGS EQU 10
-ODD_EGG_LENGTH EQU 10
+DEF NUM_ODD_EGGS EQU 10
+DEF ODD_EGG_LENGTH EQU 10
 
 OddEggProbabilities:
 	table_width 1, OddEggProbabilities

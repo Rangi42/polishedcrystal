@@ -74,10 +74,8 @@ _CheckTrainerBattle::
 	ld d, [hl]
 	ld b, CHECK_FLAG
 	call EventFlagAction
-	ld a, c
 	pop de
 	pop bc
-	and a
 	jr z, .startbattle
 
 .next

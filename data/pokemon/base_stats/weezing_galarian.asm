@@ -4,8 +4,7 @@
 	db POISON, FAIRY ; type
 	db 60 ; catch rate
 	db 173 ; base exp
-	db NO_ITEM ; item 1
-	db SMOKE_BALL ; item 2
+	db NO_ITEM, SMOKE_BALL ; held items
 	dn GENDER_F50, 3 ; gender ratio, step cycles to hatch
 	INCBIN "gfx/pokemon/weezing_galarian/front.dimensions"
 	abilities_for WEEZING_GALARIAN, LEVITATE, NEUTRALIZING_GAS, WHITE_SMOKE

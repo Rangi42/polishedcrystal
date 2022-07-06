@@ -4,8 +4,7 @@
 	db ICE, GROUND ; type
 	db 50 ; catch rate
 	db 207 ; base exp
-	db RAWST_BERRY ; item 1
-	db NEVERMELTICE ; item 2
+	db RAWST_BERRY, NEVERMELTICE ; held items
 	dn GENDER_F50, 3 ; gender ratio, step cycles to hatch
 	INCBIN "gfx/pokemon/mamoswine/front.dimensions"
 	abilities_for MAMOSWINE, OBLIVIOUS, SNOW_CLOAK, THICK_FAT

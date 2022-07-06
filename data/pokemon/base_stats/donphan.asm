@@ -4,8 +4,7 @@
 	db GROUND, GROUND ; type
 	db 60 ; catch rate
 	db 189 ; base exp
-	db NO_ITEM ; item 1
-	db KEE_BERRY ; item 2
+	db NO_ITEM, KEE_BERRY ; held items
 	dn GENDER_F50, 3 ; gender ratio, step cycles to hatch
 	INCBIN "gfx/pokemon/donphan/front.dimensions"
 	abilities_for DONPHAN, STURDY, STURDY, SAND_VEIL

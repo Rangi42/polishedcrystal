@@ -4,8 +4,7 @@
 	db DARK, ICE ; type
 	db 60 ; catch rate
 	db 132 ; base exp
-	db GRIP_CLAW ; item 1
-	db RAZOR_CLAW ; item 2
+	db GRIP_CLAW, RAZOR_CLAW ; held items
 	dn GENDER_F50, 3 ; gender ratio, step cycles to hatch
 	INCBIN "gfx/pokemon/sneasel_plain/front.dimensions"
 	abilities_for SNEASEL, INNER_FOCUS, KEEN_EYE, PICKPOCKET

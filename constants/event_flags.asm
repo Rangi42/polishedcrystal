@@ -2368,4 +2368,4 @@
 	const EVENT_CHERRYGROVE_BAY_CUT_TREE
 
 	const_next $8ff
-NUM_EVENTS EQU const_value ; 2303
+DEF NUM_EVENTS EQU const_value ; 2303

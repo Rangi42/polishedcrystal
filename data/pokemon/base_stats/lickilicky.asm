@@ -4,8 +4,7 @@
 	db NORMAL, NORMAL ; type
 	db 30 ; catch rate
 	db 193 ; base exp
-	db NO_ITEM ; item 1
-	db LAGGING_TAIL ; item 2
+	db NO_ITEM, LAGGING_TAIL ; held items
 	dn GENDER_F50, 3 ; gender ratio, step cycles to hatch
 	INCBIN "gfx/pokemon/lickilicky/front.dimensions"
 	abilities_for LICKILICKY, OWN_TEMPO, OBLIVIOUS, CLOUD_NINE

@@ -1,4 +1,4 @@
-base_exception: MACRO
+MACRO base_exception
 ; mon, actual yield
 	dp \1
 	dw \2

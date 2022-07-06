@@ -9,8 +9,7 @@ endc
 	db WATER, GROUND ; type
 	db 90 ; catch rate
 	db 137 ; base exp
-	db NO_ITEM ; item 1
-	db CHESTO_BERRY ; item 2
+	db NO_ITEM, CHESTO_BERRY ; held items
 	dn GENDER_F50, 3 ; gender ratio, step cycles to hatch
 	INCBIN "gfx/pokemon/quagsire/front.dimensions"
 	abilities_for QUAGSIRE, DAMP, WATER_ABSORB, UNAWARE

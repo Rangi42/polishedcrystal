@@ -4,8 +4,7 @@
 	db ROCK, GROUND ; type
 	db 45 ; catch rate
 	db 177 ; base exp
-	db NO_ITEM ; item 1
-	db EVERSTONE ; item 2
+	db NO_ITEM, EVERSTONE ; held items
 	dn GENDER_F50, 2 ; gender ratio, step cycles to hatch
 	INCBIN "gfx/pokemon/golem_plain/front.dimensions"
 	abilities_for GOLEM, ROCK_HEAD, STURDY, SAND_VEIL

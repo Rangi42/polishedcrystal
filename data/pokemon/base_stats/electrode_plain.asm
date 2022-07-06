@@ -4,8 +4,7 @@
 	db ELECTRIC, ELECTRIC ; type
 	db 60 ; catch rate
 	db 150 ; base exp
-	db NO_ITEM ; item 1
-	db CELL_BATTERY ; item 2
+	db NO_ITEM, CELL_BATTERY ; held items
 	dn GENDER_UNKNOWN, 3 ; gender ratio, step cycles to hatch
 	INCBIN "gfx/pokemon/electrode_plain/front.dimensions"
 	abilities_for ELECTRODE, SOUNDPROOF, STATIC, AFTERMATH

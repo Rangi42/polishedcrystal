@@ -30,11 +30,11 @@
 	const THEME_DRAGON
 	const THEME_DARK
 	const THEME_FAIRY
-NUM_BILLS_PC_THEMES EQU const_value
+DEF NUM_BILLS_PC_THEMES EQU const_value
 
 ; sprite animation parameters
-PCANIM_STATIC      EQU  0 ; used when holding stuff, we don't want to bop then
-PCANIM_ANIMATE     EQU 90 ; baseline
-PCANIM_PICKUP      EQU 91 ; we're picking up/placing down something
-PCANIM_PICKUP_NEXT EQU 98 ; cursor is at the bottom, ready for pickup
-PCANIM_QUICKFRAMES EQU  9
+DEF PCANIM_STATIC      EQU  0 ; used when holding stuff, we don't want to bop then
+DEF PCANIM_ANIMATE     EQU 90 ; baseline
+DEF PCANIM_PICKUP      EQU 91 ; we're picking up/placing down something
+DEF PCANIM_PICKUP_NEXT EQU 98 ; cursor is at the bottom, ready for pickup
+DEF PCANIM_QUICKFRAMES EQU  9

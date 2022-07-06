@@ -128,8 +128,6 @@ CheckObjectFlag:
 .check
 	ld b, CHECK_FLAG
 	call EventFlagAction
-	ld a, c
-	and a
 	jr nz, .masked
 .unmasked
 	xor a

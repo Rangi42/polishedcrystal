@@ -1,7 +1,7 @@
-unown_set: MACRO
-for i, 1, _NARG + 1
-	db UNOWN_\<i>_FORM
-endr
+MACRO unown_set
+	for i, 1, _NARG + 1
+		db UNOWN_\<i>_FORM
+	endr
 	db -1
 ENDM
 

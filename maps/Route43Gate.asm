@@ -1,4 +1,4 @@
-ROUTE43GATE_TOLL EQU 1000
+DEF ROUTE43GATE_TOLL EQU 1000
 
 Route43Gate_MapScriptHeader:
 	def_scene_scripts

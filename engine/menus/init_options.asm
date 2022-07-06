@@ -1,4 +1,4 @@
-NUM_INITIAL_OPTIONS EQU 8
+DEF NUM_INITIAL_OPTIONS EQU 8
 
 SetInitialOptions:
 	ld a, $10

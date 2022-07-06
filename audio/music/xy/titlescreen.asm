@@ -856,8 +856,8 @@ Music_TitleScreenXY_Ch3_b3:
 	note A#, 2
 	endchannel
 
-SNARE EQU 3
-SNARE2 EQU 3
+DEF SNARE EQU 3
+DEF SNARE2 EQU 3
 
 Music_TitleScreenXY_Ch4:
 	togglenoise $3

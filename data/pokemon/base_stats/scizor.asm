@@ -4,8 +4,7 @@
 	db BUG, STEEL ; type
 	db 25 ; catch rate
 	db 200 ; base exp
-	db NO_ITEM ; item 1
-	db METAL_COAT ; item 2
+	db NO_ITEM, METAL_COAT ; held items
 	dn GENDER_F50, 4 ; gender ratio, step cycles to hatch
 	INCBIN "gfx/pokemon/scizor/front.dimensions"
 	abilities_for SCIZOR, SWARM, TECHNICIAN, LIGHT_METAL

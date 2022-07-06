@@ -4,8 +4,7 @@
 	db ELECTRIC, FLYING ; type
 	db 3 ; catch rate
 	db 216 ; base exp
-	db ALWAYS_ITEM_2 ; item 1
-	db LUM_BERRY ; item 2
+	db ALWAYS_ITEM_2, LUM_BERRY ; held items
 	dn GENDER_UNKNOWN, 15 ; gender ratio, step cycles to hatch
 	INCBIN "gfx/pokemon/zapdos_plain/front.dimensions"
 if DEF(FAITHFUL)

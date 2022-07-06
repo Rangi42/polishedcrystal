@@ -1,6 +1,6 @@
-CARDFLIP_LIGHT_OFF EQU $f3
-CARDFLIP_LIGHT_ON  EQU $f4
-CARDFLIP_DECK_SIZE EQU 4 * 6
+DEF CARDFLIP_LIGHT_OFF EQU $f3
+DEF CARDFLIP_LIGHT_ON  EQU $f4
+DEF CARDFLIP_DECK_SIZE EQU 4 * 6
 
 _CardFlip:
 	ld hl, wOptions1
@@ -1257,14 +1257,14 @@ CardFlip_UpdateCursorOAM:
 	jmp CardFlip_CopyOAM
 
 .OAMData:
-cardflip_cursor: MACRO
-if _NARG >= 5
-	dbpixel \1, \2, \3, \4
-	dw \5
-else
-	dbpixel \1, \2
-	dw \3
-endc
+MACRO cardflip_cursor
+	if _NARG >= 5
+		dbpixel \1, \2, \3, \4
+		dw \5
+	else
+		dbpixel \1, \2
+		dw \3
+	endc
 ENDM
 
 	cardflip_cursor 11,  2,       .Impossible

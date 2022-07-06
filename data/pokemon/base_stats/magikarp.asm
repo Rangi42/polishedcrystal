@@ -4,8 +4,7 @@
 	db WATER, WATER ; type
 	db 255 ; catch rate
 	db 20 ; base exp
-	db NO_ITEM ; item 1
-	db NO_ITEM ; item 2
+	db NO_ITEM, NO_ITEM ; held items
 	dn GENDER_F50, 0 ; gender ratio, step cycles to hatch
 	INCBIN "gfx/pokemon/magikarp_plain/front.dimensions"
 	abilities_for MAGIKARP, SWIFT_SWIM, SWIFT_SWIM, RATTLED

@@ -1,39 +1,39 @@
 ; base data struct members (see data/pokemon/base_stats/*.asm)
 rsreset
-BASE_STATS       rb NUM_STATS
+DEF BASE_STATS       rb NUM_STATS
 rsset BASE_STATS
-BASE_HP          rb
-BASE_ATK         rb
-BASE_DEF         rb
-BASE_SPD         rb
-BASE_SAT         rb
-BASE_SDF         rb
-BASE_TYPES       rw
+DEF BASE_HP          rb
+DEF BASE_ATK         rb
+DEF BASE_DEF         rb
+DEF BASE_SPD         rb
+DEF BASE_SAT         rb
+DEF BASE_SDF         rb
+DEF BASE_TYPES       rw
 rsset BASE_TYPES
-BASE_TYPE_1      rb
-BASE_TYPE_2      rb
-BASE_CATCH_RATE  rb
-BASE_EXP         rb
-BASE_ITEMS       rw
+DEF BASE_TYPE_1      rb
+DEF BASE_TYPE_2      rb
+DEF BASE_CATCH_RATE  rb
+DEF BASE_EXP         rb
+DEF BASE_ITEMS       rw
 rsset BASE_ITEMS
-BASE_ITEM_1      rb
-BASE_ITEM_2      rb
-BASE_GENDER      rb
-BASE_EGG_STEPS EQU BASE_GENDER
-BASE_PIC_SIZE    rb
-BASE_ABILITIES   rb 3
+DEF BASE_ITEM_1      rb
+DEF BASE_ITEM_2      rb
+DEF BASE_GENDER      rb
+DEF BASE_EGG_STEPS EQU BASE_GENDER
+DEF BASE_PIC_SIZE    rb
+DEF BASE_ABILITIES   rb 3
 rsset BASE_ABILITIES
-BASE_ABILITY_1   rb
-BASE_ABILITY_2   rb
-BASE_ABILITY_3   rb
-BASE_GROWTH_RATE rb
-BASE_EGG_GROUPS  rb
-BASE_EV_YIELDS   rw
+DEF BASE_ABILITY_1   rb
+DEF BASE_ABILITY_2   rb
+DEF BASE_ABILITY_3   rb
+DEF BASE_GROWTH_RATE rb
+DEF BASE_EGG_GROUPS  rb
+DEF BASE_EV_YIELDS   rw
 rsset BASE_EV_YIELDS
-BASE_EV_YIELD_1  rb
-BASE_EV_YIELD_2  rb
-BASE_TMHM        rb (NUM_TM_HM_TUTOR + 7) / 8
-BASE_DATA_SIZE EQU _RS
+DEF BASE_EV_YIELD_1  rb
+DEF BASE_EV_YIELD_2  rb
+DEF BASE_TMHM        rb (NUM_TM_HM_TUTOR + 7) / 8
+DEF BASE_DATA_SIZE EQU _RS
 
 ; gender ratio constants
 	const_def
@@ -47,7 +47,7 @@ BASE_DATA_SIZE EQU _RS
 	const GENDER_F87_5
 	const GENDER_F100
 
-GENDER_UNKNOWN EQU %1111
+DEF GENDER_UNKNOWN EQU %1111
 
 ; wBaseGrowthRate values
 ; GrowthRates indexes (see data/growth_rates.asm)
@@ -56,7 +56,7 @@ GENDER_UNKNOWN EQU %1111
 	const GROWTH_MEDIUM_SLOW
 	const GROWTH_FAST
 	const GROWTH_SLOW
-NUM_GROWTH_RATES EQU const_value
+DEF NUM_GROWTH_RATES EQU const_value
 
 ; wBaseEggGroups values
 	const_def 1
@@ -75,15 +75,15 @@ NUM_GROWTH_RATES EQU const_value
 	const EGG_DITTO         ; d
 	const EGG_DRAGON        ; e
 	const EGG_NONE          ; f (Undiscovered)
-NUM_EGG_GROUPS EQU const_value - 1
+DEF NUM_EGG_GROUPS EQU const_value - 1
 
 ; body data struct members (see data/pokemon/body_data.asm)
 rsreset
-BODY_HEIGHT rb
-BODY_WEIGHT rw
-BODY_COLOR  rb
-BODY_SHAPE EQU BODY_COLOR
-BODY_DATA_SIZE EQU _RS
+DEF BODY_HEIGHT rb
+DEF BODY_WEIGHT rw
+DEF BODY_COLOR  rb
+DEF BODY_SHAPE EQU BODY_COLOR
+DEF BODY_DATA_SIZE EQU _RS
 
 ; shapes (see data/pokemon/body_data.asm)
 	const_def
@@ -102,7 +102,7 @@ BODY_DATA_SIZE EQU _RS
 	const SHAPE_MULTIWINGS   ; c
 	const SHAPE_INSECTOID    ; d
 assert const_value <= $10
-NUM_SHAPES EQU const_value
+DEF NUM_SHAPES EQU const_value
 
 ; body colors (see data/pokemon/body_data.asm)
 	const_def
@@ -117,177 +117,177 @@ NUM_SHAPES EQU const_value
 	const BODY_COLOR_WHITE  ; 8
 	const BODY_COLOR_PINK   ; 9
 assert const_value <= $10
-NUM_BODY_COLORS EQU const_value
+DEF NUM_BODY_COLORS EQU const_value
 
 ; breed_struct and party_struct members (see macros/wram.asm)
 rsreset
-MON_SPECIES            rb
-MON_ITEM               rb
-MON_MOVES              rb NUM_MOVES
-MON_ID                 rw
-MON_EXP                rb 3
-MON_EVS                rb NUM_STATS
+DEF MON_SPECIES            rb
+DEF MON_ITEM               rb
+DEF MON_MOVES              rb NUM_MOVES
+DEF MON_ID                 rw
+DEF MON_EXP                rb 3
+DEF MON_EVS                rb NUM_STATS
 rsset MON_EVS
-MON_HP_EV              rb
-MON_ATK_EV             rb
-MON_DEF_EV             rb
-MON_SPD_EV             rb
-MON_SAT_EV             rb
-MON_SDF_EV             rb
-MON_DVS                rb NUM_STATS / 2
+DEF MON_HP_EV              rb
+DEF MON_ATK_EV             rb
+DEF MON_DEF_EV             rb
+DEF MON_SPD_EV             rb
+DEF MON_SAT_EV             rb
+DEF MON_SDF_EV             rb
+DEF MON_DVS                rb NUM_STATS / 2
 rsset MON_DVS
-MON_HP_ATK_DV          rb
-MON_DEF_SPD_DV         rb
-MON_SAT_SDF_DV         rb
-MON_PERSONALITY        rw
-MON_SHINY      EQU MON_PERSONALITY
-MON_ABILITY    EQU MON_PERSONALITY
-MON_NATURE     EQU MON_PERSONALITY
-MON_GENDER     EQU MON_PERSONALITY + 1
-MON_IS_EGG     EQU MON_PERSONALITY + 1
-MON_EXTSPECIES EQU MON_PERSONALITY + 1
-MON_FORM       EQU MON_PERSONALITY + 1
-MON_PP                 rb NUM_MOVES
-MON_HAPPINESS          rb
-MON_PKRUS              rb
-MON_CAUGHTDATA         rb 3
+DEF MON_HP_ATK_DV          rb
+DEF MON_DEF_SPD_DV         rb
+DEF MON_SAT_SDF_DV         rb
+DEF MON_PERSONALITY        rw
+DEF MON_SHINY      EQU MON_PERSONALITY
+DEF MON_ABILITY    EQU MON_PERSONALITY
+DEF MON_NATURE     EQU MON_PERSONALITY
+DEF MON_GENDER     EQU MON_PERSONALITY + 1
+DEF MON_IS_EGG     EQU MON_PERSONALITY + 1
+DEF MON_EXTSPECIES EQU MON_PERSONALITY + 1
+DEF MON_FORM       EQU MON_PERSONALITY + 1
+DEF MON_PP                 rb NUM_MOVES
+DEF MON_HAPPINESS          rb
+DEF MON_PKRUS              rb
+DEF MON_CAUGHTDATA         rb 3
 rsset MON_CAUGHTDATA
-MON_CAUGHTGENDER       rb
-MON_CAUGHTTIME EQU MON_CAUGHTGENDER
-MON_CAUGHTBALL EQU MON_CAUGHTGENDER
-MON_CAUGHTLEVEL        rb
-MON_CAUGHTLOCATION     rb
-MON_LEVEL              rb
-BREEDMON_STRUCT_LENGTH EQU _RS
-MON_STATUS             rb
+DEF MON_CAUGHTGENDER       rb
+DEF MON_CAUGHTTIME EQU MON_CAUGHTGENDER
+DEF MON_CAUGHTBALL EQU MON_CAUGHTGENDER
+DEF MON_CAUGHTLEVEL        rb
+DEF MON_CAUGHTLOCATION     rb
+DEF MON_LEVEL              rb
+DEF BREEDMON_STRUCT_LENGTH EQU _RS
+DEF MON_STATUS             rb
                        rb_skip
-MON_HP                 rw
-MON_MAXHP              rw
-MON_STATS              rw NUM_BATTLE_STATS
+DEF MON_HP                 rw
+DEF MON_MAXHP              rw
+DEF MON_STATS              rw NUM_BATTLE_STATS
 rsset MON_STATS
-MON_ATK                rw
-MON_DEF                rw
-MON_SPD                rw
-MON_SAT                rw
-MON_SDF                rw
-PARTYMON_STRUCT_LENGTH EQU _RS
+DEF MON_ATK                rw
+DEF MON_DEF                rw
+DEF MON_SPD                rw
+DEF MON_SAT                rw
+DEF MON_SDF                rw
+DEF PARTYMON_STRUCT_LENGTH EQU _RS
 
 ; savemon_struct members (see macros/wram.asm)
 rsreset
-SAVEMON_SPECIES            rb
-SAVEMON_ITEM               rb
-SAVEMON_MOVES              rb NUM_MOVES
-SAVEMON_ID                 rw
-SAVEMON_EXP                rb 3
-SAVEMON_EVS                rb NUM_STATS
+DEF SAVEMON_SPECIES            rb
+DEF SAVEMON_ITEM               rb
+DEF SAVEMON_MOVES              rb NUM_MOVES
+DEF SAVEMON_ID                 rw
+DEF SAVEMON_EXP                rb 3
+DEF SAVEMON_EVS                rb NUM_STATS
 rsset SAVEMON_EVS
-SAVEMON_HP_EV              rb
-SAVEMON_ATK_EV             rb
-SAVEMON_DEF_EV             rb
-SAVEMON_SPD_EV             rb
-SAVEMON_SAT_EV             rb
-SAVEMON_SDF_EV             rb
-SAVEMON_DVS                rb NUM_STATS / 2
+DEF SAVEMON_HP_EV              rb
+DEF SAVEMON_ATK_EV             rb
+DEF SAVEMON_DEF_EV             rb
+DEF SAVEMON_SPD_EV             rb
+DEF SAVEMON_SAT_EV             rb
+DEF SAVEMON_SDF_EV             rb
+DEF SAVEMON_DVS                rb NUM_STATS / 2
 rsset SAVEMON_DVS
-SAVEMON_HP_ATK_DV          rb
-SAVEMON_DEF_SPD_DV         rb
-SAVEMON_SAT_SDF_DV         rb
-SAVEMON_PERSONALITY        rw
-SAVEMON_SHINY      EQU SAVEMON_PERSONALITY
-SAVEMON_ABILITY    EQU SAVEMON_PERSONALITY
-SAVEMON_NATURE     EQU SAVEMON_PERSONALITY
-SAVEMON_GENDER     EQU SAVEMON_PERSONALITY + 1
-SAVEMON_IS_EGG     EQU SAVEMON_PERSONALITY + 1
-SAVEMON_EXTSPECIES EQU SAVEMON_PERSONALITY + 1
-SAVEMON_FORM       EQU SAVEMON_PERSONALITY + 1
+DEF SAVEMON_HP_ATK_DV          rb
+DEF SAVEMON_DEF_SPD_DV         rb
+DEF SAVEMON_SAT_SDF_DV         rb
+DEF SAVEMON_PERSONALITY        rw
+DEF SAVEMON_SHINY      EQU SAVEMON_PERSONALITY
+DEF SAVEMON_ABILITY    EQU SAVEMON_PERSONALITY
+DEF SAVEMON_NATURE     EQU SAVEMON_PERSONALITY
+DEF SAVEMON_GENDER     EQU SAVEMON_PERSONALITY + 1
+DEF SAVEMON_IS_EGG     EQU SAVEMON_PERSONALITY + 1
+DEF SAVEMON_EXTSPECIES EQU SAVEMON_PERSONALITY + 1
+DEF SAVEMON_FORM       EQU SAVEMON_PERSONALITY + 1
 ; savemon_struct is identical to party_struct before this point
-SAVEMON_PP_UPS             rb
+DEF SAVEMON_PP_UPS             rb
 ; savemon_struct is shifted from party_struct beyond this point
-SAVEMON_HAPPINESS          rb
-SAVEMON_PKRUS              rb
-SAVEMON_CAUGHTDATA         rb 3
+DEF SAVEMON_HAPPINESS          rb
+DEF SAVEMON_PKRUS              rb
+DEF SAVEMON_CAUGHTDATA         rb 3
 rsset SAVEMON_CAUGHTDATA
-SAVEMON_CAUGHTGENDER       rb
-SAVEMON_CAUGHTTIME EQU SAVEMON_CAUGHTGENDER
-SAVEMON_CAUGHTBALL EQU SAVEMON_CAUGHTGENDER
-SAVEMON_CAUGHTLEVEL        rb
-SAVEMON_CAUGHTLOCATION     rb
-SAVEMON_LEVEL              rb
+DEF SAVEMON_CAUGHTGENDER       rb
+DEF SAVEMON_CAUGHTTIME EQU SAVEMON_CAUGHTGENDER
+DEF SAVEMON_CAUGHTBALL EQU SAVEMON_CAUGHTGENDER
+DEF SAVEMON_CAUGHTLEVEL        rb
+DEF SAVEMON_CAUGHTLOCATION     rb
+DEF SAVEMON_LEVEL              rb
 ; savemon_struct is different from party_struct beyond this point
-SAVEMON_EXTRA              rb 3
-SAVEMON_NICKNAME           rb MON_NAME_LENGTH - 1
-SAVEMON_OT                 rb PLAYER_NAME_LENGTH - 1
-SAVEMON_STRUCT_LENGTH EQU _RS
+DEF SAVEMON_EXTRA              rb 3
+DEF SAVEMON_NICKNAME           rb MON_NAME_LENGTH - 1
+DEF SAVEMON_OT                 rb PLAYER_NAME_LENGTH - 1
+DEF SAVEMON_STRUCT_LENGTH EQU _RS
 
 ; personality
 
-SHINY_MASK       EQU %10000000
-ABILITY_MASK     EQU %01100000
-NATURE_MASK      EQU %00011111
+DEF SHINY_MASK       EQU %10000000
+DEF ABILITY_MASK     EQU %01100000
+DEF NATURE_MASK      EQU %00011111
 
-MON_SHINY_F      EQU 7
+DEF MON_SHINY_F      EQU 7
 
-CAUGHT_MASK      EQU %10000000 ; Reuses the gender flag in dex.
-GENDER_MASK      EQU %10000000
-IS_EGG_MASK      EQU %01000000
-EXTSPECIES_MASK  EQU %00100000
-FORM_MASK        EQU %00011111
+DEF CAUGHT_MASK      EQU %10000000 ; Reuses the gender flag in dex.
+DEF GENDER_MASK      EQU %10000000
+DEF IS_EGG_MASK      EQU %01000000
+DEF EXTSPECIES_MASK  EQU %00100000
+DEF FORM_MASK        EQU %00011111
 
-SPECIESFORM_MASK EQU EXTSPECIES_MASK | FORM_MASK
+DEF SPECIESFORM_MASK EQU EXTSPECIES_MASK | FORM_MASK
 
-MON_COSMETIC_F   EQU 7 ; used for area location checking
-MON_CAUGHT_F     EQU 7
-MON_GENDER_F     EQU 7
-MON_IS_EGG_F     EQU 6
-MON_EXTSPECIES_F EQU 5
+DEF MON_COSMETIC_F   EQU 7 ; used for area location checking
+DEF MON_CAUGHT_F     EQU 7
+DEF MON_GENDER_F     EQU 7
+DEF MON_IS_EGG_F     EQU 6
+DEF MON_EXTSPECIES_F EQU 5
 
 ; shiny probability values
-SHINY_NUMERATOR         EQU 16 ; 16/65536 = 1/4096
-CHARMED_SHINY_NUMERATOR EQU 48 ; 48/65536 = 3/4096
+DEF SHINY_NUMERATOR         EQU 16 ; 16/65536 = 1/4096
+DEF CHARMED_SHINY_NUMERATOR EQU 48 ; 48/65536 = 3/4096
 
 ; ability values
-ABILITY_1      EQU %00100000
-ABILITY_2      EQU %01000000
-HIDDEN_ABILITY EQU %01100000
+DEF ABILITY_1      EQU %00100000
+DEF ABILITY_2      EQU %01000000
+DEF HIDDEN_ABILITY EQU %01100000
 
 ; gender values
-MALE   EQU %00000000
-FEMALE EQU %10000000
+DEF MALE   EQU %00000000
+DEF FEMALE EQU %10000000
 
 ; caught data
-CAUGHT_GENDER_MASK EQU %10000000
-CAUGHT_TIME_MASK   EQU %01100000
-CAUGHT_BALL_MASK   EQU %00011111
+DEF CAUGHT_GENDER_MASK EQU %10000000
+DEF CAUGHT_TIME_MASK   EQU %01100000
+DEF CAUGHT_BALL_MASK   EQU %00011111
 
 ; hyper training (stored at end of OT name)
-HYPER_TRAINING_MASK EQU %11111100
+DEF HYPER_TRAINING_MASK EQU %11111100
 
-MON_CRY_LENGTH EQU 6
+DEF MON_CRY_LENGTH EQU 6
 
 ; maximum number of party pokemon
-PARTY_LENGTH EQU 6
+DEF PARTY_LENGTH EQU 6
 
 ; pokerus
 ; NOTE: because # of days remaining in a pokerus infection is a nybble and tracked via bit-shifting and not arithmetic,
 ; there are five 4-bit that are left unused. for a minor memory optimization, numbers > 7 are preferred.
 ; therefore, the unused candidate numbers are %1001, %1010 %1011, %1101
 ; why did I pick %1101? I like the number 13 :)
-POKERUS_CURED EQU %1101
-POKERUS_MASK EQU %00001111
+DEF POKERUS_CURED EQU %1101
+DEF POKERUS_MASK EQU %00001111
 
 ; boxes
-MONS_PER_BOX    EQU 20
-MONDB_ENTRIES_A EQU 167
-MONDB_ENTRIES_B EQU 28
-MONDB_ENTRIES_C EQU 12
-MONDB_ENTRIES   EQU MONDB_ENTRIES_A + MONDB_ENTRIES_B + MONDB_ENTRIES_C
-MIN_MONDB_SLACK EQU 10
-NUM_BOXES       EQU (MONDB_ENTRIES * 2 - MIN_MONDB_SLACK) / MONS_PER_BOX ; 20
+DEF MONS_PER_BOX    EQU 20
+DEF MONDB_ENTRIES_A EQU 167
+DEF MONDB_ENTRIES_B EQU 28
+DEF MONDB_ENTRIES_C EQU 12
+DEF MONDB_ENTRIES   EQU MONDB_ENTRIES_A + MONDB_ENTRIES_B + MONDB_ENTRIES_C
+DEF MIN_MONDB_SLACK EQU 10
+DEF NUM_BOXES       EQU (MONDB_ENTRIES * 2 - MIN_MONDB_SLACK) / MONS_PER_BOX ; 20
 
 ; hall of fame
-HOF_MON_LENGTH EQU 1 + 2 + 2 + 1 + (MON_NAME_LENGTH - 1) ; species, id, dvs, level, nick
-HOF_LENGTH EQU 1 + HOF_MON_LENGTH * PARTY_LENGTH + 1 ; win count, party, terminator
-NUM_HOF_TEAMS EQU 10
+DEF HOF_MON_LENGTH EQU 1 + 2 + 2 + 1 + (MON_NAME_LENGTH - 1) ; species, id, dvs, level, nick
+DEF HOF_LENGTH EQU 1 + HOF_MON_LENGTH * PARTY_LENGTH + 1 ; win count, party, terminator
+DEF NUM_HOF_TEAMS EQU 10
 
 ; evolution types (used in data/pokemon/evos_attacks.asm)
 	const_def 1
@@ -315,18 +315,20 @@ NUM_HOF_TEAMS EQU 10
 	const ATK_EQ_DEF
 
 ; EVOLVE_EVS trigger value
-EVS_TO_EVOLVE EQU 50
+DEF EVS_TO_EVOLVE EQU 50
 
 ; wild data
 
-NUM_GRASSMON EQU 7 ; data/wild/*_grass.asm table size
-NUM_WATERMON EQU 3 ; data/wild/*_water.asm table size
+DEF NUM_GRASSMON EQU 7 ; data/wild/*_grass.asm table size
+DEF NUM_WATERMON EQU 3 ; data/wild/*_water.asm table size
 
-GRASS_WILDDATA_LENGTH EQU 2 + (1 + NUM_GRASSMON * 3) * 3
-WATER_WILDDATA_LENGTH EQU 2 + (1 + NUM_WATERMON * 3) * 1
-FISHGROUP_DATA_LENGTH EQU 2 + 2 * 3
+DEF GRASS_WILDDATA_LENGTH EQU 2 + (1 + NUM_GRASSMON * 3) * 3
+DEF WATER_WILDDATA_LENGTH EQU 2 + (1 + NUM_WATERMON * 3) * 1
+DEF FISHGROUP_DATA_LENGTH EQU 2 + 2 * 3
 
-NUM_ROAMMON_MAPS EQU 16 ; RoamMaps table size (see data/wild/roammon_maps.asm)
+DEF NUM_ROAMMON_MAPS EQU 16 ; RoamMaps table size (see data/wild/roammon_maps.asm)
+
+DEF LEVEL_FROM_BADGES EQU 178 ; allows ±77 in either direction
 
 ; treemon sets
 ; TreeMons indexes (see data/wild/treemons.asm)
@@ -339,7 +341,7 @@ NUM_ROAMMON_MAPS EQU 16 ; RoamMaps table size (see data/wild/roammon_maps.asm)
 	const TREEMON_SET_LAKE
 	const TREEMON_SET_FOREST
 	const TREEMON_SET_ROCK
-NUM_TREEMON_SETS EQU const_value
+DEF NUM_TREEMON_SETS EQU const_value
 
 ; treemon scores
 	const_def
@@ -372,17 +374,17 @@ NUM_TREEMON_SETS EQU const_value
 	const HAPPINESS_PHOTOGRAPH        ; 14
 	const HAPPINESS_BLESSING          ; 15
 	const HAPPINESS_STEP              ; 16
-NUM_HAPPINESS_CHANGES EQU const_value
+DEF NUM_HAPPINESS_CHANGES EQU const_value
 
 ; significant happiness values
-BASE_HAPPINESS        EQU 70
-FRIEND_BALL_HAPPINESS EQU 200
-HATCHED_HAPPINESS     EQU 120
-HAPPINESS_TO_EVOLVE   EQU 220
-HAPPINESS_THRESHOLD_1 EQU 100
-HAPPINESS_THRESHOLD_2 EQU 200
+DEF BASE_HAPPINESS        EQU 70
+DEF FRIEND_BALL_HAPPINESS EQU 200
+DEF HATCHED_HAPPINESS     EQU 120
+DEF HAPPINESS_TO_EVOLVE   EQU 220
+DEF HAPPINESS_THRESHOLD_1 EQU 100
+DEF HAPPINESS_THRESHOLD_2 EQU 200
 
 ; PP
-PP_UP_MASK EQU %11000000
-PP_UP_ONE  EQU %01000000
-PP_MASK    EQU %00111111
+DEF PP_UP_MASK EQU %11000000
+DEF PP_UP_ONE  EQU %01000000
+DEF PP_MASK    EQU %00111111

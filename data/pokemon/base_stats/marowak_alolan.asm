@@ -13,8 +13,7 @@ if DEF(FAITHFUL)
 else
 	db 140 ; base exp
 endc
-	db NO_ITEM ; item 1
-	db THICK_CLUB ; item 2
+	db NO_ITEM, THICK_CLUB ; held items
 	dn GENDER_F50, 3 ; gender ratio, step cycles to hatch
 	INCBIN "gfx/pokemon/marowak_alolan/front.dimensions"
 	abilities_for MAROWAK_ALOLAN, CURSED_BODY, LIGHTNING_ROD, ROCK_HEAD

@@ -1907,29 +1907,29 @@
 	def_grass_wildmons YELLOW_FOREST
 	db 10 percent, 10 percent, 10 percent ; encounter rates: morn/day/nite
 	; morn
-	wildmon 22, SENTRET
-	wildmon 24, SNUBBULL
-	wildmon 20, PIKACHU
-	wildmon 22, LEDYBA
-	wildmon 20, MARILL
-	wildmon 21, MARILL
-	wildmon 10, PICHU
+	wildmon LEVEL_FROM_BADGES - 2, SENTRET
+	wildmon LEVEL_FROM_BADGES + 0, SNUBBULL
+	wildmon LEVEL_FROM_BADGES - 4, PIKACHU
+	wildmon LEVEL_FROM_BADGES - 2, LEDYBA
+	wildmon LEVEL_FROM_BADGES - 4, MARILL
+	wildmon LEVEL_FROM_BADGES - 3, MARILL
+	wildmon LEVEL_FROM_BADGES - 14, PICHU
 	; day
-	wildmon 22, SENTRET
-	wildmon 24, SNUBBULL
-	wildmon 20, PIKACHU
-	wildmon 22, PARAS
-	wildmon 20, MARILL
-	wildmon 21, MARILL
-	wildmon 10, PICHU
+	wildmon LEVEL_FROM_BADGES - 2, SENTRET
+	wildmon LEVEL_FROM_BADGES + 0, SNUBBULL
+	wildmon LEVEL_FROM_BADGES - 4, PIKACHU
+	wildmon LEVEL_FROM_BADGES - 2, PARAS
+	wildmon LEVEL_FROM_BADGES - 2, MARILL
+	wildmon LEVEL_FROM_BADGES - 3, MARILL
+	wildmon LEVEL_FROM_BADGES - 14, PICHU
 	; nite
-	wildmon 23, HOOTHOOT
-	wildmon 20, MEOWTH
-	wildmon 22, PARAS
-	wildmon 23, SPINARAK
-	wildmon 24, PSYDUCK
-	wildmon 25, NOCTOWL
-	wildmon 25, NOCTOWL
+	wildmon LEVEL_FROM_BADGES - 1, HOOTHOOT
+	wildmon LEVEL_FROM_BADGES - 4, MEOWTH
+	wildmon LEVEL_FROM_BADGES - 2, PARAS
+	wildmon LEVEL_FROM_BADGES - 1, SPINARAK
+	wildmon LEVEL_FROM_BADGES + 0, PSYDUCK
+	wildmon LEVEL_FROM_BADGES + 1, NOCTOWL
+	wildmon LEVEL_FROM_BADGES + 1, NOCTOWL
 	end_grass_wildmons
 
 	def_grass_wildmons QUIET_CAVE_1F

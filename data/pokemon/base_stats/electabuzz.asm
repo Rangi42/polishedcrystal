@@ -9,8 +9,7 @@ endc
 	db ELECTRIC, ELECTRIC ; type
 	db 45 ; catch rate
 	db 156 ; base exp
-	db PERSIM_BERRY ; item 1
-	db ELECTIRIZER ; item 2
+	db PERSIM_BERRY, ELECTIRIZER ; held items
 	dn GENDER_F25, 4 ; gender ratio, step cycles to hatch
 	INCBIN "gfx/pokemon/electabuzz/front.dimensions"
 	abilities_for ELECTABUZZ, STATIC, STATIC, VITAL_SPIRIT

@@ -472,6 +472,11 @@ InitPokegearPalettes:
 	ld hl, PokegearOBPals
 	ld de, wOBPals1
 	ld bc, 2 palettes
+	call FarCopyColorWRAM
+
+	ld hl, PokegearFlyPalette
+	ld de, wOBPals1 palette 2
+	ld bc, 1 palettes
 	jmp FarCopyColorWRAM
 
 GetBattlemonBackpicPalettePointer:

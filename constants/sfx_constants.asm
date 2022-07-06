@@ -210,4 +210,4 @@
 	const SFX_TWINKLE                     ; ce
 	const SFX_PUDDLE                      ; cf
 	const SFX_ABILITYSLIDEOUT             ; d0
-NUM_SFX EQU const_value
+DEF NUM_SFX EQU const_value

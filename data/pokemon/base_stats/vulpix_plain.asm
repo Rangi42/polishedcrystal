@@ -4,8 +4,7 @@
 	db FIRE, FIRE ; type
 	db 190 ; catch rate
 	db 63 ; base exp
-	db ALWAYS_ITEM_2 ; item 1
-	db ASPEAR_BERRY ; item 2
+	db ALWAYS_ITEM_2, ASPEAR_BERRY ; held items
 	dn GENDER_F75, 3 ; gender ratio, step cycles to hatch
 	INCBIN "gfx/pokemon/vulpix_plain/front.dimensions"
 if DEF(FAITHFUL)

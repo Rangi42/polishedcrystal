@@ -4,8 +4,7 @@
 	db GRASS, POISON ; type
 	db 120 ; catch rate
 	db 151 ; base exp
-	db GOLD_LEAF ; item 1
-	db GOLD_LEAF ; item 2
+	db GOLD_LEAF, GOLD_LEAF ; held items
 	dn GENDER_F50, 3 ; gender ratio, step cycles to hatch
 	INCBIN "gfx/pokemon/weepinbell/front.dimensions"
 	abilities_for WEEPINBELL, CHLOROPHYLL, CHLOROPHYLL, GLUTTONY

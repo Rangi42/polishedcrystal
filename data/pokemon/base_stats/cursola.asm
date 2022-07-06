@@ -4,8 +4,7 @@
 	db GHOST, GHOST ; type
 	db 30 ; catch rate
 	db 196 ; base exp
-	db NO_ITEM ; item 1
-	db NO_ITEM ; item 2
+	db NO_ITEM, NO_ITEM ; held items
 	dn GENDER_F75, 3 ; gender ratio, step cycles to hatch
 	INCBIN "gfx/pokemon/cursola/front.dimensions"
 	abilities_for CURSOLA, WEAK_ARMOR, WEAK_ARMOR, PERISH_BODY

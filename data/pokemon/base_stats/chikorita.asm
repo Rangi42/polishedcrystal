@@ -4,8 +4,7 @@
 	db GRASS, GRASS ; type
 	db 45 ; catch rate
 	db 64 ; base exp
-	db NO_ITEM ; item 1
-	db NO_ITEM ; item 2
+	db NO_ITEM, NO_ITEM ; held items
 	dn GENDER_F12_5, 3 ; gender ratio, step cycles to hatch
 	INCBIN "gfx/pokemon/chikorita/front.dimensions"
 if DEF(FAITHFUL)

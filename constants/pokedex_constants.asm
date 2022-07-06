@@ -1,7 +1,7 @@
 	const_def
 	const DEXDISP_MAIN
 	const DEXDISP_UNOWN
-DEXDISP_SPRITEANIM_OK EQU const_value ; Display modes with sprite anim cursor.
+DEF DEXDISP_SPRITEANIM_OK EQU const_value ; Display modes with sprite anim cursor.
 	const DEXDISP_MODE
 	const DEXDISP_NEWDESC
 	; These below (starting from DEXDISP_SEARCH) have OAM data.
@@ -33,7 +33,7 @@ DEXDISP_SPRITEANIM_OK EQU const_value ; Display modes with sprite anim cursor.
 	const DEXSEARCH_GROUP2
 	const DEXSEARCH_COLOR
 	const DEXSEARCH_SHAPE
-NUM_DEXSEARCH EQU const_value
+DEF NUM_DEXSEARCH EQU const_value
 
 	; wCurDexMode::
 	; Also defines menu options for the dex mode menu.
@@ -41,11 +41,11 @@ NUM_DEXSEARCH EQU const_value
 	; Valid for wCurDexMode
 	const DEXMODE_NEW
 	const DEXMODE_OLD
-DEXMODE_ABC EQU const_value ; Only used as a search option, not a proper mode.
+DEF DEXMODE_ABC EQU const_value ; Only used as a search option, not a proper mode.
 	; Other options
 	const DEXMODE_UNOWN
 	const DEXMODE_CANCEL
-NUM_DEXMODE EQU const_value
+DEF NUM_DEXMODE EQU const_value
 
 	; area data
 	const_def
@@ -53,21 +53,21 @@ NUM_DEXMODE EQU const_value
 	const DEXAREA_DAY
 	const DEXAREA_NIGHT
 	const DEXAREA_SURFING
-DEXAREA_WILDS EQU const_value ; Areas above are handled by GetWildLocations
+DEF DEXAREA_WILDS EQU const_value ; Areas above are handled by GetWildLocations
 	const DEXAREA_OLD_ROD
 	const DEXAREA_GOOD_ROD
 	const DEXAREA_SUPER_ROD
-DEXAREA_FISH EQU const_value ; Areas above are handled by GetFishLocations
+DEF DEXAREA_FISH EQU const_value ; Areas above are handled by GetFishLocations
 	const DEXAREA_HEADBUTT
 	const DEXAREA_ROCK_SMASH
 	const DEXAREA_CONTEST
 	const DEXAREA_ROAMING
-NUM_DEXAREAS EQU const_value
+DEF NUM_DEXAREAS EQU const_value
 
-DEXAREA_UNKNOWN_MASK EQU %10000000
-DEXAREA_REGION_MASK  EQU %01110000
-DEXAREA_TYPE_MASK    EQU %00001111
-DEXAREA_UNKNOWN_F EQU 7 ; literally "Area Unknown", not pret "unknown meaning"
+DEF DEXAREA_UNKNOWN_MASK EQU %10000000
+DEF DEXAREA_REGION_MASK  EQU %01110000
+DEF DEXAREA_TYPE_MASK    EQU %00001111
+DEF DEXAREA_UNKNOWN_F EQU 7 ; literally "Area Unknown", not pret "unknown meaning"
 
-POKEDEX_SCROLLTILE_TOP EQU $75
-POKEDEX_SCROLLTILE_BAR EQU $76
+DEF POKEDEX_SCROLLTILE_TOP EQU $75
+DEF POKEDEX_SCROLLTILE_BAR EQU $76

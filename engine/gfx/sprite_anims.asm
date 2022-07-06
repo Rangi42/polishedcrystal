@@ -40,6 +40,7 @@ DoAnimFrame:
 	dw AnimSeq_PcMode             ; SPRITE_ANIM_SEQ_PC_MODE
 	dw AnimSeq_PcPack             ; SPRITE_ANIM_SEQ_PC_PACK
 	dw AnimSeq_DexCursor          ; SPRITE_ANIM_SEQ_DEX_CURSOR
+	dw AnimSeq_TownMapFly         ; SPRITE_ANIM_SEQ_TOWN_MAP_FLY
 	assert_table_length NUM_SPRITE_ANIM_SEQS
 
 AnimSeq_PartyMon:
@@ -782,6 +783,9 @@ AnimSeq_DexCursor:
 .done
 	pop bc
 	ret
+
+AnimSeq_TownMapFly:
+	farjp AnimateTownMapFly
 
 AnimSeqs_IncAnonJumptableIndex:
 	ld hl, SPRITEANIMSTRUCT_JUMPTABLE_INDEX

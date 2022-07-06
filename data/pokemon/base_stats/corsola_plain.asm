@@ -13,8 +13,7 @@ if DEF(FAITHFUL)
 else
 	db 128 ; base exp
 endc
-	db HARD_STONE ; item 1
-	db LUMINOUSMOSS ; item 2
+	db HARD_STONE, LUMINOUSMOSS ; held items
 	dn GENDER_F75, 3 ; gender ratio, step cycles to hatch
 	INCBIN "gfx/pokemon/corsola_plain/front.dimensions"
 	abilities_for CORSOLA, HUSTLE, NATURAL_CURE, REGENERATOR

@@ -871,10 +871,17 @@ Text_CharcoalMasterIntro:
 
 Text_CharcoalMasterOutro:
 	text "That's the Cut HM."
-	line "Teach that to a"
+	line "Any #mon you"
 
-	para "#mon to clear"
+	para "have that's compat-"
+	line "ible with it can"
+
+	para "use Cut to clear"
 	line "small trees."
+
+	para "Or teach it to"
+	line "them to use Cut"
+	cont "in a battle."
 
 	para "Of course, you"
 	line "have to have the"

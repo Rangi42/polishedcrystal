@@ -7,9 +7,9 @@ Music_CinnabarIslandHGSS:
 	dbw $01, Music_CinnabarIslandHGSS_Ch2
 
 Music_CinnabarIslandHGSS_Ch1:
-	tempo	 $118
+	tempo $118
 	volume $77
-	dutycycle 1
+	dutycycle 2
 	notetype $C, $B6
 Music_CinnabarIslandHGSS_Loop1:
 	note __, 4
@@ -78,7 +78,7 @@ Music_CinnabarIslandHGSS_Loop1:
 	jumpchannel Music_CinnabarIslandHGSS_Loop1
 
 Music_CinnabarIslandHGSS_Ch2:
-	dutycycle 1
+	dutycycle 2
 	notetype $C, $C6
 Music_CinnabarIslandHGSS_Loop2:
 	octave 3

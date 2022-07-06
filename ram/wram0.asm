@@ -360,7 +360,7 @@ wBattleMonNickname:: ds MON_NAME_LENGTH
 wBattleMon:: battle_struct wBattleMon
 
 wWildMon:: db
-	ds 1
+wBadgeBaseLevel:: db
 wEnemyTrainerItem1:: db
 wEnemyTrainerItem2:: db
 wEnemyTrainerBaseReward:: db
@@ -797,6 +797,7 @@ wPokegearRadioChannelBank:: db
 wPokegearRadioChannelAddr:: dw
 wPokegearRadioMusicPlaying:: db
 wPokegearNumberBuffer:: db
+wPokegearMapCursorSpawnpoint:: db
 
 
 SECTION UNION "Misc 480", WRAM0
@@ -1078,6 +1079,7 @@ NEXTU
 ; pokegear
 wPokegearCard:: db
 wPokegearMapRegion:: db
+wTownMapCanFlyHere:: db
 
 NEXTU
 ; pack

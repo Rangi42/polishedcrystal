@@ -64,6 +64,7 @@ PokeGear:
 	call Pokegear_LoadGFX
 	call ClearSpriteAnims
 	call InitPokegearModeIndicatorArrow
+	call TownMap_InitFlyPossible
 	ld a, 8
 	call SkipMusic
 	ld a, LCDC_DEFAULT
@@ -79,6 +80,7 @@ PokeGear:
 	ld [wPokegearRadioChannelBank], a
 	ld [wPokegearRadioChannelAddr], a
 	ld [wPokegearRadioChannelAddr + 1], a
+	ld [wDefaultSpawnpoint], a
 	call Pokegear_InitJumptableIndices
 	call InitPokegearTilemap
 	ld a, CGB_POKEGEAR_PALS
@@ -488,6 +490,13 @@ PokegearMap_Init:
 	ld [wPokegearMapCursorObjectPointer], a
 	ld a, b
 	ld [wPokegearMapCursorObjectPointer + 1], a
+	ld a, [wTownMapCanShowFly]
+	and a
+	jr z, .no_fly
+	depixel 18, 13, 0, 0
+	ld a, SPRITE_ANIM_INDEX_TOWN_MAP_FLY
+	call InitSpriteAnimStruct
+.no_fly
 	ld hl, wJumptableIndex
 	inc [hl]
 	ret
@@ -504,6 +513,9 @@ PokegearMap_OrangeMap:
 	call TownMap_GetOrangeLandmarkLimits
 PokegearMap_ContinueMap:
 	ld hl, hJoyLast
+	ld a, [hl]
+	and A_BUTTON
+	jr nz, .fly
 	ld a, [hl]
 	and B_BUTTON
 	jr nz, .cancel
@@ -534,6 +546,16 @@ PokegearMap_ContinueMap:
 .done
 	jmp Pokegear_SwitchPage
 
+.fly
+	ld a, [wTownMapCanFlyHere]
+	and a
+	ret z
+	ld a, [wPokegearMapCursorSpawnpoint]
+	ld [wDefaultSpawnpoint], a
+	ld a, BANK(FlyFunction.FlyScript)
+	ld hl, FlyFunction.FlyScript
+	call FarQueueScript
+	; fallthrough
 .cancel
 	ld hl, wJumptableIndex
 	set 7, [hl]
@@ -1178,6 +1200,7 @@ _TownMap:
 	farcall InitPokegearPalettes
 	call Pokegear_LoadGFX
 	call ClearSpriteAnims
+	call TownMap_InitFlyPossible
 	ld a, 8
 	call SkipMusic
 	ld a, LCDC_DEFAULT
@@ -1314,6 +1337,55 @@ _TownMap:
 	cp KANTO_LANDMARK
 	jmp nc, TownMapKantoFlips
 	jmp TownMapJohtoFlips
+
+TownMap_InitFlyPossible:
+	lb de, FLY, HM_FLY
+	farcall CheckPartyMove
+	jr c, .no_fly
+	ld de, ENGINE_STORMBADGE
+	farcall CheckBadge
+	jr c, .no_fly
+	farcall CheckFlyAllowedOnMap
+	jr nz, .no_fly
+	ld a, TRUE
+	jr .done
+.no_fly
+	xor a ; FALSE
+	ld [wTownMapCanFlyHere], a
+.done
+	ld [wTownMapCanShowFly], a
+	ret
+
+AnimateTownMapFly:
+	push bc
+	ld a, [wPokegearMapCursorLandmark]
+	ld b, a
+	ld hl, Flypoints
+.loop
+	ld a, [hli]
+	inc a
+	jr z, .done
+	dec a
+	cp b
+	jr nz, .skip
+	ld a, [hli]
+	ld c, a
+	ld [wPokegearMapCursorSpawnpoint], a
+	call HasVisitedSpawn
+	and a
+	jr z, .loop
+	ld a, 144
+	jr .done
+.skip
+	inc hl
+	jr .loop
+.done
+	pop bc
+	ld hl, SPRITEANIMSTRUCT_YCOORD
+	add hl, bc
+	ld [hl], a
+	ld [wTownMapCanFlyHere], a
+	ret
 
 PlayRadio:
 	ld hl, wOptions1
@@ -1833,11 +1905,11 @@ GetNextTownMapTilePalette:
 	ret
 
 .PalMap:
-townmappals: MACRO
-rept _NARG / 2
-	dn \2, \1
-	shift 2
-endr
+MACRO townmappals
+	rept _NARG / 2
+		dn \2, \1
+		shift 2
+	endr
 ENDM
 	townmappals 2, 2, 2, 3, 3, 6, 1, 1, 4, 4, 4, 5, 6, 7, 7, 6
 	townmappals 2, 2, 2, 3, 3, 6, 1, 1, 4, 4, 4, 6, 4, 4, 1, 1

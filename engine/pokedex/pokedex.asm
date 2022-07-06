@@ -1726,10 +1726,14 @@ Pokedex_Bio:
 	call FarString
 
 	; Print hatch rate
+	ld de, Unknown
+	ld a, [wBaseEggGroups]
+	assert EGG_NONE * $11 == $ff
+	inc a
+	jr z, .goteggsteps
 	ld a, [wBaseEggSteps]
 	and $f ; no-optimize a & X == X
 	cp $f
-	ld de, Unknown
 	jr z, .goteggsteps
 	ld e, a
 	ld d, 0

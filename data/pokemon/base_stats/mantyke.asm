@@ -4,8 +4,7 @@
 	db WATER, FLYING ; type
 	db 25 ; catch rate
 	db 108 ; base exp
-	db NO_ITEM ; item 1
-	db NO_ITEM ; item 2
+	db NO_ITEM, NO_ITEM ; held items
 	dn GENDER_F50, 4 ; gender ratio, step cycles to hatch
 	INCBIN "gfx/pokemon/mantyke/front.dimensions"
 	abilities_for MANTYKE, SWIFT_SWIM, WATER_ABSORB, WATER_VEIL

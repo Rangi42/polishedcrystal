@@ -150,7 +150,7 @@ CalcExpAtLevel:
 	ldh [hMultiplicand], a
 
 .done_quadratic
-; Add (a/b)*n**3 to (d*n - e +/- c*n**2)
+; Add (a/b)*n**3 to (d*n - e ± c*n**2)
 	pop bc
 	ldh a, [hProduct + 3]
 	add b

@@ -1,15 +1,15 @@
 ; object constants
-PLAYER      EQU  0
-LAST_TALKED EQU -2
+DEF PLAYER      EQU  0
+DEF LAST_TALKED EQU -2
 
 ; string buffer constants
 	const_def
 	const STRING_BUFFER_3 ; use wStringBuffer3
 	const STRING_BUFFER_4 ; use wStringBuffer4
 	const STRING_BUFFER_5 ; use wStringBuffer5
-NUM_STRING_BUFFERS EQU const_value
+DEF NUM_STRING_BUFFERS EQU const_value
 
-STRING_BUFFER_LENGTH EQU 19
+DEF STRING_BUFFER_LENGTH EQU 19
 
 ; checkmoney/takemoney accounts
 	const_def
@@ -71,12 +71,12 @@ STRING_BUFFER_LENGTH EQU 19
 	const VAR_KENJI_BREAK      ; 17
 	const VAR_PKMN_JOURNALS    ; 18
 	const VAR_TRAINER_STARS    ; 19
-NUM_VARS EQU const_value           ; 1a
+DEF NUM_VARS EQU const_value           ; 1a
 
 ; variable action types
-RETVAR_STRBUF2 EQU 0 << 6
-RETVAR_ADDR_DE EQU 1 << 6
-RETVAR_EXECUTE EQU 2 << 6
+DEF RETVAR_STRBUF2 EQU 0 << 6
+DEF RETVAR_ADDR_DE EQU 1 << 6
+DEF RETVAR_EXECUTE EQU 2 << 6
 
 ; PlayerEventScriptPointers indexes (see engine/overworld/events.asm)
 	const_def -1
@@ -93,7 +93,7 @@ RETVAR_EXECUTE EQU 2 << 6
 	const PLAYEREVENT_JOYCHANGEFACING
 	const PLAYEREVENT_TMHMBALL
 	const PLAYEREVENT_KEYITEMBALL
-NUM_PLAYER_EVENTS EQU const_value
+DEF NUM_PLAYER_EVENTS EQU const_value
 
 ; PlayerMovementPointers indexes (see engine/overworld/events.asm)
 	const_def
@@ -105,15 +105,15 @@ NUM_PLAYER_EVENTS EQU const_value
 	const PLAYERMOVEMENT_CONTINUE
 	const PLAYERMOVEMENT_EXIT_WATER
 	const PLAYERMOVEMENT_JUMP
-NUM_PLAYER_MOVEMENTS EQU const_value
+DEF NUM_PLAYER_MOVEMENTS EQU const_value
 
 ; script data sizes (see macros/scripts/maps.asm)
-SCENE_SCRIPT_SIZE EQU  2 ; scene_script
-CALLBACK_SIZE     EQU  3 ; callback
-WARP_EVENT_SIZE   EQU  5 ; warp_event
-COORD_EVENT_SIZE  EQU  5 ; coord_event
-BG_EVENT_SIZE     EQU  5 ; bg_event
-OBJECT_EVENT_SIZE EQU 13 ; object_event
+DEF SCENE_SCRIPT_SIZE EQU  2 ; scene_script
+DEF CALLBACK_SIZE     EQU  3 ; callback
+DEF WARP_EVENT_SIZE   EQU  5 ; warp_event
+DEF COORD_EVENT_SIZE  EQU  5 ; coord_event
+DEF BG_EVENT_SIZE     EQU  5 ; bg_event
+DEF OBJECT_EVENT_SIZE EQU 13 ; object_event
 
 ; bg_event types
 ; TryBGEvent arguments (see engine/overworld/events.asm)
@@ -128,13 +128,13 @@ OBJECT_EVENT_SIZE EQU 13 ; object_event
 	const BGEVENT_JUMPTEXT
 	const BGEVENT_JUMPSTD
 	const BGEVENT_GROTTOITEM
-NUM_BGEVENTS EQU const_value
+DEF NUM_BGEVENTS EQU const_value
 
 ; BGEVENT_ITEM has to be the last BG event type, since hidden item BG events
 ; use type BGEVENT_ITEM + (item id) to save space.
 ; Note that this requires BGEVENT_ITEM + (item id) <= $ff, so currently most
 ; of the mail items cannot be hidden.
-BGEVENT_ITEM EQU NUM_BGEVENTS
+DEF BGEVENT_ITEM EQU NUM_BGEVENTS
 
 ; object_event types
 ; ObjectEventTypeArray indexes (see engine/overworld/events.asm)
@@ -145,7 +145,7 @@ BGEVENT_ITEM EQU NUM_BGEVENTS
 	const OBJECTTYPE_GENERICTRAINER
 	const OBJECTTYPE_POKEMON
 	const OBJECTTYPE_COMMAND
-NUM_OBJECT_TYPES EQU const_value
+DEF NUM_OBJECT_TYPES EQU const_value
 
 ; elevfloor macro values
 ; ElevatorFloorNames indexes (see data/events/elevator_floors.asm)
@@ -166,7 +166,7 @@ NUM_OBJECT_TYPES EQU const_value
 	const FLOOR_10F
 	const FLOOR_11F
 	const FLOOR_ROOF
-NUM_FLOORS EQU const_value
+DEF NUM_FLOORS EQU const_value
 
 ; showemote arguments
 ; Emotes indexes (see data/sprites/emotes.asm)
@@ -179,8 +179,8 @@ NUM_FLOORS EQU const_value
 	const EMOTE_BOLT
 	const EMOTE_SLEEP
 	const EMOTE_FISH
-NUM_EMOTES EQU const_value
-EMOTE_FROM_MEM EQU -1
+DEF NUM_EMOTES EQU const_value
+DEF EMOTE_FROM_MEM EQU -1
 
 ; fruittree arguments
 ; FruitTreeItems indexes (see data/items/fruit_trees.asm)
@@ -193,7 +193,7 @@ EMOTE_FROM_MEM EQU -1
 	const FRUITTREE_ROUTE_42_1      ; 05
 	const FRUITTREE_ROUTE_42_2      ; 06
 	const FRUITTREE_ROUTE_42_3      ; 07
-FIRST_BERRY_TREE EQU const_value
+DEF FIRST_BERRY_TREE EQU const_value
 	const FRUITTREE_ROUTE_29        ; 08
 	const FRUITTREE_ROUTE_30_1      ; 09
 	const FRUITTREE_ROUTE_30_2      ; 0a
@@ -222,7 +222,7 @@ FIRST_BERRY_TREE EQU const_value
 	const FRUITTREE_LUCKY_ISLAND    ; 21
 	const FRUITTREE_SHAMOUTI_ISLAND ; 22
 	const FRUITTREE_ROUTE_49        ; 23
-NUM_FRUIT_TREES EQU const_value - 1
+DEF NUM_FRUIT_TREES EQU const_value - 1
 
 ; hidden grottoes
 ; HiddenGrottoData indexes (see data/events/hidden_grottoes/grottoes.asm)
@@ -250,7 +250,7 @@ NUM_FRUIT_TREES EQU const_value - 1
 	const HIDDENGROTTO_15                 ; 15
 	const HIDDENGROTTO_16                 ; 16
 	const HIDDENGROTTO_17                 ; 17
-NUM_HIDDEN_GROTTOES EQU const_value - 1
+DEF NUM_HIDDEN_GROTTOES EQU const_value - 1
 
 ; describedecoration arguments
 ; DescribeDecoration.JumpTable indexes (see engine/overworld/decorations.asm)
@@ -260,7 +260,7 @@ NUM_HIDDEN_GROTTOES EQU const_value - 1
 	const DECODESC_RIGHT_DOLL ; 2
 	const DECODESC_BIG_DOLL   ; 3
 	const DECODESC_CONSOLE    ; 4
-NUM_DECODESCS EQU const_value
+DEF NUM_DECODESCS EQU const_value
 
 ; swarm arguments
 ; StoreSwarmMapIndices arguments
@@ -296,16 +296,16 @@ NUM_DECODESCS EQU const_value
 	const BUGCONTEST_NO_CATCH   ; 2
 
 ; Bug-Catching Contest values
-BUG_CONTEST_BALLS EQU 20
+DEF BUG_CONTEST_BALLS EQU 20
 if DEF(NO_RTC)
-BUG_CONTEST_MINUTES EQU 20 * NO_RTC_SPEEDUP
+DEF BUG_CONTEST_MINUTES EQU 20 * NO_RTC_SPEEDUP
 else
-BUG_CONTEST_MINUTES EQU 20
+DEF BUG_CONTEST_MINUTES EQU 20
 endc
-BUG_CONTEST_SECONDS EQU 0
-BUG_CONTEST_PLAYER EQU 1
-NUM_BUG_CONTESTANTS EQU 10 ; not counting the player
-BUG_CONTESTANT_SIZE EQU 4
+DEF BUG_CONTEST_SECONDS EQU 0
+DEF BUG_CONTEST_PLAYER EQU 1
+DEF NUM_BUG_CONTESTANTS EQU 10 ; not counting the player
+DEF BUG_CONTESTANT_SIZE EQU 4
 
 ; HealMachineAnim setval arguments
 ; HealMachineAnim.Pointers indexes (see engine/events/heal_machine_anim.asm)
@@ -321,7 +321,7 @@ BUG_CONTESTANT_SIZE EQU 4
 	const UNOWNPUZZLE_OMANYTE    ; 1
 	const UNOWNPUZZLE_AERODACTYL ; 2
 	const UNOWNPUZZLE_HO_OH      ; 3
-NUM_UNOWN_PUZZLES EQU const_value
+DEF NUM_UNOWN_PUZZLES EQU const_value
 
 ; DisplayUnownWords setval arguments
 ; UnownWalls and MenuHeaders_UnownWalls indexes (see data/events/unown_walls.asm)
@@ -342,4 +342,4 @@ NUM_UNOWN_PUZZLES EQU const_value
 	const OMANYTE_PUZZLE
 	const AERODACTYL_PUZZLE
 	const HO_OH_PUZZLE
-NUM_PAINTINGS EQU const_value
+DEF NUM_PAINTINGS EQU const_value

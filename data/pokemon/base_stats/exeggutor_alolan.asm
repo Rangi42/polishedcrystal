@@ -4,8 +4,7 @@
 	db GRASS, DRAGON ; type
 	db 45 ; catch rate
 	db 212 ; base exp
-	db NO_ITEM ; item 1
-	db SITRUS_BERRY ; item 2
+	db NO_ITEM, SITRUS_BERRY ; held items
 	dn GENDER_F50, 3 ; gender ratio, step cycles to hatch
 	INCBIN "gfx/pokemon/exeggutor_alolan/front.dimensions"
 	abilities_for EXEGGUTOR_ALOLAN, FRISK, FRISK, HARVEST

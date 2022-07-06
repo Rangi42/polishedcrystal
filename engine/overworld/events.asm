@@ -647,8 +647,6 @@ BGEventJumptable:
 	ld d, a
 	ld b, CHECK_FLAG
 	call EventFlagAction
-	ld a, c
-	and a
 	jr nz, .dontread
 	call PlayTalkObject
 	ld hl, wHiddenItemEvent
@@ -719,8 +717,6 @@ CheckBGEventFlag:
 	ld d, h
 	ld b, CHECK_FLAG
 	call EventFlagAction
-	ld a, c
-	and a
 	pop hl
 	ret
 

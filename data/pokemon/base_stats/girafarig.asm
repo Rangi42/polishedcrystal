@@ -13,8 +13,7 @@ else
 endc
 	db 60 ; catch rate
 	db 149 ; base exp
-	db NO_ITEM ; item 1
-	db PERSIM_BERRY ; item 2
+	db NO_ITEM, PERSIM_BERRY ; held items
 	dn GENDER_F50, 3 ; gender ratio, step cycles to hatch
 	INCBIN "gfx/pokemon/girafarig/front.dimensions"
 	abilities_for GIRAFARIG, INNER_FOCUS, EARLY_BIRD, SAP_SIPPER

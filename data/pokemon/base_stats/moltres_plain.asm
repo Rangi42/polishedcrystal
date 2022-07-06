@@ -4,8 +4,7 @@
 	db FIRE, FLYING ; type
 	db 3 ; catch rate
 	db 217 ; base exp
-	db ALWAYS_ITEM_2 ; item 1
-	db LUM_BERRY ; item 2
+	db ALWAYS_ITEM_2, LUM_BERRY ; held items
 	dn GENDER_UNKNOWN, 15 ; gender ratio, step cycles to hatch
 	INCBIN "gfx/pokemon/moltres_plain/front.dimensions"
 if DEF(FAITHFUL)

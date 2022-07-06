@@ -1,4 +1,4 @@
-body_data: MACRO
+MACRO body_data
 	db \1 ; height
 	dw \2 ; weight
 	dn SHAPE_\3, BODY_COLOR_\4

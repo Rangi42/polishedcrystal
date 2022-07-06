@@ -4,8 +4,7 @@
 	db FIGHTING, FIGHTING ; type
 	db 75 ; catch rate
 	db 149 ; base exp
-	db NO_ITEM ; item 1
-	db KEE_BERRY ; item 2
+	db NO_ITEM, KEE_BERRY ; held items
 	dn GENDER_F50, 3 ; gender ratio, step cycles to hatch
 	INCBIN "gfx/pokemon/primeape/front.dimensions"
 if DEF(FAITHFUL)
