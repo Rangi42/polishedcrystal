@@ -2654,6 +2654,7 @@ Script_verbosegivekeyitem:
 GiveKeyItemScript:
 	farwritetext _ReceivedItemText
 	playsound SFX_KEY_ITEM
+	waitsfx
 	waitbutton
 	keyitemnotify
 	end
