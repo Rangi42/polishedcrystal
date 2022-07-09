@@ -10,7 +10,7 @@ endc
 	db 75 ; catch rate
 	db 164 ; base exp
 	db NO_ITEM, KINGS_ROCK ; held items
-	dn GENDER_F50, 3 ; gender ratio, step cycles to hatch
+	dn GENDER_F50, HATCH_MEDIUM_FAST ; gender ratio, step cycles to hatch
 	INCBIN "gfx/pokemon/slowbro_plain/front.dimensions"
 	abilities_for SLOWBRO, OBLIVIOUS, OWN_TEMPO, REGENERATOR
 	db GROWTH_MEDIUM_FAST ; growth rate

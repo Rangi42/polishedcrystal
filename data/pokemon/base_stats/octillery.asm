@@ -9,7 +9,7 @@ endc
 	db 75 ; catch rate
 	db 164 ; base exp
 	db NO_ITEM, NO_ITEM ; held items
-	dn GENDER_F50, 3 ; gender ratio, step cycles to hatch
+	dn GENDER_F50, HATCH_MEDIUM_FAST ; gender ratio, step cycles to hatch
 	INCBIN "gfx/pokemon/octillery/front.dimensions"
 	abilities_for OCTILLERY, SUCTION_CUPS, SNIPER, MOODY
 	db GROWTH_MEDIUM_FAST ; growth rate

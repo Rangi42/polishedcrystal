@@ -5,7 +5,7 @@
 	db 45 ; catch rate
 	db 64 ; base exp
 	db ALWAYS_ITEM_2, LUM_BERRY ; held items
-	dn GENDER_UNKNOWN, 15 ; gender ratio, step cycles to hatch
+	dn GENDER_UNKNOWN, HATCH_UNKNOWN ; gender ratio, step cycles to hatch
 	INCBIN "gfx/pokemon/mew/front.dimensions"
 if DEF(FAITHFUL)
 	abilities_for MEW, SYNCHRONIZE, SYNCHRONIZE, SYNCHRONIZE

@@ -10,7 +10,7 @@ endc
 	db 75 ; catch rate
 	db 138 ; base exp
 	db SHED_SHELL, SILVERPOWDER ; held items
-	dn GENDER_F50, 3 ; gender ratio, step cycles to hatch
+	dn GENDER_F50, HATCH_MEDIUM_FAST ; gender ratio, step cycles to hatch
 	INCBIN "gfx/pokemon/venomoth/front.dimensions"
 	abilities_for VENOMOTH, SHIELD_DUST, TINTED_LENS, WONDER_SKIN
 	db GROWTH_MEDIUM_FAST ; growth rate

@@ -1336,7 +1336,7 @@ GivePoke::
 	ld [hli], a
 	ld [hl], a
 	ld a, [wBaseEggSteps]
-	and $f
+	and HATCH_UNKNOWN
 	inc a
 	ld b, a
 	add a

@@ -5,7 +5,7 @@
 	db 75 ; catch rate
 	db 147 ; base exp
 	db NO_ITEM, WIDE_LENS ; held items
-	dn GENDER_F50, 3 ; gender ratio, step cycles to hatch
+	dn GENDER_F50, HATCH_MEDIUM_FAST ; gender ratio, step cycles to hatch
 	INCBIN "gfx/pokemon/yanma/front.dimensions"
 	abilities_for YANMA, SPEED_BOOST, COMPOUND_EYES, FRISK
 	db GROWTH_MEDIUM_FAST ; growth rate

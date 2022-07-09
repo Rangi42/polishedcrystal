@@ -5,7 +5,7 @@
 	db 45 ; catch rate
 	db 190 ; base exp
 	db NO_ITEM, SPELL_TAG ; held items
-	dn GENDER_F50, 3 ; gender ratio, step cycles to hatch
+	dn GENDER_F50, HATCH_MEDIUM_FAST ; gender ratio, step cycles to hatch
 	INCBIN "gfx/pokemon/gengar/front.dimensions"
 if DEF(FAITHFUL)
 	abilities_for GENGAR, CURSED_BODY, CURSED_BODY, SHADOW_TAG

@@ -10,7 +10,7 @@ endc
 	db 60 ; catch rate
 	db 204 ; base exp
 	db NO_ITEM, PROTECTOR ; held items
-	dn GENDER_F50, 3 ; gender ratio, step cycles to hatch
+	dn GENDER_F50, HATCH_MEDIUM_FAST ; gender ratio, step cycles to hatch
 	INCBIN "gfx/pokemon/rhydon/front.dimensions"
 if DEF(FAITHFUL)
 	abilities_for RHYDON, LIGHTNING_ROD, ROCK_HEAD, RECKLESS

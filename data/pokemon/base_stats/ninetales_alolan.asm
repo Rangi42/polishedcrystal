@@ -5,7 +5,7 @@
 	db 75 ; catch rate
 	db 178 ; base exp
 	db ALWAYS_ITEM_2, ASPEAR_BERRY ; held items
-	dn GENDER_F75, 3 ; gender ratio, step cycles to hatch
+	dn GENDER_F75, HATCH_MEDIUM_FAST ; gender ratio, step cycles to hatch
 	INCBIN "gfx/pokemon/ninetales_alolan/front.dimensions"
 	abilities_for NINETALES_ALOLAN, SNOW_CLOAK, SNOW_CLOAK, SNOW_WARNING
 	db GROWTH_MEDIUM_FAST ; growth rate

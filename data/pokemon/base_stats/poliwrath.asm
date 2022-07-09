@@ -10,7 +10,7 @@ endc
 	db 45 ; catch rate
 	db 185 ; base exp
 	db NO_ITEM, KINGS_ROCK ; held items
-	dn GENDER_F50, 3 ; gender ratio, step cycles to hatch
+	dn GENDER_F50, HATCH_MEDIUM_FAST ; gender ratio, step cycles to hatch
 	INCBIN "gfx/pokemon/poliwrath/front.dimensions"
 	abilities_for POLIWRATH, WATER_ABSORB, DAMP, SWIFT_SWIM
 	db GROWTH_MEDIUM_SLOW ; growth rate

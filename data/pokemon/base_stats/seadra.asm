@@ -5,7 +5,7 @@
 	db 75 ; catch rate
 	db 155 ; base exp
 	db NO_ITEM, DRAGON_SCALE ; held items
-	dn GENDER_F50, 3 ; gender ratio, step cycles to hatch
+	dn GENDER_F50, HATCH_MEDIUM_FAST ; gender ratio, step cycles to hatch
 	INCBIN "gfx/pokemon/seadra/front.dimensions"
 	abilities_for SEADRA, POISON_POINT, SNIPER, DAMP
 	db GROWTH_MEDIUM_FAST ; growth rate

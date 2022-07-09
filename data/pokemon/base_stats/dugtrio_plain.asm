@@ -5,7 +5,7 @@
 	db 50 ; catch rate
 	db 153 ; base exp
 	db NO_ITEM, SOFT_SAND ; held items
-	dn GENDER_F50, 3 ; gender ratio, step cycles to hatch
+	dn GENDER_F50, HATCH_MEDIUM_FAST ; gender ratio, step cycles to hatch
 	INCBIN "gfx/pokemon/dugtrio_plain/front.dimensions"
 	abilities_for DUGTRIO, SAND_VEIL, ARENA_TRAP, SAND_FORCE
 	db GROWTH_MEDIUM_FAST ; growth rate

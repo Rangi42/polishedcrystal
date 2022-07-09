@@ -49,6 +49,20 @@ DEF BASE_DATA_SIZE EQU _RS
 
 DEF GENDER_UNKNOWN EQU %1111
 
+; "step cycles to hatch" constants
+	const_def
+	const HATCH_FASTEST
+	const HATCH_FASTER
+	const HATCH_FAST
+	const HATCH_MEDIUM_FAST
+	const HATCH_MEDIUM_SLOW
+	const HATCH_SLOW
+	const HATCH_SLOWER
+	const HATCH_SLOWEST
+DEF NUM_HATCH_RATES EQU const_value
+
+DEF HATCH_UNKNOWN EQU %1111
+
 ; wBaseGrowthRate values
 ; GrowthRates indexes (see data/growth_rates.asm)
 	const_def

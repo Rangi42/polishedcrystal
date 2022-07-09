@@ -14,7 +14,7 @@ else
 	db 199 ; base exp
 endc
 	db ALWAYS_ITEM_2, BIG_ROOT ; held items
-	dn GENDER_F50, 3 ; gender ratio, step cycles to hatch
+	dn GENDER_F50, HATCH_MEDIUM_FAST ; gender ratio, step cycles to hatch
 	INCBIN "gfx/pokemon/victreebel/front.dimensions"
 	abilities_for VICTREEBEL, CHLOROPHYLL, CHLOROPHYLL, GLUTTONY
 	db GROWTH_MEDIUM_SLOW ; growth rate

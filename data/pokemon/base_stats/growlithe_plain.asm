@@ -5,7 +5,7 @@
 	db 190 ; catch rate
 	db 91 ; base exp
 	db ALWAYS_ITEM_2, ASPEAR_BERRY ; held items
-	dn GENDER_F25, 3 ; gender ratio, step cycles to hatch
+	dn GENDER_F25, HATCH_MEDIUM_FAST ; gender ratio, step cycles to hatch
 	INCBIN "gfx/pokemon/growlithe_plain/front.dimensions"
 	abilities_for GROWLITHE, INTIMIDATE, FLASH_FIRE, JUSTIFIED
 	db GROWTH_SLOW ; growth rate
