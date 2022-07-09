@@ -7,11 +7,7 @@
 	db NO_ITEM, THICK_CLUB ; held items
 	dn GENDER_F50, 3 ; gender ratio, step cycles to hatch
 	INCBIN "gfx/pokemon/cubone/front.dimensions"
-if DEF(FAITHFUL)
 	abilities_for CUBONE, ROCK_HEAD, LIGHTNING_ROD, BATTLE_ARMOR
-else
-	abilities_for CUBONE, ROCK_HEAD, CURSED_BODY, BATTLE_ARMOR
-endc
 	db GROWTH_MEDIUM_FAST ; growth rate
 	dn EGG_MONSTER, EGG_MONSTER ; egg groups
 

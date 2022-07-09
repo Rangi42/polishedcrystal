@@ -7,7 +7,7 @@
 	db NO_ITEM, EVERSTONE ; held items
 	dn GENDER_F50, 2 ; gender ratio, step cycles to hatch
 	INCBIN "gfx/pokemon/golem_alolan/front.dimensions"
-	abilities_for GOLEM_ALOLAN, MAGNET_PULL, STURDY, GALVANIZE
+	abilities_for GOLEM_ALOLAN, STURDY, MAGNET_PULL, GALVANIZE
 	db GROWTH_MEDIUM_SLOW ; growth rate
 	dn EGG_MINERAL, EGG_MINERAL ; egg groups
 

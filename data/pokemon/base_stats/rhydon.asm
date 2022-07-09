@@ -15,7 +15,7 @@ endc
 if DEF(FAITHFUL)
 	abilities_for RHYDON, LIGHTNING_ROD, ROCK_HEAD, RECKLESS
 else
-	abilities_for RHYDON, ROCK_HEAD, SOLID_ROCK, RECKLESS
+	abilities_for RHYDON, SOLID_ROCK, ROCK_HEAD, RECKLESS
 endc
 	db GROWTH_SLOW ; growth rate
 	dn EGG_MONSTER, EGG_GROUND ; egg groups

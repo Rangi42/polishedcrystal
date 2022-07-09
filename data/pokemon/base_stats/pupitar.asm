@@ -10,7 +10,7 @@
 if DEF(FAITHFUL)
 	abilities_for PUPITAR, SHED_SKIN, SHED_SKIN, SHED_SKIN
 else
-	abilities_for PUPITAR, SHED_SKIN, SHED_SKIN, BATTLE_ARMOR
+	abilities_for PUPITAR, SHED_SKIN, BATTLE_ARMOR, GUTS
 endc
 	db GROWTH_SLOW ; growth rate
 	dn EGG_MONSTER, EGG_MONSTER ; egg groups

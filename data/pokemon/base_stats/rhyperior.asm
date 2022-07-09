@@ -16,7 +16,11 @@ endc
 	db NO_ITEM, NO_ITEM ; held items
 	dn GENDER_F50, 3 ; gender ratio, step cycles to hatch
 	INCBIN "gfx/pokemon/rhyperior/front.dimensions"
+if DEF(FAITHFUL)
 	abilities_for RHYPERIOR, LIGHTNING_ROD, SOLID_ROCK, RECKLESS
+else
+	abilities_for RHYPERIOR, SOLID_ROCK, ROCK_HEAD, RECKLESS
+endc
 	db GROWTH_SLOW ; growth rate
 	dn EGG_MONSTER, EGG_GROUND ; egg groups
 

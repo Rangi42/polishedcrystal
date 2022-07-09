@@ -8,9 +8,9 @@
 	dn GENDER_UNKNOWN, 3 ; gender ratio, step cycles to hatch
 	INCBIN "gfx/pokemon/magnemite/front.dimensions"
 if DEF(FAITHFUL)
-	abilities_for MAGNEMITE, MAGNET_PULL, STURDY, ANALYTIC
+	abilities_for MAGNEMITE, STURDY, MAGNET_PULL, ANALYTIC
 else
-	abilities_for MAGNEMITE, MAGNET_PULL, LEVITATE, ANALYTIC
+	abilities_for MAGNEMITE, LEVITATE, MAGNET_PULL, ANALYTIC
 endc
 	db GROWTH_MEDIUM_FAST ; growth rate
 	dn EGG_MINERAL, EGG_MINERAL ; egg groups

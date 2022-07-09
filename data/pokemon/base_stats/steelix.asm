@@ -12,7 +12,7 @@ endc
 	db NO_ITEM, METAL_COAT ; held items
 	dn GENDER_F50, 4 ; gender ratio, step cycles to hatch
 	INCBIN "gfx/pokemon/steelix/front.dimensions"
-	abilities_for STEELIX, SHEER_FORCE, STURDY, SAND_FORCE
+	abilities_for STEELIX, STURDY, SHEER_FORCE, SAND_FORCE
 	db GROWTH_MEDIUM_FAST ; growth rate
 	dn EGG_MINERAL, EGG_MINERAL ; egg groups
 
