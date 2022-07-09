@@ -1046,7 +1046,7 @@ DayCare_GenerateEgg:
 	ld bc, NAME_LENGTH
 	rst CopyBytes
 	ld a, [wBaseEggSteps]
-	and HATCH_UNKNOWN
+	and $f
 	inc a
 	ld b, a
 	add a

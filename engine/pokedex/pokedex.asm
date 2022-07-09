@@ -1732,7 +1732,7 @@ Pokedex_Bio:
 	inc a
 	jr z, .goteggsteps
 	ld a, [wBaseEggSteps]
-	and HATCH_UNKNOWN ; no-optimize a & X == X
+	and $f
 	cp HATCH_UNKNOWN
 	jr z, .goteggsteps
 	ld e, a
