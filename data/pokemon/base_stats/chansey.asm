@@ -5,7 +5,7 @@
 	db 30 ; catch rate
 	db 255 ; base exp
 	db NO_ITEM, LUCKY_EGG ; held items
-	dn GENDER_F100, 7 ; gender ratio, step cycles to hatch
+	dn GENDER_F100, HATCH_SLOWEST ; gender ratio, step cycles to hatch
 	INCBIN "gfx/pokemon/chansey/front.dimensions"
 	abilities_for CHANSEY, NATURAL_CURE, SERENE_GRACE, NATURAL_CURE
 	db GROWTH_FAST ; growth rate

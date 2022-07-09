@@ -5,7 +5,7 @@
 	db 150 ; catch rate
 	db 33 ; base exp
 	db NO_ITEM, NO_ITEM ; held items
-	dn GENDER_F75, 1 ; gender ratio, step cycles to hatch
+	dn GENDER_F75, HATCH_FASTER ; gender ratio, step cycles to hatch
 	INCBIN "gfx/pokemon/azurill/front.dimensions"
 	abilities_for AZURILL, THICK_FAT, HUGE_POWER, SAP_SIPPER
 	db GROWTH_FAST ; growth rate

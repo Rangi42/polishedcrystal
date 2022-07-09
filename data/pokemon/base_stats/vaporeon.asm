@@ -5,7 +5,7 @@
 	db 45 ; catch rate
 	db 196 ; base exp
 	db NO_ITEM, NO_ITEM ; held items
-	dn GENDER_F12_5, 6 ; gender ratio, step cycles to hatch
+	dn GENDER_F12_5, HATCH_SLOWER ; gender ratio, step cycles to hatch
 	INCBIN "gfx/pokemon/vaporeon/front.dimensions"
 if DEF(FAITHFUL)
 	abilities_for VAPOREON, WATER_ABSORB, WATER_ABSORB, HYDRATION

@@ -10,7 +10,7 @@ endc
 	db 90 ; catch rate
 	db 137 ; base exp
 	db NO_ITEM, CHESTO_BERRY ; held items
-	dn GENDER_F50, 3 ; gender ratio, step cycles to hatch
+	dn GENDER_F50, HATCH_MEDIUM_FAST ; gender ratio, step cycles to hatch
 	INCBIN "gfx/pokemon/quagsire/front.dimensions"
 	abilities_for QUAGSIRE, DAMP, WATER_ABSORB, UNAWARE
 	db GROWTH_MEDIUM_FAST ; growth rate

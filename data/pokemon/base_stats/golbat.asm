@@ -5,7 +5,7 @@
 	db 90 ; catch rate
 	db 171 ; base exp
 	db NO_ITEM, NO_ITEM ; held items
-	dn GENDER_F50, 2 ; gender ratio, step cycles to hatch
+	dn GENDER_F50, HATCH_FAST ; gender ratio, step cycles to hatch
 	INCBIN "gfx/pokemon/golbat/front.dimensions"
 if DEF(FAITHFUL)
 	abilities_for GOLBAT, INNER_FOCUS, INNER_FOCUS, INFILTRATOR

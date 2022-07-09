@@ -5,7 +5,7 @@
 	db 75 ; catch rate
 	db 157 ; base exp
 	db BLACK_SLUDGE, NUGGET ; held items
-	dn GENDER_F50, 3 ; gender ratio, step cycles to hatch
+	dn GENDER_F50, HATCH_MEDIUM_FAST ; gender ratio, step cycles to hatch
 	INCBIN "gfx/pokemon/muk_plain/front.dimensions"
 	abilities_for MUK, STENCH, STICKY_HOLD, POISON_TOUCH
 	db GROWTH_MEDIUM_FAST ; growth rate

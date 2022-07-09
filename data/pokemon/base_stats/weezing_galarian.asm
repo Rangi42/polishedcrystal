@@ -5,7 +5,7 @@
 	db 60 ; catch rate
 	db 173 ; base exp
 	db NO_ITEM, SMOKE_BALL ; held items
-	dn GENDER_F50, 3 ; gender ratio, step cycles to hatch
+	dn GENDER_F50, HATCH_MEDIUM_FAST ; gender ratio, step cycles to hatch
 	INCBIN "gfx/pokemon/weezing_galarian/front.dimensions"
 	abilities_for WEEZING_GALARIAN, LEVITATE, NEUTRALIZING_GAS, WHITE_SMOKE
 	db GROWTH_MEDIUM_FAST ; growth rate

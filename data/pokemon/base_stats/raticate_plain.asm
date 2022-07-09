@@ -10,7 +10,7 @@ endc
 	db 90 ; catch rate
 	db 116 ; base exp
 	db NO_ITEM, LANSAT_BERRY ; held items
-	dn GENDER_F50, 2 ; gender ratio, step cycles to hatch
+	dn GENDER_F50, HATCH_FAST ; gender ratio, step cycles to hatch
 	INCBIN "gfx/pokemon/raticate_plain/front.dimensions"
 	abilities_for RATICATE, RUN_AWAY, GUTS, HUSTLE
 	db GROWTH_MEDIUM_FAST ; growth rate

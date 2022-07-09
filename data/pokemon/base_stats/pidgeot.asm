@@ -14,7 +14,7 @@ else
 	db 194 ; base exp
 endc
 	db NO_ITEM, NO_ITEM ; held items
-	dn GENDER_F50, 2 ; gender ratio, step cycles to hatch
+	dn GENDER_F50, HATCH_FAST ; gender ratio, step cycles to hatch
 	INCBIN "gfx/pokemon/pidgeot/front.dimensions"
 	abilities_for PIDGEOT, KEEN_EYE, TANGLED_FEET, NO_GUARD
 	db GROWTH_MEDIUM_SLOW ; growth rate

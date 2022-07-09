@@ -5,7 +5,7 @@
 	db 3 ; catch rate
 	db 220 ; base exp
 	db ALWAYS_ITEM_2, SACRED_ASH ; held items
-	dn GENDER_UNKNOWN, 15 ; gender ratio, step cycles to hatch
+	dn GENDER_UNKNOWN, HATCH_UNKNOWN ; gender ratio, step cycles to hatch
 	dn 7 , 7 ; frontpic dimensions
 if DEF(FAITHFUL)
 	abilities_for HO_OH, PRESSURE, PRESSURE, REGENERATOR

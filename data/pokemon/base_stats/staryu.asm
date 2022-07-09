@@ -5,7 +5,7 @@
 	db 225 ; catch rate
 	db 106 ; base exp
 	db STARDUST, STAR_PIECE ; held items
-	dn GENDER_UNKNOWN, 3 ; gender ratio, step cycles to hatch
+	dn GENDER_UNKNOWN, HATCH_MEDIUM_FAST ; gender ratio, step cycles to hatch
 	INCBIN "gfx/pokemon/staryu/front.dimensions"
 	abilities_for STARYU, ILLUMINATE, NATURAL_CURE, ANALYTIC
 	db GROWTH_SLOW ; growth rate

@@ -5,7 +5,7 @@
 	db 75 ; catch rate
 	db 213 ; base exp
 	db NO_ITEM, ASPEAR_BERRY ; held items
-	dn GENDER_F25, 3 ; gender ratio, step cycles to hatch
+	dn GENDER_F25, HATCH_MEDIUM_FAST ; gender ratio, step cycles to hatch
 	INCBIN "gfx/pokemon/arcanine_plain/front.dimensions"
 	abilities_for ARCANINE, INTIMIDATE, FLASH_FIRE, JUSTIFIED
 	db GROWTH_SLOW ; growth rate

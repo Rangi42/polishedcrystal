@@ -5,7 +5,7 @@
 	db 45 ; catch rate
 	db 218 ; base exp
 	db NO_ITEM, NO_ITEM ; held items
-	dn GENDER_F50, 7 ; gender ratio, step cycles to hatch
+	dn GENDER_F50, HATCH_SLOWEST ; gender ratio, step cycles to hatch
 	INCBIN "gfx/pokemon/tyranitar/front.dimensions"
 if DEF(FAITHFUL)
 	abilities_for TYRANITAR, SAND_STREAM, SAND_STREAM, UNNERVE
