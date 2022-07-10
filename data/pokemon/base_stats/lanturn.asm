@@ -10,7 +10,7 @@ endc
 	db 75 ; catch rate
 	db 156 ; base exp
 	db NO_ITEM, BRIGHTPOWDER ; held items
-	dn GENDER_F50, 3 ; gender ratio, step cycles to hatch
+	dn GENDER_F50, HATCH_MEDIUM_FAST ; gender ratio, step cycles to hatch
 	INCBIN "gfx/pokemon/lanturn/front.dimensions"
 	abilities_for LANTURN, VOLT_ABSORB, ILLUMINATE, WATER_ABSORB
 	db GROWTH_SLOW ; growth rate

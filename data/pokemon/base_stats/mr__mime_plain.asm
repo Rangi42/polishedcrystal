@@ -10,7 +10,7 @@ endc
 	db 45 ; catch rate
 	db 136 ; base exp
 	db PERSIM_BERRY, PERSIM_BERRY ; held items
-	dn GENDER_F50, 4 ; gender ratio, step cycles to hatch
+	dn GENDER_F50, HATCH_MEDIUM_SLOW ; gender ratio, step cycles to hatch
 	INCBIN "gfx/pokemon/mr__mime_plain/front.dimensions"
 	abilities_for MR__MIME, SOUNDPROOF, FILTER, TECHNICIAN
 	db GROWTH_MEDIUM_FAST ; growth rate

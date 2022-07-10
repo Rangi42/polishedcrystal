@@ -15,7 +15,7 @@ else
 endc
 	db 162 ; base exp
 	db NO_ITEM, NO_ITEM ; held items
-	dn GENDER_F50, 2 ; gender ratio, step cycles to hatch
+	dn GENDER_F50, HATCH_FAST ; gender ratio, step cycles to hatch
 	INCBIN "gfx/pokemon/noctowl/front.dimensions"
 	abilities_for NOCTOWL, INSOMNIA, KEEN_EYE, TINTED_LENS
 	db GROWTH_MEDIUM_FAST ; growth rate

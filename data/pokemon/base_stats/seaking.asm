@@ -14,7 +14,7 @@ else
 	db 180 ; base exp
 endc
 	db NO_ITEM, NO_ITEM ; items
-	dn GENDER_F50, 3 ; gender ratio
+	dn GENDER_F50, HATCH_MEDIUM_FAST ; gender ratio
 	INCBIN "gfx/pokemon/seaking/front.dimensions"
 	abilities_for SEAKING, SWIFT_SWIM, WATER_VEIL, LIGHTNING_ROD
 	db GROWTH_MEDIUM_FAST ; growth rate

@@ -14,7 +14,7 @@ else
 	db 128 ; base exp
 endc
 	db LAGGING_TAIL, HARD_STONE ; held items
-	dn GENDER_F50, 4 ; gender ratio, step cycles to hatch
+	dn GENDER_F50, HATCH_MEDIUM_SLOW ; gender ratio, step cycles to hatch
 	INCBIN "gfx/pokemon/onix/front.dimensions"
 	abilities_for ONIX, ROCK_HEAD, STURDY, WEAK_ARMOR
 	db GROWTH_MEDIUM_FAST ; growth rate

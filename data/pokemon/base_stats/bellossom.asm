@@ -18,7 +18,7 @@ else
 	db 192 ; base exp
 endc
 	db NO_ITEM, ABSORB_BULB ; held items
-	dn GENDER_F50, 3 ; gender ratio, step cycles to hatch
+	dn GENDER_F50, HATCH_MEDIUM_FAST ; gender ratio, step cycles to hatch
 	INCBIN "gfx/pokemon/bellossom/front.dimensions"
 if DEF(FAITHFUL)
 	abilities_for BELLOSSOM, CHLOROPHYLL, CHLOROPHYLL, CHLOROPHYLL

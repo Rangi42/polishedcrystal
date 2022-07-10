@@ -5,7 +5,7 @@
 	db 45 ; catch rate
 	db 147 ; base exp
 	db NO_ITEM, SPELL_TAG ; held items
-	dn GENDER_F50, 4 ; gender ratio, step cycles to hatch
+	dn GENDER_F50, HATCH_MEDIUM_SLOW ; gender ratio, step cycles to hatch
 	INCBIN "gfx/pokemon/misdreavus/front.dimensions"
 	abilities_for MISDREAVUS, LEVITATE, LEVITATE, LEVITATE
 	db GROWTH_FAST ; growth rate

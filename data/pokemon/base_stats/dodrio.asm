@@ -5,7 +5,7 @@
 	db 45 ; catch rate
 	db 158 ; base exp
 	db NO_ITEM, SHARP_BEAK ; held items
-	dn GENDER_F50, 3 ; gender ratio, step cycles to hatch
+	dn GENDER_F50, HATCH_MEDIUM_FAST ; gender ratio, step cycles to hatch
 	INCBIN "gfx/pokemon/dodrio/front.dimensions"
 	abilities_for DODRIO, RUN_AWAY, EARLY_BIRD, TANGLED_FEET
 	db GROWTH_MEDIUM_FAST ; growth rate

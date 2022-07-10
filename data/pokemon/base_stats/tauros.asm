@@ -5,7 +5,7 @@
 	db 45 ; catch rate
 	db 211 ; base exp
 	db NO_ITEM, NO_ITEM ; held items
-	dn GENDER_F0, 3 ; gender ratio, step cycles to hatch
+	dn GENDER_F0, HATCH_MEDIUM_FAST ; gender ratio, step cycles to hatch
 	INCBIN "gfx/pokemon/tauros/front.dimensions"
 	abilities_for TAUROS, INTIMIDATE, ANGER_POINT, SHEER_FORCE
 	db GROWTH_SLOW ; growth rate

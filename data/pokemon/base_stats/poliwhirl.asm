@@ -5,7 +5,7 @@
 	db 120 ; catch rate
 	db 131 ; base exp
 	db NO_ITEM, KINGS_ROCK ; held items
-	dn GENDER_F50, 3 ; gender ratio, step cycles to hatch
+	dn GENDER_F50, HATCH_MEDIUM_FAST ; gender ratio, step cycles to hatch
 	INCBIN "gfx/pokemon/poliwhirl/front.dimensions"
 	abilities_for POLIWHIRL, WATER_ABSORB, DAMP, SWIFT_SWIM
 	db GROWTH_MEDIUM_SLOW ; growth rate

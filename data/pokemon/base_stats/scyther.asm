@@ -5,7 +5,7 @@
 	db 45 ; catch rate
 	db 187 ; base exp
 	db NO_ITEM, NO_ITEM ; held items
-	dn GENDER_F50, 4 ; gender ratio, step cycles to hatch
+	dn GENDER_F50, HATCH_MEDIUM_SLOW ; gender ratio, step cycles to hatch
 	INCBIN "gfx/pokemon/scyther/front.dimensions"
 	abilities_for SCYTHER, SWARM, TECHNICIAN, STEADFAST
 	db GROWTH_MEDIUM_FAST ; growth rate

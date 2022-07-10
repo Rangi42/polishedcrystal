@@ -5,7 +5,7 @@
 	db 30 ; catch rate
 	db 179 ; base exp
 	db NO_ITEM, POISON_BARB ; held items
-	dn GENDER_F50, 3 ; gender ratio, step cycles to hatch
+	dn GENDER_F50, HATCH_MEDIUM_FAST ; gender ratio, step cycles to hatch
 	INCBIN "gfx/pokemon/overqwil/front.dimensions"
 	abilities_for OVERQWIL, POISON_POINT, SWIFT_SWIM, INTIMIDATE
 	db GROWTH_MEDIUM_FAST ; growth rate

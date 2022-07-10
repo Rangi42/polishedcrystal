@@ -5,7 +5,7 @@
 	db 3 ; catch rate
 	db 216 ; base exp
 	db ALWAYS_ITEM_2, MAGNET ; held items
-	dn GENDER_UNKNOWN, 15 ; gender ratio, step cycles to hatch
+	dn GENDER_UNKNOWN, HATCH_UNKNOWN ; gender ratio, step cycles to hatch
 	INCBIN "gfx/pokemon/raikou/front.dimensions"
 if DEF(FAITHFUL)
 	abilities_for RAIKOU, PRESSURE, PRESSURE, INNER_FOCUS

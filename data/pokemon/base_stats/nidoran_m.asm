@@ -5,7 +5,7 @@
 	db 235 ; catch rate
 	db 60 ; base exp
 	db NO_ITEM, NO_ITEM ; held items
-	dn GENDER_F0, 3 ; gender ratio, step cycles to hatch
+	dn GENDER_F0, HATCH_MEDIUM_FAST ; gender ratio, step cycles to hatch
 	INCBIN "gfx/pokemon/nidoran_m/front.dimensions"
 	abilities_for NIDORAN_M, POISON_POINT, RIVALRY, HUSTLE
 	db GROWTH_MEDIUM_SLOW ; growth rate

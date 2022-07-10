@@ -5,7 +5,7 @@
 	db 225 ; catch rate
 	db 61 ; base exp
 	db NO_ITEM, NO_ITEM ; held items
-	dn GENDER_UNKNOWN, 7 ; gender ratio, step cycles to hatch
+	dn GENDER_UNKNOWN, HATCH_SLOWEST ; gender ratio, step cycles to hatch
 	INCBIN "gfx/pokemon/unown_a/front.dimensions"
 	abilities_for UNOWN, LEVITATE, LEVITATE, LEVITATE
 	db GROWTH_MEDIUM_FAST ; growth rate
