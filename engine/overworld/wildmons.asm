@@ -1219,17 +1219,14 @@ SetBadgeBaseLevel:
 	ld hl, wBadges
 	ld b, wBadgesEnd - wBadges
 	call CountSetBits
-	ld hl, .BadgeBaseLevels
+	ld hl, BadgeBaseLevels
 	ld b, 0
 	add hl, bc
 	ld a, [hl]
 	ld [wBadgeBaseLevel], a
 	ret
 
-.BadgeBaseLevels:
-	db 4
-	db 8, 12, 16, 20, 24, 28, 30, 32
-	db 40, 43, 46, 49, 52, 55, 58, 61
+INCLUDE "data/wild/badge_base_levels.asm"
 
 AdjustLevelForBadges:
 	cp MAX_LEVEL + 1
