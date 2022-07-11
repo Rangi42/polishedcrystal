@@ -79,6 +79,7 @@ Pokémon Polished Crystal would never have been finished without the help of man
 * Fo0xerz for Lawrence III's sprite (devamped by me).
 * Bronzeswagger for the Grunt♂ and Grunt♀ sprite palettes.
 * SteppoBlazer, bloodless, and JaceDeane for Kiyo's sprite.
+* ShadowOne333 and JaceDeane for Jessie & James' sprite.
 * Mmmmmm, bloodless, and Kuroko Aizawa for help with Valerie's sprite.
 * Kuroko Aizawa, bloodless, and metalflygon08 for help with Pikachu's sprites.
 * jpmac26 for editing the Pokémon Center signs and fixing a typo.
