@@ -704,14 +704,17 @@ WriteIconPaletteData:
 	pop bc
 
 if !DEF(MONOCHROME)
-	; TODO: per-mon palettes
 	ld a, c
 	ld [hli], a
 	ld a, b
 	ld [hli], a
 	ld a, e
 	ld [hli], a
-	ld [hl], d
+	ld a, d
+	ld [hld], a
+	dec hl
+	dec hl
+	farcall VaryBGPalByTempMonDVs
 else
 	ld [hl], LOW(PAL_MONOCHROME_WHITE) ; no-optimize *hl++|*hl-- = N
 	inc hl
