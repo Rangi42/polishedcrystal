@@ -25,6 +25,7 @@ ReadTrainerParty:
 	cp $ff
 	ret z
 
+	farcall AdjustLevelForBadges
 	ld [wCurPartyLevel], a
 
 ; species
@@ -390,10 +391,14 @@ SetTrainerBattleLevel:
 
 	inc hl
 	call GetNextTrainerDataByte
+
+	farcall AdjustLevelForBadges
 	ld [wCurPartyLevel], a
 	ret
 
 FindTrainerData:
+	farcall SetBadgeBaseLevel
+
 	ld a, [wOtherTrainerClass]
 	dec a
 	ld c, a
