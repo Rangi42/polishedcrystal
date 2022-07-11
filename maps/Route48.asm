@@ -62,10 +62,9 @@ Route48JessieJamesScript1:
 	playmusic MUSIC_JESSIE_JAMES_ENCOUNTER
 	showtext Route48JessieJamesAfterText
 	follow ROUTE48_JESSIE, ROUTE48_JAMES
-	loadmem wFollowMovementQueue, movement_run_step_right
-	applymovement ROUTE48_JESSIE, JessieLeaveMovementData
+	loadmem wFollowMovementQueue, movement_teleport_from
+	applyonemovement ROUTE48_JESSIE, teleport_from
 	stopfollow
-	applyonemovement ROUTE48_JAMES, run_step_right
 	disappear ROUTE48_JESSIE
 	disappear ROUTE48_JAMES
 	playmapmusic
@@ -76,13 +75,6 @@ JessieEnterMovementData:
 	paired_step_right
 	paired_step_right
 	paired_step_right
-	step_end
-
-JessieLeaveMovementData:
-	paired_run_step_left
-	paired_run_step_left
-	paired_run_step_left
-	paired_run_step_left
 	step_end
 
 TrainerArcher2:

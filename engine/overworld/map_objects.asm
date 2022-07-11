@@ -1919,8 +1919,6 @@ ApplyMovementToFollower:
 	ld a, e
 	cp movement_paired_step_right
 	jr z, .step_left
-	cp movement_paired_run_step_left
-	jr z, .run_step_right
 	cp movement_step_sleep_1
 	ret z
 	cp movement_step_end
@@ -1942,13 +1940,10 @@ ApplyMovementToFollower:
 	ret
 
 ; Jessie is "followed" by James on Route 48 when they
-; walk in and run out from opposite sides.
+; walk in and teleport out from opposite sides.
 ; Jessie's movements need to be inverted for James.
 .step_left
 	ld a, movement_step_left
-	jr .queue_movement
-.run_step_right
-	ld a, movement_run_step_right
 	jr .queue_movement
 
 GetFollowerNextMovementByte:
