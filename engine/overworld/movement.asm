@@ -103,6 +103,8 @@ MovementPointers:
 	dw Movement_stairs_step_up        ; 63
 	dw Movement_stairs_step_left      ; 64
 	dw Movement_stairs_step_right     ; 65
+	dw Movement_step_right            ; 66
+	dw Movement_run_step_left         ; 67
 	assert_table_length NUM_MOVEMENT_CMDS
 
 Movement_teleport_from:
