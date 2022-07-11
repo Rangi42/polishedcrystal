@@ -513,7 +513,7 @@ GetStorageIcon:
 	push hl
 	ld a, 4
 	push af
-	call LoadOverworldMonIcon
+	call LoadMini
 	pop af
 	ld c, a
 	ld h, d

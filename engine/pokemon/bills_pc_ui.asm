@@ -694,7 +694,7 @@ WriteIconPaletteData:
 	ld a, [wTempMonForm]
 	ld b, a
 	ld a, [wTempMonShiny]
-	farcall GetMenuMonIconTruePalette
+	farcall GetMonPalInBCDE
 	ld h, b
 	ld l, c
 	pop bc
