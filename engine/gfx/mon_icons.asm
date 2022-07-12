@@ -1,20 +1,5 @@
 INCLUDE "data/pokemon/menu_icon_pals.asm"
 
-LoadMini:
-; Load mini using species+form in wCurIcon* as input.
-	ld a, [wCurIconSpecies]
-	ld c, a
-	; b = form
-	ld a, [wCurIconForm]
-	ld b, a
-	; fallthrough
-_LoadMini:
-; c = species, b = form
-	call GetCosmeticSpeciesAndFormIndex
-	inc bc
-	ld hl, MiniPointers
-	jr DoLoadMonIcon
-
 LoadOverworldMonIcon:
 	; c = species
 	ld a, [wCurIconSpecies]
@@ -22,13 +7,29 @@ LoadOverworldMonIcon:
 	; b = form
 	ld a, [wCurIconForm]
 	ld b, a
-	; fallthrough
-_LoadOverworldMonIcon:
+	; bc = extended index
 	call GetCosmeticSpeciesAndFormIndex
 	inc bc
+	; hl = pointer table
 	ld hl, IconPointers
+	jr _LoadMonGFX
+
+LoadMini:
+	; c = species
+	ld a, [wCurIconSpecies]
+	ld c, a
+	; b = form
+	ld a, [wCurIconForm]
+	ld b, a
 	; fallthrough
-DoLoadMonIcon:
+_LoadMini:
+	; bc = extended index
+	call GetCosmeticSpeciesAndFormIndex
+	inc bc
+	; hl = pointer table
+	ld hl, MiniPointers
+	; fallthrough
+_LoadMonGFX:
 	add hl, bc
 	add hl, bc
 	add hl, bc
@@ -223,11 +224,13 @@ LoadMoveMenuMonIcon:
 	ld hl, wTempMonForm
 	ld a, [hl]
 	jr _InitScreenMonIcon
+
 InitScreenMonIcon:
 	push de
 
 	ld a, MON_FORM ; aka MON_IS_EGG
 	call GetPartyParamLocationAndValue
+	; fallthrough
 _InitScreenMonIcon:
 	and SPECIESFORM_MASK
 	ld [wCurIconForm], a
@@ -374,12 +377,12 @@ LoadTradeAnimationMonIcon:
 	ld a, $62
 	ld [wCurIconTile], a
 	; fallthrough
-
 GetMemIconGFX:
 	ld a, [wCurIconTile]
+	; fallthrough
 GetIconGFX:
 	call GetIcon_a
-	ld de, $80 ; 8 tiles
+	ld de, 8 tiles
 	add hl, de
 	ld de, HeldItemIcons
 	lb bc, BANK(HeldItemIcons), 2
@@ -390,34 +393,21 @@ GetIconGFX:
 	ret
 
 GetIcon_a:
-; Load icon graphics into VRAM starting from tile a.
-	ld l, a
+; Load icon graphics into VRAM starting from tile a
+	ld l, a ; no-optimize hl|bc|de = a * 16 (rept)
 	ld h, 0
-	; fallthrough
-GetIcon:
-	ld c, 8
-	; fallthrough
-DoGetIcon:
-; Load icon graphics into VRAM starting from tile hl.
-
-; One tile is 16 bytes long.
 rept 4
 	add hl, hl
 endr
-
 	ld de, vTiles0
 	add hl, de
 	push hl
-
 	push hl
-	ld a, c
-	push af
 	call LoadOverworldMonIcon
-	pop af
-	ld c, a
 	ld h, d
 	ld l, e
 	pop de
+	ld c, 8
 	call DecompressRequest2bpp
 	pop hl
 	ret
@@ -434,17 +424,13 @@ endr
 	; fallthrough
 GetStorageIcon:
 	push hl
-
 	push hl
-	ld a, 4
-	push af
 	call LoadMini
-	pop af
-	ld c, a
 	ld h, d
 	ld l, e
 	pop de
 	push de
+	ld c, 4
 	push bc
 	call FarDecompressWRA6InB
 	pop bc
