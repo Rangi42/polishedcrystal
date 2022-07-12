@@ -5,7 +5,7 @@
 	db 3 ; catch rate
 	db 217 ; base exp
 	db ALWAYS_ITEM_2, LUM_BERRY ; held items
-	dn GENDER_UNKNOWN, 15 ; gender ratio, step cycles to hatch
+	dn GENDER_UNKNOWN, HATCH_UNKNOWN ; gender ratio, step cycles to hatch
 	INCBIN "gfx/pokemon/moltres_galarian/front.dimensions"
 	abilities_for MOLTRES_GALARIAN, BERSERK, BERSERK, BERSERK
 	db GROWTH_SLOW ; growth rate

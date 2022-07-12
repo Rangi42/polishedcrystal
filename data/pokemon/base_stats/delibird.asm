@@ -15,7 +15,7 @@ else
 	db 193 ; base exp
 endc
 	db NO_ITEM, NEVERMELTICE ; held items
-	dn GENDER_F50, 2 ; gender ratio, step cycles to hatch
+	dn GENDER_F50, HATCH_FAST ; gender ratio, step cycles to hatch
 	INCBIN "gfx/pokemon/delibird/front.dimensions"
 	abilities_for DELIBIRD, VITAL_SPIRIT, HUSTLE, INSOMNIA
 	db GROWTH_FAST ; growth rate

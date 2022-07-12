@@ -1,4 +1,5 @@
 HatchSpeedNames:
+; entries correspond to HATCH_* (see constants/pokemon_data_constants.asm)
 ; "step cycles to hatch" are stored in one nybble, and
 ; only 0-7 are used for hatchable mons (legendaries use 15)
 	dw Fastest
@@ -11,7 +12,7 @@ HatchSpeedNames:
 	dw Slowest
 
 GrowthRateNames:
-; entries correspond to types (see constants/pokemon_data_constants.asm)
+; entries correspond to GROWTH_* (see constants/pokemon_data_constants.asm)
 	table_width 2, GrowthRateNames
 	dw MediumFast
 	dw MediumSlow

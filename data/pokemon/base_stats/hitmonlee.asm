@@ -5,7 +5,7 @@
 	db 45 ; catch rate
 	db 139 ; base exp
 	db NO_ITEM, NO_ITEM ; held items
-	dn GENDER_F0, 4 ; gender ratio, step cycles to hatch
+	dn GENDER_F0, HATCH_MEDIUM_SLOW ; gender ratio, step cycles to hatch
 	INCBIN "gfx/pokemon/hitmonlee/front.dimensions"
 	abilities_for HITMONLEE, LIMBER, RECKLESS, UNBURDEN
 	db GROWTH_MEDIUM_FAST ; growth rate

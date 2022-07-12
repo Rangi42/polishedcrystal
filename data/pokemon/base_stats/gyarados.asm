@@ -5,7 +5,7 @@
 	db 45 ; catch rate
 	db 214 ; base exp
 	db NO_ITEM, NO_ITEM ; held items
-	dn GENDER_F50, 0 ; gender ratio, step cycles to hatch
+	dn GENDER_F50, HATCH_FASTEST ; gender ratio, step cycles to hatch
 	INCBIN "gfx/pokemon/gyarados_plain/front.dimensions"
 	abilities_for GYARADOS, INTIMIDATE, MOXIE, MOLD_BREAKER
 	db GROWTH_SLOW ; growth rate

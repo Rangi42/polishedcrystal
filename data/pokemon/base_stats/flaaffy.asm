@@ -15,7 +15,7 @@ else
 	db 127 ; base exp
 endc
 	db NO_ITEM, NO_ITEM ; held items
-	dn GENDER_F50, 3 ; gender ratio, step cycles to hatch
+	dn GENDER_F50, HATCH_MEDIUM_FAST ; gender ratio, step cycles to hatch
 	INCBIN "gfx/pokemon/flaaffy/front.dimensions"
 if DEF(FAITHFUL)
 	abilities_for FLAAFFY, STATIC, STATIC, STATIC

@@ -5,7 +5,7 @@
 	db 60 ; catch rate
 	db 150 ; base exp
 	db NO_ITEM, CELL_BATTERY ; held items
-	dn GENDER_UNKNOWN, 3 ; gender ratio, step cycles to hatch
+	dn GENDER_UNKNOWN, HATCH_MEDIUM_FAST ; gender ratio, step cycles to hatch
 	INCBIN "gfx/pokemon/electrode_hisuian/front.dimensions"
 	abilities_for ELECTRODE_HISUIAN, SOUNDPROOF, STATIC, AFTERMATH
 	db GROWTH_MEDIUM_FAST ; growth rate

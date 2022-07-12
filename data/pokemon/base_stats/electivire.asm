@@ -14,7 +14,7 @@ endc
 	db 30 ; catch rate
 	db 199 ; base exp
 	db PERSIM_BERRY, ELECTIRIZER ; held items
-	dn GENDER_F25, 4 ; gender ratio, step cycles to hatch
+	dn GENDER_F25, HATCH_MEDIUM_SLOW ; gender ratio, step cycles to hatch
 	INCBIN "gfx/pokemon/electivire/front.dimensions"
 	abilities_for ELECTIVIRE, MOTOR_DRIVE, MOTOR_DRIVE, VITAL_SPIRIT
 	db GROWTH_MEDIUM_FAST ; growth rate

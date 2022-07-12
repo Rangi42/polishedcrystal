@@ -1,20 +1,5 @@
 INCLUDE "data/pokemon/menu_icon_pals.asm"
 
-LoadMini:
-; Load mini using species+form in wCurIcon* as input.
-	ld a, [wCurIconSpecies]
-	ld c, a
-	; b = form
-	ld a, [wCurIconForm]
-	ld b, a
-	; fallthrough
-_LoadMini:
-; c = species, b = form
-	call GetCosmeticSpeciesAndFormIndex
-	inc bc
-	ld hl, MiniPointers
-	jr DoLoadMonIcon
-
 LoadOverworldMonIcon:
 	; c = species
 	ld a, [wCurIconSpecies]
@@ -22,13 +7,29 @@ LoadOverworldMonIcon:
 	; b = form
 	ld a, [wCurIconForm]
 	ld b, a
-	; fallthrough
-_LoadOverworldMonIcon:
+	; bc = extended index
 	call GetCosmeticSpeciesAndFormIndex
 	inc bc
+	; hl = pointer table
 	ld hl, IconPointers
+	jr _LoadMonGFX
+
+LoadMini:
+	; c = species
+	ld a, [wCurIconSpecies]
+	ld c, a
+	; b = form
+	ld a, [wCurIconForm]
+	ld b, a
 	; fallthrough
-DoLoadMonIcon:
+_LoadMini:
+	; bc = extended index
+	call GetCosmeticSpeciesAndFormIndex
+	inc bc
+	; hl = pointer table
+	ld hl, MiniPointers
+	; fallthrough
+_LoadMonGFX:
 	add hl, bc
 	add hl, bc
 	add hl, bc
@@ -140,81 +141,6 @@ ProcessMenuMonIconColor:
 .finish
 	jmp PopAFBCDEHL
 
-GetMenuMonIconTruePalette:
-; Returns icon col1/col2 palette in bcde (col0/col3 as white/black is implicit)
-; with species+form in bc and shininess in a.
-; TODO: get rid of this.
-if DEF(MONOCHROME)
-	ld bc, PAL_MONOCHROME_WHITE
-	ld de, PAL_MONOCHROME_LIGHT
-	ret
-else
-	and SHINY_MASK
-	push af
-	call GetCosmeticSpeciesAndFormIndex
-	ld hl, MenuMonIconColors
-	add hl, bc
-	ld c, [hl]
-	pop af
-	jr nz, .shiny
-	swap c
-.shiny
-	ld a, c
-	and $f
-if DEF(NOIR)
-	ld bc, palred 21 + palgreen 21 + palblue 21
-	and a ; PAL_OW_RED
-	ld de, palred 13 + palgreen 13 + palblue 13
-	ret z
-	dec a ; PAL_OW_BLUE
-	ld de, palred 11 + palgreen 11 + palblue 11
-	ret z
-	dec a ; PAL_OW_GREEN
-	ld de, palred 15 + palgreen 15 + palblue 15
-	ret z
-	dec a ; PAL_OW_BROWN
-	ld de, palred 10 + palgreen 10 + palblue 10
-	ret z
-	dec a ; PAL_OW_PURPLE
-	ld de, palred 09 + palgreen 09 + palblue 09
-	ret z
-	dec a ; PAL_OW_GRAY
-	ld de, palred 13 + palgreen 13 + palblue 13
-	ret z
-	dec a ; PAL_OW_PINK
-	ld de, palred 16 + palgreen 16 + palblue 16
-	ret z
-	; PAL_OW_TEAL
-	ld de, palred 16 + palgreen 16 + palblue 16
-else
-	ld bc, palred 31 + palgreen 19 + palblue 10
-	and a ; PAL_OW_RED
-	ld de, palred 31 + palgreen 07 + palblue 01
-	ret z
-	dec a ; PAL_OW_BLUE
-	ld de, palred 10 + palgreen 09 + palblue 31
-	ret z
-	dec a ; PAL_OW_GREEN
-	ld de, palred 07 + palgreen 23 + palblue 03
-	ret z
-	dec a ; PAL_OW_BROWN
-	ld de, palred 15 + palgreen 10 + palblue 03
-	ret z
-	dec a ; PAL_OW_PURPLE
-	ld de, palred 18 + palgreen 04 + palblue 18
-	ret z
-	dec a ; PAL_OW_GRAY
-	ld de, palred 13 + palgreen 13 + palblue 13
-	ret z
-	dec a ; PAL_OW_PINK
-	ld de, palred 31 + palgreen 10 + palblue 11
-	ret z
-	; PAL_OW_TEAL
-	ld de, palred 03 + palgreen 23 + palblue 21
-endc
-	ret
-endc
-
 GetOverworldMonIconPalette::
 	ld a, [wCurIcon]
 	ld hl, wCurIconShiny
@@ -298,11 +224,13 @@ LoadMoveMenuMonIcon:
 	ld hl, wTempMonForm
 	ld a, [hl]
 	jr _InitScreenMonIcon
+
 InitScreenMonIcon:
 	push de
 
 	ld a, MON_FORM ; aka MON_IS_EGG
 	call GetPartyParamLocationAndValue
+	; fallthrough
 _InitScreenMonIcon:
 	and SPECIESFORM_MASK
 	ld [wCurIconForm], a
@@ -449,12 +377,12 @@ LoadTradeAnimationMonIcon:
 	ld a, $62
 	ld [wCurIconTile], a
 	; fallthrough
-
 GetMemIconGFX:
 	ld a, [wCurIconTile]
+	; fallthrough
 GetIconGFX:
 	call GetIcon_a
-	ld de, $80 ; 8 tiles
+	ld de, 8 tiles
 	add hl, de
 	ld de, HeldItemIcons
 	lb bc, BANK(HeldItemIcons), 2
@@ -465,34 +393,21 @@ GetIconGFX:
 	ret
 
 GetIcon_a:
-; Load icon graphics into VRAM starting from tile a.
-	ld l, a
+; Load icon graphics into VRAM starting from tile a
+	ld l, a ; no-optimize hl|bc|de = a * 16 (rept)
 	ld h, 0
-	; fallthrough
-GetIcon:
-	ld c, 8
-	; fallthrough
-DoGetIcon:
-; Load icon graphics into VRAM starting from tile hl.
-
-; One tile is 16 bytes long.
 rept 4
 	add hl, hl
 endr
-
 	ld de, vTiles0
 	add hl, de
 	push hl
-
 	push hl
-	ld a, c
-	push af
 	call LoadOverworldMonIcon
-	pop af
-	ld c, a
 	ld h, d
 	ld l, e
 	pop de
+	ld c, 8
 	call DecompressRequest2bpp
 	pop hl
 	ret
@@ -509,17 +424,13 @@ endr
 	; fallthrough
 GetStorageIcon:
 	push hl
-
 	push hl
-	ld a, 4
-	push af
-	call LoadOverworldMonIcon
-	pop af
-	ld c, a
+	call LoadMini
 	ld h, d
 	ld l, e
 	pop de
 	push de
+	ld c, 4
 	push bc
 	call FarDecompressWRA6InB
 	pop bc

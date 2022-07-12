@@ -5,7 +5,7 @@
 	db 255 ; catch rate
 	db 81 ; base exp
 	db NO_ITEM, SOFT_SAND ; held items
-	dn GENDER_F50, 3 ; gender ratio, step cycles to hatch
+	dn GENDER_F50, HATCH_MEDIUM_FAST ; gender ratio, step cycles to hatch
 	INCBIN "gfx/pokemon/diglett_alolan/front.dimensions"
 	abilities_for DIGLETT_ALOLAN, SAND_VEIL, TANGLING_HAIR, SAND_FORCE
 	db GROWTH_MEDIUM_FAST ; growth rate

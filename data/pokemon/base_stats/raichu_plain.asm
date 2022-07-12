@@ -14,7 +14,7 @@ else
 	db 179 ; base exp
 endc
 	db ORAN_BERRY, LIGHT_BALL ; held items
-	dn GENDER_F50, 1 ; gender ratio, step cycles to hatch
+	dn GENDER_F50, HATCH_FASTER ; gender ratio, step cycles to hatch
 	INCBIN "gfx/pokemon/raichu_plain/front.dimensions"
 	abilities_for RAICHU, STATIC, STATIC, LIGHTNING_ROD
 	db GROWTH_MEDIUM_FAST ; growth rate

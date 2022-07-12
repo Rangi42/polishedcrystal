@@ -5,7 +5,7 @@
 	db 90 ; catch rate
 	db 204 ; base exp
 	db NO_ITEM, NO_ITEM ; held items
-	dn GENDER_F50, 2 ; gender ratio, step cycles to hatch
+	dn GENDER_F50, HATCH_FAST ; gender ratio, step cycles to hatch
 	INCBIN "gfx/pokemon/crobat/front.dimensions"
 if DEF(FAITHFUL)
 	abilities_for CROBAT, INNER_FOCUS, INNER_FOCUS, INFILTRATOR

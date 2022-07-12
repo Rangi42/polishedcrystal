@@ -14,7 +14,7 @@ else
 	db 171 ; base exp
 endc
 	db NO_ITEM, NO_ITEM ; held items
-	dn GENDER_F50, 3 ; gender ratio, step cycles to hatch
+	dn GENDER_F50, HATCH_MEDIUM_FAST ; gender ratio, step cycles to hatch
 	INCBIN "gfx/pokemon/magcargo/front.dimensions"
 	abilities_for MAGCARGO, MAGMA_ARMOR, FLAME_BODY, WEAK_ARMOR
 	db GROWTH_MEDIUM_FAST ; growth rate

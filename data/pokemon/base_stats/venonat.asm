@@ -5,7 +5,7 @@
 	db 190 ; catch rate
 	db 75 ; base exp
 	db NO_ITEM, NO_ITEM ; held items
-	dn GENDER_F50, 3 ; gender ratio, step cycles to hatch
+	dn GENDER_F50, HATCH_MEDIUM_FAST ; gender ratio, step cycles to hatch
 	INCBIN "gfx/pokemon/venonat/front.dimensions"
 	abilities_for VENONAT, COMPOUND_EYES, TINTED_LENS, RUN_AWAY
 	db GROWTH_MEDIUM_FAST ; growth rate

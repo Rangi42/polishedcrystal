@@ -5,7 +5,7 @@
 	db 45 ; catch rate
 	db 94 ; base exp
 	db NO_ITEM, LEEK ; held items
-	dn GENDER_F50, 3 ; gender ratio, step cycles to hatch
+	dn GENDER_F50, HATCH_MEDIUM_FAST ; gender ratio, step cycles to hatch
 	INCBIN "gfx/pokemon/farfetch_d_galarian/front.dimensions"
 	abilities_for FARFETCH_D_GALARIAN, STEADFAST, STEADFAST, SCRAPPY
 	db GROWTH_MEDIUM_FAST ; growth rate

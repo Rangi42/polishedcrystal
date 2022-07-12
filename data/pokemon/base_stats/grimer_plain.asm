@@ -5,7 +5,7 @@
 	db 190 ; catch rate
 	db 90 ; base exp
 	db BLACK_SLUDGE, NUGGET ; held items
-	dn GENDER_F50, 3 ; gender ratio, step cycles to hatch
+	dn GENDER_F50, HATCH_MEDIUM_FAST ; gender ratio, step cycles to hatch
 	INCBIN "gfx/pokemon/grimer_plain/front.dimensions"
 	abilities_for GRIMER, STENCH, STICKY_HOLD, POISON_TOUCH
 	db GROWTH_MEDIUM_FAST ; growth rate

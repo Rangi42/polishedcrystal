@@ -43,8 +43,10 @@ Route48JessieJamesScript1:
 	appear ROUTE48_JESSIE
 	appear ROUTE48_JAMES
 	playmusic MUSIC_JESSIE_JAMES_ENCOUNTER
+	applyonemovement ROUTE48_JAMES, step_left
+	follow ROUTE48_JESSIE, ROUTE48_JAMES
 	applymovement ROUTE48_JESSIE, JessieEnterMovementData
-	applymovement ROUTE48_JAMES, JamesEnterMovementData
+	stopfollow
 	showtext Route48JessieJamesSeenText
 	setscene $1
 	setevent EVENT_BEAT_JESSIE_AND_JAMES
@@ -59,42 +61,20 @@ Route48JessieJamesScript1:
 	special DeleteSavedMusic
 	playmusic MUSIC_JESSIE_JAMES_ENCOUNTER
 	showtext Route48JessieJamesAfterText
-	applymovement ROUTE48_JESSIE, JessieLeaveMovementData
-	applymovement ROUTE48_JAMES, JamesLeaveMovementData
+	follow ROUTE48_JESSIE, ROUTE48_JAMES
+	loadmem wFollowMovementQueue, movement_teleport_from
+	applyonemovement ROUTE48_JESSIE, teleport_from
+	stopfollow
 	disappear ROUTE48_JESSIE
 	disappear ROUTE48_JAMES
 	playmapmusic
-Route48JessieJamesScript_End:
 	end
 
 JessieEnterMovementData:
-	step_right
-	step_right
-	step_right
-	step_right
-	step_end
-
-JamesEnterMovementData:
-	step_left
-	step_left
-	step_left
-	step_left
-	step_left
-	step_end
-
-JessieLeaveMovementData:
-	run_step_left
-	run_step_left
-	run_step_left
-	run_step_left
-	step_end
-
-JamesLeaveMovementData:
-	run_step_right
-	run_step_right
-	run_step_right
-	run_step_right
-	run_step_right
+	paired_step_right
+	paired_step_right
+	paired_step_right
+	paired_step_right
 	step_end
 
 TrainerArcher2:
