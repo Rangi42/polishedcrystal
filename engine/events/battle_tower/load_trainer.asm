@@ -632,20 +632,19 @@ ShuffleTierSelections:
 	pop bc
 	add hl, bc
 	add hl, bc
-	call .SwapByte
+	ld a, [de]
+	ld b, [hl]
+	ld [hli], a
+	ld a, b
+	ld [de], a
 	inc de
-	inc hl
-	call .SwapByte
-	pop hl
-	jr .shuffle_loop
-
-.SwapByte:
 	ld a, [de]
 	ld b, [hl]
 	ld [hl], a
 	ld a, b
 	ld [de], a
-	ret
+	pop hl
+	jr .shuffle_loop
 
 BT_GetPointsForTrainer:
 ; Returns BP reward that the given trainer in a gives from the table below.
