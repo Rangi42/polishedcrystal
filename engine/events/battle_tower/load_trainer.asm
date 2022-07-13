@@ -73,7 +73,7 @@ NewRentalTeam:
 	; Now, shuffle the tier composition as to not reveal what tiers each mon is.
 	ld c, PARTY_LENGTH
 	pop hl
-	call ShuffleTierSelections
+	call Shuffle16
 
 	; Group composition complete. Now generate the actual sets.
 .generate_team
@@ -607,10 +607,11 @@ BT_GetTierTable:
 	jr nz, .add_loop
 
 	; Now shuffle the team.
-	ld c, BATTLETOWER_PARTY_LENGTH
 	ld hl, wBT_OTMonParty
+	ld c, BATTLETOWER_PARTY_LENGTH
 	; fallthrough
-ShuffleTierSelections:
+
+Shuffle16:
 ; Shuffles 16bit array in hl of length c.
 .shuffle_loop
 	; This is intentional. We iterate one less than the amount of mons.

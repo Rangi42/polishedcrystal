@@ -321,32 +321,14 @@ _CardFlip:
 	ret
 
 CardFlip_ShuffleDeck:
-	ld hl, wDeck
-	ld bc, CARDFLIP_DECK_SIZE
-	xor a
-	rst ByteFill
-	ld de, wDeck
-	ld c, CARDFLIP_DECK_SIZE - 1
-.loop
-	call Random
-	and $1f
-	cp CARDFLIP_DECK_SIZE
-	jr nc, .loop
-	ld l, a
-	ld h, $0
-	add hl, de
-	ld a, [hl]
-	and a
-	jr nz, .loop
-	ld [hl], c
-	dec c
-	jr nz, .loop
 	xor a
 	ld [wCardFlipNumCardsPlayed], a
 	ld hl, wDiscardPile
 	ld bc, CARDFLIP_DECK_SIZE
 	rst ByteFill
-	ret
+	ld hl, wDeck
+	ld c, CARDFLIP_DECK_SIZE
+	farjp ShuffleRange
 
 CollapseCursorPosition:
 	ld hl, 0

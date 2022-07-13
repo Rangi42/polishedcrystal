@@ -1,5 +1,7 @@
 PickPsychicInverParty:
-	call FillPsychicInverIndexes
+	ld hl, wInverIndexes
+	ld c, NUM_INVER_MONS
+	call ShuffleRange
 
 	ld hl, wInverGroup
 	ld de, .Prefix
@@ -56,20 +58,20 @@ PickPsychicInverParty:
 	db TRAINERTYPE_ITEM | TRAINERTYPE_DVS | TRAINERTYPE_PERSONALITY | TRAINERTYPE_MOVES
 .PrefixEnd
 
-FillPsychicInverIndexes:
-	; generate shuffled indexes from 0 to NUM_INVER_MONS - 1
-	ld c, NUM_INVER_MONS
-	ld hl, wInverIndexes
+ShuffleRange:
+; Generates shuffled array from 0 to c-1 in hl.
+	push hl
+	ld b, c
 	xor a
 .index_loop
 	ld [hli], a
 	inc a
-	dec c
+	dec b
 	jr nz, .index_loop
-
-	; shuffle indexes
-	ld c, NUM_INVER_MONS
-	ld hl, wInverIndexes
+	pop hl
+	; fallthrough
+Shuffle:
+; Shuffles array in hl of length c.
 .shuffle_loop
 	dec c
 	ret z
