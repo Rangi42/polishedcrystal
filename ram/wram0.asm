@@ -879,6 +879,25 @@ wOverworldMapBlocksEnd::
 
 
 SECTION UNION "Misc 1300", WRAM0
+; psychic inver party
+
+; large enough for 4x4 KantoHouse1.asm in wOverworldMapBlocks
+	ds (4 + 6) * (4 + 6)
+
+wInverIndexes:: ds NUM_INVER_MONS
+
+wInverGroup::
+	ds 7 ; db "Inver@"
+	db ; TRAINERTYPE_ITEM | TRAINERTYPE_DVS | TRAINERTYPE_PERSONALITY | TRAINERTYPE_MOVES
+	rept PARTY_LENGTH
+		ds 3 ; dbp <level>, <species>, <form>
+		ds 5 ; db <item>, <dv1>, <dv2>, <dv3>, <nat | abil>
+		ds NUM_MOVES ; moves
+	endr
+	db ; db -1 ; end
+
+
+SECTION UNION "Misc 1300", WRAM0
 ; credits image
 
 wCreditsBlankFrame2bpp:: ds 8 * 8 * 2

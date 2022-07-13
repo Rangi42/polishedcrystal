@@ -184,6 +184,11 @@ SECTION "Enemy Trainer Parties", ROMX
 INCLUDE "engine/battle/read_trainer_party.asm"
 
 
+SECTION "Psychic Inver", ROMX
+
+INCLUDE "engine/battle/pick_psychic_inver_party.asm"
+
+
 SECTION "Battle Core", ROMX
 
 INCLUDE "engine/battle/core.asm"

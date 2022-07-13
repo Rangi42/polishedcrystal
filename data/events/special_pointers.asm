@@ -168,3 +168,4 @@ SpecialsPointers::
 	add_special GetCurBoxName
 	add_special CountCaught
 	add_special CountSeen
+	add_special PickPsychicInverParty
