@@ -125,7 +125,7 @@ TrainerGroups:
 	dba AgathaGroup
 	dba StevenGroup
 	dba CynthiaGroup
-	dba InverGroup
+	dbw BANK(@), wInverGroup
 	dba CherylGroup
 	dba RileyGroup
 	dba BuckGroup

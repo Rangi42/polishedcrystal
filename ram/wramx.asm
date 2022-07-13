@@ -79,7 +79,7 @@ NEXTU
 ; trainer HUD data
 	ds 1
 wPlaceBallsDirection:: db
-wTrainerHUDTiles:: db
+wTrainerHUDTiles:: ds 4
 
 NEXTU
 ; battle exp gain
@@ -115,7 +115,6 @@ NEXTU
 wNumOwnedDecoCategories:: db
 wOwnedDecoCategories:: ds 16
 ENDU
-
 
 NEXTU
 ; link battle record data
@@ -722,7 +721,6 @@ wOTPlayerID:: dw
 wOTPartyCount:: db
 
 	ds 7 ; unused
-
 
 UNION
 wOTPartyMons::
