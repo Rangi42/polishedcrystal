@@ -25,6 +25,11 @@ MagnetTunnelInside_MapScriptHeader:
 	object_event 20, 23, SPRITE_N64, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_ROCK, OBJECTTYPE_COMMAND, jumptext, MagnetTunnelInsideLodestoneText, EVENT_MAGNET_TUNNEL_LODESTONE_2
 	object_event 20,  5, SPRITE_N64, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_ROCK, OBJECTTYPE_COMMAND, jumptext, MagnetTunnelInsideLodestoneText, EVENT_MAGNET_TUNNEL_LODESTONE_3
 	object_event 31,  8, SPRITE_N64, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_ROCK, OBJECTTYPE_COMMAND, jumptext, MagnetTunnelInsideLodestoneText, EVENT_MAGNET_TUNNEL_LODESTONE_4
+	object_event 1, 1, SPRITE_ENGINEER, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, MagnetTunnelInsideEngineerText, -1
+	object_event 2, 2, SPRITE_ENGINEER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 3, GenericTrainerEngineerGraden, -1
+	object_event 3, 3, SPRITE_ENGINEER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 3, GenericTrainerEngineerKevin, -1
+	object_event 4, 4, SPRITE_ENGINEER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 3, GenericTrainerEngineerAtlas, -1
+	tmhmball_event 5,  5, TM_GYRO_BALL, EVENT_MAGNET_TUNNEL_TM_GYRO_BALL
 
 	object_const_def
 	const MAGNETTUNNELINSIDE_STONE_1
@@ -262,4 +267,50 @@ MagnetTunnelInsideLodestoneText:
 
 	para "It has a faint"
 	line "aura of static."
+	done
+
+MagnetTunnelInsideEngineerText:
+	text "TODO"
+	done
+
+GenericTrainerEngineerGraden:
+	generictrainer ENGINEER, ENGINEER_GRADEN, EVENT_BEAT_ENGINEER_GRADEN, .SeenText, .BeatenText
+
+	text "TODO"
+	done
+
+.SeenText:
+	text "TODO"
+	done
+
+.BeatenText:
+	text "TODO"
+	done
+
+GenericTrainerEngineerKevin:
+	generictrainer ENGINEER, ENGINEER_KEVIN, EVENT_BEAT_ENGINEER_KEVIN, .SeenText, .BeatenText
+
+	text "TODO"
+	done
+
+.SeenText:
+	text "TODO"
+	done
+
+.BeatenText:
+	text "TODO"
+	done
+
+GenericTrainerEngineerAtlas:
+	generictrainer ENGINEER, ENGINEER_ATLAS, EVENT_BEAT_ENGINEER_ATLAS, .SeenText, .BeatenText
+
+	text "TODO"
+	done
+
+.SeenText:
+	text "TODO"
+	done
+
+.BeatenText:
+	text "TODO"
 	done
