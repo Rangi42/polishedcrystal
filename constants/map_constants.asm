@@ -287,7 +287,7 @@ ENDM
 	map_const GOLDENROD_MUSEUM_1F,                         7,  4 ; 32
 	map_const GOLDENROD_MUSEUM_2F,                         7,  4 ; 33
 	map_const MAGNET_TUNNEL_WEST,                         10, 11 ; 34
-	map_const MAGNET_TUNNEL_INSIDE,                       23, 13 ; 35
+	map_const MAGNET_TUNNEL_INSIDE,                       23, 18 ; 35
 
 	newgroup                                                     ; 12
 	map_const ROUTE_6,                                    15, 16 ;  1
