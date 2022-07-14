@@ -336,7 +336,14 @@
 	wildmon LEVEL_FROM_BADGES + 0, TENTACRUEL
 	end_water_wildmons
 
-	def_water_wildmons ROUTE_35_COAST
+	def_water_wildmons ROUTE_35_COAST_SOUTH
+	db 3 percent ; encounter rate
+	wildmon LEVEL_FROM_BADGES + 0, TENTACOOL
+	wildmon LEVEL_FROM_BADGES + 0, TENTACRUEL
+	wildmon LEVEL_FROM_BADGES + 0, CORSOLA
+	end_water_wildmons
+
+	def_water_wildmons ROUTE_35_COAST_NORTH
 	db 3 percent ; encounter rate
 	wildmon LEVEL_FROM_BADGES + 0, TENTACOOL
 	wildmon LEVEL_FROM_BADGES + 0, TENTACRUEL

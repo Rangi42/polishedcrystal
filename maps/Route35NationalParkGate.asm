@@ -13,8 +13,8 @@ Route35NationalParkGate_MapScriptHeader:
 	warp_event 16,  0, NATIONAL_PARK, 4
 	warp_event 15,  7, ROUTE_35, 3
 	warp_event 16,  7, ROUTE_35, 3
-	warp_event  0,  4, OLIVINE_CITY, 11
-	warp_event  0,  5, OLIVINE_CITY, 12
+	warp_event  0,  4, ROUTE_35_COAST_NORTH, 1
+	warp_event  0,  5, ROUTE_35_COAST_NORTH, 2
 
 	def_coord_events
 

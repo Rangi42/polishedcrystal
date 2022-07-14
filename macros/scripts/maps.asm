@@ -197,3 +197,76 @@ MACRO stonetable
 	db \1, \2
 	dw \3
 ENDM
+
+; Connections go in order: north, south, west, east
+MACRO connection
+;\1: direction
+;\2: map name
+;\3: map id
+;\4: offset of the target map relative to the current map
+;    (x offset for east/west, y offset for north/south)
+
+; Calculate tile offsets for source (current) and target maps
+	DEF _src = 0
+	DEF _tgt = (\4) + 3
+	if _tgt < 0
+		DEF _src = -_tgt
+		DEF _tgt = 0
+	endc
+
+	if !STRCMP("\1", "north")
+		DEF _blk = \3_WIDTH * (\3_HEIGHT - 3) + _src
+		DEF _map = _tgt
+		DEF _win = (\3_WIDTH + 6) * \3_HEIGHT + 1
+		DEF _y = \3_HEIGHT * 2 - 1
+		DEF _x = (\4) * -2
+		DEF _len = CURRENT_MAP_WIDTH + 3 - (\4)
+		if _len > \3_WIDTH
+			DEF _len = \3_WIDTH
+		endc
+
+	elif !STRCMP("\1", "south")
+		DEF _blk = _src
+		DEF _map = (CURRENT_MAP_WIDTH + 6) * (CURRENT_MAP_HEIGHT + 3) + _tgt
+		DEF _win = \3_WIDTH + 7
+		DEF _y = 0
+		DEF _x = (\4) * -2
+		DEF _len = CURRENT_MAP_WIDTH + 3 - (\4)
+		if _len > \3_WIDTH
+			DEF _len = \3_WIDTH
+		endc
+
+	elif !STRCMP("\1", "west")
+		DEF _blk = (\3_WIDTH * _src) + \3_WIDTH - 3
+		DEF _map = (CURRENT_MAP_WIDTH + 6) * _tgt
+		DEF _win = (\3_WIDTH + 6) * 2 - 6
+		DEF _y = (\4) * -2
+		DEF _x = \3_WIDTH * 2 - 1
+		DEF _len = CURRENT_MAP_HEIGHT + 3 - (\4)
+		if _len > \3_HEIGHT
+			DEF _len = \3_HEIGHT
+		endc
+
+	elif !STRCMP("\1", "east")
+		DEF _blk = (\3_WIDTH * _src)
+		DEF _map = (CURRENT_MAP_WIDTH + 6) * _tgt + CURRENT_MAP_WIDTH + 3
+		DEF _win = \3_WIDTH + 7
+		DEF _y = (\4) * -2
+		DEF _x = 0
+		DEF _len = CURRENT_MAP_HEIGHT + 3 - (\4)
+		if _len > \3_HEIGHT
+			DEF _len = \3_HEIGHT
+		endc
+
+	else
+		fail "Invalid direction for 'connection'."
+	endc
+
+	map_id \3
+	dw wDecompressScratch + _blk
+	dw wOverworldMapBlocks + _map
+	db _len - _src
+	db \3_WIDTH
+	db _y, _x
+	dw wOverworldMapBlocks + _win
+ENDM
