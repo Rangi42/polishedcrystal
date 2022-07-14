@@ -1629,7 +1629,7 @@
 	; morn
 	wildmon 16, RATTATA
 	wildmon 16, RATICATE
-	wildmon 15, ELEKID
+	wildmon 16, MAGNEMITE
 	wildmon 16, PIDGEOTTO
 	wildmon 15, MILTANK
 	wildmon 15, TAUROS
@@ -1637,7 +1637,7 @@
 	; day
 	wildmon 16, RATTATA
 	wildmon 16, RATICATE
-	wildmon 15, ELEKID
+	wildmon 16, MAGNEMITE
 	wildmon 16, PIDGEOTTO
 	wildmon 15, MILTANK
 	wildmon 15, TAUROS
@@ -1645,7 +1645,7 @@
 	; nite
 	wildmon 16, MEOWTH
 	wildmon 16, RATICATE, ALOLAN_FORM
-	wildmon 15, ELEKID
+	wildmon 16, MAGNEMITE
 	wildmon 16, NOCTOWL
 	wildmon 18, MEOWTH
 	wildmon 18, MURKROW
@@ -2070,6 +2070,34 @@
 	wildmon LEVEL_FROM_BADGES + 1, HAUNTER
 	wildmon LEVEL_FROM_BADGES + 1, MISDREAVUS
 	wildmon LEVEL_FROM_BADGES + 5, VENOMOTH
+	end_grass_wildmons
+
+	def_grass_wildmons MAGNET_TUNNEL_INSIDE
+	db 4 percent, 4 percent, 4 percent ; encounter rates: morn/day/nite
+	; morn
+	wildmon LEVEL_FROM_BADGES - 2, VOLTORB
+	wildmon LEVEL_FROM_BADGES - 2, GEODUDE, ALOLAN_FORM
+	wildmon LEVEL_FROM_BADGES - 0, VOLTORB
+	wildmon LEVEL_FROM_BADGES - 1, ZUBAT
+	wildmon LEVEL_FROM_BADGES - 3, MAGNEMITE
+	wildmon LEVEL_FROM_BADGES - 1, MAGNEMITE
+	wildmon LEVEL_FROM_BADGES - 1, ELEKID
+	; day
+	wildmon LEVEL_FROM_BADGES - 2, VOLTORB
+	wildmon LEVEL_FROM_BADGES - 2, GEODUDE, ALOLAN_FORM
+	wildmon LEVEL_FROM_BADGES - 0, VOLTORB
+	wildmon LEVEL_FROM_BADGES - 1, ZUBAT
+	wildmon LEVEL_FROM_BADGES - 3, MAGNEMITE
+	wildmon LEVEL_FROM_BADGES - 1, MAGNEMITE
+	wildmon LEVEL_FROM_BADGES - 1, ELEKID
+	; nite
+	wildmon LEVEL_FROM_BADGES - 2, VOLTORB
+	wildmon LEVEL_FROM_BADGES - 2, GEODUDE, ALOLAN_FORM
+	wildmon LEVEL_FROM_BADGES - 0, ZUBAT
+	wildmon LEVEL_FROM_BADGES - 1, ZUBAT
+	wildmon LEVEL_FROM_BADGES - 3, MAGNEMITE
+	wildmon LEVEL_FROM_BADGES - 1, MAGNEMITE
+	wildmon LEVEL_FROM_BADGES - 1, ELEKID
 	end_grass_wildmons
 
 	db -1 ; end
