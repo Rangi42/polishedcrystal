@@ -28,7 +28,7 @@ MagnetTunnelInside_MapScriptHeader:
 	object_event 1, 1, SPRITE_ENGINEER, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, MagnetTunnelInsideEngineerText, -1
 	object_event 2, 2, SPRITE_ENGINEER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 3, GenericTrainerEngineerGraden, -1
 	object_event 3, 3, SPRITE_ENGINEER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 3, GenericTrainerEngineerKevin, -1
-	object_event 4, 4, SPRITE_ENGINEER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 3, GenericTrainerEngineerAtlas, -1
+	object_event 4, 4, SPRITE_ENGINEER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 3, GenericTrainerEngineerCameron, -1
 	tmhmball_event 5,  5, TM_GYRO_BALL, EVENT_MAGNET_TUNNEL_TM_GYRO_BALL
 
 	object_const_def
@@ -301,8 +301,8 @@ GenericTrainerEngineerKevin:
 	text "TODO"
 	done
 
-GenericTrainerEngineerAtlas:
-	generictrainer ENGINEER, ENGINEER_ATLAS, EVENT_BEAT_ENGINEER_ATLAS, .SeenText, .BeatenText
+GenericTrainerEngineerCameron:
+	generictrainer ENGINEER, ENGINEER_CAMERON, EVENT_BEAT_ENGINEER_CAMERON, .SeenText, .BeatenText
 
 	text "TODO"
 	done

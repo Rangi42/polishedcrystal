@@ -845,7 +845,7 @@ DEF KRIS EQU __trainer_class__
 	const HOWARD
 	const ENGINEER_GRADEN
 	const ENGINEER_KEVIN
-	const ENGINEER_ATLAS
+	const ENGINEER_CAMERON
 
 	trainerclass TEACHER ; 58
 	const COLETTE
