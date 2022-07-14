@@ -12,79 +12,6 @@ MACRO map_attributes
 	db \4
 ENDM
 
-; Connections go in order: north, south, west, east
-MACRO connection
-;\1: direction
-;\2: map name
-;\3: map id
-;\4: offset of the target map relative to the current map
-;    (x offset for east/west, y offset for north/south)
-
-; Calculate tile offsets for source (current) and target maps
-	DEF _src = 0
-	DEF _tgt = (\4) + 3
-	if _tgt < 0
-		DEF _src = -_tgt
-		DEF _tgt = 0
-	endc
-
-	if !STRCMP("\1", "north")
-		DEF _blk = \3_WIDTH * (\3_HEIGHT - 3) + _src
-		DEF _map = _tgt
-		DEF _win = (\3_WIDTH + 6) * \3_HEIGHT + 1
-		DEF _y = \3_HEIGHT * 2 - 1
-		DEF _x = (\4) * -2
-		DEF _len = CURRENT_MAP_WIDTH + 3 - (\4)
-		if _len > \3_WIDTH
-			DEF _len = \3_WIDTH
-		endc
-
-	elif !STRCMP("\1", "south")
-		DEF _blk = _src
-		DEF _map = (CURRENT_MAP_WIDTH + 6) * (CURRENT_MAP_HEIGHT + 3) + _tgt
-		DEF _win = \3_WIDTH + 7
-		DEF _y = 0
-		DEF _x = (\4) * -2
-		DEF _len = CURRENT_MAP_WIDTH + 3 - (\4)
-		if _len > \3_WIDTH
-			DEF _len = \3_WIDTH
-		endc
-
-	elif !STRCMP("\1", "west")
-		DEF _blk = (\3_WIDTH * _src) + \3_WIDTH - 3
-		DEF _map = (CURRENT_MAP_WIDTH + 6) * _tgt
-		DEF _win = (\3_WIDTH + 6) * 2 - 6
-		DEF _y = (\4) * -2
-		DEF _x = \3_WIDTH * 2 - 1
-		DEF _len = CURRENT_MAP_HEIGHT + 3 - (\4)
-		if _len > \3_HEIGHT
-			DEF _len = \3_HEIGHT
-		endc
-
-	elif !STRCMP("\1", "east")
-		DEF _blk = (\3_WIDTH * _src)
-		DEF _map = (CURRENT_MAP_WIDTH + 6) * _tgt + CURRENT_MAP_WIDTH + 3
-		DEF _win = \3_WIDTH + 7
-		DEF _y = (\4) * -2
-		DEF _x = 0
-		DEF _len = CURRENT_MAP_HEIGHT + 3 - (\4)
-		if _len > \3_HEIGHT
-			DEF _len = \3_HEIGHT
-		endc
-
-	else
-		fail "Invalid direction for 'connection'."
-	endc
-
-	map_id \3
-	dw wDecompressScratch + _blk
-	dw wOverworldMapBlocks + _map
-	db _len - _src
-	db \3_WIDTH
-	db _y, _x
-	dw wOverworldMapBlocks + _win
-ENDM
-
 	map_attributes NewBarkTown, NEW_BARK_TOWN, $5, WEST | EAST
 	connection west, Route29, ROUTE_29, 0
 	connection east, Route27, ROUTE_27, 0
@@ -112,10 +39,11 @@ ENDM
 	connection south, Route34, ROUTE_34, 7
 	connection east, MagnetTunnelWest, MAGNET_TUNNEL_WEST, 0
 
-	map_attributes OlivineCity, OLIVINE_CITY, $35, NORTH | SOUTH | WEST
+	map_attributes OlivineCity, OLIVINE_CITY, $35, NORTH | SOUTH | WEST | EAST
 	connection north, Route39, ROUTE_39, 5
-	connection south, Route35Coast, ROUTE_35_COAST, 7
+	connection south, Route35CoastSouth, ROUTE_35_COAST_SOUTH, 7
 	connection west, Route40, ROUTE_40, 7
+	connection east, Route35CoastNorth, ROUTE_35_COAST_NORTH, 3
 
 	map_attributes EcruteakCity, ECRUTEAK_CITY, $5, SOUTH | WEST | EAST
 	connection south, Route37, ROUTE_37, 5
@@ -185,9 +113,16 @@ ENDM
 	connection north, Route36, ROUTE_36, 0
 	connection south, GoldenrodCity, GOLDENROD_CITY, -5
 
-	map_attributes Route35Coast, ROUTE_35_COAST, $35, NORTH | SOUTH
-	connection north, OlivineCity, OLIVINE_CITY, -7
+	map_attributes Route35CoastNorth, ROUTE_35_COAST_NORTH, $35, SOUTH | WEST
+	connection south, Route35CoastSouth, ROUTE_35_COAST_SOUTH, -15
+	connection west, OlivineCity, OLIVINE_CITY, -3
+
+	map_attributes Route35CoastSouth, ROUTE_35_COAST_SOUTH, $35, NORTH | SOUTH
+	connection north, OlivineCityRoute35CoastDual, OLIVINE_CITY_ROUTE_35_COAST_DUAL, 0
 	connection south, GoldenrodHarbor, GOLDENROD_HARBOR, 0
+
+	map_attributes OlivineCityRoute35CoastDual, OLIVINE_CITY_ROUTE_35_COAST_DUAL, $35, SOUTH
+	connection south, Route35CoastSouth, ROUTE_35_COAST_SOUTH, 0
 
 	map_attributes Route36, ROUTE_36, $5, NORTH | SOUTH | EAST
 	connection north, Route37, ROUTE_37, 12
@@ -450,7 +385,7 @@ ENDM
 	connection south, MagnetTunnelEast, MAGNET_TUNNEL_EAST, -2
 
 	map_attributes GoldenrodHarbor, GOLDENROD_HARBOR, $35, NORTH | WEST
-	connection north, Route35Coast, ROUTE_35_COAST, 0
+	connection north, Route35CoastSouth, ROUTE_35_COAST_SOUTH, 0
 	connection west, Route41, ROUTE_41, -3
 
 	map_attributes MagnetTunnelEast, MAGNET_TUNNEL_EAST, $5, NORTH | EAST

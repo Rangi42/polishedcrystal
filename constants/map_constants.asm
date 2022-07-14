@@ -39,8 +39,10 @@ ENDM
 	map_const ROUTE_39_FARMHOUSE,                          4,  4 ; 11
 	map_const ROUTE_38,                                   20,  9 ; 12
 	map_const ROUTE_39,                                   10, 27 ; 13
-	map_const OLIVINE_CITY,                               33, 16 ; 14
-	map_const ROUTE_35_COAST,                             26, 14 ; 15
+	map_const OLIVINE_CITY,                               22, 16 ; 14
+	map_const ROUTE_35_COAST_NORTH,                       11, 13 ; 15
+	map_const ROUTE_35_COAST_SOUTH,                       26, 14 ; 16
+	map_const OLIVINE_CITY_ROUTE_35_COAST_DUAL,           26,  3 ; 17
 
 	newgroup                                                     ;  2
 	map_const MAHOGANY_RED_GYARADOS_SPEECH_HOUSE,          4,  4 ;  1

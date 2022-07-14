@@ -650,6 +650,10 @@ SECTION "OlivineCity_BlockData", ROMX
 OlivineCity_BlockData:
 	INCBIN "maps/OlivineCity.ablk.lz"
 
+SECTION "OlivineCityRoute35CoastDual_BlockData", ROMX
+OlivineCityRoute35CoastDual_BlockData:
+	INCBIN "maps/OlivineCityRoute35CoastDual.ablk.lz"
+
 SECTION "OlivineCafe_BlockData", ROMX
 OlivineCafe_BlockData:
 	INCBIN "maps/OlivineCafe.ablk.lz"
@@ -1803,9 +1807,13 @@ SECTION "Route35_BlockData", ROMX
 Route35_BlockData:
 	INCBIN "maps/Route35.ablk.lz"
 
-SECTION "Route35Coast_BlockData", ROMX
-Route35Coast_BlockData:
-	INCBIN "maps/Route35Coast.ablk.lz"
+SECTION "Route35CoastNorth_BlockData", ROMX
+Route35CoastNorth_BlockData:
+	INCBIN "maps/Route35CoastNorth.ablk.lz"
+
+SECTION "Route35CoastSouth_BlockData", ROMX
+Route35CoastSouth_BlockData:
+	INCBIN "maps/Route35CoastSouth.ablk.lz"
 
 SECTION "Route35NationalParkGate_BlockData", ROMX
 Route35NationalParkGate_BlockData:

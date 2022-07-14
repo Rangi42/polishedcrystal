@@ -15,8 +15,6 @@ OlivineCity_MapScriptHeader:
 	warp_event 33, 19, OLIVINE_LIGHTHOUSE_1F, 1
 	warp_event 19, 31, OLIVINE_PORT_PASSAGE, 1
 	warp_event 20, 31, OLIVINE_PORT_PASSAGE, 2
-	warp_event 57, 30, ROUTE_35_NATIONAL_PARK_GATE, 5
-	warp_event 57, 31, ROUTE_35_NATIONAL_PARK_GATE, 6
 
 	def_coord_events
 	coord_event 10,  8, 0, OlivineCityRivalGymScript
@@ -28,11 +26,8 @@ OlivineCity_MapScriptHeader:
 	bg_event  7,  7, BGEVENT_JUMPTEXT, OlivineGymSignText
 	bg_event 34, 20, BGEVENT_JUMPTEXT, OlivineLighthouseSignText
 	bg_event  1, 21, BGEVENT_JUMPTEXT, OlivineCityBattleTowerSignText
-	bg_event 50, 27, BGEVENT_JUMPTEXT, OlivineCityPokeathlonDomeSignText
 	bg_event 10, 17, BGEVENT_JUMPTEXT, OlivineCityCafeSignText
 	bg_event 36, 14, BGEVENT_ITEM + RARE_CANDY, EVENT_OLIVINE_CITY_HIDDEN_RARE_CANDY
-	bg_event 47, 17, BGEVENT_ITEM + BIG_PEARL, EVENT_OLIVINE_CITY_HIDDEN_BIG_PEARL
-	bg_event 49, 29, BGEVENT_ITEM + SOFT_SAND, EVENT_OLIVINE_CITY_HIDDEN_SOFT_SAND
 
 	def_object_events
 	object_event 10,  7, SPRITE_SILVER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_RIVAL_OLIVINE_CITY
@@ -393,12 +388,6 @@ OlivineLighthouseSignText:
 OlivineCityBattleTowerSignText:
 	text "Battle Tower Ahead"
 	line "Opening Now!"
-	done
-
-OlivineCityPokeathlonDomeSignText:
-	text "The #athlon"
-	line "Project Has"
-	cont "Started!"
 	done
 
 OlivineCityCafeSignText:

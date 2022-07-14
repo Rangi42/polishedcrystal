@@ -1,4 +1,4 @@
-Route35Coast_MapScriptHeader:
+Route35CoastSouth_MapScriptHeader:
 	def_scene_scripts
 
 	def_callbacks
@@ -8,7 +8,7 @@ Route35Coast_MapScriptHeader:
 	def_coord_events
 
 	def_bg_events
-	bg_event 35, 14, BGEVENT_ITEM + STAR_PIECE, EVENT_ROUTE_35_COAST_HIDDEN_STAR_PIECE
+	bg_event 35, 14, BGEVENT_ITEM + STAR_PIECE, EVENT_ROUTE_35_COAST_SOUTH_HIDDEN_STAR_PIECE
 
 	def_object_events
 	object_event 26,  7, SPRITE_SWIMMER_GUY, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 5, GenericTrainerSwimmermWalter, -1
@@ -19,7 +19,7 @@ Route35Coast_MapScriptHeader:
 	object_event 39, 17, SPRITE_CUTE_GIRL, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 1, GenericTrainerSrandjrBeaandmay2, -1
 	object_event 16, 10, SPRITE_SAILOR, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 2, GenericTrainerSailorHarvey, -1
 	object_event 38,  6, SPRITE_LASS, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 3, GenericTrainerLassRose, -1
-	itemball_event 37,  5, BIG_PEARL, 1, EVENT_ROUTE_35_COAST_BIG_PEARL
+	itemball_event 37,  5, BIG_PEARL, 1, EVENT_ROUTE_35_COAST_SOUTH_BIG_PEARL
 
 GenericTrainerSwimmermWalter:
 	generictrainer SWIMMERM, WALTER, EVENT_BEAT_SWIMMERM_WALTER, SwimmermWalterSeenText, SwimmermWalterBeatenText
@@ -209,4 +209,3 @@ LassRoseBeatenText:
 	line "I went around the"
 	cont "world for these!"
 	done
-

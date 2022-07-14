@@ -252,19 +252,19 @@ MiniPointers:
 	dba LugiaMini
 	dba HoOhMini
 	dba CelebiMini
-	dba AzurillIcon ; TODO
-	dba WynautIcon ; TODO
-	dba AmbipomIcon ; TODO
+	dba AzurillMini
+	dba WynautMini
+	dba AmbipomMini
 	dba EggMini
 	dba NullMini ; $100
-	dba MismagiusIcon ; TODO
-	dba HonchkrowIcon ; TODO
-	dba BonslyIcon ; TODO
-	dba MimeJrIcon ; TODO
-	dba HappinyIcon ; TODO
-	dba MunchlaxIcon ; TODO
-	dba MantykeIcon ; TODO
-	dba WeavileIcon ; TODO
+	dba MismagiusMini
+	dba HonchkrowMini
+	dba BonslyMini
+	dba MimeJrMini
+	dba HappinyMini
+	dba MunchlaxMini
+	dba MantykeMini
+	dba WeavileMini
 	dba MagnezoneIcon ; TODO
 	dba LickilickyIcon ; TODO
 	dba RhyperiorIcon ; TODO
