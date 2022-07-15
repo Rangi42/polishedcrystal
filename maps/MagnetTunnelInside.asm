@@ -233,19 +233,19 @@ MagnetTunnelInsideMachine4:
 
 MagnetTunnelInsideMachineText0:
 	text "The machine is"
-	line "off."
+	line "powered off."
 	done
 
 MagnetTunnelInsideMachineText1:
 	text "The machine is"
-	line "off."
+	line "powered off."
 
 	para "Turn it on?"
 	done
 
 MagnetTunnelInsideMachineText2:
 	text "Ping! The machine"
-	line "turned on."
+	line "powered on."
 	done
 
 MagnetTunnelInsideMachineText3:
@@ -255,14 +255,15 @@ MagnetTunnelInsideMachineText3:
 
 MagnetTunnelInsideMachineText4:
 	text "The machine is"
-	line "running smoothly."
+	line "running erratic-"
+	cont "ally."
 
 	para "Turn it off?"
 	done
 
 MagnetTunnelInsideMachineText5:
 	text "Ping! The machine"
-	line "turned off."
+	line "powered off."
 	done
 
 MagnetTunnelInsideLodestoneText:
@@ -274,47 +275,94 @@ MagnetTunnelInsideLodestoneText:
 	done
 
 MagnetTunnelInsideEngineerText:
-	text "TODO"
+	text "The lodestone here"
+	line "gives off a strong"
+	cont "magnetic field."
+
+	para "We had to bring in"
+	line "specialized equip-"
+
+	para "ment to dig this"
+	line "tunnel."
 	done
 
 GenericTrainerEngineerGraden:
 	generictrainer ENGINEER, ENGINEER_GRADEN, EVENT_BEAT_ENGINEER_GRADEN, .SeenText, .BeatenText
 
-	text "TODO"
+	text "I'm the foreman"
+	line "on this jobsite."
+
+	para "We dug out this"
+	line "tunnel for the"
+	cont "Magnet Train."
+
+	para "Little did I know,"
+	line "the lodestone here"
+
+	para "would cause us so"
+	line "much headache!"
+
+	para "A magnetic tunnel"
+	line "for a magnetic"
+	cont "train. Hahaha!"
 	done
 
 .SeenText:
-	text "TODO"
+	text "Admiring all of"
+	line "our handiwork?"
+
+	para "Haha!"
+	line "Admire this!"
 	done
 
 .BeatenText:
-	text "TODO"
+	text "Haha! Blown out"
+	line "like a fuse."
 	done
 
 GenericTrainerEngineerKevin:
 	generictrainer ENGINEER, ENGINEER_KEVIN, EVENT_BEAT_ENGINEER_KEVIN, .SeenText, .BeatenText
 
-	text "TODO"
+	text "I've tried to fix"
+	line "it. But its been"
+	cont "no use."
+
+	para "I'm worried if we"
+	line "turn it on again,"
+	cont "it'll be kaput."
 	done
 
 .SeenText:
-	text "TODO"
+	text "Stand back!"
+
+	para "This machine has"
+	line "been on the fritz!"
 	done
 
 .BeatenText:
-	text "TODO"
+	text "You've got guts!"
 	done
 
 GenericTrainerEngineerCameron:
 	generictrainer ENGINEER, ENGINEER_CAMERON, EVENT_BEAT_ENGINEER_CAMERON, .SeenText, .BeatenText
 
-	text "TODO"
+	text "These things can"
+	line "generate some"
+	cont "serious power."
+
+	para "When activated,"
+	line "they generate a"
+	
+	para "pretty strong"
+	cont "magnetic field."
 	done
 
 .SeenText:
-	text "TODO"
+	text "Hey! Be careful"
+	line "around the"
+	cont "machinery kid!"
 	done
 
 .BeatenText:
-	text "TODO"
+	text "Shutdown!"
 	done
