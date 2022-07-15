@@ -385,7 +385,7 @@
 	wildmon LEVEL_FROM_BADGES + 5, QUAGSIRE
 	end_water_wildmons
 
-	def_water_wildmons MAGNET_CAVE_INSIDE
+	def_water_wildmons MAGNET_TUNNEL_INSIDE
 	db 6 percent ; encounter rate
 	wildmon LEVEL_FROM_BADGES - 5, WOOPER
 	wildmon LEVEL_FROM_BADGES + 0, QUAGSIRE
