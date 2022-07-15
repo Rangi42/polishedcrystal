@@ -352,9 +352,9 @@ GenericTrainerEngineerCameron:
 
 	para "When activated,"
 	line "they generate a"
-	
+
 	para "pretty strong"
-	cont "magnetic field."
+	line "magnetic field."
 	done
 
 .SeenText:
