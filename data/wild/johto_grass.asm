@@ -2073,29 +2073,29 @@
 	end_grass_wildmons
 
 	def_grass_wildmons MAGNET_TUNNEL_INSIDE
-	db 4 percent, 4 percent, 4 percent ; encounter rates: morn/day/nite
+	db 6 percent, 6 percent, 6 percent ; encounter rates: morn/day/nite
 	; morn
 	wildmon LEVEL_FROM_BADGES - 2, VOLTORB
 	wildmon LEVEL_FROM_BADGES - 2, GEODUDE, ALOLAN_FORM
 	wildmon LEVEL_FROM_BADGES - 1, ZUBAT
-	wildmon LEVEL_FROM_BADGES - 0, VOLTORB
 	wildmon LEVEL_FROM_BADGES - 3, MAGNEMITE
+	wildmon LEVEL_FROM_BADGES - 0, VOLTORB
 	wildmon LEVEL_FROM_BADGES - 1, MAGNEMITE
 	wildmon LEVEL_FROM_BADGES - 1, ELEKID
 	; day
 	wildmon LEVEL_FROM_BADGES - 2, VOLTORB
 	wildmon LEVEL_FROM_BADGES - 2, GEODUDE, ALOLAN_FORM
 	wildmon LEVEL_FROM_BADGES - 1, ZUBAT
-	wildmon LEVEL_FROM_BADGES - 0, VOLTORB
 	wildmon LEVEL_FROM_BADGES - 3, MAGNEMITE
+	wildmon LEVEL_FROM_BADGES - 0, VOLTORB
 	wildmon LEVEL_FROM_BADGES - 1, MAGNEMITE
 	wildmon LEVEL_FROM_BADGES - 1, ELEKID
 	; nite
-	wildmon LEVEL_FROM_BADGES - 2, VOLTORB
+	wildmon LEVEL_FROM_BADGES - 2, ZUBAT
 	wildmon LEVEL_FROM_BADGES - 2, GEODUDE, ALOLAN_FORM
-	wildmon LEVEL_FROM_BADGES - 1, ZUBAT
-	wildmon LEVEL_FROM_BADGES - 0, ZUBAT
+	wildmon LEVEL_FROM_BADGES - 1, VOLTORB
 	wildmon LEVEL_FROM_BADGES - 3, MAGNEMITE
+	wildmon LEVEL_FROM_BADGES - 0, ZUBAT
 	wildmon LEVEL_FROM_BADGES - 1, MAGNEMITE
 	wildmon LEVEL_FROM_BADGES - 1, ELEKID
 	end_grass_wildmons
