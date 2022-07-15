@@ -23,7 +23,7 @@ MagnetTunnelInside_MapScriptHeader:
 	bg_event 21,  8, BGEVENT_UP, MagnetTunnelInsideMachine3
 	bg_event 34,  9, BGEVENT_UP, MagnetTunnelInsideMachine4
 	bg_event 35,  9, BGEVENT_UP, MagnetTunnelInsideMachine4
-	bg_event  1,  1, BGEVENT_ITEM + METAL_POWDER, EVENT_MAGNET_TUNNEL_HIDDEN_METAL_POWDER
+	bg_event 38, 30, BGEVENT_ITEM + METAL_POWDER, EVENT_MAGNET_TUNNEL_HIDDEN_METAL_POWDER
 
 	def_object_events
 	object_event  3, 10, SPRITE_N64, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_ROCK, OBJECTTYPE_COMMAND, jumptext, MagnetTunnelInsideLodestoneText, EVENT_MAGNET_TUNNEL_LODESTONE_1
@@ -31,7 +31,7 @@ MagnetTunnelInside_MapScriptHeader:
 	object_event 20,  5, SPRITE_N64, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_ROCK, OBJECTTYPE_COMMAND, jumptext, MagnetTunnelInsideLodestoneText, EVENT_MAGNET_TUNNEL_LODESTONE_3
 	object_event 31,  8, SPRITE_N64, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_ROCK, OBJECTTYPE_COMMAND, jumptext, MagnetTunnelInsideLodestoneText, EVENT_MAGNET_TUNNEL_LODESTONE_4
 	object_event  8, 13, SPRITE_ENGINEER, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, MagnetTunnelInsideEngineerText1, -1
-	object_event  2, 2, SPRITE_ENGINEER, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, MagnetTunnelInsideEngineerText2, -1
+	object_event 32, 21, SPRITE_ENGINEER, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, MagnetTunnelInsideEngineerText2, -1
 	object_event 22,  8, SPRITE_ENGINEER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 2, GenericTrainerEngineerGraden, -1
 	object_event 31, 12, SPRITE_ENGINEER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 4, GenericTrainerEngineerKevin, -1
 	object_event 24, 23, SPRITE_ENGINEER, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 3, GenericTrainerEngineerCameron, -1
@@ -201,7 +201,8 @@ MagnetTunnelInsideMachine4:
 
 .MachineOn:
 	checkevent EVENT_MAGNET_TUNNEL_LODESTONE_IN_PIT
-	iftrue_jumptext MagnetTunnelInsideMachineText0
+	iftrue_jumptext MagnetTunnelInsideMachineText6
+	scall MagnetTunnelAlarmSounds
 	opentext
 	writetext MagnetTunnelInsideMachineText4
 	yesorno
@@ -233,11 +234,6 @@ MagnetTunnelInsideMachine4:
 	remove_fixed_facing
 	step_end
 
-MagnetTunnelInsideMachineText0:
-	text "The machine is"
-	line "powered off."
-	done
-
 MagnetTunnelInsideMachineText1:
 	text "The machine is"
 	line "powered off."
@@ -257,16 +253,43 @@ MagnetTunnelInsideMachineText3:
 
 MagnetTunnelInsideMachineText4:
 	text "The machine is"
-	line "running erratic-"
-	cont "ally."
+	line "running quite"
+	cont "erratically."
 
-	para "Turn it off?"
+	para "Multiple WARNING!"
+	line "messages continue"
+	
+	para "to rapidly flash"
+	line "across the screen."
+
+	para "Hit the emergency"
+	line "shutdown button?"
 	done
 
 MagnetTunnelInsideMachineText5:
-	text "Ping! The machine"
+	text "Ding! The machine"
 	line "powered off."
 	done
+
+MagnetTunnelInsideMachineText6:
+	text "The machine is"
+	line "surrounded by the"
+	
+	para "faint stench of"
+	line "melted plastic."
+
+	para "Better be safe and"
+	line "not try to turn it"
+	cont "back on."
+	done
+
+MagnetTunnelAlarmSounds:
+	playsound SFX_LICK
+	pause 10
+	playsound SFX_LICK
+	pause 10
+	playsound SFX_LICK
+	end
 
 MagnetTunnelInsideLodestoneText:
 	text "The lodestone is"
@@ -284,12 +307,37 @@ MagnetTunnelInsideEngineerText1:
 	para "We had to bring in"
 	line "specialized equip-"
 
-	para "ment to dig this"
-	line "tunnel."
+	para "ment to complete"
+	line "this tunnel by the"
+	cont "foreman's deadline."
+
+	para "Our team was under"
+	line "heavy pressure from"
+
+	para "the general public"
+	line "to deliver on time."
 	done
 
 MagnetTunnelInsideEngineerText2:
-	text "TODO"
+	text "Ever since we"
+	line "began construction"
+
+	para "on this tunnel,"
+	line "the number of wild"
+
+	para "Electric-type"
+	line "#mon has more"
+
+	para "than doubled with"
+	line "the passing of"
+	cont "each day."
+
+	para "The foreman thinks"
+	line "they must all be"
+
+	para "attracted to the"
+	line "lodestone's unique"
+	cont "energy field."
 	done
 
 GenericTrainerEngineerGraden:
@@ -299,18 +347,34 @@ GenericTrainerEngineerGraden:
 	line "on this jobsite."
 
 	para "We dug out this"
-	line "tunnel for the"
-	cont "Magnet Train."
+	line "tunnel to make a"
+	
+	para "path for the new"
+	line "Magnet Train"
+	cont "railway."
 
-	para "Little did I know,"
-	line "the lodestone here"
+	para "Haha! Little did I"
+	line "know all of the"
 
-	para "would cause us so"
-	line "much headache!"
+	para "lodestone would"
+	line "cause us so much"
+	cont "headache!"
 
-	para "A magnetic tunnel"
-	line "for a magnetic"
-	cont "train. Hahaha!"
+	para "Everyday, more and"
+	line "more Electric-type"
+
+	para "#mon show up"
+	line "and cause delays."
+
+	para "We thought this"
+	line "tunnel was for the"
+	
+	para "Magnet Train, but"
+	line "it turned out to"
+	
+	para "be more like a"
+	line "home for magnet"
+	cont "#mon! Hahaha!"
 	done
 
 .SeenText:
@@ -322,20 +386,33 @@ GenericTrainerEngineerGraden:
 	done
 
 .BeatenText:
-	text "Haha! Blown out"
-	line "like a fuse."
+	text "Haha! You've got"
+	line "guts kid."
 	done
 
 GenericTrainerEngineerKevin:
 	generictrainer ENGINEER, ENGINEER_KEVIN, EVENT_BEAT_ENGINEER_KEVIN, .SeenText, .BeatenText
 
-	text "I've tried to fix"
-	line "it. But its been"
-	cont "no use."
+	para "This machine has"
+	line "been acting up as"
+	cont "of late."
 
-	para "I'm worried if we"
-	line "turn it on again,"
-	cont "it'll be kaput."
+	para "I've tried to fix"
+	line "it, but its been"
+	cont "no use…"
+
+	para "I'm worried if I"
+	line "turn it on again"
+
+	para "it will short"
+	line "circuit and be"
+	cont "kaput…"
+
+	para "Don't tell the"
+	line "foreman, okay?"
+
+	para "And don't mess with"
+	line "it either! Deal?"
 	done
 
 .SeenText:
@@ -346,7 +423,8 @@ GenericTrainerEngineerKevin:
 	done
 
 .BeatenText:
-	text "You've got guts!"
+	text "Blown out! Just"
+	line "like a fuse…"
 	done
 
 GenericTrainerEngineerCameron:
@@ -356,11 +434,25 @@ GenericTrainerEngineerCameron:
 	line "generate some"
 	cont "serious power."
 
-	para "When activated,"
+	para "When powered on,"
 	line "they generate a"
 
 	para "pretty strong"
 	line "magnetic field."
+
+	para "That sure comes in"
+	line "handy when moving"
+
+	para "large, heavy, and"
+	line "magnetic rocks"
+	cont "like lodestone."
+
+	para "But they can be"
+	line "real dangerous to"
+	cont "operate."
+
+	para "So be careful in"
+	line "here, alright?"
 	done
 
 .SeenText:

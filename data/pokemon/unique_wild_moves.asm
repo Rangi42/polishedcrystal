@@ -26,7 +26,7 @@ UniqueWildMoves:
 	unique_moves NATIONAL_PARK,    0,          0
 	unique_moves TIN_TOWER,        0,          0
 	unique_moves BURNED_TOWER,     0,          0
-	unique_moves MAGNET_TUNNEL,    MAGNEMITE,  PSYBEAM		; new move
+	unique_moves MAGNET_TUNNEL,    MAGNEMITE,  PSYBEAM      ; new move
 	unique_moves GOLDENROD_HARBOR, PSYDUCK,    ENCORE       ; Dream World move
 	unique_moves WHIRL_ISLANDS,    0,          0
 	unique_moves CLIFF_CAVE,       0,          0
