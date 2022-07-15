@@ -21,7 +21,7 @@ UniqueWildMoves:
 	unique_moves ILEX_FOREST,      0,          0
 	unique_moves ROUTE_34_COAST,   STARYU,     DREAM_EATER  ; new move
 	unique_moves STORMY_BEACH,     VENOMOTH,   0
-	unique_moves MURKY_SWAMP,      MISDREAVUS, HEAL_BELL    ; HGSS tutor move
+	unique_moves MURKY_SWAMP,      MISDREAVUS, SUCKER_PUNCH ; HGSS tutor move
 	unique_moves ROUTE_35_COAST,   0,          0
 	unique_moves NATIONAL_PARK,    0,          0
 	unique_moves TIN_TOWER,        0,          0
@@ -50,7 +50,7 @@ UniqueWildMoves:
 	unique_moves DIM_CAVE,         GRAVELER,   SUCKER_PUNCH ; HGSS tutor move
 	unique_moves DIM_CAVE,         RHYDON,     CRUNCH       ; Prism tutor move
 	unique_moves SOUL_HOUSE,       HAUNTER,    MOONBLAST    ; Prism tutor move
-	unique_moves SOUL_HOUSE,       MISDREAVUS, SUCKER_PUNCH ; HGSS tutor move
+	unique_moves SOUL_HOUSE,       MISDREAVUS, HEAL_BELL    ; HGSS tutor move
 	unique_moves LAV_RADIO_TOWER,  MAROWAK,    PERISH_SONG  ; Dream World move
 	unique_moves LUCKY_ISLAND,     CHANSEY,    TRI_ATTACK   ; RBY TM move
 	unique_moves LUCKY_ISLAND,     TOGETIC,    0
