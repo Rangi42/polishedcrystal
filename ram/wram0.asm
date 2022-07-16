@@ -188,7 +188,9 @@ wTilePermissions::
 
 wCompressedTextBuffer:: ds 2 ; one character and "@"
 
-	ds 11
+wLinkOtherPlayerGender:: db
+
+	ds 10
 
 
 SECTION "Sprite Animations", WRAM0

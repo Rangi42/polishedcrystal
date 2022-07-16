@@ -169,3 +169,4 @@ SpecialsPointers::
 	add_special CountCaught
 	add_special CountSeen
 	add_special PickPsychicInverParty
+	add_special CheckOtherPlayerGender

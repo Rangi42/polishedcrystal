@@ -83,24 +83,8 @@ Script_LeftCableColosseum:
 	end
 
 Script_WalkOutOfLinkRoom:
-	checkflag ENGINE_KRIS_IN_CABLE_CLUB
-	iftruefwd .Female
 	applymovement POKECENTER2F_TRADE_RECEPTIONIST, PokeCenter2FMovementData_ReceptionistWalksUpAndLeft_LookRight
 	applymovement PLAYER, PokeCenter2FMovementData_PlayerTakesThreeStepsDown
-	applymovement POKECENTER2F_TRADE_RECEPTIONIST, PokeCenter2FMovementData_ReceptionistStepsRightAndDown
-	end
-
-.Female:
-	applymovement POKECENTER2F_TRADE_RECEPTIONIST, PokeCenter2FMovementData_ReceptionistWalksUpAndLeft_LookRight
-	applyonemovement PLAYER, step_down
-	clearflag ENGINE_KRIS_IN_CABLE_CLUB
-	playsound SFX_TINGLE
-	applymovement PLAYER, PokeCenter2FMovementData_PlayerSpinsClockwiseEndsFacingRight
-	setval (PAL_NPC_BLUE) << 4
-	special Special_SetPlayerPalette
-	applymovement PLAYER, PokeCenter2FMovementData_PlayerSpinsClockwiseEndsFacingLeft
-	special UpdatePlayerSprite
-	applymovement PLAYER, PokeCenter2FMovementData_PlayerTakesTwoStepsDown
 	applymovement POKECENTER2F_TRADE_RECEPTIONIST, PokeCenter2FMovementData_ReceptionistStepsRightAndDown
 	end
 
@@ -136,10 +120,11 @@ LinkReceptionistScript_DoTradeOrBattle:
 	iffalsefwd .LinkedToFirstGen
 	special Special_CheckBothSelectedSameRoom
 	iffalsefwd .IncompatibleRooms
+	special CheckOtherPlayerGender
 	writetext Text_PleaseComeIn2
 	waitbutton
 	closetext
-	scall PokeCenter2F_CheckGender
+	scall PokeCenter2F_EnterRoom
 	warpcheck
 	end
 
@@ -197,30 +182,15 @@ endc
 	cont "being adjusted."
 	done
 
-PokeCenter2F_CheckGender:
-	checkflag ENGINE_PLAYER_IS_FEMALE
-	iftruefwd .Female
+PokeCenter2F_EnterRoom:
 	applymovementlasttalked PokeCenter2FMovementData_ReceptionistWalksUpAndLeft_LookRight
 	applymovement PLAYER, PokeCenter2FMovementData_PlayerTakesThreeStepsUp
+	readmem wLinkOtherPlayerGender
+	iftrue .Female
+	variablesprite SPRITE_LINK_TRAINER, SPRITE_CHRIS
 	end
-
-.Female:
-	applymovementlasttalked PokeCenter2FMovementData_ReceptionistWalksUpAndLeft_LookRight
-	applymovement PLAYER, PokeCenter2FMovementData_PlayerTakesTwoStepsUp
-	showtext Text_OhPleaseWait
-	applymovementlasttalked PokeCenter2FMovementData_ReceptionistLooksRight
-	turnobject PLAYER, LEFT
-	showtext Text_ChangeTheLook
-	playsound SFX_TINGLE
-	applymovement PLAYER, PokeCenter2FMovementData_PlayerSpinsClockwiseEndsFacingRight
-	setval (PAL_NPC_RED) << 4
-	special Special_SetPlayerPalette
-	applymovement PLAYER, PokeCenter2FMovementData_PlayerSpinsClockwiseEndsFacingLeft
-	setflag ENGINE_KRIS_IN_CABLE_CLUB
-	special UpdatePlayerSprite
-	showtext Text_LikeTheLook
-	showemote EMOTE_SHOCK, PLAYER, 15
-	applyonemovement PLAYER, step_up
+.Female
+	variablesprite SPRITE_LINK_TRAINER, SPRITE_KRIS
 	end
 
 PokeCenter2FMovementData_ReceptionistWalksUpAndLeft_LookRight:
@@ -247,21 +217,6 @@ PokeCenter2FMovementData_PlayerTakesTwoStepsDown:
 PokeCenter2FMovementData_ReceptionistStepsRightAndDown:
 	slow_step_right
 	slow_step_down
-	step_end
-
-PokeCenter2FMovementData_PlayerSpinsClockwiseEndsFacingRight:
-	turn_head_down
-	turn_head_left
-	turn_head_up
-	turn_head_right
-	step_end
-
-PokeCenter2FMovementData_PlayerSpinsClockwiseEndsFacingLeft:
-	turn_head_down
-	turn_head_left
-	turn_head_up
-	turn_head_right
-	turn_head_left
 	step_end
 
 Text_BattleReceptionistIntro:
