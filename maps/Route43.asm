@@ -246,7 +246,7 @@ PokemaniacBrent1Script:
 	promptbutton
 	setevent EVENT_BRENT_ASKED_FOR_PHONE_NUMBER
 	scall UnknownScript_0x19d12c
-	sjump UnknownScript_0x19d0bb
+	sjumpfwd UnknownScript_0x19d0bb
 
 UnknownScript_0x19d0b8:
 	scall UnknownScript_0x19d130
@@ -256,7 +256,7 @@ UnknownScript_0x19d0bb:
 	ifequal $2, UnknownScript_0x19d13c
 	gettrainername POKEMANIAC, BRENT1, $0
 	scall UnknownScript_0x19d134
-	sjump UnknownScript_0x19d138
+	sjumpfwd UnknownScript_0x19d138
 
 UnknownScript_0x19d0cf:
 	scall UnknownScript_0x19d144
@@ -373,7 +373,7 @@ PicnickerTiffany1Script:
 	promptbutton
 	setevent EVENT_TIFFANY_ASKED_FOR_PHONE_NUMBER
 	scall UnknownScript_0x19d239
-	sjump UnknownScript_0x19d1ad
+	sjumpfwd UnknownScript_0x19d1ad
 
 UnknownScript_0x19d1aa:
 	scall UnknownScript_0x19d23d
@@ -383,7 +383,7 @@ UnknownScript_0x19d1ad:
 	ifequal $2, UnknownScript_0x19d249
 	gettrainername PICNICKER, TIFFANY1, $0
 	scall UnknownScript_0x19d241
-	sjump UnknownScript_0x19d245
+	sjumpfwd UnknownScript_0x19d245
 
 UnknownScript_0x19d1c1:
 	scall UnknownScript_0x19d251
@@ -439,10 +439,10 @@ UnknownScript_0x19d21e:
 	iffalse UnknownScript_0x19d230
 	clearflag ENGINE_TIFFANY_HAS_PINK_BOW
 	setevent EVENT_TIFFANY_GAVE_PINK_BOW
-	sjump UnknownScript_0x19d245
+	sjumpfwd UnknownScript_0x19d245
 
 UnknownScript_0x19d230:
-	sjump UnknownScript_0x19d259
+	sjumpfwd UnknownScript_0x19d259
 
 UnknownScript_0x19d233:
 	jumpopenedtext PicnickerTiffanyClefairyText

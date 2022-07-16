@@ -104,7 +104,7 @@ Route32PokeCenter1FPokefanMScript:
 	yesorno
 	iftrue .Yes
 	writetext .Text2
-	sjump .Continue
+	sjumpfwd .Continue
 .Yes:
 	writetext .Text3
 .Continue

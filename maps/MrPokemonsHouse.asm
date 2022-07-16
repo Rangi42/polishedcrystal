@@ -56,7 +56,7 @@ if !DEF(DEBUG)
 	waitbutton
 endc
 	closetext
-	sjump MrPokemonsHouse_OakScript
+	sjumpfwd MrPokemonsHouse_OakScript
 
 MrPokemonsHouse_MrPokemonScript:
 	faceplayer

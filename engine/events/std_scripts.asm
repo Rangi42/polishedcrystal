@@ -68,7 +68,7 @@ PokeCenterNurseScript:
 	iftrue .eve
 	checktime 1 << NITE
 	iftrue .nite
-	sjump .ok
+	sjumpfwd .ok
 
 .morn
 	checkevent EVENT_WELCOMED_TO_POKECOM_CENTER
@@ -78,11 +78,11 @@ PokeCenterNurseScript:
 	farwritetext PokeComNurseMornText
 	promptbutton
 	setevent EVENT_WELCOMED_TO_POKECOM_CENTER
-	sjump .ok
+	sjumpfwd .ok
 .morn_center
 	farwritetext NurseMornText
 	promptbutton
-	sjump .ok
+	sjumpfwd .ok
 
 .day
 	checkevent EVENT_WELCOMED_TO_POKECOM_CENTER
@@ -92,11 +92,11 @@ PokeCenterNurseScript:
 	farwritetext PokeComNurseDayText
 	promptbutton
 	setevent EVENT_WELCOMED_TO_POKECOM_CENTER
-	sjump .ok
+	sjumpfwd .ok
 .day_center
 	farwritetext NurseDayText
 	promptbutton
-	sjump .ok
+	sjumpfwd .ok
 
 .eve
 	checkevent EVENT_WELCOMED_TO_POKECOM_CENTER
@@ -106,11 +106,11 @@ PokeCenterNurseScript:
 	farwritetext PokeComNurseEveText
 	promptbutton
 	setevent EVENT_WELCOMED_TO_POKECOM_CENTER
-	sjump .ok
+	sjumpfwd .ok
 .eve_center
 	farwritetext NurseEveText
 	promptbutton
-	sjump .ok
+	sjumpfwd .ok
 
 .nite
 	checkevent EVENT_WELCOMED_TO_POKECOM_CENTER
@@ -120,7 +120,7 @@ PokeCenterNurseScript:
 	farwritetext PokeComNurseNiteText
 	promptbutton
 	setevent EVENT_WELCOMED_TO_POKECOM_CENTER
-	sjump .ok
+	sjumpfwd .ok
 .nite_center
 	farwritetext NurseNiteText
 	promptbutton
@@ -131,14 +131,14 @@ PokeCenterNurseScript:
 	ifequal 0, .ask_heal
 	farwritetext NurseTrainerStarText
 	setevent EVENT_NURSE_SAW_TRAINER_STAR
-	sjump .answer_heal
+	sjumpfwd .answer_heal
 
 .ask_heal
 	farwritetext NurseAskHealText
 .answer_heal
 	yesorno
 	iffalse .goodbye
-	sjump .heal_pokemon
+	sjumpfwd .heal_pokemon
 
 .star_center
 	farwritetext NurseTheUsualText
@@ -180,7 +180,7 @@ PokeCenterNurseScript:
 
 	waitbutton
 	closetext
-	sjump .done
+	sjumpfwd .done
 
 .pokerus
 	; already cleared earlier in the script
@@ -189,7 +189,7 @@ PokeCenterNurseScript:
 	farwritetext NursePokerusText
 	waitbutton
 	closetext
-	sjump .pokerus_done
+	sjumpfwd .pokerus_done
 
 .pokerus_comcenter
 	farwritetext PokeComNursePokerusText
@@ -389,7 +389,7 @@ BugContestResultsScript:
 .GotConsolationPrize
 	farwritetext ContestResults_DidNotWinText
 	promptbutton
-	sjump .FinishUp
+	sjumpfwd .FinishUp
 
 .FirstPlace
 	setevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_1
@@ -1552,7 +1552,7 @@ CoinVendor_IntroScript:
 	closewindow
 	ifequal $1, .Buy50
 	ifequal $2, .Buy500
-	sjump .Cancel
+	sjumpfwd .Cancel
 
 .Buy50:
 	checkcoins 49950
@@ -1658,7 +1658,7 @@ VendingMachineScript:
 	giveitem FRESH_WATER
 	iffalse .Start
 	getitemname FRESH_WATER, $0
-	sjump .ExtraItem
+	sjumpfwd .ExtraItem
 
 .SodaPop:
 	checkmoney $0, 300
@@ -1673,7 +1673,7 @@ VendingMachineScript:
 	giveitem SODA_POP
 	iffalse .Start
 	getitemname SODA_POP, $0
-	sjump .ExtraItem
+	sjumpfwd .ExtraItem
 
 .Lemonade:
 	checkmoney $0, 350
@@ -1688,7 +1688,7 @@ VendingMachineScript:
 	giveitem LEMONADE
 	iffalse .Start
 	getitemname LEMONADE, $0
-	sjump .ExtraItem
+	sjumpfwd .ExtraItem
 
 .VendItem:
 	pause 10

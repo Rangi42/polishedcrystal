@@ -49,17 +49,17 @@ IcePathB1FSetUpStoneTable:
 .Boulder1:
 	disappear ICEPATHB1F_BOULDER1
 	clearevent EVENT_BOULDER_IN_ICE_PATH_1A
-	sjump .FinishBoulder
+	sjumpfwd .FinishBoulder
 
 .Boulder2:
 	disappear ICEPATHB1F_BOULDER2
 	clearevent EVENT_BOULDER_IN_ICE_PATH_2A
-	sjump .FinishBoulder
+	sjumpfwd .FinishBoulder
 
 .Boulder3:
 	disappear ICEPATHB1F_BOULDER3
 	clearevent EVENT_BOULDER_IN_ICE_PATH_3A
-	sjump .FinishBoulder
+	sjumpfwd .FinishBoulder
 
 .Boulder4:
 	disappear ICEPATHB1F_BOULDER4

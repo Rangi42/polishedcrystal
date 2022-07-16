@@ -51,7 +51,7 @@ DayCare_MeetGrandma:
 	checkflag ENGINE_PLAYER_IS_FEMALE
 	iftrue .IntroduceFemale
 	writetext DayCareLyraHelloText1
-	sjump .Continue1
+	sjumpfwd .Continue1
 .IntroduceFemale:
 	writetext DayCareLyraHelloText2
 .Continue1:
@@ -62,7 +62,7 @@ DayCare_MeetGrandma:
 	checkflag ENGINE_PLAYER_IS_FEMALE
 	iftrue .ProtestFemale
 	writetext DayCareLyraProtestText1
-	sjump .Continue2
+	sjumpfwd .Continue2
 .ProtestFemale:
 	writetext DayCareLyraProtestText2
 .Continue2:
@@ -134,11 +134,11 @@ DayCareLadyScript:
 	checkevent EVENT_GOT_CHIKORITA_FROM_ELM
 	iftrue .GiveTotodileEgg
 	giveegg CHIKORITA
-	sjump .GotLyrasEgg
+	sjumpfwd .GotLyrasEgg
 
 .GiveCyndaquilEgg:
 	giveegg CYNDAQUIL
-	sjump .GotLyrasEgg
+	sjumpfwd .GotLyrasEgg
 
 .GiveTotodileEgg:
 	giveegg TOTODILE

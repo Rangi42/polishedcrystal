@@ -27,7 +27,7 @@ GoldenrodDeptStoreB1F_MapScriptHeader:
 UnknownScript_0x7d781:
 	checkevent EVENT_RECEIVED_CARD_KEY
 	iftrue UnknownScript_0x7d78a
-	sjump UnknownScript_0x7d791
+	sjumpfwd UnknownScript_0x7d791
 
 UnknownScript_0x7d78a:
 	changeblock 16, 4, $d

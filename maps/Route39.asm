@@ -66,7 +66,7 @@ TrainerPokefanmDerek1:
 	promptbutton
 	setevent EVENT_DEREK_ASKED_FOR_PHONE_NUMBER
 	scall .AskNumber1
-	sjump .AskForNumber
+	sjumpfwd .AskForNumber
 
 .AskedAlready:
 	scall .AskNumber2
@@ -76,17 +76,17 @@ TrainerPokefanmDerek1:
 	ifequal $2, .NumberDeclined
 	gettrainername POKEFANM, DEREK1, $0
 	scall .RegisteredNumber
-	sjump .NumberAccepted
+	sjumpfwd .NumberAccepted
 
 .HasNugget:
 	scall .Gift
 	verbosegiveitem NUGGET
 	iffalse .NoRoom
 	clearflag ENGINE_DEREK_HAS_NUGGET
-	sjump .NumberAccepted
+	sjumpfwd .NumberAccepted
 
 .NoRoom:
-	sjump .PackFull
+	sjumpfwd .PackFull
 
 .WantsPikachu:
 	jumpopenedtext PokefanMDerekPikachuIsItText

@@ -79,7 +79,7 @@ PicnickerErin1Script:
 	promptbutton
 	setevent EVENT_ERIN_ASKED_FOR_PHONE_NUMBER
 	scall Route46AskNumber1F
-	sjump UnknownScript_0x1a96c6
+	sjumpfwd UnknownScript_0x1a96c6
 
 UnknownScript_0x1a96c3:
 	scall Route46AskNumber2F
@@ -89,7 +89,7 @@ UnknownScript_0x1a96c6:
 	ifequal $2, Route46NumberDeclinedF
 	gettrainername PICNICKER, ERIN1, $0
 	scall Route46RegisteredNumberF
-	sjump Route46NumberAcceptedF
+	sjumpfwd Route46NumberAcceptedF
 
 UnknownScript_0x1a96da:
 	scall Route46RematchF
@@ -133,7 +133,7 @@ UnknownScript_0x1a96da:
 	verbosegiveitem CALCIUM
 	iffalse ErinNoRoomForCalcium
 	setevent EVENT_GOT_CALCIUM_FROM_ERIN
-	sjump Route46NumberAcceptedF
+	sjumpfwd Route46NumberAcceptedF
 
 UnknownScript_0x1a973a:
 	end
@@ -146,7 +146,7 @@ UnknownScript_0x1a973b:
 	iffalse ErinNoRoomForCalcium
 	clearevent EVENT_ERIN_CALCIUM
 	setevent EVENT_GOT_CALCIUM_FROM_ERIN
-	sjump Route46NumberAcceptedF
+	sjumpfwd Route46NumberAcceptedF
 
 Route46AskNumber1F:
 	jumpstd asknumber1f

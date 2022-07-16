@@ -27,7 +27,7 @@ Museum2FPokefanMScript:
 	checkunits
 	iftrue .metric
 	writetext Museum2FPokefanMImperialText
-	sjump .ok
+	sjumpfwd .ok
 .metric
 	writetext Museum2FPokefanMMetricText
 .ok

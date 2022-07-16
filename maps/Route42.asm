@@ -53,7 +53,7 @@ Route42LyraScript1:
 	appear ROUTE42_LYRA
 	waitsfx
 	applymovement ROUTE42_LYRA, MovementData_Route42LyraApproach1
-	sjump Route42LyraScript
+	sjumpfwd Route42LyraScript
 
 Route42LyraScript2:
 	turnobject PLAYER, LEFT
@@ -64,7 +64,7 @@ Route42LyraScript2:
 	appear ROUTE42_LYRA
 	waitsfx
 	applymovement ROUTE42_LYRA, MovementData_Route42LyraApproach2
-	sjump Route42LyraScript
+	sjumpfwd Route42LyraScript
 
 Route42LyraScript3:
 	turnobject PLAYER, LEFT
@@ -75,7 +75,7 @@ Route42LyraScript3:
 	appear ROUTE42_LYRA
 	waitsfx
 	applymovement ROUTE42_LYRA, MovementData_Route42LyraApproach3
-	sjump Route42LyraScript
+	sjumpfwd Route42LyraScript
 
 Route42LyraScript4:
 	turnobject PLAYER, LEFT
@@ -84,7 +84,7 @@ Route42LyraScript4:
 	appear ROUTE42_LYRA
 	waitsfx
 	applymovement ROUTE42_LYRA, MovementData_Route42LyraApproach4
-	sjump Route42LyraScript
+	sjumpfwd Route42LyraScript
 
 Route42LyraScript5:
 	turnobject PLAYER, UP
@@ -106,11 +106,11 @@ Route42LyraScript:
 	checkevent EVENT_GOT_CHIKORITA_FROM_ELM
 	iftrue .Chikorita
 	loadtrainer LYRA1, LYRA1_7
-	sjump .AfterBattle
+	sjumpfwd .AfterBattle
 
 .Totodile:
 	loadtrainer LYRA1, LYRA1_8
-	sjump .AfterBattle
+	sjumpfwd .AfterBattle
 
 .Chikorita:
 	loadtrainer LYRA1, LYRA1_9
@@ -133,7 +133,7 @@ Route42LyraScript:
 	checkevent EVENT_SAW_SUICUNE_ON_ROUTE_42
 	iftrue .NoSuicune
 	setscene $2
-	sjump .Finish
+	sjumpfwd .Finish
 .NoSuicune
 	setscene $0
 .Finish
@@ -170,7 +170,7 @@ FisherTully1Script:
 	promptbutton
 	setevent EVENT_TULLY_ASKED_FOR_PHONE_NUMBER
 	scall UnknownScript_0x1a92f1
-	sjump UnknownScript_0x1a926b
+	sjumpfwd UnknownScript_0x1a926b
 
 UnknownScript_0x1a9268:
 	scall UnknownScript_0x1a92f5
@@ -180,7 +180,7 @@ UnknownScript_0x1a926b:
 	ifequal $2, UnknownScript_0x1a9301
 	gettrainername FISHER, TULLY1, $0
 	scall UnknownScript_0x1a92f9
-	sjump UnknownScript_0x1a92fd
+	sjumpfwd UnknownScript_0x1a92fd
 
 UnknownScript_0x1a927f:
 	scall UnknownScript_0x1a9309
@@ -236,10 +236,10 @@ UnknownScript_0x1a92dc:
 	iffalse UnknownScript_0x1a92ee
 	clearflag ENGINE_TULLY_HAS_WATER_STONE
 	setevent EVENT_TULLY_GAVE_WATER_STONE
-	sjump UnknownScript_0x1a92fd
+	sjumpfwd UnknownScript_0x1a92fd
 
 UnknownScript_0x1a92ee:
-	sjump UnknownScript_0x1a9311
+	sjumpfwd UnknownScript_0x1a9311
 
 UnknownScript_0x1a92f1:
 	jumpstd asknumber1m

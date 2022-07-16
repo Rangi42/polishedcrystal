@@ -112,7 +112,7 @@ BurnedTowerB1FEusine:
 	readvar VAR_FACING
 	ifequal $1, .Movement
 	applymovement BURNEDTOWERB1F_EUSINE, BurnedTowerB1FEusineMovement1
-	sjump UnknownScript_0x18622a
+	sjumpfwd UnknownScript_0x18622a
 
 .Movement:
 	applymovement BURNEDTOWERB1F_EUSINE, BurnedTowerB1FEusineMovement2

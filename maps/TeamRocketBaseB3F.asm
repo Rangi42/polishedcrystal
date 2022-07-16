@@ -94,7 +94,7 @@ RocketBaseRival:
 
 RocketBaseBossLeft:
 	applymovement PLAYER, RocketBasePlayerApproachesBossLeftMovement
-	sjump RocketBaseBoss
+	sjumpfwd RocketBaseBoss
 
 RocketBaseBossRight:
 	applymovement PLAYER, RocketBasePlayerApproachesBossRightMovement
@@ -180,7 +180,7 @@ BossDoor:
 	iffalse .NeedsPassword
 	checkevent EVENT_LEARNED_RATICATE_TAIL
 	iffalse .NeedsPassword
-	sjump .OpenSesame
+	sjumpfwd .OpenSesame
 
 .NeedsPassword:
 	jumpopenedtext TeamRocketBaseB3FLockedDoorNeedsPasswordText

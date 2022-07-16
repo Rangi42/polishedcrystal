@@ -265,6 +265,7 @@ ScriptCommandTable:
 	dw Script_givebp                     ; ce
 	dw Script_takebp                     ; cf
 	dw Script_checkbp                    ; d0
+	dw Script_sjumpfwd                   ; d1
 	assert_table_length NUM_EVENT_COMMANDS
 
 StartScript:
@@ -1373,9 +1374,7 @@ Script_sjump:
 	ld l, a
 	call GetScriptByte
 	ld h, a
-	ld a, [wScriptBank]
-	ld b, a
-	jmp ScriptJump
+	jmp ScriptJumpInCurrentBank
 
 Script_farsjump:
 	call GetScriptByte
@@ -1472,11 +1471,24 @@ StdScript:
 ScriptJump:
 	ld a, b
 	ld [wScriptBank], a
+ScriptJumpInCurrentBank:
 	ld a, l
 	ld [wScriptPos], a
 	ld a, h
 	ld [wScriptPos + 1], a
 	ret
+
+Script_sjumpfwd:
+	ld hl, wScriptPos
+	ld a, [hli]
+	ld h, [hl]
+	ld l, a
+	inc hl
+	call GetScriptByte
+	ld b, 0
+	ld c, a
+	add hl, bc
+	jr ScriptJumpInCurrentBank
 
 Script_sdefer:
 	ld a, [wScriptBank]

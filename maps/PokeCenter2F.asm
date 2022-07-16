@@ -161,7 +161,7 @@ LinkReceptionistScript_DoTradeOrBattle:
 
 .LinkTimedOut:
 	writetext Text_LinkTimedOut
-	sjump .AbortLink
+	sjumpfwd .AbortLink
 
 .DidNotSave:
 	writetext Text_PleaseComeAgain

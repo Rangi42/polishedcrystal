@@ -64,19 +64,19 @@ Oak:
 	givepoke BULBASAUR, PLAIN_FORM, 10, SITRUS_BERRY
 	iffalse .PartyAndBoxFull
 	setevent EVENT_GOT_A_POKEMON_FROM_OAK
-	sjump .CheckBadges
+	sjumpfwd .CheckBadges
 
 .Charmander:
 	givepoke CHARMANDER, PLAIN_FORM, 10, SITRUS_BERRY
 	iffalse .PartyAndBoxFull
 	setevent EVENT_GOT_A_POKEMON_FROM_OAK
-	sjump .CheckBadges
+	sjumpfwd .CheckBadges
 
 .Squirtle:
 	givepoke SQUIRTLE, PLAIN_FORM, 10, SITRUS_BERRY
 	iffalse .PartyAndBoxFull
 	setevent EVENT_GOT_A_POKEMON_FROM_OAK
-	sjump .CheckBadges
+	sjumpfwd .CheckBadges
 
 .PartyAndBoxFull:
 	writetext OakLabPartyAndBoxFullText

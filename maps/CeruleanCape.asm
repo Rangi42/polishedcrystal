@@ -57,7 +57,7 @@ CeruleanCapeDateInterruptedTrigger1:
 	applymovement CERULEANCAPE_MISTY, Route25MistyApproachesPlayerMovement1
 	showtext Route25MistyDateText
 	applymovement CERULEANCAPE_MISTY, Route25MistyLeavesPlayerMovement1
-	sjump CeruleanCapeDateFinishScript
+	sjumpfwd CeruleanCapeDateFinishScript
 
 CeruleanCapeDateInterruptedTrigger2:
 	showemote EMOTE_HEART, CERULEANCAPE_MISTY, 15

@@ -128,7 +128,7 @@ Route23FogBadgeTriggerScript:
 	checkscene
 	ifgreater $3, Route23OfficerHaveBadgeScript
 	setscene $4
-	sjump Route23OfficerHaveBadgeScript
+	sjumpfwd Route23OfficerHaveBadgeScript
 
 .FogBadgeText:
 	db "Fog Badge@"
@@ -146,7 +146,7 @@ Route23StormBadgeTriggerScript:
 	checkscene
 	ifgreater $4, Route23OfficerHaveBadgeScript
 	setscene $5
-	sjump Route23OfficerHaveBadgeScript
+	sjumpfwd Route23OfficerHaveBadgeScript
 
 .StormBadgeText:
 	db "Storm Badge@"
@@ -164,7 +164,7 @@ Route23MineralBadgeTriggerScript:
 	checkscene
 	ifgreater $5, Route23OfficerHaveBadgeScript
 	setscene $6
-	sjump Route23OfficerHaveBadgeScript
+	sjumpfwd Route23OfficerHaveBadgeScript
 
 .MineralBadgeText:
 	db "Mineral Badge@"
@@ -182,7 +182,7 @@ Route23GlacierBadgeTriggerScript:
 	checkscene
 	ifgreater $6, Route23OfficerHaveBadgeScript
 	setscene $7
-	sjump Route23OfficerHaveBadgeScript
+	sjumpfwd Route23OfficerHaveBadgeScript
 
 .GlacierBadgeText:
 	db "Glacier Badge@"
@@ -200,7 +200,7 @@ Route23RisingBadgeTriggerScript:
 	checkscene
 	ifgreater $7, Route23OfficerHaveBadgeScript
 	setscene $8
-	sjump Route23OfficerHaveBadgeScript
+	sjumpfwd Route23OfficerHaveBadgeScript
 
 .RisingBadgeText:
 	db "Rising Badge@"

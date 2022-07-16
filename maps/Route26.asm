@@ -59,7 +59,7 @@ TrainerCooltrainermGaven1:
 	promptbutton
 	setevent EVENT_GAVEN_ASKED_FOR_PHONE_NUMBER
 	scall .AskNumber1
-	sjump .AskForNumber
+	sjumpfwd .AskForNumber
 
 .AskedAlready:
 	scall .AskNumber2
@@ -69,7 +69,7 @@ TrainerCooltrainermGaven1:
 	ifequal $2, .NumberDeclined
 	gettrainername COOLTRAINERM, GAVEN1, $0
 	scall .RegisteredNumber
-	sjump .NumberAccepted
+	sjumpfwd .NumberAccepted
 
 .WantsBattle:
 	scall .Rematch
@@ -157,7 +157,7 @@ TrainerCooltrainerfBeth1:
 	promptbutton
 	setevent EVENT_BETH_ASKED_FOR_PHONE_NUMBER
 	scall .AskNumber1
-	sjump .AskForNumber
+	sjumpfwd .AskForNumber
 
 .AskedAlready:
 	scall .AskNumber2
@@ -167,7 +167,7 @@ TrainerCooltrainerfBeth1:
 	ifequal $2, .NumberDeclined
 	gettrainername COOLTRAINERF, BETH1, $0
 	scall .RegisteredNumber
-	sjump .NumberAccepted
+	sjumpfwd .NumberAccepted
 
 .WantsBattle:
 	scall .Rematch

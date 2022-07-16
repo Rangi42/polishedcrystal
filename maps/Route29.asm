@@ -61,7 +61,7 @@ Route29Tutorial1:
 	closetext
 	follow ROUTE29_LYRA, PLAYER
 	applymovement ROUTE29_LYRA, LyraMovementData1b
-	sjump Route29TutorialScript
+	sjumpfwd Route29TutorialScript
 
 Route29Tutorial2:
 	turnobject ROUTE29_LYRA, UP

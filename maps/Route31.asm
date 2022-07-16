@@ -176,7 +176,7 @@ TrainerBug_catcherWade1:
 	waitbutton
 	setevent EVENT_WADE_ASKED_FOR_PHONE_NUMBER
 	callstd asknumber1m
-	sjump .Continue
+	sjumpfwd .Continue
 
 .AskAgain:
 	callstd asknumber2m
@@ -261,15 +261,15 @@ TrainerBug_catcherWade1:
 .OranBerry:
 	verbosegiveitem ORAN_BERRY
 	iffalse .PackFull
-	sjump .Done
+	sjumpfwd .Done
 .PechaBerry:
 	verbosegiveitem PECHA_BERRY
 	iffalse .PackFull
-	sjump .Done
+	sjumpfwd .Done
 .CheriBerry:
 	verbosegiveitem CHERI_BERRY
 	iffalse .PackFull
-	sjump .Done
+	sjumpfwd .Done
 .PersimBerry:
 	verbosegiveitem PERSIM_BERRY
 	iffalse .PackFull

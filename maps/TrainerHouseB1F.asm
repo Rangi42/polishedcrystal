@@ -26,7 +26,7 @@ TrainerHouseB1FCallback:
 	iftrue .Cal
 	disappear TRAINERHOUSEB1F_CAL
 	appear TRAINERHOUSEB1F_CARRIE
-	sjump .Done
+	sjumpfwd .Done
 .Cal:
 	disappear TRAINERHOUSEB1F_CARRIE
 	appear TRAINERHOUSEB1F_CAL
@@ -43,7 +43,7 @@ TrainerHouseReceptionistScript:
 	checkflag ENGINE_PLAYER_IS_FEMALE
 	iftrue .GetCalName
 	gettrainername CARRIE, 1, $0
-	sjump .GotName
+	sjumpfwd .GotName
 .GetCalName
 	gettrainername CAL, 1, $0
 .GotName:
@@ -63,7 +63,7 @@ TrainerHouseReceptionistScript:
 	iftrue .LoadTrainerCal
 	setlasttalked TRAINERHOUSEB1F_CARRIE
 	loadtrainer CARRIE, 1
-	sjump .StartBattle
+	sjumpfwd .StartBattle
 .LoadTrainerCal
 	setlasttalked TRAINERHOUSEB1F_CAL
 	loadtrainer CAL, 1

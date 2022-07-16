@@ -44,7 +44,7 @@ SeagallopFerryShamoutiGateSailorScript:
 	closewindow
 	ifequal $1, .ToVermilion
 	ifequal $2, .ToValencia
-	sjump .RefuseFerry
+	sjumpfwd .RefuseFerry
 
 .OnlyVermilion
 	writetext SeagallopFerryShamoutiToVermilionQuestionText

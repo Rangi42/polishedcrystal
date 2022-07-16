@@ -34,11 +34,11 @@ HallOfFameEntranceTrigger:
 	ifequal 16, .CheckGoldTrophy
 	checkevent EVENT_DECO_SILVER_TROPHY
 	iftrue .NoTrophy
-	sjump .SilverTrophy
+	sjumpfwd .SilverTrophy
 .CheckGoldTrophy
 	checkevent EVENT_DECO_GOLD_TROPHY
 	iftrue .NoTrophy
-	sjump .GoldTrophy
+	sjumpfwd .GoldTrophy
 .SilverTrophy
 	writetext .LanceTrophyText
 	waitbutton
@@ -49,7 +49,7 @@ HallOfFameEntranceTrigger:
 	waitbutton
 	writetext .SilverTrophySentText
 	waitbutton
-	sjump .NoTrophy
+	sjumpfwd .NoTrophy
 .GoldTrophy
 	writetext .LanceTrophyText
 	waitbutton

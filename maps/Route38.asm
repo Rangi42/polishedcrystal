@@ -60,7 +60,7 @@ TrainerLassDana1:
 	promptbutton
 	setevent EVENT_DANA_ASKED_FOR_PHONE_NUMBER
 	callstd asknumber1f
-	sjump .AskForPhoneNumber
+	sjumpfwd .AskForPhoneNumber
 
 .SecondTimeAsking:
 	callstd asknumber2f
@@ -168,7 +168,7 @@ TrainerSchoolboyChad1:
 	promptbutton
 	setevent EVENT_CHAD_ASKED_FOR_PHONE_NUMBER
 	callstd asknumber1m
-	sjump .AskToRegisterNumber
+	sjumpfwd .AskToRegisterNumber
 
 .SecondTimeAsking:
 	callstd asknumber2m

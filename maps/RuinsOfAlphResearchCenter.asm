@@ -111,7 +111,7 @@ RuinsOfAlphResearchCenterScientist3Script:
 	follow RUINSOFALPHRESEARCHCENTER_SCIENTIST3, PLAYER
 	applymovement RUINSOFALPHRESEARCHCENTER_SCIENTIST3, RuinsofAlphResearchCenterLeave2MovementData
 	stopfollow
-	sjump .Continue
+	sjumpfwd .Continue
 .GoAround:
 	applymovement RUINSOFALPHRESEARCHCENTER_SCIENTIST3, RuinsofAlphResearchCenterScientistStepAsideMovementData
 	follow RUINSOFALPHRESEARCHCENTER_SCIENTIST3, PLAYER

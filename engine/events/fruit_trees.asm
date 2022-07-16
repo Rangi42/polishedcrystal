@@ -34,7 +34,7 @@ PickBerryScript:
 	promptbutton
 	farwritetext _ObtainedThreeFruitText
 	callasm .ShowBerryIcon
-	sjump .continue
+	sjumpfwd .continue
 .try_two
 	readmem wCurFruit
 	giveitem ITEM_FROM_MEM, 2
@@ -42,7 +42,7 @@ PickBerryScript:
 	promptbutton
 	farwritetext _ObtainedTwoFruitText
 	callasm .ShowBerryIcon
-	sjump .continue
+	sjumpfwd .continue
 .try_one
 	readmem wCurFruit
 	giveitem ITEM_FROM_MEM
@@ -89,7 +89,7 @@ PickApricornScript:
 	promptbutton
 	farwritetext _ObtainedThreeFruitText
 	callasm .ShowApricornIcon
-	sjump .continue
+	sjumpfwd .continue
 .try_two
 	readmem wCurFruit
 	giveapricorn ITEM_FROM_MEM, 2
@@ -97,7 +97,7 @@ PickApricornScript:
 	promptbutton
 	farwritetext _ObtainedTwoFruitText
 	callasm .ShowApricornIcon
-	sjump .continue
+	sjumpfwd .continue
 .try_one
 	readmem wCurFruit
 	giveapricorn ITEM_FROM_MEM

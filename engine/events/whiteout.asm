@@ -1,6 +1,6 @@
 Script_BattleWhiteout::
 	callasm BattleBGMap
-	sjump Script_Whiteout
+	sjumpfwd Script_Whiteout
 
 Script_OverworldWhiteout::
 	refreshscreen
@@ -14,13 +14,13 @@ Script_Whiteout:
 	callasm DetermineWildBattlePanic
 	iffalse .whiteout_wild_text
 	farwritetext WhiteoutToTrainerText
-	sjump .text_done
+	sjumpfwd .text_done
 .forfeit_text
 	farwritetext ForfeitToTrainerText
-	sjump .text_done
+	sjumpfwd .text_done
 .whiteout_wild_text
 	farwritetext WhiteoutToWildText
-	sjump .text_done
+	sjumpfwd .text_done
 .whiteout_text
 	farwritetext WhiteoutText
 .text_done

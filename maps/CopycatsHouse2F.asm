@@ -30,7 +30,7 @@ CopycatsHouse2FCallback:
 	iftrue .Part1
 	disappear COPYCATSHOUSE2F_COPYCAT2
 	appear COPYCATSHOUSE2F_COPYCAT1
-	sjump .Done
+	sjumpfwd .Done
 .Part1:
 	disappear COPYCATSHOUSE2F_COPYCAT1
 	appear COPYCATSHOUSE2F_COPYCAT2
@@ -235,7 +235,7 @@ CopycatFoundLostItemScript:
 	takekeyitem LOST_ITEM
 	setevent EVENT_RETURNED_LOST_ITEM_TO_COPYCAT
 	clearevent EVENT_COPYCATS_HOUSE_2F_DOLL
-	sjump CopycatGivePassScript
+	sjumpfwd CopycatGivePassScript
 
 .FoundDollText:
 	text "Copycat: Yay!"

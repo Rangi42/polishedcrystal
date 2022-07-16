@@ -985,7 +985,7 @@ EscapeRopeOrDig:
 	farwritetext _UseEscapeRopeText
 	waitbutton
 	closetext
-	sjump .UsedDigOrEscapeRopeScript
+	sjumpfwd .UsedDigOrEscapeRopeScript
 
 .UsedDigScript:
 	reloadmappart
@@ -1142,7 +1142,7 @@ AskStrengthScript:
 	callasm TryStrengthOW
 	iffalse .AskStrength
 	ifequal $1, .DontMeetRequirements
-	sjump .AlreadyUsedStrength
+	sjumpfwd .AlreadyUsedStrength
 
 .DontMeetRequirements:
 	farjumptext _BouldersMayMoveText
@@ -1669,7 +1669,7 @@ Script_GotAnItem:
 	callasm Fishing_CheckFacingUp
 	iffalse .NotFacingUp
 	applymovement PLAYER, Movement_HookedItemFacingUp
-	sjump .GetTheHookedItem
+	sjumpfwd .GetTheHookedItem
 .NotFacingUp:
 	applymovement PLAYER, Movement_HookedItemNotFacingUp
 .GetTheHookedItem:
@@ -1686,7 +1686,7 @@ Script_GotABite:
 	callasm Fishing_CheckFacingUp
 	iffalse .NotFacingUp
 	applymovement PLAYER, Movement_BiteFacingUp
-	sjump .FightTheHookedPokemon
+	sjumpfwd .FightTheHookedPokemon
 .NotFacingUp:
 	applymovement PLAYER, Movement_BiteNotFacingUp
 .FightTheHookedPokemon:
@@ -1838,6 +1838,10 @@ BikeFunction:
 	scf
 	ret
 
+Script_GetOnBike_Register:
+	loadvar VAR_MOVEMENT, PLAYER_BIKE
+	sjumpfwd FinishGettingOnBike
+
 Script_GetOnBike:
 	reloadmappart
 	special UpdateTimePals
@@ -1849,9 +1853,9 @@ FinishGettingOnBike:
 	special UpdatePlayerSprite
 	end
 
-Script_GetOnBike_Register:
-	loadvar VAR_MOVEMENT, PLAYER_BIKE
-	sjump FinishGettingOnBike
+Script_GetOffBike_Register:
+	loadvar VAR_MOVEMENT, PLAYER_NORMAL
+	sjumpfwd FinishGettingOffBike
 
 Script_GetOffBike:
 	reloadmappart
@@ -1864,10 +1868,6 @@ FinishGettingOffBike:
 	special UpdatePlayerSprite
 	playmapmusic
 	end
-
-Script_GetOffBike_Register:
-	loadvar VAR_MOVEMENT, PLAYER_NORMAL
-	sjump FinishGettingOffBike
 
 Script_CantGetOffBike:
 	farwritetext _CantGetOffBikeText

@@ -89,7 +89,7 @@ Route10NorthLawrenceEncounter1Script:
 	applymovement PLAYER, Route10NorthMovementData_PanDown
 	applyonemovement PLAYER, show_object
 	disappear ROUTE10_CHRIS
-	sjump .Finish
+	sjumpfwd .Finish
 .FemalePan
 	appear ROUTE10_KRIS
 	applyonemovement PLAYER, hide_object
@@ -140,21 +140,21 @@ Route10NorthLawrenceEncounter2Script:
 	appear ROUTE10_LAWRENCE
 	applymovement ROUTE10_LAWRENCE, Route10NorthMovementData_LawrenceApproach2LeftRight
 	turnobject PLAYER, LEFT
-	sjump .continue
+	sjumpfwd .continue
 .up
 	moveobject ROUTE10_LAWRENCE, 8, 44
 	moveobject ROUTE10_LAWRENCES_ZAPDOS, 12, 44
 	appear ROUTE10_LAWRENCE
 	applymovement ROUTE10_LAWRENCE, Route10NorthMovementData_LawrenceApproach2UpDown
 	turnobject ROUTE10_LAWRENCE, DOWN
-	sjump .continue
+	sjumpfwd .continue
 .down
 	moveobject ROUTE10_LAWRENCE, 8, 44
 	moveobject ROUTE10_LAWRENCES_ZAPDOS, 12, 44
 	appear ROUTE10_LAWRENCE
 	applymovement ROUTE10_LAWRENCE, Route10NorthMovementData_LawrenceApproach2UpDown
 	turnobject ROUTE10_LAWRENCE, UP
-	sjump .continue
+	sjumpfwd .continue
 .left
 	moveobject ROUTE10_LAWRENCE, 9, 44
 	moveobject ROUTE10_LAWRENCES_ZAPDOS, 12, 44

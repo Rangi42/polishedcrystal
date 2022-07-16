@@ -120,7 +120,7 @@ LawrenceIntroScript:
 	ifequal 18, .left
 	applymovement VERMILIONCITY_LAWRENCE, LawrenceWalkAroundRightMovementData
 	turnobject PLAYER, LEFT
-	sjump .continue
+	sjumpfwd .continue
 
 .left
 	applymovement VERMILIONCITY_LAWRENCE, LawrenceWalkAroundLeftMovementData

@@ -34,15 +34,15 @@ CeladonUniversityClassroom1ImakuniScript:
 	ifequal DOWN, .Down
 	ifequal LEFT, .Left
 	turnobject CELADONUNIVERSITYCLASSROOM1_IMAKUNI, RIGHT
-	sjump .Continue
+	sjumpfwd .Continue
 
 .Up:
 	turnobject CELADONUNIVERSITYCLASSROOM1_IMAKUNI, UP
-	sjump .Continue
+	sjumpfwd .Continue
 
 .Down:
 	turnobject CELADONUNIVERSITYCLASSROOM1_IMAKUNI, DOWN
-	sjump .Continue
+	sjumpfwd .Continue
 
 .Left:
 	turnobject CELADONUNIVERSITYCLASSROOM1_IMAKUNI, LEFT

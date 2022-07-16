@@ -118,7 +118,7 @@ GoldenrodGameCornerTMVendor_LoopScript: ; 056c36
 	iffalse_jumpopenedtext GoldenrodGameCornerPrizeVendorQuitText
 	givetmhm TM_FLAMETHROWER
 	takecoins 4000
-	sjump GoldenrodGameCornerTMVendor_FinishScript
+	sjumpfwd GoldenrodGameCornerTMVendor_FinishScript
 
 .thunderbolt:
 	checktmhm TM_THUNDERBOLT
@@ -130,7 +130,7 @@ GoldenrodGameCornerTMVendor_LoopScript: ; 056c36
 	iffalse_jumpopenedtext GoldenrodGameCornerPrizeVendorQuitText
 	givetmhm TM_THUNDERBOLT
 	takecoins 4000
-	sjump GoldenrodGameCornerTMVendor_FinishScript
+	sjumpfwd GoldenrodGameCornerTMVendor_FinishScript
 
 .ice_beam:
 	checktmhm TM_ICE_BEAM
@@ -142,7 +142,7 @@ GoldenrodGameCornerTMVendor_LoopScript: ; 056c36
 	iffalse_jumpopenedtext GoldenrodGameCornerPrizeVendorQuitText
 	givetmhm TM_ICE_BEAM
 	takecoins 4000
-	sjump GoldenrodGameCornerTMVendor_FinishScript
+	sjumpfwd GoldenrodGameCornerTMVendor_FinishScript
 
 GoldenrodGameCornerPrizeVendor_ConfirmPurchaseScript:
 	writetext GoldenrodGameCornerPrizeVendorConfirmPrizeText

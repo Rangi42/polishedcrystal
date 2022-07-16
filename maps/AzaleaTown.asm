@@ -85,7 +85,7 @@ AzaleaTownRivalBattleTrigger2:
 	startbattle
 	dontrestartmapmusic
 	reloadmapafterbattle
-	sjump .AfterBattle
+	sjumpfwd .AfterBattle
 
 .Totodile:
 	winlosstext .WinText, .LossText
@@ -94,7 +94,7 @@ AzaleaTownRivalBattleTrigger2:
 	startbattle
 	dontrestartmapmusic
 	reloadmapafterbattle
-	sjump .AfterBattle
+	sjumpfwd .AfterBattle
 
 .Chikorita:
 	winlosstext .WinText, .LossText

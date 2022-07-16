@@ -56,18 +56,18 @@ FuchsiaGymJanineScript:
 	ifequal 9, .FirstBadge
 	ifequal 10, .SecondBadge
 	ifequal 12, .LyrasEgg
-	sjump UnknownScript_0x195e02
+	sjumpfwd UnknownScript_0x195e02
 .FirstBadge:
 	specialphonecall SPECIALCALL_FIRSTBADGE
-	sjump UnknownScript_0x195e02
+	sjumpfwd UnknownScript_0x195e02
 .SecondBadge:
 	checkevent EVENT_GOT_GS_BALL_FROM_POKECOM_CENTER
 	iftrue UnknownScript_0x195e02
 	specialphonecall SPECIALCALL_SECONDBADGE
-	sjump UnknownScript_0x195e02
+	sjumpfwd UnknownScript_0x195e02
 .LyrasEgg:
 	specialphonecall SPECIALCALL_LYRASEGG
-	sjump UnknownScript_0x195e02
+	sjumpfwd UnknownScript_0x195e02
 .FightDone:
 	faceplayer
 	opentext

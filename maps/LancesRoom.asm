@@ -64,7 +64,7 @@ LancesRoomDoorCallback:
 ApproachLanceFromLeftTrigger:
 	special Special_FadeOutMusic
 	applymovement PLAYER, ApproachLanceFromLeftMovement
-	sjump LanceScript
+	sjumpfwd LanceScript
 
 ApproachLanceFromRightTrigger:
 	special Special_FadeOutMusic
@@ -81,7 +81,7 @@ LanceScript:
 	dontrestartmapmusic
 	reloadmapafterbattle
 	showtext .AfterText
-	sjump .EndBattle
+	sjumpfwd .EndBattle
 
 .Rematch:
 	showtext .SeenRematchText
@@ -120,7 +120,7 @@ LanceScript:
 	checkevent EVENT_OPENED_MT_SILVER
 	iffalse .DefaultOakSpeech
 	showtext .OakRematchSpeechText
-	sjump .OakSpeechDone
+	sjumpfwd .OakSpeechDone
 .DefaultOakSpeech
 	showtext .OakSpeechText
 .OakSpeechDone

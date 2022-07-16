@@ -34,19 +34,19 @@ BattleTowerHallwayFollowReceptionist:
 	ifequal 2, .Room3
 	ifequal 3, .Room4
 	applymovement BATTLETOWERHALLWAY_RECEPTIONIST, MovementData_BattleTowerHallwayWalkTo1020Room
-	sjump .EnterBattleRoom
+	sjumpfwd .EnterBattleRoom
 
 .Room1:
 	applymovement BATTLETOWERHALLWAY_RECEPTIONIST, MovementData_BattleTowerHallwayWalkTo3040Room
-	sjump .EnterBattleRoom
+	sjumpfwd .EnterBattleRoom
 
 .Room2:
 	applymovement BATTLETOWERHALLWAY_RECEPTIONIST, MovementData_BattleTowerHallwayWalkTo5060Room
-	sjump .EnterBattleRoom
+	sjumpfwd .EnterBattleRoom
 
 .Room3:
 	applymovement BATTLETOWERHALLWAY_RECEPTIONIST, MovementData_BattleTowerHallwayWalkTo7080Room
-	sjump .EnterBattleRoom
+	sjumpfwd .EnterBattleRoom
 
 .Room4:
 	applymovement BATTLETOWERHALLWAY_RECEPTIONIST, MovementData_BattleTowerHallwayWalkTo90100Room

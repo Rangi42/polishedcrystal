@@ -63,7 +63,7 @@ FlowerShopTeacherScript:
 	giveitem MULCH
 	iffalse_jumpopenedtext NoRoomForMulchText
 	takemoney $0, 200
-	sjump .Done
+	sjumpfwd .Done
 
 .Buy10:
 	checkmoney $0, 2000

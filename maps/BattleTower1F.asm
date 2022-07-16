@@ -76,7 +76,7 @@ BattleTower1FContinueChallenge:
 		line "invalid."
 		done
 	waitbutton
-	sjump Script_CommitBattleTowerResult
+	sjumpfwd Script_CommitBattleTowerResult
 
 .LostChallenge:
 	opentext

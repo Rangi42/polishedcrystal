@@ -166,7 +166,7 @@ TrainerSchoolboyAlan1:
 	promptbutton
 	setevent EVENT_ALAN_ASKED_FOR_PHONE_NUMBER
 	callstd asknumber1m
-	sjump .ContinueAskForPhoneNumber
+	sjumpfwd .ContinueAskForPhoneNumber
 
 .AskAgainForPhoneNumber:
 	callstd asknumber2m

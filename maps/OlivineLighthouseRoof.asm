@@ -27,7 +27,7 @@ OlivineLighthouseRoofSkylaScript:
 	checkevent EVENT_BEAT_SKYLA
 	iffalse .NotYetBattled
 	writetext .RematchText
-	sjump .Battle
+	sjumpfwd .Battle
 .NotYetBattled
 	checkevent EVENT_INTRODUCED_SKYLA
 	iftrue .Introduced1
@@ -49,10 +49,10 @@ OlivineLighthouseRoofSkylaScript:
 	checkevent EVENT_BEAT_ELITE_FOUR
 	iftrue .Rematch1
 	loadtrainer SKYLA, 1
-	sjump .StartBattle
+	sjumpfwd .StartBattle
 .Rematch1
 	loadtrainer SKYLA, 2
-	sjump .StartBattle
+	sjumpfwd .StartBattle
 .Rematch2
 	loadtrainer SKYLA, 3
 .StartBattle

@@ -22,7 +22,7 @@ TinTowerRoofHoOh:
 	iftrue .NoAppear
 	checkkeyitem RAINBOW_WING
 	iftrue .Appear
-	sjump .NoAppear
+	sjumpfwd .NoAppear
 
 .Appear:
 	appear TINTOWERROOF_HO_OH

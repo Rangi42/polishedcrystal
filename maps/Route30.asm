@@ -73,7 +73,7 @@ TrainerYoungsterJoey:
 	promptbutton
 	setevent EVENT_JOEY_ASKED_FOR_PHONE_NUMBER
 	callstd asknumber1m
-	sjump .RequestNumber
+	sjumpfwd .RequestNumber
 
 .AskAgain:
 	callstd asknumber2m

@@ -63,12 +63,12 @@ Leaf:
 	turnobject PLAYER, UP
 	moveobject NAVELROCKROOF_CHRIS, 7, 8
 	appear NAVELROCKROOF_CHRIS
-	sjump .EndingSequence
+	sjumpfwd .EndingSequence
 
 .RightMaleEndingSequence:
 	applyonemovement PLAYER, slow_step_up
 	appear NAVELROCKROOF_CHRIS
-	sjump .EndingSequence
+	sjumpfwd .EndingSequence
 
 .FemaleEndingSequence:
 	readvar VAR_FACING
@@ -76,7 +76,7 @@ Leaf:
 	turnobject PLAYER, UP
 	moveobject NAVELROCKROOF_KRIS, 7, 8
 	appear NAVELROCKROOF_KRIS
-	sjump .EndingSequence
+	sjumpfwd .EndingSequence
 
 .RightFemaleEndingSequence:
 	applyonemovement PLAYER, slow_step_up

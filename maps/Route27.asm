@@ -37,7 +37,7 @@ FirstStepIntoKantoLeftScene:
 	turnobject ROUTE27_FISHER, LEFT
 	showemote EMOTE_SHOCK, ROUTE27_FISHER, 15
 	applymovement ROUTE27_FISHER, Route27FisherStepLeftTwiceMovement
-	sjump FirstStepIntoKantoScene_Continue
+	sjumpfwd FirstStepIntoKantoScene_Continue
 
 FirstStepIntoKantoRightScene:
 	turnobject ROUTE27_FISHER, LEFT
@@ -204,7 +204,7 @@ Bird_keeperJose1Script:
 	promptbutton
 	setevent EVENT_JOSE_ASKED_FOR_PHONE_NUMBER
 	scall UnknownScript_0x1a0957
-	sjump UnknownScript_0x1a08eb
+	sjumpfwd UnknownScript_0x1a08eb
 
 UnknownScript_0x1a08e8:
 	scall UnknownScript_0x1a095b
@@ -214,7 +214,7 @@ UnknownScript_0x1a08eb:
 	ifequal $2, UnknownScript_0x1a0967
 	gettrainername BIRD_KEEPER, JOSE1, $0
 	scall UnknownScript_0x1a095f
-	sjump UnknownScript_0x1a0963
+	sjumpfwd UnknownScript_0x1a0963
 
 UnknownScript_0x1a08ff:
 	scall UnknownScript_0x1a096f
@@ -257,10 +257,10 @@ UnknownScript_0x1a0945:
 	verbosegiveitem STAR_PIECE
 	iffalse UnknownScript_0x1a0954
 	clearflag ENGINE_JOSE_HAS_STAR_PIECE
-	sjump UnknownScript_0x1a0963
+	sjumpfwd UnknownScript_0x1a0963
 
 UnknownScript_0x1a0954:
-	sjump UnknownScript_0x1a0977
+	sjumpfwd UnknownScript_0x1a0977
 
 UnknownScript_0x1a0957:
 	jumpstd asknumber1m
@@ -339,7 +339,7 @@ CooltrainerfReena1Script:
 	promptbutton
 	setevent EVENT_REENA_ASKED_FOR_PHONE_NUMBER
 	scall UnknownScript_0x1a0a2f
-	sjump UnknownScript_0x1a09d5
+	sjumpfwd UnknownScript_0x1a09d5
 
 UnknownScript_0x1a09d2:
 	scall UnknownScript_0x1a0a33
@@ -349,7 +349,7 @@ UnknownScript_0x1a09d5:
 	ifequal $2, UnknownScript_0x1a0a3f
 	gettrainername COOLTRAINERF, REENA1, $0
 	scall UnknownScript_0x1a0a37
-	sjump UnknownScript_0x1a0a3b
+	sjumpfwd UnknownScript_0x1a0a3b
 
 UnknownScript_0x1a09e9:
 	scall UnknownScript_0x1a0a47

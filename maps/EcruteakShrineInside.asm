@@ -34,7 +34,7 @@ EcruteakShrineInsideReiScript:
 	closewindow
 	ifequal $1, .ReiBless
 	ifequal $2, .ReiBattle
-	sjump .ReiCancel
+	sjumpfwd .ReiCancel
 
 .ReiBless
 	writetext EcruteakShrineInsideReiBlessText
@@ -48,7 +48,7 @@ EcruteakShrineInsideReiScript:
 	waitbutton
 	writetext EcruteakShrineInsideHappinessText
 	waitbutton
-	sjump .ReiDone
+	sjumpfwd .ReiDone
 
 .ReiBattle
 	writetext EcruteakShrineInsideReiBattleText
@@ -64,13 +64,13 @@ EcruteakShrineInsideReiScript:
 	loadtrainer REI, 1
 	startbattle
 	reloadmapafterbattle
-	sjump .AfterRematch
+	sjumpfwd .AfterRematch
 
 .Battle2:
 	loadtrainer REI, 2
 	startbattle
 	reloadmapafterbattle
-	sjump .AfterRematch
+	sjumpfwd .AfterRematch
 
 .Battle3:
 	loadtrainer REI, 3

@@ -51,7 +51,7 @@ Route34EggCheckCallback:
 	iftrue .PutDayCareManOutside
 	clearevent EVENT_DAYCARE_MAN_IN_DAYCARE
 	setevent EVENT_DAYCARE_MAN_ON_ROUTE_34
-	sjump .CheckMon1
+	sjumpfwd .CheckMon1
 
 .PutDayCareManOutside:
 	setevent EVENT_DAYCARE_MAN_IN_DAYCARE
@@ -62,7 +62,7 @@ Route34EggCheckCallback:
 	checkflag ENGINE_DAY_CARE_MAN_HAS_MON
 	iffalse .HideMon1
 	clearevent EVENT_DAYCARE_MON_1
-	sjump .CheckMon2
+	sjumpfwd .CheckMon2
 
 .HideMon1:
 	setevent EVENT_DAYCARE_MON_1
@@ -80,7 +80,7 @@ Route34EggCheckCallback:
 
 Route34LyraTrigger1:
 	applyonemovement PLAYER, step_right
-	sjump Route34LyraTrigger2
+	sjumpfwd Route34LyraTrigger2
 
 Route34LyraTrigger3:
 	applyonemovement PLAYER, step_left
@@ -106,7 +106,7 @@ Route34LyraTrigger2:
 	checkflag ENGINE_PLAYER_IS_FEMALE
 	iftrue .IntroduceFemale
 	writetext Route34LyraIntroductionText1
-	sjump .Continue
+	sjumpfwd .Continue
 .IntroduceFemale:
 	writetext Route34LyraIntroductionText2
 .Continue:
@@ -128,7 +128,7 @@ Route34LyraTrigger2:
 	reloadmapafterbattle
 	special DeleteSavedMusic
 	playmusic MUSIC_LYRA_DEPARTURE_HGSS
-	sjump .AfterBattle
+	sjumpfwd .AfterBattle
 
 .Totodile:
 	winlosstext Route34LyraWinText, Route34LyraLossText
@@ -138,7 +138,7 @@ Route34LyraTrigger2:
 	dontrestartmapmusic
 	reloadmapafterbattle
 	playmusic MUSIC_LYRA_DEPARTURE_HGSS
-	sjump .AfterBattle
+	sjumpfwd .AfterBattle
 
 .Chikorita:
 	winlosstext Route34LyraWinText, Route34LyraLossText
@@ -218,7 +218,7 @@ TrainerCamperTodd1:
 	promptbutton
 	setevent EVENT_TODD_ASKED_FOR_PHONE_NUMBER
 	callstd asknumber1m
-	sjump .FinishAsk
+	sjumpfwd .FinishAsk
 
 .AskAgain:
 	callstd asknumber2m
@@ -317,7 +317,7 @@ TrainerPicnickerGina1:
 	promptbutton
 	setevent EVENT_GINA_ASKED_FOR_PHONE_NUMBER
 	callstd asknumber1f
-	sjump .FinishAsk
+	sjumpfwd .FinishAsk
 
 .AskAgain:
 	callstd asknumber2f

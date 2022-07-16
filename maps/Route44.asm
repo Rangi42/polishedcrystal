@@ -154,7 +154,7 @@ Bird_keeperVance1Script:
 	promptbutton
 	setevent EVENT_VANCE_ASKED_FOR_PHONE_NUMBER
 	scall Route44AskNumber1M
-	sjump .AskForNumber
+	sjumpfwd .AskForNumber
 
 .AskedAlready:
 	scall Route44AskNumber2M
@@ -164,7 +164,7 @@ Bird_keeperVance1Script:
 	ifequal $2, Route44NumberDeclinedM
 	gettrainername BIRD_KEEPER, VANCE1, $0
 	scall Route44RegisteredNumberM
-	sjump Route44NumberAcceptedM
+	sjumpfwd Route44NumberAcceptedM
 
 .WantsBattle:
 	scall Route44RematchM
@@ -208,7 +208,7 @@ Bird_keeperVance1Script:
 	verbosegiveitem CARBOS
 	iffalse VancePackFull
 	setevent EVENT_GOT_CARBOS_FROM_VANCE
-	sjump Route44NumberAcceptedM
+	sjumpfwd Route44NumberAcceptedM
 
 .ReceivedCarbosBefore:
 	end
@@ -221,7 +221,7 @@ Bird_keeperVance1Script:
 	iffalse VancePackFull
 	clearevent EVENT_VANCE_CARBOS
 	setevent EVENT_GOT_CARBOS_FROM_VANCE
-	sjump Route44NumberAcceptedM
+	sjumpfwd Route44NumberAcceptedM
 
 Route44AskNumber1M:
 	jumpstd asknumber1m
@@ -283,14 +283,14 @@ FisherWilton1Script:
 	checkunits
 	iftrue .metric
 	writetext FisherWiltonHugePoliwagText_Imperial
-	sjump .ok
+	sjumpfwd .ok
 .metric
 	writetext FisherWiltonHugePoliwagText_Metric
 .ok
 	promptbutton
 	setevent EVENT_WILTON_ASKED_FOR_PHONE_NUMBER
 	scall Route44AskNumber1M
-	sjump .AskForNumber
+	sjumpfwd .AskForNumber
 
 .AskedAlready:
 	scall Route44AskNumber2M
@@ -349,12 +349,12 @@ FisherWilton1Script:
 .UltraBall:
 	verbosegiveitem ULTRA_BALL
 	iffalse .Route44PackFullM
-	sjump .ItemReceived
+	sjumpfwd .ItemReceived
 
 .GreatBall:
 	verbosegiveitem GREAT_BALL
 	iffalse .Route44PackFullM
-	sjump .ItemReceived
+	sjumpfwd .ItemReceived
 
 .PokeBall:
 	verbosegiveitem POKE_BALL

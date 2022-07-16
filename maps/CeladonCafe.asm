@@ -45,7 +45,7 @@ MayleneScript:
 	checkevent EVENT_BEAT_ELITE_FOUR_AGAIN
 	iftrue .Rematch
 	loadtrainer MAYLENE, 1
-	sjump .StartBattle
+	sjumpfwd .StartBattle
 .Rematch
 	loadtrainer MAYLENE, 2
 .StartBattle

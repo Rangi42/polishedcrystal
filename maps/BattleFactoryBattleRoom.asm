@@ -50,7 +50,7 @@ Script_BattleFloor:
 Script_LostBattleFactory:
 	setval BATTLETOWER_LOST_CHALLENGE
 	special Special_BattleTower_SetChallengeState
-	sjump Script_ReturnToBattleFactoryLobby
+	sjumpfwd Script_ReturnToBattleFactoryLobby
 
 Script_BeatenAllFactoryTrainers:
 	special FadeOutPalettes

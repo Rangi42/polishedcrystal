@@ -43,7 +43,7 @@ SeafoamIslandsB4FLawrenceEncounterScript:
 	appear SEAFOAMISLANDSB4F_LAWRENCE
 	applymovement SEAFOAMISLANDSB4F_LAWRENCE, SeafoamIslandsB4FMovementData_LawrenceApproach
 	turnobject PLAYER, DOWN
-	sjump .continue
+	sjumpfwd .continue
 .up
 	moveobject SEAFOAMISLANDSB4F_LAWRENCE_SURF, 17, 16
 	appear SEAFOAMISLANDSB4F_LAWRENCE_SURF
@@ -54,7 +54,7 @@ SeafoamIslandsB4FLawrenceEncounterScript:
 	applymovement SEAFOAMISLANDSB4F_LAWRENCE, SeafoamIslandsB4FMovementData_LawrenceApproach
 	turnobject SEAFOAMISLANDSB4F_LAWRENCE, RIGHT
 	turnobject PLAYER, LEFT
-	sjump .continue
+	sjumpfwd .continue
 .down
 	moveobject SEAFOAMISLANDSB4F_LAWRENCE_SURF, 17, 16
 	appear SEAFOAMISLANDSB4F_LAWRENCE_SURF
@@ -66,7 +66,7 @@ SeafoamIslandsB4FLawrenceEncounterScript:
 	applymovement SEAFOAMISLANDSB4F_LAWRENCE, SeafoamIslandsB4FMovementData_LawrenceContinueDown
 	turnobject SEAFOAMISLANDSB4F_LAWRENCE, RIGHT
 	turnobject PLAYER, LEFT
-	sjump .continue
+	sjumpfwd .continue
 .left
 	moveobject SEAFOAMISLANDSB4F_LAWRENCE_SURF, 18, 16
 	appear SEAFOAMISLANDSB4F_LAWRENCE_SURF

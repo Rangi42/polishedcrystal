@@ -229,19 +229,19 @@ OlderHaircutBrotherScript:
 	setflag ENGINE_GOLDENROD_UNDERGROUND_GOT_HAIRCUT
 	ifequal $2, .two
 	ifequal $3, .three
-	sjump .else
+	sjumpfwd .else
 
 .two
 	setevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_1
 	clearevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_2
 	clearevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_3
-	sjump .then
+	sjumpfwd .then
 
 .three
 	clearevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_1
 	setevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_2
 	clearevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_3
-	sjump .then
+	sjumpfwd .then
 
 .else
 	clearevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_1
@@ -268,7 +268,7 @@ OlderHaircutBrotherScript:
 	iftrue EitherHaircutBrotherScript_SlightlyHappier
 	checkevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_2
 	iftrue EitherHaircutBrotherScript_Happier
-	sjump EitherHaircutBrotherScript_MuchHappier
+	sjumpfwd EitherHaircutBrotherScript_MuchHappier
 
 .Refused:
 	jumpopenedtext GoldenrodUndergroundOlderHaircutBrotherThatsAShameText
@@ -304,19 +304,19 @@ YoungerHaircutBrotherScript:
 	setflag ENGINE_GOLDENROD_UNDERGROUND_GOT_HAIRCUT
 	ifequal $2, .two
 	ifequal $3, .three
-	sjump .else
+	sjumpfwd .else
 
 .two
 	setevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_1
 	clearevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_2
 	clearevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_3
-	sjump .then
+	sjumpfwd .then
 
 .three
 	clearevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_1
 	setevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_2
 	clearevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_3
-	sjump .then
+	sjumpfwd .then
 
 .else
 	clearevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_1
@@ -341,7 +341,7 @@ YoungerHaircutBrotherScript:
 	iftrue EitherHaircutBrotherScript_SlightlyHappier
 	checkevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_2
 	iftrue EitherHaircutBrotherScript_Happier
-	sjump EitherHaircutBrotherScript_MuchHappier
+	sjumpfwd EitherHaircutBrotherScript_MuchHappier
 
 .Refused:
 	jumpopenedtext GoldenrodUndergroundYoungerHaircutBrotherHowDisappointingText

@@ -45,7 +45,7 @@ TrainerHikerAnthony:
 	promptbutton
 	setevent EVENT_ANTHONY_ASKED_FOR_PHONE_NUMBER
 	callstd asknumber1m
-	sjump .AskForPhoneNumber
+	sjumpfwd .AskForPhoneNumber
 
 .AskAgain:
 	callstd asknumber2m

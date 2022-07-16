@@ -70,7 +70,7 @@ BattleFactory1FContinueChallenge:
 		line "invalid."
 		done
 	waitbutton
-	sjump Script_CommitBattleFactoryResult
+	sjumpfwd Script_CommitBattleFactoryResult
 
 .LostChallenge:
 	opentext

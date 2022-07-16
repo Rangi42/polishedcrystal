@@ -23,6 +23,7 @@ ENDM
 MACRO sjump
 	db sjump_command
 	dw \1 ; pointer
+	assert warn, \1 - @ > 255 || \1 - @ < 0, "sjump can be sjumpfwd"
 ENDM
 
 	const farsjump_command
@@ -1335,6 +1336,13 @@ ENDM
 MACRO checkbp
 	db checkbp_command
 	dw \1 ; bp
+ENDM
+
+	const sjumpfwd_command
+MACRO sjumpfwd
+	assert \1 > @, "sjumpfwd cannot jump backward"
+	db sjumpfwd_command
+	db \1 - @ - 1 ; distance
 ENDM
 
 DEF NUM_EVENT_COMMANDS EQU const_value

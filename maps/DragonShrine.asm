@@ -189,7 +189,7 @@ DragonShrineElder1Script:
 	checkevent EVENT_ANSWERED_DRAGON_MASTER_QUIZ_WRONG
 	iftrue .NoExtremeSpeed
 	givepoke DRATINI, PLAIN_FORM, 15, SITRUS_BERRY, ULTRA_BALL, EXTREMESPEED
-	sjump .FinishElderScript
+	sjumpfwd .FinishElderScript
 .NoExtremeSpeed
 	givepoke DRATINI, PLAIN_FORM, 15, SITRUS_BERRY, ULTRA_BALL
 .FinishElderScript

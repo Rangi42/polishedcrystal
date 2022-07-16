@@ -36,7 +36,7 @@ FuchsiaSafariBallHouseOfficerScript:
 	giveitem SAFARI_BALL
 	iffalse_jumpopenedtext .BagFullText
 	takemoney $0, 2000
-	sjump .Done
+	sjumpfwd .Done
 
 .Buy10:
 	checkmoney $0, 20000

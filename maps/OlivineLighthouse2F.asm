@@ -42,7 +42,7 @@ SailorHuey1Script:
 	iftrue UnknownScript_0x5afb0
 	setevent EVENT_HUEY_ASKED_FOR_PHONE_NUMBER
 	scall UnknownScript_0x5b053
-	sjump UnknownScript_0x5afb3
+	sjumpfwd UnknownScript_0x5afb3
 
 UnknownScript_0x5afb0:
 	scall UnknownScript_0x5b057
@@ -52,7 +52,7 @@ UnknownScript_0x5afb3:
 	ifequal $2, UnknownScript_0x5b063
 	gettrainername SAILOR, HUEY1, $0
 	scall UnknownScript_0x5b05b
-	sjump UnknownScript_0x5b05f
+	sjumpfwd UnknownScript_0x5b05f
 
 UnknownScript_0x5afc7:
 	scall UnknownScript_0x5b06b
@@ -108,7 +108,7 @@ UnknownScript_0x5afc7:
 	verbosegiveitem PROTEIN
 	iffalse UnknownScript_0x5b06f
 	setevent EVENT_GOT_PROTEIN_FROM_HUEY
-	sjump UnknownScript_0x5b05f
+	sjumpfwd UnknownScript_0x5b05f
 
 UnknownScript_0x5b03e:
 	end
@@ -121,7 +121,7 @@ UnknownScript_0x5b03f:
 	iffalse UnknownScript_0x5b06f
 	clearevent EVENT_HUEY_PROTEIN
 	setevent EVENT_GOT_PROTEIN_FROM_HUEY
-	sjump UnknownScript_0x5b05f
+	sjumpfwd UnknownScript_0x5b05f
 
 UnknownScript_0x5b053:
 	jumpstd asknumber1m

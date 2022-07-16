@@ -138,13 +138,13 @@ BellchimeTrailValerieScript:
 	loadtrainer VALERIE, 1
 	startbattle
 	reloadmapafterbattle
-	sjump .AfterRematch
+	sjumpfwd .AfterRematch
 
 .Battle2:
 	loadtrainer VALERIE, 2
 	startbattle
 	reloadmapafterbattle
-	sjump .AfterRematch
+	sjumpfwd .AfterRematch
 
 .Battle3:
 	loadtrainer VALERIE, 3

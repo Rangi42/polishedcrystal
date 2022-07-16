@@ -64,7 +64,7 @@ BattleFactoryHallwayFollowReceptionist:
 		text_decimal wStringBuffer3, 2, 5
 		text ". Ready?"
 		done
-	sjump .ShownText
+	sjumpfwd .ShownText
 .WarnAboutHead:
 	writethistext
 		text "Congratulations"
@@ -86,7 +86,7 @@ BattleFactoryHallwayFollowReceptionist:
 	iffalse .DontBattleNextOpponent
 	closetext
 	special Special_BattleTower_GenerateNextOpponent
-	sjump .NextRentalBattle
+	sjumpfwd .NextRentalBattle
 
 .DontBattleNextOpponent:
 	writethistext
@@ -113,7 +113,7 @@ BattleFactoryHallwayFollowReceptionist:
 	yesorno
 	iffalse .AskNextBattle
 	special FadeOutPalettes
-	sjump Script_LostBattleFactory
+	sjumpfwd Script_LostBattleFactory
 
 .StepIntoRoom:
 	; First, step into the room properly, don't just linger at the entrance.
@@ -147,7 +147,7 @@ BattleFactoryHallwayFollowReceptionist:
 
 	; Player aborted the run.
 	special FadeOutPalettes
-	sjump Script_LostBattleFactory
+	sjumpfwd Script_LostBattleFactory
 
 .Continue:
 	faceobject PLAYER, BATTLEFACTORYHALLWAY_RECEPTIONIST

@@ -58,15 +58,15 @@ CinnabarVolcano1FBouldersFall:
 
 .Disappear1:
 	disappear CINNABARVOLCANO1F_BOULDER1
-	sjump .Fall
+	sjumpfwd .Fall
 
 .Disappear2:
 	disappear CINNABARVOLCANO1F_BOULDER2
-	sjump .Fall
+	sjumpfwd .Fall
 
 .Disappear3:
 	disappear CINNABARVOLCANO1F_BOULDER3
-	sjump .Fall
+	sjumpfwd .Fall
 
 .Disappear4:
 	disappear CINNABARVOLCANO1F_BOULDER4

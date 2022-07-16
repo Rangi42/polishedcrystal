@@ -101,7 +101,7 @@ CeladonGameCornerFisherScript:
 	opentext
 .GotCoins:
 	writetext CeladonGameCornerFisherText2
-	sjump .FisherEnd
+	sjumpfwd .FisherEnd
 .FisherNotEnough:
 	writetext FisherNotEnoughText
 .FisherEnd:

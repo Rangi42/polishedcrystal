@@ -52,7 +52,7 @@ CeladonPrizeRoom_tmcounterloop:
 	iffalse_jumpopenedtext CeladonPrizeRoom_ComeAgainText
 	givetmhm TM_DOUBLE_TEAM
 	takecoins CELADONGAMECORNERPRIZEROOM_TM32_COINS
-	sjump CeladonPrizeRoom_purchased
+	sjumpfwd CeladonPrizeRoom_purchased
 
 .toxic
 	checktmhm TM_TOXIC
@@ -64,7 +64,7 @@ CeladonPrizeRoom_tmcounterloop:
 	iffalse_jumpopenedtext CeladonPrizeRoom_ComeAgainText
 	givetmhm TM_TOXIC
 	takecoins CELADONGAMECORNERPRIZEROOM_TM06_COINS
-	sjump CeladonPrizeRoom_purchased
+	sjumpfwd CeladonPrizeRoom_purchased
 
 .gigaimpact
 	checktmhm TM_GIGA_IMPACT
@@ -76,7 +76,7 @@ CeladonPrizeRoom_tmcounterloop:
 	iffalse_jumpopenedtext CeladonPrizeRoom_ComeAgainText
 	givetmhm TM_GIGA_IMPACT
 	takecoins CELADONGAMECORNERPRIZEROOM_TM68_COINS
-	sjump CeladonPrizeRoom_purchased
+	sjumpfwd CeladonPrizeRoom_purchased
 
 CeladonPrizeRoom_askbuy:
 	writetext CeladonPrizeRoom_ConfirmPurchaseText

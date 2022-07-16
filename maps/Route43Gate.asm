@@ -49,12 +49,12 @@ RocketScript_Southbound:
 	promptbutton
 	checkmoney $0, ROUTE43GATE_TOLL - 1
 	ifequal $0, RocketScript_TollSouth
-	sjump RocketScript_YoureBrokeSouth
+	sjumpfwd RocketScript_YoureBrokeSouth
 
 RocketScript_TollSouth:
 	takemoney $0, ROUTE43GATE_TOLL
 	writetext RocketText_ThankYou
-	sjump RocketScript_ShakeDownSouth
+	sjumpfwd RocketScript_ShakeDownSouth
 
 RocketScript_YoureBrokeSouth:
 	takemoney $0, ROUTE43GATE_TOLL
@@ -81,12 +81,12 @@ RocketScript_Northbound:
 	promptbutton
 	checkmoney $0, ROUTE43GATE_TOLL - 1
 	ifequal $0, RocketScript_TollNorth
-	sjump RocketScript_YoureBrokeNorth
+	sjumpfwd RocketScript_YoureBrokeNorth
 
 RocketScript_TollNorth:
 	takemoney $0, ROUTE43GATE_TOLL
 	writetext RocketText_ThankYou
-	sjump RocketScript_ShakeDownNorth
+	sjumpfwd RocketScript_ShakeDownNorth
 
 RocketScript_YoureBrokeNorth:
 	takemoney $0, ROUTE43GATE_TOLL

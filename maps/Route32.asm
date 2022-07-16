@@ -280,7 +280,7 @@ Route32LyraIntroducesHiddenGrottoesMainScript:
 	checkegg
 	iftrue .HaveEgg
 	writetext .NoEggText
-	sjump .Continue
+	sjumpfwd .Continue
 .HaveEgg
 	writetext .HaveEggText
 .Continue
@@ -410,7 +410,7 @@ Route32LyraIntroducesHiddenGrottoesOutroScript:
 Route32WannaBuyASlowpokeTailScript:
 	turnobject ROUTE32_FISHER4, DOWN
 	turnobject PLAYER, UP
-	sjump _OfferToSellSlowpokeTail
+	sjumpfwd _OfferToSellSlowpokeTail
 
 SlowpokeTailSalesmanScript:
 	faceplayer
@@ -473,7 +473,7 @@ TrainerFisherRalph1:
 	promptbutton
 	setevent EVENT_RALPH_ASKED_FOR_PHONE_NUMBER
 	callstd asknumber1m
-	sjump .AskForNumber
+	sjumpfwd .AskForNumber
 
 .AskAgain:
 	callstd asknumber2m
@@ -583,7 +583,7 @@ TrainerPicnickerLiz1:
 	promptbutton
 	setevent EVENT_LIZ_ASKED_FOR_PHONE_NUMBER
 	callstd asknumber1f
-	sjump .AskForNumber
+	sjumpfwd .AskForNumber
 
 .AskAgain:
 	callstd asknumber2f

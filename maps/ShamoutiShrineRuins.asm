@@ -47,13 +47,13 @@ ShamoutiShrineRuinsLawrenceScript:
 	ifequal LEFT, .left
 .right
 	turnobject SHAMOUTISHRINERUINS_LAWRENCE, RIGHT
-	sjump .continue
+	sjumpfwd .continue
 .up
 	turnobject SHAMOUTISHRINERUINS_LAWRENCE, UP
-	sjump .continue
+	sjumpfwd .continue
 .down
 	turnobject SHAMOUTISHRINERUINS_LAWRENCE, DOWN
-	sjump .continue
+	sjumpfwd .continue
 .left
 	turnobject SHAMOUTISHRINERUINS_LAWRENCE, LEFT
 .continue

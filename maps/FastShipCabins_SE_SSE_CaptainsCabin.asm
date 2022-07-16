@@ -58,7 +58,7 @@ SSAquaGranddaughterBefore:
 	checkflag ENGINE_PLAYER_IS_FEMALE
 	iftrue UnknownScript_0x75f03
 	showtext SSAquaGranddaughterWasPlayingMText
-	sjump UnknownScript_0x75f09
+	sjumpfwd UnknownScript_0x75f09
 
 UnknownScript_0x75f03:
 	showtext SSAquaGranddaughterWasPlayingFText
@@ -70,7 +70,7 @@ UnknownScript_0x75f09:
 	promptbutton
 	setevent EVENT_VERMILION_PORT_SAILOR_AT_GANGWAY
 	setmapscene FAST_SHIP_1F, $0
-	sjump SSAquaMetalCoatAndDocking
+	sjumpfwd SSAquaMetalCoatAndDocking
 
 SSAquaGrandpa:
 	checkevent EVENT_GOT_MACHO_BRACE_FROM_GRANDPA_ON_SS_AQUA

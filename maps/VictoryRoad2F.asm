@@ -47,7 +47,7 @@ VictoryRoadRivalLeft:
 	startbattle
 	dontrestartmapmusic
 	reloadmapafterbattle
-	sjump UnknownScript_0x7451f
+	sjumpfwd UnknownScript_0x7451f
 
 UnknownScript_0x744ff:
 	winlosstext VictoryRoadRivalDefeatText, VictoryRoadRivalVictoryText
@@ -56,7 +56,7 @@ UnknownScript_0x744ff:
 	startbattle
 	dontrestartmapmusic
 	reloadmapafterbattle
-	sjump UnknownScript_0x7451f
+	sjumpfwd UnknownScript_0x7451f
 
 UnknownScript_0x7450f:
 	winlosstext VictoryRoadRivalDefeatText, VictoryRoadRivalVictoryText

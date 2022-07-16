@@ -64,7 +64,7 @@ UnknownScript_0x185050:
 	special SpecialMonCheck
 	iftrue UnknownScript_0x185065
 	appear TINTOWER1F_RAIKOU
-	sjump UnknownScript_0x185067
+	sjumpfwd UnknownScript_0x185067
 
 UnknownScript_0x185065:
 	disappear TINTOWER1F_RAIKOU
@@ -73,7 +73,7 @@ UnknownScript_0x185067:
 	special SpecialMonCheck
 	iftrue UnknownScript_0x185074
 	appear TINTOWER1F_ENTEI
-	sjump UnknownScript_0x185076
+	sjumpfwd UnknownScript_0x185076
 
 UnknownScript_0x185074:
 	disappear TINTOWER1F_ENTEI

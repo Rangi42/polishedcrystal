@@ -66,7 +66,7 @@ Script_BattleRoomLoop:
 		text_decimal wStringBuffer3, 2, 5
 		text ". Ready?"
 		done
-	sjump .ShownText
+	sjumpfwd .ShownText
 .WarnAboutTycoon
 	writethistext
 		text "Congratulations"
@@ -120,7 +120,7 @@ Script_BattleRoomLoop:
 Script_LostBattleTower:
 	setval BATTLETOWER_LOST_CHALLENGE
 	special Special_BattleTower_SetChallengeState
-	sjump Script_ReturnToBattleTowerLobby
+	sjumpfwd Script_ReturnToBattleTowerLobby
 
 Script_BeatenAllTowerTrainers:
 	special FadeOutPalettes

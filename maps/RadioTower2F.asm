@@ -233,7 +233,7 @@ Buena:
 	setevent EVENT_BUENA_OFFERED_HER_PHONE_NUMBER
 	opentext
 	writetext RadioTower2FBuenaOfferPhoneNumberText
-	sjump .AskForNumber
+	sjumpfwd .AskForNumber
 
 .OfferedNumberBefore:
 	opentext

@@ -107,7 +107,7 @@ ShamoutiHotelRestaurantLeavingTrigger1:
 	yesorno
 	iffalse .Staying
 	writetext .GoodbyeText
-	sjump ShamoutiHotelRestaurantLeaveScript
+	sjumpfwd ShamoutiHotelRestaurantLeaveScript
 
 .Staying:
 	writetext ShamoutiHotelRestaurantReceptionistText

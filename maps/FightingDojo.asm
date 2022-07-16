@@ -202,7 +202,7 @@ MapFightingDojoSignpost2Script:
 	iftrue .monday_walker
 	writetext FightingDojoScheduleMondayText
 	waitbutton
-	sjump .tuesday
+	sjumpfwd .tuesday
 .monday_walker
 	writetext FightingDojoScheduleMondayWalkerText
 	waitbutton
@@ -211,7 +211,7 @@ MapFightingDojoSignpost2Script:
 	iftrue .tuesday_lorelei
 	writetext FightingDojoScheduleTuesdayText
 	waitbutton
-	sjump .wednesday
+	sjumpfwd .wednesday
 .tuesday_lorelei
 	writetext FightingDojoScheduleTuesdayLoreleiText
 	waitbutton
@@ -223,7 +223,7 @@ MapFightingDojoSignpost2Script:
 	iftrue .thursday_palmer
 	writetext FightingDojoScheduleThursdayText
 	waitbutton
-	sjump .friday
+	sjumpfwd .friday
 .thursday_palmer
 	writetext FightingDojoScheduleThursdayPalmerText
 	waitbutton
@@ -232,7 +232,7 @@ MapFightingDojoSignpost2Script:
 	iftrue .friday_yellow
 	writetext FightingDojoScheduleFridayText
 	waitbutton
-	sjump .saturday
+	sjumpfwd .saturday
 .friday_yellow
 	writetext FightingDojoScheduleFridayYellowText
 	waitbutton
@@ -305,9 +305,9 @@ RematchBrown1Script:
 .Brown1Tuesday
 	sjump RematchPryceScript
 .Brown1Wednesday
-	sjump RematchBrockScript
+	sjumpfwd RematchBrockScript
 .Brown1Friday
-	sjump RematchSurgeScript
+	sjumpfwd RematchSurgeScript
 .Brown1Saturday
 	sjump RematchChuckScript
 

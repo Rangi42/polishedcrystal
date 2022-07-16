@@ -74,7 +74,7 @@ ShamoutiPokeCenter1FIvyScript:
 	iffalse_jumpopenedtext .NoRoomText
 	getmonname BULBASAUR, STRING_BUFFER_3
 	setevent EVENT_GOT_BULBASAUR_FROM_IVY
-	sjump .Finish
+	sjumpfwd .Finish
 
 .Charmander:
 	writetext .ChoseKantoStarterText
@@ -84,7 +84,7 @@ ShamoutiPokeCenter1FIvyScript:
 	iffalse_jumpopenedtext .NoRoomText
 	getmonname CHARMANDER, STRING_BUFFER_3
 	setevent EVENT_GOT_CHARMANDER_FROM_IVY
-	sjump .Finish
+	sjumpfwd .Finish
 
 .Squirtle:
 	writetext .ChoseKantoStarterText

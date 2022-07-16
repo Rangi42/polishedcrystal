@@ -29,7 +29,7 @@ CeladonUniversityPoolFergusScript:
 	checkevent EVENT_INTRODUCED_CELADON_FOUR
 	iftrue .IntroducedCeladonFour1
 	writetext .IntroText1
-	sjump .AfterIntro
+	sjumpfwd .AfterIntro
 .IntroducedCeladonFour1
 	writetext .IntroText2
 .AfterIntro

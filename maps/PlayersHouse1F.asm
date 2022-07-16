@@ -36,21 +36,21 @@ MomTrigger1:
 	showemote EMOTE_SHOCK, PLAYERSHOUSE1F_MOM1, 15
 	turnobject PLAYERSHOUSE1F_MOM1, RIGHT
 	turnobject PLAYER, LEFT
-	sjump MomEventScript
+	sjumpfwd MomEventScript
 
 MomTrigger2:
 	playmusic MUSIC_MOM
 	showemote EMOTE_SHOCK, PLAYERSHOUSE1F_MOM1, 15
 	turnobject PLAYERSHOUSE1F_MOM1, RIGHT
 	applyonemovement PLAYER, slow_step_left
-	sjump MomEventScript
+	sjumpfwd MomEventScript
 
 MomTrigger3:
 	playmusic MUSIC_MOM
 	showemote EMOTE_SHOCK, PLAYERSHOUSE1F_MOM1, 15
 	turnobject PLAYERSHOUSE1F_MOM1, UP
 	applymovement PLAYER, .two_steps_down
-	sjump MomEventScript
+	sjumpfwd MomEventScript
 
 .two_steps_down
 	step_down
@@ -84,7 +84,7 @@ MomEventScript:
 	special Special_InitialSetDSTFlag
 	yesorno
 	iffalse .InitialSetDSTFlag
-	sjump .InitializedDSTFlag
+	sjumpfwd .InitializedDSTFlag
 .NotDST:
 	special Special_InitialClearDSTFlag
 	yesorno
@@ -286,12 +286,12 @@ NeighborScript:
 .MornScript:
 	writetext .MornIntroText
 	promptbutton
-	sjump .Main
+	sjumpfwd .Main
 
 .DayScript:
 	writetext .DayIntroText
 	promptbutton
-	sjump .Main
+	sjumpfwd .Main
 
 .NiteScript:
 	writetext .NiteIntroText

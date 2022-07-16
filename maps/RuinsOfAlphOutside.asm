@@ -82,12 +82,12 @@ RuinsOfAlphOutsideScientistCallback:
 	iftrue .NoScientist
 	checkevent EVENT_MADE_UNOWN_APPEAR_IN_RUINS
 	iftrue .MaybeScientist
-	sjump .NoScientist
+	sjumpfwd .NoScientist
 
 .MaybeScientist:
 	readvar VAR_UNOWNCOUNT
 	ifgreater $0, .YesScientist
-	sjump .NoScientist
+	sjumpfwd .NoScientist
 
 .YesScientist:
 	appear RUINSOFALPHOUTSIDE_SCIENTIST1

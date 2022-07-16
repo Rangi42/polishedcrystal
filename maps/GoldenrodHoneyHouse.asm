@@ -88,7 +88,7 @@ endc
 	giveitem SWEET_HONEY
 	iffalse_jumpopenedtext .BagFullText
 	takemoney $0, 1000
-	sjump .Done
+	sjumpfwd .Done
 
 .Buy10:
 	checkmoney $0, 10000

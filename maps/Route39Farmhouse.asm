@@ -41,7 +41,7 @@ FarmerMScript_SellMilk:
 	closewindow
 	ifequal $1, .Buy1
 	ifequal $2, .Buy12
-	sjump .Cancel
+	sjumpfwd .Cancel
 
 .Buy1:
 	checkmoney $0, ROUTE39FARMHOUSE_MILK_PRICE
@@ -49,7 +49,7 @@ FarmerMScript_SellMilk:
 	giveitem MOOMOO_MILK
 	iffalse .BagFull
 	takemoney $0, ROUTE39FARMHOUSE_MILK_PRICE
-	sjump .Done
+	sjumpfwd .Done
 
 .Buy12:
 	checkmoney $0, ROUTE39FARMHOUSE_DOZEN_MILK_PRICE

@@ -320,7 +320,7 @@ IlexForestFinishCelebiEventScript:
 	turnobject ILEXFOREST_LYRA, DOWN
 	setlasttalked ILEXFOREST_LYRA
 	opentext
-	sjump IlexForestLyraContinueScript
+	sjumpfwd IlexForestLyraContinueScript
 
 IlexForestLyraScript:
 	faceplayer

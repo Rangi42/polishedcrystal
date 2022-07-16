@@ -44,7 +44,7 @@ SetupValerieAfterMorningWalkScript:
 	iffalse .Appear
 .Disappear:
 	disappear VALERIESHOUSE_VALERIE
-	sjump SetupFairyBookScript
+	sjumpfwd SetupFairyBookScript
 
 .Appear
 	appear VALERIESHOUSE_VALERIE

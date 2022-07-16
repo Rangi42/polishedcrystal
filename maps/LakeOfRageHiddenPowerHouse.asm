@@ -28,7 +28,7 @@ HiddenPowerGuy:
 	setevent EVENT_GOT_TM10_HIDDEN_POWER
 	writetext .Text2
 	waitbutton
-	sjump .CheckHiddenPower
+	sjumpfwd .CheckHiddenPower
 .AlreadyGotItem:
 	writetext .Text4
 	waitbutton

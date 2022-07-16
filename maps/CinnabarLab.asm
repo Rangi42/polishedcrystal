@@ -122,7 +122,7 @@ CinnabarLabCelebiEventScript:
 	checkflag ENGINE_PLAYER_IS_FEMALE
 	iftrue .Female
 	appear CINNABARLAB_CHRIS
-	sjump .Continue
+	sjumpfwd .Continue
 .Female
 	appear CINNABARLAB_KRIS
 .Continue

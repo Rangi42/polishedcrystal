@@ -54,7 +54,7 @@ Museum1FFossilScientistScript:
 	writetext AskHelixFossilText
 	yesorno
 	iftrue ResurrectHelixFossil
-	sjump .maybe_later
+	sjumpfwd .maybe_later
 
 .own_dome
 	checkitem OLD_AMBER
@@ -62,7 +62,7 @@ Museum1FFossilScientistScript:
 	writetext AskDomeFossilText
 	yesorno
 	iftrue ResurrectDomeFossil
-	sjump .maybe_later
+	sjumpfwd .maybe_later
 
 .own_helix_and_dome
 	checkitem OLD_AMBER
@@ -72,13 +72,13 @@ Museum1FFossilScientistScript:
 	closewindow
 	ifequal $1, ResurrectHelixFossil
 	ifequal $2, ResurrectDomeFossil
-	sjump .maybe_later
+	sjumpfwd .maybe_later
 
 .ask_old_amber
 	writetext AskOldAmberText
 	yesorno
 	iftrue ResurrectOldAmber
-	sjump .maybe_later
+	sjumpfwd .maybe_later
 
 .ask_helix_amber
 	loadmenu HelixAmberMenuDataHeader
@@ -86,7 +86,7 @@ Museum1FFossilScientistScript:
 	closewindow
 	ifequal $1, ResurrectHelixFossil
 	ifequal $2, ResurrectOldAmber
-	sjump .maybe_later
+	sjumpfwd .maybe_later
 
 .ask_dome_amber
 	loadmenu DomeAmberMenuDataHeader
@@ -94,7 +94,7 @@ Museum1FFossilScientistScript:
 	closewindow
 	ifequal $1, ResurrectDomeFossil
 	ifequal $2, ResurrectOldAmber
-	sjump .maybe_later
+	sjumpfwd .maybe_later
 
 .ask_helix_dome_amber
 	loadmenu HelixDomeAmberMenuDataHeader
@@ -167,13 +167,13 @@ ResurrectHelixFossil:
 	takeitem HELIX_FOSSIL
 	scall ResurrectAFossilScript
 	givepoke OMANYTE, 20
-	sjump FinishResurrect
+	sjumpfwd FinishResurrect
 
 ResurrectDomeFossil:
 	takeitem DOME_FOSSIL
 	scall ResurrectAFossilScript
 	givepoke KABUTO, 20
-	sjump FinishResurrect
+	sjumpfwd FinishResurrect
 
 ResurrectOldAmber:
 	takeitem OLD_AMBER

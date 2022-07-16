@@ -13,7 +13,7 @@ MomPhoneScript:
 	iftrue MomPhoneNoGymQuestScript
 	checkevent EVENT_GOT_A_POKEMON_FROM_ELM
 	iftrue MomPhoneNoPokedexScript
-	sjump MomPhoneNoPokemonScript
+	sjumpfwd MomPhoneNoPokemonScript
 
 .bcec5
 	checkevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_8
@@ -24,12 +24,12 @@ MomPhoneScript:
 	readvar VAR_ENVIRONMENT
 	ifequal TOWN, MomPhoneInTown
 	ifequal ROUTE, MomPhoneOnRoute
-	sjump MomPhoneOther
+	sjumpfwd MomPhoneOther
 
 MomPhoneLandmark:
 	farwritetext MomPhoneLandmarkText
 	promptbutton
-	sjump MomSavingMoney
+	sjumpfwd MomSavingMoney
 
 MomPhoneInTown:
 	readvar VAR_MAPGROUP
@@ -40,17 +40,17 @@ MomPhoneInTown:
 	ifequal GROUP_GOLDENROD_CITY, .goldenrod
 	farwritetext MomPhoneGenericAreaText
 	promptbutton
-	sjump MomSavingMoney
+	sjumpfwd MomSavingMoney
 
 .newbark
 	farwritetext MomPhoneNewBarkText
 	promptbutton
-	sjump MomSavingMoney
+	sjumpfwd MomSavingMoney
 
 .cherrygrove
 	farwritetext MomPhoneCherrygroveText
 	promptbutton
-	sjump MomSavingMoney
+	sjumpfwd MomSavingMoney
 
 .violet
 	getlandmarkname SPROUT_TOWER, 1
@@ -65,7 +65,7 @@ MomPhoneInTown:
 MomPhoneOnRoute:
 	farwritetext MomOtherAreaText
 	promptbutton
-	sjump MomSavingMoney
+	sjumpfwd MomSavingMoney
 
 MomPhoneOther:
 	farwritetext MomDeterminedText
@@ -77,44 +77,44 @@ MomSavingMoney:
 	iffalse UnknownScript_0xbcf49
 	checkmoney $1, 0
 	ifequal $0, UnknownScript_0xbcf55
-	sjump UnknownScript_0xbcf63
+	sjumpfwd UnknownScript_0xbcf63
 
 UnknownScript_0xbcf49:
 	checkmoney $1, 0
 	ifequal $0, UnknownScript_0xbcf79
-	sjump UnknownScript_0xbcf6e
+	sjumpfwd UnknownScript_0xbcf6e
 
 UnknownScript_0xbcf55:
 	getmoney $1, $0
 	farwritetext MomCheckBalanceText
 	yesorno
 	iftrue MomPhoneSaveMoneyScript
-	sjump MomPhoneWontSaveMoneyScript
+	sjumpfwd MomPhoneWontSaveMoneyScript
 
 UnknownScript_0xbcf63:
 	farwritetext MomImportantToSaveText
 	yesorno
 	iftrue MomPhoneSaveMoneyScript
-	sjump MomPhoneWontSaveMoneyScript
+	sjumpfwd MomPhoneWontSaveMoneyScript
 
 UnknownScript_0xbcf6e:
 	farwritetext MomYoureNotSavingText
 	yesorno
 	iftrue MomPhoneSaveMoneyScript
-	sjump MomPhoneWontSaveMoneyScript
+	sjumpfwd MomPhoneWontSaveMoneyScript
 
 UnknownScript_0xbcf79:
 	getmoney $1, $0
 	farwritetext MomYouveSavedText
 	yesorno
 	iftrue MomPhoneSaveMoneyScript
-	sjump MomPhoneWontSaveMoneyScript
+	sjumpfwd MomPhoneWontSaveMoneyScript
 
 MomPhoneSaveMoneyScript:
 	setflag ENGINE_MOM_SAVING_MONEY
 	farwritetext MomOKIllSaveText
 	promptbutton
-	sjump MomPhoneHangUpScript
+	sjumpfwd MomPhoneHangUpScript
 
 MomPhoneWontSaveMoneyScript:
 	clearflag ENGINE_MOM_SAVING_MONEY
@@ -156,12 +156,12 @@ BillPhoneScript1:
 	iffalse .nitegreet
 	farwritetext BillPhoneMornGreetingText
 	promptbutton
-	sjump .main
+	sjumpfwd .main
 
 .daygreet
 	farwritetext BillPhoneDayGreetingText
 	promptbutton
-	sjump .main
+	sjumpfwd .main
 
 .nitegreet
 	farwritetext BillPhoneNiteGreetingText
@@ -184,7 +184,7 @@ BillPhoneScript1:
 
 .full
 	farwritetext BillPhoneFullText
-	sjump BillPhoneScriptCheckForBoxes
+	sjumpfwd BillPhoneScriptCheckForBoxes
 
 BillPhoneScript2:
 	readvar VAR_SPECIALPHONECALL
@@ -324,17 +324,17 @@ LyraPhoneScript:
 	iftrue .nitegreet
 	farwritetext LyraPhoneMornGreetingText
 	promptbutton
-	sjump .main
+	sjumpfwd .main
 
 .daygreet
 	farwritetext LyraPhoneDayGreetingText
 	promptbutton
-	sjump .main
+	sjumpfwd .main
 
 .evegreet
 	farwritetext LyraPhoneEveGreetingText
 	promptbutton
-	sjump .main
+	sjumpfwd .main
 
 .nitegreet
 	farwritetext LyraPhoneNiteGreetingText
@@ -382,11 +382,11 @@ LyraPhoneScript2:
 	checkevent EVENT_GOT_CHIKORITA_FROM_ELM
 	iftrue .lyrasegg_chikorita
 	farwritetext LyraPhoneLyrasEggChikoritaText
-	sjump .lyrasegg_end
+	sjumpfwd .lyrasegg_end
 
 .lyrasegg_totodile
 	farwritetext LyraPhoneLyrasEggCyndaquilText
-	sjump .lyrasegg_end
+	sjumpfwd .lyrasegg_end
 
 .lyrasegg_chikorita:
 	farwritetext LyraPhoneLyrasEggTotodileText
@@ -861,15 +861,15 @@ WadeHasItem2:
 
 UnknownScript_0xbd4b9:
 	setevent EVENT_WADE_HAS_ORAN_BERRY
-	sjump UnknownScript_0xbd4ce
+	sjumpfwd UnknownScript_0xbd4ce
 
 UnknownScript_0xbd4bf:
 	setevent EVENT_WADE_HAS_PECHA_BERRY
-	sjump UnknownScript_0xbd4ce
+	sjumpfwd UnknownScript_0xbd4ce
 
 UnknownScript_0xbd4c5:
 	setevent EVENT_WADE_HAS_CHERI_BERRY
-	sjump UnknownScript_0xbd4ce
+	sjumpfwd UnknownScript_0xbd4ce
 
 UnknownScript_0xbd4cb:
 	setevent EVENT_WADE_HAS_PERSIM_BERRY
@@ -1007,35 +1007,35 @@ LizGossip:
 
 UnknownScript_0xbd5fa:
 	gettrainerclassname COOLTRAINERM, $1
-	sjump LizGossipScript
+	sjumpfwd LizGossipScript
 
 UnknownScript_0xbd600:
 	gettrainerclassname BEAUTY, $1
-	sjump LizGossipScript
+	sjumpfwd LizGossipScript
 
 UnknownScript_0xbd606:
 	gettrainerclassname GRUNTM, $1
-	sjump LizGossipScript
+	sjumpfwd LizGossipScript
 
 UnknownScript_0xbd60c:
 	gettrainerclassname TEACHER, $1
-	sjump LizGossipScript
+	sjumpfwd LizGossipScript
 
 UnknownScript_0xbd612:
 	gettrainerclassname SWIMMERF, $1
-	sjump LizGossipScript
+	sjumpfwd LizGossipScript
 
 UnknownScript_0xbd618:
 	gettrainerclassname KIMONO_GIRL_1, $1
-	sjump LizGossipScript
+	sjumpfwd LizGossipScript
 
 UnknownScript_0xbd61e:
 	gettrainerclassname SKIER, $1
-	sjump LizGossipScript
+	sjumpfwd LizGossipScript
 
 UnknownScript_0xbd624:
 	gettrainerclassname MEDIUM, $1
-	sjump LizGossipScript
+	sjumpfwd LizGossipScript
 
 UnknownScript_0xbd62a:
 	gettrainerclassname POKEFANM, $1
@@ -1741,23 +1741,23 @@ TiffanysFamilyMembers:
 
 UnknownScript_0xbdc3b:
 	getstring Phone_GrandmaString, $1
-	sjump UnknownScript_0xbdc65
+	sjumpfwd UnknownScript_0xbdc65
 
 UnknownScript_0xbdc42:
 	getstring Phone_GrandpaString, $1
-	sjump UnknownScript_0xbdc65
+	sjumpfwd UnknownScript_0xbdc65
 
 UnknownScript_0xbdc49:
 	getstring Phone_MomString, $1
-	sjump UnknownScript_0xbdc65
+	sjumpfwd UnknownScript_0xbdc65
 
 UnknownScript_0xbdc50:
 	getstring Phone_DadString, $1
-	sjump UnknownScript_0xbdc65
+	sjumpfwd UnknownScript_0xbdc65
 
 UnknownScript_0xbdc57:
 	getstring Phone_SisterString, $1
-	sjump UnknownScript_0xbdc65
+	sjumpfwd UnknownScript_0xbdc65
 
 UnknownScript_0xbdc5e:
 	getstring Phone_BrotherString, $1
@@ -1874,15 +1874,15 @@ WiltonHasItem:
 	ifequal $0, UnknownScript_0xbdd5e
 	random $3
 	ifequal $0, UnknownScript_0xbdd64
-	sjump UnknownScript_0xbdd6a
+	sjumpfwd UnknownScript_0xbdd6a
 
 UnknownScript_0xbdd5e:
 	setevent EVENT_WILTON_HAS_ULTRA_BALL
-	sjump UnknownScript_0xbdd6d
+	sjumpfwd UnknownScript_0xbdd6d
 
 UnknownScript_0xbdd64:
 	setevent EVENT_WILTON_HAS_GREAT_BALL
-	sjump UnknownScript_0xbdd6d
+	sjumpfwd UnknownScript_0xbdd6d
 
 UnknownScript_0xbdd6a:
 	setevent EVENT_WILTON_HAS_POKE_BALL

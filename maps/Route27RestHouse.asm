@@ -22,7 +22,7 @@ Route27RestHouseGranny:
 	iftrue .HeardIntro
 	writetext .IntroText
 	setevent EVENT_LISTENED_TO_SKILL_SWAP_INTRO
-	sjump .Continue
+	sjumpfwd .Continue
 .HeardIntro
 	writetext .HeardIntroText
 .Continue

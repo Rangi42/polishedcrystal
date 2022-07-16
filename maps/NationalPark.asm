@@ -117,7 +117,7 @@ SchoolboyJack1Script:
 	promptbutton
 	setevent EVENT_JACK_ASKED_FOR_PHONE_NUMBER
 	scall UnknownScript_0x5c0fc
-	sjump UnknownScript_0x5c074
+	sjumpfwd UnknownScript_0x5c074
 
 UnknownScript_0x5c071:
 	scall UnknownScript_0x5c100
@@ -127,7 +127,7 @@ UnknownScript_0x5c074:
 	ifequal $2, UnknownScript_0x5c10c
 	gettrainername SCHOOLBOY, JACK1, $0
 	scall UnknownScript_0x5c104
-	sjump UnknownScript_0x5c108
+	sjumpfwd UnknownScript_0x5c108
 
 UnknownScript_0x5c088:
 	scall UnknownScript_0x5c114
@@ -238,7 +238,7 @@ PokefanfBeverly1Script:
 	promptbutton
 	setevent EVENT_BEVERLY_ASKED_FOR_PHONE_NUMBER
 	scall UnknownScript_0x5c18f
-	sjump UnknownScript_0x5c163
+	sjumpfwd UnknownScript_0x5c163
 
 UnknownScript_0x5c160:
 	scall UnknownScript_0x5c193
@@ -248,17 +248,17 @@ UnknownScript_0x5c163:
 	ifequal $2, UnknownScript_0x5c19f
 	gettrainername POKEFANF, BEVERLY1, $0
 	scall UnknownScript_0x5c197
-	sjump UnknownScript_0x5c19b
+	sjumpfwd UnknownScript_0x5c19b
 
 UnknownScript_0x5c177:
 	scall UnknownScript_0x5c1a7
 	verbosegiveitem NUGGET
 	iffalse UnknownScript_0x5c186
 	clearflag ENGINE_BEVERLY_HAS_NUGGET
-	sjump UnknownScript_0x5c19b
+	sjumpfwd UnknownScript_0x5c19b
 
 UnknownScript_0x5c186:
-	sjump UnknownScript_0x5c1ab
+	sjumpfwd UnknownScript_0x5c1ab
 
 UnknownScript_0x5c189:
 	jumpopenedtext PokefanFBeverlyMarillFriendText

@@ -89,7 +89,7 @@ TransmitterDoorCallback:
 
 RocketBaseBossFLeft:
 	moveobject TEAMROCKETBASEB2F_LANCE, 9, 13
-	sjump RocketBaseBossFScript
+	sjumpfwd RocketBaseBossFScript
 
 RocketBaseBossFRight:
 	moveobject TEAMROCKETBASEB2F_ARIANA, 21, 16
@@ -247,7 +247,7 @@ RocketElectrode1:
 	reloadmapafterbattle
 	special PlayMapMusic
 	applymovement PLAYER, RocketBasePlayerLeavesElectrodesMovement1
-	sjump RocketBaseElectrodeScript
+	sjumpfwd RocketBaseElectrodeScript
 
 RocketElectrode2:
 	cry ELECTRODE
@@ -265,7 +265,7 @@ RocketElectrode2:
 	reloadmapafterbattle
 	special PlayMapMusic
 	applymovement PLAYER, RocketBasePlayerLeavesElectrodesMovement2
-	sjump RocketBaseElectrodeScript
+	sjumpfwd RocketBaseElectrodeScript
 
 RocketElectrode3:
 	cry ELECTRODE
@@ -283,7 +283,7 @@ RocketElectrode3:
 	reloadmapafterbattle
 	special PlayMapMusic
 	applymovement PLAYER, RocketBasePlayerLeavesElectrodesMovement3
-	sjump RocketBaseElectrodeScript
+	sjumpfwd RocketBaseElectrodeScript
 
 TeamRocketBaseB2FReloadMap:
 	reloadmapafterbattle

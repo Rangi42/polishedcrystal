@@ -74,7 +74,7 @@ CianwoodCitySuicuneAndEusine:
 	checkevent EVENT_GOT_HM05_WHIRLPOOL
 	iftrue .NoLyra
 	setmapscene ROUTE_42, $1
-	sjump .Continue
+	sjumpfwd .Continue
 .NoLyra
 	setmapscene ROUTE_42, $2
 .Continue

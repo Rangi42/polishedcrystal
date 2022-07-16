@@ -22,7 +22,7 @@ WhirlIslandLugiaChamberLugia:
 	iftrue .NoAppear
 	checkkeyitem SILVER_WING
 	iftrue .Appear
-	sjump .NoAppear
+	sjumpfwd .NoAppear
 
 .Appear:
 	appear WHIRLISLANDLUGIACHAMBER_LUGIA

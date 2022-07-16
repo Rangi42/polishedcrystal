@@ -86,7 +86,7 @@ SeagallopFerryVermilionGateSailorScript:
 	closewindow
 	ifequal $1, .use_orangeticket
 	ifequal $2, .use_mysticticket
-	sjump .no_ferry
+	sjumpfwd .no_ferry
 
 .use_old_sea_map
 	writetext SeagallopFerryOldSeaMapQuestionText
@@ -104,7 +104,7 @@ SeagallopFerryVermilionGateSailorScript:
 	closewindow
 	ifequal $1, .use_mysticticket
 	ifequal $2, .use_old_sea_map
-	sjump .no_ferry
+	sjumpfwd .no_ferry
 
 .use_orangeticket_or_old_sea_map
 	writetext SeagallopFerryWhichTicketText
@@ -113,7 +113,7 @@ SeagallopFerryVermilionGateSailorScript:
 	closewindow
 	ifequal $1, .use_orangeticket
 	ifequal $2, .use_old_sea_map
-	sjump .no_ferry
+	sjumpfwd .no_ferry
 
 .have_three_tickets
 	writetext SeagallopFerryWhichTicketText

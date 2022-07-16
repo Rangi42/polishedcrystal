@@ -172,7 +172,7 @@ ElmEggHatchedScript:
 	setmonval TOGEKISS
 	special Special_FindThatSpeciesYourTrainerID
 	iftrue ShowElmTogepiScript
-	sjump ElmCheckGotEggAgain
+	sjumpfwd ElmCheckGotEggAgain
 
 ElmCheckTogepiEgg:
 	checkevent EVENT_GOT_TOGEPI_EGG_FROM_ELMS_AIDE
@@ -236,7 +236,7 @@ CyndaquilPokeBallScript:
 	readvar VAR_FACING
 	ifequal RIGHT, ElmDirectionsScript
 	applymovement PLAYER, AfterCyndaquilMovement
-	sjump ElmDirectionsScript
+	sjumpfwd ElmDirectionsScript
 
 TotodilePokeBallScript:
 	checkevent EVENT_GOT_A_POKEMON_FROM_ELM
@@ -274,7 +274,7 @@ TotodilePokeBallScript:
 	closetext
 	applymovement ELMSLAB_LYRA, LyraAfterCyndaquilMovement
 	applymovement PLAYER, AfterTotodileMovement
-	sjump ElmDirectionsScript
+	sjumpfwd ElmDirectionsScript
 
 ChikoritaPokeBallScript:
 	checkevent EVENT_GOT_A_POKEMON_FROM_ELM
@@ -443,7 +443,7 @@ ElmGiveTicketScript:
 	scall .LyraEntryShort
 	scall .LyraAnnouncesGymChallenge
 	turnobject PLAYER, RIGHT
-	sjump .Continue
+	sjumpfwd .Continue
 
 .Longest
 	disappear ELMSLAB_LYRA
@@ -455,7 +455,7 @@ ElmGiveTicketScript:
 	turnobject PLAYER, LEFT
 	scall .LyraAnnouncesGymChallenge
 	turnobject PLAYER, DOWN
-	sjump .Continue
+	sjumpfwd .Continue
 
 .Shortest
 	disappear ELMSLAB_LYRA
@@ -546,7 +546,7 @@ LyraBattleScript:
 	special DeleteSavedMusic
 	playmusic MUSIC_LYRA_DEPARTURE_HGSS
 	iftrue .AfterYourDefeat
-	sjump .AfterVictorious
+	sjumpfwd .AfterVictorious
 
 .Totodile:
 	loadtrainer LYRA1, LYRA1_2
@@ -557,7 +557,7 @@ LyraBattleScript:
 	special DeleteSavedMusic
 	playmusic MUSIC_LYRA_DEPARTURE_HGSS
 	iftrue .AfterVictorious
-	sjump .AfterYourDefeat
+	sjumpfwd .AfterYourDefeat
 
 .Chikorita:
 	loadtrainer LYRA1, LYRA1_3
@@ -568,11 +568,11 @@ LyraBattleScript:
 	special DeleteSavedMusic
 	playmusic MUSIC_LYRA_DEPARTURE_HGSS
 	iftrue .AfterVictorious
-	sjump .AfterYourDefeat
+	sjumpfwd .AfterYourDefeat
 
 .AfterVictorious:
 	showtext ElmsLabLyraText_YouWon
-	sjump .FinishLyra
+	sjumpfwd .FinishLyra
 
 .AfterYourDefeat:
 	showtext ElmsLabLyraText_YouLost

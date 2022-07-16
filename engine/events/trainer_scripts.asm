@@ -4,7 +4,7 @@ TalkToTrainerScript::
 	iftrue AlreadyBeatenTrainerScript
 	loadtemptrainer
 	encountermusic
-	sjump StartBattleWithMapTrainerScript
+	sjumpfwd StartBattleWithMapTrainerScript
 
 SeenByTrainerScript::
 	loadtemptrainer

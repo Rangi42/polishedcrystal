@@ -80,7 +80,7 @@ SunnyScript:
 	iftrue .Kris
 	writetext SunnyGivesGiftText1
 	promptbutton
-	sjump .next
+	sjumpfwd .next
 .Kris:
 	writetext SunnyGivesGiftText2
 	promptbutton

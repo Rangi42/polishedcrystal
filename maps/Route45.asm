@@ -167,7 +167,7 @@ BlackbeltKenji1Script:
 	waitbutton
 	setevent EVENT_KENJI_ASKED_FOR_PHONE_NUMBER
 	scall Route45AskNumber1M
-	sjump UnknownScript_0x19e0d0
+	sjumpfwd UnknownScript_0x19e0d0
 
 UnknownScript_0x19e0cd:
 	scall Route45AskNumber2M
@@ -177,7 +177,7 @@ UnknownScript_0x19e0d0:
 	ifequal $2, Route45NumberDeclinedM
 	gettrainername BLACKBELT_T, KENJI1, $0
 	scall Route45RegisteredNumberM
-	sjump Route45NumberAcceptedM
+	sjumpfwd Route45NumberAcceptedM
 
 UnknownScript_0x19e0e4:
 	readvar VAR_KENJI_BREAK
@@ -193,7 +193,7 @@ UnknownScript_0x19e0e4:
 	iffalse UnknownScript_0x19e118
 	clearevent EVENT_KENJI_ON_BREAK
 	special Special_SampleKenjiBreakCountdown
-	sjump Route45NumberAcceptedM
+	sjumpfwd Route45NumberAcceptedM
 
 UnknownScript_0x19e10c:
 	jumpopenedtext BlackbeltKenjiMorningText
@@ -202,7 +202,7 @@ UnknownScript_0x19e112:
 	jumpopenedtext BlackbeltKenjiNightText
 
 UnknownScript_0x19e118:
-	sjump Route45PackFullM
+	sjumpfwd Route45PackFullM
 
 Route45AskNumber1M:
 	jumpstd asknumber1m
@@ -277,7 +277,7 @@ HikerParry1Script:
 	promptbutton
 	setevent EVENT_PARRY_ASKED_FOR_PHONE_NUMBER
 	scall Route45AskNumber1M
-	sjump UnknownScript_0x19e1a4
+	sjumpfwd UnknownScript_0x19e1a4
 
 UnknownScript_0x19e1a1:
 	scall Route45AskNumber2M

@@ -46,7 +46,7 @@ VioletPokeCenter1FElmsAideScript:
 	checkevent EVENT_REFUSED_TO_TAKE_EGG_FROM_ELMS_AIDE
 	iftrue .SecondTimeAsking
 	writetext .IntroText
-	sjump .AskTakeEgg
+	sjumpfwd .AskTakeEgg
 .SecondTimeAsking:
 	writetext .QuestionText
 .AskTakeEgg:
@@ -65,7 +65,7 @@ VioletPokeCenter1FElmsAideScript:
 	ifequal UP, .AideWalksAroundPlayer
 	turnobject PLAYER, DOWN
 	applymovement VIOLETPOKECENTER1F_SCIENTIST, .WalkStraightMovement
-	sjump .Finish
+	sjumpfwd .Finish
 .AideWalksAroundPlayer:
 	applymovement VIOLETPOKECENTER1F_SCIENTIST, .WalkAroundMovement
 	turnobject PLAYER, DOWN

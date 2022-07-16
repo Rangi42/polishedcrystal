@@ -42,19 +42,19 @@ CinnabarVolcanoB2FLawrenceEncounterScript:
 	appear CINNABARVOLCANOB2F_LAWRENCE
 	applymovement CINNABARVOLCANOB2F_LAWRENCE, CinnabarVolcanoB2FMovementData_LawrenceApproachLeftRight
 	turnobject PLAYER, DOWN
-	sjump .continue
+	sjumpfwd .continue
 .up
 	moveobject CINNABARVOLCANOB2F_LAWRENCE, 13, 24
 	appear CINNABARVOLCANOB2F_LAWRENCE
 	applymovement CINNABARVOLCANOB2F_LAWRENCE, CinnabarVolcanoB2FMovementData_LawrenceApproachUp
 	turnobject CINNABARVOLCANOB2F_LAWRENCE, UP
 	turnobject PLAYER, DOWN
-	sjump .continue
+	sjumpfwd .continue
 .down
 	moveobject CINNABARVOLCANOB2F_LAWRENCE, 13, 24
 	appear CINNABARVOLCANOB2F_LAWRENCE
 	applymovement CINNABARVOLCANOB2F_LAWRENCE, CinnabarVolcanoB2FMovementData_LawrenceApproachDown
-	sjump .continue
+	sjumpfwd .continue
 .left
 	moveobject CINNABARVOLCANOB2F_LAWRENCE, 14, 24
 	appear CINNABARVOLCANOB2F_LAWRENCE

@@ -59,7 +59,7 @@ TrainerJugglerIrwin:
 	promptbutton
 	setevent EVENT_IRWIN_ASKED_FOR_PHONE_NUMBER
 	scall Route35AskNumber1M
-	sjump .AskForNumber
+	sjumpfwd .AskForNumber
 
 .AskedAlready:
 	scall Route35AskNumber2M
@@ -69,7 +69,7 @@ TrainerJugglerIrwin:
 	ifequal $2, Route35NumberDeclinedM
 	gettrainername JUGGLER, IRWIN1, $0
 	scall Route35RegisteredNumberM
-	sjump Route35NumberAcceptedM
+	sjumpfwd Route35NumberAcceptedM
 
 Route35AskNumber1M:
 	jumpstd asknumber1m
@@ -143,7 +143,7 @@ TrainerBug_catcherArnie1:
 	promptbutton
 	setevent EVENT_ARNIE_ASKED_FOR_PHONE_NUMBER
 	scall Route35AskNumber1M
-	sjump .AskForNumber
+	sjumpfwd .AskForNumber
 
 .AskedAlready:
 	scall Route35AskNumber2M
