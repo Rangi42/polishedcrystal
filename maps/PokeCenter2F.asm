@@ -117,8 +117,10 @@ endc
 	opentext
 	writetext Text_TradeReceptionistIntro
 	yesorno
-	iffalse .Cancel
+	iffalse_endtext
 	special Special_SetBitsForLinkTradeRequest
+	; fallthrough
+LinkReceptionistScript_DoTradeOrBattle:
 	writetext Text_PleaseWait
 	special Special_WaitForLinkedFriend
 	iffalse .FriendNotReady
@@ -165,7 +167,6 @@ endc
 	writetext Text_PleaseComeAgain
 .AbortLink:
 	special WaitForOtherPlayerToExit
-.Cancel:
 	endtext
 
 Script_TradeCenterClosed:
@@ -179,63 +180,16 @@ Script_TradeCenterClosed:
 LinkReceptionistScript_Battle:
 if !DEF(DEBUG)
 	checkevent EVENT_GAVE_MYSTERY_EGG_TO_ELM
-	iffalse Script_BattleRoomClosed
+	iftrue .BattleRoomClosed
 endc
 	opentext
 	writetext Text_BattleReceptionistIntro
 	yesorno
-	iffalse .Cancel
+	iffalse_endtext
 	special Special_SetBitsForBattleRequest
-	writetext Text_PleaseWait
-	special Special_WaitForLinkedFriend
-	iffalse .FriendNotReady
-	writetext Text_MustSaveGame
-	yesorno
-	iffalse .DidNotSave
-	special Special_TryQuickSave
-	iffalse .DidNotSave
-	writetext Text_PleaseWait
-	special Special_CheckLinkTimeout
-	iffalse .LinkTimedOut
-	readmem wOtherPlayerLinkMode
-	iffalse .LinkedToFirstGen
-	special Special_CheckBothSelectedSameRoom
-	iffalse .IncompatibleRooms
-	writetext Text_PleaseComeIn2
-	waitbutton
-	closetext
-	scall PokeCenter2F_CheckGender
-	warpcheck
-	end
+	sjump LinkReceptionistScript_DoTradeOrBattle
 
-.FriendNotReady:
-	special WaitForOtherPlayerToExit
-	writetext Text_FriendNotReady
-	endtext
-
-.LinkedToFirstGen:
-	special Special_FailedLinkToPast
-	writetext Text_CantLinkToThePast
-	special Special_CloseLink
-	endtext
-
-.IncompatibleRooms:
-	writetext Text_IncompatibleRooms
-	special Special_CloseLink
-	endtext
-
-.LinkTimedOut:
-	writetext Text_LinkTimedOut
-	sjump .AbortLink
-
-.DidNotSave:
-	writetext Text_PleaseComeAgain
-.AbortLink:
-	special WaitForOtherPlayerToExit
-.Cancel:
-	endtext
-
-Script_BattleRoomClosed:
+.BattleRoomClosed:
 	jumpthistextfaceplayer
 
 	text "I'm sorry--the"
