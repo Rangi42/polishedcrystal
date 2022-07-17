@@ -70,22 +70,20 @@ PokeCenter2FTileCallback:
 
 Script_LeftCableTradeCenter:
 	special WaitForOtherPlayerToExit
-	scall Script_WalkOutOfLinkRoom
+	applymovement POKECENTER2F_TRADE_RECEPTIONIST, PokeCenter2FMovementData_ReceptionistWalksUpAndLeft_LookRight
+	applymovement PLAYER, PokeCenter2FMovementData_PlayerTakesThreeStepsDown
+	applymovement POKECENTER2F_TRADE_RECEPTIONIST, PokeCenter2FMovementData_ReceptionistStepsRightAndDown
 	setscene $0
 	setmapscene TRADE_CENTER, $0
 	end
 
 Script_LeftCableColosseum:
 	special WaitForOtherPlayerToExit
-	scall Script_WalkOutOfLinkRoom
+	applymovement POKECENTER2F_BATTLE_RECEPTIONIST, PokeCenter2FMovementData_ReceptionistWalksUpAndLeft_LookRight
+	applymovement PLAYER, PokeCenter2FMovementData_PlayerTakesThreeStepsDown
+	applymovement POKECENTER2F_BATTLE_RECEPTIONIST, PokeCenter2FMovementData_ReceptionistStepsRightAndDown
 	setscene $0
 	setmapscene COLOSSEUM, $0
-	end
-
-Script_WalkOutOfLinkRoom:
-	applymovement POKECENTER2F_TRADE_RECEPTIONIST, PokeCenter2FMovementData_ReceptionistWalksUpAndLeft_LookRight
-	applymovement PLAYER, PokeCenter2FMovementData_PlayerTakesThreeStepsDown
-	applymovement POKECENTER2F_TRADE_RECEPTIONIST, PokeCenter2FMovementData_ReceptionistStepsRightAndDown
 	end
 
 PokeCenter2FLinkRecordSign:
@@ -186,7 +184,7 @@ PokeCenter2F_EnterRoom:
 	applymovementlasttalked PokeCenter2FMovementData_ReceptionistWalksUpAndLeft_LookRight
 	applymovement PLAYER, PokeCenter2FMovementData_PlayerTakesThreeStepsUp
 	readmem wLinkOtherPlayerGender
-	iftrue .Female
+	iftruefwd .Female
 	variablesprite SPRITE_LINK_TRAINER, SPRITE_CHRIS
 	end
 .Female
