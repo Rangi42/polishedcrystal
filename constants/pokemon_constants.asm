@@ -16,7 +16,7 @@
 ; - AlphabeticalPokedexOrder (see data/pokemon/dex_order_alpha.asm)
 ; - NewPokedexOrder (see data/pokemon/dex_order_new.asm)
 ; - ValidPokemonLevels (see data/pokemon/valid_levels.asm)
-; - Footprints (see gfx/pokemon/footprints.asm)
+; - FootprintPointers (see data/pokemon/footprint_pointers.asm)
 ; - AnimationPointers (see gfx/pokemon/anim_pointers.asm)
 ; - AnimationIdlePointers (see gfx/pokemon/idle_pointers.asm)
 ; - BitmasksPointers (see gfx/pokemon/bitmask_pointers.asm)
