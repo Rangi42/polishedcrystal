@@ -26,7 +26,7 @@ LuckyIsland_MapScriptHeader:
 
 Script_ChangeLuckyIslandMap:
 	special CheckIfTrendyPhraseIsLucky
-	iftrue .show
+	iftruefwd .show
 	changemapblocks LuckyIslandHidden_BlockData
 	setevent EVENT_LUCKY_ISLAND_CIVILIANS
 .hide_poke_ball
@@ -181,7 +181,7 @@ GenericTrainerSightseersLiandsu2:
 
 LuckyIslandLuckyEgg:
 	giveitem LUCKY_EGG
-	iffalse .NoRoom
+	iffalsefwd .NoRoom
 	disappear LUCKYISLAND_POKE_BALL
 	setevent EVENT_GOT_LUCKY_EGG_FROM_LUCKY_ISLAND
 	opentext

@@ -56,7 +56,7 @@ SSAquaGranddaughterBefore:
 	applymovement FASTSHIPCABINS_SE_SSE_CAPTAINSCABIN_TWIN1, SSAquaGranddaughterEntersCabinMovement
 	turnobject FASTSHIPCABINS_SE_SSE_CAPTAINSCABIN_GENTLEMAN, RIGHT
 	checkflag ENGINE_PLAYER_IS_FEMALE
-	iftrue UnknownScript_0x75f03
+	iftruefwd UnknownScript_0x75f03
 	showtext SSAquaGranddaughterWasPlayingMText
 	sjumpfwd UnknownScript_0x75f09
 
@@ -78,7 +78,7 @@ SSAquaGrandpa:
 	faceplayer
 	opentext
 	checkevent EVENT_FAST_SHIP_CABINS_SE_SSE_CAPTAINS_CABIN_TWIN_2
-	iftrue SSAquaFoundGranddaughter
+	iftruefwd SSAquaFoundGranddaughter
 	writetext SSAquaCantFindGranddaughterText
 	waitbutton
 	closetext

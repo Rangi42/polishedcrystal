@@ -30,9 +30,9 @@ CeladonUniversityClassroom1_MapScriptHeader:
 
 CeladonUniversityClassroom1ImakuniScript:
 	readvar VAR_FACING
-	ifequal UP, .Up
-	ifequal DOWN, .Down
-	ifequal LEFT, .Left
+	ifequalfwd UP, .Up
+	ifequalfwd DOWN, .Down
+	ifequalfwd LEFT, .Left
 	turnobject CELADONUNIVERSITYCLASSROOM1_IMAKUNI, RIGHT
 	sjumpfwd .Continue
 
@@ -48,7 +48,7 @@ CeladonUniversityClassroom1ImakuniScript:
 	turnobject CELADONUNIVERSITYCLASSROOM1_IMAKUNI, LEFT
 .Continue:
 	checkevent EVENT_BEAT_IMAKUNI
-	iftrue .Beaten
+	iftruefwd .Beaten
 	opentext
 	writetext .Text1
 	yesorno

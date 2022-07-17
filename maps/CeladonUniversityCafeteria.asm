@@ -28,9 +28,9 @@ CeladonUniversityCafeteriaCoreyScript:
 	faceplayer
 	opentext
 	checkevent EVENT_BEAT_COOLTRAINERM_COREY
-	iftrue .Beaten
+	iftruefwd .Beaten
 	checkevent EVENT_INTRODUCED_CELADON_FOUR
-	iftrue .IntroducedCeladonFour1
+	iftruefwd .IntroducedCeladonFour1
 	writetext .IntroText1
 	sjumpfwd .AfterIntro
 .IntroducedCeladonFour1
@@ -219,7 +219,7 @@ CeladonUniversityCafeteriaBakerScript:
 	yesorno
 	iffalse_jumpopenedtext .Text4
 	checkmoney $0, 4000
-	ifequal $2, .NotEnoughMoney
+	ifequalfwd $2, .NotEnoughMoney
 	giveitem LEFTOVERS
 	iffalse_jumpopenedtext .Text6
 	setflag ENGINE_BOUGHT_LEFTOVERS

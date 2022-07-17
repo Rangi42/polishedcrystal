@@ -32,7 +32,7 @@ CinnabarIslandBlue:
 	faceplayer
 	opentext
 	checkevent EVENT_LISTENED_TO_BLUE_INTRO
-	iftrue .HeardIntro
+	iftruefwd .HeardIntro
 	writetext CinnabarIslandBlueText
 	waitbutton
 	setevent EVENT_LISTENED_TO_BLUE_INTRO

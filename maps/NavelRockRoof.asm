@@ -24,9 +24,9 @@ NavelRockRoof_MapScriptHeader:
 NavelRockRoofDailyLeafRematchCallback:
 	disappear NAVELROCKROOF_GREEN
 	checkevent EVENT_BEAT_RED
-	iffalse .Disappear ; we last beat Leaf (or haven't yet beaten Red)
+	iffalsefwd .Disappear ; we last beat Leaf (or haven't yet beaten Red)
 	checkflag ENGINE_LEAF_IN_NAVEL_ROCK
-	iftrue .Disappear
+	iftruefwd .Disappear
 	appear NAVELROCKROOF_GREEN
 .Disappear
 	endcallback
@@ -50,16 +50,16 @@ Leaf:
 	special HealParty
 	refreshscreen
 	checktime 1 << NITE
-	iffalse .Sun
+	iffalsefwd .Sun
 	changeblock 6, 0, $76
 	changeblock 8, 0, $77
 	changeblock 6, 2, $7a
 	changeblock 8, 2, $7b
 .Sun
 	checkflag ENGINE_PLAYER_IS_FEMALE
-	iftrue .FemaleEndingSequence
+	iftruefwd .FemaleEndingSequence
 	readvar VAR_FACING
-	ifequal UP, .RightMaleEndingSequence
+	ifequalfwd UP, .RightMaleEndingSequence
 	turnobject PLAYER, UP
 	moveobject NAVELROCKROOF_CHRIS, 7, 8
 	appear NAVELROCKROOF_CHRIS
@@ -72,7 +72,7 @@ Leaf:
 
 .FemaleEndingSequence:
 	readvar VAR_FACING
-	ifequal UP, .RightFemaleEndingSequence
+	ifequalfwd UP, .RightFemaleEndingSequence
 	turnobject PLAYER, UP
 	moveobject NAVELROCKROOF_KRIS, 7, 8
 	appear NAVELROCKROOF_KRIS

@@ -33,7 +33,7 @@ AcademyEarl:
 	opentext
 	writetext AcademyEarlIntroText
 	yesorno
-	iffalse .Part1
+	iffalsefwd .Part1
 	writetext AcademyEarlTeachHowToWinText
 	yesorno
 	iffalse_jumpopenedtext AcademyEarlNoMoreToTeachText
@@ -60,11 +60,11 @@ AcademyBlackboard:
 	loadmenu .MenuHeader
 	_2dmenu
 	closewindow
-	ifequal $1, .Poison
-	ifequal $2, .Paralysis
-	ifequal $3, .Sleep
-	ifequal $4, .Burn
-	ifequal $5, .Freeze
+	ifequalfwd $1, .Poison
+	ifequalfwd $2, .Paralysis
+	ifequalfwd $3, .Sleep
+	ifequalfwd $4, .Burn
+	ifequalfwd $5, .Freeze
 	endtext
 
 .Poison:
@@ -118,13 +118,13 @@ AcademyNotebook:
 	opentext
 	writetext AcademyNotebookText
 	yesorno
-	iffalse .Done
+	iffalsefwd .Done
 	writetext AcademyNotebookText1
 	yesorno
-	iffalse .Done
+	iffalsefwd .Done
 	writetext AcademyNotebookText2
 	yesorno
-	iffalse .Done
+	iffalsefwd .Done
 	writetext AcademyNotebookText3
 	waitbutton
 .Done:

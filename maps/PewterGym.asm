@@ -23,7 +23,7 @@ PewterGymBrockScript:
 	faceplayer
 	opentext
 	checkflag ENGINE_BOULDERBADGE
-	iftrue .FightDone
+	iftruefwd .FightDone
 	writetext BrockIntroText
 	waitbutton
 	closetext
@@ -40,16 +40,16 @@ PewterGymBrockScript:
 	waitsfx
 	setflag ENGINE_BOULDERBADGE
 	readvar VAR_BADGES
-	ifequal 9, .FirstBadge
-	ifequal 10, .SecondBadge
-	ifequal 12, .LyrasEgg
+	ifequalfwd 9, .FirstBadge
+	ifequalfwd 10, .SecondBadge
+	ifequalfwd 12, .LyrasEgg
 	sjumpfwd .FightDone
 .FirstBadge:
 	specialphonecall SPECIALCALL_FIRSTBADGE
 	sjumpfwd .FightDone
 .SecondBadge:
 	checkevent EVENT_GOT_GS_BALL_FROM_POKECOM_CENTER
-	iftrue .FightDone
+	iftruefwd .FightDone
 	specialphonecall SPECIALCALL_SECONDBADGE
 	sjumpfwd .FightDone
 .LyrasEgg:
@@ -96,7 +96,7 @@ PewterGymGuyScript:
 PewterGymStatue:
 	gettrainername BROCK, 1, $1
 	checkflag ENGINE_BOULDERBADGE
-	iftrue .Beaten
+	iftruefwd .Beaten
 	jumpstd gymstatue1
 .Beaten:
 	jumpstd gymstatue2

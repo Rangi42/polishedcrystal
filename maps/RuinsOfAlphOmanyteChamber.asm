@@ -27,18 +27,18 @@ RuinsOfAlphOmanyteChamber_MapScriptHeader:
 RuinsofAlphOmanyteChamberTrigger0:
 	special SpecialOmanyteChamber
 	checkevent EVENT_WALL_OPENED_IN_OMANYTE_CHAMBER
-	iffalse .End
+	iffalsefwd .End
 	sdefer RuinsOfAlphOmanyteChamberWallOpenScript
 .End
 	end
 
 RuinsofAlphOmanyteChamberHiddenDoorsCallback:
 	checkevent EVENT_WALL_OPENED_IN_OMANYTE_CHAMBER
-	iftrue .WallOpen
+	iftruefwd .WallOpen
 	changeblock 4, 0, $24
 .WallOpen:
 	checkevent EVENT_SOLVED_OMANYTE_PUZZLE
-	iffalse .FloorClosed
+	iffalsefwd .FloorClosed
 	endcallback
 
 .FloorClosed:
@@ -63,7 +63,7 @@ MapRuinsofAlphOmanyteChamberSignpost2Script:
 	setval $1
 	special Special_UnownPuzzle
 	closetext
-	iftrue .PuzzleComplete
+	iftruefwd .PuzzleComplete
 	end
 
 .PuzzleComplete:
@@ -98,7 +98,7 @@ MapRuinsofAlphOmanyteChamberSignpost5Script:
 MapRuinsofAlphOmanyteChamberSignpost4Script:
 	opentext
 	checkevent EVENT_RUINS_OF_ALPH_OUTSIDE_TOURIST_YOUNGSTERS
-	iftrue .unsolved
+	iftruefwd .unsolved
 	writetext RuinsOfAlphChambersItsUnownText
 	sjumpfwd .unownwords
 .unsolved

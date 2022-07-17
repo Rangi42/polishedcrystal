@@ -33,7 +33,7 @@ OlivineLighthouse3FBattleGirlEmy:
 	iftrue_jumptextfaceplayer .AfterText2
 	faceplayer
 	checkevent EVENT_BEAT_BATTLE_GIRL_EMY
-	iftrue .Beaten
+	iftruefwd .Beaten
 	opentext
 	checkevent EVENT_BEAT_GENTLEMAN_ALFRED
 	iffalse_jumpopenedtext .IntroText

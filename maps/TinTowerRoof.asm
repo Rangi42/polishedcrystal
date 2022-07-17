@@ -19,9 +19,9 @@ TinTowerRoof_MapScriptHeader:
 
 TinTowerRoofHoOh:
 	checkevent EVENT_FOUGHT_HO_OH
-	iftrue .NoAppear
+	iftruefwd .NoAppear
 	checkkeyitem RAINBOW_WING
-	iftrue .Appear
+	iftruefwd .Appear
 	sjumpfwd .NoAppear
 
 .Appear:

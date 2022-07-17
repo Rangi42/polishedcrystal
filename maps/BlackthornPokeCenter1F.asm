@@ -46,7 +46,7 @@ ProfOaksAide4Script:
 	waitbutton
 	setval16 60
 	special CountCaught
-	iftrue .HereYouGo
+	iftruefwd .HereYouGo
 	jumpthisopenedtext
 
 	text "Let's see…"

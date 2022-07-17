@@ -38,7 +38,7 @@ BugCatchingContestBattleScript::
 	startbattle
 	reloadmapafterbattle
 	readmem wParkBallsRemaining
-	iffalse .OutOfBalls
+	iffalsefwd .OutOfBalls
 	end
 
 .OutOfBalls:
@@ -60,7 +60,7 @@ BugCatchingContestReturnToGateScript:
 
 Script_AbortBugContest:
 	checkflag ENGINE_BUG_CONTEST_TIMER
-	iffalse .finish
+	iffalsefwd .finish
 	setflag ENGINE_DAILY_BUG_CONTEST
 	special ContestReturnMons
 .finish

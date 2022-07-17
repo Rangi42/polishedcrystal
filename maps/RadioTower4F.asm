@@ -33,7 +33,7 @@ RadioTower4FDJMaryScript:
 	checkevent EVENT_GOT_PINK_BOW_FROM_MARY
 	iftrue_jumpopenedtext RadioTower4FDJMaryText_After
 	checkevent EVENT_CLEARED_RADIO_TOWER
-	iftrue .ClearedRockets
+	iftruefwd .ClearedRockets
 	jumpthisopenedtext
 
 	text "Mary: Why? Why do"

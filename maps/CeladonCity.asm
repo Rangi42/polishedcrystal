@@ -63,7 +63,7 @@ CeladonCityScript:
 	faceplayer
 	opentext
 	checkevent EVENT_LISTENED_TO_SWAGGER_INTRO
-	iftrue CeladonCityTutorSwaggerScript
+	iftruefwd CeladonCityTutorSwaggerScript
 	writetext CeladonCityRichBoyText
 	waitbutton
 	setevent EVENT_LISTENED_TO_SWAGGER_INTRO
@@ -71,14 +71,14 @@ CeladonCityTutorSwaggerScript:
 	writetext Text_CeladonCityTutorSwagger
 	waitbutton
 	checkitem SILVER_LEAF
-	iffalse .NoSilverLeaf
+	iffalsefwd .NoSilverLeaf
 	writetext Text_CeladonCityTutorQuestion
 	yesorno
-	iffalse .TutorRefused
+	iffalsefwd .TutorRefused
 	setval SWAGGER
 	writetext ClearText
 	special Special_MoveTutor
-	ifequal $0, .TeachMove
+	ifequalfwd $0, .TeachMove
 .TutorRefused
 	jumpopenedtext Text_CeladonCityTutorRefused
 

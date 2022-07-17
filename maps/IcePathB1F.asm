@@ -80,7 +80,7 @@ IcePathB1FSkierScript:
 	faceplayer
 	opentext
 	checkevent EVENT_LISTENED_TO_ICY_WIND_INTRO
-	iftrue IcePathB1FTutorIcyWindScript
+	iftruefwd IcePathB1FTutorIcyWindScript
 	writetext IcePathB1FSkierText
 	waitbutton
 	setevent EVENT_LISTENED_TO_ICY_WIND_INTRO
@@ -88,14 +88,14 @@ IcePathB1FTutorIcyWindScript:
 	writetext Text_IcePathB1FTutorIcyWind
 	waitbutton
 	checkitem SILVER_LEAF
-	iffalse .NoSilverLeaf
+	iffalsefwd .NoSilverLeaf
 	writetext Text_IcePathB1FTutorQuestion
 	yesorno
-	iffalse .TutorRefused
+	iffalsefwd .TutorRefused
 	setval ICY_WIND
 	writetext ClearText
 	special Special_MoveTutor
-	ifequal $0, .TeachMove
+	ifequalfwd $0, .TeachMove
 .TutorRefused
 	jumpopenedtext Text_IcePathB1FTutorRefused
 

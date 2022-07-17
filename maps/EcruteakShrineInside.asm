@@ -27,21 +27,21 @@ EcruteakShrineInsideReiScript:
 	faceplayer
 	opentext
 	checkflag ENGINE_DAILY_SHRINE_VISIT
-	iftrue .ReiDone
+	iftruefwd .ReiDone
 	writetext EcruteakShrineInsideReiGreetingText
 	loadmenu .ReiMenuDataHeader
 	verticalmenu
 	closewindow
-	ifequal $1, .ReiBless
-	ifequal $2, .ReiBattle
+	ifequalfwd $1, .ReiBless
+	ifequalfwd $2, .ReiBattle
 	sjumpfwd .ReiCancel
 
 .ReiBless
 	writetext EcruteakShrineInsideReiBlessText
 	promptbutton
 	special Special_ReiBlessing
-	ifequal $0, .ReiCancel
-	ifequal $1, .EggBlessing
+	ifequalfwd $0, .ReiCancel
+	ifequalfwd $1, .EggBlessing
 	setflag ENGINE_DAILY_SHRINE_VISIT
 	writetext EcruteakShrineInsideReiBlessingText
 	special PlayCurMonCry
@@ -58,9 +58,9 @@ EcruteakShrineInsideReiScript:
 	winlosstext EcruteakShrineInsideReiBeatenText, 0
 	setlasttalked ECRUTEAKSHRINEINSIDE_REI
 	readvar VAR_BADGES
-	ifequal 16, .Battle3
+	ifequalfwd 16, .Battle3
 	checkevent EVENT_BEAT_ELITE_FOUR
-	iftrue .Battle2
+	iftruefwd .Battle2
 	loadtrainer REI, 1
 	startbattle
 	reloadmapafterbattle

@@ -82,15 +82,15 @@ DanceTheaterSurfGuy:
 	checkevent EVENT_GOT_HM03_SURF
 	iftrue_jumpopenedtext SurfGuyElegantKimonoGirlsText
 	checkevent EVENT_BEAT_KIMONO_GIRL_NAOKO
-	iffalse .KimonoGirlsUndefeated
+	iffalsefwd .KimonoGirlsUndefeated
 	checkevent EVENT_BEAT_KIMONO_GIRL_SAYO
-	iffalse .KimonoGirlsUndefeated
+	iffalsefwd .KimonoGirlsUndefeated
 	checkevent EVENT_BEAT_KIMONO_GIRL_ZUKI
-	iffalse .KimonoGirlsUndefeated
+	iffalsefwd .KimonoGirlsUndefeated
 	checkevent EVENT_BEAT_KIMONO_GIRL_KUNI
-	iffalse .KimonoGirlsUndefeated
+	iffalsefwd .KimonoGirlsUndefeated
 	checkevent EVENT_BEAT_KIMONO_GIRL_MIKI
-	iffalse .KimonoGirlsUndefeated
+	iffalsefwd .KimonoGirlsUndefeated
 	writetext SurfGuyLikeADanceText
 	promptbutton
 	verbosegivetmhm HM_SURF

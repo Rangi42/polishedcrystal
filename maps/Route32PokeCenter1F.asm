@@ -102,7 +102,7 @@ Route32PokeCenter1FPokefanMScript:
 	opentext
 	writetext .Text1
 	yesorno
-	iftrue .Yes
+	iftruefwd .Yes
 	writetext .Text2
 	sjumpfwd .Continue
 .Yes:
@@ -110,7 +110,7 @@ Route32PokeCenter1FPokefanMScript:
 .Continue
 	promptbutton
 	verbosegiveitem LURE_BALL
-	iffalse .NoRoom
+	iffalsefwd .NoRoom
 	setevent EVENT_GOT_LURE_BALL_FROM_FRENCHMAN
 	jumpthisopenedtext
 

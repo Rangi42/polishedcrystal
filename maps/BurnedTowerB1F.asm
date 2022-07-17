@@ -35,7 +35,7 @@ BurnedTowerB1F_MapScriptHeader:
 
 BurnedTowerB1FLadderCallback:
 	checkevent EVENT_RELEASED_THE_BEASTS
-	iftrue .NoChange
+	iftruefwd .NoChange
 	changeblock 6, 14, $2
 .NoChange:
 	endcallback
@@ -110,7 +110,7 @@ ReleaseTheBeasts:
 BurnedTowerB1FEusine:
 	showtextfaceplayer BurnedTowerB1FEusineText
 	readvar VAR_FACING
-	ifequal $1, .Movement
+	ifequalfwd $1, .Movement
 	applymovement BURNEDTOWERB1F_EUSINE, BurnedTowerB1FEusineMovement1
 	sjumpfwd UnknownScript_0x18622a
 

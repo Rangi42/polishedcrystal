@@ -77,7 +77,7 @@ ElmsLabTrigger7:
 
 ElmsLabCallback_MoveElm:
 	checkscene
-	iftrue .Skip
+	iftruefwd .Skip
 	moveobject ELMSLAB_ELM, 3, 4
 .Skip:
 	endcallback
@@ -92,7 +92,7 @@ ElmsLab_AutowalkUpToElm:
 	writetext ElmText_Intro
 ElmsLab_RefuseLoop:
 	yesorno
-	iftrue ElmsLab_ElmGetsEmail
+	iftruefwd ElmsLab_ElmGetsEmail
 	writetext ElmText_Refused
 	sjump ElmsLab_RefuseLoop
 
@@ -136,12 +136,12 @@ ProfElmScript:
 	faceplayer
 	opentext
 	checkevent EVENT_GOT_SS_TICKET_FROM_ELM
-	iftrue ElmCheckMasterBall
+	iftruefwd ElmCheckMasterBall
 	checkevent EVENT_BEAT_ELITE_FOUR
 	iftrue ElmGiveTicketScript
 ElmCheckMasterBall:
 	checkevent EVENT_GOT_MASTER_BALL_FROM_ELM
-	iftrue ElmCheckOddSouvenir
+	iftruefwd ElmCheckOddSouvenir
 	checkflag ENGINE_RISINGBADGE
 	iftrue ElmGiveMasterBallScript
 ElmCheckOddSouvenir:
@@ -150,7 +150,7 @@ ElmCheckOddSouvenir:
 	checkevent EVENT_SHOWED_TOGEPI_TO_ELM
 	iftrue ElmGiveOddSouvenirScript
 	checkevent EVENT_TOLD_ELM_ABOUT_TOGEPI_OVER_THE_PHONE
-	iffalse ElmCheckTogepiEgg
+	iffalsefwd ElmCheckTogepiEgg
 	setmonval TOGEPI
 	special Special_FindThatSpeciesYourTrainerID
 	iftrue ShowElmTogepiScript
@@ -176,7 +176,7 @@ ElmEggHatchedScript:
 
 ElmCheckTogepiEgg:
 	checkevent EVENT_GOT_TOGEPI_EGG_FROM_ELMS_AIDE
-	iffalse ElmCheckGotEggAgain
+	iffalsefwd ElmCheckGotEggAgain
 	checkevent EVENT_TOGEPI_HATCHED
 	iftrue ElmEggHatchedScript
 ElmCheckGotEggAgain:
@@ -234,7 +234,7 @@ CyndaquilPokeBallScript:
 	closetext
 	applymovement ELMSLAB_LYRA, LyraAfterChikoritaMovement
 	readvar VAR_FACING
-	ifequal RIGHT, ElmDirectionsScript
+	ifequalfwd RIGHT, ElmDirectionsScript
 	applymovement PLAYER, AfterCyndaquilMovement
 	sjumpfwd ElmDirectionsScript
 
@@ -338,13 +338,13 @@ endc
 ElmsLabHealingMachine:
 	opentext
 	checkevent EVENT_GOT_A_POKEMON_FROM_ELM
-	iftrue .CanHeal
+	iftruefwd .CanHeal
 	jumpopenedtext ElmsLabHealingMachineText1
 
 .CanHeal:
 	writetext ElmsLabHealingMachineText2
 	yesorno
-	iftrue ElmsLabHealingMachine_HealParty
+	iftruefwd ElmsLabHealingMachine_HealParty
 	endtext
 
 ElmsLabHealingMachine_HealParty:
@@ -436,8 +436,8 @@ ElmGiveTicketScript:
 	special Special_FadeOutMusic
 	pause 10
 	readvar VAR_FACING
-	ifequal UP, .Shortest
-	ifequal DOWN, .Longest
+	ifequalfwd UP, .Shortest
+	ifequalfwd DOWN, .Longest
 	disappear ELMSLAB_LYRA
 	moveobject ELMSLAB_LYRA, 4, 7
 	scall .LyraEntryShort
@@ -491,19 +491,19 @@ ElmGiveTicketScript:
 ElmJumpBackScript1:
 	closetext
 	readvar VAR_FACING
-	ifequal DOWN, ElmJumpDownScript
-	ifequal UP, ElmJumpUpScript
-	ifequal LEFT, ElmJumpLeftScript
-	ifequal RIGHT, ElmJumpRightScript
+	ifequalfwd DOWN, ElmJumpDownScript
+	ifequalfwd UP, ElmJumpUpScript
+	ifequalfwd LEFT, ElmJumpLeftScript
+	ifequalfwd RIGHT, ElmJumpRightScript
 	end
 
 ElmJumpBackScript2:
 	closetext
 	readvar VAR_FACING
-	ifequal DOWN, ElmJumpUpScript
-	ifequal UP, ElmJumpDownScript
-	ifequal LEFT, ElmJumpRightScript
-	ifequal RIGHT, ElmJumpLeftScript
+	ifequalfwd DOWN, ElmJumpUpScript
+	ifequalfwd UP, ElmJumpDownScript
+	ifequalfwd LEFT, ElmJumpRightScript
+	ifequalfwd RIGHT, ElmJumpLeftScript
 	end
 
 ElmJumpUpScript:
@@ -535,9 +535,9 @@ LyraBattleScript:
 	winlosstext ElmsLabLyraWinText, ElmsLabLyraLossText
 	setlasttalked ELMSLAB_LYRA
 	checkevent EVENT_GOT_TOTODILE_FROM_ELM
-	iftrue .Totodile
+	iftruefwd .Totodile
 	checkevent EVENT_GOT_CHIKORITA_FROM_ELM
-	iftrue .Chikorita
+	iftruefwd .Chikorita
 	loadtrainer LYRA1, LYRA1_1
 	loadvar VAR_BATTLETYPE, BATTLETYPE_CANLOSE
 	startbattle
@@ -545,7 +545,7 @@ LyraBattleScript:
 	reloadmap
 	special DeleteSavedMusic
 	playmusic MUSIC_LYRA_DEPARTURE_HGSS
-	iftrue .AfterYourDefeat
+	iftruefwd .AfterYourDefeat
 	sjumpfwd .AfterVictorious
 
 .Totodile:
@@ -556,7 +556,7 @@ LyraBattleScript:
 	reloadmap
 	special DeleteSavedMusic
 	playmusic MUSIC_LYRA_DEPARTURE_HGSS
-	iftrue .AfterVictorious
+	iftruefwd .AfterVictorious
 	sjumpfwd .AfterYourDefeat
 
 .Chikorita:
@@ -567,7 +567,7 @@ LyraBattleScript:
 	reloadmap
 	special DeleteSavedMusic
 	playmusic MUSIC_LYRA_DEPARTURE_HGSS
-	iftrue .AfterVictorious
+	iftruefwd .AfterVictorious
 	sjumpfwd .AfterYourDefeat
 
 .AfterVictorious:

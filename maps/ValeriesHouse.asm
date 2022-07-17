@@ -35,13 +35,13 @@ ValeriesHouse_MapScriptHeader:
 
 SetupValerieAfterMorningWalkScript:
 	checkevent EVENT_FOUGHT_SUICUNE
-	iffalse .Disappear
+	iffalsefwd .Disappear
 	checkevent EVENT_BEAT_VALERIE
-	iffalse .Disappear
+	iffalsefwd .Disappear
 	checkflag ENGINE_VALERIE_MORNING_WALK
-	iftrue .Appear
+	iftruefwd .Appear
 	checktime 1 << MORN
-	iffalse .Appear
+	iffalsefwd .Appear
 .Disappear:
 	disappear VALERIESHOUSE_VALERIE
 	sjumpfwd SetupFairyBookScript
@@ -59,12 +59,12 @@ SetupFairyBookScript:
 	disappear VALERIESHOUSE_PINK_FAIRY_BOOK
 	disappear VALERIESHOUSE_YELLOW_FAIRY_BOOK
 	readvar VAR_WEEKDAY
-	ifequal MONDAY, .Monday
-	ifequal TUESDAY, .Tuesday
-	ifequal WEDNESDAY, .Wednesday
-	ifequal THURSDAY, .Thursday
-	ifequal FRIDAY, .Friday
-	ifequal SATURDAY, .Saturday
+	ifequalfwd MONDAY, .Monday
+	ifequalfwd TUESDAY, .Tuesday
+	ifequalfwd WEDNESDAY, .Wednesday
+	ifequalfwd THURSDAY, .Thursday
+	ifequalfwd FRIDAY, .Friday
+	ifequalfwd SATURDAY, .Saturday
 .Sunday
 	appear VALERIESHOUSE_PINK_FAIRY_BOOK
 	endcallback

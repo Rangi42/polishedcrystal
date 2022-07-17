@@ -332,7 +332,7 @@ PokemonJournalProfElmScript:
 PlayersHousePC:
 	opentext
 	special Special_PlayersHousePC
-	iftrue .Warp
+	iftruefwd .Warp
 	endtext
 .Warp:
 	warp NONE, 0, 0

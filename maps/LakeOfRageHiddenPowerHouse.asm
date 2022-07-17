@@ -21,7 +21,7 @@ HiddenPowerGuy:
 	faceplayer
 	opentext
 	checkevent EVENT_GOT_TM10_HIDDEN_POWER
-	iftrue .AlreadyGotItem
+	iftruefwd .AlreadyGotItem
 	writetext .Text1
 	promptbutton
 	verbosegivetmhm TM_HIDDEN_POWER
@@ -40,7 +40,7 @@ HiddenPowerGuy:
 	promptbutton
 	special Special_HiddenPowerGuru
 	iffalse_jumpopenedtext .Text4
-	ifequal $1, .Egg
+	ifequalfwd $1, .Egg
 	jumpthisopenedtext
 
 	text "I can sense it…"

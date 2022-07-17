@@ -73,14 +73,14 @@ SeafoamGymBlaineScript:
 	faceplayer
 	opentext
 	checkflag ENGINE_VOLCANOBADGE
-	iftrue .FightDone
+	iftruefwd .FightDone
 	writetext BlaineIntroText
 	waitbutton
 	closetext
 	winlosstext BlaineWinLossText, 0
 	loadtrainer BLAINE, 1
 	startbattle
-	iftrue .ReturnAfterBattle
+	iftruefwd .ReturnAfterBattle
 	appear SEAFOAMGYM_GYM_GUY
 .ReturnAfterBattle:
 	reloadmapafterbattle
@@ -97,16 +97,16 @@ SeafoamGymBlaineScript:
 	waitsfx
 	setflag ENGINE_VOLCANOBADGE
 	readvar VAR_BADGES
-	ifequal 9, .FirstBadge
-	ifequal 10, .SecondBadge
-	ifequal 12, .LyrasEgg
+	ifequalfwd 9, .FirstBadge
+	ifequalfwd 10, .SecondBadge
+	ifequalfwd 12, .LyrasEgg
 	sjumpfwd .FightDone
 .FirstBadge:
 	specialphonecall SPECIALCALL_FIRSTBADGE
 	sjumpfwd .FightDone
 .SecondBadge:
 	checkevent EVENT_GOT_GS_BALL_FROM_POKECOM_CENTER
-	iftrue .FightDone
+	iftruefwd .FightDone
 	specialphonecall SPECIALCALL_SECONDBADGE
 	sjumpfwd .FightDone
 .LyrasEgg:

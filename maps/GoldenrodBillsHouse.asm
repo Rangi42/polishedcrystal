@@ -24,7 +24,7 @@ BillsGrandpa:
 	faceplayer
 	opentext
 	checkevent EVENT_MET_BILLS_GRANDPA
-	iftrue .MetGrandpa
+	iftruefwd .MetGrandpa
 	writetext BillsGrandpaIntroText
 	promptbutton
 	setevent EVENT_MET_BILLS_GRANDPA
@@ -293,11 +293,11 @@ BillsSister:
 	faceplayer
 	opentext
 	checkcellnum PHONE_BILL
-	iftrue .GotBillsNumber
+	iftruefwd .GotBillsNumber
 	writetext BillsSisterUsefulNumberText
 	askforphonenumber PHONE_BILL
-	ifequal $1, .NoRoom
-	ifequal $2, .Refused
+	ifequalfwd $1, .NoRoom
+	ifequalfwd $2, .Refused
 	waitsfx
 	addcellnum PHONE_BILL
 	writetext RecordedBillsNumberText

@@ -74,9 +74,9 @@ BattleTower2FCherylScript:
 	winlosstext .BeatenText, 0
 	setlasttalked BATTLETOWER2F_CHERYL
 	checkevent EVENT_BEAT_ELITE_FOUR_AGAIN
-	iftrue .Team3
+	iftruefwd .Team3
 	checkevent EVENT_BEAT_ELITE_FOUR
-	iftrue .Team2
+	iftruefwd .Team2
 	loadtrainer CHERYL, 1
 	sjumpfwd .StartBattle
 .Team2
@@ -149,7 +149,7 @@ BattleTower2FRileyScript:
 	winlosstext .BeatenText, 0
 	setlasttalked BATTLETOWER2F_RILEY
 	checkevent EVENT_BEAT_ELITE_FOUR_AGAIN
-	iftrue .Team2
+	iftruefwd .Team2
 	loadtrainer RILEY, 1
 	sjumpfwd .StartBattle
 .Team2
@@ -217,7 +217,7 @@ BattleTower2FBuckScript:
 	winlosstext .BeatenText, 0
 	setlasttalked BATTLETOWER2F_BUCK
 	checkevent EVENT_BEAT_ELITE_FOUR_AGAIN
-	iftrue .Team2
+	iftruefwd .Team2
 	loadtrainer BUCK, 1
 	sjumpfwd .StartBattle
 .Team2
@@ -266,9 +266,9 @@ BattleTower2FMarleyScript:
 	winlosstext .BeatenText, 0
 	setlasttalked BATTLETOWER2F_MARLEY
 	checkevent EVENT_BEAT_ELITE_FOUR_AGAIN
-	iftrue .Team3
+	iftruefwd .Team3
 	checkevent EVENT_BEAT_ELITE_FOUR
-	iftrue .Team2
+	iftruefwd .Team2
 	loadtrainer MARLEY, 1
 	sjumpfwd .StartBattle
 .Team2
@@ -326,7 +326,7 @@ BattleTower2FMiraScript:
 	winlosstext .BeatenText, 0
 	setlasttalked BATTLETOWER2F_MIRA
 	checkevent EVENT_BEAT_ELITE_FOUR_AGAIN
-	iftrue .Team2
+	iftruefwd .Team2
 	loadtrainer MIRA, 1
 	sjumpfwd .StartBattle
 .Team2
@@ -388,7 +388,7 @@ BattleTower2FAnabelScript:
 	winlosstext .BeatenText, 0
 	setlasttalked BATTLETOWER2F_ANABEL
 	checkevent EVENT_BEAT_ELITE_FOUR_AGAIN
-	iftrue .Team2
+	iftruefwd .Team2
 	loadtrainer ANABEL, 1
 	sjumpfwd .StartBattle
 .Team2

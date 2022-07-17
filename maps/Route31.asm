@@ -31,7 +31,7 @@ Route31_MapScriptHeader:
 
 Route31CheckMomCall:
 	checkevent EVENT_TALKED_TO_MOM_AFTER_MYSTERY_EGG_QUEST
-	iffalse .DoMomCall
+	iffalsefwd .DoMomCall
 	endcallback
 
 .DoMomCall:
@@ -48,7 +48,7 @@ TrainerCooltrainermFinch:
 	faceplayer
 	opentext
 	checkevent EVENT_BEAT_COOLTRAINERM_FINCH
-	iftrue .Beaten
+	iftruefwd .Beaten
 	checkevent EVENT_BEAT_YOUNGSTER_JOEY
 	iffalse_jumpopenedtext .IntroText
 	checkevent EVENT_BEAT_YOUNGSTER_MIKEY
@@ -165,13 +165,13 @@ TrainerBug_catcherWade1:
 	loadvar VAR_CALLERID, PHONE_BUG_CATCHER_WADE
 	opentext
 	checkflag ENGINE_WADE_READY_FOR_REMATCH
-	iftrue .WadeRematch
+	iftruefwd .WadeRematch
 	checkflag ENGINE_WADE_HAS_ITEM
-	iftrue .WadeItem
+	iftruefwd .WadeItem
 	checkcellnum PHONE_BUG_CATCHER_WADE
-	iftrue .AcceptedNumberSTD
+	iftruefwd .AcceptedNumberSTD
 	checkevent EVENT_WADE_ASKED_FOR_PHONE_NUMBER
-	iftrue .AskAgain
+	iftruefwd .AskAgain
 	writetext Bug_catcherWade1AfterText
 	waitbutton
 	setevent EVENT_WADE_ASKED_FOR_PHONE_NUMBER
@@ -182,8 +182,8 @@ TrainerBug_catcherWade1:
 	callstd asknumber2m
 .Continue:
 	askforphonenumber PHONE_BUG_CATCHER_WADE
-	ifequal $1, .PhoneFullSTD
-	ifequal $2, .DeclinedNumberSTD
+	ifequalfwd $1, .PhoneFullSTD
+	ifequalfwd $2, .DeclinedNumberSTD
 	gettrainername BUG_CATCHER, WADE1, $0
 	callstd registerednumberm
 	jumpstd numberacceptedm
@@ -192,23 +192,23 @@ TrainerBug_catcherWade1:
 	callstd rematchm
 	winlosstext Bug_catcherWade1BeatenText, 0
 	readmem wWadeFightCount
-	ifequal 4, .Fight4
-	ifequal 3, .Fight3
-	ifequal 2, .Fight2
-	ifequal 1, .Fight1
-	ifequal 0, .LoadFight0
+	ifequalfwd 4, .Fight4
+	ifequalfwd 3, .Fight3
+	ifequalfwd 2, .Fight2
+	ifequalfwd 1, .Fight1
+	ifequalfwd 0, .LoadFight0
 .Fight4:
 	checkevent EVENT_BEAT_ELITE_FOUR
-	iftrue .LoadFight4
+	iftruefwd .LoadFight4
 .Fight3:
 	checkevent EVENT_CLEARED_RADIO_TOWER
-	iftrue .LoadFight3
+	iftruefwd .LoadFight3
 .Fight2:
 	checkflag ENGINE_FLYPOINT_MAHOGANY
-	iftrue .LoadFight2
+	iftruefwd .LoadFight2
 .Fight1:
 	checkflag ENGINE_FLYPOINT_GOLDENROD
-	iftrue .LoadFight1
+	iftruefwd .LoadFight1
 .LoadFight0:
 	loadtrainer BUG_CATCHER, WADE1
 	startbattle
@@ -251,28 +251,28 @@ TrainerBug_catcherWade1:
 .WadeItem:
 	callstd giftm
 	checkevent EVENT_WADE_HAS_ORAN_BERRY
-	iftrue .OranBerry
+	iftruefwd .OranBerry
 	checkevent EVENT_WADE_HAS_PECHA_BERRY
-	iftrue .PechaBerry
+	iftruefwd .PechaBerry
 	checkevent EVENT_WADE_HAS_CHERI_BERRY
-	iftrue .CheriBerry
+	iftruefwd .CheriBerry
 	checkevent EVENT_WADE_HAS_PERSIM_BERRY
-	iftrue .PersimBerry
+	iftruefwd .PersimBerry
 .OranBerry:
 	verbosegiveitem ORAN_BERRY
-	iffalse .PackFull
+	iffalsefwd .PackFull
 	sjumpfwd .Done
 .PechaBerry:
 	verbosegiveitem PECHA_BERRY
-	iffalse .PackFull
+	iffalsefwd .PackFull
 	sjumpfwd .Done
 .CheriBerry:
 	verbosegiveitem CHERI_BERRY
-	iffalse .PackFull
+	iffalsefwd .PackFull
 	sjumpfwd .Done
 .PersimBerry:
 	verbosegiveitem PERSIM_BERRY
-	iffalse .PackFull
+	iffalsefwd .PackFull
 .Done:
 	clearflag ENGINE_WADE_HAS_ITEM
 	jumpstd numberacceptedm
@@ -292,19 +292,19 @@ Route31MailRecipientScript:
 	faceplayer
 	opentext
 	checkevent EVENT_GAVE_KENYA
-	iftrue .TutorSleepTalk
+	iftruefwd .TutorSleepTalk
 	checkevent EVENT_GOT_KENYA
-	iftrue .TryGiveKenya
+	iftruefwd .TryGiveKenya
 	jumpopenedtext Text_Route31SleepyMan
 
 .TryGiveKenya:
 	writetext Text_Route31SleepyManGotMail
 	promptbutton
 	checkpokemail ReceivedSpearowMailText
-	ifequal $0, .WrongMail
-	ifequal $2, .Refused
-	ifequal $3, .NoMail
-	ifequal $4, .LastMon
+	ifequalfwd $0, .WrongMail
+	ifequalfwd $2, .Refused
+	ifequalfwd $3, .NoMail
+	ifequalfwd $4, .LastMon
 	writetext Text_Route31HandOverMailMon
 	promptbutton
 	writetext Text_Route31ReadingMail
@@ -314,14 +314,14 @@ Route31MailRecipientScript:
 	writetext Text_Route31TutorSleepTalk
 	waitbutton
 	checkitem SILVER_LEAF
-	iffalse .NoSilverLeaf
+	iffalsefwd .NoSilverLeaf
 	writetext Text_Route31TutorQuestion
 	yesorno
-	iffalse .TutorRefused
+	iffalsefwd .TutorRefused
 	setval SLEEP_TALK
 	writetext ClearText
 	special Special_MoveTutor
-	ifequal $0, .TeachMove
+	ifequalfwd $0, .TeachMove
 .TutorRefused
 	jumpopenedtext Text_Route31TutorRefused
 

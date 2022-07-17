@@ -33,7 +33,7 @@ Route40_MapScriptHeader:
 
 MonicaCallback:
 	readvar VAR_WEEKDAY
-	ifequal MONDAY, .MonicaAppears
+	ifequalfwd MONDAY, .MonicaAppears
 	disappear ROUTE40_MONICA
 	endcallback
 
@@ -87,20 +87,20 @@ Route40FisherScript:
 	faceplayer
 	opentext
 	checkevent EVENT_LISTENED_TO_KNOCK_OFF_INTRO
-	iftrue .HeardIntro
+	iftruefwd .HeardIntro
 	writetext .IntroText
 	waitbutton
 	setevent EVENT_LISTENED_TO_KNOCK_OFF_INTRO
 .HeardIntro:
 	writetext .QuestionText
 	checkitem SILVER_LEAF
-	iffalse .NoSilverLeaf
+	iffalsefwd .NoSilverLeaf
 	yesorno
-	iffalse .TutorRefused
+	iffalsefwd .TutorRefused
 	setval KNOCK_OFF
 	writetext ClearText
 	special Special_MoveTutor
-	ifequal $0, .TeachMove
+	ifequalfwd $0, .TeachMove
 .TutorRefused
 	jumpthisopenedtext
 
@@ -164,7 +164,7 @@ MonicaScript:
 	faceplayer
 	opentext
 	checkevent EVENT_MET_MONICA_OF_MONDAY
-	iftrue .MetMonica
+	iftruefwd .MetMonica
 	writetext MeetMonicaText
 	promptbutton
 	setevent EVENT_MET_MONICA_OF_MONDAY
@@ -172,7 +172,7 @@ MonicaScript:
 	writetext MonicaGivesGiftText
 	promptbutton
 	verbosegiveitem SHARP_BEAK
-	iffalse MonicaDoneScript
+	iffalsefwd MonicaDoneScript
 	setevent EVENT_GOT_SHARP_BEAK_FROM_MONICA
 	jumpopenedtext MonicaGaveGiftText
 

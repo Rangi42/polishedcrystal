@@ -78,51 +78,51 @@ ENDM
 
 UndergroundPathSwitchRoomEntrancesUpdateDoorPositions:
 	checkevent EVENT_SWITCH_4
-	iffalse .false4
+	iffalsefwd .false4
 	doorstate 1, OPEN1
 .false4
 	checkevent EVENT_SWITCH_5
-	iffalse .false5
+	iffalsefwd .false5
 	doorstate 2, OPEN1
 .false5
 	checkevent EVENT_SWITCH_6
-	iffalse .false6
+	iffalsefwd .false6
 	doorstate 3, OPEN1
 .false6
 	checkevent EVENT_SWITCH_7
-	iffalse .false7
+	iffalsefwd .false7
 	doorstate 4, OPEN1
 .false7
 	checkevent EVENT_SWITCH_8
-	iffalse .false8
+	iffalsefwd .false8
 	doorstate 5, OPEN1
 .false8
 	checkevent EVENT_SWITCH_9
-	iffalse .false9
+	iffalsefwd .false9
 	doorstate 6, OPEN1
 .false9
 	checkevent EVENT_SWITCH_10
-	iffalse .false10
+	iffalsefwd .false10
 	doorstate 7, CLOSED1
 	doorstate 8, OPEN1
 .false10
 	checkevent EVENT_SWITCH_11
-	iffalse .false11
+	iffalsefwd .false11
 	doorstate 9, CLOSED1
 	doorstate 10, OPEN1
 .false11
 	checkevent EVENT_SWITCH_12
-	iffalse .false12
+	iffalsefwd .false12
 	doorstate 11, CLOSED1
 	doorstate 12, OPEN1
 .false12
 	checkevent EVENT_SWITCH_13
-	iffalse .false13
+	iffalsefwd .false13
 	doorstate 13, CLOSED1
 	doorstate 14, OPEN1
 .false13
 	checkevent EVENT_SWITCH_14
-	iffalse .false14
+	iffalsefwd .false14
 	doorstate 15, CLOSED1
 	doorstate 16, OPEN1
 .false14
@@ -168,7 +168,7 @@ UndergroundSilverTrigger2:
 
 UndergroundSilverBattleScript:
 	checkevent EVENT_RIVAL_BURNED_TOWER
-	iftrue .Continue
+	iftruefwd .Continue
 	setevent EVENT_RIVAL_BURNED_TOWER
 	setmapscene BURNED_TOWER_1F, 1
 .Continue:
@@ -176,9 +176,9 @@ UndergroundSilverBattleScript:
 	showtext UndergroundSilverBeforeText
 	setevent EVENT_RIVAL_UNDERGROUND_PATH
 	checkevent EVENT_GOT_TOTODILE_FROM_ELM
-	iftrue .Totodile
+	iftruefwd .Totodile
 	checkevent EVENT_GOT_CHIKORITA_FROM_ELM
-	iftrue .Chikorita
+	iftruefwd .Chikorita
 	winlosstext UndergroundSilverWinText, UndergroundSilverLossText
 	setlasttalked UNDERGROUNDPATHSWITCHROOMENTRANCES_SILVER
 	loadtrainer RIVAL1, RIVAL1_12
@@ -275,10 +275,10 @@ Switch1Script:
 	writetext SwitchRoomText_Switch1
 	promptbutton
 	checkevent EVENT_SWITCH_1
-	iftrue .On
+	iftruefwd .On
 	writetext SwitchRoomText_OffTurnOn
 	yesorno
-	iffalse UndergroundPathSwitchRoomEntrances_DontToggle
+	iffalsefwd UndergroundPathSwitchRoomEntrances_DontToggle
 	readmem wUndergroundSwitchPositions
 	addval 1
 	writemem wUndergroundSwitchPositions
@@ -288,7 +288,7 @@ Switch1Script:
 .On:
 	writetext SwitchRoomText_OnTurnOff
 	yesorno
-	iffalse UndergroundPathSwitchRoomEntrances_DontToggle
+	iffalsefwd UndergroundPathSwitchRoomEntrances_DontToggle
 	readmem wUndergroundSwitchPositions
 	addval -1
 	writemem wUndergroundSwitchPositions
@@ -300,10 +300,10 @@ Switch2Script:
 	writetext SwitchRoomText_Switch2
 	promptbutton
 	checkevent EVENT_SWITCH_2
-	iftrue .On
+	iftruefwd .On
 	writetext SwitchRoomText_OffTurnOn
 	yesorno
-	iffalse UndergroundPathSwitchRoomEntrances_DontToggle
+	iffalsefwd UndergroundPathSwitchRoomEntrances_DontToggle
 	readmem wUndergroundSwitchPositions
 	addval 2
 	writemem wUndergroundSwitchPositions
@@ -313,7 +313,7 @@ Switch2Script:
 .On:
 	writetext SwitchRoomText_OnTurnOff
 	yesorno
-	iffalse UndergroundPathSwitchRoomEntrances_DontToggle
+	iffalsefwd UndergroundPathSwitchRoomEntrances_DontToggle
 	readmem wUndergroundSwitchPositions
 	addval -2
 	writemem wUndergroundSwitchPositions
@@ -325,10 +325,10 @@ Switch3Script:
 	writetext SwitchRoomText_Switch3
 	promptbutton
 	checkevent EVENT_SWITCH_3
-	iftrue .On
+	iftruefwd .On
 	writetext SwitchRoomText_OffTurnOn
 	yesorno
-	iffalse UndergroundPathSwitchRoomEntrances_DontToggle
+	iffalsefwd UndergroundPathSwitchRoomEntrances_DontToggle
 	readmem wUndergroundSwitchPositions
 	addval 3
 	writemem wUndergroundSwitchPositions
@@ -338,7 +338,7 @@ Switch3Script:
 .On:
 	writetext SwitchRoomText_OnTurnOff
 	yesorno
-	iffalse UndergroundPathSwitchRoomEntrances_DontToggle
+	iffalsefwd UndergroundPathSwitchRoomEntrances_DontToggle
 	readmem wUndergroundSwitchPositions
 	addval -3
 	writemem wUndergroundSwitchPositions
@@ -350,10 +350,10 @@ EmergencySwitchScript:
 	writetext SwitchRoomText_Emergency
 	promptbutton
 	checkevent EVENT_EMERGENCY_SWITCH
-	iftrue .On
+	iftruefwd .On
 	writetext SwitchRoomText_OffTurnOn
 	yesorno
-	iffalse UndergroundPathSwitchRoomEntrances_DontToggle
+	iffalsefwd UndergroundPathSwitchRoomEntrances_DontToggle
 	setval 7
 	writemem wUndergroundSwitchPositions
 	setevent EVENT_EMERGENCY_SWITCH
@@ -365,7 +365,7 @@ EmergencySwitchScript:
 .On:
 	writetext SwitchRoomText_OnTurnOff
 	yesorno
-	iffalse UndergroundPathSwitchRoomEntrances_DontToggle
+	iffalsefwd UndergroundPathSwitchRoomEntrances_DontToggle
 	setval 0
 	writemem wUndergroundSwitchPositions
 	clearevent EVENT_EMERGENCY_SWITCH
@@ -379,14 +379,14 @@ UndergroundPathSwitchRoomEntrances_DontToggle:
 
 UndergroundPathSwitchRoomEntrances_UpdateDoors:
 	readmem wUndergroundSwitchPositions
-	ifequal 0, .Position0
-	ifequal 1, .Position1
-	ifequal 2, .Position2
-	ifequal 3, .Position3
-	ifequal 4, .Position4
-	ifequal 5, .Position5
-	ifequal 6, .Position6
-	ifequal 7, .EmergencyPosition
+	ifequalfwd 0, .Position0
+	ifequalfwd 1, .Position1
+	ifequalfwd 2, .Position2
+	ifequalfwd 3, .Position3
+	ifequalfwd 4, .Position4
+	ifequalfwd 5, .Position5
+	ifequalfwd 6, .Position6
+	ifequalfwd 7, .EmergencyPosition
 .Position0:
 	playsound SFX_ENTER_DOOR
 	scall .Clear4

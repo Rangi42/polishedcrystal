@@ -53,7 +53,7 @@ YellowForestFlyPoint:
 
 YellowForestTileScript:
 	checkscene
-	iftrue .underfoot
+	iftruefwd .underfoot
 	callasm YellowForest_OverheadBridgeAsm
 	endcallback
 
@@ -170,9 +170,9 @@ YellowForestYellowScript:
 	faceplayer
 	opentext
 	checkevent EVENT_BEAT_YELLOW
-	iffalse YellowForestYellowBattleScript
+	iffalsefwd YellowForestYellowBattleScript
 	checkevent EVENT_GOT_LIGHT_BALL_FROM_YELLOW
-	iffalse YellowBattleAfterBallScript
+	iffalsefwd YellowBattleAfterBallScript
 	jumpopenedtext YellowForestYellowGoodbyeText
 
 YellowForestYellowBattleScript:
@@ -186,7 +186,7 @@ YellowForestYellowBattleScript:
 	reloadmapafterbattle
 	setevent EVENT_BEAT_YELLOW
 	checkevent EVENT_GOT_A_POKEMON_FROM_IVY
-	iffalse .skip
+	iffalsefwd .skip
 	clearevent EVENT_INDIGO_PLATEAU_POKECENTER_YELLOW
 .skip
 	opentext
@@ -201,7 +201,7 @@ YellowBattleAfterBallScript:
 YellowTryGiveLightBallScript:
 	promptbutton
 	verbosegiveitem LIGHT_BALL
-	iffalse NoRoomForLightBallScript
+	iffalsefwd NoRoomForLightBallScript
 	setevent EVENT_GOT_LIGHT_BALL_FROM_YELLOW
 	writetext YellowForestYellowGoodbyeText
 	waitbutton
@@ -212,7 +212,7 @@ YellowForestCooltrainerMScript:
 	faceplayer
 	opentext
 	checkevent EVENT_LISTENED_TO_SEED_BOMB_INTRO
-	iftrue YellowForestTutorSeedBombScript
+	iftruefwd YellowForestTutorSeedBombScript
 	writetext YellowForestCooltrainerMText
 	waitbutton
 	setevent EVENT_LISTENED_TO_SEED_BOMB_INTRO
@@ -220,14 +220,14 @@ YellowForestTutorSeedBombScript:
 	writetext Text_YellowForestTutorSeedBomb
 	waitbutton
 	checkitem SILVER_LEAF
-	iffalse .NoSilverLeaf
+	iffalsefwd .NoSilverLeaf
 	writetext Text_YellowForestTutorQuestion
 	yesorno
-	iffalse .TutorRefused
+	iffalsefwd .TutorRefused
 	setval SEED_BOMB
 	writetext ClearText
 	special Special_MoveTutor
-	ifequal $0, .TeachMove
+	ifequalfwd $0, .TeachMove
 .TutorRefused
 	jumpopenedtext Text_YellowForestTutorRefused
 

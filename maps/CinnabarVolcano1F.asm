@@ -85,7 +85,7 @@ CinnabarVolcano1FBouldersFall:
 CinnabarVolcano1FBuckScript:
 	faceplayer
 	checkevent EVENT_BEAT_BUCK
-	iftrue .Beaten
+	iftruefwd .Beaten
 	opentext
 	writetext .ChallengeText
 	yesorno

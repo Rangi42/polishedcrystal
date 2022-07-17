@@ -55,7 +55,7 @@ RageCandyBarMerchantScript:
 	yesorno
 	iffalse_jumpopenedtext RageCandyBarMerchantRefusedText
 	checkmoney $0, 300
-	ifequal $2, UnknownScript_0x19006c
+	ifequalfwd $2, UnknownScript_0x19006c
 	giveitem RAGECANDYBAR
 	iffalse_jumpopenedtext RageCandyBarMerchantNoRoomText
 	waitsfx

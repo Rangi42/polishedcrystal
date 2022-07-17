@@ -29,10 +29,10 @@ BattleTowerHallwayFollowReceptionist:
 .ChooseBattleRoom:
 	follow BATTLETOWERHALLWAY_RECEPTIONIST, PLAYER
 	scall .PickBattleRoom
-	ifequal 0, .Room1
-	ifequal 1, .Room2
-	ifequal 2, .Room3
-	ifequal 3, .Room4
+	ifequalfwd 0, .Room1
+	ifequalfwd 1, .Room2
+	ifequalfwd 2, .Room3
+	ifequalfwd 3, .Room4
 	applymovement BATTLETOWERHALLWAY_RECEPTIONIST, MovementData_BattleTowerHallwayWalkTo1020Room
 	sjumpfwd .EnterBattleRoom
 

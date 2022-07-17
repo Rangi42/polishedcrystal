@@ -8,11 +8,11 @@ Script_OverworldWhiteout::
 
 Script_Whiteout:
 	callasm LoseMoney
-	iffalse .whiteout_text
+	iffalsefwd .whiteout_text
 	readmem wBattlePlayerAction
-	ifequal BATTLEACTION_FORFEIT, .forfeit_text
+	ifequalfwd BATTLEACTION_FORFEIT, .forfeit_text
 	callasm DetermineWildBattlePanic
-	iffalse .whiteout_wild_text
+	iffalsefwd .whiteout_wild_text
 	farwritetext WhiteoutToTrainerText
 	sjumpfwd .text_done
 .forfeit_text
@@ -29,7 +29,7 @@ Script_Whiteout:
 	pause 40
 	special HealPartyEvenForNuzlocke
 	checkflag ENGINE_BUG_CONTEST_TIMER
-	iftrue .bug_contest
+	iftruefwd .bug_contest
 	callasm GetWhiteoutSpawn
 	farscall Script_AbortBugContest
 	special WarpToSpawnPoint

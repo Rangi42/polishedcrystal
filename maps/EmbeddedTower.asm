@@ -23,9 +23,9 @@ EmbeddedTowerSteven1Script:
 	faceplayer
 	opentext
 	checkevent EVENT_BEAT_STEVEN
-	iftrue .Beaten
+	iftruefwd .Beaten
 	checkevent EVENT_LISTENED_TO_STEVEN_INTRO
-	iftrue .HeardIntro
+	iftruefwd .HeardIntro
 	writetext EmbeddedTowerSteven1IntroText
 	waitbutton
 	setevent EVENT_LISTENED_TO_STEVEN_INTRO

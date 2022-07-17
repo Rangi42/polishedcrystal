@@ -102,9 +102,9 @@ Route42LyraScript:
 	winlosstext Route42LyraWinText, Route42LyraLossText
 	setlasttalked ROUTE42_LYRA
 	checkevent EVENT_GOT_TOTODILE_FROM_ELM
-	iftrue .Totodile
+	iftruefwd .Totodile
 	checkevent EVENT_GOT_CHIKORITA_FROM_ELM
-	iftrue .Chikorita
+	iftruefwd .Chikorita
 	loadtrainer LYRA1, LYRA1_7
 	sjumpfwd .AfterBattle
 
@@ -131,7 +131,7 @@ Route42LyraScript:
 	applymovement ROUTE42_LYRA, MovementData_Route42LyraLeave
 	disappear ROUTE42_LYRA
 	checkevent EVENT_SAW_SUICUNE_ON_ROUTE_42
-	iftrue .NoSuicune
+	iftruefwd .NoSuicune
 	setscene $2
 	sjumpfwd .Finish
 .NoSuicune
@@ -159,13 +159,13 @@ FisherTully1Script:
 	loadvar VAR_CALLERID, PHONE_FISHER_TULLY
 	opentext
 	checkflag ENGINE_TULLY_READY_FOR_REMATCH
-	iftrue UnknownScript_0x1a927f
+	iftruefwd UnknownScript_0x1a927f
 	checkflag ENGINE_TULLY_HAS_WATER_STONE
-	iftrue UnknownScript_0x1a92dc
+	iftruefwd UnknownScript_0x1a92dc
 	checkcellnum PHONE_FISHER_TULLY
-	iftrue UnknownScript_0x1a92fd
+	iftruefwd UnknownScript_0x1a92fd
 	checkevent EVENT_TULLY_ASKED_FOR_PHONE_NUMBER
-	iftrue UnknownScript_0x1a9268
+	iftruefwd UnknownScript_0x1a9268
 	writetext FisherTullyAfterBattleText
 	promptbutton
 	setevent EVENT_TULLY_ASKED_FOR_PHONE_NUMBER
@@ -176,8 +176,8 @@ UnknownScript_0x1a9268:
 	scall UnknownScript_0x1a92f5
 UnknownScript_0x1a926b:
 	askforphonenumber PHONE_FISHER_TULLY
-	ifequal $1, UnknownScript_0x1a9305
-	ifequal $2, UnknownScript_0x1a9301
+	ifequalfwd $1, UnknownScript_0x1a9305
+	ifequalfwd $2, UnknownScript_0x1a9301
 	gettrainername FISHER, TULLY1, $0
 	scall UnknownScript_0x1a92f9
 	sjumpfwd UnknownScript_0x1a92fd
@@ -186,19 +186,19 @@ UnknownScript_0x1a927f:
 	scall UnknownScript_0x1a9309
 	winlosstext FisherTully1BeatenText, 0
 	readmem wTullyFightCount
-	ifequal 3, .Fight3
-	ifequal 2, .Fight2
-	ifequal 1, .Fight1
-	ifequal 0, .LoadFight0
+	ifequalfwd 3, .Fight3
+	ifequalfwd 2, .Fight2
+	ifequalfwd 1, .Fight1
+	ifequalfwd 0, .LoadFight0
 .Fight3:
 	checkevent EVENT_RESTORED_POWER_TO_KANTO
-	iftrue .LoadFight3
+	iftruefwd .LoadFight3
 .Fight2:
 	checkevent EVENT_BEAT_ELITE_FOUR
-	iftrue .LoadFight2
+	iftruefwd .LoadFight2
 .Fight1:
 	checkevent EVENT_CLEARED_ROCKET_HIDEOUT
-	iftrue .LoadFight1
+	iftruefwd .LoadFight1
 .LoadFight0:
 	loadtrainer FISHER, TULLY1
 	startbattle
@@ -233,7 +233,7 @@ UnknownScript_0x1a927f:
 UnknownScript_0x1a92dc:
 	scall UnknownScript_0x1a930d
 	verbosegiveitem WATER_STONE
-	iffalse UnknownScript_0x1a92ee
+	iffalsefwd UnknownScript_0x1a92ee
 	clearflag ENGINE_TULLY_HAS_WATER_STONE
 	setevent EVENT_TULLY_GAVE_WATER_STONE
 	sjumpfwd UnknownScript_0x1a92fd

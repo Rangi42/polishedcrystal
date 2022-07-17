@@ -49,9 +49,9 @@ VermilionGym_MapScriptHeader:
 
 VermilionGymDoorsScript:
 	checkevent EVENT_VERMILION_GYM_SWITCH_2
-	iftrue .done
+	iftruefwd .done
 	checkevent EVENT_VERMILION_GYM_SWITCH_1
-	iffalse .resample
+	iffalsefwd .resample
 	appear VERMILIONGYM_FENCE_1_LEFT
 	appear VERMILIONGYM_FENCE_1_RIGHT
 .resample
@@ -63,7 +63,7 @@ VermilionGymSurgeScript:
 	faceplayer
 	opentext
 	checkflag ENGINE_THUNDERBADGE
-	iftrue .FightDone
+	iftruefwd .FightDone
 	writetext LtSurgeIntroText
 	waitbutton
 	closetext
@@ -82,16 +82,16 @@ VermilionGymSurgeScript:
 	waitsfx
 	setflag ENGINE_THUNDERBADGE
 	readvar VAR_BADGES
-	ifequal 9, .FirstBadge
-	ifequal 10, .SecondBadge
-	ifequal 12, .LyrasEgg
+	ifequalfwd 9, .FirstBadge
+	ifequalfwd 10, .SecondBadge
+	ifequalfwd 12, .LyrasEgg
 	sjumpfwd .FightDone
 .FirstBadge:
 	specialphonecall SPECIALCALL_FIRSTBADGE
 	sjumpfwd .FightDone
 .SecondBadge:
 	checkevent EVENT_GOT_GS_BALL_FROM_POKECOM_CENTER
-	iftrue .FightDone
+	iftruefwd .FightDone
 	specialphonecall SPECIALCALL_SECONDBADGE
 	sjumpfwd .FightDone
 .LyrasEgg:
@@ -153,11 +153,11 @@ VermilionGymGuyScript:
 
 VermilionGymTrashCanScript:
 	checkevent EVENT_VERMILION_GYM_SWITCH_2
-	iftrue .trash_can
+	iftruefwd .trash_can
 	callasm CheckVermilionGymTrashCan
-	iftrue .open_lock
+	iftruefwd .open_lock
 	checkevent EVENT_VERMILION_GYM_SWITCH_1
-	iftrue .reset_switches
+	iftruefwd .reset_switches
 .trash_can
 	jumpstd trashcan
 
@@ -167,7 +167,7 @@ VermilionGymTrashCanScript:
 	playsound SFX_PUSH_BUTTON
 	promptbutton
 	checkevent EVENT_VERMILION_GYM_SWITCH_1
-	iftrue .second_switch
+	iftruefwd .second_switch
 	writetext VermilionGymFoundFirstSwitchText
 	playsound SFX_ENTER_DOOR
 	disappear VERMILIONGYM_FENCE_1_LEFT
@@ -197,7 +197,7 @@ VermilionGymTrashCanScript:
 VermilionGymStatue:
 	gettrainername LT_SURGE, 1, $1
 	checkflag ENGINE_THUNDERBADGE
-	iftrue .Beaten
+	iftruefwd .Beaten
 	jumpstd gymstatue1
 .Beaten:
 	jumpstd gymstatue2

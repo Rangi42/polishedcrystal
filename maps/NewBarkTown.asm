@@ -123,9 +123,9 @@ NewBarkTown_LyraFinalTrigger:
 	winlosstext Text_LyraGoodbyeWin, Text_LyraGoodbyeLoss
 	setlasttalked NEWBARKTOWN_LYRA
 	checkevent EVENT_GOT_TOTODILE_FROM_ELM
-	iftrue .Totodile
+	iftruefwd .Totodile
 	checkevent EVENT_GOT_CHIKORITA_FROM_ELM
-	iftrue .Chikorita
+	iftruefwd .Chikorita
 	loadtrainer LYRA1, LYRA1_10
 	sjumpfwd .AfterBattle
 

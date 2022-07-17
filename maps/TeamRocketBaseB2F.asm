@@ -80,7 +80,7 @@ TeamRocketBaseB2F_MapScriptHeader:
 
 TransmitterDoorCallback:
 	checkevent EVENT_OPENED_DOOR_TO_ROCKET_HIDEOUT_TRANSMITTER
-	iftrue .Change
+	iftruefwd .Change
 	endcallback
 
 .Change:
@@ -181,7 +181,7 @@ LanceHealsScript:
 	setscene $1
 	setevent EVENT_LANCE_HEALED_YOU_IN_TEAM_ROCKET_BASE
 	readvar VAR_FACING
-	ifequal RIGHT, .FacingRight
+	ifequalfwd RIGHT, .FacingRight
 	applymovement TEAMROCKETBASEB2F_LANCE, RocketBaseLanceLeavesAfterHealMovement
 	disappear TEAMROCKETBASEB2F_LANCE
 	end
@@ -235,15 +235,15 @@ RocketElectrode1:
 	cry ELECTRODE
 	loadwildmon ELECTRODE, 33
 	startbattle
-	iftrue TeamRocketBaseB2FReloadMap
+	iftruefwd TeamRocketBaseB2FReloadMap
 	disappear TEAMROCKETBASEB2F_ELECTRODE1
 	disappear TEAMROCKETBASEB2F_ELECTRODE4
 	checkevent EVENT_TEAM_ROCKET_BASE_B2F_ELECTRODE_1
-	iffalse TeamRocketBaseB2FReloadMap
+	iffalsefwd TeamRocketBaseB2FReloadMap
 	checkevent EVENT_TEAM_ROCKET_BASE_B2F_ELECTRODE_2
-	iffalse TeamRocketBaseB2FReloadMap
+	iffalsefwd TeamRocketBaseB2FReloadMap
 	checkevent EVENT_TEAM_ROCKET_BASE_B2F_ELECTRODE_3
-	iffalse TeamRocketBaseB2FReloadMap
+	iffalsefwd TeamRocketBaseB2FReloadMap
 	reloadmapafterbattle
 	special PlayMapMusic
 	applymovement PLAYER, RocketBasePlayerLeavesElectrodesMovement1
@@ -253,15 +253,15 @@ RocketElectrode2:
 	cry ELECTRODE
 	loadwildmon ELECTRODE, 33
 	startbattle
-	iftrue TeamRocketBaseB2FReloadMap
+	iftruefwd TeamRocketBaseB2FReloadMap
 	disappear TEAMROCKETBASEB2F_ELECTRODE2
 	disappear TEAMROCKETBASEB2F_ELECTRODE5
 	checkevent EVENT_TEAM_ROCKET_BASE_B2F_ELECTRODE_1
-	iffalse TeamRocketBaseB2FReloadMap
+	iffalsefwd TeamRocketBaseB2FReloadMap
 	checkevent EVENT_TEAM_ROCKET_BASE_B2F_ELECTRODE_2
-	iffalse TeamRocketBaseB2FReloadMap
+	iffalsefwd TeamRocketBaseB2FReloadMap
 	checkevent EVENT_TEAM_ROCKET_BASE_B2F_ELECTRODE_3
-	iffalse TeamRocketBaseB2FReloadMap
+	iffalsefwd TeamRocketBaseB2FReloadMap
 	reloadmapafterbattle
 	special PlayMapMusic
 	applymovement PLAYER, RocketBasePlayerLeavesElectrodesMovement2
@@ -271,15 +271,15 @@ RocketElectrode3:
 	cry ELECTRODE
 	loadwildmon ELECTRODE, 33
 	startbattle
-	iftrue TeamRocketBaseB2FReloadMap
+	iftruefwd TeamRocketBaseB2FReloadMap
 	disappear TEAMROCKETBASEB2F_ELECTRODE3
 	disappear TEAMROCKETBASEB2F_ELECTRODE6
 	checkevent EVENT_TEAM_ROCKET_BASE_B2F_ELECTRODE_1
-	iffalse TeamRocketBaseB2FReloadMap
+	iffalsefwd TeamRocketBaseB2FReloadMap
 	checkevent EVENT_TEAM_ROCKET_BASE_B2F_ELECTRODE_2
-	iffalse TeamRocketBaseB2FReloadMap
+	iffalsefwd TeamRocketBaseB2FReloadMap
 	checkevent EVENT_TEAM_ROCKET_BASE_B2F_ELECTRODE_3
-	iffalse TeamRocketBaseB2FReloadMap
+	iffalsefwd TeamRocketBaseB2FReloadMap
 	reloadmapafterbattle
 	special PlayMapMusic
 	applymovement PLAYER, RocketBasePlayerLeavesElectrodesMovement3

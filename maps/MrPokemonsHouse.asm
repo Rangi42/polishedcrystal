@@ -62,7 +62,7 @@ MrPokemonsHouse_MrPokemonScript:
 	faceplayer
 	opentext
 	checkkeyitem RED_SCALE
-	iftrue .RedScale
+	iftruefwd .RedScale
 	checkevent EVENT_GAVE_MYSTERY_EGG_TO_ELM
 	iftrue_jumpopenedtext MrPokemonText_AlwaysNewDiscoveries
 	jumpopenedtext MrPokemonText_ImDependingOnYou
@@ -76,9 +76,9 @@ MrPokemonsHouse_MrPokemonScript:
 	writetext MrPokemonText_GotShinyDitto
 	playsound SFX_KEY_ITEM
 	waitsfx
-	ifequal 1, .in_party
+	ifequalfwd 1, .in_party
 	special Special_CurBoxFullCheck
-	iffalse .BoxNotFull
+	iffalsefwd .BoxNotFull
 	farwritetext _CurBoxFullText
 .BoxNotFull
 	special GetCurBoxName
@@ -135,9 +135,9 @@ MrPokemonsHouse_OakScript:
 	specialphonecall SPECIALCALL_ROBBED
 	clearevent EVENT_COP_IN_ELMS_LAB
 	checkevent EVENT_GOT_TOTODILE_FROM_ELM
-	iftrue .RivalTakesChikorita
+	iftruefwd .RivalTakesChikorita
 	checkevent EVENT_GOT_CHIKORITA_FROM_ELM
-	iftrue .RivalTakesCyndaquil
+	iftruefwd .RivalTakesCyndaquil
 	setevent EVENT_TOTODILE_POKEBALL_IN_ELMS_LAB
 	end
 
@@ -153,7 +153,7 @@ MrPokemonsHouse_CabinetScript:
 	opentext
 	writetext MrPokemonsHouse_CabinetText
 	checkevent EVENT_TRADED_RED_SCALE
-	iffalse .NoRedScale
+	iffalsefwd .NoRedScale
 	promptbutton
 	writetext MrPokemonsHouse_RedScaleCabinetText
 .NoRedScale

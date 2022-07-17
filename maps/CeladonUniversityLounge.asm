@@ -29,9 +29,9 @@ CeladonUniversityLoungeNeeshaScript:
 	faceplayer
 	opentext
 	checkevent EVENT_BEAT_COOLTRAINERF_NEESHA
-	iftrue .Beaten
+	iftruefwd .Beaten
 	checkevent EVENT_INTRODUCED_CELADON_FOUR
-	iftrue .IntroducedCeladonFour1
+	iftruefwd .IntroducedCeladonFour1
 	writetext .IntroText1
 	sjumpfwd .AfterIntro
 .IntroducedCeladonFour1
@@ -204,9 +204,9 @@ CeladonUniversityLoungeBookshelf2:
 	writetext .Text1
 	waitbutton
 	checkevent EVENT_GOT_PP_MAX_IN_UNIVERSITY
-	iftrue .GotItem
+	iftruefwd .GotItem
 	verbosegiveitem PP_MAX
-	iffalse .Done
+	iffalsefwd .Done
 	setevent EVENT_GOT_PP_MAX_IN_UNIVERSITY
 .Done
 	endtext

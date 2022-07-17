@@ -21,12 +21,12 @@ ProfOaksAide2Script:
 	faceplayer
 	opentext
 	checkevent EVENT_GOT_EXP_SHARE_FROM_PROF_OAKS_AIDE
-	iftrue .Explain
+	iftruefwd .Explain
 	writetext ProfOaksAide2HiText
 	waitbutton
 	setval16 30
 	special CountCaught
-	iftrue .HereYouGo
+	iftruefwd .HereYouGo
 .UhOh
 	jumpopenedtext ProfOaksAide2UhOhText
 
@@ -34,7 +34,7 @@ ProfOaksAide2Script:
 	writetext ProfOaksAide2HereYouGoText
 	waitbutton
 	verbosegiveitem EXP_SHARE
-	iffalse .NoRoom
+	iffalsefwd .NoRoom
 	setevent EVENT_GOT_EXP_SHARE_FROM_PROF_OAKS_AIDE
 .Explain
 	jumpopenedtext ProfOaksAide2ExplainText

@@ -120,7 +120,7 @@ CinnabarLabCelebiEventScript:
 	applymovement PLAYER, CinnabarLabPlayerStepsBackMovementData
 	pause 15
 	checkflag ENGINE_PLAYER_IS_FEMALE
-	iftrue .Female
+	iftruefwd .Female
 	appear CINNABARLAB_CHRIS
 	sjumpfwd .Continue
 .Female

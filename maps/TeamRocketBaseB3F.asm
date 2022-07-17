@@ -56,7 +56,7 @@ TeamRocketBaseB3FTrigger0:
 
 TeamRocketBaseB3FCheckGiovanniDoor:
 	checkevent EVENT_OPENED_DOOR_TO_GIOVANNIS_OFFICE
-	iftrue .OpenSesame
+	iftruefwd .OpenSesame
 	endcallback
 
 .OpenSesame:
@@ -177,9 +177,9 @@ BossDoor:
 	dw EVENT_OPENED_DOOR_TO_GIOVANNIS_OFFICE
 	opentext
 	checkevent EVENT_LEARNED_SLOWPOKETAIL
-	iffalse .NeedsPassword
+	iffalsefwd .NeedsPassword
 	checkevent EVENT_LEARNED_RATICATE_TAIL
-	iffalse .NeedsPassword
+	iffalsefwd .NeedsPassword
 	sjumpfwd .OpenSesame
 
 .NeedsPassword:

@@ -53,7 +53,7 @@ AzaleaTownFlypointCallback:
 
 AzaleaTownRainScript:
 	special Special_GetOvercastIndex
-	ifequal AZALEA_OVERCAST, .rain
+	ifequalfwd AZALEA_OVERCAST, .rain
 	changemapblocks AzaleaTown_BlockData
 	endcallback
 
@@ -76,9 +76,9 @@ AzaleaTownRivalBattleTrigger2:
 	showtext .SeenText
 	setevent EVENT_RIVAL_AZALEA_TOWN
 	checkevent EVENT_GOT_TOTODILE_FROM_ELM
-	iftrue .Totodile
+	iftruefwd .Totodile
 	checkevent EVENT_GOT_CHIKORITA_FROM_ELM
-	iftrue .Chikorita
+	iftruefwd .Chikorita
 	winlosstext .WinText, .LossText
 	setlasttalked AZALEATOWN_SILVER
 	loadtrainer RIVAL1, RIVAL1_6

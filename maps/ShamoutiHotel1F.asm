@@ -42,10 +42,10 @@ ShamoutiHotel1FArtistScript:
 	faceplayer
 	opentext
 	checkflag ENGINE_CHANGED_TRENDY_PHRASE
-	iftrue .SetTrendyPhraseToday
+	iftruefwd .SetTrendyPhraseToday
 	writetext .Text1
 	yesorno
-	iftrue .Yes
+	iftruefwd .Yes
 	writetext .Text2
 	promptbutton
 	special SpecialTrendyPhrase

@@ -34,7 +34,7 @@ Route29_MapScriptHeader:
 
 Route29Tuscany:
 	checkflag ENGINE_ZEPHYRBADGE
-	iftrue .DoesTuscanyAppear
+	iftruefwd .DoesTuscanyAppear
 
 .TuscanyDisappears:
 	disappear ROUTE29_TUSCANY
@@ -57,7 +57,7 @@ Route29Tutorial1:
 	opentext
 	writetext CatchingTutorialIntroText
 	yesorno
-	iffalse Route29RefusedTutorial
+	iffalsefwd Route29RefusedTutorial
 	closetext
 	follow ROUTE29_LYRA, PLAYER
 	applymovement ROUTE29_LYRA, LyraMovementData1b
@@ -74,7 +74,7 @@ Route29Tutorial2:
 	opentext
 	writetext CatchingTutorialIntroText
 	yesorno
-	iffalse Route29RefusedTutorial
+	iffalsefwd Route29RefusedTutorial
 	closetext
 	follow ROUTE29_LYRA, PLAYER
 	applymovement ROUTE29_LYRA, LyraMovementData2b
@@ -121,7 +121,7 @@ TuscanyScript:
 	readvar VAR_WEEKDAY
 	ifnotequal TUESDAY, TuscanyNotTuesdayScript
 	checkevent EVENT_MET_TUSCANY_OF_TUESDAY
-	iftrue .MetTuscany
+	iftruefwd .MetTuscany
 	writetext MeetTuscanyText
 	promptbutton
 	setevent EVENT_MET_TUSCANY_OF_TUESDAY

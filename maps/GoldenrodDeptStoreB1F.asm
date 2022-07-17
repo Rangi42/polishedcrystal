@@ -26,7 +26,7 @@ GoldenrodDeptStoreB1F_MapScriptHeader:
 
 UnknownScript_0x7d781:
 	checkevent EVENT_RECEIVED_CARD_KEY
-	iftrue UnknownScript_0x7d78a
+	iftruefwd UnknownScript_0x7d78a
 	sjumpfwd UnknownScript_0x7d791
 
 UnknownScript_0x7d78a:
@@ -35,9 +35,9 @@ UnknownScript_0x7d78a:
 
 UnknownScript_0x7d791:
 	checkevent EVENT_WAREHOUSE_LAYOUT_2
-	iftrue .Layout2
+	iftruefwd .Layout2
 	checkevent EVENT_WAREHOUSE_LAYOUT_3
-	iftrue .Layout3
+	iftruefwd .Layout3
 	changeblock 10, 8, $d
 	endcallback
 

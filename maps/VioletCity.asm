@@ -54,7 +54,7 @@ VioletCityEarlScript:
 	opentext
 	writetext Text_EarlAsksIfYouBeatFalkner
 	yesorno
-	iffalse .FollowEarl
+	iffalsefwd .FollowEarl
 	jumpopenedtext Text_VeryNiceIndeed
 
 .FollowEarl:

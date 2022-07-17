@@ -31,7 +31,7 @@ DayCareTrigger0:
 
 DayCareEggCheckCallback:
 	checkflag ENGINE_DAY_CARE_MAN_HAS_EGG
-	iftrue .PutDayCareManOutside
+	iftruefwd .PutDayCareManOutside
 	clearevent EVENT_DAYCARE_MAN_IN_DAYCARE
 	setevent EVENT_DAYCARE_MAN_ON_ROUTE_34
 	endcallback
@@ -49,7 +49,7 @@ DayCare_MeetGrandma:
 	turnobject DAYCARE_GRANNY, DOWN
 	opentext
 	checkflag ENGINE_PLAYER_IS_FEMALE
-	iftrue .IntroduceFemale
+	iftruefwd .IntroduceFemale
 	writetext DayCareLyraHelloText1
 	sjumpfwd .Continue1
 .IntroduceFemale:
@@ -60,7 +60,7 @@ DayCare_MeetGrandma:
 	showemote EMOTE_SHOCK, DAYCARE_LYRA, 15
 	opentext
 	checkflag ENGINE_PLAYER_IS_FEMALE
-	iftrue .ProtestFemale
+	iftruefwd .ProtestFemale
 	writetext DayCareLyraProtestText1
 	sjumpfwd .Continue2
 .ProtestFemale:
@@ -93,7 +93,7 @@ DayCareManScript_Inside:
 	faceplayer
 	opentext
 	checkevent EVENT_GOT_ODD_EGG
-	iftrue .AlreadyHaveOddEgg
+	iftruefwd .AlreadyHaveOddEgg
 	writetext DayCareManText_GiveOddEgg
 	promptbutton
 	special GiveOddEgg
@@ -101,9 +101,9 @@ DayCareManScript_Inside:
 	writetext DayCareText_GotOddEgg
 	playsound SFX_GET_EGG_FROM_DAYCARE_LADY
 	waitsfx
-	ifequal 1, .InParty
+	ifequalfwd 1, .InParty
 	special Special_CurBoxFullCheck
-	iffalse .BoxNotFull
+	iffalsefwd .BoxNotFull
 	farwritetext _CurBoxFullText
 .BoxNotFull
 	special GetCurBoxName
@@ -124,15 +124,15 @@ DayCareLadyScript:
 	checkflag ENGINE_DAY_CARE_MAN_HAS_EGG
 	iftrue_jumpopenedtext Text_GrampsLookingForYou
 	checkevent EVENT_LYRA_GAVE_AWAY_EGG
-	iffalse .NoLyrasEgg
+	iffalsefwd .NoLyrasEgg
 	checkevent EVENT_GOT_LYRAS_EGG
-	iftrue .NoLyrasEgg
+	iftruefwd .NoLyrasEgg
 	writetext DayCareLadyText_GiveLyrasEgg
 	promptbutton
 	checkevent EVENT_GOT_TOTODILE_FROM_ELM
-	iftrue .GiveCyndaquilEgg
+	iftruefwd .GiveCyndaquilEgg
 	checkevent EVENT_GOT_CHIKORITA_FROM_ELM
-	iftrue .GiveTotodileEgg
+	iftruefwd .GiveTotodileEgg
 	giveegg CHIKORITA
 	sjumpfwd .GotLyrasEgg
 

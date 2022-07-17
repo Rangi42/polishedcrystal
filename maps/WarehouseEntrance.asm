@@ -63,7 +63,7 @@ WarehouseEntranceResetSwitches:
 
 WarehouseEntranceCheckBasementKey:
 	checkevent EVENT_USED_BASEMENT_KEY
-	iffalse .LockBasementDoor
+	iffalsefwd .LockBasementDoor
 	endcallback
 
 .LockBasementDoor:
@@ -72,12 +72,12 @@ WarehouseEntranceCheckBasementKey:
 
 WarehouseEntranceCheckDayOfWeek:
 	readvar VAR_WEEKDAY
-	ifequal MONDAY, .Monday
-	ifequal TUESDAY, .Tuesday
-	ifequal WEDNESDAY, .Wednesday
-	ifequal THURSDAY, .Thursday
-	ifequal FRIDAY, .Friday
-	ifequal SATURDAY, .Saturday
+	ifequalfwd MONDAY, .Monday
+	ifequalfwd TUESDAY, .Tuesday
+	ifequalfwd WEDNESDAY, .Wednesday
+	ifequalfwd THURSDAY, .Thursday
+	ifequalfwd FRIDAY, .Friday
+	ifequalfwd SATURDAY, .Saturday
 
 .Sunday:
 	disappear WAREHOUSEENTRANCE_GRAMPS
@@ -89,7 +89,7 @@ WarehouseEntranceCheckDayOfWeek:
 .Monday:
 	disappear WAREHOUSEENTRANCE_GRAMPS
 	checktime 1 << MORN
-	iffalse .NotMondayMorning
+	iffalsefwd .NotMondayMorning
 	appear WAREHOUSEENTRANCE_GRAMPS
 .NotMondayMorning:
 	disappear WAREHOUSEENTRANCE_SUPER_NERD5
@@ -185,8 +185,8 @@ GenericTrainerCosplayerClara:
 
 BitterMerchantScript:
 	readvar VAR_WEEKDAY
-	ifequal SUNDAY, .Open
-	ifequal SATURDAY, .Open
+	ifequalfwd SUNDAY, .Open
+	ifequalfwd SATURDAY, .Open
 	jumptext GoldenrodUndergroundWeAreNotOpenTodayText
 
 .Open:
@@ -196,7 +196,7 @@ BargainMerchantScript:
 	checkflag ENGINE_GOLDENROD_UNDERGROUND_MERCHANT_CLOSED
 	iftrue_jumptext GoldenrodUndergroundWeAreNotOpenTodayText
 	readvar VAR_WEEKDAY
-	ifequal MONDAY, .CheckMorn
+	ifequalfwd MONDAY, .CheckMorn
 	jumptext GoldenrodUndergroundWeAreNotOpenTodayText
 
 .CheckMorn:
@@ -206,29 +206,29 @@ BargainMerchantScript:
 
 OlderHaircutBrotherScript:
 	readvar VAR_WEEKDAY
-	ifequal TUESDAY, .DoHaircut
-	ifequal THURSDAY, .DoHaircut
-	ifequal SATURDAY, .DoHaircut
+	ifequalfwd TUESDAY, .DoHaircut
+	ifequalfwd THURSDAY, .DoHaircut
+	ifequalfwd SATURDAY, .DoHaircut
 	jumptext GoldenrodUndergroundWeAreNotOpenTodayText
 
 .DoHaircut:
 	opentext
 	checkflag ENGINE_GOLDENROD_UNDERGROUND_GOT_HAIRCUT
-	iftrue .AlreadyGotHaircut
+	iftruefwd .AlreadyGotHaircut
 	special PlaceMoneyTopRight
 	writetext GoldenrodUndergroundOlderHaircutBrotherOfferHaircutText
 	yesorno
-	iffalse .Refused
+	iffalsefwd .Refused
 	checkmoney $0, 500
-	ifequal $2, .NotEnoughMoney
+	ifequalfwd $2, .NotEnoughMoney
 	writetext GoldenrodUndergroundOlderHaircutBrotherAskWhichMonText
 	promptbutton
 	special Special_OlderHaircutBrother
-	ifequal $0, .Refused
-	ifequal $1, .Refused
+	ifequalfwd $0, .Refused
+	ifequalfwd $1, .Refused
 	setflag ENGINE_GOLDENROD_UNDERGROUND_GOT_HAIRCUT
-	ifequal $2, .two
-	ifequal $3, .three
+	ifequalfwd $2, .two
+	ifequalfwd $3, .three
 	sjumpfwd .else
 
 .two
@@ -265,9 +265,9 @@ OlderHaircutBrotherScript:
 	writetext GoldenrodUndergroundOlderHaircutBrotherAllDoneText
 	waitbutton
 	checkevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_1
-	iftrue EitherHaircutBrotherScript_SlightlyHappier
+	iftruefwd EitherHaircutBrotherScript_SlightlyHappier
 	checkevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_2
-	iftrue EitherHaircutBrotherScript_Happier
+	iftruefwd EitherHaircutBrotherScript_Happier
 	sjumpfwd EitherHaircutBrotherScript_MuchHappier
 
 .Refused:
@@ -281,29 +281,29 @@ OlderHaircutBrotherScript:
 
 YoungerHaircutBrotherScript:
 	readvar VAR_WEEKDAY
-	ifequal SUNDAY, .DoHaircut
-	ifequal WEDNESDAY, .DoHaircut
-	ifequal FRIDAY, .DoHaircut
+	ifequalfwd SUNDAY, .DoHaircut
+	ifequalfwd WEDNESDAY, .DoHaircut
+	ifequalfwd FRIDAY, .DoHaircut
 	jumptext GoldenrodUndergroundWeAreNotOpenTodayText
 
 .DoHaircut:
 	opentext
 	checkflag ENGINE_GOLDENROD_UNDERGROUND_GOT_HAIRCUT
-	iftrue .AlreadyGotHaircut
+	iftruefwd .AlreadyGotHaircut
 	special PlaceMoneyTopRight
 	writetext GoldenrodUndergroundYoungerHaircutBrotherOfferHaircutText
 	yesorno
-	iffalse .Refused
+	iffalsefwd .Refused
 	checkmoney $0, 300
-	ifequal $2, .NotEnoughMoney
+	ifequalfwd $2, .NotEnoughMoney
 	writetext GoldenrodUndergroundYoungerHaircutBrotherAskWhichMonText
 	promptbutton
 	special Special_YoungerHaircutBrother
-	ifequal $0, .Refused
-	ifequal $1, .Refused
+	ifequalfwd $0, .Refused
+	ifequalfwd $1, .Refused
 	setflag ENGINE_GOLDENROD_UNDERGROUND_GOT_HAIRCUT
-	ifequal $2, .two
-	ifequal $3, .three
+	ifequalfwd $2, .two
+	ifequalfwd $3, .three
 	sjumpfwd .else
 
 .two
@@ -338,9 +338,9 @@ YoungerHaircutBrotherScript:
 	writetext GoldenrodUndergroundYoungerHaircutBrotherAllDoneText
 	waitbutton
 	checkevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_1
-	iftrue EitherHaircutBrotherScript_SlightlyHappier
+	iftruefwd EitherHaircutBrotherScript_SlightlyHappier
 	checkevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_2
-	iftrue EitherHaircutBrotherScript_Happier
+	iftruefwd EitherHaircutBrotherScript_Happier
 	sjumpfwd EitherHaircutBrotherScript_MuchHappier
 
 .Refused:

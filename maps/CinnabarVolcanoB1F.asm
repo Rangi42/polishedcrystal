@@ -38,19 +38,19 @@ CinnabarVolcanoB1F_MapScriptHeader:
 
 CinnabarVolcanoB1FBouldersLand:
 	checkevent EVENT_BOULDER_IN_CINNABAR_VOLCANO_1F_1
-	iffalse .skip1
+	iffalsefwd .skip1
 	changeblock 12, 24, $5f
 .skip1
 	checkevent EVENT_BOULDER_IN_CINNABAR_VOLCANO_1F_2
-	iffalse .skip2
+	iffalsefwd .skip2
 	changeblock 24, 22, $5f
 .skip2
 	checkevent EVENT_BOULDER_IN_CINNABAR_VOLCANO_1F_3
-	iffalse .skip3
+	iffalsefwd .skip3
 	changeblock 22, 12, $5d
 .skip3
 	checkevent EVENT_BOULDER_IN_CINNABAR_VOLCANO_1F_4
-	iffalse .skip4
+	iffalsefwd .skip4
 	changeblock 14, 10, $5d
 .skip4
 	endcallback

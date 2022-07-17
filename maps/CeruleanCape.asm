@@ -310,7 +310,7 @@ TrainerLadyJessica:
 	endifjustbattled
 	opentext
 	checkevent EVENT_SPOKE_TO_LADY_JESSICA
-	iftrue .SpokeAgain
+	iftruefwd .SpokeAgain
 	writetext .AfterText1
 	setevent EVENT_SPOKE_TO_LADY_JESSICA
 	waitendtext

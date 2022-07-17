@@ -279,7 +279,7 @@ Script_CutFromMenu:
 	reloadmappart
 	special UpdateTimePals
 	callasm GetBuffer6
-	ifequal $0, Script_CutTree
+	ifequalfwd $0, Script_CutTree
 ;Script_CutGrass:
 	callasm PrepareOverworldMove
 	farwritetext _UseCutText
@@ -400,7 +400,7 @@ AskFlashScript:
 	opentext
 	farwritetext _AskFlashText
 	yesorno
-	iftrue Script_UseFlash
+	iftruefwd Script_UseFlash
 	endtext
 
 OWFlash:
@@ -1140,8 +1140,8 @@ Script_UsedStrength:
 
 AskStrengthScript:
 	callasm TryStrengthOW
-	iffalse .AskStrength
-	ifequal $1, .DontMeetRequirements
+	iffalsefwd .AskStrength
+	ifequalfwd $1, .DontMeetRequirements
 	sjumpfwd .AlreadyUsedStrength
 
 .DontMeetRequirements:
@@ -1269,9 +1269,9 @@ Script_UsedWhirlpool:
 Script_AutoWhirlpool:
 	playsound SFX_SURF
 	readvar VAR_FACING
-	ifequal UP, .Up
-	ifequal DOWN, .Down
-	ifequal RIGHT, .Right
+	ifequalfwd UP, .Up
+	ifequalfwd DOWN, .Down
+	ifequalfwd RIGHT, .Right
 	applymovement PLAYER, .LeftMovementData
 	end
 
@@ -1379,7 +1379,7 @@ AutoHeadbuttScript:
 	callasm ShakeHeadbuttTree
 
 	callasm TreeMonEncounter
-	iffalse .no_battle
+	iffalsefwd .no_battle
 	randomwildmon
 	startbattle
 	reloadmapafterbattle
@@ -1387,7 +1387,7 @@ AutoHeadbuttScript:
 
 .no_battle
 	callasm TreeItemEncounter
-	iffalse .no_item
+	iffalsefwd .no_item
 	opentext
 	verbosegiveitem ITEM_FROM_MEM
 	endtext
@@ -1483,7 +1483,7 @@ AutoRockSmashScript:
 
 	callasm RockMonEncounter
 	readmem wTempWildMonSpecies
-	iffalse .no_battle
+	iffalsefwd .no_battle
 	randomwildmon
 	startbattle
 	reloadmapafterbattle
@@ -1491,7 +1491,7 @@ AutoRockSmashScript:
 
 .no_battle
 	callasm RockItemEncounter
-	iffalse .no_item
+	iffalsefwd .no_item
 	opentext
 	verbosegiveitem ITEM_FROM_MEM
 	closetext
@@ -1504,7 +1504,7 @@ MovementData_RockSmash:
 
 AskRockSmashScript:
 	callasm HasRockSmash
-	ifequal 1, .no
+	ifequalfwd 1, .no
 
 	checkflag ENGINE_ROCK_SMASH_ACTIVE
 	iftrue AutoRockSmashScript
@@ -1667,7 +1667,7 @@ Script_NotEvenANibble:
 Script_GotAnItem:
 	scall Script_FishCastRod
 	callasm Fishing_CheckFacingUp
-	iffalse .NotFacingUp
+	iffalsefwd .NotFacingUp
 	applymovement PLAYER, Movement_HookedItemFacingUp
 	sjumpfwd .GetTheHookedItem
 .NotFacingUp:
@@ -1684,7 +1684,7 @@ Script_GotAnItem:
 Script_GotABite:
 	scall Script_FishCastRod
 	callasm Fishing_CheckFacingUp
-	iffalse .NotFacingUp
+	iffalsefwd .NotFacingUp
 	applymovement PLAYER, Movement_BiteFacingUp
 	sjumpfwd .FightTheHookedPokemon
 .NotFacingUp:
@@ -1894,7 +1894,7 @@ HasCutAvailable::
 
 AskCutTreeScript:
 	callasm HasCutAvailable
-	ifequal 1, .no
+	ifequalfwd 1, .no
 
 	checkflag ENGINE_AUTOCUT_ACTIVE
 	iftrue AutoCutTreeScript

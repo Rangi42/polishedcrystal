@@ -42,8 +42,8 @@ SilverCavePokeCenterGrampsScript:
 	writetext .GreetingText
 	waitbutton
 	readvar VAR_PKMN_JOURNALS
-	ifequal 0, .ReadNone
-	ifequal NUM_POKEMON_JOURNALS, .ReadThemAll
+	ifequalfwd 0, .ReadNone
+	ifequalfwd NUM_POKEMON_JOURNALS, .ReadThemAll
 	jumpthisopenedtext
 
 	text "Oh, you've read "

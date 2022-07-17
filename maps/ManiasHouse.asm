@@ -20,12 +20,12 @@ ManiaScript:
 	faceplayer
 	opentext
 	checkevent EVENT_MANIA_TOOK_SHUCKIE_OR_LET_YOU_KEEP_HIM
-	iftrue .default_postevent
+	iftruefwd .default_postevent
 	checkevent EVENT_GOT_SHUCKIE
-	iftrue .alreadyhaveshuckie
+	iftruefwd .alreadyhaveshuckie
 	writetext ManiaText_AskLookAfterShuckie
 	yesorno
-	iffalse .refusetotakeshuckie
+	iffalsefwd .refusetotakeshuckie
 	givepoke SHUCKLE, MALE | PLAIN_FORM, 25, BERRY_JUICE, NET_BALL, POISON_JAB, ShuckieName, ShuckieOTName, ShuckieOTIDAndCaughtGender
 	iffalse_jumpopenedtext ManiaText_PartyAndBoxFull
 	writetext ManiaText_TakeCareOfShuckie
@@ -34,9 +34,9 @@ ManiaScript:
 	writetext ManiaText_GotShuckie
 	playsound SFX_KEY_ITEM
 	waitsfx
-	ifequal 1, .shuckieinparty
+	ifequalfwd 1, .shuckieinparty
 	special Special_CurBoxFullCheck
-	iffalse .BoxNotFull
+	iffalsefwd .BoxNotFull
 	farwritetext _CurBoxFullText
 .BoxNotFull
 	special GetCurBoxName
@@ -50,7 +50,7 @@ ManiaScript:
 
 .alreadyhaveshuckie
 	checkflag ENGINE_GOT_SHUCKIE_TODAY
-	iffalse .returnshuckie
+	iffalsefwd .returnshuckie
 	jumpopenedtext ManiaText_TakeCareOfShuckie
 
 .refusetotakeshuckie
@@ -59,12 +59,12 @@ ManiaScript:
 .returnshuckie
 	writetext ManiaText_CanIHaveMyMonBack
 	yesorno
-	iffalse .refused
+	iffalsefwd .refused
 	special ReturnShuckie
-	ifequal $0, .wrong
-	ifequal $1, .refused
-	ifequal $3, .superhappy
-	ifequal $4, .default_postevent
+	ifequalfwd $0, .wrong
+	ifequalfwd $1, .refused
+	ifequalfwd $3, .superhappy
+	ifequalfwd $4, .default_postevent
 	writetext ManiaText_ThankYou
 	waitbutton
 	closetext

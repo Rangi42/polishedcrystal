@@ -37,18 +37,18 @@ KarensRoomEntranceTrigger:
 
 KarensRoomDoorCallback:
 	checkevent EVENT_KARENS_ROOM_ENTRANCE_CLOSED
-	iffalse .KeepDoorClosed
+	iffalsefwd .KeepDoorClosed
 	changeblock 4, 14, $2a
 .KeepDoorClosed:
 	checkevent EVENT_KARENS_ROOM_EXIT_OPEN
-	iffalse .OpenDoor
+	iffalsefwd .OpenDoor
 	changeblock 4, 2, $16
 .OpenDoor:
 	endcallback
 
 KarenScript:
 	readvar VAR_BADGES
-	ifequal 16, .Rematch
+	ifequalfwd 16, .Rematch
 	checkevent EVENT_BEAT_ELITE_4_KAREN
 	iftrue_jumptextfaceplayer .AfterText
 	showtextfaceplayer .SeenText

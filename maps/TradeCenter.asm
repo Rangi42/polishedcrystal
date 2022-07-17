@@ -29,7 +29,7 @@ TradeCenterTrigger0:
 
 TradeCenter_SetWhichChris:
 	special Special_CableClubCheckWhichChris
-	iffalse .Chris2
+	iffalsefwd .Chris2
 	disappear TRADECENTER_CHRIS2
 	appear TRADECENTER_CHRIS1
 	endcallback

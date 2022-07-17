@@ -18,10 +18,10 @@ DayOfWeekSiblingsHousePokedexScript:
 	opentext
 	writetext DayOfWeekSiblingsHousePokedexText1
 	yesorno
-	iffalse .End
+	iffalsefwd .End
 	writetext DayOfWeekSiblingsHousePokedexText2
 	yesorno
-	iffalse .End
+	iffalsefwd .End
 	writetext DayOfWeekSiblingsHousePokedexText3
 	waitbutton
 .End:

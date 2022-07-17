@@ -80,7 +80,7 @@ MomEventScript:
 .InitialSetDSTFlag:
 	writetext MomDSTText
 	yesorno
-	iffalse .NotDST
+	iffalsefwd .NotDST
 	special Special_InitialSetDSTFlag
 	yesorno
 	iffalse .InitialSetDSTFlag
@@ -92,7 +92,7 @@ MomEventScript:
 .InitializedDSTFlag:
 	writetext MomRunningShoesText
 	yesorno
-	iftrue .NoInstructions
+	iftruefwd .NoInstructions
 	writetext MomInstructionsText
 	promptbutton
 .NoInstructions:
@@ -143,14 +143,14 @@ PlayersHouse1FTVScript:
 MomScript:
 	faceplayer
 	checkscene
-	iffalse .MomEvent
+	iffalsefwd .MomEvent
 	opentext
 	checkevent EVENT_FIRST_TIME_BANKING_WITH_MOM
 	iftrue_jumpopenedtext MomDoItText
 	checkevent EVENT_TALKED_TO_MOM_AFTER_MYSTERY_EGG_QUEST
-	iftrue .BankOfMom
+	iftruefwd .BankOfMom
 	checkevent EVENT_GAVE_MYSTERY_EGG_TO_ELM
-	iftrue .FirstTimeBanking
+	iftruefwd .FirstTimeBanking
 	checkevent EVENT_GOT_A_POKEMON_FROM_ELM
 	iftrue_jumpopenedtext MomErrandText
 	jumpthisopenedtext
@@ -277,11 +277,11 @@ NeighborScript:
 	faceplayer
 	opentext
 	checktime 1 << MORN
-	iftrue .MornScript
+	iftruefwd .MornScript
 	checktime 1 << DAY
-	iftrue .DayScript
+	iftruefwd .DayScript
 	checktime (1 << EVE) | (1 << NITE)
-	iftrue .NiteScript
+	iftruefwd .NiteScript
 
 .MornScript:
 	writetext .MornIntroText

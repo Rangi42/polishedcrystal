@@ -28,11 +28,11 @@ CeladonUniversityHyperTestRoomWestwoodScript:
 	checkevent EVENT_GOT_DRAGON_RAGE_MAGIKARP
 	iftrue_jumpopenedtext .TestOverText
 	checkevent EVENT_PASSED_CELADON_HYPER_TEST
-	iftrue .GiveMagikarp
+	iftruefwd .GiveMagikarp
 	writetext .GreetingText
 	waitbutton
 	checkevent EVENT_LISTENED_TO_WESTWOOD_INTRO
-	iftrue .HeardIntro
+	iftruefwd .HeardIntro
 	writetext .IntroText
 	waitbutton
 	setevent EVENT_LISTENED_TO_WESTWOOD_INTRO

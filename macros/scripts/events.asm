@@ -43,6 +43,7 @@ MACRO ifequal
 	db ifequal_command
 	db \1 ; byte
 	dw \2 ; pointer
+	assert warn, \2 - @ > 255 || \2 - @ < 0, "ifequal can be ifequalfwd"
 ENDM
 
 	const ifnotequal_command
@@ -56,12 +57,14 @@ ENDM
 MACRO iffalse
 	db iffalse_command
 	dw \1 ; pointer
+	assert warn, \1 - @ > 255 || \1 - @ < 0, "iffalse can be iffalsefwd"
 ENDM
 
 	const iftrue_command
 MACRO iftrue
 	db iftrue_command
 	dw \1 ; pointer
+	assert warn, \1 - @ > 255 || \1 - @ < 0, "iftrue can be iftruefwd"
 ENDM
 
 	const ifgreater_command
@@ -1342,6 +1345,28 @@ ENDM
 MACRO sjumpfwd
 	assert \1 > @, "sjumpfwd cannot jump backward"
 	db sjumpfwd_command
+	db \1 - @ - 1 ; distance
+ENDM
+
+	const ifequalfwd_command
+MACRO ifequalfwd
+	assert \2 > @, "ifequalfwd cannot jump backward"
+	db ifequalfwd_command
+	db \1 ; byte
+	db \2 - @ - 1 ; distance
+ENDM
+
+	const iffalsefwd_command
+MACRO iffalsefwd
+	assert \1 > @, "iffalsefwd cannot jump backward"
+	db iffalsefwd_command
+	db \1 - @ - 1 ; distance
+ENDM
+
+	const iftruefwd_command
+MACRO iftruefwd
+	assert \1 > @, "iftruefwd cannot jump backward"
+	db iftruefwd_command
 	db \1 - @ - 1 ; distance
 ENDM
 

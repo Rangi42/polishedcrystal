@@ -18,7 +18,7 @@ VioletOutskirts_MapScriptHeader:
 
 VioletOutskirtsAvalanche:
 	checkevent EVENT_BEAT_JASMINE
-	iftrue .end
+	iftruefwd .end
 	changeblock 4, -2, $0a
 	changeblock 6, -2, $0a
 .end

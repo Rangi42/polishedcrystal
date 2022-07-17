@@ -31,10 +31,10 @@ CeladonUniversityClassroom4_MapScriptHeader:
 CeladonUniversityClassroom4RaymondScript:
 	faceplayer
 	checkevent EVENT_BEAT_COOLTRAINERM_RAYMOND
-	iftrue .Beaten
+	iftruefwd .Beaten
 	opentext
 	checkevent EVENT_INTRODUCED_CELADON_FOUR
-	iftrue .IntroducedCeladonFour1
+	iftruefwd .IntroducedCeladonFour1
 	writetext .IntroText1
 	sjumpfwd .AfterIntro
 .IntroducedCeladonFour1
@@ -208,7 +208,7 @@ CeladonUniversityClassroom4Rich_boyScript:
 	faceplayer
 	opentext
 	checkevent EVENT_GOT_ABILITY_CAP_IN_UNIVERSITY
-	iftrue .GotItem
+	iftruefwd .GotItem
 	writetext .Text1
 	promptbutton
 	verbosegiveitem ABILITY_CAP

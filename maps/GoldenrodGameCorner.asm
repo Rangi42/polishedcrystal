@@ -65,20 +65,20 @@ GoldenrodGameCornerFisherScript:
 	faceplayer
 	opentext
 	checkevent EVENT_LISTENED_TO_PAY_DAY_INTRO
-	iftrue GoldenrodGameCornerTutorPayDayScript
+	iftruefwd GoldenrodGameCornerTutorPayDayScript
 	writetext GoldenrodGameCornerFisherText
 	waitbutton
 	setevent EVENT_LISTENED_TO_PAY_DAY_INTRO
 GoldenrodGameCornerTutorPayDayScript:
 	writetext Text_GoldenrodGameCornerTutorPayDayQuestion
 	checkitem SILVER_LEAF
-	iffalse .NoSilverLeaf
+	iffalsefwd .NoSilverLeaf
 	yesorno
-	iffalse .TutorRefused
+	iffalsefwd .TutorRefused
 	setval PAY_DAY
 	writetext ClearText
 	special Special_MoveTutor
-	ifequal $0, .TeachMove
+	ifequalfwd $0, .TeachMove
 .TutorRefused
 	jumpopenedtext Text_GoldenrodGameCornerTutorRefused
 
@@ -103,16 +103,16 @@ GoldenrodGameCornerTMVendor_LoopScript: ; 056c36
 	loadmenu GoldenrodGameCornerTMVendorMenuData
 	verticalmenu
 	closewindow
-	ifequal $1, .flamethrower
-	ifequal $2, .thunderbolt
-	ifequal $3, .ice_beam
+	ifequalfwd $1, .flamethrower
+	ifequalfwd $2, .thunderbolt
+	ifequalfwd $3, .ice_beam
 	jumpopenedtext GoldenrodGameCornerPrizeVendorQuitText
 
 .flamethrower:
 	checktmhm TM_FLAMETHROWER
-	iftrue GoldenrodGameCornerPrizeVendor_AlreadyHaveTMScript
+	iftruefwd GoldenrodGameCornerPrizeVendor_AlreadyHaveTMScript
 	checkcoins 4000
-	ifequal $2, GoldenrodGameCornerPrizeVendor_NotEnoughCoinsScript
+	ifequalfwd $2, GoldenrodGameCornerPrizeVendor_NotEnoughCoinsScript
 	gettmhmname TM_FLAMETHROWER, $0
 	scall GoldenrodGameCornerPrizeVendor_ConfirmPurchaseScript
 	iffalse_jumpopenedtext GoldenrodGameCornerPrizeVendorQuitText
@@ -122,9 +122,9 @@ GoldenrodGameCornerTMVendor_LoopScript: ; 056c36
 
 .thunderbolt:
 	checktmhm TM_THUNDERBOLT
-	iftrue GoldenrodGameCornerPrizeVendor_AlreadyHaveTMScript
+	iftruefwd GoldenrodGameCornerPrizeVendor_AlreadyHaveTMScript
 	checkcoins 4000
-	ifequal $2, GoldenrodGameCornerPrizeVendor_NotEnoughCoinsScript
+	ifequalfwd $2, GoldenrodGameCornerPrizeVendor_NotEnoughCoinsScript
 	gettmhmname TM_THUNDERBOLT, $0
 	scall GoldenrodGameCornerPrizeVendor_ConfirmPurchaseScript
 	iffalse_jumpopenedtext GoldenrodGameCornerPrizeVendorQuitText
@@ -134,9 +134,9 @@ GoldenrodGameCornerTMVendor_LoopScript: ; 056c36
 
 .ice_beam:
 	checktmhm TM_ICE_BEAM
-	iftrue GoldenrodGameCornerPrizeVendor_AlreadyHaveTMScript
+	iftruefwd GoldenrodGameCornerPrizeVendor_AlreadyHaveTMScript
 	checkcoins 4000
-	ifequal $2, GoldenrodGameCornerPrizeVendor_NotEnoughCoinsScript
+	ifequalfwd $2, GoldenrodGameCornerPrizeVendor_NotEnoughCoinsScript
 	gettmhmname TM_ICE_BEAM, $0
 	scall GoldenrodGameCornerPrizeVendor_ConfirmPurchaseScript
 	iffalse_jumpopenedtext GoldenrodGameCornerPrizeVendorQuitText
@@ -192,9 +192,9 @@ GoldenrodGameCornerPrizeMonVendorScript:
 	loadmenu .MenuDataHeader
 	verticalmenu
 	closewindow
-	ifequal $1, .abra
-	ifequal $2, .cubone
-	ifequal $3, .clefairy
+	ifequalfwd $1, .abra
+	ifequalfwd $2, .cubone
+	ifequalfwd $3, .clefairy
 	jumpopenedtext GoldenrodGameCornerPrizeVendorQuitText
 
 .abra
@@ -293,7 +293,7 @@ GoldenrodGameCornerLeftTheirDrinkScript:
 
 GoldenrodGameCornerSlotsMachineScript:
 	random 6
-	ifequal 0, GoldenrodGameCornerLuckySlotsMachineScript
+	ifequalfwd 0, GoldenrodGameCornerLuckySlotsMachineScript
 	refreshscreen
 	setval FALSE
 	special Special_SlotMachine

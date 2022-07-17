@@ -67,7 +67,7 @@ GuitaristmClydeScript:
 	endifjustbattled
 	opentext
 	checkbp 0
-	iffalse .BattleTower
+	iffalsefwd .BattleTower
 	jumpopenedtext GuitaristClydeAfterBattleText
 
 .BattleTower:
@@ -84,11 +84,11 @@ FastShipBed:
 	special Special_FadeInQuickly
 	showtext FastShipBedText2
 	checkevent EVENT_FAST_SHIP_HAS_ARRIVED
-	iftrue UnknownScript_0x75ae1
+	iftruefwd UnknownScript_0x75ae1
 	checkevent EVENT_FAST_SHIP_FOUND_GIRL
-	iftrue UnknownScript_0x75ae2
+	iftruefwd UnknownScript_0x75ae2
 	checkevent EVENT_FAST_SHIP_FIRST_TIME
-	iftrue UnknownScript_0x75ae2
+	iftruefwd UnknownScript_0x75ae2
 UnknownScript_0x75ae1:
 	end
 
@@ -96,7 +96,7 @@ UnknownScript_0x75ae2:
 	playsound SFX_ELEVATOR_END
 	pause 30
 	checkevent EVENT_FAST_SHIP_DESTINATION_OLIVINE
-	iftrue UnknownScript_0x75af7
+	iftruefwd UnknownScript_0x75af7
 	showtext FastShipArrivedVermilionText
 	setevent EVENT_FAST_SHIP_HAS_ARRIVED
 	end

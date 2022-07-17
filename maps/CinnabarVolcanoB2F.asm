@@ -25,7 +25,7 @@ CinnabarVolcanoB2F_MapScriptHeader:
 
 CinnabarVolcanoB2FBouldersLand:
 	checkevent EVENT_BOULDER_IN_CINNABAR_VOLCANO_B1F
-	iffalse .skip1
+	iffalsefwd .skip1
 	changeblock 6, 6, $5f
 .skip1
 	endcallback
@@ -35,9 +35,9 @@ CinnabarVolcanoB2FLawrenceEncounterScript:
 	special Special_FadeOutMusic
 	pause 15
 	readvar VAR_FACING
-	ifequal UP, .up
-	ifequal DOWN, .down
-	ifequal LEFT, .left
+	ifequalfwd UP, .up
+	ifequalfwd DOWN, .down
+	ifequalfwd LEFT, .left
 .right
 	appear CINNABARVOLCANOB2F_LAWRENCE
 	applymovement CINNABARVOLCANOB2F_LAWRENCE, CinnabarVolcanoB2FMovementData_LawrenceApproachLeftRight
@@ -95,16 +95,16 @@ CinnabarVolcanoMoltres:
 	reloadmapafterbattle
 	setmonval MOLTRES
 	special SpecialMonCheck
-	iffalse .NoCandela
+	iffalsefwd .NoCandela
 	setevent EVENT_CELADON_UNIVERSITY_CANDELA
 	clearevent EVENT_SHAMOUTI_COAST_CANDELA
 .NoCandela
 	checkevent EVENT_SEAFOAM_ISLANDS_ARTICUNO
-	iffalse .end
+	iffalsefwd .end
 	checkevent EVENT_ROUTE_10_ZAPDOS
-	iffalse .end
+	iffalsefwd .end
 	special SpecialBirdsCheck
-	iffalse .end
+	iffalsefwd .end
 	sjump CinnabarVolcanoB2FLawrenceEncounterScript
 .end
 	end

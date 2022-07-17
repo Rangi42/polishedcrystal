@@ -37,16 +37,16 @@ CeladonPrizeRoom_tmcounterloop:
 	loadmenu CeladonPrizeRoom_TMMenuDataHeader
 	verticalmenu
 	closewindow
-	ifequal $1, .doubleteam
-	ifequal $2, .toxic
-	ifequal $3, .gigaimpact
+	ifequalfwd $1, .doubleteam
+	ifequalfwd $2, .toxic
+	ifequalfwd $3, .gigaimpact
 	jumpopenedtext CeladonPrizeRoom_ComeAgainText
 
 .doubleteam
 	checktmhm TM_DOUBLE_TEAM
-	iftrue CeladonPrizeRoom_alreadyhavetm
+	iftruefwd CeladonPrizeRoom_alreadyhavetm
 	checkcoins CELADONGAMECORNERPRIZEROOM_TM32_COINS
-	ifequal $2, CeladonPrizeRoom_notenoughcoins
+	ifequalfwd $2, CeladonPrizeRoom_notenoughcoins
 	gettmhmname TM_DOUBLE_TEAM, $0
 	scall CeladonPrizeRoom_askbuytm
 	iffalse_jumpopenedtext CeladonPrizeRoom_ComeAgainText
@@ -56,9 +56,9 @@ CeladonPrizeRoom_tmcounterloop:
 
 .toxic
 	checktmhm TM_TOXIC
-	iftrue CeladonPrizeRoom_alreadyhavetm
+	iftruefwd CeladonPrizeRoom_alreadyhavetm
 	checkcoins CELADONGAMECORNERPRIZEROOM_TM06_COINS
-	ifequal $2, CeladonPrizeRoom_notenoughcoins
+	ifequalfwd $2, CeladonPrizeRoom_notenoughcoins
 	gettmhmname TM_TOXIC, $0
 	scall CeladonPrizeRoom_askbuytm
 	iffalse_jumpopenedtext CeladonPrizeRoom_ComeAgainText
@@ -68,9 +68,9 @@ CeladonPrizeRoom_tmcounterloop:
 
 .gigaimpact
 	checktmhm TM_GIGA_IMPACT
-	iftrue CeladonPrizeRoom_alreadyhavetm
+	iftruefwd CeladonPrizeRoom_alreadyhavetm
 	checkcoins CELADONGAMECORNERPRIZEROOM_TM68_COINS
-	ifequal $2, CeladonPrizeRoom_notenoughcoins
+	ifequalfwd $2, CeladonPrizeRoom_notenoughcoins
 	gettmhmname TM_GIGA_IMPACT, $0
 	scall CeladonPrizeRoom_askbuytm
 	iffalse_jumpopenedtext CeladonPrizeRoom_ComeAgainText
@@ -131,9 +131,9 @@ CeladonGameCornerPokemonVendor:
 	loadmenu .MenuDataHeader
 	verticalmenu
 	closewindow
-	ifequal $1, .mr__mime
-	ifequal $2, .eevee
-	ifequal $3, .porygon
+	ifequalfwd $1, .mr__mime
+	ifequalfwd $2, .eevee
+	ifequalfwd $3, .porygon
 	jumpopenedtext CeladonPrizeRoom_ComeAgainText
 
 .mr__mime

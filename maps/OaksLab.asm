@@ -43,38 +43,38 @@ Oak:
 	faceplayer
 	opentext
 	checkevent EVENT_OPENED_MT_SILVER
-	iftrue .GiveStarter
+	iftruefwd .GiveStarter
 	checkevent EVENT_TALKED_TO_OAK_IN_KANTO
-	iftrue .GiveStarter
+	iftruefwd .GiveStarter
 	writetext OakWelcomeKantoText
 	promptbutton
 	setevent EVENT_TALKED_TO_OAK_IN_KANTO
 .GiveStarter:
 	checkevent EVENT_GOT_A_POKEMON_FROM_OAK
-	iftrue .CheckBadges
+	iftruefwd .CheckBadges
 	checkevent EVENT_GOT_A_POKEMON_FROM_IVY
-	iffalse .CheckBadges
+	iffalsefwd .CheckBadges
 	writetext OakLabGiveStarterText
 	promptbutton
 	waitsfx
 	checkevent EVENT_GOT_BULBASAUR_FROM_IVY
-	iftrue .Charmander
+	iftruefwd .Charmander
 	checkevent EVENT_GOT_CHARMANDER_FROM_IVY
-	iftrue .Squirtle
+	iftruefwd .Squirtle
 	givepoke BULBASAUR, PLAIN_FORM, 10, SITRUS_BERRY
-	iffalse .PartyAndBoxFull
+	iffalsefwd .PartyAndBoxFull
 	setevent EVENT_GOT_A_POKEMON_FROM_OAK
 	sjumpfwd .CheckBadges
 
 .Charmander:
 	givepoke CHARMANDER, PLAIN_FORM, 10, SITRUS_BERRY
-	iffalse .PartyAndBoxFull
+	iffalsefwd .PartyAndBoxFull
 	setevent EVENT_GOT_A_POKEMON_FROM_OAK
 	sjumpfwd .CheckBadges
 
 .Squirtle:
 	givepoke SQUIRTLE, PLAIN_FORM, 10, SITRUS_BERRY
-	iffalse .PartyAndBoxFull
+	iffalsefwd .PartyAndBoxFull
 	setevent EVENT_GOT_A_POKEMON_FROM_OAK
 	sjumpfwd .CheckBadges
 
@@ -83,12 +83,12 @@ Oak:
 	waitbutton
 .CheckBadges:
 	checkevent EVENT_OPENED_MT_SILVER
-	iftrue .CheckPokedex
+	iftruefwd .CheckPokedex
 	checkevent EVENT_BEAT_ELITE_FOUR_AGAIN
-	iftrue .BattleOak
+	iftruefwd .BattleOak
 	readvar VAR_BADGES
-	ifequal 16, .Complain1
-	ifequal  8, .Complain2
+	ifequalfwd 16, .Complain1
+	ifequalfwd  8, .Complain2
 	writetext OakYesKantoBadgesText
 	promptbutton
 .CheckPokedex:
@@ -96,10 +96,10 @@ Oak:
 	waitbutton
 	special ProfOaksPCBoot
 	checkevent EVENT_GOT_OVAL_CHARM_FROM_OAK
-	iftrue .NoOvalCharm
+	iftruefwd .NoOvalCharm
 	setval16 NUM_SPECIES - 2
 	special CountSeen
-	iffalse .NoOvalCharm
+	iffalsefwd .NoOvalCharm
 	writetext OakLabSeenAllText
 	promptbutton
 	verbosegivekeyitem OVAL_CHARM
@@ -108,10 +108,10 @@ Oak:
 	waitbutton
 .NoOvalCharm
 	checkevent EVENT_GOT_SHINY_CHARM_FROM_OAK
-	iftrue .NoShinyCharm
+	iftruefwd .NoShinyCharm
 	setval16 NUM_SPECIES - 2
 	special CountCaught
-	iffalse .NoShinyCharm
+	iffalsefwd .NoShinyCharm
 	writetext OakLabCaughtAllText
 	promptbutton
 	verbosegivekeyitem SHINY_CHARM
@@ -123,14 +123,14 @@ Oak:
 
 .BattleOak:
 	checkevent EVENT_LISTENED_TO_OAK_INTRO
-	iftrue .HeardIntro
+	iftruefwd .HeardIntro
 	writetext OakMightBeReadyText
 	waitbutton
 	setevent EVENT_LISTENED_TO_OAK_INTRO
 .HeardIntro:
 	writetext OakChallengeText
 	yesorno
-	iffalse .NotReady
+	iffalsefwd .NotReady
 	writetext OakSeenText
 	waitbutton
 	closetext

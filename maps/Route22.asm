@@ -24,7 +24,7 @@ KukuiScript:
 	faceplayer
 	opentext
 	checkevent EVENT_INTRODUCED_KUKUI
-	iftrue .Introduced
+	iftruefwd .Introduced
 	writetext .IntroText
 	sjumpfwd .Question
 .Introduced
@@ -38,7 +38,7 @@ KukuiScript:
 	winlosstext .BeatenText, 0
 	setlasttalked ROUTE22_KUKUI
 	checkevent EVENT_BEAT_ELITE_FOUR_AGAIN
-	iftrue .Rematch
+	iftruefwd .Rematch
 	loadtrainer KUKUI, 1
 	sjumpfwd .StartBattle
 .Rematch

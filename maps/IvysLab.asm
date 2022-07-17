@@ -38,7 +38,7 @@ ProfIvyScript:
 	faceplayer
 	opentext
 	checkevent EVENT_HEALED_NIDORINO
-	iftrue .GetItem
+	iftruefwd .GetItem
 	writetext .RequestText
 	yesorno
 	iffalse_jumpopenedtext .NoBerryText
@@ -46,10 +46,10 @@ ProfIvyScript:
 	iffalse_jumpopenedtext .NoBerryText
 	takeitem LIECHI_BERRY
 	checkitem LIECHI_BERRY
-	iffalse .Return1
+	iffalsefwd .Return1
 	takeitem LIECHI_BERRY
 	checkitem LIECHI_BERRY
-	iffalse .Return2
+	iffalsefwd .Return2
 	takeitem LIECHI_BERRY
 	writetext .OkayText
 	waitbutton
@@ -72,7 +72,7 @@ ProfIvyScript:
 	opentext
 .GetItem
 	checkevent EVENT_GOT_MOON_STONE_FROM_IVY
-	iftrue .GotItem
+	iftruefwd .GotItem
 	writetext .ThanksText
 	promptbutton
 	verbosegiveitem MOON_STONE
@@ -201,7 +201,7 @@ IvysLabHopeScript:
 
 IvysLabNidorinoScript:
 	checkevent EVENT_HEALED_NIDORINO
-	iftrue .Healed
+	iftruefwd .Healed
 	opentext
 	writetext .WeakCry
 	setmonval NIDORINO
@@ -235,7 +235,7 @@ IvysLabHealingMachine:
 	opentext
 	writetext .Text
 	yesorno
-	iftrue .HealParty
+	iftruefwd .HealParty
 	endtext
 
 .HealParty:

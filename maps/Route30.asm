@@ -64,11 +64,11 @@ TrainerYoungsterJoey:
 	loadvar VAR_CALLERID, PHONE_YOUNGSTER_JOEY
 	opentext
 	checkflag ENGINE_JOEY_READY_FOR_REMATCH
-	iftrue .Rematch
+	iftruefwd .Rematch
 	checkcellnum PHONE_YOUNGSTER_JOEY
-	iftrue .NumberAccepted
+	iftruefwd .NumberAccepted
 	checkevent EVENT_JOEY_ASKED_FOR_PHONE_NUMBER
-	iftrue .AskAgain
+	iftruefwd .AskAgain
 	writetext YoungsterJoey1AfterText
 	promptbutton
 	setevent EVENT_JOEY_ASKED_FOR_PHONE_NUMBER
@@ -79,8 +79,8 @@ TrainerYoungsterJoey:
 	callstd asknumber2m
 .RequestNumber:
 	askforphonenumber PHONE_YOUNGSTER_JOEY
-	ifequal $1, .PhoneFull
-	ifequal $2, .NumberDeclined
+	ifequalfwd $1, .PhoneFull
+	ifequalfwd $2, .NumberDeclined
 	gettrainername YOUNGSTER, JOEY1, $0
 	callstd registerednumberm
 	jumpstd numberacceptedm
@@ -89,23 +89,23 @@ TrainerYoungsterJoey:
 	callstd rematchm
 	winlosstext YoungsterJoey1BeatenText, 0
 	readmem wJoeyFightCount
-	ifequal 4, .Fight4
-	ifequal 3, .Fight3
-	ifequal 2, .Fight2
-	ifequal 1, .Fight1
-	ifequal 0, .LoadFight0
+	ifequalfwd 4, .Fight4
+	ifequalfwd 3, .Fight3
+	ifequalfwd 2, .Fight2
+	ifequalfwd 1, .Fight1
+	ifequalfwd 0, .LoadFight0
 .Fight4:
 	checkevent EVENT_BEAT_ELITE_FOUR
-	iftrue .LoadFight4
+	iftruefwd .LoadFight4
 .Fight3:
 	checkevent EVENT_CLEARED_RADIO_TOWER
-	iftrue .LoadFight3
+	iftruefwd .LoadFight3
 .Fight2:
 	checkflag ENGINE_FLYPOINT_OLIVINE
-	iftrue .LoadFight2
+	iftruefwd .LoadFight2
 .Fight1:
 	checkflag ENGINE_FLYPOINT_GOLDENROD
-	iftrue .LoadFight1
+	iftruefwd .LoadFight1
 .LoadFight0:
 	loadtrainer YOUNGSTER, JOEY1
 	startbattle
@@ -144,12 +144,12 @@ TrainerYoungsterJoey:
 	reloadmapafterbattle
 	clearflag ENGINE_JOEY_READY_FOR_REMATCH
 	checkevent EVENT_JOEY_HP_UP
-	iftrue .GiveHPUp
+	iftruefwd .GiveHPUp
 	checkevent EVENT_GOT_HP_UP_FROM_JOEY
-	iftrue .done
+	iftruefwd .done
 	callstd rematchgiftm
 	verbosegiveitem HP_UP
-	iffalse .PackFull
+	iffalsefwd .PackFull
 	setevent EVENT_GOT_HP_UP_FROM_JOEY
 	jumpstd numberacceptedm
 
@@ -161,7 +161,7 @@ TrainerYoungsterJoey:
 	writetext YoungsterJoeyText_GiveHPUpAfterBattle
 	waitbutton
 	verbosegiveitem HP_UP
-	iffalse .PackFull
+	iffalsefwd .PackFull
 	clearevent EVENT_JOEY_HP_UP
 	setevent EVENT_GOT_HP_UP_FROM_JOEY
 	jumpstd numberacceptedm

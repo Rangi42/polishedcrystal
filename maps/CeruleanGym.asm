@@ -64,7 +64,7 @@ CeruleanGymMistyScript:
 	faceplayer
 	opentext
 	checkflag ENGINE_CASCADEBADGE
-	iftrue .FightDone
+	iftruefwd .FightDone
 	writetext MistyIntroText
 	waitbutton
 	closetext
@@ -84,16 +84,16 @@ CeruleanGymMistyScript:
 	waitsfx
 	setflag ENGINE_CASCADEBADGE
 	readvar VAR_BADGES
-	ifequal 9, .FirstBadge
-	ifequal 10, .SecondBadge
-	ifequal 12, .LyrasEgg
+	ifequalfwd 9, .FirstBadge
+	ifequalfwd 10, .SecondBadge
+	ifequalfwd 12, .LyrasEgg
 	sjumpfwd .FightDone
 .FirstBadge:
 	specialphonecall SPECIALCALL_FIRSTBADGE
 	sjumpfwd .FightDone
 .SecondBadge:
 	checkevent EVENT_GOT_GS_BALL_FROM_POKECOM_CENTER
-	iftrue .FightDone
+	iftruefwd .FightDone
 	specialphonecall SPECIALCALL_SECONDBADGE
 	sjumpfwd .FightDone
 .LyrasEgg:
@@ -179,18 +179,18 @@ CeruleanGymHiddenMachinePart:
 
 CeruleanGymStatue1:
 	checkevent EVENT_TRAINERS_IN_CERULEAN_GYM
-	iffalse CeruleanGymStatue
+	iffalsefwd CeruleanGymStatue
 	jumptext CeruleanGymNote1
 
 CeruleanGymStatue2:
 	checkevent EVENT_TRAINERS_IN_CERULEAN_GYM
-	iffalse CeruleanGymStatue
+	iffalsefwd CeruleanGymStatue
 	jumptext CeruleanGymNote2
 
 CeruleanGymStatue:
 	gettrainername MISTY, 1, $1
 	checkflag ENGINE_CASCADEBADGE
-	iftrue .Beaten
+	iftruefwd .Beaten
 	jumpstd gymstatue1
 .Beaten:
 	jumpstd gymstatue2

@@ -26,7 +26,7 @@ BattleFactoryHallway_MapScriptHeader:
 	disappear BATTLEFACTORYHALLWAY_RECEPTIONIST
 	disappear BATTLEFACTORYHALLWAY_LOBBY_RECEPTIONIST
 	readvar VAR_YCOORD
-	ifequal 13, .lobby_arrival
+	ifequalfwd 13, .lobby_arrival
 	appear BATTLEFACTORYHALLWAY_RECEPTIONIST
 	end
 .lobby_arrival
@@ -35,7 +35,7 @@ BattleFactoryHallway_MapScriptHeader:
 
 BattleFactoryHallwayFollowReceptionist:
 	readvar VAR_YCOORD
-	ifequal 13, .arrived_from_lobby
+	ifequalfwd 13, .arrived_from_lobby
 	sdefer .WonBattle
 	end
 
@@ -56,7 +56,7 @@ BattleFactoryHallwayFollowReceptionist:
 	waitbutton
 	special Special_BattleTower_GetBattleResult
 	ifequal BTCHALLENGE_WON, Script_BeatenAllFactoryTrainers
-	ifequal BTCHALLENGE_FACILITYBRAIN, .WarnAboutHead
+	ifequalfwd BTCHALLENGE_FACILITYBRAIN, .WarnAboutHead
 .AskNextBattle:
 	writethistext
 		text "Next up, opponent"
@@ -83,7 +83,7 @@ BattleFactoryHallwayFollowReceptionist:
 		done
 .ShownText
 	yesorno
-	iffalse .DontBattleNextOpponent
+	iffalsefwd .DontBattleNextOpponent
 	closetext
 	special Special_BattleTower_GenerateNextOpponent
 	sjumpfwd .NextRentalBattle
@@ -94,7 +94,7 @@ BattleFactoryHallwayFollowReceptionist:
 		line "session?"
 		done
 	yesorno
-	iffalse .DontSaveAndEndTheSession
+	iffalsefwd .DontSaveAndEndTheSession
 	special SaveOptions
 	setval BATTLETOWER_SAVED_AND_LEFT
 	special Special_BattleTower_SetChallengeState
@@ -134,7 +134,7 @@ BattleFactoryHallwayFollowReceptionist:
 		prompt
 
 	special Special_BattleTower_NextRentalBattle
-	iftrue .Continue
+	iftruefwd .Continue
 
 	writethistext
 		text "Cancel your run?"

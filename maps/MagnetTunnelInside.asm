@@ -34,26 +34,26 @@ MagnetTunnelInside_MapScriptHeader:
 
 MagnetTunnelInsideTileCallback:
 	checkevent EVENT_MAGNET_TUNNEL_LODESTONE_1
-	iffalse .NoMachine1
+	iffalsefwd .NoMachine1
 	changeblock 6, 10, $6b
 	changeblock 6, 8, $6d
 .NoMachine1
 	checkevent EVENT_MAGNET_TUNNEL_LODESTONE_2
-	iffalse .NoMachine2
+	iffalsefwd .NoMachine2
 	changeblock 22, 20, $66
 .NoMachine2
 	checkevent EVENT_MAGNET_TUNNEL_LODESTONE_3
-	iffalse .NoMachine3
+	iffalsefwd .NoMachine3
 	changeblock 20, 8, $6b
 	changeblock 20, 6, $6f
 .NoMachine3
 	checkevent EVENT_MAGNET_TUNNEL_LODESTONE_IN_PIT
-	iffalse .NoPit
+	iffalsefwd .NoPit
 	changeblock 34, 4, $68
 	endcallback
 .NoPit
 	checkevent EVENT_MAGNET_TUNNEL_LODESTONE_4
-	iffalse .NoMachine4
+	iffalsefwd .NoMachine4
 	changeblock 34, 8, $66
 .NoMachine4
 	endcallback
@@ -158,7 +158,7 @@ MagnetTunnelInsideMachine3:
 
 MagnetTunnelInsideMachine4:
 	checkevent EVENT_MAGNET_TUNNEL_LODESTONE_4
-	iftrue .MachineOn
+	iftruefwd .MachineOn
 	opentext
 	writetext MagnetTunnelInsideMachineText1
 	yesorno

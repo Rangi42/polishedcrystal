@@ -42,27 +42,27 @@ TinTower1FTrigger0:
 
 UnknownScript_0x18502f:
 	checkevent EVENT_GOT_RAINBOW_WING
-	iftrue UnknownScript_0x185047
+	iftruefwd UnknownScript_0x185047
 	checkevent EVENT_BEAT_ELITE_FOUR
-	iffalse UnknownScript_0x185050
+	iffalsefwd UnknownScript_0x185050
 	special SpecialBeastsCheck
-	iffalse UnknownScript_0x185050
+	iffalsefwd UnknownScript_0x185050
 	clearevent EVENT_TIN_TOWER_1F_WISE_TRIO_2
 	setevent EVENT_TIN_TOWER_1F_WISE_TRIO_1
 UnknownScript_0x185047:
 	checkevent EVENT_FOUGHT_HO_OH
-	iffalse .Done
+	iffalsefwd .Done
 	appear TINTOWER1F_EUSINE
 .Done:
 	endcallback
 
 UnknownScript_0x185050:
 	checkevent EVENT_FOUGHT_SUICUNE
-	iftrue UnknownScript_0x185077
+	iftruefwd UnknownScript_0x185077
 	appear TINTOWER1F_SUICUNE
 	setmonval RAIKOU
 	special SpecialMonCheck
-	iftrue UnknownScript_0x185065
+	iftruefwd UnknownScript_0x185065
 	appear TINTOWER1F_RAIKOU
 	sjumpfwd UnknownScript_0x185067
 
@@ -71,7 +71,7 @@ UnknownScript_0x185065:
 UnknownScript_0x185067:
 	setmonval ENTEI
 	special SpecialMonCheck
-	iftrue UnknownScript_0x185074
+	iftruefwd UnknownScript_0x185074
 	appear TINTOWER1F_ENTEI
 	sjumpfwd UnknownScript_0x185076
 
@@ -90,7 +90,7 @@ UnknownScript_0x185077:
 
 TinTowerStairsCallback:
 	checkevent EVENT_GOT_RAINBOW_WING
-	iftrue .NoChange
+	iftruefwd .NoChange
 	changeblock 8, 2, $9
 .NoChange:
 	endcallback
@@ -100,7 +100,7 @@ SuicuneBattle:
 	pause 15
 	setmonval RAIKOU
 	special SpecialMonCheck
-	iftrue .Next1 ; if player caught Raikou, he doesn't appear in Tin Tower
+	iftruefwd .Next1 ; if player caught Raikou, he doesn't appear in Tin Tower
 	applymovement TINTOWER1F_RAIKOU, TinTowerRaikouMovement1
 	turnobject PLAYER, LEFT
 	cry RAIKOU
@@ -113,7 +113,7 @@ SuicuneBattle:
 .Next1:
 	setmonval ENTEI
 	special SpecialMonCheck
-	iftrue .Next2 ; if player caught Entei, he doesn't appear in Tin Tower
+	iftruefwd .Next2 ; if player caught Entei, he doesn't appear in Tin Tower
 	applymovement TINTOWER1F_ENTEI, TinTowerEnteiMovement1
 	turnobject PLAYER, RIGHT
 	cry ENTEI
@@ -180,7 +180,7 @@ SuicuneBattle:
 
 TinTower1FSage4Script:
 	checkevent EVENT_FOUGHT_HO_OH
-	iftrue UnknownScript_0x185185
+	iftruefwd UnknownScript_0x185185
 	jumptextfaceplayer TinTower1FSage4Text1
 
 UnknownScript_0x185185:
@@ -190,9 +190,9 @@ TinTower1FSage5Script:
 	faceplayer
 	opentext
 	checkevent EVENT_FOUGHT_HO_OH
-	iftrue UnknownScript_0x1851b6
+	iftruefwd UnknownScript_0x1851b6
 	checkevent EVENT_GOT_RAINBOW_WING
-	iftrue UnknownScript_0x1851b0
+	iftruefwd UnknownScript_0x1851b0
 	writetext TinTower1FSage5Text1
 	promptbutton
 	verbosegivekeyitem RAINBOW_WING
@@ -214,7 +214,7 @@ UnknownScript_0x1851b6:
 
 TinTower1FSage6Script:
 	checkevent EVENT_FOUGHT_HO_OH
-	iftrue UnknownScript_0x1851c5
+	iftruefwd UnknownScript_0x1851c5
 	jumptextfaceplayer TinTower1FSage6Text1
 
 UnknownScript_0x1851c5:

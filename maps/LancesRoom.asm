@@ -52,11 +52,11 @@ WalkIntoEliteFourRoomMovement:
 
 LancesRoomDoorCallback:
 	checkevent EVENT_LANCES_ROOM_ENTRANCE_CLOSED
-	iffalse .LanceEntranceOpen
+	iffalsefwd .LanceEntranceOpen
 	changeblock 6, 22, $34
 .LanceEntranceOpen:
 	checkevent EVENT_LANCES_ROOM_EXIT_OPEN
-	iffalse .LanceExitClosed
+	iffalsefwd .LanceExitClosed
 	changeblock 6, 0, $b
 .LanceExitClosed:
 	endcallback
@@ -72,7 +72,7 @@ ApproachLanceFromRightTrigger:
 LanceScript:
 	turnobject LANCESROOM_LANCE, LEFT
 	readvar VAR_BADGES
-	ifequal 16, .Rematch
+	ifequalfwd 16, .Rematch
 	showtext .SeenText
 	winlosstext .BeatenText, 0
 	setlasttalked LANCESROOM_LANCE
@@ -118,7 +118,7 @@ LanceScript:
 	readvar VAR_BADGES
 	ifnotequal 16, .DefaultOakSpeech
 	checkevent EVENT_OPENED_MT_SILVER
-	iffalse .DefaultOakSpeech
+	iffalsefwd .DefaultOakSpeech
 	showtext .OakRematchSpeechText
 	sjumpfwd .OakSpeechDone
 .DefaultOakSpeech

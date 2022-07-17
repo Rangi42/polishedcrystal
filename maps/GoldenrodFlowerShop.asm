@@ -21,13 +21,13 @@ GoldenrodFlowerShop_MapScriptHeader:
 
 FlowerShopTeacherScript:
 	checkevent EVENT_FOUGHT_SUDOWOODO
-	iftrue .SellMulch
+	iftruefwd .SellMulch
 	checkevent EVENT_GOT_SQUIRTBOTTLE
 	iftrue_jumptextfaceplayer GoldenrodFlowerShopTeacherDontDoAnythingDangerousText
 	checkevent EVENT_MET_FLORIA
 	iffalse_jumptextfaceplayer GoldenrodFlowerShopTeacherMySisterWentToSeeWigglyTreeRoute36Text
 	checkevent EVENT_TALKED_TO_FLORIA_AT_FLOWER_SHOP
-	iffalse .Lalala
+	iffalsefwd .Lalala
 	checkflag ENGINE_PLAINBADGE
 	iffalse_jumptextfaceplayer GoldenrodFlowerShopTeacherAskWantToBorrowWaterBottleText
 	faceplayer
@@ -53,13 +53,13 @@ FlowerShopTeacherScript:
 	loadmenu .MenuDataHeader
 	verticalmenu
 	closewindow
-	ifequal $1, .Buy1
-	ifequal $2, .Buy10
+	ifequalfwd $1, .Buy1
+	ifequalfwd $2, .Buy10
 	jumpopenedtext DontBuyMulchText
 
 .Buy1:
 	checkmoney $0, 200
-	ifequal $2, .NotEnoughMoney
+	ifequalfwd $2, .NotEnoughMoney
 	giveitem MULCH
 	iffalse_jumpopenedtext NoRoomForMulchText
 	takemoney $0, 200
@@ -67,7 +67,7 @@ FlowerShopTeacherScript:
 
 .Buy10:
 	checkmoney $0, 2000
-	ifequal $2, .NotEnoughMoney
+	ifequalfwd $2, .NotEnoughMoney
 	giveitem MULCH, 10
 	iffalse_jumpopenedtext NoRoomForMulchText
 	takemoney $0, 2000
@@ -100,7 +100,7 @@ FlowerShopFloriaScript:
 	faceplayer
 	opentext
 	checkevent EVENT_FOUGHT_SUDOWOODO
-	iftrue .FoughtSudowoodo
+	iftruefwd .FoughtSudowoodo
 	checkevent EVENT_GOT_SQUIRTBOTTLE
 	iftrue_jumpopenedtext GoldenrodFlowerShopFloriaYouBeatWhitneyText
 	writetext GoldenrodFlowerShopFloriaWonderIfSisWillLendWaterBottleText

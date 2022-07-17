@@ -24,7 +24,7 @@ LavRadioTower1F_MapScriptHeader:
 
 LavRadioTower1FUpstairsScript:
 	checkevent EVENT_EXORCISED_LAV_RADIO_TOWER
-	iftrue .Exorcised
+	iftruefwd .Exorcised
 	warpmod 1, HAUNTED_RADIO_TOWER_2F
 	endcallback
 

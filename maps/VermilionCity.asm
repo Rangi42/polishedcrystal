@@ -56,9 +56,9 @@ VermilionCity_MapScriptHeader:
 
 VermilionCitySetupLawrenceCallback:
 	checkscene
-	iftrue .done
+	iftruefwd .done
 	readvar VAR_XCOORD
-	ifequal 18, .done
+	ifequalfwd 18, .done
 	disappear VERMILIONCITY_LAWRENCE
 	moveobject VERMILIONCITY_LAWRENCE, 19, 31
 	appear VERMILIONCITY_LAWRENCE
@@ -67,7 +67,7 @@ VermilionCitySetupLawrenceCallback:
 
 VermilionCitySetupBattleFactoryCallback:
 	checkevent EVENT_RESTORED_POWER_TO_KANTO
-	iftrue .done
+	iftruefwd .done
 	callasm .DarkenPowerPlantDoors
 .done
 	endcallback
@@ -117,7 +117,7 @@ LawrenceIntroScript:
 	showemote EMOTE_SHOCK, VERMILIONCITY_LAWRENCE, 15
 	pause 15
 	readvar VAR_XCOORD
-	ifequal 18, .left
+	ifequalfwd 18, .left
 	applymovement VERMILIONCITY_LAWRENCE, LawrenceWalkAroundRightMovementData
 	turnobject PLAYER, LEFT
 	sjumpfwd .continue
@@ -169,7 +169,7 @@ LawrenceWalkAroundRightMovementData:
 VermilionSnorlax:
 	opentext
 	special SpecialSnorlaxAwake
-	iftrue .Awake
+	iftruefwd .Awake
 	jumpopenedtext VermilionCitySnorlaxSleepingText
 
 .Awake:
@@ -189,7 +189,7 @@ VermilionGymBadgeGuy:
 	checkevent EVENT_GOT_BOTTLE_CAP_FROM_VERMILION_GUY
 	iftrue_jumptextfaceplayer VermilionCityBadgeGuyBattleEdgeText
 	readvar VAR_BADGES
-	ifequal 16, .AllBadges
+	ifequalfwd 16, .AllBadges
 	ifgreater 13, .MostBadges
 	ifgreater 9, .SomeBadges
 	jumptextfaceplayer VermilionCityBadgeGuyTrainerText

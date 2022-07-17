@@ -52,7 +52,7 @@ DimCave5FSetUpStoneTable:
 DimCave5FRileyScript:
 	faceplayer
 	checkevent EVENT_BEAT_RILEY
-	iftrue .Beaten
+	iftruefwd .Beaten
 	opentext
 	writetext .ChallengeText
 	yesorno

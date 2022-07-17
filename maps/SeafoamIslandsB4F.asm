@@ -32,9 +32,9 @@ SeafoamIslandsB4FLawrenceEncounterScript:
 	special Special_FadeOutMusic
 	pause 15
 	readvar VAR_FACING
-	ifequal UP, .up
-	ifequal DOWN, .down
-	ifequal LEFT, .left
+	ifequalfwd UP, .up
+	ifequalfwd DOWN, .down
+	ifequalfwd LEFT, .left
 .right
 	appear SEAFOAMISLANDSB4F_LAWRENCE_SURF
 	applymovement SEAFOAMISLANDSB4F_LAWRENCE_SURF, SeafoamIslandsB4FMovementData_LawrenceSurfApproach1
@@ -110,16 +110,16 @@ SeafoamIslandsArticuno:
 	reloadmapafterbattle
 	setmonval ARTICUNO
 	special SpecialMonCheck
-	iffalse .NoBlanche
+	iffalsefwd .NoBlanche
 	setevent EVENT_CELADON_UNIVERSITY_BLANCHE
 	clearevent EVENT_SHAMOUTI_COAST_BLANCHE
 .NoBlanche
 	checkevent EVENT_ROUTE_10_ZAPDOS
-	iffalse .end
+	iffalsefwd .end
 	checkevent EVENT_CINNABAR_VOLCANO_MOLTRES
-	iffalse .end
+	iffalsefwd .end
 	special SpecialBirdsCheck
-	iffalse .end
+	iffalsefwd .end
 	sjump SeafoamIslandsB4FLawrenceEncounterScript
 .end
 	end

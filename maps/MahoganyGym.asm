@@ -26,7 +26,7 @@ MahoganyGymPryceScript:
 	faceplayer
 	opentext
 	checkevent EVENT_BEAT_PRYCE
-	iftrue .FightDone
+	iftruefwd .FightDone
 	writetext PryceText_Intro
 	waitbutton
 	closetext
@@ -133,7 +133,7 @@ MahoganyGymGuyScript:
 MahoganyGymStatue:
 	gettrainername PRYCE, 1, $1
 	checkflag ENGINE_GLACIERBADGE
-	iftrue .Beaten
+	iftruefwd .Beaten
 	jumpstd gymstatue1
 .Beaten:
 	readvar VAR_BADGES

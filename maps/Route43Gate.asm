@@ -32,8 +32,8 @@ Route43GateTrigger0:
 .RocketTakeover:
 	playmusic MUSIC_ROCKET_ENCOUNTER
 	readvar VAR_FACING
-	ifequal DOWN, RocketScript_Southbound
-	ifequal UP, RocketScript_Northbound
+	ifequalfwd DOWN, RocketScript_Southbound
+	ifequalfwd UP, RocketScript_Northbound
 	setscene $1
 	end
 
@@ -48,7 +48,7 @@ RocketScript_Southbound:
 	writetext RocketText_TollFee
 	promptbutton
 	checkmoney $0, ROUTE43GATE_TOLL - 1
-	ifequal $0, RocketScript_TollSouth
+	ifequalfwd $0, RocketScript_TollSouth
 	sjumpfwd RocketScript_YoureBrokeSouth
 
 RocketScript_TollSouth:
@@ -80,7 +80,7 @@ RocketScript_Northbound:
 	writetext RocketText_TollFee
 	promptbutton
 	checkmoney $0, ROUTE43GATE_TOLL - 1
-	ifequal $0, RocketScript_TollNorth
+	ifequalfwd $0, RocketScript_TollNorth
 	sjumpfwd RocketScript_YoureBrokeNorth
 
 RocketScript_TollNorth:

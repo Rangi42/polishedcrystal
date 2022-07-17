@@ -36,17 +36,17 @@ DragonsDenB1F_MapScriptHeader:
 
 DragonsDenB1FSilverCallback:
 	checkevent EVENT_BEAT_RIVAL_IN_MT_MOON
-	iftrue .CheckDay
+	iftruefwd .CheckDay
 	disappear DRAGONSDENB1F_SILVER
 	endcallback
 
 .CheckDay:
 	checkevent EVENT_GOT_RIVALS_EGG
-	iffalse .AppearSilver
+	iffalsefwd .AppearSilver
 	readvar VAR_WEEKDAY
-	ifequal TUESDAY, .AppearSilver
-	ifequal THURSDAY, .AppearSilver
-	ifequal SATURDAY, .AppearSilver
+	ifequalfwd TUESDAY, .AppearSilver
+	ifequalfwd THURSDAY, .AppearSilver
+	ifequalfwd SATURDAY, .AppearSilver
 	disappear DRAGONSDENB1F_SILVER
 	endcallback
 
@@ -134,17 +134,17 @@ DragonsDenB1FSilverScript:
 	faceplayer
 	opentext
 	checkevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_1
-	iftrue .SilverTalkAgain
+	iftruefwd .SilverTalkAgain
 	checkevent EVENT_GOT_RIVALS_EGG
-	iftrue .SilverTalk
+	iftruefwd .SilverTalk
 	writetext .Training1Text
 	waitbutton
 	writetext .GiveEggText
 	promptbutton
 	checkevent EVENT_GOT_TOTODILE_FROM_ELM
-	iftrue .GiveChikoritaEgg
+	iftruefwd .GiveChikoritaEgg
 	checkevent EVENT_GOT_CHIKORITA_FROM_ELM
-	iftrue .GiveCyndaquilEgg
+	iftruefwd .GiveCyndaquilEgg
 	giveegg TOTODILE
 	sjumpfwd .GotRivalsEgg
 
@@ -155,7 +155,7 @@ DragonsDenB1FSilverScript:
 .GiveCyndaquilEgg:
 	giveegg CYNDAQUIL
 .GotRivalsEgg
-	iffalse .PartyAndBoxFull 
+	iffalsefwd .PartyAndBoxFull
 	writetext .DescribeEggText
 	waitbutton
 	closetext

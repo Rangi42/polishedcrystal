@@ -40,7 +40,7 @@ FightingDojoSetupRematchesCallback:
 	disappear REMATCH_BROWN_2
 	disappear REMATCH_BROWN_3
 	checkevent EVENT_BEAT_BLUE
-	iftrue .SetupDailyRematches
+	iftruefwd .SetupDailyRematches
 	endcallback
 
 MACRO rematch
@@ -63,16 +63,16 @@ ENDM
 
 .SetupDailyRematches:
 	readvar VAR_WEEKDAY
-	ifequal MONDAY, .Monday
-	ifequal TUESDAY, .Tuesday
-	ifequal WEDNESDAY, .Wednesday
-	ifequal THURSDAY, .Thursday
+	ifequalfwd MONDAY, .Monday
+	ifequalfwd TUESDAY, .Tuesday
+	ifequalfwd WEDNESDAY, .Wednesday
+	ifequalfwd THURSDAY, .Thursday
 	ifequal FRIDAY, .Friday
 	ifequal SATURDAY, .Saturday
 
 .Sunday
 	checktime (1 << EVE) | (1 << NITE)
-	iftrue .SundayNight
+	iftruefwd .SundayNight
 .SundayMorningAndDay
 	rematch_left REMATCH_RED_1, SPRITE_BIG_DOLL, SPRITE_JASMINE
 	rematch_right REMATCH_GREEN_2, SPRITE_COPYCAT, SPRITE_ERIKA
@@ -83,37 +83,37 @@ ENDM
 
 .Monday
 	checktime (1 << EVE) | (1 << NITE)
-	iftrue .MondayNight
+	iftruefwd .MondayNight
 .MondayMorningAndDay
 	rematch_left REMATCH_BLUE_2, SPRITE_COPYCAT, SPRITE_FALKNER
 	rematch_right REMATCH_BLUE_3, SPRITE_CONSOLE, SPRITE_JANINE
 	endcallback
 .MondayNight
 	checkevent EVENT_BEAT_WALKER
-	iffalse .NoWalker
+	iffalsefwd .NoWalker
 	rematch REMATCH_BLUE_3, SPRITE_CONSOLE, SPRITE_WALKER, 4, 8, DOWN
 .NoWalker
 	endcallback
 
 .Tuesday
 	checktime (1 << EVE) | (1 << NITE)
-	iftrue .TuesdayNight
+	iftruefwd .TuesdayNight
 .TuesdayMorningAndDay
 	rematch_left REMATCH_BROWN_2, SPRITE_COPYCAT, SPRITE_PRYCE
 	rematch_right REMATCH_BROWN_3, SPRITE_CONSOLE, SPRITE_BLAINE
 	endcallback
 .TuesdayNight
 	checkevent EVENT_BEAT_LORELEI_AGAIN
-	iffalse .NoLorelei
+	iffalsefwd .NoLorelei
 	rematch REMATCH_RED_1, SPRITE_BIG_DOLL, SPRITE_LORELEI, 4, 6, DOWN
 .NoLorelei
 	endcallback
 
 .Wednesday
 	checktime 1 << MORN
-	iftrue .WednesdayMorning
+	iftruefwd .WednesdayMorning
 	checktime (1 << EVE) | (1 << NITE)
-	iftrue .WednesdayNight
+	iftruefwd .WednesdayNight
 .WednesdayDay
 	rematch_left REMATCH_BROWN_2, SPRITE_COPYCAT, SPRITE_BROCK
 	rematch REMATCH_RED_1, SPRITE_BIG_DOLL, SPRITE_MISTY, 5, 2, RIGHT
@@ -129,12 +129,12 @@ ENDM
 
 .Thursday
 	checktime 1 << MORN
-	iftrue .ThursdayMorning
+	iftruefwd .ThursdayMorning
 	checktime (1 << EVE) | (1 << NITE)
-	iftrue .ThursdayNight
+	iftruefwd .ThursdayNight
 .ThursdayDay
 	checkevent EVENT_BEAT_PALMER
-	iffalse .NoPalmer
+	iffalsefwd .NoPalmer
 	rematch REMATCH_GREEN_2, SPRITE_COPYCAT, SPRITE_PALMER, 6, 3, DOWN
 .NoPalmer
 	endcallback
@@ -147,12 +147,12 @@ ENDM
 
 .Friday
 	checktime 1 << MORN
-	iftrue .FridayMorning
+	iftruefwd .FridayMorning
 	checktime (1 << EVE) | (1 << NITE)
-	iftrue .FridayNight
+	iftruefwd .FridayNight
 .FridayDay
 	checkevent EVENT_BEAT_YELLOW
-	iffalse .NoYellow
+	iffalsefwd .NoYellow
 	rematch REMATCH_RED_1, SPRITE_BIG_DOLL, SPRITE_YELLOW, 6, 6, DOWN
 .NoYellow
 	endcallback
@@ -165,9 +165,9 @@ ENDM
 
 .Saturday
 	checktime 1 << MORN
-	iftrue .SaturdayMorning
+	iftruefwd .SaturdayMorning
 	checktime (1 << EVE) | (1 << NITE)
-	iftrue .SaturdayNight
+	iftruefwd .SaturdayNight
 .SaturdayDay
 	rematch_left REMATCH_RED_1, SPRITE_BIG_DOLL, SPRITE_WHITNEY
 	rematch_right REMATCH_BROWN_2, SPRITE_COPYCAT, SPRITE_CHUCK
@@ -177,14 +177,14 @@ ENDM
 	endcallback
 .SaturdayNight
 	checkevent EVENT_BEAT_AGATHA
-	iffalse .NoAgatha
+	iffalsefwd .NoAgatha
 	rematch REMATCH_BROWN_3, SPRITE_CONSOLE, SPRITE_AGATHA, 4, 2, DOWN
 .NoAgatha
 	endcallback
 
 FightingDojoBlackBelt:
 	checkevent EVENT_BEAT_BLUE
-	iftrue .BlackBeltExplainsRematchesScript
+	iftruefwd .BlackBeltExplainsRematchesScript
 	jumptextfaceplayer FightingDojoBlackBeltText
 .BlackBeltExplainsRematchesScript
 	jumptextfaceplayer BlackBeltText_ExplainsRematches
@@ -199,7 +199,7 @@ MapFightingDojoSignpost2Script:
 	waitbutton
 .monday
 	checkevent EVENT_BEAT_WALKER
-	iftrue .monday_walker
+	iftruefwd .monday_walker
 	writetext FightingDojoScheduleMondayText
 	waitbutton
 	sjumpfwd .tuesday
@@ -208,7 +208,7 @@ MapFightingDojoSignpost2Script:
 	waitbutton
 .tuesday
 	checkevent EVENT_BEAT_LORELEI_AGAIN
-	iftrue .tuesday_lorelei
+	iftruefwd .tuesday_lorelei
 	writetext FightingDojoScheduleTuesdayText
 	waitbutton
 	sjumpfwd .wednesday
@@ -220,7 +220,7 @@ MapFightingDojoSignpost2Script:
 	waitbutton
 .thursday
 	checkevent EVENT_BEAT_PALMER
-	iftrue .thursday_palmer
+	iftruefwd .thursday_palmer
 	writetext FightingDojoScheduleThursdayText
 	waitbutton
 	sjumpfwd .friday
@@ -229,7 +229,7 @@ MapFightingDojoSignpost2Script:
 	waitbutton
 .friday
 	checkevent EVENT_BEAT_YELLOW
-	iftrue .friday_yellow
+	iftruefwd .friday_yellow
 	writetext FightingDojoScheduleFridayText
 	waitbutton
 	sjumpfwd .saturday
@@ -238,19 +238,19 @@ MapFightingDojoSignpost2Script:
 	waitbutton
 .saturday
 	checkevent EVENT_BEAT_AGATHA
-	iftrue .saturday_agatha
+	iftruefwd .saturday_agatha
 	jumpopenedtext FightingDojoScheduleSaturdayText
 .saturday_agatha
 	jumpopenedtext FightingDojoScheduleSaturdayAgathaText
 
 RematchRed0Script:
 	readvar VAR_WEEKDAY
-	ifequal TUESDAY, .Red0TuesdayNight
-	ifequal WEDNESDAY, .Red0Wednesday
-	ifequal FRIDAY, .Red0Friday
-	ifequal SATURDAY, .Red0Saturday
+	ifequalfwd TUESDAY, .Red0TuesdayNight
+	ifequalfwd WEDNESDAY, .Red0Wednesday
+	ifequalfwd FRIDAY, .Red0Friday
+	ifequalfwd SATURDAY, .Red0Saturday
 	checktime (1 << EVE) | (1 << NITE)
-	iftrue .Red0SundayNight
+	iftruefwd .Red0SundayNight
 	sjump RematchJasmineScript
 .Red0SundayNight
 	sjump RematchSabrinaScript
@@ -265,12 +265,12 @@ RematchRed0Script:
 
 RematchGreen1Script:
 	readvar VAR_WEEKDAY
-	ifequal THURSDAY, .Green1Thursday
+	ifequalfwd THURSDAY, .Green1Thursday
 .Green1Sunday
 	sjump RematchErikaScript
 .Green1Thursday
 	checktime 1 << MORN
-	iftrue .Green1ThursdayMorning
+	iftruefwd .Green1ThursdayMorning
 .Green1ThursdayDay
 	sjump RematchPalmerScript
 .Green1ThursdayMorning
@@ -278,7 +278,7 @@ RematchGreen1Script:
 
 RematchBlue1Script:
 	readvar VAR_WEEKDAY
-	ifequal FRIDAY, .Blue1Friday
+	ifequalfwd FRIDAY, .Blue1Friday
 .Blue1Monday
 	sjump RematchFalknerScript
 .Blue1Friday
@@ -286,12 +286,12 @@ RematchBlue1Script:
 
 RematchBlue2Script:
 	readvar VAR_WEEKDAY
-	ifequal MONDAY, .Blue2Monday
+	ifequalfwd MONDAY, .Blue2Monday
 .Blue2Wednesday
 	sjump RematchBlueScript
 .Blue2Monday
 	checktime (1 << EVE) | (1 << NITE)
-	iftrue .Blue2MondayNight
+	iftruefwd .Blue2MondayNight
 .Blue2MondayMorningDay
 	sjump RematchJanineScript
 .Blue2MondayNight
@@ -299,9 +299,9 @@ RematchBlue2Script:
 
 RematchBrown1Script:
 	readvar VAR_WEEKDAY
-	ifequal WEDNESDAY, .Brown1Wednesday
-	ifequal FRIDAY, .Brown1Friday
-	ifequal SATURDAY, .Brown1Saturday
+	ifequalfwd WEDNESDAY, .Brown1Wednesday
+	ifequalfwd FRIDAY, .Brown1Friday
+	ifequalfwd SATURDAY, .Brown1Saturday
 .Brown1Tuesday
 	sjump RematchPryceScript
 .Brown1Wednesday
@@ -313,8 +313,8 @@ RematchBrown1Script:
 
 RematchBrown2Script:
 	readvar VAR_WEEKDAY
-	ifequal THURSDAY, .Brown2Thursday
-	ifequal SATURDAY, .Brown2SaturdayNight
+	ifequalfwd THURSDAY, .Brown2Thursday
+	ifequalfwd SATURDAY, .Brown2SaturdayNight
 .Brown2Tuesday
 	sjump RematchBlaineScript
 .Brown2Thursday
@@ -360,7 +360,7 @@ MACRO rematch_script
 	faceplayer
 	opentext
 	checkflag \3
-	iftrue .RematchDone
+	iftruefwd .RematchDone
 	writetext \1Text_Greeting
 	waitbutton
 	closetext

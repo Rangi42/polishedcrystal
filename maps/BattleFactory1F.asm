@@ -32,10 +32,10 @@ BattleFactory1FContinueChallenge:
 
 	; Check current battle status to see if we need to resume or reset winstreak
 	special Special_BattleTower_GetChallengeState
-	ifequal BATTLETOWER_CHALLENGE_IN_PROGRESS, .LeftWithoutSaving
-	ifequal BATTLETOWER_SAVED_AND_LEFT, .ResumeChallenge
-	ifequal BATTLETOWER_LOST_CHALLENGE, .LostChallenge
-	ifequal BATTLETOWER_WON_CHALLENGE, .WonChallenge
+	ifequalfwd BATTLETOWER_CHALLENGE_IN_PROGRESS, .LeftWithoutSaving
+	ifequalfwd BATTLETOWER_SAVED_AND_LEFT, .ResumeChallenge
+	ifequalfwd BATTLETOWER_LOST_CHALLENGE, .LostChallenge
+	ifequalfwd BATTLETOWER_WON_CHALLENGE, .WonChallenge
 	end
 
 .ResumeChallenge:
@@ -95,7 +95,7 @@ BattleFactory1FContinueChallenge:
 	; fallthrough
 Script_CommitBattleFactoryResult:
 	special Special_BattleTower_CommitChallengeResult
-	iffalse .WeHopeToServeYouAgain
+	iffalsefwd .WeHopeToServeYouAgain
 	setevent EVENT_BEAT_PALMER
 .WeHopeToServeYouAgain:
 	writethistext
@@ -159,7 +159,7 @@ BattleFactory1FReceptionistScript:
 		done
 	promptbutton
 	checkevent EVENT_BATTLE_FACTORY_INTRO
-	iftrue .BattleFactoryMenu
+	iftruefwd .BattleFactoryMenu
 
 	; only ask once, so set the flag regardless
 	setevent EVENT_BATTLE_FACTORY_INTRO
@@ -169,7 +169,7 @@ BattleFactory1FReceptionistScript:
 		cont "facility?"
 		done
 	yesorno
-	iffalse .BattleFactoryMenu
+	iffalsefwd .BattleFactoryMenu
 
 .Explanation:
 	writethistext
@@ -211,7 +211,7 @@ BattleFactory1FReceptionistScript:
 	loadmenu MenuDataHeader_BattleInfoCancel
 	verticalmenu
 	closewindow
-	ifequal $1, .Challenge
+	ifequalfwd $1, .Challenge
 	ifequal $2, .Explanation
 	writethistext
 		text "We hope to serve"

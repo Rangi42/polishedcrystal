@@ -52,9 +52,9 @@ TrainerJugglerIrwin:
 	loadvar VAR_CALLERID, PHONE_JUGGLER_IRWIN
 	opentext
 	checkcellnum PHONE_JUGGLER_IRWIN
-	iftrue Route35NumberAcceptedM
+	iftruefwd Route35NumberAcceptedM
 	checkevent EVENT_IRWIN_ASKED_FOR_PHONE_NUMBER
-	iftrue .AskedAlready
+	iftruefwd .AskedAlready
 	writetext JugglerIrwinAfterBattleText
 	promptbutton
 	setevent EVENT_IRWIN_ASKED_FOR_PHONE_NUMBER
@@ -65,8 +65,8 @@ TrainerJugglerIrwin:
 	scall Route35AskNumber2M
 .AskForNumber:
 	askforphonenumber PHONE_JUGGLER_IRWIN
-	ifequal $1, Route35PhoneFullM
-	ifequal $2, Route35NumberDeclinedM
+	ifequalfwd $1, Route35PhoneFullM
+	ifequalfwd $2, Route35NumberDeclinedM
 	gettrainername JUGGLER, IRWIN1, $0
 	scall Route35RegisteredNumberM
 	sjumpfwd Route35NumberAcceptedM
@@ -132,13 +132,13 @@ TrainerBug_catcherArnie1:
 	endifjustbattled
 	opentext
 	checkflag ENGINE_ARNIE_READY_FOR_REMATCH
-	iftrue .WantsBattle
+	iftruefwd .WantsBattle
 	checkflag ENGINE_YANMA_SWARM
-	iftrue .YanmaSwarming
+	iftruefwd .YanmaSwarming
 	checkcellnum PHONE_BUG_CATCHER_ARNIE
 	iftrue Route35NumberAcceptedM
 	checkevent EVENT_ARNIE_ASKED_FOR_PHONE_NUMBER
-	iftrue .AskedAlready
+	iftruefwd .AskedAlready
 	writetext BugCatcherArnieAfterBattleText
 	promptbutton
 	setevent EVENT_ARNIE_ASKED_FOR_PHONE_NUMBER
@@ -159,23 +159,23 @@ TrainerBug_catcherArnie1:
 	scall Route35RematchM
 	winlosstext Bug_catcherArnie1BeatenText, 0
 	readmem wArnieFightCount
-	ifequal 4, .Fight4
-	ifequal 3, .Fight3
-	ifequal 2, .Fight2
-	ifequal 1, .Fight1
-	ifequal 0, .LoadFight0
+	ifequalfwd 4, .Fight4
+	ifequalfwd 3, .Fight3
+	ifequalfwd 2, .Fight2
+	ifequalfwd 1, .Fight1
+	ifequalfwd 0, .LoadFight0
 .Fight4:
 	checkevent EVENT_RESTORED_POWER_TO_KANTO
-	iftrue .LoadFight4
+	iftruefwd .LoadFight4
 .Fight3:
 	checkevent EVENT_BEAT_ELITE_FOUR
-	iftrue .LoadFight3
+	iftruefwd .LoadFight3
 .Fight2:
 	checkflag ENGINE_FLYPOINT_BLACKTHORN
-	iftrue .LoadFight2
+	iftruefwd .LoadFight2
 .Fight1:
 	checkflag ENGINE_FLYPOINT_LAKE_OF_RAGE
-	iftrue .LoadFight1
+	iftruefwd .LoadFight1
 .LoadFight0:
 	loadtrainer BUG_CATCHER, ARNIE1
 	startbattle
@@ -230,9 +230,9 @@ TrainerOfficerDirk:
 	faceplayer
 	opentext
 	checktime 1 << NITE
-	iffalse .NotNight
+	iffalsefwd .NotNight
 	checkevent EVENT_BEAT_OFFICERM_DIRK
-	iftrue .AfterBattle
+	iftruefwd .AfterBattle
 	special SaveMusic
 	playmusic MUSIC_OFFICER_ENCOUNTER
 	writetext OfficerDirkSeenText

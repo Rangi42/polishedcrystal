@@ -35,7 +35,7 @@ Route44VeteranmScript:
 	iftrue_jumptextfaceplayer .AfterText2
 	faceplayer
 	checkevent EVENT_BEAT_VETERANM_BARKHORN
-	iftrue .Beaten
+	iftruefwd .Beaten
 	checkevent EVENT_BEAT_BIRD_KEEPER_VANCE
 	iffalse_jumptext .IntroText
 	checkevent EVENT_BEAT_PSYCHIC_PHIL
@@ -145,11 +145,11 @@ Bird_keeperVance1Script:
 	loadvar VAR_CALLERID, PHONE_BIRDKEEPER_VANCE
 	opentext
 	checkflag ENGINE_VANCE_READY_FOR_REMATCH
-	iftrue .WantsBattle
+	iftruefwd .WantsBattle
 	checkcellnum PHONE_BIRDKEEPER_VANCE
-	iftrue Route44NumberAcceptedM
+	iftruefwd Route44NumberAcceptedM
 	checkevent EVENT_VANCE_ASKED_FOR_PHONE_NUMBER
-	iftrue .AskedAlready
+	iftruefwd .AskedAlready
 	writetext BirdKeeperVanceLegendaryBirdsText
 	promptbutton
 	setevent EVENT_VANCE_ASKED_FOR_PHONE_NUMBER
@@ -160,8 +160,8 @@ Bird_keeperVance1Script:
 	scall Route44AskNumber2M
 .AskForNumber:
 	askforphonenumber PHONE_BIRDKEEPER_VANCE
-	ifequal $1, Route44PhoneFullM
-	ifequal $2, Route44NumberDeclinedM
+	ifequalfwd $1, Route44PhoneFullM
+	ifequalfwd $2, Route44NumberDeclinedM
 	gettrainername BIRD_KEEPER, VANCE1, $0
 	scall Route44RegisteredNumberM
 	sjumpfwd Route44NumberAcceptedM
@@ -170,15 +170,15 @@ Bird_keeperVance1Script:
 	scall Route44RematchM
 	winlosstext Bird_keeperVance1BeatenText, 0
 	readmem wVanceFightCount
-	ifequal 2, .Fight2
-	ifequal 1, .Fight1
-	ifequal 0, .LoadFight0
+	ifequalfwd 2, .Fight2
+	ifequalfwd 1, .Fight1
+	ifequalfwd 0, .LoadFight0
 .Fight2:
 	checkevent EVENT_RESTORED_POWER_TO_KANTO
-	iftrue .LoadFight2
+	iftruefwd .LoadFight2
 .Fight1:
 	checkevent EVENT_BEAT_ELITE_FOUR
-	iftrue .LoadFight1
+	iftruefwd .LoadFight1
 .LoadFight0:
 	loadtrainer BIRD_KEEPER, VANCE1
 	startbattle
@@ -201,12 +201,12 @@ Bird_keeperVance1Script:
 	reloadmapafterbattle
 	clearflag ENGINE_VANCE_READY_FOR_REMATCH
 	checkevent EVENT_VANCE_CARBOS
-	iftrue .Carbos
+	iftruefwd .Carbos
 	checkevent EVENT_GOT_CARBOS_FROM_VANCE
-	iftrue .ReceivedCarbosBefore
+	iftruefwd .ReceivedCarbosBefore
 	scall Route44RematchGiftM
 	verbosegiveitem CARBOS
-	iffalse VancePackFull
+	iffalsefwd VancePackFull
 	setevent EVENT_GOT_CARBOS_FROM_VANCE
 	sjumpfwd Route44NumberAcceptedM
 
@@ -218,7 +218,7 @@ Bird_keeperVance1Script:
 	writetext BirdKeeperVance2BeatenText
 	waitbutton
 	verbosegiveitem CARBOS
-	iffalse VancePackFull
+	iffalsefwd VancePackFull
 	clearevent EVENT_VANCE_CARBOS
 	setevent EVENT_GOT_CARBOS_FROM_VANCE
 	sjumpfwd Route44NumberAcceptedM
@@ -273,15 +273,15 @@ FisherWilton1Script:
 	loadvar VAR_CALLERID, PHONE_FISHER_WILTON
 	opentext
 	checkflag ENGINE_WILTON_READY_FOR_REMATCH
-	iftrue .WantsBattle
+	iftruefwd .WantsBattle
 	checkflag ENGINE_WILTON_HAS_ITEM
-	iftrue .HasItem
+	iftruefwd .HasItem
 	checkcellnum PHONE_FISHER_WILTON
 	iftrue Route44NumberAcceptedM
 	checkevent EVENT_WILTON_ASKED_FOR_PHONE_NUMBER
-	iftrue .AskedAlready
+	iftruefwd .AskedAlready
 	checkunits
-	iftrue .metric
+	iftruefwd .metric
 	writetext FisherWiltonHugePoliwagText_Imperial
 	sjumpfwd .ok
 .metric
@@ -306,15 +306,15 @@ FisherWilton1Script:
 	scall Route44RematchM
 	winlosstext FisherWilton1BeatenText, 0
 	readmem wWiltonFightCount
-	ifequal 2, .Fight2
-	ifequal 1, .Fight1
-	ifequal 0, .LoadFight0
+	ifequalfwd 2, .Fight2
+	ifequalfwd 1, .Fight1
+	ifequalfwd 0, .LoadFight0
 .Fight2:
 	checkevent EVENT_RESTORED_POWER_TO_KANTO
-	iftrue .LoadFight2
+	iftruefwd .LoadFight2
 .Fight1:
 	checkevent EVENT_BEAT_ELITE_FOUR
-	iftrue .LoadFight1
+	iftruefwd .LoadFight1
 .LoadFight0:
 	loadtrainer FISHER, WILTON1
 	startbattle
@@ -341,24 +341,24 @@ FisherWilton1Script:
 .HasItem:
 	scall Route44GiftM
 	checkevent EVENT_WILTON_HAS_ULTRA_BALL
-	iftrue .UltraBall
+	iftruefwd .UltraBall
 	checkevent EVENT_WILTON_HAS_GREAT_BALL
-	iftrue .GreatBall
+	iftruefwd .GreatBall
 	checkevent EVENT_WILTON_HAS_POKE_BALL
-	iftrue .PokeBall
+	iftruefwd .PokeBall
 .UltraBall:
 	verbosegiveitem ULTRA_BALL
-	iffalse .Route44PackFullM
+	iffalsefwd .Route44PackFullM
 	sjumpfwd .ItemReceived
 
 .GreatBall:
 	verbosegiveitem GREAT_BALL
-	iffalse .Route44PackFullM
+	iffalsefwd .Route44PackFullM
 	sjumpfwd .ItemReceived
 
 .PokeBall:
 	verbosegiveitem POKE_BALL
-	iffalse .Route44PackFullM
+	iffalsefwd .Route44PackFullM
 .ItemReceived:
 	clearflag ENGINE_WILTON_HAS_ITEM
 	sjump Route44NumberAcceptedM
