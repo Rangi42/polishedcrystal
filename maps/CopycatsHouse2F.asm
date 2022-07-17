@@ -27,10 +27,10 @@ CopycatsHouse2F_MapScriptHeader:
 CopycatsHouse2FCallback:
 	variablesprite SPRITE_COPYCAT, SPRITE_LASS
 	checkflag ENGINE_PLAYER_IS_FEMALE
-	iftrue .Part1
+	iftruefwd .Part1
 	disappear COPYCATSHOUSE2F_COPYCAT2
 	appear COPYCATSHOUSE2F_COPYCAT1
-	sjump .Done
+	sjumpfwd .Done
 .Part1:
 	disappear COPYCATSHOUSE2F_COPYCAT1
 	appear COPYCATSHOUSE2F_COPYCAT2
@@ -40,7 +40,7 @@ CopycatsHouse2FCallback:
 Copycat1Script:
 	faceplayer
 	checkevent EVENT_GOT_PASS_FROM_COPYCAT
-	iftrue .GotPass
+	iftruefwd .GotPass
 	checkevent EVENT_RETURNED_LOST_ITEM_TO_COPYCAT
 	iftrue CopycatReturnedLostItemScript
 	checkkeyitem LOST_ITEM
@@ -52,7 +52,7 @@ Copycat1Script:
 	variablesprite SPRITE_COPYCAT, SPRITE_CHRIS
 	special RefreshSprites
 	checkevent EVENT_RESTORED_POWER_TO_KANTO
-	iftrue .ReturnedMachinePart
+	iftruefwd .ReturnedMachinePart
 	showtext .Greeting1Text
 	applymovement COPYCATSHOUSE2F_COPYCAT1, CopycatSpinMovement
 	sjump CopycatRetortScript
@@ -118,7 +118,7 @@ Copycat1Script:
 Copycat2Script:
 	faceplayer
 	checkevent EVENT_GOT_PASS_FROM_COPYCAT
-	iftrue .GotPass
+	iftruefwd .GotPass
 	checkevent EVENT_RETURNED_LOST_ITEM_TO_COPYCAT
 	iftrue CopycatReturnedLostItemScript
 	checkkeyitem LOST_ITEM
@@ -130,7 +130,7 @@ Copycat2Script:
 	variablesprite SPRITE_COPYCAT, SPRITE_KRIS
 	special RefreshSprites
 	checkevent EVENT_RESTORED_POWER_TO_KANTO
-	iftrue .ReturnedMachinePart
+	iftruefwd .ReturnedMachinePart
 	showtext .Greeting2Text
 	applymovement COPYCATSHOUSE2F_COPYCAT2, CopycatSpinMovement
 	sjump CopycatRetortScript
@@ -235,7 +235,7 @@ CopycatFoundLostItemScript:
 	takekeyitem LOST_ITEM
 	setevent EVENT_RETURNED_LOST_ITEM_TO_COPYCAT
 	clearevent EVENT_COPYCATS_HOUSE_2F_DOLL
-	sjump CopycatGivePassScript
+	sjumpfwd CopycatGivePassScript
 
 .FoundDollText:
 	text "Copycat: Yay!"

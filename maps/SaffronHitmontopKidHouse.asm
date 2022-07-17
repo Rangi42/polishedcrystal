@@ -24,7 +24,7 @@ SaffronHitmontopKidHouseChildScript:
 	faceplayer
 	pause 20
 	checkpoke HITMONTOP
-	iffalse .Done
+	iffalsefwd .Done
 	showemote EMOTE_SHOCK, SAFFRONHITMONTOPKIDHOUSE_CHILD, 15
 	showtext .Text2
 	applymovement SAFFRONHITMONTOPKIDHOUSE_CHILD, .Spin2Movement

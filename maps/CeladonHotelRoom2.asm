@@ -18,7 +18,7 @@ MrHyperScript:
 	faceplayer
 	opentext
 	checkevent EVENT_TALKED_TO_MR_HYPER
-	iftrue .IntroDone
+	iftruefwd .IntroDone
 	writetext .TextIntro
 	waitbutton
 	setevent EVENT_TALKED_TO_MR_HYPER

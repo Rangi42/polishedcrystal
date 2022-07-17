@@ -71,11 +71,11 @@ Route47_MapScriptHeader:
 
 Route47TileScript:
 	checkevent EVENT_DOOR_OPENED_IN_RUINS_OF_ALPH
-	iffalse .locked
+	iffalsefwd .locked
 	changeblock 8, 22, $9b
 .locked
 	checkscene
-	iftrue .underfoot
+	iftruefwd .underfoot
 	callasm .overhead_asm
 	endcallback
 

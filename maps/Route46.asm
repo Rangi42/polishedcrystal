@@ -27,7 +27,7 @@ Route46HikerScript:
 	faceplayer
 	opentext
 	checkevent EVENT_LISTENED_TO_ROLLOUT_INTRO
-	iftrue Route46TutorRoute46Script
+	iftruefwd Route46TutorRoute46Script
 	writetext Route46HikerText
 	waitbutton
 	setevent EVENT_LISTENED_TO_ROLLOUT_INTRO
@@ -35,14 +35,14 @@ Route46TutorRoute46Script:
 	writetext Text_Route46TutorRollout
 	waitbutton
 	checkitem SILVER_LEAF
-	iffalse .NoSilverLeaf
+	iffalsefwd .NoSilverLeaf
 	writetext Text_Route46TutorQuestion
 	yesorno
-	iffalse .TutorRefused
+	iffalsefwd .TutorRefused
 	setval ROLLOUT
 	writetext ClearText
 	special Special_MoveTutor
-	ifequal $0, .TeachMove
+	ifequalfwd $0, .TeachMove
 .TutorRefused
 	jumpopenedtext Text_Route46TutorRefused
 
@@ -70,40 +70,40 @@ PicnickerErin1Script:
 	loadvar VAR_CALLERID, PHONE_PICNICKER_ERIN
 	opentext
 	checkflag ENGINE_ERIN_READY_FOR_REMATCH
-	iftrue UnknownScript_0x1a96da
+	iftruefwd UnknownScript_0x1a96da
 	checkcellnum PHONE_PICNICKER_ERIN
-	iftrue Route46NumberAcceptedF
+	iftruefwd Route46NumberAcceptedF
 	checkevent EVENT_ERIN_ASKED_FOR_PHONE_NUMBER
-	iftrue UnknownScript_0x1a96c3
+	iftruefwd UnknownScript_0x1a96c3
 	writetext PicnickerErinAfterBattleText
 	promptbutton
 	setevent EVENT_ERIN_ASKED_FOR_PHONE_NUMBER
 	scall Route46AskNumber1F
-	sjump UnknownScript_0x1a96c6
+	sjumpfwd UnknownScript_0x1a96c6
 
 UnknownScript_0x1a96c3:
 	scall Route46AskNumber2F
 UnknownScript_0x1a96c6:
 	askforphonenumber PHONE_PICNICKER_ERIN
-	ifequal $1, Route46PhoneFullF
-	ifequal $2, Route46NumberDeclinedF
+	ifequalfwd $1, Route46PhoneFullF
+	ifequalfwd $2, Route46NumberDeclinedF
 	gettrainername PICNICKER, ERIN1, $0
 	scall Route46RegisteredNumberF
-	sjump Route46NumberAcceptedF
+	sjumpfwd Route46NumberAcceptedF
 
 UnknownScript_0x1a96da:
 	scall Route46RematchF
 	winlosstext PicnickerErin1BeatenText, 0
 	readmem wErinFightCount
-	ifequal 2, .Fight2
-	ifequal 1, .Fight1
-	ifequal 0, .LoadFight0
+	ifequalfwd 2, .Fight2
+	ifequalfwd 1, .Fight1
+	ifequalfwd 0, .LoadFight0
 .Fight2:
 	checkevent EVENT_RESTORED_POWER_TO_KANTO
-	iftrue .LoadFight2
+	iftruefwd .LoadFight2
 .Fight1:
 	checkevent EVENT_BEAT_ELITE_FOUR
-	iftrue .LoadFight1
+	iftruefwd .LoadFight1
 .LoadFight0:
 	loadtrainer PICNICKER, ERIN1
 	startbattle
@@ -126,14 +126,14 @@ UnknownScript_0x1a96da:
 	reloadmapafterbattle
 	clearflag ENGINE_ERIN_READY_FOR_REMATCH
 	checkevent EVENT_ERIN_CALCIUM
-	iftrue UnknownScript_0x1a973b
+	iftruefwd UnknownScript_0x1a973b
 	checkevent EVENT_GOT_CALCIUM_FROM_ERIN
-	iftrue UnknownScript_0x1a973a
+	iftruefwd UnknownScript_0x1a973a
 	scall Route46RematchGiftF
 	verbosegiveitem CALCIUM
-	iffalse ErinNoRoomForCalcium
+	iffalsefwd ErinNoRoomForCalcium
 	setevent EVENT_GOT_CALCIUM_FROM_ERIN
-	sjump Route46NumberAcceptedF
+	sjumpfwd Route46NumberAcceptedF
 
 UnknownScript_0x1a973a:
 	end
@@ -143,10 +143,10 @@ UnknownScript_0x1a973b:
 	writetext PicnickerErin2BeatenText
 	waitbutton
 	verbosegiveitem CALCIUM
-	iffalse ErinNoRoomForCalcium
+	iffalsefwd ErinNoRoomForCalcium
 	clearevent EVENT_ERIN_CALCIUM
 	setevent EVENT_GOT_CALCIUM_FROM_ERIN
-	sjump Route46NumberAcceptedF
+	sjumpfwd Route46NumberAcceptedF
 
 Route46AskNumber1F:
 	jumpstd asknumber1f

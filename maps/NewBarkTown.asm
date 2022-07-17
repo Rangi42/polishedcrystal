@@ -98,15 +98,15 @@ NewBarkTown_LyraIntroTrigger:
 
 NewBarkTown_LyraFinalTrigger1:
 	moveobject NEWBARKTOWN_LYRA, 14, 11
-	sjump NewBarkTown_LyraFinalTrigger
+	sjumpfwd NewBarkTown_LyraFinalTrigger
 
 NewBarkTown_LyraFinalTrigger2:
 	moveobject NEWBARKTOWN_LYRA, 14, 12
-	sjump NewBarkTown_LyraFinalTrigger
+	sjumpfwd NewBarkTown_LyraFinalTrigger
 
 NewBarkTown_LyraFinalTrigger3:
 	moveobject NEWBARKTOWN_LYRA, 14, 13
-	sjump NewBarkTown_LyraFinalTrigger
+	sjumpfwd NewBarkTown_LyraFinalTrigger
 
 NewBarkTown_LyraFinalTrigger4:
 	moveobject NEWBARKTOWN_LYRA, 14, 14
@@ -123,15 +123,15 @@ NewBarkTown_LyraFinalTrigger:
 	winlosstext Text_LyraGoodbyeWin, Text_LyraGoodbyeLoss
 	setlasttalked NEWBARKTOWN_LYRA
 	checkevent EVENT_GOT_TOTODILE_FROM_ELM
-	iftrue .Totodile
+	iftruefwd .Totodile
 	checkevent EVENT_GOT_CHIKORITA_FROM_ELM
-	iftrue .Chikorita
+	iftruefwd .Chikorita
 	loadtrainer LYRA1, LYRA1_10
-	sjump .AfterBattle
+	sjumpfwd .AfterBattle
 
 .Totodile:
 	loadtrainer LYRA1, LYRA1_11
-	sjump .AfterBattle
+	sjumpfwd .AfterBattle
 
 .Chikorita:
 	loadtrainer LYRA1, LYRA1_12

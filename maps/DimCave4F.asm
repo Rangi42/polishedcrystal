@@ -34,7 +34,7 @@ DimCave4F_MapScriptHeader:
 
 DimCave4FBouldersLand:
 	checkevent EVENT_BOULDER_FELL_IN_DIM_CAVE_4F
-	iftrue .skip
+	iftruefwd .skip
 	changeblock 26, 24, $c9
 	changeblock 4, 24, $b9
 .skip

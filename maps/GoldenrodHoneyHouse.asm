@@ -19,7 +19,7 @@ GoldenrodHoneyHousePokefanFScript:
 	checkevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_1
 	iftrue_jumptextfaceplayer .AfterText
 	checkevent EVENT_GOT_HONEY_FROM_GOLDENROD
-	iftrue .SellHoney
+	iftruefwd .SellHoney
 	faceplayer
 	opentext
 	writetext .IntroText
@@ -74,8 +74,8 @@ endc
 	loadmenu .MenuDataHeader
 	verticalmenu
 	closewindow
-	ifequal $1, .Buy1
-	ifequal $2, .Buy10
+	ifequalfwd $1, .Buy1
+	ifequalfwd $2, .Buy10
 	jumpthisopenedtext ; cancel
 
 	text "Well, come again,"
@@ -84,15 +84,15 @@ endc
 
 .Buy1:
 	checkmoney $0, 1000
-	ifequal $2, .NotEnoughMoney
+	ifequalfwd $2, .NotEnoughMoney
 	giveitem SWEET_HONEY
 	iffalse_jumpopenedtext .BagFullText
 	takemoney $0, 1000
-	sjump .Done
+	sjumpfwd .Done
 
 .Buy10:
 	checkmoney $0, 10000
-	ifequal $2, .NotEnoughMoney
+	ifequalfwd $2, .NotEnoughMoney
 	giveitem SWEET_HONEY, 10
 	iffalse_jumpopenedtext .BagFullText
 	takemoney $0, 10000

@@ -204,7 +204,7 @@ CheckSpecialPhoneCall::
 
 .script
 	pause 30
-	sjump Script_ReceivePhoneCall
+	sjumpfwd Script_ReceivePhoneCall
 
 .DoSpecialPhoneCall:
 	ld a, [wSpecialPhoneCallID]

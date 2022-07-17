@@ -25,25 +25,25 @@ SafariZoneWestRestHouse2FlanneryScript:
 	faceplayer
 	opentext
 	checkevent EVENT_BEAT_FLANNERY
-	iftrue .Beaten
+	iftruefwd .Beaten
 	checkevent EVENT_INTRODUCED_FLANNERY
-	iftrue .Introduced
+	iftruefwd .Introduced
 	writetext .IntroText
-	sjump .Question
+	sjumpfwd .Question
 .Introduced
 	writetext .RematchText
 .Question
 	yesorno
-	iffalse .Refused
+	iffalsefwd .Refused
 	writetext .SeenText
 	waitbutton
 	closetext
 	winlosstext .BeatenText, 0
 	setlasttalked SAFARIZONEWESTRESTHOUSE2_FLANNERY
 	checkevent EVENT_BEAT_ELITE_FOUR_AGAIN
-	iftrue .Rematch
+	iftruefwd .Rematch
 	loadtrainer FLANNERY, 1
-	sjump .StartBattle
+	sjumpfwd .StartBattle
 .Rematch
 	loadtrainer FLANNERY, 2
 .StartBattle

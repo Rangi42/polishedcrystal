@@ -52,7 +52,7 @@ CianwoodCityFlyPointAndSuicune:
 	setflag ENGINE_FLYPOINT_CIANWOOD
 	setevent EVENT_EUSINE_IN_BURNED_TOWER
 	checkevent EVENT_BEAT_EUSINE
-	iffalse .Done
+	iffalsefwd .Done
 	disappear CIANWOODCITY_EUSINE
 .Done:
 	endcallback
@@ -72,9 +72,9 @@ CianwoodCitySuicuneAndEusine:
 	setscene $0
 	clearevent EVENT_SAW_SUICUNE_ON_ROUTE_42
 	checkevent EVENT_GOT_HM05_WHIRLPOOL
-	iftrue .NoLyra
+	iftruefwd .NoLyra
 	setmapscene ROUTE_42, $1
-	sjump .Continue
+	sjumpfwd .Continue
 .NoLyra
 	setmapscene ROUTE_42, $2
 .Continue

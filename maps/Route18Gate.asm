@@ -29,19 +29,19 @@ Route18GateStepUpOneTrigger:
 	checkkeyitem BICYCLE
 	iftrue DoNothingScript
 	applyonemovement PLAYER, step_up
-	sjump UnknownScript_0x73617
+	sjumpfwd UnknownScript_0x73617
 
 Route18GateStepUpTwoTrigger:
 	checkkeyitem BICYCLE
 	iftrue DoNothingScript
 	applymovement PLAYER, Route18GateStepUpTwoMovementData
-	sjump UnknownScript_0x73617
+	sjumpfwd UnknownScript_0x73617
 
 Route18GateStepUpThreeTrigger:
 	checkkeyitem BICYCLE
 	iftrue DoNothingScript
 	applymovement PLAYER, Route18GateStepUpThreeMovementData
-	sjump UnknownScript_0x73617
+	sjumpfwd UnknownScript_0x73617
 
 Route17Route18GateBicycleCheck:
 	checkkeyitem BICYCLE

@@ -812,17 +812,17 @@ CheckMenuOW:
 
 StartMenuScript:
 	callasm StartMenu
-	sjump StartMenuCallback
+	sjumpfwd StartMenuCallback
 
 SelectMenuScript:
 	callasm SelectMenu
-	sjump SelectMenuCallback
+	sjumpfwd SelectMenuCallback
 
 StartMenuCallback:
 SelectMenuCallback:
 	readmem hMenuReturn
-	ifequal HMENURETURN_SCRIPT, .Script
-	ifequal HMENURETURN_ASM, .Asm
+	ifequalfwd HMENURETURN_SCRIPT, .Script
+	ifequalfwd HMENURETURN_ASM, .Asm
 	end
 
 .Script:

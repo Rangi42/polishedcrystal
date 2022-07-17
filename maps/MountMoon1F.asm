@@ -44,16 +44,16 @@ MountMoon1FTrigger0:
 	playmusic MUSIC_RIVAL_ENCOUNTER
 	showtext MountMoonSilverTextBefore
 	checkevent EVENT_GOT_TOTODILE_FROM_ELM
-	iftrue .Totodile
+	iftruefwd .Totodile
 	checkevent EVENT_GOT_CHIKORITA_FROM_ELM
-	iftrue .Chikorita
+	iftruefwd .Chikorita
 	winlosstext MountMoonSilverTextWin, MountMoonSilverTextLoss
 	setlasttalked MOUNTMOON1F_SILVER
 	loadtrainer RIVAL2, 3
 	startbattle
 	dontrestartmapmusic
 	reloadmapafterbattle
-	sjump .FinishBattle
+	sjumpfwd .FinishBattle
 
 .Totodile:
 	winlosstext MountMoonSilverTextWin, MountMoonSilverTextLoss
@@ -62,7 +62,7 @@ MountMoon1FTrigger0:
 	startbattle
 	dontrestartmapmusic
 	reloadmapafterbattle
-	sjump .FinishBattle
+	sjumpfwd .FinishBattle
 
 .Chikorita:
 	winlosstext MountMoonSilverTextWin, MountMoonSilverTextLoss

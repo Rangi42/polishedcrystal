@@ -37,7 +37,7 @@ FirstStepIntoKantoLeftScene:
 	turnobject ROUTE27_FISHER, LEFT
 	showemote EMOTE_SHOCK, ROUTE27_FISHER, 15
 	applymovement ROUTE27_FISHER, Route27FisherStepLeftTwiceMovement
-	sjump FirstStepIntoKantoScene_Continue
+	sjumpfwd FirstStepIntoKantoScene_Continue
 
 FirstStepIntoKantoRightScene:
 	turnobject ROUTE27_FISHER, LEFT
@@ -59,7 +59,7 @@ Route27VeteranfScript:
 	iftrue_jumptextfaceplayer .AfterText2
 	faceplayer
 	checkevent EVENT_BEAT_VETERANF_LITVYAK
-	iftrue .Beaten
+	iftruefwd .Beaten
 	checkevent EVENT_BEAT_PSYCHIC_GILBERT
 	iffalse_jumptext .IntroText
 	checkevent EVENT_BEAT_BIRD_KEEPER_JOSE
@@ -193,42 +193,42 @@ Bird_keeperJose1Script:
 	loadvar VAR_CALLERID, PHONE_BIRDKEEPER_JOSE
 	opentext
 	checkflag ENGINE_JOSE_READY_FOR_REMATCH
-	iftrue UnknownScript_0x1a08ff
+	iftruefwd UnknownScript_0x1a08ff
 	checkflag ENGINE_JOSE_HAS_STAR_PIECE
-	iftrue UnknownScript_0x1a0945
+	iftruefwd UnknownScript_0x1a0945
 	checkcellnum PHONE_BIRDKEEPER_JOSE
-	iftrue UnknownScript_0x1a0963
+	iftruefwd UnknownScript_0x1a0963
 	checkevent EVENT_JOSE_ASKED_FOR_PHONE_NUMBER
-	iftrue UnknownScript_0x1a08e8
+	iftruefwd UnknownScript_0x1a08e8
 	writetext BirdKeeperJose2AfterBattleText
 	promptbutton
 	setevent EVENT_JOSE_ASKED_FOR_PHONE_NUMBER
 	scall UnknownScript_0x1a0957
-	sjump UnknownScript_0x1a08eb
+	sjumpfwd UnknownScript_0x1a08eb
 
 UnknownScript_0x1a08e8:
 	scall UnknownScript_0x1a095b
 UnknownScript_0x1a08eb:
 	askforphonenumber PHONE_BIRDKEEPER_JOSE
-	ifequal $1, UnknownScript_0x1a096b
-	ifequal $2, UnknownScript_0x1a0967
+	ifequalfwd $1, UnknownScript_0x1a096b
+	ifequalfwd $2, UnknownScript_0x1a0967
 	gettrainername BIRD_KEEPER, JOSE1, $0
 	scall UnknownScript_0x1a095f
-	sjump UnknownScript_0x1a0963
+	sjumpfwd UnknownScript_0x1a0963
 
 UnknownScript_0x1a08ff:
 	scall UnknownScript_0x1a096f
 	winlosstext Bird_keeperJose1BeatenText, 0
 	readmem wJoseFightCount
-	ifequal 2, .Fight2
-	ifequal 1, .Fight1
-	ifequal 0, .LoadFight0
+	ifequalfwd 2, .Fight2
+	ifequalfwd 1, .Fight1
+	ifequalfwd 0, .LoadFight0
 .Fight2:
 	checkevent EVENT_RESTORED_POWER_TO_KANTO
-	iftrue .LoadFight2
+	iftruefwd .LoadFight2
 .Fight1:
 	checkevent EVENT_BEAT_ELITE_FOUR
-	iftrue .LoadFight1
+	iftruefwd .LoadFight1
 .LoadFight0:
 	loadtrainer BIRD_KEEPER, JOSE1
 	startbattle
@@ -255,12 +255,12 @@ UnknownScript_0x1a08ff:
 UnknownScript_0x1a0945:
 	scall UnknownScript_0x1a0973
 	verbosegiveitem STAR_PIECE
-	iffalse UnknownScript_0x1a0954
+	iffalsefwd UnknownScript_0x1a0954
 	clearflag ENGINE_JOSE_HAS_STAR_PIECE
-	sjump UnknownScript_0x1a0963
+	sjumpfwd UnknownScript_0x1a0963
 
 UnknownScript_0x1a0954:
-	sjump UnknownScript_0x1a0977
+	sjumpfwd UnknownScript_0x1a0977
 
 UnknownScript_0x1a0957:
 	jumpstd asknumber1m
@@ -330,40 +330,40 @@ CooltrainerfReena1Script:
 	loadvar VAR_CALLERID, PHONE_COOLTRAINERF_REENA
 	opentext
 	checkflag ENGINE_REENA_READY_FOR_REMATCH
-	iftrue UnknownScript_0x1a09e9
+	iftruefwd UnknownScript_0x1a09e9
 	checkcellnum PHONE_COOLTRAINERF_REENA
-	iftrue UnknownScript_0x1a0a3b
+	iftruefwd UnknownScript_0x1a0a3b
 	checkevent EVENT_REENA_ASKED_FOR_PHONE_NUMBER
-	iftrue UnknownScript_0x1a09d2
+	iftruefwd UnknownScript_0x1a09d2
 	writetext CooltrainerfReenaAfterBattleText
 	promptbutton
 	setevent EVENT_REENA_ASKED_FOR_PHONE_NUMBER
 	scall UnknownScript_0x1a0a2f
-	sjump UnknownScript_0x1a09d5
+	sjumpfwd UnknownScript_0x1a09d5
 
 UnknownScript_0x1a09d2:
 	scall UnknownScript_0x1a0a33
 UnknownScript_0x1a09d5:
 	askforphonenumber PHONE_COOLTRAINERF_REENA
-	ifequal $1, UnknownScript_0x1a0a43
-	ifequal $2, UnknownScript_0x1a0a3f
+	ifequalfwd $1, UnknownScript_0x1a0a43
+	ifequalfwd $2, UnknownScript_0x1a0a3f
 	gettrainername COOLTRAINERF, REENA1, $0
 	scall UnknownScript_0x1a0a37
-	sjump UnknownScript_0x1a0a3b
+	sjumpfwd UnknownScript_0x1a0a3b
 
 UnknownScript_0x1a09e9:
 	scall UnknownScript_0x1a0a47
 	winlosstext CooltrainerfReena1BeatenText, 0
 	readmem wReenaFightCount
-	ifequal 2, .Fight2
-	ifequal 1, .Fight1
-	ifequal 0, .LoadFight0
+	ifequalfwd 2, .Fight2
+	ifequalfwd 1, .Fight1
+	ifequalfwd 0, .LoadFight0
 .Fight2:
 	checkevent EVENT_RESTORED_POWER_TO_KANTO
-	iftrue .LoadFight2
+	iftruefwd .LoadFight2
 .Fight1:
 	checkevent EVENT_BEAT_ELITE_FOUR
-	iftrue .LoadFight1
+	iftruefwd .LoadFight1
 .LoadFight0:
 	loadtrainer COOLTRAINERF, REENA1
 	startbattle

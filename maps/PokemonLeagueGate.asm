@@ -28,7 +28,7 @@ PokemonLeagueGateXYTriggerScript2:
 	applyonemovement PLAYER, step_left
 PokemonLeagueGateXYTriggerScript1:
 	turnobject PLAYER, LEFT
-	sjump VictoryRoadGateBadgeCheckScript
+	sjumpfwd VictoryRoadGateBadgeCheckScript
 
 VictoryRoadGateOfficerScript:
 	faceplayer

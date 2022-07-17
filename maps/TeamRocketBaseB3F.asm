@@ -56,7 +56,7 @@ TeamRocketBaseB3FTrigger0:
 
 TeamRocketBaseB3FCheckGiovanniDoor:
 	checkevent EVENT_OPENED_DOOR_TO_GIOVANNIS_OFFICE
-	iftrue .OpenSesame
+	iftruefwd .OpenSesame
 	endcallback
 
 .OpenSesame:
@@ -94,7 +94,7 @@ RocketBaseRival:
 
 RocketBaseBossLeft:
 	applymovement PLAYER, RocketBasePlayerApproachesBossLeftMovement
-	sjump RocketBaseBoss
+	sjumpfwd RocketBaseBoss
 
 RocketBaseBossRight:
 	applymovement PLAYER, RocketBasePlayerApproachesBossRightMovement
@@ -177,10 +177,10 @@ BossDoor:
 	dw EVENT_OPENED_DOOR_TO_GIOVANNIS_OFFICE
 	opentext
 	checkevent EVENT_LEARNED_SLOWPOKETAIL
-	iffalse .NeedsPassword
+	iffalsefwd .NeedsPassword
 	checkevent EVENT_LEARNED_RATICATE_TAIL
-	iffalse .NeedsPassword
-	sjump .OpenSesame
+	iffalsefwd .NeedsPassword
+	sjumpfwd .OpenSesame
 
 .NeedsPassword:
 	jumpopenedtext TeamRocketBaseB3FLockedDoorNeedsPasswordText

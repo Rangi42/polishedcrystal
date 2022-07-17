@@ -18,7 +18,7 @@ BluesHouse1F_MapScriptHeader:
 
 DaisyScript:
 	readvar VAR_HOUR
-	ifequal 15, .Massage
+	ifequalfwd 15, .Massage
 	checkflag ENGINE_TEA_IN_BLUES_HOUSE
 	iftrue .After
 	jumpthistextfaceplayer
@@ -41,11 +41,11 @@ DaisyScript:
 	opentext
 	writetext .IntroText
 	yesorno
-	iffalse .NoMassage
+	iffalsefwd .NoMassage
 	writetext .QuestionText
 	waitbutton
 	special Special_DaisyMassage
-	ifequal 0, .NoMassage
+	ifequalfwd 0, .NoMassage
 	ifequal 1, .EggMassage
 	setflag ENGINE_TEA_IN_BLUES_HOUSE
 	writetext .OkayText

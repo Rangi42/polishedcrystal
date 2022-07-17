@@ -62,14 +62,14 @@ PlateauRivalBattleTrigger1:
 	moveobject INDIGOPLATEAUPOKECENTER1F_LYRA, 15, 9
 PlateauRivalBattleTrigger2:
 	checkevent EVENT_FINAL_BATTLE_WITH_LYRA
-	iftrue .LyraFight
+	iftruefwd .LyraFight
 	readvar VAR_WEEKDAY
-	ifequal MONDAY, .MaybeRivalFight
-	ifequal TUESDAY, .MaybeLyraFight
-	ifequal WEDNESDAY, .MaybeRivalFight
-	ifequal THURSDAY, .MaybeLyraFight
-	ifequal FRIDAY, .MaybeRivalFight
-	ifequal SATURDAY, .MaybeLyraFight
+	ifequalfwd MONDAY, .MaybeRivalFight
+	ifequalfwd TUESDAY, .MaybeLyraFight
+	ifequalfwd WEDNESDAY, .MaybeRivalFight
+	ifequalfwd THURSDAY, .MaybeLyraFight
+	ifequalfwd FRIDAY, .MaybeRivalFight
+	ifequalfwd SATURDAY, .MaybeLyraFight
 	end
 
 .MaybeRivalFight:
@@ -89,9 +89,9 @@ PlateauRivalBattleTrigger2:
 	showtext PlateauRivalText1
 	setevent EVENT_INDIGO_PLATEAU_POKECENTER_RIVAL
 	checkevent EVENT_GOT_TOTODILE_FROM_ELM
-	iftrue .RivalTotodile
+	iftruefwd .RivalTotodile
 	checkevent EVENT_GOT_CHIKORITA_FROM_ELM
-	iftrue .RivalChikorita
+	iftruefwd .RivalChikorita
 	; Cyndaquil
 	winlosstext PlateauRivalWinText, PlateauRivalLoseText
 	setlasttalked INDIGOPLATEAUPOKECENTER1F_SILVER
@@ -99,7 +99,7 @@ PlateauRivalBattleTrigger2:
 	startbattle
 	dontrestartmapmusic
 	reloadmapafterbattle
-	sjump .RivalPostBattle
+	sjumpfwd .RivalPostBattle
 
 .RivalTotodile:
 	winlosstext PlateauRivalWinText, PlateauRivalLoseText
@@ -108,7 +108,7 @@ PlateauRivalBattleTrigger2:
 	startbattle
 	dontrestartmapmusic
 	reloadmapafterbattle
-	sjump .RivalPostBattle
+	sjumpfwd .RivalPostBattle
 
 .RivalChikorita:
 	winlosstext PlateauRivalWinText, PlateauRivalLoseText
@@ -152,9 +152,9 @@ PlateauRivalBattleTrigger2:
 	closetext
 	setevent EVENT_INDIGO_PLATEAU_POKECENTER_LYRA
 	checkevent EVENT_GOT_TOTODILE_FROM_ELM
-	iftrue .LyraTotodile
+	iftruefwd .LyraTotodile
 	checkevent EVENT_GOT_CHIKORITA_FROM_ELM
-	iftrue .LyraChikorita
+	iftruefwd .LyraChikorita
 	; Cyndaquil
 	winlosstext PlateauLyraWinText, PlateauLyraLoseText
 	setlasttalked INDIGOPLATEAUPOKECENTER1F_LYRA
@@ -162,7 +162,7 @@ PlateauRivalBattleTrigger2:
 	startbattle
 	dontrestartmapmusic
 	reloadmapafterbattle
-	sjump .LyraPostBattle
+	sjumpfwd .LyraPostBattle
 
 .LyraTotodile:
 	winlosstext PlateauRivalWinText, PlateauRivalLoseText
@@ -171,7 +171,7 @@ PlateauRivalBattleTrigger2:
 	startbattle
 	dontrestartmapmusic
 	reloadmapafterbattle
-	sjump .LyraPostBattle
+	sjumpfwd .LyraPostBattle
 
 .LyraChikorita:
 	winlosstext PlateauRivalWinText, PlateauRivalLoseText
@@ -347,7 +347,7 @@ IndigoPlateauYellowScript:
 	faceplayer
 	opentext
 	checkevent EVENT_LISTENED_TO_YELLOW_INTRO
-	iftrue .HeardIntro
+	iftruefwd .HeardIntro
 	writetext .GreetingText
 	waitbutton
 	setevent EVENT_LISTENED_TO_YELLOW_INTRO
@@ -359,15 +359,15 @@ IndigoPlateauYellowScript:
 	promptbutton
 	waitsfx
 	checkevent EVENT_GOT_BULBASAUR_FROM_IVY
-	iftrue .Squirtle
+	iftruefwd .Squirtle
 	checkevent EVENT_GOT_CHARMANDER_FROM_IVY
-	iftrue .Bulbasaur
+	iftruefwd .Bulbasaur
 	givepoke CHARMANDER, PLAIN_FORM, 10, SITRUS_BERRY
-	sjump .Finish
+	sjumpfwd .Finish
 
 .Bulbasaur:
 	givepoke BULBASAUR, PLAIN_FORM, 10, SITRUS_BERRY
-	sjump .Finish
+	sjumpfwd .Finish
 
 .Squirtle:
 	givepoke SQUIRTLE, PLAIN_FORM, 10, SITRUS_BERRY

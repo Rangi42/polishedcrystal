@@ -35,7 +35,7 @@ DimCave3F_MapScriptHeader:
 
 DimCave3FBouldersLand:
 	checkevent EVENT_BOULDER_FELL_IN_DIM_CAVE_3F
-	iftrue .skip
+	iftruefwd .skip
 	changeblock 14, 8, $c7
 	changeblock 14, 26, $cf
 .skip

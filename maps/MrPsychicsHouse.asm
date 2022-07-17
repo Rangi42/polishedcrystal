@@ -19,7 +19,7 @@ MrPsychic:
 	faceplayer
 	opentext
 	checkevent EVENT_LISTENED_TO_ZEN_HEADBUTT_INTRO
-	iftrue MrPsychicsHouseTutorZenHeadbuttScript
+	iftruefwd MrPsychicsHouseTutorZenHeadbuttScript
 	writetext MrPsychicText
 	waitbutton
 	setevent EVENT_LISTENED_TO_ZEN_HEADBUTT_INTRO
@@ -27,14 +27,14 @@ MrPsychicsHouseTutorZenHeadbuttScript:
 	writetext Text_MrPsychicsHouseTutorZenHeadbutt
 	waitbutton
 	checkitem SILVER_LEAF
-	iffalse .NoSilverLeaf
+	iffalsefwd .NoSilverLeaf
 	writetext Text_MrPsychicsHouseTutorQuestion
 	yesorno
-	iffalse .TutorRefused
+	iffalsefwd .TutorRefused
 	setval ZEN_HEADBUTT
 	writetext ClearText
 	special Special_MoveTutor
-	ifequal $0, .TeachMove
+	ifequalfwd $0, .TeachMove
 .TutorRefused
 	jumpopenedtext Text_MrPsychicsHouseTutorRefused
 

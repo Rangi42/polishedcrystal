@@ -1,6 +1,6 @@
 FindItemInBallScript::
 	callasm .TryReceiveItem
-	iffalse .no_room
+	iffalsefwd .no_room
 	disappear LAST_TALKED
 	opentext
 	farwritetext _FoundItemText

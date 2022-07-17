@@ -22,8 +22,8 @@ FuchsiaSafariBallHouseOfficerScript:
 	loadmenu .MenuDataHeader
 	verticalmenu
 	closewindow
-	ifequal $1, .Buy1
-	ifequal $2, .Buy10
+	ifequalfwd $1, .Buy1
+	ifequalfwd $2, .Buy10
 	jumpthisopenedtext ; cancel
 
 	text "What will I do"
@@ -32,15 +32,15 @@ FuchsiaSafariBallHouseOfficerScript:
 
 .Buy1:
 	checkmoney $0, 2000
-	ifequal $2, .NotEnoughMoney
+	ifequalfwd $2, .NotEnoughMoney
 	giveitem SAFARI_BALL
 	iffalse_jumpopenedtext .BagFullText
 	takemoney $0, 2000
-	sjump .Done
+	sjumpfwd .Done
 
 .Buy10:
 	checkmoney $0, 20000
-	ifequal $2, .NotEnoughMoney
+	ifequalfwd $2, .NotEnoughMoney
 	giveitem SAFARI_BALL, 10
 	iffalse_jumpopenedtext .BagFullText
 	takemoney $0, 20000

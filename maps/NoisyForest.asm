@@ -184,7 +184,7 @@ NoisyForestPikabluScript:
 	writetext .OwnerText2
 	promptbutton
 	verbosegiveitem ODD_SOUVENIR
-	iffalse .NoItem
+	iffalsefwd .NoItem
 	setevent EVENT_GOT_ODD_SOUVENIR_FROM_PIKABLU_GUY
 	writetext .OwnerText3
 .Leave:

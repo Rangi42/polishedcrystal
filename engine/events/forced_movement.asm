@@ -1,9 +1,9 @@
 Script_ForcedMovement::
 	readvar VAR_FACING
-	ifequal DOWN, .down
-	ifequal UP, .up
-	ifequal LEFT, .left
-	ifequal RIGHT, .right
+	ifequalfwd DOWN, .down
+	ifequalfwd UP, .up
+	ifequalfwd LEFT, .left
+	ifequalfwd RIGHT, .right
 	end
 
 .up

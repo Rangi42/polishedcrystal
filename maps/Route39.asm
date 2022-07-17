@@ -41,7 +41,7 @@ Route39_MapScriptHeader:
 
 Route39TileScript:
 	checkflag ENGINE_FLYPOINT_SNOWTOP
-	iffalse .End
+	iffalsefwd .End
 	changeblock 10, 8, $f4
 	changeblock 12, 8, $01
 	changeblock 14, 8, $01
@@ -55,38 +55,38 @@ TrainerPokefanmDerek1:
 	loadvar VAR_CALLERID, PHONE_POKEFANM_DEREK
 	opentext
 	checkflag ENGINE_DEREK_HAS_NUGGET
-	iftrue .HasNugget
+	iftruefwd .HasNugget
 	checkcellnum PHONE_POKEFANM_DEREK
-	iftrue .NumberAccepted
+	iftruefwd .NumberAccepted
 	checkpoke PIKACHU
-	iffalse .WantsPikachu
+	iffalsefwd .WantsPikachu
 	checkevent EVENT_DEREK_ASKED_FOR_PHONE_NUMBER
-	iftrue .AskedAlready
+	iftruefwd .AskedAlready
 	writetext PokefanMDerekText_NotBragging
 	promptbutton
 	setevent EVENT_DEREK_ASKED_FOR_PHONE_NUMBER
 	scall .AskNumber1
-	sjump .AskForNumber
+	sjumpfwd .AskForNumber
 
 .AskedAlready:
 	scall .AskNumber2
 .AskForNumber:
 	askforphonenumber PHONE_POKEFANM_DEREK
-	ifequal $1, .PhoneFull
-	ifequal $2, .NumberDeclined
+	ifequalfwd $1, .PhoneFull
+	ifequalfwd $2, .NumberDeclined
 	gettrainername POKEFANM, DEREK1, $0
 	scall .RegisteredNumber
-	sjump .NumberAccepted
+	sjumpfwd .NumberAccepted
 
 .HasNugget:
 	scall .Gift
 	verbosegiveitem NUGGET
-	iffalse .NoRoom
+	iffalsefwd .NoRoom
 	clearflag ENGINE_DEREK_HAS_NUGGET
-	sjump .NumberAccepted
+	sjumpfwd .NumberAccepted
 
 .NoRoom:
-	sjump .PackFull
+	sjumpfwd .PackFull
 
 .WantsPikachu:
 	jumpopenedtext PokefanMDerekPikachuIsItText
@@ -130,7 +130,7 @@ Route39CowgirlAnnieScript:
 	iftrue_jumptextfaceplayer .AfterText2
 	faceplayer
 	checkevent EVENT_BEAT_COWGIRL_ANNIE
-	iftrue .Beaten
+	iftruefwd .Beaten
 	checkevent EVENT_BEAT_BIRD_KEEPER_TOBY
 	iffalse_jumptext .IntroText
 	checkevent EVENT_BEAT_SAILOR_HARRY
@@ -271,9 +271,9 @@ TrainerPokefanfJaime:
 	faceplayer
 	opentext
 	checktime 1 << NITE
-	iffalse .NotNight
+	iffalsefwd .NotNight
 	checkevent EVENT_BEAT_POKEFANF_JAIME
-	iftrue .Beaten
+	iftruefwd .Beaten
 	writetext PokefanfJaimeSeenText
 	waitbutton
 	closetext

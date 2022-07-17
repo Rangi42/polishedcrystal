@@ -28,15 +28,15 @@ BlackthornGym1F_MapScriptHeader:
 
 BlackthornGym1FBoulderCallback:
 	checkevent EVENT_BOULDER_IN_BLACKTHORN_GYM_1
-	iffalse .skip1
+	iffalsefwd .skip1
 	changeblock 8, 2, $3b
 .skip1
 	checkevent EVENT_BOULDER_IN_BLACKTHORN_GYM_2
-	iffalse .skip2
+	iffalsefwd .skip2
 	changeblock 2, 4, $3a
 .skip2
 	checkevent EVENT_BOULDER_IN_BLACKTHORN_GYM_3
-	iffalse .skip3
+	iffalsefwd .skip3
 	changeblock 8, 6, $3b
 .skip3
 	endcallback
@@ -44,7 +44,7 @@ BlackthornGym1FBoulderCallback:
 BlackthornGymStatue:
 	gettrainername CLAIR, 1, $1
 	checkflag ENGINE_RISINGBADGE
-	iftrue .Beaten
+	iftruefwd .Beaten
 	jumpstd gymstatue1
 .Beaten:
 	readvar VAR_BADGES

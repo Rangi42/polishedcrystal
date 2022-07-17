@@ -30,7 +30,7 @@ ColosseumTrigger0:
 
 ColosseumScript_SetWhichChris:
 	special Special_CableClubCheckWhichChris
-	iffalse .Chris2
+	iffalsefwd .Chris2
 	disappear COLOSSEUM_CHRIS2
 	appear COLOSSEUM_CHRIS1
 	endcallback

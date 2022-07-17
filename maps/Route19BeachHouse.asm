@@ -22,14 +22,14 @@ Route19BeachHouseVictorScript:
 	faceplayer
 	opentext
 	checkevent EVENT_BEAT_VICTOR
-	iftrue .AfterScript
+	iftruefwd .AfterScript
 	writetext .GreetingText
 	waitbutton
 	special CheckForSurfingPikachu
-	iffalse .NoPikachu
+	iffalsefwd .NoPikachu
 	writetext .ChallengeText
 	yesorno
-	iffalse .NoBattle
+	iffalsefwd .NoBattle
 	writetext .SeenText
 	waitbutton
 	closetext

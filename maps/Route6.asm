@@ -134,7 +134,7 @@ OfficerfJennyScript:
 	checktime 1 << NITE
 	iffalse_jumptextfaceplayer .DaytimeText
 	checkevent EVENT_BEAT_OFFICERF_JENNY
-	iftrue .AfterScript
+	iftruefwd .AfterScript
 	faceplayer
 	opentext
 	special SaveMusic

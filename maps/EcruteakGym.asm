@@ -65,7 +65,7 @@ EcruteakGymMortyScript:
 	faceplayer
 	opentext
 	checkevent EVENT_BEAT_MORTY
-	iftrue .FightDone
+	iftruefwd .FightDone
 	writetext MortyIntroText
 	waitbutton
 	closetext
@@ -154,7 +154,7 @@ EcruteakGymGuyScript:
 EcruteakGymStatue:
 	gettrainername MORTY, 1, $1
 	checkflag ENGINE_FOGBADGE
-	iftrue .Beaten
+	iftruefwd .Beaten
 	jumpstd gymstatue1
 .Beaten:
 	readvar VAR_BADGES

@@ -20,7 +20,7 @@ Route39BarnTwin1Script:
 	faceplayer
 	opentext
 	checkevent EVENT_HEALED_MOOMOO
-	iftrue .FeedingMooMoo
+	iftruefwd .FeedingMooMoo
 	writetext Text_MoomooIsSick
 	waitbutton
 	closetext
@@ -38,7 +38,7 @@ Route39BarnTwin2Script:
 	faceplayer
 	opentext
 	checkevent EVENT_HEALED_MOOMOO
-	iftrue .FeedingMooMoo
+	iftruefwd .FeedingMooMoo
 	writetext Text_MoomooIsSick
 	waitbutton
 	closetext
@@ -54,7 +54,7 @@ Route39BarnTwin2Script:
 
 MooMoo:
 	checkevent EVENT_HEALED_MOOMOO
-	iftrue .HappyCow
+	iftruefwd .HappyCow
 	opentext
 	writetext Text_WeakMoo
 	setmonval MILTANK
@@ -62,7 +62,7 @@ MooMoo:
 	promptbutton
 	writetext Text_ItsCryIsWeak
 	checkevent EVENT_TALKED_TO_FARMER_ABOUT_MOOMOO
-	iftrue .GiveBerry
+	iftruefwd .GiveBerry
 	waitendtext
 
 .GiveBerry:
@@ -71,14 +71,14 @@ MooMoo:
 	yesorno
 	iffalse_jumpopenedtext Text_RefusedToGiveBerry
 	checkitem ORAN_BERRY
-	iffalse .MaybeSitrusBerry
+	iffalsefwd .MaybeSitrusBerry
 	takeitem ORAN_BERRY
 	readmem wMooMooBerries
 	addval 1
 	writemem wMooMooBerries
-	ifequal 3, .ThreeOranBerries
-	ifequal 5, .FiveOranBerries
-	ifequal 7, .SevenOranBerries
+	ifequalfwd 3, .ThreeOranBerries
+	ifequalfwd 5, .FiveOranBerries
+	ifequalfwd 7, .SevenOranBerries
 	jumpopenedtext Text_GaveOranBerry
 
 .MaybeSitrusBerry:

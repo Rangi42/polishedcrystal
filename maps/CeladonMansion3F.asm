@@ -31,7 +31,7 @@ GameFreakGameDesignerScript:
 	writetext GameFreakGameDesignerText
 	setval16 NUM_SPECIES - 3 - 2 ; ignore mew + celebi
 	special CountCaught
-	iftrue .CompletedPokedex
+	iftruefwd .CompletedPokedex
 	waitendtext
 
 .CompletedPokedex:

@@ -32,11 +32,11 @@ WiseTriosRoom_MapScriptHeader:
 
 WiseTriosRoomCallback:
 	checkevent EVENT_FOUGHT_SUICUNE
-	iftrue .NoWiseTrio
+	iftruefwd .NoWiseTrio
 	checkevent EVENT_KOJI_ALLOWS_YOU_PASSAGE_TO_TIN_TOWER
-	iftrue .WiseTrio2
+	iftruefwd .WiseTrio2
 	checkkeyitem CLEAR_BELL
-	iftrue .WiseTrio2
+	iftruefwd .WiseTrio2
 	clearevent EVENT_WISE_TRIOS_ROOM_WISE_TRIO_1
 	setevent EVENT_WISE_TRIOS_ROOM_WISE_TRIO_2
 	endcallback

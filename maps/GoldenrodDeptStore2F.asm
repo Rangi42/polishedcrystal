@@ -22,7 +22,7 @@ GoldenrodDeptStore2F_MapScriptHeader:
 
 GoldenrodDeptStore2FClerk2Script:
 	checkevent EVENT_GOT_EEVEE
-	iftrue .eevee
+	iftruefwd .eevee
 	pokemart MARTTYPE_STANDARD, MART_GOLDENROD_2F_2
 
 .eevee

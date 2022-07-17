@@ -48,7 +48,7 @@ CeladonUniversity2FCooltrainerfScript:
 	writetext .Text4
 	waitbutton
 	verbosegiveitem ANTIDOTE
-	iffalse .NoRoomForAntidote
+	iffalsefwd .NoRoomForAntidote
 	setevent EVENT_GOT_ANTIDOTE_IN_UNIVERSITY
 	jumpthisopenedtext
 

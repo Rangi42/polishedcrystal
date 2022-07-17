@@ -3291,11 +3291,8 @@ PursuitSwitch:
 	farcall CheckOpponentWentFirst
 	ret z
 
-	ld a, BATTLE_VARS_MOVE
+	ld a, BATTLE_VARS_MOVE_EFFECT
 	call GetBattleVar
-	ld b, a
-	call GetMoveEffect
-	ld a, b
 	cp EFFECT_PURSUIT
 	ret nz
 	call PerformMove

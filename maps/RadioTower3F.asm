@@ -27,7 +27,7 @@ RadioTower3F_MapScriptHeader:
 
 CardKeyShutterCallback:
 	checkevent EVENT_USED_THE_CARD_KEY_IN_THE_RADIO_TOWER
-	iftrue .Change
+	iftruefwd .Change
 	endcallback
 
 .Change:
@@ -44,7 +44,7 @@ RadioTower3FCooltrainerFScript:
 	checkevent EVENT_GOT_HEAT_ROCK_FROM_RADIO_TOWER
 	iftrue_jumptextfaceplayer RadioTower3FCooltrainerFYouWereMarvelousText
 	checkevent EVENT_CLEARED_RADIO_TOWER
-	iftrue .NoRockets
+	iftruefwd .NoRockets
 	checkevent EVENT_USED_THE_CARD_KEY_IN_THE_RADIO_TOWER
 	iftrue_jumptextfaceplayer RadioTower3FCooltrainerFIsDirectorSafeText
 	jumpthistextfaceplayer
@@ -120,9 +120,9 @@ CardKeySlotScript::
 	writetext RadioTower3FCardKeySlotText
 	waitbutton
 	checkevent EVENT_USED_THE_CARD_KEY_IN_THE_RADIO_TOWER
-	iftrue .UsedCardKey
+	iftruefwd .UsedCardKey
 	checkkeyitem CARD_KEY
-	iftrue .HaveCardKey
+	iftruefwd .HaveCardKey
 .UsedCardKey:
 	endtext
 

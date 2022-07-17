@@ -52,11 +52,11 @@ WalkIntoEliteFourRoomMovement:
 
 LancesRoomDoorCallback:
 	checkevent EVENT_LANCES_ROOM_ENTRANCE_CLOSED
-	iffalse .LanceEntranceOpen
+	iffalsefwd .LanceEntranceOpen
 	changeblock 6, 22, $34
 .LanceEntranceOpen:
 	checkevent EVENT_LANCES_ROOM_EXIT_OPEN
-	iffalse .LanceExitClosed
+	iffalsefwd .LanceExitClosed
 	changeblock 6, 0, $b
 .LanceExitClosed:
 	endcallback
@@ -64,7 +64,7 @@ LancesRoomDoorCallback:
 ApproachLanceFromLeftTrigger:
 	special Special_FadeOutMusic
 	applymovement PLAYER, ApproachLanceFromLeftMovement
-	sjump LanceScript
+	sjumpfwd LanceScript
 
 ApproachLanceFromRightTrigger:
 	special Special_FadeOutMusic
@@ -72,7 +72,7 @@ ApproachLanceFromRightTrigger:
 LanceScript:
 	turnobject LANCESROOM_LANCE, LEFT
 	readvar VAR_BADGES
-	ifequal 16, .Rematch
+	ifequalfwd 16, .Rematch
 	showtext .SeenText
 	winlosstext .BeatenText, 0
 	setlasttalked LANCESROOM_LANCE
@@ -81,7 +81,7 @@ LanceScript:
 	dontrestartmapmusic
 	reloadmapafterbattle
 	showtext .AfterText
-	sjump .EndBattle
+	sjumpfwd .EndBattle
 
 .Rematch:
 	showtext .SeenRematchText
@@ -118,9 +118,9 @@ LanceScript:
 	readvar VAR_BADGES
 	ifnotequal 16, .DefaultOakSpeech
 	checkevent EVENT_OPENED_MT_SILVER
-	iffalse .DefaultOakSpeech
+	iffalsefwd .DefaultOakSpeech
 	showtext .OakRematchSpeechText
-	sjump .OakSpeechDone
+	sjumpfwd .OakSpeechDone
 .DefaultOakSpeech
 	showtext .OakSpeechText
 .OakSpeechDone

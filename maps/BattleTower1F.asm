@@ -37,10 +37,10 @@ BattleTower1FContinueChallenge:
 
 	; Check current battle status to see if we need to resume or reset winstreak
 	special Special_BattleTower_GetChallengeState
-	ifequal BATTLETOWER_CHALLENGE_IN_PROGRESS, .LeftWithoutSaving
-	ifequal BATTLETOWER_SAVED_AND_LEFT, .ResumeChallenge
-	ifequal BATTLETOWER_LOST_CHALLENGE, .LostChallenge
-	ifequal BATTLETOWER_WON_CHALLENGE, .WonChallenge
+	ifequalfwd BATTLETOWER_CHALLENGE_IN_PROGRESS, .LeftWithoutSaving
+	ifequalfwd BATTLETOWER_SAVED_AND_LEFT, .ResumeChallenge
+	ifequalfwd BATTLETOWER_LOST_CHALLENGE, .LostChallenge
+	ifequalfwd BATTLETOWER_WON_CHALLENGE, .WonChallenge
 	end
 
 .ResumeChallenge:
@@ -76,7 +76,7 @@ BattleTower1FContinueChallenge:
 		line "invalid."
 		done
 	waitbutton
-	sjump Script_CommitBattleTowerResult
+	sjumpfwd Script_CommitBattleTowerResult
 
 .LostChallenge:
 	opentext
@@ -102,7 +102,7 @@ BattleTower1FContinueChallenge:
 	; fallthrough
 Script_CommitBattleTowerResult:
 	special Special_BattleTower_CommitChallengeResult
-	iffalse .WeHopeToServeYouAgain
+	iffalsefwd .WeHopeToServeYouAgain
 	setevent EVENT_BEAT_PALMER
 .WeHopeToServeYouAgain:
 	writethistext
@@ -159,7 +159,7 @@ BattleTower1FReceptionistScript:
 		done
 	promptbutton
 	checkevent EVENT_BATTLE_TOWER_INTRO
-	iftrue .BattleTowerMenu
+	iftruefwd .BattleTowerMenu
 
 	; only ask once, so set the flag regardless
 	setevent EVENT_BATTLE_TOWER_INTRO
@@ -169,7 +169,7 @@ BattleTower1FReceptionistScript:
 		cont "Battle Tower?"
 		done
 	yesorno
-	iffalse .BattleTowerMenu
+	iffalsefwd .BattleTowerMenu
 
 .Explanation:
 	writethistext
@@ -216,7 +216,7 @@ BattleTower1FReceptionistScript:
 	loadmenu MenuDataHeader_BattleInfoCancel
 	verticalmenu
 	closewindow
-	ifequal $1, .Challenge
+	ifequalfwd $1, .Challenge
 	ifequal $2, .Explanation
 	writethistext
 		text "We hope to serve"
@@ -303,7 +303,7 @@ BattleTowerPharmacistScript:
 	faceplayer
 	opentext
 	checkevent EVENT_LISTENED_TO_TRICK_INTRO
-	iftrue BattleTowerTutorTrickScript
+	iftruefwd BattleTowerTutorTrickScript
 	writethistext
 		text "The trainers here"
 		line "strategically use"
@@ -328,18 +328,18 @@ BattleTowerTutorTrickScript:
 		done
 	waitbutton
 	checkitem SILVER_LEAF
-	iffalse .NoSilverLeaf
+	iffalsefwd .NoSilverLeaf
 	writethistext
 		text "Should I teach"
 		line "your #mon"
 		cont "Trick?"
 		done
 	yesorno
-	iffalse .TutorRefused
+	iffalsefwd .TutorRefused
 	setval TRICK
 	writetext ClearText
 	special Special_MoveTutor
-	ifequal $0, .TeachMove
+	ifequalfwd $0, .TeachMove
 .TutorRefused
 	jumpthisopenedtext
 		text "Talk to me if you"

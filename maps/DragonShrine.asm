@@ -39,9 +39,9 @@ DragonShrineTestScript:
 	loadmenu DragonShrineQuestion1_MenuHeader
 	verticalmenu
 	closewindow
-	ifequal $1, .RightAnswer
-	ifequal $2, .WrongAnswer
-	ifequal $3, .RightAnswer
+	ifequalfwd $1, .RightAnswer
+	ifequalfwd $2, .WrongAnswer
+	ifequalfwd $3, .RightAnswer
 	end
 
 .Question2:
@@ -51,9 +51,9 @@ DragonShrineTestScript:
 	loadmenu DragonShrineQuestion2_MenuHeader
 	verticalmenu
 	closewindow
-	ifequal $1, .RightAnswer
-	ifequal $2, .RightAnswer
-	ifequal $3, .WrongAnswer
+	ifequalfwd $1, .RightAnswer
+	ifequalfwd $2, .RightAnswer
+	ifequalfwd $3, .WrongAnswer
 .Question3:
 	setevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_4
 	writetext DragonShrineQuestion3Text
@@ -61,9 +61,9 @@ DragonShrineTestScript:
 	loadmenu DragonShrineQuestion3_MenuHeader
 	verticalmenu
 	closewindow
-	ifequal $1, .WrongAnswer
-	ifequal $2, .RightAnswer
-	ifequal $3, .RightAnswer
+	ifequalfwd $1, .WrongAnswer
+	ifequalfwd $2, .RightAnswer
+	ifequalfwd $3, .RightAnswer
 .Question4:
 	setevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_5
 	writetext DragonShrineQuestion4Text
@@ -71,9 +71,9 @@ DragonShrineTestScript:
 	loadmenu DragonShrineQuestion4_MenuHeader
 	verticalmenu
 	closewindow
-	ifequal $1, .RightAnswer
-	ifequal $2, .WrongAnswer
-	ifequal $3, .RightAnswer
+	ifequalfwd $1, .RightAnswer
+	ifequalfwd $2, .WrongAnswer
+	ifequalfwd $3, .RightAnswer
 .Question5:
 	setevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_6
 	writetext DragonShrineQuestion5Text
@@ -81,12 +81,12 @@ DragonShrineTestScript:
 	loadmenu DragonShrineQuestion5_MenuHeader
 	verticalmenu
 	closewindow
-	ifequal $1, .WrongAnswer
-	ifequal $2, .WrongAnswer
-	ifequal $3, .RightAnswer
+	ifequalfwd $1, .WrongAnswer
+	ifequalfwd $2, .WrongAnswer
+	ifequalfwd $3, .RightAnswer
 .RightAnswer:
 	checkevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_6
-	iftrue .PassedTheTest
+	iftruefwd .PassedTheTest
 	writetext DragonShrineRightAnswerText
 	promptbutton
 	checkevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_5
@@ -176,7 +176,7 @@ DragonShrineElder1Script:
 	checkevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_7
 	iftrue_jumptextfaceplayer DragonShrineSymbolicDragonText
 	checkevent EVENT_GOT_DRATINI
-	iffalse .GiveDratini
+	iffalsefwd .GiveDratini
 	checkevent EVENT_BEAT_RIVAL_IN_MT_MOON
 	iftrue_jumptextfaceplayer DragonShrineSilverIsInTrainingText
 	jumptextfaceplayer DragonShrineClairsGrandfatherText
@@ -187,9 +187,9 @@ DragonShrineElder1Script:
 	writetext DragonShrineTakeThisDratiniText
 	waitbutton
 	checkevent EVENT_ANSWERED_DRAGON_MASTER_QUIZ_WRONG
-	iftrue .NoExtremeSpeed
+	iftruefwd .NoExtremeSpeed
 	givepoke DRATINI, PLAIN_FORM, 15, SITRUS_BERRY, ULTRA_BALL, EXTREMESPEED
-	sjump .FinishElderScript
+	sjumpfwd .FinishElderScript
 .NoExtremeSpeed
 	givepoke DRATINI, PLAIN_FORM, 15, SITRUS_BERRY, ULTRA_BALL
 .FinishElderScript

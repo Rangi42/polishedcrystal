@@ -31,7 +31,7 @@ PokemonFanClubChairmanScript:
 	faceplayer
 	opentext
 	checkevent EVENT_LISTENED_TO_FAN_CLUB_PRESIDENT_BUT_BAG_WAS_FULL
-	iftrue .HeardSpeech
+	iftruefwd .HeardSpeech
 	writetext PokemonFanClubChairmanDidYouVisitToHearAboutMyMonText
 	yesorno
 	iffalse_jumpopenedtext PokemonFanClubChairmanHowDisappointingText
@@ -54,7 +54,7 @@ PokemonFanClubClefairyGuyScript:
 	opentext
 	writetext PokemonFanClubClefairyGuyMakingDoWithADollIFoundText
 	checkevent EVENT_MET_COPYCAT_FOUND_OUT_ABOUT_LOST_ITEM
-	iftrue .FoundClefairyDoll
+	iftruefwd .FoundClefairyDoll
 	waitendtext
 .FoundClefairyDoll:
 	promptbutton

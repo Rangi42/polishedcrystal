@@ -30,7 +30,7 @@ FuchsiaGym_MapScriptHeader:
 
 FuchsiaGymJanineScript:
 	checkflag ENGINE_MARSHBADGE
-	iftrue .FightDone
+	iftruefwd .FightDone
 	applymovement FUCHSIAGYM_JANINE, Movement_NinjaSpin
 	showtextfaceplayer JanineText_DisappointYou
 	winlosstext JanineText_ToughOne, 0
@@ -53,21 +53,21 @@ FuchsiaGymJanineScript:
 	waitsfx
 	setflag ENGINE_MARSHBADGE
 	readvar VAR_BADGES
-	ifequal 9, .FirstBadge
-	ifequal 10, .SecondBadge
-	ifequal 12, .LyrasEgg
-	sjump UnknownScript_0x195e02
+	ifequalfwd 9, .FirstBadge
+	ifequalfwd 10, .SecondBadge
+	ifequalfwd 12, .LyrasEgg
+	sjumpfwd UnknownScript_0x195e02
 .FirstBadge:
 	specialphonecall SPECIALCALL_FIRSTBADGE
-	sjump UnknownScript_0x195e02
+	sjumpfwd UnknownScript_0x195e02
 .SecondBadge:
 	checkevent EVENT_GOT_GS_BALL_FROM_POKECOM_CENTER
-	iftrue UnknownScript_0x195e02
+	iftruefwd UnknownScript_0x195e02
 	specialphonecall SPECIALCALL_SECONDBADGE
-	sjump UnknownScript_0x195e02
+	sjumpfwd UnknownScript_0x195e02
 .LyrasEgg:
 	specialphonecall SPECIALCALL_LYRASEGG
-	sjump UnknownScript_0x195e02
+	sjumpfwd UnknownScript_0x195e02
 .FightDone:
 	faceplayer
 	opentext
@@ -90,7 +90,7 @@ UnknownScript_0x195e02:
 
 LassAliceScript:
 	checkevent EVENT_BEAT_LASS_AMANDA
-	iftrue UnknownScript_0x195e2c
+	iftruefwd UnknownScript_0x195e2c
 	applymovement FUCHSIAGYM_FUCHSIA_GYM_1, Movement_NinjaSpin
 	faceplayer
 	variablesprite SPRITE_FUCHSIA_GYM_1, SPRITE_LASS
@@ -103,7 +103,7 @@ UnknownScript_0x195e2c:
 	winlosstext LassAliceBeatenText, 0
 	loadtrainer LASS, AMANDA
 	startbattle
-	iftrue UnknownScript_0x195e4a
+	iftruefwd UnknownScript_0x195e4a
 	reloadmapafterbattle
 	setevent EVENT_BEAT_LASS_AMANDA
 	end
@@ -115,7 +115,7 @@ UnknownScript_0x195e4a:
 
 LassLindaScript:
 	checkevent EVENT_BEAT_LASS_LINDA
-	iftrue UnknownScript_0x195e66
+	iftruefwd UnknownScript_0x195e66
 	applymovement FUCHSIAGYM_FUCHSIA_GYM_2, Movement_NinjaSpin
 	faceplayer
 	variablesprite SPRITE_FUCHSIA_GYM_2, SPRITE_LASS
@@ -128,7 +128,7 @@ UnknownScript_0x195e66:
 	winlosstext LassLindaBeatenText, 0
 	loadtrainer LASS, LINDA
 	startbattle
-	iftrue UnknownScript_0x195e84
+	iftruefwd UnknownScript_0x195e84
 	reloadmapafterbattle
 	setevent EVENT_BEAT_LASS_LINDA
 	end
@@ -140,7 +140,7 @@ UnknownScript_0x195e84:
 
 PicnickerCindyScript:
 	checkevent EVENT_BEAT_PICNICKER_CINDY
-	iftrue UnknownScript_0x195ea0
+	iftruefwd UnknownScript_0x195ea0
 	applymovement FUCHSIAGYM_FUCHSIA_GYM_3, Movement_NinjaSpin
 	faceplayer
 	variablesprite SPRITE_FUCHSIA_GYM_3, SPRITE_PICNICKER
@@ -153,7 +153,7 @@ UnknownScript_0x195ea0:
 	winlosstext PicnickerCindyBeatenText, 0
 	loadtrainer PICNICKER, CINDY
 	startbattle
-	iftrue UnknownScript_0x195ebe
+	iftruefwd UnknownScript_0x195ebe
 	reloadmapafterbattle
 	setevent EVENT_BEAT_PICNICKER_CINDY
 	end
@@ -165,7 +165,7 @@ UnknownScript_0x195ebe:
 
 CamperBarryScript:
 	checkevent EVENT_BEAT_CAMPER_BARRY
-	iftrue UnknownScript_0x195eda
+	iftruefwd UnknownScript_0x195eda
 	applymovement FUCHSIAGYM_FUCHSIA_GYM_4, Movement_NinjaSpin
 	faceplayer
 	variablesprite SPRITE_FUCHSIA_GYM_4, SPRITE_SCHOOLBOY
@@ -178,7 +178,7 @@ UnknownScript_0x195eda:
 	winlosstext CamperBarryBeatenText, 0
 	loadtrainer CAMPER, BARRY
 	startbattle
-	iftrue UnknownScript_0x195ef8
+	iftruefwd UnknownScript_0x195ef8
 	reloadmapafterbattle
 	setevent EVENT_BEAT_CAMPER_BARRY
 	end
@@ -196,7 +196,7 @@ FuchsiaGymGuyScript:
 FuchsiaGymStatue:
 	gettrainername JANINE, 1, $1
 	checkflag ENGINE_MARSHBADGE
-	iftrue .Beaten
+	iftruefwd .Beaten
 	jumpstd gymstatue1
 .Beaten:
 	jumpstd gymstatue2

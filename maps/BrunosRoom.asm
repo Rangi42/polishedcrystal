@@ -37,18 +37,18 @@ BrunosRoomEntranceTrigger:
 
 BrunosRoomDoorCallback:
 	checkevent EVENT_BRUNOS_ROOM_ENTRANCE_CLOSED
-	iffalse .KeepDoorClosed
+	iffalsefwd .KeepDoorClosed
 	changeblock 4, 14, $2a
 .KeepDoorClosed:
 	checkevent EVENT_BRUNOS_ROOM_EXIT_OPEN
-	iffalse .OpenDoor
+	iffalsefwd .OpenDoor
 	changeblock 4, 2, $16
 .OpenDoor:
 	endcallback
 
 BrunoScript:
 	readvar VAR_BADGES
-	ifequal 16, .Rematch
+	ifequalfwd 16, .Rematch
 	checkevent EVENT_BEAT_ELITE_4_BRUNO
 	iftrue_jumptextfaceplayer .AfterText
 	showtextfaceplayer .SeenText
@@ -57,7 +57,7 @@ BrunoScript:
 	startbattle
 	reloadmapafterbattle
 	showtext .AfterText
-	sjump .EndBattle
+	sjumpfwd .EndBattle
 
 .Rematch:
 	checkevent EVENT_BEAT_ELITE_4_BRUNO

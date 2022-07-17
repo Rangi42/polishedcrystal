@@ -98,9 +98,9 @@ CherrygroveSilverTriggerNorth:
 	playmusic MUSIC_RIVAL_ENCOUNTER
 	showtext CherrygroveRivalText_Seen
 	checkevent EVENT_GOT_TOTODILE_FROM_ELM
-	iftrue .Totodile
+	iftruefwd .Totodile
 	checkevent EVENT_GOT_CHIKORITA_FROM_ELM
-	iftrue .Chikorita
+	iftruefwd .Chikorita
 	winlosstext SilverCherrygroveWinText, SilverCherrygroveLossText
 	setlasttalked CHERRYGROVECITY_SILVER
 	loadtrainer RIVAL0, 3
@@ -108,7 +108,7 @@ CherrygroveSilverTriggerNorth:
 	startbattle
 	setevent EVENT_RIVAL_CHERRYGROVE_CITY
 	reloadmap
-	sjump .FinishRival
+	sjumpfwd .FinishRival
 
 .Totodile:
 	winlosstext SilverCherrygroveWinText, SilverCherrygroveLossText
@@ -119,7 +119,7 @@ CherrygroveSilverTriggerNorth:
 	dontrestartmapmusic
 	setevent EVENT_RIVAL_CHERRYGROVE_CITY
 	reloadmap
-	sjump .FinishRival
+	sjumpfwd .FinishRival
 
 .Chikorita:
 	winlosstext SilverCherrygroveWinText, SilverCherrygroveLossText

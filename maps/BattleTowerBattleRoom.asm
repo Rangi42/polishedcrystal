@@ -57,8 +57,8 @@ Script_BattleRoomLoop:
 	waitsfx
 	specialsound
 	waitbutton
-	ifequal BTCHALLENGE_WON, Script_BeatenAllTowerTrainers
-	ifequal BTCHALLENGE_FACILITYBRAIN, .WarnAboutTycoon
+	ifequalfwd BTCHALLENGE_WON, Script_BeatenAllTowerTrainers
+	ifequalfwd BTCHALLENGE_FACILITYBRAIN, .WarnAboutTycoon
 .AskNextBattle:
 	writethistext
 		text "Next up, opponent"
@@ -66,7 +66,7 @@ Script_BattleRoomLoop:
 		text_decimal wStringBuffer3, 2, 5
 		text ". Ready?"
 		done
-	sjump .ShownText
+	sjumpfwd .ShownText
 .WarnAboutTycoon
 	writethistext
 		text "Congratulations"
@@ -85,7 +85,7 @@ Script_BattleRoomLoop:
 		done
 .ShownText
 	yesorno
-	iffalse .DontBattleNextOpponent
+	iffalsefwd .DontBattleNextOpponent
 	closetext
 	applyonemovement PLAYER, turn_head_right
 	applymovement BATTLETOWERBATTLEROOM_RECEPTIONIST, MovementData_BattleTowerBattleRoomReceptionistWalksAway
@@ -97,7 +97,7 @@ Script_BattleRoomLoop:
 		line "session?"
 		done
 	yesorno
-	iffalse .DontSaveAndEndTheSession
+	iffalsefwd .DontSaveAndEndTheSession
 	special SaveOptions
 	setval BATTLETOWER_SAVED_AND_LEFT
 	special Special_BattleTower_SetChallengeState
@@ -120,7 +120,7 @@ Script_BattleRoomLoop:
 Script_LostBattleTower:
 	setval BATTLETOWER_LOST_CHALLENGE
 	special Special_BattleTower_SetChallengeState
-	sjump Script_ReturnToBattleTowerLobby
+	sjumpfwd Script_ReturnToBattleTowerLobby
 
 Script_BeatenAllTowerTrainers:
 	special FadeOutPalettes

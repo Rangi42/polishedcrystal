@@ -21,11 +21,11 @@ Route12SuperRodHouseFishingGuruScript:
 	opentext
 	writetext OfferSuperRodText
 	yesorno
-	iffalse UnknownScript_0x7f4a6
+	iffalsefwd UnknownScript_0x7f4a6
 	writetext GiveSuperRodText
 	promptbutton
 	verbosegivekeyitem SUPER_ROD
-	iffalse UnknownScript_0x7f4aa
+	iffalsefwd UnknownScript_0x7f4aa
 	setevent EVENT_GOT_SUPER_ROD
 	jumpthisopenedtext
 

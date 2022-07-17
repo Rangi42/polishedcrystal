@@ -20,11 +20,11 @@ Route5CleanseTagHouseGrannyScript:
 	faceplayer
 	opentext
 	checkevent EVENT_GOT_CLEANSE_TAG
-	iftrue UnknownScript_0x18b649
+	iftruefwd UnknownScript_0x18b649
 	writetext Route5CleanseTagHouseGrannyText1
 	promptbutton
 	verbosegiveitem CLEANSE_TAG
-	iffalse UnknownScript_0x18b64d
+	iffalsefwd UnknownScript_0x18b64d
 	setevent EVENT_GOT_CLEANSE_TAG
 UnknownScript_0x18b649:
 	writetext Route5CleanseTagHouseGrannyText2

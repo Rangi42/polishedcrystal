@@ -37,7 +37,7 @@ BattleTowerOutsideStepDownTrigger:
 	readvar VAR_YCOORD
 	ifnotequal $9, .Done
 	readvar VAR_XCOORD
-	ifequal $8, .Down
+	ifequalfwd $8, .Down
 	ifnotequal $9, .Done
 .Down
 	applyonemovement PLAYER, step_down
@@ -86,7 +86,7 @@ BattleTowerOutsideSignText:
 BattleTowerOutsideAnabelScript:
 	faceplayer
 	checkevent EVENT_BEAT_ANABEL
-	iftrue .Beaten
+	iftruefwd .Beaten
 	opentext
 	writetext .ChallengeText
 	yesorno

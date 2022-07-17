@@ -265,6 +265,10 @@ ScriptCommandTable:
 	dw Script_givebp                     ; ce
 	dw Script_takebp                     ; cf
 	dw Script_checkbp                    ; d0
+	dw Script_sjumpfwd                   ; d1
+	dw Script_ifequalfwd                 ; d2
+	dw Script_iffalsefwd                 ; d3
+	dw Script_iftruefwd                  ; d4
 	assert_table_length NUM_EVENT_COMMANDS
 
 StartScript:
@@ -586,7 +590,7 @@ Script_verbosegiveitem:
 
 GiveItemScript:
 	farwritetext _ReceivedItemText
-	iffalse .Full
+	iffalsefwd .Full
 	specialsound
 	waitbutton
 	itemnotify
@@ -1373,9 +1377,7 @@ Script_sjump:
 	ld l, a
 	call GetScriptByte
 	ld h, a
-	ld a, [wScriptBank]
-	ld b, a
-	jmp ScriptJump
+	jmp ScriptJumpInCurrentBank
 
 Script_farsjump:
 	call GetScriptByte
@@ -1384,7 +1386,7 @@ Script_farsjump:
 	ld l, a
 	call GetScriptByte
 	ld h, a
-	jr ScriptJump
+	jmp ScriptJump
 
 Script_memjump:
 	call GetScriptByte
@@ -1401,8 +1403,8 @@ Script_memjump:
 Script_iffalse:
 	ldh a, [hScriptVar]
 	and a
-	jr nz, SkipTwoScriptBytes
-	jr Script_sjump
+	jr z, Script_sjump
+	jr SkipTwoScriptBytes
 
 Script_iftrue:
 	ldh a, [hScriptVar]
@@ -1444,6 +1446,25 @@ SkipTwoScriptBytes:
 	call GetScriptByte
 	jmp GetScriptByte
 
+Script_iffalsefwd:
+	ldh a, [hScriptVar]
+	and a
+	jr z, Script_sjumpfwd
+	jmp GetScriptByte
+
+Script_iftruefwd:
+	ldh a, [hScriptVar]
+	and a
+	jr nz, Script_sjumpfwd
+	jmp GetScriptByte
+
+Script_ifequalfwd:
+	call GetScriptByte
+	ld hl, hScriptVar
+	cp [hl]
+	jr z, Script_sjumpfwd
+	jmp GetScriptByte
+
 Script_jumpstd:
 	call StdScript
 	jr ScriptJump
@@ -1472,11 +1493,24 @@ StdScript:
 ScriptJump:
 	ld a, b
 	ld [wScriptBank], a
+ScriptJumpInCurrentBank:
 	ld a, l
 	ld [wScriptPos], a
 	ld a, h
 	ld [wScriptPos + 1], a
 	ret
+
+Script_sjumpfwd:
+	ld hl, wScriptPos
+	ld a, [hli]
+	ld h, [hl]
+	ld l, a
+	inc hl
+	call GetScriptByte
+	ld b, 0
+	ld c, a
+	add hl, bc
+	jr ScriptJumpInCurrentBank
 
 Script_sdefer:
 	ld a, [wScriptBank]

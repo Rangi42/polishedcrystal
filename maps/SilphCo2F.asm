@@ -29,11 +29,11 @@ SilphCo2FScientist1Script:
 	faceplayer
 	opentext
 	checkevent EVENT_GOT_UP_GRADE
-	iftrue SilphCo2FScientist1GaveUpGradeScript
+	iftruefwd SilphCo2FScientist1GaveUpGradeScript
 	writetext SilphCo2FScientist1Text1
 	promptbutton
 	verbosegiveitem UP_GRADE
-	iffalse SilphCo2FScientist1NoRoomForUpGradeScript
+	iffalsefwd SilphCo2FScientist1NoRoomForUpGradeScript
 	setevent EVENT_GOT_UP_GRADE
 SilphCo2FScientist1GaveUpGradeScript:
 	writetext SilphCo2FScientist1Text2

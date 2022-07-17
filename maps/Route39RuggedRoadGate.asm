@@ -29,19 +29,19 @@ Route39RuggedRoadGateStepLeftThreeTrigger:
 	checkkeyitem GO_GOGGLES
 	iftrue DoNothingScript
 	applymovement PLAYER, Route39RuggedRoadGateStepLeftThreeMovementData
-	sjump Route39RuggedRoadGateCannotPassScript
+	sjumpfwd Route39RuggedRoadGateCannotPassScript
 
 Route39RuggedRoadGateStepLeftTwoTrigger:
 	checkkeyitem GO_GOGGLES
 	iftrue DoNothingScript
 	applymovement PLAYER, Route39RuggedRoadGateStepLeftTwoMovementData
-	sjump Route39RuggedRoadGateCannotPassScript
+	sjumpfwd Route39RuggedRoadGateCannotPassScript
 
 Route39RuggedRoadGateStepLeftOneTrigger:
 	checkkeyitem GO_GOGGLES
 	iftrue DoNothingScript
 	applyonemovement PLAYER, step_left
-	sjump Route39RuggedRoadGateCannotPassScript
+	sjumpfwd Route39RuggedRoadGateCannotPassScript
 
 Route39RuggedRoadGateGoGogglesCheck:
 	checkkeyitem GO_GOGGLES

@@ -29,7 +29,7 @@ GoldenrodGym_MapScriptHeader:
 GoldenrodGymWhitneyScript:
 	faceplayer
 	checkevent EVENT_BEAT_WHITNEY
-	iftrue .FightDone
+	iftruefwd .FightDone
 	showtext WhitneyBeforeText
 	winlosstext WhitneyShouldntBeSoSeriousText, 0
 	loadtrainer WHITNEY, 1
@@ -45,14 +45,14 @@ GoldenrodGymWhitneyScript:
 .FightDone:
 	opentext
 	checkevent EVENT_MADE_WHITNEY_CRY
-	iffalse .StoppedCrying
+	iffalsefwd .StoppedCrying
 	jumpopenedtext WhitneyYouMeanieText
 
 .StoppedCrying:
 	checkevent EVENT_GOT_TM45_ATTRACT
 	iftrue_jumpopenedtext WhitneyGoodCryText
 	checkflag ENGINE_PLAINBADGE
-	iftrue .GotPlainBadge
+	iftruefwd .GotPlainBadge
 	writetext WhitneyWhatDoYouWantText
 	promptbutton
 	waitsfx
@@ -165,7 +165,7 @@ GoldenrodGymGuyScript:
 GoldenrodGymStatue:
 	gettrainername WHITNEY, 1, $1
 	checkflag ENGINE_PLAINBADGE
-	iftrue .Beaten
+	iftruefwd .Beaten
 	jumpstd gymstatue1
 .Beaten:
 	readvar VAR_BADGES

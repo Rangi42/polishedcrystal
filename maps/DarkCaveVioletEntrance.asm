@@ -35,7 +35,7 @@ DarkCaveVioletEntrance_MapScriptHeader:
 DarkCaveVioletEntranceFalknerTrigger:
 	waitsfx
 	checkdarkness
-	iftrue .Darkness
+	iftruefwd .Darkness
 	scall .BeatUrsaring
 	showemote EMOTE_SHOCK, DARKCAVEVIOLETENTRANCE_FALKNER, 15
 	opentext
@@ -58,7 +58,7 @@ DarkCaveVioletEntranceFalknerTrigger:
 
 .Darkness:
 	checkevent EVENT_GOT_TM70_FLASH
-	iftrue .ProgressAnyway
+	iftruefwd .ProgressAnyway
 	showtext DarkCaveVioletEntranceFalknerDarknessText
 	applyonemovement PLAYER, step_left
 	end

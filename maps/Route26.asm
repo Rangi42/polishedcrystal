@@ -50,40 +50,40 @@ TrainerCooltrainermGaven1:
 	loadvar VAR_CALLERID, PHONE_COOLTRAINERM_GAVEN
 	opentext
 	checkflag ENGINE_GAVEN_READY_FOR_REMATCH
-	iftrue .WantsBattle
+	iftruefwd .WantsBattle
 	checkcellnum PHONE_COOLTRAINERM_GAVEN
-	iftrue .NumberAccepted
+	iftruefwd .NumberAccepted
 	checkevent EVENT_GAVEN_ASKED_FOR_PHONE_NUMBER
-	iftrue .AskedAlready
+	iftruefwd .AskedAlready
 	writetext CooltrainermGavenAfterText
 	promptbutton
 	setevent EVENT_GAVEN_ASKED_FOR_PHONE_NUMBER
 	scall .AskNumber1
-	sjump .AskForNumber
+	sjumpfwd .AskForNumber
 
 .AskedAlready:
 	scall .AskNumber2
 .AskForNumber:
 	askforphonenumber PHONE_COOLTRAINERM_GAVEN
-	ifequal $1, .PhoneFull
-	ifequal $2, .NumberDeclined
+	ifequalfwd $1, .PhoneFull
+	ifequalfwd $2, .NumberDeclined
 	gettrainername COOLTRAINERM, GAVEN1, $0
 	scall .RegisteredNumber
-	sjump .NumberAccepted
+	sjumpfwd .NumberAccepted
 
 .WantsBattle:
 	scall .Rematch
 	winlosstext CooltrainermGaven1BeatenText, 0
 	readmem wGavenFightCount
-	ifequal 2, .Fight2
-	ifequal 1, .Fight1
-	ifequal 0, .LoadFight0
+	ifequalfwd 2, .Fight2
+	ifequalfwd 1, .Fight1
+	ifequalfwd 0, .LoadFight0
 .Fight2:
 	checkevent EVENT_RESTORED_POWER_TO_KANTO
-	iftrue .LoadFight2
+	iftruefwd .LoadFight2
 .Fight1:
 	checkevent EVENT_BEAT_ELITE_FOUR
-	iftrue .LoadFight1
+	iftruefwd .LoadFight1
 .LoadFight0:
 	loadtrainer COOLTRAINERM, GAVEN1
 	startbattle
@@ -148,40 +148,40 @@ TrainerCooltrainerfBeth1:
 	loadvar VAR_CALLERID, PHONE_COOLTRAINERF_BETH
 	opentext
 	checkflag ENGINE_BETH_READY_FOR_REMATCH
-	iftrue .WantsBattle
+	iftruefwd .WantsBattle
 	checkcellnum PHONE_COOLTRAINERF_BETH
-	iftrue .NumberAccepted
+	iftruefwd .NumberAccepted
 	checkevent EVENT_BETH_ASKED_FOR_PHONE_NUMBER
-	iftrue .AskedAlready
+	iftruefwd .AskedAlready
 	writetext CooltrainerfBethAfterText
 	promptbutton
 	setevent EVENT_BETH_ASKED_FOR_PHONE_NUMBER
 	scall .AskNumber1
-	sjump .AskForNumber
+	sjumpfwd .AskForNumber
 
 .AskedAlready:
 	scall .AskNumber2
 .AskForNumber:
 	askforphonenumber PHONE_COOLTRAINERF_BETH
-	ifequal $1, .PhoneFull
-	ifequal $2, .NumberDeclined
+	ifequalfwd $1, .PhoneFull
+	ifequalfwd $2, .NumberDeclined
 	gettrainername COOLTRAINERF, BETH1, $0
 	scall .RegisteredNumber
-	sjump .NumberAccepted
+	sjumpfwd .NumberAccepted
 
 .WantsBattle:
 	scall .Rematch
 	winlosstext CooltrainerfBeth1BeatenText, 0
 	readmem wBethFightCount
-	ifequal 2, .Fight2
-	ifequal 1, .Fight1
-	ifequal 0, .LoadFight0
+	ifequalfwd 2, .Fight2
+	ifequalfwd 1, .Fight1
+	ifequalfwd 0, .LoadFight0
 .Fight2:
 	checkevent EVENT_RESTORED_POWER_TO_KANTO
-	iftrue .LoadFight2
+	iftruefwd .LoadFight2
 .Fight1:
 	checkevent EVENT_BEAT_ELITE_FOUR
-	iftrue .LoadFight1
+	iftruefwd .LoadFight1
 .LoadFight0:
 	loadtrainer COOLTRAINERF, BETH1
 	startbattle

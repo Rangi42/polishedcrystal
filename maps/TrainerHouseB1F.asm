@@ -23,10 +23,10 @@ TrainerHouseB1F_MapScriptHeader:
 
 TrainerHouseB1FCallback:
 	checkflag ENGINE_PLAYER_IS_FEMALE
-	iftrue .Cal
+	iftruefwd .Cal
 	disappear TRAINERHOUSEB1F_CAL
 	appear TRAINERHOUSEB1F_CARRIE
-	sjump .Done
+	sjumpfwd .Done
 .Cal:
 	disappear TRAINERHOUSEB1F_CARRIE
 	appear TRAINERHOUSEB1F_CAL
@@ -37,13 +37,13 @@ TrainerHouseReceptionistScript:
 	turnobject PLAYER, UP
 	opentext
 	checkflag ENGINE_FOUGHT_IN_TRAINER_HALL_TODAY
-	iftrue .FoughtTooManyTimes
+	iftruefwd .FoughtTooManyTimes
 	writetext TrainerHouseB1FIntroText
 	promptbutton
 	checkflag ENGINE_PLAYER_IS_FEMALE
-	iftrue .GetCalName
+	iftruefwd .GetCalName
 	gettrainername CARRIE, 1, $0
-	sjump .GotName
+	sjumpfwd .GotName
 .GetCalName
 	gettrainername CAL, 1, $0
 .GotName:
@@ -51,7 +51,7 @@ TrainerHouseReceptionistScript:
 	promptbutton
 	writetext TrainerHouseB1FAskWantToBattleText
 	yesorno
-	iffalse .Declined
+	iffalsefwd .Declined
 	setflag ENGINE_FOUGHT_IN_TRAINER_HALL_TODAY
 	writetext TrainerHouseB1FGoRightInText
 	waitbutton
@@ -60,10 +60,10 @@ TrainerHouseReceptionistScript:
 	showtext TrainerHouseB1FCalBeforeText
 	winlosstext TrainerHouseB1FCalBeatenText, 0
 	checkflag ENGINE_PLAYER_IS_FEMALE
-	iftrue .LoadTrainerCal
+	iftruefwd .LoadTrainerCal
 	setlasttalked TRAINERHOUSEB1F_CARRIE
 	loadtrainer CARRIE, 1
-	sjump .StartBattle
+	sjumpfwd .StartBattle
 .LoadTrainerCal
 	setlasttalked TRAINERHOUSEB1F_CAL
 	loadtrainer CAL, 1

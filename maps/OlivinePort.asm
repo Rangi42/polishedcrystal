@@ -45,7 +45,7 @@ OlivinePortSailorAtGangwayScript:
 	faceplayer
 	opentext
 	checkevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_1
-	iftrue OlivinePortAlreadyRodeScript
+	iftruefwd OlivinePortAlreadyRodeScript
 	writetext OlivinePortSailorGetOnBoardText
 	waitbutton
 	closetext
@@ -59,7 +59,7 @@ OlivinePortSailorAtGangwayScript:
 	special FadeOutPalettes
 	waitsfx
 	checkevent EVENT_FAST_SHIP_FIRST_TIME
-	iffalse UnknownScript_0x7490a
+	iffalsefwd UnknownScript_0x7490a
 	clearevent EVENT_FAST_SHIP_PASSENGERS_EASTBOUND
 	setevent EVENT_FAST_SHIP_PASSENGERS_WESTBOUND
 	clearevent EVENT_BEAT_COOLTRAINERM_SEAN
@@ -85,27 +85,27 @@ OlivinePortAlreadyRodeScript:
 OlivinePortWalkUpToShipScript:
 	turnobject OLIVINEPORT_SAILOR3, RIGHT
 	checkevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_1
-	iftrue UnknownScript_0x7498b
+	iftruefwd UnknownScript_0x7498b
 	checkevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_2
-	iftrue UnknownScript_0x7498b
+	iftruefwd UnknownScript_0x7498b
 	turnobject PLAYER, LEFT
 	opentext
 	checkevent EVENT_FAST_SHIP_FIRST_TIME
-	iffalse UnknownScript_0x7494e
+	iffalsefwd UnknownScript_0x7494e
 	readvar VAR_WEEKDAY
-	ifequal SUNDAY, UnknownScript_0x74977
-	ifequal SATURDAY, UnknownScript_0x74977
-	ifequal TUESDAY, UnknownScript_0x74981
-	ifequal WEDNESDAY, UnknownScript_0x74981
-	ifequal THURSDAY, UnknownScript_0x74981
+	ifequalfwd SUNDAY, UnknownScript_0x74977
+	ifequalfwd SATURDAY, UnknownScript_0x74977
+	ifequalfwd TUESDAY, UnknownScript_0x74981
+	ifequalfwd WEDNESDAY, UnknownScript_0x74981
+	ifequalfwd THURSDAY, UnknownScript_0x74981
 UnknownScript_0x7494e:
 	writetext OlivinePortAskBoardText
 	yesorno
-	iffalse OlivinePortNotRidingMoveAwayScript
+	iffalsefwd OlivinePortNotRidingMoveAwayScript
 	writetext OlivinePortAskTicketText
 	promptbutton
 	checkkeyitem S_S_TICKET
-	iffalse UnknownScript_0x7496d
+	iffalsefwd UnknownScript_0x7496d
 	writetext OlivinePortFlashTicketText
 	waitbutton
 	closetext
@@ -153,13 +153,13 @@ OlivinePortSailorAfterHOFScript:
 	checkevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_1
 	iftrue OlivinePortAlreadyRodeScript
 	checkevent EVENT_FAST_SHIP_FIRST_TIME
-	iffalse UnknownScript_0x749c0
+	iffalsefwd UnknownScript_0x749c0
 	readvar VAR_WEEKDAY
-	ifequal SUNDAY, UnknownScript_0x749f2
-	ifequal SATURDAY, UnknownScript_0x749f2
-	ifequal TUESDAY, UnknownScript_0x749f8
-	ifequal WEDNESDAY, UnknownScript_0x749f8
-	ifequal THURSDAY, UnknownScript_0x749f8
+	ifequalfwd SUNDAY, UnknownScript_0x749f2
+	ifequalfwd SATURDAY, UnknownScript_0x749f2
+	ifequalfwd TUESDAY, UnknownScript_0x749f8
+	ifequalfwd WEDNESDAY, UnknownScript_0x749f8
+	ifequalfwd THURSDAY, UnknownScript_0x749f8
 UnknownScript_0x749c0:
 	writetext OlivinePortAskBoardText
 	yesorno
@@ -167,13 +167,13 @@ UnknownScript_0x749c0:
 	writetext OlivinePortAskTicketText
 	promptbutton
 	checkkeyitem S_S_TICKET
-	iffalse UnknownScript_0x749ec
+	iffalsefwd UnknownScript_0x749ec
 	writetext OlivinePortFlashTicketText
 	waitbutton
 	closetext
 	setevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_2
 	readvar VAR_FACING
-	ifequal RIGHT, UnknownScript_0x749e5
+	ifequalfwd RIGHT, UnknownScript_0x749e5
 	applymovement PLAYER, OlivinePortApproachFastShipAfterHOFMovement
 	sjump OlivinePortSailorAtGangwayScript
 
