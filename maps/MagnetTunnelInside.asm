@@ -208,13 +208,13 @@ MagnetTunnelInsideMachine4:
 	yesorno
 	iffalse_endtext
 	playsound SFX_GLASS_TING
+	writetext MagnetTunnelInsideMachineText5
+	waitbutton
+	closetext
 	changeblock 34, 8, $65
 	reloadmappart
 	moveobject MAGNETTUNNELINSIDE_STONE_4, 34, 8
 	appear MAGNETTUNNELINSIDE_STONE_4
-	writetext MagnetTunnelInsideMachineText5
-	waitbutton
-	closetext
 	playsound SFX_EMBER
 	earthquake 15
 	applymovement MAGNETTUNNELINSIDE_STONE_4, .StoneMovement2
@@ -312,10 +312,8 @@ MagnetTunnelInsideEngineerText1:
 	cont "foreman's deadline."
 
 	para "Our team was under"
-	line "heavy pressure from"
-
-	para "the general public"
-	line "to deliver on time."
+	line "heavy pressure to"
+	cont "deliver on time."
 	done
 
 MagnetTunnelInsideEngineerText2:
@@ -326,14 +324,11 @@ MagnetTunnelInsideEngineerText2:
 	line "the number of wild"
 
 	para "Electric-type"
-	line "#mon has more"
-
-	para "than doubled with"
-	line "the passing of"
-	cont "each day."
+	line "#mon here has"
+	cont "more than doubled."
 
 	para "The foreman thinks"
-	line "they must all be"
+	line "they must be"
 
 	para "attracted to the"
 	line "lodestone's unique"
@@ -393,7 +388,7 @@ GenericTrainerEngineerGraden:
 GenericTrainerEngineerKevin:
 	generictrainer ENGINEER, ENGINEER_KEVIN, EVENT_BEAT_ENGINEER_KEVIN, .SeenText, .BeatenText
 
-	para "This machine has"
+	text "This machine has"
 	line "been acting up as"
 	cont "of late."
 
