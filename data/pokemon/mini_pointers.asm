@@ -265,20 +265,20 @@ MiniPointers:
 	dba MunchlaxMini
 	dba MantykeMini
 	dba WeavileMini
-	dba MagnezoneIcon ; TODO
-	dba LickilickyIcon ; TODO
-	dba RhyperiorIcon ; TODO
-	dba TangrowthIcon ; TODO
-	dba ElectivireIcon ; TODO
-	dba MagmortarIcon ; TODO
-	dba TogekissIcon ; TODO
-	dba YanmegaIcon ; TODO
-	dba LeafeonIcon ; TODO
-	dba GlaceonIcon ; TODO
-	dba GliscorIcon ; TODO
-	dba MamoswineIcon ; TODO
-	dba PorygonZIcon ; TODO
-	dba SylveonIcon ; TODO
+	dba MagnezoneMini
+	dba LickilickyMini
+	dba RhyperiorMini
+	dba TangrowthMini
+	dba ElectivireMini
+	dba MagmortarMini
+	dba TogekissMini
+	dba YanmegaMini
+	dba LeafeonMini
+	dba GlaceonMini
+	dba GliscorMini
+	dba MamoswineMini
+	dba PorygonZMini
+	dba SylveonMini
 	dba PerrserkerIcon ; TODO
 	dba CursolaIcon ; TODO
 	dba SirfetchDIcon ; TODO

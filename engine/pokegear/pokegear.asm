@@ -1950,7 +1950,7 @@ TownMapMon:
 	farcall LoadFlyMonColor
 ; Get FlyMon icon
 	ld e, 8 ; starting tile in VRAM
-	farcall PokegearFlyMap_GetMonIcon
+	farcall FlyFunction_GetMonIcon
 ; Animation/palette
 	depixel 0, 0
 	ld a, SPRITE_ANIM_INDEX_PARTY_MON

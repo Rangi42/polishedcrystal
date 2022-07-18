@@ -143,7 +143,7 @@ Route27VeteranfScript:
 	done
 
 .RefusedText:
-	text "It's okay."
+	text "It's OK."
 	line "I can wait."
 	done
 

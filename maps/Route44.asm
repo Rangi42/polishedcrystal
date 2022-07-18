@@ -88,7 +88,7 @@ Route44VeteranmScript:
 	para "Want to challenge"
 	line "them?"
 
-	para "Okay, then you've"
+	para "OK, then you've"
 	line "got to beat every"
 
 	para "trainer on this"

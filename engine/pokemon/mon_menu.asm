@@ -1404,7 +1404,7 @@ SetUpMoveScreenBG:
 	ld [wTempIconSpecies], a
 	ld a, [wTempMonForm]
 	ld [wCurForm], a
-	farcall LoadMoveMenuMonIcon
+	farcall LoadMoveMenuMonMini
 	hlcoord 0, 1
 	lb bc, 9, 18
 	call Textbox
