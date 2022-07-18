@@ -33,10 +33,10 @@ _LoadMonGFX:
 	add hl, bc
 	add hl, bc
 	add hl, bc
-	; b = icon bank
+	; b = gfx bank
 	ld a, [hli]
 	ld b, a
-	; de = icon pointer
+	; de = gfx pointer
 	ld a, [hli]
 	ld d, [hl]
 	ld e, a
@@ -69,7 +69,7 @@ LoadFlyMonColor:
 	call GetMenuMonIconPalette
 	jr ProcessMenuMonIconColor
 
-LoadPartyMenuMonIconColors:
+LoadPartyMenuMonMiniColors:
 	push hl
 	push de
 	push bc
@@ -176,19 +176,19 @@ _GetMonIconPalette:
 	and $f
 	ret
 
-LoadPartyMenuMonIcon:
-	call LoadPartyMenuMonIconColors
+LoadPartyMenuMonMini:
+	call LoadPartyMenuMonMiniColors
 	push hl
 	push de
 	push bc
 
-	call InitPartyMenuIcon
-	call .SpawnItemIcon
-	call SetPartyMonIconAnimSpeed
+	call InitPartyMenuMini
+	call .SpawnItemSprite
+	call SetPartyMonMiniAnimSpeed
 
 	jmp PopBCDEHL
 
-.SpawnItemIcon:
+.SpawnItemSprite:
 	ldh a, [hObjectStructIndexBuffer]
 	ld hl, wPartyMon1Item
 	call GetPartyLocation
@@ -206,15 +206,15 @@ LoadPartyMenuMonIcon:
 	ld [hl], a
 	ret
 
-LoadNamingScreenMonIcon:
+LoadNamingScreenMonMini:
 	push hl
 	push de
 	push bc
 
 	depixel 4, 4, 4, 0
-	jr InitScreenMonIcon
+	jr InitScreenMonMini
 
-LoadMoveMenuMonIcon:
+LoadMoveMenuMonMini:
 	push hl
 	push de
 	push bc
@@ -223,15 +223,15 @@ LoadMoveMenuMonIcon:
 	push de
 	ld hl, wTempMonForm
 	ld a, [hl]
-	jr _InitScreenMonIcon
+	jr _InitScreenMonMini
 
-InitScreenMonIcon:
+InitScreenMonMini:
 	push de
 
 	ld a, MON_FORM ; aka MON_IS_EGG
 	call GetPartyParamLocationAndValue
 	; fallthrough
-_InitScreenMonIcon:
+_InitScreenMonMini:
 	and SPECIESFORM_MASK
 	ld [wCurIconForm], a
 	bit MON_IS_EGG_F, [hl]
@@ -243,10 +243,10 @@ _InitScreenMonIcon:
 	ld [wCurIcon], a
 
 	dec hl ; MON_SHINY = MON_FORM - 1
-	call SetMenuMonIconColor
+	call SetMenuMonIconColor ; TODO: use real varied mon color
 
 	xor a
-	call GetIconGFX
+	call GetMiniGFX
 
 	pop de
 	ld a, SPRITE_ANIM_INDEX_PARTY_MON
@@ -257,7 +257,7 @@ _InitScreenMonIcon:
 
 	jmp PopBCDEHL
 
-InitPartyMenuIcon:
+InitPartyMenuMini:
 	ld a, [wCurIconTile]
 	push af
 	ldh a, [hObjectStructIndexBuffer]
@@ -279,7 +279,7 @@ InitPartyMenuIcon:
 	dec a ; ld a, EGG
 .got_icon
 	ld [wCurIcon], a
-	call GetMemIconGFX
+	call GetMemMiniGFX
 	ldh a, [hObjectStructIndexBuffer]
 ; y coord
 	swap a ; a *= 16, assuming a < 16 since [hObjectStructIndexBuffer] < NUM_OBJECT_STRUCTS EQU 13
@@ -296,7 +296,7 @@ InitPartyMenuIcon:
 	ld [hl], a
 	ret
 
-SetPartyMonIconAnimSpeed:
+SetPartyMonMiniAnimSpeed:
 	push bc
 	call .getspeed
 	pop bc
@@ -346,7 +346,8 @@ SetPartyMonIconAnimSpeed:
 .speeds
 	db $00, $40, $80
 
-Fly_PrepMonIcon:
+FlyFunction_GetMonIcon:
+; Fly is in the overworld so it uses overworld icons
 	push de
 	ld a, MON_FORM
 	call GetPartyParamLocationAndValue
@@ -359,40 +360,6 @@ Fly_PrepMonIcon:
 	ld [wCurIcon], a
 	pop de
 	ld a, e
-	ret
-
-PokegearFlyMap_GetMonIcon:
-; Load species icon into VRAM at tile a
-	call Fly_PrepMonIcon
-	jr GetIconGFX
-
-FlyFunction_GetMonIcon:
-	call Fly_PrepMonIcon
-	jr GetIcon_a
-
-LoadTradeAnimationMonIcon:
-	call SetMenuMonIconColor
-	ld a, [wTempIconSpecies]
-	ld [wCurIcon], a
-	ld a, $62
-	ld [wCurIconTile], a
-	; fallthrough
-GetMemIconGFX:
-	ld a, [wCurIconTile]
-	; fallthrough
-GetIconGFX:
-	call GetIcon_a
-	ld de, 8 tiles
-	add hl, de
-	ld de, HeldItemIcons
-	lb bc, BANK(HeldItemIcons), 2
-	call Request2bpp
-	ld a, [wCurIconTile]
-	add 10
-	ld [wCurIconTile], a
-	ret
-
-GetIcon_a:
 ; Load icon graphics into VRAM starting from tile a
 	ld l, a ; no-optimize hl|bc|de = a * 16 (rept)
 	ld h, 0
@@ -412,8 +379,50 @@ endr
 	pop hl
 	ret
 
-GetStorageIcon_a:
-; Load frame 1 icon graphics into VRAM starting from tile a
+LoadTradeAnimationMonMini:
+	call SetMenuMonIconColor ; TODO: use real varied mon color
+	ld a, [wTempIconSpecies]
+	ld [wCurIcon], a
+	ld a, $62
+	ld [wCurIconTile], a
+	; fallthrough
+GetMemMiniGFX:
+	ld a, [wCurIconTile]
+	; fallthrough
+GetMiniGFX:
+	call GetMini_a
+	ld de, 8 tiles
+	add hl, de
+	ld de, HeldItemIcons
+	lb bc, BANK(HeldItemIcons), 2
+	call Request2bpp
+	ld a, [wCurIconTile]
+	add 10
+	ld [wCurIconTile], a
+	ret
+
+GetMini_a:
+; Load mini graphics into VRAM starting from tile a
+	ld l, a ; no-optimize hl|bc|de = a * 16 (rept)
+	ld h, 0
+rept 4
+	add hl, hl
+endr
+	ld de, vTiles0
+	add hl, de
+	push hl
+	push hl
+	call LoadMini
+	ld h, d
+	ld l, e
+	pop de
+	ld c, 8
+	call DecompressRequest2bpp
+	pop hl
+	ret
+
+GetStorageMini_a:
+; Load frame 1 mini graphics into VRAM starting from tile a
 	ld l, a ; no-optimize hl|bc|de = a * 16 (rept)
 	ld h, 0
 rept 4
@@ -422,7 +431,7 @@ endr
 	ld de, vTiles0
 	add hl, de
 	; fallthrough
-GetStorageIcon:
+GetStorageMini:
 	push hl
 	push hl
 	call LoadMini

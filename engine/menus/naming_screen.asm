@@ -71,7 +71,7 @@ NamingScreen:
 .Pokemon:
 	ld a, [wCurPartySpecies]
 	ld [wTempIconSpecies], a
-	farcall LoadNamingScreenMonIcon
+	farcall LoadNamingScreenMonMini
 	call GetPartyPokemonName
 	hlcoord 5, 2
 	rst PlaceString
