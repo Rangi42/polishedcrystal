@@ -56,7 +56,7 @@ MystriStageCynthiaScript:
 	faceplayer
 	opentext
 	checkevent EVENT_BEAT_CYNTHIA
-	iftrue MystriStageBeatCynthiaScript
+	iftruefwd MystriStageBeatCynthiaScript
 	writetext MystriStageCynthiaIdeaText
 	waitbutton
 	checkevent EVENT_BEAT_ELITE_FOUR
@@ -128,9 +128,9 @@ MystriStageEggScript:
 	writetext MystriStageEggText
 	playsound SFX_KEY_ITEM
 	waitsfx
-	ifequal 1, .InParty
+	ifequalfwd 1, .InParty
 	special Special_CurBoxFullCheck
-	iffalse .BoxNotFull
+	iffalsefwd .BoxNotFull
 	farwritetext _CurBoxFullText
 .BoxNotFull
 	special GetCurBoxName

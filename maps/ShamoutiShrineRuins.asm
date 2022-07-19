@@ -42,18 +42,18 @@ ShamoutiShrineRuinsLawrenceScript:
 	waitbutton
 	closetext
 	readvar VAR_FACING
-	ifequal UP, .up
-	ifequal DOWN, .down
-	ifequal LEFT, .left
+	ifequalfwd UP, .up
+	ifequalfwd DOWN, .down
+	ifequalfwd LEFT, .left
 .right
 	turnobject SHAMOUTISHRINERUINS_LAWRENCE, RIGHT
-	sjump .continue
+	sjumpfwd .continue
 .up
 	turnobject SHAMOUTISHRINERUINS_LAWRENCE, UP
-	sjump .continue
+	sjumpfwd .continue
 .down
 	turnobject SHAMOUTISHRINERUINS_LAWRENCE, DOWN
-	sjump .continue
+	sjumpfwd .continue
 .left
 	turnobject SHAMOUTISHRINERUINS_LAWRENCE, LEFT
 .continue

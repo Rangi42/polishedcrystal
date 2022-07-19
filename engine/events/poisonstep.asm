@@ -133,7 +133,7 @@ DoPoisonStep::
 	callasm .PlayPoisonSFX
 	opentext
 	callasm .CheckWhitedOut
-	iffalse .whiteout
+	iffalsefwd .whiteout
 	closetext
 	end
 

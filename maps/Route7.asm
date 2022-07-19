@@ -48,7 +48,7 @@ GenericTrainerBreederCarlene:
 Route7Snorlax:
 	opentext
 	special SpecialSnorlaxAwake
-	iftrue .Awake
+	iftruefwd .Awake
 	jumpopenedtext .AsleepText
 
 .Awake:

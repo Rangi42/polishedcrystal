@@ -265,29 +265,29 @@ MiniPointers:
 	dba MunchlaxMini
 	dba MantykeMini
 	dba WeavileMini
-	dba MagnezoneIcon ; TODO
-	dba LickilickyIcon ; TODO
-	dba RhyperiorIcon ; TODO
-	dba TangrowthIcon ; TODO
-	dba ElectivireIcon ; TODO
-	dba MagmortarIcon ; TODO
-	dba TogekissIcon ; TODO
-	dba YanmegaIcon ; TODO
-	dba LeafeonIcon ; TODO
-	dba GlaceonIcon ; TODO
-	dba GliscorIcon ; TODO
-	dba MamoswineIcon ; TODO
-	dba PorygonZIcon ; TODO
-	dba SylveonIcon ; TODO
-	dba PerrserkerIcon ; TODO
-	dba CursolaIcon ; TODO
-	dba SirfetchDIcon ; TODO
-	dba MrRimeIcon ; TODO
-	dba WyrdeerIcon ; TODO
-	dba KleavorIcon ; TODO
-	dba UrsalunaIcon ; TODO
-	dba SneaslerIcon ; TODO
-	dba OverqwilIcon ; TODO
+	dba MagnezoneMini
+	dba LickilickyMini
+	dba RhyperiorMini
+	dba TangrowthMini
+	dba ElectivireMini
+	dba MagmortarMini
+	dba TogekissMini
+	dba YanmegaMini
+	dba LeafeonMini
+	dba GlaceonMini
+	dba GliscorMini
+	dba MamoswineMini
+	dba PorygonZMini
+	dba SylveonMini
+	dba PerrserkerMini
+	dba CursolaMini
+	dba SirfetchDMini
+	dba MrRimeMini
+	dba WyrdeerMini
+	dba KleavorMini
+	dba UrsalunaMini
+	dba SneaslerMini
+	dba OverqwilMini
 	assert_table_length NUM_SPECIES + 1
 
 	dba UnownBMini
@@ -315,8 +315,8 @@ MiniPointers:
 	dba UnownXMini
 	dba UnownYMini
 	dba UnownZMini
-	dba UnownExclamationIcon ; TODO
-	dba UnownQuestionIcon ; TODO
+	dba UnownExclamationMini
+	dba UnownQuestionMini
 
 	dba ArbokMini ; Kanto
 	dba ArbokMini ; Koga
@@ -337,7 +337,7 @@ endr
 
 	dba GyaradosMini ; Red
 
-	dba MewtwoArmoredIcon ; TODO
+	dba MewtwoArmoredMini
 
 	dba RattataAlolanIcon ; TODO
 	dba RaticateAlolanIcon ; TODO

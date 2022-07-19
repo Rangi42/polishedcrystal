@@ -33,19 +33,19 @@ MayleneScript:
 	writetext MayleneText2
 	waitbutton
 	checkevent EVENT_BEAT_MAYLENE
-	iftrue .Done
+	iftruefwd .Done
 	writetext MayleneText3
 	yesorno
-	iffalse .Refused
+	iffalsefwd .Refused
 	writetext MayleneSeenText
 	waitbutton
 	closetext
 	winlosstext MayleneBeatenText, 0
 	setlasttalked CELADONCAFE_MAYLENE
 	checkevent EVENT_BEAT_ELITE_FOUR_AGAIN
-	iftrue .Rematch
+	iftruefwd .Rematch
 	loadtrainer MAYLENE, 1
-	sjump .StartBattle
+	sjumpfwd .StartBattle
 .Rematch
 	loadtrainer MAYLENE, 2
 .StartBattle
@@ -69,7 +69,7 @@ MayleneScript:
 
 CeladonCafeTeacher:
 	checkkeyitem COIN_CASE
-	iftrue .NoCoinCase
+	iftruefwd .NoCoinCase
 	showtext TeacherText_CrunchCrunch
 	showtextfaceplayer TeacherText_NoCoinCase
 	turnobject LAST_TALKED, LEFT

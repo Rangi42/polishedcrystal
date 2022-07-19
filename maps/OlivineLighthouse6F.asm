@@ -26,9 +26,9 @@ OlivineLighthouseJasmine:
 	faceplayer
 	opentext
 	checkkeyitem SECRETPOTION
-	iftrue .BroughtSecretpotion
+	iftruefwd .BroughtSecretpotion
 	checkevent EVENT_JASMINE_EXPLAINED_AMPHYS_SICKNESS
-	iftrue .ExplainedSickness
+	iftruefwd .ExplainedSickness
 	writetext JasmineCianwoodPharmacyText
 	promptbutton
 	setevent EVENT_JASMINE_EXPLAINED_AMPHYS_SICKNESS
@@ -38,7 +38,7 @@ OlivineLighthouseJasmine:
 .BroughtSecretpotion:
 	writetext JasmineCureAmphyText
 	yesorno
-	iffalse .Refused
+	iffalsefwd .Refused
 	writetext PlayerHandedSecretpotionText
 	promptbutton
 	takekeyitem SECRETPOTION
@@ -65,8 +65,8 @@ OlivineLighthouseJasmine:
 	setevent EVENT_JASMINE_RETURNED_TO_GYM
 	clearevent EVENT_OLIVINE_GYM_JASMINE
 	readvar VAR_FACING
-	ifequal DOWN, .FacingDown
-	ifequal RIGHT, .FacingRight
+	ifequalfwd DOWN, .FacingDown
+	ifequalfwd RIGHT, .FacingRight
 	applymovement OLIVINELIGHTHOUSE6F_JASMINE, OlivineLighthouseJasmineLeavesUpMovement
 	disappear OLIVINELIGHTHOUSE6F_JASMINE
 	end
@@ -91,7 +91,7 @@ OlivineLighthouseJasmine:
 
 OlivineLighthouseAmphy:
 	checkevent EVENT_JASMINE_RETURNED_TO_GYM
-	iftrue .HealthyNow
+	iftruefwd .HealthyNow
 	faceplayer
 	opentext
 	writetext AmphyPalPalooText

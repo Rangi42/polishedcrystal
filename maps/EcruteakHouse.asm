@@ -29,11 +29,11 @@ EcruteakHouse_MapScriptHeader:
 
 EcruteakHouseInitializeSages:
 	checkevent EVENT_FOUGHT_SUICUNE
-	iftrue .DontBlockTower
+	iftruefwd .DontBlockTower
 	checkevent EVENT_KOJI_ALLOWS_YOU_PASSAGE_TO_TIN_TOWER
-	iftrue .DontBlockTower
+	iftruefwd .DontBlockTower
 	checkevent EVENT_CLEARED_RADIO_TOWER
-	iftrue .BlockTower
+	iftruefwd .BlockTower
 	endcallback
 
 .BlockTower:
@@ -41,7 +41,7 @@ EcruteakHouseInitializeSages:
 	setevent EVENT_RANG_CLEAR_BELL_2
 	setevent EVENT_ECRUTEAK_HOUSE_WANDERING_SAGE
 	checkkeyitem CLEAR_BELL
-	iftrue .NoClearBell
+	iftruefwd .NoClearBell
 	setscene $0
 .NoClearBell:
 	endcallback
@@ -52,7 +52,7 @@ EcruteakHouseInitializeSages:
 
 EcruteakHouse_XYTrigger1:
 	checkevent EVENT_RANG_CLEAR_BELL_2
-	iftrue EcruteakHouse_XYTrigger_DontMove
+	iftruefwd EcruteakHouse_XYTrigger_DontMove
 	applymovement ECRUTEAKHOUSE_SAGE2, EcruteakTinTowerEntranceSageBlocksLeftMovement
 	moveobject ECRUTEAKHOUSE_SAGE1, 4, 6
 	appear ECRUTEAKHOUSE_SAGE1
@@ -62,7 +62,7 @@ EcruteakHouse_XYTrigger1:
 
 EcruteakHouse_XYTrigger2:
 	checkevent EVENT_RANG_CLEAR_BELL_1
-	iftrue EcruteakHouse_XYTrigger_DontMove
+	iftruefwd EcruteakHouse_XYTrigger_DontMove
 	applymovement ECRUTEAKHOUSE_SAGE1, EcruteakTinTowerEntranceSageBlocksRightMovement
 	moveobject ECRUTEAKHOUSE_SAGE2, 5, 6
 	appear ECRUTEAKHOUSE_SAGE2
@@ -77,7 +77,7 @@ EcruteakTinTowerEntranceSageScript:
 	faceplayer
 	opentext
 	checkevent EVENT_CLEARED_RADIO_TOWER
-	iftrue .CheckForClearBell
+	iftruefwd .CheckForClearBell
 	checkflag ENGINE_FOGBADGE
 	iftrue_jumpopenedtext EcruteakTinTowerEntranceSageText_GotFogBadge
 	jumpopenedtext EcruteakTinTowerEntranceSageText
@@ -88,7 +88,7 @@ EcruteakTinTowerEntranceSageScript:
 	checkevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_1
 	iftrue_jumpopenedtext EcruteakTinTowerEntranceSageText_HeardClearBell
 	checkkeyitem CLEAR_BELL
-	iftrue .RingClearBell
+	iftruefwd .RingClearBell
 	jumpopenedtext EcruteakTinTowerEntranceSageText_NoClearBell
 
 .RingClearBell:

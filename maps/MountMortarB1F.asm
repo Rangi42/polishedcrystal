@@ -26,7 +26,7 @@ MountMortarB1FHikerScript:
 	faceplayer
 	opentext
 	checkevent EVENT_LISTENED_TO_DEFENSE_CURL_INTRO
-	iftrue MountMortarB1FTutorDefenseCurlScript
+	iftruefwd MountMortarB1FTutorDefenseCurlScript
 	writetext MountMortarB1FHikerText
 	waitbutton
 	setevent EVENT_LISTENED_TO_DEFENSE_CURL_INTRO
@@ -34,14 +34,14 @@ MountMortarB1FTutorDefenseCurlScript:
 	writetext Text_MountMortarB1FTutorDefenseCurl
 	waitbutton
 	checkitem SILVER_LEAF
-	iffalse .NoSilverLeaf
+	iffalsefwd .NoSilverLeaf
 	writetext Text_MountMortarB1FTutorQuestion
 	yesorno
-	iffalse .TutorRefused
+	iffalsefwd .TutorRefused
 	setval DEFENSE_CURL
 	writetext ClearText
 	special Special_MoveTutor
-	ifequal $0, .TeachMove
+	ifequalfwd $0, .TeachMove
 .TutorRefused
 	jumpopenedtext Text_MountMortarB1FTutorRefused
 
@@ -57,7 +57,7 @@ MountMortarB1FKiyoScript:
 	iftrue_jumptextfaceplayer MountMortarB1FKiyoGotTyrogueText
 	faceplayer
 	checkevent EVENT_BEAT_KIYO
-	iftrue .BeatKiyo
+	iftruefwd .BeatKiyo
 	showtext MountMortarB1FKiyoIntroText
 	winlosstext MountMortarB1FKiyoWinText, 0
 	loadtrainer KARATE_KING, KIYO

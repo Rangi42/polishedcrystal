@@ -53,9 +53,9 @@ Route10NorthFlyPoint:
 
 Route10NorthZapdos:
 	checkevent EVENT_RESTORED_POWER_TO_KANTO
-	iffalse .NoAppear
+	iffalsefwd .NoAppear
 	checkevent EVENT_ZAPDOS_GONE
-	iffalse .Appear
+	iffalsefwd .Appear
 .NoAppear
 	disappear ROUTE10_ZAPDOS
 	endcallback
@@ -78,7 +78,7 @@ Route10NorthLawrenceEncounter1Script:
 	turnobject ROUTE10_LAWRENCE, UP
 	turnobject PLAYER, UP
 	checkflag ENGINE_PLAYER_IS_FEMALE
-	iftrue .FemalePan
+	iftruefwd .FemalePan
 	appear ROUTE10_CHRIS
 	applyonemovement PLAYER, hide_object
 	applymovement PLAYER, Route10NorthMovementData_PanUp
@@ -89,7 +89,7 @@ Route10NorthLawrenceEncounter1Script:
 	applymovement PLAYER, Route10NorthMovementData_PanDown
 	applyonemovement PLAYER, show_object
 	disappear ROUTE10_CHRIS
-	sjump .Finish
+	sjumpfwd .Finish
 .FemalePan
 	appear ROUTE10_KRIS
 	applyonemovement PLAYER, hide_object
@@ -131,30 +131,30 @@ Route10NorthLawrenceEncounter2Script:
 	special Special_FadeOutMusic
 	pause 15
 	readvar VAR_FACING
-	ifequal UP, .up
-	ifequal DOWN, .down
-	ifequal LEFT, .left
+	ifequalfwd UP, .up
+	ifequalfwd DOWN, .down
+	ifequalfwd LEFT, .left
 .right
 	moveobject ROUTE10_LAWRENCE, 7, 44
 	moveobject ROUTE10_LAWRENCES_ZAPDOS, 10, 44
 	appear ROUTE10_LAWRENCE
 	applymovement ROUTE10_LAWRENCE, Route10NorthMovementData_LawrenceApproach2LeftRight
 	turnobject PLAYER, LEFT
-	sjump .continue
+	sjumpfwd .continue
 .up
 	moveobject ROUTE10_LAWRENCE, 8, 44
 	moveobject ROUTE10_LAWRENCES_ZAPDOS, 12, 44
 	appear ROUTE10_LAWRENCE
 	applymovement ROUTE10_LAWRENCE, Route10NorthMovementData_LawrenceApproach2UpDown
 	turnobject ROUTE10_LAWRENCE, DOWN
-	sjump .continue
+	sjumpfwd .continue
 .down
 	moveobject ROUTE10_LAWRENCE, 8, 44
 	moveobject ROUTE10_LAWRENCES_ZAPDOS, 12, 44
 	appear ROUTE10_LAWRENCE
 	applymovement ROUTE10_LAWRENCE, Route10NorthMovementData_LawrenceApproach2UpDown
 	turnobject ROUTE10_LAWRENCE, UP
-	sjump .continue
+	sjumpfwd .continue
 .left
 	moveobject ROUTE10_LAWRENCE, 9, 44
 	moveobject ROUTE10_LAWRENCES_ZAPDOS, 12, 44
@@ -202,16 +202,16 @@ Route10Zapdos:
 	reloadmapafterbattle
 	setmonval ZAPDOS
 	special SpecialMonCheck
-	iffalse .NoSpark
+	iffalsefwd .NoSpark
 	setevent EVENT_CELADON_UNIVERSITY_SPARK
 	clearevent EVENT_SHAMOUTI_COAST_SPARK
 .NoSpark
 	checkevent EVENT_SEAFOAM_ISLANDS_ARTICUNO
-	iffalse .end
+	iffalsefwd .end
 	checkevent EVENT_CINNABAR_VOLCANO_MOLTRES
-	iffalse .end
+	iffalsefwd .end
 	special SpecialBirdsCheck
-	iffalse .end
+	iffalsefwd .end
 	sjump Route10NorthLawrenceEncounter2Script
 .end
 	end

@@ -33,7 +33,7 @@ ShamoutiIsland_MapScriptHeader:
 
 ShamoutiIslandVileplumeScript:
 	special SpecialSnorlaxAwake
-	iftrue .Awake
+	iftruefwd .Awake
 	showemote EMOTE_SLEEP, SHAMOUTIISLAND_VILEPLUME, 15
 	jumpthistext
 

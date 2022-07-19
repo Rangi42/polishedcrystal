@@ -593,7 +593,7 @@ PCIconLoop:
 	push hl
 	push de
 	push bc
-	farcall GetStorageIcon_a
+	farcall GetStorageMini_a
 	pop bc
 	pop de
 	pop hl
@@ -1600,7 +1600,7 @@ BillsPC_SetIcon:
 	call BillsPC_SetPals
 	call DelayFrame
 	pop hl
-	farjp GetStorageIcon
+	farjp GetStorageMini
 
 BillsPC_MoveIconData:
 ; Copies icon data from slot bc to slot de, then blanks slot bc.
@@ -2471,7 +2471,7 @@ BillsPC_UpdateStorage_CheckMewtwo:
 	ld [wCurIconForm], a
 	call BillsPC_GetMonTileAddr
 	push bc
-	farcall GetStorageIcon
+	farcall GetStorageMini
 	pop bc
 	call WriteIconPaletteData
 

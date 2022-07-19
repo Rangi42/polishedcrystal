@@ -3307,7 +3307,7 @@ _Pokedex_GetCursorMon:
 	pop af
 	ldh a, [rSVBK]
 	push af
-	jr z, .type_pals_done
+	jmp z, .type_pals_done
 
 	ld a, 1
 	ld [wPokedexOAM_IsCaught], a
@@ -3355,12 +3355,26 @@ _Pokedex_GetCursorMon:
 	; Footprint
 	call Pokedex_GetCursorSpecies
 	call GetSpeciesAndFormIndex
-	ld hl, Footprints
-	ld a, 4 * LEN_1BPP_TILE
-	rst AddNTimes
+	ld hl, FootprintPointers
+	add hl, bc
+	add hl, bc
+	ld a, BANK(FootprintPointers)
+	call GetFarWord
+	ld a, BANK(Footprints)
 	ld de, wDexMonFootprintTiles
-	lb bc, BANK(Footprints), 4
-	call Pokedex_Copy1bpp
+	call FarDecompressToDE
+	; Expand 1bpp to 2bpp
+	ld hl, wDexMonFootprintTiles + 4 * LEN_1BPP_TILE - 1
+	ld de, wDexMonFootprintTiles + 4 tiles - 1
+	ld c, 4 * LEN_1BPP_TILE
+.footprint_loop
+	ld a, [hld]
+	ld [de], a
+	dec de
+	ld [de], a
+	dec de
+	dec c
+	jr nz, .footprint_loop
 
 	; Make the type icons use color 1 and 2 of the pal instead of 3.
 	ld hl, wDexMonType1Tiles + 1

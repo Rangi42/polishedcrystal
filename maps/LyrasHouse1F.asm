@@ -23,9 +23,9 @@ LyrasDadScript:
 	faceplayer
 	opentext
 	checkevent EVENT_LYRA_IN_HER_ROOM
-	iffalse .LyraInside
+	iffalsefwd .LyraInside
 	checkevent EVENT_GOT_SS_TICKET_FROM_ELM
-	iftrue .LyraTraining
+	iftruefwd .LyraTraining
 	jumpopenedtext LyrasDadHelpingText
 
 .LyraInside

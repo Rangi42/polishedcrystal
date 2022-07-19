@@ -26,7 +26,7 @@ BattleFactoryHallway_MapScriptHeader:
 	disappear BATTLEFACTORYHALLWAY_RECEPTIONIST
 	disappear BATTLEFACTORYHALLWAY_LOBBY_RECEPTIONIST
 	readvar VAR_YCOORD
-	ifequal 13, .lobby_arrival
+	ifequalfwd 13, .lobby_arrival
 	appear BATTLEFACTORYHALLWAY_RECEPTIONIST
 	end
 .lobby_arrival
@@ -35,7 +35,7 @@ BattleFactoryHallway_MapScriptHeader:
 
 BattleFactoryHallwayFollowReceptionist:
 	readvar VAR_YCOORD
-	ifequal 13, .arrived_from_lobby
+	ifequalfwd 13, .arrived_from_lobby
 	sdefer .WonBattle
 	end
 
@@ -56,7 +56,7 @@ BattleFactoryHallwayFollowReceptionist:
 	waitbutton
 	special Special_BattleTower_GetBattleResult
 	ifequal BTCHALLENGE_WON, Script_BeatenAllFactoryTrainers
-	ifequal BTCHALLENGE_FACILITYBRAIN, .WarnAboutHead
+	ifequalfwd BTCHALLENGE_FACILITYBRAIN, .WarnAboutHead
 .AskNextBattle:
 	writethistext
 		text "Next up, opponent"
@@ -64,7 +64,7 @@ BattleFactoryHallwayFollowReceptionist:
 		text_decimal wStringBuffer3, 2, 5
 		text ". Ready?"
 		done
-	sjump .ShownText
+	sjumpfwd .ShownText
 .WarnAboutHead:
 	writethistext
 		text "Congratulations"
@@ -83,10 +83,10 @@ BattleFactoryHallwayFollowReceptionist:
 		done
 .ShownText
 	yesorno
-	iffalse .DontBattleNextOpponent
+	iffalsefwd .DontBattleNextOpponent
 	closetext
 	special Special_BattleTower_GenerateNextOpponent
-	sjump .NextRentalBattle
+	sjumpfwd .NextRentalBattle
 
 .DontBattleNextOpponent:
 	writethistext
@@ -94,7 +94,7 @@ BattleFactoryHallwayFollowReceptionist:
 		line "session?"
 		done
 	yesorno
-	iffalse .DontSaveAndEndTheSession
+	iffalsefwd .DontSaveAndEndTheSession
 	special SaveOptions
 	setval BATTLETOWER_SAVED_AND_LEFT
 	special Special_BattleTower_SetChallengeState
@@ -113,7 +113,7 @@ BattleFactoryHallwayFollowReceptionist:
 	yesorno
 	iffalse .AskNextBattle
 	special FadeOutPalettes
-	sjump Script_LostBattleFactory
+	sjumpfwd Script_LostBattleFactory
 
 .StepIntoRoom:
 	; First, step into the room properly, don't just linger at the entrance.
@@ -134,7 +134,7 @@ BattleFactoryHallwayFollowReceptionist:
 		prompt
 
 	special Special_BattleTower_NextRentalBattle
-	iftrue .Continue
+	iftruefwd .Continue
 
 	writethistext
 		text "Cancel your run?"
@@ -147,7 +147,7 @@ BattleFactoryHallwayFollowReceptionist:
 
 	; Player aborted the run.
 	special FadeOutPalettes
-	sjump Script_LostBattleFactory
+	sjumpfwd Script_LostBattleFactory
 
 .Continue:
 	faceobject PLAYER, BATTLEFACTORYHALLWAY_RECEPTIONIST

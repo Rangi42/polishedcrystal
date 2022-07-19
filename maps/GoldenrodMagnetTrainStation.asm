@@ -26,7 +26,7 @@ GoldenrodMagnetTrainStationOfficerScript:
 	faceplayer
 	opentext
 	checkevent EVENT_RESTORED_POWER_TO_KANTO
-	iftrue .MagnetTrainToSaffron
+	iftruefwd .MagnetTrainToSaffron
 	jumpopenedtext GoldenrodMagnetTrainStationOfficerTheTrainHasntComeInText
 
 .MagnetTrainToSaffron:
@@ -56,7 +56,7 @@ Script_ArriveFromSaffron:
 
 GoldenrodMagnetTrainStationCooltrainerfScript:
 	checkevent EVENT_RESTORED_POWER_TO_KANTO
-	iftrue .PowerRestored
+	iftruefwd .PowerRestored
 	jumptextfaceplayer GoldenrodMagnetTrainStationCooltrainerfText1
 
 .PowerRestored

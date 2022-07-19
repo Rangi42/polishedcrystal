@@ -23,7 +23,7 @@ OlivineGymJasmineScript:
 	faceplayer
 	opentext
 	checkevent EVENT_BEAT_JASMINE
-	iftrue .FightDone
+	iftruefwd .FightDone
 	writetext Jasmine_SteelTypeIntro
 	waitbutton
 	closetext
@@ -136,11 +136,11 @@ OlivineGymGentlemanPreston:
 OlivineGymStatue:
 	gettrainername JASMINE, 1, $1
 	checkevent EVENT_JASMINE_RETURNED_TO_GYM
-	iftrue .Returned
+	iftruefwd .Returned
 	jumpstd gymstatue0
 .Returned
 	checkflag ENGINE_MINERALBADGE
-	iftrue .Beaten
+	iftruefwd .Beaten
 	jumpstd gymstatue1
 .Beaten
 	readvar VAR_BADGES

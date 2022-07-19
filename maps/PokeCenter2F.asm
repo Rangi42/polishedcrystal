@@ -37,8 +37,8 @@ PokeCenter2FLeftColosseumTrigger:
 
 PokeCenter2FTileCallback:
 	callasm .CheckPokeCenter2FRegion
-	ifequal $0, .done
-	ifequal $2, .shamouti2f
+	ifequalfwd $0, .done
+	ifequalfwd $2, .shamouti2f
 	changemapblocks KantoPokeCenter2F_BlockData
 .done
 	endcallback
@@ -84,7 +84,7 @@ Script_LeftCableColosseum:
 
 Script_WalkOutOfLinkRoom:
 	checkflag ENGINE_KRIS_IN_CABLE_CLUB
-	iftrue .Female
+	iftruefwd .Female
 	applymovement POKECENTER2F_TRADE_RECEPTIONIST, PokeCenter2FMovementData_ReceptionistWalksUpAndLeft_LookRight
 	applymovement PLAYER, PokeCenter2FMovementData_PlayerTakesThreeStepsDown
 	applymovement POKECENTER2F_TRADE_RECEPTIONIST, PokeCenter2FMovementData_ReceptionistStepsRightAndDown
@@ -117,23 +117,25 @@ endc
 	opentext
 	writetext Text_TradeReceptionistIntro
 	yesorno
-	iffalse .Cancel
+	iffalse_endtext
 	special Special_SetBitsForLinkTradeRequest
+	; fallthrough
+LinkReceptionistScript_DoTradeOrBattle:
 	writetext Text_PleaseWait
 	special Special_WaitForLinkedFriend
-	iffalse .FriendNotReady
+	iffalsefwd .FriendNotReady
 	writetext Text_MustSaveGame
 	yesorno
-	iffalse .DidNotSave
+	iffalsefwd .DidNotSave
 	special Special_TryQuickSave
-	iffalse .DidNotSave
+	iffalsefwd .DidNotSave
 	writetext Text_PleaseWait
 	special Special_CheckLinkTimeout
-	iffalse .LinkTimedOut
+	iffalsefwd .LinkTimedOut
 	readmem wOtherPlayerLinkMode
-	iffalse .LinkedToFirstGen
+	iffalsefwd .LinkedToFirstGen
 	special Special_CheckBothSelectedSameRoom
-	iffalse .IncompatibleRooms
+	iffalsefwd .IncompatibleRooms
 	writetext Text_PleaseComeIn2
 	waitbutton
 	closetext
@@ -159,13 +161,12 @@ endc
 
 .LinkTimedOut:
 	writetext Text_LinkTimedOut
-	sjump .AbortLink
+	sjumpfwd .AbortLink
 
 .DidNotSave:
 	writetext Text_PleaseComeAgain
 .AbortLink:
 	special WaitForOtherPlayerToExit
-.Cancel:
 	endtext
 
 Script_TradeCenterClosed:
@@ -179,63 +180,16 @@ Script_TradeCenterClosed:
 LinkReceptionistScript_Battle:
 if !DEF(DEBUG)
 	checkevent EVENT_GAVE_MYSTERY_EGG_TO_ELM
-	iffalse Script_BattleRoomClosed
+	iftrue .BattleRoomClosed
 endc
 	opentext
 	writetext Text_BattleReceptionistIntro
 	yesorno
-	iffalse .Cancel
+	iffalse_endtext
 	special Special_SetBitsForBattleRequest
-	writetext Text_PleaseWait
-	special Special_WaitForLinkedFriend
-	iffalse .FriendNotReady
-	writetext Text_MustSaveGame
-	yesorno
-	iffalse .DidNotSave
-	special Special_TryQuickSave
-	iffalse .DidNotSave
-	writetext Text_PleaseWait
-	special Special_CheckLinkTimeout
-	iffalse .LinkTimedOut
-	readmem wOtherPlayerLinkMode
-	iffalse .LinkedToFirstGen
-	special Special_CheckBothSelectedSameRoom
-	iffalse .IncompatibleRooms
-	writetext Text_PleaseComeIn2
-	waitbutton
-	closetext
-	scall PokeCenter2F_CheckGender
-	warpcheck
-	end
+	sjump LinkReceptionistScript_DoTradeOrBattle
 
-.FriendNotReady:
-	special WaitForOtherPlayerToExit
-	writetext Text_FriendNotReady
-	endtext
-
-.LinkedToFirstGen:
-	special Special_FailedLinkToPast
-	writetext Text_CantLinkToThePast
-	special Special_CloseLink
-	endtext
-
-.IncompatibleRooms:
-	writetext Text_IncompatibleRooms
-	special Special_CloseLink
-	endtext
-
-.LinkTimedOut:
-	writetext Text_LinkTimedOut
-	sjump .AbortLink
-
-.DidNotSave:
-	writetext Text_PleaseComeAgain
-.AbortLink:
-	special WaitForOtherPlayerToExit
-.Cancel:
-	endtext
-
-Script_BattleRoomClosed:
+.BattleRoomClosed:
 	jumpthistextfaceplayer
 
 	text "I'm sorry--the"
@@ -245,7 +199,7 @@ Script_BattleRoomClosed:
 
 PokeCenter2F_CheckGender:
 	checkflag ENGINE_PLAYER_IS_FEMALE
-	iftrue .Female
+	iftruefwd .Female
 	applymovementlasttalked PokeCenter2FMovementData_ReceptionistWalksUpAndLeft_LookRight
 	applymovement PLAYER, PokeCenter2FMovementData_PlayerTakesThreeStepsUp
 	end

@@ -24,7 +24,7 @@ ValenciaPortSailorScript:
 	opentext
 	writetext .QuestionText
 	yesorno
-	iffalse .RefuseFerry
+	iffalsefwd .RefuseFerry
 	writetext .DepartText
 	waitbutton
 	closetext

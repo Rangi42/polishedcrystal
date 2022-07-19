@@ -32,7 +32,7 @@ SweetHoneyScript:
 	; [hScriptVar] was set by _SweetHoney
 	iffalse_jumpopenedtext SweetHoneyNothingText
 	checkflag ENGINE_BUG_CONTEST_TIMER
-	iftrue .BugCatchingContest
+	iftruefwd .BugCatchingContest
 	randomwildmon
 	startbattle
 	reloadmapafterbattle

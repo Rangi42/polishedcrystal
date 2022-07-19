@@ -14,22 +14,20 @@ LoadCGBLayout::
 	dw _CGB_BattleGrayscale
 	dw _CGB_BattleColors
 	dw _CGB_PokegearPals
-	dw _CGB_PokedexAreaPals
 	dw _CGB_StatsScreenHPPals
 	dw _CGB_Pokedex
+	dw _CGB_Pokedex_PrepareOnly
 	dw _CGB_SlotMachine
 	dw _CGB_Diploma
 	dw _CGB_MapPals
 	dw _CGB_PartyMenu
 	dw _CGB_Evolution
 	dw _CGB_MoveList
-	dw _CGB_Pokedex_PrepareOnly
 	dw _CGB_BuyMenu
 	dw _CGB_PackPals
 	dw _CGB_TrainerCard
 	dw _CGB_TrainerCard2
 	dw _CGB_TrainerCard3
-	dw _CGB_PokedexUnownMode
 	dw _CGB_BillsPC
 	dw _CGB_UnownPuzzle
 	dw _CGB_GameFreakLogo
@@ -257,21 +255,6 @@ _CGB_PokegearPals:
 	ld de, wBGPals1 palette 0
 	call LoadOnePalette
 .male
-
-	call ApplyPals
-	ld a, $1
-	ldh [hCGBPalUpdate], a
-	ret
-
-_CGB_PokedexAreaPals:
-	ld hl, PokegearPals palette 1
-	ld de, wBGPals1 palette 1
-	ld c, 7 palettes
-	call LoadPalettes
-
-	ld hl, PokedexPals palette 1
-	ld de, wBGPals1 palette 0
-	call LoadOnePalette
 
 	call ApplyPals
 	ld a, $1
@@ -882,26 +865,6 @@ LoadFirstTwoTrainerCardPals:
 
 	pop de
 	ret
-
-_CGB_PokedexUnownMode:
-	ld de, wBGPals1
-	ld hl, PokedexPals
-	call LoadOnePalette
-
-	ld a, [wCurPartySpecies]
-	call GetMonPalettePointer
-	call LoadPalette_White_Col1_Col2_Black
-
-	call WipeAttrMap
-
-	hlcoord 6, 5, wAttrmap
-	lb bc, 7, 7
-	ld a, $1
-	call FillBoxWithByte
-
-	call InitPartyMenuOBPals
-
-	jmp _CGB_FinishLayout
 
 _CGB_BillsPC:
 	farcall GetBoxTheme

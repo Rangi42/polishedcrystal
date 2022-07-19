@@ -22,12 +22,12 @@ ProfOaksAide1Script:
 	faceplayer
 	opentext
 	checkevent EVENT_GOT_NEST_BALLS_FROM_PROF_OAKS_AIDE
-	iftrue .Explain
+	iftruefwd .Explain
 	writetext ProfOaksAide1HiText
 	waitbutton
 	setval16 15
 	special CountCaught
-	iftrue .HereYouGo
+	iftruefwd .HereYouGo
 .UhOh
 	jumpopenedtext ProfOaksAide1UhOhText
 
@@ -36,7 +36,7 @@ ProfOaksAide1Script:
 	waitbutton
 	giveitem NEST_BALL, 5
 	waitsfx
-	iffalse .NoRoom
+	iffalsefwd .NoRoom
 	writetext ProfOaksAide1NestBallText
 	playsound SFX_ITEM
 	waitsfx

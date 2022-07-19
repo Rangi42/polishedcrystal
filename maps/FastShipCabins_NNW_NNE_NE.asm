@@ -117,7 +117,7 @@ FastShipLazySailorScript:
 	setevent EVENT_FAST_SHIP_LAZY_SAILOR
 	setmapscene FAST_SHIP_B1F, $1
 	readvar VAR_FACING
-	ifequal $3, UnknownScript_0x75629
+	ifequalfwd $3, UnknownScript_0x75629
 	applymovement FASTSHIPCABINS_NNW_NNE_NE_SAILOR, FastShipLazySailorLeavesMovement1
 	playsound SFX_EXIT_BUILDING
 	disappear FASTSHIPCABINS_NNW_NNE_NE_SAILOR

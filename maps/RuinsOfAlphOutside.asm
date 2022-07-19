@@ -54,7 +54,7 @@ RuinsOfAlphOutside_MapScriptHeader:
 
 RuinsofAlphOutsideTrigger0:
 	checkevent EVENT_DO_RUINS_OF_ALPH_CLIMAX
-	iffalse .End
+	iffalsefwd .End
 	showtext RuinsofAlphScientistClimax1Text
 	follow RUINSOFALPHOUTSIDE_SCIENTIST2, PLAYER
 	applymovement RUINSOFALPHOUTSIDE_SCIENTIST2, RuinsofAlphScientistClimaxApproachMovementData
@@ -72,22 +72,22 @@ RuinsofAlphOutsideTrigger0:
 
 RuinsofAlphOutsideTileScript:
 	checkevent EVENT_DOOR_OPENED_IN_RUINS_OF_ALPH
-	iffalse .locked
+	iffalsefwd .locked
 	changeblock 10, 8, $9f
 .locked
 	endcallback
 
 RuinsOfAlphOutsideScientistCallback:
 	checkflag ENGINE_UNOWN_DEX
-	iftrue .NoScientist
+	iftruefwd .NoScientist
 	checkevent EVENT_MADE_UNOWN_APPEAR_IN_RUINS
-	iftrue .MaybeScientist
-	sjump .NoScientist
+	iftruefwd .MaybeScientist
+	sjumpfwd .NoScientist
 
 .MaybeScientist:
 	readvar VAR_UNOWNCOUNT
 	ifgreater $0, .YesScientist
-	sjump .NoScientist
+	sjumpfwd .NoScientist
 
 .YesScientist:
 	appear RUINSOFALPHOUTSIDE_SCIENTIST1

@@ -22,16 +22,16 @@ RandyScript:
 	faceplayer
 	opentext
 	checkevent EVENT_GOT_HP_UP_FROM_RANDY
-	iftrue .gothpup
+	iftruefwd .gothpup
 	checkevent EVENT_GAVE_KENYA
-	iftrue .questcomplete
+	iftruefwd .questcomplete
 	checkevent EVENT_GOT_KENYA
-	iftrue .alreadyhavekenya
+	iftruefwd .alreadyhavekenya
 	writetext Route35GoldenrodGateRandyAskTakeThisMonToMyFriendText
 	yesorno
-	iffalse .refused
+	iffalsefwd .refused
 	readvar VAR_PARTYCOUNT
-	ifequal PARTY_LENGTH, .partyfull
+	ifequalfwd PARTY_LENGTH, .partyfull
 	writetext Route35GoldenrodGateRandyThanksText
 	promptbutton
 	waitsfx
@@ -54,7 +54,7 @@ RandyScript:
 	writetext Route35GoldenrodGateRandySomethingForYourTroubleText
 	promptbutton
 	verbosegiveitem HP_UP
-	iffalse .bagfull
+	iffalsefwd .bagfull
 	setevent EVENT_GOT_HP_UP_FROM_RANDY
 .gothpup
 	writetext Route35GoldenrodGateRandyMyPalWasSnoozingRightText
@@ -81,7 +81,7 @@ Route35GoldenrodGatePokefanFScript:
 	faceplayer
 	opentext
 	checkevent EVENT_FOUGHT_SUDOWOODO
-	iftrue .aftersudowoodo
+	iftruefwd .aftersudowoodo
 	jumpopenedtext Route35GoldenrodGatePokefanFText
 
 .aftersudowoodo

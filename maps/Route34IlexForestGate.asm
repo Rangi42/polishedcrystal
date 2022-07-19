@@ -27,7 +27,7 @@ Route34IlexForestGate_MapScriptHeader:
 
 .IsForestRestless:
 	checkevent EVENT_FOREST_IS_RESTLESS
-	iffalse .Normal
+	iffalsefwd .Normal
 	disappear ROUTE34ILEXFORESTGATE_TEACHER1
 	appear ROUTE34ILEXFORESTGATE_TEACHER2
 	endcallback
@@ -39,7 +39,7 @@ Route34IlexForestGate_MapScriptHeader:
 
 Route34IlexForestGateCelebiEvent:
 	checkevent EVENT_FOREST_IS_RESTLESS
-	iffalse UnknownScript_0x62d62
+	iffalsefwd UnknownScript_0x62d62
 	showemote EMOTE_SHOCK, ROUTE34ILEXFORESTGATE_TEACHER2, 20
 	turnobject ROUTE34ILEXFORESTGATE_TEACHER2, LEFT
 	turnobject PLAYER, RIGHT

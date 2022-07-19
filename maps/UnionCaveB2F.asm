@@ -26,9 +26,9 @@ UnionCaveB2F_MapScriptHeader:
 
 UnionCaveB2FLapras:
 	checkflag ENGINE_UNION_CAVE_LAPRAS
-	iftrue .NoAppear
+	iftruefwd .NoAppear
 	readvar VAR_WEEKDAY
-	ifequal FRIDAY, .Appear
+	ifequalfwd FRIDAY, .Appear
 .NoAppear:
 	disappear UNIONCAVEB2F_LAPRAS
 	endcallback

@@ -28,9 +28,9 @@ SoulHouseB3FMrFujiScript:
 	waitbutton
 	closetext
 	readvar VAR_FACING
-	ifequal RIGHT, .GoAround
+	ifequalfwd RIGHT, .GoAround
 	applymovement SOULHOUSEB3F_MRFUJI, .LeaveMovement
-	sjump .Finish
+	sjumpfwd .Finish
 .GoAround
 	applymovement SOULHOUSEB3F_MRFUJI, .GoAroundMovement1
 	turnobject PLAYER, UP

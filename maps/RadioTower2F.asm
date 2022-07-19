@@ -84,21 +84,21 @@ Buena:
 	faceplayer
 	opentext
 	checkevent EVENT_MET_BUENA
-	iffalse .Introduction
+	iffalsefwd .Introduction
 	checkflag ENGINE_BUENAS_PASSWORD_2
-	iftrue .PlayedAlready
+	iftruefwd .PlayedAlready
 	readvar VAR_HOUR
 	ifless 18, .TooEarly
 	checkflag ENGINE_BUENAS_PASSWORD
-	iffalse .TuneIn
+	iffalsefwd .TuneIn
 	checkkeyitem BLUE_CARD
-	iffalse .NoBlueCard
+	iffalsefwd .NoBlueCard
 	readvar VAR_BLUECARDBALANCE
-	ifequal BLUE_CARD_POINT_CAP, .BlueCardCapped0
+	ifequalfwd BLUE_CARD_POINT_CAP, .BlueCardCapped0
 	playmusic MUSIC_BUENAS_PASSWORD
 	writetext RadioTower2FBuenaDoYouKnowPasswordText
 	special AskRememberPassword
-	iffalse .ForgotPassword
+	iffalsefwd .ForgotPassword
 	writetext RadioTower2FBuenaJoinTheShowText
 	waitbutton
 	closetext
@@ -113,7 +113,7 @@ Buena:
 	refreshscreen
 	special SpecialBuenasPassword
 	closetext
-	iffalse .WrongAnswer
+	iffalsefwd .WrongAnswer
 	showtext RadioTower2FBuenaCorrectAnswerText
 	readvar VAR_BLUECARDBALANCE
 	addval $1
@@ -128,7 +128,7 @@ Buena:
 	pause 20
 	special RestartMapMusic
 	readvar VAR_BLUECARDBALANCE
-	ifequal BLUE_CARD_POINT_CAP, .BlueCardCapped1
+	ifequalfwd BLUE_CARD_POINT_CAP, .BlueCardCapped1
 	end
 
 .Introduction:
@@ -141,9 +141,9 @@ Buena:
 	waitbutton
 	closetext
 	checkcellnum PHONE_BUENA
-	iftrue .Registered0
+	iftruefwd .Registered0
 	checkevent EVENT_BUENA_OFFERED_HER_PHONE_NUMBER
-	iftrue .OfferedNumberBefore
+	iftruefwd .OfferedNumberBefore
 .Registered0:
 	turnobject RADIOTOWER2F_BUENA, RIGHT
 	end
@@ -163,9 +163,9 @@ Buena:
 	waitbutton
 	closetext
 	checkcellnum PHONE_BUENA
-	iftrue .Registered1
+	iftruefwd .Registered1
 	checkevent EVENT_BUENA_OFFERED_HER_PHONE_NUMBER
-	iftrue .OfferedNumberBefore
+	iftruefwd .OfferedNumberBefore
 .Registered1:
 	turnobject RADIOTOWER2F_BUENA, RIGHT
 	pause 10
@@ -188,9 +188,9 @@ Buena:
 	waitbutton
 	closetext
 	checkcellnum PHONE_BUENA
-	iftrue .Registered2
+	iftruefwd .Registered2
 	checkevent EVENT_BUENA_OFFERED_HER_PHONE_NUMBER_NO_BLUE_CARD
-	iftrue .OfferedNumberBefore
+	iftruefwd .OfferedNumberBefore
 .Registered2:
 	turnobject RADIOTOWER2F_BUENA, RIGHT
 	end
@@ -200,9 +200,9 @@ Buena:
 	waitbutton
 	closetext
 	checkcellnum PHONE_BUENA
-	iftrue .Registered3
+	iftruefwd .Registered3
 	checkevent EVENT_BUENA_OFFERED_HER_PHONE_NUMBER_NO_BLUE_CARD
-	iftrue .OfferedNumberBefore
+	iftruefwd .OfferedNumberBefore
 .Registered3:
 	turnobject RADIOTOWER2F_BUENA, RIGHT
 	end
@@ -212,36 +212,36 @@ Buena:
 	waitbutton
 	closetext
 	checkcellnum PHONE_BUENA
-	iftrue .Registered4
+	iftruefwd .Registered4
 	checkevent EVENT_BUENA_OFFERED_HER_PHONE_NUMBER
-	iftrue .OfferedNumberBefore
+	iftruefwd .OfferedNumberBefore
 .Registered4:
 	end
 
 .BlueCardCapped1:
 	checkcellnum PHONE_BUENA
-	iftrue .HasNumber
+	iftruefwd .HasNumber
 	pause 20
 	turnobject RADIOTOWER2F_BUENA, DOWN
 	pause 15
 	turnobject PLAYER, UP
 	pause 15
 	checkevent EVENT_BUENA_OFFERED_HER_PHONE_NUMBER_NO_BLUE_CARD
-	iftrue .OfferedNumberBefore
+	iftruefwd .OfferedNumberBefore
 	showemote EMOTE_SHOCK, RADIOTOWER2F_BUENA, 15
 	setevent EVENT_BUENA_OFFERED_HER_PHONE_NUMBER_NO_BLUE_CARD
 	setevent EVENT_BUENA_OFFERED_HER_PHONE_NUMBER
 	opentext
 	writetext RadioTower2FBuenaOfferPhoneNumberText
-	sjump .AskForNumber
+	sjumpfwd .AskForNumber
 
 .OfferedNumberBefore:
 	opentext
 	writetext RadioTower2FBuenaOfferNumberAgainText
 .AskForNumber:
 	askforphonenumber PHONE_BUENA
-	ifequal $1, .PhoneFull
-	ifequal $2, .NumberDeclined
+	ifequalfwd $1, .PhoneFull
+	ifequalfwd $2, .NumberDeclined
 	writetext RadioTower2FRegisteredBuenasNumberText
 	playsound SFX_REGISTER_PHONE_NUMBER
 	waitsfx

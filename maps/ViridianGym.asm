@@ -27,7 +27,7 @@ ViridianGymBlueScript:
 	faceplayer
 	opentext
 	checkflag ENGINE_EARTHBADGE
-	iftrue .FightDone
+	iftruefwd .FightDone
 	writetext LeaderBlueBeforeText
 	waitbutton
 	closetext
@@ -116,7 +116,7 @@ GenericTrainerAceDuoElanandida2:
 ViridianGymStatue:
 	gettrainername BLUE, 1, $1
 	checkflag ENGINE_EARTHBADGE
-	iftrue .Beaten
+	iftruefwd .Beaten
 	jumpstd gymstatue1
 .Beaten:
 	jumpstd gymstatue2

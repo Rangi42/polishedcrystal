@@ -209,6 +209,7 @@ INCLUDE "engine/pokedex/unown_dex.asm"
 
 SECTION "Pokédex Footprints", ROMX
 
+INCLUDE "data/pokemon/footprint_pointers.asm"
 INCLUDE "gfx/pokemon/footprints.asm"
 
 

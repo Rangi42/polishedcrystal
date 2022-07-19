@@ -47,7 +47,7 @@ BlackthornCityFlypointCallback:
 
 BlackthornCitySantosCallback:
 	readvar VAR_WEEKDAY
-	ifequal SATURDAY, .SantosAppears
+	ifequalfwd SATURDAY, .SantosAppears
 	disappear BLACKTHORNCITY_SANTOS
 	endcallback
 
@@ -100,7 +100,7 @@ SantosScript:
 	faceplayer
 	opentext
 	checkevent EVENT_MET_SANTOS_OF_SATURDAY
-	iftrue .MetSantos
+	iftruefwd .MetSantos
 	writetext .MeetText
 	promptbutton
 	setevent EVENT_MET_SANTOS_OF_SATURDAY

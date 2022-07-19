@@ -32,7 +32,7 @@ CeladonDeptStore3FClerk2Script:
 	faceplayer
 	opentext
 	checkevent EVENT_LISTENED_TO_COUNTER_INTRO
-	iftrue CeladonDeptStore3FTutorCounterScript
+	iftruefwd CeladonDeptStore3FTutorCounterScript
 	writetext CeladonDeptStore3FClerk2Text
 	waitbutton
 	setevent EVENT_LISTENED_TO_COUNTER_INTRO
@@ -40,14 +40,14 @@ CeladonDeptStore3FTutorCounterScript:
 	writetext Text_CeladonDeptStore3FTutorCounter
 	waitbutton
 	checkitem SILVER_LEAF
-	iffalse .NoSilverLeaf
+	iffalsefwd .NoSilverLeaf
 	writetext Text_CeladonDeptStore3FTutorQuestion
 	yesorno
-	iffalse .TutorRefused
+	iffalsefwd .TutorRefused
 	setval COUNTER
 	writetext ClearText
 	special Special_MoveTutor
-	ifequal $0, .TeachMove
+	ifequalfwd $0, .TeachMove
 .TutorRefused
 	jumpopenedtext Text_CeladonDeptStore3FTutorRefused
 

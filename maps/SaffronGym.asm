@@ -58,7 +58,7 @@ SaffronGymSabrinaScript:
 	faceplayer
 	opentext
 	checkflag ENGINE_SOULBADGE
-	iftrue .FightDone
+	iftruefwd .FightDone
 	writetext SabrinaIntroText
 	waitbutton
 	closetext
@@ -80,18 +80,18 @@ SaffronGymSabrinaScript:
 	waitsfx
 	setflag ENGINE_SOULBADGE
 	readvar VAR_BADGES
-	ifequal 9, .FirstBadge
-	ifequal 10, .SecondBadge
-	ifequal 12, .LyrasEgg
-	sjump .FightDone
+	ifequalfwd 9, .FirstBadge
+	ifequalfwd 10, .SecondBadge
+	ifequalfwd 12, .LyrasEgg
+	sjumpfwd .FightDone
 .FirstBadge:
 	specialphonecall SPECIALCALL_FIRSTBADGE
-	sjump .FightDone
+	sjumpfwd .FightDone
 .SecondBadge:
 	checkevent EVENT_GOT_GS_BALL_FROM_POKECOM_CENTER
-	iftrue .FightDone
+	iftruefwd .FightDone
 	specialphonecall SPECIALCALL_SECONDBADGE
-	sjump .FightDone
+	sjumpfwd .FightDone
 .LyrasEgg:
 	specialphonecall SPECIALCALL_LYRASEGG
 .FightDone:
@@ -182,7 +182,7 @@ SaffronGymGuyScript:
 SaffronGymStatue:
 	gettrainername SABRINA, 1, $1
 	checkflag ENGINE_SOULBADGE
-	iftrue .Beaten
+	iftruefwd .Beaten
 	jumpstd gymstatue1
 .Beaten:
 	jumpstd gymstatue2

@@ -1108,7 +1108,7 @@ InitPartyMenuGFX:
 	ldh [hObjectStructIndexBuffer], a
 .loop
 	push bc
-	farcall LoadPartyMenuMonIcon
+	farcall LoadPartyMenuMonMini
 	ldh a, [hObjectStructIndexBuffer]
 	inc a
 	ldh [hObjectStructIndexBuffer], a

@@ -91,7 +91,7 @@ EcruteakPokeCenter1FBillScript:
 	faceplayer
 	opentext
 	checkevent EVENT_LISTENED_TO_BILL_INTRO
-	iftrue .heardintro
+	iftruefwd .heardintro
 	writetext .IntroText
 	waitbutton
 	setevent EVENT_LISTENED_TO_BILL_INTRO
@@ -103,7 +103,7 @@ EcruteakPokeCenter1FBillScript:
 	promptbutton
 	waitsfx
 	readvar VAR_PARTYCOUNT
-	ifequal PARTY_LENGTH, .NoRoom
+	ifequalfwd PARTY_LENGTH, .NoRoom
 	givepoke EEVEE, PLAIN_FORM, 5, NO_ITEM, GREAT_BALL
 	givepokemail .GiftEeveeMail
 	callasm .SetEeveeMailOT
@@ -265,7 +265,7 @@ EcruteakPokeCenter1FLassScript:
 	opentext
 	writetext .QuestionText
 	yesorno
-	iffalse .No
+	iffalsefwd .No
 	checkevent EVENT_ECRUTEAK_POKE_CENTER_BILL
 	iffalse_jumpopenedtext .HereText
 	jumpthisopenedtext

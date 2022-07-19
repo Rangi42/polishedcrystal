@@ -34,7 +34,7 @@ FastShipB1F_MapScriptHeader:
 
 FastShipB1FSailorBlocksLeft:
 	checkevent EVENT_FAST_SHIP_B1F_SAILOR_RIGHT
-	iftrue FastShipB1FAlreadyBlocked
+	iftruefwd FastShipB1FAlreadyBlocked
 	applymovement FASTSHIPB1F_SAILOR2, FastShipB1FSailorBlocksLeftMovement
 	moveobject FASTSHIPB1F_SAILOR1, 26, 4
 	appear FASTSHIPB1F_SAILOR1
@@ -44,7 +44,7 @@ FastShipB1FSailorBlocksLeft:
 
 FastShipB1FSailorBlocksRight:
 	checkevent EVENT_FAST_SHIP_B1F_SAILOR_LEFT
-	iftrue FastShipB1FAlreadyBlocked
+	iftruefwd FastShipB1FAlreadyBlocked
 	applymovement FASTSHIPB1F_SAILOR1, FastShipB1FSailorBlocksRightMovement
 	moveobject FASTSHIPB1F_SAILOR2, 27, 4
 	appear FASTSHIPB1F_SAILOR2
@@ -59,7 +59,7 @@ FastShipB1FSailorScript:
 	faceplayer
 	opentext
 	checkevent EVENT_FAST_SHIP_LAZY_SAILOR
-	iftrue UnknownScript_0x7678d
+	iftruefwd UnknownScript_0x7678d
 	checkevent EVENT_FAST_SHIP_INFORMED_ABOUT_LAZY_SAILOR
 	iftrue_jumpopenedtext FastShipB1FOnDutySailorRefusedText
 	setevent EVENT_FAST_SHIP_INFORMED_ABOUT_LAZY_SAILOR
@@ -69,7 +69,7 @@ FastShipB1FSailorScript:
 UnknownScript_0x7678d:
 	writetext FastShipB1FOnDutySailorThanksText
 	checkevent EVENT_FAST_SHIP_FOUND_GIRL
-	iffalse UnknownScript_0x76799
+	iffalsefwd UnknownScript_0x76799
 	waitendtext
 
 UnknownScript_0x76799:

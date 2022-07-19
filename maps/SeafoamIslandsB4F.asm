@@ -32,9 +32,9 @@ SeafoamIslandsB4FLawrenceEncounterScript:
 	special Special_FadeOutMusic
 	pause 15
 	readvar VAR_FACING
-	ifequal UP, .up
-	ifequal DOWN, .down
-	ifequal LEFT, .left
+	ifequalfwd UP, .up
+	ifequalfwd DOWN, .down
+	ifequalfwd LEFT, .left
 .right
 	appear SEAFOAMISLANDSB4F_LAWRENCE_SURF
 	applymovement SEAFOAMISLANDSB4F_LAWRENCE_SURF, SeafoamIslandsB4FMovementData_LawrenceSurfApproach1
@@ -43,7 +43,7 @@ SeafoamIslandsB4FLawrenceEncounterScript:
 	appear SEAFOAMISLANDSB4F_LAWRENCE
 	applymovement SEAFOAMISLANDSB4F_LAWRENCE, SeafoamIslandsB4FMovementData_LawrenceApproach
 	turnobject PLAYER, DOWN
-	sjump .continue
+	sjumpfwd .continue
 .up
 	moveobject SEAFOAMISLANDSB4F_LAWRENCE_SURF, 17, 16
 	appear SEAFOAMISLANDSB4F_LAWRENCE_SURF
@@ -54,7 +54,7 @@ SeafoamIslandsB4FLawrenceEncounterScript:
 	applymovement SEAFOAMISLANDSB4F_LAWRENCE, SeafoamIslandsB4FMovementData_LawrenceApproach
 	turnobject SEAFOAMISLANDSB4F_LAWRENCE, RIGHT
 	turnobject PLAYER, LEFT
-	sjump .continue
+	sjumpfwd .continue
 .down
 	moveobject SEAFOAMISLANDSB4F_LAWRENCE_SURF, 17, 16
 	appear SEAFOAMISLANDSB4F_LAWRENCE_SURF
@@ -66,7 +66,7 @@ SeafoamIslandsB4FLawrenceEncounterScript:
 	applymovement SEAFOAMISLANDSB4F_LAWRENCE, SeafoamIslandsB4FMovementData_LawrenceContinueDown
 	turnobject SEAFOAMISLANDSB4F_LAWRENCE, RIGHT
 	turnobject PLAYER, LEFT
-	sjump .continue
+	sjumpfwd .continue
 .left
 	moveobject SEAFOAMISLANDSB4F_LAWRENCE_SURF, 18, 16
 	appear SEAFOAMISLANDSB4F_LAWRENCE_SURF
@@ -110,16 +110,16 @@ SeafoamIslandsArticuno:
 	reloadmapafterbattle
 	setmonval ARTICUNO
 	special SpecialMonCheck
-	iffalse .NoBlanche
+	iffalsefwd .NoBlanche
 	setevent EVENT_CELADON_UNIVERSITY_BLANCHE
 	clearevent EVENT_SHAMOUTI_COAST_BLANCHE
 .NoBlanche
 	checkevent EVENT_ROUTE_10_ZAPDOS
-	iffalse .end
+	iffalsefwd .end
 	checkevent EVENT_CINNABAR_VOLCANO_MOLTRES
-	iffalse .end
+	iffalsefwd .end
 	special SpecialBirdsCheck
-	iffalse .end
+	iffalsefwd .end
 	sjump SeafoamIslandsB4FLawrenceEncounterScript
 .end
 	end

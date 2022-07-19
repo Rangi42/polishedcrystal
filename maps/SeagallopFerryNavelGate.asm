@@ -41,7 +41,7 @@ SeagallopFerryNavelGateSailorScript:
 	opentext
 	writetext SeagallopFerryNavelToVermilionQuestionText
 	yesorno
-	iffalse .RefuseFerry
+	iffalsefwd .RefuseFerry
 	writetext SeagallopFerryNavelToVermilionText
 	waitbutton
 	closetext

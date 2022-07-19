@@ -39,11 +39,11 @@ NationalParkTeacher1Script:
 	faceplayer
 	opentext
 	checkevent EVENT_GOT_QUICK_CLAW
-	iftrue UnknownScript_0x5c01d
+	iftruefwd UnknownScript_0x5c01d
 	writetext NationalParkTeacher1Text
 	promptbutton
 	verbosegiveitem QUICK_CLAW
-	iffalse UnknownScript_0x5c021
+	iffalsefwd UnknownScript_0x5c021
 	setevent EVENT_GOT_QUICK_CLAW
 UnknownScript_0x5c01d:
 	writetext NationalParkTeacher1Text_GotQuickClaw
@@ -108,48 +108,48 @@ SchoolboyJack1Script:
 	loadvar VAR_CALLERID, PHONE_SCHOOLBOY_JACK
 	opentext
 	checkflag ENGINE_JACK_READY_FOR_REMATCH
-	iftrue UnknownScript_0x5c088
+	iftruefwd UnknownScript_0x5c088
 	checkcellnum PHONE_SCHOOLBOY_JACK
-	iftrue UnknownScript_0x5c108
+	iftruefwd UnknownScript_0x5c108
 	checkevent EVENT_JACK_ASKED_FOR_PHONE_NUMBER
-	iftrue UnknownScript_0x5c071
+	iftruefwd UnknownScript_0x5c071
 	writetext SchoolboyJackTradeMonText
 	promptbutton
 	setevent EVENT_JACK_ASKED_FOR_PHONE_NUMBER
 	scall UnknownScript_0x5c0fc
-	sjump UnknownScript_0x5c074
+	sjumpfwd UnknownScript_0x5c074
 
 UnknownScript_0x5c071:
 	scall UnknownScript_0x5c100
 UnknownScript_0x5c074:
 	askforphonenumber PHONE_SCHOOLBOY_JACK
-	ifequal $1, UnknownScript_0x5c110
-	ifequal $2, UnknownScript_0x5c10c
+	ifequalfwd $1, UnknownScript_0x5c110
+	ifequalfwd $2, UnknownScript_0x5c10c
 	gettrainername SCHOOLBOY, JACK1, $0
 	scall UnknownScript_0x5c104
-	sjump UnknownScript_0x5c108
+	sjumpfwd UnknownScript_0x5c108
 
 UnknownScript_0x5c088:
 	scall UnknownScript_0x5c114
 	winlosstext SchoolboyJack1BeatenText, 0
 	readmem wJackFightCount
-	ifequal 4, .Fight4
-	ifequal 3, .Fight3
-	ifequal 2, .Fight2
-	ifequal 1, .Fight1
-	ifequal 0, .LoadFight0
+	ifequalfwd 4, .Fight4
+	ifequalfwd 3, .Fight3
+	ifequalfwd 2, .Fight2
+	ifequalfwd 1, .Fight1
+	ifequalfwd 0, .LoadFight0
 .Fight4:
 	checkevent EVENT_RESTORED_POWER_TO_KANTO
-	iftrue .LoadFight4
+	iftruefwd .LoadFight4
 .Fight3:
 	checkevent EVENT_BEAT_ELITE_FOUR
-	iftrue .LoadFight3
+	iftruefwd .LoadFight3
 .Fight2:
 	checkevent EVENT_CLEARED_RADIO_TOWER
-	iftrue .LoadFight2
+	iftruefwd .LoadFight2
 .Fight1:
 	checkflag ENGINE_FLYPOINT_OLIVINE
-	iftrue .LoadFight1
+	iftruefwd .LoadFight1
 .LoadFight0:
 	loadtrainer SCHOOLBOY, JACK1
 	startbattle
@@ -227,38 +227,38 @@ PokefanfBeverly1Script:
 	loadvar VAR_CALLERID, PHONE_POKEFAN_BEVERLY
 	opentext
 	checkflag ENGINE_BEVERLY_HAS_NUGGET
-	iftrue UnknownScript_0x5c177
+	iftruefwd UnknownScript_0x5c177
 	checkcellnum PHONE_POKEFAN_BEVERLY
-	iftrue UnknownScript_0x5c19b
+	iftruefwd UnknownScript_0x5c19b
 	checkpoke MARILL
-	iffalse UnknownScript_0x5c189
+	iffalsefwd UnknownScript_0x5c189
 	checkevent EVENT_BEVERLY_ASKED_FOR_PHONE_NUMBER
-	iftrue UnknownScript_0x5c160
+	iftruefwd UnknownScript_0x5c160
 	writetext PokefanBeverlyCuteMonText
 	promptbutton
 	setevent EVENT_BEVERLY_ASKED_FOR_PHONE_NUMBER
 	scall UnknownScript_0x5c18f
-	sjump UnknownScript_0x5c163
+	sjumpfwd UnknownScript_0x5c163
 
 UnknownScript_0x5c160:
 	scall UnknownScript_0x5c193
 UnknownScript_0x5c163:
 	askforphonenumber PHONE_POKEFAN_BEVERLY
-	ifequal $1, UnknownScript_0x5c1a3
-	ifequal $2, UnknownScript_0x5c19f
+	ifequalfwd $1, UnknownScript_0x5c1a3
+	ifequalfwd $2, UnknownScript_0x5c19f
 	gettrainername POKEFANF, BEVERLY1, $0
 	scall UnknownScript_0x5c197
-	sjump UnknownScript_0x5c19b
+	sjumpfwd UnknownScript_0x5c19b
 
 UnknownScript_0x5c177:
 	scall UnknownScript_0x5c1a7
 	verbosegiveitem NUGGET
-	iffalse UnknownScript_0x5c186
+	iffalsefwd UnknownScript_0x5c186
 	clearflag ENGINE_BEVERLY_HAS_NUGGET
-	sjump UnknownScript_0x5c19b
+	sjumpfwd UnknownScript_0x5c19b
 
 UnknownScript_0x5c186:
-	sjump UnknownScript_0x5c1ab
+	sjumpfwd UnknownScript_0x5c1ab
 
 UnknownScript_0x5c189:
 	jumpopenedtext PokefanFBeverlyMarillFriendText

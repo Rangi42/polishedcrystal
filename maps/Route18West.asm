@@ -23,7 +23,7 @@ Route18WestAlwaysOnBike:
 
 Route18WestBikeCheckScript:
 	readmem wPlayerState
-	ifequal PLAYER_BIKE, .done
+	ifequalfwd PLAYER_BIKE, .done
 	showtext Route18WestBikeWarningText
 	applyonemovement PLAYER, step_down
 .done

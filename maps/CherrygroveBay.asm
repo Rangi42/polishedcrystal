@@ -23,7 +23,7 @@ CherrygroveBayHikerScript:
 	faceplayer
 	opentext
 	checkevent EVENT_LISTENED_TO_EARTH_POWER_INTRO
-	iftrue CherrygroveBayTutorEarthPowerScript
+	iftruefwd CherrygroveBayTutorEarthPowerScript
 	writetext CherrygroveBayHikerText
 	waitbutton
 	setevent EVENT_LISTENED_TO_EARTH_POWER_INTRO
@@ -31,14 +31,14 @@ CherrygroveBayTutorEarthPowerScript:
 	writetext Text_CherrygroveBayTutorEarthPower
 	waitbutton
 	checkitem SILVER_LEAF
-	iffalse .NoSilverLeaf
+	iffalsefwd .NoSilverLeaf
 	writetext Text_CherrygroveBayTutorQuestion
 	yesorno
-	iffalse .TutorRefused
+	iffalsefwd .TutorRefused
 	setval EARTH_POWER
 	writetext ClearText
 	special Special_MoveTutor
-	ifequal $0, .TeachMove
+	ifequalfwd $0, .TeachMove
 .TutorRefused
 	jumpopenedtext Text_CherrygroveBayTutorRefused
 

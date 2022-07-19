@@ -342,7 +342,7 @@ TradeAnim_InitTubeAnim:
 	inc hl
 	ld a, [hld]
 	ld [wCurIconForm], a
-	farcall LoadTradeAnimationMonIcon
+	farcall LoadTradeAnimationMonMini
 
 	call LoadTradeBubbleGFX
 

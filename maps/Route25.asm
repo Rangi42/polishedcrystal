@@ -91,7 +91,7 @@ TrainerCooltrainermKevin:
 	faceplayer
 	opentext
 	checkevent EVENT_CLEARED_NUGGET_BRIDGE
-	iftrue .AfterNuggetBridge
+	iftruefwd .AfterNuggetBridge
 	writetext CooltrainermKevinNuggetText
 	promptbutton
 	verbosegiveitem NUGGET

@@ -18,7 +18,7 @@ CherrygroveMart_MapScriptHeader:
 
 CherrygroveMartClerkScript:
 	checkevent EVENT_GAVE_MYSTERY_EGG_TO_ELM
-	iftrue .AfterDex
+	iftruefwd .AfterDex
 	pokemart MARTTYPE_STANDARD, MART_CHERRYGROVE
 
 .AfterDex:

@@ -24,12 +24,12 @@ CeladonUniversityPool_MapScriptHeader:
 CeladonUniversityPoolFergusScript:
 	faceplayer
 	checkevent EVENT_BEAT_COOLTRAINERM_FERGUS
-	iftrue .Beaten
+	iftruefwd .Beaten
 	opentext
 	checkevent EVENT_INTRODUCED_CELADON_FOUR
-	iftrue .IntroducedCeladonFour1
+	iftruefwd .IntroducedCeladonFour1
 	writetext .IntroText1
-	sjump .AfterIntro
+	sjumpfwd .AfterIntro
 .IntroducedCeladonFour1
 	writetext .IntroText2
 .AfterIntro

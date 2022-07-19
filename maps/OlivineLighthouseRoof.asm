@@ -21,16 +21,16 @@ OlivineLighthouseRoofSkylaScript:
 	faceplayer
 	opentext
 	checkevent EVENT_BEAT_SKYLA_AGAIN
-	iftrue .Beaten
+	iftruefwd .Beaten
 	checkevent EVENT_JASMINE_RETURNED_TO_GYM
-	iffalse .Waiting
+	iffalsefwd .Waiting
 	checkevent EVENT_BEAT_SKYLA
-	iffalse .NotYetBattled
+	iffalsefwd .NotYetBattled
 	writetext .RematchText
-	sjump .Battle
+	sjumpfwd .Battle
 .NotYetBattled
 	checkevent EVENT_INTRODUCED_SKYLA
-	iftrue .Introduced1
+	iftruefwd .Introduced1
 	writetext .IntroText
 	waitbutton
 	setevent EVENT_INTRODUCED_SKYLA
@@ -45,14 +45,14 @@ OlivineLighthouseRoofSkylaScript:
 	winlosstext .BeatenText, 0
 	setlasttalked OLIVINELIGHTHOUSEROOF_SKYLA
 	checkevent EVENT_BEAT_ELITE_FOUR_AGAIN
-	iftrue .Rematch2
+	iftruefwd .Rematch2
 	checkevent EVENT_BEAT_ELITE_FOUR
-	iftrue .Rematch1
+	iftruefwd .Rematch1
 	loadtrainer SKYLA, 1
-	sjump .StartBattle
+	sjumpfwd .StartBattle
 .Rematch1
 	loadtrainer SKYLA, 2
-	sjump .StartBattle
+	sjumpfwd .StartBattle
 .Rematch2
 	loadtrainer SKYLA, 3
 .StartBattle

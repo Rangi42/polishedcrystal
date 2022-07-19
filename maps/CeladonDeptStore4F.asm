@@ -28,16 +28,16 @@ PosterClerkScript:
 	loadmenu .MenuData
 	verticalmenu
 	closewindow
-	ifequal $1, .MarillPoster
-	ifequal $2, .ClefairyPoster
-	ifequal $3, .PikachuPoster
+	ifequalfwd $1, .MarillPoster
+	ifequalfwd $2, .ClefairyPoster
+	ifequalfwd $3, .PikachuPoster
 	endtext
 
 .MarillPoster:
 	checkmoney $0, 3200
-	ifequal $2, .NotEnoughMoney
+	ifequalfwd $2, .NotEnoughMoney
 	checkevent EVENT_DECO_POSTER_3
-	iftrue .AlreadyBought
+	iftruefwd .AlreadyBought
 	takemoney $0, 3200
 	setevent EVENT_DECO_POSTER_3
 	writetext BoughtMarillPosterText
@@ -49,9 +49,9 @@ PosterClerkScript:
 
 .ClefairyPoster:
 	checkmoney $0, 4800
-	ifequal $2, .NotEnoughMoney
+	ifequalfwd $2, .NotEnoughMoney
 	checkevent EVENT_DECO_POSTER_2
-	iftrue .AlreadyBought
+	iftruefwd .AlreadyBought
 	takemoney $0, 4800
 	setevent EVENT_DECO_POSTER_2
 	writetext BoughtClefairyPosterText
@@ -63,9 +63,9 @@ PosterClerkScript:
 
 .PikachuPoster:
 	checkmoney $0, 6400
-	ifequal $2, .NotEnoughMoney
+	ifequalfwd $2, .NotEnoughMoney
 	checkevent EVENT_DECO_POSTER_1
-	iftrue .AlreadyBought
+	iftruefwd .AlreadyBought
 	takemoney $0, 6400
 	setevent EVENT_DECO_POSTER_1
 	writetext BoughtPikachuPosterText

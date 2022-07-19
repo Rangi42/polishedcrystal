@@ -21,12 +21,12 @@ ProfOaksAide3Script:
 	faceplayer
 	opentext
 	checkevent EVENT_GOT_MACHO_BRACE_FROM_PROF_OAKS_AIDE
-	iftrue .Explain
+	iftruefwd .Explain
 	writetext ProfOaksAide3HiText
 	waitbutton
 	setval16 45
 	special CountCaught
-	iftrue .HereYouGo
+	iftruefwd .HereYouGo
 .UhOh
 	jumpopenedtext ProfOaksAide3UhOhText
 
@@ -34,7 +34,7 @@ ProfOaksAide3Script:
 	writetext ProfOaksAide3HereYouGoText
 	waitbutton
 	verbosegiveitem MACHO_BRACE
-	iffalse .NoRoom
+	iffalsefwd .NoRoom
 	setevent EVENT_GOT_MACHO_BRACE_FROM_PROF_OAKS_AIDE
 .Explain
 	jumpopenedtext ProfOaksAide3ExplainText

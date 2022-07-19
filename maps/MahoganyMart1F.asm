@@ -35,7 +35,7 @@ MahoganyMart1FTrigger0:
 
 UnknownScript_0x6c35b:
 	checkevent EVENT_UNCOVERED_STAIRCASE_IN_MAHOGANY_MART
-	iftrue UnknownScript_0x6c362
+	iftruefwd UnknownScript_0x6c362
 	endcallback
 
 UnknownScript_0x6c362:

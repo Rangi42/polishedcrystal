@@ -18,7 +18,7 @@ Route30BerryHousePokefanMScript:
 	faceplayer
 	opentext
 	checkevent EVENT_GOT_MULCH_FROM_ROUTE_30_HOUSE
-	iftrue .GotMulch
+	iftruefwd .GotMulch
 	writetext Route30BerrySpeechHouseMonEatBerriesText
 	promptbutton
 	verbosegiveitem MULCH

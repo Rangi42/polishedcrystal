@@ -67,7 +67,7 @@ SafariZoneNorthCooltrainerFScript:
 	faceplayer
 	opentext
 	checkevent EVENT_LISTENED_TO_DOUBLE_EDGE_INTRO
-	iftrue SafariZoneNorthTutorDoubleEdgeScript
+	iftruefwd SafariZoneNorthTutorDoubleEdgeScript
 	writetext SafariZoneNorthCooltrainerFText
 	waitbutton
 	setevent EVENT_LISTENED_TO_DOUBLE_EDGE_INTRO
@@ -75,14 +75,14 @@ SafariZoneNorthTutorDoubleEdgeScript:
 	writetext Text_SafariZoneNorthTutorDoubleEdge
 	waitbutton
 	checkitem SILVER_LEAF
-	iffalse .NoSilverLeaf
+	iffalsefwd .NoSilverLeaf
 	writetext Text_SafariZoneNorthTutorQuestion
 	yesorno
-	iffalse .TutorRefused
+	iffalsefwd .TutorRefused
 	setval DOUBLE_EDGE
 	writetext ClearText
 	special Special_MoveTutor
-	ifequal $0, .TeachMove
+	ifequalfwd $0, .TeachMove
 .TutorRefused
 	jumpopenedtext Text_SafariZoneNorthTutorRefused
 

@@ -24,13 +24,13 @@ CeladonEusine:
 	writetext CeladonEusineText1
 	promptbutton
 	special SpecialBeastsCheck
-	iftrue .HoOh
+	iftruefwd .HoOh
 	writetext EusineNoBeastsText
 	waitbutton
 	closetext
 	setmonval RAIKOU
 	special SpecialMonCheck
-	iftrue .OwnRaikou
+	iftruefwd .OwnRaikou
 	showtext EusineShowsRaikouText
 	refreshscreen
 	pokepic RAIKOU
@@ -42,7 +42,7 @@ CeladonEusine:
 .OwnRaikou
 	setmonval ENTEI
 	special SpecialMonCheck
-	iftrue .OwnEntei
+	iftruefwd .OwnEntei
 	showtext EusineShowsEnteiText
 	refreshscreen
 	pokepic ENTEI
@@ -54,7 +54,7 @@ CeladonEusine:
 .OwnEntei
 	setmonval SUICUNE
 	special SpecialMonCheck
-	iftrue .OwnSuicune
+	iftruefwd .OwnSuicune
 	showtext EusineShowsSuicuneText
 	refreshscreen
 	pokepic SUICUNE
