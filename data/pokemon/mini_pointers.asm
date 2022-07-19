@@ -315,8 +315,8 @@ MiniPointers:
 	dba UnownXMini
 	dba UnownYMini
 	dba UnownZMini
-	dba UnownExclamationIcon ; TODO
-	dba UnownQuestionIcon ; TODO
+	dba UnownExclamationMini
+	dba UnownQuestionMini
 
 	dba ArbokMini ; Kanto
 	dba ArbokMini ; Koga
@@ -337,7 +337,7 @@ endr
 
 	dba GyaradosMini ; Red
 
-	dba MewtwoArmoredIcon ; TODO
+	dba MewtwoArmoredMini
 
 	dba RattataAlolanIcon ; TODO
 	dba RaticateAlolanIcon ; TODO
