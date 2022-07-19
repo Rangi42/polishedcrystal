@@ -279,15 +279,15 @@ MiniPointers:
 	dba MamoswineMini
 	dba PorygonZMini
 	dba SylveonMini
-	dba PerrserkerIcon ; TODO
-	dba CursolaIcon ; TODO
-	dba SirfetchDIcon ; TODO
-	dba MrRimeIcon ; TODO
-	dba WyrdeerIcon ; TODO
-	dba KleavorIcon ; TODO
-	dba UrsalunaIcon ; TODO
-	dba SneaslerIcon ; TODO
-	dba OverqwilIcon ; TODO
+	dba PerrserkerMini
+	dba CursolaMini
+	dba SirfetchDMini
+	dba MrRimeMini
+	dba WyrdeerMini
+	dba KleavorMini
+	dba UrsalunaMini
+	dba SneaslerMini
+	dba OverqwilMini
 	assert_table_length NUM_SPECIES + 1
 
 	dba UnownBMini
