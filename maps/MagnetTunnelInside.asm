@@ -189,6 +189,12 @@ MagnetTunnelInsideMachine4:
 	changeblock 34, 8, $66
 	reloadmappart
 	disappear MAGNETTUNNELINSIDE_STONE_4
+	scall MagnetTunnelAlarmSounds
+	showemote EMOTE_QUESTION, PLAYER, 15
+	; opentext
+	; writetext MagnetTunnelInsideMachineText4
+	; waitbutton
+	; closetext
 	end
 
 .StoneMovement1:
@@ -201,14 +207,14 @@ MagnetTunnelInsideMachine4:
 
 .MachineOn:
 	checkevent EVENT_MAGNET_TUNNEL_LODESTONE_IN_PIT
-	iftrue_jumptext MagnetTunnelInsideMachineText6
+	iftrue_jumptext MagnetTunnelInsideMachineText7
 	scall MagnetTunnelAlarmSounds
 	opentext
-	writetext MagnetTunnelInsideMachineText4
+	writetext MagnetTunnelInsideMachineText5
 	yesorno
 	iffalse_endtext
 	playsound SFX_GLASS_TING
-	writetext MagnetTunnelInsideMachineText5
+	writetext MagnetTunnelInsideMachineText6
 	waitbutton
 	closetext
 	changeblock 34, 8, $65
@@ -234,6 +240,14 @@ MagnetTunnelInsideMachine4:
 	remove_fixed_facing
 	step_end
 
+MagnetTunnelAlarmSounds:
+	playsound SFX_LICK
+	pause 10
+	playsound SFX_LICK
+	pause 10
+	playsound SFX_LICK
+	end
+
 MagnetTunnelInsideMachineText1:
 	text "The machine is"
 	line "powered off."
@@ -252,44 +266,43 @@ MagnetTunnelInsideMachineText3:
 	done
 
 MagnetTunnelInsideMachineText4:
-	text "The machine is"
-	line "running quite"
-	cont "erratically."
+	text "Huh?"
+	done
 
-	para "Multiple WARNING!"
-	line "messages continue"
+MagnetTunnelInsideMachineText5:
+	text "This machine isn't"
+	line "running properly!"
+
+	para "Multiple WARNING"
+	line "messages rapidly"
 	
-	para "to rapidly flash"
-	line "across the screen."
+	para "flash across the"
+	line "small screen and"
+
+	para "the smell of some-"
+	line "thing burning"
+	cont "fills the air."
 
 	para "Hit the emergency"
 	line "shutdown button?"
 	done
 
-MagnetTunnelInsideMachineText5:
+MagnetTunnelInsideMachineText6:
 	text "Ding! The machine"
 	line "powered off."
 	done
 
-MagnetTunnelInsideMachineText6:
+MagnetTunnelInsideMachineText7:
 	text "The machine is"
 	line "surrounded by the"
 	
 	para "faint stench of"
-	line "melted plastic."
+	line "melted plastic…"
 
 	para "Better be safe and"
 	line "not try to turn it"
 	cont "back on."
 	done
-
-MagnetTunnelAlarmSounds:
-	playsound SFX_LICK
-	pause 10
-	playsound SFX_LICK
-	pause 10
-	playsound SFX_LICK
-	end
 
 MagnetTunnelInsideLodestoneText:
 	text "The lodestone is"
@@ -325,20 +338,28 @@ MagnetTunnelInsideEngineerText2:
 
 	para "Electric-type"
 	line "#mon here has"
-	cont "more than doubled."
+	cont "more than doubled!"
 
 	para "The foreman thinks"
-	line "they must be"
+	line "they must be drawn"
 
-	para "attracted to the"
-	line "lodestone's unique"
-	cont "energy field."
+	para "to the lodestone's"
+	line "unique magnetic"
+	cont "properties."
+
+	para "Especially the"
+	line "Magnemite."
+
+	para "I wonder why?"
 	done
 
 GenericTrainerEngineerGraden:
 	generictrainer ENGINEER, ENGINEER_GRADEN, EVENT_BEAT_ENGINEER_GRADEN, .SeenText, .BeatenText
 
-	text "I'm the foreman"
+	text "Hey kid! Welcome"
+	line "to Magent Tunnel."
+	
+	para "I'm the foreman"
 	line "on this jobsite."
 
 	para "We dug out this"
@@ -346,10 +367,10 @@ GenericTrainerEngineerGraden:
 	
 	para "path for the new"
 	line "Magnet Train"
-	cont "railway."
+	cont "railway. But…"
 
 	para "Haha! Little did I"
-	line "know all of the"
+	line "know, all of the"
 
 	para "lodestone would"
 	line "cause us so much"
@@ -358,16 +379,16 @@ GenericTrainerEngineerGraden:
 	para "Everyday, more and"
 	line "more Electric-type"
 
-	para "#mon show up"
-	line "and cause delays."
+	para "#mon showed up"
+	line "and caused delays."
 
 	para "We thought this"
 	line "tunnel was for the"
 	
 	para "Magnet Train, but"
-	line "it turned out to"
+	line "as it turns out,"
 	
-	para "be more like a"
+	para "its more like a"
 	line "home for magnet"
 	cont "#mon! Hahaha!"
 	done
@@ -389,15 +410,19 @@ GenericTrainerEngineerKevin:
 	generictrainer ENGINEER, ENGINEER_KEVIN, EVENT_BEAT_ENGINEER_KEVIN, .SeenText, .BeatenText
 
 	text "This machine has"
-	line "been acting up as"
-	cont "of late."
+	line "been acting really"
+	cont "weird lately."
 
 	para "I've tried to fix"
 	line "it, but its been"
 	cont "no use…"
 
+	para "I can't seem to"
+	line "figure out what's"
+	cont "going on."
+
 	para "I'm worried if I"
-	line "turn it on again"
+	line "turn it on again,"
 
 	para "it will short"
 	line "circuit and be"
@@ -427,27 +452,26 @@ GenericTrainerEngineerCameron:
 
 	text "These things can"
 	line "generate some"
-	cont "serious power."
+	cont "serious power!"
 
 	para "When powered on,"
-	line "they generate a"
+	line "they generate an"
 
-	para "pretty strong"
+	para "extremely powerful"
 	line "magnetic field."
 
 	para "That sure comes in"
-	line "handy when moving"
+	line "handy when needing"
 
-	para "large, heavy, and"
+	para "to move heavy,"
 	line "magnetic rocks"
 	cont "like lodestone."
 
 	para "But they can be"
-	line "real dangerous to"
-	cont "operate."
+	line "really dangerous…"
 
 	para "So be careful in"
-	line "here, alright?"
+	line "here, alright kid?"
 	done
 
 .SeenText:
