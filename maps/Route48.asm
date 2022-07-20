@@ -199,16 +199,14 @@ Route48NurseText1:
 	line "from the window!"
 
 	para "You drove away"
-	line "Team Rocket"
-	cont "and saved the"
-	cont "Pikachu!"
+	line "Team Rocket and"
+	cont "saved the Pikachu!"
 
-	para "Thank you so"
-	line "much!"
+	para "Thank you so much!"
 
 	para "Your #mon de-"
-	line "serve a rest"
-	cont "after all that."
+	line "serve a rest after"
+	cont "all that."
 	done
 
 Route48NurseText2:
