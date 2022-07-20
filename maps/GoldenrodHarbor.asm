@@ -441,5 +441,5 @@ GoldenrodHarborCrateSignText:
 
 GoldenrodHarborSailboatText:
 	text "It's a sailboat"
-	line "named Amaura."
+	line "named SeaKing."
 	done
