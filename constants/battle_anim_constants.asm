@@ -340,7 +340,7 @@ NUM_ANIM_OBJS EQU const_value
 	const BATTLEANIMFUNC_STRAIGHT_DESCENT
 	const BATTLEANIMFUNC_POWER_GEM
 	const BATTLEANIMFUNC_MOON
-	const BATTLEANIMFUNC_POKEBALL_BG
+	const BATTLEANIMFUNC_POKE_BALL_BG
 NUM_BATTLEANIMFUNCS EQU const_value
 
 ; BattleAnimFrameData indexes (see data/battle_anims/framesets.asm)

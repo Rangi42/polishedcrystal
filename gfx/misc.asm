@@ -91,7 +91,7 @@ WeatherHailIconGFX::      INCBIN "gfx/weather/hail.2bpp.lz"
 
 SECTION "Battle Ball Icons", ROMX
 
-AnimObjPokeBallBGGFX::  INCBIN "gfx/battle_balls/poke_ball_bg.2bpp.lz"
+AnimObjPokeBallBGGFX::  INCBIN "gfx/battle_balls/background.2bpp.lz"
 AnimObjPokeBallGFX::    INCBIN "gfx/battle_balls/poke_ball.2bpp.lz"
 AnimObjGreatBallGFX::   INCBIN "gfx/battle_balls/great_ball.2bpp.lz"
 AnimObjUltraBallGFX::   INCBIN "gfx/battle_balls/ultra_ball.2bpp.lz"
