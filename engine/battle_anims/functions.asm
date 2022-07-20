@@ -88,6 +88,7 @@ DoBattleAnimFrame:
 	dw BattleAnimFunction_StraightDescent
 	dw BattleAnimFunction_PowerGem
 	dw BattleAnimFunction_Moon
+	dw BattleAnimFunction_PokeBall_BG
 
 BattleAnim_AnonJumptable:
 	ld hl, BATTLEANIMSTRUCT_JUMPTABLE_INDEX
@@ -256,6 +257,25 @@ BattleAnimFunction_02:
 .asm_cd158
 	jmp DeinitBattleAnimation
 
+BattleAnimFunction_PokeBall_BG:
+	call BattleAnim_AnonJumptable
+.anon_dw
+	dw .zero
+	dw BattleAnimFunction_PokeBall.one
+	dw DoNothing
+	dw BattleAnimFunction_PokeBall.three
+	dw BattleAnimFunction_PokeBall.four
+	dw DoNothing
+	dw BattleAnimFunction_PokeBall.six
+	dw BattleAnimFunction_PokeBall.seven
+	dw BattleAnimFunction_PokeBall.eight
+	dw DoNothing
+	dw BattleAnimFunction_PokeBall.ten
+	dw DeinitBattleAnimation
+.zero ; init
+	call GetBallAnimBGPal
+	jmp BattleAnim_IncAnonJumptableIndex
+
 BattleAnimFunction_PokeBall:
 	call BattleAnim_AnonJumptable
 .anon_dw
@@ -398,12 +418,20 @@ BattleAnimFunction_PokeBallBlocked:
 .done
 	jmp DeinitBattleAnimation
 
+; When throwing a ball, the ANIM_GFX_SMOKE uses GRAY, ANIM_GFX_SPEED for Master Ball uses YELLOW,
+; and weather icons may use YELLOW/BLUE/BROWN/GRAY.
+; RED is free for the ball and GREEN for the white background.
+
 GetBallAnimPal:
 	ld hl, BATTLEANIMSTRUCT_PALETTE
 	add hl, bc
-	; poof uses GRAY, sparkle uses YELLOW, weather uses YELLOW/BLUE/BROWN/GRAY
-	; RED and GREEN are free
 	ld [hl], PAL_BATTLE_OB_RED
+	ret
+
+GetBallAnimBGPal:
+	ld hl, BATTLEANIMSTRUCT_PALETTE
+	add hl, bc
+	ld [hl], PAL_BATTLE_OB_GREEN
 	ret
 
 BattleAnimFunction_10:
