@@ -150,6 +150,18 @@ endr
 	call FarCopyBytes
 	ld b, 2
 	call SafeCopyTilemapAtOnce
+
+	ld hl, CaughtBallPals
+rept 4
+	add hl, de
+endr
+	ld de, wOBPals1 palette PAL_BATTLE_OB_GREEN + 2 ; see GetBallAnimPal
+	ld bc, 4
+	ld a, BANK(CaughtBallPals)
+	call FarCopyBytes
+	ld b, 2
+	call SafeCopyTilemapAtOnce
+	
 	pop de
 	pop bc
 	pop af
