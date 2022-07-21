@@ -265,13 +265,12 @@ endc
 	cp LINK_COLOSSEUM
 	jr nz, .ready_to_trade
 	ld a, [wLinkOtherPlayerGender]
-	dec a
-	jr z, .is_female
-	ld a, CAL
-	jr .done
-.is_female
-	ld a, KRIS
-.done
+	and a
+	ld a, CARRIE
+	jr nz, .got_other_gender
+	assert CARRIE + 1 == CAL
+	inc a
+.got_other_gender
 	ld [wOtherTrainerClass], a
 	call ClearScreen
 	call Link_WaitBGMap
