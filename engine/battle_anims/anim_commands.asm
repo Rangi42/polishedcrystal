@@ -707,11 +707,11 @@ BattleAnimCmd_EnemyFeetObj:
 	jr .loop
 
 .okay
-	ld a, $28
+	ld a, ANIM_GFX_PLAYERHEAD
 	ld [hli], a
 	ld a, $42
 	ld [hli], a
-	ld a, $29
+	ld a, ANIM_GFX_ENEMYFEET
 	ld [hli], a
 	ld [hl], $49
 
@@ -759,11 +759,11 @@ BattleAnimCmd_PlayerHeadObj:
 	jr .loop
 
 .okay
-	ld a, $28
+	ld a, ANIM_GFX_PLAYERHEAD
 	ld [hli], a
 	ld a, $35
 	ld [hli], a
-	ld a, $29
+	ld a, ANIM_GFX_ENEMYFEET
 	ld [hli], a
 	ld [hl], $43
 
