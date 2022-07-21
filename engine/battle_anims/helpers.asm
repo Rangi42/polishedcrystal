@@ -145,15 +145,15 @@ rept 4
 	add hl, de
 endr
 	; copy the palette
-	push hl
 	ld de, wOBPals1 palette PAL_BATTLE_OB_RED + 2 ; see GetBallAnimPal
 	ld bc, 4
 	ld a, BANK(CaughtBallPals)
 	call FarCopyBytes
-	pop hl
+	; copy the bg palette
+	ld hl, WhitePalette
 	ld de, wOBPals1 palette PAL_BATTLE_OB_GREEN + 2 ; see GetBallAnimBGPal
-	ld bc, 4
-	ld a, BANK(CaughtBallPals)
+	ld bc, 2
+	ld a, BANK(WhitePalette)
 	call FarCopyBytes
 	ld b, 2
 	call SafeCopyTilemapAtOnce
