@@ -144,13 +144,11 @@ LoadBattleAnimObj:
 rept 4
 	add hl, de
 endr
-	; copy the palette
-	push hl
 	ld de, wOBPals1 palette PAL_BATTLE_OB_RED + 2 ; see GetBallAnimPal
 	ld bc, 4
 	ld a, BANK(CaughtBallPals)
 	call FarCopyBytes
-	pop hl
+	ld hl, CaughtBallPals + 4
 	ld de, wOBPals1 palette PAL_BATTLE_OB_GREEN + 2 ; see GetBallAnimBGPal
 	ld bc, 4
 	ld a, BANK(CaughtBallPals)
