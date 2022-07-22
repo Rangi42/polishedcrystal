@@ -55,9 +55,9 @@ Pokémon Polished Crystal would never have been finished without the help of man
 * Megaman-Omega for some of Prism's overworld sprites.
 * SoupPotato (aka SourApple) for some move animations, sprites of Red Gyarados and Ace Duo, and Berry tree tiles.
 * flempa for some Pokémon sprites and move animations and for Galarian Articuno and Galarian Zapdos animations.
-* ShockSlayer for the mini icons and Yellow's overworld sprite.
+* ShockSlayer for the Gen 1 and 2 mini icons and for Yellow's overworld sprite.
 * Scarlax for many new Pokémon animations.
-* ShadowOne333 for many new Pokémon animations.
+* ShadowOne333 for the Alolan, Galarian, and Hisuian mini icons, and many new Pokémon animations.
 * octorox for Galarian Rapidash and Galarian Slowking's backpics.
 * spritershawn for sprites of Red, Blue, and Green.
 * isamuakai01 for sprites of Steven and Cynthia.

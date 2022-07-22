@@ -273,10 +273,10 @@ FillPokedex:
 	ld hl, wPokedexCaught
 .Fill:
 	ld a, %11111111
-	ld bc, NUM_SPECIES / 8
+	ld bc, NUM_UNIQUE_POKEMON / 8
 	rst ByteFill
-if NUM_SPECIES % 8
-	ld [hl], 2**(NUM_SPECIES % 8) - 1
+if NUM_UNIQUE_POKEMON % 8
+	ld [hl], 2**(NUM_UNIQUE_POKEMON % 8) - 1
 endc
 	ret
 
