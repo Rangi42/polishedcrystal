@@ -339,45 +339,45 @@ endr
 
 	dba MewtwoArmoredMini
 
-	dba RattataAlolanIcon ; TODO
-	dba RaticateAlolanIcon ; TODO
-	dba RaichuAlolanIcon ; TODO
-	dba SandshrewAlolanIcon ; TODO
-	dba SandslashAlolanIcon ; TODO
-	dba VulpixAlolanIcon ; TODO
-	dba NinetalesAlolanIcon ; TODO
-	dba DiglettAlolanIcon ; TODO
-	dba DugtrioAlolanIcon ; TODO
-	dba MeowthAlolanIcon ; TODO
-	dba PersianAlolanIcon ; TODO
-	dba GeodudeAlolanIcon ; TODO
-	dba GravelerAlolanIcon ; TODO
-	dba GolemAlolanIcon ; TODO
-	dba GrimerAlolanIcon ; TODO
-	dba MukAlolanIcon ; TODO
-	dba ExeggutorAlolanIcon ; TODO
-	dba MarowakAlolanIcon ; TODO
+	dba RattataAlolanMini
+	dba RaticateAlolanMini
+	dba RaichuAlolanMini
+	dba SandshrewAlolanMini
+	dba SandslashAlolanMini
+	dba VulpixAlolanMini
+	dba NinetalesAlolanMini
+	dba DiglettAlolanMini
+	dba DugtrioAlolanMini
+	dba MeowthAlolanMini
+	dba PersianAlolanMini
+	dba GeodudeAlolanMini
+	dba GravelerAlolanMini
+	dba GolemAlolanMini
+	dba GrimerAlolanMini
+	dba MukAlolanMini
+	dba ExeggutorAlolanMini
+	dba MarowakAlolanMini
 
-	dba MeowthGalarianIcon ; TODO
-	dba PonytaGalarianIcon ; TODO
-	dba RapidashGalarianIcon ; TODO
-	dba SlowpokeGalarianIcon ; TODO
-	dba SlowbroGalarianIcon ; TODO
-	dba FarfetchDGalarianIcon ; TODO
-	dba WeezingGalarianIcon ; TODO
-	dba MrMimeGalarianIcon ; TODO
-	dba ArticunoGalarianIcon ; TODO
-	dba ZapdosGalarianIcon ; TODO
-	dba MoltresGalarianIcon ; TODO
-	dba SlowkingGalarianIcon ; TODO
-	dba CorsolaGalarianIcon ; TODO
+	dba MeowthGalarianMini
+	dba PonytaGalarianMini
+	dba RapidashGalarianMini
+	dba SlowpokeGalarianMini
+	dba SlowbroGalarianMini
+	dba FarfetchDGalarianMini
+	dba WeezingGalarianMini
+	dba MrMimeGalarianMini
+	dba ArticunoGalarianMini
+	dba ZapdosGalarianMini
+	dba MoltresGalarianMini
+	dba SlowkingGalarianMini
+	dba CorsolaGalarianMini
 
-	dba GrowlitheHisuianIcon ; TODO
-	dba ArcanineHisuianIcon ; TODO
-	dba VoltorbHisuianIcon ; TODO
-	dba ElectrodeHisuianIcon ; TODO
-	dba TyphlosionHisuianIcon ; TODO
-	dba QwilfishHisuianIcon ; TODO
-	dba SneaselHisuianIcon ; TODO
+	dba GrowlitheHisuianMini
+	dba ArcanineHisuianMini
+	dba VoltorbHisuianMini
+	dba ElectrodeHisuianMini
+	dba TyphlosionHisuianMini
+	dba QwilfishHisuianMini
+	dba SneaselHisuianMini
 
 	assert_table_length NUM_UNIQUE_POKEMON + 1
