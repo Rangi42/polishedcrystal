@@ -2133,41 +2133,290 @@ Special_TryQuickSave:
 	ld [wChosenCableClubRoom], a
 	ret
 
-CheckOtherPlayerGender:
-	ld a, [wPlayerGender]
-	call Link_EnsureSync
-	push af
-	call LinkDataReceived
-	call DelayFrame
-	call LinkDataReceived
-	pop af
-	ld [wLinkOtherPlayerGender], a
-	ret
+PerformLinkChecks:
+	xor a
+	ld bc, 10
+	ld hl, wLinkReceivedPolishedMiscBuffer
+	call ByteFill
 
-Special_CheckBothSelectedSameRoom:
-	ld a, [wChosenCableClubRoom]
-	call Link_EnsureSync
-	push af
-	call LinkDataReceived
+	; This acts as the old Special_CheckBothSelectedSameRoom
+	; We send a dummy byte here that will cause old versions
+	; of PolishedCrystal's CheckBothSelectedSameRoom function
+	; to fail.
+	ld a, $3
+	call Link_ExchangeNybble
+	cp $3
+	jp nz, .OldVersionDetected
+
+	; Prepare for Multiple Byte Transfers
+	call CheckLinkTimeout_Gen2
+	ldh a, [hScriptVar]
+	and a
+	jmp z, LinkTimeout
+	ldh a, [hSerialConnectionStatus]
+	cp USING_INTERNAL_CLOCK
+	jr nz, .player_1
+
+	ld c, 3
+	call DelayFrames
+	xor a
+	ldh [hSerialSend], a
+	ld a, $1
+	ldh [rSC], a
+	ld a, START_TRANSFER_INTERNAL_CLOCK
+	ldh [rSC], a
 	call DelayFrame
-	call LinkDataReceived
-	pop af
+	xor a
+	ldh [hSerialSend], a
+	ld a, $1
+	ldh [rSC], a
+	ld a, START_TRANSFER_INTERNAL_CLOCK
+	ldh [rSC], a
+
+.player_1:
+	ld c, 3
+	call DelayFrames
+	ldh a, [rIF]
+	push af
+	ldh a, [rIE]
+	push af
+	xor a
+	ldh [rIF], a
+	ld a, 1 << SERIAL
+	ldh [rIE], a
+
+	; Perform Game ID Byte Transfer
+	; hl needs to be set to wLinkPolishedMiscBuffer
+	; so we load the values in reverse.
+	ld hl, wLinkPolishedMiscBuffer + 2
+	ld a, LINK_GAME_ID
+	ld [hld], a
+	ld a, SERIAL_POLISHED_PREAMBLE_BYTE
+	ld [hld], a
+	ld a, SERIAL_PREAMBLE_BYTE
+	ld [hl], a
+	ld de, wLinkReceivedPolishedMiscBuffer
+	; bc is the number of bytes we should transfer.
+	; It needs to account for the maximum number of
+	; preamble bytes that can be sent plus the number
+	; of data bytes.
+	ld bc, SERIAL_POLISHED_MAX_PREAMBLE_LENGTH + 1
+	call Serial_ExchangeBytes
+
+	; Save GAME ID and Perform check
+	call .SkipPreambleBytes
+	ld [wLinkOtherPlayerGameID], a
+	cp LINK_GAME_ID
+	jp nz, .WrongGameID
+
+	; Perform Version and Room Byte Transfers
+	ld hl, wLinkPolishedMiscBuffer + 6
+	ld a, [wChosenCableClubRoom]
+	ld [hld], a
+	ld a, LOW(LINK_MIN_TRADE_VERSION)
+	ld [hld], a
+	ld a, HIGH(LINK_MIN_TRADE_VERSION)
+	ld [hld], a
+	ld a, LOW(LINK_VERSION)
+	ld [hld], a
+	ld a, HIGH(LINK_VERSION)
+	ld [hld], a
+	ld a, SERIAL_POLISHED_PREAMBLE_BYTE
+	ld [hld], a
+	ld a, SERIAL_PREAMBLE_BYTE
+	ld [hl], a
+	ld de, wLinkReceivedPolishedMiscBuffer
+	ld bc, SERIAL_POLISHED_MAX_PREAMBLE_LENGTH + 5
+	;vc_hook ExchangeBytes
+	call Serial_ExchangeBytes
+
+	; Save Version and Room Bytes
+	call .SkipPreambleBytes
+	ld [wLinkOtherPlayerVersion], a
+	ld a, [de]
+	ld [wLinkOtherPlayerVersion + 1], a
+	inc de
+	ld a, [de]
+	ld [wLinkOtherPlayerMinTradeVersion], a
+	inc de
+	ld a, [de]
+	ld [wLinkOtherPlayerMinTradeVersion + 1], a
+	inc de
+	ld a, [de]
 	ld b, a
+	; Check Correct Room
 	ld a, [wChosenCableClubRoom]
 	cp b
-	jr nz, .fail
-	ld a, [wChosenCableClubRoom]
+	jr nz, .WrongRoom
 	inc a
 	ld [wLinkMode], a
+	; Check Version
+	call CheckCorrectLinkVersion
+	cp TRUE
+	jr c, .WrongVersion
+	jr nz, .WrongMinVersion
+
+	; Perform Options Byte Transfers
+	ld hl, wLinkPolishedMiscBuffer + 3
+	ld a, [wInitialOptions2]
+	ld [hld], a
+	ld a, [wInitialOptions]
+	ld [hld], a
+	ld a, SERIAL_POLISHED_PREAMBLE_BYTE
+	ld [hld], a
+	ld a, SERIAL_PREAMBLE_BYTE
+	ld [hl], a
+	ld de, wLinkReceivedPolishedMiscBuffer
+	ld bc, SERIAL_POLISHED_MAX_PREAMBLE_LENGTH + 2
+	;vc_hook ExchangeBytes
+	call Serial_ExchangeBytes
+	xor a
+	ldh [rIF], a
+	ld a, 1 << SERIAL | 1 << VBLANK
+	ldh [rIE], a
+	ldh a, [hSerialConnectionStatus]
+	cp USING_INTERNAL_CLOCK
+	ld c, 66
+	call z, DelayFrames
+
+	; Perform Options Check
+	call .SkipPreambleBytes
+	and LINK_OPTMASK
+	ld b, a
+	ld a, [wInitialOptions]
+	and LINK_OPTMASK
+	cp b
+	jr nz, .WrongOptions
+	ld a, [de]
+	and %00000011 ; Future EVs Opt
+	ld b, a
+	ld a, [wInitialOptions2]
+	and %00000011
+	cp b
+	jr nz, .WrongOptions
+
+	; Process Link Opponent Gender
+	ld a, [wPlayerGender]
+	call Link_ExchangeNybble
+	ld [wLinkOtherPlayerGender], a
 	xor a
 	ldh [hVBlank], a
-	ld a, $1
+	; fallthrough
+.Success
+	inc a
+	jr .return_result_restore_interrupts
+
+.OldVersionDetected
+	xor a
+	; fallthrough
+.return_result:
 	ldh [hScriptVar], a
 	ret
 
-.fail
-	xor a
+.WrongGameID
+	ld a, 2
+	jr .return_result_restore_interrupts
+
+.WrongVersion
+	ld a, 3
+	jr .return_result_restore_interrupts
+
+.WrongMinVersion
+	cp 3
+	ld a, 4
+	jr z, .return_result_restore_interrupts
+	inc a ; 5
+	jr .return_result_restore_interrupts
+
+.WrongOptions
+	ld a, 6
+	jr .return_result_restore_interrupts
+
+.WrongRoom
+	ld a, 7
+	; fallthrough
+.return_result_restore_interrupts
 	ldh [hScriptVar], a
+	pop af
+	ldh [rIE], a
+	pop af
+	ldh [rIF], a
+	ret
+
+.SkipPreambleBytes
+; This sub function skips over the no longer
+; needed preamble bytes.
+	ld de, wLinkReceivedPolishedMiscBuffer
+.loop
+	ld a, [de]
+	inc de
+	cp SERIAL_POLISHED_PREAMBLE_BYTE
+	jr nz, .loop
+	ld a, [de]
+	inc de
+	ret
+
+CheckCorrectLinkVersion:
+	ld hl, wLinkOtherPlayerVersion
+	ld a, [wLinkMode]
+	cp LINK_TRADECENTER
+	jr z, .trade_center
+
+	; Is Other Game Version == LINK_VERSION ?
+	ld a, [hli]
+	cp HIGH(LINK_VERSION)
+	jr nz, .version_not_equal
+	ld a, [hl]
+	cp LOW(LINK_VERSION)
+	jr z, .success
+	jr .version_not_equal
+
+.trade_center
+	; Is Other Game Version >= LINK_MIN_TRADE_VERSION ?
+	ld a, [hli]
+	cp HIGH(LINK_MIN_TRADE_VERSION)
+	jr z, .continue
+	jr c, .other_game_below_min_version
+.continue
+	ld a, [hl]
+	cp LOW(LINK_MIN_TRADE_VERSION)
+	jr z, .check_other_min_version
+	jr c, .other_game_below_min_version
+
+.check_other_min_version
+	; Is LINK_VERSION >= Other Game Min Trade Version ?
+	ld hl, wLinkOtherPlayerMinTradeVersion
+	ld a, [hli]
+	cp HIGH(LINK_VERSION)
+	jr z, .continue_2
+	jr nc, .below_trade_min_version
+.continue_2
+	ld a, [hl]
+	cp LOW(LINK_VERSION)
+	jr z, .success
+	jr nc, .below_trade_min_version
+	;fallthrough
+.success
+	xor a
+	inc a
+	ret
+.version_not_equal
+	xor a
+	ret
+.other_game_below_min_version
+	ld a, 2
+	ret
+.below_trade_min_version
+	ld a, 3
+	ret
+
+Link_ExchangeNybble:
+	call Link_EnsureSync
+	push af
+	call LinkDataReceived
+	call DelayFrame
+	call LinkDataReceived
+	pop af
 	ret
 
 Special_TradeCenter:

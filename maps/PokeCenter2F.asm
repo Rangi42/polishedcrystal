@@ -116,9 +116,14 @@ LinkReceptionistScript_DoTradeOrBattle:
 	iffalsefwd .LinkTimedOut
 	readmem wOtherPlayerLinkMode
 	iffalsefwd .LinkedToFirstGen
-	special Special_CheckBothSelectedSameRoom
-	iffalsefwd .IncompatibleRooms
-	special CheckOtherPlayerGender
+	special PerformLinkChecks
+	iffalsefwd .OldVersionDetected
+	ifequalfwd 2, .WrongGameID
+	ifequalfwd 3, .WrongVersion
+	ifequalfwd 4, .WrongMinVersion
+	ifequalfwd 5, .OtherPlayerWrongMinVersion
+	ifequalfwd 6, .WrongOptions
+	ifequalfwd 7, .IncompatibleRooms
 	writetext Text_PleaseComeIn2
 	waitbutton
 	closetext
@@ -134,6 +139,36 @@ LinkReceptionistScript_DoTradeOrBattle:
 .LinkedToFirstGen:
 	special Special_FailedLinkToPast
 	writetext Text_CantLinkToThePast
+	special Special_CloseLink
+	endtext
+
+.OldVersionDetected:
+	writetext Text_OldVersionDetected
+	special Special_CloseLink
+	endtext
+
+.WrongGameID
+	writetext Text_WrongGameID
+	special Special_CloseLink
+	endtext
+
+.WrongVersion
+	writetext Text_WrongVersion
+	special Special_CloseLink
+	endtext
+
+.WrongMinVersion
+	writetext Text_WrongMinVersion
+	special Special_CloseLink
+	endtext
+
+.OtherPlayerWrongMinVersion
+	writetext Text_OtherPlayerWrongMinVersion
+	special Special_CloseLink
+	endtext
+
+.WrongOptions
+	writetext Text_WrongOptions
 	special Special_CloseLink
 	endtext
 
@@ -276,6 +311,45 @@ Text_PleaseComeIn:
 Text_CantLinkToThePast:
 	text "You can't link to"
 	line "the past here."
+	prompt
+
+Text_OldVersionDetected:
+	text "You are connected"
+	line "to an old version."
+	prompt
+
+Text_WrongGameID:
+	text "Your Game is not"
+	line "compatible with"
+	cont "the other game."
+	prompt
+
+Text_WrongVersion:
+	text "Your Game version"
+	line "does not match."
+	prompt
+
+Text_WrongMinVersion:
+	text "Your game does not"
+	line "meet the minimum"
+	cont "version"
+
+	para "requirement for"
+	line "the other game"
+	prompt
+
+Text_OtherPlayerWrongMinVersion:
+	text "The other Game"
+	line "system does not"
+
+	para "meet the"
+	line "minimum version"
+	cont "requirement."
+	prompt
+
+Text_WrongOptions:
+	text "Your Game Options"
+	line "are not compatible"
 	prompt
 
 Text_IncompatibleRooms:
