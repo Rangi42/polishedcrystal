@@ -241,15 +241,15 @@ MagnetTunnelInsideMachine4:
 	step_end
 
 MagnetTunnelAlarmSounds:
-	playsound SFX_LICK
+	playsound SFX_COMET_PUNCH
 	pause 10
-	playsound SFX_LICK
+	playsound SFX_COMET_PUNCH
 	pause 10
-	playsound SFX_LICK
+	playsound SFX_COMET_PUNCH
 	pause 10
-	playsound SFX_LICK
+	playsound SFX_COMET_PUNCH
 	pause 10
-	playsound SFX_LICK
+	playsound SFX_COMET_PUNCH
 	end
 
 MagnetTunnelInsideMachineText1:
