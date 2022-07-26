@@ -41,7 +41,7 @@ jobs:
       - id: checkout-polishedcrystal
         name: "Checkout Rangi42/polishedcrystal"
         run: |
-          git clone https://github.com/Rangi42/polishedcrystal --branch=master --depth=1
+          git clone https://github.com/Rangi42/polishedcrystal --branch=${GITHUB_REF##*/} --depth=1
           pushd polishedcrystal
           mkdir build
       - id: set-env-var
