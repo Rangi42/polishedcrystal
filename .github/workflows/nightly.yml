@@ -24,16 +24,16 @@ jobs:
         uses: actions/download-artifact@v3.0.0
         with:
           name: "polishedcrystal-faithful"
-      - id: download-polishedcrystal-noir
-        name: "Download polishedcrystal-noir"
-        uses: actions/download-artifact@v3.0.0
-        with:
-          name: "polishedcrystal-noir"
       - id: download-polisheddebug
         name: "Download polisheddebug"
         uses: actions/download-artifact@v3.0.0
         with:
           name: "polisheddebug"
+      - id: download-polisheddebug-faithful
+        name: "Download polisheddebug-faithful"
+        uses: actions/download-artifact@v3.0.0
+        with:
+          name: "polisheddebug-faithful"
       - id: download-polishedcrystal-savepatch
         name: "Download polishedcrystal-savepatch"
         uses: actions/download-artifact@v3.0.0
