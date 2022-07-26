@@ -7,7 +7,7 @@ on:
 jobs:
   build:
     name: "Build"
-    uses: Rangi42/polishedcrystal/.github/workflows/build.yml@main
+    uses: Rangi42/polishedcrystal/.github/workflows/build.yml@master
   release:
     name: "Release"
     runs-on: ubuntu-latest
