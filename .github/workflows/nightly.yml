@@ -1,8 +1,13 @@
 name: "Nightly Build"
 
 on:
-  schedule:
-    - cron: '0 5 * * *'
+  push:
+    branches:
+      - master
+    paths-ignore:
+      - '.github/**'
+#  schedule:
+#    - cron: '0 5 * * *'
 
 jobs:
   build:
@@ -23,7 +28,7 @@ jobs:
       - id: checkout-polishedcrystal
         name: "Checkout Rangi42/polishedcrystal"
         run: |
-          git clone https://github.com/Rangi42/polishedcrystal --branch=${GITHUB_REF##*/} --depth=1
+          git clone https://github.com/Rangi42/polishedcrystal --branch=master --depth=1
       - id: set-env-var
         name: "Set environment variable"
         run: |
