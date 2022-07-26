@@ -51,4 +51,5 @@ AnimObjGFX:
 	anim_obj_gfx  8, AnimObjMiniGFX
 	anim_obj_gfx  1, NULL
 	anim_obj_gfx  1, NULL
+	anim_obj_gfx 10, AnimObjPokeBallBGGFX
 	assert_table_length NUM_ANIM_GFX + 1

@@ -1832,8 +1832,8 @@ Pokedex_Bio:
 	ld e, l
 	ret
 
-.AllString
-	db "All @"
+.AllString:
+	db "100%@"
 
 INCLUDE "data/pokedex_bio.asm"
 
