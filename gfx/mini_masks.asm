@@ -390,17 +390,19 @@ UnownYMiniMask::            INCBIN "gfx/minis/unown_y_mask.1bpp.lz"
 UnownZMiniMask::            INCBIN "gfx/minis/unown_z_mask.1bpp.lz"
 UnownExclamationMiniMask::  INCBIN "gfx/minis/unown_exclamation_mask.1bpp.lz"
 UnownQuestionMiniMask::     INCBIN "gfx/minis/unown_question_mask.1bpp.lz"
+PikachuFlyMiniMask::        INCBIN "gfx/minis/pikachu_fly_mask.1bpp.lz"
+PikachuSurfMiniMask::       INCBIN "gfx/minis/pikachu_surf_mask.1bpp.lz"
 MewtwoArmoredMiniMask::     INCBIN "gfx/minis/mewtwo_armored_mask.1bpp.lz"
 RattataAlolanMiniMask::     INCBIN "gfx/minis/rattata_alolan_mask.1bpp.lz"
 RaticateAlolanMiniMask::    INCBIN "gfx/minis/raticate_alolan_mask.1bpp.lz"
 RaichuAlolanMiniMask::      INCBIN "gfx/minis/raichu_alolan_mask.1bpp.lz"
 SandshrewAlolanMiniMask::   INCBIN "gfx/minis/sandshrew_alolan_mask.1bpp.lz"
-SandslashAlolanMiniMask::   INCBIN "gfx/minis/sandslash_alolan_mask.1bpp.lz"
-VulpixAlolanMiniMask::      INCBIN "gfx/minis/vulpix_alolan_mask.1bpp.lz"
 
 
 SECTION "Mon Mini Masks 21", ROMX
 
+SandslashAlolanMiniMask::   INCBIN "gfx/minis/sandslash_alolan_mask.1bpp.lz"
+VulpixAlolanMiniMask::      INCBIN "gfx/minis/vulpix_alolan_mask.1bpp.lz"
 NinetalesAlolanMiniMask::   INCBIN "gfx/minis/ninetales_alolan_mask.1bpp.lz"
 DiglettAlolanMiniMask::     INCBIN "gfx/minis/diglett_alolan_mask.1bpp.lz"
 DugtrioAlolanMiniMask::     INCBIN "gfx/minis/dugtrio_alolan_mask.1bpp.lz"
@@ -415,12 +417,12 @@ ExeggutorAlolanMiniMask::   INCBIN "gfx/minis/exeggutor_alolan_mask.1bpp.lz"
 MarowakAlolanMiniMask::     INCBIN "gfx/minis/marowak_alolan_mask.1bpp.lz"
 MeowthGalarianMiniMask::    INCBIN "gfx/minis/meowth_galarian_mask.1bpp.lz"
 PonytaGalarianMiniMask::    INCBIN "gfx/minis/ponyta_galarian_mask.1bpp.lz"
-RapidashGalarianMiniMask::  INCBIN "gfx/minis/rapidash_galarian_mask.1bpp.lz"
-SlowpokeGalarianMiniMask::  INCBIN "gfx/minis/slowpoke_galarian_mask.1bpp.lz"
 
 
 SECTION "Mon Mini Masks 22", ROMX
 
+RapidashGalarianMiniMask::  INCBIN "gfx/minis/rapidash_galarian_mask.1bpp.lz"
+SlowpokeGalarianMiniMask::  INCBIN "gfx/minis/slowpoke_galarian_mask.1bpp.lz"
 SlowbroGalarianMiniMask::   INCBIN "gfx/minis/slowbro_galarian_mask.1bpp.lz"
 FarfetchDGalarianMiniMask:: INCBIN "gfx/minis/farfetch_d_galarian_mask.1bpp.lz"
 WeezingGalarianMiniMask::   INCBIN "gfx/minis/weezing_galarian_mask.1bpp.lz"
@@ -435,5 +437,9 @@ ArcanineHisuianMiniMask::   INCBIN "gfx/minis/arcanine_hisuian_mask.1bpp.lz"
 VoltorbHisuianMiniMask::    INCBIN "gfx/minis/voltorb_hisuian_mask.1bpp.lz"
 ElectrodeHisuianMiniMask::  INCBIN "gfx/minis/electrode_hisuian_mask.1bpp.lz"
 TyphlosionHisuianMiniMask:: INCBIN "gfx/minis/typhlosion_hisuian_mask.1bpp.lz"
+
+
+SECTION "Mon Mini Masks 23", ROMX
+
 QwilfishHisuianMiniMask::   INCBIN "gfx/minis/qwilfish_hisuian_mask.1bpp.lz"
 SneaselHisuianMiniMask::    INCBIN "gfx/minis/sneasel_hisuian_mask.1bpp.lz"
