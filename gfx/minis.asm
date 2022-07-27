@@ -390,17 +390,19 @@ UnownYMini::            INCBIN "gfx/minis/unown_y.2bpp.lz"
 UnownZMini::            INCBIN "gfx/minis/unown_z.2bpp.lz"
 UnownExclamationMini::  INCBIN "gfx/minis/unown_exclamation.2bpp.lz"
 UnownQuestionMini::     INCBIN "gfx/minis/unown_question.2bpp.lz"
+PikachuFlyMini::        INCBIN "gfx/minis/pikachu_fly.2bpp.lz"
+PikachuSurfMini::       INCBIN "gfx/minis/pikachu_surf.2bpp.lz"
 MewtwoArmoredMini::     INCBIN "gfx/minis/mewtwo_armored.2bpp.lz"
 RattataAlolanMini::     INCBIN "gfx/minis/rattata_alolan.2bpp.lz"
 RaticateAlolanMini::    INCBIN "gfx/minis/raticate_alolan.2bpp.lz"
 RaichuAlolanMini::      INCBIN "gfx/minis/raichu_alolan.2bpp.lz"
 SandshrewAlolanMini::   INCBIN "gfx/minis/sandshrew_alolan.2bpp.lz"
-SandslashAlolanMini::   INCBIN "gfx/minis/sandslash_alolan.2bpp.lz"
-VulpixAlolanMini::      INCBIN "gfx/minis/vulpix_alolan.2bpp.lz"
 
 
 SECTION "Mon Minis 21", ROMX
 
+SandslashAlolanMini::   INCBIN "gfx/minis/sandslash_alolan.2bpp.lz"
+VulpixAlolanMini::      INCBIN "gfx/minis/vulpix_alolan.2bpp.lz"
 NinetalesAlolanMini::   INCBIN "gfx/minis/ninetales_alolan.2bpp.lz"
 DiglettAlolanMini::     INCBIN "gfx/minis/diglett_alolan.2bpp.lz"
 DugtrioAlolanMini::     INCBIN "gfx/minis/dugtrio_alolan.2bpp.lz"
@@ -415,12 +417,12 @@ ExeggutorAlolanMini::   INCBIN "gfx/minis/exeggutor_alolan.2bpp.lz"
 MarowakAlolanMini::     INCBIN "gfx/minis/marowak_alolan.2bpp.lz"
 MeowthGalarianMini::    INCBIN "gfx/minis/meowth_galarian.2bpp.lz"
 PonytaGalarianMini::    INCBIN "gfx/minis/ponyta_galarian.2bpp.lz"
-RapidashGalarianMini::  INCBIN "gfx/minis/rapidash_galarian.2bpp.lz"
-SlowpokeGalarianMini::  INCBIN "gfx/minis/slowpoke_galarian.2bpp.lz"
 
 
 SECTION "Mon Minis 22", ROMX
 
+RapidashGalarianMini::  INCBIN "gfx/minis/rapidash_galarian.2bpp.lz"
+SlowpokeGalarianMini::  INCBIN "gfx/minis/slowpoke_galarian.2bpp.lz"
 SlowbroGalarianMini::   INCBIN "gfx/minis/slowbro_galarian.2bpp.lz"
 FarfetchDGalarianMini:: INCBIN "gfx/minis/farfetch_d_galarian.2bpp.lz"
 WeezingGalarianMini::   INCBIN "gfx/minis/weezing_galarian.2bpp.lz"
@@ -435,5 +437,9 @@ ArcanineHisuianMini::   INCBIN "gfx/minis/arcanine_hisuian.2bpp.lz"
 VoltorbHisuianMini::    INCBIN "gfx/minis/voltorb_hisuian.2bpp.lz"
 ElectrodeHisuianMini::  INCBIN "gfx/minis/electrode_hisuian.2bpp.lz"
 TyphlosionHisuianMini:: INCBIN "gfx/minis/typhlosion_hisuian.2bpp.lz"
+
+
+SECTION "Mon Minis 23", ROMX
+
 QwilfishHisuianMini::   INCBIN "gfx/minis/qwilfish_hisuian.2bpp.lz"
 SneaselHisuianMini::    INCBIN "gfx/minis/sneasel_hisuian.2bpp.lz"
