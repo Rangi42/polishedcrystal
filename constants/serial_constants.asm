@@ -2,6 +2,7 @@
 	const_def 2
 	const LINK_TRADECENTER ; 2
 	const LINK_COLOSSEUM   ; 3
+	const LINK_ROOM_DUMMY  ; 4 Old polished crystal would not have this as a room selection value.
 
 ; hSerialReceive high nybbles
 DEF SERIAL_TRADECENTER EQU $70

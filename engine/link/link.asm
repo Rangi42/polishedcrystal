@@ -2143,10 +2143,10 @@ PerformLinkChecks:
 	; We send a dummy byte here that will cause old versions
 	; of PolishedCrystal's CheckBothSelectedSameRoom function
 	; to fail.
-	ld a, $3
+	ld a, LINK_ROOM_DUMMY - 1
 	call Link_ExchangeNybble
-	cp $3
-	jp nz, .OldVersionDetected
+	cp LINK_ROOM_DUMMY - 1
+	jmp nz, .OldVersionDetected
 
 	; Prepare for Multiple Byte Transfers
 	call CheckLinkTimeout_Gen2
@@ -2161,14 +2161,14 @@ PerformLinkChecks:
 	call DelayFrames
 	xor a
 	ldh [hSerialSend], a
-	ld a, $1
+	inc a
 	ldh [rSC], a
 	ld a, START_TRANSFER_INTERNAL_CLOCK
 	ldh [rSC], a
 	call DelayFrame
 	xor a
 	ldh [hSerialSend], a
-	ld a, $1
+	inc a
 	ldh [rSC], a
 	ld a, START_TRANSFER_INTERNAL_CLOCK
 	ldh [rSC], a
@@ -2207,7 +2207,7 @@ PerformLinkChecks:
 	call .SkipPreambleBytes
 	ld [wLinkOtherPlayerGameID], a
 	cp LINK_GAME_ID
-	jp nz, .WrongGameID
+	jmp nz, .WrongGameID
 
 	; Perform Version and Room Byte Transfers
 	ld hl, wLinkPolishedMiscBuffer + 6
