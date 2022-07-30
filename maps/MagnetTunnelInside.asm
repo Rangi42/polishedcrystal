@@ -191,10 +191,10 @@ MagnetTunnelInsideMachine4:
 	disappear MAGNETTUNNELINSIDE_STONE_4
 	scall MagnetTunnelAlarmSounds
 	showemote EMOTE_QUESTION, PLAYER, 15
-	; opentext
-	; writetext MagnetTunnelInsideMachineText4
-	; waitbutton
-	; closetext
+	opentext
+	writetext MagnetTunnelInsideMachineText4
+	waitbutton
+	closetext
 	end
 
 .StoneMovement1:
@@ -241,15 +241,20 @@ MagnetTunnelInsideMachine4:
 	step_end
 
 MagnetTunnelAlarmSounds:
-	playsound SFX_POUND
+	special SaveMusic
+	playmusic MUSIC_NONE
 	pause 10
-	playsound SFX_POUND
+	playsound SFX_LICK
 	pause 10
-	playsound SFX_POUND
+	playsound SFX_LICK
 	pause 10
-	playsound SFX_POUND
+	playsound SFX_LICK
 	pause 10
-	playsound SFX_POUND
+	playsound SFX_LICK
+	pause 10
+	playsound SFX_LICK
+	pause 10
+	special RestoreMusic
 	end
 
 MagnetTunnelInsideMachineText1:
@@ -270,7 +275,7 @@ MagnetTunnelInsideMachineText3:
 	done
 
 MagnetTunnelInsideMachineText4:
-	text "Huh?"
+	text "Huh?!"
 	done
 
 MagnetTunnelInsideMachineText5:
