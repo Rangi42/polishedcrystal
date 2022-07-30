@@ -323,8 +323,8 @@ MiniPointers:
 	dba ArbokMini ; Agatha
 	dba ArbokMini ; Ariana
 
-	dba PikachuMini ; Fly
-	dba PikachuMini ; Surf
+	dba PikachuFlyMini ; Fly
+	dba PikachuSurfMini ; Surf
 	dba PikachuMini ; Pika
 	dba PikachuMini ; Chuchu
 	dba PikachuMini ; Spark
