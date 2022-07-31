@@ -44,18 +44,6 @@ _LoadMonGFX:
 	ld c, 8
 	ret
 
-SetMenuMonMiniColor:
-	push hl
-	push de
-	push bc
-	push af
-
-	ld a, [wTempIconSpecies]
-	ld [wCurPartySpecies], a
-	ld a, [wCurPartyMon]
-	inc a
-	jr ProcessMenuMonIconColor
-
 SetMenuMonIconColor:
 	push hl
 	push de
@@ -65,7 +53,18 @@ SetMenuMonIconColor:
 	ld a, [wTempIconSpecies]
 	ld [wCurPartySpecies], a
 	call GetMenuMonIconPalette
-	jr ProcessMenuMonIconColor
+	; fallthrough
+
+ProcessMenuMonIconColor:
+	ld hl, wVirtualOAM + 3
+	ld c, 4
+	ld de, 4
+.loop
+	ld [hl], a
+	add hl, de
+	dec c
+	jr nz, .loop
+	jmp PopAFBCDEHL
 
 LoadFlyMonColor:
 	push hl
@@ -130,21 +129,10 @@ LoadPartyMenuMonMiniColors:
 	; item and mail icons use palette 0
 	ld a, [wCurIconMonHasItemOrMail]
 	and a
-	jr z, ProcessMenuMonIconColor.finish
+	jr z, .done
 	xor a
 	ld [hl], a
-	jr ProcessMenuMonIconColor.finish
-
-ProcessMenuMonIconColor:
-	ld hl, wVirtualOAM + 3
-	ld c, 4
-	ld de, 4
-.colorIcon
-	ld [hl], a
-	add hl, de
-	dec c
-	jr nz, .colorIcon
-.finish
+.done
 	jmp PopAFBCDEHL
 
 GetOverworldMonIconPalette::
@@ -218,6 +206,10 @@ LoadNamingScreenMonMini:
 	push bc
 
 	depixel 4, 4, 4, 0
+	push de
+
+	ld a, MON_FORM ; aka MON_IS_EGG
+	call GetPartyParamLocationAndValue
 	jr InitScreenMonMini ; TODO: load correct colors and use index 0
 
 LoadMoveMenuMonMini:
@@ -227,17 +219,12 @@ LoadMoveMenuMonMini:
 
 	depixel 3, 4, 2, 4
 	push de
+
 	ld hl, wTempMonForm
 	ld a, [hl]
-	jr _InitScreenMonMini
+	; fallthrough
 
 InitScreenMonMini:
-	push de
-
-	ld a, MON_FORM ; aka MON_IS_EGG
-	call GetPartyParamLocationAndValue
-	; fallthrough
-_InitScreenMonMini:
 	and SPECIESFORM_MASK
 	ld [wCurIconForm], a
 	bit MON_IS_EGG_F, [hl]
@@ -248,7 +235,17 @@ _InitScreenMonMini:
 	ld [wTempIconSpecies], a
 	ld [wCurIcon], a
 
-	call SetMenuMonMiniColor
+	ld a, [wTempIconSpecies]
+	ld [wCurPartySpecies], a
+	ld a, [wCurPartyMon]
+	inc a
+	ld hl, wVirtualOAM + 3
+	ld de, 4
+rept 3
+	ld [hl], a
+	add hl, de
+endr
+	ld [hl], a
 
 	xor a
 	call GetMiniGFX
