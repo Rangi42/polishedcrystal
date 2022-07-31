@@ -5542,36 +5542,61 @@ BattleAnim_SkillSwap:
 	anim_ret
 
 BattleAnim_StoneEdge:
-	anim_2gfx ANIM_GFX_ROCKS, ANIM_GFX_HIT
-.loop
-	anim_bgeffect ANIM_BG_SHAKE_SCREEN_X, $e, $1, $0
+	anim_2gfx ANIM_GFX_HIT, ANIM_GFX_ROCKS
 	anim_sound 0, 0, SFX_SPARK
-	anim_obj ANIM_OBJ_STONE_EDGE, 132, 60, $3
+	anim_obj ANIM_OBJ_STONE_EDGE_STILL, 156, 72, $8
+	anim_wait 1
+	anim_obj ANIM_OBJ_STONE_EDGE_STILL, 152, 72, $8
+	anim_wait 1
+	anim_sound 0, 0, SFX_SPARK
+	anim_obj ANIM_OBJ_STONE_EDGE_STILL, 128, 72, $8
+	anim_wait 1
+	anim_obj ANIM_OBJ_STONE_EDGE_STILL, 108, 72, $8
+	anim_wait 1
+	anim_sound 0, 0, SFX_SPARK
+	anim_obj ANIM_OBJ_STONE_EDGE_STILL, 112, 72, $8
+	anim_wait 1
+	anim_obj ANIM_OBJ_STONE_EDGE_STILL, 148, 72, $8
+	anim_wait 1
+	anim_sound 0, 0, SFX_SPARK
+	anim_obj ANIM_OBJ_STONE_EDGE_STILL, 118, 72, $8
+	anim_wait 1
+	anim_obj ANIM_OBJ_STONE_EDGE_STILL, 136, 72, $8
+	anim_wait 1
+	anim_sound 0, 0, SFX_SPARK
+	anim_obj ANIM_OBJ_STONE_EDGE_STILL, 116, 72, $8
+	anim_wait 1
+	anim_obj ANIM_OBJ_STONE_EDGE_STILL, 144, 72, $8
+	anim_wait 32
+	anim_sound 0, 1, SFX_KARATE_CHOP
+	anim_obj ANIM_OBJ_STONE_EDGE, 156, 72, $8
 	anim_wait 2
-	anim_obj ANIM_OBJ_STONE_EDGE, 116, 60, $3
+	anim_bgeffect ANIM_BG_SHAKE_SCREEN_X, $55, $1, $0
+	anim_obj ANIM_OBJ_STONE_EDGE, 152, 72, $8
 	anim_wait 2
-	anim_obj ANIM_OBJ_STONE_EDGE, 140, 60, $3
+	anim_sound 0, 1, SFX_KARATE_CHOP
+	anim_obj ANIM_OBJ_STONE_EDGE, 128, 72, $8
 	anim_obj ANIM_OBJ_HIT_SMALL_YFIX, 120, 40, $0
 	anim_wait 2
-	anim_obj ANIM_OBJ_STONE_EDGE, 128, 60, $3
+	anim_obj ANIM_OBJ_STONE_EDGE, 108, 72, $8
 	anim_wait 2
-	anim_obj ANIM_OBJ_STONE_EDGE, 136, 60, $3
+	anim_sound 0, 1, SFX_KARATE_CHOP
+	anim_obj ANIM_OBJ_STONE_EDGE, 112, 72, $8
 	anim_wait 2
-	anim_obj ANIM_OBJ_STONE_EDGE, 124, 60, $3
+	anim_obj ANIM_OBJ_STONE_EDGE, 148, 72, $8
 	anim_obj ANIM_OBJ_HIT_SMALL_YFIX, 152, 48, $0
-	anim_sound 0, 0, SFX_SPARK
 	anim_wait 2
-	anim_obj ANIM_OBJ_STONE_EDGE, 148, 60, $3
+	anim_sound 0, 1, SFX_KARATE_CHOP
+	anim_obj ANIM_OBJ_STONE_EDGE, 118, 72, $8
 	anim_wait 2
-	anim_obj ANIM_OBJ_STONE_EDGE, 136, 60, $3
+	anim_obj ANIM_OBJ_STONE_EDGE, 136, 72, $8
 	anim_wait 2
-	anim_obj ANIM_OBJ_STONE_EDGE, 120, 60, $3
+	anim_sound 0, 1, SFX_KARATE_CHOP
+	anim_obj ANIM_OBJ_STONE_EDGE, 116, 72, $8
 	anim_obj ANIM_OBJ_HIT_SMALL_YFIX, 136, 56, $0
 	anim_wait 2
-	anim_obj ANIM_OBJ_STONE_EDGE, 144, 60, $3
-	anim_wait 2
-	anim_loop 5, .loop
-	anim_wait 24
+	anim_obj ANIM_OBJ_STONE_EDGE, 144, 72, $8
+	anim_wait 32
 	anim_ret
 
 BattleAnim_UTurn:
