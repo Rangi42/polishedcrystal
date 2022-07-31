@@ -4578,37 +4578,49 @@ BattleAnim_SacredFire:
 	anim_ret
 
 BattleAnim_FlareBlitz:
-	anim_1gfx ANIM_GFX_FIRE
+	anim_2gfx ANIM_GFX_FIRE, ANIM_GFX_HIT
+	anim_battlergfx_2row
 .loop
-	anim_sound 0, 0, SFX_EMBER
-	anim_obj ANIM_OBJ_FLAME_WHEEL,   6, 0,  12, 0, $0
-	anim_wait 6
-	anim_sound 0, 0, SFX_EMBER
-	anim_obj ANIM_OBJ_SACRED_FIRE,   6, 0,  13, 0, $0
-	anim_wait 6
-	anim_loop 4, .loop
-	anim_bgeffect ANIM_BG_CYCLE_OBPALS_GRAY_AND_YELLOW, $0, $2, $0
-	anim_bgeffect ANIM_BG_ALTERNATE_HUES, $0, $2, $0
-	anim_sound 0, 0, SFX_OUTRAGE
-	anim_wait 96
-	anim_call BattleAnim_FollowEnemyFeet_0
+	anim_sound 0, 1, SFX_MEGA_PUNCH
+	anim_obj ANIM_OBJ_FLARE_BLITZ, 44, 108, $6
+	anim_wait 2
+	anim_obj ANIM_OBJ_FLARE_BLITZ, 36, 108, $6
+	anim_wait 2
+	anim_sound 0, 1, SFX_MEGA_PUNCH
+	anim_obj ANIM_OBJ_FLARE_BLITZ, 52, 108, $8
+	anim_wait 2
+	anim_obj ANIM_OBJ_FLARE_BLITZ, 28, 108, $8
+	anim_wait 2
+	anim_sound 0, 1, SFX_MEGA_PUNCH
+	anim_obj ANIM_OBJ_FLARE_BLITZ, 60, 108, $6
+	anim_wait 2
+	anim_obj ANIM_OBJ_FLARE_BLITZ, 20, 108, $8
+	anim_wait 2
+	anim_obj ANIM_OBJ_FLARE_BLITZ, 68, 108, $8
+	anim_wait 2
+	anim_loop 3, .loop
+	anim_wait 16
+	anim_bgp $90
+	anim_bgeffect ANIM_BG_BATTLEROBJ_1ROW, $0, $0, $0
 	anim_bgeffect ANIM_BG_TACKLE, $0, $1, $0
-	anim_wait 4
-	anim_bgeffect ANIM_BG_FLASH_INVERTED, $0, $8, $12
-	anim_sound 0, 1, SFX_EMBER
-	anim_obj ANIM_OBJ_FIRE_BLAST, -15, 0,   6, 0, $1
-	anim_obj ANIM_OBJ_FIRE_BLAST, -15, 0,   6, 0, $4
-	anim_obj ANIM_OBJ_FIRE_BLAST, -15, 0,   6, 0, $5
-	anim_obj ANIM_OBJ_FIRE_BLAST, -15, 0,   6, 0, $2
-	anim_obj ANIM_OBJ_FIRE_BLAST, -15, 0,   6, 0, $3
-	anim_wait 4
-	anim_bgeffect ANIM_BG_FLASH_INVERTED, $0, $8, $12
-	anim_wait 4
-	anim_bgeffect ANIM_BG_SHOW_MON, $0, $0, $0
-	anim_wait 4
-	anim_incobj 9
+	anim_obj ANIM_OBJ_HIT_YFIX, 136, 56, $0
 	anim_wait 8
-	anim_ret
+	anim_bgeffect ANIM_BG_FLASH_INVERTED, $0, $4, $2
+	anim_sound 0, 0, SFX_BURN
+	anim_obj ANIM_OBJ_LAVA_PLUME, 136, 48, $0
+	anim_obj ANIM_OBJ_LAVA_PLUME, 136, 48, $8
+	anim_obj ANIM_OBJ_LAVA_PLUME, 136, 48, $10
+	anim_obj ANIM_OBJ_LAVA_PLUME, 136, 48, $18
+	anim_obj ANIM_OBJ_LAVA_PLUME, 136, 48, $20
+	anim_obj ANIM_OBJ_LAVA_PLUME, 136, 48, $28
+	anim_obj ANIM_OBJ_LAVA_PLUME, 136, 48, $30
+	anim_obj ANIM_OBJ_LAVA_PLUME, 136, 48, $38
+	anim_wait 2
+	anim_sound 0, 0, SFX_BURN
+	anim_wait 2
+	anim_sound 0, 0, SFX_BURN
+	anim_wait 32
+	anim_jump BattleAnim_ShowMon_0
 
 BattleAnim_Magnitude:
 	anim_1gfx ANIM_GFX_ROCKS
