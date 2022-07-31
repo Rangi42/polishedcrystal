@@ -6,6 +6,9 @@ INCLUDE "gfx/stats/party_menu_bg.pal"
 HPBarPals:
 INCLUDE "gfx/stats/hp_bars.pal"
 
+PartyMenuOBPals:
+INCLUDE "gfx/stats/party_menu_ob.pal"
+
 HPBarInteriorPals:
 INCLUDE "gfx/battle/hp_bar.pal"
 
@@ -87,7 +90,6 @@ INCLUDE "gfx/trainer_card/trainer_card.pal"
 
 DiplomaPals:
 INCLUDE "gfx/diploma/diploma.pal"
-PartyMenuOBPals:
 PokegearOBPals:
 INCLUDE "gfx/icons/icons.pal"
 

@@ -44,6 +44,18 @@ _LoadMonGFX:
 	ld c, 8
 	ret
 
+SetMenuMonMiniColor:
+	push hl
+	push de
+	push bc
+	push af
+
+	ld a, [wTempIconSpecies]
+	ld [wCurPartySpecies], a
+	ld a, [wCurPartyMon]
+	inc a
+	jr ProcessMenuMonIconColor
+
 SetMenuMonIconColor:
 	push hl
 	push de
@@ -93,21 +105,17 @@ LoadPartyMenuMonMiniColors:
 	ld a, [hl]
 .got_species
 	ld [wCurPartySpecies], a
-	ld a, MON_SHINY
-	call GetPartyParamLocationAndValue
-	call GetMenuMonIconPalette
-	push af
 
 	ld hl, wVirtualOAM + 3
 	ld a, [wCurPartyMon]
 	swap a
-
 	ld d, 0
 	ld e, a
-
 	add hl, de
-	pop af
 
+	; mon minis use palette [wCurPartyMon]+1
+	ld a, [wCurPartyMon]
+	inc a
 	ld de, 4
 	ld [hl], a
 	add hl, de
@@ -117,13 +125,13 @@ LoadPartyMenuMonMiniColors:
 	add hl, de
 	ld [hl], a
 	pop hl
-	ld d, a
+	ld [hl], a
+
+	; item and mail icons use palette 0
 	ld a, [wCurIconMonHasItemOrMail]
 	and a
-	ld a, PAL_OW_RED ; same color for item or mail
-	jr nz, .ok
-	ld a, d
-.ok
+	jr z, ProcessMenuMonIconColor.finish
+	xor a
 	ld [hl], a
 	jr ProcessMenuMonIconColor.finish
 
@@ -131,13 +139,11 @@ ProcessMenuMonIconColor:
 	ld hl, wVirtualOAM + 3
 	ld c, 4
 	ld de, 4
-
 .colorIcon
 	ld [hl], a
 	add hl, de
 	dec c
 	jr nz, .colorIcon
-
 .finish
 	jmp PopAFBCDEHL
 
@@ -212,7 +218,7 @@ LoadNamingScreenMonMini:
 	push bc
 
 	depixel 4, 4, 4, 0
-	jr InitScreenMonMini
+	jr InitScreenMonMini ; TODO: load correct colors and use index 0
 
 LoadMoveMenuMonMini:
 	push hl
@@ -242,8 +248,7 @@ _InitScreenMonMini:
 	ld [wTempIconSpecies], a
 	ld [wCurIcon], a
 
-	dec hl ; MON_SHINY = MON_FORM - 1
-	call SetMenuMonIconColor ; TODO: use real varied mon color
+	call SetMenuMonMiniColor
 
 	xor a
 	call GetMiniGFX
