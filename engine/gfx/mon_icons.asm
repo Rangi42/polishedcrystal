@@ -66,7 +66,6 @@ _SetMonColor:
 	jmp PopAFBCDEHL
 
 SetFlyMonColor:
-; TODO: load icon palettes on Fly map
 	push hl
 	push de
 	push bc
@@ -384,7 +383,6 @@ endr
 	ret
 
 LoadTradeAnimationMonMini:
-; TODO: use real varied mon color
 	call SetMenuMonIconColor
 	ld a, [wTempIconSpecies]
 	ld [wCurIcon], a

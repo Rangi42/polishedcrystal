@@ -1489,7 +1489,7 @@ _FlyMap:
 	call ClearSpriteAnims
 	call LoadTownMapGFX
 	call FlyMap
-	ld a, CGB_POKEGEAR_PALS
+	ld a, CGB_FLY_MAP
 	call GetCGBLayout
 	call SetPalettes
 .loop

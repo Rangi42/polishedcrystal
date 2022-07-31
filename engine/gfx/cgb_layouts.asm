@@ -40,6 +40,7 @@ LoadCGBLayout::
 	dw _CGB_TrainerOrMonFrontpicPals
 	dw _CGB_JudgeSystem
 	dw _CGB_NamingScreen
+	dw _CGB_FlyMap
 	assert_table_length NUM_CGB_LAYOUTS - 2 ; discount CGB_RAM and CGB_PARTY_MENU_HP_PALS
 
 _CGB_BattleGrayscale:
@@ -244,6 +245,13 @@ _CGB_FinishBattleScreenLayout:
 
 .apply_attr_map
 	jmp ApplyAttrMap
+
+_CGB_FlyMap:
+	ld hl, PokegearOBPals
+	ld de, wOBPals1
+	ld c, 8 palettes
+	call LoadPalettes
+	; fallthrough
 
 _CGB_PokegearPals:
 	ld hl, PokegearPals
