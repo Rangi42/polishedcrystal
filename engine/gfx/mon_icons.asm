@@ -112,8 +112,9 @@ LoadPartyMenuMonMiniColors:
 	ld e, a
 	add hl, de
 
-	; mon minis use palette [wCurPartyMon]+1
+	; mon minis use palette [wCurPartyMon]+2
 	ld a, [wCurPartyMon]
+	inc a
 	inc a
 	ld de, 4
 	ld [hl], a
@@ -235,9 +236,11 @@ InitScreenMonMini:
 	ld [wTempIconSpecies], a
 	ld [wCurIcon], a
 
+	; mon minis use palette [wCurPartyMon]+2
 	ld a, [wTempIconSpecies]
 	ld [wCurPartySpecies], a
 	ld a, [wCurPartyMon]
+	inc a
 	inc a
 	ld hl, wVirtualOAM + 3
 	ld de, 4

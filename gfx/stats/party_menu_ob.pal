@@ -4,6 +4,11 @@ if !DEF(MONOCHROME)
 	RGB 31, 19, 10
 	RGB 31, 07, 01
 	RGB 00, 00, 00
+; blue (kris)
+	RGB 31, 31, 31
+	RGB 31, 19, 10
+	RGB 10, 09, 31
+	RGB 00, 00, 00
 ; minis
 rept 6
 	RGB 31, 31, 31
@@ -12,7 +17,7 @@ rept 6
 	RGB 00, 00, 00
 endr
 else
-rept 7
+rept 8
 	MONOCHROME_RGB_FOUR
 endr
 endc

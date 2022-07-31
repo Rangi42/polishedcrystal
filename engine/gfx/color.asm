@@ -454,12 +454,12 @@ ApplyPartyMenuHPPals:
 InitPartyMenuOBPals:
 	ld hl, PartyMenuOBPals
 	ld de, wOBPals1
-	ld bc, 7 palettes
+	ld bc, 8 palettes
 	call FarCopyColorWRAM
 
 	ld a, [wPartyCount]
 	ld hl, wPartyMon1Species
-	ld de, wOBPals1 palette 1 + 2
+	ld de, wOBPals1 palette 2 + 2
 .loop
 	push af
 	push hl
@@ -653,12 +653,12 @@ LoadPokemonPalette:
 
 	; hl = palette
 	call GetMonPalettePointer
-	; load palette in BG 7
-	ld de, wBGPals1 palette 7 + 2
+	; load palette into de (set by caller)
 	ld bc, 4
 	jmp FarCopyColorWRAM
 
 LoadPartyMonPalette:
+	push de
 	; bc = personality
 	ld hl, wPartyMon1Personality
 	ld a, [wCurPartyMon]
@@ -669,8 +669,7 @@ LoadPartyMonPalette:
 	ld a, [wCurPartySpecies]
 	; hl = palette
 	call GetMonNormalOrShinyPalettePointer
-	; load palette in BG 7
-	ld de, wBGPals1 palette PAL_BG_TEXT + 2
+	; load palette in de (set by caller)
 	ld bc, 4
 	call FarCopyColorWRAM
 	; hl = DVs
@@ -684,7 +683,7 @@ LoadPartyMonPalette:
 	ld b, a
 	; vary colors by DVs
 	call CopyDVsToColorVaryDVs
-	ld hl, wBGPals1 palette PAL_BG_TEXT + 2
+	pop hl
 	jmp VaryColorsByDVs
 
 LoadTrainerPalette:

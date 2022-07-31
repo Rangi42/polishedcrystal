@@ -1,3 +1,13 @@
+DiplomaPalette:
+if !DEF(MONOCHROME)
+	RGB 31, 31, 31
+	RGB 30, 22, 17
+	RGB 16, 14, 19
+	RGB 00, 00, 00
+else
+	MONOCHROME_RGB_FOUR
+endc
+
 BattleObjectPals:
 INCLUDE "gfx/battle_anims/battle_anims.pal"
 

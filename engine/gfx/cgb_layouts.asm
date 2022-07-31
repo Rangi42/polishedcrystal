@@ -1,8 +1,10 @@
 LoadCGBLayout::
+	assert CGB_RAM == 0
 	and a ; CGB_RAM?
 	jr nz, .not_ram
 	ld a, [wMemCGBLayout]
 .not_ram
+	assert CGB_PARTY_MENU_HP_PALS == NUM_CGB_LAYOUTS - 1
 	cp CGB_PARTY_MENU_HP_PALS
 	jmp z, ApplyPartyMenuHPPals
 	call ResetBGPals
@@ -37,6 +39,7 @@ LoadCGBLayout::
 	dw _CGB_PlayerOrMonFrontpicPals
 	dw _CGB_TrainerOrMonFrontpicPals
 	dw _CGB_JudgeSystem
+	dw _CGB_NamingScreen
 	assert_table_length NUM_CGB_LAYOUTS - 2 ; discount CGB_RAM and CGB_PARTY_MENU_HP_PALS
 
 _CGB_BattleGrayscale:
@@ -409,21 +412,37 @@ _CGB_Diploma:
 	call LoadPalettes
 
 	ld de, wBGPals1
-	ld hl, .DiplomaPalette
+	ld hl, DiplomaPalette
 	call LoadOnePalette
 
 	call WipeAttrMap
 	jmp ApplyAttrMap
 
-.DiplomaPalette
-if !DEF(MONOCHROME)
-	RGB 31, 31, 31
-	RGB 30, 22, 17
-	RGB 16, 14, 19
-	RGB 00, 00, 00
-else
-	MONOCHROME_RGB_FOUR
-endc
+_CGB_NamingScreen:
+	ld hl, DiplomaPals
+	ld de, wBGPals1
+	ld c, 16 palettes
+	call LoadPalettes
+
+	ld de, wBGPals1
+	ld hl, DiplomaPalette
+	call LoadOnePalette
+
+	ld a, [wNamingScreenType]
+	and a
+	jr nz, .not_pokemon
+	; mon minis use palette [wCurPartyMon]+2
+	ld hl, wOBPals1 palette 2 + 2
+	ld bc, 1 palettes
+	ld a, [wCurPartyMon]
+	rst AddNTimes
+	ld d, h
+	ld e, l
+	call LoadPartyMonPalette
+.not_pokemon
+
+	call WipeAttrMap
+	jmp ApplyAttrMap
 
 _CGB_MapPals:
 	call LoadMapPals
