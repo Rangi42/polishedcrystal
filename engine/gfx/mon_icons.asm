@@ -22,7 +22,7 @@ LoadMini:
 	ld a, [wCurIconForm]
 	ld b, a
 	; fallthrough
-_LoadMini:
+LoadMiniForSpeciesAndForm:
 	; bc = extended index
 	call GetCosmeticSpeciesAndFormIndex
 	inc bc
@@ -52,10 +52,9 @@ SetMenuMonIconColor:
 
 	ld a, [wTempIconSpecies]
 	ld [wCurPartySpecies], a
-	call GetMenuMonIconPalette
+	call GetMonIconPalette
 	; fallthrough
-
-ProcessMenuMonIconColor:
+_SetMonColor:
 	ld hl, wVirtualOAM + 3
 	ld c, 4
 	ld de, 4
@@ -66,7 +65,8 @@ ProcessMenuMonIconColor:
 	jr nz, .loop
 	jmp PopAFBCDEHL
 
-LoadFlyMonColor:
+SetFlyMonColor:
+; TODO: load icon palettes on Fly map
 	push hl
 	push de
 	push bc
@@ -77,10 +77,10 @@ LoadFlyMonColor:
 	ld [wCurPartySpecies], a
 	ld a, MON_SHINY
 	call GetPartyParamLocationAndValue
-	call GetMenuMonIconPalette
-	jr ProcessMenuMonIconColor
+	call GetMonIconPalette
+	jr _SetMonColor
 
-LoadPartyMenuMonMiniColors:
+SetPartyMenuMonMiniColors:
 	push hl
 	push de
 	push bc
@@ -141,8 +141,9 @@ GetOverworldMonIconPalette::
 	ld hl, wCurIconShiny
 	jr _GetMonIconPalette
 
-GetMenuMonIconPalette:
+GetMonIconPalette:
 	ld a, [wCurPartySpecies]
+	; fallthrough
 _GetMonIconPalette:
 	; c = species
 	ld c, a
@@ -172,7 +173,7 @@ _GetMonIconPalette:
 	ret
 
 LoadPartyMenuMonMini:
-	call LoadPartyMenuMonMiniColors
+	call SetPartyMenuMonMiniColors
 	push hl
 	push de
 	push bc
@@ -206,26 +207,24 @@ LoadNamingScreenMonMini:
 	push de
 	push bc
 
-	depixel 4, 4, 4, 0
-	push de
-
 	ld a, MON_FORM ; aka MON_IS_EGG
 	call GetPartyParamLocationAndValue
-	jr InitScreenMonMini ; TODO: load correct colors and use index 0
+
+	depixel 4, 4, 4, 0
+	jr _LoadMonMini
 
 LoadMoveMenuMonMini:
 	push hl
 	push de
 	push bc
 
-	depixel 3, 4, 2, 4
-	push de
-
 	ld hl, wTempMonForm
 	ld a, [hl]
-	; fallthrough
 
-InitScreenMonMini:
+	depixel 3, 4, 2, 4
+	; fallthrough
+_LoadMonMini:
+	push de
 	and SPECIESFORM_MASK
 	ld [wCurIconForm], a
 	bit MON_IS_EGG_F, [hl]
@@ -385,7 +384,8 @@ endr
 	ret
 
 LoadTradeAnimationMonMini:
-	call SetMenuMonIconColor ; TODO: use real varied mon color
+; TODO: use real varied mon color
+	call SetMenuMonIconColor
 	ld a, [wTempIconSpecies]
 	ld [wCurIcon], a
 	ld a, $62

@@ -1947,7 +1947,7 @@ TownMapFlips:
 TownMapMon:
 ; Draw the FlyMon icon at town map location in
 
-	farcall LoadFlyMonColor
+	farcall SetFlyMonColor
 ; Get FlyMon icon
 	ld e, 8 ; starting tile in VRAM
 	farcall FlyFunction_GetMonIcon
