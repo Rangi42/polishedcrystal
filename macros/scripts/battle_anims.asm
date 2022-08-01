@@ -164,9 +164,15 @@ MACRO anim_updateactorpic
 	db anim_updateactorpic_command
 ENDM
 
-	const_skip ; e9
+	const anim_battlergfx_1row_command ; e9
+MACRO anim_battlergfx_1row
+	db anim_battlergfx_1row_command
+ENDM
 
-	const_skip ; ea
+	const anim_battlergfx_2row_command ; ea
+MACRO anim_battlergfx_2row
+	db anim_battlergfx_2row_command
+ENDM
 
 	const_skip ; eb
 

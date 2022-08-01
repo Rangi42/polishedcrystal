@@ -1489,7 +1489,7 @@ _FlyMap:
 	call ClearSpriteAnims
 	call LoadTownMapGFX
 	call FlyMap
-	ld a, CGB_POKEGEAR_PALS
+	ld a, CGB_FLY_MAP
 	call GetCGBLayout
 	call SetPalettes
 .loop
@@ -1947,7 +1947,7 @@ TownMapFlips:
 TownMapMon:
 ; Draw the FlyMon icon at town map location in
 
-	farcall LoadFlyMonColor
+	farcall SetFlyMonColor
 ; Get FlyMon icon
 	ld e, 8 ; starting tile in VRAM
 	farcall FlyFunction_GetMonIcon

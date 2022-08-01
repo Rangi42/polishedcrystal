@@ -96,7 +96,7 @@ rept NUM_MOVES - 1
 	ld [hli], a
 endr
 	ld [hl], a
-	ld [wBuffer1], a
+	ld [wEvolutionOldSpecies], a
 	; c = species
 	ld a, [wCurSpecies]
 	ld c, a
@@ -613,7 +613,7 @@ RetrieveBreedmon:
 	ld d, h
 	ld e, l
 	ld a, $1
-	ld [wBuffer1], a
+	ld [wEvolutionOldSpecies], a
 	ld a, [wCurSpecies]
 	ld c, a
 	ld a, [wCurForm]

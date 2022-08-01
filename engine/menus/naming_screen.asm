@@ -43,7 +43,7 @@ NamingScreen:
 
 .SetUpNamingScreen:
 	call ClearBGPalettes
-	ld a, CGB_DIPLOMA
+	ld a, CGB_NAMING_SCREEN
 	call GetCGBLayout
 	call DisableLCD
 	call LoadNamingScreenGFX
@@ -58,7 +58,6 @@ NamingScreen:
 
 .GetNamingScreenSetup:
 	ld a, [wNamingScreenType]
-	and 7
 	call StackJumpTable
 
 .Jumptable:

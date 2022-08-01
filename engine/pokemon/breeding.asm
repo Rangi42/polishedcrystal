@@ -494,7 +494,7 @@ InitEggMoves:
 	; Default level 1 moves
 	ld de, wTempMonMoves
 	xor a
-	ld [wBuffer1], a
+	ld [wEvolutionOldSpecies], a
 	; c = species
 	ld a, [wTempMonSpecies]
 	ld c, a

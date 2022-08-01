@@ -1,3 +1,13 @@
+DiplomaPalette:
+if !DEF(MONOCHROME)
+	RGB 31, 31, 31
+	RGB 30, 22, 17
+	RGB 16, 14, 19
+	RGB 00, 00, 00
+else
+	MONOCHROME_RGB_FOUR
+endc
+
 BattleObjectPals:
 INCLUDE "gfx/battle_anims/battle_anims.pal"
 
@@ -5,6 +15,9 @@ PartyMenuBGPals:
 INCLUDE "gfx/stats/party_menu_bg.pal"
 HPBarPals:
 INCLUDE "gfx/stats/hp_bars.pal"
+
+PartyMenuOBPals:
+INCLUDE "gfx/stats/party_menu_ob.pal"
 
 HPBarInteriorPals:
 INCLUDE "gfx/battle/hp_bar.pal"
@@ -87,7 +100,6 @@ INCLUDE "gfx/trainer_card/trainer_card.pal"
 
 DiplomaPals:
 INCLUDE "gfx/diploma/diploma.pal"
-PartyMenuOBPals:
 PokegearOBPals:
 INCLUDE "gfx/icons/icons.pal"
 

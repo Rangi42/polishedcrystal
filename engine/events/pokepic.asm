@@ -3,6 +3,7 @@ Pokepic::
 	call CopyMenuHeader
 	call MenuBox
 	call UpdateSprites
+	ld de, wBGPals1 palette PAL_BG_TEXT + 2
 	ld a, [wCurForm]
 	cp -1
 	jr z, .partymon

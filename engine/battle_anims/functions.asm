@@ -35,7 +35,7 @@ DoBattleAnimFrame:
 	dw BattleAnimFunction_1B ; 1b
 	dw BattleAnimFunction_1C ; 1c
 	dw BattleAnimFunction_1D ; 1d
-	dw BattleAnimFunction_1E ; 1e
+	dw BattleAnimFunction_MoveUp ; 1e
 	dw BattleAnimFunction_1F ; 1f
 	dw BattleAnimFunction_LeechSeed ; 20
 	dw BattleAnimFunction_21 ; 21
@@ -89,6 +89,7 @@ DoBattleAnimFrame:
 	dw BattleAnimFunction_PowerGem
 	dw BattleAnimFunction_Moon
 	dw BattleAnimFunction_PokeBall_BG
+	dw BattleAnimFunction_RadialMoveOut
 
 BattleAnim_AnonJumptable:
 	ld hl, BATTLEANIMSTRUCT_JUMPTABLE_INDEX
@@ -2087,16 +2088,18 @@ Functioncdc75:
 	ld [hl], a
 	jmp BattleAnim_IncAnonJumptableIndex
 
-BattleAnimFunction_1E:
+BattleAnimFunction_MoveUp:
+; Moves object up for 41 frames
+; Obj Param: Movement speed
 	ld hl, BATTLEANIMSTRUCT_YOFFSET
 	add hl, bc
 	ld a, [hl]
 	and a
-	jr z, .asm_cdcb6
+	jr z, .move
 	cp $d8
 	jmp c, DeinitBattleAnimation
 
-.asm_cdcb6
+.move
 	ld hl, BATTLEANIMSTRUCT_PARAM
 	add hl, bc
 	ld d, [hl]
@@ -3938,4 +3941,50 @@ Functionce70a:
 	dec [hl]
 	dec e
 	jr nz, .asm_ce719
+	ret
+
+BattleAnimFunction_RadialMoveOut:
+	call BattleAnim_AnonJumptable
+
+	dw .initialize
+	dw .step
+
+.initialize
+	ld hl, BATTLEANIMSTRUCT_VAR2
+	add hl, bc
+	xor a
+	ld [hld], a
+	ld [hl], a ; initial position = 0
+	call BattleAnim_IncAnonJumptableIndex
+.step
+	ld hl, BATTLEANIMSTRUCT_VAR1
+	add hl, bc
+	push hl
+	ld a, [hli]
+	ld e, [hl]
+	ld d, a
+	ld hl, 6.0 >> 8 ; speed
+	add hl, de
+	ld a, h
+	ld e, l
+	pop hl
+	ld [hli], a
+	ld [hl], e
+	cp 80 ; final position
+	jp nc, DeinitBattleAnimation
+	ld hl, BATTLEANIMSTRUCT_PARAM
+	add hl, bc
+	ld e, [hl]
+	push de
+	ld a, e
+	call Sine
+	ld hl, BATTLEANIMSTRUCT_YOFFSET
+	add hl, bc
+	ld [hl], a
+	pop de
+	ld a, e
+	call Cosine
+	ld hl, BATTLEANIMSTRUCT_XOFFSET
+	add hl, bc
+	ld [hl], a
 	ret
