@@ -578,7 +578,7 @@ MagicGuardDescription:
 	done
 
 NoGuardDescription:
-	text  "Insures attacks by"
+	text  "Ensures attacks by"
 	next1 "or against it hit."
 	done
 
