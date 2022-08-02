@@ -315,7 +315,10 @@ Text_CantLinkToThePast:
 
 Text_OldVersionDetected:
 	text "You are connected"
-	line "to an old version."
+	line "to an old"
+
+	para "version of"
+	line "polished crystal."
 	prompt
 
 Text_WrongGameID:
@@ -325,8 +328,14 @@ Text_WrongGameID:
 	prompt
 
 Text_WrongVersion:
-	text "Your Game version"
-	line "does not match."
+	text "Your game versions"
+	line "do not match."
+
+	para "In order to play"
+	line "Link Colosseum"
+
+	para "Your game versions"
+	line "must match."
 	prompt
 
 Text_WrongMinVersion:
@@ -335,7 +344,7 @@ Text_WrongMinVersion:
 	cont "version"
 
 	para "requirement for"
-	line "the other game"
+	line "the other game."
 	prompt
 
 Text_OtherPlayerWrongMinVersion:
@@ -350,6 +359,9 @@ Text_OtherPlayerWrongMinVersion:
 Text_WrongOptions:
 	text "Your Game Options"
 	line "are not compatible"
+
+	para "with the other"
+	line "player."
 	prompt
 
 Text_IncompatibleRooms:
