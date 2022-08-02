@@ -367,7 +367,7 @@ InitialOptions_NuzlockeMode:
 
 InitialOptions_Done:
 	ld hl, wInitialOptions2
-	res RESET_INIT_OPTS, [hl]
+	ld [hl], EVS_OPT_CLASSIC ; resets initial options and sets EVs to "classic"
 	ldh a, [hJoyPressed]
 	and A_BUTTON
 	jr nz, .Exit
