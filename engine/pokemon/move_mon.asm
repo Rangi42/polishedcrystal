@@ -1038,6 +1038,9 @@ CalcPkmnStatC:
 	ld a, d
 	and a
 	jr z, .no_evs
+	ld a, [wInitialOptions2]
+	and EV_OPTMASK
+	jr z, .no_evs
 	add hl, bc
 	ld a, [hl]
 	ld b, a
