@@ -740,15 +740,23 @@ BillsPC_HideCursorAndMode:
 	call BillsPC_HideCursor
 	; fallthrough
 BillsPC_HideModeIcon:
-	ld hl, wVirtualOAMSprite09
+	call BillsPC_CheckBagDisplay
+	ld hl, wVirtualOAMSprite05
+	jr z, .got_mode_area
+	ld hl, wVirtualOAMSprite12
+.got_mode_area
 	ld bc, 20
 	xor a
 	rst ByteFill
 	ret
 
 BillsPC_HideCursor:
+	call BillsPC_CheckBagDisplay
 	ld hl, wVirtualOAM
-	ld bc, 36
+	ld bc, 48
+	jr nz, .got_bytecount
+	ld c, 20
+.got_bytecount
 	xor a
 	rst ByteFill
 	ret
