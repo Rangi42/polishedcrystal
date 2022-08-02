@@ -606,7 +606,8 @@ AnimSeq_PcCursor:
 	farcall BillsPC_CheckBagDisplay
 	ld a, SPRITE_ANIM_FRAMESET_PC_CURSOR_ITEM
 	jr z, .got_frameset
-	ld a, SPRITE_ANIM_FRAMESET_PC_CURSOR
+	assert SPRITE_ANIM_FRAMESET_PC_CURSOR == SPRITE_ANIM_FRAMESET_PC_CURSOR_ITEM - 1
+	dec a
 .got_frameset
 	ld hl, SPRITEANIMSTRUCT_FRAMESET_ID
 	add hl, bc
