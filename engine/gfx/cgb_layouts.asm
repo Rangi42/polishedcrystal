@@ -938,6 +938,9 @@ BillsPC_PreviewTheme:
 	call LoadOnePalette
 	ld hl, .PackPal
 	ld de, wOBPals1 palette 4
+	call LoadOnePalette
+	ld hl, .WhitePal
+	ld de, wOBPals1 palette 6
 	jmp LoadOnePalette
 
 .apply_pals
@@ -968,6 +971,19 @@ else
 	RGB_MONOCHROME_WHITE
 	RGB_MONOCHROME_DARK
 	RGB_MONOCHROME_BLACK
+endc
+
+.WhitePal:
+if !DEF(MONOCHROME)
+	RGB 31, 31, 31
+	RGB 31, 31, 31
+	RGB 31, 31, 31
+	RGB 31, 31, 31
+else
+	RGB_MONOCHROME_WHITE
+	RGB_MONOCHROME_WHITE
+	RGB_MONOCHROME_WHITE
+	RGB_MONOCHROME_WHITE
 endc
 
 _CGB_UnownPuzzle:
