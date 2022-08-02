@@ -59,12 +59,14 @@ SetInitialOptions:
 
 ;	call ClearBGPalettes
 
+.rerender
+	xor a
+	ldh [hBGMapMode], a
 	hlcoord 0, 0
 	ld a, " "
 	ld bc, SCREEN_WIDTH * SCREEN_HEIGHT
 	rst ByteFill
 
-.rerender
 	hlcoord 0, 0
 	ld a, $01 ; left
 	ld bc, SCREEN_WIDTH - 2
