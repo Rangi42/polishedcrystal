@@ -602,6 +602,15 @@ AnimSeq_MaxStatSparkle:
 	ret
 
 AnimSeq_PcCursor:
+	; Switch frameset ID depending on item mode setting.
+	farcall BillsPC_CheckBagDisplay
+	ld a, SPRITE_ANIM_FRAMESET_PC_CURSOR_ITEM
+	jr z, .got_frameset
+	ld a, SPRITE_ANIM_FRAMESET_PC_CURSOR
+.got_frameset
+	ld hl, SPRITEANIMSTRUCT_FRAMESET_ID
+	add hl, bc
+	ld [hl], a
 	push de
 	push bc
 	farcall BillsPC_GetCursorSlot
