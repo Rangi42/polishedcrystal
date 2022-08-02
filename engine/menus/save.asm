@@ -472,7 +472,7 @@ TryLoadSaveData:
 	ld [wOptions3], a
 	jmp PanicResetClock
 
-INCLUDE "data/default_options.asm"
+INCLUDE "data/options/default_options.asm"
 
 CheckPrimarySaveFile:
 	ld a, BANK(sCheckValue1)

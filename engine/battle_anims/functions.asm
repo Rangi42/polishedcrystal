@@ -3971,7 +3971,7 @@ BattleAnimFunction_RadialMoveOut:
 	ld [hli], a
 	ld [hl], e
 	cp 80 ; final position
-	jp nc, DeinitBattleAnimation
+	jmp nc, DeinitBattleAnimation
 	ld hl, BATTLEANIMSTRUCT_PARAM
 	add hl, bc
 	ld e, [hl]

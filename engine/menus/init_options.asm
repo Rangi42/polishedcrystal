@@ -52,7 +52,10 @@ SetInitialOptions:
 	ld hl, hInMenu
 	ld a, [hl]
 	push af
-	ld [hl], $1
+	xor a
+	ld [wJumptableIndex], a
+	inc a
+	ld [hl], a
 
 ;	call ClearBGPalettes
 
@@ -61,6 +64,7 @@ SetInitialOptions:
 	ld bc, SCREEN_WIDTH * SCREEN_HEIGHT
 	rst ByteFill
 
+.rerender
 	hlcoord 0, 0
 	ld a, $01 ; left
 	ld bc, SCREEN_WIDTH - 2
@@ -91,6 +95,8 @@ SetInitialOptions:
 ;	call GetCGBLayout
 ;	call SetPalettes
 
+	ld a, [wJumptableIndex]
+	push af
 	xor a
 	ld [wJumptableIndex], a
 	ldh [hJoyPressed], a
@@ -105,24 +111,27 @@ SetInitialOptions:
 	inc [hl]
 	dec c
 	jr nz, .print_text_loop
-
-	xor a
+	pop af
 	ld [wJumptableIndex], a
-	inc a
+
+	ld a, $1
 	ldh [hBGMapMode], a
 	call ApplyTilemapInVBlank
 
 .joypad_loop
 	call JoyTextDelay
 	ldh a, [hJoyPressed]
+	bit SELECT_F, a
+	jr nz, .ShowDescription
 	and START | B_BUTTON
 	jr nz, .ExitOptions
 	call InitialOptionsControl
-	jr c, .dpad
+	jr c, .DPad
 	call GetInitialOptionPointer
 	jr c, .ExitOptions
+	; fallthrough
 
-.dpad
+.DPad:
 	call InitialOptions_UpdateCursorPosition
 	ld c, 3
 	call DelayFrames
@@ -137,6 +146,19 @@ SetInitialOptions:
 	pop af
 	ldh [hInMenu], a
 	ret
+
+.ShowDescription:
+	ld hl, InitialOptionDescriptions
+	ld a, [wJumptableIndex]
+	add a
+	ld d, 0
+	ld e, a
+	add hl, de
+	ld a, [hli]
+	ld h, [hl]
+	ld l, a
+	call PrintText
+	jmp .rerender
 
 .InitialOptionsText:
 	text_far _InitialOptionsText
@@ -175,12 +197,13 @@ INCBIN "gfx/new_game/init_bg.2bpp.lz"
 	next1 "            :"
 	next1 "IVs vary colors"
 	next1 "            :"
-	next1 "Perfect stats"
-	next1 "            :"
-	next1 "Traded <PK><MN> obey"
-	next1 "            :"
-	next1 "Nuzlocke mode"
-	next1 "            :"
+	; trailing spaces clear the textbox
+	next1 "Perfect stats    "
+	next1 "            :    "
+	next1 "Traded <PK><MN> obey  "
+	next1 "            :    "
+	next1 "Nuzlocke mode    "
+	next1 "            :    "
 	done
 
 GetInitialOptionPointer:
@@ -468,3 +491,5 @@ InitialOptions_UpdateCursorPosition:
 	inc hl
 	ld [hl], "▶"
 	ret
+
+INCLUDE "data/options/descriptions.asm"
