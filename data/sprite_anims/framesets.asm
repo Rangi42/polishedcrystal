@@ -52,6 +52,7 @@ SpriteAnimFrameData:
 	dw .Frameset_MaxStatSparkle
 	dw .Frameset_HyperTrainedStat
 	dw .Frameset_PcCursor
+	dw .Frameset_PcCursorItem
 	dw .Frameset_PcQuick
 	dw .Frameset_PcMode
 	dw .Frameset_PcMode2
@@ -345,6 +346,11 @@ SpriteAnimFrameData:
 
 .Frameset_PcCursor:
 	frame SPRITE_ANIM_OAMSET_PC_CURSOR, 32
+	dorestart
+
+.Frameset_PcCursorItem:
+	; Conditionally switched to when dealing with items
+	frame SPRITE_ANIM_OAMSET_PC_CURSOR_ITEM, 32
 	dorestart
 
 .Frameset_PcQuick:
