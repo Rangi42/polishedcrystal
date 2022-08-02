@@ -2227,7 +2227,6 @@ PerformLinkChecks:
 	ld [hl], a
 	ld de, wLinkReceivedPolishedMiscBuffer
 	ld bc, SERIAL_POLISHED_MAX_PREAMBLE_LENGTH + 5
-	;vc_hook ExchangeBytes
 	call Serial_ExchangeBytes
 
 	; Save Version and Room Bytes
@@ -2268,7 +2267,6 @@ PerformLinkChecks:
 	ld [hl], a
 	ld de, wLinkReceivedPolishedMiscBuffer
 	ld bc, SERIAL_POLISHED_MAX_PREAMBLE_LENGTH + 2
-	;vc_hook ExchangeBytes
 	call Serial_ExchangeBytes
 	xor a
 	ldh [rIF], a
