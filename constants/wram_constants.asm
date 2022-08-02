@@ -93,7 +93,14 @@ DEF FONT_MASK EQU %00000111
 DEF ABILITIES_OPTMASK EQU 1 << ABILITIES_OPT
 
 ; wInitialOptions2::
+	const_def
+	const EVS_OPT_DISABLED
+	const EVS_OPT_CLASSIC
+	const EVS_OPT_MODERN ; Not yet implemented
+
+DEF EV_OPTMASK EQU %11
 DEF RESET_INIT_OPTS EQU 7
+
 
 ; wForgettingMove::
 	const_def 6

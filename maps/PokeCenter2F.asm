@@ -112,7 +112,7 @@ PokeCenter2FLinkRecordSign:
 LinkReceptionistScript_Trade:
 if !DEF(DEBUG)
 	checkevent EVENT_GAVE_MYSTERY_EGG_TO_ELM
-	iffalse Script_TradeCenterClosed
+	iffalsefwd Script_TradeCenterClosed
 endc
 	opentext
 	writetext Text_TradeReceptionistIntro
@@ -180,7 +180,7 @@ Script_TradeCenterClosed:
 LinkReceptionistScript_Battle:
 if !DEF(DEBUG)
 	checkevent EVENT_GAVE_MYSTERY_EGG_TO_ELM
-	iftrue .BattleRoomClosed
+	iftruefwd .BattleRoomClosed
 endc
 	opentext
 	writetext Text_BattleReceptionistIntro

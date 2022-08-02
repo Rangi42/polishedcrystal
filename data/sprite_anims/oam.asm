@@ -664,10 +664,10 @@ SpriteAnimOAMData:
 	dsprite  2,  2,  1,  0, $0b, $3 | VRAM_BANK_1
 
 	; Mini shadow
-	dsprite  1,  2,  0,  0, $0c, $3 | VRAM_BANK_1
-	dsprite  1,  2,  1,  0, $0d, $3 | VRAM_BANK_1
-	dsprite  2,  2,  0,  0, $0e, $3 | VRAM_BANK_1
-	dsprite  2,  2,  1,  0, $0f, $3 | VRAM_BANK_1
+	dsprite  1,  2,  0,  0, $0c, $6 | VRAM_BANK_1
+	dsprite  1,  2,  1,  0, $0d, $6 | VRAM_BANK_1
+	dsprite  2,  2,  0,  0, $0e, $6 | VRAM_BANK_1
+	dsprite  2,  2,  1,  0, $0f, $6 | VRAM_BANK_1
 
 .OAMData_PcCursorItem:
 	db 5
@@ -678,7 +678,7 @@ SpriteAnimOAMData:
 	dsprite  1,  0,  1,  0, $05, $2 | VRAM_BANK_1 | X_FLIP
 
 	; Item
-	dsprite  2,  0,  0,  4, $10, $0 | VRAM_BANK_1
+	dsprite  2,  0,  0,  4, $08, $0 | VRAM_BANK_1
 
 .OAMData_PcQuick:
 	db 8
@@ -689,10 +689,10 @@ SpriteAnimOAMData:
 	dsprite  1,  0,  1,  0, $17, $5 | VRAM_BANK_1
 
 	; Mini shadow if applicable
-	dsprite  0,  0,  0,  0, $18, $5 | VRAM_BANK_1
-	dsprite  0,  0,  1,  0, $19, $5 | VRAM_BANK_1
-	dsprite  1,  0,  0,  0, $1a, $5 | VRAM_BANK_1
-	dsprite  1,  0,  1,  0, $1b, $5 | VRAM_BANK_1
+	dsprite  0,  0,  0,  0, $18, $6 | VRAM_BANK_1
+	dsprite  0,  0,  1,  0, $19, $6 | VRAM_BANK_1
+	dsprite  1,  0,  0,  0, $1a, $6 | VRAM_BANK_1
+	dsprite  1,  0,  1,  0, $1b, $6 | VRAM_BANK_1
 
 .OAMData_PcMode:
 	db 3

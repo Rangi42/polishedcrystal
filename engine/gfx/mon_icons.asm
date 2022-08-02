@@ -452,6 +452,33 @@ GetStorageMini:
 	pop hl
 	ret
 
+GetStorageMask:
+	push hl
+	ld bc, 4 tiles
+	add hl, bc
+	push hl
+	ld a, [wCurIconSpecies]
+	ld c, a
+	ld a, [wCurIconForm]
+	ld b, a
+	call GetCosmeticSpeciesAndFormIndex
+	ld hl, MaskPointers + 3 ; skip NullMiniMask
+	add hl, bc
+	add hl, bc
+	add hl, bc
+	ld a, [hli]
+	ld b, a
+	ld a, [hli]
+	ld h, [hl]
+	ld l, a
+	call FarDecompressWRA6InB
+	pop hl
+	ld c, 4
+	ld de, wDecompressScratch
+	farcall BillsPC_SafeRequest1bppInWRA6
+	pop hl
+	ret
+
 FreezeMonIcons:
 	ld hl, wSpriteAnimationStructs
 	ld e, PARTY_LENGTH

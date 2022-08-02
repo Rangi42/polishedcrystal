@@ -476,6 +476,16 @@ else
 	MONOCHROME_RGB_TWO
 endc
 
+BillsPC_SafeRequest1bppInWRA6::
+	ldh a, [hROMBank]
+	ld b, a
+	call RunFunctionInWRA6
+.Function:
+	ldh a, [rLY]
+	cp $40
+	jmp c, Get1bpp
+	call DelayFrame
+	jr .Function
 
 BillsPC_SafeRequest2bppInWRA6::
 	ldh a, [hROMBank]
@@ -730,15 +740,23 @@ BillsPC_HideCursorAndMode:
 	call BillsPC_HideCursor
 	; fallthrough
 BillsPC_HideModeIcon:
-	ld hl, wVirtualOAMSprite09
+	call BillsPC_CheckBagDisplay
+	ld hl, wVirtualOAMSprite05
+	jr z, .got_mode_area
+	ld hl, wVirtualOAMSprite12
+.got_mode_area
 	ld bc, 20
 	xor a
 	rst ByteFill
 	ret
 
 BillsPC_HideCursor:
+	call BillsPC_CheckBagDisplay
 	ld hl, wVirtualOAM
-	ld bc, 36
+	ld bc, 48
+	jr nz, .got_bytecount
+	ld c, 20
+.got_bytecount
 	xor a
 	rst ByteFill
 	ret
@@ -1591,6 +1609,10 @@ BillsPC_CursorPick2:
 
 BillsPC_SetIcon:
 ; Writes icon tiles to hl depending on species data in de. Assumes vbk1.
+; If b is -1, also write icon mask data.
+	ld a, b
+	inc a ; Will set zero if we're dealing with held/quick slot.
+	push af
 	ld a, [de]
 	inc de
 	ld [wCurIcon], a
@@ -1600,6 +1622,12 @@ BillsPC_SetIcon:
 	call BillsPC_SetPals
 	call DelayFrame
 	pop hl
+	pop af
+	jr nz, .mask_done
+
+	farcall GetStorageMask
+
+.mask_done
 	farjp GetStorageMini
 
 BillsPC_MoveIconData:
@@ -1637,7 +1665,7 @@ BillsPC_MoveIconData:
 	inc a
 	ld de, vTiles3 tile $20 ; Item for mon cursor is hovering
 	jr nz, .got_item_tile
-	ld de, vTiles3 tile $10 ; Item cursor is holding.
+	ld de, vTiles3 tile $08 ; Item cursor is holding.
 .got_item_tile
 	ld hl, vTiles3 tile $14 ; Quick tile.
 	push bc
@@ -1651,7 +1679,7 @@ BillsPC_MoveIconData:
 	inc b
 	ld a, c
 	or b
-	ld hl, vTiles3 tile $10
+	ld hl, vTiles3 tile $08
 	ld a, 1
 	call z, BillsPC_BlankTiles
 	jr .done
@@ -1688,7 +1716,13 @@ BillsPC_MoveIconData:
 	ld [hli], a
 	ld a, 2
 	call .GetAddr
-	ld a, 1
+
+	; If we're blanking held or quick, blank 2x4 instead of 1x4 to include mask.
+	inc b
+	ld a, 2
+	jr z, .got_blanking_range
+	dec a
+.got_blanking_range
 	call BillsPC_BlankTiles
 
 .done
@@ -2332,7 +2366,7 @@ BillsPC_MoveItem:
 	ret
 
 BillsPC_LoadCursorItemIcon:
-	ld hl, vTiles3 tile $10
+	ld hl, vTiles3 tile $08
 	lb bc, BANK(HeldItemIcons), 1
 
 	ld a, [wBillsPC_CursorItem]
