@@ -462,8 +462,7 @@ GetStorageMask:
 	ld a, [wCurIconForm]
 	ld b, a
 	call GetCosmeticSpeciesAndFormIndex
-	inc bc
-	ld hl, MaskPointers
+	ld hl, MaskPointers + 3 ; skip NullMiniMask
 	add hl, bc
 	add hl, bc
 	add hl, bc
