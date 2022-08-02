@@ -198,4 +198,6 @@ SpriteHeaders:
 	overworld_sprite ElectricFenceRightSpriteGFX, STANDING_SPRITE, PAL_OW_TREE
 	overworld_sprite SailboatSpriteGFX, STANDING_SPRITE, PAL_OW_PURPLE
 	overworld_sprite IceBoulderSpriteGFX, STANDING_SPRITE, PAL_OW_ROCK
+	overworld_sprite BeachGirlSpriteGFX, WALKING_SPRITE, PAL_OW_GREEN
+	overworld_sprite BeachGuySpriteGFX, WALKING_SPRITE, PAL_OW_RED
 	assert_table_length NUM_OVERWORLD_SPRITES
