@@ -87,14 +87,14 @@ MACRO anim_incbgeffect
 	db \1 ; effect
 ENDM
 
-	const anim_enemyfeetobj_command ; d9
-MACRO anim_enemyfeetobj
-	db anim_enemyfeetobj_command
+	const anim_battlergfx_2row_command ; d9
+MACRO anim_battlergfx_2row
+	db anim_battlergfx_2row_command
 ENDM
 
-	const anim_playerheadobj_command ; da
-MACRO anim_playerheadobj
-	db anim_playerheadobj_command
+	const anim_battlergfx_1row_command ; da
+MACRO anim_battlergfx_1row
+	db anim_battlergfx_1row_command
 ENDM
 
 	const anim_checkpokeball_command ; db
