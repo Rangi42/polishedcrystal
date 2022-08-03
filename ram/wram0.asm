@@ -1336,7 +1336,7 @@ wOptions1::
 wSaveFileExists:: db
 
 wTextboxFrame::
-; bits 0-3: textbox frame 0-8
+; bits 0-4: textbox frame 1-20
 	db
 wTextboxFlags::
 ; bit 0: 1-frame text delay

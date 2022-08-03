@@ -1,3 +1,5 @@
+DEF NUM_OPTIONS EQU 7
+
 OptionsMenu:
 	ld hl, hInMenu
 	ld a, [hl]
@@ -48,7 +50,7 @@ OptionsMenu_LoadOptions:
 	xor a
 	ld [wJumptableIndex], a
 	ldh [hJoyPressed], a
-	ld c, $6 ; number of items on the menu minus 1 (for done)
+	ld c, NUM_OPTIONS - 1
 .print_text_loop ; this next will display the settings of each option when the menu is opened
 	push bc
 	xor a
@@ -132,7 +134,7 @@ GetOptionPointer:
 
 Options_TextSpeed:
 	ld a, [wOptions1]
-	and %11
+	and TEXT_DELAY_MASK
 	ld c, a
 	ldh a, [hJoyPressed]
 	dec c
@@ -144,10 +146,10 @@ Options_TextSpeed:
 	inc c
 .ok
 	ld a, c
-	and $3
+	and TEXT_DELAY_MASK
 	ld c, a
 	ld a, [wOptions1]
-	and $fc
+	and ~TEXT_DELAY_MASK
 	or c
 	ld [wOptions1], a
 
@@ -302,7 +304,7 @@ Options_Frame:
 .RightPressed:
 	ld a, [hl]
 	inc a
-	cp $9
+	cp NUM_FRAMES
 	jr nz, .Save
 	xor a
 	jr .Save
@@ -310,17 +312,22 @@ Options_Frame:
 .LeftPressed:
 	ld a, [hl]
 	dec a
-	cp $ff
+	cp -1
 	jr nz, .Save
-	ld a, $8
+	ld a, NUM_FRAMES - 1
 
 .Save:
 	ld [hl], a
 UpdateFrame:
 	ld a, [wTextboxFrame]
-	hlcoord 16, 11 ; where on the screen the number is drawn
-	add "1"
-	ld [hl], a
+	inc a
+	ld e, a
+	ld d, 0
+	hlcoord 17, 11
+	ld [hl], " "
+	dec hl
+	lb bc, PRINTNUM_LEFTALIGN, 2
+	call PrintNumFromReg
 	call LoadFontsExtra
 	and a
 	ret
@@ -431,7 +438,7 @@ Options_TextAutoscroll:
 	and AUTOSCROLL_MASK
 	ld c, a
 	ld a, [wOptions1]
-	and $f3
+	and ~AUTOSCROLL_MASK
 	or c
 	ld [wOptions1], a
 	ld a, c
@@ -535,7 +542,7 @@ Options_Typeface:
 	pop bc
 	pop hl
 	ld a, [hl]
-	and $ff - FONT_MASK
+	and ~FONT_MASK
 	or c
 	ld [hl], a
 	call .NonePressed
@@ -634,7 +641,7 @@ Options_NextPrevious:
 	hlcoord 2, 2
 	rst PlaceString
 	call OptionsMenu_LoadOptions
-	ld a, $6
+	ld a, NUM_OPTIONS - 1
 	ld [wJumptableIndex], a
 .NonePressed:
 	and a
@@ -663,7 +670,7 @@ OptionsControl:
 
 .DownPressed:
 	ld a, [hl] ; load the cursor position to a
-	cp $7 ; maximum number of items in option menu
+	cp NUM_OPTIONS
 	jr nz, .Increase
 	ld [hl], -1
 .Increase:
@@ -675,7 +682,7 @@ OptionsControl:
 	ld a, [hl]
 	and a
 	jr nz, .Decrease
-	ld [hl], $8 ; number of option items + 1
+	ld [hl], NUM_OPTIONS + 1
 .Decrease:
 	dec [hl]
 	scf
@@ -684,7 +691,7 @@ OptionsControl:
 Options_UpdateCursorPosition:
 	hlcoord 1, 1
 	ld de, SCREEN_WIDTH
-	ld c, $10
+	ld c, SCREEN_HEIGHT - 2
 .loop
 	ld [hl], " "
 	add hl, de

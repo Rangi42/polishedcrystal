@@ -43,15 +43,26 @@ DEF TURNING_SPEED_MASK EQU %10000
 
 ; wTextboxFrame::
 	const_def
-	const FRAME_1 ; 0
-	const FRAME_2 ; 1
-	const FRAME_3 ; 2
-	const FRAME_4 ; 3
-	const FRAME_5 ; 4
-	const FRAME_6 ; 5
-	const FRAME_7 ; 6
-	const FRAME_8 ; 7
-	const FRAME_9 ; 8
+	const FRAME_1  ;  0
+	const FRAME_2  ;  1
+	const FRAME_3  ;  2
+	const FRAME_4  ;  3
+	const FRAME_5  ;  4
+	const FRAME_6  ;  5
+	const FRAME_7  ;  6
+	const FRAME_8  ;  7
+	const FRAME_9  ;  8
+	const FRAME_10 ;  9
+	const FRAME_11 ;  a
+	const FRAME_12 ;  b
+	const FRAME_13 ;  c
+	const FRAME_14 ;  d
+	const FRAME_15 ;  e
+	const FRAME_16 ;  f
+	const FRAME_17 ; 10
+	const FRAME_18 ; 11
+	const FRAME_19 ; 12
+	const FRAME_20 ; 13
 DEF NUM_FRAMES EQU const_value
 
 ; wTextboxFlags::
@@ -78,6 +89,7 @@ DEF FONT_MASK EQU %00000111
 	const CHICAGO_FONT ; %101
 	const MICR_FONT    ; %110
 	const UNOWN_FONT   ; %111
+DEF NUM_FONTS EQU const_value
 
 ; wInitialOptions::
 	const_def

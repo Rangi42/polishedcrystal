@@ -43,6 +43,7 @@ LoadStandardFontPointer::
 	ret
 
 .FontPointers:
+	table_width 2, LoadStandardFontPointer.FontPointers
 	dw FontNormal
 	dw FontNarrow
 	dw FontBold
@@ -51,6 +52,7 @@ LoadStandardFontPointer::
 	dw FontChicago
 	dw FontMICR
 	dw FontUnown
+	assert_table_length NUM_FONTS
 
 _LoadFontsBattleExtra::
 	ld hl, BattleExtrasGFX
