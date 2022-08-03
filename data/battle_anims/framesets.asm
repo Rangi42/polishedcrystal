@@ -187,6 +187,7 @@ BattleAnimFrameData:
 	dw .Frameset_b8 ; b8
 	dw .Frameset_b9 ; b9
 	dw .Frameset_StoneEdge ; ba
+	dw .Frameset_BrickBreak ; bb
 	assert_table_length NUM_BATTLEANIMFRAMESETS
 
 ; OAM index (see battle/objects/oam.asm), flip flags / duration
@@ -1278,3 +1279,7 @@ BattleAnimFrameData:
 .Frameset_StoneEdge:
 	frame BATTLEANIMOAMSET_STONE_EDGE,  50
 	delanim
+
+.Frameset_BrickBreak:
+	frame BATTLEANIMOAMSET_BRICK_BREAK, 8
+	endanim
