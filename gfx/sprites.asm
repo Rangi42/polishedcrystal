@@ -230,3 +230,5 @@ SECTION "Overworld Sprites 10", ROMX
 
 SailboatSpriteGFX::            INCBIN "gfx/sprites/sailboat.2bpp.lz"
 IceBoulderSpriteGFX::          INCBIN "gfx/sprites/ice_boulder.2bpp.lz"
+BeachGuySpriteGFX:             INCBIN "gfx/sprites/beach_guy.2bpp.lz"
+BeachGirlSpriteGFX:            INCBIN "gfx/sprites/beach_girl.2bpp.lz"
