@@ -257,6 +257,7 @@ DEF BATTLEANIM_BASE_TILE EQU 7 * 7  ; Maximum size of a pokemon picture
 	const ANIM_OBJ_POKE_BALL_BG
 	const ANIM_OBJ_FLARE_BLITZ
 	const ANIM_OBJ_LAVA_PLUME
+	const ANIM_OBJ_BRAVE_BIRD
 DEF NUM_ANIM_OBJS EQU const_value
 
 ; DoBattleAnimFrame arguments (see engine/battle_anims/functions.asm)
@@ -341,6 +342,7 @@ DEF NUM_ANIM_OBJS EQU const_value
 	const BATTLEANIMFUNC_ANCIENT_POWER
 	const BATTLEANIMFUNC_ROCK_SMASH
 	const BATTLEANIMFUNC_COTTON
+	const BATTLEANIMFUNC_50 ; ???
 	const BATTLEANIMFUNC_STRAIGHT_DESCENT
 	const BATTLEANIMFUNC_POWER_GEM
 	const BATTLEANIMFUNC_MOON
