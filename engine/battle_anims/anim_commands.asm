@@ -269,8 +269,8 @@ BattleAnimCommands::
 	dw BattleAnimCmd_IncObj
 	dw BattleAnimCmd_SetObj
 	dw BattleAnimCmd_IncBGEffect
-	dw BattleAnimCmd_EnemyFeetObj
-	dw BattleAnimCmd_PlayerHeadObj
+	dw BattleAnimCmd_BattlerGFX_1Row
+	dw BattleAnimCmd_BattlerGFX_2Row
 	dw BattleAnimCmd_CheckPokeball
 	dw BattleAnimCmd_Transform
 	dw BattleAnimCmd_RaiseSub
@@ -610,7 +610,7 @@ endr
 	ld de, vTiles0 tile BATTLEANIM_BASE_TILE
 	add hl, de
 	ld a, [wBattleAnimByte]
-	call LoadBattleAnimObj
+	call LoadBattleAnimGFX
 	ld a, [wBattleAnimTemp0]
 	add c
 	ld [wBattleAnimTemp0], a
@@ -696,7 +696,7 @@ BattleAnimCmd_SetObj:
 	ld [hl], a
 	ret
 
-BattleAnimCmd_EnemyFeetObj:
+BattleAnimCmd_BattlerGFX_1Row:
 	ld hl, wBattleAnimTileDict
 .loop
 	ld a, [hl]
@@ -731,7 +731,7 @@ BattleAnimCmd_EnemyFeetObj:
 	push af
 	push hl
 	push de
-	lb bc, BANK(BattleAnimCmd_EnemyFeetObj), 1
+	lb bc, BANK(BattleAnimCmd_BattlerGFX_1Row), 1
 	call Request2bpp
 	pop de
 	ld a, [wBattleAnimTemp0]
@@ -748,7 +748,7 @@ BattleAnimCmd_EnemyFeetObj:
 	jr nz, .LoadFootprint
 	ret
 
-BattleAnimCmd_PlayerHeadObj:
+BattleAnimCmd_BattlerGFX_2Row:
 	ld hl, wBattleAnimTileDict
 .loop
 	ld a, [hl]
@@ -783,7 +783,7 @@ BattleAnimCmd_PlayerHeadObj:
 	push af
 	push hl
 	push de
-	lb bc, BANK(BattleAnimCmd_EnemyFeetObj), 2
+	lb bc, BANK(BattleAnimCmd_BattlerGFX_2Row), 2
 	call Request2bpp
 	pop de
 	ld a, [wBattleAnimTemp0]
