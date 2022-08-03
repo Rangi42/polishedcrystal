@@ -2279,18 +2279,16 @@ PerformLinkChecks:
 
 	; Perform Options Check
 	call .SkipPreambleBytes
-	and LINK_OPTMASK
 	ld b, a
 	ld a, [wInitialOptions]
+	xor b
 	and LINK_OPTMASK
-	cp b
 	jr nz, .WrongOptions
 	ld a, [de]
-	and %00000011 ; Future EVs Opt
 	ld b, a
 	ld a, [wInitialOptions2]
-	and %00000011
-	cp b
+	xor b
+	and EV_OPTMASK
 	jr nz, .WrongOptions
 
 	; Process Link Opponent Gender
@@ -2301,37 +2299,37 @@ PerformLinkChecks:
 	ldh [hVBlank], a
 	; fallthrough
 .Success
-	inc a
+	inc a ; LINK_ERR_SUCCESS
 	jr .return_result_restore_interrupts
 
 .OldVersionDetected
-	xor a
+	xor a ; LINK_ERR_OLD_PC_DETECT
 	; fallthrough
 .return_result:
 	ldh [hScriptVar], a
 	ret
 
 .WrongGameID
-	ld a, 2
+	ld a, LINK_ERR_MISMATCH_GAME_ID
 	jr .return_result_restore_interrupts
 
 .WrongVersion
-	ld a, 3
+	ld a, LINK_ERR_MISMATCH_VERSION
 	jr .return_result_restore_interrupts
 
 .WrongMinVersion
 	cp 3
-	ld a, 4
+	ld a, LINK_ERR_VERSION_TOO_LOW
 	jr z, .return_result_restore_interrupts
-	inc a ; 5
+	inc a ; LINK_ERR_OTHER_VERSION_TOO_LOW
 	jr .return_result_restore_interrupts
 
 .WrongOptions
-	ld a, 6
+	ld a, LINK_ERR_MISMATCH_GAME_OPTIONS
 	jr .return_result_restore_interrupts
 
 .WrongRoom
-	ld a, 7
+	ld a, LINK_ERR_INCOMPATIBLE_ROOMS
 	; fallthrough
 .return_result_restore_interrupts
 	ldh [hScriptVar], a

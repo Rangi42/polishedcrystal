@@ -56,3 +56,14 @@ endc
 DEF LINK_VERSION EQU 1
 ; This is the minimum Link Version allowed for Trading
 DEF LINK_MIN_TRADE_VERSION EQU 1
+
+; PerformLinkChecks: Error Codes
+	const_def
+	const LINK_ERR_OLD_PC_DETECT         ; 0
+	const LINK_ERR_SUCCESS               ; 1
+	const LINK_ERR_MISMATCH_GAME_ID      ; 2
+	const LINK_ERR_MISMATCH_VERSION      ; 3
+	const LINK_ERR_VERSION_TOO_LOW       ; 4
+	const LINK_ERR_OTHER_VERSION_TOO_LOW ; 5
+	const LINK_ERR_MISMATCH_GAME_OPTIONS ; 6
+	const LINK_ERR_INCOMPATIBLE_ROOMS    ; 7

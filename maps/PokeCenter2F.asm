@@ -117,13 +117,13 @@ LinkReceptionistScript_DoTradeOrBattle:
 	readmem wOtherPlayerLinkMode
 	iffalsefwd .LinkedToFirstGen
 	special PerformLinkChecks
-	iffalsefwd .OldVersionDetected
-	ifequalfwd 2, .WrongGameID
-	ifequalfwd 3, .WrongVersion
-	ifequalfwd 4, .WrongMinVersion
-	ifequalfwd 5, .OtherPlayerWrongMinVersion
-	ifequalfwd 6, .WrongOptions
-	ifequalfwd 7, .IncompatibleRooms
+	iffalsefwd .OldVersionDetected ; LINK_ERR_OLD_PC_DETECT
+	ifequalfwd LINK_ERR_MISMATCH_GAME_ID, .WrongGameID
+	ifequalfwd LINK_ERR_MISMATCH_VERSION, .WrongVersion
+	ifequalfwd LINK_ERR_VERSION_TOO_LOW, .WrongMinVersion
+	ifequalfwd LINK_ERR_OTHER_VERSION_TOO_LOW, .OtherPlayerWrongMinVersion
+	ifequalfwd LINK_ERR_MISMATCH_GAME_OPTIONS, .WrongOptions
+	ifequalfwd LINK_ERR_INCOMPATIBLE_ROOMS, .IncompatibleRooms
 	writetext Text_PleaseComeIn2
 	waitbutton
 	closetext
