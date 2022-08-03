@@ -241,6 +241,7 @@ MagnetTunnelInsideMachine4:
 	step_end
 
 MagnetTunnelAlarmSounds:
+	waitsfx
 	special SaveMusic
 	playmusic MUSIC_NONE
 	pause 10
@@ -253,7 +254,7 @@ MagnetTunnelAlarmSounds:
 	playsound SFX_LICK
 	pause 10
 	playsound SFX_LICK
-	pause 10
+	waitsfx
 	special RestoreMusic
 	end
 
