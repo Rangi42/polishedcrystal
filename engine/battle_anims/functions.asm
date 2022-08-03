@@ -85,8 +85,9 @@ DoBattleAnimFrame:
 	dw BattleAnimFunction_4D ; 4d
 	dw BattleAnimFunction_4E ; 4e
 	dw BattleAnimFunction_4F ; 4f
-	dw BattleAnimFunction_50 ; 50
+	dw BattleAnimFunction_PauseThenRush ; 50
 	dw BattleAnimFunction_StraightDescent
+	dw BattleAnimFunction_52 ; 52
 	dw BattleAnimFunction_PowerGem
 	dw BattleAnimFunction_Moon
 	dw BattleAnimFunction_PokeBall_BG
@@ -1901,6 +1902,37 @@ Functioncdb65:
 	add hl, bc
 	ld [hl], a
 	ret
+
+BattleAnimFunction_52:
+	call BattleAnim_AnonJumptable
+
+	dw .zero
+	dw .one
+	dw DoNothing
+
+.zero
+	call BattleAnim_IncAnonJumptableIndex
+	ld hl, BATTLEANIMSTRUCT_VAR1
+	add hl, bc
+	ld [hl], $30
+	inc hl
+	ld [hl], $48
+.one
+	ld hl, BATTLEANIMSTRUCT_VAR1
+	add hl, bc
+	ld a, [hli]
+	ld d, [hl]
+	call Sine
+	ld hl, BATTLEANIMSTRUCT_YOFFSET
+	add hl, bc
+	ld [hl], a
+	ld hl, BATTLEANIMSTRUCT_VAR1
+	add hl, bc
+	inc [hl]
+	ld a, [hl]
+	and $3f
+	ret nz
+	jp BattleAnim_IncAnonJumptableIndex
 
 BattleAnimFunction_1D:
 	call BattleAnim_AnonJumptable
@@ -3944,7 +3976,7 @@ BattleAnim_StepToTarget:
 	jr nz, .asm_ce719
 	ret
 
-BattleAnimFunction_50:
+BattleAnimFunction_PauseThenRush:
 	call BattleAnim_AnonJumptable
 
 	dw .zero

@@ -250,7 +250,11 @@ BattleAnimations::
 	dw BattleAnim_Ancientpower
 	dw BattleAnim_ShadowBall
 	dw BattleAnim_FutureSight
+if !DEF(FAITHFUL)
+	dw BattleAnim_BrickBreak
+else
 	dw BattleAnim_RockSmash
+endc
 	dw BattleAnim_Whirlpool
 	dw BattleAnim_DarkPulse
 	dw BattleAnim_Moonblast
@@ -5239,6 +5243,22 @@ BattleAnim_RockSmash:
 	anim_obj ANIM_OBJ_ROCK_SMASH,  16, 0,   8, 0, $dc
 	anim_obj ANIM_OBJ_ROCK_SMASH,  16, 0,   8, 0, $90
 	anim_wait 32
+	anim_ret
+
+BattleAnim_BrickBreak:
+	anim_1gfx ANIM_GFX_HIT
+	anim_sound 6, 2, SFX_SHINE
+	anim_obj ANIM_OBJ_VERTICAL_CHOP_STILL, 136, 24, $30
+	anim_wait 16
+	anim_bgeffect ANIM_BG_SHAKE_SCREEN_X, $55, $2, $0
+	anim_wait 64
+	anim_clearobjs
+	anim_obj ANIM_OBJ_VERTICAL_CHOP, 136, 82, $30
+	anim_wait 8
+	anim_sound 0, 1, SFX_KARATE_CHOP
+	anim_bgeffect ANIM_BG_FLASH_INVERTED, $0, $4, $3
+	anim_obj ANIM_OBJ_HIT_YFIX, 136, 56, $0
+	anim_wait 34
 	anim_ret
 
 BattleAnim_Whirlpool:
