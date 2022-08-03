@@ -2758,19 +2758,22 @@ BattleAnim_Flash:
 	anim_bgp $e4
 	anim_ret
 
-; Astonish animation from Pokémon Prism
 BattleAnim_Astonish:
-	anim_1gfx ANIM_GFX_HIT
-	anim_call BattleAnim_FollowEnemyFeet_0
+	anim_2gfx ANIM_GFX_SHINE, ANIM_GFX_HIT
+	anim_call BattleAnim_FollowPlayerHead_0
+	anim_bgeffect ANIM_BG_CYCLE_MID_OBPALS_GRAY_AND_YELLOW, $0, $0, $0
 	anim_bgeffect ANIM_BG_TACKLE, $0, $1, $0
+	anim_sound 0, 1, SFX_TACKLE
 	anim_wait 4
+	anim_obj ANIM_OBJ_HIT_YFIX, 136, 56, $0
 	anim_bgeffect ANIM_BG_FLASH_INVERTED, $0, $4, $2
-	anim_bgeffect ANIM_BG_SHAKE_SCREEN_X, $2, $2, $0
-	anim_sound 0, 1, SFX_KINESIS_2
-	anim_obj ANIM_OBJ_HIT_YFIX, 16, 0,  6, 0, $0
-	anim_wait 16
-	anim_call BattleAnim_ShowMon_0
-	anim_ret
+	anim_sound 0, 1, SFX_SHINE
+	anim_obj ANIM_OBJ_FORESIGHT, 140, 56, $0
+	anim_wait 4
+	anim_sound 0, 1, SFX_SHINE
+	anim_obj ANIM_OBJ_FORESIGHT, 146, 50, $0
+	anim_wait 20
+	anim_jump BattleAnim_ShowMon_0
 
 BattleAnim_Substitute:
 	anim_sound 0, 0, SFX_SURF
