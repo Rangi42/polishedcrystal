@@ -5,10 +5,12 @@ CheckVBA:
 	or ~%01111100
 	inc a
 	ret z
-	ld hl, $d000
+	assert WRAM0_Begin <= wEchoRAMTest && wEchoRAMTest < WRAM0_End, \
+		"wEchoRAMTest is not in WRAM0"
+	ld hl, wEchoRAMTest
 	ld [hl], %11100100
-	ld hl, $e000
+	ld hl, wEchoRAMTest + $2000 ; echo RAM
 	ld [hl], %00100111
-	ld a, [$d000]
+	ld a, [wEchoRAMTest]
 	cp %00100111
 	ret

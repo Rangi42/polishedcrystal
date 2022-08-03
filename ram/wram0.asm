@@ -10,6 +10,8 @@ wStackTop::
 
 SECTION "Audio RAM", WRAM0
 
+wEchoRAMTest:: db
+
 wMusic::
 wMusicPlaying:: db ; nonzero if playing
 
@@ -26,7 +28,6 @@ endr
 wCurTrackDuty:: db
 wCurTrackIntensity:: db
 wCurTrackFrequency:: dw
-	ds 1 ; BCD value, dummied out
 wCurNoteDuration:: db ; used in MusicE0 and LoadNote
 
 wCurMusicByte:: db
