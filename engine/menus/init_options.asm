@@ -199,13 +199,12 @@ INCBIN "gfx/new_game/init_bg.2bpp.lz"
 	next1 "            :"
 	next1 "IVs vary colors"
 	next1 "            :"
-	; trailing spaces clear the textbox
-	next1 "Perfect stats    "
-	next1 "            :    "
-	next1 "Traded <PK><MN> obey  "
-	next1 "            :    "
-	next1 "Nuzlocke mode    "
-	next1 "            :    "
+	next1 "Perfect stats"
+	next1 "            :"
+	next1 "Traded <PK><MN> obey"
+	next1 "            :"
+	next1 "Nuzlocke mode"
+	next1 "            :"
 	done
 
 GetInitialOptionPointer:
