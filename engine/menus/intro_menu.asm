@@ -355,8 +355,19 @@ ConfirmContinue:
 WarnVBA:
 	call CheckVBA
 	ret z
+if !DEF(DEBUG)
 	ld hl, .WarnVBAText
 	jmp PrintText
+else
+	ld hl, wOptions1
+	push hl
+	set NO_TEXT_SCROLL, [hl]
+	ld hl, .WarnVBAText
+	call PrintText
+	pop hl
+	res NO_TEXT_SCROLL, [hl]
+	ret
+endc
 
 .WarnVBAText:
 	text_far _WarnVBAText

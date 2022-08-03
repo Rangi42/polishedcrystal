@@ -96,7 +96,7 @@ rept NUM_MOVES - 1
 	ld [hli], a
 endr
 	ld [hl], a
-	ld [wBuffer1], a
+	ld [wEvolutionOldSpecies], a
 	; c = species
 	ld a, [wCurSpecies]
 	ld c, a
@@ -613,7 +613,7 @@ RetrieveBreedmon:
 	ld d, h
 	ld e, l
 	ld a, $1
-	ld [wBuffer1], a
+	ld [wEvolutionOldSpecies], a
 	ld a, [wCurSpecies]
 	ld c, a
 	ld a, [wCurForm]
@@ -1037,6 +1037,9 @@ CalcPkmnStatC:
 	push hl
 	ld a, d
 	and a
+	jr z, .no_evs
+	ld a, [wInitialOptions2]
+	and EV_OPTMASK
 	jr z, .no_evs
 	add hl, bc
 	ld a, [hl]

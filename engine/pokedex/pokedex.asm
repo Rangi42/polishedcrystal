@@ -815,7 +815,7 @@ Pokedex_UpdateRow:
 	; Icon
 	pop bc
 	push af
-	farcall _LoadMini
+	farcall LoadMiniForSpeciesAndForm
 	pop af
 	ld a, b
 	pop bc

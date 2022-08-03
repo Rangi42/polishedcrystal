@@ -79,6 +79,7 @@ SpriteAnimOAMData:
 	dbw $00, .OAMData_MaxStatSparkle     ; SPRITE_ANIM_OAMSET_MAX_STAT_SPARKLE
 	dbw $00, .OAMData_HyperTrainedStat   ; SPRITE_ANIM_OAMSET_HYPER_TRAINED_STAT
 	dbw $00, .OAMData_PcCursor           ; SPRITE_ANIM_OAMSET_PC_CURSOR
+	dbw $00, .OAMData_PcCursorItem       ; SPRITE_ANIM_OAMSET_PC_CURSOR_ITEM
 	dbw $00, .OAMData_PcQuick            ; SPRITE_ANIM_OAMSET_PC_QUICK
 	dbw $00, .OAMData_PcMode             ; SPRITE_ANIM_OAMSET_PC_MODE
 	dbw $00, .OAMData_PcMode2            ; SPRITE_ANIM_OAMSET_PC_MODE2
@@ -649,7 +650,7 @@ SpriteAnimOAMData:
 	dsprite  2,  0,  2,  0, $01, $1
 
 .OAMData_PcCursor:
-	db 9
+	db 12
 	; Cursor
 	dsprite  0,  0,  0,  0, $04, $1 | VRAM_BANK_1
 	dsprite  0,  0,  1,  0, $04, $2 | VRAM_BANK_1 | X_FLIP
@@ -662,20 +663,36 @@ SpriteAnimOAMData:
 	dsprite  2,  2,  0,  0, $0a, $3 | VRAM_BANK_1
 	dsprite  2,  2,  1,  0, $0b, $3 | VRAM_BANK_1
 
-	; Mini shadow (TODO)
+	; Mini shadow
+	dsprite  1,  2,  0,  0, $0c, $6 | VRAM_BANK_1
+	dsprite  1,  2,  1,  0, $0d, $6 | VRAM_BANK_1
+	dsprite  2,  2,  0,  0, $0e, $6 | VRAM_BANK_1
+	dsprite  2,  2,  1,  0, $0f, $6 | VRAM_BANK_1
+
+.OAMData_PcCursorItem:
+	db 5
+	; Cursor
+	dsprite  0,  0,  0,  0, $04, $1 | VRAM_BANK_1
+	dsprite  0,  0,  1,  0, $04, $2 | VRAM_BANK_1 | X_FLIP
+	dsprite  1,  0,  0,  0, $05, $1 | VRAM_BANK_1
+	dsprite  1,  0,  1,  0, $05, $2 | VRAM_BANK_1 | X_FLIP
 
 	; Item
-	dsprite  2,  0,  0,  4, $10, $0 | VRAM_BANK_1
+	dsprite  2,  0,  0,  4, $08, $0 | VRAM_BANK_1
 
 .OAMData_PcQuick:
-	db 4
-	; Mini
+	db 8
+	; Mini or item (only uses 1 sprite with the rest blank)
 	dsprite  0,  0,  0,  0, $14, $5 | VRAM_BANK_1
 	dsprite  0,  0,  1,  0, $15, $5 | VRAM_BANK_1
 	dsprite  1,  0,  0,  0, $16, $5 | VRAM_BANK_1
 	dsprite  1,  0,  1,  0, $17, $5 | VRAM_BANK_1
 
-	; Mini shadow (TODO)
+	; Mini shadow if applicable
+	dsprite  0,  0,  0,  0, $18, $6 | VRAM_BANK_1
+	dsprite  0,  0,  1,  0, $19, $6 | VRAM_BANK_1
+	dsprite  1,  0,  0,  0, $1a, $6 | VRAM_BANK_1
+	dsprite  1,  0,  1,  0, $1b, $6 | VRAM_BANK_1
 
 .OAMData_PcMode:
 	db 3

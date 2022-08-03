@@ -22,7 +22,7 @@ LoadMini:
 	ld a, [wCurIconForm]
 	ld b, a
 	; fallthrough
-_LoadMini:
+LoadMiniForSpeciesAndForm:
 	; bc = extended index
 	call GetCosmeticSpeciesAndFormIndex
 	inc bc
@@ -52,10 +52,20 @@ SetMenuMonIconColor:
 
 	ld a, [wTempIconSpecies]
 	ld [wCurPartySpecies], a
-	call GetMenuMonIconPalette
-	jr ProcessMenuMonIconColor
+	call GetMonIconPalette
+	; fallthrough
+_SetMonColor:
+	ld hl, wVirtualOAM + 3
+	ld c, 4
+	ld de, 4
+.loop
+	ld [hl], a
+	add hl, de
+	dec c
+	jr nz, .loop
+	jmp PopAFBCDEHL
 
-LoadFlyMonColor:
+SetFlyMonColor:
 	push hl
 	push de
 	push bc
@@ -66,10 +76,10 @@ LoadFlyMonColor:
 	ld [wCurPartySpecies], a
 	ld a, MON_SHINY
 	call GetPartyParamLocationAndValue
-	call GetMenuMonIconPalette
-	jr ProcessMenuMonIconColor
+	call GetMonIconPalette
+	jr _SetMonColor
 
-LoadPartyMenuMonMiniColors:
+SetPartyMenuMonMiniColors:
 	push hl
 	push de
 	push bc
@@ -93,21 +103,18 @@ LoadPartyMenuMonMiniColors:
 	ld a, [hl]
 .got_species
 	ld [wCurPartySpecies], a
-	ld a, MON_SHINY
-	call GetPartyParamLocationAndValue
-	call GetMenuMonIconPalette
-	push af
 
 	ld hl, wVirtualOAM + 3
 	ld a, [wCurPartyMon]
 	swap a
-
 	ld d, 0
 	ld e, a
-
 	add hl, de
-	pop af
 
+	; mon minis use palette [wCurPartyMon]+2
+	ld a, [wCurPartyMon]
+	inc a
+	inc a
 	ld de, 4
 	ld [hl], a
 	add hl, de
@@ -117,28 +124,15 @@ LoadPartyMenuMonMiniColors:
 	add hl, de
 	ld [hl], a
 	pop hl
-	ld d, a
+	ld [hl], a
+
+	; item and mail icons use palette 0
 	ld a, [wCurIconMonHasItemOrMail]
 	and a
-	ld a, PAL_OW_RED ; same color for item or mail
-	jr nz, .ok
-	ld a, d
-.ok
+	jr z, .done
+	xor a
 	ld [hl], a
-	jr ProcessMenuMonIconColor.finish
-
-ProcessMenuMonIconColor:
-	ld hl, wVirtualOAM + 3
-	ld c, 4
-	ld de, 4
-
-.colorIcon
-	ld [hl], a
-	add hl, de
-	dec c
-	jr nz, .colorIcon
-
-.finish
+.done
 	jmp PopAFBCDEHL
 
 GetOverworldMonIconPalette::
@@ -146,8 +140,9 @@ GetOverworldMonIconPalette::
 	ld hl, wCurIconShiny
 	jr _GetMonIconPalette
 
-GetMenuMonIconPalette:
+GetMonIconPalette:
 	ld a, [wCurPartySpecies]
+	; fallthrough
 _GetMonIconPalette:
 	; c = species
 	ld c, a
@@ -177,7 +172,7 @@ _GetMonIconPalette:
 	ret
 
 LoadPartyMenuMonMini:
-	call LoadPartyMenuMonMiniColors
+	call SetPartyMenuMonMiniColors
 	push hl
 	push de
 	push bc
@@ -211,27 +206,24 @@ LoadNamingScreenMonMini:
 	push de
 	push bc
 
+	ld a, MON_FORM ; aka MON_IS_EGG
+	call GetPartyParamLocationAndValue
+
 	depixel 4, 4, 4, 0
-	jr InitScreenMonMini
+	jr _LoadMonMini
 
 LoadMoveMenuMonMini:
 	push hl
 	push de
 	push bc
 
-	depixel 3, 4, 2, 4
-	push de
 	ld hl, wTempMonForm
 	ld a, [hl]
-	jr _InitScreenMonMini
 
-InitScreenMonMini:
-	push de
-
-	ld a, MON_FORM ; aka MON_IS_EGG
-	call GetPartyParamLocationAndValue
+	depixel 3, 4, 2, 4
 	; fallthrough
-_InitScreenMonMini:
+_LoadMonMini:
+	push de
 	and SPECIESFORM_MASK
 	ld [wCurIconForm], a
 	bit MON_IS_EGG_F, [hl]
@@ -242,8 +234,19 @@ _InitScreenMonMini:
 	ld [wTempIconSpecies], a
 	ld [wCurIcon], a
 
-	dec hl ; MON_SHINY = MON_FORM - 1
-	call SetMenuMonIconColor ; TODO: use real varied mon color
+	; mon minis use palette [wCurPartyMon]+2
+	ld a, [wTempIconSpecies]
+	ld [wCurPartySpecies], a
+	ld a, [wCurPartyMon]
+	inc a
+	inc a
+	ld hl, wVirtualOAM + 3
+	ld de, 4
+rept 3
+	ld [hl], a
+	add hl, de
+endr
+	ld [hl], a
 
 	xor a
 	call GetMiniGFX
@@ -380,7 +383,7 @@ endr
 	ret
 
 LoadTradeAnimationMonMini:
-	call SetMenuMonIconColor ; TODO: use real varied mon color
+	call SetMenuMonIconColor
 	ld a, [wTempIconSpecies]
 	ld [wCurIcon], a
 	ld a, $62
@@ -446,6 +449,33 @@ GetStorageMini:
 	pop hl
 	ld de, wDecompressScratch
 	farcall BillsPC_SafeRequest2bppInWRA6
+	pop hl
+	ret
+
+GetStorageMask:
+	push hl
+	ld bc, 4 tiles
+	add hl, bc
+	push hl
+	ld a, [wCurIconSpecies]
+	ld c, a
+	ld a, [wCurIconForm]
+	ld b, a
+	call GetCosmeticSpeciesAndFormIndex
+	ld hl, MaskPointers + 3 ; skip NullMiniMask
+	add hl, bc
+	add hl, bc
+	add hl, bc
+	ld a, [hli]
+	ld b, a
+	ld a, [hli]
+	ld h, [hl]
+	ld l, a
+	call FarDecompressWRA6InB
+	pop hl
+	ld c, 4
+	ld de, wDecompressScratch
+	farcall BillsPC_SafeRequest1bppInWRA6
 	pop hl
 	ret
 

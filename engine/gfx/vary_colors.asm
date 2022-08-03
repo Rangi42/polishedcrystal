@@ -182,6 +182,7 @@ VaryColorsByDVs::
 ; [hl+1] = 0bbb:bbgg
 ; [hl+2] = GGGR:RRRR
 ; [hl+3] = 0BBB:BBGG
+; returns with hl += 4
 
 ; DVs in wColorVaryDVs
 ; [bc+0] = hhhh:aaaa
@@ -193,7 +194,10 @@ VaryColorsByDVs::
 ; [wColorVaryShiny] = shiny
 
 if DEF(MONOCHROME) || DEF(NOIR)
-	ret
+	inc hl
+	inc hl
+	inc hl
+	inc hl
 endc
 
 	ld a, [wInitialOptions]
@@ -278,6 +282,10 @@ endc
 	ld e, a
 ; vary DarkBlu by e
 	call VaryBlueByDV
+
+;;; advance past Dark color
+	inc hl
+	inc hl
 
 	pop af
 	ldh [rSVBK], a

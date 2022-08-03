@@ -223,6 +223,7 @@ BattleAnimOAMData:
 	battleanimoam $00,  6, .OAMData_d5 ; BATTLEANIMOAMSET_D5
 	battleanimoam $00, 14, .OAMData_d6 ; BATTLEANIMOAMSET_D6
 	battleanimoam $00, 12, .OAMData_d7 ; BATTLEANIMOAMSET_D7
+	battleanimoam $11,  2, .OAMData_StoneEdge ; BATTLEANIMOAMSET_STONE_EDGE
 	assert_table_length NUM_BATTLEANIMOAMSETS
 
 .OAMData_11:
@@ -1090,3 +1091,7 @@ BattleAnimOAMData:
 	dsprite  -2, 0,   6, 4, $00, $0
 	dsprite  -4, 0,   8, 4, $00, $0
 	dsprite  -2, 0,  10, 4, $00, $0
+
+.OAMData_StoneEdge:
+	dsprite  -1, 0,  -1, 0, $00, $0
+	dsprite   0, 0,  -1, 0, $01, $0

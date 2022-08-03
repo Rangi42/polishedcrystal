@@ -3353,6 +3353,7 @@ endc
 
 SECTION "_WarnVBAText", ROMX
 _WarnVBAText::
+if !DEF(DEBUG)
 	text "Warning!"
 
 	para "This Game Boy"
@@ -3367,6 +3368,11 @@ _WarnVBAText::
 	para "such as BGB, mGBA,"
 	line "or Gambatte."
 	prompt
+else
+	text "Emulator test"
+	line "failed."
+	prompt
+endc
 
 SECTION "_ClockTimeMayBeWrongText", ROMX
 _ClockTimeMayBeWrongText::

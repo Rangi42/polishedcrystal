@@ -300,8 +300,8 @@ _GetSpritePalette::
 	jr nz, .not_daycare
 	farcall GetOverworldMonIconPalette
 
-	; gray, pink, and teal exist in the party menu and the player's room,
-	; but not on Route 34 for the DayCare
+	; gray, pink, and teal exist in the player's room for dolls,
+	; but not on Route 34 for the Day-Care overworld mons
 	cp PAL_OW_GRAY
 	jr z, .use_rock
 	cp PAL_OW_TEAL
