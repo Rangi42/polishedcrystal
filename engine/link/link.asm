@@ -34,45 +34,7 @@ Gen2ToGen2LinkComms:
 	call ClearLinkData
 	call Link_PrepPartyData_Gen2
 	call FixDataForLinkTransfer
-	call CheckLinkTimeout_Gen2
-	ldh a, [hScriptVar]
-	and a
-	jmp z, LinkTimeout
-	ldh a, [hSerialConnectionStatus]
-	cp USING_INTERNAL_CLOCK
-	jr nz, .player_1
-
-	ld c, 3
-	call DelayFrames
-	xor a
-	ldh [hSerialSend], a
-	ld a, $1
-	ldh [rSC], a
-	ld a, START_TRANSFER_INTERNAL_CLOCK
-	ldh [rSC], a
-	call DelayFrame
-	xor a
-	ldh [hSerialSend], a
-	ld a, $1
-	ldh [rSC], a
-	ld a, START_TRANSFER_INTERNAL_CLOCK
-	ldh [rSC], a
-
-.player_1:
-	ld de, MUSIC_NONE
-	call PlayMusic
-	vc_patch Wireless_net_delay_6
-if DEF(VIRTUAL_CONSOLE)
-	ld c, 26
-else
-	ld c, 3
-endc
-	vc_patch_end
-	call DelayFrames
-	xor a
-	ldh [rIF], a
-	ld a, 1 << SERIAL
-	ldh [rIE], a
+	call PrepareForLinkTransfers
 
 	ld hl, wLinkBattleRNPreamble
 	ld de, wEnemyMon
@@ -2133,22 +2095,7 @@ Special_TryQuickSave:
 	ld [wChosenCableClubRoom], a
 	ret
 
-PerformLinkChecks:
-	xor a
-	ld bc, 10
-	ld hl, wLinkReceivedPolishedMiscBuffer
-	call ByteFill
-
-	; This acts as the old Special_CheckBothSelectedSameRoom
-	; We send a dummy byte here that will cause old versions
-	; of PolishedCrystal's CheckBothSelectedSameRoom function
-	; to fail.
-	ld a, LINK_ROOM_DUMMY - 1
-	call Link_ExchangeNybble
-	cp LINK_ROOM_DUMMY - 1
-	jmp nz, .OldVersionDetected
-
-	; Prepare for Multiple Byte Transfers
+PrepareForLinkTransfers:
 	call CheckLinkTimeout_Gen2
 	ldh a, [hScriptVar]
 	and a
@@ -2174,16 +2121,43 @@ PerformLinkChecks:
 	ldh [rSC], a
 
 .player_1:
+	ld de, MUSIC_NONE
+	call PlayMusic
+	vc_patch Wireless_net_delay_6
+if DEF(VIRTUAL_CONSOLE)
+	ld c, 26
+else
 	ld c, 3
+endc
+	vc_patch_end
 	call DelayFrames
-	ldh a, [rIF]
-	push af
-	ldh a, [rIE]
-	push af
 	xor a
 	ldh [rIF], a
 	ld a, 1 << SERIAL
 	ldh [rIE], a
+	ret
+
+PerformLinkChecks:
+	xor a
+	ld bc, 10
+	ld hl, wLinkReceivedPolishedMiscBuffer
+	call ByteFill
+
+	; This acts as the old Special_CheckBothSelectedSameRoom
+	; We send a dummy byte here that will cause old versions
+	; of PolishedCrystal's CheckBothSelectedSameRoom function
+	; to fail.
+	ld a, LINK_ROOM_DUMMY - 1
+	call Link_ExchangeNybble
+	cp LINK_ROOM_DUMMY - 1
+	jmp nz, .OldVersionDetected
+
+	; Prepare for Multiple Byte Transfers
+	ldh a, [rIF]
+	push af
+	ldh a, [rIE]
+	push af
+	call PrepareForLinkTransfers
 
 	; Perform Game ID Byte Transfer
 	; hl needs to be set to wLinkPolishedMiscBuffer
@@ -2337,6 +2311,8 @@ PerformLinkChecks:
 	ldh [rIE], a
 	pop af
 	ldh [rIF], a
+	ld de, MUSIC_POKEMON_CENTER
+	call PlayMusic
 	ret
 
 .SkipPreambleBytes

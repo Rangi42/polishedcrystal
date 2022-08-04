@@ -139,41 +139,35 @@ LinkReceptionistScript_DoTradeOrBattle:
 .LinkedToFirstGen:
 	special Special_FailedLinkToPast
 	writetext Text_CantLinkToThePast
-	special Special_CloseLink
-	endtext
+	sjumpfwd .CloseLink
 
 .OldVersionDetected:
 	writetext Text_OldVersionDetected
-	special Special_CloseLink
-	endtext
+	sjumpfwd .CloseLink
 
 .WrongGameID
 	writetext Text_WrongGameID
-	special Special_CloseLink
-	endtext
+	sjumpfwd .CloseLink
 
 .WrongVersion
 	writetext Text_WrongVersion
-	special Special_CloseLink
-	endtext
+	sjumpfwd .CloseLink
 
 .WrongMinVersion
 	writetext Text_WrongMinVersion
-	special Special_CloseLink
-	endtext
+	sjumpfwd .CloseLink
 
 .OtherPlayerWrongMinVersion
 	writetext Text_OtherPlayerWrongMinVersion
-	special Special_CloseLink
-	endtext
+	sjumpfwd .CloseLink
 
 .WrongOptions
 	writetext Text_WrongOptions
-	special Special_CloseLink
-	endtext
+	sjumpfwd .CloseLink
 
 .IncompatibleRooms:
 	writetext Text_IncompatibleRooms
+.CloseLink:
 	special Special_CloseLink
 	endtext
 
