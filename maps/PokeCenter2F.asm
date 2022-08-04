@@ -318,11 +318,11 @@ Text_OldVersionDetected:
 	line "to an old"
 
 	para "version of"
-	line "polished crystal."
+	line "Polished Crystal."
 	prompt
 
 Text_WrongGameID:
-	text "Your Game is not"
+	text "Your game is not"
 	line "compatible with"
 	cont "the other game."
 	prompt
@@ -332,9 +332,9 @@ Text_WrongVersion:
 	line "do not match."
 
 	para "In order to play"
-	line "Link Colosseum"
+	line "Link Colosseum,"
 
-	para "Your game versions"
+	para "your game versions"
 	line "must match."
 	prompt
 
@@ -348,7 +348,7 @@ Text_WrongMinVersion:
 	prompt
 
 Text_OtherPlayerWrongMinVersion:
-	text "The other Game"
+	text "The other game"
 	line "system does not"
 
 	para "meet the"
@@ -357,7 +357,7 @@ Text_OtherPlayerWrongMinVersion:
 	prompt
 
 Text_WrongOptions:
-	text "Your Game Options"
+	text "Your game options"
 	line "are not compatible"
 
 	para "with the other"
