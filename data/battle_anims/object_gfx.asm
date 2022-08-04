@@ -48,6 +48,7 @@ AnimObjGFX:
 	anim_obj_gfx 18, AnimObjWaveGFX
 	anim_obj_gfx 24, AnimObjAeroblastGFX
 	anim_obj_gfx 16, AnimObjMoonGFX
+	anim_obj_gfx  9, AnimObjBugBuzzGFX
 	anim_obj_gfx  8, AnimObjMiniGFX
 	anim_obj_gfx  1, NULL
 	anim_obj_gfx  1, NULL

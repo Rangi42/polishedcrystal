@@ -3440,33 +3440,32 @@ BattleAnim_Thief:
 	anim_wait 64
 	anim_ret
 
-; Bug Buzz animation from Pokémon Prism
 BattleAnim_BugBuzz:
-	anim_2gfx ANIM_GFX_NOISE, ANIM_GFX_PSYCHIC
+	anim_2gfx ANIM_GFX_BUG_BUZZ, ANIM_GFX_PSYCHIC
+	anim_battlergfx_2row
+	anim_bgeffect ANIM_BG_SHAKE_SCREEN_X, $4a, $1, $0
 .loop
-	anim_bgeffect ANIM_BG_SHAKE_SCREEN_X, $14, $2, $0
-	anim_sound 0, 0, SFX_OUTRAGE
-	anim_wait 8
-	anim_bgeffect ANIM_BG_SHAKE_SCREEN_X, $14, $2, $0
-	anim_sound 0, 0, SFX_SNORE
-	anim_call BattleAnimSub_Sound
-	anim_obj ANIM_OBJ_WAVE,  7, 0, 11, 0, $2
-	anim_obj ANIM_OBJ_WAVE,  9, 0, 11, 0, $2
-	anim_wait 4
-	anim_obj ANIM_OBJ_WAVE,  8, 0, 11, 0, $2
-	anim_wait 4
-	anim_sound 0, 0, SFX_SNORE
-	anim_call BattleAnimSub_Sound
-	anim_obj ANIM_OBJ_WAVE,  7, 4, 11, 0, $2
-	anim_obj ANIM_OBJ_WAVE,  8, 4, 11, 0, $2
-	anim_wait 4
-	anim_obj ANIM_OBJ_WAVE,  8, 0, 11, 0, $2
-	anim_wait 4
-	anim_obj ANIM_OBJ_WAVE,  7, 6, 11, 0, $2
-	anim_obj ANIM_OBJ_WAVE,  8, 2, 11, 0, $2
-	anim_wait 4
-	anim_obj ANIM_OBJ_WAVE,  8, 0, 11, 0, $2
-	anim_wait 24
+	anim_sound 6, 2, SFX_TINGLE
+	anim_obj ANIM_OBJ_BUG_BUZZ_L, 32, 84, $28
+	anim_obj ANIM_OBJ_BUG_BUZZ_R, 64, 84, $38
+	anim_wait 2
+	anim_sound 6, 2, SFX_TINGLE
+	anim_wait 2
+	anim_sound 6, 2, SFX_TINGLE
+	anim_obj ANIM_OBJ_BUG_BUZZ_L, 32, 84, $28
+	anim_obj ANIM_OBJ_BUG_BUZZ_R, 64, 84, $38
+	anim_obj ANIM_OBJ_ECHOED_VOICE, 64, 88, $2
+	anim_wait 2
+	anim_sound 6, 2, SFX_TINGLE
+	anim_wait 2
+	anim_loop 6, .loop
+	anim_wait 2
+	anim_sound 6, 2, SFX_SUPERSONIC
+	anim_wait 6
+	anim_bgeffect ANIM_BG_BATTLEROBJ_1ROW, $0, $1, $0
+	anim_bgeffect ANIM_BG_VIBRATE_MON, $0, $0, $0
+	anim_wait 64
+	anim_bgeffect ANIM_BG_SHOW_MON, $0, $1, $0
 	anim_ret
 
 BattleAnim_FlameCharge: ; formerly Flame Wheel

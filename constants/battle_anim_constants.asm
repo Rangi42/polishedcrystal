@@ -260,6 +260,9 @@ DEF BATTLEANIM_BASE_TILE EQU 7 * 7  ; Maximum size of a pokemon picture
 	const ANIM_OBJ_BRAVE_BIRD
 	const ANIM_OBJ_VERTICAL_CHOP
 	const ANIM_OBJ_VERTICAL_CHOP_STILL
+	const ANIM_OBJ_BUG_BUZZ_L
+	const ANIM_OBJ_BUG_BUZZ_R
+	const ANIM_OBJ_ECHOED_VOICE
 DEF NUM_ANIM_OBJS EQU const_value
 
 ; DoBattleAnimFrame arguments (see engine/battle_anims/functions.asm)
@@ -351,6 +354,7 @@ DEF NUM_ANIM_OBJS EQU const_value
 	const BATTLEANIMFUNC_MOON
 	const BATTLEANIMFUNC_POKE_BALL_BG
 	const BATTLEANIMFUNC_RADIAL_MOVE_OUT
+	const BATTLEANIMFUNC_RADIAL_MOVE_OUT_SLOW
 DEF NUM_BATTLEANIMFUNCS EQU const_value
 
 ; BattleAnimFrameData indexes (see data/battle_anims/framesets.asm)
@@ -543,6 +547,9 @@ DEF NUM_BATTLEANIMFUNCS EQU const_value
 	const BATTLEANIMFRAMESET_B9
 	const BATTLEANIMFRAMESET_STONE_EDGE
 	const BATTLEANIMFRAMESET_BRICK_BREAK
+	const BATTLEANIMFRAMESET_ECHOED_VOICE
+	const BATTLEANIMFRAMESET_BUG_BUZZ_L
+	const BATTLEANIMFRAMESET_BUG_BUZZ_R
 DEF NUM_BATTLEANIMFRAMESETS EQU const_value
 
 ; BattleAnimOAMData indexes (see data/battle_anims/oam.asm)
@@ -765,6 +772,9 @@ DEF NUM_BATTLEANIMFRAMESETS EQU const_value
 	const BATTLEANIMOAMSET_D7
 	const BATTLEANIMOAMSET_STONE_EDGE
 	const BATTLEANIMOAMSET_BRICK_BREAK
+	const BATTLEANIMOAMSET_ECHOED_VOICE ; e1 in chatty
+	const BATTLEANIMOAMSET_BUG_BUZZ1 ; e7 in chatty
+	const BATTLEANIMOAMSET_BUG_BUZZ2 ; e6 in chatty
 DEF NUM_BATTLEANIMOAMSETS EQU const_value
 
 ; BattleBGEffects indexes (see engine/battle_anims/bg_effects.asm)
@@ -867,6 +877,7 @@ DEF NUM_ANIM_BGS EQU const_value - 1
 	const ANIM_GFX_WAVE
 	const ANIM_GFX_AEROBLAST
 	const ANIM_GFX_MOON
+	const ANIM_GFX_BUG_BUZZ
 	const ANIM_GFX_MINI
 	const ANIM_GFX_PLAYERHEAD
 	const ANIM_GFX_ENEMYFEET

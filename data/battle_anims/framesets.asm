@@ -188,6 +188,9 @@ BattleAnimFrameData:
 	dw .Frameset_b9 ; b9
 	dw .Frameset_StoneEdge ; ba
 	dw .Frameset_BrickBreak ; bb
+	dw .Frameset_EchoedVoice ; bc
+	dw .Frameset_BugBuzzL ; bd
+	dw .Frameset_BugBuzzR ; be
 	assert_table_length NUM_BATTLEANIMFRAMESETS
 
 ; OAM index (see battle/objects/oam.asm), flip flags / duration
@@ -1283,3 +1286,24 @@ BattleAnimFrameData:
 .Frameset_BrickBreak:
 	frame BATTLEANIMOAMSET_BRICK_BREAK, 8
 	endanim
+
+.Frameset_EchoedVoice:
+	frame BATTLEANIMOAMSET_18,  0
+	frame BATTLEANIMOAMSET_70,  0
+	frame BATTLEANIMOAMSET_71,  0
+	frame BATTLEANIMOAMSET_72,  0
+	frame BATTLEANIMOAMSET_73,  0
+	frame BATTLEANIMOAMSET_ECHOED_VOICE,  0
+	delanim
+
+.Frameset_BugBuzzL:
+	frame BATTLEANIMOAMSET_BD,  4
+	frame BATTLEANIMOAMSET_BUG_BUZZ1,  4
+	frame BATTLEANIMOAMSET_BUG_BUZZ2,  4
+	delanim
+
+.Frameset_BugBuzzR:
+	frame BATTLEANIMOAMSET_BD,  4, OAM_X_FLIP
+	frame BATTLEANIMOAMSET_BUG_BUZZ1,  4, OAM_X_FLIP
+	frame BATTLEANIMOAMSET_BUG_BUZZ2,  4, OAM_X_FLIP
+	delanim
