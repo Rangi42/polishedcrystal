@@ -1926,28 +1926,30 @@ BattleAnim_FocusEnergy:
 
 ; Bullet Punch animation from Pokémon Prism
 BattleAnim_BulletPunch:
-	anim_3gfx ANIM_GFX_REFLECT, ANIM_GFX_SPEED, ANIM_GFX_HIT
-	anim_call BattleAnim_TargetObj_1Row
-	anim_obp0 0, 0, 0, 0
-	anim_call BattleAnimSub_Metallic
-	anim_call BattleAnim_ShowMon_0
-	anim_bgeffect ANIM_BG_HIDE_MON, $0, $1, $0
+	anim_1gfx ANIM_GFX_HIT
+	anim_call BattleAnim_UserObj_1Row
 	anim_resetobp0
-	anim_sound 0, 0, SFX_MENU
-	anim_obj ANIM_OBJ_SPEED_LINE,  3, 0, 11, 0, $2
-	anim_obj ANIM_OBJ_SPEED_LINE,  4, 0, 11, 0, $1
-	anim_obj ANIM_OBJ_SPEED_LINE,  5, 0, 11, 0, $0
-	anim_obj ANIM_OBJ_SPEED_LINE,  6, 0, 11, 0, $80
-	anim_obj ANIM_OBJ_SPEED_LINE,  7, 0, 11, 0, $81
-	anim_obj ANIM_OBJ_SPEED_LINE,  8, 0, 11, 0, $82
-	anim_wait 8
-	anim_sound 0, 1, SFX_MEGA_PUNCH
-	anim_obj ANIM_OBJ_PUNCH, 17, 0,  7, 0, $0
-	anim_wait 6
-	anim_obj ANIM_OBJ_HIT_YFIX, 17, 0,  7, 0, $0
-	anim_wait 8
+	anim_bgeffect ANIM_BG_VIBRATE_MON, $0, $0, $0
+	anim_obj ANIM_OBJ_BULLET_PUNCH, 140, 44, $0
+	anim_sound 0, 1, SFX_TACKLE
+	anim_wait 3
+	anim_obj ANIM_OBJ_BULLET_PUNCH, 112, 46, $0
+	anim_sound 0, 1, SFX_TACKLE
+	anim_wait 3
+	anim_obj ANIM_OBJ_BULLET_PUNCH, 148, 60, $0
+	anim_sound 0, 1, SFX_TACKLE
+	anim_wait 3
+	anim_obj ANIM_OBJ_BULLET_PUNCH, 120, 30, $0
+	anim_sound 0, 1, SFX_TACKLE
+	anim_wait 3
+	anim_obj ANIM_OBJ_BULLET_PUNCH, 116, 64, $0
+	anim_sound 0, 1, SFX_TACKLE
+	anim_wait 3
+	anim_obj ANIM_OBJ_BULLET_PUNCH, 132, 68, $0
+	anim_sound 0, 1, SFX_TACKLE
+	anim_wait 3
+	anim_wait 32
 	anim_bgeffect ANIM_BG_SHOW_MON, $0, $1, $0
-	anim_wait 8
 	anim_ret
 
 BattleAnim_Wrap:

@@ -191,6 +191,7 @@ BattleAnimFrameData:
 	dw .Frameset_EchoedVoice ; bc
 	dw .Frameset_BugBuzzL ; bd
 	dw .Frameset_BugBuzzR ; be
+	dw .Frameset_BulletPunch ; bf
 	assert_table_length NUM_BATTLEANIMFRAMESETS
 
 ; OAM index (see battle/objects/oam.asm), flip flags / duration
@@ -1306,4 +1307,15 @@ BattleAnimFrameData:
 	frame BATTLEANIMOAMSET_BD,  4, OAM_X_FLIP
 	frame BATTLEANIMOAMSET_BUG_BUZZ1,  4, OAM_X_FLIP
 	frame BATTLEANIMOAMSET_BUG_BUZZ2,  4, OAM_X_FLIP
+	delanim
+
+.Frameset_BulletPunch:
+	frame BATTLEANIMOAMSET_BULLET_PUNCH,  4
+	frame BATTLEANIMOAMSET_02,  1
+	frame BATTLEANIMOAMSET_BULLET_PUNCH,  4
+	frame BATTLEANIMOAMSET_02,  1
+	frame BATTLEANIMOAMSET_BULLET_PUNCH,  4
+	frame BATTLEANIMOAMSET_02,  1
+	frame BATTLEANIMOAMSET_BULLET_PUNCH,  4
+	frame BATTLEANIMOAMSET_02,  1
 	delanim

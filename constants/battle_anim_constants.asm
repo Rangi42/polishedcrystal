@@ -263,6 +263,7 @@ DEF BATTLEANIM_BASE_TILE EQU 7 * 7  ; Maximum size of a pokemon picture
 	const ANIM_OBJ_BUG_BUZZ_L
 	const ANIM_OBJ_BUG_BUZZ_R
 	const ANIM_OBJ_ECHOED_VOICE
+	const ANIM_OBJ_BULLET_PUNCH
 DEF NUM_ANIM_OBJS EQU const_value
 
 ; DoBattleAnimFrame arguments (see engine/battle_anims/functions.asm)
@@ -550,6 +551,7 @@ DEF NUM_BATTLEANIMFUNCS EQU const_value
 	const BATTLEANIMFRAMESET_ECHOED_VOICE
 	const BATTLEANIMFRAMESET_BUG_BUZZ_L
 	const BATTLEANIMFRAMESET_BUG_BUZZ_R
+	const BATTLEANIMFRAMESET_BULLET_PUNCH
 DEF NUM_BATTLEANIMFRAMESETS EQU const_value
 
 ; BattleAnimOAMData indexes (see data/battle_anims/oam.asm)
@@ -772,9 +774,10 @@ DEF NUM_BATTLEANIMFRAMESETS EQU const_value
 	const BATTLEANIMOAMSET_D7
 	const BATTLEANIMOAMSET_STONE_EDGE
 	const BATTLEANIMOAMSET_BRICK_BREAK
-	const BATTLEANIMOAMSET_ECHOED_VOICE ; e1 in chatty
-	const BATTLEANIMOAMSET_BUG_BUZZ1 ; e7 in chatty
-	const BATTLEANIMOAMSET_BUG_BUZZ2 ; e6 in chatty
+	const BATTLEANIMOAMSET_ECHOED_VOICE ; d1 in chatty
+	const BATTLEANIMOAMSET_BUG_BUZZ1 ; ee in chatty
+	const BATTLEANIMOAMSET_BUG_BUZZ2 ; ed in chatty
+	const BATTLEANIMOAMSET_BULLET_PUNCH ; e2 in chatty
 DEF NUM_BATTLEANIMOAMSETS EQU const_value
 
 ; BattleBGEffects indexes (see engine/battle_anims/bg_effects.asm)

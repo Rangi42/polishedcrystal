@@ -228,6 +228,7 @@ BattleAnimOAMData:
 	battleanimoam $07, 10, .OAMData_EchoedVoice ; BATTLEANIMOAMSET_ECHOED_VOICE
 	battleanimoam $04,  3, .OAMData_BugBuzz1 ; BATTLEANIMOAMSET_BUG_BUZZ1
 	battleanimoam $00,  5, .OAMData_BugBuzz2 ; BATTLEANIMOAMSET_BUG_BUZZ2
+	battleanimoam $1f,  4, .OAMData_03 ; BATTLEANIMOAMSET_BULLET_PUNCH
 	assert_table_length NUM_BATTLEANIMOAMSETS
 
 .OAMData_11:
