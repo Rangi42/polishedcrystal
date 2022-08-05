@@ -2180,8 +2180,29 @@ PerformLinkChecks:
 	; Save GAME ID and Perform check
 	call .SkipPreambleBytes
 	ld [wLinkOtherPlayerGameID], a
+	assert ((LINK_GAME_ID_FAITHFUL + LINK_GAME_ID_NON_FAITHFUL) == 3) && LINK_GAME_ID_FAITHFUL != 0 && LINK_GAME_ID_NON_FAITHFUL != 0, \
+		"LINK_GAME_ID_FAITHFUL and LINK_GAME_ID_NON_FAITHFUL must be >0, <3, and != each other for the GAME ID Checks."
+	; Is Other game ID == our game ID ?
 	cp LINK_GAME_ID
-	jmp nz, .WrongGameID
+	jr z, .game_id_ok
+	; Is other game ID >= 3 ?
+	cp 3
+	jmp nc, .WrongGameID
+	; is other game ID == 0 ?
+	and a
+	jmp z, .WrongGameID
+	ld a, LINK_GAME_ID
+	; is our game ID >= 3 ?
+	cp 3 
+	jmp nc, .WrongGameID
+	; is our game ID == 0 ?
+	and a
+	jmp z, .WrongGameID
+	ld a, [wChosenCableClubRoom]
+	; is game mode == colosseum ?
+	cp LINK_COLOSSEUM - 1
+	jmp z, .WrongGameID
+.game_id_ok
 
 	; Perform Version and Room Byte Transfers
 	ld hl, wLinkPolishedMiscBuffer + 6
@@ -2251,6 +2272,9 @@ PerformLinkChecks:
 	ld c, 66
 	call z, DelayFrames
 
+	ld a, [wLinkMode]
+	cp LINK_TRADECENTER
+	jr z, .skip_options
 	; Perform Options Check
 	call .SkipPreambleBytes
 	ld b, a
@@ -2264,6 +2288,7 @@ PerformLinkChecks:
 	xor b
 	and EV_OPTMASK
 	jr nz, .WrongOptions
+.skip_options
 
 	; Process Link Opponent Gender
 	ld a, [wPlayerGender]
@@ -2312,8 +2337,7 @@ PerformLinkChecks:
 	pop af
 	ldh [rIF], a
 	ld de, MUSIC_POKEMON_CENTER
-	call PlayMusic
-	ret
+	jmp PlayMusic
 
 .SkipPreambleBytes
 ; This sub function skips over the no longer
