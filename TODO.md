@@ -21,16 +21,16 @@ The final, non-beta 3.0 release should include all of these.
 
 ### Mechanics
 
-* Initial option for EVs (no limit, 510 total limit, or disabled)
-* Add hidden grottoes throughout Johto
+* Option for 510 total limit on EVs
+* Finish adding hidden grottoes throughout Johto
 * Variety Channel with daily unique music
 * Separate radio channels for March and Lullaby, available every day
-* Generate random team for Psychic Inver
-* Wild Ghosts and the SilphScope2
+* Add more random team members for Psychic Inver
+* Wild Ghosts and the SilphScope2 in Lavender Town
 * More location-unique wild moves (see [material/moves.txt](material/moves.txt))
 * Finish wild rosters
 * DVs to vary palettes for trainers' duplicate Pokémon (e.g. Clair's Dragonairs)
-* Complete Alolan and Galarian forms
+* Make all the variant forms available
    * Persian as a one-time trade from an Alolan tourist (you can breed it for more)
    * Grimer/Muk in Goldenrod City (Celadon's Muk are a sign of its pollution, Goldenrod's Alolan Muk would be a sign that they manage pollution better)
    * Ponyta/Rapidash on Shamouti Island
@@ -77,14 +77,14 @@ Maps need signs, NPCs, trainers (with [dialog](https://docs.google.com/document/
 * Valencia Island (signs and NPCs)
 * Route 49 (wild Pokémon and unique wild moves)
 * Safari Zone rest houses (NPCs and maybe trainers)
-* Reference the Pokéathlon Dome inside the Route 35 gate or Route 35 Coast
+* Reference the Pokéathlon Dome with workers/engineers inside the Route 35 gate and Route 35 Coast
 * Goldenrod Museum
+* Violet Outskirts with haunted house (EVENT_SAW_HAUNTED_ROOM)
 
 
 Shamouti Island:
 
 * Shamouti Island
-* Shamouti Hotel (haunted room) (EVENT_SAW_HAUNTED_ROOM)
 * Shamouti Restaurant (works like Seven Stars Restaurant) (different subset of all trainers every day of the week)
   - Should award Odd Souvenir to make it a renewable reward
 
@@ -158,7 +158,6 @@ Some of these may never be added; they're just suggestions.
    * PGo Battle! Legendary Raid (for Mew)
    * S/M Malie City (Day) (for Shamouti Shrine)
 * More Orange Islands
-* Add [Sweet Honey](http://iimarckus.org/i/sweet-honey/) that acts like Sweet Scent and attracts rare Pokémon
 * First Pokémon walks behind you ([comet's prototype](https://hax.iimarckus.org/topic/6248/) and [diff](https://github.com/yenatch/pokecrystal/commit/dbc5cd2025a0214c5b2cd1e3330f50603a0bb9d1))
 * Seasons with appropriate day/night lengths from B/W (affects palettes, tiles, wild Pokémon, dialog, accessible areas, etc)
 * Dive areas
