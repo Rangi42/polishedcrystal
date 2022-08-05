@@ -267,6 +267,7 @@ DEF BATTLEANIM_BASE_TILE EQU 7 * 7  ; Maximum size of a pokemon picture
 	const ANIM_OBJ_LONG_PUNCH
 	const ANIM_OBJ_ABSORB_RED
 	const ANIM_OBJ_FLASH_CANNON
+	const ANIM_OBJ_VORTEX_YELLOW
 DEF NUM_ANIM_OBJS EQU const_value
 
 ; DoBattleAnimFrame arguments (see engine/battle_anims/functions.asm)
@@ -558,6 +559,8 @@ DEF NUM_BATTLEANIMFUNCS EQU const_value
 	const BATTLEANIMFRAMESET_BULLET_PUNCH
 	const BATTLEANIMFRAMESET_LONG_PUNCH
 	const BATTLEANIMFRAMESET_FLASH_CANNON
+	const BATTLEANIMFRAMESET_FOCUS_BLAST
+	const BATTLEANIMFRAMESET_VORTEX
 DEF NUM_BATTLEANIMFRAMESETS EQU const_value
 
 ; BattleAnimOAMData indexes (see data/battle_anims/oam.asm)
@@ -784,6 +787,9 @@ DEF NUM_BATTLEANIMFRAMESETS EQU const_value
 	const BATTLEANIMOAMSET_BUG_BUZZ1 ; ee in chatty
 	const BATTLEANIMOAMSET_BUG_BUZZ2 ; ed in chatty
 	const BATTLEANIMOAMSET_BULLET_PUNCH ; e2 in chatty
+	const BATTLEANIMOAMSET_VORTEX1 ; e9 in chatty
+	const BATTLEANIMOAMSET_VORTEX2 ; ea in chatty
+	const BATTLEANIMOAMSET_VORTEX3 ; eb in chatty
 DEF NUM_BATTLEANIMOAMSETS EQU const_value
 
 ; BattleBGEffects indexes (see engine/battle_anims/bg_effects.asm)
@@ -887,6 +893,7 @@ DEF NUM_ANIM_BGS EQU const_value - 1
 	const ANIM_GFX_AEROBLAST
 	const ANIM_GFX_MOON
 	const ANIM_GFX_BUG_BUZZ
+	const ANIM_GFX_LEAF_STORM
 	const ANIM_GFX_MINI
 	const ANIM_GFX_PLAYERHEAD
 	const ANIM_GFX_ENEMYFEET

@@ -834,51 +834,32 @@ BattleAnim_HiJumpKick:
 	anim_ret
 
 BattleAnim_FocusBlast:
-	anim_3gfx ANIM_GFX_SPEED, ANIM_GFX_CHARGE, ANIM_GFX_BEAM
-	anim_obj ANIM_OBJ_FOCUS_BLAST,   5, 4,  11, 0, $0
-	anim_bgeffect ANIM_BG_FADE_MON_TO_LIGHT, $0, $1, $40
-	anim_bgeffect ANIM_BG_CYCLE_OBPALS_GRAY_AND_YELLOW, $0, $2, $0
-.loop
-	anim_sound 0, 0, SFX_SWORDS_DANCE
-	anim_obj ANIM_OBJ_FOCUS,   5, 4,  13, 4, $6
-	anim_wait 2
-	anim_obj ANIM_OBJ_FOCUS,   4, 4,  13, 4, $6
-	anim_wait 2
-	anim_obj ANIM_OBJ_FOCUS,   6, 4,  13, 4, $8
-	anim_wait 2
-	anim_obj ANIM_OBJ_FOCUS,   3, 4,  13, 4, $8
-	anim_wait 2
-	anim_obj ANIM_OBJ_FOCUS,   7, 4,  13, 4, $6
-	anim_wait 2
-	anim_obj ANIM_OBJ_FOCUS,   2, 4,  13, 4, $8
-	anim_wait 2
-	anim_obj ANIM_OBJ_FOCUS,   8, 4,  13, 4, $8
-	anim_wait 2
-	anim_loop 5, .loop
-	anim_wait 56
-	anim_bgeffect ANIM_BG_SHAKE_SCREEN_X, $8, $2, $10
-	anim_bgeffect ANIM_BG_CYCLE_OBPALS_GRAY_AND_YELLOW, $0, $2, $0
-	anim_bgp $1b
-	anim_sound 0, 0, SFX_SUPER_EFFECTIVE
-	anim_obj ANIM_OBJ_BEAM,  8, 0, 11, 4, $0
-	anim_incobj 8
-	anim_wait 2
-	anim_obj ANIM_OBJ_BEAM, 10, 0, 10, 4, $0
-	anim_incobj 9
-	anim_wait 2
-	anim_obj ANIM_OBJ_BEAM, 12, 0,  9, 4, $0
-	anim_incobj 10
-	anim_wait 2
-	anim_obj ANIM_OBJ_BEAM, 14, 0,  8, 4, $0
-	anim_obj ANIM_OBJ_BEAM_TIP, 15, 6,  7, 6, $0
-	anim_incobj 11
-	anim_incobj 12
-	anim_wait 2
-	anim_obj ANIM_OBJ_BEAM_TIP, 17, 4,  7, 0, $0
-	anim_wait 2
-	anim_incobj 13
-	anim_incbgeffect ANIM_BG_FADE_MON_TO_LIGHT_REPEATING
-	anim_bgp $e4
+	anim_2gfx ANIM_GFX_LEAF_STORM, ANIM_GFX_WIND
+	anim_bgeffect ANIM_BG_ALTERNATE_HUES, $0, $2, $0
+	anim_obj ANIM_OBJ_AGILITY, 8, 24, $10
+	anim_obj ANIM_OBJ_AGILITY, 8, 88, $8
+	anim_wait 4
+	anim_obj ANIM_OBJ_AGILITY, 8, 32, $6
+	anim_obj ANIM_OBJ_AGILITY, 8, 80, $4
+	anim_sound 6, 2, SFX_OUTRAGE
+	anim_obj ANIM_OBJ_VORTEX_YELLOW, 48, 96, $30
+	anim_wait 63
+	anim_incobj 5
+	anim_wait 1
+	anim_bgeffect ANIM_BG_FLASH_INVERTED, $0, $4, $2
+	anim_3gfx ANIM_GFX_CHARGE, ANIM_GFX_WIND, ANIM_GFX_EXPLOSION
+	anim_sound 0, 1, SFX_RAZOR_WIND
+	anim_obj ANIM_OBJ_FOCUS_BLAST, 48, 96, $12
+	anim_wait 42
+	anim_sound 0, 1, SFX_TACKLE
+	anim_obj ANIM_OBJ_EXPLOSION2, 128, 48, $0
+	anim_wait 5
+	anim_sound 0, 1, SFX_TACKLE
+	anim_obj ANIM_OBJ_EXPLOSION2, 144, 46, $0
+	anim_wait 5
+	anim_sound 0, 1, SFX_TACKLE
+	anim_obj ANIM_OBJ_EXPLOSION2, 136, 64, $0
+	anim_wait 16
 	anim_ret
 
 BattleAnim_HyperFang:
