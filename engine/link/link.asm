@@ -2191,17 +2191,13 @@ PerformLinkChecks:
 	; is other game ID == 0 ?
 	and a
 	jmp z, .WrongGameID
-	ld a, LINK_GAME_ID
-	; is our game ID >= 3 ?
-	cp 3 
-	jmp nc, .WrongGameID
-	; is our game ID == 0 ?
-	and a
-	jmp z, .WrongGameID
 	ld a, [wChosenCableClubRoom]
 	; is game mode == colosseum ?
 	cp LINK_COLOSSEUM - 1
 	jmp z, .WrongGameID
+if (LINK_GAME_ID != 1 && LINK_GAME_ID != 2)
+	jmp .WrongGameID
+endc
 .game_id_ok
 
 	; Perform Version and Room Byte Transfers
