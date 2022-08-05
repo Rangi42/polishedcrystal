@@ -92,7 +92,6 @@ Shamouti Island:
 ### Optimizations
 
 * Optimize map scripts with the various new commands and PERSONTYPE_GENERICTRAINER
-* Phone uses a bitfield to allow storing all numbers
 
 
 ## Postponed until 4.0
