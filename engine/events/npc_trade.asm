@@ -29,7 +29,7 @@ NPCTrade::
 
 	inc hl
 	ld a, [hl]
-	and $ff - EXTSPECIES_MASK
+	and ~EXTSPECIES_MASK
 	ld a, [wCurForm]
 	jr nz, .check_form ; if NO_FORM specified, then accept any mon of this species
 	and EXTSPECIES_MASK

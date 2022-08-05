@@ -315,14 +315,14 @@ InitMapNameFrame:
 	or X_FLIP
 	ld [hli], a
 	; middle row
-	and $ff - X_FLIP
+	and ~X_FLIP
 	ld [hli], a
 	ld bc, SCREEN_WIDTH - 2
 	rst ByteFill
 	or X_FLIP
 	ld [hli], a
 	; bottom row
-	and $ff - X_FLIP
+	and ~X_FLIP
 	ld bc, SCREEN_WIDTH - 1
 	rst ByteFill
 	or X_FLIP

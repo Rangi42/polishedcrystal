@@ -272,7 +272,7 @@ endc
 	ld hl, wOptions2
 	ld a, [hl]
 	push af
-	and $ff - (BATTLE_SWITCH | BATTLE_PREDICT)
+	and ~(BATTLE_SWITCH | BATTLE_PREDICT)
 	ld [hl], a
 	ld hl, wOTPlayerName
 	ld de, wOTClassName

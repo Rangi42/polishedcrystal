@@ -1344,7 +1344,7 @@ endr
 .got_pikachu_move
 	ld c, a
 	ld a, b
-	and $ff - FORM_MASK
+	and ~FORM_MASK
 	or c
 	ld [wCurForm], a
 	ld [wOTPartyMon1Form], a

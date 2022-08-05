@@ -162,7 +162,7 @@ MoveDeletion:
 	ret nz
 .reset_pikachu_form
 	ld a, [hl]
-	and $ff - FORM_MASK
+	and ~FORM_MASK
 	or PLAIN_FORM
 	ld [hl], a
 
