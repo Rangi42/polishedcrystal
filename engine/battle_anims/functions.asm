@@ -1916,8 +1916,8 @@ BattleAnimFunction_52:
 	call BattleAnim_IncAnonJumptableIndex
 	ld hl, BATTLEANIMSTRUCT_VAR1
 	add hl, bc
-	ld [hl], $30
-	inc hl
+	ld a, $30
+	ld [hli], a
 	ld [hl], $48
 .one
 	ld hl, BATTLEANIMSTRUCT_VAR1
@@ -1947,8 +1947,8 @@ BattleAnimFunction_PowerUp:
 	call BattleAnim_IncAnonJumptableIndex
 	ld hl, BATTLEANIMSTRUCT_VAR1
 	add hl, bc
-	ld [hl], 40
-	inc hl
+	ld a, 40
+	ld [hli], a
 	ld [hl], 0
 .one
 	ld hl, BATTLEANIMSTRUCT_PARAM

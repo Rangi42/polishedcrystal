@@ -324,8 +324,8 @@ UpdateFrame:
 	ld e, a
 	ld d, 0
 	hlcoord 17, 11
-	ld [hl], " "
-	dec hl
+	ld a, " "
+	ld [hld], a
 	lb bc, PRINTNUM_LEFTALIGN, 2
 	call PrintNumFromReg
 	call LoadFontsExtra
