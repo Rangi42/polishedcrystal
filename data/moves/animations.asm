@@ -3963,28 +3963,41 @@ BattleAnim_ZapCannon:
 	anim_bgp $e4
 	anim_ret
 
-; Flash Cannon animation from Pokémon Prism
 BattleAnim_FlashCannon:
-	anim_1gfx ANIM_GFX_EGG
+	anim_3gfx ANIM_GFX_CHARGE, ANIM_GFX_SHINE, ANIM_GFX_LIGHTNING
 	anim_bgeffect ANIM_BG_ALTERNATE_HUES, $0, $2, $0
-	anim_bgeffect ANIM_BG_SHAKE_SCREEN_X, $60, $2, $0
+	anim_sound 0, 0, SFX_SWORDS_DANCE
 .loop
-	anim_bgeffect ANIM_BG_FLASH_INVERTED, $0, $4, $3
-;	anim_bgp $1b
-	anim_sound 0, 1, SFX_SHINE
-	anim_obj ANIM_OBJ_OCTAZOOKA,  8, 0, 11, 4, $4
+	anim_obj ANIM_OBJ_FLASH_CANNON, 48, 96, $38
 	anim_wait 4
-;	anim_bgp $e4
-	anim_sound 0, 1, SFX_SHINE
-	anim_obj ANIM_OBJ_OCTAZOOKA,  8, 0, 11, 4, $4
+	anim_obj ANIM_OBJ_FLASH_CANNON, 48, 96, $20
 	anim_wait 4
-	anim_loop 10, .loop
-	anim_call BattleAnim_UserObj_1Row
-	anim_bgeffect ANIM_BG_VIBRATE_MON, $0, $0, $0
+	anim_obj ANIM_OBJ_FLASH_CANNON, 48, 96, $8
+	anim_wait 4
+	anim_obj ANIM_OBJ_FLASH_CANNON, 48, 96, $10
+	anim_wait 4
+	anim_obj ANIM_OBJ_FLASH_CANNON, 48, 96, $28
+	anim_wait 4
+	anim_obj ANIM_OBJ_FLASH_CANNON, 48, 96, $0
+	anim_wait 4
+	anim_obj ANIM_OBJ_FLASH_CANNON, 48, 96, $18
+	anim_wait 4
+	anim_obj ANIM_OBJ_FLASH_CANNON, 48, 96, $30
+	anim_wait 4
+	anim_loop 2, .loop
+	anim_wait 16
+	anim_obp0 $30
+	anim_bgeffect ANIM_BG_CYCLE_BGPALS_INVERTED, $0, $4, $0
+	anim_sound 0, 0, SFX_CUT
+	anim_obj ANIM_OBJ_ZAP_CANNON, 64, 92, $2
 	anim_wait 32
-	anim_call BattleAnim_ShowMon_1
-	anim_wait 1
-	anim_bgp $e4
+	anim_obj ANIM_OBJ_GLIMMER, 132, 28, $0
+	anim_wait 5
+	anim_sound 0, 0, SFX_METRONOME
+	anim_obj ANIM_OBJ_GLIMMER, 112, 60, $0
+	anim_wait 5
+	anim_obj ANIM_OBJ_GLIMMER, 144, 68, $0
+	anim_wait 16
 	anim_ret
 
 ; Aura Sphere animation from Pokémon Prism
