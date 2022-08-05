@@ -1924,7 +1924,6 @@ BattleAnim_FocusEnergy:
 	anim_call BattleAnim_ShowMon_0
 	anim_ret
 
-; Bullet Punch animation from Pokémon Prism
 BattleAnim_BulletPunch:
 	anim_1gfx ANIM_GFX_HIT
 	anim_call BattleAnim_UserObj_1Row
@@ -3415,16 +3414,25 @@ BattleAnim_Sketch:
 	anim_wait 1
 	anim_ret
 
-; Drain Punch animation from Pokémon Prism
 BattleAnim_DrainPunch:
-	anim_2gfx ANIM_GFX_SPEED, ANIM_GFX_HIT
-	anim_sound 0, 1, SFX_SUBMISSION
-	anim_obj ANIM_OBJ_PUNCH, 17, 0,  7, 0, $0
-	anim_wait 6
-	anim_sound 0, 1, SFX_PLACE_PUZZLE_PIECE_DOWN
-	anim_obj ANIM_OBJ_HIT_YFIX, 17, 0,  7, 0, $0
-	anim_wait 20
-	anim_jump BattleAnim_Absorb
+	anim_2gfx ANIM_GFX_HIT, ANIM_GFX_CHARGE
+	anim_bgeffect ANIM_BG_SHAKE_SCREEN_X, $8, $2, $0
+	anim_sound 0, 1, SFX_MEGA_PUNCH
+	anim_obj ANIM_OBJ_LONG_PUNCH, 136, 52, $0
+	anim_wait 16
+.loop
+	anim_sound 6, 3, SFX_WATER_GUN
+	anim_obj ANIM_OBJ_ABSORB_RED, 128, 48, $2
+	anim_wait 3
+	anim_sound 6, 3, SFX_WATER_GUN
+	anim_obj ANIM_OBJ_ABSORB_RED, 136, 64, $3
+	anim_wait 4
+	anim_sound 6, 3, SFX_WATER_GUN
+	anim_obj ANIM_OBJ_ABSORB_RED, 136, 32, $4
+	anim_wait 3
+	anim_loop 6, .loop
+	anim_wait 32
+	anim_ret
 
 BattleAnim_Thief:
 	anim_1gfx ANIM_GFX_HIT

@@ -192,6 +192,7 @@ BattleAnimFrameData:
 	dw .Frameset_BugBuzzL ; bd
 	dw .Frameset_BugBuzzR ; be
 	dw .Frameset_BulletPunch ; bf
+	dw .Frameset_LongPunch ; c0
 	assert_table_length NUM_BATTLEANIMFRAMESETS
 
 ; OAM index (see battle/objects/oam.asm), flip flags / duration
@@ -1319,3 +1320,8 @@ BattleAnimFrameData:
 	frame BATTLEANIMOAMSET_BULLET_PUNCH,  4
 	frame BATTLEANIMOAMSET_02,  1
 	delanim
+
+.Frameset_LongPunch:
+	frame BATTLEANIMOAMSET_03,  4
+	frame BATTLEANIMOAMSET_01,  1
+	dorestart

@@ -264,6 +264,8 @@ DEF BATTLEANIM_BASE_TILE EQU 7 * 7  ; Maximum size of a pokemon picture
 	const ANIM_OBJ_BUG_BUZZ_R
 	const ANIM_OBJ_ECHOED_VOICE
 	const ANIM_OBJ_BULLET_PUNCH
+	const ANIM_OBJ_LONG_PUNCH
+	const ANIM_OBJ_ABSORB_RED
 DEF NUM_ANIM_OBJS EQU const_value
 
 ; DoBattleAnimFrame arguments (see engine/battle_anims/functions.asm)
@@ -552,6 +554,7 @@ DEF NUM_BATTLEANIMFUNCS EQU const_value
 	const BATTLEANIMFRAMESET_BUG_BUZZ_L
 	const BATTLEANIMFRAMESET_BUG_BUZZ_R
 	const BATTLEANIMFRAMESET_BULLET_PUNCH
+	const BATTLEANIMFRAMESET_LONG_PUNCH
 DEF NUM_BATTLEANIMFRAMESETS EQU const_value
 
 ; BattleAnimOAMData indexes (see data/battle_anims/oam.asm)
