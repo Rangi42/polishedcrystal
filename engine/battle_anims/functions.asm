@@ -1974,7 +1974,7 @@ BattleAnimFunction_PowerUp:
 	ld a, [hli]
 	ld d, a
 	ld e, [hl]
-	ld hl, -4.5 >> 8
+	ld hl, -(4.5 >> 8)
 	add hl, de
 	jmp nc, DeinitBattleAnimation
 	ld e, l
@@ -4072,7 +4072,7 @@ BattleAnimFunction_PauseThenRush:
 	ld hl, BATTLEANIMSTRUCT_PARAM
 	add hl, bc
 	ld a, [hl]
-	jmp BattleAnim_StepToTarget
+	jr BattleAnim_StepToTarget
 
 BattleAnimFunction_RadialMoveOut:
 	call BattleAnim_AnonJumptable
