@@ -2143,23 +2143,23 @@ PerformLinkChecks:
 	ld hl, wLinkReceivedPolishedMiscBuffer
 	call ByteFill
 
-	; This acts as the old Special_CheckBothSelectedSameRoom
+	; This acts as the old Special_CheckBothSelectedSameRoom.
 	; We send a dummy byte here that will cause old versions
-	; of PolishedCrystal's CheckBothSelectedSameRoom function
+	; of Polished Crystal's CheckBothSelectedSameRoom function
 	; to fail.
 	ld a, LINK_ROOM_DUMMY - 1
 	call Link_ExchangeNybble
 	cp LINK_ROOM_DUMMY - 1
 	jmp nz, .OldVersionDetected
 
-	; Prepare for Multiple Byte Transfers
+	; Prepare for multiple byte transfers
 	ldh a, [rIF]
 	push af
 	ldh a, [rIE]
 	push af
 	call PrepareForLinkTransfers
 
-	; Perform Game ID Byte Transfer
+	; Perform game ID byte transfer.
 	; hl needs to be set to wLinkPolishedMiscBuffer
 	; so we load the values in reverse.
 	ld hl, wLinkPolishedMiscBuffer + 2
@@ -2177,30 +2177,22 @@ PerformLinkChecks:
 	ld bc, SERIAL_POLISHED_MAX_PREAMBLE_LENGTH + 1
 	call Serial_ExchangeBytes
 
-	; Save GAME ID and Perform check
+	; Save other game ID and check link compatibility
 	call .SkipPreambleBytes
 	ld [wLinkOtherPlayerGameID], a
-	assert ((LINK_GAME_ID_FAITHFUL + LINK_GAME_ID_NON_FAITHFUL) == 3) && LINK_GAME_ID_FAITHFUL != 0 && LINK_GAME_ID_NON_FAITHFUL != 0, \
-		"LINK_GAME_ID_FAITHFUL and LINK_GAME_ID_NON_FAITHFUL must be >0, <3, and != each other for the GAME ID Checks."
-	; Is Other game ID == our game ID ?
+	; Is other game ID == our game ID?
 	cp LINK_GAME_ID
 	jr z, .game_id_ok
-	; Is other game ID >= 3 ?
-	cp 3
-	jmp nc, .WrongGameID
-	; is other game ID == 0 ?
-	and a
-	jmp z, .WrongGameID
+	; Is other game ID != the other compatible game ID?
+	cp OTHER_GAME_ID
+	jmp nz, .WrongGameID
+	; The other game ID can be traded with but not battled
 	ld a, [wChosenCableClubRoom]
-	; is game mode == colosseum ?
 	cp LINK_COLOSSEUM - 1
 	jmp z, .WrongGameID
-if (LINK_GAME_ID != LINK_GAME_ID_FAITHFUL && LINK_GAME_ID != LINK_GAME_ID_NON_FAITHFUL)
-	jmp .WrongGameID
-endc
 .game_id_ok
 
-	; Perform Version and Room Byte Transfers
+	; Perform version and room byte transfers
 	ld hl, wLinkPolishedMiscBuffer + 6
 	ld a, [wChosenCableClubRoom]
 	ld [hld], a
@@ -2220,7 +2212,7 @@ endc
 	ld bc, SERIAL_POLISHED_MAX_PREAMBLE_LENGTH + 5
 	call Serial_ExchangeBytes
 
-	; Save Version and Room Bytes
+	; Save version and room bytes
 	call .SkipPreambleBytes
 	ld [wLinkOtherPlayerVersion], a
 	ld a, [de]
@@ -2234,19 +2226,19 @@ endc
 	inc de
 	ld a, [de]
 	ld b, a
-	; Check Correct Room
+	; Check correct room
 	ld a, [wChosenCableClubRoom]
 	cp b
 	jr nz, .WrongRoom
 	inc a
 	ld [wLinkMode], a
-	; Check Version
+	; Check version
 	call CheckCorrectLinkVersion
 	cp TRUE
 	jr c, .WrongVersion
 	jr nz, .WrongMinVersion
 
-	; Perform Options Byte Transfers
+	; Perform options byte transfers
 	ld hl, wLinkPolishedMiscBuffer + 3
 	ld a, [wInitialOptions2]
 	ld [hld], a
@@ -2271,7 +2263,7 @@ endc
 	ld a, [wLinkMode]
 	cp LINK_TRADECENTER
 	jr z, .skip_options
-	; Perform Options Check
+	; Perform options check
 	call .SkipPreambleBytes
 	ld b, a
 	ld a, [wInitialOptions]
@@ -2286,7 +2278,7 @@ endc
 	jr nz, .WrongOptions
 .skip_options
 
-	; Process Link Opponent Gender
+	; Process link opponent gender
 	ld a, [wPlayerGender]
 	call Link_ExchangeNybble
 	ld [wLinkOtherPlayerGender], a
@@ -2354,7 +2346,7 @@ CheckCorrectLinkVersion:
 	cp LINK_TRADECENTER
 	jr z, .trade_center
 
-	; Is Other Game Version == LINK_VERSION ?
+	; Is other game version == LINK_VERSION?
 	ld a, [hli]
 	cp HIGH(LINK_VERSION)
 	jr nz, .version_not_equal
@@ -2364,7 +2356,7 @@ CheckCorrectLinkVersion:
 	jr .version_not_equal
 
 .trade_center
-	; Is Other Game Version >= LINK_MIN_TRADE_VERSION ?
+	; Is other game version >= LINK_MIN_TRADE_VERSION?
 	ld a, [hli]
 	cp HIGH(LINK_MIN_TRADE_VERSION)
 	jr z, .continue
@@ -2376,7 +2368,7 @@ CheckCorrectLinkVersion:
 	jr c, .other_game_below_min_version
 
 .check_other_min_version
-	; Is LINK_VERSION >= Other Game Min Trade Version ?
+	; Is LINK_VERSION >= other game min trade version?
 	ld hl, wLinkOtherPlayerMinTradeVersion
 	ld a, [hli]
 	cp HIGH(LINK_VERSION)
