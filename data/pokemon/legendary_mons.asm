@@ -12,4 +12,4 @@ UberMons::
 	dp LUGIA
 	dp HO_OH
 	dp CELEBI
-	db -1
+	db 0
