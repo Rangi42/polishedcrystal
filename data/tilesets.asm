@@ -69,6 +69,10 @@ TilesetJohto1GFX1::
 TilesetEcruteakShrineGFX1::
 INCBIN "gfx/tilesets/johto_traditional.2bpp.vram1.lz"
 
+TilesetJohto1GFX2::
+TilesetEcruteakShrineGFX2::
+INCBIN "gfx/tilesets/johto_traditional.2bpp.vram2.lz"
+
 TilesetJohto1Meta::
 INCBIN "data/tilesets/johto_traditional_metatiles.bin.lz"
 
@@ -837,7 +841,6 @@ INCBIN "data/tilesets/ecruteak_shrine_collision.bin.lz"
 SECTION "Tileset Data - GFX2", ROMX
 
 ; None of the tilesets need GFX2, so consolidate them here.
-TilesetJohto1GFX2::
 TilesetJohto2GFX2::
 TilesetJohto3GFX2::
 TilesetJohto4GFX2::
@@ -880,5 +883,4 @@ TilesetRuinsGFX2::
 TilesetAlphGFX2::
 TilesetPokemonMansionGFX2::
 TilesetBattleFactoryGFX2::
-TilesetEcruteakShrineGFX2::
 	db $ff ; Compressed data is terminated with $ff.
