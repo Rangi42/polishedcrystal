@@ -2195,7 +2195,7 @@ PerformLinkChecks:
 	; is game mode == colosseum ?
 	cp LINK_COLOSSEUM - 1
 	jmp z, .WrongGameID
-if (LINK_GAME_ID != 1 && LINK_GAME_ID != 2)
+if (LINK_GAME_ID != LINK_GAME_ID_FAITHFUL && LINK_GAME_ID != LINK_GAME_ID_NON_FAITHFUL)
 	jmp .WrongGameID
 endc
 .game_id_ok
