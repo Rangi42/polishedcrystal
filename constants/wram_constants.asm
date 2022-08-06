@@ -103,6 +103,7 @@ DEF NUM_FONTS EQU const_value
 	const PSS_OPT          ; 7
 
 DEF ABILITIES_OPTMASK EQU 1 << ABILITIES_OPT
+DEF LINK_OPTMASK EQU (1 << NATURES_OPT) | (1 << ABILITIES_OPT) | (1 << PERFECT_IVS_OPT) | (1 << PSS_OPT)
 
 ; wInitialOptions2::
 	const_def
