@@ -148,7 +148,6 @@ MoveEffectsPointers:
 	dw SkillSwap
 	dw Trick
 	dw KnockOff
-	dw FuryStrikes
 	dw BugBite
 	dw GyroBall
 	dw BodySlam

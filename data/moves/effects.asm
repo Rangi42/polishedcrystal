@@ -145,7 +145,6 @@ DoubleSlap:
 PinMissile:
 IcicleSpear:
 RockBlast:
-FuryStrikes:
 	checkobedience
 	usedmovetext
 	doturn

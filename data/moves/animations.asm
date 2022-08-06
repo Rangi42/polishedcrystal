@@ -264,10 +264,10 @@ endc
 	assert_table_length NUM_ATTACKS + 1
 	assert_table_length $100
 ; $100
-	dw BattleAnim_ThrowPokeBall
-	dw BattleAnim_SendOutMon
-	dw BattleAnim_ReturnMon
-	dw BattleAnim_Confused
+	dw BattleAnim_FuryAttack
+	dw BattleAnim_MilkDrink
+	dw BattleAnim_Withdraw
+	dw BattleAnim_Harden
 	dw BattleAnim_Slp
 	dw BattleAnim_Brn
 	dw BattleAnim_Psn
@@ -278,18 +278,17 @@ endc
 	dw BattleAnim_InSandstorm
 	dw BattleAnim_InHail
 	dw BattleAnim_UnderCurse
-	dw BattleAnim_InWhirlpool
-	dw BattleAnim_Miss
-	dw BattleAnim_EnemyDamage
-	dw BattleAnim_EnemyStatDown
-	dw BattleAnim_PlayerStatDown
-	dw BattleAnim_PlayerDamage
-	dw BattleAnim_Wobble
-	dw BattleAnim_Shake
-	dw BattleAnim_HitConfusion
-	dw BattleAnim_Sharpen
+	dw BattleAnim_Confused
 	dw BattleAnim_StatUp
 	dw BattleAnim_StatDown
+	dw BattleAnim_Sharpen
+	dw BattleAnim_ThrowPokeBall
+	dw BattleAnim_SendOutMon
+	dw BattleAnim_ReturnMon
+	dw BattleAnim_Miss
+	dw BattleAnim_EnemyDamage
+	dw BattleAnim_PlayerDamage
+	dw BattleAnim_HitConfusion
 	assert_table_length NUM_BATTLE_ANIMS + 1
 
 BattleAnim_0:
@@ -656,18 +655,6 @@ BattleAnim_UnderCurse:
 	anim_wait 40
 	anim_ret
 
-BattleAnim_InWhirlpool:
-	anim_1gfx ANIM_GFX_WIND
-	anim_bgeffect ANIM_BG_WHIRLPOOL, $0, $0, $0
-	anim_sound 0, 1, SFX_SURF
-.loop
-	anim_obj ANIM_OBJ_GUST, -16, 4,   9, 0, $0
-	anim_wait 6
-	anim_loop 6, .loop
-	anim_incbgeffect ANIM_BG_WHIRLPOOL
-	anim_wait 1
-	anim_ret
-
 BattleAnim_HitConfusion:
 	anim_1gfx ANIM_GFX_HIT
 	anim_sound 0, 0, SFX_POUND
@@ -687,34 +674,8 @@ BattleAnim_EnemyDamage:
 	anim_loop 3, .loop
 	anim_ret
 
-BattleAnim_EnemyStatDown:
-	anim_call BattleAnim_UserObj_1Row
-	anim_bgeffect ANIM_BG_VIBRATE_MON, $0, $0, $0
-	anim_wait 40
-	anim_call BattleAnim_ShowMon_1
-	anim_wait 1
-	anim_ret
-
-BattleAnim_PlayerStatDown:
-	anim_call BattleAnim_UserObj_1Row
-	anim_bgeffect ANIM_BG_WOBBLE_PLAYER, $0, $0, $0
-	anim_wait 40
-	anim_call BattleAnim_ShowMon_1
-	anim_wait 1
-	anim_ret
-
 BattleAnim_PlayerDamage:
 	anim_bgeffect ANIM_BG_SHAKE_SCREEN_Y, $20, $2, $20
-	anim_wait 40
-	anim_ret
-
-BattleAnim_Wobble:
-	anim_bgeffect ANIM_BG_WOBBLE_SCREEN, $0, $0, $0
-	anim_wait 40
-	anim_ret
-
-BattleAnim_Shake:
-	anim_bgeffect ANIM_BG_SHAKE_SCREEN_X, $20, $2, $40
 	anim_wait 40
 	anim_ret
 
@@ -1627,7 +1588,6 @@ BattleAnim_Scratch:
 	anim_ret
 
 BattleAnim_FuryStrikes:
-	anim_jumpif $2, BattleAnim_FuryAttack
 BattleAnim_FurySwipes: ; removed
 	anim_1gfx ANIM_GFX_CUT
 	anim_jumpif $1, .alternate
@@ -3110,8 +3070,6 @@ BattleAnim_BulkUp:
 	anim_ret
 
 BattleAnim_DefenseCurl:
-	anim_jumpif $1, BattleAnim_Withdraw
-	anim_jumpif $2, BattleAnim_Harden
 	anim_1gfx ANIM_GFX_SHAPES
 	anim_obp0 $e4
 	anim_call BattleAnim_TargetObj_1Row
