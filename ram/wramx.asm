@@ -922,13 +922,12 @@ wObjectMasks:: ds NUM_OBJECTS
 
 wVariableSprites:: ds $100 - SPRITE_VARS
 
-wEnteredMapFromContinue:: db
-
 wStatusFlags3::
 	; 0 - judge machine
 	db
 
-	ds 1
+wEnteredMapFromContinue:: db
+
 wTimeOfDayPal:: db
 	ds 4
 wTimeOfDayPalFlags:: db
