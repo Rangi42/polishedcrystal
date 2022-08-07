@@ -245,17 +245,18 @@ MrPokemonText_OddSouvenir:
 	line "on my trip to the"
 	cont "Orange Islands."
 
-	para "Did you know some"
-	line "#mon species"
-	cont "have other forms?"
+	para "I saw some oddly-"
+	line "formed #mon"
+	cont "there too!"
 
 	para "Hmm… I wonder…"
 
-	para "What happens if"
-	line "a #mon with an"
+	para "Is there a conn-"
+	line "ection between"
 
-	para "Alolan form holds"
-	line "that souvenir?"
+	para "that souvenir and"
+	line "those unusual"
+	cont "forms of #mon?"
 	done
 
 MrPokemonText_ImDependingOnYou:
