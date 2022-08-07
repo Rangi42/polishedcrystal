@@ -30,8 +30,9 @@ MagnetTunnelInside_MapScriptHeader:
 	object_event 20, 23, SPRITE_N64, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_ROCK, OBJECTTYPE_COMMAND, jumptext, MagnetTunnelInsideLodestoneText, EVENT_MAGNET_TUNNEL_LODESTONE_2
 	object_event 20,  5, SPRITE_N64, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_ROCK, OBJECTTYPE_COMMAND, jumptext, MagnetTunnelInsideLodestoneText, EVENT_MAGNET_TUNNEL_LODESTONE_3
 	object_event 35,  5, SPRITE_N64, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_ROCK, OBJECTTYPE_COMMAND, jumptext, MagnetTunnelInsideLodestoneText, EVENT_MAGNET_TUNNEL_LODESTONE_4
-	object_event  8, 13, SPRITE_ENGINEER, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, MagnetTunnelInsideEngineerText1, -1
-	object_event 32, 21, SPRITE_ENGINEER, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, MagnetTunnelInsideEngineerText2, -1
+	object_event 11, 20, SPRITE_ENGINEER, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, MagnetTunnelInsideEngineerText1, -1
+	object_event  8, 13, SPRITE_ENGINEER, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, MagnetTunnelInsideEngineerText2, -1
+	object_event 32, 21, SPRITE_ENGINEER, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, MagnetTunnelInsideEngineerText3, -1
 	object_event 22,  8, SPRITE_ENGINEER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 2, GenericTrainerEngineerGraden, -1
 	object_event 31, 12, SPRITE_ENGINEER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 4, GenericTrainerEngineerGustav, -1
 	object_event 24, 23, SPRITE_ENGINEER, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 3, GenericTrainerEngineerNicolas, -1
@@ -351,15 +352,32 @@ MagnetTunnelInsideEngineerText2:
 	line "#mon here has"
 	cont "more than doubled!"
 
+	para "We thought this"
+	line "tunnel was for the"
+	
+	para "Magnet Train, but"
+	line "its more like a"
+	
+	para "home for magnet"
+	line "#mon! Hahaha!"
+	done
+	
+MagnetTunnelInsideEngineerText3:
+	text "Everyday, more and"
+	line "more Electric-type"
+
+	para "#mon show up"
+	line "and cause issues."
+	
+	para "Especially the"
+	line "Magnemite!"
+	
 	para "The foreman thinks"
 	line "they must be drawn"
 
 	para "to the lodestone's"
 	line "unique magnetic"
 	cont "properties."
-
-	para "Especially the"
-	line "Magnemite."
 
 	para "I wonder why?"
 	done
@@ -387,21 +405,6 @@ GenericTrainerEngineerGraden:
 	line "cause us so much"
 	cont "headache!"
 
-	para "Everyday, more and"
-	line "more Electric-type"
-
-	para "#mon showed up"
-	line "and caused delays."
-
-	para "We thought this"
-	line "tunnel was for the"
-	
-	para "Magnet Train, but"
-	line "as it turns out,"
-	
-	para "its more like a"
-	line "home for magnet"
-	cont "#mon! Hahaha!"
 	done
 
 .SeenText:
@@ -422,7 +425,7 @@ GenericTrainerEngineerGustav:
 
 	text "This machine has"
 	line "been acting really"
-	cont "weird lately."
+	cont "strange lately."
 
 	para "I've tried to fix"
 	line "it, but its been"
@@ -430,7 +433,7 @@ GenericTrainerEngineerGustav:
 
 	para "I can't seem to"
 	line "figure out what's"
-	cont "going on."
+	cont "going on!"
 
 	para "I'm worried if I"
 	line "turn it on again,"
@@ -439,11 +442,11 @@ GenericTrainerEngineerGustav:
 	line "circuit and be"
 	cont "kaput…"
 
-	para "Don't tell the"
-	line "foreman, okay?"
+	; para "Don't tell the"
+	; line "foreman, okay?"
 
-	para "And don't mess with"
-	line "it either! Deal?"
+	; para "And don't mess with"
+	; line "it either! Deal?"
 	done
 
 .SeenText:
@@ -465,18 +468,18 @@ GenericTrainerEngineerNicolas:
 	line "generate some"
 	cont "serious power!"
 
-	para "When powered on,"
+	para "When turned on,"
 	line "they generate an"
 
 	para "extremely powerful"
 	line "magnetic field."
 
-	para "That sure comes in"
-	line "handy when needing"
+	; para "That sure comes in"
+	; line "handy when trying"
 
-	para "to move heavy,"
-	line "magnetic rocks"
-	cont "like lodestone."
+	; para "to move large"
+	; line "magnetic rocks"
+	; cont "like lodestone."
 
 	para "But they can be"
 	line "really dangerous…"
