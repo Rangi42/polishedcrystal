@@ -63,6 +63,8 @@ MrPokemonsHouse_MrPokemonScript:
 	opentext
 	checkkeyitem RED_SCALE
 	iftruefwd .RedScale
+	checkitem ODD_SOUVENIR
+	iftrue_jumpopenedtext MrPokemonText_OddSouvenir
 	checkevent EVENT_GAVE_MYSTERY_EGG_TO_ELM
 	iftrue_jumpopenedtext MrPokemonText_AlwaysNewDiscoveries
 	jumpopenedtext MrPokemonText_ImDependingOnYou
@@ -234,6 +236,27 @@ MrPokemonsHouse_MrPokemonHealText:
 	para "Here. Your #mon"
 	line "should have some"
 	cont "rest."
+	done
+
+MrPokemonText_OddSouvenir:
+	text "Oh! That souvenir!"
+
+	para "I got one of those"
+	line "on my trip to the"
+	cont "Orange Islands."
+
+	para "I saw some oddly-"
+	line "formed #mon"
+	cont "there too!"
+
+	para "Hmm… I wonder…"
+
+	para "Is there a conn-"
+	line "ection between"
+
+	para "that souvenir and"
+	line "those unusual"
+	cont "forms of #mon?"
 	done
 
 MrPokemonText_ImDependingOnYou:

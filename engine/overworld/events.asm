@@ -1221,6 +1221,7 @@ _TryWildEncounter_BugContest:
 ; Form
 	ld a, [hli]
 	ld [wCurForm], a
+	ld [wWildMonForm], a
 ; Min level
 	ld a, [hli]
 	ld d, a

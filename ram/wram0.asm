@@ -189,7 +189,12 @@ wTilePermissions::
 
 wCompressedTextBuffer:: ds 2 ; one character and "@"
 
-	ds 11
+wLinkOtherPlayerGameID:: db
+wLinkOtherPlayerVersion:: dw
+wLinkOtherPlayerMinTradeVersion:: dw
+wLinkOtherPlayerGender:: db
+
+	ds 5
 
 
 SECTION "Sprite Animations", WRAM0
@@ -339,6 +344,11 @@ SECTION UNION "Misc 480", WRAM0
 wLinkMisc:: ds 10
 wLinkPlayerFixedPartyMon1ID:: ds 3
 	ds 37
+
+SECTION UNION "Misc 480", WRAM0
+; polished link transfer buffer
+wLinkReceivedPolishedMiscBuffer:: ds 10
+wLinkPolishedMiscBuffer:: ds 10
 
 
 SECTION UNION "Misc 480", WRAM0
@@ -1336,7 +1346,7 @@ wOptions1::
 wSaveFileExists:: db
 
 wTextboxFrame::
-; bits 0-3: textbox frame 0-8
+; bits 0-4: textbox frame 1-20
 	db
 wTextboxFlags::
 ; bit 0: 1-frame text delay

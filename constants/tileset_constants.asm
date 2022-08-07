@@ -43,6 +43,7 @@
 	const TILESET_ALPH_WORD_ROOM       ; 29
 	const TILESET_POKEMON_MANSION      ; 2a
 	const TILESET_BATTLE_FACTORY       ; 2b
+	const TILESET_ECRUTEAK_SHRINE      ; 2c
 DEF NUM_TILESETS EQU const_value - 1
 
 ; wTileset struct size

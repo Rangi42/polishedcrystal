@@ -450,6 +450,7 @@ RespawnOneOffs:
 	ret nz
 	eventflagreset EVENT_TIN_TOWER_ROOF_HO_OH
 	eventflagreset EVENT_FOUGHT_HO_OH
+	eventflagreset EVENT_EUSINES_HOUSE_EUSINE
 	ret
 
 RespawnRoamingRaikou:

@@ -143,7 +143,7 @@ SuicuneBattle:
 	setevent EVENT_SAW_SUICUNE_AT_CIANWOOD_CITY
 	setmapscene CIANWOOD_CITY, $0
 	setscene $1
-	clearevent EVENT_SET_WHEN_FOUGHT_HO_OH
+	clearevent EVENT_EUSINES_HOUSE_EUSINE
 	reloadmapafterbattle
 	turnobject PLAYER, DOWN
 	pause 20

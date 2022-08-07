@@ -17,7 +17,7 @@ CinnabarLab_MapScriptHeader:
 	bg_event 24, 14, BGEVENT_JUMPTEXT, CinnabarLabRoom3SignText
 	bg_event 25, 14, BGEVENT_JUMPTEXT, CinnabarLabLockedDoorText
 	bg_event  3,  6, BGEVENT_JUMPTEXT, CinnabarLabRoom4SignText
-	bg_event  3,  6, BGEVENT_ITEM + BERSERK_GENE, EVENT_CINNABAR_LAB_HIDDEN_BERSERK_GENE
+	bg_event  3, 11, BGEVENT_ITEM + BERSERK_GENE, EVENT_CINNABAR_LAB_HIDDEN_BERSERK_GENE
 
 	def_object_events
 	object_event 15,  6, SPRITE_GIOVANNI, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, ObjectEvent, -1

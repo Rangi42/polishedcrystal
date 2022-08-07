@@ -122,7 +122,7 @@ LearnMove:
 	jr nz, .done_pikachu
 .got_form
 	ld a, [hl]
-	and $ff - FORM_MASK
+	and ~FORM_MASK
 	or b
 	ld [hl], a
 

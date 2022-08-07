@@ -554,7 +554,7 @@ ENDM
 	map_attributes ValeriesHouse, VALERIES_HOUSE, $0, 0
 	map_attributes EcruteakCherishBallHouse, ECRUTEAK_CHERISH_BALL_HOUSE, $0, 0
 	map_attributes EcruteakDestinyKnotHouse, ECRUTEAK_DESTINY_KNOT_HOUSE, $0, 0
-	map_attributes EcruteakShrineOutside, ECRUTEAK_SHRINE_OUTSIDE, $5, 0
+	map_attributes EcruteakShrineOutside, ECRUTEAK_SHRINE_OUTSIDE, $0, 0
 	map_attributes EcruteakShrineInside, ECRUTEAK_SHRINE_INSIDE, $0, 0
 	map_attributes BlackthornGym1F, BLACKTHORN_GYM_1F, $0, 0
 	map_attributes BlackthornGym2F, BLACKTHORN_GYM_2F, $0, 0

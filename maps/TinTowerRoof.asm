@@ -45,7 +45,7 @@ TinTowerHoOh:
 	startbattle
 	disappear TINTOWERROOF_HO_OH
 	reloadmapafterbattle
-	setevent EVENT_SET_WHEN_FOUGHT_HO_OH
+	clearevent EVENT_EUSINES_HOUSE_EUSINE
 	end
 
 HoOhText:

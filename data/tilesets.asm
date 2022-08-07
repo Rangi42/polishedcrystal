@@ -55,16 +55,23 @@ Tilesets::
 	tileset TilesetAlph
 	tileset TilesetPokemonMansion
 	tileset TilesetBattleFactory
+	tileset TilesetEcruteakShrine
 	assert_table_length NUM_TILESETS
 
 
 SECTION "Tileset Data - johto_traditional", ROMX
 
 TilesetJohto1GFX0::
+TilesetEcruteakShrineGFX0::
 INCBIN "gfx/tilesets/johto_traditional.2bpp.vram0.lz"
 
 TilesetJohto1GFX1::
+TilesetEcruteakShrineGFX1::
 INCBIN "gfx/tilesets/johto_traditional.2bpp.vram1.lz"
+
+TilesetJohto1GFX2::
+TilesetEcruteakShrineGFX2::
+INCBIN "gfx/tilesets/johto_traditional.2bpp.vram2.lz"
 
 TilesetJohto1Meta::
 INCBIN "data/tilesets/johto_traditional_metatiles.bin.lz"
@@ -819,10 +826,21 @@ TilesetBattleFactoryColl::
 INCBIN "data/tilesets/battle_factory_collision.bin.lz"
 
 
+SECTION "Tileset Data - ecruteak_shrine", ROMX
+
+TilesetEcruteakShrineMeta::
+INCBIN "data/tilesets/ecruteak_shrine_metatiles.bin.lz"
+
+TilesetEcruteakShrineAttr::
+INCBIN "data/tilesets/ecruteak_shrine_attributes.bin.lz"
+
+TilesetEcruteakShrineColl::
+INCBIN "data/tilesets/ecruteak_shrine_collision.bin.lz"
+
+
 SECTION "Tileset Data - GFX2", ROMX
 
 ; None of the tilesets need GFX2, so consolidate them here.
-TilesetJohto1GFX2::
 TilesetJohto2GFX2::
 TilesetJohto3GFX2::
 TilesetJohto4GFX2::

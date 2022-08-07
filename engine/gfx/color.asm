@@ -472,6 +472,12 @@ InitPartyMenuOBPals:
 	add hl, bc
 	ld b, h
 	ld c, l
+	; a = EGG if is egg
+	inc hl
+	bit MON_IS_EGG_F, [hl]
+	jr z, .not_egg
+	ld a, EGG
+.not_egg
 	; hl = palette
 	call GetMonNormalOrShinyPalettePointer
 	; load palette

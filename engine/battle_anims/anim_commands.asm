@@ -1,6 +1,7 @@
 ; Battle animation command interpreter.
 
 PlayBattleAnim:
+	farcall CheckBattleAnimSubstitution
 	ld hl, rIE
 	set LCD_STAT, [hl]
 
@@ -52,10 +53,17 @@ _PlayBattleAnim:
 	jmp WaitSFX
 
 BattleAnimRunScript:
+	; Check if we should play this animation unconditionally.
+	; If not, the "battle effects" option can disable it.
 	ld a, [wFXAnimIDHi]
-	and a
-	jr nz, .hi_byte
+	cp HIGH(FIRST_UNCONDITIONAL_ANIM)
+	jr c, .conditional
+	jr nz, .unconditional
+	ld a, [wFXAnimIDLo]
+	cp LOW(FIRST_UNCONDITIONAL_ANIM)
+	jr nc, .unconditional
 
+.conditional
 	farcall CheckBattleEffects
 	jr c, .disabled
 
@@ -85,7 +93,7 @@ BattleAnimRunScript:
 	ld a, h
 	ld [wFXAnimIDHi], a
 
-.hi_byte
+.unconditional
 	call WaitSFX
 	call PlayHitSound
 	call RunBattleAnimScript

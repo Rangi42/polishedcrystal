@@ -1344,7 +1344,7 @@ endr
 .got_pikachu_move
 	ld c, a
 	ld a, b
-	and $ff - FORM_MASK
+	and ~FORM_MASK
 	or c
 	ld [wCurForm], a
 	ld [wOTPartyMon1Form], a
@@ -3467,7 +3467,7 @@ ItemRecoveryAnim::
 	push de
 	push bc
 	call EmptyBattleTextbox
-	ld a, RECOVER
+	ld a, ANIM_HELD_ITEM_TRIGGER
 	ld [wFXAnimIDLo], a
 	xor a
 	ld [wNumHits], a
