@@ -3396,7 +3396,7 @@ BattleAnim_BugBuzz:
 	anim_sound 6, 2, SFX_TINGLE
 	anim_obj ANIM_OBJ_BUG_BUZZ_L, 32, 84, $28
 	anim_obj ANIM_OBJ_BUG_BUZZ_R, 64, 84, $38
-	anim_obj ANIM_OBJ_ECHOED_VOICE, 64, 88, $2
+	anim_obj ANIM_OBJ_HYPER_VOICE, 64, 88, $2
 	anim_wait 2
 	anim_sound 6, 2, SFX_TINGLE
 	anim_wait 2
@@ -3433,21 +3433,25 @@ BattleAnim_FlameCharge: ; formerly Flame Wheel
 	anim_wait 8
 	anim_ret
 
-; Hyper Voice animation from Pokémon Prism
 BattleAnim_HyperVoice:
 	anim_2gfx ANIM_GFX_NOISE, ANIM_GFX_PSYCHIC
 .loop
-	anim_bgeffect ANIM_BG_SHAKE_SCREEN_X, $14, $2, $0
-	anim_sound 0, 0, SFX_SNORE
-	anim_call BattleAnimSub_Sound
-	anim_obj ANIM_OBJ_WAVE,  7, 0, 11, 0, $2
-	anim_obj ANIM_OBJ_WAVE,  7, 0, 13, 0, $2
-	anim_obj ANIM_OBJ_WAVE,  9, 0, 11, 0, $2
-	anim_obj ANIM_OBJ_WAVE,  9, 0, 13, 0, $2
-	anim_sound 6, 2, SFX_SCREECH
-	anim_wait 24
+	anim_cry $0
+	anim_bgeffect ANIM_BG_FLASH_INVERTED, $0, $4, $2
+	anim_bgeffect ANIM_BG_SHAKE_SCREEN_X, $30, $2, $0
+	anim_obj ANIM_OBJ_SOUND, 64, 76, $0
+	anim_obj ANIM_OBJ_SOUND, 64, 88, $1
+	anim_obj ANIM_OBJ_SOUND, 64, 100, $2
+	anim_obj ANIM_OBJ_HYPER_VOICE, 64, 88, $2
+	anim_wait 2
+	anim_obj ANIM_OBJ_HYPER_VOICE, 64, 88, $2
+	anim_wait 28
+	anim_obj ANIM_OBJ_SOUND, 64, 76, $0
+	anim_obj ANIM_OBJ_SOUND, 64, 88, $1
+	anim_obj ANIM_OBJ_SOUND, 64, 100, $2
+	anim_wait 28
 	anim_loop 2, .loop
-	anim_wait 24
+	anim_wait 8
 	anim_ret
 
 BattleAnim_Curse:
