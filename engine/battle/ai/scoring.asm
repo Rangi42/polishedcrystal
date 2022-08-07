@@ -751,7 +751,7 @@ AI_Smart_Haze:
 	ret
 
 ; Discourage this move if neither:
-; Any of enemy's stat levels is	lower than -2.
+; Any of enemy's stat levels is lower than -2.
 ; Any of player's stat levels is higher than +2.
 .asm_38a1b
 	pop hl

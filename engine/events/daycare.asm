@@ -477,7 +477,7 @@ Special_DayCareManOutside:
 
 DayCare_GiveEgg:
 ; returns z if mon sent to party, nz if sent to box
-; returns c if no room in party or box 
+; returns c if no room in party or box
 	call DayCare_GenerateEgg
 	ld a, [wTempMonLevel]
 	ld [wCurPartyLevel], a

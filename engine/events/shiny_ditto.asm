@@ -8,7 +8,7 @@ SpecialGiveShinyDitto:
 	ld hl, .OTAndExtra
 	ld bc, PLAYER_NAME_LENGTH + 3
 	rst CopyBytes
-	
+
 	ld hl, wTempMonSpecies
 	ld a, DITTO
 	ld [hli], a

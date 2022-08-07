@@ -686,7 +686,7 @@ the message buffer. No separator is inserted before or after the string.
 The `bufchar` instruction appends a single Unicode character to the message buffer. An engine incapable of handling the
 full Unicode character set may choose to use a reduced character set and replace the remaining characters with suitable
 substitutes; it must however support at least the letters (A-Z, a-z), numbers (0-9), basic punctuation characters
-(`'-,.;:#%&!?/()[]`) and the space character. Passing a value that isn't a valid Unicode codepoint (`0x000000` to 
+(`'-,.;:#%&!?/()[]`) and the space character. Passing a value that isn't a valid Unicode codepoint (`0x000000` to
 `0x00d7ff` and `0x00e000` to `0x10ffff`) is a fatal error.
 
 The `bufnumber` instruction appends the decimal representation of a number to the message buffer. The number is
