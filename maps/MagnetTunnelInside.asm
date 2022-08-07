@@ -33,8 +33,8 @@ MagnetTunnelInside_MapScriptHeader:
 	object_event  8, 13, SPRITE_ENGINEER, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, MagnetTunnelInsideEngineerText1, -1
 	object_event 32, 21, SPRITE_ENGINEER, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, MagnetTunnelInsideEngineerText2, -1
 	object_event 22,  8, SPRITE_ENGINEER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 2, GenericTrainerEngineerGraden, -1
-	object_event 31, 12, SPRITE_ENGINEER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 4, GenericTrainerEngineerKevin, -1
-	object_event 24, 23, SPRITE_ENGINEER, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 3, GenericTrainerEngineerCameron, -1
+	object_event 31, 12, SPRITE_ENGINEER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 4, GenericTrainerEngineerGustav, -1
+	object_event 24, 23, SPRITE_ENGINEER, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 3, GenericTrainerEngineerNicolas, -1
 	tmhmball_event 19, 21, TM_GYRO_BALL, EVENT_MAGNET_TUNNEL_TM_GYRO_BALL
 
 	object_const_def
@@ -365,7 +365,7 @@ MagnetTunnelInsideEngineerText2:
 	done
 
 GenericTrainerEngineerGraden:
-	generictrainer ENGINEER, ENGINEER_GRADEN, EVENT_BEAT_ENGINEER_GRADEN, .SeenText, .BeatenText
+	generictrainer ENGINEER, GRADEN, EVENT_BEAT_ENGINEER_GRADEN, .SeenText, .BeatenText
 
 	text "Hey kid! Welcome"
 	line "to Magent Tunnel."
@@ -417,8 +417,8 @@ GenericTrainerEngineerGraden:
 	line "guts kid."
 	done
 
-GenericTrainerEngineerKevin:
-	generictrainer ENGINEER, ENGINEER_KEVIN, EVENT_BEAT_ENGINEER_KEVIN, .SeenText, .BeatenText
+GenericTrainerEngineerGustav:
+	generictrainer ENGINEER, GUSTAV, EVENT_BEAT_ENGINEER_GUSTAV, .SeenText, .BeatenText
 
 	text "This machine has"
 	line "been acting really"
@@ -458,8 +458,8 @@ GenericTrainerEngineerKevin:
 	line "like a fuse…"
 	done
 
-GenericTrainerEngineerCameron:
-	generictrainer ENGINEER, ENGINEER_CAMERON, EVENT_BEAT_ENGINEER_CAMERON, .SeenText, .BeatenText
+GenericTrainerEngineerNicolas:
+	generictrainer ENGINEER, NICOLAS, EVENT_BEAT_ENGINEER_NICOLAS, .SeenText, .BeatenText
 
 	text "These things can"
 	line "generate some"

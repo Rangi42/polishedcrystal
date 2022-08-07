@@ -8000,7 +8000,7 @@ EngineerGroup:
 	db -1 ; end
 
 	; ENGINEER
-	db "Kevin@"
+	db "Gustav@"
 	db TRAINERTYPE_PERSONALITY
 	; party
 	dbp LEVEL_FROM_BADGES + 0, VOLTORB, MALE
@@ -8012,7 +8012,7 @@ EngineerGroup:
 	db -1 ; end
 
 	; ENGINEER
-	db "Cameron@"
+	db "Nicolas@"
 	db TRAINERTYPE_PERSONALITY
 	; party
 	dbp LEVEL_FROM_BADGES + 0, VOLTORB, MALE
