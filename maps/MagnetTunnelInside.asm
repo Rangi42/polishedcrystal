@@ -32,7 +32,7 @@ MagnetTunnelInside_MapScriptHeader:
 	object_event 35,  5, SPRITE_N64, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_ROCK, OBJECTTYPE_COMMAND, jumptext, MagnetTunnelInsideLodestoneText, EVENT_MAGNET_TUNNEL_LODESTONE_4
 	object_event 11, 20, SPRITE_ENGINEER, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, MagnetTunnelInsideEngineerText1, -1
 	object_event  8, 13, SPRITE_ENGINEER, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, MagnetTunnelInsideEngineerText2, -1
-	object_event 32, 21, SPRITE_ENGINEER, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, MagnetTunnelInsideEngineerText3, -1
+	object_event 32, 21, SPRITE_SCIENTIST, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, MagnetTunnelInsideScientistText, -1
 	object_event 22,  8, SPRITE_ENGINEER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 2, GenericTrainerEngineerGraden, -1
 	object_event 31, 12, SPRITE_ENGINEER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 4, GenericTrainerEngineerGustav, -1
 	object_event 24, 23, SPRITE_ENGINEER, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 3, GenericTrainerEngineerNicolas, -1
@@ -350,27 +350,18 @@ MagnetTunnelInsideEngineerText2:
 
 	para "Electric-type"
 	line "#mon here has"
-	cont "more than doubled!"
+	cont "more than doubled."
 
-	para "We thought this"
-	line "tunnel was for the"
-	
-	para "Magnet Train, but"
-	line "its more like a"
-	
-	para "home for magnet"
-	line "#mon! Hahaha!"
+	para "Especially the"
+	line "Magnemite!"
 	done
 	
-MagnetTunnelInsideEngineerText3:
+MagnetTunnelInsideScientistText:
 	text "Everyday, more and"
 	line "more Electric-type"
 
 	para "#mon show up"
 	line "and cause issues."
-	
-	para "Especially the"
-	line "Magnemite!"
 	
 	para "The foreman thinks"
 	line "they must be drawn"
@@ -378,15 +369,14 @@ MagnetTunnelInsideEngineerText3:
 	para "to the lodestone's"
 	line "unique magnetic"
 	cont "properties."
-
+	
 	para "I wonder why?"
 	done
 
 GenericTrainerEngineerGraden:
 	generictrainer ENGINEER, GRADEN, EVENT_BEAT_ENGINEER_GRADEN, .SeenText, .BeatenText
 
-	text "Hey kid! Welcome"
-	line "to Magent Tunnel."
+	text "Hey kid!"
 	
 	para "I'm the foreman"
 	line "on this jobsite."
@@ -398,11 +388,11 @@ GenericTrainerEngineerGraden:
 	line "Magnet Train"
 	cont "railway. But…"
 
-	para "Haha! Little did I"
-	line "know, all of the"
+	para "Little did I know,"
+	line "all of the lode-"
 
-	para "lodestone would"
-	line "cause us so much"
+	para "stone would cause"
+	line "us all so much"
 	cont "headache!"
 
 	done
@@ -441,12 +431,6 @@ GenericTrainerEngineerGustav:
 	para "it will short"
 	line "circuit and be"
 	cont "kaput…"
-
-	; para "Don't tell the"
-	; line "foreman, okay?"
-
-	; para "And don't mess with"
-	; line "it either! Deal?"
 	done
 
 .SeenText:
@@ -468,18 +452,11 @@ GenericTrainerEngineerNicolas:
 	line "generate some"
 	cont "serious power!"
 
-	para "When turned on,"
-	line "they generate an"
+	para "When powered on,"
+	line "they create an"
 
-	para "extremely powerful"
+	para "extremely strong"
 	line "magnetic field."
-
-	; para "That sure comes in"
-	; line "handy when trying"
-
-	; para "to move large"
-	; line "magnetic rocks"
-	; cont "like lodestone."
 
 	para "But they can be"
 	line "really dangerous…"
