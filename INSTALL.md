@@ -82,10 +82,7 @@ In **Terminal**, run:
 ```bash
 xcode-select --install
 
-git clone https://github.com/gbdev/rgbds.git
-cd rgbds
-sudo make install
-cd ..
+brew install rgbds
 
 git clone https://github.com/Rangi42/polishedcrystal.git
 cd polishedcrystal
