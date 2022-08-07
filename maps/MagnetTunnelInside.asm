@@ -21,8 +21,8 @@ MagnetTunnelInside_MapScriptHeader:
 	bg_event 23, 21, BGEVENT_UP, MagnetTunnelInsideMachine2
 	bg_event 20,  8, BGEVENT_UP, MagnetTunnelInsideMachine3
 	bg_event 21,  8, BGEVENT_UP, MagnetTunnelInsideMachine3
-	bg_event 34,  9, BGEVENT_UP, MagnetTunnelInsideMachine4
-	bg_event 35,  9, BGEVENT_UP, MagnetTunnelInsideMachine4
+	bg_event 34,  8, BGEVENT_UP, MagnetTunnelInsideMachine4
+	bg_event 35,  8, BGEVENT_UP, MagnetTunnelInsideMachine4
 	bg_event 38, 30, BGEVENT_ITEM + METAL_POWDER, EVENT_MAGNET_TUNNEL_HIDDEN_METAL_POWDER
 
 	def_object_events
@@ -65,7 +65,8 @@ MagnetTunnelInsideTileCallback:
 .NoPit
 	checkevent EVENT_MAGNET_TUNNEL_LODESTONE_4
 	iffalsefwd .NoMachine4
-	changeblock 34, 8, $66
+	changeblock 34, 8, $6b
+	changeblock 34, 6, $35
 .NoMachine4
 	endcallback
 
@@ -175,7 +176,7 @@ MagnetTunnelInsideMachine4:
 	yesorno
 	iffalse_endtext
 	playsound SFX_GLASS_TING
-	changeblock 34, 8, $67
+	changeblock 34, 8, $6b
 	reloadmappart
 	writetext MagnetTunnelInsideMachineText2
 	waitbutton
@@ -186,7 +187,7 @@ MagnetTunnelInsideMachine4:
 	playsound SFX_THUNDERSHOCK
 	earthquake 15
 	playsound SFX_STRENGTH
-	changeblock 34, 8, $66
+	changeblock 34, 6, $35
 	reloadmappart
 	disappear MAGNETTUNNELINSIDE_STONE_4
 	scall MagnetTunnelAlarmSounds
@@ -199,7 +200,6 @@ MagnetTunnelInsideMachine4:
 
 .StoneMovement1:
 	fix_facing
-	slow_slide_step_down
 	slow_slide_step_down
 	slow_slide_step_down
 	slow_slide_step_left
@@ -218,9 +218,10 @@ MagnetTunnelInsideMachine4:
 	writetext MagnetTunnelInsideMachineText6
 	waitbutton
 	closetext
-	changeblock 34, 8, $65
+	changeblock 34, 8, $6a
+	changeblock 34, 6, $34
 	reloadmappart
-	moveobject MAGNETTUNNELINSIDE_STONE_4, 34, 8
+	moveobject MAGNETTUNNELINSIDE_STONE_4, 34, 7
 	appear MAGNETTUNNELINSIDE_STONE_4
 	playsound SFX_EMBER
 	earthquake 15
@@ -235,7 +236,6 @@ MagnetTunnelInsideMachine4:
 
 .StoneMovement2:
 	fix_facing
-	slide_step_up
 	slide_step_up
 	slide_step_up
 	remove_fixed_facing
