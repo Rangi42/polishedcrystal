@@ -291,9 +291,8 @@ MagnetTunnelInsideMachineText5:
 	para "flash across the"
 	line "small screen and"
 
-	para "the smell of some-"
-	line "thing burning"
-	cont "fills the air."
+	para "a burning smell"
+	line "fills the air."
 
 	para "Hit the emergency"
 	line "shutdown button?"
@@ -311,9 +310,8 @@ MagnetTunnelInsideMachineText7:
 	para "faint stench of"
 	line "melted plastic…"
 
-	para "Better be safe and"
-	line "not try to turn it"
-	cont "back on."
+	para "It appears to be"
+	line "totally fried."
 	done
 
 MagnetTunnelInsideLodestoneText:
@@ -342,7 +340,7 @@ MagnetTunnelInsideEngineerText1:
 	done
 
 MagnetTunnelInsideEngineerText2:
-	text "Ever since we"
+	text "Since the day we"
 	line "began construction"
 
 	para "on this tunnel,"
@@ -351,17 +349,12 @@ MagnetTunnelInsideEngineerText2:
 	para "Electric-type"
 	line "#mon here has"
 	cont "more than doubled."
-
-	para "Especially the"
-	line "Magnemite!"
 	done
 	
 MagnetTunnelInsideScientistText:
-	text "Everyday, more and"
-	line "more Electric-type"
-
-	para "#mon show up"
-	line "and cause issues."
+	text "Every day, more"
+	line "Magnemite arrive"
+	cont "and cause issues."
 	
 	para "The foreman thinks"
 	line "they must be drawn"
@@ -393,8 +386,7 @@ GenericTrainerEngineerGraden:
 
 	para "stone would cause"
 	line "us all so much"
-	cont "headache!"
-
+	cont "headache! Hahaha!"
 	done
 
 .SeenText:
@@ -428,9 +420,9 @@ GenericTrainerEngineerGustav:
 	para "I'm worried if I"
 	line "turn it on again,"
 
-	para "it will short"
-	line "circuit and be"
-	cont "kaput…"
+	para "the machine will"
+	line "short circuit and"
+	cont "be kaput…"
 	done
 
 .SeenText:
@@ -450,7 +442,7 @@ GenericTrainerEngineerNicolas:
 
 	text "These things can"
 	line "generate some"
-	cont "serious power!"
+	cont "serious voltage!"
 
 	para "When powered on,"
 	line "they create an"
