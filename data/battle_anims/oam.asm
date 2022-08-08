@@ -225,7 +225,7 @@ BattleAnimOAMData:
 	battleanimoam $00, 12, .OAMData_d7 ; BATTLEANIMOAMSET_D7
 	battleanimoam $11,  2, .OAMData_StoneEdge ; BATTLEANIMOAMSET_STONE_EDGE
 	battleanimoam $1b,  4, .OAMData_03 ; BATTLEANIMOAMSET_BRICK_BREAK
-	battleanimoam $07, 10, .OAMData_EchoedVoice ; BATTLEANIMOAMSET_ECHOED_VOICE
+	battleanimoam $07, 10, .OAMData_HyperVoice ; BATTLEANIMOAMSET_HYPER_VOICE
 	battleanimoam $04,  3, .OAMData_BugBuzz1 ; BATTLEANIMOAMSET_BUG_BUZZ1
 	battleanimoam $00,  5, .OAMData_BugBuzz2 ; BATTLEANIMOAMSET_BUG_BUZZ2
 	battleanimoam $1f,  4, .OAMData_03 ; BATTLEANIMOAMSET_BULLET_PUNCH
@@ -1104,7 +1104,7 @@ BattleAnimOAMData:
 	dsprite  -1, 0,  -1, 0, $00, $0
 	dsprite   0, 0,  -1, 0, $01, $0
 
-.OAMData_EchoedVoice:
+.OAMData_HyperVoice:
 	dsprite  -3, 0,   0, 0, $00, $0
 	dsprite  -2, 0,   0, 0, $01, $0
 	dsprite  -1, 0,   0, 0, $06, $0

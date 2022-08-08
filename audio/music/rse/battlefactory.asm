@@ -1098,7 +1098,7 @@ Music_BattleFactoryRSE_Ch3_loop:
 	note __, 1
 	callchannel Music_BattleFactoryRSE_Ch3_branch_1
 
-	callchannel	Music_BattleFactoryRSE_Ch3_branch_1
+	callchannel Music_BattleFactoryRSE_Ch3_branch_1
 	callchannel Music_BattleFactoryRSE_Ch3_branch_1
 	callchannel Music_BattleFactoryRSE_Ch3_branch_1
 	callchannel Music_BattleFactoryRSE_Ch3_branch_1

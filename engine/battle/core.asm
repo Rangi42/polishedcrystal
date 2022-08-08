@@ -3467,7 +3467,7 @@ ItemRecoveryAnim::
 	push de
 	push bc
 	call EmptyBattleTextbox
-	ld a, RECOVER
+	ld a, ANIM_HELD_ITEM_TRIGGER
 	ld [wFXAnimIDLo], a
 	xor a
 	ld [wNumHits], a

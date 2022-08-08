@@ -5724,7 +5724,7 @@ AmbipomEvosAttacks:
 	db 36, ACROBATICS ; Fling → TM move
 	db 39, NASTY_PLOT
 	db 43, DOUBLE_EDGE ; Last Resort → tutor move
-	db -1 ; no more level-up moves	
+	db -1 ; no more level-up moves
 
 MismagiusEvosAttacks:
 	db -1 ; no more evolutions

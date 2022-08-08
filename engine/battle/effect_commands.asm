@@ -2263,8 +2263,6 @@ BattleCommand_moveanimnosub:
 	jr z, .pursuit
 	cp EFFECT_MULTI_HIT
 	jr z, .multihit
-	cp EFFECT_FURY_STRIKES
-	jr z, .fury_strikes
 	cp EFFECT_CONVERSION
 	jr z, .conversion
 	cp EFFECT_DOUBLE_HIT
@@ -2298,7 +2296,6 @@ BattleCommand_moveanimnosub:
 	and 1
 	xor 1
 	ld [wKickCounter], a
-.fury_attack
 	ld a, [de]
 	cp $1
 	push af
@@ -2312,29 +2309,6 @@ BattleCommand_moveanimnosub:
 	ld [wNumHits], a
 	jmp PlayFXAnimID
 
-; Fury Swipes and Fury Attack were merged into Fury Strikes, so use the correct
-; animation for the Pokémon that learned each one
-.fury_strikes
-	push de
-	ldh a, [hBattleTurn]
-	and a
-	ld hl, wBattleMonSpecies
-	jr z, .got_user_species
-	ld hl, wEnemyMonSpecies
-.got_user_species
-	ld c, [hl]
-	assert wBattleMonForm - wBattleMonSpecies == wEnemyMonForm - wEnemyMonSpecies
-	ld de, wBattleMonForm - wBattleMonSpecies
-	add hl, de
-	ld b, [hl]
-	ld hl, FuryAttackUsers
-	ld de, 2
-	call IsInWordArray
-	pop de
-	jr nc, .multihit
-	ld a, 2
-	ld [wKickCounter], a
-	jr .fury_attack
 
 StatUpDownAnim:
 	ld a, [wAnimationsDisabled]
@@ -2348,40 +2322,8 @@ StatUpDownAnim:
 
 	xor a
 	ld [wNumHits], a
-
-; Defense Curl, Withdraw, and Harden were merged, so use the correct
-; animation for the Pokémon that learned each one
-	ld a, BATTLE_VARS_MOVE_ANIM
-	call GetBattleVar
-	cp DEFENSE_CURL
-	jr nz, .not_defense_curl
-	ldh a, [hBattleTurn]
-	and a
-	ld hl, wBattleMonSpecies
-	jr z, .got_user_species
-	ld hl, wEnemyMonSpecies
-.got_user_species
-	ld c, [hl]
-	assert wBattleMonForm - wBattleMonSpecies == wEnemyMonForm - wEnemyMonSpecies
-	ld de, wBattleMonForm - wBattleMonSpecies
-	add hl, de
-	ld b, [hl]
-	ld hl, WithdrawUsers
-	ld de, 2
-	call IsInWordArray
-	ld a, 1
-	jr c, .got_kick_counter
-.not_withdraw
-	inc hl ; ld hl, HardenUsers
-	call IsInWordArray
-	jr nc, .not_harden
-	ld a, 2
-	jr .got_kick_counter
-.not_harden
-.not_defense_curl
-	xor a
-.got_kick_counter
 	ld [wKickCounter], a
+
 	ld a, BATTLE_VARS_MOVE_ANIM
 	call GetBattleVar
 	ld e, a
@@ -2429,8 +2371,6 @@ BattleCommand_failuretext:
 	cp EFFECT_MULTI_HIT
 	jr z, .multihit
 	cp EFFECT_DOUBLE_HIT
-	jr z, .multihit
-	cp EFFECT_FURY_STRIKES
 	jmp nz, EndMoveEffect
 
 .multihit
@@ -3879,8 +3819,6 @@ BattleCommand_damagecalc:
 	; Variable-hit moves and Conversion can have a power of 0.
 	cp EFFECT_MULTI_HIT
 	jr z, .skip_zero_damage_check
-	cp EFFECT_FURY_STRIKES
-	jr z, .skip_zero_damage_check
 	cp EFFECT_CONVERSION
 	jr z, .skip_zero_damage_check
 
@@ -4402,8 +4340,6 @@ SelfInflictDamageToSubstitute:
 	cp EFFECT_MULTI_HIT
 	jr z, .ok
 	cp EFFECT_DOUBLE_HIT
-	jr z, .ok
-	cp EFFECT_FURY_STRIKES
 	jr z, .ok
 	xor a
 	ld [hl], a
@@ -5858,28 +5794,6 @@ BattleCommand_heal:
 .not_rest
 	call GetHalfMaxHP
 .finish
-
-; Softboiled and Milk Drink were merged into Fresh Snack, so use the correct
-; animation for the Pokémon that learned each one
-	ld a, BATTLE_VARS_MOVE_ANIM
-	call GetBattleVar
-	cp FRESH_SNACK
-	ld a, 0
-	jr nz, .not_fresh_snack
-	ldh a, [hBattleTurn]
-	and a
-	ld a, [wBattleMonSpecies]
-	jr z, .got_user_species
-	ld a, [wEnemyMonSpecies]
-.got_user_species
-	cp MILTANK
-	ld a, 0
-	jr nz, .got_kick_counter
-	inc a
-.got_kick_counter
-	ld [wKickCounter], a
-.not_fresh_snack
-
 	call AnimateCurrentMove
 	farcall RestoreHP
 	call UpdateUserInParty
@@ -6523,6 +6437,56 @@ AppearUserLowerSub:
 
 AppearUserRaiseSub:
 	farjp _AppearUserRaiseSub
+
+CheckBattleAnimSubstitution:
+; Checks the animation ID and possibly change it based on species.
+	assert !HIGH(NUM_ATTACKS), "This function is now obsolete."
+
+	; Moves are 1-255.
+	ld a, [wFXAnimIDHi]
+	and a
+	ret nz
+
+	ld a, [wFXAnimIDLo]
+	cp FRESH_SNACK
+	ld de, ANIM_MILK_DRINK
+	ld hl, .MilkDrinkUsers
+	jr z, .check_species_list
+	cp FURY_STRIKES
+	ld de, ANIM_FURY_ATTACK
+	ld hl, FuryAttackUsers
+	jr z, .check_species_list
+	cp DEFENSE_CURL
+	ret nz
+
+	; Defense Curl has 3 variations
+	ld de, ANIM_WITHDRAW
+	ld hl, WithdrawUsers
+	call .check_species_list
+	ld de, ANIM_HARDEN
+	ld hl, HardenUsers
+	; fallthrough
+.check_species_list
+	push hl
+	ld hl, wBattleMonSpecies
+	call GetUserMonAttr
+	ld a, [hl]
+	ld bc, wBattleMonForm - wBattleMonSpecies
+	add hl, bc
+	ld c, a
+	ld b, [hl]
+	pop hl
+	call GetSpeciesAndFormIndexFromHL
+	ret nc
+	ld a, e
+	ld [wFXAnimIDLo], a
+	ld a, d
+	ld [wFXAnimIDHi], a
+	ret
+
+.MilkDrinkUsers:
+	dp MILTANK
+	db 0
 
 _CheckBattleEffects:
 ; Checks the options. Returns carry if battle animations are disabled.

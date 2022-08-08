@@ -10,7 +10,7 @@ WithdrawUsers:
 	dp CLOYSTER
 	dp OMANYTE
 	dp OMASTAR
-	dw 0
+	db 0
 
 HardenUsers:
 ; Defense Curl += Harden
@@ -36,4 +36,4 @@ HardenUsers:
 	dp GLISCOR
 	dp CURSOLA
 	dp KLEAVOR
-	dw 0
+	db 0
