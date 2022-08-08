@@ -368,10 +368,8 @@ MagnetTunnelInsideScientistText:
 
 GenericTrainerEngineerGraden:
 	generictrainer ENGINEER, GRADEN, EVENT_BEAT_ENGINEER_GRADEN, .SeenText, .BeatenText
-
-	text "Hey kid!"
 	
-	para "I'm the foreman"
+	text "I'm the foreman"
 	line "on this jobsite."
 
 	para "We dug out this"
@@ -379,14 +377,13 @@ GenericTrainerEngineerGraden:
 	
 	para "path for the new"
 	line "Magnet Train"
-	cont "railway. But…"
+	cont "railway, but…"
 
 	para "Little did I know,"
 	line "all of the lode-"
 
 	para "stone would cause"
-	line "us all so much"
-	cont "headache! Hahaha!"
+	line "so much headache!"
 	done
 
 .SeenText:
@@ -399,17 +396,13 @@ GenericTrainerEngineerGraden:
 
 .BeatenText:
 	text "Haha! You've got"
-	line "guts kid."
+	line "guts. I like that!"
 	done
 
 GenericTrainerEngineerGustav:
 	generictrainer ENGINEER, GUSTAV, EVENT_BEAT_ENGINEER_GUSTAV, .SeenText, .BeatenText
 
-	text "This machine has"
-	line "been acting really"
-	cont "strange lately."
-
-	para "I've tried to fix"
+	text "I've tried to fix"
 	line "it, but its been"
 	cont "no use…"
 
@@ -421,7 +414,7 @@ GenericTrainerEngineerGustav:
 	line "turn it on again,"
 
 	para "the machine will"
-	line "short circuit and"
+	line "short-circuit and"
 	cont "be kaput…"
 	done
 
@@ -450,17 +443,14 @@ GenericTrainerEngineerNicolas:
 	para "extremely strong"
 	line "magnetic field."
 
-	para "But they can be"
-	line "really dangerous…"
-
 	para "So be careful in"
 	line "here, alright kid?"
 	done
 
 .SeenText:
 	text "Hey! Be careful"
-	line "around the"
-	cont "machinery kid!"
+	line "around the equip-"
+	cont "ment kid!"
 	done
 
 .BeatenText:
