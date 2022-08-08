@@ -4811,22 +4811,21 @@ BattleAnim_DragonClaw:
 	anim_wait 16
 	anim_ret
 
-; Shadow Claw animation from Pokémon Prism
 BattleAnim_ShadowClaw:
-	anim_1gfx ANIM_GFX_CUT
-	anim_sound 0, 0, SFX_CURSE
-	anim_call BattleAnim_TargetObj_1Row
-	anim_bgeffect ANIM_BG_FADE_MON_TO_WHITE_WAIT_FADE_BACK, $0, $1, $80
-	anim_wait 64
-	anim_bgeffect ANIM_BG_SHAKE_SCREEN_X, $40, $2, $0
+	anim_2gfx ANIM_GFX_CUT, ANIM_GFX_SPEED
+	anim_obp0 $ef
+	anim_bgeffect ANIM_BG_SHAKE_SCREEN_X, $14, $2, $0
+	anim_bgeffect ANIM_BG_BLACK_HUES, $0, $8, $0
 	anim_sound 0, 1, SFX_CUT
-	anim_obj ANIM_OBJ_CUT_LONG_DOWN_LEFT, 19, 0,  5, 0, $0
-	anim_obj ANIM_OBJ_CUT_LONG_DOWN_LEFT, 18, 4,  4, 4, $0
-	anim_obj ANIM_OBJ_CUT_LONG_DOWN_LEFT, 18, 0,  4, 0, $0
-	anim_wait 16
-	anim_incbgeffect ANIM_BG_FADE_MON_TO_WHITE_WAIT_FADE_BACK
-	anim_call BattleAnim_ShowMon_0
+	anim_obj ANIM_OBJ_CUT_DOWN_LEFT, 144, 48, $0
+	anim_obj ANIM_OBJ_CUT_DOWN_LEFT, 140, 44, $0
+	anim_obj ANIM_OBJ_CUT_DOWN_LEFT, 136, 40, $0
 	anim_wait 4
+	anim_obj ANIM_OBJ_RED_STAR, 136, 56, $5c
+	anim_obj ANIM_OBJ_RED_STAR, 136, 56, $e8
+	anim_obj ANIM_OBJ_RED_STAR, 136, 56, $d0
+	anim_obj ANIM_OBJ_RED_STAR, 136, 56, $50
+	anim_wait 32
 	anim_ret
 
 BattleAnim_HealingLight:
