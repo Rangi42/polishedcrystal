@@ -42,18 +42,17 @@ PolishedOnline_BackupIP:
 PO_Connect::
 ; Connects to Polished Online. Returns z if we're unable to connect.
 	ld hl, PolishedOnline_Addr
-	; call ConnectToDomain -- DNS query unimplemented in library
-	call DNSQuery
-	ld hl, wMobileDNSResponse
-	ld a, [hl]
-	and a
-	jr nz, .got_ip
+	ld bc, PO_PORT
+	call ConnectToDomain
+	jr nz, .success
+
+	; DNS query probably failed. Try connecting by IP.
 	ld hl, PolishedOnline_BackupIP
 .got_ip
-	ld bc, PO_PORT
 	call ConnectToIP
 	ret z
 
+.success
 	ld hl, wOptions
 	ld a, [hl]
 	push af

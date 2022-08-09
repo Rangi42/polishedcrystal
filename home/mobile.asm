@@ -17,6 +17,7 @@ ConnectToDomain::
 	push bc
 	call DNSQuery
 	pop bc
+	ret z
 	ld hl, wMobileDNSResponse
 ConnectToIP::
 ; Connects to IP in hl with port bc. Returns z if connection was unsuccessful
