@@ -323,12 +323,49 @@ BattleAnim_Moonblast:
 	anim_ret
 
 BattleAnim_PlayRough:
-	anim_1gfx ANIM_GFX_HIT
-	anim_sound 0, 1, SFX_POUND
-	anim_obj ANIM_OBJ_PALM, -15, 0,   7, 0, $0
-	anim_wait 6
-	anim_obj ANIM_OBJ_HIT_YFIX, -15, 0,   7, 0, $0
-	anim_wait 16
+	anim_1gfx ANIM_GFX_SPEED
+	anim_sound 6, 2, SFX_THROW_BALL
+	anim_bgeffect ANIM_BG_HIDE_MON, $0, $1, $0
+	anim_obj ANIM_OBJ_SPEED_LINE, 24, 88, $2
+	anim_obj ANIM_OBJ_SPEED_LINE, 32, 88, $1
+	anim_obj ANIM_OBJ_SPEED_LINE, 40, 88, $0
+	anim_obj ANIM_OBJ_SPEED_LINE, 48, 88, $80
+	anim_obj ANIM_OBJ_SPEED_LINE, 56, 88, $81
+	anim_obj ANIM_OBJ_SPEED_LINE, 64, 88, $82
+	anim_wait 12
+	anim_3gfx ANIM_GFX_STARS, ANIM_GFX_HIT, ANIM_GFX_HEARTS
+	anim_bgeffect ANIM_BG_SHAKE_SCREEN_X, $55, $2, $0
+.loop
+	anim_sound 0, 1, SFX_BONE_CLUB
+	anim_obj ANIM_OBJ_STAR_BURST, 128, 48, $28
+	anim_obj ANIM_OBJ_HIT_YFIX, 128, 48, $0
+	anim_wait 3
+	anim_obj ANIM_OBJ_HEART_BURST, 144, 64, $5c
+	anim_wait 3
+	anim_obj ANIM_OBJ_STAR_BURST, 144, 64, $10
+	anim_obj ANIM_OBJ_HIT_YFIX, 144, 64, $0
+	anim_wait 3
+	anim_sound 0, 1, SFX_DOUBLE_SLAP
+	anim_obj ANIM_OBJ_HEART_BURST, 120, 52, $e8
+	anim_wait 3
+	anim_obj ANIM_OBJ_STAR_BURST, 120, 52, $9c
+	anim_obj ANIM_OBJ_HIT_YFIX, 120, 52, $0
+	anim_wait 3
+	anim_obj ANIM_OBJ_STAR_BURST, 152, 48, $d0
+	anim_wait 3
+	anim_sound 6, 2, SFX_SLUDGE_BOMB
+	anim_obj ANIM_OBJ_HEART_BURST, 152, 48, $1c
+	anim_obj ANIM_OBJ_HIT_YFIX, 152, 48, $0
+	anim_wait 3
+	anim_obj ANIM_OBJ_STAR_BURST, 136, 56, $50
+	anim_wait 3
+	anim_sound 0, 1, SFX_KARATE_CHOP
+	anim_obj ANIM_OBJ_HEART_BURST, 136, 56, $dc
+	anim_obj ANIM_OBJ_HIT_YFIX, 136, 56, $0
+	anim_wait 3
+	anim_obj ANIM_OBJ_STAR_BURST, 128, 48, $90
+	anim_loop 2, .loop
+	anim_bgeffect ANIM_BG_SHOW_MON, $0, $1, $0
 	anim_ret
 
 BattleAnim_DisarmVoice:
@@ -2580,20 +2617,31 @@ BattleAnim_Crabhammer:
 	anim_loop 3, .loop
 	anim_ret
 
-; Iron Head animation from Pokémon Prism
 BattleAnim_IronHead:
-	anim_2gfx ANIM_GFX_REFLECT, ANIM_GFX_HIT
+	anim_3gfx ANIM_GFX_ROCKS, ANIM_GFX_HIT, ANIM_GFX_REFLECT
+	anim_obp0 $0
+	anim_sound 0, 0, SFX_RAGE
 	anim_call BattleAnim_TargetObj_1Row
-	anim_obp0 0, 0, 0, 0
-	anim_bgeffect ANIM_BG_SHAKE_SCREEN_X, $40, $2, $0
 	anim_call BattleAnimSub_Metallic
-	anim_resetobp0
-	anim_sound 0, 1, SFX_TACKLE
 	anim_bgeffect ANIM_BG_TACKLE, $0, $1, $0
 	anim_wait 4
-	anim_sound 0, 1, SFX_TACKLE
-	anim_obj ANIM_OBJ_HIT_YFIX, 17, 0,  7, 0, $0
-	anim_wait 4
+	anim_sound 0, 1, SFX_HEADBUTT
+	anim_wait 8
+	anim_sound 0, 1, SFX_KARATE_CHOP
+	anim_bgeffect ANIM_BG_FLASH_INVERTED, $0, $4, $2
+	anim_resetobp0
+	anim_obj ANIM_OBJ_HIT_BIG_YFIX, 128, 56, $0
+	anim_obj ANIM_OBJ_IRON_HEAD, 128, 64, $28
+	anim_obj ANIM_OBJ_IRON_HEAD, 128, 64, $5c
+	anim_obj ANIM_OBJ_IRON_HEAD, 128, 64, $10
+	anim_obj ANIM_OBJ_IRON_HEAD, 128, 64, $e8
+	anim_obj ANIM_OBJ_IRON_HEAD, 128, 64, $9c
+	anim_obj ANIM_OBJ_IRON_HEAD, 128, 64, $d0
+	anim_obj ANIM_OBJ_IRON_HEAD, 128, 64, $1c
+	anim_obj ANIM_OBJ_IRON_HEAD, 128, 64, $50
+	anim_obj ANIM_OBJ_IRON_HEAD, 128, 64, $dc
+	anim_obj ANIM_OBJ_IRON_HEAD, 128, 64, $90
+	anim_wait 32
 	anim_call BattleAnim_ShowMon_0
 	anim_ret
 
@@ -4763,22 +4811,21 @@ BattleAnim_DragonClaw:
 	anim_wait 16
 	anim_ret
 
-; Shadow Claw animation from Pokémon Prism
 BattleAnim_ShadowClaw:
-	anim_1gfx ANIM_GFX_CUT
-	anim_sound 0, 0, SFX_CURSE
-	anim_call BattleAnim_TargetObj_1Row
-	anim_bgeffect ANIM_BG_FADE_MON_TO_WHITE_WAIT_FADE_BACK, $0, $1, $80
-	anim_wait 64
-	anim_bgeffect ANIM_BG_SHAKE_SCREEN_X, $40, $2, $0
+	anim_2gfx ANIM_GFX_CUT, ANIM_GFX_SPEED
+	anim_obp0 $ef
+	anim_bgeffect ANIM_BG_SHAKE_SCREEN_X, $14, $2, $0
+	anim_bgeffect ANIM_BG_BLACK_HUES, $0, $8, $0
 	anim_sound 0, 1, SFX_CUT
-	anim_obj ANIM_OBJ_CUT_LONG_DOWN_LEFT, 19, 0,  5, 0, $0
-	anim_obj ANIM_OBJ_CUT_LONG_DOWN_LEFT, 18, 4,  4, 4, $0
-	anim_obj ANIM_OBJ_CUT_LONG_DOWN_LEFT, 18, 0,  4, 0, $0
-	anim_wait 16
-	anim_incbgeffect ANIM_BG_FADE_MON_TO_WHITE_WAIT_FADE_BACK
-	anim_call BattleAnim_ShowMon_0
+	anim_obj ANIM_OBJ_CUT_DOWN_LEFT, 144, 48, $0
+	anim_obj ANIM_OBJ_CUT_DOWN_LEFT, 140, 44, $0
+	anim_obj ANIM_OBJ_CUT_DOWN_LEFT, 136, 40, $0
 	anim_wait 4
+	anim_obj ANIM_OBJ_RED_STAR, 136, 56, $5c
+	anim_obj ANIM_OBJ_RED_STAR, 136, 56, $e8
+	anim_obj ANIM_OBJ_RED_STAR, 136, 56, $d0
+	anim_obj ANIM_OBJ_RED_STAR, 136, 56, $50
+	anim_wait 32
 	anim_ret
 
 BattleAnim_HealingLight:

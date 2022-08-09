@@ -89,6 +89,7 @@ DoBattleAnimFrame:
 	dw BattleAnimFunction_StraightDescent
 	dw BattleAnimFunction_52 ; 52
 	dw BattleAnimFunction_PowerGem
+	dw BattleAnimFunction_54 ; 54
 	dw BattleAnimFunction_Moon
 	dw BattleAnimFunction_PokeBall_BG
 	dw BattleAnimFunction_RadialMoveOut
@@ -932,6 +933,12 @@ Functioncd557:
 	ld de, -$100
 	ret
 
+BattleAnimFunction_54:
+	call BattleAnim_AnonJumptable
+
+	dw BattleAnimFunction_4E.after_frameset
+	dw BattleAnimFunction_4E.one
+
 BattleAnimFunction_4E:
 	call BattleAnim_AnonJumptable
 .anon_dw
@@ -948,6 +955,7 @@ BattleAnimFunction_4E:
 	ld hl, BATTLEANIMSTRUCT_FRAMESET_ID
 	add hl, bc
 	ld [hl], a
+.after_frameset
 	call BattleAnim_IncAnonJumptableIndex
 	ld hl, BATTLEANIMSTRUCT_VAR1
 	add hl, bc

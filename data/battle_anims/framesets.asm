@@ -196,6 +196,7 @@ BattleAnimFrameData:
 	dw .Frameset_FlashCannon ; c1
 	dw .Frameset_FocusBlast ; c1
 	dw .Frameset_Vortex ; c2
+	dw .Frameset_RedStar ; c3
 	assert_table_length NUM_BATTLEANIMFRAMESETS
 
 ; OAM index (see battle/objects/oam.asm), flip flags / duration
@@ -1345,3 +1346,7 @@ BattleAnimFrameData:
 	frame BATTLEANIMOAMSET_VORTEX2,  2
 	frame BATTLEANIMOAMSET_VORTEX3,  2
 	dorestart
+
+.Frameset_RedStar:
+	frame BATTLEANIMOAMSET_14, 30
+	delanim
