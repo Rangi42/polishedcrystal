@@ -19,24 +19,29 @@ jobs:
         name: "Install build dependencies"
         run: |
           sudo apt-get install bison gcc git make python -y;
+          
+      # CHECKOUT RGBDS
       - id: checkout-rgbds
         name: "Checkout gbdev/rgbds"
-        run: |
-          git clone https://github.com/gbdev/rgbds --branch=v0.5.2 --depth=1
-          pushd rgbds
+        uses: actions/checkout@master
+        with:
+          path: rgbds
+          ref: v0.5.2
+          repository: gbdev/rgbds
+      
+      # INSTALL RGBDS
       - id: install-rgbds
         name: "Install gbdev/rgbds"
+        working-directory: rgbds
         run: |
           sudo make install
-          popd
       
       # CHECKOUT REPOSITORY
       - id: checkout-polishedcrystal
         name: "Checkout Rangi42/polishedcrystal"
-        run: |
-          git clone https://github.com/Rangi42/polishedcrystal --branch=master --depth=1
-          pushd polishedcrystal
-          mkdir build
+        uses: actions/checkout@master
+        
+      # SET ENVIRONMENT VARIABLE
       - id: set-env-var
         name: "Set environment variable"
         run: |
