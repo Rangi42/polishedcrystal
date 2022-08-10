@@ -11,10 +11,10 @@ on:
 
 jobs:
   build:
-    name: "Build"
+    name: "Nightly"
     uses: Rangi42/polishedcrystal/.github/workflows/build.yml@master
   release:
-    name: "Release"
+    name: "Nightly / Release"
     runs-on: ubuntu-latest
     needs: build
     steps:
@@ -27,8 +27,9 @@ jobs:
       # CHECKOUT REPOSITORY
       - id: checkout-polishedcrystal
         name: "Checkout Rangi42/polishedcrystal"
-        run: |
-          git clone https://github.com/Rangi42/polishedcrystal --branch=master --depth=1
+        uses: actions/checkout@master
+        
+      # SET ENVIRONMENT VARIABLE
       - id: set-env-var
         name: "Set environment variable"
         run: |
@@ -106,7 +107,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ./polishedcrystal-3.0.0-beta-${{ env.SHORT_SHA }}.gbc
+          asset_path: ./polishedcrystal/polishedcrystal-3.0.0-beta-${{ env.SHORT_SHA }}.gbc
           asset_name: polishedcrystal-3.0.0-beta-${{ env.SHORT_SHA }}.gbc
           asset_content_type: application/octet-stream
       - name: Upload SYM
@@ -116,7 +117,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ./polishedcrystal-3.0.0-beta-${{ env.SHORT_SHA }}.sym
+          asset_path: ./polishedcrystal/polishedcrystal-3.0.0-beta-${{ env.SHORT_SHA }}.sym
           asset_name: polishedcrystal-3.0.0-beta-${{ env.SHORT_SHA }}.sym
           asset_content_type: text/plain
           
@@ -127,7 +128,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ./polishedcrystal-faithful-3.0.0-beta-${{ env.SHORT_SHA }}.gbc
+          asset_path: ./polishedcrystal-faithful/polishedcrystal-faithful-3.0.0-beta-${{ env.SHORT_SHA }}.gbc
           asset_name: polishedcrystal-faithful-3.0.0-beta-${{ env.SHORT_SHA }}.gbc
           asset_content_type: application/octet-stream
       - name: Upload faithful SYM
@@ -137,7 +138,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ./polishedcrystal-faithful-3.0.0-beta-${{ env.SHORT_SHA }}.sym
+          asset_path: ./polishedcrystal-faithful/polishedcrystal-faithful-3.0.0-beta-${{ env.SHORT_SHA }}.sym
           asset_name: polishedcrystal-faithful-3.0.0-beta-${{ env.SHORT_SHA }}.sym
           asset_content_type: text/plain
           
@@ -148,7 +149,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ./polisheddebug-3.0.0-beta-${{ env.SHORT_SHA }}.gbc
+          asset_path: ./polisheddebug/polisheddebug-3.0.0-beta-${{ env.SHORT_SHA }}.gbc
           asset_name: polisheddebug-3.0.0-beta-${{ env.SHORT_SHA }}.gbc
           asset_content_type: application/octet-stream
       - name: Upload debug SYM
@@ -158,7 +159,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ./polisheddebug-3.0.0-beta-${{ env.SHORT_SHA }}.sym
+          asset_path: ./polisheddebug/polisheddebug-3.0.0-beta-${{ env.SHORT_SHA }}.sym
           asset_name: polisheddebug-3.0.0-beta-${{ env.SHORT_SHA }}.sym
           asset_content_type: text/plain
           
@@ -169,7 +170,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ./polisheddebug-faithful-3.0.0-beta-${{ env.SHORT_SHA }}.gbc
+          asset_path: ./polisheddebug-faithful/polisheddebug-faithful-3.0.0-beta-${{ env.SHORT_SHA }}.gbc
           asset_name: polisheddebug-faithful-3.0.0-beta-${{ env.SHORT_SHA }}.gbc
           asset_content_type: application/octet-stream
       - name: Upload faithful debug SYM
@@ -179,7 +180,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ./polisheddebug-faithful-3.0.0-beta-${{ env.SHORT_SHA }}.sym
+          asset_path: ./polisheddebug-faithful/polisheddebug-faithful-3.0.0-beta-${{ env.SHORT_SHA }}.sym
           asset_name: polisheddebug-faithful-3.0.0-beta-${{ env.SHORT_SHA }}.sym
           asset_content_type: text/plain
           
@@ -190,6 +191,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ./polishedcrystal-savepatch-3.0.0-beta-${{ env.SHORT_SHA }}.bsp
+          asset_path: ./polishedcrystal-savepatch/polishedcrystal-savepatch-3.0.0-beta-${{ env.SHORT_SHA }}.bsp
           asset_name: polishedcrystal-savepatch-3.0.0-beta-${{ env.SHORT_SHA }}.bsp
           asset_content_type: application/octet-stream
