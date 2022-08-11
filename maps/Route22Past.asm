@@ -13,13 +13,13 @@ Route22Past_MapScriptHeader:
 	def_object_events
 	object_event  6,  8, SPRITE_CELEBI, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, ObjectEvent, -1
 	object_event  5,  7, SPRITE_LYRA, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, ObjectEvent, -1
-	object_event  5,  2, SPRITE_SILVER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, ObjectEvent, -1
+	object_event  5,  2, SPRITE_RIVAL, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, ObjectEvent, -1
 	object_event  2,  2, SPRITE_GIOVANNI, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, ObjectEvent, -1
 
 	object_const_def
 	const ROUTE22PAST_CELEBI
 	const ROUTE22PAST_LYRA
-	const ROUTE22PAST_SILVER
+	const ROUTE22PAST_RIVAL
 	const ROUTE22PAST_GIOVANNI
 
 Route22PastTrigger0:
@@ -44,33 +44,33 @@ Route22PastCelebiEventScript:
 	showtext Route22PastLyraHearsSomeoneText
 	applymovement PLAYER, Route22Past_PlayerStepUpToLyraMovementData
 	follow ROUTE22PAST_LYRA, PLAYER
-	applymovement ROUTE22PAST_LYRA, Route22Past_LyraApproachesSilverMovementData
+	applymovement ROUTE22PAST_LYRA, Route22Past_LyraApproachesRivalMovementData
 	turnobject ROUTE22PAST_LYRA, UP
 	turnobject PLAYER, UP
 	stopfollow
 	applyonemovement ROUTE22PAST_CELEBI, step_up
 	special Special_FadeOutMusic
-	applyonemovement ROUTE22PAST_SILVER, slow_step_left
-	showtext Route22PastSilverQuestionsGiovanniText
+	applyonemovement ROUTE22PAST_RIVAL, slow_step_left
+	showtext Route22PastRivalQuestionsGiovanniText
 	turnobject ROUTE22PAST_GIOVANNI, RIGHT
-	showtext Route22PastGiovanniSilverArgumentText
-	applyonemovement ROUTE22PAST_SILVER, slow_step_left
-	showtext Route22PastSilverProtestsText
+	showtext Route22PastGiovanniRivalArgumentText
+	applyonemovement ROUTE22PAST_RIVAL, slow_step_left
+	showtext Route22PastRivalProtestsText
 	turnobject ROUTE22PAST_GIOVANNI, LEFT
 	showtext Route22PastGiovanniGoodbyeText
 	applymovement ROUTE22PAST_GIOVANNI, Route22Past_GiovanniLeavesMovementData
 	pause 15
-	applyonemovement ROUTE22PAST_SILVER, slow_step_left
-	showtext Route22PastSilverRantText
+	applyonemovement ROUTE22PAST_RIVAL, slow_step_left
+	showtext Route22PastRivalRantText
 	special Special_FadeOutMusic
 	playmusic MUSIC_RIVAL_ENCOUNTER
-	applymovement ROUTE22PAST_SILVER, Route22Past_SilverRunsIntoPlayerMovementData
-	showemote EMOTE_SHOCK, ROUTE22PAST_SILVER, 15
-	showtext Route22PastSilverInsultText
+	applymovement ROUTE22PAST_RIVAL, ROUTE22PAST_RIVALRunsIntoPlayerMovementData
+	showemote EMOTE_SHOCK, ROUTE22PAST_RIVAL, 15
+	showtext Route22PastRivalInsultText
 	playsound SFX_TACKLE
-	applymovement PLAYER, Route22Past_SilverShovesPlayerDownMovementData
+	applymovement PLAYER, ROUTE22PAST_RIVALShovesPlayerDownMovementData
 	turnobject ROUTE22PAST_LYRA, DOWN
-	applymovement ROUTE22PAST_SILVER, Route22Past_SilverLeavesMovementData
+	applymovement ROUTE22PAST_RIVAL, ROUTE22PAST_RIVALLeavesMovementData
 	special RestartMapMusic
 	applymovement ROUTE22PAST_LYRA, Route22Past_LyraMeetsPlayerMovementData
 	showtext Route22PastLyraConclusionText
@@ -150,7 +150,7 @@ Route22Past_PlayerStepUpToLyraMovementData:
 	slow_step_up
 	step_end
 
-Route22Past_LyraApproachesSilverMovementData:
+Route22Past_LyraApproachesRivalMovementData:
 	slow_step_up
 	slow_step_up
 	slow_step_left
@@ -161,14 +161,14 @@ Route22Past_GiovanniLeavesMovementData:
 	slow_step_left
 	step_end
 
-Route22Past_SilverRunsIntoPlayerMovementData:
+ROUTE22PAST_RIVALRunsIntoPlayerMovementData:
 	step_right
 	step_right
 	step_right
 	step_down
 	step_end
 
-Route22Past_SilverShovesPlayerDownMovementData:
+ROUTE22PAST_RIVALShovesPlayerDownMovementData:
 	turn_head_up
 	fix_facing
 	jump_step_down
@@ -178,7 +178,7 @@ Route22Past_SilverShovesPlayerDownMovementData:
 	remove_fixed_facing
 	step_end
 
-Route22Past_SilverLeavesMovementData:
+ROUTE22PAST_RIVALLeavesMovementData:
 	step_down
 	step_down
 	step_down
@@ -256,7 +256,7 @@ Route22PastLyraHearsSomeoneText:
 	line "who it is!"
 	done
 
-Route22PastSilverQuestionsGiovanniText:
+Route22PastRivalQuestionsGiovanniText:
 	text "<RIVAL>: You told"
 	line "me… you were the"
 
@@ -270,7 +270,7 @@ Route22PastSilverQuestionsGiovanniText:
 	line "going to do now?"
 	done
 
-Route22PastGiovanniSilverArgumentText:
+Route22PastGiovanniRivalArgumentText:
 	text "…… …… ……"
 
 	para "One must acknow-"
@@ -323,7 +323,7 @@ Route22PastGiovanniSilverArgumentText:
 	line "my Team Rocket!"
 	done
 
-Route22PastSilverProtestsText:
+Route22PastRivalProtestsText:
 	text "<RIVAL>: I don't"
 	line "understand you!"
 
@@ -338,7 +338,7 @@ Route22PastGiovanniGoodbyeText:
 	line "understand."
 	done
 
-Route22PastSilverRantText:
+Route22PastRivalRantText:
 	text "<RIVAL>: I don't"
 	line "want to understand"
 	cont "you!"
@@ -366,7 +366,7 @@ Route22PastSilverRantText:
 	para "All by myself!"
 	done
 
-Route22PastSilverInsultText:
+Route22PastRivalInsultText:
 	text "<RIVAL>: …What are"
 	line "you staring at?"
 	done

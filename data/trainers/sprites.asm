@@ -27,9 +27,9 @@ BTTrainerClassSprites:
 	db SPRITE_BLUE          ; BLUE
 	db SPRITE_RED           ; RED
 	db SPRITE_LEAF          ; LEAF
-	db SPRITE_SILVER        ; RIVAL0
-	db SPRITE_SILVER        ; RIVAL1
-	db SPRITE_SILVER        ; RIVAL2
+	db SPRITE_RIVAL         ; RIVAL0
+	db SPRITE_RIVAL         ; RIVAL1
+	db SPRITE_RIVAL         ; RIVAL2
 	db SPRITE_LYRA          ; LYRA1
 	db SPRITE_LYRA          ; LYRA2
 	db SPRITE_YOUNGSTER     ; YOUNGSTER
