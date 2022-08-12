@@ -94,9 +94,9 @@ CeladonHomeDecorStore3FClerk1Script:
 .MenuData2:
 	db $80 ; flags
 	db 4 ; items
-	db "Red C.    ¥45000@"
-	db "Yellow C. ¥45000@"
-	db "Green C.  ¥45000@"
+	db "Red       ¥45000@"
+	db "Yellow    ¥45000@"
+	db "Green     ¥45000@"
 	db "Cancel@"
 
 CeladonHomeDecorStore3FClerk2Script:
