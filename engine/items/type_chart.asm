@@ -56,13 +56,11 @@ _TypeChart:
 
 	ld hl, TypeChartTilemap
 	decoord 0, 0
-	ld bc, SCREEN_WIDTH * SCREEN_HEIGHT
-	rst CopyBytes
+	call Decompress
 
 	ld hl, TypeChartAttrmap
 	decoord 0, 0, wAttrmap
-	ld bc, SCREEN_WIDTH * SCREEN_HEIGHT
-	rst CopyBytes
+	call Decompress
 
 	call ApplyAttrAndTilemapInVBlank
 
@@ -193,10 +191,10 @@ TypeChartOBGFX:
 INCBIN "gfx/type_chart/ob.2bpp.lz"
 
 TypeChartTilemap:
-INCBIN "gfx/type_chart/type_chart.tilemap"
+INCBIN "gfx/type_chart/type_chart.tilemap.lz"
 
 TypeChartAttrmap:
-INCBIN "gfx/type_chart/type_chart.attrmap"
+INCBIN "gfx/type_chart/type_chart.attrmap.lz"
 
 TypeChartOAMData:
 MACRO oamdata

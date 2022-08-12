@@ -62,10 +62,9 @@ _SlotMachine:
 	ld de, vTiles2 tile $25
 	call Decompress
 
-	ld hl, SlotsTilemap
+	ld hl, SlotsTilemapLZ
 	decoord 0, 0
-	ld bc, SCREEN_WIDTH * 12
-	rst CopyBytes
+	call Decompress
 
 	ld hl, rLCDC
 	set rLCDC_SPRITE_SIZE, [hl]
@@ -1908,8 +1907,8 @@ Reel3Tilemap:
 	db SLOTS_PIKACHU  ;  1
 	db SLOTS_CHERRY   ;  2
 
-SlotsTilemap:
-INCBIN "gfx/slots/slots.tilemap"
+SlotsTilemapLZ:
+INCBIN "gfx/slots/slots.tilemap.lz"
 
 Slots1LZ:
 INCBIN "gfx/slots/slots_1.2bpp.lz"
