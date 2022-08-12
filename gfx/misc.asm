@@ -119,6 +119,17 @@ AnimObjPremierBallGFX:: INCBIN "gfx/battle_balls/premier_ball.2bpp.lz"
 AnimObjCherishBallGFX:: INCBIN "gfx/battle_balls/cherish_ball.2bpp.lz"
 
 
+SECTION "Painting Pics", ROMX
+
+HoOhPaintingPic::      INCBIN "gfx/paintings/ho_oh_painting.2bpp.lz"
+LugiaPaintingPic::     INCBIN "gfx/paintings/lugia_painting.2bpp.lz"
+BellTowerPaintingPic:: INCBIN "gfx/paintings/bell_tower_painting.2bpp.lz"
+KabutoPuzzlePic::      INCBIN "gfx/paintings/kabuto_puzzle.2bpp.lz"
+OmanytePuzzlePic::     INCBIN "gfx/paintings/omanyte_puzzle.2bpp.lz"
+AerodactylPuzzlePic::  INCBIN "gfx/paintings/aerodactyl_puzzle.2bpp.lz"
+HoOhPuzzlePic::        INCBIN "gfx/paintings/ho_oh_puzzle.2bpp.lz"
+
+
 SECTION "Bill's PC Graphics", ROMX
 
 BillsPC_CursorGFX:: INCBIN "gfx/pc/cursor.2bpp"

@@ -1,4 +1,4 @@
-INCLUDE "data/pokemon/menu_icon_pals.asm"
+INCLUDE "data/pokemon/overworld_icon_pals.asm"
 
 LoadOverworldMonIcon:
 	; c = species
@@ -9,10 +9,25 @@ LoadOverworldMonIcon:
 	ld b, a
 	; bc = extended index
 	call GetCosmeticSpeciesAndFormIndex
-	inc bc
 	; hl = pointer table
-	ld hl, IconPointers
-	jr _LoadMonGFX
+	ld hl, MiniIconPointers
+rept 7
+	add hl, bc
+endr
+	; b = gfx bank
+	ld a, [hli]
+	ld b, a
+	; skip mini and mask pointers
+rept 4
+	inc hl
+endr
+	; de = icon pointer
+	ld a, [hli]
+	ld d, [hl]
+	ld e, a
+	; c = tile count
+	ld c, 8
+	ret
 
 LoadMini:
 	; c = species
@@ -25,18 +40,15 @@ LoadMini:
 LoadMiniForSpeciesAndForm:
 	; bc = extended index
 	call GetCosmeticSpeciesAndFormIndex
-	inc bc
 	; hl = pointer table
-	ld hl, MiniPointers
-	; fallthrough
-_LoadMonGFX:
+	ld hl, MiniIconPointers
+rept 7
 	add hl, bc
-	add hl, bc
-	add hl, bc
+endr
 	; b = gfx bank
 	ld a, [hli]
 	ld b, a
-	; de = gfx pointer
+	; de = mini pointer
 	ld a, [hli]
 	ld d, [hl]
 	ld e, a
@@ -159,7 +171,7 @@ _GetMonIconPalette:
 
 	; bc = index
 	call GetCosmeticSpeciesAndFormIndex
-	ld hl, MenuMonIconColors
+	ld hl, OverworldMonIconColors
 	add hl, bc
 	ld c, [hl]
 
@@ -457,17 +469,26 @@ GetStorageMask:
 	ld bc, 4 tiles
 	add hl, bc
 	push hl
+	; c = species
 	ld a, [wCurIconSpecies]
 	ld c, a
+	; b = form
 	ld a, [wCurIconForm]
 	ld b, a
+	; bc = extended index
 	call GetCosmeticSpeciesAndFormIndex
-	ld hl, MaskPointers + 3 ; skip NullMiniMask
+	; hl = pointer table
+	ld hl, MiniIconPointers
+rept 7
 	add hl, bc
-	add hl, bc
-	add hl, bc
+endr
+	; b = gfx bank
 	ld a, [hli]
 	ld b, a
+	; skip mini
+	inc hl
+	inc hl
+	; hl = mask pointer
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
