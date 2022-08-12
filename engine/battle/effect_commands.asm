@@ -5762,7 +5762,7 @@ BattleCommand_resetstats:
 
 BattleCommand_heal:
 	farcall CheckFullHP
-	jmp z, .hp_full
+	jr z, .hp_full
 	ld a, BATTLE_VARS_MOVE_ANIM
 	call GetBattleVar
 	cp REST
@@ -5770,7 +5770,7 @@ BattleCommand_heal:
 	ld a, BATTLE_VARS_STATUS
 	call GetBattleVar
 	and SLP
-	jmp nz, BattleEffect_ButItFailed
+	jr nz, BattleEffect_ButItFailed
 	call GetTrueUserAbility
 	cp INSOMNIA
 	jr z, .ability_prevents_rest
