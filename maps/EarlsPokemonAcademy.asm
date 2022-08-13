@@ -93,9 +93,8 @@ AcademyBlackboard:
 	sjump .Loop
 
 .MenuHeader:
-	db $40 ; flags
-	db 00, 00 ; start coords
-	db 08, 11 ; end coords
+	db MENU_BACKUP_TILES
+	menu_coords 0, 0, 11, 8
 	dw .Data
 	db 1 ; default option
 

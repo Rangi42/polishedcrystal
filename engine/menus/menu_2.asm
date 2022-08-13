@@ -77,16 +77,14 @@ PlaceMoneyDataHeader:
 	jmp PrintNum
 
 MoneyTopRightMenuHeader:
-	db $40 ; flags
-	db 00, 10 ; start coords
-	db 02, 19 ; end coords
+	db MENU_BACKUP_TILES
+	menu_coords 10, 0, 19, 2
 	dw NULL
 	db 1 ; default option
 
 MoneyBottomLeftMenuHeader:
-	db $40 ; flags
-	db 11, 00 ; start coords
-	db 13, 09 ; end coords
+	db MENU_BACKUP_TILES ; flags
+	menu_coords 0, 11, 9, 13
 	dw NULL
 	db 1 ; default option
 

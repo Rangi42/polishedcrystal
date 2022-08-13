@@ -36,9 +36,8 @@ _BattleMenuCommon:
 	jmp ExitMenu
 
 BattleMenuDataHeader:
-	db $40 ; flags
-	db 12, 08 ; start coords
-	db 17, 19 ; end coords
+	db MENU_BACKUP_TILES
+	menu_coords 8, 12, 19, 17
 	dw .MenuData2
 	db 1 ; default option
 
@@ -56,9 +55,8 @@ BattleMenuDataHeader:
 	db "Run@"
 
 ContestBattleMenuDataHeader:
-	db $40 ; flags
-	db 12, 05 ; start coords
-	db 17, 19 ; end coords
+	db MENU_BACKUP_TILES
+	menu_coords 5, 12, 19, 17
 	dw .MenuData2
 	db 1 ; default option
 
@@ -82,9 +80,8 @@ ShowParkBallsRemaining:
 	jmp PrintNum
 
 SafariBattleMenuDataHeader:
-	db $40 ; flags
-	db 12, 04 ; start coords
-	db 17, 19 ; end coords
+	db MENU_BACKUP_TILES
+	menu_coords 4, 12, 19, 17
 	dw .MenuData2
 	db 1 ; default option
 

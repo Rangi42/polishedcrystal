@@ -75,9 +75,8 @@ Kurt_SelectApricorn:
 	ret
 
 .MenuDataHeader:
-	db $40 ; flags
-	db 01, 01 ; start coords
-	db 10, 13 ; end coords
+	db MENU_BACKUP_TILES
+	menu_coords 1, 1, 13, 10
 	dw .MenuData2
 	db 1 ; default option
 
@@ -148,9 +147,8 @@ Kurt_SelectQuantity:
 	jmp CloseWindow
 
 .MenuDataHeader:
-	db $40 ; flags
-	db 09, 06 ; start coords
-	db 12, 19 ; end coords
+	db MENU_BACKUP_TILES
+	menu_coords 6, 9, 19, 12
 
 .PlaceApricornName:
 	call MenuBoxCoord2Tile

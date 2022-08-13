@@ -104,9 +104,8 @@ CeladonPrizeRoom_notenoughcoins:
 	jumpopenedtext CeladonPrizeRoom_NotEnoughCoinsText
 
 CeladonPrizeRoom_TMMenuDataHeader:
-	db $40 ; flags
-	db 02, 00 ; start coords
-	db 11, 15 ; end coords
+	db MENU_BACKUP_TILES
+	menu_coords 0, 2, 15, 11
 	dw .MenuData2
 	db 1 ; default option
 
@@ -188,9 +187,8 @@ CeladonGameCornerPokemonVendor:
 	sjump .loop
 
 .MenuDataHeader:
-	db $40 ; flags
-	db 02, 00 ; start coords
-	db 11, 17 ; end coords
+	db MENU_BACKUP_TILES
+	menu_coords 0, 2, 17, 11
 	dw .MenuData2
 	db 1 ; default option
 

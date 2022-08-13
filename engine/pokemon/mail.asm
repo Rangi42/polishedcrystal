@@ -524,9 +524,8 @@ MailboxPC:
 	text_end
 
 .TopMenuDataHeader:
-	db %01000000 ; flags
-	db 1, 8 ; start coords
-	db 10, 18 ; end coords
+	db MENU_BACKUP_TILES
+	menu_coords 8, 1, 18, 10
 	dw .TopMenuData2
 	db 1 ; default option
 
@@ -540,9 +539,8 @@ MailboxPC:
 	dba NULL
 
 .SubMenuDataHeader:
-	db %01000000 ; flags
-	db 0,  0 ; start coords
-	db 9, 13 ; end coords
+	db MENU_BACKUP_TILES
+	menu_coords 0, 0, 13, 9
 	dw .SubMenuData2
 	db 1 ; default option
 

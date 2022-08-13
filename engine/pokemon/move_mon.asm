@@ -728,9 +728,8 @@ Special_HyperTrain:
 	ret
 
 .MenuHeader:
-	db $40 ; flags
-	db 04, 00 ; start coords
-	db 11, 19 ; end coords
+	db MENU_BACKUP_TILES
+	menu_coords 0, 4, 19, 11
 	dw .MenuData
 	db 1 ; default option
 

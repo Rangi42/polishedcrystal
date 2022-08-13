@@ -26,9 +26,8 @@ PokemonCenterPC:
 	jmp CloseWindow
 
 .TopMenu:
-	db $48 ; flags
-	db 00, 00 ; start coords
-	db 12, 15 ; end coords
+	db MENU_BACKUP_TILES | MENU_NO_CLICK_SFX
+	menu_coords 0, 0, 15, 12
 	dw .MenuData2
 	db 1 ; default option
 
@@ -592,9 +591,8 @@ PCItemsJoypad:
 	ret
 
 .PCItemsMenuData:
-	db %01000000
-	db  1,  4 ; start coords
-	db 10, 18 ; end coords
+	db MENU_BACKUP_TILES
+	menu_coords 4, 1, 18, 10
 	dw .MenuData2
 	db 1 ; default option
 

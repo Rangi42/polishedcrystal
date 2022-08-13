@@ -1455,9 +1455,8 @@ ManageBoxes:
 	done
 
 .StorageMonMenu:
-	db $40 ; flags
-	db 02, 09 ; start coords
-	db 17, 19 ; end coords
+	db MENU_BACKUP_TILES
+	menu_coords 9, 2, 19, 17
 	dw .StorageMenuData2
 	db 1 ; default option
 
@@ -1467,11 +1466,11 @@ ManageBoxes:
 	dw .storageitems
 	dw PlaceMenuStrings
 	dw BillsPC_MenuStrings
+;	db 11, 19 ; end coords
 
 .PartyMonMenu:
-	db $40 ; flags
-	db 02, 10 ; start coords
-	db 17, 19 ; end coords
+	db MENU_BACKUP_TILES
+	menu_coords 10, 2, 19, 17
 	dw .PartyMenuData2
 	db 1 ; default option
 
@@ -1483,9 +1482,8 @@ ManageBoxes:
 	dw BillsPC_MenuStrings
 
 .BoxMenu:
-	db $40 ; flags
-	db 08, 10 ; start coords
-	db 17, 19 ; end coords
+	db MENU_BACKUP_TILES
+	menu_coords 10, 8, 19, 17
 	dw .BoxMenuData2
 	db 1 ; default option
 
@@ -2602,9 +2600,8 @@ BillsPC_Item:
 	done
 
 .MailMenu:
-	db $40 ; flags
-	db 03, 11 ; start coords
-	db 12, 19 ; end coords
+	db MENU_BACKUP_TILES
+	menu_coords 11, 3, 19, 12
 	dw .MailMenuData
 	db 1 ; default option
 
@@ -2616,9 +2613,8 @@ BillsPC_Item:
 	dw BillsPC_MenuStrings
 
 .ItemMenu:
-	db $40 ; flags
-	db 05, 11 ; start coords
-	db 12, 19 ; end coords
+	db MENU_BACKUP_TILES
+	menu_coords 11, 5, 19, 12
 	dw .ItemMenuData
 	db 1 ; default option
 
@@ -2630,9 +2626,8 @@ BillsPC_Item:
 	dw BillsPC_MenuStrings
 
 .NoItemMenu:
-	db $40 ; flags
-	db 07, 11 ; start coords
-	db 12, 19 ; end coords
+	db MENU_BACKUP_TILES
+	menu_coords 11, 7, 19, 12
 	dw .NoItemMenuData
 	db 1 ; default option
 
@@ -3016,9 +3011,8 @@ BillsPC_Theme:
 	done
 
 .ThemeMenuDataHeader:
-	db $40 ; flags
-	db 01, 08 ; start coords
-	db 13, 18 ; end coords
+	db MENU_BACKUP_TILES
+	menu_coords 8, 1, 18, 13
 	dw .ThemeMenuData2
 	db 1 ; default option
 

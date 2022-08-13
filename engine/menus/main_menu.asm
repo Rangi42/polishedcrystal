@@ -21,9 +21,8 @@ MainMenu:
 	jr MainMenu
 
 .MenuDataHeader:
-	db $40 ; flags
-	db 00, 00 ; start coords
-	db 07, 16 ; end coords
+	db MENU_BACKUP_TILES
+	menu_coords 0, 0, 16, 7
 	dw .MenuData2
 	db 1 ; default option
 
