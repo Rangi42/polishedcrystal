@@ -187,7 +187,7 @@ wTilePermissions::
 ; bit 0: right
 	db
 
-wCompressedTextBuffer:: ds 2 ; one character and "@"
+	ds 2
 
 wLinkOtherPlayerGameID:: db
 wLinkOtherPlayerVersion:: dw
