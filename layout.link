@@ -23,6 +23,8 @@ ROM0
 	"lcd"
 	org $0050
 	"timer"
+	org $0057
+	"Unused Tileset Data"
 	org $0058
 	"serial"
 ;	org $0060
