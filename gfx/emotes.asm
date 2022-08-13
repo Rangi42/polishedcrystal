@@ -1,8 +1,0 @@
-ShockEmote:    INCBIN "gfx/emotes/shock.2bpp.lz"
-QuestionEmote: INCBIN "gfx/emotes/question.2bpp.lz"
-HappyEmote:    INCBIN "gfx/emotes/happy.2bpp.lz"
-SadEmote:      INCBIN "gfx/emotes/sad.2bpp.lz"
-HeartEmote:    INCBIN "gfx/emotes/heart.2bpp.lz"
-BoltEmote:     INCBIN "gfx/emotes/bolt.2bpp.lz"
-SleepEmote:    INCBIN "gfx/emotes/sleep.2bpp.lz"
-FishEmote:     INCBIN "gfx/emotes/fish.2bpp.lz"

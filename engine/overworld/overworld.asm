@@ -410,19 +410,16 @@ LoadEmote::
 	ldh [hCGBPalUpdate], a
 	pop bc
 ; Get the address of the pointer to emote c.
-	ld a, c
-	ld bc, 3
+	ld b, 0
 	ld hl, Emotes
-	rst AddNTimes
-; load the emote pointer bank into b
-	ld b, [hl]
-	inc hl
+	add hl, bc
+	add hl, bc
 ; load the emote address into hl
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
-; load the length of the emote (in tiles) into c
-	ld c, 4
+; load the bank and length of the emote (in tiles) into bc
+	lb bc, BANK("Emote Graphics"), 4
 ; load the VRAM destination into de
 	ld de, vTiles0 tile $60
 ; load into vram0

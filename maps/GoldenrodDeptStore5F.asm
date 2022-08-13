@@ -74,8 +74,8 @@ GoldenrodDeptStore5FTwinScript:
 	opentext
 	writetext GoldenrodDeptStore5FCarrieMysteryGiftRequiresGBCText
 	promptbutton
-	random MARANGABERRY - ORAN_BERRY + 1
-	addval ORAN_BERRY
+	random NUM_BERRIES
+	addval FIRST_BERRY
 	getitemname $0, $1
 	verbosegiveitem ITEM_FROM_MEM
 	iffalse_jumpopenedtext MysteryGiftGirl_NoRoomText

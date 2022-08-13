@@ -8,6 +8,7 @@
 ; - ItemEffects (see engine/items/item_effects.asm)
 	const_def
 	const NO_ITEM      ; 00
+DEF PARK_BALL EQU NO_ITEM
 
 	const POKE_BALL    ; 01
 	const GREAT_BALL   ; 02
@@ -37,6 +38,7 @@
 
 	const PREMIER_BALL ; 17
 	const CHERISH_BALL ; 18
+DEF NUM_POKE_BALLS EQU const_value ; PARK_BALL counts
 
 	const POTION       ; 19
 	const SUPER_POTION ; 1a
@@ -83,6 +85,7 @@
 
 	const SACRED_ASH   ; 3d
 
+DEF FIRST_BERRY EQU const_value
 	const CHERI_BERRY  ; 3e
 	const CHESTO_BERRY ; 3f
 	const PECHA_BERRY  ; 40
@@ -120,6 +123,7 @@
 
 	const KEE_BERRY    ; 5a
 	const MARANGABERRY ; 5b
+DEF NUM_BERRIES EQU const_value - FIRST_BERRY
 
 	const BERRY_JUICE  ; 5c
 
@@ -146,6 +150,7 @@
 	const ABILITY_CAP  ; 6c
 	const ABILITYPATCH ; 6d
 
+DEF FIRST_STONE EQU const_value
 	const LEAF_STONE   ; 6e
 	const FIRE_STONE   ; 6f
 	const WATER_STONE  ; 70
@@ -156,6 +161,7 @@
 	const DUSK_STONE   ; 75
 	const SHINY_STONE  ; 76
 	const EVERSTONE    ; 77
+DEF NUM_STONES EQU const_value - FIRST_STONE
 
 	const EXP_SHARE    ; 78
 
@@ -302,6 +308,7 @@
 	const DOME_FOSSIL  ; f3
 	const OLD_AMBER    ; f4
 
+DEF FIRST_MAIL EQU const_value
 	const FLOWER_MAIL  ; f5
 	const SURF_MAIL    ; f6
 	const LITEBLUEMAIL ; f7
@@ -312,9 +319,9 @@
 	const BLUESKY_MAIL ; fc
 	const MUSIC_MAIL   ; fd
 	const MIRAGE_MAIL  ; fe
+DEF NUM_MAILS EQU const_value - FIRST_MAIL
 DEF NUM_ITEMS EQU const_value - 1
 
-DEF PARK_BALL      EQU $00
 DEF USE_SCRIPT_VAR EQU $00
 DEF ITEM_FROM_MEM  EQU $ff
 DEF ALWAYS_ITEM_2  EQU $ff
