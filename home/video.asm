@@ -6,7 +6,7 @@ PushOAM::
 	ret nz
 ForcePushOAM:
 	lb bc, 40 + 1, LOW(rDMA)
-	ld a, HIGH(wVirtualOAM)
+	ld a, HIGH(wShadowOAM)
 	jmp hPushOAM
 
 ContinueGDMACopy:

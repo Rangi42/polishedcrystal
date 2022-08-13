@@ -897,10 +897,10 @@ PHB_AreaSwitchTileMode2:
 
 	ldh a, [rSVBK]
 	push af
-	ld a, BANK(wDexAreaVirtualOAM)
+	ld a, BANK(wDexAreaShadowOAM)
 	ldh [rSVBK], a
 	lb bc, 41, LOW(rDMA)
-	ld a, HIGH(wDexAreaVirtualOAM)
+	ld a, HIGH(wDexAreaShadowOAM)
 	call hPushOAM
 	pop af
 	ldh [rSVBK], a

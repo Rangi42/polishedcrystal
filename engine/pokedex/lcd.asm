@@ -518,7 +518,7 @@ Pokedex_WriteOAM:
 	ld h, 0
 	add hl, hl
 	add hl, hl
-	ld de, wVirtualOAM
+	ld de, wShadowOAM
 	add hl, de
 	pop de
 	ld a, c
@@ -542,7 +542,7 @@ Pokedex_WriteOAM:
 
 Pokedex_GetMainOAM:
 	; Poké balls
-	ld hl, wVirtualOAMSprite12
+	ld hl, wShadowOAMSprite12
 	lb bc, 12, 5
 	xor a
 .ball_oam_loop
@@ -1048,9 +1048,9 @@ PVB_UpdateDexMap::
 	ldh a, [hPokedexAreaMode]
 	ld [wDexAreaModeCopy], a
 
-	ld hl, wVirtualOAM
-	ld de, wDexAreaVirtualOAM
-	ld bc, wVirtualOAMEnd - wVirtualOAM
+	ld hl, wShadowOAM
+	ld de, wDexAreaShadowOAM
+	ld bc, wShadowOAMEnd - wShadowOAM
 	rst CopyBytes
 	jr .done_copy
 

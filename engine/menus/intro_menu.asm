@@ -92,8 +92,8 @@ ResetWRAM_NotPlus:
 	ret
 
 ResetWRAM:
-	ld hl, wVirtualOAM
-	ld bc, wOptions3 - wVirtualOAM
+	ld hl, wShadowOAM
+	ld bc, wOptions3 - wShadowOAM
 	xor a
 	rst ByteFill
 
@@ -976,7 +976,7 @@ Intro_PlacePlayerSprite:
 	ld hl, vTiles0
 	call Request2bppInWRA6
 
-	ld hl, wVirtualOAM
+	ld hl, wShadowOAM
 	ld de, .sprites
 	ld a, [de]
 	inc de

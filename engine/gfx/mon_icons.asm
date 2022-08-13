@@ -67,7 +67,7 @@ SetMenuMonIconColor:
 	call GetMonIconPalette
 	; fallthrough
 _SetMonColor:
-	ld hl, wVirtualOAM + 3
+	ld hl, wShadowOAM + 3
 	ld c, 4
 	ld de, 4
 .loop
@@ -116,7 +116,7 @@ SetPartyMenuMonMiniColors:
 .got_species
 	ld [wCurPartySpecies], a
 
-	ld hl, wVirtualOAM + 3
+	ld hl, wShadowOAM + 3
 	ld a, [wCurPartyMon]
 	swap a
 	ld d, 0
@@ -252,7 +252,7 @@ _LoadMonMini:
 	ld a, [wCurPartyMon]
 	inc a
 	inc a
-	ld hl, wVirtualOAM + 3
+	ld hl, wShadowOAM + 3
 	ld de, 4
 rept 3
 	ld [hl], a

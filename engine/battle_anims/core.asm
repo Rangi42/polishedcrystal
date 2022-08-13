@@ -103,7 +103,7 @@ BattleAnimOAMUpdate:
 	ld l, a
 	ld a, [wBattleAnimOAMPointerLo]
 	ld e, a
-	ld d, HIGH(wVirtualOAM)
+	ld d, HIGH(wShadowOAM)
 .loop
 	ld a, [wBattleAnimTempYCoord]
 	ld b, a

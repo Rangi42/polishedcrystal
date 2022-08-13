@@ -741,9 +741,9 @@ BillsPC_HideCursorAndMode:
 	; fallthrough
 BillsPC_HideModeIcon:
 	call BillsPC_CheckBagDisplay
-	ld hl, wVirtualOAMSprite05
+	ld hl, wShadowOAMSprite05
 	jr z, .got_mode_area
-	ld hl, wVirtualOAMSprite12
+	ld hl, wShadowOAMSprite12
 .got_mode_area
 	ld bc, 20
 	xor a
@@ -752,7 +752,7 @@ BillsPC_HideModeIcon:
 
 BillsPC_HideCursor:
 	call BillsPC_CheckBagDisplay
-	ld hl, wVirtualOAM
+	ld hl, wShadowOAM
 	ld bc, 48
 	jr nz, .got_bytecount
 	ld c, 20
@@ -768,13 +768,13 @@ BillsPC_UpdateCursorLocation:
 	ldh a, [rLY]
 	cp $60
 	call nc, DelayFrame
-	ld hl, wVirtualOAMSprite30
+	ld hl, wShadowOAMSprite30
 	ld de, wStringBuffer3
 	ld bc, 8
 	rst CopyBytes
 	farcall PlaySpriteAnimations
 	ld hl, wStringBuffer3
-	ld de, wVirtualOAMSprite30
+	ld de, wShadowOAMSprite30
 	ld bc, 8
 	rst CopyBytes
 	jmp PopBCDEHL
@@ -959,7 +959,7 @@ _GetCursorMon:
 	call GetStorageBoxMon
 	jr nz, .not_clear
 	ld a, -1
-	ld [wVirtualOAMSprite30], a
+	ld [wShadowOAMSprite30], a
 	; fallthrough
 .clear
 	; Clear existing data
@@ -986,7 +986,7 @@ _GetCursorMon:
 	ret
 .reset_item
 	ld a, -1
-	ld [wVirtualOAMSprite30], a
+	ld [wShadowOAMSprite30], a
 	or 1
 	ret
 
@@ -1118,7 +1118,7 @@ _GetCursorMon:
 	farcall VaryBGPalByTempMonDVs
 
 	; Show or hide item icon
-	ld hl, wVirtualOAMSprite30
+	ld hl, wShadowOAMSprite30
 	call GetMonItemUnlessCursor
 	ld [hl], -1
 	jr z, .item_icon_done
@@ -2228,7 +2228,7 @@ BillsPC_BlankCursorItem:
 ; Blanks cursor item and swap icon. Assumes vbk1.
 	; Remove held item icon.
 	ld a, -1
-	ld [wVirtualOAMSprite31], a
+	ld [wShadowOAMSprite31], a
 
 	; Blank cursor item name. Only uses 10 tiles, but this is ok.
 	ld hl, vTiles5 tile $3b
@@ -2333,7 +2333,7 @@ BillsPC_MoveItem:
 	ldh [hBGMapMode], a
 
 	; Load held item icon
-	ld hl, wVirtualOAMSprite31
+	ld hl, wShadowOAMSprite31
 	ld a, 32
 	ld [hli], a
 	ld a, 72

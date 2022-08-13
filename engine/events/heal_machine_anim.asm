@@ -60,14 +60,14 @@ HealMachineAnim:
 	dw .HOF_PlaySFX
 
 .PC_LoadBallsOntoMachine:
-	ld hl, wVirtualOAM + $80
+	ld hl, wShadowOAM + $80
 	ld de, .PC_ElmsLab_OAM
 	call .PlaceHealingMachineTile
 	call .PlaceHealingMachineTile
 	jr .LoadBallsOntoMachine
 
 .HOF_LoadBallsOntoMachine:
-	ld hl, wVirtualOAM + $80
+	ld hl, wShadowOAM + $80
 	ld de, .HOF_OAM
 
 .LoadBallsOntoMachine:

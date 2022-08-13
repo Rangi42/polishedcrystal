@@ -1519,7 +1519,7 @@ wDexNumberString:: ds 4 ; 3 numbers including leading zeroes + terminator
 ; including things like the proper floor. This is -1 to denote no highlight,
 wDexAreaHighlight:: db
 
-; Needed because when we reload the screen, wVirtualOAM is wiped clean.
+; Needed because when we reload the screen, wShadowOAM is wiped clean.
 wDexAreaHighlightY:: db
 wDexAreaHighlightX:: db
 
@@ -1573,11 +1573,11 @@ wDexAreaModeCopy:: db ; written to from hPokedexAreaMode on screen reload
 
 wDexAreaMons2:: ds (wDexAreaMonsEnd - wDexAreaMons)
 
-	; Used to align wDexAreaVirtualOAM. Feel free to add more data here, just
+	; Used to align wDexAreaShadowOAM. Feel free to add more data here, just
 	; don't let it be misaligned.
 	ds $39
 
-wDexAreaVirtualOAM:: ds (wVirtualOAMEnd - wVirtualOAM)
+wDexAreaShadowOAM:: ds (wShadowOAMEnd - wShadowOAM)
 
 ENDU
 

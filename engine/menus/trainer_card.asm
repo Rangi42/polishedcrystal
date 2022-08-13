@@ -503,7 +503,7 @@ TrainerCard_Page2_3_OAMUpdate:
 	ld d, a
 	ld a, [de]
 	ld c, a
-	ld de, wVirtualOAM
+	ld de, wShadowOAM
 	ld b, 8
 .loop
 	srl c

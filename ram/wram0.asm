@@ -274,11 +274,11 @@ wMusicPlayerWRAMEnd::
 
 SECTION "Sprites", WRAM0
 
-wVirtualOAM::
+wShadowOAM::
 for n, NUM_SPRITE_OAM_STRUCTS
-wVirtualOAMSprite{02d:n}:: sprite_oam_struct wVirtualOAMSprite{02d:n}
+wShadowOAMSprite{02d:n}:: sprite_oam_struct wShadowOAMSprite{02d:n}
 endr
-wVirtualOAMEnd::
+wShadowOAMEnd::
 
 
 SECTION "Tilemap and Attrmap", WRAM0
