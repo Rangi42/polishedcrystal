@@ -975,7 +975,7 @@ wTMsHMsEnd::
 wKeyItems:: ds NUM_KEY_ITEMS + 1
 wKeyItemsEnd::
 
-	ds 6 ; unused
+	ds 5 ; unused
 
 wNumItems:: db
 wItems:: ds MAX_ITEMS * 2 + 1
@@ -1174,7 +1174,7 @@ wCurMapSceneScriptsPointer:: dw
 wCurMapCallbackCount:: db
 wCurMapCallbacksPointer:: dw
 
-	ds 2 ; unused
+	ds 1 ; unused
 
 ; Sprite id of each decoration
 wDecoBed:: db
