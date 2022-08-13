@@ -3,8 +3,7 @@ MACRO map_attributes
 	DEF CURRENT_MAP_WIDTH = \2_WIDTH
 	DEF CURRENT_MAP_HEIGHT = \2_HEIGHT
 \1_MapAttributes::
-	db \3
-	db \2_HEIGHT, \2_WIDTH
+	db \3, \2_HEIGHT, \2_WIDTH
 	dba \1_BlockData, \1_MapScriptHeader
 	db \4
 ENDM

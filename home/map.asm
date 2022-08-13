@@ -1680,11 +1680,7 @@ ReloadTilesetAndPalettes::
 	call LoadFontsExtra
 	ldh a, [hROMBank]
 	push af
-	ld a, [wMapGroup]
-	ld b, a
-	ld a, [wMapNumber]
-	ld c, a
-	call SwitchToAnyMapAttributesBank
+	call SwitchToMapAttributesBank
 	farcall UpdateTimeOfDayPal
 	call LoadMapPart
 	call LoadTilesetGFX
@@ -1766,19 +1762,8 @@ SwitchToMapAttributesBank::
 	ld b, a
 	ld a, [wMapNumber]
 	ld c, a
-SwitchToAnyMapAttributesBank::
-	call GetAnyMapAttributesBank
+	ld a, BANK("Map Attributes")
 	rst Bankswitch
-	ret
-
-GetAnyMapAttributesBank::
-	push hl
-	push de
-	ld de, MAP_MAPATTRIBUTES_BANK
-	call GetAnyMapField
-	ld a, c
-	pop de
-	pop hl
 	ret
 
 CopyMapPartial::
@@ -1805,15 +1790,10 @@ GetAnyMapBlocksBank::
 	ld h, b
 	pop bc
 
-	push hl
-	ld de, MAP_MAPATTRIBUTES_BANK
-	call GetAnyMapField
-	pop hl
-
 	inc hl
 	inc hl
 	inc hl
-	ld a, c
+	ld a, BANK("Map Attributes")
 	rst Bankswitch
 	ld a, [hli]
 	ld c, a

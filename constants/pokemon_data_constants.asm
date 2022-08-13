@@ -174,7 +174,7 @@ DEF MON_CAUGHTLOCATION     rb
 DEF MON_LEVEL              rb
 DEF BREEDMON_STRUCT_LENGTH EQU _RS
 DEF MON_STATUS             rb
-                       rb_skip
+                           rb_skip
 DEF MON_HP                 rw
 DEF MON_MAXHP              rw
 DEF MON_STATS              rw NUM_BATTLE_STATS
