@@ -371,7 +371,7 @@ CeladonUniversityHyperTestRoomWestwoodScript:
 
 .Question6MenuData:
 	db MENU_BACKUP_TILES
-	menu_coords 1, 0, 15, 11
+	menu_coords 0, 1, 15, 11
 	dw .Question6MenuData2
 	db 1 ; default option
 

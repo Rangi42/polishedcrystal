@@ -729,7 +729,7 @@ Special_HyperTrain:
 
 .MenuHeader:
 	db MENU_BACKUP_TILES
-	menu_coords 4, 0, 19, 11
+	menu_coords 0, 4, 19, 11
 	dw .MenuData
 	db 1 ; default option
 

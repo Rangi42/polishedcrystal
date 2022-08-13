@@ -1466,7 +1466,7 @@ ManageBoxes:
 	dw .storageitems
 	dw PlaceMenuStrings
 	dw BillsPC_MenuStrings
-	db 11, 19 ; end coords
+;	db 11, 19 ; end coords
 
 .PartyMonMenu:
 	db MENU_BACKUP_TILES
