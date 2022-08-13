@@ -1,389 +1,386 @@
 MACRO mini_icon
-	db BANK(\1)
-	dw \1, \2, \3
-	assert BANK(\1) == BANK(\2) && BANK(\1) == BANK(\3), \
-		"\1, \2, and \3 must be in the same bank"
+	dbas \1Mini, \1MiniMask, \1Icon
 ENDM
 
 MiniIconPointers:
 	table_width 7, MiniIconPointers
-	mini_icon BulbasaurMini, BulbasaurMiniMask, BulbasaurIcon
-	mini_icon IvysaurMini, IvysaurMiniMask, IvysaurIcon
-	mini_icon VenusaurMini, VenusaurMiniMask, VenusaurIcon
-	mini_icon CharmanderMini, CharmanderMiniMask, CharmanderIcon
-	mini_icon CharmeleonMini, CharmeleonMiniMask, CharmeleonIcon
-	mini_icon CharizardMini, CharizardMiniMask, CharizardIcon
-	mini_icon SquirtleMini, SquirtleMiniMask, SquirtleIcon
-	mini_icon WartortleMini, WartortleMiniMask, WartortleIcon
-	mini_icon BlastoiseMini, BlastoiseMiniMask, BlastoiseIcon
-	mini_icon CaterpieMini, CaterpieMiniMask, CaterpieIcon
-	mini_icon MetapodMini, MetapodMiniMask, MetapodIcon
-	mini_icon ButterfreeMini, ButterfreeMiniMask, ButterfreeIcon
-	mini_icon WeedleMini, WeedleMiniMask, WeedleIcon
-	mini_icon KakunaMini, KakunaMiniMask, KakunaIcon
-	mini_icon BeedrillMini, BeedrillMiniMask, BeedrillIcon
-	mini_icon PidgeyMini, PidgeyMiniMask, PidgeyIcon
-	mini_icon PidgeottoMini, PidgeottoMiniMask, PidgeottoIcon
-	mini_icon PidgeotMini, PidgeotMiniMask, PidgeotIcon
-	mini_icon RattataMini, RattataMiniMask, RattataIcon
-	mini_icon RaticateMini, RaticateMiniMask, RaticateIcon
-	mini_icon SpearowMini, SpearowMiniMask, SpearowIcon
-	mini_icon FearowMini, FearowMiniMask, FearowIcon
-	mini_icon EkansMini, EkansMiniMask, EkansIcon
-	mini_icon ArbokMini, ArbokMiniMask, ArbokIcon
-	mini_icon PikachuMini, PikachuMiniMask, PikachuIcon
-	mini_icon RaichuMini, RaichuMiniMask, RaichuIcon
-	mini_icon SandshrewMini, SandshrewMiniMask, SandshrewIcon
-	mini_icon SandslashMini, SandslashMiniMask, SandslashIcon
-	mini_icon NidoranFMini, NidoranFMiniMask, NidoranFIcon
-	mini_icon NidorinaMini, NidorinaMiniMask, NidorinaIcon
-	mini_icon NidoqueenMini, NidoqueenMiniMask, NidoqueenIcon
-	mini_icon NidoranMMini, NidoranMMiniMask, NidoranMIcon
-	mini_icon NidorinoMini, NidorinoMiniMask, NidorinoIcon
-	mini_icon NidokingMini, NidokingMiniMask, NidokingIcon
-	mini_icon ClefairyMini, ClefairyMiniMask, ClefairyIcon
-	mini_icon ClefableMini, ClefableMiniMask, ClefableIcon
-	mini_icon VulpixMini, VulpixMiniMask, VulpixIcon
-	mini_icon NinetalesMini, NinetalesMiniMask, NinetalesIcon
-	mini_icon JigglypuffMini, JigglypuffMiniMask, JigglypuffIcon
-	mini_icon WigglytuffMini, WigglytuffMiniMask, WigglytuffIcon
-	mini_icon ZubatMini, ZubatMiniMask, ZubatIcon
-	mini_icon GolbatMini, GolbatMiniMask, GolbatIcon
-	mini_icon OddishMini, OddishMiniMask, OddishIcon
-	mini_icon GloomMini, GloomMiniMask, GloomIcon
-	mini_icon VileplumeMini, VileplumeMiniMask, VileplumeIcon
-	mini_icon ParasMini, ParasMiniMask, ParasIcon
-	mini_icon ParasectMini, ParasectMiniMask, ParasectIcon
-	mini_icon VenonatMini, VenonatMiniMask, VenonatIcon
-	mini_icon VenomothMini, VenomothMiniMask, VenomothIcon
-	mini_icon DiglettMini, DiglettMiniMask, DiglettIcon
-	mini_icon DugtrioMini, DugtrioMiniMask, DugtrioIcon
-	mini_icon MeowthMini, MeowthMiniMask, MeowthIcon
-	mini_icon PersianMini, PersianMiniMask, PersianIcon
-	mini_icon PsyduckMini, PsyduckMiniMask, PsyduckIcon
-	mini_icon GolduckMini, GolduckMiniMask, GolduckIcon
-	mini_icon MankeyMini, MankeyMiniMask, MankeyIcon
-	mini_icon PrimeapeMini, PrimeapeMiniMask, PrimeapeIcon
-	mini_icon GrowlitheMini, GrowlitheMiniMask, GrowlitheIcon
-	mini_icon ArcanineMini, ArcanineMiniMask, ArcanineIcon
-	mini_icon PoliwagMini, PoliwagMiniMask, PoliwagIcon
-	mini_icon PoliwhirlMini, PoliwhirlMiniMask, PoliwhirlIcon
-	mini_icon PoliwrathMini, PoliwrathMiniMask, PoliwrathIcon
-	mini_icon AbraMini, AbraMiniMask, AbraIcon
-	mini_icon KadabraMini, KadabraMiniMask, KadabraIcon
-	mini_icon AlakazamMini, AlakazamMiniMask, AlakazamIcon
-	mini_icon MachopMini, MachopMiniMask, MachopIcon
-	mini_icon MachokeMini, MachokeMiniMask, MachokeIcon
-	mini_icon MachampMini, MachampMiniMask, MachampIcon
-	mini_icon BellsproutMini, BellsproutMiniMask, BellsproutIcon
-	mini_icon WeepinbellMini, WeepinbellMiniMask, WeepinbellIcon
-	mini_icon VictreebelMini, VictreebelMiniMask, VictreebelIcon
-	mini_icon TentacoolMini, TentacoolMiniMask, TentacoolIcon
-	mini_icon TentacruelMini, TentacruelMiniMask, TentacruelIcon
-	mini_icon GeodudeMini, GeodudeMiniMask, GeodudeIcon
-	mini_icon GravelerMini, GravelerMiniMask, GravelerIcon
-	mini_icon GolemMini, GolemMiniMask, GolemIcon
-	mini_icon PonytaMini, PonytaMiniMask, PonytaIcon
-	mini_icon RapidashMini, RapidashMiniMask, RapidashIcon
-	mini_icon SlowpokeMini, SlowpokeMiniMask, SlowpokeIcon
-	mini_icon SlowbroMini, SlowbroMiniMask, SlowbroIcon
-	mini_icon MagnemiteMini, MagnemiteMiniMask, MagnemiteIcon
-	mini_icon MagnetonMini, MagnetonMiniMask, MagnetonIcon
-	mini_icon FarfetchDMini, FarfetchDMiniMask, FarfetchDIcon
-	mini_icon DoduoMini, DoduoMiniMask, DoduoIcon
-	mini_icon DodrioMini, DodrioMiniMask, DodrioIcon
-	mini_icon SeelMini, SeelMiniMask, SeelIcon
-	mini_icon DewgongMini, DewgongMiniMask, DewgongIcon
-	mini_icon GrimerMini, GrimerMiniMask, GrimerIcon
-	mini_icon MukMini, MukMiniMask, MukIcon
-	mini_icon ShellderMini, ShellderMiniMask, ShellderIcon
-	mini_icon CloysterMini, CloysterMiniMask, CloysterIcon
-	mini_icon GastlyMini, GastlyMiniMask, GastlyIcon
-	mini_icon HaunterMini, HaunterMiniMask, HaunterIcon
-	mini_icon GengarMini, GengarMiniMask, GengarIcon
-	mini_icon OnixMini, OnixMiniMask, OnixIcon
-	mini_icon DrowzeeMini, DrowzeeMiniMask, DrowzeeIcon
-	mini_icon HypnoMini, HypnoMiniMask, HypnoIcon
-	mini_icon KrabbyMini, KrabbyMiniMask, KrabbyIcon
-	mini_icon KinglerMini, KinglerMiniMask, KinglerIcon
-	mini_icon VoltorbMini, VoltorbMiniMask, VoltorbIcon
-	mini_icon ElectrodeMini, ElectrodeMiniMask, ElectrodeIcon
-	mini_icon ExeggcuteMini, ExeggcuteMiniMask, ExeggcuteIcon
-	mini_icon ExeggutorMini, ExeggutorMiniMask, ExeggutorIcon
-	mini_icon CuboneMini, CuboneMiniMask, CuboneIcon
-	mini_icon MarowakMini, MarowakMiniMask, MarowakIcon
-	mini_icon HitmonleeMini, HitmonleeMiniMask, HitmonleeIcon
-	mini_icon HitmonchanMini, HitmonchanMiniMask, HitmonchanIcon
-	mini_icon LickitungMini, LickitungMiniMask, LickitungIcon
-	mini_icon KoffingMini, KoffingMiniMask, KoffingIcon
-	mini_icon WeezingMini, WeezingMiniMask, WeezingIcon
-	mini_icon RhyhornMini, RhyhornMiniMask, RhyhornIcon
-	mini_icon RhydonMini, RhydonMiniMask, RhydonIcon
-	mini_icon ChanseyMini, ChanseyMiniMask, ChanseyIcon
-	mini_icon TangelaMini, TangelaMiniMask, TangelaIcon
-	mini_icon KangaskhanMini, KangaskhanMiniMask, KangaskhanIcon
-	mini_icon HorseaMini, HorseaMiniMask, HorseaIcon
-	mini_icon SeadraMini, SeadraMiniMask, SeadraIcon
-	mini_icon GoldeenMini, GoldeenMiniMask, GoldeenIcon
-	mini_icon SeakingMini, SeakingMiniMask, SeakingIcon
-	mini_icon StaryuMini, StaryuMiniMask, StaryuIcon
-	mini_icon StarmieMini, StarmieMiniMask, StarmieIcon
-	mini_icon MrMimeMini, MrMimeMiniMask, MrMimeIcon
-	mini_icon ScytherMini, ScytherMiniMask, ScytherIcon
-	mini_icon JynxMini, JynxMiniMask, JynxIcon
-	mini_icon ElectabuzzMini, ElectabuzzMiniMask, ElectabuzzIcon
-	mini_icon MagmarMini, MagmarMiniMask, MagmarIcon
-	mini_icon PinsirMini, PinsirMiniMask, PinsirIcon
-	mini_icon TaurosMini, TaurosMiniMask, TaurosIcon
-	mini_icon MagikarpMini, MagikarpMiniMask, MagikarpIcon
-	mini_icon GyaradosMini, GyaradosMiniMask, GyaradosIcon
-	mini_icon LaprasMini, LaprasMiniMask, LaprasIcon
-	mini_icon DittoMini, DittoMiniMask, DittoIcon
-	mini_icon EeveeMini, EeveeMiniMask, EeveeIcon
-	mini_icon VaporeonMini, VaporeonMiniMask, VaporeonIcon
-	mini_icon JolteonMini, JolteonMiniMask, JolteonIcon
-	mini_icon FlareonMini, FlareonMiniMask, FlareonIcon
-	mini_icon PorygonMini, PorygonMiniMask, PorygonIcon
-	mini_icon OmanyteMini, OmanyteMiniMask, OmanyteIcon
-	mini_icon OmastarMini, OmastarMiniMask, OmastarIcon
-	mini_icon KabutoMini, KabutoMiniMask, KabutoIcon
-	mini_icon KabutopsMini, KabutopsMiniMask, KabutopsIcon
-	mini_icon AerodactylMini, AerodactylMiniMask, AerodactylIcon
-	mini_icon SnorlaxMini, SnorlaxMiniMask, SnorlaxIcon
-	mini_icon ArticunoMini, ArticunoMiniMask, ArticunoIcon
-	mini_icon ZapdosMini, ZapdosMiniMask, ZapdosIcon
-	mini_icon MoltresMini, MoltresMiniMask, MoltresIcon
-	mini_icon DratiniMini, DratiniMiniMask, DratiniIcon
-	mini_icon DragonairMini, DragonairMiniMask, DragonairIcon
-	mini_icon DragoniteMini, DragoniteMiniMask, DragoniteIcon
-	mini_icon MewtwoMini, MewtwoMiniMask, MewtwoIcon
-	mini_icon MewMini, MewMiniMask, MewIcon
-	mini_icon ChikoritaMini, ChikoritaMiniMask, ChikoritaIcon
-	mini_icon BayleefMini, BayleefMiniMask, BayleefIcon
-	mini_icon MeganiumMini, MeganiumMiniMask, MeganiumIcon
-	mini_icon CyndaquilMini, CyndaquilMiniMask, CyndaquilIcon
-	mini_icon QuilavaMini, QuilavaMiniMask, QuilavaIcon
-	mini_icon TyphlosionMini, TyphlosionMiniMask, TyphlosionIcon
-	mini_icon TotodileMini, TotodileMiniMask, TotodileIcon
-	mini_icon CroconawMini, CroconawMiniMask, CroconawIcon
-	mini_icon FeraligatrMini, FeraligatrMiniMask, FeraligatrIcon
-	mini_icon SentretMini, SentretMiniMask, SentretIcon
-	mini_icon FurretMini, FurretMiniMask, FurretIcon
-	mini_icon HoothootMini, HoothootMiniMask, HoothootIcon
-	mini_icon NoctowlMini, NoctowlMiniMask, NoctowlIcon
-	mini_icon LedybaMini, LedybaMiniMask, LedybaIcon
-	mini_icon LedianMini, LedianMiniMask, LedianIcon
-	mini_icon SpinarakMini, SpinarakMiniMask, SpinarakIcon
-	mini_icon AriadosMini, AriadosMiniMask, AriadosIcon
-	mini_icon CrobatMini, CrobatMiniMask, CrobatIcon
-	mini_icon ChinchouMini, ChinchouMiniMask, ChinchouIcon
-	mini_icon LanturnMini, LanturnMiniMask, LanturnIcon
-	mini_icon PichuMini, PichuMiniMask, PichuIcon
-	mini_icon CleffaMini, CleffaMiniMask, CleffaIcon
-	mini_icon IgglybuffMini, IgglybuffMiniMask, IgglybuffIcon
-	mini_icon TogepiMini, TogepiMiniMask, TogepiIcon
-	mini_icon TogeticMini, TogeticMiniMask, TogeticIcon
-	mini_icon NatuMini, NatuMiniMask, NatuIcon
-	mini_icon XatuMini, XatuMiniMask, XatuIcon
-	mini_icon MareepMini, MareepMiniMask, MareepIcon
-	mini_icon FlaaffyMini, FlaaffyMiniMask, FlaaffyIcon
-	mini_icon AmpharosMini, AmpharosMiniMask, AmpharosIcon
-	mini_icon BellossomMini, BellossomMiniMask, BellossomIcon
-	mini_icon MarillMini, MarillMiniMask, MarillIcon
-	mini_icon AzumarillMini, AzumarillMiniMask, AzumarillIcon
-	mini_icon SudowoodoMini, SudowoodoMiniMask, SudowoodoIcon
-	mini_icon PolitoedMini, PolitoedMiniMask, PolitoedIcon
-	mini_icon HoppipMini, HoppipMiniMask, HoppipIcon
-	mini_icon SkiploomMini, SkiploomMiniMask, SkiploomIcon
-	mini_icon JumpluffMini, JumpluffMiniMask, JumpluffIcon
-	mini_icon AipomMini, AipomMiniMask, AipomIcon
-	mini_icon SunkernMini, SunkernMiniMask, SunkernIcon
-	mini_icon SunfloraMini, SunfloraMiniMask, SunfloraIcon
-	mini_icon YanmaMini, YanmaMiniMask, YanmaIcon
-	mini_icon WooperMini, WooperMiniMask, WooperIcon
-	mini_icon QuagsireMini, QuagsireMiniMask, QuagsireIcon
-	mini_icon EspeonMini, EspeonMiniMask, EspeonIcon
-	mini_icon UmbreonMini, UmbreonMiniMask, UmbreonIcon
-	mini_icon MurkrowMini, MurkrowMiniMask, MurkrowIcon
-	mini_icon SlowkingMini, SlowkingMiniMask, SlowkingIcon
-	mini_icon MisdreavusMini, MisdreavusMiniMask, MisdreavusIcon
-	mini_icon UnownAMini, UnownAMiniMask, UnownAIcon
-	mini_icon WobbuffetMini, WobbuffetMiniMask, WobbuffetIcon
-	mini_icon GirafarigMini, GirafarigMiniMask, GirafarigIcon
-	mini_icon PinecoMini, PinecoMiniMask, PinecoIcon
-	mini_icon ForretressMini, ForretressMiniMask, ForretressIcon
-	mini_icon DunsparceMini, DunsparceMiniMask, DunsparceIcon
-	mini_icon GligarMini, GligarMiniMask, GligarIcon
-	mini_icon SteelixMini, SteelixMiniMask, SteelixIcon
-	mini_icon SnubbullMini, SnubbullMiniMask, SnubbullIcon
-	mini_icon GranbullMini, GranbullMiniMask, GranbullIcon
-	mini_icon QwilfishMini, QwilfishMiniMask, QwilfishIcon
-	mini_icon ScizorMini, ScizorMiniMask, ScizorIcon
-	mini_icon ShuckleMini, ShuckleMiniMask, ShuckleIcon
-	mini_icon HeracrossMini, HeracrossMiniMask, HeracrossIcon
-	mini_icon SneaselMini, SneaselMiniMask, SneaselIcon
-	mini_icon TeddiursaMini, TeddiursaMiniMask, TeddiursaIcon
-	mini_icon UrsaringMini, UrsaringMiniMask, UrsaringIcon
-	mini_icon SlugmaMini, SlugmaMiniMask, SlugmaIcon
-	mini_icon MagcargoMini, MagcargoMiniMask, MagcargoIcon
-	mini_icon SwinubMini, SwinubMiniMask, SwinubIcon
-	mini_icon PiloswineMini, PiloswineMiniMask, PiloswineIcon
-	mini_icon CorsolaMini, CorsolaMiniMask, CorsolaIcon
-	mini_icon RemoraidMini, RemoraidMiniMask, RemoraidIcon
-	mini_icon OctilleryMini, OctilleryMiniMask, OctilleryIcon
-	mini_icon DelibirdMini, DelibirdMiniMask, DelibirdIcon
-	mini_icon MantineMini, MantineMiniMask, MantineIcon
-	mini_icon SkarmoryMini, SkarmoryMiniMask, SkarmoryIcon
-	mini_icon HoundourMini, HoundourMiniMask, HoundourIcon
-	mini_icon HoundoomMini, HoundoomMiniMask, HoundoomIcon
-	mini_icon KingdraMini, KingdraMiniMask, KingdraIcon
-	mini_icon PhanpyMini, PhanpyMiniMask, PhanpyIcon
-	mini_icon DonphanMini, DonphanMiniMask, DonphanIcon
-	mini_icon Porygon2Mini, Porygon2MiniMask, Porygon2Icon
-	mini_icon StantlerMini, StantlerMiniMask, StantlerIcon
-	mini_icon SmeargleMini, SmeargleMiniMask, SmeargleIcon
-	mini_icon TyrogueMini, TyrogueMiniMask, TyrogueIcon
-	mini_icon HitmontopMini, HitmontopMiniMask, HitmontopIcon
-	mini_icon SmoochumMini, SmoochumMiniMask, SmoochumIcon
-	mini_icon ElekidMini, ElekidMiniMask, ElekidIcon
-	mini_icon MagbyMini, MagbyMiniMask, MagbyIcon
-	mini_icon MiltankMini, MiltankMiniMask, MiltankIcon
-	mini_icon BlisseyMini, BlisseyMiniMask, BlisseyIcon
-	mini_icon RaikouMini, RaikouMiniMask, RaikouIcon
-	mini_icon EnteiMini, EnteiMiniMask, EnteiIcon
-	mini_icon SuicuneMini, SuicuneMiniMask, SuicuneIcon
-	mini_icon LarvitarMini, LarvitarMiniMask, LarvitarIcon
-	mini_icon PupitarMini, PupitarMiniMask, PupitarIcon
-	mini_icon TyranitarMini, TyranitarMiniMask, TyranitarIcon
-	mini_icon LugiaMini, LugiaMiniMask, LugiaIcon
-	mini_icon HoOhMini, HoOhMiniMask, HoOhIcon
-	mini_icon CelebiMini, CelebiMiniMask, CelebiIcon
-	mini_icon AzurillMini, AzurillMiniMask, AzurillIcon
-	mini_icon WynautMini, WynautMiniMask, WynautIcon
-	mini_icon AmbipomMini, AmbipomMiniMask, AmbipomIcon
-	mini_icon EggMini, EggMiniMask, EggIcon
-	mini_icon EggMini, EggMiniMask, EggIcon ; $100
-	mini_icon MismagiusMini, MismagiusMiniMask, MismagiusIcon
-	mini_icon HonchkrowMini, HonchkrowMiniMask, HonchkrowIcon
-	mini_icon BonslyMini, BonslyMiniMask, BonslyIcon
-	mini_icon MimeJrMini, MimeJrMiniMask, MimeJrIcon
-	mini_icon HappinyMini, HappinyMiniMask, HappinyIcon
-	mini_icon MunchlaxMini, MunchlaxMiniMask, MunchlaxIcon
-	mini_icon MantykeMini, MantykeMiniMask, MantykeIcon
-	mini_icon WeavileMini, WeavileMiniMask, WeavileIcon
-	mini_icon MagnezoneMini, MagnezoneMiniMask, MagnezoneIcon
-	mini_icon LickilickyMini, LickilickyMiniMask, LickilickyIcon
-	mini_icon RhyperiorMini, RhyperiorMiniMask, RhyperiorIcon
-	mini_icon TangrowthMini, TangrowthMiniMask, TangrowthIcon
-	mini_icon ElectivireMini, ElectivireMiniMask, ElectivireIcon
-	mini_icon MagmortarMini, MagmortarMiniMask, MagmortarIcon
-	mini_icon TogekissMini, TogekissMiniMask, TogekissIcon
-	mini_icon YanmegaMini, YanmegaMiniMask, YanmegaIcon
-	mini_icon LeafeonMini, LeafeonMiniMask, LeafeonIcon
-	mini_icon GlaceonMini, GlaceonMiniMask, GlaceonIcon
-	mini_icon GliscorMini, GliscorMiniMask, GliscorIcon
-	mini_icon MamoswineMini, MamoswineMiniMask, MamoswineIcon
-	mini_icon PorygonZMini, PorygonZMiniMask, PorygonZIcon
-	mini_icon SylveonMini, SylveonMiniMask, SylveonIcon
-	mini_icon PerrserkerMini, PerrserkerMiniMask, PerrserkerIcon
-	mini_icon CursolaMini, CursolaMiniMask, CursolaIcon
-	mini_icon SirfetchDMini, SirfetchDMiniMask, SirfetchDIcon
-	mini_icon MrRimeMini, MrRimeMiniMask, MrRimeIcon
-	mini_icon WyrdeerMini, WyrdeerMiniMask, WyrdeerIcon
-	mini_icon KleavorMini, KleavorMiniMask, KleavorIcon
-	mini_icon UrsalunaMini, UrsalunaMiniMask, UrsalunaIcon
-	mini_icon SneaslerMini, SneaslerMiniMask, SneaslerIcon
-	mini_icon OverqwilMini, OverqwilMiniMask, OverqwilIcon
+	mini_icon Bulbasaur
+	mini_icon Ivysaur
+	mini_icon Venusaur
+	mini_icon Charmander
+	mini_icon Charmeleon
+	mini_icon Charizard
+	mini_icon Squirtle
+	mini_icon Wartortle
+	mini_icon Blastoise
+	mini_icon Caterpie
+	mini_icon Metapod
+	mini_icon Butterfree
+	mini_icon Weedle
+	mini_icon Kakuna
+	mini_icon Beedrill
+	mini_icon Pidgey
+	mini_icon Pidgeotto
+	mini_icon Pidgeot
+	mini_icon Rattata
+	mini_icon Raticate
+	mini_icon Spearow
+	mini_icon Fearow
+	mini_icon Ekans
+	mini_icon Arbok
+	mini_icon Pikachu
+	mini_icon Raichu
+	mini_icon Sandshrew
+	mini_icon Sandslash
+	mini_icon NidoranF
+	mini_icon Nidorina
+	mini_icon Nidoqueen
+	mini_icon NidoranM
+	mini_icon Nidorino
+	mini_icon Nidoking
+	mini_icon Clefairy
+	mini_icon Clefable
+	mini_icon Vulpix
+	mini_icon Ninetales
+	mini_icon Jigglypuff
+	mini_icon Wigglytuff
+	mini_icon Zubat
+	mini_icon Golbat
+	mini_icon Oddish
+	mini_icon Gloom
+	mini_icon Vileplume
+	mini_icon Paras
+	mini_icon Parasect
+	mini_icon Venonat
+	mini_icon Venomoth
+	mini_icon Diglett
+	mini_icon Dugtrio
+	mini_icon Meowth
+	mini_icon Persian
+	mini_icon Psyduck
+	mini_icon Golduck
+	mini_icon Mankey
+	mini_icon Primeape
+	mini_icon Growlithe
+	mini_icon Arcanine
+	mini_icon Poliwag
+	mini_icon Poliwhirl
+	mini_icon Poliwrath
+	mini_icon Abra
+	mini_icon Kadabra
+	mini_icon Alakazam
+	mini_icon Machop
+	mini_icon Machoke
+	mini_icon Machamp
+	mini_icon Bellsprout
+	mini_icon Weepinbell
+	mini_icon Victreebel
+	mini_icon Tentacool
+	mini_icon Tentacruel
+	mini_icon Geodude
+	mini_icon Graveler
+	mini_icon Golem
+	mini_icon Ponyta
+	mini_icon Rapidash
+	mini_icon Slowpoke
+	mini_icon Slowbro
+	mini_icon Magnemite
+	mini_icon Magneton
+	mini_icon FarfetchD
+	mini_icon Doduo
+	mini_icon Dodrio
+	mini_icon Seel
+	mini_icon Dewgong
+	mini_icon Grimer
+	mini_icon Muk
+	mini_icon Shellder
+	mini_icon Cloyster
+	mini_icon Gastly
+	mini_icon Haunter
+	mini_icon Gengar
+	mini_icon Onix
+	mini_icon Drowzee
+	mini_icon Hypno
+	mini_icon Krabby
+	mini_icon Kingler
+	mini_icon Voltorb
+	mini_icon Electrode
+	mini_icon Exeggcute
+	mini_icon Exeggutor
+	mini_icon Cubone
+	mini_icon Marowak
+	mini_icon Hitmonlee
+	mini_icon Hitmonchan
+	mini_icon Lickitung
+	mini_icon Koffing
+	mini_icon Weezing
+	mini_icon Rhyhorn
+	mini_icon Rhydon
+	mini_icon Chansey
+	mini_icon Tangela
+	mini_icon Kangaskhan
+	mini_icon Horsea
+	mini_icon Seadra
+	mini_icon Goldeen
+	mini_icon Seaking
+	mini_icon Staryu
+	mini_icon Starmie
+	mini_icon MrMime
+	mini_icon Scyther
+	mini_icon Jynx
+	mini_icon Electabuzz
+	mini_icon Magmar
+	mini_icon Pinsir
+	mini_icon Tauros
+	mini_icon Magikarp
+	mini_icon Gyarados
+	mini_icon Lapras
+	mini_icon Ditto
+	mini_icon Eevee
+	mini_icon Vaporeon
+	mini_icon Jolteon
+	mini_icon Flareon
+	mini_icon Porygon
+	mini_icon Omanyte
+	mini_icon Omastar
+	mini_icon Kabuto
+	mini_icon Kabutops
+	mini_icon Aerodactyl
+	mini_icon Snorlax
+	mini_icon Articuno
+	mini_icon Zapdos
+	mini_icon Moltres
+	mini_icon Dratini
+	mini_icon Dragonair
+	mini_icon Dragonite
+	mini_icon Mewtwo
+	mini_icon Mew
+	mini_icon Chikorita
+	mini_icon Bayleef
+	mini_icon Meganium
+	mini_icon Cyndaquil
+	mini_icon Quilava
+	mini_icon Typhlosion
+	mini_icon Totodile
+	mini_icon Croconaw
+	mini_icon Feraligatr
+	mini_icon Sentret
+	mini_icon Furret
+	mini_icon Hoothoot
+	mini_icon Noctowl
+	mini_icon Ledyba
+	mini_icon Ledian
+	mini_icon Spinarak
+	mini_icon Ariados
+	mini_icon Crobat
+	mini_icon Chinchou
+	mini_icon Lanturn
+	mini_icon Pichu
+	mini_icon Cleffa
+	mini_icon Igglybuff
+	mini_icon Togepi
+	mini_icon Togetic
+	mini_icon Natu
+	mini_icon Xatu
+	mini_icon Mareep
+	mini_icon Flaaffy
+	mini_icon Ampharos
+	mini_icon Bellossom
+	mini_icon Marill
+	mini_icon Azumarill
+	mini_icon Sudowoodo
+	mini_icon Politoed
+	mini_icon Hoppip
+	mini_icon Skiploom
+	mini_icon Jumpluff
+	mini_icon Aipom
+	mini_icon Sunkern
+	mini_icon Sunflora
+	mini_icon Yanma
+	mini_icon Wooper
+	mini_icon Quagsire
+	mini_icon Espeon
+	mini_icon Umbreon
+	mini_icon Murkrow
+	mini_icon Slowking
+	mini_icon Misdreavus
+	mini_icon UnownA
+	mini_icon Wobbuffet
+	mini_icon Girafarig
+	mini_icon Pineco
+	mini_icon Forretress
+	mini_icon Dunsparce
+	mini_icon Gligar
+	mini_icon Steelix
+	mini_icon Snubbull
+	mini_icon Granbull
+	mini_icon Qwilfish
+	mini_icon Scizor
+	mini_icon Shuckle
+	mini_icon Heracross
+	mini_icon Sneasel
+	mini_icon Teddiursa
+	mini_icon Ursaring
+	mini_icon Slugma
+	mini_icon Magcargo
+	mini_icon Swinub
+	mini_icon Piloswine
+	mini_icon Corsola
+	mini_icon Remoraid
+	mini_icon Octillery
+	mini_icon Delibird
+	mini_icon Mantine
+	mini_icon Skarmory
+	mini_icon Houndour
+	mini_icon Houndoom
+	mini_icon Kingdra
+	mini_icon Phanpy
+	mini_icon Donphan
+	mini_icon Porygon2
+	mini_icon Stantler
+	mini_icon Smeargle
+	mini_icon Tyrogue
+	mini_icon Hitmontop
+	mini_icon Smoochum
+	mini_icon Elekid
+	mini_icon Magby
+	mini_icon Miltank
+	mini_icon Blissey
+	mini_icon Raikou
+	mini_icon Entei
+	mini_icon Suicune
+	mini_icon Larvitar
+	mini_icon Pupitar
+	mini_icon Tyranitar
+	mini_icon Lugia
+	mini_icon HoOh
+	mini_icon Celebi
+	mini_icon Azurill
+	mini_icon Wynaut
+	mini_icon Ambipom
+	mini_icon Egg
+	mini_icon Egg ; $100
+	mini_icon Mismagius
+	mini_icon Honchkrow
+	mini_icon Bonsly
+	mini_icon MimeJr
+	mini_icon Happiny
+	mini_icon Munchlax
+	mini_icon Mantyke
+	mini_icon Weavile
+	mini_icon Magnezone
+	mini_icon Lickilicky
+	mini_icon Rhyperior
+	mini_icon Tangrowth
+	mini_icon Electivire
+	mini_icon Magmortar
+	mini_icon Togekiss
+	mini_icon Yanmega
+	mini_icon Leafeon
+	mini_icon Glaceon
+	mini_icon Gliscor
+	mini_icon Mamoswine
+	mini_icon PorygonZ
+	mini_icon Sylveon
+	mini_icon Perrserker
+	mini_icon Cursola
+	mini_icon SirfetchD
+	mini_icon MrRime
+	mini_icon Wyrdeer
+	mini_icon Kleavor
+	mini_icon Ursaluna
+	mini_icon Sneasler
+	mini_icon Overqwil
 	assert_table_length NUM_SPECIES
 
-	mini_icon UnownBMini, UnownBMiniMask, UnownBIcon
-	mini_icon UnownCMini, UnownCMiniMask, UnownCIcon
-	mini_icon UnownDMini, UnownDMiniMask, UnownDIcon
-	mini_icon UnownEMini, UnownEMiniMask, UnownEIcon
-	mini_icon UnownFMini, UnownFMiniMask, UnownFIcon
-	mini_icon UnownGMini, UnownGMiniMask, UnownGIcon
-	mini_icon UnownHMini, UnownHMiniMask, UnownHIcon
-	mini_icon UnownIMini, UnownIMiniMask, UnownIIcon
-	mini_icon UnownJMini, UnownJMiniMask, UnownJIcon
-	mini_icon UnownKMini, UnownKMiniMask, UnownKIcon
-	mini_icon UnownLMini, UnownLMiniMask, UnownLIcon
-	mini_icon UnownMMini, UnownMMiniMask, UnownMIcon
-	mini_icon UnownNMini, UnownNMiniMask, UnownNIcon
-	mini_icon UnownOMini, UnownOMiniMask, UnownOIcon
-	mini_icon UnownPMini, UnownPMiniMask, UnownPIcon
-	mini_icon UnownQMini, UnownQMiniMask, UnownQIcon
-	mini_icon UnownRMini, UnownRMiniMask, UnownRIcon
-	mini_icon UnownSMini, UnownSMiniMask, UnownSIcon
-	mini_icon UnownTMini, UnownTMiniMask, UnownTIcon
-	mini_icon UnownUMini, UnownUMiniMask, UnownUIcon
-	mini_icon UnownVMini, UnownVMiniMask, UnownVIcon
-	mini_icon UnownWMini, UnownWMiniMask, UnownWIcon
-	mini_icon UnownXMini, UnownXMiniMask, UnownXIcon
-	mini_icon UnownYMini, UnownYMiniMask, UnownYIcon
-	mini_icon UnownZMini, UnownZMiniMask, UnownZIcon
-	mini_icon UnownExclamationMini, UnownExclamationMiniMask, UnownExclamationIcon
-	mini_icon UnownQuestionMini, UnownQuestionMiniMask, UnownQuestionIcon
+	mini_icon UnownB
+	mini_icon UnownC
+	mini_icon UnownD
+	mini_icon UnownE
+	mini_icon UnownF
+	mini_icon UnownG
+	mini_icon UnownH
+	mini_icon UnownI
+	mini_icon UnownJ
+	mini_icon UnownK
+	mini_icon UnownL
+	mini_icon UnownM
+	mini_icon UnownN
+	mini_icon UnownO
+	mini_icon UnownP
+	mini_icon UnownQ
+	mini_icon UnownR
+	mini_icon UnownS
+	mini_icon UnownT
+	mini_icon UnownU
+	mini_icon UnownV
+	mini_icon UnownW
+	mini_icon UnownX
+	mini_icon UnownY
+	mini_icon UnownZ
+	mini_icon UnownExclamation
+	mini_icon UnownQuestion
 
-	mini_icon ArbokMini, ArbokMiniMask, ArbokIcon ; Kanto
-	mini_icon ArbokMini, ArbokMiniMask, ArbokIcon ; Koga
-	mini_icon ArbokMini, ArbokMiniMask, ArbokIcon ; Agatha
-	mini_icon ArbokMini, ArbokMiniMask, ArbokIcon ; Ariana
+	mini_icon Arbok ; Kanto
+	mini_icon Arbok ; Koga
+	mini_icon Arbok ; Agatha
+	mini_icon Arbok ; Ariana
 
-	mini_icon PikachuFlyMini, PikachuFlyMiniMask, PikachuFlyIcon ; Fly
-	mini_icon PikachuSurfMini, PikachuSurfMiniMask, PikachuSurfIcon ; Surf
-	mini_icon PikachuMini, PikachuMiniMask, PikachuIcon ; Pika
-	mini_icon PikachuMini, PikachuMiniMask, PikachuIcon ; Chuchu
-	mini_icon PikachuMini, PikachuMiniMask, PikachuIcon ; Spark
+	mini_icon PikachuFly ; Fly
+	mini_icon PikachuSurf ; Surf
+	mini_icon Pikachu ; Pika
+	mini_icon Pikachu ; Chuchu
+	mini_icon Pikachu ; Spark
 
-	mini_icon PichuMini, PichuMiniMask, PichuIcon ; Spiky
+	mini_icon Pichu ; Spiky
 
 rept NUM_MAGIKARP - 1
-	mini_icon MagikarpMini, MagikarpMiniMask, MagikarpIcon
+	mini_icon Magikarp
 endr
 
-	mini_icon GyaradosMini, GyaradosMiniMask, GyaradosIcon ; Red
+	mini_icon Gyarados ; Red
 
-	mini_icon MewtwoArmoredMini, MewtwoArmoredMiniMask, MewtwoArmoredIcon
+	mini_icon MewtwoArmored
 
-	mini_icon RattataAlolanMini, RattataAlolanMiniMask, RattataAlolanIcon
-	mini_icon RaticateAlolanMini, RaticateAlolanMiniMask, RaticateAlolanIcon
-	mini_icon RaichuAlolanMini, RaichuAlolanMiniMask, RaichuAlolanIcon
-	mini_icon SandshrewAlolanMini, SandshrewAlolanMiniMask, SandshrewAlolanIcon
-	mini_icon SandslashAlolanMini, SandslashAlolanMiniMask, SandslashAlolanIcon
-	mini_icon VulpixAlolanMini, VulpixAlolanMiniMask, VulpixAlolanIcon
-	mini_icon NinetalesAlolanMini, NinetalesAlolanMiniMask, NinetalesAlolanIcon
-	mini_icon DiglettAlolanMini, DiglettAlolanMiniMask, DiglettAlolanIcon
-	mini_icon DugtrioAlolanMini, DugtrioAlolanMiniMask, DugtrioAlolanIcon
-	mini_icon MeowthAlolanMini, MeowthAlolanMiniMask, MeowthAlolanIcon
-	mini_icon PersianAlolanMini, PersianAlolanMiniMask, PersianAlolanIcon
-	mini_icon GeodudeAlolanMini, GeodudeAlolanMiniMask, GeodudeAlolanIcon
-	mini_icon GravelerAlolanMini, GravelerAlolanMiniMask, GravelerAlolanIcon
-	mini_icon GolemAlolanMini, GolemAlolanMiniMask, GolemAlolanIcon
-	mini_icon GrimerAlolanMini, GrimerAlolanMiniMask, GrimerAlolanIcon
-	mini_icon MukAlolanMini, MukAlolanMiniMask, MukAlolanIcon
-	mini_icon ExeggutorAlolanMini, ExeggutorAlolanMiniMask, ExeggutorAlolanIcon
-	mini_icon MarowakAlolanMini, MarowakAlolanMiniMask, MarowakAlolanIcon
+	mini_icon RattataAlolan
+	mini_icon RaticateAlolan
+	mini_icon RaichuAlolan
+	mini_icon SandshrewAlolan
+	mini_icon SandslashAlolan
+	mini_icon VulpixAlolan
+	mini_icon NinetalesAlolan
+	mini_icon DiglettAlolan
+	mini_icon DugtrioAlolan
+	mini_icon MeowthAlolan
+	mini_icon PersianAlolan
+	mini_icon GeodudeAlolan
+	mini_icon GravelerAlolan
+	mini_icon GolemAlolan
+	mini_icon GrimerAlolan
+	mini_icon MukAlolan
+	mini_icon ExeggutorAlolan
+	mini_icon MarowakAlolan
 
-	mini_icon MeowthGalarianMini, MeowthGalarianMiniMask, MeowthGalarianIcon
-	mini_icon PonytaGalarianMini, PonytaGalarianMiniMask, PonytaGalarianIcon
-	mini_icon RapidashGalarianMini, RapidashGalarianMiniMask, RapidashGalarianIcon
-	mini_icon SlowpokeGalarianMini, SlowpokeGalarianMiniMask, SlowpokeGalarianIcon
-	mini_icon SlowbroGalarianMini, SlowbroGalarianMiniMask, SlowbroGalarianIcon
-	mini_icon FarfetchDGalarianMini, FarfetchDGalarianMiniMask, FarfetchDGalarianIcon
-	mini_icon WeezingGalarianMini, WeezingGalarianMiniMask, WeezingGalarianIcon
-	mini_icon MrMimeGalarianMini, MrMimeGalarianMiniMask, MrMimeGalarianIcon
-	mini_icon ArticunoGalarianMini, ArticunoGalarianMiniMask, ArticunoGalarianIcon
-	mini_icon ZapdosGalarianMini, ZapdosGalarianMiniMask, ZapdosGalarianIcon
-	mini_icon MoltresGalarianMini, MoltresGalarianMiniMask, MoltresGalarianIcon
-	mini_icon SlowkingGalarianMini, SlowkingGalarianMiniMask, SlowkingGalarianIcon
-	mini_icon CorsolaGalarianMini, CorsolaGalarianMiniMask, CorsolaGalarianIcon
+	mini_icon MeowthGalarian
+	mini_icon PonytaGalarian
+	mini_icon RapidashGalarian
+	mini_icon SlowpokeGalarian
+	mini_icon SlowbroGalarian
+	mini_icon FarfetchDGalarian
+	mini_icon WeezingGalarian
+	mini_icon MrMimeGalarian
+	mini_icon ArticunoGalarian
+	mini_icon ZapdosGalarian
+	mini_icon MoltresGalarian
+	mini_icon SlowkingGalarian
+	mini_icon CorsolaGalarian
 
-	mini_icon GrowlitheHisuianMini, GrowlitheHisuianMiniMask, GrowlitheHisuianIcon
-	mini_icon ArcanineHisuianMini, ArcanineHisuianMiniMask, ArcanineHisuianIcon
-	mini_icon VoltorbHisuianMini, VoltorbHisuianMiniMask, VoltorbHisuianIcon
-	mini_icon ElectrodeHisuianMini, ElectrodeHisuianMiniMask, ElectrodeHisuianIcon
-	mini_icon TyphlosionHisuianMini, TyphlosionHisuianMiniMask, TyphlosionHisuianIcon
-	mini_icon QwilfishHisuianMini, QwilfishHisuianMiniMask, QwilfishHisuianIcon
-	mini_icon SneaselHisuianMini, SneaselHisuianMiniMask, SneaselHisuianIcon
+	mini_icon GrowlitheHisuian
+	mini_icon ArcanineHisuian
+	mini_icon VoltorbHisuian
+	mini_icon ElectrodeHisuian
+	mini_icon TyphlosionHisuian
+	mini_icon QwilfishHisuian
+	mini_icon SneaselHisuian
 
 	assert_table_length NUM_UNIQUE_POKEMON
