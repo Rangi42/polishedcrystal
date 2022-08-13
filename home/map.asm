@@ -1048,7 +1048,7 @@ _LoadTilesetGFX2:
 	ld a, 1
 	ldh [rVBK], a
 	ld hl, wTilesetGFX2Address
-	ld a, [wTilesetGFX2Bank]
+	ld a, [wTilesetDataBank]
 	ld de, vTiles4
 	jr _DoLoadTilesetGFX
 
@@ -1072,7 +1072,7 @@ _LoadTilesetGFX0:
 .load_roof
 	farcall LoadMapGroupRoof
 	ld hl, wTilesetGFX0Address
-	ld a, [wTilesetGFX0Bank]
+	ld a, [wTilesetDataBank]
 	ld de, vTiles2
 	ld c, $ff
 	call _DoLoadTilesetGFX0
@@ -1080,7 +1080,7 @@ _LoadTilesetGFX0:
 
 .skip_roof
 	ld hl, wTilesetGFX0Address
-	ld a, [wTilesetGFX0Bank]
+	ld a, [wTilesetDataBank]
 	ld de, vTiles2
 	ld c, $7f
 	call _DoLoadTilesetGFX0
@@ -1093,7 +1093,7 @@ _LoadTilesetGFX1:
 	ld a, 1
 	ldh [rVBK], a
 	ld hl, wTilesetGFX1Address
-	ld a, [wTilesetGFX1Bank]
+	ld a, [wTilesetDataBank]
 	ld de, vTiles5
 	; fallthrough
 
@@ -1985,13 +1985,13 @@ LoadMapTileset::
 	push bc
 
 	ld hl, Tilesets
-	ld bc, wTilesetEnd - wTileset
+	ld bc, TILESET_LENGTH
 	ld a, [wMapTileset]
 	dec a
 	rst AddNTimes
 
-	ld de, wTilesetBank
-	ld bc, wTilesetEnd - wTileset
+	ld de, wTileset
+	ld bc, TILESET_LENGTH
 
 	ld a, BANK(Tilesets)
 	call FarCopyBytes

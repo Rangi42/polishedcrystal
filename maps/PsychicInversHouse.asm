@@ -69,14 +69,14 @@ PsychicInverScript:
 
 .Score4_6
 	writetext InverseBattle4_6PointRewardText
-	random MARANGABERRY - LUM_BERRY + 1
+	random MARANGABERRY - LUM_BERRY + 1 ; excludes early common berries
 	addval LUM_BERRY
 	sjump .Reward
 
 .Score7_9
 	writetext InverseBattle7_9PointRewardText
-	random EVERSTONE - LEAF_STONE + 1
-	addval LEAF_STONE
+	random NUM_STONES
+	addval FIRST_STONE
 	sjump .Reward
 
 PsychicInverGreetingText:

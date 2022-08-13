@@ -1482,12 +1482,8 @@ StdScript:
 	ld hl, StdScripts
 	add hl, de
 	add hl, de
-	add hl, de
-	ld a, BANK(StdScripts)
-	call GetFarByte
-	ld b, a
-	inc hl
-	ld a, BANK(StdScripts)
+	ld b, BANK(StdScripts)
+	ld a, b
 	jmp GetFarWord
 
 ScriptJump:

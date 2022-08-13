@@ -107,9 +107,11 @@ SECTION "vblank", ROM0[$0040]
 
 ItemIsMail::
 ; Returns carry if item d is a mail.
+	assert FIRST_MAIL + NUM_MAILS - 1 == NUM_ITEMS, \
+		"Not all items after FIRST_MAIL are mail"
 	ld a, d
 ItemIsMail_a::
-	cp FLOWER_MAIL
+	cp FIRST_MAIL
 	ccf
 	ret
 
@@ -127,7 +129,7 @@ GetCGBLayout::
 SECTION "timer", ROM0[$0050]
 ; TIMER is never enabled
 
-	ds 3 ; unused
+	reti ; just in case
 
 SwitchToMapScriptsBank::
 	ld a, [wMapScriptsBank]

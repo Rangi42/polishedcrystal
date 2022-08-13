@@ -249,21 +249,21 @@ DecompressMetatiles:
 
 _DecompressMetatiles:
 	assert wDecompressedMetatiles == WRAM1_Begin
-	ld hl, wTilesetBlocksBank
+	ld hl, wTilesetBlocksAddress
 	ld c, BANK(wDecompressedMetatiles)
 	call .Decompress
 
 	assert wDecompressedAttributes == WRAM1_Begin
-	ld hl, wTilesetAttributesBank
+	ld hl, wTilesetAttributesAddress
 	ld c, BANK(wDecompressedAttributes)
 	call .Decompress
 
 	assert wDecompressedCollisions == WRAM1_Begin
-	ld hl, wTilesetCollisionBank
+	ld hl, wTilesetCollisionAddress
 	ld c, BANK(wDecompressedCollisions)
 	; fallthrough
 .Decompress:
-	ld a, [hli]
+	ld a, [wTilesetDataBank]
 	ld b, a
 	ld a, [hli]
 	ld h, [hl]

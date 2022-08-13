@@ -514,21 +514,17 @@ wWestMapConnection:: map_connection_struct wWest
 wEastMapConnection:: map_connection_struct wEast
 
 wTileset::
-wTilesetBank::
-wTilesetGFX0Bank:: db
+wTilesetDataBank:: db
 wTilesetGFX0Address:: dw
-wTilesetGFX1Bank:: db
 wTilesetGFX1Address:: dw
-wTilesetGFX2Bank:: db
 wTilesetGFX2Address:: dw
-wTilesetBlocksBank:: db
 wTilesetBlocksAddress:: dw
-wTilesetCollisionBank:: db
 wTilesetCollisionAddress:: dw
-wTilesetAttributesBank:: db
 wTilesetAttributesAddress:: dw
-wTilesetAnim:: dw ; bank 3f
+wTilesetAnim:: dw ; BANK(_AnimateTileset)
 wTilesetEnd::
+
+	ds 5 ; unused
 
 wEvolvableFlags:: flag_array PARTY_LENGTH
 

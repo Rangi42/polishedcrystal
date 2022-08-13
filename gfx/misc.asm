@@ -74,11 +74,73 @@ KrisBackpic::  INCBIN "gfx/player/kris_back.2bpp.lz"
 LyraBackpic::  INCBIN "gfx/battle/lyra_back.2bpp.lz"
 
 
+SECTION "Emote Graphics", ROMX
+
+ShockEmote::    INCBIN "gfx/emotes/shock.2bpp.lz"
+QuestionEmote:: INCBIN "gfx/emotes/question.2bpp.lz"
+HappyEmote::    INCBIN "gfx/emotes/happy.2bpp.lz"
+SadEmote::      INCBIN "gfx/emotes/sad.2bpp.lz"
+HeartEmote::    INCBIN "gfx/emotes/heart.2bpp.lz"
+BoltEmote::     INCBIN "gfx/emotes/bolt.2bpp.lz"
+SleepEmote::    INCBIN "gfx/emotes/sleep.2bpp.lz"
+FishEmote::     INCBIN "gfx/emotes/fish.2bpp.lz"
+
+
 SECTION "Battle Graphics", ROMX
 
 SubstituteFrontpic:: INCBIN "gfx/battle/substitute-front.2bpp.lz"
 SubstituteBackpic::  INCBIN "gfx/battle/substitute-back.2bpp.lz"
 GhostFrontpic::      INCBIN "gfx/battle/ghost.2bpp.lz"
+
+
+SECTION "Battle Anim Graphics", ROMX
+
+AnimObj00GFX::
+AnimObjHitGFX::        INCBIN "gfx/battle_anims/hit.2bpp.lz"
+AnimObjCutGFX::        INCBIN "gfx/battle_anims/cut.2bpp.lz"
+AnimObjFireGFX::       INCBIN "gfx/battle_anims/fire.2bpp.lz"
+AnimObjWaterGFX::      INCBIN "gfx/battle_anims/water.2bpp.lz"
+AnimObjLightningGFX::  INCBIN "gfx/battle_anims/lightning.2bpp.lz"
+AnimObjSmokeGFX::      INCBIN "gfx/battle_anims/smoke.2bpp.lz"
+AnimObjExplosionGFX::  INCBIN "gfx/battle_anims/explosion.2bpp.lz"
+AnimObjIceGFX::        INCBIN "gfx/battle_anims/ice.2bpp.lz"
+AnimObjRocksGFX::      INCBIN "gfx/battle_anims/rocks.2bpp.lz"
+AnimObjPoisonGFX::     INCBIN "gfx/battle_anims/poison.2bpp.lz"
+AnimObjPlantGFX::      INCBIN "gfx/battle_anims/plant.2bpp.lz"
+AnimObjBubbleGFX::     INCBIN "gfx/battle_anims/bubble.2bpp.lz"
+AnimObjNoiseGFX::      INCBIN "gfx/battle_anims/noise.2bpp.lz"
+AnimObjReflectGFX::    INCBIN "gfx/battle_anims/reflect.2bpp.lz"
+AnimObjPowderGFX::     INCBIN "gfx/battle_anims/powder.2bpp.lz"
+AnimObjBeamGFX::       INCBIN "gfx/battle_anims/beam.2bpp.lz"
+AnimObjSpeedGFX::      INCBIN "gfx/battle_anims/speed.2bpp.lz"
+AnimObjChargeGFX::     INCBIN "gfx/battle_anims/charge.2bpp.lz"
+AnimObjWindGFX::       INCBIN "gfx/battle_anims/wind.2bpp.lz"
+AnimObjWhipGFX::       INCBIN "gfx/battle_anims/whip.2bpp.lz"
+AnimObjRopeGFX::       INCBIN "gfx/battle_anims/rope.2bpp.lz"
+AnimObjEggGFX::        INCBIN "gfx/battle_anims/egg.2bpp.lz"
+AnimObjPsychicGFX::    INCBIN "gfx/battle_anims/psychic.2bpp.lz"
+AnimObjSandGFX::       INCBIN "gfx/battle_anims/sand.2bpp.lz"
+AnimObjWebGFX::        INCBIN "gfx/battle_anims/web.2bpp.lz"
+AnimObjHazeGFX::       INCBIN "gfx/battle_anims/haze.2bpp.lz"
+AnimObjHornGFX::       INCBIN "gfx/battle_anims/horn.2bpp.lz"
+AnimObjFlowerGFX::     INCBIN "gfx/battle_anims/flower.2bpp.lz"
+AnimObjMiscGFX::       INCBIN "gfx/battle_anims/misc.2bpp.lz"
+AnimObjSkyAttackGFX::  INCBIN "gfx/battle_anims/skyattack.2bpp.lz"
+AnimObjGlobeGFX::      INCBIN "gfx/battle_anims/globe.2bpp.lz"
+AnimObjMoonGFX::       INCBIN "gfx/battle_anims/moon.2bpp.lz"
+AnimObjBugBuzzGFX::    INCBIN "gfx/battle_anims/bugbuzz.2bpp.lz"
+AnimObjLeafStormGFX::  INCBIN "gfx/battle_anims/leafstorm.2bpp.lz"
+AnimObjHeartsGFX::     INCBIN "gfx/battle_anims/hearts.2bpp.lz"
+AnimObjStarsGFX::      INCBIN "gfx/battle_anims/stars.2bpp.lz"
+AnimObjShapesGFX::     INCBIN "gfx/battle_anims/shapes.2bpp.lz"
+AnimObjStatusGFX::     INCBIN "gfx/battle_anims/status.2bpp.lz"
+AnimObjObjectsGFX::    INCBIN "gfx/battle_anims/objects.2bpp.lz"
+AnimObjShineGFX::      INCBIN "gfx/battle_anims/shine.2bpp.lz"
+AnimObjAngelsGFX::     INCBIN "gfx/battle_anims/angels.2bpp.lz"
+AnimObjWaveGFX::       INCBIN "gfx/battle_anims/wave.2bpp.lz"
+AnimObjAeroblastGFX::  INCBIN "gfx/battle_anims/aeroblast.2bpp.lz"
+AnimObjMiniGFX::       INCBIN "gfx/battle_anims/mini.2bpp.lz"
+AnimObjPokeBallBGGFX:: INCBIN "gfx/battle_balls/background.2bpp.lz"
 
 
 SECTION "Weather Icons", ROMX
@@ -91,7 +153,6 @@ WeatherHailIconGFX::      INCBIN "gfx/weather/hail.2bpp.lz"
 
 SECTION "Battle Ball Icons", ROMX
 
-AnimObjPokeBallBGGFX::  INCBIN "gfx/battle_balls/background.2bpp.lz"
 AnimObjPokeBallGFX::    INCBIN "gfx/battle_balls/poke_ball.2bpp.lz"
 AnimObjGreatBallGFX::   INCBIN "gfx/battle_balls/great_ball.2bpp.lz"
 AnimObjUltraBallGFX::   INCBIN "gfx/battle_balls/ultra_ball.2bpp.lz"

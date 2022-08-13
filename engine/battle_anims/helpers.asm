@@ -102,30 +102,27 @@ GetBattleAnimOAMPointer:
 
 LoadBattleAnimGFX:
 	push hl
-	ld l, a
-	ld h, 0
-	add hl, hl
-	add hl, hl
-	ld de, AnimObjGFX
+	ld b, BANK("Battle Anim Graphics")
+	ld hl, AnimObjGFX
+	ld e, a
+	ld d, 0
+	add hl, de
+	add hl, de
 	add hl, de
 	ld c, [hl]
-	inc hl
-.got_ball
-	ld b, [hl]
-	ld a, b
-	and a ; bank 0 means it's a poke ball
-	jr z, .ball
 	inc hl
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
+	or h ; NULL means it's a poke ball
+	call z, .GetBall
 	pop de
 	push bc
 	call DecompressRequest2bpp
 	pop bc
 	ret
 
-.ball
+.GetBall:
 	ldh a, [rSVBK]
 	push af
 
@@ -135,6 +132,7 @@ LoadBattleAnimGFX:
 	ld a, [wCurItem]
 	ld e, a
 	ld d, 0
+
 	; get the palette
 	push bc
 	push de
@@ -157,42 +155,18 @@ endr
 	call FarCopyBytes
 	ld b, 2
 	call SafeCopyTilemapAtOnce
-
 	pop de
 	pop bc
+
 	pop af
 	ldh [rSVBK], a
-	; get the gfx pointer
-	ld hl, .ball_gfx
-	add hl, de
-	add hl, de
-	add hl, de
-	jr .got_ball
 
-.ball_gfx:
-	dba AnimObjParkBallGFX
-	dba AnimObjPokeBallGFX
-	dba AnimObjGreatBallGFX
-	dba AnimObjUltraBallGFX
-	dba AnimObjMasterBallGFX
-	dba AnimObjSafariBallGFX
-	dba AnimObjLevelBallGFX
-	dba AnimObjLureBallGFX
-	dba AnimObjMoonBallGFX
-	dba AnimObjFriendBallGFX
-	dba AnimObjFastBallGFX
-	dba AnimObjHeavyBallGFX
-	dba AnimObjLoveBallGFX
-	dba AnimObjPokeBallGFX ; ABILITYPATCH
-	dba AnimObjRepeatBallGFX
-	dba AnimObjTimerBallGFX
-	dba AnimObjNestBallGFX
-	dba AnimObjNetBallGFX
-	dba AnimObjDiveBallGFX
-	dba AnimObjLuxuryBallGFX
-	dba AnimObjHealBallGFX
-	dba AnimObjQuickBallGFX
-	dba AnimObjDuskBallGFX
-	dba AnimObjDreamBallGFX
-	dba AnimObjPremierBallGFX
-	dba AnimObjCherishBallGFX
+	; get the gfx pointer
+	ld b, BANK("Battle Ball Icons")
+	ld hl, AnimBallObjGFX
+	add hl, de
+	add hl, de
+	ld a, [hli]
+	ld h, [hl]
+	ld l, a
+	ret
