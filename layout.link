@@ -230,8 +230,8 @@ WRAM0
 	org $c770
 	"Misc 480"
 	org $c950
-	"Misc 1300"
-	org $ced0
+	"Misc 1326"
+	org $ce7e
 	"Video"
 	"More WRAM 0"
 	org $cff0

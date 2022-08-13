@@ -880,16 +880,16 @@ wPuzzlePieces:: ds 6 * 6
 wUnownPuzzleEnd::
 
 
-SECTION UNION "Misc 1300", WRAM0
+SECTION UNION "Misc 1326", WRAM0
 ; overworld map
 
-; large enough for 45x20 NavelRockInside.ablk; (45+6)x(20+6) = 1326 < 1408
+; large enough for 45x20 NavelRockInside.ablk; (45+6)x(20+6) = 1326
 ; was originally only 1300 bytes
-wOverworldMapBlocks:: ds $580
+wOverworldMapBlocks:: ds 1326
 wOverworldMapBlocksEnd::
 
 
-SECTION UNION "Misc 1300", WRAM0
+SECTION UNION "Misc 1326", WRAM0
 ; psychic inver party
 
 ; large enough for 4x4 KantoHouse1.asm in wOverworldMapBlocks
@@ -908,13 +908,13 @@ wInverGroup::
 	db ; db -1 ; end
 
 
-SECTION UNION "Misc 1300", WRAM0
+SECTION UNION "Misc 1326", WRAM0
 ; credits image
 
 wCreditsBlankFrame2bpp:: ds 8 * 8 * 2
 
 
-SECTION UNION "Misc 1300", WRAM0
+SECTION UNION "Misc 1326", WRAM0
 ; Bill's PC
 
 ; If you change ordering of this, remember to fix LCD hblank code too.
@@ -975,14 +975,14 @@ wBillsPC_QuickFrames:: db
 wBillsPC_ApplyThemePals:: db ; used by _CGB_BillsPC
 
 
-SECTION UNION "Misc 1300", WRAM0
+SECTION UNION "Misc 1326", WRAM0
 ; raw link data
 
 wLinkData:: ds 1300
 wLinkDataEnd::
 
 
-SECTION UNION "Misc 1300", WRAM0
+SECTION UNION "Misc 1326", WRAM0
 ; link data members
 
 wLinkPlayerName:: ds NAME_LENGTH
@@ -1015,7 +1015,7 @@ wLinkPatchList2:: ds SERIAL_PATCH_LIST_LENGTH
 ENDU
 
 
-SECTION UNION "Misc 1300", WRAM0
+SECTION UNION "Misc 1326", WRAM0
 ; link mail data
 	ds 500
 
@@ -1034,7 +1034,7 @@ wLinkOTMailEnd::
 	ds 10
 
 
-SECTION UNION "Misc 1300", WRAM0
+SECTION UNION "Misc 1326", WRAM0
 ; received link mail data
 	ds 500
 
@@ -1050,6 +1050,8 @@ wBGMapBufferPtrs:: ds 48 ; 24 bg map addresses (16x8 tiles)
 
 
 SECTION "More WRAM 0", WRAM0
+
+	ds 82 ; unused
 
 wMemCGBLayout:: db
 
