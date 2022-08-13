@@ -101,10 +101,6 @@ MainMenu_GetWhichMenu:
 	ret
 
 MainMenuJoypadLoop:
-	hlcoord 0, 11
-	ld de, BuildTimestamp
-	rst PlaceString
-
 	call SetUpMenu
 .loop
 	call MainMenu_PrintCurrentTimeAndDay
