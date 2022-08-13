@@ -16,8 +16,6 @@ hPushOAM::
 .wait
 	dec b
 	jr nz, .wait
-	; 'ret z' is timing-critical; it's one cycle slower
-	; than 'ret', so OAM copy will be done.
-	ret z
+	ret
 ENDL
 OAMDMACodeEnd:

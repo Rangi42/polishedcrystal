@@ -5,7 +5,7 @@ PushOAM::
 	and a
 	ret nz
 ForcePushOAM:
-	lb bc, 40, LOW(rDMA)
+	lb bc, 40 + 1, LOW(rDMA)
 	ld a, HIGH(wShadowOAM)
 	jmp hPushOAM
 
