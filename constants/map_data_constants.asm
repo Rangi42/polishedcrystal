@@ -5,14 +5,13 @@ DEF MAP_NONE   EQU 0
 
 ; map struct members (see data/maps/maps.asm)
 rsreset
-                      rb_skip ; TODO: remove
-DEF MAP_TILESET       rb ; 1
-DEF MAP_ENVIRONMENT   rb ; 2
-DEF MAP_MAPATTRIBUTES rw ; 3
-DEF MAP_LOCATION      rb ; 5
-DEF MAP_MUSIC         rb ; 6
-DEF MAP_PALETTE       rb ; 7
-DEF MAP_LENGTH EQU _RS   ; 8
+DEF MAP_TILESET       rb ; 0
+DEF MAP_ENVIRONMENT   rb ; 1
+DEF MAP_MAPATTRIBUTES rw ; 2
+DEF MAP_LOCATION      rb ; 4
+DEF MAP_MUSIC         rb ; 5
+DEF MAP_PALETTE       rb ; 6
+DEF MAP_LENGTH EQU _RS   ; 7
 
 ; map environments (wEnvironment)
 ; EnvironmentColorsPointers indexes (see data/maps/environment_colors.asm)

@@ -49,10 +49,10 @@ SpecialOmanyteChamber:
 
 SpecialAerodactylChamber:
 	call GetMapAttributesPointer
-	ld a, h
+	ld a, b
 	cp HIGH(RuinsOfAlphAerodactylChamber_MapAttributes)
 	jr nz, .nope
-	ld a, l
+	ld a, c
 	cp LOW(RuinsOfAlphAerodactylChamber_MapAttributes)
 	jr nz, .nope
 
@@ -66,10 +66,10 @@ SpecialAerodactylChamber:
 
 SpecialKabutoChamber:
 	call GetMapAttributesPointer
-	ld a, h
+	ld a, b
 	cp HIGH(RuinsOfAlphKabutoChamber_MapAttributes)
 	ret nz
-	ld a, l
+	ld a, c
 	cp LOW(RuinsOfAlphKabutoChamber_MapAttributes)
 	ret nz
 

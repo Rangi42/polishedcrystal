@@ -488,12 +488,12 @@ wOverworldMapAnchor:: dw
 wMetatileStandingY:: db
 wMetatileStandingX:: db
 
-wMapPartial::
-wMapAttributesBank:: db
+	ds 1 ; unused
+
 wMapTileset:: db
 wEnvironment:: db
-wMapAttributesPointer:: dw
-wMapPartialEnd::
+
+	ds 2 ; unused
 
 wMapAttributes::
 wMapBorderBlock:: db

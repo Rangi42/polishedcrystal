@@ -6,7 +6,6 @@ MACRO map
 ;\5: music: a MUSIC_* constant
 ;\6: phone service flag: TRUE to prevent phone calls
 ;\7: time of day: a PALETTE_* constant
-	db BANK(\1_MapAttributes) ; TODO: remove
 	db \2, \3
 	dw \1_MapAttributes
 	db \4, \5

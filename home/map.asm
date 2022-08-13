@@ -299,7 +299,14 @@ ReadObjectEvents::
 	ld l, e
 	ret
 
-CopyMapAttributes::
+CopyMapPartialAndAttributes::
+; Copy map tileset, environment, and attributes
+; from the current map's entry within its group.
+	call CopyMapPartial
+	call SwitchToMapAttributesBank
+	call GetMapAttributesPointer
+	ld l, c
+	ld h, b
 	ld de, wMapAttributes
 	ld c, wMapAttributesEnd - wMapAttributes
 .loop
@@ -308,15 +315,6 @@ CopyMapAttributes::
 	inc de
 	dec c
 	jr nz, .loop
-	ret
-
-CopyMapPartialAndAttributes::
-; Copy map data bank, tileset, environment, and map data address
-; from the current map's entry within its group.
-	call CopyMapPartial
-	call SwitchToMapAttributesBank
-	call GetMapAttributesPointer
-	call CopyMapAttributes
 	; fallthrough
 GetMapConnections::
 	ld a, $ff
@@ -1732,6 +1730,10 @@ GetAnyMapPointer::
 	rst AddNTimes
 	ret
 
+GetMapAttributesPointer::
+; returns the current map's attributes pointer in bc.
+	ld de, MAP_MAPATTRIBUTES
+	; fallthrough
 GetMapField::
 ; Extract data from the current map's group entry.
 
@@ -1746,6 +1748,7 @@ GetMapField::
 	ld b, a
 	ld a, [wMapNumber]
 	ld c, a
+	; fallthrough
 GetAnyMapField::
 	anonbankpush MapGroupPointers
 
@@ -1773,8 +1776,10 @@ CopyMapPartial::
 
 .Function:
 	call GetMapPointer
-	ld de, wMapAttributesBank
-	ld bc, wMapPartialEnd - wMapPartial
+	assert MAP_TILESET == 0 && MAP_ENVIRONMENT == 1
+	ld de, wMapTileset
+	assert wMapTileset + 1 == wEnvironment
+	ld bc, 2
 	rst CopyBytes
 	ret
 
@@ -1805,18 +1810,6 @@ GetAnyMapBlocksBank::
 
 	pop bc
 	pop de
-	ret
-
-GetMapAttributesPointer::
-; returns the current map's data pointer in hl.
-	push bc
-	push de
-	ld de, MAP_MAPATTRIBUTES
-	call GetMapField
-	ld l, c
-	ld h, b
-	pop de
-	pop bc
 	ret
 
 GetMapEnvironment::
