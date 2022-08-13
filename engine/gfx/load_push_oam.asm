@@ -16,6 +16,6 @@ hPushOAM::
 .wait
 	dec b
 	jr nz, .wait
-	ret
+	ret z ; not ret! otherwise OAM copy isn't done yet!
 ENDL
 OAMDMACodeEnd:
