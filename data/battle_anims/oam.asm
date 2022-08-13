@@ -1,4 +1,4 @@
-battleanimoam: MACRO
+MACRO battleanimoam
 	db \1 ; vtile offset
 	db \2 ; data length
 	dw \3 ; data pointer
@@ -223,6 +223,15 @@ BattleAnimOAMData:
 	battleanimoam $00,  6, .OAMData_d5 ; BATTLEANIMOAMSET_D5
 	battleanimoam $00, 14, .OAMData_d6 ; BATTLEANIMOAMSET_D6
 	battleanimoam $00, 12, .OAMData_d7 ; BATTLEANIMOAMSET_D7
+	battleanimoam $11,  2, .OAMData_StoneEdge ; BATTLEANIMOAMSET_STONE_EDGE
+	battleanimoam $1b,  4, .OAMData_03 ; BATTLEANIMOAMSET_BRICK_BREAK
+	battleanimoam $07, 10, .OAMData_HyperVoice ; BATTLEANIMOAMSET_HYPER_VOICE
+	battleanimoam $04,  3, .OAMData_BugBuzz1 ; BATTLEANIMOAMSET_BUG_BUZZ1
+	battleanimoam $00,  5, .OAMData_BugBuzz2 ; BATTLEANIMOAMSET_BUG_BUZZ2
+	battleanimoam $1f,  4, .OAMData_03 ; BATTLEANIMOAMSET_BULLET_PUNCH
+	battleanimoam $08, 16, .OAMData_1c ; BATTLEANIMOAMSET_VORTEX1
+	battleanimoam $18, 16, .OAMData_1c ; BATTLEANIMOAMSET_VORTEX2
+	battleanimoam $28, 16, .OAMData_1c ; BATTLEANIMOAMSET_VORTEX3
 	assert_table_length NUM_BATTLEANIMOAMSETS
 
 .OAMData_11:
@@ -1090,3 +1099,31 @@ BattleAnimOAMData:
 	dsprite  -2, 0,   6, 4, $00, $0
 	dsprite  -4, 0,   8, 4, $00, $0
 	dsprite  -2, 0,  10, 4, $00, $0
+
+.OAMData_StoneEdge:
+	dsprite  -1, 0,  -1, 0, $00, $0
+	dsprite   0, 0,  -1, 0, $01, $0
+
+.OAMData_HyperVoice:
+	dsprite  -3, 0,   0, 0, $00, $0
+	dsprite  -2, 0,   0, 0, $01, $0
+	dsprite  -1, 0,   0, 0, $06, $0
+	dsprite  -3, 0,   1, 0, $00, X_FLIP
+	dsprite  -2, 0,   1, 0, $01, X_FLIP
+	dsprite  -1, 0,   1, 0, $06, X_FLIP
+	dsprite   0, 0,   0, 0, $01, Y_FLIP
+	dsprite   1, 0,   0, 0, $00, Y_FLIP
+	dsprite   0, 0,   1, 0, $01, X_FLIP | Y_FLIP
+	dsprite   1, 0,   1, 0, $00, X_FLIP | Y_FLIP
+
+.OAMData_BugBuzz1:
+	dsprite  -1, 0,  -1, 0, $00, $0
+	dsprite  -1, 0,   0, 0, $01, $0
+	dsprite   0, 0,  -1, 0, $03, $0
+
+.OAMData_BugBuzz2:
+	dsprite  -2, 4,  -2, 4, $00, $0
+	dsprite  -2, 4,  -1, 4, $01, $0
+	dsprite  -2, 4,   0, 4, $02, $0
+	dsprite  -1, 4,  -2, 4, $03, $0
+	dsprite   0, 4,  -2, 4, $06, $0

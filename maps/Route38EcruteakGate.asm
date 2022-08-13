@@ -21,12 +21,12 @@ ProfOaksAide2Script:
 	faceplayer
 	opentext
 	checkevent EVENT_GOT_EXP_SHARE_FROM_PROF_OAKS_AIDE
-	iftrue .Explain
+	iftruefwd .Explain
 	writetext ProfOaksAide2HiText
 	waitbutton
-	countseencaught
-	readvar VAR_DEXCAUGHT
-	ifgreater 29, .HereYouGo
+	setval16 30
+	special CountCaught
+	iftruefwd .HereYouGo
 .UhOh
 	jumpopenedtext ProfOaksAide2UhOhText
 
@@ -34,7 +34,7 @@ ProfOaksAide2Script:
 	writetext ProfOaksAide2HereYouGoText
 	waitbutton
 	verbosegiveitem EXP_SHARE
-	iffalse .NoRoom
+	iffalsefwd .NoRoom
 	setevent EVENT_GOT_EXP_SHARE_FROM_PROF_OAKS_AIDE
 .Explain
 	jumpopenedtext ProfOaksAide2ExplainText
@@ -77,7 +77,7 @@ ProfOaksAide2UhOhText:
 	line "Uh-oh! You've only"
 
 	para "caught "
-	text_decimal wTempPokedexCaughtCount, 1, 3
+	text_decimal wTempDexOwn, 2, 3
 	text " kinds"
 	line "of #mon."
 
@@ -91,7 +91,7 @@ ProfOaksAide2HereYouGoText:
 	line "Great job! You've"
 
 	para "caught "
-	text_decimal wTempPokedexCaughtCount, 1, 3
+	text_decimal wTempDexOwn, 2, 3
 	text " kinds"
 	line "of #mon."
 

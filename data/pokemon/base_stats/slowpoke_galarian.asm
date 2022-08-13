@@ -4,9 +4,8 @@
 	db PSYCHIC, PSYCHIC ; type
 	db 190 ; catch rate
 	db 99 ; base exp
-	db NO_ITEM ; item 1
-	db KINGS_ROCK ; item 2
-	dn GENDER_F50, 3 ; gender ratio, step cycles to hatch
+	db NO_ITEM, KINGS_ROCK ; held items
+	dn GENDER_F50, HATCH_MEDIUM_FAST ; gender ratio, step cycles to hatch
 	INCBIN "gfx/pokemon/slowpoke_galarian/front.dimensions"
 	abilities_for SLOWPOKE_GALARIAN, GLUTTONY, OWN_TEMPO, REGENERATOR
 	db GROWTH_MEDIUM_FAST ; growth rate

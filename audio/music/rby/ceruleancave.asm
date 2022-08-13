@@ -170,7 +170,7 @@ Music_CeruleanCaveRBY_branch_7df6e:
 	notetype 12, 194
 	callchannel Music_CeruleanCaveRBY_branch_7dfaa
 	callchannel Music_CeruleanCaveRBY_branch_7dfaa
-	loopchannel 0, Music_CeruleanCaveRBY_branch_7dee5
+	jumpchannel Music_CeruleanCaveRBY_branch_7dee5
 
 Music_CeruleanCaveRBY_branch_7dfaa:
 	note E_, 1
@@ -363,7 +363,7 @@ Music_CeruleanCaveRBY_branch_7e006:
 	notetype 12, 210
 	callchannel Music_CeruleanCaveRBY_branch_7e097
 	callchannel Music_CeruleanCaveRBY_branch_7e097
-	loopchannel 0, Music_CeruleanCaveRBY_branch_7dfeb
+	jumpchannel Music_CeruleanCaveRBY_branch_7dfeb
 
 Music_CeruleanCaveRBY_branch_7e097:
 	octave 2
@@ -514,7 +514,7 @@ Music_CeruleanCaveRBY_branch_7e0e5:
 	note D#, 1
 	note __, 16
 	note __, 16
-	loopchannel 0, Music_CeruleanCaveRBY_branch_7e0e5
+	jumpchannel Music_CeruleanCaveRBY_branch_7e0e5
 
 Music_CeruleanCaveRBY_branch_7e140:
 	octave 5
@@ -656,7 +656,7 @@ Music_CeruleanCaveRBY_branch_7e1d5:
 	note E_, 1
 	callchannel Music_CeruleanCaveRBY_branch_7e1f1
 	callchannel Music_CeruleanCaveRBY_branch_7e1f1
-	loopchannel 0, Music_CeruleanCaveRBY_branch_7e190
+	jumpchannel Music_CeruleanCaveRBY_branch_7e190
 
 Music_CeruleanCaveRBY_branch_7e1f1:
 	note F_, 4

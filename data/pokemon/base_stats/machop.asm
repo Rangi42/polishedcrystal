@@ -4,9 +4,8 @@
 	db FIGHTING, FIGHTING ; type
 	db 180 ; catch rate
 	db 88 ; base exp
-	db NO_ITEM ; item 1
-	db FOCUS_BAND ; item 2
-	dn GENDER_F25, 3 ; gender ratio, step cycles to hatch
+	db NO_ITEM, FOCUS_BAND ; held items
+	dn GENDER_F25, HATCH_MEDIUM_FAST ; gender ratio, step cycles to hatch
 	INCBIN "gfx/pokemon/machop/front.dimensions"
 	abilities_for MACHOP, GUTS, NO_GUARD, STEADFAST
 	db GROWTH_MEDIUM_SLOW ; growth rate

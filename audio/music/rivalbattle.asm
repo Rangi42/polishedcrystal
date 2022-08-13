@@ -283,7 +283,7 @@ Music_RivalBattle_branch_e9837:
 	note B_, 6
 	octave 3
 	note C#, 10
-	loopchannel 0, Music_RivalBattle_branch_e97a6
+	jumpchannel Music_RivalBattle_branch_e97a6
 
 Music_RivalBattle_Ch2:
 	dutycycle $3
@@ -510,7 +510,7 @@ Music_RivalBattle_branch_e99c1:
 	intensity $6a
 	octave 4
 	note D_, 4
-	loopchannel 0, Music_RivalBattle_branch_e991a
+	jumpchannel Music_RivalBattle_branch_e991a
 
 Music_RivalBattle_branch_e99e0:
 	intensity $c7
@@ -818,7 +818,7 @@ Music_RivalBattle_branch_e9b32:
 	note E_, 2
 	note D#, 2
 	note D_, 2
-	loopchannel 0, Music_RivalBattle_branch_e9a30
+	jumpchannel Music_RivalBattle_branch_e9a30
 
 Music_RivalBattle_branch_e9b47:
 	octave 2

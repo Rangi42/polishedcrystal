@@ -35,7 +35,7 @@ CeruleanCave1F_MapScriptHeader:
 
 CeruleanCave1FTileScript:
 	checkscene
-	iftrue .underfoot
+	iftruefwd .underfoot
 	callasm CeruleanCave1F_OverheadBridgeAsm
 	endcallback
 

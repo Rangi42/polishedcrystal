@@ -27,27 +27,26 @@ HealPartyMonEvenForNuzlocke:
 	ret
 
 HealParty:
+	ld a, [wPartyCount]
+	ld c, a
 	xor a
-	ld [wCurPartyMon], a
-	ld hl, wPartySpecies
 .loop
-	ld a, [hli]
-	cp -1
+	cp c
 	ret z
-	push hl
+	ld [wCurPartyMon], a
+	push bc
 	ld a, MON_IS_EGG
-	call GetPartyParamLocation
-	bit MON_IS_EGG_F, [hl]
+	call GetPartyParamLocationAndValue
+	bit MON_IS_EGG_F, a
 	call z, HealPartyMon
-	pop hl
+	pop bc
 	ld a, [wCurPartyMon]
 	inc a
-	ld [wCurPartyMon], a
 	jr .loop
 
 HealPartyMon:
 	ld a, MON_SPECIES
-	call GetPartyParamLocation
+	call GetPartyParamLocationAndValue
 	ld d, h
 	ld e, l
 
@@ -111,10 +110,13 @@ ComputeHPBarPixels:
 	rr e
 	srl d
 	rr e
+	ldh a, [hProduct + 1]
+	srl a ; get the 17th bit into the carry bit
+	ldh [hProduct + 1], a
 	ldh a, [hProduct + 2]
 	ld b, a
 	ldh a, [hProduct + 3]
-	srl b
+	rr b
 	rra
 	srl b
 	rra

@@ -36,9 +36,9 @@ FarawayIslandVisited:
 FarawayIslandSetupLawrence:
 	disappear FARAWAYISLAND_LAWRENCE
 	checkevent EVENT_BEAT_LAWRENCE
-	iffalse .Done
+	iffalsefwd .Done
 	checkevent EVENT_BEAT_LAWRENCE_AGAIN
-	iftrue .Done
+	iftruefwd .Done
 	appear FARAWAYISLAND_LAWRENCE
 .Done
 	endcallback
@@ -56,7 +56,7 @@ FarawayIslandSailorScript:
 	opentext
 	writetext SeagallopFerryFarawayToVermilionQuestionText
 	yesorno
-	iffalse .RefuseFerry
+	iffalsefwd .RefuseFerry
 	writetext SeagallopFerryFarawayToVermilionText
 	waitbutton
 	closetext
@@ -86,7 +86,7 @@ FarawayIslandLawrenceScript:
 	opentext
 	writetext FarawayIslandLawrenceText1
 	yesorno
-	iffalse .no_battle
+	iffalsefwd .no_battle
 	writetext FarawayIslandLawrenceYesText
 	waitbutton
 	closetext

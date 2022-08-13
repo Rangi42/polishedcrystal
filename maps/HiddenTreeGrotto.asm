@@ -26,9 +26,9 @@ HiddenGrottoCallback:
 	setevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_2
 	setevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_3
 	special InitializeHiddenGrotto
-	ifequal GROTTO_POKEMON, .pokemon
-	ifequal GROTTO_ITEM, .item
-	ifequal GROTTO_HIDDEN_ITEM, .hidden_item
+	ifequalfwd GROTTO_POKEMON, .pokemon
+	ifequalfwd GROTTO_ITEM, .item
+	ifequalfwd GROTTO_HIDDEN_ITEM, .hidden_item
 	endcallback
 
 .pokemon
@@ -58,7 +58,7 @@ HiddenGrottoItemScript:
 	special GetHiddenGrottoContents
 	getitemname $0, $1
 	giveitem ITEM_FROM_MEM
-	iffalse .PackFull
+	iffalsefwd .PackFull
 	disappear HIDDENTREEGROTTO_ITEM
 	setevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_3
 	opentext

@@ -166,7 +166,7 @@ Music_Route29_branch_f03a5:
 	note C_, 2
 	note G_, 2
 	note G_, 4
-	loopchannel 0, Music_Route29_branch_f03a5
+	jumpchannel Music_Route29_branch_f03a5
 
 Music_Route29_Ch2:
 	dutycycle $3
@@ -298,7 +298,7 @@ Music_Route29_branch_f0458:
 	octave 4
 	note C_, 1
 	note D_, 1
-	loopchannel 0, Music_Route29_branch_f0458
+	jumpchannel Music_Route29_branch_f0458
 
 Music_Route29_branch_f04de:
 	note E_, 2
@@ -498,7 +498,7 @@ Music_Route29_branch_f0504:
 	note __, 1
 	note C_, 1
 	note __, 3
-	loopchannel 0, Music_Route29_branch_f0504
+	jumpchannel Music_Route29_branch_f0504
 
 Music_Route29_Ch4:
 	stereopanning $f
@@ -517,4 +517,4 @@ Music_Route29_branch_f05b0:
 	note F_, 4
 	note F_, 2
 	note F_, 4
-	loopchannel 0, Music_Route29_branch_f05b0
+	jumpchannel Music_Route29_branch_f05b0

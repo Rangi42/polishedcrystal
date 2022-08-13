@@ -30,6 +30,7 @@ _AnimateTileset::
 	jmp IndirectHL
 
 TilesetJohto1Anim::
+TilesetEcruteakShrineAnim::
 	dw vTiles2 tile $14, AnimateWaterTile
 	dw NULL,  DoNothing
 	dw NULL,  DoNothing
@@ -497,9 +498,8 @@ AnimateFountain:
 	sub l
 	ld h, a
 
-	ld a, [hli]
-	ld h, [hl]
-	ld l, a
+	ld sp, hl
+	pop hl
 
 	ld sp, hl
 	jmp WriteTileToDE

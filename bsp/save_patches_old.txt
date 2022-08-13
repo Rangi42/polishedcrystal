@@ -30,12 +30,13 @@ CreateKeyItemBitflags:
 .key_items_loop_1
 	and #1, #temp, 0xff
 	call .loop_common_get
-	jumpz #1, .key_items_loop_1 ; quietly ignore invalid/obsolete indexes
+	jumpz #1, .continue_loop_1 ; quietly ignore invalid/obsolete indexes
 	ifeq #1, 0xff, .done_loop
 	decrement #1 ; loop_common_get returns a valid index from 1-1c, we want 0-1b now
 	push #temp
 	call .loop_common_set
 	pop #temp
+.continue_loop_1
 	shiftright #temp, 8
 	jumpnz #temp, .key_items_loop_1
 
@@ -175,9 +176,10 @@ ResizePocketsToBuild4:
 AdjustItemIndexesToBuild4:
 	; note: this function can be generalized for any build,
 	; but you'd need to modify the ItemIndexOffsets tables for each update
+	; NOTE: do not do this generalization, this was a terrible idea
 	ifne #curbuild, 4, .error ; debug statement
 	set #1, .pointer_table
-	jump AdjustItemIndexes
+	jump AdjustItemIndexesByPointerTable
 
 .error
 	bufstring .error_string_build_1
@@ -209,7 +211,7 @@ AdjustItemIndexesToBuild4:
 
 AdjustMonCaughtBallData:
 	set #1, .ball_adjust_callback
-	jump ApplyPartyPatches
+	jump ApplyPartyPatchesOld
 
 .ball_adjust_callback
 	add #1, CAUGHTBALL_OFFSET
@@ -279,8 +281,8 @@ AdjustRhyperiorIndex:
 .mon_adjust_table
 	; upper bound, offset
 	; terminated by -1
-	dh 0xae, 0 ; MAGNEZONE
-	dh 0xb5, 1 ; BELLOSSOM
+	dh 0xae, 0  ; MAGNEZONE
+	dh 0xb5, 1  ; BELLOSSOM
 	dh 0xb6, -7 ; RHYPERIOR
 	dh -1
 
@@ -299,12 +301,12 @@ AdjustShuckleAndEeveelutionIndexes:
 	jump FlagAction
 
 .mon_adjust_table
-	dh 0xc0, 0 ; UMBREON
-	dh 0xc2, 59 ; LEAFEON/GLACEON
-	dh 0xd4, -2 ; SCIZOR
-	dh 0xe9, -1 ; PORYGON2
-	dh 0xfb, 0 ; CELEBI
-	dh 0xfc, 2 ; SYLVEON
+	dh 0xc0, 0   ; UMBREON
+	dh 0xc2, 59  ; LEAFEON/GLACEON
+	dh 0xd4, -2  ; SCIZOR
+	dh 0xe9, -1  ; PORYGON2
+	dh 0xfb, 0   ; CELEBI
+	dh 0xfc, 2   ; SYLVEON
 	dh 0xfd, -20 ; PORYGON_Z
 	dh -1
 
@@ -378,7 +380,7 @@ AdjustVariableSprites:
 	return
 
 LegendaryDogStatus:
-	set #1, POKEDEX_CAUGHT_OFFSET
+	set #1, POKEDEX_CAUGHT_OFFSET_v7
 	call GetGameDataPointer
 	seek #result
 
@@ -480,7 +482,7 @@ UpdateCharset:
 	set #4, #b
 	call .fix_sram_loop
 
-	seek sLinkBattleRecord
+	seek sLinkBattleRecord_v6
 	set #1, 5
 	set #2, #length
 	decrement #2 ; NAME_LENGTH - 1
@@ -488,7 +490,7 @@ UpdateCharset:
 	call .fix_sram_loop
 
 	; hall of fame nicknames
-	seek sByteBeforeHallOfFame ; literally, the byte right before sHallOfFame
+	seek sByteBeforeHallOfFame_v6 ; literally, the byte right before sHallOfFame
 	set #a, 30
 .hof_loop
 	seekfwd 8 ; go from end to mon 1 nickname
@@ -589,7 +591,7 @@ UpdateCharset:
 ChangeGyaradosForm:
 	set #curbuild, 6
 	set #1, .mon_callback
-	call ApplyPartyPatches
+	call ApplyPartyPatchesOld
 
 .mon_callback
 	seek #1

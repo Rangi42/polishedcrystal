@@ -15,14 +15,14 @@ _LoadStandardMaybeOpaqueFont:
 	ld d, h
 	ld e, l
 	ld hl, vTiles0 tile "A"
-	lb bc, BANK(FontTiles), 111
+	lb bc, BANK(FontTiles), 114
 	pop af
 	ldh [hRequestOpaque1bpp], a
 	push af
 	call GetMaybeOpaque1bpp
 	ld de, FontCommon
-	ld hl, vTiles0 tile "▷"
-	lb bc, BANK(FontCommon), 11
+	ld hl, vTiles0 tile "↑"
+	lb bc, BANK(FontCommon), 6
 	pop af
 	ldh [hRequestOpaque1bpp], a
 	jmp GetMaybeOpaque1bpp
@@ -43,6 +43,7 @@ LoadStandardFontPointer::
 	ret
 
 .FontPointers:
+	table_width 2, LoadStandardFontPointer.FontPointers
 	dw FontNormal
 	dw FontNarrow
 	dw FontBold
@@ -51,6 +52,7 @@ LoadStandardFontPointer::
 	dw FontChicago
 	dw FontMICR
 	dw FontUnown
+	assert_table_length NUM_FONTS
 
 _LoadFontsBattleExtra::
 	ld hl, BattleExtrasGFX

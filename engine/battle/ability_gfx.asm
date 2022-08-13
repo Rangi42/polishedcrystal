@@ -1,7 +1,7 @@
-SLIDEOUT_WIDTH EQU 11 ; tiles
-SLIDEOUT_TEXT_WIDTH EQU (SLIDEOUT_WIDTH - 1) * TILE_WIDTH
-SLIDEOUT_OVERLAP EQU 10 ; pixels
-SLIDEOUT_START_TILE EQU $d4
+DEF SLIDEOUT_WIDTH EQU 11 ; tiles
+DEF SLIDEOUT_TEXT_WIDTH EQU (SLIDEOUT_WIDTH - 1) * TILE_WIDTH
+DEF SLIDEOUT_OVERLAP EQU 10 ; pixels
+DEF SLIDEOUT_START_TILE EQU $d4
 
 PerformAbilityGFX:
 	call RunFunctionInWRA6
@@ -156,7 +156,7 @@ PerformAbilityGFX:
 	ld b, SLIDEOUT_START_TILE
 .got_tilemap_data
 	call SetAbilityTilemap
-	ld bc, wAttrMap - wTileMap - SLIDEOUT_WIDTH - SCREEN_WIDTH
+	ld bc, wAttrmap - wTilemap - SLIDEOUT_WIDTH - SCREEN_WIDTH
 	add hl, bc
 	ld b, -1 ; keep current palette
 	jr SetAbilityOverlayAttributes
@@ -213,17 +213,17 @@ PerformAbilityGFX:
 
 ResetAbilityTilemap:
 ; Sets tilemap data depending on which overlays are active.
-	hlcoord 0, 8, wAttrMap
+	hlcoord 0, 8, wAttrmap
 	ld b, SLIDEOUT_START_TILE + SLIDEOUT_WIDTH * 2
 	bit OAM_TILE_BANK, [hl]
 	call nz, .SetTilemap
-	hlcoord 9, 3, wAttrMap
+	hlcoord 9, 3, wAttrmap
 	ld b, SLIDEOUT_START_TILE
 	bit OAM_TILE_BANK, [hl]
 	ret z
 .SetTilemap
 	push bc
-	ld bc, wTileMap - wAttrMap
+	ld bc, wTilemap - wAttrmap
 	add hl, bc
 	pop bc
 	; fallthrough
@@ -247,9 +247,9 @@ SetAbilityTilemap:
 SetUserAbilityOverlayAttributes:
 	ldh a, [hBattleTurn]
 	and a
-	hlcoord 0, 8, wAttrMap
+	hlcoord 0, 8, wAttrmap
 	jr z, SetAbilityOverlayAttributes
-	hlcoord 9, 3, wAttrMap
+	hlcoord 9, 3, wAttrmap
 	; fallthrough
 
 SetAbilityOverlayAttributes:
@@ -340,13 +340,13 @@ DismissAbilityOverlays:
 	ld d, h
 	ld e, l
 	push bc
-	ld bc, wTempTileMap - wTileMap
+	ld bc, wTempTileMap - wTilemap
 	add hl, bc
 	ld bc, SLIDEOUT_WIDTH
 	push hl
 	rst CopyBytes
 	pop hl
-	ld bc, wAttrMap - wTempTileMap
+	ld bc, wAttrmap - wTempTileMap
 	add hl, bc
 	pop bc
 	ld c, SLIDEOUT_WIDTH

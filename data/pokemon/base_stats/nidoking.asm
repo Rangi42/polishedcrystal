@@ -4,9 +4,8 @@
 	db POISON, GROUND ; type
 	db 45 ; catch rate
 	db 195 ; base exp
-	db NO_ITEM ; item 1
-	db NO_ITEM ; item 2
-	dn GENDER_F0, 3 ; gender ratio, step cycles to hatch
+	db NO_ITEM, NO_ITEM ; held items
+	dn GENDER_F0, HATCH_MEDIUM_FAST ; gender ratio, step cycles to hatch
 	INCBIN "gfx/pokemon/nidoking/front.dimensions"
 	abilities_for NIDOKING, POISON_POINT, RIVALRY, SHEER_FORCE
 	db GROWTH_MEDIUM_SLOW ; growth rate

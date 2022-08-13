@@ -24,7 +24,7 @@ BillsGrandpa:
 	faceplayer
 	opentext
 	checkevent EVENT_MET_BILLS_GRANDPA
-	iftrue .MetGrandpa
+	iftruefwd .MetGrandpa
 	writetext BillsGrandpaIntroText
 	promptbutton
 	setevent EVENT_MET_BILLS_GRANDPA
@@ -58,7 +58,7 @@ BillsGrandpa:
 	ifnotequal SNUBBULL, .WrongPokemon
 	scall .CorrectPokemon
 	setevent EVENT_SHOWED_SNUBBULL_TO_BILLS_GRANDPA
-	sjump .ShowedSnubbull
+	sjumpfwd .ShowedSnubbull
 
 .GotEverstone:
 	writetext BillsGrandpaBellsproutText
@@ -72,7 +72,7 @@ BillsGrandpa:
 	ifnotequal BELLSPROUT, .WrongPokemon
 	scall .CorrectPokemon
 	setevent EVENT_SHOWED_BELLSPROUT_TO_BILLS_GRANDPA
-	sjump .ShowedBellsprout
+	sjumpfwd .ShowedBellsprout
 
 .GotLeafStone:
 	writetext BillsGrandpaStaryuText
@@ -86,7 +86,7 @@ BillsGrandpa:
 	ifnotequal STARYU, .WrongPokemon
 	scall .CorrectPokemon
 	setevent EVENT_SHOWED_STARYU_TO_BILLS_GRANDPA
-	sjump .ShowedStaryu
+	sjumpfwd .ShowedStaryu
 
 .GotWaterStone:
 	writetext BillsGrandpaGrowlitheText
@@ -100,7 +100,7 @@ BillsGrandpa:
 	ifnotequal GROWLITHE, .WrongPokemon
 	scall .CorrectPokemon
 	setevent EVENT_SHOWED_GROWLITHE_TO_BILLS_GRANDPA
-	sjump .ShowedGrowlithe
+	sjumpfwd .ShowedGrowlithe
 
 .GotFireStone:
 	writetext BillsGrandpaPichuText
@@ -114,7 +114,7 @@ BillsGrandpa:
 	ifnotequal PICHU, .WrongPokemon
 	scall .CorrectPokemon
 	setevent EVENT_SHOWED_PICHU_TO_BILLS_GRANDPA
-	sjump .ShowedPichu
+	sjumpfwd .ShowedPichu
 
 .GotThunderstone:
 	writetext BillsGrandpaJigglypuffText
@@ -128,7 +128,7 @@ BillsGrandpa:
 	ifnotequal JIGGLYPUFF, .WrongPokemon
 	scall .CorrectPokemon
 	setevent EVENT_SHOWED_JIGGLYPUFF_TO_BILLS_GRANDPA
-	sjump .ShowedJigglypuff
+	sjumpfwd .ShowedJigglypuff
 
 .GotMoonStone:
 	writetext BillsGrandpaOddishText
@@ -142,7 +142,7 @@ BillsGrandpa:
 	ifnotequal ODDISH, .WrongPokemon
 	scall .CorrectPokemon
 	setevent EVENT_SHOWED_ODDISH_TO_BILLS_GRANDPA
-	sjump .ShowedOddish
+	sjumpfwd .ShowedOddish
 
 .GotSunStone:
 	writetext BillsGrandpaMurkrowText
@@ -156,7 +156,7 @@ BillsGrandpa:
 	ifnotequal MURKROW, .WrongPokemon
 	scall .CorrectPokemon
 	setevent EVENT_SHOWED_MURKROW_TO_BILLS_GRANDPA
-	sjump .ShowedMurkrow
+	sjumpfwd .ShowedMurkrow
 
 .GotDuskStone:
 	writetext BillsGrandpaTogepiText
@@ -170,7 +170,7 @@ BillsGrandpa:
 	ifnotequal TOGEPI, .WrongPokemon
 	scall .CorrectPokemon
 	setevent EVENT_SHOWED_TOGEPI_TO_BILLS_GRANDPA
-	sjump .ShowedTogepi
+	sjumpfwd .ShowedTogepi
 
 .ShowedSnubbull:
 	checkevent EVENT_GOT_EVERSTONE_FROM_BILLS_GRANDPA
@@ -293,11 +293,11 @@ BillsSister:
 	faceplayer
 	opentext
 	checkcellnum PHONE_BILL
-	iftrue .GotBillsNumber
+	iftruefwd .GotBillsNumber
 	writetext BillsSisterUsefulNumberText
 	askforphonenumber PHONE_BILL
-	ifequal $1, .NoRoom
-	ifequal $2, .Refused
+	ifequalfwd $1, .NoRoom
+	ifequalfwd $2, .Refused
 	waitsfx
 	addcellnum PHONE_BILL
 	writetext RecordedBillsNumberText

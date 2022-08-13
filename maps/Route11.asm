@@ -97,10 +97,7 @@ GenericTrainerPsychicHerman:
 	line "my eyes closed…"
 	done
 
-PsychicHermanSeenText:
-	text "…"
-	done
-
+PsychicHermanSeenText: ; text > text
 PsychicHermanBeatenText:
 	text "…"
 	done

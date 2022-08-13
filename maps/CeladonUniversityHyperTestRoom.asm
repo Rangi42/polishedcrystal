@@ -28,11 +28,11 @@ CeladonUniversityHyperTestRoomWestwoodScript:
 	checkevent EVENT_GOT_DRAGON_RAGE_MAGIKARP
 	iftrue_jumpopenedtext .TestOverText
 	checkevent EVENT_PASSED_CELADON_HYPER_TEST
-	iftrue .GiveMagikarp
+	iftruefwd .GiveMagikarp
 	writetext .GreetingText
 	waitbutton
 	checkevent EVENT_LISTENED_TO_WESTWOOD_INTRO
-	iftrue .HeardIntro
+	iftruefwd .HeardIntro
 	writetext .IntroText
 	waitbutton
 	setevent EVENT_LISTENED_TO_WESTWOOD_INTRO
@@ -133,7 +133,7 @@ CeladonUniversityHyperTestRoomWestwoodScript:
 	writetext .CongratulationsText
 	waitbutton
 
-	givepoke MAGIKARP, MAGIKARP_MASK_FORM, 10, EVIOLITE, ULTRA_BALL, DRAGON_RAGE
+	givepoke MAGIKARP, MAGIKARP_MASK1_FORM, 10, EVIOLITE, ULTRA_BALL, DRAGON_RAGE
 	iffalse_jumpopenedtext .PartyAndBoxFullText
 	setevent EVENT_GOT_DRAGON_RAGE_MAGIKARP
 	jumpopenedtext .TestOverText
@@ -273,7 +273,7 @@ CeladonUniversityHyperTestRoomWestwoodScript:
 
 .PartyAndBoxFullText:
 	text "Oh no! Your party"
-	line "and box are full…"
+	line "and Box are full…"
 	done
 
 .RefusedText:
@@ -409,7 +409,7 @@ CeladonUniversityHyperTestRoomTwin2Text:
 
 CeladonUniversityHyperTestRoomMagikarpSign:
 	refreshscreen
-	pokepic MAGIKARP, MAGIKARP_MASK_FORM
+	pokepic MAGIKARP, MAGIKARP_MASK1_FORM
 	cry MAGIKARP
 	waitbutton
 	closepokepic

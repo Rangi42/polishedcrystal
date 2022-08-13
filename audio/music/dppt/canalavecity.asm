@@ -226,7 +226,7 @@ Music_CanalaveCityDPPt_Ch1_loop:
 	note E_, 8
 	intensity $A7
 	note E_, 8
-	loopchannel 0, Music_CanalaveCityDPPt_Ch1_loop
+	jumpchannel Music_CanalaveCityDPPt_Ch1_loop
 
 Music_CanalaveCityDPPt_Ch2:
 	notetype $C, $B7
@@ -406,7 +406,7 @@ Music_CanalaveCityDPPt_Ch2_loop:
 	note A_, 8
 	intensity $B7
 	note A_, 8
-	loopchannel 0, Music_CanalaveCityDPPt_Ch2_loop
+	jumpchannel Music_CanalaveCityDPPt_Ch2_loop
 
 Music_CanalaveCityDPPt_Ch3:
 	notetype $C, $25
@@ -732,7 +732,7 @@ Music_CanalaveCityDPPt_Ch3_loop:
 	note C#, 1
 	octave 4
 	note E_, 1
-	loopchannel 0, Music_CanalaveCityDPPt_Ch3_loop
+	jumpchannel Music_CanalaveCityDPPt_Ch3_loop
 
 Music_CanalaveCityDPPt_Ch4:
 	togglenoise 3
@@ -881,4 +881,4 @@ Music_CanalaveCityDPPt_Ch4_loop:
 	note C_, 1
 	note A#, 2
 	note C_, 1
-	loopchannel 0, Music_CanalaveCityDPPt_Ch4_loop
+	jumpchannel Music_CanalaveCityDPPt_Ch4_loop

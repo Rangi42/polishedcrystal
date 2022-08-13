@@ -4,9 +4,8 @@
 	db ROCK, GROUND ; type
 	db 120 ; catch rate
 	db 134 ; base exp
-	db NO_ITEM ; item 1
-	db EVERSTONE ; item 2
-	dn GENDER_F50, 2 ; gender ratio, step cycles to hatch
+	db NO_ITEM, EVERSTONE ; held items
+	dn GENDER_F50, HATCH_FAST ; gender ratio, step cycles to hatch
 	INCBIN "gfx/pokemon/graveler_plain/front.dimensions"
 	abilities_for GRAVELER, ROCK_HEAD, STURDY, SAND_VEIL
 	db GROWTH_MEDIUM_SLOW ; growth rate

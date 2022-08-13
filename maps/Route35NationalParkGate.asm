@@ -13,8 +13,8 @@ Route35NationalParkGate_MapScriptHeader:
 	warp_event 16,  0, NATIONAL_PARK, 4
 	warp_event 15,  7, ROUTE_35, 3
 	warp_event 16,  7, ROUTE_35, 3
-	warp_event  0,  4, OLIVINE_CITY, 11
-	warp_event  0,  5, OLIVINE_CITY, 12
+	warp_event  0,  4, ROUTE_35_COAST_NORTH, 1
+	warp_event  0,  5, ROUTE_35_COAST_NORTH, 2
 
 	def_coord_events
 
@@ -39,7 +39,7 @@ Route35NationalParkGateTrigger1:
 
 Route35NationalParkGate_CheckIfStillInContest:
 	checkflag ENGINE_BUG_CONTEST_TIMER
-	iftrue Route35NationalParkGate_Yes
+	iftruefwd Route35NationalParkGate_Yes
 	setscene $0
 	endcallback
 
@@ -49,9 +49,9 @@ Route35NationalParkGate_Yes:
 
 Route35NationalParkGate_CheckIfContestDay:
 	readvar VAR_WEEKDAY
-	ifequal TUESDAY, Route35NationalParkGate_IsContestDay
-	ifequal THURSDAY, Route35NationalParkGate_IsContestDay
-	ifequal SATURDAY, Route35NationalParkGate_IsContestDay
+	ifequalfwd TUESDAY, Route35NationalParkGate_IsContestDay
+	ifequalfwd THURSDAY, Route35NationalParkGate_IsContestDay
+	ifequalfwd SATURDAY, Route35NationalParkGate_IsContestDay
 	checkflag ENGINE_BUG_CONTEST_TIMER
 	iftrue Route35NationalParkGate_Yes
 	disappear ROUTE35NATIONALPARKGATE_OFFICER1
@@ -74,7 +74,7 @@ Route35NationalParkGate_LeavingContestEarly:
 	getnum $0
 	writetext Route35NationalParkGateOfficer1WantToFinishText
 	yesorno
-	iffalse Route35NationalParkGate_GoBackIn
+	iffalsefwd Route35NationalParkGate_GoBackIn
 	writetext Route35NationalParkGateOfficer1WaitAtNorthGateText
 	waitbutton
 	closetext
@@ -93,10 +93,10 @@ Route35NationalParkGate_GoBackIn:
 
 Route35OfficerScriptContest:
 	readvar VAR_WEEKDAY
-	ifequal SUNDAY, Route35NationalParkGate_NoContestToday
-	ifequal MONDAY, Route35NationalParkGate_NoContestToday
-	ifequal WEDNESDAY, Route35NationalParkGate_NoContestToday
-	ifequal FRIDAY, Route35NationalParkGate_NoContestToday
+	ifequalfwd SUNDAY, Route35NationalParkGate_NoContestToday
+	ifequalfwd MONDAY, Route35NationalParkGate_NoContestToday
+	ifequalfwd WEDNESDAY, Route35NationalParkGate_NoContestToday
+	ifequalfwd FRIDAY, Route35NationalParkGate_NoContestToday
 	checkflag ENGINE_DAILY_BUG_CONTEST
 	iftrue_jumptextfaceplayer Route35NationalParkGateOfficer1ContestIsOverText
 	faceplayer
@@ -104,7 +104,7 @@ Route35OfficerScriptContest:
 	callstd daytotext
 	writetext Route35NationalParkGateOfficer1AskToParticipateText
 	yesorno
-	iffalse Route35NationalParkGate_DeclinedToParticipate
+	iffalsefwd Route35NationalParkGate_DeclinedToParticipate
 	readvar VAR_PARTYCOUNT
 	ifgreater $1, Route35NationalParkGate_LeaveTheRestBehind
 	special ContestDropOffMons
@@ -131,7 +131,7 @@ Route35NationalParkGate_OkayToProceed:
 
 Route35NationalParkGate_EnterContest:
 	readvar VAR_FACING
-	ifequal LEFT, Route35NationalParkGate_FacingLeft
+	ifequalfwd LEFT, Route35NationalParkGate_FacingLeft
 	applymovement PLAYER, Route35NationalParkGatePlayerGoAroundOfficerAndEnterParkMovement
 	end
 
@@ -149,9 +149,9 @@ Route35NationalParkGate_LessThanFullParty: ; 6a27d
 	iftrue_jumpopenedtext Route35NationalParkGateOfficer1EggAsFirstMonText
 	writetext Route35NationalParkGateOfficer1AskToUseFirstMonText
 	yesorno
-	iffalse Route35NationalParkGate_DeclinedToLeaveMonsBehind
+	iffalsefwd Route35NationalParkGate_DeclinedToLeaveMonsBehind
 	special ContestDropOffMons
-	iftrue Route35NationalParkGate_FirstMonIsFainted
+	iftruefwd Route35NationalParkGate_FirstMonIsFainted
 	setevent EVENT_LEFT_MONS_WITH_CONTEST_OFFICER
 	writetext Route35NationalParkGateOfficer1WellHoldYourMonText
 	promptbutton
@@ -344,6 +344,7 @@ Route35NationalParkGateOfficer1EggAsFirstMonText:
 Route35NationalParkGateOfficer1WantToFinishText:
 	text "You still have "
 	text_ram wStringBuffer3
+	text ""
 	line "minute(s) left."
 
 	para "Do you want to"

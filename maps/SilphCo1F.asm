@@ -24,7 +24,7 @@ SilphCo1F_MapScriptHeader:
 
 .SilphCo1FMoveOfficerCallback:
 	checkevent EVENT_RESTORED_POWER_TO_KANTO
-	iffalse .Nothing
+	iffalsefwd .Nothing
 	moveobject SILPHCO1F_OFFICER, 14, 1
 .Nothing
 	endcallback
@@ -33,7 +33,7 @@ SilphCoOfficerScript:
 	faceplayer
 	opentext
 	checkevent EVENT_RESTORED_POWER_TO_KANTO
-	iftrue .OfficerScriptAfterPowerRestored
+	iftruefwd .OfficerScriptAfterPowerRestored
 	jumpopenedtext SilphCoOfficerText
 
 .OfficerScriptAfterPowerRestored

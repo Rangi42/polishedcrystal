@@ -44,7 +44,7 @@ VioletGymFalknerScript:
 	faceplayer
 	opentext
 	checkevent EVENT_BEAT_FALKNER
-	iftrue .FightDone
+	iftruefwd .FightDone
 	writetext FalknerIntroText
 	waitbutton
 	closetext
@@ -98,7 +98,7 @@ VioletGymGuyScript:
 VioletGymStatue:
 	gettrainername FALKNER, 1, $1
 	checkflag ENGINE_ZEPHYRBADGE
-	iftrue .Beaten
+	iftruefwd .Beaten
 	jumpstd gymstatue1
 .Beaten:
 	readvar VAR_BADGES

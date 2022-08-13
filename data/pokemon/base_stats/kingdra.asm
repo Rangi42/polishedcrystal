@@ -4,9 +4,8 @@
 	db WATER, DRAGON ; type
 	db 45 ; catch rate
 	db 207 ; base exp
-	db NO_ITEM ; item 1
-	db DRAGON_SCALE ; item 2
-	dn GENDER_F50, 3 ; gender ratio, step cycles to hatch
+	db NO_ITEM, DRAGON_SCALE ; held items
+	dn GENDER_F50, HATCH_MEDIUM_FAST ; gender ratio, step cycles to hatch
 	INCBIN "gfx/pokemon/kingdra/front.dimensions"
 	abilities_for KINGDRA, SWIFT_SWIM, SNIPER, DAMP
 	db GROWTH_MEDIUM_FAST ; growth rate

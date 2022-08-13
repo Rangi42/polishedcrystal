@@ -1,4 +1,4 @@
-BOXSAVE_USECURRENT EQU 1
+DEF BOXSAVE_USECURRENT EQU 1
 
 SaveMenu:
 	ld c, 4
@@ -472,7 +472,7 @@ TryLoadSaveData:
 	ld [wOptions3], a
 	jmp PanicResetClock
 
-INCLUDE "data/default_options.asm"
+INCLUDE "data/options/default_options.asm"
 
 CheckPrimarySaveFile:
 	ld a, BANK(sCheckValue1)
@@ -699,7 +699,7 @@ VerifyGameVersion:
 	jr .infinite_loop
 
 .SaveUpgradeScreen:
-	db    "Your save file does"
+	text  "Your save file does"
 	next1 "not match the game"
 	next1 "version of this ROM."
 	next1 ""

@@ -66,7 +66,7 @@ Music_PokeFluteChannel_branch_f7b40:
 	octave 2
 	note G_, 4
 	note A_, 8
-	loopchannel 0, Music_PokeFluteChannel_branch_f7b40
+	jumpchannel Music_PokeFluteChannel_branch_f7b40
 
 Music_PokeFluteChannel_Ch2:
 	stereopanning $f
@@ -167,7 +167,7 @@ Music_PokeFluteChannel_branch_f7b94:
 	octave 2
 	note E_, 2
 	note G_, 2
-	loopchannel 0, Music_PokeFluteChannel_branch_f7b94
+	jumpchannel Music_PokeFluteChannel_branch_f7b94
 
 Music_PokeFluteChannel_Ch3:
 	vibrato $10, $14
@@ -205,7 +205,7 @@ Music_PokeFluteChannel_branch_f7be1:
 	note G_, 8
 	note __, 4
 	callchannel Music_PokeFluteChannel_branch_f7c05
-	loopchannel 0, Music_PokeFluteChannel_branch_f7be1
+	jumpchannel Music_PokeFluteChannel_branch_f7be1
 
 Music_PokeFluteChannel_branch_f7c05:
 	octave 5

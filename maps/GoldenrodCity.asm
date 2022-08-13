@@ -27,7 +27,7 @@ GoldenrodCity_MapScriptHeader:
 	warp_event 30, 15, GOLDENROD_MUSEUM_1F, 2
 	warp_event 37, 19, GOLDENROD_NET_BALL_HOUSE, 1
 	warp_event 33, 23, GOLDENROD_BAND_HOUSE, 1
-	warp_event 13, 21, GOLDENROD_HP_UP_HOUSE, 1
+	warp_event 13, 21, GOLDENROD_HONEY_HOUSE, 1
 
 	def_coord_events
 	coord_event  9, 15, 1, GoldenrodCityPanUpScript
@@ -72,7 +72,7 @@ GoldenrodCity_MapScriptHeader:
 GoldenrodCityFlyPointAndFloria:
 	setflag ENGINE_FLYPOINT_GOLDENROD
 	checkevent EVENT_MET_FLORIA
-	iftrue .Done
+	iftruefwd .Done
 	clearevent EVENT_FLORIA_AT_SUDOWOODO
 .Done:
 	endcallback
@@ -80,9 +80,9 @@ GoldenrodCityFlyPointAndFloria:
 GoldenrodCityMoveTutor:
 ; Move Tutor
 	checkevent EVENT_BEAT_WHITNEY
-	iffalse .MoveTutorDisappear
+	iffalsefwd .MoveTutorDisappear
 	checkkeyitem COIN_CASE
-	iffalse .MoveTutorDisappear
+	iffalsefwd .MoveTutorDisappear
 	appear GOLDENRODCITY_POKEFAN_M2
 	endcallback
 
@@ -129,35 +129,35 @@ MoveTutor:
 	yesorno
 	iffalse_jumpopenedtext GoldenrodCityMoveTutorHmTooBadText
 	checkcoins 200
-	ifequal $2, .NotEnoughMoney
+	ifequalfwd $2, .NotEnoughMoney
 	writetext GoldenrodCityMoveTutorWhichMoveShouldITeachText
 	loadmenu .MoveMenuDataHeader
 	verticalmenu
 	closewindow
-	ifequal $1, .FirePunch
-	ifequal $2, .ThunderPunch
-	ifequal $3, .IcePunch
+	ifequalfwd $1, .FirePunch
+	ifequalfwd $2, .ThunderPunch
+	ifequalfwd $3, .IcePunch
 	jumpopenedtext GoldenrodCityMoveTutorBButText
 
 .FirePunch:
 	setval FIRE_PUNCH
 	writetext ClearText
 	special Special_MoveTutor
-	ifequal $0, .TeachMove
+	ifequalfwd $0, .TeachMove
 	jumpopenedtext GoldenrodCityMoveTutorBButText
 
 .ThunderPunch:
 	setval THUNDERPUNCH
 	writetext ClearText
 	special Special_MoveTutor
-	ifequal $0, .TeachMove
+	ifequalfwd $0, .TeachMove
 	jumpopenedtext GoldenrodCityMoveTutorBButText
 
 .IcePunch:
 	setval ICE_PUNCH
 	writetext ClearText
 	special Special_MoveTutor
-	ifequal $0, .TeachMove
+	ifequalfwd $0, .TeachMove
 	jumpopenedtext GoldenrodCityMoveTutorBButText
 
 .MoveMenuDataHeader:
@@ -207,7 +207,7 @@ GoldenrodCityYoungster2Script:
 
 GoldenrodCityRocketScoutScript:
 	checkevent EVENT_RADIO_TOWER_ROCKET_TAKEOVER
-	iftrue .RocketScout
+	iftruefwd .RocketScout
 	jumptextfaceplayer GoldenrodCityRocket4Text
 
 .RocketScout:

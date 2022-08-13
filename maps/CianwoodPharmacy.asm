@@ -19,9 +19,9 @@ CianwoodPharmacy_MapScriptHeader:
 
 CianwoodPharmacist:
 	checkevent EVENT_GOT_SECRETPOTION_FROM_PHARMACY
-	iftrue .Mart
+	iftruefwd .Mart
 	checkevent EVENT_JASMINE_EXPLAINED_AMPHYS_SICKNESS
-	iffalse .Mart
+	iffalsefwd .Mart
 	faceplayer
 	opentext
 	writetext PharmacistGiveSecretpotionText

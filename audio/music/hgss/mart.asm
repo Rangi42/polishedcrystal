@@ -249,7 +249,7 @@ Music_MartHGSS_Loop1:
 	octave 3
 	note B_, 4
 	note A#, 10
-	loopchannel 0, Music_MartHGSS_Loop1
+	jumpchannel Music_MartHGSS_Loop1
 
 Music_MartHGSS_Ch2:
 	dutycycle 2
@@ -475,7 +475,7 @@ Music_MartHGSS_Loop2:
 	note G#, 4
 	note F#, 10
 	dutycycle 1
-	loopchannel 0, Music_MartHGSS_Loop2
+	jumpchannel Music_MartHGSS_Loop2
 
 Music_MartHGSS_Ch3:
 	notetype $C, $14
@@ -782,7 +782,7 @@ Music_MartHGSS_Loop3:
 	note __, 1
 	note A#, 1
 	note __, 1
-	loopchannel 0, Music_MartHGSS_Loop3
+	jumpchannel Music_MartHGSS_Loop3
 Music_MartHGSS_Branch:
 	note B_, 4
 	intensity $24
@@ -1000,4 +1000,4 @@ Music_MartHGSS_Loop4:
 	note D_, 2
 	note G_, 2
 	note G_, 2
-	loopchannel 0, Music_MartHGSS_Loop4
+	jumpchannel Music_MartHGSS_Loop4

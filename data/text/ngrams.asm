@@ -67,7 +67,6 @@ NgramStrings:
 	dw .ight
 	dw .with
 	dw .ould
-	dw .thing
 	dw .attle
 	dw .Poke
 	dw .Pokemon
@@ -143,7 +142,6 @@ NgramStrings:
 .ight:    rawchar "ight@"
 .with:    rawchar "with@"
 .ould:    rawchar "ould@"
-.thing:   rawchar "thing@"
 .attle:   rawchar "attle@"
 .Poke:    rawchar "Poké@"
 .Pokemon: rawchar "Pokémon@"

@@ -111,14 +111,14 @@ GetMonMenuString:
 GetMonSubmenuItems:
 	call ResetMonSubmenu
 	ld a, MON_IS_EGG
-	call GetPartyParamLocation
-	bit MON_IS_EGG_F, [hl]
+	call GetPartyParamLocationAndValue
+	bit MON_IS_EGG_F, a
 	jr nz, .egg
 	ld a, [wLinkMode]
 	and a
 	jr nz, .skip_moves
 	ld a, MON_MOVES
-	call GetPartyParamLocation
+	call GetPartyParamLocationAndValue
 	ld d, h
 	ld e, l
 	ld c, NUM_MOVES
@@ -151,8 +151,8 @@ GetMonSubmenuItems:
 	jr nz, .skip2
 	push hl
 	ld a, MON_ITEM
-	call GetPartyParamLocation
-	ld d, [hl]
+	call GetPartyParamLocationAndValue
+	ld d, a
 	call ItemIsMail ; set carry if mail
 	pop hl
 	; a = carry ? MONMENUITEM_MAIL : MONMENUITEM_ITEM

@@ -43,13 +43,14 @@
 	const TILESET_ALPH_WORD_ROOM       ; 29
 	const TILESET_POKEMON_MANSION      ; 2a
 	const TILESET_BATTLE_FACTORY       ; 2b
-NUM_TILESETS EQU const_value - 1
+	const TILESET_ECRUTEAK_SHRINE      ; 2c
+DEF NUM_TILESETS EQU const_value - 1
 
 ; wTileset struct size
-TILESET_LENGTH EQU 20
+DEF TILESET_LENGTH EQU 15
 
 ; roof length (see gfx/tilesets/roofs)
-ROOF_LENGTH EQU 9
+DEF ROOF_LENGTH EQU 9
 
 ; bg palette values
 ; TilesetBGPalette indexes (see gfx/tilesets/bg_tiles.pal)

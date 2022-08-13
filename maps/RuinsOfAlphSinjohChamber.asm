@@ -77,7 +77,7 @@ RuinsofAlphSinjohChamberSignpost:
 	disappear RUINSOFALPHSINJOHCHAMBER_UNOWN_R
 	disappear RUINSOFALPHSINJOHCHAMBER_UNOWN_P
 	checkevent EVENT_LISTENED_TO_CYNTHIA_INTRO
-	iftrue .HeardIntro
+	iftruefwd .HeardIntro
 	setmapscene MYSTRI_STAGE, $1
 	setevent EVENT_MYSTRI_STAGE_CYNTHIA
 	setevent EVENT_MYSTRI_STAGE_EGG
@@ -111,6 +111,6 @@ RuinsofAlphSinjohChamberMystriText:
 	cont "at last."
 	done
 
-RuinsofAlphSinjohChamberSurpriseText:
+RuinsofAlphSinjohChamberSurpriseText: ; text > text
 	text "…!"
 	done

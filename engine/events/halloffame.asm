@@ -131,13 +131,12 @@ GetHallOfFameParty:
 	ld de, wOverworldMapBlocks
 	ld [de], a
 	inc de
-	ld hl, wPartySpecies
+	ld hl, wPartyCount
 	ld c, 0
 .next
-	ld a, [hli]
-	inc a
-	jr z, .done
 	ld a, c
+	cp [hl]
+	jr nc, .done
 	push hl
 	ld hl, wPartyMon1IsEgg
 	call GetPartyLocation
@@ -226,9 +225,8 @@ AnimateHOFMonEntrance:
 	ld a, [hli]
 	ld [wTempMonPersonality], a
 	ld a, [hli]
-	ld [wTempMonPersonality + 1], a
-	ld hl, wTempMonForm
-	predef GetVariant
+	ld [wTempMonForm], a
+	ld [wCurForm], a
 	hlcoord 0, 0
 	ld bc, SCREEN_WIDTH * SCREEN_HEIGHT
 	ld a, " "
@@ -449,22 +447,30 @@ DisplayHOFMon:
 	call Textbox
 	ld a, [wTempMonSpecies]
 	ld [wCurPartySpecies], a
-	ld [wTextDecimalByte], a
-	ld hl, wTempMonForm
-	predef GetVariant
+	ld [wNamedObjectIndex], a
+	ld c, a
+	ld a, [wTempMonForm]
+	ld [wCurForm], a
+	ld [wNamedObjectIndex+1], a
+	ld b, a
 	hlcoord 6, 5
+	push bc
 	call PrepMonFrontpicFlipped
-	ld a, [wTempMonIsEgg]
+	pop bc
+	assert MON_IS_EGG == MON_FORM
+	ld a, b
 	bit MON_IS_EGG_F, a
 	jr nz, .print_id_no
+	call GetPokedexNumber
+	ld d, b
+	ld e, c
 	hlcoord 1, 13
 	ld a, "№"
 	ld [hli], a
-	ld [hl], "."
-	hlcoord 3, 13
-	ld de, wTextDecimalByte
-	lb bc, PRINTNUM_LEADINGZEROS | 1, 3
-	call PrintNum
+	ld a, "."
+	ld [hli], a
+	lb bc, PRINTNUM_LEADINGZEROS | 2, 3
+	call PrintNumFromReg
 	call GetBasePokemonName
 	hlcoord 7, 13
 	rst PlaceString

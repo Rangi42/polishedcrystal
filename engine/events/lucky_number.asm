@@ -86,6 +86,7 @@ Special_CheckForLuckyNumberWinners:
 	dec b
 	ld hl, .MatchInParty
 	jr z, .got_text
+	inc b
 	farcall GetBoxName
 	ld hl, wStringBuffer1
 	ld de, wStringBuffer2

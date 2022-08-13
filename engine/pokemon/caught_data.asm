@@ -11,73 +11,53 @@ CheckPartyFullAfterContest:
 	ld hl, wPartyCount
 	ld a, [hl]
 	cp 6
-	jmp nc, .TryAddToBox
-	inc a
-	ld [hl], a
-	ld c, a
-	ld b, $0
-	add hl, bc
-	ld a, [wContestMon]
-	ld [hli], a
-	ld [wCurSpecies], a
-	ld [hl], $ff
-	ld hl, wPartyMon1Species
-	ld a, [wPartyCount]
-	dec a
-	ld bc, PARTYMON_STRUCT_LENGTH
-	rst AddNTimes
+	jr nc, .TryAddToBox
+	inc [hl]
+	ld [wCurPartyMon], a
+	ld a, MON_SPECIES
+	call GetPartyParamLocationAndValue
 	ld d, h
 	ld e, l
 	ld hl, wContestMon
+	ld a, [hl]
+	ld [wCurSpecies], a
 	ld bc, PARTYMON_STRUCT_LENGTH
 	rst CopyBytes
-	ld a, [wPartyCount]
-	dec a
+	ld a, [wCurPartyMon]
 	ld hl, wPartyMonOTs
 	call SkipNames
 	ld d, h
 	ld e, l
 	ld hl, wPlayerName
 	rst CopyBytes
-	ld a, [wCurPartySpecies]
-	ld [wNamedObjectIndex], a
-	call GetPokemonName
+	call GetPartyPokemonName
 	ld hl, wStringBuffer1
 	ld de, wMonOrItemNameBuffer
 	ld bc, MON_NAME_LENGTH
 	rst CopyBytes
 	call GiveANickname_YesNo
 	jr c, .Party_SkipNickname
-	ld a, [wPartyCount]
-	dec a
-	ld [wCurPartyMon], a
 	xor a
 	ld [wMonType], a
 	ld de, wMonOrItemNameBuffer
 	farcall InitNickname
 
 .Party_SkipNickname:
-	ld a, [wPartyCount]
-	dec a
+	ld a, [wCurPartyMon]
 	ld hl, wPartyMonNicknames
 	call SkipNames
 	ld d, h
 	ld e, l
 	ld hl, wMonOrItemNameBuffer
 	rst CopyBytes
-	ld a, [wPartyCount]
-	dec a
-	ld hl, wPartyMon1Level
-	call GetPartyLocation
-	ld a, [hl]
+	ld a, MON_LEVEL
+	call GetPartyParamLocationAndValue
 	ld [wCurPartyLevel], a
 	xor a ; PARK_BALL
 	ld [wCurItem], a
 	call SetCaughtData
-	ld a, [wPartyCount]
-	dec a
-	ld hl, wPartyMon1CaughtLocation
-	call GetPartyLocation
+	ld a, MON_CAUGHTLOCATION
+	call GetPartyParamLocationAndValue
 	ld [hl], NATIONAL_PARK
 	xor a
 	ld [wContestMon], a
@@ -244,9 +224,9 @@ SetEggMonCaughtData:
 	call GetPartyLocation
 	ld a, [wCurPartyLevel]
 	push af
-	ld a, EGG_LEVEL
+	ld a, -1 ; marks that the mon is hatched
 	ld [wCurPartyLevel], a
-	ld a, POKE_BALL
+	ld a, [hl] ; reused poke ball data
 	ld [wCurItem], a
 	call SetBoxmonOrEggmonCaughtData
 	pop af

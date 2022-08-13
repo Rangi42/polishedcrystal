@@ -119,12 +119,13 @@ TrainerGroups:
 	dba MysticalmanGroup
 	dba KarateKingGroup
 	dba TowerTycoonGroup
+	dba FactoryHeadGroup
 	dba JessieJamesGroup
 	dba LoreleiGroup
 	dba AgathaGroup
 	dba StevenGroup
 	dba CynthiaGroup
-	dba InverGroup
+	dbw BANK(@), wInverGroup
 	dba CherylGroup
 	dba RileyGroup
 	dba BuckGroup
@@ -141,6 +142,7 @@ TrainerGroups:
 	dba SkylaGroup
 	dba ValerieGroup
 	dba KukuiGroup
+	dba MelonyGroup
 	dba VictorGroup
 	dba BillGroup
 	dba YellowGroup

@@ -4,9 +4,8 @@
 	db BUG, BUG ; type
 	db 45 ; catch rate
 	db 200 ; base exp
-	db NO_ITEM ; item 1
-	db NO_ITEM ; item 2
-	dn GENDER_F50, 4 ; gender ratio, step cycles to hatch
+	db NO_ITEM, NO_ITEM ; held items
+	dn GENDER_F50, HATCH_MEDIUM_SLOW ; gender ratio, step cycles to hatch
 	INCBIN "gfx/pokemon/pinsir/front.dimensions"
 	abilities_for PINSIR, HYPER_CUTTER, MOLD_BREAKER, MOXIE
 	db GROWTH_SLOW ; growth rate

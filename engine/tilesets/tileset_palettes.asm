@@ -203,7 +203,7 @@ CheckIfSpecialPaletteApplies:
 	dec a ; PAL_FOR_OVERCAST?
 	jr nz, .not_overcast
 	push hl
-	call GetOvercastIndex
+	farcall GetOvercastIndex
 	pop hl
 	; invert z
 	sub 1 ; no-optimize a++|a-- (dec a can't set carry)
@@ -216,8 +216,8 @@ CheckIfSpecialPaletteApplies:
 	call GetMapTimeOfDay
 	pop de
 	pop hl
-	and IN_DARKNESS
-	cp IN_DARKNESS
+	or ~IN_DARKNESS
+	inc a
 	ret nz
 	ld a, [wStatusFlags]
 	bit 2, a ; Flash

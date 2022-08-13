@@ -154,7 +154,7 @@ Music_PokeComCenter_branch_179642:
 	note D_, 2
 	note E_, 2
 	note F_, 2
-	loopchannel 0, Music_PokeComCenter_branch_179642
+	jumpchannel Music_PokeComCenter_branch_179642
 
 Music_PokeComCenter_Ch2:
 	notetype $c, $c2
@@ -322,7 +322,7 @@ Music_PokeComCenter_branch_1796d6:
 	note F_, 2
 	note E_, 2
 	note D_, 2
-	loopchannel 0, Music_PokeComCenter_branch_1796d6
+	jumpchannel Music_PokeComCenter_branch_1796d6
 
 Music_PokeComCenter_Ch3:
 	notetype $c, $24
@@ -448,7 +448,7 @@ Music_PokeComCenter_branch_179788:
 	note D_, 2
 	note C_, 8
 	vibrato $10, $34
-	loopchannel 0, Music_PokeComCenter_branch_179788
+	jumpchannel Music_PokeComCenter_branch_179788
 
 Music_PokeComCenter_Ch4:
 	togglenoise $3
@@ -480,4 +480,4 @@ Music_PokeComCenter_branch_179813:
 	note C#, 1
 	note C#, 1
 	note C#, 1
-	loopchannel 0, Music_PokeComCenter_branch_179813
+	jumpchannel Music_PokeComCenter_branch_179813

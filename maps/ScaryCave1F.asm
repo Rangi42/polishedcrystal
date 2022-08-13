@@ -38,7 +38,7 @@ ScaryCave1F_MapScriptHeader:
 ScaryCave1FMiraScript:
 	faceplayer
 	checkevent EVENT_BEAT_MIRA
-	iftrue .Beaten
+	iftruefwd .Beaten
 	opentext
 	writetext .ChallengeText
 	yesorno
@@ -138,20 +138,20 @@ ScaryCave1FPharmacistScript:
 	faceplayer
 	opentext
 	checkevent EVENT_LISTENED_TO_SUCKER_PUNCH_INTRO
-	iftrue .HeardIntro
+	iftruefwd .HeardIntro
 	writetext .IntroText
 	waitbutton
 	setevent EVENT_LISTENED_TO_SUCKER_PUNCH_INTRO
 .HeardIntro:
 	writetext .QuestionText
 	checkitem SILVER_LEAF
-	iffalse .NoSilverLeaf
+	iffalsefwd .NoSilverLeaf
 	yesorno
-	iffalse .TutorRefused
+	iffalsefwd .TutorRefused
 	setval SUCKER_PUNCH
 	writetext ClearText
 	special Special_MoveTutor
-	ifequal $0, .TeachMove
+	ifequalfwd $0, .TeachMove
 .TutorRefused
 	jumpthisopenedtext
 
@@ -297,7 +297,7 @@ GenericTrainerHex_maniacBethany:
 	cont "Fufufufu…"
 	done
 
-.SeenText:
+.SeenText: ; text > text
 	text "BOO!"
 	done
 

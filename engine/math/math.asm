@@ -130,3 +130,79 @@ _Divide::
 .div0
 	ld a, ERR_DIV_ZERO
 	jmp Crash
+
+_Divide16::
+	; calculates bc / de, stores quotient in de and remainder in bc
+	; also stores quotient in hQuotient and remainder in hRemainder
+	; does not preserve af or hl
+	ld a, d
+	and a
+	jr z, .divisor_8_bit
+	ld hl, 1
+.initial_shift_loop
+	bit 7, d
+	jr nz, .main_division_loop
+	sla e
+	rl d
+	sla l
+	jr .initial_shift_loop
+.main_division_loop
+	ld a, c
+	sub e
+	ld a, b
+	sbc d
+	jr c, .remainder_smaller
+	ld a, h
+	add l
+	ld h, a
+	ld a, c
+	sub e
+	ld c, a
+	ld a, b
+	sbc d
+	ld b, a
+.remainder_smaller
+	srl d
+	rr e
+	srl l
+	jr nc, .main_division_loop
+	ld e, h
+	ld d, 0
+	xor a
+	ld hl, hDividend
+	ld [hli], a
+	ld [hli], a
+	ld a, d
+	ld [hli], a
+	ld a, e
+	ld [hli], a
+	ld a, b
+	ld [hli], a
+	ld [hl], c
+	ret
+.divisor_8_bit
+	ld a, e
+	and a
+	jr z, .division_by_zero
+	ldh [hDivisor], a
+	ld a, b
+	ldh [hDividend], a
+	ld a, c
+	ldh [hDividend + 1], a
+	ld b, 2
+	call Divide
+	ld hl, hQuotient + 1
+	ld a, [hli]
+	ld d, a
+	ld a, [hli]
+	ld e, a
+	ld c, [hl]
+	xor a
+	ld [hli], a
+	ld [hl], c
+	ld b, 0
+	ret
+
+.division_by_zero
+	ld a, ERR_DIV_ZERO
+	jmp Crash

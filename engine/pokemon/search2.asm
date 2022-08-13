@@ -1,8 +1,7 @@
 _FindThatSpeciesYourTrainerID:
-	ld hl, wPartyMon1Species
 	call FindThatSpecies
 	ret z
-	ld a, c
+	ld a, e
 	ld hl, wPartyMon1ID
 	ld bc, PARTYMON_STRUCT_LENGTH
 	rst AddNTimes
@@ -21,24 +20,55 @@ _FindThatSpeciesYourTrainerID:
 	xor a
 	ret
 
-_FindThatSpecies:
-	ld hl, wPartyMon1Species
-	; fallthrough
-
 FindThatSpecies:
-; Find species b in your party.
-; If you have no Pokemon, returns c = -1 and z.
-; If that species is in your party, returns its location in c, and nz.
+; Find species = c, extspecies+form = b in your party.
+; If form == NO_FORM, only check extspecies
+; If you have no Pokemon, returns e = -1 and z.
+; If that species is in your party, returns its location in e, and nz.
 ; Otherwise, returns z.
-	ld c, -1
-	ld hl, wPartySpecies
-.loop
-	ld a, [hli]
-	cp -1
-	ret z
-	inc c
-	cp b
-	jr nz, .loop
-	ld a, $1
+	ld e, -1
+	ld a, [wPartyCount]
+	ld d, a
 	and a
+	ret z
+	ld a, b
+	and FORM_MASK
+	ld a, $80 ; use high bit to track if form matters
+	jr nz, .form_matters
+	xor a
+.form_matters
+	or d
+	ld d, a
+	inc e
+	ld hl, wPartyMon1Species
+.loop
+	ld a, [hl]
+	push de
+	ld de, MON_FORM - MON_SPECIES
+	add hl, de
+	pop de
+	cp c
+	jr nz, .next
+	ld a, [hl]
+	and SPECIESFORM_MASK
+	rl d
+	jr c, .check_form
+	and EXTSPECIES_MASK
+.check_form
+	rr d
+	cp b
+	jr nz, .next
+	or 1
 	ret
+
+.next
+	inc e
+	ld a, d
+	and $f
+	cp e
+	ret z
+	push de
+	ld de, PARTYMON_STRUCT_LENGTH - MON_FORM
+	add hl, de
+	pop de
+	jr .loop

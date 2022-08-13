@@ -37,11 +37,11 @@ BurnedTower1FTrigger0:
 
 BurnedTower1FHoleAndLadder:
 	checkevent EVENT_HOLE_IN_BURNED_TOWER
-	iftrue .Next
+	iftruefwd .Next
 	changeblock 8, 8, $32 ; hole
 .Next:
 	checkevent EVENT_RELEASED_THE_BEASTS
-	iftrue .Done
+	iftruefwd .Done
 	changeblock 4, 14, $9 ; ladder
 .Done:
 	endcallback
@@ -66,16 +66,16 @@ BurnedTowerRivalBattleScript:
 	playmusic MUSIC_RIVAL_ENCOUNTER
 	showtext BurnedTowerSilver_BeforeText
 	checkevent EVENT_GOT_TOTODILE_FROM_ELM
-	iftrue .totodile
+	iftruefwd .totodile
 	checkevent EVENT_GOT_CHIKORITA_FROM_ELM
-	iftrue .chikorita
+	iftruefwd .chikorita
 	winlosstext BurnedTowerSilver_WinText, BurnedTowerSilver_LossText
 	setlasttalked BURNEDTOWER1F_SILVER
 	loadtrainer RIVAL1, RIVAL1_9
 	startbattle
 	dontrestartmapmusic
 	reloadmapafterbattle
-	sjump .returnfrombattle
+	sjumpfwd .returnfrombattle
 
 .totodile
 	winlosstext BurnedTowerSilver_WinText, BurnedTowerSilver_LossText
@@ -84,7 +84,7 @@ BurnedTowerRivalBattleScript:
 	startbattle
 	dontrestartmapmusic
 	reloadmapafterbattle
-	sjump .returnfrombattle
+	sjumpfwd .returnfrombattle
 
 .chikorita
 	winlosstext BurnedTowerSilver_WinText, BurnedTowerSilver_LossText
@@ -93,7 +93,7 @@ BurnedTowerRivalBattleScript:
 	startbattle
 	dontrestartmapmusic
 	reloadmapafterbattle
-	sjump .returnfrombattle
+	; fallthrough
 
 .returnfrombattle
 	special DeleteSavedMusic

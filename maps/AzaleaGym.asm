@@ -25,7 +25,7 @@ AzaleaGym_MapScriptHeader:
 AzaleaGymStatue:
 	gettrainername BUGSY, 1, $1
 	checkflag ENGINE_HIVEBADGE
-	iftrue .Beaten
+	iftruefwd .Beaten
 	jumpstd gymstatue1
 .Beaten:
 	readvar VAR_BADGES

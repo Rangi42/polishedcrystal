@@ -27,7 +27,7 @@ CherrygroveCity_MapScriptHeader:
 	object_event 25, 13, SPRITE_POKEFAN_F, SPRITEMOVEDATA_STANDING_DOWN, 0, 1, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_COMMAND, jumptextfaceplayer, CherrygroveTeacherText_HaveMapCard, -1
 	object_event 23,  7, SPRITE_YOUNGSTER, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, CherrygroveYoungsterScript, -1
 	object_event  7, 12, SPRITE_FISHER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, MysticWaterGuy, -1
-	pokemon_event 26, 13, PIDGEY, -1, -1, PAL_NPC_BROWN, CherrygrovePidgeyText, -1
+	pokemon_event 26, 13, PIDGEY, SPRITEMOVEDATA_POKEMON, -1, -1, PAL_NPC_BROWN, CherrygrovePidgeyText, -1
 
 	object_const_def
 	const CHERRYGROVECITY_GRAMPS
@@ -98,9 +98,9 @@ CherrygroveSilverTriggerNorth:
 	playmusic MUSIC_RIVAL_ENCOUNTER
 	showtext CherrygroveRivalText_Seen
 	checkevent EVENT_GOT_TOTODILE_FROM_ELM
-	iftrue .Totodile
+	iftruefwd .Totodile
 	checkevent EVENT_GOT_CHIKORITA_FROM_ELM
-	iftrue .Chikorita
+	iftruefwd .Chikorita
 	winlosstext SilverCherrygroveWinText, SilverCherrygroveLossText
 	setlasttalked CHERRYGROVECITY_SILVER
 	loadtrainer RIVAL0, 3
@@ -108,7 +108,7 @@ CherrygroveSilverTriggerNorth:
 	startbattle
 	setevent EVENT_RIVAL_CHERRYGROVE_CITY
 	reloadmap
-	sjump .FinishRival
+	sjumpfwd .FinishRival
 
 .Totodile:
 	winlosstext SilverCherrygroveWinText, SilverCherrygroveLossText
@@ -119,7 +119,7 @@ CherrygroveSilverTriggerNorth:
 	dontrestartmapmusic
 	setevent EVENT_RIVAL_CHERRYGROVE_CITY
 	reloadmap
-	sjump .FinishRival
+	sjumpfwd .FinishRival
 
 .Chikorita:
 	winlosstext SilverCherrygroveWinText, SilverCherrygroveLossText

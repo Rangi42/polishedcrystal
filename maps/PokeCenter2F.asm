@@ -37,8 +37,8 @@ PokeCenter2FLeftColosseumTrigger:
 
 PokeCenter2FTileCallback:
 	callasm .CheckPokeCenter2FRegion
-	ifequal $0, .done
-	ifequal $2, .shamouti2f
+	ifequalfwd $0, .done
+	ifequalfwd $2, .shamouti2f
 	changemapblocks KantoPokeCenter2F_BlockData
 .done
 	endcallback
@@ -70,38 +70,20 @@ PokeCenter2FTileCallback:
 
 Script_LeftCableTradeCenter:
 	special WaitForOtherPlayerToExit
-	scall Script_WalkOutOfLinkRoom
+	applymovement POKECENTER2F_TRADE_RECEPTIONIST, PokeCenter2FMovementData_ReceptionistWalksUpAndLeft_LookRight
+	applymovement PLAYER, PokeCenter2FMovementData_PlayerTakesThreeStepsDown
+	applymovement POKECENTER2F_TRADE_RECEPTIONIST, PokeCenter2FMovementData_ReceptionistStepsRightAndDown
 	setscene $0
 	setmapscene TRADE_CENTER, $0
 	end
 
 Script_LeftCableColosseum:
 	special WaitForOtherPlayerToExit
-	scall Script_WalkOutOfLinkRoom
+	applymovement POKECENTER2F_BATTLE_RECEPTIONIST, PokeCenter2FMovementData_ReceptionistWalksUpAndLeft_LookRight
+	applymovement PLAYER, PokeCenter2FMovementData_PlayerTakesThreeStepsDown
+	applymovement POKECENTER2F_BATTLE_RECEPTIONIST, PokeCenter2FMovementData_ReceptionistStepsRightAndDown
 	setscene $0
 	setmapscene COLOSSEUM, $0
-	end
-
-Script_WalkOutOfLinkRoom:
-	checkflag ENGINE_KRIS_IN_CABLE_CLUB
-	iftrue .Female
-	applymovement POKECENTER2F_TRADE_RECEPTIONIST, PokeCenter2FMovementData_ReceptionistWalksUpAndLeft_LookRight
-	applymovement PLAYER, PokeCenter2FMovementData_PlayerTakesThreeStepsDown
-	applymovement POKECENTER2F_TRADE_RECEPTIONIST, PokeCenter2FMovementData_ReceptionistStepsRightAndDown
-	end
-
-.Female:
-	applymovement POKECENTER2F_TRADE_RECEPTIONIST, PokeCenter2FMovementData_ReceptionistWalksUpAndLeft_LookRight
-	applyonemovement PLAYER, step_down
-	clearflag ENGINE_KRIS_IN_CABLE_CLUB
-	playsound SFX_TINGLE
-	applymovement PLAYER, PokeCenter2FMovementData_PlayerSpinsClockwiseEndsFacingRight
-	setval (PAL_NPC_BLUE) << 4
-	special Special_SetPlayerPalette
-	applymovement PLAYER, PokeCenter2FMovementData_PlayerSpinsClockwiseEndsFacingLeft
-	special UpdatePlayerSprite
-	applymovement PLAYER, PokeCenter2FMovementData_PlayerTakesTwoStepsDown
-	applymovement POKECENTER2F_TRADE_RECEPTIONIST, PokeCenter2FMovementData_ReceptionistStepsRightAndDown
 	end
 
 PokeCenter2FLinkRecordSign:
@@ -112,32 +94,40 @@ PokeCenter2FLinkRecordSign:
 LinkReceptionistScript_Trade:
 if !DEF(DEBUG)
 	checkevent EVENT_GAVE_MYSTERY_EGG_TO_ELM
-	iffalse Script_TradeCenterClosed
+	iffalsefwd Script_TradeCenterClosed
 endc
 	opentext
 	writetext Text_TradeReceptionistIntro
 	yesorno
-	iffalse .Cancel
+	iffalse_endtext
 	special Special_SetBitsForLinkTradeRequest
+	; fallthrough
+LinkReceptionistScript_DoTradeOrBattle:
 	writetext Text_PleaseWait
 	special Special_WaitForLinkedFriend
-	iffalse .FriendNotReady
+	iffalsefwd .FriendNotReady
 	writetext Text_MustSaveGame
 	yesorno
-	iffalse .DidNotSave
+	iffalsefwd .DidNotSave
 	special Special_TryQuickSave
-	iffalse .DidNotSave
+	iffalsefwd .DidNotSave
 	writetext Text_PleaseWait
 	special Special_CheckLinkTimeout
-	iffalse .LinkTimedOut
+	iffalsefwd .LinkTimedOut
 	readmem wOtherPlayerLinkMode
-	iffalse .LinkedToFirstGen
-	special Special_CheckBothSelectedSameRoom
-	iffalse .IncompatibleRooms
+	iffalsefwd .LinkedToFirstGen
+	special PerformLinkChecks
+	iffalsefwd .OldVersionDetected ; LINK_ERR_OLD_PC_DETECT
+	ifequalfwd LINK_ERR_MISMATCH_GAME_ID, .WrongGameID
+	ifequalfwd LINK_ERR_MISMATCH_VERSION, .WrongVersion
+	ifequalfwd LINK_ERR_VERSION_TOO_LOW, .WrongMinVersion
+	ifequalfwd LINK_ERR_OTHER_VERSION_TOO_LOW, .OtherPlayerWrongMinVersion
+	ifequalfwd LINK_ERR_MISMATCH_GAME_OPTIONS, .WrongOptions
+	ifequalfwd LINK_ERR_INCOMPATIBLE_ROOMS, .IncompatibleRooms
 	writetext Text_PleaseComeIn2
 	waitbutton
 	closetext
-	scall PokeCenter2F_CheckGender
+	scall PokeCenter2F_EnterRoom
 	warpcheck
 	end
 
@@ -149,23 +139,46 @@ endc
 .LinkedToFirstGen:
 	special Special_FailedLinkToPast
 	writetext Text_CantLinkToThePast
-	special Special_CloseLink
-	endtext
+	sjumpfwd .CloseLink
+
+.OldVersionDetected:
+	writetext Text_OldVersionDetected
+	sjumpfwd .CloseLink
+
+.WrongGameID
+	writetext Text_WrongGameID
+	sjumpfwd .CloseLink
+
+.WrongVersion
+	writetext Text_WrongVersion
+	sjumpfwd .CloseLink
+
+.WrongMinVersion
+	writetext Text_WrongMinVersion
+	sjumpfwd .CloseLink
+
+.OtherPlayerWrongMinVersion
+	writetext Text_OtherPlayerWrongMinVersion
+	sjumpfwd .CloseLink
+
+.WrongOptions
+	writetext Text_WrongOptions
+	sjumpfwd .CloseLink
 
 .IncompatibleRooms:
 	writetext Text_IncompatibleRooms
+.CloseLink:
 	special Special_CloseLink
 	endtext
 
 .LinkTimedOut:
 	writetext Text_LinkTimedOut
-	sjump .AbortLink
+	sjumpfwd .AbortLink
 
 .DidNotSave:
 	writetext Text_PleaseComeAgain
 .AbortLink:
 	special WaitForOtherPlayerToExit
-.Cancel:
 	endtext
 
 Script_TradeCenterClosed:
@@ -179,63 +192,16 @@ Script_TradeCenterClosed:
 LinkReceptionistScript_Battle:
 if !DEF(DEBUG)
 	checkevent EVENT_GAVE_MYSTERY_EGG_TO_ELM
-	iffalse Script_BattleRoomClosed
+	iftruefwd .BattleRoomClosed
 endc
 	opentext
 	writetext Text_BattleReceptionistIntro
 	yesorno
-	iffalse .Cancel
+	iffalse_endtext
 	special Special_SetBitsForBattleRequest
-	writetext Text_PleaseWait
-	special Special_WaitForLinkedFriend
-	iffalse .FriendNotReady
-	writetext Text_MustSaveGame
-	yesorno
-	iffalse .DidNotSave
-	special Special_TryQuickSave
-	iffalse .DidNotSave
-	writetext Text_PleaseWait
-	special Special_CheckLinkTimeout
-	iffalse .LinkTimedOut
-	readmem wOtherPlayerLinkMode
-	iffalse .LinkedToFirstGen
-	special Special_CheckBothSelectedSameRoom
-	iffalse .IncompatibleRooms
-	writetext Text_PleaseComeIn2
-	waitbutton
-	closetext
-	scall PokeCenter2F_CheckGender
-	warpcheck
-	end
+	sjump LinkReceptionistScript_DoTradeOrBattle
 
-.FriendNotReady:
-	special WaitForOtherPlayerToExit
-	writetext Text_FriendNotReady
-	endtext
-
-.LinkedToFirstGen:
-	special Special_FailedLinkToPast
-	writetext Text_CantLinkToThePast
-	special Special_CloseLink
-	endtext
-
-.IncompatibleRooms:
-	writetext Text_IncompatibleRooms
-	special Special_CloseLink
-	endtext
-
-.LinkTimedOut:
-	writetext Text_LinkTimedOut
-	sjump .AbortLink
-
-.DidNotSave:
-	writetext Text_PleaseComeAgain
-.AbortLink:
-	special WaitForOtherPlayerToExit
-.Cancel:
-	endtext
-
-Script_BattleRoomClosed:
+.BattleRoomClosed:
 	jumpthistextfaceplayer
 
 	text "I'm sorry--the"
@@ -243,30 +209,15 @@ Script_BattleRoomClosed:
 	cont "being adjusted."
 	done
 
-PokeCenter2F_CheckGender:
-	checkflag ENGINE_PLAYER_IS_FEMALE
-	iftrue .Female
+PokeCenter2F_EnterRoom:
 	applymovementlasttalked PokeCenter2FMovementData_ReceptionistWalksUpAndLeft_LookRight
 	applymovement PLAYER, PokeCenter2FMovementData_PlayerTakesThreeStepsUp
+	readmem wLinkOtherPlayerGender
+	iftruefwd .Female
+	variablesprite SPRITE_LINK_TRAINER, SPRITE_CHRIS
 	end
-
-.Female:
-	applymovementlasttalked PokeCenter2FMovementData_ReceptionistWalksUpAndLeft_LookRight
-	applymovement PLAYER, PokeCenter2FMovementData_PlayerTakesTwoStepsUp
-	showtext Text_OhPleaseWait
-	applymovementlasttalked PokeCenter2FMovementData_ReceptionistLooksRight
-	turnobject PLAYER, LEFT
-	showtext Text_ChangeTheLook
-	playsound SFX_TINGLE
-	applymovement PLAYER, PokeCenter2FMovementData_PlayerSpinsClockwiseEndsFacingRight
-	setval (PAL_NPC_RED) << 4
-	special Special_SetPlayerPalette
-	applymovement PLAYER, PokeCenter2FMovementData_PlayerSpinsClockwiseEndsFacingLeft
-	setflag ENGINE_KRIS_IN_CABLE_CLUB
-	special UpdatePlayerSprite
-	showtext Text_LikeTheLook
-	showemote EMOTE_SHOCK, PLAYER, 15
-	applyonemovement PLAYER, step_up
+.Female
+	variablesprite SPRITE_LINK_TRAINER, SPRITE_KRIS
 	end
 
 PokeCenter2FMovementData_ReceptionistWalksUpAndLeft_LookRight:
@@ -293,21 +244,6 @@ PokeCenter2FMovementData_PlayerTakesTwoStepsDown:
 PokeCenter2FMovementData_ReceptionistStepsRightAndDown:
 	slow_step_right
 	slow_step_down
-	step_end
-
-PokeCenter2FMovementData_PlayerSpinsClockwiseEndsFacingRight:
-	turn_head_down
-	turn_head_left
-	turn_head_up
-	turn_head_right
-	step_end
-
-PokeCenter2FMovementData_PlayerSpinsClockwiseEndsFacingLeft:
-	turn_head_down
-	turn_head_left
-	turn_head_up
-	turn_head_right
-	turn_head_left
 	step_end
 
 Text_BattleReceptionistIntro:
@@ -369,6 +305,57 @@ Text_PleaseComeIn:
 Text_CantLinkToThePast:
 	text "You can't link to"
 	line "the past here."
+	prompt
+
+Text_OldVersionDetected:
+	text "You are connected"
+	line "to an old"
+
+	para "version of"
+	line "Polished Crystal."
+	prompt
+
+Text_WrongGameID:
+	text "Your game is not"
+	line "compatible with"
+	cont "the other game."
+	prompt
+
+Text_WrongVersion:
+	text "Your game versions"
+	line "do not match."
+
+	para "In order to play"
+	line "Link Colosseum,"
+
+	para "your game versions"
+	line "must match."
+	prompt
+
+Text_WrongMinVersion:
+	text "Your game does not"
+	line "meet the minimum"
+	cont "version"
+
+	para "requirement for"
+	line "the other game."
+	prompt
+
+Text_OtherPlayerWrongMinVersion:
+	text "The other game"
+	line "system does not"
+
+	para "meet the"
+	line "minimum version"
+	cont "requirement."
+	prompt
+
+Text_WrongOptions:
+	text "Your game options"
+	line "are not compatible"
+
+	para "with the other"
+	line "player."
 	prompt
 
 Text_IncompatibleRooms:

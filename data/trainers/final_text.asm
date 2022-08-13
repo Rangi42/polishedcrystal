@@ -31,16 +31,21 @@ FinalTextList_TriplePhrases:
 FinalText_TeamRocket:
 	dw Proton1FinalPkmnText
 	dw Proton2FinalPkmnText
+	assert PROTON + 1 == PETREL
 	dw Petrel1FinalPkmnText
 	dw Petrel2FinalPkmnText
+	assert PETREL + 1 == ARCHER
 	dw Archer1FinalPkmnText
 	dw Archer2FinalPkmnText
+	assert ARCHER + 1 == ARIANA
 	dw Ariana1FinalPkmnText
 	dw Ariana2FinalPkmnText
+	assert ARIANA + 1 == GIOVANNI
 	dw Giovanni1FinalPkmnText
 	dw Giovanni2FinalPkmnText
 
 FinalText_SinglePhrases:
+	table_width 2, FinalText_SinglePhrases
 	dw CarrieFinalPkmnText
 	dw CalFinalPkmnText
 	dw FalknerFinalPkmnText
@@ -73,6 +78,7 @@ FinalText_SinglePhrases:
 	dw MysticalManFinalPkmnText
 	dw KarateKingFinalPkmnText
 	dw PalmerFinalPkmnText
+	dw ThortonFinalPkmnText
 	dw JessieJamesFinalPkmnText
 	dw LoreleiFinalPkmnText
 	dw AgathaFinalPkmnText
@@ -96,9 +102,12 @@ FinalText_SinglePhrases:
 	dw ValerieFinalPkmnText
 	dw KukuiFinalPkmnText ; Kukui
 	dw NULL ; Victor
+	dw NULL ; Melony
 	dw BillFinalPkmnText
 	dw YellowFinalPkmnText
 	dw WalkerFinalPkmnText
 	dw ImakuniFinalPkmnText
 	dw LawrenceFinalPkmnText
 	dw ReiFinalPkmnText
+	; all trainers between LEAF and PROF_OAK are omitted
+	assert_table_length NUM_TRAINER_CLASSES - (PROF_OAK - LEAF - 1)

@@ -449,7 +449,7 @@ Music_EliteFourBattleBW_Ch1_loop_main:
 	note F#, 2
 	intensity $a6
 	note F_, 10
-	loopchannel 0, Music_EliteFourBattleBW_Ch1_loop_main
+	jumpchannel Music_EliteFourBattleBW_Ch1_loop_main
 
 Music_EliteFourBattleBW_Ch2:
 	dutycycle $3
@@ -792,7 +792,7 @@ Music_EliteFourBattleBW_Ch2_loop_1:
 	note F_, 2
 	note F#, 3
 	note F_, 5
-	loopchannel 0, Music_EliteFourBattleBW_Ch2_loop_main
+	jumpchannel Music_EliteFourBattleBW_Ch2_loop_main
 
 Music_EliteFourBattleBW_Ch2_branch_1:
 	intensity $91
@@ -991,7 +991,7 @@ Music_EliteFourBattleBW_Ch3_loop_6:
 	octave 1
 	note A#, 6
 	note G_, 4
-	loopchannel 0, Music_EliteFourBattleBW_Ch3_loop_main
+	jumpchannel Music_EliteFourBattleBW_Ch3_loop_main
 
 Music_EliteFourBattleBW_Ch3_branch_1:
 	octave 1
@@ -1252,7 +1252,7 @@ Music_EliteFourBattleBW_Ch4_loop_8:
 	note C_, 1
 	note C_, 1
 	note C_, 1
-	loopchannel 0, Music_EliteFourBattleBW_Ch4_loop_main
+	jumpchannel Music_EliteFourBattleBW_Ch4_loop_main
 
 Music_EliteFourBattleBW_Ch4_branch_1:
 	note C_, 2

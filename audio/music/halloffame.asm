@@ -44,7 +44,7 @@ Music_HallOfFame_branch_f05e6:
 	note __, 16
 	note __, 16
 	note __, 16
-	loopchannel 0, Music_HallOfFame_branch_f05e6
+	jumpchannel Music_HallOfFame_branch_f05e6
 
 Music_HallOfFame_Ch2:
 	vibrato $8, $25
@@ -74,7 +74,7 @@ Music_HallOfFame_branch_f0610:
 	note A#, 4
 	note A_, 4
 	note F_, 2
-	loopchannel 0, Music_HallOfFame_branch_f0610
+	jumpchannel Music_HallOfFame_branch_f0610
 
 Music_HallOfFame_Ch3:
 Music_HallOfFame_branch_f062e:
@@ -133,7 +133,7 @@ Music_HallOfFame_branch_f0631:
 	note G_, 4
 	note E_, 4
 	note G_, 4
-	loopchannel 0, Music_HallOfFame_branch_f062e
+	jumpchannel Music_HallOfFame_branch_f062e
 
 Music_HallOfFame_Ch4:
 	togglenoise $5
@@ -169,4 +169,4 @@ Music_HallOfFame_branch_f0677:
 	note A#, 1
 	note A#, 1
 	note A#, 1
-	loopchannel 0, Music_HallOfFame_branch_f0677
+	jumpchannel Music_HallOfFame_branch_f0677

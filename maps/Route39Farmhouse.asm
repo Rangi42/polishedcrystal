@@ -1,5 +1,5 @@
-ROUTE39FARMHOUSE_MILK_PRICE EQU 500
-ROUTE39FARMHOUSE_DOZEN_MILK_PRICE EQU 6000
+DEF ROUTE39FARMHOUSE_MILK_PRICE EQU 500
+DEF ROUTE39FARMHOUSE_DOZEN_MILK_PRICE EQU 6000
 
 Route39Farmhouse_MapScriptHeader:
 	def_scene_scripts
@@ -24,7 +24,7 @@ PokefanM_DairyFarmer:
 	faceplayer
 	opentext
 	checkevent EVENT_HEALED_MOOMOO
-	iftrue FarmerMScript_SellMilk
+	iftruefwd FarmerMScript_SellMilk
 	writetext FarmerMText_SickCow
 	waitbutton
 	closetext
@@ -33,29 +33,29 @@ PokefanM_DairyFarmer:
 
 FarmerMScript_SellMilk:
 	checkflag ENGINE_BOUGHT_MOOMOO_MILK
-	iftrue .Milking
+	iftruefwd .Milking
 	writetext FarmerMText_BuyMilk
 	special PlaceMoneyTopRight
 	loadmenu .MenuDataHeader
 	verticalmenu
 	closewindow
-	ifequal $1, .Buy1
-	ifequal $2, .Buy12
-	sjump .Cancel
+	ifequalfwd $1, .Buy1
+	ifequalfwd $2, .Buy12
+	sjumpfwd .Cancel
 
 .Buy1:
 	checkmoney $0, ROUTE39FARMHOUSE_MILK_PRICE
-	ifequal $2, .NotEnoughMoney
+	ifequalfwd $2, .NotEnoughMoney
 	giveitem MOOMOO_MILK
-	iffalse .BagFull
+	iffalsefwd .BagFull
 	takemoney $0, ROUTE39FARMHOUSE_MILK_PRICE
-	sjump .Done
+	sjumpfwd .Done
 
 .Buy12:
 	checkmoney $0, ROUTE39FARMHOUSE_DOZEN_MILK_PRICE
-	ifequal $2, .NotEnoughMoney
+	ifequalfwd $2, .NotEnoughMoney
 	giveitem MOOMOO_MILK, 12
-	iffalse .BagFull
+	iffalsefwd .BagFull
 	takemoney $0, ROUTE39FARMHOUSE_DOZEN_MILK_PRICE
 
 .Done:
@@ -97,9 +97,9 @@ PokefanF_AcrobaticsFarmer:
 	faceplayer
 	opentext
 	checkevent EVENT_GOT_TM62_ACROBATICS_FROM_MOOMOO_FARM
-	iftrue .GotAcrobatics
+	iftruefwd .GotAcrobatics
 	checkevent EVENT_HEALED_MOOMOO
-	iftrue .GiveAcrobatics
+	iftruefwd .GiveAcrobatics
 	jumpopenedtext FarmerFText_InTrouble
 
 .GiveAcrobatics:

@@ -10,8 +10,7 @@ BattleStart_TrainerHuds:
 
 ShowPlayerMonsRemaining:
 	call DrawPlayerPartyIconHUDBorder
-	ld hl, wPartyMon1HP
-	ld de, wPartyCount
+	ld hl, wPartyCount
 	call StageBallTilesData
 	; ldpixel wPlaceBallsX, 12, 12
 	ld a, 12 * 8
@@ -31,8 +30,7 @@ EnemySwitch_TrainerHud:
 
 ShowOTTrainerMonsRemaining:
 	call DrawEnemyPartyIconHUDBorder
-	ld hl, wOTPartyMon1HP
-	ld de, wOTPartyCount
+	ld hl, wOTPartyCount
 	call StageBallTilesData
 	; ldpixel wPlaceBallsX, 9, 4
 	ld hl, wPlaceBallsX
@@ -45,57 +43,51 @@ ShowOTTrainerMonsRemaining:
 	jmp LoadTrainerHudOAM
 
 StageBallTilesData:
-	ld a, [de]
-	push af
+	ld a, PARTY_LENGTH
+	ld c, a
+	sub [hl]
+	ld b, a
+	assert wPartyMon1Status - wPartyCount == wOTPartyMon1Status - wOTPartyCount
+	ld de, wPartyMon1Status - wPartyCount
+	add hl, de
 	ld de, wBuffer1
-	ld c, PARTY_LENGTH
-	ld a, $34 ; empty slot
-.loop1
-	ld [de], a
-	inc de
-	dec c
-	jr nz, .loop1
-	pop af
-	ld de, wBuffer1
-.loop2
-	push af
-	call .GetHUDTile
-	inc de
-	pop af
-	dec a
-	jr nz, .loop2
-	ret
+.loop
+	push bc
+	ld a, b
+	cp c
+	ld b, $34 ; empty slot
+	jr nc, .load
 
-.GetHUDTile:
+	assert MON_HP == MON_STATUS + 2
+	inc hl
+	inc hl ; points to w(OT)PartyMon1HP
+	dec b ; $33, fainted
 	ld a, [hli]
 	and a
 	jr nz, .got_hp
 	ld a, [hl]
 	and a
-	ld b, $33 ; fainted
-	jr z, .fainted
-
 .got_hp
+	dec hl ; dec rr doesn't affect flags
 	dec hl
 	dec hl
-	dec hl
+	jr z, .load
+
+	dec b ; $32, statused
 	ld a, [hl]
 	and a
-	ld b, $32 ; statused
 	jr nz, .load
-	dec b ; $31 ; normal
-	jr .load
-
-.fainted
-	dec hl
-	dec hl
-	dec hl
+	dec b ; $31, normal
 
 .load
 	ld a, b
 	ld [de], a
-	ld bc, PARTYMON_STRUCT_LENGTH + MON_HP - MON_STATUS
+	inc de
+	ld bc, PARTYMON_STRUCT_LENGTH
 	add hl, bc
+	pop bc
+	dec c
+	jr nz, .loop
 	ret
 
 DrawPlayerPartyIconHUDBorder:
@@ -135,9 +127,11 @@ DrawEnemyHUDBorder:
 	ret nz
 	call DoesNuzlockeModePreventCapture
 	jr c, .nuzlocke
-	ld a, [wTempEnemyMonSpecies]
-	dec a
-	call CheckCaughtMon
+	ld a, [wOTPartyMon1Species]
+	ld c, a
+	ld a, [wOTPartyMon1Form]
+	ld b, a
+	call CheckCosmeticCaughtMon
 	ret z
 	hlcoord 1, 1
 	ld [hl], "<BALL>"
@@ -168,8 +162,7 @@ PlaceHUDBorderTiles:
 
 LinkBattle_TrainerHuds:
 	call LoadBallIconGFX
-	ld hl, wPartyMon1HP
-	ld de, wPartyCount
+	ld hl, wPartyCount
 	call StageBallTilesData
 	ld hl, wPlaceBallsX
 	ld a, 10 * 8
@@ -180,8 +173,7 @@ LinkBattle_TrainerHuds:
 	ld hl, wVirtualOAM
 	call LoadTrainerHudOAM
 
-	ld hl, wOTPartyMon1HP
-	ld de, wOTPartyCount
+	ld hl, wOTPartyCount
 	call StageBallTilesData
 	ld hl, wPlaceBallsX
 	ld a, 10 * 8

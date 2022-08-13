@@ -16,7 +16,7 @@ MystriStage_MapScriptHeader:
 	def_object_events
 	object_event  6, 10, SPRITE_CYNTHIA, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, MystriStageCynthiaSafeguardScript, EVENT_LISTENED_TO_CYNTHIA_INTRO
 	object_event  7,  7, SPRITE_CYNTHIA, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, MystriStageCynthiaScript, EVENT_MYSTRI_STAGE_CYNTHIA
-	object_event  6,  8, SPRITE_MON_ICON, SPRITEMOVEDATA_POKEMON, 0, EGG, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, MystriStageEggScript, EVENT_MYSTRI_STAGE_EGG
+	object_event  6,  8, SPRITE_MON_ICON, SPRITEMOVEDATA_POKEMON, 0, EGG, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, NO_FORM, MystriStageEggScript, EVENT_MYSTRI_STAGE_EGG
 
 	object_const_def
 	const MYSTRISTAGE_CYNTHIA1
@@ -56,7 +56,7 @@ MystriStageCynthiaScript:
 	faceplayer
 	opentext
 	checkevent EVENT_BEAT_CYNTHIA
-	iftrue MystriStageBeatCynthiaScript
+	iftruefwd MystriStageBeatCynthiaScript
 	writetext MystriStageCynthiaIdeaText
 	waitbutton
 	checkevent EVENT_BEAT_ELITE_FOUR
@@ -128,9 +128,9 @@ MystriStageEggScript:
 	writetext MystriStageEggText
 	playsound SFX_KEY_ITEM
 	waitsfx
-	ifequal 1, .InParty
+	ifequalfwd 1, .InParty
 	special Special_CurBoxFullCheck
-	iffalse .BoxNotFull
+	iffalsefwd .BoxNotFull
 	farwritetext _CurBoxFullText
 .BoxNotFull
 	special GetCurBoxName
@@ -324,7 +324,7 @@ MystriStageEggText:
 MystriStageNoRoomText:
 	text "You don't have"
 	line "room for this,"
-	cont "even in your box!"
+	cont "even in your Box!"
 	done
 
 MystriStageMovementData_CynthiaStepsUp:

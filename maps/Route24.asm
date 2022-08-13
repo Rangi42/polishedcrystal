@@ -37,7 +37,7 @@ Route24_MapScriptHeader:
 
 Route24TileScript:
 	checkscene
-	iftrue .underfoot
+	iftruefwd .underfoot
 	callasm Route24_OverheadBridgeAsm
 	endcallback
 

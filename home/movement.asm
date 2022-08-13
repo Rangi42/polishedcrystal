@@ -26,22 +26,6 @@ AppendToMovementBuffer::
 	pop hl
 	ret
 
-AppendToMovementBufferNTimes::
-	push af
-	ld a, c
-	and a
-	jr nz, .okay
-	pop af
-	ret
-
-.okay
-	pop af
-.loop
-	call AppendToMovementBuffer
-	dec c
-	jr nz, .loop
-	ret
-
 ComputePathToWalkToPlayer::
 	push af
 ; compare x coords, load left/right into h, and x distance into d
@@ -81,16 +65,32 @@ ComputePathToWalkToPlayer::
 	ld b, a
 ; Add movement in the longer direction first...
 	ld a, h
-	call .GetMovementData
+	call _GetMovementData
 	ld c, d
 	call AppendToMovementBufferNTimes
 ; ... then add the shorter direction.
 	ld a, l
-	call .GetMovementData
+	call _GetMovementData
 	ld c, e
-	jr AppendToMovementBufferNTimes
+	; fallthrough
 
-.GetMovementData:
+AppendToMovementBufferNTimes::
+	push af
+	ld a, c
+	and a
+	jr nz, .okay
+	pop af
+	ret
+
+.okay
+	pop af
+.loop
+	call AppendToMovementBuffer
+	dec c
+	jr nz, .loop
+	ret
+
+_GetMovementData:
 	push de
 	push hl
 	ld l, b

@@ -4,9 +4,8 @@
 	db GROUND, FLYING ; type
 	db 60 ; catch rate
 	db 108 ; base exp
-	db NO_ITEM ; item 1
-	db RAZOR_FANG ; item 2
-	dn GENDER_F50, 3 ; gender ratio, step cycles to hatch
+	db NO_ITEM, RAZOR_FANG ; held items
+	dn GENDER_F50, HATCH_MEDIUM_FAST ; gender ratio, step cycles to hatch
 	INCBIN "gfx/pokemon/gligar/front.dimensions"
 	abilities_for GLIGAR, HYPER_CUTTER, SAND_VEIL, IMMUNITY
 	db GROWTH_MEDIUM_SLOW ; growth rate

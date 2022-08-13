@@ -4,18 +4,17 @@
 if DEF(FAITHFUL)
 	db PSYCHIC, FLYING ; type
 else
-	db FLYING, PSYCHIC ; type
+	db WATER, FLYING ; type
 endc
 	db 3 ; catch rate
 	db 220 ; base exp
-	db ALWAYS_ITEM_2 ; item 1
-	db LUM_BERRY ; item 2
-	dn GENDER_UNKNOWN, 15 ; gender ratio, step cycles to hatch
+	db ALWAYS_ITEM_2, LUM_BERRY ; held items
+	dn GENDER_UNKNOWN, HATCH_UNKNOWN ; gender ratio, step cycles to hatch
 	INCBIN "gfx/pokemon/lugia/front.dimensions"
 if DEF(FAITHFUL)
 	abilities_for LUGIA, PRESSURE, PRESSURE, MULTISCALE
 else
-	abilities_for LUGIA, PRESSURE, CLOUD_NINE, MULTISCALE
+	abilities_for LUGIA, PRESSURE, DRIZZLE, MULTISCALE
 endc
 	db GROWTH_SLOW ; growth rate
 	dn EGG_NONE, EGG_NONE ; egg groups

@@ -14,7 +14,7 @@ CinnabarVolcanoB2F_MapScriptHeader:
 	def_bg_events
 
 	def_object_events
-	object_event 18, 22, SPRITE_MON_ICON, SPRITEMOVEDATA_POKEMON, 0, MOLTRES, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, CinnabarVolcanoMoltres, EVENT_CINNABAR_VOLCANO_MOLTRES
+	object_event 18, 22, SPRITE_MON_ICON, SPRITEMOVEDATA_POKEMON, 0, MOLTRES, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, PLAIN_FORM, CinnabarVolcanoMoltres, EVENT_CINNABAR_VOLCANO_MOLTRES
 	object_event 12, 24, SPRITE_LAWRENCE, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_LAWRENCE_FINAL_BIRD
 	smashrock_event 21, 19
 	itemball_event 18,  3, FLAME_ORB, 1, EVENT_CINNABAR_VOLCANO_B2F_FLAME_ORB
@@ -25,7 +25,7 @@ CinnabarVolcanoB2F_MapScriptHeader:
 
 CinnabarVolcanoB2FBouldersLand:
 	checkevent EVENT_BOULDER_IN_CINNABAR_VOLCANO_B1F
-	iffalse .skip1
+	iffalsefwd .skip1
 	changeblock 6, 6, $5f
 .skip1
 	endcallback
@@ -35,26 +35,26 @@ CinnabarVolcanoB2FLawrenceEncounterScript:
 	special Special_FadeOutMusic
 	pause 15
 	readvar VAR_FACING
-	ifequal UP, .up
-	ifequal DOWN, .down
-	ifequal LEFT, .left
+	ifequalfwd UP, .up
+	ifequalfwd DOWN, .down
+	ifequalfwd LEFT, .left
 .right
 	appear CINNABARVOLCANOB2F_LAWRENCE
 	applymovement CINNABARVOLCANOB2F_LAWRENCE, CinnabarVolcanoB2FMovementData_LawrenceApproachLeftRight
 	turnobject PLAYER, DOWN
-	sjump .continue
+	sjumpfwd .continue
 .up
 	moveobject CINNABARVOLCANOB2F_LAWRENCE, 13, 24
 	appear CINNABARVOLCANOB2F_LAWRENCE
 	applymovement CINNABARVOLCANOB2F_LAWRENCE, CinnabarVolcanoB2FMovementData_LawrenceApproachUp
 	turnobject CINNABARVOLCANOB2F_LAWRENCE, UP
 	turnobject PLAYER, DOWN
-	sjump .continue
+	sjumpfwd .continue
 .down
 	moveobject CINNABARVOLCANOB2F_LAWRENCE, 13, 24
 	appear CINNABARVOLCANOB2F_LAWRENCE
 	applymovement CINNABARVOLCANOB2F_LAWRENCE, CinnabarVolcanoB2FMovementData_LawrenceApproachDown
-	sjump .continue
+	sjumpfwd .continue
 .left
 	moveobject CINNABARVOLCANOB2F_LAWRENCE, 14, 24
 	appear CINNABARVOLCANOB2F_LAWRENCE
@@ -93,18 +93,18 @@ CinnabarVolcanoMoltres:
 	disappear CINNABARVOLCANOB2F_MOLTRES
 	setevent EVENT_CINNABAR_VOLCANO_MOLTRES
 	reloadmapafterbattle
-	setval MOLTRES
+	setmonval MOLTRES
 	special SpecialMonCheck
-	iffalse .NoCandela
+	iffalsefwd .NoCandela
 	setevent EVENT_CELADON_UNIVERSITY_CANDELA
 	clearevent EVENT_SHAMOUTI_COAST_CANDELA
 .NoCandela
 	checkevent EVENT_SEAFOAM_ISLANDS_ARTICUNO
-	iffalse .end
+	iffalsefwd .end
 	checkevent EVENT_ROUTE_10_ZAPDOS
-	iffalse .end
+	iffalsefwd .end
 	special SpecialBirdsCheck
-	iffalse .end
+	iffalsefwd .end
 	sjump CinnabarVolcanoB2FLawrenceEncounterScript
 .end
 	end

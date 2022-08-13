@@ -38,13 +38,13 @@ BellchimeTrailStepDownTrigger:
 
 SetupValerieMorningWalkCallback:
 	checkevent EVENT_FOUGHT_SUICUNE
-	iffalse .Disappear
+	iffalsefwd .Disappear
 	checkevent EVENT_BEAT_VALERIE
-	iffalse .Appear
+	iffalsefwd .Appear
 	checkflag ENGINE_VALERIE_MORNING_WALK
-	iftrue .Disappear
+	iftruefwd .Disappear
 	checktime 1 << MORN
-	iffalse .Disappear
+	iffalsefwd .Disappear
 .Appear:
 	appear BELLCHIMETRAIL_VALERIE
 	endcallback
@@ -87,9 +87,9 @@ BellchimeTrailValerieScript:
 	faceplayer
 	opentext
 	checkevent EVENT_BEAT_VALERIE
-	iftrue .Rematch
+	iftruefwd .Rematch
 	checkevent EVENT_LISTENED_TO_VALERIE
-	iftrue .Listened
+	iftruefwd .Listened
 	writetext .IntroText
 	waitbutton
 	setevent EVENT_LISTENED_TO_VALERIE
@@ -132,25 +132,25 @@ BellchimeTrailValerieScript:
 	winlosstext .RematchBeatenText, 0
 	setlasttalked BELLCHIMETRAIL_VALERIE
 	readvar VAR_BADGES
-	ifequal 16, .Battle3
+	ifequalfwd 16, .Battle3
 	checkevent EVENT_BEAT_ELITE_FOUR
-	iftrue .Battle2
+	iftruefwd .Battle2
 	loadtrainer VALERIE, 1
 	startbattle
 	reloadmapafterbattle
-	sjump .AfterRematch
+	sjumpfwd .AfterRematch
 
 .Battle2:
 	loadtrainer VALERIE, 2
 	startbattle
 	reloadmapafterbattle
-	sjump .AfterRematch
+	sjumpfwd .AfterRematch
 
 .Battle3:
 	loadtrainer VALERIE, 3
 	startbattle
 	reloadmapafterbattle
-	sjump .AfterRematch
+	; fallthrough
 
 .AfterRematch:
 	opentext

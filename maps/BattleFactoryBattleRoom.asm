@@ -38,7 +38,7 @@ Script_BattleFloor:
 	closetext
 	special Special_BattleTower_Battle ; calls predef startbattle
 	special FadeOutPalettes
-	ifequal BTCHALLENGE_LOST, Script_LostBattleFactory
+	ifequalfwd BTCHALLENGE_LOST, Script_LostBattleFactory
 	reloadmap
 	applymovement BATTLEFACTORYBATTLEROOM_OPPONENT, MovementData_BattleFactoryBattleRoomOpponentWalksOut
 	warpsound
@@ -50,7 +50,7 @@ Script_BattleFloor:
 Script_LostBattleFactory:
 	setval BATTLETOWER_LOST_CHALLENGE
 	special Special_BattleTower_SetChallengeState
-	sjump Script_ReturnToBattleFactoryLobby
+	sjumpfwd Script_ReturnToBattleFactoryLobby
 
 Script_BeatenAllFactoryTrainers:
 	special FadeOutPalettes

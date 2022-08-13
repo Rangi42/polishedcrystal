@@ -22,16 +22,15 @@ GoldenrodDeptStore2F_MapScriptHeader:
 
 GoldenrodDeptStore2FClerk2Script:
 	checkevent EVENT_GOT_EEVEE
-	iftrue .eevee
+	iftruefwd .eevee
 	pokemart MARTTYPE_STANDARD, MART_GOLDENROD_2F_2
 
 .eevee
 	pokemart MARTTYPE_STANDARD, MART_GOLDENROD_2F_2_EEVEE
 
 GoldenrodDeptStore2FYoungsterText:
-	text "#gear can store"
-	line "up to thirty" ; CONTACT_LIST_SIZE
-	cont "phone numbers."
+	text "#gear has no"
+	line "storage limit."
 
 	para "But getting too"
 	line "many phone calls"

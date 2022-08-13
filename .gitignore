@@ -1,28 +1,61 @@
-# generated extensions
-*.gbc
-*.map
-*.sym
-*.exe
-*.bsp
-*.h.gch
-*.pyc
-*$py.class
+# compiled objects
 *.o
-*.lz
+*.h.gch
+
+# compiled graphics
 *.1bpp
 *.2bpp
-*.2bpp.vram0
-*.2bpp.vram1
-*.2bpp.vram2
-*.2bpp.vram0p
-*.2bpp.vram1p
-*.2bpp.vram2p
+*.2bpp.vram*
+*.lz
 gfx/pokemon/*/*.dimensions
 gfx/pokemon/*/*.animated.tilemap
 gfx/pokemon/*/bitmask.asm
 gfx/pokemon/*/frames.asm
+gfx/pokedex/*.bin
+
+# compiled tilesets
 data/tilesets/*_collision.bin
+
+# compiled roms
+*.gbc
+*.pocket
+*.patch
+
+# compiled patch
+*.bsp
+
+# rgbds extras
+*.map
+*.sym
+
+# tool binaries
+*.exe
+
+# tool output
 bank_ends.txt
+
+# precompiled python
+*.pyc
+*$py.class
+
+# save game files
+*.sgm
+*.sav
+*.rtc
+*.sn*
+*.sa*
+*.sg1
+
+# vim configuration
+# http://www.vim.org/scripts/script.php?script_id=441
+.lvimrc
+
+# swap files for vim and gedit
+.*.swp
+*~
+
+# macos files
+.DS_STORE
 
 # local tools
 rgbds/

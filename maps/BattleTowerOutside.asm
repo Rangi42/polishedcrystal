@@ -18,12 +18,16 @@ BattleTowerOutside_MapScriptHeader:
 	bg_event 10, 10, BGEVENT_JUMPTEXT, BattleTowerOutsideSignText
 
 	def_object_events
+	object_event 15,  7, SPRITE_ANABEL, SPRITEMOVEDATA_SPINRANDOM_SLOW, 1, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, BattleTowerOutsideAnabelScript, EVENT_BATTLE_TOWER_OUTSIDE_ANABEL
 	object_event  6, 12, SPRITE_SCHOOLBOY, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, BattleTowerOutsideYoungsterScript, -1
-	object_event 13, 11, SPRITE_BEAUTY, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, PAL_NPC_PURPLE, OBJECTTYPE_SCRIPT, 0, BattleTowerOutsideBeautyScript, -1
+	object_event 13, 11, SPRITE_BEAUTY, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, BattleTowerOutsideBeautyScript, -1
 	object_event 12, 18, SPRITE_SAILOR, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, BattleTowerOutsideSailorText, EVENT_BATTLE_TOWER_CLOSED
 	object_event 12, 24, SPRITE_PICNICKER, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, ObjectEvent, -1
 	object_event  8,  9, SPRITE_RATTATA_BACK, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, OBJECTTYPE_COMMAND, jumptext, BattleTowerOutsideDoorsClosedText, EVENT_BATTLE_TOWER_OPEN
 	object_event  9,  9, SPRITE_RATTATA_BACK, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, OBJECTTYPE_COMMAND, jumptext, BattleTowerOutsideDoorsClosedText, EVENT_BATTLE_TOWER_OPEN
+
+	object_const_def
+	const BATTLETOWEROUTSIDE_ANABEL
 
 BattleTowerOutsideStepDownTrigger:
 	sdefer .Script
@@ -33,7 +37,7 @@ BattleTowerOutsideStepDownTrigger:
 	readvar VAR_YCOORD
 	ifnotequal $9, .Done
 	readvar VAR_XCOORD
-	ifequal $8, .Down
+	ifequalfwd $8, .Down
 	ifnotequal $9, .Done
 .Down
 	applyonemovement PLAYER, step_down
@@ -77,6 +81,88 @@ BattleTowerOutsideSignText:
 
 	para "Take the Ultimate"
 	line "Trainer Challenge!"
+	done
+
+BattleTowerOutsideAnabelScript:
+	faceplayer
+	checkevent EVENT_BEAT_ANABEL
+	iftruefwd .Beaten
+	opentext
+	writetext .ChallengeText
+	yesorno
+	iffalse_jumpopenedtext .NoText
+	writetext .YesText
+	waitbutton
+	closetext
+	winlosstext .BeatenText, 0
+	setlasttalked BATTLETOWEROUTSIDE_ANABEL
+	loadtrainer ANABEL, 1
+	startbattle
+	reloadmapafterbattle
+	setevent EVENT_BEAT_ANABEL
+.Beaten
+	opentext
+	writetext .ItemText
+	promptbutton
+	verbosegiveitem POWER_BAND
+	iffalse_endtext
+	writetext .GoodbyeText
+	waitbutton
+	closetext
+	special Special_FadeBlackQuickly
+	special Special_ReloadSpritesNoPalettes
+	disappear BATTLETOWEROUTSIDE_ANABEL
+	pause 15
+	special Special_FadeInQuickly
+	clearevent EVENT_BATTLE_TOWER_ANABEL
+	end
+
+.ChallengeText:
+	text "Greetings… My name"
+	line "is Anabel."
+
+	para "…You are <PLAYER>?"
+	line "I have heard sev-"
+	cont "eral rumors about"
+	cont "you…"
+
+	para "Let me see your"
+	line "talent in its"
+	cont "entirety…"
+	done
+
+.YesText:
+	text "Let's begin,"
+	line "shall we?"
+	done
+
+.NoText:
+	text "It's very dis-"
+	line "appointing…"
+	done
+
+.BeatenText:
+	text "OK, I understand…"
+	done
+
+.ItemText:
+	text "Fufufu, nicely"
+	line "done…"
+
+	para "Take this, please…"
+	done
+
+.GoodbyeText:
+	text "I urge you to keep"
+	line "battling and keep"
+	cont "on winning."
+
+	para "I will be waiting"
+	line "for you in this"
+	cont "Battle Tower."
+
+	para "Until the next"
+	line "time we meet…"
 	done
 
 BattleTowerOutsideYoungsterScript:

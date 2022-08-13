@@ -16,7 +16,7 @@ YellowForestGate_MapScriptHeader:
 	def_object_events
 	object_event  0,  4, SPRITE_OFFICER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_COMMAND, jumptextfaceplayer, YellowForestGateOfficerText, -1
 	object_event  9,  3, SPRITE_NURSE, SPRITEMOVEDATA_STANDING_LEFT, 1, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, YellowForestGateNurseScript, -1
-	pokemon_event  9,  4, CHANSEY, -1, -1, PAL_NPC_RED, YellowForestGateChanseyText, -1
+	pokemon_event  9,  4, CHANSEY, SPRITEMOVEDATA_POKEMON, -1, -1, PAL_NPC_RED, YellowForestGateChanseyText, -1
 	object_event  6,  4, SPRITE_CLERK, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, 0, OBJECTTYPE_COMMAND, pokemart, MARTTYPE_INFORMAL, MART_YELLOW_FOREST, -1
 
 YellowForestGateNurseScript:

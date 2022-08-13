@@ -118,7 +118,7 @@ InitialEvents:
 	dw EVENT_TIN_TOWER_1F_EUSINE
 	dw EVENT_TIN_TOWER_1F_WISE_TRIO_1
 	dw EVENT_TIN_TOWER_1F_WISE_TRIO_2
-	dw EVENT_SET_WHEN_FOUGHT_HO_OH
+	dw EVENT_EUSINES_HOUSE_EUSINE
 	dw EVENT_SAW_SUICUNE_ON_ROUTE_36
 	dw EVENT_SAW_SUICUNE_ON_ROUTE_42
 	dw EVENT_SAW_SUICUNE_AT_CIANWOOD_CITY
@@ -187,7 +187,7 @@ InitialEngineFlags:
 	dw -1
 
 InitialVariableSpritesAndMapScenes:
-varspriteaddr EQUS "wVariableSprites - SPRITE_VARS +"
+DEF varspriteaddr EQUS "wVariableSprites - SPRITE_VARS +"
 	dwb varspriteaddr SPRITE_FUCHSIA_GYM_1, SPRITE_JANINE
 	dwb varspriteaddr SPRITE_FUCHSIA_GYM_2, SPRITE_JANINE
 	dwb varspriteaddr SPRITE_FUCHSIA_GYM_3, SPRITE_JANINE

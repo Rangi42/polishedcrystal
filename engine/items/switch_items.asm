@@ -1,3 +1,9 @@
+DoPackInsertSort:
+	ld [wScrollingMenuCursorPosition], a
+	ld a, b
+	inc a
+	ld [wSwitchItem], a
+	; fallthrough
 SwitchItemsInBag:
 	ld a, [wSwitchItem]
 	and a
@@ -21,9 +27,8 @@ SwitchItemsInBag:
 	ld a, [hl]
 	inc a
 	ret z
-	ld a, [wSwitchItem]
-	dec a
-	ld [wSwitchItem], a
+	ld hl, wSwitchItem
+	dec [hl]
 	call TryCombiningSwitchItems
 	jr c, CombineSwitchItems
 	ld a, [wScrollingMenuCursorPosition]
@@ -241,52 +246,13 @@ SortItemsInBag:
 ; Sorts items in the bag.
 ; wMenuCursorY=1: by name
 ; wMenuCursorY=2: by type (index order)
-	ld a, [wScrollingMenuCursorPosition]
-	push af
-	xor a
-	ld b, a
-.outer_loop
-	ld a, b
-	call GetSortingItemIndex
-	ld c, a
-	inc a
-	jr z, .done
-.inner_loop
-	inc b
-	ld a, b
-	call GetSortingItemIndex
-	inc a
-	jr z, .done
-	dec a
-	cp c
-	ld c, a
-	jr nc, .inner_loop
-	push bc
-	ld a, b
-	ld [wScrollingMenuCursorPosition], a
-	call SwitchItemsInBag
-	pop bc
-	push bc
-	ld b, 0
-.insertion_loop
-	ld a, b
-	call GetSortingItemIndex
-	cp c
-	jr nc, .do_sort
-	inc b
-	jr .insertion_loop
-.do_sort
-	ld a, b
-	ld [wScrollingMenuCursorPosition], a
-	call SwitchItemsInBag
-	pop bc
-	jr .outer_loop
-.done
-	pop af
-	ld [wScrollingMenuCursorPosition], a
-	ret
+	ld hl, GetSortingItemIndex
+	ld de, DoPackInsertSort
+	jmp SortItems
 
 GetSortingItemIndex:
+	ld a, b
+	push hl
 	push bc
 	call ItemSwitch_GetNthItem
 	ld a, [wMenuCursorY]
@@ -302,6 +268,7 @@ GetSortingItemIndex:
 .done
 	ld a, [hl]
 	pop bc
+	pop hl
 	ret
 
 INCLUDE "data/items/name_order.asm"

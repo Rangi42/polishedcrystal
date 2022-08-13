@@ -21,15 +21,15 @@ MoveReminderScript:
 	writetext MoveReminderIntroText
 	waitbutton
 	checkitem GOLD_LEAF
-	iffalse .no_gold_leaf
+	iffalsefwd .no_gold_leaf
 	writetext MoveReminderPromptText
 	yesorno
-	iffalse .refused
+	iffalsefwd .refused
 	setval NO_MOVE ; to toggle move relearner
 	writetext MoveReminderWhichMonText
 	waitbutton
 	special Special_MoveTutor
-	ifequal $0, .teach_move
+	ifequalfwd $0, .teach_move
 .refused
 	jumpopenedtext MoveReminderCancelText
 
@@ -79,7 +79,7 @@ MoveReminderNoMovesText::
 
 	para "make that #mon"
 	line "remember."
-	done
+	prompt
 
 MoveReminderCancelText::
 	text "If your #mon"

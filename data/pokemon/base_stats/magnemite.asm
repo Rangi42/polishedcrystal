@@ -4,9 +4,8 @@
 	db ELECTRIC, STEEL ; type
 	db 190 ; catch rate
 	db 89 ; base exp
-	db NO_ITEM ; item 1
-	db METAL_COAT ; item 2
-	dn GENDER_UNKNOWN, 3 ; gender ratio, step cycles to hatch
+	db NO_ITEM, METAL_COAT ; held items
+	dn GENDER_UNKNOWN, HATCH_MEDIUM_FAST ; gender ratio, step cycles to hatch
 	INCBIN "gfx/pokemon/magnemite/front.dimensions"
 if DEF(FAITHFUL)
 	abilities_for MAGNEMITE, MAGNET_PULL, STURDY, ANALYTIC

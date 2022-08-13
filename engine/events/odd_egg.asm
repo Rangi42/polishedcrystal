@@ -1,54 +1,28 @@
 GiveOddEgg:
-	; Compare a random word to
-	; probabilities out of 0xffff.
-	call Random
+	ld a, 100
+	call RandomRange
 	ld hl, OddEggProbabilities
-	ld c, 0
-	ld b, c
 .loop
-	ld a, [hli]
-	ld e, a
-	ld a, [hli]
-	ld d, a
-	; Break on $ffff.
-	cp HIGH($ffff)
-	jr nz, .not_done
-	ld a, e
-	cp LOW($ffff)
-	jr z, .done
-.not_done
-
-	; Break when [hRandom] <= de.
-	ldh a, [hRandom + 1]
-	cp d
-	jr c, .done
-	jr nz, .next
-
-	ldh a, [hRandom + 0]
-	cp e
-	jr c, .done
-	jr z, .done
-.next
-	inc bc
-	jr .loop
-.done
-
-	; Get random gender (50/50)
-	call Random
-	ldh a, [hRandom]
-	cp $80
-	ld a, FEMALE
-	jr c, .got_gender
-	assert !MALE
-	xor a
-.got_gender
-	ld [wCurForm], a
+	cp [hl]
+	inc hl
+	jr nc, .loop
+	ld a, LOW(OddEggProbabilities)
+	sub l
+	cpl
 	ld hl, OddEggs
-	ld a, 10
+	ld bc, ODD_EGG_LENGTH
 	rst AddNTimes
+
+	; Get random gender
+	call Random
+	and GENDER_MASK
+	ld [wCurForm], a
 	jr GiveSpecialEgg
 
 GiveMystriEgg::
+	; Gender is specified in the egg struct
+	xor a
+	ld [wCurForm], a
 	ld hl, MystriEgg
 ; fallthrough
 GiveSpecialEgg:
@@ -56,6 +30,13 @@ GiveSpecialEgg:
 	ld a, [hli]
 	ld [de], a
 	inc de
+
+	; form byte
+	ld a, [wCurForm] ; gender is stored here
+	or [hl]
+	inc hl
+	ld [wTempMonForm], a
+
 	xor a ; item
 	ld [de], a
 	inc de
@@ -66,19 +47,25 @@ GiveSpecialEgg:
 	ld bc, MON_DVS - MON_ID
 	rst ByteFill
 	call SwapHLDE
-	ld bc, 4 ; DVs, ability
+
+	; DVs, first personality byte (form byte handled above)
+	ld bc, 4
 	rst CopyBytes
-	ld a, [wCurForm]
-	or [hl]
-	ld [de], a
-	ld hl, wTempMonHappiness
+
+	ld hl, wTempMonEggCycles
 	ld a, 20
 	ld [hli], a
 	xor a
-rept MON_LEVEL - MON_PKRUS
+rept MON_CAUGHTDATA - MON_PKRUS
 	ld [hli], a
 endr
-	ld a, EGG_LEVEL
+	ld a, POKE_BALL
+	ld [hli], a
+	xor a
+	ld [hli], a ; caught level
+	ld [hli], a ; caught location
+	assert EGG_LEVEL == 1
+	inc a
 	ld [hl], a
 	ld hl, wTempMonNickname
 	ld de, .EggName

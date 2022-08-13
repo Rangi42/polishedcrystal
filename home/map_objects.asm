@@ -207,10 +207,6 @@ ApplyDeletionToMapObject::
 	ld [wObjectFollow_Follower], a
 	ret
 
-DeleteObjectStruct::
-	call ApplyDeletionToMapObject
-	jmp MaskObject
-
 CopyPlayerObjectTemplate::
 	push hl
 	call GetMapObject

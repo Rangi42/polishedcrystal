@@ -107,13 +107,13 @@ Their animations in battle still depend on the Pokémon using them, e.g. Chansey
 
 ### How do I evolve my Pokémon?
 
+* Gen 1's trade evolutions now evolve by having at least five vitamins' worth of EVs in the right stat: Machoke into Machamp with Attack EVs (from Protein), Graveler into Golem with Defense (from Iron), Haunter into Gengar with Speed (from Carbos), and Kadabra into Alakazam with Special Attack (from Calcium).
 * Item trade evolutions (like Seadra into Kingdra while holding a Dragon Scale) now evolve while holding the item.
 * Yanma, Tangela, and Piloswine evolve while knowing AncientPower.
 * Eevee evolves into Leafeon in Ilex Forest, site of the Moss Rock.
 * Eevee evolves into Glaceon in the Ice Path, site of the Ice Rock.
 * Eevee evolves into Sylveon with a Shiny Stone.
 * Magneton evolves into Magnezone in Rock Tunnel, site of the Lodestone.
-* Machoke, Graveler, Haunter, and Kadabra evolve by having sufficient EVs in Attack, Defense, Speed, and Special respectively (five Protein, Iron, Carbos, or Calcium is enough).
 
 
 ### Where do I get the legendary Pokémon?

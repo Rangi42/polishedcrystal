@@ -49,25 +49,25 @@ TrainerLassDana1:
 	loadvar VAR_CALLERID, PHONE_LASS_DANA
 	opentext
 	checkflag ENGINE_DANA_READY_FOR_REMATCH
-	iftrue .DanaRematch
+	iftruefwd .DanaRematch
 	checkflag ENGINE_DANA_HAS_THUNDERSTONE
-	iftrue .TryGiveThunderstone
+	iftruefwd .TryGiveThunderstone
 	checkcellnum PHONE_LASS_DANA
-	iftrue .NumberAccepted
+	iftruefwd .NumberAccepted
 	checkevent EVENT_DANA_ASKED_FOR_PHONE_NUMBER
-	iftrue .SecondTimeAsking
+	iftruefwd .SecondTimeAsking
 	writetext LassDanaMoomooMilkText
 	promptbutton
 	setevent EVENT_DANA_ASKED_FOR_PHONE_NUMBER
 	callstd asknumber1f
-	sjump .AskForPhoneNumber
+	sjumpfwd .AskForPhoneNumber
 
 .SecondTimeAsking:
 	callstd asknumber2f
 .AskForPhoneNumber:
 	askforphonenumber PHONE_LASS_DANA
-	ifequal $1, .PhoneFull
-	ifequal $2, .DeclinedPhoneNumber
+	ifequalfwd $1, .PhoneFull
+	ifequalfwd $2, .DeclinedPhoneNumber
 	gettrainername LASS, DANA1, $0
 	callstd registerednumberf
 	jumpstd numberacceptedf
@@ -76,23 +76,23 @@ TrainerLassDana1:
 	callstd rematchf
 	winlosstext LassDana1BeatenText, 0
 	readmem wDanaFightCount
-	ifequal 4, .Fight4
-	ifequal 3, .Fight3
-	ifequal 2, .Fight2
-	ifequal 1, .Fight1
-	ifequal 0, .LoadFight0
+	ifequalfwd 4, .Fight4
+	ifequalfwd 3, .Fight3
+	ifequalfwd 2, .Fight2
+	ifequalfwd 1, .Fight1
+	ifequalfwd 0, .LoadFight0
 .Fight4:
 	checkevent EVENT_RESTORED_POWER_TO_KANTO
-	iftrue .LoadFight4
+	iftruefwd .LoadFight4
 .Fight3:
 	checkevent EVENT_BEAT_ELITE_FOUR
-	iftrue .LoadFight3
+	iftruefwd .LoadFight3
 .Fight2:
 	checkevent EVENT_CLEARED_RADIO_TOWER
-	iftrue .LoadFight2
+	iftruefwd .LoadFight2
 .Fight1:
 	checkflag ENGINE_FLYPOINT_CIANWOOD
-	iftrue .LoadFight1
+	iftruefwd .LoadFight1
 .LoadFight0:
 	loadtrainer LASS, DANA1
 	startbattle
@@ -135,7 +135,7 @@ TrainerLassDana1:
 .TryGiveThunderstone:
 	callstd giftf
 	verbosegiveitem THUNDERSTONE
-	iffalse .NoRoomForThunderstone
+	iffalsefwd .NoRoomForThunderstone
 	clearflag ENGINE_DANA_HAS_THUNDERSTONE
 	setevent EVENT_DANA_GAVE_THUNDERSTONE
 	jumpstd numberacceptedf
@@ -159,23 +159,23 @@ TrainerSchoolboyChad1:
 	loadvar VAR_CALLERID, PHONE_SCHOOLBOY_CHAD
 	opentext
 	checkflag ENGINE_CHAD_READY_FOR_REMATCH
-	iftrue .ChadRematch
+	iftruefwd .ChadRematch
 	checkcellnum PHONE_SCHOOLBOY_CHAD
-	iftrue .HaveChadsNumber
+	iftruefwd .HaveChadsNumber
 	checkevent EVENT_CHAD_ASKED_FOR_PHONE_NUMBER
-	iftrue .SecondTimeAsking
+	iftruefwd .SecondTimeAsking
 	writetext SchoolboyChadSoManyTestsText
 	promptbutton
 	setevent EVENT_CHAD_ASKED_FOR_PHONE_NUMBER
 	callstd asknumber1m
-	sjump .AskToRegisterNumber
+	sjumpfwd .AskToRegisterNumber
 
 .SecondTimeAsking:
 	callstd asknumber2m
 .AskToRegisterNumber:
 	askforphonenumber PHONE_SCHOOLBOY_CHAD
-	ifequal $1, .PhoneFull
-	ifequal $2, .SaidNo
+	ifequalfwd $1, .PhoneFull
+	ifequalfwd $2, .SaidNo
 	gettrainername SCHOOLBOY, CHAD1, $0
 	callstd registerednumberm
 	jumpstd numberacceptedm
@@ -184,23 +184,23 @@ TrainerSchoolboyChad1:
 	callstd rematchm
 	winlosstext SchoolboyChad1BeatenText, 0
 	readmem wChadFightCount
-	ifequal 4, .Fight4
-	ifequal 3, .Fight3
-	ifequal 2, .Fight2
-	ifequal 1, .Fight1
-	ifequal 0, .LoadFight0
+	ifequalfwd 4, .Fight4
+	ifequalfwd 3, .Fight3
+	ifequalfwd 2, .Fight2
+	ifequalfwd 1, .Fight1
+	ifequalfwd 0, .LoadFight0
 .Fight4:
 	checkevent EVENT_RESTORED_POWER_TO_KANTO
-	iftrue .LoadFight4
+	iftruefwd .LoadFight4
 .Fight3:
 	checkevent EVENT_BEAT_ELITE_FOUR
-	iftrue .LoadFight3
+	iftruefwd .LoadFight3
 .Fight2:
 	checkevent EVENT_CLEARED_RADIO_TOWER
-	iftrue .LoadFight2
+	iftruefwd .LoadFight2
 .Fight1:
 	checkflag ENGINE_FLYPOINT_MAHOGANY
-	iftrue .LoadFight1
+	iftruefwd .LoadFight1
 .LoadFight0:
 	loadtrainer SCHOOLBOY, CHAD1
 	startbattle

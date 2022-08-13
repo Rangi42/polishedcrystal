@@ -190,7 +190,7 @@ Music_LaverreCityXY_Ch1_branch_1:
 	note G#, 4
 	note F#, 4
 	note G#, 12
-	loopchannel 0, Music_LaverreCityXY_branch_ef2e5
+	jumpchannel Music_LaverreCityXY_branch_ef2e5
 
 Music_LaverreCityXY_Ch2:
 	vibrato $12, $25
@@ -335,7 +335,7 @@ Music_LaverreCityXY_Ch2_branch_2:
 	note G#, 8
 	note G#, 2
 	note __, 2
-	loopchannel 0, Music_LaverreCityXY_branch_ef3f2
+	jumpchannel Music_LaverreCityXY_branch_ef3f2
 
 Music_LaverreCityXY_Ch3:
 	stereopanning $ff
@@ -558,7 +558,7 @@ Music_LaverreCityXY_Ch3_branch_1:
 	note G#, 4
 	note F#, 4
 	note G#, 12
-	loopchannel 0, Music_LaverreCityXY_branch_ef4e3
+	jumpchannel Music_LaverreCityXY_branch_ef4e3
 
 Music_LaverreCityXY_Ch4:
 	togglenoise $3
@@ -607,7 +607,7 @@ Music_LaverreCityXY_Ch4_loop:
 	callchannel Music_LaverreCityXY_Ch4_branch_1
 	callchannel Music_LaverreCityXY_Ch4_branch_1
 	callchannel Music_LaverreCityXY_Ch4_branch_1
-	loopchannel 0, Music_LaverreCityXY_Ch4_loop
+	jumpchannel Music_LaverreCityXY_Ch4_loop
 
 Music_LaverreCityXY_Ch4_branch_1:
 	notetype $8

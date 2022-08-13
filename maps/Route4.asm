@@ -83,7 +83,7 @@ Route4SuperNerd1Script:
 	faceplayer
 	opentext
 	checkevent EVENT_LISTENED_TO_IRON_HEAD_INTRO
-	iftrue Route4TutorIronHeadScript
+	iftruefwd Route4TutorIronHeadScript
 	writetext Route4SuperNerd1Text
 	waitbutton
 	setevent EVENT_LISTENED_TO_IRON_HEAD_INTRO
@@ -91,14 +91,14 @@ Route4TutorIronHeadScript:
 	writetext Text_Route4TutorIronHead
 	waitbutton
 	checkitem SILVER_LEAF
-	iffalse .NoSilverLeaf
+	iffalsefwd .NoSilverLeaf
 	writetext Text_Route4Tutor1Question
 	yesorno
-	iffalse .TutorRefused
+	iffalsefwd .TutorRefused
 	setval IRON_HEAD
 	writetext ClearText
 	special Special_MoveTutor
-	ifequal $0, .TeachMove
+	ifequalfwd $0, .TeachMove
 .TutorRefused
 	jumpopenedtext Text_Route4Tutor1Refused
 
@@ -113,7 +113,7 @@ Route4SuperNerd2Script:
 	faceplayer
 	opentext
 	checkevent EVENT_LISTENED_TO_AQUA_TAIL_INTRO
-	iftrue Route4TutorAquaTailScript
+	iftruefwd Route4TutorAquaTailScript
 	writetext Route4SuperNerd2Text
 	waitbutton
 	setevent EVENT_LISTENED_TO_AQUA_TAIL_INTRO
@@ -121,14 +121,14 @@ Route4TutorAquaTailScript:
 	writetext Text_Route4TutorAquaTail
 	waitbutton
 	checkitem SILVER_LEAF
-	iffalse .NoSilverLeaf
+	iffalsefwd .NoSilverLeaf
 	writetext Text_Route4Tutor2Question
 	yesorno
-	iffalse .TutorRefused
+	iffalsefwd .TutorRefused
 	setval AQUA_TAIL
 	writetext ClearText
 	special Special_MoveTutor
-	ifequal $0, .TeachMove
+	ifequalfwd $0, .TeachMove
 .TutorRefused
 	jumpopenedtext Text_Route4Tutor2Refused
 
@@ -192,12 +192,12 @@ PicnickerHopeBeatenText:
 	line "strong."
 	done
 
-PicnickerSharonSeenText:
+PicnickerSharonSeenText: ; text > text
 	text "Um…"
 	line "I…"
 	done
 
-PicnickerSharonBeatenText:
+PicnickerSharonBeatenText: ; text > text
 	text "…"
 	done
 

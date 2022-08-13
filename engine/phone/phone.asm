@@ -1,89 +1,39 @@
-AddPhoneNumber::
-	call CheckCellNum
-	jr c, .cant_add
-	call Phone_FindOpenSlot
-	jr nc, .cant_add
-	ld [hl], c
-	xor a
+PhoneFlagAction:
+; Valid contacts start from index 1, but the flag array starts at index 0.
+	push bc
+	dec c
+	ld d, 0
+	ld hl, wPhoneList
+	predef FlagPredef
+	pop bc
 	ret
 
-.cant_add
-	scf
-	ret
+AddPhoneNumber::
+; Adds phone number c to the contact list. Returns carry if already present.
+	call CheckCellNum
+	ret c
+	ld b, SET_FLAG
+	jr DoAddOrDelPhoneNumber
 
 DelCellNum::
+; Deletes phone number c from the contact list. Returns carry if not present.
 	call CheckCellNum
-	jr nc, .not_in_list
+	ccf
+	ret c
+	ld b, RESET_FLAG
+	; fallthrough
+DoAddOrDelPhoneNumber:
+	call PhoneFlagAction
 	xor a
-	ld [hl], a
-	ret
-
-.not_in_list
-	scf
 	ret
 
 CheckCellNum::
-	ld hl, wPhoneList
-	ld b, CONTACT_LIST_SIZE
-.loop
-	ld a, [hli]
-	cp c
-	jr z, .got_it
-	dec b
-	jr nz, .loop
-	xor a
-	ret
-
-.got_it
-	dec hl
+; Returns carry if phone number c is in the contact list.
+	ld b, CHECK_FLAG
+	call PhoneFlagAction
 	scf
-	ret
-
-Phone_FindOpenSlot:
-	call GetRemainingSpaceInPhoneList
-	ld b, a
-	ld hl, wPhoneList
-.loop
-	ld a, [hli]
-	and a
-	jr z, .FoundOpenSpace
-	dec b
-	jr nz, .loop
+	ret nz
 	xor a
-	ret
-
-.FoundOpenSpace:
-	dec hl
-	scf
-	ret
-
-GetRemainingSpaceInPhoneList:
-	xor a
-	ld [wBuffer1], a
-	ld hl, PermanentNumbers
-.loop
-	ld a, [hli]
-	cp -1
-	jr z, .done
-	cp c
-	jr z, .loop
-	push bc
-	push hl
-	ld c, a
-	call CheckCellNum
-	jr c, .elm_or_mom_in_list
-	ld hl, wBuffer1
-	inc [hl]
-
-.elm_or_mom_in_list
-	pop hl
-	pop bc
-	jr .loop
-
-.done
-	ld a, CONTACT_LIST_SIZE
-	ld hl, wBuffer1
-	sub [hl]
 	ret
 
 INCLUDE "data/phone/permanent_numbers.asm"
@@ -112,7 +62,6 @@ CheckPhoneCall::
 	and a
 	jr nz, .no_call
 
-	call GetAvailableCallers
 	call ChooseRandomCaller
 	jr nc, .no_call
 
@@ -145,78 +94,69 @@ CheckPhoneContactTimeOfDay:
 	jmp PopBCDEHL
 
 ChooseRandomCaller:
-; If no one is available to call, don't return anything.
-	ld a, [wNumAvailableCallers]
-	and a
-	jr z, .NothingToSample
-
-; Sample a random number between 0 and 31.
-	ld c, a
-	call Random
-	ldh a, [hRandomAdd]
-	swap a
-	and $1f
-; Compute that number modulo the number of available callers.
-	call SimpleDivide
-; Return the caller ID you just sampled.
-	ld c, a
-	ld b, 0
-	ld hl, wAvailableCallers
-	add hl, bc
-	ld a, [hl]
-	scf
-	ret
-
-.NothingToSample:
-	xor a
-	ret
-
-GetAvailableCallers:
+; Returns a random available caller in a. Returns carry if one is found,
+; otherwise nc.
 	farcall CheckTime
-	ld a, c
-	ld [wCheckedTime], a
-	ld hl, wNumAvailableCallers
-	ld bc, 11 ; bug: should be CONTACT_LIST_SIZE + 1 (only clears first 10 contacts)
+	ld d, c
 	xor a
-	rst ByteFill
-	ld de, wPhoneList
-	ld a, CONTACT_LIST_SIZE
-
+	ld b, a
+	ld c, NUM_PHONE_CONTACTS ; also the last phone contact.
+	push af
 .loop
-	ld [wPhoneListIndex], a
-	ld a, [de]
+	call .IsValidCaller
+	jr nc, .next
+	inc b
+
+	; Check if we should replace our current caller. We should do this if
+	; a random number between 0 and b-1 returns 0.
+	ld a, b
+	call RandomRange
 	and a
-	jr z, .not_good_for_call
+	jr nz, .next
+	pop af
+	ld a, c
+	scf
+	push af
+
+.next
+	dec c
+	jr nz, .loop
+	pop af
+	ret
+
+.IsValidCaller:
+	; First, check if the number is in our contact list in the first place.
+	push bc
+	push de
+	call CheckCellNum
+	pop de
+	jr nc, .invalid
+
+	; Check if the trainer is active during this time.
+	ld a, c
 	ld hl, PhoneContacts + PHONE_CONTACT_SCRIPT2_TIME
 	ld bc, PHONE_CONTACT_SIZE
 	rst AddNTimes
-	ld a, [wCheckedTime]
+	ld a, d
 	and [hl]
-	jr z, .not_good_for_call
+	jr z, .invalid
+
+	; Don't let trainers call us if they're in the same map as us.
 	ld bc, PHONE_CONTACT_MAP_GROUP - PHONE_CONTACT_SCRIPT2_TIME
 	add hl, bc
 	ld a, [wMapGroup]
 	cp [hl]
-	jr nz, .different_map
+	jr nz, .valid
 	inc hl
 	ld a, [wMapNumber]
 	cp [hl]
-	jr z, .not_good_for_call
-.different_map
-	ld a, [wNumAvailableCallers]
-	ld c, a
-	ld b, $0
-	inc a
-	ld [wNumAvailableCallers], a
-	ld hl, wAvailableCallers
-	add hl, bc
-	ld a, [de]
-	ld [hl], a
-.not_good_for_call
-	inc de
-	ld a, [wPhoneListIndex]
-	dec a
-	jr nz, .loop
+.valid
+	scf
+	jr nz, .done
+.invalid
+	xor a
+.done
+	pop bc
 	ret
 
 CheckSpecialPhoneCall::
@@ -264,7 +204,7 @@ CheckSpecialPhoneCall::
 
 .script
 	pause 30
-	sjump Script_ReceivePhoneCall
+	sjumpfwd Script_ReceivePhoneCall
 
 .DoSpecialPhoneCall:
 	ld a, [wSpecialPhoneCallID]
@@ -399,13 +339,13 @@ LoadCallerScript:
 
 .actualcaller
 	ld hl, PhoneContacts
-	ld bc, 12
+	ld bc, PHONE_CONTACT_SIZE
 	ld a, e
 	rst AddNTimes
 	ld a, BANK(PhoneContacts)
 .proceed
-	ld de, wPhoneListIndex
-	ld bc, 12
+	ld de, wCallerContact
+	ld bc, PHONE_CONTACT_SIZE
 	jmp FarCopyBytes
 
 WrongNumber:
@@ -478,23 +418,12 @@ GetCallerName:
 	ret
 
 .Blank:
-	ld a, "<SHARP>"
-	ld [hli], a
-	ld a, [wPokegearPhoneScrollPosition]
-	ld b, a
-	ld a, [wPokegearPhoneLoadNameBuffer]
-	add b
-	inc a
-	ld de, wPokegearNumberBuffer
-	ld [de], a
-	lb bc, PRINTNUM_LEFTALIGN | 1, 2
-	call PrintNum
 	ld de, .filler
 	rst PlaceString
 	ret
 
 .filler
-	db " -------@"
+	db "----------@"
 
 Phone_NoSignal:
 	ld de, SFX_NO_SIGNAL
@@ -628,12 +557,28 @@ NonTrainerCallerNames:
 	dw .lyra
 	dw .buena
 
-.mom:      db "Mom:@"
-.bill:     db "Bill:<LNBRK>   #maniac@"
-.elm:      db "Prof.Elm:<LNBRK>   #mon Prof.@"
-.bikeshop: db "Miracle Cycle:@"
-.lyra:     db "Lyra:<LNBRK>   <PK><MN> Trainer@"
-.buena:    db "Buena:<LNBRK>   Disc Jockey@"
+.mom:
+	text  "Mom:"
+	done
+.bill:
+	text  "Bill:"
+	next1 "   #maniac"
+	done
+.elm:
+	text  "Prof.Elm:"
+	next1 "   #mon Prof."
+	done
+.bikeshop:
+	text  "Miracle Cycle:"
+	done
+.lyra:
+	text  "Lyra:"
+	next1 "   <PK><MN> Trainer"
+	done
+.buena:
+	text  "Buena:"
+	next1 "   Disc Jockey"
+	done
 
 INCLUDE "data/phone/phone_contacts.asm"
 

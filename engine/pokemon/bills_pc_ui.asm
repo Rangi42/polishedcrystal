@@ -9,7 +9,7 @@
 	const PC_MENU_MODE ; 0
 	const PC_SWAP_MODE ; 1
 	const PC_ITEM_MODE ; 2
-NUM_PC_MODES EQU const_value
+DEF NUM_PC_MODES EQU const_value
 
 ; BillsPC_MenuStrings indexes
 ; BillsPC_MenuJumptable indexes
@@ -124,7 +124,7 @@ BillsPC_LoadUI:
 	; Cursor sprite OAM
 	lb de, -18, 0 ; fixed up by the animseq code
 	ld a, SPRITE_ANIM_INDEX_PC_CURSOR
-	call _InitSpriteAnimStruct
+	call InitSpriteAnimStruct
 	ld a, PCANIM_ANIMATE
 	ld [wBillsPC_CursorAnimFlag], a
 
@@ -132,10 +132,10 @@ BillsPC_LoadUI:
 	lb de, $98, $10
 	ld a, SPRITE_ANIM_INDEX_PC_MODE
 	push de
-	call _InitSpriteAnimStruct
+	call InitSpriteAnimStruct
 	pop af
 	ld a, SPRITE_ANIM_INDEX_PC_MODE2
-	call _InitSpriteAnimStruct
+	call InitSpriteAnimStruct
 
 	; Pack icon.
 	; TODO: Instead of a hack where we prevent the pack from claiming a slot,
@@ -145,17 +145,17 @@ BillsPC_LoadUI:
 	push hl
 	lb de, $58, $30
 	ld a, SPRITE_ANIM_INDEX_PC_PACK
-	call _InitSpriteAnimStruct
+	call InitSpriteAnimStruct
 	pop hl
 	dec [hl]
 
 	; Gender symbols and shiny star
 	ld hl, BattleExtrasGFX
-	ld de, vTiles2 tile $40
-	lb bc, BANK(BattleExtrasGFX), 4
+	ld de, vTiles2 tile $41
+	lb bc, BANK(BattleExtrasGFX), 3
 	call DecompressRequest2bpp
 
-	; Box frame tiles and Pokérus symbol (overwrites first tile of BattleExtrasGFX)
+	; Box frame tiles and Pokérus symbol
 	ld hl, BillsPC_TileGFX
 	ld de, vTiles2 tile $31
 	lb bc, BANK(BillsPC_TileGFX), 16
@@ -199,25 +199,25 @@ UseBillsPC:
 	ldh [rVBK], a
 
 	; Pokepic attributes
-	hlcoord 0, 0, wAttrMap
+	hlcoord 0, 0, wAttrmap
 	lb bc, 7, 7
 	ld a, 2
 	call FillBoxWithByte
 
 	; Shiny and PkRs
-	hlcoord 5, 8, wAttrMap
+	hlcoord 5, 8, wAttrmap
 	ld a, $3
 	ld [hli], a
 	ld [hl], a
 
 	; Item name is in vbk1
-	hlcoord 10, 2, wAttrMap ; Cursor's item
+	hlcoord 10, 2, wAttrmap ; Cursor's item
 	ld bc, 10
 	ld a, VRAM_BANK_1
 	push bc
 	rst ByteFill
 	pop bc
-	hlcoord 10, 3, wAttrMap ; Mon's item
+	hlcoord 10, 3, wAttrmap ; Mon's item
 	rst ByteFill
 
 	; Storage box
@@ -232,7 +232,7 @@ UseBillsPC:
 	call .SpecialRow
 
 	; set up box title to use vbk0 (previously set to vbk1 by .Box)
-	hlcoord 8, 5, wAttrMap
+	hlcoord 8, 5, wAttrmap
 	ld bc, 11
 	ld a, 7
 	rst ByteFill
@@ -313,7 +313,7 @@ UseBillsPC:
 	push hl
 	call CreateBoxBorders
 	pop hl
-	ld bc, wAttrMap - wTileMap
+	ld bc, wAttrmap - wTilemap
 	add hl, bc
 	pop bc
 	ld de, .BoxAttr
@@ -344,7 +344,7 @@ UseBillsPC:
 	dec a
 	ld [hl], a
 	pop hl
-	ld bc, wAttrMap - wTileMap
+	ld bc, wAttrmap - wTilemap
 	add hl, bc
 	pop bc
 	ld a, 1
@@ -383,7 +383,7 @@ UseBillsPC:
 	inc a
 	ld [hld], a
 	inc a
-	ld bc, -SCREEN_WIDTH + (wAttrMap - wTileMap)
+	ld bc, -SCREEN_WIDTH + (wAttrmap - wTilemap)
 	add hl, bc
 	ld [hl], e
 	inc hl
@@ -394,19 +394,10 @@ UseBillsPC:
 	inc hl
 	ld [hl], e
 	inc e
-	ld bc, -SCREEN_WIDTH + 2 + (wTileMap - wAttrMap)
+	ld bc, -SCREEN_WIDTH + 2 + (wTilemap - wAttrmap)
 	add hl, bc
 	pop bc
 	ret
-
-BillsPC_CursorGFX:
-INCBIN "gfx/pc/cursor.2bpp"
-
-BillsPC_TileGFX:
-INCBIN "gfx/pc/pc.2bpp.lz"
-
-BillsPC_ObjGFX:
-INCBIN "gfx/pc/obj.2bpp.lz"
 
 BillsPC_BlankTiles:
 ; Used as input to blank a*4 tiles (mon icons typically use 4 tiles).
@@ -485,6 +476,16 @@ else
 	MONOCHROME_RGB_TWO
 endc
 
+BillsPC_SafeRequest1bppInWRA6::
+	ldh a, [hROMBank]
+	ld b, a
+	call RunFunctionInWRA6
+.Function:
+	ldh a, [rLY]
+	cp $40
+	jmp c, Get1bpp
+	call DelayFrame
+	jr .Function
 
 BillsPC_SafeRequest2bppInWRA6::
 	ldh a, [hROMBank]
@@ -530,7 +531,8 @@ BillsPC_PrintBoxName:
 	ld b, 0
 	hlcoord 9, 5
 	add hl, bc
-	jmp PlaceString
+	rst PlaceString
+	ret
 
 SetPartyIcons:
 ; Writes party list
@@ -601,7 +603,7 @@ PCIconLoop:
 	push hl
 	push de
 	push bc
-	farcall GetStorageIcon_a
+	farcall GetStorageMini_a
 	pop bc
 	pop de
 	pop hl
@@ -698,48 +700,31 @@ WriteIconPaletteData:
 	jr z, .got_species
 	ld a, EGG
 .got_species
-	ld hl, wTempMonPersonality
-	farcall _GetMonIconPalette
+	ld c, a
+	ld a, [wTempMonForm]
+	ld b, a
+	ld a, [wTempMonShiny]
+	farcall GetMonPalInBCDE
+	ld h, b
+	ld l, c
 	pop bc
 	push bc
-	push af
+	push hl
 	call BillsPC_GetMonPalAddr
-	pop af
+	pop bc
 
 if !DEF(MONOCHROME)
-	; TODO: per-mon palettes
-	; RGB values copied from PartyMenuOBPals
-	ld [hl], LOW(palred 31 + palgreen 19 + palblue 10) ; no-optimize *hl++|*hl-- = N
-	inc hl
-	ld [hl], HIGH(palred 31 + palgreen 19 + palblue 10) ; no-optimize *hl++|*hl-- = N
-	inc hl
-	and a ; PAL_OW_RED
-	ld de, palred 31 + palgreen 07 + palblue 01
-	jr z, .got_pal2
-	dec a ; PAL_OW_BLUE
-	ld de, palred 10 + palgreen 09 + palblue 31
-	jr z, .got_pal2
-	dec a ; PAL_OW_GREEN
-	ld de, palred 07 + palgreen 23 + palblue 03
-	jr z, .got_pal2
-	dec a ; PAL_OW_BROWN
-	ld de, palred 15 + palgreen 10 + palblue 03
-	jr z, .got_pal2
-	dec a ; PAL_OW_PURPLE
-	ld de, palred 18 + palgreen 04 + palblue 18
-	jr z, .got_pal2
-	dec a ; PAL_OW_GRAY
-	ld de, palred 13 + palgreen 13 + palblue 13
-	jr z, .got_pal2
-	dec a ; PAL_OW_PINK
-	ld de, palred 31 + palgreen 10 + palblue 11
-	jr z, .got_pal2
-	; PAL_OW_TEAL
-	ld de, palred 03 + palgreen 23 + palblue 21
-.got_pal2
-	ld [hl], e
-	inc hl
-	ld [hl], d
+	ld a, c
+	ld [hli], a
+	ld a, b
+	ld [hli], a
+	ld a, e
+	ld [hli], a
+	ld a, d
+	ld [hld], a
+	dec hl
+	dec hl
+	farcall VaryBGPalByTempMonDVs
 else
 	ld [hl], LOW(PAL_MONOCHROME_WHITE) ; no-optimize *hl++|*hl-- = N
 	inc hl
@@ -755,15 +740,23 @@ BillsPC_HideCursorAndMode:
 	call BillsPC_HideCursor
 	; fallthrough
 BillsPC_HideModeIcon:
-	ld hl, wVirtualOAMSprite09
+	call BillsPC_CheckBagDisplay
+	ld hl, wVirtualOAMSprite05
+	jr z, .got_mode_area
+	ld hl, wVirtualOAMSprite12
+.got_mode_area
 	ld bc, 20
 	xor a
 	rst ByteFill
 	ret
 
 BillsPC_HideCursor:
+	call BillsPC_CheckBagDisplay
 	ld hl, wVirtualOAM
-	ld bc, 36
+	ld bc, 48
+	jr nz, .got_bytecount
+	ld c, 20
+.got_bytecount
 	xor a
 	rst ByteFill
 	ret
@@ -1001,19 +994,11 @@ _GetCursorMon:
 	; Prepare frontpic. Split into decompression + loading to make sure we
 	; refresh the pokepic and the palette in a single frame (decompression
 	; is unpredictable, but bpp copy can be relied upon).
-	ld a, [wTempMonSpecies]
-
-	; Replaced with EGG later for frontpic, but we might want to
-	; change form with GetVariant
-	ld [wCurPartySpecies], a
-	ld hl, wTempMonForm
-	ld de, vTiles2
-	push de
-	push af
-	predef GetVariant
-	ld a, [wTempMonIsEgg]
+	ld a, [wTempMonForm]
+	ld [wCurForm], a
 	ld d, a
-	pop af
+	ld a, [wTempMonSpecies]
+	assert MON_IS_EGG == MON_FORM
 	bit MON_IS_EGG_F, d
 	jr z, .not_egg
 	ld a, EGG
@@ -1021,7 +1006,7 @@ _GetCursorMon:
 	ld [wCurPartySpecies], a
 	ld [wCurSpecies], a
 	call GetBaseData
-	pop de
+	ld de, vTiles2
 	farcall PrepareFrontpic
 
 	push hl
@@ -1039,13 +1024,13 @@ _GetCursorMon:
 .delay_loop
 	; Delay first before finishing frontpic. Retry if it puts us too late.
 	; If we try to proceed otherwise, we might run past the hblank interrupt
-	; window with GetPreparedFrontpic.
+	; window with Get2bpp.
 	call DelayFrame
 	ldh a, [rLY]
 	cp $13
 	jr nc, .delay_loop
 
-	ld a, [wAttrMap]
+	ld a, [wAttrmap]
 	and VRAM_BANK_1
 	pop hl
 	push af
@@ -1054,7 +1039,15 @@ _GetCursorMon:
 	ld a, 1
 	ldh [rVBK], a
 .dont_switch_vbk
-	farcall GetPreparedFrontpic
+	ldh a, [rSVBK]
+	push af
+	ld a, BANK(wDecompressScratch)
+	ldh [rSVBK], a
+	call GetPaddedFrontpicAddress
+	lb bc, BANK(_GetCursorMon), 7 * 7
+	call Get2bpp
+	pop af
+	ldh [rSVBK], a
 	xor a
 	ldh [rVBK], a
 	ld hl, wBillsPC_ItemVWF
@@ -1096,7 +1089,7 @@ _GetCursorMon:
 	jr nz, .got_new_tile_bank
 	ld a, 2 | VRAM_BANK_1
 .got_new_tile_bank
-	hlcoord 0, 0, wAttrMap
+	hlcoord 0, 0, wAttrmap
 	lb bc, 7, 7
 	call FillBoxWithByte
 
@@ -1146,12 +1139,12 @@ _GetCursorMon:
 
 	; Poképic tilemap
 	hlcoord 0, 0
-	farcall PlaceFrontpicAtHL
+	call PlaceFrontpicAtHL
 
 	; Nickname
 	hlcoord 8, 0
 	ld de, wTempMonNickname
-	call PlaceString
+	rst PlaceString
 
 	; If we're dealing with an egg, we're done now.
 	ld a, [wTempMonIsEgg]
@@ -1161,12 +1154,14 @@ _GetCursorMon:
 	; Species name
 	ld a, [wTempMonSpecies]
 	ld [wNamedObjectIndex], a
+	ld a, [wTempMonForm]
+	ld [wNamedObjectIndex+1], a
 	hlcoord 8, 1
 	ld a, "/"
 	ld [hli], a
 	call GetPokemonName
 	ld de, wStringBuffer1
-	call PlaceString
+	rst PlaceString
 
 	; Level
 	hlcoord 0, 8
@@ -1195,12 +1190,12 @@ _GetCursorMon:
 	ld [hl], $43
 .not_shiny
 	ld a, [wTempMonPokerusStatus]
-	and a
+	and POKERUS_MASK
 	inc hl
 	jr z, .did_pokerus
 	; TODO: smiley face if cured (use shiny color + custom color 3?)
 	ld [hl], "."
-	and $f
+	cp POKERUS_CURED
 	jr z, .did_pokerus
 	ld [hl], $40 ; Rs
 .did_pokerus
@@ -1250,7 +1245,6 @@ ManageBoxes:
 	call JoyTextDelay
 .redo_input
 	ldh a, [hJoyPressed]
-	ld hl, wInputFlags
 	rrca
 	jr c, .pressed_a
 	rrca
@@ -1613,6 +1607,10 @@ BillsPC_CursorPick2:
 
 BillsPC_SetIcon:
 ; Writes icon tiles to hl depending on species data in de. Assumes vbk1.
+; If b is -1, also write icon mask data.
+	ld a, b
+	inc a ; Will set zero if we're dealing with held/quick slot.
+	push af
 	ld a, [de]
 	inc de
 	ld [wCurIcon], a
@@ -1622,7 +1620,13 @@ BillsPC_SetIcon:
 	call BillsPC_SetPals
 	call DelayFrame
 	pop hl
-	farjp GetStorageIcon
+	pop af
+	jr nz, .mask_done
+
+	farcall GetStorageMask
+
+.mask_done
+	farjp GetStorageMini
 
 BillsPC_MoveIconData:
 ; Copies icon data from slot bc to slot de, then blanks slot bc.
@@ -1659,7 +1663,7 @@ BillsPC_MoveIconData:
 	inc a
 	ld de, vTiles3 tile $20 ; Item for mon cursor is hovering
 	jr nz, .got_item_tile
-	ld de, vTiles3 tile $10 ; Item cursor is holding.
+	ld de, vTiles3 tile $08 ; Item cursor is holding.
 .got_item_tile
 	ld hl, vTiles3 tile $14 ; Quick tile.
 	push bc
@@ -1673,7 +1677,7 @@ BillsPC_MoveIconData:
 	inc b
 	ld a, c
 	or b
-	ld hl, vTiles3 tile $10
+	ld hl, vTiles3 tile $08
 	ld a, 1
 	call z, BillsPC_BlankTiles
 	jr .done
@@ -1710,7 +1714,13 @@ BillsPC_MoveIconData:
 	ld [hli], a
 	ld a, 2
 	call .GetAddr
-	ld a, 1
+
+	; If we're blanking held or quick, blank 2x4 instead of 1x4 to include mask.
+	inc b
+	ld a, 2
+	jr z, .got_blanking_range
+	dec a
+.got_blanking_range
 	call BillsPC_BlankTiles
 
 .done
@@ -1880,7 +1890,7 @@ BillsPC_PrepareQuickAnim:
 
 	lb de, 0, 0
 	ld a, SPRITE_ANIM_INDEX_PC_QUICK
-	call _InitSpriteAnimStruct
+	call InitSpriteAnimStruct
 
 	call BillsPC_UpdateCursorLocation
 	pop bc
@@ -2354,7 +2364,7 @@ BillsPC_MoveItem:
 	ret
 
 BillsPC_LoadCursorItemIcon:
-	ld hl, vTiles3 tile $10
+	ld hl, vTiles3 tile $08
 	lb bc, BANK(HeldItemIcons), 1
 
 	ld a, [wBillsPC_CursorItem]
@@ -2493,7 +2503,7 @@ BillsPC_UpdateStorage_CheckMewtwo:
 	ld [wCurIconForm], a
 	call BillsPC_GetMonTileAddr
 	push bc
-	farcall GetStorageIcon
+	farcall GetStorageMini
 	pop bc
 	call WriteIconPaletteData
 
@@ -2840,7 +2850,7 @@ BillsPC_ReleaseAll:
 
 .ReallyReleaseBox:
 	text "Really release the"
-	line "entire box?"
+	line "entire Box?"
 	done
 
 .CantRecallReleasedMons:
@@ -2850,7 +2860,7 @@ BillsPC_ReleaseAll:
 	done
 
 .NothingThere:
-	text "This box is empty."
+	text "The Box is empty."
 	prompt
 
 .NothingReleased:
@@ -2862,7 +2872,6 @@ BillsPC_ReleaseAll:
 .ReleasedXMon:
 	text "Released "
 	text_decimal wTextDecimalByte, 1, 2
-	text ""
 	line "#mon."
 	prompt
 
@@ -2940,7 +2949,6 @@ BillsPC_Release:
 	done
 
 .WasReleasedOutside:
-	text ""
 	text_ram wStringBuffer1
 	text " was"
 	line "released outside."
@@ -2980,7 +2988,7 @@ BillsPC_Theme:
 	ld hl, .ThemeMenuDataHeader
 	call CopyMenuHeader
 	call InitScrollingMenu
-	xor a
+	call GetBoxTheme
 	ld [wMenuScrollPosition], a
 	call ScrollingMenu
 
@@ -2991,10 +2999,6 @@ BillsPC_Theme:
 	cp B_BUTTON
 	jr z, .refresh_theme ; revert back to what it used to be
 
-	; [sNewBox[wCurBox]Theme] = [wScrollingMenuCursorPosition]
-	ld a, [wCurBox]
-	ld b, a
-	inc b
 	ld a, [wScrollingMenuCursorPosition]
 	call SetBoxTheme
 
@@ -3338,7 +3342,7 @@ BillsPC_SwapStorage:
 	prompt
 
 .BoxIsFull:
-	text "The box is full."
+	text "The Box is full."
 	prompt
 
 .IsHoldingMail:

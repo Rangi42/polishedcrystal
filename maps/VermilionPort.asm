@@ -47,7 +47,7 @@ VermilionPortSailorAtGangwayScript:
 	faceplayer
 	opentext
 	checkevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_1
-	iftrue VermilionPortAlreadyRodeScript
+	iftruefwd VermilionPortAlreadyRodeScript
 	writetext VermilionPortDepartingText
 	waitbutton
 	closetext
@@ -84,24 +84,24 @@ VermilionPortAlreadyRodeScript:
 VermilionPortWalkUpToShipScript:
 	turnobject VERMILIONPORT_SAILOR2, RIGHT
 	checkevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_1
-	iftrue UnknownScript_0x74e86
+	iftruefwd UnknownScript_0x74e86
 	checkevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_2
-	iftrue UnknownScript_0x74e86
+	iftruefwd UnknownScript_0x74e86
 	turnobject PLAYER, LEFT
 	opentext
 	readvar VAR_WEEKDAY
-	ifequal MONDAY, UnknownScript_0x74e72
-	ifequal TUESDAY, UnknownScript_0x74e72
-	ifequal THURSDAY, UnknownScript_0x74e7c
-	ifequal FRIDAY, UnknownScript_0x74e7c
-	ifequal SATURDAY, UnknownScript_0x74e7c
+	ifequalfwd MONDAY, UnknownScript_0x74e72
+	ifequalfwd TUESDAY, UnknownScript_0x74e72
+	ifequalfwd THURSDAY, UnknownScript_0x74e7c
+	ifequalfwd FRIDAY, UnknownScript_0x74e7c
+	ifequalfwd SATURDAY, UnknownScript_0x74e7c
 	writetext VermilionPortAskBoardingText
 	yesorno
-	iffalse VermilionPortNotRidingMoveAwayScript
+	iffalsefwd VermilionPortNotRidingMoveAwayScript
 	writetext VermilionPortAskTicketText
 	promptbutton
 	checkkeyitem S_S_TICKET
-	iffalse UnknownScript_0x74e68
+	iffalsefwd UnknownScript_0x74e68
 	writetext VermilionPortSSTicketText
 	waitbutton
 	closetext
@@ -149,18 +149,18 @@ VermilionPortSailorScript:
 	checkevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_1
 	iftrue VermilionPortAlreadyRodeScript
 	readvar VAR_WEEKDAY
-	ifequal MONDAY, UnknownScript_0x74eda
-	ifequal TUESDAY, UnknownScript_0x74eda
-	ifequal THURSDAY, UnknownScript_0x74ee0
-	ifequal FRIDAY, UnknownScript_0x74ee0
-	ifequal SATURDAY, UnknownScript_0x74ee0
+	ifequalfwd MONDAY, UnknownScript_0x74eda
+	ifequalfwd TUESDAY, UnknownScript_0x74eda
+	ifequalfwd THURSDAY, UnknownScript_0x74ee0
+	ifequalfwd FRIDAY, UnknownScript_0x74ee0
+	ifequalfwd SATURDAY, UnknownScript_0x74ee0
 	writetext VermilionPortAskBoardingText
 	yesorno
 	iffalse VermilionPortNotRidingScript
 	writetext VermilionPortAskTicketText
 	promptbutton
 	checkkeyitem S_S_TICKET
-	iffalse UnknownScript_0x74ed4
+	iffalsefwd UnknownScript_0x74ed4
 	writetext VermilionPortSSTicketText
 	waitbutton
 	closetext

@@ -2,12 +2,10 @@ Special_HiddenPowerGuru:
 	farcall SelectMonFromParty
 	jr c, .cancel
 	ld a, MON_IS_EGG
-	call GetPartyParamLocation
-	bit MON_IS_EGG_F, [hl]
+	call GetPartyParamLocationAndValue
+	bit MON_IS_EGG_F, a
 	jr nz, .egg
-	ld a, [wCurPartySpecies]
-	ld [wNamedObjectIndex], a
-	call GetPokemonName
+	call GetPartyPokemonName
 	call CopyPokemonName_Buffer1_Buffer3
 	ld a, [wCurPartyMon]
 	ld hl, wPartyMon1DVs

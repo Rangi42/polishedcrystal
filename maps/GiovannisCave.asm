@@ -93,7 +93,7 @@ GiovannisCaveCelebiEventScript:
 
 GiovannisCaveRadioScript:
 	checkevent EVENT_TIME_TRAVEL_FINISHED
-	iftrue .AfterTimeTravel
+	iftruefwd .AfterTimeTravel
 	jumptext GiovannisCaveRadioText
 .AfterTimeTravel
 	jumptext GiovannisCaveRadioAfterTimeTravelText

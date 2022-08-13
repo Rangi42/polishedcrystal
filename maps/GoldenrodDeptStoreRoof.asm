@@ -28,7 +28,7 @@ GoldenrodDeptStoreRoof_MapScriptHeader:
 
 GoldenrodDeptStoreRoofCheckSaleChangeBlock:
 	checkflag ENGINE_GOLDENROD_DEPT_STORE_SALE_IS_ON
-	iftrue .ChangeBlock
+	iftruefwd .ChangeBlock
 	endcallback
 
 .ChangeBlock:
@@ -38,7 +38,7 @@ GoldenrodDeptStoreRoofCheckSaleChangeBlock:
 
 GoldenrodDeptStoreRoofCheckSaleChangeClerk:
 	checkflag ENGINE_GOLDENROD_DEPT_STORE_SALE_IS_ON
-	iftrue .ChangeClerk
+	iftruefwd .ChangeClerk
 	setevent EVENT_GOLDENROD_SALE_OFF
 	clearevent EVENT_GOLDENROD_SALE_ON
 	endcallback
@@ -52,7 +52,7 @@ GoldenrodDeptStoreRoofFisherScript:
 	faceplayer
 	opentext
 	checkevent EVENT_DECO_VOLTORB_DOLL
-	iftrue .AlreadyGotVoltorbDoll
+	iftruefwd .AlreadyGotVoltorbDoll
 	writetext GoldenrodDeptStoreRoofFisherText
 	waitbutton
 	writetext GoldenrodDeptStoreRoofFisherDuplicateText
@@ -95,16 +95,16 @@ PokeDollVendingMachine:
 	loadmenu .MenuData
 	verticalmenu
 	closewindow
-	ifequal $1, .JigglypuffDoll
-	ifequal $2, .DittoDoll
-	ifequal $3, .MeowthDoll
+	ifequalfwd $1, .JigglypuffDoll
+	ifequalfwd $2, .DittoDoll
+	ifequalfwd $3, .MeowthDoll
 	endtext
 
 .JigglypuffDoll:
 	checkmoney $0, 2400
-	ifequal $2, .NotEnoughMoney
+	ifequalfwd $2, .NotEnoughMoney
 	checkevent EVENT_DECO_JIGGLYPUFF_DOLL
-	iftrue .AlreadyBought
+	iftruefwd .AlreadyBought
 	takemoney $0, 2400
 	setevent EVENT_DECO_JIGGLYPUFF_DOLL
 	writetext BoughtJigglypuffDollText
@@ -116,9 +116,9 @@ PokeDollVendingMachine:
 
 .DittoDoll:
 	checkmoney $0, 2400
-	ifequal $2, .NotEnoughMoney
+	ifequalfwd $2, .NotEnoughMoney
 	checkevent EVENT_DECO_DITTO_DOLL
-	iftrue .AlreadyBought
+	iftruefwd .AlreadyBought
 	takemoney $0, 2400
 	setevent EVENT_DECO_DITTO_DOLL
 	writetext BoughtDittoDollText
@@ -130,9 +130,9 @@ PokeDollVendingMachine:
 
 .MeowthDoll:
 	checkmoney $0, 2400
-	ifequal $2, .NotEnoughMoney
+	ifequalfwd $2, .NotEnoughMoney
 	checkevent EVENT_DECO_MEOWTH_DOLL
-	iftrue .AlreadyBought
+	iftruefwd .AlreadyBought
 	takemoney $0, 2400
 	setevent EVENT_DECO_MEOWTH_DOLL
 	writetext BoughtMeowthDollText

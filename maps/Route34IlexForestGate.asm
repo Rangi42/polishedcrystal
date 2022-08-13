@@ -2,7 +2,7 @@ Route34IlexForestGate_MapScriptHeader:
 	def_scene_scripts
 
 	def_callbacks
-	callback MAPCALLBACK_OBJECTS, UnknownScript_0x62d2d
+	callback MAPCALLBACK_OBJECTS, .IsForestRestless
 
 	def_warp_events
 	warp_event  4,  0, ROUTE_34, 1
@@ -16,30 +16,30 @@ Route34IlexForestGate_MapScriptHeader:
 	def_bg_events
 
 	def_object_events
-	object_event  9,  3, SPRITE_POKEFAN_F, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, Route34IlexForestGateTeacherScript, EVENT_ROUTE_34_ILEX_FOREST_GATE_TEACHER_BEHIND_COUNTER
-	object_event  5,  7, SPRITE_POKEFAN_F, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, Route34IlexForestGateTeacherScript, EVENT_ROUTE_34_ILEX_FOREST_GATE_TEACHER_IN_WALKWAY
-	pokemon_event  9,  4, HERACROSS, -1, -1, PAL_NPC_BLUE, Route34IlexForestGateButterfreeText, -1
+	object_event  9,  3, SPRITE_TEACHER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, Route34IlexForestGateTeacherScript, EVENT_ROUTE_34_ILEX_FOREST_GATE_TEACHER_BEHIND_COUNTER
+	object_event  5,  7, SPRITE_TEACHER, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, Route34IlexForestGateTeacherScript, EVENT_ROUTE_34_ILEX_FOREST_GATE_TEACHER_IN_WALKWAY
+	pokemon_event  9,  4, HERACROSS, SPRITEMOVEDATA_POKEMON, -1, -1, PAL_NPC_BLUE, Route34IlexForestGateHeracrossText, EVENT_ROUTE_34_ILEX_FOREST_GATE_TEACHER_BEHIND_COUNTER
 	object_event  3,  4, SPRITE_PICNICKER, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, Route34IlexForestGateLassText, EVENT_ROUTE_34_ILEX_FOREST_GATE_LASS
 
 	object_const_def
 	const ROUTE34ILEXFORESTGATE_TEACHER1
 	const ROUTE34ILEXFORESTGATE_TEACHER2
 
-UnknownScript_0x62d2d:
+.IsForestRestless:
 	checkevent EVENT_FOREST_IS_RESTLESS
-	iffalse UnknownScript_0x62d38
+	iffalsefwd .Normal
 	disappear ROUTE34ILEXFORESTGATE_TEACHER1
 	appear ROUTE34ILEXFORESTGATE_TEACHER2
 	endcallback
 
-UnknownScript_0x62d38:
+.Normal:
 	disappear ROUTE34ILEXFORESTGATE_TEACHER2
 	appear ROUTE34ILEXFORESTGATE_TEACHER1
 	endcallback
 
 Route34IlexForestGateCelebiEvent:
 	checkevent EVENT_FOREST_IS_RESTLESS
-	iffalse UnknownScript_0x62d62
+	iffalsefwd UnknownScript_0x62d62
 	showemote EMOTE_SHOCK, ROUTE34ILEXFORESTGATE_TEACHER2, 20
 	turnobject ROUTE34ILEXFORESTGATE_TEACHER2, LEFT
 	turnobject PLAYER, RIGHT
@@ -68,8 +68,11 @@ Route34IlexForestGateTeacherScript:
 Route34IlexForestGateTeacher_GotSweetScent:
 	text "It's False Swipe."
 
-	para "Teach it to a"
-	line "special #mon."
+	para "It won't knock"
+	line "out wild #mon,"
+
+	para "so they'll be"
+	line "easier to catch."
 	done
 
 Route34IlexForestGateTeacherBlocksPlayerMovement:
@@ -83,7 +86,7 @@ Route34IlexForestGateTeacherReturnsMovement:
 	step_end
 
 Route34IlexForestGateTeacherText:
-	text "Oh, honey. You're"
+	text "Oh, hello. You're"
 	line "making a #dex?"
 
 	para "It must be hard to"
@@ -102,7 +105,7 @@ Route34IlexForestGateTeacher_ForestIsRestless:
 	line "away right now."
 	done
 
-Route34IlexForestGateButterfreeText:
+Route34IlexForestGateHeracrossText:
 	text "Heracross: Cross!"
 	done
 

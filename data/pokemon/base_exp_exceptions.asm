@@ -1,4 +1,10 @@
+MACRO base_exception
+; mon, actual yield
+	dp \1
+	dw \2
+ENDM
+
 NewBaseExpExceptions:
-	dbw CHANSEY, 395
-	dbw BLISSEY, 608
-	db -1
+	base_exception CHANSEY, 395
+	base_exception BLISSEY, 608
+	dw -1

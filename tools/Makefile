@@ -1,25 +1,60 @@
 .PHONY: all clean
 
 CC := gcc
-CFLAGS = -O3 -std=c11 -Wall -Wextra -pedantic
+CFLAGS = -O3 -flto -std=c17 -Wall -Wextra -pedantic \
+         -Walloc-zero \
+         -Wcast-align \
+         -Wcast-qual \
+         -Wduplicated-branches \
+         -Wduplicated-cond \
+         -Wfloat-equal \
+         -Wformat=2 \
+         -Wformat-overflow=2 \
+         -Wformat-truncation=1 \
+         -Winline \
+         -Wlogical-op \
+         -Wnested-externs \
+         -Wno-sign-compare \
+         -Wnull-dereference \
+         -Wold-style-definition \
+         -Wshadow \
+         -Wshift-overflow=2 \
+         -Wstrict-overflow=2 \
+         -Wstrict-prototypes \
+         -Wstringop-overflow=4 \
+         -Wundef \
+         -Wuninitialized \
+         -Wunused \
+         -Wwrite-strings
 
 tools := \
+	bankends \
+	bpp2png \
+	bspcomp \
+	gfx \
 	lzcomp \
+	make_patch \
 	png_dimensions \
-	scan_includes \
 	pokemon_animation \
 	pokemon_animation_graphics \
-	gfx \
-	bankends \
-	bspcomp
+	scan_includes
 
 all: $(tools)
 	@:
 
 clean:
-	rm -f $(tools) *.o *.h.gch *.pyc
+	$(RM) $(tools) *.o *.h.gch *.pyc
 
-lzcomp: CFLAGS += -flto -Wno-strict-overflow -Wno-sign-compare
+gfx: common.h
+png_dimensions: common.h
+pokemon_animation: common.h
+pokemon_animation_graphics: common.h
+scan_includes: common.h
+
+bpp2png: bpp2png.c lodepng/lodepng.c common.h lodepng/lodepng.h
+	$(CC) $(CFLAGS) -o $@ bpp2png.c lodepng/lodepng.c
+
+lzcomp: CFLAGS += -Wno-strict-overflow -Wno-sign-compare
 lzcomp: $(wildcard lz/*.c) $(wildcard lz/*.h)
 	$(CC) $(CFLAGS) -o $@ lz/*.c
 

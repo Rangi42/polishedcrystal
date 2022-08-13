@@ -1,200 +1,173 @@
 GivePokerusAndConvertBerries:
-	call ConvertBerriesToBerryJuice
-	ld hl, wPartyMon1PokerusStatus
+; There are four Pokerus strains in Polished Crystal:
+; -- Strain 1: one-day strain, value %1111
+; -- Strain 2: two-day strain, value %0111 -> %1110
+; -- Strain 3: three-day strain, value %0011 -> %0110 -> %1100
+; -- Strain 4: four-day strain, value %0001 -> %0010 -> %0100 -> %1000
+; When a day passes with a Pokerus strain value already in bit 3 (then rotated left out of the nibble), the mon is cured
 	ld a, [wPartyCount]
-	ld b, a
-	ld de, PARTYMON_STRUCT_LENGTH
-; Check to see if any of your Pokemon already has Pokerus.
-; If so, sample its spread through your party.
-; This means that you cannot get Pokerus de novo while
-; a party member has an active infection.
-.loopMons
-	ld a, [hl]
-	and $f
-	jr nz, TrySpreadPokerus
-	add hl, de
-	dec b
-	jr nz, .loopMons
-
-; If we haven't been to Goldenrod City at least once,
-; prevent the contraction of Pokerus.
-	ld hl, wStatusFlags2
-	bit 6, [hl] ; ENGINE_REACHED_GOLDENROD
+	and a
 	ret z
+
+	ld c, a
+	ld b, 0
+	push bc
+
+; first, check if we should infect a partymon de novo
 	call Random
+	and a
+	jr nz, .check_spread ; 1/256 chance
 	ldh a, [hRandomAdd]
-	and a
-	ret nz
-	ldh a, [hRandomSub]
-	cp $3
-	ret nc                 ; 3/65536 chance (00 00, 00 01 or 00 02)
-	ld a, [wPartyCount]
-	ld b, a
-.randomMonSelectLoop
-	call Random
-	and $7
-	cp b
-	jr nc, .randomMonSelectLoop
-ContinueGivingPokerus:
-	ld hl, wPartyMon1PokerusStatus
-	call GetPartyLocation  ; get pokerus byte of random mon
-	ld a, [hl]
-	and $f0
-	ret nz                 ; if it already has pokerus, do nothing
-.randomPokerusLoop         ; Simultaneously sample the strain and duration
-	call Random
-	and a
-	jr z, .randomPokerusLoop
-	ld b, a
-	and $f0
-	jr z, .load_pkrs
+	cp 3
+	jr nc, .check_spread ; 3/256 chance (total 3/65536 chance)
+
+; one thing to note is that while eggs can get and spread pokerus,
+; they cannot get infected at random (only via spread from other party mons)
+	inc b
+	ld d, c ; we'd rather preserve c
+.party_loop
+	ld a, d
+	dec a
+	ld hl, wPartyMon1IsEgg
+	call GetPartyLocation
+	bit MON_IS_EGG_F, [hl]
+	jr nz, .next
 	ld a, b
-	and $7
-	inc a
+	inc b
+	call RandomRange
+	and a
+	jr nz, .next
+	ld a, d
+	dec a
+	ld [wCurPartyMon], a
+.next
+	dec d
+	jr nz, .party_loop
+
+; did we find anything? we should have, since you can't have non-eggs in your party
+	dec b
+	call nz, ContinueGivingPokerus
+	; bc should = 0:party count, but c is unmodified and ContinueGivingPokerus returns b = 0
+.check_spread
+; spread active infections (this includes any mons that were just infected de novo)
+	call Random
+	cp 1 + 33 percent
+	jr nc, .done_spread
+
+; find any party mons with active infections
+	ld hl, wPartyMon1PokerusStatus
+	ld de, PARTYMON_STRUCT_LENGTH
+.loop_spread
+	ld a, [hl]
+	and POKERUS_MASK ; Pokerus status is the lower nybble
+	jr z, .cont
+	cp POKERUS_CURED
+	jr z, .cont
 	ld b, a
-.load_pkrs
-	swap b
-	and $3
-	inc a
-	add b
+
+; check if the infection can spread to the prior partymon
+	ld de, PARTYMON_STRUCT_LENGTH * -1
+	add hl, de
+	ld a, [wPartyCount]
+	cp c
+	jr z, .check_next
+	ld a, [hl]
+	and POKERUS_MASK
+	call z, .SpreadPokerus
+
+; check if the succeeding partymon can get infected too
+.check_next
+	ld de, PARTYMON_STRUCT_LENGTH
+	add hl, de
+	ld a, c
+	dec a
+	jr z, .cont
+	push hl
+	add hl, de
+	ld a, [hl]
+	and POKERUS_MASK
+	pop hl
+	jr nz, .cont
+	add hl, de
+	call .SpreadPokerus
+	dec c ; newly infected mons shouldn't spread their infection yet (this differs from de novo infections)
+
+.cont
+	add hl, de
+	dec c
+	jr nz, .loop_spread
+
+.done_spread
+; convert Oran Berries held by Shuckle to Berry Juice
+	pop bc
+	ld b, c
+	ld hl, wPartyMon1Species
+.berries_loop
+	assert MON_SPECIES + 1 == MON_ITEM
+	ld a, [hli]
+	cp LOW(SHUCKLE)
+	jr nz, .no_berry_juice
+	push hl
+	assert !HIGH(SHUCKLE)
+	ld de, MON_FORM - MON_ITEM
+	add hl, de
+	ld a, [hl]
+	pop hl
+	and EXTSPECIES_MASK
+	jr nz, .no_berry_juice
+	ld a, [hl]
+	cp ORAN_BERRY
+	jr nz, .no_berry_juice
+	call Random
+	and $f ; 16/256 = 1/16 chance
+	jr nz, .no_berry_juice
+	ld a, BERRY_JUICE
+	ld [hl], a
+.no_berry_juice
+	ld de, PARTYMON_STRUCT_LENGTH - 1
+	add hl, de
+	dec c
+	jr nz, .berries_loop
+	ret
+
+.SpreadPokerus:
+; b: strain to infect partymon with
+; hl: partymon pokerus data location
+	ld a, b
+	and POKERUS_MASK
+.get_strain_loop
+	rra
+	jr nc, .get_strain_loop
+	rla
+	or [hl]
 	ld [hl], a
 	ret
 
 GivePokerusToWonderTradeMon:
 	call Random
-	ldh a, [hRandomAdd]
 	and a
 	ret nz
-	ldh a, [hRandomSub]
+	ldh a, [hRandomAdd]
 	cp $20
-	ret nc                 ; 32/65536 = 1/2048 chance
-	ld a, [wCurPartyMon]
-	ld b, a
-	jr ContinueGivingPokerus
-
-TrySpreadPokerus:
+	ret nc
+	; fall-through
+ContinueGivingPokerus:
+; uses wCurPartyMon as a parameter
+; b = 0 as output (useful for GivePokerusAndConvertBerries)
+	ld a, MON_PKRUS
+	call GetPartyParamLocationAndValue
+	and POKERUS_MASK
+	ret nz ; hit the 3/65536 chance but the randomly selected mon already has pokerus? tough luck!
 	call Random
-	cp 1 + 33 percent
-	ret nc              ; 1/3 chance
-
-	ld a, [wPartyCount]
-	cp 1
-	ret z               ; only one mon, nothing to do
-
-	ld c, [hl]
-	ld a, b
-	cp 2
-	jr c, .checkPreviousMonsLoop    ; no more mons after this one, go backwards
-
-	call Random
-	cp 1 + 50 percent
-	jr c, .checkPreviousMonsLoop    ; 1/2 chance, go backwards
-.checkFollowingMonsLoop
-	add hl, de
-	ld a, [hl]
-	and a
-	jr z, .infectMon
-	ld c, a
-	and $3
-	ret z               ; if mon has cured pokerus, stop searching
-	dec b               ; go on to next mon
-	ld a, b
-	cp 1
-	jr nz, .checkFollowingMonsLoop ; no more mons left
-	ret
-
-.checkPreviousMonsLoop
-	ld a, [wPartyCount]
-	cp b
-	ret z               ; no more mons
-	ld a, l
-	sub e
-	ld l, a
-	ld a, h
-	sbc d
-	ld h, a
-	ld a, [hl]
-	and a
-	jr z, .infectMon
-	ld c, a
-	and $3
-	ret z               ; if mon has cured pokerus, stop searching
-	inc b               ; go on to next mon
-	jr .checkPreviousMonsLoop
-
-.infectMon
-	ld a, c
-	and $f0
-	ld b, a
-	ld a, c
-	swap a
-	and $3
+	and 3
 	inc a
-	add b
+	ld b, a
+	ld a, POKERUS_MASK << 1
+.strain_loop
+	srl a
+	dec b
+	jr nz, .strain_loop
+	or [hl]
 	ld [hl], a
 	ret
 
-ApplyPokerusTick:
-; decreases all pokemon's pokerus counter by b. if the lower nybble reaches zero, the pokerus is cured.
-	ld hl, wPartyMon1PokerusStatus ; PartyMon1 + MON_PKRS
-	ld a, [wPartyCount]
-	and a
-	ret z ; make sure it's not wasting time on an empty party
-	ld c, a
-.loop
-	ld a, [hl]
-	and $f ; lower nybble is the number of days remaining
-	jr z, .next ; if already 0, skip
-	sub b ; subtract the number of days
-	jr nc, .ok ; max(result, 0)
-	xor a
-.ok
-	ld d, a ; back up this value because we need to preserve the strain (upper nybble)
-	ld a, [hl]
-	and $f0
-	add d
-	ld [hl], a ; this prevents a cured pokemon from recontracting pokerus
-.next
-	ld de, PARTYMON_STRUCT_LENGTH
-	add hl, de
-	dec c
-	jr nz, .loop
-	ret
-
-ConvertBerriesToBerryJuice:
-; If we haven't been to Goldenrod City at least once,
-; prevent Shuckle from turning held Berry into Berry Juice.
-	ld hl, wStatusFlags2
-	bit 6, [hl]
-	ret z
-	call Random
-	cp 6 percent + 1 ; 1/16 chance
-	ret nc
-	ld hl, wPartyMons
-	ld a, [wPartyCount]
-.partyMonLoop
-	push af
-	push hl
-	ld a, [hl]
-	cp SHUCKLE
-	jr nz, .loopMon
-	ld bc, MON_ITEM
-	add hl, bc
-	ld a, [hl]
-	cp ORAN_BERRY
-	jr z, .convertToJuice
-
-.loopMon
-	pop hl
-	ld bc, PARTYMON_STRUCT_LENGTH
-	add hl, bc
-	pop af
-	dec a
-	jr nz, .partyMonLoop
-	ret
-
-.convertToJuice
-	ld [hl], BERRY_JUICE
-	pop hl
-	pop af
-	ret

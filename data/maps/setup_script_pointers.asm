@@ -1,4 +1,4 @@
-add_mapsetup: MACRO
+MACRO add_mapsetup
 \1_MapSetupCmd:
 	dba \1
 ENDM
@@ -51,3 +51,4 @@ MapSetupCommands:
 	add_mapsetup InitMapNameSign ; 2c
 	add_mapsetup DecompressMetatiles ; 2d
 	add_mapsetup DeferredLoadMapGraphics ; 2e
+	add_mapsetup LoadMapTilesetGFX ; 2f

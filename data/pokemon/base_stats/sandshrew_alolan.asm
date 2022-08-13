@@ -4,9 +4,8 @@
 	db ICE, STEEL ; type
 	db 255 ; catch rate
 	db 93 ; base exp
-	db NO_ITEM ; item 1
-	db GRIP_CLAW ; item 2
-	dn GENDER_F50, 3 ; gender ratio, step cycles to hatch
+	db NO_ITEM, GRIP_CLAW ; held items
+	dn GENDER_F50, HATCH_MEDIUM_FAST ; gender ratio, step cycles to hatch
 	INCBIN "gfx/pokemon/sandshrew_alolan/front.dimensions"
 	abilities_for SANDSHREW_ALOLAN, SNOW_CLOAK, SNOW_CLOAK, SLUSH_RUSH
 	db GROWTH_MEDIUM_FAST ; growth rate

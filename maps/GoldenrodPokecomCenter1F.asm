@@ -52,7 +52,7 @@ GoldenrodPokecomCenter1F_MapScriptHeader:
 
 JudgeMachineScreenCallback:
 	checkflag ENGINE_JUDGE_MACHINE
-	iffalse .Done
+	iffalsefwd .Done
 	changeblock 24, 0, $49
 	changeblock 26, 0, $4a
 	changeblock 28, 0, $4b
@@ -112,7 +112,7 @@ GoldenrodPokecenter1FPokefanF:
 	writetext GoldenrodPokecenter1FPokefanFThisIsForYouText
 	waitbutton
 	verbosegiveitem EVIOLITE
-	iffalse .NoRoomForEviolite
+	iffalsefwd .NoRoomForEviolite
 	setevent EVENT_GOT_EVIOLITE_IN_GOLDENROD
 	jumpthisopenedtext
 
@@ -179,7 +179,7 @@ WonderTradeReceptionistScript:
 	writetext WonderTradeIntroText
 	waitbutton
 	checkevent EVENT_INTRODUCED_TEALA
-	iftrue .introduced
+	iftruefwd .introduced
 	writetext IntroduceTealaText
 	waitbutton
 	setevent EVENT_INTRODUCED_TEALA
@@ -187,7 +187,7 @@ WonderTradeReceptionistScript:
 	writetext WonderTradeExplanationText
 	promptbutton
 	special WonderTrade
-	iffalse .done
+	iffalsefwd .done
 	playmusic MUSIC_POKECOM_CENTER
 	writetext WonderTradeCompleteText
 	playsound SFX_DEX_FANFARE_80_109
@@ -353,7 +353,7 @@ GoldenrodPokecenter1FLassText_PidgeyMail:
 
 JudgeMachineEngineerScript:
 	checkevent EVENT_BRED_AN_EGG
-	iffalse .NotBredYet
+	iffalsefwd .NotBredYet
 	showtextfaceplayer JudgeMachineEngineerFinishedText
 	readvar VAR_FACING
 	ifnotequal RIGHT, .GoLeft

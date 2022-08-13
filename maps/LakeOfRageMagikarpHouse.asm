@@ -19,11 +19,11 @@ MagikarpLengthRaterScript:
 	faceplayer
 	opentext
 	checkevent EVENT_LAKE_OF_RAGE_ELIXIR_ON_STANDBY
-	iftrue .GetReward
+	iftruefwd .GetReward
 	checkevent EVENT_LAKE_OF_RAGE_ASKED_FOR_MAGIKARP
-	iftrue .AskedForMagikarp
+	iftruefwd .AskedForMagikarp
 	checkevent EVENT_CLEARED_ROCKET_HIDEOUT
-	iftrue .ClearedRocketHideout
+	iftruefwd .ClearedRocketHideout
 	checkevent EVENT_LAKE_OF_RAGE_EXPLAINED_WEIRD_MAGIKARP
 	iftrue_jumpopenedtext MagikarpLengthRaterText_MenInBlack
 	writetext MagikarpLengthRaterText_LakeOfRageHistory
@@ -40,20 +40,20 @@ MagikarpLengthRaterScript:
 	end
 
 .AskedForMagikarp:
-	setval MAGIKARP
+	setmonval MAGIKARP
 	special Special_FindThatSpecies
 	iffalse .ClearedRocketHideout
 	writetext MagikarpLengthRaterText_YouHaveAMagikarp
 	waitbutton
 	special CheckMagikarpLength
 	iffalse_jumpopenedtext MagikarpLengthRaterText_NotMagikarp
-	ifequal $1, .Refused
-	ifequal $2, .TooShort
+	ifequalfwd $1, .Refused
+	ifequalfwd $2, .TooShort
 .GetReward:
 	writetext MagikarpLengthRaterText_Memento
 	promptbutton
 	verbosegiveitem ELIXIR
-	iffalse .NoRoom
+	iffalsefwd .NoRoom
 	writetext MagikarpLengthRaterText_Bonus
 	waitbutton
 	closetext

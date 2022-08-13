@@ -21,15 +21,16 @@ The final, non-beta 3.0 release should include all of these.
 
 ### Mechanics
 
-* Add hidden grottoes throughout Johto
+* Option for 510 total limit on EVs
+* Finish adding hidden grottoes throughout Johto
 * Variety Channel with daily unique music
 * Separate radio channels for March and Lullaby, available every day
-* Generate random team for Psychic Inver
-* Wild Ghosts and the SilphScope2
+* Add more random team members for Psychic Inver
+* Wild Ghosts and the SilphScope2 in Lavender Town
 * More location-unique wild moves (see [material/moves.txt](material/moves.txt))
 * Finish wild rosters
 * DVs to vary palettes for trainers' duplicate Pokémon (e.g. Clair's Dragonairs)
-* Complete Alolan and Galarian forms
+* Make all the variant forms available
    * Persian as a one-time trade from an Alolan tourist (you can breed it for more)
    * Grimer/Muk in Goldenrod City (Celadon's Muk are a sign of its pollution, Goldenrod's Alolan Muk would be a sign that they manage pollution better)
    * Ponyta/Rapidash on Shamouti Island
@@ -46,16 +47,14 @@ The final, non-beta 3.0 release should include all of these.
 ### Events
 
 * Soul House + Radio Tower event to get Expn Card (see [tentative dialog](https://docs.google.com/document/d/1_IDuWAP-QBRC5l4grKZKKlfWKQ2BjC2Yo0aynmli1Ac/view))
-* Saffron Trainer Fan Club, where meeting certain conditions turns NPCs into you fan, whereupon they give you items (see [material/trainer-fan-club.txt](material/trainer-fan-club.txt))
+* Saffron Trainer Fan Club, where meeting certain conditions turns NPCs into your fan, whereupon they give you items (see [material/trainer-fan-club.txt](material/trainer-fan-club.txt))
 * Rematch Eusine in Celadon City if you have Suicune in your party
 * Rematch Bill in his house somehow
-* Calling Lyra should have more varied messages (see [material/lyra-dialog.txt](material/lyra-dialog.txt))
+* Calling Lyra should have more varied messages giving evolution advice like [B2/W2](https://bulbapedia.bulbagarden.net/wiki/Professor_Juniper/Quotes#Evolution_hints_.28Xtransceiver.29) (see [material/lyra-dialog.txt](material/lyra-dialog.txt))
 * Name trainers after anime characters (Jackson, Ritchie, Liza, Kidd, Lisa)
 * Acquire dolls from NPCs throughout the regions
-* Red goes back home after you battle him, and returns to Mt. Silver after you battle Green
+* Red goes back home after you battle him, and returns to Mt. Silver after you battle Green; Green disappears until you battle Red
 * Clarify that Silver dropped his trainer card, like in HGSS
-* Oak tells you to meet him in his lab after the Lance rematch to unlock Mt. Silver
-* Replace Skyla with Marlon (team: Politoed, Tentacruel, Blastoise, Starmie, Mantine, Cloyster, Vaporeon)
 * Nurse trainer class (heals you afterwards)
 * Gambler trainer class (uses Game Corner mons)
 * Soldier trainer class (in Lt. Surge's Gym; also ones elsewhere with Remoraid, Octillery, Forretress, Skarmory, Electrode, Donphan)
@@ -78,14 +77,14 @@ Maps need signs, NPCs, trainers (with [dialog](https://docs.google.com/document/
 * Valencia Island (signs and NPCs)
 * Route 49 (wild Pokémon and unique wild moves)
 * Safari Zone rest houses (NPCs and maybe trainers)
-* Reference the Pokéathlon Dome inside the Route 35 gate or Route 35 Coast
+* Reference the Pokéathlon Dome with workers/engineers inside the Route 35 gate and Route 35 Coast
 * Goldenrod Museum
+* Violet Outskirts with haunted house (EVENT_SAW_HAUNTED_ROOM)
 
 
 Shamouti Island:
 
 * Shamouti Island
-* Shamouti Hotel (haunted room) (EVENT_SAW_HAUNTED_ROOM)
 * Shamouti Restaurant (works like Seven Stars Restaurant) (different subset of all trainers every day of the week)
   - Should award Odd Souvenir to make it a renewable reward
 
@@ -93,7 +92,6 @@ Shamouti Island:
 ### Optimizations
 
 * Optimize map scripts with the various new commands and PERSONTYPE_GENERICTRAINER
-* Phone uses a bitfield to allow storing all numbers
 
 
 ## Postponed until 4.0
@@ -101,16 +99,6 @@ Shamouti Island:
 Some of these may never be added; they're just suggestions.
 
 * More Pokémon
-   * Rewrite everything to use two-byte IDs, allowing 65,534 Pokémon
-   * Restore Stantler as a Normal/Psychic type, and make Girafarig Psychic/Dark
-   * Add all the new babies and evolutions of Gen 1 and 2 Pokémon
-      * Lickilicky
-      * Ambipom
-      * Azurill
-      * Wynaut
-      * Happiny
-      * Bonsly
-      * Mantyke
    * Add Gen 3 and 4 Pokémon from [Hoenn Sound](https://bulbapedia.bulbagarden.net/wiki/Hoenn_Sound#Hoenn_Sound) and [Sinnoh Sound](https://bulbapedia.bulbagarden.net/wiki/Hoenn_Sound#Sinnoh_Sound)
       * Zigzagoon → Linoone
       * Whismur → Loudred → Exploud
@@ -170,12 +158,10 @@ Some of these may never be added; they're just suggestions.
    * PGo Battle! Legendary Raid (for Mew)
    * S/M Malie City (Day) (for Shamouti Shrine)
 * More Orange Islands
-* Add [Sweet Honey](http://iimarckus.org/i/sweet-honey/) that acts like Sweet Scent and attracts rare Pokémon
 * First Pokémon walks behind you ([comet's prototype](https://hax.iimarckus.org/topic/6248/) and [diff](https://github.com/yenatch/pokecrystal/commit/dbc5cd2025a0214c5b2cd1e3330f50603a0bb9d1))
 * Seasons with appropriate day/night lengths from B/W (affects palettes, tiles, wild Pokémon, dialog, accessible areas, etc)
 * Dive areas
 * Rock Climb areas
-* Battle Factory
 * Medals for achievements
 * Take photos with your team against backdrops
 * Something like Habitat Lists or DexNav via the Town Map

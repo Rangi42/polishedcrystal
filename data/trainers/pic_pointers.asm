@@ -117,6 +117,7 @@ TrainerPicPointers::
 	dba MysticalmanPic
 	dba KarateKingPic
 	dba TowerTycoonPic
+	dba FactoryHeadPic
 	dba JessieJamesPic
 	dba LoreleiPic
 	dba AgathaPic
@@ -139,6 +140,7 @@ TrainerPicPointers::
 	dba SkylaPic
 	dba ValeriePic
 	dba KukuiPic
+	dba MelonyPic
 	dba VictorPic
 	dba BillPic
 	dba YellowPic

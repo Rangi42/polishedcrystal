@@ -40,14 +40,14 @@ Route19_MapScriptHeader:
 Route19ClearSmashRocks:
 	disappear ROUTE19_ROCK1
 	checkevent EVENT_CINNABAR_ROCKS_CLEARED
-	iffalse .Done
+	iffalsefwd .Done
 	appear ROUTE19_ROCK1
 .Done:
 	endcallback
 
 Route19ClearRocks:
 	checkevent EVENT_CINNABAR_ROCKS_CLEARED
-	iftrue .Done
+	iftruefwd .Done
 	changeblock 6, 4, $7a
 	changeblock 8, 4, $7a
 	changeblock 10, 4, $7a
@@ -161,7 +161,7 @@ SwimmermHaroldSeenText:
 	cont "sea at night?"
 	done
 
-SwimmermHaroldBeatenText:
+SwimmermHaroldBeatenText: ; text > text
 	text "Glub…"
 	done
 

@@ -1,7 +1,7 @@
 SendMailToPC:
 	ld a, MON_ITEM
-	call GetPartyParamLocation
-	ld d, [hl]
+	call GetPartyParamLocationAndValue
+	ld d, a
 	call ItemIsMail
 	jr nc, .full
 	call GetMailboxCount
@@ -26,7 +26,7 @@ SendMailToPC:
 	ld bc, MAIL_STRUCT_LENGTH
 	rst ByteFill
 	ld a, MON_ITEM
-	call GetPartyParamLocation
+	call GetPartyParamLocationAndValue
 	ld [hl], 0
 	ld hl, sMailboxCount
 	inc [hl]
@@ -483,13 +483,12 @@ MailboxPC:
 	jr c, .exit2
 	push hl
 	ld a, MON_IS_EGG
-	call GetPartyParamLocation
-	bit MON_IS_EGG_F, [hl]
+	call GetPartyParamLocationAndValue
+	bit MON_IS_EGG_F, a
 	pop hl
 	jr nz, .egg
 	ld a, MON_ITEM
-	call GetPartyParamLocation
-	ld a, [hl]
+	call GetPartyParamLocationAndValue
 	and a
 	jr z, .attach_mail
 	ld hl, .HoldingMailText

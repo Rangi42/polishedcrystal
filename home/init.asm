@@ -94,8 +94,8 @@ Init::
 	ldh a, [hCGB]
 	push af
 	xor a
-	ld hl, HRAM_START
-	ld bc, HRAM_END - HRAM_START
+	ld hl, HRAM_Begin
+	ld bc, HRAM_End - HRAM_Begin
 	rst ByteFill
 	pop af
 	ldh [hCGB], a
@@ -107,7 +107,6 @@ Init::
 	ldh [rSVBK], a
 	call ClearVRAM
 	call ClearSprites
-	call ClearsScratch
 
 	; Write game version to WRAM.
 	ldh a, [rSVBK]
@@ -142,7 +141,7 @@ Init::
 	ldh [hSCY], a
 	ldh [rJOYP], a
 
-	ld a, $8 ; HBlank int enable
+	ld a, 1 << rSTAT_INT_MODE_0
 	ldh [rSTAT], a
 
 	ld a, $90
@@ -157,7 +156,7 @@ Init::
 
 	farcall InitSGBBorder
 
-	ld a, %11100011
+	ld a, LCDC_DEFAULT
 	; LCD on
 	; Win tilemap 1
 	; Win on
@@ -243,12 +242,3 @@ ClearWRAM::
 	cp 8
 	jr c, .bank_loop
 	ret
-
-ClearsScratch::
-	xor a
-	call GetSRAMBank
-	ld hl, sScratch
-	ld bc, $20
-	xor a
-	rst ByteFill
-	jmp CloseSRAM

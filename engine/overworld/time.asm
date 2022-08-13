@@ -111,14 +111,10 @@ UpdateTimeRemaining:
 RestartDailyResetTimer:
 	ld hl, wDailyResetTimer
 	ld a, 1
-	; fallthrough
-
-InitNDaysCountdown:
-	ld [hl], a
+	ld [hli], a
 	push hl
 	call UpdateTime
 	pop hl
-	inc hl
 	jr CopyDayToHL
 
 InitializeStartDay:
@@ -127,22 +123,6 @@ InitializeStartDay:
 CopyDayToHL:
 	ld a, [wCurDay]
 	ld [hl], a
-	ret
-
-RestartLuckyNumberCountdown:
-	call .GetDaysUntilNextFriday
-	ld hl, wLuckyNumberDayBuffer
-	jr InitNDaysCountdown
-
-.GetDaysUntilNextFriday:
-	call GetWeekday
-	cpl
-	add FRIDAY + 1 ; a = FRIDAY - a
-	jr z, .friday_saturday
-	ret nc
-
-.friday_saturday
-	add 7
 	ret
 
 CheckDailyResetTimer::
@@ -252,11 +232,41 @@ CheckPokerusTick::
 	call CalcDaysSince
 	ld a, [wDaysSince]
 	and a
-	jr z, .done ; not even a day has passed since game start
+	ret z ; not even a day has passed since game start
 	ld b, a
-	farcall ApplyPokerusTick
-.done
-	xor a
+
+	ld a, [wPartyCount]
+	and a
+	ret z ; don't waste time if we don't have any party members
+
+; shift all partymon pokerus values to the left b times
+; if this overflows the pokerus nybble, the infection no longer spreads
+	ld c, a
+	ld hl, wPartyMon1PokerusStatus
+.loop
+	ld a, [hl]
+	and POKERUS_MASK
+	jr z, .next
+	assert POKERUS_CURED & %1000
+	ld d, POKERUS_CURED ; no need to check if pokerus status = POKERUS_CURED, bit 3 is already set
+	ld e, b
+.inner_loop
+	rlca
+	cp POKERUS_MASK + 1
+	jr nc, .cured
+	dec e
+	jr nz, .inner_loop
+	ld d, a
+.cured
+	ld a, [hl]
+	and ~POKERUS_MASK
+	or d
+	ld [hl], a
+.next
+	ld de, PARTYMON_STRUCT_LENGTH
+	add hl, de
+	dec c
+	jr nz, .loop
 	ret
 
 GetMinutesSinceIfLessThan60:

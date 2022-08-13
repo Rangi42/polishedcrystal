@@ -4,9 +4,8 @@
 	db WATER, ICE ; type
 	db 45 ; catch rate
 	db 219 ; base exp
-	db ALWAYS_ITEM_2 ; item 1
-	db MYSTIC_WATER ; item 2
-	dn GENDER_F50, 7 ; gender ratio, step cycles to hatch
+	db ALWAYS_ITEM_2, MYSTIC_WATER ; held items
+	dn GENDER_F50, HATCH_SLOWEST ; gender ratio, step cycles to hatch
 	INCBIN "gfx/pokemon/lapras/front.dimensions"
 	abilities_for LAPRAS, WATER_ABSORB, SHELL_ARMOR, HYDRATION
 	db GROWTH_SLOW ; growth rate

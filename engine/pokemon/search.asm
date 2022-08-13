@@ -3,18 +3,24 @@ SpecialBeastsCheck:
 ; They must exist in either party or PC, and have the player's OT and ID.
 ; Return the result in hScriptVar.
 
-	ld a, RAIKOU
+	ld a, LOW(RAIKOU)
 	ldh [hScriptVar], a
+	xor a ; ld a, HIGH(RAIKOU) << MON_EXTSPECIES_F
+	ldh [hScriptVar+1], a
 	call CheckOwnMonAnywhere
 	jr nc, SpecialMonCheckFailed
 
-	ld a, ENTEI
+	ld a, LOW(ENTEI)
 	ldh [hScriptVar], a
+	xor a ; ld a, HIGH(ENTEI) << MON_EXTSPECIES_F
+	ldh [hScriptVar+1], a
 	call CheckOwnMonAnywhere
 	jr nc, SpecialMonCheckFailed
 
-	ld a, SUICUNE
+	ld a, LOW(SUICUNE)
 	ldh [hScriptVar], a
+	xor a ; ld a, HIGH(SUICUNE) << MON_EXTSPECIES_F
+	ldh [hScriptVar+1], a
 	call CheckOwnMonAnywhere
 	jr nc, SpecialMonCheckFailed
 
@@ -28,18 +34,24 @@ SpecialBirdsCheck:
 ; They must exist in either party or PC, and have the player's OT and ID.
 ; Return the result in hScriptVar.
 
-	ld a, ARTICUNO
+	ld a, LOW(ARTICUNO)
 	ldh [hScriptVar], a
+	ld a, HIGH(ARTICUNO) << MON_EXTSPECIES_F
+	ldh [hScriptVar+1], a
 	call CheckOwnMonAnywhere
 	jr nc, SpecialMonCheckFailed
 
-	ld a, ZAPDOS
+	ld a, LOW(ZAPDOS)
 	ldh [hScriptVar], a
+	ld a, HIGH(ZAPDOS) << MON_EXTSPECIES_F
+	ldh [hScriptVar+1], a
 	call CheckOwnMonAnywhere
 	jr nc, SpecialMonCheckFailed
 
-	ld a, MOLTRES
+	ld a, LOW(MOLTRES)
 	ldh [hScriptVar], a
+	ld a, HIGH(MOLTRES) << MON_EXTSPECIES_F
+	ldh [hScriptVar+1], a
 	call CheckOwnMonAnywhere
 	jr nc, SpecialMonCheckFailed
 
@@ -53,13 +65,17 @@ SpecialDuoCheck:
 ; They must exist in either party or PC, and have the player's OT and ID.
 ; Return the result in hScriptVar.
 
-	ld a, LUGIA
+	ld a, LOW(LUGIA)
 	ldh [hScriptVar], a
+	ld a, HIGH(LUGIA) << MON_EXTSPECIES_F
+	ldh [hScriptVar+1], a
 	call CheckOwnMonAnywhere
 	jr nc, SpecialMonCheckFailed
 
-	ld a, HO_OH
+	ld a, LOW(HO_OH)
 	ldh [hScriptVar], a
+	ld a, HIGH(HO_OH) << MON_EXTSPECIES_F
+	ldh [hScriptVar+1], a
 	call CheckOwnMonAnywhere
 	jr nc, SpecialMonCheckFailed
 
@@ -97,12 +113,19 @@ CheckOwnMonAnywhere:
 	jr z, .loop
 	ld c, MONS_PER_BOX
 .loop
-	farcall GetStorageBoxMon
+	call GetStorageBoxMon ; different section, same bank
 	jr z, .next
 
 	; Check if the species is correct
 	ld hl, wTempMonSpecies
 	ldh a, [hScriptVar]
+	cp [hl]
+	jr nz, .next
+
+	; Check if the extspecies is correct, too
+	ld a, [wTempMonExtSpecies]
+	and EXTSPECIES_MASK
+	ld hl, hScriptVar+1
 	cp [hl]
 	jr nz, .next
 

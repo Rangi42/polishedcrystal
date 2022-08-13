@@ -15,14 +15,14 @@ LyrasHouse2F_MapScriptHeader:
 
 	def_object_events
 	object_event  2,  3, SPRITE_LYRA, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, LyrasHouseLyraText, EVENT_LYRA_IN_HER_ROOM
-	pokemon_event  3,  3, PIDGEOT, -1, -1, PAL_NPC_BROWN, LyrasHousePidgeotText, EVENT_LYRA_IN_HER_ROOM
+	pokemon_event  3,  3, PIDGEOT, SPRITEMOVEDATA_POKEMON, -1, -1, PAL_NPC_BROWN, LyrasHousePidgeotText, EVENT_LYRA_IN_HER_ROOM
 	object_event  6,  2, SPRITE_N64, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, PAL_NPC_ROCK, OBJECTTYPE_COMMAND, jumptext, LyrasHouseN64Text, -1
 
 LyrasHouseRadio:
 	checkevent EVENT_GOT_A_POKEMON_FROM_ELM
-	iftrue .NormalRadio
+	iftruefwd .NormalRadio
 	checkevent EVENT_LISTENED_TO_INITIAL_RADIO
-	iftrue .AbbreviatedRadio
+	iftruefwd .AbbreviatedRadio
 	playmusic MUSIC_POKEMON_TALK
 	opentext
 	writetext LyrasRadioText1

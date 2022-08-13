@@ -26,7 +26,7 @@ AgathaScript:
 	faceplayer
 	opentext
 	checkevent EVENT_BEAT_AGATHA
-	iftrue AgathaAfterScript
+	iftruefwd AgathaAfterScript
 	writetext AgathaSeenText
 	waitbutton
 	closetext

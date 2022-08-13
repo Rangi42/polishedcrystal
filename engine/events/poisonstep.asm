@@ -59,15 +59,14 @@ DoPoisonStep::
 .DamageMonIfPoisoned:
 ; check if mon is poisoned, return if not
 	ld a, MON_STATUS
-	call GetPartyParamLocation
-	ld a, [hl]
+	call GetPartyParamLocationAndValue
 	and 1 << PSN
 	ret z
 
 ; check if mon is fainted, return if so
 	ld a, MON_HP
-	call GetPartyParamLocation
-	ld a, [hli]
+	call GetPartyParamLocationAndValue
+	inc hl
 	ld b, a
 	ld c, [hl]
 	or c
@@ -77,10 +76,10 @@ DoPoisonStep::
 	push hl
 	push bc
 	ld a, MON_SPECIES
-	call GetPartyParamLocation
-	ld c, [hl]
+	call GetPartyParamLocationAndValue
+	ld c, a
 	ld a, MON_ABILITY
-	call GetPartyParamLocation
+	call GetPartyParamLocationAndValue
 	call GetAbility
 	ld a, b
 	pop bc
@@ -105,7 +104,7 @@ DoPoisonStep::
 ; if 1 HP, heal poison
 .heal_poison
 	ld a, MON_STATUS
-	call GetPartyParamLocation
+	call GetPartyParamLocationAndValue
 	ld [hl], 0
 ; set carry and return %10
 	ld c, %10
@@ -134,7 +133,7 @@ DoPoisonStep::
 	callasm .PlayPoisonSFX
 	opentext
 	callasm .CheckWhitedOut
-	iffalse .whiteout
+	iffalsefwd .whiteout
 	closetext
 	end
 

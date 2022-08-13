@@ -42,14 +42,16 @@ BlackthornGym2FBoulders:
 
 .Disappear4:
 	disappear BLACKTHORNGYM2F_BOULDER1
-	sjump .Fall
+	sjumpfwd .Fall
 
 .Disappear5:
 	disappear BLACKTHORNGYM2F_BOULDER2
-	sjump .Fall
+	sjumpfwd .Fall
 
 .Disappear6:
 	disappear BLACKTHORNGYM2F_BOULDER3
+	; fallthrough
+
 .Fall:
 	pause 30
 	playsound SFX_STRENGTH

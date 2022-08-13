@@ -1,6 +1,5 @@
 SpecialHoOhChamber:
-	ld hl, wPartySpecies
-	ld a, [hl]
+	ld a, [wPartyMon1Species]
 	ld [wCurPartySpecies], a
 	ld [wCurSpecies], a
 	ld a, [wPartyMon1Form]
@@ -40,9 +39,8 @@ SpecialOmanyteChamber:
 	ld [wCurPartyMon], a
 	push bc
 	ld a, MON_ITEM
-	call GetPartyParamLocation
+	call GetPartyParamLocationAndValue
 	pop bc
-	ld a, [hl]
 	cp WATER_STONE
 	jr nz, .loop
 
@@ -119,7 +117,7 @@ Special_DisplayUnownWords:
 
 .copy
 	call .CopyWord
-	ld bc, wAttrMap - wTileMap
+	ld bc, wAttrmap - wTilemap
 	add hl, bc
 	call .FillAttr
 	call ApplyAttrAndTilemapInVBlank

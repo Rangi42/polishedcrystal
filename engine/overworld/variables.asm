@@ -7,8 +7,6 @@ VarActionTable:
 	dwb Var_BattleResult,               RETVAR_EXECUTE
 	dwb wBattleType,                    RETVAR_ADDR_DE
 	dwb wTimeOfDay,                     RETVAR_STRBUF2
-	dwb Var_CountCaughtMons,            RETVAR_EXECUTE
-	dwb Var_CountSeenMons,              RETVAR_EXECUTE
 	dwb Var_CountBadges,                RETVAR_EXECUTE
 	dwb wPlayerState,                   RETVAR_ADDR_DE
 	dwb Var_PlayerFacing,               RETVAR_EXECUTE
@@ -61,20 +59,6 @@ _Var_loadstringbuffer2:
 	ld [de], a
 	ret
 
-Var_CountCaughtMons:
-	ld hl, wPokedexCaught
-	ld b, wEndPokedexCaught - wPokedexCaught
-	call CountSetBits
-	ld a, [wNumSetBits]
-	jr _Var_loadstringbuffer2
-
-Var_CountSeenMons:
-	ld hl, wPokedexSeen
-	ld b, wEndPokedexSeen - wPokedexSeen
-	call CountSetBits
-	ld a, [wNumSetBits]
-	jr _Var_loadstringbuffer2
-
 Var_CountBadges:
 	ld hl, wBadges
 	ld b, wBadgesEnd - wBadges
@@ -94,22 +78,29 @@ Var_DayOfWeek:
 	jr _Var_loadstringbuffer2
 
 Var_UnownCaught:
-	call .count
-	ld a, b
-	jr _Var_loadstringbuffer2
+	push hl
+	push de
+	push bc
 
-.count
-	ld hl, wUnownDex
-	ld b, 0
+	assert !HIGH(UNOWN)
+	lb bc, NUM_UNOWN, UNOWN
+	ld d, 0
 .loop
-	ld a, [hli]
-	and a
-	ret z
-	inc b
-	ld a, b
-	cp NUM_UNOWN
-	jr c, .loop
-	ret
+	push de
+	push bc
+	call CheckCaughtMon
+	pop bc
+	pop de
+	jr z, .not_captured
+	inc d
+.not_captured
+	dec b
+	jr nz, .loop
+	ld a, d
+	pop bc
+	pop de
+	pop hl
+	jr _Var_loadstringbuffer2
 
 Var_BoxFreeSpace:
 ; Remaining database entries
@@ -142,14 +133,17 @@ Var_CountTrainerStars:
 .nostar2
 	; star for completing the Pokédex
 	push bc
-	ld hl, wPokedexCaught
-	ld b, wEndPokedexCaught - wPokedexCaught
-	call CountSetBits
-	pop bc
-	cp NUM_POKEMON
+	farcall Pokedex_CountSeenOwn
+	ld hl, wTempDexOwn
+	ld a, [hli]
+	cp HIGH(NUM_POKEMON)
+	jr c, .nostar3
+	ld a, [hl]
+	cp LOW(NUM_POKEMON)
 	jr c, .nostar3
 	inc b
 .nostar3
+	pop bc
 	; star for reading all Pokémon Journals
 	push bc
 	ld hl, wPokemonJournals

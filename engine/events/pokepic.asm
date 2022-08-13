@@ -3,6 +3,7 @@ Pokepic::
 	call CopyMenuHeader
 	call MenuBox
 	call UpdateSprites
+	ld de, wBGPals1 palette PAL_BG_TEXT + 2
 	ld a, [wCurForm]
 	cp -1
 	jr z, .partymon
@@ -10,10 +11,9 @@ Pokepic::
 	jr .got_palette
 .partymon
 	farcall LoadPartyMonPalette
-	ld hl, wPartyMon1Form
-	ld a, [wCurPartyMon]
-	call GetPartyLocation
-	farcall GetVariant
+	ld a, MON_FORM
+	call GetPartyParamLocationAndValue
+	ld [wCurForm], a
 .got_palette
 	call UpdateTimePals
 	xor a
@@ -58,7 +58,7 @@ Paintingpic::
 	call UpdateTimePals
 	ld de, PaintingFrameGFX
 	ld hl, vTiles0 tile ("┌" - 3)
-	lb bc, BANK(PaintingFrameGFX), 9
+	lb bc, BANK(PaintingFrameGFX), 11
 	call Get2bpp
 	ld hl, PokepicMenuDataHeader
 	call CopyMenuHeader

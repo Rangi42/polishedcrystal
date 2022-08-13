@@ -99,6 +99,34 @@ LearnMove:
 .pp_ok
 	ld [hl], b
 
+; Changes Pikachu's form if it learns Fly or Surf. Several assumptions:
+;   -- Pikachu can't forget Fly or Surf outside a move deleter, so we only care if it learns one of those moves
+;   -- player Pikachu cannot legally learn both Fly and Surf
+;   -- Pikachu can't learn Fly or Surf during a battle
+	ld a, MON_SPECIES
+	call GetPartyParamLocationAndValue
+	cp LOW(PIKACHU)
+	jr nz, .done_pikachu
+	assert !HIGH(PIKACHU)
+	ld bc, MON_FORM - MON_SPECIES
+	add hl, bc
+	ld a, [hl]
+	and EXTSPECIES_MASK
+	jr nz, .done_pikachu
+	ld a, [wPutativeTMHMMove]
+	cp FLY
+	ld b, PIKACHU_FLY_FORM
+	jr z, .got_form
+	cp SURF
+	ld b, PIKACHU_SURF_FORM
+	jr nz, .done_pikachu
+.got_form
+	ld a, [hl]
+	and ~FORM_MASK
+	or b
+	ld [hl], a
+
+.done_pikachu
 	ld a, [wBattleMode]
 	and a
 	jr z, .learned

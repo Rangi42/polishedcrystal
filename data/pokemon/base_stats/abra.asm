@@ -4,9 +4,8 @@
 	db PSYCHIC, PSYCHIC ; type
 	db 200 ; catch rate
 	db 73 ; base exp
-	db NO_ITEM ; item 1
-	db TWISTEDSPOON ; item 2
-	dn GENDER_F25, 3 ; gender ratio, step cycles to hatch
+	db NO_ITEM, TWISTEDSPOON ; held items
+	dn GENDER_F25, HATCH_MEDIUM_FAST ; gender ratio, step cycles to hatch
 	INCBIN "gfx/pokemon/abra/front.dimensions"
 	abilities_for ABRA, SYNCHRONIZE, MAGIC_GUARD, TRACE
 	db GROWTH_MEDIUM_SLOW ; growth rate

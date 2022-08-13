@@ -51,7 +51,7 @@ BattleCommand_perishsong:
 	jr z, .failed ; nobody was afflicted
 
 	call AnimateCurrentMove
-	ld hl, StartPerishText
+	ld hl, StartPerishSongText
 	jmp StdBattleTextbox
 
 .failed

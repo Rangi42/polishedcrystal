@@ -4,9 +4,8 @@
 	db ROCK, GROUND ; type
 	db 45 ; catch rate
 	db 144 ; base exp
-	db NO_ITEM ; item 1
-	db NO_ITEM ; item 2
-	dn GENDER_F50, 7 ; gender ratio, step cycles to hatch
+	db NO_ITEM, NO_ITEM ; held items
+	dn GENDER_F50, HATCH_SLOWEST ; gender ratio, step cycles to hatch
 	INCBIN "gfx/pokemon/pupitar/front.dimensions"
 if DEF(FAITHFUL)
 	abilities_for PUPITAR, SHED_SKIN, SHED_SKIN, SHED_SKIN

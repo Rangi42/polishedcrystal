@@ -58,34 +58,34 @@ CinnabarVolcano1FBouldersFall:
 
 .Disappear1:
 	disappear CINNABARVOLCANO1F_BOULDER1
-	sjump .Fall
+	sjumpfwd .Fall
 
 .Disappear2:
 	disappear CINNABARVOLCANO1F_BOULDER2
-	sjump .Fall
+	sjumpfwd .Fall
 
 .Disappear3:
 	disappear CINNABARVOLCANO1F_BOULDER3
-	sjump .Fall
+	sjumpfwd .Fall
 
 .Disappear4:
 	disappear CINNABARVOLCANO1F_BOULDER4
-	sjump .Fall
+	; fallthrough
 
 .Fall:
 	pause 30
-	scall .FX
-	jumptext CinnabarVolcano1FBoulderFellText
-
-.FX:
 	playsound SFX_STRENGTH
 	earthquake 80
-	end
+	jumpthistext
+
+	text "The boulder fell"
+	line "through!"
+	done
 
 CinnabarVolcano1FBuckScript:
 	faceplayer
 	checkevent EVENT_BEAT_BUCK
-	iftrue .Beaten
+	iftruefwd .Beaten
 	opentext
 	writetext .ChallengeText
 	yesorno
@@ -229,9 +229,4 @@ SuperNerdLuisSeenText:
 SuperNerdLuisBeatenText:
 	text "You just taught"
 	line "me…"
-	done
-
-CinnabarVolcano1FBoulderFellText:
-	text "The boulder fell"
-	line "through!"
 	done

@@ -1,11 +1,14 @@
-AdjustItemIndexes:
-	; #1: offset pointer table
+AdjustItemIndexesByPointerTable:
+	; #1: patch number offset
 	gethalfwordinc #temp, #1
-	ifeq #temp, 0xffff, .error_pointer
+	ifeq #temp, 0xffff, AdjustItemIndexes_ErrorPointer
 	getwordinc #r0, #1
-	iflt #temp, #build, AdjustItemIndexes
-
+	iflt #temp, #build, AdjustItemIndexesByPointerTable
+	;fall-through
+AdjustItemIndexes:
+	; #r0: pointer to offset
 	set #1, #zero
+	set #4, #zero
 	call .get_pocket
 
 	set #1, 1
@@ -21,7 +24,8 @@ AdjustItemIndexes:
 	call .get_pocket
 
 	set #1, .mon_callback
-	jump ApplyPartyPatches
+	ifge #curbuild, 7, ApplyPartyPatches
+	jump ApplyPartyPatchesOld
 
 .get_pocket
 	call GetGameDataOffsetConstant
@@ -31,7 +35,8 @@ AdjustItemIndexes:
 .pocket_loop
 	set #address, #r0
 	call .index_loop
-	seekfwd 1
+
+	readbyte #temp ; seekfwd 1
 	ifne #result, 0xff, .pocket_loop
 	return
 
@@ -48,9 +53,14 @@ AdjustItemIndexes:
 	add #result, #offset
 .done_loop
 	writebyte #result
+	ifne #4, 1, .no_checksum
+	decrement #1
+	seek #1
+	ifge #curbuild, 7, FixNewboxChecksum
+.no_checksum
 	return
 
-.error_pointer
+AdjustItemIndexes_ErrorPointer:
 	bufstring .error_string_pointer_1
 	bufnumber #build
 	bufstring .error_string_pointer_2
@@ -60,7 +70,7 @@ AdjustItemIndexes:
 .error_string_pointer_1
 	string "ERROR: Incoming build number "
 .error_string_pointer_2
-	string " out of range for GetItemIndexAdjustment"
+	string " out of range for AdjustItemIndexesByPointerTable"
 
 ResizePockets:
 	; #r0: version number

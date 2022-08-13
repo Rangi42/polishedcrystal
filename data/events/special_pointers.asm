@@ -1,4 +1,4 @@
-add_special: MACRO
+MACRO add_special
 \1Special::
 	dba \1
 ENDM
@@ -11,7 +11,7 @@ SpecialsPointers::
 	add_special Special_WaitForLinkedFriend
 	add_special Special_CheckLinkTimeout
 	add_special Special_TryQuickSave
-	add_special Special_CheckBothSelectedSameRoom
+	add_special PerformLinkChecks
 	add_special Special_FailedLinkToPast
 	add_special Special_CloseLink
 	add_special WaitForOtherPlayerToExit
@@ -89,7 +89,7 @@ SpecialsPointers::
 	add_special RandomPhoneRareWildMon
 	add_special RandomPhoneWildMon
 	add_special RandomPhoneMon
-	add_special MapCallbackSprites_LoadUsedSpritesGFX
+	add_special RefreshSprites
 	add_special PlaySlowCry
 	add_special SpecialSnorlaxAwake
 	add_special Special_OlderHaircutBrother
@@ -166,3 +166,6 @@ SpecialsPointers::
 	add_special Special_SetCopycatPalette
 	add_special Special_CurBoxFullCheck
 	add_special GetCurBoxName
+	add_special CountCaught
+	add_special CountSeen
+	add_special PickPsychicInverParty

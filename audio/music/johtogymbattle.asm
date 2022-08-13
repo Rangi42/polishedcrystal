@@ -284,7 +284,7 @@ Music_JohtoGymBattle_branch_ea55d:
 	octave 3
 	note D#, 2
 	note F#, 2
-	loopchannel 0, Music_JohtoGymBattle_branch_ea55d
+	jumpchannel Music_JohtoGymBattle_branch_ea55d
 
 Music_JohtoGymBattle_Ch2:
 	dutycycle $3
@@ -610,7 +610,7 @@ Music_JohtoGymBattle_branch_ea6ee:
 	octave 3
 	note B_, 16
 	note G_, 16
-	loopchannel 0, Music_JohtoGymBattle_branch_ea6ee
+	jumpchannel Music_JohtoGymBattle_branch_ea6ee
 
 Music_JohtoGymBattle_Ch3:
 	notetype $c, $19
@@ -896,7 +896,7 @@ Music_JohtoGymBattle_branch_ea83f:
 	note F#, 2
 	note F_, 2
 	note D#, 2
-	loopchannel 0, Music_JohtoGymBattle_branch_ea83f
+	jumpchannel Music_JohtoGymBattle_branch_ea83f
 
 Music_JohtoGymBattle_branch_ea952:
 	note G_, 2

@@ -14,6 +14,7 @@ MomPhoneLandmarkText:
 	para "Isn't that where"
 	line ""
 	text_ram wStringBuffer4
+	text ""
 
 	para "is? Did you go"
 	line "take a look?"

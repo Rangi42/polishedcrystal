@@ -283,10 +283,10 @@ StartTrainerBattle_SetUpForSpinOutro:
 	ld [wBattleTransitionCounter], a
 	ret
 
-spintable_entry: MACRO
+MACRO spintable_entry
 	db \1
 	dw .wedge\2
-	dw \4 * SCREEN_WIDTH + \3 + wAttrMap
+	dw \4 * SCREEN_WIDTH + \3 + wAttrmap
 ENDM
 
 ; quadrants
@@ -493,7 +493,7 @@ StartTrainerBattle_SpeckleToBlack:
 	jr nc, .x_loop
 	ld c, a
 
-	hlcoord 0, -1, wAttrMap
+	hlcoord 0, -1, wAttrmap
 	ld de, SCREEN_WIDTH
 	inc b
 
@@ -561,7 +561,7 @@ StartTrainerBattle_LoadPokeBallGraphics:
 	ldh [hBattlePalFadeMode], a
 
 	; use PAL_BG_RED for the whole flashing screen
-	hlcoord 0, 0, wAttrMap
+	hlcoord 0, 0, wAttrmap
 	ld bc, SCREEN_WIDTH * SCREEN_HEIGHT
 .loop1
 	ld a, [hl]
@@ -600,7 +600,7 @@ StartTrainerBattle_LoadPokeBallGraphics:
 	ld [hl], "<PHONE>"
 	push hl
 	push bc
-	ld bc, wAttrMap - wTileMap
+	ld bc, wAttrmap - wTilemap
 	add hl, bc
 	ld [hl], PAL_BG_GRAY ; poke ball
 	pop bc
@@ -850,10 +850,10 @@ WipeLYOverrides:
 	jr nz, .loop
 	ret
 
-zoombox: MACRO
+MACRO zoombox
 ; width, height, start y, start x
 	db \1, \2
-	dw \4 * SCREEN_WIDTH + \3 + wAttrMap
+	dw \4 * SCREEN_WIDTH + \3 + wAttrmap
 ENDM
 
 StartTrainerBattle_ZoomToBlack:

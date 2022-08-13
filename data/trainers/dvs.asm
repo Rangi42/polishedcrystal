@@ -119,6 +119,7 @@ TrainerClassDVsAndPersonality:
 	db  88, $DD, $DD, $DD, ABILITY_1 | QUIRKY, MALE   ; mysticalman
 	db  88, PERFECT_DVS,   ABILITY_1 | QUIRKY, MALE   ; karate king
 	db 252, PERFECT_DVS,   ABILITY_1 | QUIRKY, MALE   ; towertycoon
+	db 252, PERFECT_DVS,   ABILITY_1 | QUIRKY, MALE   ; factoryhead
 	db  88, $BB, $B8, $BB, ABILITY_1 | QUIRKY, MALE   ; jessie&james
 	db 252, PERFECT_DVS,   ABILITY_1 | QUIRKY, FEMALE ; lorelei
 	db 252, PERFECT_DVS,   ABILITY_1 | QUIRKY, FEMALE ; agatha
@@ -141,6 +142,7 @@ TrainerClassDVsAndPersonality:
 	db 252, PERFECT_DVS,   ABILITY_1 | QUIRKY, FEMALE ; skyla
 	db 252, PERFECT_DVS,   ABILITY_1 | QUIRKY, FEMALE ; valerie
 	db 252, PERFECT_DVS,   ABILITY_1 | QUIRKY, MALE   ; kukui
+	db 252, PERFECT_DVS,   ABILITY_1 | QUIRKY, FEMALE ; melony
 	db 192, $EE, $EE, $EE, ABILITY_1 | QUIRKY, MALE   ; victor
 	db 252, PERFECT_DVS,   ABILITY_1 | QUIRKY, MALE   ; bill
 	db 252, $EE, $EE, $EE, ABILITY_1 | QUIRKY, FEMALE ; yellow

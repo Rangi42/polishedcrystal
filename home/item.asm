@@ -55,34 +55,52 @@ CountItem::
 	jmp PopBCDEHL
 
 ReceiveKeyItem::
-	ld a, [wCurKeyItem]
-	ld e, a
-	ld d, 0
-	ld b, SET_FLAG
-	ld hl, wKeyItems
-	call FlagAction
+; Adds the key item if not already obtained, and shifts the terminator.
+	; This also leaves registers in such a way that we can append it directly.
+	call CheckKeyItem
+	ccf
+	ret nc
+	ld [hld], a
+	ld [hl], e
 	scf
 	ret
 
 TossKeyItem::
+; Tosses the key item if found and shifts everything backwards.
 	ld a, [wCurKeyItem]
 	ld e, a
-	ld d, 0
-	ld b, RESET_FLAG
 	ld hl, wKeyItems
-	call FlagAction
+.loop
+	ld d, h
+	ld a, [hli]
+	and a
+	ret z
+	cp e
+	jr nz, .loop
+	ld e, l
+	dec e
+.loop2
+	ld a, [hli]
+	ld [de], a
+	inc de
+	and a
+	jr nz, .loop2
 	scf
 	ret
 
 CheckKeyItem::
+; Returns carry if we found the key item.
 	ld a, [wCurKeyItem]
+_CheckKeyItem::
 	ld e, a
-	ld d, 0
-	ld b, CHECK_FLAG
 	ld hl, wKeyItems
-	call FlagAction
-	ret z
+.loop
+	ld a, [hli]
+	cp e
 	scf
+	ret z
+	and a
+	jr nz, .loop
 	ret
 
 CheckUniqueItemPocket::

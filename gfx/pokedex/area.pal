@@ -1,0 +1,55 @@
+if !DEF(MONOCHROME)
+	; BG3: land and water
+	RGB 31, 31, 31
+	RGB 00, 24, 15
+	RGB 00, 20, 12
+	RGB 00, 00, 00
+
+	; BG4: routes and cliffs
+	RGB 31, 31, 31
+	RGB 08, 26, 17
+	RGB 00, 24, 15
+	RGB 00, 16, 10
+
+	; BG5: cliff caves
+	RGB 22, 28, 24
+	RGB 15, 24, 20
+	RGB 08, 26, 17
+	RGB 00, 16, 10
+
+	; BG6: cities and landmarks
+	RGB 22, 28, 24
+	RGB 15, 24, 20
+	RGB 00, 24, 15
+	RGB 00, 16, 10
+
+	; BG7: water routes
+	RGB 22, 28, 24
+	RGB 15, 24, 20
+	RGB 00, 20, 12
+	RGB 00, 16, 10
+else
+	; BG3: land and water
+	MONOCHROME_RGB_FOUR
+
+	; BG4: routes and cliffs
+	RGB_MONOCHROME_WHITE
+	RGB_MONOCHROME_WHITE
+	RGB_MONOCHROME_LIGHT
+	RGB_MONOCHROME_BLACK
+
+	; BG5: cliff caves
+	RGB_MONOCHROME_WHITE
+	RGB_MONOCHROME_LIGHT
+	RGB_MONOCHROME_WHITE
+	RGB_MONOCHROME_BLACK
+
+	; BG6: cities and landmarks
+	RGB_MONOCHROME_WHITE
+	RGB_MONOCHROME_LIGHT
+	RGB_MONOCHROME_LIGHT
+	RGB_MONOCHROME_BLACK
+
+	; BG7: water routes
+	MONOCHROME_RGB_FOUR
+endc

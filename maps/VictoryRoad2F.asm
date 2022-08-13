@@ -38,16 +38,16 @@ VictoryRoadRivalLeft:
 	showtext VictoryRoadRivalBeforeText
 	setevent EVENT_RIVAL_VICTORY_ROAD
 	checkevent EVENT_GOT_TOTODILE_FROM_ELM
-	iftrue UnknownScript_0x744ff
+	iftruefwd UnknownScript_0x744ff
 	checkevent EVENT_GOT_CHIKORITA_FROM_ELM
-	iftrue UnknownScript_0x7450f
+	iftruefwd UnknownScript_0x7450f
 	winlosstext VictoryRoadRivalDefeatText, VictoryRoadRivalVictoryText
 	setlasttalked VICTORYROAD2F_SILVER
 	loadtrainer RIVAL1, RIVAL1_15
 	startbattle
 	dontrestartmapmusic
 	reloadmapafterbattle
-	sjump UnknownScript_0x7451f
+	sjumpfwd UnknownScript_0x7451f
 
 UnknownScript_0x744ff:
 	winlosstext VictoryRoadRivalDefeatText, VictoryRoadRivalVictoryText
@@ -56,7 +56,7 @@ UnknownScript_0x744ff:
 	startbattle
 	dontrestartmapmusic
 	reloadmapafterbattle
-	sjump UnknownScript_0x7451f
+	sjumpfwd UnknownScript_0x7451f
 
 UnknownScript_0x7450f:
 	winlosstext VictoryRoadRivalDefeatText, VictoryRoadRivalVictoryText
@@ -65,7 +65,7 @@ UnknownScript_0x7450f:
 	startbattle
 	dontrestartmapmusic
 	reloadmapafterbattle
-	sjump UnknownScript_0x7451f
+	; fallthrough
 
 UnknownScript_0x7451f:
 	special DeleteSavedMusic

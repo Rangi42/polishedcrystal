@@ -7,9 +7,8 @@ HBlankCopy2bpp::
 	ld a, [hli]
 	ld d, a ; destination
 
-	ld a, [hli] ; source
-	ld h, [hl]
-	ld l, a
+	ld sp, hl ; source
+	pop hl
 	ld sp, hl ; set source to sp
 	ld a, h ; save source high byte for later
 	ld h, d ; exchange hl and de
@@ -29,11 +28,11 @@ HBlankCopy2bpp::
 	pop de
 .waitNoHBlank
 	ldh a, [rSTAT]
-	and 3
+	and rSTAT_MODE_MASK
 	jr z, .waitNoHBlank
 .waitHBlank
 	ldh a, [rSTAT]
-	and 3
+	and rSTAT_MODE_MASK
 	jr nz, .waitHBlank
 ; preloads r us
 	ld a, c

@@ -4,9 +4,8 @@
 	db BUG, BUG ; type
 	db 255 ; catch rate
 	db 53 ; base exp
-	db NO_ITEM ; item 1
-	db NO_ITEM ; item 2
-	dn GENDER_F50, 2 ; gender ratio, step cycles to hatch
+	db NO_ITEM, NO_ITEM ; held items
+	dn GENDER_F50, HATCH_FAST ; gender ratio, step cycles to hatch
 	INCBIN "gfx/pokemon/caterpie/front.dimensions"
 	abilities_for CATERPIE, SHIELD_DUST, SHIELD_DUST, RUN_AWAY
 	db GROWTH_MEDIUM_FAST ; growth rate

@@ -54,23 +54,13 @@ endc
 	call DisplayHourOClock
 	ld c, 10
 	call DelayFrames
-
 .SetHourLoop:
 	call JoyTextDelay
 	call SetHour
 	jr nc, .SetHourLoop
 
-	ld a, [wInitHourBuffer]
-	ld [wStringBuffer2 + 1], a
 	call .ClearScreen
-	ld hl, Text_WhatHrs
-	call PrintText
-	call YesNoBox
-	jr nc, .HourIsSet
-	call .ClearScreen
-	jr .loop
 
-.HourIsSet:
 	ld hl, Text_HowManyMinutes
 	call PrintText
 	hlcoord 11, 7
@@ -84,23 +74,21 @@ endc
 	call DisplayMinutesWithMinString
 	ld c, 10
 	call DelayFrames
-
 .SetMinutesLoop:
 	call JoyTextDelay
 	call SetMinutes
 	jr nc, .SetMinutesLoop
 
-	ld a, [wInitMinuteBuffer]
-	ld [wStringBuffer2 + 2], a
 	call .ClearScreen
-	ld hl, Text_WhoaMins
+
+	ld hl, Text_WhoaHoursMins
 	call PrintText
 	call YesNoBox
-	jr nc, .MinutesAreSet
+	jr nc, .done
 	call .ClearScreen
-	jr .HourIsSet
+	jr .loop
 
-.MinutesAreSet:
+.done:
 	call SetTimeOfDay
 	ld hl, OakText_ResponseToSetTime
 	call PrintText
@@ -177,6 +165,7 @@ DisplayHourOClock:
 _DisplayHourOClock:
 	push hl
 	ld a, [wInitHourBuffer]
+	ld [wStringBuffer2 + 1], a
 	ld c, a
 	ld e, l
 	ld d, h
@@ -238,6 +227,8 @@ SetMinutes:
 
 DisplayMinutesWithMinString:
 	ld de, wInitMinuteBuffer
+	ld a, [de]
+	ld [wStringBuffer2 + 2], a
 	call PrintTwoDigitNumberRightAlign
 	inc hl
 	ld de, String_min
@@ -266,20 +257,6 @@ Text_WhatTimeIsIt:
 String_oclock:
 	db "o'clock@"
 
-Text_WhatHrs:
-	; What?@ @
-	text_far _OakTimeWhatHoursText
-	text_asm
-	hlcoord 1, 16
-	call _DisplayHourOClock
-	ld hl, .QuestionMark
-	ret
-
-.QuestionMark:
-	; ?
-	text_far _OakTimeHoursQuestionMarkText
-	text_end
-
 Text_HowManyMinutes:
 	; How many minutes?
 	text_far _OakTimeHowManyMinutesText
@@ -288,52 +265,43 @@ Text_HowManyMinutes:
 String_min:
 	db "min.@"
 
-Text_WhoaMins:
+Text_WhoaHoursMins:
 	; Whoa!@ @
-	text_far _OakTimeWhoaMinutesText
+	text_far _OakTimeWhoaText
 	text_asm
-	hlcoord 7, 14
-	call DisplayMinutesWithMinString
+	decoord 1, 16
+	call PrintHourColonMinute
 	ld hl, .QuestionMark
 	ret
 
 .QuestionMark:
 	; ?
-	text_far _OakTimeMinutesQuestionMarkText
+	text_far _OakTimeQuestionMarkText
 	text_end
 
 OakText_ResponseToSetTime:
 	text_asm
 	decoord 1, 14
-	ld a, [wInitHourBuffer]
-	ld c, a
-	call PrintHour
-	ld a, ":"
-	ld [hli], a
-	ld de, wInitMinuteBuffer
-	lb bc, PRINTNUM_LEADINGZEROS | 1, 2
-	call PrintNum
-	ld b, h
-	ld c, l
+	call PrintHourColonMinute
 	ld a, [wInitHourBuffer]
 	cp MORN_HOUR
-	jr c, .NITE
+	jr c, .nite
 	cp DAY_HOUR
-	jr c, .MORN
+	jr c, .morn
 	cp EVE_HOUR
-	jr c, .DAY
+	jr c, .day
 	cp NITE_HOUR
-	jr c, .EVE
-.NITE:
+	jr c, .eve
+.nite:
 	ld hl, .sodark
 	ret
-.MORN:
+.morn:
 	ld hl, .overslept
 	ret
-.DAY:
+.day:
 	ld hl, .yikes
 	ret
-.EVE:
+.eve:
 	ld hl, .napped
 	ret
 
@@ -571,6 +539,19 @@ PrintHour:
 	ld [wTextDecimalByte], a
 	ld de, wTextDecimalByte
 	jmp PrintTwoDigitNumberRightAlign
+
+PrintHourColonMinute:
+	ld a, [wInitHourBuffer]
+	ld c, a
+	call PrintHour
+	ld a, ":"
+	ld [hli], a
+	ld de, wInitMinuteBuffer
+	lb bc, PRINTNUM_LEADINGZEROS | 1, 2
+	call PrintNum
+	ld b, h
+	ld c, l
+	ret
 
 GetTimeOfDayString:
 	ld a, c

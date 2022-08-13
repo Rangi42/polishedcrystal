@@ -38,7 +38,7 @@ RadioTower1FLuckyNumberManScript:
 	writetext RadioTower1FLuckyNumberManAskToPlayText
 	waitbutton
 	checkevent EVENT_INTRODUCED_FELICITY
-	iftrue .introduced
+	iftruefwd .introduced
 	writetext IntroduceFelicityText
 	waitbutton
 	setevent EVENT_INTRODUCED_FELICITY
@@ -46,13 +46,13 @@ RadioTower1FLuckyNumberManScript:
 	writetext ExplainLuckyNumberShowText
 	promptbutton
 	special Special_CheckLuckyNumberShowFlag
-	iffalse .skip
+	iffalsefwd .skip
 	special Special_ResetLuckyNumberShowFlag
 .skip
 	special Special_PrintTodaysLuckyNumber
 	checkflag ENGINE_LUCKY_NUMBER_SHOW
 	iftrue_jumpopenedtext RadioTower1FLuckyNumberManComeAgainText
-	writetext RadioTower1FLuckyNumberManThisWeeksIdIsText
+	writetext RadioTower1FLuckyNumberManTodayIdIsText
 	promptbutton
 	closetext
 	applymovement RADIOTOWER1F_FELICITY, RadioTower1FLuckyNumberManGoToPCMovement
@@ -68,11 +68,11 @@ RadioTower1FLuckyNumberManScript:
 	closetext
 	applymovement RADIOTOWER1F_FELICITY, RadioTower1FLuckyNumberManReturnToPlayerMovement
 	opentext
-	ifequal 5, .FirstPlace
-	ifequal 4, .SecondPlace
-	ifequal 3, .ThirdPlace
-	ifequal 2, .FourthPlace
-	ifequal 1, .FifthPlace
+	ifequalfwd 5, .FirstPlace
+	ifequalfwd 4, .SecondPlace
+	ifequalfwd 3, .ThirdPlace
+	ifequalfwd 2, .FourthPlace
+	ifequalfwd 1, .FifthPlace
 	jumpopenedtext RadioTower1FLuckyNumberManNoneOfYourIDNumbersMatchText
 
 .FirstPlace:
@@ -132,7 +132,7 @@ RadioTower1FLuckyNumberManScript:
 
 RadioTower1FLuckyNumberManComeAgainText:
 	text "Please come back"
-	line "next week for the"
+	line "tomorrow for the"
 	cont "next Lucky Number."
 	done
 
@@ -146,27 +146,27 @@ RadioTower1FRadioCardWomanScript:
 	iffalse_jumpopenedtext RadioTower1FRadioCardWomanNotTakingQuizText
 	writetext RadioTower1FRadioCardWomanQuestion1Text
 	yesorno
-	iffalse .WrongAnswer
+	iffalsefwd .WrongAnswer
 	playsound SFX_ELEVATOR_END
 	waitsfx
 	writetext RadioTower1FRadioCardWomanQuestion2Text
 	yesorno
-	iffalse .WrongAnswer
+	iffalsefwd .WrongAnswer
 	playsound SFX_ELEVATOR_END
 	waitsfx
 	writetext RadioTower1FRadioCardWomanQuestion3Text
 	yesorno
-	iftrue .WrongAnswer
+	iftruefwd .WrongAnswer
 	playsound SFX_ELEVATOR_END
 	waitsfx
 	writetext RadioTower1FRadioCardWomanQuestion4Text
 	yesorno
-	iftrue .WrongAnswer
+	iftruefwd .WrongAnswer
 	playsound SFX_ELEVATOR_END
 	waitsfx
 	writetext RadioTower1FRadioCardWomanQuestion5Text
 	yesorno
-	iftrue .WrongAnswer
+	iftruefwd .WrongAnswer
 	playsound SFX_ELEVATOR_END
 	waitsfx
 	writetext RadioTower1FRadioCardWomanYouWinText
@@ -279,8 +279,8 @@ ExplainLuckyNumberShowText:
 	line "you win a prize."
 	done
 
-RadioTower1FLuckyNumberManThisWeeksIdIsText:
-	text "This week's ID"
+RadioTower1FLuckyNumberManTodayIdIsText:
+	text "Today's lucky ID"
 	line "number is "
 	text_ram wStringBuffer3
 	text "."
@@ -291,7 +291,7 @@ RadioTower1FLuckyNumberManCheckIfMatchText:
 	line "have a match."
 	done
 
-RadioTower1FLuckyNumberManDotDotDotText:
+RadioTower1FLuckyNumberManDotDotDotText: ; text > text
 	text "……"
 	line "……"
 	done

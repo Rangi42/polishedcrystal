@@ -57,7 +57,7 @@ CeruleanCapeDateInterruptedTrigger1:
 	applymovement CERULEANCAPE_MISTY, Route25MistyApproachesPlayerMovement1
 	showtext Route25MistyDateText
 	applymovement CERULEANCAPE_MISTY, Route25MistyLeavesPlayerMovement1
-	sjump CeruleanCapeDateFinishScript
+	sjumpfwd CeruleanCapeDateFinishScript
 
 CeruleanCapeDateInterruptedTrigger2:
 	showemote EMOTE_HEART, CERULEANCAPE_MISTY, 15
@@ -310,7 +310,7 @@ TrainerLadyJessica:
 	endifjustbattled
 	opentext
 	checkevent EVENT_SPOKE_TO_LADY_JESSICA
-	iftrue .SpokeAgain
+	iftruefwd .SpokeAgain
 	writetext .AfterText1
 	setevent EVENT_SPOKE_TO_LADY_JESSICA
 	waitendtext

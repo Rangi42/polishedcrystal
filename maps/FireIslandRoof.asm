@@ -21,7 +21,7 @@ FireIslandRoofCandelaScript:
 	opentext
 	writetext .GreetingText
 	yesorno
-	iffalse .Refused
+	iffalsefwd .Refused
 	writetext .SeenText
 	waitbutton
 	closetext

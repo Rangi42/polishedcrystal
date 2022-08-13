@@ -18,7 +18,7 @@ EcruteakShrineInside_MapScriptHeader:
 	object_event  3,  8, SPRITE_GRAMPS, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, EcruteakShrineInsideGrampsText, -1
 	object_event 10,  5, SPRITE_SAGE, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, EcruteakShrineInsideSageText, -1
 	object_event  1,  6, SPRITE_GRANNY, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, EcruteakShrineInsideGrannyText, -1
-	object_event 10,  3, SPRITE_MON_ICON, SPRITEMOVEDATA_POKEMON, 0, FURRET, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_SCRIPT, 0, ObjectEvent, -1
+	pokemon_event 10,  3, FURRET, SPRITEMOVEDATA_POKEMON, -1, -1, PAL_NPC_BROWN, ClearText, -1
 
 	object_const_def
 	const ECRUTEAKSHRINEINSIDE_REI
@@ -27,28 +27,28 @@ EcruteakShrineInsideReiScript:
 	faceplayer
 	opentext
 	checkflag ENGINE_DAILY_SHRINE_VISIT
-	iftrue .ReiDone
+	iftruefwd .ReiDone
 	writetext EcruteakShrineInsideReiGreetingText
 	loadmenu .ReiMenuDataHeader
 	verticalmenu
 	closewindow
-	ifequal $1, .ReiBless
-	ifequal $2, .ReiBattle
-	sjump .ReiCancel
+	ifequalfwd $1, .ReiBless
+	ifequalfwd $2, .ReiBattle
+	sjumpfwd .ReiCancel
 
 .ReiBless
 	writetext EcruteakShrineInsideReiBlessText
 	promptbutton
 	special Special_ReiBlessing
-	ifequal $0, .ReiCancel
-	ifequal $1, .EggBlessing
+	ifequalfwd $0, .ReiCancel
+	ifequalfwd $1, .EggBlessing
 	setflag ENGINE_DAILY_SHRINE_VISIT
 	writetext EcruteakShrineInsideReiBlessingText
 	special PlayCurMonCry
 	waitbutton
 	writetext EcruteakShrineInsideHappinessText
 	waitbutton
-	sjump .ReiDone
+	sjumpfwd .ReiDone
 
 .ReiBattle
 	writetext EcruteakShrineInsideReiBattleText
@@ -58,28 +58,29 @@ EcruteakShrineInsideReiScript:
 	winlosstext EcruteakShrineInsideReiBeatenText, 0
 	setlasttalked ECRUTEAKSHRINEINSIDE_REI
 	readvar VAR_BADGES
-	ifequal 16, .Battle3
+	ifequalfwd 16, .Battle3
 	checkevent EVENT_BEAT_ELITE_FOUR
-	iftrue .Battle2
+	iftruefwd .Battle2
 	loadtrainer REI, 1
 	startbattle
 	reloadmapafterbattle
-	sjump .AfterRematch
+	sjumpfwd .AfterRematch
 
 .Battle2:
 	loadtrainer REI, 2
 	startbattle
 	reloadmapafterbattle
-	sjump .AfterRematch
+	sjumpfwd .AfterRematch
 
 .Battle3:
 	loadtrainer REI, 3
 	startbattle
 	reloadmapafterbattle
-	sjump .AfterRematch
+	; fallthrough
 
 .AfterRematch:
 	opentext
+	; fallthrough
 
 .ReiDone
 	jumpopenedtext EcruteakShrineInsideReiComeAgainText

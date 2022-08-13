@@ -23,6 +23,8 @@ ROM0
 	"lcd"
 	org $0050
 	"timer"
+	org $0057
+	"Unused Tileset Data"
 	org $0058
 	"serial"
 ;	org $0060
@@ -33,6 +35,8 @@ ROM0
 	"Header"
 	org $0150
 	"Home"
+	org $3fd7
+	"Build Timestamp"
 
 ROMX $01
 	"bank1"
@@ -91,6 +95,7 @@ ROMX $11
 
 ROMX $12
 	"Crystal Features 1"
+	"Bill's PC"
 
 ROMX $13
 	"bank13"
@@ -230,6 +235,9 @@ WRAM0
 	"Misc 1300"
 	org $ced0
 	"Video"
+	"More WRAM 0"
+	org $cff0
+	"Options"
 
 WRAMX $1
 	org $d000
@@ -269,23 +277,29 @@ WRAMX $7
 	"Window Stack"
 
 SRAM $0
-	"Scratch"
+	"PokeDB bank 1B"
+	"Link Battle Data"
+	"SRAM Battle Tower"
+	org $a600
+	"SRAM Mail"
 	"SRAM Bank 0"
+	"PokeDB bank 2B"
 	org $b200
 	"Backup Save"
 
 SRAM $1
 	"Save"
-	"Active Box"
-	"Link Battle Data"
 	"SRAM Hall of Fame"
-	"SRAM Battle Tower"
+	"Active Box"
+	"PokeDB bank 1C"
+	"PokeDB bank 2C"
 
 SRAM $2
-	"Boxes 1-7"
+	"PokeDB bank 1A"
 
 SRAM $3
-	"Boxes 8-14"
+	"PokeDB bank 2A"
 
 HRAM
+	"OAM DMA"
 	"HRAM"

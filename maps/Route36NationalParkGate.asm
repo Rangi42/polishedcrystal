@@ -55,7 +55,7 @@ Route36NationalParkGateTrigger1:
 
 Route36NationalParkGateCheckIfContestRunning:
 	checkflag ENGINE_BUG_CONTEST_TIMER
-	iftrue .BugContestIsRunning
+	iftruefwd .BugContestIsRunning
 	setscene $0
 	endcallback
 
@@ -65,13 +65,13 @@ Route36NationalParkGateCheckIfContestRunning:
 
 Route36NationalParkGateCheckIfContestAvailable:
 	checkevent EVENT_WARPED_FROM_ROUTE_35_NATIONAL_PARK_GATE
-	iftrue .Return
+	iftruefwd .Return
 	readvar VAR_WEEKDAY
-	ifequal TUESDAY, .SetContestOfficer
-	ifequal THURSDAY, .SetContestOfficer
-	ifequal SATURDAY, .SetContestOfficer
+	ifequalfwd TUESDAY, .SetContestOfficer
+	ifequalfwd THURSDAY, .SetContestOfficer
+	ifequalfwd SATURDAY, .SetContestOfficer
 	checkflag ENGINE_BUG_CONTEST_TIMER
-	iftrue .SetContestOfficer
+	iftruefwd .SetContestOfficer
 	disappear ROUTE36NATIONALPARKGATE_OFFICER1
 	appear ROUTE36NATIONALPARKGATE_OFFICER2
 	endcallback
@@ -90,7 +90,7 @@ Route36NationalParkGateLeftTheContestEarly:
 	getnum $0
 	writetext Route35NationalParkGateOfficer1WantToFinishText
 	yesorno
-	iffalse .GoBackToContest
+	iffalsefwd .GoBackToContest
 	writetext Route36NationalParkGateOfficer1WaitHereForAnnouncementText
 	waitbutton
 	closetext
@@ -117,43 +117,43 @@ Route36NationalParkGateLeftTheContestEarly:
 
 .CopyContestants:
 	checkevent EVENT_BUG_CATCHING_CONTESTANT_1A
-	iftrue .Not1
+	iftruefwd .Not1
 	appear ROUTE36NATIONALPARKGATE_BUG_CATCHER1
 .Not1:
 	checkevent EVENT_BUG_CATCHING_CONTESTANT_2A
-	iftrue .Not2
+	iftruefwd .Not2
 	appear ROUTE36NATIONALPARKGATE_BUG_MANIAC
 .Not2:
 	checkevent EVENT_BUG_CATCHING_CONTESTANT_3A
-	iftrue .Not3
+	iftruefwd .Not3
 	appear ROUTE36NATIONALPARKGATE_COOLTRAINER_M
 .Not3:
 	checkevent EVENT_BUG_CATCHING_CONTESTANT_4A
-	iftrue .Not4
+	iftruefwd .Not4
 	appear ROUTE36NATIONALPARKGATE_POKEFAN_M
 .Not4:
 	checkevent EVENT_BUG_CATCHING_CONTESTANT_5A
-	iftrue .Not5
+	iftruefwd .Not5
 	appear ROUTE36NATIONALPARKGATE_BUG_CATCHER2
 .Not5:
 	checkevent EVENT_BUG_CATCHING_CONTESTANT_6A
-	iftrue .Not6
+	iftruefwd .Not6
 	appear ROUTE36NATIONALPARKGATE_YOUNGSTER1
 .Not6:
 	checkevent EVENT_BUG_CATCHING_CONTESTANT_7A
-	iftrue .Not7
+	iftruefwd .Not7
 	appear ROUTE36NATIONALPARKGATE_LASS
 .Not7:
 	checkevent EVENT_BUG_CATCHING_CONTESTANT_8A
-	iftrue .Not8
+	iftruefwd .Not8
 	appear ROUTE36NATIONALPARKGATE_BUG_CATCHER3
 .Not8:
 	checkevent EVENT_BUG_CATCHING_CONTESTANT_9A
-	iftrue .Not9
+	iftruefwd .Not9
 	appear ROUTE36NATIONALPARKGATE_YOUNGSTER2
 .Not9:
 	checkevent EVENT_BUG_CATCHING_CONTESTANT_10A
-	iftrue .Not10
+	iftruefwd .Not10
 	appear ROUTE36NATIONALPARKGATE_YOUNGSTER3
 .Not10:
 	special UpdateSprites
@@ -161,12 +161,12 @@ Route36NationalParkGateLeftTheContestEarly:
 
 Route36OfficerScriptContest:
 	readvar VAR_WEEKDAY
-	ifequal SUNDAY, .ContestNotOn
-	ifequal MONDAY, .ContestNotOn
-	ifequal WEDNESDAY, .ContestNotOn
-	ifequal FRIDAY, .ContestNotOn
+	ifequalfwd SUNDAY, .ContestNotOn
+	ifequalfwd MONDAY, .ContestNotOn
+	ifequalfwd WEDNESDAY, .ContestNotOn
+	ifequalfwd FRIDAY, .ContestNotOn
 	checkflag ENGINE_DAILY_BUG_CONTEST
-	iftrue Route36Officer_ContestHasConcluded
+	iftruefwd Route36Officer_ContestHasConcluded
 	faceplayer
 	opentext
 	callstd daytotext

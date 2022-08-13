@@ -102,6 +102,7 @@
 	const ICE_BODY
 	const SOLID_ROCK
 	const SNOW_WARNING
+	const HONEY_GATHER
 	const FRISK
 	const RECKLESS
 	const PICKPOCKET
@@ -132,6 +133,7 @@
 	const PRANKSTER
 	const SAND_FORCE
 	const FUR_COAT
+	const BULLETPROOF
 	const COMPETITIVE
 	const MEGA_LAUNCHER
 	const TOUGH_CLAWS
@@ -146,4 +148,7 @@
 	const NEUTRALIZING_GAS
 	const PASTEL_VEIL
 	const QUICK_DRAW
-NUM_ABILITIES EQU const_value
+	const STEELY_SPIRIT
+	const PERISH_BODY
+	const SCREEN_CLEANER
+DEF NUM_ABILITIES EQU const_value

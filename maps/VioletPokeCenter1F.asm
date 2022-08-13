@@ -44,15 +44,14 @@ VioletPokeCenter1FElmsAideScript:
 	faceplayer
 	opentext
 	checkevent EVENT_REFUSED_TO_TAKE_EGG_FROM_ELMS_AIDE
-	iftrue .SecondTimeAsking
+	iftruefwd .SecondTimeAsking
 	writetext .IntroText
-	sjump .AskTakeEgg
+	sjumpfwd .AskTakeEgg
 .SecondTimeAsking:
 	writetext .QuestionText
 .AskTakeEgg:
 	yesorno
-	iffalse .RefusedEgg
-	readvar VAR_PARTYCOUNT
+	iffalsefwd .RefusedEgg
 	giveegg TOGEPI
 	iffalse_jumpopenedtext .PartyAndBoxFull
 	setevent EVENT_GOT_TOGEPI_EGG_FROM_ELMS_AIDE
@@ -63,10 +62,10 @@ VioletPokeCenter1FElmsAideScript:
 	waitbutton
 	closetext
 	readvar VAR_FACING
-	ifequal UP, .AideWalksAroundPlayer
+	ifequalfwd UP, .AideWalksAroundPlayer
 	turnobject PLAYER, DOWN
 	applymovement VIOLETPOKECENTER1F_SCIENTIST, .WalkStraightMovement
-	sjump .Finish
+	sjumpfwd .Finish
 .AideWalksAroundPlayer:
 	applymovement VIOLETPOKECENTER1F_SCIENTIST, .WalkAroundMovement
 	turnobject PLAYER, DOWN
@@ -83,7 +82,7 @@ VioletPokeCenter1FElmsAideScript:
 	cont "#mon with you."
 
 	para "You have no space"
-	line "in your box, too."
+	line "in your Box, too."
 
 	para "I'll wait here"
 	line "while you make"

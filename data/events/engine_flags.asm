@@ -1,4 +1,4 @@
-engine_flag: MACRO
+MACRO engine_flag
 ; location, bit
 ; (all locations are in WRAM bank 1)
 	dwb \1 + (\2 / 8), 1 << (\2 % 8)
@@ -106,11 +106,12 @@ EngineFlags:
 	engine_flag wVisitedSpawns, 21 ; goldenrod
 	engine_flag wVisitedSpawns, 22 ; olivine
 	engine_flag wVisitedSpawns, 23 ; ecruteak
-	engine_flag wVisitedSpawns, 24 ; mahogany
-	engine_flag wVisitedSpawns, 25 ; yellow forest
-	engine_flag wVisitedSpawns, 26 ; lake of rage
-	engine_flag wVisitedSpawns, 27 ; blackthorn
-	engine_flag wVisitedSpawns, 28 ; silver cave
+	engine_flag wVisitedSpawns, 24 ; snowtop
+	engine_flag wVisitedSpawns, 25 ; mahogany
+	engine_flag wVisitedSpawns, 26 ; yellow forest
+	engine_flag wVisitedSpawns, 27 ; lake of rage
+	engine_flag wVisitedSpawns, 28 ; blackthorn
+	engine_flag wVisitedSpawns, 29 ; silver cave
 
 	engine_flag wLuckyNumberShowFlag, 0 ; lucky number show
 
@@ -167,8 +168,6 @@ EngineFlags:
 	engine_flag wPlayerGender, 0 ; player is female
 
 	engine_flag wCelebiEvent, 2 ; have gs ball after kurt examined it
-	engine_flag wCelebiEvent, 3 ; have silphscope2
-	engine_flag wCelebiEvent, 4 ; have shiny charm
 
 	; rematches
 	engine_flag wDailyRematchFlags, 0  ; jack

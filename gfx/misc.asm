@@ -74,11 +74,73 @@ KrisBackpic::  INCBIN "gfx/player/kris_back.2bpp.lz"
 LyraBackpic::  INCBIN "gfx/battle/lyra_back.2bpp.lz"
 
 
+SECTION "Emote Graphics", ROMX
+
+ShockEmote::    INCBIN "gfx/emotes/shock.2bpp.lz"
+QuestionEmote:: INCBIN "gfx/emotes/question.2bpp.lz"
+HappyEmote::    INCBIN "gfx/emotes/happy.2bpp.lz"
+SadEmote::      INCBIN "gfx/emotes/sad.2bpp.lz"
+HeartEmote::    INCBIN "gfx/emotes/heart.2bpp.lz"
+BoltEmote::     INCBIN "gfx/emotes/bolt.2bpp.lz"
+SleepEmote::    INCBIN "gfx/emotes/sleep.2bpp.lz"
+FishEmote::     INCBIN "gfx/emotes/fish.2bpp.lz"
+
+
 SECTION "Battle Graphics", ROMX
 
 SubstituteFrontpic:: INCBIN "gfx/battle/substitute-front.2bpp.lz"
 SubstituteBackpic::  INCBIN "gfx/battle/substitute-back.2bpp.lz"
 GhostFrontpic::      INCBIN "gfx/battle/ghost.2bpp.lz"
+
+
+SECTION "Battle Anim Graphics", ROMX
+
+AnimObj00GFX::
+AnimObjHitGFX::        INCBIN "gfx/battle_anims/hit.2bpp.lz"
+AnimObjCutGFX::        INCBIN "gfx/battle_anims/cut.2bpp.lz"
+AnimObjFireGFX::       INCBIN "gfx/battle_anims/fire.2bpp.lz"
+AnimObjWaterGFX::      INCBIN "gfx/battle_anims/water.2bpp.lz"
+AnimObjLightningGFX::  INCBIN "gfx/battle_anims/lightning.2bpp.lz"
+AnimObjSmokeGFX::      INCBIN "gfx/battle_anims/smoke.2bpp.lz"
+AnimObjExplosionGFX::  INCBIN "gfx/battle_anims/explosion.2bpp.lz"
+AnimObjIceGFX::        INCBIN "gfx/battle_anims/ice.2bpp.lz"
+AnimObjRocksGFX::      INCBIN "gfx/battle_anims/rocks.2bpp.lz"
+AnimObjPoisonGFX::     INCBIN "gfx/battle_anims/poison.2bpp.lz"
+AnimObjPlantGFX::      INCBIN "gfx/battle_anims/plant.2bpp.lz"
+AnimObjBubbleGFX::     INCBIN "gfx/battle_anims/bubble.2bpp.lz"
+AnimObjNoiseGFX::      INCBIN "gfx/battle_anims/noise.2bpp.lz"
+AnimObjReflectGFX::    INCBIN "gfx/battle_anims/reflect.2bpp.lz"
+AnimObjPowderGFX::     INCBIN "gfx/battle_anims/powder.2bpp.lz"
+AnimObjBeamGFX::       INCBIN "gfx/battle_anims/beam.2bpp.lz"
+AnimObjSpeedGFX::      INCBIN "gfx/battle_anims/speed.2bpp.lz"
+AnimObjChargeGFX::     INCBIN "gfx/battle_anims/charge.2bpp.lz"
+AnimObjWindGFX::       INCBIN "gfx/battle_anims/wind.2bpp.lz"
+AnimObjWhipGFX::       INCBIN "gfx/battle_anims/whip.2bpp.lz"
+AnimObjRopeGFX::       INCBIN "gfx/battle_anims/rope.2bpp.lz"
+AnimObjEggGFX::        INCBIN "gfx/battle_anims/egg.2bpp.lz"
+AnimObjPsychicGFX::    INCBIN "gfx/battle_anims/psychic.2bpp.lz"
+AnimObjSandGFX::       INCBIN "gfx/battle_anims/sand.2bpp.lz"
+AnimObjWebGFX::        INCBIN "gfx/battle_anims/web.2bpp.lz"
+AnimObjHazeGFX::       INCBIN "gfx/battle_anims/haze.2bpp.lz"
+AnimObjHornGFX::       INCBIN "gfx/battle_anims/horn.2bpp.lz"
+AnimObjFlowerGFX::     INCBIN "gfx/battle_anims/flower.2bpp.lz"
+AnimObjMiscGFX::       INCBIN "gfx/battle_anims/misc.2bpp.lz"
+AnimObjSkyAttackGFX::  INCBIN "gfx/battle_anims/skyattack.2bpp.lz"
+AnimObjGlobeGFX::      INCBIN "gfx/battle_anims/globe.2bpp.lz"
+AnimObjMoonGFX::       INCBIN "gfx/battle_anims/moon.2bpp.lz"
+AnimObjBugBuzzGFX::    INCBIN "gfx/battle_anims/bugbuzz.2bpp.lz"
+AnimObjLeafStormGFX::  INCBIN "gfx/battle_anims/leafstorm.2bpp.lz"
+AnimObjHeartsGFX::     INCBIN "gfx/battle_anims/hearts.2bpp.lz"
+AnimObjStarsGFX::      INCBIN "gfx/battle_anims/stars.2bpp.lz"
+AnimObjShapesGFX::     INCBIN "gfx/battle_anims/shapes.2bpp.lz"
+AnimObjStatusGFX::     INCBIN "gfx/battle_anims/status.2bpp.lz"
+AnimObjObjectsGFX::    INCBIN "gfx/battle_anims/objects.2bpp.lz"
+AnimObjShineGFX::      INCBIN "gfx/battle_anims/shine.2bpp.lz"
+AnimObjAngelsGFX::     INCBIN "gfx/battle_anims/angels.2bpp.lz"
+AnimObjWaveGFX::       INCBIN "gfx/battle_anims/wave.2bpp.lz"
+AnimObjAeroblastGFX::  INCBIN "gfx/battle_anims/aeroblast.2bpp.lz"
+AnimObjMiniGFX::       INCBIN "gfx/battle_anims/mini.2bpp.lz"
+AnimObjPokeBallBGGFX:: INCBIN "gfx/battle_balls/background.2bpp.lz"
 
 
 SECTION "Weather Icons", ROMX
@@ -116,6 +178,47 @@ AnimObjDuskBallGFX::    INCBIN "gfx/battle_balls/dusk_ball.2bpp.lz"
 AnimObjDreamBallGFX::   INCBIN "gfx/battle_balls/dream_ball.2bpp.lz"
 AnimObjPremierBallGFX:: INCBIN "gfx/battle_balls/premier_ball.2bpp.lz"
 AnimObjCherishBallGFX:: INCBIN "gfx/battle_balls/cherish_ball.2bpp.lz"
+
+
+SECTION "Painting Pics", ROMX
+
+HoOhPaintingPic::      INCBIN "gfx/paintings/ho_oh_painting.2bpp.lz"
+LugiaPaintingPic::     INCBIN "gfx/paintings/lugia_painting.2bpp.lz"
+BellTowerPaintingPic:: INCBIN "gfx/paintings/bell_tower_painting.2bpp.lz"
+KabutoPuzzlePic::      INCBIN "gfx/paintings/kabuto_puzzle.2bpp.lz"
+OmanytePuzzlePic::     INCBIN "gfx/paintings/omanyte_puzzle.2bpp.lz"
+AerodactylPuzzlePic::  INCBIN "gfx/paintings/aerodactyl_puzzle.2bpp.lz"
+HoOhPuzzlePic::        INCBIN "gfx/paintings/ho_oh_puzzle.2bpp.lz"
+
+
+SECTION "Bill's PC Graphics", ROMX
+
+BillsPC_CursorGFX:: INCBIN "gfx/pc/cursor.2bpp"
+BillsPC_TileGFX::   INCBIN "gfx/pc/pc.2bpp.lz"
+BillsPC_ObjGFX::    INCBIN "gfx/pc/obj.2bpp.lz"
+
+
+SECTION "Pokedex Graphics", ROMX
+
+PokedexTileLZ::     INCBIN "gfx/pokedex/pokedex.2bpp.lz"
+PokedexSlowpokeLZ:: INCBIN "gfx/pokedex/slowpoke.2bpp.lz"
+QuestionMarkLZ::    INCBIN "gfx/pokedex/question_mark.2bpp.lz"
+PokedexObjLZ::      INCBIN "gfx/pokedex/oam.2bpp.lz"
+
+
+SECTION "Pokedex Tilemaps", ROMX
+
+DexTilemaps:
+DexTilemap_Main::        INCBIN "gfx/pokedex/main.bin.lz"
+DexTilemap_Description:: INCBIN "gfx/pokedex/description.bin.lz"
+DexTilemap_Bio::         INCBIN "gfx/pokedex/bio.bin.lz"
+DexTilemap_Stats::       INCBIN "gfx/pokedex/stats.bin.lz"
+DexTilemap_Search::      INCBIN "gfx/pokedex/search.bin.lz"
+DexTilemap_Mode::        INCBIN "gfx/pokedex/mode.bin.lz"
+DexTilemap_Unown::       INCBIN "gfx/pokedex/unown.bin.lz"
+DexTilemap_Kanto::       INCBIN "gfx/pokedex/kanto.bin.lz"
+DexTilemap_Johto::       INCBIN "gfx/pokedex/johto.bin.lz"
+DexTilemap_Orange::      INCBIN "gfx/pokedex/orange.bin.lz"
 
 
 SECTION "SGB Border Graphics", ROMX

@@ -11,10 +11,25 @@ CheckUniqueWildMove:
 	cp -1
 	ret z
 	cp c
-	jr nz, .inc2andloop
+	jr nz, .inc3andloop
 	ld a, [hli] ; species
 	ld b, a
 	ld a, [wCurPartySpecies]
+	cp b
+	jr nz, .inc2andloop
+
+	; If form isn't specified in the unique wildmove list, any form will do.
+	ld a, [hli] ; form
+	ld b, a
+	and FORM_MASK
+	jr nz, .specific_form
+	ld a, [wCurForm]
+	and EXTSPECIES_MASK
+	jr .compare_form
+.specific_form
+	ld a, [wCurForm]
+	and SPECIESFORM_MASK
+.compare_form
 	cp b
 	jr nz, .inc1andloop
 	ld a, [hli] ; move
@@ -44,7 +59,7 @@ CheckUniqueWildMove:
 	jr .TeachMove
 .ChanceToTeach
 	call Random
-	cp 50 percent + 1
+	add a
 	ret nc
 .TeachMove
 	ld hl, wOTPartyMon1Moves + 1 ; second move
@@ -65,6 +80,8 @@ CheckUniqueWildMove:
 	ld [hl], a
 	ret
 
+.inc3andloop
+	inc hl
 .inc2andloop
 	inc hl
 .inc1andloop

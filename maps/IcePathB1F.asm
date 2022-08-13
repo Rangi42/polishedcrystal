@@ -49,38 +49,38 @@ IcePathB1FSetUpStoneTable:
 .Boulder1:
 	disappear ICEPATHB1F_BOULDER1
 	clearevent EVENT_BOULDER_IN_ICE_PATH_1A
-	sjump .FinishBoulder
+	sjumpfwd .FinishBoulder
 
 .Boulder2:
 	disappear ICEPATHB1F_BOULDER2
 	clearevent EVENT_BOULDER_IN_ICE_PATH_2A
-	sjump .FinishBoulder
+	sjumpfwd .FinishBoulder
 
 .Boulder3:
 	disappear ICEPATHB1F_BOULDER3
 	clearevent EVENT_BOULDER_IN_ICE_PATH_3A
-	sjump .FinishBoulder
+	sjumpfwd .FinishBoulder
 
 .Boulder4:
 	disappear ICEPATHB1F_BOULDER4
 	clearevent EVENT_BOULDER_IN_ICE_PATH_4A
-	sjump .FinishBoulder
+	; fallthrough
 
 .FinishBoulder:
 	pause 30
-	scall .BoulderFallsThrough
-	jumptext IcePathBoulderFellThroughText
-
-.BoulderFallsThrough:
 	playsound SFX_STRENGTH
 	earthquake 80
-	end
+	jumpthistext
+
+	text "The boulder fell"
+	line "through."
+	done
 
 IcePathB1FSkierScript:
 	faceplayer
 	opentext
 	checkevent EVENT_LISTENED_TO_ICY_WIND_INTRO
-	iftrue IcePathB1FTutorIcyWindScript
+	iftruefwd IcePathB1FTutorIcyWindScript
 	writetext IcePathB1FSkierText
 	waitbutton
 	setevent EVENT_LISTENED_TO_ICY_WIND_INTRO
@@ -88,14 +88,14 @@ IcePathB1FTutorIcyWindScript:
 	writetext Text_IcePathB1FTutorIcyWind
 	waitbutton
 	checkitem SILVER_LEAF
-	iffalse .NoSilverLeaf
+	iffalsefwd .NoSilverLeaf
 	writetext Text_IcePathB1FTutorQuestion
 	yesorno
-	iffalse .TutorRefused
+	iffalsefwd .TutorRefused
 	setval ICY_WIND
 	writetext ClearText
 	special Special_MoveTutor
-	ifequal $0, .TeachMove
+	ifequalfwd $0, .TeachMove
 .TutorRefused
 	jumpopenedtext Text_IcePathB1FTutorRefused
 
@@ -157,7 +157,7 @@ Text_IcePathB1FTutorQuestion:
 	cont "Icy Wind?"
 	done
 
-Text_IcePathB1FTutorRefused:
+Text_IcePathB1FTutorRefused: ; text > text
 	text "Brr…"
 	done
 
@@ -183,9 +183,4 @@ SkierBeckySeenText:
 
 SkierBeckyBeatenText:
 	text "Achoo!"
-	done
-
-IcePathBoulderFellThroughText:
-	text "The boulder fell"
-	line "through."
 	done

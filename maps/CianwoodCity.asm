@@ -29,7 +29,7 @@ CianwoodCity_MapScriptHeader:
 
 	def_object_events
 	object_event 11, 21, SPRITE_EUSINE, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_CIANWOOD_CITY_EUSINE
-	object_event 10, 14, SPRITE_MON_ICON, SPRITEMOVEDATA_POKEMON, 0, SUICUNE, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_SAW_SUICUNE_AT_CIANWOOD_CITY
+	pokemon_event 10, 14, SUICUNE, SPRITEMOVEDATA_POKEMON, -1, -1, PAL_NPC_BLUE, ClearText, EVENT_SAW_SUICUNE_AT_CIANWOOD_CITY
 	object_event 21, 37, SPRITE_CAMPER, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, CianwoodCityYoungsterText, -1
 	object_event 16, 33, SPRITE_POKEFAN_M, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_COMMAND, jumptextfaceplayer, CianwoodCityPokefanMText, -1
 	object_event 14, 42, SPRITE_CUTE_GIRL, SPRITEMOVEDATA_WALK_UP_DOWN, 2, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_COMMAND, jumptextfaceplayer, CianwoodCityLassText, -1
@@ -52,7 +52,7 @@ CianwoodCityFlyPointAndSuicune:
 	setflag ENGINE_FLYPOINT_CIANWOOD
 	setevent EVENT_EUSINE_IN_BURNED_TOWER
 	checkevent EVENT_BEAT_EUSINE
-	iffalse .Done
+	iffalsefwd .Done
 	disappear CIANWOODCITY_EUSINE
 .Done:
 	endcallback
@@ -72,9 +72,9 @@ CianwoodCitySuicuneAndEusine:
 	setscene $0
 	clearevent EVENT_SAW_SUICUNE_ON_ROUTE_42
 	checkevent EVENT_GOT_HM05_WHIRLPOOL
-	iftrue .NoLyra
+	iftruefwd .NoLyra
 	setmapscene ROUTE_42, $1
-	sjump .Continue
+	sjumpfwd .Continue
 .NoLyra
 	setmapscene ROUTE_42, $2
 .Continue

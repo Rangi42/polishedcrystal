@@ -24,7 +24,7 @@ KurtsHouse_MapScriptHeader:
 	object_event  5,  3, SPRITE_SCHOOLGIRL, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, KurtsGranddaughter1, EVENT_KURTS_HOUSE_GRANDDAUGHTER_1
 	object_event 14,  3, SPRITE_KURT, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, Kurt2, EVENT_KURTS_HOUSE_KURT_2
 	object_event 11,  4, SPRITE_SCHOOLGIRL, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, KurtsGranddaughter2, EVENT_KURTS_HOUSE_GRANDDAUGHTER_2
-	pokemon_event  6,  3, SLOWPOKE, -1, -1, PAL_NPC_RED, KurtsHouseSlowpokeText, EVENT_KURTS_HOUSE_SLOWPOKE
+	pokemon_event  6,  3, SLOWPOKE, SPRITEMOVEDATA_POKEMON, -1, -1, PAL_NPC_RED, KurtsHouseSlowpokeText, EVENT_KURTS_HOUSE_SLOWPOKE
 
 	object_const_def
 	const KURTSHOUSE_KURT1
@@ -34,11 +34,11 @@ KurtsHouse_MapScriptHeader:
 
 KurtsHouseKurtCallback:
 	checkevent EVENT_CLEARED_SLOWPOKE_WELL
-	iffalse .Done
+	iffalsefwd .Done
 	checkevent EVENT_FOREST_IS_RESTLESS
-	iftrue .Done
+	iftruefwd .Done
 	checkflag ENGINE_KURT_MAKING_BALLS
-	iftrue .MakingBalls
+	iftruefwd .MakingBalls
 	disappear KURTSHOUSE_KURT2
 	appear KURTSHOUSE_KURT1
 	disappear KURTSHOUSE_TWIN2
@@ -57,16 +57,16 @@ Kurt1:
 	faceplayer
 	opentext
 	checkevent EVENT_KURT_GAVE_YOU_APRICORN_BOX
-	iftrue .GotApricornBox
+	iftruefwd .GotApricornBox
 	checkevent EVENT_CLEARED_SLOWPOKE_WELL
-	iftrue .ClearedSlowpokeWell
+	iftruefwd .ClearedSlowpokeWell
 	writetext KurtsHouseKurtMakingBallsMustWaitText
 	waitbutton
 	closetext
 	special Special_FadeOutMusic
 	setevent EVENT_AZALEA_TOWN_SLOWPOKETAIL_ROCKET
 	readvar VAR_FACING
-	ifequal UP, .RunAround
+	ifequalfwd UP, .RunAround
 	turnobject PLAYER, DOWN
 	playsound SFX_FLY
 	applymovement KURTSHOUSE_KURT1, KurtsHouseKurtExitHouseMovement
@@ -93,13 +93,13 @@ Kurt1:
 	setevent EVENT_KURT_GAVE_YOU_APRICORN_BOX
 .GotApricornBox:
 	checkevent EVENT_GAVE_KURT_RED_APRICORN
-	iftrue .GiveLevelBall
+	iftruefwd .GiveLevelBall
 	checkevent EVENT_GAVE_KURT_BLU_APRICORN
-	iftrue .GiveLureBall
+	iftruefwd .GiveLureBall
 	checkevent EVENT_GAVE_KURT_YLW_APRICORN
-	iftrue .GiveMoonBall
+	iftruefwd .GiveMoonBall
 	checkevent EVENT_GAVE_KURT_GRN_APRICORN
-	iftrue .GiveFriendBall
+	iftruefwd .GiveFriendBall
 	checkevent EVENT_GAVE_KURT_WHT_APRICORN
 	iftrue .GiveFastBall
 	checkevent EVENT_GAVE_KURT_BLK_APRICORN
@@ -110,14 +110,14 @@ Kurt1:
 	iftrue .CanGiveGSBallToKurt
 .NoGSBall:
 	checkevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_2
-	iftrue .CheckApricorns
+	iftruefwd .CheckApricorns
 	checkevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_3
-	iftrue .CheckApricorns
+	iftruefwd .CheckApricorns
 	writetext KurtsHouseKurtBallsFromApricornsText
 	waitbutton
 .CheckApricorns:
 	callasm .CheckHaveAnyApricorns
-	iftrue .AskApricorn
+	iftruefwd .AskApricorn
 	checkevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_2
 	iftrue_jumpopenedtext KurtsHouseKurtTurnedOutGreatText
 	checkevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_3
@@ -141,35 +141,35 @@ endr
 	setevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_3
 	special Special_SelectApricornForKurt
 	iffalse_jumpopenedtext KurtsHouseKurtThatsALetdownText
-	ifequal BLU_APRICORN, .Blu
-	ifequal YLW_APRICORN, .Ylw
-	ifequal GRN_APRICORN, .Grn
-	ifequal WHT_APRICORN, .Wht
-	ifequal BLK_APRICORN, .Blk
-	ifequal PNK_APRICORN, .Pnk
+	ifequalfwd BLU_APRICORN, .Blu
+	ifequalfwd YLW_APRICORN, .Ylw
+	ifequalfwd GRN_APRICORN, .Grn
+	ifequalfwd WHT_APRICORN, .Wht
+	ifequalfwd BLK_APRICORN, .Blk
+	ifequalfwd PNK_APRICORN, .Pnk
 ; .Red
 	setevent EVENT_GAVE_KURT_RED_APRICORN
-	sjump .GaveKurtApricorns
+	sjumpfwd .GaveKurtApricorns
 
 .Blu:
 	setevent EVENT_GAVE_KURT_BLU_APRICORN
-	sjump .GaveKurtApricorns
+	sjumpfwd .GaveKurtApricorns
 
 .Ylw:
 	setevent EVENT_GAVE_KURT_YLW_APRICORN
-	sjump .GaveKurtApricorns
+	sjumpfwd .GaveKurtApricorns
 
 .Grn:
 	setevent EVENT_GAVE_KURT_GRN_APRICORN
-	sjump .GaveKurtApricorns
+	sjumpfwd .GaveKurtApricorns
 
 .Wht:
 	setevent EVENT_GAVE_KURT_WHT_APRICORN
-	sjump .GaveKurtApricorns
+	sjumpfwd .GaveKurtApricorns
 
 .Blk:
 	setevent EVENT_GAVE_KURT_BLK_APRICORN
-	sjump .GaveKurtApricorns
+	sjumpfwd .GaveKurtApricorns
 
 .Pnk:
 	setevent EVENT_GAVE_KURT_PNK_APRICORN
@@ -199,7 +199,7 @@ endr
 
 .GiveLevelBall:
 	checkflag ENGINE_KURT_MAKING_BALLS
-	iftrue KurtMakingBallsScript
+	iftruefwd KurtMakingBallsScript
 	writetext KurtsHouseKurtJustFinishedYourBallText
 	promptbutton
 	verbosegiveitemvar LEVEL_BALL, VAR_KURT_APRICORNS
@@ -209,7 +209,7 @@ endr
 
 .GiveLureBall:
 	checkflag ENGINE_KURT_MAKING_BALLS
-	iftrue KurtMakingBallsScript
+	iftruefwd KurtMakingBallsScript
 	writetext KurtsHouseKurtJustFinishedYourBallText
 	promptbutton
 	verbosegiveitemvar LURE_BALL, VAR_KURT_APRICORNS
@@ -219,7 +219,7 @@ endr
 
 .GiveMoonBall:
 	checkflag ENGINE_KURT_MAKING_BALLS
-	iftrue KurtMakingBallsScript
+	iftruefwd KurtMakingBallsScript
 	writetext KurtsHouseKurtJustFinishedYourBallText
 	promptbutton
 	verbosegiveitemvar MOON_BALL, VAR_KURT_APRICORNS
@@ -229,7 +229,7 @@ endr
 
 .GiveFriendBall:
 	checkflag ENGINE_KURT_MAKING_BALLS
-	iftrue KurtMakingBallsScript
+	iftruefwd KurtMakingBallsScript
 	writetext KurtsHouseKurtJustFinishedYourBallText
 	promptbutton
 	verbosegiveitemvar FRIEND_BALL, VAR_KURT_APRICORNS
@@ -239,7 +239,7 @@ endr
 
 .GiveFastBall:
 	checkflag ENGINE_KURT_MAKING_BALLS
-	iftrue KurtMakingBallsScript
+	iftruefwd KurtMakingBallsScript
 	writetext KurtsHouseKurtJustFinishedYourBallText
 	promptbutton
 	verbosegiveitemvar FAST_BALL, VAR_KURT_APRICORNS
@@ -249,7 +249,7 @@ endr
 
 .GiveHeavyBall:
 	checkflag ENGINE_KURT_MAKING_BALLS
-	iftrue KurtMakingBallsScript
+	iftruefwd KurtMakingBallsScript
 	writetext KurtsHouseKurtJustFinishedYourBallText
 	promptbutton
 	verbosegiveitemvar HEAVY_BALL, VAR_KURT_APRICORNS
@@ -259,7 +259,7 @@ endr
 
 .GiveLoveBall:
 	checkflag ENGINE_KURT_MAKING_BALLS
-	iftrue KurtMakingBallsScript
+	iftruefwd KurtMakingBallsScript
 	writetext KurtsHouseKurtJustFinishedYourBallText
 	promptbutton
 	verbosegiveitemvar LOVE_BALL, VAR_KURT_APRICORNS
@@ -269,7 +269,7 @@ endr
 
 .CanGiveGSBallToKurt:
 	checkevent EVENT_GAVE_GS_BALL_TO_KURT
-	iftrue .GaveGSBallToKurt
+	iftruefwd .GaveGSBallToKurt
 	checkkeyitem GS_BALL
 	iffalse .NoGSBall
 	writetext KurtsHouseKurtWhatIsThatText
@@ -282,7 +282,7 @@ endr
 
 .GaveGSBallToKurt:
 	checkflag ENGINE_KURT_MAKING_BALLS
-	iffalse .NotMakingBalls
+	iffalsefwd .NotMakingBalls
 	writetext KurtsHouseKurtImCheckingItNowText
 	waitbutton
 	jumpopenedtext KurtsHouseKurtAhHaISeeText
@@ -298,11 +298,11 @@ endr
 	pause 20
 	showemote EMOTE_SHOCK, KURTSHOUSE_KURT1, 30
 	readvar VAR_FACING
-	ifequal UP, .GSBallRunAround
+	ifequalfwd UP, .GSBallRunAround
 	turnobject PLAYER, DOWN
 	playsound SFX_FLY
 	applymovement KURTSHOUSE_KURT1, KurtsHouseKurtExitHouseMovement
-	sjump .KurtHasLeftTheBuilding
+	sjumpfwd .KurtHasLeftTheBuilding
 
 .GSBallRunAround:
 	turnobject PLAYER, DOWN
@@ -321,10 +321,10 @@ Kurt2:
 	faceplayer
 	opentext
 	checkevent EVENT_GAVE_GS_BALL_TO_KURT
-	iftrue KurtScript_ImCheckingItNow
+	iftruefwd KurtScript_ImCheckingItNow
 KurtMakingBallsScript:
 	checkevent EVENT_BUGGING_KURT_TOO_MUCH
-	iffalse Script_FirstTimeBuggingKurt
+	iffalsefwd Script_FirstTimeBuggingKurt
 	writetext KurtsHouseKurtDontBotherMeText
 	waitbutton
 	closetext
@@ -348,7 +348,7 @@ KurtScript_ImCheckingItNow:
 KurtsGranddaughter1:
 	faceplayer
 	checkevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_1
-	iftrue KurtsGranddaughter2Subscript
+	iftruefwd KurtsGranddaughter2Subscript
 	checkevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_2
 	iftrue_jumptext KurtsGranddaughterFunText
 	checkevent EVENT_FOREST_IS_RESTLESS
@@ -366,7 +366,7 @@ KurtsGranddaughter2:
 KurtsGranddaughter2Subscript:
 	opentext
 	checkevent EVENT_GAVE_GS_BALL_TO_KURT
-	iftrue .GSBall
+	iftruefwd .GSBall
 	writetext KurtsGranddaughterHelpText
 	waitbutton
 	closetext

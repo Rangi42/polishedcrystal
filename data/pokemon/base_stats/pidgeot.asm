@@ -2,7 +2,7 @@ if DEF(FAITHFUL)
 	db  83,  80,  75, 101,  70,  70 ; 479 BST
 	;   hp  atk  def  spd  sat  sdf
 else
-	db  93,  81,  75, 101,  90,  70 ; 510 BST
+	db  93,  80,  75, 102,  90,  70 ; 510 BST
 	;   hp  atk  def  spd  sat  sdf
 endc
 
@@ -13,9 +13,8 @@ if DEF(FAITHFUL)
 else
 	db 194 ; base exp
 endc
-	db NO_ITEM ; item 1
-	db NO_ITEM ; item 2
-	dn GENDER_F50, 2 ; gender ratio, step cycles to hatch
+	db NO_ITEM, NO_ITEM ; held items
+	dn GENDER_F50, HATCH_FAST ; gender ratio, step cycles to hatch
 	INCBIN "gfx/pokemon/pidgeot/front.dimensions"
 	abilities_for PIDGEOT, KEEN_EYE, TANGLED_FEET, NO_GUARD
 	db GROWTH_MEDIUM_SLOW ; growth rate

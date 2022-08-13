@@ -31,7 +31,7 @@ DimCave2F_MapScriptHeader:
 
 DimCave2FBouldersLand:
 	checkevent EVENT_BOULDER_FELL_IN_DIM_CAVE_2F
-	iftrue .skip
+	iftruefwd .skip
 	changeblock 14, 20, $c5
 	changeblock 26, 20, $ba
 .skip

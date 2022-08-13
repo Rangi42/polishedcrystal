@@ -23,7 +23,7 @@ Music_RuinsOfAlphRadio_branch_eede3:
 	callchannel Music_RuinsOfAlphRadio_branch_eee01
 	notetype $c, $a1
 	note __, 16
-	loopchannel 0, Music_RuinsOfAlphRadio_branch_eede3
+	jumpchannel Music_RuinsOfAlphRadio_branch_eede3
 
 Music_RuinsOfAlphRadio_branch_eee01:
 	octave 4
@@ -60,7 +60,7 @@ Music_RuinsOfAlphRadio_branch_eee17:
 	callchannel Music_RuinsOfAlphRadio_branch_eee08
 	notetype $c, $a1
 	note __, 16
-	loopchannel 0, Music_RuinsOfAlphRadio_branch_eee17
+	jumpchannel Music_RuinsOfAlphRadio_branch_eee17
 
 Music_RuinsOfAlphRadio_Ch3:
 	notetype $6, $26
@@ -70,4 +70,4 @@ Music_RuinsOfAlphRadio_branch_eee35:
 	note C#, 1
 	note C_, 1
 	note __, 16
-	loopchannel 0, Music_RuinsOfAlphRadio_branch_eee35
+	jumpchannel Music_RuinsOfAlphRadio_branch_eee35

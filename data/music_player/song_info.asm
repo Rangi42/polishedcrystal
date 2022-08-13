@@ -1,4 +1,4 @@
-song_info: MACRO
+MACRO song_info
 	li \1
 	db \2, \3, \4
 ENDM

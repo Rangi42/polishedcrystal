@@ -37,19 +37,19 @@ SeagallopFerryShamoutiGateSailorScript:
 	faceplayer
 	opentext
 	checkevent EVENT_GOT_A_POKEMON_FROM_IVY
-	iffalse .OnlyVermilion
+	iffalsefwd .OnlyVermilion
 	writetext SeagallopFerryShamoutiWhichIslandText
 	loadmenu VermilionValenciaMenuDataHeader
 	verticalmenu
 	closewindow
-	ifequal $1, .ToVermilion
-	ifequal $2, .ToValencia
-	sjump .RefuseFerry
+	ifequalfwd $1, .ToVermilion
+	ifequalfwd $2, .ToValencia
+	sjumpfwd .RefuseFerry
 
 .OnlyVermilion
 	writetext SeagallopFerryShamoutiToVermilionQuestionText
 	yesorno
-	iffalse .RefuseFerry
+	iffalsefwd .RefuseFerry
 .ToVermilion
 	scall SeagallopFerryShamoutiDepartureScript
 	setmapscene SEAGALLOP_FERRY_VERMILION_GATE, $1

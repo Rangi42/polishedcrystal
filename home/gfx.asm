@@ -47,8 +47,8 @@ DecompressRequest2bpp::
 	pop bc
 	pop hl
 	ld de, wDecompressScratch
+	; fallthrough
 
-; fallthrough
 Request2bppInWRA6::
 	ldh a, [hROMBank]
 	ld b, a
@@ -56,7 +56,7 @@ Request2bppInWRA6::
 
 Get2bpp::
 	ldh a, [rLCDC]
-	bit 7, a ; lcd on?
+	bit rLCDC_ENABLE, a
 	jr nz, Request2bpp
 
 Copy2bpp::
@@ -66,7 +66,9 @@ Copy2bpp::
 .Function:
 	call WriteVCopyRegistersToHRAM
 	ld b, c
-	jmp _Serve2bppRequest
+	di
+	call _Serve2bppRequest
+	reti
 
 Request2bpp::
 ; Load 2bpp at b:de to occupy c tiles of hl.
@@ -128,7 +130,7 @@ Request2bpp::
 
 GetMaybeOpaque1bpp::
 	ldh a, [rLCDC]
-	bit 7, a
+	bit rLCDC_ENABLE, a
 	jr nz, _Request1bpp
 	jr _Copy1bpp
 
@@ -142,7 +144,7 @@ GetOpaque1bppFontTile::
 	lb bc, BANK(FontTiles), 1
 GetOpaque1bpp::
 	ldh a, [rLCDC]
-	bit 7, a ; lcd on?
+	bit rLCDC_ENABLE, a
 	jr nz, RequestOpaque1bpp
 CopyOpaque1bpp:
 	ld a, 1
@@ -151,7 +153,7 @@ CopyOpaque1bpp:
 
 Get1bpp::
 	ldh a, [rLCDC]
-	bit 7, a ; lcd on?
+	bit rLCDC_ENABLE, a
 	jr nz, Request1bpp
 Copy1bpp::
 	xor a
@@ -163,7 +165,9 @@ _Copy1bpp::
 .Function:
 	call WriteVCopyRegistersToHRAM
 	ld b, c
-	jmp _Serve1bppRequest
+	di
+	call _Serve1bppRequest
+	reti
 
 RequestOpaque1bpp:
 	ld a, 1
@@ -237,9 +241,8 @@ HBlankCopy1bpp:
 	ld a, [hli]
 	ld d, a ; destination
 
-	ld a, [hli] ; source
-	ld h, [hl]
-	ld l, a
+	ld sp, hl ; source
+	pop hl
 	ld sp, hl ; set source to sp
 	ld h, d ; exchange hl and de
 	ld l, e
@@ -256,11 +259,11 @@ HBlankCopy1bpp:
 	jr z, .waitNoHBlankOpaque
 .waitNoHBlank
 	ldh a, [rSTAT]
-	and 3
+	and rSTAT_MODE_MASK
 	jr z, .waitNoHBlank
 .waitHBlank
 	ldh a, [rSTAT]
-	and 3
+	and rSTAT_MODE_MASK
 	jr nz, .waitHBlank
 ; preloads r us
 	ld a, c
@@ -292,11 +295,11 @@ endr
 
 .waitNoHBlankOpaque
 	ldh a, [rSTAT]
-	and 3
+	and rSTAT_MODE_MASK
 	jr z, .waitNoHBlankOpaque
 .waitHBlankOpaque
 	ldh a, [rSTAT]
-	and 3
+	and rSTAT_MODE_MASK
 	jr nz, .waitHBlankOpaque
 ; preloads r us
 	ld a, $ff
@@ -338,10 +341,8 @@ ContinueHBlankCopy:
 	ld [hRequestedVTileDest], sp
 	scf
 DoneHBlankCopy:
-	ldh a, [hSPBuffer]
-	ld l, a
-	ldh a, [hSPBuffer + 1]
-	ld h, a
+	ld sp, hSPBuffer
+	pop hl
 	ld sp, hl
 	reti
 
@@ -359,7 +360,7 @@ WriteVCopyRegistersToHRAM:
 	ret
 
 VRAMToVRAMCopy::
-	lb bc, %11, LOW(rSTAT) ; predefine bitmask and rSTAT source for speed and size
+	lb bc, rSTAT_MODE_MASK, LOW(rSTAT) ; predefine for speed and size
 	jr .waitNoHBlank2
 .outerLoop2
 	ldh a, [rLY]

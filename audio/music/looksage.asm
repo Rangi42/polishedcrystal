@@ -99,7 +99,7 @@ Music_LookSage_branch_ee38e:
 	intensity $93
 	note B_, 2
 	callchannel Music_LookSage_branch_ee3fa
-	loopchannel 0, Music_LookSage_branch_ee38e
+	jumpchannel Music_LookSage_branch_ee38e
 
 Music_LookSage_branch_ee3fa:
 	intensity $b3
@@ -175,4 +175,4 @@ Music_LookSage_branch_ee430:
 	note E_, 14
 	note G_, 1
 	note G#, 1
-	loopchannel 0, Music_LookSage_branch_ee430
+	jumpchannel Music_LookSage_branch_ee430

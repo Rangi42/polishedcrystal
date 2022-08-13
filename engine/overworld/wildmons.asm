@@ -27,156 +27,122 @@ LoadWildMonData:
 	ld [wWaterEncounterRate], a
 	ret
 
-FindNest:
-; Parameters:
-; e: 0 = Johto, 1 = Kanto, 2 = Orange
-; wNamedObjectIndex: species
-	hlcoord 0, 0
-	ld bc, SCREEN_WIDTH * SCREEN_HEIGHT
-	xor a
-	rst ByteFill
+GetWildLocations:
+; Writes to wDexAreaMons. Assumes we're in the correct WRAM bank for this.
+; Parameters: e = type, d = region, c = species, b = form.
+	; If we're in Johto and dealing with grass, also check roam mons.
 	ld a, e
-	cp KANTO_REGION
-	jr z, .kanto
-	cp ORANGE_REGION
-	jr z, .orange
-	decoord 0, 0
-	ld hl, JohtoGrassWildMons
-	call .FindGrass
-	ld hl, JohtoWaterWildMons
-	call .FindWater
-	ld hl, wRoamMon1Species
-	call .RoamMon
-	ld hl, wRoamMon2Species
-	call .RoamMon
-	ld hl, wRoamMon3Species
-	jmp .RoamMon
-
-.kanto
-	decoord 0, 0
-	ld hl, KantoGrassWildMons
-	call .FindGrass
-	ld hl, KantoWaterWildMons
-	jr .FindWater
-
-.orange
-	decoord 0, 0
-	ld hl, OrangeGrassWildMons
-	call .FindGrass
-	ld hl, OrangeWaterWildMons
-	jr .FindWater
-
-.FindGrass:
-	ld a, [hl]
-	cp -1
-	ret z
-	push hl
-
-	; assume that navel rock is the first off-screen map, and end the search early
-	ld a, [hli]
-	cp GROUP_NAVEL_ROCK_INSIDE
-	jr nz, .not_navel_rock_group
-	ld b, a
-	ld a, [hli]
-	cp MAP_NAVEL_ROCK_INSIDE
-	jr nz, .not_navel_rock_map
-	pop hl
-	ret
-
-	ld a, [hli]
-.not_navel_rock_group
-	ld b, a
-	ld a, [hli]
-.not_navel_rock_map
-	ld c, a
-	inc hl
-	inc hl
-	inc hl
-	ld a, NUM_GRASSMON * 3
-	call .SearchMapForMon
-	jr nc, .next_grass
-	ld [de], a
-	inc de
-
-.next_grass
-	pop hl
-	ld bc, GRASS_WILDDATA_LENGTH
-	add hl, bc
-	jr .FindGrass
-
-.FindWater:
-	ld a, [hl]
-	cp -1
-	ret z
-	push hl
-	ld a, [hli]
-	ld b, a
-	ld a, [hli]
-	ld c, a
-	inc hl
-	ld a, 3
-	call .SearchMapForMon
-	jr nc, .next_water
-	ld [de], a
-	inc de
-
-.next_water
-	pop hl
-	ld bc, WATER_WILDDATA_LENGTH
-	add hl, bc
-	jr .FindWater
-
-.SearchMapForMon:
-	inc hl
-.ScanMapLoop:
+	cp DEXAREA_SURFING
+	ld hl, .SurfTables
 	push af
-	ld a, [wNamedObjectIndex]
-	cp [hl]
-	inc hl
-	jr nz, .not_found
+	jr z, .got_wild_table_type
 
-	; We want to check if the extspecies bit matches between hl and form
-	ld a, [wCurForm]
-	xor [hl]
-	and EXTSPECIES_MASK
-	jr z, .found
+	; In Johto, include roamers.
+	ld a, d
+	and a ; cp JOHTO_REGION
+	ld hl, .GrassTables
+	jr nz, .got_wild_table_type
 
-.not_found
-	inc hl
-	inc hl
-	pop af
-	dec a
-	jr nz, .ScanMapLoop
-	and a
-	ret
-
-.found
-	pop af
-	; fallthrough
-
-.AppendNest:
-	push de
-	call GetWorldMapLocation
-	ld c, a
-	hlcoord 0, 0
-	ld de, SCREEN_WIDTH * SCREEN_HEIGHT
-.AppendNestLoop:
+	; TODO: Check roamers.
+.got_wild_table_type
+	; Get the exact table.
+	ld a, d
+	add a
+	add l
+	ld l, a
+	adc h
+	sub l
+	ld h, a
 	ld a, [hli]
-	cp c
-	jr z, .found_nest
-	dec de
-	ld a, e
-	or d
-	jr nz, .AppendNestLoop
-	ld a, c
-	pop de
+	ld h, [hl]
+	ld l, a
+	pop af
+
+	; Set a to total mons per map (and per time for grass), e to start of
+	; surf/grass mon list itself, d to mons struct size.
+	jr nz, .grass_vars
+	ld a, NUM_WATERMON
+	lb de, WATER_WILDDATA_LENGTH, 4 ; 4 = first surf species (3=level)
+	jr .got_vars
+
+.grass_vars
+	ld a, 6 - (NUM_GRASSMON * 3) ; 6 = first morning species (5=level)
+	inc e
+.loop
+	add (NUM_GRASSMON * 3)
+	dec e
+	jr nz, .loop
+	ld e, a
+	ld d, GRASS_WILDDATA_LENGTH
+	ld a, NUM_GRASSMON
+.got_vars
+	and a ; set nonzero flag
+.findmon_outer_loop
+	push af
+	ld a, [hl]
+	inc a
+	jr nz, .more_wildmons
+	pop af
+	ret z
 	scf
 	ret
 
-.found_nest
+.more_wildmons
+	pop af
+	push de
+	push af
+	push hl
+	ld d, 0
+	add hl, de
+	ld d, a
+.findmon_inner_loop
+	; Compare species
+	ld a, [hli]
+	cp c
+	ld a, [hli]
+	inc hl
+	jr nz, .findmon_next
+
+	call DexCompareWildForm
+	jr nz, .findmon_next
+
+.found_species
+	pop hl
+	ld a, [hli]
+	ld d, a
+	ld a, [hld]
+	ld e, a
+	ld a, -1
+	farcall Pokedex_SetWildLandmark
+	pop af
+	ld d, a
+	xor a ; set zero flag to mark at least one capture
+	ld a, d
+	jr .findmon_next_outer
+
+.findmon_next
+	dec d
+	jr nz, .findmon_inner_loop
+	pop hl
+	pop af
+.findmon_next_outer
 	pop de
-	and a
-	ret
+	push de
+	ld e, d
+	ld d, 0
+	add hl, de
+	pop de
+	jr .findmon_outer_loop
+
+.GrassTables:
+	dw JohtoGrassWildMons
+	dw KantoGrassWildMons
+	dw OrangeGrassWildMons
+
+.SurfTables:
+	dw JohtoWaterWildMons
+	dw KantoWaterWildMons
+	dw OrangeWaterWildMons
 
 .RoamMon:
 	ld a, [hli]
@@ -189,7 +155,7 @@ FindNest:
 	ld b, a
 	ld a, [hl]
 	ld c, a
-	call .AppendNest
+;	call .AppendNest
 	ret nc
 	ld [de], a
 	inc de
@@ -301,6 +267,7 @@ ChooseWildEncounter:
 	ld c, $ff
 _ChooseWildEncounter:
 	push bc
+	call SetBadgeBaseLevel
 	call LoadWildMonDataPointer
 	pop bc
 	jmp nc, .nowildbattle
@@ -416,6 +383,7 @@ _ChooseWildEncounter:
 ; Store the level
 .ok
 	ld a, b
+	call AdjustLevelForBadges
 	ld [wCurPartyLevel], a
 	ld a, [hli]
 	ld b, [hl]
@@ -508,6 +476,7 @@ CheckRepelEffect::
 ApplyAbilityEffectsOnEncounterMon:
 ; Consider making the abilities more useful in non-faithful
 	call GetLeadAbility
+	and a
 	ret z
 	ld hl, .AbilityEffects
 	jmp BattleJumptable
@@ -1044,8 +1013,11 @@ RandomPhoneRareWildMon:
 ; Since we haven't seen it, have the caller tell us about it.
 	ld de, wStringBuffer1
 	call CopyName1
+	ld hl, wNamedObjectIndex
 	ld a, c
-	ld [wNamedObjectIndex], a
+	ld [hli], a
+	ld a, b
+	ld [hl], a
 	call GetPokemonName
 	ld hl, .SawRareMonText
 	call PrintText
@@ -1096,6 +1068,7 @@ RandomPhoneWildMon:
 	ld [wNamedObjectIndex], a
 	ld a, [hl]
 	ld [wCurForm], a
+	ld [wNamedObjectIndex + 1], a
 	call GetPokemonName
 	ld hl, wStringBuffer1
 	ld de, wStringBuffer4
@@ -1150,7 +1123,7 @@ RandomPhoneMon:
 	bit TRNTYPE_NICKNAME, b
 	jr nz, .got_mon
 	; TRAINERTYPE_NORMAL uses 2 bytes per mon
-	ld c, 2
+	ld c, 3
 	; TRAINERTYPE_ITEM uses 1 more byte
 	bit TRNTYPE_ITEM, b
 	jr z, .no_item
@@ -1168,10 +1141,9 @@ RandomPhoneMon:
 	inc c
 	inc c
 .no_dvs
-	; TRAINERTYPE_PERSONALITY uses 2 more bytes
+	; TRAINERTYPE_PERSONALITY uses 1 more byte
 	bit TRNTYPE_PERSONALITY, b
 	jr z, .no_personality
-	inc c
 	inc c
 .no_personality
 	; TRAINERTYPE_MOVES uses 4 more bytes
@@ -1213,8 +1185,11 @@ RandomPhoneMon:
 
 	inc hl ; species
 	ld a, [wTrainerGroupBank]
-	call GetFarByte
+	call GetFarWord
+	ld a, l
 	ld [wNamedObjectIndex], a
+	ld a, h
+	ld [wNamedObjectIndex+1], a
 	call GetPokemonName
 	ld hl, wStringBuffer1
 	ld de, wStringBuffer4
@@ -1238,6 +1213,40 @@ GetTimeOfDayNotEve:
 	ld a, DAY
 	ret c
 	inc a ; NITE
+	ret
+
+SetBadgeBaseLevel:
+	ld hl, wBadges
+	ld b, wBadgesEnd - wBadges
+	call CountSetBits
+	ld hl, BadgeBaseLevels
+	ld b, 0
+	add hl, bc
+	ld a, [hl]
+	ld [wBadgeBaseLevel], a
+	ret
+
+INCLUDE "data/wild/badge_base_levels.asm"
+
+AdjustLevelForBadges:
+	cp MAX_LEVEL + 1
+	ret c
+	sub LEVEL_FROM_BADGES
+	ld b, a
+	ld a, [wBadgeBaseLevel]
+	add b
+; cap underflow at level 2
+	cp 2
+	jr c, .underflow
+	cp MAX_LEVEL
+	ret c
+; cap overflow at level 99
+	cp LEVEL_FROM_BADGES
+	ld a, MAX_LEVEL - 1
+	ret c
+; cap overflow at level 2
+.underflow
+	ld a, 2
 	ret
 
 JohtoGrassWildMons:

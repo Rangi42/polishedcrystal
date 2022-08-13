@@ -8,12 +8,11 @@ MoveDeletion:
 	farcall SelectMonFromParty
 	jr c, .declined
 	ld a, MON_IS_EGG
-	call GetPartyParamLocation
-	bit MON_IS_EGG_F, [hl]
+	call GetPartyParamLocationAndValue
+	bit MON_IS_EGG_F, a
 	jr nz, .egg
 	ld a, MON_MOVES + 1
-	call GetPartyParamLocation
-	ld a, [hl]
+	call GetPartyParamLocationAndValue
 	and a
 	jr z, .onlyonemove
 	ld hl, .AskWhichMoveText
@@ -37,8 +36,7 @@ MoveDeletion:
 	call .DeleteMove
 	call WaitSFX
 	ld de, SFX_MOVE_DELETED
-	call PlaySFX
-	call WaitSFX
+	call PlayWaitSFX
 	ld hl, .MoveDeletedText
 	jmp PrintText
 
@@ -131,8 +129,7 @@ MoveDeletion:
 	ld hl, wPartyMon1PP
 	add hl, bc
 	ld a, [wCurPartyMon]
-	ld bc, PARTYMON_STRUCT_LENGTH
-	rst AddNTimes
+	call GetPartyLocation
 	pop bc
 	inc b
 .loop2
@@ -148,4 +145,28 @@ MoveDeletion:
 .done
 	xor a
 	ld [hl], a
-	ret
+	ld a, MON_SPECIES
+	call GetPartyParamLocationAndValue
+	cp LOW(PIKACHU)
+	ret nz
+	assert !HIGH(PIKACHU)
+	ld bc, MON_FORM - MON_SPECIES
+	add hl, bc
+	ld a, [hl]
+	and EXTSPECIES_MASK
+	ret nz
+	ld a, [wMoveScreenSelectedMove]
+	cp FLY
+	jr z, .reset_pikachu_form
+	cp SURF
+	ret nz
+.reset_pikachu_form
+	ld a, [hl]
+	and ~FORM_MASK
+	or PLAIN_FORM
+	ld [hl], a
+
+	; Register this Pikachu as seen+caught in the dex.
+	ld c, PIKACHU
+	ld b, a
+	jmp SetSeenAndCaughtMon

@@ -34,7 +34,7 @@ _MemoryGame:
 	ld [wJumptableIndex], a
 	ld a, $1
 	ldh [hBGMapMode], a
-	ld a, %11100011
+	ld a, rLCDC_DEFAULT
 	ldh [rLCDC], a
 	ld a, $e4
 	call DmgToCgbBGPals
@@ -106,7 +106,7 @@ endr
 .spawn_object
 	depixel 6, 3, 4, 4
 	ld a, SPRITE_ANIM_INDEX_MEMORY_GAME
-	call _InitSpriteAnimStruct
+	call InitSpriteAnimStruct
 	ld a, 5
 	ld [wMemoryGameNumberTriesRemaining], a
 	ld hl, wJumptableIndex

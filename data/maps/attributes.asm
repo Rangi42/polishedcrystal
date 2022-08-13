@@ -1,7 +1,7 @@
-map_attributes: MACRO
+MACRO map_attributes
 ; label, map, border block, connections
-CURRENT_MAP_WIDTH = \2_WIDTH
-CURRENT_MAP_HEIGHT = \2_HEIGHT
+	DEF CURRENT_MAP_WIDTH = \2_WIDTH
+	DEF CURRENT_MAP_HEIGHT = \2_HEIGHT
 \1_MapAttributes::
 	db \3
 	db \2_HEIGHT, \2_WIDTH
@@ -10,79 +10,6 @@ CURRENT_MAP_HEIGHT = \2_HEIGHT
 	db BANK(\1_MapScriptHeader)
 	dw \1_MapScriptHeader
 	db \4
-ENDM
-
-; Connections go in order: north, south, west, east
-connection: MACRO
-;\1: direction
-;\2: map name
-;\3: map id
-;\4: offset of the target map relative to the current map
-;    (x offset for east/west, y offset for north/south)
-
-; Calculate tile offsets for source (current) and target maps
-_src = 0
-_tgt = (\4) + 3
-if _tgt < 0
-_src = -_tgt
-_tgt = 0
-endc
-
-if !STRCMP("\1", "north")
-_blk = \3_WIDTH * (\3_HEIGHT - 3) + _src
-_map = _tgt
-_win = (\3_WIDTH + 6) * \3_HEIGHT + 1
-_y = \3_HEIGHT * 2 - 1
-_x = (\4) * -2
-_len = CURRENT_MAP_WIDTH + 3 - (\4)
-if _len > \3_WIDTH
-_len = \3_WIDTH
-endc
-
-elif !STRCMP("\1", "south")
-_blk = _src
-_map = (CURRENT_MAP_WIDTH + 6) * (CURRENT_MAP_HEIGHT + 3) + _tgt
-_win = \3_WIDTH + 7
-_y = 0
-_x = (\4) * -2
-_len = CURRENT_MAP_WIDTH + 3 - (\4)
-if _len > \3_WIDTH
-_len = \3_WIDTH
-endc
-
-elif !STRCMP("\1", "west")
-_blk = (\3_WIDTH * _src) + \3_WIDTH - 3
-_map = (CURRENT_MAP_WIDTH + 6) * _tgt
-_win = (\3_WIDTH + 6) * 2 - 6
-_y = (\4) * -2
-_x = \3_WIDTH * 2 - 1
-_len = CURRENT_MAP_HEIGHT + 3 - (\4)
-if _len > \3_HEIGHT
-_len = \3_HEIGHT
-endc
-
-elif !STRCMP("\1", "east")
-_blk = (\3_WIDTH * _src)
-_map = (CURRENT_MAP_WIDTH + 6) * _tgt + CURRENT_MAP_WIDTH + 3
-_win = \3_WIDTH + 7
-_y = (\4) * -2
-_x = 0
-_len = CURRENT_MAP_HEIGHT + 3 - (\4)
-if _len > \3_HEIGHT
-_len = \3_HEIGHT
-endc
-
-else
-fail "Invalid direction for 'connection'."
-endc
-
-	map_id \3
-	dw wDecompressScratch + _blk
-	dw wOverworldMapBlocks + _map
-	db _len - _src
-	db \3_WIDTH
-	db _y, _x
-	dw wOverworldMapBlocks + _win
 ENDM
 
 	map_attributes NewBarkTown, NEW_BARK_TOWN, $5, WEST | EAST
@@ -112,10 +39,11 @@ ENDM
 	connection south, Route34, ROUTE_34, 7
 	connection east, MagnetTunnelWest, MAGNET_TUNNEL_WEST, 0
 
-	map_attributes OlivineCity, OLIVINE_CITY, $35, NORTH | SOUTH | WEST
+	map_attributes OlivineCity, OLIVINE_CITY, $35, NORTH | SOUTH | WEST | EAST
 	connection north, Route39, ROUTE_39, 5
-	connection south, Route35Coast, ROUTE_35_COAST, 7
+	connection south, Route35CoastSouth, ROUTE_35_COAST_SOUTH, 7
 	connection west, Route40, ROUTE_40, 7
+	connection east, Route35CoastNorth, ROUTE_35_COAST_NORTH, 3
 
 	map_attributes EcruteakCity, ECRUTEAK_CITY, $5, SOUTH | WEST | EAST
 	connection south, Route37, ROUTE_37, 5
@@ -185,9 +113,16 @@ ENDM
 	connection north, Route36, ROUTE_36, 0
 	connection south, GoldenrodCity, GOLDENROD_CITY, -5
 
-	map_attributes Route35Coast, ROUTE_35_COAST, $35, NORTH | SOUTH
-	connection north, OlivineCity, OLIVINE_CITY, -7
+	map_attributes Route35CoastNorth, ROUTE_35_COAST_NORTH, $35, SOUTH | WEST
+	connection south, Route35CoastSouth, ROUTE_35_COAST_SOUTH, -15
+	connection west, OlivineCity, OLIVINE_CITY, -3
+
+	map_attributes Route35CoastSouth, ROUTE_35_COAST_SOUTH, $35, NORTH | SOUTH
+	connection north, OlivineCityRoute35CoastDual, OLIVINE_CITY_ROUTE_35_COAST_DUAL, 0
 	connection south, GoldenrodHarbor, GOLDENROD_HARBOR, 0
+
+	map_attributes OlivineCityRoute35CoastDual, OLIVINE_CITY_ROUTE_35_COAST_DUAL, $35, SOUTH
+	connection south, Route35CoastSouth, ROUTE_35_COAST_SOUTH, 0
 
 	map_attributes Route36, ROUTE_36, $5, NORTH | SOUTH | EAST
 	connection north, Route37, ROUTE_37, 12
@@ -199,12 +134,12 @@ ENDM
 	connection south, Route36, ROUTE_36, -12
 
 	map_attributes Route38, ROUTE_38, $5, WEST | EAST
-	connection west, Route39, ROUTE_39, 0
+	connection west, Route39, ROUTE_39, -7
 	connection east, EcruteakCity, ECRUTEAK_CITY, -5
 
 	map_attributes Route39, ROUTE_39, $5, SOUTH | EAST
 	connection south, OlivineCity, OLIVINE_CITY, -5
-	connection east, Route38, ROUTE_38, 0
+	connection east, Route38, ROUTE_38, 7
 
 	map_attributes Route40, ROUTE_40, $35, SOUTH | EAST
 	connection south, Route41, ROUTE_41, -15
@@ -450,7 +385,7 @@ ENDM
 	connection south, MagnetTunnelEast, MAGNET_TUNNEL_EAST, -2
 
 	map_attributes GoldenrodHarbor, GOLDENROD_HARBOR, $35, NORTH | WEST
-	connection north, Route35Coast, ROUTE_35_COAST, 0
+	connection north, Route35CoastSouth, ROUTE_35_COAST_SOUTH, 0
 	connection west, Route41, ROUTE_41, -3
 
 	map_attributes MagnetTunnelEast, MAGNET_TUNNEL_EAST, $5, NORTH | EAST
@@ -619,7 +554,7 @@ ENDM
 	map_attributes ValeriesHouse, VALERIES_HOUSE, $0, 0
 	map_attributes EcruteakCherishBallHouse, ECRUTEAK_CHERISH_BALL_HOUSE, $0, 0
 	map_attributes EcruteakDestinyKnotHouse, ECRUTEAK_DESTINY_KNOT_HOUSE, $0, 0
-	map_attributes EcruteakShrineOutside, ECRUTEAK_SHRINE_OUTSIDE, $5, 0
+	map_attributes EcruteakShrineOutside, ECRUTEAK_SHRINE_OUTSIDE, $0, 0
 	map_attributes EcruteakShrineInside, ECRUTEAK_SHRINE_INSIDE, $0, 0
 	map_attributes BlackthornGym1F, BLACKTHORN_GYM_1F, $0, 0
 	map_attributes BlackthornGym2F, BLACKTHORN_GYM_2F, $0, 0
@@ -700,7 +635,7 @@ ENDM
 	map_attributes IlexForestAzaleaGate, ILEX_FOREST_AZALEA_GATE, $0, 0
 	map_attributes Route34IlexForestGate, ROUTE_34_ILEX_FOREST_GATE, $0, 0
 	map_attributes DayCare, DAYCARE, $0, 0
-	map_attributes GoldenrodHPUpHouse, GOLDENROD_HP_UP_HOUSE, $0, 0
+	map_attributes GoldenrodHoneyHouse, GOLDENROD_HONEY_HOUSE, $0, 0
 	map_attributes GoldenrodNetBallHouse, GOLDENROD_NET_BALL_HOUSE, $0, 0
 	map_attributes GoldenrodBandHouse, GOLDENROD_BAND_HOUSE, $0, 0
 	map_attributes GoldenrodMuseum1F, GOLDENROD_MUSEUM_1F, $0, 0
@@ -915,6 +850,9 @@ ENDM
 	map_attributes CeruleanCave1F, CERULEAN_CAVE_1F, $9, 0
 	map_attributes CeruleanCave2F, CERULEAN_CAVE_2F, $9, 0
 	map_attributes CeruleanCaveB1F, CERULEAN_CAVE_B1F, $9, 0
+	map_attributes Route39RuggedRoadGate, ROUTE_39_RUGGED_ROAD_GATE, $0, 0
+	map_attributes RuggedRoad, RUGGED_ROAD, $71, 0
+	map_attributes SnowtopMountain, SNOWTOP_MOUNTAIN, $0, 0
 	map_attributes YellowForestGate, YELLOW_FOREST_GATE, $0, 0
 	map_attributes YellowForest, YELLOW_FOREST, $55, 0
 	map_attributes QuietCave1F, QUIET_CAVE_1F, $9, 0

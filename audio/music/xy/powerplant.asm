@@ -24,7 +24,7 @@ Music_PowerPlantXY_Ch1_branch_0:
 	callchannel Music_PowerPlantXY_Ch1_branch_1
 	callchannel Music_PowerPlantXY_Ch1_branch_1
 	callchannel Music_PowerPlantXY_Ch1_branch_3
-	loopchannel 0, Music_PowerPlantXY_Ch1_branch_0
+	jumpchannel Music_PowerPlantXY_Ch1_branch_0
 
 Music_PowerPlantXY_Ch1_branch_1:
 	vibrato $12, $23
@@ -167,7 +167,7 @@ Music_PowerPlantXY_Ch2_branch_0:
 	callchannel Music_PowerPlantXY_Ch2_branch_1
 	callchannel Music_PowerPlantXY_Ch2_branch_1
 	callchannel Music_PowerPlantXY_Ch2_branch_3
-	loopchannel 0, Music_PowerPlantXY_Ch2_branch_0
+	jumpchannel Music_PowerPlantXY_Ch2_branch_0
 
 Music_PowerPlantXY_Ch2_branch_1:
 	notetype $c, $c2
@@ -334,7 +334,7 @@ Music_PowerPlantXY_Ch3_branch_0:
 	callchannel Music_PowerPlantXY_Ch3_branch_1
 	callchannel Music_PowerPlantXY_Ch3_branch_1
 	callchannel Music_PowerPlantXY_Ch3_branch_3
-	loopchannel 0, Music_PowerPlantXY_Ch3_branch_0
+	jumpchannel Music_PowerPlantXY_Ch3_branch_0
 
 Music_PowerPlantXY_Ch3_branch_1:
 	vibrato $0, $66
@@ -574,4 +574,4 @@ Music_PowerPlantXY_Ch4_branch_3:
 	note G#, 1
 	note B_, 2
 	loopchannel 8, Music_PowerPlantXY_Ch4_branch_3
-	loopchannel 0, Music_PowerPlantXY_Ch4_branch_0
+	jumpchannel Music_PowerPlantXY_Ch4_branch_0

@@ -168,7 +168,7 @@ Music_ViridianCity_branch_f4039:
 	note __, 3
 	note G_, 8
 	note A#, 4
-	loopchannel 0, Music_ViridianCity_branch_f4039
+	jumpchannel Music_ViridianCity_branch_f4039
 
 Music_ViridianCity_branch_f40c5:
 	octave 3
@@ -401,7 +401,7 @@ Music_ViridianCity_branch_f414c:
 	note E_, 8
 	octave 1
 	note A_, 4
-	loopchannel 0, Music_ViridianCity_branch_f414c
+	jumpchannel Music_ViridianCity_branch_f414c
 
 Music_ViridianCity_branch_f41c0:
 	octave 2
@@ -622,7 +622,7 @@ Music_ViridianCity_branch_f4246:
 	note __, 3
 	note D_, 8
 	note E_, 4
-	loopchannel 0, Music_ViridianCity_branch_f4246
+	jumpchannel Music_ViridianCity_branch_f4246
 
 Music_ViridianCity_branch_f42a2:
 	octave 5
@@ -709,7 +709,7 @@ Music_ViridianCity_branch_f42e9:
 	callchannel Music_ViridianCity_branch_f434b
 	callchannel Music_ViridianCity_branch_f433b
 	callchannel Music_ViridianCity_branch_f433b
-	loopchannel 0, Music_ViridianCity_branch_f42e9
+	jumpchannel Music_ViridianCity_branch_f42e9
 
 Music_ViridianCity_branch_f431d:
 	note E_, 2

@@ -1,18 +1,18 @@
-command: MACRO
+MACRO command
 	const \1_command
-\1 EQUS "db \1_command"
+	DEF \1 EQUS "db \1_command"
 	dw BattleCommand_\1
 ENDM
 
-commandx: MACRO
+MACRO commandx
 	const \1_command
-\1 EQUS "db \1_command,"
+	DEF \1 EQUS "db \1_command,"
 	dw BattleCommand_\1
 ENDM
 
-commandonly: MACRO
+MACRO commandonly
 	const \1_command
-\1 EQUS "db \1_command"
+	DEF \1 EQUS "db \1_command"
 ENDM
 
 	const_def 1
@@ -168,10 +168,10 @@ BattleCommandPointers:
 	commandx raiseoppstathit
 	commandx loweroppstathit
 
-NUM_EFFECT_COMMANDS EQU const_value - 1
+DEF NUM_EFFECT_COMMANDS EQU const_value - 1
 
-FIRST_MOVEARG_COMMAND EQU raisestat_command
-LAST_MOVEARG_COMMAND EQU loweroppstathit_command
+DEF FIRST_MOVEARG_COMMAND EQU raisestat_command
+DEF LAST_MOVEARG_COMMAND EQU loweroppstathit_command
 
 	const_def $ff, -1
 	commandonly endmove

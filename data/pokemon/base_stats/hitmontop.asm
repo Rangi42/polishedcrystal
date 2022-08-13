@@ -4,9 +4,8 @@
 	db FIGHTING, FIGHTING ; type
 	db 45 ; catch rate
 	db 138 ; base exp
-	db NO_ITEM ; item 1
-	db NO_ITEM ; item 2
-	dn GENDER_F0, 4 ; gender ratio, step cycles to hatch
+	db NO_ITEM, NO_ITEM ; held items
+	dn GENDER_F0, HATCH_MEDIUM_SLOW ; gender ratio, step cycles to hatch
 	INCBIN "gfx/pokemon/hitmontop/front.dimensions"
 	abilities_for HITMONTOP, INTIMIDATE, TECHNICIAN, STEADFAST
 	db GROWTH_MEDIUM_FAST ; growth rate

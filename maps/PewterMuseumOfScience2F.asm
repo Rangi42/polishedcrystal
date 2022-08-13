@@ -23,11 +23,11 @@ Museum2FPokefanMScript:
 	faceplayer
 	opentext
 	checkevent EVENT_LISTENED_TO_SEISMIC_TOSS_INTRO
-	iftrue Museum2FTutorSeismicTossScript
+	iftruefwd Museum2FTutorSeismicTossScript
 	checkunits
-	iftrue .metric
+	iftruefwd .metric
 	writetext Museum2FPokefanMImperialText
-	sjump .ok
+	sjumpfwd .ok
 .metric
 	writetext Museum2FPokefanMMetricText
 .ok
@@ -37,14 +37,14 @@ Museum2FTutorSeismicTossScript:
 	writetext Text_Museum2FTutorSeismicToss
 	waitbutton
 	checkitem SILVER_LEAF
-	iffalse .NoSilverLeaf
+	iffalsefwd .NoSilverLeaf
 	writetext Text_Museum2FTutorQuestion
 	yesorno
-	iffalse .TutorRefused
+	iffalsefwd .TutorRefused
 	setval SEISMIC_TOSS
 	writetext ClearText
 	special Special_MoveTutor
-	ifequal $0, .TeachMove
+	ifequalfwd $0, .TeachMove
 .TutorRefused
 	jumpopenedtext Text_Museum2FTutorRefused
 

@@ -16,12 +16,12 @@ TradeCenter_MapScriptHeader:
 	bg_event  5,  4, BGEVENT_LEFT, MapTradeCenterSignpost1Script
 
 	def_object_events
-	object_event  3,  4, SPRITE_CHRIS, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, CableClubFriendScript, EVENT_TEMPORARY_UNTIL_MAP_RELOAD_1
-	object_event  6,  4, SPRITE_CHRIS, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, CableClubFriendScript, EVENT_TEMPORARY_UNTIL_MAP_RELOAD_2
+	object_event  3,  4, SPRITE_LINK_TRAINER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, CableClubFriendScript, EVENT_TEMPORARY_UNTIL_MAP_RELOAD_1
+	object_event  6,  4, SPRITE_LINK_TRAINER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, CableClubFriendScript, EVENT_TEMPORARY_UNTIL_MAP_RELOAD_2
 
 	object_const_def
-	const TRADECENTER_CHRIS1
-	const TRADECENTER_CHRIS2
+	const TRADECENTER_LINK_TRAINER1
+	const TRADECENTER_LINK_TRAINER2
 
 TradeCenterTrigger0:
 	sdefer TradeCenter_Initialize
@@ -29,14 +29,14 @@ TradeCenterTrigger0:
 
 TradeCenter_SetWhichChris:
 	special Special_CableClubCheckWhichChris
-	iffalse .Chris2
-	disappear TRADECENTER_CHRIS2
-	appear TRADECENTER_CHRIS1
+	iffalsefwd .Chris2
+	disappear TRADECENTER_LINK_TRAINER2
+	appear TRADECENTER_LINK_TRAINER1
 	endcallback
 
 .Chris2:
-	disappear TRADECENTER_CHRIS1
-	appear TRADECENTER_CHRIS2
+	disappear TRADECENTER_LINK_TRAINER1
+	appear TRADECENTER_LINK_TRAINER2
 	endcallback
 
 TradeCenter_Initialize:

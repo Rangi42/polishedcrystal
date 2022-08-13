@@ -1,14 +1,3 @@
-SetPalettes::
-; Inits the Palettes
-; depending on the system the monochromes palettes or color palettes
-	push de
-	ld a, %11100100
-	call DmgToCgbBGPals
-	lb de, %11100100, %11100100
-	call DmgToCgbObjPals
-	pop de
-	ret
-
 ClearPalettes::
 ; Make all palettes white
 	ldh a, [rSVBK]

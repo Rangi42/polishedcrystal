@@ -186,6 +186,17 @@ BattleAnimFrameData:
 	dw .Frameset_b7 ; b7
 	dw .Frameset_b8 ; b8
 	dw .Frameset_b9 ; b9
+	dw .Frameset_StoneEdge ; ba
+	dw .Frameset_BrickBreak ; bb
+	dw .Frameset_HyperVoice ; bc
+	dw .Frameset_BugBuzzL ; bd
+	dw .Frameset_BugBuzzR ; be
+	dw .Frameset_BulletPunch ; bf
+	dw .Frameset_LongPunch ; c0
+	dw .Frameset_FlashCannon ; c1
+	dw .Frameset_FocusBlast ; c1
+	dw .Frameset_Vortex ; c2
+	dw .Frameset_RedStar ; c3
 	assert_table_length NUM_BATTLEANIMFRAMESETS
 
 ; OAM index (see battle/objects/oam.asm), flip flags / duration
@@ -1273,3 +1284,69 @@ BattleAnimFrameData:
 .Frameset_b9:
 	frame BATTLEANIMOAMSET_54, 40
 	endanim
+
+.Frameset_StoneEdge:
+	frame BATTLEANIMOAMSET_STONE_EDGE,  50
+	delanim
+
+.Frameset_BrickBreak:
+	frame BATTLEANIMOAMSET_BRICK_BREAK, 8
+	endanim
+
+.Frameset_HyperVoice:
+	frame BATTLEANIMOAMSET_18,  0
+	frame BATTLEANIMOAMSET_70,  0
+	frame BATTLEANIMOAMSET_71,  0
+	frame BATTLEANIMOAMSET_72,  0
+	frame BATTLEANIMOAMSET_73,  0
+	frame BATTLEANIMOAMSET_HYPER_VOICE,  0
+	delanim
+
+.Frameset_BugBuzzL:
+	frame BATTLEANIMOAMSET_BD,  4
+	frame BATTLEANIMOAMSET_BUG_BUZZ1,  4
+	frame BATTLEANIMOAMSET_BUG_BUZZ2,  4
+	delanim
+
+.Frameset_BugBuzzR:
+	frame BATTLEANIMOAMSET_BD,  4, OAM_X_FLIP
+	frame BATTLEANIMOAMSET_BUG_BUZZ1,  4, OAM_X_FLIP
+	frame BATTLEANIMOAMSET_BUG_BUZZ2,  4, OAM_X_FLIP
+	delanim
+
+.Frameset_BulletPunch:
+	frame BATTLEANIMOAMSET_BULLET_PUNCH,  4
+	frame BATTLEANIMOAMSET_02,  1
+	frame BATTLEANIMOAMSET_BULLET_PUNCH,  4
+	frame BATTLEANIMOAMSET_02,  1
+	frame BATTLEANIMOAMSET_BULLET_PUNCH,  4
+	frame BATTLEANIMOAMSET_02,  1
+	frame BATTLEANIMOAMSET_BULLET_PUNCH,  4
+	frame BATTLEANIMOAMSET_02,  1
+	delanim
+
+.Frameset_LongPunch:
+	frame BATTLEANIMOAMSET_03,  4
+	frame BATTLEANIMOAMSET_01,  1
+	dorestart
+
+.Frameset_FlashCannon:
+	frame BATTLEANIMOAMSET_1E,  4
+	frame BATTLEANIMOAMSET_55,  8
+	frame BATTLEANIMOAMSET_54,  20
+	delanim
+
+.Frameset_FocusBlast:
+	frame BATTLEANIMOAMSET_54,  1
+	frame BATTLEANIMOAMSET_53,  1
+	dorestart
+
+.Frameset_Vortex:
+	frame BATTLEANIMOAMSET_VORTEX1,  2
+	frame BATTLEANIMOAMSET_VORTEX2,  2
+	frame BATTLEANIMOAMSET_VORTEX3,  2
+	dorestart
+
+.Frameset_RedStar:
+	frame BATTLEANIMOAMSET_14, 30
+	delanim

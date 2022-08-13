@@ -104,20 +104,21 @@ endr
 	giveitem FIRE_STONE, 99
 	giveitem WATER_STONE, 99
 	giveitem THUNDERSTONE, 99
+	giveitem ICE_STONE, 99
 	giveitem MOON_STONE, 99
 	giveitem SUN_STONE, 99
 	giveitem DUSK_STONE, 99
-	giveitem DAWN_STONE, 99
 	giveitem SHINY_STONE, 99
+	giveitem ODD_SOUVENIR, 99
 	giveitem EXP_SHARE, 99
 	giveitem LEFTOVERS, 99
-	giveitem BIG_NUGGET, 99
+	giveitem MULCH, 99
+	giveitem SWEET_HONEY, 99
 	giveitem SILVER_LEAF, 99
 	giveitem GOLD_LEAF, 99
-	giveitem BOTTLE_CAP, 99
-	giveitem MULCH, 99
 	giveitem MINT_LEAF, 99
-	giveitem ODD_SOUVENIR, 10
+	giveitem BOTTLE_CAP, 99
+	giveitem BIG_NUGGET, 99
 	giveitem ARMOR_SUIT, 1
 	; all decorations except Diploma
 for x, EVENT_DECO_BED_1, EVENT_DECO_BIG_LAPRAS_DOLL + 1
@@ -207,9 +208,8 @@ endr
 	setevent EVENT_RESTORED_POWER_TO_KANTO
 	; post-e4
 	setflag ENGINE_CREDITS_SKIP
-	setflag ENGINE_HAVE_SHINY_CHARM
 	; good party
-	givepoke MEWTWO, NO_FORM, 100, BRIGHTPOWDER
+	givepoke MEWTWO, PLAIN_FORM, 100, BRIGHTPOWDER
 	loadmem wPartyMon1EVs+0, 252
 	loadmem wPartyMon1EVs+1, 252
 	loadmem wPartyMon1EVs+2, 252
@@ -230,32 +230,24 @@ endr
 	loadmem wPartyMon1Stats+7, LOW(999)
 	loadmem wPartyMon1Stats+8, HIGH(999)
 	loadmem wPartyMon1Stats+9, LOW(999)
-	; hm slaves
-	givepoke MEW, NO_FORM, 100, LEFTOVERS
-	givepoke MEW, NO_FORM, 100, LEFTOVERS
+	; hm slave
+	givepoke MEW, PLAIN_FORM, 100, LEFTOVERS
 	loadmem wPartyMon2Moves+0, FLY
-	loadmem wPartyMon2Moves+1, SURF
-	loadmem wPartyMon2Moves+2, STRENGTH
-	loadmem wPartyMon2Moves+3, CUT
+	loadmem wPartyMon2Moves+1, HEADBUTT
+	loadmem wPartyMon2Moves+2, DIG
+	loadmem wPartyMon2Moves+3, FRESH_SNACK
 	loadmem wPartyMon2PP+0, 15
 	loadmem wPartyMon2PP+1, 15
-	loadmem wPartyMon2PP+2, 15
-	loadmem wPartyMon2PP+3, 30
-	loadmem wPartyMon3Moves+0, FLASH
-	loadmem wPartyMon3Moves+1, ROCK_SMASH
-	loadmem wPartyMon3Moves+2, HEADBUTT
-	loadmem wPartyMon3Moves+3, WATERFALL
-	loadmem wPartyMon3PP+0, 20
-	loadmem wPartyMon3PP+1, 15
-	loadmem wPartyMon3PP+2, 15
-	loadmem wPartyMon3PP+3, 15
+	loadmem wPartyMon2PP+2, 10
+	loadmem wPartyMon2PP+3, 10
 	; variant form test
-	givepoke SLOWKING, GALARIAN_FORM, 50
-;	givepoke ARTICUNO, GALARIAN_FORM, 50
-;	givepoke ZAPDOS, GALARIAN_FORM, 50
-;	givepoke MOLTRES, GALARIAN_FORM, 50
+	givepoke GRAVELER, ALOLAN_FORM, 50
+	loadmem wPartyMon3Shiny, SHINY_MASK
+	givepoke WEEZING, GALARIAN_FORM, 50
+	givepoke DITTO, 50
+	loadmem wPartyMon5Personality, HIDDEN_ABILITY | QUIRKY
 	; fill pokedex
-;	callasm FillPokedex
+	callasm FillPokedex
 	; intro events
 	addcellnum PHONE_MOM
 	setmapscene PLAYERS_HOUSE_1F, $1
@@ -276,32 +268,24 @@ endr
 	end
 
 FillPokedex:
-	ld a, 1
-;	ld [wUnlockedUnownMode], a
-	ld [wFirstUnownSeen], a
-	ld [wFirstMagikarpSeen], a
-;	ld hl, wUnownDex
-;	ld a, 1
-;rept NUM_UNOWN
-;	ld [hli], a
-;	inc a
-;endr
 	ld hl, wPokedexSeen
 	call .Fill
 	ld hl, wPokedexCaught
 .Fill:
 	ld a, %11111111
-	ld bc, 31 ; 001-248
+	ld bc, NUM_UNIQUE_POKEMON / 8
 	rst ByteFill
-	ld [hl], %00111111 ; 249-254
+if NUM_UNIQUE_POKEMON % 8
+	ld [hl], 2**(NUM_UNIQUE_POKEMON % 8) - 1
+endc
 	ret
 
 else
 
 	checkevent EVENT_GOT_A_POKEMON_FROM_ELM
-	iftrue .NormalRadio
+	iftruefwd .NormalRadio
 	checkevent EVENT_LISTENED_TO_INITIAL_RADIO
-	iftrue .AbbreviatedRadio
+	iftruefwd .AbbreviatedRadio
 	playmusic MUSIC_POKEMON_TALK
 	opentext
 	writetext PlayerRadioText1
@@ -349,7 +333,7 @@ PokemonJournalProfElmScript:
 PlayersHousePC:
 	opentext
 	special Special_PlayersHousePC
-	iftrue .Warp
+	iftruefwd .Warp
 	endtext
 .Warp:
 	warp NONE, 0, 0

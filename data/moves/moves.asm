@@ -1,4 +1,4 @@
-move: MACRO
+MACRO move
 	db \1 ; animation
 	db \2 ; effect
 	db \3 ; power
@@ -203,9 +203,9 @@ else
 endc
 	move EXPLOSION,    EFFECT_EXPLOSION,         250, NORMAL,    100,  5,   0, PHYSICAL
 if DEF(FAITHFUL)
-	move FURY_STRIKES, EFFECT_FURY_STRIKES,       18, NORMAL,     80, 15,   0, PHYSICAL
+	move FURY_STRIKES, EFFECT_MULTI_HIT,          18, NORMAL,     80, 15,   0, PHYSICAL
 else
-	move FURY_STRIKES, EFFECT_FURY_STRIKES,       20, NORMAL,     85, 15,   0, PHYSICAL
+	move FURY_STRIKES, EFFECT_MULTI_HIT,          20, NORMAL,     85, 15,   0, PHYSICAL
 endc
 	move BONEMERANG,   EFFECT_DOUBLE_HIT,         50, GROUND,     90, 10,   0, PHYSICAL
 	move REST,         EFFECT_HEAL,                0, PSYCHIC,   100, 10,   0, STATUS

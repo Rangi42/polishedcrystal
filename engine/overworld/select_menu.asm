@@ -22,19 +22,13 @@ CheckRegisteredItem::
 	ld a, [hl]
 	and a
 	jr z, .next
+	ld [wCurKeyItem], a
 	push hl
 	push bc
-	push af
 	call CheckKeyItem
-	jr nc, .registration_ok ; ???
-
-.registration_ok
-	pop af
 	pop bc
 	pop hl
-
-	; Useful if we only have a single registered item
-	ld [wCurKeyItem], a
+	jr nc, .next
 	inc c
 .next
 	inc hl
@@ -135,7 +129,7 @@ GetRegisteredItem:
 	ld bc, 1 palettes
 	call FarCopyColorWRAM
 
-	hlcoord 0, 0, wAttrMap
+	hlcoord 0, 0, wAttrmap
 	ld a, PRIORITY | PAL_BG_TEXT
 	ld bc, SCREEN_WIDTH * 4
 	rst ByteFill

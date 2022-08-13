@@ -27,16 +27,16 @@ CeladonHomeDecorStore3FClerk1Script:
 	loadmenu .MenuData
 	verticalmenu
 	closewindow
-	ifequal $1, .RedCarpet
-	ifequal $2, .YellowCarpet
-	ifequal $3, .GreenCarpet
+	ifequalfwd $1, .RedCarpet
+	ifequalfwd $2, .YellowCarpet
+	ifequalfwd $3, .GreenCarpet
 	endtext
 
 .RedCarpet:
 	checkmoney $0, 45000
-	ifequal $2, .NotEnoughMoney
+	ifequalfwd $2, .NotEnoughMoney
 	checkevent EVENT_DECO_CARPET_1
-	iftrue .AlreadyBought
+	iftruefwd .AlreadyBought
 	takemoney $0, 45000
 	setevent EVENT_DECO_CARPET_1
 	writetext BoughtRedCarpetText
@@ -48,9 +48,9 @@ CeladonHomeDecorStore3FClerk1Script:
 
 .YellowCarpet:
 	checkmoney $0, 45000
-	ifequal $2, .NotEnoughMoney
+	ifequalfwd $2, .NotEnoughMoney
 	checkevent EVENT_DECO_CARPET_3
-	iftrue .AlreadyBought
+	iftruefwd .AlreadyBought
 	takemoney $0, 45000
 	setevent EVENT_DECO_CARPET_3
 	writetext BoughtYellowCarpetText
@@ -62,9 +62,9 @@ CeladonHomeDecorStore3FClerk1Script:
 
 .GreenCarpet:
 	checkmoney $0, 45000
-	ifequal $2, .NotEnoughMoney
+	ifequalfwd $2, .NotEnoughMoney
 	checkevent EVENT_DECO_CARPET_4
-	iftrue .AlreadyBought
+	iftruefwd .AlreadyBought
 	takemoney $0, 45000
 	setevent EVENT_DECO_CARPET_4
 	writetext BoughtGreenCarpetText
@@ -93,9 +93,9 @@ CeladonHomeDecorStore3FClerk1Script:
 .MenuData2:
 	db $80 ; flags
 	db 4 ; items
-	db "Red C.    ¥45000@"
-	db "Yellow C. ¥45000@"
-	db "Green C.  ¥45000@"
+	db "Red       ¥45000@"
+	db "Yellow    ¥45000@"
+	db "Green     ¥45000@"
 	db "Cancel@"
 
 CeladonHomeDecorStore3FClerk2Script:
@@ -108,7 +108,7 @@ CeladonHomeDecorStore3FClerk2Script:
 	yesorno
 	iffalse_jumpopenedtext CeladonHomeDecorStore3FClerk2NoText
 	checkmoney $0, 35000
-	ifequal $2, .NotEnoughMoney
+	ifequalfwd $2, .NotEnoughMoney
 	takemoney $0, 35000
 	setevent EVENT_DECO_CARPET_2
 	writetext BoughtBlueCarpetText

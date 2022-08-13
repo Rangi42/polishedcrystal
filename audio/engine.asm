@@ -187,9 +187,9 @@ _UpdateSound::
 	add hl, bc
 	ld c, l
 	ld b, h
-	ld a, [wCurChannel]
-	inc a
-	ld [wCurChannel], a
+	ld hl, wCurChannel
+	inc [hl]
+	ld a, [hl]
 	cp $8 ; are we done?
 	jmp nz, .loop ; do it all again
 
@@ -1221,8 +1221,8 @@ ParseSFXOrRest:
 	ld [hl], a
 	; are we on the last channel? (noise sampling)
 	ld a, [wCurChannel]
-	and $3
-	cp $3
+	or ~$3
+	inc a
 	ret z
 	; update hi frequency from next param
 	call GetMusicByte
@@ -1235,8 +1235,8 @@ GetNoiseSample:
 ; load ptr to sample header in wNoiseSampleAddress
 	; are we on the last channel?
 	ld a, [wCurChannel]
-	and $3
-	cp $3
+	or ~$3
+	inc a
 	; ret if not
 	ret nz
 	; update note duration
@@ -2286,9 +2286,9 @@ _PlayCryHeader::
 
 ; No tempo for channel 4
 	ld a, [wCurChannel]
-	and 3
-	cp 3
-	jr nc, .start
+	or ~$3
+	inc a
+	jr z, .start
 
 ; Tempo is effectively length
 	ld hl, wChannel1Tempo - wChannel1
@@ -2624,7 +2624,7 @@ LoadMusicByte::
 	ret
 
 ReloadWaveform::
-    ; called from the music player
+	; called from the music player
 	ld a, [wCurTrackIntensity]
 	and $f ; only NUM_WAVEFORMS are valid
 	; each wavepattern is $f bytes long, so seeking is done in $10s

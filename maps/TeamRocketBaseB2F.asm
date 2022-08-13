@@ -52,12 +52,12 @@ TeamRocketBaseB2F_MapScriptHeader:
 	object_event 20, 16, SPRITE_ARIANA, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_TEAM_ROCKET_BASE_B2F_ARIANA
 	object_event  5, 13, SPRITE_LANCE, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_TEAM_ROCKET_BASE_B2F_LANCE
 	object_event  9, 13, SPRITE_DRAGONITE, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_TEAM_ROCKET_BASE_B2F_DRAGONITE
-	object_event  7,  5, SPRITE_MON_ICON, SPRITEMOVEDATA_POKEMON, 0, ELECTRODE, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, RocketElectrode1, EVENT_TEAM_ROCKET_BASE_B2F_ELECTRODE_1
-	object_event  7,  7, SPRITE_MON_ICON, SPRITEMOVEDATA_POKEMON, 0, ELECTRODE, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, RocketElectrode2, EVENT_TEAM_ROCKET_BASE_B2F_ELECTRODE_2
-	object_event  7,  9, SPRITE_MON_ICON, SPRITEMOVEDATA_POKEMON, 0, ELECTRODE, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, RocketElectrode3, EVENT_TEAM_ROCKET_BASE_B2F_ELECTRODE_3
-	object_event 22,  5, SPRITE_MON_ICON, SPRITEMOVEDATA_POKEMON, 0, ELECTRODE, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_TEAM_ROCKET_BASE_B2F_ELECTRODE_1
-	object_event 22,  7, SPRITE_MON_ICON, SPRITEMOVEDATA_POKEMON, 0, ELECTRODE, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_TEAM_ROCKET_BASE_B2F_ELECTRODE_2
-	object_event 22,  9, SPRITE_MON_ICON, SPRITEMOVEDATA_POKEMON, 0, ELECTRODE, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_TEAM_ROCKET_BASE_B2F_ELECTRODE_3
+	object_event  7,  5, SPRITE_MON_ICON, SPRITEMOVEDATA_POKEMON, 0, ELECTRODE, -1, -1, 0, OBJECTTYPE_SCRIPT, NO_FORM, RocketElectrode1, EVENT_TEAM_ROCKET_BASE_B2F_ELECTRODE_1
+	object_event  7,  7, SPRITE_MON_ICON, SPRITEMOVEDATA_POKEMON, 0, ELECTRODE, -1, -1, 0, OBJECTTYPE_SCRIPT, NO_FORM, RocketElectrode2, EVENT_TEAM_ROCKET_BASE_B2F_ELECTRODE_2
+	object_event  7,  9, SPRITE_MON_ICON, SPRITEMOVEDATA_POKEMON, 0, ELECTRODE, -1, -1, 0, OBJECTTYPE_SCRIPT, NO_FORM, RocketElectrode3, EVENT_TEAM_ROCKET_BASE_B2F_ELECTRODE_3
+	pokemon_event 22,  5, ELECTRODE, SPRITEMOVEDATA_POKEMON, -1, -1, 0, ClearText, EVENT_TEAM_ROCKET_BASE_B2F_ELECTRODE_1
+	pokemon_event 22,  7, ELECTRODE, SPRITEMOVEDATA_POKEMON, -1, -1, 0, ClearText, EVENT_TEAM_ROCKET_BASE_B2F_ELECTRODE_2
+	pokemon_event 22,  9, ELECTRODE, SPRITEMOVEDATA_POKEMON, -1, -1, 0, ClearText, EVENT_TEAM_ROCKET_BASE_B2F_ELECTRODE_3
 	object_event 25, 13, SPRITE_ROCKET, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 3, GenericTrainerGruntM17, EVENT_TEAM_ROCKET_BASE_POPULATION
 	object_event  4,  1, SPRITE_ROCKET, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 1, GenericTrainerGruntM18, EVENT_TEAM_ROCKET_BASE_POPULATION
 	object_event 21, 14, SPRITE_ROCKET, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 4, GenericTrainerGruntM19, EVENT_TEAM_ROCKET_BASE_POPULATION
@@ -80,7 +80,7 @@ TeamRocketBaseB2F_MapScriptHeader:
 
 TransmitterDoorCallback:
 	checkevent EVENT_OPENED_DOOR_TO_ROCKET_HIDEOUT_TRANSMITTER
-	iftrue .Change
+	iftruefwd .Change
 	endcallback
 
 .Change:
@@ -89,7 +89,7 @@ TransmitterDoorCallback:
 
 RocketBaseBossFLeft:
 	moveobject TEAMROCKETBASEB2F_LANCE, 9, 13
-	sjump RocketBaseBossFScript
+	sjumpfwd RocketBaseBossFScript
 
 RocketBaseBossFRight:
 	moveobject TEAMROCKETBASEB2F_ARIANA, 21, 16
@@ -103,6 +103,7 @@ RocketBaseBossFScript:
 	turnobject PLAYER, DOWN
 	showemote EMOTE_SHOCK, PLAYER, 15
 	applymovement PLAYER, RocketBasePlayerApproachesBossFMovement
+	special SaveMusic
 	playmusic MUSIC_ROCKET_ENCOUNTER
 	applymovement TEAMROCKETBASEB2F_ARIANA, RocketBaseBossFApproachesPlayerMovement
 	turnobject PLAYER, UP
@@ -180,7 +181,7 @@ LanceHealsScript:
 	setscene $1
 	setevent EVENT_LANCE_HEALED_YOU_IN_TEAM_ROCKET_BASE
 	readvar VAR_FACING
-	ifequal RIGHT, .FacingRight
+	ifequalfwd RIGHT, .FacingRight
 	applymovement TEAMROCKETBASEB2F_LANCE, RocketBaseLanceLeavesAfterHealMovement
 	disappear TEAMROCKETBASEB2F_LANCE
 	end
@@ -234,55 +235,55 @@ RocketElectrode1:
 	cry ELECTRODE
 	loadwildmon ELECTRODE, 33
 	startbattle
-	iftrue TeamRocketBaseB2FReloadMap
+	iftruefwd TeamRocketBaseB2FReloadMap
 	disappear TEAMROCKETBASEB2F_ELECTRODE1
 	disappear TEAMROCKETBASEB2F_ELECTRODE4
 	checkevent EVENT_TEAM_ROCKET_BASE_B2F_ELECTRODE_1
-	iffalse TeamRocketBaseB2FReloadMap
+	iffalsefwd TeamRocketBaseB2FReloadMap
 	checkevent EVENT_TEAM_ROCKET_BASE_B2F_ELECTRODE_2
-	iffalse TeamRocketBaseB2FReloadMap
+	iffalsefwd TeamRocketBaseB2FReloadMap
 	checkevent EVENT_TEAM_ROCKET_BASE_B2F_ELECTRODE_3
-	iffalse TeamRocketBaseB2FReloadMap
+	iffalsefwd TeamRocketBaseB2FReloadMap
 	reloadmapafterbattle
 	special PlayMapMusic
 	applymovement PLAYER, RocketBasePlayerLeavesElectrodesMovement1
-	sjump RocketBaseElectrodeScript
+	sjumpfwd RocketBaseElectrodeScript
 
 RocketElectrode2:
 	cry ELECTRODE
 	loadwildmon ELECTRODE, 33
 	startbattle
-	iftrue TeamRocketBaseB2FReloadMap
+	iftruefwd TeamRocketBaseB2FReloadMap
 	disappear TEAMROCKETBASEB2F_ELECTRODE2
 	disappear TEAMROCKETBASEB2F_ELECTRODE5
 	checkevent EVENT_TEAM_ROCKET_BASE_B2F_ELECTRODE_1
-	iffalse TeamRocketBaseB2FReloadMap
+	iffalsefwd TeamRocketBaseB2FReloadMap
 	checkevent EVENT_TEAM_ROCKET_BASE_B2F_ELECTRODE_2
-	iffalse TeamRocketBaseB2FReloadMap
+	iffalsefwd TeamRocketBaseB2FReloadMap
 	checkevent EVENT_TEAM_ROCKET_BASE_B2F_ELECTRODE_3
-	iffalse TeamRocketBaseB2FReloadMap
+	iffalsefwd TeamRocketBaseB2FReloadMap
 	reloadmapafterbattle
 	special PlayMapMusic
 	applymovement PLAYER, RocketBasePlayerLeavesElectrodesMovement2
-	sjump RocketBaseElectrodeScript
+	sjumpfwd RocketBaseElectrodeScript
 
 RocketElectrode3:
 	cry ELECTRODE
 	loadwildmon ELECTRODE, 33
 	startbattle
-	iftrue TeamRocketBaseB2FReloadMap
+	iftruefwd TeamRocketBaseB2FReloadMap
 	disappear TEAMROCKETBASEB2F_ELECTRODE3
 	disappear TEAMROCKETBASEB2F_ELECTRODE6
 	checkevent EVENT_TEAM_ROCKET_BASE_B2F_ELECTRODE_1
-	iffalse TeamRocketBaseB2FReloadMap
+	iffalsefwd TeamRocketBaseB2FReloadMap
 	checkevent EVENT_TEAM_ROCKET_BASE_B2F_ELECTRODE_2
-	iffalse TeamRocketBaseB2FReloadMap
+	iffalsefwd TeamRocketBaseB2FReloadMap
 	checkevent EVENT_TEAM_ROCKET_BASE_B2F_ELECTRODE_3
-	iffalse TeamRocketBaseB2FReloadMap
+	iffalsefwd TeamRocketBaseB2FReloadMap
 	reloadmapafterbattle
 	special PlayMapMusic
 	applymovement PLAYER, RocketBasePlayerLeavesElectrodesMovement3
-	sjump RocketBaseElectrodeScript
+	sjumpfwd RocketBaseElectrodeScript
 
 TeamRocketBaseB2FReloadMap:
 	reloadmapafterbattle

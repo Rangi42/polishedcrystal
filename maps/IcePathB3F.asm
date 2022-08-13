@@ -24,11 +24,11 @@ LoreleiScript:
 	faceplayer
 	opentext
 	checkevent EVENT_BEAT_ELITE_FOUR
-	iftrue LoreleiRematchScript
+	iftruefwd LoreleiRematchScript
 	checkevent EVENT_BEAT_LORELEI
 	iftrue_jumpopenedtext LoreleiAfterText
 	checkevent EVENT_INTRODUCED_LORELEI
-	iftrue LoreleiAfterIntroScript
+	iftruefwd LoreleiAfterIntroScript
 	writetext LoreleiIntroText
 	waitbutton
 	setevent EVENT_INTRODUCED_LORELEI
@@ -69,7 +69,7 @@ LoreleiRematchScript:
 	checkevent EVENT_BEAT_LORELEI_AGAIN
 	iftrue_jumpopenedtext LoreleiRematchAfterText
 	checkevent EVENT_INTRODUCED_LORELEI
-	iftrue LoreleiReintroductionScript
+	iftruefwd LoreleiReintroductionScript
 	writetext LoreleiIntroText
 	waitbutton
 	setevent EVENT_INTRODUCED_LORELEI

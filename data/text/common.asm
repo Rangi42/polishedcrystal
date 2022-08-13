@@ -102,6 +102,7 @@ _HowManyShouldIMakeText::
 SECTION "_RecoveredSomeHPText", ROMX
 _RecoveredSomeHPText::
 	text_ram wStringBuffer1
+	text ""
 	line "recovered "
 	text_decimal wCurHPAnimDeltaHP, 2, 3
 	text "HP!"
@@ -131,12 +132,14 @@ _BurnWasHealedText::
 SECTION "_WasDefrostedText", ROMX
 _WasDefrostedText::
 	text_ram wStringBuffer1
+	text ""
 	line "was defrosted."
 	done
 
 SECTION "_WokeUpText", ROMX
 _WokeUpText::
 	text_ram wStringBuffer1
+	text ""
 	line "woke up."
 	done
 
@@ -150,6 +153,7 @@ _HealthReturnedText::
 SECTION "_RevitalizedText", ROMX
 _RevitalizedText::
 	text_ram wStringBuffer1
+	text ""
 	line "is revitalized."
 	done
 
@@ -188,28 +192,18 @@ _OakTimeWhatTimeIsItText::
 	text "What time is it?"
 	done
 
-SECTION "_OakTimeWhatHoursText", ROMX
-_OakTimeWhatHoursText::
-	text "What?"
-	done
-
-SECTION "_OakTimeHoursQuestionMarkText", ROMX
-_OakTimeHoursQuestionMarkText::
-	text "?"
-	done
-
 SECTION "_OakTimeHowManyMinutesText", ROMX
 _OakTimeHowManyMinutesText::
 	text "How many minutes?"
 	done
 
-SECTION "_OakTimeWhoaMinutesText", ROMX
-_OakTimeWhoaMinutesText::
+SECTION "_OakTimeWhoaText", ROMX
+_OakTimeWhoaText::
 	text "Whoa!"
 	done
 
-SECTION "_OakTimeMinutesQuestionMarkText", ROMX
-_OakTimeMinutesQuestionMarkText::
+SECTION "_OakTimeQuestionMarkText", ROMX
+_OakTimeQuestionMarkText::
 	text "?"
 	done
 
@@ -295,6 +289,7 @@ _PutAwayAndSetUpText::
 	text "Put away the"
 	line ""
 	text_ram wStringBuffer3
+	text ""
 
 	para "and set up the"
 	line ""
@@ -815,7 +810,7 @@ _LC_Text6::
 SECTION "_LC_Text7", ROMX
 _LC_Text7::
 	text_start
-	line "This week's Lucky"
+	line "Today's Lucky"
 	done
 
 SECTION "_LC_Text8", ROMX
@@ -882,7 +877,6 @@ _PnP_Text4::
 	text_start
 	line "@"
 	text_ram wStringBuffer2
-	text_start
 	text " @"
 	text_ram wStringBuffer1
 	text_end
@@ -1366,6 +1360,7 @@ SECTION "_NPCTradeAfterText2", ROMX
 _NPCTradeAfterText2::
 	text "Hi! The "
 	text_ram wMonOrItemNameBuffer
+	text ""
 	line "you traded me is"
 	cont "doing great!"
 	done
@@ -1690,6 +1685,7 @@ SECTION "_YourMonHasGrownText", ROMX
 _YourMonHasGrownText::
 	text "Your "
 	text_ram wStringBuffer1
+	text ""
 	line "has grown a lot."
 
 	para "Its level grew"
@@ -1723,6 +1719,7 @@ _BackAlreadyText::
 	text "Huh? Back already?"
 	line "Your "
 	text_ram wStringBuffer1
+	text ""
 
 	para "needs a little"
 	line "more time with us."
@@ -1801,7 +1798,7 @@ SECTION "_NoRoomForEggText", ROMX
 _NoRoomForEggText::
 	text "You have no room"
 	line "in your party"
-	cont "or your box."
+	cont "or your Box."
 	cont "Come back later."
 	done
 
@@ -1871,6 +1868,7 @@ _NameRaterPerfectNameText::
 
 	para "Treat "
 	text_ram wStringBuffer1
+	text ""
 	line "with loving care."
 	done
 
@@ -1998,6 +1996,7 @@ _ContainedMoveText::
 
 	para "Teach "
 	text_ram wStringBuffer2
+	text ""
 	line "to a #mon?"
 	done
 
@@ -2358,9 +2357,26 @@ ForfeitToTrainerText::
 SECTION "_PoisonFaintText", ROMX
 _PoisonFaintText::
 	text_ram wStringBuffer3
+	text ""
 	line "recovered from"
 	cont "its poisoning!"
 	prompt
+
+SECTION "_UseSweetHoneyText", ROMX
+_UseSweetHoneyText::
+	text "<PLAYER> spread"
+if DEF(FAITHFUL)
+	line "the Honey!"
+else
+	line "the Sweet Honey!"
+endc
+	done
+
+SECTION "_SweetHoneyNothingText", ROMX
+_SweetHoneyNothingText::
+	text "Looks like there's"
+	line "nothing here…"
+	done
 
 SECTION "_SquirtbottleNothingText", ROMX
 _SquirtbottleNothingText::
@@ -2449,18 +2465,13 @@ _AskItemMoveText::
 
 SECTION "Text_AreYouABoyOrAreYouAGirl", ROMX
 Text_AreYouABoyOrAreYouAGirl::
-	text "Are you a boy?"
-	line "Or are you a girl?"
+	text "Which photo is on"
+	line "your Trainer Card?"
 	done
 
-SECTION "Text_SoYoureABoy", ROMX
-Text_SoYoureABoy::
-	text "So you're a boy?"
-	done
-
-SECTION "Text_SoYoureAGirl", ROMX
-Text_SoYoureAGirl::
-	text "So you're a girl?"
+SECTION "Text_SoThisIsYou", ROMX
+Text_SoThisIsYou::
+	text "So this is you?"
 	done
 
 SECTION "Text_BattleUser", ROMX
@@ -2510,6 +2521,7 @@ SECTION "_LeftWithDayCareLadyText", ROMX
 _LeftWithDayCareLadyText::
 	text "It's "
 	text_ram wBreedMon2Nickname
+	text ""
 	line "that was left with"
 	cont "the Day-Care Lady."
 	done
@@ -2518,6 +2530,7 @@ SECTION "_LeftWithDayCareManText", ROMX
 _LeftWithDayCareManText::
 	text "It's "
 	text_ram wBreedMon1Nickname
+	text ""
 	line "that was left with"
 	cont "the Day-Care Man."
 	done
@@ -2903,10 +2916,10 @@ _OakPCText2::
 
 SECTION "_OakPCText3", ROMX
 _OakPCText3::
-	text_ram wStringBuffer3
+	text_decimal wTempDexSeen, 2, 3
 	text " #mon seen"
 	line ""
-	text_ram wStringBuffer4
+	text_decimal wTempDexOwn, 2, 3
 	text " #mon owned"
 
 	para "Prof.Oak's"
@@ -3144,6 +3157,7 @@ SECTION "_PokemonHoldItemText", ROMX
 _PokemonHoldItemText::
 	text "Made "
 	text_ram wMonOrItemNameBuffer
+	text ""
 	line "hold "
 	text_ram wStringBuffer2
 	text "."
@@ -3172,6 +3186,7 @@ SECTION "_PokemonTookItemText", ROMX
 _PokemonTookItemText::
 	text "Took "
 	text_ram wStringBuffer1
+	text ""
 	line "from "
 	text_ram wMonOrItemNameBuffer
 	text "."
@@ -3338,6 +3353,7 @@ endc
 
 SECTION "_WarnVBAText", ROMX
 _WarnVBAText::
+if !DEF(DEBUG)
 	text "Warning!"
 
 	para "This Game Boy"
@@ -3352,6 +3368,11 @@ _WarnVBAText::
 	para "such as BGB, mGBA,"
 	line "or Gambatte."
 	prompt
+else
+	text "Emulator test"
+	line "failed."
+	prompt
+endc
 
 SECTION "_ClockTimeMayBeWrongText", ROMX
 _ClockTimeMayBeWrongText::
@@ -3497,6 +3518,7 @@ SECTION "_PocketIsFullText", ROMX
 _PocketIsFullText::
 	text "The "
 	text_ram wStringBuffer3
+	text ""
 	line "is full…"
 	prompt
 
@@ -3519,6 +3541,7 @@ SECTION "_StoppedEvolvingText", ROMX
 _StoppedEvolvingText::
 	text "Huh? "
 	text_ram wStringBuffer2
+	text ""
 	line "stopped evolving!"
 	prompt
 
@@ -3526,6 +3549,7 @@ SECTION "_EvolvingText", ROMX
 _EvolvingText::
 	text "What? "
 	text_ram wStringBuffer2
+	text ""
 	line "is evolving!"
 	done
 
@@ -3774,6 +3798,7 @@ TMMartCostsThisMuchText::
 	text_ram wStringBuffer2
 	text " "
 	text_ram wStringBuffer1
+	text ""
 	line "will be ¥"
 	text_decimal hMoneyTemp, 3, 7
 	text "."
@@ -3933,6 +3958,7 @@ _StopLearningMoveText::
 SECTION "_DidNotLearnMoveText", ROMX
 _DidNotLearnMoveText::
 	text_ram wMonOrItemNameBuffer
+	text ""
 	line "did not learn"
 	cont ""
 	text_ram wStringBuffer2
@@ -3942,6 +3968,7 @@ _DidNotLearnMoveText::
 SECTION "_AskForgetMoveText", ROMX
 _AskForgetMoveText::
 	text_ram wMonOrItemNameBuffer
+	text ""
 	line "wants to learn"
 	cont ""
 	text_ram wStringBuffer2
@@ -4179,6 +4206,7 @@ SECTION "Text_BallCaught", ROMX
 Text_BallCaught::
 	text "Gotcha! "
 	text_ram wEnemyMonNickname
+	text ""
 	line "was caught!"
 	text_sound SFX_CAUGHT_MON
 	text_end
@@ -4190,7 +4218,6 @@ Text_Waitbutton_2::
 
 SECTION "_CurBoxFullText", ROMX
 _CurBoxFullText::
-	text ""
 	text_ram wStringBuffer1
 	text " is full."
 	prompt

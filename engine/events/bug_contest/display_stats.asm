@@ -33,8 +33,11 @@ DisplayCaughtContestMonStats:
 	ld de, .Health
 	rst PlaceString
 
-	ld a, [wContestMon]
-	ld [wNamedObjectIndex], a
+	ld hl, wNamedObjectIndex
+	ld a, [wContestMonSpecies]
+	ld [hli], a
+	ld a, [wContestMonForm]
+	ld [hl], a
 	call GetPokemonName
 	ld de, wStringBuffer1
 	hlcoord 1, 2

@@ -69,8 +69,12 @@ CopyDataUntil::
 	jr nz, CopyDataUntil
 	ret
 
-PrintNum::
-	homecall _PrintNum
+PrintNumFromReg::
+	homecall _PrintNumFromReg
+	ret
+
+FastPrintNum::
+	homecall _FastPrintNum
 	ret
 
 FarPrintText::

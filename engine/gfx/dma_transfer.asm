@@ -14,7 +14,7 @@ HDMATransferAttrMapToWRAMBank3:
 	call CallInSafeGFXMode
 
 .Function:
-	decoord 0, 0, wAttrMap
+	decoord 0, 0, wAttrmap
 	ld hl, wScratchAttrMap
 	call CutAndPasteAttrMap
 	ld a, $1
@@ -26,7 +26,7 @@ ReloadMapPart::
 	call CallInSafeGFXMode
 
 .Function:
-	decoord 0, 0, wAttrMap
+	decoord 0, 0, wAttrmap
 	ld hl, wScratchAttrMap
 	call CutAndPasteAttrMap
 	decoord 0, 0
@@ -127,7 +127,7 @@ DoHBlankHDMATransfer_toBGMap:
 	set 7, c
 .waitHBlank
 	ldh a, [rSTAT]
-	and $3
+	and rSTAT_MODE_MASK
 	jr nz, .waitHBlank
 	ld hl, rHDMA5
 	ld [hl], c
@@ -162,7 +162,7 @@ DoHBlankHDMATransfer:
 	cp b ; is the end LY greater than the max LY
 	call nc, DI_DelayFrame ; if so, delay a frame to reset the LY
 
-	lb bc, %11, LOW(rSTAT)
+	lb bc, rSTAT_MODE_MASK, LOW(rSTAT)
 .noHBlankWait
 	ldh a, [c]
 	and b
@@ -230,7 +230,7 @@ HDMATransfer_OnlyTopFourRows:
 	decoord 0, 0
 	call .Copy
 	ld hl, wScratchTileMap + $80
-	decoord 0, 0, wAttrMap
+	decoord 0, 0, wAttrmap
 	call .Copy
 	di
 	ld a, $1

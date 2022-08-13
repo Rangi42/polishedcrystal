@@ -39,70 +39,70 @@ Museum1FFossilScientistScript:
 	writetext Museum1FFossilScientistText
 	waitbutton
 	checkitem HELIX_FOSSIL
-	iftrue .own_helix
+	iftruefwd .own_helix
 	checkitem DOME_FOSSIL
-	iftrue .own_dome
+	iftruefwd .own_dome
 	checkitem OLD_AMBER
-	iftrue .ask_old_amber
+	iftruefwd .ask_old_amber
 	jumpopenedtext NoFossilsText
 
 .own_helix
 	checkitem DOME_FOSSIL
-	iftrue .own_helix_and_dome
+	iftruefwd .own_helix_and_dome
 	checkitem OLD_AMBER
-	iftrue .ask_helix_amber
+	iftruefwd .ask_helix_amber
 	writetext AskHelixFossilText
 	yesorno
-	iftrue ResurrectHelixFossil
-	sjump .maybe_later
+	iftruefwd ResurrectHelixFossil
+	sjumpfwd .maybe_later
 
 .own_dome
 	checkitem OLD_AMBER
-	iftrue .ask_dome_amber
+	iftruefwd .ask_dome_amber
 	writetext AskDomeFossilText
 	yesorno
-	iftrue ResurrectDomeFossil
-	sjump .maybe_later
+	iftruefwd ResurrectDomeFossil
+	sjumpfwd .maybe_later
 
 .own_helix_and_dome
 	checkitem OLD_AMBER
-	iftrue .ask_helix_dome_amber
+	iftruefwd .ask_helix_dome_amber
 	loadmenu HelixDomeMenuDataHeader
 	verticalmenu
 	closewindow
-	ifequal $1, ResurrectHelixFossil
-	ifequal $2, ResurrectDomeFossil
-	sjump .maybe_later
+	ifequalfwd $1, ResurrectHelixFossil
+	ifequalfwd $2, ResurrectDomeFossil
+	sjumpfwd .maybe_later
 
 .ask_old_amber
 	writetext AskOldAmberText
 	yesorno
-	iftrue ResurrectOldAmber
-	sjump .maybe_later
+	iftruefwd ResurrectOldAmber
+	sjumpfwd .maybe_later
 
 .ask_helix_amber
 	loadmenu HelixAmberMenuDataHeader
 	verticalmenu
 	closewindow
-	ifequal $1, ResurrectHelixFossil
-	ifequal $2, ResurrectOldAmber
-	sjump .maybe_later
+	ifequalfwd $1, ResurrectHelixFossil
+	ifequalfwd $2, ResurrectOldAmber
+	sjumpfwd .maybe_later
 
 .ask_dome_amber
 	loadmenu DomeAmberMenuDataHeader
 	verticalmenu
 	closewindow
-	ifequal $1, ResurrectDomeFossil
-	ifequal $2, ResurrectOldAmber
-	sjump .maybe_later
+	ifequalfwd $1, ResurrectDomeFossil
+	ifequalfwd $2, ResurrectOldAmber
+	sjumpfwd .maybe_later
 
 .ask_helix_dome_amber
 	loadmenu HelixDomeAmberMenuDataHeader
 	verticalmenu
 	closewindow
-	ifequal $1, ResurrectHelixFossil
-	ifequal $2, ResurrectDomeFossil
-	ifequal $3, ResurrectOldAmber
+	ifequalfwd $1, ResurrectHelixFossil
+	ifequalfwd $2, ResurrectDomeFossil
+	ifequalfwd $3, ResurrectOldAmber
 .maybe_later:
 	jumpopenedtext MaybeLaterText
 
@@ -163,13 +163,13 @@ ResurrectHelixFossil:
 	takeitem HELIX_FOSSIL
 	scall ResurrectAFossilScript
 	givepoke OMANYTE, 20
-	sjump FinishResurrect
+	sjumpfwd FinishResurrect
 
 ResurrectDomeFossil:
 	takeitem DOME_FOSSIL
 	scall ResurrectAFossilScript
 	givepoke KABUTO, 20
-	sjump FinishResurrect
+	sjumpfwd FinishResurrect
 
 ResurrectOldAmber:
 	takeitem OLD_AMBER
@@ -202,8 +202,8 @@ ResurrectAFossilScript:
 
 Museum1FReceptionistScript:
 	readvar VAR_FACING
-	ifequal DOWN, .Sneak
-	ifequal LEFT, .Sneak
+	ifequalfwd DOWN, .Sneak
+	ifequalfwd LEFT, .Sneak
 	jumpthistextfaceplayer
 
 	text "Welcome!"
@@ -362,7 +362,7 @@ NoRoomForFossilPokemonText:
 	text "Hey! You can't"
 	line "carry another"
 	cont "#mon, and your"
-	cont "box is full, too!"
+	cont "Box is full, too!"
 	done
 
 TakeGoodCareOfItText:

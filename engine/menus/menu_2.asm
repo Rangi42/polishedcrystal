@@ -176,11 +176,13 @@ StartMenu_PrintBugContestStatus:
 	hlcoord 1, 1
 	ld de, .Caught
 	rst PlaceString
-	ld a, [wContestMon]
+	ld a, [wContestMonSpecies]
 	and a
 	ld de, .None
 	jr z, .no_contest_mon
 	ld [wNamedObjectIndex], a
+	ld a, [wContestMonForm]
+	ld [wNamedObjectIndex+1], a
 	call GetPokemonName
 
 .no_contest_mon

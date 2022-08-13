@@ -283,7 +283,7 @@ Music_Route205DPPt_Ch1_loop:
 	octave 4
 	note D_, 1
 	note D_, 3
-	loopchannel 0, Music_Route205DPPt_Ch1_loop
+	jumpchannel Music_Route205DPPt_Ch1_loop
 
 Music_Route205DPPt_Ch2:
 Music_Route205DPPt_Ch2_loop:
@@ -556,7 +556,7 @@ Music_Route205DPPt_Ch2_loop:
 	note G_, 3
 	note A_, 1
 	note A_, 3
-	loopchannel 0, Music_Route205DPPt_Ch2_loop
+	jumpchannel Music_Route205DPPt_Ch2_loop
 
 Music_Route205DPPt_Ch3:
 Music_Route205DPPt_Ch3_loop:
@@ -866,7 +866,7 @@ Music_Route205DPPt_Ch3_loop:
 	note __, 1
 	notetype $D, $13
 	note D_, 1
-	loopchannel 0, Music_Route205DPPt_Ch3_loop
+	jumpchannel Music_Route205DPPt_Ch3_loop
 
 Music_Route205DPPt_Ch4:
 	togglenoise 3
@@ -1086,4 +1086,4 @@ Music_Route205DPPt_Ch4_loop:
 	note C#, 3
 	note C#, 1
 	note C#, 3
-	loopchannel 0, Music_Route205DPPt_Ch4_loop
+	jumpchannel Music_Route205DPPt_Ch4_loop

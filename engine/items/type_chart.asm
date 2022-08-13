@@ -48,7 +48,7 @@ _TypeChart:
 	ld a, 8
 	call SkipMusic
 
-	ld a, %11100111
+	ld a, (1 << rLCDC_ENABLE) | (1 << rLCDC_WINDOW_TILEMAP) | (1 << rLCDC_WINDOW_ENABLE) | (1 << rLCDC_SPRITE_SIZE) | (1 << rLCDC_SPRITES_ENABLE) | (1 << rLCDC_BG_PRIORITY)
 	ldh [rLCDC], a
 
 	xor a
@@ -56,13 +56,11 @@ _TypeChart:
 
 	ld hl, TypeChartTilemap
 	decoord 0, 0
-	ld bc, SCREEN_WIDTH * SCREEN_HEIGHT
-	rst CopyBytes
+	call Decompress
 
 	ld hl, TypeChartAttrmap
-	decoord 0, 0, wAttrMap
-	ld bc, SCREEN_WIDTH * SCREEN_HEIGHT
-	rst CopyBytes
+	decoord 0, 0, wAttrmap
+	call Decompress
 
 	call ApplyAttrAndTilemapInVBlank
 
@@ -83,7 +81,7 @@ _TypeChart:
 	jr .loop
 
 .done
-	ld a, %11100011
+	ld a, LCDC_DEFAULT
 	ldh [rLCDC], a
 
 	pop af
@@ -157,6 +155,30 @@ if !DEF(MONOCHROME)
 	RGB 31, 00, 31 ; unused
 	RGB 00, 05, 31 ; DEF (blue)
 else
+	MONOCHROME_RGB_FOUR
+	RGB_MONOCHROME_WHITE
+	RGB_MONOCHROME_LIGHT
+	RGB_MONOCHROME_LIGHT
+	RGB_MONOCHROME_DARK
+rept 2
+	RGB_MONOCHROME_WHITE
+	RGB_MONOCHROME_LIGHT
+	RGB_MONOCHROME_DARK
+	RGB_MONOCHROME_LIGHT
+endr
+rept 4
+	RGB_MONOCHROME_WHITE
+	RGB_MONOCHROME_DARK
+	RGB_MONOCHROME_LIGHT
+	RGB_MONOCHROME_DARK
+endr
+rept 3
+	MONOCHROME_RGB_FOUR
+endr
+	RGB_MONOCHROME_WHITE
+	RGB_MONOCHROME_LIGHT
+	RGB_MONOCHROME_WHITE
+	RGB_MONOCHROME_DARK
 endc
 
 TypeChartBG0GFX:
@@ -169,13 +191,13 @@ TypeChartOBGFX:
 INCBIN "gfx/type_chart/ob.2bpp.lz"
 
 TypeChartTilemap:
-INCBIN "gfx/type_chart/type_chart.tilemap"
+INCBIN "gfx/type_chart/type_chart.tilemap.lz"
 
 TypeChartAttrmap:
-INCBIN "gfx/type_chart/type_chart.attrmap"
+INCBIN "gfx/type_chart/type_chart.attrmap.lz"
 
 TypeChartOAMData:
-oamdata: MACRO
+MACRO oamdata
 	; x, y, tile id, attributes
 	db (\2) + 16, (\1) + 8, (\3), (\4)
 ENDM

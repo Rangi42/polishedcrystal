@@ -1,6 +1,39 @@
+FixNewboxChecksum:
+	; file pointer must be at species byte
+	set #1, #zero
+	set #result, 127
+.loop1
+	increment #1
+	readbyte #2
+	mulacum #result, #2, #1
+	iflt #1, 32, .loop1
+
+	pushpos
+	increment #1 ; skip 33 (quirk in game code)
+.loop2
+	increment #1
+	readbyte #2
+	and #2, 0x7f
+	mulacum #result, #2, #1
+	iflt #1, 50, .loop2
+
+	poppos
+	rotateleft #result, -15
+	set #3, 16
+.write_loop
+	getfilebyte #1
+	shiftleft #2, #result, 7
+	and #1, 0x7f
+	or #1, #2
+	writebyte #1
+	rotateleft #result, 1
+	decrement #3
+	jumpnz #3, .write_loop
+	return
+
 AdjustPokemonIndexes:
 	set #1, .mon_callback
-	call ApplyPartyPatches
+	call ApplyPartyPatchesOld
 
 	; modify party species
 	set #1, 5

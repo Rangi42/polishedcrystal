@@ -76,9 +76,9 @@ PowerPlantManager:
 	faceplayer
 	opentext
 	checkevent EVENT_RESTORED_POWER_TO_KANTO
-	iftrue PowerPlantTutorZapCannonScript
+	iftruefwd PowerPlantTutorZapCannonScript
 	checkkeyitem MACHINE_PART
-	iftrue UnknownScript_0x188e93
+	iftruefwd UnknownScript_0x188e93
 	checkevent EVENT_MET_MANAGER_AT_POWER_PLANT
 	iftrue_jumpopenedtext PowerPlantManagerIWontForgiveCulpritText
 	writetext PowerPlantManagerWhoWouldRuinMyGeneratorText
@@ -107,14 +107,14 @@ PowerPlantTutorZapCannonScript:
 	writetext Text_PowerPlantTutorZapCannon
 	waitbutton
 	checkitem SILVER_LEAF
-	iffalse .NoSilverLeaf
+	iffalsefwd .NoSilverLeaf
 	writetext Text_PowerPlantTutorQuestion
 	yesorno
-	iffalse .TutorRefused
+	iffalsefwd .TutorRefused
 	setval ZAP_CANNON
 	writetext ClearText
 	special Special_MoveTutor
-	ifequal $0, .TeachMove
+	ifequalfwd $0, .TeachMove
 .TutorRefused
 	jumpopenedtext Text_PowerPlantTutorRefused
 

@@ -186,7 +186,7 @@ PokefanmJoshuaBeatenText:
 
 Route13EastGrampsScript:
 	special CheckIfTrendyPhraseIsLucky
-	iftrue .lucky
+	iftruefwd .lucky
 	jumptextfaceplayer Route13EastGrampsText1
 
 .lucky

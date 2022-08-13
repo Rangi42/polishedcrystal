@@ -121,10 +121,7 @@ IsHiddenItem:
 	ld de, EVENT_TEMPORARY_UNTIL_MAP_RELOAD_3
 .checkitem
 	ld b, CHECK_FLAG
-	call EventFlagAction
-	ld a, c
-	and a
-	ret
+	jmp EventFlagAction
 
 ItemFinder_GetFarByte:
 	ld a, [wBuffer1]

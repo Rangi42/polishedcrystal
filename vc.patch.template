@@ -1,0 +1,146 @@
+﻿; Template for a .patch file for the Nintendo 3DS Virtual Console.
+
+[Wireless_net_delay_1]
+Mode = 1
+Address = {hex @+1}
+Fixcode = {patch +1}
+
+[Wireless_net_delay_2]
+Mode = 1
+Address = {hex @+1}
+Fixcode = {patch +1}
+
+[Wireless_net_delay_3]
+Mode = 1
+Address = {hex @+1}
+Fixcode = {patch +1}
+
+[Wireless_net_delay_4]
+Mode = 1
+Address = {hex @+1}
+Fixcode = {patch +1}
+
+[Wireless_net_delay_5]
+Mode = 1
+Address = {hex @+1}
+Fixcode = {patch +1}
+
+[Wireless_net_delay_6]
+Mode = 1
+Address = {hex @+1}
+Fixcode = {patch +1}
+
+[Wireless_net_delay_7]
+Mode = 1
+Address = {hex @+1}
+Fixcode = {patch +1}
+
+[ExchangeBytes1]
+Mode = 2
+Address = {hex @}
+Type = 4
+
+[ExchangeBytes2]
+Mode = 2
+Address = {hex @}
+Type = 4
+
+[ExchangeBytes3]
+Mode = 2
+Address = {hex @}
+Type = 4
+
+[ExchangeBytes4]
+Mode = 2
+Address = {hex @}
+Type = 4
+
+[Wireless_net_recheck]
+Mode = 2
+Address = {hex @}
+Type = 7
+
+[Wireless_TradeCenter]
+Mode = 2
+Address = {hex @}
+Type = 12
+
+[Wireless_Colosseum]
+Mode = 2
+Address = {hex @}
+Type = 13
+
+[ExitLinkCommunications_ret]
+Mode = 2
+Address = {hex @}
+Type = 14
+
+[Script_yesorno_ret]
+Mode = 2
+Address = {hex @}
+Type = 15
+
+[Link_fake_connection_status]
+Mode = 2
+Address = {hex @}
+Type = 16
+
+[Wireless_prompt]
+Mode = 2
+Address = {hex @}
+Type = 17
+
+[Wireless_TryQuickSave_block_input_1]
+Mode = 2
+Address = {hex @}
+Type = 18
+
+[Trade_save_game_end]
+Mode = 2
+Address = {hex @}
+Type = 20
+
+[Wireless_TryQuickSave_block_input_2]
+Mode = 2
+Address = {hex @}
+Type = 24
+
+[Wireless_term_exit]
+Mode = 2
+Address = {hex @}
+Type = 25
+
+[Wireless_room_check]
+Mode = 2
+Address = {hex @}
+Type = 27
+
+[Wireless_WaitLinkTransfer]
+Mode = 2
+Address = {hex @}
+Type = 29
+
+[Wireless_WaitLinkTransfer_ret]
+Mode = 2
+Address = {hex @}
+Type = 30
+
+[Wireless_start_exchange]
+Mode = 2
+Address = {hex @}
+Type = 31
+
+[Wireless_end_exchange]
+Mode = 2
+Address = {hex @}
+Type = 32
+
+[Wireless_start_send_zero_bytes]
+Mode = 2
+Address = {hex @}
+Type = 33
+
+[Wireless_end_send_zero_bytes]
+Mode = 2
+Address = {hex @}
+Type = 34

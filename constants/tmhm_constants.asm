@@ -3,17 +3,17 @@
 ; - TMHMMoves (see data/moves/tmhm_moves.asm)
 	const_def
 
-__tmhm_value__ = 1
+DEF __tmhm_value__ = 1
 
-add_tmnum: MACRO
-\1_TMNUM EQU __tmhm_value__
-__tmhm_value__ += 1
+MACRO add_tmnum
+	DEF \1_TMNUM EQU __tmhm_value__
+	DEF __tmhm_value__ += 1
 ENDM
 
-add_tm: MACRO
-if !DEF(TM01)
-TM01 = const_value
-endc
+MACRO add_tm
+	if !DEF(TM01)
+		DEF TM01 = const_value
+	endc
 	const TM_\1
 	add_tmnum \1
 ENDM
@@ -50,8 +50,8 @@ ENDM
 	add_tm SHADOW_BALL  ; $1d
 	add_tm ROCK_SMASH   ; $1e
 if !DEF(FAITHFUL)
-TM_BRICK_BREAK    EQU TM_ROCK_SMASH
-BRICK_BREAK_TMNUM EQU ROCK_SMASH_TMNUM
+DEF TM_BRICK_BREAK    EQU TM_ROCK_SMASH
+DEF BRICK_BREAK_TMNUM EQU ROCK_SMASH_TMNUM
 endc
 	add_tm DOUBLE_TEAM  ; $1f
 	add_tm REFLECT      ; $20
@@ -97,12 +97,12 @@ endc
 	add_tm THUNDER_WAVE ; $48
 	add_tm GYRO_BALL    ; $49
 	add_tm SWORDS_DANCE ; $4a
-NUM_TMS = __tmhm_value__ - 1
+DEF NUM_TMS = __tmhm_value__ - 1
 
-add_hm: MACRO
-if !DEF(HM01)
-HM01 = const_value
-endc
+MACRO add_hm
+	if !DEF(HM01)
+		DEF HM01 = const_value
+	endc
 	const HM_\1
 	add_tmnum \1
 ENDM
@@ -113,12 +113,12 @@ ENDM
 	add_hm STRENGTH     ; $4e
 	add_hm WHIRLPOOL    ; $4f
 	add_hm WATERFALL    ; $50
-NUM_HMS = __tmhm_value__ - NUM_TMS - 1
+DEF NUM_HMS = __tmhm_value__ - NUM_TMS - 1
 
-add_mt: MACRO
-if !DEF(MT01)
-MT01 = const_value
-endc
+MACRO add_mt
+	if !DEF(MT01)
+		DEF MT01 = const_value
+	endc
 	add_tmnum \1
 ENDM
 
@@ -153,6 +153,6 @@ ENDM
 	add_mt TRICK_ROOM   ; $6d
 	add_mt ZAP_CANNON   ; $6e
 	add_mt ZEN_HEADBUTT ; $6f
-NUM_TUTORS = __tmhm_value__ - NUM_TMS - NUM_HMS - 1
+DEF NUM_TUTORS = __tmhm_value__ - NUM_TMS - NUM_HMS - 1
 
-NUM_TM_HM_TUTOR EQU NUM_TMS + NUM_HMS + NUM_TUTORS
+DEF NUM_TM_HM_TUTOR EQU NUM_TMS + NUM_HMS + NUM_TUTORS

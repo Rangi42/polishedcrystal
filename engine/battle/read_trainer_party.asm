@@ -7,15 +7,11 @@ ReadTrainerParty:
 	and a
 	ret nz ; populated elsewhere
 
-	ld hl, wOTPartyCount
 	xor a
-	ld [hli], a
-	dec a
-	ld [hl], a
+	ld [wOTPartyCount], a
 
 	ld hl, wOTPartyMons
 	ld bc, PARTYMON_STRUCT_LENGTH * PARTY_LENGTH
-	xor a
 	rst ByteFill
 
 	call FindTrainerData
@@ -29,12 +25,42 @@ ReadTrainerParty:
 	cp $ff
 	ret z
 
+	farcall AdjustLevelForBadges
 	ld [wCurPartyLevel], a
 
 ; species
 	call GetNextTrainerDataByte
 	ld [wCurPartySpecies], a
+	ld c, a
 
+	call GetNextTrainerDataByte
+	ld [wCurForm], a
+	ld b, a
+
+; NPC trainers should appear to have Kantonian Arbok in Kanto,
+; so form 0 becomes 1 (Johto) or 2 (Kanto), non-zero forms remain unchanged
+	assert !HIGH(ARBOK)
+	and SPECIESFORM_MASK
+	jr nz, .not_arbok
+	ld a, c
+	cp LOW(ARBOK)
+	jr nz, .not_arbok
+
+	push bc
+	call RegionCheck
+	ld a, e
+	pop bc
+	and a
+	assert ARBOK_JOHTO_FORM == ARBOK_KANTO_FORM - 1
+	ld c, ARBOK_KANTO_FORM
+	jr nz, .got_arbok_form
+	dec c
+.got_arbok_form
+	ld a, b
+	or c
+	ld [wCurForm], a
+
+.not_arbok
 	ld a, OTPARTYMON
 	ld [wMonType], a
 
@@ -121,6 +147,7 @@ endr
 	ld a, $ff
 .dv3_ok
 	ld [de], a
+	inc de
 
 .not_dvs
 ; personality?
@@ -128,6 +155,9 @@ endr
 	bit TRNTYPE_PERSONALITY, a
 	jr z, .not_personality
 
+	; We only care about the upper personality byte.
+	; The lower one has already been specified as part of
+	; extended species data ("dp").
 	push hl
 	ld a, [wOTPartyCount]
 	dec a
@@ -137,10 +167,6 @@ endr
 	ld d, h
 	ld e, l
 	pop hl
-
-	call GetNextTrainerDataByte
-	ld [de], a
-	inc de
 	call GetNextTrainerDataByte
 	ld [de], a
 
@@ -365,10 +391,14 @@ SetTrainerBattleLevel:
 
 	inc hl
 	call GetNextTrainerDataByte
+
+	farcall AdjustLevelForBadges
 	ld [wCurPartyLevel], a
 	ret
 
 FindTrainerData:
+	farcall SetBadgeBaseLevel
+
 	ld a, [wOtherTrainerClass]
 	dec a
 	ld c, a

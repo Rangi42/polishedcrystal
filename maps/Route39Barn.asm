@@ -12,7 +12,7 @@ Route39Barn_MapScriptHeader:
 	def_bg_events
 
 	def_object_events
-	object_event  3,  3, SPRITE_MON_ICON, SPRITEMOVEDATA_POKEMON, 0, MILTANK, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, MooMoo, -1
+	object_event  3,  3, SPRITE_MON_ICON, SPRITEMOVEDATA_POKEMON, 0, MILTANK, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, NO_FORM, MooMoo, -1
 	object_event  2,  3, SPRITE_TWIN, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, Route39BarnTwin1Script, -1
 	object_event  4,  3, SPRITE_TWIN, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, Route39BarnTwin2Script, -1
 
@@ -20,7 +20,7 @@ Route39BarnTwin1Script:
 	faceplayer
 	opentext
 	checkevent EVENT_HEALED_MOOMOO
-	iftrue .FeedingMooMoo
+	iftruefwd .FeedingMooMoo
 	writetext Text_MoomooIsSick
 	waitbutton
 	closetext
@@ -38,7 +38,7 @@ Route39BarnTwin2Script:
 	faceplayer
 	opentext
 	checkevent EVENT_HEALED_MOOMOO
-	iftrue .FeedingMooMoo
+	iftruefwd .FeedingMooMoo
 	writetext Text_MoomooIsSick
 	waitbutton
 	closetext
@@ -54,15 +54,15 @@ Route39BarnTwin2Script:
 
 MooMoo:
 	checkevent EVENT_HEALED_MOOMOO
-	iftrue .HappyCow
+	iftruefwd .HappyCow
 	opentext
 	writetext Text_WeakMoo
-	setval MILTANK
+	setmonval MILTANK
 	special PlaySlowCry
 	promptbutton
 	writetext Text_ItsCryIsWeak
 	checkevent EVENT_TALKED_TO_FARMER_ABOUT_MOOMOO
-	iftrue .GiveBerry
+	iftruefwd .GiveBerry
 	waitendtext
 
 .GiveBerry:
@@ -71,14 +71,14 @@ MooMoo:
 	yesorno
 	iffalse_jumpopenedtext Text_RefusedToGiveBerry
 	checkitem ORAN_BERRY
-	iffalse .MaybeSitrusBerry
+	iffalsefwd .MaybeSitrusBerry
 	takeitem ORAN_BERRY
 	readmem wMooMooBerries
 	addval 1
 	writemem wMooMooBerries
-	ifequal 3, .ThreeOranBerries
-	ifequal 5, .FiveOranBerries
-	ifequal 7, .SevenOranBerries
+	ifequalfwd 3, .ThreeOranBerries
+	ifequalfwd 5, .FiveOranBerries
+	ifequalfwd 7, .SevenOranBerries
 	jumpopenedtext Text_GaveOranBerry
 
 .MaybeSitrusBerry:

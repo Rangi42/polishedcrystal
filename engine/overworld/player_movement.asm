@@ -623,11 +623,14 @@ DoPlayerMovement::
 ; Standing
 	jr .update
 
-.d_down 	add hl, de
-.d_up   	add hl, de
-.d_left 	add hl, de
-.d_right	add hl, de
-
+.d_down
+	add hl, de
+.d_up
+	add hl, de
+.d_left
+	add hl, de
+.d_right
+	add hl, de
 .update
 	ld a, [hli]
 	ld [wWalkingDirection], a
@@ -642,8 +645,8 @@ DoPlayerMovement::
 	ld l, a
 if DEF(DEBUG)
 	ldh a, [hJoyDown]
-	and A_BUTTON | B_BUTTON
-	cp A_BUTTON | B_BUTTON
+	or ~(A_BUTTON | B_BUTTON)
+	inc a
 	ld a, [hl]
 	jr nz, .no_wtw
 	cp COLL_VOID

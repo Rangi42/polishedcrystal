@@ -19,9 +19,9 @@ BattleTower1F_MapScriptHeader:
 	def_object_events
 	object_event 10,  7, SPRITE_RECEPTIONIST, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, BattleTower1FReceptionistScript, -1
 	pc_nurse_event  6,  8
-	object_event 14,  8, SPRITE_CLERK, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_COMMAND, pokemart, MARTTYPE_BP, MART_BT_1, -1
-	object_event 16,  8, SPRITE_CLERK, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_COMMAND, pokemart, MARTTYPE_BP, MART_BT_2, -1
-	object_event 18,  8, SPRITE_CLERK, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_COMMAND, pokemart, MARTTYPE_BP, MART_BT_3, -1
+	object_event 14,  8, SPRITE_CLERK, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_COMMAND, pokemart, MARTTYPE_BP, MART_BATTLETOWER_1, -1
+	object_event 16,  8, SPRITE_CLERK, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_COMMAND, pokemart, MARTTYPE_BP, MART_BATTLETOWER_2, -1
+	object_event 18,  8, SPRITE_CLERK, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_COMMAND, pokemart, MARTTYPE_BP, MART_BATTLETOWER_3, -1
 	object_event  6, 14, SPRITE_BURGLAR, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, BattleTowerPharmacistScript, -1
 	object_event 16, 13, SPRITE_ACE_TRAINER_F, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, Text_BattleTowerCooltrainerF, -1
 	object_event  2, 12, SPRITE_BUG_CATCHER, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, Text_BattleTowerBugCatcher, -1
@@ -37,10 +37,10 @@ BattleTower1FContinueChallenge:
 
 	; Check current battle status to see if we need to resume or reset winstreak
 	special Special_BattleTower_GetChallengeState
-	ifequal BATTLETOWER_CHALLENGE_IN_PROGRESS, .LeftWithoutSaving
-	ifequal BATTLETOWER_SAVED_AND_LEFT, .ResumeChallenge
-	ifequal BATTLETOWER_LOST_CHALLENGE, .LostChallenge
-	ifequal BATTLETOWER_WON_CHALLENGE, .WonChallenge
+	ifequalfwd BATTLETOWER_CHALLENGE_IN_PROGRESS, .LeftWithoutSaving
+	ifequalfwd BATTLETOWER_SAVED_AND_LEFT, .ResumeChallenge
+	ifequalfwd BATTLETOWER_LOST_CHALLENGE, .LostChallenge
+	ifequalfwd BATTLETOWER_WON_CHALLENGE, .WonChallenge
 	end
 
 .ResumeChallenge:
@@ -76,7 +76,7 @@ BattleTower1FContinueChallenge:
 		line "invalid."
 		done
 	waitbutton
-	sjump Script_CommitBattleTowerResult
+	sjumpfwd Script_CommitBattleTowerResult
 
 .LostChallenge:
 	opentext
@@ -102,7 +102,7 @@ BattleTower1FContinueChallenge:
 	; fallthrough
 Script_CommitBattleTowerResult:
 	special Special_BattleTower_CommitChallengeResult
-	iffalse .WeHopeToServeYouAgain
+	iffalsefwd .WeHopeToServeYouAgain
 	setevent EVENT_BEAT_PALMER
 .WeHopeToServeYouAgain:
 	writethistext
@@ -159,7 +159,7 @@ BattleTower1FReceptionistScript:
 		done
 	promptbutton
 	checkevent EVENT_BATTLE_TOWER_INTRO
-	iftrue .BattleTowerMenu
+	iftruefwd .BattleTowerMenu
 
 	; only ask once, so set the flag regardless
 	setevent EVENT_BATTLE_TOWER_INTRO
@@ -169,7 +169,7 @@ BattleTower1FReceptionistScript:
 		cont "Battle Tower?"
 		done
 	yesorno
-	iffalse .BattleTowerMenu
+	iffalsefwd .BattleTowerMenu
 
 .Explanation:
 	writethistext
@@ -216,7 +216,7 @@ BattleTower1FReceptionistScript:
 	loadmenu MenuDataHeader_BattleInfoCancel
 	verticalmenu
 	closewindow
-	ifequal $1, .Challenge
+	ifequalfwd $1, .Challenge
 	ifequal $2, .Explanation
 	writethistext
 		text "We hope to serve"
@@ -302,7 +302,7 @@ BattleTowerPharmacistScript:
 	faceplayer
 	opentext
 	checkevent EVENT_LISTENED_TO_TRICK_INTRO
-	iftrue BattleTowerTutorTrickScript
+	iftruefwd BattleTowerTutorTrickScript
 	writethistext
 		text "The trainers here"
 		line "strategically use"
@@ -327,18 +327,18 @@ BattleTowerTutorTrickScript:
 		done
 	waitbutton
 	checkitem SILVER_LEAF
-	iffalse .NoSilverLeaf
+	iffalsefwd .NoSilverLeaf
 	writethistext
 		text "Should I teach"
 		line "your #mon"
 		cont "Trick?"
 		done
 	yesorno
-	iffalse .TutorRefused
+	iffalsefwd .TutorRefused
 	setval TRICK
 	writetext ClearText
 	special Special_MoveTutor
-	ifequal $0, .TeachMove
+	ifequalfwd $0, .TeachMove
 .TutorRefused
 	jumpthisopenedtext
 		text "Talk to me if you"

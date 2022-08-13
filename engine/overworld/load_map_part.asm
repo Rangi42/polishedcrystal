@@ -1,4 +1,4 @@
-loadmapblock: MACRO
+MACRO loadmapblock
 	ld a, [de]
 	inc de
 	and a
@@ -7,7 +7,7 @@ loadmapblock: MACRO
 .notMapBorderBlock\@
 ENDM
 
-addmapwidthoffset: MACRO
+MACRO addmapwidthoffset
 	ldh a, [hMapWidthPlus6]
 	; de += a
 	add e
@@ -17,7 +17,7 @@ addmapwidthoffset: MACRO
 	ld d, a
 ENDM
 
-subtractfromhl: MACRO
+MACRO subtractfromhl
 	; hl -= \1
 	ld a, l
 	sub \1
@@ -62,7 +62,7 @@ _LoadMapPart::
 	ldh [rSVBK], a
 	ret
 
-loadmappart_function_macro: MACRO
+MACRO loadmappart_function_macro
 	ld a, b
 	and a
 	jmp z, .BlockY0BlockX0\@
@@ -137,15 +137,15 @@ loadmappart_function_macro: MACRO
 	ld d, a
 
 	rept 3
-	ld a, [de]
-	inc e
-	ld [hli], a
-	ld a, [de]
-	inc e
-	inc e
-	inc e
-	ld [hl], a
-	add hl, bc
+		ld a, [de]
+		inc e
+		ld [hli], a
+		ld a, [de]
+		inc e
+		inc e
+		inc e
+		ld [hl], a
+		add hl, bc
 	endr
 
 	ld a, [de]
@@ -298,15 +298,15 @@ loadmappart_function_macro: MACRO
 	ld d, a
 
 	rept 3
-	ld a, [de]
-	inc e
-	ld [hli], a
-	ld a, [de]
-	inc e
-	inc e
-	inc e
-	ld [hl], a
-	add hl, bc
+		ld a, [de]
+		inc e
+		ld [hli], a
+		ld a, [de]
+		inc e
+		inc e
+		inc e
+		ld [hl], a
+		add hl, bc
 	endr
 
 	ld a, [de]
@@ -904,7 +904,7 @@ loadmappart_function_macro: MACRO
 ENDM
 
 _LoadMapPart_TileMap:
-	loadmappart_function_macro wTileMap
+	loadmappart_function_macro wTilemap
 
 _LoadMapPart_AttrMap:
-	loadmappart_function_macro wAttrMap
+	loadmappart_function_macro wAttrmap

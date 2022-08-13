@@ -96,7 +96,7 @@ Music_BurnedTower_branch_f6b17:
 	octave 3
 	note C_, 6
 	loopchannel 2, Music_BurnedTower_branch_f6b17
-	loopchannel 0, Music_BurnedTower_branch_f6ad8
+	jumpchannel Music_BurnedTower_branch_f6ad8
 
 Music_BurnedTower_Ch2:
 	dutycycle $2
@@ -167,7 +167,7 @@ Music_BurnedTower_branch_f6b39:
 	note E_, 4
 	intensity $b7
 	note F#, 16
-	loopchannel 0, Music_BurnedTower_branch_f6b39
+	jumpchannel Music_BurnedTower_branch_f6b39
 
 Music_BurnedTower_branch_f6b8e:
 	octave 3
@@ -240,7 +240,7 @@ Music_BurnedTower_branch_f6bc3:
 	note F#, 2
 	note F_, 4
 	loopchannel 2, Music_BurnedTower_branch_f6bc3
-	loopchannel 0, Music_BurnedTower_branch_f6bad
+	jumpchannel Music_BurnedTower_branch_f6bad
 
 Music_BurnedTower_Ch4:
 	togglenoise $0
@@ -256,4 +256,4 @@ Music_BurnedTower_branch_f6be7:
 	note G_, 4
 	note G#, 2
 	note G_, 4
-	loopchannel 0, Music_BurnedTower_branch_f6be7
+	jumpchannel Music_BurnedTower_branch_f6be7

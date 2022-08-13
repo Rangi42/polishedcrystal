@@ -159,7 +159,7 @@ Music_WallyBattleORAS_Ch1_loop_1:
 	note D#, 2
 	soundinput $00
 	dutycycle 3
-	loopchannel 0, Music_WallyBattleORAS_Ch1
+	jumpchannel Music_WallyBattleORAS_Ch1
 
 Music_WallyBattleORAS_Ch1_branch_1:
 	notetype $c, $97
@@ -288,7 +288,7 @@ Music_WallyBattleORAS_Ch2_loop_1:
 	intensity $87
 	note F#, 5
 	dutycycle 0
-	loopchannel 0, Music_WallyBattleORAS_Ch2
+	jumpchannel Music_WallyBattleORAS_Ch2
 
 Music_WallyBattleORAS_Ch2_branch_1:
 	notetype $c, $b7
@@ -521,7 +521,7 @@ Music_WallyBattleORAS_Ch3_loop_1:
 	note B_, 2
 	octave 1
 	note B_, 6
-	loopchannel 0, Music_WallyBattleORAS_Ch3_loop_main
+	jumpchannel Music_WallyBattleORAS_Ch3_loop_main
 
 Music_WallyBattleORAS_Ch3_branch_1:
 	octave 1
@@ -624,7 +624,7 @@ Music_WallyBattleORAS_Ch4_loop_1:
 	note E_, 1
 	note D#, 1
 	note D#, 1
-	loopchannel 0, Music_WallyBattleORAS_Ch4_loop_main
+	jumpchannel Music_WallyBattleORAS_Ch4_loop_main
 	endchannel
 
 Music_WallyBattleORAS_Ch4_branch_1:

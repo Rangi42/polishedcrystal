@@ -19,9 +19,9 @@ CeladonMansion1F_MapScriptHeader:
 
 	def_object_events
 	object_event  1,  5, SPRITE_GRANNY, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, CeladonMansionManagerText, -1
-	pokemon_event  2,  6, MEOWTH, -1, -1, PAL_NPC_BROWN, CeladonMansion1FMeowthText, -1
-	pokemon_event  3,  4, CLEFAIRY, -1, -1, PAL_NPC_RED, CeladonMansion1FClefairyText, -1
-	pokemon_event  4,  4, NIDORAN_F, -1, -1, PAL_NPC_BLUE, CeladonMansion1FNidoranFText, -1
+	pokemon_event  2,  6, MEOWTH, SPRITEMOVEDATA_POKEMON, -1, -1, PAL_NPC_BROWN, CeladonMansion1FMeowthText, -1
+	pokemon_event  3,  4, CLEFAIRY, SPRITEMOVEDATA_POKEMON, -1, -1, PAL_NPC_RED, CeladonMansion1FClefairyText, -1
+	pokemon_event  4,  4, NIDORAN_F, SPRITEMOVEDATA_POKEMON, -1, -1, PAL_NPC_BLUE, CeladonMansion1FNidoranFText, -1
 
 CeladonMansionManagersSuiteSign:
 	jumpthistext

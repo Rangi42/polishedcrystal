@@ -39,7 +39,7 @@ Music_WildPokemonVictory_branch_f4538:
 	intensity $78
 	octave 3
 	note F#, 4
-	loopchannel 0, Music_WildPokemonVictory_branch_f4538
+	jumpchannel Music_WildPokemonVictory_branch_f4538
 
 Music_WildPokemonVictory_branch_f455c:
 	intensity $71
@@ -111,7 +111,7 @@ Music_WildPokemonVictory_branch_f4587:
 	note D#, 1
 	note F#, 1
 	note A_, 1
-	loopchannel 0, Music_WildPokemonVictory_branch_f4587
+	jumpchannel Music_WildPokemonVictory_branch_f4587
 
 Music_WildPokemonVictory_branch_f45b5:
 	intensity $81
@@ -164,7 +164,7 @@ Music_WildPokemonVictory_branch_f45cf:
 	pitchoffset 0, C_
 	octave 2
 	note B_, 4
-	loopchannel 0, Music_WildPokemonVictory_branch_f45cf
+	jumpchannel Music_WildPokemonVictory_branch_f45cf
 
 Music_WildPokemonVictory_branch_f45f4:
 	intensity $25

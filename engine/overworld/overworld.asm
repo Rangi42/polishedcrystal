@@ -58,9 +58,6 @@ GetPlayerSprite:
 	db PLAYER_SURF_PIKA, SPRITE_SURFING_PIKACHU
 	db $ff
 
-MapCallbackSprites_LoadUsedSpritesGFX:
-	ld a, MAPCALLBACK_SPRITES
-	call RunMapCallback
 RefreshSprites::
 	push hl
 	push de
@@ -80,6 +77,7 @@ ReloadSpriteIndex::
 	ldh a, [hUsedSpriteIndex]
 	ld b, a
 	xor a
+	ldh [hIsMapObject], a
 .loop
 	ldh [hObjectStructIndexBuffer], a
 	ld a, [hl]
@@ -94,8 +92,6 @@ ReloadSpriteIndex::
 	; hl points to an object_struct; we want bc to point to a map_object,
 	; to get the radius (actually the SPRITE_MON_ICON species).
 	push bc
-	ld bc, OBJECT_RADIUS - MAPOBJECT_RADIUS
-	add hl, bc
 	ld b, h
 	ld c, l
 	call GetSpriteVTile
@@ -195,10 +191,20 @@ GetMonSprite:
 ; that bc takes MAPOBJECT_* offsets.
 ; (That means the player, Battle Tower trainers, and variable sprites cannot
 ;  use Pokémon icons.)
-	ld hl, MAPOBJECT_RADIUS
+	ldh a, [hIsMapObject]
+	and a
+	ld hl, OBJECT_RADIUS - OBJECT_SPRITE
+	ld de, OBJECT_RANGE - OBJECT_RADIUS
+	jr z, .object
+	ld hl, MAPOBJECT_RADIUS - MAPOBJECT_OBJECT_STRUCT_ID
+	ld de, MAPOBJECT_RANGE - MAPOBJECT_RADIUS
+.object
 	add hl, bc
 	ld a, [hl]
-	jr .NoFormMon
+	add hl, de
+	ld e, [hl]
+	ld d, 0
+	jr .Mon
 
 .BreedMon1:
 	ld a, [wBreedMon1Shiny]
@@ -220,8 +226,10 @@ GetMonSprite:
 
 .GrottoMon:
 	farcall GetHiddenGrottoContents
-	ld a, [hl]
-	jr .NoFormMon
+	ld a, c
+	ld e, b
+	ld d, 0
+	jr .Mon
 
 .MonDoll1:
 	ld a, [wDecoLeftOrnament]
@@ -292,8 +300,8 @@ _GetSpritePalette::
 	jr nz, .not_daycare
 	farcall GetOverworldMonIconPalette
 
-	; gray, pink, and teal exist in the party menu and the player's room,
-	; but not on Route 34 for the DayCare
+	; gray, pink, and teal exist in the player's room for dolls,
+	; but not on Route 34 for the Day-Care overworld mons
 	cp PAL_OW_GRAY
 	jr z, .use_rock
 	cp PAL_OW_TEAL
@@ -402,19 +410,16 @@ LoadEmote::
 	ldh [hCGBPalUpdate], a
 	pop bc
 ; Get the address of the pointer to emote c.
-	ld a, c
-	ld bc, 3
+	ld b, 0
 	ld hl, Emotes
-	rst AddNTimes
-; load the emote pointer bank into b
-	ld b, [hl]
-	inc hl
+	add hl, bc
+	add hl, bc
 ; load the emote address into hl
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
-; load the length of the emote (in tiles) into c
-	ld c, 4
+; load the bank and length of the emote (in tiles) into bc
+	lb bc, BANK("Emote Graphics"), 4
 ; load the VRAM destination into de
 	ld de, vTiles0 tile $60
 ; load into vram0

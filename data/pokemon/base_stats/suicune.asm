@@ -4,9 +4,8 @@
 	db WATER, WATER ; type
 	db 3 ; catch rate
 	db 215 ; base exp
-	db ALWAYS_ITEM_2 ; item 1
-	db MYSTIC_WATER ; item 2
-	dn GENDER_UNKNOWN, 15 ; gender ratio, step cycles to hatch
+	db ALWAYS_ITEM_2, MYSTIC_WATER ; held items
+	dn GENDER_UNKNOWN, HATCH_UNKNOWN ; gender ratio, step cycles to hatch
 	INCBIN "gfx/pokemon/suicune/front.dimensions"
 if DEF(FAITHFUL)
 	abilities_for SUICUNE, PRESSURE, PRESSURE, INNER_FOCUS

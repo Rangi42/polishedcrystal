@@ -4,9 +4,8 @@
 	db POISON, FLYING ; type
 	db 255 ; catch rate
 	db 54 ; base exp
-	db NO_ITEM ; item 1
-	db NO_ITEM ; item 2
-	dn GENDER_F50, 2 ; gender ratio, step cycles to hatch
+	db NO_ITEM, NO_ITEM ; held items
+	dn GENDER_F50, HATCH_FAST ; gender ratio, step cycles to hatch
 	INCBIN "gfx/pokemon/zubat/front.dimensions"
 if DEF(FAITHFUL)
 	abilities_for ZUBAT, INNER_FOCUS, INNER_FOCUS, INFILTRATOR

@@ -9,9 +9,8 @@ endc
 	db ELECTRIC, ELECTRIC ; type
 	db 45 ; catch rate
 	db 106 ; base exp
-	db PERSIM_BERRY ; item 1
-	db ELECTIRIZER ; item 2
-	dn GENDER_F25, 4 ; gender ratio, step cycles to hatch
+	db PERSIM_BERRY, ELECTIRIZER ; held items
+	dn GENDER_F25, HATCH_MEDIUM_SLOW ; gender ratio, step cycles to hatch
 	INCBIN "gfx/pokemon/elekid/front.dimensions"
 	abilities_for ELEKID, STATIC, STATIC, VITAL_SPIRIT
 	db GROWTH_MEDIUM_FAST ; growth rate

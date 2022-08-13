@@ -159,16 +159,16 @@ ConvertToNewbox:
 
 ; we can now fill sBackupNewBox with newbox
 	set #a, #zero
-	set #target, sBackupNewBox1
+	set #target, sBackupNewBox1_v7
 	set #source, sBoxMons1UsedEntries
 	call .newbox_outer_loop
 
-	; #a = 7, #target = sBackupNewBox8
+	; #a = 7, #target = sBackupNewBox8_v7
 	set #source, sBoxMons2UsedEntries
 	call .newbox_outer_loop
 
 ; add boxes 15 and 16
-	seek #target ; sBackupNewBox15
+	seek #target ; sBackupNewBox15_v7
 	set #1, 0x1B ; our exit condition, since box 15 has default theme 0x1B and box 16 has default theme 0x1C
 	set #2, .box15
 	set #3, 6
@@ -189,9 +189,9 @@ ConvertToNewbox:
 	fillbyte #2, #zero
 
 ; copy backup new box into active new box
-	set #1, sBackupNewBox1
-	set #2, sNewBox1
-	subtract #3, sBackupNewBox1, sNewBox1
+	set #1, sBackupNewBox1_v7
+	set #2, sNewBox1_v7
+	subtract #3, sBackupNewBox1_v7, sNewBox1_v7
 	call CopyFrom1To2
 
 ; clear old box names
@@ -272,3 +272,792 @@ ChangeCheckValue:
 	seek #temp
 	writebyte 0x61
 	return
+
+ConvertMonIndexesTo9Bit:
+	set #r0, .mon_indexes
+	set #r1, .mon_forms
+
+; First, we need to shift existing caught flags into their new indexes,
+; then we need to shift caught data/unown dex forward to account for the bigger seen flag array
+; (we've already converted unown dex to a flag array, so we have a buffer to work with).
+; We'll handle caught data for forms later.
+	set #1, POKEDEX_CAUGHT_OFFSET
+	call GetGameDataPointer
+	seek #result
+	set #1, 32
+	set #2, 8
+	call ShiftSaveDataBack
+	fillbyte #2, #zero
+	pos #3 ; file pointer is at pokedex seen
+	set #4, #result
+
+; Since Unown data is becoming part of the main seen/caught array, wUnownDex must be converted
+; to the appropriate flags. Flags will be written to the caught array and copied later to the seen array
+; Miraculously, Unown flags in 9bit are one byte shy from interfering with seen flags in their current location,
+; so no extra shifting is necessary
+
+; First, Unown A data is cleared in seen and caught arrays (note that it's index $c6, we haven't modified indexes to 9bit yet)
+	set #1, 0xc5
+	set #2, #zero
+	push #1
+	call FlagAction
+
+	pop #1
+	seek #4
+	call FlagAction
+
+	set #1, UNOWN_DEX_OFFSET_v7
+	call GetGameDataPointer
+; Next, go to wUnownDex and convert the index to a flag in the wCaughtMon array
+	seek #result
+	set #2, 1
+	set #length, 28
+.unown_loop
+	getfilebyte #1
+	writebyte #zero
+	jumpz #1, .unown_loop_skip
+	add #1, 0x11d ; NUM_SPECIES + unown form - 2 (wPokedexCaught is 1-indexed, first variant Unown is form 2)
+	pushpos
+	ifgt #1, 0x11e, .unown_loop_cont
+	set #1, 0xc5 ; special case for form A, since it is not a variant
+	seek #3 ; unown form A gets set in seen array as well, just easier this way
+	push #1
+	call FlagAction
+	pop #1
+.unown_loop_cont
+	seek #4
+	call FlagAction
+	poppos
+.unown_loop_skip
+	decrement #length
+	jumpnz #length, .unown_loop
+
+	set #1, 32
+	set #2, 10
+	push #3
+	call ShiftSaveDataForward ; seen data gets shifted forward 10 bytes (#3 already contains save data)
+	pop #3
+	seek #3
+	fillbyte #2, #zero
+
+	set #1, UNOWN_CAUGHT_OFFSET
+	call GetGameDataPointer ; copy caught unown flags to seen unown flags
+	set #1, #result
+	add #2, #1, 50
+	set #3, 5 ; unown variant flags cover bit 7 of byte 0 to bit 2 of byte 5 (no other bits are set)
+	call CopyFrom1To2
+
+; modify pokedex flags
+; caught
+	seek #4
+	set #1, 384
+	set #2, #r0
+	call ShiftFlags
+	call .ClearNewIndexes
+
+;seen
+	seekfwd 50
+	set #1, 384
+	set #2, #r0
+	call ShiftFlags
+	call .ClearNewIndexes
+; convert HoF mon indexes to 9bit and add entries to the pokedex
+; (only the first 10 entries need to be converted)
+; TODO: generalize this for v4
+	set #1, sHallOfFame_v7
+	seek #1
+	readbyte #a
+	ifle #a, 10, .hof_outer_loop
+	set #a, 10
+.hof_outer_loop
+	jumpz #a, .done_hof
+	increment #1
+	set #b, 6
+.hof_inner_loop
+	set #4, -1
+	jumpz #b, .done_hof_inner
+	push #1
+	call .mon_callback
+	pop #1
+	add #1, 16
+	decrement #b
+	jump .hof_inner_loop
+.done_hof_inner
+	increment #1
+	decrement #a
+	jump .hof_outer_loop
+
+.done_hof
+	set #1, .mon_callback
+	jump ApplyPartyPatches ; normally, I'd generalize this (as in AdjustPokemonIndexes), but there's some special cases here
+
+.mon_callback
+	seek #1
+	pushpos
+	increment #4 ; #4 = -1 as input for HoF mons
+	getfilebyte #result
+	jumpz #result, .done
+	ifeq #result, 0xff, .done
+	set #length, FORM_OFFSET
+	jumpnz #4, .got_offset
+	set #length, 4
+
+.got_offset
+	set #address, #r0
+.index_loop
+	gethalfwordinc #temp, #address ; get index upper bound
+	ifeq #temp, 0xffff, .done_loop
+	gethalfwordinc #offset, #address ; get offset
+	ifgt #result, #temp, .index_loop
+	add #result, #offset
+	iflt #result, 0x100, .got_result
+	pushpos
+	seekfwd #length ; to extspecies
+	getfilebyte #temp
+	or #temp, 0x20
+	writebyte #temp
+	poppos
+	subtract #result, 0x100
+.got_result
+	lockpos
+	writebyte #result
+	unlockpos
+
+.done_loop
+	; Special case for Pikachu, need to set fly form or surf form
+	ifne #result, 0x19, .not_pikachu ; mons like Sirfetch'd ($119) didn't exist yet, so there's no conflicts
+	jumpz #4, .not_pikachu ; HoF mons don't have move data
+	pushpos
+	readhalfword #temp ; species -> moves
+	readword #temp ; all four moves
+.move_loop
+	and #1, #temp, 0xff
+	jumpz #1, .not_pikachu_form
+	set #2, 2 ; FLY_FORM
+	ifeq #1, 0x13, .got_form
+	increment #2 ; SURF_FORM
+	shiftright #temp, 8
+	ifne #1, 0x39, .move_loop
+.got_form
+	seekfwd 15 ; (ID -> form)
+	getfilebyte #1
+	and #1, 0xe0 ; ~FORM_MASK
+	or #1, #2
+	writebyte #1
+.not_pikachu_form
+	poppos
+
+.not_pikachu
+	ifne #result, 0x82, .not_gyarados
+	pushpos
+	seekfwd FORM_OFFSET
+	getfilebyte #1
+	and #temp, #1, FORM_MASK
+	ifne #temp, 0x11, .not_gyarados_form
+	add #1, 4
+	writebyte #1
+.not_gyarados_form
+	poppos
+
+.not_gyarados
+	ifne #result, 0x81, .not_magikarp
+	pushpos
+	seekfwd #length
+	getfilebyte #1
+	and #temp, #1, FORM_MASK
+	iflt #temp, 0x0f, .not_saucy_raindrop
+	increment #1
+	increment #1
+.not_saucy_raindrop
+	iflt #temp, 0x0d, .not_magikarp_form
+	increment #1
+	increment #1
+	writebyte #1
+.not_magikarp_form
+	poppos
+
+.not_magikarp
+	; Galarian form indexes shift from 2 to 3, and Pokedex flags need to be set
+	set #address, #r1
+	seekfwd #length
+.form_loop
+	getbyteinc #1, #address
+	ifeq #1, 0xff, .done
+	getbyteinc #2, #address
+	ifne #1, #result, .form_loop
+
+	getfilebyte #3
+	and #temp, #3, EXTSPECIES_MASK ; check extspecies
+	jumpnz #temp, .done ; conveniently, no pokemon with cosmetic/variant forms is over index 0xff
+	and #temp, #3, FORM_MASK
+	jumpz #temp, .done
+	decrement #temp
+	jumpz #temp, .done ; form indexes 0 and 1 already have dex flags set
+	increment #temp
+	subtract #5, #address, #r1 ; get the form+species index of the current variant form, needed for pokedex flags
+	shiftright #5, 1
+	ifeq #temp, #2, .set_pokedex
+	iflt #5, 50, .form_loop ; index of first Galarian form in .mon_forms table + 1; if not Galarian (i.e. cosmetic), loop for matching form
+
+	increment #temp
+	writebyte #temp
+.set_pokedex
+	set #1, POKEDEX_CAUGHT_OFFSET
+	call GetGameDataPointer
+	seek #result
+	add #1, #5, 0x139 ; note that #5 is off by +1 for actual index, since #address is +2 bytes ahead of form actually being checked
+	set #2, 1
+	push #1
+	call FlagAction
+	pop #1
+	seekfwd 50
+	call FlagAction
+	
+.done
+	poppos
+	decrement #4
+	decrement #4
+	jumpz #4, FixNewboxChecksum
+	return
+
+.ClearNewIndexes
+	set #3, .new_indexes
+	set #2, #zero
+.clear_loop
+	getbyteinc #1, #3
+	retz #1
+	pushpos
+	call FlagAction
+	poppos
+	jump .clear_loop
+
+.mon_indexes
+	; upper bound, offset
+	; note that while upper bounds are usually exclusive here, for dex flags,
+	; we do need to convert mon indexes to be 0-indexed, so it's effectively inclusive
+	dh 0x14, 0   ; RATICATE
+	dh 0x16, 162 ; AZUMARILL
+	dh 0x6b, 0   ; HITMONCHAN
+	dh 0x74, 1   ; SEADRA
+	dh 0x76, 58  ; TOGETIC
+	dh 0x77, 152 ; TOGEKISS
+	dh 0xac, 0   ; PICHU
+	dh 0xad, 89  ; MUNCHLAX
+	dh 0xae, 91  ; MAGNEZONE
+	dh 0xb0, 92  ; TANGROWTH
+	dh 0xb6, 0   ; BELLOSSOM
+	dh 0xb8, 2   ; SUDOWOODO
+	dh 0xbb, 6   ; YANMA
+	dh 0xbc, 84  ; YANMEGA
+	dh 0xc1, 5   ; MURKROW
+	dh 0xc2, 64  ; HONCHKROW
+	dh 0xc4, 4   ; MISDREAVUS
+	dh 0xc5, 60  ; MISMAGIUS
+	dh 0xcc, 3   ; GLIGAR
+	dh 0xcd, 70  ; GLISCOR
+	dh 0xd5, 2   ; SNEASEL
+	dh 0xd6, 50  ; WEAVILE
+	dh 0xdc, 1   ; PILOSWINE
+	dh 0xdd, 55  ; MAMOSWINE
+	dh 0xe0, 0   ; OCTILLERY
+	dh 0xe8, 1   ; PORYGON2
+	dh 0xe9, 44  ; PORYGON_Z
+	dh 0xec, 1   ; HITMONTOP
+	dh 0xed, 2   ; ELEKID
+	dh 0xee, 31  ; ELECTIVIRE
+	dh 0xef, 1   ; MAGBY
+	dh 0xf0, 30  ; MAGMORTAR
+	dh 0xfb, 0   ; CELEBI
+	dh 0xfd, 21  ; GLACEON
+	dh 0xfe, 24  ; SYLVEON
+	dh -1
+
+.mon_forms:
+	db 0x18, 2 ; ARBOK, KANTO
+	db 0x18, 3 ; ARBOK, KOGA
+	db 0x18, 4 ; ARBOK, AGATHA
+	db 0x18, 5 ; ARBOK, ARIANA
+	db 0x19, 2 ; PIKACHU, FLY
+	db 0x19, 3 ; PIKACHU, SURF
+	db 0x19, 4 ; PIKACHU, RED
+	db 0x19, 5 ; PIKACHU, YELLOW
+	db 0x19, 6 ; PIKACHU, SPARK
+	db 0xac, 2 ; PICHU, SPIKY_EARED
+	db 0x81, 2 ; MAGIKARP, SKELLY
+	db 0x81, 3 ; MAGIKARP, CALICO1
+	db 0x81, 4 ; MAGIKARP, CALICO2
+	db 0x81, 5 ; MAGIKARP, CALICO3
+	db 0x81, 6 ; MAGIKARP, TWO_TONE
+	db 0x81, 7 ; MAGIKARP, ORCA
+	db 0x81, 8 ; MAGIKARP, DAPPLES
+	db 0x81, 9 ; MAGIKARP, TIGER
+	db 0x81, 10 ; MAGIKARP, ZEBRA
+	db 0x81, 11 ; MAGIKARP, STRIPE
+	db 0x81, 12 ; MAGIKARP, BUBBLES
+	db 0x81, 13 ; MAGIKARP, DIAMOND
+	db 0x81, 14 ; MAGIKARP, PATCHES
+	db 0x81, 15 ; MAGIKARP, FOREHEAD1
+	db 0x81, 16 ; MAGIKARP, MASK1
+	db 0x81, 17 ; MAGIKARP, FOREHEAD2
+	db 0x81, 18 ; MAGIKARP, MASK2
+	db 0x81, 19 ; MAGIKARP, SAUCY
+	db 0x81, 20 ; MAGIKARP, RAINDROP
+	db 0x82, 21 ; GYARADOS, RED
+	db 0x96, 2 ; MEWTWO, ARMORED
+	db 0x13, 2 ; RATTATA, ALOLAN
+	db 0x14, 2 ; RATICATE, ALOLAN
+	db 0x1a, 2 ; RAICHU, ALOLAN
+	db 0x1b, 2 ; SANDSHREW, ALOLAN
+	db 0x1c, 2 ; SANDSLASH, ALOLAN
+	db 0x25, 2 ; VULPIX, ALOLAN
+	db 0x26, 2 ; NINETALES, ALOLAN
+	db 0x32, 2 ; DIGLETT, ALOLAN
+	db 0x33, 2 ; DUGTRIO, ALOLAN
+	db 0x34, 2 ; MEOWTH, ALOLAN
+	db 0x35, 2 ; PERSIAN, ALOLAN
+	db 0x4a, 2 ; GEODUDE, ALOLAN
+	db 0x4b, 2 ; GRAVELER, ALOLAN
+	db 0x4c, 2 ; GOLEM, ALOLAN
+	db 0x58, 2 ; GRIMER, ALOLAN
+	db 0x59, 2 ; MUK, ALOLAN
+	db 0x67, 2 ; EXEGGUTOR, ALOLAN
+	db 0x69, 2 ; MAROWAK, ALOLAN
+	db 0x34, 3 ; MEOWTH, GALARIAN
+	db 0x4d, 3 ; PONYTA, GALARIAN
+	db 0x4e, 3 ; RAPIDASH, GALARIAN
+	db 0x4f, 3 ; SLOWPOKE, GALARIAN
+	db 0x50, 3 ; SLOWBRO, GALARIAN
+	db 0x53, 3 ; FARFETCH_D, GALARIAN
+	db 0x6e, 3 ; WEEZING, GALARIAN
+	db 0x7a, 3 ; MR__MIME, GALARIAN
+	db 0x90, 3 ; ARTICUNO, GALARIAN
+	db 0x91, 3 ; ZAPDOS, GALARIAN
+	db 0x92, 3 ; MOLTRES, GALARIAN
+	db 0xc7, 3 ; SLOWKING, GALARIAN
+	db 0xde, 3 ; CORSOLA, GALARIAN
+	db -1
+
+.new_indexes
+; terimated with zero, not -1
+; converted to 0-indexed
+	db 0x14 ; SPEAROW
+	db 0x15 ; FEAROW
+	db 0x6b ; LICKITUNG
+	db 0x75 ; GOLDEEN
+	db 0x76 ; SEAKING
+	db 0xac ; IGGLYBUFF
+	db 0xad ; CLEFFA
+	db 0xba ; HOPPIP
+	db 0xbb ; SKIPLOOM
+	db 0xbc ; JUMPLUFF
+	db 0xbd ; AIPOM
+	db 0xe0 ; DELIBIRD
+	db 0xe9 ; STANTLER
+	db 0xed ; SMOOCHUM
+	db 0xfb ; AZURILL
+	db 0xfc ; WYNAUT
+	db 0xfd ; AMBIPOM
+	db 0
+
+ConvertPokerusToNybble:
+; If a mon has an active infection, it will get reset
+; to its full days count. Cured infections remain cured
+	set #1, .mon_callback
+	jump ApplyPartyPatches
+
+.mon_callback
+	set #temp, #1
+	add #1, POKERUS_OFFSET
+	seek #1
+	getfilebyte #1
+	retz #1
+
+	push #temp
+	set #2, 0xf
+	and #temp, #1, #2
+	set #result, 13
+	jumpz #temp, .got_value
+	rotateleft #temp, #1, -4
+	and #temp, #2
+	remainder #temp, 4
+	subtract #temp, 32, #temp
+	rotateleft #result, #2, #temp
+.got_value
+	writebyte #result
+	pop #1
+	seek #1
+	decrement #4
+	jumpz #4, FixNewboxChecksum
+	return
+
+RemovePartySpecies:
+	set #1, PARTY_SPECIES_OFFSET_v7
+	call GetGameDataPointer
+	seek #result
+	fillbyte 7, #zero
+	return
+
+ConvertPhoneListToFlagArray:
+	set #1, PHONE_LIST_OFFSET_v7
+	call GetGameDataPointer
+	seek #result
+	pushpos
+	readword #2
+	readbyte #3 ; need to clear up 5 bytes for bit array
+	poppos
+	writeword #zero
+	writebyte #zero
+
+; Convert first four bytes
+.phone_loop_1
+	and #1, #2, 0xff
+	push #2
+	call .SetFlag
+	pop #2
+	shiftright #2, 8
+	jumpnz #2, .phone_loop_1
+
+; Convert 5th byte
+	set #1, #3
+	call .SetFlag
+
+; Convert remaining 25 bytes
+	pushpos
+	set #length, 25
+.phone_loop_2
+	pos #temp
+	readbyte #1
+	call .SetFlag
+	decrement #length
+	jumpnz #length, .phone_loop_2
+
+; Clear unused data
+.done_loop_2
+	poppos
+	fillbyte 27, #zero
+	return
+
+.SetFlag
+	retz #1
+	decrement #1
+	pushpos
+	seek #result
+	push #result
+	set #2, 1
+	call FlagAction
+	pop #result
+	poppos
+	return
+
+ShiftHiddenGrottoContents:
+; Extend end of hidden grotto list
+	set #1, CUR_GROTTO_OFFSET_v7
+	call GetGameDataPointer
+	set #3, #result
+	set #1, 41 ; wCurHiddenGrotto -> wPhoneList+0005
+	set #2, 25
+	call ShiftSaveDataForward
+	
+; Shift data up to and including grotto list
+	set #1, CELEBI_EVENT_OFFSET_v7
+	call GetGameDataPointer
+	set #3, #result
+	set #1, 71 ; wCelebiEvent -> end of wHiddenGrottoContents
+	set #2, 2
+	call ShiftSaveDataForward
+
+	seek #result
+	writehalfword #zero
+
+; Reset all grotto entries (just easier to manage than worrying about species data)
+	set #1, HIDDEN_GROTTO_OFFSET
+	call GetGameDataPointer
+	seek #result
+	fillbyte 69, #zero ; 23 * 3, nice
+	return
+
+RevertKeyItemsToIndexList:
+; shift all save data forward
+	set #1, NUM_ITEMS_OFFSET_v7
+	call GetGameDataPointer
+	set #3, #result
+	set #1, 885 ; wNumItems -> wCurBox
+	set #2, 33
+	call ShiftSaveDataForward
+
+	seek #result
+	fillbyte #2, #zero
+
+	set #1, REGISTERED_ITEMS_OFFSET
+	call GetGameDataPointer
+	seek #result
+	set #length, 4
+.reg_loop
+	getfilebyte #1
+	iflt #1, 5, .reg_loop_cont
+	add #temp, .index_adjustment, #1
+	subtract #temp, 5
+	getbyte #1, #temp
+.reg_loop_cont
+	writebyte #1
+	decrement #length
+	jumpnz #length, .reg_loop
+
+	set #1, KEY_ITEMS_OFFSET
+	call GetGameDataPointer
+	seek #result
+	getfileword #2 ; bit array fits in four bytes
+	writeword #zero
+	seek #result
+	set #1, #zero
+
+.loop
+	increment #1
+	and #temp, #2, 1
+	jumpz #temp, .cont
+	set #temp, #1
+	iflt #1, 5, .cont2
+	add #temp, .index_adjustment, #1
+	subtract #temp, 5
+	getbyte #temp, #temp
+.cont2
+	writebyte #temp
+.cont
+	shiftright #2, 1
+	jumpnz #2, .loop
+	return
+
+.index_adjustment
+	; new index (list index = key item index + 5)
+	db 6
+	db 5
+	db 12
+	db 10
+	db 13
+	db 14
+	db 15
+	db 16
+	db 23
+	db 24
+	db 18
+	db 17
+	db 19
+	db 20
+	db 21
+	db 22
+	db 9
+	db 25
+	db 26
+	db 27
+	db 28
+	db 29
+	db 30
+	db 11
+	db 7
+	db 8
+
+AdjustItemIndexesToBuild8:
+	set #r0, .index_adjustment
+	jump AdjustItemIndexes
+
+.index_adjustment
+	; old index, offset
+	db 0x0c, 0    ; LOVE_BALL
+	db 0x0d, 96   ; ABILITYPATCH
+	db 0x39, -1   ; PEWTERCRUNCH
+	db 0x3a, 3    ; SACRED_ASH
+	db 0x3e, -2   ; REVIVAL_HERB
+	db 0x46, 37   ; GUARD_SPEC
+	db 0x4b, 22   ; POKE_DOLL
+	db 0x4c, 32   ; ABILITY_CAP
+	db 0x50, 33   ; THUNDERSTONE
+	db 0x53, 34   ; DUSK_STONE
+	db 0x54, 139  ; OVAL_STONE (originally Dawn Stone)
+	db 0x55, 33   ; SHINY_STONE
+	db 0x56, 28   ; ICE_STONE
+	db 0x58, 32   ; EXP_SHARE
+	db 0x77, -27  ; BERRY_JUICE
+	db 0x89, 1    ; PINK_BOW
+	db 0x8a, 2    ; BRIGHTPOWDER
+	db 0x8b, 53   ; SCOPE_LENS
+	db 0x8d, 1    ; KINGS_ROCK
+	db 0x8e, 4    ; FOCUS_BAND
+	db 0x8f, 5    ; LEFTOVERS
+	db 0x90, 3    ; LUCKY_EGG
+	db 0x93, -2   ; SMOKE_BALL
+	db 0x94, -9   ; BERSERK_GENE
+	db 0x9b, 36   ; ARMOR_SUIT
+	db 0x9c, 10   ; AIR_BALLOON
+	db 0x9d, 17   ; ASSAULT_VEST
+	db 0x9e, 5    ; BIG_ROOT
+	db 0x9f, 10   ; BINDING_BAND
+	db 0xa0, 0    ; DESTINY_KNOT
+	db 0xa1, 3    ; EVIOLITE
+	db 0xa2, -9   ; EXPERT_BELT
+	db 0xa3, -7   ; FOCUS_SASH
+	db 0xa4, -3   ; GRIP_CLAW
+	db 0xa5, -10  ; LIFE_ORB
+	db 0xa6, -12  ; LIGHT_CLAY
+	db 0xa7, -10  ; METRONOME
+	db 0xa8, -17  ; MUSCLE_BAND
+	db 0xa9, 9    ; PROTECT_PADS
+	db 0xaa, -5   ; ROCKY_HELMET
+	db 0xab, 6    ; SAFE_GOGGLES
+	db 0xac, -10  ; SHED_SHELL
+	db 0xad, -23  ; SHELL_BELL
+	db 0xae, -25  ; SOOTHE_BELL
+	db 0xaf, -2   ; WEAK_POLICY
+	db 0xb0, 17   ; WIDE_LENS
+	db 0xb1, -25  ; WISE_GLASSES
+	db 0xb2, 16   ; ZOOM_LENS
+	db 0xb3, -7   ; EJECT_BUTTON
+	db 0xb4, -21  ; LAGGING_TAIL
+	db 0xb5, -23  ; IRON_BALL
+	db 0xb6, -14  ; RING_TARGET
+	db 0xb7, -16  ; RED_CARD
+	db 0xb9, -14  ; CELL_BATTERY
+	db 0xbb, -11  ; SNOWBALL
+	db 0xbc, -8   ; EJECT_PACK
+	db 0xbd, -6   ; ROOM_SERVICE
+	db 0xbe, -8   ; BLUNDRPOLICY
+	db 0xbf, -12  ; THROAT_SPRAY
+	db 0xc0, -11  ; HEAVY_BOOTS
+	db 0xc1, -9   ; UTILUMBRELLA
+	db 0xdd, 1    ; RAZOR_CLAW
+	db 0xde, 2    ; ODD_SOUVENIR
+	db 0xea, 6    ; RARE_BONE
+	db 0xec, -10  ; GOLD_LEAF
+	db 0xed, 4    ; SLOWPOKETAIL
+	db 0xee, -10  ; BOTTLE_CAP
+	db 0xf1, 3    ; OLD_AMBER
+	db 0xf3, -144 ; SWEET_HONEY
+	db 0xf4, -17  ; MINT_LEAF
+	db 0
+
+RearrangeEventFlags:
+; NOTE: even though Cinnabar Volcano flags were moved, that doesn't require a unique patch
+	set #1, EVENT_FLAGS_OFFSET
+	call GetGameDataPointer
+	seek #result
+
+	set #1, 0x893
+	set #2, .flag_adjust_table
+	jump ShiftFlags
+
+.flag_adjust_table
+	dh 0x0ab, 0
+	dh 0x0ce, 3
+	dh 0x0d0, 6
+	dh 0x0d2, 7
+	dh 0x0db, 8
+	dh 0x0df, 9
+	dh 0x20e, 12
+	dh 0x291, 13
+	dh 0x65b, 15
+	dh 0x881, 16
+	dh 0x882, -535
+	dh 0x883, -1529
+	dh 0x884, -1965
+	dh 0x885, -2007
+	dh 0x887, -1511
+	dh 0x888, -1889
+	dh 0x889, -1646
+	dh 0x88a, -1958
+	dh 0x88d, -1977
+	dh 0x88e, -1972
+	dh 0x890, -2019
+	dh 0x893, -1960
+	dh -1
+
+ClearNewPokedbSpace:
+; rearranges sram space to allow for more boxes
+; copy link battle records and battle tower data (later probably doesn't need to be copied)
+	set #1, sLinkBattleResults_v7
+	set #2, sLinkBattleResults
+	set #3, 108 ; sLinkBattleStatsEnd - sLinkBattleResults
+	call CopyFrom1To2
+
+	set #1, sBattleTowerChallengeState_v7
+	set #2, sBattleTowerChallengeState
+	set #3, 35
+	call CopyFrom1To2
+
+	set #1, sRTCStatusFlags_v7
+	set #2, sRTCStatusFlags
+	set #3, 11 ; sLuckyNumberID+0001 - sRTCStatusFlags
+	call CopyFrom1To2
+
+; temporarily store newbox data in old sScratch before HoF data is moved
+	set #1, sNewBox1_v7
+	set #2, #zero ; what was once sScratch
+	set #3, 1056 ; end of sBackupNewbox15 - sNewBox1, does not impact sLinkBattleResults
+	call CopyFrom1To2
+
+; copy first 10 entries of hall of fame, since stored entries is down from 30 to 10
+	set #1, sHallOfFame_v7
+	set #2, sHallOfFame
+	set #3, 980 ; sHallOfFameEnd - sHallOfFame, we only want the first 10 HoF entries
+	call CopyFrom1To2
+
+; copy sNewBox from sScratch to new location, clear data for new boxes, then set default values
+	set #1, #zero ; sNewBox1
+	set #2, sNewBox1
+	set #3, 528 ; sNewBox17 - sNewBox
+	push #3
+	call CopyFrom1To2
+	pushpos
+	fillbyte 132, #zero ; sNewBoxEnd - sNewBox17
+	poppos
+	set #1, .box17
+	set #2, .default_themes
+	set #3, 4
+.default_loop_1
+	seekfwd 23
+	getwordinc #temp, #1
+	writeword #temp
+	gethalfwordinc #temp, #1
+	writehalfword #temp
+	seekfwd 3
+	getbyteinc #temp, #2
+	writebyte #temp
+	decrement #3
+	jumpnz #3, .default_loop_1
+
+; do the same for sBackupNewBox
+	pop #3
+	set #1, #3 ; sBackupNewBox1 is at memory address 0x210 (decimal 528)
+	set #2, sBackupNewBox1
+	call CopyFrom1To2
+	pushpos
+	fillbyte 132, #zero
+	poppos
+	set #1, .box17
+	set #2, .default_themes
+	set #3, 4
+.default_loop_2
+	seekfwd 23
+	getwordinc #temp, #1
+	writeword #temp
+	gethalfwordinc #temp, #1
+	writehalfword #temp
+	seekfwd 3
+	getbyteinc #temp, #2
+	writebyte #temp
+	decrement #3
+	jumpnz #3, .default_loop_2
+	return
+
+.box17
+	db 0x81, 0xae, 0xb7, 0xe1, 0xe7, 0x53 ; "Box17@"
+
+; .box18
+	db 0x81, 0xae, 0xb7, 0xe1, 0xe8, 0x53 ; "Box18@"
+
+; .box19
+	db 0x81, 0xae, 0xb7, 0xe1, 0xe9, 0x53 ; "Box19@"
+
+; .box20
+	db 0x81, 0xae, 0xb7, 0xe2, 0xe0, 0x53 ; "Box20@"
+
+.default_themes
+	db 0x14, 0x1d, 0x07, 0x08

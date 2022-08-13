@@ -52,6 +52,7 @@ wTownMapCursorCoordinates:: dw
 wStartFlypoint:: db
 wEndFlypoint:: db
 ENDU
+wTownMapCanShowFly:: db
 
 NEXTU
 ; phone call data
@@ -65,9 +66,7 @@ wNextRadioLine:: db
 wRadioTextDelay:: db
 wNumRadioLinesPrinted:: db
 wOaksPkmnTalkSegmentCounter:: db
-	ds 5
 wRadioText:: ds 2 * SCREEN_WIDTH
-wRadioTextEnd::
 
 NEXTU
 ; movement buffer data
@@ -80,7 +79,7 @@ NEXTU
 ; trainer HUD data
 	ds 1
 wPlaceBallsDirection:: db
-wTrainerHUDTiles:: db
+wTrainerHUDTiles:: ds 4
 
 NEXTU
 ; battle exp gain
@@ -109,11 +108,6 @@ NEXTU
 wMonMailMessageBuffer:: ds MAIL_MSG_LENGTH + 1
 
 NEXTU
-; prof. oak's pc
-wTempPokedexSeenCount:: db
-wTempPokedexCaughtCount:: db
-
-NEXTU
 ; player's room pc
 UNION
 wDecoNameBuffer:: ds ITEM_NAME_LENGTH
@@ -121,7 +115,6 @@ NEXTU
 wNumOwnedDecoCategories:: db
 wOwnedDecoCategories:: ds 16
 ENDU
-
 
 NEXTU
 ; link battle record data
@@ -248,14 +241,6 @@ wTempScriptBuffer:: db
 wJumpStdScriptBuffer:: ds 15
 
 NEXTU
-; phone script data
-wCheckedTime:: db
-wPhoneListIndex:: db
-wNumAvailableCallers:: db
-wAvailableCallers:: ds CONTACT_LIST_SIZE - 4 ; bug: available callers list affects mem addresses outside union (up to 4 bytes)
-wAvailableCallersEnd::
-
-NEXTU
 ; phone caller contact
 	ds 1
 wCallerContact:: ds PHONE_CONTACT_SIZE
@@ -290,6 +275,7 @@ wBattleBerriesPocketScrollPosition:: db
 
 wTMHMMoveNameBackup:: ds MOVE_NAME_LENGTH
 
+UNION
 wStringBuffer1:: ds STRING_BUFFER_LENGTH + 5
 wStringBuffer2:: ds STRING_BUFFER_LENGTH
 wStringBuffer3:: ds STRING_BUFFER_LENGTH
@@ -312,6 +298,14 @@ wBT_PartySelections:: ds PARTY_LENGTH
 wBT_MonParty:: ds BATTLETOWER_PARTYDATA_SIZE
 wBT_SecondaryMonParty:: ds BATTLETOWER_PARTYDATA_SIZE ; last rental trainer
 wBT_OTMonParty:: ds BATTLETOWER_PARTYDATA_SIZE ; also for starting rental setup
+NEXTU
+; Seen/Own iterator handling.
+wTempDex::
+wTempDexSeen:: dw
+wTempDexOwn:: dw
+wTempDexLast:: dw ; the last species marked as seen
+wTempDexEnd::
+ENDU
 ENDU
 
 wBattleMenuCursorBuffer:: dw
@@ -484,7 +478,11 @@ ENDU
 wTempMonBox:: db
 wTempMonSlot:: db
 
-	ds 39 ; unused
+wDexCacheValid:: db
+wDexCacheSeen:: dw
+wDexCacheOwn:: dw
+
+	ds 34 ; unused
 
 wOverworldMapAnchor:: dw
 wMetatileStandingY:: db
@@ -516,21 +514,17 @@ wWestMapConnection:: map_connection_struct wWest
 wEastMapConnection:: map_connection_struct wEast
 
 wTileset::
-wTilesetBank::
-wTilesetGFX0Bank:: db
+wTilesetDataBank:: db
 wTilesetGFX0Address:: dw
-wTilesetGFX1Bank:: db
 wTilesetGFX1Address:: dw
-wTilesetGFX2Bank:: db
 wTilesetGFX2Address:: dw
-wTilesetBlocksBank:: db
 wTilesetBlocksAddress:: dw
-wTilesetCollisionBank:: db
 wTilesetCollisionAddress:: dw
-wTilesetAttributesBank:: db
 wTilesetAttributesAddress:: dw
-wTilesetAnim:: dw ; bank 3f
+wTilesetAnim:: dw ; BANK(_AnimateTileset)
 wTilesetEnd::
+
+	ds 5 ; unused
 
 wEvolvableFlags:: flag_array PARTY_LENGTH
 
@@ -560,7 +554,9 @@ wCurHPAnimHighHP:: db
 NEXTU
 ; evolution data
 wEvolutionOldSpecies:: db
+wEvolutionOldForm:: db
 wEvolutionNewSpecies:: db
+wEvolutionNewForm:: db
 wEvolutionPicOffset:: db
 wEvolutionCanceled:: db
 
@@ -694,7 +690,9 @@ wMoveGrammar::
 wApplyStatLevelMultipliersToEnemy::
 wUsePPUp::
 wFoundMatchingID::
-	ds 3
+	db
+wTempForm::
+	ds 2
 
 wMonTriedToEvolve:: db
 
@@ -717,8 +715,8 @@ wOTPartyData::
 wOTPlayerName:: ds NAME_LENGTH
 wOTPlayerID:: dw
 wOTPartyCount:: db
-wOTPartySpecies:: ds PARTY_LENGTH + 1 ; legacy scripts don't check PartyCount
 
+	ds 7 ; unused
 
 UNION
 wOTPartyMons::
@@ -739,7 +737,7 @@ endr
 wOTPartyDataEnd::
 
 NEXTU
-	ds 48
+	ds PARTYMON_STRUCT_LENGTH ; skip first OT partymon since wildmon use that
 
 ; catch tutorial dude bag
 wDudeBag::
@@ -920,13 +918,12 @@ wObjectMasks:: ds NUM_OBJECTS
 
 wVariableSprites:: ds $100 - SPRITE_VARS
 
-wEnteredMapFromContinue:: db
-
 wStatusFlags3::
 	; 0 - judge machine
 	db
 
-	ds 1
+wEnteredMapFromContinue:: db
+
 wTimeOfDayPal:: db
 	ds 4
 wTimeOfDayPalFlags:: db
@@ -975,8 +972,10 @@ wPokemonJournalsEnd::
 wTMsHMs:: flag_array NUM_TMS + NUM_HMS
 wTMsHMsEnd::
 
-wKeyItems:: flag_array NUM_KEY_ITEMS
+wKeyItems:: ds NUM_KEY_ITEMS + 1
 wKeyItemsEnd::
+
+	ds 6 ; unused
 
 wNumItems:: db
 wItems:: ds MAX_ITEMS * 2 + 1
@@ -1008,7 +1007,7 @@ wPokegearFlags::
 ; bit 7: on/off
 	ds 1
 wRadioTuningKnob:: db
-wLastDexMode:: db
+wPokedexMode:: db
 
 wTMHMPocketScrollPosition:: db
 wTMHMPocketCursor::
@@ -1030,7 +1029,8 @@ wFarfetchdPosition:: db
 wAlways0SceneID:: db
 wAzaleaTownSceneID:: db
 wBattleFacilitySceneID:: db
-	ds 3 ; unused
+wRoute39RuggedRoadGateSceneID:: db
+	ds 2 ; unused
 wBattleTowerOutsideSceneID:: db
 wBellchimeTrailSceneID:: db
 wBrunosRoomSceneID:: db
@@ -1150,7 +1150,7 @@ wEventFlags:: flag_array NUM_EVENTS
 
 wCurBox:: db
 
-	ds 126 ; unused
+	ds 95 ; unused
 
 wCelebiEvent:: db
 
@@ -1206,8 +1206,8 @@ wFruitTreeFlags:: flag_array NUM_FRUIT_TREES
 wNuzlockeLandmarkFlags:: flag_array NUM_LANDMARKS
 
 wHiddenGrottoContents::
-; content type, content id
-	ds NUM_HIDDEN_GROTTOES * 2
+; content type, content id, content id + 1
+	ds NUM_HIDDEN_GROTTOES * 3
 
 wCurHiddenGrotto:: db
 
@@ -1241,9 +1241,10 @@ wBattlePointsEnd::
 wStepCount:: db
 wPoisonStepCount:: db
 
-wPhoneList:: ds CONTACT_LIST_SIZE + 1
+wPhoneList:: flag_array NUM_PHONE_CONTACTS
+wPhoneListEnd::
 
-	ds 1 ; unused
+	ds 2 ; unused
 
 wParkBallsRemaining::
 wSafariBallsRemaining:: db
@@ -1293,8 +1294,8 @@ SECTION "Party", WRAMX
 wPokemonData::
 
 wPartyCount::   db ; number of Pokémon in party
-wPartySpecies:: ds PARTY_LENGTH
-wPartyEnd::     db ; older code doesn't check wPartyCount
+
+	ds 7 ; unused
 
 wPartyMons::
 for n, 1, PARTY_LENGTH + 1
@@ -1315,19 +1316,23 @@ wPartyMon{d:n}Nickname:: ds MON_NAME_LENGTH
 endr
 wPartyMonNicknamesEnd::
 
-	ds 9 ; unused
+	ds 1 ; unused
 
-wPokedexCaught:: flag_array NUM_POKEMON
+wPokedexFlags::
+wPokedexCaught:: flag_array NUM_UNIQUE_POKEMON
 wEndPokedexCaught::
 
-wPokedexSeen:: flag_array NUM_POKEMON
-wEndPokedexSeen::
+	ds 2 ; unused
 
-wUnownDex:: ds NUM_UNOWN
+wPokedexSeen:: flag_array NUM_UNIQUE_POKEMON
+wEndPokedexSeen::
+wEndPokedexFlags::
+
+	ds 2 ; unused
+
 wUnlockedUnowns:: db
 
-wFirstUnownSeen:: db
-wFirstMagikarpSeen:: db
+	ds 2 ; unused
 
 wDayCareMan::
 ; bit 7: active
@@ -1359,7 +1364,7 @@ wBreedMon2:: breed_struct wBreedMon2
 
 	ds 54 ; unused
 
-wBugContestSecondPartySpecies:: db
+wBugContestBackupPartyCount:: db
 wContestMon:: party_struct wContestMon
 
 wDunsparceMapGroup:: db
@@ -1454,14 +1459,147 @@ SECTION "Sound Stack", WRAMX
 wSoundEngineBackup:: ds wChannelsEnd - wMusic
 
 
-SECTION "Metatiles", WRAMX
+SECTION UNION "Metatiles", WRAMX
 
 wDecompressedMetatiles:: ds 256 tiles
 
 
-SECTION "Attributes", WRAMX
+SECTION UNION "Metatiles", WRAMX
+
+UNION
+wDex2bpp:: ds $60 tiles
+
+NEXTU
+; copied using hdma transfers (which is orders of magnitudes faster), so it uses
+; 32x32 as opposed to only the 21x19 that we need.
+wDexTilemap:: ds BG_MAP_WIDTH * (SCREEN_HEIGHT + 1)
+wDexAttrmap:: ds BG_MAP_WIDTH * (SCREEN_HEIGHT + 1)
+wDexMapEnd::
+
+UNION
+wDexVWFTiles:: ds 19 tiles ; 1 tile padding
+wDexIconTiles:: ds 24 tiles ; 4 tiles padding
+wDexRowTilesDest::
+wDexVWFTilesDest:: dw
+wDexIconTilesDest:: dw
+NEXTU
+; Copied using GDMA in VBlank. Ideally we want to do GDMA as part of hblank,
+; but there is some issues with that yet to be fully researched (issue #639).
+	ds 49 tiles
+wDexMonTiles::
+wDexMonType1Tiles:: ds 4 tiles
+wDexMonType2Tiles:: ds 4 tiles
+wDexMonFootprintTiles:: ds 4 tiles
+wDexMonIconTiles:: ds 4 tiles
+wDexMonShapeTiles:: ds 4 tiles
+wDexAreaTypeTiles:: ds 7 tiles
+wDexAreaTypeTilesEnd::
+ENDU
+
+; Copy of dex row tile info. H-Blank uses a copy in wram0.
+wDexPalCopy::
+wDexRow1Tile: db ; Sprite offset for dex minis col 2-4
+wDexRow1Pals:: ds PAL_COLOR_SIZE * 3 * 5 ; 3 15bit colors per pal, 5 columns
+wDexRow2Tile: db
+wDexRow2Pals:: ds PAL_COLOR_SIZE * 3 * 5
+wDexRow3Tile: db
+wDexRow3Pals:: ds PAL_COLOR_SIZE * 3 * 5
+wDexPalCopyEnd::
+
+wDexNoStr::
+wDexNoStrBall:: db ; ball if caught, $7f otherwise
+wDexNoStrNo:: ds 2 ; "No."
+wDexNoStrNumber:: ds 3 ; the dex number
+
+; These are for the list view. For the "No.123", see wPokedexOAM_DexNo in wram0.
+wDexNumber:: dw
+wDexNumberString:: ds 4 ; 3 numbers including leading zeroes + terminator
+
+; Landmark to highlight if mon is at player location. Note that this is exact,
+; including things like the proper floor. This is -1 to denote no highlight,
+wDexAreaHighlight:: db
+
+; Needed because when we reload the screen, wVirtualOAM is wiped clean.
+wDexAreaHighlightY:: db
+wDexAreaHighlightX:: db
+
+wDexAreaValidGroups::
+UNION
+wDexAreaValidFishGroups:: ds NUM_FISHGROUPS
+NEXTU
+wDexAreaValidTreeGroups:: ds NUM_TREEMON_SETS
+ENDU
+wDexAreaValidGroupsEnd::
+
+	assert (HIGH(wDexAreaValidGroupsEnd) == HIGH(wDexAreaValidGroups))
+
+; The last location type the player cycled to explicitly.
+; The game will try to prefer this when changing region/mon/form. Updates when:
+; * the player presses A, cycling to a different location type
+; * the player switches mon/form if the last region is different from current,
+;   and area is NOT unknown for the current region.
+wDexAreaLastMode:: db
+
+; Table of xy coords for landmarks. These contain either zero, or xy of the
+; landmark to display. We don't actually care about the exact landmark beyond
+; knowing if we should highlight the one that players are at (see above).
+
+	; Used to align wDexAreaMons. Feel free to add more data here, just don't
+	; let wDexAreaMons be misaligned (an assert will tell you if you do).
+	ds 5
+
+wDexAreaMons::
+; Array size needs to be a multiple of 10 covering all landmarks for a region.
+; Upper cap is 120.
+for n, 1, 100
+wDexAreaMon{d:n}::
+wDexAreaMon{d:n}YCoord:: db
+wDexAreaMon{d:n}XCoord:: db
+endr
+wDexAreaMonsTerminator:: db
+wDexAreaMonsEnd::
+
+; Bitflag array of regions with locations for each area type
+wDexAreaRegionLocations:: ds NUM_DEXAREAS
+
+; Things handled by hblank
+wDexAreaMonOffset:: db ; current area mon index to process in h-blank
+wDexAreaSpriteSlot:: db ; LOW(address) to oamSprite to use.
+wDexAreaModeCopy:: db ; written to from hPokedexAreaMode on screen reload
+
+	; Used to align wDexAreaMons2. Feel free to add more data here, just don't
+	; let wDexAreaMons2 be misaligned (an assert will tell you if you do).
+	ds $2b
+
+wDexAreaMons2:: ds (wDexAreaMonsEnd - wDexAreaMons)
+
+	; Used to align wDexAreaVirtualOAM. Feel free to add more data here, just
+	; don't let it be misaligned.
+	ds $39
+
+wDexAreaVirtualOAM:: ds (wVirtualOAMEnd - wVirtualOAM)
+
+ENDU
+
+
+SECTION UNION "Attributes", WRAMX
 
 wDecompressedAttributes:: ds 256 tiles
+
+
+SECTION UNION "Attributes", WRAMX
+
+; Array of Pokémon in the pokédex list.
+wDexMons::
+for n, 1, NUM_SPECIES + 1
+wDexMon{d:n}::
+wDexMon{d:n}Species:: db
+wDexMon{d:n}Form:: db
+endr
+wDexMonsEnd::
+
+; Conversion table to get johto dex number from national dex number.
+wDexConversionTable:: ds NUM_SPECIES * 2
 
 
 SECTION "Collisions or Music Player", WRAMX
@@ -1555,12 +1693,13 @@ wMagnetTrainPlayerSpriteInitX:: db
 
 wColorVaryDVs:: ds 3
 wColorVarySpecies:: db
+wColorVaryForm:: db
 wColorVaryShiny:: db
 
 wPalFadeDelayFrames:: db
 wPalFadeDelay:: db
 
-	ds 100 ; unused
+	ds 99 ; unused
 
 wLYOverridesBackup:: ds SCREEN_HEIGHT_PX
 wLYOverridesBackupEnd::

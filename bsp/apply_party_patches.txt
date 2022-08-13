@@ -6,17 +6,21 @@ ApplyPartyPatches:
 	push #b
 	push #a
 	set #a, #1
+
+	; apply patches to party pokemon
 	set #1, 5
 	call GetGameDataOffsetConstant
 	set #1, #result
 	call GetGameDataPointer
 	seek #result
 	readbyte #temp
-	add #1, #result, 8
-	add #2, #result, 0x16a
-	add #3, #result, 0x128
+	add #1, #result, 8 ; still skip deprecated wPartySpecies
+	add #2, #result, 0x163 ; wPartyMon1Nickname - wPartyCount
+	add #3, #result, 0x121 ; wPartyMon1OT - wPartyCount
 	set #4, #zero
 	callnz #temp, .apply_to_list
+
+	; apply patches to daycare man pokemon
 	set #1, 6
 	call GetGameDataOffsetConstant
 	set #1, #result
@@ -25,6 +29,8 @@ ApplyPartyPatches:
 	readbyte #temp
 	shiftleft #temp, 31 ; nonzero if bit 0 is set
 	callnz #temp, .daycare_mon
+
+	; apply patches to daycare lady pokemon
 	set #1, 7
 	call GetGameDataOffsetConstant
 	set #1, #result
@@ -37,10 +43,12 @@ ApplyPartyPatches:
 	readhalfword #result ; move file pointer ahead
 	pos #result
 	callnz #temp, .daycare_mon
-	set #b, sBox1_v6
-	call .boxes
-	set #b, sBox8_v6
-	call .boxes
+
+	; apply patches to box pokemon
+	set #b, sBoxMons1
+	call .box_loop
+	set #b, sBoxMons2
+	call .box_loop
 	pop #a
 	pop #b
 	pop #c
@@ -48,28 +56,25 @@ ApplyPartyPatches:
 	pop #e
 	return
 
-.boxes
-	set #c, 7
 .box_loop
+	; note that unlike vanilla box, newbox combines nickname and OT data into the mon struct, so they're handled slightly differently
 	seek #b
-	readbyte #temp
-	add #1, #b, 22
-	add #2, #b, 882
-	add #3, #b, 662
+	set #temp, 167 ; mons per save bank
+	set #1, #b
+	add #2, #b, 32
+	add #3, #b, 42
 	set #4, 1
-	callnz #temp, .apply_to_list
-	add #b, BOX_SIZE_v6
-	decrement #c
-	jumpnz #c, .box_loop
-	return
+	jump .apply_to_list
 
 .daycare_mon
-	add #1, #result, 23
+	add #1, #result, 23 ; for daycare struct, nickname and OT come before species
 	add #2, #result, 1
 	add #3, #result, 12
 	set #4, 2
 	rotateleft #temp, 1
 .apply_to_list
+	; #temp -> #d = count, #1 = mon species, #2 = mon nickname, #3 = mon OT
+	; #4 -> #e = 0 (party), 1 (box), 2 (daycare)
 	set #d, #temp
 	set #e, #4
 .loop
@@ -79,15 +84,20 @@ ApplyPartyPatches:
 	set #4, #e
 	call #a
 	pop #1
+	pop #2
+	pop #3
+	set #temp, NAME_LENGTH
 	set #4, PARTYMON_STRUCT_LENGTH
 	jumpz #e, .length_OK
 	set #4, BOXMON_STRUCT_LENGTH
+	add #2, #4
+	add #3, #4
+	subtract #2, #temp
+	subtract #3, #temp
 .length_OK
 	add #1, #4
-	pop #2
-	add #2, NAME_LENGTH
-	pop #3
-	add #3, NAME_LENGTH
+	add #2, #temp
+	add #3, #temp
 	decrement #d
 	jumpnz #d, .loop
 	return

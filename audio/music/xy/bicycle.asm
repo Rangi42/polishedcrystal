@@ -148,7 +148,7 @@ BicycleXY_Ch1_sub_0:
 	note __, 6
 	note G#, 8
 	note B_, 4
-	loopchannel 0, BicycleXY_Ch1_sub_0
+	jumpchannel BicycleXY_Ch1_sub_0
 
 BicycleXY_Ch2::
 	dutycycle $1
@@ -304,7 +304,7 @@ BicycleXY_Ch2_sub_0:
 	note D#, 2
 	note C#, 8
 	note D#, 4
-	loopchannel 0, BicycleXY_Ch2_sub_0
+	jumpchannel BicycleXY_Ch2_sub_0
 
 BicycleXY_Ch3::
 	stereopanning $ff
@@ -499,7 +499,7 @@ BicycleXY_Ch3_sub_0:
 	note D#, 2
 	note F#, 2
 	note B_, 4
-	loopchannel 0, BicycleXY_Ch3_sub_0
+	jumpchannel BicycleXY_Ch3_sub_0
 
 BicycleXY_Ch4::
 	togglenoise $3
@@ -527,7 +527,7 @@ BicycleXY_Ch4_0:
 	note __, 4
 	note A#, 4
 	note B_, 8
-	loopchannel 0, BicycleXY_Ch4_0
+	jumpchannel BicycleXY_Ch4_0
 
 BicycleXY_Ch4_sub_0:
 	note C#, 4

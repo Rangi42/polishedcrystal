@@ -39,6 +39,7 @@ BattleEntryAbilities:
 	dbw PRESSURE, PressureAbility
 	dbw MOLD_BREAKER, MoldBreakerAbility
 	dbw NEUTRALIZING_GAS, NeutralizingGasAbility
+	dbw SCREEN_CLEANER, ScreenCleanerAbility
 	; fallthrough
 StatusHealAbilities:
 ; Status immunity abilities that autoproc if the user gets the status or the ability
@@ -494,6 +495,54 @@ FriskAbility:
 	call StdBattleTextbox
 	jmp EnableAnimations
 
+ScreenCleanerAbility:
+	; Text order is player 1's screens fade, then player 2's.
+	; Preserves current battle turn (i.e. when mon is switched out via Roar)
+	ld a, [wPlayerScreens]
+	and a
+	jr nz, .screens_up
+	ld a, [wEnemyScreens]
+	and a
+	ret z
+.screens_up
+	call DisableAnimations
+	call ShowAbilityActivation
+	ldh a, [hBattleTurn]
+	push af
+	ldh a, [hSerialConnectionStatus]
+	cp USING_INTERNAL_CLOCK
+	ld a, 1
+	jr z, .player_2
+	dec a
+.player_2
+	ldh [hBattleTurn], a
+	call .clear_screens
+	call SwitchTurn
+	call .clear_screens
+	pop af
+	ldh [hBattleTurn], a
+	jmp EnableAnimations
+
+.clear_screens
+	farcall GetTurnAndPlacePrefix
+	ld hl, wPlayerScreens
+	jr z, .got_screens
+	ld hl, wEnemyScreens
+.got_screens
+	ld a, [hl]
+	push af
+	ld [hl], 0
+	and SCREENS_REFLECT
+	jr z, .no_reflect
+	ld hl, BattleText_ReflectFaded
+	call StdBattleTextbox
+.no_reflect
+	pop af
+	and SCREENS_LIGHT_SCREEN
+	ret z
+	ld hl, BattleText_LightScreenFell
+	jmp StdBattleTextbox
+
 RunEnemyOwnTempoAbility:
 	call SwitchTurn
 	call GetTrueUserAbility
@@ -646,10 +695,8 @@ RunHitAbilities:
 CursedBodyAbility:
 	call SwitchTurn
 	farcall GetFutureSightUser
-	push af
 	call SwitchTurn
-	pop af
-	ret nz
+	ret nc
 	ld a, 10
 	call BattleRandomRange
 	cp 3
@@ -681,6 +728,7 @@ TargetContactAbilities:
 	dbw STATIC, StaticAbility
 	dbw CUTE_CHARM, CuteCharmAbility
 	dbw TANGLING_HAIR, TanglingHairAbility
+	dbw PERISH_BODY, PerishBodyAbility
 	dbw -1, -1
 
 CuteCharmAbility:
@@ -697,6 +745,31 @@ CuteCharmAbility:
 	; this runs ShowAbilityActivation when relevant
 	farcall BattleCommand_attract
 	jmp EnableAnimations
+
+PerishBodyAbility:
+	; can't just use BattleCommand_perishsong
+	; since Soundproof has no effect here
+	ld hl, wPlayerPerishCount
+	ld de, wEnemyPerishCount
+	ldh a, [hBattleTurn]
+	and a
+	call z, SwapHLDE
+
+	ld a, [hl]
+	and a
+	ret nz ; don't activate if attacker already has a perish count
+	ld [hl], 4
+
+	ld a, [de]
+	and a
+	jr nz, .no_user
+	ld a, 4
+	ld [de], a
+.no_user
+	call DisableAnimations
+	call ShowAbilityActivation
+	ld hl, StartPerishBodyText
+	call StdBattleTextbox
 
 TanglingHairAbility:
 	call HasOpponentFainted
@@ -799,6 +872,8 @@ CheckNullificationAbilities:
 	jr z, .damp
 	cp SOUNDPROOF
 	jr z, .soundproof
+	cp BULLETPROOF
+	jr z, .bulletproof
 	cp FLASH_FIRE
 	jr z, .flash_fire
 	cp LIGHTNING_ROD
@@ -836,10 +911,16 @@ CheckNullificationAbilities:
 	jr z, .ability_ok
 	ret
 
+.bulletproof
+	ld hl, BulletMoves
+	jr z, .movelist_nullification
+
 .soundproof
+	ld hl, SoundMoves
+	; fallthrough
+.movelist_nullification
 	ld a, BATTLE_VARS_MOVE
 	call GetBattleVar
-	ld hl, SoundMoves
 	call IsInByteArray
 	jr c, .ability_ok
 	ret
@@ -1416,12 +1497,10 @@ SelectRandomLowerStat:
 	ret
 
 SelectRandomStat:
-	; Randomize values until we get one matching a nonmaxed stat
+; Randomizes values until we get one matching a nonmaxed stat
 .loop1
-	call BattleRandom
-	and $7
-	cp 5
-	jr nc, .loop1 ; don't raise acc/eva, only 0-4 (atk/def/spe/sat/sdf)
+	ld a, 5 ; don't raise acc/eva, only 0-4 (atk/def/spe/sat/sdf)
+	call BattleRandomRange
 	lb de, 1, 0 ; e = counter
 .loop2
 	cp e
@@ -1437,9 +1516,8 @@ SelectRandomStat:
 
 MoodyAbility:
 ; Moody raises one stat by 2 stages and lowers another (not the same one!) by 1.
-; It will not try to raise a stat at +6 (or lower one at -6). This means that, should all
-; stats be +6, Moody will not raise any stat, and vice versa.
-
+; It will not try to raise a stat at +6 (or lower one at -6). This means that,
+; should all stats be +6, Moody will not raise any stat, and vice versa.
 	call DisableAnimations
 
 	call GetCappedStats
@@ -1505,6 +1583,7 @@ OffensiveDamageAbilities:
 	dbw PIXILATE, PixilateAbility
 	dbw GALVANIZE, GalvanizeAbility
 	dbw GORILLA_TACTICS, GorillaTacticsAbility
+	dbw STEELY_SPIRIT, SteelySpiritAbility
 	dbw -1, -1
 
 DefensiveDamageAbilities:
@@ -1547,17 +1626,25 @@ SwarmAbility:
 	ld b, BUG
 PinchAbility:
 ; 150% damage if the user is in a pinch (1/3HP or less) for given type
+	push bc
+	call CheckPinch
+	pop bc
+	jr z, TypeDependentAbility
+	ret
+
+SteelySpiritAbility:
+	ld b, STEEL
+TypeDependentAbility:
+; 150% damage if move type matches given type in b
 	ld a, BATTLE_VARS_MOVE_TYPE
 	call GetBattleVar
 	cp b
-	ret nz
-	call CheckPinch
 	ret nz
 	ln a, 3, 2 ; x1.5
 	jmp MultiplyAndDivide
 
 RivalryAbility:
-; 100% damage if either mon is genderless, 125% if same gender, 75% if opposite gender
+; 100% damage if either mon is genderless, 125% if same gender, 75% if opposite
 	farcall CheckOppositeGender
 	ret c
 	ln a, 5, 4 ; x1.25
@@ -1577,7 +1664,7 @@ SheerForceAbility:
 AnalyticAbility:
 ; 130% damage if opponent went first
 	farcall GetFutureSightUser
-	jr nc, .future_sight
+	ret nc
 	ld a, [wEnemyGoesFirst] ; 0 = player goes first
 	ld b, a
 	ldh a, [hBattleTurn] ; 0 = player's turn
@@ -1614,6 +1701,7 @@ MegaLauncherAbility:
 	ln b, 3, 2 ; x1.5
 	jr MoveBoostAbility
 
+INCLUDE "data/moves/bullet_moves.asm"
 INCLUDE "data/moves/launcher_moves.asm"
 
 IronFistAbility:
@@ -1819,17 +1907,18 @@ _GetOpponentAbilityAfterMoldBreaker::
 	call GetTrueUserAbility
 	cp MOLD_BREAKER
 	ld a, b
-	jr nz, .end
+	jr nz, .done
 	push hl
 	push bc
 	ld hl, MoldBreakerSuppressedAbilities
 	call IsInByteArray
 	pop bc
 	pop hl
-	ld a, b
-	jr nc, .end
-	xor a ; ld a, NO_ABILITY
-.end
+	; a = carry ? NO_ABILITY (0) : b
+	ccf
+	sbc a
+	and b
+.done
 	pop bc
 	pop de
 	ret
@@ -1889,11 +1978,11 @@ RunPostBattleAbilities::
 	ld [wCurPartyMon], a
 
 	ld a, MON_SPECIES
-	call GetPartyParamLocation
-	ld c, [hl]
+	call GetPartyParamLocationAndValue
+	ld c, a
 	ld a, MON_IS_EGG
-	call GetPartyParamLocation
-	bit MON_IS_EGG_F, [hl]
+	call GetPartyParamLocationAndValue
+	bit MON_IS_EGG_F, a
 	jr nz, .loop
 	assert MON_PERSONALITY == MON_IS_EGG - 1
 	dec hl
@@ -1902,67 +1991,107 @@ RunPostBattleAbilities::
 	ld a, b
 	cp NATURAL_CURE
 	jr z, .natural_cure
-	cp PICKUP
-	call z, .Pickup
+	call .HoneyOrPickup
 	jr .loop
 
 .natural_cure
 	; Heal status
 	ld a, MON_STATUS
-	call GetPartyParamLocation
+	call GetPartyParamLocationAndValue
 	xor a
 	ld [hl], a
 	jr .loop
 
-.Pickup:
+.HoneyOrPickup:
+	; These abilities are ignored if we already hold an item.
 	ld a, MON_ITEM
-	call GetPartyParamLocation
-	ld a, [hl]
+	call GetPartyParamLocationAndValue
 	and a
 	ret nz
 
-	call Random
-	cp 1 + (10 percent)
-	ret nc
+	ld a, b
+	cp PICKUP
+	jr z, .Pickup
+	cp HONEY_GATHER
+	ret nz
 
-	call DisableAnimations
+	; Honey Gather gives a (Level + 9 / 2) chance floored to nearest 5%.
+	; 5% at 1-10, 10% at 11-20, etc up to 50% at 91-100.
+
+	; Get a random value between 1-20.
+	ld a, 20
+	call BattleRandomRange
+	inc a ; BattleRandomRange returns 0-19.
+	ld c, a
+
+	; Get battler level.
+	ld a, MON_LEVEL
+	call GetPartyParamLocationAndValue
+	add 9
+
+	; If level + 9 / random(1-20) is 10+, we passed the check.
+	call SimpleDivide
+	ld a, b
+	cp 11
+	ret c
+
+	; We got honey.
+	lb bc, HONEY_GATHER, SWEET_HONEY
+	jr .GotItemAfterBattle
+
+.Pickup:
+	ld a, 10
+	call BattleRandomRange
+	and a
+	ret nz
 
 	ld a, MON_LEVEL
-	call GetPartyParamLocation
-	ld a, [hl]
+	call GetPartyParamLocationAndValue
 	call GetRandomPickupItem
-	ld b, a
+	ld c, a
+	ld b, PICKUP ; ability to display slideout for
+	; fallthrough
+.GotItemAfterBattle:
 	ld a, MON_ITEM
-	call GetPartyParamLocation
-	ld a, b
+	call GetPartyParamLocationAndValue
+	ld a, c
 	ld [hl], a
-	push bc
 	push de
+	push bc
 	ld [wNamedObjectIndex], a
 	call GetItemName
 	ld hl, wStringBuffer1
 	ld de, wStringBuffer2
 	ld bc, ITEM_NAME_LENGTH
 	rst CopyBytes
-	pop de
 	pop bc
-	push bc
+	pop de
 	push de
+	push bc
 	ld a, MON_SPECIES
-	call GetPartyParamLocation
-	ld a, [hl]
-	ld [wNamedObjectIndex], a
+	call GetPartyParamLocationAndValue
+	ld bc, MON_FORM - MON_SPECIES
+	add hl, bc
+	ld b, [hl]
+	ld hl, wNamedObjectIndex
+	ld [hli], a
+	ld [hl], b
 	call GetPokemonName
 	ld hl, wStringBuffer1
 	ld de, wBattleMonNickname
 	ld bc, MON_NAME_LENGTH
 	rst CopyBytes
-	ld b, PICKUP
+
+	call DisableAnimations
+
+	; This retrieves the relevant ability in question in b.
+	pop bc
+	push bc
 	call PerformAbilityGFX
 	ld hl, BattleText_PickedUpItem
 	call StdBattleTextbox
-	pop de
 	pop bc
+	pop de
 	jmp EnableAnimations
 
 GetRandomPickupItem::

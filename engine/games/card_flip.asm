@@ -1,6 +1,6 @@
-CARDFLIP_LIGHT_OFF EQU $f3
-CARDFLIP_LIGHT_ON  EQU $f4
-CARDFLIP_DECK_SIZE EQU 4 * 6
+DEF CARDFLIP_LIGHT_OFF EQU $f3
+DEF CARDFLIP_LIGHT_ON  EQU $f4
+DEF CARDFLIP_DECK_SIZE EQU 4 * 6
 
 _CardFlip:
 	ld hl, wOptions1
@@ -284,9 +284,9 @@ _CardFlip:
 	call CardFlip_UpdateCoinBalanceDisplay
 	call YesNoBox
 	jmp c, .Increment
-	ld a, [wCardFlipNumCardsPlayed]
-	inc a
-	ld [wCardFlipNumCardsPlayed], a
+	ld hl, wCardFlipNumCardsPlayed
+	inc [hl]
+	ld a, [hl]
 	cp 12
 	jr c, .KeepTheCurrentDeck
 	call CardFlip_InitTilemap
@@ -321,32 +321,14 @@ _CardFlip:
 	ret
 
 CardFlip_ShuffleDeck:
-	ld hl, wDeck
-	ld bc, CARDFLIP_DECK_SIZE
-	xor a
-	rst ByteFill
-	ld de, wDeck
-	ld c, CARDFLIP_DECK_SIZE - 1
-.loop
-	call Random
-	and $1f
-	cp CARDFLIP_DECK_SIZE
-	jr nc, .loop
-	ld l, a
-	ld h, $0
-	add hl, de
-	ld a, [hl]
-	and a
-	jr nz, .loop
-	ld [hl], c
-	dec c
-	jr nz, .loop
 	xor a
 	ld [wCardFlipNumCardsPlayed], a
 	ld hl, wDiscardPile
 	ld bc, CARDFLIP_DECK_SIZE
 	rst ByteFill
-	ret
+	ld hl, wDeck
+	ld c, CARDFLIP_DECK_SIZE
+	farjp ShuffleRange
 
 CollapseCursorPosition:
 	ld hl, 0
@@ -435,7 +417,7 @@ CardFlip_DisplayCardFaceUp:
 	pop hl
 
 	; Set the attributes
-	ld de, wAttrMap - wTileMap
+	ld de, wAttrmap - wTilemap
 	add hl, de
 	ld a, [wCardFlipFaceUpCard]
 	and 3
@@ -845,8 +827,8 @@ CardFlip_CheckWinCondition:
 
 .Oddish:
 	ld a, [wCardFlipFaceUpCard]
-	and $3
-	cp $3
+	or ~$3
+	inc a
 	jmp nz, .Lose
 	; fallthrough
 
@@ -1257,14 +1239,14 @@ CardFlip_UpdateCursorOAM:
 	jmp CardFlip_CopyOAM
 
 .OAMData:
-cardflip_cursor: MACRO
-if _NARG >= 5
-	dbpixel \1, \2, \3, \4
-	dw \5
-else
-	dbpixel \1, \2
-	dw \3
-endc
+MACRO cardflip_cursor
+	if _NARG >= 5
+		dbpixel \1, \2, \3, \4
+		dw \5
+	else
+		dbpixel \1, \2
+		dw \3
+	endc
 ENDM
 
 	cardflip_cursor 11,  2,       .Impossible
@@ -1466,32 +1448,32 @@ ENDM
 	dsprite   1, 0,   1, 0, $00, $0 | X_FLIP | Y_FLIP | PRIORITY
 
 CardFlip_InitAttrPals:
-	hlcoord 0, 0, wAttrMap
+	hlcoord 0, 0, wAttrmap
 	ld bc, SCREEN_HEIGHT * SCREEN_WIDTH
 	xor a
 	rst ByteFill
 
-	hlcoord 12, 1, wAttrMap
+	hlcoord 12, 1, wAttrmap
 	lb bc, 2, 2
 	ld a, $1
 	call FillBoxWithByte
 
-	hlcoord 14, 1, wAttrMap
+	hlcoord 14, 1, wAttrmap
 	lb bc, 2, 2
 	ld a, $2
 	call FillBoxWithByte
 
-	hlcoord 16, 1, wAttrMap
+	hlcoord 16, 1, wAttrmap
 	lb bc, 2, 2
 	ld a, $3
 	call FillBoxWithByte
 
-	hlcoord 18, 1, wAttrMap
+	hlcoord 18, 1, wAttrmap
 	lb bc, 2, 2
 	ld a, $4
 	call FillBoxWithByte
 
-	hlcoord 9, 0, wAttrMap
+	hlcoord 9, 0, wAttrmap
 	lb bc, 12, 1
 	ld a, $1
 	call FillBoxWithByte

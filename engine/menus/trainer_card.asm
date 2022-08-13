@@ -1,5 +1,3 @@
-TRAINERCARD_BORDERGFX_START EQU $f4
-
 TrainerCard:
 	ld a, [wVramState]
 	push af
@@ -41,7 +39,7 @@ TrainerCard:
 	farcall GetCardPic
 
 	ld hl, CardBorderGFX
-	ld de, vTiles1 tile (TRAINERCARD_BORDERGFX_START - $80)
+	ld de, vTiles0 tile ("┌" - 4)
 	lb bc, BANK(CardBorderGFX), 12
 	call DecompressRequest2bpp
 
@@ -238,7 +236,7 @@ TrainerCard_LoadHeaderGFX:
 TrainerCard_PrintBorder:
 	hlcoord 0, 0
 
-	ld a, TRAINERCARD_BORDERGFX_START
+	ld a, "┌"
 	ld [hli], a
 	ld e, SCREEN_WIDTH - 2
 	inc a ; top border
@@ -338,11 +336,13 @@ TrainerCard_PrintTopHalfOfCard:
 	jmp PrintNum
 
 .Top_Headings:
-	db "┐Name/<LNBRK>"
-	db "┐<ID>№.<LNBRK>"
-	db "│└└└└└└└└└└└┘<LNBRK>"
-	db "<LNBRK>"
-	db " Money@"
+	db     "┌" - 4, "Name/"
+	next1  "┌" - 4, "<ID>№."
+	next1  "┌" - 3
+	ds 11, "┌" - 2
+	db     "┌" - 1
+	next1  ""
+	next1  " Money@"
 
 TrainerCardSetup_ClearBottomHalf:
 	hlcoord 1, 10
@@ -354,13 +354,20 @@ TrainerCard_Page1_PrintDexCaught_GameTime:
 	ld de, .Dex_PlayTime_BP
 	rst PlaceString
 
-	ld hl, wPokedexCaught
-	ld b, wEndPokedexCaught - wPokedexCaught
-	call CountSetBits
-	ld de, wNumSetBits
+	hlcoord 18, 16
+	ld [hl], "▶"
+
+	ldh a, [hBGMapMode]
+	push af
+	xor a
+	ldh [hBGMapMode], a
+	farcall Pokedex_CountSeenOwn
+	ld de, wTempDexOwn
 	hlcoord 15, 10
-	lb bc, 1, 3
+	lb bc, 2, 3
 	call PrintNum
+	pop af
+	ldh [hBGMapMode], a
 
 	ld de, wBattlePoints
 	hlcoord 13, 14
@@ -400,10 +407,11 @@ TrainerCard_Page1_PrintDexCaught_GameTime:
 	jr .star_loop
 
 .Dex_PlayTime_BP:
-	db   "#dex"
+	text "#dex"
 	next "Play Time"
 	next "Battle Pts"
-	next "          Badges▶@"
+	next "          Badges"
+	done
 
 TrainerCard_Page1_PrintGameTime:
 	hlcoord 11, 12

@@ -1,4 +1,4 @@
-BTMON_SIZE EQU 9 ; species + personality extspecies/gender/form + item + 4 moves + DV index + personality ability/nature
+DEF BTMON_SIZE EQU 9 ; species + personality extspecies/gender/form + item + 4 moves + DV index + personality ability/nature
 
 INCLUDE "data/battle_tower/classes.asm"
 INCLUDE "data/battle_tower/tiers.asm"
@@ -73,7 +73,7 @@ NewRentalTeam:
 	; Now, shuffle the tier composition as to not reveal what tiers each mon is.
 	ld c, PARTY_LENGTH
 	pop hl
-	call ShuffleTierSelections
+	call Shuffle16
 
 	; Group composition complete. Now generate the actual sets.
 .generate_team
@@ -407,35 +407,21 @@ BT_AppendOTMon:
 	rst AddNTimes
 
 	; Now we can actually start adding data.
-	ld b, [hl]
-	ld a, b
+	ld a, [hli]
 	ld [wNamedObjectIndex], a ; for later nickname setup
+	ld a, [hld]
+	ld [wNamedObjectIndex+1], a
 	push hl
 
-	; Add first species byte.
-	ld hl, wOTPartySpecies
-	ld a, [wOTPartyCount]
-	push af
-	add l
-	ld l, a
-	adc h
-	sub l
-	ld h, a
-	ld [hl], b
-	pop af
-
-	; Also append terminator
-	inc hl
-	ld [hl], -1
-
 	; Set de to the relevant partymon struct.
+	ld a, [wOTPartyCount]
 	ld hl, wOTPartyMon1
 	call GetPartyLocation
 	ld d, h
 	ld e, l
 	pop hl
 
-	; Add second species byte
+	; Add species byte
 	ld bc, 1
 	ld a, MON_SPECIES
 	call .Copy
@@ -551,9 +537,8 @@ BT_AppendOTMon:
 	rst CopyBytes
 
 	; All done, now we just have to increment the party counter
-	ld a, [wOTPartyCount]
-	inc a
-	ld [wOTPartyCount], a
+	ld hl, wOTPartyCount
+	inc [hl]
 	pop bc
 
 	; Overwrite c with actual set index, assuming it was -1 previously.
@@ -622,10 +607,11 @@ BT_GetTierTable:
 	jr nz, .add_loop
 
 	; Now shuffle the team.
-	ld c, BATTLETOWER_PARTY_LENGTH
 	ld hl, wBT_OTMonParty
+	ld c, BATTLETOWER_PARTY_LENGTH
 	; fallthrough
-ShuffleTierSelections:
+
+Shuffle16:
 ; Shuffles 16bit array in hl of length c.
 .shuffle_loop
 	; This is intentional. We iterate one less than the amount of mons.
@@ -647,20 +633,19 @@ ShuffleTierSelections:
 	pop bc
 	add hl, bc
 	add hl, bc
-	call .SwapByte
+	ld a, [de]
+	ld b, [hl]
+	ld [hli], a
+	ld a, b
+	ld [de], a
 	inc de
-	inc hl
-	call .SwapByte
-	pop hl
-	jr .shuffle_loop
-
-.SwapByte:
 	ld a, [de]
 	ld b, [hl]
 	ld [hl], a
 	ld a, b
 	ld [de], a
-	ret
+	pop hl
+	jr .shuffle_loop
 
 BT_GetPointsForTrainer:
 ; Returns BP reward that the given trainer in a gives from the table below.

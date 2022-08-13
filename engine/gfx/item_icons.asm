@@ -41,7 +41,7 @@ _UpdateKeyItemIcon:
 LoadApricornIconForOverworld:
 	ld hl, ApricornIcon
 	lb bc, BANK(ApricornIcon), 9
-	ld de, vTiles1 tile $6d
+	ld de, vTiles0 tile "▲"
 	jmp DecompressRequest2bpp
 
 LoadKeyItemIconForOverworld::
@@ -62,7 +62,7 @@ _DecompressItemIconForOverworld:
 	call FarDecompressWRA6InB
 	call WhiteOutDecompressedItemIconCorners
 	pop bc
-	ld hl, vTiles1 tile $6d
+	ld hl, vTiles0 tile "▲"
 	ld de, wDecompressScratch
 	jmp Request2bppInWRA6
 
@@ -134,7 +134,7 @@ WhiteOutDecompressedItemIconCorners:
 
 PrintOverworldItemIcon:
 	call SetPalettes
-	ld a, $ed
+	ld a, "▲"
 	hlcoord 16, 13
 	ld [hli], a
 	inc a

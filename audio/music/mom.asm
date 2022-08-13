@@ -29,7 +29,7 @@ Music_Mom_branch_f6c0e:
 	note E_, 4
 	note A#, 2
 	note B_, 2
-	loopchannel 0, Music_Mom_branch_f6c0e
+	jumpchannel Music_Mom_branch_f6c0e
 
 Music_Mom_Ch3:
 	stereopanning $f0
@@ -74,7 +74,7 @@ Music_Mom_branch_f6c2e:
 	note C#, 4
 	note D_, 2
 	note __, 2
-	loopchannel 0, Music_Mom_branch_f6c2e
+	jumpchannel Music_Mom_branch_f6c2e
 
 Music_Mom_Ch4:
 	togglenoise $3
@@ -105,4 +105,4 @@ Music_Mom_branch_f6c56:
 	note D_, 2
 	note D#, 1
 	note __, 1
-	loopchannel 0, Music_Mom_branch_f6c56
+	jumpchannel Music_Mom_branch_f6c56

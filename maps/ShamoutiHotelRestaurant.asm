@@ -28,13 +28,13 @@ ShamoutiHotelRestaurantChallengeScript:
 	applyonemovement PLAYER, step_up
 	opentext
 	checkflag ENGINE_SHAMOUTI_RESTAURANT_CHALLENGE
-	iftrue .AlreadyAte
+	iftruefwd .AlreadyAte
 	writetext .GreetingText
 	special PlaceMoneyTopRight
 	yesorno
-	iffalse .NeverMind
+	iffalsefwd .NeverMind
 	checkmoney $0, 5000
-	ifequal $2, .NotEnoughMoney
+	ifequalfwd $2, .NotEnoughMoney
 	setflag ENGINE_SHAMOUTI_RESTAURANT_CHALLENGE
 	waitsfx
 	playsound SFX_TRANSACTION
@@ -105,9 +105,9 @@ ShamoutiHotelRestaurantLeavingTrigger1:
 	opentext
 	writetext .LeavingText
 	yesorno
-	iffalse .Staying
+	iffalsefwd .Staying
 	writetext .GoodbyeText
-	sjump ShamoutiHotelRestaurantLeaveScript
+	sjumpfwd ShamoutiHotelRestaurantLeaveScript
 
 .Staying:
 	writetext ShamoutiHotelRestaurantReceptionistText

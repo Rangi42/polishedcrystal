@@ -19,7 +19,7 @@ Route33_MapScriptHeader:
 
 Route33RainScript:
 	special Special_GetOvercastIndex
-	ifequal AZALEA_OVERCAST, .rain
+	ifequalfwd AZALEA_OVERCAST, .rain
 	changemapblocks Route33_BlockData
 	endcallback
 
@@ -34,25 +34,25 @@ TrainerHikerAnthony:
 	loadvar VAR_CALLERID, PHONE_HIKER_ANTHONY
 	opentext
 	checkflag ENGINE_ANTHONY_READY_FOR_REMATCH
-	iftrue .Rematch
+	iftruefwd .Rematch
 	checkflag ENGINE_DUNSPARCE_SWARM
 	iftrue_jumpopenedtext HikerAnthonyDunsparceText
 	checkcellnum PHONE_HIKER_ANTHONY
-	iftrue .NumberAccepted
+	iftruefwd .NumberAccepted
 	checkevent EVENT_ANTHONY_ASKED_FOR_PHONE_NUMBER
-	iftrue .AskAgain
+	iftruefwd .AskAgain
 	writetext HikerAnthony1AfterText
 	promptbutton
 	setevent EVENT_ANTHONY_ASKED_FOR_PHONE_NUMBER
 	callstd asknumber1m
-	sjump .AskForPhoneNumber
+	sjumpfwd .AskForPhoneNumber
 
 .AskAgain:
 	callstd asknumber2m
 .AskForPhoneNumber:
 	askforphonenumber PHONE_HIKER_ANTHONY
-	ifequal $1, .PhoneFull
-	ifequal $2, .NumberDeclined
+	ifequalfwd $1, .PhoneFull
+	ifequalfwd $2, .NumberDeclined
 	gettrainername HIKER, ANTHONY1, $0
 	callstd registerednumberm
 	jumpstd numberacceptedm
@@ -61,23 +61,23 @@ TrainerHikerAnthony:
 	callstd rematchm
 	winlosstext HikerAnthony1BeatenText, 0
 	readmem wAnthonyFightCount
-	ifequal 4, .Fight4
-	ifequal 3, .Fight3
-	ifequal 2, .Fight2
-	ifequal 1, .Fight1
-	ifequal 0, .LoadFight0
+	ifequalfwd 4, .Fight4
+	ifequalfwd 3, .Fight3
+	ifequalfwd 2, .Fight2
+	ifequalfwd 1, .Fight1
+	ifequalfwd 0, .LoadFight0
 .Fight4:
 	checkevent EVENT_RESTORED_POWER_TO_KANTO
-	iftrue .LoadFight4
+	iftruefwd .LoadFight4
 .Fight3:
 	checkevent EVENT_BEAT_ELITE_FOUR
-	iftrue .LoadFight3
+	iftruefwd .LoadFight3
 .Fight2:
 	checkevent EVENT_CLEARED_RADIO_TOWER
-	iftrue .LoadFight2
+	iftruefwd .LoadFight2
 .Fight1:
 	checkflag ENGINE_FLYPOINT_OLIVINE
-	iftrue .LoadFight1
+	iftruefwd .LoadFight1
 .LoadFight0:
 	loadtrainer HIKER, ANTHONY1
 	startbattle

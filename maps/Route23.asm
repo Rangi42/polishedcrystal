@@ -46,6 +46,7 @@ Route23_MapScriptHeader:
 	object_event 13, 70, SPRITE_OFFICER_F, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, Route23MineralBadgeOfficerScript, -1
 	object_event 15, 55, SPRITE_OFFICER_F, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, Route23GlacierBadgeOfficerScript, -1
 	object_event 10, 47, SPRITE_OFFICER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, Route23RisingBadgeOfficerScript, -1
+	object_event  8, 32, SPRITE_OFFICER_F, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, Route23HealOfficerScript, -1
 
 	object_const_def
 	const ROUTE23_OFFICER1
@@ -59,6 +60,36 @@ Route23_MapScriptHeader:
 
 VictoryRoadSignText:
 	text "Victory Road"
+	done
+
+Route23HealOfficerScript:
+	showtextfaceplayer .IntroText
+	special Special_FadeBlackQuickly
+	special Special_ReloadSpritesNoPalettes
+	playmusic MUSIC_HEAL
+	special HealParty
+	pause 60
+	special Special_FadeInQuickly
+	special RestartMapMusic
+	jumpthistext
+
+	text "The #mon League"
+	line "awaits you!"
+
+	para "Just don't give up,"
+	line "OK?"
+	done
+
+.IntroText:
+	text "You need to be"
+	line "ready to face"
+
+	para "anything on"
+	line "Victory Road."
+
+	para "Let me give you a"
+	line "bit of encourage-"
+	cont "ment!"
 	done
 
 Route23ZephyrBadgeOfficerScript:
@@ -128,7 +159,7 @@ Route23FogBadgeTriggerScript:
 	checkscene
 	ifgreater $3, Route23OfficerHaveBadgeScript
 	setscene $4
-	sjump Route23OfficerHaveBadgeScript
+	sjumpfwd Route23OfficerHaveBadgeScript
 
 .FogBadgeText:
 	db "Fog Badge@"
@@ -146,7 +177,7 @@ Route23StormBadgeTriggerScript:
 	checkscene
 	ifgreater $4, Route23OfficerHaveBadgeScript
 	setscene $5
-	sjump Route23OfficerHaveBadgeScript
+	sjumpfwd Route23OfficerHaveBadgeScript
 
 .StormBadgeText:
 	db "Storm Badge@"
@@ -164,7 +195,7 @@ Route23MineralBadgeTriggerScript:
 	checkscene
 	ifgreater $5, Route23OfficerHaveBadgeScript
 	setscene $6
-	sjump Route23OfficerHaveBadgeScript
+	sjumpfwd Route23OfficerHaveBadgeScript
 
 .MineralBadgeText:
 	db "Mineral Badge@"
@@ -182,7 +213,7 @@ Route23GlacierBadgeTriggerScript:
 	checkscene
 	ifgreater $6, Route23OfficerHaveBadgeScript
 	setscene $7
-	sjump Route23OfficerHaveBadgeScript
+	sjumpfwd Route23OfficerHaveBadgeScript
 
 .GlacierBadgeText:
 	db "Glacier Badge@"
@@ -200,7 +231,7 @@ Route23RisingBadgeTriggerScript:
 	checkscene
 	ifgreater $7, Route23OfficerHaveBadgeScript
 	setscene $8
-	sjump Route23OfficerHaveBadgeScript
+	sjumpfwd Route23OfficerHaveBadgeScript
 
 .RisingBadgeText:
 	db "Rising Badge@"

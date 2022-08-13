@@ -25,7 +25,7 @@ QuietCaveB3F_MapScriptHeader:
 QuietCaveB3FMarleyScript:
 	faceplayer
 	checkevent EVENT_BEAT_MARLEY
-	iftrue .Beaten
+	iftruefwd .Beaten
 	opentext
 	writetext .ChallengeText
 	yesorno

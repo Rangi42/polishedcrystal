@@ -56,13 +56,15 @@ if !DEF(DEBUG)
 	waitbutton
 endc
 	closetext
-	sjump MrPokemonsHouse_OakScript
+	sjumpfwd MrPokemonsHouse_OakScript
 
 MrPokemonsHouse_MrPokemonScript:
 	faceplayer
 	opentext
 	checkkeyitem RED_SCALE
-	iftrue .RedScale
+	iftruefwd .RedScale
+	checkitem ODD_SOUVENIR
+	iftrue_jumpopenedtext MrPokemonText_OddSouvenir
 	checkevent EVENT_GAVE_MYSTERY_EGG_TO_ELM
 	iftrue_jumpopenedtext MrPokemonText_AlwaysNewDiscoveries
 	jumpopenedtext MrPokemonText_ImDependingOnYou
@@ -76,9 +78,9 @@ MrPokemonsHouse_MrPokemonScript:
 	writetext MrPokemonText_GotShinyDitto
 	playsound SFX_KEY_ITEM
 	waitsfx
-	ifequal 1, .in_party
+	ifequalfwd 1, .in_party
 	special Special_CurBoxFullCheck
-	iffalse .BoxNotFull
+	iffalsefwd .BoxNotFull
 	farwritetext _CurBoxFullText
 .BoxNotFull
 	special GetCurBoxName
@@ -135,9 +137,9 @@ MrPokemonsHouse_OakScript:
 	specialphonecall SPECIALCALL_ROBBED
 	clearevent EVENT_COP_IN_ELMS_LAB
 	checkevent EVENT_GOT_TOTODILE_FROM_ELM
-	iftrue .RivalTakesChikorita
+	iftruefwd .RivalTakesChikorita
 	checkevent EVENT_GOT_CHIKORITA_FROM_ELM
-	iftrue .RivalTakesCyndaquil
+	iftruefwd .RivalTakesCyndaquil
 	setevent EVENT_TOTODILE_POKEBALL_IN_ELMS_LAB
 	end
 
@@ -153,7 +155,7 @@ MrPokemonsHouse_CabinetScript:
 	opentext
 	writetext MrPokemonsHouse_CabinetText
 	checkevent EVENT_TRADED_RED_SCALE
-	iffalse .NoRedScale
+	iffalsefwd .NoRedScale
 	promptbutton
 	writetext MrPokemonsHouse_RedScaleCabinetText
 .NoRedScale
@@ -234,6 +236,27 @@ MrPokemonsHouse_MrPokemonHealText:
 	para "Here. Your #mon"
 	line "should have some"
 	cont "rest."
+	done
+
+MrPokemonText_OddSouvenir:
+	text "Oh! That souvenir!"
+
+	para "I got one of those"
+	line "on my trip to the"
+	cont "Orange Islands."
+
+	para "I saw some oddly-"
+	line "formed #mon"
+	cont "there too!"
+
+	para "Hmm… I wonder…"
+
+	para "Is there a conn-"
+	line "ection between"
+
+	para "that souvenir and"
+	line "those unusual"
+	cont "forms of #mon?"
 	done
 
 MrPokemonText_ImDependingOnYou:
@@ -375,7 +398,7 @@ MrPokemonText_SentToPC:
 MrPokemonText_PartyAndBoxFull:
 	text "You don't have any"
 	line "room for this,"
-	cont "even in your box!"
+	cont "even in your Box!"
 	done
 
 MrPokemonText_Disappointed:

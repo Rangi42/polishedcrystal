@@ -35,7 +35,7 @@ RuinsofAlphResearchCenterTrigger0:
 
 RuinsOfAlphResearchCenterScientistCallback:
 	checkscene
-	ifequal $1, .ShowScientist
+	ifequalfwd $1, .ShowScientist
 	endcallback
 
 .ShowScientist:
@@ -73,9 +73,9 @@ RuinsOfAlphResearchCenterScientist3Script:
 	faceplayer
 	opentext
 	checkevent EVENT_RUINS_OF_ALPH_CLIMAX_DONE
-	iftrue .Conclusion
+	iftruefwd .Conclusion
 	readvar VAR_UNOWNCOUNT
-	ifequal NUM_UNOWN, .PrinterAvailable
+	ifequalfwd NUM_UNOWN, .PrinterAvailable
 	jumpopenedtext RuinsOfAlphResearchCenterScientist3Text
 
 .Conclusion:
@@ -107,11 +107,11 @@ RuinsOfAlphResearchCenterScientist3Script:
 	showemote EMOTE_SHOCK, RUINSOFALPHRESEARCHCENTER_SCIENTIST2, 15
 	showtext RuinsofAlphResearchCenterScientistShockedText
 	readvar VAR_FACING
-	ifequal UP, .GoAround
+	ifequalfwd UP, .GoAround
 	follow RUINSOFALPHRESEARCHCENTER_SCIENTIST3, PLAYER
 	applymovement RUINSOFALPHRESEARCHCENTER_SCIENTIST3, RuinsofAlphResearchCenterLeave2MovementData
 	stopfollow
-	sjump .Continue
+	sjumpfwd .Continue
 .GoAround:
 	applymovement RUINSOFALPHRESEARCHCENTER_SCIENTIST3, RuinsofAlphResearchCenterScientistStepAsideMovementData
 	follow RUINSOFALPHRESEARCHCENTER_SCIENTIST3, PLAYER
@@ -146,11 +146,11 @@ RuinsOfAlphResearchCenterScientist1Script:
 	faceplayer
 	opentext
 	readvar VAR_UNOWNCOUNT
-	ifequal NUM_UNOWN, .GotAllUnown
+	ifequalfwd NUM_UNOWN, .GotAllUnown
 	checkflag ENGINE_UNOWN_DEX
-	iftrue .GotUnownDex
+	iftruefwd .GotUnownDex
 	checkevent EVENT_MADE_UNOWN_APPEAR_IN_RUINS
-	iftrue .UnownAppeared
+	iftruefwd .UnownAppeared
 	jumpopenedtext RuinsOfAlphResearchCenterScientist1Text
 
 .UnownAppeared:
@@ -172,7 +172,7 @@ RuinsOfAlphResearchCenterScientist2Script:
 	readvar VAR_UNOWNCOUNT
 	ifgreater 3, .GotAllUnown
 	checkevent EVENT_MADE_UNOWN_APPEAR_IN_RUINS
-	iftrue .UnownAppeared
+	iftruefwd .UnownAppeared
 	jumpopenedtext RuinsOfAlphResearchCenterScientist2Text
 
 .UnownAppeared:
@@ -180,7 +180,7 @@ RuinsOfAlphResearchCenterScientist2Script:
 
 .GotAllUnown:
 	readvar VAR_UNOWNCOUNT
-	ifequal NUM_UNOWN, .ResearchComplete
+	ifequalfwd NUM_UNOWN, .ResearchComplete
 	readvar VAR_UNOWNCOUNT
 	ifgreater 10, .ResearchOngoing
 	jumpopenedtext RuinsOfAlphResearchCenterScientist2Text_GotAllUnown
@@ -198,9 +198,9 @@ RuinsOfAlphResearchCenterScientist2Script:
 MapRuinsofAlphResearchCenterSignpost1Script:
 	opentext
 	checkevent EVENT_RUINS_OF_ALPH_RESEARCH_CENTER_SCIENTIST
-	iffalse .SkipChecking
+	iffalsefwd .SkipChecking
 	checkevent EVENT_DECO_UNOWN_DOLL
-	iftrue .SkipChecking
+	iftruefwd .SkipChecking
 	jumpopenedtext RuinsOfAlphResearchCenterComputerText
 
 .SkipChecking:
@@ -426,6 +426,7 @@ RuinsOfAlphResearchCenterComputerText_GotAllUnown:
 
 	para "A total of "
 	text_decimal hScriptVar, 1, 2
+	text ""
 	line "kinds found."
 	done
 

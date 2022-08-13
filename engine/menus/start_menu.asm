@@ -340,6 +340,9 @@ StartMenu_Pokegear:
 	call FadeToMenu
 	farcall InitPokegearPalettes
 	farcall PokeGear
+	ld a, [wDefaultSpawnpoint]
+	and a
+	jr nz, _ExitStartMenuAndDoScript
 	call CloseSubmenu
 	call ApplyTilemapInVBlank
 	call SetPalettes
@@ -352,12 +355,12 @@ StartMenu_Pack:
 	call Pack
 	ld a, [wPackUsedItem]
 	and a
-	jr nz, .used_item
+	jr nz, _ExitStartMenuAndDoScript
 	call CloseSubmenu
 	xor a
 	ret
 
-.used_item
+_ExitStartMenuAndDoScript:
 	call ExitAllMenus
 	ld a, 4
 	ret

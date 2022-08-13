@@ -1,12 +1,16 @@
 rsreset
-GROTTODATA_WARP     rb
-GROTTODATA_ITEM     rb
-GROTTODATA_MON1     rb
-GROTTODATA_MON2     rb
-GROTTODATA_MON3     rb
-GROTTODATA_MON4     rb
-GROTTODATA_MONLEVEL rb
-GROTTODATA_LENGTH EQU _RS
+DEF GROTTODATA_WARP        rb
+DEF GROTTODATA_ITEM        rb
+DEF GROTTODATA_MONLEVEL    rb
+DEF GROTTODATA_MON1SPECIES rb
+DEF GROTTODATA_MON1FORM    rb
+DEF GROTTODATA_MON2SPECIES rb
+DEF GROTTODATA_MON2FORM    rb
+DEF GROTTODATA_MON3SPECIES rb
+DEF GROTTODATA_MON3FORM    rb
+DEF GROTTODATA_MON4SPECIES rb
+DEF GROTTODATA_MON4FORM    rb
+DEF GROTTODATA_LENGTH EQU _RS
 
 InitializeHiddenGrotto::
 ; store backup warp number
@@ -47,18 +51,20 @@ InitializeHiddenGrotto::
 	eventflagset EVENT_SAW_FIRST_HIDDEN_GROTTO
 	ld hl, HiddenGrottoPokemonIndexes
 	call GetHiddenGrottoTableEntry
-	ld hl, HiddenGrottoData + GROTTODATA_MON1
+	ld hl, HiddenGrottoData + GROTTODATA_MON1SPECIES
 .mon_loop
 	and a
 	jr z, .got_mon
+	inc hl
 	inc hl
 	dec a
 	jr .mon_loop
 .got_mon
 	call GetHiddenGrottoDataMember
-	ld a, [hl]
+	ld a, [hli]
 	ld d, GROTTO_POKEMON
-	ld e, a
+	ld c, a
+	ld b, [hl]
 	jr .StoreContent
 
 .RandomItem:
@@ -73,11 +79,14 @@ InitializeHiddenGrotto::
 	ld d, GROTTO_ITEM
 	ld e, a
 .StoreContent:
+	push bc
 	call GetHiddenGrottoContentPointer
+	pop bc
 	ld a, d ; content type
 	ld [hli], a
-	ld a, e ; content id
-	ld [hl], a
+	ld a, c ; content id
+	ld [hli], a
+	ld [hl], b ; content id + 1
 	ld a, d
 .Done:
 ; return content type
@@ -109,7 +118,7 @@ TryResetHiddenGrottoes:
 	ret nz
 	xor a
 	ld hl, wHiddenGrottoContents
-	ld bc, NUM_HIDDEN_GROTTOES * 2
+	ld bc, NUM_HIDDEN_GROTTOES * 3
 	rst ByteFill
 	ld hl, wDailyFlags4
 	set 5, [hl] ; ENGINE_ALL_HIDDEN_GROTTOES
@@ -126,7 +135,7 @@ GetHiddenGrottoDataMember:
 
 GetHiddenGrottoContentPointer:
 	ld hl, wHiddenGrottoContents
-	ld bc, 2
+	ld bc, 3
 AddCurHiddenGrottoTimes:
 	ld a, [wCurHiddenGrotto]
 	dec a ; since hidden grotto IDs start at 1
@@ -136,8 +145,10 @@ AddCurHiddenGrottoTimes:
 GetHiddenGrottoContents::
 	call GetHiddenGrottoContentPointer
 	inc hl
-	ld a, [hl]
+	ld a, [hli]
+	ld c, a
 	ldh [hScriptVar], a
+	ld b, [hl]
 	ret
 
 GetCurHiddenGrottoLevel::

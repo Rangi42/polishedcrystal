@@ -12,7 +12,7 @@ EusinesHouse_MapScriptHeader:
 	def_bg_events
 
 	def_object_events
-	object_event  2,  3, SPRITE_EUSINE, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, CeladonEusine, EVENT_SET_WHEN_FOUGHT_HO_OH
+	object_event  2,  3, SPRITE_EUSINE, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, CeladonEusine, EVENT_EUSINES_HOUSE_EUSINE
 	object_event  5,  3, SPRITE_GRAMPS, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, EusinesHouseGrampsScript, -1
 
 	object_const_def
@@ -24,44 +24,44 @@ CeladonEusine:
 	writetext CeladonEusineText1
 	promptbutton
 	special SpecialBeastsCheck
-	iftrue .HoOh
+	iftruefwd .HoOh
 	writetext EusineNoBeastsText
 	waitbutton
 	closetext
-	setval RAIKOU
+	setmonval RAIKOU
 	special SpecialMonCheck
-	iftrue .OwnRaikou
+	iftruefwd .OwnRaikou
 	showtext EusineShowsRaikouText
 	refreshscreen
 	pokepic RAIKOU
 	cry RAIKOU
 	waitbutton
 	closepokepic
-	setval RAIKOU
+	setmonval RAIKOU
 	special SpecialSeenMon
 .OwnRaikou
-	setval ENTEI
+	setmonval ENTEI
 	special SpecialMonCheck
-	iftrue .OwnEntei
+	iftruefwd .OwnEntei
 	showtext EusineShowsEnteiText
 	refreshscreen
 	pokepic ENTEI
 	cry ENTEI
 	waitbutton
 	closepokepic
-	setval ENTEI
+	setmonval ENTEI
 	special SpecialSeenMon
 .OwnEntei
-	setval SUICUNE
+	setmonval SUICUNE
 	special SpecialMonCheck
-	iftrue .OwnSuicune
+	iftruefwd .OwnSuicune
 	showtext EusineShowsSuicuneText
 	refreshscreen
 	pokepic SUICUNE
 	cry SUICUNE
 	waitbutton
 	closepokepic
-	setval SUICUNE
+	setmonval SUICUNE
 	special SpecialSeenMon
 .OwnSuicune
 	jumptext EusineQuestHintText
@@ -93,9 +93,11 @@ CeladonEusine:
 	step_end
 
 EusinesHouseGrampsScript:
-	checkevent EVENT_SET_WHEN_FOUGHT_HO_OH
-	iftrue_jumptextfaceplayer EusinesHouseGrampsText2
-	jumptextfaceplayer EusinesHouseGrampsText1
+	checkevent EVENT_EUSINES_HOUSE_EUSINE
+	iffalse_jumptextfaceplayer EusinesHouseGrampsText1
+	checkevent EVENT_TIN_TOWER_ROOF_HO_OH
+	iffalse_jumptextfaceplayer EusinesHouseGrampsText3
+	jumptextfaceplayer EusinesHouseGrampsText2
 
 CeladonEusineText1:
 	text "Eusine: Hi!"
@@ -182,4 +184,14 @@ EusinesHouseGrampsText2:
 	para "I taught him all"
 	line "about the legend-"
 	cont "ary #mon!"
+	done
+
+EusinesHouseGrampsText3:
+	text "My grandson Eusine"
+	line "is on another"
+	cont "adventure."
+
+	para "He left to visit"
+	line "Bell Tower in"
+	cont "Ecruteak City."
 	done

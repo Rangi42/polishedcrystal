@@ -4,9 +4,8 @@
 	db FIRE, FIRE ; type
 	db 3 ; catch rate
 	db 217 ; base exp
-	db ALWAYS_ITEM_2 ; item 1
-	db CHARCOAL ; item 2
-	dn GENDER_UNKNOWN, 15 ; gender ratio, step cycles to hatch
+	db ALWAYS_ITEM_2, CHARCOAL ; held items
+	dn GENDER_UNKNOWN, HATCH_UNKNOWN ; gender ratio, step cycles to hatch
 	INCBIN "gfx/pokemon/entei/front.dimensions"
 if DEF(FAITHFUL)
 	abilities_for ENTEI, PRESSURE, PRESSURE, INNER_FOCUS

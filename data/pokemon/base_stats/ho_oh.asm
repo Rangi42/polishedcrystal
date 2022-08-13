@@ -4,14 +4,13 @@
 	db FIRE, FLYING ; type
 	db 3 ; catch rate
 	db 220 ; base exp
-	db ALWAYS_ITEM_2 ; item 1
-	db SACRED_ASH ; item 2
-	dn GENDER_UNKNOWN, 15 ; gender ratio, step cycles to hatch
+	db ALWAYS_ITEM_2, SACRED_ASH ; held items
+	dn GENDER_UNKNOWN, HATCH_UNKNOWN ; gender ratio, step cycles to hatch
 	dn 7 , 7 ; frontpic dimensions
 if DEF(FAITHFUL)
 	abilities_for HO_OH, PRESSURE, PRESSURE, REGENERATOR
 else
-	abilities_for HO_OH, PRESSURE, CLOUD_NINE, REGENERATOR
+	abilities_for HO_OH, PRESSURE, DROUGHT, REGENERATOR
 endc
 	db GROWTH_SLOW ; growth rate
 	dn EGG_NONE, EGG_NONE ; egg groups

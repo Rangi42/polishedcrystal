@@ -739,6 +739,7 @@ RalphGenericText:
 LizAnswerPhoneText:
 	text "Hello, "
 	text_ram wStringBuffer3
+	text ""
 	line "speaking."
 
 	para "Oh, <PLAYER>."
@@ -748,6 +749,7 @@ LizAnswerPhoneText:
 LizAnswerPhoneDayText:
 	text "Hello, "
 	text_ram wStringBuffer3
+	text ""
 	line "speaking."
 
 	para "Oh, <PLAYER>."
@@ -757,6 +759,7 @@ LizAnswerPhoneDayText:
 LizAnswerPhoneNiteText:
 	text "Hello, "
 	text_ram wStringBuffer3
+	text ""
 	line "speaking."
 
 	para "Oh, <PLAYER>."
@@ -849,6 +852,7 @@ AnthonyGreetText:
 
 	para "This is "
 	text_ram wStringBuffer3
+	text ""
 	line "the Hiker!"
 	done
 
@@ -858,6 +862,7 @@ AnthonyGreetDayText:
 
 	para "This is "
 	text_ram wStringBuffer3
+	text ""
 	line "the Hiker!"
 	done
 
@@ -867,6 +872,7 @@ AnthonyGreetNiteText:
 
 	para "This is "
 	text_ram wStringBuffer3
+	text ""
 	line "the Hiker!"
 	done
 
@@ -1027,6 +1033,7 @@ GinaGenericText:
 IrwinAnswerPhoneText:
 	text "Hello? "
 	text_ram wStringBuffer3
+	text ""
 	line "here…"
 
 	para "Hey, <PLAYER>!"
@@ -1035,6 +1042,7 @@ IrwinAnswerPhoneText:
 IrwinAnswerPhoneDayText:
 	text "Hello? "
 	text_ram wStringBuffer3
+	text ""
 	line "here…"
 
 	para "Wow, <PLAYER>!"
@@ -1043,6 +1051,7 @@ IrwinAnswerPhoneDayText:
 IrwinAnswerPhoneNiteText:
 	text "Hello? "
 	text_ram wStringBuffer3
+	text ""
 	line "here…"
 
 	para "Yippee, <PLAYER>!"
@@ -1554,6 +1563,7 @@ BrentGenericText:
 
 	para "Heh, my "
 	text_ram wStringBuffer4
+	text ""
 	line "is so tough, it"
 
 	para "doesn't need to go"
@@ -1712,6 +1722,7 @@ VanceGenericText:
 
 	para "My "
 	text_ram wStringBuffer4
+	text ""
 	line "looks like it will"
 
 	para "get tough enough"

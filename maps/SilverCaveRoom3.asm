@@ -20,9 +20,9 @@ SilverCaveRoom3_MapScriptHeader:
 SilverCaveRoom3DailyRedRematchCallback:
 	disappear SILVERCAVEROOM3_RED
 	checkevent EVENT_BEAT_RED
-	iftrue .Disappear ; we last beat Red, so Leaf needs to be beaten before Red reappears
+	iftruefwd .Disappear ; we last beat Red, so Leaf needs to be beaten before Red reappears
 	checkflag ENGINE_RED_IN_MOUNT_SILVER
-	iftrue .Disappear
+	iftruefwd .Disappear
 	appear SILVERCAVEROOM3_RED
 .Disappear
 	endcallback
@@ -41,7 +41,7 @@ Red:
 	writetext .Text1
 	waitbutton
 	checkevent EVENT_GOT_MYSTICTICKET_FROM_RED
-	iftrue .AlreadyHaveMysticTicket
+	iftruefwd .AlreadyHaveMysticTicket
 	verbosegivekeyitem MYSTICTICKET
 	setevent EVENT_GOT_MYSTICTICKET_FROM_RED
 .AlreadyHaveMysticTicket
@@ -58,11 +58,11 @@ Red:
 	playmapmusic
 	end
 
-.Text1:
+.Text1: ; text > text
 	text "……"
 	line "……"
 	done
 
-.Text2:
+.Text2: ; text > text
 	text "…"
 	done

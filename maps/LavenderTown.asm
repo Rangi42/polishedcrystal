@@ -52,7 +52,7 @@ LavenderTownExpositionTrigger1:
 	applymovement LAVENDERTOWN_YOUNGSTER1, .ApproachPlayerMovement
 	scall LavenderTownSharedExpositionScript
 	applymovement LAVENDERTOWN_YOUNGSTER1, .GoAroundPlayerMovement
-	sjump LavenderTownFinishExpositionScript
+	sjumpfwd LavenderTownFinishExpositionScript
 
 .ApproachPlayerMovement:
 	big_step_left
@@ -78,7 +78,7 @@ LavenderTownExpositionTrigger2:
 	applymovement LAVENDERTOWN_YOUNGSTER1, .ApproachPlayerMovement
 	scall LavenderTownSharedExpositionScript
 	applymovement LAVENDERTOWN_YOUNGSTER1, .GoAroundPlayerMovement
-	sjump LavenderTownFinishExpositionScript
+	sjumpfwd LavenderTownFinishExpositionScript
 
 .ApproachPlayerMovement:
 	step_down
@@ -104,7 +104,7 @@ LavenderTownExpositionTrigger3:
 	applymovement LAVENDERTOWN_YOUNGSTER1, .ApproachPlayerMovement
 	scall LavenderTownSharedExpositionScript
 	applymovement LAVENDERTOWN_YOUNGSTER1, .GoAroundPlayerMovement
-	sjump LavenderTownFinishExpositionScript
+	sjumpfwd LavenderTownFinishExpositionScript
 
 .ApproachPlayerMovement:
 	step_down

@@ -1,6 +1,6 @@
 Script_BattleWhiteout::
 	callasm BattleBGMap
-	sjump Script_Whiteout
+	sjumpfwd Script_Whiteout
 
 Script_OverworldWhiteout::
 	refreshscreen
@@ -8,19 +8,19 @@ Script_OverworldWhiteout::
 
 Script_Whiteout:
 	callasm LoseMoney
-	iffalse .whiteout_text
+	iffalsefwd .whiteout_text
 	readmem wBattlePlayerAction
-	ifequal BATTLEACTION_FORFEIT, .forfeit_text
+	ifequalfwd BATTLEACTION_FORFEIT, .forfeit_text
 	callasm DetermineWildBattlePanic
-	iffalse .whiteout_wild_text
+	iffalsefwd .whiteout_wild_text
 	farwritetext WhiteoutToTrainerText
-	sjump .text_done
+	sjumpfwd .text_done
 .forfeit_text
 	farwritetext ForfeitToTrainerText
-	sjump .text_done
+	sjumpfwd .text_done
 .whiteout_wild_text
 	farwritetext WhiteoutToWildText
-	sjump .text_done
+	sjumpfwd .text_done
 .whiteout_text
 	farwritetext WhiteoutText
 .text_done
@@ -29,7 +29,7 @@ Script_Whiteout:
 	pause 40
 	special HealPartyEvenForNuzlocke
 	checkflag ENGINE_BUG_CONTEST_TIMER
-	iftrue .bug_contest
+	iftruefwd .bug_contest
 	callasm GetWhiteoutSpawn
 	farscall Script_AbortBugContest
 	special WarpToSpawnPoint
@@ -65,7 +65,7 @@ LoseMoney:
 	ld a, FALSE
 	jr z, .load
 	ld hl, wBadges
-	ld b, 2
+	ld b, wBadgesEnd - wBadges
 	call CountSetBits
 	cp 9
 	jr c, .okay
@@ -154,10 +154,8 @@ GetWhiteoutSpawn:
 	ld a, [wLastSpawnMapNumber]
 	ld e, a
 	farcall IsSpawnPoint
-	ld a, c
-	jr c, .yes
-	xor a ; SPAWN_HOME
-
-.yes
+	; a = carry ? c : SPAWN_HOME (0)
+	sbc a
+	and c
 	ld [wDefaultSpawnpoint], a
 	ret

@@ -4,9 +4,8 @@
 	db PSYCHIC, PSYCHIC ; type
 	db 75 ; catch rate
 	db 165 ; base exp
-	db NO_ITEM ; item 1
-	db NO_ITEM ; item 2
-	dn GENDER_F50, 3 ; gender ratio, step cycles to hatch
+	db NO_ITEM, NO_ITEM ; held items
+	dn GENDER_F50, HATCH_MEDIUM_FAST ; gender ratio, step cycles to hatch
 	INCBIN "gfx/pokemon/hypno/front.dimensions"
 	abilities_for HYPNO, INSOMNIA, FOREWARN, INNER_FOCUS
 	db GROWTH_MEDIUM_FAST ; growth rate

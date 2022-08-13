@@ -1,79 +1,3 @@
-GetVariant:
-	ld a, [wCurPartySpecies]
-	cp PIKACHU
-	jr z, .GetPikachuVariant
-
-; Return CurForm based on Form at hl
-	ld a, [hl]
-	and SPECIESFORM_MASK
-	jr nz, .ok
-
-	ld a, [wCurPartySpecies]
-	cp ARBOK
-	jr nz, .not_kanto_arbok
-; NPC trainers should appear to have Kantonian Arbok without explicitly
-; giving them all a personality, so form 0 becomes 1 (Johto) or 2 (Kanto)
-	push bc
-	push de
-	call RegionCheck
-	ld a, e
-	pop de
-	pop bc
-	and a
-	jr z, .not_kanto_arbok
-.kanto_arbok
-	ld a, ARBOK_KANTO_FORM
-	jr .ok
-.not_kanto_arbok
-	ld a, PLAIN_FORM ; safeguard: form 0 becomes variant 1
-
-.ok
-	ld [wCurForm], a
-	ret
-
-.GetPikachuVariant:
-; Return Pikachu form (1-5) in wCurForm
-; hl-8 is ...MonMove1
-; hl-7 is ...MonMove2
-; hl-6 is ...MonMove3
-; hl-5 is ...MonMove4
-; hl is ...MonForm
-
-	ld a, [hl]
-	and SPECIESFORM_MASK
-	cp PIKACHU_RED_FORM
-	jr nc, .use_form
-
-	push bc
-	ld bc, MON_MOVES - MON_FORM
-	add hl, bc
-	pop bc
-
-	ld a, PIKACHU_SURF_FORM
-	ld [wCurForm], a
-rept NUM_MOVES
-	ld a, [hli]
-	cp SURF
-	ret z
-endr
-
-rept NUM_MOVES
-	dec hl
-endr
-	ld a, PIKACHU_FLY_FORM
-	ld [wCurForm], a
-rept NUM_MOVES
-	ld a, [hli]
-	cp FLY
-	ret z
-endr
-
-.plain
-	ld a, PLAIN_FORM
-.use_form
-	ld [wCurForm], a
-	ret
-
 GetFrontpic:
 	ld a, [wCurPartySpecies]
 	ld [wCurSpecies], a
@@ -84,7 +8,7 @@ GetFrontpic:
 	call _GetFrontpic
 	pop af
 	ldh [rSVBK], a
-	jmp CloseSRAM
+	ret
 
 PrepareFrontpic:
 	ld a, [wCurPartySpecies]
@@ -96,13 +20,7 @@ PrepareFrontpic:
 	call _PrepareFrontpic
 	pop af
 	ldh [rSVBK], a
-	jmp CloseSRAM
-
-GetPreparedFrontpic:
-	ld a, BANK(sScratch)
-	call GetSRAMBank
-	call _GetPreparedFrontpic
-	jmp CloseSRAM
+	ret
 
 FrontpicPredef:
 	ld a, [wCurPartySpecies]
@@ -121,31 +39,46 @@ FrontpicPredef:
 	ldh [rVBK], a
 	pop af
 	ldh [rSVBK], a
-	jmp CloseSRAM
+	ret
 
 _GetFrontpic:
 	call _PrepareFrontpic
-	; fallthrough
-_GetPreparedFrontpic:
-	push hl
-	ld de, sScratch + 1 tiles
+	call GetPaddedFrontpicAddress
 	ld c, 7 * 7
 	ldh a, [hROMBank]
 	ld b, a
+	push hl
 	call Get2bpp
 	pop hl
 	ret
 
 _PrepareFrontpic:
-	ld a, BANK(sScratch)
-	call GetSRAMBank
 	push de
 	call GetBaseData ; [wCurSpecies] and [wCurForm] are already set
 	ld a, [wBasePicSize]
 	and $f
 	ld b, a
+	ld [wMonPicSize], a
 	push bc
-	call GetFrontpicPointer
+
+	; Get frontpic pointer
+	ld a, [wCurPartySpecies]
+	ld c, a
+	ld a, [wCurForm]
+	ld b, a
+	call GetCosmeticSpeciesAndFormIndex
+	ld hl, PokemonPicPointers
+rept 5
+	add hl, bc
+endr
+	ld a, BANK(PokemonPicPointers)
+	call GetFarByte
+	push af
+	inc hl
+	ld a, BANK(PokemonPicPointers)
+	call GetFarWord
+	pop bc
+
 	ld a, BANK(wDecompressScratch)
 	ldh [rSVBK], a
 	call FarDecompressInB
@@ -155,42 +88,16 @@ _PrepareFrontpic:
 	ld a, d
 	and $f0
 	or e
-	ld [sScratch], a
+	ld [wMonAnimationSize], a
+
 	pop bc
-	ld hl, sScratch + 1 tiles
-	ld de, wDecompressScratch
 	call PadFrontpic
 	pop hl
 	ret
 
-GetFrontpicPointer:
-	; c = species
-	ld a, [wCurPartySpecies]
-	ld c, a
-	; b = form
-	ld a, [wCurForm]
-	ld b, a
-	; bc = index
-	call GetCosmeticSpeciesAndFormIndex
-	dec bc
-	ld hl, FrontPicPointers
-rept 3
-	add hl, bc
-endr
-	ld a, BANK(FrontPicPointers)
-	call GetFarByte
-	push af
-	inc hl
-	ld a, BANK(FrontPicPointers)
-	call GetFarWord
-	pop bc
-	ret
-
 GetAnimatedFrontpic:
-	ld a, $1
-	ldh [rVBK], a
 	push hl
-	ld de, sScratch + 1 tiles
+	call GetPaddedFrontpicAddress
 	ld c, 7 * 7
 	ldh a, [hROMBank]
 	ld b, a
@@ -198,12 +105,7 @@ GetAnimatedFrontpic:
 	pop hl
 	ld de, 7 * 7 tiles
 	add hl, de
-	push hl
-	ld a, BANK(wBasePicSize)
-	ld hl, wBasePicSize
-	call GetFarWRAMByte
-	pop hl
-	and $f
+	ld a, [wMonPicSize]
 	ld de, wDecompressScratch + 5 * 5 tiles
 	ld c, 5 * 5
 	cp 5
@@ -213,9 +115,10 @@ GetAnimatedFrontpic:
 	cp 6
 	jr z, .got_dims
 	ld de, wDecompressScratch + 7 * 7 tiles
+	ld c, 7 * 7
 .got_dims
 	; Get animation size (total - base sprite size)
-	ld a, [sScratch]
+	ld a, [wMonAnimationSize]
 	sub c
 	ret z ; Return if there's no animation
 	ld c, a
@@ -231,19 +134,19 @@ GetAnimatedFrontpic:
 ; https://gitgud.io/pfero/axyllagame/commit/486f4ed432ca49e5d1305b6402cc5540fe9d3aaa
 	; If we can load it in a single pass, just do it
 	ld a, c
-	sub (128 - 7 * 7)
+	sub 128 - 7 * 7
 	jr c, .no_overflow
 	; Otherwise, we load the first part...
 	inc a
-	ld [sScratch], a
-	ld c, (127 - 7 * 7)
+	ld [wMonAnimationSize], a
+	ld c, 127 - 7 * 7
 	call Get2bpp
 	; Then move up a bit and load the rest
 	ld de, wDecompressScratch + (127 - 7 * 7) tiles
 	ld hl, vTiles4
 	ldh a, [hROMBank]
 	ld b, a
-	ld a, [sScratch]
+	ld a, [wMonAnimationSize]
 	ld c, a
 .no_overflow
 	jmp Get2bpp
@@ -260,7 +163,7 @@ LoadFrontpicTiles:
 	ld c, a
 ; load the first c bytes to round down bc to a multiple of $100
 	push bc
-	call LoadFrontpic
+	call LoadAlignedFrontpic
 	pop bc
 ; don't access echo ram
 	ld a, c
@@ -271,8 +174,8 @@ LoadFrontpicTiles:
 ; load the remaining bytes in batches of $100
 .loop
 	push bc
-	ld c, $0
-	call LoadFrontpic
+	ld c, 0
+	call LoadAlignedFrontpic
 	pop bc
 .handle_loop
 	dec b
@@ -296,26 +199,27 @@ GetBackpic:
 	push de
 	; bc = index
 	call GetCosmeticSpeciesAndFormIndex
-	dec bc
-	ld hl, BackPicPointers
-rept 3
+	ld hl, PokemonPicPointers
+rept 5
 	add hl, bc
 endr
-	ld a, BANK(BackPicPointers)
+	ld a, BANK(PokemonPicPointers)
 	call GetFarByte
 	push af
 	inc hl
-	ld a, BANK(BackPicPointers)
+	inc hl
+	inc hl
+	ld a, BANK(PokemonPicPointers)
 	call GetFarWord
 	pop af
 	call FarDecompress
 	ld hl, wDecompressScratch
-	ld c, 6 * 6
 	call FixBackpicAlignment
 	pop hl
 	ld de, wDecompressScratch
 	ldh a, [hROMBank]
 	ld b, a
+	ld c, 6 * 6
 	call Get2bpp
 	pop af
 	ldh [rSVBK], a
@@ -369,38 +273,26 @@ GetPaintingPic:
 	ldh [hBGMapMode], a
 	ld hl, PaintingPicPointers
 	ld a, [wTrainerClass]
-	ld bc, 3
+	ld bc, 2
 	rst AddNTimes
 	ldh a, [rSVBK]
 	push af
 	ld a, $6
 	ldh [rSVBK], a
 	push de
-	ld a, BANK(PaintingPicPointers)
-	call GetFarByte
-	push af
 	inc hl
 	ld a, BANK(PaintingPicPointers)
 	call GetFarWord
-	pop af
+	ld a, BANK("Painting Pics")
 	jr _Decompress7x7Pic
 
 FixBackpicAlignment:
-	push de
-	push bc
 	ld a, [wBoxAlignment]
 	and a
-	jr z, .keep_dims
-	ld a, c
-	cp 7 * 7
-	ld de, 7 * 7 tiles
-	jr z, .got_dims
-	cp 6 * 6
-	ld de, 6 * 6 tiles
-	jr z, .got_dims
-	ld de, 5 * 5 tiles
+	ret z
 
-.got_dims
+	ld de, 6 * 6 tiles
+.loop
 	ld a, [hl]
 
 ; https://github.com/pret/pokecrystal/wiki/Optimizing-assembly-code#reverse-the-bits-of-a
@@ -421,14 +313,15 @@ FixBackpicAlignment:
 	dec de
 	ld a, e
 	or d
-	jr nz, .got_dims
-
-.keep_dims
-	pop bc
-	pop de
+	jr nz, .loop
 	ret
 
 PadFrontpic:
+	call GetPaddedFrontpicAddress
+	ld h, d
+	ld l, e
+	ld de, wDecompressScratch
+
 	ld a, b
 	sub 5
 	jr z, .five
@@ -437,7 +330,7 @@ PadFrontpic:
 
 .seven_loop
 	ld c, 7 tiles
-	call LoadFrontpic
+	call LoadAlignedFrontpic
 	dec b
 	jr nz, .seven_loop
 	ret
@@ -449,7 +342,7 @@ PadFrontpic:
 	ld c, 1 tiles
 	call .Fill
 	ld c, 6 tiles
-	call LoadFrontpic
+	call LoadAlignedFrontpic
 	dec b
 	jr nz, .six_loop
 	ret
@@ -461,7 +354,7 @@ PadFrontpic:
 	ld c, 2 tiles
 	call .Fill
 	ld c, 5 tiles
-	call LoadFrontpic
+	call LoadAlignedFrontpic
 	dec b
 	jr nz, .five_loop
 	ld c, 7 tiles
@@ -475,7 +368,7 @@ PadFrontpic:
 	jr nz, .fill_loop
 	ret
 
-LoadFrontpic:
+LoadAlignedFrontpic:
 	ld a, [wBoxAlignment]
 	and a
 	jr nz, .x_flip

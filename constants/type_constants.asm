@@ -1,7 +1,5 @@
 ; TypeNames indexes (see data/types/names.asm)
 ; also used in:
-; - PokedexTypeSearchConversionTable (see data/types/search_types.asm)
-; - PokedexTypeSearchStrings (see data/types/search_strings.asm)
 ; - TypeMatchups (see data/types/type_matchups.asm)
 ; - InverseTypeMatchups (see data/types/type_matchups.asm)
 	const_def
@@ -15,7 +13,7 @@
 	const BUG       ; 06
 	const GHOST     ; 07
 	const STEEL     ; 08
-SPECIAL_TYPES EQU const_value
+DEF SPECIAL_TYPES EQU const_value
 	const FIRE      ; 09
 	const WATER     ; 0a
 	const GRASS     ; 0b
@@ -26,12 +24,13 @@ SPECIAL_TYPES EQU const_value
 	const DARK      ; 10
 	const FAIRY     ; 11
 	const UNKNOWN_T ; 12
-NUM_TYPES EQU const_value
+DEF NUM_TYPES EQU const_value
 
 ; categories
 	const_def
 	const PHYSICAL
 	const SPECIAL
 	const STATUS
+DEF NUM_CATEGORIES EQU const_value
 
-POKEDEX_TYPE_STRING_LENGTH EQU 9
+DEF POKEDEX_TYPE_STRING_LENGTH EQU 9

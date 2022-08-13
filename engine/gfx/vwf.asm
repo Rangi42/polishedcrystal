@@ -1,17 +1,13 @@
-FIRST_VWF_CHAR EQU " " ; first printable character
-FAILSAFE_VWF_CHAR EQU "."
+DEF FIRST_VWF_CHAR EQU " " ; first printable character
+DEF FAILSAFE_VWF_CHAR EQU "."
 
-_PlaceVWFString::
-; Place string de at hl with flags in b and offset in c.
-; Returns z usually, nz if we've doing single-character output and we haven't
-; reached the string terminator (de is then advanced a character).
-; Preserves the value of b.
-
+_BuildAppendVFWTextFunction::
 ; Build a function to write pixels in hAppendVWFText.
-; - nothing: or [hl] / ld [hld], a / ld [hl], a / ret
-; - invert: xor [hl] / ld [hld], a / ld [hl], a / ret
-; - opaque: or [hl] / ld [hld], a / ret
-; - invert+opaque: xor [hl] / ld [hld], a / ret
+; - nothing:        or [hl] / ld [hld], a / ld [hl], a / ret
+; - invert:        xor [hl] / ld [hld], a / ld [hl], a / ret
+; - opaque:         or [hl] / ld [hld], a /              ret
+; - invert+opaque: xor [hl] / ld [hld], a /              ret
+	push af
 	push hl
 	ld hl, hAppendVWFText
 	bit VWF_INVERT_F, b
@@ -29,9 +25,14 @@ _PlaceVWFString::
 .opaque
 	ld [hl], $c9 ; ret
 	pop hl
+	pop af
+	ret
 
-.main_loop
-	ld a, [de]
+_PlaceNextVWFChar::
+; Place character a (just read from [de]) at hl with flags in b and offset in c.
+; Advances de to the next character.
+; Returns z if the character is the string terminator.
+; Preserves the value of b.
 	inc de
 	cp "@"
 	ret z
@@ -122,22 +123,15 @@ _PlaceVWFString::
 	pop af ; from push bc
 
 	ld b, a
-	bit VWF_SINGLE_F, a
-	ret nz
+	or 1
+	ret
 
-	jr .main_loop
-
-_GetVWFLength::
-; Returns length of string de in a.
-	push de
-	push bc
-	ld c, 0
-
-.loop
-	ld a, [de]
+_GetNextVWFLength::
+; Returns length of character a (just read from [de]) in c.
+; Advances de to the next character.
 	inc de
 	cp "@"
-	jr z, .done
+	ret z
 
 	push hl
 	push de
@@ -155,12 +149,7 @@ _GetVWFLength::
 	ld c, a
 	pop de
 	pop hl
-	jr .loop
-
-.done
-	ld a, c
-	pop bc
-	pop de
+	or 1
 	ret
 
 INCLUDE "gfx/vwf.asm"

@@ -21,7 +21,7 @@ WardensGranddaughter:
 	faceplayer
 	opentext
 	checkevent EVENT_TALKED_TO_WARDENS_GRANDDAUGHTER
-	iftrue .AlreadyMet
+	iftruefwd .AlreadyMet
 	writetext WardensGranddaughterText1
 	waitbutton
 	closetext

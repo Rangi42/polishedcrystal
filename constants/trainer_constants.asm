@@ -1,8 +1,8 @@
-__trainer_class__ = 0
+DEF __trainer_class__ = 0
 
-trainerclass: MACRO
-\1 EQU __trainer_class__
-__trainer_class__ += 1
+MACRO trainerclass
+	DEF \1 EQU __trainer_class__
+	DEF __trainer_class__ += 1
 	const_def 1
 ENDM
 
@@ -18,7 +18,7 @@ ENDM
 ; - BTTrainerClassSprites (see data/trainers/sprites.asm)
 ; - BTTrainerClassGenders (see data/trainers/genders.asm)
 ; trainer constants are indexes for the sub-tables of TrainerGroups (see data/trainers/parties.asm)
-CHRIS EQU __trainer_class__
+DEF CHRIS EQU __trainer_class__
 	trainerclass TRAINER_NONE ; 0
 	const PHONECONTACT_MOM
 	const PHONECONTACT_BIKESHOP
@@ -27,7 +27,7 @@ CHRIS EQU __trainer_class__
 	const PHONECONTACT_LYRA
 	const PHONECONTACT_BUENA
 
-KRIS EQU __trainer_class__
+DEF KRIS EQU __trainer_class__
 	trainerclass CARRIE ; 1
 
 	trainerclass CAL ; 2
@@ -1038,76 +1038,80 @@ KRIS EQU __trainer_class__
 
 	trainerclass TOWERTYCOON ; 74
 
-	trainerclass JESSIE_JAMES ; 75
+	trainerclass FACTORYHEAD ; 75
 
-	trainerclass LORELEI ; 76
+	trainerclass JESSIE_JAMES ; 76
 
-	trainerclass AGATHA ; 77
+	trainerclass LORELEI ; 77
 
-	trainerclass STEVEN ; 78
+	trainerclass AGATHA ; 78
 
-	trainerclass CYNTHIA ; 79
+	trainerclass STEVEN ; 79
 
-	trainerclass INVER ; 7a
+	trainerclass CYNTHIA ; 7a
 
-	trainerclass CHERYL ; 7b
+	trainerclass INVER ; 7b
 
-	trainerclass RILEY ; 7c
+	trainerclass CHERYL ; 7c
 
-	trainerclass BUCK ; 7d
+	trainerclass RILEY ; 7d
 
-	trainerclass MARLEY ; 7e
+	trainerclass BUCK ; 7e
 
-	trainerclass MIRA ; 7f
+	trainerclass MARLEY ; 7f
 
-	trainerclass ANABEL ; 80
+	trainerclass MIRA ; 80
 
-	trainerclass DARACH ; 81
+	trainerclass ANABEL ; 81
 
-	trainerclass CAITLIN ; 82
+	trainerclass DARACH ; 82
 
-	trainerclass CANDELA ; 83
+	trainerclass CAITLIN ; 83
 
-	trainerclass BLANCHE ; 84
+	trainerclass CANDELA ; 84
 
-	trainerclass SPARK_T ; 85
+	trainerclass BLANCHE ; 85
 
-	trainerclass FLANNERY ; 86
+	trainerclass SPARK_T ; 86
 
-	trainerclass MAYLENE ; 87
+	trainerclass FLANNERY ; 87
 
-	trainerclass SKYLA ; 88
+	trainerclass MAYLENE ; 88
 
-	trainerclass VALERIE ; 89
+	trainerclass SKYLA ; 89
 
-	trainerclass KUKUI ; 8a
+	trainerclass VALERIE ; 8a
 
-	trainerclass VICTOR  ; 8b
+	trainerclass KUKUI ; 8b
 
-	trainerclass BILL_T ; 8c
+	trainerclass MELONY ; 8c
 
-	trainerclass YELLOW ; 8d
+	trainerclass VICTOR  ; 8d
 
-	trainerclass WALKER ; 8e
+	trainerclass BILL_T ; 8e
 
-	trainerclass IMAKUNI ; 8f
+	trainerclass YELLOW ; 8f
 
-	trainerclass LAWRENCE ; 90
+	trainerclass WALKER ; 90
 
-	trainerclass REI ; 91
+	trainerclass IMAKUNI ; 91
 
-NUM_TRAINER_CLASSES EQU __trainer_class__ - 1
+	trainerclass LAWRENCE ; 92
 
-	trainerclass OMASTAR_FOSSIL ; 92
+	trainerclass REI ; 93
 
-	trainerclass KABUTOPS_FOSSIL ; 93
+DEF NUM_TRAINER_CLASSES EQU __trainer_class__ - 1
 
-	trainerclass AERODACTYL_FOSSIL ; 94
+	trainerclass OMASTAR_FOSSIL ; 94
 
-	trainerclass CUBONE_ARMOR ; 95
+	trainerclass KABUTOPS_FOSSIL ; 95
 
-	trainerclass METEORITE ; 96
+	trainerclass AERODACTYL_FOSSIL ; 96
 
-	trainerclass SILHOUETTE ; 97
+	trainerclass CUBONE_ARMOR ; 97
 
-NUM_TRAINER_CLASS_PICS EQU __trainer_class__ - 1
+	trainerclass METEORITE ; 98
+
+	trainerclass SILHOUETTE ; 99
+
+DEF NUM_TRAINER_CLASS_PICS EQU __trainer_class__ - 1

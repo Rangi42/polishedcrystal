@@ -39,7 +39,7 @@ MurkySwamp_MapScriptHeader:
 MurkySwampCherylScript:
 	faceplayer
 	checkevent EVENT_BEAT_CHERYL
-	iftrue .Beaten
+	iftruefwd .Beaten
 	opentext
 	writetext .ChallengeText
 	yesorno

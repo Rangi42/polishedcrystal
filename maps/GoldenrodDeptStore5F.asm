@@ -27,7 +27,7 @@ GoldenrodDeptStore5F_MapScriptHeader:
 
 GoldenrodDeptStore5FCheckIfSunday:
 	readvar VAR_WEEKDAY
-	ifequal SUNDAY, .yes
+	ifequalfwd SUNDAY, .yes
 	disappear GOLDENRODDEPTSTORE5F_RECEPTIONIST
 	endcallback
 
@@ -41,9 +41,9 @@ GoldenrodDeptStore5FReceptionistScript:
 	readvar VAR_WEEKDAY
 	ifnotequal SUNDAY, .EventIsOver
 	checktmhm TM_RETURN
-	iftrue .EventIsOver
+	iftruefwd .EventIsOver
 	checkflag ENGINE_GOLDENROD_MALL_5F_HAPPINESS_EVENT
-	iftrue .EventIsOver
+	iftruefwd .EventIsOver
 	special GetFirstPokemonHappiness
 	writetext GoldenrodDeptStore5FReceptionistOhYourMonDotDotDotText
 	promptbutton
@@ -74,8 +74,8 @@ GoldenrodDeptStore5FTwinScript:
 	opentext
 	writetext GoldenrodDeptStore5FCarrieMysteryGiftRequiresGBCText
 	promptbutton
-	random MARANGABERRY - ORAN_BERRY + 1
-	addval ORAN_BERRY
+	random NUM_BERRIES
+	addval FIRST_BERRY
 	getitemname $0, $1
 	verbosegiveitem ITEM_FROM_MEM
 	iffalse_jumpopenedtext MysteryGiftGirl_NoRoomText

@@ -26,9 +26,9 @@ GoldenrodDeptStoreElevatorButton:
 	checkevent EVENT_WAREHOUSE_BLOCKED_OFF
 	iftrue DoNothingScript
 	checkevent EVENT_WAREHOUSE_LAYOUT_1
-	iftrue .BoxLayout1
+	iftruefwd .BoxLayout1
 	checkevent EVENT_WAREHOUSE_LAYOUT_2
-	iftrue .BoxLayout2
+	iftruefwd .BoxLayout2
 	setevent EVENT_WAREHOUSE_LAYOUT_1
 	clearevent EVENT_WAREHOUSE_LAYOUT_2
 	clearevent EVENT_WAREHOUSE_LAYOUT_3

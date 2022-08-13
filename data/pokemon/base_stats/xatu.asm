@@ -9,9 +9,8 @@ endc
 	db PSYCHIC, FLYING ; type
 	db 75 ; catch rate
 	db 171 ; base exp
-	db NO_ITEM ; item 1
-	db NO_ITEM ; item 2
-	dn GENDER_F50, 3 ; gender ratio, step cycles to hatch
+	db NO_ITEM, NO_ITEM ; held items
+	dn GENDER_F50, HATCH_MEDIUM_FAST ; gender ratio, step cycles to hatch
 	INCBIN "gfx/pokemon/xatu/front.dimensions"
 	abilities_for XATU, SYNCHRONIZE, EARLY_BIRD, MAGIC_BOUNCE
 	db GROWTH_MEDIUM_FAST ; growth rate

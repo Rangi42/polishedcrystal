@@ -4,9 +4,8 @@
 	db WATER, WATER ; type
 	db 225 ; catch rate
 	db 115 ; base exp
-	db NO_ITEM ; item 1
-	db NO_ITEM ; item 2
-	dn GENDER_F50, 3 ; gender ratio, step cycles to hatch
+	db NO_ITEM, NO_ITEM ; held items
+	dn GENDER_F50, HATCH_MEDIUM_FAST ; gender ratio, step cycles to hatch
 	INCBIN "gfx/pokemon/krabby/front.dimensions"
 	abilities_for KRABBY, HYPER_CUTTER, SHELL_ARMOR, SHEER_FORCE
 	db GROWTH_MEDIUM_FAST ; growth rate

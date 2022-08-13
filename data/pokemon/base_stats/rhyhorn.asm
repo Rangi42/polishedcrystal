@@ -4,9 +4,8 @@
 	db GROUND, ROCK ; type
 	db 120 ; catch rate
 	db 135 ; base exp
-	db NO_ITEM ; item 1
-	db PROTECTOR ; item 2
-	dn GENDER_F50, 3 ; gender ratio, step cycles to hatch
+	db NO_ITEM, PROTECTOR ; held items
+	dn GENDER_F50, HATCH_MEDIUM_FAST ; gender ratio, step cycles to hatch
 	INCBIN "gfx/pokemon/rhyhorn/front.dimensions"
 if DEF(FAITHFUL)
 	abilities_for RHYHORN, LIGHTNING_ROD, ROCK_HEAD, RECKLESS

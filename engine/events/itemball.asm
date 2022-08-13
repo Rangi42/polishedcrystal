@@ -1,6 +1,6 @@
 FindItemInBallScript::
 	callasm .TryReceiveItem
-	iffalse .no_room
+	iffalsefwd .no_room
 	disappear LAST_TALKED
 	opentext
 	farwritetext _FoundItemText
@@ -39,6 +39,8 @@ FindItemInBallScript::
 
 .ShowItemIcon:
 	ld a, [wItemBallItemID]
+	; fallthrough
+ItemGet_ShowItemIconFromA:
 	call LoadItemIconForOverworld
 	farcall LoadItemIconPalette
 	jmp PrintOverworldItemIcon
@@ -58,7 +60,6 @@ FindKeyItemInBallScript::
 	xor a
 	ldh [hScriptVar], a
 	ld a, [wItemBallItemID]
-	inc a
 	ld [wNamedObjectIndex], a
 	call GetKeyItemName
 	ld hl, wStringBuffer3

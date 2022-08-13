@@ -41,7 +41,7 @@ VermilionCity_MapScriptHeader:
 	object_event 18, 31, SPRITE_LAWRENCE, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_LAWRENCE_VERMILION_CITY
 	object_event 18, 13, SPRITE_BATTLE_GIRL, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, PAL_NPC_RED, OBJECTTYPE_COMMAND, jumptextfaceplayer, VermilionCityTeacherText, -1
 	object_event 27, 13, SPRITE_GRAMPS, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, VermilionMachokeOwnerScript, -1
-	pokemon_event 28, 13, MACHOKE, -1, -1, PAL_NPC_BLUE, VermilionMachokeText, -1
+	pokemon_event 28, 13, MACHOKE, SPRITEMOVEDATA_POKEMON, -1, -1, PAL_NPC_BLUE, VermilionMachokeText, -1
 	object_event 16, 20, SPRITE_ROCKER, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_COMMAND, jumptextfaceplayer, VermilionCitySuperNerdText, -1
 	object_event 32, 12, SPRITE_POKEMANIAC, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, VermilionCitySuperNerd2Script, -1
 	object_event 11,  9, SPRITE_SAILOR, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 3, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, VermilionCitySailorText, -1
@@ -56,9 +56,9 @@ VermilionCity_MapScriptHeader:
 
 VermilionCitySetupLawrenceCallback:
 	checkscene
-	iftrue .done
+	iftruefwd .done
 	readvar VAR_XCOORD
-	ifequal 18, .done
+	ifequalfwd 18, .done
 	disappear VERMILIONCITY_LAWRENCE
 	moveobject VERMILIONCITY_LAWRENCE, 19, 31
 	appear VERMILIONCITY_LAWRENCE
@@ -67,7 +67,7 @@ VermilionCitySetupLawrenceCallback:
 
 VermilionCitySetupBattleFactoryCallback:
 	checkevent EVENT_RESTORED_POWER_TO_KANTO
-	iftrue .done
+	iftruefwd .done
 	callasm .DarkenPowerPlantDoors
 .done
 	endcallback
@@ -117,10 +117,10 @@ LawrenceIntroScript:
 	showemote EMOTE_SHOCK, VERMILIONCITY_LAWRENCE, 15
 	pause 15
 	readvar VAR_XCOORD
-	ifequal 18, .left
+	ifequalfwd 18, .left
 	applymovement VERMILIONCITY_LAWRENCE, LawrenceWalkAroundRightMovementData
 	turnobject PLAYER, LEFT
-	sjump .continue
+	sjumpfwd .continue
 
 .left
 	applymovement VERMILIONCITY_LAWRENCE, LawrenceWalkAroundLeftMovementData
@@ -169,7 +169,7 @@ LawrenceWalkAroundRightMovementData:
 VermilionSnorlax:
 	opentext
 	special SpecialSnorlaxAwake
-	iftrue .Awake
+	iftruefwd .Awake
 	jumpopenedtext VermilionCitySnorlaxSleepingText
 
 .Awake:
@@ -189,7 +189,7 @@ VermilionGymBadgeGuy:
 	checkevent EVENT_GOT_BOTTLE_CAP_FROM_VERMILION_GUY
 	iftrue_jumptextfaceplayer VermilionCityBadgeGuyBattleEdgeText
 	readvar VAR_BADGES
-	ifequal 16, .AllBadges
+	ifequalfwd 16, .AllBadges
 	ifgreater 13, .MostBadges
 	ifgreater 9, .SomeBadges
 	jumptextfaceplayer VermilionCityBadgeGuyTrainerText

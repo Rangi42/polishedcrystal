@@ -305,14 +305,18 @@ WaitButton::
 	ldh [hOAMUpdate], a
 	ret
 
+JoyTextDelay_AllowRepeat::
+	call GetJoypad
+	jr _JoyTextDelay
 JoyTextDelay::
 	call GetJoypad
 	ldh a, [hInMenu]
 	and a
 	ldh a, [hJoyPressed]
-	jr z, .ok
+	jr z, _JoyTextDelay_ok
+_JoyTextDelay:
 	ldh a, [hJoyDown]
-.ok
+_JoyTextDelay_ok:
 	ldh [hJoyLast], a
 	ldh a, [hJoyPressed]
 	and a
@@ -418,9 +422,9 @@ ButtonSound::
 	and %00010000 ; bit 4, a
 	ld a, "▼"
 	jr nz, .load_cursor_state
-	ld a, [wTileMap + 17 + 17 * SCREEN_WIDTH]
+	ld a, [wTilemap + 17 + 17 * SCREEN_WIDTH]
 .load_cursor_state
-	ld [wTileMap + 18 + 17 * SCREEN_WIDTH], a
+	ld [wTilemap + 18 + 17 * SCREEN_WIDTH], a
 	ret
 
 BlinkCursor::
@@ -439,7 +443,7 @@ BlinkCursor::
 	dec a
 	ldh [hObjectStructIndexBuffer], a
 	ret nz
-	ld [hl], "─"
+	ld [hl], "━"
 	ld a, -1
 	ldh [hMapObjectIndexBuffer], a
 	ld a, 6

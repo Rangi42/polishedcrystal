@@ -19,20 +19,20 @@ WarmBeachShackFisherScript:
 	faceplayer
 	opentext
 	checkevent EVENT_LISTENED_TO_BODY_SLAM_INTRO
-	iftrue WarmBeachShackTutorBodySlamScript
+	iftruefwd WarmBeachShackTutorBodySlamScript
 	writetext WarmBeachShackFisherText
 	waitbutton
 	setevent EVENT_LISTENED_TO_BODY_SLAM_INTRO
 WarmBeachShackTutorBodySlamScript:
 	writetext Text_WarmBeachShackTutorBodySlamQuestion
 	checkitem SILVER_LEAF
-	iffalse .NoSilverLeaf
+	iffalsefwd .NoSilverLeaf
 	yesorno
-	iffalse .TutorRefused
+	iffalsefwd .TutorRefused
 	setval BODY_SLAM
 	writetext ClearText
 	special Special_MoveTutor
-	ifequal $0, .TeachMove
+	ifequalfwd $0, .TeachMove
 .TutorRefused
 	jumpopenedtext Text_WarmBeachShackTutorRefused
 

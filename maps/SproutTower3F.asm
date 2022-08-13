@@ -82,6 +82,20 @@ ElderLiScript:
 	text "Flash illuminates"
 	line "even the darkest"
 	cont "of all places."
+
+	para "You need not teach"
+	line "it to your #mon"
+
+	para "unless you wish"
+	line "to use Flash in"
+	cont "battle."
+
+	para "Simply call out"
+	line "in the darkness,"
+
+	para "and if any of your"
+	line "#mon can use"
+	cont "Flash, they will."
 	done
 
 GenericTrainerSageJin:

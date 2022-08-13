@@ -4,9 +4,8 @@
 	db PSYCHIC, PSYCHIC ; type
 	db 3 ; catch rate
 	db 220 ; base exp
-	db ALWAYS_ITEM_2 ; item 1
-	db PETAYA_BERRY ; item 2
-	dn GENDER_UNKNOWN, 15 ; gender ratio, step cycles to hatch
+	db ALWAYS_ITEM_2, PETAYA_BERRY ; held items
+	dn GENDER_UNKNOWN, HATCH_UNKNOWN ; gender ratio, step cycles to hatch
 	INCBIN "gfx/pokemon/mewtwo_plain/front.dimensions"
 	abilities_for MEWTWO, PRESSURE, INSOMNIA, UNNERVE
 	db GROWTH_SLOW ; growth rate

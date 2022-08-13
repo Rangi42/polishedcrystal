@@ -11,7 +11,7 @@ CherrygroveBay_MapScriptHeader:
 
 	def_object_events
 	object_event  9, 32, SPRITE_HIKER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, CherrygroveBayHikerScript, -1
-	object_event 21, 22, SPRITE_HIKER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 1, GenericTrainerHikerTony, -1
+	object_event 20, 22, SPRITE_HIKER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 2, GenericTrainerHikerTony, -1
 	object_event 15, 43, SPRITE_FISHER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, CherrygroveBayFisherText, -1
 	object_event  7, 39, SPRITE_SWIMMER_GUY, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 2, GenericTrainerSwimmermThomas, -1
 	object_event  7, 22, SPRITE_SWIMMER_GIRL, SPRITEMOVEDATA_SPINCOUNTERCLOCKWISE, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 4, GenericTrainerSwimmerfSally, -1
@@ -23,7 +23,7 @@ CherrygroveBayHikerScript:
 	faceplayer
 	opentext
 	checkevent EVENT_LISTENED_TO_EARTH_POWER_INTRO
-	iftrue CherrygroveBayTutorEarthPowerScript
+	iftruefwd CherrygroveBayTutorEarthPowerScript
 	writetext CherrygroveBayHikerText
 	waitbutton
 	setevent EVENT_LISTENED_TO_EARTH_POWER_INTRO
@@ -31,14 +31,14 @@ CherrygroveBayTutorEarthPowerScript:
 	writetext Text_CherrygroveBayTutorEarthPower
 	waitbutton
 	checkitem SILVER_LEAF
-	iffalse .NoSilverLeaf
+	iffalsefwd .NoSilverLeaf
 	writetext Text_CherrygroveBayTutorQuestion
 	yesorno
-	iffalse .TutorRefused
+	iffalsefwd .TutorRefused
 	setval EARTH_POWER
 	writetext ClearText
 	special Special_MoveTutor
-	ifequal $0, .TeachMove
+	ifequalfwd $0, .TeachMove
 .TutorRefused
 	jumpopenedtext Text_CherrygroveBayTutorRefused
 

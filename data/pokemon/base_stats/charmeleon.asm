@@ -4,9 +4,8 @@
 	db FIRE, FIRE ; type
 	db 45 ; catch rate
 	db 142 ; base exp
-	db NO_ITEM ; item 1
-	db NO_ITEM ; item 2
-	dn GENDER_F12_5, 3 ; gender ratio, step cycles to hatch
+	db NO_ITEM, NO_ITEM ; held items
+	dn GENDER_F12_5, HATCH_MEDIUM_FAST ; gender ratio, step cycles to hatch
 	INCBIN "gfx/pokemon/charmeleon/front.dimensions"
 	abilities_for CHARMELEON, BLAZE, SOLAR_POWER, FLAME_BODY
 	db GROWTH_MEDIUM_SLOW ; growth rate

@@ -4,9 +4,8 @@
 	db FAIRY, FLYING ; type
 	db 30 ; catch rate
 	db 220 ; base exp
-	db NO_ITEM ; item 1
-	db NO_ITEM ; item 2
-	dn GENDER_F12_5, 1 ; gender ratio, step cycles to hatch
+	db NO_ITEM, NO_ITEM ; held items
+	dn GENDER_F12_5, HATCH_FASTER ; gender ratio, step cycles to hatch
 	INCBIN "gfx/pokemon/togekiss/front.dimensions"
 	abilities_for TOGEKISS, HUSTLE, SERENE_GRACE, SUPER_LUCK
 	db GROWTH_FAST ; growth rate

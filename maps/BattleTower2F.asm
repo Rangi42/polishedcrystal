@@ -25,9 +25,9 @@ BattleTower2F_MapScriptHeader:
 	object_event  7,  7, SPRITE_LADY, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_COMMAND, jumptextfaceplayer, BattleTower2FLadyText, EVENT_DIM_CAVE_RILEY
 	object_event  9,  4, SPRITE_SCHOOLGIRL, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, BattleTower2FTwinText, EVENT_CINNABAR_VOLCANO_BUCK
 	object_event 17,  8, SPRITE_POKEMANIAC, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, BattleTower2FSuperNerdText, EVENT_QUIET_CAVE_MARLEY
-	pokemon_event 18,  8, PIKACHU, -1, -1, PAL_NPC_RED, BattleTower2FPikachuText, EVENT_QUIET_CAVE_MARLEY
+	pokemon_event 18,  8, PIKACHU, SPRITEMOVEDATA_POKEMON, -1, -1, PAL_NPC_RED, BattleTower2FPikachuText, EVENT_QUIET_CAVE_MARLEY
 	object_event 12,  7, SPRITE_YOUNGSTER, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, BattleTower2FYoungsterText, EVENT_SCARY_CAVE_MIRA
-	object_event 15,  6, SPRITE_BLACK_BELT, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, BattleTower2FBlackbeltText, EVENT_NOISY_FOREST_ANABEL
+	object_event 15,  6, SPRITE_BLACK_BELT, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, BattleTower2FBlackbeltText, EVENT_BATTLE_TOWER_OUTSIDE_ANABEL
 
 	object_const_def
 	const BATTLETOWER2F_CHERYL
@@ -74,14 +74,14 @@ BattleTower2FCherylScript:
 	winlosstext .BeatenText, 0
 	setlasttalked BATTLETOWER2F_CHERYL
 	checkevent EVENT_BEAT_ELITE_FOUR_AGAIN
-	iftrue .Team3
+	iftruefwd .Team3
 	checkevent EVENT_BEAT_ELITE_FOUR
-	iftrue .Team2
+	iftruefwd .Team2
 	loadtrainer CHERYL, 1
-	sjump .StartBattle
+	sjumpfwd .StartBattle
 .Team2
 	loadtrainer CHERYL, 2
-	sjump .StartBattle
+	sjumpfwd .StartBattle
 .Team3
 	loadtrainer CHERYL, 3
 .StartBattle
@@ -149,9 +149,9 @@ BattleTower2FRileyScript:
 	winlosstext .BeatenText, 0
 	setlasttalked BATTLETOWER2F_RILEY
 	checkevent EVENT_BEAT_ELITE_FOUR_AGAIN
-	iftrue .Team2
+	iftruefwd .Team2
 	loadtrainer RILEY, 1
-	sjump .StartBattle
+	sjumpfwd .StartBattle
 .Team2
 	loadtrainer RILEY, 2
 .StartBattle
@@ -217,9 +217,9 @@ BattleTower2FBuckScript:
 	winlosstext .BeatenText, 0
 	setlasttalked BATTLETOWER2F_BUCK
 	checkevent EVENT_BEAT_ELITE_FOUR_AGAIN
-	iftrue .Team2
+	iftruefwd .Team2
 	loadtrainer BUCK, 1
-	sjump .StartBattle
+	sjumpfwd .StartBattle
 .Team2
 	loadtrainer BUCK, 2
 .StartBattle
@@ -266,14 +266,14 @@ BattleTower2FMarleyScript:
 	winlosstext .BeatenText, 0
 	setlasttalked BATTLETOWER2F_MARLEY
 	checkevent EVENT_BEAT_ELITE_FOUR_AGAIN
-	iftrue .Team3
+	iftruefwd .Team3
 	checkevent EVENT_BEAT_ELITE_FOUR
-	iftrue .Team2
+	iftruefwd .Team2
 	loadtrainer MARLEY, 1
-	sjump .StartBattle
+	sjumpfwd .StartBattle
 .Team2
 	loadtrainer MARLEY, 2
-	sjump .StartBattle
+	sjumpfwd .StartBattle
 .Team3
 	loadtrainer MARLEY, 3
 .StartBattle
@@ -326,9 +326,9 @@ BattleTower2FMiraScript:
 	winlosstext .BeatenText, 0
 	setlasttalked BATTLETOWER2F_MIRA
 	checkevent EVENT_BEAT_ELITE_FOUR_AGAIN
-	iftrue .Team2
+	iftruefwd .Team2
 	loadtrainer MIRA, 1
-	sjump .StartBattle
+	sjumpfwd .StartBattle
 .Team2
 	loadtrainer MIRA, 2
 .StartBattle
@@ -388,9 +388,9 @@ BattleTower2FAnabelScript:
 	winlosstext .BeatenText, 0
 	setlasttalked BATTLETOWER2F_ANABEL
 	checkevent EVENT_BEAT_ELITE_FOUR_AGAIN
-	iftrue .Team2
+	iftruefwd .Team2
 	loadtrainer ANABEL, 1
-	sjump .StartBattle
+	sjumpfwd .StartBattle
 .Team2
 	loadtrainer ANABEL, 2
 .StartBattle

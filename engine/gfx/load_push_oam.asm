@@ -1,18 +1,21 @@
 WriteOAMDMACodeToHRAM::
-	lb bc, (.PushOAMEnd - .PushOAM), LOW(hPushOAM)
-	ld hl, .PushOAM
-.loop
+	lb bc, (OAMDMACodeEnd - OAMDMACode), LOW(hPushOAM)
+	ld hl, OAMDMACode
+.copy
 	ld a, [hli]
 	ldh [c], a
 	inc c
 	dec b
-	jr nz, .loop
+	jr nz, .copy
 	ret
 
-.PushOAM:
-	ld [c], a
-.pushoam_loop
+OAMDMACode:
+LOAD "OAM DMA", HRAM
+hPushOAM::
+	ldh [c], a
+.wait
 	dec b
-	jr nz, .pushoam_loop
+	jr nz, .wait
 	ret
-.PushOAMEnd
+ENDL
+OAMDMACodeEnd:

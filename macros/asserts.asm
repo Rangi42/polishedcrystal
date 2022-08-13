@@ -1,22 +1,22 @@
 ; Macros to verify assumptions about the data or code
 
-table_width: MACRO
+MACRO table_width
 	def CURRENT_TABLE_WIDTH = \1
 	if _NARG == 2
 		REDEF CURRENT_TABLE_START EQUS "\2"
 	else
 		REDEF CURRENT_TABLE_START EQUS "._table_width\@"
-		{CURRENT_TABLE_START}:
+	{CURRENT_TABLE_START}:
 	endc
 ENDM
 
-assert_table_length: MACRO
+MACRO assert_table_length
 	def x = \1
 	assert x * CURRENT_TABLE_WIDTH == @ - {CURRENT_TABLE_START}, \
 		"{CURRENT_TABLE_START}: expected {d:x} entries, each {d:CURRENT_TABLE_WIDTH} bytes"
 ENDM
 
-list_start: MACRO
+MACRO list_start
 	def list_index = 0
 	if _NARG == 1
 		REDEF CURRENT_LIST_START EQUS "\1"
@@ -26,60 +26,58 @@ list_start: MACRO
 	endc
 ENDM
 
-li: MACRO
+MACRO li
 	assert !STRIN(\1, "@"), STRCAT("String terminator \"@\" in list entry: ", \1)
 	db \1, "@"
 	redef list_index += 1
 ENDM
 
-assert_list_length: MACRO
+MACRO assert_list_length
 	def x = \1
 	assert x == list_index, \
 		"{CURRENT_LIST_START}: expected {d:x} entries, got {d:list_index}"
 ENDM
 
-def_grass_wildmons: MACRO
+MACRO def_grass_wildmons
 ;\1: map id
 	REDEF CURRENT_GRASS_WILDMONS_MAP EQUS "\1"
 	REDEF CURRENT_GRASS_WILDMONS_LABEL EQUS "._def_grass_wildmons_\1"
-	{CURRENT_GRASS_WILDMONS_LABEL}:
+{CURRENT_GRASS_WILDMONS_LABEL}:
 	map_id \1
 ENDM
 
-end_grass_wildmons: MACRO
+MACRO end_grass_wildmons
 	assert GRASS_WILDDATA_LENGTH == @ - {CURRENT_GRASS_WILDMONS_LABEL}, \
 		"def_grass_wildmons {CURRENT_GRASS_WILDMONS_MAP}: expected {d:GRASS_WILDDATA_LENGTH} bytes"
 ENDM
 
-def_water_wildmons: MACRO
+MACRO def_water_wildmons
 ;\1: map id
 	REDEF CURRENT_WATER_WILDMONS_MAP EQUS "\1"
 	REDEF CURRENT_WATER_WILDMONS_LABEL EQUS "._def_water_wildmons_\1"
-	{CURRENT_WATER_WILDMONS_LABEL}:
+{CURRENT_WATER_WILDMONS_LABEL}:
 	map_id \1
 ENDM
 
-end_water_wildmons: MACRO
+MACRO end_water_wildmons
 	assert WATER_WILDDATA_LENGTH == @ - CURRENT_WATER_WILDMONS_LABEL, \
 		"def_water_wildmons {CURRENT_WATER_WILDMONS_MAP}: expected {d:WATER_WILDDATA_LENGTH} bytes"
 ENDM
 
-wildmon: MACRO
-	if _NARG == 3
-		db \1
-		dp \2, \3
-	else
-		db \1
-		dp \2
-	endc
+MACRO wildmon
+	db (\1)
+	shift
+	dp \#
 ENDM
 
-jmp: MACRO
+MACRO jmp
 	if _NARG == 1
 		jp \1
 	else
 		jp \1, \2
 		shift
 	endc
-	assert warn, (\1) - @ > 127 || (\1) - @ < -129, "jp can be jr"
+	if DEF(DEBUG)
+		assert warn, (\1) - @ > 127 || (\1) - @ < -129, "jp can be jr"
+	endc
 ENDM

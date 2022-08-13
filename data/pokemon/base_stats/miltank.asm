@@ -4,9 +4,8 @@
 	db NORMAL, NORMAL ; type
 	db 45 ; catch rate
 	db 200 ; base exp
-	db NO_ITEM ; item 1
-	db MOOMOO_MILK ; item 2
-	dn GENDER_F100, 3 ; gender ratio, step cycles to hatch
+	db NO_ITEM, MOOMOO_MILK ; held items
+	dn GENDER_F100, HATCH_MEDIUM_FAST ; gender ratio, step cycles to hatch
 	INCBIN "gfx/pokemon/miltank/front.dimensions"
 	abilities_for MILTANK, THICK_FAT, SCRAPPY, SAP_SIPPER
 	db GROWTH_SLOW ; growth rate

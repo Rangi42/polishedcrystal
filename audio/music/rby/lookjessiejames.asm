@@ -82,7 +82,7 @@ Music_LookJessieJames_branch_83187:
 	note B_, 2
 	notetype $c, $b4
 	note A#, 4
-	loopchannel 0, Music_LookJessieJames_branch_83187
+	jumpchannel Music_LookJessieJames_branch_83187
 Music_LookJessieJames_Ch2:
 	dutycycle 3
 	vibrato $6, $15
@@ -166,7 +166,7 @@ Music_LookJessieJames_branch_831df:
 	note F_, 4
 	notetype $c, $c5
 	note D#, 8
-	loopchannel 0, Music_LookJessieJames_branch_831df
+	jumpchannel Music_LookJessieJames_branch_831df
 Music_LookJessieJames_Ch3:
 	notetype $c, $10
 	note __, 16
@@ -307,5 +307,5 @@ Music_LookJessieJames_branch_83235:
 	note __, 1
 	note E_, 1
 	note __, 1
-	loopchannel 0, Music_LookJessieJames_branch_83235
+	jumpchannel Music_LookJessieJames_branch_83235
 	endchannel

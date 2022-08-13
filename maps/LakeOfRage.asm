@@ -54,11 +54,11 @@ LakeOfRageFlyPoint:
 
 LakeOfRageWesleyAndEngineer:
 	checkevent EVENT_LAKE_OF_RAGE_CIVILIANS
-	iftrue .NoEngineer
+	iftruefwd .NoEngineer
 	moveobject LAKEOFRAGE_LANCE, 18, 29
 .NoEngineer
 	readvar VAR_WEEKDAY
-	ifequal WEDNESDAY, .WesleyAppears
+	ifequalfwd WEDNESDAY, .WesleyAppears
 	disappear LAKEOFRAGE_WESLEY
 	endcallback
 
@@ -68,7 +68,7 @@ LakeOfRageWesleyAndEngineer:
 
 LakeOfRageFloodScript:
 	special Special_GetOvercastIndex
-	ifequal LAKE_OF_RAGE_OVERCAST, .flood
+	ifequalfwd LAKE_OF_RAGE_OVERCAST, .flood
 	changemapblocks LakeOfRage_BlockData
 	endcallback
 
@@ -86,7 +86,7 @@ LakeOfRageFishingGuruSign:
 	opentext
 	writetext .Text
 	checkevent EVENT_CLEARED_ROCKET_HIDEOUT
-	iftrue .Continue
+	iftruefwd .Continue
 	waitendtext
 
 .Continue:
@@ -101,14 +101,14 @@ LakeOfRageFishingGuruSign:
 
 LakeOfRageLanceScript:
 	checkevent EVENT_REFUSED_TO_HELP_LANCE_AT_LAKE_OF_RAGE
-	iftrue .AskForHelpAgain
+	iftruefwd .AskForHelpAgain
 	opentext
 	writetext .OverheardText
 	promptbutton
 	faceplayer
 	writetext .IntroText
 	yesorno
-	iffalse .Refused
+	iffalsefwd .Refused
 .Agreed:
 	writetext .YesText
 	waitbutton
@@ -223,7 +223,7 @@ LakeOfRageRedGyaradosScript:
 	loadwildmon GYARADOS, GYARADOS_RED_FORM, 35
 	loadvar VAR_BATTLETYPE, BATTLETYPE_RED_GYARADOS
 	startbattle
-	ifequal $1, .Continue
+	ifequalfwd $1, .Continue
 	disappear LAKEOFRAGE_RED_GYARADOS
 .Continue:
 	reloadmapafterbattle
@@ -255,7 +255,7 @@ WesleyScript:
 	faceplayer
 	opentext
 	checkevent EVENT_MET_WESLEY_OF_WEDNESDAY
-	iftrue .MetWesley
+	iftruefwd .MetWesley
 	writetext .MeetText
 	promptbutton
 	setevent EVENT_MET_WESLEY_OF_WEDNESDAY

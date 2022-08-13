@@ -1,8 +1,10 @@
 BugContest_SetCaughtContestMon:
-	ld a, [wContestMon]
+	ld a, [wContestMonSpecies]
 	and a
 	jr z, .firstcatch
 	ld [wNamedObjectIndex], a
+	ld a, [wContestMonForm]
+	ld [wNamedObjectIndex+1], a
 	call DisplayAlreadyCaughtText
 	call DisplayCaughtContestMonStats
 	call YesNoBox
@@ -12,6 +14,8 @@ BugContest_SetCaughtContestMon:
 	call .generatestats
 	ld a, [wTempEnemyMonSpecies]
 	ld [wNamedObjectIndex], a
+	ld a, [wOTPartyMon1Form]
+	ld [wNamedObjectIndex+1], a
 	call GetPokemonName
 	ld hl, .caughttext
 	jmp PrintText

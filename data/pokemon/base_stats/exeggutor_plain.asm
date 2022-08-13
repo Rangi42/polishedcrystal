@@ -4,9 +4,8 @@
 	db GRASS, PSYCHIC ; type
 	db 45 ; catch rate
 	db 212 ; base exp
-	db NO_ITEM ; item 1
-	db MARANGABERRY ; item 2
-	dn GENDER_F50, 3 ; gender ratio, step cycles to hatch
+	db NO_ITEM, MARANGABERRY ; held items
+	dn GENDER_F50, HATCH_MEDIUM_FAST ; gender ratio, step cycles to hatch
 	INCBIN "gfx/pokemon/exeggutor_plain/front.dimensions"
 	abilities_for EXEGGUTOR, CHLOROPHYLL, CHLOROPHYLL, HARVEST
 	db GROWTH_SLOW ; growth rate

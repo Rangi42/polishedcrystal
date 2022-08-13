@@ -34,6 +34,7 @@ INCLUDE "engine/events/checktime.asm"
 INCLUDE "engine/events/specials.asm"
 INCLUDE "engine/pokemon/health.asm"
 INCLUDE "engine/events/overworld.asm"
+INCLUDE "engine/events/overcast.asm"
 INCLUDE "engine/items/items.asm"
 INCLUDE "engine/battle/anim_hp_bar.asm"
 INCLUDE "engine/pokemon/move_mon.asm"
@@ -48,7 +49,7 @@ SECTION "Print Number", ROMX
 INCLUDE "engine/math/print_num.asm"
 
 
-SECTION "Bills PC", ROMX
+SECTION "Bill's PC", ROMX
 
 INCLUDE "engine/pokemon/bills_pc.asm"
 INCLUDE "engine/pokemon/bills_pc_ui.asm"
@@ -183,6 +184,11 @@ SECTION "Enemy Trainer Parties", ROMX
 INCLUDE "engine/battle/read_trainer_party.asm"
 
 
+SECTION "Psychic Inver", ROMX
+
+INCLUDE "engine/battle/pick_psychic_inver_party.asm"
+
+
 SECTION "Battle Core", ROMX
 
 INCLUDE "engine/battle/core.asm"
@@ -195,7 +201,21 @@ INCLUDE "engine/battle/endturn.asm"
 
 SECTION "Pokedex", ROMX
 
+INCLUDE "engine/pokedex/area.asm"
+INCLUDE "engine/pokedex/lcd.asm"
 INCLUDE "engine/pokedex/pokedex.asm"
+INCLUDE "engine/pokedex/unown_dex.asm"
+
+
+SECTION "Pokédex Footprints", ROMX
+
+INCLUDE "data/pokemon/footprint_pointers.asm"
+INCLUDE "gfx/pokemon/footprints.asm"
+
+
+SECTION "Pokedex Shapes", ROMX
+
+INCLUDE "gfx/shapes.asm"
 
 
 SECTION "Moves", ROMX
@@ -255,6 +275,7 @@ INCLUDE "engine/events/squirtbottle.asm"
 INCLUDE "engine/events/card_key.asm"
 INCLUDE "engine/events/basement_key.asm"
 INCLUDE "engine/events/sacred_ash.asm"
+INCLUDE "engine/events/sweet_honey.asm"
 
 
 SECTION "bank14", ROMX
@@ -266,7 +287,6 @@ INCLUDE "engine/pokemon/mon_stats.asm"
 INCLUDE "engine/pokemon/experience.asm"
 INCLUDE "engine/pokemon/switchpartymons.asm"
 INCLUDE "engine/gfx/load_pics.asm"
-INCLUDE "data/pokemon/names.asm"
 INCLUDE "engine/pokemon/natures.asm"
 
 
@@ -293,7 +313,6 @@ INCLUDE "engine/battle/abilities.asm"
 
 SECTION "bank21", ROMX
 
-INCLUDE "gfx/battle_anims.asm"
 INCLUDE "engine/events/halloffame.asm"
 INCLUDE "engine/gfx/copy_tilemap_at_once.asm"
 INCLUDE "engine/pokemon/abilities.asm"
@@ -316,15 +335,17 @@ INCLUDE "engine/tilesets/timeofday_pals.asm"
 INCLUDE "engine/battle/battle_transition.asm"
 INCLUDE "engine/events/field_moves.asm"
 INCLUDE "engine/events/magnet_train.asm"
+; The three files below assume they're within the same bank.
 INCLUDE "engine/gfx/sprites.asm"
 INCLUDE "engine/gfx/mon_icons.asm"
-INCLUDE "data/pokemon/menu_icon_pointers.asm"
+INCLUDE "data/pokemon/mini_icon_pointers.asm"
 
 
 SECTION "bank24", ROMX
 
 INCLUDE "engine/phone/phone.asm"
 INCLUDE "engine/rtc/timeset.asm"
+INCLUDE "engine/pokegear/phone.asm"
 INCLUDE "engine/pokegear/pokegear.asm"
 INCLUDE "engine/events/fish.asm"
 INCLUDE "engine/games/slot_machine.asm"
@@ -447,7 +468,6 @@ SECTION "bank3E", ROMX
 
 INCLUDE "engine/events/name_rater.asm"
 INCLUDE "engine/events/play_slow_cry.asm"
-INCLUDE "engine/pokedex/unown_dex.asm"
 INCLUDE "engine/events/magikarp.asm"
 INCLUDE "engine/battle/hidden_power.asm"
 INCLUDE "engine/battle/misc.asm"
@@ -464,7 +484,6 @@ INCLUDE "engine/events/wonder_trade.asm"
 SECTION "bank41", ROMX
 
 INCLUDE "engine/gfx/dma_transfer.asm"
-INCLUDE "gfx/emotes.asm"
 INCLUDE "engine/overworld/warp_connection.asm"
 INCLUDE "engine/battle/used_move_text.asm"
 
@@ -535,10 +554,19 @@ INCLUDE "data/items/apricorn_names.asm"
 INCLUDE "engine/items/print_item_description.asm"
 
 
-SECTION "Move and Landmark Text", ROMX
+SECTION "Pokemon Body Data", ROMX
+
+INCLUDE "data/pokemon/body_data.asm"
+
+
+SECTION "Pokemon Names", ROMX
+
+INCLUDE "data/pokemon/names.asm"
+
+
+SECTION "Move Names", ROMX
 
 INCLUDE "data/moves/names.asm"
-INCLUDE "engine/overworld/landmarks.asm"
 
 
 SECTION "Crystal Events", ROMX

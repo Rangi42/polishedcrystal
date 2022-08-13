@@ -29,7 +29,7 @@ Music_LookHiker_branch_f7433:
 	note __, 2
 	note F#, 2
 	note __, 6
-	loopchannel 0, Music_LookHiker_branch_f7433
+	jumpchannel Music_LookHiker_branch_f7433
 
 Music_LookHiker_Ch2:
 	dutycycle $0
@@ -65,7 +65,7 @@ Music_LookHiker_branch_f7457:
 	note D_, 1
 	note F#, 1
 	note D_, 1
-	loopchannel 0, Music_LookHiker_branch_f7457
+	jumpchannel Music_LookHiker_branch_f7457
 
 Music_LookHiker_Ch3:
 	vibrato $12, $24
@@ -87,7 +87,7 @@ Music_LookHiker_branch_f7477:
 	note A_, 2
 	note A#, 2
 	callchannel Music_LookHiker_branch_f748a
-	loopchannel 0, Music_LookHiker_branch_f7477
+	jumpchannel Music_LookHiker_branch_f7477
 
 Music_LookHiker_branch_f748a:
 	octave 4
@@ -111,4 +111,4 @@ Music_LookHiker_branch_f749a:
 	note G_, 2
 	note D_, 2
 	note G_, 2
-	loopchannel 0, Music_LookHiker_branch_f749a
+	jumpchannel Music_LookHiker_branch_f749a

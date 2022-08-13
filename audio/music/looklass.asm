@@ -27,7 +27,7 @@ Music_LookLass_branch_ed7bd:
 	note E_, 2
 	intensity $a3
 	note B_, 2
-	loopchannel 0, Music_LookLass_branch_ed7bd
+	jumpchannel Music_LookLass_branch_ed7bd
 
 Music_LookLass_Ch2:
 	stereopanning $f0
@@ -45,7 +45,7 @@ Music_LookLass_branch_ed7d5:
 	intensity $93
 	octave 3
 	note G#, 2
-	loopchannel 0, Music_LookLass_branch_ed7d5
+	jumpchannel Music_LookLass_branch_ed7d5
 
 Music_LookLass_Ch3:
 	notetype $c, $10
@@ -95,7 +95,7 @@ Music_LookLass_branch_ed7ef:
 	note F#, 2
 	note G#, 2
 	note A_, 2
-	loopchannel 0, Music_LookLass_branch_ed7ef
+	jumpchannel Music_LookLass_branch_ed7ef
 
 Music_LookLass_Ch4:
 	togglenoise $4
@@ -111,4 +111,4 @@ Music_LookLass_branch_ed81f:
 	note C#, 1
 	note C#, 1
 	note C#, 1
-	loopchannel 0, Music_LookLass_branch_ed81f
+	jumpchannel Music_LookLass_branch_ed81f

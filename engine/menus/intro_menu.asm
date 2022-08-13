@@ -112,12 +112,6 @@ ResetWRAM:
 	ld bc, wGameDataEnd - wBattlePointsEnd
 	rst ByteFill
 
-	; Fill party species array with terminators.
-	ld hl, wPartySpecies
-	ld bc, PARTY_LENGTH + 1
-	dec a ; ld a, -1
-	rst ByteFill
-
 	call Random
 	ldh a, [rLY]
 	ldh [hSecondsBackup], a
@@ -136,12 +130,9 @@ ResetWRAM:
 	call Random
 	ld [wSecretID + 1], a
 
-	ld hl, wPartyCount
-	call _ResetWRAM_InitList
-
 	xor a
+	ld [wPartyCount], a
 	ld [wMonStatusFlags], a
-
 	ld [wPlayerGender], a
 
 	ld hl, wNumItems
@@ -364,8 +355,19 @@ ConfirmContinue:
 WarnVBA:
 	call CheckVBA
 	ret z
+if !DEF(DEBUG)
 	ld hl, .WarnVBAText
 	jmp PrintText
+else
+	ld hl, wOptions1
+	push hl
+	set NO_TEXT_SCROLL, [hl]
+	ld hl, .WarnVBAText
+	call PrintText
+	pop hl
+	res NO_TEXT_SCROLL, [hl]
+	ret
+endc
 
 .WarnVBAText:
 	text_far _WarnVBAText
@@ -519,8 +521,8 @@ Continue_UnknownGameTime:
 
 Continue_DisplayBadgeCount:
 	push hl
-	ld hl, wJohtoBadges
-	ld b, 2
+	ld hl, wBadges
+	ld b, wBadgesEnd - wBadges
 	call CountSetBits
 	pop hl
 	ld de, wNumSetBits
@@ -529,15 +531,11 @@ Continue_DisplayBadgeCount:
 
 Continue_DisplayPokedexNumCaught:
 	ld a, [wStatusFlags]
-	bit 0, a ; Pokedex
+	bit STATUSFLAGS_POKEDEX_F, a
 	ret z
-	push hl
-	ld hl, wPokedexCaught
-	ld b, (NUM_POKEMON + 7) / 8
-	call CountSetBits
-	pop hl
-	ld de, wNumSetBits
-	lb bc, 1, 3
+	farcall Pokedex_CountSeenOwn
+	ld de, wTempDexOwn
+	lb bc, 2, 3
 	jmp PrintNum
 
 Continue_DisplayGameTime:
@@ -580,10 +578,13 @@ if !DEF(DEBUG)
 	call FadeToWhite
 	call ClearTileMap
 
-	ld a, SYLVEON
+	ld a, LOW(SYLVEON)
 	ld [wCurSpecies], a
 	ld [wCurPartySpecies], a
-	call GetBaseData ; [wCurForm] doesn't matter for Sylveon
+	ld a, HIGH(SYLVEON) << MON_EXTSPECIES_F
+	ld [wCurForm], a
+	ld [wTempMonForm], a
+	call GetBaseData
 
 	hlcoord 6, 4
 	call PrepMonFrontpic
@@ -651,8 +652,11 @@ ElmText1:
 ElmText2:
 	text_far _ElmText2
 	text_asm
-	ld a, SYLVEON
-	call PlayCry
+	xor a
+	ld [wStereoPanningMask], a
+	ld [wCryTracks], a
+	ld de, SYLVEON - 1
+	call PlayCryHeader
 	call WaitSFX
 	ld hl, ElmText3
 	ret
@@ -678,35 +682,28 @@ ElmText7:
 	text_end
 
 InitGender:
-	ld hl, .WhitePal
-	ld de, wBGPals1 palette 0
-	ld bc, 1 palettes
-	call FarCopyColorWRAM
 	ld c, 15
-	call FadePalettes
-
+	call FadeToWhite
 	call ClearTileMap
-	call ApplyAttrAndTilemapInVBlank
-	call SetPalettes
 
-	ld a, CGB_INTRO_PALS
+	call InitGenderGraphics
+
+	ld a, CGB_INTRO_GENDER_PALS
 	call GetCGBLayout
 	call InitIntroGradient
-	call SetPalettes
+	call Intro_RotatePalettesLeftFrontpic
 
 	ld hl, AreYouABoyOrAreYouAGirlText
 	call PrintText
 
-	ld hl, .MenuDataHeader
-	call LoadMenuHeader
 	call ApplyAttrAndTilemapInVBlank
-	call VerticalMenu
-	call CloseWindow
-	ld a, [wMenuCursorY]
-	dec a
-	ld [wPlayerGender], a
+	call GenderMenu
 
+	ld c, 15
+	call FadeToWhite
 	call ClearTileMap
+	call ClearTileMap
+
 	call DrawIntroPlayerPic
 
 	ld a, CGB_INTRO_PALS
@@ -714,12 +711,7 @@ InitGender:
 	call InitIntroGradient
 	call Intro_RotatePalettesLeftFrontpic
 
-	ld hl, SoYoureABoyText
-	ld a, [wPlayerGender]
-	and a
-	jr z, .boy
-	ld hl, SoYoureAGirlText
-.boy
+	ld hl, SoThisIsYouText
 	call PrintText
 
 	call YesNoBox
@@ -739,32 +731,139 @@ else
 	RGB_MONOCHROME_WHITE
 endc
 
-.MenuDataHeader:
-	db $40 ; flags
-	menu_coords 13, 7, 19, 11
-	dw .MenuData2
-	db 1 ; default option
+GenderMenu::
+	ld a, [wPlayerGender]
+	and a
+	ld hl, wBGPals2 palette 2 + 2
+	bccoord 6, 3
+	decoord 13, 3
+	jr z, .got_coords
+	ld hl, wBGPals2 palette 0 + 2
+	bccoord 13, 3
+	decoord 6, 3
+.got_coords
+	ld a, $62
+	ld [bc], a
+	inc bc
+	inc a
+	ld [bc], a
+	ld a, " "
+	ld [de], a
+	inc de
+	ld [de], a
 
-.MenuData2:
-	db $c1 ; flags
-	db 2 ; items
-	db "Boy@"
-	db "Girl@"
+	; Apply transparency to the unselected option.
+
+	; First, undo any previously applied transparency effect.
+	push hl
+	call SetPalettes
+	pop hl
+
+	ld a, BANK(wBGPals2)
+	ldh [rSVBK], a
+
+	ld d, 3
+.transparency_loop
+	ld a, [hli]
+	ld c, a
+	ld a, [hld]
+	ld b, a
+	farcall ApplyWhiteTransparency
+	ld a, c
+	ld [hli], a
+	ld a, b
+	ld [hli], a
+	dec d
+	jr nz, .transparency_loop
+
+	ld a, BANK(wPlayerGender)
+	ldh [rSVBK], a
+
+	ld b, 1
+	call SafeCopyTilemapAtOnce
+
+.loop
+	call DelayFrame
+	call GetJoypad
+	ldh a, [hJoyDown]
+	bit A_BUTTON_F, a
+	ret nz
+	bit D_RIGHT_F, a
+	jr nz, .d_right
+	bit D_LEFT_F, a
+	jr z, .loop
+
+	xor a
+	jr .got_gender
+.d_right
+	ld a, 1 << PLAYERGENDER_FEMALE_F
+.got_gender
+	ld [wPlayerGender], a
+	jr GenderMenu
 
 AreYouABoyOrAreYouAGirlText:
 	; Are you a boy? Or are you a girl?
 	text_far Text_AreYouABoyOrAreYouAGirl
 	text_end
 
-SoYoureABoyText:
-	; So you're a boy?
-	text_far Text_SoYoureABoy
+SoThisIsYouText:
+	; So this is you?
+	text_far Text_SoThisIsYou
 	text_end
 
-SoYoureAGirlText:
-	; So you're a girl?
-	text_far Text_SoYoureAGirl
-	text_end
+InitGenderGraphics:
+	ld hl, CalPic
+	ld de, vTiles2 tile $00
+	lb bc, BANK(CalPic), 7 * 7
+	call DecompressRequest2bpp
+	ld hl, CarriePic
+	ld de, vTiles2 tile $31
+	lb bc, BANK(CarriePic), 7 * 7
+	call DecompressRequest2bpp
+
+; Shift the "▼" character three pixels to the right across two tiles
+	farcall LoadStandardFontPointer
+	ld de, ("▼" - $80) * LEN_1BPP_TILE
+	add hl, de
+	ld de, wOverworldMapBlocks
+	ld c, LEN_1BPP_TILE
+.loop
+	ld a, BANK(FontTiles)
+	call GetFarByte
+	ld b, 0
+rept 3
+	srl a
+	rr b
+endr
+	ld [de], a
+	push hl
+	ld hl, LEN_2BPP_TILE
+	add hl, de
+	ld [hl], b
+	inc hl
+	ld [hl], b
+	pop hl
+	inc hl
+	inc de
+	ld [de], a
+	inc de
+	dec c
+	jr nz, .loop
+	ld hl, vTiles2 tile $62
+	ld de, wOverworldMapBlocks
+	lb bc, BANK(wOverworldMapBlocks), 2
+	call Request2bppInWRA6
+
+	xor a
+	ldh [hGraphicStartTile], a
+	hlcoord 3, 4
+	lb bc, 7, 7
+	predef PlaceGraphic
+	ld a, $31
+	ldh [hGraphicStartTile], a
+	hlcoord 10, 4
+	lb bc, 7, 7
+	predef_jump PlaceGraphic
 
 NamePlayer:
 	ld b, $1 ; player
@@ -942,7 +1041,7 @@ StartTitleScreen:
 	ld hl, rIE
 	res LCD_STAT, [hl]
 	ld hl, rLCDC
-	res 2, [hl] ; 8x8 sprites
+	res rLCDC_SPRITE_SIZE, [hl]
 	call ClearScreen
 	call ApplyAttrAndTilemapInVBlank
 	xor a

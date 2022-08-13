@@ -4,9 +4,8 @@
 	db FIGHTING, FIGHTING ; type
 	db 45 ; catch rate
 	db 140 ; base exp
-	db NO_ITEM ; item 1
-	db NO_ITEM ; item 2
-	dn GENDER_F0, 4 ; gender ratio, step cycles to hatch
+	db NO_ITEM, NO_ITEM ; held items
+	dn GENDER_F0, HATCH_MEDIUM_SLOW ; gender ratio, step cycles to hatch
 	INCBIN "gfx/pokemon/hitmonchan/front.dimensions"
 	abilities_for HITMONCHAN, KEEN_EYE, IRON_FIST, INNER_FOCUS
 	db GROWTH_MEDIUM_FAST ; growth rate

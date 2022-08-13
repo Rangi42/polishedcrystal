@@ -17,7 +17,7 @@ StatsScreenInit:
 	call LoadFontsBattleExtra
 	ld hl, GFX_Stats
 	ld de, vTiles2 tile $31
-	lb bc, BANK(GFX_Stats), 42
+	lb bc, BANK(GFX_Stats), 41
 	call DecompressRequest2bpp
 	ld a, [wTempMonBox]
 	ld b, a
@@ -116,9 +116,8 @@ EggStatsInit:
 	call EggStatsScreen
 	pop af
 	ld [wCurPartySpecies], a
-	ld a, [wJumptableIndex]
-	inc a
-	ld [wJumptableIndex], a
+	ld hl, wJumptableIndex
+	inc [hl]
 	ret
 
 EggStatsJoypad:
@@ -148,9 +147,8 @@ StatsScreen_LoadPage:
 	call StatsScreen_LoadGFX
 	ld hl, wStatsScreenFlags
 	res 4, [hl]
-	ld a, [wJumptableIndex]
-	inc a
-	ld [wJumptableIndex], a
+	ld hl, wJumptableIndex
+	inc [hl]
 	ret
 
 StatsScreen_GetJoypad:
@@ -238,19 +236,15 @@ StatsScreen_InitUpperHalf:
 	ld a, [wCurForm]
 	ld b, a
 	call GetPokedexNumber
-	ld a, b
-	ld [wStringBuffer1], a
-	ld a, c
-	ld [wStringBuffer1 + 1], a
+	ld d, b
+	ld e, c
 	hlcoord 8, 0
 	ld a, "№"
 	ld [hli], a
 	ld a, "."
 	ld [hli], a
-	hlcoord 10, 0
 	lb bc, PRINTNUM_LEADINGZEROS | 2, 3
-	ld de, wStringBuffer1
-	call PrintNum
+	call PrintNumFromReg ; sets de
 	hlcoord 14, 0
 	call PrintLevel
 	ld hl, wTempMonNickname
@@ -262,9 +256,9 @@ StatsScreen_InitUpperHalf:
 	hlcoord 9, 4
 	ld a, "/"
 	ld [hli], a
-	ld a, [wCurSpecies]
-	ld [wNamedObjectIndex], a
-	call GetPokemonName
+	push hl
+	call GetPartyPokemonName
+	pop hl
 	rst PlaceString
 	call StatsScreen_PlacePageSwitchArrows
 	jr StatsScreen_PlaceShinyIcon
@@ -319,7 +313,7 @@ StatsScreen_PlaceHorizontalDivider:
 .got_vertical_pos
 	ld [hl], $37
 .skip_t_divider
-	hlcoord 0, 7, wAttrMap
+	hlcoord 0, 7, wAttrmap
 	ld a, c
 	add $3
 	ld b, SCREEN_WIDTH
@@ -426,12 +420,10 @@ StatsScreen_LoadGFX:
 	hlcoord 0, 9
 	rst PlaceString
 	ld a, [wTempMonPokerusStatus]
-	ld b, a
-	and $f
-	jr nz, .HasPokerus
-	ld a, b
-	and $f0
+	and POKERUS_MASK
 	jr z, .NotImmuneToPkrs
+	cp POKERUS_CURED
+	jr nz, .HasPokerus
 	hlcoord 8, 8
 	ld [hl], "."
 .NotImmuneToPkrs:
@@ -571,19 +563,23 @@ StatsScreen_LoadGFX:
 	ret
 
 .Status_Type:
-	db   "Status/"
-	next "Type/@"
+	text "Status/"
+	next "Type/"
+	done
 
 .OK_str:
-	db " OK@"
+	text " OK"
+	done
 
 .OT_ID_str:
-	db   "OT/"
-	next "<ID>№.@"
+	text "OT/"
+	next "<ID>№."
+	done
 
 .Rental_OT:
-	db "Rental"
-	next1 "#mon@"
+	text  "Rental"
+	next1 "#mon"
+	done
 
 .ExpPointStr:
 	db "Exp.Points@"
@@ -724,6 +720,7 @@ StatsScreen_LoadGFX:
 	call GetAbility
 	; PlaceString as used in PrintAbility doesn't preserve any register, so push it.
 	push bc
+	hlcoord 3, 13
 	farcall PrintAbility
 	pop bc
 	farjp PrintAbilityDescription
@@ -777,10 +774,10 @@ TN_PrintLV:
 	ld l, c
 	inc hl
 ;	hlcoord 11, 9
-	and a
-	jr z, .traded
-	cp 1
+	inc a
 	jr z, .hatched
+	dec a
+	jr z, .traded
 	ld [wBuffer2], a
 	ld de, .str_level
 	rst PlaceString
@@ -900,8 +897,8 @@ TN_PrintCharacteristics:
 INCLUDE "data/characteristics.asm"
 
 StatsScreen_PlaceFrontpic:
-	ld hl, wTempMonForm
-	predef GetVariant
+	ld a, [wTempMonForm]
+	ld [wCurForm], a
 	call StatsScreen_GetAnimationParam
 	jr nc, .no_cry
 	call .Animate
@@ -1024,30 +1021,35 @@ EggStatsScreen:
 	jmp PlaySFX
 
 EggString:
-	db   "Egg"
+	text "Egg"
 	next "OT/?????"
-	next "<ID>№.?????@"
+	next "<ID>№.?????"
+	done
 
 EggSoonString:
-	db   "It's making sounds"
+	text "It's making sounds"
 	next "inside. It's going"
-	next "to hatch soon!@"
+	next "to hatch soon!"
+	done
 
 EggCloseString:
-	db   "It moves around"
+	text "It moves around"
 	next "inside sometimes."
 	next "It must be close"
-	next "to hatching.@"
+	next "to hatching."
+	done
 
 EggMoreTimeString:
-	db   "Wonder what's"
+	text "Wonder what's"
 	next "inside? It needs"
-	next "more time, though.@"
+	next "more time, though."
+	done
 
 EggALotMoreTimeString:
-	db   "This Egg needs a"
+	text "This Egg needs a"
 	next "lot more time to"
-	next "hatch.@"
+	next "hatch."
+	done
 
 StatsScreen_AnimateEgg:
 	call StatsScreen_GetAnimationParam

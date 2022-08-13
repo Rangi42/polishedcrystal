@@ -95,7 +95,7 @@ Music_Route101RSE_Ch1_loop:
 	note A_, 2
 	intensity $64
 	note A_, 2
-	loopchannel 0, Music_Route101RSE_Ch1_loop
+	jumpchannel Music_Route101RSE_Ch1_loop
 
 Music_Route101RSE_Ch1_branch_1:
 	octave 3
@@ -277,7 +277,7 @@ Music_Route101RSE_Ch2_loop:
 	note A_, 8
 	intensity $97
 	note A_, 8
-	loopchannel 0, Music_Route101RSE_Ch2_loop
+	jumpchannel Music_Route101RSE_Ch2_loop
 
 Music_Route101RSE_Ch2_branch_1:
 	octave 1
@@ -416,7 +416,7 @@ Music_Route101RSE_Ch3_loop:
 	intensity $23
 	note C#, 6
 	intensity $13
-	loopchannel 0, Music_Route101RSE_Ch3_loop
+	jumpchannel Music_Route101RSE_Ch3_loop
 
 Music_Route101RSE_Ch3_branch_1:
 	octave 5
@@ -526,7 +526,7 @@ Music_Route101RSE_Ch4_loop_2:
 	note D#, 1
 	note D#, 1
 	note D_, 4
-	loopchannel 0, Music_Route101RSE_Ch4_loop
+	jumpchannel Music_Route101RSE_Ch4_loop
 
 Music_Route101RSE_Ch4_branch_1:
 	note D#, 4

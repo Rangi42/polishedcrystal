@@ -1793,7 +1793,7 @@ StepFunction_PlayerStairs:
 	jmp IncrementObjectStructField1c
 
 .InitVertical:
- 	ld hl, OBJECT_ACTION
+	ld hl, OBJECT_ACTION
 	add hl, bc
 	ld [hl], OBJECT_ACTION_STAND
 	ld a, [wPlayerGoingUpStairs]
@@ -1917,6 +1917,8 @@ ApplyMovementToFollower:
 	cp d
 	ret nz
 	ld a, e
+	cp movement_paired_step_right
+	jr z, .step_left
 	cp movement_step_sleep_1
 	ret z
 	cp movement_step_end
@@ -1925,6 +1927,7 @@ ApplyMovementToFollower:
 	ret z
 	cp movement_turn_step_right + 1
 	ret c
+.queue_movement
 	push af
 	ld hl, wFollowerMovementQueueLength
 	inc [hl]
@@ -1935,6 +1938,13 @@ ApplyMovementToFollower:
 	pop af
 	ld [hl], a
 	ret
+
+; Jessie is "followed" by James on Route 48 when they
+; walk in and teleport out from opposite sides.
+; Jessie's movements need to be inverted for James.
+.step_left
+	ld a, movement_step_left
+	jr .queue_movement
 
 GetFollowerNextMovementByte:
 	ld hl, wFollowerMovementQueueLength
@@ -2718,9 +2728,9 @@ ApplyBGMapAnchorToObjects:
 	ld [wPlayerBGMapOffsetY], a
 	jmp PopBCDEHL
 
-PRIORITY_LOW  EQU $10
-PRIORITY_NORM EQU $20
-PRIORITY_HIGH EQU $30
+DEF PRIORITY_LOW  EQU $10
+DEF PRIORITY_NORM EQU $20
+DEF PRIORITY_HIGH EQU $30
 
 InitSprites:
 	call .DeterminePriorities

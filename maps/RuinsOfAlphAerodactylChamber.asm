@@ -26,18 +26,18 @@ RuinsOfAlphAerodactylChamber_MapScriptHeader:
 
 RuinsofAlphAerodactylChamberTrigger0:
 	checkevent EVENT_WALL_OPENED_IN_AERODACTYL_CHAMBER
-	iffalse .End
+	iffalsefwd .End
 	sdefer RuinsOfAlphAerodactylChamberWallOpenScript
 .End
 	end
 
 RuinsOfAlphAerodactylChamberHiddenDoorsCallback:
 	checkevent EVENT_WALL_OPENED_IN_AERODACTYL_CHAMBER
-	iftrue .WallOpen
+	iftruefwd .WallOpen
 	changeblock 4, 0, $24
 .WallOpen:
 	checkevent EVENT_SOLVED_AERODACTYL_PUZZLE
-	iffalse .FloorClosed
+	iffalsefwd .FloorClosed
 	endcallback
 
 .FloorClosed:
@@ -62,7 +62,7 @@ MapRuinsofAlphAerodactylChamberSignpost2Script:
 	setval $2
 	special Special_UnownPuzzle
 	closetext
-	iftrue .PuzzleComplete
+	iftruefwd .PuzzleComplete
 	end
 
 .PuzzleComplete:
@@ -88,7 +88,7 @@ MapRuinsofAlphAerodactylChamberSignpost3Script:
 	unowntypeface
 	showtext RuinsOfAlphAerodactylChamberDescriptionText
 	restoretypeface
-	special MapCallbackSprites_LoadUsedSpritesGFX
+	special RefreshSprites
 	end
 
 MapRuinsofAlphAerodactylChamberSignpost5Script:
@@ -97,9 +97,9 @@ MapRuinsofAlphAerodactylChamberSignpost5Script:
 MapRuinsofAlphAerodactylChamberSignpost4Script:
 	opentext
 	checkevent EVENT_RUINS_OF_ALPH_OUTSIDE_TOURIST_YOUNGSTERS
-	iftrue .unsolved
+	iftruefwd .unsolved
 	writetext RuinsOfAlphChambersItsUnownText
-	sjump .unownwords
+	sjumpfwd .unownwords
 .unsolved
 	writetext RuinsOfAlphAerodactylChamberWallPatternLeftText
 .unownwords

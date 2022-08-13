@@ -61,16 +61,14 @@ GetPkmnSpecies:
 	; WILDMON
 
 .partymon
-	ld hl, wPartySpecies
+	ld hl, wPartyMon1Species
 	jr .done
 
 .otpartymon
-	ld hl, wOTPartySpecies
+	ld hl, wOTPartyMon1Species
 .done
 	ld a, [wCurPartyMon]
-	ld e, a
-	ld d, 0
-	add hl, de
+	call GetPartyLocation
 	ld a, [hl]
 .done2
 	ld [wCurPartySpecies], a

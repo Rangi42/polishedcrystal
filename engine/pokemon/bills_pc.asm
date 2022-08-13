@@ -248,11 +248,6 @@ SwapPartyMons:
 	dec e
 	ld d, c
 
-	; Swap species in the species array
-	ld hl, wPartySpecies
-	ld bc, 1
-	call DoPartySwap
-
 	; Swap partymon struct
 	ld hl, wPartyMon1
 	ld c, PARTYMON_STRUCT_LENGTH
@@ -448,9 +443,8 @@ GetStorageBoxPointer:
 	push hl
 	push bc
 	ld a, b
-	ld hl, sNewBox1Entries
+	ld hl, sNewBox1Entries - (sNewBox2 - sNewBox1)
 	ld bc, sNewBox2 - sNewBox1
-	dec a
 	rst AddNTimes
 	pop bc
 	push bc
@@ -485,14 +479,14 @@ UpdateStorageBoxMonFromTemp:
 	ld a, [wTempMonBox]
 	ld b, a
 	and a
-	jmp z, CopyBetweenPartyAndTemp
+	jr z, CopyBetweenPartyAndTemp
 
 	; Otherwise, we need to allocate a new box entry.
 	; Erase the current entry before trying to find a new one.
 	; This code exists to gurantee that should the storage commit work once,
 	; it will always continue to work for the same tempmon session without an
-	; enforced save inbetween. Without it, the code could write a new 314th
-	; entry the first write, then fail to reuse the same entry later.
+	; enforced save inbetween. Without it, the code could use up the last entry
+	; the first write, then fail to reuse the same entry later.
 	call GetStorageBoxPointer
 	push de
 	ld e, 0
@@ -502,6 +496,8 @@ UpdateStorageBoxMonFromTemp:
 	pop bc
 	jr nc, .found_entry
 	pop de
+
+	; We failed to find a new entry. Restore the current box pointer.
 	call SetStorageBoxPointer
 	or 1
 	ret
@@ -536,9 +532,8 @@ SetStorageBoxPointer:
 
 	; Get the correct box.
 	ld a, b
-	ld hl, sNewBox1Entries
+	ld hl, sNewBox1Entries - (sNewBox2 - sNewBox1)
 	ld bc, sNewBox2 - sNewBox1
-	dec a
 	rst AddNTimes
 	pop bc
 	push bc
@@ -576,11 +571,6 @@ SetStorageBoxPointer:
 	; Then delete the partymon.
 	ld hl, wPartyCount
 	dec [hl]
-	ld c, [hl]
-	ld b, 0
-	ld hl, wPartySpecies
-	add hl, bc
-	ld [hl], -1
 	jr .done
 
 .not_empty
@@ -615,11 +605,6 @@ CopyBetweenPartyAndTemp:
 ; If bit 7 of b is set, copies between wOTPartyMons instead of wPartyMons.
 ; If bit 0 of b is set, copies from party to temp, otherwise the reverse.
 	dec c
-	ld hl, wPartySpecies
-	ld de, wTempMonSpecies
-	ld a, 1
-	call .Copy
-
 	ld hl, wPartyMon1
 	ld de, wTempMon
 	ld a, PARTYMON_STRUCT_LENGTH
@@ -682,13 +667,8 @@ AddStorageMon:
 	push de
 	call EncodeTempMon
 	pop de
-	call OpenStorageDB
+	call OpenPokeDB
 
-	ld hl, sBoxMons1Mons
-	ld bc, SAVEMON_STRUCT_LENGTH
-	ld a, e
-	dec a
-	rst AddNTimes
 	ld d, h
 	ld e, l
 	ld hl, wEncodedTempMon
@@ -699,15 +679,56 @@ AddStorageMon:
 	call CloseSRAM
 	jmp PopBCDEHL
 
-OpenStorageDB:
-; Opens pokedb bank given by d (1 or 2). Leaves SRAM open, obviously.
+OpenPokeDB:
+; Opens pokedb bank and sets hl to relevant entry in de.
 	ld a, d
 	dec a
-	ld a, BANK(sBoxMons1)
+	ld hl, .Bank1Pointers
 	jr z, .got_bank
-	ld a, BANK(sBoxMons2)
+	ld hl, .Bank2Pointers
 .got_bank
-	jmp GetSRAMBank
+	ld a, e
+	dec a
+	sub MONDB_ENTRIES_A
+	call nc, .NextPointer
+	; for optimization purposes, pointer list is A -> C -> B
+	sub MONDB_ENTRIES_B
+	call c, .NextPointer
+
+	ld a, [hli]
+	call GetSRAMBank
+	ld a, [hli]
+	ld h, [hl]
+	ld l, a
+	ld bc, SAVEMON_STRUCT_LENGTH
+	ld a, e
+	dec a
+	rst AddNTimes
+	ret
+
+.NextPointer:
+	inc hl
+	inc hl
+	inc hl
+	ret
+
+MACRO pokedb_section
+	db BANK(\1)
+	dw (\1) - (\2) * SAVEMON_STRUCT_LENGTH
+ENDM
+
+.Bank1Pointers:
+	; Because we want to point starting from entry 0, and e ends up being above
+	; MONDB_ENTRIES_A (and beyond) for section C and B, include the offset.
+	; This means that for example e=len(A)+1 points to the first entry in
+	; pokedb section B.
+	pokedb_section sBoxMons1AMons, 0
+	pokedb_section sBoxMons1CMons, MONDB_ENTRIES_A + MONDB_ENTRIES_B
+	pokedb_section sBoxMons1BMons, MONDB_ENTRIES_A
+.Bank2Pointers:
+	pokedb_section sBoxMons2AMons, 0
+	pokedb_section sBoxMons2CMons, MONDB_ENTRIES_A + MONDB_ENTRIES_B
+	pokedb_section sBoxMons2BMons, MONDB_ENTRIES_A
 
 EncodeTempMon:
 ; Encodes party_struct wTempMon in-place to savemon_struct wEncodedTempMon.
@@ -756,17 +777,17 @@ EncodeTempMon:
 	ld b, wEncodedTempMonEnd - wEncodedTempMonNickname
 .charmap_loop
 	ld a, [hl]
-	; " " -> $7a
+	; " " ($7f) -> $7a
 	ld c, $7a | ~%01111111
 	cp " "
 	jr z, .replace
-	; "@" -> $7b
+	; "@" ($53) -> $7b
 	inc c
 	cp "@"
 	jr z, .replace
-	; "<NULL>" -> $7c
+	; "<START>" ($00) -> $7c
 	inc c
-	and a
+	and a ; cp "<START>"
 	jr nz, .removebit
 .replace
 	ld a, c
@@ -787,7 +808,8 @@ ChecksumTempMon:
 	call .DoChecksum
 
 	; nickname + OT. This skips one CRC multiplier due to a double-increase.
-	; Counterintuitive but harmless.
+	; Counterintuitive but harmless (originally a mistake, but fixing would
+	; needlessly break saves...).
 	ld bc, wEncodedTempMonNickname
 	ld d, $80 | (SAVEMON_STRUCT_LENGTH - SAVEMON_NICKNAME)
 	call .DoChecksum
@@ -865,11 +887,11 @@ DecodeTempMon:
 	ld c, "@"
 	jr z, .replace
 	dec a
-	ld c, 0
-	jr z, .replace
+	jr z, .replace_a ; a is "<START>" ($00) iff the zero flag is set
 
 	; Reverse the previous decrements
 	add $fc
+.replace_a
 	ld c, a
 .replace
 	ld [hl], c
@@ -1043,7 +1065,7 @@ InitializeBoxes:
 	ld hl, sNewBox1
 .name_loop
 	push bc
-	ld d, b
+	ld e, b
 	ld bc, sNewBox1Name - sNewBox1
 	xor a
 	rst ByteFill
@@ -1054,15 +1076,13 @@ InitializeBoxes:
 	dec hl
 	pop de
 	ld a, NUM_BOXES + 1
-	sub d
-	sub 10
-	add "0" + 10
-	jr c, .next
-	ld [hl], "1" ; no-optimize *hl++|*hl-- = N
-	inc hl
-	sub 10
-.next
-	ld [hli], a
+	sub e
+	ld e, a
+	ld d, 0
+	push bc
+	lb bc, PRINTNUM_LEFTALIGN, 2
+	call PrintNumFromReg
+	pop bc
 	ld [hl], "@"
 	pop hl
 	ld c, sNewBox2 - sNewBox1Name
@@ -1121,31 +1141,28 @@ InitializeBoxes:
 
 INCLUDE "data/pc/default_box_themes.asm"
 
-GetBoxTheme:
-; Returns box b's theme in a.
-	ld c, 0
-	jr CopyBoxTheme
-
-SetBoxTheme:
-; Sets box b's theme to a.
-	ld c, 1
-	; fallthrough
-CopyBoxTheme:
-	push af
+_PointBoxTheme:
+; Return's [wCurBox]'s theme pointer in hl.
+; Also opens [wCurBox]'s SRAM bank.
 	ld a, BANK(sNewBox1)
 	call GetSRAMBank
 	ld hl, sNewBox1Theme
-	ld a, b
-	dec a
-	push bc
+	ld a, [wCurBox]
 	ld bc, sNewBox2 - sNewBox1
 	rst AddNTimes
-	pop bc
-	pop af
-	dec c
-	jr z, .set_theme
+	ret
+
+GetBoxTheme:
+; Returns [wCurBox]'s theme in a.
+	call _PointBoxTheme
 	ld a, [hl]
-.set_theme
+	jmp CloseSRAM
+
+SetBoxTheme:
+; Sets [wCurBox]'s theme to a.
+	push af
+	call _PointBoxTheme
+	pop af
 	ld [hl], a
 	jmp CloseSRAM
 
@@ -1310,14 +1327,7 @@ GetStorageMon:
 	call IsStorageUsed
 	jr z, .done ; entry not found
 
-	call OpenStorageDB
-
-	; Get the correct pointer
-	ld hl, sBoxMons1Mons
-	ld bc, SAVEMON_STRUCT_LENGTH
-	ld a, e
-	dec a
-	rst AddNTimes
+	call OpenPokeDB
 
 	; Write to wEncodedTempMon and then decode it.
 	ld de, wEncodedTempMon
@@ -1384,35 +1394,30 @@ StorageFlagAction:
 	predef_jump FlagPredef
 
 Special_CurBoxFullCheck:
-; Returns 0 if wTempMonBox = wCurBox
-; Returns 1 if wTempMonBox != wCurBox
+; Returns [hScriptVar] = zero if wTempMonBox == wCurBox
+; Returns [hScriptVar] = nonzero if wTempMonBox != wCurBox
 	call CurBoxFullCheck
-	ld a, TRUE
-	jr nz, .ok
-	dec a
-.ok
 	ldh [hScriptVar], a
 	ret
 
 CurBoxFullCheck:
 ; Requires wTempMonBox to have sent mon box (returned in b)
-; Returns 0 if wTempMonBox = wCurBox (or wTempMonBox = 0)
-; Returns 1 if wTempMonBox != wCurBox
+; Returns z if wTempMonBox == wCurBox (or wTempMonBox = 0)
+; Returns nz if wTempMonBox != wCurBox
 ;   Also returns name of old wCurBox in wStringBuffer1
 ;   and sets wCurBox to wTempMonBox in this case
 	ld a, [wTempMonBox]
 	and a
 	ret z
+	dec a
 	ld b, a
 	ld a, [wCurBox]
-	inc a
 	cp b
 	ret z
 	push bc
 	call GetCurBoxName
 	pop bc
 	ld a, b
-	dec a
 	ld [wCurBox], a
 	or 1
 	ret

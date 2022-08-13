@@ -13,9 +13,8 @@ else
 endc
 	db 90 ; catch rate
 	db 134 ; base exp
-	db NO_ITEM ; item 1
-	db NO_ITEM ; item 2
-	dn GENDER_F50, 2 ; gender ratio, step cycles to hatch
+	db NO_ITEM, NO_ITEM ; held items
+	dn GENDER_F50, HATCH_FAST ; gender ratio, step cycles to hatch
 	INCBIN "gfx/pokemon/ariados/front.dimensions"
 	abilities_for ARIADOS, SWARM, INSOMNIA, SNIPER
 	db GROWTH_FAST ; growth rate

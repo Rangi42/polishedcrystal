@@ -79,10 +79,19 @@ SpriteAnimOAMData:
 	dbw $00, .OAMData_MaxStatSparkle     ; SPRITE_ANIM_OAMSET_MAX_STAT_SPARKLE
 	dbw $00, .OAMData_HyperTrainedStat   ; SPRITE_ANIM_OAMSET_HYPER_TRAINED_STAT
 	dbw $00, .OAMData_PcCursor           ; SPRITE_ANIM_OAMSET_PC_CURSOR
+	dbw $00, .OAMData_PcCursorItem       ; SPRITE_ANIM_OAMSET_PC_CURSOR_ITEM
 	dbw $00, .OAMData_PcQuick            ; SPRITE_ANIM_OAMSET_PC_QUICK
 	dbw $00, .OAMData_PcMode             ; SPRITE_ANIM_OAMSET_PC_MODE
 	dbw $00, .OAMData_PcMode2            ; SPRITE_ANIM_OAMSET_PC_MODE2
 	dbw $00, .OAMData_PcPack             ; SPRITE_ANIM_OAMSET_PC_PACK
+	dbw $00, .OAMData_DexCursor          ; SPRITE_ANIM_OAMSET_DEX_CURSOR
+	dbw $1e, .OAMData_DexUnownCursor     ; SPRITE_ANIM_OAMSET_DEX_UNOWN_CURSOR
+	dbw $40, .OAMData_DexSlowpoke        ; SPRITE_ANIM_OAMSET_DEX_SLOWPOKE_1
+	dbw $43, .OAMData_DexSlowpoke        ; SPRITE_ANIM_OAMSET_DEX_SLOWPOKE_2
+	dbw $46, .OAMData_DexSlowpoke        ; SPRITE_ANIM_OAMSET_DEX_SLOWPOKE_3
+	dbw $49, .OAMData_DexSlowpoke        ; SPRITE_ANIM_OAMSET_DEX_SLOWPOKE_4
+	dbw $4c, .OAMData_DexSlowpoke        ; SPRITE_ANIM_OAMSET_DEX_SLOWPOKE_5
+	dbw $09, .OAMData_TownMapFly         ; SPRITE_ANIM_OAMSET_TOWN_MAP_FLY
 	assert_table_length NUM_SPRITE_ANIM_OAMSETS
 
 .OAMData_1x1_Palette0:
@@ -641,7 +650,7 @@ SpriteAnimOAMData:
 	dsprite  2,  0,  2,  0, $01, $1
 
 .OAMData_PcCursor:
-	db 9
+	db 12
 	; Cursor
 	dsprite  0,  0,  0,  0, $04, $1 | VRAM_BANK_1
 	dsprite  0,  0,  1,  0, $04, $2 | VRAM_BANK_1 | X_FLIP
@@ -654,20 +663,36 @@ SpriteAnimOAMData:
 	dsprite  2,  2,  0,  0, $0a, $3 | VRAM_BANK_1
 	dsprite  2,  2,  1,  0, $0b, $3 | VRAM_BANK_1
 
-	; Mini shadow (TODO)
+	; Mini shadow
+	dsprite  1,  2,  0,  0, $0c, $6 | VRAM_BANK_1
+	dsprite  1,  2,  1,  0, $0d, $6 | VRAM_BANK_1
+	dsprite  2,  2,  0,  0, $0e, $6 | VRAM_BANK_1
+	dsprite  2,  2,  1,  0, $0f, $6 | VRAM_BANK_1
+
+.OAMData_PcCursorItem:
+	db 5
+	; Cursor
+	dsprite  0,  0,  0,  0, $04, $1 | VRAM_BANK_1
+	dsprite  0,  0,  1,  0, $04, $2 | VRAM_BANK_1 | X_FLIP
+	dsprite  1,  0,  0,  0, $05, $1 | VRAM_BANK_1
+	dsprite  1,  0,  1,  0, $05, $2 | VRAM_BANK_1 | X_FLIP
 
 	; Item
-	dsprite  2,  0,  0,  4, $10, $0 | VRAM_BANK_1
+	dsprite  2,  0,  0,  4, $08, $0 | VRAM_BANK_1
 
 .OAMData_PcQuick:
-	db 4
-	; Mini
+	db 8
+	; Mini or item (only uses 1 sprite with the rest blank)
 	dsprite  0,  0,  0,  0, $14, $5 | VRAM_BANK_1
 	dsprite  0,  0,  1,  0, $15, $5 | VRAM_BANK_1
 	dsprite  1,  0,  0,  0, $16, $5 | VRAM_BANK_1
 	dsprite  1,  0,  1,  0, $17, $5 | VRAM_BANK_1
 
-	; Mini shadow (TODO)
+	; Mini shadow if applicable
+	dsprite  0,  0,  0,  0, $18, $6 | VRAM_BANK_1
+	dsprite  0,  0,  1,  0, $19, $6 | VRAM_BANK_1
+	dsprite  1,  0,  0,  0, $1a, $6 | VRAM_BANK_1
+	dsprite  1,  0,  1,  0, $1b, $6 | VRAM_BANK_1
 
 .OAMData_PcMode:
 	db 3
@@ -686,3 +711,51 @@ SpriteAnimOAMData:
 	dsprite  0,  0,  1,  0, $30, $4 | VRAM_BANK_1
 	dsprite  1,  0,  0,  0, $31, $4 | VRAM_BANK_1
 	dsprite  1,  0,  1,  0, $32, $4 | VRAM_BANK_1
+
+.OAMData_DexCursor:
+	db 12
+	; top
+	dsprite  0,  0,  0,  0, $01, $0
+	dsprite  0,  0,  1,  0, $02, $0
+	dsprite  0,  0,  2,  0, $02, $0
+	dsprite  0,  0,  3, -1, $01, $0 | X_FLIP
+	; right
+	dsprite  1,  0,  3, -1, $03, $0 | X_FLIP
+	dsprite  2,  0,  3, -1, $03, $0 | X_FLIP
+	; bottom
+	dsprite  3,  0,  3, -1, $02, $0
+	dsprite  3,  0,  2,  0, $02, $0
+	dsprite  3,  0,  1,  0, $02, $0
+	dsprite  3,  0,  0,  0, $02, $0
+	; left
+	dsprite  2,  0,  0,  0, $03, $0
+	dsprite  1,  0,  0,  0, $03, $0
+
+.OAMData_DexUnownCursor:
+	db 4
+	dsprite -1,  7, -1,  7, $00, $2
+	dsprite -1,  7,  0,  0, $00, $2 | X_FLIP
+	dsprite  0,  0, -1,  7, $00, $2 | Y_FLIP
+	dsprite  0,  0,  0,  0, $00, $2 | X_FLIP | Y_FLIP
+
+.OAMData_DexSlowpoke:
+	db 9
+	; top row
+	dsprite  0,  0,  0,  0, $00, $0 | VRAM_BANK_1
+	dsprite  0,  0,  1,  0, $01, $0 | VRAM_BANK_1
+	dsprite  0,  0,  2,  0, $02, $0 | VRAM_BANK_1
+	; middle
+	dsprite  1,  0,  0,  0, $0f, $0 | VRAM_BANK_1
+	dsprite  1,  0,  1,  0, $10, $0 | VRAM_BANK_1
+	dsprite  1,  0,  2,  0, $11, $0 | VRAM_BANK_1
+	; bottom
+	dsprite  2,  0,  0,  0, $1e, $0 | VRAM_BANK_1
+	dsprite  2,  0,  1,  0, $1f, $0 | VRAM_BANK_1
+	dsprite  2,  0,  2,  0, $20, $0 | VRAM_BANK_1
+
+.OAMData_TownMapFly:
+	db 4
+	dsprite  0,  0,  0,  0, $00, $2
+	dsprite  0,  0,  1,  0, $01, $2
+	dsprite  0,  0,  2,  0, $02, $2
+	dsprite  0,  0,  3,  0, $03, $2

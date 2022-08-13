@@ -231,7 +231,7 @@ Music_GymLeaderBattleGo_Ch1_loop_12:
 	note G_, 1
 	callchannel Music_GymLeaderBattleGo_Ch1_ditty7
 	note C#, 1
-	loopchannel 0, Music_GymLeaderBattleGo_Ch1_loop
+	jumpchannel Music_GymLeaderBattleGo_Ch1_loop
 
 Music_GymLeaderBattleGo_Ch1_ditty1:
 	octave 2
@@ -636,7 +636,7 @@ Music_GymLeaderBattleGo_Ch2_loop_3:
 	note C#, 4
 	note G#, 4
 	note F_, 4
-	loopchannel 0, Music_GymLeaderBattleGo_Ch2_loop
+	jumpchannel Music_GymLeaderBattleGo_Ch2_loop
 
 Music_GymLeaderBattleGo_Ch2_ditty1:
 	intensity $C7
@@ -882,7 +882,7 @@ Music_GymLeaderBattleGo_Ch3_loop_6:
 	note A#, 8
 	note A#, 8
 	note A#, 8
-	loopchannel 0, Music_GymLeaderBattleGo_Ch3_loop
+	jumpchannel Music_GymLeaderBattleGo_Ch3_loop
 
 Music_GymLeaderBattleGo_Ch3_ditty1:
 	note G#, 1

@@ -39,6 +39,8 @@ DoAnimFrame:
 	dw AnimSeq_PcQuick            ; SPRITE_ANIM_SEQ_PC_QUICK
 	dw AnimSeq_PcMode             ; SPRITE_ANIM_SEQ_PC_MODE
 	dw AnimSeq_PcPack             ; SPRITE_ANIM_SEQ_PC_PACK
+	dw AnimSeq_DexCursor          ; SPRITE_ANIM_SEQ_DEX_CURSOR
+	dw AnimSeq_TownMapFly         ; SPRITE_ANIM_SEQ_TOWN_MAP_FLY
 	assert_table_length NUM_SPRITE_ANIM_SEQS
 
 AnimSeq_PartyMon:
@@ -600,6 +602,16 @@ AnimSeq_MaxStatSparkle:
 	ret
 
 AnimSeq_PcCursor:
+	; Switch frameset ID depending on item mode setting.
+	farcall BillsPC_CheckBagDisplay
+	ld a, SPRITE_ANIM_FRAMESET_PC_CURSOR_ITEM
+	jr z, .got_frameset
+	assert SPRITE_ANIM_FRAMESET_PC_CURSOR == SPRITE_ANIM_FRAMESET_PC_CURSOR_ITEM - 1
+	dec a
+.got_frameset
+	ld hl, SPRITEANIMSTRUCT_FRAMESET_ID
+	add hl, bc
+	ld [hl], a
 	push de
 	push bc
 	farcall BillsPC_GetCursorSlot
@@ -745,6 +757,45 @@ AnimSeq_PcPack:
 	add hl, bc
 	ld [hl], a
 	ret
+
+AnimSeq_DexCursor:
+	push bc
+	ld hl, SPRITEANIMSTRUCT_YOFFSET
+	add hl, bc
+	ld a, [wPokedex_DisplayMode]
+	cp DEXDISP_SPRITEANIM_OK
+	ld [hl], 160
+	jr nc, .done
+	push hl
+	push de
+	ld hl, SPRITEANIMSTRUCT_XOFFSET
+	add hl, bc
+	and a ; cp DEXDISP_MAIN
+	ld a, [wPokedex_CursorPos]
+	lb de, 30, 24
+	jr z, .got_cursor_info
+	ld a, [wPokedex_UnownCursor]
+	lb de, 16, 16
+.got_cursor_info
+	ld b, a
+	and $7
+	ld c, d
+	call SimpleMultiply
+	ld [hl], a
+	ld a, b
+	swap a
+	and $f
+	ld c, e
+	pop de
+	call SimpleMultiply
+	pop hl
+	ld [hl], a
+.done
+	pop bc
+	ret
+
+AnimSeq_TownMapFly:
+	farjp AnimateTownMapFly
 
 AnimSeqs_IncAnonJumptableIndex:
 	ld hl, SPRITEANIMSTRUCT_JUMPTABLE_INDEX

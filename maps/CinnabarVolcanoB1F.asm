@@ -30,27 +30,27 @@ CinnabarVolcanoB1F_MapScriptHeader:
 	smashrock_event  8, 28
 	smashrock_event 28, 17
 	smashrock_event 27, 5
-	itemball_event  2, 18, FIRE_STONE, 1, EVENT_CINNABAR_VOLCANO_B1F_NUGGET
-	itemball_event  4, 29, NUGGET, 1, EVENT_CINNABAR_VOLCANO_B1F_FIRE_STONE
+	itemball_event  2, 18, NUGGET, 1, EVENT_CINNABAR_VOLCANO_B1F_NUGGET
+	itemball_event  4, 29, FIRE_STONE, 1, EVENT_CINNABAR_VOLCANO_B1F_FIRE_STONE
 
 	object_const_def
 	const CINNABARVOLCANOB1F_BOULDER
 
 CinnabarVolcanoB1FBouldersLand:
 	checkevent EVENT_BOULDER_IN_CINNABAR_VOLCANO_1F_1
-	iffalse .skip1
+	iffalsefwd .skip1
 	changeblock 12, 24, $5f
 .skip1
 	checkevent EVENT_BOULDER_IN_CINNABAR_VOLCANO_1F_2
-	iffalse .skip2
+	iffalsefwd .skip2
 	changeblock 24, 22, $5f
 .skip2
 	checkevent EVENT_BOULDER_IN_CINNABAR_VOLCANO_1F_3
-	iffalse .skip3
+	iffalsefwd .skip3
 	changeblock 22, 12, $5d
 .skip3
 	checkevent EVENT_BOULDER_IN_CINNABAR_VOLCANO_1F_4
-	iffalse .skip4
+	iffalsefwd .skip4
 	changeblock 14, 10, $5d
 .skip4
 	endcallback
@@ -65,19 +65,11 @@ CinnabarVolcanoB1FBouldersFall:
 
 .Disappear:
 	disappear CINNABARVOLCANOB1F_BOULDER
-	sjump .Fall
-
-.Fall:
 	pause 30
-	scall .FX
-	jumptext CinnabarVolcanoB1FBoulderFellText
-
-.FX:
 	playsound SFX_STRENGTH
 	earthquake 80
-	end
+	jumpthistext
 
-CinnabarVolcanoB1FBoulderFellText:
 	text "The boulder fell"
 	line "through!"
 	done

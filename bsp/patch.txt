@@ -2,7 +2,7 @@
 ; A wholehearted thank you also goes out to aaaaaa123456789 (aka ax6) for developing bsp and the Prism patch.
 
 ; version info
-	define CURRENT_BUILD, 7
+	define CURRENT_BUILD, 8
 
 ; variables
 	define zero,       0
@@ -43,6 +43,7 @@
 	include "item_patches.txt"
 	include "move_patches.txt"
 	include "apply_party_patches.txt"
+	include "apply_party_patches_old.txt"
 	include "pokecenter_check.txt"
 
 	include "sram_offsets.txt"

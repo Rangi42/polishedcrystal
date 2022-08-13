@@ -21,14 +21,14 @@ HiddenPowerGuy:
 	faceplayer
 	opentext
 	checkevent EVENT_GOT_TM10_HIDDEN_POWER
-	iftrue .AlreadyGotItem
+	iftruefwd .AlreadyGotItem
 	writetext .Text1
 	promptbutton
 	verbosegivetmhm TM_HIDDEN_POWER
 	setevent EVENT_GOT_TM10_HIDDEN_POWER
 	writetext .Text2
 	waitbutton
-	sjump .CheckHiddenPower
+	sjumpfwd .CheckHiddenPower
 .AlreadyGotItem:
 	writetext .Text4
 	waitbutton
@@ -40,13 +40,14 @@ HiddenPowerGuy:
 	promptbutton
 	special Special_HiddenPowerGuru
 	iffalse_jumpopenedtext .Text4
-	ifequal $1, .Egg
+	ifequalfwd $1, .Egg
 	jumpthisopenedtext
 
 	text "I can sense it…"
 
 	para "Your "
 	text_ram wStringBuffer3
+	text ""
 	line "has a Hidden Power"
 	cont "of "
 	text_ram wStringBuffer1

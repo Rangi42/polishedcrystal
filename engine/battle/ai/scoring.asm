@@ -751,7 +751,7 @@ AI_Smart_Haze:
 	ret
 
 ; Discourage this move if neither:
-; Any of enemy's stat levels is	lower than -2.
+; Any of enemy's stat levels is lower than -2.
 ; Any of player's stat levels is higher than +2.
 .asm_38a1b
 	pop hl
@@ -1821,8 +1821,8 @@ AI_Smart_RapidSpin:
 	jr nz, .asm_39097
 
 	ld a, [wEnemyHazards]
-	and HAZARDS_SPIKES
-	cp HAZARDS_SPIKES
+	or ~HAZARDS_SPIKES
+	inc a
 	ret nz
 
 .asm_39097
@@ -2469,8 +2469,6 @@ AIDamageCalc:
 	ld a, 1
 	ldh [hBattleTurn], a
 	ld a, [wEnemyMoveStruct + MOVE_EFFECT]
-	cp EFFECT_FURY_STRIKES
-	jr z, .multihit
 	cp EFFECT_MULTI_HIT
 	jr z, .multihit
 	cp EFFECT_DOUBLE_HIT
