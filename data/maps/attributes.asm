@@ -5,10 +5,7 @@ MACRO map_attributes
 \1_MapAttributes::
 	db \3
 	db \2_HEIGHT, \2_WIDTH
-	db BANK(\1_BlockData)
-	dw \1_BlockData
-	db BANK(\1_MapScriptHeader)
-	dw \1_MapScriptHeader
+	dba \1_BlockData, \1_MapScriptHeader
 	db \4
 ENDM
 
