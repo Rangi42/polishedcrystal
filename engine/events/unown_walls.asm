@@ -14,7 +14,6 @@ SpecialHoOhChamber:
 	ret nz
 
 .open
-	call GetMapAttributesPointer
 	eventflagset EVENT_WALL_OPENED_IN_HO_OH_CHAMBER
 	ret
 
@@ -45,7 +44,6 @@ SpecialOmanyteChamber:
 	jr nz, .loop
 
 .open
-	call GetMapAttributesPointer
 	eventflagset EVENT_WALL_OPENED_IN_OMANYTE_CHAMBER
 	ret
 

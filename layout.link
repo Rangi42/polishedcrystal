@@ -126,7 +126,7 @@ ROMX $25
 	"Events"
 
 ROMX $26
-	"Second Map Headers"
+	"Map Attributes"
 
 ROMX $27
 	"Special Map Blockdata"
