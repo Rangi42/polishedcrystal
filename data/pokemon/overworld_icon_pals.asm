@@ -2,8 +2,8 @@ MACRO iconpal
 	dn PAL_OW_\1, PAL_OW_\2
 ENDM
 
-MenuMonIconColors::
-	table_width 1, MenuMonIconColors
+OverworldMonIconColors::
+	table_width 1, OverworldMonIconColors
 	iconpal TEAL, GREEN ; BULBASAUR
 	iconpal TEAL, GREEN ; IVYSAUR
 	iconpal TEAL, GREEN ; VENUSAUR
