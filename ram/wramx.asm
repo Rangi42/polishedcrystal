@@ -1362,7 +1362,12 @@ wBreedMon2OT:: ds PLAYER_NAME_LENGTH
 wBreedMon2Extra:: ds 3
 wBreedMon2:: breed_struct wBreedMon2
 
-	ds 54 ; unused
+; TODO: space for a Day-Care on Route 5 which just levels up one Pokémon;
+; Route 34 will have a Nursery that breeds with two Pokémon.
+wLevelUpMonNickname:: ds MON_NAME_LENGTH
+wLevelUpMonOT:: ds PLAYER_NAME_LENGTH
+wLevelUpMonExtra:: ds 3
+wLevelUpMon:: breed_struct wLevelUpMon
 
 wBugContestBackupPartyCount:: db
 wContestMon:: party_struct wContestMon
