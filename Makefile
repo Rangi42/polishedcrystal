@@ -81,8 +81,9 @@ data/tilesets.o \
 engine/movie/credits.o \
 engine/overworld/events.o \
 gfx/minis_icons.o \
-gfx/pics.o \
+gfx/pokemon.o \
 gfx/sprites.o \
+gfx/trainers.o \
 gfx/items.o \
 gfx/misc.o
 

@@ -205,7 +205,7 @@ ROMX $42
 	"Credits"
 
 ROMX $48
-	"Pic Pointers"
+	"Pokemon Pic Pointers"
 
 VRAM $0
 	"VRAM0"

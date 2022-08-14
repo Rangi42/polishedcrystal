@@ -575,6 +575,11 @@ INCLUDE "engine/events/battle_tower/load_trainer.asm"
 INCLUDE "engine/events/odd_egg.asm"
 
 
+SECTION "Painting Pic Pointers", ROMX
+
+INCLUDE "data/events/paintings/pic_pointers.asm"
+
+
 SECTION "Type Chart", ROMX
 
 INCLUDE "engine/items/type_chart.asm"
