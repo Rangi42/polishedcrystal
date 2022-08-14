@@ -691,8 +691,7 @@ wApplyStatLevelMultipliersToEnemy::
 wUsePPUp::
 wFoundMatchingID::
 	db
-wTempForm::
-	ds 2
+wTempForm:: ds 2
 
 wMonTriedToEvolve:: db
 
@@ -823,7 +822,7 @@ wBugContestSecsRemaining:: db
 
 wMapStatusEnd::
 
-	ds 2
+	ds 2 ; unused
 
 
 SECTION "Game Data", WRAMX
@@ -855,7 +854,7 @@ wStartSecond:: db
 
 wRTC:: ds 4 ; in-game wall clock time at save
 
-	ds 4
+	ds 4 ; unused
 
 wDST::
 ; bit 7: dst
@@ -925,7 +924,9 @@ wStatusFlags3::
 wEnteredMapFromContinue:: db
 
 wTimeOfDayPal:: db
-	ds 4
+
+	ds 4 ; unused
+
 wTimeOfDayPalFlags:: db
 wTimeOfDayPalset:: db
 wCurTimeOfDay:: db
@@ -1005,14 +1006,14 @@ wPokegearFlags::
 ; bit 2: phone
 ; bit 3: expn
 ; bit 7: on/off
-	ds 1
+	db
 wRadioTuningKnob:: db
 wPokedexMode:: db
 
 wTMHMPocketScrollPosition:: db
 wTMHMPocketCursor::
 ; beyond the cursor position, bit 7 also controls how TMs are sorted
-	ds 1
+	db
 
 wPlayerState:: db
 
@@ -1402,9 +1403,8 @@ wRegisteredItemFlags::
 	; 7 - wRegisteredItems + 3 second item list flag
 	db
 
-wRegisteredItems::
 ; You can map 4 items, to select + directions
-	ds 4
+wRegisteredItems:: ds 4
 
 wPokemonDataEnd::
 wGameDataEnd::
@@ -1422,7 +1422,7 @@ wPokeAnimSceneIndex:: db
 wPokeAnimPointer:: dw
 wPokeAnimSpecies:: db
 wPokeAnimVariant:: db
-	ds 1
+	ds 1 ; unused
 wPokeAnimGraphicStartTile:: db
 wPokeAnimCoord:: dw
 wPokeAnimFrontpicHeight:: db
@@ -1441,12 +1441,12 @@ wPokeAnimCurBitmask:: db
 wPokeAnimWaitCounter:: db
 wPokeAnimCommand:: db
 wPokeAnimParameter:: db
-	ds 1
+	ds 1 ; unused
 wPokeAnimBitmaskCurCol:: db
 wPokeAnimBitmaskCurRow:: db
 wPokeAnimBitmaskCurBit:: db
 wPokeAnimBitmaskBuffer:: db
-	ds 8
+	ds 8 ; unused
 wPokeAnimStructEnd::
 
 
@@ -1574,13 +1574,13 @@ wDexAreaModeCopy:: db ; written to from hPokedexAreaMode on screen reload
 
 	; Used to align wDexAreaMons2. Feel free to add more data here, just don't
 	; let wDexAreaMons2 be misaligned (an assert will tell you if you do).
-	ds $2b
+	ds 43
 
 wDexAreaMons2:: ds (wDexAreaMonsEnd - wDexAreaMons)
 
 	; Used to align wDexAreaShadowOAM. Feel free to add more data here, just
 	; don't let it be misaligned.
-	ds $39
+	ds 57
 
 wDexAreaShadowOAM:: ds (wShadowOAMEnd - wShadowOAM)
 
