@@ -20,34 +20,6 @@ ExitMenu::
 	pop af
 	ret
 
-RestoreTileBackup::
-	call PushWindow_MenuBoxCoordToTile
-	call .copy
-	call PushWindow_MenuBoxCoordToAttr
-	; fallthrough
-
-.copy
-	call GetTileBackupMenuBoxDims
-
-.row
-	push bc
-	push hl
-
-.col
-	ld a, [de]
-	ld [hli], a
-	dec de
-	dec c
-	jr nz, .col
-
-	pop hl
-	ld bc, SCREEN_WIDTH
-	add hl, bc
-	pop bc
-	dec b
-	jr nz, .row
-	ret
-
 GetTileBackupMenuBoxDims::
 	call GetMenuBoxDims
 	ld a, [wMenuFlags]
@@ -74,17 +46,17 @@ PopWindow::
 	ret
 
 GetMenuBoxDims::
-	ld a, [wMenuBorderTopCoord] ; top
+	ld a, [wMenuBorderTopCoord]
 	ld b, a
-	ld a, [wMenuBorderBottomCoord] ; bottom
+	ld a, [wMenuBorderBottomCoord]
 	sub b
 	jr nc, .positive
 	cpl
 .positive
 	ld b, a
-	ld a, [wMenuBorderLeftCoord] ; left
+	ld a, [wMenuBorderLeftCoord]
 	ld c, a
-	ld a, [wMenuBorderRightCoord] ; right
+	ld a, [wMenuBorderRightCoord]
 	sub c
 	ld c, a
 	ret nc
