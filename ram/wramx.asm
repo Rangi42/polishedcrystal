@@ -1556,6 +1556,7 @@ wDexAreaLastMode:: db
 	; let wDexAreaMons be misaligned (an assert will tell you if you do).
 	ds 5
 
+ALIGN 8
 wDexAreaMons::
 ; Array size needs to be a multiple of 10 covering all landmarks for a region.
 ; Upper cap is 120.
@@ -1579,12 +1580,14 @@ wDexAreaModeCopy:: db ; written to from hPokedexAreaMode on screen reload
 	; let wDexAreaMons2 be misaligned (an assert will tell you if you do).
 	ds 43
 
+ALIGN 8
 wDexAreaMons2:: ds (wDexAreaMonsEnd - wDexAreaMons)
 
 	; Used to align wDexAreaShadowOAM. Feel free to add more data here, just
 	; don't let it be misaligned.
 	ds 57
 
+ALIGN 8
 wDexAreaShadowOAM:: ds (wShadowOAMEnd - wShadowOAM)
 
 ENDU
