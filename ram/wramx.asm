@@ -691,7 +691,10 @@ wApplyStatLevelMultipliersToEnemy::
 wUsePPUp::
 wFoundMatchingID::
 	db
-wTempForm:: ds 2
+
+wTempForm:: db
+
+	ds 1 ; unused
 
 wMonTriedToEvolve:: db
 
