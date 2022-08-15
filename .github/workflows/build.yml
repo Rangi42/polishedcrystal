@@ -53,6 +53,7 @@ jobs:
         name: "Build polishedcrystal"
         run: |
           make -j$(nproc)
+          mkdir build
           mv polishedcrystal-3.0.0-beta.gbc build/polishedcrystal-3.0.0-beta-${{ env.SHORT_SHA }}.gbc
           mv polishedcrystal-3.0.0-beta.sym build/polishedcrystal-3.0.0-beta-${{ env.SHORT_SHA }}.sym
           make tidy
