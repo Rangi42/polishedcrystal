@@ -249,18 +249,35 @@ GetSortingItemIndex:
 	push hl
 	push bc
 	call ItemSwitch_GetNthItem
+	ld c, [hl]
+
+	; If we're dealing with key items, we still want a terminator of -1.
+	; To simplify handling, just decrement key item indices by 1.
+	ld a, [wCurPocket]
+	cp KEY_ITEM - 1
+	ld hl, ItemNameOrder
+	jr nz, .got_item_data
+	ld hl, KeyItemNameOrder
+	dec c
+.got_item_data
+	; If we're sorting by index, c has our desired value.
 	ld a, [wMenuCursorY]
 	dec a
+	ld a, c
 	jr z, .done
-	ld c, [hl]
+
+	; If c is -1 (terminator), return it directly. We can't rely on
+	; NameOrder ending with a terminator, because we don't have 255
+	; key items, in case we're dealing with those.
 	inc c
 	jr z, .done
+
+	; Otherwise, reference the desired return index from NameOrder.
 	dec c
 	ld b, 0
-	ld hl, ItemNameOrder
 	add hl, bc
-.done
 	ld a, [hl]
+.done
 	pop bc
 	pop hl
 	ret
