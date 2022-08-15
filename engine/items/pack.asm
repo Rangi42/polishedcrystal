@@ -1,3 +1,21 @@
+; Pack.Jumptable and BattlePack.Jumptable indexes
+	const_def
+	const PACKSTATE_INITGFX            ;  0
+	const PACKSTATE_INITITEMSPOCKET    ;  1
+	const PACKSTATE_ITEMSPOCKETMENU    ;  2
+	const PACKSTATE_INITMEDICINEPOCKET ;  3
+	const PACKSTATE_MEDICINEPOCKETMENU ;  4
+	const PACKSTATE_INITBALLSPOCKET    ;  5
+	const PACKSTATE_BALLSPOCKETMENU    ;  6
+	const PACKSTATE_INITTMHMPOCKET     ;  7
+	const PACKSTATE_TMHMPOCKETMENU     ;  8
+	const PACKSTATE_INITBERRIESPOCKET  ;  9
+	const PACKSTATE_BERRIESPOCKETMENU  ; 10
+	const PACKSTATE_INITKEYITEMSPOCKET ; 11
+	const PACKSTATE_KEYITEMSPOCKETMENU ; 12
+	const PACKSTATE_QUITNOSCRIPT       ; 13
+	const PACKSTATE_QUITRUNSCRIPT      ; 14
+
 Pack:
 	ld hl, wOptions1
 	set NO_TEXT_SCROLL, [hl]
@@ -311,7 +329,7 @@ UseKeyItem:
 	ld a, [wItemEffectSucceeded]
 	and a
 	jr z, .Oak
-	ld a, $e ; QuitRunScript
+	ld a, PACKSTATE_QUITRUNSCRIPT
 	ld [wJumptableIndex], a
 	ret
 
@@ -501,7 +519,7 @@ UseItem:
 	ld a, [wItemEffectSucceeded]
 	and a
 	jr z, .Oak
-	ld a, $e ; QuitRunScript
+	ld a, PACKSTATE_QUITRUNSCRIPT
 	ld [wJumptableIndex], a
 	ret
 
@@ -884,7 +902,7 @@ ItemSubmenu:
 	cp $2
 	jr z, .didnt_use_item
 .quit_run_script
-	ld a, $e ; QuitRunScript
+	ld a, PACKSTATE_QUITRUNSCRIPT
 	ld [wJumptableIndex], a
 	ret
 
@@ -952,7 +970,7 @@ KeyItemSubmenu:
 	cp $2
 	jr z, .didnt_use_item
 .quit_run_script
-	ld a, $e ; QuitRunScript
+	ld a, PACKSTATE_QUITRUNSCRIPT
 	ld [wJumptableIndex], a
 	ret
 
@@ -963,14 +981,16 @@ KeyItemSubmenu:
 
 InitPackBuffers:
 	push af
-	xor a
+	xor a ; PACKSTATE_INITGFX
 	ld [wJumptableIndex], a
 	pop af
-	and $7
+	cp NUM_POCKETS
+	jr c, .valid_pocket
+	xor a ; Fall back to the first pocket tab
+.valid_pocket
 	ld [wCurPocket], a
-	inc a
 	add a
-	dec a
+	inc a
 	ld [wPackJumptableIndex], a
 	xor a
 	ld [wPackUsedItem], a
@@ -1199,7 +1219,7 @@ TutorialPack:
 .ItemsMenuData2:
 	db $ee ; flags
 	db 5, 8 ; rows, columns
-	db 2 ; horizontal spacing
+	db SCROLLINGMENU_ITEMS_QUANTITY ; item format
 	dbw 0, wDudeNumItems
 	dba PlaceMenuItemName
 	dba PlaceMenuItemQuantity
@@ -1219,7 +1239,7 @@ TutorialPack:
 .MedicineMenuData2:
 	db $ee ; flags
 	db 5, 8 ; rows, columns
-	db 2 ; horizontal spacing
+	db SCROLLINGMENU_ITEMS_QUANTITY ; item format
 	dbw 0, wDudeNumMedicine
 	dba PlaceMenuItemName
 	dba PlaceMenuItemQuantity
@@ -1239,7 +1259,7 @@ TutorialPack:
 .BallsMenuData2:
 	db $ee ; flags
 	db 5, 8 ; rows, columns
-	db 2 ; horizontal spacing
+	db SCROLLINGMENU_ITEMS_QUANTITY ; item format
 	dbw 0, wDudeNumBalls
 	dba PlaceMenuItemName
 	dba PlaceMenuItemQuantity
@@ -1384,24 +1404,27 @@ Pack_InterpretJoypad:
 	ret
 
 .b_button
-	ld a, $d ; QuitNoScript
+	ld a, PACKSTATE_QUITNOSCRIPT
 	ld [wJumptableIndex], a
 	scf
 	ret
 
 .d_left
-	ld a, b
-	ld [wJumptableIndex], a
-	ld [wPackJumptableIndex], a
-	push de
-	ld de, SFX_SWITCH_POCKETS
-	call PlaySFX
-	pop de
-	scf
-	ret
+	ld b, -1
+	jr .get_pocket_for_switch
 
 .d_right
-	ld a, c
+	ld b, 1
+.get_pocket_for_switch
+	ld a, [wCurPocket]
+.switch_pocket
+	; Very slow (can do over 200 iterations), but smallest byte-wise.
+	add b
+	cp NUM_POCKETS
+	jr nc, .switch_pocket
+	ld [wCurPocket], a
+	add a
+	inc a
 	ld [wJumptableIndex], a
 	ld [wPackJumptableIndex], a
 	push de
@@ -1527,7 +1550,7 @@ ItemsPocketMenuDataHeader:
 .MenuData2:
 	db $ee ; flags
 	db 5, 8 ; rows, columns
-	db 2 ; horizontal spacing
+	db SCROLLINGMENU_ITEMS_QUANTITY ; item format
 	dbw 0, wNumItems
 	dba PlaceMenuItemName
 	dba PlaceMenuItemQuantity
@@ -1542,7 +1565,7 @@ PC_Mart_ItemsPocketMenuDataHeader:
 .MenuData2:
 	db $2e ; flags
 	db 5, 8 ; rows, columns
-	db 2 ; horizontal spacing
+	db SCROLLINGMENU_ITEMS_QUANTITY ; item format
 	dbw 0, wNumItems
 	dba PlaceMartItemName
 	dba PlaceMenuItemQuantity
@@ -1557,7 +1580,7 @@ MedicinePocketMenuDataHeader:
 .MenuData2:
 	db $ee ; flags
 	db 5, 8 ; rows, columns
-	db 2 ; horizontal spacing
+	db SCROLLINGMENU_ITEMS_QUANTITY ; item format
 	dbw 0, wNumMedicine
 	dba PlaceMenuItemName
 	dba PlaceMenuItemQuantity
@@ -1572,7 +1595,7 @@ PC_Mart_MedicinePocketMenuDataHeader:
 .MenuData2:
 	db $2e ; flags
 	db 5, 8 ; rows, columns
-	db 2 ; horizontal spacing
+	db SCROLLINGMENU_ITEMS_QUANTITY ; item format
 	dbw 0, wNumMedicine
 	dba PlaceMartItemName
 	dba PlaceMenuItemQuantity
@@ -1587,7 +1610,7 @@ BallsPocketMenuDataHeader:
 .MenuData2:
 	db $ee ; flags
 	db 5, 8 ; rows, columns
-	db 2 ; horizontal spacing
+	db SCROLLINGMENU_ITEMS_QUANTITY ; item format
 	dbw 0, wNumBalls
 	dba PlaceMenuItemName
 	dba PlaceMenuItemQuantity
@@ -1602,7 +1625,7 @@ PC_Mart_BallsPocketMenuDataHeader:
 .MenuData2:
 	db $2e ; flags
 	db 5, 8 ; rows, columns
-	db 2 ; horizontal spacing
+	db SCROLLINGMENU_ITEMS_QUANTITY ; item format
 	dbw 0, wNumBalls
 	dba PlaceMartItemName
 	dba PlaceMenuItemQuantity
@@ -1617,7 +1640,7 @@ BerriesPocketMenuDataHeader:
 .MenuData2:
 	db $ee ; flags
 	db 5, 8 ; rows, columns
-	db 2 ; horizontal spacing
+	db SCROLLINGMENU_ITEMS_QUANTITY ; item format
 	dbw 0, wNumBerries
 	dba PlaceMenuItemName
 	dba PlaceMenuItemQuantity
@@ -1632,7 +1655,7 @@ PC_Mart_BerriesPocketMenuDataHeader:
 .MenuData2:
 	db $2e ; flags
 	db 5, 8 ; rows, columns
-	db 2 ; horizontal spacing
+	db SCROLLINGMENU_ITEMS_QUANTITY ; item format
 	dbw 0, wNumBerries
 	dba PlaceMartItemName
 	dba PlaceMenuItemQuantity
@@ -1647,8 +1670,8 @@ KeyItemsPocketMenuDataHeader:
 .MenuData2:
 	db $ed ; flags, special workaround for registered item symbols
 	db 5, 8 ; rows, columns
-	db 1 ; horizontal spacing
-;	dbw 0, wNumKeyItems
+	db SCROLLINGMENU_ITEMS_KEY ; item format
+	dbw 0, wKeyItems
 	dba PlaceMenuItemName
 	dba PlaceMenuItemQuantity
 	dba UpdateItemIconAndDescription
@@ -1662,8 +1685,8 @@ PC_Mart_KeyItemsPocketMenuDataHeader:
 .MenuData2:
 	db $2e ; flags
 	db 5, 8 ; rows, columns
-	db 1 ; horizontal spacing
-;	dbw 0, wNumKeyItems
+	db SCROLLINGMENU_ITEMS_KEY ; item format
+	dbw 0, wKeyItems
 	dba PlaceMartItemName
 	dba PlaceMenuItemQuantity
 	dba UpdateItemIconAndDescription

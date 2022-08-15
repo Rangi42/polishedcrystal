@@ -261,17 +261,22 @@ ENDU
 
 ENDU
 
-	ds 3 ; unused
-
-wLastBattlePocket:: db
 wBattleItemsPocketCursor:: db
 wBattleMedicinePocketCursor:: db
 wBattleBallsPocketCursor:: db
 wBattleBerriesPocketCursor:: db
+wBattleKeyItemsPocketCursor:: db
+wLastBattlePocket:: db
+
+	ds 1 ; unused
+
 wBattleItemsPocketScrollPosition:: db
 wBattleMedicinePocketScrollPosition:: db
 wBattleBallsPocketScrollPosition:: db
 wBattleBerriesPocketScrollPosition:: db
+wBattleKeyItemsPocketScrollPosition:: db
+
+	assert ((wBattleItemsPocketScrollPosition - wBattleItemsPocketCursor) == (wItemsPocketScrollPosition - wItemsPocketCursor))
 
 wTMHMMoveNameBackup:: ds MOVE_NAME_LENGTH
 
