@@ -48,7 +48,7 @@ Pack:
 .HandleTMHMSubmenu:
 	ld hl, MenuDataHeader_Use
 	ld de, .Jumptable1
-	jmp PackBuildMenu
+	jr PackBuildMenu
 
 .Jumptable1:
 	dw .UseItem
@@ -644,7 +644,7 @@ ItemSubmenu:
 	call Pack_IsTMHMPocket
 	jmp z, KeyItemSubmenu.unusable
 	cp KEY_ITEM - 1
-	jmp z, KeyItemSubmenu
+	jr z, KeyItemSubmenu
 	farcall CheckItemContext
 	ld a, [wItemAttributeParamBuffer]
 	and a
