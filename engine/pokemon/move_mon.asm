@@ -1394,6 +1394,7 @@ GivePoke::
 	ld hl, wPartyMonNicknames
 	ld a, [wPartyCount]
 	dec a
+	ld [wCurPartyMon], a
 	call SkipNames
 	ld d, h
 	ld e, l
