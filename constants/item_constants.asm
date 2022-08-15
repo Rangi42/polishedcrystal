@@ -593,6 +593,7 @@ endc
 	const NAM_X_SPEED
 	const NAM_ZINC
 	const NAM_ZOOM_LENS
+	assert const_value - 1 == NUM_ITEMS
 
 ; APRICORN_BOX contents
 	const_def 1
@@ -678,3 +679,4 @@ DEF NUM_KEY_ITEMS EQU const_value - 1
 	const NAM_SQUIRTBOTTLE
 	const NAM_SUPER_ROD
 	const NAM_TYPE_CHART
+	assert const_value - 1 == NUM_KEY_ITEMS
