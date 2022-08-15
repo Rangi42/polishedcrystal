@@ -122,7 +122,6 @@ jobs:
           make -j$(nproc) bsp
           mv polishedcrystal-3.0.0-beta.bsp build/polishedcrystal-savepatch-3.0.0-beta-${{ env.SHORT_SHA }}.bsp
           make tidy
-          popd
           
       # UPLOAD ARTIFACTS
       - id: upload-polishedcrystal
