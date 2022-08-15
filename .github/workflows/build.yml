@@ -30,7 +30,7 @@ jobs:
       # CHECKOUT RGBDS
       - id: checkout-rgbds
         name: "Checkout gbdev/rgbds"
-        uses: actions/checkout@latest
+        uses: actions/checkout@v3
         with:
           path: rgbds
           ref: ${{ env.RGBDS_VERSION }}
@@ -46,7 +46,7 @@ jobs:
       # CHECKOUT REPOSITORY
       - id: checkout-polishedcrystal
         name: "Checkout Rangi42/polishedcrystal"
-        uses: actions/checkout@latest
+        uses: actions/checkout@v3
       
       # BUILD ROMS
       - id: build-polishedcrystal
@@ -134,7 +134,7 @@ jobs:
       # UPLOAD ARTIFACTS
       - id: upload-polishedcrystal
         name: "Upload polishedcrystal artifacts"
-        uses: actions/upload-artifact@latest
+        uses: actions/upload-artifact@v3
         with:
           name: "polishedcrystal"
           retention-days: 1
@@ -143,7 +143,7 @@ jobs:
 
       - id: upload-polishedcrystal-faithful
         name: "Upload polishedcrystal-faithful artifacts"
-        uses: actions/upload-artifact@latest
+        uses: actions/upload-artifact@v3
         with:
           name: "polishedcrystal-faithful"
           retention-days: 1
@@ -152,7 +152,7 @@ jobs:
       
       - id: upload-polishedcrystal-nortc
         name: "Upload polishedcrystal-nortc artifacts"
-        uses: actions/upload-artifact@latest
+        uses: actions/upload-artifact@v3
         with:
           name: "polishedcrystal-nortc"
           retention-days: 1
@@ -161,7 +161,7 @@ jobs:
 
       - id: upload-polishedcrystal-faithful-nortc
         name: "Upload polishedcrystal-faithful-nortc artifacts"
-        uses: actions/upload-artifact@latest
+        uses: actions/upload-artifact@v3
         with:
           name: "polishedcrystal-faithful-nortc"
           retention-days: 1
@@ -170,7 +170,7 @@ jobs:
 
       - id: upload-polisheddebug
         name: "Upload polisheddebug artifacts"
-        uses: actions/upload-artifact@latest
+        uses: actions/upload-artifact@v3
         with:
           name: "polisheddebug"
           retention-days: 1
@@ -179,7 +179,7 @@ jobs:
 
       - id: upload-polisheddebug-faithful
         name: "Upload polisheddebug-faithful artifacts"
-        uses: actions/upload-artifact@latest
+        uses: actions/upload-artifact@v3
         with:
           name: "polisheddebug-faithful"
           retention-days: 1
@@ -188,7 +188,7 @@ jobs:
 
       - id: upload-polisheddebug-nortc
         name: "Upload polisheddebug-nortc artifacts"
-        uses: actions/upload-artifact@latest
+        uses: actions/upload-artifact@v3
         with:
           name: "polisheddebug-nortc"
           retention-days: 1
@@ -197,7 +197,7 @@ jobs:
 
       - id: upload-polisheddebug-faithful-nortc
         name: "Upload polisheddebug-faithful-nortc artifacts"
-        uses: actions/upload-artifact@latest
+        uses: actions/upload-artifact@v3
         with:
           name: "polisheddebug-faithful-nortc"
           retention-days: 1
@@ -206,7 +206,7 @@ jobs:
 
       - id: upload-polishedcrystal-savepatch
         name: "Upload polishedcrystal savepatch"
-        uses: actions/upload-artifact@latest
+        uses: actions/upload-artifact@v3
         with:
           name: "polishedcrystal-savepatch"
           retention-days: 1
