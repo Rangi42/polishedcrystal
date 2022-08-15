@@ -148,6 +148,50 @@ jobs:
           asset_path: ./polishedcrystal-faithful/polishedcrystal-faithful-3.0.0-beta-${{ env.SHORT_SHA }}.sym
           asset_name: polishedcrystal-faithful-3.0.0-beta-${{ env.SHORT_SHA }}.sym
           asset_content_type: text/plain
+
+      # UPLOAD NORTC ASSETS
+      - name: Upload nortc ROM
+        id: upload-nortc
+        uses: actions/upload-release-asset@v1.0.1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./polishedcrystal-nortc/polishedcrystal-nortc-3.0.0-beta-${{ env.SHORT_SHA }}.gbc
+          asset_name: polishedcrystal-nortc-3.0.0-beta-${{ env.SHORT_SHA }}.gbc
+          asset_content_type: application/octet-stream
+      - name: Upload NoRTC SYM
+        id: upload-sym-nortc
+        uses: actions/upload-release-asset@v1.0.1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./polishedcrystal-nortc/polishedcrystal-nortc-3.0.0-beta-${{ env.SHORT_SHA }}.sym
+          asset_name: polishedcrystal-nortc-3.0.0-beta-${{ env.SHORT_SHA }}.sym
+          asset_content_type: text/plain
+          
+      # UPLOAD FAITHFUL NORTC ASSETS
+      - name: Upload faithful nortc ROM
+        id: upload-faithful-nortc
+        uses: actions/upload-release-asset@v1.0.1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./polishedcrystal-faithful-nortc/polishedcrystal-faithful-nortc-3.0.0-beta-${{ env.SHORT_SHA }}.gbc
+          asset_name: polishedcrystal-faithful-nortc-3.0.0-beta-${{ env.SHORT_SHA }}.gbc
+          asset_content_type: application/octet-stream
+      - name: Upload faithful nortc SYM
+        id: upload-faithful-nortc-sym
+        uses: actions/upload-release-asset@v1.0.1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./polishedcrystal-faithful-nortc/polishedcrystal-faithful-nortc-3.0.0-beta-${{ env.SHORT_SHA }}.sym
+          asset_name: polishedcrystal-faithful-nortc-3.0.0-beta-${{ env.SHORT_SHA }}.sym
+          asset_content_type: text/plain
           
       # UPLOAD DEBUG ASSETS
       - name: Upload debug ROM
@@ -191,6 +235,50 @@ jobs:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
           asset_path: ./polisheddebug-faithful/polisheddebug-faithful-3.0.0-beta-${{ env.SHORT_SHA }}.sym
           asset_name: polisheddebug-faithful-3.0.0-beta-${{ env.SHORT_SHA }}.sym
+          asset_content_type: text/plain
+
+      # UPLOAD NORTC DEBUG ASSETS
+      - name: Upload nortc debug ROM
+        id: upload-debug-nortc
+        uses: actions/upload-release-asset@v1.0.1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./polisheddebug-nortc/polisheddebug-nortc-3.0.0-beta-${{ env.SHORT_SHA }}.gbc
+          asset_name: polisheddebug-nortc-3.0.0-beta-${{ env.SHORT_SHA }}.gbc
+          asset_content_type: application/octet-stream
+      - name: Upload nortc debug SYM
+        id: upload-debug-nortc-sym
+        uses: actions/upload-release-asset@v1.0.1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./polisheddebug-nortc/polisheddebug-nortc-3.0.0-beta-${{ env.SHORT_SHA }}.sym
+          asset_name: polisheddebug-nortc-3.0.0-beta-${{ env.SHORT_SHA }}.sym
+          asset_content_type: text/plain
+          
+      # UPLOAD FAITHFUL NORTC DEBUG ASSETS
+      - name: Upload faithful nortc debug ROM
+        id: upload-faithful-nortc-debug
+        uses: actions/upload-release-asset@v1.0.1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./polisheddebug-faithful-nortc/polisheddebug-faithful-nortc-3.0.0-beta-${{ env.SHORT_SHA }}.gbc
+          asset_name: polisheddebug-faithful-nortc-3.0.0-beta-${{ env.SHORT_SHA }}.gbc
+          asset_content_type: application/octet-stream
+      - name: Upload faithful nortc debug SYM
+        id: upload-faithful-nortc-debug-sym
+        uses: actions/upload-release-asset@v1.0.1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./polisheddebug-faithful-nortc/polisheddebug-faithful-nortc-3.0.0-beta-${{ env.SHORT_SHA }}.sym
+          asset_name: polisheddebug-faithful-nortc-3.0.0-beta-${{ env.SHORT_SHA }}.sym
           asset_content_type: text/plain
           
       # UPLOAD SAVE PATCH
