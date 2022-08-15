@@ -80,7 +80,7 @@ BattleCommand_trick:
 .OpponentCanBeTricked:
 	call CallOpponentTurn
 .UserCanBeTricked:
-; Wraper to UserCanLoseItem that also allows lack of held item.
+; Wrapper to UserCanLoseItem that also allows lack of held item.
 	call GetUserItem
 	ld a, [hl]
 	and a
