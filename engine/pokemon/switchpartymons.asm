@@ -23,7 +23,7 @@ _SwitchPartyMons:
 	ld a, " "
 	rst ByteFill
 	pop af
-	ld hl, wVirtualOAM
+	ld hl, wShadowOAM
 	ld bc, $10
 	rst AddNTimes
 	ld de, $4

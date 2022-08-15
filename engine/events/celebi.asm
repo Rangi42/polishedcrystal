@@ -50,7 +50,7 @@ Special_CelebiShrineEvent:
 	pop af
 	ld [wVramState], a
 
-	ld hl, wVirtualOAM + 2
+	ld hl, wShadowOAM + 2
 	xor a
 	ld c, $4
 .OAMloop:
@@ -61,7 +61,7 @@ Special_CelebiShrineEvent:
 	inc a
 	dec c
 	jr nz, .OAMloop
-	ld hl, wVirtualOAM + 4 * 4
+	ld hl, wShadowOAM + 4 * 4
 	ld bc, 36 * 4
 	xor a
 	rst ByteFill

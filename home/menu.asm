@@ -20,34 +20,6 @@ ExitMenu::
 	pop af
 	ret
 
-RestoreTileBackup::
-	call PushWindow_MenuBoxCoordToTile
-	call .copy
-	call PushWindow_MenuBoxCoordToAttr
-	; fallthrough
-
-.copy
-	call GetTileBackupMenuBoxDims
-
-.row
-	push bc
-	push hl
-
-.col
-	ld a, [de]
-	ld [hli], a
-	dec de
-	dec c
-	jr nz, .col
-
-	pop hl
-	ld bc, SCREEN_WIDTH
-	add hl, bc
-	pop bc
-	dec b
-	jr nz, .row
-	ret
-
 GetTileBackupMenuBoxDims::
 	call GetMenuBoxDims
 	ld a, [wMenuFlags]
@@ -74,17 +46,17 @@ PopWindow::
 	ret
 
 GetMenuBoxDims::
-	ld a, [wMenuBorderTopCoord] ; top
+	ld a, [wMenuBorderTopCoord]
 	ld b, a
-	ld a, [wMenuBorderBottomCoord] ; bottom
+	ld a, [wMenuBorderBottomCoord]
 	sub b
 	jr nc, .positive
 	cpl
 .positive
 	ld b, a
-	ld a, [wMenuBorderLeftCoord] ; left
+	ld a, [wMenuBorderLeftCoord]
 	ld c, a
-	ld a, [wMenuBorderRightCoord] ; right
+	ld a, [wMenuBorderRightCoord]
 	sub c
 	ld c, a
 	ret nc
@@ -258,16 +230,14 @@ PushWindow::
 	farjp _PushWindow
 
 StandardMenuDataHeader:
-	db $40 ; tile backup
-	db 0, 0 ; start coords
-	db 17, 19 ; end coords
+	db MENU_BACKUP_TILES
+	menu_coords 0, 0, 19, 17
 	dw 0
 	db 1 ; default option
 
 MenuTextboxDataHeader:
-	db $40 ; tile backup
-	db 12, 0 ; start coords
-	db 17, 19 ; end coords
+	db MENU_BACKUP_TILES
+	menu_coords 0, 12, 19, 17
 	dw vTiles0
 	db 0 ; default option
 
@@ -366,9 +336,8 @@ HandleYesNoMenu:
 	ret
 
 YesNoMenuDataHeader::
-	db $40 ; tile backup
-	db 5, 10 ; start coords
-	db 9, 15 ; end coords
+	db MENU_BACKUP_TILES
+	menu_coords 10, 5, 15, 9
 	dw .MenuData2
 	db 1 ; default option
 
@@ -379,9 +348,8 @@ YesNoMenuDataHeader::
 	db "No@"
 
 NoYesMenuDataHeader::
-	db $40 ; tile backup
-	db  7, 14 ; start coords
-	db 11, 19 ; end coords
+	db MENU_BACKUP_TILES
+	menu_coords 14, 7, 19, 11
 	dw .MenuData2
 	db 1 ; default option
 

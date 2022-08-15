@@ -498,7 +498,7 @@ InitReelTiles:
 	ld bc, wReel1
 	ld hl, wReel1OAMAddr - wReel1
 	add hl, bc
-	ld de, wVirtualOAM + 16 * 4
+	ld de, wShadowOAM + 16 * 4
 	ld [hl], e
 	inc hl
 	ld [hl], d
@@ -516,7 +516,7 @@ InitReelTiles:
 	ld bc, wReel2
 	ld hl, wReel1OAMAddr - wReel1
 	add hl, bc
-	ld de, wVirtualOAM + 24 * 4
+	ld de, wShadowOAM + 24 * 4
 	ld [hl], e
 	inc hl
 	ld [hl], d
@@ -534,7 +534,7 @@ InitReelTiles:
 	ld bc, wReel3
 	ld hl, wReel1OAMAddr - wReel1
 	add hl, bc
-	ld de, wVirtualOAM + 32 * 4
+	ld de, wShadowOAM + 32 * 4
 	ld [hl], e
 	inc hl
 	ld [hl], d
@@ -1493,9 +1493,8 @@ Slots_AskBet:
 	text_end
 
 .MenuDataHeader:
-	db $40 ; flags
-	db 10, 14 ; start coords
-	db 17, 19 ; end coords
+	db MENU_BACKUP_TILES
+	menu_coords 14, 10, 19, 17
 	dw .MenuData2
 	db 1 ; default option
 

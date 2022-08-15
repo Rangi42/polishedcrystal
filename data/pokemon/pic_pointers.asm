@@ -1,404 +1,402 @@
 MACRO pics
-	db BANK(\1)
-	dw \1, \2
-	assert BANK(\1) == BANK(\2), "\1 and \2 must be in the same bank"
+	dbas \1Frontpic, \1Backpic
 ENDM
 
 PokemonPicPointers::
 	table_width 5, PokemonPicPointers
-	pics BulbasaurFrontpic, BulbasaurBackpic
-	pics IvysaurFrontpic, IvysaurBackpic
-	pics VenusaurFrontpic, VenusaurBackpic
-	pics CharmanderFrontpic, CharmanderBackpic
-	pics CharmeleonFrontpic, CharmeleonBackpic
-	pics CharizardFrontpic, CharizardBackpic
-	pics SquirtleFrontpic, SquirtleBackpic
-	pics WartortleFrontpic, WartortleBackpic
-	pics BlastoiseFrontpic, BlastoiseBackpic
-	pics CaterpieFrontpic, CaterpieBackpic
-	pics MetapodFrontpic, MetapodBackpic
-	pics ButterfreeFrontpic, ButterfreeBackpic
-	pics WeedleFrontpic, WeedleBackpic
-	pics KakunaFrontpic, KakunaBackpic
-	pics BeedrillFrontpic, BeedrillBackpic
-	pics PidgeyFrontpic, PidgeyBackpic
-	pics PidgeottoFrontpic, PidgeottoBackpic
-	pics PidgeotFrontpic, PidgeotBackpic
-	pics RattataPlainFrontpic, RattataPlainBackpic
-	pics RaticatePlainFrontpic, RaticatePlainBackpic
-	pics SpearowFrontpic, SpearowBackpic
-	pics FearowFrontpic, FearowBackpic
-	pics EkansFrontpic, EkansBackpic
-	pics ArbokJohtoFrontpic, ArbokJohtoBackpic
-	pics PikachuPlainFrontpic, PikachuPlainBackpic
-	pics RaichuPlainFrontpic, RaichuPlainBackpic
-	pics SandshrewPlainFrontpic, SandshrewPlainBackpic
-	pics SandslashPlainFrontpic, SandslashPlainBackpic
-	pics NidoranFFrontpic, NidoranFBackpic
-	pics NidorinaFrontpic, NidorinaBackpic
-	pics NidoqueenFrontpic, NidoqueenBackpic
-	pics NidoranMFrontpic, NidoranMBackpic
-	pics NidorinoFrontpic, NidorinoBackpic
-	pics NidokingFrontpic, NidokingBackpic
-	pics ClefairyFrontpic, ClefairyBackpic
-	pics ClefableFrontpic, ClefableBackpic
-	pics VulpixPlainFrontpic, VulpixPlainBackpic
-	pics NinetalesPlainFrontpic, NinetalesPlainBackpic
-	pics JigglypuffFrontpic, JigglypuffBackpic
-	pics WigglytuffFrontpic, WigglytuffBackpic
-	pics ZubatFrontpic, ZubatBackpic
-	pics GolbatFrontpic, GolbatBackpic
-	pics OddishFrontpic, OddishBackpic
-	pics GloomFrontpic, GloomBackpic
-	pics VileplumeFrontpic, VileplumeBackpic
-	pics ParasFrontpic, ParasBackpic
-	pics ParasectFrontpic, ParasectBackpic
-	pics VenonatFrontpic, VenonatBackpic
-	pics VenomothFrontpic, VenomothBackpic
-	pics DiglettPlainFrontpic, DiglettPlainBackpic
-	pics DugtrioPlainFrontpic, DugtrioPlainBackpic
-	pics MeowthPlainFrontpic, MeowthPlainBackpic
-	pics PersianPlainFrontpic, PersianPlainBackpic
-	pics PsyduckFrontpic, PsyduckBackpic
-	pics GolduckFrontpic, GolduckBackpic
-	pics MankeyFrontpic, MankeyBackpic
-	pics PrimeapeFrontpic, PrimeapeBackpic
-	pics GrowlithePlainFrontpic, GrowlithePlainBackpic
-	pics ArcaninePlainFrontpic, ArcaninePlainBackpic
-	pics PoliwagFrontpic, PoliwagBackpic
-	pics PoliwhirlFrontpic, PoliwhirlBackpic
-	pics PoliwrathFrontpic, PoliwrathBackpic
-	pics AbraFrontpic, AbraBackpic
-	pics KadabraFrontpic, KadabraBackpic
-	pics AlakazamFrontpic, AlakazamBackpic
-	pics MachopFrontpic, MachopBackpic
-	pics MachokeFrontpic, MachokeBackpic
-	pics MachampFrontpic, MachampBackpic
-	pics BellsproutFrontpic, BellsproutBackpic
-	pics WeepinbellFrontpic, WeepinbellBackpic
-	pics VictreebelFrontpic, VictreebelBackpic
-	pics TentacoolFrontpic, TentacoolBackpic
-	pics TentacruelFrontpic, TentacruelBackpic
-	pics GeodudePlainFrontpic, GeodudePlainBackpic
-	pics GravelerPlainFrontpic, GravelerPlainBackpic
-	pics GolemPlainFrontpic, GolemPlainBackpic
-	pics PonytaPlainFrontpic, PonytaPlainBackpic
-	pics RapidashPlainFrontpic, RapidashPlainBackpic
-	pics SlowpokePlainFrontpic, SlowpokePlainBackpic
-	pics SlowbroPlainFrontpic, SlowbroPlainBackpic
-	pics MagnemiteFrontpic, MagnemiteBackpic
-	pics MagnetonFrontpic, MagnetonBackpic
-	pics FarfetchDPlainFrontpic, FarfetchDPlainBackpic
-	pics DoduoFrontpic, DoduoBackpic
-	pics DodrioFrontpic, DodrioBackpic
-	pics SeelFrontpic, SeelBackpic
-	pics DewgongFrontpic, DewgongBackpic
-	pics GrimerPlainFrontpic, GrimerPlainBackpic
-	pics MukPlainFrontpic, MukPlainBackpic
-	pics ShellderFrontpic, ShellderBackpic
-	pics CloysterFrontpic, CloysterBackpic
-	pics GastlyFrontpic, GastlyBackpic
-	pics HaunterFrontpic, HaunterBackpic
-	pics GengarFrontpic, GengarBackpic
-	pics OnixFrontpic, OnixBackpic
-	pics DrowzeeFrontpic, DrowzeeBackpic
-	pics HypnoFrontpic, HypnoBackpic
-	pics KrabbyFrontpic, KrabbyBackpic
-	pics KinglerFrontpic, KinglerBackpic
-	pics VoltorbPlainFrontpic, VoltorbPlainBackpic
-	pics ElectrodePlainFrontpic, ElectrodePlainBackpic
-	pics ExeggcuteFrontpic, ExeggcuteBackpic
-	pics ExeggutorPlainFrontpic, ExeggutorPlainBackpic
-	pics CuboneFrontpic, CuboneBackpic
-	pics MarowakPlainFrontpic, MarowakPlainBackpic
-	pics HitmonleeFrontpic, HitmonleeBackpic
-	pics HitmonchanFrontpic, HitmonchanBackpic
-	pics LickitungFrontpic, LickitungBackpic
-	pics KoffingFrontpic, KoffingBackpic
-	pics WeezingPlainFrontpic, WeezingPlainBackpic
-	pics RhyhornFrontpic, RhyhornBackpic
-	pics RhydonFrontpic, RhydonBackpic
-	pics ChanseyFrontpic, ChanseyBackpic
-	pics TangelaFrontpic, TangelaBackpic
-	pics KangaskhanFrontpic, KangaskhanBackpic
-	pics HorseaFrontpic, HorseaBackpic
-	pics SeadraFrontpic, SeadraBackpic
-	pics GoldeenFrontpic, GoldeenBackpic
-	pics SeakingFrontpic, SeakingBackpic
-	pics StaryuFrontpic, StaryuBackpic
-	pics StarmieFrontpic, StarmieBackpic
-	pics MrMimePlainFrontpic, MrMimePlainBackpic
-	pics ScytherFrontpic, ScytherBackpic
-	pics JynxFrontpic, JynxBackpic
-	pics ElectabuzzFrontpic, ElectabuzzBackpic
-	pics MagmarFrontpic, MagmarBackpic
-	pics PinsirFrontpic, PinsirBackpic
-	pics TaurosFrontpic, TaurosBackpic
-	pics MagikarpPlainFrontpic, MagikarpPlainBackpic
-	pics GyaradosPlainFrontpic, GyaradosPlainBackpic
-	pics LaprasFrontpic, LaprasBackpic
-	pics DittoFrontpic, DittoBackpic
-	pics EeveeFrontpic, EeveeBackpic
-	pics VaporeonFrontpic, VaporeonBackpic
-	pics JolteonFrontpic, JolteonBackpic
-	pics FlareonFrontpic, FlareonBackpic
-	pics PorygonFrontpic, PorygonBackpic
-	pics OmanyteFrontpic, OmanyteBackpic
-	pics OmastarFrontpic, OmastarBackpic
-	pics KabutoFrontpic, KabutoBackpic
-	pics KabutopsFrontpic, KabutopsBackpic
-	pics AerodactylFrontpic, AerodactylBackpic
-	pics SnorlaxFrontpic, SnorlaxBackpic
-	pics ArticunoPlainFrontpic, ArticunoPlainBackpic
-	pics ZapdosPlainFrontpic, ZapdosPlainBackpic
-	pics MoltresPlainFrontpic, MoltresPlainBackpic
-	pics DratiniFrontpic, DratiniBackpic
-	pics DragonairFrontpic, DragonairBackpic
-	pics DragoniteFrontpic, DragoniteBackpic
-	pics MewtwoPlainFrontpic, MewtwoPlainBackpic
-	pics MewFrontpic, MewBackpic
-	pics ChikoritaFrontpic, ChikoritaBackpic
-	pics BayleefFrontpic, BayleefBackpic
-	pics MeganiumFrontpic, MeganiumBackpic
-	pics CyndaquilFrontpic, CyndaquilBackpic
-	pics QuilavaFrontpic, QuilavaBackpic
-	pics TyphlosionPlainFrontpic, TyphlosionPlainBackpic
-	pics TotodileFrontpic, TotodileBackpic
-	pics CroconawFrontpic, CroconawBackpic
-	pics FeraligatrFrontpic, FeraligatrBackpic
-	pics SentretFrontpic, SentretBackpic
-	pics FurretFrontpic, FurretBackpic
-	pics HoothootFrontpic, HoothootBackpic
-	pics NoctowlFrontpic, NoctowlBackpic
-	pics LedybaFrontpic, LedybaBackpic
-	pics LedianFrontpic, LedianBackpic
-	pics SpinarakFrontpic, SpinarakBackpic
-	pics AriadosFrontpic, AriadosBackpic
-	pics CrobatFrontpic, CrobatBackpic
-	pics ChinchouFrontpic, ChinchouBackpic
-	pics LanturnFrontpic, LanturnBackpic
-	pics PichuPlainFrontpic, PichuPlainBackpic
-	pics CleffaFrontpic, CleffaBackpic
-	pics IgglybuffFrontpic, IgglybuffBackpic
-	pics TogepiFrontpic, TogepiBackpic
-	pics TogeticFrontpic, TogeticBackpic
-	pics NatuFrontpic, NatuBackpic
-	pics XatuFrontpic, XatuBackpic
-	pics MareepFrontpic, MareepBackpic
-	pics FlaaffyFrontpic, FlaaffyBackpic
-	pics AmpharosFrontpic, AmpharosBackpic
-	pics BellossomFrontpic, BellossomBackpic
-	pics MarillFrontpic, MarillBackpic
-	pics AzumarillFrontpic, AzumarillBackpic
-	pics SudowoodoFrontpic, SudowoodoBackpic
-	pics PolitoedFrontpic, PolitoedBackpic
-	pics HoppipFrontpic, HoppipBackpic
-	pics SkiploomFrontpic, SkiploomBackpic
-	pics JumpluffFrontpic, JumpluffBackpic
-	pics AipomFrontpic, AipomBackpic
-	pics SunkernFrontpic, SunkernBackpic
-	pics SunfloraFrontpic, SunfloraBackpic
-	pics YanmaFrontpic, YanmaBackpic
-	pics WooperFrontpic, WooperBackpic
-	pics QuagsireFrontpic, QuagsireBackpic
-	pics EspeonFrontpic, EspeonBackpic
-	pics UmbreonFrontpic, UmbreonBackpic
-	pics MurkrowFrontpic, MurkrowBackpic
-	pics SlowkingPlainFrontpic, SlowkingPlainBackpic
-	pics MisdreavusFrontpic, MisdreavusBackpic
-	pics UnownAFrontpic, UnownABackpic
-	pics WobbuffetFrontpic, WobbuffetBackpic
-	pics GirafarigFrontpic, GirafarigBackpic
-	pics PinecoFrontpic, PinecoBackpic
-	pics ForretressFrontpic, ForretressBackpic
-	pics DunsparceFrontpic, DunsparceBackpic
-	pics GligarFrontpic, GligarBackpic
-	pics SteelixFrontpic, SteelixBackpic
-	pics SnubbullFrontpic, SnubbullBackpic
-	pics GranbullFrontpic, GranbullBackpic
-	pics QwilfishPlainFrontpic, QwilfishPlainBackpic
-	pics ScizorFrontpic, ScizorBackpic
-	pics ShuckleFrontpic, ShuckleBackpic
-	pics HeracrossFrontpic, HeracrossBackpic
-	pics SneaselPlainFrontpic, SneaselPlainBackpic
-	pics TeddiursaFrontpic, TeddiursaBackpic
-	pics UrsaringFrontpic, UrsaringBackpic
-	pics SlugmaFrontpic, SlugmaBackpic
-	pics MagcargoFrontpic, MagcargoBackpic
-	pics SwinubFrontpic, SwinubBackpic
-	pics PiloswineFrontpic, PiloswineBackpic
-	pics CorsolaPlainFrontpic, CorsolaPlainBackpic
-	pics RemoraidFrontpic, RemoraidBackpic
-	pics OctilleryFrontpic, OctilleryBackpic
-	pics DelibirdFrontpic, DelibirdBackpic
-	pics MantineFrontpic, MantineBackpic
-	pics SkarmoryFrontpic, SkarmoryBackpic
-	pics HoundourFrontpic, HoundourBackpic
-	pics HoundoomFrontpic, HoundoomBackpic
-	pics KingdraFrontpic, KingdraBackpic
-	pics PhanpyFrontpic, PhanpyBackpic
-	pics DonphanFrontpic, DonphanBackpic
-	pics Porygon2Frontpic, Porygon2Backpic
-	pics StantlerFrontpic, StantlerBackpic
-	pics SmeargleFrontpic, SmeargleBackpic
-	pics TyrogueFrontpic, TyrogueBackpic
-	pics HitmontopFrontpic, HitmontopBackpic
-	pics SmoochumFrontpic, SmoochumBackpic
-	pics ElekidFrontpic, ElekidBackpic
-	pics MagbyFrontpic, MagbyBackpic
-	pics MiltankFrontpic, MiltankBackpic
-	pics BlisseyFrontpic, BlisseyBackpic
-	pics RaikouFrontpic, RaikouBackpic
-	pics EnteiFrontpic, EnteiBackpic
-	pics SuicuneFrontpic, SuicuneBackpic
-	pics LarvitarFrontpic, LarvitarBackpic
-	pics PupitarFrontpic, PupitarBackpic
-	pics TyranitarFrontpic, TyranitarBackpic
-	pics LugiaFrontpic, LugiaBackpic
-	pics HoOhFrontpic, HoOhBackpic
-	pics CelebiFrontpic, CelebiBackpic
-	pics AzurillFrontpic, AzurillBackpic
-	pics WynautFrontpic, WynautBackpic
-	pics AmbipomFrontpic, AmbipomBackpic
-	pics EggPic, EggPic
-	pics EggPic, EggPic ; $100
-	pics MismagiusFrontpic, MismagiusBackpic
-	pics HonchkrowFrontpic, HonchkrowBackpic
-	pics BonslyFrontpic, BonslyBackpic
-	pics MimeJrFrontpic, MimeJrBackpic
-	pics HappinyFrontpic, HappinyBackpic
-	pics MunchlaxFrontpic, MunchlaxBackpic
-	pics MantykeFrontpic, MantykeBackpic
-	pics WeavileFrontpic, WeavileBackpic
-	pics MagnezoneFrontpic, MagnezoneBackpic
-	pics LickilickyFrontpic, LickilickyBackpic
-	pics RhyperiorFrontpic, RhyperiorBackpic
-	pics TangrowthFrontpic, TangrowthBackpic
-	pics ElectivireFrontpic, ElectivireBackpic
-	pics MagmortarFrontpic, MagmortarBackpic
-	pics TogekissFrontpic, TogekissBackpic
-	pics YanmegaFrontpic, YanmegaBackpic
-	pics LeafeonFrontpic, LeafeonBackpic
-	pics GlaceonFrontpic, GlaceonBackpic
-	pics GliscorFrontpic, GliscorBackpic
-	pics MamoswineFrontpic, MamoswineBackpic
-	pics PorygonZFrontpic, PorygonZBackpic
-	pics SylveonFrontpic, SylveonBackpic
-	pics PerrserkerFrontpic, PerrserkerBackpic
-	pics CursolaFrontpic, CursolaBackpic
-	pics SirfetchDFrontpic, SirfetchDBackpic
-	pics MrRimeFrontpic, MrRimeBackpic
-	pics WyrdeerFrontpic, WyrdeerBackpic
-	pics KleavorFrontpic, KleavorBackpic
-	pics UrsalunaFrontpic, UrsalunaBackpic
-	pics SneaslerFrontpic, SneaslerBackpic
-	pics OverqwilFrontpic, OverqwilBackpic
+	pics Bulbasaur
+	pics Ivysaur
+	pics Venusaur
+	pics Charmander
+	pics Charmeleon
+	pics Charizard
+	pics Squirtle
+	pics Wartortle
+	pics Blastoise
+	pics Caterpie
+	pics Metapod
+	pics Butterfree
+	pics Weedle
+	pics Kakuna
+	pics Beedrill
+	pics Pidgey
+	pics Pidgeotto
+	pics Pidgeot
+	pics RattataPlain
+	pics RaticatePlain
+	pics Spearow
+	pics Fearow
+	pics Ekans
+	pics ArbokJohto
+	pics PikachuPlain
+	pics RaichuPlain
+	pics SandshrewPlain
+	pics SandslashPlain
+	pics NidoranF
+	pics Nidorina
+	pics Nidoqueen
+	pics NidoranM
+	pics Nidorino
+	pics Nidoking
+	pics Clefairy
+	pics Clefable
+	pics VulpixPlain
+	pics NinetalesPlain
+	pics Jigglypuff
+	pics Wigglytuff
+	pics Zubat
+	pics Golbat
+	pics Oddish
+	pics Gloom
+	pics Vileplume
+	pics Paras
+	pics Parasect
+	pics Venonat
+	pics Venomoth
+	pics DiglettPlain
+	pics DugtrioPlain
+	pics MeowthPlain
+	pics PersianPlain
+	pics Psyduck
+	pics Golduck
+	pics Mankey
+	pics Primeape
+	pics GrowlithePlain
+	pics ArcaninePlain
+	pics Poliwag
+	pics Poliwhirl
+	pics Poliwrath
+	pics Abra
+	pics Kadabra
+	pics Alakazam
+	pics Machop
+	pics Machoke
+	pics Machamp
+	pics Bellsprout
+	pics Weepinbell
+	pics Victreebel
+	pics Tentacool
+	pics Tentacruel
+	pics GeodudePlain
+	pics GravelerPlain
+	pics GolemPlain
+	pics PonytaPlain
+	pics RapidashPlain
+	pics SlowpokePlain
+	pics SlowbroPlain
+	pics Magnemite
+	pics Magneton
+	pics FarfetchDPlain
+	pics Doduo
+	pics Dodrio
+	pics Seel
+	pics Dewgong
+	pics GrimerPlain
+	pics MukPlain
+	pics Shellder
+	pics Cloyster
+	pics Gastly
+	pics Haunter
+	pics Gengar
+	pics Onix
+	pics Drowzee
+	pics Hypno
+	pics Krabby
+	pics Kingler
+	pics VoltorbPlain
+	pics ElectrodePlain
+	pics Exeggcute
+	pics ExeggutorPlain
+	pics Cubone
+	pics MarowakPlain
+	pics Hitmonlee
+	pics Hitmonchan
+	pics Lickitung
+	pics Koffing
+	pics WeezingPlain
+	pics Rhyhorn
+	pics Rhydon
+	pics Chansey
+	pics Tangela
+	pics Kangaskhan
+	pics Horsea
+	pics Seadra
+	pics Goldeen
+	pics Seaking
+	pics Staryu
+	pics Starmie
+	pics MrMimePlain
+	pics Scyther
+	pics Jynx
+	pics Electabuzz
+	pics Magmar
+	pics Pinsir
+	pics Tauros
+	pics MagikarpPlain
+	pics GyaradosPlain
+	pics Lapras
+	pics Ditto
+	pics Eevee
+	pics Vaporeon
+	pics Jolteon
+	pics Flareon
+	pics Porygon
+	pics Omanyte
+	pics Omastar
+	pics Kabuto
+	pics Kabutops
+	pics Aerodactyl
+	pics Snorlax
+	pics ArticunoPlain
+	pics ZapdosPlain
+	pics MoltresPlain
+	pics Dratini
+	pics Dragonair
+	pics Dragonite
+	pics MewtwoPlain
+	pics Mew
+	pics Chikorita
+	pics Bayleef
+	pics Meganium
+	pics Cyndaquil
+	pics Quilava
+	pics TyphlosionPlain
+	pics Totodile
+	pics Croconaw
+	pics Feraligatr
+	pics Sentret
+	pics Furret
+	pics Hoothoot
+	pics Noctowl
+	pics Ledyba
+	pics Ledian
+	pics Spinarak
+	pics Ariados
+	pics Crobat
+	pics Chinchou
+	pics Lanturn
+	pics PichuPlain
+	pics Cleffa
+	pics Igglybuff
+	pics Togepi
+	pics Togetic
+	pics Natu
+	pics Xatu
+	pics Mareep
+	pics Flaaffy
+	pics Ampharos
+	pics Bellossom
+	pics Marill
+	pics Azumarill
+	pics Sudowoodo
+	pics Politoed
+	pics Hoppip
+	pics Skiploom
+	pics Jumpluff
+	pics Aipom
+	pics Sunkern
+	pics Sunflora
+	pics Yanma
+	pics Wooper
+	pics Quagsire
+	pics Espeon
+	pics Umbreon
+	pics Murkrow
+	pics SlowkingPlain
+	pics Misdreavus
+	pics UnownA
+	pics Wobbuffet
+	pics Girafarig
+	pics Pineco
+	pics Forretress
+	pics Dunsparce
+	pics Gligar
+	pics Steelix
+	pics Snubbull
+	pics Granbull
+	pics QwilfishPlain
+	pics Scizor
+	pics Shuckle
+	pics Heracross
+	pics SneaselPlain
+	pics Teddiursa
+	pics Ursaring
+	pics Slugma
+	pics Magcargo
+	pics Swinub
+	pics Piloswine
+	pics CorsolaPlain
+	pics Remoraid
+	pics Octillery
+	pics Delibird
+	pics Mantine
+	pics Skarmory
+	pics Houndour
+	pics Houndoom
+	pics Kingdra
+	pics Phanpy
+	pics Donphan
+	pics Porygon2
+	pics Stantler
+	pics Smeargle
+	pics Tyrogue
+	pics Hitmontop
+	pics Smoochum
+	pics Elekid
+	pics Magby
+	pics Miltank
+	pics Blissey
+	pics Raikou
+	pics Entei
+	pics Suicune
+	pics Larvitar
+	pics Pupitar
+	pics Tyranitar
+	pics Lugia
+	pics HoOh
+	pics Celebi
+	pics Azurill
+	pics Wynaut
+	pics Ambipom
+	dbas EggPic, EggPic
+	dbas EggPic, EggPic ; $100
+	pics Mismagius
+	pics Honchkrow
+	pics Bonsly
+	pics MimeJr
+	pics Happiny
+	pics Munchlax
+	pics Mantyke
+	pics Weavile
+	pics Magnezone
+	pics Lickilicky
+	pics Rhyperior
+	pics Tangrowth
+	pics Electivire
+	pics Magmortar
+	pics Togekiss
+	pics Yanmega
+	pics Leafeon
+	pics Glaceon
+	pics Gliscor
+	pics Mamoswine
+	pics PorygonZ
+	pics Sylveon
+	pics Perrserker
+	pics Cursola
+	pics SirfetchD
+	pics MrRime
+	pics Wyrdeer
+	pics Kleavor
+	pics Ursaluna
+	pics Sneasler
+	pics Overqwil
 	assert_table_length NUM_SPECIES
 
-	pics UnownBFrontpic, UnownBBackpic
-	pics UnownCFrontpic, UnownCBackpic
-	pics UnownDFrontpic, UnownDBackpic
-	pics UnownEFrontpic, UnownEBackpic
-	pics UnownFFrontpic, UnownFBackpic
-	pics UnownGFrontpic, UnownGBackpic
-	pics UnownHFrontpic, UnownHBackpic
-	pics UnownIFrontpic, UnownIBackpic
-	pics UnownJFrontpic, UnownJBackpic
-	pics UnownKFrontpic, UnownKBackpic
-	pics UnownLFrontpic, UnownLBackpic
-	pics UnownMFrontpic, UnownMBackpic
-	pics UnownNFrontpic, UnownNBackpic
-	pics UnownOFrontpic, UnownOBackpic
-	pics UnownPFrontpic, UnownPBackpic
-	pics UnownQFrontpic, UnownQBackpic
-	pics UnownRFrontpic, UnownRBackpic
-	pics UnownSFrontpic, UnownSBackpic
-	pics UnownTFrontpic, UnownTBackpic
-	pics UnownUFrontpic, UnownUBackpic
-	pics UnownVFrontpic, UnownVBackpic
-	pics UnownWFrontpic, UnownWBackpic
-	pics UnownXFrontpic, UnownXBackpic
-	pics UnownYFrontpic, UnownYBackpic
-	pics UnownZFrontpic, UnownZBackpic
-	pics UnownExclamationFrontpic, UnownExclamationBackpic
-	pics UnownQuestionFrontpic, UnownQuestionBackpic
+	pics UnownB
+	pics UnownC
+	pics UnownD
+	pics UnownE
+	pics UnownF
+	pics UnownG
+	pics UnownH
+	pics UnownI
+	pics UnownJ
+	pics UnownK
+	pics UnownL
+	pics UnownM
+	pics UnownN
+	pics UnownO
+	pics UnownP
+	pics UnownQ
+	pics UnownR
+	pics UnownS
+	pics UnownT
+	pics UnownU
+	pics UnownV
+	pics UnownW
+	pics UnownX
+	pics UnownY
+	pics UnownZ
+	pics UnownExclamation
+	pics UnownQuestion
 
-	pics ArbokKantoFrontpic, ArbokKantoBackpic
-	pics ArbokKogaFrontpic, ArbokKogaBackpic
-	pics ArbokAgathaFrontpic, ArbokAgathaBackpic
-	pics ArbokArianaFrontpic, ArbokArianaBackpic
+	pics ArbokKanto
+	pics ArbokKoga
+	pics ArbokAgatha
+	pics ArbokAriana
 
-	pics PikachuFlyFrontpic, PikachuFlyBackpic
-	pics PikachuSurfFrontpic, PikachuSurfBackpic
-	pics PikachuPikaFrontpic, PikachuPikaBackpic
-	pics PikachuChuchuFrontpic, PikachuChuchuBackpic
-	pics PikachuSparkFrontpic, PikachuSparkBackpic
+	pics PikachuFly
+	pics PikachuSurf
+	pics PikachuPika
+	pics PikachuChuchu
+	pics PikachuSpark
 
-	pics PichuSpikyFrontpic, PichuSpikyBackpic
+	pics PichuSpiky
 
-	pics MagikarpSkellyFrontpic, MagikarpSkellyBackpic
-	pics MagikarpCalico1Frontpic, MagikarpCalico1Backpic
-	pics MagikarpCalico2Frontpic, MagikarpCalico2Backpic
-	pics MagikarpCalico3Frontpic, MagikarpCalico3Backpic
-	pics MagikarpTwoToneFrontpic, MagikarpTwoToneBackpic
-	pics MagikarpOrcaFrontpic, MagikarpOrcaBackpic
-	pics MagikarpDapplesFrontpic, MagikarpDapplesBackpic
-	pics MagikarpTigerFrontpic, MagikarpTigerBackpic
-	pics MagikarpZebraFrontpic, MagikarpZebraBackpic
-	pics MagikarpStripeFrontpic, MagikarpStripeBackpic
-	pics MagikarpBubblesFrontpic, MagikarpBubblesBackpic
-	pics MagikarpDiamondsFrontpic, MagikarpDiamondsBackpic
-	pics MagikarpPatchesFrontpic, MagikarpPatchesBackpic
-	pics MagikarpForehead1Frontpic, MagikarpForehead1Backpic
-	pics MagikarpMask1Frontpic, MagikarpMask1Backpic
-	pics MagikarpForehead2Frontpic, MagikarpForehead2Backpic
-	pics MagikarpMask2Frontpic, MagikarpMask2Backpic
-	pics MagikarpSaucyFrontpic, MagikarpSaucyBackpic
-	pics MagikarpRaindropFrontpic, MagikarpRaindropBackpic
+	pics MagikarpSkelly
+	pics MagikarpCalico1
+	pics MagikarpCalico2
+	pics MagikarpCalico3
+	pics MagikarpTwoTone
+	pics MagikarpOrca
+	pics MagikarpDapples
+	pics MagikarpTiger
+	pics MagikarpZebra
+	pics MagikarpStripe
+	pics MagikarpBubbles
+	pics MagikarpDiamonds
+	pics MagikarpPatches
+	pics MagikarpForehead1
+	pics MagikarpMask1
+	pics MagikarpForehead2
+	pics MagikarpMask2
+	pics MagikarpSaucy
+	pics MagikarpRaindrop
 
-	pics GyaradosRedFrontpic, GyaradosRedBackpic
+	pics GyaradosRed
 
-	pics MewtwoArmoredFrontpic, MewtwoArmoredBackpic
+	pics MewtwoArmored
 
-	pics RattataAlolanFrontpic, RattataAlolanBackpic
-	pics RaticateAlolanFrontpic, RaticateAlolanBackpic
-	pics RaichuAlolanFrontpic, RaichuAlolanBackpic
-	pics SandshrewAlolanFrontpic, SandshrewAlolanBackpic
-	pics SandslashAlolanFrontpic, SandslashAlolanBackpic
-	pics VulpixAlolanFrontpic, VulpixAlolanBackpic
-	pics NinetalesAlolanFrontpic, NinetalesAlolanBackpic
-	pics DiglettAlolanFrontpic, DiglettAlolanBackpic
-	pics DugtrioAlolanFrontpic, DugtrioAlolanBackpic
-	pics MeowthAlolanFrontpic, MeowthAlolanBackpic
-	pics PersianAlolanFrontpic, PersianAlolanBackpic
-	pics GeodudeAlolanFrontpic, GeodudeAlolanBackpic
-	pics GravelerAlolanFrontpic, GravelerAlolanBackpic
-	pics GolemAlolanFrontpic, GolemAlolanBackpic
-	pics GrimerAlolanFrontpic, GrimerAlolanBackpic
-	pics MukAlolanFrontpic, MukAlolanBackpic
-	pics ExeggutorAlolanFrontpic, ExeggutorAlolanBackpic
-	pics MarowakAlolanFrontpic, MarowakAlolanBackpic
+	pics RattataAlolan
+	pics RaticateAlolan
+	pics RaichuAlolan
+	pics SandshrewAlolan
+	pics SandslashAlolan
+	pics VulpixAlolan
+	pics NinetalesAlolan
+	pics DiglettAlolan
+	pics DugtrioAlolan
+	pics MeowthAlolan
+	pics PersianAlolan
+	pics GeodudeAlolan
+	pics GravelerAlolan
+	pics GolemAlolan
+	pics GrimerAlolan
+	pics MukAlolan
+	pics ExeggutorAlolan
+	pics MarowakAlolan
 
-	pics MeowthGalarianFrontpic, MeowthGalarianBackpic
-	pics PonytaGalarianFrontpic, PonytaGalarianBackpic
-	pics RapidashGalarianFrontpic, RapidashGalarianBackpic
-	pics SlowpokeGalarianFrontpic, SlowpokeGalarianBackpic
-	pics SlowbroGalarianFrontpic, SlowbroGalarianBackpic
-	pics FarfetchDGalarianFrontpic, FarfetchDGalarianBackpic
-	pics WeezingGalarianFrontpic, WeezingGalarianBackpic
-	pics MrMimeGalarianFrontpic, MrMimeGalarianBackpic
-	pics ArticunoGalarianFrontpic, ArticunoGalarianBackpic
-	pics ZapdosGalarianFrontpic, ZapdosGalarianBackpic
-	pics MoltresGalarianFrontpic, MoltresGalarianBackpic
-	pics SlowkingGalarianFrontpic, SlowkingGalarianBackpic
-	pics CorsolaGalarianFrontpic, CorsolaGalarianBackpic
+	pics MeowthGalarian
+	pics PonytaGalarian
+	pics RapidashGalarian
+	pics SlowpokeGalarian
+	pics SlowbroGalarian
+	pics FarfetchDGalarian
+	pics WeezingGalarian
+	pics MrMimeGalarian
+	pics ArticunoGalarian
+	pics ZapdosGalarian
+	pics MoltresGalarian
+	pics SlowkingGalarian
+	pics CorsolaGalarian
 
-	pics GrowlitheHisuianFrontpic, GrowlitheHisuianBackpic
-	pics ArcanineHisuianFrontpic, ArcanineHisuianBackpic
-	pics VoltorbHisuianFrontpic, VoltorbHisuianBackpic
-	pics ElectrodeHisuianFrontpic, ElectrodeHisuianBackpic
-	pics TyphlosionHisuianFrontpic, TyphlosionHisuianBackpic
-	pics QwilfishHisuianFrontpic, QwilfishHisuianBackpic
-	pics SneaselHisuianFrontpic, SneaselHisuianBackpic
+	pics GrowlitheHisuian
+	pics ArcanineHisuian
+	pics VoltorbHisuian
+	pics ElectrodeHisuian
+	pics TyphlosionHisuian
+	pics QwilfishHisuian
+	pics SneaselHisuian
 
 	assert_table_length NUM_UNIQUE_POKEMON

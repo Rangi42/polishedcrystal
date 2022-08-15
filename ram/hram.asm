@@ -149,6 +149,8 @@ hSerialIgnoringInitialData:: db
 hSerialSend::                db
 hSerialReceive::             db
 
+	ds 2 ; unused
+
 hOAMUpdate:: db
 
 hSPBuffer:: dw
@@ -216,9 +218,15 @@ ENDU
 hCrashCode:: db
 
 hStopPrintingString:: db
-hPlaceStringCoords:: dw
 
+UNION
+; vwf
 hAppendVWFText:: ds 4
+NEXTU
+; ctxt
+hPlaceStringCoords:: dw
+hCompressedTextBuffer:: ds 2 ; one character and "@"
+ENDU
 
 hLCDInterruptFunction::
 hFunctionJump::     db ; $c3 jp

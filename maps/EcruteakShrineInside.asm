@@ -92,9 +92,8 @@ EcruteakShrineInsideReiScript:
 	jumpopenedtext EcruteakShrineInsideReiBlessEggText
 
 .ReiMenuDataHeader:
-	db $40 ; flags
-	db 04, 00 ; start coords
-	db 11, 11 ; end coords
+	db MENU_BACKUP_TILES
+	menu_coords 0, 4, 11, 11
 	dw .MenuData2
 	db 1 ; default option
 

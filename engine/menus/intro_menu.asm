@@ -92,8 +92,8 @@ ResetWRAM_NotPlus:
 	ret
 
 ResetWRAM:
-	ld hl, wVirtualOAM
-	ld bc, wOptions3 - wVirtualOAM
+	ld hl, wShadowOAM
+	ld bc, wOptions3 - wShadowOAM
 	xor a
 	rst ByteFill
 
@@ -454,9 +454,8 @@ Continue_LoadMenuHeader:
 	jmp PlaceVerticalMenuItems
 
 .MenuDataHeader_Dex:
-	db $40 ; flags
-	db 00, 00 ; start coords
-	db 09, 15 ; end coords
+	db MENU_BACKUP_TILES
+	menu_coords 0, 0, 15, 9
 	dw .MenuData2_Dex
 	db 1 ; default option
 
@@ -469,9 +468,8 @@ Continue_LoadMenuHeader:
 	db "Time@"
 
 .MenuDataHeader_NoDex:
-	db $40 ; flags
-	db 00, 00 ; start coords
-	db 09, 15 ; end coords
+	db MENU_BACKUP_TILES
+	menu_coords 0, 0, 15, 9
 	dw .MenuData2_NoDex
 	db 1 ; default option
 
@@ -978,7 +976,7 @@ Intro_PlacePlayerSprite:
 	ld hl, vTiles0
 	call Request2bppInWRA6
 
-	ld hl, wVirtualOAM
+	ld hl, wShadowOAM
 	ld de, .sprites
 	ld a, [de]
 	inc de

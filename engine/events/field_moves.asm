@@ -48,8 +48,8 @@ ShakeHeadbuttTree:
 	xor a
 	ldh [hBGMapMode], a
 	call ClearSpriteAnims
-	ld hl, wVirtualOAM + 36 * 4
-	ld bc, wVirtualOAMEnd - (wVirtualOAM + 36 * 4)
+	ld hl, wShadowOAM + 36 * 4
+	ld bc, wShadowOAMEnd - (wShadowOAM + 36 * 4)
 	xor a
 	rst ByteFill
 	call DelayFrame
@@ -322,7 +322,7 @@ FlyToAnim:
 .exit
 	pop af
 	ld [wVramState], a
-	ld hl, wVirtualOAM + 2 ; Tile ID
+	ld hl, wShadowOAM + 2 ; Tile ID
 	xor a
 	ld c, $4
 .loop2
@@ -333,8 +333,8 @@ FlyToAnim:
 	inc a
 	dec c
 	jr nz, .loop2
-	ld hl, wVirtualOAM + 4 * 4
-	ld bc, wVirtualOAMEnd - (wVirtualOAM + 4 * 4)
+	ld hl, wShadowOAM + 4 * 4
+	ld bc, wShadowOAMEnd - (wShadowOAM + 4 * 4)
 	xor a
 	rst ByteFill
 	ret

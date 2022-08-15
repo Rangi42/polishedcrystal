@@ -92,8 +92,7 @@ ClosePokepic::
 	farjp RefreshSprites
 
 PokepicMenuDataHeader:
-	db $40 ; flags
-	db 04, 06 ; start coords
-	db 12, 14 ; end coords
+	db MENU_BACKUP_TILES
+	menu_coords 6, 4, 14, 12
 	dw NULL
 	db 1 ; default option

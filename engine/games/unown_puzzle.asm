@@ -491,7 +491,7 @@ RedrawUnownPuzzlePieces:
 	ld hl, .OAM_NotHoldingPiece
 
 .load
-	ld de, wVirtualOAM
+	ld de, wShadowOAM
 .loop
 	ld a, [hli]
 	cp -1

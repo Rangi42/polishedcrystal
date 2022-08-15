@@ -1,5 +1,16 @@
 ; Macros to verify assumptions about the data or code
 
+MACRO dbas
+	db BANK(\1)
+	dw \#
+	for x, 1, _NARG
+		for y, x + 1, _NARG + 1
+			assert BANK(\<x>) == BANK(\<y>) || !BANK(\<x>) || !BANK(\<y>), \
+				"\<x> and \<y> must be in the same bank"
+		endr
+	endr
+ENDM
+
 MACRO table_width
 	def CURRENT_TABLE_WIDTH = \1
 	if _NARG == 2

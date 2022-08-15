@@ -36,6 +36,7 @@
 	const_def 1
 	const SCROLLINGMENU_ITEMS_NORMAL
 	const SCROLLINGMENU_ITEMS_QUANTITY
+	const SCROLLINGMENU_ITEMS_KEY
 
 ; MonMenuOptions indexes (see data/mon_menu.asm)
 ; used by PokemonActionSubmenu (see engine/pokemon/mon_menu.asm)

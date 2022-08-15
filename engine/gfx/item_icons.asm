@@ -32,8 +32,7 @@ UpdateKeyItemIconAndDescription::
 	farcall UpdateKeyItemDescription
 _UpdateKeyItemIcon:
 	ld hl, KeyItemIconPointers
-	ld a, [wCurKeyItem]
-	dec a
+	ld a, [wCurItem]
 	call _LoadItemOrKeyItemIcon
 	farcall LoadKeyItemIconPalette
 	jmp SetPalettes

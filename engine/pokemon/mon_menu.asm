@@ -472,9 +472,8 @@ _UpdateMewtwoForm:
 	ret
 
 GiveTakeItemMenuData:
-	db %01010000
-	db 10, 13 ; start coords
-	db 17, 19 ; end coords
+	db MENU_BACKUP_TILES | MENU_SPRITE_ANIMS
+	menu_coords 13, 10, 19, 17
 	dw .Items
 	db 1 ; default option
 
@@ -603,9 +602,8 @@ MonMailAction:
 	ret
 
 .MenuDataHeader:
-	db $40 ; flags
-	db 10, 12 ; start coords
-	db 17, 19 ; end coords
+	db MENU_BACKUP_TILES
+	menu_coords 12, 10, 19, 17
 	dw .MenuData2
 	db 1 ; default option
 

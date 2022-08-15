@@ -35,8 +35,6 @@ ROM0
 	"Header"
 	org $0150
 	"Home"
-	org $3fd7
-	"Build Timestamp"
 
 ROMX $01
 	"bank1"
@@ -128,7 +126,7 @@ ROMX $25
 	"Events"
 
 ROMX $26
-	"Second Map Headers"
+	"Map Attributes"
 
 ROMX $27
 	"Special Map Blockdata"
@@ -207,7 +205,7 @@ ROMX $42
 	"Credits"
 
 ROMX $48
-	"Pic Pointers"
+	"Pokemon Pic Pointers"
 
 VRAM $0
 	"VRAM0"
@@ -232,8 +230,8 @@ WRAM0
 	org $c770
 	"Misc 480"
 	org $c950
-	"Misc 1300"
-	org $ced0
+	"Misc 1326"
+	org $ce7e
 	"Video"
 	"More WRAM 0"
 	org $cff0

@@ -6,18 +6,14 @@ UnownWalls:
 
 MenuHeaders_UnownWalls:
 ; ESCAPE
-	db $40 ; flags
-	db 04, 03 ; start coords
-	db 09, 16 ; end coords
+	db MENU_BACKUP_TILES
+	menu_coords 3, 4, 16, 9
 ; LIGHT
-	db $40 ; flags
-	db 04, 04 ; start coords
-	db 09, 15 ; end coords
+	db MENU_BACKUP_TILES
+	menu_coords 4, 4, 15, 9
 ; WATER
-	db $40 ; flags
-	db 04, 04 ; start coords
-	db 09, 15 ; end coords
+	db MENU_BACKUP_TILES
+	menu_coords 4, 4, 15, 9
 ; FAIRY
-	db $40 ; flags
-	db 04, 04 ; start coords
-	db 09, 15 ; end coords
+	db MENU_BACKUP_TILES
+	menu_coords 4, 4, 15, 9

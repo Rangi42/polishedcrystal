@@ -41,7 +41,7 @@ _TypeChart:
 	call ClearSpriteAnims
 
 	ld hl, TypeChartOAMData
-	ld de, wVirtualOAM
+	ld de, wShadowOAM
 	ld bc, 40 * 4
 	rst CopyBytes
 

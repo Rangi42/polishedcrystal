@@ -207,9 +207,8 @@ ShamoutiPokeCenter1FIvyScript:
 	step_end
 
 .KantoStarterMenuData:
-	db $40 ; flags
-	db 02, 00 ; start coords
-	db 11, 13 ; end coords
+	db MENU_BACKUP_TILES
+	menu_coords 0, 2, 13, 11
 	dw .MenuData2
 	db 1 ; default option
 

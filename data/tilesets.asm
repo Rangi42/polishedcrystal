@@ -3,20 +3,9 @@ INCLUDE "constants.asm"
 
 SECTION "Tileset Headers", ROMX
 
-MACRO assert_tileset_bank
-	assert BANK(\1\2) == BANK(\1\3) || !BANK(\1\2) || !BANK(\1\3), \
-		"All tileset data for \1 must be in the same bank"
-ENDM
-
 MACRO tileset
-	db BANK(\1GFX0)
-	dw \1GFX0, \1GFX1, \1GFX2, \1Meta, \1Coll, \1Attr, \1Anim
-	assert_tileset_bank \1, GFX0, GFX1
-	assert_tileset_bank \1, GFX1, GFX2
-	assert_tileset_bank \1, GFX2, Meta
-	assert_tileset_bank \1, Meta, Coll
-	assert_tileset_bank \1, Coll, Attr
-	assert_tileset_bank \1, Attr, GFX0
+	dbas \1GFX0, \1GFX1, \1GFX2, \1Meta, \1Coll, \1Attr
+	dw \1Anim ; BANK(_AnimateTileset)
 ENDM
 
 Tilesets::

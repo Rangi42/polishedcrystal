@@ -728,9 +728,8 @@ Special_HyperTrain:
 	ret
 
 .MenuHeader:
-	db $40 ; flags
-	db 04, 00 ; start coords
-	db 11, 19 ; end coords
+	db MENU_BACKUP_TILES
+	menu_coords 0, 4, 19, 11
 	dw .MenuData
 	db 1 ; default option
 
@@ -1066,38 +1065,39 @@ CalcPkmnStatC:
 
 .not_hyper_trained
 	ld a, c
-	cp STAT_ATK
+	dec a ; STAT_HP?
+	jr z, .HP
+	dec a ; STAT_ATK?
 	jr z, .Attack
-	cp STAT_DEF
+	dec a ; STAT_DEF?
 	jr z, .Defense
-	cp STAT_SPD
+	dec a ; STAT_SPD?
 	jr z, .Speed
-	cp STAT_SATK
+	dec a ; STAT_SATK?
 	jr z, .SpclAtk
-	cp STAT_SDEF
-	jr z, .SpclDef
-.HP
-	ld a, [hl]
-	swap a
-	and $f
+	; STAT_SDEF
+	inc hl
+	inc hl
+	ld a, [hld]
+	dec hl
 	jr .GotDV
+
+.HP:
+	ld a, [hl]
+	jr .GotHighDV
 
 .Attack:
 	ld a, [hl]
-	and $f
 	jr .GotDV
 
 .Defense:
 	inc hl
 	ld a, [hld]
-	swap a
-	and $f
-	jr .GotDV
+	jr .GotHighDV
 
 .Speed:
 	inc hl
 	ld a, [hld]
-	and $f
 	jr .GotDV
 
 .SpclAtk:
@@ -1105,19 +1105,11 @@ CalcPkmnStatC:
 	inc hl
 	ld a, [hld]
 	dec hl
+.GotHighDV:
 	swap a
-	and $f
-	jr .GotDV
-
-.SpclDef:
-	inc hl
-	inc hl
-	ld a, [hld]
-	dec hl
-	and $f
-
 .GotDV:
 	; de = e + a
+	and $f
 	add e
 	ld e, a
 	adc 0
@@ -1395,6 +1387,7 @@ GivePoke::
 	ld hl, wPartyMonNicknames
 	ld a, [wPartyCount]
 	dec a
+	ld [wCurPartyMon], a
 	call SkipNames
 	ld d, h
 	ld e, l

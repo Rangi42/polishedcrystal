@@ -205,7 +205,7 @@ RenderMusicPlayer:
 
 	ld bc, 4 * 3
 	ld hl, NoteOAM
-	ld de, wVirtualOAM
+	ld de, wShadowOAM
 	rst CopyBytes
 	call DelayFrame
 	xor a
@@ -1362,7 +1362,7 @@ AddNoteToOld:
 	add a
 	ld c, a
 	ld b, 0
-	ld hl, wVirtualOAM + 3 * 4
+	ld hl, wShadowOAM + 3 * 4
 	add hl, bc
 	push hl
 	pop de

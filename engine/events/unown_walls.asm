@@ -14,7 +14,6 @@ SpecialHoOhChamber:
 	ret nz
 
 .open
-	call GetMapAttributesPointer
 	eventflagset EVENT_WALL_OPENED_IN_HO_OH_CHAMBER
 	ret
 
@@ -45,16 +44,15 @@ SpecialOmanyteChamber:
 	jr nz, .loop
 
 .open
-	call GetMapAttributesPointer
 	eventflagset EVENT_WALL_OPENED_IN_OMANYTE_CHAMBER
 	ret
 
 SpecialAerodactylChamber:
 	call GetMapAttributesPointer
-	ld a, h
+	ld a, b
 	cp HIGH(RuinsOfAlphAerodactylChamber_MapAttributes)
 	jr nz, .nope
-	ld a, l
+	ld a, c
 	cp LOW(RuinsOfAlphAerodactylChamber_MapAttributes)
 	jr nz, .nope
 
@@ -68,10 +66,10 @@ SpecialAerodactylChamber:
 
 SpecialKabutoChamber:
 	call GetMapAttributesPointer
-	ld a, h
+	ld a, b
 	cp HIGH(RuinsOfAlphKabutoChamber_MapAttributes)
 	ret nz
-	ld a, l
+	ld a, c
 	cp LOW(RuinsOfAlphKabutoChamber_MapAttributes)
 	ret nz
 
