@@ -46,32 +46,32 @@ jobs:
       # CHECKOUT REPOSITORY
       - id: checkout-polishedcrystal
         name: "Checkout Rangi42/polishedcrystal"
-        uses: actions/checkout@3.0.0
+        uses: actions/checkout@latest
           
       # DOWNLOAD ALL BUILD ARTIFACTS
       - id: download-polishedcrystal
         name: "Download polishedcrystal"
-        uses: actions/download-artifact@v3.0.0
+        uses: actions/download-artifact@latest
         with:
           name: "polishedcrystal"
       - id: download-polishedcrystal-faithful
         name: "Download polishedcrystal-faithful"
-        uses: actions/download-artifact@v3.0.0
+        uses: actions/download-artifact@latest
         with:
           name: "polishedcrystal-faithful"
       - id: download-polisheddebug
         name: "Download polisheddebug"
-        uses: actions/download-artifact@v3.0.0
+        uses: actions/download-artifact@latest
         with:
           name: "polisheddebug"
       - id: download-polisheddebug-faithful
         name: "Download polisheddebug-faithful"
-        uses: actions/download-artifact@v3.0.0
+        uses: actions/download-artifact@latest
         with:
           name: "polisheddebug-faithful"
       - id: download-polishedcrystal-savepatch
         name: "Download polishedcrystal-savepatch"
-        uses: actions/download-artifact@v3.0.0
+        uses: actions/download-artifact@latest
         with:
           name: "polishedcrystal-savepatch"
       
