@@ -25,7 +25,7 @@ SwitchItemsInBag:
 	ld a, [wScrollingMenuCursorPosition]
 	call ItemSwitch_GetNthItem
 	ld a, [hl]
-	inc a
+	farcall ScrollingMenu_IsTerminator
 	ret z
 	ld hl, wSwitchItem
 	dec [hl]
@@ -42,7 +42,7 @@ SwitchItemsInBag:
 	call ItemSwitch_GetNthItem
 	dec hl
 	push hl
-	call ItemSwitch_ConvertSpacingToDW
+	call ItemSwitch_GetMenuSpacing
 	add hl, bc
 	ld d, h
 	ld e, l
@@ -62,7 +62,7 @@ SwitchItemsInBag:
 	call ItemSwitch_GetNthItem
 	ld d, h
 	ld e, l
-	call ItemSwitch_ConvertSpacingToDW
+	call ItemSwitch_GetMenuSpacing
 	add hl, bc
 	pop bc
 	rst CopyBytes
@@ -83,7 +83,7 @@ TryCombiningSwitchItems:
 	cp [hl]
 	jr nz, .doNotCombineSwitchItems
 	ld a, [wMenuData_ScrollingMenuSpacing]
-	cp 2
+	cp SCROLLINGMENU_ITEMS_QUANTITY
 	jr nz, .doNotCombineSwitchItems
 	ld a, [wScrollingMenuCursorPosition]
 	call GetQuantityOfSwitchItem
@@ -153,7 +153,7 @@ CombineSwitchItems:
 
 .notCombiningLastItem
 	dec [hl]
-	call ItemSwitch_ConvertSpacingToDW
+	call ItemSwitch_GetMenuSpacing
 	push bc
 	ld a, [wSwitchItem]
 	call ItemSwitch_GetNthItem
@@ -174,7 +174,7 @@ CombineSwitchItems:
 CopySwitchItemToBuffer:
 	call ItemSwitch_GetNthItem
 	ld de, wSwitchItemBuffer
-	call ItemSwitch_ConvertSpacingToDW
+	call ItemSwitch_GetMenuSpacing
 	rst CopyBytes
 	ret
 
@@ -183,27 +183,18 @@ CopyBufferedSwitchItemToScrollLocation:
 	ld d, h
 	ld e, l
 	ld hl, wSwitchItemBuffer
-	call ItemSwitch_ConvertSpacingToDW
+	call ItemSwitch_GetMenuSpacing
 	rst CopyBytes
 	ret
 
 ItemSwitch_GetNthItem:
-	ld c, a
-	ld b, 0
-	ld hl, wMenuData_ItemsPointerAddr
-	ld a, [hli]
-	ld h, [hl]
-	ld l, a
-	inc hl
-	ld a, [wMenuData_ScrollingMenuSpacing]
-	rst AddNTimes
-	ret
+	farjp ScrollingMenu_GetNthItem
 
 GetSwitchItemDestinationOffset:
 	ld a, [wSwitchItem]
 	call CopySwitchItemToBuffer
 	push hl
-	call ItemSwitch_ConvertSpacingToDW
+	call ItemSwitch_GetMenuSpacing
 	ld a, [wSwitchItem]
 	ld e, a
 	ld a, [wScrollingMenuCursorPosition]
@@ -219,10 +210,13 @@ GetSwitchItemDestinationOffset:
 	pop hl
 	ret
 
-ItemSwitch_ConvertSpacingToDW:
+ItemSwitch_GetMenuSpacing:
 	ld a, [wMenuData_ScrollingMenuSpacing]
-	ld c, a
-	ld b, 0
+	assert (SCROLLINGMENU_ITEMS_QUANTITY == 2)
+	ld bc, SCROLLINGMENU_ITEMS_QUANTITY
+	cp c
+	ret z
+	dec c
 	ret
 
 GetQuantityOfSwitchItem:

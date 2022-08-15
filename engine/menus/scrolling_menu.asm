@@ -475,6 +475,9 @@ ScrollingMenu_UpdateDisplay:
 ScrollingMenu_GetMenuSelection:
 ; Returns z if the selection is the terminator (usually -1).
 	ld a, [wMenuSelection]
+	; fallthrough
+ScrollingMenu_IsTerminator:
+; Returns z if a is the terminator (usually -1).
 	push bc
 	push af
 	ld a, [wMenuData_ScrollingMenuSpacing]
@@ -592,12 +595,13 @@ ScrollingMenu_GetAddressOfMenu_UseScrollingMenuCursorPosition:
 	ld b, a
 	ld a, [wScrollingMenuCursorPosition]
 	sub b
-
-; fallthrough
+	; fallthrough
 ScrollingMenu_GetAddressOfCurListPosition:
 	ld c, a
 	ld a, [wMenuScrollPosition]
 	add c
+	; fallthrough
+ScrollingMenu_GetNthItem:
 	ld c, a
 	ld b, 0
 	ld hl, wMenuData_ItemsPointerAddr
