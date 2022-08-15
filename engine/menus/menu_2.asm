@@ -1,4 +1,4 @@
-PlaceMenuItemName:
+PlaceMenuKeyItemName:
 ; places a star near the name if registered
 	push hl
 	push de
@@ -7,15 +7,64 @@ PlaceMenuItemName:
 	ld a, " "
 	ld [de], a
 	ld a, [wMenuSelection]
+	push bc
+	and a
+	jr z, .not_registered
+	ld b, a
+	ld hl, wRegisteredItems
+	ld a, [hli]
+	cp b
+	ld c, "▲"
+	jr z, .registered
+	ld a, [hli]
+	cp b
+	ld c, "◀"
+	jr z, .registered
+	ld a, [hli]
+	cp b
+	ld c, "▶"
+	jr z, .registered
+	ld a, [hli]
+	cp b
+	ld c, "▼"
+	jr nz, .not_registered
+.registered
+	push bc
+	push de
+	farcall CheckRegisteredItem
+	pop de
+	pop bc
+	dec a
+	jr nz, .not_unique
+	ld c, "★"
+.not_unique
+	ld a, c
+	ld [de], a
+.not_registered
+	pop bc
 	pop de
 	pop hl
-PlaceMartItemName:
+
+	; Now, handle the item name itself.
 	push de
+	ld de, GetKeyItemName
 	ld a, [wMenuSelection]
-	cp CANCEL ; special case for Cancel in Key Items pocket
-	ld de, ScrollingMenu_CancelString ; found in scrolling_menu.asm
+	and a
+	jr _PlaceMenuItemName
+PlaceMenuItemName:
+	push de
+	ld de, GetItemName
+	ld a, [wMenuSelection]
+	cp CANCEL
+	; fallthrough
+_PlaceMenuItemName:
+	jr z, .cancel
 	ld [wNamedObjectIndex], a
-	call nz, GetItemName
+	call _de_
+	jr .got_string
+.cancel
+	ld de, ScrollingMenu_CancelString ; found in scrolling_menu.asm
+.got_string
 	pop hl
 	rst PlaceString
 	ret

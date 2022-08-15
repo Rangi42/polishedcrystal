@@ -1115,7 +1115,6 @@ wTownMapCanFlyHere:: db
 
 NEXTU
 ; pack
-wPackJumptableIndex:: db
 wCurPocket:: db
 wPackUsedItem:: db
 

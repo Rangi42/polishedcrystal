@@ -601,7 +601,7 @@ PCItemsJoypad:
 	db 4, 8 ; rows/cols?
 	db 2 ; horizontal spacing?
 	dbw 0, wNumPCItems
-	dba PlaceMartItemName
+	dba PlaceMenuItemName
 	dba PlaceMenuItemQuantity
 	dba UpdateItemDescription
 
