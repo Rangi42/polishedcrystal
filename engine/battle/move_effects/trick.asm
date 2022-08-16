@@ -19,9 +19,9 @@ BattleCommand_trick:
 	jr z, .failed
 
 .player
-	call UserCanLoseItem
+	call .UserCanBeTricked
 	jr z, .failed
-	call OpponentCanLoseItem
+	call .OpponentCanBeTricked
 	jr z, .failed
 
 	call AnimateCurrentMove
@@ -36,6 +36,12 @@ BattleCommand_trick:
 	ld [hl], a
 	ld a, b
 	ld [de], a
+
+	; The above is a no-op if none holds an item, so checking
+	; for this after the swap is OK. We don't want to check
+	; before the swap since this clobbers a.
+	or b
+	jr z, .failed
 
 	ld hl, SwappedItemsText
 	call StdBattleTextbox
@@ -70,3 +76,14 @@ BattleCommand_trick:
 .failed
 	call AnimateFailedMove
 	jmp PrintButItFailed
+
+.OpponentCanBeTricked:
+	call CallOpponentTurn
+.UserCanBeTricked:
+; Wrapper to UserCanLoseItem that also allows lack of held item.
+	call GetUserItem
+	ld a, [hl]
+	and a
+	jmp nz, UserCanLoseItem
+	or 1
+	ret

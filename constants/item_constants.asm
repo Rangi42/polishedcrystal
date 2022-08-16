@@ -593,6 +593,7 @@ endc
 	const NAM_X_SPEED
 	const NAM_ZINC
 	const NAM_ZOOM_LENS
+	assert const_value - 1 == NUM_ITEMS
 
 ; APRICORN_BOX contents
 	const_def 1
@@ -644,3 +645,38 @@ DEF NUM_APRICORNS EQU const_value - 1
 	const OVAL_CHARM   ; 1e
 	const CATCH_CHARM  ; 1f
 DEF NUM_KEY_ITEMS EQU const_value - 1
+
+; Alphabetical order (see data/items/name_order.asm)
+	const_def 1
+	const NAM_APRICORN_BOX
+	const NAM_BASEMENT_KEY
+	const NAM_BICYCLE
+	const NAM_BLUE_CARD
+	const NAM_CARD_KEY
+	const NAM_CATCH_CHARM
+	const NAM_CLEAR_BELL
+	const NAM_COIN_CASE
+	const NAM_GO_GOGGLES
+	const NAM_GOOD_ROD
+	const NAM_GS_BALL
+	const NAM_ITEMFINDER
+	const NAM_LOST_ITEM
+	const NAM_MACHINE_PART
+	const NAM_MYSTERY_EGG
+	const NAM_MYSTICTICKET
+	const NAM_OLD_ROD
+	const NAM_OLD_SEA_MAP
+	const NAM_ORANGETICKET
+	const NAM_OVAL_CHARM
+	const NAM_PASS
+	const NAM_RAINBOW_WING
+	const NAM_RED_SCALE
+	const NAM_S_S_TICKET
+	const NAM_SECRETPOTION
+	const NAM_SHINY_CHARM
+	const NAM_SILPHSCOPE2
+	const NAM_SILVER_WING
+	const NAM_SQUIRTBOTTLE
+	const NAM_SUPER_ROD
+	const NAM_TYPE_CHART
+	assert const_value - 1 == NUM_KEY_ITEMS

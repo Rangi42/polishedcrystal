@@ -77,8 +77,7 @@ ScrollingMenuJoyAction:
 	ld a, [wMenuFlags]
 	bit 5, a
 	jr z, .dontCheckForCancel
-	ld a, [wMenuSelection]
-	inc a
+	call ScrollingMenu_GetMenuSelection
 	jmp nz, .unsetZeroFlag
 .dontCheckForCancel
 	call PlaceHollowCursor
@@ -97,8 +96,7 @@ ScrollingMenuJoyAction:
 	ld [wBattleMenuFlags], a
 
 	; if Cancel is preselected, just fallback to regular bag function
-	ld a, [wMenuSelection]
-	inc a
+	call ScrollingMenu_GetMenuSelection
 	jr z, ScrollingMenuJoyAction
 
 	; same with unusable items
@@ -108,8 +106,7 @@ ScrollingMenuJoyAction:
 	jr z, ScrollingMenuJoyAction
 
 .not_quick_pack
-	ld a, [wMenuSelection]
-	inc a
+	call ScrollingMenu_GetMenuSelection
 	jr z, .b_button
 	ld a, A_BUTTON
 	scf
@@ -127,8 +124,7 @@ ScrollingMenuJoyAction:
 	ld a, [wMenuCursorY]
 	dec a
 	call ScrollingMenu_GetListItemCoordAndFunctionArgs
-	ld a, [wMenuSelection]
-	call ScrollingMenu_IsTerminator
+	call ScrollingMenu_GetMenuSelection
 	jr z, .unsetZeroFlag
 	call ScrollingMenu_GetCursorPosition
 	dec a
@@ -428,8 +424,7 @@ ScrollingMenu_UpdateDisplay:
 	ld [wScrollingMenuCursorPosition], a
 	ld a, c
 	call ScrollingMenu_GetListItemCoordAndFunctionArgs
-	ld a, [wMenuSelection]
-	call ScrollingMenu_IsTerminator
+	call ScrollingMenu_GetMenuSelection
 	jr z, .cancel
 	push bc
 	ld a, [wMenuScrollPosition]
@@ -477,6 +472,10 @@ ScrollingMenu_UpdateDisplay:
 	ld hl, wMenuData_ScrollingMenuFunction1
 	jmp FarPointerCall
 
+ScrollingMenu_GetMenuSelection:
+; Returns z if the selection is the terminator (usually -1).
+	ld a, [wMenuSelection]
+	; fallthrough
 ScrollingMenu_IsTerminator:
 ; Returns z if a is the terminator (usually -1).
 	push bc
@@ -596,12 +595,13 @@ ScrollingMenu_GetAddressOfMenu_UseScrollingMenuCursorPosition:
 	ld b, a
 	ld a, [wScrollingMenuCursorPosition]
 	sub b
-
-; fallthrough
+	; fallthrough
 ScrollingMenu_GetAddressOfCurListPosition:
 	ld c, a
 	ld a, [wMenuScrollPosition]
 	add c
+	; fallthrough
+ScrollingMenu_GetNthItem:
 	ld c, a
 	ld b, 0
 	ld hl, wMenuData_ItemsPointerAddr
