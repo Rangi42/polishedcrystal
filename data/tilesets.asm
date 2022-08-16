@@ -106,20 +106,17 @@ TilesetJohto4Attr:: INCBIN "data/tilesets/johto_overcast_attributes.bin.lz"
 TilesetJohto4Coll:: INCBIN "data/tilesets/johto_overcast_collision.bin.lz"
 
 
-SECTION "Tileset Data - kanto", ROMX
+SECTION "Tileset Data - kanto and indigo_plateau", ROMX
 
-TilesetKanto1GFX0:: INCBIN "gfx/tilesets/kanto.2bpp.vram0.lz"
+TilesetKanto1GFX0::
+TilesetKanto2GFX0:: INCBIN "gfx/tilesets/kanto.2bpp.vram0.lz"
 TilesetKanto1GFX1:: INCBIN "gfx/tilesets/kanto.2bpp.vram1.lz"
+
+TilesetKanto2GFX1:: INCBIN "gfx/tilesets/indigo_plateau.2bpp.vram1.lz"
 
 TilesetKanto1Meta:: INCBIN "data/tilesets/kanto_metatiles.bin.lz"
 TilesetKanto1Attr:: INCBIN "data/tilesets/kanto_attributes.bin.lz"
 TilesetKanto1Coll:: INCBIN "data/tilesets/kanto_collision.bin.lz"
-
-
-SECTION "Tileset Data - indigo_plateau", ROMX
-
-TilesetKanto2GFX0:: INCBIN "gfx/tilesets/indigo_plateau.2bpp.vram0.lz"
-TilesetKanto2GFX1:: INCBIN "gfx/tilesets/indigo_plateau.2bpp.vram1.lz"
 
 TilesetKanto2Meta:: INCBIN "data/tilesets/indigo_plateau_metatiles.bin.lz"
 TilesetKanto2Attr:: INCBIN "data/tilesets/indigo_plateau_attributes.bin.lz"

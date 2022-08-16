@@ -95,20 +95,22 @@ TilesetJohto4Anim::
 	dw NULL,  DoneTileAnimation
 
 TilesetKanto1Anim::
+TilesetKanto2Anim::
 	dw vTiles2 tile $14, AnimateKantoWaterTile
-	dw NULL,  DoNothing
 	dw vTiles2 tile $40, WriteTileToBuffer
-	dw NULL,  DoNothing
 	dw wTileAnimBuffer, ScrollTileDown
-	dw NULL,  DoNothing
 	dw wTileAnimBuffer, ScrollTileDown
-	dw NULL,  DoNothing
 	dw wTileAnimBuffer, ScrollTileDown
-	dw NULL,  DoNothing
 	dw vTiles2 tile $40, ReadTileFromBuffer
+	dw vTiles2 tile $10, ScrollTileUp
+	dw vTiles2 tile $11, ScrollTileDown
+	dw vTiles2 tile $12, ScrollTileLeft
+	dw vTiles2 tile $13, ScrollTileRight
 	dw NULL,  AnimateKantoFlowerTile
-	dw NULL,  DoNothing
-	dw NULL,  DoNothing
+	dw vTiles2 tile $10, ScrollTileUp
+	dw vTiles2 tile $11, ScrollTileDown
+	dw vTiles2 tile $12, ScrollTileLeft
+	dw vTiles2 tile $13, ScrollTileRight
 	dw NULL,  StandingTileFrame8
 	dw NULL,  DoneTileAnimation
 
@@ -132,25 +134,6 @@ TilesetGym1Anim::
 	dw NULL,  DoNothing
 	dw NULL,  DoNothing
 	dw NULL,  LavaBubbleAnim1
-	dw NULL,  DoNothing
-	dw NULL,  StandingTileFrame8
-	dw NULL,  DoneTileAnimation
-
-TilesetKanto2Anim::
-	dw vTiles2 tile $14, AnimateKantoWaterTile
-	dw NULL,  DoNothing
-	dw NULL,  DoNothing
-	dw vTiles2 tile $20, ScrollTileUp
-	dw vTiles2 tile $21, ScrollTileDown
-	dw vTiles2 tile $22, ScrollTileLeft
-	dw vTiles2 tile $23, ScrollTileRight
-	dw NULL,  DoNothing
-	dw NULL,  AnimateKantoFlowerTile
-	dw NULL,  DoNothing
-	dw vTiles2 tile $20, ScrollTileUp
-	dw vTiles2 tile $21, ScrollTileDown
-	dw vTiles2 tile $22, ScrollTileLeft
-	dw vTiles2 tile $23, ScrollTileRight
 	dw NULL,  DoNothing
 	dw NULL,  StandingTileFrame8
 	dw NULL,  DoneTileAnimation
