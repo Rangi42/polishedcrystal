@@ -1060,29 +1060,17 @@ _LoadTilesetGFX0:
 
 	; Check roof tiles
 	ld a, [wMapTileset]
-	cp TILESET_JOHTO_TRADITIONAL
-	jr z, .load_roof
-	cp TILESET_JOHTO_MODERN
-	jr z, .load_roof
-	cp TILESET_JOHTO_OVERCAST
-	jr nz, .skip_roof
-
-.load_roof
+	cp NO_ROOF_TILESETS
+	ld c, $7f
+	jr nc, .skip_roof
 	farcall LoadMapGroupRoof
-	ld hl, wTilesetGFX0Address
-	ld a, [wTilesetDataBank]
-	ld de, vTiles2
 	ld c, $ff
-	call _DoLoadTilesetGFX0
-	jr .done
 
 .skip_roof
 	ld hl, wTilesetGFX0Address
 	ld a, [wTilesetDataBank]
 	ld de, vTiles2
-	ld c, $7f
 	call _DoLoadTilesetGFX0
-.done
 	pop af
 	ldh [rSVBK], a
 	ret

@@ -1,9 +1,9 @@
 SECTION "Roof Graphics", ROMX
 
-Roof0GFX:: INCBIN "gfx/tilesets/roofs/0.2bpp.lz"
-Roof1GFX:: INCBIN "gfx/tilesets/roofs/1.2bpp.lz"
-Roof2GFX:: INCBIN "gfx/tilesets/roofs/2.2bpp.lz"
-Roof3GFX:: INCBIN "gfx/tilesets/roofs/3.2bpp.lz"
+NewBarkRoofGFX::   INCBIN "gfx/tilesets/roofs/new_bark.2bpp.lz"
+VioletRoofGFX::    INCBIN "gfx/tilesets/roofs/violet.2bpp.lz"
+AzaleaRoofGFX::    INCBIN "gfx/tilesets/roofs/azalea.2bpp.lz"
+OlivineRoofGFX::   INCBIN "gfx/tilesets/roofs/olivine.2bpp.lz"
 
 
 SECTION "Overworld Effect Graphics", ROMX
