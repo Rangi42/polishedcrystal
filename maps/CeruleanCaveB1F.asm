@@ -34,7 +34,7 @@ CeruleanCaveMewtwo:
 	setevent EVENT_CERULEAN_CAVE_MEWTWO
 	reloadmapafterbattle
 	special CheckBattleCaughtResult
-	iffalse .nocatch
+	iffalsefwd .nocatch
 	setflag ENGINE_PLAYER_CAUGHT_MEWTWO
 .nocatch
 	end

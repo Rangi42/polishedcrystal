@@ -94,7 +94,7 @@ WateredWeirdTreeScript:: ; export (for when you use Squirtbottle from pack)
 	disappear ROUTE36_WEIRD_TREE
 	reloadmapafterbattle
 	special CheckBattleCaughtResult
-	iffalse .nocatch
+	iffalsefwd .nocatch
 	setflag ENGINE_PLAYER_CAUGHT_SUDOWOODO
 .nocatch
 	end

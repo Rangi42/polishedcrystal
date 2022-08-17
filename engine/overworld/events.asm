@@ -1167,7 +1167,7 @@ RoamingSuicuneBattleScript:
 	startbattle
 	reloadmapafterbattle
 	special CheckBattleCaughtResult
-	iffalse .nocatch
+	iffalsefwd .nocatch
 	setflag ENGINE_PLAYER_CAUGHT_SUICUNE
 .nocatch
 	end
@@ -1177,7 +1177,7 @@ RoamingRaikouBattleScript:
 	startbattle
 	reloadmapafterbattle
 	special CheckBattleCaughtResult
-	iffalse .nocatch
+	iffalsefwd .nocatch
 	setflag ENGINE_PLAYER_CAUGHT_RAIKOU
 .nocatch
 	end
@@ -1187,7 +1187,7 @@ RoamingEnteiBattleScript:
 	startbattle
 	reloadmapafterbattle
 	special CheckBattleCaughtResult
-	iffalse .nocatch
+	iffalsefwd .nocatch
 	setflag ENGINE_PLAYER_CAUGHT_ENTEI
 .nocatch
 	end

@@ -46,7 +46,7 @@ Lugia:
 	disappear WHIRLISLANDLUGIACHAMBER_LUGIA
 	reloadmapafterbattle
 	special CheckBattleCaughtResult
-	iffalse .nocatch
+	iffalsefwd .nocatch
 	setflag ENGINE_PLAYER_CAUGHT_LUGIA
 .nocatch
 	end

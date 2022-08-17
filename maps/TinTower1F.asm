@@ -142,7 +142,7 @@ SuicuneBattle:
 	clearevent EVENT_EUSINES_HOUSE_EUSINE
 	reloadmapafterbattle
 	special CheckBattleCaughtResult
-	iffalse .nocatch
+	iffalsefwd .nocatch
 	setflag ENGINE_PLAYER_CAUGHT_SUICUNE
 .nocatch
 	turnobject PLAYER, DOWN
