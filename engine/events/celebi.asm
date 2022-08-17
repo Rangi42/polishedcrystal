@@ -221,17 +221,3 @@ GetCelebiSpriteTile:
 	pop bc
 	pop hl
 	ret
-
-CheckCaughtCelebi:
-	ld a, [wBattleResult]
-	bit 6, a
-	jr z, .false
-	ld a, $1
-	ldh [hScriptVar], a
-	ret
-
-.false
-	xor a
-	ldh [hScriptVar], a
-	ret
-

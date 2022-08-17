@@ -109,7 +109,7 @@ Var_BoxFreeSpace:
 
 Var_BattleResult:
 	ld a, [wBattleResult]
-	and $3f
+	and ~BATTLERESULT_BITMASK
 	jr _Var_loadstringbuffer2
 
 Var_CountPokemonJournals:

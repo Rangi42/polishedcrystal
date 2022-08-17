@@ -1159,7 +1159,10 @@ wEventFlags:: flag_array NUM_EVENTS
 
 wCurBox:: db
 
-	ds 95 ; unused
+wPlayerCaught:: db
+wPlayerCaught2:: db
+
+	ds 93 ; unused
 
 wCelebiEvent:: db
 

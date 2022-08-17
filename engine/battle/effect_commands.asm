@@ -5250,8 +5250,8 @@ CheckIfTrappedByAbility:
 
 SetBattleDraw:
 	ld a, [wBattleResult]
-	and $c0
-	or $2
+	and BATTLERESULT_BITMASK
+	or DRAW
 	ld [wBattleResult], a
 	ret
 
