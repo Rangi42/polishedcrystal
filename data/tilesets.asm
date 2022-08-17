@@ -15,6 +15,7 @@ Tilesets::
 	tileset TilesetJohto2
 	tileset TilesetJohto3
 	tileset TilesetJohto4
+	tileset TilesetJohto5
 	tileset TilesetKanto1
 	tileset TilesetKanto2
 	tileset TilesetShamouti
@@ -54,72 +55,60 @@ Tilesets::
 	tileset TilesetAlph
 	tileset TilesetPokemonMansion
 	tileset TilesetBattleFactory
-	tileset TilesetEcruteakShrine
 	assert_table_length NUM_TILESETS
 
 
-SECTION "Tileset Data - johto_traditional and ecruteak_shrine", ROMX
+SECTION "Tileset Data - johto (5)", ROMX
 
 TilesetJohto1GFX0::
-TilesetEcruteakShrineGFX0:: INCBIN "gfx/tilesets/johto_traditional.2bpp.vram0.lz"
+TilesetJohto2GFX0::
+TilesetJohto3GFX0::
+TilesetJohto4GFX0::
+TilesetJohto5GFX0:: INCBIN "gfx/tilesets/johto_common.2bpp.lz"
+
 TilesetJohto1GFX1::
-TilesetEcruteakShrineGFX1:: INCBIN "gfx/tilesets/johto_traditional.2bpp.vram1.lz"
+TilesetJohto5GFX1:: INCBIN "gfx/tilesets/johto_traditional.johto_common.2bpp.vram0.lz"
 TilesetJohto1GFX2::
-TilesetEcruteakShrineGFX2:: INCBIN "gfx/tilesets/johto_traditional.2bpp.vram2.lz"
+TilesetJohto5GFX2:: INCBIN "gfx/tilesets/johto_traditional.johto_common.2bpp.vram1.lz"
+
+TilesetJohto2GFX1:: INCBIN "gfx/tilesets/johto_modern.johto_common.2bpp.lz"
+
+TilesetJohto3GFX1:: INCBIN "gfx/tilesets/johto_overcast.johto_common.2bpp.lz"
+
+TilesetJohto4GFX1:: INCBIN "gfx/tilesets/battle_tower_outside.johto_common.2bpp.lz"
 
 TilesetJohto1Meta:: INCBIN "data/tilesets/johto_traditional_metatiles.bin.lz"
 TilesetJohto1Attr:: INCBIN "data/tilesets/johto_traditional_attributes.bin.lz"
 TilesetJohto1Coll:: INCBIN "data/tilesets/johto_traditional_collision.bin.lz"
 
-TilesetEcruteakShrineMeta:: INCBIN "data/tilesets/ecruteak_shrine_metatiles.bin.lz"
-TilesetEcruteakShrineAttr:: INCBIN "data/tilesets/ecruteak_shrine_attributes.bin.lz"
-TilesetEcruteakShrineColl:: INCBIN "data/tilesets/ecruteak_shrine_collision.bin.lz"
-
-
-SECTION "Tileset Data - johto_modern", ROMX
-
-TilesetJohto2GFX0:: INCBIN "gfx/tilesets/johto_modern.2bpp.vram0.lz"
-TilesetJohto2GFX1:: INCBIN "gfx/tilesets/johto_modern.2bpp.vram1.lz"
-
 TilesetJohto2Meta:: INCBIN "data/tilesets/johto_modern_metatiles.bin.lz"
 TilesetJohto2Attr:: INCBIN "data/tilesets/johto_modern_attributes.bin.lz"
 TilesetJohto2Coll:: INCBIN "data/tilesets/johto_modern_collision.bin.lz"
 
+TilesetJohto3Meta:: INCBIN "data/tilesets/johto_overcast_metatiles.bin.lz"
+TilesetJohto3Attr:: INCBIN "data/tilesets/johto_overcast_attributes.bin.lz"
+TilesetJohto3Coll:: INCBIN "data/tilesets/johto_overcast_collision.bin.lz"
 
-SECTION "Tileset Data - battle_tower_outside", ROMX
+TilesetJohto4Meta:: INCBIN "data/tilesets/battle_tower_outside_metatiles.bin.lz"
+TilesetJohto4Attr:: INCBIN "data/tilesets/battle_tower_outside_attributes.bin.lz"
+TilesetJohto4Coll:: INCBIN "data/tilesets/battle_tower_outside_collision.bin.lz"
 
-TilesetJohto3GFX0:: INCBIN "gfx/tilesets/battle_tower_outside.2bpp.vram0.lz"
-TilesetJohto3GFX1:: INCBIN "gfx/tilesets/battle_tower_outside.2bpp.vram1.lz"
-
-TilesetJohto3Meta:: INCBIN "data/tilesets/battle_tower_outside_metatiles.bin.lz"
-TilesetJohto3Attr:: INCBIN "data/tilesets/battle_tower_outside_attributes.bin.lz"
-TilesetJohto3Coll:: INCBIN "data/tilesets/battle_tower_outside_collision.bin.lz"
-
-
-SECTION "Tileset Data - johto_overcast", ROMX
-
-TilesetJohto4GFX0:: INCBIN "gfx/tilesets/johto_overcast.2bpp.vram0.lz"
-TilesetJohto4GFX1:: INCBIN "gfx/tilesets/johto_overcast.2bpp.vram1.lz"
-
-TilesetJohto4Meta:: INCBIN "data/tilesets/johto_overcast_metatiles.bin.lz"
-TilesetJohto4Attr:: INCBIN "data/tilesets/johto_overcast_attributes.bin.lz"
-TilesetJohto4Coll:: INCBIN "data/tilesets/johto_overcast_collision.bin.lz"
+TilesetJohto5Meta:: INCBIN "data/tilesets/ecruteak_shrine_metatiles.bin.lz"
+TilesetJohto5Attr:: INCBIN "data/tilesets/ecruteak_shrine_attributes.bin.lz"
+TilesetJohto5Coll:: INCBIN "data/tilesets/ecruteak_shrine_collision.bin.lz"
 
 
-SECTION "Tileset Data - kanto", ROMX
+SECTION "Tileset Data - kanto (2)", ROMX
 
-TilesetKanto1GFX0:: INCBIN "gfx/tilesets/kanto.2bpp.vram0.lz"
-TilesetKanto1GFX1:: INCBIN "gfx/tilesets/kanto.2bpp.vram1.lz"
+TilesetKanto1GFX0::
+TilesetKanto2GFX0:: INCBIN "gfx/tilesets/kanto_common.2bpp.lz"
+TilesetKanto1GFX1:: INCBIN "gfx/tilesets/kanto.kanto_common.2bpp.lz"
+
+TilesetKanto2GFX1:: INCBIN "gfx/tilesets/indigo_plateau.kanto_common.2bpp.lz"
 
 TilesetKanto1Meta:: INCBIN "data/tilesets/kanto_metatiles.bin.lz"
 TilesetKanto1Attr:: INCBIN "data/tilesets/kanto_attributes.bin.lz"
 TilesetKanto1Coll:: INCBIN "data/tilesets/kanto_collision.bin.lz"
-
-
-SECTION "Tileset Data - indigo_plateau", ROMX
-
-TilesetKanto2GFX0:: INCBIN "gfx/tilesets/indigo_plateau.2bpp.vram0.lz"
-TilesetKanto2GFX1:: INCBIN "gfx/tilesets/indigo_plateau.2bpp.vram1.lz"
 
 TilesetKanto2Meta:: INCBIN "data/tilesets/indigo_plateau_metatiles.bin.lz"
 TilesetKanto2Attr:: INCBIN "data/tilesets/indigo_plateau_attributes.bin.lz"

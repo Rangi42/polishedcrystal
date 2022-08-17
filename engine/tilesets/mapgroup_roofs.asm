@@ -20,9 +20,11 @@ LoadMapGroupRoof::
 	jmp DecompressRequest2bpp
 
 .Roofs:
-	dw Roof0GFX ; far-ok
-	dw Roof1GFX ; far-ok
-	dw Roof2GFX ; far-ok
-	dw Roof3GFX ; far-ok
+	table_width 2, LoadMapGroupRoof.Roofs
+	dw NewBarkRoofGFX ; far-ok
+	dw VioletRoofGFX ; far-ok
+	dw AzaleaRoofGFX ; far-ok
+	dw OlivineRoofGFX ; far-ok
+	assert_table_length NUM_ROOFS
 
 INCLUDE "data/maps/roofs.asm"
