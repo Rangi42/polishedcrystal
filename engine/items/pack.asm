@@ -596,6 +596,10 @@ Pack_RegularPocketMenu:
 	call Pack_PocketMenu
 	jmp Pack_InterpretJoypad
 
+Pack_TutorialPocketMenu:
+	ld bc, Tutorial_ItemsPocketMenuDataHeader
+	jr Pack_PocketMenu
+
 Pack_DepositSellPocketMenu:
 	; Menu input is handled elsewhere.
 	ld bc, PC_Mart_ItemsPocketMenuDataHeader
@@ -883,7 +887,9 @@ TutorialPack:
 	ld a, BANK(.autoinput_right_right_a)
 	call StartAutoInput
 .loop
-	call .RunJumptable
+	call ClearPocketList
+	call WaitBGMap_DrawPackGFX
+	call Pack_TutorialPocketMenu
 	call DepositSellTutorial_InterpretJoypad
 	jr c, .loop
 	xor a ; FALSE
@@ -899,81 +905,6 @@ TutorialPack:
 .autoselect
 	db A_BUTTON, $00
 	db NO_INPUT, $ff ; end
-
-.RunJumptable:
-	call StandardStackJumpTable
-
-.Jumptable
-	dw .Items
-	dw .Medicine
-	dw .Balls
-
-.Items:
-	ld a, ITEM - 1
-	ld hl, .ItemsMenuDataHeader
-	jr .DisplayPocket
-
-.ItemsMenuDataHeader:
-	db MENU_BACKUP_TILES
-	menu_coords 7, 1, 19, 11
-	dw .ItemsMenuData2
-	db 1 ; default option
-
-.ItemsMenuData2:
-	db $ee ; flags
-	db 5, 8 ; rows, columns
-	db SCROLLINGMENU_ITEMS_QUANTITY ; item format
-	dbw 0, wDudeNumItems
-	dba PlaceMenuItemName
-	dba PlaceMenuItemQuantity
-	dba UpdateItemIconAndDescription
-
-.Medicine:
-	ld a, MEDICINE - 1
-	ld hl, .MedicineMenuDataHeader
-	jr .DisplayPocket
-
-.MedicineMenuDataHeader:
-	db MENU_BACKUP_TILES
-	menu_coords 7, 1, 19, 11
-	dw .MedicineMenuData2
-	db 1 ; default option
-
-.MedicineMenuData2:
-	db $ee ; flags
-	db 5, 8 ; rows, columns
-	db SCROLLINGMENU_ITEMS_QUANTITY ; item format
-	dbw 0, wDudeNumMedicine
-	dba PlaceMenuItemName
-	dba PlaceMenuItemQuantity
-	dba UpdateItemIconAndDescription
-
-.Balls:
-	ld a, BALL - 1
-	ld hl, .BallsMenuDataHeader
-	jr .DisplayPocket
-
-.BallsMenuDataHeader:
-	db MENU_BACKUP_TILES
-	menu_coords 7, 1, 19, 11
-	dw .BallsMenuData2
-	db 1 ; default option
-
-.BallsMenuData2:
-	db $ee ; flags
-	db 5, 8 ; rows, columns
-	db SCROLLINGMENU_ITEMS_QUANTITY ; item format
-	dbw 0, wDudeNumBalls
-	dba PlaceMenuItemName
-	dba PlaceMenuItemQuantity
-	dba UpdateItemIconAndDescription
-
-.DisplayPocket:
-	push hl
-	call InitPocket
-	pop hl
-	call CopyMenuHeader
-	jmp ScrollingMenu
 
 Pack_JumptableNext:
 	ld hl, wJumptableIndex
@@ -1384,6 +1315,51 @@ PC_Mart_KeyItemsPocketMenuDataHeader:
 	dba PlaceMenuKeyItemName
 	dba DoNothing
 	dba UpdateKeyItemIconAndDescription
+
+Tutorial_ItemsPocketMenuDataHeader:
+	db MENU_BACKUP_TILES
+	menu_coords 7, 1, 19, 11
+	dw .MenuData2
+	db 1 ; default option
+
+.MenuData2:
+	db $2e ; flags
+	db 5, 8 ; rows, columns
+	db SCROLLINGMENU_ITEMS_QUANTITY ; item format
+	dbw 0, wDudeNumItems
+	dba PlaceMenuItemName
+	dba PlaceMenuItemQuantity
+	dba UpdateItemIconAndDescription
+
+Tutorial_MedicinePocketMenuDataHeader:
+	db MENU_BACKUP_TILES
+	menu_coords 7, 1, 19, 11
+	dw .MenuData2
+	db 1 ; default option
+
+.MenuData2:
+	db $2e ; flags
+	db 5, 8 ; rows, columns
+	db SCROLLINGMENU_ITEMS_QUANTITY ; item format
+	dbw 0, wDudeNumMedicine
+	dba PlaceMenuItemName
+	dba PlaceMenuItemQuantity
+	dba UpdateItemIconAndDescription
+
+Tutorial_BallsPocketMenuDataHeader:
+	db MENU_BACKUP_TILES
+	menu_coords 7, 1, 19, 11
+	dw .MenuData2
+	db 1 ; default option
+
+.MenuData2:
+	db $2e ; flags
+	db 5, 8 ; rows, columns
+	db SCROLLINGMENU_ITEMS_QUANTITY ; item format
+	dbw 0, wDudeNumBalls
+	dba PlaceMenuItemName
+	dba PlaceMenuItemQuantity
+	dba UpdateItemIconAndDescription
 
 Text_SortItemsHow:
 	text "How do you want"
