@@ -52,6 +52,7 @@ Signs:
 INCBIN "gfx/signs/wood.2bpp"
 INCBIN "gfx/signs/forest.2bpp"
 INCBIN "gfx/signs/cave.2bpp"
+INCBIN "gfx/signs/route.2bpp"
 INCBIN "gfx/signs/water.2bpp"
 INCBIN "gfx/signs/building.2bpp"
 	assert_table_length NUM_SIGNS

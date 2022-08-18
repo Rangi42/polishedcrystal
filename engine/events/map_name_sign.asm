@@ -126,7 +126,7 @@ InitMapNameSign::
 	ret z
 	cp POWER_PLANT
 	ret z
-	cp POKEMON_MANSION
+	cp SOUL_HOUSE
 	ret z
 	cp CINNABAR_LAB
 	ret z
