@@ -206,8 +206,13 @@ LoadMapNameSignGFX:
 	ld hl, vTiles0 tile POPUP_MAP_FRAME_SPACE
 	call GetOpaque1bppSpaceTile
 	; load sign frame
+	ld hl, Signs
+	ld bc, POPUP_MAP_FRAME_SIZE tiles
+	ld a, [wSign]
+	rst AddNTimes
+	ld d, h
+	ld e, l
 	ld hl, vTiles0 tile POPUP_MAP_FRAME_START
-	ld de, Signs
 	lb bc, BANK(Signs), POPUP_MAP_FRAME_SIZE
 	call Get2bpp
 	; clear landmark name area

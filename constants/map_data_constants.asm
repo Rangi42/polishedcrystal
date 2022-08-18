@@ -16,6 +16,7 @@ DEF MAP_LENGTH EQU _RS   ; 7
 ; map landmark name signs
 	const_def
 	const SIGN_WOOD
+	const SIGN_FOREST
 DEF NUM_SIGNS EQU const_value
 
 ; map environments (wEnvironment)
