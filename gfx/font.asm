@@ -47,6 +47,14 @@ INCBIN "gfx/frames/19.1bpp"
 INCBIN "gfx/frames/20.1bpp"
 	assert_table_length NUM_FRAMES
 
+Signs:
+	table_width 8 tiles, Signs
+INCBIN "gfx/signs/wood.2bpp"
+INCBIN "gfx/signs/forest.2bpp"
+INCBIN "gfx/signs/cave.2bpp"
+INCBIN "gfx/signs/water.2bpp"
+	assert_table_length NUM_SIGNS
+
 BattleExtrasGFX:
 INCBIN "gfx/battle/hpexpbars.2bpp.lz"
 
@@ -66,8 +74,5 @@ CategoryIconGFX:
 INCBIN "gfx/battle/categories.2bpp"
 	assert_table_length NUM_CATEGORIES
 
-MapEntryFrameGFX:
-INCBIN "gfx/frames/map_entry_sign.2bpp"
-
 PaintingFrameGFX:
-INCBIN "gfx/frames/painting.2bpp"
+INCBIN "gfx/signs/painting.2bpp"

@@ -43,9 +43,9 @@ LoadSpecialMapPalette:
 
 	ld a, b
 	dec a ; PAL_SINGLE?
-	jr z, LoadEightBGPalettes
+	jr z, LoadSevenBGPalettes
 	dec a ; PAL_TIMEOFDAY?
-	jr z, LoadEightTimeOfDayBGPalettes
+	jr z, LoadSevenTimeOfDayBGPalettes
 	; PAL_SPECIAL
 	jp hl
 
@@ -59,14 +59,15 @@ endr
 	and a
 	ret
 
-LoadEightTimeOfDayBGPalettes:
+; don't copy the eighth palette, it's loaded based on the map's sign
+LoadSevenTimeOfDayBGPalettes:
 	ld a, [wTimeOfDayPal]
 	and 3
 	ld bc, 8 palettes
 	rst AddNTimes
-LoadEightBGPalettes:
+LoadSevenBGPalettes:
 	ld de, wBGPals1
-	ld bc, 8 palettes
+	ld bc, 7 palettes
 	call FarCopyColorWRAM
 	scf
 	ret
@@ -74,12 +75,12 @@ LoadEightBGPalettes:
 PokeCenterSpecialCase:
 	ld hl, wMapGroup
 	call .check_shamouti_pokecenter
-	jr z, LoadEightBGPalettes
+	jr z, LoadSevenBGPalettes
 	ld hl, wBackupMapGroup
 	call .check_shamouti_pokecenter
-	jr z, LoadEightBGPalettes
+	jr z, LoadSevenBGPalettes
 	ld hl, PokeCenterPalette
-	jr LoadEightBGPalettes
+	jr LoadSevenBGPalettes
 
 .check_shamouti_pokecenter
 	ld a, [hli]
@@ -92,7 +93,7 @@ PokeCenterSpecialCase:
 
 MartSpecialCase:
 	ld hl, MartPalette
-	call LoadEightBGPalettes
+	call LoadSevenBGPalettes
 	ld hl, wMapBlocksBank
 	ld a, [hli]
 	cp BANK(GenericMart_BlockData)

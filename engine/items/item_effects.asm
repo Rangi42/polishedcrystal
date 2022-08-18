@@ -500,11 +500,9 @@ PokeBallEffect:
 	ld a, [wBattleType]
 	cp BATTLETYPE_CONTEST
 	jmp z, .catch_bug_contest_mon
-	cp BATTLETYPE_LEGENDARY
-	jr nz, .not_celebi ; false positive for other legendaries, but that's okay
+
 	ld hl, wBattleResult
-	set 6, [hl]
-.not_celebi
+	set BATTLERESULT_CAUGHT_POKEMON_F, [hl]
 
 	ld a, [wPartyCount]
 	cp PARTY_LENGTH
@@ -619,7 +617,7 @@ PokeBallEffect:
 	farcall NewStorageBoxPointer
 	jr nc, .BoxNotFullYet
 	ld hl, wBattleResult
-	set 7, [hl]
+	set BATTLERESULT_BOX_FULL_F, [hl]
 .BoxNotFullYet:
 	ld a, [wCurItem]
 	cp FRIEND_BALL
@@ -1751,8 +1749,8 @@ PokeDoll:
 	inc a
 	ld [wBattleEnded], a
 	ld a, [wBattleResult]
-	and 3 << 6
-	or $2
+	and BATTLERESULT_BITMASK
+	or DRAW
 	ld [wBattleResult], a
 	jmp UseItemText
 

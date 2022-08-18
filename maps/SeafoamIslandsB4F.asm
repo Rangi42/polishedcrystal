@@ -108,9 +108,9 @@ SeafoamIslandsArticuno:
 	disappear SEAFOAMISLANDSB4F_ARTICUNO
 	setevent EVENT_SEAFOAM_ISLANDS_ARTICUNO
 	reloadmapafterbattle
-	setmonval ARTICUNO
-	special SpecialMonCheck
+	special CheckBattleCaughtResult
 	iffalsefwd .NoBlanche
+	setflag ENGINE_PLAYER_CAUGHT_ARTICUNO
 	setevent EVENT_CELADON_UNIVERSITY_BLANCHE
 	clearevent EVENT_SHAMOUTI_COAST_BLANCHE
 .NoBlanche

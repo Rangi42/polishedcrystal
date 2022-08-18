@@ -497,8 +497,9 @@ wMetatileStandingX:: db
 
 wMapTileset:: db
 wEnvironment:: db
+wSign:: db
 
-	ds 2 ; unused
+	ds 1 ; unused
 
 wMapAttributes::
 wMapBorderBlock:: db
@@ -1159,7 +1160,10 @@ wEventFlags:: flag_array NUM_EVENTS
 
 wCurBox:: db
 
-	ds 95 ; unused
+wPlayerCaught:: db
+wPlayerCaught2:: db
+
+	ds 93 ; unused
 
 wCelebiEvent:: db
 

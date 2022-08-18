@@ -1758,17 +1758,21 @@ SwitchToMapAttributesBank::
 	ret
 
 CopyMapPartial::
-; Copy map data bank, tileset, permission, and map data address
-; from the current map's entry within its group.
+; Copy map tileset and environment for the current map.
 	anonbankpush MapGroupPointers
 
 .Function:
 	call GetMapPointer
 	assert MAP_TILESET == 0 && MAP_ENVIRONMENT == 1
-	ld de, wMapTileset
-	assert wMapTileset + 1 == wEnvironment
-	ld bc, 2
-	rst CopyBytes
+	ld a, [hli]
+	ld [wMapTileset], a
+	ld a, [hl]
+	and $f
+	ld [wEnvironment], a
+	ld a, [hl]
+	swap a
+	and $f
+	ld [wSign], a
 	ret
 
 GetAnyMapBlocksBank::
@@ -1806,8 +1810,7 @@ GetMapEnvironment::
 	push bc
 	ld de, MAP_ENVIRONMENT
 	call GetMapField
-	ld a, c
-	jmp PopBCDEHL
+	jr GetAnyMapEnvironment.done
 
 GetAnyMapEnvironment::
 	push hl
@@ -1815,7 +1818,9 @@ GetAnyMapEnvironment::
 	push bc
 	ld de, MAP_ENVIRONMENT
 	call GetAnyMapField
+.done
 	ld a, c
+	and $f
 	jmp PopBCDEHL
 
 GetAnyMapTileset::

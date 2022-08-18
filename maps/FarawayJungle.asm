@@ -30,6 +30,10 @@ FarawayJungleMew:
 	disappear FARAWAYJUNGLE_MEW
 	setevent EVENT_FARAWAY_JUNGLE_MEW
 	reloadmapafterbattle
+	special CheckBattleCaughtResult
+	iffalsefwd .nocatch
+	setflag ENGINE_PLAYER_CAUGHT_MEW
+.nocatch
 	end
 
 MewText:
