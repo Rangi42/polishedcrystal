@@ -13,6 +13,11 @@ DEF MAP_MUSIC         rb ; 5
 DEF MAP_PALETTE       rb ; 6
 DEF MAP_LENGTH EQU _RS   ; 7
 
+; map landmark name signs
+	const_def
+	const SIGN_WOOD
+DEF NUM_SIGNS EQU const_value
+
 ; map environments (wEnvironment)
 ; EnvironmentColorsPointers indexes (see data/maps/environment_colors.asm)
 	const_def 1

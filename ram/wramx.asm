@@ -497,8 +497,9 @@ wMetatileStandingX:: db
 
 wMapTileset:: db
 wEnvironment:: db
+wSign:: db
 
-	ds 2 ; unused
+	ds 1 ; unused
 
 wMapAttributes::
 wMapBorderBlock:: db
