@@ -933,7 +933,7 @@ endc
 
 SignPals:
 	table_width 1 palettes, SignPals
-INCLUDE "gfx/tilesets/signs.pal"
+INCLUDE "gfx/signs/signs.pal"
 	assert_table_length NUM_SIGNS
 
 MapObjectPals:
