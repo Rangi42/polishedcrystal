@@ -51,6 +51,7 @@ Signs:
 	table_width 8 tiles, Signs
 INCBIN "gfx/signs/wood.2bpp"
 INCBIN "gfx/signs/forest.2bpp"
+INCBIN "gfx/signs/cave.2bpp"
 	assert_table_length NUM_SIGNS
 
 BattleExtrasGFX:

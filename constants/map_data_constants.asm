@@ -17,6 +17,7 @@ DEF MAP_LENGTH EQU _RS   ; 7
 	const_def
 	const SIGN_WOOD
 	const SIGN_FOREST
+	const SIGN_CAVE
 DEF NUM_SIGNS EQU const_value
 
 ; map environments (wEnvironment)
