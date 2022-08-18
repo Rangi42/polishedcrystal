@@ -11,6 +11,14 @@ SECTION "Overworld Effect Graphics", ROMX
 OverworldEffectGFX:: INCBIN "gfx/overworld/overworld.2bpp.lz"
 
 
+SECTION "Fishing Graphics", ROMX
+
+ChrisFishingGFX::     INCBIN "gfx/overworld/chris_fish.2bpp"
+KrisFishingGFX::      INCBIN "gfx/overworld/kris_fish.2bpp"
+ChrisSurfFishingGFX:: INCBIN "gfx/overworld/chris_surf_fish.2bpp"
+KrisSurfFishingGFX::  INCBIN "gfx/overworld/kris_surf_fish.2bpp"
+
+
 SECTION "Copyright Graphics", ROMX
 
 CopyrightGFX:: INCBIN "gfx/splash/copyright.2bpp.lz"
