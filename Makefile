@@ -115,6 +115,7 @@ clean: tidy
 	find gfx/pokemon -mindepth 1 \( -name 'bitmask.asm' -o -name 'frames.asm' \
 		-o -name 'front.animated.tilemap' -o -name 'front.dimensions' \) -delete
 	find data/tilesets -name '*_collision.bin' -delete
+	find gfx \( -name '*.[12]bpp.lz.*' -o -name '*.dimensions.bak' \) -delete
 	$(MAKE) clean -C tools/
 
 tidy:
