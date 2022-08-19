@@ -1,5 +1,10 @@
+if DEF(FAITHFUL)
 	db  65,  80, 140,  70,  40,  70 ; 465 BST
 	;   hp  atk  def  spd  sat  sdf
+else
+	db  85,  80, 140,  70,  40,  70 ; 485 BST
+	;   hp  atk  def  spd  sat  sdf
+endc
 
 	db STEEL, FLYING ; type
 	db 25 ; catch rate
