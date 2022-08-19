@@ -653,22 +653,24 @@ Special_BattleTower_BeginChallenge:
 	ldh [hDivisor], a
 	ld b, 2
 	call Divide
-
-	; GetCurStreakAddr closes SRAM, so reopen it.
-	ld a, BANK(sBTTrainers)
-	call GetSRAMBank
-	pop de
 	ldh a, [hRemainder]
 	cp BATTLETOWER_STREAK_LENGTH * 2
-	jr nz, .close_sram
-	dec de
+	pop de
+
+	; GetCurStreakAddr has already closed SRAM.
+	ret nz
+
 	call BT_InRentalMode
 	ld a, BATTLETOWER_FACTORYHEAD
 	jr z, .got_frontier_brain
 	ld a, BATTLETOWER_TOWERTYCOON
 .got_frontier_brain
+	push af
+	ld a, BANK(sBTTrainers)
+	call GetSRAMBank
+	pop af
+	dec de
 	ld [de], a
-.close_sram
 	jmp CloseSRAM
 
 BT_GetBothStreakAddr:
