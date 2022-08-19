@@ -40,12 +40,12 @@ def fix_pal(filename):
 	palette = tuple(sorted(colors | b_and_w, key=luminance, reverse=True))
 	assert len(palette) == 4
 	data = [list(map(palette.index, rgb5_pixels(row))) for row in data]
-	#if palette == ((31, 31, 31), (21, 21, 21), (10, 10, 10), (0, 0, 0)):
+	if palette == ((31, 31, 31), (21, 21, 21), (10, 10, 10), (0, 0, 0)):
 	data = [[3 - c for c in row] for row in data]
 	writer = png.Writer(width, height, greyscale=True, bitdepth=2, compression=9)
-	#else:
-	#	palette = tuple(map(rgb5_to_rgb8, palette))
-	#	writer = png.Writer(width, height, palette=palette, bitdepth=8, compression=9)
+	else:
+		palette = tuple(map(rgb5_to_rgb8, palette))
+		writer = png.Writer(width, height, palette=palette, bitdepth=8, compression=9)
 	with open(filename, 'wb') as file:
 		writer.write(file, data)
 	return True
