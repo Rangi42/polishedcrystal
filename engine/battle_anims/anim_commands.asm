@@ -914,7 +914,7 @@ SetBattleAnimPal:
 .TargetPal:
 	ldh a, [hBattleTurn]
 	and a
-	jr nz, .EnemyPal
+	jr nz, .PlayerPal
 .EnemyPal:
 	; Frontpic.
 	ld de, wBGPals1 palette PAL_BATTLE_BG_ENEMY
