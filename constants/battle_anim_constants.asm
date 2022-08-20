@@ -933,6 +933,11 @@ DEF NUM_BG_EFFECTS EQU 5 ; see wActiveBGEffects
 	const PAL_BATTLE_BG_TYPE_CAT   ; 6
 	const PAL_BATTLE_BG_TEXT       ; 7
 
+	; Sentinel pals indices that denote "user" or "target" for battle pics.
+	const_def 8
+	const PAL_BATTLE_USER
+	const PAL_BATTLE_TARGET
+
 ; animation object palettes
 	const_def
 	const PAL_BATTLE_OB_ENEMY  ; 0

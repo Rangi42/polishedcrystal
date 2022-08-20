@@ -293,8 +293,8 @@ BattleAnimCommands::
 	dw BattleAnimCmd_BeatUp
 	dw DoNothing
 	dw BattleAnimCmd_UpdateActorPic
-	dw DoNothing
-	dw DoNothing
+	dw BattleAnimCmd_SetBgPal
+	dw BattleAnimCmd_SetObjPal
 	dw DoNothing
 	dw DoNothing
 	dw DoNothing
@@ -864,6 +864,79 @@ BattleAnimCmd_UpdateActorPic:
 	ld hl, vTiles2 tile $31
 	lb bc, 0, $24
 	jmp Request2bpp
+
+BattleAnim_SetUserPal:
+	ld hl, wBGPals1 palette 1
+BattleAnimCmd_SetBgPal:
+	ld hl, wBGPals1
+	jr SetBattleAnimPal
+BattleAnimCmd_SetObjPal:
+	ld hl, wOBPals1
+	; fallthrough
+SetBattleAnimPal:
+	ld a, BANK(wBGPals1)
+	call StackCallInWRAMBankA
+.Function:
+	ld bc, 1 palettes
+	call GetBattleAnimByte
+	push af
+	rst AddNTimes
+	call SwapHLDE
+	ld hl, .PalTable ; TODO: move elsewhere
+	call GetBattleAnimByte
+	rst AddNTimes
+	pop af
+	cp PAL_BATTLE_USER
+	jr z, .UserPal
+	cp PAL_BATTLE_TARGET
+	jr z, .TargetPal
+.finish
+	rst CopyBytes
+	jmp SetPalettes
+
+.UserPal:
+	ldh a, [hBattleTurn]
+	and a
+	jr nz, .EnemyPal
+.PlayerPal:
+	; Backpic.
+	ld de, wBGPals1 palette PAL_BATTLE_BG_PLAYER
+	call .SetPal
+
+	; This is needed because part of the user pic reuses move info pals.
+	ld de, wBGPals1 palette PAL_BATTLE_BG_TYPE_CAT
+	call .SetPal
+
+	; Head.
+	ld de, wOBPals1 palette PAL_BATTLE_OB_PLAYER
+	jr .finish
+
+.TargetPal:
+	ldh a, [hBattleTurn]
+	and a
+	jr nz, .EnemyPal
+.EnemyPal:
+	; Frontpic.
+	ld de, wBGPals1 palette PAL_BATTLE_BG_ENEMY
+	call .SetPal
+
+	; Feet.
+	ld de, wOBPals1 palette PAL_BATTLE_OB_ENEMY
+	jr .finish
+
+.SetPal:
+	push hl
+	push bc
+	rst CopyBytes
+	pop bc
+	pop hl
+	ret
+
+.PalTable:
+	RGB 31, 31, 31
+	RGB 20, 20, 20
+	RGB 10, 10, 10
+	RGB 00, 00, 00
 
 BattleAnimCmd_RaiseSub:
 	ldh a, [rSVBK]
