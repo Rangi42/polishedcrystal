@@ -6,23 +6,15 @@ PlaySlowCry:
 PlaySlowCryBC:
 	call LoadCryHeader
 	ret c
-
-	; TODO: handle cry pitch better
-;	ld hl, wCryPitch
-;	ld a, [hli]
-;	ld h, [hl]
-;	ld l, a
-;	ld bc, -$140
-;	add hl, bc
-;	ld a, l
-;	ld [wCryPitch], a
-;	ld a, h
-;	ld [wCryPitch + 1], a
+	; cry length *= 1.5
 	ld hl, wCryLength
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
-	ld bc, $60
+	ld b, h
+	ld c, l
+	srl b
+	rr c
 	add hl, bc
 	ld a, l
 	ld [wCryLength], a
