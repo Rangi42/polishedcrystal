@@ -880,6 +880,7 @@ SetBattleAnimPal:
 	ld e, a
 	ld a, d
 	cp PAL_BATTLE_USER
+	assert PAL_BATTLE_USER + 1 == PAL_BATTLE_TARGET
 	ld a, b
 
 	; User/Target pal handling should always index based on bg pal.
@@ -914,11 +915,11 @@ SetBattleAnimPal:
 	jr nz, .PlayerPal
 .EnemyPal:
 	; Frontpic.
-	ld b, PAL_BATTLE_BG_ENEMY
+	ld d, PAL_BATTLE_BG_ENEMY
 	call .SetPaletteData
 
 	; Feet.
-	ld b, PAL_BATTLE_OB_ENEMY + 8
+	ld d, PAL_BATTLE_OB_ENEMY + 8
 	jr .finish
 
 .SetPaletteData:
@@ -928,10 +929,10 @@ SetBattleAnimPal:
 	; Check if we should reference BG or OBJ pals.
 	dec b
 	jr nz, .got_pal_target
-
 	ld a, d
-	add 8
+	add 8 ; wBGPals + 8 palettes == wOBPals1
 	ld d, a
+
 .got_pal_target
 	; Get palette to change.
 	ld hl, wBGPals1
@@ -944,7 +945,7 @@ SetBattleAnimPal:
 	ld a, l
 	inc l
 	jr z, .SetDefaultPal
-	ld hl, .PalTable
+	ld hl, CustomBattlePalettes
 	rst AddNTimes
 
 	; Write the palette.
@@ -958,11 +959,10 @@ SetBattleAnimPal:
 	farcall GetDefaultBattlePalette
 	jr .done_setpal
 
-.PalTable:
-	RGB 31, 31, 31
-	RGB 20, 20, 20
-	RGB 10, 10, 10
-	RGB 00, 00, 00
+CustomBattlePalettes:
+	table_width 1 palettes, CustomBattlePalettes
+INCLUDE "gfx/battle_anims/custom.pal"
+	assert_table_length NUM_CUSTOM_BATTLE_PALETTES
 
 BattleAnimCmd_RaiseSub:
 	ldh a, [rSVBK]
