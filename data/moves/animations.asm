@@ -5423,14 +5423,14 @@ BattleAnimSub_Acid:
 	anim_ret
 
 BattleAnimSub_Metallic:
+	anim_setbgpal PAL_BATTLE_USER, 0
 	anim_sound 0, 0, SFX_SHINE
-	anim_bgeffect ANIM_BG_FADE_MON_TO_BLACK, $0, $1, $40
 	anim_wait 8
 	anim_obj ANIM_OBJ_HARDEN,   6, 0,  10, 4, $0
 	anim_wait 32
 	anim_obj ANIM_OBJ_HARDEN,   6, 0,  10, 4, $0
 	anim_wait 64
-	anim_incbgeffect ANIM_BG_FADE_MON_TO_BLACK
+	anim_setbgpal PAL_BATTLE_USER, -1
 	anim_ret
 
 BattleAnimSub_SandOrMud:

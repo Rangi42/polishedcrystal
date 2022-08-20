@@ -57,16 +57,51 @@ rept 2
 endr
 	jmp _CGB_FinishBattleScreenLayout
 
-_CGB_BattleColors:
-	push bc
-	ld de, wBGPals1
+GetDefaultBattlePalette:
+	ld a, BANK(wTempBattleMonSpecies)
+	call StackCallInWRAMBankA
+.Function:
+	ld a, h
+	and a ; PAL_BATTLE_BG_PLAYER
+	jr z, SetBattlePal_Player
+	dec a ; PAL_BATTLE_BG_ENEMY
+	jr z, SetBattlePal_Enemy
+	dec a ; PAL_BATTLE_BG_ENEMY_HP
+	jr z, SetBattlePal_EnemyHP
+	dec a ; PAL_BATTLE_BG_PLAYER_HP
+	jr z, SetBattlePal_PlayerHP
+	dec a ; PAL_BATTLE_BG_EXP_GENDER
+	jr z, SetBattlePal_ExpGender
+	dec a ; PAL_BATTLE_BG_STATUS
+	jr z, SetBattlePal_Status
+	dec a ; PAL_BATTLE_BG_TYPE_CAT
+	jr z, SetBattlePal_Player ; type+cat uses player pal normally.
+	dec a ; PAL_BATTLE_BG_TEXT
+	jr z, SetBattlePal_Text
+	dec a ; PAL_BATTLE_OB_ENEMY
+	jr z, SetBattlePal_Enemy
+	dec a ; PAL_BATTLE_OB_PLAYER
+	jr z, SetBattlePal_Player
+
+	; At this point, a is 1-6. Load a battle object pal.
+	ld hl, BattleObjectPals - 1 palettes
+	ld bc, 1 palettes
+	rst AddNTimes
+	jmp FarCopyWRAM
+
+SetBattlePal_Player:
 	call GetBattlemonBackpicPalettePointer
 	call LoadPalette_White_Col1_Col2_Black
 	ld a, [wTempBattleMonSpecies]
 	and a
-	jr z, .player_backsprite
+	ret z
+
 	push de
-	; hl = DVs
+	ld h, d
+	ld l, e
+	inc hl
+	inc hl
+	push hl
 	farcall GetPartyMonDVs
 	; c = species
 	ld a, [wTempBattleMonSpecies]
@@ -75,17 +110,24 @@ _CGB_BattleColors:
 	ld b, a
 	; vary colors by DVs
 	call CopyDVsToColorVaryDVs
-	ld hl, wBGPals1 palette PAL_BATTLE_BG_PLAYER + 2
+	pop hl
 	call VaryColorsByDVs
 	pop de
-.player_backsprite
+	ret
 
+SetBattlePal_Enemy:
 	call GetEnemyFrontpicPalettePointer
 	call LoadPalette_White_Col1_Col2_Black
 	ld a, [wTempEnemyMonSpecies]
 	and a
-	jr z, .trainer_sprite
+	ret z
+
 	push de
+	ld h, d
+	ld l, e
+	inc hl
+	inc hl
+	push hl
 	; hl = DVs
 	farcall GetEnemyMonDVs
 	; c = species
@@ -95,22 +137,19 @@ _CGB_BattleColors:
 	ld b, a
 	; vary colors by DVs
 	call CopyDVsToColorVaryDVs
-	ld hl, wBGPals1 palette PAL_BATTLE_BG_ENEMY + 2
+	pop hl
 	call VaryColorsByDVs
 	pop de
-.trainer_sprite
+	ret
 
-	ld a, [wEnemyHPPal]
-	add a
-	add a
-	add LOW(HPBarInteriorPals)
-	ld l, a
-	adc HIGH(HPBarInteriorPals)
-	sub l
-	ld h, a
-	call LoadPalette_White_Col1_Col2_Black
-
+SetBattlePal_PlayerHP:
 	ld a, [wPlayerHPPal]
+	jr SetBattlePal_HP
+
+SetBattlePal_EnemyHP:
+	ld a, [wEnemyHPPal]
+	; fallthrough
+SetBattlePal_HP:
 	add a
 	add a
 	add LOW(HPBarInteriorPals)
@@ -118,25 +157,47 @@ _CGB_BattleColors:
 	adc HIGH(HPBarInteriorPals)
 	sub l
 	ld h, a
-	call LoadPalette_White_Col1_Col2_Black
+	jmp LoadPalette_White_Col1_Col2_Black
 
+SetBattlePal_ExpGender:
 	ld hl, GenderAndExpBarPals
-	call LoadPalette_White_Col1_Col2_Black
+	jmp LoadPalette_White_Col1_Col2_Black
 
+SetBattlePal_Status:
 	call LoadPlayerStatusIconPalette
-	call LoadEnemyStatusIconPalette
+	jmp LoadEnemyStatusIconPalette
 
-	ld hl, wBGPals1 palette PAL_BATTLE_BG_PLAYER
+SetBattlePal_Text:
+	ld a, BANK("GBC Video")
+	call StackCallInWRAMBankA
+.Function:
+	ld a, -1
+	lb bc, 2, 4
+.loop
+	ld [de], a
+	inc de
+	dec c
+	jr nz, .loop
+	xor a
+	ld c, 4
+	dec b
+	jr nz, .loop
+	ret
+
+_CGB_BattleColors:
+	push bc
+	ld de, wBGPals1
+	call SetBattlePal_Player
+	call SetBattlePal_Enemy
+	call SetBattlePal_EnemyHP
+	call SetBattlePal_PlayerHP
+	call SetBattlePal_ExpGender
+	call SetBattlePal_Status
 	ld de, wBGPals1 palette PAL_BATTLE_BG_TYPE_CAT
-	call LoadOnePalette
-
-	ld hl, wBGPals1 palette PAL_BATTLE_BG_ENEMY
-	ld de, wOBPals1 palette PAL_BATTLE_OB_ENEMY
-	call LoadOnePalette
-
-	ld hl, wBGPals1 palette PAL_BATTLE_BG_PLAYER
-	ld de, wOBPals1 palette PAL_BATTLE_OB_PLAYER
-	call LoadOnePalette
+	call SetBattlePal_Player
+	call SetBattlePal_Text
+	call SetBattlePal_Enemy
+	call SetBattlePal_Player
 
 	ld a, CGB_BATTLE_COLORS
 	ld [wMemCGBLayout], a

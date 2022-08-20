@@ -865,33 +865,30 @@ BattleAnimCmd_UpdateActorPic:
 	lb bc, 0, $24
 	jmp Request2bpp
 
-BattleAnim_SetUserPal:
-	ld hl, wBGPals1 palette 1
 BattleAnimCmd_SetBgPal:
-	ld hl, wBGPals1
+	xor a
 	jr SetBattleAnimPal
 BattleAnimCmd_SetObjPal:
-	ld hl, wOBPals1
-	; fallthrough
+	ld a, 1
 SetBattleAnimPal:
-	ld a, BANK(wBGPals1)
-	call StackCallInWRAMBankA
-.Function:
-	ld bc, 1 palettes
+	; This denotes whether to reference bg pals or obj pals.
+	ld b, a
+
 	call GetBattleAnimByte
-	push af
-	rst AddNTimes
-	call SwapHLDE
-	ld hl, .PalTable ; TODO: move elsewhere
+	ld d, a
 	call GetBattleAnimByte
-	rst AddNTimes
-	pop af
+	ld e, a
+	ld a, d
 	cp PAL_BATTLE_USER
+	ld a, b
+
+	; User/Target pal handling should always index based on bg pal.
+	ld b, 0
 	jr z, .UserPal
-	cp PAL_BATTLE_TARGET
-	jr z, .TargetPal
+	jr nc, .TargetPal
+	ld b, a
 .finish
-	rst CopyBytes
+	call .SetPaletteData
 	jmp SetPalettes
 
 .UserPal:
@@ -900,15 +897,15 @@ SetBattleAnimPal:
 	jr nz, .EnemyPal
 .PlayerPal:
 	; Backpic.
-	ld de, wBGPals1 palette PAL_BATTLE_BG_PLAYER
-	call .SetPal
+	ld d, PAL_BATTLE_BG_PLAYER
+	call .SetPaletteData
 
 	; This is needed because part of the user pic reuses move info pals.
-	ld de, wBGPals1 palette PAL_BATTLE_BG_TYPE_CAT
-	call .SetPal
+	ld d, PAL_BATTLE_BG_TYPE_CAT
+	call .SetPaletteData
 
-	; Head.
-	ld de, wOBPals1 palette PAL_BATTLE_OB_PLAYER
+	; Head. + 8 to reference object palettes.
+	ld d, PAL_BATTLE_OB_PLAYER + 8
 	jr .finish
 
 .TargetPal:
@@ -917,20 +914,49 @@ SetBattleAnimPal:
 	jr nz, .PlayerPal
 .EnemyPal:
 	; Frontpic.
-	ld de, wBGPals1 palette PAL_BATTLE_BG_ENEMY
-	call .SetPal
+	ld b, PAL_BATTLE_BG_ENEMY
+	call .SetPaletteData
 
 	; Feet.
-	ld de, wOBPals1 palette PAL_BATTLE_OB_ENEMY
+	ld b, PAL_BATTLE_OB_ENEMY + 8
 	jr .finish
 
-.SetPal:
-	push hl
+.SetPaletteData:
+	push de
 	push bc
-	rst CopyBytes
+
+	; Check if we should reference BG or OBJ pals.
+	dec b
+	jr nz, .got_pal_target
+
+	ld a, d
+	add 8
+	ld d, a
+.got_pal_target
+	; Get palette to change.
+	ld hl, wBGPals1
+	ld bc, 1 palettes
+	ld a, d
+	rst AddNTimes
+
+	; Get palette to set.
+	call SwapHLDE
+	ld a, l
+	inc l
+	jr z, .SetDefaultPal
+	ld hl, .PalTable
+	rst AddNTimes
+
+	; Write the palette.
+	call FarCopyColorWRAM
+.done_setpal
 	pop bc
-	pop hl
+	pop de
 	ret
+
+.SetDefaultPal:
+	farcall GetDefaultBattlePalette
+	jr .done_setpal
 
 .PalTable:
 	RGB 31, 31, 31
