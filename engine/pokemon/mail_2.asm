@@ -498,14 +498,14 @@ LoadPortraitMailGFX:
 	ld de, PortraitMailSmallPokeballGFX
 	ld c, 1 * 8
 	call LoadMailGFX_Color2
-
 	call DrawMailBorder2
 	hlcoord 8, 15
 	ld a, $36
 	ld b, $a
 	call Mail_DrawRowLoop
 	call LovelyEonMail_PlaceIcons
-	ld a, $1
+	ld a, MON_FORM
+	call GetPartyParamLocationAndValue
 	ld [wCurForm], a
 	hlcoord 1, 10
 	call PrepMonFrontpic
