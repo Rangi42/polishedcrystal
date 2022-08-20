@@ -10,4 +10,3 @@
 	frame 3, 04
 	dorepeat 7
 	endanim
-; 0xd0967
