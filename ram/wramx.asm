@@ -586,12 +586,16 @@ wCurEnemyItem:: db
 
 ENDU
 
-wTempEnemyMonSpecies:: db
-wTempBattleMonSpecies:: db
+	ds 2 ; unused
 
 wEnemyMon:: battle_struct wEnemyMon
 
-	ds 5 ; unused
+wTempBattleMonSpecies:: db
+wTempBattleMonForm:: db
+wTempEnemyMonSpecies:: db
+wTempEnemyMonForm:: db
+
+	ds 1 ; unused
 
 wEnemyMonCatchRate:: db
 wEnemyMonBaseExp:: db

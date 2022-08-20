@@ -89,52 +89,53 @@ GetDefaultBattlePalette:
 	rst AddNTimes
 	jmp FarCopyWRAM
 
-SetBattlePal_Player:
-	call GetBattlemonBackpicPalettePointer
-	call LoadPalette_White_Col1_Col2_Black
-	ld a, [wTempBattleMonSpecies]
-	and a
-	ret z
+GetPartyMonDVs:
+	ld hl, wPartyMon1DVs
+	ld a, [wCurBattleMon]
+	jmp GetPartyLocation
 
-	push de
-	ld h, d
-	ld l, e
-	inc hl
-	inc hl
+GetEnemyMonDVs:
+	ld hl, wOTPartyMon1DVs
+	ld a, [wCurOTMon]
+	jmp GetPartyLocation
+
+SetBattlePal_Player:
+	ld hl, wTempBattleMonSpecies
 	push hl
-	farcall GetPartyMonDVs
-	; c = species
-	ld a, [wTempBattleMonSpecies]
-	ld c, a
-	ld a, [wCurForm]
-	ld b, a
-	; vary colors by DVs
-	call CopyDVsToColorVaryDVs
-	pop hl
-	call VaryColorsByDVs
-	pop de
-	ret
+	call GetBattlemonBackpicPalettePointer
+	ld bc, GetPartyMonDVs
+	jr SetBattlePal_Pokepic
 
 SetBattlePal_Enemy:
+	ld hl, wTempEnemyMonSpecies
+	push hl
 	call GetEnemyFrontpicPalettePointer
+	ld bc, GetEnemyMonDVs
+	; fallthrough
+SetBattlePal_Pokepic:
+	push bc
 	call LoadPalette_White_Col1_Col2_Black
-	ld a, [wTempEnemyMonSpecies]
-	and a
-	ret z
+	pop bc
+	pop hl
 
 	push de
-	ld h, d
-	ld l, e
-	inc hl
-	inc hl
-	push hl
+	ld a, 6
+.loop
+	dec de
+	dec a
+	jr nz, .loop
+	push de
+
+	ld a, [hli]
+	ld d, [hl]
+	ld e, a
+
 	; hl = DVs
-	farcall GetEnemyMonDVs
-	; c = species
-	ld a, [wTempEnemyMonSpecies]
-	ld c, a
-	ld a, [wCurForm]
-	ld b, a
+	call _bc_
+
+	ld b, d
+	ld c, e
+
 	; vary colors by DVs
 	call CopyDVsToColorVaryDVs
 	pop hl
