@@ -5438,7 +5438,7 @@ ParseEnemyAction:
 	ld a, [wBattleAction]
 	sub BATTLEACTION_SWITCH1
 	jr c, .no_linkswitch
-	cp NUM_POKEMON
+	cp PARTY_LENGTH
 	jr nc, .no_linkswitch
 
 	; Link enemy is switching
