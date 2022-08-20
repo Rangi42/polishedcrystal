@@ -2701,12 +2701,13 @@ BattleAnim_DazzlinGleam:
 	anim_obj ANIM_OBJ_DAZZLE, 44, 88, $30
 	anim_obj ANIM_OBJ_DAZZLE, 44, 88, $38
 	anim_wait 64
+	anim_resetobp0
 	anim_incbgeffect ANIM_BG_ALTERNATE_HUES
 	anim_sound 0, 1, SFX_FLASH
 	anim_bgeffect ANIM_BG_FLASH_INVERTED, $0, $6, $20
 	anim_wait 4
 	anim_bgeffect ANIM_BG_CYCLE_MON_LIGHT_DARK_REPEATING, $0, $1, $20
-	anim_bgeffect ANIM_BG_CYCLE_MID_OBPALS_GRAY_AND_YELLOW, $0, $2, $0
+	anim_bgeffect ANIM_BG_ALTERNATE_HUES, $0, $2, $0
 	anim_obj ANIM_OBJ_GLIMMER, 24, 64, $0
 	anim_wait 5
 	anim_obj ANIM_OBJ_GLIMMER, 56, 104, $0
