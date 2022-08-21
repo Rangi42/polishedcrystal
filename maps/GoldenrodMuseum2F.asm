@@ -30,7 +30,7 @@ GoldenrodMuseum2F_MapScriptHeader:
 	def_object_events
 	object_event  4,  2, SPRITE_SIGHTSEER_M, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, (1 << EVE) | (1 << NITE), 0, OBJECTTYPE_SCRIPT, 0, GoldenrodMuseum2FSightseerMScript, -1
 	pokemon_event 5,  2, SMEARGLE, SPRITEMOVEDATA_POKEMON, -1, (1 << EVE) | (1 << NITE), PAL_NPC_BROWN, GoldenrodMuseum2FSmeargleText, -1
-	object_event  3,  6, SPRITE_SCIENTIST, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_COMMAND, jumptextfaceplayer, GoldenrodMuseum2FScientistText, -1
+	object_event  3,  6, SPRITE_SCIENTIST, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_SCRIPT, 0, GoldenrodMuseum2FScientistScript, -1
 	object_event 11,  3, SPRITE_POKEFAN_F, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, GoldenrodMuseum2FTeacherScript, -1
 
 LugiaPaintingScript:
@@ -132,7 +132,7 @@ EmptyDisplayText:
 TowerRelicText:
 	text "An ancient mural"
 	line "depicting a mys-"
-	para "terious #mon."
+	cont "terious #mon."
 	done
 
 GoldenrodMuseum2FSightseerMScript:
@@ -175,7 +175,17 @@ GoldenrodMuseum2FSmeargleText:
 	text "Smeargle: Smeer!"
 	done
 
-GoldenrodMuseum2FScientistText:
+GoldenrodMuseum2FScientistScript:
+	checkevent EVENT_SOLVED_KABUTO_PUZZLE
+	iffalse_jumptextfaceplayer GoldenrodMuseum2FScientistNoArtifactsText
+	checkevent EVENT_SOLVED_OMANYTE_PUZZLE
+	iffalse_jumptextfaceplayer GoldenrodMuseum2FScientistNoArtifactsText
+	checkevent EVENT_SOLVED_AERODACTYL_PUZZLE
+	iffalse_jumptextfaceplayer GoldenrodMuseum2FScientistNoArtifactsText
+	checkevent EVENT_SOLVED_HO_OH_PUZZLE
+	iffalse_jumptextfaceplayer GoldenrodMuseum2FScientistNoArtifactsText
+	jumpthistextfaceplayer
+	
 	text "These artifacts"
 	line "are fascinating!"
 
@@ -185,6 +195,20 @@ GoldenrodMuseum2FScientistText:
 	para "I'd love to study"
 	line "the real thing"
 	cont "up close."
+	done
+
+GoldenrodMuseum2FScientistNoArtifactsText:
+	text "I realize this"
+	line "museum has only"
+
+	para "just opened, but"
+	line "I was expecting"
+
+	para "there to be more"
+	line "exhibits…"
+
+	para "Where is every-"
+	line "thing?"
 	done
 
 GoldenrodMuseum2FTeacherScript:
@@ -222,10 +246,10 @@ GoldenrodMuseum2FTutorIntroText:
 	text "Before the con-"
 	line "struction of the"
 
-	para "Radio Tower,"
+	para "new Radio Tower,"
 	line "there once stood"
 
-	para "an old wooden"
+	para "an ancient wooden"
 	line "tower."
 
 	para "This mural was"
@@ -240,8 +264,7 @@ GoldenrodMuseum2FTutorIntroText:
 	para "You know what else"
 	line "can endure?"
 
-	para "#mon, of"
-	line "course!"
+	para "#mon!"
 	done
 
 GoldenrodMuseum2FTutorEndureText:
