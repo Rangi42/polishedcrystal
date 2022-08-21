@@ -1,4 +1,4 @@
-frame 1, 07
+	frame 1, 07
 	setrepeat 3
 	frame 2, 04
 	frame 3, 04
