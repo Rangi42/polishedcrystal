@@ -293,8 +293,8 @@ BattleAnimCommands::
 	dw BattleAnimCmd_BeatUp
 	dw DoNothing
 	dw BattleAnimCmd_UpdateActorPic
-	dw DoNothing
-	dw DoNothing
+	dw BattleAnimCmd_SetBgPal
+	dw BattleAnimCmd_SetObjPal
 	dw DoNothing
 	dw DoNothing
 	dw DoNothing
@@ -864,6 +864,105 @@ BattleAnimCmd_UpdateActorPic:
 	ld hl, vTiles2 tile $31
 	lb bc, 0, $24
 	jmp Request2bpp
+
+BattleAnimCmd_SetBgPal:
+	xor a
+	jr SetBattleAnimPal
+BattleAnimCmd_SetObjPal:
+	ld a, 1
+SetBattleAnimPal:
+	; This denotes whether to reference bg pals or obj pals.
+	ld b, a
+
+	call GetBattleAnimByte
+	ld d, a
+	call GetBattleAnimByte
+	ld e, a
+	ld a, d
+	cp PAL_BATTLE_USER
+	assert PAL_BATTLE_USER + 1 == PAL_BATTLE_TARGET
+	ld a, b
+
+	; User/Target pal handling should always index based on bg pal.
+	ld b, 0
+	jr z, .UserPal
+	jr nc, .TargetPal
+	ld b, a
+.finish
+	call .SetPaletteData
+	jmp SetPalettes
+
+.UserPal:
+	ldh a, [hBattleTurn]
+	and a
+	jr nz, .EnemyPal
+.PlayerPal:
+	; Backpic.
+	ld d, PAL_BATTLE_BG_PLAYER
+	call .SetPaletteData
+
+	; This is needed because part of the user pic reuses move info pals.
+	ld d, PAL_BATTLE_BG_TYPE_CAT
+	call .SetPaletteData
+
+	; Head. + 8 to reference object palettes.
+	ld d, PAL_BATTLE_OB_PLAYER + 8
+	jr .finish
+
+.TargetPal:
+	ldh a, [hBattleTurn]
+	and a
+	jr nz, .PlayerPal
+.EnemyPal:
+	; Frontpic.
+	ld d, PAL_BATTLE_BG_ENEMY
+	call .SetPaletteData
+
+	; Feet.
+	ld d, PAL_BATTLE_OB_ENEMY + 8
+	jr .finish
+
+.SetPaletteData:
+	push de
+	push bc
+
+	; Check if we should reference BG or OBJ pals.
+	dec b
+	jr nz, .got_pal_target
+	ld a, d
+	add 8 ; wBGPals + 8 palettes == wOBPals1
+	ld d, a
+
+.got_pal_target
+	; Get palette to change.
+	ld hl, wBGPals1
+	ld bc, 1 palettes
+	ld a, d
+	rst AddNTimes
+
+	; Get palette to set.
+	call SwapHLDE
+	ld a, l
+	inc l
+	jr z, .SetDefaultPal
+	ld hl, CustomBattlePalettes
+	rst AddNTimes
+
+	; Write the palette.
+	call FarCopyColorWRAM
+.done_setpal
+	pop bc
+	pop de
+	ret
+
+.SetDefaultPal:
+	farcall GetDefaultBattlePalette
+	jr .done_setpal
+
+CustomBattlePalettes:
+	table_width 1 palettes, CustomBattlePalettes
+INCLUDE "gfx/battle_anims/custom.pal"
+	assert_table_length NUM_CUSTOM_BATTLE_PALETTES
 
 BattleAnimCmd_RaiseSub:
 	ldh a, [rSVBK]

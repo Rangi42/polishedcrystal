@@ -1,5 +1,4 @@
-	frame 4, 06
-	frame 0, 06
-	frame 5, 06
+	frame 6, 08
+	frame 0, 08
+	frame 6, 08
 	endanim
-; 0xd1bc4

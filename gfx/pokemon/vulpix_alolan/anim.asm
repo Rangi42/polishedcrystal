@@ -7,4 +7,3 @@
 	frame 2, 16
 	frame 1, 10
 	endanim
-; 0xd0967

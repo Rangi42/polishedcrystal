@@ -92,6 +92,15 @@ Oak:
 	writetext OakYesKantoBadgesText
 	promptbutton
 .CheckPokedex:
+	checkevent EVENT_GOT_CATCH_CHARM_FROM_OAK
+	iftruefwd .GotCatchCharm
+	writetext OakLabCatchMoreText
+	promptbutton
+	verbosegivekeyitem CATCH_CHARM
+	setevent EVENT_GOT_CATCH_CHARM_FROM_OAK
+	writetext OakLabCatchCharmText
+	waitbutton
+.GotCatchCharm
 	writetext OakLabDexCheckText
 	waitbutton
 	special ProfOaksPCBoot
@@ -227,6 +236,34 @@ OakLabDexCheckText:
 	line "dex coming?"
 
 	para "Let's see…"
+	done
+
+OakLabCatchMoreText:
+	text "I want to thank"
+	line "you for being of"
+
+	para "such help with"
+	line "filling out the"
+	cont "#dex."
+
+	para "Take this as a"
+	line "reward for your"
+	cont "hard work!"
+	done
+
+OakLabCatchCharmText:
+	text "Holding a Catch"
+	line "Charm will improve"
+
+	para "your chances of a"
+	line "critical capture."
+
+	para "That's when your"
+	line "# Ball is"
+
+	para "thrown just right"
+	line "and is more likely"
+	cont "to succeed!"
 	done
 
 OakLabSeenAllText:

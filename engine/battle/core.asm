@@ -1234,10 +1234,18 @@ endr
 	pop hl
 	ld bc, MON_FORM - MON_SPECIES
 	add hl, bc
+	ldh a, [hBattleTurn]
+	and a
 	ld a, [hl]
 	ld [wCurForm], a
 
 	push de
+	ld de, wTempBattleMonForm
+	jr z, .got_temp_form
+	ld de, wTempEnemyMonForm
+.got_temp_form
+	ld [de], a
+
 	call GetBaseData
 	ld de, wBattleMonType1
 	call GetUserMonAttr_de
@@ -2819,6 +2827,9 @@ Function_SetEnemyPkmnAndSendOutAnimation:
 	ld a, $f
 	ld [wCryTracks], a
 	ld a, [wTempEnemyMonSpecies]
+	ld c, a
+	ld a, [wTempEnemyMonForm]
+	ld b, a
 	call PlayStereoCry
 
 .skip_cry
@@ -2932,16 +2943,6 @@ BattleCheckShininess:
 	ld b, h
 	ld c, l
 	farjp CheckShininess
-
-GetPartyMonDVs:
-	ld hl, wPartyMon1DVs
-	ld a, [wCurBattleMon]
-	jmp GetPartyLocation
-
-GetEnemyMonDVs:
-	ld hl, wOTPartyMon1DVs
-	ld a, [wCurOTMon]
-	jmp GetPartyLocation
 
 GetPartyMonPersonality:
 	ld hl, wPartyMon1Personality
@@ -3770,7 +3771,7 @@ DrawEnemyHUD:
 	ld l, c
 	dec hl
 
-	call GetEnemyMonDVs
+	farcall GetEnemyMonDVs
 	ld de, wTempMonDVs
 .ok
 rept 4

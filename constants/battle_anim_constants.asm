@@ -943,3 +943,17 @@ DEF NUM_BG_EFFECTS EQU 5 ; see wActiveBGEffects
 	const PAL_BATTLE_OB_GREEN  ; 5
 	const PAL_BATTLE_OB_BLUE   ; 6
 	const PAL_BATTLE_OB_BROWN  ; 7
+
+
+; sentinel palette indices that denote "user" or "target" for battle pics
+; (anim_setbgpal applies them to the relevant obj palettes too)
+	const_def 8
+	const PAL_BATTLE_USER          ; 8
+	const PAL_BATTLE_TARGET        ; 9
+
+; custom bg/obj palettes (see gfx/battle_anims/custom.pal)
+	const_def
+	const PAL_BATTLE_GRAY ; 0
+DEF NUM_CUSTOM_BATTLE_PALETTES EQU const_value
+
+DEF PAL_BATTLE_DEFAULT EQU -1

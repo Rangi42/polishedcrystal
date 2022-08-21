@@ -1,10 +1,4 @@
-	setrepeat 2
-	frame 0, 08
-	frame 4, 04
-	frame 5, 04
-	frame 4, 04
-	dorepeat 1
-	setrepeat 3
+	setrepeat 1
 	frame 0, 07
 	frame 1, 07
 	dorepeat 1

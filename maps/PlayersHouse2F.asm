@@ -241,9 +241,10 @@ endr
 	loadmem wPartyMon2PP+2, 10
 	loadmem wPartyMon2PP+3, 10
 	; variant form test
-	givepoke GRAVELER, ALOLAN_FORM, 50
-	loadmem wPartyMon3Shiny, SHINY_MASK
 	givepoke WEEZING, GALARIAN_FORM, 50
+	loadmem wPartyMon3Shiny, SHINY_MASK
+	; ext species test
+	givepoke KLEAVOR, 50
 	givepoke DITTO, 50
 	loadmem wPartyMon5Personality, HIDDEN_ABILITY | QUIRKY
 	; fill pokedex

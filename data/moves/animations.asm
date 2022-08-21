@@ -2701,12 +2701,13 @@ BattleAnim_DazzlinGleam:
 	anim_obj ANIM_OBJ_DAZZLE, 44, 88, $30
 	anim_obj ANIM_OBJ_DAZZLE, 44, 88, $38
 	anim_wait 64
+	anim_resetobp0
 	anim_incbgeffect ANIM_BG_ALTERNATE_HUES
 	anim_sound 0, 1, SFX_FLASH
 	anim_bgeffect ANIM_BG_FLASH_INVERTED, $0, $6, $20
 	anim_wait 4
 	anim_bgeffect ANIM_BG_CYCLE_MON_LIGHT_DARK_REPEATING, $0, $1, $20
-	anim_bgeffect ANIM_BG_CYCLE_MID_OBPALS_GRAY_AND_YELLOW, $0, $2, $0
+	anim_bgeffect ANIM_BG_ALTERNATE_HUES, $0, $2, $0
 	anim_obj ANIM_OBJ_GLIMMER, 24, 64, $0
 	anim_wait 5
 	anim_obj ANIM_OBJ_GLIMMER, 56, 104, $0
@@ -5423,14 +5424,14 @@ BattleAnimSub_Acid:
 	anim_ret
 
 BattleAnimSub_Metallic:
+	anim_setbgpal PAL_BATTLE_USER, PAL_BATTLE_GRAY
 	anim_sound 0, 0, SFX_SHINE
-	anim_bgeffect ANIM_BG_FADE_MON_TO_BLACK, $0, $1, $40
 	anim_wait 8
 	anim_obj ANIM_OBJ_HARDEN,   6, 0,  10, 4, $0
 	anim_wait 32
 	anim_obj ANIM_OBJ_HARDEN,   6, 0,  10, 4, $0
 	anim_wait 64
-	anim_incbgeffect ANIM_BG_FADE_MON_TO_BLACK
+	anim_setbgpal PAL_BATTLE_USER, PAL_BATTLE_DEFAULT
 	anim_ret
 
 BattleAnimSub_SandOrMud:

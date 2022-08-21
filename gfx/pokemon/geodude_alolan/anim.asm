@@ -4,4 +4,3 @@
 	frame 1, 10
 	frame 2, 08
 	endanim
-; 0xd0967

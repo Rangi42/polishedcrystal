@@ -5,8 +5,8 @@ GetOvercastIndex::
 	jr z, .azalea_route_33
 	cp GROUP_LAKE_OF_RAGE ; GROUP_ROUTE_43
 	jr z, .lake_of_rage_route_43
-	cp GROUP_STORMY_BEACH ; GROUP_GOLDENROD_CITY, GROUP_ROUTE_34, GROUP_ROUTE_34_COAST
-	jr z, .stormy_beach
+	cp GROUP_STORMY_BEACH ; GROUP_GOLDENROD_CITY, GROUP_MAGNET_TUNNEL_WEST, GROUP_ROUTE_34, GROUP_ROUTE_34_COAST
+	jr z, .stormy_beach_goldenrod_city_route_34
 .not_overcast:
 	xor a ; NOT_OVERCAST
 	ret
@@ -56,8 +56,8 @@ GetOvercastIndex::
 	ld a, LAKE_OF_RAGE_OVERCAST
 	ret
 
-.stormy_beach:
-; Stormy Beach or Goldenrod City, Route 34, and Route 34 Coast
+.stormy_beach_goldenrod_city_route_34:
+; Stormy Beach, Goldenrod City, Magnet Tunnel West, Route 34, Route 34 Coast
 	ld a, [wMapNumber]
 ; Stormy Beach is always overcast
 	cp MAP_STORMY_BEACH
@@ -66,10 +66,12 @@ GetOvercastIndex::
 	jr z, .maybe_stormy_beach
 	cp MAP_ROUTE_34
 	jr z, .maybe_stormy_beach
+	cp MAP_MAGNET_TUNNEL_WEST
+	jr z, .maybe_stormy_beach
 	cp MAP_GOLDENROD_CITY
 	jr nz, .not_overcast
-; Only overcast while Team Rocket is present
 .maybe_stormy_beach
+; Only overcast while Team Rocket is present
 	eventflagcheck EVENT_GOLDENROD_CITY_ROCKET_TAKEOVER
 	jr nz, .not_overcast
 .overcast_stormy_beach

@@ -53,7 +53,7 @@ Pokémon Polished Crystal would never have been finished without the help of man
 * Acrozz for many HGSS Pokémon palettes, and sprites and animations of Magikarp forms.
 * Freeline for animations of Honchkrow and Munchlax, and the Rocket Executives' and stat trainers' overworld sprites.
 * Megaman-Omega for some of Prism's overworld sprites.
-* SoupPotato (aka SourApple) for some move animations, sprites of Red Gyarados and Ace Duo, and Berry tree tiles.
+* SoupPotato (aka SourApple) for many Pokémon sprites, move animations, and the Ace Duo sprite.
 * flempa for some Pokémon sprites and move animations and for Galarian Articuno and Galarian Zapdos animations.
 * ShockSlayer for the Gen 1 and 2 mini icons and for Yellow's overworld sprite.
 * Scarlax for many new Pokémon animations.
