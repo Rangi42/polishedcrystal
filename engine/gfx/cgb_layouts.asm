@@ -7,7 +7,8 @@ LoadCGBLayout::
 	assert CGB_PARTY_MENU_HP_PALS == NUM_CGB_LAYOUTS - 1
 	cp CGB_PARTY_MENU_HP_PALS
 	jmp z, ApplyPartyMenuHPPals
-	call ResetBGPals
+	cp CGB_MAPPALS
+	call nz, ResetBGPals
 	dec a
 	call StackJumpTable
 
