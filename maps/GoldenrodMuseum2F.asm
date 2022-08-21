@@ -144,8 +144,8 @@ GoldenrodMuseum2FSightseerMScript:
 	iffalse_jumptextfaceplayer GoldenrodMuseum2FSightseerMNoPaintingText
 	jumpthistextfaceplayer
 
-	text "Wow! This painting"
-	line "is beautiful!"
+	text "These paintings"
+	line "are beautiful!"
 
 	para "One day, I hope my"
 	line "art is hung in a"
@@ -167,8 +167,8 @@ GoldenrodMuseum2FSightseerMNoPaintingText:
 	para "But it seems we"
 	line "heard wrong…"
 
-	para "All the displays"
-	line "are empty!"
+	para "This art gallery"
+	line "isn't finished!"
 	done
 
 GoldenrodMuseum2FSmeargleText:
