@@ -5,7 +5,7 @@ on:
   pull_request:
     branches:
       - master
-#  workflow_call:
+  workflow_call:
 
 env:
   RGBDS_VERSION: "v0.5.2"
