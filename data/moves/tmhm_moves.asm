@@ -94,7 +94,7 @@ TMHMMoves:
 	db DOUBLE_EDGE  ; MT08 (Safari Zone)
 	db DREAM_EATER  ; MT09 (Viridian City)
 	db EARTH_POWER  ; MT10 (Cherrygrove Bay)
-	db ENDURE       ; MT11 (TODO)
+	db ENDURE       ; MT11 (Goldenrod City Museum)
 	db FIRE_PUNCH   ; MT12 (Goldenrod City)
 	db HEADBUTT     ; MT13 (Ilex Forest)
 	db HYPER_VOICE  ; MT14 (Goldenrod Harbor)
