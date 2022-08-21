@@ -116,5 +116,5 @@ TMHMMoves:
 	db ZAP_CANNON   ; MT30 (Power Plant)
 	db ZEN_HEADBUTT ; MT31 (Saffron City)
 	assert_table_length NUM_TM_HM_TUTOR
-; TODO: Agility, Baton Pass, Charm, Endure, Trick Room
+; TODO: Agility, Baton Pass, Charm, Trick Room
 	db 0 ; end
