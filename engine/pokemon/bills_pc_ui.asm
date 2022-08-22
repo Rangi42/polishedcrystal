@@ -2673,7 +2673,7 @@ BillsPC_CanReleaseMon:
 ; 4: Empty slot
 	; Is there even anything there?
 	call GetStorageBoxMon
-	ld a, 4
+	ld a, RELEASE_EMPTY
 	jr z, .done
 
 	; If we're dealing with our party, ensure that this isn't our last mon.
@@ -2690,14 +2690,14 @@ BillsPC_CanReleaseMon:
 	pop bc
 	pop de
 	pop hl
-	ld a, 1
+	ld a, RELEASE_LAST_HEALTHY
 	jr c, .done
 	; fallthrough
 .not_last_healthy
 	; Can't release Eggs.
 	ld a, [wTempMonIsEgg]
 	bit MON_IS_EGG_F, a
-	ld a, 2
+	ld a, RELEASE_EGG
 	ret nz
 
 	; Ensure that the mon doesn't know any HMs.
@@ -2717,11 +2717,11 @@ BillsPC_CanReleaseMon:
 	call IsInArray
 	pop bc
 	pop hl
-	ld a, 3
+	ld a, RELEASE_HM
 	jr c, .hm_check_done
 	dec b
 	jr nz, .loop
-	xor a
+	xor a ; RELEASE_OK
 .hm_check_done
 	pop bc
 	pop hl
@@ -2819,7 +2819,7 @@ BillsPC_ReleaseAll:
 	jr .loop
 .failed_release
 	; Check if there was something there.
-	cp 4
+	cp RELEASE_EMPTY
 	jr z, .loop
 	inc e
 	jr .loop
@@ -2883,17 +2883,17 @@ BillsPC_Release:
 	call BillsPC_GetCursorSlot
 	call BillsPC_CanReleaseMon
 	ld hl, BillsPC_LastPartyMon
-	dec a
+	dec a ; RELEASE_LAST_HEALTHY
 	jr z, .print
 	ld hl, .CantReleaseEgg
-	dec a
+	dec a ; RELEASE_EGG
 	jr z, .print
 	ld hl, .CantReleaseHMMons
-	dec a
+	dec a ; RELEASE_HM
 	jr z, .print
 
-	; We don't need to check for error 4 (empty slot) since we can't get to this
-	; menu in that case.
+	; We don't need to check for empty slot since we can't get to this menu in
+	; that case.
 	call BillsPC_HideCursorAndMode
 	ld hl, .ReallyReleaseMon
 	call MenuTextbox

@@ -32,6 +32,14 @@
 	const THEME_FAIRY
 DEF NUM_BILLS_PC_THEMES EQU const_value
 
+; BillsPC_CanReleaseMon constants
+	const_def
+	const RELEASE_OK
+	const RELEASE_LAST_HEALTHY
+	const RELEASE_EGG
+	const RELEASE_HM
+	const RELEASE_EMPTY
+
 ; sprite animation parameters
 DEF PCANIM_STATIC      EQU  0 ; used when holding stuff, we don't want to bop then
 DEF PCANIM_ANIMATE     EQU 90 ; baseline
