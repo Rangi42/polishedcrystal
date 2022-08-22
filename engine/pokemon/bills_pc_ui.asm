@@ -3124,7 +3124,7 @@ BillsPC_SwapStorage:
 	; Don't allow Eggs to hold items.
 	ld a, [wTempMonIsEgg]
 	bit MON_IS_EGG_F, a
-	ld a, 7
+	ld a, PCSWAP_EGGS_CANT_HOLD
 	jmp nz, .failed
 
 	; Movement from the bag needs special handling.
@@ -3139,7 +3139,7 @@ BillsPC_SwapStorage:
 	ld a, [wBillsPC_CursorItem]
 	ld d, a
 	call ItemIsMail
-	ld a, 6
+	ld a, PCSWAP_CANT_STORE_MAIL
 	jmp c, .failed
 
 .mail_ok
@@ -3153,7 +3153,7 @@ BillsPC_SwapStorage:
 
 	ld d, a
 	call ItemIsMail
-	ld a, 8
+	ld a, PCSWAP_CANT_POCKET_MAIL
 	jmp c, .failed
 
 	; Try to add the user's current item into the bag.
@@ -3161,7 +3161,7 @@ BillsPC_SwapStorage:
 	ld [wItemQuantityChangeBuffer], a
 	ld hl, wNumItems
 	call ReceiveItem
-	ld a, 9
+	ld a, PCSWAP_PACK_FULL
 	jmp nc, .failed
 	; fallthrough
 .dest_is_itemless
@@ -3230,7 +3230,7 @@ BillsPC_SwapStorage:
 	; Check if item d is a mail about to be given to a storage mon.
 	and a
 	call nz, ItemIsMail
-	ld a, 6
+	ld a, PCSWAP_CANT_STORE_MAIL
 	jr c, .item_failed
 	push de
 
@@ -3239,7 +3239,7 @@ BillsPC_SwapStorage:
 	ld d, e
 	and a
 	call nz, ItemIsMail
-	ld a, 6
+	ld a, PCSWAP_CANT_STORE_MAIL
 	jr c, .pop_de_item_failed
 
 	; No mail is about to be sent to storage, so proceed with the item move.

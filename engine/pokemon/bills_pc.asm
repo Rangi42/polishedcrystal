@@ -47,7 +47,7 @@ SwapStorageBoxSlots:
 	cp e
 	jr nz, .not_equal
 .done
-	xor a
+	xor a ; PCSWAP_OK
 	ret
 .not_equal
 	; Convert destination slot 0 to a real destination, if we can.
@@ -81,9 +81,9 @@ SwapStorageBoxSlots:
 	; Party (or Box) is full
 	pop de
 	cp MONS_PER_BOX
-	ld a, 2
+	ld a, PCSWAP_PARTY_FULL
 	ret c
-	inc a
+	inc a ; PCSWAP_BOX_FULL
 	ret
 
 .got_dest
@@ -135,7 +135,7 @@ SwapStorageBoxSlots:
 	; Check if the partymon is holding Mail. We can't store Mail in a Box.
 	ld a, [wTempMonItem]
 	call ItemIsMail_a
-	ld a, 5
+	ld a, PCSWAP_HOLDING_MAIL
 	jr c, .pop_bcde_and_return
 
 	; Otherwise, check if it is our last healthy mon.
@@ -165,7 +165,7 @@ SwapStorageBoxSlots:
 	jr nz, .not_last_healthy
 
 	; Doing this would lose us our last healthy mon, so abort.
-	ld a, 4
+	ld a, PCSWAP_LAST_HEALTHY
 .pop_bcde_and_return
 	pop bc
 	pop de
@@ -183,7 +183,7 @@ SwapStorageBoxSlots:
 
 	; The pokedb is full, we need to save first.
 	pop de
-	ld a, 1
+	ld a, PCSWAP_SAVE_REQUIRED
 	ret
 
 .found_new_pokedb
@@ -206,7 +206,7 @@ SwapStorageBoxSlots:
 	pop de
 	pop bc
 	call SetStorageBoxPointer
-	xor a
+	xor a ; PCSWAP_OK
 	ret
 
 .party_swap
