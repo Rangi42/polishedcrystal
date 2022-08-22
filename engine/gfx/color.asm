@@ -852,14 +852,6 @@ LoadMapPals:
 	ldh [rSVBK], a
 
 .got_pals
-	; copy sign palette for PAL_BG_TEXT
-	ld hl, SignPals
-	ld bc, 1 palettes
-	ld a, [wSign]
-	rst AddNTimes ; preserves bc
-	ld de, wBGPals1 palette PAL_BG_TEXT
-	call FarCopyColorWRAM
-
 	; copy OB palettes
 	ld a, [wTimeOfDayPal]
 	and 3
@@ -930,11 +922,6 @@ else
 INCLUDE "gfx/tilesets/bg_tiles.pal"
 endc
 	assert_table_length 8 * 5 + 4 ; morn, day, nite, eve, indoor, water
-
-SignPals:
-	table_width 1 palettes, SignPals
-INCLUDE "gfx/signs/signs.pal"
-	assert_table_length NUM_SIGNS
 
 MapObjectPals:
 	table_width 1 palettes, MapObjectPals

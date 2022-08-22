@@ -263,7 +263,18 @@ LoadMapNameSignGFX:
 	; a = tile offset into font graphic
 	ld a, [hli]
 	cp "@"
-	ret z
+	jr nz, .continue
+
+	; copy sign palette for PAL_BG_TEXT
+	ld hl, SignPals
+	ld bc, 1 palettes
+	ld a, [wSign]
+	rst AddNTimes ; preserves bc
+	ld de, wBGPals1 palette PAL_BG_TEXT
+	call FarCopyColorWRAM
+	jmp SetPalettes
+
+.continue
 	; save position in landmark name
 	push hl
 	; spaces are unique
@@ -307,6 +318,11 @@ LoadMapNameSignGFX:
 	; restore hl = position in landmark name
 	pop hl
 	jr .loop
+
+SignPals:
+	table_width 1 palettes, SignPals
+INCLUDE "gfx/signs/signs.pal"
+	assert_table_length NUM_SIGNS
 
 InitMapNameFrame:
 ; InitMapSignAttrMap
