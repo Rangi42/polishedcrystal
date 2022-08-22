@@ -142,6 +142,28 @@ SwapStorageBoxSlots:
 	call CheckCurPartyMonFainted
 	jr nc, .not_last_healthy
 
+	; Check if the box mon is healthy.
+	pop bc
+	pop de
+	push de
+	push bc
+	push bc
+	ld b, d
+	ld c, e
+	call GetStorageBoxMon
+	jr z, .no_boxmon
+	ld hl, wTempMonHP
+	ld a, [hli]
+	or [hl]
+.no_boxmon
+	pop bc
+
+	; Ensure that we return with wTempMon pointing towards the partymon.
+	push af
+	call GetStorageBoxMon
+	pop af
+	jr nz, .not_last_healthy
+
 	; Doing this would lose us our last healthy mon, so abort.
 	ld a, 4
 .pop_bcde_and_return
