@@ -12,7 +12,7 @@ ENDM
 
 MACRO farjp ; bank, address
 	rst FarCall
-	dbw BANK(\1) | $80, \1
+	dbw BANK(\1), \1 | $8000
 	assert warn, BANK(\1) != 0 && BANK(\1) != BANK(@), "unnecessary `farjp \1`"
 ENDM
 

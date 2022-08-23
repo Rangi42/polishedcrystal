@@ -64,19 +64,18 @@ RstFarCall::
 	pop hl
 	ld a, [hli]
 	ldh [hTempBank], a
-	add a
-	jr c, .farjp
-	inc hl
+	ld a, [hli]
+	bit 7, [hl]
+	jr nz, .farjp
 	inc hl
 	push hl
 	dec hl
-	dec hl
 .farjp
-	ldh a, [hROMBank]
-	push af
-	ld a, [hli]
 	ld h, [hl]
 	ld l, a
+	res 7, h
+	ldh a, [hROMBank]
+	push af
 _DoFarCall:
 	ldh a, [hTempBank]
 	and $7f
