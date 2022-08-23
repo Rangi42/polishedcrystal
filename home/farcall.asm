@@ -78,7 +78,6 @@ RstFarCall::
 	push af
 _DoFarCall:
 	ldh a, [hTempBank]
-	and $7f
 _DoFarCall_BankInA:
 	rst Bankswitch
 	call RetrieveAHLAndCallFunction
