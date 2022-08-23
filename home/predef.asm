@@ -34,10 +34,7 @@ _Predef::
 	ld a, d
 	pop de
 	and a
-	jr nz, .bankswitch
+	jr nz, _DoFarCall_BankInA
 	pop af
 	push af
-.bankswitch
-	rst Bankswitch
-	call RetrieveAHLAndCallFunction
-	jr ReturnFarCall
+	jr _DoFarCall_BankInA

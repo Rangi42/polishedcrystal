@@ -8,7 +8,7 @@ FarCall_de::
 	ldh a, [hTempBank]
 	rst Bankswitch
 	call _de_
-	jr ReturnFarCall
+	jr _ReturnFarCall
 
 AnonBankPush::
 	ldh [hFarCallSavedA], a
@@ -75,7 +75,7 @@ _DoFarCall:
 _DoFarCall_BankInA:
 	rst Bankswitch
 	call RetrieveAHLAndCallFunction
-ReturnFarCall::
+_ReturnFarCall:
 	ldh [hFarCallSavedA], a
 	; We want to retain the contents of f.
 	; To accomplish this, mess with the stack a bit...
