@@ -2673,7 +2673,7 @@ BillsPC_CanReleaseMon:
 ; 4: Empty slot
 	; Is there even anything there?
 	call GetStorageBoxMon
-	ld a, 4
+	ld a, RELEASE_EMPTY
 	jr z, .done
 
 	; If we're dealing with our party, ensure that this isn't our last mon.
@@ -2690,14 +2690,14 @@ BillsPC_CanReleaseMon:
 	pop bc
 	pop de
 	pop hl
-	ld a, 1
+	ld a, RELEASE_LAST_HEALTHY
 	jr c, .done
 	; fallthrough
 .not_last_healthy
 	; Can't release Eggs.
 	ld a, [wTempMonIsEgg]
 	bit MON_IS_EGG_F, a
-	ld a, 2
+	ld a, RELEASE_EGG
 	ret nz
 
 	; Ensure that the mon doesn't know any HMs.
@@ -2717,11 +2717,11 @@ BillsPC_CanReleaseMon:
 	call IsInArray
 	pop bc
 	pop hl
-	ld a, 3
+	ld a, RELEASE_HM
 	jr c, .hm_check_done
 	dec b
 	jr nz, .loop
-	xor a
+	xor a ; RELEASE_OK
 .hm_check_done
 	pop bc
 	pop hl
@@ -2819,7 +2819,7 @@ BillsPC_ReleaseAll:
 	jr .loop
 .failed_release
 	; Check if there was something there.
-	cp 4
+	cp RELEASE_EMPTY
 	jr z, .loop
 	inc e
 	jr .loop
@@ -2883,17 +2883,17 @@ BillsPC_Release:
 	call BillsPC_GetCursorSlot
 	call BillsPC_CanReleaseMon
 	ld hl, BillsPC_LastPartyMon
-	dec a
+	dec a ; RELEASE_LAST_HEALTHY
 	jr z, .print
 	ld hl, .CantReleaseEgg
-	dec a
+	dec a ; RELEASE_EGG
 	jr z, .print
 	ld hl, .CantReleaseHMMons
-	dec a
+	dec a ; RELEASE_HM
 	jr z, .print
 
-	; We don't need to check for error 4 (empty slot) since we can't get to this
-	; menu in that case.
+	; We don't need to check for empty slot since we can't get to this menu in
+	; that case.
 	call BillsPC_HideCursorAndMode
 	ld hl, .ReallyReleaseMon
 	call MenuTextbox
@@ -3124,7 +3124,7 @@ BillsPC_SwapStorage:
 	; Don't allow Eggs to hold items.
 	ld a, [wTempMonIsEgg]
 	bit MON_IS_EGG_F, a
-	ld a, 7
+	ld a, PCSWAP_EGGS_CANT_HOLD
 	jmp nz, .failed
 
 	; Movement from the bag needs special handling.
@@ -3139,7 +3139,7 @@ BillsPC_SwapStorage:
 	ld a, [wBillsPC_CursorItem]
 	ld d, a
 	call ItemIsMail
-	ld a, 6
+	ld a, PCSWAP_CANT_STORE_MAIL
 	jmp c, .failed
 
 .mail_ok
@@ -3153,7 +3153,7 @@ BillsPC_SwapStorage:
 
 	ld d, a
 	call ItemIsMail
-	ld a, 8
+	ld a, PCSWAP_CANT_POCKET_MAIL
 	jmp c, .failed
 
 	; Try to add the user's current item into the bag.
@@ -3161,7 +3161,7 @@ BillsPC_SwapStorage:
 	ld [wItemQuantityChangeBuffer], a
 	ld hl, wNumItems
 	call ReceiveItem
-	ld a, 9
+	ld a, PCSWAP_PACK_FULL
 	jmp nc, .failed
 	; fallthrough
 .dest_is_itemless
@@ -3230,7 +3230,7 @@ BillsPC_SwapStorage:
 	; Check if item d is a mail about to be given to a storage mon.
 	and a
 	call nz, ItemIsMail
-	ld a, 6
+	ld a, PCSWAP_CANT_STORE_MAIL
 	jr c, .item_failed
 	push de
 
@@ -3239,7 +3239,7 @@ BillsPC_SwapStorage:
 	ld d, e
 	and a
 	call nz, ItemIsMail
-	ld a, 6
+	ld a, PCSWAP_CANT_STORE_MAIL
 	jr c, .pop_de_item_failed
 
 	; No mail is about to be sent to storage, so proceed with the item move.

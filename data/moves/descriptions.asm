@@ -295,9 +295,13 @@ AbsorbDescription:
 MegaDrainDescription:
 LeechLifeDescription:
 GigaDrainDescription:
-DrainKissDescription:
 DrainPunchDescription:
 	text "Steals 1/2 of the"
+	next "damage inflicted."
+	done
+
+DrainKissDescription:
+	text "Steals 3/4 of the"
 	next "damage inflicted."
 	done
 
