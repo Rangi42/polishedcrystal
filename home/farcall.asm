@@ -26,13 +26,9 @@ FarCall_hl::
 ; Call a:hl.
 ; Preserves other registers.
 	ldh [hTempBank], a
-	ldh a, [hROMBank]
-	push af
 	jr _DoFarCall
 
 FarPointerCall::
-	ldh a, [hROMBank]
-	push af
 	ld a, [hli]
 	ldh [hTempBank], a
 	ld a, [hli]
@@ -49,8 +45,6 @@ StackCallInBankA:
 	ld a, l
 	ldh [hFarCallSavedL], a
 	pop hl
-	ldh a, [hROMBank]
-	push af
 	jr _DoFarCall
 
 RstFarCall::
@@ -74,9 +68,9 @@ RstFarCall::
 	ld h, [hl]
 	ld l, a
 	res 7, h
+_DoFarCall:
 	ldh a, [hROMBank]
 	push af
-_DoFarCall:
 	ldh a, [hTempBank]
 _DoFarCall_BankInA:
 	rst Bankswitch
