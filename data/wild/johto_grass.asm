@@ -1534,7 +1534,7 @@
 	wildmon 12, DROWZEE
 	wildmon 14, HOOTHOOT
 	wildmon 13, PSYDUCK
-	wildmon 10, ABRA
+	wildmon 13, RATTATA, ALOLAN_FORM
 	wildmon 12, JIGGLYPUFF
 	wildmon 10, DITTO
 	wildmon 12, YANMA
@@ -1616,7 +1616,7 @@
 	wildmon 13, MILTANK
 	; nite
 	wildmon 16, MEOWTH
-	wildmon 16, RATICATE
+	wildmon 16, RATICATE, ALOLAN_FORM
 	wildmon 16, MAGNEMITE
 	wildmon 16, NOCTOWL
 	wildmon 16, MEOWTH
