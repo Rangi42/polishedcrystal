@@ -5424,14 +5424,14 @@ BattleAnimSub_Acid:
 	anim_ret
 
 BattleAnimSub_Metallic:
-	anim_setbgpal PAL_BATTLE_USER, PAL_BATTLE_METALLIC
+	anim_setbgpal PAL_BATTLE_BG_USER, PAL_BTLCUSTOM_METALLIC
 	anim_sound 0, 0, SFX_SHINE
 	anim_wait 8
 	anim_obj ANIM_OBJ_HARDEN,   6, 0,  10, 4, $0
 	anim_wait 32
 	anim_obj ANIM_OBJ_HARDEN,   6, 0,  10, 4, $0
 	anim_wait 64
-	anim_setbgpal PAL_BATTLE_USER, PAL_BATTLE_DEFAULT
+	anim_setbgpal PAL_BATTLE_BG_USER, PAL_BTLCUSTOM_DEFAULT
 	anim_ret
 
 BattleAnimSub_SandOrMud:

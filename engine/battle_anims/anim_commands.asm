@@ -879,8 +879,8 @@ SetBattleAnimPal:
 	call GetBattleAnimByte
 	ld e, a
 	ld a, d
-	cp PAL_BATTLE_USER
-	assert PAL_BATTLE_USER + 1 == PAL_BATTLE_TARGET
+	cp PAL_BATTLE_BG_USER
+	assert PAL_BATTLE_BG_USER + 1 == PAL_BATTLE_BG_TARGET
 	ld a, b
 
 	; User/Target pal handling should always index based on bg pal.
