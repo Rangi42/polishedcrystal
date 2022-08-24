@@ -70,12 +70,13 @@ CinnabarLabCelebiEventScript:
 	special Special_FadeOutMusic
 	pause 30
 	showtext CinnabarLabContinueTestingText
+	applyonemovement PLAYER, slow_step_up
 	showemote EMOTE_SHOCK, CINNABARLAB_GIOVANNI, 15
 	playmusic MUSIC_ROCKET_OVERTURE
 	turnobject CINNABARLAB_GIOVANNI, DOWN
 	showtext CinnabarLabGiovanniWhoAreYouText
 	applymovement CINNABARLAB_GIOVANNI, CinnabarLabGiovanniStepAsideMovementData
-	applymovement PLAYER, CinnabarLabPlayerStepsUpMovementData
+	applyonemovement PLAYER, slow_step_up
 	opentext
 	writetext CinnabarLabGiovanniAttackText
 	cry MEWTWO
@@ -211,11 +212,6 @@ CinnabarLabGiovanniStepAsideMovementData:
 	slow_step_right
 	slow_step_right
 	turn_head_left
-	step_end
-
-CinnabarLabPlayerStepsUpMovementData:
-	slow_step_up
-	slow_step_up
 	step_end
 
 CinnabarLabMewtwoFloatsDownMovementData:
