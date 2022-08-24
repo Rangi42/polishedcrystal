@@ -1198,12 +1198,12 @@ endr
 
 PlayHitSound:
 	ld a, [wNumHits]
-	cp $1
-	jr z, .okay
-	cp $4
+	dec a ; BATTLEANIM_ENEMY_DAMAGE
+	jr z, .ok
+	dec a ; BATTLEANIM_PLAYER_DAMAGE
 	ret nz
 
-.okay
+.ok
 	ld a, [wTypeModifier]
 	and a
 	ret z
