@@ -494,7 +494,7 @@ InitPartyMenuOBPals:
 	ld de, MON_DVS - MON_FORM
 	add hl, de
 	; vary colors by DVs
-	call CopyDVsToColorVaryDVs ; trashes hl but not bc
+	call CopyDVsToColorVaryDVs ; clobbers hl but not bc
 	pop de
 	ld h, d
 	ld l, e

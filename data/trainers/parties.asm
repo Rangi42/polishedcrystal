@@ -23,6 +23,7 @@ INCLUDE "data/trainers/party_pointers.asm"
 
 ; TODO: boss trainers need better movesets, held items, natures, and abilities
 ; TODO: pseudorandomly (deterministically) distribute abilities 1 and 2
+; TODO: use LEVEL_FROM_BADGES for trainers in optional side areas
 
 
 ; TODO: do `dp mon[, form] / db level` and eliminate this macro
@@ -9561,7 +9562,7 @@ GiovanniGroup:
 	db "Giovanni@"
 	db TRAINERTYPE_ITEM | TRAINERTYPE_PERSONALITY | TRAINERTYPE_NICKNAME | TRAINERTYPE_MOVES
 	; party
-	dbp 70, MEWTWO, MALE | MEWTWO_ARMORED_FORM
+	dbp LEVEL_FROM_BADGES + 24, MEWTWO, MALE | MEWTWO_ARMORED_FORM
 		db ARMOR_SUIT, ABIL_MEWTWO_INSOMNIA | NAT_SATK_UP_ATK_DOWN, "?????@"
 		db SHADOW_BALL, PSYSTRIKE, NASTY_PLOT, AURA_SPHERE
 	db -1 ; end

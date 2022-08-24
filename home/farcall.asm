@@ -1,7 +1,9 @@
+; These functions preserve all registers (a, bc, de, hl) unless otherwise stated.
+; Functions that rely on "following" data access it via their return address on
+; the stack, and update the return address to point past the data.
+
 FarCall_de::
-; Call a:de.
-; Preserves other registers.
-; TODO: Get rid of this, it's only used in two places
+; Call a:de. Clobbers a.
 	ldh [hTempBank], a
 	ldh a, [hROMBank]
 	push af
@@ -11,24 +13,21 @@ FarCall_de::
 	jr _ReturnFarCall
 
 AnonBankPush::
+; Call the following function in the following bank db.
 	ldh [hFarCallSavedA], a
 	ld a, h
 	ldh [hFarCallSavedH], a
 	ld a, l
 	ldh [hFarCallSavedL], a
 	pop hl
-	ldh a, [hROMBank]
-	push af
 	ld a, [hli]
-	jr _DoFarCall_BankInA
-
 FarCall_hl::
-; Call a:hl.
-; Preserves other registers.
+; Call a:hl. Clobbers a and hl.
 	ldh [hTempBank], a
 	jr _DoFarCall
 
 FarPointerCall::
+; Call the dba pointer at hl. Clobbers a and hl.
 	ld a, [hli]
 	ldh [hTempBank], a
 	ld a, [hli]
@@ -37,8 +36,10 @@ FarPointerCall::
 	jr _DoFarCall
 
 StackCallInBankB:
+; Call the following function in bank b. Clobbers a.
 	ld a, b
 StackCallInBankA:
+; Call the following function in bank a. Clobbers a.
 	ldh [hTempBank], a
 	ld a, h
 	ldh [hFarCallSavedH], a
@@ -48,8 +49,7 @@ StackCallInBankA:
 	jr _DoFarCall
 
 RstFarCall::
-; Call the following dba pointer on the stack.
-; Preserves a, bc, de, hl
+; Call the following dba pointer.
 	ldh [hFarCallSavedA], a
 	ld a, h
 	ldh [hFarCallSavedH], a
@@ -77,14 +77,14 @@ _DoFarCall_BankInA:
 	call RetrieveAHLAndCallFunction
 _ReturnFarCall:
 	ldh [hFarCallSavedA], a
-	; We want to retain the contents of f.
-	; To accomplish this, mess with the stack a bit...
+	; preserve flags for return
 	push af
 	push hl
-	ld hl, sp+$2 ; a flags
+	ld hl, sp+$2
 	ld a, [hli]
-	inc l ; faster than inc hl (stack is always c000-c100...)
-	ld [hl], a ; write to flags
+	assert HIGH(wStackBottom) == HIGH(wStackTop)
+	inc l
+	ld [hl], a
 	pop hl
 	pop af
 	pop af
@@ -93,8 +93,10 @@ _ReturnFarCall:
 	ret
 
 RunFunctionInWRA6::
+; Call the following function in wDecompressScratch's WRAM bank. Clobbers a.
 	ld a, BANK(wDecompressScratch)
 StackCallInWRAMBankA::
+; Call the following function in WRAM bank a. Clobbers a.
 	ldh [hTempBank], a
 	ld a, h
 	ldh [hFarCallSavedH], a
@@ -107,14 +109,14 @@ StackCallInWRAMBankA::
 	ldh [rSVBK], a
 	call RetrieveAHLAndCallFunction
 	ldh [hTempBank], a
-
-	; Preserve flags.
+	; preserve flags for return
 	push af
 	push hl
-	ld hl, sp+$2 ; a flags
+	ld hl, sp+$2
 	ld a, [hli]
-	inc l ; faster than inc hl (stack is always c000-c100...)
-	ld [hl], a ; write to flags
+	assert HIGH(wStackBottom) == HIGH(wStackTop)
+	inc l
+	ld [hl], a
 	pop hl
 	pop af
 	pop af
@@ -123,6 +125,7 @@ StackCallInWRAMBankA::
 	ret
 
 RetrieveAHLAndCallFunction:
+; Call the function at hl with restored values of a and hl.
 	push hl
 	ld hl, hFarCallSavedHL
 	ld a, [hli]
