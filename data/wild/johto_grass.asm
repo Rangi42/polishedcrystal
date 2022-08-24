@@ -1904,6 +1904,34 @@
 	wildmon 75, SNEASEL
 	end_grass_wildmons
 
+	def_grass_wildmons VIOLET_OUTSKIRTS
+	db 10 percent, 10 percent, 10 percent ; encounter rates: morn/day/nite
+	; morn
+	wildmon LEVEL_FROM_BADGES - 2, LEDYBA
+	wildmon LEVEL_FROM_BADGES - 2, PIDGEY
+	wildmon LEVEL_FROM_BADGES - 0, BELLSPROUT
+	wildmon LEVEL_FROM_BADGES - 3, GROWLITHE
+	wildmon LEVEL_FROM_BADGES - 1, PIDGEY
+	wildmon LEVEL_FROM_BADGES - 3, PIDGEOTTO
+	wildmon LEVEL_FROM_BADGES - 1, PIDGEOTTO
+	; day
+	wildmon LEVEL_FROM_BADGES - 2, PIDGEY
+	wildmon LEVEL_FROM_BADGES - 2, PIDGEY
+	wildmon LEVEL_FROM_BADGES - 0, BELLSPROUT
+	wildmon LEVEL_FROM_BADGES - 3, GROWLITHE
+	wildmon LEVEL_FROM_BADGES - 1, PIDGEOTTO
+	wildmon LEVEL_FROM_BADGES - 3, PIDGEOTTO
+	wildmon LEVEL_FROM_BADGES - 1, PIDGEOTTO
+	; nite
+	wildmon LEVEL_FROM_BADGES - 2, SPINARAK
+	wildmon LEVEL_FROM_BADGES - 2, HOOTHOOT
+	wildmon LEVEL_FROM_BADGES - 0, BELLSPROUT
+	wildmon LEVEL_FROM_BADGES - 3, VULPIX
+	wildmon LEVEL_FROM_BADGES - 1, HOOTHOOT
+	wildmon LEVEL_FROM_BADGES - 3, GASTLY
+	wildmon LEVEL_FROM_BADGES - 1, GASTLY
+	end_grass_wildmons
+
 	def_grass_wildmons ROUTE_32_COAST
 	db 10 percent, 10 percent, 10 percent ; encounter rates: morn/day/nite
 	; morn
