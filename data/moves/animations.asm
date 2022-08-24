@@ -5424,7 +5424,7 @@ BattleAnimSub_Acid:
 	anim_ret
 
 BattleAnimSub_Metallic:
-	anim_setbgpal PAL_BATTLE_USER, PAL_BATTLE_GRAY
+	anim_setbgpal PAL_BATTLE_USER, PAL_BATTLE_METALLIC
 	anim_sound 0, 0, SFX_SHINE
 	anim_wait 8
 	anim_obj ANIM_OBJ_HARDEN,   6, 0,  10, 4, $0
