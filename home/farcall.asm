@@ -20,11 +20,7 @@ AnonBankPush::
 	ld a, l
 	ldh [hFarCallSavedL], a
 	pop hl
-	ldh a, [hROMBank]
-	push af
 	ld a, [hli]
-	jr _DoFarCall_BankInA
-
 FarCall_hl::
 ; Call a:hl. Clobbers a and hl.
 	ldh [hTempBank], a
