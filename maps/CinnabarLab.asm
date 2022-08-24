@@ -76,6 +76,10 @@ CinnabarLabCelebiEventScript:
 	turnobject CINNABARLAB_GIOVANNI, DOWN
 	showtext CinnabarLabGiovanniWhoAreYouText
 	applymovement CINNABARLAB_GIOVANNI, CinnabarLabGiovanniStepAsideMovementData
+	showemote EMOTE_SHOCK, PLAYER, 15
+	scall CinnabarLabHidePlayer
+	applymovement PLAYER, CinnabarLabPanUpAndDownMovementData
+	scall CinnabarLabShowPlayer
 	applyonemovement PLAYER, slow_step_up
 	opentext
 	writetext CinnabarLabGiovanniAttackText
@@ -120,14 +124,7 @@ CinnabarLabCelebiEventScript:
 	applymovement CINNABARLAB_ARMORED_MEWTWO, CinnabarLabMewtwoFloatsDownMovementData
 	applymovement PLAYER, CinnabarLabPlayerStepsBackMovementData
 	pause 15
-	checkflag ENGINE_PLAYER_IS_FEMALE
-	iftruefwd .Female
-	appear CINNABARLAB_CHRIS
-	sjumpfwd .Continue
-.Female
-	appear CINNABARLAB_KRIS
-.Continue
-	applyonemovement PLAYER, hide_object
+	scall CinnabarLabHidePlayer
 	waitsfx
 	showemote EMOTE_SHOCK, CINNABARLAB_GIOVANNI, 10
 	cry MEWTWO
@@ -164,8 +161,7 @@ CinnabarLabCelebiEventScript:
 	applyonemovement CINNABARLAB_GIOVANNI, jump_step_up
 	waitsfx
 	applymovement PLAYER, CinnabarLabPan4MovementData
-	disappear CINNABARLAB_CHRIS
-	disappear CINNABARLAB_KRIS
+	scall CinnabarLabShowPlayer
 	turnobject CINNABARLAB_ARMORED_MEWTWO, DOWN
 	pause 30
 	applyonemovement CINNABARLAB_ARMORED_MEWTWO, slow_step_down
@@ -208,10 +204,41 @@ CinnabarLabCelebiEventScript:
 	warp ILEX_FOREST, 10, 26
 	end
 
+CinnabarLabHidePlayer:
+	checkflag ENGINE_PLAYER_IS_FEMALE
+	iftruefwd .Female
+	appear CINNABARLAB_CHRIS
+	sjumpfwd .Continue
+.Female
+	appear CINNABARLAB_KRIS
+.Continue
+	applyonemovement PLAYER, hide_object
+	end
+
+CinnabarLabShowPlayer:
+	applyonemovement PLAYER, show_object
+	disappear CINNABARLAB_CHRIS
+	disappear CINNABARLAB_KRIS
+	end
+
 CinnabarLabGiovanniStepAsideMovementData:
 	slow_step_right
 	slow_step_right
 	turn_head_left
+	step_end
+
+CinnabarLabPanUpAndDownMovementData:
+	slow_step_up
+	slow_step_up
+	slow_step_up
+	slow_step_up
+	step_sleep 32
+	slow_step_down
+	slow_step_down
+	slow_step_down
+	slow_step_down
+	step_sleep 32
+	turn_head_up
 	step_end
 
 CinnabarLabMewtwoFloatsDownMovementData:
@@ -299,7 +326,6 @@ CinnabarLabPan4MovementData:
 	step_down
 	step_down
 	turn_head_up
-	show_object
 	step_end
 
 CinnabarLabCelebiFloatsMovementData:
