@@ -30,7 +30,7 @@ if !DEF(MONOCHROME)
 	RGB 20, 15, 03
 	RGB 00, 00, 00
 else
-rept 8
+rept 6
 	MONOCHROME_RGB_FOUR
 endr
 endc
