@@ -240,17 +240,13 @@ DEF BATTLEANIM_BASE_TILE EQU 7 * 7  ; Maximum size of a pokemon picture
 	const ANIM_OBJ_U_TURN_LAUNCH
 	const ANIM_OBJ_U_TURN_RISE
 	const ANIM_OBJ_U_TURN_FALL
-	const ANIM_OBJ_WATER_PULSE
 	const ANIM_OBJ_CHARGE
 	const ANIM_OBJ_DAZZLE
 	const ANIM_OBJ_TRICK_ROOM
 	const ANIM_OBJ_SWEAT
 	const ANIM_OBJ_GUNKSHOT
 	const ANIM_OBJ_SPLASH
-	const ANIM_OBJ_HEX
 	const ANIM_OBJ_POWER_GEM
-	const ANIM_OBJ_BLUE_FLAME
-	const ANIM_OBJ_SHELL_SMASH
 	const ANIM_OBJ_MINIMIZE
 	const ANIM_OBJ_STAT_UP
 	const ANIM_OBJ_STAT_DOWN
@@ -265,10 +261,8 @@ DEF BATTLEANIM_BASE_TILE EQU 7 * 7  ; Maximum size of a pokemon picture
 	const ANIM_OBJ_HYPER_VOICE
 	const ANIM_OBJ_BULLET_PUNCH
 	const ANIM_OBJ_LONG_PUNCH
-	const ANIM_OBJ_ABSORB_RED
 	const ANIM_OBJ_FLASH_CANNON
 	const ANIM_OBJ_VORTEX_YELLOW
-	const ANIM_OBJ_IRON_HEAD
 	const ANIM_OBJ_HEART_BURST
 	const ANIM_OBJ_STAR_BURST
 	const ANIM_OBJ_RED_STAR
@@ -567,6 +561,8 @@ DEF NUM_BATTLEANIMFUNCS EQU const_value
 	const BATTLEANIMFRAMESET_FOCUS_BLAST
 	const BATTLEANIMFRAMESET_VORTEX
 	const BATTLEANIMFRAMESET_RED_STAR
+	const BATTLEANIMFRAMESET_HAIL
+
 DEF NUM_BATTLEANIMFRAMESETS EQU const_value
 
 ; BattleAnimOAMData indexes (see data/battle_anims/oam.asm)
@@ -952,8 +948,17 @@ DEF NUM_BG_EFFECTS EQU 5 ; see wActiveBGEffects
 	const PAL_BATTLE_TARGET        ; 9
 
 ; custom bg/obj palettes (see gfx/battle_anims/custom.pal)
+; the first 6 matches PAL_BATTLE_OB_GRAY/YELLOW/...
 	const_def
-	const PAL_BATTLE_GRAY ; 0
+	const PAL_BATTLE_GRAY     ; 0
+	const PAL_BATTLE_YELLOW   ; 1
+	const PAL_BATTLE_RED      ; 2
+	const PAL_BATTLE_GREEN    ; 3
+	const PAL_BATTLE_BLUE     ; 4
+	const PAL_BATTLE_BROWN    ; 5
+	const PAL_BATTLE_METALLIC ; 6
+	const PAL_BATTLE_PURPLE   ; 7
+	const PAL_BATTLE_ICE      ; 8
 DEF NUM_CUSTOM_BATTLE_PALETTES EQU const_value
 
 DEF PAL_BATTLE_DEFAULT EQU -1
