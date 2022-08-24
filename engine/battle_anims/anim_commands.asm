@@ -879,8 +879,8 @@ SetBattleAnimPal:
 	call GetBattleAnimByte
 	ld e, a
 	ld a, d
-	cp PAL_BATTLE_USER
-	assert PAL_BATTLE_USER + 1 == PAL_BATTLE_TARGET
+	cp PAL_BATTLE_BG_USER
+	assert PAL_BATTLE_BG_USER + 1 == PAL_BATTLE_BG_TARGET
 	ld a, b
 
 	; User/Target pal handling should always index based on bg pal.
@@ -1198,12 +1198,12 @@ endr
 
 PlayHitSound:
 	ld a, [wNumHits]
-	cp $1
-	jr z, .okay
-	cp $4
+	dec a ; BATTLEANIM_ENEMY_DAMAGE
+	jr z, .ok
+	dec a ; BATTLEANIM_PLAYER_DAMAGE
 	ret nz
 
-.okay
+.ok
 	ld a, [wTypeModifier]
 	and a
 	ret z
