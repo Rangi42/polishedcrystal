@@ -1,5 +1,8 @@
+; first 6 custom pals look like regular ones
+INCLUDE "gfx/battle_anims/battle_anims.pal"
+
 if !DEF(MONOCHROME)
-; gray
+; metallic
 	RGB 31, 31, 31
 	RGB 25, 25, 25
 	RGB 13, 13, 13
@@ -45,7 +48,7 @@ if !DEF(MONOCHROME)
 	RGB 06, 18, 30
 	RGB 00, 00, 00
 else
-rept NUM_CUSTOM_BATTLE_PALETTES
+rept NUM_CUSTOM_BATTLE_PALETTES - 6
 	MONOCHROME_RGB_FOUR
 endr
 endc
