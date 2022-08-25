@@ -266,6 +266,8 @@ DEF BATTLEANIM_BASE_TILE EQU 7 * 7  ; Maximum size of a pokemon picture
 	const ANIM_OBJ_HEART_BURST
 	const ANIM_OBJ_STAR_BURST
 	const ANIM_OBJ_RED_STAR
+	const ANIM_OBJ_SEISMIC_TOSS_UP
+	const ANIM_OBJ_SEISMIC_TOSS_DOWN
 DEF NUM_ANIM_OBJS EQU const_value
 
 ; DoBattleAnimFrame arguments (see engine/battle_anims/functions.asm)
@@ -561,6 +563,9 @@ DEF NUM_BATTLEANIMFUNCS EQU const_value
 	const BATTLEANIMFRAMESET_FOCUS_BLAST
 	const BATTLEANIMFRAMESET_VORTEX
 	const BATTLEANIMFRAMESET_RED_STAR
+	const BATTLEANIMFRAMESET_HAIL
+	const BATTLEANIMFRAMESET_U_TURN_FALL
+
 DEF NUM_BATTLEANIMFRAMESETS EQU const_value
 
 ; BattleAnimOAMData indexes (see data/battle_anims/oam.asm)
@@ -790,6 +795,7 @@ DEF NUM_BATTLEANIMFRAMESETS EQU const_value
 	const BATTLEANIMOAMSET_VORTEX1 ; e9 in chatty
 	const BATTLEANIMOAMSET_VORTEX2 ; ea in chatty
 	const BATTLEANIMOAMSET_VORTEX3 ; eb in chatty
+	const BATTLEANIMOAMSET_U_TURN_FALL ; ef
 DEF NUM_BATTLEANIMOAMSETS EQU const_value
 
 ; BattleBGEffects indexes (see engine/battle_anims/bg_effects.asm)
@@ -897,6 +903,7 @@ DEF NUM_ANIM_BGS EQU const_value - 1
 	const ANIM_GFX_HEARTS
 	const ANIM_GFX_STARS
 	const ANIM_GFX_MINI
+	const ANIM_GFX_U_TURN
 	const ANIM_GFX_PLAYERHEAD
 	const ANIM_GFX_ENEMYFEET
 	const ANIM_GFX_POKE_BALL_BG
@@ -952,6 +959,9 @@ DEF NUM_BG_EFFECTS EQU 5 ; see wActiveBGEffects
 	const PAL_BTLCUSTOM_BLUE     ; 4
 	const PAL_BTLCUSTOM_BROWN    ; 5
 	const PAL_BTLCUSTOM_METALLIC ; 6
+	const PAL_BTLCUSTOM_PURPLE   ; 7
+	const PAL_BTLCUSTOM_ICE      ; 8
+	const PAL_BTLCUSTOM_FIRE     ; 9
 DEF NUM_CUSTOM_BATTLE_PALETTES EQU const_value
 
 DEF PAL_BTLCUSTOM_DEFAULT EQU -1

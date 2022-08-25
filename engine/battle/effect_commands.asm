@@ -5261,15 +5261,14 @@ BattleCommand_switchout:
 	ld a, 1 << SWITCH_DEFERRED | 1 << SWITCH_PURSUIT
 	; fallthrough
 SetDeferredSwitch:
-	push af
-	ld a, [wDeferredSwitch]
-	and a
+	push hl
+	ld hl, wDeferredSwitch
+	inc [hl]
+	dec [hl]
 	jr nz, .done
-	pop af
-	ld [wDeferredSwitch], a
-	push af
+	ld [hl], a
 .done
-	pop af
+	pop hl
 	ret
 
 InvertDeferredSwitch:
