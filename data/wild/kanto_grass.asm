@@ -1685,27 +1685,27 @@
 	; morn
 	wildmon 57, MISDREAVUS
 	wildmon 60, CORSOLA, GALARIAN_FORM
-	wildmon 58, GASTLY
-	wildmon 59, HAUNTER
+	wildmon 58, HAUNTER
+	wildmon 59, GOLBAT
 	wildmon 61, GOLBAT
-	wildmon 62, GOLBAT
-	wildmon 63, GOLBAT
+	wildmon 62, CURSOLA
+	wildmon 63, CURSOLA
 	; day
 	wildmon 57, MISDREAVUS
 	wildmon 60, CORSOLA, GALARIAN_FORM
-	wildmon 58, GASTLY
-	wildmon 59, HAUNTER
+	wildmon 58, HAUNTER
+	wildmon 59, GOLBAT
 	wildmon 61, GOLBAT
-	wildmon 62, GOLBAT
-	wildmon 63, GOLBAT
+	wildmon 62, CURSOLA
+	wildmon 63, CURSOLA
 	; nite
 	wildmon 57, MISDREAVUS
 	wildmon 60, CORSOLA, GALARIAN_FORM
-	wildmon 58, GASTLY
-	wildmon 59, HAUNTER
+	wildmon 58, HAUNTER
+	wildmon 59, GOLBAT
 	wildmon 61, GOLBAT
-	wildmon 62, GOLBAT
-	wildmon 63, GOLBAT
+	wildmon 62, CURSOLA
+	wildmon 63, CURSOLA
 	end_grass_wildmons
 
 	def_grass_wildmons SEAFOAM_ISLANDS_1F
