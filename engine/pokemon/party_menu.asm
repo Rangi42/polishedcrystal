@@ -876,7 +876,7 @@ PlacePartyMonEvoStoneCompatibility:
 	; bc = index
 	predef GetEvosAttacksPointer
 ; Reads up to 10 EVOLVE_ITEM entries
-	ld de, wStringBuffer1
+	ld de, wStringBuffer3
 	ld a, BANK(EvosAttacks)
 	ld bc, 10 * 4 + 1
 	push de
