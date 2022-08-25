@@ -16,8 +16,8 @@
 
 	def_water_wildmons WARM_BEACH
 	db 6 percent ; encounter rate
-	wildmon LEVEL_FROM_BADGES - 2, TENTACOOL
-	wildmon LEVEL_FROM_BADGES + 0, TENTACOOL
+	wildmon LEVEL_FROM_BADGES - 2, SEADRA
+	wildmon LEVEL_FROM_BADGES + 0, SEADRA
 	wildmon LEVEL_FROM_BADGES + 2, TENTACRUEL
 	end_water_wildmons
 

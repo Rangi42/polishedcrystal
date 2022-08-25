@@ -1294,18 +1294,18 @@
 	wildmon 49, GRAVELER
 	wildmon 50, SNEASEL, HISUIAN_FORM
 	wildmon 50, GOLBAT
-	wildmon 51, ONIX
+	wildmon 51, RHYDON
 	wildmon 51, GRAVELER
 	wildmon 54, SNEASEL, HISUIAN_FORM
-	wildmon 51, ONIX
+	wildmon 51, RHYDON
 	; day
 	wildmon 49, GRAVELER
 	wildmon 50, SNEASEL, HISUIAN_FORM
 	wildmon 50, GOLBAT
-	wildmon 51, ONIX
+	wildmon 51, RHYDON
 	wildmon 51, GRAVELER
 	wildmon 54, SNEASEL, HISUIAN_FORM
-	wildmon 51, ONIX
+	wildmon 51, RHYDON
 	; nite
 	wildmon 49, GOLBAT
 	wildmon 50, SNEASEL, HISUIAN_FORM
@@ -1322,18 +1322,18 @@
 	wildmon 51, SNEASEL, HISUIAN_FORM
 	wildmon 50, GRAVELER
 	wildmon 52, GOLBAT
-	wildmon 52, ONIX
+	wildmon 52, RHYDON
 	wildmon 51, SNEASEL, HISUIAN_FORM
 	wildmon 55, GRAVELER
-	wildmon 52, ONIX
+	wildmon 52, RHYDON
 	; day
 	wildmon 51, SNEASEL, HISUIAN_FORM
 	wildmon 50, GRAVELER
 	wildmon 52, GOLBAT
-	wildmon 52, ONIX
+	wildmon 52, RHYDON
 	wildmon 51, SNEASEL, HISUIAN_FORM
 	wildmon 55, GRAVELER
-	wildmon 52, ONIX
+	wildmon 52, RHYDON
 	; nite
 	wildmon 51, SNEASEL, HISUIAN_FORM
 	wildmon 50, GOLBAT
@@ -1351,17 +1351,17 @@
 	wildmon 54, GRAVELER
 	wildmon 52, GOLBAT
 	wildmon 54, SNEASEL, HISUIAN_FORM
-	wildmon 55, ONIX
+	wildmon 55, RHYDON
 	wildmon 56, GRAVELER
-	wildmon 56, ONIX
+	wildmon 56, RHYDON
 	; day
 	wildmon 52, SNEASEL, HISUIAN_FORM
 	wildmon 54, GRAVELER
 	wildmon 52, GOLBAT
 	wildmon 54, SNEASEL, HISUIAN_FORM
-	wildmon 55, ONIX
+	wildmon 55, RHYDON
 	wildmon 56, GRAVELER
-	wildmon 56, ONIX
+	wildmon 56, RHYDON
 	; nite
 	wildmon 52, SNEASEL, HISUIAN_FORM
 	wildmon 54, GOLBAT
@@ -1378,18 +1378,18 @@
 	wildmon 51, SNEASEL, HISUIAN_FORM
 	wildmon 50, GRAVELER
 	wildmon 52, GOLBAT
-	wildmon 52, ONIX
+	wildmon 52, RHYDON
 	wildmon 51, SNEASEL, HISUIAN_FORM
 	wildmon 55, GRAVELER
-	wildmon 52, ONIX
+	wildmon 52, RHYDON
 	; day
 	wildmon 51, SNEASEL, HISUIAN_FORM
 	wildmon 50, GRAVELER
 	wildmon 52, GOLBAT
-	wildmon 52, ONIX
+	wildmon 52, RHYDON
 	wildmon 51, SNEASEL, HISUIAN_FORM
 	wildmon 55, GRAVELER
-	wildmon 52, ONIX
+	wildmon 52, RHYDON
 	; nite
 	wildmon 51, SNEASEL, HISUIAN_FORM
 	wildmon 50, GOLBAT
@@ -1406,18 +1406,18 @@
 	wildmon 49, GRAVELER
 	wildmon 50, SNEASEL, HISUIAN_FORM
 	wildmon 50, GOLBAT
-	wildmon 51, ONIX
+	wildmon 51, RHYDON
 	wildmon 51, GRAVELER
 	wildmon 54, SNEASEL, HISUIAN_FORM
-	wildmon 51, ONIX
+	wildmon 51, RHYDON
 	; day
 	wildmon 49, GRAVELER
 	wildmon 50, SNEASEL, HISUIAN_FORM
 	wildmon 50, GOLBAT
-	wildmon 51, ONIX
+	wildmon 51, RHYDON
 	wildmon 51, GRAVELER
 	wildmon 54, SNEASEL, HISUIAN_FORM
-	wildmon 51, ONIX
+	wildmon 51, RHYDON
 	; nite
 	wildmon 49, GOLBAT
 	wildmon 50, SNEASEL, HISUIAN_FORM

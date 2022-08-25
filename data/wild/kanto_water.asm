@@ -220,22 +220,22 @@
 	def_water_wildmons SCARY_CAVE_1F
 	db 6 percent ; encounter rate
 	wildmon  54, TENTACOOL
-	wildmon  56, TENTACOOL
-	wildmon  58, TENTACRUEL
+	wildmon  56, TENTACRUEL
+	wildmon  58, LANTURN
 	end_water_wildmons
 
 	def_water_wildmons SCARY_CAVE_B1F
 	db 6 percent ; encounter rate
 	wildmon  54, TENTACOOL
-	wildmon  56, TENTACOOL
-	wildmon  58, TENTACRUEL
+	wildmon  56, TENTACRUEL
+	wildmon  58, LANTURN
 	end_water_wildmons
 
 	def_water_wildmons SCARY_CAVE_SHIPWRECK
 	db 6 percent ; encounter rate
 	wildmon  54, MISDREAVUS
 	wildmon  56, HAUNTER
-	wildmon  58, TENTACRUEL
+	wildmon  58, LANTURN
 	end_water_wildmons
 
 	def_water_wildmons URAGA_CHANNEL_WEST
