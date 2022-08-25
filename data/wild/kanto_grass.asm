@@ -1148,6 +1148,34 @@
 	wildmon 71, SNEASEL
 	end_grass_wildmons
 
+	def_grass_wildmons CELADON_OUTSKIRTS
+	db 10 percent, 10 percent, 10 percent ; encounter rates: morn/day/nite
+	; morn
+	wildmon 49, PERSIAN, ALOLAN_FORM
+	wildmon 49, FEAROW
+	wildmon 51, MEOWTH, ALOLAN_FORM
+	wildmon 54, VULPIX
+	wildmon 54, JIGGLYPUFF
+	wildmon 52, GRANBULL
+	wildmon 51, WIGGLYTUFF
+	; day
+	wildmon 49, PERSIAN, ALOLAN_FORM
+	wildmon 49, FEAROW
+	wildmon 51, MEOWTH, ALOLAN_FORM
+	wildmon 54, VULPIX
+	wildmon 54, JIGGLYPUFF
+	wildmon 52, GRANBULL
+	wildmon 51, WIGGLYTUFF
+	; nite
+	wildmon 49, PERSIAN, ALOLAN_FORM
+	wildmon 49, MURKROW
+	wildmon 51, MEOWTH, ALOLAN_FORM
+	wildmon 54, VULPIX
+	wildmon 54, JIGGLYPUFF
+	wildmon 52, HOUNDOUR
+	wildmon 51, WIGGLYTUFF
+	end_grass_wildmons
+
 	def_grass_wildmons CERULEAN_CAPE
 	db 10 percent, 10 percent, 10 percent ; encounter rates: morn/day/nite
 	; morn
