@@ -1624,6 +1624,90 @@
 	wildmon 60, MAROWAK
 	end_grass_wildmons
 
+	def_grass_wildmons SCARY_CAVE_1F
+	db 4 percent, 4 percent, 4 percent ; encounter rates: morn/day/nite
+	; morn
+	wildmon 56, ZUBAT
+	wildmon 59, GOLBAT
+	wildmon 57, KRABBY
+	wildmon 58, CORSOLA, GALARIAN_FORM
+	wildmon 60, KINGLER
+	wildmon 61, KINGLER
+	wildmon 62, CORSOLA, GALARIAN_FORM
+	; day
+	wildmon 56, ZUBAT
+	wildmon 59, GOLBAT
+	wildmon 57, KRABBY
+	wildmon 58, CORSOLA, GALARIAN_FORM
+	wildmon 60, KINGLER
+	wildmon 61, KINGLER
+	wildmon 62, CORSOLA, GALARIAN_FORM
+	; nite
+	wildmon 56, ZUBAT
+	wildmon 59, GOLBAT
+	wildmon 57, KRABBY
+	wildmon 58, CORSOLA, GALARIAN_FORM
+	wildmon 60, KINGLER
+	wildmon 61, KINGLER
+	wildmon 62, CORSOLA, GALARIAN_FORM
+	end_grass_wildmons
+
+	def_grass_wildmons SCARY_CAVE_B1F
+	db 4 percent, 4 percent, 4 percent ; encounter rates: morn/day/nite
+	; morn
+	wildmon 57, GOLBAT
+	wildmon 60, KINGLER
+	wildmon 58, CORSOLA, GALARIAN_FORM
+	wildmon 59, CORSOLA, GALARIAN_FORM
+	wildmon 59, HAUNTER
+	wildmon 61, KINGLER
+	wildmon 62, KINGLER
+	; day
+	wildmon 57, GOLBAT
+	wildmon 60, KINGLER
+	wildmon 58, CORSOLA, GALARIAN_FORM
+	wildmon 59, CORSOLA, GALARIAN_FORM
+	wildmon 59, HAUNTER
+	wildmon 61, KINGLER
+	wildmon 62, KINGLER
+	; nite
+	wildmon 57, GOLBAT
+	wildmon 60, KINGLER
+	wildmon 58, CORSOLA, GALARIAN_FORM
+	wildmon 59, CORSOLA, GALARIAN_FORM
+	wildmon 59, HAUNTER
+	wildmon 61, KINGLER
+	wildmon 62, KINGLER
+	end_grass_wildmons
+
+	def_grass_wildmons SCARY_CAVE_SHIPWRECK
+	db 4 percent, 4 percent, 4 percent ; encounter rates: morn/day/nite
+	; morn
+	wildmon 57, MISDREAVUS
+	wildmon 60, CORSOLA, GALARIAN_FORM
+	wildmon 58, GASTLY
+	wildmon 59, HAUNTER
+	wildmon 61, GOLBAT
+	wildmon 62, GOLBAT
+	wildmon 63, GOLBAT
+	; day
+	wildmon 57, MISDREAVUS
+	wildmon 60, CORSOLA, GALARIAN_FORM
+	wildmon 58, GASTLY
+	wildmon 59, HAUNTER
+	wildmon 61, GOLBAT
+	wildmon 62, GOLBAT
+	wildmon 63, GOLBAT
+	; nite
+	wildmon 57, MISDREAVUS
+	wildmon 60, CORSOLA, GALARIAN_FORM
+	wildmon 58, GASTLY
+	wildmon 59, HAUNTER
+	wildmon 61, GOLBAT
+	wildmon 62, GOLBAT
+	wildmon 63, GOLBAT
+	end_grass_wildmons
+
 	def_grass_wildmons SEAFOAM_ISLANDS_1F
 	db 4 percent, 4 percent, 4 percent ; encounter rates: morn/day/nite
 	; morn
