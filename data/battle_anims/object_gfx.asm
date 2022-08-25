@@ -48,6 +48,7 @@ AnimObjGFX:
 	dbw  5, AnimObjHeartsGFX
 	dbw  5, AnimObjStarsGFX
 	dbw  8, AnimObjMiniGFX
+	dbw 48, AnimObjUTurnGFX
 	dbw  1, NULL ; ANIM_GFX_PLAYERHEAD
 	dbw  1, NULL ; ANIM_GFX_ENEMYFEET
 	dbw 10, AnimObjPokeBallBGGFX

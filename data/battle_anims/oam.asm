@@ -232,6 +232,7 @@ BattleAnimOAMData:
 	battleanimoam $08, 16, .OAMData_1c ; BATTLEANIMOAMSET_VORTEX1
 	battleanimoam $18, 16, .OAMData_1c ; BATTLEANIMOAMSET_VORTEX2
 	battleanimoam $28, 16, .OAMData_1c ; BATTLEANIMOAMSET_VORTEX3
+	battleanimoam $20, 16, .OAMData_1c ; BATTLEANIMOAMSET_U_TURN_FALL
 	assert_table_length NUM_BATTLEANIMOAMSETS
 
 .OAMData_11:
