@@ -2184,4 +2184,32 @@
 	wildmon LEVEL_FROM_BADGES - 1, DUNSPARCE
 	end_grass_wildmons
 
+	def_grass_wildmons SNOWTOP_MOUNTAIN
+	db 8 percent, 8 percent, 8 percent ; encounter rates: morn/day/nite
+	; morn
+	wildmon LEVEL_FROM_BADGES - 2, SWINUB
+	wildmon LEVEL_FROM_BADGES + 1, PILOSWINE
+	wildmon LEVEL_FROM_BADGES - 1, DELIBIRD
+	wildmon LEVEL_FROM_BADGES - 1, SWINUB
+	wildmon LEVEL_FROM_BADGES + 0, JYNX
+	wildmon LEVEL_FROM_BADGES + 1, MR__MIME, GALARIAN_FORM
+	wildmon LEVEL_FROM_BADGES + 3, MR__MIME, GALARIAN_FORM
+	; day
+	wildmon LEVEL_FROM_BADGES - 2, SWINUB
+	wildmon LEVEL_FROM_BADGES + 1, PILOSWINE
+	wildmon LEVEL_FROM_BADGES - 1, DELIBIRD
+	wildmon LEVEL_FROM_BADGES - 1, SWINUB
+	wildmon LEVEL_FROM_BADGES + 0, JYNX
+	wildmon LEVEL_FROM_BADGES + 1, MR__MIME, GALARIAN_FORM
+	wildmon LEVEL_FROM_BADGES + 3, MR__MIME, GALARIAN_FORM
+	; nite
+	wildmon LEVEL_FROM_BADGES - 2, SWINUB
+	wildmon LEVEL_FROM_BADGES + 1, PILOSWINE
+	wildmon LEVEL_FROM_BADGES - 1, DELIBIRD
+	wildmon LEVEL_FROM_BADGES - 1, SWINUB
+	wildmon LEVEL_FROM_BADGES + 0, SNEASEL
+	wildmon LEVEL_FROM_BADGES + 1, SNEASEL
+	wildmon LEVEL_FROM_BADGES + 3, SNEASEL
+	end_grass_wildmons
+
 	db -1 ; end
