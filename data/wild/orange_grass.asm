@@ -112,6 +112,62 @@
 	wildmon LEVEL_FROM_BADGES + 1, AZUMARILL
 	end_grass_wildmons
 
+	def_grass_wildmons SHAMOUTI_TUNNEL
+	db 10 percent, 10 percent, 10 percent ; encounter rates: morn/day/nite
+	; morn
+	wildmon LEVEL_FROM_BADGES - 1, RHYHORN
+	wildmon LEVEL_FROM_BADGES - 1, GRAVELER
+	wildmon LEVEL_FROM_BADGES + 1, MEOWTH, GALARIAN_FORM
+	wildmon LEVEL_FROM_BADGES + 3, GOLBAT
+	wildmon LEVEL_FROM_BADGES + 2, GOLBAT
+	wildmon LEVEL_FROM_BADGES + 4, PERRSERKER
+	wildmon LEVEL_FROM_BADGES + 2, PERRSERKER
+	; day
+	wildmon LEVEL_FROM_BADGES - 1, RHYHORN
+	wildmon LEVEL_FROM_BADGES - 1, GRAVELER
+	wildmon LEVEL_FROM_BADGES + 1, MEOWTH, GALARIAN_FORM
+	wildmon LEVEL_FROM_BADGES + 3, GOLBAT
+	wildmon LEVEL_FROM_BADGES + 2, GOLBAT
+	wildmon LEVEL_FROM_BADGES + 4, PERRSERKER
+	wildmon LEVEL_FROM_BADGES + 2, PERRSERKER
+	; nite
+	wildmon LEVEL_FROM_BADGES + 2, GOLBAT
+	wildmon LEVEL_FROM_BADGES - 1, GRAVELER
+	wildmon LEVEL_FROM_BADGES + 1, MEOWTH, GALARIAN_FORM
+	wildmon LEVEL_FROM_BADGES - 1, RHYHORN
+	wildmon LEVEL_FROM_BADGES + 0, RHYHORN
+	wildmon LEVEL_FROM_BADGES + 4, PERRSERKER
+	wildmon LEVEL_FROM_BADGES + 2, PERRSERKER
+	end_grass_wildmons
+
+	def_grass_wildmons NOISY_FOREST
+	db 10 percent, 10 percent, 10 percent ; encounter rates: morn/day/nite
+	; morn
+	wildmon LEVEL_FROM_BADGES - 1, YANMA
+	wildmon LEVEL_FROM_BADGES - 1, TANGELA
+	wildmon LEVEL_FROM_BADGES + 1, VOLTORB, HISUIAN_FORM
+	wildmon LEVEL_FROM_BADGES + 3, YANMEGA
+	wildmon LEVEL_FROM_BADGES + 2, VILEPLUME
+	wildmon LEVEL_FROM_BADGES + 4, ELECTRODE, HISUIAN_FORM
+	wildmon LEVEL_FROM_BADGES + 2, ELECTRODE, HISUIAN_FORM
+	; day
+	wildmon LEVEL_FROM_BADGES - 1, YANMA
+	wildmon LEVEL_FROM_BADGES - 1, TANGELA
+	wildmon LEVEL_FROM_BADGES + 1, VOLTORB, HISUIAN_FORM
+	wildmon LEVEL_FROM_BADGES + 3, YANMEGA
+	wildmon LEVEL_FROM_BADGES + 2, TANGELA
+	wildmon LEVEL_FROM_BADGES + 4, ELECTRODE, HISUIAN_FORM
+	wildmon LEVEL_FROM_BADGES + 2, ELECTRODE, HISUIAN_FORM
+	; nite
+	wildmon LEVEL_FROM_BADGES - 1, YANMA
+	wildmon LEVEL_FROM_BADGES - 1, GLOOM
+	wildmon LEVEL_FROM_BADGES + 1, VOLTORB, HISUIAN_FORM
+	wildmon LEVEL_FROM_BADGES + 3, YANMEGA
+	wildmon LEVEL_FROM_BADGES + 2, VILEPLUME
+	wildmon LEVEL_FROM_BADGES + 4, ELECTRODE, HISUIAN_FORM
+	wildmon LEVEL_FROM_BADGES + 2, ELECTRODE, HISUIAN_FORM
+	end_grass_wildmons
+
 	def_grass_wildmons SHAMOUTI_SHRINE_RUINS
 	db 10 percent, 10 percent, 10 percent ; encounter rates: morn/day/nite
 	; morn
