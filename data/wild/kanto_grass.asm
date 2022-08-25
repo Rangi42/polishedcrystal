@@ -1288,6 +1288,146 @@
 	wildmon 74, DITTO
 	end_grass_wildmons
 
+	def_grass_wildmons DIM_CAVE_1F
+	db 4 percent, 4 percent, 4 percent ; encounter rates: morn/day/nite
+	; morn
+	wildmon 49, GRAVELER
+	wildmon 50, SNEASEL, HISUIAN_FORM
+	wildmon 50, GOLBAT
+	wildmon 51, ONIX
+	wildmon 51, GRAVELER
+	wildmon 54, SNEASEL, HISUIAN_FORM
+	wildmon 51, ONIX
+	; day
+	wildmon 49, GRAVELER
+	wildmon 50, SNEASEL, HISUIAN_FORM
+	wildmon 50, GOLBAT
+	wildmon 51, ONIX
+	wildmon 51, GRAVELER
+	wildmon 54, SNEASEL, HISUIAN_FORM
+	wildmon 51, ONIX
+	; nite
+	wildmon 49, GOLBAT
+	wildmon 50, SNEASEL, HISUIAN_FORM
+	wildmon 50, GRAVELER
+	wildmon 51, HAUNTER
+	wildmon 51, GOLBAT
+	wildmon 54, SNEASEL, HISUIAN_FORM
+	wildmon 51, HAUNTER
+	end_grass_wildmons
+
+	def_grass_wildmons DIM_CAVE_2F
+	db 4 percent, 4 percent, 4 percent ; encounter rates: morn/day/nite
+	; morn
+	wildmon 51, SNEASEL, HISUIAN_FORM
+	wildmon 50, GRAVELER
+	wildmon 52, GOLBAT
+	wildmon 52, ONIX
+	wildmon 51, SNEASEL, HISUIAN_FORM
+	wildmon 55, GRAVELER
+	wildmon 52, ONIX
+	; day
+	wildmon 51, SNEASEL, HISUIAN_FORM
+	wildmon 50, GRAVELER
+	wildmon 52, GOLBAT
+	wildmon 52, ONIX
+	wildmon 51, SNEASEL, HISUIAN_FORM
+	wildmon 55, GRAVELER
+	wildmon 52, ONIX
+	; nite
+	wildmon 51, SNEASEL, HISUIAN_FORM
+	wildmon 50, GOLBAT
+	wildmon 52, GRAVELER
+	wildmon 52, HAUNTER
+	wildmon 51, SNEASEL, HISUIAN_FORM
+	wildmon 55, GOLBAT
+	wildmon 52, HAUNTER
+	end_grass_wildmons
+
+	def_grass_wildmons DIM_CAVE_3F
+	db 4 percent, 4 percent, 4 percent ; encounter rates: morn/day/nite
+	; morn
+	wildmon 52, SNEASEL, HISUIAN_FORM
+	wildmon 54, GRAVELER
+	wildmon 52, GOLBAT
+	wildmon 54, SNEASEL, HISUIAN_FORM
+	wildmon 55, ONIX
+	wildmon 56, GRAVELER
+	wildmon 56, ONIX
+	; day
+	wildmon 52, SNEASEL, HISUIAN_FORM
+	wildmon 54, GRAVELER
+	wildmon 52, GOLBAT
+	wildmon 54, SNEASEL, HISUIAN_FORM
+	wildmon 55, ONIX
+	wildmon 56, GRAVELER
+	wildmon 56, ONIX
+	; nite
+	wildmon 52, SNEASEL, HISUIAN_FORM
+	wildmon 54, GOLBAT
+	wildmon 52, GRAVELER
+	wildmon 54, SNEASEL, HISUIAN_FORM
+	wildmon 55, HAUNTER
+	wildmon 56, GOLBAT
+	wildmon 56, HAUNTER
+	end_grass_wildmons
+
+	def_grass_wildmons DIM_CAVE_4F
+	db 4 percent, 4 percent, 4 percent ; encounter rates: morn/day/nite
+	; morn
+	wildmon 51, SNEASEL, HISUIAN_FORM
+	wildmon 50, GRAVELER
+	wildmon 52, GOLBAT
+	wildmon 52, ONIX
+	wildmon 51, SNEASEL, HISUIAN_FORM
+	wildmon 55, GRAVELER
+	wildmon 52, ONIX
+	; day
+	wildmon 51, SNEASEL, HISUIAN_FORM
+	wildmon 50, GRAVELER
+	wildmon 52, GOLBAT
+	wildmon 52, ONIX
+	wildmon 51, SNEASEL, HISUIAN_FORM
+	wildmon 55, GRAVELER
+	wildmon 52, ONIX
+	; nite
+	wildmon 51, SNEASEL, HISUIAN_FORM
+	wildmon 50, GOLBAT
+	wildmon 52, GRAVELER
+	wildmon 52, HAUNTER
+	wildmon 51, SNEASEL, HISUIAN_FORM
+	wildmon 55, GOLBAT
+	wildmon 52, HAUNTER
+	end_grass_wildmons
+
+	def_grass_wildmons DIM_CAVE_5F
+	db 4 percent, 4 percent, 4 percent ; encounter rates: morn/day/nite
+	; morn
+	wildmon 49, GRAVELER
+	wildmon 50, SNEASEL, HISUIAN_FORM
+	wildmon 50, GOLBAT
+	wildmon 51, ONIX
+	wildmon 51, GRAVELER
+	wildmon 54, SNEASEL, HISUIAN_FORM
+	wildmon 51, ONIX
+	; day
+	wildmon 49, GRAVELER
+	wildmon 50, SNEASEL, HISUIAN_FORM
+	wildmon 50, GOLBAT
+	wildmon 51, ONIX
+	wildmon 51, GRAVELER
+	wildmon 54, SNEASEL, HISUIAN_FORM
+	wildmon 51, ONIX
+	; nite
+	wildmon 49, GOLBAT
+	wildmon 50, SNEASEL, HISUIAN_FORM
+	wildmon 50, GRAVELER
+	wildmon 51, HAUNTER
+	wildmon 51, GOLBAT
+	wildmon 54, SNEASEL, HISUIAN_FORM
+	wildmon 51, HAUNTER
+	end_grass_wildmons
+
 	def_grass_wildmons SOUL_HOUSE_B1F
 	db 6 percent, 6 percent, 6 percent ; encounter rates: morn/day/nite
 	; morn
