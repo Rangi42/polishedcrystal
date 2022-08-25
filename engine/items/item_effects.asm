@@ -2305,9 +2305,7 @@ Ball_ReplacePartyMonCaughtBall:
 	bit TRADED_AS_OT_OPT, a
 	jr nz, .no_trade_restriction
 	farcall CheckIfMonIsYourOT
-	jr nc, .no_trade_restriction
-	ld hl, CantChangeTradedMonBallText
-	jmp PrintText
+	jr c, CantChangeTradedMonBallMessage
 
 .no_trade_restriction
 	ld a, [wCurItem]
