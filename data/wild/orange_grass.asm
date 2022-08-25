@@ -196,6 +196,90 @@
 	wildmon LEVEL_FROM_BADGES + 1, RAPIDASH, GALARIAN_FORM
 	end_grass_wildmons
 
+	def_grass_wildmons FIRE_ISLAND
+	db 10 percent, 10 percent, 10 percent ; encounter rates: morn/day/nite
+	; morn
+	wildmon LEVEL_FROM_BADGES + 0, 0
+	wildmon LEVEL_FROM_BADGES + 0, 0
+	wildmon LEVEL_FROM_BADGES + 0, 0
+	wildmon LEVEL_FROM_BADGES + 0, MAGMAR
+	wildmon LEVEL_FROM_BADGES + 2, MAGMAR
+	wildmon LEVEL_FROM_BADGES + 4, MAGMAR
+	wildmon LEVEL_FROM_BADGES + 6, MAGMAR
+	; day
+	wildmon LEVEL_FROM_BADGES + 0, 0
+	wildmon LEVEL_FROM_BADGES + 0, 0
+	wildmon LEVEL_FROM_BADGES + 0, 0
+	wildmon LEVEL_FROM_BADGES + 0, MAGMAR
+	wildmon LEVEL_FROM_BADGES + 2, MAGMAR
+	wildmon LEVEL_FROM_BADGES + 4, MAGMAR
+	wildmon LEVEL_FROM_BADGES + 6, MAGMAR
+	; nite
+	wildmon LEVEL_FROM_BADGES + 0, 0
+	wildmon LEVEL_FROM_BADGES + 0, 0
+	wildmon LEVEL_FROM_BADGES + 0, 0
+	wildmon LEVEL_FROM_BADGES + 0, MAGMAR
+	wildmon LEVEL_FROM_BADGES + 2, MAGMAR
+	wildmon LEVEL_FROM_BADGES + 4, MAGMAR
+	wildmon LEVEL_FROM_BADGES + 6, MAGMAR
+	end_grass_wildmons
+
+	def_grass_wildmons ICE_ISLAND
+	db 10 percent, 10 percent, 10 percent ; encounter rates: morn/day/nite
+	; morn
+	wildmon LEVEL_FROM_BADGES + 0, 0
+	wildmon LEVEL_FROM_BADGES + 0, 0
+	wildmon LEVEL_FROM_BADGES + 0, 0
+	wildmon LEVEL_FROM_BADGES + 0, JYNX
+	wildmon LEVEL_FROM_BADGES + 2, JYNX
+	wildmon LEVEL_FROM_BADGES + 4, JYNX
+	wildmon LEVEL_FROM_BADGES + 6, JYNX
+	; day
+	wildmon LEVEL_FROM_BADGES + 0, 0
+	wildmon LEVEL_FROM_BADGES + 0, 0
+	wildmon LEVEL_FROM_BADGES + 0, 0
+	wildmon LEVEL_FROM_BADGES + 0, JYNX
+	wildmon LEVEL_FROM_BADGES + 2, JYNX
+	wildmon LEVEL_FROM_BADGES + 4, JYNX
+	wildmon LEVEL_FROM_BADGES + 6, JYNX
+	; nite
+	wildmon LEVEL_FROM_BADGES + 0, 0
+	wildmon LEVEL_FROM_BADGES + 0, 0
+	wildmon LEVEL_FROM_BADGES + 0, 0
+	wildmon LEVEL_FROM_BADGES + 0, JYNX
+	wildmon LEVEL_FROM_BADGES + 2, JYNX
+	wildmon LEVEL_FROM_BADGES + 4, JYNX
+	wildmon LEVEL_FROM_BADGES + 6, JYNX
+	end_grass_wildmons
+
+	def_grass_wildmons LIGHTNING_ISLAND
+	db 10 percent, 10 percent, 10 percent ; encounter rates: morn/day/nite
+	; morn
+	wildmon LEVEL_FROM_BADGES + 0, 0
+	wildmon LEVEL_FROM_BADGES + 0, 0
+	wildmon LEVEL_FROM_BADGES + 0, 0
+	wildmon LEVEL_FROM_BADGES + 0, ELECTABUZZ
+	wildmon LEVEL_FROM_BADGES + 2, ELECTABUZZ
+	wildmon LEVEL_FROM_BADGES + 4, ELECTABUZZ
+	wildmon LEVEL_FROM_BADGES + 6, ELECTABUZZ
+	; day
+	wildmon LEVEL_FROM_BADGES + 0, 0
+	wildmon LEVEL_FROM_BADGES + 0, 0
+	wildmon LEVEL_FROM_BADGES + 0, 0
+	wildmon LEVEL_FROM_BADGES + 0, ELECTABUZZ
+	wildmon LEVEL_FROM_BADGES + 2, ELECTABUZZ
+	wildmon LEVEL_FROM_BADGES + 4, ELECTABUZZ
+	wildmon LEVEL_FROM_BADGES + 6, ELECTABUZZ
+	; nite
+	wildmon LEVEL_FROM_BADGES + 0, 0
+	wildmon LEVEL_FROM_BADGES + 0, 0
+	wildmon LEVEL_FROM_BADGES + 0, 0
+	wildmon LEVEL_FROM_BADGES + 0, ELECTABUZZ
+	wildmon LEVEL_FROM_BADGES + 2, ELECTABUZZ
+	wildmon LEVEL_FROM_BADGES + 4, ELECTABUZZ
+	wildmon LEVEL_FROM_BADGES + 6, ELECTABUZZ
+	end_grass_wildmons
+
 	def_grass_wildmons NAVEL_ROCK_INSIDE
 	db 1 percent, 1 percent, 1 percent ; encounter rates: morn/day/nite
 	; morn
