@@ -1,5 +1,33 @@
 ; Orange Pokémon in grass
 
+	def_grass_wildmons ROUTE_49
+	db 10 percent, 10 percent, 10 percent ; encounter rates: morn/day/nite
+	; morn
+	wildmon LEVEL_FROM_BADGES - 2, FEAROW
+	wildmon LEVEL_FROM_BADGES - 2, SUNFLORA
+	wildmon LEVEL_FROM_BADGES + 0, EXEGGUTOR, ALOLAN_FORM
+	wildmon LEVEL_FROM_BADGES + 1, EXEGGCUTE
+	wildmon LEVEL_FROM_BADGES + 2, EXEGGUTOR, ALOLAN_FORM
+	wildmon LEVEL_FROM_BADGES + 3, JUMPLUFF
+	wildmon LEVEL_FROM_BADGES + 1, JUMPLUFF
+	; day
+	wildmon LEVEL_FROM_BADGES - 2, FEAROW
+	wildmon LEVEL_FROM_BADGES - 2, SUNFLORA
+	wildmon LEVEL_FROM_BADGES + 0, EXEGGUTOR, ALOLAN_FORM
+	wildmon LEVEL_FROM_BADGES + 1, FEAROW
+	wildmon LEVEL_FROM_BADGES + 2, EXEGGUTOR, ALOLAN_FORM
+	wildmon LEVEL_FROM_BADGES + 3, JUMPLUFF
+	wildmon LEVEL_FROM_BADGES + 1, JUMPLUFF
+	; nite
+	wildmon LEVEL_FROM_BADGES - 2, NOCTOWL
+	wildmon LEVEL_FROM_BADGES - 2, EXEGGCUTE
+	wildmon LEVEL_FROM_BADGES + 0, EXEGGUTOR, ALOLAN_FORM
+	wildmon LEVEL_FROM_BADGES + 1, NOCTOWL
+	wildmon LEVEL_FROM_BADGES + 2, EXEGGUTOR, ALOLAN_FORM
+	wildmon LEVEL_FROM_BADGES + 3, XATU
+	wildmon LEVEL_FROM_BADGES + 1, XATU
+	end_grass_wildmons
+
 	def_grass_wildmons NAVEL_ROCK_INSIDE
 	db 1 percent, 1 percent, 1 percent ; encounter rates: morn/day/nite
 	; morn
