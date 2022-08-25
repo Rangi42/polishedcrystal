@@ -756,6 +756,34 @@
 	wildmon 56, QUAGSIRE
 	end_grass_wildmons
 
+	def_grass_wildmons LUCKY_ISLAND
+	db 10 percent, 10 percent, 10 percent ; encounter rates: morn/day/nite
+	; morn
+	wildmon LEVEL_FROM_BADGES - 1, TOGETIC
+	wildmon LEVEL_FROM_BADGES - 2, CHANSEY
+	wildmon LEVEL_FROM_BADGES + 0, CHANSEY
+	wildmon LEVEL_FROM_BADGES + 1, TOGEKISS
+	wildmon LEVEL_FROM_BADGES + 2, TOGEKISS
+	wildmon LEVEL_FROM_BADGES + 1, BLISSEY
+	wildmon LEVEL_FROM_BADGES + 3, BLISSEY
+	; day
+	wildmon LEVEL_FROM_BADGES - 1, TOGETIC
+	wildmon LEVEL_FROM_BADGES - 2, CHANSEY
+	wildmon LEVEL_FROM_BADGES + 0, CHANSEY
+	wildmon LEVEL_FROM_BADGES + 1, TOGEKISS
+	wildmon LEVEL_FROM_BADGES + 2, TOGEKISS
+	wildmon LEVEL_FROM_BADGES + 1, BLISSEY
+	wildmon LEVEL_FROM_BADGES + 3, BLISSEY
+	; nite
+	wildmon LEVEL_FROM_BADGES - 1, TOGETIC
+	wildmon LEVEL_FROM_BADGES - 2, CHANSEY
+	wildmon LEVEL_FROM_BADGES + 0, CHANSEY
+	wildmon LEVEL_FROM_BADGES + 1, TOGEKISS
+	wildmon LEVEL_FROM_BADGES + 2, TOGEKISS
+	wildmon LEVEL_FROM_BADGES + 1, BLISSEY
+	wildmon LEVEL_FROM_BADGES + 3, BLISSEY
+	end_grass_wildmons
+
 	def_grass_wildmons ROUTE_15
 	db 10 percent, 10 percent, 10 percent ; encounter rates: morn/day/nite
 	; morn
