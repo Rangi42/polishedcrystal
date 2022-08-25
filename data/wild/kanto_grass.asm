@@ -784,6 +784,34 @@
 	wildmon 57, QUAGSIRE
 	end_grass_wildmons
 
+	def_grass_wildmons ROUTE_16_WEST
+	db 10 percent, 10 percent, 10 percent ; encounter rates: morn/day/nite
+	; morn
+	wildmon 53, GRIMER
+	wildmon 50, FEAROW
+	wildmon 54, SLUGMA
+	wildmon 52, FEAROW
+	wildmon 53, MAGCARGO
+	wildmon 54, MUK
+	wildmon 55, MUK
+	; day
+	wildmon 53, GRIMER
+	wildmon 50, FEAROW
+	wildmon 54, SLUGMA
+	wildmon 52, FEAROW
+	wildmon 53, MAGCARGO
+	wildmon 54, MUK
+	wildmon 55, MUK
+	; nite
+	wildmon 53, GRIMER
+	wildmon 50, GRIMER
+	wildmon 54, GRIMER
+	wildmon 52, MURKROW
+	wildmon 53, MURKROW
+	wildmon 54, MUK
+	wildmon 55, MUK
+	end_grass_wildmons
+
 	def_grass_wildmons ROUTE_16_NORTHWEST
 	db 10 percent, 10 percent, 10 percent ; encounter rates: morn/day/nite
 	; morn
