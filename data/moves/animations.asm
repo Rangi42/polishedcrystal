@@ -2675,6 +2675,7 @@ BattleAnim_Swift:
 
 BattleAnim_Crabhammer:
 	anim_1gfx ANIM_GFX_HIT
+	anim_bgeffect ANIM_BG_WHIRLPOOL, $0, $0, $0
 	anim_bgeffect ANIM_BG_SHAKE_SCREEN_X, $40, $2, $0
 	anim_wait 48
 	anim_bgeffect ANIM_BG_FLASH_INVERTED, $0, $8, $3
@@ -2683,6 +2684,8 @@ BattleAnim_Crabhammer:
 	anim_obj ANIM_OBJ_HIT_BIG_YFIX, -15, 0,   7, 0, $0
 	anim_wait 12
 	anim_loop 3, .loop
+	anim_incbgeffect ANIM_BG_WHIRLPOOL
+	anim_wait 1
 	anim_ret
 
 BattleAnim_IronHead:
@@ -3375,6 +3378,7 @@ BattleAnim_Waterfall:
 	anim_bgeffect ANIM_BG_BODY_SLAM, $0, $1, $0
 	anim_wait 16
 	anim_call BattleAnim_ShowMon_0
+	anim_bgeffect ANIM_BG_WHIRLPOOL, $0, $0, $0
 	anim_sound 0, 1, SFX_LICK
 	anim_obj ANIM_OBJ_HIT_YFIX, -15, 0,   7, 0, $0
 	anim_wait 3
@@ -3390,6 +3394,8 @@ BattleAnim_Waterfall:
 	anim_sound 0, 1, SFX_LICK
 	anim_obj ANIM_OBJ_HIT_YFIX, -15, 0,   3, 0, $0
 	anim_wait 8
+	anim_incbgeffect ANIM_BG_WHIRLPOOL
+	anim_wait 1
 	anim_ret
 
 BattleAnim_PsychicM:
@@ -4009,6 +4015,7 @@ BattleAnim_MudSlap:
 
 BattleAnim_Octazooka:
 	anim_3gfx ANIM_GFX_HAZE, ANIM_GFX_EGG, ANIM_GFX_SMOKE
+	anim_bgeffect ANIM_BG_WHIRLPOOL, $0, $0, $0
 	anim_sound 6, 2, SFX_SLUDGE_BOMB
 	anim_obj ANIM_OBJ_OCTAZOOKA,   8, 0,  11, 4, $4
 	anim_wait 16
@@ -4021,6 +4028,8 @@ BattleAnim_Octazooka:
 	anim_loop 5, .loop
 	anim_wait 128
 .done
+	anim_incbgeffect ANIM_BG_WHIRLPOOL
+	anim_wait 1
 	anim_ret
 
 BattleAnim_Spikes:
