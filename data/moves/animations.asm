@@ -642,7 +642,7 @@ BattleAnim_Par:
 	anim_sound 0, 0, SFX_THUNDERSHOCK
 	anim_obj ANIM_OBJ_PARALYZED,   2, 4,  11, 0, $42
 	anim_obj ANIM_OBJ_PARALYZED,   9, 4,  11, 0, $c2
-	anim_wait 128
+	anim_wait 96
 	anim_ret
 
 BattleAnim_InLove:
