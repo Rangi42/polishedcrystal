@@ -35,10 +35,14 @@ Route22PastCelebiEventScript:
 	showtext Route22PastLyraIlexForestDisappearedText
 	applymovement ROUTE22PAST_LYRA, Route22Past_LyraStepDownMovementData
 	turnobject PLAYER, LEFT
+	showtext Route22PastLyraPokeGearText
+	applymovement ROUTE22PAST_LYRA, Route22Past_LyraStepDownTurnHeadRigthMovementData
+	turnobject PLAYER, DOWN
 	showtext Route22PastLyraExplainsTimeTravelText
 	showemote EMOTE_SHOCK, ROUTE22PAST_LYRA, 15
-	turnobject ROUTE22PAST_LYRA, UP
+	applymovement ROUTE22PAST_LYRA, Route22Past_LyraMoveUpToHearMovementData
 	showtext Route22PastLyraHearsSomeoneText
+	applymovement PLAYER, Route22Past_PlayerStepUpToLyraMovementData
 	follow ROUTE22PAST_LYRA, PLAYER
 	applymovement ROUTE22PAST_LYRA, Route22Past_LyraApproachesSilverMovementData
 	turnobject ROUTE22PAST_LYRA, UP
@@ -130,15 +134,27 @@ Route22Past_LyraLooksAroundAgainMovementData:
 
 Route22Past_LyraStepDownMovementData:
 	slow_step_down
+	step_end
+
+Route22Past_LyraStepDownTurnHeadRigthMovementData:
+	slow_step_down
 	turn_head_right
+	step_end
+
+Route22Past_LyraMoveUpToHearMovementData:
+	slow_step_up
+	slow_step_up
+	step_end
+
+Route22Past_PlayerStepUpToLyraMovementData
+	slow_step_up
 	step_end
 
 Route22Past_LyraApproachesSilverMovementData:
 	slow_step_up
 	slow_step_up
-	slow_step_up
 	slow_step_left
-	step_end
+	step_end 
 
 Route22Past_GiovanniLeavesMovementData:
 	slow_step_left
@@ -210,16 +226,23 @@ Route22PastLyraIlexForestDisappearedText:
 	cont "else…?"
 	done
 
-Route22PastLyraExplainsTimeTravelText:
+Route22PastLyraPokeGearText:
 	text "Lyra: <PLAYER>, my"
 	line "#gear radio"
 
 	para "said the date is"
 	line "from three years"
 	cont "ago!"
+	done
 
-	para "Celebi must have"
-	line "used its power to"
+Route22PastLyraExplainsTimeTravelText:
+	text "Is that… am I"
+	line "looking at…"
+	cont "Celebi?"
+
+	para "That explains it!"
+	line "Celebi must have"
+	cont "used its power to"
 
 	para "take us back in"
 	line "time!"
