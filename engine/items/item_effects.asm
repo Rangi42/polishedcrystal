@@ -2301,6 +2301,15 @@ Ball_ReplacePartyMonCaughtBall:
 	call UseItem_SelectMon
 	jr c, ItemNotUsed_ExitMenu
 
+	ld a, [wInitialOptions]
+	bit TRADED_AS_OT_OPT, a
+	jr nz, .no_trade_restriction
+	farcall CheckIfMonIsYourOT
+	jr nc, .no_trade_restriction
+	ld hl, CantChangeTradedMonBallText
+	jmp PrintText
+
+.no_trade_restriction
 	ld a, [wCurItem]
 	ld b, a
 	ld a, [wCurPartyMon]
@@ -2333,6 +2342,10 @@ BallReplacedText:
 
 AlreadyInThatBallMessage:
 	ld hl, AlreadyInThatBallText
+	jr CantUseItemMessage
+
+CantChangeTradedMonBallMessage:
+	ld hl, CantChangeTradedMonBallText
 	jr CantUseItemMessage
 
 CantUseOnEggMessage:
@@ -2368,6 +2381,10 @@ CantUseOnEggText:
 
 AlreadyInThatBallText:
 	text_far AlreadyInThatBallTextData
+	text_end
+
+CantChangeTradedMonBallText:
+	text_far CantChangeTradedMonBallTextData
 	text_end
 
 IsntTheTimeText:
