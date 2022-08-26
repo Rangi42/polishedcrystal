@@ -2757,7 +2757,7 @@ BattleAnim_NightSlash:
 	anim_ret
 
 BattleAnim_DazzlinGleam:
-	anim_3gfx ANIM_GFX_SPEED, ANIM_GFX_HIT, ANIM_GFX_SHINE
+	anim_1gfx ANIM_GFX_SPEED
 	anim_sound 0, 1, SFX_MOONLIGHT
 	anim_bgeffect ANIM_BG_CYCLE_OBPALS_GRAY_AND_YELLOW, $0, $2, $0
 	anim_bgeffect ANIM_BG_ALTERNATE_HUES, $0, $2, $0
@@ -2772,6 +2772,7 @@ BattleAnim_DazzlinGleam:
 	anim_wait 64
 	anim_resetobp0
 	anim_incbgeffect ANIM_BG_ALTERNATE_HUES
+	anim_2gfx ANIM_GFX_HIT, ANIM_GFX_SHINE
 	anim_sound 0, 1, SFX_FLASH
 	anim_bgeffect ANIM_BG_FLASH_INVERTED, $0, $6, $20
 	anim_wait 4
