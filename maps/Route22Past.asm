@@ -146,7 +146,7 @@ Route22Past_LyraMoveUpToHearMovementData:
 	slow_step_up
 	step_end
 
-Route22Past_PlayerStepUpToLyraMovementData
+Route22Past_PlayerStepUpToLyraMovementData:
 	slow_step_up
 	step_end
 
