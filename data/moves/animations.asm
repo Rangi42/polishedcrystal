@@ -1821,14 +1821,9 @@ BattleAnim_Roost:
 	anim_wait 34
 	anim_loop 3, .loop
 	anim_wait 28
-	anim_sound 0, 0, SFX_METRONOME
-	anim_obj ANIM_OBJ_GLIMMER, 44, 64, $0
-	anim_wait 5
-	anim_obj ANIM_OBJ_GLIMMER, 24, 96, $0
-	anim_wait 5
-	anim_obj ANIM_OBJ_GLIMMER, 56, 104, $0
-	anim_wait 21
 	anim_incbgeffect ANIM_BG_FADE_MON_TO_LIGHT_REPEATING
+	anim_bgeffect ANIM_BG_CYCLE_MID_OBPALS_GRAY_AND_YELLOW, $0, $0, $0
+	anim_call BattleAnimSub_Glimmer
 	anim_ret
 
 BattleAnim_Absorb:
