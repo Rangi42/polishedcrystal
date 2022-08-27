@@ -379,6 +379,8 @@ StartMenu_Pokemon:
 	farcall InitPartyMenuWithCancel
 	farcall InitPartyMenuGFX
 .menunoreload
+	ld a, A_BUTTON | B_BUTTON | SELECT
+	ld [wMenuJoypadFilter], a
 	farcall WritePartyMenuTilemap
 	farcall PrintPartyMenuText
 	call ApplyTilemapInVBlank
@@ -386,7 +388,14 @@ StartMenu_Pokemon:
 	call DelayFrame
 	farcall PartyMenuSelect
 	jr c, .return ; if cancelled or pressed B
+	ldh a, [hJoyLast]
+	and SELECT
+	jr z, .not_switch
+	call SwitchPartyMons
+	jr .after_action
+.not_switch
 	call PokemonActionSubmenu
+.after_action
 	push af
 	call SFXDelay2
 	pop af

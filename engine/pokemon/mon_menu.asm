@@ -136,6 +136,9 @@ SwitchPartyMons:
 	call SetPalettes
 	call DelayFrame
 
+	ld a, A_BUTTON | B_BUTTON | SELECT
+	ld [wMenuJoypadFilter], a
+
 	farcall PartyMenuSelect
 	bit 1, b
 	jr c, .DontSwitch
