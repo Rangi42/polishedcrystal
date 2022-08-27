@@ -6,14 +6,23 @@ UpdateItemDescriptionAndBagQuantity:
 	cp -1
 	jr z, UpdateItemDescription
 	hlcoord 1, 1
-	ld de, BagXString
+	ld de, BagString
 	rst PlaceString
 	ld a, [wMenuSelection]
 	call GetQuantityInBag
-	hlcoord 6, 1
+	hlcoord 5, 1
+	push hl
 	ld de, wBuffer1
-	lb bc, 2, 3
+	lb bc, 2, 4
 	call PrintNum
+	pop hl
+	; "Bag ×  9", "Bag × 99" "Bag ×999", or "Bag×9999"
+	ld a, [hl]
+	cp " "
+	jr z, .print_x
+	dec hl
+.print_x
+	ld [hl], "×"
 UpdateItemDescription:
 	ld a, [wMenuSelection]
 	ld [wCurSpecies], a
@@ -26,8 +35,8 @@ UpdateItemDescription:
 	decoord 1, 14
 	farjp PrintItemDescription
 
-BagXString:
-	db "Bag ×@"
+BagString:
+	db "Bag @"
 
 UpdateTMHMDescriptionAndOwnership:
 	hlcoord 1, 1
