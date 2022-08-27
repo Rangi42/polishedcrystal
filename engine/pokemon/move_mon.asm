@@ -965,6 +965,7 @@ UpdatePkmnStats:
 	; Don't faint Pokémon who used to not be fainted
 	inc hl
 	or [hl]
+	dec hl
 	ret nz
 .set_hp_to_one
 	xor a
