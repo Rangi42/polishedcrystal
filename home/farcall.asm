@@ -2,6 +2,21 @@
 ; Functions that rely on "following" data access it via their return address on
 ; the stack, and update the return address to point past the data.
 
+MACRO update_pushed_af_flags
+; Must have been preceded by 'push af'.
+; Updates the flags on the stack to their current value
+; without clobbering any other registers.
+	push af ; pushes current flags
+	push hl
+	ld hl, sp+$2
+	ld a, [hli] ; reads current flags
+	assert HIGH(wStackBottom) == HIGH(wStackTop)
+	inc l
+	ld [hl], a ; overwrites pushed flags
+	pop hl
+	pop af
+ENDM
+
 FarCall_de::
 ; Call a:de. Clobbers a.
 	ldh [hTempBank], a
@@ -77,16 +92,7 @@ _DoFarCall_BankInA:
 	call RetrieveAHLAndCallFunction
 _ReturnFarCall:
 	ldh [hFarCallSavedA], a
-	; preserve flags for return
-	push af
-	push hl
-	ld hl, sp+$2
-	ld a, [hli]
-	assert HIGH(wStackBottom) == HIGH(wStackTop)
-	inc l
-	ld [hl], a
-	pop hl
-	pop af
+	update_pushed_af_flags
 	pop af
 	rst Bankswitch
 	ldh a, [hFarCallSavedA]
@@ -109,16 +115,7 @@ StackCallInWRAMBankA::
 	ldh [rSVBK], a
 	call RetrieveAHLAndCallFunction
 	ldh [hTempBank], a
-	; preserve flags for return
-	push af
-	push hl
-	ld hl, sp+$2
-	ld a, [hli]
-	assert HIGH(wStackBottom) == HIGH(wStackTop)
-	inc l
-	ld [hl], a
-	pop hl
-	pop af
+	update_pushed_af_flags
 	pop af
 	ldh [rSVBK], a
 	ldh a, [hTempBank]

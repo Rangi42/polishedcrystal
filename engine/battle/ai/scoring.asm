@@ -2077,7 +2077,7 @@ AICheckPlayerMaxHP:
 	push bc
 	ld de, wBattleMonHP
 	ld hl, wBattleMonMaxHP
-	jr AICheckMaxHP
+	jr _AICheckMaxHP
 
 AICheckEnemyMaxHP:
 	push hl
@@ -2087,7 +2087,7 @@ AICheckEnemyMaxHP:
 	ld hl, wEnemyMonMaxHP
 	; fallthrough
 
-AICheckMaxHP:
+_AICheckMaxHP:
 ; Return carry if hp at de matches max hp at hl.
 
 	ld a, [de]
