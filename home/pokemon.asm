@@ -390,6 +390,26 @@ ConvertFormToExtendedSpecies::
 	rra
 	ret
 
+CompareSpeciesWithDE:
+; Compares given species+form in bc with target in de. Returns z if matching.
+; Uses similar logic as GetSpeciesAndFormIndexFromHL for what constitutes
+; a match. Namely, if d doesn't explicitly specify a form, any form will do.
+; Egg and gender flag is ignored, cosmetic forms are treated as separate.
+	inc d
+	dec d
+	jr nz, .form_ok
+	ld a, b
+	and ~FORM_MASK
+	ld b, a
+.form_ok
+	ld a, c
+	cp e
+	ret nz
+	ld a, b
+	and SPECIESFORM_MASK
+	xor d
+	ret
+
 GetCosmeticSpeciesAndFormIndex::
 ; input: c = species, b = form
 ; output: bc = extended index, carry if anything found

@@ -4,8 +4,8 @@ Route35CoastNorth_MapScriptHeader:
 	def_callbacks
 
 	def_warp_events
-	warp_event 13, 24, ROUTE_35_NATIONAL_PARK_GATE, 5
-	warp_event 13, 25, ROUTE_35_NATIONAL_PARK_GATE, 6
+	warp_event 13, 22, ROUTE_35_NATIONAL_PARK_GATE, 5
+	warp_event 13, 23, ROUTE_35_NATIONAL_PARK_GATE, 6
 
 	def_coord_events
 

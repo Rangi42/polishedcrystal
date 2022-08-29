@@ -1339,13 +1339,13 @@ StarPieceDesc:
 	done
 
 BrickPieceDesc:
-	text "A rare chunk of"
-	next "tile."
+	text "A chunk of tile."
+	next "Sell low."
 	done
 
 RareBoneDesc:
-	text "A rare bone for"
-	next "archaeologists."
+	text "A rare bone."
+	next "Sell high."
 	done
 
 SilverLeafDesc:

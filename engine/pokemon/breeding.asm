@@ -251,9 +251,9 @@ OverworldHatchEgg::
 	jmp CloseText
 
 HatchEggs:
-	ld hl, wPartyMon1Happiness
 	xor a
 	ld [wCurPartyMon], a
+
 	ld a, [wPartyCount]
 	and a
 	ret z
@@ -261,148 +261,115 @@ HatchEggs:
 
 .loop
 	push de
-	push hl
-	push de
-	ld de, MON_IS_EGG - MON_HAPPINESS
-	add hl, de
-	bit MON_IS_EGG_F, [hl]
-	pop de
-	pop hl
-	push hl
-	jmp z, .next
-	ld a, [hl]
+
+	; Check if egg cycles is zero.
+	ld a, MON_HAPPINESS
+	call GetPartyParamLocationAndValue
 	and a
 	jmp nz, .next
+
+	; Is this mon an egg?
+	push hl
+	ld bc, MON_IS_EGG - MON_HAPPINESS
+	add hl, bc
+	bit MON_IS_EGG_F, [hl]
+	res MON_IS_EGG_F, [hl]
+	pop hl
+	jmp z, .next
+
+	; We have a valid egg. Set friendship state.
 	ld [hl], HATCHED_HAPPINESS
 
-	push de
+	; Set OTID
+	ld bc, MON_ID - MON_HAPPINESS
+	add hl, bc
+	ld a, [wPlayerID]
+	ld [hli], a
+	ld a, [wPlayerID + 1]
+	ld [hld], a
 
-	farcall SetEggMonCaughtData
-	ld a, MON_SPECIES
-	call GetPartyParamLocationAndValue
-	ld [wCurPartySpecies], a
+	; Heal the mon. UpdatePkmnStats will readjust HP later if max HP changes.
+	ld bc, (MON_MAXHP + 1) - MON_ID
+	add hl, bc
+	ld a, [hld]
 	ld c, a
+	ld a, [hld]
+	ld [hl], c
+	dec hl
+	ld [hld], a
 
-	ld a, MON_FORM
-	call GetPartyParamLocationAndValue
-	and SPECIESFORM_MASK
-	ld [wCurForm], a
-	ld b, a
-	call SetSeenAndCaughtMon
-
-	ld a, MON_IS_EGG
-	call GetPartyParamLocationAndValue
-	and ~IS_EGG_MASK
+	; Zero status and Unused
+	xor a
+	ld [hld], a
 	ld [hl], a
 
-	ld a, [wCurPartySpecies]
-	cp TOGEPI
-	jr nz, .nottogepi
-	ld a, [wCurForm]
-	and EXTSPECIES_MASK
+	; Initialize egg caught data.
+	farcall SetEggMonCaughtData
+
+	; Write to wTempMon, wCurPartySpecies and wCurForm. Also gets base data.
+	xor a
+	ld [wMonType], a
+	predef CopyPkmnToTempMon
+
+	; Mark the mon as caught.
+	ld a, [wTempMonSpecies]
+	ld c, a
+	ld a, [wTempMonForm]
+	ld b, a
+	push bc
+	call SetSeenAndCaughtMon
+	pop bc
+
+	; If we hatched a Togepi, set the relevant Prof Elm event flag.
+	ld de, TOGEPI
 	assert HIGH(TOGEPI) == 0
-	and a
+	call CompareSpeciesWithDE
 	jr nz, .nottogepi
 	eventflagset EVENT_TOGEPI_HATCHED
+
 .nottogepi
-	pop de
-	ld a, [wCurPartySpecies]
-	dec de
-	ld [de], a
-	ld [wNamedObjectIndex], a
-	ld [wCurSpecies], a
 	call GetPartyPokemonName
 
+	; Write the species name to replace "Egg" (or "Bad Egg" I suppose...).
 	ld a, [wCurPartyMon]
 	ld hl, wPartyMonNicknames
 	call SkipNames
+	push hl
 	ld d, h
 	ld e, l
 	ld hl, wStringBuffer1
 	ld bc, MON_NAME_LENGTH
 	rst CopyBytes
-	predef CopyPkmnToTempMon
-	ld a, [wCurPartyMon]
-	ld hl, wPartyMons
-	ld bc, PARTYMON_STRUCT_LENGTH
-	rst AddNTimes
-	push hl
-	ld bc, MON_MAXHP
-	add hl, bc
-	ld d, h
-	ld e, l
+
+	; Update stats.
+	farcall UpdatePkmnStats
+
+	; Write OT name.
 	pop hl
 	push hl
-	ld bc, MON_LEVEL
+	ld bc, wPartyMonOTs - wPartyMonNicknames
 	add hl, bc
-	ld a, [hl]
-	ld [wCurPartyLevel], a
-	pop hl
-	push hl
-	ld bc, MON_STATUS
-	add hl, bc
-	xor a
-	ld [hli], a
-	ld [hl], a
-	pop hl
-	push hl
-	ld bc, MON_EVS - 1
-	add hl, bc
-	ld b, FALSE
-	predef CalcPkmnStats
-	pop bc
-	ld hl, MON_MAXHP
-	add hl, bc
-	ld d, h
-	ld e, l
-	ld hl, MON_HP
-	add hl, bc
-	ld a, [de]
-	inc de
-	ld [hli], a
-	ld a, [de]
-	ld [hl], a
-	ld hl, MON_ID
-	add hl, bc
-	ld a, [wPlayerID]
-	ld [hli], a
-	ld a, [wPlayerID + 1]
-	ld [hl], a
-	ld a, [wCurPartyMon]
-	ld hl, wPartyMonOTs
-	ld bc, NAME_LENGTH
-	rst AddNTimes
 	ld d, h
 	ld e, l
 	ld hl, wPlayerName
+	ld bc, MON_NAME_LENGTH
 	rst CopyBytes
+
+	; This prints "Huh?" and does the egg hatch animation.
 	ld hl, .Text_HatchEgg
 	call PrintText
-	ld a, [wCurPartyMon]
-	ld hl, wPartyMonNicknames
-	ld bc, MON_NAME_LENGTH
-	rst AddNTimes
-	ld d, h
-	ld e, l
-	push de
 
+	; Nuzlocke Mode always prompts for nickname. Otherwise, ask.
 	ld a, [wInitialOptions]
 	bit NUZLOCKE_MODE, a
-	jr nz, .alwaysnickname
+	jr nz, .yesnickname
 	ld hl, .Text_NicknameHatchling
 	call PrintText
 	call YesNoBox
-	pop de
 	jr c, .nonickname
-	jr .yesnickname
 
-.alwaysnickname
-	pop de
 .yesnickname
-	xor a
-	ld [wMonType], a
-	push de
-	predef CopyPkmnToTempMon
+	; de = the relevant entry in wPartyMonNicknames.
 	pop de
 	push de
 	ld b, $0 ; pokemon
@@ -413,19 +380,17 @@ HatchEggs:
 	jr .next
 
 .nonickname
+	pop de
 	ld hl, wStringBuffer1
 	ld bc, MON_NAME_LENGTH
 	rst CopyBytes
 
 .next
-	ld hl, wCurPartyMon
-	inc [hl]
-	pop hl
-	ld de, PARTYMON_STRUCT_LENGTH
-	add hl, de
 	pop de
 	dec e
 	ret z
+	ld hl, wCurPartyMon
+	inc [hl]
 	jmp .loop
 
 .Text_HatchEgg:
