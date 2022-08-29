@@ -3778,6 +3778,7 @@ BattleAnim_Reversal:
 
 BattleAnim_Hex:
 	anim_2gfx ANIM_GFX_FIRE, ANIM_GFX_SPEED
+	anim_call BattleAnim_UserObj_1Row
 	anim_bgp $f8
 	anim_wait 8
 	anim_sound 6, 2, SFX_SLUDGE_BOMB
@@ -3807,6 +3808,7 @@ BattleAnim_Hex:
 	anim_wait 2
 	anim_loop 3, .loop
 	anim_wait 8
+	anim_call BattleAnim_ShowMon_1
 	anim_wait 16
 	anim_ret
 
