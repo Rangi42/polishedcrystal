@@ -1552,6 +1552,8 @@ FishFunction:
 	ld a, [wPlayerState]
 	cp PLAYER_SURF_PIKA
 	jr z, .fail
+	call GetFacingObject
+	jr c, .fail
 	call GetFacingTileCoord
 	call GetTileCollision
 	dec a ; cp WATER_TILE
