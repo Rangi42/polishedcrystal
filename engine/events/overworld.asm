@@ -480,13 +480,13 @@ SurfFunction:
 	jr z, .alreadyfail
 	cp PLAYER_SURF_PIKA
 	jr z, .alreadyfail
+	call GetFacingObject
+	jr nc, .cannotsurf
 	call GetFacingTileCoord
 	call GetTileCollision
 	dec a ; cp WATER_TILE
 	jr nz, .cannotsurf
 	call CheckDirection
-	jr c, .cannotsurf
-	farcall CheckFacingObject
 	jr c, .cannotsurf
 	ld a, $1
 	ret
