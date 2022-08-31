@@ -105,6 +105,7 @@ AI_Redundant:
 	ret
 
 .BatonPass:
+.Teleport:
 	call CallOpponentTurn
 .Roar:
 	push hl
@@ -212,7 +213,6 @@ AI_Redundant:
 	farcall AICheckEnemyMaxHP
 	jr nc, .NotRedundant
 
-.Teleport:
 .Redundant:
 	ld a, 1
 	and a
