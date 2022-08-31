@@ -640,7 +640,7 @@ CopyBetweenPartyAndTemp:
 	ld hl, wPartyMonOTs
 	ld de, wTempMonOT
 	ld a, NAME_LENGTH
-	call .Copy
+	; fallthrough
 
 .Copy:
 ; Copies c bytes from hl+c*a to de if b is 1, otherwise the reverse.
