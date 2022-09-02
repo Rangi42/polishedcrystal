@@ -308,27 +308,68 @@ INCLUDE "gfx/pokemon/sneasler/front.dimensions"
 INCLUDE "gfx/pokemon/overqwil/front.dimensions"
 	assert_list_length NUM_SPECIES
 
-; TODO: have separate front.dimensions for cosmetic forms
+INCLUDE "gfx/pokemon/unown_b/front.dimensions"
+INCLUDE "gfx/pokemon/unown_c/front.dimensions"
+INCLUDE "gfx/pokemon/unown_d/front.dimensions"
+INCLUDE "gfx/pokemon/unown_e/front.dimensions"
+INCLUDE "gfx/pokemon/unown_f/front.dimensions"
+INCLUDE "gfx/pokemon/unown_g/front.dimensions"
+INCLUDE "gfx/pokemon/unown_h/front.dimensions"
+INCLUDE "gfx/pokemon/unown_i/front.dimensions"
+INCLUDE "gfx/pokemon/unown_j/front.dimensions"
+INCLUDE "gfx/pokemon/unown_k/front.dimensions"
+INCLUDE "gfx/pokemon/unown_l/front.dimensions"
+INCLUDE "gfx/pokemon/unown_m/front.dimensions"
+INCLUDE "gfx/pokemon/unown_n/front.dimensions"
+INCLUDE "gfx/pokemon/unown_o/front.dimensions"
+INCLUDE "gfx/pokemon/unown_p/front.dimensions"
+INCLUDE "gfx/pokemon/unown_q/front.dimensions"
+INCLUDE "gfx/pokemon/unown_r/front.dimensions"
+INCLUDE "gfx/pokemon/unown_s/front.dimensions"
+INCLUDE "gfx/pokemon/unown_t/front.dimensions"
+INCLUDE "gfx/pokemon/unown_u/front.dimensions"
+INCLUDE "gfx/pokemon/unown_v/front.dimensions"
+INCLUDE "gfx/pokemon/unown_w/front.dimensions"
+INCLUDE "gfx/pokemon/unown_x/front.dimensions"
+INCLUDE "gfx/pokemon/unown_y/front.dimensions"
+INCLUDE "gfx/pokemon/unown_z/front.dimensions"
+INCLUDE "gfx/pokemon/unown_exclamation/front.dimensions"
+INCLUDE "gfx/pokemon/unown_question/front.dimensions"
 
-rept NUM_UNOWN - 1
-	INCLUDE "gfx/pokemon/unown_a/front.dimensions"
-endr
+INCLUDE "gfx/pokemon/arbok_kanto/front.dimensions"
+INCLUDE "gfx/pokemon/arbok_koga/front.dimensions"
+INCLUDE "gfx/pokemon/arbok_agatha/front.dimensions"
+INCLUDE "gfx/pokemon/arbok_ariana/front.dimensions"
 
-rept NUM_ARBOK - 1
-	INCLUDE "gfx/pokemon/arbok_johto/front.dimensions"
-endr
+INCLUDE "gfx/pokemon/pikachu_fly/front.dimensions"
+INCLUDE "gfx/pokemon/pikachu_surf/front.dimensions"
+INCLUDE "gfx/pokemon/pikachu_pika/front.dimensions"
+INCLUDE "gfx/pokemon/pikachu_chuchu/front.dimensions"
+INCLUDE "gfx/pokemon/pikachu_spark/front.dimensions"
 
-rept NUM_PIKACHU - 1
-	INCLUDE "gfx/pokemon/pikachu_plain/front.dimensions"
-endr
+INCLUDE "gfx/pokemon/pichu_spiky/front.dimensions"
 
-INCLUDE "gfx/pokemon/pichu_plain/front.dimensions" ; PICHU, PICHU_SPIKY_EARED_FORM
+INCLUDE "gfx/pokemon/magikarp_skelly/front.dimensions"
+INCLUDE "gfx/pokemon/magikarp_calico1/front.dimensions"
+INCLUDE "gfx/pokemon/magikarp_calico2/front.dimensions"
+INCLUDE "gfx/pokemon/magikarp_calico3/front.dimensions"
+INCLUDE "gfx/pokemon/magikarp_twotone/front.dimensions"
+INCLUDE "gfx/pokemon/magikarp_orca/front.dimensions"
+INCLUDE "gfx/pokemon/magikarp_dapples/front.dimensions"
+INCLUDE "gfx/pokemon/magikarp_tiger/front.dimensions"
+INCLUDE "gfx/pokemon/magikarp_zebra/front.dimensions"
+INCLUDE "gfx/pokemon/magikarp_stripe/front.dimensions"
+INCLUDE "gfx/pokemon/magikarp_bubbles/front.dimensions"
+INCLUDE "gfx/pokemon/magikarp_diamonds/front.dimensions"
+INCLUDE "gfx/pokemon/magikarp_patches/front.dimensions"
+INCLUDE "gfx/pokemon/magikarp_forehead1/front.dimensions"
+INCLUDE "gfx/pokemon/magikarp_mask1/front.dimensions"
+INCLUDE "gfx/pokemon/magikarp_forehead2/front.dimensions"
+INCLUDE "gfx/pokemon/magikarp_mask2/front.dimensions"
+INCLUDE "gfx/pokemon/magikarp_saucy/front.dimensions"
+INCLUDE "gfx/pokemon/magikarp_raindrop/front.dimensions"
 
-rept NUM_MAGIKARP - 1
-	INCLUDE "gfx/pokemon/magikarp_plain/front.dimensions"
-endr
-
-INCLUDE "gfx/pokemon/gyarados_plain/front.dimensions" ; GYARADOS, GYARADOS_RED_FORM
+INCLUDE "gfx/pokemon/gyarados_red/front.dimensions"
 
 INCLUDE "gfx/pokemon/mewtwo_armored/front.dimensions"
 
