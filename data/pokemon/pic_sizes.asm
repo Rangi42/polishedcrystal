@@ -8,16 +8,15 @@ MACRO size_nybble
 ENDM
 
 ; Terrible hack because we can't read files into strings (yet!)
+	pushc
+	setcharmap main ; ASCII
+	assert "U" == $55 && "f" == $66 && "w" == $77
+	popc
 DEF U EQUS " size_nybble 5"
 DEF f EQUS " size_nybble 6"
 DEF w EQUS " size_nybble 7"
 MACRO INCSIZE
-	pushc
-	setcharmap main
-	assert "U" == $55 && "f" == $66 && "w" == $77 ; ASCII
-	INCLUDE \ ; hide from scan_includes
-		\1
-	popc
+	INCLUDE \1
 ENDM
 
 PokemonPicSizes::
