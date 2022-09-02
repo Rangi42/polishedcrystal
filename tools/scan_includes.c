@@ -61,14 +61,15 @@ void scan_file(const char *filename, bool strict) {
 			break;
 		case 'I':
 		case 'i':
-			is_incbin = !strncmp(ptr, "INCBIN", 6) || !strncmp(ptr, "incbin", 6);
+			is_incbin = !strncmp(ptr, "INCBIN", 6) || !strncmp(ptr, "incbin", 6)
+				|| !strncmp(ptr, "INCSIZE", 7) || !strncmp(ptr, "incsize", 7);
 			is_include = !strncmp(ptr, "INCLUDE", 7) || !strncmp(ptr, "include", 7);
 			if (is_incbin || is_include) {
-				ptr = strchr(ptr, '"');
-				if (!ptr) {
+				char *start = strchr(ptr, '"');
+				if (!start || strchr(ptr, '\n') < start) {
 					break;
 				}
-				ptr++;
+				ptr = start + 1;
 				char *include_path = ptr;
 				size_t length = strcspn(ptr, "\"");
 				ptr += length + 1;
