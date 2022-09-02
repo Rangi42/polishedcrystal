@@ -10,7 +10,7 @@ endc
 	db 178 ; base exp
 	db ALWAYS_ITEM_2, ASPEAR_BERRY ; held items
 	dn GENDER_F75, HATCH_MEDIUM_FAST ; gender ratio, step cycles to hatch
-	INCBIN "gfx/pokemon/ninetales_plain/front.dimensions"
+
 if DEF(FAITHFUL)
 	abilities_for NINETALES, FLASH_FIRE, FLASH_FIRE, DROUGHT
 else

@@ -6,7 +6,7 @@
 	db 218 ; base exp
 	db NO_ITEM, DRAGON_SCALE ; held items
 	dn GENDER_F50, HATCH_SLOWEST ; gender ratio, step cycles to hatch
-	INCBIN "gfx/pokemon/dragonite/front.dimensions"
+
 if DEF(FAITHFUL)
 	abilities_for DRAGONITE, INNER_FOCUS, INNER_FOCUS, MULTISCALE
 else

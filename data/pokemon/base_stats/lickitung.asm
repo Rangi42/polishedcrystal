@@ -6,7 +6,7 @@
 	db 127 ; base exp
 	db NO_ITEM, LAGGING_TAIL ; held items
 	dn GENDER_F50, HATCH_MEDIUM_FAST ; gender ratio, step cycles to hatch
-	INCBIN "gfx/pokemon/lickitung/front.dimensions"
+
 	abilities_for LICKITUNG, OWN_TEMPO, OBLIVIOUS, CLOUD_NINE
 	db GROWTH_MEDIUM_FAST ; growth rate
 	dn EGG_MONSTER, EGG_MONSTER ; egg groups

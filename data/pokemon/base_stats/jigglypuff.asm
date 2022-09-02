@@ -6,7 +6,7 @@
 	db 76 ; base exp
 	db ORAN_BERRY, ORAN_BERRY ; held items
 	dn GENDER_F75, HATCH_FASTER ; gender ratio, step cycles to hatch
-	INCBIN "gfx/pokemon/jigglypuff/front.dimensions"
+
 if DEF(FAITHFUL)
 	abilities_for JIGGLYPUFF, CUTE_CHARM, COMPETITIVE, FRISK
 else

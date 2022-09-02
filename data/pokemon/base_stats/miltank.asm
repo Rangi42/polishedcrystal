@@ -6,7 +6,7 @@
 	db 200 ; base exp
 	db NO_ITEM, MOOMOO_MILK ; held items
 	dn GENDER_F100, HATCH_MEDIUM_FAST ; gender ratio, step cycles to hatch
-	INCBIN "gfx/pokemon/miltank/front.dimensions"
+
 	abilities_for MILTANK, THICK_FAT, SCRAPPY, SAP_SIPPER
 	db GROWTH_SLOW ; growth rate
 	dn EGG_GROUND, EGG_GROUND ; egg groups

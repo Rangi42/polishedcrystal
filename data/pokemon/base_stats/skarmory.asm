@@ -11,7 +11,7 @@ endc
 	db 168 ; base exp
 	db NO_ITEM, SHARP_BEAK ; held items
 	dn GENDER_F50, HATCH_MEDIUM_SLOW ; gender ratio, step cycles to hatch
-	INCBIN "gfx/pokemon/skarmory/front.dimensions"
+
 	abilities_for SKARMORY, KEEN_EYE, STURDY, WEAK_ARMOR
 	db GROWTH_SLOW ; growth rate
 	dn EGG_FLYING, EGG_FLYING ; egg groups

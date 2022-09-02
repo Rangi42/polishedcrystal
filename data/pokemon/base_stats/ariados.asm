@@ -15,7 +15,7 @@ endc
 	db 134 ; base exp
 	db NO_ITEM, NO_ITEM ; held items
 	dn GENDER_F50, HATCH_FAST ; gender ratio, step cycles to hatch
-	INCBIN "gfx/pokemon/ariados/front.dimensions"
+
 	abilities_for ARIADOS, SWARM, INSOMNIA, SNIPER
 	db GROWTH_FAST ; growth rate
 	dn EGG_BUG, EGG_BUG ; egg groups

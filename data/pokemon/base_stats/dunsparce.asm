@@ -15,7 +15,7 @@ endc
 	db 75 ; base exp
 	db NO_ITEM, NO_ITEM ; held items
 	dn GENDER_F50, HATCH_MEDIUM_FAST ; gender ratio, step cycles to hatch
-	INCBIN "gfx/pokemon/dunsparce/front.dimensions"
+
 if DEF(FAITHFUL)
 	abilities_for DUNSPARCE, SERENE_GRACE, RUN_AWAY, RATTLED
 else

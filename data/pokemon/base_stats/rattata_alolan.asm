@@ -6,7 +6,7 @@
 	db 57 ; base exp
 	db NO_ITEM, PECHA_BERRY ; held items
 	dn GENDER_F50, HATCH_FAST ; gender ratio, step cycles to hatch
-	INCBIN "gfx/pokemon/rattata_alolan/front.dimensions"
+
 	abilities_for RATTATA_ALOLAN, GLUTTONY, HUSTLE, THICK_FAT
 	db GROWTH_MEDIUM_FAST ; growth rate
 	dn EGG_GROUND, EGG_GROUND ; egg groups

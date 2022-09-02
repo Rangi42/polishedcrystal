@@ -6,7 +6,7 @@
 	db 108 ; base exp
 	db NO_ITEM, RAZOR_FANG ; held items
 	dn GENDER_F50, HATCH_MEDIUM_FAST ; gender ratio, step cycles to hatch
-	INCBIN "gfx/pokemon/gligar/front.dimensions"
+
 	abilities_for GLIGAR, HYPER_CUTTER, SAND_VEIL, IMMUNITY
 	db GROWTH_MEDIUM_SLOW ; growth rate
 	dn EGG_BUG, EGG_BUG ; egg groups

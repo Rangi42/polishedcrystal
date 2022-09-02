@@ -297,18 +297,18 @@ rept NUM_UNOWN - 1
 	iconpal GRAY, BLUE
 endr
 
-rept 4
-	iconpal PURPLE, BROWN ; ARBOK
+rept NUM_ARBOK - 1
+	iconpal PURPLE, BROWN
 endr
 
-rept 5
-	iconpal RED, BLUE ; PIKACHU
+rept NUM_PIKACHU - 1
+	iconpal RED, BLUE
 endr
 
-	iconpal RED, BLUE ; PICHU
+	iconpal RED, BLUE ; PICHU, PICHU_SPIKY_EARED_FORM
 
 rept NUM_MAGIKARP - 1
-	iconpal RED, BROWN ; MAGIKARP
+	iconpal RED, BROWN
 endr
 
 	iconpal RED, RED ; GYARADOS, GYARADOS_RED_FORM

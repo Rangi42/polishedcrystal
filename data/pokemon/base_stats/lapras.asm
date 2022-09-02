@@ -6,7 +6,7 @@
 	db 219 ; base exp
 	db ALWAYS_ITEM_2, MYSTIC_WATER ; held items
 	dn GENDER_F50, HATCH_SLOWEST ; gender ratio, step cycles to hatch
-	INCBIN "gfx/pokemon/lapras/front.dimensions"
+
 	abilities_for LAPRAS, WATER_ABSORB, SHELL_ARMOR, HYDRATION
 	db GROWTH_SLOW ; growth rate
 	dn EGG_MONSTER, EGG_WATER_1 ; egg groups

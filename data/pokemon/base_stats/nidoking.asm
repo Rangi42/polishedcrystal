@@ -6,7 +6,7 @@
 	db 195 ; base exp
 	db NO_ITEM, NO_ITEM ; held items
 	dn GENDER_F0, HATCH_MEDIUM_FAST ; gender ratio, step cycles to hatch
-	INCBIN "gfx/pokemon/nidoking/front.dimensions"
+
 	abilities_for NIDOKING, POISON_POINT, RIVALRY, SHEER_FORCE
 	db GROWTH_MEDIUM_SLOW ; growth rate
 	dn EGG_MONSTER, EGG_GROUND ; egg groups

@@ -6,7 +6,7 @@
 	db 203 ; base exp
 	db PEARL, BIG_PEARL ; held items
 	dn GENDER_F50, HATCH_MEDIUM_FAST ; gender ratio, step cycles to hatch
-	INCBIN "gfx/pokemon/cloyster/front.dimensions"
+
 	abilities_for CLOYSTER, SHELL_ARMOR, SKILL_LINK, OVERCOAT
 	db GROWTH_SLOW ; growth rate
 	dn EGG_WATER_3, EGG_WATER_3 ; egg groups

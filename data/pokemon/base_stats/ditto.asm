@@ -11,7 +11,7 @@ endc
 	db 61 ; base exp
 	db QUICK_POWDER, METAL_POWDER ; held items
 	dn GENDER_UNKNOWN, HATCH_MEDIUM_FAST ; gender ratio, step cycles to hatch
-	INCBIN "gfx/pokemon/ditto/front.dimensions"
+
 	abilities_for DITTO, LIMBER, LIMBER, IMPOSTER
 	db GROWTH_MEDIUM_FAST ; growth rate
 	dn EGG_DITTO, EGG_DITTO ; egg groups

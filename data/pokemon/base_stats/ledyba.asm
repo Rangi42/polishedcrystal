@@ -11,7 +11,7 @@ endc
 	db 54 ; base exp
 	db NO_ITEM, NO_ITEM ; held items
 	dn GENDER_F50, HATCH_FAST ; gender ratio, step cycles to hatch
-	INCBIN "gfx/pokemon/ledyba/front.dimensions"
+
 	abilities_for LEDYBA, SWARM, EARLY_BIRD, RATTLED
 	db GROWTH_FAST ; growth rate
 	dn EGG_BUG, EGG_BUG ; egg groups

@@ -6,6 +6,11 @@ SECTION "Pokemon Pic Pointers", ROMX
 INCLUDE "data/pokemon/pic_pointers.asm"
 
 
+SECTION "Pokemon Pic Sizes", ROMX
+
+INCLUDE "data/pokemon/pic_sizes.asm"
+
+
 SECTION "Bulbasaur Pics", ROMX
 BulbasaurFrontpic: INCBIN "gfx/pokemon/bulbasaur/front.animated.2bpp.lz"
 BulbasaurBackpic:  INCBIN "gfx/pokemon/bulbasaur/back.2bpp.lz"

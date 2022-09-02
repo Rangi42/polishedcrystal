@@ -6,7 +6,7 @@
 	db 206 ; base exp
 	db NO_ITEM, NO_ITEM ; held items
 	dn GENDER_F50, HATCH_MEDIUM_FAST ; gender ratio, step cycles to hatch
-	INCBIN "gfx/pokemon/kingler/front.dimensions"
+
 	abilities_for KINGLER, HYPER_CUTTER, SHELL_ARMOR, SHEER_FORCE
 	db GROWTH_MEDIUM_FAST ; growth rate
 	dn EGG_WATER_3, EGG_WATER_3 ; egg groups

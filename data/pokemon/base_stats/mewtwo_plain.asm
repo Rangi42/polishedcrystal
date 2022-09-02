@@ -6,7 +6,7 @@
 	db 220 ; base exp
 	db ALWAYS_ITEM_2, PETAYA_BERRY ; held items
 	dn GENDER_UNKNOWN, HATCH_UNKNOWN ; gender ratio, step cycles to hatch
-	INCBIN "gfx/pokemon/mewtwo_plain/front.dimensions"
+
 	abilities_for MEWTWO, PRESSURE, INSOMNIA, UNNERVE
 	db GROWTH_SLOW ; growth rate
 	dn EGG_NONE, EGG_NONE ; egg groups

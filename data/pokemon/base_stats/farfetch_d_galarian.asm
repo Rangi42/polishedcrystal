@@ -6,7 +6,7 @@
 	db 94 ; base exp
 	db NO_ITEM, LEEK ; held items
 	dn GENDER_F50, HATCH_MEDIUM_FAST ; gender ratio, step cycles to hatch
-	INCBIN "gfx/pokemon/farfetch_d_galarian/front.dimensions"
+
 	abilities_for FARFETCH_D_GALARIAN, STEADFAST, STEADFAST, SCRAPPY
 	db GROWTH_MEDIUM_FAST ; growth rate
 	dn EGG_FLYING, EGG_GROUND ; egg groups

@@ -6,7 +6,7 @@
 	db 107 ; base exp
 	db NO_ITEM, NO_ITEM ; held items
 	dn GENDER_F50, HATCH_MEDIUM_FAST ; gender ratio, step cycles to hatch
-	INCBIN "gfx/pokemon/murkrow/front.dimensions"
+
 	abilities_for MURKROW, INSOMNIA, SUPER_LUCK, PRANKSTER
 	db GROWTH_MEDIUM_SLOW ; growth rate
 	dn EGG_FLYING, EGG_FLYING ; egg groups

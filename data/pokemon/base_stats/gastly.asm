@@ -6,7 +6,7 @@
 	db 95 ; base exp
 	db NO_ITEM, NO_ITEM ; held items
 	dn GENDER_F50, HATCH_MEDIUM_FAST ; gender ratio, step cycles to hatch
-	INCBIN "gfx/pokemon/gastly/front.dimensions"
+
 	abilities_for GASTLY, LEVITATE, LEVITATE, LEVITATE
 	db GROWTH_MEDIUM_SLOW ; growth rate
 	dn EGG_INDETERMINATE, EGG_INDETERMINATE ; egg groups

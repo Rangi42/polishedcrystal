@@ -6,7 +6,7 @@
 	db 113 ; base exp
 	db NO_ITEM, NO_ITEM ; held items
 	dn GENDER_F50, HATCH_FAST ; gender ratio, step cycles to hatch
-	INCBIN "gfx/pokemon/pidgeotto/front.dimensions"
+
 	abilities_for PIDGEOTTO, KEEN_EYE, TANGLED_FEET, BIG_PECKS
 	db GROWTH_MEDIUM_SLOW ; growth rate
 	dn EGG_FLYING, EGG_FLYING ; egg groups

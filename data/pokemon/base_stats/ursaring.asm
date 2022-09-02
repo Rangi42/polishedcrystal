@@ -6,7 +6,7 @@
 	db 189 ; base exp
 	db ALWAYS_ITEM_2, SITRUS_BERRY ; held items
 	dn GENDER_F50, HATCH_MEDIUM_FAST ; gender ratio, step cycles to hatch
-	INCBIN "gfx/pokemon/ursaring/front.dimensions"
+
 	abilities_for URSARING, GUTS, QUICK_FEET, UNNERVE
 	db GROWTH_MEDIUM_FAST ; growth rate
 	dn EGG_GROUND, EGG_GROUND ; egg groups

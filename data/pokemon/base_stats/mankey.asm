@@ -6,7 +6,7 @@
 	db 74 ; base exp
 	db NO_ITEM, KEE_BERRY ; held items
 	dn GENDER_F50, HATCH_MEDIUM_FAST ; gender ratio, step cycles to hatch
-	INCBIN "gfx/pokemon/mankey/front.dimensions"
+
 	abilities_for MANKEY, VITAL_SPIRIT, ANGER_POINT, DEFIANT
 	db GROWTH_MEDIUM_FAST ; growth rate
 	dn EGG_GROUND, EGG_GROUND ; egg groups

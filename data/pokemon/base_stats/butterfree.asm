@@ -20,7 +20,7 @@ else
 endc
 	db SHED_SHELL, SILVERPOWDER ; held items
 	dn GENDER_F50, HATCH_FAST ; gender ratio, step cycles to hatch
-	INCBIN "gfx/pokemon/butterfree/front.dimensions"
+
 if DEF(FAITHFUL)
 	abilities_for BUTTERFREE, COMPOUND_EYES, COMPOUND_EYES, TINTED_LENS
 else

@@ -6,7 +6,7 @@
 	db 72 ; base exp
 	db NO_ITEM, NO_ITEM ; held items
 	dn GENDER_F50, HATCH_FAST ; gender ratio, step cycles to hatch
-	INCBIN "gfx/pokemon/metapod/front.dimensions"
+
 	abilities_for METAPOD, SHED_SKIN, SHED_SKIN, SHED_SKIN
 	db GROWTH_MEDIUM_FAST ; growth rate
 	dn EGG_BUG, EGG_BUG ; egg groups

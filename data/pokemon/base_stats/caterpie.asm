@@ -6,7 +6,7 @@
 	db 53 ; base exp
 	db NO_ITEM, NO_ITEM ; held items
 	dn GENDER_F50, HATCH_FAST ; gender ratio, step cycles to hatch
-	INCBIN "gfx/pokemon/caterpie/front.dimensions"
+
 	abilities_for CATERPIE, SHIELD_DUST, SHIELD_DUST, RUN_AWAY
 	db GROWTH_MEDIUM_FAST ; growth rate
 	dn EGG_BUG, EGG_BUG ; egg groups

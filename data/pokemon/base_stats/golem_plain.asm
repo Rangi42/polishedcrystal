@@ -6,7 +6,7 @@
 	db 177 ; base exp
 	db NO_ITEM, EVERSTONE ; held items
 	dn GENDER_F50, HATCH_FAST ; gender ratio, step cycles to hatch
-	INCBIN "gfx/pokemon/golem_plain/front.dimensions"
+
 	abilities_for GOLEM, ROCK_HEAD, STURDY, SAND_VEIL
 	db GROWTH_MEDIUM_SLOW ; growth rate
 	dn EGG_MINERAL, EGG_MINERAL ; egg groups

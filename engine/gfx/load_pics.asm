@@ -54,13 +54,16 @@ _GetFrontpic:
 
 _PrepareFrontpic:
 	push de
+
+	; This is no longer needed for the pic size, but do it just
+	; in case subsequent code expects base data available
 	call GetBaseData ; [wCurSpecies] and [wCurForm] are already set
-	ld a, [wBasePicSize]
-	and $f
+
+	call GetPicSize
 	ld b, a
 	ld [wMonPicSize], a
-	push bc
 
+	push bc
 	; Get frontpic pointer
 	ld a, [wCurPartySpecies]
 	ld c, a

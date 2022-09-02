@@ -6,7 +6,7 @@
 	db 211 ; base exp
 	db NO_ITEM, NO_ITEM ; held items
 	dn GENDER_F50, HATCH_MEDIUM_FAST ; gender ratio, step cycles to hatch
-	INCBIN "gfx/pokemon/tangrowth/front.dimensions"
+
 	abilities_for TANGROWTH, CHLOROPHYLL, LEAF_GUARD, REGENERATOR
 	db GROWTH_MEDIUM_FAST ; growth rate
 	dn EGG_PLANT, EGG_PLANT ; egg groups

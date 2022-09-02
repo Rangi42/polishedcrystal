@@ -6,7 +6,7 @@
 	db 67 ; base exp
 	db NO_ITEM, DRAGON_SCALE ; held items
 	dn GENDER_F50, HATCH_SLOWEST ; gender ratio, step cycles to hatch
-	INCBIN "gfx/pokemon/dratini/front.dimensions"
+
 	abilities_for DRATINI, SHED_SKIN, SHED_SKIN, MARVEL_SCALE
 	db GROWTH_SLOW ; growth rate
 	dn EGG_WATER_1, EGG_DRAGON ; egg groups

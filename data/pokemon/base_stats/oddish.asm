@@ -6,7 +6,7 @@
 	db 78 ; base exp
 	db SILVER_LEAF, SILVER_LEAF ; held items
 	dn GENDER_F50, HATCH_MEDIUM_FAST ; gender ratio, step cycles to hatch
-	INCBIN "gfx/pokemon/oddish/front.dimensions"
+
 	abilities_for ODDISH, CHLOROPHYLL, CHLOROPHYLL, RUN_AWAY
 	db GROWTH_MEDIUM_SLOW ; growth rate
 	dn EGG_PLANT, EGG_PLANT ; egg groups

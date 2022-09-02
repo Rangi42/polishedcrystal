@@ -9,6 +9,7 @@
 ; - MiniIconPointers (see data/pokemon/mini_icon_pointers.asm)
 ; - OverworldMonIconColors (see data/pokemon/overworld_icon_pals.asm)
 ; - PokemonPicPointers (see data/pokemon/pic_pointers.asm)
+; - PokemonPicSizes (see data/pokemon/pic_sizes.asm)
 ; - PokemonPalettes (see data/pokemon/palettes.asm)
 ; - PokemonBodyData (see data/pokemon/body_data.asm)
 ; - PokedexDataPointerTable (see data/pokemon/dex_entry_pointers.asm)
@@ -378,6 +379,7 @@ DEF NUM_UNOWN EQU ext_const_value - 1
 	ext_const ARBOK_KOGA_FORM     ; 13c (3)
 	ext_const ARBOK_AGATHA_FORM   ; 13d (4)
 	ext_const ARBOK_ARIANA_FORM   ; 13e (5)
+DEF NUM_ARBOK EQU ext_const_value - 1
 
 ; pikachu
 	ext_const_def 2
@@ -386,6 +388,7 @@ DEF NUM_UNOWN EQU ext_const_value - 1
 	ext_const PIKACHU_RED_FORM    ; 141 (4)
 	ext_const PIKACHU_YELLOW_FORM ; 142 (5)
 	ext_const PIKACHU_SPARK_FORM  ; 143 (6)
+DEF NUM_PIKACHU EQU ext_const_value - 1
 
 ; pichu
 	ext_const_def 2

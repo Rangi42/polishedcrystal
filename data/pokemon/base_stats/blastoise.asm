@@ -10,7 +10,7 @@ endc
 	db 210 ; base exp
 	db NO_ITEM, NO_ITEM ; held items
 	dn GENDER_F12_5, HATCH_MEDIUM_FAST ; gender ratio, step cycles to hatch
-	INCBIN "gfx/pokemon/blastoise/front.dimensions"
+
 	abilities_for BLASTOISE, TORRENT, RAIN_DISH, MEGA_LAUNCHER
 	db GROWTH_MEDIUM_SLOW ; growth rate
 	dn EGG_MONSTER, EGG_WATER_1 ; egg groups

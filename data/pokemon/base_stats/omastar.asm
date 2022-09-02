@@ -6,7 +6,7 @@
 	db 199 ; base exp
 	db NO_ITEM, NO_ITEM ; held items
 	dn GENDER_F12_5, HATCH_SLOW ; gender ratio, step cycles to hatch
-	INCBIN "gfx/pokemon/omastar/front.dimensions"
+
 	abilities_for OMASTAR, SWIFT_SWIM, SHELL_ARMOR, WEAK_ARMOR
 	db GROWTH_MEDIUM_FAST ; growth rate
 	dn EGG_WATER_1, EGG_WATER_3 ; egg groups

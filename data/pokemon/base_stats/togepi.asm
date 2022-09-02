@@ -6,7 +6,7 @@
 	db 74 ; base exp
 	db NO_ITEM, NO_ITEM ; held items
 	dn GENDER_F12_5, HATCH_FASTER ; gender ratio, step cycles to hatch
-	INCBIN "gfx/pokemon/togepi/front.dimensions"
+
 	abilities_for TOGEPI, HUSTLE, SERENE_GRACE, SUPER_LUCK
 	db GROWTH_FAST ; growth rate
 	dn EGG_NONE, EGG_NONE ; egg groups

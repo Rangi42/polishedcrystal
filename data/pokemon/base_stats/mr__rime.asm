@@ -6,7 +6,7 @@
 	db 207 ; base exp
 	db NO_ITEM, NO_ITEM ; held items
 	dn GENDER_F50, 4; gender ratio, step cycles to hatch
-	INCBIN "gfx/pokemon/mr__rime/front.dimensions"
+
 	abilities_for MR__RIME, TANGLED_FEET, SCREEN_CLEANER, ICE_BODY
 	db GROWTH_MEDIUM_FAST ; growth rate
 	dn EGG_HUMANSHAPE, EGG_HUMANSHAPE ; egg groups

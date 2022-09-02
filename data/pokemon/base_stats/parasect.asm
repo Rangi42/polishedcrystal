@@ -11,7 +11,7 @@ endc
 	db 128 ; base exp
 	db TINYMUSHROOM, BIG_MUSHROOM ; held items
 	dn GENDER_F50, HATCH_MEDIUM_FAST ; gender ratio, step cycles to hatch
-	INCBIN "gfx/pokemon/parasect/front.dimensions"
+
 	abilities_for PARASECT, EFFECT_SPORE, DRY_SKIN, DAMP
 	db GROWTH_MEDIUM_FAST ; growth rate
 	dn EGG_BUG, EGG_PLANT ; egg groups

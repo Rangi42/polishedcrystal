@@ -6,7 +6,7 @@
 	db 10 ; base exp
 	db NO_ITEM, NO_ITEM ; held items
 	dn GENDER_F50, HATCH_FASTER ; gender ratio, step cycles to hatch
-	INCBIN "gfx/pokemon/egg/front.dimensions"
+
 	abilities_for EGG, NO_ABILITY, NO_ABILITY, NO_ABILITY
 	db GROWTH_SLOW ; growth rate
 	dn EGG_NONE, EGG_NONE ; egg groups
