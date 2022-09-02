@@ -10,7 +10,7 @@ endc
 	db 220 ; base exp
 	db ALWAYS_ITEM_2, LUM_BERRY ; held items
 	dn GENDER_UNKNOWN, HATCH_UNKNOWN ; gender ratio, step cycles to hatch
-	INCBIN "gfx/pokemon/lugia/front.dimensions"
+
 if DEF(FAITHFUL)
 	abilities_for LUGIA, PRESSURE, PRESSURE, MULTISCALE
 else

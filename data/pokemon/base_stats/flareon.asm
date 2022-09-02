@@ -6,7 +6,7 @@
 	db 198 ; base exp
 	db NO_ITEM, NO_ITEM ; held items
 	dn GENDER_F12_5, HATCH_SLOWER ; gender ratio, step cycles to hatch
-	INCBIN "gfx/pokemon/flareon/front.dimensions"
+
 if DEF(FAITHFUL)
 	abilities_for FLAREON, FLASH_FIRE, FLASH_FIRE, GUTS
 else

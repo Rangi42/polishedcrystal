@@ -6,7 +6,7 @@
 	db 217 ; base exp
 	db ALWAYS_ITEM_2, CHARCOAL ; held items
 	dn GENDER_UNKNOWN, HATCH_UNKNOWN ; gender ratio, step cycles to hatch
-	INCBIN "gfx/pokemon/entei/front.dimensions"
+
 if DEF(FAITHFUL)
 	abilities_for ENTEI, PRESSURE, PRESSURE, INNER_FOCUS
 else

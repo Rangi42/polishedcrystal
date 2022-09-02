@@ -6,7 +6,7 @@
 	db 91 ; base exp
 	db NO_ITEM, NO_ITEM ; held items
 	dn GENDER_F0, HATCH_MEDIUM_SLOW ; gender ratio, step cycles to hatch
-	INCBIN "gfx/pokemon/tyrogue/front.dimensions"
+
 	abilities_for TYROGUE, GUTS, STEADFAST, VITAL_SPIRIT
 	db GROWTH_MEDIUM_FAST ; growth rate
 	dn EGG_NONE, EGG_NONE ; egg groups

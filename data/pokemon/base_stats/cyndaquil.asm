@@ -6,7 +6,7 @@
 	db 65 ; base exp
 	db NO_ITEM, NO_ITEM ; held items
 	dn GENDER_F12_5, HATCH_MEDIUM_FAST ; gender ratio, step cycles to hatch
-	INCBIN "gfx/pokemon/cyndaquil/front.dimensions"
+
 if DEF(FAITHFUL)
 	abilities_for CYNDAQUIL, BLAZE, BLAZE, FLASH_FIRE
 else

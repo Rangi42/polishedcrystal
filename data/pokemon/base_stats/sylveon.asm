@@ -6,7 +6,7 @@
 	db 196 ; base exp
 	db NO_ITEM, PINK_BOW ; held items
 	dn GENDER_F12_5, HATCH_SLOWER ; gender ratio, step cycles to hatch
-	INCBIN "gfx/pokemon/sylveon/front.dimensions"
+
 if DEF(FAITHFUL)
 	abilities_for SYLVEON, CUTE_CHARM, CUTE_CHARM, PIXILATE
 else

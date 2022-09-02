@@ -6,7 +6,7 @@
 	db 52 ; base exp
 	db NO_ITEM, STARF_BERRY ; held items
 	dn GENDER_F50, HATCH_MEDIUM_FAST ; gender ratio, step cycles to hatch
-	INCBIN "gfx/pokemon/sunkern/front.dimensions"
+
 	abilities_for SUNKERN, CHLOROPHYLL, SOLAR_POWER, EARLY_BIRD
 	db GROWTH_MEDIUM_SLOW ; growth rate
 	dn EGG_PLANT, EGG_PLANT ; egg groups

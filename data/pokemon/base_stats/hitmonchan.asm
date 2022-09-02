@@ -6,7 +6,7 @@
 	db 140 ; base exp
 	db NO_ITEM, NO_ITEM ; held items
 	dn GENDER_F0, HATCH_MEDIUM_SLOW ; gender ratio, step cycles to hatch
-	INCBIN "gfx/pokemon/hitmonchan/front.dimensions"
+
 	abilities_for HITMONCHAN, KEEN_EYE, IRON_FIST, INNER_FOCUS
 	db GROWTH_MEDIUM_FAST ; growth rate
 	dn EGG_HUMANSHAPE, EGG_HUMANSHAPE ; egg groups

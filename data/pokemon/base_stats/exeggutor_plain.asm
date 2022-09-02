@@ -6,7 +6,7 @@
 	db 212 ; base exp
 	db NO_ITEM, MARANGABERRY ; held items
 	dn GENDER_F50, HATCH_MEDIUM_FAST ; gender ratio, step cycles to hatch
-	INCBIN "gfx/pokemon/exeggutor_plain/front.dimensions"
+
 	abilities_for EXEGGUTOR, CHLOROPHYLL, CHLOROPHYLL, HARVEST
 	db GROWTH_SLOW ; growth rate
 	dn EGG_PLANT, EGG_PLANT ; egg groups

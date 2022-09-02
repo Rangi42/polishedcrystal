@@ -6,7 +6,7 @@
 	db 200 ; base exp
 	db NO_ITEM, METAL_COAT ; held items
 	dn GENDER_F50, HATCH_MEDIUM_SLOW ; gender ratio, step cycles to hatch
-	INCBIN "gfx/pokemon/scizor/front.dimensions"
+
 	abilities_for SCIZOR, SWARM, TECHNICIAN, LIGHT_METAL
 	db GROWTH_MEDIUM_FAST ; growth rate
 	dn EGG_BUG, EGG_BUG ; egg groups

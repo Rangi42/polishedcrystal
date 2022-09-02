@@ -6,7 +6,7 @@
 	db 124 ; base exp
 	db ALWAYS_ITEM_2, ORAN_BERRY ; held items
 	dn GENDER_F50, HATCH_MEDIUM_FAST ; gender ratio, step cycles to hatch
-	INCBIN "gfx/pokemon/teddiursa/front.dimensions"
+
 	abilities_for TEDDIURSA, PICKUP, QUICK_FEET, HONEY_GATHER
 	db GROWTH_MEDIUM_FAST ; growth rate
 	dn EGG_GROUND, EGG_GROUND ; egg groups

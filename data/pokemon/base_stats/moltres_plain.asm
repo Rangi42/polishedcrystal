@@ -6,7 +6,7 @@
 	db 217 ; base exp
 	db ALWAYS_ITEM_2, LUM_BERRY ; held items
 	dn GENDER_UNKNOWN, HATCH_UNKNOWN ; gender ratio, step cycles to hatch
-	INCBIN "gfx/pokemon/moltres_plain/front.dimensions"
+
 if DEF(FAITHFUL)
 	abilities_for MOLTRES, PRESSURE, PRESSURE, FLAME_BODY
 else

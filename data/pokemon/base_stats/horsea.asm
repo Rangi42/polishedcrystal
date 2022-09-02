@@ -6,7 +6,7 @@
 	db 83 ; base exp
 	db NO_ITEM, DRAGON_SCALE ; held items
 	dn GENDER_F50, HATCH_MEDIUM_FAST ; gender ratio, step cycles to hatch
-	INCBIN "gfx/pokemon/horsea/front.dimensions"
+
 	abilities_for HORSEA, SWIFT_SWIM, SNIPER, DAMP
 	db GROWTH_MEDIUM_FAST ; growth rate
 	dn EGG_WATER_1, EGG_DRAGON ; egg groups

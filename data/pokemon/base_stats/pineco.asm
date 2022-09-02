@@ -6,7 +6,7 @@
 	db 60 ; base exp
 	db NO_ITEM, NO_ITEM ; held items
 	dn GENDER_F50, HATCH_MEDIUM_FAST ; gender ratio, step cycles to hatch
-	INCBIN "gfx/pokemon/pineco/front.dimensions"
+
 	abilities_for PINECO, STURDY, STURDY, OVERCOAT
 	db GROWTH_MEDIUM_FAST ; growth rate
 	dn EGG_BUG, EGG_BUG ; egg groups

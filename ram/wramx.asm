@@ -660,7 +660,6 @@ wBaseExp:: db
 wBaseItems:: dw
 wBaseGender::
 wBaseEggSteps:: db
-wBasePicSize:: db
 wBaseAbility1:: db
 wBaseAbility2:: db
 wBaseHiddenAbility:: db
@@ -670,6 +669,8 @@ wBaseEVYield1:: db
 wBaseEVYield2:: db
 wBaseTMHM:: flag_array NUM_TM_HM_TUTOR
 wCurBaseDataEnd::
+
+	ds 1 ; unused
 
 wCurDamage:: dw
 

@@ -15,7 +15,7 @@ else
 endc
 	db NO_ITEM, NO_ITEM ; held items
 	dn GENDER_F50, HATCH_FASTER ; gender ratio, step cycles to hatch
-	INCBIN "gfx/pokemon/azumarill/front.dimensions"
+
 	abilities_for AZUMARILL, THICK_FAT, HUGE_POWER, SAP_SIPPER
 	db GROWTH_FAST ; growth rate
 	dn EGG_WATER_1, EGG_FAIRY ; egg groups

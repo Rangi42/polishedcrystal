@@ -6,7 +6,7 @@
 	db 135 ; base exp
 	db NO_ITEM, PROTECTOR ; held items
 	dn GENDER_F50, HATCH_MEDIUM_FAST ; gender ratio, step cycles to hatch
-	INCBIN "gfx/pokemon/rhyhorn/front.dimensions"
+
 if DEF(FAITHFUL)
 	abilities_for RHYHORN, LIGHTNING_ROD, ROCK_HEAD, RECKLESS
 else

@@ -6,7 +6,7 @@
 	db 62 ; base exp
 	db NO_ITEM, NO_ITEM ; held items
 	dn GENDER_F50, HATCH_MEDIUM_FAST ; gender ratio, step cycles to hatch
-	INCBIN "gfx/pokemon/ekans/front.dimensions"
+
 	abilities_for EKANS, INTIMIDATE, SHED_SKIN, UNNERVE
 	db GROWTH_MEDIUM_FAST ; growth rate
 	dn EGG_GROUND, EGG_DRAGON ; egg groups

@@ -6,7 +6,7 @@
 	db 63 ; base exp
 	db ALWAYS_ITEM_2, ASPEAR_BERRY ; held items
 	dn GENDER_F75, HATCH_MEDIUM_FAST ; gender ratio, step cycles to hatch
-	INCBIN "gfx/pokemon/vulpix_plain/front.dimensions"
+
 if DEF(FAITHFUL)
 	abilities_for VULPIX, FLASH_FIRE, FLASH_FIRE, DROUGHT
 else

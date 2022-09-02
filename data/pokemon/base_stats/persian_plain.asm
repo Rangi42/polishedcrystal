@@ -6,7 +6,7 @@
 	db 148 ; base exp
 	db NO_ITEM, QUICK_CLAW ; held items
 	dn GENDER_F50, HATCH_MEDIUM_FAST ; gender ratio, step cycles to hatch
-	INCBIN "gfx/pokemon/persian_plain/front.dimensions"
+
 	abilities_for PERSIAN, LIMBER, TECHNICIAN, UNNERVE
 	db GROWTH_MEDIUM_FAST ; growth rate
 	dn EGG_GROUND, EGG_GROUND ; egg groups

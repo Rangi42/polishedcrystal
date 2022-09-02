@@ -6,7 +6,7 @@
 	db 216 ; base exp
 	db ALWAYS_ITEM_2, LUM_BERRY ; held items
 	dn GENDER_UNKNOWN, HATCH_UNKNOWN ; gender ratio, step cycles to hatch
-	INCBIN "gfx/pokemon/zapdos_plain/front.dimensions"
+
 if DEF(FAITHFUL)
 	abilities_for ZAPDOS, PRESSURE, PRESSURE, STATIC
 else

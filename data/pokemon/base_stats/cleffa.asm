@@ -6,7 +6,7 @@
 	db 37 ; base exp
 	db NO_ITEM, MOON_STONE ; held items
 	dn GENDER_F75, HATCH_FASTER ; gender ratio, step cycles to hatch
-	INCBIN "gfx/pokemon/cleffa/front.dimensions"
+
 	abilities_for CLEFFA, CUTE_CHARM, MAGIC_GUARD, CUTE_CHARM
 	db GROWTH_FAST ; growth rate
 	dn EGG_NONE, EGG_NONE ; egg groups

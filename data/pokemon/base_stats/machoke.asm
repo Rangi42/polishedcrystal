@@ -6,7 +6,7 @@
 	db 146 ; base exp
 	db NO_ITEM, FOCUS_BAND ; held items
 	dn GENDER_F25, HATCH_MEDIUM_FAST ; gender ratio, step cycles to hatch
-	INCBIN "gfx/pokemon/machoke/front.dimensions"
+
 	abilities_for MACHOKE, GUTS, NO_GUARD, STEADFAST
 	db GROWTH_MEDIUM_SLOW ; growth rate
 	dn EGG_HUMANSHAPE, EGG_HUMANSHAPE ; egg groups

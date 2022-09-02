@@ -6,7 +6,7 @@
 	db 94 ; base exp
 	db NO_ITEM, NO_ITEM ; held items
 	dn GENDER_F50, HATCH_MEDIUM_FAST ; gender ratio, step cycles to hatch
-	INCBIN "gfx/pokemon/aipom/front.dimensions"
+
 	abilities_for AIPOM, RUN_AWAY, PICKUP, SKILL_LINK
 	db GROWTH_FAST ; growth rate
 	dn EGG_GROUND, EGG_GROUND ; egg groups

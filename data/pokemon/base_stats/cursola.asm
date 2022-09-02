@@ -6,7 +6,7 @@
 	db 196 ; base exp
 	db NO_ITEM, NO_ITEM ; held items
 	dn GENDER_F75, HATCH_MEDIUM_FAST ; gender ratio, step cycles to hatch
-	INCBIN "gfx/pokemon/cursola/front.dimensions"
+
 	abilities_for CURSOLA, WEAK_ARMOR, WEAK_ARMOR, PERISH_BODY
 	db GROWTH_FAST ; growth rate
 	dn EGG_WATER_1, EGG_WATER_3 ; egg groups

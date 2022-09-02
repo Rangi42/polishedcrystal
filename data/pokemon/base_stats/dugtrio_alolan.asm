@@ -6,7 +6,7 @@
 	db 153 ; base exp
 	db NO_ITEM, SOFT_SAND ; held items
 	dn GENDER_F50, HATCH_MEDIUM_FAST ; gender ratio, step cycles to hatch
-	INCBIN "gfx/pokemon/dugtrio_alolan/front.dimensions"
+
 	abilities_for DUGTRIO_ALOLAN, SAND_VEIL, TANGLING_HAIR, SAND_FORCE
 	db GROWTH_MEDIUM_FAST ; growth rate
 	dn EGG_GROUND, EGG_GROUND ; egg groups

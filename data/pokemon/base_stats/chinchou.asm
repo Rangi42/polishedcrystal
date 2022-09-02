@@ -6,7 +6,7 @@
 	db 90 ; base exp
 	db NO_ITEM, BRIGHTPOWDER ; held items
 	dn GENDER_F50, HATCH_MEDIUM_FAST ; gender ratio, step cycles to hatch
-	INCBIN "gfx/pokemon/chinchou/front.dimensions"
+
 	abilities_for CHINCHOU, VOLT_ABSORB, ILLUMINATE, WATER_ABSORB
 	db GROWTH_SLOW ; growth rate
 	dn EGG_WATER_2, EGG_WATER_2 ; egg groups

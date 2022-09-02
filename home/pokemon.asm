@@ -167,6 +167,31 @@ _GetBaseData::
 	call FarCopyBytes
 	jmp PopBCDEHL
 
+GetPicSize::
+	push hl
+	push de
+	push bc
+	ld a, [wCurSpecies]
+	ld c, a
+	ld a, [wCurForm]
+	ld b, a
+	call GetCosmeticSpeciesAndFormIndex
+	srl b
+	rr c
+	push af
+	ld hl, PokemonPicSizes
+	add hl, bc
+	ld a, BANK(PokemonPicSizes)
+	call GetFarByte
+	ld b, a
+	pop af
+	jr c, .skip_swap
+	swap b ; use high nybble if index is even
+.skip_swap
+	ld a, b
+	and $f
+	jmp PopBCDEHL
+
 GetNature::
 ; 'b' contains the target Nature to check
 ; returns nature in b

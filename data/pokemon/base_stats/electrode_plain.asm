@@ -6,7 +6,7 @@
 	db 150 ; base exp
 	db NO_ITEM, CELL_BATTERY ; held items
 	dn GENDER_UNKNOWN, HATCH_MEDIUM_FAST ; gender ratio, step cycles to hatch
-	INCBIN "gfx/pokemon/electrode_plain/front.dimensions"
+
 	abilities_for ELECTRODE, SOUNDPROOF, STATIC, AFTERMATH
 	db GROWTH_MEDIUM_FAST ; growth rate
 	dn EGG_MINERAL, EGG_MINERAL ; egg groups

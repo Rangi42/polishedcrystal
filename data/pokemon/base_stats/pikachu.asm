@@ -15,7 +15,7 @@ else
 endc
 	db ORAN_BERRY, LIGHT_BALL ; held items
 	dn GENDER_F50, HATCH_FASTER ; gender ratio, step cycles to hatch
-	INCBIN "gfx/pokemon/pikachu_plain/front.dimensions"
+
 	abilities_for PIKACHU, STATIC, STATIC, LIGHTNING_ROD
 	db GROWTH_MEDIUM_FAST ; growth rate
 	dn EGG_GROUND, EGG_FAIRY ; egg groups

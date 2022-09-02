@@ -11,7 +11,7 @@ endc
 	db 117 ; base exp
 	db ASPEAR_BERRY, MAGMARIZER ; held items
 	dn GENDER_F25, HATCH_MEDIUM_SLOW ; gender ratio, step cycles to hatch
-	INCBIN "gfx/pokemon/magby/front.dimensions"
+
 	abilities_for MAGBY, FLAME_BODY, FLAME_BODY, VITAL_SPIRIT
 	db GROWTH_MEDIUM_FAST ; growth rate
 	dn EGG_NONE, EGG_NONE ; egg groups

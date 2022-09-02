@@ -15,7 +15,7 @@ endc
 	db 185 ; base exp
 	db NO_ITEM, KINGS_ROCK ; held items
 	dn GENDER_F50, HATCH_MEDIUM_FAST ; gender ratio, step cycles to hatch
-	INCBIN "gfx/pokemon/politoed/front.dimensions"
+
 	abilities_for POLITOED, WATER_ABSORB, DAMP, DRIZZLE
 	db GROWTH_MEDIUM_SLOW ; growth rate
 	dn EGG_WATER_1, EGG_WATER_1 ; egg groups

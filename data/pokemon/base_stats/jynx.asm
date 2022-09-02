@@ -11,7 +11,7 @@ endc
 	db 137 ; base exp
 	db RAWST_BERRY, RAWST_BERRY ; held items
 	dn GENDER_F100, HATCH_MEDIUM_SLOW ; gender ratio, step cycles to hatch
-	INCBIN "gfx/pokemon/jynx/front.dimensions"
+
 if DEF(FAITHFUL)
 	abilities_for JYNX, OBLIVIOUS, FOREWARN, DRY_SKIN
 else

@@ -6,7 +6,7 @@
 	db 132 ; base exp
 	db GRIP_CLAW, QUICK_CLAW ; held items
 	dn GENDER_F50, HATCH_MEDIUM_FAST ; gender ratio, step cycles to hatch
-	INCBIN "gfx/pokemon/sneasel_hisuian/front.dimensions"
+
 	abilities_for SNEASEL_HISUIAN, INNER_FOCUS, KEEN_EYE, POISON_TOUCH
 	db GROWTH_MEDIUM_SLOW ; growth rate
 	dn EGG_GROUND, EGG_GROUND ; egg groups

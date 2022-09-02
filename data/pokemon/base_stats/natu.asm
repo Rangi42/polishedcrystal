@@ -6,7 +6,7 @@
 	db 73 ; base exp
 	db NO_ITEM, NO_ITEM ; held items
 	dn GENDER_F50, HATCH_MEDIUM_FAST ; gender ratio, step cycles to hatch
-	INCBIN "gfx/pokemon/natu/front.dimensions"
+
 	abilities_for NATU, SYNCHRONIZE, EARLY_BIRD, MAGIC_BOUNCE
 	db GROWTH_MEDIUM_FAST ; growth rate
 	dn EGG_FLYING, EGG_FLYING ; egg groups

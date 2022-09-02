@@ -10,7 +10,7 @@ endc
 	db 198 ; base exp
 	db NO_ITEM, WIDE_LENS ; held items
 	dn GENDER_F50, HATCH_MEDIUM_FAST ; gender ratio, step cycles to hatch
-	INCBIN "gfx/pokemon/yanmega/front.dimensions"
+
 if DEF(FAITHFUL)
 	abilities_for YANMEGA, SPEED_BOOST, TINTED_LENS, FRISK
 else

@@ -6,7 +6,7 @@
 	db 42 ; base exp
 	db ORAN_BERRY, LIGHT_BALL ; held items
 	dn GENDER_F50, HATCH_FASTER ; gender ratio, step cycles to hatch
-	INCBIN "gfx/pokemon/pichu_plain/front.dimensions"
+
 	abilities_for PICHU, STATIC, STATIC, LIGHTNING_ROD
 	db GROWTH_MEDIUM_FAST ; growth rate
 	dn EGG_NONE, EGG_NONE ; egg groups

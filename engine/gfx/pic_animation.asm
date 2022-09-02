@@ -796,11 +796,14 @@ PokeAnim_GetFrontpicDims:
 	push af
 	ld a, $1
 	ldh [rSVBK], a
+
+	; This is no longer needed for the pic size, but do it just
+	; in case subsequent code expects base data available
 	ld a, [wCurPartySpecies]
 	ld [wCurSpecies], a
 	call GetBaseData ; [wCurForm] is already set
-	ld a, [wBasePicSize]
-	and $f
+
+	call GetPicSize
 	ld c, a
 	pop af
 	ldh [rSVBK], a

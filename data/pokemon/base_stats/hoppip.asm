@@ -6,7 +6,7 @@
 	db 74 ; base exp
 	db NO_ITEM, NO_ITEM ; held items
 	dn GENDER_F50, HATCH_MEDIUM_FAST ; gender ratio, step cycles to hatch
-	INCBIN "gfx/pokemon/hoppip/front.dimensions"
+
 	abilities_for HOPPIP, CHLOROPHYLL, LEAF_GUARD, INFILTRATOR
 	db GROWTH_MEDIUM_SLOW ; growth rate
 	dn EGG_FAIRY, EGG_PLANT ; egg groups

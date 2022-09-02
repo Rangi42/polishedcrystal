@@ -10,7 +10,7 @@ endc
 	db 174 ; base exp
 	db NO_ITEM, NO_ITEM ; held items
 	dn GENDER_F50, HATCH_MEDIUM_FAST ; gender ratio, step cycles to hatch
-	INCBIN "gfx/pokemon/golduck/front.dimensions"
+
 	abilities_for GOLDUCK, DAMP, CLOUD_NINE, SWIFT_SWIM
 	db GROWTH_MEDIUM_FAST ; growth rate
 	dn EGG_WATER_1, EGG_GROUND ; egg groups

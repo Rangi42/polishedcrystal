@@ -6,7 +6,7 @@
 	db 185 ; base exp
 	db NO_ITEM, DUBIOUS_DISC ; held items
 	dn GENDER_UNKNOWN, HATCH_MEDIUM_FAST ; gender ratio, step cycles to hatch
-	INCBIN "gfx/pokemon/porygon_z/front.dimensions"
+
 	abilities_for PORYGON_Z, ADAPTABILITY, DOWNLOAD, ANALYTIC
 	db GROWTH_MEDIUM_FAST ; growth rate
 	dn EGG_MINERAL, EGG_MINERAL ; egg groups
