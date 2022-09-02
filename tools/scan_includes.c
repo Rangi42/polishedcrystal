@@ -47,36 +47,33 @@ void scan_file(const char *filename, bool strict) {
 			ptr = strchr(ptr, '\n');
 			if (!ptr) {
 				fprintf(stderr, "%s: no newline at end of file\n", filename);
-				break;
 			}
 			break;
 		case '"':
 			ptr++;
 			ptr = strchr(ptr, '"');
-			if (!ptr) {
+			if (ptr) {
+				ptr++;
+			} else {
 				fprintf(stderr, "%s: unterminated string\n", filename);
-				break;
 			}
-			ptr++;
 			break;
 		case 'I':
 		case 'i':
-			is_incbin = !strncmp(ptr, "INCBIN", 6) || !strncmp(ptr, "incbin", 6)
-				|| !strncmp(ptr, "INCSIZE", 7) || !strncmp(ptr, "incsize", 7);
+			is_incbin = !strncmp(ptr, "INCBIN", 6) || !strncmp(ptr, "incbin", 6);
 			is_include = !strncmp(ptr, "INCLUDE", 7) || !strncmp(ptr, "include", 7);
 			if (is_incbin || is_include) {
-				char *start = strchr(ptr, '"');
-				if (!start || strchr(ptr, '\n') < start) {
-					break;
-				}
-				ptr = start + 1;
-				char *include_path = ptr;
-				size_t length = strcspn(ptr, "\"");
-				ptr += length + 1;
-				include_path[length] = '\0';
-				printf("%s ", include_path);
-				if (is_include) {
-					scan_file(include_path, strict);
+				ptr = strchr(ptr, '"');
+				if (ptr) {
+					ptr++;
+					char *include_path = ptr;
+					size_t length = strcspn(ptr, "\"");
+					ptr += length + 1;
+					include_path[length] = '\0';
+					printf("%s ", include_path);
+					if (is_include) {
+						scan_file(include_path, strict);
+					}
 				}
 			}
 			break;
