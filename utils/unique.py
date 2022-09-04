@@ -26,8 +26,7 @@ def rows_to_tiles(rows, width, height):
 
 def tiles_to_rows(tiles, width, height):
 	assert width % 8 == 0 and height % 8 == 0
-	width //= 8
-	height //= 8
+	width, height = width // 8, height // 8
 	tiles = list(tiles)
 	assert len(tiles) == width * height
 	tile_rows = (tiles[y:y+width] for y in range(0, width * height, width))
@@ -41,7 +40,7 @@ def tile_variants(tile, flip):
 		yield tuple(row[::-1] for row in tile)
 		yield tuple(row[::-1] for row in tile[::-1])
 
-def deduplicated_tiles(tiles, flip, cross):
+def unique_tiles(tiles, flip, cross):
 	if cross:
 		blank = [[(0, 0, 0)] * 8 for _ in range(8)]
 		for y in range(8):
@@ -51,7 +50,7 @@ def deduplicated_tiles(tiles, flip, cross):
 		blank = tuple(tuple([(31, 31, 31)] * 8) for _ in range(8))
 	seen = set()
 	for tile in tiles:
-		if any(t in seen for t in tile_variants(tile, flip)):
+		if any(variant in seen for variant in tile_variants(tile, flip)):
 			yield blank
 		else:
 			yield tile
@@ -64,7 +63,7 @@ def erase_duplicates(filename, flip, cross):
 	if width % 8 or height % 8:
 		return False
 	tiles = rows_to_tiles(rows, width, height)
-	tiles = deduplicated_tiles(tiles, flip, cross)
+	tiles = unique_tiles(tiles, flip, cross)
 	rows = tiles_to_rows(tiles, width, height)
 	rows = list(rows)
 	colors = {c for row in rows for c in row}
