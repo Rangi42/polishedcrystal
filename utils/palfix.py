@@ -32,6 +32,10 @@ def luminance(c):
 def rgb5_pixels(row):
 	yield from (rgb8_to_rgb5(row[x:x+3]) for x in range(0, len(row), 4))
 
+def is_grayscale(palette):
+	return (palette == ((31, 31, 31), (21, 21, 21), (10, 10, 10), (0, 0, 0)) or
+		palette == ((31, 31, 31), (20, 20, 20), (10, 10, 10), (0, 0, 0)))
+
 def fix_pal(filename):
 	with open(filename, 'rb') as file:
 		width, height, rows = png.Reader(file).asRGBA8()[:3]
@@ -48,8 +52,7 @@ def fix_pal(filename):
 	palette = tuple(sorted(colors | b_and_w, key=luminance, reverse=True))
 	assert len(palette) == 4
 	rows = [list(map(palette.index, rgb5_pixels(row))) for row in rows]
-	if (palette == ((31, 31, 31), (21, 21, 21), (10, 10, 10), (0, 0, 0)) or
-		palette == ((31, 31, 31), (20, 20, 20), (10, 10, 10), (0, 0, 0))):
+	if is_grayscale(palette):
 		rows = [[3 - c for c in row] for row in rows]
 		writer = png.Writer(width, height, greyscale=True, bitdepth=2, compression=9)
 	else:

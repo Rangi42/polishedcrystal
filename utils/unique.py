@@ -56,6 +56,10 @@ def unique_tiles(tiles, flip, cross):
 			yield tile
 			seen.add(tile)
 
+def is_grayscale(colors):
+	return (colors == {(0, 0, 0), (10, 10, 10), (21, 21, 21), (31, 31, 31)} or
+		colors == {(0, 0, 0), (10, 10, 10), (20, 20, 20), (31, 31, 31)})
+
 def erase_duplicates(filename, flip, cross):
 	with open(filename, 'rb') as file:
 		width, height, rows = png.Reader(file).asRGBA8()[:3]
@@ -66,9 +70,7 @@ def erase_duplicates(filename, flip, cross):
 	tiles = unique_tiles(tiles, flip, cross)
 	rows = tiles_to_rows(tiles, width, height)
 	rows = list(rows)
-	colors = {c for row in rows for c in row}
-	if (colors == {(0, 0, 0), (10, 10, 10), (21, 21, 21), (31, 31, 31)} or
-		colors == {(0, 0, 0), (10, 10, 10), (20, 20, 20), (31, 31, 31)}):
+	if is_grayscale({c for row in rows for c in row}):
 		rows = [[pixel[0] // 10 for pixel in row] for row in rows]
 		writer = png.Writer(width, height, greyscale=True, bitdepth=2, compression=9)
 	else:
