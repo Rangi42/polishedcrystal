@@ -21,10 +21,10 @@ Q :=
 
 .SECONDEXPANSION:
 
-RGBASM_FLAGS     = -E -Weverything -Wnumeric-string=2 -Wtruncation=1
-RGBASM_VC_FLAGS  =
-RGBLINK_FLAGS    = -n $(ROM_NAME).sym    -m $(ROM_NAME).map    -p $(FILLER)
-RGBLINK_VC_FLAGS = -n $(ROM_NAME)_vc.sym -m $(ROM_NAME)_vc.map -p $(FILLER)
+RGBASM_FLAGS     = -EhL -Q8 -Weverything -Wnumeric-string=2 -Wtruncation=1
+RGBASM_VC_FLAGS  = $(RGBASM_FLAGS) -DVIRTUAL_CONSOLE
+RGBLINK_FLAGS    = -M -n $(ROM_NAME).sym    -m $(ROM_NAME).map    -p $(FILLER)
+RGBLINK_VC_FLAGS = -M -n $(ROM_NAME)_vc.sym -m $(ROM_NAME)_vc.map -p $(FILLER)
 RGBFIX_FLAGS     = -csjv -t $(TITLE) -i $(MCODE) -n $(ROMVERSION) -p $(FILLER) -k 01 -l 0x33 -m 0x10 -r 3
 
 ifeq ($(filter faithful,$(MAKECMDGOALS)),faithful)
@@ -61,9 +61,6 @@ endif
 ifeq ($(filter huffman,$(MAKECMDGOALS)),huffman)
 Q := @
 RGBASM_FLAGS += -DHUFFMAN
-endif
-ifeq ($(filter vc,$(MAKECMDGOALS)),vc)
-RGBASM_VC_FLAGS += $(RGBASM_FLAGS) -DVIRTUAL_CONSOLE
 endif
 
 rom_obj := \
@@ -167,9 +164,9 @@ $(ROM_NAME)_vc.gbc: $(crystal_vc_obj) layout.link
 	$Qcd bsp; ../tools/bspcomp patch.txt ../$@; cd ..
 
 
-gfx/battle/lyra_back.2bpp: rgbgfx += -h
-gfx/battle/substitute-back.2bpp: rgbgfx += -h
-gfx/battle/substitute-front.2bpp: rgbgfx += -h
+gfx/battle/lyra_back.2bpp: rgbgfx += -Z
+gfx/battle/substitute-back.2bpp: rgbgfx += -Z
+gfx/battle/substitute-front.2bpp: rgbgfx += -Z
 
 gfx/battle_anims/angels.2bpp: tools/gfx += --trim-whitespace
 gfx/battle_anims/beam.2bpp: tools/gfx += --remove-xflip --remove-yflip --remove-whitespace
@@ -203,31 +200,31 @@ gfx/mail/surf_mail_border.1bpp: tools/gfx += --remove-whitespace
 gfx/music_player/music_player.2bpp: tools/gfx += --trim-whitespace
 gfx/music_player/note_lines.2bpp: tools/gfx += --interleave --png=$<
 
-gfx/new_game/shrink1.2bpp: rgbgfx += -h
-gfx/new_game/shrink2.2bpp: rgbgfx += -h
+gfx/new_game/shrink1.2bpp: rgbgfx += -Z
+gfx/new_game/shrink2.2bpp: rgbgfx += -Z
 
 gfx/overworld/overworld.2bpp: gfx/overworld/puddle_splash.2bpp gfx/overworld/cut_grass.2bpp gfx/overworld/cut_tree.2bpp gfx/overworld/heal_machine.2bpp gfx/overworld/fishing_rod.2bpp gfx/overworld/shadow.2bpp gfx/overworld/shaking_grass.2bpp gfx/overworld/boulder_dust.2bpp ; $Qcat $^ > $@
 
 gfx/pack/pack_left.2bpp: tools/gfx += --trim-whitespace
 gfx/pack/pack_top_left.2bpp: gfx/pack/pack_top.2bpp gfx/pack/pack_left.2bpp ; $Qcat $^ > $@
 
-gfx/paintings/%.2bpp: rgbgfx += -h
+gfx/paintings/%.2bpp: rgbgfx += -Z
 
-gfx/player/chris_back.2bpp: rgbgfx += -h
-gfx/player/kris_back.2bpp: rgbgfx += -h
+gfx/player/chris_back.2bpp: rgbgfx += -Z
+gfx/player/kris_back.2bpp: rgbgfx += -Z
 
 gfx/pokedex/%.bin: gfx/pokedex/%.tilemap gfx/pokedex/%.attrmap ; $Qcat $^ > $@
 gfx/pokedex/pokedex.2bpp: gfx/pokedex/pokedex0.2bpp gfx/pokedex/pokedex1.2bpp gfx/pokedex/area.2bpp ; $Qcat $^ > $@
 gfx/pokedex/pokedex0.2bpp: tools/gfx += --trim-whitespace
 gfx/pokedex/pokedex1.2bpp: tools/gfx += --trim-whitespace
 gfx/pokedex/area.2bpp: tools/gfx += --trim-whitespace
-gfx/pokedex/question_mark.2bpp: rgbgfx += -h
+gfx/pokedex/question_mark.2bpp: rgbgfx += -Z
 gfx/pokedex/slowpoke.2bpp: tools/gfx += --trim-whitespace
 
 gfx/pokegear/pokegear.2bpp: tools/gfx += --trim-whitespace
 gfx/pokegear/pokegear_sprites.2bpp: tools/gfx += --trim-whitespace
 
-gfx/pokemon/%/back.2bpp: rgbgfx += -h
+gfx/pokemon/%/back.2bpp: rgbgfx += -Z
 
 gfx/pc/obj.2bpp: gfx/pc/modes.2bpp gfx/pc/bags.2bpp ; $Qcat $^ > $@
 
@@ -249,10 +246,10 @@ gfx/trade/ball_poof_cable.2bpp: gfx/trade/ball.2bpp gfx/trade/poof.2bpp gfx/trad
 gfx/trade/game_boy_cable.2bpp: gfx/trade/game_boy.2bpp gfx/trade/link_cable.2bpp ; $Qcat $^ > $@
 gfx/trade/trade_screen.2bpp: gfx/trade/border.2bpp gfx/trade/textbox.2bpp ; $Qcat $^ > $@
 
-gfx/trainer_card/chris_card.2bpp: rgbgfx += -h
-gfx/trainer_card/kris_card.2bpp: rgbgfx += -h
+gfx/trainer_card/chris_card.2bpp: rgbgfx += -Z
+gfx/trainer_card/kris_card.2bpp: rgbgfx += -Z
 
-gfx/trainers/%.2bpp: rgbgfx += -h
+gfx/trainers/%.2bpp: rgbgfx += -Z
 
 gfx/type_chart/bg.2bpp: tools/gfx += --remove-duplicates --remove-xflip --remove-yflip
 gfx/type_chart/bg0.2bpp: gfx/type_chart/bg.2bpp.vram1p gfx/type_chart/bg.2bpp.vram0p ; $Qcat $^ > $@

@@ -1982,7 +1982,7 @@ BattleAnimFunction_PowerUp:
 	ld a, [hli]
 	ld d, a
 	ld e, [hl]
-	ld hl, -(4.5 >> 8)
+	ld hl, -4.5
 	add hl, de
 	jmp nc, DeinitBattleAnimation
 	ld e, l
@@ -4102,7 +4102,7 @@ BattleAnimFunction_RadialMoveOut:
 	ld a, [hli]
 	ld e, [hl]
 	ld d, a
-	ld hl, 6.0 >> 8 ; speed
+	ld hl, 6.0 ; speed
 	add hl, de
 	ld a, h
 	ld e, l
@@ -4132,7 +4132,7 @@ BattleAnimFunction_RadialMoveOut_Slow:
 	ld a, [hli]
 	ld e, [hl]
 	ld d, a
-	ld hl, 1.5 >> 8 ; speed
+	ld hl, 1.5 ; speed
 	add hl, de
 	ld a, h
 	ld e, l

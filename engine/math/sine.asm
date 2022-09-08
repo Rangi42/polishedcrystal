@@ -45,9 +45,7 @@ _Sine::
 	ret
 
 .sinewave
-; $20 samples of sin(x) from x=0 to x<32768 (pi radians)
-DEF x = 0
-rept $20
-	dw (sin(x) + (sin(x) & $ff)) >> 8 ; round up
-DEF x += DIV(32768, $20) ; a circle has 65536 "degrees"
+; sample sin(x) from x=0 to x=pi radians
+for x, 32
+	dw sin(x * div(0.5, 32))
 endr

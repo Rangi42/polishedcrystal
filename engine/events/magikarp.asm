@@ -106,7 +106,10 @@ PrintMagikarpLength:
 	ld b, a
 	ld a, [wMagikarpLengthMmLo]
 	ld c, a
-	ld de, div(1.0, 25.4)
+pusho
+opt Q16
+	ld de, div(1.0, 25.4) ; 1 in / 25.4 mm = 0.03937 in/mm
+popo
 	xor a
 	ldh [hTmpd], a
 	ldh [hTmpe], a
