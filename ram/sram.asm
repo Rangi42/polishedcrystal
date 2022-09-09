@@ -126,7 +126,7 @@ sBT_OTMonParty2:: ds BATTLETOWER_PARTYDATA_SIZE ; trainer before prev
 sBT_OTMonParty3:: ds BATTLETOWER_PARTYDATA_SIZE ; previous trainer
 
 
-SECTION "Active Box", SRAM
+SECTION "Box metadata", SRAM
 
 for n, 1, NUM_BOXES + 1
 sNewBox{d:n}:: newbox sNewBox{d:n}

@@ -288,7 +288,7 @@ SRAM $0
 SRAM $1
 	"Save"
 	"SRAM Hall of Fame"
-	"Active Box"
+	"Box metadata"
 	"PokeDB bank 1C"
 	"PokeDB bank 2C"
 
