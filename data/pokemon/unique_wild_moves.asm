@@ -6,11 +6,12 @@ ENDM
 
 ; TODO: finish unique moves
 UniqueWildMoves:
-	; event mons
+	; event mons (100% chance, see engine/battle/unique_wild_moves.asm)
 	unique_moves MAHOGANY_TOWN,    VOLTORB,    EXPLOSION    ; TeamRocketBaseB1F
 	unique_moves MAHOGANY_TOWN,    KOFFING,    EXPLOSION    ; TeamRocketBaseB1F
 	unique_moves MAHOGANY_TOWN,    GEODUDE,    EXPLOSION    ; TeamRocketBaseB1F
 	unique_moves UNION_CAVE,       LAPRAS,     SHELL_SMASH  ; UnionCaveB2F, Fridays
+	unique_moves YELLOW_FOREST,    PIKACHU,    FLY          ; replaced with Surf if Surfing
 	; wild mons
 	unique_moves CHERRYGROVE_BAY,  CORSOLA,    SUCKER_PUNCH ; HGSS tutor move
 	unique_moves SPROUT_TOWER,     BELLSPROUT, GROWTH       ; knows Growth early
@@ -22,15 +23,14 @@ UniqueWildMoves:
 	unique_moves ROUTE_34_COAST,   STARYU,     DREAM_EATER  ; new move
 	unique_moves STORMY_BEACH,     VENOMOTH,   0
 	unique_moves MURKY_SWAMP,      MISDREAVUS, SUCKER_PUNCH ; HGSS tutor move
+	unique_moves MAGNET_TUNNEL,    MAGNEMITE,  PSYBEAM      ; new move
+	unique_moves GOLDENROD_HARBOR, PSYDUCK,    ENCORE       ; Dream World move
 	unique_moves ROUTE_35_COAST,   0,          0
 	unique_moves NATIONAL_PARK,    0,          0
 	unique_moves TIN_TOWER,        0,          0
 	unique_moves BURNED_TOWER,     0,          0
-	unique_moves MAGNET_TUNNEL,    MAGNEMITE,  PSYBEAM      ; new move
-	unique_moves GOLDENROD_HARBOR, PSYDUCK,    ENCORE       ; Dream World move
 	unique_moves WHIRL_ISLANDS,    0,          0
 	unique_moves CLIFF_CAVE,       0,          0
-	unique_moves YELLOW_FOREST,    PIKACHU,    FLY          ; replaced with Surf if Surfing
 	unique_moves QUIET_CAVE,       MUNCHLAX,   GIGA_IMPACT  ; Snorlax move
 	unique_moves MT_MORTAR,        0,          0
 	unique_moves LAKE_OF_RAGE,     MAGIKARP,   HYDRO_PUMP   ; Pokéwalker move
