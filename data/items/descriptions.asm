@@ -289,6 +289,7 @@ KeyItemDescriptions:
 	dw ShinyCharmDesc
 	dw OvalCharmDesc
 	dw CatchCharmDesc
+	dw WingCaseDesc
 	assert_table_length NUM_KEY_ITEMS
 
 PokeBallDesc:
@@ -1657,4 +1658,9 @@ ApricornBoxDesc:
 TypeChartDesc:
 	text "Summarizes all"
 	next "type advantages."
+	done
+
+WingCaseDesc:
+	text "Holds up to 999 of"
+	next "each Wing."
 	done

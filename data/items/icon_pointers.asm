@@ -291,4 +291,5 @@ KeyItemIconPointers:
 	dba ShinyCharmIcon
 	dba OvalCharmIcon
 	dba CatchCharmIcon
+	dba WingCaseIcon
 	assert_table_length NUM_KEY_ITEMS + 1

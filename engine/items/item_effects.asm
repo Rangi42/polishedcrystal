@@ -313,6 +313,7 @@ KeyItemEffects:
 	dw IsntTheTimeMessage ; SHINY_CHARM
 	dw IsntTheTimeMessage ; OVAL_CHARM
 	dw IsntTheTimeMessage ; CATCH_CHARM
+	dw WingCase           ; WING_CHARM
 	assert_table_length NUM_KEY_ITEMS
 
 PokeBallEffect:
@@ -1815,6 +1816,9 @@ CoinCase:
 .coincasetext
 	text_far _CoinCaseCountText
 	text_end
+
+WingCase:
+	; todo
 
 ApricornBox:
 	ld hl, .MenuDataHeader
