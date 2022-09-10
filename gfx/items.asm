@@ -782,6 +782,9 @@ OvalCharmIcon:: INCBIN "gfx/items/oval_charm.2bpp.lz"
 SECTION "CatchCharmIcon", ROMX
 CatchCharmIcon:: INCBIN "gfx/items/catch_charm.2bpp.lz"
 
+SECTION "WingCaseIcon", ROMX
+WingCaseIcon:: INCBIN "gfx/items/wing_case.2bpp.lz"
+
 SECTION "SilphScope2Icon", ROMX
 SilphScope2Icon:: INCBIN "gfx/items/silphscope2.2bpp.lz"
 

@@ -644,6 +644,7 @@ DEF NUM_APRICORNS EQU const_value - 1
 	const SHINY_CHARM  ; 1d
 	const OVAL_CHARM   ; 1e
 	const CATCH_CHARM  ; 1f
+	const WING_CASE    ; 20
 DEF NUM_KEY_ITEMS EQU const_value - 1
 
 ; Alphabetical order (see data/items/name_order.asm)
@@ -679,4 +680,5 @@ DEF NUM_KEY_ITEMS EQU const_value - 1
 	const NAM_SQUIRTBOTTLE
 	const NAM_SUPER_ROD
 	const NAM_TYPE_CHART
+	const NAM_WING_CASE
 	assert const_value - 1 == NUM_KEY_ITEMS

@@ -990,7 +990,7 @@ wTMsHMsEnd::
 wKeyItems:: ds NUM_KEY_ITEMS + 1
 wKeyItemsEnd::
 
-	ds 5 ; unused
+	ds 4 ; unused
 
 wNumItems:: db
 wItems:: ds MAX_ITEMS * 2 + 1
@@ -1168,7 +1168,9 @@ wCurBox:: db
 wPlayerCaught:: db
 wPlayerCaught2:: db
 
-	ds 93 ; unused
+	ds 81 ; unused
+
+wWingAmounts:: ds 6 * 2 ; 2 bytes per wing, 6 wing types
 
 wCelebiEvent:: db
 
