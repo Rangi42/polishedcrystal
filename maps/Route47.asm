@@ -433,7 +433,7 @@ Route47AdvancedTipsSignText:
 
 	para "may know a move"
 	line "unique to that"
-	line "area!"
+	cont "area!"
 
 	para "But these moves"
 	line "can't be remembered"

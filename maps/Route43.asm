@@ -661,7 +661,7 @@ Route43AdvancedTipsText:
 	line "items can pass"
 
 	para "down potential in"
-	cont "their one stat!"
+	line "their one stat!"
 
 	para "And an Ability"
 	line "Cap can increase"

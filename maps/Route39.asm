@@ -465,7 +465,7 @@ Route39AdvancedTips2Text:
 	cont "kely to encounter"
 
 	para "a wild #mon"
-	cont "holding an item!"
+	line "holding an item!"
 	done
 
 RuggedRoadAheadSignText:
