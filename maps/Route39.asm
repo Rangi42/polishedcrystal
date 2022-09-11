@@ -16,6 +16,8 @@ Route39_MapScriptHeader:
 	bg_event  9, 19, BGEVENT_JUMPTEXT, MoomooFarmSignText
 	bg_event 11,  7, BGEVENT_JUMPTEXT, RuggedRoadAheadSignText
 	bg_event 15, 21, BGEVENT_JUMPTEXT, Route39SignText
+	bg_event  8,  9, BGEVENT_JUMPTEXT, Route39AdvancedTips1Text
+	bg_event 10, 45, BGEVENT_JUMPTEXT, Route39AdvancedTips2Text
 	bg_event  5, 27, BGEVENT_ITEM + NUGGET, EVENT_ROUTE_39_HIDDEN_NUGGET
 
 	def_object_events
@@ -33,7 +35,7 @@ Route39_MapScriptHeader:
 	object_event  4, 44, SPRITE_BEAUTY, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_COMMAND, jumptextfaceplayer, Route39BeautyText, -1
 	object_event 15, 11, SPRITE_HIKER, SPRITEMOVEDATA_WALK_UP_DOWN, 2, 0, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, Route39HikerText, -1
 	tmhmball_event  1, 21, TM_BULLDOZE, EVENT_ROUTE_39_TM_BULLDOZE
-	smashrock_event  8,  9
+	smashrock_event 12, 10
 	smashrock_event 15,  8
 
 	object_const_def
@@ -437,6 +439,33 @@ Route39SignText:
 
 	para "Olivine City -"
 	line "Ecruteak City"
+	done
+
+Route39AdvancedTips1Text:
+	text "Advanced Tips!"
+
+	para "Sandstorms boost"
+	line "Special Defense of"
+	cont "Rock-type #mon!"
+
+	para "And, Hail boosts"
+	line "the Defense of"
+	cont "Ice-type #mon!"
+	done
+
+Route39AdvancedTips2Text:
+	text "Advanced Tips!"
+
+	para "A #mon with"
+	line "the Compound Eyes"
+	cont "ability, or one"
+
+	para "holding an Amulet"
+	line "Coin, is more li-"
+	cont "kely to encounter"
+
+	para "a wild #mon"
+	cont "holding an item!"
 	done
 
 RuggedRoadAheadSignText:

@@ -49,6 +49,7 @@ Route47_MapScriptHeader:
 	def_bg_events
 	bg_event  8, 23, BGEVENT_IFNOTSET, Route47SealedCaveSign
 	bg_event 36, 32, BGEVENT_JUMPTEXT, Route47QuietCaveSignText
+	bg_event 23,  4, BGEVENT_JUMPTEXT, Route47AdvancedTipsSignText
 	bg_event 34, 33, BGEVENT_ITEM + PEARL, EVENT_ROUTE_47_HIDDEN_PEARL
 	bg_event  5, 32, BGEVENT_ITEM + STARDUST, EVENT_ROUTE_47_HIDDEN_STARDUST
 
@@ -422,4 +423,21 @@ Route47QuietCaveSignText:
 
 	para "West to"
 	line "Quiet Cave"
+	done
+
+Route47AdvancedTipsSignText:
+	text "Advanced Tips!"
+
+	para "Some #mon found"
+	line "in certain areas"
+
+	para "may know a move"
+	line "unique to that"
+	line "area!"
+
+	para "But these moves"
+	line "can't be remembered"
+
+	para "or inherited via"
+	line "breeding!"
 	done

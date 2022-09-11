@@ -21,6 +21,8 @@ Route36_MapScriptHeader:
 	bg_event 49, 11, BGEVENT_JUMPTEXT, RuinsOfAlphNorthSignText
 	bg_event 59,  7, BGEVENT_JUMPTEXT, Route36SignText
 	bg_event 25,  7, BGEVENT_JUMPTEXT, Route36TrainerTips1Text
+	bg_event 53,  4, BGEVENT_JUMPTEXT, Route36AdvancedTips1Text
+	bg_event 17,  3, BGEVENT_JUMPTEXT, Route36AdvancedTips2Text
 
 	def_object_events
 	object_event 39,  9, SPRITE_WEIRD_TREE, SPRITEMOVEDATA_SUDOWOODO, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, SudowoodoScript, EVENT_ROUTE_36_SUDOWOODO
@@ -702,4 +704,30 @@ Route36TrainerTips2Text:
 
 	para "caves and other"
 	line "landmarks."
+	done
+
+Route36AdvancedTips1Text:
+	text "Advanced Tips!"
+
+	para "You can pick from"
+	line "twenty different"
+	cont "textbox frames and"
+
+	para "eight different"
+	line "text typefaces in"
+	cont "the Options!"
+	done
+
+Route36AdvancedTips2Text:
+	text "Advanced Tips!"
+
+	para "Your #mon will"
+	line "become happier if"
+	cont "you treat them to"
+
+	para "haircuts, bless-"
+	line "ings, massages, or"
+
+	para "having their photo"
+	line "taken!"
 	done

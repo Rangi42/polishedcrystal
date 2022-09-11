@@ -29,6 +29,7 @@ RuinsOfAlphOutside_MapScriptHeader:
 	bg_event 18, 14, BGEVENT_JUMPTEXT, RuinsOfAlphOutsideMysteryChamberSignText
 	bg_event 14, 22, BGEVENT_JUMPTEXT, RuinsOfAlphSignText
 	bg_event 20, 18, BGEVENT_JUMPTEXT, RuinsOfAlphResearchCenterSignText
+	bg_event  3,  9, BGEVENT_JUMPTEXT, RuinsOfAlphAdvancedTipsSignText
 	bg_event 10,  9, BGEVENT_IFNOTSET, MapRuinsofAlphOutsideSealedCaveSign
 	bg_event  4, 13, BGEVENT_ITEM + RARE_CANDY, EVENT_RUINS_OF_ALPH_OUTSIDE_HIDDEN_RARE_CANDY
 	bg_event 11, 35, BGEVENT_JUMPSTD, cavegrotto, HIDDENGROTTO_RUINS_OF_ALPH
@@ -278,6 +279,20 @@ RuinsOfAlphResearchCenterSignText:
 
 	para "The Authority On"
 	line "The Ruins of Alph"
+	done
+
+RuinsOfAlphAdvancedTipsSignText:
+	text "Advanced Tips!"
+
+	para "The #dex is a"
+	line "powerful tool!"
+
+	para "Its Area map shows"
+	line "a yellow icon if a"
+
+	para "#mon can be"
+	line "found right where"
+	cont "you are!"
 	done
 
 MapRuinsofAlphOutsideSealedCaveSign:

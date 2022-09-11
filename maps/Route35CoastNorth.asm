@@ -11,6 +11,7 @@ Route35CoastNorth_MapScriptHeader:
 
 	def_bg_events
 	bg_event  6, 21, BGEVENT_JUMPTEXT, Route35CoastNorthPokeathlonDomeSignText
+	bg_event  6, 12, BGEVENT_JUMPTEXT, Route35CoastNorthAdvancedTipsSignText
 	bg_event  3, 11, BGEVENT_ITEM + BIG_PEARL, EVENT_ROUTE_35_COAST_NORTH_HIDDEN_BIG_PEARL
 	bg_event  5, 23, BGEVENT_ITEM + SOFT_SAND, EVENT_ROUTE_35_COAST_NORTH_HIDDEN_SOFT_SAND
 
@@ -22,4 +23,14 @@ Route35CoastNorthPokeathlonDomeSignText:
 	text "The #athlon"
 	line "Project Has"
 	cont "Started!"
+	done
+
+Route35CoastNorthAdvancedTipsSignText:
+	text "Advanced Tips!"
+
+	para "You can cast a"
+	line "fishing line even"
+
+	para "from a Surfing"
+	line "#mon's back!"
 	done

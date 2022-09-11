@@ -14,6 +14,7 @@ Route30_MapScriptHeader:
 	bg_event 13, 29, BGEVENT_JUMPTEXT, MrPokemonsHouseDirectionsSignText
 	bg_event 15,  5, BGEVENT_JUMPTEXT, MrPokemonsHouseSignText
 	bg_event  3, 21, BGEVENT_JUMPTEXT, Route30TrainerTipsText
+	bg_event 11,  8, BGEVENT_JUMPTEXT, Route30AdvancedTipsText
 	bg_event 14,  9, BGEVENT_ITEM + POTION, EVENT_ROUTE_30_HIDDEN_POTION
 	bg_event  5, 39, BGEVENT_JUMPTEXT, BerryMastersHouseSignText
 
@@ -330,6 +331,21 @@ Route30TrainerTipsText:
 	para "# Balls are to"
 	line "be thrown only at"
 	cont "wild #mon!"
+	done
+
+Route30AdvancedTipsText:
+	text "Advanced Tips!"
+
+	para "During a battle,"
+	line "press Select to"
+	cont "switch #mon!"
+
+	para "Press Start to"
+	line "reuse an item!"
+
+	para "Or press B to"
+	line "run away or"
+	cont "forfeit!"
 	done
 
 YoungsterJoeyText_GiveHPUpAfterBattle:

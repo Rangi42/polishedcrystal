@@ -18,6 +18,7 @@ Route43_MapScriptHeader:
 	bg_event 13,  3, BGEVENT_JUMPTEXT, Route43Sign1Text
 	bg_event 11, 49, BGEVENT_JUMPTEXT, Route43Sign2Text
 	bg_event 16, 38, BGEVENT_JUMPTEXT, Route43TrainerTipsText
+	bg_event  7, 42, BGEVENT_JUMPTEXT, Route43AdvancedTipsText
 
 	def_object_events
 	object_event  1,  6, SPRITE_LADY, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, Route43SightseerfScript, -1
@@ -640,4 +641,32 @@ Route43TrainerTipsText:
 
 	para "weak against your"
 	line "#mon's type."
+	done
+
+Route43AdvancedTipsText:
+	text "Advanced Tips!"
+
+	para "A Pokemon can pass"
+	line "down its nature"
+	cont "via inheritance"
+
+	para "if it is holding"
+	line "an Everstone!"
+
+	para "A Destiny Knot can"
+	line "pass down all of"
+	cont "its potential!"
+
+	para "The six Power"
+	line "items can pass"
+
+	para "down potential in"
+	cont "their one stat!"
+
+	para "And an Ability"
+	line "Cap can increase"
+
+	para "the chances of"
+	line "offspring with a"
+	cont "hidden Ability!"
 	done
