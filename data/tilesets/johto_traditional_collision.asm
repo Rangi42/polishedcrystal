@@ -241,3 +241,5 @@
 	tilecoll FLOOR, HEADBUTT_TREE, WALL, WALL ; f0
 	tilecoll FLOOR, FLOOR, WALL, FLOOR ; f1
 	tilecoll FLOOR, FLOOR, WALL, FLOOR ; f2
+	tilecoll FLOOR, FLOOR, FLOOR, FLOOR ; f3
+	tilecoll FLOOR, FLOOR, FLOOR, FLOOR ; f4
