@@ -325,7 +325,13 @@ Route29Sign2Text:
 Route29AdvancedTipsSignText:
 	text "Advanced Tips!"
 
-	para "Press Start in"
-	line "the Bag to sort"
-	cont "an item pocket!"
+	para "Press Down+B at"
+	line "the title screen"
+
+	para "to reset the"
+	line "clock!"
+
+	para "Press Left+B to"
+	line "reset the initial"
+	cont "game options!"
 	done

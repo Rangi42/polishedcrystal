@@ -12,6 +12,7 @@ Route38_MapScriptHeader:
 	def_bg_events
 	bg_event 33,  7, BGEVENT_JUMPTEXT, Route38SignText
 	bg_event  5, 13, BGEVENT_JUMPTEXT, Route38TrainerTipsText
+	bg_event 17,  5, BGEVENT_JUMPTEXT, Route38AdvancedTipsText
 
 	def_object_events
 	object_event  4,  1, SPRITE_SCHOOLBOY, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, OBJECTTYPE_TRAINER, 1, TrainerSchoolboyChad1, -1
@@ -384,4 +385,18 @@ Route38TrainerTipsText:
 	para "That startles the"
 	line "#mon and stops"
 	cont "its evolution."
+	done
+
+Route38AdvancedTipsText:
+	text "Advanced Tips!"
+
+	para "Press Start in the"
+	line "PC Storage System"
+
+	para "to quickly focus"
+	line "on the Box name!"
+
+	para "You can change the"
+	line "name and theme of"
+	cont "each Box!"
 	done

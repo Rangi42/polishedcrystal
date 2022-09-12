@@ -19,6 +19,7 @@ Route34_MapScriptHeader:
 	def_bg_events
 	bg_event 12,  6, BGEVENT_JUMPTEXT, Route34SignText
 	bg_event 13, 33, BGEVENT_JUMPTEXT, Route34TrainerTipsText
+	bg_event 18, 23, BGEVENT_JUMPTEXT, Route34AdvancedTipsSignText
 	bg_event 10, 13, BGEVENT_JUMPTEXT, DayCareSignText
 	bg_event  8, 32, BGEVENT_ITEM + RARE_CANDY, EVENT_ROUTE_34_HIDDEN_RARE_CANDY
 	bg_event 17, 19, BGEVENT_ITEM + SUPER_POTION, EVENT_ROUTE_34_HIDDEN_SUPER_POTION
@@ -862,6 +863,23 @@ Route34TrainerTipsText:
 	para "Make a note of"
 	line "which trees bear"
 	cont "which Berries."
+	done
+
+Route34AdvancedTipsSignText:
+	text "Advanced Tips!"
+
+	para "Some #mon have"
+	line "inherent potential"
+
+	para "to be stronger"
+	line "than others!"
+
+	para "But all #mon"
+	line "can put in effort"
+	cont "during battle, or"
+
+	para "take vitamins,"
+	line "to gain strength!"
 	done
 
 DayCareSignText:

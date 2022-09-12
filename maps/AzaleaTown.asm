@@ -27,6 +27,7 @@ AzaleaTown_MapScriptHeader:
 	bg_event 29,  8, BGEVENT_JUMPTEXT, SlowpokeWellSignText
 	bg_event 19, 13, BGEVENT_JUMPTEXT, CharcoalKilnSignText
 	bg_event  3,  9, BGEVENT_JUMPTEXT, AzaleaTownIlexForestSignText
+	bg_event 29, 14, BGEVENT_JUMPTEXT, AzaleaTownAdvancedTipsSignText
 	bg_event 31,  6, BGEVENT_ITEM + FULL_HEAL, EVENT_AZALEA_TOWN_HIDDEN_FULL_HEAL
 
 	def_object_events
@@ -278,6 +279,20 @@ AzaleaTownIlexForestSignText:
 
 	para "Enter through the"
 	line "gate."
+	done
+
+AzaleaTownAdvancedTipsSignText:
+	text "Advanced Tips!"
+
+	para "The Switch battle"
+	line "style lets you"
+
+	para "know which #-"
+	line "mon an opponent is"
+	cont "about to send out,"
+
+	para "but the Predict"
+	line "style does not!"
 	done
 
 AzaleaTownGrampsScript:

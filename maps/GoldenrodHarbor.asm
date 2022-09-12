@@ -11,6 +11,7 @@ GoldenrodHarbor_MapScriptHeader:
 
 	def_bg_events
 	bg_event 29, 19, BGEVENT_JUMPTEXT, GoldenrodHarborSignText
+	bg_event 20, 19, BGEVENT_JUMPTEXT, GoldenrodHarborAdvancedTipsSignText
 	bg_event 28, 15, BGEVENT_JUMPTEXT, GoldenrodHarborCrateSignText
 	bg_event 22, 21, BGEVENT_ITEM + REVIVE, EVENT_GOLDENROD_HARBOR_HIDDEN_REVIVE
 
@@ -26,7 +27,7 @@ GoldenrodHarbor_MapScriptHeader:
 	object_event 40, 16, SPRITE_ROCKET, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_GOLDENROD_CITY_ROCKET_SCOUT
 	object_event  6, 14, SPRITE_SWIMMER_GIRL, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 5, GenericTrainerSwimmerfKatie, -1
 	object_event 23, 28, SPRITE_SWIMMER_GUY, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 3, GenericTrainerSwimmermJames, -1
-	object_event 22, 19, SPRITE_LASS, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, GoldenrodHarborLass2Text, -1
+	object_event 23, 19, SPRITE_LASS, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, GoldenrodHarborLass2Text, -1
 	object_event  6, 26, SPRITE_SAILBOAT, SPRITEMOVEDATA_SAILBOAT_TOP, 0, 0, -1, -1, 0, OBJECTTYPE_COMMAND, jumptext, GoldenrodHarborSailboatText, -1
 	object_event  6, 26, SPRITE_SAILBOAT, SPRITEMOVEDATA_SAILBOAT_BOTTOM, 0, 0, -1, -1, 0, OBJECTTYPE_COMMAND, jumptext, GoldenrodHarborSailboatText, -1
 
@@ -430,6 +431,19 @@ GoldenrodHarborLass2Text:
 
 GoldenrodHarborSignText:
 	text "Goldenrod Harbor"
+	done
+
+GoldenrodHarborAdvancedTipsSignText:
+	text "Advanced Tips!"
+
+	para "Sometimes you'll"
+	line "get lucky with a"
+
+	para "vending machine"
+	line "and get two drinks"
+
+	para "for the price of"
+	line "one!"
 	done
 
 GoldenrodHarborCrateSignText:
