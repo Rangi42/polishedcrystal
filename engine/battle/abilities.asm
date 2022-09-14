@@ -564,7 +564,7 @@ SynchronizeAbility:
 	ret z ; not statused or frozen/asleep (which doesn't proc Synchronize)
 	call DisableAnimations
 	; 'potential' to not run the slideout twice
-	call ShowPotentialAbilityActivation
+	farcall ShowPotentialAbilityActivation
 	farcall ResetMiss
 	ld a, BATTLE_VARS_STATUS
 	call GetBattleVar
