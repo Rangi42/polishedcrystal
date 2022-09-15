@@ -1307,6 +1307,11 @@ UseItem_SelectMon2:
 	pop hl
 	jr UseItem_DoSelectMon
 
+WingCase:
+	ld b, PARTYMENUACTION_HEALING_ITEM ; also used for vitamins
+	ld hl, WingCase_MonSelected
+	jr UseItem_SelectMon_Loop
+
 RestoreHPEffect:
 	ld b, PARTYMENUACTION_HEALING_ITEM
 	ld hl, ItemRestoreHP
@@ -1809,6 +1814,22 @@ BlueCard:
 	text_far _BlueCardBalanceText
 	text_end
 
+WingCase_MonSelected:
+; Runs when a mon has been selected.
+	; We don't need to check for Eggs, because the fucntion that this
+	; is used as a callback for has already checked that for us.
+
+	; What kind of Wing? (todo)
+	ld a, MON_HP_EV
+	call GetPartyParamLocationAndValue
+	farcall SelectWingQuantity
+	call IsMonFainted
+	ld a, 1
+	ret nz
+
+	
+	ret
+
 CoinCase:
 	ld hl, .coincasetext
 	jmp MenuTextboxWaitButton
@@ -1816,9 +1837,6 @@ CoinCase:
 .coincasetext
 	text_far _CoinCaseCountText
 	text_end
-
-WingCase:
-	; todo
 
 ApricornBox:
 	ld hl, .MenuDataHeader

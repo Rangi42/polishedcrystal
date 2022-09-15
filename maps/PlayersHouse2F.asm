@@ -67,7 +67,7 @@ if DEF(DEBUG)
 	; judge machine
 	setflag ENGINE_JUDGE_MACHINE
 	; all key items
-for x, NUM_KEY_ITEMS
+for x, 1, NUM_KEY_ITEMS + 1
 if x != MACHINE_PART
 	givekeyitem x
 endc

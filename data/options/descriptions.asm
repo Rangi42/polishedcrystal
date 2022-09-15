@@ -69,11 +69,9 @@ InitialOptionDescriptions:
 	text "Traded #mon"
 	line "will obey you,"
 
-	para "will not gain"
-	line "boosted Exp."
-
-	para "Points, and can"
-	line "be nicknamed."
+	para "can be nicknamed,"
+	line "but EXP. Points"
+	cont "won't be boosted."
 	prompt
 
 .InitialOptionDesc_NuzlockeMode:

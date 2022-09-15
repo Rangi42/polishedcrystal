@@ -563,7 +563,8 @@ SynchronizeAbility:
 	and 1 << PAR | 1 << BRN | 1 << PSN
 	ret z ; not statused or frozen/asleep (which doesn't proc Synchronize)
 	call DisableAnimations
-	call ShowAbilityActivation
+	; 'potential' to not run the slideout twice
+	farcall ShowPotentialAbilityActivation
 	farcall ResetMiss
 	ld a, BATTLE_VARS_STATUS
 	call GetBattleVar
