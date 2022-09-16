@@ -914,7 +914,6 @@ VitaminEffect:
 .ev_value_ok
 	ld [hl], a
 	call UpdatePkmnStats
-
 	call GetStatStringAndPlayFullHealSFX
 	ld hl, ItemStatRoseText
 	call PrintText
@@ -935,8 +934,34 @@ SetUpEVModifier:
 	ld a, MON_EVS
 	jmp GetPartyParamLocationAndValue
 
+CheckEVCap:
+; Take the EV amount in a with the stat in c, and clamp a to the max
+; amount of EVs we can give for the given stat, if a exceeds it.
+; Returns carry if a was modified.
+	push bc
+	ld b, a
+	ld a, MON_EVS
+	add c
+	call GetPartyParamLocationAndValue
+
+	; a = (252-CurEV) >= b ? b : (252-CurEV)
+	ld a, 252
+	sub [hl]
+	cp b
+	ld l, a
+	ld a, b
+	pop bc
+	ret nc
+	ld a, l
+	ret
+
 GetStatStringAndPlayFullHealSFX:
+	call GetStatString
+	jmp Play_SFX_FULL_HEAL
+
+GetStatString:
 	call GetEVRelativePointer
+_GetStatString:
 	ld hl, StatStrings
 	add hl, bc
 	add hl, bc
@@ -946,7 +971,7 @@ GetStatStringAndPlayFullHealSFX:
 	ld de, wStringBuffer2
 	ld bc, ITEM_NAME_LENGTH
 	rst CopyBytes
-	jmp Play_SFX_FULL_HEAL
+	ret
 
 StatStrings:
 	dw .health
@@ -1816,19 +1841,234 @@ BlueCard:
 
 WingCase_MonSelected:
 ; Runs when a mon has been selected.
-	; We don't need to check for Eggs, because the fucntion that this
-	; is used as a callback for has already checked that for us.
+	; What wing does the player want to choose?
+	ldh a, [hBGMapMode]
+	push af
+	call LoadStandardMenuHeader
+	ld hl, .WingMenu
+	call CopyMenuHeader
+	call InitScrollingMenu
+	call ScrollingMenu
+	push af
+	call ExitMenu
+	pop af
+	pop af
+	ldh [hBGMapMode], a
+	ld a, [wMenuJoypad]
+	sub B_BUTTON
+	ret z
 
-	; What kind of Wing? (todo)
-	ld a, MON_HP_EV
-	call GetPartyParamLocationAndValue
-	farcall SelectWingQuantity
-	call IsMonFainted
-	ld a, 1
-	ret nz
+	; Which wing was chosen? -1 is cancel
+	ld a, [wMenuSelection]
+	inc a
+	ret z
+	dec a
 
-	
+	; Check if we have any in the first place.
+	ld c, a
+	ld b, 0
+	ld hl, wWingAmounts + 1
+	add hl, bc
+	add hl, bc
+	ld a, [hld]
+	or [hl]
+	ld a, 252
+	jr nz, .have_wings
+	hlcoord 1, 16
+	ld de, .YouDontHaveAny
+	rst PlaceString
+	xor a
 	ret
+
+.have_wings
+	; Check how many we can use. Cap at 252, since that's the highest
+	; useful amount.
+	ld a, [hli]
+	and a
+	jr nz, .overflow
+	ld a, [hl]
+	cp 252
+	jr c, .got_amount
+.overflow
+	ld a, 252
+.got_amount
+	ld [wItemQuantityBuffer], a
+
+	push bc
+	farcall SelectWingQuantity
+	pop bc
+	jr c, .done
+
+	; Compare the given input with the amount we can actually apply.
+	ld a, [wItemQuantityChangeBuffer]
+	call CheckEVCap
+	ld [wItemQuantityChangeBuffer], a
+	ld hl, .XWillBeAppliedText
+	jr nc, .got_apply_str
+	ld hl, .OnlyXWillBeAppliedText
+
+	; If a is zero, return. a=1 will print the "no effect" message.
+	and a
+	ld a, 1
+	ret z
+
+	; Otherwise, a was modified.
+.got_apply_str
+	push bc
+	call PrintText
+	call YesNoBox
+	pop bc
+	jr c, .done
+
+	; Add EVs
+	push bc
+	ld a, MON_EVS
+	add c
+	call GetPartyParamLocationAndValue
+	ld a, [wItemQuantityChangeBuffer]
+	push af
+	add [hl]
+	ld [hl], a
+
+	; Deduct wing amount
+	ld hl, wWingAmounts + 1
+	add hl, bc
+	add hl, bc
+	pop af
+	ld b, a
+	ld a, [hl]
+	sub b
+	ld [hld], a
+	jr nc, .no_underflow
+	dec [hl]
+
+.no_underflow
+	call UpdatePkmnStats
+	call Play_SFX_FULL_HEAL
+	farcall WritePartyMenuTilemap
+	pop bc
+	call _GetStatString
+	ld a, MON_SPECIES
+	call GetPartyParamLocationAndValue
+	ld [wNamedObjectIndex], a
+	ld bc, MON_FORM - MON_SPECIES
+	add hl, bc
+	ld a, [hl]
+	ld [wNamedObjectIndex+1], a
+	call GetPokemonName
+	ld hl, ItemStatRoseText
+	call PrintText
+
+.done
+	xor a
+	ret
+
+.WingMenu:
+	db MENU_BACKUP_TILES
+	menu_coords 7, 1, 18, 13
+	dw .MenuData
+	db 1 ; default option
+
+.MenuData:
+	db $20
+	db 6, 7
+	db SCROLLINGMENU_ITEMS_NORMAL
+	dba .Items
+	dba .DisplayWingName
+	dba .DisplayWingAmount
+	dba .DisplayWingDesc
+
+.Items:
+	; Note that the order doesn't match the internal index order,
+	; because Swift Wing (Speed) is last.
+	db 6
+.WingMenuIndexOrder:
+	db HEALTH_WING
+	db MUSCLE_WING
+	db RESIST_WING
+	db GENIUS_WING
+	db CLEVER_WING
+	db SWIFT_WING
+	db -1
+
+.DisplayWingName:
+	ld hl, .WingNames
+	; fallthrough
+.DisplayNthString:
+	ld a, [wMenuSelection]
+	call GetNthString
+	call SwapHLDE
+	rst PlaceString
+	ret
+
+.DisplayWingAmount:
+	ld hl, wWingAmounts
+	ld bc, 2
+	ld a, [wMenuSelection]
+	rst AddNTimes
+	call SwapHLDE
+	ld bc, SCREEN_WIDTH
+	add hl, bc
+	ld a, "×"
+	ld [hli], a
+	lb bc, 2, 3
+	jmp PrintNum
+
+.DisplayWingDesc:
+	; This doubles as a "blank previous text".
+	hlcoord 1, 16
+	ld de, .CancelStr
+	rst PlaceString
+
+	; Check if we're hovering over cancel
+	ld a, [wMenuSelection]
+	inc a
+	ret z
+	dec a
+
+	ld hl, .WingMenuIndexOrder
+	add l
+	ld l, a
+	adc h
+	sub l
+	ld h, a
+	ld c, [hl]
+	ld b, 0
+	call _GetStatString
+
+	ld hl, .RaisesStat
+.got_str
+	bccoord 1, 16
+	jmp PlaceWholeStringInBoxAtOnce
+
+.RaisesStat:
+	text "Raises "
+	text_ram wStringBuffer2
+	text "."
+	done
+
+.CancelStr:
+	db "Don't use.         @"
+
+.WingNames:
+	db "Health Wing@"
+	db "Muscle Wing@"
+	db "Resist Wing@"
+	db "Swift Wing@"
+	db "Genius Wing@"
+	db "Clever Wing@"
+
+.YouDontHaveAny:
+	db "You don't have any."
+	prompt
+
+.OnlyXWillBeAppliedText:
+	db "Only "
+.XWillBeAppliedText:
+	text_decimal wItemQuantityChangeBuffer, 1, 3
+	text " will be"
+	line "applied. Proceed?"
+	done
 
 CoinCase:
 	ld hl, .coincasetext

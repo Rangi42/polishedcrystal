@@ -606,6 +606,16 @@ endc
 	const PNK_APRICORN ; 7
 DEF NUM_APRICORNS EQU const_value - 1
 
+; WING_CASE contents
+	const_def
+	const HEALTH_WING ; 0
+	const MUSCLE_WING ; 1
+	const RESIST_WING ; 2
+	const SWIFT_WING ; 3
+	const GENIUS_WING ; 4
+	const CLEVER_WING ; 5
+DEF NUM_WINGS EQU const_value
+
 ; key item ids
 ; indexes for:
 ; - KeyItemNames (see data/items/key_names.asm)

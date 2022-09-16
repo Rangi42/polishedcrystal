@@ -74,8 +74,6 @@ CalculateMaximumBTQuantity:
 	ret
 
 SelectWingQuantity:
-	ld a, 252
-	ld [wItemQuantityBuffer], a
 	ld hl, .MenuHeader
 	call LoadMenuHeader
 	ld a, 1
@@ -87,10 +85,12 @@ SelectWingQuantity:
 	jr nc, .loop
 	cp -1
 	jr nz, .nope ; pressed B
+	call ExitMenu
 	scf
 	ret
 
 .nope
+	call ExitMenu
 	and a
 	ret
 
@@ -195,9 +195,11 @@ BuySellToss_InterpretJoypad:
 .up
 	ld hl, wItemQuantityChangeBuffer
 	inc [hl]
+	jr z, .load_1
 	ld a, [wItemQuantityBuffer]
 	cp [hl]
 	jr nc, .finish_up
+.load_1
 	ld [hl], 1
 
 .finish_up
@@ -206,14 +208,12 @@ BuySellToss_InterpretJoypad:
 
 .left
 	ld a, [wItemQuantityChangeBuffer]
-	sub 10
-	jr c, .load_1
-	jr nz, .finish_left
-
-.load_1
-	ld a, 1
-
-.finish_left
+	; Subtracting by 11, then incrementing, simplifies checks.
+	sub 11
+	jr nc, .no_underflow
+	ld a, 0
+.no_underflow
+	inc a
 	ld [wItemQuantityChangeBuffer], a
 	and a
 	ret
@@ -221,6 +221,9 @@ BuySellToss_InterpretJoypad:
 .right
 	ld a, [wItemQuantityChangeBuffer]
 	add 10
+	jr nc, .no_overflow
+	ld a, 255
+.no_overflow
 	ld b, a
 	ld a, [wItemQuantityBuffer]
 	cp b
