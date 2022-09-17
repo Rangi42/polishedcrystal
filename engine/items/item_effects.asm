@@ -1844,6 +1844,10 @@ WingCase_MonSelected:
 	; What wing does the player want to choose?
 	ldh a, [hBGMapMode]
 	push af
+	ld a, [wMenuScrollPosition]
+	push af
+	xor a
+	ld [wMenuScrollPosition], a
 	call LoadStandardMenuHeader
 	ld hl, .WingMenu
 	call CopyMenuHeader
@@ -1852,6 +1856,8 @@ WingCase_MonSelected:
 	push af
 	call ExitMenu
 	pop af
+	pop af
+	ld [wMenuScrollPosition], a
 	pop af
 	ldh [hBGMapMode], a
 	ld a, [wMenuJoypad]
