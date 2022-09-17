@@ -72,7 +72,9 @@ else
 endc
 
 KeyItemIconPalettes:
+	table_width PAL_COLOR_SIZE * 2, KeyItemIconPalettes
 INCLUDE "gfx/items/key_items.pal"
+	assert_table_length NUM_KEY_ITEMS
 
 TMHMTypeIconPals:
 INCLUDE "gfx/items/tm_hm_types.pal"

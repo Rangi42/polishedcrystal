@@ -265,6 +265,7 @@ KeyItemDescriptions:
 	dw ItemfinderDesc
 	dw CoinCaseDesc
 	dw ApricornBoxDesc
+	dw WingCaseDesc
 	dw TypeChartDesc
 	dw BlueCardDesc
 	dw SquirtBottleDesc
@@ -289,7 +290,6 @@ KeyItemDescriptions:
 	dw ShinyCharmDesc
 	dw OvalCharmDesc
 	dw CatchCharmDesc
-	dw WingCaseDesc
 	assert_table_length NUM_KEY_ITEMS
 
 PokeBallDesc:
