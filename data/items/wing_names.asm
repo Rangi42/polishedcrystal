@@ -1,6 +1,3 @@
-; Note that the order doesn't match the internal index order,
-; because Swift Wing (Speed) is last.
-
 WingNames::
 	list_start WingNames
 	li "Health Wing"
@@ -12,6 +9,8 @@ WingNames::
 	assert_list_length NUM_WINGS
 
 WingMenuItems:
+; Note that the order doesn't match the internal index order,
+; because Swift Wing (Speed) is last.
 	db NUM_WINGS
 	table_width 1
 	db HEALTH_WING

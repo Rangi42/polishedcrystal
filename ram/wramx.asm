@@ -1170,7 +1170,13 @@ wPlayerCaught2:: db
 
 	ds 81 ; unused
 
-wWingAmounts:: ds NUM_WINGS * 2
+wWingAmounts::
+wHealthWingAmount:: dw
+wMuscleWingAmount:: dw
+wResistWingAmount:: dw
+wSwiftWingAmount:: dw
+wGeniusWingAmount:: dw
+wCleverWingAmount:: dw
 
 wCelebiEvent:: db
 

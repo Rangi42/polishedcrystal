@@ -2,16 +2,16 @@ TreeItemEncounter:
 	; We can't get any wings if we can't put them anywhere.
 	ld a, WING_CASE
 	call _CheckKeyItem
-	jr nc, .no_item
+	jr nc, .no_wing
 
-	ld a, 60
+	; 10% chance for a wing
+	ld a, NUM_WINGS * 10
 	call RandomRange
-
-	; 1/10 for a wing
-	cp 6
-	jr nc, .no_item
+	cp NUM_WINGS
+	jr nc, .no_wing
 
 	push af
+	add a
 	add LOW(wWingAmounts)
 	ld l, a
 	adc HIGH(wWingAmounts)
@@ -20,7 +20,7 @@ TreeItemEncounter:
 
 	; Check if we have 999 wings of this type.
 	call .CheckWingCap ; also increments hl
-	jr z, .pop_af_no_item
+	jr z, .pop_af_no_wing
 
 	; We're not yet capped. Give 1-10 wings of this type.
 	ld a, 10
@@ -36,6 +36,7 @@ TreeItemEncounter:
 	call .CheckWingCap
 	jr c, .cap_not_reached
 	ld [hl], LOW(999)
+	assert HIGH(999) == HIGH(999 + 10)
 
 .cap_not_reached
 	; Print a message about this wing
@@ -62,9 +63,9 @@ TreeItemEncounter:
 	ld a, TRUE
 	jr .done
 
-.pop_af_no_item
+.pop_af_no_wing
 	pop af
-.no_item
+.no_wing
 	xor a
 .done
 	ldh [hScriptVar], a
