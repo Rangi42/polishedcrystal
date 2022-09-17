@@ -1170,7 +1170,7 @@ wPlayerCaught2:: db
 
 	ds 81 ; unused
 
-wWingAmounts:: ds 6 * 2 ; 2 bytes per wing, 6 wing types
+wWingAmounts:: ds NUM_WINGS * 2
 
 wCelebiEvent:: db
 

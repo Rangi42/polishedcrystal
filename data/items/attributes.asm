@@ -539,6 +539,8 @@ KeyItemAttributes:
 	key_item_attribute 0, ITEMMENU_CURRENT, ITEMMENU_NOUSE
 ; APRICORN BOX
 	key_item_attribute 0, ITEMMENU_CURRENT, ITEMMENU_NOUSE
+; WING CASE
+	key_item_attribute 0, ITEMMENU_PARTY, ITEMMENU_NOUSE
 ; TYPE CHART
 	key_item_attribute 0, ITEMMENU_CURRENT, ITEMMENU_CURRENT
 ; BLUE CARD
@@ -587,6 +589,4 @@ KeyItemAttributes:
 	key_item_attribute 0, ITEMMENU_CURRENT, ITEMMENU_NOUSE
 ; CATCH CHARM
 	key_item_attribute 0, ITEMMENU_CURRENT, ITEMMENU_NOUSE
-; WING CASE
-	key_item_attribute 0, ITEMMENU_PARTY, ITEMMENU_NOUSE
 	assert_table_length NUM_KEY_ITEMS

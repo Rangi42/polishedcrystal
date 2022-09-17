@@ -289,6 +289,7 @@ KeyItemEffects:
 	dw Itemfinder         ; ITEMFINDER
 	dw CoinCase           ; COIN_CASE
 	dw ApricornBox        ; APRICORN_BOX
+	dw WingCase           ; WING_CASE
 	dw TypeChart          ; TYPE_CHART
 	dw BlueCard           ; BLUE_CARD
 	dw SquirtBottle       ; SQUIRTBOTTLE
@@ -313,7 +314,6 @@ KeyItemEffects:
 	dw IsntTheTimeMessage ; SHINY_CHARM
 	dw IsntTheTimeMessage ; OVAL_CHARM
 	dw IsntTheTimeMessage ; CATCH_CHARM
-	dw WingCase           ; WING_CHARM
 	assert_table_length NUM_KEY_ITEMS
 
 PokeBallEffect:
@@ -1973,26 +1973,13 @@ WingCase_MonSelected:
 	db $20
 	db 6, 7
 	db SCROLLINGMENU_ITEMS_NORMAL
-	dba .Items
+	dba WingMenuItems
 	dba .DisplayWingName
 	dba .DisplayWingAmount
 	dba .DisplayWingDesc
 
-.Items:
-	; Note that the order doesn't match the internal index order,
-	; because Swift Wing (Speed) is last.
-	db 6
-.WingMenuIndexOrder:
-	db HEALTH_WING
-	db MUSCLE_WING
-	db RESIST_WING
-	db GENIUS_WING
-	db CLEVER_WING
-	db SWIFT_WING
-	db -1
-
 .DisplayWingName:
-	ld hl, .WingNames
+	ld hl, WingNames
 	; fallthrough
 .DisplayNthString:
 	ld a, [wMenuSelection]
@@ -2024,12 +2011,11 @@ WingCase_MonSelected:
 	ld a, [wMenuSelection]
 	inc a
 	ret z
-	dec a
 
-	ld hl, .WingMenuIndexOrder
-	add l
+	; c = [(WingMenuItems + 1) + (a - 1)]
+	add LOW(WingMenuItems)
 	ld l, a
-	adc h
+	adc HIGH(WingMenuItems)
 	sub l
 	ld h, a
 	ld c, [hl]
@@ -2050,14 +2036,6 @@ WingCase_MonSelected:
 .CancelStr:
 	db "Don't use.         @"
 
-.WingNames:
-	db "Health Wing@"
-	db "Muscle Wing@"
-	db "Resist Wing@"
-	db "Swift Wing@"
-	db "Genius Wing@"
-	db "Clever Wing@"
-
 .YouDontHaveAny:
 	db "You don't have any."
 	prompt
@@ -2069,6 +2047,8 @@ WingCase_MonSelected:
 	text " will be"
 	line "applied. Proceed?"
 	done
+
+INCLUDE "data/items/wing_names.asm"
 
 CoinCase:
 	ld hl, .coincasetext
