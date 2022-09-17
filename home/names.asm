@@ -2,6 +2,7 @@ NamesPointers::
 	dba PokemonNames
 	dba MoveNames
 	dba ApricornNames
+	dba WingNames
 	dba ItemNames
 	dbw 0, wPartyMonOTs
 	dbw 0, wOTPartyMonOTs
@@ -148,8 +149,6 @@ GetCurItemName::
 	ld [wNamedObjectIndex], a
 GetItemName::
 ; Get item name wNamedObjectIndex.
-	push hl
-	push bc
 	ld a, [wNamedObjectIndex]
 	ld [wCurSpecies], a
 	ld a, ITEM_NAME
@@ -161,8 +160,6 @@ GetCurKeyItemName::
 	ld [wNamedObjectIndex], a
 GetKeyItemName::
 ; Get key item item name wNamedObjectIndex.
-	push hl
-	push bc
 	ld a, [wNamedObjectIndex]
 	ld [wCurSpecies], a
 	ld a, KEY_ITEM_NAME
@@ -170,12 +167,20 @@ GetKeyItemName::
 
 GetApricornName::
 ; Get apricorn name wNamedObjectIndex.
-	push hl
-	push bc
 	ld a, [wNamedObjectIndex]
 	ld [wCurSpecies], a
 	ld a, APRICORN_NAME
+	jr PutNameInBufferAndGetName
+
+GetWingName::
+; Get wing name wNamedObjectIndex.
+	ld a, [wNamedObjectIndex]
+	ld [wCurSpecies], a
+	ld a, WING_NAME
+	jr PutNameInBufferAndGetName
 PutNameInBufferAndGetName::
+	push hl
+	push bc
 	ld [wNamedObjectTypeBuffer], a
 	call GetName
 	ld de, wStringBuffer1

@@ -1860,13 +1860,12 @@ WingCase_MonSelected:
 
 	; Which wing was chosen? -1 is cancel
 	ld a, [wMenuSelection]
-	inc a
-	ret z
-	dec a
-
-	; Check if we have any in the first place.
 	ld c, a
 	ld b, 0
+	inc a
+	ret z
+
+	; Check if we have any in the first place.
 	ld hl, wWingAmounts + 1
 	add hl, bc
 	add hl, bc
