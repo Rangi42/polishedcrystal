@@ -35,7 +35,16 @@ endr
 	; Get item by rod
 	; 0: Old
 	; 1: Good
-	; 2: Super
+	; 2: Super (10% of the time)
+	ld a, b
+	cp 2
+	jr c, .not_super
+	ld a, 10
+	call RandomRange
+	and a
+	jr nz, .no_bite
+
+.not_super
 	ld hl, FishItems
 	add hl, de
 	ld c, [hl]
