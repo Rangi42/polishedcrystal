@@ -370,9 +370,12 @@ IlexForestCharcoalMasterScript:
 IlexForestHeadbuttGuyScript:
 	faceplayer
 	opentext
-	checkevent EVENT_LISTENED_TO_HEADBUTT_INTRO
+	checkkeyitem WING_CASE
 	iftruefwd IlexForestTutorHeadbuttScript
 	writetext Text_HeadbuttIntro
+	promptbutton
+	verbosegivekeyitem WING_CASE
+	writetext Text_HeadbuttIntro2
 	waitbutton
 	setevent EVENT_LISTENED_TO_HEADBUTT_INTRO
 IlexForestTutorHeadbuttScript:
@@ -908,8 +911,33 @@ Text_HeadbuttIntro:
 	para "I'm shaking trees"
 	line "using Headbutt."
 
+	para "Sometimes I flush"
+	line "out a #mon,"
+
+	para "sometimes just"
+	line "their feathers."
+
+	para "But even those"
+	line "are useful!"
+
+	para "They seem to make"
+	line "my own #mon"
+	cont "a little stronger."
+
 	para "It's fun. Here,"
 	line "you try it too!"
+
+	para "You'll just need a"
+	line "Case to hold any"
+	cont "delicate Wings…"
+	done
+
+Text_HeadbuttIntro2:
+	text "Oh, and if none"
+	line "of your #mon"
+	cont "know Headbutt?"
+
+	para "No problem!"
 	done
 
 Text_IlexForestTutorHeadbutt:
