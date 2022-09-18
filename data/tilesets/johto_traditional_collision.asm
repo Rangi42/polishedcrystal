@@ -236,8 +236,11 @@
 	tilecoll FLOOR, FLOOR, FLOOR, FLOOR ; eb
 	tilecoll HEADBUTT_TREE, FLOOR, FLOOR, FLOOR ; ec
 	tilecoll FLOOR, HEADBUTT_TREE, WALL, WALL ; ed
-	tilecoll VOID, VOID, VOID, VOID ; ee
-	tilecoll VOID, VOID, VOID, VOID ; ef
-	tilecoll VOID, VOID, VOID, VOID ; f0
+	tilecoll WALL, WALL, WALL, WALL ; ee
+	tilecoll WALL, WALL, FLOOR, WALL ; ef
+	tilecoll WALL, WALL, WALL, WALL ; f0
 	tilecoll FLOOR, FLOOR, WALL, FLOOR ; f1
 	tilecoll FLOOR, FLOOR, WALL, FLOOR ; f2
+	tilecoll WALL, FLOOR, FLOOR, FLOOR ; f3
+	tilecoll WALL, FLOOR, WALL, WALL ; f4
+	tilecoll FLOOR, WALL, WALL, WALL ; f5
