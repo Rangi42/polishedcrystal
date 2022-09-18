@@ -169,8 +169,10 @@ DEF MAPOBJECT_SCREEN_HEIGHT EQU (SCREEN_HEIGHT / 2) + 2
 	const SPRITEMOVEDATA_POKECOM_NEWS         ; 25
 	const SPRITEMOVEDATA_MUSEUM_DRILL_DOWN    ; 26
 	const SPRITEMOVEDATA_MUSEUM_DRILL_UP      ; 27
-	const SPRITEMOVEDATA_SAILBOAT_TOP         ; 28
-	const SPRITEMOVEDATA_SAILBOAT_BOTTOM      ; 29
+	const SPRITEMOVEDATA_ARCH_TREE_LEFT       ; 28
+	const SPRITEMOVEDATA_ARCH_TREE_RIGHT      ; 29
+	const SPRITEMOVEDATA_SAILBOAT_TOP         ; 2a
+	const SPRITEMOVEDATA_SAILBOAT_BOTTOM      ; 2b
 DEF NUM_SPRITEMOVEDATA EQU const_value
 
 ; StepFunction_FromMovement.Pointers indexes (see engine/overworld/map_objects.asm)
@@ -312,8 +314,10 @@ DEF NUM_OBJECT_ACTIONS EQU const_value
 	const FACING_POKECOM_NEWS      ; 2a
 	const FACING_MUSEUM_DRILL_DOWN ; 2b
 	const FACING_MUSEUM_DRILL_UP   ; 2c
-	const FACING_SAILBOAT_TOP      ; 2d
-	const FACING_SAILBOAT_BOTTOM   ; 2e
+	const FACING_ARCH_TREE_LEFT    ; 2d
+	const FACING_ARCH_TREE_RIGHT   ; 2e
+	const FACING_SAILBOAT_TOP      ; 2f
+	const FACING_SAILBOAT_BOTTOM   ; 30
 DEF NUM_FACINGS EQU const_value
 
 ; DoPlayerMovement.DoStep arguments (see engine/overworld/player_movement.asm)

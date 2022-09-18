@@ -46,6 +46,8 @@ Facings:
 	dw FacingPokecomNews     ; FACING_POKECOM_NEWS
 	dw FacingMuseumDrillDown ; FACING_MUSEUM_DRILL_DOWN
 	dw FacingMuseumDrillUp   ; FACING_MUSEUM_DRILL_UP
+	dw FacingArchTreeLeft    ; FACING_ARCH_TREE_LEFT
+	dw FacingArchTreeRight   ; FACING_ARCH_TREE_RIGHT
 	dw FacingSailboatTop     ; FACING_SAILBOAT_TOP
 	dw FacingSailboatBottom  ; FACING_SAILBOAT_BOTTOM
 	assert_table_length NUM_FACINGS
@@ -349,6 +351,16 @@ FacingMuseumDrillUp:
 	db 2 ; #
 	db 12, 0, 0, $0a
 	db 12, 8, 0, $09
+
+FacingArchTreeLeft:
+	db 2 ; #
+	db  4,  0, 0, $08
+	db 12,  0, 0, $0a
+
+FacingArchTreeRight:
+	db 2 ; #
+	db  4,  8, 0, $09
+	db 12,  8, 0, $0b
 
 FacingSailboatTop:
 	db 12 ; #
