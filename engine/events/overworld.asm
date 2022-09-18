@@ -1389,7 +1389,9 @@ AutoHeadbuttScript:
 	callasm TreeItemEncounter
 	iffalsefwd .no_item
 	opentext
-	verbosegiveitem ITEM_FROM_MEM
+	farwritetext _ReceivedItemText
+	specialsound
+	waitbutton
 	endtext
 
 .no_item

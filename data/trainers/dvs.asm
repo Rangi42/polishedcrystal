@@ -139,7 +139,7 @@ TrainerClassDVsAndPersonality:
 	db 252, PERFECT_DVS,   MALE   ; spark
 	db 252, PERFECT_DVS,   FEMALE ; flannery
 	db 252, PERFECT_DVS,   FEMALE ; maylene
-	db 252, PERFECT_DVS,   FEMALE ; skyla
+	db 252, PERFECT_DVS,   MALE   ; marlon
 	db 252, PERFECT_DVS,   FEMALE ; valerie
 	db 252, PERFECT_DVS,   MALE   ; kukui
 	db 252, PERFECT_DVS,   FEMALE ; melony

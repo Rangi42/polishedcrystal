@@ -7,7 +7,6 @@ OlivineLighthouse6F_MapScriptHeader:
 	warp_event  9, 15, OLIVINE_LIGHTHOUSE_5F, 1
 	warp_event 16,  5, OLIVINE_LIGHTHOUSE_5F, 6
 	warp_event 17,  5, OLIVINE_LIGHTHOUSE_5F, 7
-	warp_event  9,  3, OLIVINE_LIGHTHOUSE_ROOF, 1
 
 	def_coord_events
 

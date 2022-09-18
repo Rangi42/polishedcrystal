@@ -10464,56 +10464,56 @@ endc
 	db -1 ; end
 
 
-SECTION "SkylaGroup", ROMX
-SkylaGroup:
+SECTION "MarlonGroup", ROMX
+MarlonGroup:
 
-	; SKYLA
-	db "Skyla@"
+	; MARLON
+	db "Marlon@"
 	db TRAINERTYPE_EVS
 	; party
 	; TODO: movesets, etc
-	dbp 33, FARFETCH_D
+	dbp 33, QUAGSIRE
 		db 100
-	dbp 37, PIDGEOT
+	dbp 37, TENTACRUEL
 		db 100
-	dbp 34, XATU
+	dbp 34, BLASTOISE
 		db 100
 	dbp 35, MANTINE
 		db 100
-	dbp 34, CROBAT
+	dbp 34, STARMIE
 		db 100
 	db -1 ; end
 
-	; SKYLA
-	db "Skyla@"
+	; MARLON
+	db "Marlon@"
 	db TRAINERTYPE_EVS
 	; party
 	; TODO: movesets, etc
-	dbp 57, FARFETCH_D
+	dbp 57, QUAGSIRE
 		db 160
-	dbp 60, PIDGEOT
+	dbp 60, TENTACRUEL
 		db 160
-	dbp 58, XATU
+	dbp 58, BLASTOISE
 		db 160
 	dbp 59, MANTINE
 		db 160
-	dbp 58, CROBAT
+	dbp 58, STARMIE
 		db 160
-	dbp 57, SKARMORY
+	dbp 57, CLOYSTER
 		db 160
 	db -1 ; end
 
-	; SKYLA
-	db "Skyla@"
+	; MARLON
+	db "Marlon@"
 	db TRAINERTYPE_NORMAL
 	; party
 	; TODO: movesets, etc
-	dbp 72, FARFETCH_D
-	dbp 75, PIDGEOT
-	dbp 73, XATU
+	dbp 72, QUAGSIRE
+	dbp 75, TENTACRUEL
+	dbp 73, BLASTOISE
 	dbp 74, MANTINE
-	dbp 73, CROBAT
-	dbp 72, SKARMORY
+	dbp 73, STARMIE
+	dbp 72, CLOYSTER
 	db -1 ; end
 
 

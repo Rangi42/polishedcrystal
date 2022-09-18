@@ -402,8 +402,8 @@ FlanneryPic: INCBIN "gfx/trainers/flannery.2bpp.lz"
 SECTION "MaylenePic", ROMX
 MaylenePic: INCBIN "gfx/trainers/maylene.2bpp.lz"
 
-SECTION "SkylaPic", ROMX
-SkylaPic: INCBIN "gfx/trainers/skyla.2bpp.lz"
+SECTION "MarlonPic", ROMX
+MarlonPic: INCBIN "gfx/trainers/marlon.2bpp.lz"
 
 SECTION "ValeriePic", ROMX
 ValeriePic: INCBIN "gfx/trainers/valerie.2bpp.lz"

@@ -355,7 +355,7 @@ RespawnOneOffs:
 	eventflagreset EVENT_BEAT_LAWRENCE
 	eventflagreset EVENT_BEAT_FLANNERY
 	eventflagreset EVENT_BEAT_MAYLENE
-	eventflagreset EVENT_BEAT_SKYLA_AGAIN
+	eventflagreset EVENT_BEAT_MARLON_AGAIN
 	eventflagreset EVENT_BEAT_KUKUI
 
 	eventflagcheck EVENT_GOT_MUSCLE_BAND_FROM_STEVEN

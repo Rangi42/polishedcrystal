@@ -690,10 +690,6 @@ SECTION "OlivineLighthouse6F_BlockData", ROMX
 OlivineLighthouse6F_BlockData:
 	INCBIN "maps/OlivineLighthouse6F.ablk.lz"
 
-SECTION "OlivineLighthouseRoof_BlockData", ROMX
-OlivineLighthouseRoof_BlockData:
-	INCBIN "maps/OlivineLighthouseRoof.ablk.lz"
-
 SECTION "BattleTower1F_BlockData", ROMX
 BattleTower1F_BlockData:
 	INCBIN "maps/BattleTower1F.ablk.lz"

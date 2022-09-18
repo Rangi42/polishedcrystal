@@ -22,7 +22,6 @@ MACRO special_bg_pal
 	dw \4 ; source
 ENDM
 	special_bg_pal darkness, (unused),                    PAL_SINGLE,    DarknessBGPalette
-	special_bg_pal map,      OLIVINE_LIGHTHOUSE_ROOF,     PAL_TIMEOFDAY, GoldenrodDeptStoreRoofPalette
 	special_bg_pal map,      SILVER_CAVE_ROOM_1,          PAL_SINGLE,    SilverCavePalette
 	special_bg_pal map,      SILVER_CAVE_ROOM_2,          PAL_SINGLE,    SilverCavePalette
 	special_bg_pal map,      SILVER_CAVE_ROOM_3,          PAL_SINGLE,    SilverCavePalette
@@ -107,8 +106,10 @@ MACRO special_ob_pal
 ENDM
 	special_ob_pal darkness, (unused),                        DarknessOBPalette,                      PAL_OW_RED,    8
 	special_ob_pal overcast, (unused),                        OvercastOBPalette,                      PAL_OW_RED,    8, 8
+	special_ob_pal map,      DANCE_THEATRE,                   DanceTheatreOBPalette_Tree,             PAL_OW_TREE,   1
 	special_ob_pal map,      MURKY_SWAMP,                     wBGPals1 palette PAL_BG_GREEN,          PAL_OW_TREE,   1
 	special_ob_pal map,      ROUTE_34,                        OverworldPartyMonPalettes,              PAL_OW_ROCK,   1, 3
+	special_ob_pal map,      ROUTE_41,                        Route41Palette_Tree,                    PAL_OW_TREE,   1, 1
 	special_ob_pal map,      VERMILION_GYM,                   VermilionGymOBPalette_Tree,             PAL_OW_TREE,   1
 	special_ob_pal map,      LIGHTNING_ISLAND,                LightningIslandOBPalette_Tree,          PAL_OW_TREE,   1
 	special_ob_pal map,      ROCK_TUNNEL_2F,                  RockTunnelOBPalette_Tree,               PAL_OW_TREE,   1
@@ -1391,6 +1392,45 @@ if !DEF(MONOCHROME)
 	RGB 07, 07, 07
 else
 	MONOCHROME_RGB_FOUR
+endc
+
+DanceTheatreOBPalette_Tree:
+if !DEF(MONOCHROME)
+	RGB 27, 31, 27
+	RGB 31, 19, 10
+	RGB 13, 13, 13
+	RGB 00, 00, 00
+else
+	MONOCHROME_RGB_FOUR_OW
+endc
+
+Route41Palette_Tree:
+if !DEF(MONOCHROME)
+; morn
+	RGB 28, 31, 16
+	RGB 22, 18, 09
+	RGB 10, 09, 31
+	RGB 00, 00, 00
+; day
+	RGB 27, 31, 27
+	RGB 22, 15, 09
+	RGB 10, 09, 31
+	RGB 00, 00, 00
+; nite
+	RGB 15, 14, 24
+	RGB 11, 07, 08
+	RGB 05, 04, 27
+	RGB 00, 00, 00
+; eve
+	RGB 31, 21, 14
+	RGB 22, 15, 09
+	RGB 10, 09, 31
+	RGB 00, 00, 00
+else
+	MONOCHROME_RGB_FOUR_OW
+	MONOCHROME_RGB_FOUR_OW
+	MONOCHROME_RGB_FOUR_OW
+	MONOCHROME_RGB_FOUR_OW_NIGHT
 endc
 
 VermilionGymOBPalette_Tree:

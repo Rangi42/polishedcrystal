@@ -1,18 +1,91 @@
 TreeItemEncounter:
-	call Random
-	cp 5 percent
-	jr c, .silver_leaf
-	cp 10 percent
-	jr c, .gold_leaf
-	ld a, NO_ITEM
-	jr .item
-.silver_leaf
-	ld a, SILVER_LEAF
-	jr .item
-.gold_leaf
-	ld a, GOLD_LEAF
-.item
+	; We can't get any wings if we can't put them anywhere.
+	ld a, WING_CASE
+	call _CheckKeyItem
+	jr nc, .no_wing
+
+	; 10% chance for a wing
+	ld a, NUM_WINGS * 10
+	call RandomRange
+	cp NUM_WINGS
+	jr nc, .no_wing
+
+	push af
+	add a
+	add LOW(wWingAmounts)
+	ld l, a
+	adc HIGH(wWingAmounts)
+	sub l
+	ld h, a
+
+	; Check if we have 999 wings of this type.
+	call .CheckWingCap ; also increments hl
+	jr z, .pop_af_no_wing
+
+	; We're not yet capped. Give 1-10 wings of this type.
+	ld a, 10
+	call RandomRange
+	inc a
+	add [hl]
+	ld [hld], a
+	jr nc, .no_overflow
+	inc [hl]
+
+.no_overflow
+	; If we overflowed the cap, revert back to 999 wings.
+	call .CheckWingCap
+	jr c, .cap_not_reached
+	ld [hl], LOW(999)
+	assert HIGH(999) == HIGH(999 + 10)
+
+.cap_not_reached
+	; Print a message about this wing
+	pop af
+	ld [wNamedObjectIndex], a
+	call GetWingName
+
+	; pluralize
+	ld hl, wStringBuffer1
+	push hl
+.find_terminator
+	ld a, [hli]
+	cp "@"
+	jr nz, .find_terminator
+	dec hl
+	ld a, "s"
+	ld [hli], a
+	ld [hl], "@"
+	pop hl
+	ld de, wStringBuffer4
+	ld bc, ITEM_NAME_LENGTH
+	rst CopyBytes
+
+	ld a, TRUE
+	jr .done
+
+.pop_af_no_wing
+	pop af
+.no_wing
+	xor a
+.done
 	ldh [hScriptVar], a
+	ret
+
+.CheckWingCap:
+	ld a, [hli]
+	cp HIGH(999)
+	ret c
+	ld a, [hl]
+	cp LOW(999)
+	ret
+
+GetWings:
+	ldh a, [hScriptVar]
+	add LOW(wWingAmounts - 2)
+	ld l, a
+	adc HIGH(wWingAmounts - 2)
+	sub l
+	ld h, a
 	ret
 
 RockItemEncounter:

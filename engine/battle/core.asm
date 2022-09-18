@@ -8066,7 +8066,6 @@ DoGetRoamMonData:
 	ld hl, wRoamMon2Species
 	cp [hl]
 	jr z, .get_data
-	ret z
 	ld hl, wRoamMon3Species
 .get_data
 	add hl, de

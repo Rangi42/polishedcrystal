@@ -137,7 +137,7 @@ TrainerPicPointers::
 	dba SparkPic
 	dba FlanneryPic
 	dba MaylenePic
-	dba SkylaPic
+	dba MarlonPic
 	dba ValeriePic
 	dba KukuiPic
 	dba MelonyPic

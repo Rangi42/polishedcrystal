@@ -12,11 +12,12 @@ DEF TRAINER_CLASS_NAME_LENGTH EQU 13
 	const MON_NAME      ; 1
 	const MOVE_NAME     ; 2
 	const APRICORN_NAME ; 3
-	const ITEM_NAME     ; 4
-	const PARTY_OT_NAME ; 5
-	const ENEMY_OT_NAME ; 6
-	const TRAINER_NAME  ; 7
-	const KEY_ITEM_NAME ; 8
+	const WING_NAME     ; 4
+	const ITEM_NAME     ; 5
+	const PARTY_OT_NAME ; 6
+	const ENEMY_OT_NAME ; 7
+	const TRAINER_NAME  ; 8
+	const KEY_ITEM_NAME ; 9
 
 ; see home/text.asm
 DEF BORDER_WIDTH   EQU 2

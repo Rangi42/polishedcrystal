@@ -578,8 +578,9 @@ for filename in filenames:
 		while i < n:
 			text = lines[i]
 			# Remove comments
-			code = text.split(';')[0].rstrip()
-			comment = text.split(';', 1)[1].strip() if ';' in text else ''
+			parts = text.split(';', 1)
+			code = parts[0].rstrip()
+			comment = parts[1].strip() if len(parts) > 1 else ''
 			# Skip blank lines:
 			if not code:
 				i += 1

@@ -1081,7 +1081,7 @@ DEF KRIS EQU __trainer_class__
 
 	trainerclass MAYLENE ; 88
 
-	trainerclass SKYLA ; 89
+	trainerclass MARLON ; 89
 
 	trainerclass VALERIE ; 8a
 
