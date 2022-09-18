@@ -167,12 +167,10 @@ DEF MAPOBJECT_SCREEN_HEIGHT EQU (SCREEN_HEIGHT / 2) + 2
 	const SPRITEMOVEDATA_STANDING_DOWN_FLIP   ; 23
 	const SPRITEMOVEDATA_STANDING_UP_FLIP     ; 24
 	const SPRITEMOVEDATA_POKECOM_NEWS         ; 25
-	const SPRITEMOVEDATA_ARCH_TREE_DOWN       ; 26
-	const SPRITEMOVEDATA_ARCH_TREE_UP         ; 27
-	const SPRITEMOVEDATA_ARCH_TREE_LEFT       ; 28
-	const SPRITEMOVEDATA_ARCH_TREE_RIGHT      ; 29
-	const SPRITEMOVEDATA_SAILBOAT_TOP         ; 2a
-	const SPRITEMOVEDATA_SAILBOAT_BOTTOM      ; 2b
+	const SPRITEMOVEDATA_MUSEUM_DRILL_DOWN    ; 26
+	const SPRITEMOVEDATA_MUSEUM_DRILL_UP      ; 27
+	const SPRITEMOVEDATA_SAILBOAT_TOP         ; 28
+	const SPRITEMOVEDATA_SAILBOAT_BOTTOM      ; 29
 DEF NUM_SPRITEMOVEDATA EQU const_value
 
 ; StepFunction_FromMovement.Pointers indexes (see engine/overworld/map_objects.asm)
@@ -204,7 +202,7 @@ DEF NUM_SPRITEMOVEDATA EQU const_value
 	const SPRITEMOVEFN_BIG_GYARADOS          ; 18
 	const SPRITEMOVEFN_STANDING_FLIP         ; 19
 	const SPRITEMOVEFN_POKECOM_NEWS          ; 1a
-	const SPRITEMOVEFN_ARCH_TREE             ; 1b
+	const SPRITEMOVEFN_MUSEUM_DRILL          ; 1b
 	const SPRITEMOVEFN_SAILBOAT_TOP          ; 1c
 	const SPRITEMOVEFN_SAILBOAT_BOTTOM       ; 1d
 DEF NUM_SPRITEMOVEFN EQU const_value
@@ -261,7 +259,7 @@ DEF NUM_STEP_TYPES EQU const_value
 	const OBJECT_ACTION_BIG_GYARADOS    ; 13
 	const OBJECT_ACTION_STAND_FLIP      ; 14
 	const OBJECT_ACTION_POKECOM_NEWS    ; 15
-	const OBJECT_ACTION_ARCH_TREE       ; 16
+	const OBJECT_ACTION_MUSEUM_DRILL    ; 16
 	const OBJECT_ACTION_RUN             ; 17
 	const OBJECT_ACTION_SAILBOAT_TOP    ; 18
 	const OBJECT_ACTION_SAILBOAT_BOTTOM ; 19
@@ -269,55 +267,53 @@ DEF NUM_OBJECT_ACTIONS EQU const_value
 
 ; Facings indexes (see data/sprites/facings.asm)
 	const_def
-	const FACING_STEP_DOWN_0     ; 00
-	const FACING_STEP_DOWN_1     ; 01
-	const FACING_STEP_DOWN_2     ; 02
-	const FACING_STEP_DOWN_3     ; 03
-	const FACING_STEP_UP_0       ; 04
-	const FACING_STEP_UP_1       ; 05
-	const FACING_STEP_UP_2       ; 06
-	const FACING_STEP_UP_3       ; 07
-	const FACING_STEP_LEFT_0     ; 08
-	const FACING_STEP_LEFT_1     ; 09
-	const FACING_STEP_LEFT_2     ; 0a
-	const FACING_STEP_LEFT_3     ; 0b
-	const FACING_STEP_RIGHT_0    ; 0c
-	const FACING_STEP_RIGHT_1    ; 0d
-	const FACING_STEP_RIGHT_2    ; 0e
-	const FACING_STEP_RIGHT_3    ; 0f
-	const FACING_FISH_DOWN       ; 10
-	const FACING_FISH_UP         ; 11
-	const FACING_FISH_LEFT       ; 12
-	const FACING_FISH_RIGHT      ; 13
-	const FACING_EMOTE           ; 14
-	const FACING_SHADOW          ; 15
-	const FACING_BIG_DOLL_ASYM   ; 16
-	const FACING_BIG_DOLL_SYM    ; 17
-	const FACING_WEIRD_TREE_0    ; 18
-	const FACING_WEIRD_TREE_1    ; 19
-	const FACING_WEIRD_TREE_2    ; 1a
-	const FACING_WEIRD_TREE_3    ; 1b
-	const FACING_BOULDER_DUST_1  ; 1c
-	const FACING_BOULDER_DUST_2  ; 1d
-	const FACING_GRASS_1         ; 1e
-	const FACING_GRASS_2         ; 1f
-	const FACING_SPLASH_1        ; 20
-	const FACING_SPLASH_2        ; 21
-	const FACING_CUT_TREE        ; 22
-	const FACING_APRICORN        ; 23
-	const FACING_BERRY           ; 24
-	const FACING_PICKED_FRUIT    ; 25
-	const FACING_BIG_GYARADOS_1  ; 26
-	const FACING_BIG_GYARADOS_2  ; 27
-	const FACING_STEP_DOWN_FLIP  ; 28
-	const FACING_STEP_UP_FLIP    ; 29
-	const FACING_POKECOM_NEWS    ; 2a
-	const FACING_ARCH_TREE_DOWN  ; 2b
-	const FACING_ARCH_TREE_UP    ; 2c
-	const FACING_ARCH_TREE_LEFT  ; 2d
-	const FACING_ARCH_TREE_RIGHT ; 2e
-	const FACING_SAILBOAT_TOP    ; 2f
-	const FACING_SAILBOAT_BOTTOM ; 30
+	const FACING_STEP_DOWN_0       ; 00
+	const FACING_STEP_DOWN_1       ; 01
+	const FACING_STEP_DOWN_2       ; 02
+	const FACING_STEP_DOWN_3       ; 03
+	const FACING_STEP_UP_0         ; 04
+	const FACING_STEP_UP_1         ; 05
+	const FACING_STEP_UP_2         ; 06
+	const FACING_STEP_UP_3         ; 07
+	const FACING_STEP_LEFT_0       ; 08
+	const FACING_STEP_LEFT_1       ; 09
+	const FACING_STEP_LEFT_2       ; 0a
+	const FACING_STEP_LEFT_3       ; 0b
+	const FACING_STEP_RIGHT_0      ; 0c
+	const FACING_STEP_RIGHT_1      ; 0d
+	const FACING_STEP_RIGHT_2      ; 0e
+	const FACING_STEP_RIGHT_3      ; 0f
+	const FACING_FISH_DOWN         ; 10
+	const FACING_FISH_UP           ; 11
+	const FACING_FISH_LEFT         ; 12
+	const FACING_FISH_RIGHT        ; 13
+	const FACING_EMOTE             ; 14
+	const FACING_SHADOW            ; 15
+	const FACING_BIG_DOLL_ASYM     ; 16
+	const FACING_BIG_DOLL_SYM      ; 17
+	const FACING_WEIRD_TREE_0      ; 18
+	const FACING_WEIRD_TREE_1      ; 19
+	const FACING_WEIRD_TREE_2      ; 1a
+	const FACING_WEIRD_TREE_3      ; 1b
+	const FACING_BOULDER_DUST_1    ; 1c
+	const FACING_BOULDER_DUST_2    ; 1d
+	const FACING_GRASS_1           ; 1e
+	const FACING_GRASS_2           ; 1f
+	const FACING_SPLASH_1          ; 20
+	const FACING_SPLASH_2          ; 21
+	const FACING_CUT_TREE          ; 22
+	const FACING_APRICORN          ; 23
+	const FACING_BERRY             ; 24
+	const FACING_PICKED_FRUIT      ; 25
+	const FACING_BIG_GYARADOS_1    ; 26
+	const FACING_BIG_GYARADOS_2    ; 27
+	const FACING_STEP_DOWN_FLIP    ; 28
+	const FACING_STEP_UP_FLIP      ; 29
+	const FACING_POKECOM_NEWS      ; 2a
+	const FACING_MUSEUM_DRILL_DOWN ; 2b
+	const FACING_MUSEUM_DRILL_UP   ; 2c
+	const FACING_SAILBOAT_TOP      ; 2d
+	const FACING_SAILBOAT_BOTTOM   ; 2e
 DEF NUM_FACINGS EQU const_value
 
 ; DoPlayerMovement.DoStep arguments (see engine/overworld/player_movement.asm)

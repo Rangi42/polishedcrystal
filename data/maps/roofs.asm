@@ -22,7 +22,7 @@ MapGroupRoofs:
 	db -1            ; 17
 	db -1            ; 18
 	db ROOF_NEW_BARK ; 19 (Route 28)
-	db -1            ; 20 (Ecruteak Shrine)
+	db -1            ; 20
 	db -1            ; 21
 	db ROOF_OLIVINE  ; 22 (Cianwood City)
 	db -1            ; 23
