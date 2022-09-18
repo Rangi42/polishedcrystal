@@ -199,8 +199,8 @@ FlannerySpriteGFX:: INCBIN "gfx/sprites/flannery.2bpp.lz"
 SECTION "MayleneSpriteGFX", ROMX
 MayleneSpriteGFX:: INCBIN "gfx/sprites/maylene.2bpp.lz"
 
-SECTION "SkylaSpriteGFX", ROMX
-SkylaSpriteGFX:: INCBIN "gfx/sprites/skyla.2bpp.lz"
+SECTION "MarlonSpriteGFX", ROMX
+MarlonSpriteGFX:: INCBIN "gfx/sprites/marlon.2bpp.lz"
 
 SECTION "ValerieSpriteGFX", ROMX
 ValerieSpriteGFX:: INCBIN "gfx/sprites/valerie.2bpp.lz"

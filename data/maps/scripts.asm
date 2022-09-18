@@ -336,7 +336,6 @@ INCLUDE "maps/OlivineLighthouse3F.asm"
 INCLUDE "maps/OlivineLighthouse4F.asm"
 INCLUDE "maps/OlivineLighthouse5F.asm"
 INCLUDE "maps/OlivineLighthouse6F.asm"
-INCLUDE "maps/OlivineLighthouseRoof.asm"
 
 
 SECTION "Whirl Island Scripts", ROMX

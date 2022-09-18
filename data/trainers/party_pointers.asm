@@ -139,7 +139,7 @@ TrainerGroups:
 	dba SparkGroup
 	dba FlanneryGroup
 	dba MayleneGroup
-	dba SkylaGroup
+	dba MarlonGroup
 	dba ValerieGroup
 	dba KukuiGroup
 	dba MelonyGroup
