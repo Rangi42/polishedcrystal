@@ -19,6 +19,9 @@ def rgb5_pixels(row):
 def rgb8_pixels(row):
 	yield from (c * 8 + c // 4 for pixel in row for c in pixel)
 
+def gray_pixels(row):
+	yield from (pixel[0] // 10 for pixel in row)
+
 def rows_to_tiles(rows, width, height):
 	assert len(rows) == height and len(rows[0]) == width
 	yield from (tuple(tuple(row[x:x+8]) for row in rows[y:y+8])
@@ -57,8 +60,8 @@ def unique_tiles(tiles, flip, cross):
 			seen.add(tile)
 
 def is_grayscale(colors):
-	return (colors == {(0, 0, 0), (10, 10, 10), (21, 21, 21), (31, 31, 31)} or
-		colors == {(0, 0, 0), (10, 10, 10), (20, 20, 20), (31, 31, 31)})
+	return (colors.issubset({(31, 31, 31), (21, 21, 21), (10, 10, 10), (0, 0, 0)}) or
+		colors.issubset({(31, 31, 31), (20, 20, 20), (10, 10, 10), (0, 0, 0)}))
 
 def erase_duplicates(filename, flip, cross):
 	with open(filename, 'rb') as file:
@@ -66,12 +69,10 @@ def erase_duplicates(filename, flip, cross):
 		rows = [list(rgb5_pixels(row)) for row in rows]
 	if width % 8 or height % 8:
 		return False
-	tiles = rows_to_tiles(rows, width, height)
-	tiles = unique_tiles(tiles, flip, cross)
-	rows = tiles_to_rows(tiles, width, height)
-	rows = list(rows)
+	tiles = unique_tiles(rows_to_tiles(rows, width, height), flip, cross)
+	rows = list(tiles_to_rows(tiles, width, height))
 	if is_grayscale({c for row in rows for c in row}):
-		rows = [[pixel[0] // 10 for pixel in row] for row in rows]
+		rows = [list(gray_pixels(row)) for row in rows]
 		writer = png.Writer(width, height, greyscale=True, bitdepth=2, compression=9)
 	else:
 		rows = [list(rgb8_pixels(row)) for row in rows]
