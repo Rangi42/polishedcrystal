@@ -107,6 +107,7 @@ MACRO special_ob_pal
 ENDM
 	special_ob_pal darkness, (unused),                        DarknessOBPalette,                      PAL_OW_RED,    8
 	special_ob_pal overcast, (unused),                        OvercastOBPalette,                      PAL_OW_RED,    8, 8
+	special_ob_pal map,      DANCE_THEATRE,                   DanceTheatreOBPalette_Tree,             PAL_OW_TREE, 1
 	special_ob_pal map,      MURKY_SWAMP,                     wBGPals1 palette PAL_BG_GREEN,          PAL_OW_TREE,   1
 	special_ob_pal map,      ROUTE_34,                        OverworldPartyMonPalettes,              PAL_OW_ROCK,   1, 3
 	special_ob_pal map,      VERMILION_GYM,                   VermilionGymOBPalette_Tree,             PAL_OW_TREE,   1
@@ -1391,6 +1392,16 @@ if !DEF(MONOCHROME)
 	RGB 07, 07, 07
 else
 	MONOCHROME_RGB_FOUR
+endc
+
+DanceTheatreOBPalette_Tree:
+if !DEF(MONOCHROME)
+	RGB 27, 31, 27
+	RGB 31, 19, 10
+	RGB 13, 13, 13
+	RGB 00, 00, 00
+else
+	MONOCHROME_RGB_FOUR_OW
 endc
 
 VermilionGymOBPalette_Tree:
