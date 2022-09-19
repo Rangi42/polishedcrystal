@@ -128,7 +128,7 @@ def map_to_sym(input):
 
 def main():
 	if len(sys.argv) < 3:
-		sys.stderr.write('Usage: %s pokecrystal.map sorted.sym\n' % sys.argv[0])
+		sys.stderr.write('Usage: %s polishedcrystal.map sorted.sym\n' % sys.argv[0])
 		sys.exit(1)
 	with open(sys.argv[1], 'r') as infile:
 		input = infile.readlines()
