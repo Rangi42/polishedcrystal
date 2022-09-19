@@ -158,6 +158,8 @@ ENDM
 	map_const VALERIES_HOUSE,                              4,  4 ; 15
 	map_const ECRUTEAK_CHERISH_BALL_HOUSE,                 4,  4 ; 16
 	map_const ECRUTEAK_DESTINY_KNOT_HOUSE,                 4,  4 ; 17
+	map_const ECRUTEAK_SHRINE_OUTSIDE,                     8, 11 ; 18
+	map_const ECRUTEAK_SHRINE_INSIDE,                      6,  6 ; 19
 
 	newgroup                                                     ;  5
 	map_const BLACKTHORN_GYM_1F,                           5,  9 ;  1
@@ -427,8 +429,6 @@ ENDM
 	map_const HIDDEN_CAVE_GROTTO,                         20, 45 ;  5
 	map_const YELLOW_FOREST_GATE,                          5,  4 ;  6
 	map_const YELLOW_FOREST,                              29, 26 ;  7
-	map_const ECRUTEAK_SHRINE_OUTSIDE,                     6,  9 ;  8
-	map_const ECRUTEAK_SHRINE_INSIDE,                      6,  6 ;  9
 
 	newgroup                                                     ; 21
 	map_const ROUTE_7,                                    10,  9 ;  1

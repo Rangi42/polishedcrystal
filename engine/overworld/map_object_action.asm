@@ -24,7 +24,7 @@ ObjectActionPairPointers:
 	dw SetFacingBigGyarados,           SetFacingFreezeBigGyarados ; OBJECT_ACTION_BIG_GYARADOS
 	dw SetFacingStandFlip,             SetFacingStandFlip         ; OBJECT_ACTION_STAND_FLIP
 	dw SetFacingPokecomNews,           SetFacingPokecomNews       ; OBJECT_ACTION_POKECOM_NEWS
-	dw SetFacingArchTree,              SetFacingArchTree          ; OBJECT_ACTION_ARCH_TREE
+	dw SetFacingMuseumDrill,           SetFacingMuseumDrill       ; OBJECT_ACTION_MUSEUM_DRILL
 	dw SetFacingRun,                   SetFacingCurrent           ; OBJECT_ACTION_RUN
 	dw SetFacingSailboatTop,           SetFacingSailboatTop       ; OBJECT_ACTION_SAILBOAT_TOP
 	dw SetFacingSailboatBottom,        SetFacingSailboatBottom    ; OBJECT_ACTION_SAILBOAT_BOTTOM
@@ -78,11 +78,11 @@ SetFacingFish:
 	add FACING_FISH_DOWN
 	jr SetFixedFacing
 
-SetFacingArchTree:
+SetFacingMuseumDrill:
 	call GetSpriteDirection
 	rrca
 	rrca
-	add FACING_ARCH_TREE_DOWN
+	add FACING_MUSEUM_DRILL_DOWN
 	jr SetFixedFacing
 
 SetFacingStandFlip:

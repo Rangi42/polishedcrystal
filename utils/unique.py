@@ -5,8 +5,8 @@
 Usage: python unique.py [-f|--flip] [-x|--cross] image.png
 
 Erase duplicate tiles from an input image.
--f|--flip counts X/Y mirrored tiles as duplicates.
--x|--cross erases with a cross instead of a blank tile.
+-f or --flip counts X/Y mirrored tiles as duplicates.
+-x or --cross erases with a cross instead of a blank tile.
 """
 
 import sys

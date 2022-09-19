@@ -71,7 +71,8 @@ TilesetJohto5GFX1:: INCBIN "gfx/tilesets/johto_traditional.johto_common.2bpp.vra
 TilesetJohto1GFX2::
 TilesetJohto5GFX2:: INCBIN "gfx/tilesets/johto_traditional.johto_common.2bpp.vram1.lz"
 
-TilesetJohto2GFX1:: INCBIN "gfx/tilesets/johto_modern.johto_common.2bpp.lz"
+TilesetJohto2GFX1:: INCBIN "gfx/tilesets/johto_modern.johto_common.2bpp.vram0.lz"
+TilesetJohto2GFX2:: INCBIN "gfx/tilesets/johto_modern.johto_common.2bpp.vram1.lz"
 
 TilesetJohto3GFX1:: INCBIN "gfx/tilesets/johto_overcast.johto_common.2bpp.lz"
 
@@ -480,7 +481,6 @@ TilesetBattleFactoryColl:: INCBIN "data/tilesets/battle_factory_collision.bin.lz
 SECTION "Unused Tileset Data", ROM0
 
 ; None of these tilesets need GFX2, so consolidate them here.
-TilesetJohto2GFX2::
 TilesetJohto3GFX2::
 TilesetJohto4GFX2::
 TilesetKanto1GFX2::

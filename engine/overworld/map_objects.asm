@@ -554,7 +554,7 @@ endr
 	dw .MovementBigGyarados          ; SPRITEMOVEFN_BIG_GYARADOS
 	dw .StandingFlip                 ; SPRITEMOVEFN_STANDING_FLIP
 	dw .MovementPokecomNews          ; SPRITEMOVEFN_POKECOM_NEWS
-	dw .MovementArchTree             ; SPRITEMOVEFN_ARCH_TREE
+	dw .MovementMuseumDrill          ; SPRITEMOVEFN_MUSEUM_DRILL
 	dw .MovementSailboatTop          ; SPRITEMOVEFN_SAILBOAT_TOP
 	dw .MovementSailboatBottom       ; SPRITEMOVEFN_SAILBOAT_BOTTOM
 	assert_table_length NUM_SPRITEMOVEFN
@@ -754,8 +754,8 @@ endr
 	ld a, OBJECT_ACTION_FRUIT
 	jr ._ActionA_StepFunction_Standing
 
-.MovementArchTree:
-	ld a, OBJECT_ACTION_ARCH_TREE
+.MovementMuseumDrill:
+	ld a, OBJECT_ACTION_MUSEUM_DRILL
 	jr ._ActionA_StepFunction_Standing
 
 .MovementSailboatTop:
