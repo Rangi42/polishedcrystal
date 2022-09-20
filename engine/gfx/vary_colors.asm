@@ -193,17 +193,18 @@ VaryColorsByDVs::
 ; [wColorVaryForm] = form
 ; [wColorVaryShiny] = shiny
 
-if DEF(MONOCHROME) || DEF(NOIR)
-	inc hl
-	inc hl
-	inc hl
-	inc hl
-endc
-
+if !DEF(MONOCHROME) && !DEF(NOIR)
 	ld a, [wInitialOptions]
 	bit COLOR_VARY_OPT, a
-	ret z
+	jr nz, .continue
+endc
+	inc hl
+	inc hl
+	inc hl
+	inc hl
+	ret
 
+.continue
 	ldh a, [rSVBK]
 	push af
 	ld a, $5
