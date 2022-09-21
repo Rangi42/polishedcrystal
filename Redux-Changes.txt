@@ -1,0 +1,13 @@
+
+* Remove Lyra: ElmsLab.asm, NewbarkTown.asm, Route34.asm, Route34DayCare.asm, IndigoPlateau Center, phone calls (maybe not? Simply change the girlfriend/boyfriend lines in DayCare)
+
+* Replace Sylveon in the intro menu with another Pokemon (possibly Espeon, originally Wooper) (engine/menus/intro_menu.asm)
+* Remove Cosplayer trainers from the Underground ASM map file
+* Remove the line about the Rival dropping his Trainer Card (CherrygroveCity.asm, remove AfterFight2 stuff)
+* Change TitleScreen song to remain the same after E4 (engine/menus/intro_menu.asm -1053)
+* Changed E4 and Champion to the original Crystal ones, made Agatha and Lorelei use the Gen 1 Kanto Gym Leader track, and Red now uses the Gen 1 Champion theme instead of whatever the current one was. (audio/music.asm, audio/music/rby/songs-here, music_constants.asm, data/music_player/song_info.asm, /data/battle/music.asm - trainers, music_pointers)
+* Change Version and Logo to Original Crystal's (gfx/title)
+* Reimplement new sprites for the 251 Pokemon (gfx/pokemon)
+* Pikachu_pika corresponds to Pikachu_Red. Replace the sprite with my custom Yellow animated sprite (gfx/pokemon/pikachu_pika)
+* Reorder the Trainer Card for the Kanto Gym Leaders (engine/menus , gfx/trainer_card)
+* Flip Bellossom's normal and shiny palettes (same for ending credits colors) (gfx/pokemon/bellossom/normal-shiny.pal)
