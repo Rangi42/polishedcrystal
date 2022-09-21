@@ -131,4 +131,4 @@ VWFWidths:
 
 VWFCharacterGFX:
 INCBIN "gfx/font/space.1bpp"
-INCBIN "gfx/font/vwf.1bpp"
+INCBIN "gfx/font/vwf_bw.1bpp"
