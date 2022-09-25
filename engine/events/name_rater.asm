@@ -90,7 +90,7 @@ NameRater:
 .done
 	jmp PrintText
 
-CheckIfMonIsYourOT:
+CheckIfMonIsYourOT::
 ; Checks to see if the partymon loaded in [wCurPartyMon] has the different OT as you.  Returns carry if not.
 	ld hl, wPartyMonOTs
 	ld bc, NAME_LENGTH

@@ -4642,7 +4642,7 @@ endr
 	jr z, .fled
 	xor a
 	ld [wBattlePlayerAction], a
-	ld a, $f
+	ld a, BATTLEACTION_FORFEIT
 	ld [wCurMoveNum], a
 	xor a
 	ld [wCurPlayerMove], a
