@@ -4648,3 +4648,10 @@ AlreadyInThatBallTextData::
 	text "Your #mon is in"
 	line "that Ball already."
 	prompt
+
+SECTION "CantChangeTradedMonBallTextData", ROMX
+CantChangeTradedMonBallTextData::
+	text "You can't change"
+	line "the Ball a traded"
+	cont "#mon is in."
+	prompt
