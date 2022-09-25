@@ -363,16 +363,21 @@ IndigoPlateauYellowScript:
 	checkevent EVENT_GOT_CHARMANDER_FROM_IVY
 	iftruefwd .Bulbasaur
 	givepoke CHARMANDER, PLAIN_FORM, 10, SITRUS_BERRY
+	iffalse_jumpopenedtext .PartyAndBoxFullText
+	getmonname CHARMANDER, STRING_BUFFER_3
 	sjumpfwd .Finish
 
 .Bulbasaur:
 	givepoke BULBASAUR, PLAIN_FORM, 10, SITRUS_BERRY
+	iffalse_jumpopenedtext .PartyAndBoxFullText
+	getmonname BULBASAUR, STRING_BUFFER_3
 	sjumpfwd .Finish
 
 .Squirtle:
 	givepoke SQUIRTLE, PLAIN_FORM, 10, SITRUS_BERRY
-.Finish:
 	iffalse_jumpopenedtext .PartyAndBoxFullText
+	getmonname SQUIRTLE, STRING_BUFFER_3
+.Finish:
 	writetext .GoodbyeText
 	waitbutton
 	closetext
