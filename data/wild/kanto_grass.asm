@@ -762,26 +762,26 @@
 	wildmon LEVEL_FROM_BADGES - 1, TOGETIC
 	wildmon LEVEL_FROM_BADGES - 2, CHANSEY
 	wildmon LEVEL_FROM_BADGES + 0, CHANSEY
-	wildmon LEVEL_FROM_BADGES + 1, TOGEKISS
-	wildmon LEVEL_FROM_BADGES + 2, TOGEKISS
-	wildmon LEVEL_FROM_BADGES + 1, BLISSEY
-	wildmon LEVEL_FROM_BADGES + 3, BLISSEY
+	wildmon LEVEL_FROM_BADGES - 3, HAPPINY
+	wildmon LEVEL_FROM_BADGES - 3, HAPPINY
+	wildmon LEVEL_FROM_BADGES - 3, TOGEPI
+	wildmon LEVEL_FROM_BADGES + 2, BLISSEY
 	; day
 	wildmon LEVEL_FROM_BADGES - 1, TOGETIC
 	wildmon LEVEL_FROM_BADGES - 2, CHANSEY
 	wildmon LEVEL_FROM_BADGES + 0, CHANSEY
-	wildmon LEVEL_FROM_BADGES + 1, TOGEKISS
-	wildmon LEVEL_FROM_BADGES + 2, TOGEKISS
-	wildmon LEVEL_FROM_BADGES + 1, BLISSEY
-	wildmon LEVEL_FROM_BADGES + 3, BLISSEY
+	wildmon LEVEL_FROM_BADGES - 3, HAPPINY
+	wildmon LEVEL_FROM_BADGES - 3, HAPPINY
+	wildmon LEVEL_FROM_BADGES - 3, TOGEPI
+	wildmon LEVEL_FROM_BADGES + 2, BLISSEY
 	; nite
 	wildmon LEVEL_FROM_BADGES - 1, TOGETIC
 	wildmon LEVEL_FROM_BADGES - 2, CHANSEY
 	wildmon LEVEL_FROM_BADGES + 0, CHANSEY
-	wildmon LEVEL_FROM_BADGES + 1, TOGEKISS
-	wildmon LEVEL_FROM_BADGES + 2, TOGEKISS
-	wildmon LEVEL_FROM_BADGES + 1, BLISSEY
-	wildmon LEVEL_FROM_BADGES + 3, BLISSEY
+	wildmon LEVEL_FROM_BADGES - 3, MEOWTH, ALOLAN_FORM
+	wildmon LEVEL_FROM_BADGES - 2, MEOWTH, ALOLAN_FORM
+	wildmon LEVEL_FROM_BADGES - 1, MEOWTH, ALOLAN_FORM
+	wildmon LEVEL_FROM_BADGES + 0, PERSIAN, ALOLAN_FORM
 	end_grass_wildmons
 
 	def_grass_wildmons ROUTE_15
@@ -1179,25 +1179,25 @@
 	def_grass_wildmons CELADON_OUTSKIRTS
 	db 10 percent, 10 percent, 10 percent ; encounter rates: morn/day/nite
 	; morn
-	wildmon 49, PERSIAN, ALOLAN_FORM
+	wildmon 49, PERSIAN
 	wildmon 49, FEAROW
-	wildmon 51, MEOWTH, ALOLAN_FORM
+	wildmon 51, MEOWTH
 	wildmon 54, VULPIX
 	wildmon 54, JIGGLYPUFF
 	wildmon 52, GRANBULL
 	wildmon 51, WIGGLYTUFF
 	; day
-	wildmon 49, PERSIAN, ALOLAN_FORM
+	wildmon 49, PERSIAN
 	wildmon 49, FEAROW
-	wildmon 51, MEOWTH, ALOLAN_FORM
+	wildmon 51, MEOWTH
 	wildmon 54, VULPIX
 	wildmon 54, JIGGLYPUFF
 	wildmon 52, GRANBULL
 	wildmon 51, WIGGLYTUFF
 	; nite
-	wildmon 49, PERSIAN, ALOLAN_FORM
+	wildmon 49, PERSIAN
 	wildmon 49, MURKROW
-	wildmon 51, MEOWTH, ALOLAN_FORM
+	wildmon 51, MEOWTH
 	wildmon 54, VULPIX
 	wildmon 54, JIGGLYPUFF
 	wildmon 52, HOUNDOUR

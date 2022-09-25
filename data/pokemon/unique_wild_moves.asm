@@ -11,7 +11,6 @@ UniqueWildMoves:
 	unique_moves MAHOGANY_TOWN,    KOFFING,    EXPLOSION    ; TeamRocketBaseB1F
 	unique_moves MAHOGANY_TOWN,    GEODUDE,    EXPLOSION    ; TeamRocketBaseB1F
 	unique_moves UNION_CAVE,       LAPRAS,     SHELL_SMASH  ; UnionCaveB2F, Fridays
-	unique_moves YELLOW_FOREST,    PIKACHU,    FLY          ; replaced with Surf if Surfing
 	; wild mons
 	unique_moves CHERRYGROVE_BAY,  CORSOLA,    SUCKER_PUNCH ; HGSS tutor move
 	unique_moves SPROUT_TOWER,     BELLSPROUT, GROWTH       ; knows Growth early
@@ -31,6 +30,7 @@ UniqueWildMoves:
 	unique_moves BURNED_TOWER,     0,          0
 	unique_moves WHIRL_ISLANDS,    0,          0
 	unique_moves CLIFF_CAVE,       0,          0
+	unique_moves YELLOW_FOREST,    PIKACHU,    FLY          ; replaced with Surf if Surfing
 	unique_moves QUIET_CAVE,       MUNCHLAX,   GIGA_IMPACT  ; Snorlax move
 	unique_moves MT_MORTAR,        0,          0
 	unique_moves LAKE_OF_RAGE,     MAGIKARP,   HYDRO_PUMP   ; Pokéwalker move
