@@ -20,7 +20,7 @@ FishGroups:
 	fishgroup 60 percent, (60 + 3) percent, .WhirlIslands_Old,     .WhirlIslands_Good,     .WhirlIslands_Super
 	fishgroup 60 percent, (60 + 3) percent, .Qwilfish_Old,         .Qwilfish_Good,         .Qwilfish_Super
 	fishgroup 60 percent, (60 + 3) percent, .Remoraid_Old,         .Remoraid_Good,         .Remoraid_Super
-	fishgroup 65 percent, (65 + 5) percent, .Qwilfish_NoSwarm_Old, .Qwilfish_NoSwarm_Good, .Qwilfish_NoSwarm_Super
+	fishgroup 65 percent, (65 + 5) percent, .Hisuian_Qwilfish_Old, .Hisuian_Qwilfish_Good, .Hisuian_Qwilfish_Super
 	assert_table_length NUM_FISHGROUPS
 
 MACRO fishentry
@@ -188,18 +188,15 @@ ENDM
 	fishentry  90 percent + 1, KINGLER,    40
 	fishentry 100 percent,     SEADRA,     40
 
-.Qwilfish_NoSwarm_Old:
 .Qwilfish_Old:
 	fishentry  70 percent + 1, MAGIKARP,   10
 	fishentry  85 percent + 1, MAGIKARP,   10
 	fishentry 100 percent,     TENTACOOL,  10
-.Qwilfish_NoSwarm_Good:
 .Qwilfish_Good:
 	fishentry  35 percent,     MAGIKARP,   20
 	fishentry  70 percent,     TENTACOOL,  20
 	fishentry  90 percent + 1, TENTACOOL,  20
 	fishentry 100 percent,     TENTACOOL,  20
-.Qwilfish_NoSwarm_Super:
 .Qwilfish_Super:
 	fishentry  40 percent,     TENTACOOL,  40
 	fishentry  70 percent,     TENTACOOL,  40
@@ -220,6 +217,21 @@ ENDM
 	fishentry  70 percent,     POLIWAG,    40
 	fishentry  90 percent + 1, MAGIKARP,   40
 	fishentry 100 percent,     REMORAID,   40
+
+.Hisuian_Qwilfish_Old:
+	fishentry  70 percent + 1, MAGIKARP,   10
+	fishentry  85 percent + 1, MAGIKARP,   10
+	fishentry 100 percent,     TENTACOOL,  10
+.Hisuian_Qwilfish_Good:
+	fishentry  35 percent,     MAGIKARP,   20
+	fishentry  70 percent,     TENTACOOL,  20
+	fishentry  90 percent + 1, HORSEA,     20
+	fishentry 100 percent,     QWILFISH,   HISUIAN_FORM,   20
+.Hisuian_Qwilfish_Super:
+	fishentry  40 percent,     TENTACRUEL, 40
+	fishentry  70 percent,     SEADRA,     40
+	fishentry  90 percent + 1, QWILFISH,   HISUIAN_FORM,   40
+	fishentry 100 percent,     OVERQWIL,   40
 
 FishItems:
 	db PEARL
