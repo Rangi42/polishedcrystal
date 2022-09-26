@@ -101,7 +101,7 @@ FastShip1FSailor1Script:
 	waitsfx
 	setevent EVENT_OLIVINE_PORT_SAILOR_AT_GANGWAY
 	setmapscene OLIVINE_PORT, $1
-	warp OLIVINE_PORT, 7, 23
+	warp OLIVINE_PORT, 7, 19
 	end
 
 .LetThePlayerOut:

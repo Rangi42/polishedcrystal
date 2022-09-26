@@ -334,17 +334,16 @@ ENDM
 	map_const PEWTER_MUSEUM_OF_SCIENCE_2F,                 7,  4 ; 11
 
 	newgroup                                                     ; 15
-	map_const OLIVINE_PORT,                               10, 16 ;  1
+	map_const OLIVINE_PORT,                               10, 12 ;  1
 	map_const VERMILION_PORT,                             15, 13 ;  2
 	map_const FAST_SHIP_1F,                               16,  9 ;  3
 	map_const FAST_SHIP_CABINS_NNW_NNE_NE,                 4, 16 ;  4
 	map_const FAST_SHIP_CABINS_SW_SSW_NW,                  4, 16 ;  5
 	map_const FAST_SHIP_CABINS_SE_SSE_CAPTAINS_CABIN,      5, 17 ;  6
 	map_const FAST_SHIP_B1F,                              14,  7 ;  7
-	map_const OLIVINE_PORT_PASSAGE,                        4, 15 ;  8
-	map_const MOUNT_MOON_SQUARE,                          15,  9 ;  9
-	map_const MOUNT_MOON_GIFT_SHOP,                        4,  4 ; 10
-	map_const TIN_TOWER_ROOF,                              7,  9 ; 11
+	map_const MOUNT_MOON_SQUARE,                          15,  9 ;  8
+	map_const MOUNT_MOON_GIFT_SHOP,                        4,  4 ;  9
+	map_const TIN_TOWER_ROOF,                              7,  9 ; 10
 
 	newgroup                                                     ; 16
 	map_const ROUTE_23,                                   12, 70 ;  1
