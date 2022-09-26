@@ -14,9 +14,9 @@ OlivineCity_MapScriptHeader:
 	warp_event 19, 13, OLIVINE_MART, 2
 	warp_event 33, 19, OLIVINE_LIGHTHOUSE_1F, 1
 	warp_event 18, 31, OLIVINE_PORT, 1
-	warp_event 19, 31, OLIVINE_PORT, 1
+	warp_event 19, 31, OLIVINE_PORT, 2
 	warp_event 20, 31, OLIVINE_PORT, 3
-	warp_event 21, 31, OLIVINE_PORT, 3
+	warp_event 21, 31, OLIVINE_PORT, 4
 
 	def_coord_events
 	coord_event 10,  8, 0, OlivineCityRivalGymScript

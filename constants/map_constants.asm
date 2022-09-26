@@ -334,7 +334,7 @@ ENDM
 	map_const PEWTER_MUSEUM_OF_SCIENCE_2F,                 7,  4 ; 11
 
 	newgroup                                                     ; 15
-	map_const OLIVINE_PORT,                               10, 12 ;  1
+	map_const OLIVINE_PORT,                               10, 10 ;  1
 	map_const VERMILION_PORT,                             15, 13 ;  2
 	map_const FAST_SHIP_1F,                               16,  9 ;  3
 	map_const FAST_SHIP_CABINS_NNW_NNE_NE,                 4, 16 ;  4
