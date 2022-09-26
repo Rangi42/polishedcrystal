@@ -353,7 +353,8 @@ DEF LEVEL_FROM_BADGES EQU 178 ; allows ±77 in either direction
 	const TREEMON_SET_KANTO
 	const TREEMON_SET_LAKE
 	const TREEMON_SET_FOREST
-	const TREEMON_SET_ROCK
+	const TREEMON_SET_NOISY_FOREST
+	const TREEMON_SET_ROCK ; must be last
 DEF NUM_TREEMON_SETS EQU const_value
 
 ; treemon scores
