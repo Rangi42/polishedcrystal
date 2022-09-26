@@ -8,6 +8,7 @@ TreeMons:
 	dw TreeMonSet_Kanto
 	dw TreeMonSet_Lake
 	dw TreeMonSet_Forest
+	dw TreeMonSet_NoisyForest
 	dw TreeMonSet_Rock
 	assert_table_length NUM_TREEMON_SETS
 	dw TreeMonSet_City ; unused
@@ -17,7 +18,12 @@ TreeMons:
 MACRO tree_mon
 ; %, species, level
 	db \1
-	dp \2
+	if _NARG == 4
+		dp \2, \3
+		shift
+	else
+		dp \2
+	endc
 	db \3
 ENDM
 
@@ -122,6 +128,17 @@ TreeMonSet_Forest:
 	tree_mon 10, HOOTHOOT,   10
 	tree_mon  5, METAPOD,    10
 	tree_mon  5, KAKUNA,     10
+	db -1
+
+TreeMonSet_NoisyForest:
+	tree_mon 60, PINECO,                LEVEL_FROM_BADGES - 3
+	tree_mon 35, VOLTORB, HISUIAN_FORM, LEVEL_FROM_BADGES - 3
+	tree_mon  5, FORRETRESS,            LEVEL_FROM_BADGES + 2
+	db -1
+	; rare
+	tree_mon 60, VOLTORB, HISUIAN_FORM, LEVEL_FROM_BADGES - 2
+	tree_mon 30, PINECO,                LEVEL_FROM_BADGES - 2
+	tree_mon 10, FORRETRESS,            LEVEL_FROM_BADGES + 3
 	db -1
 
 TreeMonSet_Rock:
