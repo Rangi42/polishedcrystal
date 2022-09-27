@@ -428,6 +428,7 @@ SelectTreeMon:
 	ld [wTempWildMonSpecies], a
 	ld a, [hli]
 	ld [wCurForm], a
+	ld [wWildMonForm], a
 	ld a, [hl]
 	farcall AdjustLevelForBadges
 	ld [wCurPartyLevel], a
