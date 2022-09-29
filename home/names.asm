@@ -177,7 +177,7 @@ GetWingName::
 	ld a, [wNamedObjectIndex]
 	ld [wCurSpecies], a
 	ld a, WING_NAME
-	jr PutNameInBufferAndGetName
+	; fallthrough
 PutNameInBufferAndGetName::
 	push hl
 	push bc
