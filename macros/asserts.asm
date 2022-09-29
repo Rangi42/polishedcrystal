@@ -82,13 +82,8 @@ MACRO wildmon
 ENDM
 
 MACRO jmp
-	if _NARG == 1
-		jp \1
-	else
-		jp \1, \2
-		shift
-	endc
+	jp \#
 	if DEF(DEBUG)
-		assert warn, (\1) - @ > 127 || (\1) - @ < -129, "jp can be jr"
+		assert warn, (\<_NARG>) - @ > 127 || (\<_NARG>) - @ < -129, "jp can be jr"
 	endc
 ENDM
