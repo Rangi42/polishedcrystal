@@ -5516,12 +5516,6 @@ BattleCommand_traptarget:
 	ret nz
 	push bc
 	push de
-	call CheckIfTargetIsGhostType
-	pop de
-	pop bc
-	ret z
-	push bc
-	push de
 	push hl
 	call GetUserItem
 	ld a, b
