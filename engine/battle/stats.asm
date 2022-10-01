@@ -261,6 +261,8 @@ UseStatItemText:
 	ld de, BattleText_ItemSeverelyLowered
 .gotmsg
 	xor a
+	pop bc
+	push bc
 	call DoPrintStatChange
 	pop bc
 	ret
