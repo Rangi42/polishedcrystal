@@ -4,7 +4,7 @@
 	db NORMAL, NORMAL ; type
 	db 30 ; catch rate
 	db 255 ; base exp
-	db NO_ITEM, LUCKY_EGG ; held items
+	db OVAL_STONE, LUCKY_EGG ; held items
 	dn GENDER_F100, HATCH_SLOWEST ; gender ratio, step cycles to hatch
 
 	abilities_for BLISSEY, NATURAL_CURE, SERENE_GRACE, NATURAL_CURE
