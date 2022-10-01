@@ -2758,12 +2758,12 @@ BattleCommand_supereffectivetext:
 
 .weakness_policy
 	call SwitchTurn
+	ld b, 0
+	push bc
 	ld a, STAT_SKIPTEXT
 	ld b, $10 | ATTACK
 	call _RaiseStat
 	ld a, [wFailedMessage]
-	ld b, 0
-	push bc
 	and a
 	jr nz, .atk_done
 	farcall UseStatItemText
