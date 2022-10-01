@@ -147,7 +147,7 @@ uint8_t *rearrange_tiles_to_scanlines(uint8_t *bpp_data, unsigned int width, uns
 void read_gbcpal(Palette palette, const char *filename) {
 	long filesize;
 	uint8_t *pal_data = read_u8(filename, &filesize);
-	if (filesize != 4 * 2) {
+	if (filesize < 4 * 2) {
 		error_exit("Invalid .gbcpal file: \"%s\"\n", filename);
 	}
 	for (int i = 0; i < 4; i++) {
