@@ -333,7 +333,20 @@ PokeBallEffect:
 
 	; Everything below this are regular wild battles
 	farcall DoesNuzlockeModePreventCapture
+if !DEF(DEBUG)
 	jmp c, Ball_NuzlockeFailureMessage
+else
+	jr nc, .NoNuzlockeCheck
+
+	ld hl, .DebugNuzlockeBypassMessage
+	call PrintText
+	jr .NoNuzlockeCheck
+
+.DebugNuzlockeBypassMessage:
+	text "(Debug) Nuzlocke"
+	line "mode bypassed."
+	prompt
+endc
 
 .NoNuzlockeCheck
 	ld a, [wEnemySubStatus3] ; BATTLE_VARS_SUBSTATUS3_OPP
