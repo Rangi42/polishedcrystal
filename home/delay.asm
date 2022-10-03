@@ -39,7 +39,7 @@ DelayFrame::
 ; Wait for the next VBlank, halting to conserve battery
 DelayFrameHalt:
 	halt
-	nop ; no-optimize nops (after halt)
+	nop
 	; fallthrough
 MaybeDelayFrame:
 ; Used in place of DelayFrame for special cases.
