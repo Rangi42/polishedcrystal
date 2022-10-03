@@ -21,7 +21,7 @@ Q :=
 
 .SECONDEXPANSION:
 
-RGBASM_FLAGS     = -EhL -Q8 -P constants.asm -Weverything -Wnumeric-string=2 -Wtruncation=1
+RGBASM_FLAGS     = -EhL -Q8 -P includes.asm -Weverything -Wnumeric-string=2 -Wtruncation=1
 RGBASM_VC_FLAGS  = $(RGBASM_FLAGS) -DVIRTUAL_CONSOLE
 RGBLINK_FLAGS    = -M -n $(ROM_NAME).sym    -m $(ROM_NAME).map    -p $(FILLER)
 RGBLINK_VC_FLAGS = -M -n $(ROM_NAME)_vc.sym -m $(ROM_NAME)_vc.map -p $(FILLER)
@@ -130,12 +130,12 @@ rgbdscheck.o: rgbdscheck.asm
 	$Q$(RGBDS_DIR)rgbasm -o $@ $<
 
 define DEP
-$1: $2 $$(shell tools/scan_includes $2) | constants.asm rgbdscheck.o
+$1: $2 $$(shell tools/scan_includes $2) | includes.asm rgbdscheck.o
 	$Q$$(RGBDS_DIR)rgbasm $$(RGBASM_FLAGS) -L -o $$@ $$<
 endef
 
 define VCDEP
-$1: $2 $$(shell tools/scan_includes $2) | constants.asm rgbdscheck.o
+$1: $2 $$(shell tools/scan_includes $2) | includes.asm rgbdscheck.o
 	$Q$$(RGBDS_DIR)rgbasm $$(RGBASM_VC_FLAGS) -L -o $$@ $$<
 endef
 

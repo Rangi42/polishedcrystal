@@ -10,10 +10,7 @@ else
 	if (__RGBDS_MAJOR__ < MAJOR) || \
 		(__RGBDS_MAJOR__ == MAJOR && __RGBDS_MINOR__ < MINOR) || \
 		(__RGBDS_MAJOR__ == MAJOR && __RGBDS_MINOR__ == MINOR && __RGBDS_PATCH__ < PATCH)
+		(__RGBDS_MAJOR__ == MAJOR && __RGBDS_MINOR__ == MINOR && __RGBDS_PATCH__ == PATCH && DEF(__RGBDS_RC__))
 		WRONG_RGBDS
-	else
-		if DEF(__RGBDS_RC__)
-			WRONG_RGBDS
-		endc
 	endc
 endc
