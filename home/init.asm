@@ -22,7 +22,7 @@ SoftReset::
 Rst0Crash:
 	xor a ; ld a, ERR_RST_0
 Crash::
-	ld b, b ; no-optimize nops (BGB breakpoint)
+	ld b, b ; no-optimize no-ops (BGB breakpoint)
 
 	ldh [hCrashCode], a
 	xor a

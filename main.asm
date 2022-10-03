@@ -1,6 +1,3 @@
-INCLUDE "constants.asm"
-
-
 SECTION "bank1", ROMX
 
 INCLUDE "engine/gfx/load_push_oam.asm"

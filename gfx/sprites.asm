@@ -1,6 +1,3 @@
-INCLUDE "constants.asm"
-
-
 SECTION "ChrisSpriteGFX", ROMX
 ChrisSpriteGFX:: INCBIN "gfx/sprites/chris.2bpp.lz"
 

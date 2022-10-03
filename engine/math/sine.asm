@@ -45,7 +45,7 @@ _Sine::
 	ret
 
 .sinewave
-; sample sin(x) from x=0 to x=pi radians
+; sample sin(x) from x=0 to x<0.5 turns (pi radians)
 for x, 32
-	dw sin(x * div(0.5, 32))
+	dw sin(x * 0.5 / 32)
 endr

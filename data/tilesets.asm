@@ -1,6 +1,3 @@
-INCLUDE "constants.asm"
-
-
 SECTION "Tileset Headers", ROMX
 
 MACRO tileset

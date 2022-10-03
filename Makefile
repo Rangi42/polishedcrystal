@@ -21,7 +21,7 @@ Q :=
 
 .SECONDEXPANSION:
 
-RGBASM_FLAGS     = -EhL -Q8 -Weverything -Wnumeric-string=2 -Wtruncation=1
+RGBASM_FLAGS     = -EhL -Q8 -P includes.asm -Weverything -Wnumeric-string=2 -Wtruncation=1
 RGBASM_VC_FLAGS  = $(RGBASM_FLAGS) -DVIRTUAL_CONSOLE
 RGBLINK_FLAGS    = -M -n $(ROM_NAME).sym    -m $(ROM_NAME).map    -p $(FILLER)
 RGBLINK_VC_FLAGS = -M -n $(ROM_NAME)_vc.sym -m $(ROM_NAME)_vc.map -p $(FILLER)
@@ -64,25 +64,25 @@ RGBASM_FLAGS += -DHUFFMAN
 endif
 
 rom_obj := \
-main.o \
-home.o \
-ram.o \
-audio.o \
-audio/music_player.o \
-data/pokemon/dex_entries.o \
-data/pokemon/egg_moves.o \
-data/pokemon/evos_attacks.o \
-data/maps/map_data.o \
-data/text/common.o \
-data/tilesets.o \
-engine/movie/credits.o \
-engine/overworld/events.o \
-gfx/minis_icons.o \
-gfx/pokemon.o \
-gfx/sprites.o \
-gfx/trainers.o \
-gfx/items.o \
-gfx/misc.o
+	main.o \
+	home.o \
+	ram.o \
+	audio.o \
+	audio/music_player.o \
+	data/pokemon/dex_entries.o \
+	data/pokemon/egg_moves.o \
+	data/pokemon/evos_attacks.o \
+	data/maps/map_data.o \
+	data/text/common.o \
+	data/tilesets.o \
+	engine/movie/credits.o \
+	engine/overworld/events.o \
+	gfx/minis_icons.o \
+	gfx/pokemon.o \
+	gfx/sprites.o \
+	gfx/trainers.o \
+	gfx/items.o \
+	gfx/misc.o
 
 crystal_obj    := $(rom_obj:.o=.o)
 crystal_vc_obj :=$(rom_obj:.o=_vc.o)
@@ -130,12 +130,12 @@ rgbdscheck.o: rgbdscheck.asm
 	$Q$(RGBDS_DIR)rgbasm -o $@ $<
 
 define DEP
-$1: $2 $$(shell tools/scan_includes $2) | rgbdscheck.o
+$1: $2 $$(shell tools/scan_includes $2) | includes.asm rgbdscheck.o
 	$Q$$(RGBDS_DIR)rgbasm $$(RGBASM_FLAGS) -L -o $$@ $$<
 endef
 
 define VCDEP
-$1: $2 $$(shell tools/scan_includes $2) | rgbdscheck.o
+$1: $2 $$(shell tools/scan_includes $2) | includes.asm rgbdscheck.o
 	$Q$$(RGBDS_DIR)rgbasm $$(RGBASM_VC_FLAGS) -L -o $$@ $$<
 endef
 

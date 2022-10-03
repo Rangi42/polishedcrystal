@@ -1,6 +1,3 @@
-INCLUDE "constants.asm"
-
-
 SECTION "BulbasaurPokedexEntry", ROMX
 BulbasaurPokedexEntry::
 	db "Seed@"

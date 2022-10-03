@@ -1,6 +1,3 @@
-INCLUDE "constants.asm"
-
-
 SECTION "_FruitBearingTreeText", ROMX
 _FruitBearingTreeText::
 	text "It's a fruit-"
