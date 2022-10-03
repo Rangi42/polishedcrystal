@@ -1,6 +1,11 @@
 MACRO evo_data
-	db \1, \2 ; evolution type, parameter
-	if (\1 == EVOLVE_STAT) || (\1 == EVOLVE_HOLDING)
+	db \1 ; evolution type
+	if \1 == EVOLVE_PARTY
+		dp \2, PLAIN_FORM ; parameter
+	else
+		db \2 ; parameter
+	endc
+	if \1 == EVOLVE_STAT || \1 == EVOLVE_HOLDING
 		db \3 ;  ATK_*_DEF | time of day
 		shift
 	endc

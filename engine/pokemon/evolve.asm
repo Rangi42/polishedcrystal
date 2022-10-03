@@ -18,7 +18,6 @@ EvolveAfterBattle:
 	and a
 	jmp z, EvolveAfterBattle_ReturnToMap
 	push af
-
 EvolveAfterBattle_MasterLoop:
 	ld hl, wCurPartyMon
 	inc [hl]
@@ -176,35 +175,41 @@ EvolveAfterBattle_MasterLoop:
 
 .party
 	ld a, [hli]
-	ld c, a
+	ld d, a ; species
+	ld a, [hli]
+	ld e, a ; ext species + form
 	push hl
-	push de
 	ld hl, wPartyMon1Species
 	ld a, [wPartyCount]
 	ld b, a
 .party_loop
 	ld a, [hl]
-	cp c
+	cp d
 	jr nz, .party_next
+	push hl
+	push de
 	ld de, MON_FORM - MON_SPECIES
 	add hl, de
 	ld a, [hl]
-	and a
+	pop de
+	pop hl
+	and SPECIESFORM_MASK
+	cp e
 	jr z, .party_ok
 .party_next
 	dec b
 	jr z, .party_no
-	ld de, PARTYMON_STRUCT_LENGTH - MON_FORM
+	push de
+	ld de, PARTYMON_STRUCT_LENGTH
 	add hl, de
+	pop de
 	jr .party_loop
 
 .party_no
-	pop de
 	pop hl
 	jmp .dont_evolve_3
 
 .party_ok
-	pop de
 	pop hl
 	jmp .proceed
 
