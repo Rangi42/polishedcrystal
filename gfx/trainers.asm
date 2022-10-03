@@ -1,6 +1,3 @@
-INCLUDE "constants.asm"
-
-
 SECTION "Trainer Pic Pointers", ROMX
 
 INCLUDE "data/trainers/pic_pointers.asm"

@@ -1,5 +1,3 @@
-INCLUDE "constants.asm"
-
 MACRO evo_data
 	db \1, \2 ; evolution type, parameter
 	if (\1 == EVOLVE_STAT) || (\1 == EVOLVE_HOLDING)
@@ -12,6 +10,7 @@ MACRO evo_data
 		dp \3, PLAIN_FORM
 	endc
 ENDM
+
 
 SECTION "Evolutions and Attacks", ROMX
 

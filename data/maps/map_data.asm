@@ -1,6 +1,3 @@
-INCLUDE "constants.asm"
-
-
 SECTION "Map Headers", ROMX
 
 INCLUDE "data/maps/maps.asm"

@@ -1,8 +1,6 @@
 ; Written by Sanqui
 ; https://github.com/froggestspirit/CrystalComplete/blob/master/misc/musicplayer.asm
 
-INCLUDE "constants.asm"
-
 DEF MP_METER0 EQU $20
 DEF MP_METER8 EQU $28
 DEF MP_DUTY0 EQU $29
