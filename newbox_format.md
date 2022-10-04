@@ -29,7 +29,7 @@ following data:
 * 0x17-0x1F: Box name (9 characters in GSC character format, no string terminator)
 * 0x20: Box theme
 
-The pointers contains either 0, for a blank slot, or 1-174, corresponding to
+The pointers contains either 0, for a blank slot, or 1-167, corresponding to
 a database entry. Each entry has a corresponding bitflag, which is unset if
 database bank 1 is referenced, set if database bank 2 is. The entry referenced
 can be somewhat arbitrary (each time a player adds a Pokémon to the storage,
