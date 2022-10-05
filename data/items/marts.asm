@@ -484,11 +484,12 @@ BattleTowerMart1:
 	db -1
 
 BattleTowerMart2:
-	db 8 ; # items
+	db 9 ; # items
 	db RARE_CANDY,   64
 	db PP_MAX,       64
 	db ABILITY_CAP,  32
 	db WEAK_POLICY,  48
+	db BLUNDRPOLICY, 48
 	db LIFE_ORB,     48
 	db FLAME_ORB,    32
 	db TOXIC_ORB,    32
@@ -509,21 +510,32 @@ BattleTowerMart3:
 ; TODO: Battle Factory items
 
 BattleFactoryMart1:
-	db 6 ; # items
+	db 7 ; # items
 	db FOCUS_BAND,   16
 	db FOCUS_SASH,   48
 	db ASSAULT_VEST, 48
 	db PROTECT_PADS, 16
 	db ROCKY_HELMET, 48
 	db SAFE_GOGGLES, 32
+	db HEAVY_BOOTS,  48
 	db -1
 
 BattleFactoryMart2:
-	db 1 ; # items
-	db POTION, 1
+	db 7 ; # items
+	db IRON_BALL,    32
+	db LAGGING_TAIL, 24
+	db RING_TARGET,  24
+	db EJECT_BUTTON, 32
+	db EJECT_PACK,   32
+	db RED_CARD,     24
+	db ROOM_SERVICE, 24
 	db -1
 
 BattleFactoryMart3:
-	db 1 ; # items
-	db POTION, 1
+	db 5 ; # items
+	db ABSORB_BULB,  16
+	db CELL_BATTERY, 16
+	db LUMINOUSMOSS, 16
+	db SNOWBALL,     16
+	db THROAT_SPRAY, 24
 	db -1
