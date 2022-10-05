@@ -74,7 +74,7 @@ TMHMMoves:
 	db STONE_EDGE   ; TM71 (Blue)
 	db VOLT_SWITCH  ; TM72 (Route 10)
 	db THUNDER_WAVE ; TM73 (Rock Tunnel)
-	db GYRO_BALL    ; TM74 (TODO: Magnet Tunnel)
+	db GYRO_BALL    ; TM74 (Magnet Tunnel)
 	db SWORDS_DANCE ; TM75 (Celadon Dept. Store)
 	assert_table_length NUM_TMS
 	db CUT          ; HM01 (Ilex Forest)
