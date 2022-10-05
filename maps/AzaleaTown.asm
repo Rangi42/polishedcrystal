@@ -34,7 +34,7 @@ AzaleaTown_MapScriptHeader:
 	object_event 11, 10, SPRITE_SILVER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_RIVAL_AZALEA_TOWN
 	object_event  6,  5, SPRITE_KURT, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, AzaleaTownKurtScript, EVENT_AZALEA_TOWN_KURT
 	object_event 21,  9, SPRITE_GRAMPS, SPRITEMOVEDATA_WANDER, 2, 1, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, AzaleaTownGrampsScript, -1
-	object_event 15, 13, SPRITE_POKEFAN_F, SPRITEMOVEDATA_WALK_UP_DOWN, 2, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_COMMAND, jumptextfaceplayer, AzaleaTownTeacherText, -1
+	object_event 15, 13, SPRITE_POKEFAN_F, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, AzaleaTownTeacherScript, -1
 	object_event  7,  9, SPRITE_CAMPER, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, AzaleaTownYoungsterText, -1
 	object_event 31,  9, SPRITE_ROCKET, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, AzaleaTownRocket1Text, EVENT_AZALEA_TOWN_SLOWPOKETAIL_ROCKET
 	object_event 10, 16, SPRITE_ROCKET, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, AzaleaTownRocket2Text, EVENT_SLOWPOKE_WELL_ROCKETS
@@ -42,6 +42,8 @@ AzaleaTown_MapScriptHeader:
 	object_event 18,  9, SPRITE_MON_ICON, SPRITEMOVEDATA_POKEMON, 0, SLOWPOKE, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, PLAIN_FORM, AzaleaTownSlowpokeScript, EVENT_AZALEA_TOWN_SLOWPOKES
 	object_event 29,  9, SPRITE_MON_ICON, SPRITEMOVEDATA_POKEMON, 0, SLOWPOKE, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, PLAIN_FORM, AzaleaTownSlowpokeScript, EVENT_AZALEA_TOWN_SLOWPOKES
 	object_event 15, 15, SPRITE_MON_ICON, SPRITEMOVEDATA_POKEMON, 0, SLOWPOKE, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, PLAIN_FORM, AzaleaTownSlowpokeScript, EVENT_AZALEA_TOWN_SLOWPOKES
+	pokemon_event 14, 12, WOOPER, SPRITEMOVEDATA_POKEMON, -1, -1, PAL_NPC_BLUE, AzaleaTownWoosterText, EVENT_SLOWPOKE_WELL_SLOWPOKES
+	pokemon_event 14, 12, QUAGSIRE, SPRITEMOVEDATA_POKEMON, -1, -1, PAL_NPC_BLUE, AzaleaTownWoosterText, EVENT_AZALEA_TOWN_SLOWPOKES
 	fruittree_event  8,  2, FRUITTREE_AZALEA_TOWN, WHT_APRICORN, PAL_NPC_SILVER
 
 	object_const_def
@@ -320,13 +322,55 @@ AzaleaTownGrampsScript:
 	line "where."
 	done
 
-AzaleaTownTeacherText:
-	text "Did you come to"
-	line "get Kurt to make"
-	cont "some Balls?"
+AzaleaTownTeacherScript:
+	checkevent EVENT_CLEARED_SLOWPOKE_WELL
+	iffalse_jumptextfaceplayer .Text1
+	checkevent EVENT_GOT_UTILUMBRELLA_IN_AZALEA
+	iftrue_jumptextfaceplayer .Text2
+	faceplayer
+	opentext
+	writetext .Text3
+	promptbutton
+	verbosegiveitem UTILUMBRELLA
+	iffalse_endtext
+	setevent EVENT_GOT_UTILUMBRELLA_IN_AZALEA
+	jumpthisopenedtext
 
-	para "A lot of people do"
-	line "just that."
+.Text2:
+	text "He has changed,"
+	line "but he'll always be"
+
+	para "my little Wooster"
+	line "to me."
+	done
+
+.Text1:
+	text "It hasn't rained"
+	line "since the Slow-"
+	cont "poke vanished."
+
+	para "My poor Wooster"
+	line "can't thrive in"
+	cont "this weather…"
+	done
+
+.Text3:
+	text "In a sudden down-"
+	line "pour, my Wooster"
+	cont "evolved!"
+
+	para "Oh? You brought"
+	line "the Slowpoke back?"
+
+	para "Thank you so"
+	line "much!"
+
+	para "Here's something"
+	line "for the weather!"
+	done
+
+AzaleaTownWoosterText:
+	text "Wooster: Gugyoo…"
 	done
 
 AzaleaTownYoungsterText:

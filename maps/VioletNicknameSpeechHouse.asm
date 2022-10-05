@@ -49,5 +49,5 @@ VioletNicknameSpeechHouseGrampsText:
 	done
 
 VioletNicknameSpeechHouseBirdText:
-	text "Strawberry: Eevee!"
+	text "Strawberry: Vui!"
 	done
