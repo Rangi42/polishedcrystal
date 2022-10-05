@@ -14,7 +14,10 @@ InitialOptionDescriptions:
 .InitialOptionDesc_Natures:
 	text "Natures raise one"
 	line "stat but lower"
-	cont "another."
+	cont "another by 10%."
+
+	para "Introduced in"
+	line "Gen 3."
 	prompt
 
 .InitialOptionDesc_Abilities:
@@ -23,18 +26,29 @@ InitialOptionDescriptions:
 
 	para "and outside of"
 	line "battle."
+
+	para "Introduced in"
+	line "Gen 3."
 	prompt
 
 .InitialOptionDesc_PSS:
 	text "Moves are physical"
 	line "or special inde-"
 	cont "pendently of type."
+
+	para "Introduced in"
+	line "Gen 4."
 	prompt
 
 .InitialOptionDesc_EVs:
-	text "EVs boost stats."
-	line "All six stats can"
-	cont "maximize EV gain."
+	text "EVs boost stats by"
+	line "up to 63 points."
+
+	para "All six stats can"
+	line "maximize EV gain."
+
+	para "Replaced stat exp-"
+	line "erience in Gen 3."
 	prompt
 
 .InitialOptionDesc_ExpScaling:
@@ -46,6 +60,9 @@ InitialOptionDescriptions:
 
 	para "and less from low-"
 	line "er leveled ones."
+
+	para "Introduced in"
+	line "Gen 5 and 7."
 	prompt
 
 .InitialOptionDesc_ColorVariation:
@@ -55,23 +72,26 @@ InitialOptionDescriptions:
 	para "have their colors"
 	line "subtly varied"
 	cont "based on IVs."
+
+	para "Inspired by"
+	line "Stadium."
 	prompt
 
 .InitialOptionDesc_PerfectIVs:
 	text "Stats are calcu-"
 	line "lated as if IVs"
 
-	para "were perfect,"
+	para "were perfect 15s,"
 	line "even for foes."
 	prompt
 
 .InitialOptionDesc_TradedMon:
 	text "Traded #mon"
-	line "will obey you,"
+	line "will obey you and"
+	cont "can be nicknamed,"
 
-	para "can be nicknamed,"
-	line "but EXP. Points"
-	cont "won't be boosted."
+	para "but Exp. Points"
+	line "won't be boosted."
 	prompt
 
 .InitialOptionDesc_NuzlockeMode:
