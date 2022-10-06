@@ -92,7 +92,7 @@ The theme order is as follows:
 
 ## Pokémon database format
 
-Each individual pokedb entry is 0x2F, or 47 bytes, long. It contains the
+Each individual pokedb entry is 0x31, or 49 bytes, long. It contains the
 following data:
 
 * 0x00: Species
