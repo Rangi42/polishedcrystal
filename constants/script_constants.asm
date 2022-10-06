@@ -222,6 +222,10 @@ DEF FIRST_BERRY_TREE EQU const_value
 	const FRUITTREE_LUCKY_ISLAND    ; 21
 	const FRUITTREE_SHAMOUTI_ISLAND ; 22
 	const FRUITTREE_ROUTE_49        ; 23
+	const FRUITTREE_ROUTE_6         ; 24
+	const FRUITTREE_ROUTE_14        ; 25
+	const FRUITTREE_ROUTE_21        ; 26
+	const FRUITTREE_ROUTE_24        ; 27
 DEF NUM_FRUIT_TREES EQU const_value - 1
 
 ; hidden grottoes

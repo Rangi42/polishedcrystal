@@ -136,7 +136,7 @@ MACRO fruittree_event
 	if _NARG == 5
 		object_event \1, \2, SPRITE_BALL_CUT_FRUIT, SPRITEMOVEDATA_FRUIT, 0, \3 - 1, -1, -1, \5, OBJECTTYPE_COMMAND, fruittree, \3, \4, -1
 	else
-		object_event \1, \2, SPRITE_BALL_CUT_FRUIT, SPRITEMOVEDATA_FRUIT, 0, \3 - 1, -1, -1, \5, OBJECTTYPE_COMMAND, fruittree, \3, \4, \6
+		object_event \1, \2, SPRITE_BALL_CUT_FRUIT, SPRITEMOVEDATA_FRUIT, 0, \3 - 1, -1, (1 << \6), \5, OBJECTTYPE_COMMAND, fruittree, \3, \4, \7
 	endc
 ENDM
 

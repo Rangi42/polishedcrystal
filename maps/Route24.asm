@@ -27,10 +27,11 @@ Route24_MapScriptHeader:
 	coord_event 25, 23, 1, Route24BridgeOverheadTrigger
 
 	def_bg_events
-	bg_event 16,  5, BGEVENT_ITEM + POTION, EVENT_ROUTE_24_HIDDEN_POTION
+	bg_event 15, 19, BGEVENT_ITEM + MAX_POTION, EVENT_ROUTE_24_HIDDEN_MAX_POTION
 
 	def_object_events
 	object_event 21, 25, SPRITE_ROCKET, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, OBJECTTYPE_TRAINER, 1, TrainerGruntM31, EVENT_ROUTE_24_ROCKET
+	fruittree_event 16,  5, FRUITTREE_ROUTE_24, LANSAT_BERRY, PAL_NPC_RED
 
 	object_const_def
 	const ROUTE24_ROCKET
