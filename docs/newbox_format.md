@@ -148,15 +148,15 @@ going to crash by trying to interpret its data.
 Each pokedb Pokémon entry is checksummed. The checksum is calculated as follows:
 
 * Start with 127
-* For bytes 0x00-0x1D, add the value times (byte + 1)
-* For bytes 0x1E-0x2E, add the value of the lower 7 bits times (byte + 2)
+* For bytes 0x00-0x1F, add the value times (byte + 1)
+* For bytes 0x20-0x30, add the value of the lower 7 bits times (byte + 2)
 * Clamp to 2 bytes (so 2 remains 2, 65536 becomes 0, etc)
 * Treat the 2 bytes as a series of bits
-* Write the most significant bit to 0x1E's most significant bit
-* Continue with the 2nd most significant bit to the most significant bit in 0x1F
+* Write the most significant bit to 0x20's most significant bit
+* Continue with the 2nd most significant bit to the most significant bit in 0x21
 * Continue like this for the rest of the name fields
-* Note that since 0x2E would be the 17th bit, and we only keep 16, its MSB is
-  unset. It is still considered an invalid checksum if 0x2E's MSB is set when
+* Note that since 0x30 would be the 17th bit, and we only keep 16, its MSB is
+  unset. It is still considered an invalid checksum if 0x30's MSB is set when
   decoded.
 
 Having a checksum starting point of 127 ensures that a completely blank entry,
