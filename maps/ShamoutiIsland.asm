@@ -25,7 +25,7 @@ ShamoutiIsland_MapScriptHeader:
 	pokemon_event 25, 14, MARILL, SPRITEMOVEDATA_POKEMON, -1, -1, PAL_NPC_BLUE, ShamoutiIslandPikabluText, EVENT_SHAMOUTI_ISLAND_PIKABLU_GUY
 	object_event 20,  2, SPRITE_FAT_GUY, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, (1 << DAY), PAL_NPC_BROWN, OBJECTTYPE_COMMAND, jumptextfaceplayer, ShamoutiIslandFisherText, -1
 	object_event 23,  2, SPRITE_FAT_GUY, SPRITEMOVEDATA_SPINCOUNTERCLOCKWISE, 0, 0, -1, (1 << DAY), PAL_NPC_BROWN, OBJECTTYPE_COMMAND, jumptextfaceplayer, ShamoutiIslandFisherText, -1
-	object_event 12, 15, SPRITE_GRAMPS, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_COMMAND, pokemart, MARTTYPE_BAZAAR, MART_SHAMOUTI_1, -1
+	object_event 12, 15, SPRITE_GRAMPS, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, ShamoutiIslandGrampsScript, -1
 	object_event  9, 16, SPRITE_COOL_DUDE, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_COMMAND, pokemart, MARTTYPE_BAZAAR, MART_SHAMOUTI_2, -1
 
 	object_const_def
@@ -68,6 +68,14 @@ ShamoutiIslandVileplumeScript:
 .WokeUpText:
 	text "Vileplume woke up!"
 	done
+
+ShamoutiIslandGrampsScript:
+	checkevent EVENT_GOT_ODD_SOUVENIR_FROM_PIKABLU_GUY
+	iftruefwd .souvenir
+	pokemart MARTTYPE_BAZAAR, MART_SHAMOUTI_1
+
+.souvenir
+	pokemart MARTTYPE_BAZAAR, MART_SHAMOUTI_1_SOUVENIR
 
 ShamoutiIslandYoungsterScript:
 	checkevent EVENT_GOT_ODD_SOUVENIR_FROM_PIKABLU_GUY
