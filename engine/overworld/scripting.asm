@@ -2599,7 +2599,9 @@ Script_loadgrottomon:
 	call PlayCry
 	ld a, (1 << 7)
 	ld [wBattleScriptFlags], a
+	farcall SetBadgeBaseLevel
 	farcall GetCurHiddenGrottoLevel
+	farcall AdjustLevelForBadges
 	ld [wCurPartyLevel], a
 	ret
 
