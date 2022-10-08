@@ -143,6 +143,12 @@ LoadApricornIconPalette:
 	ld bc, ApricornIconPalettes
 	jr LoadIconPalette
 
+LoadWingIconPalette:
+	ld a, [wCurWing]
+	dec a
+	ld bc, WingIconPalettes
+	jr LoadIconPalette
+
 LoadItemIconPalette:
 	ld a, [wCurSpecies]
 	ld bc, ItemIconPalettes

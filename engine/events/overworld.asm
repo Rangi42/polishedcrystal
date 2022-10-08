@@ -1389,7 +1389,8 @@ AutoHeadbuttScript:
 	callasm TreeItemEncounter
 	iffalsefwd .no_item
 	opentext
-	farwritetext _ReceivedItemText
+	farwritetext _FoundWingsText
+	special ShowWingIcon
 	specialsound
 	waitbutton
 	endtext

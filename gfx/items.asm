@@ -695,6 +695,9 @@ TMHMIcon:: INCBIN "gfx/items/tm_hm.2bpp.lz"
 SECTION "ApricornIcon", ROMX
 ApricornIcon:: INCBIN "gfx/items/apricorn.2bpp.lz"
 
+SECTION "WingIcon", ROMX
+WingIcon:: INCBIN "gfx/items/wing.2bpp.lz"
+
 SECTION "ParkBallIcon", ROMX
 ParkBallIcon:: INCBIN "gfx/items/park_ball.2bpp.lz"
 

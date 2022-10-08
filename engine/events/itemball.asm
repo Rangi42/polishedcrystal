@@ -37,14 +37,6 @@ FindItemInBallScript::
 	ldh [hScriptVar], a
 	ret
 
-ShowItemIcon::
-	ld a, [wCurItem]
-	; fallthrough
-ShowItemIconFromA:
-	call LoadItemIconForOverworld
-	farcall LoadItemIconPalette
-	jmp PrintOverworldItemIcon
-
 FindKeyItemInBallScript::
 	callasm .ReceiveKeyItem
 	disappear LAST_TALKED
@@ -70,12 +62,6 @@ FindKeyItemInBallScript::
 	ld a, $1
 	ldh [hScriptVar], a
 	ret
-
-ShowKeyItemIcon::
-	ld a, [wCurKeyItem]
-	call LoadKeyItemIconForOverworld
-	farcall LoadKeyItemIconPalette
-	jmp PrintOverworldItemIcon
 
 FindTMHMInBallScript::
 	callasm .ReceiveTMHM
@@ -119,9 +105,3 @@ FindTMHMInBallScript::
 	ld a, $1
 	ldh [hScriptVar], a
 	ret
-
-ShowTMHMIcon::
-	ld a, [wCurTMHM]
-	call LoadTMHMIconForOverworld
-	farcall LoadTMHMIconPalette
-	jmp PrintOverworldItemIcon

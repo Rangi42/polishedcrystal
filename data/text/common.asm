@@ -3519,6 +3519,15 @@ _PocketIsFullText::
 	line "is full…"
 	prompt
 
+SECTION "_FoundWingsText", ROMX
+_FoundWingsText::
+	text "<PLAYER> got "
+	text_decimal wCurWingQuantity, 1, 1
+	line ""
+	text_ram wStringBuffer4
+	text "."
+	done
+
 SECTION "_CongratulationsYourPokemonText", ROMX
 _CongratulationsYourPokemonText::
 	text "Congratulations!"

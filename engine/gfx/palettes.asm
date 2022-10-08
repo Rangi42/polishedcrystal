@@ -77,10 +77,19 @@ INCLUDE "gfx/items/key_items.pal"
 	assert_table_length NUM_KEY_ITEMS
 
 TMHMTypeIconPals:
+	table_width PAL_COLOR_SIZE * 2, TMHMTypeIconPals
 INCLUDE "gfx/items/tm_hm_types.pal"
+	assert_table_length NUM_TYPES
 
 ApricornIconPalettes:
+	table_width PAL_COLOR_SIZE * 2, ApricornIconPalettes
 INCLUDE "gfx/items/apricorns.pal"
+	assert_table_length NUM_APRICORNS
+
+WingIconPalettes:
+	table_width PAL_COLOR_SIZE * 2, WingIconPalettes
+INCLUDE "gfx/items/wings.pal"
+	assert_table_length NUM_WINGS
 
 PokegearPals:
 INCLUDE "gfx/pokegear/pokegear.pal"

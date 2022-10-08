@@ -52,6 +52,11 @@ LoadTMHMIconForOverworld::
 	lb bc, BANK(TMHMIcon), 9
 	jr _DecompressItemIconForOverworld
 
+LoadWingIconForOverworld::
+	ld hl, WingIcon
+	lb bc, BANK(WingIcon), 9
+	jr _DecompressItemIconForOverworld
+
 LoadItemIconForOverworld::
 	ld hl, ItemIconPointers
 _LoadItemOrKeyItemIconForOverworld:
@@ -131,6 +136,31 @@ WhiteOutDecompressedItemIconCorners:
 	ld [hl], a
 	ret
 
+ShowItemIcon::
+	ld a, [wCurItem]
+	; fallthrough
+ShowItemIconFromA:
+	call LoadItemIconForOverworld
+	farcall LoadItemIconPalette
+	jr PrintOverworldItemIcon
+
+ShowKeyItemIcon::
+	ld a, [wCurKeyItem]
+	call LoadKeyItemIconForOverworld
+	farcall LoadKeyItemIconPalette
+	jr PrintOverworldItemIcon
+
+ShowTMHMIcon::
+	ld a, [wCurTMHM]
+	call LoadTMHMIconForOverworld
+	farcall LoadTMHMIconPalette
+	jr PrintOverworldItemIcon
+
+ShowWingIcon:
+	ld a, [wCurWing]
+	call LoadWingIconForOverworld
+	farcall LoadWingIconPalette
+	; fallthrough
 PrintOverworldItemIcon:
 	call SetPalettes
 	ld a, "▲"
