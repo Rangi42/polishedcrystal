@@ -11,6 +11,7 @@ Route36_MapScriptHeader:
 	warp_event 52, 13, ROUTE_36_RUINS_OF_ALPH_GATE, 2
 	warp_event 61,  8, ROUTE_36_VIOLET_GATE, 1
 	warp_event 61,  9, ROUTE_36_VIOLET_GATE, 2
+	warp_event 30, 12, HIDDEN_TREE_GROTTO, 1
 
 	def_coord_events
 	coord_event 24,  7, 1, Route36SuicuneScript
@@ -22,7 +23,9 @@ Route36_MapScriptHeader:
 	bg_event 59,  7, BGEVENT_JUMPTEXT, Route36SignText
 	bg_event 25,  7, BGEVENT_JUMPTEXT, Route36TrainerTips1Text
 	bg_event 53,  4, BGEVENT_JUMPTEXT, Route36AdvancedTips1Text
-	bg_event 17,  3, BGEVENT_JUMPTEXT, Route36AdvancedTips2Text
+	bg_event 34,  7, BGEVENT_JUMPTEXT, Route36AdvancedTips2Text
+	bg_event 30, 11, BGEVENT_JUMPSTD, treegrotto, HIDDENGROTTO_ROUTE_36
+	bg_event 31, 11, BGEVENT_JUMPSTD, treegrotto, HIDDENGROTTO_ROUTE_36
 
 	def_object_events
 	object_event 39,  9, SPRITE_WEIRD_TREE, SPRITEMOVEDATA_SUDOWOODO, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, SudowoodoScript, EVENT_ROUTE_36_SUDOWOODO

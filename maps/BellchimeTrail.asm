@@ -9,6 +9,7 @@ BellchimeTrail_MapScriptHeader:
 	warp_event  4,  4, WISE_TRIOS_ROOM, 1
 	warp_event  4,  5, WISE_TRIOS_ROOM, 2
 	warp_event 21,  9, TIN_TOWER_1F, 1 ; hole
+	warp_event 12,  4, HIDDEN_TREE_GROTTO, 1
 
 	def_coord_events
 	coord_event 21,  9, 1, BellchimeTrailPanUpTrigger
@@ -19,6 +20,8 @@ BellchimeTrail_MapScriptHeader:
 	bg_event  9,  3, BGEVENT_JUMPTEXT, BellchimeTrailWaterText
 	bg_event  8,  6, BGEVENT_JUMPTEXT, BellchimeTrailWaterText
 	bg_event  9,  6, BGEVENT_JUMPTEXT, BellchimeTrailWaterText
+	bg_event 12,  3, BGEVENT_JUMPSTD, treegrotto, HIDDENGROTTO_BELLCHIME_TRAIL
+	bg_event 13,  3, BGEVENT_JUMPSTD, treegrotto, HIDDENGROTTO_BELLCHIME_TRAIL
 
 	def_object_events
 	object_event 16,  6, SPRITE_VALERIE, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, BellchimeTrailValerieScript, EVENT_VALERIE_BELLCHIME_TRAIL

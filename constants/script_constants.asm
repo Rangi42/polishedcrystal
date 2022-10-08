@@ -231,29 +231,28 @@ DEF NUM_FRUIT_TREES EQU const_value - 1
 ; hidden grottoes
 ; HiddenGrottoData indexes (see data/events/hidden_grottoes/grottoes.asm)
 	const_def 1
-	const HIDDENGROTTO_ROUTE_32           ; 01
-	const HIDDENGROTTO_ILEX_FOREST        ; 02
-	const HIDDENGROTTO_ROUTE_35           ; 03
-	const HIDDENGROTTO_RUINS_OF_ALPH      ; 04
-	const HIDDENGROTTO_LAKE_OF_RAGE       ; 05
-	const HIDDENGROTTO_06                 ; 06
-	const HIDDENGROTTO_07                 ; 07
-	const HIDDENGROTTO_08                 ; 08
-	const HIDDENGROTTO_09                 ; 09
-	const HIDDENGROTTO_0A                 ; 0a
-	const HIDDENGROTTO_0B                 ; 0b
-	const HIDDENGROTTO_0C                 ; 0c
-	const HIDDENGROTTO_0D                 ; 0d
-	const HIDDENGROTTO_0E                 ; 0e
-	const HIDDENGROTTO_0F                 ; 0f
-	const HIDDENGROTTO_10                 ; 10
-	const HIDDENGROTTO_11                 ; 11
-	const HIDDENGROTTO_12                 ; 12
-	const HIDDENGROTTO_13                 ; 13
-	const HIDDENGROTTO_14                 ; 14
-	const HIDDENGROTTO_15                 ; 15
-	const HIDDENGROTTO_16                 ; 16
-	const HIDDENGROTTO_17                 ; 17
+	const HIDDENGROTTO_ROUTE_32         ; 01
+	const HIDDENGROTTO_ILEX_FOREST      ; 02
+	const HIDDENGROTTO_ROUTE_35         ; 03
+	const HIDDENGROTTO_ROUTE_36         ; 04
+	const HIDDENGROTTO_CHERRYGROVE_BAY  ; 05
+	const HIDDENGROTTO_VIOLET_OUTSKIRTS ; 06
+	const HIDDENGROTTO_ROUTE_32_COAST   ; 07
+	const HIDDENGROTTO_STORMY_BEACH     ; 08
+	const HIDDENGROTTO_ROUTE_35_COAST   ; 09
+	const HIDDENGROTTO_RUINS_OF_ALPH    ; 0a
+	const HIDDENGROTTO_ROUTE_47         ; 0b
+	const HIDDENGROTTO_YELLOW_FOREST    ; 0c
+	const HIDDENGROTTO_RUGGED_ROAD      ; 0d
+	const HIDDENGROTTO_SNOWTOP_MOUNTAIN ; 0e
+	const HIDDENGROTTO_ROUTE_42         ; 0f
+	const HIDDENGROTTO_LAKE_OF_RAGE     ; 10
+	const HIDDENGROTTO_BELLCHIME_TRAIL  ; 11
+	const HIDDENGROTTO_ROUTE_44         ; 12
+	const HIDDENGROTTO_ROUTE_45         ; 13
+	const HIDDENGROTTO_ROUTE_46         ; 14
+	const HIDDENGROTTO_SINJOH_RUINS     ; 15
+	const HIDDENGROTTO_SILVER_CAVE      ; 16
 DEF NUM_HIDDEN_GROTTOES EQU const_value - 1
 
 ; describedecoration arguments

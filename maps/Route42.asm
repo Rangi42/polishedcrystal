@@ -9,6 +9,7 @@ Route42_MapScriptHeader:
 	warp_event 10,  5, MOUNT_MORTAR_1F_OUTSIDE, 1
 	warp_event 28,  9, MOUNT_MORTAR_1F_OUTSIDE, 2
 	warp_event 46,  7, MOUNT_MORTAR_1F_OUTSIDE, 3
+	warp_event 22, 10, HIDDEN_CAVE_GROTTO, 1
 
 	def_coord_events
 	coord_event 12,  6, 1, Route42LyraScript1
@@ -24,6 +25,7 @@ Route42_MapScriptHeader:
 	bg_event 45,  9, BGEVENT_JUMPTEXT, MtMortarSign2Text
 	bg_event 54,  8, BGEVENT_JUMPTEXT, Route42Sign2Text
 	bg_event 16, 11, BGEVENT_ITEM + MAX_POTION, EVENT_ROUTE_42_HIDDEN_MAX_POTION
+	bg_event 22,  9, BGEVENT_JUMPSTD, cavegrotto, HIDDENGROTTO_ROUTE_42
 
 	def_object_events
 	pokemon_event 26, 16, SUICUNE, SPRITEMOVEDATA_POKEMON, -1, -1, PAL_NPC_BLUE, ClearText, EVENT_SAW_SUICUNE_ON_ROUTE_42

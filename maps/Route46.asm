@@ -7,11 +7,13 @@ Route46_MapScriptHeader:
 	warp_event  7, 33, ROUTE_29_46_GATE, 1
 	warp_event  8, 33, ROUTE_29_46_GATE, 2
 	warp_event 14,  5, DARK_CAVE_VIOLET_ENTRANCE, 3
+	warp_event  8,  4, HIDDEN_CAVE_GROTTO, 1
 
 	def_coord_events
 
 	def_bg_events
 	bg_event  9, 27, BGEVENT_JUMPTEXT, Route46SignText
+	bg_event  8,  3, BGEVENT_JUMPSTD, cavegrotto, HIDDENGROTTO_ROUTE_45
 
 	def_object_events
 	object_event 15, 13, SPRITE_HIKER, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, Route46HikerScript, -1

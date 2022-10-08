@@ -8,6 +8,7 @@ YellowForest_MapScriptHeader:
 	def_warp_events
 	warp_event 28, 47, YELLOW_FOREST_GATE, 1
 	warp_event 29, 47, YELLOW_FOREST_GATE, 2
+	warp_event 19, 12, HIDDEN_TREE_GROTTO, 1
 
 	def_coord_events
 	coord_event 32, 16, 1, YellowForestBridgeOverheadTrigger
@@ -24,6 +25,8 @@ YellowForest_MapScriptHeader:
 	bg_event 43, 36, BGEVENT_ITEM + BALMMUSHROOM, EVENT_YELLOW_FOREST_HIDDEN_BALM_MUSHROOM
 	bg_event 32, 11, BGEVENT_ITEM + GOLD_LEAF, EVENT_YELLOW_FOREST_HIDDEN_GOLD_LEAF_1
 	bg_event  9, 40, BGEVENT_ITEM + GOLD_LEAF, EVENT_YELLOW_FOREST_HIDDEN_GOLD_LEAF_2
+	bg_event 19, 11, BGEVENT_JUMPSTD, treegrotto, HIDDENGROTTO_YELLOW_FOREST
+	bg_event 20, 11, BGEVENT_JUMPSTD, treegrotto, HIDDENGROTTO_YELLOW_FOREST
 
 	def_object_events
 	object_event  7, 24, SPRITE_WALKER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 1, YellowForestWalkerScript, EVENT_YELLOW_FOREST_WALKER

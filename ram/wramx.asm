@@ -1232,8 +1232,10 @@ wFruitTreeFlags:: flag_array NUM_FRUIT_TREES
 wNuzlockeLandmarkFlags:: flag_array NUM_LANDMARKS
 
 wHiddenGrottoContents::
-; content type, content id, content id + 1
+; dbw content type, content id
 	ds NUM_HIDDEN_GROTTOES * 3
+
+	ds 3 ; unused
 
 wCurHiddenGrotto:: db
 
