@@ -590,6 +590,7 @@ Script_verbosegiveitem:
 
 GiveItemScript:
 	farwritetext _ReceivedItemText
+	special ShowItemIcon
 	iffalsefwd .Full
 	specialsound
 	waitbutton
@@ -2493,6 +2494,7 @@ Script_verbosegivetmhm:
 
 GiveTMHMScript:
 	farwritetext _ReceivedItemText
+	special ShowTMHMIcon
 	playsound SFX_GET_TM
 	waitsfx
 	waitbutton
@@ -2685,6 +2687,7 @@ Script_verbosegivekeyitem:
 
 GiveKeyItemScript:
 	farwritetext _ReceivedItemText
+	special ShowKeyItemIcon
 	playsound SFX_KEY_ITEM
 	waitsfx
 	waitbutton

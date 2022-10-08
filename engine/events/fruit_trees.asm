@@ -65,14 +65,8 @@ PickBerryScript:
 	text_end
 
 .ShowBerryIcon:
-	ld a, [wCurFruitTree]
-	push af
 	ld a, [wCurFruit]
-	ld [wItemBallItemID], a
-	call FindItemInBallScript.ShowItemIcon
-	pop af
-	ld [wCurFruitTree], a
-	ret
+	jmp ShowItemIconFromA
 
 PickApricornScript:
 	checkkeyitem APRICORN_BOX
