@@ -1,5 +1,5 @@
 	tilecoll VOID, VOID, VOID, VOID ; 00
-	tilecoll FLOOR, FLOOR, FLOOR, FLOOR ; 01
+	tilecoll WALL, WALL, WALL, WALL ; 01
 	tilecoll FLOOR, FLOOR, FLOOR, FLOOR ; 02
 	tilecoll FLOOR, FLOOR, FLOOR, FLOOR ; 03
 	tilecoll WALL, WALL, WALL, WALL ; 04
@@ -29,4 +29,3 @@
 	tilecoll WALL, FLOOR, HEADBUTT_TREE, FLOOR ; 1c
 	tilecoll FLOOR, WALL, FLOOR, HEADBUTT_TREE ; 1d
 	tilecoll FLOOR, FLOOR, HEADBUTT_TREE, HEADBUTT_TREE ; 1e
-	tilecoll WALL, WALL, WALL, WALL ; 1f
