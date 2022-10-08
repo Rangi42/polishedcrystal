@@ -5,6 +5,7 @@ Route44_MapScriptHeader:
 
 	def_warp_events
 	warp_event 56,  7, ICE_PATH_1F, 1
+	warp_event 22,  2, HIDDEN_CAVE_GROTTO, 1
 
 	def_coord_events
 
@@ -12,6 +13,7 @@ Route44_MapScriptHeader:
 	bg_event 53,  7, BGEVENT_JUMPTEXT, Route44Sign1Text
 	bg_event  6, 10, BGEVENT_JUMPTEXT, Route44Sign2Text
 	bg_event 32,  9, BGEVENT_ITEM + ELIXIR, EVENT_ROUTE_44_HIDDEN_ELIXIR
+	bg_event 22,  1, BGEVENT_JUMPSTD, cavegrotto, HIDDENGROTTO_ROUTE_44
 
 	def_object_events
 	object_event 32,  8, SPRITE_VETERAN_M, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, Route44VeteranmScript, -1
