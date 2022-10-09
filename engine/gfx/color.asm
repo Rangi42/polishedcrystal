@@ -133,24 +133,12 @@ LoadCategoryAndTypePals:
 
 LoadKeyItemIconPalette:
 	ld a, [wCurKeyItem]
-	dec a
-	ld bc, KeyItemIconPalettes
-	jr LoadIconPalette
-
-LoadApricornIconPalette:
-	ld a, [wCurFruit]
-	dec a
-	ld bc, ApricornIconPalettes
-	jr LoadIconPalette
-
-LoadWingIconPalette:
-	ld a, [wCurWing]
-	dec a
-	ld bc, WingIconPalettes
+	ld bc, KeyItemIconPalettes - PAL_COLOR_SIZE * 2
 	jr LoadIconPalette
 
 LoadItemIconPalette:
-	ld a, [wCurSpecies]
+	ld a, [wCurItem]
+LoadItemIconPaletteFromA:
 	ld bc, ItemIconPalettes
 LoadIconPalette:
 	ld l, a

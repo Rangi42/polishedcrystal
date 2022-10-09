@@ -589,7 +589,7 @@ Script_verbosegiveitem:
 	jmp ScriptCall
 
 GiveItemScript:
-	farwritetext _ReceivedItemText
+	farwritetext _GainedItemText
 	special ShowItemIcon
 	iffalsefwd .Full
 	specialsound
@@ -2493,7 +2493,7 @@ Script_verbosegivetmhm:
 	jmp ScriptCall
 
 GiveTMHMScript:
-	farwritetext _ReceivedItemText
+	farwritetext _GainedItemText
 	special ShowTMHMIcon
 	playsound SFX_GET_TM
 	waitsfx
@@ -2686,7 +2686,7 @@ Script_verbosegivekeyitem:
 	jmp ScriptCall
 
 GiveKeyItemScript:
-	farwritetext _ReceivedItemText
+	farwritetext _GainedItemText
 	special ShowKeyItemIcon
 	playsound SFX_KEY_ITEM
 	waitsfx

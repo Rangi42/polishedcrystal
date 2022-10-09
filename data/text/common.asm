@@ -3492,8 +3492,8 @@ _ObjectEventText::
 	text "Object event"
 	done
 
-SECTION "_ReceivedItemText", ROMX
-_ReceivedItemText::
+SECTION "_GainedItemText", ROMX
+_GainedItemText::
 	text "<PLAYER> gained"
 	line ""
 	text_ram wStringBuffer4

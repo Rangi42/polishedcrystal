@@ -63,6 +63,7 @@ HiddenGrottoItemScript:
 	setevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_3
 	opentext
 	writetext .ItemText
+	special ShowItemIcon
 	playsound SFX_ITEM
 	pause 60
 	itemnotify

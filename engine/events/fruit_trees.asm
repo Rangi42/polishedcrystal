@@ -66,7 +66,11 @@ PickBerryScript:
 
 .ShowBerryIcon:
 	ld a, [wCurFruit]
-	jmp ShowItemIconFromA
+	push af
+	call LoadItemIconForOverworld
+	pop af
+	farcall LoadItemIconPaletteFromA
+	jmp PrintOverworldItemIcon
 
 PickApricornScript:
 	checkkeyitem APRICORN_BOX
@@ -124,8 +128,11 @@ PickApricornScript:
 
 .ShowApricornIcon:
 	ld a, [wCurFruit]
+	push af
 	call LoadApricornIconForOverworld
-	farcall LoadApricornIconPalette
+	pop af
+	ld bc, ApricornIconPalettes - PAL_COLOR_SIZE * 2
+	farcall LoadIconPalette
 	jmp PrintOverworldItemIcon
 
 CheckFruitTree:

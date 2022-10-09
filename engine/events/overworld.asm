@@ -1400,8 +1400,11 @@ AutoHeadbuttScript:
 
 .ShowWingIcon:
 	ld a, [wCurWing]
+	push af
 	farcall LoadWingIconForOverworld
-	farcall LoadWingIconPalette
+	pop af
+	ld bc, WingIconPalettes
+	farcall LoadIconPalette
 	farjp PrintOverworldItemIcon
 
 TryHeadbuttOW::

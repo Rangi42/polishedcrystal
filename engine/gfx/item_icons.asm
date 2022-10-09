@@ -138,8 +138,6 @@ WhiteOutDecompressedItemIconCorners:
 
 ShowItemIcon::
 	ld a, [wCurItem]
-	; fallthrough
-ShowItemIconFromA:
 	call LoadItemIconForOverworld
 	farcall LoadItemIconPalette
 	jr PrintOverworldItemIcon
@@ -154,8 +152,7 @@ ShowTMHMIcon::
 	ld a, [wCurTMHM]
 	call LoadTMHMIconForOverworld
 	farcall LoadTMHMIconPalette
-	jr PrintOverworldItemIcon
-
+	; fallthrough
 PrintOverworldItemIcon:
 	call SetPalettes
 	ld a, "▲"
