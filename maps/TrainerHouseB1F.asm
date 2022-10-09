@@ -191,5 +191,5 @@ TrainerHouseB1FCalBeforeText:
 
 TrainerHouseB1FEarnedBattlePointText:
 	text "<PLAYER> earned"
-	line "1 Battle Point!"
+	line "1 BP!"
 	done

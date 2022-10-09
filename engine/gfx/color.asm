@@ -146,6 +146,7 @@ LoadIconPalette:
 	add hl, hl
 	add hl, hl
 	add hl, bc
+LoadIconPaletteFromHL:
 	ld de, wBGPals1 palette 7 + 2
 	ld bc, 4
 	call FarCopyColorWRAM

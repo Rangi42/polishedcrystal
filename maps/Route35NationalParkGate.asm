@@ -115,6 +115,7 @@ Route35NationalParkGate_OkayToProceed:
 	writetext Route35NationalParkGateOfficer1GiveParkBallsText
 	promptbutton
 	writetext Route35NationalParkGatePlayerReceivedParkBallsText
+	callasm .ShowParkBallIcon
 	playsound SFX_ITEM
 	waitsfx
 	writetext Route35NationalParkGateOfficer1ExplainsRulesText
@@ -128,6 +129,9 @@ Route35NationalParkGate_OkayToProceed:
 	special Special_SelectRandomBugContestContestants
 	warpfacing UP, NATIONAL_PARK_BUG_CONTEST, 12, 47
 	end
+
+.ShowParkBallIcon:
+	farjp ShowParkBallIcon
 
 Route35NationalParkGate_EnterContest:
 	readvar VAR_FACING
@@ -223,7 +227,7 @@ Route35NationalParkGateOfficer1GiveParkBallsText:
 	done
 
 Route35NationalParkGatePlayerReceivedParkBallsText:
-	text "<PLAYER> received"
+	text "<PLAYER> gained"
 	line "{d:BUG_CONTEST_BALLS} Park Balls."
 	done
 

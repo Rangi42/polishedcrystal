@@ -1401,7 +1401,9 @@ AutoHeadbuttScript:
 .ShowWingIcon:
 	ld a, [wCurWing]
 	push af
-	farcall LoadWingIconForOverworld
+	ld hl, WingIcon
+	lb bc, BANK(WingIcon), 9
+	farcall DecompressItemIconForOverworld
 	pop af
 	ld bc, WingIconPalettes
 	farcall LoadIconPalette

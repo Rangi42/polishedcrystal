@@ -45,6 +45,7 @@ INCLUDE "gfx/battle/types.pal"
 
 ItemIconPalettes:
 CaughtBallPals:
+ParkBallIconPalette:
 INCLUDE "gfx/items/items.pal"
 
 CancelPalette:
