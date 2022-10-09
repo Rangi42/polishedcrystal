@@ -110,7 +110,6 @@ LoreleiRematchAfterText:
 	cont "a life's work."
 	done
 
-
 LoreleiReintroductionScript:
 	writetext LoreleiRematchIntroAgainText
 	waitbutton

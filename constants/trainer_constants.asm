@@ -1087,7 +1087,7 @@ DEF KRIS EQU __trainer_class__
 
 	trainerclass KUKUI ; 8b
 
-	trainerclass MELONY ; 8c
+	trainerclass PIERS ; 8c
 
 	trainerclass VICTOR  ; 8d
 

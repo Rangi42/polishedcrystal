@@ -156,11 +156,6 @@ ShowTMHMIcon::
 	farcall LoadTMHMIconPalette
 	jr PrintOverworldItemIcon
 
-ShowWingIcon:
-	ld a, [wCurWing]
-	call LoadWingIconForOverworld
-	farcall LoadWingIconPalette
-	; fallthrough
 PrintOverworldItemIcon:
 	call SetPalettes
 	ld a, "▲"

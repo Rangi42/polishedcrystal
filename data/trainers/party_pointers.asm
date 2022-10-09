@@ -142,7 +142,7 @@ TrainerGroups:
 	dba MarlonGroup
 	dba ValerieGroup
 	dba KukuiGroup
-	dba MelonyGroup
+	dba PiersGroup
 	dba VictorGroup
 	dba BillGroup
 	dba YellowGroup

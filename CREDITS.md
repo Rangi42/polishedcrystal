@@ -68,7 +68,7 @@ Pokémon Polished Crystal would never have been finished without the help of man
 * Twilir for Lyra's back sprite.
 * Danny-E for Lorelei's sprite.
 * Nic7C5 for Yellow's sprite.
-* PomPomKing and Jace for Melony's sprite.
+* Emi Monserrate for Piers' sprite.
 * Kage for Walker's sprite.
 * Pyro for Tamer's sprite.
 * Constantine for Nurse's sprite.

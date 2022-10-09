@@ -1390,13 +1390,19 @@ AutoHeadbuttScript:
 	iffalsefwd .no_item
 	opentext
 	farwritetext _FoundWingsText
-	special ShowWingIcon
+	callasm .ShowWingIcon
 	specialsound
 	waitbutton
 	endtext
 
 .no_item
 	farjumptext _HeadbuttNothingText
+
+.ShowWingIcon:
+	ld a, [wCurWing]
+	farcall LoadWingIconForOverworld
+	farcall LoadWingIconPalette
+	farjp PrintOverworldItemIcon
 
 TryHeadbuttOW::
 	lb de, HEADBUTT, -1 ; you need the tutor for Headbutt
