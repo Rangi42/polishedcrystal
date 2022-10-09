@@ -93,7 +93,7 @@ SetInitialOptions:
 	dec d
 	jr nz, .select_start_loop
 
-;	ld a, CGB_DIPLOMA
+;	ld a, CGB_PLAIN
 ;	call GetCGBLayout
 ;	call SetPalettes
 

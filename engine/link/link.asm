@@ -304,7 +304,7 @@ LinkTimeout:
 	ld c, 15
 	call FadeToWhite
 	call ClearScreen
-	ld a, CGB_DIPLOMA
+	ld a, CGB_PLAIN
 	call GetCGBLayout
 	jmp ApplyAttrAndTilemapInVBlank
 
@@ -1299,7 +1299,7 @@ ExitLinkCommunications:
 	ld c, 15
 	call FadeToWhite
 	call ClearScreen
-	ld a, CGB_DIPLOMA
+	ld a, CGB_PLAIN
 	call GetCGBLayout
 	call ApplyAttrAndTilemapInVBlank
 	xor a
@@ -1603,7 +1603,7 @@ LinkTrade:
 	call DelayFrames
 	call ClearTileMap
 	call LoadFontsBattleExtra
-	ld a, CGB_DIPLOMA
+	ld a, CGB_PLAIN
 	call GetCGBLayout
 	ldh a, [hSerialConnectionStatus]
 	cp USING_EXTERNAL_CLOCK

@@ -8,7 +8,7 @@ _MemoryGame:
 
 .LoadGFXAndPals:
 	call DisableLCD
-	ld a, CGB_DIPLOMA
+	ld a, CGB_PLAIN
 	call GetCGBLayout
 	call ClearSpriteAnims
 	ld hl, MemoryGameGFX

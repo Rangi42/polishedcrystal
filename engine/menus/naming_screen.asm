@@ -806,7 +806,7 @@ _ComposeMailMessage:
 	ld a, LCDC_DEFAULT
 	ldh [rLCDC], a
 	call .initwNamingScreenMaxNameLength
-	ld a, CGB_DIPLOMA
+	ld a, CGB_PLAIN
 	call GetCGBLayout
 	call ApplyTilemapInVBlank
 	call WaitTop

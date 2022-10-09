@@ -1052,7 +1052,7 @@ StartTitleScreen:
 	ldh [hWX], a
 	ld a, $90
 	ldh [hWY], a
-	ld a, CGB_DIPLOMA
+	ld a, CGB_PLAIN
 	call GetCGBLayout
 	call UpdateTimePals
 	ld a, [wIntroSceneFrameCounter]

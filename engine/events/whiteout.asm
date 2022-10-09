@@ -43,7 +43,7 @@ OverworldWhiteoutFade:
 	farcall FadeOutPalettes
 	call ClearTileMap
 	call ClearSprites
-	ld a, CGB_DIPLOMA
+	ld a, CGB_PLAIN
 	call GetCGBLayout
 	jmp SetPalettes
 

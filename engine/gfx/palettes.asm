@@ -1,4 +1,4 @@
-DiplomaPalette:
+Gen1Palette:
 if !DEF(MONOCHROME)
 	RGB 31, 31, 31
 	RGB 30, 22, 17
@@ -112,6 +112,9 @@ INCLUDE "gfx/trainer_card/trainer_card.pal"
 
 DiplomaPals:
 INCLUDE "gfx/diploma/diploma.pal"
+
+GenericPals:
+INCLUDE "gfx/diploma/generic.pal"
 PokegearOBPals:
 INCLUDE "gfx/icons/icons.pal"
 

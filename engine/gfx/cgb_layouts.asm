@@ -21,7 +21,7 @@ LoadCGBLayout::
 	dw _CGB_Pokedex
 	dw _CGB_Pokedex_PrepareOnly
 	dw _CGB_SlotMachine
-	dw _CGB_Diploma
+	dw _CGB_Plain
 	dw _CGB_MapPals
 	dw _CGB_PartyMenu
 	dw _CGB_Evolution
@@ -42,6 +42,7 @@ LoadCGBLayout::
 	dw _CGB_JudgeSystem
 	dw _CGB_NamingScreen
 	dw _CGB_FlyMap
+	dw _CGB_NewDiploma
 	assert_table_length NUM_CGB_LAYOUTS - 2 ; discount CGB_RAM and CGB_PARTY_MENU_HP_PALS
 
 _CGB_BattleGrayscale:
@@ -256,12 +257,9 @@ _CGB_FinishBattleScreenLayout:
 	call FillBoxWithByte
 
 	ld a, PAL_BATTLE_BG_EXP_GENDER
-	hlcoord 1, 1, wAttrmap
-	ld [hl], a
-	hlcoord 8, 1, wAttrmap
-	ld [hl], a
-	hlcoord 18, 8, wAttrmap
-	ld [hl], a
+	ldcoord_a 1, 1, wAttrmap
+	ldcoord_a 8, 1, wAttrmap
+	ldcoord_a 18, 8, wAttrmap
 
 	hlcoord 12, 8, wAttrmap
 	lb bc, 1, 2
@@ -476,27 +474,27 @@ _CGB_SlotMachine:
 
 	jmp _CGB_FinishLayout
 
-_CGB_Diploma:
-	ld hl, DiplomaPals
+_CGB_Plain:
+	ld hl, GenericPals
 	ld de, wBGPals1
 	ld c, 16 palettes
 	call LoadPalettes
 
 	ld de, wBGPals1
-	ld hl, DiplomaPalette
+	ld hl, Gen1Palette
 	call LoadOnePalette
 
 	call WipeAttrMap
 	jmp ApplyAttrMap
 
 _CGB_NamingScreen:
-	ld hl, DiplomaPals
+	ld hl, GenericPals
 	ld de, wBGPals1
 	ld c, 16 palettes
 	call LoadPalettes
 
 	ld de, wBGPals1
-	ld hl, DiplomaPalette
+	ld hl, Gen1Palette
 	call LoadOnePalette
 
 	ld a, [wNamingScreenType]
@@ -707,16 +705,11 @@ endr
 	ld [hl], a
 
 	ld a, $1
-	hlcoord 7, 2, wAttrmap
-	ld [hl], a
-	hlcoord 7, 4, wAttrmap
-	ld [hl], a
-	hlcoord 7, 6, wAttrmap
-	ld [hl], a
-	hlcoord 7, 8, wAttrmap
-	ld [hl], a
-	hlcoord 7, 10, wAttrmap
-	ld [hl], a
+	ldcoord_a 7, 2, wAttrmap
+	ldcoord_a 7, 4, wAttrmap
+	ldcoord_a 7, 6, wAttrmap
+	ldcoord_a 7, 8, wAttrmap
+	ldcoord_a 7, 10, wAttrmap
 	hlcoord 0, 2, wAttrmap
 	lb bc, 5, 5
 	call FillBoxWithByte
@@ -1222,6 +1215,27 @@ if !DEF(MONOCHROME)
 else
 	MONOCHROME_RGB_FOUR
 endc
+
+_CGB_NewDiploma:
+	ld hl, DiplomaPals
+	ld de, wBGPals1
+	ld c, 4 palettes
+	call LoadPalettes
+
+	call WipeAttrMap
+
+	hlcoord 3, 2, wAttrmap
+	lb bc, 2, 14
+	ld a, $1
+	call FillBoxWithByte
+
+	hlcoord 2, 4, wAttrmap
+	ld a, $2
+	ldcoord_a 17, 6, wAttrmap
+	lb bc, 8, 15
+	call FillBoxWithByte
+
+	jmp ApplyAttrMap
 
 _CGB_PlayerOrMonFrontpicPals:
 	ld de, wBGPals1

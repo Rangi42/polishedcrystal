@@ -75,7 +75,7 @@ DisplayCaughtContestMonStats:
 	ld [wOptions1], a
 
 	call ApplyTilemapInVBlank
-	ld a, CGB_DIPLOMA
+	ld a, CGB_PLAIN
 	call GetCGBLayout
 	jmp SetPalettes
 
