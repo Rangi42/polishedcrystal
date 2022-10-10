@@ -222,6 +222,8 @@ NamingScreen_InitText:
 	hlcoord 0, SCREEN_HEIGHT - 1
 	call NamingScreen_FillHorizontal
 
+	call PrintShiftDelEnd
+
 	ld a, [wOptions3]
 	bit QWERTY_KEYBOARD_F, a
 	ld de, NameInputUpper
@@ -232,12 +234,9 @@ NamingScreen_ApplyTextInputMode:
 	hlcoord 1, 6
 	lb bc, 9, 18
 	call ClearBox
-	hlcoord 1, 16
-	lb bc, 1, 18
-	call ClearBox
 	pop de
 	hlcoord 2, 6
-	ld b, $6
+	ld b, $5
 
 .row
 	ld c, $11
@@ -869,10 +868,17 @@ INCBIN "gfx/naming_screen/mail.2bpp.lz"
 	hlcoord 0, 5
 	call NamingScreen_FillHorizontal
 	ld a, NAMINGSCREEN_BORDER
-	hlcoord 0, SCREEN_HEIGHT - 2
+	hlcoord 0, SCREEN_HEIGHT - 3
+	call NamingScreen_FillHorizontal
+	ld a, NAMINGSCREEN_BORDER + 8
+	hlcoord 0, SCREEN_HEIGHT - 1
 	call NamingScreen_FillHorizontal
 	ld a, NAMINGSCREEN_BORDER + 3
-	ldcoord_a 0, SCREEN_HEIGHT - 1
+	ldcoord_a 0, SCREEN_HEIGHT - 2
+	inc a
+	ldcoord_a SCREEN_WIDTH - 1, SCREEN_HEIGHT - 2
+
+	call PrintShiftDelEnd
 
 	ld a, [wOptions3]
 	bit QWERTY_KEYBOARD_F, a
@@ -881,8 +887,8 @@ INCBIN "gfx/naming_screen/mail.2bpp.lz"
 	ld de, MailEntryQwerty_Uppercase
 
 .PlaceMailCharset:
-	hlcoord 1, 7
-	ld b, 6
+	hlcoord 1, 6
+	ld b, 5
 .next
 	ld c, SCREEN_WIDTH - 1
 .loop_
@@ -944,7 +950,7 @@ INCBIN "gfx/naming_screen/mail.2bpp.lz"
 	dw .process_joypad
 
 .init_blinking_cursor
-	depixel 9, 2
+	depixel 8, 2
 	ld a, SPRITE_ANIM_INDEX_COMPOSE_MAIL_CURSOR
 	call InitSpriteAnimStruct
 	ld a, c
@@ -1093,7 +1099,7 @@ ComposeMail_AnimateCursor:
 	db $00, $10, $20, $30, $40, $50, $60, $70, $80, $90
 
 .CaseDelEnd:
-	db $00, $00, $00, $30, $30, $30, $60, $60, $60, $60
+	db $08, $08, $08, $38, $38, $38, $68, $68, $68, $68
 
 .GetDPad:
 	ld hl, hJoyLast
@@ -1262,3 +1268,12 @@ NamingScreen_FillVertical:
 	dec d
 	jr nz, .loop
 	ret
+
+PrintShiftDelEnd:
+	ld de, .ShiftDelEnd
+	hlcoord 2, SCREEN_HEIGHT - 2
+	rst PlaceString
+	ret
+
+.ShiftDelEnd:
+	db "Shift  Del   End@"

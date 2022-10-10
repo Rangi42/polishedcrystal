@@ -615,23 +615,26 @@ _CGB_Mail:
 	xor a
 	; hl == coord 0, 0, wAttrmap
 	; b == 0
-	ld c, SCREEN_WIDTH * 10
+	ld c, SCREEN_WIDTH * 9
 	rst ByteFill
 
 	ld a, $2
-	; hl == coord 0, SCREEN_HEIGHT - 2, wAttrmap
+	; hl == coord 0, SCREEN_HEIGHT - 3, wAttrmap
 	; b == 0
 	ld c, SCREEN_WIDTH + 1
 	rst ByteFill
 
 	ld a, $7
-	; hl == coord 1, SCREEN_HEIGHT - 1, wAttrmap
+	; hl == coord 1, SCREEN_HEIGHT - 2, wAttrmap
 	; b == 0
 	ld c, SCREEN_WIDTH - 2
 	rst ByteFill
 
-	; hl == coord SCREEN_WIDTH - 1, SCREEN_HEIGHT - 1, wAttrmap
-	ld [hl], $2
+	ld a, $2
+	; hl == coord SCREEN_WIDTH - 1, SCREEN_HEIGHT - 2, wAttrmap
+	; b == 0
+	ld c, SCREEN_WIDTH + 1
+	rst ByteFill
 
 	ld a, $7
 	hlcoord 1, 1, wAttrmap
