@@ -500,12 +500,12 @@ _CGB_NamingScreen:
 	farcall GetBoxTheme
 .got_theme
 	call GetBillsPCThemePalette
+	inc hl
+	inc hl
 
-	ld de, wBGPals1
-	ld c, 1 * 2
-	call LoadPalettes
 	push hl
 	ld hl, GenderAndExpBarPals
+	ld de, wBGPals1 + 2
 	ld c, 2 * 2
 	call LoadPalettes
 	pop hl
@@ -558,6 +558,9 @@ _CGB_NamingScreen:
 	add hl, bc
 	dec d
 	jr nz, .border_loop
+
+	xor a
+	ldcoord_a 1, 2, wAttrmap
 
 	jmp ApplyAttrMap
 

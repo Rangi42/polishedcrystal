@@ -1,4 +1,6 @@
 DEF NAMINGSCREEN_BORDER EQU $60
+DEF NAMINGSCREEN_MALE EQU $6b
+DEF NAMINGSCREEN_FEMALE EQU $6c
 DEF NAMINGSCREEN_CURSOR EQU $7e
 
 DEF NAMINGSCREEN_MIDDLELINE EQU "′"
@@ -78,9 +80,9 @@ NamingScreen:
 	ld [hl], "/"
 	farcall GetGender
 	jr c, .genderless
-	ld a, "♂"
+	ld a, NAMINGSCREEN_MALE
 	jr nz, .place_gender
-	ld a, "♀"
+	ld a, NAMINGSCREEN_FEMALE
 .place_gender
 	hlcoord 1, 2
 	ld [hl], a
@@ -726,6 +728,12 @@ LoadNamingScreenGFX:
 	ld hl, NamingScreenGFX_Border
 	ld de, vTiles2 tile NAMINGSCREEN_BORDER
 	call Decompress
+
+	; Gender symbols
+	ld hl, BattleExtrasGFX
+	ld de, vTiles2 tile NAMINGSCREEN_MALE
+	lb bc, BANK(BattleExtrasGFX), 2
+	call DecompressRequest2bpp
 
 	ld de, vTiles0 tile NAMINGSCREEN_CURSOR
 	ld hl, NamingScreenGFX_Cursor
