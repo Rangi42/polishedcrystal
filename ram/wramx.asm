@@ -1066,7 +1066,7 @@ wDragonsDenB1FSceneID:: db
 wDragonShrineSceneID:: db
 wEcruteakGymSceneID:: db
 wEcruteakHouseSceneID:: db
-wEcruteakPokecenter1FSceneID:: db
+	ds 1 ; unused
 wElmsLabSceneID:: db
 wFarawayIslandSceneID:: db
 wFastShip1FSceneID:: db
