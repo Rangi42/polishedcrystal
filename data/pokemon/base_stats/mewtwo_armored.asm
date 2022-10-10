@@ -16,7 +16,7 @@ endc
 	db GROWTH_SLOW ; growth rate
 	dn EGG_NONE, EGG_NONE ; egg groups
 
-	ev_yield   0,   0,   0,   0,   3,   0
+	ev_yield   0,   0,   1,   0,   3,   0
 	;         hp  atk  def  spd  sat  sdf
 
 	; tm/hm learnset
