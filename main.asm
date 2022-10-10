@@ -48,8 +48,8 @@ INCLUDE "engine/math/print_num.asm"
 
 SECTION "Bill's PC", ROMX
 
-INCLUDE "engine/pokemon/bills_pc.asm"
-INCLUDE "engine/pokemon/bills_pc_ui.asm"
+INCLUDE "engine/pc/bills_pc.asm"
+INCLUDE "engine/pc/bills_pc_ui.asm"
 
 
 SECTION "Poke Ball Effects", ROMX

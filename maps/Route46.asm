@@ -13,7 +13,7 @@ Route46_MapScriptHeader:
 
 	def_bg_events
 	bg_event  9, 27, BGEVENT_JUMPTEXT, Route46SignText
-	bg_event  8,  3, BGEVENT_JUMPSTD, cavegrotto, HIDDENGROTTO_ROUTE_45
+	bg_event  8,  3, BGEVENT_JUMPSTD, cavegrotto, HIDDENGROTTO_ROUTE_46
 
 	def_object_events
 	object_event 15, 13, SPRITE_HIKER, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, Route46HikerScript, -1

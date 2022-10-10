@@ -10630,9 +10630,36 @@ KukuiGroup:
 	db -1 ; end
 
 
-SECTION "MelonyGroup", ROMX
-MelonyGroup:
-	; TODO
+SECTION "PiersGroup", ROMX
+PiersGroup:
+
+	; PIERS
+	db "Piers@"
+	db TRAINERTYPE_NORMAL
+	; party
+	; TODO: movesets, etc
+	dbp 16, MURKROW, MALE
+	dbp 17, QWILFISH, MALE | HISUIAN_FORM
+	dbp 17, MUK, MALE | ALOLAN_FORM
+	dbp 19, RATICATE, MALE | ALOLAN_FORM
+	db -1 ; end
+
+	; PIERS
+	db "Piers@"
+	db TRAINERTYPE_NORMAL
+	; party
+	; TODO: movesets, etc
+	dbp LEVEL_FROM_BADGES + 12, HONCHKROW, MALE
+	dbp LEVEL_FROM_BADGES + 16, OVERQWIL, MALE
+	dbp LEVEL_FROM_BADGES + 16, MUK, MALE | ALOLAN_FORM
+	dbp LEVEL_FROM_BADGES + 14, PERSIAN, MALE | ALOLAN_FORM
+if DEF(FAITHFUL)
+	dbp LEVEL_FROM_BADGES + 14, UMBREON, MALE
+else
+	dbp LEVEL_FROM_BADGES + 14, GIRAFARIG, MALE
+endc
+	dbp LEVEL_FROM_BADGES + 19, RATICATE, MALE | ALOLAN_FORM
+	db -1 ; end
 
 
 SECTION "VictorGroup", ROMX

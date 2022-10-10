@@ -43,20 +43,11 @@ LoadApricornIconForOverworld:
 	ld de, vTiles0 tile "▲"
 	jmp DecompressRequest2bpp
 
-LoadKeyItemIconForOverworld::
-	ld hl, KeyItemIconPointers
-	jr _LoadItemOrKeyItemIconForOverworld
-
-LoadTMHMIconForOverworld::
-	ld hl, TMHMIcon
-	lb bc, BANK(TMHMIcon), 9
-	jr _DecompressItemIconForOverworld
-
 LoadItemIconForOverworld::
 	ld hl, ItemIconPointers
 _LoadItemOrKeyItemIconForOverworld:
 	call _SetupLoadItemOrKeyItemIcon
-_DecompressItemIconForOverworld:
+DecompressItemIconForOverworld::
 	push bc
 	call FarDecompressWRA6InB
 	call WhiteOutDecompressedItemIconCorners
@@ -65,8 +56,19 @@ _DecompressItemIconForOverworld:
 	ld de, wDecompressScratch
 	jmp Request2bppInWRA6
 
+LoadTMHMIcon::
+	ld hl, TMHMIcon
+	lb bc, BANK(TMHMIcon), 9
+	jr _LoadItemIcon
+
+ClearTMHMIcon::
+	ld hl, NoItemIcon
+	lb bc, BANK(NoItemIcon), 9
+	jr _LoadItemIcon
+
 _LoadItemOrKeyItemIcon:
 	call _SetupLoadItemOrKeyItemIcon
+_LoadItemIcon:
 	ld de, vTiles2 tile $1e
 	jmp DecompressRequest2bpp
 
@@ -83,19 +85,6 @@ _SetupLoadItemOrKeyItemIcon:
 	ld l, a
 	ld c, 9
 	ret
-
-LoadTMHMIcon::
-	ld hl, TMHMIcon
-	lb bc, BANK(TMHMIcon), 9
-	ld de, vTiles2 tile $1e
-	jmp DecompressRequest2bpp
-
-ClearKeyItemIcon::
-ClearTMHMIcon::
-	ld hl, NoItemIcon
-	lb bc, BANK(NoItemIcon), 9
-	ld de, vTiles2 tile $1e
-	jmp DecompressRequest2bpp
 
 WhiteOutDecompressedItemIconCorners:
 	call RunFunctionInWRA6
@@ -131,6 +120,34 @@ WhiteOutDecompressedItemIconCorners:
 	ld [hl], a
 	ret
 
+ShowParkBallIcon::
+	ld hl, ParkBallIcon
+	lb bc, BANK(ParkBallIcon), 9
+	call DecompressItemIconForOverworld
+	ld hl, ParkBallIconPalette
+	farcall LoadIconPaletteFromHL
+	jr PrintOverworldItemIcon
+
+ShowItemIcon::
+	ld a, [wCurItem]
+	call LoadItemIconForOverworld
+	farcall LoadItemIconPalette
+	jr PrintOverworldItemIcon
+
+ShowKeyItemIcon::
+	ld a, [wCurKeyItem]
+	ld hl, KeyItemIconPointers
+	call _LoadItemOrKeyItemIconForOverworld
+	farcall LoadKeyItemIconPalette
+	jr PrintOverworldItemIcon
+
+ShowTMHMIcon::
+	ld a, [wCurTMHM]
+	ld hl, TMHMIcon
+	lb bc, BANK(TMHMIcon), 9
+	call DecompressItemIconForOverworld
+	farcall LoadTMHMIconPalette
+	; fallthrough
 PrintOverworldItemIcon:
 	call SetPalettes
 	ld a, "▲"

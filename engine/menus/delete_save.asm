@@ -1,6 +1,6 @@
 _DeleteSaveData:
 	farcall BlankScreen
-	ld a, CGB_DIPLOMA
+	ld a, CGB_PLAIN
 	call GetCGBLayout
 	call LoadStandardFont
 	call LoadFontsExtra
@@ -38,7 +38,7 @@ _DeleteSaveData:
 
 _ResetInitialOptions:
 	farcall BlankScreen
-	ld a, CGB_DIPLOMA
+	ld a, CGB_PLAIN
 	call GetCGBLayout
 	call LoadStandardFont
 	call LoadFontsExtra

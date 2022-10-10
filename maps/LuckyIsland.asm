@@ -189,6 +189,7 @@ LuckyIslandLuckyEgg:
 	setevent EVENT_GOT_LUCKY_EGG_FROM_LUCKY_ISLAND
 	opentext
 	writetext .Text
+	special ShowItemIcon
 	playsound SFX_ITEM
 	pause 60
 	itemnotify

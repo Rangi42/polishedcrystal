@@ -7860,7 +7860,7 @@ DisplayLinkRecord:
 	ld bc, SCREEN_WIDTH * SCREEN_HEIGHT
 	rst ByteFill
 	call ApplyAttrAndTilemapInVBlank
-	ld a, CGB_DIPLOMA
+	ld a, CGB_PLAIN
 	call GetCGBLayout
 	call SetPalettes
 	ld c, 8

@@ -140,7 +140,7 @@ TrainerPicPointers::
 	dba MarlonPic
 	dba ValeriePic
 	dba KukuiPic
-	dba MelonyPic
+	dba PiersPic
 	dba VictorPic
 	dba BillPic
 	dba YellowPic

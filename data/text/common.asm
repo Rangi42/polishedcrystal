@@ -3492,9 +3492,9 @@ _ObjectEventText::
 	text "Object event"
 	done
 
-SECTION "_ReceivedItemText", ROMX
-_ReceivedItemText::
-	text "<PLAYER> received"
+SECTION "_GainedItemText", ROMX
+_GainedItemText::
+	text "<PLAYER> gained"
 	line ""
 	text_ram wStringBuffer4
 	text "."
@@ -3518,6 +3518,15 @@ _PocketIsFullText::
 	text ""
 	line "is full…"
 	prompt
+
+SECTION "_FoundWingsText", ROMX
+_FoundWingsText::
+	text "<PLAYER> got "
+	text_decimal wCurWingQuantity, 1, 1
+	line ""
+	text_ram wStringBuffer4
+	text "."
+	done
 
 SECTION "_CongratulationsYourPokemonText", ROMX
 _CongratulationsYourPokemonText::

@@ -96,8 +96,8 @@ ENDM
 	map_const TEAM_ROCKET_BASE_B2F,                       15,  9 ; 40
 	map_const TEAM_ROCKET_BASE_B3F,                       15,  9 ; 41
 	map_const ILEX_FOREST,                                17, 24 ; 42
-	map_const WAREHOUSE_ENTRANCE,                          9, 18 ; 43
-	map_const UNDERGROUND_PATH_SWITCH_ROOM_ENTRANCES,     13, 14 ; 44
+	map_const WAREHOUSE_ENTRANCE,                         16, 18 ; 43
+	map_const UNDERGROUND_PATH_SWITCH_ROOM_ENTRANCES,     13, 21 ; 44
 	map_const GOLDENROD_DEPT_STORE_B1F,                   10,  9 ; 45
 	map_const UNDERGROUND_WAREHOUSE,                      10,  9 ; 46
 	map_const MOUNT_MORTAR_1F_OUTSIDE,                    20, 18 ; 47
@@ -259,7 +259,7 @@ ENDM
 	map_const DAYCARE,                                     4,  4 ;  3
 	map_const STORMY_BEACH,                               22, 11 ;  4
 	map_const MURKY_SWAMP,                                23, 19 ;  5
-	map_const GOLDENROD_CITY,                             22, 18 ;  6
+	map_const GOLDENROD_CITY,                             23, 18 ;  6
 	map_const GOLDENROD_GYM,                              10,  9 ;  7
 	map_const GOLDENROD_BIKE_SHOP,                         4,  4 ;  8
 	map_const GOLDENROD_HAPPINESS_RATER,                   4,  4 ;  9
@@ -287,7 +287,7 @@ ENDM
 	map_const GOLDENROD_BAND_HOUSE,                        4,  4 ; 31
 	map_const GOLDENROD_MUSEUM_1F,                         7,  4 ; 32
 	map_const GOLDENROD_MUSEUM_2F,                         7,  4 ; 33
-	map_const MAGNET_TUNNEL_WEST,                         10, 11 ; 34
+	map_const MAGNET_TUNNEL_WEST,                          9, 11 ; 34
 	map_const MAGNET_TUNNEL_INSIDE,                       23, 18 ; 35
 
 	newgroup                                                     ; 12

@@ -49,6 +49,26 @@ _LoadMusicByte::
 
 CheckSpecialMapMusic:
 ; Returns z if the current map has a special music handler.
+
+	ldh a, [hROMBank]
+	push af
+	ld a, BANK(GetOvercastIndex)
+	rst Bankswitch
+	call GetOvercastIndex ; far-ok
+	ld b, a
+	pop af
+	rst Bankswitch
+	ld a, b
+	and a
+	jr z, .check_special
+	ld hl, .OvercastMusicHandler
+	xor a
+	ret
+
+.OvercastMusicHandler:
+	dw GetMapMusic
+
+.check_special
 	ld hl, SpecialMusicMaps
 	ld a, [wMapGroup]
 	ld b, a

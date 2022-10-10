@@ -49,7 +49,7 @@ Script_BattleRoomLoop:
 	applyonemovement PLAYER, turn_head_down
 	opentext
 	writethistext
-		text "<PLAYER> received"
+		text "<PLAYER> earned"
 		line ""
 		text_ram wStringBuffer1
 		text " BP!"

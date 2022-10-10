@@ -26,6 +26,7 @@ TreeItemEncounter:
 	ld a, 10
 	call RandomRange
 	inc a
+	ld [wCurWingQuantity], a
 	add [hl]
 	ld [hld], a
 	jr nc, .no_overflow
@@ -42,10 +43,13 @@ TreeItemEncounter:
 	; Print a message about this wing
 	pop af
 	ld [wNamedObjectIndex], a
+	ld [wCurWing], a
 	call GetWingName
 
-	; pluralize
 	ld hl, wStringBuffer1
+	ld a, [wCurWingQuantity]
+	dec a
+	jr z, .no_plural
 	push hl
 .find_terminator
 	ld a, [hli]
@@ -56,6 +60,7 @@ TreeItemEncounter:
 	ld [hli], a
 	ld [hl], "@"
 	pop hl
+.no_plural
 	ld de, wStringBuffer4
 	ld bc, ITEM_NAME_LENGTH
 	rst CopyBytes

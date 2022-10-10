@@ -28,6 +28,7 @@ Route24_MapScriptHeader:
 
 	def_bg_events
 	bg_event 15, 19, BGEVENT_ITEM + MAX_POTION, EVENT_ROUTE_24_HIDDEN_MAX_POTION
+	bg_event 23, 11, BGEVENT_JUMPTEXT, Route24AdvancedTipsSignText
 
 	def_object_events
 	object_event 21, 25, SPRITE_ROCKET, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, OBJECTTYPE_TRAINER, 1, TrainerGruntM31, EVENT_ROUTE_24_ROCKET
@@ -194,4 +195,23 @@ Route24RocketDisappearsText:
 	para "Oh, no! Should I"
 	line "do what now on"
 	cont "from, me?"
+	done
+
+Route24AdvancedTipsSignText:
+	text "Advanced Tips!"
+
+	para "The Sheer Force"
+	line "Ability negates"
+
+	para "side effects of"
+	line "moves, but it"
+
+	para "also negates some"
+	line "other effects!"
+
+	para "In particular,"
+	line "the damage done"
+
+	para "by a held Life Orb"
+	line "is ignored!"
 	done

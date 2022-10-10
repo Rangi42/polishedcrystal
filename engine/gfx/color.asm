@@ -19,7 +19,13 @@ InitPartyMenuPalettes:
 	ld c, 4 palettes
 	call LoadPalettes
 	call InitPartyMenuOBPals
-	jmp WipeAttrMap
+	; fallthrough
+WipeAttrMap:
+	hlcoord 0, 0, wAttrmap
+	ld bc, SCREEN_WIDTH * SCREEN_HEIGHT
+	xor a
+	rst ByteFill
+	ret
 
 ApplyHPBarPals:
 	ld a, [wWhichHPBar]
@@ -133,23 +139,12 @@ LoadCategoryAndTypePals:
 
 LoadKeyItemIconPalette:
 	ld a, [wCurKeyItem]
-	dec a
-	ld bc, KeyItemIconPalettes
-	jr LoadIconPalette
-
-LoadKeyItemIconPaletteForOverworld:
-	ld a, [wCurKeyItem]
-	ld bc, KeyItemIconPalettes
-	jr LoadIconPalette
-
-LoadApricornIconPalette:
-	ld a, [wCurFruit]
-	dec a
-	ld bc, ApricornIconPalettes
+	ld bc, KeyItemIconPalettes - PAL_COLOR_SIZE * 2
 	jr LoadIconPalette
 
 LoadItemIconPalette:
-	ld a, [wCurSpecies]
+	ld a, [wCurItem]
+LoadItemIconPaletteFromA:
 	ld bc, ItemIconPalettes
 LoadIconPalette:
 	ld l, a
@@ -157,6 +152,7 @@ LoadIconPalette:
 	add hl, hl
 	add hl, hl
 	add hl, bc
+LoadIconPaletteFromHL:
 	ld de, wBGPals1 palette 7 + 2
 	ld bc, 4
 	call FarCopyColorWRAM
@@ -359,13 +355,6 @@ endc
 	pop hl
 	ret
 
-WipeAttrMap:
-	hlcoord 0, 0, wAttrmap
-	ld bc, SCREEN_WIDTH * SCREEN_HEIGHT
-	xor a
-	rst ByteFill
-	ret
-
 ApplyPals:
 	ld hl, wBGPals1
 	ld de, wBGPals2
@@ -373,7 +362,7 @@ ApplyPals:
 	jmp FarCopyColorWRAM
 
 LoadMailPalettes:
-	ld l, e
+	ld l, a
 	ld h, 0
 	add hl, hl
 	add hl, hl
@@ -382,11 +371,13 @@ LoadMailPalettes:
 	add hl, de
 	ld de, wBGPals1
 	ld bc, 1 palettes
-	call FarCopyColorWRAM
+	jmp FarCopyColorWRAM
+
+LoadAndApplyMailPalettes:
+	call LoadMailPalettes
 	call ApplyPals
 	call WipeAttrMap
 	; fallthrough
-
 ApplyAttrMap:
 	ldh a, [rLCDC]
 	bit rLCDC_ENABLE, a

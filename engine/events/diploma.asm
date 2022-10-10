@@ -20,7 +20,7 @@ _Diploma:
 	rst PlaceString
 	call EnableLCD
 	call ApplyTilemapInVBlank
-	ld a, CGB_DIPLOMA
+	ld a, CGB_NEW_DIPLOMA
 	call GetCGBLayout
 	call SetPalettes
 	call DelayFrame
@@ -30,6 +30,7 @@ _Diploma:
 	ld bc, SCREEN_WIDTH * SCREEN_HEIGHT
 	ld a, $7f
 	rst ByteFill
+
 	ld hl, DiplomaPage2Tilemap
 	decoord 0, 0
 	call Decompress
@@ -58,7 +59,7 @@ _Diploma:
 	text "This certifies"
 	next "that you have"
 	next "completed the"
-	next "new #dex."
+	next "National #dex."
 	next "Congratulations!"
 	done
 

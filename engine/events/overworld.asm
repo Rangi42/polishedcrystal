@@ -1389,13 +1389,25 @@ AutoHeadbuttScript:
 	callasm TreeItemEncounter
 	iffalsefwd .no_item
 	opentext
-	farwritetext _ReceivedItemText
+	farwritetext _FoundWingsText
+	callasm .ShowWingIcon
 	specialsound
 	waitbutton
 	endtext
 
 .no_item
 	farjumptext _HeadbuttNothingText
+
+.ShowWingIcon:
+	ld a, [wCurWing]
+	push af
+	ld hl, WingIcon
+	lb bc, BANK(WingIcon), 9
+	farcall DecompressItemIconForOverworld
+	pop af
+	ld bc, WingIconPalettes
+	farcall LoadIconPalette
+	farjp PrintOverworldItemIcon
 
 TryHeadbuttOW::
 	lb de, HEADBUTT, -1 ; you need the tutor for Headbutt

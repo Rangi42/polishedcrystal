@@ -395,9 +395,11 @@ wCurIconMonHasItemOrMail:: db
 wCurKeyItem::
 wCurTMHM::
 wCurItem::
+wCurWing::
 	db
 wMartItemID::
 wCurItemQuantity::
+wCurWingQuantity::
 wGiftMonBall::
 	db
 

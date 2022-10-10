@@ -1,4 +1,6 @@
 DEF NAMINGSCREEN_BORDER EQU $60
+DEF NAMINGSCREEN_MALE EQU $6b
+DEF NAMINGSCREEN_FEMALE EQU $6c
 DEF NAMINGSCREEN_CURSOR EQU $7e
 
 DEF NAMINGSCREEN_MIDDLELINE EQU "′"
@@ -78,9 +80,9 @@ NamingScreen:
 	ld [hl], "/"
 	farcall GetGender
 	jr c, .genderless
-	ld a, "♂"
+	ld a, NAMINGSCREEN_MALE
 	jr nz, .place_gender
-	ld a, "♀"
+	ld a, NAMINGSCREEN_FEMALE
 .place_gender
 	hlcoord 1, 2
 	ld [hl], a
@@ -199,13 +201,27 @@ NamingScreen:
 
 NamingScreen_InitText:
 	call WaitTop
+
+	ld a, " "
 	hlcoord 0, 0
 	ld bc, SCREEN_WIDTH * SCREEN_HEIGHT
-	ld a, NAMINGSCREEN_BORDER
 	rst ByteFill
-	hlcoord 1, 1
-	lb bc, 4, 18
-	call ClearBox
+
+	ld d, SCREEN_HEIGHT - 1
+	call NamingScreen_FillVertical
+	ld a, NAMINGSCREEN_BORDER
+	hlcoord 0, 0
+	call NamingScreen_FillHorizontal
+	ld a, NAMINGSCREEN_BORDER + 5
+	hlcoord 0, 5
+	call NamingScreen_FillHorizontal
+	ld a, NAMINGSCREEN_BORDER + 5
+	hlcoord 0, SCREEN_HEIGHT - 3
+	call NamingScreen_FillHorizontal
+	ld a, NAMINGSCREEN_BORDER + 8
+	hlcoord 0, SCREEN_HEIGHT - 1
+	call NamingScreen_FillHorizontal
+
 	ld a, [wOptions3]
 	bit QWERTY_KEYBOARD_F, a
 	ld de, NameInputUpper
@@ -709,11 +725,15 @@ LoadNamingScreenGFX:
 	call LoadStandardFont
 	call LoadFontsExtra
 
-	ld de, vTiles2 tile NAMINGSCREEN_BORDER
 	ld hl, NamingScreenGFX_Border
-	ld bc, 1 tiles
-	ld a, BANK(NamingScreenGFX_Border)
-	call FarCopyBytes
+	ld de, vTiles2 tile NAMINGSCREEN_BORDER
+	call Decompress
+
+	; Gender symbols
+	ld hl, BattleExtrasGFX
+	ld de, vTiles2 tile NAMINGSCREEN_MALE
+	lb bc, BANK(BattleExtrasGFX), 2
+	call DecompressRequest2bpp
 
 	ld de, vTiles0 tile NAMINGSCREEN_CURSOR
 	ld hl, NamingScreenGFX_Cursor
@@ -745,7 +765,7 @@ LoadNamingScreenGFX:
 	ret
 
 NamingScreenGFX_Border:
-INCBIN "gfx/naming_screen/naming_border.2bpp"
+INCBIN "gfx/naming_screen/naming_border.2bpp.lz"
 
 NamingScreenGFX_Cursor:
 INCBIN "gfx/naming_screen/naming_cursor.2bpp"
@@ -806,7 +826,7 @@ _ComposeMailMessage:
 	ld a, LCDC_DEFAULT
 	ldh [rLCDC], a
 	call .initwNamingScreenMaxNameLength
-	ld a, CGB_DIPLOMA
+	ld a, CGB_MAIL
 	call GetCGBLayout
 	call ApplyTilemapInVBlank
 	call WaitTop
@@ -834,17 +854,26 @@ INCBIN "gfx/naming_screen/mail.2bpp.lz"
 
 .InitCharset:
 	call WaitTop
-	hlcoord 0, 0
-	ld bc, 6 * SCREEN_WIDTH
-	ld a, NAMINGSCREEN_BORDER
-	rst ByteFill
-	hlcoord 0, 6
-	ld bc, 12 * SCREEN_WIDTH
+
 	ld a, " "
+	hlcoord 0, 0
+	ld bc, SCREEN_WIDTH * SCREEN_HEIGHT
 	rst ByteFill
-	hlcoord 1, 1
-	lb bc, 4, SCREEN_WIDTH - 2
-	call ClearBox
+
+	ld d, 5
+	call NamingScreen_FillVertical
+	ld a, NAMINGSCREEN_BORDER
+	hlcoord 0, 0
+	call NamingScreen_FillHorizontal
+	ld a, NAMINGSCREEN_BORDER + 8
+	hlcoord 0, 5
+	call NamingScreen_FillHorizontal
+	ld a, NAMINGSCREEN_BORDER
+	hlcoord 0, SCREEN_HEIGHT - 2
+	call NamingScreen_FillHorizontal
+	ld a, NAMINGSCREEN_BORDER + 3
+	ldcoord_a 0, SCREEN_HEIGHT - 1
+
 	ld a, [wOptions3]
 	bit QWERTY_KEYBOARD_F, a
 	ld de, MailEntry_Uppercase
@@ -1205,3 +1234,31 @@ MailComposition_TryAddLastCharacter:
 	ld a, [wNamingScreenLastCharacter]
 	jmp MailComposition_TryAddCharacter
 
+NamingScreen_FillHorizontal:
+	; left
+	ld [hli], a
+	; middle
+	inc a
+	ld c, SCREEN_WIDTH - 2
+.loop
+	ld [hli], a
+	dec c
+	jr nz, .loop
+	; right
+	inc a
+	ld [hli], a
+	ret
+
+NamingScreen_FillVertical:
+	hlcoord SCREEN_WIDTH - 1, 0
+	ld bc, SCREEN_WIDTH - 2
+	ld a, NAMINGSCREEN_BORDER + 4
+.loop
+	ld [hli], a
+	dec a
+	ld [hli], a
+	inc a
+	add hl, bc
+	dec d
+	jr nz, .loop
+	ret

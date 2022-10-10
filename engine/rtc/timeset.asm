@@ -16,7 +16,7 @@ InitClock:
 	call FadeToBlack
 	call ClearTileMap
 	call ClearSprites
-	ld a, CGB_DIPLOMA
+	ld a, CGB_PLAIN
 	call GetCGBLayout
 	xor a
 	ldh [hBGMapMode], a

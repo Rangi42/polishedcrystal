@@ -1636,6 +1636,7 @@ VendingMachineScript:
 	opentext
 	farwritetext VendingMachineText
 .Start:
+	callasm .ReloadFont
 	special PlaceMoneyTopRight
 	loadmenu .MenuData
 	verticalmenu
@@ -1694,6 +1695,7 @@ VendingMachineScript:
 	pause 10
 	playsound SFX_ENTER_DOOR
 	farwritetext VendingMachineClangText
+	special ShowItemIcon
 	promptbutton
 	itemnotify
 	end
@@ -1702,6 +1704,7 @@ VendingMachineScript:
 	pause 10
 	playsound SFX_ENTER_DOOR
 	farwritetext VendingMachineScoreText
+	special ShowItemIcon
 	promptbutton
 	itemnotify
 	sjump .Start
@@ -1715,6 +1718,11 @@ VendingMachineScript:
 	farwritetext VendingMachineNoSpaceText
 	waitbutton
 	sjump .Start
+
+.ReloadFont:
+	; The item icon overwrites nine font tiles, including
+	; the "▶" needed by the vending machine menu.
+	farjp LoadFonts_NoOAMUpdate
 
 .MenuData:
 	db MENU_BACKUP_TILES

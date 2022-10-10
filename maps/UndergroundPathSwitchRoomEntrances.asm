@@ -14,6 +14,9 @@ UndergroundPathSwitchRoomEntrances_MapScriptHeader:
 	warp_event 21, 23, WAREHOUSE_ENTRANCE, 1
 	warp_event 20, 27, GOLDENROD_CITY, 13
 	warp_event 21, 27, GOLDENROD_CITY, 13
+	warp_event  5, 37, WAREHOUSE_ENTRANCE, 7
+	warp_event  4, 41, GOLDENROD_CITY, 22
+	warp_event  5, 41, GOLDENROD_CITY, 22
 
 	def_coord_events
 	coord_event 19,  4, 0, UndergroundSilverTrigger1
@@ -38,6 +41,7 @@ UndergroundPathSwitchRoomEntrances_MapScriptHeader:
 	object_event  3, 25, SPRITE_POKEFAN_F, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_COMMAND, jumptextfaceplayer, UndergroundPathSwitchRoomEntrances_TeacherText, -1
 	object_event  8, 24, SPRITE_SUPER_NERD, SPRITEMOVEDATA_WALK_UP_DOWN, 2, 0, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, UndergroundPathSwitchRoomEntrances_SuperNerd1Text, -1
 	object_event 19, 25, SPRITE_BUG_MANIAC, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, UndergroundPathSwitchRoomEntrances_SuperNerd2Text, -1
+	object_event  7, 39, SPRITE_BEAUTY, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, UndergroundPathSwitchRoomEntrances_BeautyText, -1
 	itemball_event  1, 12, SMOKE_BALL, 1, EVENT_UNDERGROUND_PATH_SWITCH_ROOM_ENTRANCES_SMOKE_BALL
 	itemball_event 14,  9, FULL_HEAL, 1, EVENT_UNDERGROUND_PATH_SWITCH_ROOM_ENTRANCES_FULL_HEAL
 
@@ -760,6 +764,17 @@ UndergroundPathSwitchRoomEntrances_SuperNerd2Text:
 	para "It's rough down"
 	line "there. You'd"
 	cont "better be careful."
+	done
+
+UndergroundPathSwitchRoomEntrances_BeautyText:
+	text "I went on a tour"
+	line "of the Radio"
+
+	para "Tower. I saw all"
+	line "three studios and"
+
+	para "even ate in the"
+	line "café."
 	done
 
 GruntM11SeenText:
