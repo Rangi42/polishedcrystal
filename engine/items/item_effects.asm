@@ -917,10 +917,9 @@ VitaminEffect:
 	jr nc, .ev_value_ok
 	and a
 	jmp z, WontHaveAnyEffectMessage
-	add [hl]
-	ld [hl], a
 
 .ev_value_ok
+	add [hl]
 	ld [hl], a
 	call UpdatePkmnStats
 	call GetStatStringAndPlayFullHealSFX
