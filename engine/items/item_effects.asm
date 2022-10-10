@@ -1913,6 +1913,10 @@ WingCase_MonSelected:
 	ld [wItemQuantityBuffer], a
 
 	push bc
+	; This doubles as a "blank previous text".
+	hlcoord 1, 16
+	ld de, .UseHowManyText
+	rst PlaceString
 	farcall SelectWingQuantity
 	pop bc
 	jr c, .done
@@ -1983,13 +1987,13 @@ WingCase_MonSelected:
 
 .WingMenu:
 	db MENU_BACKUP_TILES
-	menu_coords 7, 1, 18, 13
+	menu_coords 7, 1, 18, 14
 	dw .MenuData
 	db 1 ; default option
 
 .MenuData:
 	db $20
-	db 6, 7
+	db 7, 7
 	db SCROLLINGMENU_ITEMS_NORMAL
 	dba WingMenuItems
 	dba .DisplayWingName
@@ -2057,6 +2061,9 @@ WingCase_MonSelected:
 .YouDontHaveAny:
 	db "You don't have any."
 	prompt
+
+.UseHowManyText:
+	db "Use how many?     @"
 
 .OnlyXWillBeAppliedText:
 	db "Only "
