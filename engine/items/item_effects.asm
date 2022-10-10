@@ -912,17 +912,13 @@ VitaminEffect:
 	jmp c, ItemNotUsed_ExitMenu
 
 	call SetUpEVModifier
-	add hl, bc
-	ld a, [hl]
-	cp 252
-	jmp nc, WontHaveAnyEffectMessage
-
-	add 10
-	jr c, .set_to_max
-	cp 252 + 1
-	jr c, .ev_value_ok
-.set_to_max
-	ld a, 252
+	ld a, 10
+	call CheckEVCap
+	jr nc, .ev_value_ok
+	and a
+	jmp z, WontHaveAnyEffectMessage
+	add [hl]
+	ld [hl], a
 
 .ev_value_ok
 	ld [hl], a
@@ -950,7 +946,7 @@ SetUpEVModifier:
 CheckEVCap:
 ; Take the EV amount in a with the stat in c, and clamp a to the max
 ; amount of EVs we can give for the given stat, if a exceeds it.
-; Returns carry if a was modified.
+; Returns carry if a was modified, and hl is set to the relevant EV.
 	push bc
 	ld b, a
 	ld a, MON_EVS
@@ -961,11 +957,10 @@ CheckEVCap:
 	ld a, 252
 	sub [hl]
 	cp b
-	ld l, a
+	jr c, .modified
 	ld a, b
+.modified
 	pop bc
-	ret nc
-	ld a, l
 	ret
 
 GetStatStringAndPlayFullHealSFX:
