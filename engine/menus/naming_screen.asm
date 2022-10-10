@@ -201,29 +201,7 @@ NamingScreen:
 
 NamingScreen_InitText:
 	call WaitTop
-
-	ld a, " "
-	hlcoord 0, 0
-	ld bc, SCREEN_WIDTH * SCREEN_HEIGHT
-	rst ByteFill
-
-	ld d, SCREEN_HEIGHT - 1
-	call NamingScreen_FillVertical
-	ld a, NAMINGSCREEN_BORDER
-	hlcoord 0, 0
-	call NamingScreen_FillHorizontal
-	ld a, NAMINGSCREEN_BORDER + 5
-	hlcoord 0, 5
-	call NamingScreen_FillHorizontal
-	ld a, NAMINGSCREEN_BORDER + 5
-	hlcoord 0, SCREEN_HEIGHT - 3
-	call NamingScreen_FillHorizontal
-	ld a, NAMINGSCREEN_BORDER + 8
-	hlcoord 0, SCREEN_HEIGHT - 1
-	call NamingScreen_FillHorizontal
-
-	call PrintShiftDelEnd
-
+	call NamingScreen_DrawBorders
 	ld a, [wOptions3]
 	bit QWERTY_KEYBOARD_F, a
 	ld de, NameInputUpper
@@ -853,33 +831,7 @@ INCBIN "gfx/naming_screen/mail.2bpp.lz"
 
 .InitCharset:
 	call WaitTop
-
-	ld a, " "
-	hlcoord 0, 0
-	ld bc, SCREEN_WIDTH * SCREEN_HEIGHT
-	rst ByteFill
-
-	ld d, 5
-	call NamingScreen_FillVertical
-	ld a, NAMINGSCREEN_BORDER
-	hlcoord 0, 0
-	call NamingScreen_FillHorizontal
-	ld a, NAMINGSCREEN_BORDER + 8
-	hlcoord 0, 5
-	call NamingScreen_FillHorizontal
-	ld a, NAMINGSCREEN_BORDER
-	hlcoord 0, SCREEN_HEIGHT - 3
-	call NamingScreen_FillHorizontal
-	ld a, NAMINGSCREEN_BORDER + 8
-	hlcoord 0, SCREEN_HEIGHT - 1
-	call NamingScreen_FillHorizontal
-	ld a, NAMINGSCREEN_BORDER + 3
-	ldcoord_a 0, SCREEN_HEIGHT - 2
-	inc a
-	ldcoord_a SCREEN_WIDTH - 1, SCREEN_HEIGHT - 2
-
-	call PrintShiftDelEnd
-
+	call NamingScreen_DrawBorders
 	ld a, [wOptions3]
 	bit QWERTY_KEYBOARD_F, a
 	ld de, MailEntry_Uppercase
@@ -1240,40 +1192,41 @@ MailComposition_TryAddLastCharacter:
 	ld a, [wNamingScreenLastCharacter]
 	jmp MailComposition_TryAddCharacter
 
-NamingScreen_FillHorizontal:
-	; left
-	ld [hli], a
-	; middle
-	inc a
-	ld c, SCREEN_WIDTH - 2
-.loop
-	ld [hli], a
-	dec c
-	jr nz, .loop
-	; right
-	inc a
-	ld [hli], a
-	ret
+NamingScreen_DrawBorders:
+	; message area
+	hlcoord 0, 0
+	lb bc, 4, SCREEN_WIDTH - 2
+	call .DrawBox
 
-NamingScreen_FillVertical:
-	hlcoord SCREEN_WIDTH - 1, 0
-	ld bc, SCREEN_WIDTH - 2
-	ld a, NAMINGSCREEN_BORDER + 4
-.loop
-	ld [hli], a
-	dec a
-	ld [hli], a
-	inc a
-	add hl, bc
-	dec d
-	jr nz, .loop
-	ret
+	; input characters
+	ld a, " "
+	hlcoord 0, 6
+	ld bc, SCREEN_WIDTH * 9
+	rst ByteFill
 
-PrintShiftDelEnd:
-	ld de, .ShiftDelEnd
+	; Shift/Del/End
+	hlcoord 0, SCREEN_HEIGHT - 3
+	lb bc, 1, SCREEN_WIDTH - 2
+	call .DrawBox
 	hlcoord 2, SCREEN_HEIGHT - 2
+	ld de, .ShiftDelEnd
 	rst PlaceString
 	ret
+
+.DrawBox:
+	ld de, .Frame
+	jmp CreateBoxBorders
+
+.Frame:
+	db NAMINGSCREEN_BORDER
+	db NAMINGSCREEN_BORDER + 1
+	db NAMINGSCREEN_BORDER + 2
+	db NAMINGSCREEN_BORDER + 3
+	db " "
+	db NAMINGSCREEN_BORDER + 4
+	db NAMINGSCREEN_BORDER + 5
+	db NAMINGSCREEN_BORDER + 6
+	db NAMINGSCREEN_BORDER + 7
 
 .ShiftDelEnd:
 	db "Shift  Del   End@"

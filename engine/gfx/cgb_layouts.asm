@@ -503,14 +503,29 @@ _CGB_NamingScreen:
 	inc hl
 	inc hl
 
+	ldh a, [rSVBK]
+	push af
+	ld a, $5
+	ldh [rSVBK], a
+
 	push hl
 	ld hl, GenderAndExpBarPals
 	ld de, wBGPals1 + 2
 	ld c, 2 * 2
-	call LoadPalettes
+	call LoadColorBytes
 	pop hl
 	ld c, 5 * 2
-	call LoadPalettes
+	call LoadColorBytes
+
+	ld hl, wBGPals1 palette 1
+	ld de, wBGPals1 palette 2
+	call LoadOneColor
+	ld hl, wBGPals1 + 6
+	ld de, wBGPals1 palette 2 + 6
+	call LoadOneColor
+
+	pop af
+	ldh [rSVBK], a
 
 	ld hl, PokegearOBPals
 	ld de, wOBPals1
@@ -530,35 +545,20 @@ _CGB_NamingScreen:
 	call LoadPartyMonPalette
 .not_pokemon
 
-	ld a, $7
+	; message area + Shift/Del/End
+	ld a, $1
 	hlcoord 0, 0, wAttrmap
 	ld bc, SCREEN_WIDTH * SCREEN_HEIGHT
 	rst ByteFill
+	; input characters
+	inc a
+	hlcoord 0, 6, wAttrmap
+	ld c, SCREEN_WIDTH * 9
+	rst ByteFill
 
-	ld a, $1
-	hlcoord 0, 0, wAttrmap
-	ld bc, SCREEN_WIDTH - 1
-	rst ByteFill
-	; ByteFill returns with b=0 and a unchanged
-	hlcoord 1, 5, wAttrmap
-	ld c, SCREEN_WIDTH - 2
-	rst ByteFill
-	hlcoord 1, SCREEN_HEIGHT - 3, wAttrmap
-	ld c, SCREEN_WIDTH - 2
-	rst ByteFill
-	hlcoord 1, SCREEN_HEIGHT - 1, wAttrmap
-	ld c, SCREEN_WIDTH - 1
-	rst ByteFill
-	hlcoord SCREEN_WIDTH - 1, 0, wAttrmap
-	ld c, SCREEN_WIDTH - 2
-	ld d, SCREEN_HEIGHT - 1
-.border_loop
-	ld [hli], a
-	ld [hli], a
-	add hl, bc
-	dec d
-	jr nz, .border_loop
+	call FillNamingScreenTextBoxes
 
+	; gender icon
 	xor a
 	ldcoord_a 1, 2, wAttrmap
 
@@ -576,82 +576,75 @@ _CGB_Mail:
 
 	ld hl, wBGPals1
 	ld de, wBGPals1 palette 1
-	call .LoadOneColor
+	call LoadOneColor
 	ld hl, wBGPals1
 	ld de, wBGPals1 palette 2
-	call .LoadOneColor
+	call LoadOneColor
 	ld hl, wBGPals1 + 2
 	ld de, wBGPals1 palette 2 + 4
-	call .LoadOneColor
+	call LoadOneColor
 	ld hl, wBGPals1 + 4
 	ld de, wBGPals1 palette 1 + 4
-	call .LoadOneColor
+	call LoadOneColor
 	ld hl, wBGPals1 + 6
 	ld de, wBGPals1 palette 1 + 2
-	call .LoadOneColor
+	call LoadOneColor
 	ld hl, wBGPals1 + 6
 	ld de, wBGPals1 palette 2 + 2
-	call .LoadOneColor
+	call LoadOneColor
 	ld hl, WhitePalette
 	ld de, wBGPals1 palette 1 + 6
-	call .LoadOneColor
+	call LoadOneColor
 	ld hl, WhitePalette
 	ld de, wBGPals1 palette 2 + 6
-	call .LoadOneColor
+	call LoadOneColor
 
 	ld hl, PokegearOBPals
 	ld de, wOBPals1
 	ld c, 8 palettes
-	call .LoadColorBytes
+	call LoadColorBytes
 
 	pop af
 	ldh [rSVBK], a
 
+	; message area
 	ld a, $1
 	hlcoord 0, 0, wAttrmap
 	ld bc, SCREEN_WIDTH * 6
 	rst ByteFill
-
+	; input characters
 	xor a
-	; hl == coord 0, 0, wAttrmap
-	; b == 0
 	ld c, SCREEN_WIDTH * 9
 	rst ByteFill
-
+	; Shift/Del/End
 	ld a, $2
-	; hl == coord 0, SCREEN_HEIGHT - 3, wAttrmap
-	; b == 0
-	ld c, SCREEN_WIDTH + 1
+	ld c, SCREEN_WIDTH * 3
 	rst ByteFill
 
-	ld a, $7
-	; hl == coord 1, SCREEN_HEIGHT - 2, wAttrmap
-	; b == 0
-	ld c, SCREEN_WIDTH - 2
-	rst ByteFill
-
-	ld a, $2
-	; hl == coord SCREEN_WIDTH - 1, SCREEN_HEIGHT - 2, wAttrmap
-	; b == 0
-	ld c, SCREEN_WIDTH + 1
-	rst ByteFill
-
-	ld a, $7
-	hlcoord 1, 1, wAttrmap
-	lb bc, 4, SCREEN_WIDTH - 2
-	call FillBoxWithByte
+	call FillNamingScreenTextBoxes
 
 	jmp ApplyAttrMap
 
-.LoadOneColor:
+LoadOneColor:
 	ld c, 2
-.LoadColorBytes:
+LoadColorBytes:
 	ld a, [hli]
 	ld [de], a
 	inc de
 	dec c
-	jr nz, .LoadColorBytes
+	jr nz, LoadColorBytes
 	ret
+
+FillNamingScreenTextBoxes:
+	; Shift/Del/End
+	ld a, $7
+	hlcoord 1, SCREEN_HEIGHT - 2, wAttrmap
+	ld bc, SCREEN_WIDTH - 2
+	rst ByteFill
+	; message area
+	hlcoord 1, 1, wAttrmap
+	lb bc, 4, SCREEN_WIDTH - 2
+	jmp FillBoxWithByte
 
 _CGB_MapPals:
 	call LoadMapPals
