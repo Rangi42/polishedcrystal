@@ -280,8 +280,24 @@ NamingScreenJoypadLoop:
 	dw .ReadButtons
 
 .InitCursor:
+	ld d, SPRITE_ANIM_INDEX_NAMING_SCREEN_CURSOR
+	ld a, [wNamingScreenType]
+	cp $4 ; box?
+	jr nz, .got_cursor
+	farcall GetBoxTheme
+	ld d, SPRITE_ANIM_INDEX_NAMING_SCREEN_CURSOR_BLUE
+	cp THEME_TRUTH
+	jr z, .got_cursor
+	cp THEME_FIRE
+	jr z, .got_cursor
+	cp THEME_ELECTRIC
+	jr z, .got_cursor
+	cp THEME_FAIRY
+	jr z, .got_cursor
+	ld d, SPRITE_ANIM_INDEX_NAMING_SCREEN_CURSOR
+.got_cursor
+	ld a, d
 	depixel 8, 3
-	ld a, SPRITE_ANIM_INDEX_NAMING_SCREEN_CURSOR
 	call InitSpriteAnimStruct
 	ld a, c
 	ld [wNamingScreenCursorObjectPointer], a
@@ -807,10 +823,7 @@ _ComposeMailMessage:
 	call GetCGBLayout
 	call ApplyTilemapInVBlank
 	call WaitTop
-	ld a, %11100100
-	call DmgToCgbBGPals
-	ld a, %11100100
-	call DmgToCgbObjPal0
+	call SetPalettes
 	call NamingScreen_InitNameEntry
 	ld hl, wNamingScreenDestinationPointer
 	ld e, [hl]
@@ -902,8 +915,16 @@ INCBIN "gfx/naming_screen/mail.2bpp.lz"
 	dw .process_joypad
 
 .init_blinking_cursor
+	ld d, SPRITE_ANIM_INDEX_COMPOSE_MAIL_CURSOR_BLUE
+	ld a, [wCurItem]
+	cp LITEBLUEMAIL
+	jr z, .got_cursor
+	cp EON_MAIL
+	jr z, .got_cursor
+	ld d, SPRITE_ANIM_INDEX_COMPOSE_MAIL_CURSOR
+.got_cursor
+	ld a, d
 	depixel 8, 2
-	ld a, SPRITE_ANIM_INDEX_COMPOSE_MAIL_CURSOR
 	call InitSpriteAnimStruct
 	ld a, c
 	ld [wNamingScreenCursorObjectPointer], a

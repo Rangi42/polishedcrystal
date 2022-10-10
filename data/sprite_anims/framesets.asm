@@ -10,6 +10,8 @@ SpriteAnimFrameData:
 	dw .Frameset_PartyMonWithItemFast
 	dw .Frameset_TextEntryCursor
 	dw .Frameset_TextEntryCursorBig
+	dw .Frameset_TextEntryCursorBlue
+	dw .Frameset_TextEntryCursorBlueBig
 	dw .Frameset_GameFreakLogo
 	dw .Frameset_SlotsGolem
 	dw .Frameset_SlotsChansey
@@ -125,6 +127,16 @@ SpriteAnimFrameData:
 
 .Frameset_TextEntryCursorBig:
 	frame SPRITE_ANIM_OAMSET_TEXT_ENTRY_CURSOR_BIG,  1
+	dorepeat  1
+	dorestart
+
+.Frameset_TextEntryCursorBlue:
+	frame SPRITE_ANIM_OAMSET_TEXT_ENTRY_CURSOR_BLUE,  1
+	dorepeat  1
+	dorestart
+
+.Frameset_TextEntryCursorBlueBig:
+	frame SPRITE_ANIM_OAMSET_TEXT_ENTRY_CURSOR_BLUE_BIG,  1
 	dorepeat  1
 	dorestart
 
