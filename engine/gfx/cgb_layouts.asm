@@ -41,6 +41,7 @@ LoadCGBLayout::
 	dw _CGB_TrainerOrMonFrontpicPals
 	dw _CGB_JudgeSystem
 	dw _CGB_NamingScreen
+	dw _CGB_Mail
 	dw _CGB_FlyMap
 	dw _CGB_NewDiploma
 	assert_table_length NUM_CGB_LAYOUTS - 2 ; discount CGB_RAM and CGB_PARTY_MENU_HP_PALS
@@ -475,27 +476,46 @@ _CGB_SlotMachine:
 	jmp _CGB_FinishLayout
 
 _CGB_Plain:
-	ld hl, GenericPals
+	ld b, 8
 	ld de, wBGPals1
-	ld c, 16 palettes
-	call LoadPalettes
-
-	ld de, wBGPals1
+.loop
 	ld hl, Gen1Palette
 	call LoadOnePalette
+	dec b
+	jr nz, .loop
+
+	; de == wOBPals1
+	ld hl, PokegearOBPals
+	ld c, 8 palettes
+	call LoadPalettes
 
 	call WipeAttrMap
 	jmp ApplyAttrMap
 
 _CGB_NamingScreen:
-	ld hl, GenericPals
-	ld de, wBGPals1
-	ld c, 16 palettes
-	call LoadPalettes
+	ld a, [wNamingScreenType]
+	cp $4 ; box?
+	ld a, THEME_STANDARD
+	jr nz, .got_theme
+	farcall GetBoxTheme
+.got_theme
+	call GetBillsPCThemePalette
 
 	ld de, wBGPals1
-	ld hl, Gen1Palette
-	call LoadOnePalette
+	ld c, 1 * 2
+	call LoadPalettes
+	push hl
+	ld hl, GenderAndExpBarPals
+	ld c, 2 * 2
+	call LoadPalettes
+	pop hl
+	ld c, 5 * 2
+	call LoadPalettes
+
+	ld hl, PokegearOBPals
+	ld de, wOBPals1
+	ld c, 8 palettes
+	call LoadPalettes
 
 	ld a, [wNamingScreenType]
 	and a
@@ -510,8 +530,122 @@ _CGB_NamingScreen:
 	call LoadPartyMonPalette
 .not_pokemon
 
-	call WipeAttrMap
+	ld a, $7
+	hlcoord 0, 0, wAttrmap
+	ld bc, SCREEN_WIDTH * SCREEN_HEIGHT
+	rst ByteFill
+
+	ld a, $1
+	hlcoord 0, 0, wAttrmap
+	ld bc, SCREEN_WIDTH - 1
+	rst ByteFill
+	; ByteFill returns with b=0 and a unchanged
+	hlcoord 1, 5, wAttrmap
+	ld c, SCREEN_WIDTH - 2
+	rst ByteFill
+	hlcoord 1, SCREEN_HEIGHT - 3, wAttrmap
+	ld c, SCREEN_WIDTH - 2
+	rst ByteFill
+	hlcoord 1, SCREEN_HEIGHT - 1, wAttrmap
+	ld c, SCREEN_WIDTH - 1
+	rst ByteFill
+	hlcoord SCREEN_WIDTH - 1, 0, wAttrmap
+	ld c, SCREEN_WIDTH - 2
+	ld d, SCREEN_HEIGHT - 1
+.border_loop
+	ld [hli], a
+	ld [hli], a
+	add hl, bc
+	dec d
+	jr nz, .border_loop
+
 	jmp ApplyAttrMap
+
+_CGB_Mail:
+	ld a, [wCurItem]
+	sub FIRST_MAIL
+	call LoadMailPalettes
+
+	ldh a, [rSVBK]
+	push af
+	ld a, $5
+	ldh [rSVBK], a
+
+	ld hl, wBGPals1
+	ld de, wBGPals1 palette 1
+	call .LoadOneColor
+	ld hl, wBGPals1
+	ld de, wBGPals1 palette 2
+	call .LoadOneColor
+	ld hl, wBGPals1 + 2
+	ld de, wBGPals1 palette 2 + 4
+	call .LoadOneColor
+	ld hl, wBGPals1 + 4
+	ld de, wBGPals1 palette 1 + 4
+	call .LoadOneColor
+	ld hl, wBGPals1 + 6
+	ld de, wBGPals1 palette 1 + 2
+	call .LoadOneColor
+	ld hl, wBGPals1 + 6
+	ld de, wBGPals1 palette 2 + 2
+	call .LoadOneColor
+	ld hl, WhitePalette
+	ld de, wBGPals1 palette 1 + 6
+	call .LoadOneColor
+	ld hl, WhitePalette
+	ld de, wBGPals1 palette 2 + 6
+	call .LoadOneColor
+
+	ld hl, PokegearOBPals
+	ld de, wOBPals1
+	ld c, 8 palettes
+	call .LoadColorBytes
+
+	pop af
+	ldh [rSVBK], a
+
+	ld a, $1
+	hlcoord 0, 0, wAttrmap
+	ld bc, SCREEN_WIDTH * 6
+	rst ByteFill
+
+	xor a
+	; hl == coord 0, 0, wAttrmap
+	; b == 0
+	ld c, SCREEN_WIDTH * 10
+	rst ByteFill
+
+	ld a, $2
+	; hl == coord 0, SCREEN_HEIGHT - 2, wAttrmap
+	; b == 0
+	ld c, SCREEN_WIDTH + 1
+	rst ByteFill
+
+	ld a, $7
+	; hl == coord 1, SCREEN_HEIGHT - 1, wAttrmap
+	; b == 0
+	ld c, SCREEN_WIDTH - 2
+	rst ByteFill
+
+	; hl == coord SCREEN_WIDTH - 1, SCREEN_HEIGHT - 1, wAttrmap
+	ld [hl], $2
+
+	ld a, $7
+	hlcoord 1, 1, wAttrmap
+	lb bc, 4, SCREEN_WIDTH - 2
+	call FillBoxWithByte
+
+	jmp ApplyAttrMap
+
+.LoadOneColor:
+	ld c, 2
+.LoadColorBytes:
+	ld a, [hli]
+	ld [de], a
+	inc de
+	dec c
+	jr nz, .LoadColorBytes
+	ret
 
 _CGB_MapPals:
 	call LoadMapPals
@@ -952,15 +1086,8 @@ LoadFirstTwoTrainerCardPals:
 _CGB_BillsPC:
 	farcall GetBoxTheme
 BillsPC_PreviewTheme:
-	; hl = BillsPC_ThemePals + a * 6 * 2
-	add a
-	add a
-	ld e, a
-	ld d, 0
-	ld hl, BillsPC_ThemePals
-	add hl, de
-	add hl, de
-	add hl, de
+	call GetBillsPCThemePalette
+
 	ld de, wBGPals1
 	ld c, 1 * 2
 	call LoadPalettes
@@ -1041,6 +1168,18 @@ else
 	RGB_MONOCHROME_WHITE
 	RGB_MONOCHROME_WHITE
 endc
+
+GetBillsPCThemePalette:
+	; hl = BillsPC_ThemePals + a * 6 * 2
+	add a
+	add a
+	ld e, a
+	ld d, 0
+	ld hl, BillsPC_ThemePals
+	add hl, de
+	add hl, de
+	add hl, de
+	ret
 
 _CGB_UnownPuzzle:
 	ld de, wBGPals1

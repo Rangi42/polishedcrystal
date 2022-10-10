@@ -113,8 +113,6 @@ INCLUDE "gfx/trainer_card/trainer_card.pal"
 DiplomaPals:
 INCLUDE "gfx/diploma/diploma.pal"
 
-GenericPals:
-INCLUDE "gfx/diploma/generic.pal"
 PokegearOBPals:
 INCLUDE "gfx/icons/icons.pal"
 

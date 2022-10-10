@@ -18,8 +18,7 @@ ReadAnyMail:
 	call EnableLCD
 	call ApplyTilemapInVBlank
 	ld a, [wBuffer3]
-	ld e, a
-	farcall LoadMailPalettes
+	farcall LoadAndApplyMailPalettes
 	call SetPalettes
 	xor a
 	ldh [hJoyPressed], a
