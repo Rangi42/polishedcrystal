@@ -946,7 +946,7 @@ SetUpEVModifier:
 CheckEVCap:
 ; Take the EV amount in a with the stat in c, and clamp a to the max
 ; amount of EVs we can give for the given stat, if a exceeds it.
-; Returns carry if a was modified, and hl is set to the relevant EV.
+; Returns the relevant EV in hl. Returns carry if a was modified.
 	push bc
 	ld b, a
 	ld a, MON_EVS
