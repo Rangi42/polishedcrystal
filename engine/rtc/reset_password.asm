@@ -4,6 +4,7 @@ _ResetClock:
 	call GetCGBLayout
 	call LoadStandardFont
 	call LoadFontsExtra
+	call BlackOutScreen
 	ld de, MUSIC_MAIN_MENU
 	call PlayMusic
 	ld hl, .text_askreset

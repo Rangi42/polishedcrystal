@@ -4,6 +4,7 @@ _DeleteSaveData:
 	call GetCGBLayout
 	call LoadStandardFont
 	call LoadFontsExtra
+	call BlackOutScreen
 	ld de, MUSIC_MAIN_MENU
 	call PlayMusic
 	ld hl, .Text_ClearAllSaveData
@@ -42,6 +43,7 @@ _ResetInitialOptions:
 	call GetCGBLayout
 	call LoadStandardFont
 	call LoadFontsExtra
+	call BlackOutScreen
 	ld de, MUSIC_MAIN_MENU
 	call PlayMusic
 	ld hl, .Text_ResetInitialOptions

@@ -41,6 +41,17 @@ ClearTileMap::
 	ret z
 	jmp ApplyTilemapInVBlank
 
+BlackOutScreen::
+	xor a
+	ldh [hBGMapMode], a
+	hlcoord 0, 0
+	ld bc, SCREEN_HEIGHT * SCREEN_WIDTH
+	ld a, "<BLACK>"
+	rst ByteFill
+	ld a, $1
+	ldh [hBGMapMode], a
+	ret
+
 SpeechTextbox::
 ; Standard textbox.
 	hlcoord TEXTBOX_X, TEXTBOX_Y
