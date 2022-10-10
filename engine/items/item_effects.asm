@@ -2033,14 +2033,8 @@ WingCase_MonSelected:
 	ld a, [wMenuSelection]
 	inc a
 	ret z
-
-	; c = [(WingMenuItems + 1) + (a - 1)]
-	add LOW(WingMenuItems)
-	ld l, a
-	adc HIGH(WingMenuItems)
-	sub l
-	ld h, a
-	ld c, [hl]
+	dec a
+	ld c, a
 	ld b, 0
 	call _GetStatString
 
