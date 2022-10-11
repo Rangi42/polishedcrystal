@@ -269,6 +269,7 @@ ScriptCommandTable:
 	dw Script_ifequalfwd                 ; d2
 	dw Script_iffalsefwd                 ; d3
 	dw Script_iftruefwd                  ; d4
+	dw Script_scalltable                 ; d5
 	assert_table_length NUM_EVENT_COMMANDS
 
 StartScript:
@@ -1371,6 +1372,26 @@ CallCallback::
 	ld a, [wScriptBank]
 	or $80
 	ld [wScriptBank], a
+	jr ScriptCall
+
+Script_scalltable:
+	call GetScriptByte
+	ld l, a
+	call GetScriptByte
+	ld h, a
+	ldh a, [hScriptVar]
+	ld e, a
+	ld d, 0
+	add hl, de
+	add hl, de
+	ld a, [wScriptBank]
+	ld b, a
+	call GetFarByte
+	ld e, a
+	inc hl
+	ld a, [wScriptBank]
+	call GetFarByte
+	ld d, a
 	jr ScriptCall
 
 Script_sjump:
