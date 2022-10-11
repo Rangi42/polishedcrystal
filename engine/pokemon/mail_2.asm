@@ -12,7 +12,7 @@ ReadAnyMail:
 	call ClearTileMap
 	call DisableLCD
 	call LoadStandardFont
-	call LoadFontsExtra
+	call LoadFrame
 	pop de
 	call .LoadGFX
 	call EnableLCD

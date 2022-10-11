@@ -60,7 +60,7 @@ _LoadFontsBattleExtra::
 	lb bc, BANK(BattleExtrasGFX), 32
 	call DecompressRequest2bpp
 
-LoadFrame::
+_LoadFrame::
 	ld a, [wTextboxFrame]
 	ld bc, TEXTBOX_FRAME_TILES * LEN_1BPP_TILE
 	ld hl, Frames

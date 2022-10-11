@@ -10,8 +10,8 @@ LoadStandardFont::
 LoadFontsBattleExtra::
 	farjp _LoadFontsBattleExtra
 
-LoadFontsExtra::
-	farjp LoadFrame
+LoadFrame::
+	farjp _LoadFrame
 
 ApplyTilemap::
 ; Tell VBlank to update BG Map

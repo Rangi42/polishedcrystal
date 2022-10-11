@@ -716,7 +716,7 @@ LoadNamingScreenGFX:
 	call ClearSprites
 	call ClearSpriteAnims
 	call LoadStandardFont
-	call LoadFontsExtra
+	call LoadFrame
 
 	ld hl, NamingScreenGFX_Border
 	ld de, vTiles2 tile NAMINGSCREEN_BORDER

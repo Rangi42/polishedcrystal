@@ -328,7 +328,7 @@ UpdateFrame:
 	ld [hld], a
 	lb bc, PRINTNUM_LEFTALIGN, 2
 	call PrintNumFromReg
-	call LoadFontsExtra
+	call LoadFrame
 	and a
 	ret
 
