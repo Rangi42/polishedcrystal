@@ -31,8 +31,9 @@ ClearScreen::
 	rst ByteFill
 ClearTileMap::
 ; Fill wTilemap with blank tiles.
-	hlcoord 0, 0
 	ld a, " "
+FillTileMap::
+	hlcoord 0, 0
 	ld bc, wTilemapEnd - wTilemap
 	rst ByteFill
 	; Update the BG Map.
