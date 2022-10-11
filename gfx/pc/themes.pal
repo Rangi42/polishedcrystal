@@ -194,7 +194,7 @@ if !DEF(MONOCHROME)
 ; electric
 	RGB 23, 20, 07
 	; two gender colors go here
-	RGB 31, 31, 31
+	RGB 00, 00, 00
 	RGB 23, 20, 07
 	RGB 07, 06, 02
 	RGB 31, 24, 06

@@ -3522,7 +3522,7 @@ _PocketIsFullText::
 SECTION "_FoundWingsText", ROMX
 _FoundWingsText::
 	text "<PLAYER> got "
-	text_decimal wCurWingQuantity, 1, 1
+	text_decimal wCurWingQuantity, 1, 2
 	line ""
 	text_ram wStringBuffer4
 	text "."

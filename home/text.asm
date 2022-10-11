@@ -31,8 +31,9 @@ ClearScreen::
 	rst ByteFill
 ClearTileMap::
 ; Fill wTilemap with blank tiles.
-	hlcoord 0, 0
 	ld a, " "
+FillTileMap::
+	hlcoord 0, 0
 	ld bc, wTilemapEnd - wTilemap
 	rst ByteFill
 	; Update the BG Map.
@@ -40,6 +41,17 @@ ClearTileMap::
 	bit rLCDC_ENABLE, a
 	ret z
 	jmp ApplyTilemapInVBlank
+
+BlackOutScreen::
+	xor a
+	ldh [hBGMapMode], a
+	hlcoord 0, 0
+	ld bc, SCREEN_HEIGHT * SCREEN_WIDTH
+	ld a, "<BLACK>"
+	rst ByteFill
+	ld a, $1
+	ldh [hBGMapMode], a
+	ret
 
 SpeechTextbox::
 ; Standard textbox.

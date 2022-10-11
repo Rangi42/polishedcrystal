@@ -32,7 +32,6 @@ MapScenes::
 	scene_var DRAGONS_DEN_B1F,                        wDragonsDenB1FSceneID
 	scene_var ECRUTEAK_GYM,                           wEcruteakGymSceneID
 	scene_var ECRUTEAK_HOUSE,                         wEcruteakHouseSceneID
-	scene_var ECRUTEAK_POKECENTER_1F,                 wEcruteakPokecenter1FSceneID
 	scene_var ELMS_LAB,                               wElmsLabSceneID
 	scene_var FARAWAY_ISLAND,                         wFarawayIslandSceneID
 	scene_var FAST_SHIP_1F,                           wFastShip1FSceneID

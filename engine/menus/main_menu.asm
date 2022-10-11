@@ -14,7 +14,8 @@ MainMenu:
 	call MainMenuJoypadLoop
 	call CloseWindow
 	ret c
-	call ClearTileMap
+	ld a, "<BLACK>"
+	call FillTileMap
 	ld a, [wMenuSelection]
 	ld hl, .Jumptable
 	call JumpTable

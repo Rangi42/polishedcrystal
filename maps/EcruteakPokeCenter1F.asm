@@ -1,6 +1,5 @@
 EcruteakPokeCenter1F_MapScriptHeader:
 	def_scene_scripts
-	scene_script EcruteakPokeCenter1FBillWalksUpTrigger
 
 	def_callbacks
 
@@ -24,41 +23,6 @@ EcruteakPokeCenter1F_MapScriptHeader:
 
 	object_const_def
 	const ECRUTEAKPOKECENTER1F_BILL
-
-EcruteakPokeCenter1FBillWalksUpTrigger:
-	sdefer .Script
-	end
-
-.Script:
-	pause 30
-	moveobject ECRUTEAKPOKECENTER1F_BILL, 0, 7
-	playsound SFX_EXIT_BUILDING
-	appear ECRUTEAKPOKECENTER1F_BILL
-	turnobject ECRUTEAKPOKECENTER1F_BILL, RIGHT
-	waitsfx
-	applymovement ECRUTEAKPOKECENTER1F_BILL, .Movement1
-	pause 60
-	applymovement ECRUTEAKPOKECENTER1F_BILL, .Movement2
-	setscene $1
-	end
-
-.Movement1:
-	step_right
-	step_right
-	step_up
-	step_up
-	step_up
-	step_up
-	step_right
-	step_right
-	step_right
-	turn_head_up
-	step_end
-
-.Movement2:
-	step_right
-	turn_head_down
-	step_end
 
 PokemonJournalMortyScript:
 	setflag ENGINE_READ_MORTY_JOURNAL
