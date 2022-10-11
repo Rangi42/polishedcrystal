@@ -1370,4 +1370,10 @@ MACRO iftruefwd
 	db \1 - @ - 1 ; distance
 ENDM
 
+	const scalltable_command
+MACRO scalltable
+	db scalltable_command
+	dw \1 ; pointer table
+ENDM
+
 DEF NUM_EVENT_COMMANDS EQU const_value

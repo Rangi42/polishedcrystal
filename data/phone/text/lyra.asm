@@ -1,18 +1,23 @@
 LyraPhoneMornGreetingText:
 	text "Oh, <PLAYER>!"
 	line "Good morning!"
-	done
+	prompt
 
 LyraPhoneDayGreetingText:
 	text "Oh, <PLAYER>!"
 	line "How are you?"
-	done
+	prompt
 
 LyraPhoneEveGreetingText:
+	text "Oh, <PLAYER>!"
+	line "Good evening!"
+	prompt
+
 LyraPhoneNiteGreetingText:
 	text "Oh, <PLAYER>!"
 	line "Good evening!"
-	done
+	cont "You're up late."
+	prompt
 
 LyraPhoneMainText:
 	text "You know, my dad"
@@ -90,35 +95,22 @@ LyraPhoneFirstBadgeText:
 	line "the League!"
 	done
 
-LyraPhoneLyrasEggIntroText:
-	text "Hi, <PLAYER>!"
+LyraPhoneLyrasEggText:
+	text "<PLAYER>! Hi!"
 
 	para "Are you doing well"
-	line "against Kanto's Gym"
-	cont "Leaders?"
+	line "against Kanto's"
+	cont "Gym Leaders?"
 
 	para "I'm sure you are!"
 
 	para "Listen, listen!"
-	done
 
-LyraPhoneLyrasEggChikoritaText:
-	text "I left my Chicory"
+	para "I left my "
+	text_ram wStringBuffer4
 	line "at the Day-Care"
-	done
 
-LyraPhoneLyrasEggCyndaquilText:
-	text "I left my Cinder"
-	line "at the Day-Care"
-	done
-
-LyraPhoneLyrasEggTotodileText:
-	text "I left my Toto"
-	line "at the Day-Care"
-	done
-
-LyraPhoneLyrasEggEndText:
-	text "with Grandma and"
+	para "with Grandma and"
 	line "Grandpa, and they"
 	cont "found an Egg!"
 
@@ -166,8 +158,7 @@ LyraPhoneMagnetonText:
 	para "You didn't already"
 	line "know that,"
 	cont "did you?"
-
-	done
+	prompt
 
 LyraPhoneEndText:
 	text "Anyway… So nice"
