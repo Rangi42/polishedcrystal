@@ -19,6 +19,31 @@ LyraPhoneNiteGreetingText:
 	cont "You're up late."
 	prompt
 
+LyraPhoneLandmarkText:
+	text "Where are you now?"
+	line ""
+	text_ram wStringBuffer4
+	text "?"
+	prompt
+
+LyraPhoneJohtoText_Generic:
+	text "Tell me all about"
+	line "it later, OK?"
+	prompt
+
+LyraPhoneKantoText:
+	text "So you're all the"
+	line "way over in Kanto!"
+	prompt
+
+LyraPhoneIslandsText:
+	text "You're exploring a"
+	line "tropical island…"
+
+	para "I'm jealous,"
+	line "<PLAYER>!"
+	prompt
+
 LyraPhoneMainText:
 	text "You know, my dad"
 	line "thinks you'll be-"
