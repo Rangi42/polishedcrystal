@@ -55,6 +55,7 @@ DEF MOVE_LENGTH EQU _RS
 ; indexes for:
 ; - wPlayerStats and wEnemyStats (see wram.asm)
 ; - party_struct and battle_struct members (see macros/wram.asm)
+; - GetStatString arguments (see data/battle/stat_strings.asm)
 	const_def 1
 	const STAT_HP
 	const STAT_ATK

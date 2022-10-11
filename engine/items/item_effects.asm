@@ -980,20 +980,7 @@ _GetStatString:
 	rst CopyBytes
 	ret
 
-StatStrings:
-	dw .health
-	dw .attack
-	dw .defense
-	dw .speed
-	dw .spcl_atk
-	dw .spcl_def
-
-.health   db "Health@"
-.attack   db "Attack@"
-.defense  db "Defense@"
-.speed    db "Speed@"
-.spcl_atk db "Spcl.Atk@"
-.spcl_def db "Spcl.Def@"
+INCLUDE "data/battle/stat_strings.asm"
 
 GetEVRelativePointer:
 	ld a, [wCurItem]
@@ -1989,10 +1976,24 @@ WingCase_MonSelected:
 	db $20
 	db 7, 7
 	db SCROLLINGMENU_ITEMS_NORMAL
-	dba WingMenuItems
+	dba .MenuItems
 	dba .DisplayWingName
 	dba .DisplayWingAmount
 	dba .DisplayWingDesc
+
+.MenuItems:
+; Note that the order doesn't match the internal index order,
+; because Swift Wing (Speed) is last.
+	db NUM_WINGS
+	table_width 1
+	db HEALTH_WING
+	db MUSCLE_WING
+	db RESIST_WING
+	db GENIUS_WING
+	db CLEVER_WING
+	db SWIFT_WING
+	assert_table_length NUM_WINGS
+	db -1
 
 .DisplayWingName:
 	ld hl, WingNames
