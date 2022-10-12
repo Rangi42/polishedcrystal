@@ -390,7 +390,7 @@ JumpTextFacePlayerScript:
 JumpTextScript:
 	opentext
 JumpOpenedTextScript:
-	repeattext -1, -1
+	repeattext
 	waitendtext
 
 _GetTextPointer:
@@ -466,15 +466,6 @@ Script_writethistext:
 	ret
 
 Script_repeattext:
-	call GetScriptByte
-	ld l, a
-	call GetScriptByte
-	ld h, a
-	cp -1
-	ret nz
-	ld a, l
-	cp -1
-	ret nz
 	ld hl, wScriptTextBank
 	ld a, [hli]
 	ld b, a

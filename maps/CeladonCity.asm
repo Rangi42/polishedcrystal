@@ -268,6 +268,9 @@ CeladonGymSignText:
 
 CeladonUniversitySignText:
 	text "Celadon University"
+
+	para "“Growth Through"
+	line "Studying”"
 	done
 
 CeladonCityDeptStoreSignText:

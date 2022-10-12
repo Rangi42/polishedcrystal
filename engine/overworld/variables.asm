@@ -2,6 +2,7 @@ VarActionTable:
 ; $00: copy [de] to wStringBuffer2
 ; $40: return address in de
 ; $80: call function
+	table_width 3, VarActionTable
 	dwb wStringBuffer2,                 RETVAR_STRBUF2
 	dwb wPartyCount,                    RETVAR_STRBUF2
 	dwb Var_BattleResult,               RETVAR_EXECUTE
@@ -28,7 +29,8 @@ VarActionTable:
 	dwb wKenjiBreakTimer,               RETVAR_STRBUF2
 	dwb Var_CountPokemonJournals,       RETVAR_EXECUTE
 	dwb Var_CountTrainerStars,          RETVAR_EXECUTE
-	dwb NULL,                           RETVAR_STRBUF2
+	dwb Var_Landmark,                   RETVAR_EXECUTE
+	assert_table_length NUM_VARS
 
 _GetVarAction::
 	ld a, c
@@ -117,6 +119,10 @@ Var_CountPokemonJournals:
 	ld b, wPokemonJournalsEnd - wPokemonJournals
 	call CountSetBits
 	ld a, [wNumSetBits]
+	jr _Var_loadstringbuffer2
+
+Var_Landmark:
+	call GetCurrentLandmark
 	jr _Var_loadstringbuffer2
 
 Var_CountTrainerStars:

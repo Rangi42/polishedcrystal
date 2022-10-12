@@ -679,16 +679,22 @@ endc
 
 	farcall UpdateStorageBoxMonFromTemp
 	farcall CurBoxFullCheck
+
+	push af
+	call SpeechTextbox
+	call ApplyAttrAndTilemapInVBlank
+	pop af
+
 	jr z, .box_not_full
 	ld hl, Text_CurBoxFull
 	push bc
-	call PrintText
+	call PrintTextNoBox
 	pop bc
 
 .box_not_full
 	farcall GetCurBoxName
 	ld hl, Text_SentToBillsPC
-	call PrintText
+	call PrintTextNoBox
 
 	ld c, 15
 	call FadeToWhite
@@ -969,13 +975,14 @@ GetStatStringAndPlayFullHealSFX:
 GetStatString:
 	call GetEVRelativePointer
 _GetStatString:
+	ld de, wStringBuffer2
 	ld hl, StatStrings
 	add hl, bc
 	add hl, bc
+GetStatStringForLyra:
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
-	ld de, wStringBuffer2
 	ld bc, ITEM_NAME_LENGTH
 	rst CopyBytes
 	ret

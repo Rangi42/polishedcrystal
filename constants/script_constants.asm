@@ -71,7 +71,8 @@ DEF STRING_BUFFER_LENGTH EQU 19
 	const VAR_KENJI_BREAK      ; 17
 	const VAR_PKMN_JOURNALS    ; 18
 	const VAR_TRAINER_STARS    ; 19
-DEF NUM_VARS EQU const_value           ; 1a
+	const VAR_LANDMARK         ; 1a
+DEF NUM_VARS EQU const_value       ; 1b
 
 ; variable action types
 DEF RETVAR_STRBUF2 EQU 0 << 6

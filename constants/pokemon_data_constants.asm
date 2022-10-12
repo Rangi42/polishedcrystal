@@ -303,17 +303,34 @@ DEF HOF_LENGTH EQU 1 + HOF_MON_LENGTH * PARTY_LENGTH + 1 ; win count, party, ter
 DEF NUM_HOF_TEAMS EQU 10
 
 ; evolution types (used in data/pokemon/evos_attacks.asm)
-	const_def 1
+	const_def
+	const EVOLVE_NONE ; only for Lyra's info
 	const EVOLVE_LEVEL
 	const EVOLVE_ITEM
 	const EVOLVE_HOLDING
 	const EVOLVE_HAPPINESS
-	const EVOLVE_STAT
+	const EVOLVE_STAT ; only for Tyrogue (no need for "EVOLVE_TYROGUE")
 	const EVOLVE_LOCATION
 	const EVOLVE_MOVE
 	const EVOLVE_EVS
-	const EVOLVE_CRIT
-	const EVOLVE_PARTY
+	const EVOLVE_CRIT ; only for Galarian Farfetch'd
+	const EVOLVE_PARTY ; only for Mantyke
+; multi_evo types for Lyra's info (used in data/pokemon/multiple_evos.asm)
+	const EVOLVE_EGG
+	const EVOLVE_PIKACHU
+	const EVOLVE_GLOOM
+	const EVOLVE_POLIWHIRL
+	const EVOLVE_SLOWPOKE
+	const EVOLVE_SLOWPOKE_GALARIAN
+	const EVOLVE_MAGNETON
+	const EVOLVE_EXEGGCUTE
+	const EVOLVE_CUBONE
+	const EVOLVE_SCYTHER
+	const EVOLVE_EEVEE
+	const EVOLVE_MIME_JR_
+	const EVOLVE_URSARING
+	const EVOLVE_STANTLER
+DEF NUM_EVOLVE_METHODS EQU const_value
 
 ; EVOLVE_HAPPINESS triggers
 	const_def 1

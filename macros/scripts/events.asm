@@ -533,8 +533,6 @@ ENDM
 	const repeattext_command
 MACRO repeattext
 	db repeattext_command
-	db \1 ; byte
-	db \2 ; byte
 ENDM
 
 	const yesorno_command
