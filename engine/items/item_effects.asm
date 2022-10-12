@@ -679,16 +679,22 @@ endc
 
 	farcall UpdateStorageBoxMonFromTemp
 	farcall CurBoxFullCheck
+
+	push af
+	call SpeechTextbox
+	call ApplyAttrAndTilemapInVBlank
+	pop af
+
 	jr z, .box_not_full
 	ld hl, Text_CurBoxFull
 	push bc
-	call PrintText
+	call PrintTextNoBox
 	pop bc
 
 .box_not_full
 	farcall GetCurBoxName
 	ld hl, Text_SentToBillsPC
-	call PrintText
+	call PrintTextNoBox
 
 	ld c, 15
 	call FadeToWhite
