@@ -3,7 +3,7 @@
 MACRO multi_evo
 ; mon, EVOLVE_* value
 	if _NARG == 1
-		dp \1
+		dp \1, PLAIN_FORM
 		db EVOLVE_\1
 	elif _NARG == 2
 		dp \1
@@ -16,9 +16,11 @@ ENDM
 
 MultipleEvolutions:
 	multi_evo PIKACHU
+	multi_evo PIKACHU, PIKACHU_FLY_FORM, EVOLVE_PIKACHU
+	multi_evo PIKACHU, PIKACHU_SURF_FORM, EVOLVE_PIKACHU
 	multi_evo GLOOM
 	multi_evo POLIWHIRL
-	multi_evo SLOWPOKE, EVOLVE_SLOWPOKE_PLAIN
+	multi_evo SLOWPOKE, PLAIN_FORM, EVOLVE_SLOWPOKE_PLAIN
 	multi_evo SLOWPOKE, GALARIAN_FORM, EVOLVE_SLOWPOKE_GALARIAN
 	multi_evo MAGNETON
 	multi_evo EXEGGCUTE
