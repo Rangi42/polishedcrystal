@@ -969,13 +969,14 @@ GetStatStringAndPlayFullHealSFX:
 GetStatString:
 	call GetEVRelativePointer
 _GetStatString:
+	ld de, wStringBuffer2
 	ld hl, StatStrings
 	add hl, bc
 	add hl, bc
+GetStatStringForLyra:
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
-	ld de, wStringBuffer2
 	ld bc, ITEM_NAME_LENGTH
 	rst CopyBytes
 	ret

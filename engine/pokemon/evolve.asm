@@ -835,3 +835,102 @@ GetEvosAttacksPointer:
 	ld h, [hl]
 	ld l, a
 	ret
+
+GetEvolutionData:
+; input: b = form, c = species
+; output: a = EVOLVE_* constant, wStringBuffer4 = parameter 1, wStringBuffer5 = parameter 2
+	assert MON_IS_EGG == MON_EXTSPECIES && MON_EXTSPECIES == MON_FORM
+	bit MON_IS_EGG_F, b
+	jr z, .not_egg
+	ld a, EVOLVE_EGG
+	ret
+.not_egg
+	ld a, b
+	and SPECIESFORM_MASK
+	ld b, a
+	ld hl, MultipleEvolutions
+	ld de, 3
+	call IsInWordArray
+	jr nc, .not_multiple
+	inc hl
+	inc hl
+	ld a, [hl]
+	ret
+.not_multiple
+	call GetEvosAttacksPointer
+	ld a, [hli]
+	inc a ; no evolutions?
+	ret z ; EVOLVE_NONE == 0
+	dec a
+	push af
+	ld a, [hld] ; parameter 1
+	ld [wStringBuffer4], a
+	ld a, [hli] ; evolution method
+	cp EVOLVE_ITEM
+	jr z, .get_item_name
+	cp EVOLVE_HOLDING
+	jr z, .get_item_name_and_time
+	cp EVOLVE_LOCATION
+	jr z, .get_landmark_name
+	cp EVOLVE_MOVE
+	jr z, .get_move_name
+	cp EVOLVE_EVS
+	jr z, .get_stat_name
+	cp EVOLVE_PARTY
+	jr z, .get_mon_name
+.done
+	pop af
+	ret
+
+.copy_string:
+	ld de, wStringBuffer1
+	ld hl, wStringBuffer4
+	call CopyName2
+	jr .done
+
+.get_item_name_and_time:
+	inc hl
+	inc hl
+	ld a, [hld] ; parameter 2 (time)
+	ld [wStringBuffer5], a
+.get_item_name:
+	ld a, [hl] ; parameter 1 (item)
+	ld [wNamedObjectIndex], a
+	call GetItemName
+	jr .copy_string
+
+.get_landmark_name:
+	ld e, [hl] ; parameter 1 (landmark)
+	farcall GetLandmarkName
+	jr .copy_string
+
+.get_move_name:
+	ld a, [hl] ; parameter 1 (move)
+	ld [wNamedObjectIndex], a
+	call GetMoveName
+	jr .copy_string
+
+.get_mon_name:
+	ld a, [hli] ; parameter 1 low (species)
+	ld e, a
+	ld a, [hl] ; parameter 1 high (ext species/form)
+	ld hl, wNamedObjectIndex
+	ld [hld], a
+	ld [hl], e
+	call GetPokemonName
+	jr .copy_string
+
+.get_stat_name:
+	ld a, [hl] ; parameter 1 (ev field)
+	sub MON_EVS
+	add a
+	add LOW(StatStrings)
+	ld l, a
+	adc HIGH(StatStrings)
+	sub l
+	ld h, a
+	ld de, wStringBuffer1
+	farcall GetStatStringForLyra
+	jr .copy_string
+
+INCLUDE "data/pokemon/multi_evos.asm"

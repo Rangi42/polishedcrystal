@@ -1,20 +1,20 @@
-LyraPhoneMornGreetingText:
+LyraPhoneGreetingText_Morn:
 	text "Oh, <PLAYER>!"
 	line "Good morning!"
 	prompt
 
-LyraPhoneDayGreetingText:
+LyraPhoneGreetingText_Day:
 	text "Oh, <PLAYER>!"
 	line "How are you?"
 	prompt
 
-LyraPhoneEveGreetingText:
+LyraPhoneGreetingText_Eve:
 	text "Oh, <PLAYER>!"
 	line "Good evening!"
 	prompt
 
-LyraPhoneNiteGreetingText:
-	text "Oh, <PLAYER>!"
+LyraPhoneGreetingText_Nite:
+	text "…<PLAYER>!"
 	line "Good evening!"
 	cont "You're up late."
 	prompt
@@ -24,11 +24,6 @@ LyraPhoneLandmarkText:
 	line ""
 	text_ram wStringBuffer4
 	text "?"
-	prompt
-
-LyraPhoneJohtoText_Generic:
-	text "Tell me all about"
-	line "it later, OK?"
 	prompt
 
 LyraPhoneKantoText:
@@ -44,27 +39,267 @@ LyraPhoneIslandsText:
 	line "<PLAYER>!"
 	prompt
 
-LyraPhoneMainText:
-	text "You know, my dad"
-	line "thinks you'll be-"
+LyraPhoneJohtoText_Generic:
+	text "Tell me all about"
+	line "it later, OK?"
+	prompt
 
-	para "come an incredible"
-	line "trainer someday."
+LyraPhoneEvolutionQuestionText:
+	text "I've been studying"
+	line "how #mon evolve"
+	cont "with Prof.Elm."
 
-	para "What am I saying?"
-	line "I'm starting to"
+	para "Want me to tell"
+	line "you how your #-"
+	cont "mon evolve?"
+	done
 
-	para "sound like the"
-	line "professor!"
+LyraPhoneEvoText_None:
+	text "Well, "
+	text_ram wStringBuffer3
+	line "doesn't evolve!"
 
-	para "Well, do your"
-	line "best!"
+	para "At least not as"
+	line "far as I know."
+	prompt
+
+LyraPhoneEvoText_Level:
+	text_ram wStringBuffer3
+	line "evolves when it"
+	cont "reaches level "
+	text_decimal wStringBuffer4, 1, 3
+	text "."
+	prompt
+
+LyraPhoneEvoText_Item:
+	text_ram wStringBuffer3
+	line "evolves when it's"
+
+	para "exposed to a"
+	line ""
+	text_ram wStringBuffer4
+	text "."
+	prompt
+
+LyraPhoneEvoText_Holding:
+	text_ram wStringBuffer3
+	line "evolves when it"
+	cont "gains a level"
+
+	para "while holding a"
+	line ""
+	text_ram wStringBuffer4
+	text "."
+	prompt
+
+LyraPhoneEvoText_Holding_MornDay:
+	text_ram wStringBuffer3
+	line "evolves when it"
+	cont "gains a level"
+
+	para "while holding a"
+	line ""
+	text_ram wStringBuffer4
+	text ", but"
+
+	para "only during the"
+	line "morning or day."
+	prompt
+
+LyraPhoneEvoText_Holding_EveNite:
+	text_ram wStringBuffer3
+	line "evolves when it"
+	cont "gains a level"
+
+	para "while holding a"
+	line ""
+	text_ram wStringBuffer4
+	text ", but"
+
+	para "only during the"
+	line "evening or night."
+	prompt
+
+LyraPhoneEvoText_Happiness:
+	text_ram wStringBuffer3
+	line "evolves when it's"
+	cont "really happy!"
+	prompt
+
+LyraPhoneEvoText_Happiness_MornDay:
+	text_ram wStringBuffer3
+	line "evolves when it's"
+	cont "really happy, but"
+
+	para "only during the"
+	line "morning or day."
+	prompt
+
+LyraPhoneEvoText_Happiness_EveNite:
+	text_ram wStringBuffer3
+	line "evolves when it's"
+	cont "really happy, but"
+
+	para "only during the"
+	line "evening or night."
+	prompt
+
+LyraPhoneEvoText_Stat:
+	text_ram wStringBuffer3
+	line "evolves at level"
+	cont ""
+	text_decimal wStringBuffer4, 1, 3
+	text ", but what it"
+
+	para "evolves into de-"
+	line "pends on its"
+
+	para "Attack and"
+	line "Defense stats."
+	prompt
+
+LyraPhoneEvoText_Location:
+	text_ram wStringBuffer3
+	line "evolves when it"
+
+	para "gains a level at"
+	line ""
+	text_ram wStringBuffer4
+	text "."
+	prompt
+
+LyraPhoneEvoText_Move:
+	text_ram wStringBuffer3
+	line "evolves when it"
+
+	para "gains a level"
+	line "while it knows"
+
+	para "how to use"
+	line ""
+	text_ram wStringBuffer4
+	text "."
+	prompt
+
+LyraPhoneEvoText_EVs:
+	text_ram wStringBuffer3
+	line "evolves when it's"
+
+	para "put enough effort"
+	line "into improving"
+	cont "its "
+	text_ram wStringBuffer4
+	text "."
+
+	para "Vitamins can help"
+	line "with that."
+	prompt
+
+LyraPhoneEvoText_Crit:
+	text_ram wStringBuffer3
+	line "evolves after it"
+
+	para "lands three crit-"
+	line "ical hits in one"
+	cont "battle."
+	prompt
+
+LyraPhoneEvoText_Party:
+	text_ram wStringBuffer3
+	line "evolves when it"
+	cont "gains a level"
+
+	para "while you have a"
+	line ""
+	text_ram wStringBuffer4
+	cont "in your party too."
+	prompt
+
+LyraPhoneEvoText_Egg:
+	text "Eggs don't evolve,"
+	line "they hatch! Haha!"
+	prompt
+
+LyraPhoneEvoText_Pikachu:
+	; TODO (EVOLVE_ITEM, THUNDERSTONE), (EVOLVE_ITEM, ODD_SOUVENIR)
+	text "Pikachu"
+	prompt
+
+LyraPhoneEvoText_Gloom:
+	; TODO (EVOLVE_ITEM, LEAF_STONE), (EVOLVE_ITEM, SUN_STONE)
+	text "Gloom"
+	prompt
+
+LyraPhoneEvoText_Poliwhirl:
+	; TODO (EVOLVE_ITEM, WATER_STONE), (EVOLVE_HOLDING, KINGS_ROCK)
+	text "Poliwhirl"
+	prompt
+
+LyraPhoneEvoText_SlowpokePlain:
+	; TODO (EVOLVE_HOLDING, KINGS_ROCK, TR_ANYTIME), (EVOLVE_LEVEL, 37)
+	text "SlowpokePlain"
+	prompt
+
+LyraPhoneEvoText_SlowpokeGalarian:
+	; TODO (EVOLVE_HOLDING, KINGS_ROCK, TR_ANYTIME), (EVOLVE_LEVEL, 37)
+	text "SlowpokeGalarian"
+	prompt
+
+LyraPhoneEvoText_Magneton:
+	; TODO (EVOLVE_ITEM, THUNDERSTONE), (EVOLVE_LOCATION, MAGNET_TUNNEL), (EVOLVE_LOCATION, ROCK_TUNNEL)
+	text "Magneton"
+	prompt
+
+LyraPhoneEvoText_Exeggcute:
+	; TODO (EVOLVE_ITEM, LEAF_STONE), (EVOLVE_ITEM, ODD_SOUVENIR)
+	text "Exeggcute"
+	prompt
+
+LyraPhoneEvoText_Cubone:
+	; TODO (EVOLVE_LEVEL, 28), (EVOLVE_ITEM, ODD_SOUVENIR)
+	text "Cubone"
+	prompt
+
+LyraPhoneEvoText_Scyther:
+	; TODO (EVOLVE_HOLDING, METAL_COAT), (EVOLVE_HOLDING, HARD_STONE)
+	text "Scyther"
+	prompt
+
+LyraPhoneEvoText_Eevee:
+	; TODO
+	text "Eevee"
+	prompt
+
+LyraPhoneEvoText_MimeJr:
+	; TODO (EVOLVE_LEVEL, 30), (EVOLVE_ITEM, ICE_STONE), (EVOLVE_LOCATION, ICE_PATH)
+	text "MimeJr"
+	prompt
+
+LyraPhoneEvoText_Ursaring:
+	; TODO (EVOLVE_ITEM, MOON_STONE), (EVOLVE_LOCATION, SINJOH_RUINS), (EVOLVE_LOCATION, MYSTRI_STAGE)
+	text "Ursaring"
+	prompt
+
+LyraPhoneEvoText_Stantler:
+	; TODO (EVOLVE_LOCATION, RUGGED_ROAD), (EVOLVE_LOCATION, SNOWTOP_MOUNTAIN), (EVOLVE_LOCATION, SINJOH_RUINS), (EVOLVE_LOCATION, MYSTRI_STAGE)
+	text "Stantler"
+	prompt
+
+LyraPhoneEvolutionRefusedText:
+	text "Haha, I won't"
+	line "spoil it, then!"
+	prompt
+
+LyraPhoneEndText:
+	text "Anyway… So nice"
+	line "to catch up with"
+	cont "you, <PLAYER>."
 
 	para "Call me again"
 	line "sometime!"
 	done
 
-LyraPhoneYellowForestText:
+LyraPhoneSpecialText_YellowForest:
 	text "Hi, <PLAYER>!"
 	line "How are you?"
 
@@ -95,7 +330,7 @@ LyraPhoneYellowForestText:
 	line "on your journey!"
 	done
 
-LyraPhoneFirstBadgeText:
+LyraPhoneSpecialText_FirstBadge:
 	text "<PLAYER>! Hi!"
 
 	para "I just got my"
@@ -120,7 +355,7 @@ LyraPhoneFirstBadgeText:
 	line "the League!"
 	done
 
-LyraPhoneLyrasEggText:
+LyraPhoneSpecialText_LyrasEgg:
 	text "<PLAYER>! Hi!"
 
 	para "Are you doing well"
@@ -158,37 +393,4 @@ LyraPhoneLyrasEggText:
 	cont "<PLAYER>."
 
 	para "Bye-bye!"
-	done
-
-LyraPhoneMagnetonText:
-	text "What? You have a"
-	line "Magneton now?"
-	cont "That's so cool!"
-
-	para "I learned some-"
-	line "thing from Prof."
-	cont "Elm about their"
-	cont "evolution."
-
-	para "He said it evolves"
-	line "when it levels up"
-	cont "in a special"
-	cont "magnetic field."
-
-	para "Over in Kanto,"
-	line "such a field is"
-	cont "apparently found"
-	cont "in Rock Tunnel."
-
-	para "You didn't already"
-	line "know that,"
-	cont "did you?"
-	prompt
-
-LyraPhoneEndText:
-	text "Anyway… So nice"
-	line "to catch up with"
-	cont "you, <PLAYER>."
-
-	para "See you later!"
 	done
