@@ -27,7 +27,7 @@ MultipleEvolutions:
 	multi_evo CUBONE
 	multi_evo SCYTHER
 	multi_evo EEVEE
-	multi_evo MIME_JR_, EVOLVE_MIME_JR
+	multi_evo MIME_JR_
 	multi_evo URSARING
 	multi_evo STANTLER
 	dw -1

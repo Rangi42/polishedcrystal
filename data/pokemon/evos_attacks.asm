@@ -2622,6 +2622,7 @@ LickitungEvosAttacks:
 
 KoffingEvosAttacks:
 	evo_data EVOLVE_LEVEL, 35, WEEZING, PLAIN_FORM
+	; TODO: evo_data ???, WEEZING, GALARIAN_FORM
 	db -1 ; no more evolutions
 	db 1, TACKLE
 	db 4, ACID ; Smog → new move

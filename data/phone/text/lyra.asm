@@ -46,12 +46,12 @@ LyraPhoneJohtoText_Generic:
 
 LyraPhoneEvolutionQuestionText:
 	text "I've been studying"
-	line "how #mon evolve"
+	line "#mon evolution"
 	cont "with Prof.Elm."
 
 	para "Want me to tell"
 	line "you how your #-"
-	cont "mon evolve?"
+	cont "mon evolves?"
 	done
 
 LyraPhoneEvoText_None:
@@ -221,68 +221,153 @@ LyraPhoneEvoText_Egg:
 	prompt
 
 LyraPhoneEvoText_Pikachu:
-	; TODO (EVOLVE_ITEM, THUNDERSTONE), (EVOLVE_ITEM, ODD_SOUVENIR)
-	text "Pikachu"
+	text_ram wStringBuffer3
+	line "evolves when it's"
+
+	para "exposed to a"
+	line "ThunderStone or"
+	cont "an Odd Souvenir."
 	prompt
 
 LyraPhoneEvoText_Gloom:
-	; TODO (EVOLVE_ITEM, LEAF_STONE), (EVOLVE_ITEM, SUN_STONE)
-	text "Gloom"
+	text_ram wStringBuffer3
+	line "evolves when it's"
+
+	para "exposed to a"
+	line "Leaf Stone or"
+	cont "a Sun Stone."
 	prompt
 
 LyraPhoneEvoText_Poliwhirl:
-	; TODO (EVOLVE_ITEM, WATER_STONE), (EVOLVE_HOLDING, KINGS_ROCK)
-	text "Poliwhirl"
+	text_ram wStringBuffer3
+	line "evolves when it's"
+
+	para "exposed to a"
+	line "Water Stone, or"
+
+	para "when it gains a"
+	line "level while hold-"
+	cont "ing a King's Rock."
 	prompt
 
 LyraPhoneEvoText_SlowpokePlain:
-	; TODO (EVOLVE_HOLDING, KINGS_ROCK, TR_ANYTIME), (EVOLVE_LEVEL, 37)
-	text "SlowpokePlain"
-	prompt
-
 LyraPhoneEvoText_SlowpokeGalarian:
-	; TODO (EVOLVE_HOLDING, KINGS_ROCK, TR_ANYTIME), (EVOLVE_LEVEL, 37)
-	text "SlowpokeGalarian"
+	text_ram wStringBuffer3
+	line "evolves at level"
+	cont "37, or when it"
+
+	para "gains a level"
+	line "while holding a"
+	cont "a King's Rock."
 	prompt
 
 LyraPhoneEvoText_Magneton:
-	; TODO (EVOLVE_ITEM, THUNDERSTONE), (EVOLVE_LOCATION, MAGNET_TUNNEL), (EVOLVE_LOCATION, ROCK_TUNNEL)
-	text "Magneton"
+	text_ram wStringBuffer3
+	line "evolves when it's"
+
+	para "exposed to a"
+	line "ThunderStone, or"
+
+	para "when it gains a"
+	line "level in a mag-"
+	cont "netic field."
+
+	para "I think Magnet"
+	line "Tunnel and Rock"
+	cont "Tunnel have that."
 	prompt
 
 LyraPhoneEvoText_Exeggcute:
-	; TODO (EVOLVE_ITEM, LEAF_STONE), (EVOLVE_ITEM, ODD_SOUVENIR)
-	text "Exeggcute"
+	text_ram wStringBuffer3
+	line "evolves when it's"
+
+	para "exposed to a"
+	line "Leaf Stone or"
+	cont "an Odd Souvenir."
 	prompt
 
 LyraPhoneEvoText_Cubone:
-	; TODO (EVOLVE_LEVEL, 28), (EVOLVE_ITEM, ODD_SOUVENIR)
-	text "Cubone"
+	text_ram wStringBuffer3
+	line "evolves at level"
+	cont "28, or when it's"
+
+	para "exposed to an"
+	line "Odd Souvenir."
 	prompt
 
 LyraPhoneEvoText_Scyther:
-	; TODO (EVOLVE_HOLDING, METAL_COAT), (EVOLVE_HOLDING, HARD_STONE)
-	text "Scyther"
+	text_ram wStringBuffer3
+	line "evolves when it"
+	cont "gains a level"
+
+	para "while holding a"
+	line "Metal Coat or a"
+	cont "Hard Stone."
 	prompt
 
 LyraPhoneEvoText_Eevee:
-	; TODO
-	text "Eevee"
+	text_ram wStringBuffer3
+	line "evolves in so"
+	cont "many ways!"
+
+	para "It can be exposed"
+	line "to any of eight"
+	cont "different Stones,"
+
+	para "or gain a level"
+	line "near a Moss Rock"
+	cont "or an Ice Rock."
+
+	para "I think Ilex For-"
+	line "est and Ice Path"
+	cont "have those."
+
+	para "But also, Eevee"
+	line "will evolve just"
+
+	para "from the sun or"
+	line "moon if it's very"
+	cont "happy!"
 	prompt
 
 LyraPhoneEvoText_MimeJr:
-	; TODO (EVOLVE_LEVEL, 30), (EVOLVE_ITEM, ICE_STONE), (EVOLVE_LOCATION, ICE_PATH)
-	text "MimeJr"
-	prompt
+	text_ram wStringBuffer3
+	line "evolves when it's"
 
-LyraPhoneEvoText_Ursaring:
-	; TODO (EVOLVE_ITEM, MOON_STONE), (EVOLVE_LOCATION, SINJOH_RUINS), (EVOLVE_LOCATION, MYSTRI_STAGE)
-	text "Ursaring"
+	para "exposed to an"
+	line "Ice Stone, or"
+
+	para "when it gains a"
+	line "level near an"
+	cont "Ice Rock."
+
+	para "I think there's"
+	line "one in Ice Path."
 	prompt
 
 LyraPhoneEvoText_Stantler:
-	; TODO (EVOLVE_LOCATION, RUGGED_ROAD), (EVOLVE_LOCATION, SNOWTOP_MOUNTAIN), (EVOLVE_LOCATION, SINJOH_RUINS), (EVOLVE_LOCATION, MYSTRI_STAGE)
-	text "Stantler"
+	text_ram wStringBuffer3
+	line "evolves when it's"
+
+	para "exposed to harsh"
+	line "hail or sand."
+
+	para "I think Rugged"
+	line "Road and Snowtop"
+
+	para "Mountain have"
+	line "weather like that."
+	prompt
+
+LyraPhoneEvoText_AncientSinnoh:
+	text "But based on its"
+	line "ancestry, it"
+
+	para "may also evolve"
+	line "when reminded"
+
+	para "of ancient Sinnoh…"
+	line "somehow…"
 	prompt
 
 LyraPhoneEvolutionRefusedText:

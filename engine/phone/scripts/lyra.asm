@@ -316,10 +316,13 @@ LyraPhoneScript_EvolutionMethodsTable:
 	farwritetext LyraPhoneEvoText_MimeJr
 	end
 .EvolveUrsaring:
-	farwritetext LyraPhoneEvoText_Ursaring
+	getitemname MOON_STONE, STRING_BUFFER_4
+	farwritetext LyraPhoneEvoText_Item
+	farwritetext LyraPhoneEvoText_AncientSinnoh
 	end
 .EvolveStantler:
 	farwritetext LyraPhoneEvoText_Stantler
+	farwritetext LyraPhoneEvoText_AncientSinnoh
 	end
 
 LyraPhone_GetFirstMonEvolutionData:
