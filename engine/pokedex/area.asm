@@ -20,12 +20,28 @@ endc
 	assert_list_length NUM_DEXAREAS
 
 Pokedex_Area:
-	; TODO: maybe preset depending on time of day?
 	ldh a, [rSVBK]
 	push af
+	ld a, $1
+	ldh [rSVBK], a
+	; default to current region and time of day
+	call RegionCheck
+	assert DEXAREA_REGION_MASK == %01110000
+	swap e
+	ld a, [wTimeOfDay]
+	cp EVE
+	jr nz, .not_evening
+	dec a ; treat EVE as NITE
+.not_evening
+	assert DEXAREA_MORNING == MORN
+	assert DEXAREA_DAY == DAY
+	assert DEXAREA_NIGHT == NITE
+	; combine current region and time into area mode
+	or e
+	ld e, a
 	ld a, BANK(wDexAreaLastMode)
 	ldh [rSVBK], a
-	xor a
+	ld a, e
 	ldh [hPokedexAreaMode], a
 	ld [wDexAreaLastMode], a
 	pop af
