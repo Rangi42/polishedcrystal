@@ -890,7 +890,6 @@ GetEvolutionData:
 
 .get_item_name_and_time:
 	inc hl
-	inc hl
 	ld a, [hld] ; parameter 2 (time)
 	ld [wStringBuffer5], a
 .get_item_name:
