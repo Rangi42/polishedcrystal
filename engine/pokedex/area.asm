@@ -613,20 +613,7 @@ Pokedex_SetWildLandmark:
 	jr nz, .got_mon_table
 	inc h
 .got_mon_table
-	ld a, e
-
-	; Wrap back to 0 across regions.
-	lb bc, JOHTO_REGION, KANTO_LANDMARK
-	sub c
-	jr c, .got_landmark
-	inc b ; KANTO_REGION
-	ld c, SHAMOUTI_LANDMARK - KANTO_LANDMARK
-	sub c
-	jr c, .got_landmark
-	ld c, 0
-	inc b ; ORANGE_REGION
-.got_landmark
-	add c
+	call .GetAreaMonID
 	add a
 	ld l, a
 
@@ -655,7 +642,7 @@ Pokedex_SetWildLandmark:
 	call GetFarWRAMByte
 	cp c
 	jr nz, .highlight_done
-	ld a, e
+	call .GetAreaMonID
 	ld [wDexAreaHighlight], a
 .highlight_done
 	farcall GetLandmarkCoords
@@ -669,6 +656,25 @@ Pokedex_SetWildLandmark:
 	pop af
 .end
 	jmp PopBCDEHL
+
+.GetAreaMonID:
+	; To avoid wasteful use of WRAM, we essentially unionize area coordinates
+	; on a per-region basis. Handle that here.
+	ld a, e
+
+	; Wrap back to 0 across regions.
+	lb bc, JOHTO_REGION, KANTO_LANDMARK
+	sub c
+	jr c, .got_landmark
+	inc b ; KANTO_REGION
+	ld c, SHAMOUTI_LANDMARK - KANTO_LANDMARK
+	sub c
+	jr c, .got_landmark
+	ld c, 0
+	inc b ; ORANGE_REGION
+.got_landmark
+	add c
+	ret
 
 Pokedex_SortAreaMons:
 ; Sorts area mons for the benefit of hblank processing
