@@ -2309,6 +2309,8 @@ PlayVictoryMusic:
 	ld hl, wPayDayMoney
 	ld a, [hli]
 	or [hl]
+	inc hl
+	or [hl]
 	jr nz, .play_music
 	push de
 	push bc
