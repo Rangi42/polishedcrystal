@@ -2385,11 +2385,11 @@ _Pokedex_Search:
 	rrca
 	jr c, .pressed_a
 	rrca
-	jr c, .pressed_b_start
+	jr c, .pressed_b
 	rrca
 	jmp c, Pokedex_SearchReset ; pressed select
 	rrca
-	jr c, .pressed_b_start
+	jr c, .pressed_start
 	rrca
 	jmp c, .pressed_right
 	rrca
@@ -2404,7 +2404,7 @@ _Pokedex_Search:
 	ld a, [wPokedex_MenuCursorY]
 	cp NUM_DEXSEARCH ; Start!
 	jr c, .pressed_right
-
+.pressed_start
 	call ClearSpriteAnims
 	lb de, 120, 120
 	ld a, SPRITE_ANIM_INDEX_DEX_SLOWPOKE
@@ -2442,7 +2442,7 @@ _Pokedex_Search:
 	call PlaySFX
 	jr .joypad_loop
 
-.pressed_b_start
+.pressed_b
 	; If we're currently in search mode, reinitialize the dex list first.
 	ld a, [wPokedex_InSearchMode]
 	and a
