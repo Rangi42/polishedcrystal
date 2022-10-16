@@ -48,6 +48,13 @@ CaughtBallPals:
 ParkBallIconPalette:
 INCLUDE "gfx/items/items.pal"
 
+WhitePalette:
+if !DEF(MONOCHROME)
+	RGB 31, 31, 31
+else
+	RGB_MONOCHROME_WHITE
+endc
+	; fallthrough
 CancelPalette:
 if !DEF(MONOCHROME)
 ; CANCEL
@@ -57,15 +64,15 @@ else
 	RGB_MONOCHROME_WHITE
 	RGB_MONOCHROME_WHITE
 endc
-
-WhitePalette:
+	; fallthrough
+WhiteColor:
 if !DEF(MONOCHROME)
 	RGB 31, 31, 31
 else
 	RGB_MONOCHROME_WHITE
 endc
 
-BlackPalette:
+BlackColor:
 if !DEF(MONOCHROME)
 	RGB 00, 00, 00
 else

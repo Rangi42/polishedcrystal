@@ -156,7 +156,7 @@ LoadIconPaletteFromHL:
 	ld de, wBGPals1 palette 7 + 2
 	ld bc, 4
 	call FarCopyColorWRAM
-	ld hl, BlackPalette
+	ld hl, BlackColor
 	ld bc, 2
 	jmp FarCopyColorWRAM
 
@@ -173,7 +173,7 @@ endr
 	ld de, wBGPals1 palette 7 + 2
 	ld bc, 4
 	call FarCopyColorWRAM
-	ld hl, BlackPalette
+	ld hl, BlackColor
 	ld bc, 2
 	jmp FarCopyColorWRAM
 
@@ -211,6 +211,16 @@ LoadStatsScreenPals:
 	ldh [rSVBK], a
 	call ApplyPals
 	ld a, $1
+	ret
+
+LoadOneColor:
+	ld c, 2
+LoadColorBytes:
+	ld a, [hli]
+	ld [de], a
+	inc de
+	dec c
+	jr nz, LoadColorBytes
 	ret
 
 LoadOnePalette:
