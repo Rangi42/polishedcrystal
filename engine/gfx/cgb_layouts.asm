@@ -1159,13 +1159,13 @@ endc
 
 GetBillsPCThemePalette:
 	; hl = BillsPC_ThemePals + a * 4 * 2
-	assert NUM_BILLS_PC_THEMES <= 32
-	add a
+	assert NUM_BILLS_PC_THEMES <= 64
 	add a
 	add a
 	ld e, a
 	ld d, 0
 	ld hl, BillsPC_ThemePals
+	add hl, de
 	add hl, de
 	ret
 

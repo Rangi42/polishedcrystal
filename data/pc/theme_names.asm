@@ -7,11 +7,14 @@ BillsPC_ThemeNames:
 	dw .Bliss
 	dw .Contrast
 	dw .Nature
+	dw .Heart
+	dw .Soul
 	dw .Truth
 	dw .Ideals
 	dw .Light
 	dw .Darkness
 	dw .Matte
+	dw .Matrix
 	dw .Normal
 	dw .Fighting
 	dw .Flying
@@ -39,11 +42,14 @@ BillsPC_ThemeNames:
 .Bliss:    db "Bliss@"
 .Contrast: db "Contrast@"
 .Nature:   db "Nature@"
+.Heart:    db "Heart@"
+.Soul:     db "Soul@"
 .Truth:    db "Truth@"
 .Ideals:   db "Ideals@"
 .Light:    db "Light@"
 .Darkness: db "Darkness@"
 .Matte:    db "Matte@"
+.Matrix:   db "Matrix@"
 .Normal:   db "Normal@"
 .Fighting: db "Fighting@"
 .Flying:   db "Flying@"
