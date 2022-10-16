@@ -2809,52 +2809,51 @@ MrRimePokedexEntry::
 SECTION "WyrdeerPokedexEntry", ROMX
 WyrdeerPokedexEntry::
 	db "Big Horn@"
-	db   "This is a newly"
-	next "discovered #-"
-	next "mon. It is under"
-	page "investigation."
-	next "No information"
-	next "is available.@"
+	db   "The fur shed from"
+	next "its beard retains"
+	next "heat well and is"
+	page "a highly useful"
+	next "material for"
+	next "winter clothing.@"
 
 SECTION "KleavorPokedexEntry", ROMX
 KleavorPokedexEntry::
 	db "Axe@"
-	db   "This is a newly"
-	next "discovered #-"
-	next "mon. It is under"
-	page "investigation."
-	next "No information"
-	next "is available.@"
+	db   "A violent creature"
+	next "that fells tower-"
+	next "ing trees with its"
+	page "crude axes and"
+	next "shields itself"
+	next "with hard stone.@"
 
 SECTION "UrsalunaPokedexEntry", ROMX
 UrsalunaPokedexEntry::
 	db "Peat@"
-	db   "This is a newly"
-	next "discovered #-"
-	next "mon. It is under"
-	page "investigation."
-	next "No information"
-	next "is available.@"
+	db   "This #mon has a"
+	next "burly physique and"
+	next "a newfound capa-"
+	page "city to manipulate"
+	next "peat at will.@"
 
 SECTION "SneaslerPokedexEntry", ROMX
 SneaslerPokedexEntry::
 	db "Free Climb@"
-	db   "This is a newly"
-	next "discovered #-"
-	next "mon. It is under"
-	page "investigation."
-	next "No information"
-	next "is available.@"
+	db   "It has virulent"
+	next "poison and daunt-"
+	next "ing physical prow-"
+	page "ess. Preferring"
+	next "solitude, it does"
+	next "not form packs.@"
 
 SECTION "OverqwilPokedexEntry", ROMX
 OverqwilPokedexEntry::
 	db "Pin Cluster@"
-	db   "This is a newly"
-	next "discovered #-"
-	next "mon. It is under"
-	page "investigation."
-	next "No information"
-	next "is available.@"
+	db   "Its spikes and sa-"
+	next "vage temperament"
+	next "have earned it the"
+	page "name Sea Fiend."
+	next "It slurps poison"
+	next "to nourish itself.@"
 
 SECTION "GyaradosRedPokedexEntry", ROMX
 GyaradosRedPokedexEntry::
@@ -3192,69 +3191,68 @@ CorsolaGalarianPokedexEntry::
 SECTION "GrowlitheHisuianPokedexEntry", ROMX
 GrowlitheHisuianPokedexEntry::
 	db "Scout@"
-	db   "This is a newly"
-	next "discovered #-"
-	next "mon. It is under"
-	page "investigation."
-	next "No information"
-	next "is available.@"
+	db   "They patrol their"
+	next "territory in"
+	next "pairs. Their fur"
+	page "has igneous rock"
+	next "components from"
+	next "volcanic activity.@"
 
 SECTION "ArcanineHisuianPokedexEntry", ROMX
 ArcanineHisuianPokedexEntry::
 	db "Legendary@"
-	db   "This is a newly"
-	next "discovered #-"
-	next "mon. It is under"
-	page "investigation."
-	next "No information"
-	next "is available.@"
+	db   "Despite its bulk,"
+	next "it deftly feints"
+	next "every which way,"
+	page "leading opponents"
+	next "on a chase as it"
+	next "dances past them.@"
 
 SECTION "VoltorbHisuianPokedexEntry", ROMX
 VoltorbHisuianPokedexEntry::
 	db "Sphere@"
-	db   "This is a newly"
-	next "discovered #-"
-	next "mon. It is under"
-	page "investigation."
-	next "No information"
-	next "is available.@"
+	db   "When excited, it"
+	next "discharges the"
+	next "electric current"
+	page "stored in its"
+	next "belly, then lets"
+	next "out a laugh.@"
 
 SECTION "ElectrodeHisuianPokedexEntry", ROMX
 ElectrodeHisuianPokedexEntry::
 	db "Sphere@"
-	db   "This is a newly"
-	next "discovered #-"
-	next "mon. It is under"
-	page "investigation."
-	next "No information"
-	next "is available.@"
+	db   "The tissue on the"
+	next "surface of its"
+	next "body is curious-"
+	page "ly similar in"
+	next "composition to an"
+	next "Apricorn.@"
 
 SECTION "TyphlosionHisuianPokedexEntry", ROMX
 TyphlosionHisuianPokedexEntry::
 	db "Ghost Flame@"
-	db   "This is a newly"
-	next "discovered #-"
-	next "mon. It is under"
-	page "investigation."
-	next "No information"
-	next "is available.@"
+	db   "Said to purify"
+	next "lost, forsaken"
+	next "souls with its"
+	page "flames and guide"
+	next "them to the"
+	next "afterlife.@"
 
 SECTION "QwilfishHisuianPokedexEntry", ROMX
 QwilfishHisuianPokedexEntry::
 	db "Balloon@"
-	db   "This is a newly"
-	next "discovered #-"
-	next "mon. It is under"
-	page "investigation."
-	next "No information"
-	next "is available.@"
+	db   "Fishers detest it"
+	next "because it sprays"
+	next "poison from its"
+	page "spines, getting it"
+	next "everywhere.@"
 
 SECTION "SneaselHisuianPokedexEntry", ROMX
 SneaselHisuianPokedexEntry::
 	db "Sharp Claw@"
-	db   "This is a newly"
-	next "discovered #-"
-	next "mon. It is under"
-	page "investigation."
-	next "No information"
-	next "is available.@"
+	db   "Its sturdy claws"
+	next "are ideal for tra-"
+	next "versing cliffs."
+	page "These claws drip"
+	next "venom that infil-"
+	next "trates its prey.@"

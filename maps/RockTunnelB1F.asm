@@ -62,4 +62,3 @@ HexManiacVivianBeatenText:
 	text "It was only an"
 	line "echo?!"
 	done
-

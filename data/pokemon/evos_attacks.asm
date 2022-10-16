@@ -1911,7 +1911,7 @@ MagnemiteEvosAttacks:
 MagnetonEvosAttacks:
 	evo_data EVOLVE_ITEM, THUNDERSTONE, MAGNEZONE
 	evo_data EVOLVE_LOCATION, MAGNET_TUNNEL, MAGNEZONE
-	evo_data EVOLVE_LOCATION, ROCK_TUNNEL, MAGNEZONE
+	evo_data EVOLVE_LOCATION, DIM_CAVE, MAGNEZONE
 	db -1 ; no more evolutions
 	db 1, TRI_ATTACK ; evolution move
 	db 1, SUPERSONIC
