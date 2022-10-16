@@ -500,12 +500,10 @@ _CGB_NamingScreen:
 	farcall GetBoxTheme
 .got_theme
 	call GetBillsPCThemePalette
-	inc hl
-	inc hl
 
 	ldh a, [rSVBK]
 	push af
-	ld a, $5
+	ld a, BANK("GBC Video")
 	ldh [rSVBK], a
 
 	push hl
@@ -514,8 +512,11 @@ _CGB_NamingScreen:
 	ld c, 2 * 2
 	call LoadColorBytes
 	pop hl
-	ld c, 5 * 2
+	ld c, 4 * 2
 	call LoadColorBytes
+	ld hl, WhiteColor
+	ld de, wBGPals1 palette 1 + 6
+	call LoadOneColor
 
 	ld hl, wBGPals1 palette 1
 	ld de, wBGPals1 palette 2
@@ -592,10 +593,10 @@ _CGB_Mail:
 	ld hl, wBGPals1 + 6
 	ld de, wBGPals1 palette 2 + 2
 	call LoadOneColor
-	ld hl, WhitePalette
+	ld hl, WhiteColor
 	ld de, wBGPals1 palette 1 + 6
 	call LoadOneColor
-	ld hl, WhitePalette
+	ld hl, WhiteColor
 	ld de, wBGPals1 palette 2 + 6
 	call LoadOneColor
 
@@ -624,16 +625,6 @@ _CGB_Mail:
 	call FillNamingScreenTextBoxes
 
 	jmp ApplyAttrMap
-
-LoadOneColor:
-	ld c, 2
-LoadColorBytes:
-	ld a, [hli]
-	ld [de], a
-	inc de
-	dec c
-	jr nz, LoadColorBytes
-	ret
 
 FillNamingScreenTextBoxes:
 	; Shift/Del/End
@@ -1087,31 +1078,45 @@ _CGB_BillsPC:
 BillsPC_PreviewTheme:
 	call GetBillsPCThemePalette
 
-	ld de, wBGPals1
-	ld c, 1 * 2
-	call LoadPalettes
+	ldh a, [rSVBK]
+	push af
+	ld a, BANK("GBC Video")
+	ldh [rSVBK], a
+
 	push hl
+	ld de, wBGPals1 + 2
 	ld hl, GenderAndExpBarPals
 	ld c, 2 * 2
-	call LoadPalettes
+	call LoadColorBytes
 	push de
 	ld hl, PokerusAndShinyPals
 	ld de, wBillsPC_PokerusShinyPal
 	ld c, 2 * 2
-	call LoadPalettes
-
+	call LoadColorBytes
 	; Prevents flickering shiny+pokerus background
 	ld hl, wBGPals1 palette 0
 	ld de, wBGPals1 palette 3
-	ld c, 1 * 2
-	call LoadPalettes
+	call LoadOneColor
 	pop de
 	pop hl
-	ld c, 5 * 2
-	call LoadPalettes
+	ld c, 4 * 2
+	call LoadColorBytes
+	ld hl, WhitePalette 
+	ld de, wBGPals1 palette 1 + 3 * 2
+	call LoadOneColor
+	ld hl, wBGPals1 palette 1
+	ld de, wBGPals1 palette 0
+	call LoadOneColor
+
+	pop af
+	ldh [rSVBK], a
+
 	ld a, [wBillsPC_ApplyThemePals]
 	and a
-	jr nz, .apply_pals
+	jr z, .ob_pals
+	farjp BillsPC_SetPals
+
+.ob_pals
 	ld de, wOBPals1 palette 1
 	ld hl, .CursorPal
 	push hl
@@ -1121,12 +1126,9 @@ BillsPC_PreviewTheme:
 	ld hl, .PackPal
 	ld de, wOBPals1 palette 4
 	call LoadOnePalette
-	ld hl, .WhitePal
+	ld hl, WhitePalette
 	ld de, wOBPals1 palette 6
 	jmp LoadOnePalette
-
-.apply_pals
-	farjp BillsPC_SetPals
 
 .CursorPal:
 ; Coloring is fixed up later.
@@ -1155,27 +1157,14 @@ else
 	RGB_MONOCHROME_BLACK
 endc
 
-.WhitePal:
-if !DEF(MONOCHROME)
-	RGB 31, 31, 31
-	RGB 31, 31, 31
-	RGB 31, 31, 31
-	RGB 31, 31, 31
-else
-	RGB_MONOCHROME_WHITE
-	RGB_MONOCHROME_WHITE
-	RGB_MONOCHROME_WHITE
-	RGB_MONOCHROME_WHITE
-endc
-
 GetBillsPCThemePalette:
-	; hl = BillsPC_ThemePals + a * 6 * 2
+	; hl = BillsPC_ThemePals + a * 4 * 2
+	assert NUM_BILLS_PC_THEMES <= 64
 	add a
 	add a
 	ld e, a
 	ld d, 0
 	ld hl, BillsPC_ThemePals
-	add hl, de
 	add hl, de
 	add hl, de
 	ret

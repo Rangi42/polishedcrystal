@@ -148,11 +148,10 @@ endr
 	ld a, BANK(CaughtBallPals)
 	call FarCopyBytes
 	; copy the bg palette
-	ld hl, WhitePalette
+	ld hl, .WhiteColor
 	ld de, wOBPals1 palette PAL_BATTLE_OB_GREEN + 2 ; see GetBallAnimBGPal
 	ld bc, 2
-	ld a, BANK(WhitePalette)
-	call FarCopyBytes
+	rst CopyBytes
 	ld b, 2
 	call SafeCopyTilemapAtOnce
 	pop de
@@ -170,3 +169,10 @@ endr
 	ld h, [hl]
 	ld l, a
 	ret
+
+.WhiteColor:
+if !DEF(MONOCHROME)
+	RGB 31, 31, 31
+else
+	RGB_MONOCHROME_WHITE
+endc
