@@ -273,8 +273,8 @@ LyraPhoneEvoText_Magneton:
 	cont "netic field."
 
 	para "I think Magnet"
-	line "Tunnel and Rock"
-	cont "Tunnel have that."
+	line "Tunnel and Dim"
+	cont "Cave have that."
 	prompt
 
 LyraPhoneEvoText_Exeggcute:

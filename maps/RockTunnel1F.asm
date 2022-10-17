@@ -41,4 +41,3 @@ HikerSeamusBeatenText:
 	text "Where do you get"
 	line "your energy?"
 	done
-
