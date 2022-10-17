@@ -917,6 +917,10 @@ wCreditsBlankFrame2bpp:: ds 8 * 8 * 2
 SECTION UNION "Misc 1326", WRAM0
 ; Bill's PC
 
+	; LCD hblank code block. Labels are defined as part of the code.
+	ds $ca
+	assert BillsPC_LCDCodeEnd - BillsPC_LCDCode == @ - STARTOF("Misc 1326")
+
 ; If you change ordering of this, remember to fix LCD hblank code too.
 ; Note that (as of when comment was written), hblank can't always keep up
 ; if doing 4 pals in one go during party shifting.

@@ -295,10 +295,16 @@ UseBillsPC:
 	ld b, 2
 	call SafeCopyTilemapAtOnce
 
+	; Copy LCD code to WRAM0
+	ld hl, BillsPC_LCDCode
+	ld de, wLCDBillsPC1
+	ld bc, BillsPC_LCDCodeEnd - BillsPC_LCDCode
+	rst CopyBytes
+
 	; Set up for HBlank palette switching
-	ld a, LOW(LCDBillsPC1)
+	ld a, LOW(wLCDBillsPC1)
 	ldh [hFunctionTargetLo], a
-	ld a, HIGH(LCDBillsPC1)
+	ld a, HIGH(wLCDBillsPC1)
 	ldh [hFunctionTargetHi], a
 	ld hl, rIE
 	set LCD_STAT, [hl]
@@ -3600,3 +3606,166 @@ BillsPC_CursorPosValid:
 	xor a
 	ld a, b
 	ret
+
+BillsPC_LCDCode:
+LOAD UNION "Misc 1326", WRAM0
+wLCDBillsPC1::
+	; Write boxmon palettes
+	ldh a, [rSTAT]
+	bit rSTAT_LYC_CMP, a
+	jr z, .donepc
+	push hl
+	push bc
+	ld c, LOW(rBGPD)
+	ld hl, wBillsPC_CurMonPals + 4
+
+	; start of VRAM writes
+	; second box mon
+	ld a, $80 | $2a
+	ldh [rBGPI], a
+rept 4
+	ld a, [hli]
+	ldh [c], a
+endr
+
+	; third box mon
+	ld a, $80 | $32
+	ldh [rBGPI], a
+rept 4
+	ld a, [hli]
+	ldh [c], a
+endr
+
+	; fourth box mon
+	ld a, $80 | $3a
+	ldh [rBGPI], a
+rept 4
+	ld a, [hli]
+	ldh [c], a
+endr
+	; end of VRAM writes
+
+	; prepare for partymon write
+	ld a, LOW(wLCDBillsPC2)
+	ldh [hFunctionTargetLo], a
+	ld a, HIGH(wLCDBillsPC2)
+	ldh [hFunctionTargetHi], a
+	pop bc
+	pop hl
+.donepc
+	pop af
+	reti
+
+wLCDBillsPC2::
+	push hl
+	push bc
+	ld c, LOW(rBGPD)
+	ld hl, wBillsPC_CurPartyPals
+
+	; start of VRAM writes
+	; first party mon
+	ld a, $80 | $12
+	ldh [rBGPI], a
+rept 4
+	ld a, [hli]
+	ldh [c], a
+endr
+
+	; second party mon
+	ld a, $80 | $1a
+	ldh [rBGPI], a
+rept 4
+	ld a, [hli]
+	ldh [c], a
+endr
+
+	; first box mon
+	ld a, $80 | $22
+	ldh [rBGPI], a
+rept 4
+	ld a, [hli]
+	ldh [c], a
+endr
+	; end of VRAM writes
+
+	; prepare for next write
+	push de
+	ldh a, [rLYC]
+	cp 135
+	jr nz, .increase_lyc
+	sub 16 * 5
+.increase_lyc
+	add 16
+	ldh [rLYC], a
+
+	; Since we write the next palette at the bottom row, we actually want to
+	; copy not the upcoming palette, but the one after that.
+	sub 55
+	cp $50
+	jr c, .got_result
+	xor a
+.got_result
+	rrca
+	ld c, a
+	add a
+	add c
+	ld c, a
+	ld b, 0
+
+	; Copies party+mon palettes
+	ld hl, wBillsPC_PalList
+	add hl, bc
+	ld de, wBillsPC_CurPals
+	ld c, 24
+	rst CopyBytes
+	ld a, LOW(wLCDBillsPC3)
+	ldh [hFunctionTargetLo], a
+	ld a, HIGH(wLCDBillsPC3)
+	ldh [hFunctionTargetHi], a
+	pop de
+	pop bc
+	pop hl
+	pop af
+	reti
+
+wLCDBillsPC3:
+; Writes white or box background to color0 for BG3
+	push hl
+	push bc
+	push de
+	ldh a, [rSVBK]
+	push af
+	ld a, BANK("GBC Video")
+	ldh [rSVBK], a
+
+	ld c, LOW(rBGPD)
+	ldh a, [rLY]
+	cp $8a
+	ld hl, wBGPals1
+	jr nc, .got_pal
+	ld hl, wBGPals1 palette $4
+.got_pal
+
+	; start of VRAM writes
+	; BG3 color 0
+	ld a, $80 | $18
+	ldh [rBGPI], a
+rept 2
+	ld a, [hli]
+	ldh [c], a
+endr
+	; end of VRAM writes
+
+	pop af
+	ldh [rSVBK], a
+	ld a, LOW(wLCDBillsPC1)
+	ldh [hFunctionTargetLo], a
+	ld a, HIGH(wLCDBillsPC1)
+	ldh [hFunctionTargetHi], a
+	pop de
+	pop bc
+	pop hl
+	pop af
+	reti
+ENDL
+BillsPC_LCDCodeEnd:
