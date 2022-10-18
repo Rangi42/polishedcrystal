@@ -1031,7 +1031,7 @@ AnimateLCDTile:
 	ld h, a
 
 	ld sp, hl
-	ld hl, vTiles2 tile $6f
+	ld hl, vTiles2 tile $5e
 	jmp WriteTile
 
 .LCDTileFrames:

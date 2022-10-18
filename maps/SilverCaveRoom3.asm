@@ -61,6 +61,7 @@ Red:
 .Text1: ; text > text
 	text "……"
 	line "……"
+	cont "……"
 	done
 
 .Text2: ; text > text

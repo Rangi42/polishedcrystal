@@ -115,7 +115,7 @@ Route35NationalParkGate_OkayToProceed:
 	writetext Route35NationalParkGateOfficer1GiveParkBallsText
 	promptbutton
 	writetext Route35NationalParkGatePlayerReceivedParkBallsText
-	callasm .ShowParkBallIcon
+	callasm ShowParkBallIcon
 	playsound SFX_ITEM
 	waitsfx
 	writetext Route35NationalParkGateOfficer1ExplainsRulesText
@@ -129,9 +129,6 @@ Route35NationalParkGate_OkayToProceed:
 	special Special_SelectRandomBugContestContestants
 	warpfacing UP, NATIONAL_PARK_BUG_CONTEST, 12, 47
 	end
-
-.ShowParkBallIcon:
-	farjp ShowParkBallIcon
 
 Route35NationalParkGate_EnterContest:
 	readvar VAR_FACING
