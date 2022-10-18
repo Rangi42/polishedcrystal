@@ -2400,7 +2400,7 @@ ElectrodePlainEvosAttacks:
 	db -1 ; no more level-up moves
 
 VoltorbHisuianEvosAttacks:
-	evo_data EVOLVE_LEVEL, 30, ELECTRODE, HISUIAN_FORM
+	evo_data EVOLVE_ITEM, LEAF_STONE, ELECTRODE, HISUIAN_FORM
 	db -1 ; no more evolutions
 	db 1, TACKLE
 	db 1, THUNDERSHOCK ; LGPE move
