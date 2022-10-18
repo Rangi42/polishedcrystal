@@ -624,7 +624,10 @@ Script_itemnotify:
 	call CurItemName
 	ld b, BANK(_PutItemInPocketText)
 	ld hl, _PutItemInPocketText
-	jmp MapTextbox
+	call MapTextbox
+	; The item icon overwrites nine font tiles, including
+	; the "▶" needed by the right cursor arrow.
+	farjp LoadFonts_NoOAMUpdate
 
 Script_pocketisfull:
 	call GetPocketName
@@ -2523,7 +2526,10 @@ Script_tmhmnotify:
 	call CurTMHMName
 	ld b, BANK(_PutItemInPocketText)
 	ld hl, _PutItemInPocketText
-	jmp MapTextbox
+	call MapTextbox
+	; The tm/hm icon overwrites nine font tiles, including
+	; the "▶" needed by the right cursor arrow.
+	farjp LoadFonts_NoOAMUpdate
 
 Script_gettmhmname:
 	call GetScriptByte
@@ -2716,4 +2722,7 @@ Script_keyitemnotify:
 	call GetCurKeyItemName
 	ld b, BANK(_PutItemInPocketText)
 	ld hl, _PutItemInPocketText
-	jmp MapTextbox
+	call MapTextbox
+	; The key item icon overwrites nine font tiles, including
+	; the "▶" needed by the right cursor arrow.
+	farjp LoadFonts_NoOAMUpdate
