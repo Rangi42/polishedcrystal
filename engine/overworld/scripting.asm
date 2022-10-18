@@ -2500,6 +2500,11 @@ Script_verbosegivetmhm:
 	ld de, wStringBuffer1
 	ld a, 1
 	call CopyConvertedText
+	; off by one error?
+	ld a, [wTempTMHM]
+	inc a
+	ld [wTempTMHM], a
+	predef GetTMHMMove
 	ld b, BANK(GiveTMHMScript)
 	ld de, GiveTMHMScript
 	jmp ScriptCall
