@@ -171,3 +171,4 @@ SpecialsPointers::
 	add_special ShowItemIcon
 	add_special ShowKeyItemIcon
 	add_special ShowTMHMIcon
+	add_special LoadFonts_NoOAMUpdate

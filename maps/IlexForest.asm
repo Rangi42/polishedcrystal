@@ -375,6 +375,9 @@ IlexForestHeadbuttGuyScript:
 	writetext Text_HeadbuttIntro
 	promptbutton
 	verbosegivekeyitem WING_CASE
+	; The item icon overwrites nine font tiles, including
+	; the "▶" needed by the party selection menu.
+	callasm LoadFonts_NoOAMUpdate
 	writetext Text_HeadbuttIntro2
 	waitbutton
 	setevent EVENT_LISTENED_TO_HEADBUTT_INTRO
