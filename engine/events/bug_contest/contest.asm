@@ -207,7 +207,7 @@ INCLUDE "data/events/bug_contest_winners.asm"
 
 BugContest_GetPlayersResult:
 	ld hl, wBugContestThirdPlacePersonID
-	ld de, -4
+	ld de, -5
 	ld b, 3
 .loop
 	ld a, [hl]
