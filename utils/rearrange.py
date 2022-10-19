@@ -3,9 +3,9 @@
 
 import sys
 
-name = 'kanto'
+name = 'shamouti_island'
 rearrange = {
-	# 0xB_ID: 0xB_ID
+	# 0xB_ID: 0xB_ID,
 }
 
 meta_name = f'data/tilesets/{name}_metatiles.bin'
