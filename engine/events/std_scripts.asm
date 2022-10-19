@@ -1636,9 +1636,6 @@ VendingMachineScript:
 	opentext
 	farwritetext VendingMachineText
 .Start:
-	; The item icon overwrites nine font tiles, including
-	; the "▶" needed by the vending machine menu.
-	callasm LoadFonts_NoOAMUpdate
 	special PlaceMoneyTopRight
 	loadmenu .MenuData
 	verticalmenu
