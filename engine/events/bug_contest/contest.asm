@@ -384,64 +384,21 @@ ContestScore:
 
 	; DVs (6 points per DV that's at least 8)
 	lb bc, 0, 6
-
 	ld a, [wContestMonDVs + 0]
-	and $f
-	cp $8
-	jr c, .low_attack
-	ld a, b
-	add c
-	ld b, a
-.low_attack
-
+	call .AddDVBonus
 	ld a, [wContestMonDVs + 0]
 	swap a
-	and $f
-	cp $8
-	jr c, .low_hp
-	ld a, b
-	add c
-	ld b, a
-.low_hp
-
+	call .AddDVBonus
 	ld a, [wContestMonDVs + 1]
-	and $f
-	cp $8
-	jr c, .low_speed
-	ld a, b
-	add c
-	ld b, a
-.low_speed
-
+	call .AddDVBonus
 	ld a, [wContestMonDVs + 1]
 	swap a
-	and $f
-	cp $8
-	jr c, .low_defense
-	ld a, b
-	add c
-	ld b, a
-.low_defense
-
+	call .AddDVBonus
 	ld a, [wContestMonDVs + 2]
-	and $f
-	cp $8
-	jr c, .low_spcl_def
-	ld a, b
-	add c
-	ld b, a
-.low_spcl_def
-
+	call .AddDVBonus
 	ld a, [wContestMonDVs + 2]
 	swap a
-	and $f
-	cp $8
-	jr c, .low_spcl_atk
-	ld a, b
-	add c
-	ld b, a
-.low_spcl_atk
-
+	call .AddDVBonus
 	ld a, b
 	call .AddContestStat
 
@@ -453,14 +410,20 @@ ContestScore:
 	and %00011111
 	call .AddContestStat
 
-	; Whether it's holding an item
+	; Whether it's shiny (150 points)
+	ld a, [wContestMonShiny]
+	and SHINY_MASK
+	jr z, .not_shiny
+	ld a, 150
+	call .AddContestStat
+.not_shiny
+
+	; Whether it's holding an item (1 point)
 	ld a, [wContestMonItem]
 	and a
 	ret z
-
 	ld a, 1
 	; fallthrough
-
 .AddContestStat:
 	ld hl, hMultiplicand
 	add [hl]
@@ -468,6 +431,14 @@ ContestScore:
 	ret nc
 	dec hl
 	inc [hl]
+	ret
+
+.AddDVBonus:
+	and %1000
+	ret nz
+	ld a, b
+	add c
+	ld b, a
 	ret
 
 Special_SelectRandomBugContestContestants:
