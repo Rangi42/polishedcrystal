@@ -2100,6 +2100,34 @@
 	wildmon LEVEL_FROM_BADGES + 3, STEELIX
 	end_grass_wildmons
 
+	def_grass_wildmons STORMY_BEACH
+	db 10 percent, 10 percent, 10 percent ; encounter rates: morn/day/nite
+	; morn
+	wildmon LEVEL_FROM_BADGES - 1, WOOPER
+	wildmon LEVEL_FROM_BADGES - 2, EKANS, ARBOK_JOHTO_FORM
+	wildmon LEVEL_FROM_BADGES + 0, GLOOM
+	wildmon LEVEL_FROM_BADGES + 1, RATICATE
+	wildmon LEVEL_FROM_BADGES + 1, QUAGSIRE
+	wildmon LEVEL_FROM_BADGES - 1, GRIMER, ALOLAN_FORM
+	wildmon LEVEL_FROM_BADGES + 3, YANMA
+	; day
+	wildmon LEVEL_FROM_BADGES - 1, WOOPER
+	wildmon LEVEL_FROM_BADGES - 2, EKANS, ARBOK_JOHTO_FORM
+	wildmon LEVEL_FROM_BADGES + 0, GLOOM
+	wildmon LEVEL_FROM_BADGES + 1, RATICATE
+	wildmon LEVEL_FROM_BADGES + 1, QUAGSIRE
+	wildmon LEVEL_FROM_BADGES - 1, GRIMER, ALOLAN_FORM
+	wildmon LEVEL_FROM_BADGES + 3, YANMA
+	; nite
+	wildmon LEVEL_FROM_BADGES - 1, WOOPER
+	wildmon LEVEL_FROM_BADGES - 2, HOOTHOOT
+	wildmon LEVEL_FROM_BADGES + 0, GLOOM
+	wildmon LEVEL_FROM_BADGES - 4, RATICATE
+	wildmon LEVEL_FROM_BADGES + 1, GASTLY
+	wildmon LEVEL_FROM_BADGES + 1, HAUNTER
+	wildmon LEVEL_FROM_BADGES + 5, HAUNTER
+	end_grass_wildmons
+
 	def_grass_wildmons MURKY_SWAMP
 	db 2 percent, 2 percent, 2 percent ; encounter rates: morn/day/nite
 	; morn
