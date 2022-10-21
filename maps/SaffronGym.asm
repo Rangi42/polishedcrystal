@@ -110,8 +110,7 @@ SaffronGymSabrinaScript:
 
 	para "You will become a"
 	line "celebrated and"
-
-	para "beloved Champion!"
+	cont "beloved Champion!"
 	done
 
 GenericTrainerMediumDoris:
