@@ -796,3 +796,8 @@ ApricornBoxIcon:: INCBIN "gfx/items/apricorn_box.2bpp.lz"
 
 SECTION "TypeChartIcon", ROMX
 TypeChartIcon:: INCBIN "gfx/items/type_chart.2bpp.lz"
+
+SECTION "LureIcon", ROMX
+EerieLureIcon::
+ToughLureIcon::
+MalignLureIcon:: INCBIN "gfx/items/lure.2bpp.lz"

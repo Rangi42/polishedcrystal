@@ -57,6 +57,7 @@ DEF TILESET_LENGTH EQU 15
 	const ROOF_VIOLET    ; 1
 	const ROOF_AZALEA    ; 2
 	const ROOF_OLIVINE   ; 3
+	const ROOF_STATUE    ; 4
 DEF NUM_ROOFS EQU const_value
 
 ; roof length (see gfx/tilesets/roofs)
