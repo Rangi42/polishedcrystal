@@ -287,6 +287,9 @@ KeyItemDescriptions:
 	dw OrangeTicketDesc
 	dw MysticTicketDesc
 	dw OldSeaMapDesc
+	dw EerieLureDesc
+	dw ToughLureDesc
+	dw MalignLureDesc
 	dw ShinyCharmDesc
 	dw OvalCharmDesc
 	dw CatchCharmDesc
@@ -1628,6 +1631,21 @@ MysticTicketDesc:
 OldSeaMapDesc:
 	text "A faded sea chart"
 	next "of a small island."
+	done
+
+EerieLureDesc:
+	text "A bottle with a"
+	next "cruel scent."
+	done
+
+ToughLureDesc:
+	text "A bottle with a"
+	next "strong smell."
+	done
+
+MalignLureDesc:
+	text "A bottle with a"
+	next "malevolent odor."
 	done
 
 ShinyCharmDesc:

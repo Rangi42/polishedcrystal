@@ -992,7 +992,7 @@ wTMsHMsEnd::
 wKeyItems:: ds NUM_KEY_ITEMS + 1
 wKeyItemsEnd::
 
-	ds 4 ; unused
+	ds 1 ; unused
 
 wNumItems:: db
 wItems:: ds MAX_ITEMS * 2 + 1

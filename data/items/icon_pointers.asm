@@ -289,6 +289,9 @@ KeyItemIconPointers:
 	dba OrangeTicketIcon
 	dba MysticTicketIcon
 	dba OldSeaMapIcon
+	dba EerieLureIcon
+	dba ToughLureIcon
+	dba MalignLureIcon
 	dba ShinyCharmIcon
 	dba OvalCharmIcon
 	dba CatchCharmIcon

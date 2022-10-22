@@ -310,6 +310,7 @@ ItemNameOrder:
 	db -1 ; end
 
 KeyItemNameOrder:
+	table_width 1, KeyItemNameOrder
 	db NAM_BICYCLE
 	db NAM_OLD_ROD
 	db NAM_GOOD_ROD
@@ -317,6 +318,7 @@ KeyItemNameOrder:
 	db NAM_ITEMFINDER
 	db NAM_COIN_CASE
 	db NAM_APRICORN_BOX
+	db NAM_WING_CASE
 	db NAM_TYPE_CHART
 	db NAM_BLUE_CARD
 	db NAM_SQUIRTBOTTLE
@@ -338,7 +340,11 @@ KeyItemNameOrder:
 	db NAM_ORANGETICKET
 	db NAM_MYSTICTICKET
 	db NAM_OLD_SEA_MAP
+	db NAM_EERIE_LURE
+	db NAM_TOUGH_LURE
+	db NAM_MALIGN_LURE
 	db NAM_SHINY_CHARM
 	db NAM_OVAL_CHARM
 	db NAM_CATCH_CHARM
-	db NAM_WING_CASE
+	assert_table_length NUM_KEY_ITEMS
+	db -1 ; end
