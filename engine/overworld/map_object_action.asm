@@ -28,6 +28,8 @@ ObjectActionPairPointers:
 	dw SetFacingRun,                   SetFacingCurrent           ; OBJECT_ACTION_RUN
 	dw SetFacingSailboatTop,           SetFacingSailboatTop       ; OBJECT_ACTION_SAILBOAT_TOP
 	dw SetFacingSailboatBottom,        SetFacingSailboatBottom    ; OBJECT_ACTION_SAILBOAT_BOTTOM
+	dw SetFacingAlolanExeggutor,       SetFacingAlolanExeggutor   ; OBJECT_ACTION_ALOLAN_EXEGGUTOR
+	dw SetFacingShakeExeggutor,        SetFacingAlolanExeggutor   ; OBJECT_ACTION_SHAKE_EXEGGUTOR
 	assert_table_length NUM_OBJECT_ACTIONS
 
 SetFacingStanding:
@@ -60,6 +62,10 @@ SetFacingSailboatTop:
 
 SetFacingSailboatBottom:
 	ld a, FACING_SAILBOAT_BOTTOM
+	jr SetFixedFacing
+
+SetFacingAlolanExeggutor:
+	ld a, FACING_ALOLAN_EXEGGUTOR_0
 	jr SetFixedFacing
 
 SetFacingBigDoll:
@@ -111,10 +117,7 @@ SetFacingBumpAction:
 	bit SLIDING_F, [hl]
 	jr nz, SetFacingCurrent
 
-	ld hl, OBJECT_STEP_FRAME
-	add hl, bc
-	inc [hl]
-	ld a, [hl]
+	call _GetNextStepFrame
 	rrca
 	rrca
 	rrca
@@ -249,23 +252,24 @@ SetFacingFreezeBigGyarados:
 	ld a, FACING_BIG_GYARADOS_1
 	jmp SetFixedFacing
 
+SetFacingShakeExeggutor:
+	call _GetNextStepFrame
+	and %110000
+	swap a
+	add FACING_ALOLAN_EXEGGUTOR_0
+	jmp SetFixedFacing
+
 SetFacingWeirdTree:
-	ld hl, OBJECT_STEP_FRAME
-	add hl, bc
-	inc [hl]
-	ld a, [hl]
-	and %00001100
+	call _GetNextStepFrame
+	and %1100
 	rrca
 	rrca
 	add FACING_WEIRD_TREE_0
 	jmp SetFixedFacing
 
 SetFacingBoulderDust:
-	ld hl, OBJECT_STEP_FRAME
-	add hl, bc
-	inc [hl]
-	ld a, [hl]
-	and 2
+	call _GetNextStepFrame
+	and %10
 	ld a, FACING_BOULDER_DUST_1
 	jr z, .ok
 	inc a ; FACING_BOULDER_DUST_2
@@ -273,11 +277,8 @@ SetFacingBoulderDust:
 	jmp SetFixedFacing
 
 SetFacingGrassShake:
-	ld hl, OBJECT_STEP_FRAME
-	add hl, bc
-	inc [hl]
-	ld a, [hl]
-	and 4
+	call _GetNextStepFrame
+	and %100
 	ld a, FACING_GRASS_1
 	jr z, .ok
 	inc a ; FACING_GRASS_2
@@ -285,11 +286,8 @@ SetFacingGrassShake:
 	jmp SetFixedFacing
 
 SetFacingPuddleSplash:
-	ld hl, OBJECT_STEP_FRAME
-	add hl, bc
-	inc [hl]
-	ld a, [hl]
-	and 4
+	call _GetNextStepFrame
+	and %100
 	ld a, FACING_SPLASH_1
 	jr z, .ok
 	inc a ; FACING_SPLASH_2
@@ -302,10 +300,7 @@ SetFacingRun:
 	bit SLIDING_F, [hl]
 	jmp nz, SetFacingCurrent
 
-	ld hl, OBJECT_STEP_FRAME
-	add hl, bc
-	inc [hl]
-	ld a, [hl]
+	call _GetNextStepFrame
 	rrca
 	rrca
 	and %11
@@ -315,4 +310,11 @@ SetFacingRun:
 	ld hl, OBJECT_FACING_STEP
 	add hl, bc
 	ld [hl], a
+	ret
+
+_GetNextStepFrame:
+	ld hl, OBJECT_STEP_FRAME
+	add hl, bc
+	inc [hl]
+	ld a, [hl]
 	ret

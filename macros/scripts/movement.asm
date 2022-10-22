@@ -515,9 +515,14 @@ MACRO stairs_step_right
 	db movement_stairs_step_right ; $65
 ENDM
 
+	const movement_exeggutor_shake
+MACRO exeggutor_shake
+	db movement_exeggutor_shake ; $66
+ENDM
+
 	const movement_paired_step_right
 MACRO paired_step_right
-	db movement_paired_step_right ; $66
+	db movement_paired_step_right ; $67
 ENDM
 
 DEF NUM_MOVEMENT_CMDS EQU const_value
