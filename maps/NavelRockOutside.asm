@@ -2,6 +2,7 @@ NavelRockOutside_MapScriptHeader:
 	def_scene_scripts
 
 	def_callbacks
+	callback MAPCALLBACK_NEWMAP, NavelRockFlyPoint
 
 	def_warp_events
 	warp_event 12, 25, SEAGALLOP_FERRY_NAVEL_GATE, 1
@@ -13,3 +14,7 @@ NavelRockOutside_MapScriptHeader:
 	def_bg_events
 
 	def_object_events
+
+NavelRockFlyPoint:
+	setflag ENGINE_FLYPOINT_NAVEL
+	endcallback

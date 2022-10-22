@@ -120,6 +120,7 @@ DEF NUM_FISHGROUPS EQU const_value - 1
 ; orange
 	const SPAWN_SHAMOUTI
 	const SPAWN_VALENCIA
+	const SPAWN_NAVEL
 DEF NUM_SPAWNS EQU const_value
 
 DEF SPAWN_N_A EQU -1
@@ -160,4 +161,5 @@ DEF SPAWN_N_A EQU -1
 ; orange
 	const FLY_SHAMOUTI
 	const FLY_VALENCIA
+	const FLY_NAVEL
 DEF NUM_FLYPOINTS EQU const_value

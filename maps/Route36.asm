@@ -112,14 +112,7 @@ DidntCatchSudowoodo:
 	end
 
 Route36FloriaScript:
-	faceplayer
-	opentext
-	checkevent EVENT_TALKED_TO_FLORIA_AT_FLOWER_SHOP
-	iftruefwd .SecondTimeTalking
-	setevent EVENT_MET_FLORIA
-	writetext FloriaText1
-	waitbutton
-	closetext
+	scall .FloriaMessage
 	clearevent EVENT_FLORIA_AT_FLOWER_SHOP
 	readvar VAR_FACING
 	ifequalfwd UP, .Up
@@ -132,8 +125,12 @@ Route36FloriaScript:
 	disappear ROUTE36_FLORIA
 	end
 
-.SecondTimeTalking:
-	jumpopenedtext FloriaText2
+.FloriaMessage:
+	checkevent EVENT_FOUGHT_SUDOWOODO
+	iftrue_jumptextfaceplayer FloriaTextAfterSudowoodo
+	checkevent EVENT_GOT_SQUIRTBOTTLE
+	iftrue_jumptextfaceplayer FloriaTextAfterSquirtBottle
+	jumptextfaceplayer FloriaTextAfterPlainBadge
 
 Route36RockSmashGuyScript:
 	faceplayer
@@ -486,7 +483,7 @@ SudowoodoAttackedText:
 	line "attacked!"
 	done
 
-FloriaText1:
+FloriaTextAfterPlainBadge:
 	text "I'm the Flower"
 	line "Shop's Floria!"
 
@@ -512,18 +509,47 @@ FloriaText1:
 	cont "her water bottle!"
 	done
 
-FloriaText2:
-	text "When I told my sis"
+FloriaTextAfterSquirtBottle:
+	text "I'm the Flower"
+	line "Shop's Floria!"
+
+	para "When I told my sis"
 	line "about the jiggly"
 
 	para "tree, she said"
 	line "it's dangerous."
 
-	para "If I beat Whitney,"
-	line "I wonder if she'll"
+	para "Oh, she lent you"
+	line "her water bottle?"
 
-	para "lend me her water"
-	line "bottle…"
+	para "You must be a good"
+	line "trainer then!"
+
+	para "I'll leave the"
+	line "weird tree to you."
+
+	para "Ta-ta!"
+	done
+
+FloriaTextAfterSudowoodo:
+	text "I just knew that"
+	line "wiggly tree was a"
+	cont "#mon!"
+
+	para "I was going to"
+	line "shock it out of"
+
+	para "its disguise, but"
+	line "you beat me to it!"
+
+	para "Oh well, I'll head"
+	line "back to the Flower"
+	cont "Shop."
+
+	para "I'm Floria, by the"
+	line "way."
+
+	para "Ta-ta!"
 	done
 
 RockSmashGuyText1:

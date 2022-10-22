@@ -3,7 +3,7 @@ GoldenrodCity_MapScriptHeader:
 	scene_script GoldenrodCityTrigger0
 
 	def_callbacks
-	callback MAPCALLBACK_NEWMAP, GoldenrodCityFlyPointAndFloria
+	callback MAPCALLBACK_NEWMAP, GoldenrodCityFlyPoint
 	callback MAPCALLBACK_OBJECTS, GoldenrodCityMoveTutor
 
 	def_warp_events
@@ -70,12 +70,8 @@ GoldenrodCity_MapScriptHeader:
 	object_const_def
 	const GOLDENRODCITY_POKEFAN_M2
 
-GoldenrodCityFlyPointAndFloria:
+GoldenrodCityFlyPoint:
 	setflag ENGINE_FLYPOINT_GOLDENROD
-	checkevent EVENT_MET_FLORIA
-	iftruefwd .Done
-	clearevent EVENT_FLORIA_AT_SUDOWOODO
-.Done:
 	endcallback
 
 GoldenrodCityMoveTutor:

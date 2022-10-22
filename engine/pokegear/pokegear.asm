@@ -1728,8 +1728,8 @@ FlyMap:
 	ld [wTownMapPlayerIconLandmark], a
 ; Flypoints begin at Shamouti Island...
 	ld [wStartFlypoint], a
-; ..and end at Valencia Island
-	ld a, FLY_VALENCIA
+; ..and end at Navel Rock
+	ld a, FLY_NAVEL
 	ld [wEndFlypoint], a
 ; Fill out the map
 	call FillOrangeMap
