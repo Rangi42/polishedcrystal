@@ -251,3 +251,4 @@
 	tilecoll WALL, FLOOR, FLOOR, FLOOR ; fa
 	tilecoll WALL, WALL, WALL, WALL ; fb
 	tilecoll FLOOR, FLOOR, FLOOR, FLOOR ; fc
+	tilecoll FLOOR, TALL_GRASS, FLOOR, TALL_GRASS ; fd
