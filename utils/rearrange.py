@@ -3,7 +3,7 @@
 
 import sys
 
-name = 'shamouti_island'
+name = 'mart'
 rearrange = {
 	# 0xB_ID: 0xB_ID,
 }
