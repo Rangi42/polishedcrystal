@@ -158,8 +158,6 @@ ENDM
 	map_const VALERIES_HOUSE,                              4,  4 ; 15
 	map_const ECRUTEAK_CHERISH_BALL_HOUSE,                 4,  4 ; 16
 	map_const ECRUTEAK_DESTINY_KNOT_HOUSE,                 4,  4 ; 17
-	map_const ECRUTEAK_SHRINE_OUTSIDE,                     8, 11 ; 18
-	map_const ECRUTEAK_SHRINE_INSIDE,                      6,  6 ; 19
 
 	newgroup                                                     ;  5
 	map_const BLACKTHORN_GYM_1F,                           5,  9 ;  1
@@ -693,5 +691,9 @@ ENDM
 	map_const RUGGED_ROAD,                                10, 27 ;  1
 	map_const SNOWTOP_MOUNTAIN,                           20, 18 ;  2
 	map_const ROUTE_39_RUGGED_ROAD_GATE,                   5,  4 ;  3
+
+	newgroup                                                     ; 37
+	map_const ECRUTEAK_SHRINE_OUTSIDE,                     8, 11 ;  1
+	map_const ECRUTEAK_SHRINE_INSIDE,                      6,  6 ;  2
 
 DEF NUM_MAP_GROUPS EQU const_value ; 37

@@ -25,6 +25,7 @@ LoadMapGroupRoof::
 	dw VioletRoofGFX ; far-ok
 	dw AzaleaRoofGFX ; far-ok
 	dw OlivineRoofGFX ; far-ok
+	dw StatueRoofGFX ; far-ok
 	assert_table_length NUM_ROOFS
 
 INCLUDE "data/maps/roofs.asm"
