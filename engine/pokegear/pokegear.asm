@@ -1693,10 +1693,10 @@ INCLUDE "data/maps/flypoints.asm"
 
 FlyMap:
 	call GetCurrentLandmark
-; The first 46 locations are part of Johto. The rest are in Kanto
+	cp SHAMOUTI_LANDMARK
+	jr nc, .OrangeFlyMap
 	cp KANTO_LANDMARK
 	jr nc, .KantoFlyMap
-;.JohtoFlyMap:
 ; Note that .NoKanto should be modified in tandem with this branch
 	push af
 ; Start from New Bark Town
@@ -1716,18 +1716,33 @@ FlyMap:
 	pop af
 	jmp TownMapPlayerIcon
 
+.OrangeFlyMap:
+	push af
+; Start from Shamouti Island
+	ld a, FLY_SHAMOUTI
+	ld [wTownMapPlayerIconLandmark], a
+; Flypoints begin at Shamouti Island...
+	ld [wStartFlypoint], a
+; ..and end at Valencia Island
+	ld a, FLY_VALENCIA
+	ld [wEndFlypoint], a
+; Fill out the map
+	call FillOrangeMap
+	call TownMapBubble
+	call TownMapPals
+	call TownMapOrangeFlips
+	call .MapHud
+	pop af
+	jmp TownMapPlayerIcon
+
 .KantoFlyMap:
 ; The event that there are no flypoints enabled in a map is not
-
 ; accounted for. As a result, if you attempt to select a flypoint
 ; when there are none enabled, the game will crash. Additionally,
-
 ; the flypoint selection has a default starting point that
 ; can be flown to even if none are enabled
-
 ; To prevent both of these things from happening when the player
 ; enters Kanto, fly access is restricted until Indigo Plateau is
-
 ; visited and its flypoint enabled
 	push af
 	ld c, SPAWN_INDIGO

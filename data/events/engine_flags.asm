@@ -112,6 +112,9 @@ EngineFlags:
 	engine_flag wVisitedSpawns, 27 ; lake of rage
 	engine_flag wVisitedSpawns, 28 ; blackthorn
 	engine_flag wVisitedSpawns, 29 ; silver cave
+	                               ; fast ship
+	engine_flag wVisitedSpawns, 31 ; shamouti
+	engine_flag wVisitedSpawns, 32 ; valencia
 
 	engine_flag wLuckyNumberShowFlag, 0 ; lucky number show
 

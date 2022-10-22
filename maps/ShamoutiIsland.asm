@@ -2,6 +2,7 @@ ShamoutiIsland_MapScriptHeader:
 	def_scene_scripts
 
 	def_callbacks
+	callback MAPCALLBACK_NEWMAP, ShamoutiIslandFlyPoint
 
 	def_warp_events
 	warp_event 21, 13, SHAMOUTI_POKECENTER_1F, 1
@@ -30,6 +31,10 @@ ShamoutiIsland_MapScriptHeader:
 
 	object_const_def
 	const SHAMOUTIISLAND_VILEPLUME
+
+ShamoutiIslandFlyPoint:
+	setflag ENGINE_FLYPOINT_SHAMOUTI
+	endcallback
 
 ShamoutiIslandVileplumeScript:
 	special SpecialSnorlaxAwake
