@@ -44,6 +44,7 @@ SpawnPoints:
 
 	spawn SHAMOUTI_ISLAND,            21, 14
 	spawn VALENCIA_ISLAND,             8, 14
+	spawn NAVEL_ROCK_OUTSIDE,         12, 23
 
 	spawn N_A,                        -1, -1
 
