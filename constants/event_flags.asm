@@ -279,8 +279,8 @@
 
 ; Crystal-exclusive events in Johto
 	const EVENT_SAW_FIRST_HIDDEN_GROTTO
-	const EVENT_MET_FLORIA
-	const EVENT_TALKED_TO_FLORIA_AT_FLOWER_SHOP
+	const_skip ; unused
+	const_skip ; unused
 	const EVENT_BUGGING_KURT_TOO_MUCH
 	const EVENT_TALKED_TO_RUINS_COWARD
 	const EVENT_GOT_DRATINI
