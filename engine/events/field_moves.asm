@@ -11,16 +11,21 @@ BlindingFlash::
 
 ShakeHeadbuttTree:
 	call ClearSpriteAnims
+	call GetCurrentLandmark
+	cp NOISY_FOREST
+	ld hl, HeadbuttTree2GFX
+	jr z, .got_gfx
 	ld hl, HeadbuttTreeGFX
-	ld de, vTiles0 tile $64
-	lb bc, BANK(HeadbuttTreeGFX), 8
+.got_gfx
+	ld de, vTiles0 tile $63
+	lb bc, BANK("Overworld Effect Graphics"), 12
 	call DecompressRequest2bpp
 	call Cut_Headbutt_GetPixelFacing
 	ld a, SPRITE_ANIM_INDEX_HEADBUTT
 	call InitSpriteAnimStruct
 	ld hl, SPRITEANIMSTRUCT_TILE_ID
 	add hl, bc
-	ld [hl], $64
+	ld [hl], $63
 	ld a, 36 * 4
 	ld [wCurSpriteOAMAddr], a
 	call DoNextFrameForAllSprites
@@ -55,9 +60,6 @@ ShakeHeadbuttTree:
 	call DelayFrame
 	jmp UpdatePlayerSprite
 
-HeadbuttTreeGFX:
-INCBIN "gfx/overworld/headbutt_tree.2bpp.lz"
-
 HideHeadbuttTree:
 	xor a
 	ldh [hBGMapMode], a
@@ -72,7 +74,7 @@ HideHeadbuttTree:
 	ld h, [hl]
 	ld l, a
 
-	ld a, $2 ; grass tile
+	ld a, " "
 	ld [hli], a
 	ld [hld], a
 	ld bc, SCREEN_WIDTH

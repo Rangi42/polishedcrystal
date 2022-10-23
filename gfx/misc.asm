@@ -10,6 +10,8 @@ StatueRoofGFX::    INCBIN "gfx/tilesets/roofs/statue.2bpp.lz"
 SECTION "Overworld Effect Graphics", ROMX
 
 OverworldEffectGFX:: INCBIN "gfx/overworld/overworld.2bpp.lz"
+HeadbuttTreeGFX::    INCBIN "gfx/overworld/headbutt_tree.2bpp.lz"
+HeadbuttTree2GFX::   INCBIN "gfx/overworld/headbutt_tree_2.2bpp.lz"
 
 
 SECTION "Fishing Graphics", ROMX
