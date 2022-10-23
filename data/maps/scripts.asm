@@ -688,6 +688,7 @@ INCLUDE "maps/CeladonUniversityLounge.asm"
 INCLUDE "maps/CeladonUniversityPool.asm"
 INCLUDE "maps/CeladonUniversityWestwoodsOffice.asm"
 INCLUDE "maps/CeladonUniversityWillowsOffice.asm"
+INCLUDE "maps/CeladonUniversityNursesOffice.asm"
 
 
 SECTION "Celadon University Classroom Scripts", ROMX

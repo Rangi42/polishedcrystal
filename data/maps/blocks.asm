@@ -1310,6 +1310,10 @@ SECTION "CeladonUniversityWillowsOffice_BlockData", ROMX
 CeladonUniversityWillowsOffice_BlockData:
 	INCBIN "maps/CeladonUniversityWillowsOffice.ablk.lz"
 
+SECTION "CeladonUniversityNursesOffice_BlockData", ROMX
+CeladonUniversityNursesOffice_BlockData:
+	INCBIN "maps/CeladonUniversityNursesOffice.ablk.lz"
+
 SECTION "CeladonUniversityClassroom1_BlockData", ROMX
 CeladonUniversityClassroom1_BlockData:
 CeladonUniversityClassroom2_BlockData:
