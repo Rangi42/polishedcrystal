@@ -146,7 +146,7 @@ ElmCheckMasterBall:
 	iftrue ElmGiveMasterBallScript
 ElmCheckOddSouvenir:
 	checkevent EVENT_GOT_ODD_SOUVENIR_FROM_ELM
-	iftrue_jumpopenedtext ElmText_CallYou
+	iftrue ElmCheckBattleScript
 	checkevent EVENT_SHOWED_TOGEPI_TO_ELM
 	iftrue ElmGiveOddSouvenirScript
 	checkevent EVENT_TOLD_ELM_ABOUT_TOGEPI_OVER_THE_PHONE
@@ -402,7 +402,11 @@ ElmGiveOddSouvenirScript:
 	verbosegiveitem ODD_SOUVENIR
 	iffalse_endtext
 	setevent EVENT_GOT_ODD_SOUVENIR_FROM_ELM
-	jumpopenedtext ElmGiveOddSouvenirText2
+	writetext ElmGiveOddSouvenirText2
+	waitbutton
+	checkevent EVENT_BEAT_PROF_ELM
+	iffalsefwd ElmAlsoBattleScript
+	endtext
 
 ElmGiveMasterBallScript:
 	writetext ElmGiveMasterBallText1
@@ -410,10 +414,24 @@ ElmGiveMasterBallScript:
 	verbosegiveitem MASTER_BALL
 	iffalse_endtext
 	setevent EVENT_GOT_MASTER_BALL_FROM_ELM
-	jumpopenedtext ElmGiveMasterBallText2
+	writetext ElmGiveMasterBallText2
+	waitbutton
+	checkevent EVENT_BEAT_PROF_ELM
+	iftrue_endtext
+ElmAlsoBattleScript:
+	writetext ElmByTheWayText
+	waitbutton
+	sjumpfwd ElmAskBattleScript
 
-ElmGiveTicketScript:
-	writetext ElmChallengeText
+ElmCheckBattleScript:
+	checkevent EVENT_BEAT_PROF_ELM
+	iftrue_jumpopenedtext ElmText_CallYou
+	checkevent EVENT_BEAT_FALKNER
+	iffalse_jumpopenedtext ElmText_CallYou
+	writetext ElmBeforeBattleText
+	waitbutton
+ElmAskBattleScript:
+	writetext ElmAskBattleText
 	yesorno
 	iffalse_jumpopenedtext ElmRefusedBattleText
 	writetext ElmSeenText
@@ -421,11 +439,27 @@ ElmGiveTicketScript:
 	closetext
 	winlosstext ElmWinText, ElmLoseText
 	setlasttalked ELMSLAB_ELM
+	readvar VAR_BADGES
+	ifless 2, .Team1
+	ifless 4, .Team2
+	ifless 8, .Team3
+	loadtrainer PROF_ELM, 4
+	sjumpfwd .GotTeam
+.Team1:
 	loadtrainer PROF_ELM, 1
+	sjumpfwd .GotTeam
+.Team2:
+	loadtrainer PROF_ELM, 2
+	sjumpfwd .GotTeam
+.Team3:
+	loadtrainer PROF_ELM, 3
+.GotTeam:
 	loadvar VAR_BATTLETYPE, BATTLETYPE_CANLOSE
 	startbattle
 	reloadmap
-	opentext
+	jumptextfaceplayer ElmAfterBattleText
+
+ElmGiveTicketScript:
 	writetext ElmGiveTicketText1
 	promptbutton
 	verbosegivekeyitem S_S_TICKET
@@ -1344,55 +1378,13 @@ ElmGiveMasterBallText2:
 	line "can, <PLAYER>!"
 	done
 
-ElmChallengeText:
+ElmGiveTicketText1:
 	text "Elm: <PLAYER>!"
 	line "There you are!"
 
 	para "I called because I"
 	line "have something for"
 	cont "you."
-
-	para "But first…"
-
-	para "I'd like to try"
-	line "battling the new"
-	cont "Champion!"
-
-	para "How about it,"
-	line "<PLAYER>?"
-	done
-
-ElmSeenText:
-	text "Show me how much"
-	line "you've grown since"
-
-	para "you left New Bark"
-	line "Town!"
-	done
-
-ElmWinText:
-	text "Astounding!"
-	done
-
-ElmLoseText:
-	text "…Were you going"
-	line "easy on me?"
-	done
-
-ElmRefusedBattleText:
-	text "If your #mon"
-	line "need healing,"
-
-	para "just use the"
-	line "machine here."
-	done
-
-ElmGiveTicketText1:
-	text "Elm: I'm proud"
-	line "of you, <PLAYER>."
-
-	para "You're clearly"
-	line "ready for this."
 
 	para "See? It's an"
 	line "S.S.Ticket."
@@ -1485,6 +1477,62 @@ ElmAfterTicketText:
 
 	para "Give my regards to"
 	line "Prof.Oak in Kanto!"
+	done
+
+ElmBeforeBattleText:
+	text "Elm: <PLAYER>!"
+	line "How is your #-"
+	cont "journey so far?"
+	done
+
+ElmByTheWayText:
+	text "While you're here,"
+	line "<PLAYER>…"
+	done
+
+ElmAskBattleText:
+	text "I could use some"
+	line "practice battling"
+
+	para "a talented trainer"
+	line "like yourself."
+
+	para "How about it,"
+	line "<PLAYER>?"
+	done
+
+ElmSeenText:
+	text "Show me how much"
+	line "you've grown since"
+
+	para "you left New Bark"
+	line "Town!"
+	done
+
+ElmWinText:
+	text "Astounding!"
+	done
+
+ElmLoseText:
+	text "Were you going"
+	line "easy on me?"
+	done
+
+ElmRefusedBattleText:
+	text "If your #mon"
+	line "need healing,"
+
+	para "just use the"
+	line "machine here."
+	done
+
+ElmAfterBattleText:
+	text "Elm: I'm proud"
+	line "of you, <PLAYER>."
+
+	para "I was right to"
+	line "trust you with"
+	cont "a #mon!"
 	done
 
 AideText_GiveYouPotions:
