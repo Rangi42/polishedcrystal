@@ -48,4 +48,10 @@ DualMapConnections:
 	dual_connection north, ROUTE_35_COAST_SOUTH, 30, \
 		OlivineCity, OLIVINE_CITY, -7, \
 		Route35CoastNorth, ROUTE_35_COAST_NORTH, 15
+	; When you walk east off of CeladonCity, if [wYCoord] < 10,
+	; then use "connection east, CeladonOutskirts, CELADON_OUTSKIRTS, -1";
+	; else use "connection east, Route7, ROUTE_7, 5".
+	dual_connection east, CELADON_CITY, 10, \
+		CeladonOutskirts, CELADON_OUTSKIRTS, -1, \
+		Route7, ROUTE_7, 5
 	db 0 ; end

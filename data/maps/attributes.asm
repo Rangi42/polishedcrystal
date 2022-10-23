@@ -255,7 +255,10 @@ ENDM
 
 	map_attributes CeladonCity, CELADON_CITY, $f, WEST | EAST
 	connection west, Route16Northeast, ROUTE_16_NORTHEAST, 10
-	connection east, Route7, ROUTE_7, 5
+	connection east, CeladonOutskirtsRoute7Dual, CELADON_OUTSKIRTS_ROUTE_7_DUAL, -1
+
+	map_attributes CeladonOutskirtsRoute7Dual, CELADON_OUTSKIRTS_ROUTE_7_DUAL, $f, WEST
+	connection west, CeladonCity, CELADON_CITY, 1
 
 	map_attributes Route7, ROUTE_7, $f, NORTH | WEST | EAST
 	connection north, CeladonOutskirts, CELADON_OUTSKIRTS, 0
