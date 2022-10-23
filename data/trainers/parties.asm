@@ -4749,7 +4749,7 @@ SuperNerdGroup:
 	db -1 ; end
 
 	; SUPER_NERD
-	db "Mako@"
+	db "Kouta@"
 	db TRAINERTYPE_NORMAL
 	; party
 	dbp 54, CROBAT
@@ -6162,6 +6162,42 @@ KimonoGirl5Group:
 	db -1 ; end
 
 
+SECTION "KimonoGirl6Group", ROMX
+KimonoGirl6Group:
+
+	; KIMONO_GIRL_6
+	db "Mako@"
+	db TRAINERTYPE_ITEM
+	; party
+	dbp LEVEL_FROM_BADGES + 5, LEAFEON
+		db LUM_BERRY
+	db -1 ; end
+
+
+SECTION "KimonoGirl7Group", ROMX
+KimonoGirl7Group:
+
+	; KIMONO_GIRL_7
+	db "Ami@"
+	db TRAINERTYPE_ITEM
+	; party
+	dbp LEVEL_FROM_BADGES + 5, GLACEON
+		db LUM_BERRY
+	db -1 ; end
+
+
+SECTION "KimonoGirl8roup", ROMX
+KimonoGirl8Group:
+
+	; KIMONO_GIRL_8
+	db "Mina@"
+	db TRAINERTYPE_ITEM
+	; party
+	dbp LEVEL_FROM_BADGES + 5, SYLVEON
+		db LUM_BERRY
+	db -1 ; end
+
+
 SECTION "ElderGroup", ROMX
 ElderGroup:
 
@@ -7286,7 +7322,7 @@ SwimmerFGroup:
 	db -1 ; end
 
 	; SWIMMERF
-	db "Mina@"
+	db "Mayu@"
 	db TRAINERTYPE_NORMAL
 	; party
 	dbp 58, CORSOLA

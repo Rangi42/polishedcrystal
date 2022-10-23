@@ -68,6 +68,9 @@ TrainerClassDVsAndPersonality:
 	db  56, $DD, $DD, $DD, FEMALE ; kimono girl 3
 	db  56, $DD, $DD, $DD, FEMALE ; kimono girl 4
 	db  56, $DD, $DD, $DD, FEMALE ; kimono girl 5
+	db  56, $DD, $DD, $DD, FEMALE ; kimono girl 6
+	db  56, $DD, $DD, $DD, FEMALE ; kimono girl 7
+	db  56, $DD, $DD, $DD, FEMALE ; kimono girl 8
 	db  56, $DD, $DD, $DD, MALE   ; elder
 	db  48, $CC, $CC, $CC, FEMALE ; sr&jr
 	db  48, $CC, $CC, $CC, MALE   ; couple
