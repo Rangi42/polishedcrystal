@@ -63,6 +63,7 @@ ShamoutiIslandAlolanExeggutorScript:
 	loadwildmon EXEGGUTOR, ALOLAN_FORM, 60
 	startbattle
 	disappear SHAMOUTIISLAND_ALOLAN_EXEGGUTOR
+	disappear SHAMOUTIISLAND_ALOLAN_EXEGGUTOR_HEAD
 	reloadmapafterbattle
 	end
 
