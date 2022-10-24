@@ -68,6 +68,9 @@ TrainerGroups:
 	dba KimonoGirl3Group
 	dba KimonoGirl4Group
 	dba KimonoGirl5Group
+	dba KimonoGirl6Group
+	dba KimonoGirl7Group
+	dba KimonoGirl8Group
 	dba ElderGroup
 	dba SrAndJrGroup
 	dba CoupleGroup

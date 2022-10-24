@@ -479,17 +479,17 @@ ENDM
 	map_const CELADON_UNIVERSITY_PRINCIPALS_OFFICE,        3,  4 ; 49
 	map_const CELADON_UNIVERSITY_WESTWOODS_OFFICE,         3,  3 ; 50
 	map_const CELADON_UNIVERSITY_WILLOWS_OFFICE,           3,  3 ; 51
-	map_const CELADON_UNIVERSITY_LOUNGE,                   4,  6 ; 52
-	map_const CELADON_UNIVERSITY_CAFETERIA,                8,  4 ; 53
-	map_const CELADON_UNIVERSITY_HYPER_TEST_ROOM,          4,  6 ; 54
-	map_const CELADON_UNIVERSITY_POOL,                     8,  5 ; 55
-	map_const CELADON_UNIVERSITY_CLASSROOM_1,              4,  6 ; 56
-	map_const CELADON_UNIVERSITY_CLASSROOM_2,              4,  6 ; 57
-	map_const CELADON_UNIVERSITY_CLASSROOM_3,              4,  6 ; 58
-	map_const CELADON_UNIVERSITY_CLASSROOM_4,              4,  6 ; 59
-	map_const CELADON_OLD_MAN_SPEECH_HOUSE,                4,  4 ; 60
-	map_const CELADON_DEVELOPMENT_SPEECH_HOUSE,            4,  4 ; 61
-	map_const CELADON_OUTSKIRTS,                          10,  6 ; 62
+	map_const CELADON_UNIVERSITY_NURSES_OFFICE,            4,  3 ; 52
+	map_const CELADON_UNIVERSITY_LOUNGE,                   4,  6 ; 53
+	map_const CELADON_UNIVERSITY_CAFETERIA,                8,  4 ; 54
+	map_const CELADON_UNIVERSITY_HYPER_TEST_ROOM,          4,  6 ; 55
+	map_const CELADON_UNIVERSITY_POOL,                     8,  5 ; 56
+	map_const CELADON_UNIVERSITY_CLASSROOM_1,              4,  6 ; 57
+	map_const CELADON_UNIVERSITY_CLASSROOM_2,              4,  6 ; 58
+	map_const CELADON_UNIVERSITY_CLASSROOM_3,              4,  6 ; 59
+	map_const CELADON_UNIVERSITY_CLASSROOM_4,              4,  6 ; 60
+	map_const CELADON_OLD_MAN_SPEECH_HOUSE,                4,  4 ; 61
+	map_const CELADON_DEVELOPMENT_SPEECH_HOUSE,            4,  4 ; 62
 
 	newgroup                                                     ; 22
 	map_const ROUTE_40,                                   10, 20 ;  1
@@ -688,7 +688,7 @@ ENDM
 	map_const SHAMOUTI_SHRINE_RUINS,                      12, 17 ;  2
 
 	newgroup                                                     ; 36
-	map_const RUGGED_ROAD,                                10, 27 ;  1
+	map_const RUGGED_ROAD,                                17, 28 ;  1
 	map_const SNOWTOP_MOUNTAIN,                           20, 18 ;  2
 	map_const ROUTE_39_RUGGED_ROAD_GATE,                   5,  4 ;  3
 

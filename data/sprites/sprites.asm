@@ -201,4 +201,5 @@ SpriteHeaders:
 	overworld_sprite BeachGirlSpriteGFX, WALKING_SPRITE, PAL_OW_GREEN
 	overworld_sprite BeachGuySpriteGFX, WALKING_SPRITE, PAL_OW_RED
 	overworld_sprite PiersSpriteGFX, STANDING_SPRITE, PAL_OW_RED
+	overworld_sprite AlolanExeggutorSpriteGFX, BIG_GYARADOS_SPRITE, PAL_OW_BROWN
 	assert_table_length NUM_OVERWORLD_SPRITES

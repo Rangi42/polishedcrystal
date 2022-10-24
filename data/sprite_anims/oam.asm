@@ -44,6 +44,7 @@ SpriteAnimOAMData:
 	dbw $00, .OAMData_1x1_Palette0           ; SPRITE_ANIM_OAMSET_EGG_CRACK
 	dbw $01, .OAMData_1x1_Palette0           ; SPRITE_ANIM_OAMSET_EGG_HATCH
 	dbw $04, .OAMData_Tree                   ; SPRITE_ANIM_OAMSET_HEADBUTT_TREE_2
+	dbw $08, .OAMData_Tree                   ; SPRITE_ANIM_OAMSET_HEADBUTT_TREE_3
 	dbw $00, .OAMData_BlueWalk               ; SPRITE_ANIM_OAMSET_BLUE_WALK_1
 	dbw $04, .OAMData_BlueWalk               ; SPRITE_ANIM_OAMSET_BLUE_WALK_2
 	dbw $00, .OAMData_MagnetTrainBlue        ; SPRITE_ANIM_OAMSET_MAGNET_TRAIN_BLUE_1

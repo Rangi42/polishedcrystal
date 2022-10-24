@@ -557,6 +557,7 @@ endr
 	dw .MovementMuseumDrill          ; SPRITEMOVEFN_MUSEUM_DRILL
 	dw .MovementSailboatTop          ; SPRITEMOVEFN_SAILBOAT_TOP
 	dw .MovementSailboatBottom       ; SPRITEMOVEFN_SAILBOAT_BOTTOM
+	dw .MovementAlolanExeggutor      ; SPRITEMOVEFN_ALOLAN_EXEGGUTOR
 	assert_table_length NUM_SPRITEMOVEFN
 
 .RandomWalkY:
@@ -764,6 +765,10 @@ endr
 
 .MovementSailboatBottom:
 	ld a, OBJECT_ACTION_SAILBOAT_BOTTOM
+	jr ._ActionA_StepFunction_Standing
+
+.MovementAlolanExeggutor:
+	ld a, OBJECT_ACTION_ALOLAN_EXEGGUTOR
 	jr ._ActionA_StepFunction_Standing
 
 .StandingFlip:
@@ -2831,10 +2836,6 @@ InitSprites:
 	jr z, .skip2
 	or PRIORITY
 .skip2
-	bit USE_OBP1_F, e
-	jr z, .skip3
-	or OBP_NUM
-.skip3
 	ld hl, OBJECT_PALETTE
 	add hl, bc
 	ld d, a
@@ -2844,9 +2845,9 @@ InitSprites:
 	ld d, a
 	xor a
 	bit OVERHEAD_F, e
-	jr z, .skip4
+	jr z, .skip3
 	or PRIORITY
-.skip4
+.skip3
 	ldh [hCurSpriteOAMFlags], a
 	ld hl, OBJECT_SPRITE_X
 	add hl, bc
@@ -2925,14 +2926,18 @@ InitSprites:
 .standing
 .vram0
 	inc c
-	ld a, e
-	bit RELATIVE_ATTRIBUTES_F, a
+	xor a
+	bit RELATIVE_ATTRIBUTES_F, e
 	jr z, .nope2
 	ldh a, [hCurSpriteOAMFlags]
-	or e
 .nope2
-	and OBP_NUM | X_FLIP | Y_FLIP | PRIORITY
+	or e
+	and X_FLIP | Y_FLIP | PRIORITY
 	or d
+	bit NEXT_PALETTE_F, e
+	jr z, .nope3
+	inc a
+.nope3
 	ld [bc], a
 	inc c
 	ldh a, [hUsedSpriteTile]

@@ -2620,6 +2620,7 @@ Script_loadgrottomon:
 	ld a, c
 	ld [wTempWildMonSpecies], a
 	ld a, b
+	ld [wWildMonForm], a
 	ld [wCurForm], a
 	call PlayCry
 	ld a, (1 << 7)

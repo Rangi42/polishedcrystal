@@ -1176,10 +1176,6 @@ SECTION "CeladonCity_BlockData", ROMX
 CeladonCity_BlockData:
 	INCBIN "maps/CeladonCity.ablk.lz"
 
-SECTION "CeladonOutskirts_BlockData", ROMX
-CeladonOutskirts_BlockData:
-	INCBIN "maps/CeladonOutskirts.ablk.lz"
-
 SECTION "CeladonGameCorner_BlockData", ROMX
 CeladonGameCorner_BlockData:
 	INCBIN "maps/CeladonGameCorner.ablk.lz"
@@ -1309,6 +1305,10 @@ CeladonUniversityWestwoodsOffice_BlockData:
 SECTION "CeladonUniversityWillowsOffice_BlockData", ROMX
 CeladonUniversityWillowsOffice_BlockData:
 	INCBIN "maps/CeladonUniversityWillowsOffice.ablk.lz"
+
+SECTION "CeladonUniversityNursesOffice_BlockData", ROMX
+CeladonUniversityNursesOffice_BlockData:
+	INCBIN "maps/CeladonUniversityNursesOffice.ablk.lz"
 
 SECTION "CeladonUniversityClassroom1_BlockData", ROMX
 CeladonUniversityClassroom1_BlockData:

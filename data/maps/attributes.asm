@@ -257,8 +257,7 @@ ENDM
 	connection west, Route16Northeast, ROUTE_16_NORTHEAST, 10
 	connection east, Route7, ROUTE_7, 5
 
-	map_attributes Route7, ROUTE_7, $f, NORTH | WEST | EAST
-	connection north, CeladonOutskirts, CELADON_OUTSKIRTS, 0
+	map_attributes Route7, ROUTE_7, $f, WEST | EAST
 	connection west, CeladonCity, CELADON_CITY, -5
 	connection east, SaffronCity, SAFFRON_CITY, -6
 
@@ -390,9 +389,6 @@ ENDM
 
 	map_attributes MagnetTunnelWest, MAGNET_TUNNEL_WEST, $5, WEST
 	connection west, GoldenrodCity, GOLDENROD_CITY, 0
-
-	map_attributes CeladonOutskirts, CELADON_OUTSKIRTS, $f, SOUTH
-	connection south, Route7, ROUTE_7, 0
 
 	map_attributes Route23, ROUTE_23, $2c, NORTH
 	connection north, IndigoPlateau, INDIGO_PLATEAU, 0
@@ -762,6 +758,7 @@ ENDM
 	map_attributes CeladonUniversityPrincipalsOffice, CELADON_UNIVERSITY_PRINCIPALS_OFFICE, $0, 0
 	map_attributes CeladonUniversityWestwoodsOffice, CELADON_UNIVERSITY_WESTWOODS_OFFICE, $0, 0
 	map_attributes CeladonUniversityWillowsOffice, CELADON_UNIVERSITY_WILLOWS_OFFICE, $0, 0
+	map_attributes CeladonUniversityNursesOffice, CELADON_UNIVERSITY_NURSES_OFFICE, $0, 0
 	map_attributes CeladonUniversityLounge, CELADON_UNIVERSITY_LOUNGE, $0, 0
 	map_attributes CeladonUniversityCafeteria, CELADON_UNIVERSITY_CAFETERIA, $0, 0
 	map_attributes CeladonUniversityHyperTestRoom, CELADON_UNIVERSITY_HYPER_TEST_ROOM, $0, 0

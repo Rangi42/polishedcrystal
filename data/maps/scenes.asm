@@ -77,6 +77,7 @@ MapScenes::
 	scene_var ROUTE_36,                               wRoute36SceneID
 	scene_var ROUTE_36_NATIONAL_PARK_GATE,            wRoute36NationalParkGateSceneID
 	scene_var ROUTE_39_RUGGED_ROAD_GATE,              wRoute39RuggedRoadGateSceneID
+	scene_var RUGGED_ROAD,                            wRuggedRoadSceneID
 	scene_var ROUTE_42,                               wRoute42SceneID
 	scene_var ROUTE_43_GATE,                          wRoute43GateSceneID
 	scene_var ROUTE_47,                               wRoute47SceneID

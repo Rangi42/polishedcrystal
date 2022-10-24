@@ -66,6 +66,9 @@ TrainerPicPointers::
 	dba KimonoGirl3Pic
 	dba KimonoGirl4Pic
 	dba KimonoGirl5Pic
+	dba KimonoGirl6Pic
+	dba KimonoGirl7Pic
+	dba KimonoGirl8Pic
 	dba ElderPic
 	dba SrAndJrPic
 	dba CouplePic
