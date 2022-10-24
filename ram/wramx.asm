@@ -1047,7 +1047,8 @@ wAlways0SceneID:: db
 wAzaleaTownSceneID:: db
 wBattleFacilitySceneID:: db
 wRoute39RuggedRoadGateSceneID:: db
-	ds 2 ; unused
+wRuggedRoadSceneID:: db
+	ds 1 ; unused
 wBattleTowerOutsideSceneID:: db
 wBellchimeTrailSceneID:: db
 wBrunosRoomSceneID:: db
