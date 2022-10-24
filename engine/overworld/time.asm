@@ -158,6 +158,7 @@ rept 4 - 1
 	ld [hli], a
 endr
 	ld [hl], a
+	ld [wDailyTrainerHouseOpponent], a
 	ld hl, wKenjiBreakTimer
 	ld a, [hl]
 	and a

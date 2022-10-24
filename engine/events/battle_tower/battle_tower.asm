@@ -765,17 +765,15 @@ Special_BattleTower_LoadOpponentTrainerAndPokemonsWithOTSprite:
 	call BT_GetCurTrainerIndex
 	ld c, a
 	ld b, 0
-
-	push bc
 	farcall WriteBattleTowerTrainerName
-	pop bc
+LoadTrainerSpriteAsMapObject1::
 	ld c, a
+	ld b, 0
 	dec c
 	ld hl, BTTrainerClassSprites
 	add hl, bc
 	ld a, [hl]
 	ld [wBTTempOTSprite], a
-
 	; Load sprite of the opponent trainer
 	; because s/he is chosen randomly and appears out of nowhere
 	ld [wMap1ObjectSprite], a

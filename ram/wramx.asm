@@ -1182,7 +1182,7 @@ wCleverWingAmount:: dw
 
 wCelebiEvent:: db
 
-	ds 1 ; unused
+wDailyTrainerHouseOpponent:: db
 
 wOWState:: dw
 

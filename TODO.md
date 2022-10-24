@@ -166,17 +166,6 @@ Some of these may never be added; they're just suggestions.
 * Championship title defense like in Gen VII (challengers: rival, Lyra, Lance, Prof.Oak, Prof.Elm, Clair, Blue, Eusine, Kimono Girl Naoko, Palmer, Lorelei, Agatha, Steven, Cynthia, Caitlin, and Lawrence)
 * Make more trainers rematchable
 * Allow evolution during battle (optional)
-* Battle [En and Madoka](http://bulbapedia.bulbagarden.net/wiki/The_Legendary_Rotation_Battle!) somewhere (Trainer House after catching the legendary trios, different trainer each day?)
-   * Madoka:
-   * She entered this tournament with new Pokémon! Which Pokémon wil she use?
-   * "I knew this Pokémon was strong! I didn't spend days and days to find and catch it for nothing."
-   * "What? Why did this Pokémon lose?"
-   * "I'll come back after raising Pokémon more seriously."
-   * En:
-   * He wants to battle strong opponents! That is his only wish!
-   * "Being able to battle with you, the best Trainer, in the best stage... Ah! I'm really happy right now!"
-   * "Oh! This is my first time battling against such a strong opponent!"
-   * "Your attack was great! Let's battle again sometime!"
 * Use Mart interface for selling decorations, with a red sidebar
 * Make Eggs use their Pokémon's palette
 

@@ -1010,11 +1010,13 @@ DEF KRIS EQU __trainer_class__
 	const MATT
 	const REMY
 	const BARKHORN
+	const EN
 
 	trainerclass VETERANF ; 6c
 	const JOANNE
 	const SYLVIE
 	const LITVYAK
+	const MADOKA
 
 	trainerclass PROTON ; 6d
 	const PROTON1

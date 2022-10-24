@@ -348,3 +348,12 @@ DEF NUM_UNOWN_PUZZLES EQU const_value
 	const AERODACTYL_PUZZLE
 	const HO_OH_PUZZLE
 DEF NUM_PAINTINGS EQU const_value
+
+; DailyTrainerHouseOpponents indexes (see data/events/trainer_house_opponents.asm)
+	const_def 1
+	const OPP_CAL
+	const OPP_CARRIE
+	const OPP_EN
+	const OPP_MADOKA
+DEF NUM_TRAINER_HOUSE_OPPONENTS EQU const_value - 1
+DEF TRAINER_HOUSE_OPPONENT_SIZE EQU 2 ; class, id

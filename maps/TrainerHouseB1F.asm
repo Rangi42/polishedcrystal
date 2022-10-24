@@ -13,25 +13,48 @@ TrainerHouseB1F_MapScriptHeader:
 	def_bg_events
 
 	def_object_events
-	object_event  6, 11, SPRITE_CHRIS, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_TRAINER_HOUSE_CAL
-	object_event  6, 11, SPRITE_KRIS, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_TRAINER_HOUSE_CARRIE
+	object_event  6, 11, SPRITE_MOM, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, ObjectEvent, -1
 	object_event  7,  1, SPRITE_RECEPTIONIST, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, ObjectEvent, -1
 
 	object_const_def
-	const TRAINERHOUSEB1F_CAL
-	const TRAINERHOUSEB1F_CARRIE
+	const TRAINERHOUSEB1F_OPPONENT
 
 TrainerHouseB1FCallback:
-	checkflag ENGINE_PLAYER_IS_FEMALE
-	iftruefwd .Cal
-	disappear TRAINERHOUSEB1F_CAL
-	appear TRAINERHOUSEB1F_CARRIE
-	sjumpfwd .Done
-.Cal:
-	disappear TRAINERHOUSEB1F_CARRIE
-	appear TRAINERHOUSEB1F_CAL
-.Done:
+	callasm .PickDailyTrainerHouseOpponent
 	endcallback
+
+.PickDailyTrainerHouseOpponent:
+	ld a, [wDailyTrainerHouseOpponent]
+	cp NUM_TRAINER_HOUSE_OPPONENTS + 1
+	jr nc, .pick_opponent
+	and a
+	jr nz, .got_opponent
+.pick_opponent
+	ld a, NUM_TRAINER_HOUSE_OPPONENTS
+	call RandomRange
+	inc a
+	ld [wDailyTrainerHouseOpponent], a
+.got_opponent
+	call .IsOpponentValid
+	and a
+	jr z, .pick_opponent
+	call GetDailyTrainerHouseOpponent
+	ld a, [hl]
+	farjp LoadTrainerSpriteAsMapObject1
+
+.IsOpponentValid:
+	cp OPP_EN
+	jr nz, .not_en
+	; must have caught all three legendary birds to battle En
+	farjp SpecialBirdsCheck
+.not_en
+	cp OPP_MADOKA
+	jr nz, .not_madoka
+	; must have caught all three legendary beasts to battle Madoka
+	farjp SpecialBeastsCheck
+.not_madoka
+	ld a, TRUE
+	ret
 
 TrainerHouseReceptionistScript:
 	turnobject PLAYER, UP
@@ -40,13 +63,7 @@ TrainerHouseReceptionistScript:
 	iftruefwd .FoughtTooManyTimes
 	writetext TrainerHouseB1FIntroText
 	promptbutton
-	checkflag ENGINE_PLAYER_IS_FEMALE
-	iftruefwd .GetCalName
-	gettrainername CARRIE, 1, $0
-	sjumpfwd .GotName
-.GetCalName
-	gettrainername CAL, 1, $0
-.GotName:
+	callasm .GetOpponentName
 	writetext TrainerHouseB1FYourOpponentIsText
 	promptbutton
 	writetext TrainerHouseB1FAskWantToBattleText
@@ -57,20 +74,12 @@ TrainerHouseReceptionistScript:
 	waitbutton
 	closetext
 	applymovement PLAYER, Movement_EnterTrainerHouseBattleRoom
-	showtext TrainerHouseB1FCalBeforeText
-	winlosstext TrainerHouseB1FCalBeatenText, 0
-	checkflag ENGINE_PLAYER_IS_FEMALE
-	iftruefwd .LoadTrainerCal
-	setlasttalked TRAINERHOUSEB1F_CARRIE
-	loadtrainer CARRIE, 1
-	sjumpfwd .StartBattle
-.LoadTrainerCal
-	setlasttalked TRAINERHOUSEB1F_CAL
-	loadtrainer CAL, 1
-.StartBattle
+	showtext TrainerHouseB1FOpponentBeforeText
+	winlosstext TrainerHouseB1FOpponentBeatenText, 0
+	setlasttalked TRAINERHOUSEB1F_OPPONENT
+	callasm .LoadOpponentTrainer
 	startbattle
 	reloadmapafterbattle
-.End:
 	givebp 1
 	opentext
 	writetext TrainerHouseB1FEarnedBattlePointText
@@ -93,6 +102,27 @@ TrainerHouseReceptionistScript:
 	closetext
 	applymovement PLAYER, Movement_TrainerHouseTurnBack
 	end
+
+.GetOpponentName:
+	; based on `gettrainername`
+	call GetDailyTrainerHouseOpponent
+	ld c, [hl]
+	inc hl
+	ld b, [hl]
+	farcall GetTrainerName
+	ld hl, wStringBuffer3
+	jmp CopyName2
+
+.LoadOpponentTrainer:
+	; based on `loadtrainer`
+	ld a, (1 << 7) | 1
+	ld [wBattleScriptFlags], a
+	call GetDailyTrainerHouseOpponent
+	ld a, [hli]
+	ld [wOtherTrainerClass], a
+	ld a, [hl]
+	ld [wOtherTrainerID], a
+	ret
 
 Movement_EnterTrainerHouseBattleRoom:
 	step_left
@@ -178,12 +208,12 @@ TrainerHouseB1FSecondChallengeDeniedText:
 	line "a day."
 	done
 
-TrainerHouseB1FCalBeatenText:
+TrainerHouseB1FOpponentBeatenText:
 	text "I lost…"
 	line "Darn…"
 	done
 
-TrainerHouseB1FCalBeforeText:
+TrainerHouseB1FOpponentBeforeText:
 	text "I traveled out"
 	line "here just so I"
 	cont "could battle you."
@@ -193,3 +223,13 @@ TrainerHouseB1FEarnedBattlePointText:
 	text "<PLAYER> earned"
 	line "1 BP!"
 	done
+
+GetDailyTrainerHouseOpponent:
+	ld a, [wDailyTrainerHouseOpponent]
+	dec a
+	ld hl, DailyTrainerHouseOpponents
+	ld bc, TRAINER_HOUSE_OPPONENT_SIZE
+	rst AddNTimes
+	ret
+
+INCLUDE "data/events/trainer_house_opponents.asm"
