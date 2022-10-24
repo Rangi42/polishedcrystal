@@ -706,12 +706,6 @@ INCLUDE "maps/CeladonUniversityLibrary1F.asm"
 INCLUDE "maps/CeladonUniversityLibrary2F.asm" ; shares text with CeladonUniversityLibrary1F.asm
 
 
-SECTION "Celadon Outskirts Scripts", ROMX
-
-INCLUDE "maps/CeladonOutskirts.asm"
-INCLUDE "maps/CeladonOutskirtsRoute7Dual.asm"
-
-
 SECTION "Saffron Scripts", ROMX
 
 INCLUDE "maps/SaffronCity.asm"

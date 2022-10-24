@@ -255,13 +255,9 @@ ENDM
 
 	map_attributes CeladonCity, CELADON_CITY, $f, WEST | EAST
 	connection west, Route16Northeast, ROUTE_16_NORTHEAST, 10
-	connection east, CeladonOutskirtsRoute7Dual, CELADON_OUTSKIRTS_ROUTE_7_DUAL, -1
+	connection east, Route7, ROUTE_7, 5
 
-	map_attributes CeladonOutskirtsRoute7Dual, CELADON_OUTSKIRTS_ROUTE_7_DUAL, $f, WEST
-	connection west, CeladonCity, CELADON_CITY, 1
-
-	map_attributes Route7, ROUTE_7, $f, NORTH | WEST | EAST
-	connection north, CeladonOutskirts, CELADON_OUTSKIRTS, 0
+	map_attributes Route7, ROUTE_7, $f, WEST | EAST
 	connection west, CeladonCity, CELADON_CITY, -5
 	connection east, SaffronCity, SAFFRON_CITY, -6
 
@@ -393,9 +389,6 @@ ENDM
 
 	map_attributes MagnetTunnelWest, MAGNET_TUNNEL_WEST, $5, WEST
 	connection west, GoldenrodCity, GOLDENROD_CITY, 0
-
-	map_attributes CeladonOutskirts, CELADON_OUTSKIRTS, $f, SOUTH
-	connection south, Route7, ROUTE_7, 0
 
 	map_attributes Route23, ROUTE_23, $2c, NORTH
 	connection north, IndigoPlateau, INDIGO_PLATEAU, 0

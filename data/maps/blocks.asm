@@ -1176,14 +1176,6 @@ SECTION "CeladonCity_BlockData", ROMX
 CeladonCity_BlockData:
 	INCBIN "maps/CeladonCity.ablk.lz"
 
-SECTION "CeladonOutskirts_BlockData", ROMX
-CeladonOutskirts_BlockData:
-	INCBIN "maps/CeladonOutskirts.ablk.lz"
-
-SECTION "CeladonOutskirtsRoute7Dual_BlockData", ROMX
-CeladonOutskirtsRoute7Dual_BlockData:
-	INCBIN "maps/CeladonOutskirtsRoute7Dual.ablk.lz"
-
 SECTION "CeladonGameCorner_BlockData", ROMX
 CeladonGameCorner_BlockData:
 	INCBIN "maps/CeladonGameCorner.ablk.lz"

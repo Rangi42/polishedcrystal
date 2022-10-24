@@ -490,8 +490,6 @@ ENDM
 	map_const CELADON_UNIVERSITY_CLASSROOM_4,              4,  6 ; 60
 	map_const CELADON_OLD_MAN_SPEECH_HOUSE,                4,  4 ; 61
 	map_const CELADON_DEVELOPMENT_SPEECH_HOUSE,            4,  4 ; 62
-	map_const CELADON_OUTSKIRTS,                          10,  6 ; 63
-	map_const CELADON_OUTSKIRTS_ROUTE_7_DUAL,              3, 15 ; 64
 
 	newgroup                                                     ; 22
 	map_const ROUTE_40,                                   10, 20 ;  1
