@@ -418,6 +418,12 @@ ENDM
 	map_attributes Route49, ROUTE_49, $0, EAST
 	connection east, ValenciaIsland, VALENCIA_ISLAND, 2
 
+	map_attributes RuggedRoadNorth, RUGGED_ROAD_NORTH, $71, SOUTH
+	connection south, RuggedRoadSouth, RUGGED_ROAD_SOUTH, 0
+
+	map_attributes RuggedRoadSouth, RUGGED_ROAD_SOUTH, $71, NORTH
+	connection north, RuggedRoadNorth, RUGGED_ROAD_NORTH, 0
+
 	map_attributes SproutTower1F, SPROUT_TOWER_1F, $0, 0
 	map_attributes SproutTower2F, SPROUT_TOWER_2F, $0, 0
 	map_attributes SproutTower3F, SPROUT_TOWER_3F, $0, 0
@@ -842,7 +848,6 @@ ENDM
 	map_attributes CeruleanCave2F, CERULEAN_CAVE_2F, $9, 0
 	map_attributes CeruleanCaveB1F, CERULEAN_CAVE_B1F, $9, 0
 	map_attributes Route39RuggedRoadGate, ROUTE_39_RUGGED_ROAD_GATE, $0, 0
-	map_attributes RuggedRoad, RUGGED_ROAD, $71, 0
 	map_attributes SnowtopMountain, SNOWTOP_MOUNTAIN, $0, 0
 	map_attributes YellowForestGate, YELLOW_FOREST_GATE, $0, 0
 	map_attributes YellowForest, YELLOW_FOREST, $55, 0

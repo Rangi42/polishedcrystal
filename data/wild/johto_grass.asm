@@ -2184,7 +2184,7 @@
 	wildmon LEVEL_FROM_BADGES - 1, ELEKID
 	end_grass_wildmons
 
-	def_grass_wildmons RUGGED_ROAD
+	def_grass_wildmons RUGGED_ROAD_SOUTH
 	db 10 percent, 10 percent, 10 percent ; encounter rates: morn/day/nite
 	; morn
 	wildmon LEVEL_FROM_BADGES - 2, GEODUDE

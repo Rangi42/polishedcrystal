@@ -309,7 +309,8 @@ INCLUDE "maps/BurnedTowerB1F.asm"
 
 SECTION "Rugged Road + Snowtop Mountain Scripts", ROMX
 
-INCLUDE "maps/RuggedRoad.asm"
+INCLUDE "maps/RuggedRoadNorth.asm"
+INCLUDE "maps/RuggedRoadSouth.asm"
 INCLUDE "maps/SnowtopMountain.asm"
 INCLUDE "maps/Route39RuggedRoadGate.asm"
 

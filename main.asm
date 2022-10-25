@@ -235,11 +235,15 @@ INCLUDE "engine/pokedex/pokedex_2.asm"
 SECTION "Crystal Features 1", ROMX
 
 INCLUDE "engine/events/move_tutor.asm"
-INCLUDE "engine/tilesets/tileset_palettes.asm"
 INCLUDE "engine/events/celebi.asm"
 INCLUDE "engine/menus/main_menu.asm"
 INCLUDE "engine/pokemon/search.asm"
 INCLUDE "engine/events/buena_menu.asm"
+
+
+SECTION "Special Palettes", ROMX
+
+INCLUDE "engine/tilesets/tileset_palettes.asm"
 
 
 SECTION "Collision Permissions", ROMX
