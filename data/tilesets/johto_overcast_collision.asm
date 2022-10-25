@@ -74,8 +74,8 @@
 	tilecoll VOID, VOID, VOID, VOID ; 49
 	tilecoll FLOOR, WALL, WALL, WALL ; 4a
 	tilecoll LEDGE_DOWN, FLOOR, WALL, FLOOR ; 4b
-	tilecoll VOID, VOID, VOID, VOID ; 4c
-	tilecoll VOID, VOID, VOID, VOID ; 4d
+	tilecoll FLOOR, FLOOR, FLOOR, FLOOR ; 4c
+	tilecoll FLOOR, FLOOR, FLOOR, FLOOR ; 4d
 	tilecoll WALL, LEDGE_LEFT, WALL, LEDGE_LEFT ; 4e
 	tilecoll VOID, VOID, VOID, VOID ; 4f
 	tilecoll WALL, LEDGE_DOWN_LEFT, WALL, WALL ; 50
