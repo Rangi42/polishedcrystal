@@ -392,4 +392,11 @@
 	wildmon LEVEL_FROM_BADGES + 5, QUAGSIRE
 	end_water_wildmons
 
+	def_water_wildmons RUGGED_ROAD_SOUTH
+	db 6 percent ; encounter rate
+	wildmon LEVEL_FROM_BADGES - 5, GOLDEEN
+	wildmon LEVEL_FROM_BADGES + 0, SEAKING
+	wildmon LEVEL_FROM_BADGES + 5, QWILFISH, HISUIAN_FORM
+	end_water_wildmons
+
 	db -1 ; end
