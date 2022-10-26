@@ -3,6 +3,7 @@ OlivineCity_MapScriptHeader:
 
 	def_callbacks
 	callback MAPCALLBACK_NEWMAP, OlivineCityFlyPoint
+	callback MAPCALLBACK_TILES, OlivineCityLighthouseCallback
 
 	def_warp_events
 	warp_event 13, 17, OLIVINE_POKECENTER_1F, 1
@@ -51,6 +52,16 @@ OlivineCity_MapScriptHeader:
 
 OlivineCityFlyPoint:
 	setflag ENGINE_FLYPOINT_OLIVINE
+	endcallback
+
+OlivineCityLighthouseCallback:
+	checkevent EVENT_JASMINE_RETURNED_TO_GYM
+	iffalsefwd .done
+	checktime 1 << NITE
+	iffalsefwd .done
+	changeblock 32, 10, $92
+	changeblock 34, 10, $93
+.done
 	endcallback
 
 OlivineCityRivalGymScript:

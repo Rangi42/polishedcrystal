@@ -136,6 +136,8 @@ SwitchToMapScriptsBank::
 	rst Bankswitch
 	ret
 
+	ds 1 ; unused
+
 
 SECTION "serial", ROM0[$0058]
 	jmp Serial

@@ -1,7 +1,8 @@
 SECTION "Tileset Headers", ROMX
 
 MACRO tileset
-	dbas \1GFX0, \1GFX1, \1GFX2, \1Meta, \1Coll, \1Attr
+	dbas \1GFX0, \1GFX1, \1Meta, \1Coll, \1Attr
+	dw \1GFX2 ; BANK("Tileset GFX2 Data")
 	dw \1Anim ; BANK(_AnimateTileset)
 ENDM
 
@@ -65,8 +66,6 @@ TilesetJohto5GFX0:: INCBIN "gfx/tilesets/johto_common.2bpp.lz"
 
 TilesetJohto1GFX1::
 TilesetJohto5GFX1:: INCBIN "gfx/tilesets/johto_traditional.johto_common.2bpp.vram0.lz"
-TilesetJohto1GFX2::
-TilesetJohto5GFX2:: INCBIN "gfx/tilesets/johto_traditional.johto_common.2bpp.vram1.lz"
 
 TilesetJohto2GFX1:: INCBIN "gfx/tilesets/johto_modern.johto_common.2bpp.vram0.lz"
 
@@ -474,10 +473,13 @@ TilesetBattleFactoryAttr:: INCBIN "data/tilesets/battle_factory_attributes.bin.l
 TilesetBattleFactoryColl:: INCBIN "data/tilesets/battle_factory_collision.bin.lz"
 
 
-SECTION "Unused Tileset Data", ROM0
+SECTION "Tileset GFX2 Data", ROMX
 
-; None of these tilesets need GFX2, so consolidate them here.
-TilesetJohto2GFX2::
+TilesetJohto1GFX2::
+TilesetJohto5GFX2:: INCBIN "gfx/tilesets/johto_traditional.johto_common.2bpp.vram1.lz"
+
+TilesetJohto2GFX2:: INCBIN "gfx/tilesets/johto_modern.johto_common.2bpp.vram1.lz"
+
 TilesetJohto3GFX2::
 TilesetJohto4GFX2::
 TilesetKanto1GFX2::

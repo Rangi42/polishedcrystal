@@ -144,8 +144,8 @@
 	tilecoll FLOOR, WALL, WALL, WALL ; 8f
 	tilecoll FLOOR, FLOOR, FLOOR, FLOOR ; 90
 	tilecoll FLOOR, FLOOR, FLOOR, FLOOR ; 91
-	tilecoll VOID, VOID, VOID, VOID ; 92
-	tilecoll VOID, VOID, VOID, VOID ; 93
+	tilecoll WALL, WALL, WALL, WALL ; 92
+	tilecoll WALL, WALL, WALL, WALL ; 93
 	tilecoll WALL, FLOOR, WALL, FLOOR ; 94
 	tilecoll FLOOR, WALL, FLOOR, WALL ; 95
 	tilecoll WALL, TOP_WALL, WALL, FLOOR ; 96
