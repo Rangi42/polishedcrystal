@@ -30,21 +30,22 @@ ObjectActionPairPointers:
 	dw SetFacingSailboatBottom,        SetFacingSailboatBottom    ; OBJECT_ACTION_SAILBOAT_BOTTOM
 	dw SetFacingAlolanExeggutor,       SetFacingAlolanExeggutor   ; OBJECT_ACTION_ALOLAN_EXEGGUTOR
 	dw SetFacingShakeExeggutor,        SetFacingAlolanExeggutor   ; OBJECT_ACTION_SHAKE_EXEGGUTOR
+	dw SetFacingTinyWindows,           SetFacingTinyWindows       ; OBJECT_ACTION_TINY_WINDOWS
 	assert_table_length NUM_OBJECT_ACTIONS
 
 SetFacingStanding:
 	ld a, STANDING
 	jr SetFixedFacing
 
-SetFacingCurrent:
-	call GetSpriteDirection
-	jr SetFixedFacing
-
 SetFacingShadow:
 	ld a, FACING_SHADOW
 	jr SetFixedFacing
 
-SetFacingEmote: ; 4582 emote
+SetFacingCurrent:
+	call GetSpriteDirection
+	jr SetFixedFacing
+
+SetFacingEmote:
 	ld a, FACING_EMOTE
 	jr SetFixedFacing
 
@@ -91,6 +92,13 @@ SetFacingMuseumDrill:
 	add FACING_MUSEUM_DRILL_DOWN
 	jr SetFixedFacing
 
+SetFacingTinyWindows:
+	ld hl, OBJECT_RADIUS
+	add hl, bc
+	ld a, [hl]
+	add FACING_TINY_WINDOWS_0 - $11
+	jr SetFixedFacing
+
 SetFacingStandFlip:
 	call GetSpriteDirection
 	rrca
@@ -109,7 +117,6 @@ SetFacingStandAction:
 	and 1
 	jr z, SetFacingCurrent
 	; fallthrough
-
 SetFacingStepAction:
 SetFacingBumpAction:
 	ld hl, OBJECT_FLAGS1

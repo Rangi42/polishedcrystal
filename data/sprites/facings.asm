@@ -54,6 +54,14 @@ Facings:
 	dw FacingAlolanExeggutor1 ; FACING_ALOLAN_EXEGGUTOR_1
 	dw FacingAlolanExeggutor2 ; FACING_ALOLAN_EXEGGUTOR_2
 	dw FacingAlolanExeggutor3 ; FACING_ALOLAN_EXEGGUTOR_3
+	dw FacingTinyWindows0     ; FACING_TINY_WINDOWS_0
+	dw FacingTinyWindows1     ; FACING_TINY_WINDOWS_1
+	dw FacingTinyWindows2     ; FACING_TINY_WINDOWS_2
+	dw FacingTinyWindows3     ; FACING_TINY_WINDOWS_3
+	dw FacingTinyWindows4     ; FACING_TINY_WINDOWS_4
+	dw FacingTinyWindows5     ; FACING_TINY_WINDOWS_5
+	dw FacingTinyWindows6     ; FACING_TINY_WINDOWS_6
+	dw FacingTinyWindows7     ; FACING_TINY_WINDOWS_7
 	assert_table_length NUM_FACINGS
 	dw 0 ; end
 
@@ -418,3 +426,55 @@ FacingAlolanExeggutor3:
 	db -8,  0, X_FLIP, $0d
 	db -8,  8, X_FLIP, $0c
 	db  0,  8, 0, $80
+
+FacingTinyWindows0:
+	db 2 ; #
+	db 12,  8, 0, $85
+	db  4, 20, 0, $84
+
+FacingTinyWindows1:
+	db 3 ; #
+	db 12, -12, 0, $84
+	db 12,   4, 0, $84
+	db 12,  20, 0, $84
+
+FacingTinyWindows2:
+	db 1 ; #
+	db 12,  8, 0, $85
+
+FacingTinyWindows3:
+	db 2 ; #
+	db  8,  4, 0, $84
+	db  8, 20, 0, $84
+
+FacingTinyWindows4:
+	db 2 ; #
+	db 20,  4, 0, $84
+	db 20, 20, 0, $84
+
+FacingTinyWindows5:
+	db 6 ; #
+	db  4,  0, 0, $86
+	db  4, 24, X_FLIP, $86
+	db 12,  0, 0, $88
+	db 12,  8, 0, $87
+	db 12, 16, X_FLIP, $87
+	db 12, 24, X_FLIP, $88
+
+FacingTinyWindows6:
+	db 6 ; #
+	db  8,  4, 0, $84
+	db  8, 12, 0, $84
+	db  8, 20, 0, $84
+	db 24,  4, 0, $84
+	db 24, 12, 0, $84
+	db 24, 20, 0, $84
+
+FacingTinyWindows7:
+	db 6 ; #
+	db  8,  4, 0, $84
+	db  8, 12, 0, $84
+	db  8, 20, 0, $84
+	db 20,  4, 0, $84
+	db 20, 12, 0, $84
+	db 20, 20, 0, $84

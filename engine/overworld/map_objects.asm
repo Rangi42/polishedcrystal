@@ -46,7 +46,7 @@ HandleObjectAction_Stationary:
 	ld hl, OBJECT_FLAGS1
 	add hl, bc
 	bit INVISIBLE_F, [hl]
-	jr nz, SetFacingStanding
+	jmp nz, SetFacingStanding
 HandleObjectAction: ; use second column
 	ld de, ObjectActionPairPointers + 2
 	; fallthrough
@@ -558,6 +558,7 @@ endr
 	dw .MovementSailboatTop          ; SPRITEMOVEFN_SAILBOAT_TOP
 	dw .MovementSailboatBottom       ; SPRITEMOVEFN_SAILBOAT_BOTTOM
 	dw .MovementAlolanExeggutor      ; SPRITEMOVEFN_ALOLAN_EXEGGUTOR
+	dw .MovementTinyWindows          ; TINY_WINDOWS
 	assert_table_length NUM_SPRITEMOVEFN
 
 .RandomWalkY:
@@ -769,6 +770,10 @@ endr
 
 .MovementAlolanExeggutor:
 	ld a, OBJECT_ACTION_ALOLAN_EXEGGUTOR
+	jr ._ActionA_StepFunction_Standing
+
+.MovementTinyWindows:
+	ld a, OBJECT_ACTION_TINY_WINDOWS
 	jr ._ActionA_StepFunction_Standing
 
 .StandingFlip:
