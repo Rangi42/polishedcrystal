@@ -1046,7 +1046,7 @@ _LoadTilesetGFX2:
 	ld a, 1
 	ldh [rVBK], a
 	ld hl, wTilesetGFX2Address
-	ld a, [wTilesetDataBank]
+	ld a, BANK("Tileset GFX2 Data")
 	ld de, vTiles4
 	jr _DoLoadTilesetGFX
 

@@ -175,6 +175,7 @@ DEF MAPOBJECT_SCREEN_HEIGHT EQU (SCREEN_HEIGHT / 2) + 2
 	const SPRITEMOVEDATA_SAILBOAT_TOP         ; 2a
 	const SPRITEMOVEDATA_SAILBOAT_BOTTOM      ; 2b
 	const SPRITEMOVEDATA_ALOLAN_EXEGGUTOR     ; 2c
+	const SPRITEMOVEDATA_TINY_WINDOWS         ; 2d
 DEF NUM_SPRITEMOVEDATA EQU const_value
 
 ; StepFunction_FromMovement.Pointers indexes (see engine/overworld/map_objects.asm)
@@ -210,6 +211,7 @@ DEF NUM_SPRITEMOVEDATA EQU const_value
 	const SPRITEMOVEFN_SAILBOAT_TOP          ; 1c
 	const SPRITEMOVEFN_SAILBOAT_BOTTOM       ; 1d
 	const SPRITEMOVEFN_ALOLAN_EXEGGUTOR      ; 1e
+	const SPRITEMOVEFN_TINY_WINDOWS          ; 1f
 DEF NUM_SPRITEMOVEFN EQU const_value
 
 ; StepTypesJumptable indexes (see engine/overworld/map_objects.asm)
@@ -270,6 +272,7 @@ DEF NUM_STEP_TYPES EQU const_value
 	const OBJECT_ACTION_SAILBOAT_BOTTOM  ; 19
 	const OBJECT_ACTION_ALOLAN_EXEGGUTOR ; 1a
 	const OBJECT_ACTION_SHAKE_EXEGGUTOR  ; 1b
+	const OBJECT_ACTION_TINY_WINDOWS     ; 1c
 DEF NUM_OBJECT_ACTIONS EQU const_value
 
 ; Facings indexes (see data/sprites/facings.asm)
@@ -327,6 +330,14 @@ DEF NUM_OBJECT_ACTIONS EQU const_value
 	const FACING_ALOLAN_EXEGGUTOR_1 ; 32
 	const FACING_ALOLAN_EXEGGUTOR_2 ; 33
 	const FACING_ALOLAN_EXEGGUTOR_3 ; 34
+	const FACING_TINY_WINDOWS_0     ; 35
+	const FACING_TINY_WINDOWS_1     ; 36
+	const FACING_TINY_WINDOWS_2     ; 37
+	const FACING_TINY_WINDOWS_3     ; 38
+	const FACING_TINY_WINDOWS_4     ; 39
+	const FACING_TINY_WINDOWS_5     ; 3a
+	const FACING_TINY_WINDOWS_6     ; 3b
+	const FACING_TINY_WINDOWS_7     ; 3c
 DEF NUM_FACINGS EQU const_value
 
 ; DoPlayerMovement.DoStep arguments (see engine/overworld/player_movement.asm)

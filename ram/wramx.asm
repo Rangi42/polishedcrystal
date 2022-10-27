@@ -525,10 +525,10 @@ wTileset::
 wTilesetDataBank:: db
 wTilesetGFX0Address:: dw
 wTilesetGFX1Address:: dw
-wTilesetGFX2Address:: dw
 wTilesetBlocksAddress:: dw
 wTilesetCollisionAddress:: dw
 wTilesetAttributesAddress:: dw
+wTilesetGFX2Address:: dw ; BANK("Tileset GFX2 Data")
 wTilesetAnim:: dw ; BANK(_AnimateTileset)
 wTilesetEnd::
 

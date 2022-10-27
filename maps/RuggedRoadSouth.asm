@@ -13,6 +13,7 @@ RuggedRoadSouth_MapScriptHeader:
 	coord_event 27,  1, 0, RuggedRoadSouthBridgeUnderfootTrigger
 
 	def_bg_events
+	bg_event 17, 25, BGEVENT_JUMPTEXT, RuggedRoadSouthAdvancedTipsSignText
 
 	def_object_events
 
@@ -56,3 +57,22 @@ RuggedRoadSouth_FinishBridge:
 	ld [wWalkingOnBridge], a
 	ld [wRuggedRoadSouthSceneID], a ; setscene a
 	jmp GenericFinishBridge
+
+RuggedRoadSouthAdvancedTipsSignText:
+	text "Advanced Tips!"
+
+	para "“Power” items that"
+	line "raise effort gain"
+
+	para "will apply to"
+	line "every #mon that"
+
+	para "participates in a"
+	line "battle, as long as"
+
+	para "the #mon which"
+	line "actively KOs its"
+
+	para "opponent is hold-"
+	line "ing a Power item!"
+	done
