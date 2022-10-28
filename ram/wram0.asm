@@ -187,7 +187,8 @@ wTilePermissions::
 ; bit 0: right
 	db
 
-	ds 2
+wPanningAroundTinyMap:: db
+wSavedXCoord:: db
 
 wLinkOtherPlayerGameID:: db
 wLinkOtherPlayerVersion:: dw

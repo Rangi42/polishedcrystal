@@ -42,7 +42,7 @@ Route39_MapScriptHeader:
 	const ROUTE39_COWGIRL
 
 Route39TileScript:
-	checkflag ENGINE_FLYPOINT_SNOWTOP
+	checkflag ENGINE_FLYPOINT_SNOWTOP_MOUNTAIN
 	iffalsefwd .End
 	changeblock 10, 8, $f4
 	changeblock 12, 8, $01

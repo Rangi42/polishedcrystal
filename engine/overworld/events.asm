@@ -782,11 +782,14 @@ CheckMenuOW:
 	xor a
 	ldh [hMenuReturn], a
 	ldh [hMenuReturn + 1], a
-	ldh a, [hJoyPressed]
 
+	ld a, [wPanningAroundTinyMap]
+	and a
+	jr nz, .NoMenu
+
+	ldh a, [hJoyPressed]
 	bit SELECT_F, a
 	jr nz, .Select
-
 	bit START_F, a
 	jr z, .NoMenu
 

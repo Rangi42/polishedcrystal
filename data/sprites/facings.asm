@@ -61,7 +61,6 @@ Facings:
 	dw FacingTinyWindows4     ; FACING_TINY_WINDOWS_4
 	dw FacingTinyWindows5     ; FACING_TINY_WINDOWS_5
 	dw FacingTinyWindows6     ; FACING_TINY_WINDOWS_6
-	dw FacingTinyWindows7     ; FACING_TINY_WINDOWS_7
 	assert_table_length NUM_FACINGS
 	dw 0 ; end
 
@@ -439,20 +438,16 @@ FacingTinyWindows1:
 	db 12,  20, 0, $84
 
 FacingTinyWindows2:
-	db 1 ; #
-	db 12,  8, 0, $85
-
-FacingTinyWindows3:
 	db 2 ; #
 	db  8,  4, 0, $84
 	db  8, 20, 0, $84
 
-FacingTinyWindows4:
+FacingTinyWindows3:
 	db 2 ; #
 	db 20,  4, 0, $84
 	db 20, 20, 0, $84
 
-FacingTinyWindows5:
+FacingTinyWindows4:
 	db 6 ; #
 	db  4,  0, 0, $86
 	db  4, 24, X_FLIP, $86
@@ -461,7 +456,7 @@ FacingTinyWindows5:
 	db 12, 16, X_FLIP, $87
 	db 12, 24, X_FLIP, $88
 
-FacingTinyWindows6:
+FacingTinyWindows5:
 	db 6 ; #
 	db  8,  4, 0, $84
 	db  8, 12, 0, $84
@@ -470,7 +465,7 @@ FacingTinyWindows6:
 	db 24, 12, 0, $84
 	db 24, 20, 0, $84
 
-FacingTinyWindows7:
+FacingTinyWindows6:
 	db 6 ; #
 	db  8,  4, 0, $84
 	db  8, 12, 0, $84
