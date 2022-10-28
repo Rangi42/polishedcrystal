@@ -762,6 +762,8 @@ BT_GetTrainerIndex:
 	jmp CloseSRAM
 
 Special_BattleTower_LoadOpponentTrainerAndPokemonsWithOTSprite:
+	; Load sprite of the opponent trainer
+	; because s/he is chosen randomly and appears out of nowhere
 	call BT_GetCurTrainerIndex
 	ld c, a
 	ld b, 0
@@ -773,9 +775,8 @@ LoadTrainerSpriteAsMapObject1::
 	ld hl, BTTrainerClassSprites
 	add hl, bc
 	ld a, [hl]
+LoadSpriteAsMapObject1::
 	ld [wBTTempOTSprite], a
-	; Load sprite of the opponent trainer
-	; because s/he is chosen randomly and appears out of nowhere
 	ld [wMap1ObjectSprite], a
 	ldh [hUsedSpriteIndex], a
 	ld a, 24

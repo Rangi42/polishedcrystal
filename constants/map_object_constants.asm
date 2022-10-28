@@ -176,6 +176,7 @@ DEF MAPOBJECT_SCREEN_HEIGHT EQU (SCREEN_HEIGHT / 2) + 2
 	const SPRITEMOVEDATA_SAILBOAT_BOTTOM      ; 2b
 	const SPRITEMOVEDATA_ALOLAN_EXEGGUTOR     ; 2c
 	const SPRITEMOVEDATA_TINY_WINDOWS         ; 2d
+	const SPRITEMOVEDATA_PLACEHOLDER_UP       ; 2e
 DEF NUM_SPRITEMOVEDATA EQU const_value
 
 ; StepFunction_FromMovement.Pointers indexes (see engine/overworld/map_objects.asm)
@@ -337,7 +338,6 @@ DEF NUM_OBJECT_ACTIONS EQU const_value
 	const FACING_TINY_WINDOWS_4     ; 39
 	const FACING_TINY_WINDOWS_5     ; 3a
 	const FACING_TINY_WINDOWS_6     ; 3b
-	const FACING_TINY_WINDOWS_7     ; 3c
 DEF NUM_FACINGS EQU const_value
 
 ; DoPlayerMovement.DoStep arguments (see engine/overworld/player_movement.asm)

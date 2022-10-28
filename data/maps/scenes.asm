@@ -7,14 +7,14 @@ ENDM
 
 MapScenes::
 	scene_var AZALEA_TOWN,                            wAzaleaTownSceneID
+	scene_var BATTLE_FACTORY_1F,                      wBattleFacilitySceneID
+	scene_var BATTLE_FACTORY_BATTLE_ROOM,             wAlways0SceneID
+	scene_var BATTLE_FACTORY_HALLWAY,                 wAlways0SceneID
 	scene_var BATTLE_TOWER_1F,                        wBattleFacilitySceneID
 	scene_var BATTLE_TOWER_BATTLE_ROOM,               wAlways0SceneID
 	scene_var BATTLE_TOWER_ELEVATOR,                  wAlways0SceneID
 	scene_var BATTLE_TOWER_HALLWAY,                   wAlways0SceneID
 	scene_var BATTLE_TOWER_OUTSIDE,                   wBattleTowerOutsideSceneID
-	scene_var BATTLE_FACTORY_1F,                      wBattleFacilitySceneID
-	scene_var BATTLE_FACTORY_BATTLE_ROOM,             wAlways0SceneID
-	scene_var BATTLE_FACTORY_HALLWAY,                 wAlways0SceneID
 	scene_var BELLCHIME_TRAIL,                        wBellchimeTrailSceneID
 	scene_var BRUNOS_ROOM,                            wBrunosRoomSceneID
 	scene_var BURNED_TOWER_1F,                        wBurnedTower1FSceneID
@@ -45,7 +45,6 @@ MapScenes::
 	scene_var INDIGO_PLATEAU_POKECENTER_1F,           wAlways0SceneID
 	scene_var KARENS_ROOM,                            wKarensRoomSceneID
 	scene_var KOGAS_ROOM,                             wKogasRoomSceneID
-	scene_var PLAYERS_HOUSE_1F,                       wPlayersHouse1FSceneID
 	scene_var LANCES_ROOM,                            wLancesRoomSceneID
 	scene_var LAVENDER_TOWN,                          wLavenderTownSceneID
 	scene_var MAHOGANY_MART_1F,                       wMahoganyMart1FSceneID
@@ -57,6 +56,7 @@ MapScenes::
 	scene_var NEW_BARK_TOWN,                          wNewBarkTownSceneID
 	scene_var OLIVINE_CITY,                           wOlivineCitySceneID
 	scene_var OLIVINE_PORT,                           wOlivinePortSceneID
+	scene_var PLAYERS_HOUSE_1F,                       wPlayersHouse1FSceneID
 	scene_var POKECENTER_2F,                          wPokecenter2FSceneID
 	scene_var POKEMON_LEAGUE_GATE,                    wPokemonLeagueGateSceneID
 	scene_var POWER_PLANT,                            wPowerPlantSceneID
@@ -77,11 +77,11 @@ MapScenes::
 	scene_var ROUTE_36,                               wRoute36SceneID
 	scene_var ROUTE_36_NATIONAL_PARK_GATE,            wRoute36NationalParkGateSceneID
 	scene_var ROUTE_39_RUGGED_ROAD_GATE,              wRoute39RuggedRoadGateSceneID
-	scene_var RUGGED_ROAD_SOUTH,                      wRuggedRoadSouthSceneID
 	scene_var ROUTE_42,                               wRoute42SceneID
 	scene_var ROUTE_43_GATE,                          wRoute43GateSceneID
 	scene_var ROUTE_47,                               wRoute47SceneID
 	scene_var ROUTE_48,                               wRoute48SceneID
+	scene_var RUGGED_ROAD_SOUTH,                      wRuggedRoadSouthSceneID
 	scene_var RUINS_OF_ALPH_AERODACTYL_CHAMBER,       wRuinsOfAlphAerodactylChamberSceneID
 	scene_var RUINS_OF_ALPH_HO_OH_CHAMBER,            wRuinsOfAlphHoOhChamberSceneID
 	scene_var RUINS_OF_ALPH_INNER_CHAMBER,            wRuinsOfAlphInnerChamberSceneID
@@ -94,6 +94,7 @@ MapScenes::
 	scene_var SEAGALLOP_FERRY_SHAMOUTI_GATE,          wSeagallopFerryShamoutiGateSceneID
 	scene_var SEAGALLOP_FERRY_VERMILION_GATE,         wSeagallopFerryVermilionGateSceneID
 	scene_var SHAMOUTI_HOTEL_RESTAURANT,              wShamoutiHotelRestaurantSceneID
+	scene_var SNOWTOP_MOUNTAIN,                       wSnowtopMountainSceneID
 	scene_var SPROUT_TOWER_3F,                        wSproutTower3FSceneID
 	scene_var TEAM_ROCKET_BASE_B1F,                   wAlways0SceneID
 	scene_var TEAM_ROCKET_BASE_B2F,                   wTeamRocketBaseB2FSceneID

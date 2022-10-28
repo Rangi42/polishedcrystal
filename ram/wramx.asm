@@ -1048,7 +1048,7 @@ wAzaleaTownSceneID:: db
 wBattleFacilitySceneID:: db
 wRoute39RuggedRoadGateSceneID:: db
 wRuggedRoadSouthSceneID:: db
-	ds 1 ; unused
+wSnowtopMountainSceneID:: db
 wBattleTowerOutsideSceneID:: db
 wBellchimeTrailSceneID:: db
 wBrunosRoomSceneID:: db
@@ -1275,7 +1275,7 @@ wPoisonStepCount:: db
 wPhoneList:: flag_array NUM_PHONE_CONTACTS
 wPhoneListEnd::
 
-	ds 2 ; unused
+	ds 1 ; unused
 
 wParkBallsRemaining::
 wSafariBallsRemaining:: db

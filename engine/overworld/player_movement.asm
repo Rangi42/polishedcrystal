@@ -223,6 +223,10 @@ DoPlayerMovement::
 	call .CheckLandPerms
 	jr c, .bump
 
+	ld a, [wPanningAroundTinyMap]
+	and a
+	jr nz, .walk
+
 	call .CheckNPC
 	and a
 	jr z, .bump
@@ -240,7 +244,6 @@ DoPlayerMovement::
 	call .RunCheck
 	jr z, .run
 
-.DoNotRun
 ; Downhill riding is slower when not moving down.
 	call .BikeCheck
 	jr nz, .walk
@@ -811,15 +814,12 @@ endc
 	ret
 
 .BikeCheck:
-
 	ld a, [wPlayerState]
 	cp PLAYER_BIKE
 	ret z
 	cp PLAYER_SKATE
 	ret
 
-; Routine by Victoria Lacroix
-; https://github.com/VictoriaLacroix/pokecrystal/commit/ed7f525d642cb02e84e856f2e506d2a6425d95db
 .RunCheck:
 	; Check if we have regular movement active
 	ld a, [wPlayerState]
