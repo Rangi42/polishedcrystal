@@ -99,15 +99,20 @@ SnowtopMountainStartPanningScript:
 
 SnowtopMountainStopPanningScript:
 	setscene $0
-.Continue
-	callasm .CompareXCoords
+.ContinueY
+	callasm .CompareYCoord
+	iffalsefwd .ContinueX
+	applyonemovement PLAYER, step_down
+	sjump .ContinueY
+.ContinueX
+	callasm .CompareXCoord
 	iffalsefwd .Ready
 	ifgreater $7f, .GoRight
 	applyonemovement PLAYER, step_left
-	sjump .Continue
+	sjump .ContinueX
 .GoRight
 	applyonemovement PLAYER, step_right
-	sjump .Continue
+	sjump .ContinueX
 .Ready
 	changeblock 10, 28, $71
 	changeblock 12, 28, $71
@@ -121,7 +126,13 @@ SnowtopMountainStopPanningScript:
 	loadmem wPanningAroundTinyMap, FALSE
 	end
 
-.CompareXCoords:
+.CompareYCoord:
+	ld a, [wYCoord]
+	sub 28
+	ldh [hScriptVar], a
+	ret
+
+.CompareXCoord:
 	ld a, [wSavedXCoord]
 	ld b, a
 	ld a, [wXCoord]

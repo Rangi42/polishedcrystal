@@ -785,27 +785,37 @@ CheckMenuOW:
 
 	ld a, [wPanningAroundTinyMap]
 	and a
-	jr nz, .NoMenu
+	jr nz, .PanningAroundSnowtopMountain
 
 	ldh a, [hJoyPressed]
 	bit SELECT_F, a
 	jr nz, .Select
 	bit START_F, a
-	jr z, .NoMenu
+	jr nz, .Start
 
+	xor a
+	ret
+
+.Start:
 	ld a, BANK(StartMenuScript)
 	ld hl, StartMenuScript
 	call CallScript
 	scf
 	ret
 
-.NoMenu:
-	xor a
-	ret
-
 .Select:
 	ld a, BANK(SelectMenuScript)
 	ld hl, SelectMenuScript
+	call CallScript
+	scf
+	ret
+
+.PanningAroundSnowtopMountain:
+	ldh a, [hJoyPressed]
+	and B_BUTTON
+	ret z
+	ld a, BANK(SnowtopMountainStopPanningScript)
+	ld hl, SnowtopMountainStopPanningScript
 	call CallScript
 	scf
 	ret
