@@ -5,13 +5,13 @@
 	tilecoll WALL, WALL, WALL, WALL ; 04
 	tilecoll WALL, WALL, WALL, WALL ; 05
 	tilecoll WALL, WALL, WALL, WALL ; 06
-	tilecoll WALL, WALL, WALL, WALL ; 07
-	tilecoll WALL, WALL, WALL, WALL ; 08
-	tilecoll WALL, WALL, WALL, WALL ; 09
-	tilecoll WALL, WALL, WALL, WALL ; 0a
-	tilecoll WALL, WALL, WALL, WALL ; 0b
-	tilecoll WALL, WALL, WALL, WALL ; 0c
-	tilecoll WALL, WALL, WALL, WALL ; 0d
+	tilecoll PUDDLE, PUDDLE, PUDDLE, PUDDLE ; 07
+	tilecoll PUDDLE, PUDDLE, PUDDLE, PUDDLE ; 08
+	tilecoll PUDDLE, PUDDLE, PUDDLE, PUDDLE ; 09
+	tilecoll PUDDLE, PUDDLE, PUDDLE, PUDDLE ; 0a
+	tilecoll PUDDLE, PUDDLE, PUDDLE, PUDDLE ; 0b
+	tilecoll PUDDLE, PUDDLE, PUDDLE, PUDDLE ; 0c
+	tilecoll PUDDLE, PUDDLE, PUDDLE, PUDDLE ; 0d
 	tilecoll WALL, WALL, WALL, WALL ; 0e
 	tilecoll WALL, WALL, WALL, WALL ; 0f
 	tilecoll PUDDLE, PUDDLE, PUDDLE, PUDDLE ; 10
@@ -126,3 +126,25 @@
 	tilecoll PUDDLE, PUDDLE, PUDDLE, PUDDLE ; 7d
 	tilecoll WALL, WALL, WALL, WALL ; 7e
 	tilecoll PUDDLE, WALL, PUDDLE, WALL ; 7f
+	tilecoll PUDDLE, WALL, PUDDLE, WALL ; 80
+	tilecoll WALL, WALL, WALL, WALL ; 81
+	tilecoll WALL, WALL, WALL, WALL ; 82
+	tilecoll WALL, WALL, WALL, WALL ; 83
+	tilecoll WALL, WALL, WALL, WALL ; 84
+	tilecoll WALL, WALL, WALL, WALL ; 85
+	tilecoll WALL, WALL, WALL, WALL ; 86
+	tilecoll WALL, WALL, WALL, WALL ; 87
+	tilecoll PUDDLE, PUDDLE, PUDDLE, PUDDLE ; 88
+	tilecoll WALL, WALL, WALL, WALL ; 89
+	tilecoll WALL, WALL, WALL, WALL ; 8a
+	tilecoll WALL, WALL, WALL, WALL ; 8b
+	tilecoll WALL, WALL, WALL, WALL ; 8c
+	tilecoll WALL, WALL, WALL, FLOOR ; 8d
+	tilecoll WALL, WALL, FLOOR, WALL ; 8e
+	tilecoll WALL, WALL, WALL, FLOOR ; 8f
+	tilecoll WALL, WALL, FLOOR, WALL ; 90
+	tilecoll WALL, WALL, WALL, FLOOR ; 91
+	tilecoll WALL, WALL, FLOOR, WALL ; 92
+	tilecoll WALL, WALL, WALL, WALL ; 93
+	tilecoll WALL, WALL, WALL, FLOOR ; 94
+	tilecoll WALL, WALL, FLOOR, WALL ; 95
