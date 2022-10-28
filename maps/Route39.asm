@@ -2,7 +2,6 @@ Route39_MapScriptHeader:
 	def_scene_scripts
 
 	def_callbacks
-	callback MAPCALLBACK_TILES, Route39TileScript
 
 	def_warp_events
 	warp_event  1, 17, ROUTE_39_BARN, 1
@@ -40,15 +39,6 @@ Route39_MapScriptHeader:
 
 	object_const_def
 	const ROUTE39_COWGIRL
-
-Route39TileScript:
-	checkflag ENGINE_FLYPOINT_SNOWTOP_MOUNTAIN
-	iffalsefwd .End
-	changeblock 10, 8, $f4
-	changeblock 12, 8, $01
-	changeblock 14, 8, $01
-.End
-	endcallback
 
 TrainerPokefanmDerek1:
 	trainer POKEFANM, DEREK1, EVENT_BEAT_POKEFANM_DEREK, PokefanmDerek1SeenText, PokefanmDerek1BeatenText, 0, .Script
