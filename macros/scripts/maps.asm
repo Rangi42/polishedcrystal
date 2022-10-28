@@ -121,10 +121,12 @@ MACRO itemball_event
 ENDM
 
 MACRO keyitemball_event
+	assert _NARG == 4, "No quantity needed for keyitemball_event"
 	object_event \1, \2, SPRITE_BALL_CUT_FRUIT, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_ITEMBALL, PLAYEREVENT_KEYITEMBALL, \3, \4
 ENDM
 
 MACRO tmhmball_event
+	assert _NARG == 4, "No quantity needed for tmhmball_event"
 	object_event \1, \2, SPRITE_BALL_CUT_FRUIT, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_ITEMBALL, PLAYEREVENT_TMHMBALL, \3, \4
 ENDM
 
