@@ -270,7 +270,28 @@ TilesetValenciaAnim::
 	dw NULL,  DoNothing
 	dw NULL,  DoNothing
 	dw NULL,  DoNothing
+	dw NULL,  DoNothing
 	dw NULL,  AnimateFlowerTile
+	dw NULL,  DoNothing
+	dw NULL,  DoNothing
+	dw NULL,  DoNothing
+	dw NULL,  DoNothing
+	dw NULL,  DoNothing
+	dw NULL,  StandingTileFrame8
+	dw NULL,  DoneTileAnimation
+
+TilesetSnowtopMountainAnim::
+	dw TinyWaterTileFrames, AnimateTinyWaterTile
+	dw TinyPierTileFrames,  AnimateTinyWaterTile
+	dw TinyShoreTileFrames, AnimateTinyWaterTile
+	dw NULL,  DoNothing
+	dw NULL,  DoNothing
+	dw NULL,  DoNothing
+	dw NULL,  DoNothing
+	dw NULL,  DoNothing
+	dw NULL,  DoNothing
+	dw NULL,  DoNothing
+	dw NULL,  DoNothing
 	dw NULL,  DoNothing
 	dw NULL,  DoNothing
 	dw NULL,  DoNothing
@@ -301,7 +322,6 @@ TilesetDecorAnim::
 TilesetMuseumAnim::
 TilesetHotelAnim::
 TilesetBattleFactoryAnim::
-TilesetSnowtopMountainAnim::
 	dw NULL,  DoNothing
 	dw NULL,  DoNothing
 	dw NULL,  DoNothing
@@ -1015,6 +1035,36 @@ AnimateWhirlpoolTile:
 	ld sp, hl
 	jmp WriteTileToDE
 
+AnimateTinyWaterTile:
+	ld hl, sp+$0
+	ld b, h
+	ld c, l
+
+	ld l, e
+	ld h, d
+	ld e, [hl]
+	inc hl
+	ld d, [hl]
+	inc hl
+
+	; period 2, every 2 frames, offset to 1 tile (16 bytes)
+	ld a, [wTileAnimationTimer]
+	maskbits 2, 1
+	add a
+	add a
+	add a
+
+	add [hl]
+	inc hl
+	ld h, [hl]
+	ld l, a
+	adc h
+	sub l
+	ld h, a
+
+	ld sp, hl
+	jmp WriteTileToDE
+
 AnimateLCDTile:
 	ld hl, sp+$0
 	ld b, h
@@ -1159,3 +1209,11 @@ FarawayWaterFrames2: dw vTiles2 tile $15, FarawayWaterTiles2
 
 FarawayWaterTiles1: INCBIN "gfx/tilesets/water/faraway_water_1.2bpp"
 FarawayWaterTiles2: INCBIN "gfx/tilesets/water/faraway_water_2.2bpp"
+
+TinyWaterTileFrames: dw vTiles2 tile $0a, TinyWaterTile
+TinyPierTileFrames:  dw vTiles2 tile $0b, TinyPierTile
+TinyShoreTileFrames: dw vTiles2 tile $0c, TinyShoreTile
+
+TinyWaterTile: INCBIN "gfx/tilesets/tiny/water.2bpp"
+TinyPierTile:  INCBIN "gfx/tilesets/tiny/pier.2bpp"
+TinyShoreTile: INCBIN "gfx/tilesets/tiny/shore.2bpp"

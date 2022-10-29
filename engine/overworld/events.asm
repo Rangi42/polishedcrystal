@@ -848,6 +848,11 @@ CountStep:
 	and a
 	jr nz, .done
 
+	; Don't count steps while panning in Snowtop Mountain
+	ld a, [wPanningAroundTinyMap]
+	and a
+	jr nz, .done
+
 	; If there is a special phone call, don't count the step.
 	farcall CheckSpecialPhoneCall
 	jr c, .doscript
