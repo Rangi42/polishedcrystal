@@ -877,6 +877,9 @@ endc
 	ret
 
 .BumpSound:
+	ld a, [wPanningAroundTinyMap]
+	and a
+	ret nz
 
 	call CheckSFX
 	ret c
