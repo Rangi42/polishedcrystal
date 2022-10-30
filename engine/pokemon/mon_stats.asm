@@ -594,10 +594,10 @@ FixPlayerEVs:
 	jr nz, .remove_ev_remainder
 
 	call .CompareEVTotal
-	pop bc
-	jr nc, .loop
+	jr nc, .pop_bchl_loop
 
 	; Reduce EVs for each stat by 4 sequentially.
+	pop bc
 	inc c ; c = 4
 	push bc
 .outer_ev_reduction_loop
