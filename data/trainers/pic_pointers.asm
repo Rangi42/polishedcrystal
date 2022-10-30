@@ -99,6 +99,7 @@ TrainerPicPointers::
 	dba TamerPic
 	dba ArtistPic
 	dba AromaLadyPic
+	dba SoldierPic
 	dba WaiterPic
 	dba WaitressPic
 	dba SightseermPic

@@ -101,6 +101,7 @@ TrainerGroups:
 	dba TamerGroup
 	dba ArtistGroup
 	dba AromaLadyGroup
+	dba SoldierGroup
 	dba WaiterGroup
 	dba WaitressGroup
 	dba SightseerMGroup

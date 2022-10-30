@@ -590,6 +590,12 @@ TrainerClassAttributes:
 	dw AI_BASIC + AI_OPPORTUNIST + AI_CAUTIOUS + AI_STATUS
 	dw CONTEXT_USE + SWITCH_RARELY
 
+; Soldier
+	db 0, 0 ; items
+	db 16 ; base reward
+	dw AI_BASIC + AI_SETUP + AI_TYPES + AI_AGGRESSIVE + AI_STATUS + AI_RISKY
+	dw CONTEXT_USE + SWITCH_SOMETIMES
+
 ; Waiter
 	db 0, 0 ; items
 	db 12 ; base reward

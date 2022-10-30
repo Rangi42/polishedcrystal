@@ -99,6 +99,7 @@ TrainerClassNames::
 	li "Tamer"            ; TAMER
 	li "Artist"           ; ARTIST
 	li "Aroma Lady"       ; AROMA_LADY
+	li "Soldier"          ; SOLDIER
 	li "Waiter"           ; WAITER
 	li "Waitress"         ; WAITRESS
 	li "Sightseer"        ; SIGHTSEERM

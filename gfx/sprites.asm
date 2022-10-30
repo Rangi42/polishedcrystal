@@ -305,6 +305,7 @@ SECTION "ElderSpriteGFX", ROMX
 ElderSpriteGFX:: INCBIN "gfx/sprites/elder.2bpp.lz"
 
 SECTION "EngineerSpriteGFX", ROMX
+SoldierSpriteGFX::
 EngineerSpriteGFX:: INCBIN "gfx/sprites/engineer.2bpp.lz"
 
 SECTION "FatGuySpriteGFX", ROMX
