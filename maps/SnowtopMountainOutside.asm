@@ -2,7 +2,7 @@ SnowtopMountainOutside_MapScriptHeader:
 	def_scene_scripts
 
 	def_callbacks
-	callback MAPCALLBACK_NEWMAP, SnowtopMountainOutsideFlyPoint
+	callback MAPCALLBACK_NEWMAP, SnowtopMountainOutsideFlyPointAndFixFacing
 
 	def_warp_events
 	warp_event  9, 31, SNOWTOP_MOUNTAIN_INSIDE, 2
@@ -48,9 +48,28 @@ SnowtopMountainOutside_MapScriptHeader:
 	object_const_def
 	const SNOWTOPMOUNTAINOUTSIDE_PLAYER
 
-SnowtopMountainOutsideFlyPoint:
+SnowtopMountainOutsideFlyPointAndFixFacing:
 	setflag ENGINE_FLYPOINT_SNOWTOP_MOUNTAIN
+	callasm .FixFacing
 	endcallback
+
+.FixFacing:
+	ld hl, wPrevWarp
+	ld a, [hli]
+	cp 2
+	ret nz
+	assert wPrevWarp + 1 == wPrevMapGroup
+	ld a, [hli]
+	cp GROUP_SNOWTOP_MOUNTAIN_INSIDE
+	ret nz
+	assert wPrevMapGroup + 1 == wPrevMapNumber
+	ld a, [hl]
+	cp MAP_SNOWTOP_MOUNTAIN_INSIDE
+	ret nz
+	ld a, [wPlayerSpriteSetupFlags]
+	or (1 << 5) | UP
+	ld [wPlayerSpriteSetupFlags], a
+	ret
 
 SnowtopMountainOutsideStartPanningScript:
 	opentext
