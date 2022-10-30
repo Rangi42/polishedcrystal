@@ -126,9 +126,9 @@ DoPlayerMovement::
 
 .not_whirlpool
 	and $f0
-	cp $30 ; moving water
+	cp HI_NYBBLE_CURRENT
 	jr z, .water
-	cp $70 ; warps
+	cp HI_NYBBLE_WARPS
 	jr z, .warps
 	jr .no_walk
 
@@ -345,7 +345,7 @@ DoPlayerMovement::
 	ld a, [wPlayerStandingTile]
 	ld e, a
 	and $f0
-	cp $a0 ; ledge
+	cp HI_NYBBLE_LEDGES
 	jr nz, .DontJump
 
 	ld a, e
