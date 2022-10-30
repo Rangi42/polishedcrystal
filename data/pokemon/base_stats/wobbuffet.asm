@@ -11,8 +11,7 @@
 	db GROWTH_MEDIUM_FAST ; growth rate
 	dn EGG_INDETERMINATE, EGG_INDETERMINATE ; egg groups
 
-	ev_yield   2,   0,   0,   0,   0,   0
-	;         hp  atk  def  spe  sat  sdf
+	ev_yield 2 HP
 
 	; tm/hm learnset
 	tmhm SAFEGUARD, COUNTER

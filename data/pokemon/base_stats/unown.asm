@@ -11,8 +11,7 @@
 	db GROWTH_MEDIUM_FAST ; growth rate
 	dn EGG_NONE, EGG_NONE ; egg groups
 
-	ev_yield   0,   1,   0,   0,   1,   0
-	;         hp  atk  def  spe  sat  sdf
+	ev_yield 1 Atk, 1 SAt
 
 	; tm/hm learnset
 	tmhm HIDDEN_POWER

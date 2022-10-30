@@ -11,8 +11,7 @@
 	db GROWTH_MEDIUM_FAST ; growth rate
 	dn EGG_BUG, EGG_BUG ; egg groups
 
-	ev_yield   0,   0,   0,   1,   0,   0
-	;         hp  atk  def  spe  sat  sdf
+	ev_yield 1 Spe
 
 	; tm/hm learnset
 	tmhm

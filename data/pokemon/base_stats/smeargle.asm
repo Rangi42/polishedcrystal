@@ -16,8 +16,7 @@ endc
 	db GROWTH_FAST ; growth rate
 	dn EGG_GROUND, EGG_GROUND ; egg groups
 
-	ev_yield   0,   0,   0,   1,   0,   0
-	;         hp  atk  def  spe  sat  sdf
+	ev_yield 1 Spe
 
 	; tm/hm learnset
 	tmhm

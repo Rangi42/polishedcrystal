@@ -11,8 +11,7 @@
 	db GROWTH_SLOW ; growth rate
 	dn EGG_WATER_2, EGG_DRAGON ; egg groups
 
-	ev_yield   0,   0,   0,   1,   0,   0
-	;         hp  atk  def  spe  sat  sdf
+	ev_yield 1 Spe
 
 	; tm/hm learnset
 	tmhm
