@@ -1,5 +1,5 @@
 	db  45,  30,  35,  45,  20,  20 ; 195 BST
-	;   hp  atk  def  spd  sat  sdf
+	;   hp  atk  def  spe  sat  sdf
 
 	db BUG, BUG ; type
 	db 255 ; catch rate
@@ -12,7 +12,7 @@
 	dn EGG_BUG, EGG_BUG ; egg groups
 
 	ev_yield   1,   0,   0,   0,   0,   0
-	;         hp  atk  def  spd  sat  sdf
+	;         hp  atk  def  spe  sat  sdf
 
 	; tm/hm learnset
 	tmhm

@@ -1,5 +1,5 @@
 	db  95, 115,  80,  90,  95,  80 ; 555 BST
-	;   hp  atk  def  spd  sat  sdf
+	;   hp  atk  def  spe  sat  sdf
 
 	db FIRE, ROCK ; type
 	db 75 ; catch rate
@@ -16,7 +16,7 @@ endc
 	dn EGG_GROUND, EGG_GROUND ; egg groups
 
 	ev_yield   0,   2,   0,   0,   0,   0
-	;         hp  atk  def  spd  sat  sdf
+	;         hp  atk  def  spe  sat  sdf
 
 	; tm/hm learnset
 	tmhm CURSE, ROAR, TOXIC, BULK_UP, HIDDEN_POWER, SUNNY_DAY, HYPER_BEAM, PROTECT, SAFEGUARD, BULLDOZE, SOLAR_BEAM, IRON_TAIL, RETURN, DIG, ROCK_SMASH, DOUBLE_TEAM, FLAMETHROWER, FIRE_BLAST, SWIFT, AERIAL_ACE, SUBSTITUTE, FACADE, FLAME_CHARGE, REST, ATTRACT, THIEF, ROCK_SLIDE, WILD_CHARGE, DRAGON_PULSE, WILL_O_WISP, GIGA_IMPACT, STONE_EDGE, STRENGTH, BODY_SLAM, DOUBLE_EDGE, ENDURE, HEADBUTT, HYPER_VOICE, IRON_HEAD, SLEEP_TALK, SWAGGER

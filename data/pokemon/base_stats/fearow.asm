@@ -1,9 +1,9 @@
 if DEF(FAITHFUL)
 	db  65,  90,  65, 100,  61,  61 ; 442 BST
-	;   hp  atk  def  spd  sat  sdf
+	;   hp  atk  def  spe  sat  sdf
 else
 	db  75,  99,  65, 101,  66,  66 ; 472 BST
-	;   hp  atk  def  spd  sat  sdf
+	;   hp  atk  def  spe  sat  sdf
 endc
 
 	db NORMAL, FLYING ; type
@@ -21,7 +21,7 @@ endc
 	dn EGG_FLYING, EGG_FLYING ; egg groups
 
 	ev_yield   0,   0,   0,   2,   0,   0
-	;         hp  atk  def  spd  sat  sdf
+	;         hp  atk  def  spe  sat  sdf
 
 	; tm/hm learnset
 	tmhm CURSE, TOXIC, HIDDEN_POWER, SUNNY_DAY, HYPER_BEAM, PROTECT, RAIN_DANCE, RETURN, DOUBLE_TEAM, SWIFT, AERIAL_ACE, SUBSTITUTE, FACADE, REST, ATTRACT, THIEF, STEEL_WING, ROOST, FALSE_SWIPE, GIGA_IMPACT, U_TURN, FLY, AGILITY, BATON_PASS, DOUBLE_EDGE, ENDURE, SLEEP_TALK, SWAGGER

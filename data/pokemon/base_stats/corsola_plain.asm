@@ -1,9 +1,9 @@
 if DEF(FAITHFUL)
 	db  65,  55,  95,  35,  65,  95 ; 410 BST
-	;   hp  atk  def  spd  sat  sdf
+	;   hp  atk  def  spe  sat  sdf
 else
 	db  65,  55, 115,  35, 105, 115 ; 490 BST
-	;   hp  atk  def  spd  sat  sdf
+	;   hp  atk  def  spe  sat  sdf
 endc
 
 	db WATER, ROCK ; type
@@ -21,7 +21,7 @@ endc
 	dn EGG_WATER_1, EGG_WATER_3 ; egg groups
 
 	ev_yield   0,   0,   1,   0,   0,   1
-	;         hp  atk  def  spd  sat  sdf
+	;         hp  atk  def  spe  sat  sdf
 
 	; tm/hm learnset
 	tmhm CURSE, CALM_MIND, TOXIC, HAIL, HIDDEN_POWER, SUNNY_DAY, ICE_BEAM, BLIZZARD, LIGHT_SCREEN, PROTECT, RAIN_DANCE, SAFEGUARD, BULLDOZE, EARTHQUAKE, RETURN, DIG, PSYCHIC, SHADOW_BALL, ROCK_SMASH, DOUBLE_TEAM, REFLECT, SANDSTORM, SUBSTITUTE, FACADE, REST, ATTRACT, ROCK_SLIDE, SCALD, WATER_PULSE, EXPLOSION, STONE_EDGE, SURF, STRENGTH, WHIRLPOOL, BODY_SLAM, DEFENSE_CURL, DOUBLE_EDGE, EARTH_POWER, ENDURE, HEADBUTT, ICY_WIND, ROLLOUT, SLEEP_TALK, SUCKER_PUNCH, SWAGGER

@@ -1,5 +1,5 @@
 	db  48,  72,  48,  48,  72,  48 ; 336 BST
-	;   hp  atk  def  spd  sat  sdf
+	;   hp  atk  def  spe  sat  sdf
 
 	db PSYCHIC, PSYCHIC ; type
 	db 225 ; catch rate
@@ -12,7 +12,7 @@
 	dn EGG_NONE, EGG_NONE ; egg groups
 
 	ev_yield   0,   1,   0,   0,   1,   0
-	;         hp  atk  def  spd  sat  sdf
+	;         hp  atk  def  spe  sat  sdf
 
 	; tm/hm learnset
 	tmhm HIDDEN_POWER

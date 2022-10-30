@@ -12,12 +12,12 @@ MACRO breed_struct
 \1HPEV::           db
 \1AtkEV::          db
 \1DefEV::          db
-\1SpdEV::          db
+\1SpeEV::          db
 \1SatEV::          db
 \1SdfEV::          db
 \1DVs::
 \1HPAtkDV::        db
-\1DefSpdDV::       db
+\1DefSpeDV::       db
 \1SatSdfDV::       db
 \1Personality::
 \1Shiny::
@@ -62,7 +62,7 @@ MACRO battle_struct
 ; Mon capture assumes personality comes after DVs
 \1DVs::
 \1HPAtkDV::        db
-\1DefSpdDV::       db
+\1DefSpeDV::       db
 \1SatSdfDV::       db
 \1Personality::
 \1Shiny::
@@ -102,12 +102,12 @@ MACRO savemon_struct
 \1HPEV::           db
 \1AtkEV::          db
 \1DefEV::          db
-\1SpdEV::          db
+\1SpeEV::          db
 \1SatEV::          db
 \1SdfEV::          db
 \1DVs::
 \1HPAtkDV::        db
-\1DefSpdDV::       db
+\1DefSpeDV::       db
 \1SatSdfDV::       db
 \1Personality::
 \1Shiny::
@@ -267,7 +267,7 @@ MACRO trademon
 \1OTName::      ds NAME_LENGTH
 \1DVs::
 \1HPAtkDV::     db
-\1DefSpdDV::    db
+\1DefSpeDV::    db
 \1SatSdfDV::    db
 \1Personality::
 \1Shiny::

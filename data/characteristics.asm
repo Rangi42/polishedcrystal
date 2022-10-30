@@ -5,31 +5,31 @@ Characteristics:
 	dw .Chara_HP2
 	dw .Chara_HP3
 	dw .Chara_HP4
-	dw .Chara_ATK0
-	dw .Chara_ATK1
-	dw .Chara_ATK2
-	dw .Chara_ATK3
-	dw .Chara_ATK4
-	dw .Chara_DEF0
-	dw .Chara_DEF1
-	dw .Chara_DEF2
-	dw .Chara_DEF3
-	dw .Chara_DEF4
-	dw .Chara_SPA0
-	dw .Chara_SPA1
-	dw .Chara_SPA2
-	dw .Chara_SPA3
-	dw .Chara_SPA4
-	dw .Chara_SPD0
-	dw .Chara_SPD1
-	dw .Chara_SPD2
-	dw .Chara_SPD3
-	dw .Chara_SPD4
-	dw .Chara_SPE0
-	dw .Chara_SPE1
-	dw .Chara_SPE2
-	dw .Chara_SPE3
-	dw .Chara_SPE4
+	dw .Chara_Atk0
+	dw .Chara_Atk1
+	dw .Chara_Atk2
+	dw .Chara_Atk3
+	dw .Chara_Atk4
+	dw .Chara_Def0
+	dw .Chara_Def1
+	dw .Chara_Def2
+	dw .Chara_Def3
+	dw .Chara_Def4
+	dw .Chara_SAt0
+	dw .Chara_SAt1
+	dw .Chara_SAt2
+	dw .Chara_SAt3
+	dw .Chara_SAt4
+	dw .Chara_SDf0
+	dw .Chara_SDf1
+	dw .Chara_SDf2
+	dw .Chara_SDf3
+	dw .Chara_SDf4
+	dw .Chara_Spe0
+	dw .Chara_Spe1
+	dw .Chara_Spe2
+	dw .Chara_Spe3
+	dw .Chara_Spe4
 	assert_table_length NUM_STATS * 5
 
 .Chara_HP0:
@@ -55,111 +55,111 @@ Characteristics:
 	next1 "relax"
 	done
 
-.Chara_ATK0:
+.Chara_Atk0:
 	text  "Proud of"
 	next1 "its power"
 	done
-.Chara_ATK1:
+.Chara_Atk1:
 	text  "Likes to"
 	next1 "thrash"
 	next1 "about"
 	done
-.Chara_ATK2:
+.Chara_Atk2:
 	text  "A little"
 	next1 "quick"
 	next1 "tempered"
 	done
-.Chara_ATK3:
+.Chara_Atk3:
 	text  "Likes to"
 	next1 "fight"
 	done
-.Chara_ATK4:
+.Chara_Atk4:
 	text  "Quick"
 	next1 "tempered"
 	done
 
-.Chara_DEF0:
+.Chara_Def0:
 	text  "Sturdy"
 	next1 "body"
 	done
-.Chara_DEF1:
+.Chara_Def1:
 	text  "Capable of"
 	next1 "taking"
 	next1 "hits"
 	done
-.Chara_DEF2:
+.Chara_Def2:
 	text  "Highly"
 	next1 "persistent"
 	done
-.Chara_DEF3:
+.Chara_Def3:
 	text  "Good"
 	next1 "endurance"
 	done
-.Chara_DEF4:
+.Chara_Def4:
 	text  "Good"
 	next1 "persever-"
 	next1 "ance"
 	done
 
-.Chara_SPA0:
+.Chara_SAt0:
 	text  "Highly"
 	next1 "curious"
 	done
-.Chara_SPA1:
+.Chara_SAt1:
 	text  "Mischiev-"
 	next1 "ous"
 	done
-.Chara_SPA2:
+.Chara_SAt2:
 	text  "Thoroughly"
 	next1 "cunning"
 	done
-.Chara_SPA3:
+.Chara_SAt3:
 	text  "Often lost"
 	next1 "in thought"
 	done
-.Chara_SPA4:
+.Chara_SAt4:
 	text  "Very"
 	next1 "finicky"
 	done
 
-.Chara_SPD0:
+.Chara_SDf0:
 	text  "Strong"
 	next1 "willed"
 	done
-.Chara_SPD1:
+.Chara_SDf1:
 	text  "Somewhat"
 	next1 "vain"
 	done
-.Chara_SPD2:
+.Chara_SDf2:
 	text  "Strongly"
 	next1 "defiant"
 	done
-.Chara_SPD3:
+.Chara_SDf3:
 	text  "Hates to"
 	next1 "lose"
 	done
-.Chara_SPD4:
+.Chara_SDf4:
 	text  "Somewhat"
 	next1 "stubborn"
 	done
 
-.Chara_SPE0:
+.Chara_Spe0:
 	text  "Likes to"
 	next1 "run"
 	done
-.Chara_SPE1:
+.Chara_Spe1:
 	text  "Alert to"
 	next1 "sounds"
 	done
-.Chara_SPE2:
+.Chara_Spe2:
 	text  "Impetuous"
 	next1 "and silly"
 	done
-.Chara_SPE3:
+.Chara_Spe3:
 	text  "Somewhat"
 	next1 "of a clown"
 	done
-.Chara_SPE4:
+.Chara_Spe4:
 	text  "Quick to"
 	next1 "flee"
 	done

@@ -823,15 +823,15 @@ TN_PrintCharacteristics:
 	ld c, 0
 	ld b, a
 .atk_beats_hp
-	; Spd
+	; Spe
 	ld a, [hl]
 	and $f
 	cp b
-	jr z, .last_beats_spd ; tie
-	jr c, .last_beats_spd
+	jr z, .last_beats_spe ; tie
+	jr c, .last_beats_spe
 	ld c, 5
 	ld b, a
-.last_beats_spd
+.last_beats_spe
 	; Def
 	ld a, [hli]
 	swap a

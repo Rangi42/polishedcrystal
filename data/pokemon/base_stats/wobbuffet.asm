@@ -1,5 +1,5 @@
 	db 190,  33,  58,  33,  33,  58 ; 405 BST
-	;   hp  atk  def  spd  sat  sdf
+	;   hp  atk  def  spe  sat  sdf
 
 	db PSYCHIC, PSYCHIC ; type
 	db 45 ; catch rate
@@ -12,7 +12,7 @@
 	dn EGG_INDETERMINATE, EGG_INDETERMINATE ; egg groups
 
 	ev_yield   2,   0,   0,   0,   0,   0
-	;         hp  atk  def  spd  sat  sdf
+	;         hp  atk  def  spe  sat  sdf
 
 	; tm/hm learnset
 	tmhm SAFEGUARD, COUNTER

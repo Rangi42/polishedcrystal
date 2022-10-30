@@ -1,5 +1,5 @@
 	db  50,  20,  40,  20,  20,  40 ; 190 BST
-	;   hp  atk  def  spd  sat  sdf
+	;   hp  atk  def  spe  sat  sdf
 
 	db NORMAL, FAIRY ; type
 	db 150 ; catch rate
@@ -12,7 +12,7 @@
 	dn EGG_NONE, EGG_NONE ; egg groups
 
 	ev_yield   1,   0,   0,   0,   0,   0
-	;         hp  atk  def  spd  sat  sdf
+	;         hp  atk  def  spe  sat  sdf
 
 	; tm/hm learnset
 	tmhm CURSE, TOXIC, HAIL, HIDDEN_POWER, ICE_BEAM, BLIZZARD, LIGHT_SCREEN, PROTECT, RAIN_DANCE, IRON_TAIL, RETURN, DOUBLE_TEAM, SWIFT, SUBSTITUTE, FACADE, REST, ATTRACT, SCALD, WATER_PULSE, SURF, WHIRLPOOL, WATERFALL, BODY_SLAM, DEFENSE_CURL, DOUBLE_EDGE, ENDURE, HEADBUTT, HYPER_VOICE, ICY_WIND, KNOCK_OFF, ROLLOUT, SLEEP_TALK, SWAGGER

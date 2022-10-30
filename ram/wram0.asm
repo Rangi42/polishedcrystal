@@ -524,7 +524,7 @@ wPlayerStatLevels::
 ; 07 neutral
 wPlayerAtkLevel:: db
 wPlayerDefLevel:: db
-wPlayerSpdLevel:: db
+wPlayerSpeLevel:: db
 wPlayerSAtkLevel:: db
 wPlayerSDefLevel:: db
 wPlayerAccLevel:: db
@@ -535,7 +535,7 @@ wEnemyStatLevels::
 ; 07 neutral
 wEnemyAtkLevel:: db
 wEnemyDefLevel:: db
-wEnemySpdLevel:: db
+wEnemySpeLevel:: db
 wEnemySAtkLevel:: db
 wEnemySDefLevel:: db
 wEnemyAccLevel:: db

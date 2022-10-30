@@ -1,5 +1,5 @@
 	db  45,  30,  15,  65,  85,  65 ; 305 BST
-	;   hp  atk  def  spd  sat  sdf
+	;   hp  atk  def  spe  sat  sdf
 
 	db ICE, PSYCHIC ; type
 	db 45 ; catch rate
@@ -16,7 +16,7 @@ endc
 	dn EGG_NONE, EGG_NONE ; egg groups
 
 	ev_yield   0,   0,   0,   0,   1,   0
-	;         hp  atk  def  spd  sat  sdf
+	;         hp  atk  def  spe  sat  sdf
 
 	; tm/hm learnset
 	tmhm DYNAMICPUNCH, CURSE, CALM_MIND, TOXIC, HAIL, HIDDEN_POWER, ICE_BEAM, BLIZZARD, LIGHT_SCREEN, PROTECT, RAIN_DANCE, RETURN, PSYCHIC, SHADOW_BALL, DOUBLE_TEAM, REFLECT, SUBSTITUTE, FACADE, REST, ATTRACT, THIEF, WATER_PULSE, AVALANCHE, FLASH, BODY_SLAM, COUNTER, DOUBLE_EDGE, DREAM_EATER, ENDURE, ICE_PUNCH, ICY_WIND, SEISMIC_TOSS, SKILL_SWAP, SLEEP_TALK, SWAGGER, TRICK, ZEN_HEADBUTT

@@ -1,5 +1,5 @@
 	db  95,  65, 110,  65,  60, 130 ; 525 BST
-	;   hp  atk  def  spd  sat  sdf
+	;   hp  atk  def  spe  sat  sdf
 
 	db DARK, DARK ; type
 	db 45 ; catch rate
@@ -16,7 +16,7 @@ endc
 	dn EGG_GROUND, EGG_GROUND ; egg groups
 
 	ev_yield   0,   0,   0,   0,   0,   2
-	;         hp  atk  def  spd  sat  sdf
+	;         hp  atk  def  spe  sat  sdf
 
 	; tm/hm learnset
 	tmhm CURSE, TOXIC, HIDDEN_POWER, SUNNY_DAY, HYPER_BEAM, PROTECT, RAIN_DANCE, IRON_TAIL, RETURN, DIG, PSYCHIC, SHADOW_BALL, DOUBLE_TEAM, SWIFT, SUBSTITUTE, FACADE, REST, ATTRACT, DARK_PULSE, GIGA_IMPACT, FLASH, CUT, BODY_SLAM, DOUBLE_EDGE, DREAM_EATER, ENDURE, HEADBUTT, HYPER_VOICE, PAY_DAY, SLEEP_TALK, SUCKER_PUNCH, SWAGGER, ZAP_CANNON

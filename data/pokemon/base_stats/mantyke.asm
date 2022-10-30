@@ -1,5 +1,5 @@
 	db  45,  20,  50,  50,  60, 120 ; 345 BST
-	;   hp  atk  def  spd  sat  sdf
+	;   hp  atk  def  spe  sat  sdf
 
 	db WATER, FLYING ; type
 	db 25 ; catch rate
@@ -12,7 +12,7 @@
 	dn EGG_NONE, EGG_NONE ; egg groups
 
 	ev_yield   0,   0,   0,   0,   0,   1
-	;         hp  atk  def  spd  sat  sdf
+	;         hp  atk  def  spe  sat  sdf
 
 	; tm/hm learnset
 	tmhm TOXIC, HAIL, HIDDEN_POWER, ICE_BEAM, BLIZZARD, PROTECT, RAIN_DANCE, BULLDOZE, EARTHQUAKE, RETURN, DOUBLE_TEAM, SWIFT, AERIAL_ACE, SUBSTITUTE, FACADE, REST, ATTRACT, ROCK_SLIDE, SCALD, ACROBATICS, WATER_PULSE, FLY, SURF, WHIRLPOOL, WATERFALL, DOUBLE_EDGE, ENDURE, HEADBUTT, ICY_WIND, SLEEP_TALK, SWAGGER

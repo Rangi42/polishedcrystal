@@ -699,7 +699,7 @@ CursedBodyDescription:
 
 WeakArmorDescription:
 	text  "Physical attacks"
-	next1 "trade Def for Spd."
+	next1 "trade Def for Spe."
 	done
 
 LightMetalDescription:

@@ -1,5 +1,5 @@
 MACRO ev_yield
-; hp, atk, def, spd, sat, sdf
+; hp, atk, def, spe, sat, sdf
 	db (\1 << 6) | (\2 << 4) | (\3 << 2) | \4
 	db (\5 << 6) | (\6 << 4)
 ENDM

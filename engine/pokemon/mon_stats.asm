@@ -730,9 +730,9 @@ CalcPkmnStatC:
 	jr z, .Attack
 	dec a ; STAT_DEF?
 	jr z, .Defense
-	dec a ; STAT_SPD?
+	dec a ; STAT_SDF?
 	jr z, .Speed
-	dec a ; STAT_SATK?
+	dec a ; STAT_SAT?
 	jr z, .SpclAtk
 	; STAT_SDEF
 	inc hl
@@ -903,7 +903,7 @@ GetNatureStatMultiplier::
 	inc d
 	sub 5
 	jr nc, .loop
-	add 7 ; Atk-SpD is 2-6, not 0-4
+	add 7 ; Atk-SDf is 2-6, not 0-4
 	cp c
 	jr z, .penalty
 	ld a, d

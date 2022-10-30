@@ -1,5 +1,5 @@
 	db  90,  85,  85,  95, 125, 100 ; 580 BST
-	;   hp  atk  def  spd  sat  sdf
+	;   hp  atk  def  spe  sat  sdf
 
 	db PSYCHIC, FLYING ; type
 	db 3 ; catch rate
@@ -12,7 +12,7 @@
 	dn EGG_NONE, EGG_NONE ; egg groups
 
 	ev_yield   0,   0,   0,   0,   3,   0
-	;         hp  atk  def  spd  sat  sdf
+	;         hp  atk  def  spe  sat  sdf
 
 	; tm/hm learnset
 	tmhm CURSE, CALM_MIND, ROAR, TOXIC, HIDDEN_POWER, HYPER_BEAM, LIGHT_SCREEN, PROTECT, SAFEGUARD, RETURN, PSYCHIC, SHADOW_BALL, DOUBLE_TEAM, REFLECT, FLASH_CANNON, SWIFT, AERIAL_ACE, SUBSTITUTE, FACADE, REST, STEEL_WING, DAZZLINGLEAM, GIGA_IMPACT, U_TURN, FLY, AGILITY, DOUBLE_EDGE, DREAM_EATER, ENDURE, SKILL_SWAP, SLEEP_TALK, SWAGGER, TRICK_ROOM
