@@ -2212,7 +2212,7 @@
 	wildmon LEVEL_FROM_BADGES - 1, DUNSPARCE
 	end_grass_wildmons
 
-	def_grass_wildmons SNOWTOP_MOUNTAIN
+	def_grass_wildmons SNOWTOP_MOUNTAIN_INSIDE
 	db 8 percent, 8 percent, 8 percent ; encounter rates: morn/day/nite
 	; morn
 	wildmon LEVEL_FROM_BADGES - 2, SWINUB

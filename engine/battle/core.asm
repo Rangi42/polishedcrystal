@@ -8520,11 +8520,11 @@ AutomaticBattleWeather:
 	ret nz
 
 	ld a, [wMapGroup]
-	cp GROUP_SNOWTOP_MOUNTAIN ; aka GROUP_RUGGED_ROAD_SOUTH
+	cp GROUP_SNOWTOP_MOUNTAIN_INSIDE ; aka GROUP_RUGGED_ROAD_SOUTH
 	jr nz, .not_rugged_road_or_snowtop_mountain
 	ld a, [wMapNumber]
 	; Automatic hail on Snowtop Mountain
-	cp MAP_SNOWTOP_MOUNTAIN
+	cp MAP_SNOWTOP_MOUNTAIN_INSIDE
 	lb de, WEATHER_HAIL, HAIL
 	ld hl, HailStartedText
 	jr z, .got_weather

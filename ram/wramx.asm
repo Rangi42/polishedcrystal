@@ -1048,7 +1048,7 @@ wAzaleaTownSceneID:: db
 wBattleFacilitySceneID:: db
 wRoute39RuggedRoadGateSceneID:: db
 wRuggedRoadSouthSceneID:: db
-wSnowtopMountainSceneID:: db
+wSnowtopMountainOutsideSceneID:: db
 wBattleTowerOutsideSceneID:: db
 wBellchimeTrailSceneID:: db
 wBrunosRoomSceneID:: db

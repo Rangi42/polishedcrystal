@@ -4,7 +4,7 @@ RuggedRoadNorth_MapScriptHeader:
 	def_callbacks
 
 	def_warp_events
-	warp_event 10,  5, SNOWTOP_MOUNTAIN, 1
+	warp_event 10,  5, SNOWTOP_MOUNTAIN_INSIDE, 1
 	warp_event 18, 16, HIDDEN_CAVE_GROTTO, 1
 
 	def_coord_events

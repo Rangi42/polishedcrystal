@@ -1,35 +1,35 @@
-SnowtopMountain_MapScriptHeader:
+SnowtopMountainOutside_MapScriptHeader:
 	def_scene_scripts
 
 	def_callbacks
-	callback MAPCALLBACK_NEWMAP, SnowtopMountainFlyPoint
+	callback MAPCALLBACK_NEWMAP, SnowtopMountainOutsideFlyPoint
 
 	def_warp_events
-	warp_event  9, 31, RUGGED_ROAD_NORTH, 1
+	warp_event  9, 31, SNOWTOP_MOUNTAIN_INSIDE, 2
 
 	def_coord_events
-	coord_event 10, 28, 1, SnowtopMountainStopPanningScript
-	coord_event 11, 28, 1, SnowtopMountainStopPanningScript
-	coord_event 12, 28, 1, SnowtopMountainStopPanningScript
-	coord_event 13, 28, 1, SnowtopMountainStopPanningScript
-	coord_event 14, 28, 1, SnowtopMountainStopPanningScript
-	coord_event 15, 28, 1, SnowtopMountainStopPanningScript
-	coord_event 16, 28, 1, SnowtopMountainStopPanningScript
-	coord_event 17, 28, 1, SnowtopMountainStopPanningScript
-	coord_event 18, 28, 1, SnowtopMountainStopPanningScript
-	coord_event 19, 28, 1, SnowtopMountainStopPanningScript
+	coord_event 10, 28, 1, SnowtopMountainOutsideStopPanningScript
+	coord_event 11, 28, 1, SnowtopMountainOutsideStopPanningScript
+	coord_event 12, 28, 1, SnowtopMountainOutsideStopPanningScript
+	coord_event 13, 28, 1, SnowtopMountainOutsideStopPanningScript
+	coord_event 14, 28, 1, SnowtopMountainOutsideStopPanningScript
+	coord_event 15, 28, 1, SnowtopMountainOutsideStopPanningScript
+	coord_event 16, 28, 1, SnowtopMountainOutsideStopPanningScript
+	coord_event 17, 28, 1, SnowtopMountainOutsideStopPanningScript
+	coord_event 18, 28, 1, SnowtopMountainOutsideStopPanningScript
+	coord_event 19, 28, 1, SnowtopMountainOutsideStopPanningScript
 
 	def_bg_events
-	bg_event 10, 27, BGEVENT_UP, SnowtopMountainStartPanningScript
-	bg_event 11, 27, BGEVENT_UP, SnowtopMountainStartPanningScript
-	bg_event 12, 27, BGEVENT_UP, SnowtopMountainStartPanningScript
-	bg_event 13, 27, BGEVENT_UP, SnowtopMountainStartPanningScript
-	bg_event 14, 27, BGEVENT_UP, SnowtopMountainStartPanningScript
-	bg_event 15, 27, BGEVENT_UP, SnowtopMountainStartPanningScript
-	bg_event 16, 27, BGEVENT_UP, SnowtopMountainStartPanningScript
-	bg_event 17, 27, BGEVENT_UP, SnowtopMountainStartPanningScript
-	bg_event 18, 27, BGEVENT_UP, SnowtopMountainStartPanningScript
-	bg_event 19, 27, BGEVENT_UP, SnowtopMountainStartPanningScript
+	bg_event 10, 27, BGEVENT_UP, SnowtopMountainOutsideStartPanningScript
+	bg_event 11, 27, BGEVENT_UP, SnowtopMountainOutsideStartPanningScript
+	bg_event 12, 27, BGEVENT_UP, SnowtopMountainOutsideStartPanningScript
+	bg_event 13, 27, BGEVENT_UP, SnowtopMountainOutsideStartPanningScript
+	bg_event 14, 27, BGEVENT_UP, SnowtopMountainOutsideStartPanningScript
+	bg_event 15, 27, BGEVENT_UP, SnowtopMountainOutsideStartPanningScript
+	bg_event 16, 27, BGEVENT_UP, SnowtopMountainOutsideStartPanningScript
+	bg_event 17, 27, BGEVENT_UP, SnowtopMountainOutsideStartPanningScript
+	bg_event 18, 27, BGEVENT_UP, SnowtopMountainOutsideStartPanningScript
+	bg_event 19, 27, BGEVENT_UP, SnowtopMountainOutsideStartPanningScript
 
 	def_object_events
 	object_event -3, -3, SPRITE_MOM, SPRITEMOVEDATA_PLACEHOLDER_UP, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, DoNothingScript, EVENT_TEMPORARY_UNTIL_MAP_RELOAD_1
@@ -46,15 +46,15 @@ SnowtopMountain_MapScriptHeader:
 	object_event  5, 10, SPRITE_SAILBOAT, SPRITEMOVEDATA_TINY_WINDOWS, 0, 6, -1, (1 << EVE) | (1 << NITE), 0, OBJECTTYPE_SCRIPT, 0, DoNothingScript, EVENT_TEMPORARY_UNTIL_MAP_RELOAD_2
 
 	object_const_def
-	const SNOWTOPMOUNTAIN_PLAYER
+	const SNOWTOPMOUNTAINOUTSIDE_PLAYER
 
-SnowtopMountainFlyPoint:
+SnowtopMountainOutsideFlyPoint:
 	setflag ENGINE_FLYPOINT_SNOWTOP_MOUNTAIN
 	endcallback
 
-SnowtopMountainStartPanningScript:
+SnowtopMountainOutsideStartPanningScript:
 	opentext
-	writetext SnowtopMountainOutlookText
+	writetext SnowtopMountainOutsideOutlookText
 	yesorno
 	iffalse_endtext
 	closetext
@@ -65,8 +65,8 @@ SnowtopMountainStartPanningScript:
 	changeblock 16, 28, $96
 	changeblock 18, 28, $96
 	callasm .PreparePlayerSubstitute
-	appear SNOWTOPMOUNTAIN_PLAYER
-	applymovement PLAYER, SnowtopMountainStartPanningMovement
+	appear SNOWTOPMOUNTAINOUTSIDE_PLAYER
+	applymovement PLAYER, SnowtopMountainOutsideStartPanningMovement
 	setscene $1
 	callasm GenericFinishBridge
 	end
@@ -94,10 +94,10 @@ SnowtopMountainStartPanningScript:
 	ld a, [wYCoord]
 	add 4
 	ld e, a
-	ld b, SNOWTOPMOUNTAIN_PLAYER
+	ld b, SNOWTOPMOUNTAINOUTSIDE_PLAYER
 	farjp CopyDECoordsToMapObject
 
-SnowtopMountainStopPanningScript:
+SnowtopMountainOutsideStopPanningScript:
 	setscene $0
 .ContinueY
 	callasm .CompareYCoord
@@ -119,9 +119,9 @@ SnowtopMountainStopPanningScript:
 	changeblock 14, 28, $71
 	changeblock 16, 28, $71
 	changeblock 18, 28, $71
-	applymovement PLAYER, SnowtopMountainStopPanningMovement
-	disappear SNOWTOPMOUNTAIN_PLAYER
-	showtext SnowtopMountainWhatAViewText
+	applymovement PLAYER, SnowtopMountainOutsideStopPanningMovement
+	disappear SNOWTOPMOUNTAINOUTSIDE_PLAYER
+	showtext SnowtopMountainOutsideWhatAViewText
 	reloadmappart
 	loadmem wPanningAroundTinyMap, FALSE
 	end
@@ -140,17 +140,17 @@ SnowtopMountainStopPanningScript:
 	ldh [hScriptVar], a
 	ret
 
-SnowtopMountainStartPanningMovement:
+SnowtopMountainOutsideStartPanningMovement:
 	hide_object
 	slow_step_up
 	step_end
 
-SnowtopMountainStopPanningMovement:
+SnowtopMountainOutsideStopPanningMovement:
 	turn_head_up
 	show_object
 	step_end
 
-SnowtopMountainOutlookText:
+SnowtopMountainOutsideOutlookText:
 	text "I can see Olivine"
 	line "City from here!"
 
@@ -158,6 +158,6 @@ SnowtopMountainOutlookText:
 	line "around?"
 	done
 
-SnowtopMountainWhatAViewText:
+SnowtopMountainOutsideWhatAViewText:
 	text "What a view!"
 	done

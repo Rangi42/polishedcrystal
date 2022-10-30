@@ -642,9 +642,13 @@ SECTION "RuggedRoadSouth_BlockData", ROMX
 RuggedRoadSouth_BlockData:
 	INCBIN "maps/RuggedRoadSouth.ablk.lz"
 
-SECTION "SnowtopMountain_BlockData", ROMX
-SnowtopMountain_BlockData:
-	INCBIN "maps/SnowtopMountain.ablk.lz"
+SECTION "SnowtopMountainInside_BlockData", ROMX
+SnowtopMountainInside_BlockData:
+	INCBIN "maps/SnowtopMountainInside.ablk.lz"
+
+SECTION "SnowtopMountainOutside_BlockData", ROMX
+SnowtopMountainOutside_BlockData:
+	INCBIN "maps/SnowtopMountainOutside.ablk.lz"
 
 SECTION "OlivineGym_BlockData", ROMX
 OlivineGym_BlockData:
