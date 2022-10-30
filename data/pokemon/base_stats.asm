@@ -1,7 +1,8 @@
 MACRO ev_yield
-; hp, atk, def, spe, sat, sdf
-	db (\1 << 6) | (\2 << 4) | (\3 << 2) | \4
-	db (\5 << 6) | (\6 << 4)
+	; TODO: `def_evs \#` and refactor the data definitions appropriately
+	def_evs \1 HP, \2 Atk, \3 Def, \4 Spe, \5 SAt, \6 SDf
+	db (EV_HP << 6) | (EV_ATK << 4) | (EV_DEF << 2) | EV_SPE
+	db (EV_SAT << 6) | (EV_SDF << 4)
 ENDM
 
 MACRO abilities_for
