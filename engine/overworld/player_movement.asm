@@ -401,7 +401,7 @@ DoPlayerMovement::
 	ld a, [wPlayerStandingTile]
 	ld e, a
 	and $f0
-	cp $c0 ; sideways stairs
+	cp HI_NYBBLE_SIDEWAYS_STAIRS
 	jr nz, .DontStairs
 
 	ld a, e
