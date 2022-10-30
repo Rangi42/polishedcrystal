@@ -276,7 +276,7 @@ wBattleBallsPocketScrollPosition:: db
 wBattleBerriesPocketScrollPosition:: db
 wBattleKeyItemsPocketScrollPosition:: db
 
-	assert ((wBattleItemsPocketScrollPosition - wBattleItemsPocketCursor) == (wItemsPocketScrollPosition - wItemsPocketCursor))
+	assert (wBattleItemsPocketScrollPosition - wBattleItemsPocketCursor) == (wItemsPocketScrollPosition - wItemsPocketCursor)
 
 wTMHMMoveNameBackup:: ds MOVE_NAME_LENGTH
 
@@ -1566,7 +1566,7 @@ wDexAreaValidTreeGroups:: ds NUM_TREEMON_SETS
 ENDU
 wDexAreaValidGroupsEnd::
 
-	assert (HIGH(wDexAreaValidGroupsEnd) == HIGH(wDexAreaValidGroups))
+	assert HIGH(wDexAreaValidGroupsEnd) == HIGH(wDexAreaValidGroups)
 
 ; The last location type the player cycled to explicitly.
 ; The game will try to prefer this when changing region/mon/form. Updates when:

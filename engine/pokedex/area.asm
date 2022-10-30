@@ -1077,9 +1077,9 @@ endr
 
 .GetAreaMonsIndex:
 ; de = wDexAreaMons + a*2. Leaves a as a*2.
-	assert (LOW(wDexAreaMons) == 0), "wDexAreaMons isn't $xx00"
-	assert (LOW(wDexAreaMons) == 0), "wDexAreaMons2 isn't $xx00"
-	assert (wDexAreaMons2 == wDexAreaMons + $100)
+	assert LOW(wDexAreaMons) == 0, "wDexAreaMons isn't $xx00"
+	assert LOW(wDexAreaMons) == 0, "wDexAreaMons2 isn't $xx00"
+	assert wDexAreaMons2 == wDexAreaMons + $100
 
 	; Needs to be cycle-equal whether the conditional is nc or c.
 	ld d, HIGH(wDexAreaMons)

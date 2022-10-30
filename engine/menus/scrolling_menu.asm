@@ -612,7 +612,7 @@ ScrollingMenu_GetNthItem:
 	ld a, [wMenuData_ScrollingMenuSpacing]
 
 	; If quantity is included, each item is 2 bytes.
-	assert (SCROLLINGMENU_ITEMS_QUANTITY == 2)
+	assert SCROLLINGMENU_ITEMS_QUANTITY == 2
 	cp SCROLLINGMENU_ITEMS_QUANTITY
 	jr z, .got_byte_amount
 
