@@ -81,6 +81,8 @@ DayCare_MeetGrandma:
 	playsound SFX_REGISTER_PHONE_NUMBER
 	waitsfx
 	waitbutton
+	writetext DayCareLyraHasInfoText
+	waitbutton
 	closetext
 	turnobject DAYCARE_LYRA, UP
 	showtext DayCareLyraEmbarassedText
@@ -270,6 +272,14 @@ DayCareLyraForgotText:
 GotLyrasNumberText:
 	text "<PLAYER> got Lyra's"
 	line "phone number."
+	done
+
+DayCareLyraHasInfoText:
+	text "Call me any time"
+	line "you want!"
+
+	para "I may have useful"
+	line "advice for you."
 	done
 
 DayCareLyraEmbarassedText:
