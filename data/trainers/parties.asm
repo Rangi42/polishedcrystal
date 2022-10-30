@@ -8476,6 +8476,10 @@ AromaLadyGroup:
 	db -1 ; end
 
 
+SECTION "SoldierGroup", ROMX
+SoldierGroup:
+
+
 SECTION "WaiterGroup", ROMX
 WaiterGroup:
 

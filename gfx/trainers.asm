@@ -279,6 +279,9 @@ ArtistPic: INCBIN "gfx/trainers/artist.2bpp.lz"
 SECTION "AromaLadyPic", ROMX
 AromaLadyPic: INCBIN "gfx/trainers/aroma_lady.2bpp.lz"
 
+SECTION "SoldierPic", ROMX
+SoldierPic: INCBIN "gfx/trainers/soldier.2bpp.lz"
+
 SECTION "WaiterPic", ROMX
 WaiterPic: INCBIN "gfx/trainers/waiter.2bpp.lz"
 

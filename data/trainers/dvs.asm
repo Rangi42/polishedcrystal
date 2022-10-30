@@ -101,6 +101,7 @@ TrainerClassDVsAndPersonality:
 	db  72, $DD, $DD, $DD, MALE   ; tamer
 	db  72, $DD, $DD, $DD, FEMALE ; artist
 	db  72, $DD, $DD, $DD, FEMALE ; aroma lady
+	db  72, $DD, $DD, $DD, MALE   ; soldier
 	db  72, $DD, $DD, $DD, MALE   ; waiter
 	db  72, $DD, $DD, $DD, FEMALE ; waitress
 	db  72, $DD, $DD, $DD, MALE   ; sightseerm
