@@ -1,9 +1,9 @@
 if DEF(FAITHFUL)
 	db  90,  70,  80,  70,  70,  95 ; 475 BST
-	;   hp  atk  def  spd  sat  sdf
+	;   hp  atk  def  spe  sat  sdf
 else
 	db  90,  70,  80,  70,  80,  95 ; 485 BST
-	;   hp  atk  def  spd  sat  sdf
+	;   hp  atk  def  spe  sat  sdf
 endc
 
 	db WATER, ICE ; type
@@ -16,8 +16,7 @@ endc
 	db GROWTH_MEDIUM_FAST ; growth rate
 	dn EGG_WATER_1, EGG_GROUND ; egg groups
 
-	ev_yield   0,   0,   0,   0,   0,   2
-	;         hp  atk  def  spd  sat  sdf
+	ev_yield 2 SDf
 
 	; tm/hm learnset
 	tmhm CURSE, TOXIC, HAIL, HIDDEN_POWER, ICE_BEAM, BLIZZARD, HYPER_BEAM, PROTECT, RAIN_DANCE, SAFEGUARD, IRON_TAIL, RETURN, DOUBLE_TEAM, SUBSTITUTE, FACADE, REST, ATTRACT, THIEF, WATER_PULSE, AVALANCHE, GIGA_IMPACT, SURF, WHIRLPOOL, WATERFALL, AQUA_TAIL, BODY_SLAM, DOUBLE_EDGE, ENDURE, HEADBUTT, ICY_WIND, PAY_DAY, SLEEP_TALK, SWAGGER

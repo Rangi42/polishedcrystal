@@ -32,8 +32,8 @@ sCheckValue2:: db ; loaded with 127, used to check save corruption
 
 	; These need to remain constant. Otherwise, the game will fail to
 	; recognize that a save exist.
-	assert (sCheckValue1 == $a007), "Save check value 1 has shifted."
-	assert (sCheckValue2 == $ad0f), "Save check value 2 has shifted."
+	assert sCheckValue1 == $a007, "Save check value 1 has shifted."
+	assert sCheckValue2 == $ad0f, "Save check value 2 has shifted."
 
 
 SECTION "Backup Save", SRAM

@@ -1,5 +1,5 @@
 	db  95,  23,  48,  23,  23,  48 ; 260 BST
-	;   hp  atk  def  spd  sat  sdf
+	;   hp  atk  def  spe  sat  sdf
 
 	db PSYCHIC, PSYCHIC ; type
 	db 125 ; catch rate
@@ -11,8 +11,7 @@
 	db GROWTH_MEDIUM_FAST ; growth rate
 	dn EGG_NONE, EGG_NONE ; egg groups
 
-	ev_yield   1,   0,   0,   0,   0,   0
-	;         hp  atk  def  spd  sat  sdf
+	ev_yield 1 HP
 
 	; tm/hm learnset
 	tmhm SAFEGUARD, COUNTER

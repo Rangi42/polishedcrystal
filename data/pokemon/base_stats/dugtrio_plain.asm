@@ -1,5 +1,5 @@
 	db  35, 100,  50, 120,  50,  70 ; 425 BST
-	;   hp  atk  def  spd  sat  sdf
+	;   hp  atk  def  spe  sat  sdf
 
 	db GROUND, GROUND ; type
 	db 50 ; catch rate
@@ -11,8 +11,7 @@
 	db GROWTH_MEDIUM_FAST ; growth rate
 	dn EGG_GROUND, EGG_GROUND ; egg groups
 
-	ev_yield   0,   0,   0,   2,   0,   0
-	;         hp  atk  def  spd  sat  sdf
+	ev_yield 2 Spe
 
 	; tm/hm learnset
 	tmhm CURSE, TOXIC, HIDDEN_POWER, SUNNY_DAY, HONE_CLAWS, HYPER_BEAM, PROTECT, BULLDOZE, EARTHQUAKE, RETURN, DIG, ROCK_SMASH, DOUBLE_TEAM, SLUDGE_BOMB, SANDSTORM, AERIAL_ACE, SUBSTITUTE, FACADE, REST, ATTRACT, THIEF, ROCK_SLIDE, SHADOW_CLAW, GIGA_IMPACT, STONE_EDGE, CUT, AGILITY, BODY_SLAM, DOUBLE_EDGE, EARTH_POWER, ENDURE, HEADBUTT, SLEEP_TALK, SUCKER_PUNCH, SWAGGER

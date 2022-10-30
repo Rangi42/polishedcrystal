@@ -154,7 +154,7 @@ Pokedex_LoadTilemapWithIconAndForm:
 	ld b, a
 
 	ld a, [wPokedex_DisplayMode]
-	assert (DEXDISP_AREA > DEXDISP_STATS)
+	assert DEXDISP_AREA > DEXDISP_STATS
 	cp DEXDISP_STATS ; stats+area pages shouldn't display shape
 	ret nc
 

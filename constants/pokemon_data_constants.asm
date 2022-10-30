@@ -5,7 +5,7 @@ rsset BASE_STATS
 DEF BASE_HP          rb
 DEF BASE_ATK         rb
 DEF BASE_DEF         rb
-DEF BASE_SPD         rb
+DEF BASE_SPE         rb
 DEF BASE_SAT         rb
 DEF BASE_SDF         rb
 DEF BASE_TYPES       rw
@@ -144,13 +144,13 @@ rsset MON_EVS
 DEF MON_HP_EV              rb
 DEF MON_ATK_EV             rb
 DEF MON_DEF_EV             rb
-DEF MON_SPD_EV             rb
+DEF MON_SPE_EV             rb
 DEF MON_SAT_EV             rb
 DEF MON_SDF_EV             rb
 DEF MON_DVS                rb NUM_STATS / 2
 rsset MON_DVS
 DEF MON_HP_ATK_DV          rb
-DEF MON_DEF_SPD_DV         rb
+DEF MON_DEF_SPE_DV         rb
 DEF MON_SAT_SDF_DV         rb
 DEF MON_PERSONALITY        rw
 DEF MON_SHINY      EQU MON_PERSONALITY
@@ -180,7 +180,7 @@ DEF MON_STATS              rw NUM_BATTLE_STATS
 rsset MON_STATS
 DEF MON_ATK                rw
 DEF MON_DEF                rw
-DEF MON_SPD                rw
+DEF MON_SPE                rw
 DEF MON_SAT                rw
 DEF MON_SDF                rw
 DEF PARTYMON_STRUCT_LENGTH EQU _RS
@@ -197,13 +197,13 @@ rsset SAVEMON_EVS
 DEF SAVEMON_HP_EV              rb
 DEF SAVEMON_ATK_EV             rb
 DEF SAVEMON_DEF_EV             rb
-DEF SAVEMON_SPD_EV             rb
+DEF SAVEMON_SPE_EV             rb
 DEF SAVEMON_SAT_EV             rb
 DEF SAVEMON_SDF_EV             rb
 DEF SAVEMON_DVS                rb NUM_STATS / 2
 rsset SAVEMON_DVS
 DEF SAVEMON_HP_ATK_DV          rb
-DEF SAVEMON_DEF_SPD_DV         rb
+DEF SAVEMON_DEF_SPE_DV         rb
 DEF SAVEMON_SAT_SDF_DV         rb
 DEF SAVEMON_PERSONALITY        rw
 DEF SAVEMON_SHINY      EQU SAVEMON_PERSONALITY
@@ -253,6 +253,9 @@ DEF MON_CAUGHT_F     EQU 7
 DEF MON_GENDER_F     EQU 7
 DEF MON_IS_EGG_F     EQU 6
 DEF MON_EXTSPECIES_F EQU 5
+
+; modern EV limit
+DEF MODERN_EV_LIMIT EQU 510
 
 ; shiny probability values
 DEF SHINY_NUMERATOR         EQU 16 ; 16/65536 = 1/4096

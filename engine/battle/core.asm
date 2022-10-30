@@ -327,10 +327,10 @@ GetSpeed::
 	push de
 	ldh a, [hBattleTurn]
 	and a
-	ld a, [wPlayerSpdLevel]
+	ld a, [wPlayerSpeLevel]
 	ld hl, wBattleMonSpeed
 	jr z, .got_speed
-	ld a, [wEnemySpdLevel]
+	ld a, [wEnemySpeLevel]
 	ld hl, wEnemyMonSpeed
 .got_speed
 	ld b, a
@@ -6694,17 +6694,17 @@ GiveBattleEVs:
 	cp HELD_EV_DOUBLE
 	call z, .item_double
 	cp HELD_EV_HP_UP
-	call z, .item_hpup
+	call z, .item_hp_up
 	cp HELD_EV_ATK_UP
-	call z, .item_atkup
+	call z, .item_atk_up
 	cp HELD_EV_DEF_UP
-	call z, .item_defup
-	cp HELD_EV_SPD_UP
-	call z, .item_spdup
+	call z, .item_def_up
+	cp HELD_EV_SPE_UP
+	call z, .item_spe_up
 	cp HELD_EV_SAT_UP
-	call z, .item_satup
+	call z, .item_sat_up
 	cp HELD_EV_SDF_UP
-	call z, .item_sdfup
+	call z, .item_sdf_up
 	pop bc
 	ld hl, MON_EVS
 	add hl, bc
@@ -6720,7 +6720,7 @@ GiveBattleEVs:
 	pop hl
 	call GetBaseData
 	; EV yield format:
-	; Byte 1: xxyyzzmm x: HP, y: Atk, z: Def, m: Spd
+	; Byte 1: xxyyzzmm x: HP, y: Atk, z: Def, m: Spe
 	; Byte 2: aabb0000 a: Sat, b: Sdf, 0: unused
 	ld a, [wBaseEVYield1]
 	ld b, a
@@ -6775,22 +6775,22 @@ GiveBattleEVs:
 .item_double
 	set 1, d
 	ret
-.item_hpup
+.item_hp_up
 	set 7, e
 	ret
-.item_atkup
+.item_atk_up
 	set (6 - ATTACK), e ; 6
 	ret
-.item_defup
+.item_def_up
 	set (6 - DEFENSE), e ; 5
 	ret
-.item_spdup
+.item_spe_up
 	set (6 - SPEED), e ; 4
 	ret
-.item_satup
+.item_sat_up
 	set (6 - SP_ATTACK), e ; 3
 	ret
-.item_sdfup
+.item_sdf_up
 	set (6 - SP_DEFENSE), e ; 2
 	ret
 
@@ -8520,11 +8520,11 @@ AutomaticBattleWeather:
 	ret nz
 
 	ld a, [wMapGroup]
-	cp GROUP_SNOWTOP_MOUNTAIN ; aka GROUP_RUGGED_ROAD_SOUTH
+	cp GROUP_SNOWTOP_MOUNTAIN_INSIDE ; aka GROUP_RUGGED_ROAD_SOUTH
 	jr nz, .not_rugged_road_or_snowtop_mountain
 	ld a, [wMapNumber]
 	; Automatic hail on Snowtop Mountain
-	cp MAP_SNOWTOP_MOUNTAIN
+	cp MAP_SNOWTOP_MOUNTAIN_INSIDE
 	lb de, WEATHER_HAIL, HAIL
 	ld hl, HailStartedText
 	jr z, .got_weather

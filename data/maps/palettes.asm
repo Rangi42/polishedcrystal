@@ -63,6 +63,7 @@ ENDM
 	special_bg_pal map,      LIGHTNING_ISLAND,            PAL_SINGLE,    LightningIslandPalette
 	special_bg_pal map,      IVYS_LAB,                    PAL_SINGLE,    IvysLabPalette
 	special_bg_pal map,      RUGGED_ROAD_NORTH,           PAL_TIMEOFDAY, RuggedRoadNorthPalette
+	special_bg_pal map,      SNOWTOP_MOUNTAIN_INSIDE,     PAL_TIMEOFDAY, RuggedRoadNorthPalette
 	special_bg_pal map,      SINJOH_RUINS,                PAL_TIMEOFDAY, SinjohRuinsPalette
 	special_bg_pal map,      MYSTRI_STAGE,                PAL_SINGLE,    MystriStagePalette
 	special_bg_pal map,      EMBEDDED_TOWER,              PAL_SINGLE,    EmbeddedTowerPalette
@@ -126,7 +127,8 @@ ENDM
 	special_ob_pal map,      CELADON_DEPT_STORE_3F,           OverworldPartyMonPalettes + 3 palettes, PAL_OW_ROCK,   1
 	special_ob_pal map,      MOUNT_MOON_SQUARE,               wBGPals1 palette PAL_BG_GRAY,           PAL_OW_ROCK,   1
 	special_ob_pal map,      MAGNET_TUNNEL_INSIDE,            wBGPals1 palette PAL_BG_GRAY,           PAL_OW_ROCK,   1
-	special_ob_pal map,      SNOWTOP_MOUNTAIN,                SnowtopMountainOBPalette_Purple,        PAL_OW_PURPLE, 1
+	special_ob_pal map,      SNOWTOP_MOUNTAIN_INSIDE,         wBGPals1 palette PAL_BG_GREEN,          PAL_OW_TREE,   1
+	special_ob_pal map,      SNOWTOP_MOUNTAIN_OUTSIDE,        SnowtopMountainOutsideOBPalette_Purple, PAL_OW_PURPLE, 1
 	special_ob_pal landmark, CINNABAR_VOLCANO,                wBGPals1 palette PAL_BG_BROWN,          PAL_OW_ROCK,   1
 	special_ob_pal landmark, DIM_CAVE,                        wBGPals1 palette PAL_BG_BROWN,          PAL_OW_ROCK,   1
 	special_ob_pal landmark, ICE_PATH,                        wBGPals1 palette PAL_BG_BROWN,          PAL_OW_ROCK,   1
@@ -1592,7 +1594,7 @@ else
 	MONOCHROME_RGB_FOUR_OW
 endc
 
-SnowtopMountainOBPalette_Purple:
+SnowtopMountainOutsideOBPalette_Purple:
 if !DEF(MONOCHROME)
 	RGB 30, 30, 11
 	RGB 30, 30, 11

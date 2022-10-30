@@ -1,5 +1,5 @@
 	db  65, 110, 130,  95,  60,  65 ; 525 BST
-	;   hp  atk  def  spd  sat  sdf
+	;   hp  atk  def  spe  sat  sdf
 
 	db GRASS, GRASS ; type
 	db 45 ; catch rate
@@ -15,8 +15,7 @@ endc
 	db GROWTH_MEDIUM_FAST ; growth rate
 	dn EGG_GROUND, EGG_GROUND ; egg groups
 
-	ev_yield   0,   0,   2,   0,   0,   0
-	;         hp  atk  def  spd  sat  sdf
+	ev_yield 2 Def
 
 	; tm/hm learnset
 	tmhm CURSE, ROAR, TOXIC, HIDDEN_POWER, SUNNY_DAY, HYPER_BEAM, PROTECT, RAIN_DANCE, GIGA_DRAIN, SOLAR_BEAM, IRON_TAIL, RETURN, DIG, SHADOW_BALL, ROCK_SMASH, DOUBLE_TEAM, SWIFT, AERIAL_ACE, SUBSTITUTE, FACADE, REST, ATTRACT, ENERGY_BALL, X_SCISSOR, GIGA_IMPACT, FLASH, SWORDS_DANCE, STRENGTH, DOUBLE_EDGE, EARTH_POWER, ENDURE, HEADBUTT, HYPER_VOICE, KNOCK_OFF, PAY_DAY, SEED_BOMB, SLEEP_TALK, SWAGGER

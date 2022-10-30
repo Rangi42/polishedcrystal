@@ -2211,7 +2211,7 @@ GastlyEvosAttacks:
 	db -1 ; no more level-up moves
 
 HaunterEvosAttacks:
-	evo_data EVOLVE_EVS, MON_SPD_EV, GENGAR
+	evo_data EVOLVE_EVS, MON_SPE_EV, GENGAR
 	db -1 ; no more evolutions
 	db 1, SHADOW_CLAW ; Shadow Punch → TM move ; evolution move
 	db 1, HYPNOSIS

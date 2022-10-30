@@ -1452,7 +1452,7 @@ _CGB_JudgeSystem:
 	ld c, STAT_DEF
 	hlcoord 17, 14, wAttrmap
 	call .FillStat
-	ld c, STAT_SPD
+	ld c, STAT_SPE
 	hlcoord 12, 16, wAttrmap
 	call .FillStat
 	ld c, STAT_SDEF

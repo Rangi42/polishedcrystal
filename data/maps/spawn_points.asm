@@ -34,7 +34,7 @@ SpawnPoints:
 	spawn GOLDENROD_CITY,             18, 28
 	spawn OLIVINE_CITY,               13, 18
 	spawn ECRUTEAK_CITY,              23, 28
-	spawn SNOWTOP_MOUNTAIN,           17, 34
+	spawn SNOWTOP_MOUNTAIN_OUTSIDE,   17, 34
 	spawn MAHOGANY_TOWN,              15, 14
 	spawn ROUTE_48,                   11,  6
 	spawn LAKE_OF_RAGE,               21, 29

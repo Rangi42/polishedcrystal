@@ -372,7 +372,7 @@ FastBallMultiplier:
 ; multiply catch rate by 4 if enemy mon has base speed 100+
 	ld a, [wOTPartyMon1Species]
 	dec a
-	ld hl, BaseData + BASE_SPD
+	ld hl, BaseData + BASE_SPE
 	ld bc, BASE_DATA_SIZE
 	rst AddNTimes
 	ld a, BANK(BaseData)

@@ -690,8 +690,9 @@ ENDM
 	newgroup                                                     ; 36
 	map_const RUGGED_ROAD_NORTH,                          17,  9 ;  1
 	map_const RUGGED_ROAD_SOUTH,                          17, 19 ;  2
-	map_const SNOWTOP_MOUNTAIN,                           16, 20 ;  3
-	map_const ROUTE_39_RUGGED_ROAD_GATE,                   5,  4 ;  4
+	map_const SNOWTOP_MOUNTAIN_INSIDE,                    18, 17 ;  3
+	map_const SNOWTOP_MOUNTAIN_OUTSIDE,                   16, 20 ;  4
+	map_const ROUTE_39_RUGGED_ROAD_GATE,                   5,  4 ;  5
 
 	newgroup                                                     ; 37
 	map_const ECRUTEAK_SHRINE_OUTSIDE,                     8, 11 ;  1

@@ -94,7 +94,7 @@ MapScenes::
 	scene_var SEAGALLOP_FERRY_SHAMOUTI_GATE,          wSeagallopFerryShamoutiGateSceneID
 	scene_var SEAGALLOP_FERRY_VERMILION_GATE,         wSeagallopFerryVermilionGateSceneID
 	scene_var SHAMOUTI_HOTEL_RESTAURANT,              wShamoutiHotelRestaurantSceneID
-	scene_var SNOWTOP_MOUNTAIN,                       wSnowtopMountainSceneID
+	scene_var SNOWTOP_MOUNTAIN_OUTSIDE,               wSnowtopMountainOutsideSceneID
 	scene_var SPROUT_TOWER_3F,                        wSproutTower3FSceneID
 	scene_var TEAM_ROCKET_BASE_B1F,                   wAlways0SceneID
 	scene_var TEAM_ROCKET_BASE_B2F,                   wTeamRocketBaseB2FSceneID

@@ -1,9 +1,9 @@
 if DEF(FAITHFUL)
 	db  48,  48,  48,  48,  48,  48 ; 288 BST
-	;   hp  atk  def  spd  sat  sdf
+	;   hp  atk  def  spe  sat  sdf
 else
 	db  78,  28,  48, 108,  28,  48 ; 338 BST
-	;   hp  atk  def  spd  sat  sdf
+	;   hp  atk  def  spe  sat  sdf
 endc
 
 	db NORMAL, NORMAL ; type
@@ -16,8 +16,7 @@ endc
 	db GROWTH_MEDIUM_FAST ; growth rate
 	dn EGG_DITTO, EGG_DITTO ; egg groups
 
-	ev_yield   1,   0,   0,   0,   0,   0
-	;         hp  atk  def  spd  sat  sdf
+	ev_yield 1 HP
 
 	; tm/hm learnset
 	tmhm

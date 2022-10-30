@@ -4,7 +4,7 @@ CheckWarpCollision::
 	cp COLL_HOLE
 	jr z, .warp
 	and $f0
-	cp $70
+	cp HI_NYBBLE_WARPS
 	jr z, .warp
 	and a
 	ret

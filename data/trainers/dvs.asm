@@ -2,7 +2,7 @@ TrainerClassDVsAndPersonality:
 ; entries correspond to trainer classes (see constants/trainer_constants.asm)
 	table_width 5, TrainerClassDVsAndPersonality
 	;  EVs  HP   Def  SAt
-	;  *    Atk  Spd  SDf  Gender
+	;  *    Atk  Spe  SDf  Gender
 	db 252, PERFECT_DVS,   FEMALE ; carrie
 	db 252, PERFECT_DVS,   MALE   ; cal
 	db 252, $BB, $BB, $BB, MALE   ; falkner

@@ -814,8 +814,8 @@ CheckMenuOW:
 	ldh a, [hJoyPressed]
 	and B_BUTTON
 	ret z
-	ld a, BANK(SnowtopMountainStopPanningScript)
-	ld hl, SnowtopMountainStopPanningScript
+	ld a, BANK(SnowtopMountainOutsideStopPanningScript)
+	ld hl, SnowtopMountainOutsideStopPanningScript
 	call CallScript
 	scf
 	ret
