@@ -9,6 +9,12 @@ SnowtopMountainOutside_MapScriptHeader:
 	warp_event 17, 33, SNOWTOP_POKECENTER_1F, 1
 
 	def_coord_events
+	coord_event  4, 28, 1, SnowtopMountainOutsideStopPanningScript
+	coord_event  5, 28, 1, SnowtopMountainOutsideStopPanningScript
+	coord_event  6, 28, 1, SnowtopMountainOutsideStopPanningScript
+	coord_event  7, 28, 1, SnowtopMountainOutsideStopPanningScript
+	coord_event  8, 28, 1, SnowtopMountainOutsideStopPanningScript
+	coord_event  9, 28, 1, SnowtopMountainOutsideStopPanningScript
 	coord_event 10, 28, 1, SnowtopMountainOutsideStopPanningScript
 	coord_event 11, 28, 1, SnowtopMountainOutsideStopPanningScript
 	coord_event 12, 28, 1, SnowtopMountainOutsideStopPanningScript
@@ -19,6 +25,13 @@ SnowtopMountainOutside_MapScriptHeader:
 	coord_event 17, 28, 1, SnowtopMountainOutsideStopPanningScript
 	coord_event 18, 28, 1, SnowtopMountainOutsideStopPanningScript
 	coord_event 19, 28, 1, SnowtopMountainOutsideStopPanningScript
+	coord_event 20, 28, 1, SnowtopMountainOutsideStopPanningScript
+	coord_event 21, 28, 1, SnowtopMountainOutsideStopPanningScript
+	coord_event 22, 28, 1, SnowtopMountainOutsideStopPanningScript
+	coord_event 23, 28, 1, SnowtopMountainOutsideStopPanningScript
+	coord_event 24, 28, 1, SnowtopMountainOutsideStopPanningScript
+	coord_event 25, 28, 1, SnowtopMountainOutsideStopPanningScript
+	coord_event 26, 28, 1, SnowtopMountainOutsideStopPanningScript
 
 	def_bg_events
 	bg_event 10, 27, BGEVENT_UP, SnowtopMountainOutsideStartPanningScript
