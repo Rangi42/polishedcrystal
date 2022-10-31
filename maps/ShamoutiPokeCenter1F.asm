@@ -2,7 +2,6 @@ ShamoutiPokeCenter1F_MapScriptHeader:
 	def_scene_scripts
 
 	def_callbacks
-	callback MAPCALLBACK_TILES, ShamoutiPokeCenter1FFixStairScript
 
 	def_warp_events
 	warp_event  5,  7, SHAMOUTI_ISLAND, 1
@@ -20,10 +19,6 @@ ShamoutiPokeCenter1F_MapScriptHeader:
 
 	object_const_def
 	const SHAMOUTIPOKECENTER1F_IVY
-
-ShamoutiPokeCenter1FFixStairScript:
-	changeblock 0, 6, $39
-	endcallback
 
 PokemonJournalLoreleiScript:
 	setflag ENGINE_READ_LORELEI_JOURNAL

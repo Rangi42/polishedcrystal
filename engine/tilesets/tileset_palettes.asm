@@ -73,22 +73,22 @@ LoadSevenBGPalettes:
 	ret
 
 PokeCenterSpecialCase:
-	ld hl, wMapGroup
-	call .check_shamouti_pokecenter
-	jr z, LoadSevenBGPalettes
-	ld hl, wBackupMapGroup
-	call .check_shamouti_pokecenter
-	jr z, LoadSevenBGPalettes
 	ld hl, PokeCenterPalette
-	jr LoadSevenBGPalettes
-
-.check_shamouti_pokecenter
-	ld a, [hli]
-	cp GROUP_SHAMOUTI_POKECENTER_1F
-	ret nz
-	ld a, [hl]
-	cp MAP_SHAMOUTI_POKECENTER_1F
-	ld hl, ShamoutiPokeCenterPalette
+	call LoadSevenBGPalettes
+	call RegionCheck
+	ld a, e
+	cp ORANGE_REGION
+	jr z, .done
+	dec e ; KANTO_REGION?
+	ld hl, wBGPals1 palette PAL_BG_WATER
+	jr z, .got_roof_pal
+	ld hl, wBGPals1 palette PAL_BG_RED
+.got_roof_pal
+	ld de, wBGPals1 palette PAL_BG_ROOF
+	ld bc, 1 palettes
+	call FarCopyColorWRAM
+.done
+	scf
 	ret
 
 MartSpecialCase:
