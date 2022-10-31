@@ -850,6 +850,7 @@ ENDM
 	map_attributes Route39RuggedRoadGate, ROUTE_39_RUGGED_ROAD_GATE, $0, 0
 	map_attributes SnowtopMountainInside, SNOWTOP_MOUNTAIN_INSIDE, $d5, 0
 	map_attributes SnowtopMountainOutside, SNOWTOP_MOUNTAIN_OUTSIDE, $0, 0
+	map_attributes SnowtopPokeCenter1F, SNOWTOP_POKECENTER_1F, $0, 0
 	map_attributes YellowForestGate, YELLOW_FOREST_GATE, $0, 0
 	map_attributes YellowForest, YELLOW_FOREST, $55, 0
 	map_attributes QuietCave1F, QUIET_CAVE_1F, $9, 0

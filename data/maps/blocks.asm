@@ -6,10 +6,12 @@ Route32PokeCenter1F_BlockData:
 AzaleaPokeCenter1F_BlockData:
 EcruteakPokeCenter1F_BlockData:
 OlivinePokeCenter1F_BlockData:
+SnowtopPokeCenter1F_BlockData:
 CianwoodPokeCenter1F_BlockData:
 MahoganyPokeCenter1F_BlockData:
 BlackthornPokeCenter1F_BlockData:
 SilverCavePokeCenter1F_BlockData:
+ShamoutiPokeCenter1F_BlockData:
 	INCBIN "maps/JohtoPokeCenter1F.ablk.lz"
 
 PokeCenter2F_BlockData:
@@ -26,7 +28,6 @@ CeladonPokeCenter1F_BlockData:
 SaffronPokeCenter1F_BlockData:
 FuchsiaPokeCenter1F_BlockData:
 CinnabarPokeCenter1F_BlockData:
-ShamoutiPokeCenter1F_BlockData:
 	INCBIN "maps/KantoPokeCenter1F.ablk.lz"
 
 KantoPokeCenter2F_BlockData:

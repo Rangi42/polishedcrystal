@@ -36,36 +36,20 @@ PokeCenter2FLeftColosseumTrigger:
 	end
 
 PokeCenter2FTileCallback:
-	callasm .CheckPokeCenter2FRegion
-	ifequalfwd $0, .done
-	ifequalfwd $2, .shamouti2f
+	callasm .CheckKanto
+	iffalsefwd .done
 	changemapblocks KantoPokeCenter2F_BlockData
 .done
 	endcallback
 
-.shamouti2f
-	changemapblocks KantoPokeCenter2F_BlockData
-	changeblock 0, 6, $3c
-	changeblock 2, 0, $4a
-	endcallback
-
-.CheckPokeCenter2FRegion:
-	call GetBackupLandmark
-	ld hl, hScriptVar
-	cp SHAMOUTI_LANDMARK
-	jr nc, .shamouti
-	cp KANTO_LANDMARK
-	jr nc, .kanto
-.johto
-	ld [hl], JOHTO_REGION
-	ret
-
-.kanto
-	ld [hl], KANTO_REGION
-	ret
-
-.shamouti
-	ld [hl], ORANGE_REGION
+.CheckKanto:
+	call RegionCheck
+	dec e ; KANTO_REGION?
+	ld a, TRUE
+	jr z, .ok
+	dec a ; FALSE
+.ok
+	ldh [hScriptVar], a
 	ret
 
 Script_LeftCableTradeCenter:

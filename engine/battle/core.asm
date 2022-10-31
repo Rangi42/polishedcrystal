@@ -6758,7 +6758,9 @@ GiveBattleEVs:
 .ev_overflow
 	ld a, 252
 .add_done
-	ld [hli], a
+	ld [hl], a
+	call .FixEVOverflow
+	inc hl
 	dec c
 	jr z, .done
 	; For Sat and Sdf, we want to use byte 2
@@ -6792,6 +6794,34 @@ GiveBattleEVs:
 	ret
 .item_sdf_up
 	set (6 - SP_DEFENSE), e ; 2
+	ret
+
+.FixEVOverflow:
+; Reduces [hl] if EV total exceeds 510.
+	; Only do this if we have the modern EV limit.
+	ld a, [wInitialOptions2]
+	and EV_OPTMASK
+	cp EVS_OPT_MODERN
+	ret nz
+
+	push hl
+	push bc
+
+	; Get current EV total.
+	push hl
+	farcall GetEVTotal
+	pop bc
+	jr nc, .ev_overflow_done
+
+	; GetEVTotal sets hl to (overflow - 1).
+	ld a, [bc]
+	sub l
+	dec a
+	ld [bc], a
+
+.ev_overflow_done
+	pop bc
+	pop hl
 	ret
 
 BoostExp:
