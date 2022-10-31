@@ -6,6 +6,7 @@ SnowtopMountainOutside_MapScriptHeader:
 
 	def_warp_events
 	warp_event  9, 31, SNOWTOP_MOUNTAIN_INSIDE, 2
+	warp_event 17, 33, SNOWTOP_POKECENTER_1F, 1
 
 	def_coord_events
 	coord_event 10, 28, 1, SnowtopMountainOutsideStopPanningScript

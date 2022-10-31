@@ -75,14 +75,25 @@ LoadSevenBGPalettes:
 PokeCenterSpecialCase:
 	ld hl, PokeCenterPalette
 	call LoadSevenBGPalettes
+	; Shamouti has the default orange floors
 	call RegionCheck
 	ld a, e
 	cp ORANGE_REGION
 	jr z, .done
-	dec e ; KANTO_REGION?
+	; Kanto has blue floors
 	ld hl, wBGPals1 palette PAL_BG_WATER
+	dec e ; KANTO_REGION?
 	jr z, .got_roof_pal
+	; Johto has red floors
 	ld hl, wBGPals1 palette PAL_BG_RED
+	ld a, [wMapGroup]
+	cp GROUP_SNOWTOP_POKECENTER_1F
+	jr nz, .got_roof_pal
+	ld a, [wMapNumber]
+	cp MAP_SNOWTOP_POKECENTER_1F
+	jr nz, .got_roof_pal
+	; Snowtop Mountain has brown floors
+	ld hl, wBGPals1 palette PAL_BG_BROWN
 .got_roof_pal
 	ld de, wBGPals1 palette PAL_BG_ROOF
 	ld bc, 1 palettes

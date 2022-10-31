@@ -184,6 +184,9 @@ ROMX $38
 ROMX $39
 	"bank39"
 
+ROMX $3A
+	"Pokemon Center Scripts 5"
+
 ROMX $3E
 	"bank3E"
 

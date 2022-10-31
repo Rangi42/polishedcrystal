@@ -273,6 +273,7 @@ EngineFlags:
 	engine_flag wPokemonJournals, 30 ; bill
 	engine_flag wPokemonJournals, 31 ; kurt
 	engine_flag wPokemonJournals, 32 ; mr.fuji
+	engine_flag wPokemonJournals, 33 ; prof.willow
 
 	engine_flag wStatusFlags3, 0 ; judge machine
 

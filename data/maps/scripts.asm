@@ -39,6 +39,11 @@ INCLUDE "maps/GoldenrodPokecomCenter1F.asm"
 INCLUDE "maps/GoldenrodPokecomCenterOffice.asm"
 
 
+SECTION "Pokemon Center Scripts 5", ROMX
+
+INCLUDE "maps/SnowtopPokeCenter1F.asm"
+
+
 SECTION "Special Map Scripts", ROMX
 
 INCLUDE "maps/PokeCenter2F.asm"
