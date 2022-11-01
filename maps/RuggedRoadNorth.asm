@@ -2,7 +2,7 @@ RuggedRoadNorth_MapScriptHeader:
 	def_scene_scripts
 
 	def_callbacks
-	callback MAPCALLBACK_TILES, RuggedRoadNorthBridgeCallback
+	callback MAPCALLBACK_TILES, RuggedRoadNorthFixBridgeCallback
 
 	def_warp_events
 	warp_event 10,  5, SNOWTOP_MOUNTAIN_INSIDE, 1
@@ -15,12 +15,41 @@ RuggedRoadNorth_MapScriptHeader:
 
 	def_object_events
 
-RuggedRoadNorthBridgeCallback:
-	callasm .RuggedRoadSouthBridgeUnderfoot
+RuggedRoadNorthFixBridgeCallback:
+	callasm .RuggedRoadSouthFixBridge
 	endcallback
 
-.RuggedRoadSouthBridgeUnderfoot:
-	ld a, $1
+.RuggedRoadSouthFixBridge:
+	ld hl, wPrevWarp
+	ld a, [hli]
+	cp 1
+	jr nz, .not_coming_from_hidden_grotto
+	assert wPrevWarp + 1 == wPrevMapGroup
+	ld a, [hli]
+	cp GROUP_HIDDEN_CAVE_GROTTO
+	jr nz, .not_coming_from_hidden_grotto
+	assert wPrevMapGroup + 1 == wPrevMapNumber
+	ld a, [hl]
+	cp MAP_HIDDEN_CAVE_GROTTO
+	jr nz, .not_coming_from_hidden_grotto
+	xor a ; overhead
+	jr .got_scene
+
+.not_coming_from_hidden_grotto
+	ld hl, wPrevWarp
+	ld a, [hli]
+	cp 1
+	ret nz
+	assert wPrevWarp + 1 == wPrevMapGroup
+	ld a, [hli]
+	cp GROUP_SNOWTOP_MOUNTAIN_INSIDE
+	ret nz
+	assert wPrevMapGroup + 1 == wPrevMapNumber
+	ld a, [hl]
+	cp MAP_SNOWTOP_MOUNTAIN_INSIDE
+	ret nz
+	ld a, $1 ; underfoot
+.got_scene
 	ld [wWalkingOnBridge], a
 	ld [wRuggedRoadSouthSceneID], a ; setscene a
 	ret

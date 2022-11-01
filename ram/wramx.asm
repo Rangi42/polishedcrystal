@@ -442,12 +442,14 @@ wCurPartyLevel:: db
 wScrollingMenuListSize:: dw
 
 ; used when following a map warp
+wFollowedWarpData::
 wNextWarp:: db
 wNextMapGroup:: db
 wNextMapNumber:: db
 wPrevWarp:: db
 wPrevMapGroup:: db
 wPrevMapNumber:: db
+wFollowedWarpDataEnd::
 
 wPlayerBGMapOffsetX:: db ; used in FollowNotExact; unit is pixels
 wPlayerBGMapOffsetY:: db ; used in FollowNotExact; unit is pixels
