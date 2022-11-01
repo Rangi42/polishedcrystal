@@ -66,6 +66,9 @@ TrainerClassNames::
 	li "Kimono Girl"      ; KIMONO_GIRL_3
 	li "Kimono Girl"      ; KIMONO_GIRL_4
 	li "Kimono Girl"      ; KIMONO_GIRL_5
+	li "Kimono Girl"      ; KIMONO_GIRL_6
+	li "Kimono Girl"      ; KIMONO_GIRL_7
+	li "Kimono Girl"      ; KIMONO_GIRL_8
 	li "Elder"            ; ELDER
 	li "Sr.& Jr."         ; SR_AND_JR
 	li "Couple"           ; COUPLE
@@ -96,6 +99,7 @@ TrainerClassNames::
 	li "Tamer"            ; TAMER
 	li "Artist"           ; ARTIST
 	li "Aroma Lady"       ; AROMA_LADY
+	li "Soldier"          ; SOLDIER
 	li "Waiter"           ; WAITER
 	li "Waitress"         ; WAITRESS
 	li "Sightseer"        ; SIGHTSEERM
@@ -140,7 +144,7 @@ TrainerClassNames::
 	li "Swimmer"          ; MARLON
 	li "Designer"         ; VALERIE
 	li "<PK><MN> Trainer" ; KUKUI
-	li "Tourist"          ; MELONY
+	li "Vocalist"         ; PIERS
 	li "Surfer"           ; VICTOR
 	li "#Maniac"          ; BILL_T
 	li "<PK><MN> Trainer" ; YELLOW

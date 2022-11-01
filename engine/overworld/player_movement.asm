@@ -126,9 +126,9 @@ DoPlayerMovement::
 
 .not_whirlpool
 	and $f0
-	cp $30 ; moving water
+	cp HI_NYBBLE_CURRENT
 	jr z, .water
-	cp $70 ; warps
+	cp HI_NYBBLE_WARPS
 	jr z, .warps
 	jr .no_walk
 
@@ -223,6 +223,10 @@ DoPlayerMovement::
 	call .CheckLandPerms
 	jr c, .bump
 
+	ld a, [wPanningAroundTinyMap]
+	and a
+	jr nz, .walk
+
 	call .CheckNPC
 	and a
 	jr z, .bump
@@ -240,7 +244,6 @@ DoPlayerMovement::
 	call .RunCheck
 	jr z, .run
 
-.DoNotRun
 ; Downhill riding is slower when not moving down.
 	call .BikeCheck
 	jr nz, .walk
@@ -342,7 +345,7 @@ DoPlayerMovement::
 	ld a, [wPlayerStandingTile]
 	ld e, a
 	and $f0
-	cp $a0 ; ledge
+	cp HI_NYBBLE_LEDGES
 	jr nz, .DontJump
 
 	ld a, e
@@ -352,8 +355,25 @@ DoPlayerMovement::
 	ld hl, .ledge_table
 	add hl, de
 	ld a, [wFacingDirection]
+	ld e, a
 	and [hl]
 	jr z, .DontJump
+
+	ld a, [wPlayerStandingMapX]
+	ld d, a
+	ld a, [wWalkingX]
+	add a
+	add d
+	ld d, a
+	ld a, [wPlayerStandingMapY]
+	ld e, a
+	ld a, [wWalkingY]
+	add a
+	add e
+	ld e, a
+	call GetCoordTile
+	call .CheckWalkable
+	jr c, .DontJump
 
 	ld de, SFX_JUMP_OVER_LEDGE
 	call PlaySFX
@@ -381,7 +401,7 @@ DoPlayerMovement::
 	ld a, [wPlayerStandingTile]
 	ld e, a
 	and $f0
-	cp $c0 ; sideways stairs
+	cp HI_NYBBLE_SIDEWAYS_STAIRS
 	jr nz, .DontStairs
 
 	ld a, e
@@ -794,15 +814,12 @@ endc
 	ret
 
 .BikeCheck:
-
 	ld a, [wPlayerState]
 	cp PLAYER_BIKE
 	ret z
 	cp PLAYER_SKATE
 	ret
 
-; Routine by Victoria Lacroix
-; https://github.com/VictoriaLacroix/pokecrystal/commit/ed7f525d642cb02e84e856f2e506d2a6425d95db
 .RunCheck:
 	; Check if we have regular movement active
 	ld a, [wPlayerState]
@@ -860,6 +877,9 @@ endc
 	ret
 
 .BumpSound:
+	ld a, [wPanningAroundTinyMap]
+	and a
+	ret nz
 
 	call CheckSFX
 	ret c

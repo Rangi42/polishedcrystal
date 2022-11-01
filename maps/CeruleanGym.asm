@@ -170,6 +170,7 @@ CeruleanGymHiddenMachinePart:
 	givekeyitem MACHINE_PART
 	opentext
 	writetext CeruleanGymFoundMachinePartText
+	special ShowKeyItemIcon
 	playsound SFX_ITEM
 	waitsfx
 	keyitemnotify

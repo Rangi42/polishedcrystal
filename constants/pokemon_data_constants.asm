@@ -5,7 +5,7 @@ rsset BASE_STATS
 DEF BASE_HP          rb
 DEF BASE_ATK         rb
 DEF BASE_DEF         rb
-DEF BASE_SPD         rb
+DEF BASE_SPE         rb
 DEF BASE_SAT         rb
 DEF BASE_SDF         rb
 DEF BASE_TYPES       rw
@@ -144,13 +144,13 @@ rsset MON_EVS
 DEF MON_HP_EV              rb
 DEF MON_ATK_EV             rb
 DEF MON_DEF_EV             rb
-DEF MON_SPD_EV             rb
+DEF MON_SPE_EV             rb
 DEF MON_SAT_EV             rb
 DEF MON_SDF_EV             rb
 DEF MON_DVS                rb NUM_STATS / 2
 rsset MON_DVS
 DEF MON_HP_ATK_DV          rb
-DEF MON_DEF_SPD_DV         rb
+DEF MON_DEF_SPE_DV         rb
 DEF MON_SAT_SDF_DV         rb
 DEF MON_PERSONALITY        rw
 DEF MON_SHINY      EQU MON_PERSONALITY
@@ -180,7 +180,7 @@ DEF MON_STATS              rw NUM_BATTLE_STATS
 rsset MON_STATS
 DEF MON_ATK                rw
 DEF MON_DEF                rw
-DEF MON_SPD                rw
+DEF MON_SPE                rw
 DEF MON_SAT                rw
 DEF MON_SDF                rw
 DEF PARTYMON_STRUCT_LENGTH EQU _RS
@@ -197,13 +197,13 @@ rsset SAVEMON_EVS
 DEF SAVEMON_HP_EV              rb
 DEF SAVEMON_ATK_EV             rb
 DEF SAVEMON_DEF_EV             rb
-DEF SAVEMON_SPD_EV             rb
+DEF SAVEMON_SPE_EV             rb
 DEF SAVEMON_SAT_EV             rb
 DEF SAVEMON_SDF_EV             rb
 DEF SAVEMON_DVS                rb NUM_STATS / 2
 rsset SAVEMON_DVS
 DEF SAVEMON_HP_ATK_DV          rb
-DEF SAVEMON_DEF_SPD_DV         rb
+DEF SAVEMON_DEF_SPE_DV         rb
 DEF SAVEMON_SAT_SDF_DV         rb
 DEF SAVEMON_PERSONALITY        rw
 DEF SAVEMON_SHINY      EQU SAVEMON_PERSONALITY
@@ -254,6 +254,9 @@ DEF MON_GENDER_F     EQU 7
 DEF MON_IS_EGG_F     EQU 6
 DEF MON_EXTSPECIES_F EQU 5
 
+; modern EV limit
+DEF MODERN_EV_LIMIT EQU 510
+
 ; shiny probability values
 DEF SHINY_NUMERATOR         EQU 16 ; 16/65536 = 1/4096
 DEF CHARMED_SHINY_NUMERATOR EQU 48 ; 48/65536 = 3/4096
@@ -303,17 +306,34 @@ DEF HOF_LENGTH EQU 1 + HOF_MON_LENGTH * PARTY_LENGTH + 1 ; win count, party, ter
 DEF NUM_HOF_TEAMS EQU 10
 
 ; evolution types (used in data/pokemon/evos_attacks.asm)
-	const_def 1
+	const_def
+	const EVOLVE_NONE ; only for Lyra's info
 	const EVOLVE_LEVEL
 	const EVOLVE_ITEM
 	const EVOLVE_HOLDING
 	const EVOLVE_HAPPINESS
-	const EVOLVE_STAT
+	const EVOLVE_STAT ; only for Tyrogue (no need for "EVOLVE_TYROGUE")
 	const EVOLVE_LOCATION
 	const EVOLVE_MOVE
 	const EVOLVE_EVS
-	const EVOLVE_CRIT
-	const EVOLVE_PARTY
+	const EVOLVE_CRIT ; only for Galarian Farfetch'd
+	const EVOLVE_PARTY ; only for Mantyke
+; multi_evo types for Lyra's info (used in data/pokemon/multiple_evos.asm)
+	const EVOLVE_EGG
+	const EVOLVE_PIKACHU
+	const EVOLVE_GLOOM
+	const EVOLVE_POLIWHIRL
+	const EVOLVE_SLOWPOKE
+	const EVOLVE_SLOWPOKE_GALARIAN
+	const EVOLVE_MAGNETON
+	const EVOLVE_EXEGGCUTE
+	const EVOLVE_CUBONE
+	const EVOLVE_SCYTHER
+	const EVOLVE_EEVEE
+	const EVOLVE_MIME_JR_
+	const EVOLVE_URSARING
+	const EVOLVE_STANTLER
+DEF NUM_EVOLVE_METHODS EQU const_value
 
 ; EVOLVE_HAPPINESS triggers
 	const_def 1
@@ -353,6 +373,7 @@ DEF LEVEL_FROM_BADGES EQU 178 ; allows ±77 in either direction
 	const TREEMON_SET_KANTO
 	const TREEMON_SET_LAKE
 	const TREEMON_SET_FOREST
+	const TREEMON_SET_APRICORNS
 	const TREEMON_SET_NOISY_FOREST
 	const TREEMON_SET_ROCK ; must be last
 DEF NUM_TREEMON_SETS EQU const_value

@@ -144,23 +144,6 @@ GetWildLocations:
 	dw KantoWaterWildMons
 	dw OrangeWaterWildMons
 
-.RoamMon:
-	ld a, [hli]
-	inc hl ; skip wRoamMon#Level
-	ld b, a
-	ld a, [wNamedObjectIndex]
-	cp b
-	ret nz
-	ld a, [hli]
-	ld b, a
-	ld a, [hl]
-	ld c, a
-;	call .AppendNest
-	ret nc
-	ld [de], a
-	inc de
-	ret
-
 TryWildEncounter::
 ; Try to trigger a wild encounter.
 	; Do this first, because this affects some abilities messing with encounter rate

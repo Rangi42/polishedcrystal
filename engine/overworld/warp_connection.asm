@@ -81,6 +81,11 @@ EnterMapConnection:
 	; fallthrough
 
 .not_dual
+	xor a
+	ld hl, wFollowedWarpData
+	ld bc, wFollowedWarpDataEnd - wFollowedWarpData
+	rst ByteFill
+
 	ld a, [wPlayerStepDirection]
 	and a
 	jmp z, EnterSouthConnection

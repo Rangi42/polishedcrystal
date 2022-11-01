@@ -23,8 +23,6 @@ ROM0
 	"lcd"
 	org $0050
 	"timer"
-	org $0057
-	"Unused Tileset Data"
 	org $0058
 	"serial"
 ;	org $0060
@@ -185,6 +183,9 @@ ROMX $38
 
 ROMX $39
 	"bank39"
+
+ROMX $3A
+	"Pokemon Center Scripts 5"
 
 ROMX $3E
 	"bank3E"

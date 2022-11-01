@@ -55,11 +55,12 @@ DEF MOVE_LENGTH EQU _RS
 ; indexes for:
 ; - wPlayerStats and wEnemyStats (see wram.asm)
 ; - party_struct and battle_struct members (see macros/wram.asm)
+; - GetStatString arguments (see data/battle/stat_strings.asm)
 	const_def 1
 	const STAT_HP
 	const STAT_ATK
 	const STAT_DEF
-	const STAT_SPD
+	const STAT_SPE
 	const STAT_SATK
 	const STAT_SDEF
 DEF NUM_STATS EQU const_value - 1
@@ -325,7 +326,7 @@ DEF PERFECT_DVS EQUS "$ff, $ff, $ff"
 
 ; $00 is used instead of $ff for DVs because $ff is the end-of-trainer marker
 ; ReadTrainerParty converts $00 to $ff when reading DVs
-; DV order: hp:atk, def:spd, sat:sdf
+; DV order: hp:atk, def:spe, sat:sdf
 DEF FAKE_PERFECT_DVS EQUS "$00, $00, $00"
 DEF DVS_TRICK_ROOM   EQUS "$00, $f0, $00"
 

@@ -5,16 +5,19 @@ Route44_MapScriptHeader:
 
 	def_warp_events
 	warp_event 56,  7, ICE_PATH_1F, 1
+	warp_event 30,  8, HIDDEN_TREE_GROTTO, 1
 
 	def_coord_events
 
 	def_bg_events
 	bg_event 53,  7, BGEVENT_JUMPTEXT, Route44Sign1Text
 	bg_event  6, 10, BGEVENT_JUMPTEXT, Route44Sign2Text
-	bg_event 32,  9, BGEVENT_ITEM + ELIXIR, EVENT_ROUTE_44_HIDDEN_ELIXIR
+	bg_event 33,  9, BGEVENT_ITEM + ELIXIR, EVENT_ROUTE_44_HIDDEN_ELIXIR
+	bg_event 30,  7, BGEVENT_JUMPSTD, treegrotto, HIDDENGROTTO_ROUTE_44
+	bg_event 31,  7, BGEVENT_JUMPSTD, treegrotto, HIDDENGROTTO_ROUTE_44
 
 	def_object_events
-	object_event 32,  8, SPRITE_VETERAN_M, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, Route44VeteranmScript, -1
+	object_event 33,  8, SPRITE_VETERAN_M, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, Route44VeteranmScript, -1
 	object_event 35,  3, SPRITE_FISHER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_TRAINER, 1, TrainerFisherWilton1, -1
 	object_event 19, 13, SPRITE_FISHER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 1, GenericTrainerFisherEdgar, -1
 	object_event 10,  9, SPRITE_PSYCHIC, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 3, GenericTrainerPsychicPhil, -1
@@ -23,7 +26,7 @@ Route44_MapScriptHeader:
 	object_event 41, 15, SPRITE_ACE_TRAINER_M, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 5, GenericTrainerCooltrainermAllen, -1
 	object_event 31, 14, SPRITE_ACE_TRAINER_F, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 5, GenericTrainerCooltrainerfCybil, -1
 	fruittree_event  9,  5, FRUITTREE_ROUTE_44, ASPEAR_BERRY, PAL_NPC_BROWN
-	itemball_event 30,  8, MAX_REVIVE, 1, EVENT_ROUTE_44_MAX_REVIVE
+	itemball_event 29,  9, MAX_REVIVE, 1, EVENT_ROUTE_44_MAX_REVIVE
 	itemball_event 45,  4, ULTRA_BALL, 1, EVENT_ROUTE_44_ULTRA_BALL
 	itemball_event 14,  9, MAX_REPEL, 1, EVENT_ROUTE_44_MAX_REPEL
 

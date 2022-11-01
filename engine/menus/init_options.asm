@@ -11,7 +11,7 @@ SetInitialOptions:
 	call DelayFrames
 
 	call ClearBGPalettes
-	call LoadFontsExtra
+	call LoadFrame
 
 	hlcoord 0, 0
 	ld bc, SCREEN_HEIGHT * SCREEN_WIDTH
@@ -93,7 +93,7 @@ SetInitialOptions:
 	dec d
 	jr nz, .select_start_loop
 
-;	ld a, CGB_DIPLOMA
+;	ld a, CGB_PLAIN
 ;	call GetCGBLayout
 ;	call SetPalettes
 

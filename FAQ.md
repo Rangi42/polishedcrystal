@@ -67,6 +67,8 @@ The game's [data files](data/) do a fairly good job of listing things you'll wan
 
 For information that's not all in one file, like [faithful version differences](https://github.com/Rangi42/polishedcrystal/search?q=DEF+FAITHFUL), you can use GitHub's search in this repository.
 
+You can also just use in-game features! The Pokédex has a lot more information, including base stats and detailed wild locations.
+
 
 ### Why is shiny Gyarados gold? Is the red Gyarados shiny?
 
@@ -107,6 +109,7 @@ Their animations in battle still depend on the Pokémon using them, e.g. Chansey
 
 ### How do I evolve my Pokémon?
 
+* Ask Lyra! She gives you her phone number when you reach the Day-Care on Route 34.
 * Gen 1's trade evolutions now evolve by having at least five vitamins' worth of EVs in the right stat: Machoke into Machamp with Attack EVs (from Protein), Graveler into Golem with Defense (from Iron), Haunter into Gengar with Speed (from Carbos), and Kadabra into Alakazam with Special Attack (from Calcium).
 * Item trade evolutions (like Seadra into Kingdra while holding a Dragon Scale) now evolve while holding the item.
 * Yanma, Tangela, and Piloswine evolve while knowing AncientPower.

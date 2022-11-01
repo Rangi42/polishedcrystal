@@ -665,9 +665,9 @@ CheckFlyAllowedOnMap:
 	ld a, e
 	cp ORANGE_REGION
 	jr nz, .not_orange
-	assert ORANGE_REGION != 0
-	and a ; nz
-	ret
+	ld a, [wVisitedSpawns + SPAWN_SHAMOUTI / 8]
+	bit SPAWN_SHAMOUTI % 8, a
+	jr z, .no_fly
 .not_orange
 	call GetMapEnvironment
 	call CheckOutdoorMap
@@ -1389,13 +1389,25 @@ AutoHeadbuttScript:
 	callasm TreeItemEncounter
 	iffalsefwd .no_item
 	opentext
-	farwritetext _ReceivedItemText
+	farwritetext _FoundWingsText
+	callasm .ShowWingIcon
 	specialsound
 	waitbutton
 	endtext
 
 .no_item
 	farjumptext _HeadbuttNothingText
+
+.ShowWingIcon:
+	ld a, [wCurWing]
+	push af
+	ld hl, WingIcon
+	lb bc, BANK(WingIcon), 9
+	farcall DecompressItemIconForOverworld
+	pop af
+	ld bc, WingIconPalettes
+	farcall LoadIconPalette
+	farjp PrintOverworldItemIcon
 
 TryHeadbuttOW::
 	lb de, HEADBUTT, -1 ; you need the tutor for Headbutt

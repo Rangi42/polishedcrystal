@@ -1,4 +1,6 @@
 DEF NAMINGSCREEN_BORDER EQU $60
+DEF NAMINGSCREEN_MALE EQU $6b
+DEF NAMINGSCREEN_FEMALE EQU $6c
 DEF NAMINGSCREEN_CURSOR EQU $7e
 
 DEF NAMINGSCREEN_MIDDLELINE EQU "′"
@@ -78,9 +80,9 @@ NamingScreen:
 	ld [hl], "/"
 	farcall GetGender
 	jr c, .genderless
-	ld a, "♂"
+	ld a, NAMINGSCREEN_MALE
 	jr nz, .place_gender
-	ld a, "♀"
+	ld a, NAMINGSCREEN_FEMALE
 .place_gender
 	hlcoord 1, 2
 	ld [hl], a
@@ -199,13 +201,7 @@ NamingScreen:
 
 NamingScreen_InitText:
 	call WaitTop
-	hlcoord 0, 0
-	ld bc, SCREEN_WIDTH * SCREEN_HEIGHT
-	ld a, NAMINGSCREEN_BORDER
-	rst ByteFill
-	hlcoord 1, 1
-	lb bc, 4, 18
-	call ClearBox
+	call NamingScreen_DrawBorders
 	ld a, [wOptions3]
 	bit QWERTY_KEYBOARD_F, a
 	ld de, NameInputUpper
@@ -216,12 +212,9 @@ NamingScreen_ApplyTextInputMode:
 	hlcoord 1, 6
 	lb bc, 9, 18
 	call ClearBox
-	hlcoord 1, 16
-	lb bc, 1, 18
-	call ClearBox
 	pop de
 	hlcoord 2, 6
-	ld b, $6
+	ld b, $5
 
 .row
 	ld c, $11
@@ -287,8 +280,24 @@ NamingScreenJoypadLoop:
 	dw .ReadButtons
 
 .InitCursor:
+	ld d, SPRITE_ANIM_INDEX_NAMING_SCREEN_CURSOR
+	ld a, [wNamingScreenType]
+	cp $4 ; box?
+	jr nz, .got_cursor
+	farcall GetBoxTheme
+	ld d, SPRITE_ANIM_INDEX_NAMING_SCREEN_CURSOR_BLUE
+	cp THEME_TRUTH
+	jr z, .got_cursor
+	cp THEME_FIRE
+	jr z, .got_cursor
+	cp THEME_ELECTRIC
+	jr z, .got_cursor
+	cp THEME_FAIRY
+	jr z, .got_cursor
+	ld d, SPRITE_ANIM_INDEX_NAMING_SCREEN_CURSOR
+.got_cursor
+	ld a, d
 	depixel 8, 3
-	ld a, SPRITE_ANIM_INDEX_NAMING_SCREEN_CURSOR
 	call InitSpriteAnimStruct
 	ld a, c
 	ld [wNamingScreenCursorObjectPointer], a
@@ -707,13 +716,17 @@ LoadNamingScreenGFX:
 	call ClearSprites
 	call ClearSpriteAnims
 	call LoadStandardFont
-	call LoadFontsExtra
+	call LoadFrame
 
-	ld de, vTiles2 tile NAMINGSCREEN_BORDER
 	ld hl, NamingScreenGFX_Border
-	ld bc, 1 tiles
-	ld a, BANK(NamingScreenGFX_Border)
-	call FarCopyBytes
+	ld de, vTiles2 tile NAMINGSCREEN_BORDER
+	call Decompress
+
+	; Gender symbols
+	ld hl, BattleExtrasGFX
+	ld de, vTiles2 tile NAMINGSCREEN_MALE
+	lb bc, BANK(BattleExtrasGFX), 2
+	call DecompressRequest2bpp
 
 	ld de, vTiles0 tile NAMINGSCREEN_CURSOR
 	ld hl, NamingScreenGFX_Cursor
@@ -745,7 +758,7 @@ LoadNamingScreenGFX:
 	ret
 
 NamingScreenGFX_Border:
-INCBIN "gfx/naming_screen/naming_border.2bpp"
+INCBIN "gfx/naming_screen/naming_border.2bpp.lz"
 
 NamingScreenGFX_Cursor:
 INCBIN "gfx/naming_screen/naming_cursor.2bpp"
@@ -806,14 +819,11 @@ _ComposeMailMessage:
 	ld a, LCDC_DEFAULT
 	ldh [rLCDC], a
 	call .initwNamingScreenMaxNameLength
-	ld a, CGB_DIPLOMA
+	ld a, CGB_MAIL
 	call GetCGBLayout
 	call ApplyTilemapInVBlank
 	call WaitTop
-	ld a, %11100100
-	call DmgToCgbBGPals
-	ld a, %11100100
-	call DmgToCgbObjPal0
+	call SetPalettes
 	call NamingScreen_InitNameEntry
 	ld hl, wNamingScreenDestinationPointer
 	ld e, [hl]
@@ -834,17 +844,7 @@ INCBIN "gfx/naming_screen/mail.2bpp.lz"
 
 .InitCharset:
 	call WaitTop
-	hlcoord 0, 0
-	ld bc, 6 * SCREEN_WIDTH
-	ld a, NAMINGSCREEN_BORDER
-	rst ByteFill
-	hlcoord 0, 6
-	ld bc, 12 * SCREEN_WIDTH
-	ld a, " "
-	rst ByteFill
-	hlcoord 1, 1
-	lb bc, 4, SCREEN_WIDTH - 2
-	call ClearBox
+	call NamingScreen_DrawBorders
 	ld a, [wOptions3]
 	bit QWERTY_KEYBOARD_F, a
 	ld de, MailEntry_Uppercase
@@ -852,8 +852,8 @@ INCBIN "gfx/naming_screen/mail.2bpp.lz"
 	ld de, MailEntryQwerty_Uppercase
 
 .PlaceMailCharset:
-	hlcoord 1, 7
-	ld b, 6
+	hlcoord 1, 6
+	ld b, 5
 .next
 	ld c, SCREEN_WIDTH - 1
 .loop_
@@ -915,8 +915,16 @@ INCBIN "gfx/naming_screen/mail.2bpp.lz"
 	dw .process_joypad
 
 .init_blinking_cursor
-	depixel 9, 2
-	ld a, SPRITE_ANIM_INDEX_COMPOSE_MAIL_CURSOR
+	ld d, SPRITE_ANIM_INDEX_COMPOSE_MAIL_CURSOR_BLUE
+	ld a, [wCurItem]
+	cp LITEBLUEMAIL
+	jr z, .got_cursor
+	cp EON_MAIL
+	jr z, .got_cursor
+	ld d, SPRITE_ANIM_INDEX_COMPOSE_MAIL_CURSOR
+.got_cursor
+	ld a, d
+	depixel 8, 2
 	call InitSpriteAnimStruct
 	ld a, c
 	ld [wNamingScreenCursorObjectPointer], a
@@ -1064,7 +1072,7 @@ ComposeMail_AnimateCursor:
 	db $00, $10, $20, $30, $40, $50, $60, $70, $80, $90
 
 .CaseDelEnd:
-	db $00, $00, $00, $30, $30, $30, $60, $60, $60, $60
+	db $08, $08, $08, $38, $38, $38, $68, $68, $68, $68
 
 .GetDPad:
 	ld hl, hJoyLast
@@ -1205,3 +1213,41 @@ MailComposition_TryAddLastCharacter:
 	ld a, [wNamingScreenLastCharacter]
 	jmp MailComposition_TryAddCharacter
 
+NamingScreen_DrawBorders:
+	; message area
+	hlcoord 0, 0
+	lb bc, 4, SCREEN_WIDTH - 2
+	call .DrawBox
+
+	; input characters
+	ld a, " "
+	hlcoord 0, 6
+	ld bc, SCREEN_WIDTH * 9
+	rst ByteFill
+
+	; Shift/Del/End
+	hlcoord 0, SCREEN_HEIGHT - 3
+	lb bc, 1, SCREEN_WIDTH - 2
+	call .DrawBox
+	hlcoord 2, SCREEN_HEIGHT - 2
+	ld de, .ShiftDelEnd
+	rst PlaceString
+	ret
+
+.DrawBox:
+	ld de, .Frame
+	jmp CreateBoxBorders
+
+.Frame:
+	db NAMINGSCREEN_BORDER
+	db NAMINGSCREEN_BORDER + 1
+	db NAMINGSCREEN_BORDER + 2
+	db NAMINGSCREEN_BORDER + 3
+	db " "
+	db NAMINGSCREEN_BORDER + 4
+	db NAMINGSCREEN_BORDER + 5
+	db NAMINGSCREEN_BORDER + 6
+	db NAMINGSCREEN_BORDER + 7
+
+.ShiftDelEnd:
+	db "Shift  Del   End@"

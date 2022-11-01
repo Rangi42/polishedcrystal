@@ -65,14 +65,12 @@ PickBerryScript:
 	text_end
 
 .ShowBerryIcon:
-	ld a, [wCurFruitTree]
-	push af
 	ld a, [wCurFruit]
-	ld [wItemBallItemID], a
-	call FindItemInBallScript.ShowItemIcon
+	push af
+	call LoadItemIconForOverworld
 	pop af
-	ld [wCurFruitTree], a
-	ret
+	farcall LoadItemIconPaletteFromA
+	jmp PrintOverworldItemIcon
 
 PickApricornScript:
 	checkkeyitem APRICORN_BOX
@@ -130,8 +128,11 @@ PickApricornScript:
 
 .ShowApricornIcon:
 	ld a, [wCurFruit]
+	push af
 	call LoadApricornIconForOverworld
-	farcall LoadApricornIconPalette
+	pop af
+	ld bc, ApricornIconPalettes - PAL_COLOR_SIZE * 2
+	farcall LoadIconPalette
 	jmp PrintOverworldItemIcon
 
 CheckFruitTree:

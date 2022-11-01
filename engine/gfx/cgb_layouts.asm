@@ -21,7 +21,7 @@ LoadCGBLayout::
 	dw _CGB_Pokedex
 	dw _CGB_Pokedex_PrepareOnly
 	dw _CGB_SlotMachine
-	dw _CGB_Diploma
+	dw _CGB_Plain
 	dw _CGB_MapPals
 	dw _CGB_PartyMenu
 	dw _CGB_Evolution
@@ -41,7 +41,9 @@ LoadCGBLayout::
 	dw _CGB_TrainerOrMonFrontpicPals
 	dw _CGB_JudgeSystem
 	dw _CGB_NamingScreen
+	dw _CGB_Mail
 	dw _CGB_FlyMap
+	dw _CGB_NewDiploma
 	assert_table_length NUM_CGB_LAYOUTS - 2 ; discount CGB_RAM and CGB_PARTY_MENU_HP_PALS
 
 _CGB_BattleGrayscale:
@@ -256,12 +258,9 @@ _CGB_FinishBattleScreenLayout:
 	call FillBoxWithByte
 
 	ld a, PAL_BATTLE_BG_EXP_GENDER
-	hlcoord 1, 1, wAttrmap
-	ld [hl], a
-	hlcoord 8, 1, wAttrmap
-	ld [hl], a
-	hlcoord 18, 8, wAttrmap
-	ld [hl], a
+	ldcoord_a 1, 1, wAttrmap
+	ldcoord_a 8, 1, wAttrmap
+	ldcoord_a 18, 8, wAttrmap
 
 	hlcoord 12, 8, wAttrmap
 	lb bc, 1, 2
@@ -476,28 +475,63 @@ _CGB_SlotMachine:
 
 	jmp _CGB_FinishLayout
 
-_CGB_Diploma:
-	ld hl, DiplomaPals
+_CGB_Plain:
+	ld b, 8
 	ld de, wBGPals1
-	ld c, 16 palettes
-	call LoadPalettes
-
-	ld de, wBGPals1
-	ld hl, DiplomaPalette
+.loop
+	ld hl, Gen1Palette
 	call LoadOnePalette
+	dec b
+	jr nz, .loop
+
+	; de == wOBPals1
+	ld hl, PokegearOBPals
+	ld c, 8 palettes
+	call LoadPalettes
 
 	call WipeAttrMap
 	jmp ApplyAttrMap
 
 _CGB_NamingScreen:
-	ld hl, DiplomaPals
-	ld de, wBGPals1
-	ld c, 16 palettes
-	call LoadPalettes
+	ld a, [wNamingScreenType]
+	cp $4 ; box?
+	ld a, THEME_STANDARD
+	jr nz, .got_theme
+	farcall GetBoxTheme
+.got_theme
+	call GetBillsPCThemePalette
 
-	ld de, wBGPals1
-	ld hl, DiplomaPalette
-	call LoadOnePalette
+	ldh a, [rSVBK]
+	push af
+	ld a, BANK("GBC Video")
+	ldh [rSVBK], a
+
+	push hl
+	ld hl, GenderAndExpBarPals
+	ld de, wBGPals1 + 2
+	ld c, 2 * 2
+	call LoadColorBytes
+	pop hl
+	ld c, 4 * 2
+	call LoadColorBytes
+	ld hl, WhiteColor
+	ld de, wBGPals1 palette 1 + 6
+	call LoadOneColor
+
+	ld hl, wBGPals1 palette 1
+	ld de, wBGPals1 palette 2
+	call LoadOneColor
+	ld hl, wBGPals1 + 6
+	ld de, wBGPals1 palette 2 + 6
+	call LoadOneColor
+
+	pop af
+	ldh [rSVBK], a
+
+	ld hl, PokegearOBPals
+	ld de, wOBPals1
+	ld c, 8 palettes
+	call LoadPalettes
 
 	ld a, [wNamingScreenType]
 	and a
@@ -512,8 +546,96 @@ _CGB_NamingScreen:
 	call LoadPartyMonPalette
 .not_pokemon
 
-	call WipeAttrMap
+	; message area + Shift/Del/End
+	ld a, $1
+	hlcoord 0, 0, wAttrmap
+	ld bc, SCREEN_WIDTH * SCREEN_HEIGHT
+	rst ByteFill
+	; input characters
+	inc a
+	hlcoord 0, 6, wAttrmap
+	ld c, SCREEN_WIDTH * 9
+	rst ByteFill
+
+	call FillNamingScreenTextBoxes
+
+	; gender icon
+	xor a
+	ldcoord_a 1, 2, wAttrmap
+
 	jmp ApplyAttrMap
+
+_CGB_Mail:
+	ld a, [wCurItem]
+	sub FIRST_MAIL
+	call LoadMailPalettes
+
+	ldh a, [rSVBK]
+	push af
+	ld a, $5
+	ldh [rSVBK], a
+
+	ld hl, wBGPals1
+	ld de, wBGPals1 palette 1
+	call LoadOneColor
+	ld hl, wBGPals1
+	ld de, wBGPals1 palette 2
+	call LoadOneColor
+	ld hl, wBGPals1 + 2
+	ld de, wBGPals1 palette 2 + 4
+	call LoadOneColor
+	ld hl, wBGPals1 + 4
+	ld de, wBGPals1 palette 1 + 4
+	call LoadOneColor
+	ld hl, wBGPals1 + 6
+	ld de, wBGPals1 palette 1 + 2
+	call LoadOneColor
+	ld hl, wBGPals1 + 6
+	ld de, wBGPals1 palette 2 + 2
+	call LoadOneColor
+	ld hl, WhiteColor
+	ld de, wBGPals1 palette 1 + 6
+	call LoadOneColor
+	ld hl, WhiteColor
+	ld de, wBGPals1 palette 2 + 6
+	call LoadOneColor
+
+	ld hl, PokegearOBPals
+	ld de, wOBPals1
+	ld c, 8 palettes
+	call LoadColorBytes
+
+	pop af
+	ldh [rSVBK], a
+
+	; message area
+	ld a, $1
+	hlcoord 0, 0, wAttrmap
+	ld bc, SCREEN_WIDTH * 6
+	rst ByteFill
+	; input characters
+	xor a
+	ld c, SCREEN_WIDTH * 9
+	rst ByteFill
+	; Shift/Del/End
+	ld a, $2
+	ld c, SCREEN_WIDTH * 3
+	rst ByteFill
+
+	call FillNamingScreenTextBoxes
+
+	jmp ApplyAttrMap
+
+FillNamingScreenTextBoxes:
+	; Shift/Del/End
+	ld a, $7
+	hlcoord 1, SCREEN_HEIGHT - 2, wAttrmap
+	ld bc, SCREEN_WIDTH - 2
+	rst ByteFill
+	; message area
+	hlcoord 1, 1, wAttrmap
+	lb bc, 4, SCREEN_WIDTH - 2
+	jmp FillBoxWithByte
 
 _CGB_MapPals:
 	call LoadMapPals
@@ -707,16 +829,11 @@ endr
 	ld [hl], a
 
 	ld a, $1
-	hlcoord 7, 2, wAttrmap
-	ld [hl], a
-	hlcoord 7, 4, wAttrmap
-	ld [hl], a
-	hlcoord 7, 6, wAttrmap
-	ld [hl], a
-	hlcoord 7, 8, wAttrmap
-	ld [hl], a
-	hlcoord 7, 10, wAttrmap
-	ld [hl], a
+	ldcoord_a 7, 2, wAttrmap
+	ldcoord_a 7, 4, wAttrmap
+	ldcoord_a 7, 6, wAttrmap
+	ldcoord_a 7, 8, wAttrmap
+	ldcoord_a 7, 10, wAttrmap
 	hlcoord 0, 2, wAttrmap
 	lb bc, 5, 5
 	call FillBoxWithByte
@@ -959,40 +1076,47 @@ LoadFirstTwoTrainerCardPals:
 _CGB_BillsPC:
 	farcall GetBoxTheme
 BillsPC_PreviewTheme:
-	; hl = BillsPC_ThemePals + a * 6 * 2
-	add a
-	add a
-	ld e, a
-	ld d, 0
-	ld hl, BillsPC_ThemePals
-	add hl, de
-	add hl, de
-	add hl, de
-	ld de, wBGPals1
-	ld c, 1 * 2
-	call LoadPalettes
+	call GetBillsPCThemePalette
+
+	ldh a, [rSVBK]
+	push af
+	ld a, BANK("GBC Video")
+	ldh [rSVBK], a
+
 	push hl
+	ld de, wBGPals1 + 2
 	ld hl, GenderAndExpBarPals
 	ld c, 2 * 2
-	call LoadPalettes
+	call LoadColorBytes
 	push de
 	ld hl, PokerusAndShinyPals
 	ld de, wBillsPC_PokerusShinyPal
 	ld c, 2 * 2
-	call LoadPalettes
-
+	call LoadColorBytes
 	; Prevents flickering shiny+pokerus background
 	ld hl, wBGPals1 palette 0
 	ld de, wBGPals1 palette 3
-	ld c, 1 * 2
-	call LoadPalettes
+	call LoadOneColor
 	pop de
 	pop hl
-	ld c, 5 * 2
-	call LoadPalettes
+	ld c, 4 * 2
+	call LoadColorBytes
+	ld hl, WhitePalette 
+	ld de, wBGPals1 palette 1 + 3 * 2
+	call LoadOneColor
+	ld hl, wBGPals1 palette 1
+	ld de, wBGPals1 palette 0
+	call LoadOneColor
+
+	pop af
+	ldh [rSVBK], a
+
 	ld a, [wBillsPC_ApplyThemePals]
 	and a
-	jr nz, .apply_pals
+	jr z, .ob_pals
+	farjp BillsPC_SetPals
+
+.ob_pals
 	ld de, wOBPals1 palette 1
 	ld hl, .CursorPal
 	push hl
@@ -1002,12 +1126,9 @@ BillsPC_PreviewTheme:
 	ld hl, .PackPal
 	ld de, wOBPals1 palette 4
 	call LoadOnePalette
-	ld hl, .WhitePal
+	ld hl, WhitePalette
 	ld de, wOBPals1 palette 6
 	jmp LoadOnePalette
-
-.apply_pals
-	farjp BillsPC_SetPals
 
 .CursorPal:
 ; Coloring is fixed up later.
@@ -1036,18 +1157,17 @@ else
 	RGB_MONOCHROME_BLACK
 endc
 
-.WhitePal:
-if !DEF(MONOCHROME)
-	RGB 31, 31, 31
-	RGB 31, 31, 31
-	RGB 31, 31, 31
-	RGB 31, 31, 31
-else
-	RGB_MONOCHROME_WHITE
-	RGB_MONOCHROME_WHITE
-	RGB_MONOCHROME_WHITE
-	RGB_MONOCHROME_WHITE
-endc
+GetBillsPCThemePalette:
+	; hl = BillsPC_ThemePals + a * 4 * 2
+	assert NUM_BILLS_PC_THEMES <= 64
+	add a
+	add a
+	ld e, a
+	ld d, 0
+	ld hl, BillsPC_ThemePals
+	add hl, de
+	add hl, de
+	ret
 
 _CGB_UnownPuzzle:
 	ld de, wBGPals1
@@ -1223,6 +1343,27 @@ else
 	MONOCHROME_RGB_FOUR
 endc
 
+_CGB_NewDiploma:
+	ld hl, DiplomaPals
+	ld de, wBGPals1
+	ld c, 4 palettes
+	call LoadPalettes
+
+	call WipeAttrMap
+
+	hlcoord 3, 2, wAttrmap
+	lb bc, 2, 14
+	ld a, $1
+	call FillBoxWithByte
+
+	hlcoord 2, 4, wAttrmap
+	ld a, $2
+	ldcoord_a 17, 6, wAttrmap
+	lb bc, 8, 15
+	call FillBoxWithByte
+
+	jmp ApplyAttrMap
+
 _CGB_PlayerOrMonFrontpicPals:
 	ld de, wBGPals1
 	ld a, [wCurPartySpecies]
@@ -1311,7 +1452,7 @@ _CGB_JudgeSystem:
 	ld c, STAT_DEF
 	hlcoord 17, 14, wAttrmap
 	call .FillStat
-	ld c, STAT_SPD
+	ld c, STAT_SPE
 	hlcoord 12, 16, wAttrmap
 	call .FillStat
 	ld c, STAT_SDEF

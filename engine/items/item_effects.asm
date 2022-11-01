@@ -311,6 +311,9 @@ KeyItemEffects:
 	dw IsntTheTimeMessage ; ORANGETICKET
 	dw IsntTheTimeMessage ; MYSTICTICKET
 	dw IsntTheTimeMessage ; OLD_SEA_MAP
+	dw IsntTheTimeMessage ; EERIE_LURE
+	dw IsntTheTimeMessage ; TOUGH_LURE
+	dw IsntTheTimeMessage ; MALIGN_LURE
 	dw IsntTheTimeMessage ; SHINY_CHARM
 	dw IsntTheTimeMessage ; OVAL_CHARM
 	dw IsntTheTimeMessage ; CATCH_CHARM
@@ -679,16 +682,22 @@ endc
 
 	farcall UpdateStorageBoxMonFromTemp
 	farcall CurBoxFullCheck
+
+	push af
+	call SpeechTextbox
+	call ApplyAttrAndTilemapInVBlank
+	pop af
+
 	jr z, .box_not_full
 	ld hl, Text_CurBoxFull
 	push bc
-	call PrintText
+	call PrintTextNoBox
 	pop bc
 
 .box_not_full
 	farcall GetCurBoxName
 	ld hl, Text_SentToBillsPC
-	call PrintText
+	call PrintTextNoBox
 
 	ld c, 15
 	call FadeToWhite
@@ -912,19 +921,14 @@ VitaminEffect:
 	jmp c, ItemNotUsed_ExitMenu
 
 	call SetUpEVModifier
-	add hl, bc
-	ld a, [hl]
-	cp 252
-	jmp nc, WontHaveAnyEffectMessage
-
-	add 10
-	jr c, .set_to_max
-	cp 252 + 1
-	jr c, .ev_value_ok
-.set_to_max
-	ld a, 252
+	ld a, 10
+	call CheckEVCap
+	jr nc, .ev_value_ok
+	and a
+	jmp z, WontHaveAnyEffectMessage
 
 .ev_value_ok
+	add [hl]
 	ld [hl], a
 	call UpdatePkmnStats
 	call GetStatStringAndPlayFullHealSFX
@@ -950,7 +954,7 @@ SetUpEVModifier:
 CheckEVCap:
 ; Take the EV amount in a with the stat in c, and clamp a to the max
 ; amount of EVs we can give for the given stat, if a exceeds it.
-; Returns carry if a was modified.
+; Returns the relevant EV in hl. Returns carry if a was modified.
 	push bc
 	ld b, a
 	ld a, MON_EVS
@@ -961,11 +965,10 @@ CheckEVCap:
 	ld a, 252
 	sub [hl]
 	cp b
-	ld l, a
+	jr c, .modified
 	ld a, b
+.modified
 	pop bc
-	ret nc
-	ld a, l
 	ret
 
 GetStatStringAndPlayFullHealSFX:
@@ -975,31 +978,19 @@ GetStatStringAndPlayFullHealSFX:
 GetStatString:
 	call GetEVRelativePointer
 _GetStatString:
+	ld de, wStringBuffer2
 	ld hl, StatStrings
 	add hl, bc
 	add hl, bc
+GetStatStringForLyra:
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
-	ld de, wStringBuffer2
 	ld bc, ITEM_NAME_LENGTH
 	rst CopyBytes
 	ret
 
-StatStrings:
-	dw .health
-	dw .attack
-	dw .defense
-	dw .speed
-	dw .spcl_atk
-	dw .spcl_def
-
-.health   db "Health@"
-.attack   db "Attack@"
-.defense  db "Defense@"
-.speed    db "Speed@"
-.spcl_atk db "Spcl.Atk@"
-.spcl_def db "Spcl.Def@"
+INCLUDE "data/battle/stat_strings.asm"
 
 GetEVRelativePointer:
 	ld a, [wCurItem]
@@ -1913,6 +1904,10 @@ WingCase_MonSelected:
 	ld [wItemQuantityBuffer], a
 
 	push bc
+	; This doubles as a "blank previous text".
+	hlcoord 1, 16
+	ld de, .UseHowManyText
+	rst PlaceString
 	farcall SelectWingQuantity
 	pop bc
 	jr c, .done
@@ -1983,18 +1978,32 @@ WingCase_MonSelected:
 
 .WingMenu:
 	db MENU_BACKUP_TILES
-	menu_coords 7, 1, 18, 13
+	menu_coords 7, 1, 18, 14
 	dw .MenuData
 	db 1 ; default option
 
 .MenuData:
 	db $20
-	db 6, 7
+	db 7, 7
 	db SCROLLINGMENU_ITEMS_NORMAL
-	dba WingMenuItems
+	dba .MenuItems
 	dba .DisplayWingName
 	dba .DisplayWingAmount
 	dba .DisplayWingDesc
+
+.MenuItems:
+; Note that the order doesn't match the internal index order,
+; because Swift Wing (Speed) is last.
+	db NUM_WINGS
+	table_width 1
+	db HEALTH_WING
+	db MUSCLE_WING
+	db RESIST_WING
+	db GENIUS_WING
+	db CLEVER_WING
+	db SWIFT_WING
+	assert_table_length NUM_WINGS
+	db -1
 
 .DisplayWingName:
 	ld hl, WingNames
@@ -2029,14 +2038,8 @@ WingCase_MonSelected:
 	ld a, [wMenuSelection]
 	inc a
 	ret z
-
-	; c = [(WingMenuItems + 1) + (a - 1)]
-	add LOW(WingMenuItems)
-	ld l, a
-	adc HIGH(WingMenuItems)
-	sub l
-	ld h, a
-	ld c, [hl]
+	dec a
+	ld c, a
 	ld b, 0
 	call _GetStatString
 
@@ -2057,6 +2060,9 @@ WingCase_MonSelected:
 .YouDontHaveAny:
 	db "You don't have any."
 	prompt
+
+.UseHowManyText:
+	db "Use how many?     @"
 
 .OnlyXWillBeAppliedText:
 	db "Only "

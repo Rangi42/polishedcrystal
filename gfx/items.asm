@@ -695,6 +695,9 @@ TMHMIcon:: INCBIN "gfx/items/tm_hm.2bpp.lz"
 SECTION "ApricornIcon", ROMX
 ApricornIcon:: INCBIN "gfx/items/apricorn.2bpp.lz"
 
+SECTION "WingIcon", ROMX
+WingIcon:: INCBIN "gfx/items/wing.2bpp.lz"
+
 SECTION "ParkBallIcon", ROMX
 ParkBallIcon:: INCBIN "gfx/items/park_ball.2bpp.lz"
 
@@ -793,3 +796,8 @@ ApricornBoxIcon:: INCBIN "gfx/items/apricorn_box.2bpp.lz"
 
 SECTION "TypeChartIcon", ROMX
 TypeChartIcon:: INCBIN "gfx/items/type_chart.2bpp.lz"
+
+SECTION "LureIcon", ROMX
+EerieLureIcon::
+ToughLureIcon::
+MalignLureIcon:: INCBIN "gfx/items/lure.2bpp.lz"

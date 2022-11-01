@@ -20,12 +20,28 @@ endc
 	assert_list_length NUM_DEXAREAS
 
 Pokedex_Area:
-	; TODO: maybe preset depending on time of day?
 	ldh a, [rSVBK]
 	push af
+	ld a, $1
+	ldh [rSVBK], a
+	; default to current region and time of day
+	call RegionCheck
+	assert DEXAREA_REGION_MASK == %01110000
+	swap e
+	ld a, [wTimeOfDay]
+	cp EVE
+	jr nz, .not_evening
+	dec a ; treat EVE as NITE
+.not_evening
+	assert DEXAREA_MORNING == MORN
+	assert DEXAREA_DAY == DAY
+	assert DEXAREA_NIGHT == NITE
+	; combine current region and time into area mode
+	or e
+	ld e, a
 	ld a, BANK(wDexAreaLastMode)
 	ldh [rSVBK], a
-	xor a
+	ld a, e
 	ldh [hPokedexAreaMode], a
 	ld [wDexAreaLastMode], a
 	pop af
@@ -613,20 +629,7 @@ Pokedex_SetWildLandmark:
 	jr nz, .got_mon_table
 	inc h
 .got_mon_table
-	ld a, e
-
-	; Wrap back to 0 across regions.
-	lb bc, JOHTO_REGION, KANTO_LANDMARK
-	sub c
-	jr c, .got_landmark
-	inc b ; KANTO_REGION
-	ld c, SHAMOUTI_LANDMARK - KANTO_LANDMARK
-	sub c
-	jr c, .got_landmark
-	ld c, 0
-	inc b ; ORANGE_REGION
-.got_landmark
-	add c
+	call .GetAreaMonID
 	add a
 	ld l, a
 
@@ -655,7 +658,7 @@ Pokedex_SetWildLandmark:
 	call GetFarWRAMByte
 	cp c
 	jr nz, .highlight_done
-	ld a, e
+	call .GetAreaMonID
 	ld [wDexAreaHighlight], a
 .highlight_done
 	farcall GetLandmarkCoords
@@ -669,6 +672,25 @@ Pokedex_SetWildLandmark:
 	pop af
 .end
 	jmp PopBCDEHL
+
+.GetAreaMonID:
+	; To avoid wasteful use of WRAM, we essentially unionize area coordinates
+	; on a per-region basis. Handle that here.
+	ld a, e
+
+	; Wrap back to 0 across regions.
+	lb bc, JOHTO_REGION, KANTO_LANDMARK
+	sub c
+	jr c, .got_landmark
+	inc b ; KANTO_REGION
+	ld c, SHAMOUTI_LANDMARK - KANTO_LANDMARK
+	sub c
+	jr c, .got_landmark
+	ld c, 0
+	inc b ; ORANGE_REGION
+.got_landmark
+	add c
+	ret
 
 Pokedex_SortAreaMons:
 ; Sorts area mons for the benefit of hblank processing
@@ -1055,9 +1077,9 @@ endr
 
 .GetAreaMonsIndex:
 ; de = wDexAreaMons + a*2. Leaves a as a*2.
-	assert (LOW(wDexAreaMons) == 0), "wDexAreaMons isn't $xx00"
-	assert (LOW(wDexAreaMons) == 0), "wDexAreaMons2 isn't $xx00"
-	assert (wDexAreaMons2 == wDexAreaMons + $100)
+	assert LOW(wDexAreaMons) == 0, "wDexAreaMons isn't $xx00"
+	assert LOW(wDexAreaMons) == 0, "wDexAreaMons2 isn't $xx00"
+	assert wDexAreaMons2 == wDexAreaMons + $100
 
 	; Needs to be cycle-equal whether the conditional is nc or c.
 	ld d, HIGH(wDexAreaMons)

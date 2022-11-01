@@ -1,5 +1,5 @@
 	db  20,  25,  45,  60,  70,  90 ; 310 BST
-	;   hp  atk  def  spd  sat  sdf
+	;   hp  atk  def  spe  sat  sdf
 
 	db PSYCHIC, FAIRY ; type
 	db 145 ; catch rate
@@ -11,8 +11,7 @@
 	db GROWTH_MEDIUM_FAST ; growth rate
 	dn EGG_NONE, EGG_NONE ; egg groups
 
-	ev_yield   0,   0,   0,   0,   0,   1
-	;         hp  atk  def  spd  sat  sdf
+	ev_yield 1 SDf
 
 	; tm/hm learnset
 	tmhm CALM_MIND, TOXIC, HIDDEN_POWER, SUNNY_DAY, LIGHT_SCREEN, PROTECT, RAIN_DANCE, SAFEGUARD, SOLAR_BEAM, THUNDERBOLT, THUNDER, RETURN, PSYCHIC, SHADOW_BALL, ROCK_SMASH, DOUBLE_TEAM, REFLECT, SUBSTITUTE, FACADE, REST, ATTRACT, THIEF, DAZZLINGLEAM, DRAIN_PUNCH, FLASH, THUNDER_WAVE, DREAM_EATER, ENDURE, HEADBUTT, ICY_WIND, SKILL_SWAP, SLEEP_TALK, SWAGGER, TRICK

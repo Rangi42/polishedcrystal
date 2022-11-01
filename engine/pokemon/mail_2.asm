@@ -12,14 +12,13 @@ ReadAnyMail:
 	call ClearTileMap
 	call DisableLCD
 	call LoadStandardFont
-	call LoadFontsExtra
+	call LoadFrame
 	pop de
 	call .LoadGFX
 	call EnableLCD
 	call ApplyTilemapInVBlank
 	ld a, [wBuffer3]
-	ld e, a
-	farcall LoadMailPalettes
+	farcall LoadAndApplyMailPalettes
 	call SetPalettes
 	xor a
 	ldh [hJoyPressed], a

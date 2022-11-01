@@ -2038,6 +2038,15 @@ KukuiFinalPkmnText:
 	line "yeah!"
 	prompt
 
+PiersFinalPkmnText:
+	text "I don't do encores,"
+	line "get it?"
+
+	para "Not songs…"
+	line "Not moves…"
+	cont "Not #mon!"
+	prompt
+
 BillFinalPkmnText:
 	text "Yeehah!"
 	line "What a battle!"

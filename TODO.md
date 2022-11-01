@@ -22,7 +22,6 @@ The final, non-beta 3.0 release should include all of these.
 ### Mechanics
 
 * Option for 510 total limit on EVs
-* Finish adding hidden grottoes throughout Johto
 * Variety Channel with daily unique music
 * Separate radio channels for March and Lullaby, available every day
 * Add more random team members for Psychic Inver
@@ -30,12 +29,6 @@ The final, non-beta 3.0 release should include all of these.
 * More location-unique wild moves (see [material/moves.txt](material/moves.txt))
 * Finish wild rosters
 * DVs to vary palettes for trainers' duplicate Pokémon (e.g. Clair's Dragonairs)
-* Make all the variant forms available
-   * Persian as a one-time trade from an Alolan tourist (you can breed it for more)
-   * Grimer/Muk in Goldenrod City (Celadon's Muk are a sign of its pollution, Goldenrod's Alolan Muk would be a sign that they manage pollution better)
-   * Ponyta/Rapidash on Shamouti Island
-   * Corsola/Cursola in Scary Cave
-   * Farfetch'd/Sirfetch'd instead of non-faithful Farfetch'd
 
 
 ### Aesthetics
@@ -70,7 +63,6 @@ Shamouti Island:
 Maps need signs, NPCs, trainers (with [dialog](https://docs.google.com/document/d/1_IDuWAP-QBRC5l4grKZKKlfWKQ2BjC2Yo0aynmli1Ac/view) (see also [material/pia-dialogue.txt](material/pia-dialogue.txt) and [material/pokeathlon-dialog.txt](material/pokeathlon-dialog.txt))), visible and hidden items, wild Pokémon, and unique wild moves.
 
 * Connect the Magnet Train track south to Cherrygrove Bay
-* Magnet Tunnel (TM74 Gyro Ball)
 * Soul House
 * Lavender Radio Tower (use Reina, DJ Fern, DJ Lily, and a Clefable+Gengar Couple)
 * Saffron City Trainer Fan Club
@@ -174,18 +166,6 @@ Some of these may never be added; they're just suggestions.
 * Championship title defense like in Gen VII (challengers: rival, Lyra, Lance, Prof.Oak, Prof.Elm, Clair, Blue, Eusine, Kimono Girl Naoko, Palmer, Lorelei, Agatha, Steven, Cynthia, Caitlin, and Lawrence)
 * Make more trainers rematchable
 * Allow evolution during battle (optional)
-* Battle [En and Madoka](http://bulbapedia.bulbagarden.net/wiki/The_Legendary_Rotation_Battle!) somewhere (Trainer House after catching the legendary trios, different trainer each day?)
-   * Madoka:
-   * She entered this tournament with new Pokémon! Which Pokémon wil she use?
-   * "I knew this Pokémon was strong! I didn't spend days and days to find and catch it for nothing."
-   * "What? Why did this Pokémon lose?"
-   * "I'll come back after raising Pokémon more seriously."
-   * En:
-   * He wants to battle strong opponents! That is his only wish!
-   * "Being able to battle with you, the best Trainer, in the best stage... Ah! I'm really happy right now!"
-   * "Oh! This is my first time battling against such a strong opponent!"
-   * "Your attack was great! Let's battle again sometime!"
-* Select reorders Pokémon in party menu
 * Use Mart interface for selling decorations, with a red sidebar
 * Make Eggs use their Pokémon's palette
 
@@ -195,7 +175,9 @@ There are some features that I do *not* ever plan to add to Polished Crystal:
 * A third region with badges
 * Mega Evolution
 * Z-moves
+* Dynamax/Gigantamax
+* Terastalization
 * Ash-Greninja
 * Ash Ketchum
-* Gen VI Exp. Share
+* Genn 1 Exp. All/Gen 6+ Exp. Share
 * Levels above 100

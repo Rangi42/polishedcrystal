@@ -209,7 +209,7 @@ GetSwitchItemDestinationOffset:
 
 ItemSwitch_GetMenuSpacing:
 	ld a, [wMenuData_ScrollingMenuSpacing]
-	assert (SCROLLINGMENU_ITEMS_QUANTITY == 2)
+	assert SCROLLINGMENU_ITEMS_QUANTITY == 2
 	ld bc, SCROLLINGMENU_ITEMS_QUANTITY
 	cp c
 	ret z

@@ -1911,7 +1911,7 @@ MagnemiteEvosAttacks:
 MagnetonEvosAttacks:
 	evo_data EVOLVE_ITEM, THUNDERSTONE, MAGNEZONE
 	evo_data EVOLVE_LOCATION, MAGNET_TUNNEL, MAGNEZONE
-	evo_data EVOLVE_LOCATION, ROCK_TUNNEL, MAGNEZONE
+	evo_data EVOLVE_LOCATION, DIM_CAVE, MAGNEZONE
 	db -1 ; no more evolutions
 	db 1, TRI_ATTACK ; evolution move
 	db 1, SUPERSONIC
@@ -2211,7 +2211,7 @@ GastlyEvosAttacks:
 	db -1 ; no more level-up moves
 
 HaunterEvosAttacks:
-	evo_data EVOLVE_EVS, MON_SPD_EV, GENGAR
+	evo_data EVOLVE_EVS, MON_SPE_EV, GENGAR
 	db -1 ; no more evolutions
 	db 1, SHADOW_CLAW ; Shadow Punch → TM move ; evolution move
 	db 1, HYPNOSIS
@@ -2400,7 +2400,7 @@ ElectrodePlainEvosAttacks:
 	db -1 ; no more level-up moves
 
 VoltorbHisuianEvosAttacks:
-	evo_data EVOLVE_LEVEL, 30, ELECTRODE, HISUIAN_FORM
+	evo_data EVOLVE_ITEM, LEAF_STONE, ELECTRODE, HISUIAN_FORM
 	db -1 ; no more evolutions
 	db 1, TACKLE
 	db 1, THUNDERSHOCK ; LGPE move
@@ -2622,6 +2622,7 @@ LickitungEvosAttacks:
 
 KoffingEvosAttacks:
 	evo_data EVOLVE_LEVEL, 35, WEEZING, PLAIN_FORM
+	; TODO: evo_data ???, WEEZING, GALARIAN_FORM
 	db -1 ; no more evolutions
 	db 1, TACKLE
 	db 4, ACID ; Smog → new move
@@ -3097,15 +3098,15 @@ EeveeEvosAttacks:
 	evo_data EVOLVE_ITEM, THUNDERSTONE, JOLTEON
 	evo_data EVOLVE_ITEM, WATER_STONE, VAPOREON
 	evo_data EVOLVE_ITEM, FIRE_STONE, FLAREON
-	evo_data EVOLVE_ITEM, SHINY_STONE, SYLVEON
-	evo_data EVOLVE_ITEM, LEAF_STONE, LEAFEON
-	evo_data EVOLVE_ITEM, ICE_STONE, GLACEON
 	evo_data EVOLVE_ITEM, SUN_STONE, ESPEON
 	evo_data EVOLVE_ITEM, MOON_STONE, UMBREON
-	evo_data EVOLVE_LOCATION, ILEX_FOREST, LEAFEON
-	evo_data EVOLVE_LOCATION, ICE_PATH, GLACEON
+	evo_data EVOLVE_ITEM, LEAF_STONE, LEAFEON
+	evo_data EVOLVE_ITEM, ICE_STONE, GLACEON
+	evo_data EVOLVE_ITEM, SHINY_STONE, SYLVEON
 	evo_data EVOLVE_HAPPINESS, TR_MORNDAY, ESPEON
 	evo_data EVOLVE_HAPPINESS, TR_EVENITE, UMBREON
+	evo_data EVOLVE_LOCATION, ILEX_FOREST, LEAFEON
+	evo_data EVOLVE_LOCATION, ICE_PATH, GLACEON
 	db -1 ; no more evolutions
 	db 1, GROWL
 	db 1, TACKLE
@@ -4979,6 +4980,8 @@ TeddiursaEvosAttacks:
 
 UrsaringEvosAttacks:
 	evo_data EVOLVE_ITEM, MOON_STONE, URSALUNA
+	evo_data EVOLVE_LOCATION, SINJOH_RUINS, URSALUNA
+	evo_data EVOLVE_LOCATION, MYSTRI_STAGE, URSALUNA
 	db -1 ; no more evolutions
 	db 1, GUNK_SHOT ; HGSS tutor move
 	db 1, THIEF ; Covet → TM move
@@ -5341,7 +5344,10 @@ Porygon2EvosAttacks:
 	db -1 ; no more level-up moves
 
 StantlerEvosAttacks:
+	evo_data EVOLVE_LOCATION, RUGGED_ROAD, WYRDEER
+	evo_data EVOLVE_LOCATION, SNOWTOP_MOUNTAIN, WYRDEER
 	evo_data EVOLVE_LOCATION, SINJOH_RUINS, WYRDEER
+	evo_data EVOLVE_LOCATION, MYSTRI_STAGE, WYRDEER
 	db -1 ; no more evolutions
 	db 1, TACKLE
 	db 3, LEER

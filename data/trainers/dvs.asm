@@ -2,7 +2,7 @@ TrainerClassDVsAndPersonality:
 ; entries correspond to trainer classes (see constants/trainer_constants.asm)
 	table_width 5, TrainerClassDVsAndPersonality
 	;  EVs  HP   Def  SAt
-	;  *    Atk  Spd  SDf  Gender
+	;  *    Atk  Spe  SDf  Gender
 	db 252, PERFECT_DVS,   FEMALE ; carrie
 	db 252, PERFECT_DVS,   MALE   ; cal
 	db 252, $BB, $BB, $BB, MALE   ; falkner
@@ -68,6 +68,9 @@ TrainerClassDVsAndPersonality:
 	db  56, $DD, $DD, $DD, FEMALE ; kimono girl 3
 	db  56, $DD, $DD, $DD, FEMALE ; kimono girl 4
 	db  56, $DD, $DD, $DD, FEMALE ; kimono girl 5
+	db  56, $DD, $DD, $DD, FEMALE ; kimono girl 6
+	db  56, $DD, $DD, $DD, FEMALE ; kimono girl 7
+	db  56, $DD, $DD, $DD, FEMALE ; kimono girl 8
 	db  56, $DD, $DD, $DD, MALE   ; elder
 	db  48, $CC, $CC, $CC, FEMALE ; sr&jr
 	db  48, $CC, $CC, $CC, MALE   ; couple
@@ -98,6 +101,7 @@ TrainerClassDVsAndPersonality:
 	db  72, $DD, $DD, $DD, MALE   ; tamer
 	db  72, $DD, $DD, $DD, FEMALE ; artist
 	db  72, $DD, $DD, $DD, FEMALE ; aroma lady
+	db  72, $DD, $DD, $DD, MALE   ; soldier
 	db  72, $DD, $DD, $DD, MALE   ; waiter
 	db  72, $DD, $DD, $DD, FEMALE ; waitress
 	db  72, $DD, $DD, $DD, MALE   ; sightseerm
@@ -142,7 +146,7 @@ TrainerClassDVsAndPersonality:
 	db 252, PERFECT_DVS,   MALE   ; marlon
 	db 252, PERFECT_DVS,   FEMALE ; valerie
 	db 252, PERFECT_DVS,   MALE   ; kukui
-	db 252, PERFECT_DVS,   FEMALE ; melony
+	db 252, $DD, $DD, $DD, MALE   ; piers
 	db 192, $EE, $EE, $EE, MALE   ; victor
 	db 252, PERFECT_DVS,   MALE   ; bill
 	db 252, $EE, $EE, $EE, FEMALE ; yellow

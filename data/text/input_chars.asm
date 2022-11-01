@@ -6,7 +6,6 @@ NameInputLower:
 	rawchar "s t u v w x y z -"
 	rawchar "é 'd 'l 'm 'r 's 't 'v 0"
 	rawchar "1 2 3 4 5 6 7 8 9"
-	rawchar "Upper  Del   End "
 
 NameInputUpper:
 	rawchar "A B C D E F G H I"
@@ -14,7 +13,6 @@ NameInputUpper:
 	rawchar "S T U V W X Y Z  "
 	rawchar "/ ( ) ¥ <PK> <MN> ★ ♥ ♪"
 	rawchar "? ! ♂ ♀ . , : & %"
-	rawchar "Lower  Del   End "
 
 MailEntry_Uppercase:
 	rawchar "A B C D E F G H I J"
@@ -22,7 +20,6 @@ MailEntry_Uppercase:
 	rawchar "U V W X Y Z ? ! … :"
 	rawchar "1 2 3 4 5 6 7 8 9 0"
 	rawchar "<PK> <MN> <PO> <KE> & ♂ ♀ ¥ × /"
-	rawchar "Lower  Del   End   "
 
 MailEntry_Lowercase:
 	rawchar "a b c d e f g h i j"
@@ -30,7 +27,6 @@ MailEntry_Lowercase:
 	rawchar "u v w x y z   - . ,"
 	rawchar "é 'd 'l 'm 'r 's 't 'v ( )"
 	rawchar "“ ” ' % ↑ ↓ № ★ ♥ ♪"
-	rawchar "Upper  Del   End   "
 
 NameInputLowerQwerty:
 	rawchar "q w e r t y u i o"
@@ -38,7 +34,6 @@ NameInputLowerQwerty:
 	rawchar "z x c v b n m p -"
 	rawchar "é 'r 't 's 'd 'l 'v 'm 0"
 	rawchar "1 2 3 4 5 6 7 8 9"
-	rawchar "Upper  Del   End "
 
 NameInputUpperQwerty:
 	rawchar "Q W E R T Y U I O"
@@ -46,7 +41,6 @@ NameInputUpperQwerty:
 	rawchar "Z X C V B N M P  "
 	rawchar "/ ( ) ¥ <PK> <MN> ★ ♥ ♪"
 	rawchar "? ! ♂ ♀ . , : & %"
-	rawchar "Lower  Del   End "
 
 MailEntryQwerty_Uppercase:
 	rawchar "Q W E R T Y U I O P"
@@ -54,7 +48,6 @@ MailEntryQwerty_Uppercase:
 	rawchar "Z X C V B N M ? ! …"
 	rawchar "1 2 3 4 5 6 7 8 9 0"
 	rawchar "<PK> <MN> <PO> <KE> & ♂ ♀ ¥ × /"
-	rawchar "Lower  Del   End   "
 
 MailEntryQwerty_Lowercase:
 	rawchar "q w e r t y u i o p"
@@ -62,4 +55,3 @@ MailEntryQwerty_Lowercase:
 	rawchar "z x c v b n m , .  "
 	rawchar "é 'r 't 's 'd 'l 'v 'm ( )"
 	rawchar "“ ” ' % ↑ ↓ № ★ ♥ ♪"
-	rawchar "Upper  Del   End   "

@@ -36,6 +36,7 @@ Marts:
 	dw SilphCoMart
 	dw FuchsiaMart
 	dw ShamoutiMart1
+	dw ShamoutiMart1Souvenir
 	dw ShamoutiMart2
 	dw BattleTowerMart1
 	dw BattleTowerMart2
@@ -454,6 +455,15 @@ FuchsiaMart:
 
 ShamoutiMart1:
 	db 4 ; # items
+	db MENTAL_HERB
+	db POWER_HERB
+	db WHITE_HERB
+	db BIG_ROOT
+	db -1
+
+ShamoutiMart1Souvenir:
+	db 5 ; # items
+	db ODD_SOUVENIR
 	db MENTAL_HERB
 	db POWER_HERB
 	db WHITE_HERB

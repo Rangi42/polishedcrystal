@@ -186,7 +186,10 @@ KimonoGirl1Pic:
 KimonoGirl2Pic:
 KimonoGirl3Pic:
 KimonoGirl4Pic:
-KimonoGirl5Pic: INCBIN "gfx/trainers/kimono_girl.2bpp.lz"
+KimonoGirl5Pic:
+KimonoGirl6Pic:
+KimonoGirl7Pic:
+KimonoGirl8Pic: INCBIN "gfx/trainers/kimono_girl.2bpp.lz"
 
 SECTION "ElderPic", ROMX
 ElderPic: INCBIN "gfx/trainers/elder.2bpp.lz"
@@ -275,6 +278,9 @@ ArtistPic: INCBIN "gfx/trainers/artist.2bpp.lz"
 
 SECTION "AromaLadyPic", ROMX
 AromaLadyPic: INCBIN "gfx/trainers/aroma_lady.2bpp.lz"
+
+SECTION "SoldierPic", ROMX
+SoldierPic: INCBIN "gfx/trainers/soldier.2bpp.lz"
 
 SECTION "WaiterPic", ROMX
 WaiterPic: INCBIN "gfx/trainers/waiter.2bpp.lz"
@@ -408,8 +414,8 @@ ValeriePic: INCBIN "gfx/trainers/valerie.2bpp.lz"
 SECTION "KukuiPic", ROMX
 KukuiPic: INCBIN "gfx/trainers/kukui.2bpp.lz"
 
-SECTION "MelonyPic", ROMX
-MelonyPic: INCBIN "gfx/trainers/melony.2bpp.lz"
+SECTION "PiersPic", ROMX
+PiersPic: INCBIN "gfx/trainers/piers.2bpp.lz"
 
 SECTION "VictorPic", ROMX
 VictorPic: INCBIN "gfx/trainers/victor.2bpp.lz"

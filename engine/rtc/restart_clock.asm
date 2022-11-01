@@ -1,4 +1,3 @@
-
 ResetClock_GetWraparoundTime:
 	push hl
 	dec a
@@ -37,7 +36,8 @@ RestartClock:
 	push af
 	set NO_TEXT_SCROLL, [hl]
 	call LoadStandardMenuHeader
-	call ClearTileMap
+	ld a, "<BLACK>"
+	call FillTileMap
 	ld hl, .Text_SetWithControlPad
 	call PrintText
 	call .SetClock

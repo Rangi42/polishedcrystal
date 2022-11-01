@@ -236,13 +236,13 @@ endr
 	push bc
 	ld a, [wOTPartyCount]
 	dec a
-	ld hl, wOTPartyMon1SpdEV
+	ld hl, wOTPartyMon1SpeEV
 	ld bc, PARTYMON_STRUCT_LENGTH
 	rst AddNTimes
 	ld [hl], 0
 	ld a, [wOTPartyCount]
 	dec a
-	ld hl, wOTPartyMon1DefSpdDV
+	ld hl, wOTPartyMon1DefSpeDV
 	ld bc, PARTYMON_STRUCT_LENGTH
 	rst AddNTimes
 	ld a, [hl]

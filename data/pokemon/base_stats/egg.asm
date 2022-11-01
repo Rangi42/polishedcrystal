@@ -1,5 +1,5 @@
 	db  10,  10,  10,  10,  10,  10 ; 60 BST
-	;   hp  atk  def  spd  sat  sdf
+	;   hp  atk  def  spe  sat  sdf
 
 	db NORMAL, NORMAL ; type
 	db 255 ; catch rate
@@ -11,8 +11,7 @@
 	db GROWTH_SLOW ; growth rate
 	dn EGG_NONE, EGG_NONE ; egg groups
 
-	ev_yield   0,   0,   0,   0,   0,   0
-	;         hp  atk  def  spd  sat  sdf
+	ev_yield 
 
 	; tm/hm learnset
 	tmhm

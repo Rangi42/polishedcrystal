@@ -2,7 +2,7 @@ CopyDVsToColorVaryDVs:
 ; e = HPAtkDV
 	ld a, [hli]
 	ld e, a
-; d = DefSpdDV
+; d = DefSpeDV
 	ld a, [hli]
 	ld d, a
 ; c = SatSdfDV
@@ -22,7 +22,7 @@ CopyDVsToColorVaryDVs:
 ; wColorVaryDVs = HPAtkDV
 	ld a, e
 	ld [hli], a
-; wColorVaryDVs+1 = DefSpdDV
+; wColorVaryDVs+1 = DefSpeDV
 	ld a, d
 	ld [hli], a
 ; wColorVaryDVs+2 = SatSdfDV
@@ -239,7 +239,7 @@ endc
 ; vary LiteGrn by e
 	call VaryGreenByDV
 
-;;; advance from HP/Atk DV to Def/Spd DV
+;;; advance from HP/Atk DV to Def/Spe DV
 	inc bc
 
 ;;; LiteBlu ~ DefDV, aka, bbbbb ~ dddd
@@ -256,15 +256,15 @@ endc
 	inc hl
 
 .Finish:
-;;; DarkRed ~ SpdDV, aka, RRRRR ~ ssss
-; store SpdDV in e
+;;; DarkRed ~ SpeDV, aka, RRRRR ~ ssss
+; store SpeDV in e
 	ld a, [bc]
 	and %1111
 	ld e, a
 ; vary DarkRed by e
 	call VaryRedByDV
 
-;;; move from Def/Spd DV to SAt/SDf DV
+;;; move from Def/Spe DV to SAt/SDf DV
 	inc bc
 
 ;;; DarkGrn ~ SAtDV, aka, GGGGG ~ pppp
@@ -334,7 +334,7 @@ endc
 	ld a, d
 	ld [hld], a
 	dec hl
-;;; LiteRGB ~ Spd,SAt,SDfDVs
+;;; LiteRGB ~ Spe,SAt,SDfDVs
 	jr .Finish
 
 ; red and blue channels: no 0 or 31

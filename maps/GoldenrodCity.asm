@@ -3,7 +3,7 @@ GoldenrodCity_MapScriptHeader:
 	scene_script GoldenrodCityTrigger0
 
 	def_callbacks
-	callback MAPCALLBACK_NEWMAP, GoldenrodCityFlyPointAndFloria
+	callback MAPCALLBACK_NEWMAP, GoldenrodCityFlyPoint
 	callback MAPCALLBACK_OBJECTS, GoldenrodCityMoveTutor
 
 	def_warp_events
@@ -28,6 +28,7 @@ GoldenrodCity_MapScriptHeader:
 	warp_event 37, 19, GOLDENROD_NET_BALL_HOUSE, 1
 	warp_event 33, 23, GOLDENROD_BAND_HOUSE, 1
 	warp_event 13, 21, GOLDENROD_HONEY_HOUSE, 1
+	warp_event 39, 27, UNDERGROUND_PATH_SWITCH_ROOM_ENTRANCES, 11
 
 	def_coord_events
 	coord_event  9, 15, 1, GoldenrodCityPanUpScript
@@ -41,8 +42,9 @@ GoldenrodCity_MapScriptHeader:
 	bg_event 32, 30, BGEVENT_JUMPTEXT, GoldenrodCityBikeShopSignText
 	bg_event 20, 22, BGEVENT_JUMPTEXT, GoldenrodCityGameCornerSignText
 	bg_event 16,  7, BGEVENT_JUMPTEXT, GoldenrodCityNameRaterSignText
-	bg_event 12,  6, BGEVENT_JUMPTEXT, GoldenrodCityUndergroundSignNorthText
-	bg_event 14, 30, BGEVENT_JUMPTEXT, GoldenrodCityUndergroundSignSouthText
+	bg_event 12,  6, BGEVENT_JUMPTEXT, GoldenrodCityUndergroundSignText
+	bg_event 14, 30, BGEVENT_JUMPTEXT, GoldenrodCityUndergroundSignText
+	bg_event 40, 28, BGEVENT_JUMPTEXT, GoldenrodCityUndergroundSignText
 	bg_event 20, 27, BGEVENT_JUMPTEXT, PokeComCenterSignText
 	bg_event 34,  6, BGEVENT_JUMPTEXT, GoldenrodCityFlowerShopSignText
 	bg_event 27, 15, BGEVENT_JUMPTEXT, GoldenrodMuseumSignText
@@ -50,7 +52,6 @@ GoldenrodCity_MapScriptHeader:
 	def_object_events
 	object_event 16, 22, SPRITE_POKEFAN_M, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, MoveTutor, EVENT_GOLDENROD_CITY_MOVE_TUTOR
 	object_event 28,  8, SPRITE_CUTE_GIRL, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, GoldenrodCityGymLassText, EVENT_GOLDENROD_GYM_WHITNEY
-	object_event 38, 24, SPRITE_BEAUTY, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, GoldenrodCityBeautyText, EVENT_GOLDENROD_CITY_CIVILIANS
 	object_event 11, 18, SPRITE_POKEFAN_M, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_COMMAND, jumptextfaceplayer, GoldenrodCityPokefanMText, EVENT_GOLDENROD_CITY_CIVILIANS
 	object_event 38, 17, SPRITE_SCHOOLBOY, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 2, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, GoldenrodCityYoungster1Text, EVENT_GOLDENROD_CITY_CIVILIANS
 	object_event 16, 16, SPRITE_BATTLE_GIRL, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, GoldenrodCityCooltrainerF1Script, EVENT_GOLDENROD_CITY_CIVILIANS
@@ -69,12 +70,8 @@ GoldenrodCity_MapScriptHeader:
 	object_const_def
 	const GOLDENRODCITY_POKEFAN_M2
 
-GoldenrodCityFlyPointAndFloria:
+GoldenrodCityFlyPoint:
 	setflag ENGINE_FLYPOINT_GOLDENROD
-	checkevent EVENT_MET_FLORIA
-	iftruefwd .Done
-	clearevent EVENT_FLORIA_AT_SUDOWOODO
-.Done:
 	endcallback
 
 GoldenrodCityMoveTutor:
@@ -408,17 +405,6 @@ GoldenrodCityGymLassText:
 	line "a Radio Card!”"
 	done
 
-GoldenrodCityBeautyText:
-	text "I went on a tour"
-	line "of the Radio"
-
-	para "Tower. I saw all"
-	line "three studios and"
-
-	para "even ate in the"
-	line "café."
-	done
-
 GoldenrodCityStationSignText:
 	text "Goldenrod City"
 	line "Station"
@@ -474,12 +460,7 @@ GoldenrodCityNameRaterSignText:
 	line "Nicknames Rated"
 	done
 
-GoldenrodCityUndergroundSignNorthText:
-	text "Underground"
-	line "Entrance"
-	done
-
-GoldenrodCityUndergroundSignSouthText:
+GoldenrodCityUndergroundSignText:
 	text "Underground"
 	line "Entrance"
 	done

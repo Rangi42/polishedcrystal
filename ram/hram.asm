@@ -108,7 +108,7 @@ hChartValues::
 hChartHP::  db
 hChartAtk:: db
 hChartDef:: db
-hChartSpd:: db
+hChartSpe:: db
 hChartSat:: db
 hChartSdf:: db
 ENDU

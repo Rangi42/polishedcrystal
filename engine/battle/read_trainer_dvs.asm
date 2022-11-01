@@ -16,7 +16,7 @@ rept 6 ; reuse EV value for all six stats
 endr
 	ld a, [hli] ; HP/Atk DV
 	ld [wDVAndPersonalityBuffer], a
-	ld a, [hli] ; Def/Spd DV
+	ld a, [hli] ; Def/Spe DV
 	ld [wDVAndPersonalityBuffer + 1], a
 	ld a, [hli] ; SAt/SDf DV
 	ld [wDVAndPersonalityBuffer + 2], a

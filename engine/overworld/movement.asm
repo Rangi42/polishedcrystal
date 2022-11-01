@@ -103,7 +103,8 @@ MovementPointers:
 	dw Movement_stairs_step_up        ; 63
 	dw Movement_stairs_step_left      ; 64
 	dw Movement_stairs_step_right     ; 65
-	dw Movement_step_right            ; 66
+	dw Movement_exeggutor_shake       ; 66
+	dw Movement_step_right            ; 67
 	assert_table_length NUM_MOVEMENT_CMDS
 
 Movement_teleport_from:
@@ -327,11 +328,16 @@ Movement_step_bump:
 	ld [hl], STANDING
 	ret
 
+Movement_exeggutor_shake:
+	lb de, OBJECT_ACTION_SHAKE_EXEGGUTOR, 64
+	jr ShakeTree
+
 Movement_tree_shake:
-	ld a, 24
+	lb de, OBJECT_ACTION_WEIRD_TREE, 24
+ShakeTree:
 	ld hl, OBJECT_STEP_DURATION
 	add hl, bc
-	ld [hl], a
+	ld [hl], e
 
 	ld hl, OBJECT_STEP_TYPE
 	add hl, bc
@@ -339,7 +345,7 @@ Movement_tree_shake:
 
 	ld hl, OBJECT_ACTION
 	add hl, bc
-	ld [hl], OBJECT_ACTION_WEIRD_TREE
+	ld [hl], d
 
 	ld hl, OBJECT_DIRECTION_WALKING
 	add hl, bc

@@ -399,4 +399,10 @@ Route38AdvancedTipsText:
 	para "You can change the"
 	line "name and theme of"
 	cont "each Box!"
+
+	para "Press Select to"
+	line "change what the"
+
+	para "A button does"
+	line "for #mon!"
 	done

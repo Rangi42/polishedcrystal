@@ -48,8 +48,8 @@ INCLUDE "engine/math/print_num.asm"
 
 SECTION "Bill's PC", ROMX
 
-INCLUDE "engine/pokemon/bills_pc.asm"
-INCLUDE "engine/pokemon/bills_pc_ui.asm"
+INCLUDE "engine/pc/bills_pc.asm"
+INCLUDE "engine/pc/bills_pc_ui.asm"
 
 
 SECTION "Poke Ball Effects", ROMX
@@ -235,11 +235,15 @@ INCLUDE "engine/pokedex/pokedex_2.asm"
 SECTION "Crystal Features 1", ROMX
 
 INCLUDE "engine/events/move_tutor.asm"
-INCLUDE "engine/tilesets/tileset_palettes.asm"
 INCLUDE "engine/events/celebi.asm"
 INCLUDE "engine/menus/main_menu.asm"
 INCLUDE "engine/pokemon/search.asm"
 INCLUDE "engine/events/buena_menu.asm"
+
+
+SECTION "Special Palettes", ROMX
+
+INCLUDE "engine/tilesets/tileset_palettes.asm"
 
 
 SECTION "Collision Permissions", ROMX
@@ -389,7 +393,44 @@ SECTION "Phone Scripts 2", ROMX
 
 INCLUDE "engine/events/std_scripts.asm"
 INCLUDE "engine/events/initialize_events.asm"
-INCLUDE "engine/phone/phone_scripts.asm"
+INCLUDE "engine/phone/scripts/unused.asm"
+INCLUDE "engine/phone/scripts/mom.asm"
+INCLUDE "engine/phone/scripts/bill.asm"
+INCLUDE "engine/phone/scripts/elm.asm"
+INCLUDE "engine/phone/scripts/jack.asm"
+INCLUDE "engine/phone/scripts/beverly.asm"
+INCLUDE "engine/phone/scripts/huey.asm"
+INCLUDE "engine/phone/scripts/gaven.asm"
+INCLUDE "engine/phone/scripts/beth.asm"
+INCLUDE "engine/phone/scripts/jose.asm"
+INCLUDE "engine/phone/scripts/reena.asm"
+INCLUDE "engine/phone/scripts/joey.asm"
+INCLUDE "engine/phone/scripts/wade.asm"
+INCLUDE "engine/phone/scripts/ralph.asm"
+INCLUDE "engine/phone/scripts/liz.asm"
+INCLUDE "engine/phone/scripts/anthony.asm"
+INCLUDE "engine/phone/scripts/todd.asm"
+INCLUDE "engine/phone/scripts/gina.asm"
+INCLUDE "engine/phone/scripts/irwin.asm"
+INCLUDE "engine/phone/scripts/arnie.asm"
+INCLUDE "engine/phone/scripts/alan.asm"
+INCLUDE "engine/phone/scripts/dana.asm"
+INCLUDE "engine/phone/scripts/chad.asm"
+INCLUDE "engine/phone/scripts/derek.asm"
+INCLUDE "engine/phone/scripts/tully.asm"
+INCLUDE "engine/phone/scripts/brent.asm"
+INCLUDE "engine/phone/scripts/tiffany.asm"
+INCLUDE "engine/phone/scripts/vance.asm"
+INCLUDE "engine/phone/scripts/wilton.asm"
+INCLUDE "engine/phone/scripts/kenji.asm"
+INCLUDE "engine/phone/scripts/parry.asm"
+INCLUDE "engine/phone/scripts/erin.asm"
+INCLUDE "engine/phone/scripts/generic_callee.asm"
+
+
+SECTION "Lyra Phone Scripts", ROMX
+
+INCLUDE "engine/phone/scripts/lyra.asm"
 
 
 SECTION "bank32", ROMX

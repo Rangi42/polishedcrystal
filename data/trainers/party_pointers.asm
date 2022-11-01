@@ -68,6 +68,9 @@ TrainerGroups:
 	dba KimonoGirl3Group
 	dba KimonoGirl4Group
 	dba KimonoGirl5Group
+	dba KimonoGirl6Group
+	dba KimonoGirl7Group
+	dba KimonoGirl8Group
 	dba ElderGroup
 	dba SrAndJrGroup
 	dba CoupleGroup
@@ -98,6 +101,7 @@ TrainerGroups:
 	dba TamerGroup
 	dba ArtistGroup
 	dba AromaLadyGroup
+	dba SoldierGroup
 	dba WaiterGroup
 	dba WaitressGroup
 	dba SightseerMGroup
@@ -142,7 +146,7 @@ TrainerGroups:
 	dba MarlonGroup
 	dba ValerieGroup
 	dba KukuiGroup
-	dba MelonyGroup
+	dba PiersGroup
 	dba VictorGroup
 	dba BillGroup
 	dba YellowGroup

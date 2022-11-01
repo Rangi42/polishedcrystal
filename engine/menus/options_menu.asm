@@ -18,7 +18,7 @@ OptionsMenu:
 
 	xor a
 	ld [wJumptableIndex], a
-	ld a, CGB_DIPLOMA
+	ld a, CGB_PLAIN
 	call GetCGBLayout
 	call SetPalettes
 
@@ -328,7 +328,7 @@ UpdateFrame:
 	ld [hld], a
 	lb bc, PRINTNUM_LEFTALIGN, 2
 	call PrintNumFromReg
-	call LoadFontsExtra
+	call LoadFrame
 	and a
 	ret
 

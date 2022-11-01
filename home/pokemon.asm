@@ -295,7 +295,7 @@ DexCompareWildForm:
 	; Thus, doubling it will leave mismatching extspecies/form data
 	; on noncarry, returning nz.
 
-	assert (MON_COSMETIC_F == 7)
+	assert MON_COSMETIC_F == 7
 
 	add a
 	ret nc
@@ -496,7 +496,7 @@ GetSpeciesAndFormIndexFromHL::
 	; Is the mismatch due to wrong species (extspecies mismatch)?
 	; We can check this by comparing on form mask+1, since form is
 	; right below extspecies.
-	assert (EXTSPECIES_MASK > FORM_MASK)
+	assert EXTSPECIES_MASK > FORM_MASK
 	cp (FORM_MASK + 1)
 	jr nc, .loop
 

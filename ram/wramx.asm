@@ -276,7 +276,7 @@ wBattleBallsPocketScrollPosition:: db
 wBattleBerriesPocketScrollPosition:: db
 wBattleKeyItemsPocketScrollPosition:: db
 
-	assert ((wBattleItemsPocketScrollPosition - wBattleItemsPocketCursor) == (wItemsPocketScrollPosition - wItemsPocketCursor))
+	assert (wBattleItemsPocketScrollPosition - wBattleItemsPocketCursor) == (wItemsPocketScrollPosition - wItemsPocketCursor)
 
 wTMHMMoveNameBackup:: ds MOVE_NAME_LENGTH
 
@@ -395,9 +395,11 @@ wCurIconMonHasItemOrMail:: db
 wCurKeyItem::
 wCurTMHM::
 wCurItem::
+wCurWing::
 	db
 wMartItemID::
 wCurItemQuantity::
+wCurWingQuantity::
 wGiftMonBall::
 	db
 
@@ -440,12 +442,14 @@ wCurPartyLevel:: db
 wScrollingMenuListSize:: dw
 
 ; used when following a map warp
+wFollowedWarpData::
 wNextWarp:: db
 wNextMapGroup:: db
 wNextMapNumber:: db
 wPrevWarp:: db
 wPrevMapGroup:: db
 wPrevMapNumber:: db
+wFollowedWarpDataEnd::
 
 wPlayerBGMapOffsetX:: db ; used in FollowNotExact; unit is pixels
 wPlayerBGMapOffsetY:: db ; used in FollowNotExact; unit is pixels
@@ -523,10 +527,10 @@ wTileset::
 wTilesetDataBank:: db
 wTilesetGFX0Address:: dw
 wTilesetGFX1Address:: dw
-wTilesetGFX2Address:: dw
 wTilesetBlocksAddress:: dw
 wTilesetCollisionAddress:: dw
 wTilesetAttributesAddress:: dw
+wTilesetGFX2Address:: dw ; BANK("Tileset GFX2 Data")
 wTilesetAnim:: dw ; BANK(_AnimateTileset)
 wTilesetEnd::
 
@@ -990,7 +994,7 @@ wTMsHMsEnd::
 wKeyItems:: ds NUM_KEY_ITEMS + 1
 wKeyItemsEnd::
 
-	ds 4 ; unused
+	ds 1 ; unused
 
 wNumItems:: db
 wItems:: ds MAX_ITEMS * 2 + 1
@@ -1045,7 +1049,8 @@ wAlways0SceneID:: db
 wAzaleaTownSceneID:: db
 wBattleFacilitySceneID:: db
 wRoute39RuggedRoadGateSceneID:: db
-	ds 2 ; unused
+wRuggedRoadSouthSceneID:: db
+wSnowtopMountainOutsideSceneID:: db
 wBattleTowerOutsideSceneID:: db
 wBellchimeTrailSceneID:: db
 wBrunosRoomSceneID:: db
@@ -1064,7 +1069,7 @@ wDragonsDenB1FSceneID:: db
 wDragonShrineSceneID:: db
 wEcruteakGymSceneID:: db
 wEcruteakHouseSceneID:: db
-wEcruteakPokecenter1FSceneID:: db
+	ds 1 ; unused
 wElmsLabSceneID:: db
 wFarawayIslandSceneID:: db
 wFastShip1FSceneID:: db
@@ -1180,7 +1185,7 @@ wCleverWingAmount:: dw
 
 wCelebiEvent:: db
 
-	ds 1 ; unused
+wDailyTrainerHouseOpponent:: db
 
 wOWState:: dw
 
@@ -1232,8 +1237,10 @@ wFruitTreeFlags:: flag_array NUM_FRUIT_TREES
 wNuzlockeLandmarkFlags:: flag_array NUM_LANDMARKS
 
 wHiddenGrottoContents::
-; content type, content id, content id + 1
+; dbw content type, content id
 	ds NUM_HIDDEN_GROTTOES * 3
+
+	ds 3 ; unused
 
 wCurHiddenGrotto:: db
 
@@ -1270,7 +1277,7 @@ wPoisonStepCount:: db
 wPhoneList:: flag_array NUM_PHONE_CONTACTS
 wPhoneListEnd::
 
-	ds 2 ; unused
+	ds 1 ; unused
 
 wParkBallsRemaining::
 wSafariBallsRemaining:: db
@@ -1501,7 +1508,7 @@ wDex2bpp:: ds $60 tiles
 
 NEXTU
 ; copied using hdma transfers (which is orders of magnitudes faster), so it uses
-; 32x32 as opposed to only the 21x19 that we need.
+; 32x19 as opposed to only the 21x19 that we need.
 wDexTilemap:: ds BG_MAP_WIDTH * (SCREEN_HEIGHT + 1)
 wDexAttrmap:: ds BG_MAP_WIDTH * (SCREEN_HEIGHT + 1)
 wDexMapEnd::
@@ -1561,7 +1568,7 @@ wDexAreaValidTreeGroups:: ds NUM_TREEMON_SETS
 ENDU
 wDexAreaValidGroupsEnd::
 
-	assert (HIGH(wDexAreaValidGroupsEnd) == HIGH(wDexAreaValidGroups))
+	assert HIGH(wDexAreaValidGroupsEnd) == HIGH(wDexAreaValidGroups)
 
 ; The last location type the player cycled to explicitly.
 ; The game will try to prefer this when changing region/mon/form. Updates when:

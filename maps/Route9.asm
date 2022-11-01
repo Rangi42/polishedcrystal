@@ -11,6 +11,7 @@ Route9_MapScriptHeader:
 	bg_event 21,  7, BGEVENT_JUMPTEXT, Route9SignText
 	bg_event 51, 15, BGEVENT_ITEM + ETHER, EVENT_ROUTE_9_HIDDEN_ETHER
 	bg_event 42, 12, BGEVENT_ITEM + SOFT_SAND, EVENT_ROUTE_9_HIDDEN_SOFT_SAND
+	bg_event 39,  3, BGEVENT_JUMPTEXT, Route9AdvancedTipsSignText
 
 	def_object_events
 	object_event 25, 11, SPRITE_CAMPER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 3, GenericTrainerCamperDean, -1
@@ -153,4 +154,22 @@ Route9SignText:
 
 	para "Cerulean City -"
 	line "Rock Tunnel"
+	done
+
+Route9AdvancedTipsSignText:
+	text "Advanced Tips!"
+
+	para "A #mon holding"
+	line "a Toxic Orb will"
+	cont "be poisoned, and"
+
+	para "one holding a"
+	line "Flame Orb will"
+	cont "be burned."
+
+	para "But the Ability"
+	line "Guts makes this"
+
+	para "an advantage by"
+	line "boosting Attack!"
 	done

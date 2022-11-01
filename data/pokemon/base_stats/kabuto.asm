@@ -1,5 +1,5 @@
 	db  30,  80,  90,  55,  55,  45 ; 355 BST
-	;   hp  atk  def  spd  sat  sdf
+	;   hp  atk  def  spe  sat  sdf
 
 	db ROCK, WATER ; type
 	db 45 ; catch rate
@@ -11,8 +11,7 @@
 	db GROWTH_MEDIUM_FAST ; growth rate
 	dn EGG_WATER_1, EGG_WATER_3 ; egg groups
 
-	ev_yield   0,   0,   1,   0,   0,   0
-	;         hp  atk  def  spd  sat  sdf
+	ev_yield 1 Def
 
 	; tm/hm learnset
 	tmhm CURSE, TOXIC, HAIL, HIDDEN_POWER, HONE_CLAWS, ICE_BEAM, BLIZZARD, PROTECT, RAIN_DANCE, GIGA_DRAIN, RETURN, DIG, ROCK_SMASH, DOUBLE_TEAM, SANDSTORM, AERIAL_ACE, SUBSTITUTE, FACADE, REST, ATTRACT, THIEF, ROCK_SLIDE, LEECH_LIFE, SCALD, WATER_PULSE, SURF, WHIRLPOOL, WATERFALL, BODY_SLAM, DOUBLE_EDGE, EARTH_POWER, ENDURE, ICY_WIND, IRON_HEAD, KNOCK_OFF, ROLLOUT, SLEEP_TALK, SWAGGER

@@ -96,8 +96,8 @@ ENDM
 	map_const TEAM_ROCKET_BASE_B2F,                       15,  9 ; 40
 	map_const TEAM_ROCKET_BASE_B3F,                       15,  9 ; 41
 	map_const ILEX_FOREST,                                17, 24 ; 42
-	map_const WAREHOUSE_ENTRANCE,                          9, 18 ; 43
-	map_const UNDERGROUND_PATH_SWITCH_ROOM_ENTRANCES,     13, 14 ; 44
+	map_const WAREHOUSE_ENTRANCE,                         16, 18 ; 43
+	map_const UNDERGROUND_PATH_SWITCH_ROOM_ENTRANCES,     13, 21 ; 44
 	map_const GOLDENROD_DEPT_STORE_B1F,                   10,  9 ; 45
 	map_const UNDERGROUND_WAREHOUSE,                      10,  9 ; 46
 	map_const MOUNT_MORTAR_1F_OUTSIDE,                    20, 18 ; 47
@@ -158,8 +158,6 @@ ENDM
 	map_const VALERIES_HOUSE,                              4,  4 ; 15
 	map_const ECRUTEAK_CHERISH_BALL_HOUSE,                 4,  4 ; 16
 	map_const ECRUTEAK_DESTINY_KNOT_HOUSE,                 4,  4 ; 17
-	map_const ECRUTEAK_SHRINE_OUTSIDE,                     8, 11 ; 18
-	map_const ECRUTEAK_SHRINE_INSIDE,                      6,  6 ; 19
 
 	newgroup                                                     ;  5
 	map_const BLACKTHORN_GYM_1F,                           5,  9 ;  1
@@ -259,7 +257,7 @@ ENDM
 	map_const DAYCARE,                                     4,  4 ;  3
 	map_const STORMY_BEACH,                               22, 11 ;  4
 	map_const MURKY_SWAMP,                                23, 19 ;  5
-	map_const GOLDENROD_CITY,                             22, 18 ;  6
+	map_const GOLDENROD_CITY,                             23, 18 ;  6
 	map_const GOLDENROD_GYM,                              10,  9 ;  7
 	map_const GOLDENROD_BIKE_SHOP,                         4,  4 ;  8
 	map_const GOLDENROD_HAPPINESS_RATER,                   4,  4 ;  9
@@ -287,7 +285,7 @@ ENDM
 	map_const GOLDENROD_BAND_HOUSE,                        4,  4 ; 31
 	map_const GOLDENROD_MUSEUM_1F,                         7,  4 ; 32
 	map_const GOLDENROD_MUSEUM_2F,                         7,  4 ; 33
-	map_const MAGNET_TUNNEL_WEST,                         10, 11 ; 34
+	map_const MAGNET_TUNNEL_WEST,                          9, 11 ; 34
 	map_const MAGNET_TUNNEL_INSIDE,                       23, 18 ; 35
 
 	newgroup                                                     ; 12
@@ -481,17 +479,17 @@ ENDM
 	map_const CELADON_UNIVERSITY_PRINCIPALS_OFFICE,        3,  4 ; 49
 	map_const CELADON_UNIVERSITY_WESTWOODS_OFFICE,         3,  3 ; 50
 	map_const CELADON_UNIVERSITY_WILLOWS_OFFICE,           3,  3 ; 51
-	map_const CELADON_UNIVERSITY_LOUNGE,                   4,  6 ; 52
-	map_const CELADON_UNIVERSITY_CAFETERIA,                8,  4 ; 53
-	map_const CELADON_UNIVERSITY_HYPER_TEST_ROOM,          4,  6 ; 54
-	map_const CELADON_UNIVERSITY_POOL,                     8,  5 ; 55
-	map_const CELADON_UNIVERSITY_CLASSROOM_1,              4,  6 ; 56
-	map_const CELADON_UNIVERSITY_CLASSROOM_2,              4,  6 ; 57
-	map_const CELADON_UNIVERSITY_CLASSROOM_3,              4,  6 ; 58
-	map_const CELADON_UNIVERSITY_CLASSROOM_4,              4,  6 ; 59
-	map_const CELADON_OLD_MAN_SPEECH_HOUSE,                4,  4 ; 60
-	map_const CELADON_DEVELOPMENT_SPEECH_HOUSE,            4,  4 ; 61
-	map_const CELADON_OUTSKIRTS,                          10,  6 ; 62
+	map_const CELADON_UNIVERSITY_NURSES_OFFICE,            4,  3 ; 52
+	map_const CELADON_UNIVERSITY_LOUNGE,                   4,  6 ; 53
+	map_const CELADON_UNIVERSITY_CAFETERIA,                8,  4 ; 54
+	map_const CELADON_UNIVERSITY_HYPER_TEST_ROOM,          4,  6 ; 55
+	map_const CELADON_UNIVERSITY_POOL,                     8,  5 ; 56
+	map_const CELADON_UNIVERSITY_CLASSROOM_1,              4,  6 ; 57
+	map_const CELADON_UNIVERSITY_CLASSROOM_2,              4,  6 ; 58
+	map_const CELADON_UNIVERSITY_CLASSROOM_3,              4,  6 ; 59
+	map_const CELADON_UNIVERSITY_CLASSROOM_4,              4,  6 ; 60
+	map_const CELADON_OLD_MAN_SPEECH_HOUSE,                4,  4 ; 61
+	map_const CELADON_DEVELOPMENT_SPEECH_HOUSE,            4,  4 ; 62
 
 	newgroup                                                     ; 22
 	map_const ROUTE_40,                                   10, 20 ;  1
@@ -516,7 +514,7 @@ ENDM
 	map_const ROUTE_2_SOUTH,                              10, 18 ;  1
 	map_const ROUTE_22,                                   15,  9 ;  2
 	map_const VIRIDIAN_CITY,                              20, 18 ;  3
-	map_const VIRIDIAN_GYM,                                7, 23 ;  4
+	map_const VIRIDIAN_GYM,                                7, 22 ;  4
 	map_const VIRIDIAN_NICKNAME_SPEECH_HOUSE,              4,  4 ;  5
 	map_const VIRIDIAN_SCHOOL_HOUSE,                       4,  5 ;  6
 	map_const TRAINER_HOUSE_1F,                            5,  6 ;  7
@@ -690,8 +688,15 @@ ENDM
 	map_const SHAMOUTI_SHRINE_RUINS,                      12, 17 ;  2
 
 	newgroup                                                     ; 36
-	map_const RUGGED_ROAD,                                10, 27 ;  1
-	map_const SNOWTOP_MOUNTAIN,                           20, 18 ;  2
-	map_const ROUTE_39_RUGGED_ROAD_GATE,                   5,  4 ;  3
+	map_const RUGGED_ROAD_NORTH,                          17,  9 ;  1
+	map_const RUGGED_ROAD_SOUTH,                          17, 19 ;  2
+	map_const SNOWTOP_MOUNTAIN_INSIDE,                    18, 17 ;  3
+	map_const SNOWTOP_MOUNTAIN_OUTSIDE,                   16, 20 ;  4
+	map_const SNOWTOP_POKECENTER_1F,                       6,  4 ;  5
+	map_const ROUTE_39_RUGGED_ROAD_GATE,                   5,  4 ;  6
+
+	newgroup                                                     ; 37
+	map_const ECRUTEAK_SHRINE_OUTSIDE,                     8, 11 ;  1
+	map_const ECRUTEAK_SHRINE_INSIDE,                      6,  6 ;  2
 
 DEF NUM_MAP_GROUPS EQU const_value ; 37

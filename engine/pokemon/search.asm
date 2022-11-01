@@ -1,4 +1,4 @@
-SpecialBeastsCheck:
+SpecialBeastsCheck::
 ; Check if the player has caught all three legendary beasts.
 ; Return the result in hScriptVar.
 
@@ -10,7 +10,7 @@ SpecialBeastsCheck:
 	ldh [hScriptVar], a
 	ret
 
-SpecialBirdsCheck:
+SpecialBirdsCheck::
 ; Check if the player has caught all three legendary birds.
 ; Return the result in hScriptVar.
 

@@ -67,6 +67,9 @@ TrainerEncounterMusic:
 	db MUSIC_KIMONO_ENCOUNTER ; kimono_girl_3
 	db MUSIC_KIMONO_ENCOUNTER ; kimono_girl_4
 	db MUSIC_KIMONO_ENCOUNTER ; kimono_girl_5
+	db MUSIC_KIMONO_ENCOUNTER ; kimono_girl_6
+	db MUSIC_KIMONO_ENCOUNTER ; kimono_girl_7
+	db MUSIC_KIMONO_ENCOUNTER ; kimono_girl_8
 	db MUSIC_SAGE_ENCOUNTER ; elder
 	db MUSIC_LASS_ENCOUNTER ; sr_and_jr
 	db MUSIC_HIKER_ENCOUNTER ; couple
@@ -97,6 +100,7 @@ TrainerEncounterMusic:
 	db MUSIC_HIKER_ENCOUNTER ; tamer
 	db MUSIC_BEAUTY_ENCOUNTER ; artist
 	db MUSIC_BEAUTY_ENCOUNTER ; aroma_lady
+	db MUSIC_HIKER_ENCOUNTER ; soldier
 	db MUSIC_HIKER_ENCOUNTER ; waiter
 	db MUSIC_BEAUTY_ENCOUNTER ; waitress
 	db MUSIC_HIKER_ENCOUNTER ; sightseerm

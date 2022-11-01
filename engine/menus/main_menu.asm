@@ -1,7 +1,7 @@
 MainMenu:
 	call DeleteSavedMusic
 	farcall NewGame_ClearTileMapEtc
-	ld a, CGB_DIPLOMA
+	ld a, CGB_PLAIN
 	call GetCGBLayout
 	call SetPalettes
 	ld hl, wGameTimerPaused
@@ -14,7 +14,8 @@ MainMenu:
 	call MainMenuJoypadLoop
 	call CloseWindow
 	ret c
-	call ClearTileMap
+	ld a, "<BLACK>"
+	call FillTileMap
 	ld a, [wMenuSelection]
 	ld hl, .Jumptable
 	call JumpTable

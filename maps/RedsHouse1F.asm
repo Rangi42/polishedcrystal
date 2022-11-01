@@ -51,8 +51,7 @@ RedsMom:
 
 	para "that he is doing"
 	line "what he wants to"
-
-	para "do."
+	cont "do."
 	done
 
 RedsHouse1FTVScript:

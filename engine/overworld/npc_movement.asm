@@ -134,7 +134,7 @@ CanObjectLeaveTile:
 GetSideWallDirectionMask:
 	ld d, a
 	and $f0
-	cp $b0
+	cp HI_NYBBLE_SIDE_WALLS
 	jr z, .done
 	xor a
 	ret

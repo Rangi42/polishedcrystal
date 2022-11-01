@@ -27,10 +27,12 @@ Route24_MapScriptHeader:
 	coord_event 25, 23, 1, Route24BridgeOverheadTrigger
 
 	def_bg_events
-	bg_event 16,  5, BGEVENT_ITEM + POTION, EVENT_ROUTE_24_HIDDEN_POTION
+	bg_event 15, 19, BGEVENT_ITEM + MAX_POTION, EVENT_ROUTE_24_HIDDEN_MAX_POTION
+	bg_event 23, 11, BGEVENT_JUMPTEXT, Route24AdvancedTipsSignText
 
 	def_object_events
 	object_event 21, 25, SPRITE_ROCKET, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, OBJECTTYPE_TRAINER, 1, TrainerGruntM31, EVENT_ROUTE_24_ROCKET
+	fruittree_event 16,  5, FRUITTREE_ROUTE_24, LANSAT_BERRY, PAL_NPC_RED
 
 	object_const_def
 	const ROUTE24_ROCKET
@@ -193,4 +195,23 @@ Route24RocketDisappearsText:
 	para "Oh, no! Should I"
 	line "do what now on"
 	cont "from, me?"
+	done
+
+Route24AdvancedTipsSignText:
+	text "Advanced Tips!"
+
+	para "The Sheer Force"
+	line "Ability negates"
+
+	para "side effects of"
+	line "moves, but it"
+
+	para "also negates some"
+	line "other effects!"
+
+	para "In particular,"
+	line "the damage done"
+
+	para "by a held Life Orb"
+	line "is ignored!"
 	done

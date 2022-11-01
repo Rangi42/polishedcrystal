@@ -38,6 +38,7 @@ ProfOaksAide1Script:
 	waitsfx
 	iffalsefwd .NoRoom
 	writetext ProfOaksAide1NestBallText
+	special ShowItemIcon
 	playsound SFX_ITEM
 	waitsfx
 	itemnotify
@@ -114,7 +115,7 @@ ProfOaksAide1NoRoomText:
 	done
 
 ProfOaksAide1NestBallText:
-	text "<PLAYER> received"
+	text "<PLAYER> gained"
 	line "5 Nest Balls."
 	done
 

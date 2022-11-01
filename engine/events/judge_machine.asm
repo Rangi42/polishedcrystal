@@ -251,7 +251,7 @@ JudgeSystem::
 	ld bc, wTempMonDefense
 	call .PrintBottomStat
 	hlcoord 12, 17
-	ld de, .Spd
+	ld de, .Spe
 	ld bc, wTempMonSpeed
 	call .PrintBottomStat
 	hlcoord 6, 15
@@ -385,7 +385,7 @@ JudgeSystem::
 .HP:  db "HP@"
 .Atk: db "Atk@"
 .Def: db "Def@"
-.Spd: db "Spd@"
+.Spe: db "Spe@"
 .SDf: db "SDf@"
 .SAt: db "SAt@"
 
@@ -451,10 +451,10 @@ RenderEVChart:
 	ldh [hChartDef], a
 	depixel 15, 17
 	call SparkleMaxStat
-; Spd
-	ld a, [wTempMonSpdEV]
+; Spe
+	ld a, [wTempMonSpeEV]
 	or %11
-	ldh [hChartSpd], a
+	ldh [hChartSpe], a
 	depixel 17, 12
 	call SparkleMaxStat
 ; SAt
@@ -495,7 +495,7 @@ RenderIVChart:
 	depixel 4, 17
 	call SparkleMaxStatOrShowBottleCap
 ; Def
-	ld a, [wTempMonDefSpdDV]
+	ld a, [wTempMonDefSpeDV]
 	and $f0
 	ld b, a
 	swap a
@@ -503,13 +503,13 @@ RenderIVChart:
 	ldh [hChartDef], a
 	depixel 15, 17
 	call SparkleMaxStatOrShowBottleCap
-; Spd
-	ld a, [wTempMonDefSpdDV]
+; Spe
+	ld a, [wTempMonDefSpeDV]
 	and $0f
 	ld b, a
 	swap a
 	or b
-	ldh [hChartSpd], a
+	ldh [hChartSpe], a
 	depixel 17, 12
 	call SparkleMaxStatOrShowBottleCap
 ; SAt
@@ -628,8 +628,8 @@ OutlineRadarChart:
 	ldh [hFunctionTargetHi], a
 	call DrawAndFillRadarEdge
 
-; de = Spd point
-	ldh a, [hChartSpd]
+; de = Spe point
+	ldh a, [hChartSpe]
 	ld b, a
 	; x = 40
 	ld a, 40
@@ -640,7 +640,7 @@ OutlineRadarChart:
 	add 49
 	ld e, a
 
-; Draw a line from Def to Spd
+; Draw a line from Def to Spe
 	pop bc
 	push de
 	ld a, LOW(FillRadarUp)
@@ -667,7 +667,7 @@ OutlineRadarChart:
 	ld a, [bc]
 	ld e, a
 
-; Draw a line from Spd to SDf
+; Draw a line from Spe to SDf
 	pop bc
 	push de
 	; hFunctionTarget is already FillRadarUp

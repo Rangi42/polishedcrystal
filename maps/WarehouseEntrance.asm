@@ -10,9 +10,10 @@ WarehouseEntrance_MapScriptHeader:
 	warp_event  1,  2, UNDERGROUND_PATH_SWITCH_ROOM_ENTRANCES, 7
 	warp_event  1, 34, UNDERGROUND_PATH_SWITCH_ROOM_ENTRANCES, 4
 	warp_event 16,  6, WAREHOUSE_ENTRANCE, 4
-	warp_event 13, 35, WAREHOUSE_ENTRANCE, 3
-	warp_event 14, 35, WAREHOUSE_ENTRANCE, 3
-	warp_event 14, 31, UNDERGROUND_PATH_SWITCH_ROOM_ENTRANCES, 1
+	warp_event 27, 19, WAREHOUSE_ENTRANCE, 3
+	warp_event 28, 19, WAREHOUSE_ENTRANCE, 3
+	warp_event 28, 15, UNDERGROUND_PATH_SWITCH_ROOM_ENTRANCES, 1
+	warp_event 19, 32, UNDERGROUND_PATH_SWITCH_ROOM_ENTRANCES, 10
 
 	def_coord_events
 
@@ -22,23 +23,31 @@ WarehouseEntrance_MapScriptHeader:
 	bg_event  4, 13, BGEVENT_ITEM + PARALYZEHEAL, EVENT_WAREHOUSE_ENTRANCE_HIDDEN_PARALYZEHEAL
 	bg_event  2, 18, BGEVENT_ITEM + SUPER_POTION, EVENT_WAREHOUSE_ENTRANCE_HIDDEN_SUPER_POTION
 	bg_event 15,  8, BGEVENT_ITEM + ANTIDOTE, EVENT_WAREHOUSE_ENTRANCE_HIDDEN_ANTIDOTE
+	bg_event 20, 27, BGEVENT_ITEM + X_SPCL_ATK, EVENT_WAREHOUSE_ENTRANCE_HIDDEN_X_SPCL_ATK
 
 	def_object_events
 	object_event  5, 11, SPRITE_GRAMPS, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, BargainMerchantScript, EVENT_WAREHOUSE_ENTRANCE_GRAMPS
 	object_event  5, 14, SPRITE_POKEMANIAC, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, OlderHaircutBrotherScript, EVENT_WAREHOUSE_ENTRANCE_OLDER_HAIRCUT_BROTHER
 	object_event  5, 15, SPRITE_POKEMANIAC, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, YoungerHaircutBrotherScript, EVENT_WAREHOUSE_ENTRANCE_YOUNGER_HAIRCUT_BROTHER
 	object_event  5, 21, SPRITE_GRANNY, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, BitterMerchantScript, EVENT_WAREHOUSE_ENTRANCE_GRANNY
+	object_event 13, 25, SPRITE_PIERS, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, PiersScript, -1
 	object_event  3, 31, SPRITE_SUPER_NERD, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 3, GenericTrainerSupernerdEric, -1
 	object_event  4,  9, SPRITE_SUPER_NERD, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 2, GenericTrainerSupernerdTeru, -1
 	object_event  1, 27, SPRITE_POKEMANIAC, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 2, GenericTrainerPokemaniacIssac, -1
 	object_event  0,  6, SPRITE_POKEMANIAC, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 3, GenericTrainerPokemaniacDonald, -1
+<<<<<<< HEAD
 	keyitemball_event  4, 25, COIN_CASE, EVENT_WAREHOUSE_ENTRANCE_COIN_CASE
+=======
+	object_event  8, 27, SPRITE_COSPLAYER, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 2, GenericTrainerCosplayerClara, -1
+	keyitemball_event  5, 24, COIN_CASE, EVENT_WAREHOUSE_ENTRANCE_COIN_CASE
+>>>>>>> c214823579d7674333029ee4a1a92629ff3c68b4
 
 	object_const_def
 	const WAREHOUSEENTRANCE_GRAMPS
 	const WAREHOUSEENTRANCE_SUPER_NERD5
 	const WAREHOUSEENTRANCE_SUPER_NERD6
 	const WAREHOUSEENTRANCE_GRANNY
+	const WAREHOUSEENTRANCE_PIERS
 
 WarehouseEntranceResetSwitches:
 	clearevent EVENT_SWITCH_1
@@ -373,6 +382,197 @@ BasementDoorScript::
 	reloadmappart
 	setevent EVENT_USED_BASEMENT_KEY
 	endtext
+
+PiersScript:
+	faceplayer
+	opentext
+	checkevent EVENT_BEAT_ELITE_FOUR
+	iftruefwd PiersRematchScript
+	checkevent EVENT_BEAT_PIERS
+	iftrue_jumpopenedtext PiersAfterText
+	checkevent EVENT_INTRODUCED_PIERS
+	iftruefwd .AfterIntro
+	writetext PiersIntroText
+	waitbutton
+	setevent EVENT_INTRODUCED_PIERS
+.AfterIntro:
+	writetext PiersAfterIntroText
+	yesorno
+	iffalse_jumpopenedtext PiersNoBattleText
+	writetext PiersSeenText
+	waitbutton
+	closetext
+	winlosstext PiersBeatenText, 0
+	setlasttalked WAREHOUSEENTRANCE_PIERS
+	loadtrainer PIERS, 1
+	startbattle
+	reloadmapafterbattle
+	setevent EVENT_BEAT_PIERS
+	opentext
+	writetext PiersRewardText
+	promptbutton
+	verbosegiveitem THROAT_SPRAY
+	setevent EVENT_GOT_THROAT_SPRAY_FROM_PIERS
+	jumpthisopenedtext
+
+PiersAfterText:
+	text "If you want to be-"
+	line "come the Champion,"
+
+	para "you better get"
+	line "goin'!"
+
+	para "I'll send some sup-"
+	line "port your way with"
+	cont "a yell!"
+	done
+
+PiersRematchScript:
+	checkevent EVENT_BEAT_PIERS_AGAIN
+	iftrue_jumpopenedtext PiersRematchAfterText
+	checkevent EVENT_INTRODUCED_PIERS
+	iffalsefwd .Intro
+	writetext PiersRematchIntroAgainText
+	sjumpfwd .AfterIntro
+.Intro:
+	writetext PiersIntroText
+.AfterIntro:
+	setevent EVENT_INTRODUCED_PIERS
+	waitbutton
+	writetext PiersRematchSeenText
+	waitbutton
+	closetext
+	winlosstext PiersRematchBeatenText, 0
+	setlasttalked WAREHOUSEENTRANCE_PIERS
+	loadtrainer PIERS, 2
+	startbattle
+	reloadmapafterbattle
+	setevent EVENT_BEAT_PIERS_AGAIN
+	opentext
+	checkevent EVENT_GOT_THROAT_SPRAY_FROM_PIERS
+	iftrue_jumpopenedtext PiersRematchAfterText
+	writetext PiersRewardText
+	promptbutton
+	verbosegiveitem THROAT_SPRAY
+	setevent EVENT_GOT_THROAT_SPRAY_FROM_PIERS
+	jumpthisopenedtext
+
+PiersRematchAfterText:
+	text "I have a little"
+	line "sister."
+	cont "Her name's Marnie."
+
+	para "She's about as"
+	line "cute as they come."
+
+	para "When she's older,"
+	line "I don't know if"
+
+	para "she'll want to"
+	line "sing, play music,"
+
+	para "battle with #-"
+	line "mon, or something"
+	cont "totally new."
+
+	para "But whatever she"
+	line "chooses, I hope"
+
+	para "she has as much"
+	line "passion as you"
+	cont "do, <PLAYER>!"
+	done
+
+PiersIntroText:
+	text "Piers: The only"
+	line "thing a humble"
+	cont "singer can do"
+	cont "is sing a humble"
+	cont "song… ♪"
+
+	para "My name's Piers."
+	line "I'm not from Johto,"
+
+	para "but I came here"
+	line "to sing on the"
+
+	para "radio and make"
+	line "everyone smile"
+	cont "in my hometown."
+	done
+
+PiersAfterIntroText:
+	text "Some of my best"
+	line "riffs have come"
+
+	para "from winning a"
+	line "good battle."
+
+	para "How 'bout we have"
+	line "one here and now?"
+	done
+
+PiersNoBattleText:
+	text "Sigh… I feel like"
+	line "my soul's weeping."
+	done
+
+PiersSeenText:
+	text "I make dark music"
+	line "and use Dark-type"
+	cont "#mon!"
+
+	para "It's time to rock!"
+	done
+
+PiersBeatenText:
+	text "Me an' my team"
+	line "gave it our best."
+	done
+
+PiersRewardText:
+	text "I'm glad we were"
+	line "able to battle."
+
+	para "Seems like my"
+	line "#mon feel the"
+	cont "same way."
+
+	para "Here's something"
+	line "to help rock out"
+
+	para "even harder next"
+	line "time!"
+	done
+
+PiersRematchIntroAgainText:
+	text "Piers: Hey there,"
+	line "<PLAYER>."
+	done
+
+PiersRematchSeenText:
+	text "Hah! So you're the"
+	line "new Champion."
+
+	para "You're a big deal"
+	line "now!"
+
+	para "And I'm still just"
+	line "singing my humble"
+	cont "songs…"
+
+	para "So you want an"
+	line "encore?"
+
+	para "I'll make an ex-"
+	line "ception for you,"
+	cont "just this once!"
+	done
+
+PiersRematchBeatenText:
+	text "That's it?!"
+	line "No way!"
+	done
 
 SupernerdEricSeenText:
 	text "I got booted out"

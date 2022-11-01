@@ -1,7 +1,8 @@
 SECTION "Tileset Headers", ROMX
 
 MACRO tileset
-	dbas \1GFX0, \1GFX1, \1GFX2, \1Meta, \1Coll, \1Attr
+	dbas \1GFX0, \1GFX1, \1Meta, \1Coll, \1Attr
+	dw \1GFX2 ; BANK("Tileset GFX2 Data")
 	dw \1Anim ; BANK(_AnimateTileset)
 ENDM
 
@@ -52,6 +53,7 @@ Tilesets::
 	tileset TilesetAlph
 	tileset TilesetPokemonMansion
 	tileset TilesetBattleFactory
+	tileset TilesetSnowtopMountain
 	assert_table_length NUM_TILESETS
 
 
@@ -65,13 +67,10 @@ TilesetJohto5GFX0:: INCBIN "gfx/tilesets/johto_common.2bpp.lz"
 
 TilesetJohto1GFX1::
 TilesetJohto5GFX1:: INCBIN "gfx/tilesets/johto_traditional.johto_common.2bpp.vram0.lz"
-TilesetJohto1GFX2::
-TilesetJohto5GFX2:: INCBIN "gfx/tilesets/johto_traditional.johto_common.2bpp.vram1.lz"
 
 TilesetJohto2GFX1:: INCBIN "gfx/tilesets/johto_modern.johto_common.2bpp.vram0.lz"
-TilesetJohto2GFX2:: INCBIN "gfx/tilesets/johto_modern.johto_common.2bpp.vram1.lz"
 
-TilesetJohto3GFX1:: INCBIN "gfx/tilesets/johto_overcast.johto_common.2bpp.lz"
+TilesetJohto3GFX1:: INCBIN "gfx/tilesets/johto_overcast.johto_common.2bpp.vram0.lz"
 
 TilesetJohto4GFX1:: INCBIN "gfx/tilesets/battle_tower_outside.johto_common.2bpp.lz"
 
@@ -475,10 +474,25 @@ TilesetBattleFactoryAttr:: INCBIN "data/tilesets/battle_factory_attributes.bin.l
 TilesetBattleFactoryColl:: INCBIN "data/tilesets/battle_factory_collision.bin.lz"
 
 
-SECTION "Unused Tileset Data", ROM0
+SECTION "Tileset Data - snowtop_mountain", ROMX
 
-; None of these tilesets need GFX2, so consolidate them here.
-TilesetJohto3GFX2::
+TilesetSnowtopMountainGFX0:: INCBIN "gfx/tilesets/snowtop_mountain.2bpp.vram0.lz"
+TilesetSnowtopMountainGFX1:: INCBIN "gfx/tilesets/snowtop_mountain.2bpp.vram1.lz"
+
+TilesetSnowtopMountainMeta:: INCBIN "data/tilesets/snowtop_mountain_metatiles.bin.lz"
+TilesetSnowtopMountainAttr:: INCBIN "data/tilesets/snowtop_mountain_attributes.bin.lz"
+TilesetSnowtopMountainColl:: INCBIN "data/tilesets/snowtop_mountain_collision.bin.lz"
+
+
+SECTION "Tileset GFX2 Data", ROMX
+
+TilesetJohto1GFX2::
+TilesetJohto5GFX2:: INCBIN "gfx/tilesets/johto_traditional.johto_common.2bpp.vram1.lz"
+
+TilesetJohto2GFX2:: INCBIN "gfx/tilesets/johto_modern.johto_common.2bpp.vram1.lz"
+
+TilesetJohto3GFX2:: INCBIN "gfx/tilesets/johto_overcast.johto_common.2bpp.vram1.lz"
+
 TilesetJohto4GFX2::
 TilesetKanto1GFX2::
 TilesetKanto2GFX2::
@@ -519,4 +533,5 @@ TilesetRuinsGFX2::
 TilesetAlphGFX2::
 TilesetPokemonMansionGFX2::
 TilesetBattleFactoryGFX2::
+TilesetSnowtopMountainGFX2::
 	db $ff ; Compressed data is terminated with $ff.

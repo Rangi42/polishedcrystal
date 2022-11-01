@@ -142,7 +142,7 @@ GetFishLocations:
 	pop de
 	ret c
 
-	assert (wDexAreaValidTreeGroups == wDexAreaValidFishGroups)
+	assert wDexAreaValidTreeGroups == wDexAreaValidFishGroups
 
 	; TODO: fix labels, we don't want "call/jp a.b"...
 	ld hl, FishMonMaps

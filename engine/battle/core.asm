@@ -94,7 +94,7 @@ DoBattle:
 	call SetEnemyTurn
 	call SendInUserPkmn
 .not_linked_2
-	call AutomaticRainWhenOvercast
+	call AutomaticBattleWeather
 	call SpikesDamageBoth ; for Air Balloon
 	call BoostGiovannisArmoredMewtwo
 	call RunBothActivationAbilities
@@ -327,10 +327,10 @@ GetSpeed::
 	push de
 	ldh a, [hBattleTurn]
 	and a
-	ld a, [wPlayerSpdLevel]
+	ld a, [wPlayerSpeLevel]
 	ld hl, wBattleMonSpeed
 	jr z, .got_speed
-	ld a, [wEnemySpdLevel]
+	ld a, [wEnemySpeLevel]
 	ld hl, wEnemyMonSpeed
 .got_speed
 	ld b, a
@@ -2308,6 +2308,8 @@ PlayVictoryMusic:
 	jr nz, .trainer_victory
 	ld hl, wPayDayMoney
 	ld a, [hli]
+	or [hl]
+	inc hl
 	or [hl]
 	jr nz, .play_music
 	push de
@@ -6692,17 +6694,17 @@ GiveBattleEVs:
 	cp HELD_EV_DOUBLE
 	call z, .item_double
 	cp HELD_EV_HP_UP
-	call z, .item_hpup
+	call z, .item_hp_up
 	cp HELD_EV_ATK_UP
-	call z, .item_atkup
+	call z, .item_atk_up
 	cp HELD_EV_DEF_UP
-	call z, .item_defup
-	cp HELD_EV_SPD_UP
-	call z, .item_spdup
+	call z, .item_def_up
+	cp HELD_EV_SPE_UP
+	call z, .item_spe_up
 	cp HELD_EV_SAT_UP
-	call z, .item_satup
+	call z, .item_sat_up
 	cp HELD_EV_SDF_UP
-	call z, .item_sdfup
+	call z, .item_sdf_up
 	pop bc
 	ld hl, MON_EVS
 	add hl, bc
@@ -6718,7 +6720,7 @@ GiveBattleEVs:
 	pop hl
 	call GetBaseData
 	; EV yield format:
-	; Byte 1: xxyyzzmm x: HP, y: Atk, z: Def, m: Spd
+	; Byte 1: xxyyzzmm x: HP, y: Atk, z: Def, m: Spe
 	; Byte 2: aabb0000 a: Sat, b: Sdf, 0: unused
 	ld a, [wBaseEVYield1]
 	ld b, a
@@ -6756,7 +6758,9 @@ GiveBattleEVs:
 .ev_overflow
 	ld a, 252
 .add_done
-	ld [hli], a
+	ld [hl], a
+	call .FixEVOverflow
+	inc hl
 	dec c
 	jr z, .done
 	; For Sat and Sdf, we want to use byte 2
@@ -6773,23 +6777,51 @@ GiveBattleEVs:
 .item_double
 	set 1, d
 	ret
-.item_hpup
+.item_hp_up
 	set 7, e
 	ret
-.item_atkup
+.item_atk_up
 	set (6 - ATTACK), e ; 6
 	ret
-.item_defup
+.item_def_up
 	set (6 - DEFENSE), e ; 5
 	ret
-.item_spdup
+.item_spe_up
 	set (6 - SPEED), e ; 4
 	ret
-.item_satup
+.item_sat_up
 	set (6 - SP_ATTACK), e ; 3
 	ret
-.item_sdfup
+.item_sdf_up
 	set (6 - SP_DEFENSE), e ; 2
+	ret
+
+.FixEVOverflow:
+; Reduces [hl] if EV total exceeds 510.
+	; Only do this if we have the modern EV limit.
+	ld a, [wInitialOptions2]
+	and EV_OPTMASK
+	cp EVS_OPT_MODERN
+	ret nz
+
+	push hl
+	push bc
+
+	; Get current EV total.
+	push hl
+	farcall GetEVTotal
+	pop bc
+	jr nc, .ev_overflow_done
+
+	; GetEVTotal sets hl to (overflow - 1).
+	ld a, [bc]
+	sub l
+	dec a
+	ld [bc], a
+
+.ev_overflow_done
+	pop bc
+	pop hl
 	ret
 
 BoostExp:
@@ -7860,7 +7892,7 @@ DisplayLinkRecord:
 	ld bc, SCREEN_WIDTH * SCREEN_HEIGHT
 	rst ByteFill
 	call ApplyAttrAndTilemapInVBlank
-	ld a, CGB_DIPLOMA
+	ld a, CGB_PLAIN
 	call GetCGBLayout
 	call SetPalettes
 	ld c, 8
@@ -8509,23 +8541,44 @@ CheckPluralTrainer:
 	and a
 	ret
 
-AutomaticRainWhenOvercast:
+AutomaticBattleWeather:
 	ld a, [wLinkMode]
 	and a
 	ret nz
 	ld a, [wInBattleTowerBattle]
 	and a
 	ret nz
+
+	ld a, [wMapGroup]
+	cp GROUP_SNOWTOP_MOUNTAIN_INSIDE ; aka GROUP_RUGGED_ROAD_SOUTH
+	jr nz, .not_rugged_road_or_snowtop_mountain
+	ld a, [wMapNumber]
+	; Automatic hail on Snowtop Mountain
+	cp MAP_SNOWTOP_MOUNTAIN_INSIDE
+	lb de, WEATHER_HAIL, HAIL
+	ld hl, HailStartedText
+	jr z, .got_weather
+	; Automatic sandstorm on Rugged Road
+	cp MAP_RUGGED_ROAD_SOUTH
+	lb de, WEATHER_SANDSTORM, SANDSTORM
+	ld hl, SandstormBrewedText
+	jr z, .got_weather
+.not_rugged_road_or_snowtop_mountain
+	; Automatic rain on overcast maps
 	farcall GetOvercastIndex
 	and a
 	ret z
-	ld a, WEATHER_RAIN
+	lb de, WEATHER_RAIN, RAIN_DANCE
+	ld hl, DownpourText
+.got_weather
+	ld a, d
 	ld [wBattleWeather], a
 	ld a, 255
 	ld [wWeatherCount], a
-	ld de, RAIN_DANCE
+	ld d, 0
+	push hl
 	call Call_PlayBattleAnim
-	ld hl, DownpourText
+	pop hl
 	call StdBattleTextbox
 	jmp EmptyBattleTextbox
 

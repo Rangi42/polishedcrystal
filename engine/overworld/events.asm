@@ -782,27 +782,40 @@ CheckMenuOW:
 	xor a
 	ldh [hMenuReturn], a
 	ldh [hMenuReturn + 1], a
-	ldh a, [hJoyPressed]
 
+	ld a, [wPanningAroundTinyMap]
+	and a
+	jr nz, .PanningAroundSnowtopMountain
+
+	ldh a, [hJoyPressed]
 	bit SELECT_F, a
 	jr nz, .Select
-
 	bit START_F, a
-	jr z, .NoMenu
+	jr nz, .Start
 
+	xor a
+	ret
+
+.Start:
 	ld a, BANK(StartMenuScript)
 	ld hl, StartMenuScript
 	call CallScript
 	scf
 	ret
 
-.NoMenu:
-	xor a
-	ret
-
 .Select:
 	ld a, BANK(SelectMenuScript)
 	ld hl, SelectMenuScript
+	call CallScript
+	scf
+	ret
+
+.PanningAroundSnowtopMountain:
+	ldh a, [hJoyPressed]
+	and B_BUTTON
+	ret z
+	ld a, BANK(SnowtopMountainOutsideStopPanningScript)
+	ld hl, SnowtopMountainOutsideStopPanningScript
 	call CallScript
 	scf
 	ret
@@ -832,6 +845,11 @@ SelectMenuCallback:
 CountStep:
 	; Don't count steps in link communication rooms.
 	ld a, [wLinkMode]
+	and a
+	jr nz, .done
+
+	; Don't count steps while panning in Snowtop Mountain
+	ld a, [wPanningAroundTinyMap]
 	and a
 	jr nz, .done
 

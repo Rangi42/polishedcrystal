@@ -515,12 +515,12 @@ BT_AppendOTMon:
 	rst ByteFill
 
 	; If Speed DV is zero, also set Speed EV to zero
-	ld hl, wPartyMon1DefSpdDV - wPartyMon1
+	ld hl, wPartyMon1DefSpeDV - wPartyMon1
 	add hl, de
 	ld a, [hl]
 	and $f
 	jr nz, .speed_dv_ok
-	ld hl, MON_SPD_EV
+	ld hl, MON_SPE_EV
 	add hl, de
 	ld [hl], a
 

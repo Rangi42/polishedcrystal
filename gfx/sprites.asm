@@ -305,6 +305,7 @@ SECTION "ElderSpriteGFX", ROMX
 ElderSpriteGFX:: INCBIN "gfx/sprites/elder.2bpp.lz"
 
 SECTION "EngineerSpriteGFX", ROMX
+SoldierSpriteGFX::
 EngineerSpriteGFX:: INCBIN "gfx/sprites/engineer.2bpp.lz"
 
 SECTION "FatGuySpriteGFX", ROMX
@@ -576,3 +577,9 @@ BeachGuySpriteGFX:: INCBIN "gfx/sprites/beach_guy.2bpp.lz"
 
 SECTION "BeachGirlSpriteGFX", ROMX
 BeachGirlSpriteGFX:: INCBIN "gfx/sprites/beach_girl.2bpp.lz"
+
+SECTION "PiersSpriteGFX", ROMX
+PiersSpriteGFX:: INCBIN "gfx/sprites/piers.2bpp.lz"
+
+SECTION "AlolanExeggutorSpriteGFX", ROMX
+AlolanExeggutorSpriteGFX:: INCBIN "gfx/sprites/alolan_exeggutor.2bpp.lz"

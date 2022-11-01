@@ -11,6 +11,7 @@ Route36_MapScriptHeader:
 	warp_event 52, 13, ROUTE_36_RUINS_OF_ALPH_GATE, 2
 	warp_event 61,  8, ROUTE_36_VIOLET_GATE, 1
 	warp_event 61,  9, ROUTE_36_VIOLET_GATE, 2
+	warp_event 30, 12, HIDDEN_TREE_GROTTO, 1
 
 	def_coord_events
 	coord_event 24,  7, 1, Route36SuicuneScript
@@ -22,7 +23,9 @@ Route36_MapScriptHeader:
 	bg_event 59,  7, BGEVENT_JUMPTEXT, Route36SignText
 	bg_event 25,  7, BGEVENT_JUMPTEXT, Route36TrainerTips1Text
 	bg_event 53,  4, BGEVENT_JUMPTEXT, Route36AdvancedTips1Text
-	bg_event 17,  3, BGEVENT_JUMPTEXT, Route36AdvancedTips2Text
+	bg_event 34,  7, BGEVENT_JUMPTEXT, Route36AdvancedTips2Text
+	bg_event 30, 11, BGEVENT_JUMPSTD, treegrotto, HIDDENGROTTO_ROUTE_36
+	bg_event 31, 11, BGEVENT_JUMPSTD, treegrotto, HIDDENGROTTO_ROUTE_36
 
 	def_object_events
 	object_event 39,  9, SPRITE_WEIRD_TREE, SPRITEMOVEDATA_SUDOWOODO, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, SudowoodoScript, EVENT_ROUTE_36_SUDOWOODO
@@ -109,14 +112,7 @@ DidntCatchSudowoodo:
 	end
 
 Route36FloriaScript:
-	faceplayer
-	opentext
-	checkevent EVENT_TALKED_TO_FLORIA_AT_FLOWER_SHOP
-	iftruefwd .SecondTimeTalking
-	setevent EVENT_MET_FLORIA
-	writetext FloriaText1
-	waitbutton
-	closetext
+	scall .FloriaMessage
 	clearevent EVENT_FLORIA_AT_FLOWER_SHOP
 	readvar VAR_FACING
 	ifequalfwd UP, .Up
@@ -129,8 +125,12 @@ Route36FloriaScript:
 	disappear ROUTE36_FLORIA
 	end
 
-.SecondTimeTalking:
-	jumpopenedtext FloriaText2
+.FloriaMessage:
+	checkevent EVENT_FOUGHT_SUDOWOODO
+	iftrue_jumptextfaceplayer FloriaTextAfterSudowoodo
+	checkevent EVENT_GOT_SQUIRTBOTTLE
+	iftrue_jumptextfaceplayer FloriaTextAfterSquirtBottle
+	jumptextfaceplayer FloriaTextAfterPlainBadge
 
 Route36RockSmashGuyScript:
 	faceplayer
@@ -483,7 +483,7 @@ SudowoodoAttackedText:
 	line "attacked!"
 	done
 
-FloriaText1:
+FloriaTextAfterPlainBadge:
 	text "I'm the Flower"
 	line "Shop's Floria!"
 
@@ -509,18 +509,47 @@ FloriaText1:
 	cont "her water bottle!"
 	done
 
-FloriaText2:
-	text "When I told my sis"
+FloriaTextAfterSquirtBottle:
+	text "I'm the Flower"
+	line "Shop's Floria!"
+
+	para "When I told my sis"
 	line "about the jiggly"
 
 	para "tree, she said"
 	line "it's dangerous."
 
-	para "If I beat Whitney,"
-	line "I wonder if she'll"
+	para "Oh, she lent you"
+	line "her water bottle?"
 
-	para "lend me her water"
-	line "bottle…"
+	para "You must be a good"
+	line "trainer then!"
+
+	para "I'll leave the"
+	line "weird tree to you."
+
+	para "Ta-ta!"
+	done
+
+FloriaTextAfterSudowoodo:
+	text "I just knew that"
+	line "wiggly tree was a"
+	cont "#mon!"
+
+	para "I was going to"
+	line "shock it out of"
+
+	para "its disguise, but"
+	line "you beat me to it!"
+
+	para "Oh well, I'll head"
+	line "back to the Flower"
+	cont "Shop."
+
+	para "I'm Floria, by the"
+	line "way."
+
+	para "Ta-ta!"
 	done
 
 RockSmashGuyText1:

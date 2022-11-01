@@ -99,5 +99,10 @@ DoEncoreDisable:
 	jmp CheckOpponentMentalHerb
 
 .failed
+	; Cursed Body prints nothing in this case.
+	ld a, [wAnimationsDisabled]
+	and a
+	ret nz
+
 	call AnimateFailedMove
 	jmp PrintButItFailed

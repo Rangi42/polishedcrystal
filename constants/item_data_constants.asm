@@ -89,7 +89,7 @@ DEF MAIL_STRUCT_LENGTH EQU $2f ; mailmsg struct
 	const HELD_EV_HP_UP
 	const HELD_EV_ATK_UP
 	const HELD_EV_DEF_UP
-	const HELD_EV_SPD_UP
+	const HELD_EV_SPE_UP
 	const HELD_EV_SAT_UP
 	const HELD_EV_SDF_UP
 

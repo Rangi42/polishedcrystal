@@ -48,12 +48,12 @@ Pokémon Polished Crystal would never have been finished without the help of man
 * metalflygon08 for the many Pokémon and trainer sprites.
 * JaceDeane for the Goldenrod Museum paintings, many Pokémon and trainer sprites, Prof. Ivy's overworld sprite, map name signs, and some tiles.
 * bloodless for sprites of Buck, Maylene, Veteran♂, some variant Pikachu, Diglett, and Dugtrio.
-* Kuroko Aizawa for sprites of Prof. Ivy, Looker, Cheryl, Officer♀, Aroma Lady, Artist.
+* Kuroko Aizawa for sprites of Prof. Ivy, Looker, Cheryl, Officer♀, Aroma Lady, Artist, and Engineer.
 * SCMidna for animations of Alolan Diglett and Dugtrio, Munchlax, Unown ! and ?, and Surfing Pikachu, and the stat trainers' overworld sprites.
 * Acrozz for many HGSS Pokémon palettes, and sprites and animations of Magikarp forms.
 * Freeline for animations of Honchkrow and Munchlax, and the Rocket Executives' and stat trainers' overworld sprites.
 * Megaman-Omega for some of Prism's overworld sprites.
-* SoupPotato (aka SourApple) for many Pokémon sprites, move animations, and the Ace Duo sprite.
+* SoupPotato (aka SourApple) for many Pokémon sprites, move animations, and the Ace Duo and Soldier sprites.
 * flempa for some Pokémon sprites and move animations and for Galarian Articuno and Galarian Zapdos animations.
 * ShockSlayer for the Gen 1 and 2 mini icons and for Yellow's overworld sprite.
 * Scarlax for many new Pokémon animations.
@@ -68,12 +68,12 @@ Pokémon Polished Crystal would never have been finished without the help of man
 * Twilir for Lyra's back sprite.
 * Danny-E for Lorelei's sprite.
 * Nic7C5 for Yellow's sprite.
-* PomPomKing and Jace for Melony's sprite.
+* Emi Monserrate for Piers' sprite.
 * Kage for Walker's sprite.
 * Pyro for Tamer's sprite.
 * Constantine for Nurse's sprite.
 * Paps for Twins' sprite.
-* coraldev for rowboat and sakura petal tiles.
+* coraldev for the sailboat spritr, and rowboat and sakura petal tiles.
 * lilbluedemon for some bridge tiles.
 * WhoaMan for some MICR font characters.
 * BettyNewbie for elements of Green's sprite (combined with spritershawn's by me).

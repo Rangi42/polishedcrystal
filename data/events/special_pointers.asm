@@ -168,3 +168,6 @@ SpecialsPointers::
 	add_special CountCaught
 	add_special CountSeen
 	add_special PickPsychicInverParty
+	add_special ShowItemIcon
+	add_special ShowKeyItemIcon
+	add_special ShowTMHMIcon

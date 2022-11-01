@@ -62,6 +62,8 @@ ENDM
 	special_bg_pal map,      SAFFRON_GYM,                 PAL_SINGLE,    SaffronGymPalette
 	special_bg_pal map,      LIGHTNING_ISLAND,            PAL_SINGLE,    LightningIslandPalette
 	special_bg_pal map,      IVYS_LAB,                    PAL_SINGLE,    IvysLabPalette
+	special_bg_pal map,      RUGGED_ROAD_NORTH,           PAL_TIMEOFDAY, RuggedRoadNorthPalette
+	special_bg_pal map,      SNOWTOP_MOUNTAIN_INSIDE,     PAL_TIMEOFDAY, RuggedRoadNorthPalette
 	special_bg_pal map,      SINJOH_RUINS,                PAL_TIMEOFDAY, SinjohRuinsPalette
 	special_bg_pal map,      MYSTRI_STAGE,                PAL_SINGLE,    MystriStagePalette
 	special_bg_pal map,      EMBEDDED_TOWER,              PAL_SINGLE,    EmbeddedTowerPalette
@@ -89,6 +91,7 @@ ENDM
 	special_bg_pal tileset,  TILESET_SAFARI_ZONE,         PAL_TIMEOFDAY, SafariZonePalette
 	special_bg_pal tileset,  TILESET_RUINS_OF_ALPH,       PAL_SINGLE,    RuinsPalette
 	special_bg_pal tileset,  TILESET_ALPH_WORD_ROOM,      PAL_SINGLE,    RuinsPalette
+	special_bg_pal tileset,  TILESET_SNOWTOP_MOUNTAIN,    PAL_TIMEOFDAY, SnowtopMountainPalette
 	special_bg_pal overcast, (unused),                    PAL_TIMEOFDAY, OvercastBGPalette
 	db 0 ; end
 
@@ -116,6 +119,7 @@ ENDM
 	special_ob_pal map,      LYRAS_HOUSE_2F,                  LyrasHouse2FOBPalette_Rock,             PAL_OW_ROCK,   1
 	special_ob_pal map,      PLAYERS_HOUSE_2F,                OverworldPartyMonPalettes + 3 palettes, PAL_OW_SILVER, 3
 	special_ob_pal map,      GOLDENROD_HARBOR,                GoldenrodHarborOBPalette_Purple,        PAL_OW_PURPLE, 1, 1
+	special_ob_pal map,      CERULEAN_CAPE,                   GoldenrodHarborOBPalette_Purple,        PAL_OW_PURPLE, 1, 1
 	special_ob_pal map,      GOLDENROD_POKECOM_CENTER_1F,     PokecomCenter1FOBPalette_Rock,          PAL_OW_ROCK,   1
 	special_ob_pal map,      GOLDENROD_POKECOM_CENTER_OFFICE, PokecomCenterOfficeOBPalette_Purple,    PAL_OW_PURPLE, 1
 	special_ob_pal map,      GOLDENROD_MUSEUM_1F,             GoldenrodMuseumOBPalettes_TreeRock,     PAL_OW_TREE,   2
@@ -123,6 +127,8 @@ ENDM
 	special_ob_pal map,      CELADON_DEPT_STORE_3F,           OverworldPartyMonPalettes + 3 palettes, PAL_OW_ROCK,   1
 	special_ob_pal map,      MOUNT_MOON_SQUARE,               wBGPals1 palette PAL_BG_GRAY,           PAL_OW_ROCK,   1
 	special_ob_pal map,      MAGNET_TUNNEL_INSIDE,            wBGPals1 palette PAL_BG_GRAY,           PAL_OW_ROCK,   1
+	special_ob_pal map,      SNOWTOP_MOUNTAIN_INSIDE,         wBGPals1 palette PAL_BG_GREEN,          PAL_OW_TREE,   1
+	special_ob_pal map,      SNOWTOP_MOUNTAIN_OUTSIDE,        SnowtopMountainOutsideOBPalette_Purple, PAL_OW_PURPLE, 1
 	special_ob_pal landmark, CINNABAR_VOLCANO,                wBGPals1 palette PAL_BG_BROWN,          PAL_OW_ROCK,   1
 	special_ob_pal landmark, DIM_CAVE,                        wBGPals1 palette PAL_BG_BROWN,          PAL_OW_ROCK,   1
 	special_ob_pal landmark, ICE_PATH,                        wBGPals1 palette PAL_BG_BROWN,          PAL_OW_ROCK,   1
@@ -314,34 +320,46 @@ endr
 	RGB_MONOCHROME_BLACK
 endc
 
-PokeCenterPalette:
+SnowtopMountainPalette:
 if !DEF(MONOCHROME)
-INCLUDE "gfx/tilesets/pokecenter.pal"
+INCLUDE "gfx/tilesets/snowtop_mountain.pal"
 else
-rept 6
+rept 7
 	MONOCHROME_RGB_FOUR
 endr
 	RGB_MONOCHROME_WHITE
-	RGB_MONOCHROME_LIGHT
+	RGB_MONOCHROME_WHITE
+	RGB_MONOCHROME_DARK
+	RGB_MONOCHROME_BLACK
+rept 7
+	MONOCHROME_RGB_FOUR
+endr
+	RGB_MONOCHROME_WHITE
+	RGB_MONOCHROME_WHITE
+	RGB_MONOCHROME_DARK
+	RGB_MONOCHROME_BLACK
+rept 4
+	MONOCHROME_RGB_FOUR_NIGHT
+endr
+	RGB_MONOCHROME_WHITE
 	RGB_MONOCHROME_DARK
 	RGB_MONOCHROME_DARK
+	RGB_MONOCHROME_BLACK
+	MONOCHROME_RGB_FOUR_NIGHT
+	MONOCHROME_RGB_FOUR_NIGHT
 	RGB_MONOCHROME_WHITE
 	RGB_MONOCHROME_WHITE
 	RGB_MONOCHROME_DARK
 	RGB_MONOCHROME_BLACK
 endc
 
-ShamoutiPokeCenterPalette:
+PokeCenterPalette:
 if !DEF(MONOCHROME)
-INCLUDE "gfx/tilesets/shamouti_pokecenter.pal"
+INCLUDE "gfx/tilesets/pokecenter.pal"
 else
-rept 6
+rept 7
 	MONOCHROME_RGB_FOUR
 endr
-	RGB_MONOCHROME_WHITE
-	RGB_MONOCHROME_LIGHT
-	RGB_MONOCHROME_DARK
-	RGB_MONOCHROME_DARK
 	RGB_MONOCHROME_WHITE
 	RGB_MONOCHROME_WHITE
 	RGB_MONOCHROME_DARK
@@ -970,6 +988,39 @@ endr
 	RGB_MONOCHROME_BLACK
 endc
 
+RuggedRoadNorthPalette:
+if !DEF(MONOCHROME)
+INCLUDE "maps/RuggedRoadNorth.pal"
+else
+rept 7
+	MONOCHROME_RGB_FOUR
+endr
+	RGB_MONOCHROME_WHITE
+	RGB_MONOCHROME_WHITE
+	RGB_MONOCHROME_DARK
+	RGB_MONOCHROME_BLACK
+rept 7
+	MONOCHROME_RGB_FOUR
+endr
+	RGB_MONOCHROME_WHITE
+	RGB_MONOCHROME_WHITE
+	RGB_MONOCHROME_DARK
+	RGB_MONOCHROME_BLACK
+rept 4
+	MONOCHROME_RGB_FOUR_NIGHT
+endr
+	RGB_MONOCHROME_WHITE
+	RGB_MONOCHROME_DARK
+	RGB_MONOCHROME_DARK
+	RGB_MONOCHROME_BLACK
+	MONOCHROME_RGB_FOUR_NIGHT
+	MONOCHROME_RGB_FOUR_NIGHT
+	RGB_MONOCHROME_WHITE
+	RGB_MONOCHROME_WHITE
+	RGB_MONOCHROME_DARK
+	RGB_MONOCHROME_BLACK
+endc
+
 SinjohRuinsPalette:
 if !DEF(MONOCHROME)
 INCLUDE "maps/SinjohRuins.pal"
@@ -1517,6 +1568,16 @@ if !DEF(MONOCHROME)
 	RGB 28, 31, 16
 	RGB 31, 22, 10
 	RGB 07, 17, 21
+	RGB 00, 00, 00
+else
+	MONOCHROME_RGB_FOUR_OW
+endc
+
+SnowtopMountainOutsideOBPalette_Purple:
+if !DEF(MONOCHROME)
+	RGB 30, 30, 11
+	RGB 30, 30, 11
+	RGB 16, 14, 10
 	RGB 00, 00, 00
 else
 	MONOCHROME_RGB_FOUR_OW

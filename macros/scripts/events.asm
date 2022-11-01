@@ -533,8 +533,6 @@ ENDM
 	const repeattext_command
 MACRO repeattext
 	db repeattext_command
-	db \1 ; byte
-	db \2 ; byte
 ENDM
 
 	const yesorno_command
@@ -1368,6 +1366,12 @@ MACRO iftruefwd
 	assert \1 > @, "iftruefwd cannot jump backward"
 	db iftruefwd_command
 	db \1 - @ - 1 ; distance
+ENDM
+
+	const scalltable_command
+MACRO scalltable
+	db scalltable_command
+	dw \1 ; pointer table
 ENDM
 
 DEF NUM_EVENT_COMMANDS EQU const_value

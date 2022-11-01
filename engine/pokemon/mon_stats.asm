@@ -544,6 +544,389 @@ ListMovePP:
 	jr nz, .load_loop
 	ret
 
+FixPlayerEVs:
+; This will adjust player EVs in case the player is using the 510 EV limit mode.
+; An EV total at or below 510 will be untouched. Otherwise, the following will
+; be done until the EV total is 510 or less:
+; 1. Lower all EVs to a multiple of 4
+; 2. Reduce HP EVs by 4 if above 0.
+; 3. Reduce Attack EVs by 4 if above 0.
+; 4. Reduce Defense EVs by 4 if above 0.
+; 5. Reduce Speed EVs by 4 if above 0.
+; 6. Reduce Spcl. Atk. EVs by 4 if above 0.
+; 7. Reduce Spcl. Def. EVs by 4 if above 0.
+; 8. Go to step 2.
+	; First, check if the player is using modern EVs.
+	ld a, [wInitialOptions2]
+	and EV_OPTMASK
+	cp EVS_OPT_MODERN
+	ret nz
+
+	ld a, [wPartyCount]
+	ld [wCurPartyMon], a
+	jr .loop
+
+.pop_bchl_loop
+	pop bc
+	pop hl
+.loop
+	ld a, [wCurPartyMon]
+	and a
+	ret z
+	dec a
+	ld [wCurPartyMon], a
+
+	; Does the mon have more than 510 EVs?
+	call .CompareEVTotal
+	jr nc, .loop
+
+	; Set EVs to a multiple of 4.
+	ld a, MON_EVS
+	call GetPartyParamLocationAndValue
+	lb bc, 6, ~%11
+	push hl
+	push bc
+.remove_ev_remainder
+	ld a, [hl]
+	and c
+	ld [hli], a
+	dec b
+	jr nz, .remove_ev_remainder
+
+	call .CompareEVTotal
+	jr nc, .pop_bchl_loop
+
+	; Reduce EVs for each stat by 4 sequentially.
+	pop bc
+	inc c ; c = 4
+	push bc
+.outer_ev_reduction_loop
+	pop bc
+	pop hl
+	push hl
+	push bc
+.ev_reduction_loop
+	ld a, [hl]
+	and a
+	jr z, .reduction_done
+	sub c
+.reduction_done
+	ld [hli], a
+	call .CompareEVTotal
+	jr nc, .pop_bchl_loop
+	dec b
+	jr nz, .ev_reduction_loop
+	jr .outer_ev_reduction_loop
+
+.CompareEVTotal:
+	push hl
+	push bc
+	call GetEVTotal
+	pop bc
+	pop hl
+	ret
+
+GetEVTotal:
+; Returns total EVs for wCurPartyMon in bc. Returns carry if it exceeds the
+; modern EV limit.
+	ld a, MON_EVS
+	call GetPartyParamLocationAndValue
+	ld a, 6
+	ld bc, 0
+.loop
+	push af
+	ld a, [hli]
+	add c
+	ld c, a
+	adc b
+	sub c
+	ld b, a
+	pop af
+	dec a
+	jr nz, .loop
+
+	; Compare with the modern EV limit.
+	ld hl, -(MODERN_EV_LIMIT + 1)
+	add hl, bc
+	ret
+
+CalcPkmnStats:
+; Calculates all 6 Stats of a Pkmn
+; b: Hyper Training (bit 7-2), apply EVs (bit 0)
+; 'c' counts from 1-6 and points with 'wBaseStats' to the base value
+; hl is the path to the EVs - 1
+; de is a pointer where the 6 stats are placed
+
+	ld c, 0
+.loop
+	inc c
+	call CalcPkmnStatC
+	ldh a, [hMultiplicand + 1]
+	ld [de], a
+	inc de
+	ldh a, [hMultiplicand + 2]
+	ld [de], a
+	inc de
+	ld a, c
+	cp STAT_SDEF
+	jr nz, .loop
+	ret
+
+CalcPkmnStatC:
+; 'c' is 1-6 and points to the BaseStat
+; 1: HP
+; 2: Attack
+; 3: Defense
+; 4: Speed
+; 5: SpAtk
+; 6: SpDef
+	push hl
+	push de
+	push bc
+	ld a, b
+	ld d, a
+	push hl
+	ld hl, wBaseStats - 1 ; has to be decreased, because 'c' begins with 1
+	ld b, 0
+	add hl, bc
+	ld a, [hl]
+	ld e, a
+	pop hl
+	push hl
+	ld a, d
+	and a
+	jr z, .no_evs
+	ld a, [wInitialOptions2]
+	and EV_OPTMASK
+	jr z, .no_evs
+	add hl, bc
+	ld a, [hl]
+	ld b, a
+.no_evs
+	pop hl
+	push bc
+	ld bc, MON_DVS - (MON_EVS - 1)
+	add hl, bc ; hl points to DVs
+	pop bc
+	ld a, [wInitialOptions]
+	bit PERFECT_IVS_OPT, a
+	ld a, $f
+	jr nz, .GotDV
+	ld a, d
+	push bc
+.hyper_training_loop
+	rlca
+	dec c
+	jr nz, .hyper_training_loop
+	pop bc
+	ld a, $f
+	jr c, .GotDV
+
+.not_hyper_trained
+	ld a, c
+	dec a ; STAT_HP?
+	jr z, .HP
+	dec a ; STAT_ATK?
+	jr z, .Attack
+	dec a ; STAT_DEF?
+	jr z, .Defense
+	dec a ; STAT_SDF?
+	jr z, .Speed
+	dec a ; STAT_SAT?
+	jr z, .SpclAtk
+	; STAT_SDEF
+	inc hl
+	inc hl
+	ld a, [hld]
+	dec hl
+	jr .GotDV
+
+.HP:
+	ld a, [hl]
+	jr .GotHighDV
+
+.Attack:
+	ld a, [hl]
+	jr .GotDV
+
+.Defense:
+	inc hl
+	ld a, [hld]
+	jr .GotHighDV
+
+.Speed:
+	inc hl
+	ld a, [hld]
+	jr .GotDV
+
+.SpclAtk:
+	inc hl
+	inc hl
+	ld a, [hld]
+	dec hl
+.GotHighDV:
+	swap a
+.GotDV:
+	; de = e + a
+	and $f
+	add e
+	ld e, a
+	adc 0
+	sub e
+	ld d, a
+	; de = (de * 2) + 1
+	sla e
+	inc e
+	rl d
+	srl b
+	srl b
+	ld a, b
+	add e
+	jr nc, .no_overflow_1
+	inc d
+
+.no_overflow_1
+	ldh [hMultiplicand + 2], a
+	ld a, d
+	ldh [hMultiplicand + 1], a
+	xor a
+	ldh [hMultiplicand + 0], a
+	ld a, [wCurPartyLevel]
+	ldh [hMultiplier], a
+	call Multiply
+	ldh a, [hProduct + 1]
+	ldh [hDividend + 0], a
+	ldh a, [hProduct + 2]
+	ldh [hDividend + 1], a
+	ldh a, [hProduct + 3]
+	ldh [hDividend + 2], a
+	ld a, 100
+	ldh [hDivisor], a
+	ld a, 3
+	ld b, a
+	call Divide
+	ld a, c
+	cp STAT_HP
+	ld a, STAT_MIN_NORMAL
+	jr nz, .not_hp
+	ld a, [wCurPartyLevel]
+	ld b, a
+	ldh a, [hQuotient + 2]
+	add b
+	ldh [hMultiplicand + 2], a
+	jr nc, .no_overflow_2
+	ldh a, [hQuotient + 1]
+	inc a
+	ldh [hMultiplicand + 1], a
+
+.no_overflow_2
+	ld a, STAT_MIN_HP
+
+.not_hp
+	ld b, a
+	ldh a, [hQuotient + 2]
+	add b
+	ldh [hMultiplicand + 2], a
+	jr nc, .no_overflow_3
+	ldh a, [hQuotient + 1]
+	inc a
+	ldh [hMultiplicand + 1], a
+
+.no_overflow_3
+	ldh a, [hQuotient + 1]
+	cp HIGH(1000) + 1
+	jr nc, .max_stat
+	cp HIGH(1000)
+	jr c, .stat_value_okay
+	ldh a, [hQuotient + 2]
+	cp LOW(1000)
+	jr c, .stat_value_okay
+
+.max_stat
+	ld a, HIGH(999)
+	ldh [hMultiplicand + 1], a
+	ld a, LOW(999)
+	ldh [hMultiplicand + 2], a
+
+.stat_value_okay
+	; do natures here
+	xor a
+	ldh [hMultiplicand + 0], a
+	push hl
+	push bc
+	ld bc, MON_NATURE - MON_DVS
+	add hl, bc ; hl points to Nature
+	ld a, [hl]
+	and NATURE_MASK
+	pop bc
+	push bc
+	call GetNatureStatMultiplier
+	pop bc
+	pop hl
+	ldh [hMultiplier], a
+	call Multiply
+	ldh a, [hProduct + 1]
+	ldh [hDividend + 0], a
+	ldh a, [hProduct + 2]
+	ldh [hDividend + 1], a
+	ldh a, [hProduct + 3]
+	ldh [hDividend + 2], a
+	ld a, 10
+	ldh [hDivisor], a
+	ld a, 3
+	ld b, a
+	call Divide
+	ldh a, [hQuotient + 1]
+	ldh [hMultiplicand + 1], a
+	ldh a, [hQuotient + 2]
+	ldh [hMultiplicand + 2], a
+	jmp PopBCDEHL
+
+GetNatureStatMultiplier::
+; a points to Nature
+; c is 1-6 according to the stat (STAT_HP to STAT_SDEF)
+; returns (sets a to) 9 if c is lowered, 11 if raised, 10 if neutral
+; (to be used in calculations in CalcPkmnStatC)
+	push de
+	ld d, a
+	ld a, c
+	cp STAT_HP
+	jr z, .neutral
+	ld a, d
+	ld b, a
+	call GetNature
+	ld a, b
+	cp NO_NATURE
+	jr z, .neutral
+	ld d, STAT_HP
+.loop
+	inc d
+	sub 5
+	jr nc, .loop
+	add 7 ; Atk-SDf is 2-6, not 0-4
+	cp c
+	jr z, .penalty
+	ld a, d
+	cp c
+	jr z, .bonus
+.neutral
+	ld a, 10
+	pop de
+	ret
+.bonus
+	ld a, 11
+	pop de
+	ret
+.penalty
+	; Neutral natures (divisible by 6) raise and lower the same stat,
+	; but +10% -10% isn't neutral (the result is 99%), so we need to
+	; avoid messing with it altogether.
+	cp d
+	jr z, .neutral
+	ld a, 9
+	pop de
+	ret
+
 GetStatusConditionIndex:
 ; de points to status, e.g. from a party_struct or battle_struct
 ; return the status condition index in a

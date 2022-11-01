@@ -129,13 +129,15 @@ huffman: crystal
 rgbdscheck.o: rgbdscheck.asm
 	$Q$(RGBDS_DIR)rgbasm -o $@ $<
 
+preinclude_deps := includes.asm $(shell tools/scan_includes includes.asm)
+
 define DEP
-$1: $2 $$(shell tools/scan_includes $2) | includes.asm rgbdscheck.o
+$1: $2 $$(shell tools/scan_includes $2) $(preinclude_deps) | rgbdscheck.o
 	$Q$$(RGBDS_DIR)rgbasm $$(RGBASM_FLAGS) -L -o $$@ $$<
 endef
 
 define VCDEP
-$1: $2 $$(shell tools/scan_includes $2) | includes.asm rgbdscheck.o
+$1: $2 $$(shell tools/scan_includes $2) $(preinclude_deps) | rgbdscheck.o
 	$Q$$(RGBDS_DIR)rgbasm $$(RGBASM_VC_FLAGS) -L -o $$@ $$<
 endef
 

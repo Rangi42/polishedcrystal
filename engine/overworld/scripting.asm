@@ -269,6 +269,7 @@ ScriptCommandTable:
 	dw Script_ifequalfwd                 ; d2
 	dw Script_iffalsefwd                 ; d3
 	dw Script_iftruefwd                  ; d4
+	dw Script_scalltable                 ; d5
 	assert_table_length NUM_EVENT_COMMANDS
 
 StartScript:
@@ -389,7 +390,7 @@ JumpTextFacePlayerScript:
 JumpTextScript:
 	opentext
 JumpOpenedTextScript:
-	repeattext -1, -1
+	repeattext
 	waitendtext
 
 _GetTextPointer:
@@ -465,15 +466,6 @@ Script_writethistext:
 	ret
 
 Script_repeattext:
-	call GetScriptByte
-	ld l, a
-	call GetScriptByte
-	ld h, a
-	cp -1
-	ret nz
-	ld a, l
-	cp -1
-	ret nz
 	ld hl, wScriptTextBank
 	ld a, [hli]
 	ld b, a
@@ -589,7 +581,8 @@ Script_verbosegiveitem:
 	jmp ScriptCall
 
 GiveItemScript:
-	farwritetext _ReceivedItemText
+	farwritetext _GainedItemText
+	special ShowItemIcon
 	iffalsefwd .Full
 	specialsound
 	waitbutton
@@ -631,7 +624,10 @@ Script_itemnotify:
 	call CurItemName
 	ld b, BANK(_PutItemInPocketText)
 	ld hl, _PutItemInPocketText
-	jmp MapTextbox
+	call MapTextbox
+	; The item icon overwrites nine font tiles, including
+	; the "▶" needed by the right cursor arrow.
+	farjp LoadFonts_NoOAMUpdate
 
 Script_pocketisfull:
 	call GetPocketName
@@ -1370,6 +1366,26 @@ CallCallback::
 	ld a, [wScriptBank]
 	or $80
 	ld [wScriptBank], a
+	jr ScriptCall
+
+Script_scalltable:
+	call GetScriptByte
+	ld l, a
+	call GetScriptByte
+	ld h, a
+	ldh a, [hScriptVar]
+	ld e, a
+	ld d, 0
+	add hl, de
+	add hl, de
+	ld a, [wScriptBank]
+	ld b, a
+	call GetFarByte
+	ld e, a
+	inc hl
+	ld a, [wScriptBank]
+	call GetFarByte
+	ld d, a
 	jr ScriptCall
 
 Script_sjump:
@@ -2487,12 +2503,18 @@ Script_verbosegivetmhm:
 	ld de, wStringBuffer1
 	ld a, 1
 	call CopyConvertedText
+	; off by one error?
+	ld a, [wTempTMHM]
+	inc a
+	ld [wTempTMHM], a
+	predef GetTMHMMove
 	ld b, BANK(GiveTMHMScript)
 	ld de, GiveTMHMScript
 	jmp ScriptCall
 
 GiveTMHMScript:
-	farwritetext _ReceivedItemText
+	farwritetext _GainedItemText
+	special ShowTMHMIcon
 	playsound SFX_GET_TM
 	waitsfx
 	waitbutton
@@ -2504,7 +2526,10 @@ Script_tmhmnotify:
 	call CurTMHMName
 	ld b, BANK(_PutItemInPocketText)
 	ld hl, _PutItemInPocketText
-	jmp MapTextbox
+	call MapTextbox
+	; The tm/hm icon overwrites nine font tiles, including
+	; the "▶" needed by the right cursor arrow.
+	farjp LoadFonts_NoOAMUpdate
 
 Script_gettmhmname:
 	call GetScriptByte
@@ -2595,11 +2620,14 @@ Script_loadgrottomon:
 	ld a, c
 	ld [wTempWildMonSpecies], a
 	ld a, b
+	ld [wWildMonForm], a
 	ld [wCurForm], a
 	call PlayCry
 	ld a, (1 << 7)
 	ld [wBattleScriptFlags], a
+	farcall SetBadgeBaseLevel
 	farcall GetCurHiddenGrottoLevel
+	farcall AdjustLevelForBadges
 	ld [wCurPartyLevel], a
 	ret
 
@@ -2682,7 +2710,8 @@ Script_verbosegivekeyitem:
 	jmp ScriptCall
 
 GiveKeyItemScript:
-	farwritetext _ReceivedItemText
+	farwritetext _GainedItemText
+	special ShowKeyItemIcon
 	playsound SFX_KEY_ITEM
 	waitsfx
 	waitbutton
@@ -2694,4 +2723,7 @@ Script_keyitemnotify:
 	call GetCurKeyItemName
 	ld b, BANK(_PutItemInPocketText)
 	ld hl, _PutItemInPocketText
-	jmp MapTextbox
+	call MapTextbox
+	; The key item icon overwrites nine font tiles, including
+	; the "▶" needed by the right cursor arrow.
+	farjp LoadFonts_NoOAMUpdate

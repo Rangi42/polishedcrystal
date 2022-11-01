@@ -247,8 +247,9 @@ LakeOfRageRedGyaradosScript:
 	givekeyitem RED_SCALE
 	waitsfx
 	writetext .RedScaleText
-	playsound SFX_ITEM
-	waitsfx
+	special ShowKeyItemIcon
+	playsound SFX_KEY_ITEM
+	waitbutton
 	keyitemnotify
 	closetext
 	appear LAKEOFRAGE_LANCE
@@ -259,7 +260,7 @@ LakeOfRageRedGyaradosScript:
 	done
 
 .RedScaleText:
-	text "<PLAYER> obtained a"
+	text "<PLAYER> found"
 	line "Red Scale."
 	done
 
