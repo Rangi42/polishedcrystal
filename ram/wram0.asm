@@ -1280,7 +1280,7 @@ w2DMenuDataEnd::
 wMonPicSize:: db
 wMonAnimationSize:: db
 
-wBTTempOTSprite:: db ; unused?
+	ds 1 ; unused
 
 wPendingOverworldGraphics:: db
 wTextDelayFrames:: db

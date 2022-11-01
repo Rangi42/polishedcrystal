@@ -776,7 +776,6 @@ LoadTrainerSpriteAsMapObject1::
 	add hl, bc
 	ld a, [hl]
 LoadSpriteAsMapObject1::
-	ld [wBTTempOTSprite], a
 	ld [wMap1ObjectSprite], a
 	ldh [hUsedSpriteIndex], a
 	ld a, 24
