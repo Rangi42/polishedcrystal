@@ -35,12 +35,8 @@ WarehouseEntrance_MapScriptHeader:
 	object_event  4,  9, SPRITE_SUPER_NERD, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 2, GenericTrainerSupernerdTeru, -1
 	object_event  1, 27, SPRITE_POKEMANIAC, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 2, GenericTrainerPokemaniacIssac, -1
 	object_event  0,  6, SPRITE_POKEMANIAC, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 3, GenericTrainerPokemaniacDonald, -1
-<<<<<<< HEAD
 	keyitemball_event  4, 25, COIN_CASE, EVENT_WAREHOUSE_ENTRANCE_COIN_CASE
-=======
-	object_event  8, 27, SPRITE_COSPLAYER, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 2, GenericTrainerCosplayerClara, -1
-	keyitemball_event  5, 24, COIN_CASE, EVENT_WAREHOUSE_ENTRANCE_COIN_CASE
->>>>>>> c214823579d7674333029ee4a1a92629ff3c68b4
+	;object_event  8, 27, SPRITE_COSPLAYER, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 2, GenericTrainerCosplayerClara, -1
 
 	object_const_def
 	const WAREHOUSEENTRANCE_GRAMPS

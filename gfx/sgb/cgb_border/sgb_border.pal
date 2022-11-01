@@ -2,24 +2,24 @@ LITERAL_NOIR_RGB_COLORS EQU 1
 
 ; 4bpp palette 0
 
-	; silver gradient
+	; gray gradient
 	RGB 31,31,31
-	RGB 23,24,26	; RGB 29,30,31
-	RGB 14,14,18	; RGB 20,21,22
-	RGB 05,06,10	; RGB 12,12,12
+	RGB 29,30,31
+	RGB 20,21,22
+	RGB 12,12,12
 
-	; gold gradient
-	RGB 30,27,22	; RGB 30,16,19
-	RGB 27,21,13	; RGB 29,06,07
-	RGB 09,05,05	; RGB 20,03,03
+	; red gradient
+	RGB 30,16,19
+	RGB 29,06,07
+	RGB 20,03,03
 
 if DEF(FAITHFUL)
-	; Crystal
-	RGB 31,31,31	; RGB 24,17,31, White
-	RGB 23,30,31	; RGB 21,12,31
-	RGB 19,25,27	; RGB 17,07,28, Background
-	RGB 15,21,24	; RGB 13,03,25
-	RGB 14,15,23	; RGB 09,03,17, Top Pokeball
+	; Grape
+	RGB 24,17,31
+	RGB 21,12,31
+	RGB 17,07,28
+	RGB 13,03,25
+	RGB 09,03,17
 elif DEF(HGSS)
 	; Dandelion
 	RGB 31,30,28
@@ -96,15 +96,11 @@ endc
 
 	; unused
 	RGB 00,00,00
-	RGB 10,10,10
-	RGB 20,20,20
-	RGB 30,30,30
+	RGB 00,00,00
+	RGB 00,00,00
+	RGB 00,00,00
 
 	; black
 	RGB 04,04,04
-
-;rept 5
-;	RGB 08,08,08
-;endr
 
 PURGE LITERAL_NOIR_RGB_COLORS
