@@ -61,18 +61,19 @@ RuggedRoadSouth_FinishBridge:
 RuggedRoadSouthAdvancedTipsSignText:
 	text "Advanced Tips!"
 
-	para "“Power” items that"
-	line "raise effort gain"
+	para "If your #mon"
+	line "KOs its opponent,"
 
-	para "will apply to"
-	line "every #mon that"
+	para "and it's holding a"
+	line "Power item that"
+	cont "ups effort gain,"
 
-	para "participates in a"
-	line "battle, as long as"
+	para "every #mon that"
+	line "participated in"
 
-	para "the #mon which"
-	line "actively KOs its"
+	para "the battle or"
+	line "that's holding an"
 
-	para "opponent is hold-"
-	line "ing a Power item!"
+	para "Exp.Share will"
+	line "gain from it!"
 	done
