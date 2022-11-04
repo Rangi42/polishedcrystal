@@ -153,7 +153,6 @@ DEF KRIS EQU __trainer_class__
 	const WAYNE
 	const OSCAR
 	const CALLUM
-	const DAVID
 
 	trainerclass CAMPER ; 21
 	const TODD1
@@ -377,7 +376,10 @@ DEF KRIS EQU __trainer_class__
 	const JENNY
 
 	trainerclass NURSE ; 2d
+	const BEATRICE
+	const KEIKO
 	const JOY
+	const WINIFRED
 
 	trainerclass POKEMANIAC ; 2e
 	const BRENT1
@@ -920,6 +922,7 @@ DEF KRIS EQU __trainer_class__
 	trainerclass SOLDIER ; 63
 
 	trainerclass WAITER ; 64
+	const DAVID
 
 	trainerclass WAITRESS ; 65
 

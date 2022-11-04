@@ -24,7 +24,6 @@ IcePathB1F_MapScriptHeader:
 	object_event  7,  8, SPRITE_ICE_BOULDER, SPRITEMOVEDATA_STRENGTH_BOULDER, 0, 0, -1, -1, 0, OBJECTTYPE_COMMAND, jumpstd, strengthboulder, EVENT_BOULDER_IN_ICE_PATH_2
 	object_event  8,  9, SPRITE_ICE_BOULDER, SPRITEMOVEDATA_STRENGTH_BOULDER, 0, 0, -1, -1, 0, OBJECTTYPE_COMMAND, jumpstd, strengthboulder, EVENT_BOULDER_IN_ICE_PATH_3
 	object_event 17,  7, SPRITE_ICE_BOULDER, SPRITEMOVEDATA_STRENGTH_BOULDER, 0, 0, -1, -1, 0, OBJECTTYPE_COMMAND, jumpstd, strengthboulder, EVENT_BOULDER_IN_ICE_PATH_4
-	object_event  2,  1, SPRITE_SKIER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, IcePathB1FSkierScript, -1
 	object_event  4, 23, SPRITE_BOARDER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 3, GenericTrainerBoarderMax, -1
 	object_event 14, 24, SPRITE_SKIER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 2, GenericTrainerSkierBecky, -1
 	itemball_event  5, 35, IRON, 1, EVENT_ICE_PATH_B1F_IRON
@@ -76,36 +75,6 @@ IcePathB1FSetUpStoneTable:
 	line "through."
 	done
 
-IcePathB1FSkierScript:
-	faceplayer
-	opentext
-	checkevent EVENT_LISTENED_TO_ICY_WIND_INTRO
-	iftruefwd IcePathB1FTutorIcyWindScript
-	writetext IcePathB1FSkierText
-	waitbutton
-	setevent EVENT_LISTENED_TO_ICY_WIND_INTRO
-IcePathB1FTutorIcyWindScript:
-	writetext Text_IcePathB1FTutorIcyWind
-	waitbutton
-	checkitem SILVER_LEAF
-	iffalsefwd .NoSilverLeaf
-	writetext Text_IcePathB1FTutorQuestion
-	yesorno
-	iffalsefwd .TutorRefused
-	setval ICY_WIND
-	writetext ClearText
-	special Special_MoveTutor
-	ifequalfwd $0, .TeachMove
-.TutorRefused
-	jumpopenedtext Text_IcePathB1FTutorRefused
-
-.NoSilverLeaf
-	jumpopenedtext Text_IcePathB1FTutorNoSilverLeaf
-
-.TeachMove
-	takeitem SILVER_LEAF
-	jumpopenedtext Text_IcePathB1FTutorTaught
-
 GenericTrainerBoarderMax:
 	generictrainer BOARDER, MAX, EVENT_BEAT_BOARDER_MAX, BoarderMaxSeenText, BoarderMaxBeatenText
 
@@ -117,54 +86,6 @@ GenericTrainerSkierBecky:
 
 	text "Don't forget to"
 	line "wear a scarf!"
-	done
-
-IcePathB1FSkierText:
-	text "It's really cold"
-	line "in here!"
-
-	para "The pits in the"
-	line "ground let cold"
-
-	para "air blow through"
-	line "this cavern."
-
-	para "It actually seems"
-	line "like a good tech-"
-
-	para "nique for a"
-	line "#mon!"
-	done
-
-Text_IcePathB1FTutorIcyWind:
-	text "I'll teach a #-"
-	line "mon of yours to"
-
-	para "use Icy Wind if"
-	line "you trade me a"
-	cont "Silver Leaf."
-	done
-
-Text_IcePathB1FTutorNoSilverLeaf:
-	text "Oh, but you don't"
-	line "have a Silver"
-	cont "Leaf."
-	done
-
-Text_IcePathB1FTutorQuestion:
-	text "Should I teach"
-	line "your #mon"
-	cont "Icy Wind?"
-	done
-
-Text_IcePathB1FTutorRefused: ; text > text
-	text "Brr…"
-	done
-
-Text_IcePathB1FTutorTaught:
-	text "OK! Now your"
-	line "#mon knows"
-	cont "Icy Wind!"
 	done
 
 BoarderMaxSeenText:

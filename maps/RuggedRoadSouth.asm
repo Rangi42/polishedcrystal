@@ -14,8 +14,15 @@ RuggedRoadSouth_MapScriptHeader:
 
 	def_bg_events
 	bg_event 17, 25, BGEVENT_JUMPTEXT, RuggedRoadSouthAdvancedTipsSignText
+	bg_event  7, 21, BGEVENT_ITEM + IRON, EVENT_RUGGED_ROAD_SOUTH_HIDDEN_IRON
 
 	def_object_events
+	itemball_event  4,  9, REVIVE, 1, EVENT_RUGGED_ROAD_SOUTH_REVIVE
+	itemball_event 27, 13, IRON_BALL, 1, EVENT_RUGGED_ROAD_SOUTH_IRON_BALL
+	smashrock_event 26,  9
+	smashrock_event 13, 10
+	smashrock_event  8, 25
+	smashrock_event 12, 30
 
 RuggedRoadSouthTileScript:
 	checkscene

@@ -267,7 +267,7 @@ TrainerClassAttributes:
 	dw CONTEXT_USE + SWITCH_SOMETIMES
 
 ; Nurse
-	db FULL_RESTORE, 0 ; items
+	db 0, 0 ; items
 	db 16 ; base reward
 	dw AI_BASIC + AI_TYPES + AI_OPPORTUNIST + AI_STATUS
 	dw CONTEXT_USE + SWITCH_SOMETIMES

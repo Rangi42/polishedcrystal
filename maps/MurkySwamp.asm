@@ -18,9 +18,9 @@ MurkySwamp_MapScriptHeader:
 
 	def_object_events
 	object_event 40, 26, SPRITE_CHERYL, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, MurkySwampCherylScript, EVENT_MURKY_SWAMP_CHERYL
+	object_event 17, 31, SPRITE_NURSE, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, MurkySwampNurseBeatriceScript, -1
 	object_event 22, 20, SPRITE_BUG_CATCHER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 5, GenericTrainerBug_catcherOscar, -1
-	object_event 17, 31, SPRITE_BUG_CATCHER, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 3, GenericTrainerBug_catcherCallum, -1
-	object_event 25,  7, SPRITE_BUG_CATCHER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 2, GenericTrainerBug_catcherDavid, -1
+	object_event 25,  7, SPRITE_BUG_CATCHER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 2, GenericTrainerBug_catcherCallum, -1
 	object_event 27, 33, SPRITE_POKEMANIAC, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 3, GenericTrainerPokemaniacClive, -1
 	object_event 37, 17, SPRITE_HEX_MANIAC, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 3, GenericTrainerHex_maniacMatilda, -1
 	object_event  6, 22, SPRITE_FIREBREATHER, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 3, GenericTrainerFirebreatherOleg, -1
@@ -35,6 +35,7 @@ MurkySwamp_MapScriptHeader:
 
 	object_const_def
 	const MURKYSWAMP_CHERYL
+	const MURKYSWAMP_NURSE
 
 MurkySwampCherylScript:
 	faceplayer
@@ -143,6 +144,52 @@ MurkySwampCherylScript:
 	para "Bye for now!"
 	done
 
+MurkySwampNurseBeatriceScript:
+	faceplayer
+	checkevent EVENT_BEAT_NURSE_BEATRICE
+	iftruefwd .Beaten
+	showtext .SeenText
+	winlosstext .BeatenText, 0
+	setlasttalked MURKYSWAMP_NURSE
+	loadtrainer NURSE, BEATRICE
+	startbattle
+	reloadmapafterbattle
+	setevent EVENT_BEAT_NURSE_BEATRICE
+.Beaten
+	showtext .AfterText
+	special Special_FadeBlackQuickly
+	special Special_ReloadSpritesNoPalettes
+	playmusic MUSIC_HEAL
+	special HealParty
+	pause 60
+	special Special_FadeInQuickly
+	special RestartMapMusic
+	jumpthistext
+
+	text "All better now!"
+	done
+
+.SeenText:
+	text "I'm a Nurse!"
+
+	line "Defeat me and I'll"
+	cont "heal your #mon!"
+	done
+
+.BeatenText:
+	text "But first I need"
+	line "to heal my own"
+	cont "#mon…"
+	done
+
+.AfterText:
+	text "Making #mon"
+	line "feel better--"
+
+	para "that's why I"
+	line "came here!"
+	done
+
 GenericTrainerBug_catcherOscar:
 	generictrainer BUG_CATCHER, OSCAR, EVENT_BEAT_BUG_CATCHER_OSCAR, .SeenText, .BeatenText
 
@@ -182,27 +229,6 @@ GenericTrainerBug_catcherCallum:
 .BeatenText:
 	text "This is no forest."
 	line "It's a swamp!"
-	done
-
-GenericTrainerBug_catcherDavid:
-	generictrainer BUG_CATCHER, DAVID, EVENT_BEAT_BUG_CATCHER_DAVID, .SeenText, .BeatenText
-
-	text "It must be the"
-	line "trees blocking"
-	cont "the sun."
-
-	para "That's gotta be"
-	line "why it's so cold,"
-	cont "right?"
-	done
-
-.SeenText:
-	text "It feels so cold"
-	line "in this swamp…"
-	done
-
-.BeatenText:
-	text "Brrr…"
 	done
 
 GenericTrainerPokemaniacClive:

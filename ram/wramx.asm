@@ -1240,7 +1240,7 @@ wHiddenGrottoContents::
 ; dbw content type, content id
 	ds NUM_HIDDEN_GROTTOES * 3
 
-	ds 3 ; unused
+	ds 2 ; unused
 
 wCurHiddenGrotto:: db
 

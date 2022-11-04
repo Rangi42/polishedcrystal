@@ -176,7 +176,7 @@ ENDM
 
 
 MACRO trainer
-	; flag, group, id, seen text, win text, lost text, talk-again text
+	; flag, group, id, seen text, win text, lost text, after script
 	dw \3
 	db \1, \2
 	dw \4, \5, \6, \7
