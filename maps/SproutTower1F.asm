@@ -157,8 +157,8 @@ KimonoGirlMakoScript:
 	line "tower."
 
 	para "Have you met my"
-	line "five dancing"
-	cont "peers in Ecruteak?"
+	line "five dancing cou-"
+	cont "sins in Ecruteak?"
 
 	para "Come back and"
 	line "tell me if you do!"
@@ -168,8 +168,8 @@ KimonoGirlMakoScript:
 	text "Me oh my…"
 	line "You defeated my"
 
-	para "five dancing peers"
-	line "in Ecruteak?"
+	para "five dancing"
+	line "cousins?"
 
 	para "Then allow me to"
 	line "challenge you and"

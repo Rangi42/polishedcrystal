@@ -12,8 +12,12 @@ RuggedRoadNorth_MapScriptHeader:
 
 	def_bg_events
 	bg_event 18, 15, BGEVENT_JUMPSTD, cavegrotto, HIDDENGROTTO_RUGGED_ROAD_NORTH
+	bg_event 23,  9, BGEVENT_ITEM + RARE_BONE, EVENT_RUGGED_ROAD_NORTH_HIDDEN_RARE_BONE
 
 	def_object_events
+	itemball_event  4,  4, X_ATTACK, 1, EVENT_RUGGED_ROAD_NORTH_X_ATTACK
+	itemball_event 26,  4, HYPER_POTION, 1, EVENT_RUGGED_ROAD_NORTH_HYPER_POTION
+	smashrock_event  5,  8
 
 RuggedRoadNorthFixBridgeCallback:
 	callasm .RuggedRoadSouthFixBridge

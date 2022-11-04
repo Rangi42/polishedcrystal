@@ -2260,25 +2260,16 @@ BugCatcherGroup:
 	db "Oscar@"
 	db TRAINERTYPE_NORMAL
 	; party
-	dbp 24, LEDIAN
-	dbp 25, SCYTHER
+	dbp LEVEL_FROM_BADGES + 4, LEDIAN
+	dbp LEVEL_FROM_BADGES + 5, SCYTHER
 	db -1 ; end
 
 	; BUG_CATCHER
 	db "Callum@"
 	db TRAINERTYPE_NORMAL
 	; party
-	dbp 24, ARIADOS
-	dbp 25, PINSIR
-	db -1 ; end
-
-	; BUG_CATCHER
-	db "David@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp 25, YANMA
-	dbp 23, METAPOD
-	dbp 23, KAKUNA
+	dbp LEVEL_FROM_BADGES + 4, ARIADOS
+	dbp LEVEL_FROM_BADGES + 5, PINSIR
 	db -1 ; end
 
 
@@ -2427,24 +2418,24 @@ CamperGroup:
 	db "Grant@"
 	db TRAINERTYPE_NORMAL
 	; party
-	dbp 21, SUNFLORA
-	dbp 21, MARILL
+	dbp LEVEL_FROM_BADGES + 1, SUNFLORA
+	dbp LEVEL_FROM_BADGES + 1, MARILL
 	db -1 ; end
 
 	; CAMPER
 	db "Craig@"
 	db TRAINERTYPE_NORMAL
 	; party
-	dbp 25, PIDGEOTTO
-	dbp 25, MANKEY
-	dbp 26, SANDSLASH
+	dbp LEVEL_FROM_BADGES + 5, PIDGEOTTO
+	dbp LEVEL_FROM_BADGES + 5, MANKEY
+	dbp LEVEL_FROM_BADGES + 6, SANDSLASH
 	db -1 ; end
 
 	; CAMPER
 	db "Felix@"
 	db TRAINERTYPE_NORMAL
 	; party
-	dbp 28, CHARMELEON
+	dbp LEVEL_FROM_BADGES + 8, CHARMELEON
 	db -1 ; end
 
 	; CAMPER
@@ -2703,9 +2694,9 @@ endc
 	db "Lily@"
 	db TRAINERTYPE_NORMAL
 	; party
-	dbp 24, NIDORINA
-	dbp 22, BELLSPROUT
-	dbp 26, WEEPINBELL
+	dbp LEVEL_FROM_BADGES + 4, NIDORINA
+	dbp LEVEL_FROM_BADGES + 2, BELLSPROUT
+	dbp LEVEL_FROM_BADGES + 6, WEEPINBELL
 	db -1 ; end
 
 	; PICNICKER
@@ -3107,21 +3098,21 @@ FisherGroup:
 	db "Paton@"
 	db TRAINERTYPE_NORMAL
 	; party
-	dbp 20, REMORAID
-	dbp 20, MANTINE
+	dbp LEVEL_FROM_BADGES + 0, GOLDEEN
+	dbp LEVEL_FROM_BADGES + 2, MANTINE
 	db -1 ; end
 
 	; FISHER
 	db "Kiley@"
 	db TRAINERTYPE_PERSONALITY
 	; party
-	dbp 25, MAGIKARP, MALE | PLAIN_FORM
+	dbp LEVEL_FROM_BADGES + 5, MAGIKARP, MALE | PLAIN_FORM
 		db ABILITY_1 | NAT_NEUTRAL
-	dbp 25, MAGIKARP, MALE | MAGIKARP_DAPPLES_FORM
+	dbp LEVEL_FROM_BADGES + 5, MAGIKARP, MALE | MAGIKARP_DAPPLES_FORM
 		db ABILITY_1 | NAT_NEUTRAL
-	dbp 25, MAGIKARP, MALE | MAGIKARP_TIGER_FORM
+	dbp LEVEL_FROM_BADGES + 5, MAGIKARP, MALE | MAGIKARP_TIGER_FORM
 		db ABILITY_1 | NAT_NEUTRAL
-	dbp 25, MANTINE, MALE
+	dbp LEVEL_FROM_BADGES + 5, MANTINE, MALE
 		db ABILITY_1 | NAT_NEUTRAL
 	db -1 ; end
 
@@ -3129,9 +3120,9 @@ FisherGroup:
 	db "Francis@"
 	db TRAINERTYPE_NORMAL
 	; party
-	dbp 24, REMORAID
-	dbp 25, CHINCHOU
-	dbp 24, QWILFISH
+	dbp LEVEL_FROM_BADGES + 4, REMORAID
+	dbp LEVEL_FROM_BADGES + 5, CHINCHOU
+	dbp LEVEL_FROM_BADGES + 4, QWILFISH
 	db -1 ; end
 
 	; FISHER
@@ -3193,7 +3184,7 @@ FisherGroup:
 	db "Dundee@"
 	db TRAINERTYPE_NORMAL
 	; party
-	dbp 26, CROCONAW
+	dbp LEVEL_FROM_BADGES + 6, CROCONAW
 	db -1 ; end
 
 	; FISHER
@@ -3378,18 +3369,18 @@ BirdKeeperGroup:
 	db "Powell@"
 	db TRAINERTYPE_NORMAL
 	; party
-	dbp 28, PIDGEOT
+	dbp LEVEL_FROM_BADGES + 8, PIDGEOT
 	db -1 ; end
 
 	; BIRD_KEEPER
 	db "Tony@"
 	db TRAINERTYPE_MOVES
 	; party
-	dbp 24, PIDGEOTTO
+	dbp LEVEL_FROM_BADGES + 4, PIDGEOTTO
 		db GUST, QUICK_ATTACK, RAGE, MUD_SLAP
-	dbp 24, PIDGEOTTO
+	dbp LEVEL_FROM_BADGES + 4, PIDGEOTTO
 		db GUST, QUICK_ATTACK, RAGE, DOUBLE_TEAM
-	dbp 27, GOLDUCK
+	dbp LEVEL_FROM_BADGES + 7, GOLDUCK
 		db SURF, DISABLE, SCREECH, ZEN_HEADBUTT
 	db -1 ; end
 
@@ -3397,9 +3388,9 @@ BirdKeeperGroup:
 	db "Julian@"
 	db TRAINERTYPE_NORMAL
 	; party
-	dbp 20, HOOTHOOT
-	dbp 24, PIDGEOTTO
-	dbp 25, MURKROW
+	dbp LEVEL_FROM_BADGES + 0, HOOTHOOT
+	dbp LEVEL_FROM_BADGES + 4, PIDGEOTTO
+	dbp LEVEL_FROM_BADGES + 5, MURKROW
 	db -1 ; end
 
 	; BIRD_KEEPER
@@ -3463,8 +3454,8 @@ BirdKeeperGroup:
 	db "Bryan@"
 	db TRAINERTYPE_NORMAL
 	; party
-	dbp 16, PIDGEY
-	dbp 18, PIDGEOTTO
+	dbp LEVEL_FROM_BADGES - 1, PIDGEY
+	dbp LEVEL_FROM_BADGES + 1, PIDGEOTTO
 	db -1 ; end
 
 	; BIRD_KEEPER
@@ -3684,9 +3675,9 @@ HikerGroup:
 	db "Devin@"
 	db TRAINERTYPE_NORMAL
 	; party
-	dbp 22, DUNSPARCE
-	dbp 23, ONIX
-	dbp 22, LARVITAR
+	dbp LEVEL_FROM_BADGES + 1, DUNSPARCE
+	dbp LEVEL_FROM_BADGES + 2, ONIX
+	dbp LEVEL_FROM_BADGES + 1, LARVITAR
 	db -1 ; end
 
 	; HIKER
@@ -3703,9 +3694,9 @@ HikerGroup:
 	db "Tony@"
 	db TRAINERTYPE_NORMAL
 	; party
-	dbp 17, DUNSPARCE
-	dbp 18, ONIX
-	dbp 17, DUNSPARCE
+	dbp LEVEL_FROM_BADGES + 2, DUNSPARCE
+	dbp LEVEL_FROM_BADGES + 3, ONIX
+	dbp LEVEL_FROM_BADGES + 2, DUNSPARCE
 	db -1 ; end
 
 	; HIKER
@@ -3765,16 +3756,16 @@ HikerGroup:
 	db "Grady@"
 	db TRAINERTYPE_NORMAL
 	; party
-	dbp 34, GRAVELER
-	dbp 34, GRAVELER
-	dbp 35, SANDSLASH
+	dbp LEVEL_FROM_BADGES + 4, GRAVELER
+	dbp LEVEL_FROM_BADGES + 4, GRAVELER
+	dbp LEVEL_FROM_BADGES + 5, SANDSLASH
 	db -1 ; end
 
 	; HIKER
 	db "Steve@"
 	db TRAINERTYPE_NORMAL
 	; party
-	dbp 37, STEELIX
+	dbp LEVEL_FROM_BADGES + 7, STEELIX
 	db -1 ; end
 
 	; HIKER
@@ -4407,10 +4398,32 @@ SECTION "NurseGroup", ROMX
 NurseGroup:
 
 	; NURSE
+	db "Beatrice@"
+	db TRAINERTYPE_NORMAL
+	; party
+	dbp LEVEL_FROM_BADGES + 5, CHANSEY
+	db -1 ; end
+
+	; NURSE
+	db "Keiko@"
+	db TRAINERTYPE_NORMAL
+	; party
+	dbp LEVEL_FROM_BADGES + 0, HAPPINY
+	dbp LEVEL_FROM_BADGES + 5, CHANSEY
+	db -1 ; end
+
+	; NURSE
 	db "Joy@"
 	db TRAINERTYPE_NORMAL
 	; party
-	dbp 50, CHANSEY
+	dbp LEVEL_FROM_BADGES + 6, CHANSEY
+	db -1 ; end
+
+	; NURSE
+	db "Winifred@"
+	db TRAINERTYPE_NORMAL
+	; party
+	dbp LEVEL_FROM_BADGES + 6, BLISSEY
 	db -1 ; end
 
 
@@ -4526,8 +4539,8 @@ PokemaniacGroup:
 	db "Miller@"
 	db TRAINERTYPE_NORMAL
 	; party
-	dbp 28, NIDOKING
-	dbp 28, NIDOQUEEN
+	dbp LEVEL_FROM_BADGES + 7, NIDOKING
+	dbp LEVEL_FROM_BADGES + 7, NIDOQUEEN
 	db -1 ; end
 
 	; POKEMANIAC
@@ -4544,9 +4557,9 @@ PokemaniacGroup:
 	db "Clive@"
 	db TRAINERTYPE_NORMAL
 	; party
-	dbp 23, SLOWPOKE
-	dbp 23, WOOPER
-	dbp 25, NIDORINO
+	dbp LEVEL_FROM_BADGES + 3, SLOWPOKE
+	dbp LEVEL_FROM_BADGES + 3, WOOPER
+	dbp LEVEL_FROM_BADGES + 5, NIDORINO
 	db -1 ; end
 
 
@@ -4565,9 +4578,9 @@ CosplayerGroup:
 	db "Chloe@"
 	db TRAINERTYPE_NORMAL
 	; party
-	dbp 25, VULPIX
-	dbp 25, PIKACHU
-	dbp 25, VULPIX
+	dbp LEVEL_FROM_BADGES + 5, VULPIX
+	dbp LEVEL_FROM_BADGES + 5, PIKACHU
+	dbp LEVEL_FROM_BADGES + 5, VULPIX
 	db -1 ; end
 
 	; COSPLAYER
@@ -4654,7 +4667,7 @@ SuperNerdGroup:
 	db "Hugh@"
 	db TRAINERTYPE_MOVES
 	; party
-	dbp 39, SEADRA
+	dbp LEVEL_FROM_BADGES + 9, SEADRA
 		db SMOKESCREEN, OUTRAGE, SURF, WATERFALL
 	db -1 ; end
 
@@ -4662,7 +4675,7 @@ SuperNerdGroup:
 	db "Markus@"
 	db TRAINERTYPE_MOVES
 	; party
-	dbp 30, SLOWBRO
+	dbp LEVEL_FROM_BADGES + 9, SLOWBRO
 		db CONFUSION, HEADBUTT, WATER_PULSE, STRENGTH
 	db -1 ; end
 
@@ -4920,17 +4933,17 @@ endc
 	db "Layla@"
 	db TRAINERTYPE_NORMAL
 	; party
-	dbp 25, CLEFAIRY
-	dbp 25, TOGETIC
+	dbp LEVEL_FROM_BADGES + 5, CLEFAIRY
+	dbp LEVEL_FROM_BADGES + 5, TOGETIC
 	db -1 ; end
 
 	; LASS
 	db "Rose@"
 	db TRAINERTYPE_PERSONALITY
 	; party
-	dbp 22, ESPEON, FEMALE
+	dbp LEVEL_FROM_BADGES + 2, ESPEON, FEMALE
 		db SHINY_MASK | ABILITY_1 | NAT_NEUTRAL
-	dbp 22, TOGETIC, FEMALE
+	dbp LEVEL_FROM_BADGES + 2, TOGETIC, FEMALE
 		db ABILITY_1 | NAT_NEUTRAL
 	db -1 ; end
 
@@ -5368,7 +5381,7 @@ FirebreatherGroup:
 	db "Oleg@"
 	db TRAINERTYPE_NORMAL
 	; party
-	dbp 26, WEEZING
+	dbp LEVEL_FROM_BADGES + 6, WEEZING
 	db -1 ; end
 
 	; FIREBREATHER
@@ -5744,11 +5757,11 @@ SchoolgirlGroup:
 	db "Sarah@"
 	db TRAINERTYPE_NICKNAME
 	; party
-	dbp LEVEL_FROM_BADGES + 1, CHARMANDER
+	dbp LEVEL_FROM_BADGES + 2, CHARMANDER
 		db "Charmer@"
-	dbp LEVEL_FROM_BADGES - 1, SENTRET
+	dbp LEVEL_FROM_BADGES + 0, SENTRET
 		db "@"
-	dbp LEVEL_FROM_BADGES + 0, MARILL
+	dbp LEVEL_FROM_BADGES + 1, MARILL
 		db "@"
 	db -1 ; end
 
@@ -5756,11 +5769,11 @@ SchoolgirlGroup:
 	db "Isabel@"
 	db TRAINERTYPE_NICKNAME
 	; party
-	dbp LEVEL_FROM_BADGES + 1, SQUIRTLE
+	dbp LEVEL_FROM_BADGES + 2, SQUIRTLE
 		db "Turtle@"
-	dbp LEVEL_FROM_BADGES - 1, PIDGEY
+	dbp LEVEL_FROM_BADGES + 0, PIDGEY
 		db "@"
-	dbp LEVEL_FROM_BADGES + 0, PIKACHU
+	dbp LEVEL_FROM_BADGES + 1, PIKACHU
 		db "@"
 	db -1 ; end
 
@@ -5903,8 +5916,8 @@ PsychicGroup:
 	db "Virgil@"
 	db TRAINERTYPE_NORMAL
 	; party
-	dbp 34, NATU
-	dbp 36, XATU
+	dbp LEVEL_FROM_BADGES + 4, NATU
+	dbp LEVEL_FROM_BADGES + 6, XATU
 	db -1 ; end
 
 
@@ -5923,8 +5936,8 @@ HexManiacGroup:
 	db "Ashley@"
 	db TRAINERTYPE_NORMAL
 	; party
-	dbp 35, HAUNTER
-	dbp 36, MISMAGIUS
+	dbp LEVEL_FROM_BADGES + 5, HAUNTER
+	dbp LEVEL_FROM_BADGES + 6, MISMAGIUS
 	db -1 ; end
 
 	; HEX_MANIAC
@@ -5978,9 +5991,9 @@ HexManiacGroup:
 	db "Matilda@"
 	db TRAINERTYPE_NORMAL
 	; party
-	dbp 23, DROWZEE
-	dbp 24, MISDREAVUS
-	dbp 25, HYPNO
+	dbp LEVEL_FROM_BADGES + 3, DROWZEE
+	dbp LEVEL_FROM_BADGES + 4, MISDREAVUS
+	dbp LEVEL_FROM_BADGES + 5, HYPNO
 	db -1 ; end
 
 	; HEX_MANIAC
@@ -6169,7 +6182,7 @@ KimonoGirl6Group:
 	db "Mako@"
 	db TRAINERTYPE_ITEM
 	; party
-	dbp LEVEL_FROM_BADGES + 5, LEAFEON
+	dbp LEVEL_FROM_BADGES + 10, LEAFEON
 		db LUM_BERRY
 	db -1 ; end
 
@@ -6181,7 +6194,7 @@ KimonoGirl7Group:
 	db "Ami@"
 	db TRAINERTYPE_ITEM
 	; party
-	dbp LEVEL_FROM_BADGES + 5, GLACEON
+	dbp LEVEL_FROM_BADGES + 10, GLACEON
 		db LUM_BERRY
 	db -1 ; end
 
@@ -6193,7 +6206,7 @@ KimonoGirl8Group:
 	db "Mina@"
 	db TRAINERTYPE_ITEM
 	; party
-	dbp LEVEL_FROM_BADGES + 5, SYLVEON
+	dbp LEVEL_FROM_BADGES + 10, SYLVEON
 		db LUM_BERRY
 	db -1 ; end
 
@@ -6277,16 +6290,16 @@ SrAndJrGroup:
 	db "Bea & May@"
 	db TRAINERTYPE_NORMAL
 	; party
-	dbp 24, IVYSAUR
-	dbp 20, BULBASAUR
+	dbp LEVEL_FROM_BADGES + 4, IVYSAUR
+	dbp LEVEL_FROM_BADGES + 0, BULBASAUR
 	db -1 ; end
 
 	; SR_AND_JR
 	db "Bea & May@"
 	db TRAINERTYPE_NORMAL
 	; party
-	dbp 20, BULBASAUR
-	dbp 24, IVYSAUR
+	dbp LEVEL_FROM_BADGES + 0, BULBASAUR
+	dbp LEVEL_FROM_BADGES + 4, IVYSAUR
 	db -1 ; end
 
 
@@ -6325,9 +6338,9 @@ CoupleGroup:
 	db "Duff & Eda@"
 	db TRAINERTYPE_PERSONALITY
 	; party
-	dbp 25, CLOYSTER, FEMALE
+	dbp LEVEL_FROM_BADGES + 2, CLOYSTER, FEMALE
 		db ABILITY_1 | NAT_NEUTRAL
-	dbp 25, ONIX, MALE
+	dbp LEVEL_FROM_BADGES + 2, ONIX, MALE
 		db ABILITY_1 | NAT_NEUTRAL
 	db -1 ; end
 
@@ -6335,19 +6348,9 @@ CoupleGroup:
 	db "Duff & Eda@"
 	db TRAINERTYPE_PERSONALITY
 	; party
-	dbp 25, ONIX, MALE
+	dbp LEVEL_FROM_BADGES + 2, ONIX, MALE
 		db ABILITY_1 | NAT_NEUTRAL
-	dbp 25, CLOYSTER, FEMALE
-		db ABILITY_1 | NAT_NEUTRAL
-	db -1 ; end
-
-	; COUPLE
-	db "Fox & Rae@"
-	db TRAINERTYPE_PERSONALITY
-	; party
-	dbp 26, FLAREON, MALE
-		db ABILITY_1 | NAT_NEUTRAL
-	dbp 26, GLACEON, FEMALE
+	dbp LEVEL_FROM_BADGES + 2, CLOYSTER, FEMALE
 		db ABILITY_1 | NAT_NEUTRAL
 	db -1 ; end
 
@@ -6355,9 +6358,19 @@ CoupleGroup:
 	db "Fox & Rae@"
 	db TRAINERTYPE_PERSONALITY
 	; party
-	dbp 26, GLACEON, FEMALE
+	dbp LEVEL_FROM_BADGES + 6, FLAREON, MALE
 		db ABILITY_1 | NAT_NEUTRAL
-	dbp 26, FLAREON, MALE
+	dbp LEVEL_FROM_BADGES + 6, GLACEON, FEMALE
+		db ABILITY_1 | NAT_NEUTRAL
+	db -1 ; end
+
+	; COUPLE
+	db "Fox & Rae@"
+	db TRAINERTYPE_PERSONALITY
+	; party
+	dbp LEVEL_FROM_BADGES + 6, GLACEON, FEMALE
+		db ABILITY_1 | NAT_NEUTRAL
+	dbp LEVEL_FROM_BADGES + 6, FLAREON, MALE
 		db ABILITY_1 | NAT_NEUTRAL
 	db -1 ; end
 
@@ -6617,11 +6630,11 @@ BreederGroup:
 	db "Sophie@"
 	db TRAINERTYPE_ITEM
 	; party
-	dbp LEVEL_FROM_BADGES + 1, PICHU
+	dbp LEVEL_FROM_BADGES + 2, PICHU
 		db EVIOLITE
-	dbp LEVEL_FROM_BADGES + 2, PIKACHU
+	dbp LEVEL_FROM_BADGES + 3, PIKACHU
 		db LIGHT_BALL
-	dbp LEVEL_FROM_BADGES + 3, RAICHU
+	dbp LEVEL_FROM_BADGES + 4, RAICHU
 		db DESTINY_KNOT
 	db -1 ; end
 
@@ -6707,8 +6720,8 @@ CowgirlGroup:
 	db "Daniela@"
 	db TRAINERTYPE_NORMAL
 	; party
-	dbp 45, TAUROS
-	dbp 45, MILTANK
+	dbp LEVEL_FROM_BADGES + 3, TAUROS
+	dbp LEVEL_FROM_BADGES + 3, MILTANK
 	db -1 ; end
 
 
@@ -6844,8 +6857,8 @@ SailorGroup:
 	db "Harvey@"
 	db TRAINERTYPE_NORMAL
 	; party
-	dbp 20, MACHOP
-	dbp 22, MACHOKE
+	dbp LEVEL_FROM_BADGES + 0, MACHOP
+	dbp LEVEL_FROM_BADGES + 2, MACHOKE
 	db -1 ; end
 
 
@@ -6976,18 +6989,18 @@ SwimmerMGroup:
 	db "James@"
 	db TRAINERTYPE_NORMAL
 	; party
-	dbp 15, STARYU
-	dbp 20, STARMIE
-	dbp 18, HORSEA
+	dbp LEVEL_FROM_BADGES - 4, STARYU
+	dbp LEVEL_FROM_BADGES + 2, STARMIE
+	dbp LEVEL_FROM_BADGES - 2, HORSEA
 	db -1 ; end
 
 	; SWIMMERM
 	db "Walter@"
 	db TRAINERTYPE_NORMAL
 	; party
-	dbp 18, HORSEA
-	dbp 18, HORSEA
-	dbp 21, SEADRA
+	dbp LEVEL_FROM_BADGES + 0, HORSEA
+	dbp LEVEL_FROM_BADGES + 1, HORSEA
+	dbp LEVEL_FROM_BADGES + 2, SEADRA
 	db -1 ; end
 
 	; SWIMMERM
@@ -7003,37 +7016,37 @@ SwimmerMGroup:
 	db "Michel@"
 	db TRAINERTYPE_NORMAL
 	; party
-	dbp 22, STARYU
-	dbp 24, STARMIE
+	dbp LEVEL_FROM_BADGES + 2, STARYU
+	dbp LEVEL_FROM_BADGES + 4, STARMIE
 	db -1 ; end
 
 	; SWIMMERM
 	db "Lucas@"
 	db TRAINERTYPE_NORMAL
 	; party
-	dbp 28, VAPOREON
+	dbp LEVEL_FROM_BADGES + 8, VAPOREON
 	db -1 ; end
 
 	; SWIMMERM
 	db "Frank@"
 	db TRAINERTYPE_NORMAL
 	; party
-	dbp 26, MANTINE
+	dbp LEVEL_FROM_BADGES + 6, MANTINE
 	db -1 ; end
 
 	; SWIMMERM
 	db "Nadar@"
 	db TRAINERTYPE_NORMAL
 	; party
-	dbp 24, SEADRA
-	dbp 25, QUAGSIRE
+	dbp LEVEL_FROM_BADGES + 4, SEADRA
+	dbp LEVEL_FROM_BADGES + 5, QUAGSIRE
 	db -1 ; end
 
 	; SWIMMERM
 	db "Conrad@"
 	db TRAINERTYPE_NORMAL
 	; party
-	dbp 26, AZUMARILL
+	dbp LEVEL_FROM_BADGES + 6, AZUMARILL
 	db -1 ; end
 
 	; SWIMMERM
@@ -7066,7 +7079,7 @@ SwimmerMGroup:
 	db "Thomas@"
 	db TRAINERTYPE_MOVES
 	; party
-	dbp 20, WARTORTLE
+	dbp LEVEL_FROM_BADGES + 5, WARTORTLE
 		db DEFENSE_CURL, BITE, SURF, RAPID_SPIN
 	db -1 ; end
 
@@ -7247,78 +7260,78 @@ SwimmerFGroup:
 	db "Lisa@"
 	db TRAINERTYPE_NORMAL
 	; party
-	dbp 23, LANTURN
+	dbp LEVEL_FROM_BADGES + 3, LANTURN
 	db -1 ; end
 
 	; SWIMMERF
 	db "Jill@"
 	db TRAINERTYPE_NORMAL
 	; party
-	dbp 23, DEWGONG
+	dbp LEVEL_FROM_BADGES + 3, DEWGONG
 	db -1 ; end
 
 	; SWIMMERF
 	db "Katie@"
 	db TRAINERTYPE_NORMAL
 	; party
-	dbp 19, SEEL
-	dbp 21, DEWGONG
+	dbp LEVEL_FROM_BADGES + 0, SEEL
+	dbp LEVEL_FROM_BADGES + 2, DEWGONG
 	db -1 ; end
 
 	; SWIMMERF
 	db "Alison@"
 	db TRAINERTYPE_NORMAL
 	; party
-	dbp 24, CORSOLA
-	dbp 24, SEEL
+	dbp LEVEL_FROM_BADGES + 4, CORSOLA
+	dbp LEVEL_FROM_BADGES + 4, SEEL
 	db -1 ; end
 
 	; SWIMMERF
 	db "Stephanie@"
 	db TRAINERTYPE_NORMAL
 	; party
-	dbp 23, STARYU
-	dbp 25, SEADRA
+	dbp LEVEL_FROM_BADGES + 3, STARYU
+	dbp LEVEL_FROM_BADGES + 5, SEADRA
 	db -1 ; end
 
 	; SWIMMERF
 	db "Caroline@"
 	db TRAINERTYPE_NORMAL
 	; party
-	dbp 23, REMORAID
-	dbp 23, REMORAID
-	dbp 23, REMORAID
+	dbp LEVEL_FROM_BADGES + 3, REMORAID
+	dbp LEVEL_FROM_BADGES + 3, REMORAID
+	dbp LEVEL_FROM_BADGES + 3, REMORAID
 	db -1 ; end
 
 	; SWIMMERF
 	db "Natalia@"
 	db TRAINERTYPE_NORMAL
 	; party
-	dbp 24, STARYU
-	dbp 24, STARYU
+	dbp LEVEL_FROM_BADGES + 4, STARYU
+	dbp LEVEL_FROM_BADGES + 4, STARYU
 	db -1 ; end
 
 	; SWIMMERF
 	db "Barbara@"
 	db TRAINERTYPE_NORMAL
 	; party
-	dbp 25, STARMIE
+	dbp LEVEL_FROM_BADGES + 5, STARMIE
 	db -1 ; end
 
 	; SWIMMERF
 	db "Sally@"
 	db TRAINERTYPE_NORMAL
 	; party
-	dbp 17, REMORAID
-	dbp 18, MANTINE
+	dbp LEVEL_FROM_BADGES + 1, REMORAID
+	dbp LEVEL_FROM_BADGES + 3, MANTINE
 	db -1 ; end
 
 	; SWIMMERF
 	db "Tara@"
 	db TRAINERTYPE_NORMAL
 	; party
-	dbp 18, CORSOLA
-	dbp 18, CORSOLA
+	dbp LEVEL_FROM_BADGES + 2, CORSOLA
+	dbp LEVEL_FROM_BADGES + 2, CORSOLA
 	db -1 ; end
 
 	; SWIMMERF
@@ -7489,9 +7502,9 @@ ScientistGroup:
 	db "Carl@"
 	db TRAINERTYPE_NORMAL
 	; party
-	dbp 35, PORYGON
-	dbp 35, PORYGON
-	dbp 36, MAGNETON
+	dbp LEVEL_FROM_BADGES + 5, PORYGON
+	dbp LEVEL_FROM_BADGES + 5, PORYGON
+	dbp LEVEL_FROM_BADGES + 6, MAGNETON
 	db -1 ; end
 
 	; SCIENTIST
@@ -7829,26 +7842,26 @@ BattleGirlGroup:
 	db "Subaru@"
 	db TRAINERTYPE_NORMAL
 	; party
-	dbp 26, MACHOP
-	dbp 27, MACHOKE
-	dbp 28, PRIMEAPE
+	dbp LEVEL_FROM_BADGES + 6, MACHOP
+	dbp LEVEL_FROM_BADGES + 7, MACHOKE
+	dbp LEVEL_FROM_BADGES + 8, PRIMEAPE
 	db -1 ; end
 
 	; BATTLE_GIRL
 	db "Diane@"
 	db TRAINERTYPE_NORMAL
 	; party
-	dbp 28, HITMONLEE
-	dbp 28, URSARING
+	dbp LEVEL_FROM_BADGES + 8, HITMONLEE
+	dbp LEVEL_FROM_BADGES + 8, URSARING
 	db -1 ; end
 
 	; BATTLE_GIRL
 	db "Kagami@"
 	db TRAINERTYPE_NORMAL
 	; party
-	dbp 35, PRIMEAPE
-	dbp 35, MACHOKE
-	dbp 37, URSARING
+	dbp LEVEL_FROM_BADGES + 5, PRIMEAPE
+	dbp LEVEL_FROM_BADGES + 5, MACHOKE
+	dbp LEVEL_FROM_BADGES + 7, URSARING
 	db -1 ; end
 
 	; BATTLE_GIRL
@@ -8022,13 +8035,13 @@ EngineerGroup:
 	db "Graden@"
 	db TRAINERTYPE_PERSONALITY | TRAINERTYPE_MOVES
 	; party
-	dbp LEVEL_FROM_BADGES + 1, GEODUDE, MALE | ALOLAN_FORM
+	dbp LEVEL_FROM_BADGES + 2, GEODUDE, MALE | ALOLAN_FORM
 		db ABIL_GEODUDE_ALOLAN_GALVANIZE | NAT_NEUTRAL
 		db EXPLOSION, NO_MOVE, NO_MOVE, NO_MOVE
-	dbp LEVEL_FROM_BADGES + 1, GEODUDE, MALE | ALOLAN_FORM
+	dbp LEVEL_FROM_BADGES + 2, GEODUDE, MALE | ALOLAN_FORM
 		db ABIL_GEODUDE_ALOLAN_GALVANIZE | NAT_NEUTRAL
 		db EXPLOSION, NO_MOVE, NO_MOVE, NO_MOVE
-	dbp LEVEL_FROM_BADGES + 2, ELEKID, MALE
+	dbp LEVEL_FROM_BADGES + 3, ELEKID, MALE
 		db ABIL_ELEKID_STATIC | NAT_NEUTRAL
 		db THUNDERPUNCH, ROCK_SMASH, BODY_SLAM, BULK_UP
 	db -1 ; end
@@ -8037,11 +8050,11 @@ EngineerGroup:
 	db "Gustav@"
 	db TRAINERTYPE_PERSONALITY
 	; party
-	dbp LEVEL_FROM_BADGES + 0, VOLTORB, MALE
+	dbp LEVEL_FROM_BADGES + 1, VOLTORB, MALE
 		db ABIL_VOLTORB_AFTERMATH | NAT_NEUTRAL
-	dbp LEVEL_FROM_BADGES + 0, VOLTORB, MALE
+	dbp LEVEL_FROM_BADGES + 1, VOLTORB, MALE
 		db ABIL_VOLTORB_AFTERMATH | NAT_NEUTRAL
-	dbp LEVEL_FROM_BADGES + 1, MAGNEMITE, MALE
+	dbp LEVEL_FROM_BADGES + 3, MAGNEMITE, MALE
 		db ABILITY_2 | NAT_NEUTRAL
 	db -1 ; end
 
@@ -8049,11 +8062,11 @@ EngineerGroup:
 	db "Nicolas@"
 	db TRAINERTYPE_PERSONALITY
 	; party
-	dbp LEVEL_FROM_BADGES + 0, VOLTORB, MALE
+	dbp LEVEL_FROM_BADGES + 1, VOLTORB, MALE
 		db ABIL_VOLTORB_AFTERMATH | NAT_NEUTRAL
-	dbp LEVEL_FROM_BADGES + 0, VOLTORB, MALE
+	dbp LEVEL_FROM_BADGES + 1, VOLTORB, MALE
 		db ABIL_VOLTORB_AFTERMATH | NAT_NEUTRAL
-	dbp LEVEL_FROM_BADGES + 1, MAGNEMITE, MALE
+	dbp LEVEL_FROM_BADGES + 3, MAGNEMITE, MALE
 		db ABILITY_2 | NAT_NEUTRAL
 	db -1 ; end
 
@@ -8087,9 +8100,9 @@ TeacherGroup:
 	db "Kathryn@"
 	db TRAINERTYPE_NORMAL
 	; party
-	dbp LEVEL_FROM_BADGES + 2, BELLOSSOM
-	dbp LEVEL_FROM_BADGES + 1, PIDGEOTTO
-	dbp LEVEL_FROM_BADGES + 0, FURRET
+	dbp LEVEL_FROM_BADGES + 5, BELLOSSOM
+	dbp LEVEL_FROM_BADGES + 3, PIDGEOTTO
+	dbp LEVEL_FROM_BADGES + 2, FURRET
 	db -1 ; end
 
 	; TEACHER
@@ -8784,9 +8797,9 @@ CooltrainerMGroup:
 	db "Henri@"
 	db TRAINERTYPE_NORMAL
 	; party
-	dbp 35, CHARMELEON
-	dbp 35, WARTORTLE
-	dbp 35, IVYSAUR
+	dbp LEVEL_FROM_BADGES + 5, CHARMELEON
+	dbp LEVEL_FROM_BADGES + 5, WARTORTLE
+	dbp LEVEL_FROM_BADGES + 5, IVYSAUR
 	db -1 ; end
 
 	; COOLTRAINERM
@@ -9200,9 +9213,9 @@ AceDuoGroup:
 	db "Thom & Kae@"
 	db TRAINERTYPE_PERSONALITY
 	; party
-	dbp 25, MAGMAR, MALE
+	dbp LEVEL_FROM_BADGES + 2, MAGMAR, MALE
 		db ABILITY_1 | NAT_NEUTRAL
-	dbp 25, ELECTABUZZ, FEMALE
+	dbp LEVEL_FROM_BADGES + 2, ELECTABUZZ, FEMALE
 		db ABILITY_1 | NAT_NEUTRAL
 	db -1 ; end
 
@@ -9210,9 +9223,9 @@ AceDuoGroup:
 	db "Thom & Kae@"
 	db TRAINERTYPE_PERSONALITY
 	; party
-	dbp 25, ELECTABUZZ, FEMALE
+	dbp LEVEL_FROM_BADGES + 2, ELECTABUZZ, FEMALE
 		db ABILITY_1 | NAT_NEUTRAL
-	dbp 25, MAGMAR, MALE
+	dbp LEVEL_FROM_BADGES + 2, MAGMAR, MALE
 		db ABILITY_1 | NAT_NEUTRAL
 	db -1 ; end
 
@@ -9817,13 +9830,13 @@ KarateKingGroup:
 	db "Kiyo@"
 	db TRAINERTYPE_ITEM | TRAINERTYPE_MOVES
 	; party
-	dbp 42, HITMONLEE
+	dbp LEVEL_FROM_BADGES + 11, HITMONLEE
 		db BLACK_BELT
 		db BULK_UP, FOCUS_ENERGY, HI_JUMP_KICK, FORESIGHT
-	dbp 42, HITMONCHAN
+	dbp LEVEL_FROM_BADGES + 11, HITMONCHAN
 		db KINGS_ROCK
 		db THUNDERPUNCH, ICE_PUNCH, FIRE_PUNCH, MACH_PUNCH
-	dbp 42, HITMONTOP
+	dbp LEVEL_FROM_BADGES + 11, HITMONTOP
 		db FOCUS_BAND
 		db BULK_UP, DOUBLE_KICK, RAPID_SPIN, COUNTER
 	db -1 ; end
@@ -10171,15 +10184,15 @@ CherylGroup:
 	db TRAINERTYPE_EVS
 	; party
 	; TODO: movesets, etc
-	dbp 28, CHANSEY
+	dbp LEVEL_FROM_BADGES + 8, CHANSEY
 		db 68
-	dbp 27, NIDORINA
+	dbp LEVEL_FROM_BADGES + 7, NIDORINA
 		db 68
-	dbp 24, CLEFABLE
+	dbp LEVEL_FROM_BADGES + 4, CLEFABLE
 		db 68
-	dbp 26, AZUMARILL
+	dbp LEVEL_FROM_BADGES + 6, AZUMARILL
 		db 68
-	dbp 25, WOBBUFFET
+	dbp LEVEL_FROM_BADGES + 5, WOBBUFFET
 		db 68
 	db -1 ; end
 
@@ -10278,15 +10291,15 @@ MarleyGroup:
 	db TRAINERTYPE_EVS
 	; party
 	; TODO: movesets, etc
-	dbp 40, ARCANINE
+	dbp LEVEL_FROM_BADGES + 8, ARCANINE
 		db 120
-	dbp 38, RAICHU
+	dbp LEVEL_FROM_BADGES + 6, RAICHU
 		db 120
-	dbp 37, CROBAT
+	dbp LEVEL_FROM_BADGES + 5, CROBAT
 		db 120
-	dbp 37, ELECTRODE
+	dbp LEVEL_FROM_BADGES + 5, ELECTRODE
 		db 120
-	dbp 39, WEAVILE
+	dbp LEVEL_FROM_BADGES + 7, WEAVILE
 		db 120
 	db -1 ; end
 
