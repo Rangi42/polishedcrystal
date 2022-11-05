@@ -339,11 +339,9 @@ UpdateBGMapRow::
 	ld a, e
 	inc a
 	inc a
+	xor e
 	and $1f
-	ld b, a
-	ld a, e
-	and $e0
-	or b
+	xor e
 	ld e, a
 	dec c
 	jr nz, .loop
