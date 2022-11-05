@@ -504,6 +504,12 @@ Route34RichBoyIrvingScript:
 
 	para "beat everyone else"
 	line "here first!"
+
+	para "Even the Officer,"
+	line "although she may"
+
+	para "not battle you"
+	line "until night."
 	done
 
 .QuestionText:
