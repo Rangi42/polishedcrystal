@@ -176,6 +176,18 @@ patterns = {
 	(lambda line2, prev: re.match(r'cp (?:a, )?[^afbcdehl\[]', line2.code)
 		and prev[0].code[4:] == line2.code[3:]),
 ],
+'a = (a & MASK) | (b|c|d|e|h|l & ~MASK)': [
+	# Bad: and MASK / ld c, a / ld a, b / and ~MASK / or c
+	# Good: xor b / and MASK / xor b
+	(lambda line1, prev: re.match(r'and (?:a, )?[^afbcdehl\[]', line1.code)),
+	(lambda line2, prev: re.match(r'ld [bcdehl], a', line2.code)),
+	(lambda line3, prev: re.match(r'ld a, [bcdehl]', line3.code)
+		and prev[1].code[3] != line3.code[6]),
+	(lambda line4, prev: re.match(r'and (?:a, )?[^afbcdehl\[]', line4.code)
+		and True), # TODO: and the masks are complementary
+	(lambda line5, prev: re.match(r'or (?:a, )?[bcdehl]', line5.code)
+		and prev[1].code[3] == line5.code[-1]),
+],
 'hl|bc|de += a|N': [
 	# Bad: add l|N / ld l, a / ld a, h|0 / adc 0|h / ld h, a (hl or bc or de)
 	# Good: add l|N / ld l, a / adc h / sub l / ld h, a
