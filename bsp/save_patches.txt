@@ -1142,7 +1142,7 @@ ShiftEventFlagsForPiers:
 	dh 0
 
 RearrangeDataForChecksumPadding:
-	set #1, DECO_BED_OFFSET_v8
+	set #1, DECO_BED_OFFSET_v7
 	call GetGameDataPointer
 	seek #result
 
