@@ -147,6 +147,8 @@
 	define POKEDEX_CAUGHT_OFFSET_v7, 0xa0b
 	define UNOWN_DEX_OFFSET_v7,      0xa4b
 
+	define DECO_BED_OFFSET_v8,       0x77d
+
 ; removed event flags
 	define EVENT_NOISY_FOREST_PIKABLU_GUY, 2027
 

@@ -273,6 +273,51 @@ ChangeCheckValue:
 	writebyte 0x61
 	return
 
+ConvertSaveFileTo9Bit:
+	call ConvertMonIndexesTo9Bit
+	call ConvertPokerusToNybble
+	call RemovePartySpecies
+	call ConvertPhoneListToFlagArray
+	call ShiftHiddenGrottoContents
+	call RevertKeyItemsToIndexList
+	call AdjustItemIndexesToBuild8
+	call RearrangeEventFlagsToBuild8
+	call ClearNewPokedbSpace
+	call ShiftEventFlagsForPiers
+	call RearrangeDataForChecksumPadding
+	call AddSnowtopMountainLandmark
+	call SetPlayerCaughtData
+
+; miscellaneous patches
+	; adjust box themes
+	seek sBackupNewBox1Theme
+	set #length, 20
+.loop
+	getfilebyte #1
+	iflt #1, 0x0c, .next
+	increment #1
+.next
+	iflt #1, 0x07, .next2
+	increment #1
+	increment #1
+.next2
+	writebyte #1
+	add #1, 0x20
+	decrement #length
+	jumpnz #length, .loop
+
+	; set flag 0 for wInitialOptions2 (classic EV)
+	set #1, #zero
+	call GetGameDataPointer
+	subtract #result, 2 ; s(Backup)GameData -> initial options 2
+	seek #result
+
+	getfilebyte #1
+	increment #1 ; set flag 1
+	writebyte #1
+	return
+
+
 ConvertMonIndexesTo9Bit:
 	set #r0, .mon_indexes
 	set #r1, .mon_forms
@@ -512,7 +557,7 @@ ConvertMonIndexesTo9Bit:
 	pop #1
 	seekfwd 50
 	call FlagAction
-	
+
 .done
 	poppos
 	decrement #4
@@ -757,7 +802,7 @@ ShiftHiddenGrottoContents:
 	set #1, 41 ; wCurHiddenGrotto -> wPhoneList+0005
 	set #2, 25
 	call ShiftSaveDataForward
-	
+
 ; Shift data up to and including grotto list
 	set #1, CELEBI_EVENT_OFFSET_v7
 	call GetGameDataPointer
@@ -828,33 +873,33 @@ RevertKeyItemsToIndexList:
 	return
 
 .index_adjustment
-	; new index (list index = key item index + 5)
+	; new index (list index == key item index - 5)
 	db 6
 	db 5
-	db 12
-	db 10
 	db 13
+	db 11
 	db 14
-	db 15
 	db 16
-	db 23
-	db 24
-	db 18
 	db 17
-	db 19
-	db 20
-	db 21
-	db 22
-	db 9
+	db 18
 	db 25
 	db 26
+	db 20
+	db 19
+	db 21
+	db 22
+	db 23
+	db 24
+	db 10
 	db 27
 	db 28
 	db 29
-	db 30
-	db 11
+	db 33
+	db 34
+	db 35
+	db 12
 	db 7
-	db 8
+	db 9
 
 AdjustItemIndexesToBuild8:
 	set #r0, .index_adjustment
@@ -934,7 +979,7 @@ AdjustItemIndexesToBuild8:
 	db 0xf4, -17  ; MINT_LEAF
 	db 0
 
-RearrangeEventFlags:
+RearrangeEventFlagsToBuild8:
 ; NOTE: even though Cinnabar Volcano flags were moved, that doesn't require a unique patch
 	set #1, EVENT_FLAGS_OFFSET
 	call GetGameDataPointer
@@ -1061,3 +1106,126 @@ ClearNewPokedbSpace:
 
 .default_themes
 	db 0x14, 0x1d, 0x07, 0x08
+
+ShiftEventFlagsForPiers:
+	set #1, EVENT_FLAGS_OFFSET
+	call GetGameDataPointer
+	seek #result
+
+	set #1, 0x891
+	set #2, .flag_adjust_table
+	call ShiftFlags
+
+	;unset a few modified flags
+	set #r0, .flag_unset_table
+	set #2, #zero
+.unset_loop
+	gethalfwordinc #1, #r0
+	retz #1
+	call FlagAction
+	jump .unset_loop
+
+.flag_adjust_table
+	dh 0x59f, 0
+	dh 0x891, 4
+	dh -1
+
+.flag_unset_table
+	dh 0x05a
+	dh 0x108
+	dh 0x109
+	dh 0x59b
+	dh 0x59c
+	dh 0x84c
+	dh 0x84d
+	dh 0x856
+	dh 0
+
+RearrangeDataForChecksumPadding:
+	set #1, DECO_BED_OFFSET_v8
+	call GetGameDataPointer
+	seek #result
+
+	set #1, 45
+	set #2, -1
+	call ShiftSaveDataBack
+	writebyte #zero
+	return
+
+AddSnowtopMountainLandmark:
+; also adds Rugged Road
+	set #1, NUZLOCKE_LANDMARK_FLAGS_OFFSET
+	call GetGameDataPointer
+	seek #result
+
+	set #1, 0x90
+	set #2, .flag_adjust_table
+	call ShiftFlags
+
+	; clear landmark flags for Rugged Road/Snowtop Mtn
+	set #2, #zero
+	set #1, 0x25
+	call FlagAction
+	set #1, 0x26
+	call FlagAction
+
+	; rearrange visited spawns flags
+	set #1, VISITED_SPAWNS_3_OFFSET
+	call GetGameDataPointer
+	seek #result
+
+	; snowtop mtn is flag 24, meaning old flags 24-28 can just be left shifted 1 within the same byte
+	getfilebyte #1
+	shiftleft #1, 1
+	and #1, 0x3f ; (0b00111111) flags 30-31 are now used and should be unset
+	writehalfword #1 ; clears flags 32-33 as well since those are used too
+	return
+
+.flag_adjust_table
+	dh 0x025, 0
+	dh 0x063, 2
+	dh 0x090, 1
+	dh -1
+
+SetPlayerCaughtData:
+	set #1, POKEDEX_CAUGHT_OFFSET
+	call GetGameDataPointer
+	set #3, #result
+
+	set #1, PLAYER_CAUGHT_OFFSET
+	call GetGameDataPointer
+	set #4, #result
+	set #r0, .legendary_mon
+	set #2, 1
+	set #5, #zero
+
+.loop
+	getbyteinc #1, #r0
+	retz #1
+	shiftleft #2, 1 ; #2 > 2 = check flag without modifying it
+	seek #3
+	call FlagAction
+	shiftright #2, 1
+	jumpz #1, .loop
+	seek #4
+	set #1, #5
+	call FlagAction
+	increment #5
+	jump .loop
+
+.legendary_mon
+; these all have two bit indices so db can be used
+; (actually mon index - 1 since dex flags are 0-indexed)
+	db 249 ; HO-OH
+	db 248 ; LUGIA
+	db 242 ; RAIKOU
+	db 243 ; ENTEI
+	db 244 ; SUICUNE
+	db 143 ; ARTICUNO
+	db 144 ; ZAPDOS
+	db 145 ; MOLTRES
+	db 150 ; MEW
+	db 149 ; MEWTWO
+	db 250 ; CELEBI
+	db 184 ; SUDOWOODO
+	db 0
