@@ -189,6 +189,12 @@ Route39CowgirlAnnieScript:
 	para "from Ecruteak to"
 	line "Olivine and I'll"
 	cont "fight ya."
+
+	para "Some o' them"
+	line "might only want"
+
+	para "to battle ya when"
+	line "it's dark out."
 	done
 
 .QuestionText:

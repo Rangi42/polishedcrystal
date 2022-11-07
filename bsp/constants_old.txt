@@ -141,6 +141,7 @@
 	define BERRIES_OFFSET_v7,        0x4a5
 	define PC_ITEMS_OFFSET_v7,       0x4e5
 	define CELEBI_EVENT_OFFSET_v7,   0x75f
+	define DECO_BED_OFFSET_v7,       0x77d
 	define CUR_GROTTO_OFFSET_v7,     0x7d7
 	define PHONE_LIST_OFFSET_v7,     0x7fb
 	define PARTY_SPECIES_OFFSET_v7,  0x857

@@ -89,7 +89,13 @@ ResetWRAM_NotPlus:
 	ld [hli], a
 	ld a, HIGH(START_MONEY)
 	ld [hli], a
-	ld [hl], LOW(START_MONEY)
+	ld a, LOW(START_MONEY)
+	ld [hli], a
+	; clear mom's money
+	xor a
+	ld [hli], a
+	ld [hli], a
+	ld [hl], a
 	ret
 
 ResetWRAM:

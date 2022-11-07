@@ -1381,7 +1381,11 @@ wInitialOptions::
 	db
 
 wInitialOptions2::
-; bits 0-6: unused
+; bit 0: EVs disabled
+; bit 1: classic EVs (no 510 cap)
+; bit 2: modern EVs (510 cap)
+; (only one of bits 0-2 can be set)
+; bits 3-6: unused
 ; bit 7: ask to reset at start
 	db
 wOptionsEnd::
