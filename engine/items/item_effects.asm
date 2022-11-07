@@ -916,6 +916,7 @@ ItemHappinessRoseButStatFellText:
 	text_end
 
 VitaminEffect:
+	farcall FixPlayerEVs
 	ld b, PARTYMENUACTION_HEALING_ITEM
 	call UseItem_SelectMon
 	jmp c, ItemNotUsed_ExitMenu
@@ -1386,6 +1387,7 @@ UseItem_SelectMon2:
 	jr UseItem_DoSelectMon
 
 WingCase:
+	farcall FixPlayerEVs
 	ld b, PARTYMENUACTION_HEALING_ITEM ; also used for vitamins
 	ld hl, WingCase_MonSelected
 	jr UseItem_SelectMon_Loop
