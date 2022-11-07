@@ -1,7 +1,7 @@
 ; Core components of the battle engine.
 BattleCore:
 DoBattle:
-	farcall FixPlayerEVs
+	farcall FixPlayerEVsAndStats
 	call BackupBattleItems
 	call ResetParticipants
 	xor a

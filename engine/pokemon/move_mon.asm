@@ -906,6 +906,19 @@ ComputeNPCTrademonStats:
 	ld [hl], a
 	ret
 
+FixPlayerEVsAndStats:
+	farcall FixPlayerEVs
+	ld a, [wPartyCount]
+	ld [wCurPartyMon], a
+.loop
+	ld a, [wCurPartyMon]
+	and a
+	ret z
+	dec a
+	ld [wCurPartyMon], a
+	farcall UpdatePkmnStats
+	jr .loop
+
 UpdatePkmnStats:
 ; Recalculates the stats of wCurPartyMon and also updates current HP accordingly
 	ld a, MON_SPECIES
