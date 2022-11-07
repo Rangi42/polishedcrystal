@@ -906,6 +906,19 @@ ComputeNPCTrademonStats:
 	ld [hl], a
 	ret
 
+FixPlayerEVsAndStats:
+	farcall FixPlayerEVs
+	ld a, [wPartyCount]
+	ld [wCurPartyMon], a
+.loop
+	ld a, [wCurPartyMon]
+	and a
+	ret z
+	dec a
+	ld [wCurPartyMon], a
+	farcall UpdatePkmnStats
+	jr .loop
+
 UpdatePkmnStats:
 ; Recalculates the stats of wCurPartyMon and also updates current HP accordingly
 	ld a, MON_SPECIES
@@ -956,18 +969,17 @@ UpdatePkmnStats:
 	ld [hld], a
 	ld a, [hl]
 	adc b
-	ld [hl], a
+	ld [hli], a
 
 	; Prevent the infamous Pomeg glitch (HP underflow)
 	cp $80
 	jr nc, .set_hp_to_one
 
 	; Don't faint Pokémon who used to not be fainted
-	inc hl
 	or [hl]
-	dec hl
 	ret nz
 .set_hp_to_one
+	dec hl
 	xor a
 	ld [hli], a
 	inc a

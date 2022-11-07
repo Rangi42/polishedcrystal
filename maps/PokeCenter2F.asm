@@ -80,6 +80,7 @@ if !DEF(DEBUG)
 	checkevent EVENT_GAVE_MYSTERY_EGG_TO_ELM
 	iffalsefwd Script_TradeCenterClosed
 endc
+	special FixPlayerEVsAndStats ; no (trivial) cheating
 	opentext
 	writetext Text_TradeReceptionistIntro
 	yesorno
@@ -178,6 +179,7 @@ if !DEF(DEBUG)
 	checkevent EVENT_GAVE_MYSTERY_EGG_TO_ELM
 	iftruefwd .BattleRoomClosed
 endc
+	special FixPlayerEVsAndStats ; no (trivial) cheating
 	opentext
 	writetext Text_BattleReceptionistIntro
 	yesorno

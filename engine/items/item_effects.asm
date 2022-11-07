@@ -916,6 +916,7 @@ ItemHappinessRoseButStatFellText:
 	text_end
 
 VitaminEffect:
+	call FixPlayerEVsAndStats
 	ld b, PARTYMENUACTION_HEALING_ITEM
 	call UseItem_SelectMon
 	jmp c, ItemNotUsed_ExitMenu
@@ -955,20 +956,69 @@ CheckEVCap:
 ; Take the EV amount in a with the stat in c, and clamp a to the max
 ; amount of EVs we can give for the given stat, if a exceeds it.
 ; Returns the relevant EV in hl. Returns carry if a was modified.
+; Assumes EVs obey the total limit if applicable, so run FixPlayerEVs first.
+	push de
 	push bc
 	ld b, a
-	ld a, MON_EVS
-	add c
-	call GetPartyParamLocationAndValue
 
-	; a = (252-CurEV) >= b ? b : (252-CurEV)
+	; Calculate EV total excluding the relevant EV.
+	; TODO: This is basically duplicating most of GetEVTotal.
+	; Can we write this in a more optimized way by reusing that?
+	ld a, MON_EVS
+	call GetPartyParamLocationAndValue
+	ld a, 6
+	ld de, 0
+	inc c
+.loop
+	dec c
+	jr nz, .not_relevant_ev
+	push hl
+	inc hl
+	jr .next
+.not_relevant_ev
+	push af
+	ld a, [hli]
+	add e
+	ld e, a
+	adc d
+	sub e
+	ld d, a
+	pop af
+.next
+	dec a
+	jr nz, .loop
+
+	; At this point, relevant EV is on the stack. Figure out
+	; if we can apply a maximum of 252 EVs to this stat.
+	; If modern EVs aren't enabled, we can always apply 252.
+	ld a, [wInitialOptions2]
+	and EV_OPTMASK
+	cp EVS_OPT_MODERN
 	ld a, 252
+	jr nz, .got_max_for_stat
+
+	; Otherwise, compare current EV total with (max EVs-252).
+	ld hl, -(MODERN_EV_LIMIT - 252)
+	add hl, de
+	jr nc, .got_max_for_stat
+
+	; We can either apply exactly 252 or less.
+	; This combined with the later "sub [hl]" will never
+	; underflow because the relevant EV was not included when
+	; calculating EV total. This is also why FixPlayerEVs need
+	; to run before using this function, or we run into trouble.
+	sub l ; a = 252 - (potential EV overflow).
+
+.got_max_for_stat
+	; Retrieve EV to (potentially) change.
+	pop hl
 	sub [hl]
 	cp b
 	jr c, .modified
 	ld a, b
 .modified
 	pop bc
+	pop de
 	ret
 
 GetStatStringAndPlayFullHealSFX:
@@ -1337,6 +1387,7 @@ UseItem_SelectMon2:
 	jr UseItem_DoSelectMon
 
 WingCase:
+	call FixPlayerEVsAndStats
 	ld b, PARTYMENUACTION_HEALING_ITEM ; also used for vitamins
 	ld hl, WingCase_MonSelected
 	jr UseItem_SelectMon_Loop
