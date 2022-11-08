@@ -87,30 +87,6 @@ ReadTrainerParty:
 	ld [de], a
 
 .not_item
-; EVs?
-	ld a, [wOtherTrainerType]
-	bit TRNTYPE_EVS, a
-	jr z, .not_evs
-	push hl
-	ld a, [wOTPartyCount]
-	dec a
-	ld hl, wOTPartyMon1EVs
-	ld bc, PARTYMON_STRUCT_LENGTH
-	rst AddNTimes
-	ld d, h
-	ld e, l
-	pop hl
-
-	call GetNextTrainerDataByte
-	push hl
-	ld h, d
-	ld l, e
-rept 6
-	ld [hli], a
-endr
-	pop hl
-
-.not_evs
 ; DVs?
 	ld a, [wOtherTrainerType]
 	bit TRNTYPE_DVS, a
@@ -205,6 +181,30 @@ endr
 	pop de
 
 .not_nickname
+; EVs?
+	ld a, [wOtherTrainerType]
+	bit TRNTYPE_EVS, a
+	jr z, .not_evs
+	push hl
+	ld a, [wOTPartyCount]
+	dec a
+	ld hl, wOTPartyMon1EVs
+	ld bc, PARTYMON_STRUCT_LENGTH
+	rst AddNTimes
+	ld d, h
+	ld e, l
+	pop hl
+
+	call GetNextTrainerDataByte
+	push hl
+	ld h, d
+	ld l, e
+rept 6
+	ld [hli], a
+endr
+	pop hl
+
+.not_evs
 ; moves?
 	ld a, [wOtherTrainerType]
 	bit TRNTYPE_MOVES, a

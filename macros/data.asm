@@ -129,3 +129,19 @@ MACRO def_evs
 		shift
 	endr
 ENDM
+
+MACRO ev_spread
+	def_evs \#
+	if !DEF(EV_SPREAD_AMOUNT)
+		def EV_SPREAD_AMOUNT = 0
+	endc
+	if DEF(EV_SPREAD_{d:EV_HP}_{d:EV_ATK}_{d:EV_DEF}_{d:EV_SPE}_{d:EV_SAT}_{d:EV_SDF})
+		db EV_SPREAD_{d:EV_HP}_{d:EV_ATK}_{d:EV_DEF}_{d:EV_SPE}_{d:EV_SAT}_{d:EV_SDF}
+	else
+		db EV_SPREAD_AMOUNT
+		def EV_SPREAD_{d:EV_HP}_{d:EV_ATK}_{d:EV_DEF}_{d:EV_SPE}_{d:EV_SAT}_{d:EV_SDF} = EV_SPREAD_AMOUNT
+		def EV_SPREAD_{d:EV_SPREAD_AMOUNT} EQUS "{EV_HP}, {EV_ATK}, {EV_DEF}, {EV_SPE}, {EV_SAT}, {EV_SDF}"
+		def EV_SPREAD_AMOUNT = {d:EV_SPREAD_AMOUNT} + 1
+	endc
+	PRINT EV_SPREAD_AMOUNT
+ENDM
