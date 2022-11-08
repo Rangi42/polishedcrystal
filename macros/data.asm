@@ -128,6 +128,9 @@ MACRO def_evs
 		endc
 		shift
 	endr
+	if (EV_HP + EV_ATK + EV_DEF + EV_SPE + EV_SAT + EV_SDF > MODERN_EV_LIMIT)
+		warn "EV total above limit!"
+	endc
 ENDM
 
 MACRO ev_spread
