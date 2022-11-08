@@ -4141,6 +4141,9 @@ BattleMenu_SafariBall:
 	ld a, [wWildMon]
 	and a
 	jr nz, .run
+	ld a, [wCurItem]
+	and a ; cp PARK_BALL
+	jr z, .ball
 	farcall CheckItemPocket
 	ld a, [wItemAttributeParamBuffer]
 	cp BALL
