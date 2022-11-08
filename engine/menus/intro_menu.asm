@@ -1139,6 +1139,7 @@ TitleScreenEntrance:
 
 	xor a
 	ldh [hLCDCPointer], a
+	ldh [rNR10], a ; XY title track does not inherently clear channel 1 sweep (could be set to non-zero by splash screen)
 
 	ld a, BANK(sPlayerData)
 	call GetSRAMBank
