@@ -1435,25 +1435,26 @@ Rival0Group:
 SECTION "Rival1Group", ROMX
 Rival1Group:
 
+	; For EV spreads, keep continuity until pre-E4 (need Surf to lose EVs).
 	; RIVAL1
 	db "<RIVAL>@"
 	db TRAINERTYPE_ITEM | TRAINERTYPE_EVS | TRAINERTYPE_MOVES
 	; party
 	dbp 14, GASTLY
 		db NO_ITEM
-		ev_spread 36 Spe
+		ev_spread 72 Spe
 		db LICK, DISABLE, MEAN_LOOK, CURSE ; default for level
 	dbp 16, ZUBAT
 		db NO_ITEM
-		ev_spread 36 Spe
+		ev_spread 72 Spe
 		db SUPERSONIC, ASTONISH, BITE, GUST ; default for level
 	dbp 15, GEODUDE
 		db NO_ITEM
-		ev_spread 36 Spe
+		ev_spread 72 HP
 		db MUD_SLAP, RAPID_SPIN, ROLLOUT, MAGNITUDE ; default for level
 	dbp 18, BAYLEEF
 		db ORAN_BERRY
-		ev_spread 36 Atk
+		ev_spread 72 Atk
 		db RAZOR_LEAF, POISONPOWDER, HEALINGLIGHT, REFLECT ; No Light Screen
 	db -1 ; end
 
@@ -1462,13 +1463,17 @@ Rival1Group:
 	db TRAINERTYPE_ITEM | TRAINERTYPE_EVS
 	; party
 	dbp 14, GASTLY
-		db NO_ITEM, 36
+		ev_spread 72 Spe
+		db NO_ITEM
 	dbp 16, ZUBAT
-		db NO_ITEM, 36
+		ev_spread 72 Spe
+		db NO_ITEM
 	dbp 15, GEODUDE
-		db NO_ITEM, 36
+		ev_spread 72 HP
+		db NO_ITEM
 	dbp 18, QUILAVA
-		db ORAN_BERRY, 36
+		ev_spread 72 SAt
+		db ORAN_BERRY
 	db -1 ; end
 
 	; RIVAL1
@@ -1476,13 +1481,17 @@ Rival1Group:
 	db TRAINERTYPE_ITEM | TRAINERTYPE_EVS
 	; party
 	dbp 14, GASTLY
-		db NO_ITEM, 36
+		ev_spread 72 Spe
+		db NO_ITEM
 	dbp 16, ZUBAT
-		db NO_ITEM, 36
+		ev_spread 72 Spe
+		db NO_ITEM
 	dbp 15, GEODUDE
-		db NO_ITEM, 36
+		ev_spread 72 HP
+		db NO_ITEM
 	dbp 18, CROCONAW
-		db ORAN_BERRY, 36
+		ev_spread 72 Spe
+		db ORAN_BERRY
 	db -1 ; end
 
 	; RIVAL1
@@ -1490,19 +1499,24 @@ Rival1Group:
 	db TRAINERTYPE_ITEM | TRAINERTYPE_EVS | TRAINERTYPE_MOVES
 	; party
 	dbp 20, HAUNTER
-		db NO_ITEM, 52
+		db NO_ITEM
+		ev_spread 104 Spe
 		db LICK, CONFUSE_RAY, MEAN_LOOK, CURSE
 	dbp 18, MAGNEMITE
-		db NO_ITEM, 52
+		db NO_ITEM
+		ev_spread 104 Spe
 		db TACKLE, THUNDERSHOCK, SUPERSONIC, SONIC_BOOM
 	dbp 19, DROWZEE
-		db NO_ITEM, 52
+		db NO_ITEM
+		ev_spread 104 Spe
 		db HYPNOSIS, CONFUSION, HEADBUTT, LOW_KICK
 	dbp 20, ZUBAT
-		db NO_ITEM, 52
+		db NO_ITEM
+		ev_spread 104 Spe
 		db LEECH_LIFE, SUPERSONIC, BITE, CONFUSE_RAY
 	dbp 22, BAYLEEF
-		db ORAN_BERRY, 52
+		db ORAN_BERRY
+		ev_spread 72 Atk, 32 SAt
 		db REFLECT, RAZOR_LEAF, POISONPOWDER, DISARM_VOICE
 	db -1 ; end
 
@@ -1511,19 +1525,24 @@ Rival1Group:
 	db TRAINERTYPE_ITEM | TRAINERTYPE_EVS | TRAINERTYPE_MOVES
 	; party
 	dbp 20, HAUNTER
-		db NO_ITEM, 52
+		db NO_ITEM
+		ev_spread 104 Spe
 		db LICK, CONFUSE_RAY, MEAN_LOOK, CURSE
 	dbp 18, MAGNEMITE
-		db NO_ITEM, 52
+		db NO_ITEM
+		ev_spread 104 Spe
 		db TACKLE, THUNDERSHOCK, SUPERSONIC, SONIC_BOOM
 	dbp 19, DROWZEE
-		db NO_ITEM, 52
+		db NO_ITEM
+		ev_spread 104 Spe
 		db HYPNOSIS, CONFUSION, HEADBUTT, LOW_KICK
 	dbp 20, ZUBAT
-		db NO_ITEM, 52
+		db NO_ITEM
+		ev_spread 104 Spe
 		db LEECH_LIFE, SUPERSONIC, BITE, CONFUSE_RAY
 	dbp 22, QUILAVA
-		db ORAN_BERRY, 52
+		db ORAN_BERRY
+		ev_spread 72 SAt, 32 Spe
 		db LEER, SMOKESCREEN, EMBER, QUICK_ATTACK
 	db -1 ; end
 
@@ -1532,19 +1551,24 @@ Rival1Group:
 	db TRAINERTYPE_ITEM | TRAINERTYPE_EVS | TRAINERTYPE_MOVES
 	; party
 	dbp 20, HAUNTER
-		db NO_ITEM, 52
+		db NO_ITEM
+		ev_spread 104 Spe
 		db LICK, CONFUSE_RAY, MEAN_LOOK, CURSE
 	dbp 18, MAGNEMITE
-		db NO_ITEM, 52
+		db NO_ITEM
+		ev_spread 104 Spe
 		db TACKLE, THUNDERSHOCK, SUPERSONIC, SONIC_BOOM
 	dbp 19, DROWZEE
-		db NO_ITEM, 52
+		db NO_ITEM
+		ev_spread 104 Spe
 		db HYPNOSIS, CONFUSION, HEADBUTT, LOW_KICK
 	dbp 20, ZUBAT
-		db NO_ITEM, 52
+		db NO_ITEM
+		ev_spread 104 Spe
 		db LEECH_LIFE, SUPERSONIC, BITE, CONFUSE_RAY
 	dbp 22, CROCONAW
-		db ORAN_BERRY, 52
+		db ORAN_BERRY
+		ev_spread 32 Atk, 72 Spe
 		db LEER, RAGE, WATER_GUN, BITE
 	db -1 ; end
 
@@ -1553,19 +1577,24 @@ Rival1Group:
 	db TRAINERTYPE_ITEM | TRAINERTYPE_EVS | TRAINERTYPE_MOVES
 	; party
 	dbp 40, GOLBAT
-		db NO_ITEM, 116
+		db NO_ITEM
+		ev_spread 116 Atk, 116 Spe
 		db LEECH_LIFE, BITE, CONFUSE_RAY, WING_ATTACK
 	dbp 39, MAGNETON
-		db NO_ITEM, 116
+		db NO_ITEM
+		ev_spread 116 SAt, 116 Spe
 		db TRI_ATTACK, THUNDERBOLT, FLASH_CANNON, THUNDER_WAVE
 	dbp 39, HAUNTER
-		db NO_ITEM, 116
+		db NO_ITEM
+		ev_spread 232 Spe
 		db PAIN_SPLIT, MEAN_LOOK, CONFUSE_RAY, SHADOW_BALL
 	dbp 41, SNEASEL
-		db NO_ITEM, 116
+		db NO_ITEM
+		ev_spread 232 Atk
 		db SLASH, ICE_PUNCH, HONE_CLAWS, FEINT_ATTACK
 	dbp 43, MEGANIUM
-		db SITRUS_BERRY, 116
+		db SITRUS_BERRY
+		ev_spread 72 Atk, 160 SAt ; Still has some Atk EVs for continuity
 		db REFLECT, LIGHT_SCREEN, PETAL_DANCE, ANCIENTPOWER
 	db -1 ; end
 
@@ -1574,19 +1603,24 @@ Rival1Group:
 	db TRAINERTYPE_ITEM | TRAINERTYPE_EVS | TRAINERTYPE_MOVES
 	; party
 	dbp 40, GOLBAT
-		db NO_ITEM, 116
+		db NO_ITEM
+		ev_spread 116 Atk, 116 Spe
 		db LEECH_LIFE, BITE, CONFUSE_RAY, WING_ATTACK
 	dbp 39, MAGNETON
-		db NO_ITEM, 116
+		db NO_ITEM
+		ev_spread 116 SAt, 116 Spe
 		db TRI_ATTACK, THUNDERBOLT, FLASH_CANNON, THUNDER_WAVE
 	dbp 39, HAUNTER
-		db NO_ITEM, 116
+		db NO_ITEM
+		ev_spread 232 Spe
 		db PAIN_SPLIT, MEAN_LOOK, CONFUSE_RAY, SHADOW_BALL
 	dbp 41, SNEASEL
-		db NO_ITEM, 116
+		db NO_ITEM
+		ev_spread 232 Atk
 		db SLASH, ICE_PUNCH, HONE_CLAWS, FEINT_ATTACK
 	dbp 43, TYPHLOSION
-		db SITRUS_BERRY, 116
+		db SITRUS_BERRY
+		ev_spread 88 Atk, 72 SAt, 72 Spe
 		db SMOKESCREEN, FLAME_CHARGE, DIG, SWIFT
 	db -1 ; end
 
@@ -1595,19 +1629,24 @@ Rival1Group:
 	db TRAINERTYPE_ITEM | TRAINERTYPE_EVS | TRAINERTYPE_MOVES
 	; party
 	dbp 40, GOLBAT
-		db NO_ITEM, 116
+		db NO_ITEM
+		ev_spread 116 Atk, 116 Spe
 		db LEECH_LIFE, BITE, CONFUSE_RAY, WING_ATTACK
 	dbp 39, MAGNETON
-		db NO_ITEM, 116
+		db NO_ITEM
+		ev_spread 116 SAt, 116 Spe
 		db TRI_ATTACK, THUNDERBOLT, FLASH_CANNON, THUNDER_WAVE
 	dbp 39, HAUNTER
-		db NO_ITEM, 116
+		db NO_ITEM
+		ev_spread 232 Spe
 		db PAIN_SPLIT, MEAN_LOOK, CONFUSE_RAY, SHADOW_BALL
 	dbp 41, SNEASEL
-		db NO_ITEM, 116
+		db NO_ITEM
+		ev_spread 232 Atk
 		db SLASH, ICE_PUNCH, HONE_CLAWS, FEINT_ATTACK
 	dbp 43, FERALIGATR
-		db SITRUS_BERRY, 116
+		db SITRUS_BERRY
+		ev_spread 160 Atk, 72 Spe
 		db SLASH, SURF, CRUNCH, NIGHT_SLASH
 	db -1 ; end
 
@@ -1692,22 +1731,28 @@ Rival2Group:
 	db TRAINERTYPE_ITEM | TRAINERTYPE_EVS | TRAINERTYPE_MOVES
 	; party
 	dbp 61, WEAVILE
-		db KINGS_ROCK, 228
+		db KINGS_ROCK
+		ev_spread 252 Atk, 204 Spe
 		db SWORDS_DANCE, ICE_PUNCH, SLASH, CRUNCH
 	dbp 62, GOLBAT
-		db EVIOLITE, 228
+		db EVIOLITE
+		ev_spread 252 HP, 204 Atk
 		db POISON_JAB, SUPER_FANG, CONFUSE_RAY, AERIAL_ACE
 	dbp 61, MAGNEZONE
-		db MAGNET, 228
+		db MAGNET
+		ev_spread 252 SAt, 204 Spe
 		db TRI_ATTACK, ZAP_CANNON, THUNDER_WAVE, FLASH_CANNON
 	dbp 63, GENGAR
-		db SPELL_TAG, 228
+		db SPELL_TAG
+		ev_spread 252 SAt, 204 Spe
 		db MEAN_LOOK, CURSE, SHADOW_BALL, CONFUSE_RAY
 	dbp 63, ALAKAZAM
-		db BRIGHTPOWDER, 228
+		db BRIGHTPOWDER
+		ev_spread 252 SAt, 204 Spe
 		db DISABLE, RECOVER, FUTURE_SIGHT, PSYCHIC_M
 	dbp 65, MEGANIUM
-		db MIRACLE_SEED, 228
+		db MIRACLE_SEED
+		ev_spread 252 Atk, 204 Spe
 		db SEED_BOMB, POISONPOWDER, BODY_SLAM, LIGHT_SCREEN
 	db -1 ; end
 
@@ -1716,22 +1761,28 @@ Rival2Group:
 	db TRAINERTYPE_ITEM | TRAINERTYPE_EVS | TRAINERTYPE_MOVES
 	; party
 	dbp 61, WEAVILE
-		db KINGS_ROCK, 228
+		db KINGS_ROCK
+		ev_spread 252 Atk, 204 Spe
 		db SWORDS_DANCE, ICE_PUNCH, SLASH, CRUNCH
 	dbp 62, GOLBAT
-		db EVIOLITE, 228
+		db EVIOLITE
+		ev_spread 252 HP, 204 Atk
 		db POISON_JAB, SUPER_FANG, CONFUSE_RAY, AERIAL_ACE
 	dbp 61, MAGNEZONE
-		db MAGNET, 228
+		db MAGNET
+		ev_spread 252 SAt, 204 Spe
 		db TRI_ATTACK, ZAP_CANNON, THUNDER_WAVE, FLASH_CANNON
 	dbp 63, GENGAR
-		db SPELL_TAG, 228
+		db SPELL_TAG
+		ev_spread 252 SAt, 204 Spe
 		db MEAN_LOOK, CURSE, SHADOW_BALL, CONFUSE_RAY
 	dbp 63, ALAKAZAM
-		db BRIGHTPOWDER, 228
+		db BRIGHTPOWDER
+		ev_spread 252 SAt, 204 Spe
 		db DISABLE, RECOVER, FUTURE_SIGHT, PSYCHIC_M
 	dbp 65, TYPHLOSION
-		db CHARCOAL, 228
+		db CHARCOAL
+		ev_spread 204 Atk, 252 SAt
 		db FLAMETHROWER, EARTH_POWER, THUNDERPUNCH, SMOKESCREEN
 	db -1 ; end
 
@@ -1740,22 +1791,28 @@ Rival2Group:
 	db TRAINERTYPE_ITEM | TRAINERTYPE_EVS | TRAINERTYPE_MOVES
 	; party
 	dbp 61, WEAVILE
-		db KINGS_ROCK, 228
+		db KINGS_ROCK
+		ev_spread 252 Atk, 204 Spe
 		db SWORDS_DANCE, ICE_PUNCH, SLASH, CRUNCH
 	dbp 62, GOLBAT
-		db EVIOLITE, 228
+		db EVIOLITE
+		ev_spread 252 HP, 204 Atk
 		db POISON_JAB, SUPER_FANG, CONFUSE_RAY, AERIAL_ACE
 	dbp 61, MAGNEZONE
-		db MAGNET, 228
+		db MAGNET
+		ev_spread 252 SAt, 204 Spe
 		db TRI_ATTACK, ZAP_CANNON, THUNDER_WAVE, FLASH_CANNON
 	dbp 63, GENGAR
-		db SPELL_TAG, 228
+		db SPELL_TAG
+		ev_spread 252 SAt, 204 Spe
 		db MEAN_LOOK, CURSE, SHADOW_BALL, CONFUSE_RAY
 	dbp 63, ALAKAZAM
-		db BRIGHTPOWDER, 228
+		db BRIGHTPOWDER
+		ev_spread 252 SAt, 204 Spe
 		db DISABLE, RECOVER, FUTURE_SIGHT, PSYCHIC_M
 	dbp 65, FERALIGATR
-		db MYSTIC_WATER, 228
+		db MYSTIC_WATER
+		ev_spread 204 Atk, 252 Spe
 		db WATERFALL, CRUNCH, SLASH, SCARY_FACE
 	db -1 ; end
 
@@ -1866,16 +1923,20 @@ Lyra1Group:
 	db TRAINERTYPE_ITEM | TRAINERTYPE_EVS | TRAINERTYPE_NICKNAME | TRAINERTYPE_MOVES
 	; party
 	dbp 16, PIDGEY
-		db NO_ITEM, 36, "@"
+		db NO_ITEM, "@"
+		ev_spread 36 HP, 36 Spe
 		db TACKLE, GUST, MUD_SLAP, QUICK_ATTACK ; default for level
 	dbp 17, MARILL
-		db NO_ITEM, 36, "@"
+		db NO_ITEM, "@"
+		ev_spread 72 Atk
 		db DEFENSE_CURL, ROLLOUT, BUBBLE_BEAM, DIZZY_PUNCH ; default for level
 	dbp 15, MAREEP
-		db NO_ITEM, 36, "@"
+		db NO_ITEM, "@"
+		ev_spread 36 HP, 36 SAt
 		db THUNDER_WAVE, THUNDERSHOCK, MUD_SLAP, SPARK ; default for level
 	dbp 18, BAYLEEF
-		db ORAN_BERRY, 36, "Chicory@"
+		db ORAN_BERRY, "Chicory@"
+		ev_spread 72 HP
 		db RAZOR_LEAF, POISONPOWDER, HEALINGLIGHT, REFLECT ; No Light Screen
 	db -1 ; end
 
@@ -1884,13 +1945,17 @@ Lyra1Group:
 	db TRAINERTYPE_ITEM | TRAINERTYPE_EVS | TRAINERTYPE_NICKNAME
 	; party
 	dbp 16, PIDGEY
-		db NO_ITEM, 36, "@"
+		db NO_ITEM, "@"
+		ev_spread 36 HP, 36 Spe
 	dbp 17, SUNKERN
-		db NO_ITEM, 36, "@"
+		db NO_ITEM, "@"
+		ev_spread 36 SAt, 36 Spe
 	dbp 15, MAREEP
-		db NO_ITEM, 36, "@"
+		db NO_ITEM, "@"
+		ev_spread 36 HP, 36 SAt
 	dbp 18, QUILAVA
-		db ORAN_BERRY, 36, "Cinder@"
+		db ORAN_BERRY, "Cinder@"
+		ev_spread 72 Spe
 	db -1 ; end
 
 	; LYRA1
@@ -1898,13 +1963,17 @@ Lyra1Group:
 	db TRAINERTYPE_ITEM | TRAINERTYPE_EVS | TRAINERTYPE_NICKNAME
 	; party
 	dbp 16, PIDGEY
-		db NO_ITEM, 36, "@"
+		db NO_ITEM, "@"
+		ev_spread 36 HP, 36 Spe
 	dbp 17, GROWLITHE
-		db NO_ITEM, 36, "@"
+		db NO_ITEM, "@"
+		ev_spread 36 HP, 36 Atk
 	dbp 15, MAREEP
-		db NO_ITEM, 36, "@"
+		db NO_ITEM, "@"
+		ev_spread 36 HP, 36 SAt
 	dbp 18, CROCONAW
-		db ORAN_BERRY, 36, "Toto@"
+		db ORAN_BERRY, "Toto@"
+		ev_spread 72 Atk
 	db -1 ; end
 
 	; LYRA1
@@ -1912,15 +1981,20 @@ Lyra1Group:
 	db TRAINERTYPE_ITEM | TRAINERTYPE_EVS | TRAINERTYPE_NICKNAME
 	; party
 	dbp 33, PIDGEOTTO
-		db NO_ITEM, 100, "@"
+		db NO_ITEM, "@"
+		ev_spread 100 HP, 100 Spe
 	dbp 34, GROWLITHE
-		db NO_ITEM, 100, "@"
+		db NO_ITEM, "@"
+		ev_spread 100 HP, 100 Atk
 	dbp 34, AZUMARILL
-		db NO_ITEM, 100, "@"
+		db NO_ITEM, "@"
+		ev_spread 200 Atk
 	dbp 32, FLAAFFY
-		db NO_ITEM, 100, "@"
+		db NO_ITEM, "@"
+		ev_spread 100 HP, 100 SAt
 	dbp 37, BAYLEEF
-		db ORAN_BERRY, 100, "Chicory@"
+		db ORAN_BERRY, "Chicory@"
+		ev_spread 200 HP
 	db -1 ; end
 
 	; LYRA1
@@ -1928,15 +2002,20 @@ Lyra1Group:
 	db TRAINERTYPE_ITEM | TRAINERTYPE_EVS | TRAINERTYPE_NICKNAME
 	; party
 	dbp 33, PIDGEOTTO
-		db NO_ITEM, 100, "@"
+		db NO_ITEM, "@"
+		ev_spread 100 HP, 100 Spe
 	dbp 34, SUNFLORA
-		db NO_ITEM, 100, "@"
+		db NO_ITEM, "@"
+		ev_spread 100 SAt, 100 Spe
 	dbp 34, AZUMARILL
-		db NO_ITEM, 100, "@"
+		db NO_ITEM, "@"
+		ev_spread 200 Atk
 	dbp 32, FLAAFFY
-		db NO_ITEM, 100, "@"
+		db NO_ITEM, "@"
+		ev_spread 100 HP, 100 SAt
 	dbp 37, QUILAVA
-		db ORAN_BERRY, 100, "Cinder@"
+		db ORAN_BERRY, "Cinder@"
+		ev_spread 200 Spe
 	db -1 ; end
 
 	; LYRA1
@@ -1944,15 +2023,20 @@ Lyra1Group:
 	db TRAINERTYPE_ITEM | TRAINERTYPE_EVS | TRAINERTYPE_NICKNAME
 	; party
 	dbp 33, PIDGEOTTO
-		db NO_ITEM, 100, "@"
+		db NO_ITEM, "@"
+		ev_spread 100 HP, 100 Spe
 	dbp 34, SUNFLORA
-		db NO_ITEM, 100, "@"
+		db NO_ITEM, "@"
+		ev_spread 100 SAt, 100 Spe
 	dbp 34, GROWLITHE
-		db NO_ITEM, 100, "@"
+		db NO_ITEM, "@"
+		ev_spread 100 HP, 100 Atk
 	dbp 32, FLAAFFY
-		db NO_ITEM, 100, "@"
+		db NO_ITEM, "@"
+		ev_spread 100 HP, 100 SAt
 	dbp 37, CROCONAW
-		db ORAN_BERRY, 100, "Toto@"
+		db ORAN_BERRY, "Toto@"
+		ev_spread 200 Atk
 	db -1 ; end
 
 	; LYRA1
@@ -1960,17 +2044,23 @@ Lyra1Group:
 	db TRAINERTYPE_ITEM | TRAINERTYPE_EVS | TRAINERTYPE_NICKNAME
 	; party
 	dbp 44, PIDGEOT
-		db NO_ITEM, 132, "@"
+		db NO_ITEM, "@"
+		ev_spread 132 HP, 132 Spe
 	dbp 43, GIRAFARIG
-		db NO_ITEM, 132, "@"
+		db NO_ITEM, "@"
+		ev_spread 132 Atk, 132 Spe
 	dbp 45, ARCANINE
-		db NO_ITEM, 132, "@"
+		db NO_ITEM, "@"
+		ev_spread 132 HP, 132 Atk
 	dbp 45, AZUMARILL
-		db NO_ITEM, 132, "@"
+		db NO_ITEM, "@"
+		ev_spread 252 Atk, 12 Spe
 	dbp 46, AMPHAROS
-		db NO_ITEM, 132, "@"
+		db NO_ITEM, "@"
+		ev_spread 132 HP, 132 SAt
 	dbp 47, MEGANIUM
-		db SITRUS_BERRY, 132, "Chicory@"
+		db SITRUS_BERRY, "Chicory@"
+		ev_spread 252 HP, 12 SAt
 	db -1 ; end
 
 	; LYRA1
@@ -1978,17 +2068,23 @@ Lyra1Group:
 	db TRAINERTYPE_ITEM | TRAINERTYPE_EVS | TRAINERTYPE_NICKNAME
 	; party
 	dbp 44, PIDGEOT
-		db NO_ITEM, 132, "@"
+		db NO_ITEM, "@"
+		ev_spread 132 HP, 132 Spe
 	dbp 43, GIRAFARIG
-		db NO_ITEM, 132, "@"
+		db NO_ITEM, "@"
+		ev_spread 132 Atk, 132 Spe
 	dbp 45, SUNFLORA
-		db NO_ITEM, 132, "@"
+		db NO_ITEM, "@"
+		ev_spread 132 SAt, 132 Spe
 	dbp 45, AZUMARILL
-		db NO_ITEM, 132, "@"
+		db NO_ITEM, "@"
+		ev_spread 252 Atk, 12 Spe
 	dbp 46, AMPHAROS
-		db NO_ITEM, 132, "@"
+		db NO_ITEM, "@"
+		ev_spread 132 HP, 132 SAt
 	dbp 47, TYPHLOSION
-		db SITRUS_BERRY, 132, "Cinder@"
+		db SITRUS_BERRY, "Cinder@"
+		ev_spread 12 Atk, 252 Spe
 	db -1 ; end
 
 	; LYRA1
@@ -1996,17 +2092,23 @@ Lyra1Group:
 	db TRAINERTYPE_ITEM | TRAINERTYPE_EVS | TRAINERTYPE_NICKNAME
 	; party
 	dbp 44, PIDGEOT
-		db NO_ITEM, 132, "@"
+		db NO_ITEM, "@"
+		ev_spread 132 HP, 132 Spe
 	dbp 43, GIRAFARIG
-		db NO_ITEM, 132, "@"
+		db NO_ITEM, "@"
+		ev_spread 132 Atk, 132 Spe
 	dbp 45, SUNFLORA
-		db NO_ITEM, 132, "@"
+		db NO_ITEM, "@"
+		ev_spread 132 SAt, 132 Spe
 	dbp 45, ARCANINE
-		db NO_ITEM, 132, "@"
+		db NO_ITEM, "@"
+		ev_spread 132 HP, 132 Atk
 	dbp 46, AMPHAROS
-		db NO_ITEM, 132, "@"
+		db NO_ITEM, "@"
+		ev_spread 132 HP, 132 SAt
 	dbp 47, FERALIGATR
-		db SITRUS_BERRY, 132, "Toto@"
+		db SITRUS_BERRY, "Toto@"
+		ev_spread 252 Atk, 12 Spe
 	db -1 ; end
 
 
@@ -2084,7 +2186,8 @@ YoungsterGroup:
 	db TRAINERTYPE_ITEM | TRAINERTYPE_EVS | TRAINERTYPE_DVS | TRAINERTYPE_PERSONALITY
 	; party
 	dbp 15, RATTATA, MALE
-		db ORAN_BERRY, 48, FAKE_PERFECT_DVS, ABIL_RATTATA_GUTS | NAT_ATK_UP_SATK_DOWN
+		db ORAN_BERRY, FAKE_PERFECT_DVS, ABIL_RATTATA_GUTS | NAT_ATK_UP_SATK_DOWN
+		ev_spread 48 Atk, 48 Spe
 	db -1 ; end
 
 	; YOUNGSTER
@@ -2092,7 +2195,8 @@ YoungsterGroup:
 	db TRAINERTYPE_ITEM | TRAINERTYPE_EVS | TRAINERTYPE_DVS | TRAINERTYPE_PERSONALITY | TRAINERTYPE_MOVES
 	; party
 	dbp 25, RATICATE, MALE
-		db ORAN_BERRY, 80, FAKE_PERFECT_DVS, ABIL_RATICATE_GUTS | NAT_ATK_UP_SATK_DOWN
+		db ORAN_BERRY, FAKE_PERFECT_DVS, ABIL_RATICATE_GUTS | NAT_ATK_UP_SATK_DOWN
+		ev_spread 80 Atk, 80 Spe
 		db LEER, QUICK_ATTACK, HYPER_FANG, SCARY_FACE
 	db -1 ; end
 
@@ -2101,7 +2205,8 @@ YoungsterGroup:
 	db TRAINERTYPE_ITEM | TRAINERTYPE_EVS | TRAINERTYPE_DVS | TRAINERTYPE_PERSONALITY | TRAINERTYPE_MOVES
 	; party
 	dbp 30, RATICATE, MALE
-		db SITRUS_BERRY, 112, FAKE_PERFECT_DVS, ABIL_RATICATE_GUTS | NAT_ATK_UP_SATK_DOWN
+		db SITRUS_BERRY, FAKE_PERFECT_DVS, ABIL_RATICATE_GUTS | NAT_ATK_UP_SATK_DOWN
+		ev_spread 112 Atk, 112 Spe
 		db LEER, QUICK_ATTACK, HYPER_FANG, PURSUIT
 	db -1 ; end
 
@@ -2110,7 +2215,8 @@ YoungsterGroup:
 	db TRAINERTYPE_ITEM | TRAINERTYPE_EVS | TRAINERTYPE_DVS | TRAINERTYPE_PERSONALITY | TRAINERTYPE_MOVES
 	; party
 	dbp 40, RATICATE, MALE
-		db SITRUS_BERRY, 160, FAKE_PERFECT_DVS, ABIL_RATICATE_GUTS | NAT_ATK_UP_SATK_DOWN
+		db SITRUS_BERRY, FAKE_PERFECT_DVS, ABIL_RATICATE_GUTS | NAT_ATK_UP_SATK_DOWN
+		ev_spread 160 Atk, 160 Spe
 		db HYPER_BEAM, QUICK_ATTACK, HYPER_FANG, PURSUIT
 	db -1 ; end
 
@@ -8082,13 +8188,16 @@ endc
 	db TRAINERTYPE_ITEM | TRAINERTYPE_EVS | TRAINERTYPE_PERSONALITY | TRAINERTYPE_MOVES
 
 	dbp 43, DRAGONITE, MALE
-		db FOCUS_SASH, 132, ABIL_DRAGONITE_MULTISCALE | NAT_ATK_UP_SATK_DOWN
+		db FOCUS_SASH, ABIL_DRAGONITE_MULTISCALE | NAT_ATK_UP_SATK_DOWN
+		ev_spread 252 Atk, 12 Spe
 		db FOCUS_ENERGY, DRAGON_CLAW, EARTHQUAKE, ICE_PUNCH
 	dbp 43, KINGDRA, MALE
-		db FOCUS_SASH, 132, ABIL_KINGDRA_SNIPER | NAT_SATK_UP_ATK_DOWN
+		db FOCUS_SASH, ABIL_KINGDRA_SNIPER | NAT_SATK_UP_ATK_DOWN
+		ev_spread 252 SAt, 12 Spe
 		db DOUBLE_TEAM, DRAGON_PULSE, SURF, ICE_BEAM
 	dbp 43, CHARIZARD, MALE
-		db FOCUS_SASH, 132, ABIL_CHARIZARD_BLAZE | NAT_ATK_UP_SATK_DOWN
+		db FOCUS_SASH, ABIL_CHARIZARD_BLAZE | NAT_ATK_UP_SATK_DOWN
+		ev_spread 132 Atk, 132 Spe
 		db DRAGON_DANCE, DRAGON_CLAW, EARTHQUAKE, FLARE_BLITZ
 	db -1 ; end
 
@@ -8705,13 +8814,16 @@ SightseerFGroup:
 	db TRAINERTYPE_ITEM | TRAINERTYPE_EVS | TRAINERTYPE_DVS | TRAINERTYPE_PERSONALITY | TRAINERTYPE_MOVES
 	; party
 	dbp 32, ALAKAZAM, FEMALE
-		db FLAME_ORB, 84, FAKE_PERFECT_DVS, ABIL_ALAKAZAM_SYNCHRONIZE | NAT_SATK_UP_ATK_DOWN
+		db FLAME_ORB, FAKE_PERFECT_DVS, ABIL_ALAKAZAM_SYNCHRONIZE | NAT_SATK_UP_ATK_DOWN
+		ev_spread 168 SAt
 		db LIGHT_SCREEN, REFLECT, PSYCHIC_M, SHADOW_BALL
 	dbp 32, MACHAMP, FEMALE
-		db FLAME_ORB, 84, FAKE_PERFECT_DVS, ABIL_MACHAMP_GUTS | NAT_ATK_UP_SATK_DOWN
+		db FLAME_ORB, FAKE_PERFECT_DVS, ABIL_MACHAMP_GUTS | NAT_ATK_UP_SATK_DOWN
+		ev_spread 168 Atk
 		db FACADE, MACH_PUNCH, BULLET_PUNCH, ICE_PUNCH
 	dbp 32, JOLTEON, FEMALE
-		db FLAME_ORB, 84, DVS_HP_ICE, ABIL_JOLTEON_QUICK_FEET | NAT_SATK_UP_ATK_DOWN
+		db FLAME_ORB, DVS_HP_ICE, ABIL_JOLTEON_QUICK_FEET | NAT_SATK_UP_ATK_DOWN
+		ev_spread 168 SAt
 		db THUNDERBOLT, QUICK_ATTACK, HIDDEN_POWER, SHADOW_BALL
 	db -1 ; end
 
@@ -8938,10 +9050,12 @@ CooltrainerMGroup:
 	db TRAINERTYPE_ITEM | TRAINERTYPE_EVS | TRAINERTYPE_DVS | TRAINERTYPE_PERSONALITY | TRAINERTYPE_MOVES
 	; party
 	dbp 8, GEODUDE, MALE
-		db AIR_BALLOON, 12, $DD, $DD, $DD, ABIL_GEODUDE_STURDY | NAT_DEF_UP_SPE_DOWN
+		db AIR_BALLOON, $DD, $DD, $DD, ABIL_GEODUDE_STURDY | NAT_DEF_UP_SPE_DOWN
+		ev_spread 12 HP
 		db TACKLE, DEFENSE_CURL, MUD_SLAP, ROLLOUT
 	dbp 9, MAREEP, MALE
-		db AIR_BALLOON, 12, $DD, $DD, $DD, ABIL_MAREEP_STATIC | NAT_SATK_UP_SDEF_DOWN
+		db AIR_BALLOON, $DD, $DD, $DD, ABIL_MAREEP_STATIC | NAT_SATK_UP_SDEF_DOWN
+		ev_spread 12 HP
 		db TACKLE, THUNDER_WAVE, THUNDERSHOCK, MUD_SLAP
 	db -1 ; end
 
