@@ -99,15 +99,13 @@ MACRO genders
 ENDM
 
 MACRO with_each
-	for _with_each_i, 2, _NARG + 1
-		redef _with_each_str EQUS STRRPL(\1, "?", "\<_with_each_i>")
+	for _with_each_i, 1, _NARG
+		redef _with_each_str EQUS STRRPL(\<_NARG>, "?", "\<_with_each_i>")
 		{_with_each_str}
 	endr
 ENDM
 
-MACRO with_each_stat
-	with_each \1, HP, ATK, DEF, SPE, SAT, SDF
-ENDM
+DEF with_each_stat EQUS "with_each HP, ATK, DEF, SPE, SAT, SDF,"
 
 MACRO def_evs
 ; each arg: 0-3 Atk/Def/Spe/SAt/SDf
