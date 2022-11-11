@@ -291,8 +291,8 @@ endc
 	db BULLDOZE     ; URSALUNA
 	db NO_MOVE      ; SNEASLER
 	db NO_MOVE      ; OVERQWIL
-	db NO_MOVE      ; ANNIHILAPE
-	db NO_MOVE      ; CLODSIRE
+	db SHADOW_CLAW  ; ANNIHILAPE
+	db MEGAHORN     ; CLODSIRE
 	db NO_MOVE      ; DUDUNSPARCE
 	db NO_MOVE      ; FARIGIRAF
 	assert_table_length NUM_SPECIES
