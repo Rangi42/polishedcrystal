@@ -2161,9 +2161,9 @@ ShellderEvosAttacks:
 	db 13, ICICLE_SPEAR
 	db 16, PROTECT
 	db 20, LEER
-	db 25, ICE_SHARD
-	db 28, BUBBLE_BEAM ; Clamp → egg move
-	db 32, PIN_MISSILE ; Razor Shell → Cloyster move
+	db 25, BITE ; Ice Shard → new move
+	db 28, ICE_SHARD ; Clamp → Ice Shard
+	db 32, BUBBLE_BEAM ; Razor Shell → egg move
 	db 37, AURORA_BEAM
 	db 40, WHIRLPOOL
 	db 44, EXPLOSION ; Brine → RBY TM move
