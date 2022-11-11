@@ -8,6 +8,7 @@ AlphabeticalPokedexOrder:
 	dp ALAKAZAM
 	dp AMBIPOM
 	dp AMPHAROS
+	dp ANNIHILAPE
 	dp ARBOK
 	dp ARCANINE
 	dp ARIADOS
@@ -34,6 +35,7 @@ AlphabeticalPokedexOrder:
 	dp CLEFABLE
 	dp CLEFAIRY
 	dp CLEFFA
+	dp CLODSIRE
 	dp CLOYSTER
 	dp CORSOLA
 	dp CROBAT
@@ -52,6 +54,7 @@ AlphabeticalPokedexOrder:
 	dp DRAGONITE
 	dp DRATINI
 	dp DROWZEE
+	dp DUDUNSPARCE
 	dp DUGTRIO
 	dp DUNSPARCE
 	dp EEVEE
@@ -64,6 +67,7 @@ AlphabeticalPokedexOrder:
 	dp ESPEON
 	dp EXEGGCUTE
 	dp EXEGGUTOR
+	dp FARIGIRAF
 	dp FARFETCH_D
 	dp FEAROW
 	dp FERALIGATR

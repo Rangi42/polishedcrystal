@@ -127,7 +127,7 @@ AnimationExtraPointers:
 	dw ElectabuzzAnimationExtra
 	dw MagmarAnimationExtra
 	dw PinsirAnimationExtra
-	dw TaurosAnimationExtra
+	dw TaurosPlainAnimationExtra
 	dw MagikarpPlainAnimationExtra
 	dw GyaradosPlainAnimationExtra
 	dw LaprasAnimationExtra
@@ -193,7 +193,7 @@ AnimationExtraPointers:
 	dw SunkernAnimationExtra
 	dw SunfloraAnimationExtra
 	dw YanmaAnimationExtra
-	dw WooperAnimationExtra
+	dw WooperPlainAnimationExtra
 	dw QuagsireAnimationExtra
 	dw EspeonAnimationExtra
 	dw UmbreonAnimationExtra
@@ -287,6 +287,10 @@ AnimationExtraPointers:
 	dw UrsalunaAnimationExtra
 	dw SneaslerAnimationExtra
 	dw OverqwilAnimationExtra
+	dw AnnihilapeAnimationExtra
+	dw ClodsireAnimationExtra
+	dw DudunsparceTwoSegmentAnimationExtra
+	dw FarigirafAnimationExtra
 	assert_table_length NUM_SPECIES
 
 	dw UnownBAnimationExtra
@@ -350,6 +354,8 @@ AnimationExtraPointers:
 	dw MagikarpSaucyAnimationExtra
 	dw MagikarpRaindropAnimationExtra
 
+	dw DudunsparceThreeSegmentAnimationExtra
+
 	dw GyaradosRedAnimationExtra
 	dw MewtwoArmoredAnimationExtra
 	dw RattataAlolanAnimationExtra
@@ -392,5 +398,10 @@ AnimationExtraPointers:
 	dw TyphlosionHisuianAnimationExtra
 	dw QwilfishHisuianAnimationExtra
 	dw SneaselHisuianAnimationExtra
+
+	dw WooperPaldeanAnimationExtra
+	dw TaurosPaldeanAnimationExtra
+	dw TaurosPaldeanFireAnimationExtra
+	dw TaurosPaldeanWaterAnimationExtra
 
 	assert_table_length NUM_UNIQUE_POKEMON

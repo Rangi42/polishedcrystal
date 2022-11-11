@@ -55,11 +55,13 @@ NewPokedexOrder:
 	dp EKANS
 	dp ARBOK
 	dp DUNSPARCE
+	dp DUDUNSPARCE
 	dp MAREEP
 	dp FLAAFFY
 	dp AMPHAROS
 	dp WOOPER
 	dp QUAGSIRE
+	dp CLODSIRE
 	dp GASTLY
 	dp HAUNTER
 	dp GENGAR
@@ -146,6 +148,7 @@ NewPokedexOrder:
 	dp DUGTRIO
 	dp MANKEY
 	dp PRIMEAPE
+	dp ANNIHILAPE
 	dp MEOWTH
 	dp PERSIAN
 	dp PERRSERKER
@@ -159,6 +162,7 @@ NewPokedexOrder:
 	dp HITMONCHAN
 	dp HITMONTOP
 	dp GIRAFARIG
+	dp FARIGIRAF
 	dp TAUROS
 	dp MILTANK
 	dp MAGBY

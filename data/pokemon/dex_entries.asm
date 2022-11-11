@@ -1276,8 +1276,8 @@ PinsirPokedexEntry::
 	next "among roots where"
 	next "it is well hidden.@"
 
-SECTION "TaurosPokedexEntry", ROMX
-TaurosPokedexEntry::
+SECTION "TaurosPlainPokedexEntry", ROMX
+TaurosPlainPokedexEntry::
 	db "Wild Bull@"
 	db   "These violent"
 	next "#mon fight with"
@@ -1936,8 +1936,8 @@ YanmaPokedexEntry::
 	next "spot attackers and"
 	next "food right away.@"
 
-SECTION "WooperPokedexEntry", ROMX
-WooperPokedexEntry::
+SECTION "WooperPlainPokedexEntry", ROMX
+WooperPlainPokedexEntry::
 	db "Water Fish@"
 	db   "A mucous"
 	next "membrane covers"
@@ -2855,6 +2855,46 @@ OverqwilPokedexEntry::
 	next "It slurps poison"
 	next "to nourish itself.@"
 
+SECTION "AnnihilapePokedexEntry", ROMX
+AnnihilapePokedexEntry::
+	db "Unknown@"
+	db   "This is a newly"
+	next "discovered #-"
+	next "mon. It is under"
+	page "investigation."
+	next "No information"
+	next "is available.@"
+
+SECTION "ClodsirePokedexEntry", ROMX
+ClodsirePokedexEntry::
+	db "Unknown@"
+	db   "This is a newly"
+	next "discovered #-"
+	next "mon. It is under"
+	page "investigation."
+	next "No information"
+	next "is available.@"
+
+SECTION "DudunsparcePokedexEntry", ROMX
+DudunsparcePokedexEntry::
+	db "Unknown@"
+	db   "This is a newly"
+	next "discovered #-"
+	next "mon. It is under"
+	page "investigation."
+	next "No information"
+	next "is available.@"
+
+SECTION "FarigirafPokedexEntry", ROMX
+FarigirafPokedexEntry::
+	db "Unknown@"
+	db   "This is a newly"
+	next "discovered #-"
+	next "mon. It is under"
+	page "investigation."
+	next "No information"
+	next "is available.@"
+
 SECTION "GyaradosRedPokedexEntry", ROMX
 GyaradosRedPokedexEntry::
 	db "Atrocious@"
@@ -3256,3 +3296,43 @@ SneaselHisuianPokedexEntry::
 	page "These claws drip"
 	next "venom that infil-"
 	next "trates its prey.@"
+
+SECTION "WooperPaldeanPokedexEntry", ROMX
+WooperPaldeanPokedexEntry::
+	db "Unknown@"
+	db   "This is a newly"
+	next "discovered #-"
+	next "mon. It is under"
+	page "investigation."
+	next "No information"
+	next "is available.@"
+
+SECTION "TaurosPaldeanPokedexEntry", ROMX
+TaurosPaldeanPokedexEntry::
+	db "Unknown@"
+	db   "This is a newly"
+	next "discovered #-"
+	next "mon. It is under"
+	page "investigation."
+	next "No information"
+	next "is available.@"
+
+SECTION "TaurosPaldeanFirePokedexEntry", ROMX
+TaurosPaldeanFirePokedexEntry::
+	db "Unknown@"
+	db   "This is a newly"
+	next "discovered #-"
+	next "mon. It is under"
+	page "investigation."
+	next "No information"
+	next "is available.@"
+
+SECTION "TaurosPaldeanWaterPokedexEntry", ROMX
+TaurosPaldeanWaterPokedexEntry::
+	db "Unknown@"
+	db   "This is a newly"
+	next "discovered #-"
+	next "mon. It is under"
+	page "investigation."
+	next "No information"
+	next "is available.@"

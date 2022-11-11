@@ -248,8 +248,7 @@ endr
 	givepoke TYPHLOSION, HISUIAN_FORM, 50
 	loadmem wPartyMon3Shiny, SHINY_MASK
 	; ext species test
-	givepoke WYRDEER, 50
-	givepoke DITTO, 50
+	givepoke ANNIHILAPE, 50
 	loadmem wPartyMon5Personality, HIDDEN_ABILITY | QUIRKY
 	; fill pokedex
 	callasm FillPokedex

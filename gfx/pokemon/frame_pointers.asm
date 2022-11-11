@@ -127,7 +127,7 @@ FramesPointers:
 	dw ElectabuzzFrames
 	dw MagmarFrames
 	dw PinsirFrames
-	dw TaurosFrames
+	dw TaurosPlainFrames
 	dw MagikarpPlainFrames
 	dw GyaradosPlainFrames
 	dw LaprasFrames
@@ -193,7 +193,7 @@ FramesPointers:
 	dw SunkernFrames
 	dw SunfloraFrames
 	dw YanmaFrames
-	dw WooperFrames
+	dw WooperPlainFrames
 	dw QuagsireFrames
 	dw EspeonFrames
 	dw UmbreonFrames
@@ -287,6 +287,10 @@ FramesPointers:
 	dw UrsalunaFrames
 	dw SneaslerFrames
 	dw OverqwilFrames
+	dw AnnihilapeFrames
+	dw ClodsireFrames
+	dw DudunsparceTwoSegmentFrames
+	dw FarigirafFrames
 	assert_table_length NUM_SPECIES
 
 	dw UnownBFrames
@@ -350,6 +354,8 @@ FramesPointers:
 	dw MagikarpSaucyFrames
 	dw MagikarpRaindropFrames
 
+	dw DudunsparceThreeSegmentFrames
+
 	dw GyaradosRedFrames
 
 	dw MewtwoArmoredFrames
@@ -394,5 +400,10 @@ FramesPointers:
 	dw TyphlosionHisuianFrames
 	dw QwilfishHisuianFrames
 	dw SneaselHisuianFrames
+
+	dw WooperPaldeanFrames
+	dw TaurosPaldeanFrames
+	dw TaurosPaldeanFireFrames
+	dw TaurosPaldeanWaterFrames
 
 	assert_table_length NUM_UNIQUE_POKEMON

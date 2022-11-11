@@ -1252,6 +1252,8 @@ MankeyEvosAttacks:
 	db -1 ; no more level-up moves
 
 PrimeapeEvosAttacks:
+	evo_data EVOLVE_LEVEL, 56, ANNIHILAPE
+AnnihilapeEvosAttacks:
 	db -1 ; no more evolutions
 	db 1, RAGE
 	db 1, SCRATCH
@@ -3016,7 +3018,10 @@ PinsirEvosAttacks:
 	db 50, MEGAHORN ; Guillotine → new move
 	db -1 ; no more level-up moves
 
-TaurosEvosAttacks:
+TaurosPlainEvosAttacks:
+TaurosPaldeanEvosAttacks:
+TaurosPaldeanFireEvosAttacks:
+TaurosPaldeanWaterEvosAttacks:
 	db -1 ; no more evolutions
 	db 1, TACKLE
 	db 3, LEER ; Tail Whip → similar move
@@ -4443,7 +4448,7 @@ endc
 	db 62, DREAM_EATER ; event move
 	db -1 ; no more level-up moves
 
-WooperEvosAttacks:
+WooperPlainEvosAttacks:
 	evo_data EVOLVE_LEVEL, 20, QUAGSIRE
 	db -1 ; no more evolutions
 	db 1, WATER_GUN
@@ -4460,7 +4465,25 @@ WooperEvosAttacks:
 	db 47, AQUA_TAIL ; Muddy Water → event move
 	db -1 ; no more level-up moves
 
+WooperPaldeanEvosAttacks:
+	evo_data EVOLVE_LEVEL, 20, CLODSIRE
+	db -1 ; no more evolutions
+	db 1, WATER_GUN
+	db 1, LEER ; Tail Whip → similar move
+	db 5, MUD_SLAP ; Mud Sport → TM move
+	db 9, SCARY_FACE ; Mud Shot → event move
+	db 15, HEADBUTT ; Slam → tutor move
+	db 19, RECOVER ; Mud Bomb → egg move
+	db 23, AMNESIA
+	db 29, BELLY_DRUM ; Yawn → event move
+	db 33, EARTHQUAKE
+	db 37, RAIN_DANCE
+	db 43, HAZE
+	db 47, AQUA_TAIL ; Muddy Water → event move
+	db -1 ; no more level-up moves
+
 QuagsireEvosAttacks:
+ClodsireEvosAttacks:
 	db -1 ; no more evolutions
 	db 1, ANCIENTPOWER ; evolution move
 	db 1, WATER_GUN
@@ -4618,6 +4641,8 @@ WobbuffetEvosAttacks:
 	db -1 ; no more level-up moves
 
 GirafarigEvosAttacks:
+	evo_data EVOLVE_LEVEL, 50, FARIGIRAF
+FarigirafEvosAttacks:
 	db -1 ; no more evolutions
 	db 1, ASTONISH
 	db 1, TACKLE
@@ -4682,6 +4707,8 @@ ForretressEvosAttacks:
 	db -1 ; no more level-up moves
 
 DunsparceEvosAttacks:
+	evo_data EVOLVE_LEVEL, 50, DUDUNSPARCE
+DudunsparceEvosAttacks:
 	db -1 ; no more evolutions
 	db 1, RAGE
 	db 1, DEFENSE_CURL

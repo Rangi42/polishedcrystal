@@ -131,7 +131,7 @@ EvosAttacksPointers::
 	dw ElectabuzzEvosAttacks
 	dw MagmarEvosAttacks
 	dw PinsirEvosAttacks
-	dw TaurosEvosAttacks
+	dw TaurosPlainEvosAttacks
 	dw MagikarpEvosAttacks
 	dw GyaradosEvosAttacks
 	dw LaprasEvosAttacks
@@ -197,7 +197,7 @@ EvosAttacksPointers::
 	dw SunkernEvosAttacks
 	dw SunfloraEvosAttacks
 	dw YanmaEvosAttacks
-	dw WooperEvosAttacks
+	dw WooperPlainEvosAttacks
 	dw QuagsireEvosAttacks
 	dw EspeonEvosAttacks
 	dw UmbreonEvosAttacks
@@ -291,6 +291,10 @@ EvosAttacksPointers::
 	dw UrsalunaEvosAttacks
 	dw SneaslerEvosAttacks
 	dw OverqwilEvosAttacks
+	dw AnnihilapeEvosAttacks
+	dw ClodsireEvosAttacks
+	dw DudunsparceEvosAttacks
+	dw FarigirafEvosAttacks
 	assert_table_length NUM_SPECIES
 
 	dw GyaradosEvosAttacks
@@ -337,5 +341,10 @@ EvosAttacksPointers::
 	dw TyphlosionHisuianEvosAttacks
 	dw QwilfishHisuianEvosAttacks
 	dw SneaselHisuianEvosAttacks
+
+	dw WooperPaldeanEvosAttacks
+	dw TaurosPaldeanEvosAttacks
+	dw TaurosPaldeanFireEvosAttacks
+	dw TaurosPaldeanWaterEvosAttacks
 
 	assert_table_length NUM_EXT_POKEMON

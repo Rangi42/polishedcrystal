@@ -294,6 +294,10 @@ PokemonBodyData:
 	body_data  24, 2900, BIPEDAL_TAIL, BROWN  ; URSALUNA
 	body_data  13,  430, BIPEDAL_TAIL, GRAY   ; SNEASLER
 	body_data  25,  605, FINS,         BLACK  ; OVERQWIL
+	body_data  10,  100, BIPEDAL_TAIL, GRAY   ; ANNIHILAPE
+	body_data  10,  100, QUADRUPED,    BROWN  ; CLODSIRE
+	body_data  10,  100, SERPENTINE,   YELLOW ; DUDUNSPARCE
+	body_data  10,  100, QUADRUPED,    YELLOW ; FARIGIRAF
 	assert_table_length NUM_SPECIES
 
 	body_data  65, 2350, SERPENTINE,   RED    ; GYARADOS (GYARADOS_RED_FORM)
@@ -340,5 +344,10 @@ PokemonBodyData:
 	body_data  16,  698, QUADRUPED,    YELLOW ; TYPHLOSION (HISUIAN_FORM)
 	body_data   5,   39, FINS,         BLACK  ; QWILFISH (HISUIAN_FORM)
 	body_data   9,  270, BIPEDAL_TAIL, GRAY   ; SNEASEL (HISUIAN_FORM)
+
+	body_data  10,  100, HEAD_LEGS,    BROWN  ; WOOPER (PALDEAN_FORM)
+	body_data  10,  100, QUADRUPED,    BLACK  ; TAUROS (PALDEAN_FORM)
+	body_data  10,  100, QUADRUPED,    BLACK  ; TAUROS (TAUROS_PALDEAN_FIRE_FORM)
+	body_data  10,  100, QUADRUPED,    BLACK  ; TAUROS (TAUROS_PALDEAN_WATER_FORM)
 
 	assert_table_length NUM_EXT_POKEMON

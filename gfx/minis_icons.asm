@@ -1437,6 +1437,26 @@ OverqwilMini::     INCBIN "gfx/minis/overqwil.2bpp.lz"
 OverqwilMiniMask:: INCBIN "gfx/minis/overqwil_mask.1bpp.lz"
 OverqwilIcon::     INCBIN "gfx/icons/overqwil.2bpp.lz"
 
+SECTION "Annihilape Mini Icon", ROMX
+AnnihilapeMini::     INCBIN "gfx/minis/annihilape.2bpp.lz"
+AnnihilapeMiniMask:: INCBIN "gfx/minis/annihilape_mask.1bpp.lz"
+AnnihilapeIcon::     INCBIN "gfx/icons/annihilape.2bpp.lz"
+
+SECTION "Clodsire Mini Icon", ROMX
+ClodsireMini::     INCBIN "gfx/minis/clodsire.2bpp.lz"
+ClodsireMiniMask:: INCBIN "gfx/minis/clodsire_mask.1bpp.lz"
+ClodsireIcon::     INCBIN "gfx/icons/clodsire.2bpp.lz"
+
+SECTION "DudunsparceTwoSegment Mini Icon", ROMX
+DudunsparceTwoSegmentMini::     INCBIN "gfx/minis/dudunsparce_two_segment.2bpp.lz"
+DudunsparceTwoSegmentMiniMask:: INCBIN "gfx/minis/dudunsparce_two_segment_mask.1bpp.lz"
+DudunsparceTwoSegmentIcon::     INCBIN "gfx/icons/dudunsparce_two_segment.2bpp.lz"
+
+SECTION "Farigiraf Mini Icon", ROMX
+FarigirafMini::     INCBIN "gfx/minis/farigiraf.2bpp.lz"
+FarigirafMiniMask:: INCBIN "gfx/minis/farigiraf_mask.1bpp.lz"
+FarigirafIcon::     INCBIN "gfx/icons/farigiraf.2bpp.lz"
+
 SECTION "UnownB Mini Icon", ROMX
 UnownBMini::     INCBIN "gfx/minis/unown_b.2bpp.lz"
 UnownBMiniMask:: INCBIN "gfx/minis/unown_b_mask.1bpp.lz"
@@ -1571,6 +1591,11 @@ SECTION "UnownQuestion Mini Icon", ROMX
 UnownQuestionMini::     INCBIN "gfx/minis/unown_question.2bpp.lz"
 UnownQuestionMiniMask:: INCBIN "gfx/minis/unown_question_mask.1bpp.lz"
 UnownQuestionIcon::     INCBIN "gfx/icons/unown_question.2bpp.lz"
+
+SECTION "DudunsparceThreeSegment Mini Icon", ROMX
+DudunsparceThreeSegmentMini::     INCBIN "gfx/minis/dudunsparce_three_segment.2bpp.lz"
+DudunsparceThreeSegmentMiniMask:: INCBIN "gfx/minis/dudunsparce_three_segment_mask.1bpp.lz"
+DudunsparceThreeSegmentIcon::     INCBIN "gfx/icons/dudunsparce_three_segment.2bpp.lz"
 
 SECTION "MewtwoArmored Mini Icon", ROMX
 MewtwoArmoredMini::     INCBIN "gfx/minis/mewtwo_armored.2bpp.lz"
@@ -1766,3 +1791,23 @@ SECTION "SneaselHisuian Mini Icon", ROMX
 SneaselHisuianMini::     INCBIN "gfx/minis/sneasel_hisuian.2bpp.lz"
 SneaselHisuianMiniMask:: INCBIN "gfx/minis/sneasel_hisuian_mask.1bpp.lz"
 SneaselHisuianIcon::     INCBIN "gfx/icons/sneasel_hisuian.2bpp.lz"
+
+SECTION "WooperPaldean Mini Icon", ROMX
+WooperPaldeanMini::     INCBIN "gfx/minis/wooper_paldean.2bpp.lz"
+WooperPaldeanMiniMask:: INCBIN "gfx/minis/wooper_paldean_mask.1bpp.lz"
+WooperPaldeanIcon::     INCBIN "gfx/icons/wooper_paldean.2bpp.lz"
+
+SECTION "TaurosPaldean Mini Icon", ROMX
+TaurosPaldeanMini::     INCBIN "gfx/minis/tauros_paldean.2bpp.lz"
+TaurosPaldeanMiniMask:: INCBIN "gfx/minis/tauros_paldean_mask.1bpp.lz"
+TaurosPaldeanIcon::     INCBIN "gfx/icons/tauros_paldean.2bpp.lz"
+
+SECTION "TaurosPaldeanFire Mini Icon", ROMX
+TaurosPaldeanFireMini::     INCBIN "gfx/minis/tauros_paldean_fire.2bpp.lz"
+TaurosPaldeanFireMiniMask:: INCBIN "gfx/minis/tauros_paldean_fire_mask.1bpp.lz"
+TaurosPaldeanFireIcon::     INCBIN "gfx/icons/tauros_paldean_fire.2bpp.lz"
+
+SECTION "TaurosPaldeanWater Mini Icon", ROMX
+TaurosPaldeanWaterMini::     INCBIN "gfx/minis/tauros_paldean_water.2bpp.lz"
+TaurosPaldeanWaterMiniMask:: INCBIN "gfx/minis/tauros_paldean_water_mask.1bpp.lz"
+TaurosPaldeanWaterIcon::     INCBIN "gfx/icons/tauros_paldean_water.2bpp.lz"

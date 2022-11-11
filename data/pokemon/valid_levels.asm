@@ -57,7 +57,7 @@ ValidPokemonLevels: ; for Wonder Trade
 	db   1,  32 ; Psyduck
 	db  33, 100 ; Golduck
 	db   1,  27 ; Mankey
-	db  28, 100 ; Primeape
+	db  28,  55 ; Primeape
 	db   1,  19 ; Growlithe
 	db  20, 100 ; Arcanine
 	db   1,  24 ; Poliwag
@@ -203,10 +203,10 @@ ValidPokemonLevels: ; for Wonder Trade
 	db   1,  39 ; Misdreavus
 	db 255, 255 ; Unown
 	db   1, 100 ; Wobbuffet
-	db   1, 100 ; Girafarig
+	db   1,  49 ; Girafarig
 	db   1,  30 ; Pineco
 	db  31, 100 ; Forretress
-	db   1, 100 ; Dunsparce
+	db   1,  49 ; Dunsparce
 	db   1,  19 ; Gligar
 	db  20, 100 ; Steelix
 	db   1,  22 ; Snubbull
@@ -288,4 +288,8 @@ ValidPokemonLevels: ; for Wonder Trade
 	db  50, 100 ; Ursaluna
 	db  40, 100 ; Sneasler
 	db  33, 100 ; Overqwil
+	db  56, 100 ; Annihilape
+	db  20, 100 ; Clodsire
+	db  50, 100 ; Dudunsparce
+	db  50, 100 ; Farigiraf
 	assert_table_length NUM_SPECIES
