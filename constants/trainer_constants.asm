@@ -1105,32 +1105,34 @@ DEF KRIS EQU __trainer_class__
 
 	trainerclass PIERS ; 90
 
-	trainerclass VICTOR  ; 91
+	trainerclass KATY ; 91
 
-	trainerclass BILL_T ; 92
+	trainerclass VICTOR  ; 92
 
-	trainerclass YELLOW ; 93
+	trainerclass BILL_T ; 93
 
-	trainerclass WALKER ; 94
+	trainerclass YELLOW ; 94
 
-	trainerclass IMAKUNI ; 95
+	trainerclass WALKER ; 95
 
-	trainerclass LAWRENCE ; 96
+	trainerclass IMAKUNI ; 96
 
-	trainerclass REI ; 97
+	trainerclass LAWRENCE ; 97
+
+	trainerclass REI ; 98
 
 DEF NUM_TRAINER_CLASSES EQU __trainer_class__ - 1
 
-	trainerclass OMASTAR_FOSSIL ; 98
+	trainerclass OMASTAR_FOSSIL ; 99
 
-	trainerclass KABUTOPS_FOSSIL ; 99
+	trainerclass KABUTOPS_FOSSIL ; 9a
 
-	trainerclass AERODACTYL_FOSSIL ; 9a
+	trainerclass AERODACTYL_FOSSIL ; 9b
 
-	trainerclass CUBONE_ARMOR ; 9b
+	trainerclass CUBONE_ARMOR ; 9c
 
-	trainerclass METEORITE ; 9c
+	trainerclass METEORITE ; 9d
 
-	trainerclass SILHOUETTE ; 9d
+	trainerclass SILHOUETTE ; 9e
 
 DEF NUM_TRAINER_CLASS_PICS EQU __trainer_class__ - 1

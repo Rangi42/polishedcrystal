@@ -2047,6 +2047,10 @@ PiersFinalPkmnText:
 	cont "Not #mon!"
 	prompt
 
+KatyFinalPkmnText:
+	text "My last one…"
+	prompt
+
 BillFinalPkmnText:
 	text "Yeehah!"
 	line "What a battle!"

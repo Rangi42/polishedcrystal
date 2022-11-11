@@ -10788,6 +10788,10 @@ endc
 	db -1 ; end
 
 
+SECTION "KatyGroup", ROMX
+KatyGroup:
+
+
 SECTION "VictorGroup", ROMX
 VictorGroup:
 

@@ -196,8 +196,9 @@
 	const SPRITE_BEACH_GUY ; c0
 	const SPRITE_BEACH_GIRL ; c1
 	const SPRITE_PIERS ; c2
-	const SPRITE_ALOLAN_EXEGGUTOR ; c3
-	const SPRITE_SOLDIER ; c4
+	const SPRITE_KATY ; c3
+	const SPRITE_ALOLAN_EXEGGUTOR ; c4
+	const SPRITE_SOLDIER ; c5
 DEF NUM_OVERWORLD_SPRITES EQU const_value - 1
 
 ; special GetMonSprite values (see engine/overworld/overworld.asm)

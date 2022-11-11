@@ -102,6 +102,7 @@ FinalText_SinglePhrases:
 	dw ValerieFinalPkmnText
 	dw KukuiFinalPkmnText
 	dw PiersFinalPkmnText
+	dw KatyFinalPkmnText
 	dw NULL ; Victor
 	dw BillFinalPkmnText
 	dw YellowFinalPkmnText

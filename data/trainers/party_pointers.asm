@@ -147,6 +147,7 @@ TrainerGroups:
 	dba ValerieGroup
 	dba KukuiGroup
 	dba PiersGroup
+	dba KatyGroup
 	dba VictorGroup
 	dba BillGroup
 	dba YellowGroup
