@@ -151,6 +151,8 @@ AbilityNames:
 	dw SteelySpirit
 	dw PerishBody
 	dw ScreenCleaner
+	dw CudChew
+	dw ArmorTail
 	assert_table_length NUM_ABILITIES
 
 NoAbility:       rawchar "---@"
@@ -304,3 +306,5 @@ QuickDraw:       rawchar "Quick Draw@"
 SteelySpirit:    rawchar "Steely Spirit@"
 PerishBody:      rawchar "Perish Body@"
 ScreenCleaner:   rawchar "Screen Cleaner@"
+CudChew:         rawchar "Cud Chew@"
+ArmorTail:       rawchar "Armor Tail@"

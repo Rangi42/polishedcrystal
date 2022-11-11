@@ -7,7 +7,7 @@
 	db NO_ITEM, CHESTO_BERRY ; held items
 	dn GENDER_F50, HATCH_MEDIUM_FAST ; gender ratio, step cycles to hatch
 
-	abilities_for WOOPER_PALDEAN, DAMP, WATER_ABSORB, UNAWARE
+	abilities_for WOOPER_PALDEAN, POISON_POINT, WATER_ABSORB, UNAWARE
 	db GROWTH_MEDIUM_FAST ; growth rate
 	dn EGG_WATER_1, EGG_GROUND ; egg groups
 

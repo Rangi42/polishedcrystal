@@ -151,6 +151,8 @@ AbilityDescriptions:
 	dw SteelySpiritDescription
 	dw PerishBodyDescription
 	dw ScreenCleanerDescription
+	dw CudChewDescription
+	dw ArmorTailDescription
 	assert_table_length NUM_ABILITIES
 
 NoAbilityDescription:
@@ -890,4 +892,14 @@ PerishBodyDescription:
 ScreenCleanerDescription:
 	text  "Removes screens"
 	next1 "when switched in."
+	done
+
+CudChewDescription:
+	text  "Eats a Berry again"
+	next1 "after first use."
+	done
+
+ArmorTailDescription:
+	text  "Stops foes using"
+	next1 "priority moves."
 	done

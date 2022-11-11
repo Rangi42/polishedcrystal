@@ -7,7 +7,7 @@
 	db NO_ITEM, NO_ITEM ; held items
 	dn GENDER_F0, HATCH_MEDIUM_FAST ; gender ratio, step cycles to hatch
 
-	abilities_for TAUROS_PALDEAN_FIRE, INTIMIDATE, ANGER_POINT, SHEER_FORCE
+	abilities_for TAUROS_PALDEAN_FIRE, INTIMIDATE, ANGER_POINT, CUD_CHEW
 	db GROWTH_SLOW ; growth rate
 	dn EGG_GROUND, EGG_GROUND ; egg groups
 
