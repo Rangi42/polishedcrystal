@@ -1274,29 +1274,6 @@ PrimeapeEvosAttacks:
 	db 53, OUTRAGE
 	db -1 ; no more level-up moves
 
-AnnihilapeEvosAttacks:
-	db -1 ; no more evolutions
-	db 1, SHADOW_CLAW ; Shadow Punch → similar move ; evolution move
-	db 1, RAGE
-	db 1, SCRATCH
-	db 1, LOW_KICK
-	db 1, LEER
-	db 1, FOCUS_ENERGY
-	db 5, FURY_STRIKES ; Fury Swipes → similar move
-	db 8, KARATE_CHOP
-	db 12, PURSUIT
-	db 15, SEISMIC_TOSS
-	db 19, SWAGGER
-	db 22, CROSS_CHOP
-	db 26, REVERSAL ; Assurance → egg move
-	db 30, FEINT_ATTACK ; Punishment → new move
-	db 35, THRASH
-	db 39, CLOSE_COMBAT
-	db 44, SCREECH
-	db 48, GUNK_SHOT ; Stomping Tantrum → HGSS tutor move
-	db 53, OUTRAGE
-	db -1 ; no more level-up moves
-
 GrowlithePlainEvosAttacks:
 	evo_data EVOLVE_ITEM, FIRE_STONE, ARCANINE
 	db -1 ; no more evolutions
@@ -4578,23 +4555,6 @@ QuagsireEvosAttacks:
 	db 53, AQUA_TAIL ; Muddy Water → event move
 	db -1 ; no more level-up moves
 
-ClodsireEvosAttacks:
-	db -1 ; no more evolutions
-	db 1, MEGAHORN ; evolution move
-	db 1, MUD_SLAP ; Mud Shot → similar move
-	db 1, LEER ; Tail Whip → similar move
-	db 5, TACKLE
-	db 9, POISON_STING ; Poison Tail → similar move
-	db 15, HEADBUTT ; Slam → tutor move
-	db 19, RECOVER ; Mud Bomb → egg move
-	db 24, AMNESIA
-	db 31, BELLY_DRUM ; Yawn → event move
-	db 36, EARTHQUAKE
-	db 41, POISON_JAB
-	db 48, TOXIC_SPIKES
-	db 53, GUNK_SHOT ; Sludge Wave → similar move
-	db -1 ; no more level-up moves
-
 EspeonEvosAttacks:
 	db -1 ; no more evolutions
 	db 1, GROWL
@@ -4827,34 +4787,6 @@ DunsparceEvosAttacks:
 	db 46, HEX ; Dragon Rush → egg move
 	db 48, ENDURE
 	db 51, REVERSAL ; Flail → similar move
-	db -1 ; no more level-up moves
-
-DudunsparceEvosAttacks:
-	db -1 ; no more evolutions
-	db 1, RAGE
-	db 1, DEFENSE_CURL
-	db 3, ROLLOUT
-	db 6, ASTONISH ; Spite → egg move
-	db 8, PURSUIT
-	db 11, SCREECH
-	db 13, MUD_SLAP
-	db 16, FURY_STRIKES ; Yawn → event move (Fury Attack)
-	db 18, ANCIENTPOWER
-	db 21, BODY_SLAM
-	db 23, DRAGON_RAGE ; Drill Run → new move
-	db 26, ROOST
-	db 28, TAKE_DOWN
-	db 31, DRAGON_DANCE ; Coil → new move
-	db 33, DIG
-	db 36, GLARE
-	db 38, DOUBLE_EDGE
-	db 41, EARTHQUAKE ; Endeavor → TM move
-	db 43, AIR_SLASH
-	db 46, HEX ; Dragon Rush → egg move
-	db 48, ENDURE
-	db 51, REVERSAL ; Flail → similar move
-	db 53, HURRICANE
-	db 56, HYPER_VOICE ; Boomburst → similar move
 	db -1 ; no more level-up moves
 
 GligarEvosAttacks:
@@ -6508,6 +6440,74 @@ OverqwilEvosAttacks:
 	db 53, DESTINY_BOND
 	db 57, EXPLOSION ; Self-Destruct → similar move
 	db 60, DOUBLE_EDGE ; Fell Stinger → event move
+	db -1 ; no more level-up moves
+
+DudunsparceEvosAttacks:
+	db -1 ; no more evolutions
+	db 1, RAGE
+	db 1, DEFENSE_CURL
+	db 3, ROLLOUT
+	db 6, ASTONISH ; Spite → egg move
+	db 8, PURSUIT
+	db 11, SCREECH
+	db 13, MUD_SLAP
+	db 16, FURY_STRIKES ; Yawn → event move (Fury Attack)
+	db 18, ANCIENTPOWER
+	db 21, BODY_SLAM
+	db 23, DRAGON_RAGE ; Drill Run → new move
+	db 26, ROOST
+	db 28, TAKE_DOWN
+	db 31, DRAGON_DANCE ; Coil → new move
+	db 33, DIG
+	db 36, GLARE
+	db 38, DOUBLE_EDGE
+	db 41, EARTHQUAKE ; Endeavor → TM move
+	db 43, AIR_SLASH
+	db 46, HEX ; Dragon Rush → egg move
+	db 48, ENDURE
+	db 51, REVERSAL ; Flail → similar move
+	db 53, HURRICANE
+	db 56, HYPER_VOICE ; Boomburst → similar move
+	db -1 ; no more level-up moves
+
+ClodsireEvosAttacks:
+	db -1 ; no more evolutions
+	db 1, MEGAHORN ; evolution move
+	db 1, MUD_SLAP ; Mud Shot → similar move
+	db 1, LEER ; Tail Whip → similar move
+	db 5, TACKLE
+	db 9, POISON_STING ; Poison Tail → similar move
+	db 15, HEADBUTT ; Slam → tutor move
+	db 19, RECOVER ; Mud Bomb → egg move
+	db 24, AMNESIA
+	db 31, BELLY_DRUM ; Yawn → event move
+	db 36, EARTHQUAKE
+	db 41, POISON_JAB
+	db 48, TOXIC_SPIKES
+	db 53, GUNK_SHOT ; Sludge Wave → similar move
+	db -1 ; no more level-up moves
+
+AnnihilapeEvosAttacks:
+	db -1 ; no more evolutions
+	db 1, SHADOW_CLAW ; Shadow Punch → similar move ; evolution move
+	db 1, RAGE
+	db 1, SCRATCH
+	db 1, LOW_KICK
+	db 1, LEER
+	db 1, FOCUS_ENERGY
+	db 5, FURY_STRIKES ; Fury Swipes → similar move
+	db 8, KARATE_CHOP
+	db 12, PURSUIT
+	db 15, SEISMIC_TOSS
+	db 19, SWAGGER
+	db 22, CROSS_CHOP
+	db 26, REVERSAL ; Assurance → egg move
+	db 30, FEINT_ATTACK ; Punishment → new move
+	db 35, THRASH
+	db 39, CLOSE_COMBAT
+	db 44, SCREECH
+	db 48, GUNK_SHOT ; Stomping Tantrum → HGSS tutor move
+	db 53, OUTRAGE
 	db -1 ; no more level-up moves
 
 EggEvosAttacks::

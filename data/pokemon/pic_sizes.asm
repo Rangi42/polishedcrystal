@@ -306,10 +306,10 @@ INCLUDE "gfx/pokemon/kleavor/front.dimensions"
 INCLUDE "gfx/pokemon/ursaluna/front.dimensions"
 INCLUDE "gfx/pokemon/sneasler/front.dimensions"
 INCLUDE "gfx/pokemon/overqwil/front.dimensions"
-INCLUDE "gfx/pokemon/annihilape/front.dimensions"
-INCLUDE "gfx/pokemon/clodsire/front.dimensions"
 INCLUDE "gfx/pokemon/dudunsparce_two_segment/front.dimensions"
 INCLUDE "gfx/pokemon/farigiraf/front.dimensions"
+INCLUDE "gfx/pokemon/clodsire/front.dimensions"
+INCLUDE "gfx/pokemon/annihilape/front.dimensions"
 	assert_list_length NUM_SPECIES
 
 INCLUDE "gfx/pokemon/unown_b/front.dimensions"

@@ -126,9 +126,9 @@ KleavorFrames:    INCLUDE "gfx/pokemon/kleavor/frames.asm"
 UrsalunaFrames:   INCLUDE "gfx/pokemon/ursaluna/frames.asm"
 SneaslerFrames:   INCLUDE "gfx/pokemon/sneasler/frames.asm"
 OverqwilFrames:   INCLUDE "gfx/pokemon/overqwil/frames.asm"
-AnnihilapeFrames: INCLUDE "gfx/pokemon/annihilape/frames.asm"
-ClodsireFrames:   INCLUDE "gfx/pokemon/clodsire/frames.asm"
 FarigirafFrames:  INCLUDE "gfx/pokemon/farigiraf/frames.asm"
+ClodsireFrames:   INCLUDE "gfx/pokemon/clodsire/frames.asm"
+AnnihilapeFrames: INCLUDE "gfx/pokemon/annihilape/frames.asm"
 
 EggFrames:        INCLUDE "gfx/pokemon/egg/frames.asm"
 

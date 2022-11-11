@@ -1437,16 +1437,6 @@ OverqwilMini::     INCBIN "gfx/minis/overqwil.2bpp.lz"
 OverqwilMiniMask:: INCBIN "gfx/minis/overqwil_mask.1bpp.lz"
 OverqwilIcon::     INCBIN "gfx/icons/overqwil.2bpp.lz"
 
-SECTION "Annihilape Mini Icon", ROMX
-AnnihilapeMini::     INCBIN "gfx/minis/annihilape.2bpp.lz"
-AnnihilapeMiniMask:: INCBIN "gfx/minis/annihilape_mask.1bpp.lz"
-AnnihilapeIcon::     INCBIN "gfx/icons/annihilape.2bpp.lz"
-
-SECTION "Clodsire Mini Icon", ROMX
-ClodsireMini::     INCBIN "gfx/minis/clodsire.2bpp.lz"
-ClodsireMiniMask:: INCBIN "gfx/minis/clodsire_mask.1bpp.lz"
-ClodsireIcon::     INCBIN "gfx/icons/clodsire.2bpp.lz"
-
 SECTION "DudunsparceTwoSegment Mini Icon", ROMX
 DudunsparceTwoSegmentMini::     INCBIN "gfx/minis/dudunsparce_two_segment.2bpp.lz"
 DudunsparceTwoSegmentMiniMask:: INCBIN "gfx/minis/dudunsparce_two_segment_mask.1bpp.lz"
@@ -1456,6 +1446,16 @@ SECTION "Farigiraf Mini Icon", ROMX
 FarigirafMini::     INCBIN "gfx/minis/farigiraf.2bpp.lz"
 FarigirafMiniMask:: INCBIN "gfx/minis/farigiraf_mask.1bpp.lz"
 FarigirafIcon::     INCBIN "gfx/icons/farigiraf.2bpp.lz"
+
+SECTION "Clodsire Mini Icon", ROMX
+ClodsireMini::     INCBIN "gfx/minis/clodsire.2bpp.lz"
+ClodsireMiniMask:: INCBIN "gfx/minis/clodsire_mask.1bpp.lz"
+ClodsireIcon::     INCBIN "gfx/icons/clodsire.2bpp.lz"
+
+SECTION "Annihilape Mini Icon", ROMX
+AnnihilapeMini::     INCBIN "gfx/minis/annihilape.2bpp.lz"
+AnnihilapeMiniMask:: INCBIN "gfx/minis/annihilape_mask.1bpp.lz"
+AnnihilapeIcon::     INCBIN "gfx/icons/annihilape.2bpp.lz"
 
 SECTION "UnownB Mini Icon", ROMX
 UnownBMini::     INCBIN "gfx/minis/unown_b.2bpp.lz"

@@ -249,7 +249,7 @@ endr
 	loadmem wPartyMon3Shiny, SHINY_MASK
 	; ext species test
 	givepoke ANNIHILAPE, 50
-	loadmem wPartyMon5Personality, HIDDEN_ABILITY | QUIRKY
+	givepoke DUDUNSPARCE, DUDUNSPARCE_THREE_SEGMENT_FORM, 50
 	; fill pokedex
 	callasm FillPokedex
 	; intro events

@@ -309,10 +309,10 @@
 	const URSALUNA   ; 11d
 	const SNEASLER   ; 11e
 	const OVERQWIL   ; 11f
-	const ANNIHILAPE ; 120
-	const CLODSIRE   ; 121
-	const DUDUNSPARCE ; 122
-	const FARIGIRAF  ; 123
+	const DUDUNSPARCE ; 120
+	const FARIGIRAF  ; 121
+	const CLODSIRE   ; 122
+	const ANNIHILAPE ; 123
 DEF NUM_SPECIES EQU const_value - 1 ; 123
 DEF NUM_POKEMON EQU NUM_SPECIES - (2 * HIGH(NUM_SPECIES)) ; 121
 

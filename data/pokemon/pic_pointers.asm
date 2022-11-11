@@ -291,10 +291,10 @@ PokemonPicPointers::
 	pics Ursaluna
 	pics Sneasler
 	pics Overqwil
-	pics Annihilape
-	pics Clodsire
 	pics DudunsparceTwoSegment
 	pics Farigiraf
+	pics Clodsire
+	pics Annihilape
 	assert_table_length NUM_SPECIES
 
 	pics UnownB

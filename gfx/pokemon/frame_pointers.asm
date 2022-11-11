@@ -287,10 +287,10 @@ FramesPointers:
 	dw UrsalunaFrames
 	dw SneaslerFrames
 	dw OverqwilFrames
-	dw AnnihilapeFrames
-	dw ClodsireFrames
 	dw DudunsparceTwoSegmentFrames
 	dw FarigirafFrames
+	dw ClodsireFrames
+	dw AnnihilapeFrames
 	assert_table_length NUM_SPECIES
 
 	dw UnownBFrames

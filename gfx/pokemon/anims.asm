@@ -238,9 +238,9 @@ KleavorAnimation:    INCLUDE "gfx/pokemon/kleavor/anim.asm"
 UrsalunaAnimation:   INCLUDE "gfx/pokemon/ursaluna/anim.asm"
 SneaslerAnimation:   INCLUDE "gfx/pokemon/sneasler/anim.asm"
 OverqwilAnimation:   INCLUDE "gfx/pokemon/overqwil/anim.asm"
-AnnihilapeAnimation: INCLUDE "gfx/pokemon/annihilape/anim.asm"
-ClodsireAnimation:   INCLUDE "gfx/pokemon/clodsire/anim.asm"
 FarigirafAnimation:  INCLUDE "gfx/pokemon/farigiraf/anim.asm"
+ClodsireAnimation:   INCLUDE "gfx/pokemon/clodsire/anim.asm"
+AnnihilapeAnimation: INCLUDE "gfx/pokemon/annihilape/anim.asm"
 
 EggAnimation:        INCLUDE "gfx/pokemon/egg/anim.asm"
 

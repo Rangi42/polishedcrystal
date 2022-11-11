@@ -2855,8 +2855,18 @@ OverqwilPokedexEntry::
 	next "It slurps poison"
 	next "to nourish itself.@"
 
-SECTION "AnnihilapePokedexEntry", ROMX
-AnnihilapePokedexEntry::
+SECTION "DudunsparcePokedexEntry", ROMX
+DudunsparcePokedexEntry::
+	db "Unknown@"
+	db   "This is a newly"
+	next "discovered #-"
+	next "mon. It is under"
+	page "investigation."
+	next "No information"
+	next "is available.@"
+
+SECTION "FarigirafPokedexEntry", ROMX
+FarigirafPokedexEntry::
 	db "Unknown@"
 	db   "This is a newly"
 	next "discovered #-"
@@ -2875,18 +2885,8 @@ ClodsirePokedexEntry::
 	next "No information"
 	next "is available.@"
 
-SECTION "DudunsparcePokedexEntry", ROMX
-DudunsparcePokedexEntry::
-	db "Unknown@"
-	db   "This is a newly"
-	next "discovered #-"
-	next "mon. It is under"
-	page "investigation."
-	next "No information"
-	next "is available.@"
-
-SECTION "FarigirafPokedexEntry", ROMX
-FarigirafPokedexEntry::
+SECTION "AnnihilapePokedexEntry", ROMX
+AnnihilapePokedexEntry::
 	db "Unknown@"
 	db   "This is a newly"
 	next "discovered #-"

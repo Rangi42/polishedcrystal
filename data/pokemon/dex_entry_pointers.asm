@@ -288,10 +288,10 @@ PokedexDataPointerTable:
 	dba UrsalunaPokedexEntry
 	dba SneaslerPokedexEntry
 	dba OverqwilPokedexEntry
-	dba AnnihilapePokedexEntry
-	dba ClodsirePokedexEntry
 	dba DudunsparcePokedexEntry
 	dba FarigirafPokedexEntry
+	dba ClodsirePokedexEntry
+	dba AnnihilapePokedexEntry
 	assert_table_length NUM_SPECIES
 
 	dba GyaradosRedPokedexEntry

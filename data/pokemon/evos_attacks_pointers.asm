@@ -291,10 +291,10 @@ EvosAttacksPointers::
 	dw UrsalunaEvosAttacks
 	dw SneaslerEvosAttacks
 	dw OverqwilEvosAttacks
-	dw AnnihilapeEvosAttacks
-	dw ClodsireEvosAttacks
 	dw DudunsparceEvosAttacks
 	dw FarigirafEvosAttacks
+	dw ClodsireEvosAttacks
+	dw AnnihilapeEvosAttacks
 	assert_table_length NUM_SPECIES
 
 	dw GyaradosEvosAttacks

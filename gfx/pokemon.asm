@@ -1173,12 +1173,6 @@ SECTION "MagikarpRaindrop Pics", ROMX
 MagikarpRaindropFrontpic: INCBIN "gfx/pokemon/magikarp_raindrop/front.animated.2bpp.lz"
 MagikarpRaindropBackpic:  INCBIN "gfx/pokemon/magikarp_raindrop/back.2bpp.lz"
 
-SECTION "Dudunsparce Pics", ROMX
-DudunsparceTwoSegmentFrontpic:   INCBIN "gfx/pokemon/dudunsparce_two_segment/front.animated.2bpp.lz"
-DudunsparceThreeSegmentFrontpic: INCBIN "gfx/pokemon/dudunsparce_three_segment/front.animated.2bpp.lz"
-DudunsparceTwoSegmentBackpic:
-DudunsparceThreeSegmentBackpic: INCBIN "gfx/pokemon/dudunsparce/back.2bpp.lz"
-
 SECTION "MewtwoPlain Pics", ROMX
 MewtwoPlainFrontpic: INCBIN "gfx/pokemon/mewtwo_plain/front.animated.2bpp.lz"
 MewtwoPlainBackpic:  INCBIN "gfx/pokemon/mewtwo_plain/back.2bpp.lz"
@@ -1501,17 +1495,23 @@ SECTION "Overqwil Pics", ROMX
 OverqwilFrontpic: INCBIN "gfx/pokemon/overqwil/front.animated.2bpp.lz"
 OverqwilBackpic:  INCBIN "gfx/pokemon/overqwil/back.2bpp.lz"
 
-SECTION "Annihilape Pics", ROMX
-AnnihilapeFrontpic: INCBIN "gfx/pokemon/annihilape/front.animated.2bpp.lz"
-AnnihilapeBackpic:  INCBIN "gfx/pokemon/annihilape/back.2bpp.lz"
+SECTION "Dudunsparce Pics", ROMX
+DudunsparceTwoSegmentFrontpic:   INCBIN "gfx/pokemon/dudunsparce_two_segment/front.animated.2bpp.lz"
+DudunsparceThreeSegmentFrontpic: INCBIN "gfx/pokemon/dudunsparce_three_segment/front.animated.2bpp.lz"
+DudunsparceTwoSegmentBackpic:
+DudunsparceThreeSegmentBackpic: INCBIN "gfx/pokemon/dudunsparce/back.2bpp.lz"
+
+SECTION "Farigiraf Pics", ROMX
+FarigirafFrontpic: INCBIN "gfx/pokemon/farigiraf/front.animated.2bpp.lz"
+FarigirafBackpic:  INCBIN "gfx/pokemon/farigiraf/back.2bpp.lz"
 
 SECTION "Clodsire Pics", ROMX
 ClodsireFrontpic: INCBIN "gfx/pokemon/clodsire/front.animated.2bpp.lz"
 ClodsireBackpic:  INCBIN "gfx/pokemon/clodsire/back.2bpp.lz"
 
-SECTION "Farigiraf Pics", ROMX
-FarigirafFrontpic: INCBIN "gfx/pokemon/farigiraf/front.animated.2bpp.lz"
-FarigirafBackpic:  INCBIN "gfx/pokemon/farigiraf/back.2bpp.lz"
+SECTION "Annihilape Pics", ROMX
+AnnihilapeFrontpic: INCBIN "gfx/pokemon/annihilape/front.animated.2bpp.lz"
+AnnihilapeBackpic:  INCBIN "gfx/pokemon/annihilape/back.2bpp.lz"
 
 SECTION "SneaselPlain Pics", ROMX
 SneaselPlainFrontpic: INCBIN "gfx/pokemon/sneasel_plain/front.animated.2bpp.lz"

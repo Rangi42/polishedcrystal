@@ -291,10 +291,10 @@ MiniIconPointers:
 	mini_icon Ursaluna
 	mini_icon Sneasler
 	mini_icon Overqwil
-	mini_icon Annihilape
-	mini_icon Clodsire
 	mini_icon DudunsparceTwoSegment
 	mini_icon Farigiraf
+	mini_icon Clodsire
+	mini_icon Annihilape
 	assert_table_length NUM_SPECIES
 
 	mini_icon UnownB

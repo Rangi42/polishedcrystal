@@ -287,10 +287,10 @@ FootprintPointers::
 	dw UrsalunaFootprint
 	dw SneaslerFootprint
 	dw OverqwilFootprint
-	dw AnnihilapeFootprint
-	dw ClodsireFootprint
 	dw DudunsparceFootprint
 	dw FarigirafFootprint
+	dw ClodsireFootprint
+	dw AnnihilapeFootprint
 	assert_table_length NUM_SPECIES
 
 	dw GyaradosFootprint

@@ -294,10 +294,10 @@ PokemonBodyData:
 	body_data  24, 2900, BIPEDAL_TAIL, BROWN  ; URSALUNA
 	body_data  13,  430, BIPEDAL_TAIL, GRAY   ; SNEASLER
 	body_data  25,  605, FINS,         BLACK  ; OVERQWIL
-	body_data  10,  100, BIPEDAL_TAIL, GRAY   ; ANNIHILAPE
-	body_data  10,  100, QUADRUPED,    BROWN  ; CLODSIRE
 	body_data  10,  100, SERPENTINE,   YELLOW ; DUDUNSPARCE
 	body_data  10,  100, QUADRUPED,    YELLOW ; FARIGIRAF
+	body_data  10,  100, QUADRUPED,    BROWN  ; CLODSIRE
+	body_data  10,  100, BIPEDAL_TAIL, GRAY   ; ANNIHILAPE
 	assert_table_length NUM_SPECIES
 
 	body_data  65, 2350, SERPENTINE,   RED    ; GYARADOS (GYARADOS_RED_FORM)

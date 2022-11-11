@@ -287,10 +287,10 @@ BitmasksPointers:
 	dw UrsalunaBitmasks
 	dw SneaslerBitmasks
 	dw OverqwilBitmasks
-	dw AnnihilapeBitmasks
-	dw ClodsireBitmasks
 	dw DudunsparceTwoSegmentBitmasks
 	dw FarigirafBitmasks
+	dw ClodsireBitmasks
+	dw AnnihilapeBitmasks
 	assert_table_length NUM_SPECIES
 
 	dw UnownBBitmasks

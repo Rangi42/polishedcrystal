@@ -291,10 +291,10 @@ OverworldMonIconColors::
 	iconpal BROWN, RED ; URSALUNA
 	iconpal RED, BROWN ; SNEASLER
 	iconpal PURPLE, BLUE ; OVERQWIL
-	iconpal GRAY, PURPLE ; ANNIHILAPE
-	iconpal BROWN, BLUE ; CLODSIRE
 	iconpal BLUE, RED ; DUDUNSPARCE
 	iconpal BROWN, BLUE ; FARIGIRAF
+	iconpal BROWN, BLUE ; CLODSIRE
+	iconpal GRAY, PURPLE ; ANNIHILAPE
 	assert_table_length NUM_SPECIES
 
 rept NUM_UNOWN - 1

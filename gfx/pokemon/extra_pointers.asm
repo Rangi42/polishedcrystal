@@ -287,10 +287,10 @@ AnimationExtraPointers:
 	dw UrsalunaAnimationExtra
 	dw SneaslerAnimationExtra
 	dw OverqwilAnimationExtra
-	dw AnnihilapeAnimationExtra
-	dw ClodsireAnimationExtra
 	dw DudunsparceTwoSegmentAnimationExtra
 	dw FarigirafAnimationExtra
+	dw ClodsireAnimationExtra
+	dw AnnihilapeAnimationExtra
 	assert_table_length NUM_SPECIES
 
 	dw UnownBAnimationExtra

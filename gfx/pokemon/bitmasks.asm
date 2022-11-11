@@ -237,9 +237,9 @@ KleavorBitmasks:    INCLUDE "gfx/pokemon/kleavor/bitmask.asm"
 UrsalunaBitmasks:   INCLUDE "gfx/pokemon/ursaluna/bitmask.asm"
 SneaslerBitmasks:   INCLUDE "gfx/pokemon/sneasler/bitmask.asm"
 OverqwilBitmasks:   INCLUDE "gfx/pokemon/overqwil/bitmask.asm"
-AnnihilapeBitmasks: INCLUDE "gfx/pokemon/annihilape/bitmask.asm"
-ClodsireBitmasks:   INCLUDE "gfx/pokemon/clodsire/bitmask.asm"
 FarigirafBitmasks:  INCLUDE "gfx/pokemon/farigiraf/bitmask.asm"
+ClodsireBitmasks:   INCLUDE "gfx/pokemon/clodsire/bitmask.asm"
+AnnihilapeBitmasks: INCLUDE "gfx/pokemon/annihilape/bitmask.asm"
 
 EggBitmasks:        INCLUDE "gfx/pokemon/egg/bitmask.asm"
 

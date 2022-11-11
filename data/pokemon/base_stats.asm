@@ -322,10 +322,10 @@ INCLUDE "data/pokemon/base_stats/kleavor.asm"
 INCLUDE "data/pokemon/base_stats/ursaluna.asm"
 INCLUDE "data/pokemon/base_stats/sneasler.asm"
 INCLUDE "data/pokemon/base_stats/overqwil.asm"
-INCLUDE "data/pokemon/base_stats/annihilape.asm"
-INCLUDE "data/pokemon/base_stats/clodsire.asm"
 INCLUDE "data/pokemon/base_stats/dudunsparce.asm"
 INCLUDE "data/pokemon/base_stats/farigiraf.asm"
+INCLUDE "data/pokemon/base_stats/clodsire.asm"
+INCLUDE "data/pokemon/base_stats/annihilape.asm"
 
 INCLUDE "data/pokemon/base_stats/gyarados.asm" ; red
 

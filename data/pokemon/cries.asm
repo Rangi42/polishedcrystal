@@ -293,8 +293,8 @@ PokemonCries::
 	mon_cry CRY_TEDDIURSA,   $640,  $0d8 ; Ursaluna
 	mon_cry CRY_WOOPER,      $053,  $0af ; Sneasler
 	mon_cry CRY_SLOWKING,    $160,  $0e0 ; Overqwil
-	mon_cry CRY_NIDOQUEEN,   $0af,  $0c0 ; Annihilape
-	mon_cry CRY_WOOPER,     -$0c6,  $140 ; Clodsire
 	mon_cry CRY_DUNSPARCE,   $1c4,  $100 ; Dudunsparce
 	mon_cry CRY_GIRAFARIG,   $041,  $200 ; Farigiraf
+	mon_cry CRY_WOOPER,     -$0c6,  $140 ; Clodsire
+	mon_cry CRY_NIDOQUEEN,   $0af,  $0c0 ; Annihilape
 	assert_table_length NUM_SPECIES
