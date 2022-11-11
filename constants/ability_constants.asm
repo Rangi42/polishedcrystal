@@ -152,5 +152,6 @@
 	const PERISH_BODY
 	const SCREEN_CLEANER
 	const CUD_CHEW
+	const SHARPNESS
 	const ARMOR_TAIL
 DEF NUM_ABILITIES EQU const_value

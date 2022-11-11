@@ -152,6 +152,7 @@ AbilityDescriptions:
 	dw PerishBodyDescription
 	dw ScreenCleanerDescription
 	dw CudChewDescription
+	dw SharpnessDescription
 	dw ArmorTailDescription
 	assert_table_length NUM_ABILITIES
 
@@ -897,6 +898,11 @@ ScreenCleanerDescription:
 CudChewDescription:
 	text  "Eats a Berry again"
 	next1 "after first use."
+	done
+
+SharpnessDescription:
+	text  "Boosts power of"
+	next1 "slicing moves."
 	done
 
 ArmorTailDescription:

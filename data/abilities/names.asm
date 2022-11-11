@@ -153,6 +153,7 @@ AbilityNames:
 	dw ScreenCleaner
 	dw CudChew
 	dw ArmorTail
+	dw Sharpness
 	assert_table_length NUM_ABILITIES
 
 NoAbility:       rawchar "---@"
@@ -308,3 +309,4 @@ PerishBody:      rawchar "Perish Body@"
 ScreenCleaner:   rawchar "Screen Cleaner@"
 CudChew:         rawchar "Cud Chew@"
 ArmorTail:       rawchar "Armor Tail@"
+Sharpness:       rawchar "Sharpness@"
