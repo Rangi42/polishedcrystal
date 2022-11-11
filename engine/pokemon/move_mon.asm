@@ -916,7 +916,7 @@ FixPlayerEVsAndStats:
 	ret z
 	dec a
 	ld [wCurPartyMon], a
-	farcall UpdatePkmnStats
+	call UpdatePkmnStats
 	jr .loop
 
 UpdatePkmnStats:
