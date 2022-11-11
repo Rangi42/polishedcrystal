@@ -33,7 +33,7 @@ BattleTowerTrainers:
 	rawchar "Rajan@@@@@", PICNICKER
 	rawchar "Diaz@@@@@@", PICNICKER
 	rawchar "Mozi@@@@@@", SAGE
-	rawchar "Adrián@@@@", WAITER
+	rawchar "Adrian@@@@", WAITER
 	rawchar "Tomoyo@@@@", COSPLAYER
 	rawchar "Ebony@@@@@", COOLTRAINERF
 	rawchar "Pirsig@@@@", SAGE
@@ -58,7 +58,7 @@ BattleTowerTrainers:
 	rawchar "Swartz@@@@", VETERANM
 	rawchar "Cobb@@@@@@", SCHOOLBOY
 	rawchar "Yufune@@@@", BLACKBELT_T
-	rawchar "Mónica@@@@", WAITRESS
+	rawchar "Monica@@@@", WAITRESS
 	rawchar "Daniel@@@@", TAMER
 	rawchar "Toshi@@@@@", BLACKBELT_T
 	rawchar "Charlie@@@", JUGGLER
