@@ -7,7 +7,7 @@
 	db NO_ITEM, CELL_BATTERY ; held items
 	dn GENDER_UNKNOWN, HATCH_MEDIUM_FAST ; gender ratio, step cycles to hatch
 
-	abilities_for VOLTORB, SOUNDPROOF, STATIC, AFTERMATH
+	abilities_for VOLTORB_HISUIAN, SOUNDPROOF, STATIC, AFTERMATH
 	db GROWTH_MEDIUM_FAST ; growth rate
 	dn EGG_MINERAL, EGG_MINERAL ; egg groups
 

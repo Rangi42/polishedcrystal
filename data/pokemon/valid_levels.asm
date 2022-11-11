@@ -211,13 +211,13 @@ ValidPokemonLevels: ; for Wonder Trade
 	db  20, 100 ; Steelix
 	db   1,  22 ; Snubbull
 	db  23, 100 ; Granbull
-	db   1, 100 ; Qwilfish
+	db   1,  32 ; Qwilfish
 	db  20, 100 ; Scizor
 	db   1, 100 ; Shuckle
 	db  10, 100 ; Heracross
 	db   1,  39 ; Sneasel
 	db   1,  29 ; Teddiursa
-	db  30, 100 ; Ursaring
+	db  30,  49 ; Ursaring
 	db   1,  37 ; Slugma
 	db  38, 100 ; Magcargo
 	db   1,  32 ; Swinub
@@ -234,7 +234,7 @@ ValidPokemonLevels: ; for Wonder Trade
 	db   1,  24 ; Phanpy
 	db  25, 100 ; Donphan
 	db  20,  39 ; Porygon2
-	db   1, 100 ; Stantler
+	db   1,  29 ; Stantler
 	db   1, 100 ; Smeargle
 	db   1,  19 ; Tyrogue
 	db  20, 100 ; Hitmontop
@@ -283,9 +283,9 @@ ValidPokemonLevels: ; for Wonder Trade
 	db  38, 100 ; Cursola
 	db  20, 100 ; Sirfetch'd
 	db  42, 100 ; Mr. Rime
-	db 255, 255 ; Wyrdeer
-	db 255, 255 ; Kleavor
-	db 255, 255 ; Ursaluna
-	db 255, 255 ; Sneasler
-	db 255, 255 ; Overqwil
+	db  30, 100 ; Wyrdeer
+	db  20, 100 ; Kleavor
+	db  50, 100 ; Ursaluna
+	db  40, 100 ; Sneasler
+	db  33, 100 ; Overqwil
 	assert_table_length NUM_SPECIES
