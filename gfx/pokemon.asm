@@ -1173,13 +1173,11 @@ SECTION "MagikarpRaindrop Pics", ROMX
 MagikarpRaindropFrontpic: INCBIN "gfx/pokemon/magikarp_raindrop/front.animated.2bpp.lz"
 MagikarpRaindropBackpic:  INCBIN "gfx/pokemon/magikarp_raindrop/back.2bpp.lz"
 
-SECTION "DudunsparceTwoSegment Pics", ROMX
-DudunsparceTwoSegmentFrontpic: INCBIN "gfx/pokemon/dudunsparce_two_segment/front.animated.2bpp.lz"
-DudunsparceTwoSegmentBackpic:  INCBIN "gfx/pokemon/dudunsparce_two_segment/back.2bpp.lz"
-
-SECTION "DudunsparceThreeSegment Pics", ROMX
+SECTION "Dudunsparce Pics", ROMX
+DudunsparceTwoSegmentFrontpic:   INCBIN "gfx/pokemon/dudunsparce_two_segment/front.animated.2bpp.lz"
 DudunsparceThreeSegmentFrontpic: INCBIN "gfx/pokemon/dudunsparce_three_segment/front.animated.2bpp.lz"
-DudunsparceThreeSegmentBackpic:  INCBIN "gfx/pokemon/dudunsparce_three_segment/back.2bpp.lz"
+DudunsparceTwoSegmentBackpic:
+DudunsparceThreeSegmentBackpic: INCBIN "gfx/pokemon/dudunsparce/back.2bpp.lz"
 
 SECTION "MewtwoPlain Pics", ROMX
 MewtwoPlainFrontpic: INCBIN "gfx/pokemon/mewtwo_plain/front.animated.2bpp.lz"
