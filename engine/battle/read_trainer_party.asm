@@ -431,9 +431,58 @@ GetNextTrainerDataByte:
 	inc hl
 	ret
 
+; must come before the EVSpreads table below, to define
+; the EV_SPREAD_* values and NUM_EV_SPREADS total
 INCLUDE "data/trainers/parties.asm"
 
 
-SECTION "EV table", ROMX
+SECTION "EV Spreads", ROMX
 
-INCLUDE "data/trainers/evs.asm"
+WriteTrainerEVs:
+; Writes EVs to hl with the EV spread index in a.
+; For classic EVs, writes (EV total / 2) to all stats.
+; For modern EVs, writes the table data directly.
+	push hl
+	push de
+	push bc
+
+	push hl
+	call SwapHLDE
+	ld hl, EVSpreads
+	ld bc, NUM_STATS
+	rst AddNTimes
+	rst CopyBytes
+	pop hl
+
+	; If modern EVs are enabled, we're done.
+	ld a, [wInitialOptions2]
+	and EV_OPTMASK
+	cp EVS_OPT_MODERN
+	jr z, .done
+
+	; Otherwise, calculate total and set EV to total/2.
+	push hl
+	farcall _GetEVTotal
+	pop hl
+	srl b
+	rr c
+	ld a, c
+	cp 252
+	jr c, .got_evs
+	ld a, 252
+
+.got_evs
+	ld bc, NUM_STATS
+	rst ByteFill
+
+.done
+	jmp PopBCDEHL
+
+EVSpreads:
+	table_width NUM_STATS, EVSpreads
+	for n, NUM_EV_SPREADS
+		; each EV_SPREAD_* is an EQUS of six comma-separated values
+		; implicitly defined by `ev_spread` (see data/trainers/parties.asm)
+		db {EV_SPREAD_{d:n}}
+	endr
+	assert_table_length NUM_EV_SPREADS
