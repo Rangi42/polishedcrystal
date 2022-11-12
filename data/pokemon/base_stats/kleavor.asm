@@ -1,4 +1,4 @@
-	db  70, 135,  95, 85,  45,  70 ; 500 BST
+	db  70, 130,  95, 85,  45,  75 ; 500 BST
 	;   hp  atk  def  spe  sat  sdf
 
 	db BUG, ROCK ; type
