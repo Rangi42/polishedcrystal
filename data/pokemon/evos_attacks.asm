@@ -827,6 +827,7 @@ JigglypuffEvosAttacks:
 WigglytuffEvosAttacks:
 	db -1 ; no more evolutions
 	db 1, MINIMIZE ; LGPE move
+	db 1, NASTY_PLOT ; SV TM move
 	db 1, DOUBLE_EDGE
 	db 1, PLAY_ROUGH
 	db 1, SING
@@ -1206,7 +1207,8 @@ PsyduckEvosAttacks:
 	db 34, PSYBEAM ; Psych Up → egg move
 	db 47, AMNESIA
 	db 40, HYDRO_PUMP
-	db 43, PSYCHIC_M ; Wonder Room → TM move
+	db 43, NASTY_PLOT ; Wonder Room → SV TM move
+	db 46, PSYCHIC_M ; TM move
 	db -1 ; no more level-up moves
 
 GolduckEvosAttacks:
@@ -1226,7 +1228,8 @@ GolduckEvosAttacks:
 	db 36, PSYBEAM ; Psych Up → egg move
 	db 41, AMNESIA
 	db 46, HYDRO_PUMP
-	db 51, PSYCHIC_M ; Wonder Room → TM move
+	db 51, NASTY_PLOT ; Wonder Room → SV TM move
+	db 56, PSYCHIC_M ; TM move
 	db -1 ; no more level-up moves
 
 MankeyEvosAttacks:
@@ -2090,7 +2093,7 @@ GrimerPlainEvosAttacks:
 	db 37, SCREECH
 	db 40, GUNK_SHOT
 	db 43, PAIN_SPLIT ; Acid Armor → HGSS tutor move
-	db 46, EXPLOSION ; Belch → TM move
+	db 46, TOXIC_SPIKES ; Belch → SV TM move
 	db -1 ; no more level-up moves
 
 GrimerAlolanEvosAttacks:
@@ -2110,7 +2113,7 @@ GrimerAlolanEvosAttacks:
 	db 37, SCREECH
 	db 40, GUNK_SHOT
 	db 43, PAIN_SPLIT ; Acid Armor → HGSS tutor move
-	db 46, EXPLOSION ; Belch → TM move
+	db 46, TOXIC_SPIKES ; Belch → SV TM move
 	db -1 ; no more level-up moves
 
 MukPlainEvosAttacks:
@@ -2130,7 +2133,7 @@ MukPlainEvosAttacks:
 	db 37, SCREECH
 	db 40, GUNK_SHOT
 	db 46, PAIN_SPLIT ; Acid Armor → HGSS tutor move
-	db 52, EXPLOSION ; Belch → TM move
+	db 52, TOXIC_SPIKES ; Belch → SV TM move
 	db -1 ; no more level-up moves
 
 MukAlolanEvosAttacks:
@@ -2150,7 +2153,7 @@ MukAlolanEvosAttacks:
 	db 37, SCREECH
 	db 40, GUNK_SHOT
 	db 46, PAIN_SPLIT ; Acid Armor → HGSS tutor move
-	db 52, EXPLOSION ; Belch → TM move
+	db 52, TOXIC_SPIKES ; Belch → SV TM move
 	db -1 ; no more level-up moves
 
 ShellderEvosAttacks:
@@ -2932,7 +2935,7 @@ ScytherEvosAttacks:
 	db 37, DOUBLE_TEAM
 	db 41, X_SCISSOR
 	db 45, NIGHT_SLASH
-	db 49, BATON_PASS ; Double Hit → egg move
+	db 49, CLOSE_COMBAT ; Double Hit → SV TM move
 	db 50, AIR_SLASH
 	db 57, SWORDS_DANCE
 	db -1 ; no more level-up moves
@@ -3585,7 +3588,7 @@ MewtwoEvosAttacks:
 	db 37, BARRIER ; Psych Up → Barrier
 	db 46, RECOVER
 	db 55, PSYCHIC_M
-	db 64, CALM_MIND ; Barrier → TM move
+	db 64, POWER_GEM ; Barrier → SV TM move
 	db 73, AURA_SPHERE
 	db 82, AMNESIA
 	db 91, NASTY_PLOT ; Mist → Mew move
@@ -4311,7 +4314,7 @@ SudowoodoEvosAttacks:
 	db 15, ROCK_THROW ; Mimic → Rock Throw
 	db 19, FEINT_ATTACK
 	db 22, ANCIENTPOWER ; Rock Tomb → new move
-	db 26, PROTECT ; Block → TM move
+	db 26, SPIKES ; Block → SV TM move
 	db 29, ROCK_SLIDE
 	db 33, COUNTER
 	db 36, SUCKER_PUNCH
@@ -4571,7 +4574,7 @@ EspeonEvosAttacks:
 	db 33, HEALINGLIGHT ; Morning Sun → similar move
 	db 37, PSYCHIC_M
 	db 41, DOUBLE_EDGE ; Last Resort → tutor move
-	db 45, POWER_GEM ; Power Swap → new move
+	db 45, POWER_GEM ; Power Swap → SV TM move
 	db -1 ; no more level-up moves
 
 UmbreonEvosAttacks:
@@ -4913,7 +4916,7 @@ QwilfishPlainEvosAttacks:
 QwilfishHisuianEvosAttacks:
 	evo_data EVOLVE_LEVEL, 33, OVERQWIL
 	db -1 ; no more evolutions
-	db 1, WATER_GUN
+	db 1, AQUA_JET ; Water Gun → SV TM move
 	db 1, SPIKES
 	db 1, TACKLE
 	db 1, POISON_STING
@@ -4925,7 +4928,7 @@ QwilfishHisuianEvosAttacks:
 	db 25, PAIN_SPLIT ; Stockpile + Spit Up → HGSS move tutor
 	db 29, REVERSAL ; Revenge → Sw/Sh move
 	db 33, WATER_PULSE ; Brine → TM move
-	db 37, DARK_PULSE
+	db 37, CRUNCH ; Dark Pulse → SV TM move
 	db 41, TAKE_DOWN
 	db 45, AQUA_TAIL
 	db 49, POISON_JAB
@@ -4951,7 +4954,7 @@ ScizorEvosAttacks:
 	db 37, DEFENSE_CURL ; Iron Defense → similar move
 	db 41, X_SCISSOR
 	db 45, CRUNCH ; Night Slash → Prism tutor move
-	db 49, CLOSE_COMBAT ; Double Hit → new move
+	db 49, CLOSE_COMBAT ; Double Hit → SV TM move
 	db 50, IRON_HEAD
 	db 57, SWORDS_DANCE
 	db -1 ; no more level-up moves
@@ -5037,6 +5040,7 @@ SneaselHisuianEvosAttacks:
 	db 40, SWORDS_DANCE
 	db 44, X_SCISSOR ; Punishment → TM move
 	db 47, CLOSE_COMBAT
+	db 50, GUNK_SHOT ; SV TM move
 	db -1 ; no more level-up moves
 
 TeddiursaEvosAttacks:
@@ -6372,7 +6376,7 @@ KleavorEvosAttacks:
 	db 37, DEFENSE_CURL ; Stealth Rock → new move
 	db 41, X_SCISSOR
 	db 45, CRUNCH ; Night Slash → Prism tutor move
-	db 49, CLOSE_COMBAT ; Double Hit → new move
+	db 49, CLOSE_COMBAT ; Double Hit → SV TM move
 	db 50, STONE_EDGE ; Stone Axe → new move
 	db 57, SWORDS_DANCE
 	db -1 ; no more level-up moves
@@ -6395,8 +6399,9 @@ UrsalunaEvosAttacks:
 	db 47, REST
 	db 49, CRUNCH ; Snore → egg move
 	db 58, THRASH
-	db 67, CLOSE_COMBAT ; Hammer Arm → new move
+	db 67, CLOSE_COMBAT ; Hammer Arm → SV TM move
 	db 76, DOUBLE_EDGE ; new move
+	db 85, GUNK_SHOT ; SV TM move
 	db -1 ; no more level-up moves
 
 SneaslerEvosAttacks:
@@ -6417,11 +6422,12 @@ SneaslerEvosAttacks:
 	db 40, SWORDS_DANCE
 	db 44, X_SCISSOR ; Punishment → TM move
 	db 47, CLOSE_COMBAT
+	db 50, GUNK_SHOT ; SV TM move
 	db -1 ; no more level-up moves
 
 OverqwilEvosAttacks:
 	db -1 ; no more evolutions
-	db 1, WATER_GUN
+	db 1, AQUA_JET ; Water Gun → SV TM move
 	db 1, SPIKES
 	db 1, TACKLE
 	db 1, POISON_STING
@@ -6433,7 +6439,7 @@ OverqwilEvosAttacks:
 	db 25, PAIN_SPLIT ; Stockpile + Spit Up → HGSS move tutor
 	db 29, REVERSAL ; Revenge → Sw/Sh move
 	db 33, WATER_PULSE ; Brine → TM move
-	db 37, DARK_PULSE
+	db 37, CRUNCH ; Dark Pulse → SV TM move
 	db 41, TAKE_DOWN
 	db 45, AQUA_TAIL
 	db 49, POISON_JAB
