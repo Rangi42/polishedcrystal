@@ -467,10 +467,9 @@ WriteTrainerEVs:
 	srl b
 	rr c
 	ld a, c
-	cp 252
+	cp MODERN_MAX_EV + 1
 	jr c, .got_evs
-	ld a, 252
-
+	ld a, MODERN_MAX_EV
 .got_evs
 	ld bc, NUM_STATS
 	rst ByteFill

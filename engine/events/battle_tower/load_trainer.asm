@@ -748,7 +748,7 @@ BT_GetEVsForTrainer:
 	ret
 
 .max
-	ld a, 252
+	ld a, MODERN_MAX_EV
 	ret
 
 BT_GetTargetTier:
