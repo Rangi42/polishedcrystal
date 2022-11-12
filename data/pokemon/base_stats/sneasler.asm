@@ -8,9 +8,9 @@
 	dn GENDER_F50, HATCH_MEDIUM_FAST ; gender ratio, step cycles to hatch
 
 if DEF(FAITHFUL)
-	abilities_for SNEASLER, PRESSURE, PRESSURE, POISON_TOUCH
+	abilities_for SNEASLER, PRESSURE, UNBURDEN, POISON_TOUCH
 else
-	abilities_for SNEASLER, PRESSURE, TECHNICIAN, POISON_TOUCH
+	abilities_for SNEASLER, TECHNICIAN, UNBURDEN, POISON_TOUCH
 endc
 	db GROWTH_MEDIUM_SLOW ; growth rate
 	dn EGG_GROUND, EGG_GROUND ; egg groups
