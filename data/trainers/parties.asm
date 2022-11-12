@@ -38,7 +38,7 @@ MACRO ev_spread
 	def_evs \#
 	if !DEF(EV_SPREAD_FOR_{d:EV_HP}_{d:EV_ATK}_{d:EV_DEF}_{d:EV_SPE}_{d:EV_SAT}_{d:EV_SDF})
 		def EV_SPREAD_FOR_{d:EV_HP}_{d:EV_ATK}_{d:EV_DEF}_{d:EV_SPE}_{d:EV_SAT}_{d:EV_SDF} = NUM_EV_SPREADS
-		def EV_SPREAD_{d:NUM_EV_SPREADS} EQUS "{EV_HP}, {EV_ATK}, {EV_DEF}, {EV_SPE}, {EV_SAT}, {EV_SDF}"
+		with_each_stat "def EV_SPREAD_{d:NUM_EV_SPREADS}_? EQU EV_?"
 		redef NUM_EV_SPREADS += 1
 	endc
 	db EV_SPREAD_FOR_{d:EV_HP}_{d:EV_ATK}_{d:EV_DEF}_{d:EV_SPE}_{d:EV_SAT}_{d:EV_SDF}

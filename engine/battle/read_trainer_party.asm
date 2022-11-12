@@ -481,8 +481,8 @@ WriteTrainerEVs:
 EVSpreads:
 	table_width NUM_STATS, EVSpreads
 	for n, NUM_EV_SPREADS
-		; each EV_SPREAD_* is an EQUS of six comma-separated values
-		; implicitly defined by `ev_spread` (see data/trainers/parties.asm)
-		db {EV_SPREAD_{d:n}}
+		; each EV_SPREAD_*_HP/ATK/DEF/SPE/SAT/SDF is implicitly defined
+		; by `ev_spread` (see data/trainers/parties.asm)
+		with_each_stat "db EV_SPREAD_{d:n}_?"
 	endr
 	assert_table_length NUM_EV_SPREADS
