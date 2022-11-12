@@ -196,13 +196,7 @@ ReadTrainerParty:
 	pop hl
 
 	call GetNextTrainerDataByte
-	push hl
-	ld h, d
-	ld l, e
-rept 6
-	ld [hli], a
-endr
-	pop hl
+	farcall WriteTrainerEVs
 
 .not_evs
 ; moves?
