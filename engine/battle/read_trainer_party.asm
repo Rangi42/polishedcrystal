@@ -438,3 +438,8 @@ GetNextTrainerDataByte:
 	ret
 
 INCLUDE "data/trainers/parties.asm"
+
+
+SECTION "EV table", ROMX
+
+INCLUDE "data/trainers/evs.asm"

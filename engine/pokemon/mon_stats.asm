@@ -631,6 +631,7 @@ GetEVTotal:
 ; modern EV limit.
 	ld a, MON_EVS
 	call GetPartyParamLocationAndValue
+_GetEVTotal:
 	ld a, 6
 	ld bc, 0
 .loop
