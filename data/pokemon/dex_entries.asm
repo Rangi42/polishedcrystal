@@ -2857,7 +2857,7 @@ OverqwilPokedexEntry::
 
 SECTION "DudunsparcePokedexEntry", ROMX
 DudunsparcePokedexEntry::
-	db "Unknown@"
+	db "Land Snake@"
 	db   "It makes its nest"
 	next "with its hard tail"
 	next "by boring holes"
@@ -2867,7 +2867,7 @@ DudunsparcePokedexEntry::
 
 SECTION "FarigirafPokedexEntry", ROMX
 FarigirafPokedexEntry::
-	db "Unknown@"
+	db "Long Neck@"
 	db   "Now that the brain"
 	next "waves from its"
 	next "head and tail are"
@@ -2877,7 +2877,7 @@ FarigirafPokedexEntry::
 
 SECTION "ClodsirePokedexEntry", ROMX
 ClodsirePokedexEntry::
-	db "Unknown@"
+	db "Spiny Fish@"
 	db   "When attacked, it"
 	next "will retaliate by"
 	next "sticking thick"
@@ -2887,7 +2887,7 @@ ClodsirePokedexEntry::
 
 SECTION "AnnihilapePokedexEntry", ROMX
 AnnihilapePokedexEntry::
-	db "Unknown@"
+	db "Rage Monkey@"
 	db   "When its anger"
 	next "rose beyond a cri-"
 	next "tical point, it"
@@ -3299,7 +3299,7 @@ SneaselHisuianPokedexEntry::
 
 SECTION "WooperPaldeanPokedexEntry", ROMX
 WooperPaldeanPokedexEntry::
-	db "Unknown@"
+	db "Poison Fish@"
 	db   "This is a newly"
 	next "discovered #-"
 	next "mon. It is under"
