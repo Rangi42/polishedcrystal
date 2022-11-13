@@ -2858,42 +2858,42 @@ OverqwilPokedexEntry::
 SECTION "DudunsparcePokedexEntry", ROMX
 DudunsparcePokedexEntry::
 	db "Unknown@"
-	db   "This is a newly"
-	next "discovered #-"
-	next "mon. It is under"
-	page "investigation."
-	next "No information"
-	next "is available.@"
+	db   "It makes its nest"
+	next "with its hard tail"
+	next "by boring holes"
+	page "into deep bedrock."
+	next "The nest can reach"
+	next "over six miles.@"
 
 SECTION "FarigirafPokedexEntry", ROMX
 FarigirafPokedexEntry::
 	db "Unknown@"
-	db   "This is a newly"
-	next "discovered #-"
-	next "mon. It is under"
-	page "investigation."
-	next "No information"
-	next "is available.@"
+	db   "Now that the brain"
+	next "waves from its"
+	next "head and tail are"
+	page "synced up, its"
+	next "psychic power is"
+	next "10 times stronger.@"
 
 SECTION "ClodsirePokedexEntry", ROMX
 ClodsirePokedexEntry::
 	db "Unknown@"
-	db   "This is a newly"
-	next "discovered #-"
-	next "mon. It is under"
-	page "investigation."
-	next "No information"
-	next "is available.@"
+	db   "When attacked, it"
+	next "will retaliate by"
+	next "sticking thick"
+	page "spines out from"
+	next "its body. It's a"
+	next "risky move.@"
 
 SECTION "AnnihilapePokedexEntry", ROMX
 AnnihilapePokedexEntry::
 	db "Unknown@"
-	db   "This is a newly"
-	next "discovered #-"
-	next "mon. It is under"
-	page "investigation."
-	next "No information"
-	next "is available.@"
+	db   "When its anger"
+	next "rose beyond a cri-"
+	next "tical point, it"
+	page "gained power unfe-"
+	next "ttered by its"
+	next "physical body.@"
 
 SECTION "GyaradosRedPokedexEntry", ROMX
 GyaradosRedPokedexEntry::
