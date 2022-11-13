@@ -63,6 +63,7 @@ Pokémon Polished Crystal would never have been finished without the help of man
 * spritershawn for sprites of Red, Blue, and Green.
 * isamuakai01 for sprites of Steven and Cynthia.
 * Maddalena for sprites of Imakuni and the Ghost.
+* Nuuk for the sprite and animation of Farigiraf.
 * EeveeEe1999 for 8th gen menu icons and Lickilicky and Galarian Slowking animations.
 * Luna for some sprites and tiles.
 * SteppoBlazer for Flying and Surfing Pikachu's mini icons.
