@@ -7,6 +7,6 @@
 	setrepeat 3
 	frame 3, 04
 	frame 4, 04
-	dorepeat 5
+	dorepeat 7
 	frame 5, 06
 	endanim

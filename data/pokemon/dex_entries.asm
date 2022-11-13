@@ -3310,12 +3310,12 @@ WooperPaldeanPokedexEntry::
 SECTION "TaurosPaldeanPokedexEntry", ROMX
 TaurosPaldeanPokedexEntry::
 	db "Unknown@"
-	db   "This is a newly"
-	next "discovered #-"
-	next "mon. It is under"
-	page "investigation."
-	next "No information"
-	next "is available.@"
+	db   "It excels at close"
+	next "quarters combat."
+	next "It uses its short"
+	page "horns to strike"
+	next "the opponent's"
+	next "weak spots.@"
 
 SECTION "TaurosPaldeanFirePokedexEntry", ROMX
 TaurosPaldeanFirePokedexEntry::
