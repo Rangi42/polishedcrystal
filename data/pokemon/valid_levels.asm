@@ -203,10 +203,10 @@ ValidPokemonLevels: ; for Wonder Trade
 	db   1,  39 ; Misdreavus
 	db 255, 255 ; Unown
 	db   1, 100 ; Wobbuffet
-	db   1,  49 ; Girafarig
+	db   1,  31 ; Girafarig
 	db   1,  30 ; Pineco
 	db  31, 100 ; Forretress
-	db   1,  49 ; Dunsparce
+	db   1,  31 ; Dunsparce
 	db   1,  19 ; Gligar
 	db  20, 100 ; Steelix
 	db   1,  22 ; Snubbull
@@ -288,8 +288,8 @@ ValidPokemonLevels: ; for Wonder Trade
 	db  50, 100 ; Ursaluna
 	db  40, 100 ; Sneasler
 	db  33, 100 ; Overqwil
-	db  50, 100 ; Dudunsparce
-	db  50, 100 ; Farigiraf
+	db  32, 100 ; Dudunsparce
+	db  32, 100 ; Farigiraf
 	db  20, 100 ; Clodsire
 	db  56, 100 ; Annihilape
 	assert_table_length NUM_SPECIES

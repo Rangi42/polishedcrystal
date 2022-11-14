@@ -45,10 +45,12 @@ MACRO random_wild_form
 ENDM
 
 RandomWildSpeciesForms:
-	random_wild_form UNOWN,    .Unown
-	random_wild_form MAGIKARP, .Magikarp
-	random_wild_form EKANS,    .EkansArbok
-	random_wild_form ARBOK,    .EkansArbok
+	random_wild_form UNOWN,       .Unown
+	random_wild_form MAGIKARP,    .Magikarp
+	random_wild_form EKANS,       .EkansArbok
+	random_wild_form ARBOK,       .EkansArbok
+	random_wild_form DUNSPARCE,   .Dudunsparce
+	random_wild_form DUDUNSPARCE, .Dudunsparce
 	dbw 0,        .Default
 
 .Unown:
@@ -66,8 +68,10 @@ RandomWildSpeciesForms:
 	jr .RandomForm
 
 .EkansArbok:
-	; Random Arbok form (if not already specified)
-	ld a, 2 ; ARBOK_JOHTO_FORM or ARBOK_KANTO_FORM
+.Dudunsparce:
+	; Random Arbok or Dudunsparce form (if not already specified)
+	assert ARBOK_JOHTO_FORM == 1 && ARBOK_KANTO_FORM == 2
+	assert DUDUNSPARCE_TWO_SEGMENT_FORM == 1 && DUDUNSPARCE_THREE_SEGMENT_FORM == 2
 	; fallthrough
 .RandomForm:
 	call BattleRandomRange

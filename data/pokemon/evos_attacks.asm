@@ -1255,7 +1255,7 @@ MankeyEvosAttacks:
 	db -1 ; no more level-up moves
 
 PrimeapeEvosAttacks:
-	evo_data EVOLVE_LEVEL, 56, ANNIHILAPE ; TODO
+	evo_data EVOLVE_MOVE, OUTRAGE, ANNIHILAPE
 	db -1 ; no more evolutions
 	db 1, RAGE
 	db 1, SCRATCH
@@ -4765,8 +4765,7 @@ ForretressEvosAttacks:
 	db -1 ; no more level-up moves
 
 DunsparceEvosAttacks:
-	evo_data EVOLVE_LEVEL, 50, DUDUNSPARCE, DUDUNSPARCE_TWO_SEGMENT_FORM ; TODO
-	evo_data EVOLVE_LEVEL, 50, DUDUNSPARCE, DUDUNSPARCE_THREE_SEGMENT_FORM ; TODO
+	evo_data EVOLVE_LEVEL, 32, DUDUNSPARCE
 	db -1 ; no more evolutions
 	db 1, RAGE
 	db 1, DEFENSE_CURL
