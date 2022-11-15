@@ -72,6 +72,7 @@ RandomWildSpeciesForms:
 	; Random Arbok or Dudunsparce form (if not already specified)
 	assert ARBOK_JOHTO_FORM == 1 && ARBOK_KANTO_FORM == 2
 	assert DUDUNSPARCE_TWO_SEGMENT_FORM == 1 && DUDUNSPARCE_THREE_SEGMENT_FORM == 2
+	ld a, 2
 	; fallthrough
 .RandomForm:
 	call BattleRandomRange
