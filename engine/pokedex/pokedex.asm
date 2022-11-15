@@ -225,11 +225,11 @@ _Pokedex_MonHasCosmeticForms:
 	ret ; At this point, carry is set.
 
 Pokedex_CheckForOtherForms:
-; Input: a = 0 (check caught), 1+ (check seen)
+; Input: a = 0 (check caught), 1 (check seen)
 ; Output: b = form, c = species, hl = pointer to mon form
 ; carry flag set if no other eligible form found
-	; Some routines use anything 1+ to mean "check seen" for optimization
-	; reasons.
+	; Some routines use numbers other than 1 to mean "check seen" for
+	; optimization reasons, but we use the MSB of e for other things.
 	and 1
 	ld e, a
 	call Pokedex_GetCursorSpecies
