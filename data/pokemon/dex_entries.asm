@@ -3309,30 +3309,30 @@ WooperPaldeanPokedexEntry::
 
 SECTION "TaurosPaldeanPokedexEntry", ROMX
 TaurosPaldeanPokedexEntry::
-	db "Unknown@"
-	db   "It excels at close"
-	next "quarters combat."
-	next "It uses its short"
-	page "horns to strike"
-	next "the opponent's"
-	next "weak spots.@"
+	db "Wild Bull@"
+	db   "The “Combat Breed”"
+	next "fights in close"
+	next "quarters. It uses"
+	page "its short horns"
+	next "to strike the"
+	next "foe's weak spots.@"
 
 SECTION "TaurosPaldeanFirePokedexEntry", ROMX
 TaurosPaldeanFirePokedexEntry::
-	db "Unknown@"
-	db   "This is a newly"
-	next "discovered #-"
-	next "mon. It is under"
-	page "investigation."
-	next "No information"
-	next "is available.@"
+	db "Wild Bull@"
+	db   "The '????? Breed's'"
+	next "horns can reach"
+	next "over 1800 degrees."
+	page "Those gored by"
+	next "them will suffer"
+	next "wounds and burns.@"
 
 SECTION "TaurosPaldeanWaterPokedexEntry", ROMX
 TaurosPaldeanWaterPokedexEntry::
-	db "Unknown@"
-	db   "This is a newly"
-	next "discovered #-"
-	next "mon. It is under"
-	page "investigation."
-	next "No information"
-	next "is available.@"
+	db "Wild Bull@"
+	db   "The “Aqua Breed”"
+	next "swims by jetting"
+	next "water from its"
+	page "horns. Its high"
+	next "body fat allows it"
+	next "to float easily.@"
