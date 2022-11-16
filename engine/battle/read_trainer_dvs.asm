@@ -10,6 +10,16 @@ rept 5
 endr
 
 	ld a, [hli] ; EVs
+	push bc
+	ld b, a
+	ld a, [wInitialOptions2]
+	and EV_OPTMASK
+	cp EVS_OPT_MODERN
+	ld a, b
+	ld c, 3
+	call z, SimpleDivide
+	ld a, b ; Quotient if zero, otherwise a no-op.
+	pop bc
 rept 6 ; reuse EV value for all six stats
 	ld [de], a
 	inc de
