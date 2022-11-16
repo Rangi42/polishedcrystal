@@ -583,12 +583,12 @@ FixPlayerEVs:
 	; Set EVs to a multiple of 4.
 	ld a, MON_EVS
 	call GetPartyParamLocationAndValue
-	lb bc, 6, ~%11
+	lb bc, 6, 4 ; c is used later for decrementing.
 	push hl
 	push bc
 .remove_ev_remainder
 	ld a, [hl]
-	and c
+	and ~%11
 	ld [hli], a
 	dec b
 	jr nz, .remove_ev_remainder
@@ -596,11 +596,8 @@ FixPlayerEVs:
 	call .CompareEVTotal
 	jr nc, .pop_bchl_loop
 
-	; Reduce EVs for each stat by 4 sequentially.
-	pop bc
-	inc c ; c = 4
-	push bc
 .outer_ev_reduction_loop
+	; Reduce EVs for each stat by 4 sequentially.
 	pop bc
 	pop hl
 	push hl
