@@ -254,7 +254,9 @@ DEF MON_GENDER_F     EQU 7
 DEF MON_IS_EGG_F     EQU 6
 DEF MON_EXTSPECIES_F EQU 5
 
-; modern EV limit
+; modern EVs are max 252 per stat, 510 total
+; stat exp style allows 255 in all six stats
+DEF MODERN_MAX_EV EQU 252
 DEF MODERN_EV_LIMIT EQU 510
 
 ; shiny probability values

@@ -44,8 +44,11 @@ InitialOptionDescriptions:
 	text "EVs boost stats by"
 	line "up to 63 points."
 
-	para "All six stats can"
-	line "maximize EV gain."
+	para "You can choose to"
+	line "limit total EVs to"
+
+	para "510, or to allow"
+	line "maxing all stats."
 
 	para "Replaced stat exp-"
 	line "erience in Gen 3."

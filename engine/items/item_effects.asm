@@ -994,11 +994,11 @@ CheckEVCap:
 	ld a, [wInitialOptions2]
 	and EV_OPTMASK
 	cp EVS_OPT_MODERN
-	ld a, 252
+	ld a, MODERN_MAX_EV
 	jr nz, .got_max_for_stat
 
 	; Otherwise, compare current EV total with (max EVs-252).
-	ld hl, -(MODERN_EV_LIMIT - 252)
+	ld hl, -(MODERN_EV_LIMIT - MODERN_MAX_EV)
 	add hl, de
 	jr nc, .got_max_for_stat
 
@@ -1932,7 +1932,7 @@ WingCase_MonSelected:
 	add hl, bc
 	ld a, [hld]
 	or [hl]
-	ld a, 252
+	ld a, MODERN_MAX_EV
 	jr nz, .have_wings
 	hlcoord 1, 16
 	ld de, .YouDontHaveAny
@@ -1947,10 +1947,10 @@ WingCase_MonSelected:
 	and a
 	jr nz, .overflow
 	ld a, [hl]
-	cp 252
+	cp MODERN_MAX_EV + 1
 	jr c, .got_amount
 .overflow
-	ld a, 252
+	ld a, MODERN_MAX_EV
 .got_amount
 	ld [wItemQuantityBuffer], a
 
