@@ -59,7 +59,8 @@ Pokémon Polished Crystal would never have been finished without the help of man
 * Scarlax for many new Pokémon animations.
 * ShadowOne333 for the Alolan, Galarian, and Hisuian mini icons, and many new Pokémon animations.
 * octorox for Galarian Rapidash and Galarian Slowking's backpics.
-* Cure for Ursaluna's sprite.
+* Cure for sprites of Ursaluna and Hisuian Growlithe.
+* Sea for Hisuian Growlithe's animation.
 * spritershawn for sprites of Red, Blue, and Green.
 * isamuakai01 for sprites of Steven and Cynthia.
 * Maddalena for sprites of Imakuni and the Ghost.
