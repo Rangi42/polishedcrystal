@@ -4765,7 +4765,7 @@ ForretressEvosAttacks:
 	db -1 ; no more level-up moves
 
 DunsparceEvosAttacks:
-	evo_data EVOLVE_LEVEL, 32, DUDUNSPARCE
+	evo_data EVOLVE_LEVEL, 32, DUDUNSPARCE, NO_FORM ; preserve pre-evo form
 	db -1 ; no more evolutions
 	db 1, RAGE
 	db 1, DEFENSE_CURL

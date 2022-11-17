@@ -59,6 +59,8 @@ CosmeticSpeciesAndFormTable:
 	dp MAGIKARP,   MAGIKARP_MASK2_FORM
 	dp MAGIKARP,   MAGIKARP_SAUCY_FORM
 	dp MAGIKARP,   MAGIKARP_RAINDROP_FORM
+	; Dunsparce can have a separate form ID, but will still register as a
+	; plain Dunsparce until evolution.
 	dp DUDUNSPARCE, DUDUNSPARCE_THREE_SEGMENT_FORM
 	assert_table_length NUM_COSMETIC_FORMS
 	; fallthrough
