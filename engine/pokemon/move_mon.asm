@@ -675,7 +675,7 @@ Special_HyperTrain:
 	ld a, MON_EVS - 1
 	add c
 	call GetPartyParamLocationAndValue
-	cp 252
+	cp MODERN_MAX_EV
 	ld hl, .TextNotMaxEffort
 	jr c, .print_and_fail
 

@@ -6757,17 +6757,17 @@ GiveBattleEVs:
 
 	; Check if our EV is >252 in the stat, and if so,
 	; revert it to 252.
-	cp 252 + 1
+	cp MODERN_MAX_EV + 1
 	jr c, .add_done
 .ev_overflow
-	ld a, 252
+	ld a, MODERN_MAX_EV
 .add_done
 	ld [hl], a
 	call .FixEVOverflow
 	inc hl
 	dec c
 	jr z, .done
-	; For Sat and Sdf, we want to use byte 2
+	; For SAt and SDf, we want to use byte 2
 	ld a, c
 	cp 2
 	jr nz, .loop
