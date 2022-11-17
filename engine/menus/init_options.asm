@@ -295,24 +295,39 @@ InitialOptions_PSS:
 
 InitialOptions_EVs:
 	ld hl, wInitialOptions2
+	push bc
+	ld b, EV_OPTMASK
 	ldh a, [hJoyPressed]
+	ld c, a
 	and D_LEFT | D_RIGHT | A_BUTTON
-	jr nz, .Toggle
-	; TODO: cycle between disabled (Off), classic (Max), and modern (510)
-	assert EVS_OPT_DISABLED == 0 && EVS_OPT_CLASSIC == 1
-	bit 0, [hl]
-	jr z, .SetNo
-	jr .SetYes
-.Toggle
-	bit 0, [hl]
-	jr z, .SetYes
-.SetNo:
-	res 0, [hl]
+	jr z, .input_done
+	ld a, [hl]
+.redo
+	inc a
+	bit D_LEFT_F, c
+	jr z, .finish_change
+	dec a
+	dec a
+.finish_change
+	and b
+	cp b
+	jr z, .redo
+	ld c, a
+	ld a, [hl]
+	and b
+	xor [hl]
+	or c
+	ld [hl], a
+.input_done
+	pop bc
+	ld a, [hl]
+	ld de, MaxString
+	rrca
+	jr c, .Display
+	rrca
+	ld de, ModernString
+	jr c, .Display
 	ld de, NoString
-	jr .Display
-.SetYes:
-	set 0, [hl]
-	ld de, YesString
 .Display:
 	hlcoord 15, 7
 	rst PlaceString
@@ -443,6 +458,10 @@ NoString:
 	db "No @"
 YesString:
 	db "Yes@"
+MaxString:
+	db "Max@"
+ModernString:
+	db "510@"
 
 InitialOptionsControl:
 	ld hl, wJumptableIndex

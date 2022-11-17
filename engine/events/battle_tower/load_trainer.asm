@@ -728,6 +728,7 @@ BT_GetPointsForTrainer:
 BT_GetEVsForTrainer:
 ; Return EVs for given trainer in a. Value is (CurStreak + CurTrainer) * 16,
 ; capped at 252 in Battle Tower, and always 252 in Battle Factory.
+; If modern EVs are enabled, the EVs are divided by 3 before return.
 	ld b, a
 	farcall BT_InRentalMode
 	jr z, .max
@@ -745,10 +746,24 @@ BT_GetEVsForTrainer:
 
 	; EVs = (current streak + current trainer) * 16
 	swap a
-	ret
+	jr DivideModernEVs
 
 .max
-	ld a, 252
+	ld a, MODERN_MAX_EV
+	; fallthrough
+DivideModernEVs:
+; Divides a by 3 if modern EVs are enabled. Intended to be run on a classical
+; EV input. 252 -> 84, a single stat point below the 510 limit (close enough).
+	push bc
+	ld b, a
+	ld a, [wInitialOptions2]
+	and EV_OPTMASK
+	cp EVS_OPT_MODERN
+	ld a, b
+	ld c, 3
+	call z, SimpleDivide
+	ld a, b ; Quotient if zero, otherwise a no-op.
+	pop bc
 	ret
 
 BT_GetTargetTier:

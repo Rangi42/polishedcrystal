@@ -10,6 +10,7 @@ rept 5
 endr
 
 	ld a, [hli] ; EVs
+	farcall DivideModernEVs
 rept 6 ; reuse EV value for all six stats
 	ld [de], a
 	inc de
