@@ -18,7 +18,6 @@ ENDM
 ; - BTTrainerClassSprites (see data/trainers/sprites.asm)
 ; - BTTrainerClassGenders (see data/trainers/genders.asm)
 ; trainer constants are indexes for the sub-tables of TrainerGroups (see data/trainers/parties.asm)
-DEF CHRIS EQU __trainer_class__
 	trainerclass TRAINER_NONE ; 0
 	const PHONECONTACT_MOM
 	const PHONECONTACT_BIKESHOP
@@ -30,6 +29,7 @@ DEF CHRIS EQU __trainer_class__
 DEF KRIS EQU __trainer_class__
 	trainerclass CARRIE ; 1
 
+DEF CHRIS EQU __trainer_class__
 	trainerclass CAL ; 2
 
 DEF CRYS EQU __trainer_class__

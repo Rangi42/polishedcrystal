@@ -63,8 +63,8 @@ HOF_LoadTrainerFrontpic:
 	ld e, CHRIS
 	and a ; PLAYER_MALE
 	jr z, .ok
-	assert CHRIS + 1 == KRIS
-	inc e
+	assert CHRIS - 1 == KRIS
+	dec e
 	dec a ; PLAYER_FEMALE
 	jr z, .ok
 	; PLAYER_ENBY

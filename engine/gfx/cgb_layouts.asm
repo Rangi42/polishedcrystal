@@ -1060,8 +1060,8 @@ LoadFirstTwoTrainerCardPals:
 	ld b, CHRIS
 	and a ; PLAYER_MALE
 	jr z, .got_gender
-	assert CHRIS + 1 == KRIS
-	inc b
+	assert CHRIS - 1 == KRIS
+	dec b
 	dec a ; PLAYER_FEMALE
 	jr z, .got_gender
 	; PLAYER_ENBY
