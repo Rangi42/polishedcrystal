@@ -199,11 +199,21 @@ PokeCenter2F_EnterRoom:
 	applymovementlasttalked PokeCenter2FMovementData_ReceptionistWalksUpAndLeft_LookRight
 	applymovement PLAYER, PokeCenter2FMovementData_PlayerTakesThreeStepsUp
 	readmem wLinkOtherPlayerGender
-	iftruefwd .Female
+	scalltable .LinkTrainerTable
+	end
+
+.LinkTrainerTable
+	dw .Male
+	dw .Female
+	dw .Enby
+.Male:
 	variablesprite SPRITE_LINK_TRAINER, SPRITE_CHRIS
 	end
-.Female
+.Female:
 	variablesprite SPRITE_LINK_TRAINER, SPRITE_KRIS
+	end
+.Enby:
+	variablesprite SPRITE_LINK_TRAINER, SPRITE_CRYS
 	end
 
 PokeCenter2FMovementData_ReceptionistWalksUpAndLeft_LookRight:

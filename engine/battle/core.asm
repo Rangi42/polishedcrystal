@@ -8376,15 +8376,15 @@ GetTrainerBackpic:
 	jr z, .Decompress
 
 ; What gender are we?
-	ld hl, ChrisBackpic
-	ld a, [wPlayerSpriteSetupFlags]
-	bit 2, a ; transformed to male
-	jr nz, .Decompress
 	ld a, [wPlayerGender]
-	bit 0, a
+	ld hl, ChrisBackpic
+	and a ; PLAYER_MALE
 	jr z, .Decompress
-
 	ld hl, KrisBackpic
+	dec a ; PLAYER_FEMALE
+	jr z, .Decompress
+	; PLAYER_ENBY
+	ld hl, CrysBackpic
 
 .Decompress:
 	ld de, vTiles2 tile $31

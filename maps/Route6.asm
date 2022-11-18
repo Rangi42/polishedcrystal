@@ -136,7 +136,7 @@ OfficerfJennyScript:
 	checktime 1 << NITE
 	iffalse_jumptextfaceplayer .DaytimeText
 	checkevent EVENT_BEAT_OFFICERF_JENNY
-	iftruefwd .AfterScript
+	iftrue_jumptextfaceplayer .AfterText
 	faceplayer
 	opentext
 	special SaveMusic
@@ -150,11 +150,6 @@ OfficerfJennyScript:
 	reloadmapafterbattle
 	setevent EVENT_BEAT_OFFICERF_JENNY
 	endtext
-
-.AfterScript:
-	checkflag ENGINE_PLAYER_IS_FEMALE
-	iftrue_jumptextfaceplayer .AfterTextFemale
-	jumptextfaceplayer .AfterTextMale
 
 .DaytimeText:
 	text "Us Officers are"
@@ -175,17 +170,9 @@ OfficerfJennyScript:
 	line "retreat…"
 	done
 
-.AfterTextMale:
+.AfterText:
 	text "Sorry to bother"
-	line "you, sir."
-
-	para "I get jumpy at"
-	line "night."
-	done
-
-.AfterTextFemale:
-	text "Sorry to bother"
-	line "you, miss."
+	line "you, kid."
 
 	para "I get jumpy at"
 	line "night."

@@ -12,8 +12,9 @@ CopycatsHouse2F_MapScriptHeader:
 	def_bg_events
 
 	def_object_events
-	object_event  4,  3, SPRITE_COPYCAT, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, Copycat1Script, EVENT_COPYCAT_1
-	object_event  4,  3, SPRITE_COPYCAT, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, Copycat2Script, EVENT_COPYCAT_2
+	object_event  4,  3, SPRITE_COPYCAT, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_PURPLE, OBJECTTYPE_SCRIPT, 0, Copycat1Script, EVENT_COPYCAT_1
+	object_event  4,  3, SPRITE_COPYCAT, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_PURPLE, OBJECTTYPE_SCRIPT, 0, Copycat2Script, EVENT_COPYCAT_2
+	object_event  4,  3, SPRITE_COPYCAT, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_PURPLE, OBJECTTYPE_SCRIPT, 0, Copycat3Script, EVENT_COPYCAT_3
 	object_event  6,  4, SPRITE_MON_ICON, SPRITEMOVEDATA_POKEMON, 0, DODRIO, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_SCRIPT, NO_FORM, CopycatsDodrioScript, -1
 	object_event  6,  1, SPRITE_MON_ICON, SPRITEMOVEDATA_STILL, 0, CLEFAIRY, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, NO_FORM, CopycatsHouse2FDollScript, EVENT_COPYCATS_HOUSE_2F_DOLL
 	object_event  2,  1, SPRITE_MON_ICON, SPRITEMOVEDATA_STILL, 0, GENGAR, -1, -1, PAL_NPC_PURPLE, OBJECTTYPE_SCRIPT, NO_FORM, CopycatsHouse2FDollScript, -1
@@ -23,18 +24,24 @@ CopycatsHouse2F_MapScriptHeader:
 	object_const_def
 	const COPYCATSHOUSE2F_COPYCAT1
 	const COPYCATSHOUSE2F_COPYCAT2
+	const COPYCATSHOUSE2F_COPYCAT3
 
 CopycatsHouse2FCallback:
-	variablesprite SPRITE_COPYCAT, SPRITE_LASS
-	checkflag ENGINE_PLAYER_IS_FEMALE
-	iftruefwd .Part1
-	disappear COPYCATSHOUSE2F_COPYCAT2
-	appear COPYCATSHOUSE2F_COPYCAT1
-	sjumpfwd .Done
-.Part1:
 	disappear COPYCATSHOUSE2F_COPYCAT1
+	disappear COPYCATSHOUSE2F_COPYCAT2
+	disappear COPYCATSHOUSE2F_COPYCAT3
+	variablesprite SPRITE_COPYCAT, SPRITE_LASS
+	readvar VAR_PLAYERGENDER
+	ifequalfwd $1, .Female
+	ifequalfwd $2, .Enby
+; Male
+	appear COPYCATSHOUSE2F_COPYCAT1
+	endcallback
+.Female:
 	appear COPYCATSHOUSE2F_COPYCAT2
-.Done:
+	endcallback
+.Enby:
+	appear COPYCATSHOUSE2F_COPYCAT3
 	endcallback
 
 Copycat1Script:
@@ -53,12 +60,12 @@ Copycat1Script:
 	special RefreshSprites
 	checkevent EVENT_RESTORED_POWER_TO_KANTO
 	iftruefwd .ReturnedMachinePart
-	showtext .Greeting1Text
+	showtext CopycatGreeting1Text
 	applymovement COPYCATSHOUSE2F_COPYCAT1, CopycatSpinMovement
 	sjump CopycatRetortScript
 
 .ReturnedMachinePart:
-	showtext .LostDoll1Text
+	showtext CopycatLostDoll1Text
 	applymovement COPYCATSHOUSE2F_COPYCAT1, CopycatSpinMovement
 	sjump CopycatWorriedScript
 
@@ -69,11 +76,11 @@ Copycat1Script:
 	special Special_SetCopycatPalette
 	variablesprite SPRITE_COPYCAT, SPRITE_CHRIS
 	special RefreshSprites
-	showtext .Thanks1Text
+	showtext CopycatThanks1Text
 	applymovement COPYCATSHOUSE2F_COPYCAT1, CopycatSpinMovement
 	sjump CopycatFinalScript
 
-.Greeting1Text:
+CopycatGreeting1Text:
 	text "<PLAYER>: Hi! Do"
 	line "you like #mon?"
 
@@ -84,7 +91,7 @@ Copycat1Script:
 	line "You're strange!"
 	done
 
-.LostDoll1Text:
+CopycatLostDoll1Text:
 	text "<PLAYER>: Hi!"
 	line "I heard that you"
 
@@ -103,7 +110,7 @@ Copycat1Script:
 	cont "to Vermilion City?"
 	done
 
-.Thanks1Text:
+CopycatThanks1Text:
 	text "<PLAYER>: Hi!"
 	line "Thanks a lot for"
 	cont "the rail pass!"
@@ -131,12 +138,12 @@ Copycat2Script:
 	special RefreshSprites
 	checkevent EVENT_RESTORED_POWER_TO_KANTO
 	iftruefwd .ReturnedMachinePart
-	showtext .Greeting2Text
+	showtext CopycatGreeting2Text
 	applymovement COPYCATSHOUSE2F_COPYCAT2, CopycatSpinMovement
 	sjump CopycatRetortScript
 
 .ReturnedMachinePart:
-	showtext .LostDoll2Text
+	showtext CopycatLostDoll2Text
 	applymovement COPYCATSHOUSE2F_COPYCAT2, CopycatSpinMovement
 	sjump CopycatWorriedScript
 
@@ -147,11 +154,11 @@ Copycat2Script:
 	special Special_SetCopycatPalette
 	variablesprite SPRITE_COPYCAT, SPRITE_KRIS
 	special RefreshSprites
-	showtext .Thanks2Text
+	showtext CopycatThanks2Text
 	applymovement COPYCATSHOUSE2F_COPYCAT2, CopycatSpinMovement
 	sjump CopycatFinalScript
 
-.Greeting2Text:
+CopycatGreeting2Text:
 	text "<PLAYER>: Hi. You"
 	line "must like #mon."
 
@@ -162,7 +169,7 @@ Copycat2Script:
 	line "You're weird!"
 	done
 
-.LostDoll2Text:
+CopycatLostDoll2Text:
 	text "<PLAYER>: Hi. Did"
 	line "you really lose"
 	cont "your # Doll?"
@@ -181,7 +188,7 @@ Copycat2Script:
 	cont "in Vermilion?"
 	done
 
-.Thanks2Text:
+CopycatThanks2Text:
 	text "<PLAYER>: Thank you"
 	line "for the rail pass!"
 
@@ -193,9 +200,46 @@ Copycat2Script:
 	para "copy what I say"
 	line "and do?"
 	done
-CopycatRetortScript:
+
+Copycat3Script:
+	faceplayer
+	checkevent EVENT_GOT_PASS_FROM_COPYCAT
+	iftruefwd .GotPass
+	checkevent EVENT_RETURNED_LOST_ITEM_TO_COPYCAT
+	iftrue CopycatReturnedLostItemScript
+	checkkeyitem LOST_ITEM
+	iftruefwd CopycatFoundLostItemScript
+	applymovement COPYCATSHOUSE2F_COPYCAT3, CopycatSpinMovement
 	faceplayer
 	setval (PAL_NPC_GREEN) << 4
+	special Special_SetCopycatPalette
+	variablesprite SPRITE_COPYCAT, SPRITE_CRYS
+	special RefreshSprites
+	checkevent EVENT_RESTORED_POWER_TO_KANTO
+	iftruefwd .ReturnedMachinePart
+	showtext CopycatGreeting2Text
+	applymovement COPYCATSHOUSE2F_COPYCAT3, CopycatSpinMovement
+	sjumpfwd CopycatRetortScript
+
+.ReturnedMachinePart:
+	showtext CopycatLostDoll2Text
+	applymovement COPYCATSHOUSE2F_COPYCAT3, CopycatSpinMovement
+	sjumpfwd CopycatWorriedScript
+
+.GotPass:
+	applymovement COPYCATSHOUSE2F_COPYCAT3, CopycatSpinMovement
+	faceplayer
+	setval (PAL_NPC_GREEN) << 4
+	special Special_SetCopycatPalette
+	variablesprite SPRITE_COPYCAT, SPRITE_CRYS
+	special RefreshSprites
+	showtext CopycatThanks2Text
+	applymovement COPYCATSHOUSE2F_COPYCAT3, CopycatSpinMovement
+	sjump CopycatFinalScript
+
+CopycatRetortScript:
+	faceplayer
+	setval (PAL_NPC_PURPLE) << 4
 	special Special_SetCopycatPalette
 	variablesprite SPRITE_COPYCAT, SPRITE_LASS
 	special RefreshSprites
@@ -210,7 +254,7 @@ CopycatRetortScript:
 
 CopycatWorriedScript:
 	faceplayer
-	setval (PAL_NPC_GREEN) << 4
+	setval (PAL_NPC_PURPLE) << 4
 	special Special_SetCopycatPalette
 	variablesprite SPRITE_COPYCAT, SPRITE_LASS
 	special RefreshSprites
@@ -279,7 +323,7 @@ CopycatGivePassScript:
 
 CopycatFinalScript:
 	faceplayer
-	setval (PAL_NPC_GREEN) << 4
+	setval (PAL_NPC_PURPLE) << 4
 	special Special_SetCopycatPalette
 	variablesprite SPRITE_COPYCAT, SPRITE_LASS
 	special RefreshSprites

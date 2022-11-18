@@ -63,6 +63,8 @@ SpriteAnimFrameData:
 	dw .Frameset_DexUnownCursor
 	dw .Frameset_DexSlowpoke
 	dw .Frameset_TownMapFly
+	dw .Frameset_GreenWalk
+	dw .Frameset_MagnetTrainGreen
 	assert_table_length NUM_SPRITE_ANIM_FRAMESETS
 
 .Frameset_00:
@@ -113,11 +115,25 @@ SpriteAnimFrameData:
 	frame SPRITE_ANIM_OAMSET_BLUE_WALK_2,  8, OAM_X_FLIP
 	dorestart
 
+.Frameset_GreenWalk:
+	frame SPRITE_ANIM_OAMSET_GREEN_WALK_1,  8
+	frame SPRITE_ANIM_OAMSET_GREEN_WALK_2,  8
+	frame SPRITE_ANIM_OAMSET_GREEN_WALK_1,  8
+	frame SPRITE_ANIM_OAMSET_GREEN_WALK_2,  8, OAM_X_FLIP
+	dorestart
+
 .Frameset_MagnetTrainBlue:
 	frame SPRITE_ANIM_OAMSET_MAGNET_TRAIN_BLUE_1,  8
 	frame SPRITE_ANIM_OAMSET_MAGNET_TRAIN_BLUE_2,  8
 	frame SPRITE_ANIM_OAMSET_MAGNET_TRAIN_BLUE_1,  8
 	frame SPRITE_ANIM_OAMSET_MAGNET_TRAIN_BLUE_2,  8, OAM_X_FLIP
+	dorestart
+
+.Frameset_MagnetTrainGreen:
+	frame SPRITE_ANIM_OAMSET_MAGNET_TRAIN_GREEN_1,  8
+	frame SPRITE_ANIM_OAMSET_MAGNET_TRAIN_GREEN_2,  8
+	frame SPRITE_ANIM_OAMSET_MAGNET_TRAIN_GREEN_1,  8
+	frame SPRITE_ANIM_OAMSET_MAGNET_TRAIN_GREEN_2,  8, OAM_X_FLIP
 	dorestart
 
 .Frameset_TextEntryCursor:

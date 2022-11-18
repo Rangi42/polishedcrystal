@@ -5,6 +5,7 @@ TrainerGroups:
 	table_width 3, TrainerGroups
 	dba CarrieGroup
 	dba CalGroup
+	dba JackyGroup
 	dba FalknerGroup
 	dba BugsyGroup
 	dba WhitneyGroup

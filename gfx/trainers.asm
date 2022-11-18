@@ -9,6 +9,9 @@ CarriePic: INCBIN "gfx/trainers/carrie.2bpp.lz"
 SECTION "CalPic", ROMX
 CalPic: INCBIN "gfx/trainers/cal.2bpp.lz"
 
+SECTION "JackyPic", ROMX
+JackyPic: INCBIN "gfx/trainers/jacky.2bpp.lz"
+
 SECTION "FalknerPic", ROMX
 FalknerPic: INCBIN "gfx/trainers/falkner.2bpp.lz"
 

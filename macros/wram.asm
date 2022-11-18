@@ -32,7 +32,6 @@ MACRO breed_struct
 \1Happiness::      db
 \1PokerusStatus::  db
 \1CaughtData::
-\1CaughtGender::
 \1CaughtTime::
 \1CaughtBall::     db
 \1CaughtLevel::    db
@@ -121,7 +120,6 @@ MACRO savemon_struct
 \1Happiness::      db
 \1PokerusStatus::  db
 \1CaughtData::
-\1CaughtGender::
 \1CaughtTime::
 \1CaughtBall::     db
 \1CaughtLevel::    db

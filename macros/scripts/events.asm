@@ -344,7 +344,7 @@ MACRO givepoke
 		db TRUE ; trainer
 		dw \7 ; nickname_pointer
 		dw \8 ; ot_name_pointer
-		dw \9 ; ot_id_pointer
+		bigdw \9 ; ot_id
 	else
 		db FALSE ; no trainer
 	endc

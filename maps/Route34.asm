@@ -103,16 +103,8 @@ Route34LyraTrigger2:
 	applyonemovement PLAYER, step_up
 	pause 10
 	turnobject ROUTE34_LYRA, RIGHT
-	opentext
-	checkflag ENGINE_PLAYER_IS_FEMALE
-	iftruefwd .IntroduceFemale
-	writetext Route34LyraIntroductionText1
-	sjumpfwd .Continue
-.IntroduceFemale:
-	writetext Route34LyraIntroductionText2
-.Continue:
-	waitbutton
-	closetext
+	readvar VAR_PLAYERGENDER
+	scalltable Route34LyraIntroductionTable
 	turnobject ROUTE34_LYRA, DOWN
 	pause 10
 	showtext Route34LyraChallengeText
@@ -653,7 +645,14 @@ Route34LyraGreetingText:
 	text "Lyra: Hi, <PLAYER>!"
 	done
 
-Route34LyraIntroductionText1:
+Route34LyraIntroductionTable:
+	dw .Male
+	dw .Female
+	dw .Enby
+
+.Male:
+	jumpthistext
+
 	text "This is <PLAYER>."
 	line "He's a trainer."
 
@@ -664,12 +663,28 @@ Route34LyraIntroductionText1:
 	line "as you, of course!"
 	done
 
-Route34LyraIntroductionText2:
+.Female:
+	jumpthistext
+
 	text "This is <PLAYER>."
 	line "She's a trainer."
 
 	para "She's quite good at"
 	line "raising #mon."
+
+	para "Well, not as good"
+	line "as you, of course!"
+	done
+
+.Enby:
+	jumpthistext
+
+	text "This is <PLAYER>."
+	line "They're a trainer."
+
+	para "They're quite good"
+	line "at raising #-"
+	cont "mon."
 
 	para "Well, not as good"
 	line "as you, of course!"

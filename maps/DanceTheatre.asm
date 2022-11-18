@@ -105,12 +105,9 @@ DanceTheaterSurfGuy:
 	done
 
 .KimonoGirlsUndefeated:
-	checkflag ENGINE_PLAYER_IS_FEMALE
-	iftrue_jumpopenedtext SurfGuyLassieGiftText
 	jumpthisopenedtext
 
-SurfGuyLadGiftText:
-	text "Lad! If you can"
+	text "Kiddo! If you can"
 	line "defeat all the"
 
 	para "Kimono Girls, I'll"
@@ -192,14 +189,6 @@ SurfGuyNeverLeftAScratchText:
 
 	para "never even left a"
 	line "scratch…"
-	done
-
-SurfGuyLassieGiftText:
-	text "Lassie, if you can"
-	line "defeat all the"
-
-	para "Kimono Girls, I'll"
-	line "give you a gift."
 	done
 
 SurfGuyLikeADanceText:

@@ -3,10 +3,12 @@ TrainerPalettes:
 	table_width PAL_COLOR_SIZE * 2, TrainerPalettes
 
 if !DEF(MONOCHROME)
-ChrisPalette:            INCLUDE "gfx/trainers/cal.pal"
 KrisPalette:
 CarriePalette:           INCLUDE "gfx/trainers/carrie.pal"
+ChrisPalette:
 CalPalette:              INCLUDE "gfx/trainers/cal.pal"
+CrysPalette:
+JackyPalette:            INCLUDE "gfx/trainers/jacky.pal"
 FalknerPalette:          INCLUDE "gfx/trainers/falkner.pal"
 BugsyPalette:            INCLUDE "gfx/trainers/bugsy.pal"
 WhitneyPalette:          INCLUDE "gfx/trainers/whitney.pal"
@@ -165,10 +167,11 @@ SilhouettePalette:       INCLUDE "gfx/trainers/silhouette.pal"
 else
 ChrisPalette:
 KrisPalette:
+CrysPalette:
 Lyra1Palette:
-rept NUM_TRAINER_CLASS_PICS + 1
+rept NUM_TRAINER_CLASS_PICS
 	MONOCHROME_RGB_TWO
 endr
 endc
 
-	assert_table_length NUM_TRAINER_CLASS_PICS + 1
+	assert_table_length NUM_TRAINER_CLASS_PICS
