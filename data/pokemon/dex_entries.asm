@@ -3300,12 +3300,12 @@ SneaselHisuianPokedexEntry::
 SECTION "WooperPaldeanPokedexEntry", ROMX
 WooperPaldeanPokedexEntry::
 	db "Poison Fish@"
-	db   "This is a newly"
-	next "discovered #-"
-	next "mon. It is under"
-	page "investigation."
-	next "No information"
-	next "is available.@"
+	db   "They line up in"
+	next "groups of three or"
+	next "four and help each"
+	page "other as they walk"
+	next "across the danger-"
+	next "ous wetlands.@"
 
 SECTION "TaurosPaldeanPokedexEntry", ROMX
 TaurosPaldeanPokedexEntry::
