@@ -296,7 +296,7 @@ PokemonBodyData:
 	body_data  25,  605, FINS,         BLACK  ; OVERQWIL
 	body_data  36,  392, SERPENTINE,   YELLOW ; DUDUNSPARCE
 	body_data  32, 1600, QUADRUPED,    YELLOW ; FARIGIRAF
-	body_data  10,  100, QUADRUPED,    BROWN  ; CLODSIRE
+	body_data  18, 2230, QUADRUPED,    BROWN  ; CLODSIRE
 	body_data  12,  560, BIPEDAL_TAIL, GRAY   ; ANNIHILAPE
 	assert_table_length NUM_SPECIES
 
