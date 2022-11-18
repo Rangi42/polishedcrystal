@@ -3320,7 +3320,7 @@ TaurosPaldeanPokedexEntry::
 SECTION "TaurosPaldeanFirePokedexEntry", ROMX
 TaurosPaldeanFirePokedexEntry::
 	db "Wild Bull@"
-	db   "The '????? Breed's'"
+	db   "The “Blaze Breed's”"
 	next "horns can reach"
 	next "over 1800 degrees."
 	page "Those gored by"
