@@ -8109,12 +8109,12 @@ DoGetRoamMonData:
 	ret
 
 AddLastBattleToLinkRecord:
-	ld hl, wOTPlayerID
 	ld de, wStringBuffer1
-	ld bc, 2
-	rst CopyBytes
 	ld hl, wOTPlayerName
 	ld bc, NAME_LENGTH - 1
+	rst CopyBytes
+	ld hl, wOTPlayerID
+	ld bc, 2
 	rst CopyBytes
 	ld hl, sLinkBattleResults
 	call .StoreResult
