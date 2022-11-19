@@ -67,6 +67,7 @@ Pokémon Polished Crystal would never have been finished without the help of man
 * Maddalena for sprites of Imakuni and the Ghost.
 * Nuuk for the sprite and animation of Farigiraf.
 * EeveeEe1999 for 8th gen menu icons and Lickilicky and Galarian Slowking animations.
+* trainerlass for sprites of Galarian Slowpoke and Slowbro.
 * Luna for some sprites and tiles.
 * SteppoBlazer for Flying and Surfing Pikachu's mini icons.
 * Twilir for Lyra's back sprite.
