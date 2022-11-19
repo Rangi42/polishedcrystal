@@ -11111,6 +11111,32 @@ endc
 SECTION "KatyGroup", ROMX
 KatyGroup:
 
+	; KATY
+	db "Katy@"
+	db TRAINERTYPE_NORMAL
+	; party
+	; TODO: movesets, etc
+	dbp 55, ARIADOS
+	dbp 55, BUTTERFREE
+	dbp 56, SHUCKLE
+	dbp 56, KLEAVOR
+	dbp 54, YANMEGA
+	dbp 57, URSARING
+	db -1 ; end
+
+	; KATY
+	db "Katy@"
+	db TRAINERTYPE_NORMAL
+	; party
+	; TODO: movesets, etc
+	dbp 73, ARIADOS
+	dbp 73, BUTTERFREE
+	dbp 74, SHUCKLE
+	dbp 74, KLEAVOR
+	dbp 72, YANMEGA
+	dbp 75, URSALUNA
+	db -1 ; end
+
 
 SECTION "VictorGroup", ROMX
 VictorGroup:

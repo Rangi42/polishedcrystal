@@ -36,6 +36,7 @@ KukuiScript:
 	writetext .SeenText
 	waitbutton
 	closetext
+	setevent EVENT_INTRODUCED_KUKUI
 	winlosstext .BeatenText, 0
 	setlasttalked ROUTE22_KUKUI
 	checkevent EVENT_BEAT_ELITE_FOUR_AGAIN
@@ -47,7 +48,6 @@ KukuiScript:
 .StartBattle
 	startbattle
 	reloadmapafterbattle
-	setevent EVENT_INTRODUCED_KUKUI
 	setevent EVENT_BEAT_KUKUI
 	jumpthistext
 

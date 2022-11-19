@@ -2048,7 +2048,9 @@ PiersFinalPkmnText:
 	prompt
 
 KatyFinalPkmnText:
-	text "My last one…"
+	text "Oh? How should I"
+	line "roll things out"
+	cont "from here?"
 	prompt
 
 BillFinalPkmnText:
