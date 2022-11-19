@@ -57,14 +57,15 @@ Pokémon Polished Crystal would never have been finished without the help of man
 * flempa for some Pokémon sprites and move animations and for Galarian Articuno and Galarian Zapdos animations.
 * ShockSlayer for the Gen 1 and 2 mini icons and for Yellow's overworld sprite.
 * Scarlax for many new Pokémon animations.
-* ShadowOne333 for the Alolan, Galarian, and Hisuian mini icons, and many new Pokémon animations.
+* ShadowOne333 for the Alolan, Galarian, and Hisuian mini icons, many new Pokémon animations, and Chris's overworld sprites.
 * octorox for Galarian Rapidash and Galarian Slowking's backpics.
-* Cure for sprites of Ursaluna and Hisuian Growlithe.
+* Cure for sprites of Ursaluna, Kleavor, Hisuian Growlithe, and Hisuian Arcanine.
 * Sea for Hisuian Growlithe's animation.
 * spritershawn for sprites of Red, Blue, and Green.
 * isamuakai01 for sprites of Steven and Cynthia.
 * Maddalena for sprites of Imakuni and the Ghost.
 * EeveeEe1999 for 8th gen menu icons and Lickilicky and Galarian Slowking animations.
+* trainerlass for sprites of Galarian Slowpoke and Slowbro.
 * Luna for some sprites and tiles.
 * SteppoBlazer for Flying and Surfing Pikachu's mini icons.
 * Twilir for Lyra's back sprite.
