@@ -109,7 +109,7 @@ GetFishLocations:
 	; Clear area locator data.
 	ld hl, wDexAreaValidFishGroups
 	push bc
-	ld bc, NUM_TREEMON_SETS
+	ld bc, NUM_FISHGROUPS
 	xor a
 	rst ByteFill
 	pop bc
