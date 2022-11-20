@@ -250,11 +250,12 @@ MACRO hall_of_fame
 ENDM
 
 MACRO link_battle_record
-\1Name::   ds NAME_LENGTH - 1
 \1ID::     dw
+\1Name::   ds NAME_LENGTH - 1
 \1Wins::   dw
 \1Losses:: dw
 \1Draws::  dw
+\1End::
 ENDM
 
 MACRO trademon
