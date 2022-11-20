@@ -4789,6 +4789,7 @@ DunsparceEvosAttacks:
 	db 46, HEX ; Dragon Rush → egg move
 	db 48, ENDURE
 	db 51, REVERSAL ; Flail → similar move
+	db 53, OUTRAGE ; new move
 	db -1 ; no more level-up moves
 
 GligarEvosAttacks:
@@ -6473,6 +6474,7 @@ DudunsparceEvosAttacks:
 	db 51, REVERSAL ; Flail → similar move
 	db 53, HURRICANE
 	db 56, HYPER_VOICE ; Boomburst → similar move
+	db 58, OUTRAGE ; new move
 	db -1 ; no more level-up moves
 
 ClodsireEvosAttacks:
