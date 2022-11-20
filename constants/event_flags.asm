@@ -279,7 +279,7 @@
 
 ; Crystal-exclusive events in Johto
 	const EVENT_SAW_FIRST_HIDDEN_GROTTO
-	const_skip ; unused
+	const EVENT_CRYS_IN_NAVEL_ROCK
 	const_skip ; unused
 	const EVENT_BUGGING_KURT_TOO_MUCH
 	const EVENT_TALKED_TO_RUINS_COWARD
@@ -2291,8 +2291,8 @@
 	const EVENT_REMATCH_GYM_LEADER_4
 	const EVENT_REMATCH_GYM_LEADER_5
 	const EVENT_REMATCH_GYM_LEADER_6
-	const_skip ; unused
-	const_skip ; unused
+	const EVENT_COPYCAT_3
+	const EVENT_CINNABAR_LAB_CRYS
 	const EVENT_DO_RUINS_OF_ALPH_CLIMAX
 	const EVENT_RUINS_OF_ALPH_CLIMAX_DONE
 	const EVENT_MAGNET_TUNNEL_LODESTONE_IN_PIT

@@ -969,14 +969,19 @@ DrawPackGFX:
 	jr nz, .loop
 
 	; place pack gfx
-	ld bc, .FemaleGFX
 	ld a, [wBattleType]
 	cp BATTLETYPE_TUTORIAL
+	ld bc, .FemaleGFX
 	jr z, .got_pointers
 	ld a, [wPlayerGender]
-	rrca
-	jr c, .got_pointers
 	ld bc, .MaleGFX
+	and a ; PLAYER_MALE
+	jr z, .got_pointers
+	ld bc, .FemaleGFX
+	dec a ; PLAYER_FEMALE
+	jr z, .got_pointers
+	; PLAYER_ENBY
+	ld bc, .EnbyGFX
 .got_pointers
 	pop af
 	ld l, a
@@ -1005,6 +1010,14 @@ DrawPackGFX:
 	dw PackF3GFX ; far-ok
 	dw PackF4GFX ; far-ok
 	dw PackF5GFX ; far-ok
+
+.EnbyGFX:
+	dw PackX0GFX ; far-ok
+	dw PackX1GFX ; far-ok
+	dw PackX2GFX ; far-ok
+	dw PackX3GFX ; far-ok
+	dw PackX4GFX ; far-ok
+	dw PackX5GFX ; far-ok
 
 Pack_InterpretJoypad:
 	ld hl, wMenuJoypad

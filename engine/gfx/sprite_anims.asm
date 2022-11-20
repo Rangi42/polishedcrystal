@@ -739,7 +739,7 @@ AnimSeq_PcMode:
 	ret
 
 AnimSeq_PcPack:
-	; Display male or female pack
+	; Display pack: $00=male, $04=female, $08=enby
 	ld a, [wPlayerGender]
 	add a
 	add a

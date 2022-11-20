@@ -169,8 +169,6 @@ EngineFlags:
 
 	engine_flag wGameTimerPaused, 7 ; game timer pause
 
-	engine_flag wPlayerGender, 0 ; player is female
-
 	engine_flag wCelebiEvent, 2 ; have gs ball after kurt examined it
 
 	; rematches
@@ -234,8 +232,6 @@ EngineFlags:
 	engine_flag wDailyPhoneTimeOfDayFlags, 21 ; wilton thursday morning
 	engine_flag wDailyPhoneTimeOfDayFlags, 22 ; parry friday afternoon
 	engine_flag wDailyPhoneTimeOfDayFlags, 23 ; erin saturday night
-
-	engine_flag wPlayerSpriteSetupFlags, 2 ; female player has been transformed into male
 
 	engine_flag wSwarmFlags, 2 ; dunsparce swarm
 	engine_flag wSwarmFlags, 3 ; yanma swarm

@@ -199,6 +199,9 @@
 	const SPRITE_KATY ; c3
 	const SPRITE_ALOLAN_EXEGGUTOR ; c4
 	const SPRITE_SOLDIER ; c5
+	const SPRITE_CRYS ; c6
+	const SPRITE_CRYS_BIKE ; c7
+	const SPRITE_CRYS_SURF ; c8
 DEF NUM_OVERWORLD_SPRITES EQU const_value - 1
 
 ; special GetMonSprite values (see engine/overworld/overworld.asm)

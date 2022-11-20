@@ -48,6 +48,7 @@ FinalText_SinglePhrases:
 	table_width 2, FinalText_SinglePhrases
 	dw CarrieFinalPkmnText
 	dw CalFinalPkmnText
+	dw JackyFinalPkmnText
 	dw FalknerFinalPkmnText
 	dw BugsyFinalPkmnText
 	dw WhitneyFinalPkmnText

@@ -40,7 +40,7 @@ ValenciaIslandCooltrainermText:
 	done
 
 ValenciaIslandYoungsterScript:
-	checkflag ENGINE_PLAYER_IS_FEMALE
+	readvar VAR_PLAYERGENDER
 	iftrue_jumptextfaceplayer .Text2
 	jumpthistextfaceplayer
 

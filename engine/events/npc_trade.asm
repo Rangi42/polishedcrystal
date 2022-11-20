@@ -146,15 +146,8 @@ DoNPCTrade:
 	ld de, wPlayerTrademonPersonality
 	call Trade_CopyTwoBytes
 
-	ld hl, wPartyMon1Species
-	ld bc, PARTYMON_STRUCT_LENGTH
-	call Trade_GetAttributeOfCurrentPartymon
-	ld b, h
-	ld c, l
-	call GetCaughtGender
-	ld [wPlayerTrademonCaughtData], a
-
 	xor a
+	ld [wPlayerTrademonCaughtData], a
 	ld [wOTTrademonCaughtData], a
 
 	ld hl, wPartyMon1Level
@@ -376,14 +369,6 @@ GetTradeMonNames:
 	jr nz, .loop
 
 	ld [hl], a ; "@"
-	ret
-
-GetCaughtGender:
-	ld hl, MON_CAUGHTGENDER
-	add hl, bc
-	ld a, [hl]
-	and CAUGHT_GENDER_MASK
-	rla
 	ret
 
 INCLUDE "data/events/npc_trades.asm"

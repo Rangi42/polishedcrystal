@@ -48,26 +48,13 @@ DayCare_MeetGrandma:
 	turnobject PLAYER, UP
 	turnobject DAYCARE_GRANNY, DOWN
 	opentext
-	checkflag ENGINE_PLAYER_IS_FEMALE
-	iftruefwd .IntroduceFemale
-	writetext DayCareLyraHelloText1
-	sjumpfwd .Continue1
-.IntroduceFemale:
-	writetext DayCareLyraHelloText2
-.Continue1:
+	writetext DayCareLyraHelloText
 	waitbutton
-	closetext
+	readvar VAR_PLAYERGENDER
+	scalltable DayCareGrandmaISeeTable
 	showemote EMOTE_SHOCK, DAYCARE_LYRA, 15
-	opentext
-	checkflag ENGINE_PLAYER_IS_FEMALE
-	iftruefwd .ProtestFemale
-	writetext DayCareLyraProtestText1
-	sjumpfwd .Continue2
-.ProtestFemale:
-	writetext DayCareLyraProtestText2
-.Continue2:
-	waitbutton
-	closetext
+	readvar VAR_PLAYERGENDER
+	scalltable DayCareLyraProtestTable
 	turnobject DAYCARE_LYRA, DOWN
 	showtext DayCareLyraGoodbyeText
 	applymovement DAYCARE_LYRA, DayCareMovementData_LyraStartsToLeave
@@ -181,15 +168,24 @@ DayCareMovementData_LyraLeaves:
 	step_left
 	step_end
 
-DayCareLyraHelloText1:
+DayCareLyraHelloText:
 	text "Lyra: Grandma!"
 
 	para "Let me introduce"
 	line "my friend."
 
 	para "This is <PLAYER>!"
+	done
 
-	para "Grandma: Ah ha."
+DayCareGrandmaISeeTable:
+	dw .Male
+	dw .Female
+	dw .Enby
+
+.Male:
+	jumpthisopenedtext
+
+	text "Grandma: Ah ha."
 
 	para "This is your"
 	line "boy… friend."
@@ -197,15 +193,10 @@ DayCareLyraHelloText1:
 	para "I see. Hmm."
 	done
 
-DayCareLyraHelloText2:
-	text "Lyra: Grandma!"
+.Female:
+	jumpthisopenedtext
 
-	para "Let me introduce"
-	line "my friend."
-
-	para "This is <PLAYER>!"
-
-	para "Grandma: Ah ha."
+	text "Grandma: Ah ha."
 
 	para "This is your"
 	line "girl… friend."
@@ -213,7 +204,25 @@ DayCareLyraHelloText2:
 	para "I see. Hmm."
 	done
 
-DayCareLyraProtestText1:
+.Enby:
+	jumpthisopenedtext
+
+	text "Grandma: Ah ha."
+
+	para "This is your"
+	line "close… friend."
+
+	para "I see. Hmm."
+	done
+
+DayCareLyraProtestTable:
+	dw .Male
+	dw .Female
+	dw .Enby
+
+.Male:
+	jumpthistext
+
 	text "Lyra: What?"
 	line "Grandma…!"
 
@@ -234,7 +243,9 @@ DayCareLyraProtestText1:
 	cont "anytime!"
 	done
 
-DayCareLyraProtestText2:
+.Female:
+	jumpthistext
+
 	text "Lyra: What?"
 	line "Grandma…!"
 
@@ -249,6 +260,29 @@ DayCareLyraProtestText2:
 
 	para "You must be sure"
 	line "she's talented."
+
+	para "Right, <PLAYER>?"
+	line "Come and see us"
+	cont "anytime!"
+	done
+
+.Enby:
+	jumpthistext
+
+	text "Lyra: What?"
+	line "Grandma…!"
+
+	para "What are you"
+	line "talking about?"
+
+	para "They just live"
+	line "nearby…"
+
+	para "Grandma: Hahaha."
+	line "I know, I know."
+
+	para "You must be sure"
+	line "they're talented."
 
 	para "Right, <PLAYER>?"
 	line "Come and see us"

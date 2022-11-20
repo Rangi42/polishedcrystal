@@ -26,6 +26,7 @@ Route10North_MapScriptHeader:
 	object_event 14, 52, SPRITE_MON_ICON, SPRITEMOVEDATA_POKEMON, 0, ZAPDOS, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, PLAIN_FORM, ObjectEvent, EVENT_LAWRENCES_ZAPDOS_ROUTE_10
 	object_event 12, 52, SPRITE_CHRIS, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_CHRIS_IN_NAVEL_ROCK
 	object_event 12, 52, SPRITE_KRIS, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_KRIS_IN_NAVEL_ROCK
+	object_event 12, 52, SPRITE_CRYS, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_CRYS_IN_NAVEL_ROCK
 	itemball_event 11,  3, FULL_RESTORE, 1, EVENT_ROUTE_10_FULL_RESTORE
 	cuttree_event  7, 21, EVENT_ROUTE_10_CUT_TREE_1
 	cuttree_event  9, 21, EVENT_ROUTE_10_CUT_TREE_2
@@ -41,6 +42,7 @@ Route10North_MapScriptHeader:
 	const ROUTE10_LAWRENCES_ZAPDOS
 	const ROUTE10_CHRIS
 	const ROUTE10_KRIS
+	const ROUTE10_CRYS
 
 Route10NorthTrigger1:
 	sdefer Route10NorthLawrenceEncounter1Script
@@ -77,31 +79,8 @@ Route10NorthLawrenceEncounter1Script:
 	stopfollow
 	turnobject ROUTE10_LAWRENCE, UP
 	turnobject PLAYER, UP
-	checkflag ENGINE_PLAYER_IS_FEMALE
-	iftruefwd .FemalePan
-	appear ROUTE10_CHRIS
-	applyonemovement PLAYER, hide_object
-	applymovement PLAYER, Route10NorthMovementData_PanUp
-	pause 40
-	disappear ROUTE10_LAWRENCE
-	moveobject ROUTE10_LAWRENCE, 13, 52
-	appear ROUTE10_LAWRENCE
-	applymovement PLAYER, Route10NorthMovementData_PanDown
-	applyonemovement PLAYER, show_object
-	disappear ROUTE10_CHRIS
-	sjumpfwd .Finish
-.FemalePan
-	appear ROUTE10_KRIS
-	applyonemovement PLAYER, hide_object
-	applymovement PLAYER, Route10NorthMovementData_PanUp
-	pause 40
-	disappear ROUTE10_LAWRENCE
-	moveobject ROUTE10_LAWRENCE, 13, 52
-	appear ROUTE10_LAWRENCE
-	applymovement PLAYER, Route10NorthMovementData_PanDown
-	applyonemovement PLAYER, show_object
-	disappear ROUTE10_KRIS
-.Finish
+	readvar VAR_PLAYERGENDER
+	scalltable Route10NorthPanTable
 	turnobject ROUTE10_LAWRENCE, LEFT
 	turnobject PLAYER, RIGHT
 	showtext Route10NorthLawrenceZapdosText
@@ -124,6 +103,40 @@ Route10NorthLawrenceEncounter1Script:
 	special Special_FadeInQuickly
 	setscene $0
 	special RestartMapMusic
+	end
+
+Route10NorthPanTable:
+	dw .Male
+	dw .Female
+	dw .Enby
+
+.Male:
+	appear ROUTE10_CHRIS
+	scall .PanUpAndDown
+	disappear ROUTE10_CHRIS
+	end
+
+.Female:
+	appear ROUTE10_KRIS
+	scall .PanUpAndDown
+	disappear ROUTE10_KRIS
+	end
+
+.Enby:
+	appear ROUTE10_CRYS
+	scall .PanUpAndDown
+	disappear ROUTE10_CRYS
+	end
+
+.PanUpAndDown:
+	applyonemovement PLAYER, hide_object
+	applymovement PLAYER, Route10NorthMovementData_PanUp
+	pause 40
+	disappear ROUTE10_LAWRENCE
+	moveobject ROUTE10_LAWRENCE, 13, 52
+	appear ROUTE10_LAWRENCE
+	applymovement PLAYER, Route10NorthMovementData_PanDown
+	applyonemovement PLAYER, show_object
 	end
 
 Route10NorthLawrenceEncounter2Script:

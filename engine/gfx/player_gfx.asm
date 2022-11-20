@@ -8,36 +8,48 @@ GetPlayerIcon:
 	ret
 
 _GetPlayerIcon:
-; Male
+	ld a, [wPlayerGender]
+
 	ld hl, ChrisSpriteGFX
 	ld b, BANK(ChrisSpriteGFX)
-
-	ld a, [wPlayerGender]
-	bit 0, a
+	and a ; PLAYER_MALE
 	ret z
 
-; Female
 	ld hl, KrisSpriteGFX
 	ld b, BANK(KrisSpriteGFX)
+	dec a ; PLAYER_FEMALE
+	ret z
+
+	; PLAYER_ENBY
+	ld hl, CrysSpriteGFX
+	ld b, BANK(CrysSpriteGFX)
 	ret
 
 GetCardPic:
-	ld hl, ChrisCardPic
 	ld a, [wPlayerGender]
-	bit 0, a
+	ld hl, ChrisCardPic
+	and a ; PLAYER_MALE
 	jr z, .ok
 	ld hl, KrisCardPic
+	dec a ; PLAYER_FEMALE
+	jr z, .ok
+	; PLAYER_ENBY
+	ld hl, CrysCardPic
 .ok
 	ld de, vTiles2 tile $00
 	lb bc, BANK("Trainer Card Pics"), 5 * 7
 	jmp DecompressRequest2bpp
 
 GetPlayerBackpic:
-	ld hl, ChrisBackpic
 	ld a, [wPlayerGender]
-	bit 0, a
+	ld hl, ChrisBackpic
+	and a ; PLAYER_MALE
 	jr z, .ok
 	ld hl, KrisBackpic
+	dec a ; PLAYER_FEMALE
+	jr z, .ok
+	; PLAYER_ENBY
+	ld hl, CrysBackpic
 .ok
 	ld de, vTiles2 tile $31
 	lb bc, BANK("Trainer Backpics"), 6 * 6
@@ -47,11 +59,16 @@ HOF_LoadTrainerFrontpic:
 	call ApplyTilemapInVBlank
 	xor a
 	ldh [hBGMapMode], a
-	ld e, CHRIS
 	ld a, [wPlayerGender]
-	bit 0, a
+	ld e, CHRIS
+	and a ; PLAYER_MALE
 	jr z, .ok
-	ld e, KRIS
+	assert CHRIS - 1 == KRIS
+	dec e
+	dec a ; PLAYER_FEMALE
+	jr z, .ok
+	; PLAYER_ENBY
+	ld e, CRYS
 .ok
 	ld a, e
 	ld [wTrainerClass], a

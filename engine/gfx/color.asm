@@ -518,11 +518,11 @@ InitPokegearPalettes:
 ; This is needed because the regular palette is dark at night.
 	ld hl, PokegearOBPals
 	ld de, wOBPals1
-	ld bc, 2 palettes
+	ld bc, 3 palettes
 	call FarCopyColorWRAM
 
 	ld hl, PokegearFlyPalette
-	ld de, wOBPals1 palette 2
+	ld de, wOBPals1 palette 3
 	ld bc, 1 palettes
 	jmp FarCopyColorWRAM
 
@@ -555,15 +555,15 @@ GetPlayerOrMonPalettePointer:
 	cp BATTLETYPE_TUTORIAL
 	ret z
 
-	ld hl, ChrisPalette
-	ld a, [wPlayerSpriteSetupFlags]
-	bit 2, a ; transformed to male
-	ret nz
 	ld a, [wPlayerGender]
-	and a
+	ld hl, ChrisPalette
+	and a ; PLAYER_MALE
 	ret z
-
 	ld hl, KrisPalette
+	dec a ; PLAYER_FEMALE
+	ret z
+	; PLAYER_ENBY
+	ld hl, CrysPalette
 	ret
 
 GetFrontpicPalettePointer:
@@ -576,7 +576,7 @@ GetTrainerPalettePointer:
 	ld h, 0
 	add hl, hl
 	add hl, hl
-	ld bc, TrainerPalettes
+	ld bc, TrainerPalettes - PAL_COLOR_SIZE * 2
 	add hl, bc
 	ret
 

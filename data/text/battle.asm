@@ -1614,6 +1614,7 @@ GetOutText:
 
 CarrieFinalPkmnText:
 CalFinalPkmnText:
+JackyFinalPkmnText:
 	text "I still have one"
 	line "#mon!"
 	prompt

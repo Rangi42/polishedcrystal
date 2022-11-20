@@ -551,15 +551,6 @@ StatsScreen_LoadGFX:
 	call CopyNickname
 	hlcoord 1, 15
 	rst PlaceString
-	ld a, [wTempMonCaughtGender]
-	and FEMALE
-	ld a, "♀"
-	jr nz, .got_gender
-	assert "♀" - 1 == "♂"
-	dec a
-.got_gender
-	hlcoord 8, 15
-	ld [hl], a
 	ret
 
 .Status_Type:

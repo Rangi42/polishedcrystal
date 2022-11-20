@@ -140,6 +140,7 @@ ResetWRAM:
 	xor a
 	ld [wPartyCount], a
 	ld [wMonStatusFlags], a
+	inc a ; PLAYER_FEMALE
 	ld [wPlayerGender], a
 
 	ld hl, wNumItems
@@ -739,36 +740,108 @@ else
 endc
 
 GenderMenu::
-	ld a, [wPlayerGender]
-	and a
-	ld hl, wBGPals2 palette 2 + 2
-	bccoord 6, 3
-	decoord 13, 3
-	jr z, .got_coords
-	ld hl, wBGPals2 palette 0 + 2
-	bccoord 13, 3
-	decoord 6, 3
-.got_coords
-	ld a, $62
-	ld [bc], a
-	inc bc
-	inc a
-	ld [bc], a
+	; erase previous cursors
 	ld a, " "
-	ld [de], a
-	inc de
-	ld [de], a
+	hlcoord 2, 3
+	ld [hli], a
+	ld [hl], a
+	hlcoord 9, 3
+	ld [hli], a
+	ld [hl], a
+	hlcoord 16, 3
+	ld [hli], a
+	ld [hl], a
 
-	; Apply transparency to the unselected option.
+	ld a, [wPlayerGender]
+	and a ; PLAYER_MALE
+	jr z, .male
+	dec a ; PLAYER_FEMALE
+	jr z, .female
 
-	; First, undo any previously applied transparency effect.
-	push hl
+; PLAYER_ENBY
+	; place cursor
+	ld a, $69
+	hlcoord 16, 3
+	ld [hli], a
+	inc a
+	ld [hl], a
+	; load opaque palettes
 	call SetPalettes
-	pop hl
+	; make other palettes transparent
+	ld hl, wBGPals2 palette 0 + 2
+	call .MakeTransparent
+	ld hl, wBGPals2 palette 2 + 2
+	call .MakeTransparent
+	jr .ready
 
-	ld a, BANK(wBGPals2)
+.male
+	; place cursor
+	ld a, $69
+	hlcoord 2, 3
+	ld [hli], a
+	inc a
+	ld [hl], a
+	; load opaque palettes
+	call SetPalettes
+	; make other palettes transparent
+	ld hl, wBGPals2 palette 2 + 2
+	call .MakeTransparent
+	ld hl, wBGPals2 palette 3 + 2
+	call .MakeTransparent
+	jr .ready
+
+.female
+	; place cursor
+	ld a, $69
+	hlcoord 9, 3
+	ld [hli], a
+	inc a
+	ld [hl], a
+	; load opaque palettes
+	call SetPalettes
+	; make other paletees transparent
+	ld hl, wBGPals2 palette 0 + 2
+	call .MakeTransparent
+	ld hl, wBGPals2 palette 3 + 2
+	call .MakeTransparent
+	; fallthrough
+
+.ready
+	ld a, BANK(wPlayerGender)
 	ldh [rSVBK], a
 
+	ld b, 1
+	call SafeCopyTilemapAtOnce
+
+.loop
+	call DelayFrame
+	call GetJoypad
+	ldh a, [hJoyPressed]
+	bit A_BUTTON_F, a
+	ret nz
+	bit D_RIGHT_F, a
+	jr nz, .d_right
+	bit D_LEFT_F, a
+	jr z, .loop
+
+	ld a, [wPlayerGender]
+	and a ; PLAYER_MALE
+	jr z, .got_gender
+	dec a ; female->male, enby->female
+	jr .got_gender
+
+.d_right
+	ld a, [wPlayerGender]
+	cp PLAYER_ENBY
+	jr z, .got_gender
+	inc a ; male->female, female->enby
+.got_gender
+	ld [wPlayerGender], a
+	jmp GenderMenu
+
+.MakeTransparent:
+	ld a, BANK(wBGPals2)
+	ldh [rSVBK], a
 	ld d, 3
 .transparency_loop
 	ld a, [hli]
@@ -782,31 +855,7 @@ GenderMenu::
 	ld [hli], a
 	dec d
 	jr nz, .transparency_loop
-
-	ld a, BANK(wPlayerGender)
-	ldh [rSVBK], a
-
-	ld b, 1
-	call SafeCopyTilemapAtOnce
-
-.loop
-	call DelayFrame
-	call GetJoypad
-	ldh a, [hJoyDown]
-	bit A_BUTTON_F, a
-	ret nz
-	bit D_RIGHT_F, a
-	jr nz, .d_right
-	bit D_LEFT_F, a
-	jr z, .loop
-
-	xor a
-	jr .got_gender
-.d_right
-	ld a, 1 << PLAYERGENDER_FEMALE_F
-.got_gender
-	ld [wPlayerGender], a
-	jr GenderMenu
+	ret
 
 AreYouABoyOrAreYouAGirlText:
 	; Are you a boy? Or are you a girl?
@@ -819,13 +868,17 @@ SoThisIsYouText:
 	text_end
 
 InitGenderGraphics:
-	ld hl, CalPic
+	ld hl, ChrisCardPic
 	ld de, vTiles2 tile $00
-	lb bc, BANK(CalPic), 7 * 7
+	lb bc, BANK(ChrisCardPic), 5 * 7
 	call DecompressRequest2bpp
-	ld hl, CarriePic
-	ld de, vTiles2 tile $31
-	lb bc, BANK(CarriePic), 7 * 7
+	ld hl, KrisCardPic
+	ld de, vTiles2 tile $23
+	lb bc, BANK(KrisCardPic), 5 * 7
+	call DecompressRequest2bpp
+	ld hl, CrysCardPic
+	ld de, vTiles2 tile $46
+	lb bc, BANK(CrysCardPic), 5 * 7
 	call DecompressRequest2bpp
 
 ; Shift the "▼" character three pixels to the right across two tiles
@@ -856,20 +909,25 @@ endr
 	inc de
 	dec c
 	jr nz, .loop
-	ld hl, vTiles2 tile $62
+	ld hl, vTiles2 tile $69
 	ld de, wOverworldMapBlocks
 	lb bc, BANK(wOverworldMapBlocks), 2
 	call Request2bppInWRA6
 
 	xor a
 	ldh [hGraphicStartTile], a
-	hlcoord 3, 4
-	lb bc, 7, 7
+	hlcoord 0, 4
+	lb bc, 5, 7
 	predef PlaceGraphic
-	ld a, $31
+	ld a, $23
 	ldh [hGraphicStartTile], a
-	hlcoord 10, 4
-	lb bc, 7, 7
+	hlcoord 7, 4
+	lb bc, 5, 7
+	predef PlaceGraphic
+	ld a, $46
+	ldh [hGraphicStartTile], a
+	hlcoord 14, 4
+	lb bc, 5, 7
 	predef_jump PlaceGraphic
 
 NamePlayer:
@@ -877,12 +935,16 @@ NamePlayer:
 	ld de, wPlayerName
 	farcall NamingScreen
 	ld hl, wPlayerName
-	ld de, DefaultMalePlayerName
 	ld a, [wPlayerGender]
-	bit 0, a
-	jr z, .Male
+	ld de, DefaultMalePlayerName
+	and a ; PLAYER_MALE
+	jr z, .done
 	ld de, DefaultFemalePlayerName
-.Male:
+	dec a ; PLAYER_FEMALE
+	jr z, .done
+	; PLAYER_ENBY
+	ld de, DefaultEnbyPlayerName
+.done:
 	jmp InitName
 
 INCLUDE "data/default_player_names.asm"
@@ -954,12 +1016,17 @@ DrawIntroPlayerPic:
 	xor a
 	ld [wCurPartySpecies], a
 	ld a, [wPlayerGender]
-	bit 0, a
-	ld a, CARRIE
-	jr nz, .ok
-	assert CARRIE + 1 == CAL
-	inc a
+	ld b, CAL
+	and a ; PLAYER_MALE
+	jr z, .ok
+	assert CAL - 1 == CARRIE
+	dec b
+	dec a ; PLAYER_FEMALE
+	jr z, .ok
+	; PLAYER_ENBY
+	ld b, JACKY
 .ok
+	ld a, b
 	ld [wTrainerClass], a
 Intro_PrepTrainerPic:
 	ld de, vTiles2
@@ -999,15 +1066,7 @@ Intro_PlacePlayerSprite:
 	ld a, [de]
 	inc de
 	ld [hli], a
-
-	ld b, 0
-	ld a, [wPlayerGender]
-	bit 0, a
-	jr z, .male
-	ld b, 1
-.male
-	ld a, b
-
+	ld a, [wPlayerGender] ; 0=male, 1=female, or 2=enby
 	ld [hli], a
 	dec c
 	jr nz, .loop

@@ -30,15 +30,15 @@ SpawnPlayer:
 	call GetMapObject
 	ld hl, MAPOBJECT_COLOR
 	add hl, bc
-	ln e, (1 << 3) | PAL_OW_RED, OBJECTTYPE_SCRIPT
-	ld a, [wPlayerSpriteSetupFlags]
-	bit 2, a
-	jr nz, .ok
 	ld a, [wPlayerGender]
-	bit 0, a
+	ln e, (1 << 3) | PAL_OW_RED, OBJECTTYPE_SCRIPT
+	and a ; PLAYER_MALE
 	jr z, .ok
 	ln e, (1 << 3) | PAL_OW_BLUE, OBJECTTYPE_SCRIPT
-
+	dec a ; PLAYER_FEMALE
+	jr z, .ok
+	; PLAYER_ENBY
+	ln e, (1 << 3) | PAL_OW_GREEN, OBJECTTYPE_SCRIPT
 .ok
 	ld [hl], e
 	xor a

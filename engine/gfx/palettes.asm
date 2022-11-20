@@ -105,6 +105,9 @@ INCLUDE "gfx/pokegear/pokegear.pal"
 FemalePokegearInterfacePalette:
 INCLUDE "gfx/pokegear/pokegear_f.pal"
 
+EnbyPokegearInterfacePalette:
+INCLUDE "gfx/pokegear/pokegear_x.pal"
+
 JohtoBadgePalettes:
 INCLUDE "gfx/trainer_card/johto_badges.pal"
 
@@ -159,6 +162,9 @@ INCLUDE "gfx/pack/pack.pal"
 
 FemalePackPals:
 INCLUDE "gfx/pack/pack_f.pal"
+
+EnbyPackPals:
+INCLUDE "gfx/pack/pack_x.pal"
 
 MailPals:
 INCLUDE "gfx/mail/mail.pal"

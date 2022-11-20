@@ -1197,19 +1197,10 @@ GivePoke::
 	inc hl
 	ld a, b
 	call GetFarWord
-	push hl
-	ld a, b
-	call GetFarWord
 	ld a, l
 	ld [wTempMonID], a
 	ld a, h
 	ld [wTempMonID+1], a
-	pop hl
-	inc hl
-	inc hl
-	ld a, b
-	call GetFarByte
-	ld b, a
 	ld a, [wGiftMonBall]
 	ld c, a
 	ld hl, wTempMonCaughtData

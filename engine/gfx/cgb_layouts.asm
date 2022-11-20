@@ -322,13 +322,19 @@ _CGB_PokegearPals:
 	call LoadPalettes
 
 	ld a, [wPlayerGender]
-	bit 0, a
-	jr z, .male
+	and a ; PLAYER_MALE
+	jr z, .done
+
+	dec a ; PLAYER_FEMALE
 	ld hl, FemalePokegearInterfacePalette
+	jr z, .got_interface_palette
+	; PLAYER_ENBY
+	ld hl, EnbyPokegearInterfacePalette
+.got_interface_palette
 	ld de, wBGPals1 palette 0
 	call LoadOnePalette
-.male
 
+.done
 	call ApplyPals
 	ld a, $1
 	ldh [hCGBPalUpdate], a
@@ -790,16 +796,18 @@ endr
 _CGB_PackPals:
 ; pack pals
 	ld a, [wBattleType]
-	cp BATTLETYPE_TUTORIAL
-	jr z, .tutorial_female
-	ld a, [wPlayerGender]
-	bit 0, a
-	jr z, .male
-.tutorial_female
 	ld hl, FemalePackPals
-	jr .got_gender
-.male
+	cp BATTLETYPE_TUTORIAL
+	jr z, .got_gender
+	ld a, [wPlayerGender]
 	ld hl, MalePackPals
+	and a ; PLAYER_MALE
+	jr z, .got_gender
+	ld hl, FemalePackPals
+	dec a ; PLAYER_FEMALE
+	jr z, .got_gender
+	; PLAYER_ENBY
+	ld hl, EnbyPackPals
 .got_gender
 	ld de, wBGPals1
 	ld c, 8 palettes
@@ -1049,11 +1057,17 @@ LoadFirstTwoTrainerCardPals:
 
 	; player sprite
 	ld a, [wPlayerGender]
-	and a
-	ld a, CHRIS
+	ld b, CHRIS
+	and a ; PLAYER_MALE
 	jr z, .got_gender
-	ld a, KRIS
+	assert CHRIS - 1 == KRIS
+	dec b
+	dec a ; PLAYER_FEMALE
+	jr z, .got_gender
+	; PLAYER_ENBY
+	ld b, CRYS
 .got_gender
+	ld a, b
 	call GetTrainerPalettePointer
 	call LoadPalette_White_Col1_Col2_Black
 
@@ -1317,6 +1331,8 @@ _CGB_IntroGenderPals:
 	call LoadOnePalette
 	ld hl, KrisPalette
 	call LoadPalette_White_Col1_Col2_Black
+	ld hl, CrysPalette
+	call LoadPalette_White_Col1_Col2_Black
 
 	call WipeAttrMap
 
@@ -1325,9 +1341,14 @@ _CGB_IntroGenderPals:
 	ld a, $1
 	call FillBoxWithByte
 
-	hlcoord 10, 3, wAttrmap
-	lb bc, 8, 7
+	hlcoord 7, 3, wAttrmap
+	lb bc, 8, 5
 	ld a, $2
+	call FillBoxWithByte
+
+	hlcoord 14, 3, wAttrmap
+	lb bc, 8, 5
+	ld a, $3
 	call FillBoxWithByte
 
 	call ApplyAttrMap
