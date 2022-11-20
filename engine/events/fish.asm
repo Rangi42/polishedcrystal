@@ -257,7 +257,6 @@ GetFishGroupIndex:
 	jr z, .remoraid
 
 .done
-	dec d
 	ld e, d
 	ld d, 0
 	ret
