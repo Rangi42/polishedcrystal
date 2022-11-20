@@ -50,10 +50,10 @@ DayCare_MeetGrandma:
 	opentext
 	writetext DayCareLyraHelloText
 	waitbutton
+	readvar VAR_PLAYERGENDER
 	scalltable DayCareGrandmaISeeTable
-	waitbutton
-	closetext
 	showemote EMOTE_SHOCK, DAYCARE_LYRA, 15
+	readvar VAR_PLAYERGENDER
 	scalltable DayCareLyraProtestTable
 	turnobject DAYCARE_LYRA, DOWN
 	showtext DayCareLyraGoodbyeText
@@ -183,7 +183,7 @@ DayCareGrandmaISeeTable:
 	dw .Enby
 
 .Male:
-	jumpthistext
+	jumpthisopenedtext
 
 	text "Grandma: Ah ha."
 
@@ -194,7 +194,7 @@ DayCareGrandmaISeeTable:
 	done
 
 .Female:
-	jumpthistext
+	jumpthisopenedtext
 
 	text "Grandma: Ah ha."
 
@@ -205,7 +205,7 @@ DayCareGrandmaISeeTable:
 	done
 
 .Enby:
-	jumpthistext
+	jumpthisopenedtext
 
 	text "Grandma: Ah ha."
 
@@ -221,9 +221,8 @@ DayCareLyraProtestTable:
 	dw .Enby
 
 .Male:
-	showtext .MaleText
+	jumpthistext
 
-.MaleText:
 	text "Lyra: What?"
 	line "Grandma…!"
 
@@ -245,9 +244,8 @@ DayCareLyraProtestTable:
 	done
 
 .Female:
-	showtext .FemaleText
+	jumpthistext
 
-.FemaleText:
 	text "Lyra: What?"
 	line "Grandma…!"
 
@@ -269,9 +267,8 @@ DayCareLyraProtestTable:
 	done
 
 .Enby:
-	showtext .EnbyText
+	jumpthistext
 
-.EnbyText:
 	text "Lyra: What?"
 	line "Grandma…!"
 
