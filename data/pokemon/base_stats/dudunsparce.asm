@@ -6,7 +6,7 @@ if DEF(FAITHFUL)
 else
 	db NORMAL, DRAGON ; type
 endc
-	db 150 ; catch rate
+	db 45 ; catch rate
 	db 115 ; base exp
 	db NO_ITEM, NO_ITEM ; held items
 	dn GENDER_F50, HATCH_MEDIUM_FAST ; gender ratio, step cycles to hatch
