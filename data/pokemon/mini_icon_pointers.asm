@@ -342,6 +342,8 @@ rept NUM_MAGIKARP - 1
 	mini_icon Magikarp
 endr
 
+	assert_table_length NUM_SPECIES + NUM_COSMETIC_FORMS
+
 	mini_icon Gyarados ; Red
 
 	mini_icon MewtwoArmored

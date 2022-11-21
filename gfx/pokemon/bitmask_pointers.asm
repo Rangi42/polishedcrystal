@@ -354,6 +354,8 @@ BitmasksPointers:
 	dw MagikarpSaucyBitmasks
 	dw MagikarpRaindropBitmasks
 
+	assert_table_length NUM_SPECIES + NUM_COSMETIC_FORMS
+
 	dw GyaradosRedBitmasks
 
 	dw MewtwoArmoredBitmasks

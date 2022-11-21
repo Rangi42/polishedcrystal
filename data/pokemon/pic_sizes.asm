@@ -373,6 +373,8 @@ INCLUDE "gfx/pokemon/magikarp_mask2/front.dimensions"
 INCLUDE "gfx/pokemon/magikarp_saucy/front.dimensions"
 INCLUDE "gfx/pokemon/magikarp_raindrop/front.dimensions"
 
+	assert_list_length NUM_SPECIES + NUM_COSMETIC_FORMS
+
 INCLUDE "gfx/pokemon/gyarados_red/front.dimensions"
 
 INCLUDE "gfx/pokemon/mewtwo_armored/front.dimensions"

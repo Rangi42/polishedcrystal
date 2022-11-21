@@ -354,6 +354,8 @@ AnimationExtraPointers:
 	dw MagikarpSaucyAnimationExtra
 	dw MagikarpRaindropAnimationExtra
 
+	assert_table_length NUM_SPECIES + NUM_COSMETIC_FORMS
+
 	dw GyaradosRedAnimationExtra
 
 	dw MewtwoArmoredAnimationExtra

@@ -315,6 +315,8 @@ rept NUM_MAGIKARP - 1
 	iconpal RED, BROWN
 endr
 
+	assert_table_length NUM_SPECIES + NUM_COSMETIC_FORMS
+
 	iconpal RED, RED ; GYARADOS, GYARADOS_RED_FORM
 
 	iconpal GRAY, GRAY ; MEWTWO, MEWTWO_ARMORED_FORM
