@@ -354,11 +354,11 @@ BitmasksPointers:
 	dw MagikarpSaucyBitmasks
 	dw MagikarpRaindropBitmasks
 
-	dw DudunsparceThreeSegmentBitmasks
-
 	dw GyaradosRedBitmasks
 
 	dw MewtwoArmoredBitmasks
+
+	dw DudunsparceThreeSegmentBitmasks
 
 	dw RattataAlolanBitmasks
 	dw RaticateAlolanBitmasks

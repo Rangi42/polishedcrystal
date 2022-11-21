@@ -298,6 +298,8 @@ PokedexDataPointerTable:
 
 	dba MewtwoArmoredPokedexEntry
 
+	dba DudunsparcePokedexEntry
+
 	dba RattataAlolanPokedexEntry
 	dba RaticateAlolanPokedexEntry
 	dba RaichuAlolanPokedexEntry

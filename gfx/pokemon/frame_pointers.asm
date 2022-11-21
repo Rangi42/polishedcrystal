@@ -354,11 +354,11 @@ FramesPointers:
 	dw MagikarpSaucyFrames
 	dw MagikarpRaindropFrames
 
-	dw DudunsparceThreeSegmentFrames
-
 	dw GyaradosRedFrames
 
 	dw MewtwoArmoredFrames
+
+	dw DudunsparceThreeSegmentFrames
 
 	dw RattataAlolanFrames
 	dw RaticateAlolanFrames

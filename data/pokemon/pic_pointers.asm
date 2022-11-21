@@ -358,11 +358,11 @@ PokemonPicPointers::
 	pics MagikarpSaucy
 	pics MagikarpRaindrop
 
-	pics DudunsparceThreeSegment
-
 	pics GyaradosRed
 
 	pics MewtwoArmored
+
+	pics DudunsparceThreeSegment
 
 	pics RattataAlolan
 	pics RaticateAlolan

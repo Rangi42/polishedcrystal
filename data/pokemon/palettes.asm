@@ -601,6 +601,9 @@ INCLUDE "gfx/pokemon/gyarados_red/hgss/shiny.pal"
 INCLUDE "gfx/pokemon/mewtwo_armored/hgss/normal.pal"
 INCLUDE "gfx/pokemon/mewtwo_armored/hgss/shiny.pal"
 
+INCLUDE "gfx/pokemon/dudunsparce/hgss/normal.pal"
+INCLUDE "gfx/pokemon/dudunsparce/hgss/shiny.pal"
+
 INCLUDE "gfx/pokemon/rattata_alolan/hgss/normal.pal"
 INCLUDE "gfx/pokemon/rattata_alolan/hgss/shiny.pal"
 INCLUDE "gfx/pokemon/raticate_alolan/hgss/normal.pal"
@@ -1284,6 +1287,9 @@ INCLUDE "gfx/pokemon/gyarados_red/shiny.pal"
 
 INCLUDE "gfx/pokemon/mewtwo_armored/normal.pal"
 INCLUDE "gfx/pokemon/mewtwo_armored/shiny.pal"
+
+INCLUDE "gfx/pokemon/dudunsparce/normal.pal"
+INCLUDE "gfx/pokemon/dudunsparce/shiny.pal"
 
 INCLUDE "gfx/pokemon/rattata_alolan/normal.pal"
 INCLUDE "gfx/pokemon/rattata_alolan/shiny.pal"

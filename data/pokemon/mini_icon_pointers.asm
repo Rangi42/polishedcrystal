@@ -342,11 +342,11 @@ rept NUM_MAGIKARP - 1
 	mini_icon Magikarp
 endr
 
-	mini_icon DudunsparceThreeSegment
-
 	mini_icon Gyarados ; Red
 
 	mini_icon MewtwoArmored
+
+	mini_icon DudunsparceThreeSegment
 
 	mini_icon RattataAlolan
 	mini_icon RaticateAlolan

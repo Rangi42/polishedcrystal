@@ -297,6 +297,8 @@ EggMovePointers::
 
 	dw NoEggMoves
 
+	dw NoEggMoves
+
 	dw RattataAlolanEggMoves
 	dw NoEggMoves
 	dw NoEggMoves

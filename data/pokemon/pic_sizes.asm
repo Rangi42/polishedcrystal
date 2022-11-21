@@ -373,11 +373,11 @@ INCLUDE "gfx/pokemon/magikarp_mask2/front.dimensions"
 INCLUDE "gfx/pokemon/magikarp_saucy/front.dimensions"
 INCLUDE "gfx/pokemon/magikarp_raindrop/front.dimensions"
 
-INCLUDE "gfx/pokemon/dudunsparce_three_segment/front.dimensions"
-
 INCLUDE "gfx/pokemon/gyarados_red/front.dimensions"
 
 INCLUDE "gfx/pokemon/mewtwo_armored/front.dimensions"
+
+INCLUDE "gfx/pokemon/dudunsparce_three_segment/front.dimensions"
 
 INCLUDE "gfx/pokemon/rattata_alolan/front.dimensions"
 INCLUDE "gfx/pokemon/raticate_alolan/front.dimensions"

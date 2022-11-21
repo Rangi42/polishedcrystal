@@ -354,10 +354,12 @@ AnimationExtraPointers:
 	dw MagikarpSaucyAnimationExtra
 	dw MagikarpRaindropAnimationExtra
 
+	dw GyaradosRedAnimationExtra
+
+	dw MewtwoArmoredAnimationExtra
+
 	dw DudunsparceThreeSegmentAnimationExtra
 
-	dw GyaradosRedAnimationExtra
-	dw MewtwoArmoredAnimationExtra
 	dw RattataAlolanAnimationExtra
 	dw RaticateAlolanAnimationExtra
 	dw RaichuAlolanAnimationExtra

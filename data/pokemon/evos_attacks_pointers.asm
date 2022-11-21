@@ -301,6 +301,8 @@ EvosAttacksPointers::
 
 	dw MewtwoEvosAttacks
 
+	dw DudunsparceEvosAttacks
+
 	dw RattataAlolanEvosAttacks
 	dw RaticateAlolanEvosAttacks
 	dw RaichuAlolanEvosAttacks

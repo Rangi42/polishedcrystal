@@ -421,21 +421,21 @@ DEF NUM_PIKACHU EQU ext_const_value - 1
 	ext_const MAGIKARP_RAINDROP_FORM  ; 15b (14)
 DEF NUM_MAGIKARP EQU ext_const_value - 1 ; 14
 
-; dudunsparce
-	ext_const_def 1, DUDUNSPARCE_TWO_SEGMENT_FORM ;     (1)
-	ext_const DUDUNSPARCE_THREE_SEGMENT_FORM      ; 15c (2)
+DEF NUM_COSMETIC_FORMS EQU const_value - FIRST_COSMETIC_FORM_MON ; 38
 
-DEF NUM_COSMETIC_FORMS EQU const_value - FIRST_COSMETIC_FORM_MON ; 39
-
-DEF FIRST_VARIANT_FORM_MON EQU const_value ; 15d
+DEF FIRST_VARIANT_FORM_MON EQU const_value ; 15c
 
 ; gyarados
 	ext_const_def NUM_MAGIKARP + 1
-	ext_const GYARADOS_RED_FORM ; 15d (15)
+	ext_const GYARADOS_RED_FORM ; 15c (15)
 
 ; mewtwo
 	ext_const_def 2
-	ext_const MEWTWO_ARMORED_FORM ; 15e (2)
+	ext_const MEWTWO_ARMORED_FORM ; 15d (2)
+
+; dudunsparce
+	ext_const_def 1, DUDUNSPARCE_TWO_SEGMENT_FORM ;     (1)
+	ext_const DUDUNSPARCE_THREE_SEGMENT_FORM      ; 15e (2)
 
 ; alolan forms
 DEF ALOLAN_FORM EQU 2

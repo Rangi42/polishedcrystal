@@ -331,6 +331,8 @@ INCLUDE "data/pokemon/base_stats/gyarados.asm" ; red
 
 INCLUDE "data/pokemon/base_stats/mewtwo_armored.asm"
 
+INCLUDE "data/pokemon/base_stats/dudunsparce.asm" ; three segment
+
 INCLUDE "data/pokemon/base_stats/rattata_alolan.asm"
 INCLUDE "data/pokemon/base_stats/raticate_alolan.asm"
 INCLUDE "data/pokemon/base_stats/raichu_alolan.asm"

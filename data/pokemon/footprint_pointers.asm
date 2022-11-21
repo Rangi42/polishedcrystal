@@ -297,6 +297,8 @@ FootprintPointers::
 
 	dw MewtwoFootprint
 
+	dw DudunsparceFootprint
+
 	dw RattataFootprint
 	dw RaticateFootprint
 	dw RaichuFootprint
