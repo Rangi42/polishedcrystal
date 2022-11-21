@@ -2624,7 +2624,7 @@ WeavilePokedexEntry::
 	next "patterns in trees"
 	page "with its claws"
 	next "as a signal to"
-	next "others."
+	next "others.@"
 
 SECTION "MagnezonePokedexEntry", ROMX
 MagnezonePokedexEntry::
