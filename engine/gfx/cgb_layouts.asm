@@ -1341,12 +1341,12 @@ _CGB_IntroGenderPals:
 	ld a, $1
 	call FillBoxWithByte
 
-	hlcoord 7, 3, wAttrmap
-	lb bc, 8, 5
+	hlcoord 10, 3, wAttrmap	; hlcoord 7, 3, wAttrmap
+	lb bc, 8, 7	;lb bc, 8, 5
 	ld a, $2
 	call FillBoxWithByte
 
-	hlcoord 14, 3, wAttrmap
+	hlcoord 16, 3, wAttrmap ; hlcoord 14, 3, wAttrmap
 	lb bc, 8, 5
 	ld a, $3
 	call FillBoxWithByte
