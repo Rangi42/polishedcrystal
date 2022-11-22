@@ -3,6 +3,7 @@ DailyTrainerHouseOpponents:
 	table_width TRAINER_HOUSE_OPPONENT_SIZE, DailyTrainerHouseOpponents
 	db CAL,      1
 	db CARRIE,   1
+	db JACKY,    1
 	; based on http://bulbapedia.bulbagarden.net/wiki/The_Legendary_Rotation_Battle!
 	db VETERANM, EN
 	db VETERANF, MADOKA

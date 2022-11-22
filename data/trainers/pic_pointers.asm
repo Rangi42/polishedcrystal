@@ -3,6 +3,7 @@ TrainerPicPointers::
 	table_width 3, TrainerPicPointers
 	dba CarriePic
 	dba CalPic
+	dba JackyPic
 	dba FalknerPic
 	dba BugsyPic
 	dba WhitneyPic

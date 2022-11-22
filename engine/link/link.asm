@@ -227,12 +227,17 @@ Gen2ToGen2LinkComms:
 	cp LINK_COLOSSEUM
 	jr nz, .ready_to_trade
 	ld a, [wLinkOtherPlayerGender]
-	and a
-	ld a, CARRIE
-	jr nz, .got_other_gender
-	assert CARRIE + 1 == CAL
-	inc a
+	ld b, CAL
+	and a ; PLAYER_MALE
+	jr z, .got_other_gender
+	assert CAL - 1 == CARRIE
+	dec b
+	dec a ; PLAYER_FEMALE
+	jr z, .got_other_gender
+	; PLAYER_ENBY
+	ld b, JACKY
 .got_other_gender
+	ld a, b
 	ld [wOtherTrainerClass], a
 	call ClearScreen
 	call Link_WaitBGMap
@@ -1493,9 +1498,7 @@ LinkTrade:
 	ld [wPlayerTrademonSpecies], a
 	push af
 ; caught data
-	ld b, h
-	ld c, l
-	farcall GetCaughtGender
+	xor a
 	ld [wPlayerTrademonCaughtData], a
 ; OT name
 	ld a, [wCurTradePartyMon]
@@ -1570,12 +1573,7 @@ LinkTrade:
 	ld a, [hl]
 	ld [wOTTrademonDVs + 2], a
 ; caught data
-	ld hl, wOTPartyMon1Species
-	ld a, [wCurOTTradePartyMon]
-	call GetPartyLocation
-	ld b, h
-	ld c, l
-	farcall GetCaughtGender
+	xor a
 	ld [wOTTrademonCaughtData], a
 
 	ld a, [wCurTradePartyMon]

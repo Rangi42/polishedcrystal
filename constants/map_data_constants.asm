@@ -50,7 +50,6 @@ DEF DARKNESS_PALSET EQU %00011011 ; brightlevel 0, 1, 2, 3
 
 ; FishGroup indexes (see data/wild/fish.asm)
 	const_def
-	const FISHGROUP_NONE
 	const FISHGROUP_SHORE
 	const FISHGROUP_OCEAN
 	const FISHGROUP_LAKE
@@ -66,7 +65,7 @@ DEF DARKNESS_PALSET EQU %00011011 ; brightlevel 0, 1, 2, 3
 	const FISHGROUP_QWILFISH
 	const FISHGROUP_REMORAID
 	const FISHGROUP_HISUIAN_QWILFISH
-DEF NUM_FISHGROUPS EQU const_value - 1
+DEF NUM_FISHGROUPS EQU const_value
 
 ; wMapConnections
 ; connection directions (see data/maps/data.asm)

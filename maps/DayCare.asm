@@ -48,26 +48,13 @@ DayCare_MeetGrandma:
 	turnobject PLAYER, UP
 	turnobject DAYCARE_GRANNY, DOWN
 	opentext
-	checkflag ENGINE_PLAYER_IS_FEMALE
-	iftruefwd .IntroduceFemale
-	writetext DayCareLyraHelloText1
-	sjumpfwd .Continue1
-.IntroduceFemale:
-	writetext DayCareLyraHelloText2
-.Continue1:
+	writetext DayCareLyraHelloText
 	waitbutton
-	closetext
+	readvar VAR_PLAYERGENDER
+	scalltable DayCareGrandmaISeeTable
 	showemote EMOTE_SHOCK, DAYCARE_LYRA, 15
-	opentext
-	checkflag ENGINE_PLAYER_IS_FEMALE
-	iftruefwd .ProtestFemale
-	writetext DayCareLyraProtestText1
-	sjumpfwd .Continue2
-.ProtestFemale:
-	writetext DayCareLyraProtestText2
-.Continue2:
-	waitbutton
-	closetext
+	readvar VAR_PLAYERGENDER
+	scalltable DayCareLyraProtestTable
 	turnobject DAYCARE_LYRA, DOWN
 	showtext DayCareLyraGoodbyeText
 	applymovement DAYCARE_LYRA, DayCareMovementData_LyraStartsToLeave
@@ -181,42 +168,27 @@ DayCareMovementData_LyraLeaves:
 	step_left
 	step_end
 
-DayCareLyraHelloText1:
+DayCareLyraHelloText:
 	text "Lyra: Grandma!"
 
 	para "Let me introduce"
 	line "my friend."
 
 	para "This is <PLAYER>!"
-
-	para "Grandma: Ah ha."
-	line "I see. Hmm."
 	done
 
-DayCareLyraHelloText2:
-	text "Lyra: Grandma!"
+DayCareGrandmaISeeTable:
+	text "Grandma: Ah ha."
 
-	para "Let me introduce"
-	line "my friend."
+	para "This is your"
+	line "close… friend."
 
-	para "This is <PLAYER>!"
-
-	para "Grandma: Ah ha."
-	line "I see. Hmm."
+	para "I see. Hmm."
 	done
 
-DayCareLyraProtestText1:
-	text "You must be sure"
-	line "he's talented."
-
-	para "Right, <PLAYER>?"
-	line "Come and see us"
-	cont "anytime!"
-	done
-
-DayCareLyraProtestText2:
-	text "You must be sure"
-	line "she's talented."
+DayCareLyraProtestTable:
+	para "I'm sure you're"
+	line "talented."
 
 	para "Right, <PLAYER>?"
 	line "Come and see us"

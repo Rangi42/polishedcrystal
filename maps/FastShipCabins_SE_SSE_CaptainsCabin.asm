@@ -55,14 +55,7 @@ SSAquaGranddaughterBefore:
 	showemote EMOTE_SHOCK, FASTSHIPCABINS_SE_SSE_CAPTAINSCABIN_GENTLEMAN, 15
 	applymovement FASTSHIPCABINS_SE_SSE_CAPTAINSCABIN_TWIN1, SSAquaGranddaughterEntersCabinMovement
 	turnobject FASTSHIPCABINS_SE_SSE_CAPTAINSCABIN_GENTLEMAN, RIGHT
-	checkflag ENGINE_PLAYER_IS_FEMALE
-	iftruefwd UnknownScript_0x75f03
-	showtext SSAquaGranddaughterWasPlayingMText
-	sjumpfwd UnknownScript_0x75f09
-
-UnknownScript_0x75f03:
-	showtext SSAquaGranddaughterWasPlayingFText
-UnknownScript_0x75f09:
+	showtext SSAquaGranddaughterWasPlayingText
 	turnobject FASTSHIPCABINS_SE_SSE_CAPTAINSCABIN_TWIN2, DOWN
 	applyonemovement FASTSHIPCABINS_SE_SSE_CAPTAINSCABIN_GENTLEMAN, step_down
 	opentext
@@ -260,20 +253,12 @@ SSAquaGranddaughterHasToFindGrandpaText:
 	line "Grandpa!"
 	done
 
-SSAquaGranddaughterWasPlayingMText:
+SSAquaGranddaughterWasPlayingText:
 	text "Grandpa, here I"
 	line "am! I was playing"
 
 	para "with the Captain"
-	line "and this guy!"
-	done
-
-SSAquaGranddaughterWasPlayingFText:
-	text "Grandpa, here I"
-	line "am! I was playing"
-
-	para "with the Captain"
-	line "and this big girl!"
+	line "and this big kid!"
 	done
 
 SSAquaGranddaughterHadFunText:

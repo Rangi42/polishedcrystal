@@ -169,15 +169,8 @@ DoWonderTrade:
 	ld de, wPlayerTrademonPersonality
 	call Trade_CopyTwoBytes
 
-	ld hl, wPartyMon1Species
-	ld bc, PARTYMON_STRUCT_LENGTH
-	call Trade_GetAttributeOfCurrentPartymon
-	ld b, h
-	ld c, l
-	call GetCaughtGender
-	ld [wPlayerTrademonCaughtData], a
-
 	xor a
+	ld [wPlayerTrademonCaughtData], a
 	ld [wOTTrademonCaughtData], a
 
 	ld hl, wPartyMon1Level
@@ -239,9 +232,6 @@ DoWonderTrade:
 	ld hl, wOTTrademonOTName
 	call CopyTradeOT
 
-	call GetWonderTradeOTGender
-	ld b, a
-
 	; Random Ball
 	; 2/3 chance of Poké Ball, 1/3 chance of other
 .random_ball
@@ -260,7 +250,6 @@ DoWonderTrade:
 	ld a, POKE_BALL
 .got_ball
 	ld c, a
-
 	farcall SetGiftPartyMonCaughtData
 
 	; Random DVs
@@ -421,12 +410,7 @@ GetGSBallPichu:
 	ld de, wPlayerTrademonPersonality
 	call Trade_CopyTwoBytes
 
-	ld hl, wPartyMon1Species
-	ld bc, PARTYMON_STRUCT_LENGTH
-	call Trade_GetAttributeOfCurrentPartymon
-	ld b, h
-	ld c, l
-	call GetCaughtGender
+	xor a
 	ld [wPlayerTrademonCaughtData], a
 	ld [wOTTrademonCaughtData], a
 
@@ -443,12 +427,6 @@ GetGSBallPichu:
 	predef RemoveMonFromParty
 	predef TryAddMonToParty
 
-	ld b, MALE
-	ld a, [wPlayerGender]
-	and a
-	jr z, .male_ot_pikachu
-	ld b, FEMALE
-.male_ot_pikachu
 	ld c, ULTRA_BALL
 	farcall SetGiftPartyMonCaughtData
 
@@ -533,29 +511,6 @@ GetWonderTradeOTName:
 	ret
 
 INCLUDE "data/events/wonder_trade/ot_names.asm"
-
-GetWonderTradeOTGender:
-; pick from .WonderTradeOTGenders1 if [wOTTrademonID] is even,
-; WonderTradeOTGenders2 if odd, using [wOTTrademonID+1] as the index.
-	ld hl, wOTTrademonID
-	ld a, [hli]
-	and 1
-	ld a, [hl]
-	ld hl, WonderTradeOTGenders1
-	jr z, .ok
-	ld hl, WonderTradeOTGenders2
-.ok
-	ld c, a
-	ld d, BANK(WonderTradeOTGenders1) ; aka BANK(WonderTradeOTGenders2)
-	ld b, CHECK_FLAG
-	predef FlagPredef
-	ld a, c
-	and a
-	ret z ; MALE
-	ld a, FEMALE
-	ret
-
-INCLUDE "data/events/wonder_trade/ot_genders.asm"
 
 GetWonderTradeOTForm:
 ; pick randomly from [1, N] for [wOTTrademonSpecies], or default to 1

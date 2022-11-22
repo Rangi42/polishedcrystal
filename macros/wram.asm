@@ -32,7 +32,6 @@ MACRO breed_struct
 \1Happiness::      db
 \1PokerusStatus::  db
 \1CaughtData::
-\1CaughtGender::
 \1CaughtTime::
 \1CaughtBall::     db
 \1CaughtLevel::    db
@@ -121,7 +120,6 @@ MACRO savemon_struct
 \1Happiness::      db
 \1PokerusStatus::  db
 \1CaughtData::
-\1CaughtGender::
 \1CaughtTime::
 \1CaughtBall::     db
 \1CaughtLevel::    db
@@ -252,11 +250,12 @@ MACRO hall_of_fame
 ENDM
 
 MACRO link_battle_record
-\1Name::   ds NAME_LENGTH - 1
 \1ID::     dw
+\1Name::   ds NAME_LENGTH - 1
 \1Wins::   dw
 \1Losses:: dw
 \1Draws::  dw
+\1End::
 ENDM
 
 MACRO trademon

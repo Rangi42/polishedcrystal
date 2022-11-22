@@ -95,6 +95,10 @@ SpriteAnimOAMData:
 	dbw $49, .OAMData_DexSlowpoke            ; SPRITE_ANIM_OAMSET_DEX_SLOWPOKE_4
 	dbw $4c, .OAMData_DexSlowpoke            ; SPRITE_ANIM_OAMSET_DEX_SLOWPOKE_5
 	dbw $09, .OAMData_TownMapFly             ; SPRITE_ANIM_OAMSET_TOWN_MAP_FLY
+	dbw $00, .OAMData_GreenWalk              ; SPRITE_ANIM_OAMSET_GREEN_WALK_1
+	dbw $04, .OAMData_GreenWalk              ; SPRITE_ANIM_OAMSET_GREEN_WALK_2
+	dbw $00, .OAMData_MagnetTrainGreen       ; SPRITE_ANIM_OAMSET_MAGNET_TRAIN_GREEN_1
+	dbw $04, .OAMData_MagnetTrainGreen       ; SPRITE_ANIM_OAMSET_MAGNET_TRAIN_GREEN_2
 	assert_table_length NUM_SPRITE_ANIM_OAMSETS
 
 .OAMData_1x1_Palette0:
@@ -778,7 +782,21 @@ SpriteAnimOAMData:
 
 .OAMData_TownMapFly:
 	db 4
-	dsprite  0,  0,  0,  0, $00, $2
-	dsprite  0,  0,  1,  0, $01, $2
-	dsprite  0,  0,  2,  0, $02, $2
-	dsprite  0,  0,  3,  0, $03, $2
+	dsprite  0,  0,  0,  0, $00, $3
+	dsprite  0,  0,  1,  0, $01, $3
+	dsprite  0,  0,  2,  0, $02, $3
+	dsprite  0,  0,  3,  0, $03, $3
+
+.OAMData_GreenWalk:
+	db 4
+	dsprite -1,  0, -1,  0, $00, $2
+	dsprite -1,  0,  0,  0, $01, $2
+	dsprite  0,  0, -1,  0, $02, $2
+	dsprite  0,  0,  0,  0, $03, $2
+
+.OAMData_MagnetTrainGreen:
+	db 4
+	dsprite -1,  0, -1,  0, $00, $2 | PRIORITY
+	dsprite -1,  0,  0,  0, $01, $2 | PRIORITY
+	dsprite  0,  0, -1,  0, $02, $2 | PRIORITY
+	dsprite  0,  0,  0,  0, $03, $2 | PRIORITY

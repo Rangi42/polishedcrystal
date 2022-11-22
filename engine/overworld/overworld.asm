@@ -9,16 +9,15 @@ _UpdatePlayerSprite::
 	jmp GetUsedSprite
 
 GetPlayerSprite:
-; Get Chris or Kris's sprite.
-	ld hl, .Chris
-	ld a, [wPlayerSpriteSetupFlags]
-	bit 2, a
-	jr nz, .go
 	ld a, [wPlayerGender]
-	bit 0, a
+	ld hl, .Chris
+	and a ; PLAYER_MALE
 	jr z, .go
 	ld hl, .Kris
-
+	dec a ; PLAYER_FEMALE
+	jr z, .go
+	; PLAYER_ENBY
+	ld hl, .Crys
 .go
 	ld a, [wPlayerState]
 	ld c, a
@@ -55,6 +54,13 @@ GetPlayerSprite:
 	db PLAYER_NORMAL,    SPRITE_KRIS
 	db PLAYER_BIKE,      SPRITE_KRIS_BIKE
 	db PLAYER_SURF,      SPRITE_KRIS_SURF
+	db PLAYER_SURF_PIKA, SPRITE_SURFING_PIKACHU
+	db $ff
+
+.Crys:
+	db PLAYER_NORMAL,    SPRITE_CRYS
+	db PLAYER_BIKE,      SPRITE_CRYS_BIKE
+	db PLAYER_SURF,      SPRITE_CRYS_SURF
 	db PLAYER_SURF_PIKA, SPRITE_SURFING_PIKACHU
 	db $ff
 

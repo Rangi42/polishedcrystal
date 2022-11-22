@@ -121,7 +121,7 @@ BillsPC_LoadUI:
 	; Cursor mode and Pack sprites
 	ld hl, BillsPC_ObjGFX
 	ld de, vTiles3 tile $24
-	lb bc, BANK(BillsPC_ObjGFX), 19
+	lb bc, BANK(BillsPC_ObjGFX), 23
 	call DecompressRequest2bpp
 
 	xor a

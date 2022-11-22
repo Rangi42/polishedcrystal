@@ -30,6 +30,7 @@ VarActionTable:
 	dwb Var_CountPokemonJournals,       RETVAR_EXECUTE
 	dwb Var_CountTrainerStars,          RETVAR_EXECUTE
 	dwb Var_Landmark,                   RETVAR_EXECUTE
+	dwb wPlayerGender,                  RETVAR_ADDR_DE
 	assert_table_length NUM_VARS
 
 _GetVarAction::

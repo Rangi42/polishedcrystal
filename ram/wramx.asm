@@ -849,11 +849,7 @@ wGameData::
 wPlayerData::
 wPlayerID:: dw
 
-wPlayerGender::
-; bit 0:
-;	0 male
-;	1 female
-	db
+wPlayerGender:: db
 
 wPlayerName:: ds NAME_LENGTH
 wRivalName:: ds NAME_LENGTH

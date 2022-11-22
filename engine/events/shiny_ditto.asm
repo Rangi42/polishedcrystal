@@ -55,7 +55,7 @@ endr
 	ld [hli], a
 	xor a
 	ld [hli], a
-	lb bc, MALE, PREMIER_BALL
+	ld c, PREMIER_BALL
 	farcall SetGiftMonCaughtData
 	inc hl
 	ld [hl], 5

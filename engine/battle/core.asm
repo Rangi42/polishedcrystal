@@ -8116,10 +8116,10 @@ AddLastBattleToLinkRecord:
 	ld hl, wOTPlayerName
 	ld bc, NAME_LENGTH - 1
 	rst CopyBytes
-	ld hl, sLinkBattleResults
+	ld hl, sLinkBattleStats - (LINK_BATTLE_RECORD_LENGTH - 6)
 	call .StoreResult
 	ld hl, sLinkBattleRecord
-	ld d, 5
+	ld d, NUM_LINK_BATTLE_RECORDS
 .loop
 	push hl
 	inc hl
@@ -8129,17 +8129,17 @@ AddLastBattleToLinkRecord:
 	and a
 	jr z, .copy
 	push de
-	ld c, 12
+	ld c, LINK_BATTLE_RECORD_LENGTH - 6
 	ld de, wStringBuffer1
 	call StringCmp
 	pop de
 	pop hl
 	jr z, .done
-	ld bc, 18
+	ld bc, LINK_BATTLE_RECORD_LENGTH
 	add hl, bc
 	dec d
 	jr nz, .loop
-	ld bc, -18
+	ld bc, -LINK_BATTLE_RECORD_LENGTH
 	add hl, bc
 	push hl
 
@@ -8147,7 +8147,7 @@ AddLastBattleToLinkRecord:
 	ld d, h
 	ld e, l
 	ld hl, wStringBuffer1
-	ld bc, 12
+	ld bc, LINK_BATTLE_RECORD_LENGTH - 6
 	rst CopyBytes
 	ld b, 6
 	xor a
@@ -8160,8 +8160,8 @@ AddLastBattleToLinkRecord:
 
 .done
 	call .StoreResult
-	ld b, 5
-	ld hl, sLinkBattleRecord + 17
+	ld b, NUM_LINK_BATTLE_RECORDS
+	ld hl, sLinkBattleRecord1End - 1
 	ld de, wLinkBattleRecordBuffer
 .loop3
 	push bc
@@ -8179,7 +8179,7 @@ AddLastBattleToLinkRecord:
 	ld a, c
 	ld [de], a
 	inc de
-	ld bc, 18
+	ld bc, LINK_BATTLE_RECORD_LENGTH
 	add hl, bc
 	pop bc
 	dec b
@@ -8227,26 +8227,26 @@ AddLastBattleToLinkRecord:
 .done2
 	push bc
 	ld a, b
-	ld bc, 18
+	ld bc, LINK_BATTLE_RECORD_LENGTH
 	ld hl, sLinkBattleRecord
 	rst AddNTimes
 	push hl
 	ld de, wLinkBattleRecordBuffer
-	ld bc, 18
+	ld bc, LINK_BATTLE_RECORD_LENGTH
 	rst CopyBytes
 	pop hl
 	pop bc
 	push hl
 	ld a, c
-	ld bc, 18
+	ld bc, LINK_BATTLE_RECORD_LENGTH
 	ld hl, sLinkBattleRecord
 	rst AddNTimes
 	pop de
 	push hl
-	ld bc, 18
+	ld bc, LINK_BATTLE_RECORD_LENGTH
 	rst CopyBytes
 	ld hl, wLinkBattleRecordBuffer
-	ld bc, 18
+	ld bc, LINK_BATTLE_RECORD_LENGTH
 	pop de
 	rst CopyBytes
 	ret
@@ -8280,12 +8280,13 @@ AddLastBattleToLinkRecord:
 .StoreResult:
 	ld a, [wBattleResult]
 	and $f
-	cp $1
-	ld bc, sLinkBattleWins + 1 - sLinkBattleResults
-	jr c, .okay
-	ld bc, sLinkBattleLosses + 1 - sLinkBattleResults
-	jr z, .okay
-	ld bc, sLinkBattleDraws + 1 - sLinkBattleResults
+	cp LOSE
+	ld bc, (sLinkBattleRecord1Wins - sLinkBattleRecord1) + 1
+	jr c, .okay ; WIN
+	ld bc, (sLinkBattleRecord1Losses - sLinkBattleRecord1) + 1
+	jr z, .okay ; LOSE
+	; DRAW
+	ld bc, (sLinkBattleRecord1Draws - sLinkBattleRecord1) + 1
 .okay
 	add hl, bc
 	call .CheckOverflow
@@ -8376,15 +8377,15 @@ GetTrainerBackpic:
 	jr z, .Decompress
 
 ; What gender are we?
-	ld hl, ChrisBackpic
-	ld a, [wPlayerSpriteSetupFlags]
-	bit 2, a ; transformed to male
-	jr nz, .Decompress
 	ld a, [wPlayerGender]
-	bit 0, a
+	ld hl, ChrisBackpic
+	and a ; PLAYER_MALE
 	jr z, .Decompress
-
 	ld hl, KrisBackpic
+	dec a ; PLAYER_FEMALE
+	jr z, .Decompress
+	; PLAYER_ENBY
+	ld hl, CrysBackpic
 
 .Decompress:
 	ld de, vTiles2 tile $31
