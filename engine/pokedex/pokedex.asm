@@ -235,9 +235,10 @@ Pokedex_CheckForOtherForms:
 	call Pokedex_GetCursorSpecies
 	res MON_CAUGHT_F, b
 
-	; If our current working form is the base form, trest any forms found
+	; If our current working form is the base form, treat any forms found
 	; in the table as immediately valid.
 	ld a, b
+	and FORM_MASK
 	cp PLAIN_FORM + 1
 	jr nc, .baseform_check_done
 	set 7, e
