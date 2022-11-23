@@ -25,6 +25,7 @@ BossTrainers:
 	db VALERIE
 	db KUKUI
 	db PIERS
+	db KATY
 	db YELLOW
 	db WALKER
 	db LAWRENCE

@@ -131,7 +131,7 @@ PokemonPicPointers::
 	pics Electabuzz
 	pics Magmar
 	pics Pinsir
-	pics Tauros
+	pics TaurosPlain
 	pics MagikarpPlain
 	pics GyaradosPlain
 	pics Lapras
@@ -197,7 +197,7 @@ PokemonPicPointers::
 	pics Sunkern
 	pics Sunflora
 	pics Yanma
-	pics Wooper
+	pics WooperPlain
 	pics Quagsire
 	pics Espeon
 	pics Umbreon
@@ -291,6 +291,10 @@ PokemonPicPointers::
 	pics Ursaluna
 	pics Sneasler
 	pics Overqwil
+	pics DudunsparceTwoSegment
+	pics Farigiraf
+	pics Clodsire
+	pics Annihilape
 	assert_table_length NUM_SPECIES
 
 	pics UnownB
@@ -354,9 +358,13 @@ PokemonPicPointers::
 	pics MagikarpSaucy
 	pics MagikarpRaindrop
 
+	assert_table_length NUM_SPECIES + NUM_COSMETIC_FORMS
+
 	pics GyaradosRed
 
 	pics MewtwoArmored
+
+	pics DudunsparceThreeSegment
 
 	pics RattataAlolan
 	pics RaticateAlolan
@@ -398,5 +406,10 @@ PokemonPicPointers::
 	pics TyphlosionHisuian
 	pics QwilfishHisuian
 	pics SneaselHisuian
+
+	pics WooperPaldean
+	pics TaurosPaldean
+	pics TaurosPaldeanFire
+	pics TaurosPaldeanWater
 
 	assert_table_length NUM_UNIQUE_POKEMON

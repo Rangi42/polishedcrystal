@@ -201,6 +201,7 @@ SpriteHeaders:
 	overworld_sprite BeachGirlSpriteGFX, WALKING_SPRITE, PAL_OW_GREEN
 	overworld_sprite BeachGuySpriteGFX, WALKING_SPRITE, PAL_OW_RED
 	overworld_sprite PiersSpriteGFX, STANDING_SPRITE, PAL_OW_RED
+	overworld_sprite KatySpriteGFX, WALKING_SPRITE, PAL_OW_BLUE
 	overworld_sprite AlolanExeggutorSpriteGFX, BIG_GYARADOS_SPRITE, PAL_OW_BROWN
 	overworld_sprite SoldierSpriteGFX, WALKING_SPRITE, PAL_OW_GREEN
 	overworld_sprite CrysSpriteGFX, WALKING_SPRITE, PAL_OW_GREEN

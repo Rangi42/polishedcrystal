@@ -148,6 +148,7 @@ TrainerClassDVsAndPersonality:
 	db 252, PERFECT_DVS,   FEMALE ; valerie
 	db 252, PERFECT_DVS,   MALE   ; kukui
 	db 252, $DD, $DD, $DD, MALE   ; piers
+	db 252, $DD, $DD, $DD, FEMALE ; katy
 	db 192, $EE, $EE, $EE, MALE   ; victor
 	db 252, PERFECT_DVS,   MALE   ; bill
 	db 252, $EE, $EE, $EE, FEMALE ; yellow

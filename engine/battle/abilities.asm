@@ -1585,6 +1585,7 @@ OffensiveDamageAbilities:
 	dbw GALVANIZE, GalvanizeAbility
 	dbw GORILLA_TACTICS, GorillaTacticsAbility
 	dbw STEELY_SPIRIT, SteelySpiritAbility
+	dbw SHARPNESS, SharpnessAbility
 	dbw -1, -1
 
 DefensiveDamageAbilities:
@@ -1712,6 +1713,14 @@ IronFistAbility:
 	jr MoveBoostAbility
 
 INCLUDE "data/moves/punching_moves.asm"
+
+SharpnessAbility:
+; 120% damage for slicing moves
+	ld hl, SlicingMoves
+	ln b, 6, 5 ; x1.2
+	jr MoveBoostAbility
+
+INCLUDE "data/moves/slicing_moves.asm"
 
 MoveBoostAbility:
 	ld a, BATTLE_VARS_MOVE

@@ -2048,6 +2048,12 @@ PiersFinalPkmnText:
 	cont "Not #mon!"
 	prompt
 
+KatyFinalPkmnText:
+	text "Oh? How should I"
+	line "roll things out"
+	cont "from here?"
+	prompt
+
 BillFinalPkmnText:
 	text "Yeehah!"
 	line "What a battle!"

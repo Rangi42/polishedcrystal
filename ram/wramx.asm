@@ -1351,13 +1351,13 @@ wPokedexFlags::
 wPokedexCaught:: flag_array NUM_UNIQUE_POKEMON
 wEndPokedexCaught::
 
-	ds 2 ; unused
+	ds 1 ; unused
 
 wPokedexSeen:: flag_array NUM_UNIQUE_POKEMON
 wEndPokedexSeen::
 wEndPokedexFlags::
 
-	ds 2 ; unused
+	ds 1 ; unused
 
 wUnlockedUnowns:: db
 

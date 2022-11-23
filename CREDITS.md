@@ -45,6 +45,7 @@ Pokémon Polished Crystal would never have been finished without the help of man
 ## Graphics
 
 * Blue Emerald, solo993, Chamber, Lake, Neslug, and Pikachu25 for many sprites and icons.
+* ShadowOne333, Mia, and Quichless for Paldean Pokémon sprites and animations.
 * metalflygon08 for the many Pokémon and trainer sprites.
 * JaceDeane for the Goldenrod Museum paintings, many Pokémon and trainer sprites, Prof. Ivy's overworld sprite, map name signs, and some tiles.
 * bloodless for sprites of Buck, Maylene, Veteran♂, some variant Pikachu, Diglett, and Dugtrio.
@@ -64,8 +65,9 @@ Pokémon Polished Crystal would never have been finished without the help of man
 * spritershawn for sprites of Red, Blue, and Green.
 * isamuakai01 for sprites of Steven and Cynthia.
 * Maddalena for sprites of Imakuni and the Ghost.
+* Nuuk for the sprite and animation of Farigiraf.
 * EeveeEe1999 for 8th gen menu icons and Lickilicky and Galarian Slowking animations.
-* trainerlass for sprites of Galarian Slowpoke and Slowbro, and Crys's back sprite.
+* trainerlass for sprites of Galarian Slowpoke and Slowbro, Katy's sprites, and Crys's back sprite.
 * Luna for some sprites and tiles.
 * SteppoBlazer for Flying and Surfing Pikachu's mini icons.
 * Twilir for Lyra's back sprite.
