@@ -321,7 +321,7 @@ InitialOptions_EVs:
 .input_done
 	pop bc
 	ld a, [hl]
-	ld de, MaxString
+	ld de, AllString
 	rrca
 	jr c, .Display
 	rrca
@@ -458,10 +458,10 @@ NoString:
 	db "No @"
 YesString:
 	db "Yes@"
-MaxString:
-	db "Max@"
+AllString:
+	db "All@"
 ModernString:
-	db "510@"
+	db "{-3d:MODERN_EV_LIMIT}@"
 
 InitialOptionsControl:
 	ld hl, wJumptableIndex
