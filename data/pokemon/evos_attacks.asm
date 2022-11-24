@@ -1257,6 +1257,7 @@ MankeyEvosAttacks:
 PrimeapeEvosAttacks:
 	evo_data EVOLVE_MOVE, OUTRAGE, ANNIHILAPE
 	db -1 ; no more evolutions
+	db 1, OUTRAGE
 	db 1, RAGE
 	db 1, SCRATCH
 	db 1, LOW_KICK
@@ -6497,6 +6498,7 @@ ClodsireEvosAttacks:
 AnnihilapeEvosAttacks:
 	db -1 ; no more evolutions
 	db 1, SHADOW_CLAW ; Shadow Punch → similar move ; evolution move
+	db 1, OUTRAGE
 	db 1, RAGE
 	db 1, SCRATCH
 	db 1, LOW_KICK
