@@ -1184,7 +1184,7 @@ TrickRoomEndedText:
 
 LightScreenEffectText:
 	text "<USER>'s"
-	line "Spcl.Def rose!"
+	line "Sp.Def rose!"
 	prompt
 
 ReflectEffectText:

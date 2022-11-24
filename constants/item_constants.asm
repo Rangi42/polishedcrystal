@@ -142,8 +142,8 @@ DEF NUM_BERRIES EQU const_value - FIRST_BERRY
 	const X_ATTACK     ; 64
 	const X_DEFEND     ; 65
 	const X_SPEED      ; 66
-	const X_SPCL_ATK   ; 67
-	const X_SPCL_DEF   ; 68
+	const X_SP_ATK     ; 67
+	const X_SP_DEF     ; 68
 	const X_ACCURACY   ; 69
 	const DIRE_HIT     ; 6a
 	const GUARD_SPEC   ; 6b
@@ -589,8 +589,8 @@ endc
 	const NAM_X_ACCURACY
 	const NAM_X_ATTACK
 	const NAM_X_DEFEND
-	const NAM_X_SPCL_ATK
-	const NAM_X_SPCL_DEF
+	const NAM_X_SP_ATK
+	const NAM_X_SP_DEF
 	const NAM_X_SPEED
 	const NAM_ZINC
 	const NAM_ZOOM_LENS

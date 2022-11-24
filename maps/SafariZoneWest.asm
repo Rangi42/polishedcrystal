@@ -125,5 +125,5 @@ SafariZoneWestTrainerTips2SignText:
 	line "Rock-type #mon"
 
 	para "get a boost to"
-	line "their Spcl.Def."
+	line "their Sp.Def."
 	done

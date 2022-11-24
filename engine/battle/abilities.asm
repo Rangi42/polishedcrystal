@@ -278,11 +278,11 @@ DownloadAbility:
 	ld b, a
 	ld a, [hl]
 	ld c, a
-	ld hl, wEnemyMonSpclDef + 1
+	ld hl, wEnemyMonSpDef + 1
 	ldh a, [hBattleTurn]
 	and a
 	jr z, .ok2
-	ld hl, wBattleMonSpclDef + 1
+	ld hl, wBattleMonSpDef + 1
 .ok2
 	ld a, [hld]
 	ld e, a

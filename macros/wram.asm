@@ -49,8 +49,8 @@ MACRO party_struct
 \1Attack::         dw
 \1Defense::        dw
 \1Speed::          dw
-\1SpclAtk::        dw
-\1SpclDef::        dw
+\1SpAtk::          dw
+\1SpDef::          dw
 \1End::
 ENDM
 
@@ -82,8 +82,8 @@ MACRO battle_struct
 \1Attack::         dw
 \1Defense::        dw
 \1Speed::          dw
-\1SpclAtk::        dw
-\1SpclDef::        dw
+\1SpAtk::          dw
+\1SpDef::          dw
 \1StatsEnd::
 \1Type::
 \1Type1::          db

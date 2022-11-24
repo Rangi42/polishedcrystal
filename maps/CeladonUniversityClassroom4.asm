@@ -266,14 +266,14 @@ CeladonUniversityClassroom4BlackboardText:
 	done
 
 CeladonUniversityClassroom4Bookshelf1:
-	checkevent EVENT_GOT_X_SPCL_ATK_IN_UNIVERSITY
+	checkevent EVENT_GOT_X_SP_ATK_IN_UNIVERSITY
 	iftrue_jumptext .Text2
 	opentext
 	writetext .Text1
 	promptbutton
-	verbosegiveitem X_SPCL_ATK
+	verbosegiveitem X_SP_ATK
 	iffalse_endtext
-	setevent EVENT_GOT_X_SPCL_ATK_IN_UNIVERSITY
+	setevent EVENT_GOT_X_SP_ATK_IN_UNIVERSITY
 	endtext
 
 .Text1:
