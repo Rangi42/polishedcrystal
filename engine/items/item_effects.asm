@@ -467,7 +467,6 @@ endc
 	predef FlagPredef
 
 	farcall GiveExperiencePointsAfterCatch
-	call GetMemCGBLayout
 
 	ld a, [wOTPartyMon1Level]
 	ld [wCurPartyLevel], a

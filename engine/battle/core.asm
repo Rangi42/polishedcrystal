@@ -6454,6 +6454,7 @@ GiveExperiencePoints:
 	predef CopyPkmnToTempMon
 	farcall PrintStatDifferences
 	call Call_LoadTempTileMapToTileMap
+	call GetMemCGBLayout
 	xor a ; PARTYMON
 	ld [wMonType], a
 	ld a, [wCurSpecies]
