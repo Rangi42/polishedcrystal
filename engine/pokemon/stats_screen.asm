@@ -646,7 +646,7 @@ StatsScreen_LoadGFX:
 	ld hl, wTempMonHyperTraining
 	ld a, [hl]
 
-	; Handle display one by one since Spcl.Atk/Spcl.Def/Speed is displayed in a
+	; Handle display one by one since Sp.Atk/Sp.Def/Speed is displayed in a
 	; different order.
 	hlcoord 0, 10
 	ld de, -4
@@ -655,8 +655,8 @@ StatsScreen_LoadGFX:
 	call .CheckHyper ; Attack
 	call .CheckHyper ; Defense
 	rlca ; skips the speed one for now
-	call .CheckHyper ; Spcl.Atk
-	call .CheckHyper ; Spcl.Def
+	call .CheckHyper ; Sp.Atk
+	call .CheckHyper ; Sp.Def
 	rlca
 	swap a
 	; fallthrough

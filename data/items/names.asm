@@ -141,8 +141,8 @@ endc
 	li "X Attack"
 	li "X Defend"
 	li "X Speed"
-	li "X Spcl.Atk"
-	li "X Spcl.Def"
+	li "X Sp.Atk"
+	li "X Sp.Def"
 	li "X Accuracy"
 	li "Dire Hit"
 if DEF(FAITHFUL)

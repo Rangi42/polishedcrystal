@@ -412,10 +412,10 @@ StatPals: ; similar to X items
 ; speed - cyan
 	RGB 13, 27, 31
 	RGB 05, 20, 30
-; spcl.atk - yellow
+; sp.atk - yellow
 	RGB 31, 31, 07
 	RGB 29, 23, 01
-; spcl.def - green
+; sp.def - green
 	RGB 12, 25, 01
 	RGB 05, 14, 00
 ; accuracy - purple

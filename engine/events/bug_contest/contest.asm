@@ -377,9 +377,9 @@ ContestScore:
 	call .AddContestStat
 	ld a, [wContestMonSpeed   + 1]
 	call .AddContestStat
-	ld a, [wContestMonSpclAtk + 1]
+	ld a, [wContestMonSpAtk   + 1]
 	call .AddContestStat
-	ld a, [wContestMonSpclDef + 1]
+	ld a, [wContestMonSpDef   + 1]
 	call .AddContestStat
 
 	; DVs (6 points per DV that's at least 8)
