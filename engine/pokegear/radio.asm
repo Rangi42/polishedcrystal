@@ -752,13 +752,8 @@ CopyDexEntryParts:
 	ld [hli], a
 	ld a, "<LINE>"
 	ld [hli], a
-.loop1
-	ld a, [hli]
-	cp "@"
-	jr z, .okay1
-	cp "<NEXT>"
-	jr nz, .loop1
-.okay1
+	ld d, BANK(@)
+	call .CopyLine
 	dec hl
 	ld [hl], "<DONE>"
 	ld hl, wPokedexShowPointerAddr
@@ -766,15 +761,7 @@ CopyDexEntryParts:
 	pop hl
 	pop af
 	ld d, a
-.loop2
-	ld a, d
-	call GetFarByte
-	inc hl
-	cp "@"
-	jr z, .okay2
-	cp "<NEXT>"
-	jr nz, .loop2
-.okay2
+	call .CopyLine
 	ld a, l
 	ld [wPokedexShowPointerAddr], a
 	ld a, h
@@ -782,6 +769,16 @@ CopyDexEntryParts:
 	ld a, d
 	ld [wPokedexShowPointerBank], a
 	ret
+
+.CopyLine:
+	ld a, d
+	call GetFarByte
+	inc hl
+	cp "@"
+	ret z
+	cp "<NEXT>"
+	ret z
+	jr .CopyLine
 
 PokedexShowText:
 	; @ @
