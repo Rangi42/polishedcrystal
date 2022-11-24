@@ -250,6 +250,7 @@ endr
 	; ext species test
 	givepoke ANNIHILAPE, 50
 	givepoke DUDUNSPARCE, DUDUNSPARCE_THREE_SEGMENT_FORM, 50
+	givepoke FARIGIRAF, 50
 	; fill pokedex
 	callasm FillPokedex
 	; intro events

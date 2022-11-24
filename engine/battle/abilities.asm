@@ -968,10 +968,11 @@ NullificationAbilities:
 	dbw SAP_SIPPER, SapSipperAbility
 	dbw VOLT_ABSORB, VoltAbsorbAbility
 	dbw WATER_ABSORB, WaterAbsorbAbility
-	dbw DAMP, DampAbility
+	dbw DAMP, CannotUseTextAbility
+	dbw ARMOR_TAIL, CannotUseTextAbility
 	dbw -1, -1
 
-DampAbility:
+CannotUseTextAbility:
 	; doesn't use the normal activation message or "doesn't affect", because it
 	; would be confusing
 	ld a, BATTLE_VARS_MOVE_OPP

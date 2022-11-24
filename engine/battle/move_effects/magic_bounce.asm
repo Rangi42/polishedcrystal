@@ -1,21 +1,5 @@
 BattleCommand_bounceback:
-; Possibly bounce back an attack with Magic Bounce, or don't do anything if opponent is
-; immune due to Prankster.
-	call GetTrueUserAbility
-	cp PRANKSTER
-	jr nz, .prankster_done
-	call CheckIfTargetIsDarkType
-	jr nz, .prankster_done
-	xor a
-	ld [wTypeMatchup], a
-	ld [wTypeModifier], a
-	ld hl, wAttackMissed
-	or [hl]
-	ret nz
-	ld [hl], ATKFAIL_ABILITY
-	ret
-
-.prankster_done
+; Possibly bounce back an attack with Magic Bounce
 	call GetOpponentAbilityAfterMoldBreaker
 	cp MAGIC_BOUNCE
 	ret nz

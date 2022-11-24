@@ -2237,6 +2237,11 @@ _PlayCryHeader::
 
 	call MusicOff
 
+; Initialize the pitch sweep
+	xor a
+	ld [wSoundInput], a
+	ldh [rNR10], a
+
 ; Overload the music id with the cry id
 	ld hl, wMusicID
 	ld [hl], e
