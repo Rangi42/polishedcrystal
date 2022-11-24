@@ -13,7 +13,7 @@ DimCave5F_MapScriptHeader:
 	def_coord_events
 
 	def_bg_events
-	bg_event 12, 28, BGEVENT_ITEM + X_SPCL_ATK, EVENT_DIM_CAVE_5F_HIDDEN_X_SPCL_ATK
+	bg_event 12, 28, BGEVENT_ITEM + X_SP_ATK, EVENT_DIM_CAVE_5F_HIDDEN_X_SP_ATK
 
 	def_object_events
 	strengthboulder_event 25,  5, EVENT_BOULDER_IN_DIM_CAVE_5F

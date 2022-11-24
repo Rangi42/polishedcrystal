@@ -103,8 +103,8 @@ ItemIconPointers:
 	dba XAttackIcon
 	dba XDefendIcon
 	dba XSpeedIcon
-	dba XSpclAtkIcon
-	dba XSpclDefIcon
+	dba XSpAtkIcon
+	dba XSpDefIcon
 	dba XAccuracyIcon
 	dba DireHitIcon
 	dba GuardSpecIcon

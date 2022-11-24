@@ -102,8 +102,8 @@ ItemDescriptions:
 	dw XAttackDesc
 	dw XDefendDesc
 	dw XSpeedDesc
-	dw XSpclAtkDesc
-	dw XSpclDefDesc
+	dw XSpAtkDesc
+	dw XSpDefDesc
 	dw XAccuracyDesc
 	dw DireHitDesc
 	dw GuardSpecDesc
@@ -528,13 +528,13 @@ CarbosDesc:
 	done
 
 CalciumDesc:
-	text "Raises Spcl.Atk"
-	next "of one #mon."
+	text "Raises Sp.Atk of"
+	next "one #mon."
 	done
 
 ZincDesc:
-	text "Raises Spcl.Def"
-	next "of one #mon."
+	text "Raises Sp.Def of"
+	next "one #mon."
 	done
 
 RareCandyDesc:
@@ -612,13 +612,13 @@ XSpeedDesc:
 	next "(1 battle)"
 	done
 
-XSpclAtkDesc:
-	text "Raises Spcl. Atk."
+XSpAtkDesc:
+	text "Raises Sp.Atk."
 	next "(1 battle)"
 	done
 
-XSpclDefDesc:
-	text "Raises Spcl. Def."
+XSpDefDesc:
+	text "Raises Sp.Def."
 	next "(1 battle)"
 	done
 
@@ -761,13 +761,13 @@ QualotBerryDesc:
 	done
 
 HondewBerryDesc:
-	text "Raises friendship,"
-	next "lowers Spcl.Atk."
+	text "Raises friendship"
+	next "but lowers Sp.Atk."
 	done
 
 GrepaBerryDesc:
-	text "Raises friendship,"
-	next "lowers Spcl.Def."
+	text "Raises friendship"
+	next "but lowers Sp.Def."
 	done
 
 TamatoBerryDesc:
@@ -791,13 +791,13 @@ SalacBerryDesc:
 	done
 
 PetayaBerryDesc:
-	text "Raises Spcl.Atk"
-	next "in a pinch."
+	text "Raises Sp.Atk in"
+	next "a pinch."
 	done
 
 ApicotBerryDesc:
-	text "Raises Spcl.Def"
-	next "in a pinch."
+	text "Raises Sp.Def in"
+	next "a pinch."
 	done
 
 LansatBerryDesc:
@@ -836,7 +836,7 @@ KeeBerryDesc:
 	done
 
 MarangaBerryDesc:
-	text "Raises Spcl.Def on"
+	text "Raises Sp.Def on"
 	next "a special hit."
 	done
 
@@ -1033,7 +1033,7 @@ AirBalloonDesc:
 	done
 
 AssaultVestDesc:
-	text "Ups Spcl.Def, but"
+	text "Boosts Sp.Def, but"
 	next "bans status moves."
 	done
 
@@ -1213,12 +1213,12 @@ PowerBeltDesc:
 	done
 
 PowerLensDesc:
-	text "Ups Spcl.Atk gain,"
+	text "Ups Sp.Atk gain,"
 	next "but lowers Speed."
 	done
 
 PowerBandDesc:
-	text "Ups Spcl.Def gain,"
+	text "Ups Sp.Def gain,"
 	next "but lowers Speed."
 	done
 
@@ -1238,8 +1238,8 @@ SweetHoneyDesc:
 	done
 
 EvioliteDesc:
-	text "Ups Def and Spcl."
-	next "Def of evolvers."
+	text "Ups Def and Sp.Def"
+	next "of evolvers."
 	done
 
 MuscleBandDesc:
@@ -1459,7 +1459,7 @@ RedCardDesc:
 	done
 
 AbsorbBulbDesc:
-	text "Raises Spcl.Atk on"
+	text "Raises Sp.Atk on"
 	next "a Water hit."
 	done
 
@@ -1469,7 +1469,7 @@ CellBatteryDesc:
 	done
 
 LuminousMossDesc:
-	text "Raises Spcl.Def on"
+	text "Raises Sp.Def on"
 	next "a Water hit."
 	done
 
@@ -1494,7 +1494,7 @@ BlundrPolicyDesc:
 	done
 
 ThroatSprayDesc:
-	text "Raises Spcl.Atk on"
+	text "Raises Sp.Atk on"
 	next "a sound move."
 	done
 

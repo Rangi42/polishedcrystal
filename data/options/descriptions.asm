@@ -42,13 +42,17 @@ InitialOptionDescriptions:
 
 .InitialOptionDesc_EVs:
 	text "EVs boost stats by"
-	line "up to 63 points."
+	line STRFMT("up to %d points,", MODERN_MAX_EV / 4)
+	cont "one per 4 EVs."
 
 	para "You can choose to"
-	line "limit total EVs to"
+	line "allow maxing every"
 
-	para "510, or to allow"
-	line "maxing all stats."
+	para "stat to {d:MODERN_MAX_EV} EVs,"
+	line "like stat exp did,"
+
+	para "or limit them to"
+	line "a total of {d:MODERN_EV_LIMIT}."
 
 	para "Replaced stat exp-"
 	line "erience in Gen 3."
@@ -85,7 +89,8 @@ InitialOptionDescriptions:
 	line "lated as if IVs"
 
 	para "were perfect 15s,"
-	line "even for foes."
+	line "for your #mon"
+	cont "and opponents'."
 	prompt
 
 .InitialOptionDesc_TradedMon:

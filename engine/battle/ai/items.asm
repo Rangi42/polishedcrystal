@@ -259,8 +259,8 @@ AI_Items:
 	dbw X_ATTACK,     .XAttack
 	dbw X_DEFEND,     .XDefend
 	dbw X_SPEED,      .XSpeed
-	dbw X_SPCL_ATK,   .XSpclAtk
-	dbw X_SPCL_DEF,   .XSpclDef
+	dbw X_SP_ATK,     .XSpAtk
+	dbw X_SP_DEF,     .XSpDef
 	dbw X_ACCURACY,   .XAccuracy
 	db $ff
 
@@ -408,16 +408,16 @@ AI_Items:
 	ld a, X_SPEED
 	jmp EnemyUsedXItem
 
-.XSpclAtk:
+.XSpAtk:
 	call .XItem
 	ret c
-	ld a, X_SPCL_ATK
+	ld a, X_SP_ATK
 	jmp EnemyUsedXItem
 
-.XSpclDef:
+.XSpDef:
 	call .XItem
 	ret c
-	ld a, X_SPCL_DEF
+	ld a, X_SP_DEF
 	jmp EnemyUsedXItem
 
 .XAccuracy:

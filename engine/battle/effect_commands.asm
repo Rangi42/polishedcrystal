@@ -3540,7 +3540,7 @@ endc
 	cp EFFECT_PSYSTRIKE
 	jr z, .psystrike
 
-	ld hl, wBattleMonSpclDef
+	ld hl, wBattleMonSpDef
 	call GetOpponentMonAttr
 	ld a, [hli]
 	ld b, a
@@ -3559,7 +3559,7 @@ endc
 	ld c, [hl]
 
 .lightscreen
-	ld hl, wBattleMonSpclAtk
+	ld hl, wBattleMonSpAtk
 	call GetUserMonAttr
 	call GetFutureSightUser
 	jr z, .sat_ok
@@ -3663,7 +3663,7 @@ CheckAttackItemBoost:
 	ret
 
 SpeciesItemBoost:
-; Helper function for items boosting (Spcl.) Atk, i.e. Thick Club/Light Ball.
+; Helper function for items boosting (Sp.) Atk, i.e. Thick Club/Light Ball.
 	call TrueUserValidBattleItem
 	ret nz
 
