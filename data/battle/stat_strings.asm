@@ -5,13 +5,13 @@ StatStrings:
 	dw .attack
 	dw .defense
 	dw .speed
-	dw .spcl_atk
-	dw .spcl_def
+	dw .sp_atk
+	dw .sp_def
 	assert_table_length NUM_STATS
 
-.health   db "Health@"
-.attack   db "Attack@"
-.defense  db "Defense@"
-.speed    db "Speed@"
-.spcl_atk db "Spcl.Atk@"
-.spcl_def db "Spcl.Def@"
+.health:  db "Health@"
+.attack:  db "Attack@"
+.defense: db "Defense@"
+.speed:   db "Speed@"
+.sp_atk:  db "Sp.Atk@"
+.sp_def:  db "Sp.Def@"

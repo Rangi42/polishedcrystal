@@ -256,11 +256,11 @@ JudgeSystem::
 	call .PrintBottomStat
 	hlcoord 6, 15
 	ld de, .SDf
-	ld bc, wTempMonSpclDef
+	ld bc, wTempMonSpDef
 	call .PrintBottomStat
 	hlcoord 6, 4
 	ld de, .SAt
-	ld bc, wTempMonSpclAtk
+	ld bc, wTempMonSpAtk
 	call .PrintTopStat
 
 ; Show the screen
@@ -1046,30 +1046,30 @@ MACRO def_y_coords
 	db 59, 60, 61, 61, 62, 62, 63, 64, 64, 65, 65, 66, 67, 67, 68, 68, 69, 70, 70, 71
 ENDM
 
-MACRO spcl_atk_y_coords
+MACRO sp_atk_y_coords
 	db 24, 25, 25, 26, 26, 27, 27, 28, 29, 29, 30, 30, 31, 31, 32, 33, 33, 34, 34, 35
 	db 36, 36, 37, 37, 38, 39, 39, 40, 40, 41, 42, 42, 43, 43, 44, 45, 45, 46, 46, 47
 ENDM
 
-MACRO spcl_def_y_coords
+MACRO sp_def_y_coords
 	db 71, 70, 70, 69, 68, 68, 67, 67, 66, 65, 65, 64, 64, 63, 62, 62, 61, 61, 60, 59
 	db 59, 58, 58, 57, 56, 56, 55, 55, 54, 53, 53, 52, 52, 51, 51, 50, 49, 49, 48, 48
 ENDM
 
 ForwardSlashAxisYCoords:
-	spcl_def_y_coords
+	sp_def_y_coords
 	atk_y_coords
 
 BackslashAxisYCoords:
-	spcl_atk_y_coords
+	sp_atk_y_coords
 	def_y_coords
 
 UpperSlashAxesYCoords:
-	spcl_atk_y_coords
+	sp_atk_y_coords
 	atk_y_coords
 
 LowerSlashAxesYCoords:
-	spcl_def_y_coords
+	sp_def_y_coords
 	def_y_coords
 
 LeftSlashAxesXCoords:

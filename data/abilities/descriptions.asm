@@ -299,7 +299,7 @@ NaturalCureDescription:
 
 LightningRodDescription:
 	text  "Electric moves"
-	next1 "boost Spcl.Atk."
+	next1 "boost Sp.Atk."
 	done
 
 SereneGraceDescription:
@@ -558,7 +558,7 @@ HydrationDescription:
 	done
 
 SolarPowerDescription:
-	text  "Ups Spcl.Atk but"
+	text  "Boosts Sp.Atk but"
 	next1 "lowers HP in sun."
 	done
 
@@ -813,7 +813,7 @@ BulletproofDescription:
 	done
 
 CompetitiveDescription:
-	text  "Boosts Spcl.Atk on"
+	text  "Boosts Sp.Atk on"
 	next1 "stat reduction."
 	done
 
@@ -838,7 +838,7 @@ ParentalBondDescription:
 	done
 
 BerserkDescription:
-	text  "Ups Spcl.Atk. when"
+	text  "Boosts Sp.Atk when"
 	next1 "damaged over half."
 	done
 

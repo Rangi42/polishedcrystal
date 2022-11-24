@@ -141,8 +141,8 @@ Celadon5FMart2:
 	db X_ATTACK
 	db X_DEFEND
 	db X_SPEED
-	db X_SPCL_ATK
-	db X_SPCL_DEF
+	db X_SP_ATK
+	db X_SP_DEF
 	db X_ACCURACY
 	db DIRE_HIT
 	db GUARD_SPEC

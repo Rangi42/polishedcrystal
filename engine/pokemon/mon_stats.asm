@@ -106,9 +106,9 @@ endr
 	call .PrintStat
 	ld de, wTempMonDefense
 	call .PrintStat
-	ld de, wTempMonSpclAtk
+	ld de, wTempMonSpAtk
 	call .PrintStat
-	ld de, wTempMonSpclDef
+	ld de, wTempMonSpDef
 	call .PrintStat
 	ld de, wTempMonSpeed
 	jmp PrintNum
@@ -126,8 +126,8 @@ AllStatNames:
 MostStatNames:
 	db   "Attack"
 	next "Defense"
-	next "Spcl.Atk"
-	next "Spcl.Def"
+	next "Sp.Atk"
+	next "Sp.Def"
 	next "Speed"
 	next "@"
 
@@ -553,8 +553,8 @@ FixPlayerEVs:
 ; 3. Reduce Attack EVs by 4 if above 0.
 ; 4. Reduce Defense EVs by 4 if above 0.
 ; 5. Reduce Speed EVs by 4 if above 0.
-; 6. Reduce Spcl. Atk. EVs by 4 if above 0.
-; 7. Reduce Spcl. Def. EVs by 4 if above 0.
+; 6. Reduce Sp.Atk EVs by 4 if above 0.
+; 7. Reduce Sp.Def EVs by 4 if above 0.
 ; 8. Go to step 2.
 	; First, check if the player is using modern EVs.
 	ld a, [wInitialOptions2]
@@ -731,7 +731,7 @@ CalcPkmnStatC:
 	dec a ; STAT_SDF?
 	jr z, .Speed
 	dec a ; STAT_SAT?
-	jr z, .SpclAtk
+	jr z, .SpAtk
 	; STAT_SDEF
 	inc hl
 	inc hl
@@ -757,7 +757,7 @@ CalcPkmnStatC:
 	ld a, [hld]
 	jr .GotDV
 
-.SpclAtk:
+.SpAtk:
 	inc hl
 	inc hl
 	ld a, [hld]
