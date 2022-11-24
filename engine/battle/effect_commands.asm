@@ -2123,6 +2123,8 @@ BattleCommand_checkhit:
 
 BattleCommand_checkpriority:
 ; Checks for abilities and conditions that would block priority moves from occuring
+	call HasOpponentFainted
+	ret z
 	farcall GetMovePriority
 	cp $81
 	jr c, .check_prankster
@@ -2149,9 +2151,9 @@ BattleCommand_checkpriority:
 	ld [wTypeModifier], a
 	ld hl, wAttackMissed
 	or [hl]
-	ret nz
+	jmp nz, BattleCommand_failuretext
 	ld [hl], b
-	ret
+	jmp BattleCommand_failuretext
 
 BattleCommand_effectchance:
 ; Doesn't work against Substitute or Shield Dust
