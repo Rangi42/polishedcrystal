@@ -701,20 +701,7 @@ PokedexShow2:
 	ld b, a
 	call GetSpeciesAndFormIndex
 	call GetDexEntryPointer
-	push af
-	push hl
-	call CopyDexEntryPart1
-	dec hl
-	ld [hl], "<DONE>"
-	ld hl, wPokedexShowPointerAddr
-	call CopyRadioTextToRAM
-	pop hl
-	pop af
-	call CopyDexEntryPart2
-	ld a, l
-	ld [wPokedexShowPointerAddr], a
-	ld a, h
-	ld [wPokedexShowPointerAddr + 1], a
+	call CopyDexEntryParts
 	ld a, POKEDEX_SHOW_3
 	jmp PrintRadioLine
 
@@ -754,35 +741,9 @@ CopyDexEntry:
 	ld h, [hl]
 	ld l, a
 	ld a, [wPokedexShowPointerBank]
+CopyDexEntryParts:
 	push af
 	push hl
-	call CopyDexEntryPart1
-	dec hl
-	ld [hl], "<DONE>"
-	ld hl, wPokedexShowPointerAddr
-	call CopyRadioTextToRAM
-	pop hl
-	pop af
-CopyDexEntryPart2:
-	ld d, a
-.loop
-	ld a, d
-	call GetFarByte
-	inc hl
-	cp "@"
-	jr z, .okay
-	cp "<NEXT>"
-	jr nz, .loop
-.okay
-	ld a, l
-	ld [wPokedexShowPointerAddr], a
-	ld a, h
-	ld [wPokedexShowPointerAddr + 1], a
-	ld a, d
-	ld [wPokedexShowPointerBank], a
-	ret
-
-CopyDexEntryPart1:
 	ld de, wPokedexShowPointerBank
 	ld bc, SCREEN_WIDTH - 1
 	call FarCopyBytes
@@ -791,13 +752,33 @@ CopyDexEntryPart1:
 	ld [hli], a
 	ld a, "<LINE>"
 	ld [hli], a
-.loop
-	ld a, [hli]
+	ld d, BANK(@)
+	call .CopyLine
+	dec hl
+	ld [hl], "<DONE>"
+	ld hl, wPokedexShowPointerAddr
+	call CopyRadioTextToRAM
+	pop hl
+	pop af
+	ld d, a
+	call .CopyLine
+	ld a, l
+	ld [wPokedexShowPointerAddr], a
+	ld a, h
+	ld [wPokedexShowPointerAddr + 1], a
+	ld a, d
+	ld [wPokedexShowPointerBank], a
+	ret
+
+.CopyLine:
+	ld a, d
+	call GetFarByte
+	inc hl
 	cp "@"
 	ret z
 	cp "<NEXT>"
 	ret z
-	jr .loop
+	jr .CopyLine
 
 PokedexShowText:
 	; @ @

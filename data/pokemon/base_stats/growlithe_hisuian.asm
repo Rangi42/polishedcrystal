@@ -7,11 +7,7 @@
 	db ALWAYS_ITEM_2, ASPEAR_BERRY ; held items
 	dn GENDER_F25, HATCH_MEDIUM_FAST ; gender ratio, step cycles to hatch
 
-if DEF(FAITHFUL)
-	abilities_for GROWLITHE_HISUIAN, INTIMIDATE, FLASH_FIRE, JUSTIFIED
-else
 	abilities_for GROWLITHE_HISUIAN, INTIMIDATE, FLASH_FIRE, ROCK_HEAD
-endc
 	db GROWTH_SLOW ; growth rate
 	dn EGG_GROUND, EGG_GROUND ; egg groups
 

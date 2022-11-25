@@ -278,11 +278,11 @@ DownloadAbility:
 	ld b, a
 	ld a, [hl]
 	ld c, a
-	ld hl, wEnemyMonSpclDef + 1
+	ld hl, wEnemyMonSpDef + 1
 	ldh a, [hBattleTurn]
 	and a
 	jr z, .ok2
-	ld hl, wBattleMonSpclDef + 1
+	ld hl, wBattleMonSpDef + 1
 .ok2
 	ld a, [hld]
 	ld e, a
@@ -968,10 +968,11 @@ NullificationAbilities:
 	dbw SAP_SIPPER, SapSipperAbility
 	dbw VOLT_ABSORB, VoltAbsorbAbility
 	dbw WATER_ABSORB, WaterAbsorbAbility
-	dbw DAMP, DampAbility
+	dbw DAMP, CannotUseTextAbility
+	dbw ARMOR_TAIL, CannotUseTextAbility
 	dbw -1, -1
 
-DampAbility:
+CannotUseTextAbility:
 	; doesn't use the normal activation message or "doesn't affect", because it
 	; would be confusing
 	ld a, BATTLE_VARS_MOVE_OPP
@@ -1585,6 +1586,7 @@ OffensiveDamageAbilities:
 	dbw GALVANIZE, GalvanizeAbility
 	dbw GORILLA_TACTICS, GorillaTacticsAbility
 	dbw STEELY_SPIRIT, SteelySpiritAbility
+	dbw SHARPNESS, SharpnessAbility
 	dbw -1, -1
 
 DefensiveDamageAbilities:
@@ -1712,6 +1714,14 @@ IronFistAbility:
 	jr MoveBoostAbility
 
 INCLUDE "data/moves/punching_moves.asm"
+
+SharpnessAbility:
+; 120% damage for slicing moves
+	ld hl, SlicingMoves
+	ln b, 6, 5 ; x1.2
+	jr MoveBoostAbility
+
+INCLUDE "data/moves/slicing_moves.asm"
 
 MoveBoostAbility:
 	ld a, BATTLE_VARS_MOVE

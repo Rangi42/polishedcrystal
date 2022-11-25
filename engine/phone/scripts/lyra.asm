@@ -227,6 +227,7 @@ LyraPhoneScript_EvolutionMethodsTable:
 	dw .EvolveMimeJr
 	dw .EvolveUrsaring
 	dw .EvolveStantler
+	dw .EvolveDunsparce
 	assert_table_length NUM_EVOLVE_METHODS
 .EvolveNone:
 	farwritetext LyraPhoneEvoText_None
@@ -323,6 +324,11 @@ LyraPhoneScript_EvolutionMethodsTable:
 .EvolveStantler:
 	farwritetext LyraPhoneEvoText_Stantler
 	farwritetext LyraPhoneEvoText_AncientSinnoh
+	end
+.EvolveDunsparce:
+	loadmem wStringBuffer4, 32
+	farwritetext LyraPhoneEvoText_Level
+	farwritetext LyraPhoneEvoText_DunsparceSegments
 	end
 
 LyraPhone_GetFirstMonEvolutionData:

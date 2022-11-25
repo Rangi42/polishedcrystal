@@ -11,3 +11,5 @@
 * Pikachu_pika corresponds to Pikachu_Red. Replace the sprite with my custom Yellow animated sprite (gfx/pokemon/pikachu_pika)
 * Reorder the Trainer Card for the Kanto Gym Leaders (engine/menus , gfx/trainer_card)
 * Flip Bellossom's normal and shiny palettes (same for ending credits colors) (gfx/pokemon/bellossom/normal-shiny.pal)
+
+* 3rd player option hidden. (engine/menus/intro_menu.asm, line 385)

@@ -167,8 +167,8 @@ SECTION "BattleItemIcon", ROMX
 XAttackIcon::
 XDefendIcon::
 XSpeedIcon::
-XSpclAtkIcon::
-XSpclDefIcon::
+XSpAtkIcon::
+XSpDefIcon::
 XAccuracyIcon::
 DireHitIcon::
 GuardSpecIcon:: INCBIN "gfx/items/battle_item.2bpp.lz"

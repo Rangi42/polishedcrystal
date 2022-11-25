@@ -101,8 +101,8 @@ ViridianSchoolHouseBlackboardText:
 	cont "Defense stats."
 
 	para "Special moves use"
-	line "the Spcl.Atk and"
-	cont "Spcl.Def stats."
+	line "the Sp.Atk and"
+	cont "Sp.Def stats."
 
 	para "Status moves do"
 	line "not cause damage"

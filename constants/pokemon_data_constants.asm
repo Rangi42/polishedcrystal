@@ -317,7 +317,7 @@ DEF NUM_HOF_TEAMS EQU 10
 	const EVOLVE_EVS
 	const EVOLVE_CRIT ; only for Galarian Farfetch'd
 	const EVOLVE_PARTY ; only for Mantyke
-; multi_evo types for Lyra's info (used in data/pokemon/multiple_evos.asm)
+; multi_evo types for Lyra's info (used in data/pokemon/multi_evos.asm)
 	const EVOLVE_EGG
 	const EVOLVE_PIKACHU
 	const EVOLVE_GLOOM
@@ -332,6 +332,7 @@ DEF NUM_HOF_TEAMS EQU 10
 	const EVOLVE_MIME_JR_
 	const EVOLVE_URSARING
 	const EVOLVE_STANTLER
+	const EVOLVE_DUNSPARCE
 DEF NUM_EVOLVE_METHODS EQU const_value
 
 ; EVOLVE_HAPPINESS triggers

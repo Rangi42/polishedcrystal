@@ -128,7 +128,7 @@ PokedexDataPointerTable:
 	dba ElectabuzzPokedexEntry
 	dba MagmarPokedexEntry
 	dba PinsirPokedexEntry
-	dba TaurosPokedexEntry
+	dba TaurosPlainPokedexEntry
 	dba MagikarpPokedexEntry
 	dba GyaradosPlainPokedexEntry
 	dba LaprasPokedexEntry
@@ -194,7 +194,7 @@ PokedexDataPointerTable:
 	dba SunkernPokedexEntry
 	dba SunfloraPokedexEntry
 	dba YanmaPokedexEntry
-	dba WooperPokedexEntry
+	dba WooperPlainPokedexEntry
 	dba QuagsirePokedexEntry
 	dba EspeonPokedexEntry
 	dba UmbreonPokedexEntry
@@ -288,11 +288,17 @@ PokedexDataPointerTable:
 	dba UrsalunaPokedexEntry
 	dba SneaslerPokedexEntry
 	dba OverqwilPokedexEntry
+	dba DudunsparcePokedexEntry
+	dba FarigirafPokedexEntry
+	dba ClodsirePokedexEntry
+	dba AnnihilapePokedexEntry
 	assert_table_length NUM_SPECIES
 
 	dba GyaradosRedPokedexEntry
 
 	dba MewtwoArmoredPokedexEntry
+
+	dba DudunsparcePokedexEntry
 
 	dba RattataAlolanPokedexEntry
 	dba RaticateAlolanPokedexEntry
@@ -334,5 +340,10 @@ PokedexDataPointerTable:
 	dba TyphlosionHisuianPokedexEntry
 	dba QwilfishHisuianPokedexEntry
 	dba SneaselHisuianPokedexEntry
+
+	dba WooperPaldeanPokedexEntry
+	dba TaurosPaldeanPokedexEntry
+	dba TaurosPaldeanFirePokedexEntry
+	dba TaurosPaldeanWaterPokedexEntry
 
 	assert_table_length NUM_EXT_POKEMON

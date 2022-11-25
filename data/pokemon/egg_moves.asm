@@ -685,7 +685,8 @@ YanmaEggMoves:
 	db REVERSAL
 	db $ff
 
-WooperEggMoves:
+WooperPlainEggMoves:
+WooperPaldeanEggMoves:
 	db COUNTER
 	db DOUBLE_KICK
 	db ENCORE

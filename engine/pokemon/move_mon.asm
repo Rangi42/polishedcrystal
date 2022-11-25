@@ -744,9 +744,9 @@ Special_HyperTrain:
 	db "HP@"
 	db "Speed@"
 	db "Attack@"
-	db "Spcl.Atk@"
+	db "Sp.Atk@"
 	db "Defense@"
-	db "Spcl.Def@"
+	db "Sp.Def@"
 
 .TrainWhichStat:
 	text "Train which of"

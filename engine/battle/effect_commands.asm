@@ -2121,6 +2121,40 @@ BattleCommand_checkhit:
 	or 1
 	ret
 
+BattleCommand_checkpriority:
+; Checks for abilities and conditions that would block priority moves from occuring
+	call HasOpponentFainted
+	ret z
+	farcall GetMovePriority
+	cp $81
+	jr c, .check_prankster
+	; Armor Tail blocks moves with priority > 0 (so does not block moves like Prankster Roar)
+	call GetOpponentAbilityAfterMoldBreaker
+	cp ARMOR_TAIL
+	ld b, ATKFAIL_ABILITY
+	jr z, .attack_fails
+	; Dark-type are immune to (most) Prankster-boosted moves that could affect it
+.check_prankster
+	call GetTrueUserAbility
+	cp PRANKSTER
+	ret nz
+	ld a, BATTLE_VARS_MOVE_CATEGORY
+	call GetBattleVar
+	cp STATUS
+	ret nz
+	call CheckIfTargetIsDarkType
+	ret nz
+	ld b, ATKFAIL_IMMUNE
+.attack_fails
+	xor a
+	ld [wTypeMatchup], a
+	ld [wTypeModifier], a
+	ld hl, wAttackMissed
+	or [hl]
+	jmp nz, BattleCommand_failuretext
+	ld [hl], b
+	jmp BattleCommand_failuretext
+
 BattleCommand_effectchance:
 ; Doesn't work against Substitute or Shield Dust
 	push bc
@@ -2158,7 +2192,7 @@ _CheckEffectChance:
 	cp SERENE_GRACE
 	jr nz, .skip_serene_grace
 	sla b
-	jr c, EffectChanceEnd ; The effect byte overflowed, so gurantee it
+	jr c, EffectChanceEnd ; The effect byte overflowed, so guarantee it
 
 .skip_serene_grace
 	ld a, 100
@@ -3506,7 +3540,7 @@ endc
 	cp EFFECT_PSYSTRIKE
 	jr z, .psystrike
 
-	ld hl, wBattleMonSpclDef
+	ld hl, wBattleMonSpDef
 	call GetOpponentMonAttr
 	ld a, [hli]
 	ld b, a
@@ -3525,7 +3559,7 @@ endc
 	ld c, [hl]
 
 .lightscreen
-	ld hl, wBattleMonSpclAtk
+	ld hl, wBattleMonSpAtk
 	call GetUserMonAttr
 	call GetFutureSightUser
 	jr z, .sat_ok
@@ -3629,7 +3663,7 @@ CheckAttackItemBoost:
 	ret
 
 SpeciesItemBoost:
-; Helper function for items boosting (Spcl.) Atk, i.e. Thick Club/Light Ball.
+; Helper function for items boosting (Sp.) Atk, i.e. Thick Club/Light Ball.
 	call TrueUserValidBattleItem
 	ret nz
 

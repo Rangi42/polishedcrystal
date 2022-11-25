@@ -114,8 +114,8 @@ ItemEffects:
 	dw XItemEffect        ; X_ATTACK
 	dw XItemEffect        ; X_DEFEND
 	dw XItemEffect        ; X_SPEED
-	dw XItemEffect        ; X_SPCL_ATK
-	dw XItemEffect        ; X_SPCL_DEF
+	dw XItemEffect        ; X_SP_ATK
+	dw XItemEffect        ; X_SP_DEF
 	dw XItemEffect        ; X_ACCURACY
 	dw DireHit            ; DIRE_HIT
 	dw GuardSpec          ; GUARD_SPEC
@@ -467,7 +467,6 @@ endc
 	predef FlagPredef
 
 	farcall GiveExperiencePointsAfterCatch
-	call GetMemCGBLayout
 
 	ld a, [wOTPartyMon1Level]
 	ld [wCurPartyLevel], a

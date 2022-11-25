@@ -27,6 +27,7 @@ BattleCommandPointers:
 	command stab
 	command damagevariation
 	command checkhit
+	command checkpriority
 	command lowersub
 	command moveanimnosub
 	command raisesub

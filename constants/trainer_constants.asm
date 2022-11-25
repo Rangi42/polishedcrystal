@@ -1108,32 +1108,34 @@ DEF CRYS EQU __trainer_class__
 
 	trainerclass PIERS ; 91
 
-	trainerclass VICTOR  ; 92
+	trainerclass KATY ; 92
 
-	trainerclass BILL_T ; 93
+	trainerclass VICTOR  ; 93
 
-	trainerclass YELLOW ; 94
+	trainerclass BILL_T ; 94
 
-	trainerclass WALKER ; 95
+	trainerclass YELLOW ; 95
 
-	trainerclass IMAKUNI ; 96
+	trainerclass WALKER ; 96
 
-	trainerclass LAWRENCE ; 97
+	trainerclass IMAKUNI ; 97
 
-	trainerclass REI ; 98
+	trainerclass LAWRENCE ; 98
+
+	trainerclass REI ; 99
 
 DEF NUM_TRAINER_CLASSES EQU __trainer_class__ - 1
 
-	trainerclass OMASTAR_FOSSIL ; 99
+	trainerclass OMASTAR_FOSSIL ; 9a
 
-	trainerclass KABUTOPS_FOSSIL ; 9a
+	trainerclass KABUTOPS_FOSSIL ; 9b
 
-	trainerclass AERODACTYL_FOSSIL ; 9b
+	trainerclass AERODACTYL_FOSSIL ; 9c
 
-	trainerclass CUBONE_ARMOR ; 9c
+	trainerclass CUBONE_ARMOR ; 9d
 
-	trainerclass METEORITE ; 9d
+	trainerclass METEORITE ; 9e
 
-	trainerclass SILHOUETTE ; 9e
+	trainerclass SILHOUETTE ; 9f
 
 DEF NUM_TRAINER_CLASS_PICS EQU __trainer_class__ - 1

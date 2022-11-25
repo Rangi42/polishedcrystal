@@ -832,7 +832,7 @@ GenderMenu::
 
 .d_right
 	ld a, [wPlayerGender]
-	cp PLAYER_ENBY
+	cp PLAYER_ENBY	; cp PLAYER_FEMALE to allow only MALE/FEMALE
 	jr z, .got_gender
 	inc a ; male->female, female->enby
 .got_gender

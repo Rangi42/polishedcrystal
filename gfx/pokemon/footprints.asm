@@ -33,6 +33,7 @@ DiglettFootprint::
 DittoFootprint::
 DragonairFootprint::
 DratiniFootprint::
+DudunsparceFootprint::
 DugtrioFootprint::
 DunsparceFootprint::
 EkansFootprint::
@@ -293,3 +294,6 @@ WyrdeerFootprint:: INCBIN "gfx/footprints/wyrdeer.1bpp.lz"
 KleavorFootprint:: INCBIN "gfx/footprints/kleavor.1bpp.lz"
 UrsalunaFootprint:: INCBIN "gfx/footprints/ursaluna.1bpp.lz"
 SneaslerFootprint:: INCBIN "gfx/footprints/sneasler.1bpp.lz"
+FarigirafFootprint:: INCBIN "gfx/footprints/farigiraf.1bpp.lz"
+ClodsireFootprint:: INCBIN "gfx/footprints/clodsire.1bpp.lz"
+AnnihilapeFootprint:: INCBIN "gfx/footprints/annihilape.1bpp.lz"

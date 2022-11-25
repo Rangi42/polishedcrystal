@@ -70,6 +70,9 @@ Mantine: Hurricane, Rock Blast
 Tyranitar: Rock Throw, Rock Blast
 Weavile: Icicle Spear
 
+S/V:
+Mewtwo: Power Gem
+
 Egg:
 Geodude/Graveler/Golem: Rock Slide
 Rhyhorn/Rhydon/Rhyperior: Crunch

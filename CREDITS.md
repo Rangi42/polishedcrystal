@@ -17,7 +17,7 @@ Pokémon Polished Crystal would never have been finished without the help of man
 * Sanqui for the music player with piano roll visualization.
 * ax6 for porting the xorshift+ PRNG from Prism as well as developing bsp and related patching functions originally for Prism.
 * MeroMero for the in-battle color inversion code, Smeargle color code, and some move animations.
-* darsh for the BSP save patch script and some bug fixes.
+* darsh for the BSP save patch script and some bug fixes and abilities.
 * kroc for the no-RTC code.
 * VictoriaLacroix for the Running Shoes routine.
 * ShockSlayer for fixing the InitBattleDisplay and FinalPkmnSlideInEnemyMonFrontpic routines.
@@ -45,6 +45,7 @@ Pokémon Polished Crystal would never have been finished without the help of man
 ## Graphics
 
 * Blue Emerald, solo993, Chamber, Lake, Neslug, and Pikachu25 for many sprites and icons.
+* ShadowOne333, Mia, and Quichless for Paldean Pokémon sprites and animations.
 * metalflygon08 for the many Pokémon and trainer sprites.
 * JaceDeane for the Goldenrod Museum paintings, many Pokémon and trainer sprites, Prof. Ivy's overworld sprite, map name signs, and some tiles.
 * bloodless for sprites of Buck, Maylene, Veteran♂, some variant Pikachu, Diglett, and Dugtrio.
@@ -61,11 +62,13 @@ Pokémon Polished Crystal would never have been finished without the help of man
 * octorox for Galarian Rapidash and Galarian Slowking's backpics.
 * Cure for sprites of Ursaluna, Kleavor, Hisuian Growlithe, and Hisuian Arcanine.
 * Sea for Hisuian Growlithe's animation.
+* ShadowOne333 and Sea for Annihilape's front and back sprites.
 * spritershawn for sprites of Red, Blue, and Green.
 * isamuakai01 for sprites of Steven and Cynthia.
 * Maddalena for sprites of Imakuni and the Ghost.
+* Nuuk for the sprite and animation of Farigiraf.
 * EeveeEe1999 for 8th gen menu icons and Lickilicky and Galarian Slowking animations.
-* trainerlass for sprites of Galarian Slowpoke and Slowbro, and Crys's back sprite.
+* trainerlass for sprites of Galarian Slowpoke and Slowbro, Katy's sprites, and Crys's back sprite.
 * Luna for some sprites and tiles.
 * SteppoBlazer for Flying and Surfing Pikachu's mini icons.
 * Twilir for Lyra's back sprite.

@@ -581,6 +581,9 @@ BeachGirlSpriteGFX:: INCBIN "gfx/sprites/beach_girl.2bpp.lz"
 SECTION "PiersSpriteGFX", ROMX
 PiersSpriteGFX:: INCBIN "gfx/sprites/piers.2bpp.lz"
 
+SECTION "KatySpriteGFX", ROMX
+KatySpriteGFX:: INCBIN "gfx/sprites/katy.2bpp.lz"
+
 SECTION "AlolanExeggutorSpriteGFX", ROMX
 AlolanExeggutorSpriteGFX:: INCBIN "gfx/sprites/alolan_exeggutor.2bpp.lz"
 

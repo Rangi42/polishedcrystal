@@ -288,4 +288,8 @@ PokemonNames::
 	rawchar "Ursaluna@@"
 	rawchar "Sneasler@@"
 	rawchar "Overqwil@@"
+	rawchar "Dudunsparc"
+	rawchar "Farigiraf@"
+	rawchar "Clodsire@@"
+	rawchar "Annihilape"
 	assert_table_length NUM_SPECIES + 1

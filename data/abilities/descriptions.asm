@@ -151,6 +151,9 @@ AbilityDescriptions:
 	dw SteelySpiritDescription
 	dw PerishBodyDescription
 	dw ScreenCleanerDescription
+	dw CudChewDescription
+	dw SharpnessDescription
+	dw ArmorTailDescription
 	assert_table_length NUM_ABILITIES
 
 NoAbilityDescription:
@@ -299,7 +302,7 @@ NaturalCureDescription:
 
 LightningRodDescription:
 	text  "Electric moves"
-	next1 "boost Spcl.Atk."
+	next1 "boost Sp.Atk."
 	done
 
 SereneGraceDescription:
@@ -558,7 +561,7 @@ HydrationDescription:
 	done
 
 SolarPowerDescription:
-	text  "Ups Spcl.Atk but"
+	text  "Boosts Sp.Atk but"
 	next1 "lowers HP in sun."
 	done
 
@@ -813,7 +816,7 @@ BulletproofDescription:
 	done
 
 CompetitiveDescription:
-	text  "Boosts Spcl.Atk on"
+	text  "Boosts Sp.Atk on"
 	next1 "stat reduction."
 	done
 
@@ -838,7 +841,7 @@ ParentalBondDescription:
 	done
 
 BerserkDescription:
-	text  "Ups Spcl.Atk. when"
+	text  "Boosts Sp.Atk when"
 	next1 "damaged over half."
 	done
 
@@ -890,4 +893,19 @@ PerishBodyDescription:
 ScreenCleanerDescription:
 	text  "Removes screens"
 	next1 "when switched in."
+	done
+
+CudChewDescription:
+	text  "Eats a Berry again"
+	next1 "after first use."
+	done
+
+SharpnessDescription:
+	text  "Boosts power of"
+	next1 "slicing moves."
+	done
+
+ArmorTailDescription:
+	text  "Stops foes using"
+	next1 "priority moves."
 	done

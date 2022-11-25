@@ -1184,7 +1184,7 @@ TrickRoomEndedText:
 
 LightScreenEffectText:
 	text "<USER>'s"
-	line "Spcl.Def rose!"
+	line "Sp.Def rose!"
 	prompt
 
 ReflectEffectText:
@@ -2046,6 +2046,12 @@ PiersFinalPkmnText:
 	para "Not songs…"
 	line "Not moves…"
 	cont "Not #mon!"
+	prompt
+
+KatyFinalPkmnText:
+	text "Oh? How should I"
+	line "roll things out"
+	cont "from here?"
 	prompt
 
 BillFinalPkmnText:
