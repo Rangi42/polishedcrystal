@@ -291,6 +291,10 @@ MiniIconPointers:
 	mini_icon Ursaluna
 	mini_icon Sneasler
 	mini_icon Overqwil
+	mini_icon DudunsparceTwoSegment
+	mini_icon Farigiraf
+	mini_icon Clodsire
+	mini_icon Annihilape
 	assert_table_length NUM_SPECIES
 
 	mini_icon UnownB
@@ -338,9 +342,13 @@ rept NUM_MAGIKARP - 1
 	mini_icon Magikarp
 endr
 
+	assert_table_length NUM_SPECIES + NUM_COSMETIC_FORMS
+
 	mini_icon Gyarados ; Red
 
 	mini_icon MewtwoArmored
+
+	mini_icon DudunsparceThreeSegment
 
 	mini_icon RattataAlolan
 	mini_icon RaticateAlolan
@@ -382,5 +390,10 @@ endr
 	mini_icon TyphlosionHisuian
 	mini_icon QwilfishHisuian
 	mini_icon SneaselHisuian
+
+	mini_icon WooperPaldean
+	mini_icon TaurosPaldean
+	mini_icon TaurosPaldeanFire
+	mini_icon TaurosPaldeanWater
 
 	assert_table_length NUM_UNIQUE_POKEMON

@@ -228,9 +228,21 @@ Pokedex_CheckForOtherForms:
 ; Input: a = 0 (check caught), 1 (check seen)
 ; Output: b = form, c = species, hl = pointer to mon form
 ; carry flag set if no other eligible form found
+	; Some routines use numbers other than 1 to mean "check seen" for
+	; optimization reasons, but we use the MSB of e for other things.
+	and 1
 	ld e, a
 	call Pokedex_GetCursorSpecies
 	res MON_CAUGHT_F, b
+
+	; If our current working form is the base form, treat any forms found
+	; in the table as immediately valid.
+	ld a, b
+	and FORM_MASK
+	cp PLAIN_FORM + 1
+	jr nc, .baseform_check_done
+	set 7, e
+.baseform_check_done
 	ld d, 0
 	push hl
 	ld hl, CosmeticSpeciesAndFormTable
@@ -238,19 +250,32 @@ Pokedex_CheckForOtherForms:
 	pop hl
 	ret
 
+.found_current_variant
+	; Mark that we've found the current variant.
+	set 7, e
+	; fallthrough
 .FindVariant:
 .variant_loop
+	; Check for list terminator.
 	ld a, [hli]
 	and a
 	jr z, .cont
+
+	; Is this the correct species?
 	cp c
 	ld a, [hli]
 	jr nz, .variant_loop
+
+	; Is this the actual species? FORM_MASK+1 references upper species bits.
 	xor b
 	cp FORM_MASK + 1
 	jr nc, .variant_loop
-	and FORM_MASK ; ensure listed form isn't the same as current form
-	jr z, .variant_loop
+
+	; With the previous xor, this will return zero if this is the same form.
+	and FORM_MASK
+	jr z, .found_current_variant
+
+	; Check if we've caught or seen the mon (depending on e)
 	dec hl
 	push bc
 	push de
@@ -265,8 +290,15 @@ Pokedex_CheckForOtherForms:
 	pop bc
 	ld a, [hli]
 	jr z, .variant_loop
-	cp b
-	jr nc, .got_form
+
+	; If this is below our current working form, switch to this new one.
+	bit 7, e
+	jr nz, .got_form
+
+	; Otherwise, if this is the first form for the species in the table,
+	; store it for later. We want to switch to it in case we are currently
+	; working with the base form, or if there's no form below our current
+	; and the base form isn't valid.
 	dec d
 	inc d
 	jr nz, .variant_loop
@@ -274,14 +306,19 @@ Pokedex_CheckForOtherForms:
 	jr .variant_loop
 
 .cont
+	; We didn't find anything to switch to right away. Check if there's an
+	; entry in the table at all beyond our currently working form.
 	ld a, d
 	and a
 	jr nz, .test_base
+
+	; Otherwise, bail out if our working form is the base form.
 	ld a, b
 	and FORM_MASK
-	cp ALOLAN_FORM
+	cp PLAIN_FORM + 1
 	ret c
 .test_base
+	; Is the base form valid?
 	ld a, b
 	and EXTSPECIES_MASK
 	inc a

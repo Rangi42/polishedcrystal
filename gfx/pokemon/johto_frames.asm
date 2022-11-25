@@ -40,7 +40,6 @@ AipomFrames:      INCLUDE "gfx/pokemon/aipom/frames.asm"
 SunkernFrames:    INCLUDE "gfx/pokemon/sunkern/frames.asm"
 SunfloraFrames:   INCLUDE "gfx/pokemon/sunflora/frames.asm"
 YanmaFrames:      INCLUDE "gfx/pokemon/yanma/frames.asm"
-WooperFrames:     INCLUDE "gfx/pokemon/wooper/frames.asm"
 QuagsireFrames:   INCLUDE "gfx/pokemon/quagsire/frames.asm"
 EspeonFrames:     INCLUDE "gfx/pokemon/espeon/frames.asm"
 UmbreonFrames:    INCLUDE "gfx/pokemon/umbreon/frames.asm"
@@ -127,6 +126,9 @@ KleavorFrames:    INCLUDE "gfx/pokemon/kleavor/frames.asm"
 UrsalunaFrames:   INCLUDE "gfx/pokemon/ursaluna/frames.asm"
 SneaslerFrames:   INCLUDE "gfx/pokemon/sneasler/frames.asm"
 OverqwilFrames:   INCLUDE "gfx/pokemon/overqwil/frames.asm"
+FarigirafFrames:  INCLUDE "gfx/pokemon/farigiraf/frames.asm"
+ClodsireFrames:   INCLUDE "gfx/pokemon/clodsire/frames.asm"
+AnnihilapeFrames: INCLUDE "gfx/pokemon/annihilape/frames.asm"
 
 EggFrames:        INCLUDE "gfx/pokemon/egg/frames.asm"
 
@@ -176,3 +178,9 @@ QwilfishHisuianFrames: INCLUDE "gfx/pokemon/qwilfish_hisuian/frames.asm"
 
 SneaselPlainFrames:   INCLUDE "gfx/pokemon/sneasel_plain/frames.asm"
 SneaselHisuianFrames: INCLUDE "gfx/pokemon/sneasel_hisuian/frames.asm"
+
+DudunsparceTwoSegmentFrames:   INCLUDE "gfx/pokemon/dudunsparce_two_segment/frames.asm"
+DudunsparceThreeSegmentFrames: INCLUDE "gfx/pokemon/dudunsparce_three_segment/frames.asm"
+
+WooperPlainFrames:   INCLUDE "gfx/pokemon/wooper_plain/frames.asm"
+WooperPaldeanFrames: INCLUDE "gfx/pokemon/wooper_paldean/frames.asm"

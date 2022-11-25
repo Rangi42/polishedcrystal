@@ -287,11 +287,17 @@ FootprintPointers::
 	dw UrsalunaFootprint
 	dw SneaslerFootprint
 	dw OverqwilFootprint
+	dw DudunsparceFootprint
+	dw FarigirafFootprint
+	dw ClodsireFootprint
+	dw AnnihilapeFootprint
 	assert_table_length NUM_SPECIES
 
 	dw GyaradosFootprint
 
 	dw MewtwoFootprint
+
+	dw DudunsparceFootprint
 
 	dw RattataFootprint
 	dw RaticateFootprint
@@ -333,5 +339,10 @@ FootprintPointers::
 	dw TyphlosionFootprint
 	dw QwilfishFootprint
 	dw SneaselFootprint
+
+	dw WooperFootprint
+	dw TaurosFootprint
+	dw TaurosFootprint
+	dw TaurosFootprint
 
 	assert_table_length NUM_EXT_POKEMON

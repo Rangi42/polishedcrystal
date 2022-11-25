@@ -146,6 +146,7 @@ TrainerPicPointers::
 	dba ValeriePic
 	dba KukuiPic
 	dba PiersPic
+	dba KatyPic
 	dba VictorPic
 	dba BillPic
 	dba YellowPic

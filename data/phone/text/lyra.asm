@@ -370,6 +370,15 @@ LyraPhoneEvoText_AncientSinnoh:
 	line "somehow…"
 	prompt
 
+LyraPhoneEvoText_DunsparceSegments:
+	text "Some of them end"
+	line "up being longer"
+	cont "than others."
+
+	para "It's just in their"
+	line "genes."
+	prompt
+
 LyraPhoneEvolutionRefusedText:
 	text "Haha, I won't"
 	line "spoil it, then!"

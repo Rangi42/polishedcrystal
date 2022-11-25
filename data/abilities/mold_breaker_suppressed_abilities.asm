@@ -1,4 +1,5 @@
 MoldBreakerSuppressedAbilities:
+	db ARMOR_TAIL
 	db BATTLE_ARMOR
 	db BIG_PECKS
 	db CLEAR_BODY

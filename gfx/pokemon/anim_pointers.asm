@@ -127,7 +127,7 @@ AnimationPointers:
 	dw ElectabuzzAnimation
 	dw MagmarAnimation
 	dw PinsirAnimation
-	dw TaurosAnimation
+	dw TaurosPlainAnimation
 	dw MagikarpPlainAnimation
 	dw GyaradosPlainAnimation
 	dw LaprasAnimation
@@ -193,7 +193,7 @@ AnimationPointers:
 	dw SunkernAnimation
 	dw SunfloraAnimation
 	dw YanmaAnimation
-	dw WooperAnimation
+	dw WooperPlainAnimation
 	dw QuagsireAnimation
 	dw EspeonAnimation
 	dw UmbreonAnimation
@@ -287,7 +287,12 @@ AnimationPointers:
 	dw UrsalunaAnimation
 	dw SneaslerAnimation
 	dw OverqwilAnimation
+	dw DudunsparceTwoSegmentAnimation
+	dw FarigirafAnimation
+	dw ClodsireAnimation
+	dw AnnihilapeAnimation
 	assert_table_length NUM_SPECIES
+
 	dw UnownBAnimation
 	dw UnownCAnimation
 	dw UnownDAnimation
@@ -315,16 +320,20 @@ AnimationPointers:
 	dw UnownZAnimation
 	dw UnownExclamationAnimation
 	dw UnownQuestionAnimation
+
 	dw ArbokKantoAnimation
 	dw ArbokKogaAnimation
 	dw ArbokAgathaAnimation
 	dw ArbokArianaAnimation
+
 	dw PikachuFlyAnimation
 	dw PikachuSurfAnimation
 	dw PikachuPikaAnimation
 	dw PikachuChuchuAnimation
 	dw PikachuSparkAnimation
+
 	dw PichuSpikyAnimation
+
 	dw MagikarpSkellyAnimation
 	dw MagikarpCalico1Animation
 	dw MagikarpCalico2Animation
@@ -344,8 +353,15 @@ AnimationPointers:
 	dw MagikarpMask2Animation
 	dw MagikarpSaucyAnimation
 	dw MagikarpRaindropAnimation
+
+	assert_table_length NUM_SPECIES + NUM_COSMETIC_FORMS
+
 	dw GyaradosRedAnimation
+
 	dw MewtwoArmoredAnimation
+
+	dw DudunsparceThreeSegmentAnimation
+
 	dw RattataAlolanAnimation
 	dw RaticateAlolanAnimation
 	dw RaichuAlolanAnimation
@@ -364,6 +380,7 @@ AnimationPointers:
 	dw MukAlolanAnimation
 	dw ExeggutorAlolanAnimation
 	dw MarowakAlolanAnimation
+
 	dw MeowthGalarianAnimation
 	dw PonytaGalarianAnimation
 	dw RapidashGalarianAnimation
@@ -377,6 +394,7 @@ AnimationPointers:
 	dw MoltresGalarianAnimation
 	dw SlowkingGalarianAnimation
 	dw CorsolaGalarianAnimation
+
 	dw GrowlitheHisuianAnimation
 	dw ArcanineHisuianAnimation
 	dw VoltorbHisuianAnimation
@@ -384,4 +402,10 @@ AnimationPointers:
 	dw TyphlosionHisuianAnimation
 	dw QwilfishHisuianAnimation
 	dw SneaselHisuianAnimation
+
+	dw WooperPaldeanAnimation
+	dw TaurosPaldeanAnimation
+	dw TaurosPaldeanFireAnimation
+	dw TaurosPaldeanWaterAnimation
+
 	assert_table_length NUM_UNIQUE_POKEMON

@@ -21,4 +21,5 @@ FuryAttackUsers:
 	dp DONPHAN
 	dp RHYPERIOR
 	dp MAMOSWINE
+	dp DUDUNSPARCE
 	dw 0
