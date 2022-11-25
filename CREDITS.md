@@ -62,6 +62,7 @@ Pokémon Polished Crystal would never have been finished without the help of man
 * octorox for Galarian Rapidash and Galarian Slowking's backpics.
 * Cure for sprites of Ursaluna, Kleavor, Hisuian Growlithe, and Hisuian Arcanine.
 * Sea for Hisuian Growlithe's animation.
+* ShadowOne333 and Sea for Annihilape's front and back sprites.
 * spritershawn for sprites of Red, Blue, and Green.
 * isamuakai01 for sprites of Steven and Cynthia.
 * Maddalena for sprites of Imakuni and the Ghost.
