@@ -221,6 +221,7 @@ LyraPhoneScript_EvolutionMethodsTable:
 	dw .EvolveSlowpokeGalarian
 	dw .EvolveMagneton
 	dw .EvolveExeggcute
+	dw .EvolveKoffing
 	dw .EvolveCubone
 	dw .EvolveScyther
 	dw .EvolveEevee
@@ -303,6 +304,9 @@ LyraPhoneScript_EvolutionMethodsTable:
 	end
 .EvolveExeggcute:
 	farwritetext LyraPhoneEvoText_Exeggcute
+	end
+.EvolveKoffing:
+	farwritetext LyraPhoneEvoText_Koffing
 	end
 .EvolveCubone:
 	farwritetext LyraPhoneEvoText_Cubone
