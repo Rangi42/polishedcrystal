@@ -286,6 +286,16 @@ LyraPhoneEvoText_Exeggcute:
 	cont "an Odd Souvenir."
 	prompt
 
+LyraPhoneEvoText_Koffing:
+	text_ram wStringBuffer3
+	line "evolves when it"
+	cont "reaches level 35,"
+
+	para "or when it gains a"
+	line "level while hold-"
+	cont "ing Charcoal."
+	prompt
+
 LyraPhoneEvoText_Cubone:
 	text_ram wStringBuffer3
 	line "evolves at level"
