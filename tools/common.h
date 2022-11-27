@@ -132,13 +132,14 @@ uint32_t read_png_width(const char *filename) {
 }
 
 void read_dimensions(const char *filename, int *width) {
-	long filesize;
-	uint8_t *bytes = read_u8(filename, &filesize);
-	if (filesize != 1) {
+	FILE *f = xfopen(filename, 'r');
+	if (xfsize(filename, f) != 1) {
+		fclose(f);
 		error_exit("%s: invalid dimensions file\n", filename);
 	}
-	uint8_t dimensions = bytes[0];
-	free(bytes);
+	uint8_t dimensions;
+	xfread(&dimensions, 1, filename, f);
+	fclose(f);
 	*width = dimensions & 0xF;
 	int height = dimensions >> 4;
 	if (*width != height || (*width != 5 && *width != 6 && *width != 7)) {
