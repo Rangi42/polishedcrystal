@@ -1,12 +1,9 @@
 SlicingMoves:
 	db AERIAL_ACE
 	db AIR_SLASH
-	db CROSS_CHOP
 	db CUT
-	db FALSE_SWIPE
-	db FURY_STRIKES
 	db NIGHT_SLASH
-	db SCRATCH
-	db SHADOW_CLAW
+	db RAZOR_LEAF
 	db SLASH
+	db X_SCISSOR
 	db -1
