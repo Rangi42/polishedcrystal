@@ -145,6 +145,10 @@ Some of these may never be added; they're just suggestions.
       * Mareanie → Toxapex (in Cherrygrove Bay with Corsola)
       * Wooloo → Dubwool
       * Cufant → Copperajah
+      * Wiglett → Wugtrio
+      * Varoom → Revavroom
+      * Tinkatink → Tinkatuff → Tinkaton
+      * Toedscool → Toedscruel
 * More music
    * PGo Overworld/Walking (for Safari Game)
    * PGo Battle! Legendary Raid (for Mew)
