@@ -1398,7 +1398,6 @@ PickupAbility:
 	call RegainItemByAbility
 
 	; In wild battles, update backup items.
-	; This effectively does "return if turn==0 or mode==1".
 	ld a, [wBattleMode]
 	dec a
 	ret nz
