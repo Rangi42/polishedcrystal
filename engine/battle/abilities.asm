@@ -1357,7 +1357,7 @@ HarvestAbility:
 	ld hl, HarvestedItemText
 	call RegainItemByAbility
 
-	; For the player, update backup items
+	; For the player, update backup items. Even in trainer battles.
 	ldh a, [hBattleTurn]
 	and a
 	ret nz
@@ -1398,7 +1398,17 @@ PickupAbility:
 	ld a, b
 
 	ld hl, PickedItemText
-	; fallthrough
+	call RegainItemByAbility
+
+	; For the player in wild battles, update backup items.
+	; This effectively does "return if turn==0 or mode==1".
+	ldh a, [hBattleTurn]
+	inc a
+	ld hl, wBattleMode
+	xor [hl]
+	ret nz
+	jmp SetBackupItem
+
 RegainItemByAbility:
 	; Update party struct if applicable
 	push af
