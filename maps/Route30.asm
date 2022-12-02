@@ -346,6 +346,16 @@ Route30AdvancedTipsText:
 	para "Or press B to"
 	line "run away or"
 	cont "forfeit!"
+
+	para "When you're choos-"
+	line "ing a move to use,"
+
+	para "press Select to"
+	line "swap it with an-"
+	cont "other one, or"
+
+	para "press Start to see"
+	line "its description!"
 	done
 
 YoungsterJoeyText_GiveHPUpAfterBattle:
