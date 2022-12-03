@@ -158,7 +158,7 @@ MusicPlayer::
 ; Load graphics
 	ld hl, MusicPlayerGFX
 	ld de, vTiles2
-	lb bc, BANK(MusicPlayerGFX), $45
+	lb bc, BANK(MusicPlayerGFX), $47
 	call DecompressRequest2bpp
 
 	ld hl, NotesGFX
