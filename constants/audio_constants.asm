@@ -135,3 +135,10 @@ DEF DANGER_ON_F    EQU 7
 
 ; wMusicFade
 DEF MUSIC_FADE_IN_F EQU 7
+
+; jumpif conditions
+	const_def
+	const COND_DEFAULT      ; 0
+	const COND_ADVANTAGE    ; 1
+	const COND_DISADVANTAGE ; 2
+	const COND_FINAL_MON    ; 3

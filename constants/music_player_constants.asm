@@ -36,11 +36,12 @@ DEF NUM_MP_EDIT_FIELDS EQU const_value
 	const ORIGIN_XY        ; 0a
 	const ORIGIN_ORAS      ; 0b
 	const ORIGIN_SM        ; 0c
-	const ORIGIN_STADIUM   ; 0d
-	const ORIGIN_GO        ; 0e
-	const ORIGIN_M02       ; 0f
-	const ORIGIN_PRISM     ; 10
-	const ORIGIN_UNDERTALE ; 11
+	const ORIGIN_SWSH      ; 0d
+	const ORIGIN_STADIUM   ; 0e
+	const ORIGIN_GO        ; 0f
+	const ORIGIN_M02       ; 10
+	const ORIGIN_PRISM     ; 11
+	const ORIGIN_UNDERTALE ; 12
 DEF NUM_SONG_ORIGINS EQU const_value
 
 ; SongArtists indexes (see data/music_player/song_artists.asm)

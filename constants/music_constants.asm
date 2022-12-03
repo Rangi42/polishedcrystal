@@ -174,25 +174,26 @@
 	const MUSIC_GYM_LEADER_BATTLE_DPPT         ; aa
 	const MUSIC_GYM_LEADER_BATTLE_BW           ; ab
 	const MUSIC_GYM_LEADER_BATTLE_XY           ; ac
-	const MUSIC_GYM_LEADER_BATTLE_GO           ; ad
-	const MUSIC_ELITE_FOUR_BATTLE_BW           ; ae
-	const MUSIC_CELESTIAL_TOWER_BW             ; af
-	const MUSIC_CHAMPION_BATTLE_RSE            ; b0
-	const MUSIC_MOUNT_CORONET_DPPT             ; b1
-	const MUSIC_CHAMPION_BATTLE_DPPT           ; b2
-	const MUSIC_WCS_BATTLE_BW                  ; b3
-	const MUSIC_CHAMPION_BATTLE_B2W2           ; b4
-	const MUSIC_CREDITS                        ; b5
-	const MUSIC_POST_CREDITS                   ; b6
-	const MUSIC_TITLE_XY                       ; b7
-	const MUSIC_DEWFORD_TOWN_RSE               ; b8 ; unused
-	const MUSIC_MARINE_TUBE_B2W2               ; b9 ; unused
-	const MUSIC_LEGENDARY_BATTLE_XY            ; ba ; unused
-	const MUSIC_WILD_BATTLE_PRISM              ; bb ; unused
-	const MUSIC_TRAINER_BATTLE_PRISM           ; bc ; unused
-	const MUSIC_GYM_LEADER_BATTLE_PRISM        ; bd ; unused
-	const MUSIC_PALETTE_BATTLE_PRISM           ; be ; unused
-	const MUSIC_UNDERTALE_MEGALOVANIA          ; bf ; unused
+	const MUSIC_GYM_LEADER_BATTLE_SWSH         ; ad
+	const MUSIC_GYM_LEADER_BATTLE_GO           ; ae
+	const MUSIC_ELITE_FOUR_BATTLE_BW           ; af
+	const MUSIC_CELESTIAL_TOWER_BW             ; b0
+	const MUSIC_CHAMPION_BATTLE_RSE            ; b1
+	const MUSIC_MOUNT_CORONET_DPPT             ; b2
+	const MUSIC_CHAMPION_BATTLE_DPPT           ; b3
+	const MUSIC_WCS_BATTLE_BW                  ; b4
+	const MUSIC_CHAMPION_BATTLE_B2W2           ; b5
+	const MUSIC_CREDITS                        ; b6
+	const MUSIC_POST_CREDITS                   ; b7
+	const MUSIC_TITLE_XY                       ; b8
+	const MUSIC_DEWFORD_TOWN_RSE               ; b9 ; unused
+	const MUSIC_MARINE_TUBE_B2W2               ; ba ; unused
+	const MUSIC_LEGENDARY_BATTLE_XY            ; bb ; unused
+	const MUSIC_WILD_BATTLE_PRISM              ; bc ; unused
+	const MUSIC_TRAINER_BATTLE_PRISM           ; bd ; unused
+	const MUSIC_GYM_LEADER_BATTLE_PRISM        ; be ; unused
+	const MUSIC_PALETTE_BATTLE_PRISM           ; bf ; unused
+	const MUSIC_UNDERTALE_MEGALOVANIA          ; c0 ; unused
 DEF NUM_MUSIC_SONGS EQU const_value
 
 ; GetMapMusic picks music for these values (see data/maps/special_map_music.asm)
