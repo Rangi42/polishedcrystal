@@ -4640,6 +4640,7 @@ SECTION "MartPremierBallText", ROMX
 MartPremierBallText::
 	text "You also get a"
 	line "Premier Ball as"
+	text_sound SFX_TRANSACTION
 	cont "an added bonus."
 	done
 
