@@ -33,16 +33,15 @@ Route29_MapScriptHeader:
 	const ROUTE29_TUSCANY
 
 Route29Tuscany:
-	checkflag ENGINE_ZEPHYRBADGE
-	iftruefwd .DoesTuscanyAppear
-
+	checkevent EVENT_TALKED_TO_MOM_AFTER_MYSTERY_EGG_QUEST
+	iffalsefwd .TuscanyDisappears
+	readvar VAR_WEEKDAY
+	ifequalfwd TUESDAY, .TuscanyAppears
 .TuscanyDisappears:
 	disappear ROUTE29_TUSCANY
 	endcallback
 
-.DoesTuscanyAppear:
-	readvar VAR_WEEKDAY
-	ifnotequal TUESDAY, .TuscanyDisappears
+.TuscanyAppears
 	appear ROUTE29_TUSCANY
 	endcallback
 
