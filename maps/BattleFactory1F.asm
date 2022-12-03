@@ -96,7 +96,7 @@ BattleFactory1FContinueChallenge:
 Script_CommitBattleFactoryResult:
 	special Special_BattleTower_CommitChallengeResult
 	iffalsefwd .WeHopeToServeYouAgain
-	setevent EVENT_BEAT_PALMER
+	setevent EVENT_BEAT_THORTON
 .WeHopeToServeYouAgain:
 	writethistext
 		text "We hope to serve"
