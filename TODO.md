@@ -21,7 +21,6 @@ The final, non-beta 3.0 release should include all of these.
 
 ### Mechanics
 
-* Option for 510 total limit on EVs
 * Variety Channel with daily unique music
 * Separate radio channels for March and Lullaby, available every day
 * Add more random team members for Psychic Inver
@@ -43,11 +42,9 @@ The final, non-beta 3.0 release should include all of these.
 * Saffron Trainer Fan Club, where meeting certain conditions turns NPCs into your fan, whereupon they give you items (see [material/trainer-fan-club.txt](material/trainer-fan-club.txt))
 * Rematch Eusine in Celadon City if you have Suicune in your party
 * Rematch Bill in his house somehow
-* Calling Lyra should have more varied messages giving evolution advice like [B2/W2](https://bulbapedia.bulbagarden.net/wiki/Professor_Juniper/Quotes#Evolution_hints_.28Xtransceiver.29) (see [material/lyra-dialog.txt](material/lyra-dialog.txt))
 * Name trainers after anime characters (Jackson, Ritchie, Liza, Kidd, Lisa)
 * Acquire dolls from NPCs throughout the regions
 * Red goes back home after you battle him, and returns to Mt. Silver after you battle Green; Green disappears until you battle Red
-* Clarify that Silver dropped his trainer card, like in HGSS
 * Nurse trainer class (heals you afterwards)
 * Gambler trainer class (uses Game Corner mons)
 * Soldier trainer class (in Lt. Surge's Gym; also ones elsewhere with Remoraid, Octillery, Forretress, Skarmory, Electrode, Donphan)
