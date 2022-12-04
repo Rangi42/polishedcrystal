@@ -7,7 +7,7 @@ DEF MP_HUD_HEIGHT EQU SCREEN_HEIGHT - PIANO_ROLL_HEIGHT
 DEF MP_LIST_CURSOR_Y EQU 8 ; (SCREEN_HEIGHT - 1) / 2
 DEF MP_LIST_PAGE_SKIP EQU 10
 
-DEF NUM_WAVEFORMS EQU 12
+DEF NUM_WAVEFORMS EQU 13
 DEF NUM_NOISE_SETS EQU 6
 DEF MAX_PITCH_TRANSPOSITION EQU 12
 DEF MAX_TEMPO_ADJUSTMENT EQU 120
@@ -36,11 +36,12 @@ DEF NUM_MP_EDIT_FIELDS EQU const_value
 	const ORIGIN_XY        ; 0a
 	const ORIGIN_ORAS      ; 0b
 	const ORIGIN_SM        ; 0c
-	const ORIGIN_STADIUM   ; 0d
-	const ORIGIN_GO        ; 0e
-	const ORIGIN_M02       ; 0f
-	const ORIGIN_PRISM     ; 10
-	const ORIGIN_UNDERTALE ; 11
+	const ORIGIN_SWSH      ; 0d
+	const ORIGIN_STADIUM   ; 0e
+	const ORIGIN_GO        ; 0f
+	const ORIGIN_M02       ; 10
+	const ORIGIN_PRISM     ; 11
+	const ORIGIN_UNDERTALE ; 12
 DEF NUM_SONG_ORIGINS EQU const_value
 
 ; SongArtists indexes (see data/music_player/song_artists.asm)

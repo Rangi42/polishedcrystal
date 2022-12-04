@@ -2014,6 +2014,15 @@ FaintUserPokemon:
 	ret nz
 	set SUBSTATUS_FAINTED, [hl]
 
+	ldh a, [hBattleTurn]
+	and a
+	ld a, COND_ADVANTAGE
+	jr nz, .got_cond
+	assert COND_ADVANTAGE + 1 == COND_DISADVANTAGE
+	inc a
+.got_cond
+	call SetVariableBattleMusicCondition
+
 	ld hl, wWhichMonFaintedFirst
 	ld a, [hl]
 	and a
@@ -2703,6 +2712,8 @@ FinalPkmnMusicAndAnimation:
 	call DelayFrames
 	call SlideEnemyPicOut
 	; ...play the final Pokémon music...
+	ld a, COND_FINAL_MON
+	call SetVariableBattleMusicCondition
 	call IsJohtoGymLeader
 	jr nc, .no_music
 	push de
@@ -2728,6 +2739,40 @@ FinalPkmnMusicAndAnimation:
 	ld c, 10
 	call DelayFrames
 	jmp FinalPkmnSlideInEnemyMonFrontpic
+
+ResetVariableBattleMusicCondition:
+	xor a ; COND_DEFAULT
+SetVariableBattleMusicCondition:
+	push af
+	; if we're playing music that uses 'jumpif'...
+	ld a, [wChannel1MusicID]
+	cp MUSIC_GYM_LEADER_BATTLE_SWSH
+	jr nz, .nope
+	; ...and we're not already on the final track...
+	ld a, [wChannel1Condition]
+	cp 3
+	jr z, .nope
+	; ...then play the default track
+	pop af
+	cp 3
+	jr nz, .skip_restart_music
+	; restart the music for the final track
+	ld de, MUSIC_NONE
+	call PlayMusic
+	call DelayFrame
+	ld de, MUSIC_GYM_LEADER_BATTLE_SWSH
+	call PlayMusic
+	ld a, 3
+.skip_restart_music
+	ld [wChannel1Condition], a
+	ld [wChannel2Condition], a
+	ld [wChannel3Condition], a
+	ld [wChannel4Condition], a
+	ret
+
+.nope
+	pop af
+	ret
 
 OfferSwitch:
 	farcall EnemySwitch_TrainerHud
@@ -2815,6 +2860,8 @@ Function_SetEnemyPkmnAndSendOutAnimation:
 	ld de, ANIM_SEND_OUT_MON
 	call Call_PlayBattleAnim
 .not_shiny
+
+	call ResetVariableBattleMusicCondition
 
 	ld bc, wTempMonSpecies
 	farcall CheckFaintedFrzSlp
@@ -2979,19 +3026,23 @@ SendOutPlayerMon:
 	xor a
 	ld [wEnemyWrapCount], a
 	call SetPlayerTurn
+
 	xor a
 	ld [wNumHits], a
 	ld [wBattleAnimParam], a
 	ld de, ANIM_SEND_OUT_MON
 	call Call_PlayBattleAnim
+
 	call BattleCheckPlayerShininess
 	jr nc, .not_shiny
 	ld a, 1
 	ld [wBattleAnimParam], a
 	ld de, ANIM_SEND_OUT_MON
 	call Call_PlayBattleAnim
-
 .not_shiny
+
+	call ResetVariableBattleMusicCondition
+
 	ld a, MON_SPECIES
 	call GetPartyParamLocationAndValue
 	ld b, h
@@ -4573,7 +4624,7 @@ endr
 	call Divide
 	ldh a, [hQuotient + 1]
 	and a ; player can escape if result is greater than 255
-	jr nz, .can_escape
+	jmp nz, .can_escape
 	ld a, [wNumFleeAttempts]
 	ld c, a
 	ldh a, [hQuotient + 2]
@@ -4627,6 +4678,8 @@ endr
 	jr z, .dont_forfeit
 
 	call EmptyBattleTextbox
+	ld a, COND_DISADVANTAGE
+	call SetVariableBattleMusicCondition
 	call StopDangerSound
 	call WaitSFX
 	ld de, SFX_KINESIS
@@ -8503,6 +8556,8 @@ BattleStartMessage:
 	call PlayStereoCry
 
 .skip_cry
+	call ResetVariableBattleMusicCondition
+
 	ld a, [wBattleType]
 	cp BATTLETYPE_FISH
 	jr nz, .NotFishing

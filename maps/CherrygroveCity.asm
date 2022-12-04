@@ -137,9 +137,14 @@ CherrygroveSilverTriggerNorth:
 .FinishRival:
 	special DeleteSavedMusic
 	playmusic MUSIC_RIVAL_AFTER
-	showtext CherrygroveRivalTextAfter
+	showtext CherrygroveRivalTextAfter1
 	playsound SFX_TACKLE
 	applymovement PLAYER, CherrygroveCity_RivalPushesYouOutOfTheWay
+	applymovement CHERRYGROVECITY_SILVER, CherrygroveCity_RivalStartsToLeave
+	showemote EMOTE_SHOCK, CHERRYGROVECITY_SILVER, 15
+	applymovement CHERRYGROVECITY_SILVER, CherrygroveCity_RivalComesBack
+	turnobject PLAYER, UP
+	showtext CherrygroveRivalTextAfter2
 	turnobject PLAYER, LEFT
 	applymovement CHERRYGROVECITY_SILVER, CherrygroveCity_RivalExitsStageLeft
 	disappear CHERRYGROVECITY_SILVER
@@ -250,18 +255,23 @@ CherrygroveCity_RivalWalksToYou:
 
 CherrygroveCity_RivalPushesYouOutOfTheWay:
 	run_step_down
-	turn_head_up
+	turn_head_left
 	step_end
 
 CherrygroveCity_RivalExitsStageLeft:
 	run_step_left
 	run_step_left
 	run_step_left
-	run_step_left
 	run_step_up
 	run_step_up
+CherrygroveCity_RivalStartsToLeave:
 	run_step_left
 	run_step_left
+	step_end
+
+CherrygroveCity_RivalComesBack:
+	run_step_right
+	turn_head_down
 	step_end
 
 GuideGentIntroText:
@@ -397,6 +407,17 @@ CherrygroveRivalTextAfter:
 	line "the world's great-"
 	cont "est #mon"
 	cont "trainer."
+	done
+
+CherrygroveRivalTextAfter2:
+	text "I dropped my"
+	line "Trainer Card…"
+
+	para "Hey! Give it"
+	line "back!"
+
+	para "Oh no… You saw"
+	line "my name…"
 	done
 
 CherrygroveTeacherText_HaveMapCard:

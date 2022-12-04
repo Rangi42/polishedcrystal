@@ -3,6 +3,7 @@ HiddenTreeGrotto_MapScriptHeader:
 
 	def_callbacks
 	callback MAPCALLBACK_NEWMAP, HiddenGrottoCallback
+	callback MAPCALLBACK_TILES, HiddenTreeGrottoTileCallback
 
 	def_warp_events
 	warp_event  4, 15, HIDDEN_TREE_GROTTO, -1
@@ -41,6 +42,13 @@ HiddenGrottoCallback:
 
 .hidden_item
 	clearevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_3
+	endcallback
+
+HiddenTreeGrottoTileCallback:
+	checkevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_3
+	iftruefwd .end
+	changeblock 4, 4, $a6
+.end
 	endcallback
 
 HiddenGrottoPokemonScript:

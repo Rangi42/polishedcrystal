@@ -13,6 +13,7 @@ SongOrigins:
 	li "X/Y"
 	li "OR/AS"
 	li "S/M"
+	li "Sw/Sh"
 	li "Stadium"
 	li "Go"
 	li "M02"
