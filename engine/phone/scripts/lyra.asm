@@ -336,7 +336,14 @@ LyraPhoneScript_EvolutionMethodsTable:
 	end
 
 LyraPhone_GetFirstMonEvolutionData:
-	; get first non-Egg party mon
+	; wStringBuffer3 = species name
+	call EvolutionPhone_GetFirstNonEggPartyMon
+	; hScriptVar, wStringBuffer4, wStringBuffer5 = evo data
+	farcall GetEvolutionData
+	ldh [hScriptVar], a
+	ret
+
+EvolutionPhone_GetFirstNonEggPartyMon:
 	ld hl, wPartyMon1Species
 .first_loop
 	ld a, [hl]
@@ -354,17 +361,20 @@ LyraPhone_GetFirstMonEvolutionData:
 	ld a, [hl]
 	ld b, a ; ext species/form
 	ld [wNamedObjectIndex+1], a
-	; wStringBuffer3 = species name
 	push bc
+	ld bc, MON_LEVEL - MON_FORM
+	add hl, bc
+	ld a, [hl]
+	ld d, a ; level
+	push de
+	; wStringBuffer3 = species name
 	call GetPokemonName
 	ld hl, wStringBuffer1
 	ld de, wStringBuffer3
 	ld bc, MON_NAME_LENGTH
 	rst CopyBytes
+	pop de
 	pop bc
-	; hScriptVar, wStringBuffer4, wStringBuffer5 = evo data
-	farcall GetEvolutionData
-	ldh [hScriptVar], a
 	ret
 
 LyraPhoneScript2:

@@ -6,7 +6,7 @@ MACRO evo_data
 		db \2 ; parameter
 	endc
 	if \1 == EVOLVE_STAT || \1 == EVOLVE_HOLDING
-		db \3 ;  ATK_*_DEF | time of day
+		db \3 ; ATK_*_DEF | time of day
 		shift
 	endc
 	if _NARG > 3

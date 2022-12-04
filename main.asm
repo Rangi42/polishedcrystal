@@ -396,7 +396,6 @@ INCLUDE "engine/events/initialize_events.asm"
 INCLUDE "engine/phone/scripts/unused.asm"
 INCLUDE "engine/phone/scripts/mom.asm"
 INCLUDE "engine/phone/scripts/bill.asm"
-INCLUDE "engine/phone/scripts/elm.asm"
 INCLUDE "engine/phone/scripts/jack.asm"
 INCLUDE "engine/phone/scripts/beverly.asm"
 INCLUDE "engine/phone/scripts/huey.asm"
@@ -428,8 +427,9 @@ INCLUDE "engine/phone/scripts/erin.asm"
 INCLUDE "engine/phone/scripts/generic_callee.asm"
 
 
-SECTION "Lyra Phone Scripts", ROMX
+SECTION "Evolution Phone Scripts", ROMX
 
+INCLUDE "engine/phone/scripts/elm.asm"
 INCLUDE "engine/phone/scripts/lyra.asm"
 
 

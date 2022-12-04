@@ -1198,6 +1198,12 @@ ElmAfterTheftText6:
 	para "Before you leave,"
 	line "make sure that you"
 	cont "talk to your mom."
+
+	para "And give me a call"
+	line "sometimes too."
+
+	para "I might have use-"
+	line "ful information!"
 	done
 
 ElmStudyingEggText:

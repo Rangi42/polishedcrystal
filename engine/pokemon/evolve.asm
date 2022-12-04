@@ -933,3 +933,29 @@ GetEvolutionData:
 	jr .copy_string
 
 INCLUDE "data/pokemon/multi_evos.asm"
+
+GetNextMoveLevel:
+; input: b = form, c = species, d = level
+; output: a = level of next move (0 if none, -1 if egg)
+	assert MON_IS_EGG == MON_EXTSPECIES && MON_EXTSPECIES == MON_FORM
+	bit MON_IS_EGG_F, b
+	jr z, .not_egg
+	ld a, -1
+	ret
+.not_egg
+	call GetEvosAttacksPointer
+.skip_evos
+	ld a, [hli]
+	inc a
+	jr nz, .skip_evos
+.find_move
+	ld a, [hli]
+	inc a
+	ret z ; no move
+	dec a
+	cp d
+	jr c, .next_move
+	ret nz ; got move
+.next_move
+	inc hl
+	jr .find_move

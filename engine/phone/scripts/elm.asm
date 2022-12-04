@@ -27,11 +27,11 @@ ElmPhoneScript1:
 
 .stolen
 	farwritetext ElmPhonePokemonStolenText
-	end
+	sjumpfwd ElmNextMoveLevelScript
 
 .checkingegg
 	farwritetext ElmPhoneCheckingEggText
-	end
+	sjumpfwd ElmNextMoveLevelScript
 
 .assistant
 	farwritetext ElmPhoneAssistantText
@@ -39,27 +39,56 @@ ElmPhoneScript1:
 
 .eggunhatched
 	farwritetext ElmPhoneEggUnhatchedText
-	end
+	sjumpfwd ElmNextMoveLevelScript
 
 .egghatched
 	farwritetext ElmPhoneEggHatchedText
 	setevent EVENT_TOLD_ELM_ABOUT_TOGEPI_OVER_THE_PHONE
-	end
+	sjumpfwd ElmNextMoveLevelScript
 
 .discovery
 	random $2
 	ifequalfwd $0, .nextdiscovery
 	farwritetext ElmPhoneDiscovery1Text
-	end
+	sjumpfwd ElmNextMoveLevelScript
 
 .nextdiscovery
 	farwritetext ElmPhoneDiscovery2Text
-	end
+	sjumpfwd ElmNextMoveLevelScript
 
 .pokerus
 	farwritetext ElmPhonePokerusText
 	specialphonecall SPECIALCALL_NONE
 	end
+
+ElmNextMoveLevelScript:
+	farwritetext ElmPhoneNextMoveQuestionText
+	yesorno
+	iftruefwd .describe_next_move
+	farwritetext ElmPhoneNextMoveRefusedText
+	end
+.describe_next_move
+	callasm ElmPhone_GetFirstMonNextMoveLevel
+	iffalsefwd .no_move
+	ifequalfwd -1, .egg
+	farwritetext ElmPhoneNextMoveLevelText
+	end
+
+.no_move
+	farwritetext ElmPhoneNoNextMoveText
+	end
+
+.egg
+	farwritetext ElmPhoneNoEggMovesText
+	end
+
+ElmPhone_GetFirstMonNextMoveLevel:
+	; wStringBuffer3 = species name
+	call EvolutionPhone_GetFirstNonEggPartyMon
+	; hScriptVar = move level
+	farcall GetNextMoveLevel
+	ldh [hScriptVar], a
+	ret
 
 ElmPhoneScript2:
 	readvar VAR_SPECIALPHONECALL
