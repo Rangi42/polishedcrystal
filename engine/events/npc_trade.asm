@@ -218,8 +218,8 @@ DoNPCTrade:
 	; The second (form+extspecies) is part of the species word.
 	ld e, NPCTRADE_PERSONALITY
 	call GetTradeAttribute
-	ld de, wOTTrademonPersonality
-	ld [de], a
+	ld a, [hl]
+	ld [wOTTrademonPersonality], a
 
 	ld hl, wPartyMon1Personality
 	ld bc, PARTYMON_STRUCT_LENGTH
