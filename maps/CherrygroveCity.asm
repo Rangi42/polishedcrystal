@@ -398,7 +398,7 @@ SilverCherrygroveLossText:
 	line "waste of time."
 	done
 
-CherrygroveRivalTextAfter:
+CherrygroveRivalTextAfter1:
 	text "…… …… ……"
 	para "You want to know"
 	line "who I am?"

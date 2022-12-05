@@ -547,6 +547,9 @@ INCLUDE "audio/music/prism/trainerbattle.asm"
 SECTION "Song - prism/gymleaderbattle", ROMX
 INCLUDE "audio/music/prism/gymleaderbattle.asm"
 
+SECTION "Song - prism/palettebattle", ROMX
+INCLUDE "audio/music/prism/palettebattle.asm"
+
 SECTION "Song - rby/kantogymleader", ROMX
 INCLUDE "audio/music/rby/kantogymleader.asm"
 
