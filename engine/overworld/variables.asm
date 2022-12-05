@@ -151,14 +151,12 @@ Var_CountTrainerStars:
 	inc b
 .nostar3
 	pop bc
-	; star for reading all Pokémon Journals
-	push bc
-	ld hl, wPokemonJournals
-	ld b, wPokemonJournalsEnd - wPokemonJournals
-	call CountSetBits
-	pop bc
-	cp NUM_POKEMON_JOURNALS
-	jr c, .nostar4
+	; star for beating Tower Tycoon Palmer or Factory Head Thorton
+	eventflagcheck EVENT_BEAT_PALMER
+	jr nz, .star4
+	eventflagcheck EVENT_BEAT_THORTON
+	jr z, .nostar4
+.star4
 	inc b
 .nostar4
 	ld a, b
