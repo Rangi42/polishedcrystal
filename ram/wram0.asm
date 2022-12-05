@@ -1171,6 +1171,7 @@ wMomBankDigitCursorPosition::
 wNamingScreenLetterCase::
 wHallOfFameMonCounter::
 wTradeDialog::
+wRandomValue::
 	db
 wFrameCounter2:: db
 wUnusedTradeAnimPlayEvolutionMusic:: db

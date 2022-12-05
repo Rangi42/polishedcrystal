@@ -43,6 +43,7 @@ Script_BattleFloor:
 	applymovement BATTLEFACTORYBATTLEROOM_OPPONENT, MovementData_BattleFactoryBattleRoomOpponentWalksOut
 	warpsound
 	disappear BATTLEFACTORYBATTLEROOM_OPPONENT
+	pause 10
 	special FadeOutPalettes
 	warpfacing RIGHT, BATTLE_FACTORY_HALLWAY, 4, 8
 	end

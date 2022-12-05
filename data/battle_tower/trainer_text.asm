@@ -656,3 +656,44 @@ BattleTowerText_WinTycoon:
 	para "tacular trainer"
 	line "like you!"
 	done
+
+BattleFactoryText_GreetingHead:
+	text_asm
+	ld a, 90
+	call RandomRange
+	add 10
+	ld [wRandomValue], a
+	ld hl, .Text
+	ret
+
+.Text
+	text "Bzweeeeep!"
+
+	para "Sorry, don't mind"
+	line "me. I'm Thorton."
+
+	para "I'm using my data-"
+	line "analyzing machine"
+	cont "for this match."
+
+	para "I see! It's reading"
+	line ""
+	text_decimal wRandomValue, 1, 2
+	text " percent."
+
+	para "Oh, don't let that"
+	line "concern you!"
+
+	para "All righty, let's"
+	line "get going!"
+	done
+
+BattleFactoryText_LossHead:
+	text "See? Just as"
+	line "analyzed."
+	done
+
+BattleFactoryText_WinHead:
+	text "Whoa! You sure"
+	line "showed me!"
+	done

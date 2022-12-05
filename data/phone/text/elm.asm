@@ -26,7 +26,7 @@ ElmPhonePokemonStolenText:
 
 	para "How could anyone"
 	line "do that?"
-	done
+	prompt
 
 ElmPhoneCheckingEggText:
 	text "Hello, <PLAYER>?"
@@ -36,7 +36,7 @@ ElmPhoneCheckingEggText:
 
 	para "appear to be a"
 	line "#mon Egg."
-	done
+	prompt
 
 ElmPhoneAssistantText:
 	text "Hello, <PLAYER>?"
@@ -56,7 +56,7 @@ ElmPhoneEggUnhatchedText:
 
 	para "If anything hap-"
 	line "pens, please call."
-	done
+	prompt
 
 ElmPhoneEggHatchedText:
 	text "Hello, <PLAYER>?"
@@ -68,7 +68,7 @@ ElmPhoneEggHatchedText:
 
 	para "Please come show"
 	line "me now!"
-	done
+	prompt
 
 ElmPhoneDiscovery1Text:
 	text "Hello, <PLAYER>?"
@@ -81,7 +81,7 @@ ElmPhoneDiscovery1Text:
 
 	para "hatch depends on"
 	line "the #mon."
-	done
+	prompt
 
 ElmPhoneDiscovery2Text:
 	text "Hello, <PLAYER>?"
@@ -94,7 +94,7 @@ ElmPhoneDiscovery2Text:
 
 	para "We're investigat-"
 	line "ing that now."
-	done
+	prompt
 
 ElmPhonePokerusText:
 	text "Hello, <PLAYER>?"
@@ -195,4 +195,39 @@ ElmPhoneGiftText:
 	line "my Lab?"
 
 	para "See you later!"
+	done
+
+ElmPhoneNextMoveQuestionText:
+	text "By the way,"
+	line "<PLAYER>, want to"
+
+	para "know when your"
+	line "#mon will learn"
+	cont "its next move?"
+	done
+
+ElmPhoneNextMoveRefusedText:
+	text "Sorry to bug you."
+	line "Take care!"
+	done
+
+ElmPhoneNextMoveLevelText:
+	text_ram wStringBuffer3
+	line "learns its next"
+	cont "move at level "
+	text_decimal hScriptVar, 1, 3
+	text "."
+	done
+
+ElmPhoneNoNextMoveText:
+	text_ram wStringBuffer3
+	line "won't learn any"
+
+	para "more moves just"
+	line "by leveling up."
+	done
+
+ElmPhoneNoEggMovesText:
+	text "Eggs don't learn"
+	line "moves! …Do they?"
 	done

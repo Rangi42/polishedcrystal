@@ -90,10 +90,10 @@ ElderLiScript:
 	line "to use Flash in"
 	cont "battle."
 
-	para "Simply call out"
-	line "in the darkness,"
+	para "Simply press A in"
+	line "the darkness, and"
 
-	para "and if any of your"
+	para "if any of your"
 	line "#mon can use"
 	cont "Flash, they will."
 	done

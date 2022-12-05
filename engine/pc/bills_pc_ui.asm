@@ -22,6 +22,7 @@ DEF NUM_PC_MODES EQU const_value
 	const BOXMENU_MOVES
 	const BOXMENU_ITEM
 	const BOXMENU_RELEASE
+	const BOXMENU_CHANGE
 	const BOXMENU_RENAME
 	const BOXMENU_THEME
 	const BOXMENU_RELEASEALL
@@ -1412,21 +1413,7 @@ ManageBoxes:
 	jr c, .valid_box
 	sub NUM_BOXES
 .valid_box
-	ld [wCurBox], a
-	call BillsPC_RefreshTheme
-	call DelayFrame ; Avoid screen tearing
-	call BillsPC_PrintBoxName
-	ld b, 0
-	call SafeCopyTilemapAtOnce
-	xor a
-	ldh [hBGMapMode], a
-	inc a
-	ldh [rVBK], a
-	call SetBoxIcons
-	xor a
-	ldh [rVBK], a
-	inc a
-	ldh [hBGMapMode], a
+	call BillsPC_ChangeBox
 	jmp .loop
 
 .regular_left
@@ -1494,7 +1481,7 @@ ManageBoxes:
 
 .BoxMenu:
 	db MENU_BACKUP_TILES
-	menu_coords 10, 8, 19, 17
+	menu_coords 10, 6, 19, 17
 	dw .BoxMenuData2
 	db 1 ; default option
 
@@ -1528,7 +1515,8 @@ ManageBoxes:
 	db -1
 
 .boxitems
-	db 4
+	db 5
+	db BOXMENU_CHANGE
 	db BOXMENU_RENAME
 	db BOXMENU_THEME
 	db BOXMENU_RELEASEALL
@@ -1546,6 +1534,7 @@ BillsPC_MenuStrings:
 	db "Item@"
 	db "Release@"
 	; box options
+	db "Change@"
 	db "Rename@"
 	db "Theme@"
 	db "Release@"
@@ -1567,6 +1556,7 @@ BillsPC_MenuJumptable:
 	dw BillsPC_Moves
 	dw BillsPC_Item
 	dw BillsPC_Release
+	dw BillsPC_Change
 	dw BillsPC_Rename
 	dw BillsPC_Theme
 	dw BillsPC_ReleaseAll
@@ -2712,34 +2702,7 @@ BillsPC_CanReleaseMon:
 	ld a, RELEASE_EGG
 	ret nz
 
-	; Ensure that the mon doesn't know any HMs.
-	push de
-	push hl
-	push bc
-	ld hl, wTempMonMoves
-	ld b, NUM_MOVES
-.loop
-	ld a, [hli]
-	and a
-	jr z, .hm_check_done
-	push hl
-	push bc
-	ld hl, HMMoves
-	ld de, 1
-	call IsInArray
-	pop bc
-	pop hl
-	ld a, RELEASE_HM
-	jr c, .hm_check_done
-	dec b
-	jr nz, .loop
 	xor a ; RELEASE_OK
-.hm_check_done
-	pop bc
-	pop hl
-	; fallthrough
-.pop_de_done
-	pop de
 .done
 	and a
 	ret
@@ -3071,6 +3034,84 @@ endr
 	farjp _CGB_BillsPC
 
 INCLUDE "data/pc/theme_names.asm"
+
+BillsPC_Change:
+	call BillsPC_HideCursorAndMode
+
+	call LoadStandardMenuHeader
+	ld hl, .PickABoxToChangeToText
+	call PrintText
+
+	ld hl, .ChangeMenuDataHeader
+	call CopyMenuHeader
+	call InitScrollingMenu
+	ld a, [wCurBox]
+	ld [wMenuScrollPosition], a
+	call ScrollingMenu
+
+	call BillsPC_UpdateCursorLocation
+	call CloseWindow
+
+	ld a, [wMenuJoypad]
+	cp B_BUTTON
+	ret z
+
+	ld a, [wScrollingMenuCursorPosition]
+	jr BillsPC_ChangeBox
+
+.PickABoxToChangeToText:
+	text "Pick a"
+	line "Box to change to."
+	done
+
+.ChangeMenuDataHeader:
+	db MENU_BACKUP_TILES
+	menu_coords 8, 1, 18, 13
+	dw .ChangeMenuData2
+	db 1 ; default option
+
+.ChangeMenuData2:
+	db $10 ; flags
+	db 6, 0 ; rows, columns
+	db 1 ; horizontal spacing
+	dba .BoxList
+	dba .GetBoxString
+	dba NULL
+
+.BoxList:
+	db NUM_BOXES
+for x, 1, NUM_BOXES + 1
+	db x
+endr
+	db -1
+
+.GetBoxString:
+	ld a, [wMenuSelection]
+	ld b, a
+	push de
+	call GetBoxName
+	ld de, wStringBuffer1
+	pop hl
+	rst PlaceString
+	ret
+
+BillsPC_ChangeBox:
+	ld [wCurBox], a
+	call BillsPC_RefreshTheme
+	call DelayFrame ; Avoid screen tearing
+	call BillsPC_PrintBoxName
+	ld b, 0
+	call SafeCopyTilemapAtOnce
+	xor a
+	ldh [hBGMapMode], a
+	inc a
+	ldh [rVBK], a
+	call SetBoxIcons
+	xor a
+	ldh [rVBK], a
+	inc a
+	ldh [hBGMapMode], a
+	ret
 
 BillsPC_GetCursorFromTo:
 ; Returns source (held mon) in de and destination (cursor location) in bc.

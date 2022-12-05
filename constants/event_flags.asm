@@ -1526,7 +1526,7 @@
 ; Prof Oak
 	const EVENT_BEAT_PROF_OAK
 ; Prof Elm
-	const EVENT_BEAT_PROF_ELM
+	const EVENT_BATTLED_PROF_ELM
 ; Prof Ivy
 	const EVENT_BEAT_PROF_IVY
 ; Mysticalman

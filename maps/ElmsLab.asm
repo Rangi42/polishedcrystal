@@ -405,7 +405,7 @@ ElmGiveOddSouvenirScript:
 	setevent EVENT_GOT_ODD_SOUVENIR_FROM_ELM
 	writetext ElmGiveOddSouvenirText2
 	waitbutton
-	checkevent EVENT_BEAT_PROF_ELM
+	checkevent EVENT_BATTLED_PROF_ELM
 	iffalsefwd ElmAlsoBattleScript
 	endtext
 
@@ -417,7 +417,7 @@ ElmGiveMasterBallScript:
 	setevent EVENT_GOT_MASTER_BALL_FROM_ELM
 	writetext ElmGiveMasterBallText2
 	waitbutton
-	checkevent EVENT_BEAT_PROF_ELM
+	checkevent EVENT_BATTLED_PROF_ELM
 	iftrue_endtext
 ElmAlsoBattleScript:
 	writetext ElmByTheWayText
@@ -425,7 +425,7 @@ ElmAlsoBattleScript:
 	sjumpfwd ElmAskBattleScript
 
 ElmCheckBattleScript:
-	checkevent EVENT_BEAT_PROF_ELM
+	checkevent EVENT_BATTLED_PROF_ELM
 	iftrue_jumpopenedtext ElmText_CallYou
 	checkevent EVENT_BEAT_FALKNER
 	iffalse_jumpopenedtext ElmText_CallYou
@@ -456,8 +456,10 @@ ElmAskBattleScript:
 	loadtrainer PROF_ELM, 3
 .GotTeam:
 	loadvar VAR_BATTLETYPE, BATTLETYPE_CANLOSE
+	setevent EVENT_BATTLED_PROF_ELM
 	startbattle
 	reloadmap
+	special HealPartyEvenForNuzlocke
 	jumptextfaceplayer ElmAfterBattleText
 
 ElmGiveTicketScript:
@@ -1199,6 +1201,12 @@ ElmAfterTheftText6:
 	para "Before you leave,"
 	line "make sure that you"
 	cont "talk to your mom."
+
+	para "And give me a call"
+	line "sometimes too."
+
+	para "I might have use-"
+	line "ful information!"
 	done
 
 ElmStudyingEggText:
