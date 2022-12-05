@@ -207,4 +207,5 @@ SpriteHeaders:
 	overworld_sprite CrysSpriteGFX, WALKING_SPRITE, PAL_OW_GREEN
 	overworld_sprite CrysBikeSpriteGFX, WALKING_SPRITE, PAL_OW_GREEN
 	overworld_sprite CrysSurfSpriteGFX, WALKING_SPRITE, PAL_OW_GREEN
+	overworld_sprite ThortonSpriteGFX, WALKING_SPRITE, PAL_OW_BLUE
 	assert_table_length NUM_OVERWORLD_SPRITES
