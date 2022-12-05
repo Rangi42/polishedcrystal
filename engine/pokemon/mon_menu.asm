@@ -1074,23 +1074,7 @@ MoveScreenLoop:
 	add hl, bc
 	ld a, [hl]
 	ld [wMoveScreenSelectedMove], a
-	ld a, [wMoveScreenMode]
-	cp MOVESCREEN_NEWMOVE
 	ld a, c
-	jr nz, .ok
-	ld a, [hl]
-	push bc
-	ld hl, HMMoves
-	call IsInByteArray
-	pop bc
-	ld a, c
-	jr nc, .ok
-	cp 4 ; selected new move
-	jr z, .ok
-	ld hl, Text_CantForgetHM
-	call PrintTextNoBox
-	jr .outer_loop
-.ok
 	inc a
 	and a
 	ret
@@ -1102,7 +1086,7 @@ MoveScreenLoop:
 	ret z
 	xor a
 	ld [wMoveSwapBuffer], a
-	jmp .outer_loop
+	jr .outer_loop
 .pressed_select
 	ld a, [wMoveScreenMode]
 	and a
@@ -1115,7 +1099,7 @@ MoveScreenLoop:
 	ld a, [wMoveScreenCursor]
 	inc a
 	ld [wMoveSwapBuffer], a
-	jmp .outer_loop
+	jr .outer_loop
 .pressed_right
 	ld a, [wMoveScreenMode]
 	and a
@@ -1660,8 +1644,3 @@ String_na:
 
 String_PowAcc:
 	db "   <BOLDP>/   %@"
-
-Text_CantForgetHM:
-; HM moves can't be forgotten now.
-	text_far _MoveCantForgetHMText
-	text_end

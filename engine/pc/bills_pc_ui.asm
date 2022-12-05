@@ -2702,34 +2702,7 @@ BillsPC_CanReleaseMon:
 	ld a, RELEASE_EGG
 	ret nz
 
-	; Ensure that the mon doesn't know any HMs.
-	push de
-	push hl
-	push bc
-	ld hl, wTempMonMoves
-	ld b, NUM_MOVES
-.loop
-	ld a, [hli]
-	and a
-	jr z, .hm_check_done
-	push hl
-	push bc
-	ld hl, HMMoves
-	ld de, 1
-	call IsInArray
-	pop bc
-	pop hl
-	ld a, RELEASE_HM
-	jr c, .hm_check_done
-	dec b
-	jr nz, .loop
 	xor a ; RELEASE_OK
-.hm_check_done
-	pop bc
-	pop hl
-	; fallthrough
-.pop_de_done
-	pop de
 .done
 	and a
 	ret

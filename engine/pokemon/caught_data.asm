@@ -189,7 +189,7 @@ SetGiftMonCaughtData:
 	rrca
 	rrca
 	rrca
-	and CAUGHT_TIME_MASK
+	and CAUGHT_TIME_MASK ; no-optimize a = (a & MASK) | (b|c|d|e|h|l & ~MASK) (false detection)
 	ld b, a
 	; CaughtBall
 	; c contains it
