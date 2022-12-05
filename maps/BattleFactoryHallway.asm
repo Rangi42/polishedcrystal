@@ -74,8 +74,8 @@ BattleFactoryHallwayFollowReceptionist:
 		para "The Factory Head"
 		line "has sent word that"
 
-		para "he is impressed"
-		line "with your skill."
+		para "he is demanding"
+		line "a match with you."
 
 		para "Are you ready to"
 		line "battle the"

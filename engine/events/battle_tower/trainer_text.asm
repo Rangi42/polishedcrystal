@@ -6,6 +6,8 @@ BattleTowerText::
 	ld a, [wOtherTrainerClass]
 	cp TOWERTYCOON
 	jr z, .tycoon
+	cp FACTORYHEAD
+	jr z, .head
 
 	push bc
 	dec a
@@ -29,6 +31,12 @@ BattleTowerText::
 	; always use the number 0
 	xor a
 	ld hl, BTTycoonTexts
+	jr .proceed
+
+.head
+	; always use the number 0
+	xor a
+	ld hl, BFHeadTexts
 	jr .proceed
 
 .female
@@ -226,6 +234,20 @@ BTTycoonTexts:
 
 .PlayerWon:
 	dw BTWinTycoon
+
+BFHeadTexts:
+	dw .Greetings
+	dw .PlayerLost
+	dw .PlayerWon
+
+.Greetings:
+	dw BTGreetingHead
+
+.PlayerLost:
+	dw BTLossHead
+
+.PlayerWon:
+	dw BTWinHead
 
 BTGreetingM1:
 	text_far _BTGreetingM1Text
@@ -717,4 +739,16 @@ BTLossTycoon:
 
 BTWinTycoon:
 	text_far BattleTowerText_WinTycoon
+	text_end
+
+BTGreetingHead:
+	text_far BattleFactoryText_GreetingHead
+	text_end
+
+BTLossHead:
+	text_far BattleFactoryText_LossHead
+	text_end
+
+BTWinHead:
+	text_far BattleFactoryText_WinHead
 	text_end
