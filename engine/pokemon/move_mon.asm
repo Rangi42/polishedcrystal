@@ -1059,9 +1059,6 @@ GivePoke::
 	ld a, [wCurForm]
 	bit MON_IS_EGG_F, a
 	jr z, .not_egg
-	ld de, String_Egg
-	ld hl, wTempMonNickname
-	call CopyName2
 	ld hl, wTempMonHP
 	xor a
 	ld [hli], a
@@ -1074,7 +1071,9 @@ GivePoke::
 	add a
 	add b
 	ld [wTempMonHappiness], a
-	jr .try_add
+	ld de, String_Egg
+	ld hl, wTempMonNickname
+	call CopyName2
 .not_egg
 	ld de, wTempMonNickname
 	ld hl, wMonOrItemNameBuffer
@@ -1083,7 +1082,6 @@ GivePoke::
 	ld [wCurItem], a
 	ld hl, wTempMonCaughtData
 	farcall SetBoxmonOrEggmonCaughtData
-.try_add
 	call AddTempMonToParty
 	ld d, PARTYMON
 	jr nc, .added
