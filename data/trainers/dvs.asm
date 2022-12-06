@@ -119,7 +119,7 @@ TrainerClassDVsAndPersonality:
 	db 112, $DD, $DD, $DD, FEMALE ; ariana
 	db 160, PERFECT_DVS,   MALE   ; giovanni
 	db 252, PERFECT_DVS,   MALE   ; prof oak
-	db 160, $CC, $CC, $CC, MALE   ; prof elm
+	db  32, $BB, $BB, $BB, MALE   ; prof elm
 	db 252, PERFECT_DVS,   FEMALE ; prof ivy
 	db  88, $DD, $DD, $DD, MALE   ; mysticalman
 	db  88, PERFECT_DVS,   MALE   ; karate king
