@@ -2523,14 +2523,6 @@ BugCatcherGroup:
 	dbp LEVEL_FROM_BADGES + 5, SCYTHER
 	db -1 ; end
 
-	; BUG_CATCHER
-	db "Callum@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp LEVEL_FROM_BADGES + 4, ARIADOS
-	dbp LEVEL_FROM_BADGES + 5, PINSIR
-	db -1 ; end
-
 
 SECTION "CamperGroup", ROMX
 CamperGroup:
@@ -3437,13 +3429,6 @@ FisherGroup:
 	; party
 	dbp 60, LANTURN
 	dbp 56, MANTINE
-	db -1 ; end
-
-	; FISHER
-	db "Dundee@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp LEVEL_FROM_BADGES + 6, CROCONAW
 	db -1 ; end
 
 	; FISHER
@@ -4810,15 +4795,6 @@ PokemaniacGroup:
 		db HEADBUTT, DEFENSE_CURL, ROLLOUT, EXPLOSION
 	dbp 36, PORYGON2
 		db CONVERSION, RECOVER, PSYBEAM, TRI_ATTACK
-	db -1 ; end
-
-	; POKEMANIAC
-	db "Clive@"
-	db TRAINERTYPE_NORMAL
-	; party
-	dbp LEVEL_FROM_BADGES + 3, SLOWPOKE
-	dbp LEVEL_FROM_BADGES + 3, WOOPER
-	dbp LEVEL_FROM_BADGES + 5, NIDORINO
 	db -1 ; end
 
 
