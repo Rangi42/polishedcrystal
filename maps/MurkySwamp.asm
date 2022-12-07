@@ -20,12 +20,9 @@ MurkySwamp_MapScriptHeader:
 	object_event 40, 26, SPRITE_CHERYL, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, MurkySwampCherylScript, EVENT_MURKY_SWAMP_CHERYL
 	object_event 17, 31, SPRITE_NURSE, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, MurkySwampNurseBeatriceScript, -1
 	object_event 22, 20, SPRITE_BUG_CATCHER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 5, GenericTrainerBug_catcherOscar, -1
-	object_event 25,  7, SPRITE_BUG_CATCHER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 2, GenericTrainerBug_catcherCallum, -1
-	object_event 27, 33, SPRITE_POKEMANIAC, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 3, GenericTrainerPokemaniacClive, -1
 	object_event 37, 17, SPRITE_HEX_MANIAC, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 3, GenericTrainerHex_maniacMatilda, -1
 	object_event  6, 22, SPRITE_FIREBREATHER, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 3, GenericTrainerFirebreatherOleg, -1
-	object_event  3,  8, SPRITE_FISHER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 1, GenericTrainerFisherDundee, -1
-	object_event  4, 33, SPRITE_SCHOOLBOY, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 2, -1, -1, PAL_NPC_RED, OBJECTTYPE_COMMAND, jumptextfaceplayer, MurkySwampYoungsterText, -1
+	object_event  4, 33, SPRITE_POKEMANIAC, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 2, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, MurkySwampPokemaniacText, -1
 	itemball_event 14,  9, FULL_HEAL, 1, EVENT_MURKY_SWAMP_FULL_HEAL
 	itemball_event 10, 11, BIG_MUSHROOM, 1, EVENT_MURKY_SWAMP_BIG_MUSHROOM
 	itemball_event 43, 23, TOXIC_ORB, 1, EVENT_MURKY_SWAMP_TOXIC_ORB
@@ -208,52 +205,6 @@ GenericTrainerBug_catcherOscar:
 	text "Get me outta here!"
 	done
 
-GenericTrainerBug_catcherCallum:
-	generictrainer BUG_CATCHER, CALLUM, EVENT_BEAT_BUG_CATCHER_CALLUM, .SeenText, .BeatenText
-
-	text "This close to the"
-	line "coast, I guess the"
-
-	para "land becomes soak-"
-	line "ed with water."
-	done
-
-.SeenText:
-	text "I'm from Azalea,"
-	line "but I've never seen"
-
-	para "this part of the"
-	line "forest."
-	done
-
-.BeatenText:
-	text "This is no forest."
-	line "It's a swamp!"
-	done
-
-GenericTrainerPokemaniacClive:
-	generictrainer POKEMANIAC, CLIVE, EVENT_BEAT_POKEMANIAC_CLIVE, .SeenText, .BeatenText
-
-	text "I know a fellow"
-	line "#maniac when I"
-	cont "see one."
-
-	para "Leave some rare"
-	line "#mon for me,"
-	cont "OK?"
-	done
-
-.SeenText:
-	text "Don't tell me,"
-	line "you're here to"
-	cont "explore the swamp"
-	cont "too?"
-	done
-
-.BeatenText:
-	text "I knew it!"
-	done
-
 GenericTrainerHex_maniacMatilda:
 	generictrainer HEX_MANIAC, MATILDA, EVENT_BEAT_HEX_MANIAC_MATILDA, .SeenText, .BeatenText
 
@@ -296,30 +247,16 @@ GenericTrainerFirebreatherOleg:
 	text "I risked and lost!"
 	done
 
-GenericTrainerFisherDundee:
-	generictrainer FISHER, DUNDEE, EVENT_BEAT_FISHER_DUNDEE, .SeenText, .BeatenText
+MurkySwampPokemaniacText:
+	text "This close to the"
+	line "coast, the land"
 
-	text "I would go fish in"
-	line "the ocean, but I'm"
-	cont "lost in here…"
-	done
+	para "becomes soaked"
+	line "with water."
 
-.SeenText:
-	text "All the #mon I"
-	line "fish up here are"
-	cont "poisonous!"
-	done
+	para "But the rare #-"
+	line "mon here make it"
 
-.BeatenText:
-	text "This is no place"
-	line "for fishing…"
-	done
-
-MurkySwampYoungsterText:
-	text "Man! This place is"
-	line "such a maze."
-
-	para "I'm not sure I'll"
-	line "ever find my way"
-	cont "to the other side."
+	para "worth exploring"
+	line "anyway!"
 	done

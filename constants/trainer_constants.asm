@@ -155,7 +155,6 @@ DEF CRYS EQU __trainer_class__
 	const KEN
 	const WAYNE
 	const OSCAR
-	const CALLUM
 
 	trainerclass CAMPER ; 22
 	const TODD1
@@ -264,7 +263,6 @@ DEF CRYS EQU __trainer_class__
 	const MURPHY
 	const LIAM
 	const GIDEON
-	const DUNDEE
 	const HALL
 	const DALLAS
 
@@ -401,7 +399,6 @@ DEF CRYS EQU __trainer_class__
 	const ZACH
 	const MILLER
 	const AIDAN
-	const CLIVE
 
 	trainerclass COSPLAYER ; 30
 	const CLARA
