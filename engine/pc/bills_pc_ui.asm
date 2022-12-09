@@ -467,27 +467,7 @@ _BillsPC_SetCursorMode:
 	ret
 
 .CursorPals:
-; PC_MENU_MODE = red
-if !DEF(MONOCHROME)
-	RGB 31, 20, 20
-	RGB 31, 10, 06
-else
-	MONOCHROME_RGB_TWO
-endc
-; PC_SWAP_MODE = blue
-if !DEF(MONOCHROME)
-	RGB 20, 20, 31
-	RGB 06, 10, 31
-else
-	MONOCHROME_RGB_TWO
-endc
-; PC_ITEM_MODE = green
-if !DEF(MONOCHROME)
-	RGB 20, 28, 20
-	RGB 06, 26, 10
-else
-	MONOCHROME_RGB_TWO
-endc
+INCLUDE "gfx/pc/cursor.pal"
 
 BillsPC_SafeRequest1bppInWRA6::
 	ldh a, [hROMBank]

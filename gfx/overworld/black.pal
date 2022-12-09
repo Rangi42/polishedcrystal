@@ -1,0 +1,31 @@
+if !DEF(MONOCHROME)
+; morn
+	RGB 07, 07, 07
+	RGB 07, 07, 07
+	RGB 07, 07, 07
+	RGB 07, 07, 07
+; day
+	RGB 07, 07, 07
+	RGB 07, 07, 07
+	RGB 07, 07, 07
+	RGB 07, 07, 07
+; nite
+	RGB 00, 00, 00
+	RGB 00, 00, 00
+	RGB 00, 00, 00
+	RGB 00, 00, 00
+; eve
+	RGB 06, 05, 05
+	RGB 06, 05, 05
+	RGB 06, 05, 05
+	RGB 06, 05, 05
+; dark
+	RGB 00, 00, 00
+	RGB 00, 00, 00
+	RGB 00, 00, 00
+	RGB 00, 00, 00
+else
+rept 4 * 5
+	RGB_MONOCHROME_BLACK
+endr
+endc
