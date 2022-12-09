@@ -574,7 +574,7 @@ StartTrainerBattle_LoadPokeBallGraphics:
 	jr nz, .loop1
 
 	ld a, [wOtherTrainerClass]
-	ld hl, .RocketTrainerClasses
+	ld hl, RocketTrainerClasses
 	call IsInByteArray
 	ld de, RocketTransition
 	jr c, .got_transition
@@ -701,130 +701,57 @@ StartTrainerBattle_LoadPokeBallGraphics:
 	pop bc
 	ret
 
-.RocketTrainerClasses
-	db GRUNTM
-	db GRUNTF
-	db ROCKET_SCIENTIST
-	db JESSIE_JAMES
-	db PROTON
-	db PETREL
-	db ARCHER
-	db ARIANA
-	db GIOVANNI
-	db -1
-
 .timepals
-if !DEF(MONOCHROME)
-; morn
-	RGB 31, 24, 18
-	RGB 31, 15, 17
-	RGB 31, 05, 05
-	RGB 07, 07, 07
-; day
-	RGB 31, 18, 29
-	RGB 31, 11, 15
-	RGB 31, 05, 05
-	RGB 07, 07, 07
-; nite
-	RGB 15, 09, 22
-	RGB 15, 05, 11
-	RGB 15, 02, 04
-	RGB 00, 00, 00
-; eve
-	RGB 25, 17, 13
-	RGB 25, 08, 11
-	RGB 25, 03, 03
-	RGB 06, 05, 05
-; dark
-	RGB 11, 07, 07
-	RGB 07, 03, 03
-	RGB 00, 00, 00
-	RGB 00, 00, 00
-else
-	MONOCHROME_RGB_FOUR
-	MONOCHROME_RGB_FOUR
-	MONOCHROME_RGB_FOUR_EVE
-	MONOCHROME_RGB_FOUR_NIGHT
-endc
+INCLUDE "gfx/overworld/trainer_battle.pal"
 
 .armored_mewtwo_pals
-if !DEF(MONOCHROME)
-	RGB 29, 18, 31
-	RGB 21, 11, 31
-	RGB 13, 05, 31
-	RGB 07, 07, 07
-else
-	MONOCHROME_RGB_FOUR
-endc
+INCLUDE "gfx/overworld/mewtwo_battle.pal"
 
 .black_pals
-if !DEF(MONOCHROME)
-; morn
-	RGB 07, 07, 07
-	RGB 07, 07, 07
-	RGB 07, 07, 07
-	RGB 07, 07, 07
-; day
-	RGB 07, 07, 07
-	RGB 07, 07, 07
-	RGB 07, 07, 07
-	RGB 07, 07, 07
-; nite
-	RGB 00, 00, 00
-	RGB 00, 00, 00
-	RGB 00, 00, 00
-	RGB 00, 00, 00
-; eve
-	RGB 06, 05, 05
-	RGB 06, 05, 05
-	RGB 06, 05, 05
-	RGB 06, 05, 05
-; dark
-	RGB 00, 00, 00
-	RGB 00, 00, 00
-	RGB 00, 00, 00
-	RGB 00, 00, 00
-else
-rept 16
-	RGB_MONOCHROME_BLACK
-endr
-endc
+INCLUDE "gfx/overworld/black.pal"
+
+pusho
+opt b.X
 
 PokeBallTransition:
-	db %00000011, %11000000
-	db %00001111, %11110000
-	db %00111100, %00111100
-	db %00110000, %00001100
-	db %01100000, %00000110
-	db %01100011, %11000110
-	db %11000110, %01100011
-	db %11111100, %00111111
-	db %11111100, %00111111
-	db %11000110, %01100011
-	db %01100011, %11000110
-	db %01100000, %00000110
-	db %00110000, %00001100
-	db %00111100, %00111100
-	db %00001111, %11110000
-	db %00000011, %11000000
+	bigdw %......XXXX......
+	bigdw %....XXXXXXXX....
+	bigdw %..XXXX....XXXX..
+	bigdw %..XX........XX..
+	bigdw %.XX..........XX.
+	bigdw %.XX...XXXX...XX.
+	bigdw %XX...XX..XX...XX
+	bigdw %XXXXXX....XXXXXX
+	bigdw %XXXXXX....XXXXXX
+	bigdw %XX...XX..XX...XX
+	bigdw %.XX...XXXX...XX.
+	bigdw %.XX..........XX.
+	bigdw %..XX........XX..
+	bigdw %..XXXX....XXXX..
+	bigdw %....XXXXXXXX....
+	bigdw %......XXXX......
 
 RocketTransition:
-	db %11111111, %11110000
-	db %11111111, %11111100
-	db %11111111, %11111110
-	db %11111111, %11111110
-	db %11111000, %00111111
-	db %11111000, %00011111
-	db %11111000, %00111111
-	db %11111111, %11111110
-	db %11111111, %11111110
-	db %11111111, %11111100
-	db %11111111, %11111000
-	db %11111000, %01111100
-	db %11111000, %01111100
-	db %11111000, %00111110
-	db %11111000, %00011111
-	db %11111000, %00011111
+	bigdw %XXXXXXXXXXXX....
+	bigdw %XXXXXXXXXXXXXX..
+	bigdw %XXXXXXXXXXXXXXX.
+	bigdw %XXXXXXXXXXXXXXX.
+	bigdw %XXXXX.....XXXXXX
+	bigdw %XXXXX......XXXXX
+	bigdw %XXXXX.....XXXXXX
+	bigdw %XXXXXXXXXXXXXXX.
+	bigdw %XXXXXXXXXXXXXXX.
+	bigdw %XXXXXXXXXXXXXX..
+	bigdw %XXXXXXXXXXXXX...
+	bigdw %XXXXX....XXXXX..
+	bigdw %XXXXX....XXXXX..
+	bigdw %XXXXX.....XXXXX.
+	bigdw %XXXXX......XXXXX
+	bigdw %XXXXX......XXXXX
+
+popo
+
+INCLUDE "data/trainers/team_rocket.asm"
 
 WipeLYOverrides:
 	ldh a, [rSVBK]

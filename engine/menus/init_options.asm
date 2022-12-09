@@ -167,21 +167,7 @@ SetInitialOptions:
 	text_end
 
 .BGPalettes:
-if !DEF(MONOCHROME)
-; blue
-	RGB 31, 31, 31
-	RGB 09, 30, 31
-	RGB 01, 11, 31
-	RGB 00, 00, 00
-; select/start
-	RGB 31, 31, 31
-	RGB 26, 10, 06
-	RGB 11, 14, 31
-	RGB 00, 00, 00
-else
-	MONOCHROME_RGB_FOUR
-	MONOCHROME_RGB_FOUR
-endc
+INCLUDE "gfx/new_game/init_bg.pal"
 
 .BGTiles:
 INCBIN "gfx/new_game/init_bg.2bpp.lz"

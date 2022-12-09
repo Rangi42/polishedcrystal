@@ -127,17 +127,7 @@ PokegearOBPals:
 INCLUDE "gfx/icons/icons.pal"
 
 PokegearFlyPalette:
-if !DEF(MONOCHROME)
-	RGB 31, 31, 31
-	RGB 31, 31, 31
-	RGB 08, 26, 31
-	RGB 00, 00, 00
-else
-	RGB_MONOCHROME_WHITE
-	RGB_MONOCHROME_WHITE
-	RGB_MONOCHROME_LIGHT
-	RGB_MONOCHROME_BLACK
-endc
+INCLUDE "gfx/pokegear/fly.pal"
 
 BodyColorPalsIncludingNull:
 if !DEF(MONOCHROME)

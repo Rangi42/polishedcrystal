@@ -651,7 +651,7 @@ _CGB_MapPals:
 
 _CGB_PartyMenu:
 	ld de, wBGPals1
-	ld hl, .PartyMenuBGPalette
+	ld hl, PartyMenuBGPals
 	call LoadOnePalette
 
 	ld hl, HPBarPals
@@ -663,7 +663,7 @@ _CGB_PartyMenu:
 	call LoadPalette_White_Col1_Col2_Black
 
 	ld de, wBGPals1 palette 7
-	ld hl, .PartyMenuBGPalette
+	ld hl, PartyMenuBGPals
 	call LoadOnePalette
 
 	call InitPartyMenuOBPals
@@ -673,16 +673,6 @@ _CGB_PartyMenu:
 	ld a, $4
 	call FillBoxWithByte
 	jmp ApplyAttrMap
-
-.PartyMenuBGPalette:
-if !DEF(MONOCHROME)
-	RGB 31, 31, 31
-	RGB 17, 19, 31
-	RGB 14, 16, 31
-	RGB 00, 00, 00
-else
-	MONOCHROME_RGB_FOUR
-endc
 
 _CGB_Evolution:
 	ld de, wBGPals1
@@ -1146,30 +1136,10 @@ BillsPC_PreviewTheme:
 
 .CursorPal:
 ; Coloring is fixed up later.
-if !DEF(MONOCHROME)
-	RGB 31, 31, 31
-	RGB 31, 31, 31
-	RGB 00, 00, 00
-	RGB 00, 00, 00
-else
-	RGB_MONOCHROME_WHITE
-	RGB_MONOCHROME_WHITE
-	RGB_MONOCHROME_BLACK
-	RGB_MONOCHROME_BLACK
-endc
+INCLUDE "gfx/pc/cursor_default.pal"
 
 .PackPal:
-if !DEF(MONOCHROME)
-	RGB 31, 31, 31
-	RGB 31, 31, 31
-	RGB 07, 19, 07
-	RGB 00, 00, 00
-else
-	RGB_MONOCHROME_WHITE
-	RGB_MONOCHROME_WHITE
-	RGB_MONOCHROME_DARK
-	RGB_MONOCHROME_BLACK
-endc
+INCLUDE "gfx/pc/pack.pal"
 
 GetBillsPCThemePalette:
 	; hl = BillsPC_ThemePals + a * 4 * 2
@@ -1218,14 +1188,7 @@ endc
 	jmp ApplyAttrMap
 
 .UnownPuzzlePalette:
-if !DEF(MONOCHROME)
-	RGB 31, 31, 31
-	RGB 24, 20, 11
-	RGB 18, 13, 11
-	RGB 00, 00, 00
-else
-	MONOCHROME_RGB_FOUR
-endc
+INCLUDE "gfx/unown_puzzle/unown_puzzle.pal"
 
 _CGB_GameFreakLogo:
 	ld de, wBGPals1
@@ -1240,65 +1203,31 @@ endr
 	ret
 
 .GameFreakLogoPalette:
-if !DEF(MONOCHROME)
-	RGB 00, 00, 00
-	RGB 08, 11, 11
-	RGB 21, 21, 21
-	RGB 31, 31, 31
-else
-	RGB_MONOCHROME_BLACK
-	RGB_MONOCHROME_DARK
-	RGB_MONOCHROME_LIGHT
-	RGB_MONOCHROME_WHITE
-endc
+INCLUDE "gfx/splash/logo.pal"
 
 .GameFreakDittoPalette:
-if !DEF(MONOCHROME)
-	RGB 31, 31, 31
-	RGB 13, 11, 00
-	RGB 23, 12, 28
-	RGB 00, 00, 00
-else
-	RGB_MONOCHROME_WHITE
-	RGB_MONOCHROME_DARK
-	RGB_MONOCHROME_LIGHT
-	RGB_MONOCHROME_BLACK
-endc
+INCLUDE "gfx/splash/ditto.pal"
 
 _CGB_TradeTube:
 	ld de, wBGPals1
-	ld hl, .TradeTubeBluePalette
+	ld hl, .TradeTubeBGPalette
 	call LoadOnePalette
 
-	ld hl, .TradeTubeRedPalette
+	ld hl, .TradeTubeOBPalette
 	ld de, wOBPals1
 	call LoadOnePalette
 
 	ld de, wOBPals1 palette 7
-	ld hl, .TradeTubeBluePalette
+	ld hl, .TradeTubeBGPalette
 	call LoadOnePalette
 
 	jmp WipeAttrMap
 
-.TradeTubeBluePalette:
-if !DEF(MONOCHROME)
-	RGB 31, 31, 31
-	RGB 18, 20, 27
-	RGB 11, 15, 23
-	RGB 00, 00, 00
-else
-	MONOCHROME_RGB_FOUR
-endc
+.TradeTubeBGPalette:
+INCLUDE "gfx/trade/trade_tube_bg.pal"
 
-.TradeTubeRedPalette:
-if !DEF(MONOCHROME)
-	RGB 27, 31, 27
-	RGB 31, 19, 10
-	RGB 31, 07, 04
-	RGB 00, 00, 00
-else
-	MONOCHROME_RGB_FOUR
-endc
+.TradeTubeOBPalette:
+INCLUDE "gfx/trade/trade_tube_ob.pal"
 
 _CGB_IntroPals:
 	ld de, wBGPals1
@@ -1355,14 +1284,7 @@ _CGB_IntroGenderPals:
 	jmp ApplyPals
 
 IntroGradientPalette:
-if !DEF(MONOCHROME)
-	RGB 31, 31, 31
-	RGB 27, 31, 31
-	RGB 19, 31, 31
-	RGB 09, 30, 31
-else
-	MONOCHROME_RGB_FOUR
-endc
+INCLUDE "gfx/new_game/intro_gradient.pal"
 
 _CGB_NewDiploma:
 	ld hl, DiplomaPals
@@ -1510,29 +1432,7 @@ _CGB_JudgeSystem:
 	ret
 
 .SparkleAndBottleCapPalette:
-if !DEF(MONOCHROME)
-; max stat sparkle
-	RGB 31, 31, 31
-	RGB 31, 31, 31
-	RGB 31, 29, 00
-	RGB 00, 00, 00
-; hyper trained bottle cap
-	RGB 31, 31, 31
-	RGB 31, 31, 31
-	RGB 22, 23, 24
-	RGB 13, 15, 18
-else
-; max stat sparkle
-	RGB_MONOCHROME_WHITE
-	RGB_MONOCHROME_WHITE
-	RGB_MONOCHROME_LIGHT
-	RGB_MONOCHROME_DARK
-; hyper trained bottle cap
-	RGB_MONOCHROME_WHITE
-	RGB_MONOCHROME_WHITE
-	RGB_MONOCHROME_LIGHT
-	RGB_MONOCHROME_DARK
-endc
+INCLUDE "gfx/stats/judge_ob.pal"
 
 _CGB_FinishLayout:
 	call ApplyAttrMap

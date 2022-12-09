@@ -1,0 +1,11 @@
+RocketTrainerClasses:
+	db GRUNTM
+	db GRUNTF
+	db ROCKET_SCIENTIST
+	db JESSIE_JAMES
+	db PROTON
+	db PETREL
+	db ARCHER
+	db ARIANA
+	db GIOVANNI
+	db -1

@@ -1,4 +1,7 @@
 ; ability constants
+; indexes for:
+; - AbilityNames (see data/abilities/names.asm)
+; - AbilityDescriptions (see data/abilities/descriptions.asm)
 	const_def
 	const NO_ABILITY
 	const STENCH
