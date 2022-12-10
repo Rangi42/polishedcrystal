@@ -1,5 +1,8 @@
-
+if !DEF(MONOCHROME)
 	RGB 31, 31, 31
 	RGB 21, 25, 28
 	RGB 09, 19, 23
 	RGB 06, 07, 08
+else
+	MONOCHROME_RGB_FOUR
+endc

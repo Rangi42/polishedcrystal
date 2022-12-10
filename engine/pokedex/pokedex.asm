@@ -2850,6 +2850,17 @@ endr
 	cp [hl]
 	ret
 
+BodyColorPalsIncludingNull:
+if !DEF(MONOCHROME)
+	RGB 00, 00, 00
+else
+	RGB_MONOCHROME_BLACK
+endc
+BodyColorPals:
+	table_width 2, BodyColorPals
+INCLUDE "gfx/pokedex/body_colors.pal"
+	assert_table_length NUM_BODY_COLORS
+
 Pokedex_InitData:
 ; Initializes the list of Pokémon seen and owned.
 	; Reset cursor positioning and wTempDex data.
@@ -3183,6 +3194,9 @@ Pokedex_LoadUndiscoveredPokepic:
 	call FarCopyBytesToColorWRAM
 	xor a
 	ret
+
+Pokedex_QuestionMarkPal:
+INCLUDE "gfx/pokedex/question_mark.pal"
 
 Pokedex_SwitchMonInfoBank:
 ; Switch which bank to store tile data in. Tiles are loaded as follows:

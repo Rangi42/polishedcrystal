@@ -103,6 +103,9 @@ LoadEnemyStatusIconPalette:
 	ld bc, 2
 	jmp FarCopyColorWRAM
 
+StatusIconPals:
+INCLUDE "gfx/battle/status.pal"
+
 LoadBattleCategoryAndTypePals:
 	ld a, [wPlayerMoveStruct + MOVE_CATEGORY]
 	ld b, a
@@ -136,6 +139,16 @@ LoadCategoryAndTypePals:
 	inc de
 	ld bc, 2
 	jmp FarCopyColorWRAM
+
+CategoryIconPals:
+	table_width PAL_COLOR_SIZE * 2, CategoryIconPals
+INCLUDE "gfx/battle/categories.pal"
+	assert_table_length NUM_CATEGORIES
+
+TypeIconPals:
+	table_width PAL_COLOR_SIZE, TypeIconPals
+INCLUDE "gfx/battle/types.pal"
+	assert_table_length NUM_TYPES
 
 LoadKeyItemIconPalette:
 	ld a, [wCurKeyItem]
@@ -177,6 +190,33 @@ endr
 	ld bc, 2
 	jmp FarCopyColorWRAM
 
+ItemIconPalettes:
+CaughtBallPals:
+ParkBallIconPalette:
+	table_width PAL_COLOR_SIZE * 2, ItemIconPalettes
+INCLUDE "gfx/items/items.pal"
+	assert_table_length NUM_ITEMS + 1
+
+KeyItemIconPalettes:
+	table_width PAL_COLOR_SIZE * 2, KeyItemIconPalettes
+INCLUDE "gfx/items/key_items.pal"
+	assert_table_length NUM_KEY_ITEMS
+
+TMHMTypeIconPals:
+	table_width PAL_COLOR_SIZE * 2, TMHMTypeIconPals
+INCLUDE "gfx/items/tm_hm_types.pal"
+	assert_table_length NUM_TYPES
+
+ApricornIconPalettes:
+	table_width PAL_COLOR_SIZE * 2, ApricornIconPalettes
+INCLUDE "gfx/items/apricorns.pal"
+	assert_table_length NUM_APRICORNS
+
+WingIconPalettes:
+	table_width PAL_COLOR_SIZE * 2, WingIconPalettes
+INCLUDE "gfx/items/wings.pal"
+	assert_table_length NUM_WINGS
+
 LoadStatsScreenPals:
 	ldh a, [rSVBK]
 	push af
@@ -212,6 +252,9 @@ LoadStatsScreenPals:
 	call ApplyPals
 	ld a, $1
 	ret
+
+StatsScreenPagePals:
+INCLUDE "gfx/stats/stats.pal"
 
 LoadOneColor:
 	ld c, 2
@@ -383,6 +426,9 @@ LoadMailPalettes:
 	ld bc, 1 palettes
 	jmp FarCopyColorWRAM
 
+MailPals:
+INCLUDE "gfx/mail/mail.pal"
+
 LoadAndApplyMailPalettes:
 	call LoadMailPalettes
 	call ApplyPals
@@ -514,6 +560,9 @@ endr
 	jr nz, .loop
 	ret
 
+PartyMenuOBPals:
+INCLUDE "gfx/stats/party_menu_ob.pal"
+
 InitPokegearPalettes:
 ; This is needed because the regular palette is dark at night.
 	ld hl, PokegearOBPals
@@ -525,6 +574,12 @@ InitPokegearPalettes:
 	ld de, wOBPals1 palette 3
 	ld bc, 1 palettes
 	jmp FarCopyColorWRAM
+
+PokegearOBPals:
+INCLUDE "gfx/icons/icons.pal"
+
+PokegearFlyPalette:
+INCLUDE "gfx/pokegear/fly.pal"
 
 GetBattlemonBackpicPalettePointer:
 	push de
