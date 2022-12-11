@@ -83,8 +83,8 @@ CancelPalette:
 WhiteColor:
 DarkGrayPalette:
 	RGB_MONOCHROME_WHITE
-	RGB_MONOCHROME_LIGHT
 	RGB_MONOCHROME_DARK
+	RGB_MONOCHROME_BLACK
 BlackColor:
 	RGB_MONOCHROME_BLACK
 endc
@@ -204,21 +204,8 @@ SetBattlePal_Status:
 	jmp LoadEnemyStatusIconPalette
 
 SetBattlePal_Text:
-	ld a, BANK("GBC Video")
-	call StackCallInWRAMBankA
-.Function:
-	ld a, -1
-	lb bc, 2, 4
-.loop
-	ld [de], a
-	inc de
-	dec c
-	jr nz, .loop
-	xor a
-	ld c, 4
-	dec b
-	jr nz, .loop
-	ret
+	ld hl, DarkGrayPalette
+	jmp LoadPalette_White_Col1_Col2_Black
 
 _CGB_BattleColors:
 	push bc
