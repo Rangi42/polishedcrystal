@@ -23,6 +23,7 @@ HoppipFootprint:: INCBIN "gfx/footprints/sentret_hoppip.1bpp.lz"
 CorsolaFootprint::
 CursolaFootprint:: INCBIN "gfx/footprints/corsola_cursola.1bpp.lz"
 
+BlankFootprint::
 ArbokFootprint::
 BellossomFootprint::
 ChinchouFootprint::

@@ -3362,18 +3362,15 @@ _Pokedex_GetCursorMon:
 	ld bc, 4
 	call FarCopyBytesToColorWRAM
 
-	; If we haven't caught the mon, skip footprint and type icons
+	; If we haven't caught the mon, clear type and footprint icons
 	pop af
 	ldh a, [rSVBK]
 	push af
-	jmp z, .type_pals_done
-
-	ld a, 1
+	lb bc, NUM_TYPES, NUM_TYPES
+	jr z, .got_types
+	; Otherwise, also include type and footprint icons.
+	ld a, TRUE
 	ld [wPokedexOAM_IsCaught], a
-
-	; Otherwise, also include footprint and type icons.
-	; Type icons.
-	ld hl, TypeIconGFX
 	ld a, [wBaseType1]
 	ld c, a
 	ld a, [wBaseType2]
@@ -3386,6 +3383,7 @@ _Pokedex_GetCursorMon:
 	push bc
 	ld b, 0
 	ld a, 4 * LEN_1BPP_TILE
+	ld hl, TypeIconGFX
 	rst AddNTimes
 	ld de, wBGPals1 palette 7 + 2
 	call Pokedex_CopyTypeIconPals
@@ -3409,6 +3407,10 @@ _Pokedex_GetCursorMon:
 	lb bc, BANK(TypeIconGFX), 4
 	call Pokedex_Copy1bpp
 	; Footprint icon
+	pop af
+	push af
+	ld hl, BlankFootprint
+	jr z, .got_footprint
 	call Pokedex_GetCursorSpecies
 	call GetSpeciesAndFormIndex
 	ld hl, FootprintPointers
@@ -3416,6 +3418,7 @@ _Pokedex_GetCursorMon:
 	add hl, bc
 	ld a, BANK(FootprintPointers)
 	call GetFarWord
+.got_footprint
 	ld a, BANK(Footprints)
 	ld de, wDexMonFootprintTiles
 	call FarDecompressToDE
@@ -3447,7 +3450,6 @@ _Pokedex_GetCursorMon:
 	dec c
 	jr nz, .outer_copy_loop
 
-.type_pals_done
 	ld a, [wPokedex_DisplayMode]
 	cp DEXDISP_DESC
 	jr c, .done_2
