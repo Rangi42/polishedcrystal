@@ -3265,10 +3265,19 @@ _Pokedex_GetCursorMon:
 	rst ByteFill
 	ld a, BANK(wBGPals1)
 	ldh [rSVBK], a
-	ld a, -1
 	ld hl, wBGPals1 palette 7 + 2
+if !DEF(MONOCHROME)
+	ld a, -1
 	ld c, 6
 	rst ByteFill
+else
+rept 3
+	ld a, LOW(PAL_MONOCHROME_WHITE)
+	ld [hli], a
+	ld a, HIGH(PAL_MONOCHROME_WHITE)
+	ld [hli], a
+endr
+endc
 	pop af
 	ldh [rSVBK], a
 
