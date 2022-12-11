@@ -3,7 +3,6 @@ BattleCommand_knockoff:
 	and a
 	ret nz
 
-	; Maybe Substitute/Sheer Force prevents the steal
 	call CheckSubstituteOpp
 	ret nz
 
