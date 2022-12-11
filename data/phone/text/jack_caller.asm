@@ -105,14 +105,18 @@ JackGustTriviaText:
 	line "more powerful."
 	done
 
-JackTwisterTriviaText:
+JackKnockOffTriviaText:
 	text "Did you know…?"
 
 	para "If your opponent"
-	line "is Flying, your"
+	line "is holding an item"
 
-	para "Thunder becomes"
-	line "more powerful."
+	para "that your Knock"
+	line "Off can remove,"
+
+	para "your Knock Off"
+	line "becomes more"
+	cont "powerful."
 	done
 
 JackEarthquakeTriviaText:

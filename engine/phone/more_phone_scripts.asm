@@ -40,7 +40,7 @@ UnknownScript_0xa06a2:
 	sjump PhoneScript_HangupText_Male
 
 UnknownScript_0xa06aa:
-	farwritetext JackTwisterTriviaText
+	farwritetext JackKnockOffTriviaText
 	promptbutton
 	sjump PhoneScript_HangupText_Male
 

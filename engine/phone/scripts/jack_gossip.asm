@@ -5,7 +5,7 @@ JackTriviaScript:
 	ifequalfwd  2, .Solarbeam
 	ifequalfwd  3, .Stomp
 	ifequalfwd  4, .Gust
-	ifequalfwd  5, .Twister
+	ifequalfwd  5, .KnockOff
 	ifequalfwd  6, .Earthquake
 	ifequalfwd  7, .Magnitude
 	ifequalfwd  8, .Sandstorm
@@ -37,8 +37,8 @@ JackTriviaScript:
 	promptbutton
 	sjump PhoneScript_HangupText_Male
 
-.Twister:
-	farwritetext JackTwisterTriviaText
+.KnockOff:
+	farwritetext JackKnockOffTriviaText
 	promptbutton
 	sjump PhoneScript_HangupText_Male
 
