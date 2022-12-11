@@ -841,9 +841,17 @@ Pokedex_UpdateRow:
 	ld a, d
 	ld [hli], a
 	pop af
+if !DEF(MONOCHROME)
 	ld bc, palred 0 + palgreen 0 + palblue 0
+else
+	ld bc, PAL_MONOCHROME_BLACK
+endc
 	jr nz, .got_outline_pal
+if !DEF(MONOCHROME)
 	ld bc, palred 16 + palgreen 16 + palblue 16
+else
+	ld bc, PAL_MONOCHROME_DARK
+endc
 .got_outline_pal
 	ld a, c
 	ld [hli], a
