@@ -148,7 +148,7 @@ INCLUDE "gfx/battle/categories.pal"
 TypeIconPals:
 	table_width PAL_COLOR_SIZE, TypeIconPals
 INCLUDE "gfx/battle/types.pal"
-	assert_table_length NUM_TYPES
+	assert_table_length NUM_TYPES + 1
 
 LoadKeyItemIconPalette:
 	ld a, [wCurKeyItem]

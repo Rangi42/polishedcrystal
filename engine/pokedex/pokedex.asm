@@ -3370,10 +3370,11 @@ _Pokedex_GetCursorMon:
 	ld c, a
 	ld a, [wBaseType2]
 	cp c
-	ld b, -1
+	ld b, NUM_TYPES ; one past the last type
 	jr z, .got_types
 	ld b, a
 .got_types
+	; First type pal+icon
 	push bc
 	ld b, 0
 	ld a, 4 * LEN_1BPP_TILE
@@ -3388,9 +3389,7 @@ _Pokedex_GetCursorMon:
 	lb bc, BANK(TypeIconGFX), 4
 	call Pokedex_Copy1bpp
 	pop bc
-	inc b
-	jr z, .types_done
-	dec b
+	; Second type pal+icon
 	ld c, b
 	ld b, 0
 	ld a, 4 * LEN_1BPP_TILE
@@ -3401,9 +3400,7 @@ _Pokedex_GetCursorMon:
 	ld de, wDexMonType2Tiles
 	lb bc, BANK(TypeIconGFX), 4
 	call Pokedex_Copy1bpp
-
-.types_done
-	; Footprint
+	; Footprint icon
 	call Pokedex_GetCursorSpecies
 	call GetSpeciesAndFormIndex
 	ld hl, FootprintPointers
