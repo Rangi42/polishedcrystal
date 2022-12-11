@@ -2,7 +2,7 @@ DragonsDenB1F_MapScriptHeader:
 	def_scene_scripts
 
 	def_callbacks
-	callback MAPCALLBACK_NEWMAP, DragonsDenB1FSilverCallback
+	callback MAPCALLBACK_NEWMAP, DragonsDenB1FRivalCallback
 
 	def_warp_events
 	warp_event 20,  3, DRAGONS_DEN_1F, 3
@@ -19,7 +19,7 @@ DragonsDenB1F_MapScriptHeader:
 
 	def_object_events
 	object_event 14, 30, SPRITE_CLAIR, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_DRAGONS_DEN_CLAIR
-	object_event 20, 23, SPRITE_SILVER, SPRITEMOVEDATA_WANDER, 2, 2, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, DragonsDenB1FSilverScript, EVENT_RIVAL_DRAGONS_DEN
+	object_event 20, 23, SPRITE_RIVAL, SPRITEMOVEDATA_WANDER, 2, 2, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, DragonsDenB1FRivalScript, EVENT_RIVAL_DRAGONS_DEN
 	object_event 34, 19, SPRITE_KIMONO_GIRL, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, KimonoGirlMinaScript, -1
 	object_event 20,  8, SPRITE_DRAGON_TAMER, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 4, GenericTrainerDragonTamerDarin, -1
 	object_event  8,  8, SPRITE_DRAGON_TAMER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 3, GenericTrainerDragonTamerAdam, -1
@@ -33,27 +33,27 @@ DragonsDenB1F_MapScriptHeader:
 
 	object_const_def
 	const DRAGONSDENB1F_CLAIR
-	const DRAGONSDENB1F_SILVER
+	const DRAGONSDENB1F_RIVAL
 	const DRAGONSDENB1F_KIMONO_GIRL
 
-DragonsDenB1FSilverCallback:
+DragonsDenB1FRivalCallback:
 	checkevent EVENT_BEAT_RIVAL_IN_MT_MOON
 	iftruefwd .CheckDay
-	disappear DRAGONSDENB1F_SILVER
+	disappear DRAGONSDENB1F_RIVAL
 	endcallback
 
 .CheckDay:
 	checkevent EVENT_GOT_RIVALS_EGG
-	iffalsefwd .AppearSilver
+	iffalsefwd .AppearRival
 	readvar VAR_WEEKDAY
-	ifequalfwd TUESDAY, .AppearSilver
-	ifequalfwd THURSDAY, .AppearSilver
-	ifequalfwd SATURDAY, .AppearSilver
-	disappear DRAGONSDENB1F_SILVER
+	ifequalfwd TUESDAY, .AppearRival
+	ifequalfwd THURSDAY, .AppearRival
+	ifequalfwd SATURDAY, .AppearRival
+	disappear DRAGONSDENB1F_RIVAL
 	endcallback
 
-.AppearSilver:
-	appear DRAGONSDENB1F_SILVER
+.AppearRival:
+	appear DRAGONSDENB1F_RIVAL
 	endcallback
 
 DragonsDenB1FClairTrigger:
@@ -131,14 +131,14 @@ DragonsDenShrineSignText:
 	line "in Dragon's Den."
 	done
 
-DragonsDenB1FSilverScript:
+DragonsDenB1FRivalScript:
 	playmusic MUSIC_RIVAL_ENCOUNTER
 	faceplayer
 	opentext
 	checkevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_1
-	iftruefwd .SilverTalkAgain
+	iftruefwd .RivalTalkAgain
 	checkevent EVENT_GOT_RIVALS_EGG
-	iftruefwd .SilverTalk
+	iftruefwd .RivalTalk
 	writetext .Training1Text
 	waitbutton
 	writetext .GiveEggText
@@ -174,7 +174,7 @@ DragonsDenB1FSilverScript:
 	special RestartMapMusic
 	end
 
-.SilverTalk:
+.RivalTalk:
 	writetext .Training1Text
 	waitbutton
 	closetext
@@ -182,7 +182,7 @@ DragonsDenB1FSilverScript:
 	special RestartMapMusic
 	end
 
-.SilverTalkAgain:
+.RivalTalkAgain:
 	writetext .Training2Text
 	waitbutton
 	closetext

@@ -25,8 +25,8 @@ DadSpriteGFX:: INCBIN "gfx/sprites/dad.2bpp.lz"
 SECTION "LyraSpriteGFX", ROMX
 LyraSpriteGFX:: INCBIN "gfx/sprites/lyra.2bpp.lz"
 
-SECTION "SilverSpriteGFX", ROMX
-SilverSpriteGFX:: INCBIN "gfx/sprites/silver.2bpp.lz"
+SECTION "RivalSpriteGFX", ROMX
+RivalSpriteGFX:: INCBIN "gfx/sprites/rival.2bpp.lz"
 
 SECTION "FalknerSpriteGFX", ROMX
 FalknerSpriteGFX:: INCBIN "gfx/sprites/falkner.2bpp.lz"

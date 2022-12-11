@@ -17,7 +17,7 @@ MountMoon1F_MapScriptHeader:
 	bg_event 12, 16, BGEVENT_ITEM + FULL_RESTORE, EVENT_MOUNT_MOON_1F_HIDDEN_FULL_RESTORE
 
 	def_object_events
-	object_event 10, 19, SPRITE_SILVER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_MT_MOON_RIVAL
+	object_event 10, 19, SPRITE_RIVAL, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_MT_MOON_RIVAL
 	object_event  4, 18, SPRITE_BUG_MANIAC, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 4, GenericTrainerBugManiacKenta, -1
 	object_event 11, 14, SPRITE_LASS, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 3, GenericTrainerLassMiriam, -1
 	object_event 20, 21, SPRITE_SUPER_NERD, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 2, GenericTrainerSuperNerdJovan, -1
@@ -29,7 +29,7 @@ MountMoon1F_MapScriptHeader:
 	itemball_event 16, 22, CALCIUM, 1, EVENT_MOUNT_MOON_1F_CALCIUM
 
 	object_const_def
-	const MOUNTMOON1F_SILVER
+	const MOUNTMOON1F_RIVAL
 
 MountMoon1FTrigger0:
 	sdefer .RivalBattle
@@ -39,16 +39,16 @@ MountMoon1FTrigger0:
 	showemote EMOTE_SHOCK, PLAYER, 15
 	special Special_FadeOutMusic
 	pause 15
-	applymovement MOUNTMOON1F_SILVER, MountMoon1FSilverMovementBefore
+	applymovement MOUNTMOON1F_RIVAL, MountMoon1FRivalMovementBefore
 	turnobject PLAYER, LEFT
 	playmusic MUSIC_RIVAL_ENCOUNTER
-	showtext MountMoonSilverTextBefore
+	showtext MountMoonRivalTextBefore
 	checkevent EVENT_GOT_TOTODILE_FROM_ELM
 	iftruefwd .Totodile
 	checkevent EVENT_GOT_CHIKORITA_FROM_ELM
 	iftruefwd .Chikorita
-	winlosstext MountMoonSilverTextWin, MountMoonSilverTextLoss
-	setlasttalked MOUNTMOON1F_SILVER
+	winlosstext MountMoonRivalTextWin, MountMoonRivalTextLoss
+	setlasttalked MOUNTMOON1F_RIVAL
 	loadtrainer RIVAL2, 3
 	startbattle
 	dontrestartmapmusic
@@ -56,8 +56,8 @@ MountMoon1FTrigger0:
 	sjumpfwd .FinishBattle
 
 .Totodile:
-	winlosstext MountMoonSilverTextWin, MountMoonSilverTextLoss
-	setlasttalked MOUNTMOON1F_SILVER
+	winlosstext MountMoonRivalTextWin, MountMoonRivalTextLoss
+	setlasttalked MOUNTMOON1F_RIVAL
 	loadtrainer RIVAL2, 1
 	startbattle
 	dontrestartmapmusic
@@ -65,8 +65,8 @@ MountMoon1FTrigger0:
 	sjumpfwd .FinishBattle
 
 .Chikorita:
-	winlosstext MountMoonSilverTextWin, MountMoonSilverTextLoss
-	setlasttalked MOUNTMOON1F_SILVER
+	winlosstext MountMoonRivalTextWin, MountMoonRivalTextLoss
+	setlasttalked MOUNTMOON1F_RIVAL
 	loadtrainer RIVAL2, 2
 	startbattle
 	dontrestartmapmusic
@@ -76,10 +76,10 @@ MountMoon1FTrigger0:
 .FinishBattle:
 	special DeleteSavedMusic
 	playmusic MUSIC_RIVAL_AFTER
-	showtext MountMoonSilverTextAfter
+	showtext MountMoonRivalTextAfter
 	applymovement PLAYER, MountMoon1FPlayerMovement
-	applymovement MOUNTMOON1F_SILVER, MountMoon1FSilverMovementAfter
-	disappear MOUNTMOON1F_SILVER
+	applymovement MOUNTMOON1F_RIVAL, MountMoon1FRivalMovementAfter
+	disappear MOUNTMOON1F_RIVAL
 	playsound SFX_EXIT_BUILDING
 	waitsfx
 	setscene $1
@@ -148,7 +148,7 @@ GenericTrainerHikerMarcos:
 	cont "kid just like you."
 	done
 
-MountMoon1FSilverMovementBefore:
+MountMoon1FRivalMovementBefore:
 	step_down
 	step_down
 	step_down
@@ -161,12 +161,12 @@ MountMoon1FPlayerMovement:
 	turn_head_down
 	step_end
 
-MountMoon1FSilverMovementAfter:
+MountMoon1FRivalMovementAfter:
 	step_right
 	turn_head_down
 	step_end
 
-MountMoonSilverTextBefore:
+MountMoonRivalTextBefore:
 	text "…… …… ……"
 
 	para "It's been a while,"
@@ -186,7 +186,7 @@ MountMoonSilverTextBefore:
 	line "show you!"
 	done
 
-MountMoonSilverTextWin:
+MountMoonRivalTextWin:
 	text "…… …… ……"
 
 	para "I thought I raised"
@@ -199,7 +199,7 @@ MountMoonSilverTextWin:
 	line "wasn't enough…"
 	done
 
-MountMoonSilverTextAfter:
+MountMoonRivalTextAfter:
 	text "…… …… ……"
 
 	para "…You won, fair"
@@ -229,7 +229,7 @@ MountMoonSilverTextAfter:
 	line "beating you."
 	done
 
-MountMoonSilverTextLoss:
+MountMoonRivalTextLoss:
 	text "…… …… ……"
 
 	para "I've repaid my"

@@ -10,14 +10,14 @@ _UpdatePlayerSprite::
 
 GetPlayerSprite:
 	ld a, [wPlayerGender]
-	ld hl, .Chris
+	ld hl, ChrisStateSprites
 	and a ; PLAYER_MALE
 	jr z, .go
-	ld hl, .Kris
+	ld hl, KrisStateSprites
 	dec a ; PLAYER_FEMALE
 	jr z, .go
 	; PLAYER_ENBY
-	ld hl, .Crys
+	ld hl, CrysStateSprites
 .go
 	ld a, [wPlayerState]
 	ld c, a
@@ -43,26 +43,7 @@ GetPlayerSprite:
 	ld [wPlayerObjectSprite], a
 	ret
 
-.Chris:
-	db PLAYER_NORMAL,    SPRITE_CHRIS
-	db PLAYER_BIKE,      SPRITE_CHRIS_BIKE
-	db PLAYER_SURF,      SPRITE_CHRIS_SURF
-	db PLAYER_SURF_PIKA, SPRITE_SURFING_PIKACHU
-	db $ff
-
-.Kris:
-	db PLAYER_NORMAL,    SPRITE_KRIS
-	db PLAYER_BIKE,      SPRITE_KRIS_BIKE
-	db PLAYER_SURF,      SPRITE_KRIS_SURF
-	db PLAYER_SURF_PIKA, SPRITE_SURFING_PIKACHU
-	db $ff
-
-.Crys:
-	db PLAYER_NORMAL,    SPRITE_CRYS
-	db PLAYER_BIKE,      SPRITE_CRYS_BIKE
-	db PLAYER_SURF,      SPRITE_CRYS_SURF
-	db PLAYER_SURF_PIKA, SPRITE_SURFING_PIKACHU
-	db $ff
+INCLUDE "data/sprites/player_sprites.asm"
 
 RefreshSprites::
 	push hl

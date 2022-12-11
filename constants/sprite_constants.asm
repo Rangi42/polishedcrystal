@@ -11,7 +11,7 @@
 	const SPRITE_MOM ; 07
 	const SPRITE_DAD ; 08
 	const SPRITE_LYRA ; 09
-	const SPRITE_SILVER ; 0a
+	const SPRITE_RIVAL ; 0a
 	const SPRITE_FALKNER ; 0b
 	const SPRITE_BUGSY ; 0c
 	const SPRITE_WHITNEY ; 0d
