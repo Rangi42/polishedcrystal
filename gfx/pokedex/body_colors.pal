@@ -20,7 +20,7 @@ if !DEF(MONOCHROME)
 ; pink
 	RGB 31, 10, 11
 else
-rept 8
+rept NUM_BODY_COLORS
 	RGB_MONOCHROME_BLACK
 endr
 endc

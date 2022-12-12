@@ -20,7 +20,7 @@ BurnedTower1F_MapScriptHeader:
 
 	def_object_events
 	object_event 10, 12, SPRITE_EUSINE, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, BurnedTower1FEusineText, EVENT_BURNED_TOWER_1F_EUSINE
-	object_event  6,  9, SPRITE_SILVER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_RIVAL_BURNED_TOWER
+	object_event  6,  9, SPRITE_RIVAL, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_RIVAL_BURNED_TOWER
 	smashrock_event 13, 4
 	object_event 12, 14, SPRITE_MORTY, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, BurnedTower1FMortyText, EVENT_BURNED_TOWER_MORTY
 	itemball_event 13,  1, HP_UP, 1, EVENT_BURNED_TOWER_1F_HP_UP
@@ -29,7 +29,7 @@ BurnedTower1F_MapScriptHeader:
 
 	object_const_def
 	const BURNEDTOWER1F_EUSINE
-	const BURNEDTOWER1F_SILVER
+	const BURNEDTOWER1F_RIVAL
 
 BurnedTower1FTrigger0:
 	sdefer BurnedTower1FEusineTriggerScript
@@ -56,21 +56,21 @@ BurnedTower1FEusineTriggerScript:
 	end
 
 BurnedTowerRivalBattleScript:
-	showemote EMOTE_SHOCK, BURNEDTOWER1F_SILVER, 15
+	showemote EMOTE_SHOCK, BURNEDTOWER1F_RIVAL, 15
 	special Special_FadeOutMusic
 	pause 15
-	turnobject BURNEDTOWER1F_SILVER, RIGHT
+	turnobject BURNEDTOWER1F_RIVAL, RIGHT
 	pause 15
 	applyonemovement PLAYER, step_left
-	applyonemovement BURNEDTOWER1F_SILVER, step_right
+	applyonemovement BURNEDTOWER1F_RIVAL, step_right
 	playmusic MUSIC_RIVAL_ENCOUNTER
-	showtext BurnedTowerSilver_BeforeText
+	showtext BurnedTowerRival_BeforeText
 	checkevent EVENT_GOT_TOTODILE_FROM_ELM
 	iftruefwd .totodile
 	checkevent EVENT_GOT_CHIKORITA_FROM_ELM
 	iftruefwd .chikorita
-	winlosstext BurnedTowerSilver_WinText, BurnedTowerSilver_LossText
-	setlasttalked BURNEDTOWER1F_SILVER
+	winlosstext BurnedTowerRival_WinText, BurnedTowerRival_LossText
+	setlasttalked BURNEDTOWER1F_RIVAL
 	loadtrainer RIVAL1, RIVAL1_9
 	startbattle
 	dontrestartmapmusic
@@ -78,8 +78,8 @@ BurnedTowerRivalBattleScript:
 	sjumpfwd .returnfrombattle
 
 .totodile
-	winlosstext BurnedTowerSilver_WinText, BurnedTowerSilver_LossText
-	setlasttalked BURNEDTOWER1F_SILVER
+	winlosstext BurnedTowerRival_WinText, BurnedTowerRival_LossText
+	setlasttalked BURNEDTOWER1F_RIVAL
 	loadtrainer RIVAL1, RIVAL1_7
 	startbattle
 	dontrestartmapmusic
@@ -87,8 +87,8 @@ BurnedTowerRivalBattleScript:
 	sjumpfwd .returnfrombattle
 
 .chikorita
-	winlosstext BurnedTowerSilver_WinText, BurnedTowerSilver_LossText
-	setlasttalked BURNEDTOWER1F_SILVER
+	winlosstext BurnedTowerRival_WinText, BurnedTowerRival_LossText
+	setlasttalked BURNEDTOWER1F_RIVAL
 	loadtrainer RIVAL1, RIVAL1_8
 	startbattle
 	dontrestartmapmusic
@@ -98,7 +98,7 @@ BurnedTowerRivalBattleScript:
 .returnfrombattle
 	special DeleteSavedMusic
 	playmusic MUSIC_RIVAL_AFTER
-	showtext BurnedTowerSilver_AfterText1
+	showtext BurnedTowerRival_AfterText1
 	setscene $2
 	setevent EVENT_RIVAL_BURNED_TOWER
 	special Special_FadeOutMusic
@@ -112,8 +112,8 @@ BurnedTowerRivalBattleScript:
 	pause 15
 	applyonemovement PLAYER, skyfall_top
 	playsound SFX_KINESIS
-	showemote EMOTE_SHOCK, BURNEDTOWER1F_SILVER, 20
-	showtext BurnedTowerSilver_AfterText2
+	showemote EMOTE_SHOCK, BURNEDTOWER1F_RIVAL, 20
+	showtext BurnedTowerRival_AfterText2
 	setevent EVENT_HOLE_IN_BURNED_TOWER
 	pause 15
 	warpcheck
@@ -148,7 +148,7 @@ BurnedTower1FEusineMovement:
 	step_down
 	step_end
 
-BurnedTowerSilver_BeforeText:
+BurnedTowerRival_BeforeText:
 	text "…… …… ……"
 
 	para "…Oh, it's you."
@@ -172,7 +172,7 @@ BurnedTowerSilver_BeforeText:
 	line "fault!"
 	done
 
-BurnedTowerSilver_WinText:
+BurnedTowerRival_WinText:
 	text "…Humph!"
 
 	para "This is why I hate"
@@ -182,7 +182,7 @@ BurnedTowerSilver_WinText:
 	line "challenge in it."
 	done
 
-BurnedTowerSilver_AfterText1:
+BurnedTowerRival_AfterText1:
 	text "…Aw, whatever."
 
 	para "You would never be"
@@ -192,7 +192,7 @@ BurnedTowerSilver_AfterText1:
 	line "anyway."
 	done
 
-BurnedTowerSilver_LossText:
+BurnedTowerRival_LossText:
 	text "…Humph!"
 
 	para "This is why I hate"
@@ -202,7 +202,7 @@ BurnedTowerSilver_LossText:
 	line "of my time."
 	done
 
-BurnedTowerSilver_AfterText2:
+BurnedTowerRival_AfterText2:
 	text "Humph!"
 
 	para "What are you doing"

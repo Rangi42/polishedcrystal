@@ -70,7 +70,7 @@ INCBIN "gfx/battle/status-enemy.2bpp"
 TypeIconGFX:
 	table_width 4 * LEN_1BPP_TILE, TypeIconGFX
 INCBIN "gfx/battle/types.1bpp"
-	assert_table_length NUM_TYPES
+	assert_table_length NUM_TYPES + 1
 
 CategoryIconGFX:
 	table_width 2 tiles, CategoryIconGFX

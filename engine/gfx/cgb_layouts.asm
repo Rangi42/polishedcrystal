@@ -60,6 +60,38 @@ rept 2
 endr
 	jmp _CGB_FinishBattleScreenLayout
 
+if !DEF(MONOCHROME)
+WhitePalette:
+	RGB 31, 31, 31
+CancelPalette:
+	RGB 31, 31, 31
+	RGB 31, 31, 31
+WhiteColor:
+DarkGrayPalette:
+	RGB 31, 31, 31
+	RGB 07, 07, 07
+	RGB 02, 03, 03
+BlackColor:
+	RGB 00, 00, 00
+
+else
+WhitePalette:
+	RGB_MONOCHROME_WHITE
+CancelPalette:
+	RGB_MONOCHROME_WHITE
+	RGB_MONOCHROME_WHITE
+WhiteColor:
+DarkGrayPalette:
+	RGB_MONOCHROME_WHITE
+	RGB_MONOCHROME_DARK
+	RGB_MONOCHROME_BLACK
+BlackColor:
+	RGB_MONOCHROME_BLACK
+endc
+
+BattleObjectPals:
+INCLUDE "gfx/battle_anims/battle_anims.pal"
+
 GetDefaultBattlePalette:
 	ld a, BANK(wTempBattleMonSpecies)
 	call StackCallInWRAMBankA
@@ -172,21 +204,8 @@ SetBattlePal_Status:
 	jmp LoadEnemyStatusIconPalette
 
 SetBattlePal_Text:
-	ld a, BANK("GBC Video")
-	call StackCallInWRAMBankA
-.Function:
-	ld a, -1
-	lb bc, 2, 4
-.loop
-	ld [de], a
-	inc de
-	dec c
-	jr nz, .loop
-	xor a
-	ld c, 4
-	dec b
-	jr nz, .loop
-	ret
+	ld hl, DarkGrayPalette
+	jmp LoadPalette_White_Col1_Col2_Black
 
 _CGB_BattleColors:
 	push bc
@@ -206,6 +225,12 @@ _CGB_BattleColors:
 	ld a, CGB_BATTLE_COLORS
 	ld [wMemCGBLayout], a
 	call ApplyPals
+
+HPBarInteriorPals:
+INCLUDE "gfx/battle/hp_bar.pal"
+
+GenderAndExpBarPals:
+INCLUDE "gfx/battle/exp_bar.pal"
 
 _CGB_FinishBattleScreenLayout:
 	; don't screw with ability overlay areas
@@ -340,6 +365,15 @@ _CGB_PokegearPals:
 	ldh [hCGBPalUpdate], a
 	ret
 
+PokegearPals:
+INCLUDE "gfx/pokegear/pokegear.pal"
+
+FemalePokegearInterfacePalette:
+INCLUDE "gfx/pokegear/pokegear_f.pal"
+
+EnbyPokegearInterfacePalette:
+INCLUDE "gfx/pokegear/pokegear_x.pal"
+
 _CGB_StatsScreenHPPals:
 	ld de, wBGPals1
 	ld hl, HPBarInteriorPals
@@ -405,6 +439,9 @@ _CGB_StatsScreenHPPals:
 
 	jmp _CGB_FinishLayout
 
+StatsScreenPals:
+INCLUDE "gfx/stats/pages.pal"
+
 _CGB_Pokedex:
 	call _CGB_Pokedex_PrepareOnly
 	jmp _CGB_FinishLayout
@@ -420,6 +457,9 @@ _CGB_Pokedex_PrepareOnly:
 	ld de, wOBPals1 + 2
 	ld c, 3 palettes - 2
 	jmp LoadPalettes
+
+PokedexPals:
+INCLUDE "gfx/pokedex/pokedex.pal"
 
 _CGB_SlotMachine:
 	ld hl, SlotMachinePals
@@ -481,11 +521,14 @@ _CGB_SlotMachine:
 
 	jmp _CGB_FinishLayout
 
+SlotMachinePals:
+INCLUDE "gfx/slots/slots.pal"
+
 _CGB_Plain:
 	ld b, 8
 	ld de, wBGPals1
 .loop
-	ld hl, Gen1Palette
+	ld hl, Gen1DiplomaPalette
 	call LoadOnePalette
 	dec b
 	jr nz, .loop
@@ -497,6 +540,9 @@ _CGB_Plain:
 
 	call WipeAttrMap
 	jmp ApplyAttrMap
+
+Gen1DiplomaPalette:
+INCLUDE "gfx/diploma/plain.pal"
 
 _CGB_NamingScreen:
 	ld a, [wNamingScreenType]
@@ -651,13 +697,9 @@ _CGB_MapPals:
 
 _CGB_PartyMenu:
 	ld de, wBGPals1
-	ld hl, PartyMenuBGPals
-	call LoadOnePalette
-
-	ld hl, HPBarPals
-	call LoadOnePalette
-	call LoadOnePalette
-	call LoadOnePalette
+	ld hl, PartyMenuBGPals ; and HPBarPals
+	ld c, 4 palettes
+	call LoadPalettes
 
 	ld hl, GenderAndExpBarPals
 	call LoadPalette_White_Col1_Col2_Black
@@ -673,6 +715,12 @@ _CGB_PartyMenu:
 	ld a, $4
 	call FillBoxWithByte
 	jmp ApplyAttrMap
+
+PartyMenuBGPals:
+INCLUDE "gfx/stats/party_menu_bg.pal"
+; fallthrough
+HPBarPals:
+INCLUDE "gfx/stats/hp_bars.pal"
 
 _CGB_Evolution:
 	ld de, wBGPals1
@@ -783,6 +831,15 @@ endr
 
 	jmp _CGB_FinishLayout
 
+MartMenuPals:
+INCLUDE "gfx/mart/mart.pal"
+
+BlueCardMartMenuPals:
+INCLUDE "gfx/mart/blue_card.pal"
+
+BTMartMenuPals:
+INCLUDE "gfx/mart/battle_tower.pal"
+
 _CGB_PackPals:
 ; pack pals
 	ld a, [wBattleType]
@@ -842,6 +899,15 @@ endr
 	call FillBoxWithByte
 
 	jmp _CGB_FinishLayout
+
+MalePackPals:
+INCLUDE "gfx/pack/pack.pal"
+
+FemalePackPals:
+INCLUDE "gfx/pack/pack_f.pal"
+
+EnbyPackPals:
+INCLUDE "gfx/pack/pack_x.pal"
 
 _CGB_TrainerCard:
 	call LoadFirstTwoTrainerCardPals
@@ -1077,6 +1143,15 @@ LoadFirstTwoTrainerCardPals:
 	pop de
 	ret
 
+TrainerCardPals:
+INCLUDE "gfx/trainer_card/trainer_card.pal"
+
+JohtoBadgePalettes:
+INCLUDE "gfx/trainer_card/johto_badges.pal"
+
+KantoBadgePalettes:
+INCLUDE "gfx/trainer_card/kanto_badges.pal"
+
 _CGB_BillsPC:
 	farcall GetBoxTheme
 BillsPC_PreviewTheme:
@@ -1093,7 +1168,7 @@ BillsPC_PreviewTheme:
 	ld c, 2 * 2
 	call LoadColorBytes
 	push de
-	ld hl, PokerusAndShinyPals
+	ld hl, .PokerusAndShinyPals
 	ld de, wBillsPC_PokerusShinyPal
 	ld c, 2 * 2
 	call LoadColorBytes
@@ -1134,6 +1209,9 @@ BillsPC_PreviewTheme:
 	ld de, wOBPals1 palette 6
 	jmp LoadOnePalette
 
+.PokerusAndShinyPals:
+INCLUDE "gfx/pc/pokerus_shiny.pal"
+
 .CursorPal:
 ; Coloring is fixed up later.
 INCLUDE "gfx/pc/cursor_default.pal"
@@ -1142,16 +1220,21 @@ INCLUDE "gfx/pc/cursor_default.pal"
 INCLUDE "gfx/pc/pack.pal"
 
 GetBillsPCThemePalette:
-	; hl = BillsPC_ThemePals + a * 4 * 2
+	; hl = .ThemePals + a * 4 * 2
 	assert NUM_BILLS_PC_THEMES <= 64
 	add a
 	add a
 	ld e, a
 	ld d, 0
-	ld hl, BillsPC_ThemePals
+	ld hl, .ThemePals
 	add hl, de
 	add hl, de
 	ret
+
+.ThemePals:
+	table_width PAL_COLOR_SIZE * 4, GetBillsPCThemePalette.ThemePals
+INCLUDE "gfx/pc/themes.pal"
+	assert_table_length NUM_BILLS_PC_THEMES
 
 _CGB_UnownPuzzle:
 	ld de, wBGPals1
@@ -1306,6 +1389,9 @@ _CGB_NewDiploma:
 	call FillBoxWithByte
 
 	jmp ApplyAttrMap
+
+DiplomaPals:
+INCLUDE "gfx/diploma/diploma.pal"
 
 _CGB_PlayerOrMonFrontpicPals:
 	ld de, wBGPals1

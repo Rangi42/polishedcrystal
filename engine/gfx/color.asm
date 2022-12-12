@@ -103,6 +103,9 @@ LoadEnemyStatusIconPalette:
 	ld bc, 2
 	jmp FarCopyColorWRAM
 
+StatusIconPals:
+INCLUDE "gfx/battle/status.pal"
+
 LoadBattleCategoryAndTypePals:
 	ld a, [wPlayerMoveStruct + MOVE_CATEGORY]
 	ld b, a
@@ -136,6 +139,16 @@ LoadCategoryAndTypePals:
 	inc de
 	ld bc, 2
 	jmp FarCopyColorWRAM
+
+CategoryIconPals:
+	table_width PAL_COLOR_SIZE * 2, CategoryIconPals
+INCLUDE "gfx/battle/categories.pal"
+	assert_table_length NUM_CATEGORIES
+
+TypeIconPals:
+	table_width PAL_COLOR_SIZE, TypeIconPals
+INCLUDE "gfx/battle/types.pal"
+	assert_table_length NUM_TYPES + 1
 
 LoadKeyItemIconPalette:
 	ld a, [wCurKeyItem]
@@ -177,6 +190,33 @@ endr
 	ld bc, 2
 	jmp FarCopyColorWRAM
 
+ItemIconPalettes:
+CaughtBallPals:
+ParkBallIconPalette:
+	table_width PAL_COLOR_SIZE * 2, ItemIconPalettes
+INCLUDE "gfx/items/items.pal"
+	assert_table_length NUM_ITEMS + 1
+
+KeyItemIconPalettes:
+	table_width PAL_COLOR_SIZE * 2, KeyItemIconPalettes
+INCLUDE "gfx/items/key_items.pal"
+	assert_table_length NUM_KEY_ITEMS
+
+TMHMTypeIconPals:
+	table_width PAL_COLOR_SIZE * 2, TMHMTypeIconPals
+INCLUDE "gfx/items/tm_hm_types.pal"
+	assert_table_length NUM_TYPES
+
+ApricornIconPalettes:
+	table_width PAL_COLOR_SIZE * 2, ApricornIconPalettes
+INCLUDE "gfx/items/apricorns.pal"
+	assert_table_length NUM_APRICORNS
+
+WingIconPalettes:
+	table_width PAL_COLOR_SIZE * 2, WingIconPalettes
+INCLUDE "gfx/items/wings.pal"
+	assert_table_length NUM_WINGS
+
 LoadStatsScreenPals:
 	ldh a, [rSVBK]
 	push af
@@ -212,6 +252,9 @@ LoadStatsScreenPals:
 	call ApplyPals
 	ld a, $1
 	ret
+
+StatsScreenPagePals:
+INCLUDE "gfx/stats/stats.pal"
 
 LoadOneColor:
 	ld c, 2
@@ -338,8 +381,8 @@ endc
 
 ApplyWhiteTransparency:
 ; Apply transparency for colors in bc towards white.
+if !DEF(MONOCHROME)
 	push hl
-
 	; Remove least significant bit from each pal color.
 	ld hl, palred 30 + palgreen 30 + palblue 30
 	ld a, c
@@ -348,22 +391,37 @@ ApplyWhiteTransparency:
 	ld a, b
 	and h
 	ld b, a
-
 	; Halve all palette colors
 	srl b
 	rr c
-
 	; Add 16 to each palette color.
-if DEF(MONOCHROME)
-	ld hl, (PAL_MONOCHROME_WHITE >> 1) & %01111_01111_01111
-else
 	ld hl, palred 16 + palgreen 16 + palblue 16
-endc
 	add hl, bc
 	ld b, h
 	ld c, l
 	pop hl
 	ret
+else
+	assert HIGH(PAL_MONOCHROME_WHITE) != HIGH(PAL_MONOCHROME_LIGHT) && \
+		HIGH(PAL_MONOCHROME_WHITE) != HIGH(PAL_MONOCHROME_DARK) && \
+		HIGH(PAL_MONOCHROME_WHITE) != HIGH(PAL_MONOCHROME_BLACK) && \
+		HIGH(PAL_MONOCHROME_LIGHT) != HIGH(PAL_MONOCHROME_DARK) && \
+		HIGH(PAL_MONOCHROME_LIGHT) != HIGH(PAL_MONOCHROME_BLACK) && \
+		HIGH(PAL_MONOCHROME_DARK) != HIGH(PAL_MONOCHROME_BLACK)
+	ld a, b
+	cp HIGH(PAL_MONOCHROME_BLACK)
+	jr z, .dark
+	cp HIGH(PAL_MONOCHROME_DARK)
+	jr z, .light
+	ld bc, PAL_MONOCHROME_WHITE
+	ret
+.light
+	ld bc, PAL_MONOCHROME_LIGHT
+	ret
+.dark
+	ld bc, PAL_MONOCHROME_DARK
+	ret
+endc
 
 ApplyPals:
 	ld hl, wBGPals1
@@ -382,6 +440,9 @@ LoadMailPalettes:
 	ld de, wBGPals1
 	ld bc, 1 palettes
 	jmp FarCopyColorWRAM
+
+MailPals:
+INCLUDE "gfx/mail/mail.pal"
 
 LoadAndApplyMailPalettes:
 	call LoadMailPalettes
@@ -514,6 +575,9 @@ endr
 	jr nz, .loop
 	ret
 
+PartyMenuOBPals:
+INCLUDE "gfx/stats/party_menu_ob.pal"
+
 InitPokegearPalettes:
 ; This is needed because the regular palette is dark at night.
 	ld hl, PokegearOBPals
@@ -525,6 +589,12 @@ InitPokegearPalettes:
 	ld de, wOBPals1 palette 3
 	ld bc, 1 palettes
 	jmp FarCopyColorWRAM
+
+PokegearOBPals:
+INCLUDE "gfx/icons/icons.pal"
+
+PokegearFlyPalette:
+INCLUDE "gfx/pokegear/fly.pal"
 
 GetBattlemonBackpicPalettePointer:
 	push de

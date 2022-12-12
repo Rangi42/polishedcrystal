@@ -132,7 +132,7 @@ DEF NUM_SHAPES EQU const_value
 assert const_value <= $10
 DEF NUM_BODY_COLORS EQU const_value
 
-; breed_struct and party_struct members (see macros/wram.asm)
+; breed_struct and party_struct members (see macros/ram.asm)
 rsreset
 DEF MON_SPECIES            rb
 DEF MON_ITEM               rb
@@ -184,7 +184,7 @@ DEF MON_SAT                rw
 DEF MON_SDF                rw
 DEF PARTYMON_STRUCT_LENGTH EQU _RS
 
-; savemon_struct members (see macros/wram.asm)
+; savemon_struct members (see macros/ram.asm)
 rsreset
 DEF SAVEMON_SPECIES            rb
 DEF SAVEMON_ITEM               rb

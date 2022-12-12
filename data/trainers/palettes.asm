@@ -165,6 +165,7 @@ AerodactylFossilPalette: INCLUDE "gfx/trainers/aerodactyl_fossil.pal"
 CuboneArmorPalette:      INCLUDE "gfx/trainers/cubone_armor.pal"
 MeteoritePalette:        INCLUDE "gfx/trainers/meteorite.pal"
 SilhouettePalette:       INCLUDE "gfx/trainers/silhouette.pal"
+
 else
 ChrisPalette:
 KrisPalette:

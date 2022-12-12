@@ -28,14 +28,14 @@ NewBarkTown_MapScriptHeader:
 	bg_event  3,  2, BGEVENT_ITEM + POTION, EVENT_NEW_BARK_TOWN_HIDDEN_POTION
 
 	def_object_events
-	object_event  3,  2, SPRITE_SILVER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, NewBarkTownSilverScript, EVENT_RIVAL_NEW_BARK_TOWN
+	object_event  3,  2, SPRITE_RIVAL, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, NewBarkTownRivalScript, EVENT_RIVAL_NEW_BARK_TOWN
 	object_event  1,  6, SPRITE_LYRA, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_LYRA_NEW_BARK_TOWN
 	object_event  6,  8, SPRITE_POKEFAN_F, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, NewBarkTownTeacherScript, -1
 	object_event 13,  8, SPRITE_FAT_GUY, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_COMMAND, jumptextfaceplayer, Text_ElmDiscoveredNewMon, -1
 	object_event  7, 15, SPRITE_SCHOOLBOY, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, (1 << MORN) | (1 << DAY), 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, Text_GearIsImpressive, -1
 
 	object_const_def
-	const NEWBARKTOWN_SILVER
+	const NEWBARKTOWN_RIVAL
 	const NEWBARKTOWN_LYRA
 	const NEWBARKTOWN_TEACHER
 
@@ -157,22 +157,22 @@ NewBarkTownTeacherScript:
 	iftrue_jumptextfaceplayer Text_YourMonIsAdorable
 	jumptextfaceplayer Text_RefreshingBreeze
 
-NewBarkTownSilverScript:
+NewBarkTownRivalScript:
 	showtext NewBarkTownRivalText1
-	turnobject NEWBARKTOWN_SILVER, LEFT
+	turnobject NEWBARKTOWN_RIVAL, LEFT
 	showtext NewBarkTownRivalText2
 	turnobject PLAYER, UP
 	applyonemovement PLAYER, fix_facing
-	follow PLAYER, NEWBARKTOWN_SILVER
+	follow PLAYER, NEWBARKTOWN_RIVAL
 	applyonemovement PLAYER, step_down
 	stopfollow
 	pause 5
-	turnobject NEWBARKTOWN_SILVER, DOWN
+	turnobject NEWBARKTOWN_RIVAL, DOWN
 	pause 5
 	playsound SFX_TACKLE
 	applyonemovement PLAYER, jump_step_down
 	applyonemovement PLAYER, remove_fixed_facing
-	applyonemovement NEWBARKTOWN_SILVER, step_right
+	applyonemovement NEWBARKTOWN_RIVAL, step_right
 	end
 
 Movement_TeacherRunsToYou1_NBT:

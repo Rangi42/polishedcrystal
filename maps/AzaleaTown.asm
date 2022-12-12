@@ -31,7 +31,7 @@ AzaleaTown_MapScriptHeader:
 	bg_event 31,  6, BGEVENT_ITEM + FULL_HEAL, EVENT_AZALEA_TOWN_HIDDEN_FULL_HEAL
 
 	def_object_events
-	object_event 11, 10, SPRITE_SILVER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_RIVAL_AZALEA_TOWN
+	object_event 11, 10, SPRITE_RIVAL, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_RIVAL_AZALEA_TOWN
 	object_event  6,  5, SPRITE_KURT, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, AzaleaTownKurtScript, EVENT_AZALEA_TOWN_KURT
 	object_event 21,  9, SPRITE_GRAMPS, SPRITEMOVEDATA_WANDER, 2, 1, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, AzaleaTownGrampsScript, -1
 	object_event 15, 13, SPRITE_POKEFAN_F, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, AzaleaTownTeacherScript, -1
@@ -47,7 +47,7 @@ AzaleaTown_MapScriptHeader:
 	fruittree_event  8,  2, FRUITTREE_AZALEA_TOWN, WHT_APRICORN, PAL_NPC_SILVER
 
 	object_const_def
-	const AZALEATOWN_SILVER
+	const AZALEATOWN_RIVAL
 	const AZALEATOWN_KURT
 
 AzaleaTownFlypointCallback:
@@ -65,16 +65,16 @@ AzaleaTownRainScript:
 	endcallback
 
 AzaleaTownRivalBattleTrigger1:
-	moveobject AZALEATOWN_SILVER, 11, 11
+	moveobject AZALEATOWN_RIVAL, 11, 11
 AzaleaTownRivalBattleTrigger2:
 	turnobject PLAYER, RIGHT
 	showemote EMOTE_SHOCK, PLAYER, 15
 	special Special_FadeOutMusic
 	pause 15
-	appear AZALEATOWN_SILVER
-	applymovement AZALEATOWN_SILVER, .ApproachMovement
-	faceobject AZALEATOWN_SILVER, PLAYER
-	faceobject PLAYER, AZALEATOWN_SILVER
+	appear AZALEATOWN_RIVAL
+	applymovement AZALEATOWN_RIVAL, .ApproachMovement
+	faceobject AZALEATOWN_RIVAL, PLAYER
+	faceobject PLAYER, AZALEATOWN_RIVAL
 	playmusic MUSIC_RIVAL_ENCOUNTER
 	showtext .SeenText
 	setevent EVENT_RIVAL_AZALEA_TOWN
@@ -83,7 +83,7 @@ AzaleaTownRivalBattleTrigger2:
 	checkevent EVENT_GOT_CHIKORITA_FROM_ELM
 	iftruefwd .Chikorita
 	winlosstext .WinText, .LossText
-	setlasttalked AZALEATOWN_SILVER
+	setlasttalked AZALEATOWN_RIVAL
 	loadtrainer RIVAL1, RIVAL1_6
 	startbattle
 	dontrestartmapmusic
@@ -92,7 +92,7 @@ AzaleaTownRivalBattleTrigger2:
 
 .Totodile:
 	winlosstext .WinText, .LossText
-	setlasttalked AZALEATOWN_SILVER
+	setlasttalked AZALEATOWN_RIVAL
 	loadtrainer RIVAL1, RIVAL1_4
 	startbattle
 	dontrestartmapmusic
@@ -101,7 +101,7 @@ AzaleaTownRivalBattleTrigger2:
 
 .Chikorita:
 	winlosstext .WinText, .LossText
-	setlasttalked AZALEATOWN_SILVER
+	setlasttalked AZALEATOWN_RIVAL
 	loadtrainer RIVAL1, RIVAL1_5
 	startbattle
 	dontrestartmapmusic
@@ -113,9 +113,9 @@ AzaleaTownRivalBattleTrigger2:
 	playmusic MUSIC_RIVAL_AFTER
 	showtext .AfterText
 	turnobject PLAYER, LEFT
-	applymovement AZALEATOWN_SILVER, .ExitMovement
+	applymovement AZALEATOWN_RIVAL, .ExitMovement
 	playsound SFX_EXIT_BUILDING
-	disappear AZALEATOWN_SILVER
+	disappear AZALEATOWN_RIVAL
 	setmapscene ROUTE_34, $1
 	setscene $0
 	waitsfx

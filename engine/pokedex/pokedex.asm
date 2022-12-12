@@ -841,9 +841,17 @@ Pokedex_UpdateRow:
 	ld a, d
 	ld [hli], a
 	pop af
+if !DEF(MONOCHROME)
 	ld bc, palred 0 + palgreen 0 + palblue 0
+else
+	ld bc, PAL_MONOCHROME_BLACK
+endc
 	jr nz, .got_outline_pal
+if !DEF(MONOCHROME)
 	ld bc, palred 16 + palgreen 16 + palblue 16
+else
+	ld bc, PAL_MONOCHROME_DARK
+endc
 .got_outline_pal
 	ld a, c
 	ld [hli], a
@@ -2850,6 +2858,17 @@ endr
 	cp [hl]
 	ret
 
+BodyColorPalsIncludingNull:
+if !DEF(MONOCHROME)
+	RGB 00, 00, 00
+else
+	RGB_MONOCHROME_BLACK
+endc
+BodyColorPals:
+	table_width 2, BodyColorPals
+INCLUDE "gfx/pokedex/body_colors.pal"
+	assert_table_length NUM_BODY_COLORS
+
 Pokedex_InitData:
 ; Initializes the list of Pokémon seen and owned.
 	; Reset cursor positioning and wTempDex data.
@@ -3184,6 +3203,9 @@ Pokedex_LoadUndiscoveredPokepic:
 	xor a
 	ret
 
+Pokedex_QuestionMarkPal:
+INCLUDE "gfx/pokedex/question_mark.pal"
+
 Pokedex_SwitchMonInfoBank:
 ; Switch which bank to store tile data in. Tiles are loaded as follows:
 ; 0: vTiles2 tile $40
@@ -3243,10 +3265,19 @@ _Pokedex_GetCursorMon:
 	rst ByteFill
 	ld a, BANK(wBGPals1)
 	ldh [rSVBK], a
-	ld a, -1
 	ld hl, wBGPals1 palette 7 + 2
+if !DEF(MONOCHROME)
+	ld a, -1
 	ld c, 6
 	rst ByteFill
+else
+rept 3
+	ld a, LOW(PAL_MONOCHROME_WHITE)
+	ld [hli], a
+	ld a, HIGH(PAL_MONOCHROME_WHITE)
+	ld [hli], a
+endr
+endc
 	pop af
 	ldh [rSVBK], a
 
@@ -3340,29 +3371,28 @@ _Pokedex_GetCursorMon:
 	ld bc, 4
 	call FarCopyBytesToColorWRAM
 
-	; If we haven't caught the mon, skip footprint and type icons
+	; If we haven't caught the mon, clear type and footprint icons
 	pop af
 	ldh a, [rSVBK]
 	push af
-	jmp z, .type_pals_done
-
-	ld a, 1
+	lb bc, NUM_TYPES, NUM_TYPES
+	jr z, .got_types
+	; Otherwise, also include type and footprint icons.
+	ld a, TRUE
 	ld [wPokedexOAM_IsCaught], a
-
-	; Otherwise, also include footprint and type icons.
-	; Type icons.
-	ld hl, TypeIconGFX
 	ld a, [wBaseType1]
 	ld c, a
 	ld a, [wBaseType2]
 	cp c
-	ld b, -1
+	ld b, NUM_TYPES ; one past the last type
 	jr z, .got_types
 	ld b, a
 .got_types
+	; First type pal+icon
 	push bc
 	ld b, 0
 	ld a, 4 * LEN_1BPP_TILE
+	ld hl, TypeIconGFX
 	rst AddNTimes
 	ld de, wBGPals1 palette 7 + 2
 	call Pokedex_CopyTypeIconPals
@@ -3374,9 +3404,7 @@ _Pokedex_GetCursorMon:
 	lb bc, BANK(TypeIconGFX), 4
 	call Pokedex_Copy1bpp
 	pop bc
-	inc b
-	jr z, .types_done
-	dec b
+	; Second type pal+icon
 	ld c, b
 	ld b, 0
 	ld a, 4 * LEN_1BPP_TILE
@@ -3387,9 +3415,11 @@ _Pokedex_GetCursorMon:
 	ld de, wDexMonType2Tiles
 	lb bc, BANK(TypeIconGFX), 4
 	call Pokedex_Copy1bpp
-
-.types_done
-	; Footprint
+	; Footprint icon
+	pop af
+	push af
+	ld hl, BlankFootprint
+	jr z, .got_footprint
 	call Pokedex_GetCursorSpecies
 	call GetSpeciesAndFormIndex
 	ld hl, FootprintPointers
@@ -3397,6 +3427,7 @@ _Pokedex_GetCursorMon:
 	add hl, bc
 	ld a, BANK(FootprintPointers)
 	call GetFarWord
+.got_footprint
 	ld a, BANK(Footprints)
 	ld de, wDexMonFootprintTiles
 	call FarDecompressToDE
@@ -3428,7 +3459,6 @@ _Pokedex_GetCursorMon:
 	dec c
 	jr nz, .outer_copy_loop
 
-.type_pals_done
 	ld a, [wPokedex_DisplayMode]
 	cp DEXDISP_DESC
 	jr c, .done_2

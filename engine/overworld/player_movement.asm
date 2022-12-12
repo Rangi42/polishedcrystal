@@ -702,7 +702,8 @@ endc
 .CheckNPC:
 ; Returns 0 if there is an NPC in front that you can't move
 ; Returns 1 if there is no NPC in front
-; Returns 2 if there is a movable NPC in front
+; Returns 2 if there is a movable NPC in front. The game actually treats
+; this the same as an NPC in front (bump).
 	xor a
 	ldh [hMapObjectIndexBuffer], a
 ; Load the next X coordinate into d
@@ -719,14 +720,14 @@ endc
 	ld e, a
 ; Find an object struct with coordinates equal to d,e
 	farcall IsNPCAtCoord
-	jr nc, .is_npc
+	jr nc, .no_npc
 	call .CheckStrengthBoulder
 	jr c, .no_bump
 
-	xor a
+	xor a ; bump
 	ret
 
-.is_npc
+.no_npc
 	ld a, 1
 	ret
 
