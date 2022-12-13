@@ -455,7 +455,7 @@ _CGB_Pokedex_PrepareOnly:
 	ld c, 2 palettes
 	call LoadPalettes
 	ld de, wOBPals1 + 2
-	ld c, 3 palettes - 2
+	ld c, 4 palettes - 2
 	jmp LoadPalettes
 
 PokedexPals:

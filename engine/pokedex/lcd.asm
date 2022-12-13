@@ -167,7 +167,7 @@ StackDexGraphics:
 	; pokedex0
 	ld de, wDex2bpp
 	push de
-	ld hl, vTiles2
+	ld hl, vTiles2 tile $00
 	ld c, $3d
 	call Get2bpp
 
@@ -181,13 +181,13 @@ StackDexGraphics:
 	ld a, 1
 	ldh [rVBK], a
 	ld de, wDex2bpp tile $40
-	ld hl, vTiles5 tile $05
+	ld hl, vTiles5 tile $00
 	ld c, $3a
 	call Get2bpp
 
 	; area
-	ld de, wDex2bpp tile $7a
-	ld hl, vTiles3
+	ld de, wDex2bpp tile $80
+	ld hl, vTiles3 tile $00
 	ld c, $40
 	call Get2bpp
 
