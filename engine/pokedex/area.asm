@@ -31,7 +31,7 @@ Pokedex_Area:
 	ld a, [wTimeOfDay]
 	cp EVE
 	jr nz, .not_evening
-	dec a ; treat EVE as NITE
+	ld a, DAY ; evening may have day or nite mons
 .not_evening
 	assert DEXAREA_MORNING == MORN
 	assert DEXAREA_DAY == DAY
