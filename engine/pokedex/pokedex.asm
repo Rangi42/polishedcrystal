@@ -1195,7 +1195,7 @@ _Pokedex_Description:
 	hlcoord 0, 10
 	ld a, $37
 	ld [hli], a
-	dec a ; $36
+	ld a, $31
 	ld [hli], a
 	ld [hli], a
 	ld [hl], a
