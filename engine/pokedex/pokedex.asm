@@ -792,13 +792,21 @@ Pokedex_UpdateRow:
 
 	; Blank the palette and do nothing else.
 	pop hl
-	xor a
-	dec a
+if !DEF(MONOCHROME)
 	ld d, 6
+	ld a, -1 ; RGB 31, 31, 31
 .blank_pal
 	ld [hli], a
 	dec d
 	jr nz, .blank_pal
+else
+rept 3
+	ld a, LOW(PAL_MONOCHROME_WHITE)
+	ld [hli], a
+	ld a, HIGH(PAL_MONOCHROME_WHITE)
+	ld [hli], a
+endr
+endc
 	push af
 	jr .species_done
 
@@ -2107,7 +2115,7 @@ Pokedex_ResetModeSearchPals:
 	ld hl, wBGPals1 palette 2
 if !DEF(MONOCHROME)
 	ld c, (1 palettes + 2) / 2
-	ld a, -1
+	ld a, -1 ; RGB 31, 31, 31
 .loop
 	ld [hli], a
 	ld [hli], a
@@ -3267,7 +3275,7 @@ _Pokedex_GetCursorMon:
 	ldh [rSVBK], a
 	ld hl, wBGPals1 palette 7 + 2
 if !DEF(MONOCHROME)
-	ld a, -1
+	ld a, -1 ; RGB 31, 31, 31
 	ld c, 6
 	rst ByteFill
 else
