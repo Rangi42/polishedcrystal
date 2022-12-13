@@ -414,7 +414,7 @@ Pokedex_GetAreaOAM:
 ; Caution: runs in the wDex* WRAMX bank.
 	; Write Area Unknown
 	lb de, 9, 10
-	lb hl, VRAM_BANK_1, $34
+	lb hl, VRAM_BANK_1 | 0, $34
 	lb bc, 52, 91 ; x, y
 	ldh a, [hPokedexAreaMode]
 	bit DEXAREA_UNKNOWN_F, a
@@ -437,7 +437,7 @@ Pokedex_GetAreaOAM:
 	ld c, 0
 	lb de, 15, 10 ; the other 15 slots is dealt with as part of hblank
 	; e (OAM slot) is kept from previous writing
-	lb hl, VRAM_BANK_1, $3f
+	lb hl, VRAM_BANK_1 | 3, $3f
 	call Pokedex_WriteOAMSingleTile
 	; We want to print a VWF string. To do this, we must first clear the tiles.
 	xor a
@@ -494,7 +494,7 @@ Pokedex_GetAreaOAM:
 	and DEXAREA_REGION_MASK
 	cp ORANGE_REGION << 4
 	lb de, 1, 7
-	lb hl, 0, $0b
+	lb hl, 3, $0b
 	lb bc, 115, 143
 	jr nz, .not_orange
 	ld b, 107
@@ -852,7 +852,7 @@ PHB_AreaSwitchTileMode:
 	ld hl, oamSprite39Attributes
 	ld c, 3
 	ld de, -3
-	ld a, VRAM_BANK_1
+	ld a, VRAM_BANK_1 | 3
 	ld b, $3f
 .loop
 rept 5
