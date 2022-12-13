@@ -781,8 +781,8 @@ JustifiedDescription:
 	done
 
 RattledDescription:
-	text  "Some scary move"
-	next1 "types boost Speed."
+	text  "Dark, Ghost or Bug"
+	next1 "moves boost Speed."
 	done
 
 MagicBounceDescription:
