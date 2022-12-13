@@ -1400,18 +1400,18 @@ endr
 	call CheckKeyItem
 	jr nc, .botmenu
 	hlcoord 9, 10
-	ld b, $28
+	ld b, $00
 .sel_shiny_loop
 	ld [hl], b
 	inc b
 	ld de, wAttrmap - wTilemap
 	add hl, de
-	ld a, $08
+	ld a, VRAM_BANK_1 | 0
 	ld [hli], a
 	ld de, wTilemap - wAttrmap
 	add hl, de
 	ld a, b
-	cp $2e
+	cp $06
 	jr nz, .sel_shiny_loop
 
 .botmenu
@@ -1432,14 +1432,17 @@ endr
 	dec b
 	jr nz, .botmenu_loop
 	ld [hl], $16
-	hldexcoord 4, 18
-	ld a, $2c
-	ld [hli], a
-	inc a
-	ld [hli], a
-	inc a
-	ld [hli], a
+	; "Area" uses tiles $29-$2b in bank 1
+	ld a, $29
 	hldexcoord 15, 18
+	ld [hli], a
+	inc a
+	ld [hli], a
+	inc a
+	ld [hl], a
+	; "Info" uses tiles $2c-$2e in bank 0
+	inc a
+	hldexcoord 4, 18
 	ld [hli], a
 	inc a
 	ld [hli], a
@@ -1912,24 +1915,16 @@ _Pokedex_Stats:
 	ld a, [wBaseEVYield1]
 	rlca
 	rlca
-	and 3
-	jr z, .atk
-	add $30 ; get corresponding EV tile
-	ld [hl], a
+	call .print_ev_dots
 
-.atk
 	hlcoord 5, 7
 	ld de, wBaseAttack
 	lb bc, 1, 3
 	call PrintNum
 	ld a, [wBaseEVYield1]
 	swap a
-	and 3
-	jr z, .def
-	add $30
-	ld [hl], a
+	call .print_ev_dots
 
-.def
 	hlcoord 5, 9
 	ld de, wBaseDefense
 	lb bc, 1, 3
@@ -1937,12 +1932,8 @@ _Pokedex_Stats:
 	ld a, [wBaseEVYield1]
 	rrca
 	rrca
-	and 3
-	jr z, .sat
-	add $30
-	ld [hl], a
+	call .print_ev_dots
 
-.sat
 	hlcoord 15, 5
 	ld de, wBaseSpecialAttack
 	lb bc, 1, 3
@@ -1950,35 +1941,23 @@ _Pokedex_Stats:
 	ld a, [wBaseEVYield2]
 	rlca
 	rlca
-	and 3
-	jr z, .sdf
-	add $30
-	ld [hl], a
+	call .print_ev_dots
 
-.sdf
 	hlcoord 15, 7
 	ld de, wBaseSpecialDefense
 	lb bc, 1, 3
 	call PrintNum
 	ld a, [wBaseEVYield2]
 	swap a
-	and 3
-	jr z, .spe
-	add $30
-	ld [hl], a
+	call .print_ev_dots
 
-.spe
 	hlcoord 15, 9
 	ld de, wBaseSpeed
 	lb bc, 1, 3
 	call PrintNum
 	ld a, [wBaseEVYield1]
-	and 3
-	jr z, .ability
-	add $30
-	ld [hl], a
+	call .print_ev_dots
 
-.ability
 	ldh a, [hPokedexStatsCurAbil]
 	add LOW(wBaseAbility1)
 	ld l, a
@@ -2096,6 +2075,13 @@ _Pokedex_Stats:
 	farcall PrintAbilityDescription
 	call Pokedex_ScheduleScreenUpdate
 	jr .joypad_loop
+
+.print_ev_dots
+	and 3
+	ret z
+	add $2c - 1 ; get corresponding EV tile
+	ld [hl], a
+	ret
 
 Pokedex_SetModeSearchPals:
 	ld a, BANK(wBGPals1)
