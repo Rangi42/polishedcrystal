@@ -1327,38 +1327,6 @@ endr
 	ld a, [wBaseExp]
 	ld [wEnemyMonBaseExp], a
 
-	ld a, c
-	cp LOW(PIKACHU)
-	jr nz, .enemy_extras_done
-	assert !HIGH(PIKACHU)
-	ld a, b
-	and EXTSPECIES_MASK
-	jr nz, .enemy_extras_done
-	ld c, NUM_MOVES
-	ld hl, wOTPartyMon1Moves
-
-.pikachu_move_loop
-	ld a, [hli]
-	cp FLY
-	jr z, .got_pikachu_fly
-	cp SURF
-	ld a, PIKACHU_SURF_FORM
-	jr z, .got_pikachu_move
-	dec c
-	jr z, .enemy_extras_done
-	jr .pikachu_move_loop
-
-.got_pikachu_fly
-	ld a, PIKACHU_FLY_FORM
-.got_pikachu_move
-	ld c, a
-	ld a, b
-	and ~FORM_MASK
-	or c
-	ld [wCurForm], a
-	ld [wOTPartyMon1Form], a
-	ld [wEnemyMonForm], a
-
 .enemy_extras_done
 	; Send-out animation
 	ldh a, [hBattleTurn]
