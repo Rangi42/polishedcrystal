@@ -129,9 +129,9 @@ Pokedex_ChangeForm:
 	call Pokedex_MonHasCosmeticForms
 	jr c, .not_cosmetic
 	pop af
-
 	ld a, 1
 	call Pokedex_CheckForOtherForms
+	ret c
 	ld a, BANK(wDexMons)
 	call StackCallInWRAMBankA
 .StackCall1:
@@ -139,7 +139,7 @@ Pokedex_ChangeForm:
 	and CAUGHT_MASK
 	or b
 	ld b, a
-	jr .set_hl
+	jr .StackCall2
 
 .not_cosmetic
 	pop af
@@ -148,7 +148,6 @@ Pokedex_ChangeForm:
 	ld a, BANK(wDexMons)
 	call StackCallInWRAMBankA
 .StackCall2:
-.set_hl
 	ld [hl], b
 	jmp Pokedex_ScheduleScreenUpdate
 

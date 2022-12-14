@@ -114,17 +114,23 @@ LearnMove:
 	and EXTSPECIES_MASK
 	jr nz, .done_pikachu
 	ld a, [wPutativeTMHMMove]
-	cp FLY
 	ld b, PIKACHU_FLY_FORM
+	cp FLY
 	jr z, .got_form
+	assert PIKACHU_FLY_FORM + 1 == PIKACHU_SURF_FORM
+	inc b
 	cp SURF
-	ld b, PIKACHU_SURF_FORM
 	jr nz, .done_pikachu
 .got_form
 	ld a, [hl]
 	and ~FORM_MASK
 	or b
 	ld [hl], a
+
+	ld c, PIKACHU
+	push de
+	call SetSeenAndCaughtMon
+	pop de
 
 .done_pikachu
 	ld a, [wBattleMode]

@@ -461,18 +461,25 @@ _UpdateMewtwoForm:
 	ld a, [wCurPartySpecies]
 	cp MEWTWO
 	ret nz
+	assert !HIGH(MEWTWO)
+	ld a, [hl]
+	and EXTSPECIES_MASK
+	ret nz
 	ld a, [de]
 	cp ARMOR_SUIT
 	ld a, MEWTWO_ARMORED_FORM
+	lb bc, MEWTWO_ARMORED_FORM, MEWTWO
 	jr z, .got_form
-	dec a ; PLAIN_FORM
+	assert MEWTWO_ARMORED_FORM - 1 == PLAIN_FORM
+	dec a
+	dec b
 .got_form
 	ld d, a
 	ld a, [hl]
 	and ~SPECIESFORM_MASK
 	or d
 	ld [hl], a
-	ret
+	jmp SetSeenAndCaughtMon
 
 GiveTakeItemMenuData:
 	db MENU_BACKUP_TILES | MENU_SPRITE_ANIMS
