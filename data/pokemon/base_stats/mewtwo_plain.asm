@@ -7,7 +7,7 @@
 	db ALWAYS_ITEM_2, PETAYA_BERRY ; held items
 	dn GENDER_UNKNOWN, HATCH_UNKNOWN ; gender ratio, step cycles to hatch
 
-	abilities_for MEWTWO, PRESSURE, INSOMNIA, UNNERVE
+	abilities_for MEWTWO, PRESSURE, SPEED_BOOST, UNNERVE
 	db GROWTH_SLOW ; growth rate
 	dn EGG_NONE, EGG_NONE ; egg groups
 

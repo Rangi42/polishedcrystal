@@ -966,19 +966,6 @@ BattleCommand_doturn:
 	call CheckUserIsCharging
 	ret nz
 
-	ldh a, [hBattleTurn]
-	and a
-	ld hl, wPlayerTurnsTaken
-	jr z, .got_turns_taken
-	ld hl, wEnemyTurnsTaken
-.got_turns_taken
-	; If we've gotten this far, this counts as a turn.
-	inc [hl]
-	ld a, [hl]
-	and a
-	jr nz, .no_overflow
-	dec [hl]
-.no_overflow
 	; check if we're locked in to a multi-turn move
 	ld a, BATTLE_VARS_SUBSTATUS3
 	call GetBattleVar
