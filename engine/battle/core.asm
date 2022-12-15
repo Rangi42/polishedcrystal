@@ -153,6 +153,7 @@ BattleTurn:
 	call HandleBerserkGene
 	call UpdateBattleMonInParty
 	call SetEnemyTurn
+	call IncrementTurnsTaken
 	call CheckLockedIn
 	jr nz, .skip_ai_move
 	farcall AIChooseMove
@@ -160,6 +161,7 @@ BattleTurn:
 	call TryEnemyFlee
 .skip_ai_move
 	call SetPlayerTurn
+	call IncrementTurnsTaken
 	call CheckLockedIn
 	jr nz, .skip_iteration
 .loop1
@@ -201,7 +203,7 @@ BattleTurn:
 	ld a, [wBattleEnded]
 	and a
 	ret nz
-	jr .loop
+	jmp .loop
 
 .do_move
 	call PerformMove
@@ -429,6 +431,21 @@ CheckSafariBattleOver:
 	add DRAW
 	ld [wBattleResult], a
 	scf
+	ret
+
+IncrementTurnsTaken:
+	call GetTurnsTaken
+	inc [hl]
+	ret nz
+	dec [hl] ; overflow
+	ret
+
+GetTurnsTaken:
+	ldh a, [hBattleTurn]
+	and a
+	ld hl, wPlayerTurnsTaken
+	ret z
+	ld hl, wEnemyTurnsTaken
 	ret
 
 CheckLockedIn:
@@ -1124,6 +1141,9 @@ SendInUserPkmn:
 	ld a, ~(1 << SUBSTATUS_RAGE | 1 << SUBSTATUS_FLINCHED | 1 << SUBSTATUS_CURLED)
 	and [hl]
 	ld [hl], a
+
+	call GetTurnsTaken
+	ld [hl], 0
 
 	; Reset Disable and Encore statuses
 	ldh a, [hBattleTurn]

@@ -1411,7 +1411,7 @@ PlayRadio:
 
 .PlayStation:
 	ld a, -1
-	ld [wEnemyTurnsTaken], a
+	ld [wPokegearRadioMusicPlaying], a
 	ld hl, PlayRadioStationPointers
 	ld d, $0
 	add hl, de

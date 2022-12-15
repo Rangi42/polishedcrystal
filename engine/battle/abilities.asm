@@ -998,6 +998,15 @@ StatIncreaseAbilities:
 	dbw DEFIANT, DefiantAbility
 	dbw -1, -1
 
+SpeedBoostAbility:
+	farcall GetTurnsTaken
+	ld a, [hl]
+	and a
+	ret z
+
+	; this will proc the speed-up.
+	jr MotorDriveAbility
+
 CompetitiveAbility:
 	ld b, $10 | SP_ATTACK
 	jr StatUpAbility
@@ -1039,7 +1048,6 @@ RattledAbility:
 	; fallthrough
 MotorDriveAbility:
 SteadfastAbility:
-SpeedBoostAbility:
 	ld b, SPEED
 StatUpAbility:
 	call HasUserFainted
