@@ -287,7 +287,7 @@ MagnetTunnelInsideMachineText5:
 
 	para "Multiple WARNING"
 	line "messages rapidly"
-	
+
 	para "flash across the"
 	line "small screen and"
 
@@ -306,7 +306,7 @@ MagnetTunnelInsideMachineText6:
 MagnetTunnelInsideMachineText7:
 	text "The machine is"
 	line "surrounded by the"
-	
+
 	para "faint stench of"
 	line "melted plastic…"
 
@@ -350,31 +350,31 @@ MagnetTunnelInsideEngineerText2:
 	line "#mon here has"
 	cont "more than doubled."
 	done
-	
+
 MagnetTunnelInsideScientistText:
 	text "Every day, more"
 	line "Magnemite arrive"
 	cont "and cause issues."
-	
+
 	para "The foreman thinks"
 	line "they must be drawn"
 
 	para "to the lodestone's"
 	line "unique magnetic"
 	cont "properties."
-	
+
 	para "I wonder why?"
 	done
 
 GenericTrainerEngineerGraden:
 	generictrainer ENGINEER, GRADEN, EVENT_BEAT_ENGINEER_GRADEN, .SeenText, .BeatenText
-	
+
 	text "I'm the foreman"
 	line "on this jobsite."
 
 	para "We dug out this"
 	line "tunnel to make a"
-	
+
 	para "path for the new"
 	line "Magnet Train"
 	cont "railway, but…"
