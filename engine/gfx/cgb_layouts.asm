@@ -1180,7 +1180,7 @@ BillsPC_PreviewTheme:
 	pop hl
 	ld c, 4 * 2
 	call LoadColorBytes
-	ld hl, WhitePalette 
+	ld hl, WhitePalette
 	ld de, wBGPals1 palette 1 + 3 * 2
 	call LoadOneColor
 	ld hl, wBGPals1 palette 1

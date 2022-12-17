@@ -154,7 +154,7 @@ Route22Past_LyraApproachesRivalMovementData:
 	slow_step_up
 	slow_step_up
 	slow_step_left
-	step_end 
+	step_end
 
 Route22Past_GiovanniLeavesMovementData:
 	slow_step_left
