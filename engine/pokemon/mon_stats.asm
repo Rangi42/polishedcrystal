@@ -940,7 +940,7 @@ GetStatusConditionIndex:
 	jr z, .fnt
 	ld a, [de]
 	ld b, a
-	and SLP
+	and SLP_MASK
 	ld a, 0
 	jr nz, .slp
 	bit TOX, b

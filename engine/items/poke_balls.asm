@@ -65,7 +65,7 @@ GetModifiedCaptureRate:
 	jr nz, .psn_brn_par
 	bit PSN, a
 	jr nz, .psn_brn_par
-	and SLP
+	and SLP_MASK
 	jr z, .status_done
 .frozen
 	ln a, 5, 2 ; x2.5
@@ -505,7 +505,7 @@ DuskBallMultiplier:
 DreamBallMultiplier:
 ; multiply catch rate by 4 if mon is asleep (on top of regular sleep bonus)
 	ld a, [wEnemyMonStatus]
-	and SLP
+	and SLP_MASK
 	ret z
 
 	ln a, 4, 1 ; x4

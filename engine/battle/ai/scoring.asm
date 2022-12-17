@@ -1253,7 +1253,7 @@ AI_Smart_HealBell:
 	jr z, .ok
 	dec [hl]
 .ok
-	and 1 << FRZ | SLP
+	and 1 << FRZ | SLP_MASK
 	ret z
 	call AI_50_50
 	ret c

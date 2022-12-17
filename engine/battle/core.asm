@@ -608,7 +608,7 @@ EnemyCanFlee:
 
 .skip_traps
 	ld a, [wEnemyMonStatus]
-	and 1 << FRZ | SLP
+	and 1 << FRZ | SLP_MASK
 	ret
 
 CompareMovePriority:
@@ -3545,7 +3545,7 @@ _HeldStatusHealingItem:
 	ld a, BATTLE_VARS_STATUS
 	call GetBattleVarAddr
 
-	; We can't use xor since SLP or PSN+TOX wont be nullified then.
+	; We can't use xor since SLP_MASK or PSN+TOX wont be nullified then.
 	ld a, c
 	and [hl]
 	ret z
