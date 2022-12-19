@@ -5374,121 +5374,107 @@ CheckUsableMove:
 	push de
 	push bc
 
-	; Check if we're out of pp
 	ld c, a
-	ld b, 0
-	ldh a, [hBattleTurn]
+	call .CheckPP
+	call nz, .CheckDisabled
+	call nz, .CheckChoiceItem
+	call nz, .CheckAssaultVest
+	call nz, .CheckEncored
+	call nz, .CheckChoiceAbility
+
+	; All failure conditions return z, but this function returns nz upon
+	; failure.
+	jr z, .move_unusable
+	xor a
+.move_unusable
 	and a
+	jmp PopBCDEHL
+
+.CheckPP:
+; Check if we're out of PP
 	ld hl, wBattleMonPP
-	jr z, .got_pp
-	ld hl, wEnemyMonPP
-.got_pp
-	add hl, bc
+	call GetUserMonAttr
+	ld b, 0
 	ld a, [hl]
 	and $3f
 	ld a, 1
-	jmp z, .end
+	ret
 
-	; Check Encore
-	ldh a, [hBattleTurn]
-	and a
-	ld a, [wPlayerEncoreCount]
-	jr z, .got_encore_count
-	ld a, [wEnemyEncoreCount]
-.got_encore_count
-	ld b, a
-	and $f
-	jr z, .not_encored
-	ld a, b
-	swap a
-	and $f
-	jr z, .not_encored
-	dec a
-	cp c
-	ld a, 5
-	jr nz, .end
-
-.not_encored
-	; Check Disable
+.CheckDisabled:
+	ld b, 2
 	ldh a, [hBattleTurn]
 	and a
 	ld a, [wPlayerDisableCount]
-	jr z, .got_disable_count
+	jr z, .CheckCommonVar
 	ld a, [wEnemyDisableCount]
-.got_disable_count
-	swap a
-	and $f
-	jr z, .not_disabled
-	dec a
-	cp c
-	ld a, 2
-	jr z, .end
+	jr .CheckCommonVar
 
-.not_disabled
-	; Check items. This requires the actual move so get it into c
-	ldh a, [hBattleTurn]
-	and a
+.CheckChoiceItem:
+	ld b, 3
+	call .GetItemHeldEffect
+	cp HELD_CHOICE
+	ret nz
+	jr .CheckEncoreVar
+
+.CheckAssaultVest:
+	call .GetItemHeldEffect
+	cp HELD_ASSAULT_VEST
+	ret nz
+
 	ld hl, wBattleMonMoves
-	jr z, .got_moves
-	ld hl, wEnemyMonMoves
-.got_moves
+	call GetUserMonAttr
 	ld b, 0
 	add hl, bc
-	ld b, [hl]
+	ld a, [hl]
 	push bc
-	farcall GetUserItem
-	ld a, b
-	pop bc
-	cp HELD_CHOICE
-	jr z, .check_choiced
-	cp HELD_ASSAULT_VEST
-	jr z, .assault_vest
-
-	; Check for Gorilla Tactics
-	call GetTrueUserAbility
-	cp GORILLA_TACTICS
-	jr z, .check_choiced
-	jr .usable
-
-.assault_vest
-	; Assault Vest check
-	ld a, b
 	call GetMoveFixedCategory
+	pop bc
 	cp STATUS
 	ld a, 4
-	jr z, .end
-	jr .usable
-.check_choiced
-	; Check if we did a move yet
+	ret
+
+.CheckEncored:
+	call .GetEncoreCount
+	and $f
+	jr z, .RetNZ
+	; fallthrough
+	ld b, 5
+.CheckEncoreVar:
+	call .GetEncoreCount
+.CheckCommonVar:
+	swap a
+	and $f
+	jr z, .RetNZ
+	dec a
+	cp c
+	ld a, b
+	ret
+
+.CheckChoiceAbility:
+	ld b, 6
+	call GetTrueUserAbility
+	cp GORILLA_TACTICS
+	ret nz
+	jr .CheckEncoreVar
+
+.GetEncoreCount:
 	ldh a, [hBattleTurn]
 	and a
 	ld a, [wPlayerEncoreCount]
-	jr z, .got_encore_count2
+	ret z
 	ld a, [wEnemyEncoreCount]
-.got_encore_count2
-	swap a
-	and $f
-	jr z, .usable
-	dec a
-	cp c
-	jr z, .usable
+	ret
 
-	; Choice items take priority over Gorilla Tactics message-wise
-	farcall GetUserItem
+.GetItemHeldEffect:
+	push bc
+	farcall GetUserItemAfterUnnerve
 	ld a, b
-	cp HELD_CHOICE
-	ld a, 3
-	jr z, .end
-	add a ; sets a to 6, which is what we want
-	jr .end
+	pop bc
+	ret
 
-	; fallthrough
-.usable
-	xor a
-.end
-	and a
-
-	jmp PopBCDEHL
+.RetNZ:
+	or 1
+	ret
 
 ParseEnemyAction:
 	; Clear weather icon
