@@ -453,8 +453,6 @@ EndTurn:
 	ld [wMoveState], a
 	jmp ResetDamage
 
-OpponentCantMove:
-	call CallOpponentTurn
 CantMove:
 	call .cancel_fly_dig
 	call CheckRampageStatusAndGetRolloutCount ; hl becomes pointer to user substatus3
@@ -4479,13 +4477,7 @@ BattleCommand_sleep:
 	call UpdateBattleHuds
 	ld hl, FellAsleepText
 	call StdBattleTextbox
-	call PostStatus
-
-	; Check if we were cured
-	ld a, BATTLE_VARS_STATUS_OPP
-	cp 1 << SLP_MASK
-	jmp z, OpponentCantMove
-	ret
+	jmp PostStatus
 
 .failed_ineffective
 	call AnimateFailedMove
@@ -4882,11 +4874,7 @@ BattleCommand_freezetarget:
 
 	ld hl, WasFrozenText
 	call StdBattleTextbox
-
 	jmp PostStatus
-.no_magma_armor
-	call OpponentCantMove
-	jmp EndRechargeOpp
 
 BattleCommand_paralyzetarget:
 	xor a
