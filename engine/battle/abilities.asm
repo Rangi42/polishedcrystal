@@ -91,7 +91,7 @@ LimberAbility:
 	jr HealStatusAbility
 InsomniaAbility:
 VitalSpiritAbility:
-	ld a, SLP
+	ld a, SLP_MASK
 	; fallthrough
 HealStatusAbility:
 	ld b, a
@@ -799,7 +799,7 @@ EffectSporeAbility:
 	jr c, StaticAbility
 
 	ld hl, CanSleepTarget
-	ld c, SLP
+	ld c, SLP_MASK
 	jr AfflictStatusAbility
 FlameBodyAbility:
 	ld hl, CanBurnTarget
@@ -845,7 +845,7 @@ _AfflictStatusAbility:
 	ld a, BATTLE_VARS_STATUS_OPP
 	call GetBattleVarAddr
 	ld a, c
-	cp SLP
+	cp SLP_MASK
 	jr nz, .got_status
 
 	; sleep for 1-3 turns (+1 including wakeup turn)

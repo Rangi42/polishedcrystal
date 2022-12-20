@@ -947,7 +947,7 @@ CheckFaintedFrzSlp:
 	ld hl, MON_STATUS
 	add hl, bc
 	ld a, [hl]
-	and (1 << FRZ) | SLP
+	and (1 << FRZ) | SLP_MASK
 	ret z
 .fainted_frz_slp
 	scf

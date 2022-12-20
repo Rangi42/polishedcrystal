@@ -238,7 +238,7 @@ LoadMovementDataPointer::
 	call CheckObjectVisibility
 	ret c
 
-	ld hl, OBJECT_MOVEMENTTYPE
+	ld hl, OBJECT_MOVEMENT_TYPE
 	add hl, bc
 	ld [hl], SPRITEMOVEDATA_SCRIPTED
 
@@ -304,10 +304,10 @@ _GetMovementByte::
 	push af
 	ld a, [hli]
 	rst Bankswitch
-; Load the current script byte as given by OBJECT_MOVEMENT_BYTE_INDEX, and increment OBJECT_MOVEMENT_BYTE_INDEX
+; Load the current script byte as given by OBJECT_MOVEMENT_INDEX, and increment OBJECT_MOVEMENT_INDEX
 	ld a, [hli]
 	ld d, [hl]
-	ld hl, OBJECT_MOVEMENT_BYTE_INDEX
+	ld hl, OBJECT_MOVEMENT_INDEX
 	add hl, bc
 	add [hl]
 	ld e, a
@@ -349,7 +349,7 @@ DoesObjectHaveASprite::
 SetSpriteDirection::
 	; preserves other flags
 	push af
-	ld hl, OBJECT_FACING
+	ld hl, OBJECT_DIRECTION
 	add hl, bc
 	ld a, [hl]
 	and %11110011
@@ -361,7 +361,7 @@ SetSpriteDirection::
 	ret
 
 GetSpriteDirection::
-	ld hl, OBJECT_FACING
+	ld hl, OBJECT_DIRECTION
 	add hl, bc
 	ld a, [hl]
 	and %00001100

@@ -741,7 +741,7 @@ endc
 	bit OWSTATE_STRENGTH, [hl]
 	jr z, .not_boulder
 
-	ld hl, OBJECT_DIRECTION_WALKING
+	ld hl, OBJECT_WALKING
 	add hl, bc
 	ld a, [hl]
 	cp STANDING

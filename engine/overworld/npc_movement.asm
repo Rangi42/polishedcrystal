@@ -52,17 +52,17 @@ CanObjectMoveInDirection:
 WillObjectBumpIntoWater:
 	call CanObjectLeaveTile
 	ret c
-	ld hl, OBJECT_NEXT_MAP_X
+	ld hl, OBJECT_MAP_X
 	add hl, bc
 	ld d, [hl]
-	ld hl, OBJECT_NEXT_MAP_Y
+	ld hl, OBJECT_MAP_Y
 	add hl, bc
 	ld e, [hl]
 	ld hl, OBJECT_PALETTE
 	add hl, bc
 	bit 7, [hl]
 	jr nz, WillObjectRemainOnWater
-	ld hl, OBJECT_NEXT_TILE
+	ld hl, OBJECT_TILE
 	add hl, bc
 	ld a, [hl]
 	ld d, a
@@ -75,7 +75,7 @@ WillObjectBumpIntoWater:
 WillObjectBumpIntoLand:
 	call CanObjectLeaveTile
 	ret c
-	ld hl, OBJECT_NEXT_TILE
+	ld hl, OBJECT_TILE
 	add hl, bc
 	ld a, [hl]
 	call GetTileCollision
@@ -85,13 +85,13 @@ WillObjectBumpIntoLand:
 	ret
 
 WillObjectBumpIntoTile:
-	ld hl, OBJECT_NEXT_TILE
+	ld hl, OBJECT_TILE
 	add hl, bc
 	ld a, [hl]
 	call GetSideWallDirectionMask
 	ret nc
 	push af
-	ld hl, OBJECT_DIRECTION_WALKING
+	ld hl, OBJECT_WALKING
 	add hl, bc
 	ld a, [hl]
 	and 3
@@ -109,13 +109,13 @@ WillObjectBumpIntoTile:
 	db 1 << DOWN, 1 << UP, 1 << RIGHT, 1 << LEFT
 
 CanObjectLeaveTile:
-	ld hl, OBJECT_STANDING_TILE
+	ld hl, OBJECT_LAST_TILE
 	add hl, bc
 	ld a, [hl]
 	call GetSideWallDirectionMask
 	ret nc
 	push af
-	ld hl, OBJECT_DIRECTION_WALKING
+	ld hl, OBJECT_WALKING
 	add hl, bc
 	and 3
 	ld e, a
@@ -155,7 +155,7 @@ GetSideWallDirectionMask:
 	db 10, 6, 9, 5
 
 WillObjectRemainOnWater:
-	ld hl, OBJECT_DIRECTION_WALKING
+	ld hl, OBJECT_WALKING
 	add hl, bc
 	ld a, [hl]
 	and 3
@@ -231,7 +231,7 @@ CheckFacingObject::
 	ldh [hMapObjectIndexBuffer], a
 	call IsNPCAtCoord
 	ret nc
-	ld hl, OBJECT_DIRECTION_WALKING
+	ld hl, OBJECT_WALKING
 	add hl, bc
 	ld a, [hl]
 	cp STANDING
@@ -244,10 +244,10 @@ CheckFacingObject::
 	ret
 
 WillPersonBumpIntoSomeoneElse:
-	ld hl, OBJECT_NEXT_MAP_X
+	ld hl, OBJECT_MAP_X
 	add hl, bc
 	ld d, [hl]
-	ld hl, OBJECT_NEXT_MAP_Y
+	ld hl, OBJECT_MAP_Y
 	add hl, bc
 	ld e, [hl]
 IsNPCAtCoord:
@@ -273,12 +273,12 @@ IsNPCAtCoord:
 	jr .ok2
 
 .got
-	ld hl, OBJECT_NEXT_MAP_X
+	ld hl, OBJECT_MAP_X
 	add hl, bc
 	ld a, [hl]
 	cp d
 	jr nz, .ok
-	ld hl, OBJECT_NEXT_MAP_Y
+	ld hl, OBJECT_MAP_Y
 	add hl, bc
 	ld a, [hl]
 	cp e
@@ -292,12 +292,12 @@ IsNPCAtCoord:
 	jr nz, .setcarry
 
 .ok
-	ld hl, OBJECT_MAP_X
+	ld hl, OBJECT_LAST_MAP_X
 	add hl, bc
 	ld a, [hl]
 	cp d
 	jr nz, .next
-	ld hl, OBJECT_MAP_Y
+	ld hl, OBJECT_LAST_MAP_Y
 	add hl, bc
 	ld a, [hl]
 	cp e
@@ -342,7 +342,7 @@ HasPersonReachedMovementLimit:
 	ld a, [hl]
 	add e
 	ld e, a
-	ld hl, OBJECT_NEXT_MAP_X
+	ld hl, OBJECT_MAP_X
 	add hl, bc
 	ld a, [hl]
 	cp d
@@ -367,7 +367,7 @@ HasPersonReachedMovementLimit:
 	ld a, [hl]
 	add e
 	ld e, a
-	ld hl, OBJECT_NEXT_MAP_Y
+	ld hl, OBJECT_MAP_Y
 	add hl, bc
 	ld a, [hl]
 	cp d
@@ -384,7 +384,7 @@ HasPersonReachedMovementLimit:
 	ret
 
 IsPersonMovingOffEdgeOfScreen:
-	ld hl, OBJECT_NEXT_MAP_X
+	ld hl, OBJECT_MAP_X
 	add hl, bc
 	ld a, [wXCoord]
 	cp [hl]
@@ -395,7 +395,7 @@ IsPersonMovingOffEdgeOfScreen:
 	jr c, .yes
 
 .check_y
-	ld hl, OBJECT_NEXT_MAP_Y
+	ld hl, OBJECT_MAP_Y
 	add hl, bc
 	ld a, [wYCoord]
 	cp [hl]
@@ -414,14 +414,14 @@ IsPersonMovingOffEdgeOfScreen:
 	ret
 
 WillObjectIntersectBigObject:
-	ld hl, OBJECT_NEXT_MAP_X
+	ld hl, OBJECT_MAP_X
 	add hl, bc
 	ld a, d
 	sub [hl]
 	jr c, .nope
 	cp $2
 	jr nc, .nope
-	ld hl, OBJECT_NEXT_MAP_Y
+	ld hl, OBJECT_MAP_Y
 	add hl, bc
 	ld a, e
 	sub [hl]

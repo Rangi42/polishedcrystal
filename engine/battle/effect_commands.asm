@@ -243,7 +243,7 @@ BattleCommand_checkturn:
 	ld a, BATTLE_VARS_STATUS
 	call GetBattleVarAddr
 	ld a, [hl]
-	and SLP
+	and SLP_MASK
 	jr z, .not_asleep
 
 	dec [hl]
@@ -453,8 +453,6 @@ EndTurn:
 	ld [wMoveState], a
 	jmp ResetDamage
 
-OpponentCantMove:
-	call CallOpponentTurn
 CantMove:
 	call .cancel_fly_dig
 	call CheckRampageStatusAndGetRolloutCount ; hl becomes pointer to user substatus3
@@ -792,7 +790,7 @@ BattleCommand_checkobedience:
 	call BattleRandom
 	add a
 	swap a
-	and SLP
+	and SLP_MASK
 	jr z, .Nap
 
 	ld [wBattleMonStatus], a
@@ -937,7 +935,7 @@ IgnoreSleepOnly:
 
 	ld a, BATTLE_VARS_STATUS
 	call GetBattleVar
-	and SLP
+	and SLP_MASK
 	ret z
 
 ; 'ignored orders…sleeping!'
@@ -1945,7 +1943,7 @@ BattleCommand_checkhit:
 
 	ld a, BATTLE_VARS_STATUS_OPP
 	call GetBattleVar
-	and SLP
+	and SLP_MASK
 	ret
 
 .Protect:
@@ -4479,13 +4477,7 @@ BattleCommand_sleep:
 	call UpdateBattleHuds
 	ld hl, FellAsleepText
 	call StdBattleTextbox
-	call PostStatus
-
-	; Check if we were cured
-	ld a, BATTLE_VARS_STATUS_OPP
-	cp 1 << SLP
-	jmp z, OpponentCantMove
-	ret
+	jmp PostStatus
 
 .failed_ineffective
 	call AnimateFailedMove
@@ -4526,7 +4518,7 @@ CanSleepTarget:
 	ld a, b
 	lb bc, -1, -1
 	lb de, INSOMNIA, HELD_PREVENT_SLEEP
-	ld h, SLP
+	ld h, SLP_MASK
 CanStatusTarget:
 ; Input:
 ; a=0: Check Mold Breaker and Substitute (user directly poisoning foe)
@@ -4882,11 +4874,7 @@ BattleCommand_freezetarget:
 
 	ld hl, WasFrozenText
 	call StdBattleTextbox
-
 	jmp PostStatus
-.no_magma_armor
-	call OpponentCantMove
-	jmp EndRechargeOpp
 
 BattleCommand_paralyzetarget:
 	xor a
@@ -5063,7 +5051,7 @@ StatusProblemTable:
 	status_problem 1 << FRZ, ANIM_FRZ, FrozenSolidText
 	status_problem 1 << BRN, ANIM_BRN, WasBurnedText
 	status_problem 1 << PSN, ANIM_PSN, WasPoisonedText
-	status_problem      SLP, ANIM_SLP, FellAsleepText
+	status_problem SLP_MASK, ANIM_SLP, FellAsleepText
 
 BattleCommand_poison:
 	ld a, 1 << PSN
@@ -5161,7 +5149,7 @@ BattleCommand_rampage:
 ; No rampage during Sleep Talk.
 	ld a, BATTLE_VARS_STATUS
 	call GetBattleVar
-	and SLP
+	and SLP_MASK
 	ret nz
 
 	call CheckRampageStatusAndGetRolloutCount
@@ -5392,7 +5380,7 @@ BattleCommand_flinchtarget:
 
 	ld a, BATTLE_VARS_STATUS_OPP
 	call GetBattleVar
-	and 1 << FRZ | SLP
+	and 1 << FRZ | SLP_MASK
 	ret nz
 
 	call CheckOpponentWentFirst
@@ -5432,7 +5420,7 @@ BattleCommand_charge:
 .not_charging
 	ld a, BATTLE_VARS_STATUS
 	call GetBattleVar
-	and SLP
+	and SLP_MASK
 	jr z, .awake
 
 	call BattleCommand_movedelay
@@ -5783,7 +5771,7 @@ BattleCommand_heal:
 	jr nz, .not_rest
 	ld a, BATTLE_VARS_STATUS
 	call GetBattleVar
-	and SLP
+	and SLP_MASK
 	jr nz, BattleEffect_ButItFailed
 	call GetTrueUserAbility
 	cp INSOMNIA
