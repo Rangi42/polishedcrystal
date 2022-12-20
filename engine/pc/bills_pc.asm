@@ -1419,6 +1419,9 @@ Special_CurBoxFullCheck:
 ; Returns [hScriptVar] = zero if wTempMonBox == wCurBox
 ; Returns [hScriptVar] = nonzero if wTempMonBox != wCurBox
 	call CurBoxFullCheck
+	jr nz, .not_equal
+	xor a
+.not_equal
 	ldh [hScriptVar], a
 	ret
 
