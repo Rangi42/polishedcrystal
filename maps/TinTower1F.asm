@@ -1,10 +1,10 @@
 TinTower1F_MapScriptHeader:
 	def_scene_scripts
-	scene_script TinTower1FTrigger0
+	scene_script TinTower1FSuicuneBattleScene
 
 	def_callbacks
-	callback MAPCALLBACK_OBJECTS, UnknownScript_0x18502f
-	callback MAPCALLBACK_TILES, TinTowerStairsCallback
+	callback MAPCALLBACK_OBJECTS, TinTower1FNPCsCallback
+	callback MAPCALLBACK_TILES, TinTower1FStairsCallback
 
 	def_warp_events
 	warp_event  7, 15, BELLCHIME_TRAIL, 3
@@ -36,49 +36,49 @@ TinTower1F_MapScriptHeader:
 	const TINTOWER1F_SAGE2
 	const TINTOWER1F_SAGE3
 
-TinTower1FTrigger0:
-	sdefer SuicuneBattle
+TinTower1FSuicuneBattleScene:
+	sdefer TinTower1FSuicuneBattleScript
 	end
 
-UnknownScript_0x18502f:
+TinTower1FNPCsCallback:
 	checkevent EVENT_GOT_RAINBOW_WING
-	iftruefwd UnknownScript_0x185047
+	iftruefwd .GotRainbowWing
 	checkevent EVENT_BEAT_ELITE_FOUR
-	iffalsefwd UnknownScript_0x185050
+	iffalsefwd .FaceBeasts
 	special SpecialBeastsCheck
-	iffalsefwd UnknownScript_0x185050
+	iffalsefwd .FaceBeasts
 	clearevent EVENT_TIN_TOWER_1F_WISE_TRIO_2
 	setevent EVENT_TIN_TOWER_1F_WISE_TRIO_1
-UnknownScript_0x185047:
+.GotRainbowWing:
 	checkevent EVENT_FOUGHT_HO_OH
 	iffalsefwd .Done
 	appear TINTOWER1F_EUSINE
 .Done:
 	endcallback
 
-UnknownScript_0x185050:
+.FaceBeasts:
 	checkevent EVENT_FOUGHT_SUICUNE
-	iftruefwd UnknownScript_0x185077
+	iftruefwd .FoughtSuicune
 	appear TINTOWER1F_SUICUNE
 	checkflag ENGINE_PLAYER_CAUGHT_RAIKOU
-	iftruefwd UnknownScript_0x185065
+	iftruefwd .NoRaikou
 	appear TINTOWER1F_RAIKOU
-	sjumpfwd UnknownScript_0x185067
+	sjumpfwd .CheckEntei
 
-UnknownScript_0x185065:
+.NoRaikou:
 	disappear TINTOWER1F_RAIKOU
-UnknownScript_0x185067:
+.CheckEntei:
 	checkflag ENGINE_PLAYER_CAUGHT_ENTEI
-	iftruefwd UnknownScript_0x185074
+	iftruefwd .NoEntei
 	appear TINTOWER1F_ENTEI
-	sjumpfwd UnknownScript_0x185076
+	sjumpfwd .BeastsDone
 
-UnknownScript_0x185074:
+.NoEntei:
 	disappear TINTOWER1F_ENTEI
-UnknownScript_0x185076:
+.BeastsDone:
 	endcallback
 
-UnknownScript_0x185077:
+.FoughtSuicune:
 	disappear TINTOWER1F_SUICUNE
 	disappear TINTOWER1F_RAIKOU
 	disappear TINTOWER1F_ENTEI
@@ -86,44 +86,44 @@ UnknownScript_0x185077:
 	setevent EVENT_TIN_TOWER_1F_WISE_TRIO_2
 	endcallback
 
-TinTowerStairsCallback:
+TinTower1FStairsCallback:
 	checkevent EVENT_GOT_RAINBOW_WING
-	iftruefwd .NoChange
+	iftruefwd .DontHideStairs
 	changeblock 8, 2, $9
-.NoChange:
+.DontHideStairs:
 	endcallback
 
-SuicuneBattle:
+TinTower1FSuicuneBattleScript:
 	applymovement PLAYER, TinTowerPlayerMovement1
 	pause 15
 	checkflag ENGINE_PLAYER_CAUGHT_RAIKOU
 	iftruefwd .Next1 ; if player caught Raikou, he doesn't appear in Tin Tower
-	applymovement TINTOWER1F_RAIKOU, TinTowerRaikouMovement1
+	applymovement TINTOWER1F_RAIKOU, TinTower1FRaikouApproachesMovement
 	turnobject PLAYER, LEFT
 	cry RAIKOU
 	pause 10
 	playsound SFX_WARP_FROM
-	applymovement TINTOWER1F_RAIKOU, TinTowerRaikouMovement2
+	applymovement TINTOWER1F_RAIKOU, TinTower1FRaikouLeavesMovement
 	disappear TINTOWER1F_RAIKOU
 	playsound SFX_EXIT_BUILDING
 	waitsfx
 .Next1:
 	checkflag ENGINE_PLAYER_CAUGHT_ENTEI
 	iftruefwd .Next2 ; if player caught Entei, he doesn't appear in Tin Tower
-	applymovement TINTOWER1F_ENTEI, TinTowerEnteiMovement1
+	applymovement TINTOWER1F_ENTEI, TinTower1FEnteiApproachesMovement
 	turnobject PLAYER, RIGHT
 	cry ENTEI
 	pause 10
 	playsound SFX_WARP_FROM
-	applymovement TINTOWER1F_ENTEI, TinTowerEnteiMovement2
+	applymovement TINTOWER1F_ENTEI, TinTower1FEnteiLeavesMovement
 	disappear TINTOWER1F_ENTEI
 	playsound SFX_EXIT_BUILDING
 	waitsfx
 .Next2:
 	turnobject PLAYER, UP
 	pause 10
-	applymovement PLAYER, TinTowerPlayerMovement2
-	applymovement TINTOWER1F_SUICUNE, TinTowerSuicuneMovement
+	applymovement PLAYER, TinTower1FPlayerBacksUpMovement
+	applymovement TINTOWER1F_SUICUNE, TinTower1FSuicuneApproachesMovement
 	cry SUICUNE
 	pause 20
 	loadwildmon SUICUNE, 40
@@ -180,19 +180,19 @@ SuicuneBattle:
 
 TinTower1FSage4Script:
 	checkevent EVENT_FOUGHT_HO_OH
-	iftruefwd UnknownScript_0x185185
+	iftruefwd .FoughtHoOh
 	jumptextfaceplayer TinTower1FSage4Text1
 
-UnknownScript_0x185185:
+.FoughtHoOh:
 	jumptextfaceplayer TinTower1FSage4Text2
 
 TinTower1FSage5Script:
 	faceplayer
 	opentext
 	checkevent EVENT_FOUGHT_HO_OH
-	iftruefwd UnknownScript_0x1851b6
+	iftruefwd .FoughtHoOh
 	checkevent EVENT_GOT_RAINBOW_WING
-	iftruefwd UnknownScript_0x1851b0
+	iftruefwd .GotRainbowWing
 	writetext TinTower1FSage5Text1
 	promptbutton
 	verbosegivekeyitem RAINBOW_WING
@@ -206,18 +206,18 @@ TinTower1FSage5Script:
 	setevent EVENT_GOT_RAINBOW_WING
 	closetext
 	opentext
-UnknownScript_0x1851b0:
+.GotRainbowWing:
 	jumpopenedtext TinTower1FSage5Text2
 
-UnknownScript_0x1851b6:
+.FoughtHoOh:
 	jumpopenedtext TinTower1FSage5Text3
 
 TinTower1FSage6Script:
 	checkevent EVENT_FOUGHT_HO_OH
-	iftruefwd UnknownScript_0x1851c5
+	iftruefwd .FoughtHoOh
 	jumptextfaceplayer TinTower1FSage6Text1
 
-UnknownScript_0x1851c5:
+.FoughtHoOh:
 	jumptextfaceplayer TinTower1FSage6Text2
 
 TinTowerPlayerMovement1:
@@ -227,36 +227,36 @@ TinTowerPlayerMovement1:
 	slow_step_up
 	step_end
 
-TinTowerRaikouMovement1:
+TinTower1FRaikouApproachesMovement:
 	fix_facing
 	fast_jump_step_down
 	step_end
 
-TinTowerRaikouMovement2:
+TinTower1FRaikouLeavesMovement:
 	fix_facing
 	fast_jump_step_down
 	fast_jump_step_right
 	fast_jump_step_down
 	step_end
 
-TinTowerEnteiMovement1:
+TinTower1FEnteiApproachesMovement:
 	fix_facing
 	fast_jump_step_down
 	step_end
 
-TinTowerEnteiMovement2:
+TinTower1FEnteiLeavesMovement:
 	fix_facing
 	fast_jump_step_down
 	fast_jump_step_left
 	fast_jump_step_down
 	step_end
 
-TinTowerSuicuneMovement:
+TinTower1FSuicuneApproachesMovement:
 	fix_facing
 	fast_jump_step_down
 	step_end
 
-TinTowerPlayerMovement2:
+TinTower1FPlayerBacksUpMovement:
 	fix_facing
 	run_step_down
 	remove_fixed_facing
