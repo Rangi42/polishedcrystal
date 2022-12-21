@@ -19,7 +19,7 @@ TinTower1F_MapScriptHeader:
 	pokemon_event  7,  9, SUICUNE, SPRITEMOVEDATA_POKEMON, -1, -1, PAL_NPC_BLUE, ClearText, EVENT_TIN_TOWER_1F_SUICUNE
 	pokemon_event  5,  9, RAIKOU, SPRITEMOVEDATA_POKEMON, -1, -1, PAL_NPC_BROWN, ClearText, EVENT_TIN_TOWER_1F_RAIKOU
 	pokemon_event 10,  9, ENTEI, SPRITEMOVEDATA_POKEMON, -1, -1, PAL_NPC_RED, ClearText, EVENT_TIN_TOWER_1F_ENTEI
-	object_event  6,  3, SPRITE_EUSINE, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, TinTowerEusineHoOhText, EVENT_TIN_TOWER_1F_EUSINE
+	object_event  6,  3, SPRITE_EUSINE, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, TinTower1FEusineAfterHoOhScript, EVENT_TIN_TOWER_1F_EUSINE
 	object_event  3,  9, SPRITE_ELDER, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, TinTower1FSage1Text, EVENT_TIN_TOWER_1F_WISE_TRIO_1
 	object_event  9, 11, SPRITE_ELDER, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, TinTower1FSage2Text, EVENT_TIN_TOWER_1F_WISE_TRIO_1
 	object_event 12,  6, SPRITE_ELDER, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, TinTower1FSage3Text, EVENT_TIN_TOWER_1F_WISE_TRIO_1
@@ -219,6 +219,35 @@ TinTower1FSage6Script:
 
 .FoughtHoOh:
 	jumptextfaceplayer TinTower1FSage6Text2
+
+TinTower1FEusineAfterHoOhScript:
+	faceplayer
+	opentext
+	writetext TinTowerEusineHoOhText
+	waitbutton
+	closetext
+	readvar VAR_FACING
+	ifnotequal RIGHT, .PathClear
+	applymovement PLAYER, .PlayerStepsAsideMovement
+.PathClear:
+	applymovement TINTOWER1F_EUSINE, .EusineLeavesAfterHoOhMovement
+	disappear TINTOWER1F_EUSINE
+	end
+
+.PlayerStepsAsideMovement:
+	step_up
+	turn_head_left
+	step_end
+
+.EusineLeavesAfterHoOhMovement:
+	step_left
+	step_left
+	step_left
+	step_down
+	step_down
+	step_down
+	step_down
+	step_end
 
 TinTowerPlayerMovement1:
 	slow_step_up
@@ -452,6 +481,19 @@ TinTowerEusineHoOhText:
 
 	para "to become a famous"
 	line "#Maniac!"
+
+	para "If you are ever"
+	line "back in Celadon."
+
+	para "Feel free to stop"
+	line "by and check on my"
+	cont "Gramps!"
+
+	para "He would like"
+	line "the company while"
+	cont "i'm away."
+
+	para "Later, <PLAYER>!"
 	done
 
 TinTower1FSage4Text2:

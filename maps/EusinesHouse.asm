@@ -91,10 +91,24 @@ CeladonEusine:
 
 EusinesHouseGrampsScript:
 	checkevent EVENT_EUSINES_HOUSE_EUSINE
-	iffalse_jumptextfaceplayer EusinesHouseGrampsText1
-	checkevent EVENT_TIN_TOWER_ROOF_HO_OH
-	iffalse_jumptextfaceplayer EusinesHouseGrampsText3
-	jumptextfaceplayer EusinesHouseGrampsText2
+	iffalse_jumptextfaceplayer EusinesHouseGrampsGrandsonHomeText
+	checkevent EVENT_FOUGHT_SUICUNE
+	iffalse_jumptextfaceplayer EusinesHouseGrampsEusineSearchingForSuicuneText
+	checkevent EVENT_GOT_RARE_CANDY_FROM_EUSINE_GRAMPS
+	iftrue_jumptextfaceplayer EusinesHouseGrampsEusineTravelingWorldText
+	checkevent EVENT_FOUGHT_HO_OH
+	iftruefwd .AfterHoOhFight
+	jumptextfaceplayer EusinesHouseGrampsEusineSearchingForHoOhText
+
+.AfterHoOhFight:
+	faceplayer
+	opentext
+	writetext EusinesHouseGrampsThankYouGiftText
+	waitbutton
+	verbosegiveitem RARE_CANDY
+	setevent EVENT_GOT_RARE_CANDY_FROM_EUSINE_GRAMPS
+	closetext
+	end
 
 CeladonEusineText1:
 	text "Eusine: Hi!"
@@ -165,13 +179,13 @@ EusineQuestHintText:
 	line "you, <PLAYER>!"
 	done
 
-EusinesHouseGrampsText1:
+EusinesHouseGrampsGrandsonHomeText:
 	text "My grandson came"
 	line "home!"
 	cont "I'm overjoyed!"
 	done
 
-EusinesHouseGrampsText2:
+EusinesHouseGrampsEusineSearchingForSuicuneText:
 	text "My grandson Eusine"
 	line "is in Johto,"
 
@@ -183,7 +197,7 @@ EusinesHouseGrampsText2:
 	cont "ary #mon!"
 	done
 
-EusinesHouseGrampsText3:
+EusinesHouseGrampsEusineSearchingForHoOhText:
 	text "My grandson Eusine"
 	line "is on another"
 	cont "adventure."
@@ -191,4 +205,29 @@ EusinesHouseGrampsText3:
 	para "He left to visit"
 	line "Bell Tower in"
 	cont "Ecruteak City."
+	done
+
+EusinesHouseGrampsThankYouGiftText:
+	text "My grandson Eusine"
+	line "called."
+
+	para "He is doing well,"
+	line "I'm happy for him!"
+
+	para "Thank you for"
+	line "checking on me"
+	cont "<PLAYER>!"
+
+	para "Please take this"
+	line "to show my"
+	cont "appreciation"
+	done
+
+EusinesHouseGrampsEusineTravelingWorldText:
+	text "Eusine is out"
+	line "traveling the"
+	cont "world."
+
+	para "I'm so proud of"
+	line "him!"
 	done
