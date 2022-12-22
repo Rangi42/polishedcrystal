@@ -517,8 +517,6 @@ BattleTowerMart3:
 	db POWER_ANKLET, 24
 	db -1
 
-; TODO: Battle Factory items
-
 BattleFactoryMart1:
 	db 7 ; # items
 	db FOCUS_BAND,   16
@@ -542,10 +540,11 @@ BattleFactoryMart2:
 	db -1
 
 BattleFactoryMart3:
-	db 5 ; # items
+	db 6 ; # items
 	db ABSORB_BULB,  16
 	db CELL_BATTERY, 16
 	db LUMINOUSMOSS, 16
 	db SNOWBALL,     16
 	db THROAT_SPRAY, 24
+	db MINT_LEAF,    32
 	db -1
