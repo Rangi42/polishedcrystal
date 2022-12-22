@@ -54,3 +54,4 @@
 	tilecoll WALL, WALL, WALL, WALL ; 35
 	tilecoll WALL, WALL, WALL, WALL ; 36
 	tilecoll RIGHT_WALL, LEFT_WALL, RIGHT_WALL, LEFT_WALL ; 37
+	tilecoll WALL, WALL, WALL, WALL ; 38
