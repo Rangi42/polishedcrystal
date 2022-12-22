@@ -218,9 +218,16 @@ LoadNamingScreenMonMini:
 	push de
 	push bc
 
+	ld a, [wMonType]
+	cp TEMPMON
+	jr nz, .party_mon
+	ld hl, wTempMonForm
+	ld a, [hl]
+	jr .got_mon
+.party_mon
 	ld a, MON_FORM ; aka MON_IS_EGG
 	call GetPartyParamLocationAndValue
-
+.got_mon
 	depixel 4, 4, 4, 0
 	jr _LoadMonMini
 
