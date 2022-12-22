@@ -1625,7 +1625,7 @@ FishFunction:
 	ld a, c
 	ld [wTempWildMonSpecies], a
 	ld a, b
-	ld [wCurForm], a
+	ld [wWildMonForm], a
 	ld a, BATTLETYPE_FISH
 	ld [wBattleType], a
 	ld a, $2

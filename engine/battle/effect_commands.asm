@@ -4477,7 +4477,7 @@ BattleCommand_sleep:
 	call UpdateBattleHuds
 	ld hl, FellAsleepText
 	call StdBattleTextbox
-	jmp PostStatus
+	jr PostStatus
 
 .failed_ineffective
 	call AnimateFailedMove
