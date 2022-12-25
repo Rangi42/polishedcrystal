@@ -52,12 +52,12 @@ RocketScript_Southbound:
 	sjumpfwd RocketScript_YoureBrokeSouth
 
 RocketScript_TollSouth:
-	takemoney $0, ROUTE43GATE_TOLL
+	scall RocketScript_TakeToll
 	writetext RocketText_ThankYou
 	sjumpfwd RocketScript_ShakeDownSouth
 
 RocketScript_YoureBrokeSouth:
-	takemoney $0, ROUTE43GATE_TOLL
+	scall RocketScript_TakeToll
 	writetext RocketText_AllYouGot
 	; fallthrough
 
@@ -84,12 +84,12 @@ RocketScript_Northbound:
 	sjumpfwd RocketScript_YoureBrokeNorth
 
 RocketScript_TollNorth:
-	takemoney $0, ROUTE43GATE_TOLL
+	scall RocketScript_TakeToll
 	writetext RocketText_ThankYou
 	sjumpfwd RocketScript_ShakeDownNorth
 
 RocketScript_YoureBrokeNorth:
-	takemoney $0, ROUTE43GATE_TOLL
+	scall RocketScript_TakeToll
 	writetext RocketText_AllYouGot
 	; fallthrough
 
@@ -100,6 +100,12 @@ RocketScript_ShakeDownNorth:
 	applymovement ROUTE43GATE_ROCKET1, Rocket1Script_LetsYouPassNorth
 	setscene $1
 	special RestartMapMusic
+	end
+
+RocketScript_TakeToll:
+	takemoney $0, ROUTE43GATE_TOLL
+	waitsfx
+	playsound SFX_TRANSACTION
 	end
 
 OfficerScript_GuardWithSludgeBomb:
