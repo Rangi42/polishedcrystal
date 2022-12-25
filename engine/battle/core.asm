@@ -5395,6 +5395,7 @@ CheckUsableMove:
 	ld hl, wBattleMonPP
 	call GetUserMonAttr
 	ld b, 0
+	add hl, bc
 	ld a, [hl]
 	and $3f
 	ld a, 1
