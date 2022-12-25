@@ -270,6 +270,12 @@ EngineFlags:
 	engine_flag wPokemonJournals, KURT_JOURNAL
 	engine_flag wPokemonJournals, MR_FUJI_JOURNAL
 	engine_flag wPokemonJournals, PROF_WILLOW_JOURNAL
+	engine_flag wPokemonJournals, STEVEN_JOURNAL
+	engine_flag wPokemonJournals, CYNTHIA_JOURNAL
+	engine_flag wPokemonJournals, WALKER_JOURNAL
+	engine_flag wPokemonJournals, KIYO_JOURNAL
+	engine_flag wPokemonJournals, PALMER_JOURNAL
+	engine_flag wPokemonJournals, THORTON_JOURNAL
 
 	engine_flag wStatusFlags3, 0 ; judge machine
 
