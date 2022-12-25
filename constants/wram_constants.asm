@@ -382,4 +382,5 @@ DEF DAYCARELADY_ACTIVE_F         EQU 7
 	const BILL_JOURNAL ; Bill's house
 	const KURT_JOURNAL ; Union Cave Pokémon Center
 	const MR_FUJI_JOURNAL ; Lavender Town Pokémon Center
+	const PROF_WILLOW_JOURNAL ; Snowtop Mountain Pokémon Center
 DEF NUM_POKEMON_JOURNALS EQU const_value

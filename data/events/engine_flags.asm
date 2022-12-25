@@ -236,40 +236,40 @@ EngineFlags:
 	engine_flag wSwarmFlags, 2 ; dunsparce swarm
 	engine_flag wSwarmFlags, 3 ; yanma swarm
 
-	engine_flag wPokemonJournals, 0  ; falkner
-	engine_flag wPokemonJournals, 1  ; bugsy
-	engine_flag wPokemonJournals, 2  ; whitney
-	engine_flag wPokemonJournals, 3  ; morty
-	engine_flag wPokemonJournals, 4  ; chuck
-	engine_flag wPokemonJournals, 5  ; jasmine
-	engine_flag wPokemonJournals, 6  ; pryce
-	engine_flag wPokemonJournals, 7  ; clair
-	engine_flag wPokemonJournals, 8  ; brock
-	engine_flag wPokemonJournals, 9  ; misty
-	engine_flag wPokemonJournals, 10 ; lt.surge
-	engine_flag wPokemonJournals, 11 ; erika
-	engine_flag wPokemonJournals, 12 ; janine
-	engine_flag wPokemonJournals, 13 ; sabrina
-	engine_flag wPokemonJournals, 14 ; blaine
-	engine_flag wPokemonJournals, 15 ; blue
-	engine_flag wPokemonJournals, 16 ; will
-	engine_flag wPokemonJournals, 17 ; koga
-	engine_flag wPokemonJournals, 18 ; bruno
-	engine_flag wPokemonJournals, 19 ; karen
-	engine_flag wPokemonJournals, 20 ; lance
-	engine_flag wPokemonJournals, 21 ; red
-	engine_flag wPokemonJournals, 22 ; green
-	engine_flag wPokemonJournals, 23 ; prof.oak
-	engine_flag wPokemonJournals, 24 ; prof.elm
-	engine_flag wPokemonJournals, 25 ; prof.ivy
-	engine_flag wPokemonJournals, 26 ; prof.westwood
-	engine_flag wPokemonJournals, 27 ; giovanni
-	engine_flag wPokemonJournals, 28 ; lorelei
-	engine_flag wPokemonJournals, 29 ; agatha
-	engine_flag wPokemonJournals, 30 ; bill
-	engine_flag wPokemonJournals, 31 ; kurt
-	engine_flag wPokemonJournals, 32 ; mr.fuji
-	engine_flag wPokemonJournals, 33 ; prof.willow
+	engine_flag wPokemonJournals, FALKNER_JOURNAL
+	engine_flag wPokemonJournals, BUGSY_JOURNAL
+	engine_flag wPokemonJournals, WHITNEY_JOURNAL
+	engine_flag wPokemonJournals, MORTY_JOURNAL
+	engine_flag wPokemonJournals, CHUCK_JOURNAL
+	engine_flag wPokemonJournals, JASMINE_JOURNAL
+	engine_flag wPokemonJournals, PRYCE_JOURNAL
+	engine_flag wPokemonJournals, CLAIR_JOURNAL
+	engine_flag wPokemonJournals, BROCK_JOURNAL
+	engine_flag wPokemonJournals, MISTY_JOURNAL
+	engine_flag wPokemonJournals, LT_SURGE_JOURNAL
+	engine_flag wPokemonJournals, ERIKA_JOURNAL
+	engine_flag wPokemonJournals, JANINE_JOURNAL
+	engine_flag wPokemonJournals, SABRINA_JOURNAL
+	engine_flag wPokemonJournals, BLAINE_JOURNAL
+	engine_flag wPokemonJournals, BLUE_JOURNAL
+	engine_flag wPokemonJournals, WILL_JOURNAL
+	engine_flag wPokemonJournals, KOGA_JOURNAL
+	engine_flag wPokemonJournals, BRUNO_JOURNAL
+	engine_flag wPokemonJournals, KAREN_JOURNAL
+	engine_flag wPokemonJournals, LANCE_JOURNAL
+	engine_flag wPokemonJournals, RED_JOURNAL
+	engine_flag wPokemonJournals, GREEN_JOURNAL
+	engine_flag wPokemonJournals, PROF_OAK_JOURNAL
+	engine_flag wPokemonJournals, PROF_ELM_JOURNAL
+	engine_flag wPokemonJournals, PROF_IVY_JOURNAL
+	engine_flag wPokemonJournals, PROF_WESTWOOD_JOURNAL
+	engine_flag wPokemonJournals, GIOVANNI_JOURNAL
+	engine_flag wPokemonJournals, LORELEI_JOURNAL
+	engine_flag wPokemonJournals, AGATHA_JOURNAL
+	engine_flag wPokemonJournals, BILL_JOURNAL
+	engine_flag wPokemonJournals, KURT_JOURNAL
+	engine_flag wPokemonJournals, MR_FUJI_JOURNAL
+	engine_flag wPokemonJournals, PROF_WILLOW_JOURNAL
 
 	engine_flag wStatusFlags3, 0 ; judge machine
 
