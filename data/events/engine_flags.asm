@@ -27,19 +27,17 @@ EngineFlags:
 
 	engine_flag wStatusFlags, STATUSFLAGS_POKEDEX_F
 	engine_flag wStatusFlags, STATUSFLAGS_UNOWN_DEX_F
-	                            ; flash
 	engine_flag wStatusFlags, STATUSFLAGS_CAUGHT_POKERUS_F
 	engine_flag wStatusFlags, STATUSFLAGS_ROCKET_SIGNAL_F
-	                            ; wild encounters on/off
 	engine_flag wStatusFlags, STATUSFLAGS_HALL_OF_FAME_F
-	engine_flag wStatusFlags, 7 ; delete
+	engine_flag wStatusFlags, 7 ; unused
 
 	engine_flag wStatusFlags2, STATUSFLAGS2_ROCKETS_IN_RADIO_TOWER_F
 	engine_flag wStatusFlags2, STATUSFLAGS2_SAFARI_GAME_F
 	engine_flag wStatusFlags2, STATUSFLAGS2_BUG_CONTEST_TIMER_F
 	engine_flag wStatusFlags2, STATUSFLAGS2_SEEN_SHAMOUTI_F
 	engine_flag wStatusFlags2, STATUSFLAGS2_BIKE_SHOP_CALL_F
-	engine_flag wStatusFlags2, 5 ; delete
+	engine_flag wStatusFlags2, 5 ; unused
 	engine_flag wStatusFlags2, STATUSFLAGS2_EXORCISED_LAV_RADIO_F
 	engine_flag wStatusFlags2, STATUSFLAGS2_ROCKETS_IN_MAHOGANY_F
 
@@ -112,12 +110,11 @@ EngineFlags:
 	engine_flag wVisitedSpawns, SPAWN_LAKE_OF_RAGE
 	engine_flag wVisitedSpawns, SPAWN_BLACKTHORN
 	engine_flag wVisitedSpawns, SPAWN_MT_SILVER
-	                               ; fast ship
 	engine_flag wVisitedSpawns, SPAWN_SHAMOUTI
 	engine_flag wVisitedSpawns, SPAWN_VALENCIA
 	engine_flag wVisitedSpawns, SPAWN_NAVEL
 
-	engine_flag wLuckyNumberShowFlag, LUCKYNUMBERSHOW_GAME_OVER_F ; lucky number show
+	engine_flag wLuckyNumberShowFlag, LUCKYNUMBERSHOW_GAME_OVER_F
 
 	engine_flag wDailyFlags, DAILYFLAGS_KURT_MAKING_BALLS_F
 	engine_flag wDailyFlags, DAILYFLAGS_DAILY_BUG_CONTEST_F
