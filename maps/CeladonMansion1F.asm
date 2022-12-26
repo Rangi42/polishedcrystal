@@ -39,30 +39,55 @@ CeladonMansionManagerScript:
 	yesorno
 	iffalse_jumpopenedtext .RefusedText
 	writetext .AcceptedText
-	; TODO
-	; para "Now, what flavor"
-	; line "does it like?"
-	;	Spicy/Sour/Dry/Bitter/Sweet
-	; para "And what flavor"
-	; line "does it dislike?"
-	;	Spicy/Sour/Dry/Bitter/Sweet
-	; para "Okay! Here's"
-	; line "your tea."
-	; para "One cup for you,"
-	; line "and one cup for"
-	; cont "<nickname>!"
-	;
-	; para "<nickname> looks"
-	; line "different somehow!"
-	;
-	; para "There's nothing"
-	; line "like hot mint tea."
-	; para "It can change a"
-	; line "#mon's very"
-	; cont "nature!"
+	promptbutton
+	special Special_MintTeaPickMon
+	iffalse_jumpopenedtext .RefusedText
+	ifequalfwd $1, .Egg
+	writetext .LikedFlavorText
+	loadmenu .MenuDataHeader
+	verticalmenu
+	closewindow
+	writemem wMintTeaLikedFlavor
+	writetext .DislikedFlavorText
+	loadmenu .MenuDataHeader
+	verticalmenu
+	closewindow
+	writemem wMintTeaDislikedFlavor
+	special Special_MintTeaChangeNature
+	iffalsefwd .Neutral
+	writetext .TeaIsReadyText
+	sjumpfwd .Done
+.Neutral
+	writetext .NeutralTeaText
+.Done
 	waitbutton
 	closetext
-	end
+	readmem wCurPartySpecies
+	pokepic 0
+	cry 0
+	waitsfx
+	closepokepic
+	opentext
+	writetext .MonLooksDifferentText
+	special PlayCurMonCry
+	waitbutton
+	jumpthisopenedtext
+
+	text "There's nothing"
+	line "like hot mint tea."
+
+	para "It can change a"
+	line "#mon's very"
+	cont "nature!"
+	done
+
+.Egg:
+	jumpthisopenedtext
+
+	text "Do you expect me"
+	line "to make that into"
+	cont "a tea egg?"
+	done
 
 .NoMintLeafText:
 	text "Oh, hello,"
@@ -110,16 +135,62 @@ CeladonMansionManagerScript:
 	line "#mon wants tea?"
 	done
 
-
-	text "My dear #mon"
-	line "keep me company,"
-
-	para "so I don't ever"
-	line "feel lonely."
-
-	para "Meowth even brings"
-	line "money home."
+.LikedFlavorText:
+	text "Now, what flavor"
+	line "does "
+	text_ram wStringBuffer1
+	cont "like?"
 	done
+
+.DislikedFlavorText:
+	text "And what flavor"
+	line "does it dislike?"
+	done
+
+.NeutralTeaText:
+	text "That's an unusual"
+	line "preference, but"
+	cont "I can brew it!"
+
+	para "One cup for you,"
+	line "and one cup for"
+	cont ""
+	text_ram wStringBuffer1
+	text "!"
+	done
+
+.TeaIsReadyText:
+	text "Okay! Here's"
+	line "your tea."
+
+	para "One cup for you,"
+	line "and one cup for"
+	cont ""
+	text_ram wStringBuffer1
+	text "!"
+	done
+
+.MonLooksDifferentText:
+	text_ram wStringBuffer1
+	text " looks"
+	line "different somehow!"
+	done
+
+.MenuDataHeader:
+	db MENU_BACKUP_TILES
+	menu_coords 0, 0, 9, 11
+	dw .MenuData2
+	db 1 ; default option
+
+.MenuData2:
+	db $81 ; flags
+	db 5 ; items
+	; this order is meaningful to calculate the new nature
+	db "Spicy@" ; atk
+	db "Sour@" ; def
+	db "Sweet@" ; spe
+	db "Dry@" ; sat
+	db "Bitter@" ; sdf
 
 CeladonMansion1FMeowthText:
 	text "Meowth: Meow!"

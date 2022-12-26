@@ -577,6 +577,12 @@ wMagikarpLengthMmHi:: db
 wMagikarpLengthMmLo:: db
 
 NEXTU
+; mint tea woman
+wMintTeaPartyMon:: db
+wMintTeaLikedFlavor:: db
+wMintTeaDislikedFlavor:: db
+
+NEXTU
 ; link data
 	ds 9
 wLinkBattleRNPreamble:: ds 4
