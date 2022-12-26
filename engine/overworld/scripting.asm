@@ -2435,11 +2435,11 @@ Script_endall:
 	jmp StopScript
 
 Script_halloffame:
-	ld hl, wGameTimerPaused
-	res GAME_TIMER_PAUSED_F, [hl]
+	xor a ; FALSE
+	ld [wGameTimerPaused], a
 	farcall HallOfFame
-	ld hl, wGameTimerPaused
-	set GAME_TIMER_PAUSED_F, [hl]
+	ld a, TRUE
+	ld [wGameTimerPaused], a
 	jr ReturnFromCredits
 
 Script_credits:

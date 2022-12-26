@@ -164,8 +164,6 @@ EngineFlags:
 	engine_flag wSwarmFlags, SWARMFLAGS_BUENAS_PASSWORD_2_F
 	engine_flag wSwarmFlags, SWARMFLAGS_GOLDENROD_DEPT_STORE_SALE_F
 
-	engine_flag wGameTimerPaused, GAME_TIMER_MOBILE_F
-
 	engine_flag wCelebiEvent, CELEBIEVENT_FOREST_IS_RESTLESS_F
 
 	; rematches

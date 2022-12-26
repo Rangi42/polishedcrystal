@@ -1288,9 +1288,7 @@ wTextDelayFrames:: db
 
 wGenericDelay:: db
 
-wGameTimerPaused::
-; bit 0
-	db
+wGameTimerPaused:: db
 
 wInputFlags::
 ; bits 7, 6, and 4 can be used to disable joypad input

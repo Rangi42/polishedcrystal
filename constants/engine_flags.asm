@@ -147,8 +147,6 @@
 ; wSwarmFlags
 	const ENGINE_BUENAS_PASSWORD_2
 	const ENGINE_GOLDENROD_DEPT_STORE_SALE_IS_ON
-; wGameTimerPaused
-	const ENGINE_GAME_TIMER_PAUSE
 ; wCelebiEvent
 	const ENGINE_HAVE_EXAMINED_GS_BALL
 ; wDailyRematchFlags
