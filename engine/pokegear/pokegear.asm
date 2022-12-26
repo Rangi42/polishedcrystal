@@ -81,7 +81,6 @@ PokeGear:
 	ld [wPokegearRadioChannelAddr], a
 	ld [wPokegearRadioChannelAddr + 1], a
 	ld [wDefaultSpawnpoint], a
-	call Pokegear_InitJumptableIndices
 	call InitPokegearTilemap
 	ld a, CGB_POKEGEAR_PALS
 	call GetCGBLayout
@@ -163,30 +162,17 @@ InitPokegearModeIndicatorArrow:
 	ret
 
 AnimatePokegearModeIndicatorArrow:
-	ld hl, wPokegearCard
-	ld e, [hl]
-	ld d, 0
-	ld hl, .XCoords
-	add hl, de
-	ld a, [hl]
+	ld a, [wPokegearCard]
+	swap a ; x coord = card id * $10
 	ld hl, SPRITEANIMSTRUCT_XOFFSET
 	add hl, bc
 	ld [hl], a
 	ret
 
-.XCoords:
-	db $00, $10, $20, $30
-
 TownMap_InitCursorAndPlayerIconPositions:
 	call GetCurrentLandmark
 	ld [wPokegearMapPlayerIconLandmark], a
 	ld [wPokegearMapCursorLandmark], a
-	ret
-
-Pokegear_InitJumptableIndices:
-	xor a ; CLOCK_CARD
-	ld [wJumptableIndex], a
-	ld [wPokegearCard], a
 	ret
 
 InitPokegearTilemap:
