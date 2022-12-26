@@ -2436,10 +2436,10 @@ Script_endall:
 
 Script_halloffame:
 	ld hl, wGameTimerPaused
-	res 0, [hl]
+	res GAME_TIMER_PAUSED_F, [hl]
 	farcall HallOfFame
 	ld hl, wGameTimerPaused
-	set 0, [hl]
+	set GAME_TIMER_PAUSED_F, [hl]
 	jr ReturnFromCredits
 
 Script_credits:
