@@ -44,9 +44,9 @@ RuggedRoadSouth_OverheadBridgeAsm:
 
 RuggedRoadSouth_UnderfootBridgeAsm:
 	changebridgeblock 14, 0, $aa, RUGGED_ROAD_SOUTH
-	changebridgeblock 16, 0, $e6, RUGGED_ROAD_SOUTH
-	changebridgeblock 18, 0, $e6, RUGGED_ROAD_SOUTH
-	changebridgeblock 20, 0, $e6, RUGGED_ROAD_SOUTH
+	changebridgeblock 16, 0, $fa, RUGGED_ROAD_SOUTH
+	changebridgeblock 18, 0, $fa, RUGGED_ROAD_SOUTH
+	changebridgeblock 20, 0, $fa, RUGGED_ROAD_SOUTH
 	changebridgeblock 22, 0, $ab, RUGGED_ROAD_SOUTH
 	jmp BufferScreen
 

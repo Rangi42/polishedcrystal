@@ -88,7 +88,7 @@ Buena:
 	checkflag ENGINE_BUENAS_PASSWORD_2
 	iftruefwd .PlayedAlready
 	readvar VAR_HOUR
-	ifless 18, .TooEarly
+	ifless EVE_HOUR, .TooEarly
 	checkflag ENGINE_BUENAS_PASSWORD
 	iffalsefwd .TuneIn
 	checkkeyitem BLUE_CARD

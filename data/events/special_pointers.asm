@@ -161,6 +161,8 @@ SpecialsPointers::
 	add_special GetHiddenGrottoContents
 	add_special EmptiedHiddenGrotto
 	add_special Special_HiddenPowerGuru
+	add_special Special_MintTeaPickMon
+	add_special Special_MintTeaChangeNature
 	add_special Special_GetOvercastIndex
 	add_special Special_SetCopycatPalette
 	add_special Special_CurBoxFullCheck

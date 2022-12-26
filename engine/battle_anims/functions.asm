@@ -5,96 +5,99 @@ DoBattleAnimFrame:
 	call StackJumpTable
 
 .Jumptable:
-	dw BattleAnimFunction_Null ; 00
-	dw BattleAnimFunction_01 ; 01
-	dw BattleAnimFunction_02 ; 02
-	dw BattleAnimFunction_03 ; 03
-	dw BattleAnimFunction_04 ; 04
-	dw BattleAnimFunction_ThrowFromPlayerToEnemy ; 05
-	dw BattleAnimFunction_ThrowFromPlayerToEnemyAndDisappear ; 06
-	dw BattleAnimFunction_07 ; 07
-	dw BattleAnimFunction_08 ; 08
-	dw BattleAnimFunction_09 ; 09
-	dw BattleAnimFunction_0A ; 0a
-	dw BattleAnimFunction_RazorLeaf ; 0b
-	dw BattleAnimFunction_0C ; 0c
-	dw BattleAnimFunction_0D ; 0d
-	dw BattleAnimFunction_0E ; 0e
-	dw BattleAnimFunction_0F ; 0f
-	dw BattleAnimFunction_10 ; 10
-	dw BattleAnimFunction_11 ; 11
-	dw BattleAnimFunction_PokeBall ; 12
-	dw BattleAnimFunction_PokeBallBlocked ; 13
-	dw BattleAnimFunction_14 ; 14
-	dw BattleAnimFunction_15 ; 15
-	dw BattleAnimFunction_16 ; 16
-	dw BattleAnimFunction_17 ; 17
-	dw BattleAnimFunction_18 ; 18
-	dw BattleAnimFunction_19 ; 19
-	dw BattleAnimFunction_1A ; 1a
-	dw BattleAnimFunction_1B ; 1b
-	dw BattleAnimFunction_1C ; 1c
-	dw BattleAnimFunction_1D ; 1d
-	dw BattleAnimFunction_MoveUp ; 1e
-	dw BattleAnimFunction_1F ; 1f
-	dw BattleAnimFunction_LeechSeed ; 20
-	dw BattleAnimFunction_21 ; 21
-	dw BattleAnimFunction_22 ; 22
-	dw BattleAnimFunction_23 ; 23
-	dw BattleAnimFunction_24 ; 24
-	dw BattleAnimFunction_25 ; 25
-	dw BattleAnimFunction_26 ; 26
-	dw BattleAnimFunction_27 ; 27
-	dw BattleAnimFunction_28 ; 28
-	dw BattleAnimFunction_SpiralDescent ; 29
-	dw BattleAnimFunction_PoisonGas ; 2a
-	dw BattleAnimFunction_Horn ; 2b
-	dw BattleAnimFunction_2C ; 2c
-	dw BattleAnimFunction_2D ; 2d
-	dw BattleAnimFunction_2E ; 2e
-	dw BattleAnimFunction_2F ; 2f
-	dw BattleAnimFunction_30 ; 30
-	dw BattleAnimFunction_31 ; 31
-	dw BattleAnimFunction_32 ; 32
-	dw BattleAnimFunction_33 ; 33
-	dw BattleAnimFunction_34 ; 34
-	dw BattleAnimFunction_35 ; 35
-	dw BattleAnimFunction_36 ; 36
-	dw BattleAnimFunction_37 ; 37
-	dw BattleAnimFunction_38 ; 38
-	dw BattleAnimFunction_39 ; 39
-	dw BattleAnimFunction_3A ; 3a
-	dw BattleAnimFunction_3B ; 3b
-	dw BattleAnimFunction_3C ; 3c
-	dw BattleAnimFunction_3D ; 3d
-	dw BattleAnimFunction_3E ; 3e
-	dw BattleAnimFunction_3F ; 3f
-	dw BattleAnimFunction_40 ; 40
-	dw BattleAnimFunction_41 ; 41
-	dw BattleAnimFunction_42 ; 42
-	dw BattleAnimFunction_43 ; 43
-	dw BattleAnimFunction_44 ; 44
-	dw BattleAnimFunction_45 ; 45
-	dw BattleAnimFunction_46 ; 46
-	dw BattleAnimFunction_47 ; 47
-	dw BattleAnimFunction_48 ; 48
-	dw BattleAnimFunction_49 ; 49
-	dw BattleAnimFunction_4A ; 4a
-	dw BattleAnimFunction_4B ; 4b
-	dw BattleAnimFunction_4C ; 4c
-	dw BattleAnimFunction_4D ; 4d
-	dw BattleAnimFunction_4E ; 4e
-	dw BattleAnimFunction_4F ; 4f
-	dw BattleAnimFunction_PauseThenRush ; 50
+; entries correspond to BATTLEANIMFUNC_* constants
+	table_width 2, DoBattleAnimFrame.Jumptable
+	dw BattleAnimFunction_Null
+	dw BattleAnimFunction_MoveFromUserToTarget
+	dw BattleAnimFunction_MoveFromUserToTargetAndDisappear
+	dw BattleAnimFunction_MoveInCircle
+	dw BattleAnimFunction_MoveWaveToTarget
+	dw BattleAnimFunction_ThrowFromPlayerToEnemy
+	dw BattleAnimFunction_ThrowFromPlayerToEnemyAndDisappear
+	dw BattleAnimFunction_Drop
+	dw BattleAnimFunction_MoveFromUserToTargetSpinAround
+	dw BattleAnimFunction_Shake
+	dw BattleAnimFunction_FireBlast
+	dw BattleAnimFunction_RazorLeaf
+	dw BattleAnimFunction_Bubble
+	dw BattleAnimFunction_Surf
+	dw BattleAnimFunction_Sing
+	dw BattleAnimFunction_WaterGun
+	dw BattleAnimFunction_Ember
+	dw BattleAnimFunction_Powder
+	dw BattleAnimFunction_PokeBall
+	dw BattleAnimFunction_PokeBallBlocked
+	dw BattleAnimFunction_Recover
+	dw BattleAnimFunction_ThunderWave
+	dw BattleAnimFunction_Clamp_Encore
+	dw BattleAnimFunction_Bite
+	dw BattleAnimFunction_SolarBeam
+	dw BattleAnimFunction_Gust
+	dw BattleAnimFunction_RazorWind
+	dw BattleAnimFunction_Kick
+	dw BattleAnimFunction_Absorb
+	dw BattleAnimFunction_Egg
+	dw BattleAnimFunction_MoveUp
+	dw BattleAnimFunction_Wrap
+	dw BattleAnimFunction_LeechSeed
+	dw BattleAnimFunction_Sound
+	dw BattleAnimFunction_ConfuseRay
+	dw BattleAnimFunction_Dizzy
+	dw BattleAnimFunction_Amnesia
+	dw BattleAnimFunction_FloatUp
+	dw BattleAnimFunction_Dig
+	dw BattleAnimFunction_String
+	dw BattleAnimFunction_Paralyzed
+	dw BattleAnimFunction_SpiralDescent
+	dw BattleAnimFunction_PoisonGas
+	dw BattleAnimFunction_Horn
+	dw BattleAnimFunction_Needle
+	dw BattleAnimFunction_PetalDance
+	dw BattleAnimFunction_ThiefPayday
+	dw BattleAnimFunction_AbsorbCircle
+	dw BattleAnimFunction_Bonemerang
+	dw BattleAnimFunction_Shiny
+	dw BattleAnimFunction_SkyAttack
+	dw BattleAnimFunction_GrowthSwordsDance
+	dw BattleAnimFunction_SmokeFlameWheel
+	dw BattleAnimFunction_PresentSmokescreen
+	dw BattleAnimFunction_StrengthSeismicToss
+	dw BattleAnimFunction_SpeedLine
+	dw BattleAnimFunction_Sludge
+	dw BattleAnimFunction_MetronomeHand
+	dw BattleAnimFunction_MetronomeSparkleSketch
+	dw BattleAnimFunction_Agility
+	dw BattleAnimFunction_SacredFire
+	dw BattleAnimFunction_SafeguardProtect
+	dw BattleAnimFunction_LockOnMindReader
+	dw BattleAnimFunction_Spikes
+	dw BattleAnimFunction_HealBellNotes
+	dw BattleAnimFunction_BatonPass
+	dw BattleAnimFunction_Conversion
+	dw BattleAnimFunction_EncoreBellyDrum
+	dw BattleAnimFunction_SwaggerMorningSun
+	dw BattleAnimFunction_HiddenPower
+	dw BattleAnimFunction_Curse
+	dw BattleAnimFunction_PerishSong
+	dw BattleAnimFunction_RapidSpin
+	dw BattleAnimFunction_BetaPursuit
+	dw BattleAnimFunction_RainSandstorm
+	dw BattleAnimFunction_AnimObjB0
+	dw BattleAnimFunction_PsychUp
+	dw BattleAnimFunction_AncientPower
+	dw BattleAnimFunction_RockSmash
+	dw BattleAnimFunction_Cotton
+	dw BattleAnimFunction_PauseThenRush
 	dw BattleAnimFunction_StraightDescent
-	dw BattleAnimFunction_52 ; 52
+	dw BattleAnimFunction_52
 	dw BattleAnimFunction_PowerGem
-	dw BattleAnimFunction_54 ; 54
+	dw BattleAnimFunction_54
 	dw BattleAnimFunction_Moon
 	dw BattleAnimFunction_PokeBall_BG
 	dw BattleAnimFunction_RadialMoveOut
 	dw BattleAnimFunction_RadialMoveOut_Slow
 	dw BattleAnimFunction_PowerUp
+	assert_table_length NUM_BATTLEANIMFUNCS
 
 BattleAnim_AnonJumptable:
 	ld hl, BATTLEANIMSTRUCT_JUMPTABLE_INDEX
@@ -149,7 +152,7 @@ BattleAnimFunction_ThrowFromPlayerToEnemy:
 	scf
 	ret
 
-BattleAnimFunction_04:
+BattleAnimFunction_MoveWaveToTarget:
 	ld hl, BATTLEANIMSTRUCT_XCOORD
 	add hl, bc
 	ld a, [hl]
@@ -186,7 +189,7 @@ endr
 	ld [hl], a
 	ret
 
-BattleAnimFunction_03:
+BattleAnimFunction_MoveInCircle:
 	call BattleAnim_AnonJumptable
 .anon_dw
 	dw .zero
@@ -232,7 +235,7 @@ BattleAnimFunction_03:
 	inc [hl]
 	ret
 
-BattleAnimFunction_01:
+BattleAnimFunction_MoveFromUserToTarget:
 	call BattleAnim_AnonJumptable
 .anon_dw
 	dw .zero
@@ -249,7 +252,7 @@ BattleAnimFunction_01:
 	ld a, [hl]
 	jmp BattleAnim_StepToTarget
 
-BattleAnimFunction_02:
+BattleAnimFunction_MoveFromUserToTargetAndDisappear:
 	ld hl, BATTLEANIMSTRUCT_XCOORD
 	add hl, bc
 	ld a, [hl]
@@ -440,7 +443,7 @@ GetBallAnimBGPal:
 	ld [hl], PAL_BATTLE_OB_GREEN
 	ret
 
-BattleAnimFunction_10:
+BattleAnimFunction_Ember:
 	call BattleAnim_AnonJumptable
 .anon_dw
 	dw .zero
@@ -475,7 +478,7 @@ BattleAnimFunction_10:
 	ld a, BATTLEANIMFRAMESET_0F
 	jmp ReinitBattleAnimFrameset
 
-BattleAnimFunction_07:
+BattleAnimFunction_Drop:
 	call BattleAnim_AnonJumptable
 .anon_dw
 	dw .zero
@@ -521,7 +524,7 @@ BattleAnimFunction_07:
 .done
 	jmp DeinitBattleAnimation
 
-BattleAnimFunction_08:
+BattleAnimFunction_MoveFromUserToTargetSpinAround:
 	call BattleAnim_AnonJumptable
 .anon_dw
 	dw .zero
@@ -623,7 +626,7 @@ BattleAnimFunction_08:
 	jr nz, .loop
 	ret
 
-BattleAnimFunction_09:
+BattleAnimFunction_Shake:
 	call BattleAnim_AnonJumptable
 .anon_dw
 	dw .zero
@@ -667,7 +670,7 @@ BattleAnimFunction_09:
 	ld [hl], a
 	ret
 
-BattleAnimFunction_0A:
+BattleAnimFunction_FireBlast:
 	call BattleAnim_AnonJumptable
 .anon_dw
 	dw .zero
@@ -936,10 +939,10 @@ Functioncd557:
 BattleAnimFunction_54:
 	call BattleAnim_AnonJumptable
 
-	dw BattleAnimFunction_4E.after_frameset
-	dw BattleAnimFunction_4E.one
+	dw BattleAnimFunction_RockSmash.after_frameset
+	dw BattleAnimFunction_RockSmash.one
 
-BattleAnimFunction_4E:
+BattleAnimFunction_RockSmash:
 	call BattleAnim_AnonJumptable
 .anon_dw
 	dw .zero
@@ -999,7 +1002,7 @@ BattleAnimFunction_4E:
 	ld [hl], e
 	ret
 
-BattleAnimFunction_0C:
+BattleAnimFunction_Bubble:
 	call BattleAnim_AnonJumptable
 .anon_dw
 	dw .zero
@@ -1082,7 +1085,7 @@ BattleAnimFunction_0C:
 	ld [hl], d
 	ret
 
-BattleAnimFunction_0D:
+BattleAnimFunction_Surf:
 	call BattleAnim_AnonJumptable
 .anon_dw
 	dw .zero
@@ -1164,7 +1167,7 @@ asm_cd6da:
 	ldh [hLYOverrideStart], a
 	ret
 
-BattleAnimFunction_0E:
+BattleAnimFunction_Sing:
 	call BattleAnim_AnonJumptable
 .anon_dw
 	dw Functioncd6ea
@@ -1196,7 +1199,7 @@ Functioncd6f7:
 	ld [hl], a
 	ret
 
-BattleAnimFunction_0F:
+BattleAnimFunction_WaterGun:
 	call BattleAnim_AnonJumptable
 .anon_dw
 	dw Functioncd725
@@ -1253,7 +1256,7 @@ Functioncd763:
 	ld a, BATTLEANIMFRAMESET_29
 	jmp ReinitBattleAnimFrameset
 
-BattleAnimFunction_11:
+BattleAnimFunction_Powder:
 	ld hl, BATTLEANIMSTRUCT_YOFFSET
 	add hl, bc
 	ld a, [hl]
@@ -1282,7 +1285,7 @@ BattleAnimFunction_11:
 	ld [hl], a
 	ret
 
-BattleAnimFunction_14:
+BattleAnimFunction_Recover:
 	call BattleAnim_AnonJumptable
 .anon_dw
 	dw Functioncd7ab
@@ -1346,7 +1349,7 @@ Functioncd7d2:
 	dec [hl]
 	ret
 
-BattleAnimFunction_15:
+BattleAnimFunction_ThunderWave:
 	call BattleAnim_AnonJumptable
 .anon_dw
 	dw DoNothing
@@ -1358,7 +1361,7 @@ Functioncd817:
 	ld a, BATTLEANIMFRAMESET_35
 	jmp ReinitBattleAnimFrameset
 
-BattleAnimFunction_16:
+BattleAnimFunction_Clamp_Encore:
 	call BattleAnim_AnonJumptable
 .anon_dw
 	dw Functioncd835
@@ -1435,7 +1438,7 @@ Functioncd893:
 	ld [hl], $1
 	ret
 
-BattleAnimFunction_17:
+BattleAnimFunction_Bite:
 	call BattleAnim_AnonJumptable
 .anon_dw
 	dw Functioncd8ab
@@ -1499,7 +1502,7 @@ Functioncd8f9:
 	ld [hl], $1
 	ret
 
-BattleAnimFunction_18:
+BattleAnimFunction_SolarBeam:
 	call BattleAnim_AnonJumptable
 .anon_dw
 	dw Functioncd907
@@ -1554,7 +1557,7 @@ Functioncd913:
 .asm_cd950
 	jmp DeinitBattleAnimation
 
-BattleAnimFunction_19:
+BattleAnimFunction_Gust:
 	call BattleAnim_AnonJumptable
 .anon_dw
 	dw Functioncd961
@@ -1670,7 +1673,7 @@ Functioncd99a:
 .GustOffsets:
 	db 8, 6, 5, 4, 5, 6, 8, 12, 16
 
-BattleAnimFunction_1C:
+BattleAnimFunction_Absorb:
 	ld hl, BATTLEANIMSTRUCT_XCOORD
 	add hl, bc
 	ld a, [hl]
@@ -1696,7 +1699,7 @@ BattleAnimFunction_1C:
 	jr nz, .asm_cda2c
 	ret
 
-BattleAnimFunction_1F:
+BattleAnimFunction_Wrap:
 	call BattleAnim_AnonJumptable
 .anon_dw
 	dw DoNothing
@@ -1811,7 +1814,7 @@ Functioncda8d:
 	dec [hl]
 	ret
 
-BattleAnimFunction_3F:
+BattleAnimFunction_Spikes:
 	call BattleAnim_AnonJumptable
 .anon_dw
 	dw Functioncdadf
@@ -1824,8 +1827,8 @@ Functioncdadf:
 	ld [hl], $40
 	ret
 
-BattleAnimFunction_1A:
-	call BattleAnimFunction_03
+BattleAnimFunction_RazorWind:
+	call BattleAnimFunction_MoveInCircle
 	ld hl, BATTLEANIMSTRUCT_VAR1
 	add hl, bc
 	ld a, [hl]
@@ -1833,7 +1836,7 @@ BattleAnimFunction_1A:
 	ld [hl], a
 	ret
 
-BattleAnimFunction_1B:
+BattleAnimFunction_Kick:
 	call BattleAnim_AnonJumptable
 .anon_dw
 	dw DoNothing
@@ -1994,7 +1997,7 @@ BattleAnimFunction_PowerUp:
 	ld [hl], d
 	ret
 
-BattleAnimFunction_1D:
+BattleAnimFunction_Egg:
 	call BattleAnim_AnonJumptable
 .anon_dw
 	dw Functioncdb9f
@@ -2296,7 +2299,7 @@ BattleAnimFunction_Moon:
 	dw Functionce330
 	dw Functionce34c
 
-BattleAnimFunction_21:
+BattleAnimFunction_Sound:
 	call BattleAnim_AnonJumptable
 .anon_dw
 	dw Functioncdcca
@@ -2361,7 +2364,7 @@ Functioncdced:
 	ld [hl], a
 	ret
 
-BattleAnimFunction_22:
+BattleAnimFunction_ConfuseRay:
 	call BattleAnim_AnonJumptable
 .anon_dw
 	dw Functioncdd31
@@ -2427,7 +2430,7 @@ Functioncdd4f:
 	inc [hl]
 	ret
 
-BattleAnimFunction_23:
+BattleAnimFunction_Dizzy:
 	call BattleAnim_AnonJumptable
 .anon_dw
 	dw Functioncdd97
@@ -2494,7 +2497,7 @@ Functioncddbc:
 .asm_cddf5
 	jmp ReinitBattleAnimFrameset
 
-BattleAnimFunction_24:
+BattleAnimFunction_Amnesia:
 	call BattleAnim_AnonJumptable
 .anon_dw
 	dw Functioncde02
@@ -2522,7 +2525,7 @@ Functioncde02:
 .AmnesiaOffsets:
 	db $ec, $f8, $00
 
-BattleAnimFunction_25:
+BattleAnimFunction_FloatUp:
 	ld hl, BATTLEANIMSTRUCT_VAR1
 	add hl, bc
 	ld a, [hl]
@@ -2551,7 +2554,7 @@ BattleAnimFunction_25:
 	ld [hl], e
 	ret
 
-BattleAnimFunction_26:
+BattleAnimFunction_Dig:
 	ld hl, BATTLEANIMSTRUCT_VAR1
 	add hl, bc
 	ld a, [hl]
@@ -2567,7 +2570,7 @@ BattleAnimFunction_26:
 	inc [hl]
 	ret
 
-BattleAnimFunction_27:
+BattleAnimFunction_String:
 	call BattleAnim_AnonJumptable
 .anon_dw
 	dw Functioncde72
@@ -2586,7 +2589,7 @@ Functioncde72:
 	add BATTLEANIMFRAMESET_6A
 	jmp ReinitBattleAnimFrameset
 
-BattleAnimFunction_28:
+BattleAnimFunction_Paralyzed:
 	call BattleAnim_AnonJumptable
 .anon_dw
 	dw Functioncde90
@@ -2686,7 +2689,7 @@ BattleAnimFunction_SpiralDescent:
 .delete
 	jmp DeinitBattleAnimation
 
-BattleAnimFunction_2D:
+BattleAnimFunction_PetalDance:
 	ld hl, BATTLEANIMSTRUCT_VAR1
 	add hl, bc
 	ld a, [hl]
@@ -2760,7 +2763,7 @@ Functioncdf60:
 .next
 	jmp BattleAnim_IncAnonJumptableIndex
 
-BattleAnimFunction_34:
+BattleAnimFunction_SmokeFlameWheel:
 	ld hl, BATTLEANIMSTRUCT_PARAM
 	add hl, bc
 	ld a, [hl]
@@ -2801,7 +2804,7 @@ BattleAnimFunction_34:
 .asm_cdfc7
 	jmp DeinitBattleAnimation
 
-BattleAnimFunction_3C:
+BattleAnimFunction_SacredFire:
 	ld hl, BATTLEANIMSTRUCT_PARAM
 	add hl, bc
 	ld a, [hl]
@@ -2843,7 +2846,7 @@ BattleAnimFunction_3C:
 .asm_ce007
 	jmp DeinitBattleAnimation
 
-BattleAnimFunction_35:
+BattleAnimFunction_PresentSmokescreen:
 	call BattleAnim_AnonJumptable
 .anon_dw
 	dw Functionce014
@@ -2957,7 +2960,7 @@ Functionce09e:
 	ld [hl], a
 	ret
 
-BattleAnimFunction_2C:
+BattleAnimFunction_Needle:
 	call BattleAnim_AnonJumptable
 .anon_dw
 	dw Functionce0ce
@@ -3003,7 +3006,7 @@ Functionce0f8:
 	ld a, [hl]
 	jmp BattleAnim_StepToTarget
 
-BattleAnimFunction_2E:
+BattleAnimFunction_ThiefPayday:
 	call BattleAnim_AnonJumptable
 .anon_dw
 	dw Functionce115
@@ -3053,7 +3056,7 @@ Functionce12a:
 	srl [hl]
 	ret
 
-BattleAnimFunction_2F:
+BattleAnimFunction_AbsorbCircle:
 	ld hl, BATTLEANIMSTRUCT_PARAM
 	add hl, bc
 	ld a, [hl]
@@ -3111,7 +3114,7 @@ BattleAnimFunction_2F:
 .asm_ce1ac
 	jmp DeinitBattleAnimation
 
-BattleAnimFunction_42:
+BattleAnimFunction_Conversion:
 	ld hl, BATTLEANIMSTRUCT_PARAM
 	add hl, bc
 	ld a, [hl]
@@ -3149,7 +3152,7 @@ BattleAnimFunction_42:
 	ret nz
 	jmp DeinitBattleAnimation
 
-BattleAnimFunction_30:
+BattleAnimFunction_Bonemerang:
 	call BattleAnim_AnonJumptable
 .anon_dw
 	dw Functionce1ee
@@ -3188,7 +3191,7 @@ Functionce1fb:
 	inc [hl]
 	ret
 
-BattleAnimFunction_31:
+BattleAnimFunction_Shiny:
 	call BattleAnim_AnonJumptable
 .anon_dw
 	dw Functionce22d
@@ -3216,7 +3219,7 @@ Functionce22d:
 	ld [hl], $f
 	ret
 
-BattleAnimFunction_32:
+BattleAnimFunction_SkyAttack:
 	call BattleAnim_AnonJumptable
 .anon_dw
 	dw Functionce260
@@ -3280,7 +3283,7 @@ Functionce29f:
 Unknown_ce2c4:
 	db $ff, $aa, $55, $aa
 
-BattleAnimFunction_33:
+BattleAnimFunction_GrowthSwordsDance:
 	ld hl, BATTLEANIMSTRUCT_PARAM
 	add hl, bc
 	ld a, [hl]
@@ -3310,7 +3313,7 @@ BattleAnimFunction_33:
 	dec [hl]
 	ret
 
-BattleAnimFunction_36:
+BattleAnimFunction_StrengthSeismicToss:
 	call BattleAnim_AnonJumptable
 .anon_dw
 	dw Functionce306
@@ -3380,7 +3383,7 @@ Functionce34c:
 .asm_ce35b
 	jmp DeinitBattleAnimation
 
-BattleAnimFunction_37:
+BattleAnimFunction_SpeedLine:
 	call BattleAnim_AnonJumptable
 .anon_dw
 	dw Functionce366
@@ -3409,7 +3412,7 @@ Functionce375:
 	dec [hl]
 	ret
 
-BattleAnimFunction_38:
+BattleAnimFunction_Sludge:
 	call BattleAnim_AnonJumptable
 .anon_dw
 	dw Functionce392
@@ -3441,7 +3444,7 @@ Functionce3ae:
 	dec [hl]
 	ret
 
-BattleAnimFunction_39:
+BattleAnimFunction_MetronomeHand:
 	ld hl, BATTLEANIMSTRUCT_VAR1
 	add hl, bc
 	ld a, [hl]
@@ -3461,7 +3464,7 @@ BattleAnimFunction_39:
 	ld [hl], a
 	ret
 
-BattleAnimFunction_3A:
+BattleAnimFunction_MetronomeSparkleSketch:
 	ld hl, BATTLEANIMSTRUCT_YOFFSET
 	add hl, bc
 	ld a, [hl]
@@ -3488,7 +3491,7 @@ BattleAnimFunction_3A:
 	inc [hl]
 	ret
 
-BattleAnimFunction_3B:
+BattleAnimFunction_Agility:
 	call BattleAnim_AnonJumptable
 .anon_dw
 	dw Functionce406
@@ -3503,7 +3506,7 @@ Functionce406:
 	ld [hl], a
 	ret
 
-BattleAnimFunction_3D:
+BattleAnimFunction_SafeguardProtect:
 	ld hl, BATTLEANIMSTRUCT_PARAM
 	add hl, bc
 	ld a, [hl]
@@ -3527,7 +3530,7 @@ BattleAnimFunction_3D:
 	inc [hl]
 	ret
 
-BattleAnimFunction_3E:
+BattleAnimFunction_LockOnMindReader:
 	call BattleAnim_AnonJumptable
 .anon_dw
 	dw Functionce443
@@ -3590,7 +3593,7 @@ Functionce490:
 	ret nz
 	jmp DeinitBattleAnimation
 
-BattleAnimFunction_40:
+BattleAnimFunction_HealBellNotes:
 	call BattleAnim_AnonJumptable
 .anon_dw
 	dw Functionce4a3
@@ -3631,7 +3634,7 @@ Functionce4b0:
 .asm_ce4d8
 	jmp DeinitBattleAnimation
 
-BattleAnimFunction_41:
+BattleAnimFunction_BatonPass:
 	ld hl, BATTLEANIMSTRUCT_PARAM
 	add hl, bc
 	ld a, [hl]
@@ -3661,7 +3664,7 @@ BattleAnimFunction_41:
 	srl [hl]
 	ret
 
-BattleAnimFunction_43:
+BattleAnimFunction_EncoreBellyDrum:
 	ld hl, BATTLEANIMSTRUCT_VAR1
 	add hl, bc
 	ld a, [hl]
@@ -3690,7 +3693,7 @@ BattleAnimFunction_43:
 .asm_ce52e
 	jmp DeinitBattleAnimation
 
-BattleAnimFunction_44:
+BattleAnimFunction_SwaggerMorningSun:
 	ld hl, BATTLEANIMSTRUCT_PARAM
 	add hl, bc
 	ld e, [hl]
@@ -3719,7 +3722,7 @@ BattleAnimFunction_44:
 	ld [hl], a
 	ret
 
-BattleAnimFunction_45:
+BattleAnimFunction_HiddenPower:
 	call BattleAnim_AnonJumptable
 .anon_dw
 	dw Functionce564
@@ -3758,7 +3761,7 @@ Functionce577:
 asm_ce58f:
 	jmp Functionce6f1
 
-BattleAnimFunction_46:
+BattleAnimFunction_Curse:
 	call BattleAnim_AnonJumptable
 .anon_dw
 	dw DoNothing
@@ -3779,7 +3782,7 @@ Functionce59a:
 	inc [hl]
 	ret
 
-BattleAnimFunction_47:
+BattleAnimFunction_PerishSong:
 	ld d, $50
 	ld hl, BATTLEANIMSTRUCT_PARAM
 	add hl, bc
@@ -3806,7 +3809,7 @@ BattleAnimFunction_47:
 	ld [hl], a
 	ret
 
-BattleAnimFunction_48:
+BattleAnimFunction_RapidSpin:
 	ld hl, BATTLEANIMSTRUCT_YOFFSET
 	add hl, bc
 	ld a, [hl]
@@ -3820,7 +3823,7 @@ endr
 .disappear
 	jmp DeinitBattleAnimation
 
-BattleAnimFunction_49:
+BattleAnimFunction_BetaPursuit:
 	call BattleAnim_AnonJumptable
 .anon_dw
 	dw Functionce5f9
@@ -3865,7 +3868,7 @@ rept 4
 endr
 	ret
 
-BattleAnimFunction_4A:
+BattleAnimFunction_RainSandstorm:
 	call BattleAnim_AnonJumptable
 .anon_dw
 	dw Functionce63a
@@ -3931,7 +3934,7 @@ Functionce672:
 	ld [hl], a
 	ret
 
-BattleAnimFunction_4B:
+BattleAnimFunction_AnimObjB0:
 	ld hl, BATTLEANIMSTRUCT_XCOORD
 	add hl, bc
 	ld d, [hl]
@@ -3962,7 +3965,7 @@ BattleAnimFunction_4B:
 	ld [hl], e
 	ret
 
-BattleAnimFunction_4C:
+BattleAnimFunction_PsychUp:
 	ld d, $18
 	ld hl, BATTLEANIMSTRUCT_PARAM
 	add hl, bc
@@ -3970,7 +3973,7 @@ BattleAnimFunction_4C:
 	inc [hl]
 	jr Functionce6f1
 
-BattleAnimFunction_4F:
+BattleAnimFunction_Cotton:
 	ld d, $18
 	ld hl, BATTLEANIMSTRUCT_VAR2
 	add hl, bc
@@ -3999,7 +4002,7 @@ Functionce6f1:
 	ld [hl], a
 	ret
 
-BattleAnimFunction_4D:
+BattleAnimFunction_AncientPower:
 	ld hl, BATTLEANIMSTRUCT_VAR1
 	add hl, bc
 	ld a, [hl]

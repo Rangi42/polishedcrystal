@@ -688,31 +688,8 @@ Special_HyperTrain:
 	or d
 	or [hl]
 	ld [hl], a
-	ld b, a
 
-	; Recalculate stats.
-	push bc
-	ld a, MON_SPECIES
-	call GetPartyParamLocationAndValue
-	ld [wCurSpecies], a
-	ld a, MON_FORM
-	call GetPartyParamLocationAndValue
-	ld [wCurForm], a
-	call GetBaseData
-	pop bc
-
-	ld a, MON_LEVEL
-	call GetPartyParamLocationAndValue
-	ld [wCurPartyLevel], a
-
-	ld a, MON_MAXHP
-	call GetPartyParamLocationAndValue
-	push hl
-	ld a, MON_EVS - 1
-	call GetPartyParamLocationAndValue
-	pop de
-	predef CalcPkmnStats
-
+	call RecalculatePartyMonStats
 	ld a, 1
 	jr .return
 
@@ -778,6 +755,35 @@ Special_HyperTrain:
 	line "already hyped up"
 	cont "in that stat!"
 	prompt
+
+RecalculatePartyMonStats:
+	ld a, MON_SPECIES
+	call GetPartyParamLocationAndValue
+	ld [wCurSpecies], a
+	ld a, MON_FORM
+	call GetPartyParamLocationAndValue
+	ld [wCurForm], a
+	call GetBaseData
+
+	ld a, MON_LEVEL
+	call GetPartyParamLocationAndValue
+	ld [wCurPartyLevel], a
+
+	ld a, [wCurPartyMon]
+	ld hl, wPartyMon1HyperTraining
+	call SkipNames
+	ld a, [hl]
+	ld b, a ; b = hyper training
+
+	ld a, MON_MAXHP ; de = pointer to stats
+	call GetPartyParamLocationAndValue
+	push hl
+	ld a, MON_EVS - 1 ; hl = pointer to EVs - 1
+	call GetPartyParamLocationAndValue
+	pop de
+
+	; uses b, de, hl
+	predef_jump CalcPkmnStats
 
 GetLastPartyMon:
 	ld a, [wPartyCount]

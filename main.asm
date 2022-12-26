@@ -14,6 +14,7 @@ INCLUDE "engine/events/shiny_ditto.asm"
 INCLUDE "engine/events/shuckle.asm"
 INCLUDE "engine/events/bills_grandfather.asm"
 INCLUDE "engine/events/hidden_power_guru.asm"
+INCLUDE "engine/events/mint_tea.asm"
 INCLUDE "engine/events/haircut_etc.asm"
 
 

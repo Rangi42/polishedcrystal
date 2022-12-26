@@ -365,7 +365,7 @@ DEF DAYCARELADY_ACTIVE_F         EQU 7
 	const SABRINA_JOURNAL ; Saffron Pokémon Center
 	const BLAINE_JOURNAL ; Cinnabar Pokémon Center
 	const BLUE_JOURNAL ; Viridian Pokémon Center
-	const WILL_JOURNAL ; Earl's Pokémon Academy
+	const WILL_JOURNAL ; Mahogany Souvenir Shop
 	const KOGA_JOURNAL ; Safari Zone rest houses
 	const BRUNO_JOURNAL ; Pokémon Trainer Fan Club
 	const KAREN_JOURNAL ; Mt. Moon Pokémon Center
@@ -382,4 +382,11 @@ DEF DAYCARELADY_ACTIVE_F         EQU 7
 	const BILL_JOURNAL ; Bill's house
 	const KURT_JOURNAL ; Union Cave Pokémon Center
 	const MR_FUJI_JOURNAL ; Lavender Town Pokémon Center
+	const PROF_WILLOW_JOURNAL ; Snowtop Mountain Pokémon Center
+	const STEVEN_JOURNAL ; Pewter Museum
+	const CYNTHIA_JOURNAL ; Pewter Museum (TODO: move to Goldenrod Museum)
+	const WALKER_JOURNAL ; Earl's Pokémon Academy
+	const KIYO_JOURNAL ; Viridian schoolhouse
+	const PALMER_JOURNAL ; Battle Tower
+	const THORTON_JOURNAL ; Battle Factory
 DEF NUM_POKEMON_JOURNALS EQU const_value
