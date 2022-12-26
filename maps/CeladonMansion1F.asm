@@ -47,11 +47,13 @@ CeladonMansionManagerScript:
 	loadmenu .MenuDataHeader
 	verticalmenu
 	closewindow
+	iffalse_jumpopenedtext .RefusedText
 	writemem wMintTeaLikedFlavor
 	writetext .DislikedFlavorText
 	loadmenu .MenuDataHeader
 	verticalmenu
 	closewindow
+	iffalse_jumpopenedtext .RefusedText
 	writemem wMintTeaDislikedFlavor
 	special Special_MintTeaChangeNature
 	iffalsefwd .Neutral
@@ -62,6 +64,7 @@ CeladonMansionManagerScript:
 .Done
 	waitbutton
 	closetext
+	takeitem MINT_LEAF
 	readmem wCurPartySpecies
 	pokepic 0
 	cry 0
@@ -183,7 +186,7 @@ CeladonMansionManagerScript:
 	db 1 ; default option
 
 .MenuData2:
-	db $81 ; flags
+	db $80 ; flags
 	db 5 ; items
 	; this order is meaningful to calculate the new nature
 	db "Spicy@" ; atk
