@@ -1624,21 +1624,20 @@ TownMapBubble:
 GetMapCursorCoordinates:
 	ld a, [wTownMapPlayerIconLandmark]
 	ld l, a
-	ld h, $0
+	ld h, 0
 	add hl, hl
 	ld de, Flypoints
 	add hl, de
 	ld e, [hl]
 	farcall GetLandmarkCoords
-	ld a, [wTownMapCursorCoordinates]
-	ld c, a
-	ld a, [wTownMapCursorCoordinates + 1]
-	ld b, a
-	ld hl, $4
+	ld hl, wTownMapCursorCoordinates
+	ld a, [hli]
+	ld h, [hl]
+	ld l, a
+	ld bc, 4
 	add hl, bc
 	ld [hl], e
-	ld hl, $5
-	add hl, bc
+	inc hl
 	ld [hl], d
 	ret
 
