@@ -285,7 +285,7 @@ StoreSwarmMapIndices::
 Special_ResetLuckyNumberShowFlag:
 	farcall RestartDailyResetTimer
 	ld hl, wLuckyNumberShowFlag
-	res 0, [hl]
+	res LUCKYNUMBERSHOW_GAME_OVER_F, [hl]
 	farjp LoadOrRegenerateLuckyIDNumber
 
 SpecialSnorlaxAwake:

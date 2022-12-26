@@ -5,7 +5,7 @@ MainMenu:
 	call GetCGBLayout
 	call SetPalettes
 	ld hl, wGameTimerPaused
-	res 0, [hl]
+	res GAME_TIMER_PAUSED_F, [hl]
 	call MainMenu_GetWhichMenu
 	ld [wWhichIndexSet], a
 	call MainMenu_PrintCurrentTimeAndDay

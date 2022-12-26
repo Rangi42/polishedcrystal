@@ -1,8 +1,30 @@
+; Pokégear cards
 	const_def
-	const CLOCK_CARD
-	const MAP_CARD
-	const PHONE_CARD
-	const RADIO_CARD
+	const POKEGEARCARD_CLOCK ; 0
+	const POKEGEARCARD_MAP   ; 1
+	const POKEGEARCARD_PHONE ; 2
+	const POKEGEARCARD_RADIO ; 3
+DEF NUM_POKEGEAR_CARDS EQU const_value
+
+DEF PHONE_DISPLAY_HEIGHT EQU 4
+
+; PokegearJumptable.Jumptable indexes
+	const_def
+	const POKEGEARSTATE_CLOCKINIT       ; 0
+	const POKEGEARSTATE_CLOCKJOYPAD     ; 1
+	const POKEGEARSTATE_MAPCHECKREGION  ; 2
+	const POKEGEARSTATE_JOHTOMAPINIT    ; 3
+	const POKEGEARSTATE_JOHTOMAPJOYPAD  ; 4
+	const POKEGEARSTATE_KANTOMAPINIT    ; 5
+	const POKEGEARSTATE_KANTOMAPJOYPAD  ; 6
+	const POKEGEARSTATE_ORANGEMAPINIT   ; 7
+	const POKEGEARSTATE_ORANGEMAPJOYPAD ; 8
+	const POKEGEARSTATE_PHONEINIT       ; 9
+	const POKEGEARSTATE_PHONEJOYPAD     ; a
+	const POKEGEARSTATE_MAKEPHONECALL   ; b
+	const POKEGEARSTATE_FINISHPHONECALL ; c
+	const POKEGEARSTATE_RADIOINIT       ; d
+	const POKEGEARSTATE_RADIOJOYPAD     ; e
 
 PokeGear:
 	ld hl, wOptions1
@@ -71,9 +93,9 @@ PokeGear:
 	ldh [rLCDC], a
 	call TownMap_InitCursorAndPlayerIconPositions
 	xor a
-	ld [wJumptableIndex], a
-	ld [wPokegearCard], a
-	ld [wPokegearMapRegion], a
+	ld [wJumptableIndex], a ; POKEGEARSTATE_CLOCKINIT
+	ld [wPokegearCard], a ; POKEGEARCARD_CLOCK
+	ld [wPokegearMapRegion], a ; JOHTO_REGION
 	ld [wPokegearPhoneScrollPosition], a
 	ld [wPokegearPhoneCursorPosition], a
 	ld [wPokegearPhoneSelectedPerson], a
@@ -196,7 +218,7 @@ InitPokegearTilemap:
 	call Pokegear_FinishTilemap
 	call TownMapPals
 	ld a, [wPokegearCard]
-	cp MAP_CARD
+	cp POKEGEARCARD_MAP
 	jr nz, .not_town_map
 	ld a, [wJumptableIndex]
 	cp 3 ; Johto
@@ -317,13 +339,13 @@ Pokegear_FinishTilemap:
 	rst ByteFill
 	ld de, wPokegearFlags
 	ld a, [de]
-	bit 0, a
+	bit POKEGEAR_MAP_CARD_F, a
 	call nz, .PlaceMapIcon
 	ld a, [de]
-	bit 2, a
+	bit POKEGEAR_PHONE_CARD_F, a
 	call nz, .PlacePhoneIcon
 	ld a, [de]
-	bit 1, a
+	bit POKEGEAR_RADIO_CARD_F, a
 	call nz, .PlaceRadioIcon
 	hlcoord 0, 0
 	ld a, $56
@@ -395,23 +417,23 @@ PokegearClock_Joypad:
 	and D_RIGHT
 	ret z
 	ld a, [wPokegearFlags]
-	bit 0, a
+	bit POKEGEAR_MAP_CARD_F, a
 	jr z, .no_map_card
-	lb bc, MAP_CARD, $2
+	lb bc, POKEGEARCARD_MAP, POKEGEARSTATE_MAPCHECKREGION
 	jr .done
 
 .no_map_card
 	ld a, [wPokegearFlags]
-	bit 2, a
+	bit POKEGEAR_PHONE_CARD_F, a
 	jr z, .no_phone_card
-	lb bc, PHONE_CARD, $9
+	lb bc, POKEGEARCARD_PHONE, POKEGEARSTATE_PHONEINIT
 	jr .done
 
 .no_phone_card
 	ld a, [wPokegearFlags]
-	bit 1, a
+	bit POKEGEAR_RADIO_CARD_F, a
 	ret z
-	lb bc, RADIO_CARD, $d
+	lb bc, POKEGEARCARD_RADIO, POKEGEARSTATE_RADIOINIT
 .done
 	jmp Pokegear_SwitchPage
 
@@ -461,7 +483,7 @@ PokegearMap_CheckRegion:
 	sbc -5
 	jr .done
 .orange
-	ld a, 7
+	ld a, POKEGEARSTATE_ORANGEMAPINIT
 .done
 	ld [wJumptableIndex], a
 	jmp ExitPokegearRadio_HandleMusic
@@ -520,20 +542,20 @@ PokegearMap_ContinueMap:
 
 .right
 	ld a, [wPokegearFlags]
-	bit 2, a
+	bit POKEGEAR_PHONE_CARD_F, a
 	jr z, .no_phone
-	lb bc, PHONE_CARD, $9
+	lb bc, POKEGEARCARD_PHONE, POKEGEARSTATE_PHONEINIT
 	jr .done
 
 .no_phone
 	ld a, [wPokegearFlags]
-	bit 1, a
+	bit POKEGEAR_RADIO_CARD_F, a
 	ret z
-	lb bc, RADIO_CARD, $d
+	lb bc, POKEGEARCARD_RADIO, POKEGEARSTATE_RADIOINIT
 	jr .done
 
 .left
-	lb bc, CLOCK_CARD, $0
+	lb bc, POKEGEARCARD_CLOCK, POKEGEARSTATE_CLOCKINIT
 .done
 	jmp Pokegear_SwitchPage
 
@@ -732,7 +754,7 @@ TownMap_GetJohtoLandmarkLimits:
 TownMap_GetKantoLandmarkLimits:
 	lb de, ROUTE_28, ROUTE_27
 	ld a, [wStatusFlags]
-	bit 6, a
+	bit STATUSFLAGS_HALL_OF_FAME_F, a
 	ret z
 	ld e, PALLET_TOWN
 	ret
@@ -773,20 +795,20 @@ PokegearRadio_Joypad:
 
 .left
 	ld a, [wPokegearFlags]
-	bit 2, a
+	bit POKEGEAR_PHONE_CARD_F, a
 	jr z, .no_phone
-	lb bc, PHONE_CARD, $9
+	lb bc, POKEGEARCARD_PHONE, POKEGEARSTATE_PHONEINIT
 	jr Pokegear_SwitchPage
 
 .no_phone
 	ld a, [wPokegearFlags]
-	bit 0, a
+	bit POKEGEAR_MAP_CARD_F, a
 	jr z, .no_map
-	lb bc, MAP_CARD, $2
+	lb bc, POKEGEARCARD_MAP, POKEGEARSTATE_MAPCHECKREGION
 	jr Pokegear_SwitchPage
 
 .no_map
-	lb bc, CLOCK_CARD, $0
+	lb bc, POKEGEARCARD_CLOCK, POKEGEARSTATE_CLOCKINIT
 	jr Pokegear_SwitchPage
 
 .cancel
@@ -977,7 +999,7 @@ RadioChannels:
 	call .InJohto
 	jr c, NoRadioStation
 	ld a, [wPokegearFlags]
-	bit 3, a
+	bit POKEGEAR_EXPN_CARD_F, a
 	jr z, NoRadioStation
 	jmp LoadStation_PlacesAndPeople
 
@@ -985,7 +1007,7 @@ RadioChannels:
 	call .InJohto
 	jr c, NoRadioStation
 	ld a, [wPokegearFlags]
-	bit 3, a
+	bit POKEGEAR_EXPN_CARD_F, a
 	jr z, NoRadioStation
 	jmp LoadStation_LetsAllSing
 
@@ -993,14 +1015,14 @@ RadioChannels:
 	call .InJohto
 	jr c, NoRadioStation
 	ld a, [wPokegearFlags]
-	bit 3, a
+	bit POKEGEAR_EXPN_CARD_F, a
 	jr z, NoRadioStation
 	jmp LoadStation_PokeFluteRadio
 
 .EvolutionRadio:
 ; This station airs in the Lake of Rage area when Rocket are still in Mahogany.
 	ld a, [wStatusFlags]
-	bit 4, a
+	bit STATUSFLAGS_ROCKET_SIGNAL_F, a
 	jr z, NoRadioStation
 	ld a, [wPokegearMapPlayerIconLandmark]
 	cp MAHOGANY_TOWN
@@ -1070,7 +1092,7 @@ LoadStation_LuckyChannel:
 LoadStation_BuenasPassword:
 	ld de, EmptyString
 	ld a, [wStatusFlags2]
-	bit 0, a ; ENGINE_ROCKETS_IN_RADIO_TOWER
+	bit STATUSFLAGS2_ROCKETS_IN_RADIO_TOWER_F, a
 	jr z, .ok
 	ld de, BuenasPasswordName
 .ok

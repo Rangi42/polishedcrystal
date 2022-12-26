@@ -608,7 +608,7 @@ AnimateFarawayWaterTile:
 
 ForestTreeLeftAnimation:
 	ld a, [wCelebiEvent]
-	bit 2, a
+	bit CELEBIEVENT_FOREST_IS_RESTLESS_F, a
 	ret z
 
 	ld hl, sp+$0
@@ -632,7 +632,7 @@ ForestTreeLeftAnimation:
 
 ForestTreeRightAnimation:
 	ld a, [wCelebiEvent]
-	bit 2, a
+	bit CELEBIEVENT_FOREST_IS_RESTLESS_F, a
 	ret z
 
 	ld hl, sp+$0
@@ -656,7 +656,7 @@ ForestTreeRightAnimation:
 
 ForestTreeLeftAnimation2:
 	ld a, [wCelebiEvent]
-	bit 2, a
+	bit CELEBIEVENT_FOREST_IS_RESTLESS_F, a
 	ret z
 
 	ld hl, sp+$0
@@ -681,7 +681,7 @@ ForestTreeLeftAnimation2:
 
 ForestTreeRightAnimation2:
 	ld a, [wCelebiEvent]
-	bit 2, a
+	bit CELEBIEVENT_FOREST_IS_RESTLESS_F, a
 	ret z
 
 	ld hl, sp+$0

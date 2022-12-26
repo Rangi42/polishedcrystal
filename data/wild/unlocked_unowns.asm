@@ -6,17 +6,20 @@ MACRO unown_set
 ENDM
 
 UnlockedUnownLetterSets:
-	dw .Set1
-	dw .Set2
-	dw .Set3
-	dw .Set4
+; entries correspond to UNLOCKED_UNOWNS_* constants
+	table_width 2, UnlockedUnownLetterSets
+	dw .Set_A_J
+	dw .Set_K_Q
+	dw .Set_R_W
+	dw .Set_X_Question
+	assert_table_length NUM_UNOWN_SETS
 .End
 
-.Set1:
+.Set_A_J:
 	unown_set A, B, C, D, E, F, G, H, I, J
-.Set2:
+.Set_K_Q:
 	unown_set K, L, M, N, O, P, Q
-.Set3:
+.Set_R_W:
 	unown_set R, S, T, U, V, W
-.Set4:
+.Set_X_Question:
 	unown_set X, Y, Z, EXCLAMATION, QUESTION
