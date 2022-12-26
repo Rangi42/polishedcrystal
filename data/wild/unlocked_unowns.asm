@@ -12,7 +12,7 @@ UnlockedUnownLetterSets:
 	dw .Set_K_Q
 	dw .Set_R_W
 	dw .Set_X_Question
-	assert_table_length NUM_UNOWN_SETS
+	assert_table_length NUM_UNLOCKED_UNOWN_SETS
 .End
 
 .Set_A_J:

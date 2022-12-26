@@ -452,7 +452,7 @@ Continue_LoadMenuHeader:
 	ldh [hBGMapMode], a
 	ld hl, .MenuDataHeader_Dex
 	ld a, [wStatusFlags]
-	bit STATUSFLAGS_POKEDEX_F, a ; pokedex
+	bit STATUSFLAGS_POKEDEX_F, a
 	jr nz, .pokedex_header
 	ld hl, .MenuDataHeader_NoDex
 

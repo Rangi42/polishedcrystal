@@ -120,7 +120,7 @@ EngineFlags:
 	engine_flag wDailyFlags, DAILYFLAGS_DAILY_BUG_CONTEST_F
 	engine_flag wDailyFlags, DAILYFLAGS_FISH_SWARM_F
 	engine_flag wDailyFlags, DAILYFLAGS_VALERIE_MORNING_WALK_F
-	engine_flag wDailyFlags, 4 ; daily unused
+	engine_flag wDailyFlags, 4 ; unused
 	engine_flag wDailyFlags, DAILYFLAGS_GOT_SHUCKIE_TODAY_F
 	engine_flag wDailyFlags, DAILYFLAGS_GOLDENROD_UNDERGROUND_MERCHANT_CLOSED_F
 	engine_flag wDailyFlags, DAILYFLAGS_FOUGHT_IN_TRAINER_HALL_TODAY_F
@@ -149,8 +149,8 @@ EngineFlags:
 	engine_flag wDailyFlags4, DAILYFLAGS4_BOUGHT_MOOMOO_MILK_F
 	engine_flag wDailyFlags4, DAILYFLAGS4_CHANGED_TRENDY_PHRASE_F
 	engine_flag wDailyFlags4, DAILYFLAGS4_ALL_HIDDEN_GROTTOES_F
-	engine_flag wDailyFlags4, 6 ; daily unused
-	engine_flag wDailyFlags4, 7 ; daily unused
+	engine_flag wDailyFlags4, 6 ; unused
+	engine_flag wDailyFlags4, 7 ; unused
 
 	engine_flag wWeeklyFlags, WEEKLYFLAGS_MT_MOON_SQUARE_CLEFAIRY_F
 	engine_flag wWeeklyFlags, WEEKLYFLAGS_UNION_CAVE_LAPRAS_F
