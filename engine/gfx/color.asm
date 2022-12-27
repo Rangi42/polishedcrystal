@@ -763,6 +763,28 @@ LoadPartyMonPalette:
 	pop hl
 	jmp VaryColorsByDVs
 
+LoadTempMonPalette:
+	push de
+	; bc = personality
+	ld bc, wTempMonPersonality
+	; a = species
+	ld a, [wCurPartySpecies]
+	; hl = palette
+	call GetMonNormalOrShinyPalettePointer
+	; load palette in de (set by caller)
+	ld bc, 4
+	call FarCopyColorWRAM
+	; hl = DVs
+	ld hl, wTempMonDVs
+	ld a, [wCurPartySpecies]
+	ld c, a
+	ld a, [wCurForm]
+	ld b, a
+	; Vary colors by DVs
+	call CopyDVsToColorVaryDVs
+	pop hl
+	jmp VaryColorsByDVs
+
 LoadTrainerPalette:
 	; a = class
 	ld a, [wTrainerClass]
