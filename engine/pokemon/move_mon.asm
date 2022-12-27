@@ -1086,6 +1086,8 @@ GivePoke::
 	ld d, PARTYMON
 	jr nc, .added
 	call .SetUpBoxMon ; d = BOXMON if nc
+	ld a, TEMPMON
+	ld [wMonType], a
 	jmp c, .FailedToGiveMon
 
 .added
