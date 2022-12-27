@@ -2206,7 +2206,7 @@ WinTrainerBattle:
 	pop af
 	jr nc, .KeepItAll
 	ld a, [wMomSavingMoney]
-	and $7
+	and MOM_SAVING_MONEY_MASK
 	jr z, .KeepItAll
 	ld hl, .SentToMomTexts
 	dec a

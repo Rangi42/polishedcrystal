@@ -406,9 +406,8 @@ FinishContinueFunction:
 	xor a
 	ld [wDontPlayMapMusicOnReload], a
 	ld [wLinkMode], a
-	ld hl, wGameTimerPaused
-	set 0, [hl]
-	res 7, [hl]
+	inc a ; TRUE
+	ld [wGameTimerPaused], a
 	ld hl, wEnteredMapFromContinue
 	set 1, [hl]
 	farcall OverworldLoop
@@ -452,7 +451,7 @@ Continue_LoadMenuHeader:
 	ldh [hBGMapMode], a
 	ld hl, .MenuDataHeader_Dex
 	ld a, [wStatusFlags]
-	bit 0, a ; pokedex
+	bit STATUSFLAGS_POKEDEX_F, a
 	jr nz, .pokedex_header
 	ld hl, .MenuDataHeader_NoDex
 

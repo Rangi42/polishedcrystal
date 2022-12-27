@@ -33,6 +33,7 @@ CianwoodPhotoStudioFishingGuruScript:
 	closetext
 	special FadeOutPalettes
 	special LoadMapPalettes
+	callasm LoadBlindingFlashPalette
 	pause 10
 	playsound SFX_DOUBLE_SLAP
 	waitsfx

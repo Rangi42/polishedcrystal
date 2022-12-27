@@ -4,8 +4,8 @@ MainMenu:
 	ld a, CGB_PLAIN
 	call GetCGBLayout
 	call SetPalettes
-	ld hl, wGameTimerPaused
-	res 0, [hl]
+	xor a ; FALSE
+	ld [wGameTimerPaused], a
 	call MainMenu_GetWhichMenu
 	ld [wWhichIndexSet], a
 	call MainMenu_PrintCurrentTimeAndDay

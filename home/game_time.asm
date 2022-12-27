@@ -34,8 +34,8 @@ UpdateGameTimer::
 	ret nz
 
 ; Is the timer paused?
-	ld hl, wGameTimerPaused
-	bit 0, [hl]
+	ld a, [wGameTimerPaused]
+	and a
 	ret z
 
 ; Is the timer already capped?

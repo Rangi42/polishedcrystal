@@ -78,7 +78,7 @@ RooftopSale:
 	ld b, BANK(RooftopSaleData1) ; BANK(RooftopSaleData2)
 	ld de, RooftopSaleData1
 	ld hl, wStatusFlags
-	bit 6, [hl] ; hall of fame
+	bit STATUSFLAGS_HALL_OF_FAME_F, [hl]
 	jr z, .ok
 	ld de, RooftopSaleData2
 .ok
