@@ -61,6 +61,7 @@ Facings:
 	dw FacingTinyWindows4     ; FACING_TINY_WINDOWS_4
 	dw FacingTinyWindows5     ; FACING_TINY_WINDOWS_5
 	dw FacingTinyWindows6     ; FACING_TINY_WINDOWS_6
+	dw FacingMicrophone       ; FACING_MICROPHONE
 	assert_table_length NUM_FACINGS
 	dw 0 ; end
 
@@ -347,6 +348,7 @@ FacingStepUpFlip:
 	db  8,  8, RELATIVE_ATTRIBUTES | X_FLIP, $06
 
 FacingPokecomNews:
+FacingMicrophone:
 	db 4 ; #
 	db  4,  0, 0, $08
 	db  4,  8, 0, $09

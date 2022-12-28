@@ -1409,8 +1409,7 @@ SetUpMoveScreenBG:
 	ld de, wTempMonNickname
 	hlcoord 5, 1
 	rst PlaceString
-	ld h, b
-	ld l, c
+	hlcoord 15, 1
 	call PrintLevel
 	call SetPalettes
 	hlcoord 16, 0
@@ -1547,8 +1546,6 @@ MoveScreen_ListMovesFast:
 	hlcoord 18, 10
 	ld [hl], "▼"
 .skip_down
-
-PlaceMoveData:
 	ld a, [wMoveSwapBuffer]
 	and a
 	jr z, .not_swapping
