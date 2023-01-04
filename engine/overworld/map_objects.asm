@@ -2452,7 +2452,7 @@ RefreshPlayerSprite:
 	ld [wPlayerMovement], a
 	xor a
 	ld [wPlayerTurningDirection], a
-	ld [wPlayerObjectStepFrame], a
+	ld [wPlayerStepFrame], a
 	call .TryResetPlayerAction
 	farcall CheckWarpFacingDown
 	call c, SpawnInFacingDown

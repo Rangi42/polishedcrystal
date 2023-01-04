@@ -212,14 +212,14 @@ CheckFacingObject::
 	cp COLL_COUNTER
 	jr nz, .asm_6ff1
 
-	ld a, [wPlayerStandingMapX]
+	ld a, [wPlayerMapX]
 	sub d
 	cpl
 	inc a
 	add d
 	ld d, a
 
-	ld a, [wPlayerStandingMapY]
+	ld a, [wPlayerMapY]
 	sub e
 	cpl
 	inc a

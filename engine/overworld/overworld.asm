@@ -184,7 +184,7 @@ GetMonSprite:
 	ld de, OBJECT_RANGE - OBJECT_RADIUS
 	jr z, .object
 	ld hl, MAPOBJECT_RADIUS - MAPOBJECT_OBJECT_STRUCT_ID
-	ld de, MAPOBJECT_RANGE - MAPOBJECT_RADIUS
+	ld de, MAPOBJECT_SIGHT_RANGE - MAPOBJECT_RADIUS
 .object
 	add hl, bc
 	ld a, [hl]

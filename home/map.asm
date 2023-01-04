@@ -110,10 +110,10 @@ GetDestinationWarpNumber::
 	ret
 
 .GetDestinationWarpNumber:
-	ld a, [wPlayerStandingMapY]
+	ld a, [wPlayerMapY]
 	sub 4
 	ld e, a
-	ld a, [wPlayerStandingMapX]
+	ld a, [wPlayerMapX]
 	sub 4
 	ld d, a
 	ld a, [wCurMapWarpCount]
@@ -1250,16 +1250,16 @@ GetMovementPermissions::
 	call .LeftRight
 	call .UpDown
 ; get coords of current tile
-	ld a, [wPlayerStandingMapX]
+	ld a, [wPlayerMapX]
 	ld d, a
-	ld a, [wPlayerStandingMapY]
+	ld a, [wPlayerMapY]
 	ld e, a
 	call GetCoordTile
-	ld [wPlayerStandingTile], a
+	ld [wPlayerTile], a
 	call .CheckHiNybble
 	ret nz
 
-	ld a, [wPlayerStandingTile]
+	ld a, [wPlayerTile]
 	and 7
 	; a = [.MovementPermissionsData + a]
 	add LOW(.MovementPermissionsData)
@@ -1284,9 +1284,9 @@ GetMovementPermissions::
 	db UP_MASK | LEFT_MASK
 
 .UpDown:
-	ld a, [wPlayerStandingMapX]
+	ld a, [wPlayerMapX]
 	ld d, a
-	ld a, [wPlayerStandingMapY]
+	ld a, [wPlayerMapY]
 	ld e, a
 
 	push de
@@ -1302,9 +1302,9 @@ GetMovementPermissions::
 	jr .Up
 
 .LeftRight:
-	ld a, [wPlayerStandingMapX]
+	ld a, [wPlayerMapX]
 	ld d, a
-	ld a, [wPlayerStandingMapY]
+	ld a, [wPlayerMapY]
 	ld e, a
 
 	push de
@@ -1415,10 +1415,10 @@ GetFacingTileCoord::
 	ld h, [hl]
 	ld l, a
 
-	ld a, [wPlayerStandingMapX]
+	ld a, [wPlayerMapX]
 	add d
 	ld d, a
-	ld a, [wPlayerStandingMapY]
+	ld a, [wPlayerMapY]
 	add e
 	ld e, a
 	ld a, [hl]
@@ -1589,10 +1589,10 @@ CheckCurrentMapCoordEvents::
 	call CheckScenes
 	ld b, a
 ; Load your current coordinates into de.  This will be used to check if your position is in the coord event table for the current map.
-	ld a, [wPlayerStandingMapX]
+	ld a, [wPlayerMapX]
 	sub 4
 	ld d, a
-	ld a, [wPlayerStandingMapY]
+	ld a, [wPlayerMapY]
 	sub 4
 	ld e, a
 
