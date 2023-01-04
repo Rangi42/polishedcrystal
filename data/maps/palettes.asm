@@ -112,7 +112,7 @@ ENDM
 	special_ob_pal map,      DANCE_THEATRE,                   DanceTheatreOBPalette_Tree,             PAL_OW_TREE,   1
 	special_ob_pal map,      MURKY_SWAMP,                     wBGPals1 palette PAL_BG_GREEN,          PAL_OW_TREE,   1
 	special_ob_pal map,      ROUTE_34,                        OverworldPartyMonPalettes,              PAL_OW_ROCK,   1, 3
-	special_ob_pal map,      ROUTE_41,                        Route41Palette_Tree,                    PAL_OW_TREE,   1, 1
+	special_ob_pal map,      ROUTE_41,                        Route41Palette_Rock,                    PAL_OW_ROCK,   1, 1
 	special_ob_pal map,      VERMILION_GYM,                   VermilionGymOBPalette_Tree,             PAL_OW_TREE,   1
 	special_ob_pal map,      LIGHTNING_ISLAND,                LightningIslandOBPalette_Tree,          PAL_OW_TREE,   1
 	special_ob_pal map,      ROCK_TUNNEL_2F,                  RockTunnelOBPalette_Tree,               PAL_OW_TREE,   1
@@ -1455,7 +1455,7 @@ else
 	MONOCHROME_RGB_FOUR_OW
 endc
 
-Route41Palette_Tree:
+Route41Palette_Rock:
 if !DEF(MONOCHROME)
 ; morn
 	RGB 28, 31, 16

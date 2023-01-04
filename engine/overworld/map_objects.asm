@@ -558,7 +558,8 @@ endr
 	dw .MovementSailboatTop          ; SPRITEMOVEFN_SAILBOAT_TOP
 	dw .MovementSailboatBottom       ; SPRITEMOVEFN_SAILBOAT_BOTTOM
 	dw .MovementAlolanExeggutor      ; SPRITEMOVEFN_ALOLAN_EXEGGUTOR
-	dw .MovementTinyWindows          ; TINY_WINDOWS
+	dw .MovementTinyWindows          ; SPRITEMOVEFN_TINY_WINDOWS
+	dw .MovementMicrophone          ; SPRITEMOVEFN_MICROPHONE
 	assert_table_length NUM_SPRITEMOVEFN
 
 .RandomWalkY:
@@ -774,6 +775,10 @@ endr
 
 .MovementTinyWindows:
 	ld a, OBJECT_ACTION_TINY_WINDOWS
+	jr ._ActionA_StepFunction_Standing
+
+.MovementMicrophone:
+	ld a, OBJECT_ACTION_MICROPHONE
 	jr ._ActionA_StepFunction_Standing
 
 .StandingFlip:
@@ -2447,7 +2452,7 @@ RefreshPlayerSprite:
 	ld [wPlayerMovement], a
 	xor a
 	ld [wPlayerTurningDirection], a
-	ld [wPlayerObjectStepFrame], a
+	ld [wPlayerStepFrame], a
 	call .TryResetPlayerAction
 	farcall CheckWarpFacingDown
 	call c, SpawnInFacingDown

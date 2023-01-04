@@ -31,6 +31,7 @@ ObjectActionPairPointers:
 	dw SetFacingAlolanExeggutor,       SetFacingAlolanExeggutor   ; OBJECT_ACTION_ALOLAN_EXEGGUTOR
 	dw SetFacingShakeExeggutor,        SetFacingAlolanExeggutor   ; OBJECT_ACTION_SHAKE_EXEGGUTOR
 	dw SetFacingTinyWindows,           SetFacingTinyWindows       ; OBJECT_ACTION_TINY_WINDOWS
+	dw SetFacingMicrophone,            SetFacingMicrophone        ; OBJECT_ACTION_MICROPHONE
 	assert_table_length NUM_OBJECT_ACTIONS
 
 SetFacingStanding:
@@ -67,6 +68,10 @@ SetFacingSailboatBottom:
 
 SetFacingAlolanExeggutor:
 	ld a, FACING_ALOLAN_EXEGGUTOR_0
+	jr SetFixedFacing
+
+SetFacingMicrophone:
+	ld a, FACING_MICROPHONE
 	jr SetFixedFacing
 
 SetFacingBigDoll:
@@ -141,7 +146,7 @@ SetFacingSkyfall:
 	ld hl, OBJECT_FLAGS1
 	add hl, bc
 	bit SLIDING_F, [hl]
-	jr nz, SetFacingCurrent
+	jmp nz, SetFacingCurrent
 
 	ld hl, OBJECT_STEP_FRAME
 	add hl, bc

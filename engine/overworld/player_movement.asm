@@ -116,7 +116,7 @@ DoPlayerMovement::
 ; Tiles such as waterfalls and warps move the player
 ; in a given direction, overriding input.
 
-	ld a, [wPlayerStandingTile]
+	ld a, [wPlayerTile]
 	ld c, a
 	cp COLL_WHIRLPOOL
 	jr nz, .not_whirlpool
@@ -237,7 +237,7 @@ DoPlayerMovement::
 	and a
 	jr nz, .spin
 
-	ld a, [wPlayerStandingTile]
+	ld a, [wPlayerTile]
 	cp COLL_ICE
 	jr z, .ice
 
@@ -342,7 +342,7 @@ DoPlayerMovement::
 	ret
 
 .TryJump:
-	ld a, [wPlayerStandingTile]
+	ld a, [wPlayerTile]
 	ld e, a
 	and $f0
 	cp HI_NYBBLE_LEDGES
@@ -359,13 +359,13 @@ DoPlayerMovement::
 	and [hl]
 	jr z, .DontJump
 
-	ld a, [wPlayerStandingMapX]
+	ld a, [wPlayerMapX]
 	ld d, a
 	ld a, [wWalkingX]
 	add a
 	add d
 	ld d, a
-	ld a, [wPlayerStandingMapY]
+	ld a, [wPlayerMapY]
 	ld e, a
 	ld a, [wWalkingY]
 	add a
@@ -398,7 +398,7 @@ DoPlayerMovement::
 	db FACE_UP | FACE_LEFT
 
 .TryStairs:
-	ld a, [wPlayerStandingTile]
+	ld a, [wPlayerTile]
 	ld e, a
 	and $f0
 	cp HI_NYBBLE_SIDEWAYS_STAIRS
@@ -414,7 +414,7 @@ DoPlayerMovement::
 	and [hl]
 	jr z, .DontStairs
 
-	ld a, [wPlayerStandingTile]
+	ld a, [wPlayerTile]
 	cp COLL_STAIRS_RIGHT_UP
 	; a = carry ? FALSE : TRUE
 	sbc a
@@ -446,7 +446,7 @@ DoPlayerMovement::
 	ld d, 0
 	ld hl, .EdgeWarps
 	add hl, de
-	ld a, [wPlayerStandingTile]
+	ld a, [wPlayerTile]
 	cp [hl]
 	jr nz, .not_warp
 
@@ -688,7 +688,7 @@ endc
 ;	tile collision pointer
 .table1
 	db STANDING, FACE_CURRENT, 0, 0
-	dw wPlayerStandingTile
+	dw wPlayerTile
 .table2
 	db RIGHT, FACE_RIGHT,  1,  0
 	dw wTileRight
@@ -707,13 +707,13 @@ endc
 	xor a
 	ldh [hMapObjectIndexBuffer], a
 ; Load the next X coordinate into d
-	ld a, [wPlayerStandingMapX]
+	ld a, [wPlayerMapX]
 	ld d, a
 	ld a, [wWalkingX]
 	add d
 	ld d, a
 ; Load the next Y coordinate into e
-	ld a, [wPlayerStandingMapY]
+	ld a, [wPlayerMapY]
 	ld e, a
 	ld a, [wWalkingY]
 	add e
@@ -901,7 +901,7 @@ CheckStandingOnIce::
 	jr z, .not_ice
 	cp $f0
 	jr z, .not_ice
-	ld a, [wPlayerStandingTile]
+	ld a, [wPlayerTile]
 	cp COLL_ICE
 	jr z, .ice
 	ld a, [wPlayerState]
@@ -917,7 +917,7 @@ CheckStandingOnIce::
 	ret
 
 CheckSpinning::
-	ld a, [wPlayerStandingTile]
+	ld a, [wPlayerTile]
 	cp COLL_STOP_SPIN
 	jr z, .stop_spin
 	call CheckSpinTile

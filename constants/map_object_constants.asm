@@ -105,15 +105,22 @@ DEF MAPOBJECT_Y_COORD          rb ; 2
 DEF MAPOBJECT_X_COORD          rb ; 3
 DEF MAPOBJECT_MOVEMENT         rb ; 4
 DEF MAPOBJECT_RADIUS           rb ; 5
-DEF MAPOBJECT_HOUR             rb ; 6
+DEF MAPOBJECT_HOUR_1           rb ; 6
+DEF MAPOBJECT_HOUR_2           rb ; 7
+rsset MAPOBJECT_HOUR_2
 DEF MAPOBJECT_TIMEOFDAY        rb ; 7
-DEF MAPOBJECT_COLOR            rb ; 8
-DEF MAPOBJECT_RANGE            rb ; 9
+DEF MAPOBJECT_PALETTE          rb ; 8
+rsset MAPOBJECT_PALETTE
+DEF MAPOBJECT_TYPE             rb ; 8
+DEF MAPOBJECT_SIGHT_RANGE      rb ; 9
 DEF MAPOBJECT_SCRIPT_POINTER   rw ; a
 DEF MAPOBJECT_EVENT_FLAG       rw ; c
 DEF MAPOBJECT_LENGTH EQU _RS
 DEF NUM_OBJECTS EQU $15
 DEF PLAYER_OBJECT EQU 0
+
+DEF MAPOBJECT_PALETTE_MASK EQU %11110000
+DEF MAPOBJECT_TYPE_MASK    EQU %00001111
 
 ; SpriteMovementData struct members (see data/sprites/map_objects.asm)
 rsreset
@@ -177,6 +184,7 @@ DEF MAPOBJECT_SCREEN_HEIGHT EQU (SCREEN_HEIGHT / 2) + 2
 	const SPRITEMOVEDATA_ALOLAN_EXEGGUTOR     ; 2c
 	const SPRITEMOVEDATA_TINY_WINDOWS         ; 2d
 	const SPRITEMOVEDATA_PLACEHOLDER_UP       ; 2e
+	const SPRITEMOVEDATA_MICROPHONE           ; 2f
 DEF NUM_SPRITEMOVEDATA EQU const_value
 
 ; StepFunction_FromMovement.Pointers indexes (see engine/overworld/map_objects.asm)
@@ -213,6 +221,7 @@ DEF NUM_SPRITEMOVEDATA EQU const_value
 	const SPRITEMOVEFN_SAILBOAT_BOTTOM       ; 1d
 	const SPRITEMOVEFN_ALOLAN_EXEGGUTOR      ; 1e
 	const SPRITEMOVEFN_TINY_WINDOWS          ; 1f
+	const SPRITEMOVEFN_MICROPHONE            ; 20
 DEF NUM_SPRITEMOVEFN EQU const_value
 
 ; StepTypesJumptable indexes (see engine/overworld/map_objects.asm)
@@ -274,6 +283,7 @@ DEF NUM_STEP_TYPES EQU const_value
 	const OBJECT_ACTION_ALOLAN_EXEGGUTOR ; 1a
 	const OBJECT_ACTION_SHAKE_EXEGGUTOR  ; 1b
 	const OBJECT_ACTION_TINY_WINDOWS     ; 1c
+	const OBJECT_ACTION_MICROPHONE       ; 1d
 DEF NUM_OBJECT_ACTIONS EQU const_value
 
 ; Facings indexes (see data/sprites/facings.asm)
@@ -338,6 +348,7 @@ DEF NUM_OBJECT_ACTIONS EQU const_value
 	const FACING_TINY_WINDOWS_4     ; 39
 	const FACING_TINY_WINDOWS_5     ; 3a
 	const FACING_TINY_WINDOWS_6     ; 3b
+	const FACING_MICROPHONE         ; 3c
 DEF NUM_FACINGS EQU const_value
 
 ; DoPlayerMovement.DoStep arguments (see engine/overworld/player_movement.asm)

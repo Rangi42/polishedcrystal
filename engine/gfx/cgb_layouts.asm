@@ -595,6 +595,12 @@ _CGB_NamingScreen:
 	rst AddNTimes
 	ld d, h
 	ld e, l
+	ld a, [wMonType]
+	cp TEMPMON
+	jr nz, .party_mon
+	call LoadTempMonPalette
+	jr .not_pokemon
+.party_mon
 	call LoadPartyMonPalette
 .not_pokemon
 

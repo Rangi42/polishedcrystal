@@ -35,8 +35,9 @@ WarehouseEntrance_MapScriptHeader:
 	object_event  4,  9, SPRITE_SUPER_NERD, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 2, GenericTrainerSupernerdTeru, -1
 	object_event  1, 27, SPRITE_POKEMANIAC, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 2, GenericTrainerPokemaniacIssac, -1
 	object_event  0,  6, SPRITE_POKEMANIAC, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 3, GenericTrainerPokemaniacDonald, -1
-	keyitemball_event  4, 25, COIN_CASE, EVENT_WAREHOUSE_ENTRANCE_COIN_CASE
 	;object_event  8, 27, SPRITE_COSPLAYER, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 2, GenericTrainerCosplayerClara, -1
+	object_event 14, 25, SPRITE_PIDGEOTTO_SIDE, SPRITEMOVEDATA_MICROPHONE, 0, 0, -1, -1, PAL_NPC_SILVER, OBJECTTYPE_COMMAND, jumptextfaceplayer, PiersMicrophoneText, -1
+	keyitemball_event  5, 24, COIN_CASE, EVENT_WAREHOUSE_ENTRANCE_COIN_CASE
 
 	object_const_def
 	const WAREHOUSEENTRANCE_GRAMPS
@@ -761,4 +762,8 @@ GoldenrodUndergroundWeAreNotOpenTodayText:
 GoldenrodUndergroundNoEntryText: ; text > text
 	text "NO ENTRY BEYOND"
 	line "THIS POINT"
+	done
+
+PiersMicrophoneText:
+	text "It's a microphone."
 	done

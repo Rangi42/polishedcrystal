@@ -176,7 +176,7 @@
 	const SPRITE_BIG_LAPRAS ; ac
 	const SPRITE_BIG_ONIX ; ad
 	const SPRITE_BIG_GYARADOS ; ae
-	const SPRITE_PIDGEOTTO_SIDE ; af (blank side frame)
+	const SPRITE_PIDGEOTTO_SIDE ; af
 	const SPRITE_RATTATA_BACK ; b0 (blank side frame)
 	const SPRITE_SLOWPOKETAIL ; b1
 	const SPRITE_WEIRD_TREE ; b2

@@ -753,7 +753,9 @@ LoadPartyMonPalette:
 	ld hl, wPartyMon1DVs
 	ld a, [wCurPartyMon]
 	call GetPartyLocation
-	; c = species
+	; fallthrough
+_FinishLoadNicknamedMonPalette:
+	; c = species, b = extspecies+form
 	ld a, [wCurPartySpecies]
 	ld c, a
 	ld a, [wCurForm]
@@ -762,6 +764,21 @@ LoadPartyMonPalette:
 	call CopyDVsToColorVaryDVs
 	pop hl
 	jmp VaryColorsByDVs
+
+LoadTempMonPalette:
+	push de
+	; bc = personality
+	ld bc, wTempMonPersonality
+	; a = species
+	ld a, [wCurPartySpecies]
+	; hl = palette
+	call GetMonNormalOrShinyPalettePointer
+	; load palette in de (set by caller)
+	ld bc, 4
+	call FarCopyColorWRAM
+	; hl = DVs
+	ld hl, wTempMonDVs
+	jr _FinishLoadNicknamedMonPalette
 
 LoadTrainerPalette:
 	; a = class

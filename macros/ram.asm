@@ -311,54 +311,56 @@ MACRO slot_reel
 ENDM
 
 MACRO object_struct
-\1Sprite::            db
-\1MapObjectIndex::    db
-\1SpriteTile::        db
-\1MovementType::      db
-\1Flags::             dw
-\1Palette::           db
-\1Walking::           db
-\1Direction::         db
-\1StepType::          db
-\1StepDuration::      db
-\1Action::            db
-\1ObjectStepFrame::   db
-\1Facing::            db
-\1StandingTile::      db ; collision
-\1LastTile::          db ; collision
-\1StandingMapX::      db
-\1StandingMapY::      db
-\1LastMapX::          db
-\1LastMapY::          db
-\1ObjectInitX::       db
-\1ObjectInitY::       db
-\1Radius::            db
-\1SpriteX::           db
-\1SpriteY::           db
-\1SpriteXOffset::     db
-\1SpriteYOffset::     db
-\1MovementByteIndex:: db
-\1Object28::          db
-\1Object29::          db
-\1Object30::          db
-\1Object31::          db
-\1Range::             db
+\1Sprite::         db
+\1MapObjectIndex:: db
+\1SpriteTile::     db
+\1MovementType::   db
+\1Flags::          dw
+\1Palette::        db
+\1Walking::        db
+\1Direction::      db
+\1StepType::       db
+\1StepDuration::   db
+\1Action::         db
+\1StepFrame::      db
+\1Facing::         db
+\1Tile::           db ; collision
+\1LastTile::       db ; collision
+\1MapX::           db
+\1MapY::           db
+\1LastMapX::       db
+\1LastMapY::       db
+\1InitX::          db
+\1InitY::          db
+\1Radius::         db
+\1SpriteX::        db
+\1SpriteY::        db
+\1SpriteXOffset::  db
+\1SpriteYOffset::  db
+\1MovementIndex::  db
+\1StepIndex::      db
+\1Field1d::        db
+\1Field1e::        db
+\1JumpHeight::     db
+\1Range::          db
 \1StructEnd::
 ENDM
 
 MACRO map_object
-\1ObjectStructID::  db
-\1ObjectSprite::    db
-\1ObjectYCoord::    db
-\1ObjectXCoord::    db
-\1ObjectMovement::  db
-\1ObjectRadius::    db
-\1ObjectHour::      db
-\1ObjectTimeOfDay:: db
-\1ObjectColor::     db
-\1ObjectRange::     db
-\1ObjectScript::    dw
-\1ObjectEventFlag:: dw
+\1ObjectStructID::   db
+\1ObjectSprite::     db
+\1ObjectYCoord::     db
+\1ObjectXCoord::     db
+\1ObjectMovement::   db
+\1ObjectRadius::     db
+\1ObjectHour1::      db
+\1ObjectHour2::
+\1ObjectTimeOfDay::  db
+\1ObjectPalette::
+\1ObjectType::       db
+\1ObjectSightRange:: db
+\1ObjectScript::     dw
+\1ObjectEventFlag::  dw
 ENDM
 
 MACRO sprite_oam_struct
