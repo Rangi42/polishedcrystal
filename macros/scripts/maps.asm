@@ -97,7 +97,7 @@ MACRO object_event
 	endc
 	db \7 ; clock_hour
 	db \8 ; clock_daytime
-	dn \9, \<10> ; color, persontype
+	dn \9, \<10> ; palette, persontype
 	if \<10> == OBJECTTYPE_COMMAND
 		db \<11>_command ; command id
 	elif \3 == SPRITE_MON_ICON

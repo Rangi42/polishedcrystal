@@ -487,10 +487,10 @@ TryObjectEvent:
 	ldh [hLastTalked], a
 
 	call GetMapObject
-	ld hl, MAPOBJECT_COLOR
+	ld hl, MAPOBJECT_TYPE
 	add hl, bc
 	ld a, [hl]
-	and %00001111
+	and MAPOBJECT_TYPE_MASK
 
 	cp NUM_OBJECT_TYPES
 	ret nc
@@ -517,7 +517,7 @@ ObjectEventTypeArray:
 	jmp CallScript
 
 .itemball:
-	ld hl, MAPOBJECT_RANGE
+	ld hl, MAPOBJECT_SIGHT_RANGE
 	add hl, bc
 	ld a, [hli]
 	push af
@@ -539,7 +539,7 @@ ObjectEventTypeArray:
 	ld hl, MAPOBJECT_RADIUS
 	add hl, bc
 	ld a, [hl]
-	ld bc, MAPOBJECT_RANGE - MAPOBJECT_RADIUS
+	ld bc, MAPOBJECT_SIGHT_RANGE - MAPOBJECT_RADIUS
 	add hl, bc
 	ld b, [hl]
 	ld c, a
@@ -564,7 +564,7 @@ endr
 	jr .callTemporaryScriptBuffer
 
 .command:
-	ld hl, MAPOBJECT_RANGE
+	ld hl, MAPOBJECT_SIGHT_RANGE
 	add hl, bc
 	ld de, wTempScriptBuffer
 rept 3
