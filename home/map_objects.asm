@@ -58,7 +58,7 @@ GetSpriteVTile::
 	jmp PopBCDEHL
 
 GetPlayerStandingTile::
-	ld a, [wPlayerStandingTile]
+	ld a, [wPlayerTile]
 	; fallthrough
 
 GetTileCollision::

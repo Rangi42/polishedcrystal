@@ -305,7 +305,7 @@ CheckTileEvent:
 	ret
 
 .warp_tile
-	ld a, [wPlayerStandingTile]
+	ld a, [wPlayerTile]
 	cp COLL_HOLE
 	jr nz, .not_pit
 	ld a, PLAYEREVENT_FALL
@@ -1220,7 +1220,7 @@ CanUseSweetHoney::
 	jr nc, .no
 
 .ice_check
-	ld a, [wPlayerStandingTile]
+	ld a, [wPlayerTile]
 	cp COLL_ICE
 	jr z, .no
 	scf
@@ -1311,7 +1311,7 @@ _TryWildEncounter_BugContest:
 	farjp CheckRepelEffect
 
 TryWildEncounter_BugContest:
-	ld a, [wPlayerStandingTile]
+	ld a, [wPlayerTile]
 	cp COLL_LONG_GRASS
 	ld b, 40 percent
 	jr z, .ok

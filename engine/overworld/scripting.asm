@@ -870,7 +870,7 @@ Script_playsound:
 	jmp WaitPlaySFX
 
 Script_warpsound:
-	ld a, [wPlayerStandingTile]
+	ld a, [wPlayerTile]
 	ld de, SFX_ENTER_DOOR
 	cp COLL_DOOR
 	jr z, .play

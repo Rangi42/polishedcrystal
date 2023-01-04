@@ -847,7 +847,7 @@ Script_AutoWaterfall:
 .CheckContinueWaterfall:
 	xor a
 	ldh [hScriptVar], a
-	ld a, [wPlayerStandingTile]
+	ld a, [wPlayerTile]
 	cp COLL_WATERFALL
 	ret z
 	ld a, $1

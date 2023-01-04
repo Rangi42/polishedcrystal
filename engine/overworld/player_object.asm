@@ -104,7 +104,7 @@ RefreshPlayerCoords:
 	ld a, [wXCoord]
 	add 4
 	ld d, a
-	ld hl, wPlayerStandingMapX
+	ld hl, wPlayerMapX
 	sub [hl]
 	ld [hl], d
 	ld hl, wMapObjects + MAPOBJECT_X_COORD
@@ -115,7 +115,7 @@ RefreshPlayerCoords:
 	ld a, [wYCoord]
 	add 4
 	ld e, a
-	ld hl, wPlayerStandingMapY
+	ld hl, wPlayerMapY
 	sub [hl]
 	ld [hl], e
 	ld hl, wMapObjects + MAPOBJECT_Y_COORD
