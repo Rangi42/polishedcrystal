@@ -23,21 +23,23 @@ DEF NUM_SPRITEDATA_FIELDS EQU _RS
 	const PAL_OW_SILVER ; 5
 	const PAL_OW_TREE   ; 6
 	const PAL_OW_ROCK   ; 7
-
-; for party menu icons
-	const_def PAL_OW_SILVER
-	const PAL_OW_GRAY   ; 5
-	const PAL_OW_PINK   ; 6
-	const PAL_OW_TEAL   ; 7
+	const PAL_OW_GRAY   ; 8
+	const PAL_OW_PINK   ; 9
+	const PAL_OW_TEAL   ; a
+DEF NUM_OW_PALS EQU const_value
 
 ; object_events set bit 3 so as not to use the sprite's default palette
 ; MapObjectPals indexes (see gfx/overworld/npc_sprites.pal)
-	const_def 1 << 3
-	const PAL_NPC_RED    ; 8
-	const PAL_NPC_BLUE   ; 9
-	const PAL_NPC_GREEN  ; a
-	const PAL_NPC_BROWN  ; b
-	const PAL_NPC_PURPLE ; c
-	const PAL_NPC_SILVER ; d
-	const PAL_NPC_TREE   ; e
-	const PAL_NPC_ROCK   ; f
+	const_def 1
+	const PAL_NPC_RED    ; 1
+	const PAL_NPC_BLUE   ; 2
+	const PAL_NPC_GREEN  ; 3
+	const PAL_NPC_BROWN  ; 4
+	const PAL_NPC_PURPLE ; 5
+	const PAL_NPC_SILVER ; 6
+	const PAL_NPC_TREE   ; 7
+	const PAL_NPC_ROCK   ; 8
+	const PAL_NPC_GRAY   ; 9
+	const PAL_NPC_PINK   ; a
+	const PAL_NPC_TEAL   ; b
+	assert const_value == NUM_OW_PALS + 1

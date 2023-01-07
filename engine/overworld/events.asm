@@ -95,6 +95,7 @@ HandleMap:
 	cp MAPSTATUS_HANDLE
 	ret nz
 
+	call CheckForUsedObjPals
 	call HandleMapObjects
 	call NextOverworldFrame
 	call HandleMapBackground
@@ -490,7 +491,6 @@ TryObjectEvent:
 	ld hl, MAPOBJECT_TYPE
 	add hl, bc
 	ld a, [hl]
-	and MAPOBJECT_TYPE_MASK
 
 	cp NUM_OBJECT_TYPES
 	ret nc

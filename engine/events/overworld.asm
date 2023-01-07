@@ -764,6 +764,7 @@ FlyFunction:
 .FlyScript:
 	reloadmappart
 	callasm HideSprites
+	callasm CopyTreePal
 	special UpdateTimePals
 	callasm PrepareOverworldMove
 	scall FieldMovePokepicScript
@@ -773,6 +774,7 @@ FlyFunction:
 	callasm SkipUpdateMapSprites
 	loadvar VAR_MOVEMENT, PLAYER_NORMAL
 	newloadmap MAPSETUP_FLY
+	callasm CopyTreePal
 	callasm FlyToAnim
 	special WaitSFX
 	callasm .ReturnFromFly
@@ -780,8 +782,13 @@ FlyFunction:
 
 .ReturnFromFly:
 	farcall ReturnFromFly_SpawnOnlyPlayer
+	call ClearSavedObjPals
+	call CheckForUsedObjPals
 	call DelayFrame
 	jmp UpdatePlayerSprite
+
+CopyTreePal:
+	farjp _CopyTreePal
 
 WaterfallFunction:
 	call .TryWaterfall

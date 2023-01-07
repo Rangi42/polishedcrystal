@@ -343,6 +343,7 @@ MACRO object_struct
 \1Field1e::        db
 \1JumpHeight::     db
 \1Range::          db
+\1PalIndex::       db
 \1StructEnd::
 ENDM
 
@@ -356,11 +357,11 @@ MACRO map_object
 \1ObjectHour1::      db
 \1ObjectHour2::
 \1ObjectTimeOfDay::  db
-\1ObjectPalette::
-\1ObjectType::       db
+\1ObjectPalette::    db
 \1ObjectSightRange:: db
 \1ObjectScript::     dw
 \1ObjectEventFlag::  dw
+\1ObjectType::       db
 ENDM
 
 MACRO sprite_oam_struct

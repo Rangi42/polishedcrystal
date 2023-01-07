@@ -940,15 +940,10 @@ LoadMapPals:
 	ldh [rSVBK], a
 
 .got_pals
-	; copy OB palettes
-	ld a, [wTimeOfDayPal]
-	and 3
-	ld bc, 8 palettes
-	ld hl, MapObjectPals
-	rst AddNTimes
-	ld de, wOBPals1
-	ld bc, 8 palettes
-	call FarCopyColorWRAM
+	call ClearSavedObjPals
+	ld hl, wPalFlags
+	set NO_DYN_PAL_APPLY_F, [hl]
+	call CheckForUsedObjPals
 
 	farcall LoadSpecialMapOBPalette
 
@@ -998,6 +993,41 @@ LoadMapPals:
 	ld bc, 4
 	jmp FarCopyColorWRAM
 
+_CopyTreePal:
+	ld de, wOBPals1 + 6 palettes
+	ld a, PAL_OW_TREE
+	ld [wNeededPalIndex], a
+CopySpritePal::
+	push af
+	push bc
+	push hl
+	push de
+	ld a, [wTimeOfDayPal]
+	maskbits NUM_DAYTIMES
+	ld bc, NUM_OW_PALS palettes
+	ld hl, MapObjectPals
+	call AddNTimes
+	ld a, [wNeededPalIndex]
+	ld c, a
+	ld bc, 1 palettes
+	call AddNTimes
+	ld bc, 1 palettes
+	pop de
+	ld a, BANK(wOBPals1)
+	call FarCopyWRAM
+	ld hl, wPalFlags
+	bit NO_DYN_PAL_APPLY_F, [hl]
+	jr nz, .skip_apply
+	call ApplyPals
+.skip_apply
+	ld a, TRUE
+	ldh [hCGBPalUpdate], a
+.done
+	pop af
+	pop bc
+	pop hl
+	ret
+
 INCLUDE "data/maps/environment_colors.asm"
 
 TilesetBGPalette::
@@ -1020,7 +1050,7 @@ INCLUDE "gfx/tilesets/palettes/monochrome/ob.pal"
 else
 INCLUDE "gfx/overworld/npc_sprites.pal"
 endc
-	assert_table_length 8 * 4 ; morn, day, nite, eve
+	assert_table_length NUM_OW_PALS * NUM_DAYTIMES ; morn, day, nite, eve
 
 RoofPals:
 	table_width PAL_COLOR_SIZE * 2 * 3, RoofPals
