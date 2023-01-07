@@ -429,6 +429,12 @@ ApplyPals:
 	ld bc, 16 palettes
 	jmp FarCopyColorWRAM
 
+ApplyOBPals:
+	ld hl, wOBPals1
+	ld de, wOBPals2
+	ld bc, 8 palettes
+	jmp FarCopyColorWRAM
+
 LoadMailPalettes:
 	ld l, a
 	ld h, 0
@@ -1013,15 +1019,14 @@ CopySpritePal::
 	call AddNTimes
 	ld bc, 1 palettes
 	pop de
-	ld a, BANK(wOBPals1)
-	call FarCopyWRAM
+	call FarCopyColorWRAM
 	ld hl, wPalFlags
 	bit NO_DYN_PAL_APPLY_F, [hl]
 	jr nz, .skip_apply
-	call ApplyPals
-.skip_apply
+	call ApplyOBPals
 	ld a, TRUE
 	ldh [hCGBPalUpdate], a
+.skip_apply
 .done
 	pop af
 	pop bc

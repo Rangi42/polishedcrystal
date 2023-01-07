@@ -27,8 +27,12 @@ CheckForUsedObjPals::
 	call MarkUsedPal
 	; Then load the return into OBJECT_PALETTE. Which corresponds
 	; to OBJ 0 - OBJ 7.
+	ld c, a
 	ld hl, OBJECT_PALETTE
 	add hl, de
+	ld a, [hl]
+	and ~PALETTE_MASK
+	or c
 	ld [hl], a
 .no_sprite_skip
 	dec b
@@ -40,10 +44,6 @@ CheckForUsedObjPals::
 	jr .loop
 
 .done
-	; Let VBlank know that it can update the pals.
-	ld a, TRUE
-	ldh [hCGBPalUpdate], a
-
 	; If this flag was set, its time to reset it.
 	ld hl, wPalFlags
 	res NO_DYN_PAL_APPLY_F, [hl]
