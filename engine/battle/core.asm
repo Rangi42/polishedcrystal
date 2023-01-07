@@ -5442,6 +5442,12 @@ CheckUsableMove:
 	ld b, 5
 .CheckEncoreVar:
 	call .GetEncoreCount
+	call .CheckCommonVar
+	jr z, .RetNZ
+	xor a
+	ld a, b
+	ret
+
 .CheckCommonVar:
 	swap a
 	and $f
