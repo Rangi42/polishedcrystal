@@ -97,7 +97,7 @@ MACRO object_event
 	endc
 	db \7 ; clock_hour
 	db \8 ; clock_daytime
-	db \9 ; palette
+	db \9 | (\<10> << 5) ; palette, type
 	if \<10> == OBJECTTYPE_COMMAND
 		db \<11>_command ; command id
 	elif \3 == SPRITE_MON_ICON
@@ -113,7 +113,6 @@ MACRO object_event
 		dw \<12> ; pointer || byte, 0
 		dw \<13> ; event flag
 	endc
-	db \<10> ; object type
 	redef {_NUM_OBJECT_EVENTS} += 1
 ENDM
 

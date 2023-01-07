@@ -115,7 +115,7 @@ DEF CALLBACK_SIZE     EQU  3 ; callback
 DEF WARP_EVENT_SIZE   EQU  5 ; warp_event
 DEF COORD_EVENT_SIZE  EQU  5 ; coord_event
 DEF BG_EVENT_SIZE     EQU  5 ; bg_event
-DEF OBJECT_EVENT_SIZE EQU 14 ; object_event
+DEF OBJECT_EVENT_SIZE EQU 13 ; object_event
 
 ; bg_event types
 ; TryBGEvent arguments (see engine/overworld/events.asm)

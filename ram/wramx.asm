@@ -926,12 +926,6 @@ wBattleFactoryCurStreak:: dw
 wBattleFactoryTopStreak:: dw
 wBattleFactorySwapCount:: db ; Amount of swaps performed.
 
-wUsedObjectPals:: db
-for n, 8
-wLoadedObjPal{d:n}:: db 
-endr
-wNeededPalIndex:: db
-
 wMapObjects::
 wPlayerObject:: map_object wPlayer
 for n, 1, NUM_OBJECTS ; discount player
@@ -1181,7 +1175,13 @@ wCurBox:: db
 wPlayerCaught:: db
 wPlayerCaught2:: db
 
-	ds 61 ; unused
+wUsedObjectPals:: db
+for n, 8
+wLoadedObjPal{d:n}:: db 
+endr
+wNeededPalIndex:: db
+
+	ds 71 ; unused
 
 wWingAmounts::
 wHealthWingAmount:: dw

@@ -24,7 +24,7 @@ sGameDataEnd::
 
 sOptions3:: db
 
-	ds 382 ; unused
+	ds 393 ; unused
 
 sChecksum:: dw
 
