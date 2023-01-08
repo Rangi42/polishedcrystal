@@ -28,9 +28,10 @@ DEF NUM_SPRITEDATA_FIELDS EQU _RS
 	const PAL_OW_TEAL   ; a
 DEF NUM_OW_PALS EQU const_value
 
-; object_events set bit 3 so as not to use the sprite's default palette
+; object_events that set a pal value will override the sprite's default palette.
 ; MapObjectPals indexes (see gfx/overworld/npc_sprites.pal)
-	const_def 1
+	const_def
+	const PAL_OW_DEFAULT ; 0
 	const PAL_NPC_RED    ; 1
 	const PAL_NPC_BLUE   ; 2
 	const PAL_NPC_GREEN  ; 3
