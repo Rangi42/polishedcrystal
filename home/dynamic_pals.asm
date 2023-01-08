@@ -1,11 +1,13 @@
 CheckForUsedObjPals::
 	push hl
-	push bc
 	push de
+	push bc
 
 	; reset all wUsedObjectPals bits
 	xor a
 	ld [wUsedObjectPals], a
+
+	call AlolanExeggutorPalCheck
 
 	ld de, wObjectStructs
 	ld b, NUM_OBJECT_STRUCTS
@@ -47,15 +49,12 @@ CheckForUsedObjPals::
 	; If this flag was set, its time to reset it.
 	ld hl, wPalFlags
 	res NO_DYN_PAL_APPLY_F, [hl]
-	pop de
-	pop bc
-	pop hl
-	ret
+	jp PopBCDEHL
 
 MarkUsedPal:
 	push hl
-	push bc
 	push de
+	push bc
 
 	; Check if pal is already loaded
 	lb bc, 8, 0
@@ -128,10 +127,50 @@ MarkUsedPal:
 	ld a, c
 
 .done
-	pop de
-	pop bc
-	pop hl
-	ret
+	jp PopBCDEHL
+
+
+AlolanExeggutorPalCheck:
+	ld de, wObjectStructs
+	ld b, NUM_OBJECT_STRUCTS
+.loop
+	; Check if the object has a sprite
+;	ld hl, OBJECT_SPRITE
+;	add hl, de
+;	ld a, [hl]
+;	and a
+;	jr z, .next_object
+
+	; Check if the object is an alolan exeggutor
+	ld hl, OBJECT_SPRITE
+	add hl, de
+	ld a, [hl]
+	cp SPRITE_ALOLAN_EXEGGUTOR
+	jr nz, .next_object
+
+	ld a, %00000011
+	ld [wUsedObjectPals], a
+	ld a, PAL_OW_GREEN
+	ld [wLoadedObjPal0], a
+	ld [wNeededPalIndex], a
+	ld de, wOBPals1
+	farcall CopySpritePal
+
+	ld a, PAL_OW_BROWN
+	ld [wLoadedObjPal1], a
+	ld [wNeededPalIndex], a
+	ld de, wOBPals1 + 1 palettes
+	farjp CopySpritePal
+
+.next_object
+	dec b
+	ret z ; No more objects
+	ld hl, OBJECT_LENGTH
+	add hl, de
+	ld d, h
+	ld e, l
+	jr .loop
+
 
 ClearSavedObjPals::
 	xor a
