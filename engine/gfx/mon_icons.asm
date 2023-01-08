@@ -89,6 +89,10 @@ SetFlyMonColor:
 	ld a, MON_SHINY
 	call GetPartyParamLocationAndValue
 	call GetMonIconPalette
+	ld de, wOBPals1 + 3 palettes
+	ld [wNeededPalIndex], a
+	farcall CopySpritePal
+	ld a, 3 ; OBJ 3
 	jr _SetMonColor
 
 SetPartyMenuMonMiniColors:
