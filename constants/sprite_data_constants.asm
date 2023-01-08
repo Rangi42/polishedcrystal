@@ -13,47 +13,33 @@ DEF NUM_SPRITEDATA_FIELDS EQU _RS
 	const MON_SPRITE          ; 3
 	const BIG_GYARADOS_SPRITE ; 4
 
-; sprite palettes
-	const_def
-	const PAL_OW_RED        ; 0
-	const PAL_OW_BLUE       ; 1
-	const PAL_OW_GREEN      ; 2
-	const PAL_OW_BROWN      ; 3
-	const PAL_OW_PURPLE     ; 4
-	const PAL_OW_SILVER     ; 5
-	const PAL_OW_TREE       ; 6
-	const PAL_OW_ROCK       ; 7
-	const PAL_OW_GRAY       ; 8
-	const PAL_OW_PINK       ; 9
-	const PAL_OW_TEAL       ; a
-	const PAL_OW_EMOTE_WWBB ; b
-	const PAL_OW_EMOTE_WWGB ; c
-	const PAL_OW_EMOTE_WWPB ; d
-	const PAL_OW_EMOTE_WWRB ; e
-	const PAL_OW_EMOTE_WWOB ; f
-	const PAL_OW_EMOTE_WWUB ; 10
-DEF NUM_OW_PALS EQU const_value
+; object_events that set a pal value will override the sprite's default palette
+DEF PAL_NPC_DEFAULT EQU 0
 
-; object_events that set a pal value will override the sprite's default palette.
+MACRO ow_npc_pal_const
+	const PAL_OW_\1
+	DEF PAL_NPC_\1 EQU PAL_OW_\1 + 1
+ENDM
+
+; sprite palettes
 ; MapObjectPals indexes (see gfx/overworld/npc_sprites.pal)
 	const_def
-	const PAL_OW_DEFAULT     ; 0
-	const PAL_NPC_RED        ; 1
-	const PAL_NPC_BLUE       ; 2
-	const PAL_NPC_GREEN      ; 3
-	const PAL_NPC_BROWN      ; 4
-	const PAL_NPC_PURPLE     ; 5
-	const PAL_NPC_SILVER     ; 6
-	const PAL_NPC_TREE       ; 7
-	const PAL_NPC_ROCK       ; 8
-	const PAL_NPC_GRAY       ; 9
-	const PAL_NPC_PINK       ; a
-	const PAL_NPC_TEAL       ; b
-	const PAL_NPC_EMOTE_WWBB ; c
-	const PAL_NPC_EMOTE_WWGB ; d
-	const PAL_NPC_EMOTE_WWPB ; e
-	const PAL_NPC_EMOTE_WWRB ; f
-	const PAL_NPC_EMOTE_WWOB ; 10
-	const PAL_NPC_EMOTE_WWUB ; 11
-	assert const_value == NUM_OW_PALS + 1
-	assert const_value < 32
+	ow_npc_pal_const RED          ; 00
+	ow_npc_pal_const BLUE         ; 01
+	ow_npc_pal_const GREEN        ; 02
+	ow_npc_pal_const BROWN        ; 03
+	ow_npc_pal_const PURPLE       ; 04
+	ow_npc_pal_const SILVER       ; 05
+	ow_npc_pal_const TREE         ; 06
+	ow_npc_pal_const ROCK         ; 07
+	ow_npc_pal_const GRAY         ; 08
+	ow_npc_pal_const PINK         ; 09
+	ow_npc_pal_const TEAL         ; 0a
+	ow_npc_pal_const EMOTE_BLACK  ; 0b
+	ow_npc_pal_const EMOTE_GREEN  ; 0c
+	ow_npc_pal_const EMOTE_PURPLE ; 0d
+	ow_npc_pal_const EMOTE_RED    ; 0e
+	ow_npc_pal_const EMOTE_ORANGE ; 0f
+	ow_npc_pal_const EMOTE_BLUE   ; 10
+DEF NUM_OW_PALS EQU const_value
+	assert NUM_OW_PALS < 32 ; PAL_NPC_* must fit in 5 bits

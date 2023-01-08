@@ -2045,7 +2045,7 @@ SpawnEmote:
 	ret
 
 .EmoteObject:
-	db $80, PAL_OW_EMOTE_WWBB, SPRITEMOVEDATA_EMOTE
+	db $80, PAL_OW_EMOTE_BLACK, SPRITEMOVEDATA_EMOTE
 
 ShakeGrass:
 	push bc

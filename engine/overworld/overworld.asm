@@ -386,7 +386,7 @@ LoadEmote::
 	push bc
 ; Get the address of the palette for emote c.
 	ld b, 0
-	ld hl, EmotePalTable
+	ld hl, EmotePalettes
 	add hl, bc
 	ld a, [hl]
 	ld [wEmotePal], a
@@ -406,8 +406,6 @@ LoadEmote::
 	ld de, vTiles0 tile $60
 ; load into vram0
 	jmp DecompressRequest2bpp
-
-INCLUDE "gfx/emotes/emote_pal.asm"
 
 INCLUDE "data/sprites/emotes.asm"
 
