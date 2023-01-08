@@ -2038,12 +2038,14 @@ SpawnEmote:
 	push bc
 	ld de, .EmoteObject
 	call CopyTempObjectData
+	ld a, [wEmotePal]
+	ld [wTempObjectCopyPalette], a
 	call InitTempObject
 	pop bc
 	ret
 
 .EmoteObject:
-	db $80, PAL_OW_SILVER, SPRITEMOVEDATA_EMOTE
+	db $80, PAL_OW_EMOTE_WWBB, SPRITEMOVEDATA_EMOTE
 
 ShakeGrass:
 	push bc

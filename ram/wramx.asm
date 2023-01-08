@@ -1181,7 +1181,9 @@ wLoadedObjPal{d:n}:: db
 endr
 wNeededPalIndex:: db
 
-	ds 71 ; unused
+wEmotePal:: db
+
+	ds 70 ; unused
 
 wWingAmounts::
 wHealthWingAmount:: dw

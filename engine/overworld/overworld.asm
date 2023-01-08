@@ -385,16 +385,11 @@ endr
 LoadEmote::
 	push bc
 ; Get the address of the palette for emote c.
-	ld a, c
-	ld bc, 8
-	ld hl, EmotePalettes
-	rst AddNTimes
-; load the emote palette
-	ld de, wOBPals2 palette PAL_OW_SILVER
-	ld bc, 1 palettes
-	call FarCopyColorWRAM
-	ld a, TRUE
-	ldh [hCGBPalUpdate], a
+	ld b, 0
+	ld hl, EmotePalTable
+	add hl, bc
+	ld a, [hl]
+	ld [wEmotePal], a
 	pop bc
 ; Get the address of the pointer to emote c.
 	ld b, 0
@@ -412,8 +407,7 @@ LoadEmote::
 ; load into vram0
 	jmp DecompressRequest2bpp
 
-EmotePalettes:
-INCLUDE "gfx/emotes/emotes.pal"
+INCLUDE "gfx/emotes/emote_pal.asm"
 
 INCLUDE "data/sprites/emotes.asm"
 
