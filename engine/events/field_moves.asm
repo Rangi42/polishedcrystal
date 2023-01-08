@@ -343,6 +343,7 @@ FlyToAnim:
 
 FlyFunction_InitGFX:
 	call ClearSpriteAnims
+	call SetOWFlyMonColor
 	ld e, $64
 	call FlyFunction_GetMonIcon
 	xor a

@@ -77,22 +77,39 @@ _SetMonColor:
 	jr nz, .loop
 	jmp PopAFBCDEHL
 
-SetFlyMonColor:
-	push hl
-	push de
-	push bc
-	push af
 
+
+_GetFlyMonColor:
 	ld a, MON_SPECIES
 	call GetPartyParamLocationAndValue
 	ld [wCurPartySpecies], a
 	ld a, MON_SHINY
 	call GetPartyParamLocationAndValue
 	call GetMonIconPalette
+	ret
+
+SetFlyMonColor:
+	push hl
+	push de
+	push bc
+	push af
+	call _GetFlyMonColor
 	ld de, wOBPals1 + 3 palettes
 	ld [wNeededPalIndex], a
 	farcall CopySpritePal
 	ld a, 3 ; OBJ 3
+	jr _SetMonColor
+
+SetOWFlyMonColor:
+	push hl
+	push de
+	push bc
+	push af
+	call _GetFlyMonColor
+	ld de, wOBPals1
+	ld [wNeededPalIndex], a
+	farcall CopySpritePal
+	xor a ; OBJ 0
 	jr _SetMonColor
 
 SetPartyMenuMonMiniColors:
