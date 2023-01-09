@@ -1,3 +1,12 @@
+ClearSavedObjPals::
+	xor a
+	ld [wUsedObjectPals], a
+	ld hl, wUsedObjectPals
+	ld bc, wNeededPalIndex - wUsedObjectPals
+	ld a, -1
+	rst ByteFill
+	ret
+
 CheckForUsedObjPals::
 	push hl
 	push de
@@ -7,7 +16,7 @@ CheckForUsedObjPals::
 	xor a
 	ld [wUsedObjectPals], a
 
-	call AlolanExeggutorPalCheck
+	call CheckAlolanExeggutorPals
 
 	ld de, wObjectStructs
 	ld b, NUM_OBJECT_STRUCTS
@@ -27,8 +36,8 @@ CheckForUsedObjPals::
 
 	; Mark the palette in use and/or load the palette
 	call MarkUsedPal
-	; Then load the return into OBJECT_PALETTE. Which corresponds
-	; to OBJ 0 - OBJ 7.
+	; Then load the return into OBJECT_PALETTE, which corresponds
+	; to OBJ 0 - OBJ 7
 	ld c, a
 	ld hl, OBJECT_PALETTE
 	add hl, de
@@ -46,10 +55,10 @@ CheckForUsedObjPals::
 	jr .loop
 
 .done
-	; If this flag was set, its time to reset it.
+	; If this flag was set, it's time to reset it
 	ld hl, wPalFlags
 	res NO_DYN_PAL_APPLY_F, [hl]
-	jp PopBCDEHL
+	jmp PopBCDEHL
 
 MarkUsedPal:
 	push hl
@@ -70,7 +79,7 @@ MarkUsedPal:
 	ld b, a
 	push bc
 
-	; Pal is not already loaded, find a empty pal slot.
+	; Pal is not already loaded, find a empty pal slot
 	lb bc, 0, 8
 	ld hl, wUsedObjectPals
 	ld a, 1
@@ -109,7 +118,7 @@ MarkUsedPal:
 	pop bc
 
 	; Set the corresponding bit in wUsedObjectPals
-	; A set bit corresponds to a used OBJ Pal slot.
+	; A set bit corresponds to a used pal slot
 .mark_in_use
 	push bc
 	ld hl, wUsedObjectPals
@@ -125,31 +134,24 @@ MarkUsedPal:
 	ld [hl], a
 	pop bc
 	ld a, c
-
 .done
-	jp PopBCDEHL
+	jmp PopBCDEHL
 
+CheckAlolanExeggutorPals:
+	ld a, [wMapGroup]
+	cp GROUP_SHAMOUTI_ISLAND
+	ret nz
+	ld a, [wMapNumber]
+	cp MAP_SHAMOUTI_ISLAND
+	ret nz
 
-AlolanExeggutorPalCheck:
-	ld de, wObjectStructs
-	ld b, NUM_OBJECT_STRUCTS
-.loop
-	; Check if the object has a sprite
-;	ld hl, OBJECT_SPRITE
-;	add hl, de
-;	ld a, [hl]
-;	and a
-;	jr z, .next_object
-
-	; Check if the object is an alolan exeggutor
-	ld hl, OBJECT_SPRITE
-	add hl, de
-	ld a, [hl]
-	cp SPRITE_ALOLAN_EXEGGUTOR
-	jr nz, .next_object
+; Only Shamouti Island uses SPRITEMOVEDATA_ALOLAN_EXEGGUTOR.
+; This sprite movement's facing uses NEXT_PALETTE, and assumes
+; that PAL_OW_BROWN exists right after PAL_OW_GREEN.
 
 	ld a, %00000011
 	ld [wUsedObjectPals], a
+
 	ld a, PAL_OW_GREEN
 	ld [wLoadedObjPal0], a
 	ld [wNeededPalIndex], a
@@ -161,21 +163,3 @@ AlolanExeggutorPalCheck:
 	ld [wNeededPalIndex], a
 	ld de, wOBPals1 + 1 palettes
 	farjp CopySpritePal
-
-.next_object
-	dec b
-	ret z ; No more objects
-	ld hl, OBJECT_LENGTH
-	add hl, de
-	ld d, h
-	ld e, l
-	jr .loop
-
-
-ClearSavedObjPals::
-	xor a
-	ld [wUsedObjectPals], a
-	ld hl, wUsedObjectPals
-	ld bc, wNeededPalIndex - wUsedObjectPals
-	ld a, -1
-	jp ByteFill
