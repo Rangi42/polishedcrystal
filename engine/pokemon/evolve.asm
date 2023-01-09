@@ -810,7 +810,10 @@ GetPreEvolution:
 	assert (EXTSPECIES_MASK > %00011111) && (EXTSPECIES_MASK & %00100000)
 	swap a
 	rlca
-	or [hl] ; we're pointing to mon form
+	ld b, a
+	ld a, [hl] ; we're pointing to mon form
+	and FORM_MASK
+	or b
 	ld b, a
 	push bc
 	call GetSpeciesAndFormIndex ; checks if current form is a valid form for this species
