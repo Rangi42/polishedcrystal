@@ -439,15 +439,14 @@ INCLUDE "data/trainers/parties.asm"
 SECTION "EV Spreads", ROMX
 
 WriteTrainerEVs:
-; Writes EVs to hl with the EV spread index in a.
+; Writes EVs to de with the EV spread index in a.
 ; For classic EVs, writes (EV total / 2) to all stats.
 ; For modern EVs, writes the table data directly.
 	push hl
 	push de
 	push bc
 
-	push hl
-	call SwapHLDE
+	push de
 	ld hl, EVSpreads
 	ld bc, NUM_STATS
 	rst AddNTimes
