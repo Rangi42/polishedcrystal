@@ -176,7 +176,7 @@ _Pokedex_Area:
 	; Check if we've visited Kanto.
 	push hl
 	ld hl, wStatusFlags
-	bit 6, [hl] ; ENGINE_CREDITS_SKIP
+	bit STATUSFLAGS_HALL_OF_FAME_F, [hl]
 	pop hl
 	jr z, .loopback_area_mode
 
@@ -185,7 +185,7 @@ _Pokedex_Area:
 	jr nz, .cycle_area
 	push hl
 	ld hl, wStatusFlags2
-	bit 3, [hl] ; ENGINE_SEEN_SHAMOUTI_ISLAND
+	bit STATUSFLAGS2_SEEN_SHAMOUTI_F, [hl]
 	pop hl
 	jr nz, .cycle_area
 	jr .loopback_area_mode
@@ -280,7 +280,7 @@ Pokedex_ReloadValidLocations:
 	ld a, BANK(wStatusFlags2)
 	call GetFarWRAMByte
 	pop hl
-	bit 3, a ; ENGINE_SEEN_SHAMOUTI_ISLAND
+	bit STATUSFLAGS2_SEEN_SHAMOUTI_F, a
 	jr z, .finish
 	; Redundant to run the check below again, but means less space used.
 .check_kanto
@@ -289,7 +289,7 @@ Pokedex_ReloadValidLocations:
 	ld a, BANK(wStatusFlags)
 	call GetFarWRAMByte
 	pop hl
-	bit 6, a ; ENGINE_CREDITS_SKIP
+	bit STATUSFLAGS_HALL_OF_FAME_F, a
 	jr nz, .outer_loop
 
 .finish
