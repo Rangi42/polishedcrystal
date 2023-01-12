@@ -389,6 +389,7 @@ BattleAnim_DisarmVoice:
 	anim_ret
 
 BattleAnim_Scald:
+	anim_setobjpal PAL_BATTLE_OB_BLUE, PAL_BTLCUSTOM_WATER
 	anim_bgeffect ANIM_BG_START_WATER, $0, $0, $0
 	anim_1gfx ANIM_GFX_WATER
 	anim_call BattleAnim_UserObj_2Row
@@ -971,7 +972,7 @@ BattleAnim_FireSpin:
 	anim_ret
 
 BattleAnim_DragonRage:
-	anim_setobjpal PAL_BATTLE_OB_RED, PAL_BTLCUSTOM_FIRE
+	anim_setobjpal PAL_BATTLE_OB_RED, PAL_BTLCUSTOM_DRAGON_FIRE
 	anim_1gfx ANIM_GFX_FIRE
 .loop
 	anim_sound 6, 2, SFX_EMBER
@@ -1096,7 +1097,7 @@ BattleAnim_Blizzard:
 	anim_ret
 
 BattleAnim_WaterPulse:
-	anim_setobjpal PAL_BATTLE_OB_GRAY, PAL_BTLCUSTOM_BLUE
+	anim_setobjpal PAL_BATTLE_OB_GRAY, PAL_BTLCUSTOM_WATER
 	anim_2gfx ANIM_GFX_BUBBLE, ANIM_GFX_PSYCHIC
 	anim_bgeffect ANIM_BG_WHIRLPOOL, $0, $0, $0
 	anim_sound 6, 2, SFX_BUBBLE_BEAM
@@ -1119,6 +1120,7 @@ BattleAnim_WaterPulse:
 	anim_ret
 
 BattleAnim_BubbleBeam:
+	anim_setobjpal PAL_BATTLE_OB_BLUE, PAL_BTLCUSTOM_WATER
 	anim_1gfx ANIM_GFX_BUBBLE
 .loop
 	anim_sound 16, 2, SFX_BUBBLE_BEAM
@@ -1144,6 +1146,7 @@ BattleAnim_BubbleBeam:
 	anim_ret
 
 BattleAnim_WaterGun:
+	anim_setobjpal PAL_BATTLE_OB_BLUE, PAL_BTLCUSTOM_WATER
 	anim_bgeffect ANIM_BG_START_WATER, $0, $0, $0
 	anim_1gfx ANIM_GFX_WATER
 	anim_call BattleAnim_UserObj_2Row
@@ -1166,6 +1169,7 @@ BattleAnim_WaterGun:
 	anim_ret
 
 BattleAnim_HydroPump:
+	anim_setobjpal PAL_BATTLE_OB_BLUE, PAL_BTLCUSTOM_WATER
 	anim_bgeffect ANIM_BG_START_WATER, $0, $0, $0
 	anim_1gfx ANIM_GFX_WATER
 	anim_call BattleAnim_UserObj_2Row
@@ -1203,6 +1207,7 @@ BattleAnim_HydroPump:
 	anim_ret
 
 BattleAnim_Surf:
+	anim_setobjpal PAL_BATTLE_OB_BLUE, PAL_BTLCUSTOM_WATER
 	anim_1gfx ANIM_GFX_BUBBLE
 	anim_bgeffect ANIM_BG_SURF, $0, $0, $0
 	anim_obj ANIM_OBJ_SURF,  11, 0,  13, 0, $8
@@ -2091,6 +2096,7 @@ BattleAnim_ConfuseRay:
 	anim_ret
 
 BattleAnim_AquaTail:
+	anim_setobjpal PAL_BATTLE_OB_BLUE, PAL_BTLCUSTOM_WATER
 	anim_3gfx ANIM_GFX_HIT, ANIM_GFX_BUBBLE, ANIM_GFX_SAND
 	anim_sound 0, 1, SFX_RAZOR_WIND
 	anim_call BattleAnim_TargetObj_2Row
@@ -3246,6 +3252,7 @@ BattleAnim_Harden: ; removed
 	anim_ret
 
 BattleAnim_SeismicToss:
+	anim_setobjpal PAL_BATTLE_OB_BLUE, PAL_BTLCUSTOM_GLOBE
 	anim_1gfx ANIM_GFX_SPEED
 	anim_sound 0, 0, SFX_MENU
 	anim_bgeffect ANIM_BG_HIDE_MON, $0, $1, $0
@@ -3368,6 +3375,7 @@ BattleAnim_Barrier:
 	anim_ret
 
 BattleAnim_Waterfall:
+	anim_setobjpal PAL_BATTLE_OB_GRAY, PAL_BTLCUSTOM_WATER
 	anim_1gfx ANIM_GFX_HIT
 	anim_call BattleAnim_TargetObj_2Row
 	anim_bgeffect ANIM_BG_BODY_SLAM, $0, $1, $0
@@ -4846,7 +4854,7 @@ BattleAnim_Megahorn:
 	anim_ret
 
 BattleAnim_Dragonbreath:
-	anim_setobjpal PAL_BATTLE_OB_RED, PAL_BTLCUSTOM_FIRE
+	anim_setobjpal PAL_BATTLE_OB_RED, PAL_BTLCUSTOM_DRAGON_FIRE
 	anim_1gfx ANIM_GFX_FIRE
 	anim_sound 6, 2, SFX_EMBER
 .loop
@@ -4962,7 +4970,7 @@ BattleAnim_MetalClaw:
 
 ; Dragon Claw animation from Pokémon Prism
 BattleAnim_DragonClaw:
-	anim_setobjpal PAL_BATTLE_OB_RED, PAL_BTLCUSTOM_FIRE
+	anim_setobjpal PAL_BATTLE_OB_RED, PAL_BTLCUSTOM_DRAGON_FIRE
 	anim_2gfx ANIM_GFX_CUT, ANIM_GFX_FIRE
 	anim_obp0 0, 1, 2, 3
 	anim_bgeffect ANIM_BG_SHAKE_SCREEN_X, $40, $2, $0
@@ -5150,6 +5158,7 @@ BattleAnim_CrossChop:
 
 ; Aqua Jet animation from Pokémon Prism
 BattleAnim_AquaJet:
+	anim_setobjpal PAL_BATTLE_OB_BLUE, PAL_BTLCUSTOM_WATER
 	anim_3gfx ANIM_GFX_SPEED, ANIM_GFX_HIT, ANIM_GFX_WATER
 	anim_sound 0, 0, SFX_MENU
 	anim_bgeffect ANIM_BG_HIDE_MON, $0, $1, $0
@@ -5437,6 +5446,7 @@ BattleAnim_BrickBreak:
 	anim_ret
 
 BattleAnim_Whirlpool:
+	anim_setobjpal PAL_BATTLE_OB_GRAY, PAL_BTLCUSTOM_WATER
 	anim_1gfx ANIM_GFX_WIND
 	anim_bgeffect ANIM_BG_WHIRLPOOL, $0, $0, $0
 	anim_sound 0, 1, SFX_SURF
