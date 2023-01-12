@@ -4454,12 +4454,11 @@ BattleAnim_Swagger:
 	anim_ret
 
 BattleAnim_ShellSmash:
-	anim_setobjpal PAL_BATTLE_OB_BROWN, PAL_BTLCUSTOM_GRAY
 	anim_3gfx ANIM_GFX_REFLECT, ANIM_GFX_HIT, ANIM_GFX_ROCKS
 	anim_bgeffect ANIM_BG_RETURN_MON, $0, $1, $0
 	anim_wait 6
 	anim_sound 0, 0, SFX_SHINE
-	anim_obj ANIM_OBJ_WITHDRAW, 48, 106, $0
+	anim_obj ANIM_OBJ_SHELL_SMASH_SHELL, 48, 106, $0
 	anim_wait 16
 	anim_bgeffect ANIM_BG_CYCLE_MID_OBPALS_GRAY_AND_YELLOW, $0, $0, $0
 	anim_bgeffect ANIM_BG_SHAKE_SCREEN_X, $58, $2, $0
@@ -4469,13 +4468,14 @@ BattleAnim_ShellSmash:
 	anim_incbgeffect ANIM_BG_CYCLE_MID_OBPALS_GRAY_AND_YELLOW
 	anim_incbgeffect ANIM_BG_SHAKE_SCREEN_X
 	anim_wait 1
+	anim_bgeffect ANIM_BG_FLASH_INVERTED, $0, $4, $2
 	anim_bgeffect ANIM_BG_ENTER_MON, $0, $1, $0
 	anim_sound 0, 1, SFX_KARATE_CHOP
-	anim_obj ANIM_OBJ_HIT_BIG_YFIX, 48, 106, $0
-	anim_obj ANIM_OBJ_ROCK_SMASH, 48, 106, $5c
-	anim_obj ANIM_OBJ_ROCK_SMASH, 48, 106, $e8
-	anim_obj ANIM_OBJ_ROCK_SMASH, 48, 106, $d0
-	anim_obj ANIM_OBJ_ROCK_SMASH, 48, 106, $50
+	anim_obj ANIM_OBJ_SHELL_SMASH_HIT, 48, 106, $0
+	anim_obj ANIM_OBJ_SHELL_SMASH, 48, 106, $5c
+	anim_obj ANIM_OBJ_SHELL_SMASH, 48, 106, $e8
+	anim_obj ANIM_OBJ_SHELL_SMASH, 48, 106, $d0
+	anim_obj ANIM_OBJ_SHELL_SMASH, 48, 106, $50
 	anim_wait 12
 	anim_bgeffect ANIM_BG_FADE_MON_TO_BLACK_REPEATING, $0, $1, $40
 	anim_call BattleAnim_ShowMon_0
