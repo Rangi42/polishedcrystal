@@ -14,14 +14,29 @@ if !DEF(MONOCHROME)
 	RGB 00, 00, 00
 ; ice
 	RGB 31, 31, 31
-	RGB 00, 22, 29
-	RGB 06, 18, 30
+	RGB 15, 27, 29
+	RGB 14, 25, 31
 	RGB 00, 00, 00
 ; fire
 	RGB 31, 31, 31
 	RGB 31, 24, 02
 	RGB 29, 03, 04
 	RGB 00, 00, 00
+; globe
+	RGB 31, 31, 31
+	RGB 03, 22, 31
+	RGB 04, 19, 08
+	RGB 00, 00, 00
+; water
+	RGB 31, 31, 31
+	RGB 00, 19, 28
+	RGB 08, 09, 28
+	RGB 00, 00, 00
+; dragonfire
+	RGB 31, 31, 31
+	RGB 31, 26, 09
+	RGB 27, 08, 22
+	RGB 03, 10, 30
 else
 rept NUM_CUSTOM_BATTLE_PALETTES - 6
 	MONOCHROME_RGB_FOUR
