@@ -767,7 +767,9 @@ GetPreEvolution:
 	dec a
 	cp EVOLVE_STAT ; This evolution type has the extra parameter of stat comparison.
 	jr z, .inc
-	cp EVOLVE_HOLDING  ; This evolution type has the extra parameter of stat comparison.
+	cp EVOLVE_HOLDING ; This evolution type has the extra parameter of time of day comparison.
+	jr z, .inc
+	cp EVOLVE_PARTY ; This evolution type has the extra parameter of form comparison.
 	jr nz, .not_inc
 .inc
 	inc hl
