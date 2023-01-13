@@ -1001,7 +1001,7 @@ LoadMapPals:
 
 _CopyTreePal:
 	ld de, wOBPals1 + 6 palettes
-	ld a, PAL_OW_TREE
+	ld a, PAL_OW_COPY_BG_GREEN
 	ld [wNeededPalIndex], a
 CopySpritePal::
 	push af
@@ -1010,13 +1010,19 @@ CopySpritePal::
 	push de
 	ld a, [wTimeOfDayPal]
 	maskbits NUM_DAYTIMES
-	ld bc, NUM_OW_PALS palettes
+	ld bc, NUM_OW_STD_PALS palettes
 	ld hl, MapObjectPals
 	call AddNTimes
 	ld a, [wNeededPalIndex]
+	cp PAL_OW_COPY_BG_GREEN
+	jr nz, .not_copy_bg_green
+	ld hl, wBGPals1 + 2 palettes
+	jr .copy_pal
+.not_copy_bg_green
 	ld c, a
 	ld bc, 1 palettes
 	call AddNTimes
+.copy_pal
 	ld bc, 1 palettes
 	pop de
 	call FarCopyColorWRAM
@@ -1055,7 +1061,7 @@ INCLUDE "gfx/tilesets/palettes/monochrome/ob.pal"
 else
 INCLUDE "gfx/overworld/npc_sprites.pal"
 endc
-	assert_table_length NUM_OW_PALS * NUM_DAYTIMES ; morn, day, nite, eve
+	assert_table_length NUM_OW_STD_PALS * NUM_DAYTIMES ; morn, day, nite, eve
 
 RoofPals:
 	table_width PAL_COLOR_SIZE * 2 * 3, RoofPals

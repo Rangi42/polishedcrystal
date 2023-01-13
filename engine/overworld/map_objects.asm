@@ -2056,7 +2056,7 @@ ShakeGrass:
 	ret
 
 .GrassObject
-	db $80, PAL_OW_TREE, SPRITEMOVEDATA_GRASS
+	db $80, PAL_OW_COPY_BG_GREEN, SPRITEMOVEDATA_GRASS
 
 SplashPuddle:
 	push bc
