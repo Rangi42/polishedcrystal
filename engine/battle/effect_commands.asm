@@ -5973,8 +5973,6 @@ BattleCommand_defrost:
 	ret z
 	res FRZ, [hl]
 
-; Don't update the enemy's party struct in a wild battle.
-
 	ld a, MON_STATUS
 	call UserPartyAttr
 	res FRZ, [hl]
@@ -6066,9 +6064,6 @@ DoubleDamage:
 	ret
 
 DoKnockOff:
-	call CheckSubstituteOpp
-	ret nz
-
 	call OpponentCanLoseItem
 	ret z
 
