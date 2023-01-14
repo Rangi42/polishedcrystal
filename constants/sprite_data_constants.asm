@@ -41,8 +41,9 @@ ENDM
 	ow_npc_pal_const EMOTE_RED     ; 0e
 	ow_npc_pal_const EMOTE_ORANGE  ; 0f
 	ow_npc_pal_const EMOTE_BLUE    ; 10
+	ow_npc_pal_const MARLON        ; 11
 DEF NUM_OW_STD_PALS EQU const_value
-	ow_npc_pal_const COPY_BG_GREEN ; 11
-	ow_npc_pal_const COPY_BG_BROWN ; 12
+	ow_npc_pal_const COPY_BG_GREEN ; 12
+	ow_npc_pal_const COPY_BG_BROWN ; 13
 DEF NUM_OW_PALS EQU const_value
 	assert NUM_OW_PALS < 32 ; PAL_NPC_* must fit in 5 bits
