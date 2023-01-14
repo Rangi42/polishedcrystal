@@ -361,7 +361,7 @@ ENDM
 	map_const ROUTE_13_WEST,                              12, 10 ;  3
 	map_const ROUTE_14,                                   12, 19 ;  4
 	map_const ROUTE_15,                                   20,  9 ;  5
-	map_const ROUTE_18_EAST,                              14, 11 ;  6
+	map_const ROUTE_18_EAST,                              12, 11 ;  6
 	map_const FUCHSIA_CITY,                               20, 18 ;  7
 	map_const FUCHSIA_MART,                                6,  4 ;  8
 	map_const FUCHSIA_GYM,                                 5,  9 ;  9
@@ -432,7 +432,7 @@ ENDM
 	map_const ROUTE_16_NORTHEAST,                         11, 11 ;  2
 	map_const ROUTE_16_SOUTH,                             11, 11 ;  3
 	map_const ROUTE_17,                                   10, 63 ;  4
-	map_const ROUTE_18_WEST,                              10,  9 ;  5
+	map_const ROUTE_18_WEST,                              12,  9 ;  5
 	map_const URAGA_CHANNEL_EAST,                         23,  9 ;  6
 	map_const CELADON_CITY,                               22, 18 ;  7
 	map_const CELADON_DEPT_STORE_1F,                       8,  4 ;  8

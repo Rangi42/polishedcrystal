@@ -681,25 +681,22 @@ CalcPkmnStatC:
 	push hl
 	push de
 	push bc
-	ld a, b
-	ld d, a
+	ld d, b
 	push hl
 	ld hl, wBaseStats - 1 ; has to be decreased, because 'c' begins with 1
 	ld b, 0
 	add hl, bc
-	ld a, [hl]
-	ld e, a
+	ld e, [hl]
 	pop hl
 	push hl
 	ld a, d
-	and a
+	and TRUE
 	jr z, .no_evs
 	ld a, [wInitialOptions2]
 	and EV_OPTMASK
 	jr z, .no_evs
 	add hl, bc
-	ld a, [hl]
-	ld b, a
+	ld b, [hl]
 .no_evs
 	pop hl
 	push bc

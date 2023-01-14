@@ -772,8 +772,8 @@ RecalculatePartyMonStats:
 	ld a, [wCurPartyMon]
 	ld hl, wPartyMon1HyperTraining
 	call SkipNames
-	ld a, [hl]
-	ld b, a ; b = hyper training
+	ld b, [hl] ; b = hyper training
+	inc b ; use EVs on calculation
 
 	ld a, MON_MAXHP ; de = pointer to stats
 	call GetPartyParamLocationAndValue
