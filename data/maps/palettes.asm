@@ -1410,15 +1410,6 @@ else
 INCLUDE "gfx/tilesets/bg_tiles_overcast.pal"
 endc
 
-OvercastOBPalette:
-if DEF(HGSS)
-INCLUDE "gfx/tilesets/palettes/hgss/ob_overcast.pal"
-elif DEF(MONOCHROME)
-INCLUDE "gfx/tilesets/palettes/monochrome/ob_overcast.pal"
-else
-INCLUDE "gfx/overworld/npc_sprites_overcast.pal"
-endc
-
 MartBluePalette:
 if !DEF(MONOCHROME)
 	RGB 20, 27, 28

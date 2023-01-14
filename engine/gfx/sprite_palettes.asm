@@ -79,3 +79,12 @@ DarknessOBPalette:
 	table_width 1 palettes, DarknessOBPalette
 INCLUDE "gfx/overworld/npc_sprites_darkness.pal"
 	assert_table_length NUM_OW_STD_PALS
+
+OvercastOBPalette:
+if DEF(HGSS)
+INCLUDE "gfx/tilesets/palettes/hgss/ob_overcast.pal"
+elif DEF(MONOCHROME)
+INCLUDE "gfx/tilesets/palettes/monochrome/ob_overcast.pal"
+else
+INCLUDE "gfx/overworld/npc_sprites_overcast.pal"
+endc
