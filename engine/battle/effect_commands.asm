@@ -6066,9 +6066,6 @@ DoubleDamage:
 	ret
 
 DoKnockOff:
-	call CheckSubstituteOpp
-	ret nz
-
 	call OpponentCanLoseItem
 	ret z
 
