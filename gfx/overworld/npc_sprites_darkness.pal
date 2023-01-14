@@ -17,6 +17,7 @@ if !DEF(MONOCHROME)
 	RGB 31,31,31, 31,31,31, 31,16,01, 00,00,00 ; emote orange
 	RGB 31,31,31, 31,31,31, 00,00,31, 00,00,00 ; emote blue
 	RGB 01,01,02, 04,04,04, 02,02,02, 00,00,00 ; marlon
+	RGB 27,31,27, 31,31,30, 19,24,31, 05,10,27 ; electric fence
 else
 	MONOCHROME_RGB_FOUR_OW_DARKNESS           ; red
 	MONOCHROME_RGB_FOUR_OW_DARKNESS           ; blue
@@ -36,4 +37,5 @@ else
 	RGB_MONOCHROME WHITE, WHITE, DARK, BLACK  ; emote orange
 	RGB_MONOCHROME WHITE, WHITE, DARK, BLACK  ; emote blue
 	MONOCHROME_RGB_FOUR_OW_DARKNESS           ; marlon
+	RGB_MONOCHROME WHITE, WHITE, DARK, BLACK  ; electic fence
 endc
