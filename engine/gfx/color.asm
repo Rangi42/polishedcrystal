@@ -1008,21 +1008,21 @@ CopySpritePal::
 	push bc
 	push hl
 	push de
+	ld a, [wNeededPalIndex]
+	ld hl, wBGPals1 + PAL_BG_BROWN palettes
+	cp PAL_OW_COPY_BG_BROWN
+	jr z, .got_pal
+	cp PAL_OW_COPY_BG_GREEN
+	ld hl, wBGPals1 + PAL_BG_GREEN palettes
+	jr z, .got_pal
+	ld hl, MapObjectPals
+	ld bc, 1 palettes
+	rst AddNTimes
 	ld a, [wTimeOfDayPal]
 	maskbits NUM_DAYTIMES
 	ld bc, NUM_OW_STD_PALS palettes
-	ld hl, MapObjectPals
-	call AddNTimes
-	ld a, [wNeededPalIndex]
-	cp PAL_OW_COPY_BG_GREEN
-	jr nz, .not_copy_bg_green
-	ld hl, wBGPals1 + 2 palettes
-	jr .copy_pal
-.not_copy_bg_green
-	ld c, a
-	ld bc, 1 palettes
-	call AddNTimes
-.copy_pal
+	rst AddNTimes
+.got_pal
 	ld bc, 1 palettes
 	pop de
 	call FarCopyColorWRAM
@@ -1033,7 +1033,6 @@ CopySpritePal::
 	ld a, TRUE
 	ldh [hCGBPalUpdate], a
 .skip_apply
-.done
 	pop af
 	pop bc
 	pop hl
