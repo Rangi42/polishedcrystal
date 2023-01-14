@@ -696,3 +696,8 @@ INCLUDE "engine/items/type_chart.asm"
 SECTION "VWF", ROMX
 
 INCLUDE "engine/gfx/vwf.asm"
+
+
+SECTION "Sprite Palettes", ROMX
+
+INCLUDE "engine/gfx/sprite_palettes.asm"

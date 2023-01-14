@@ -1401,11 +1401,6 @@ endr
 	RGB_MONOCHROME_BLACK
 endc
 
-DarknessOBPalette:
-	table_width 1 palettes, DarknessOBPalette
-INCLUDE "gfx/overworld/npc_sprites_darkness.pal"
-	assert_table_length NUM_OW_STD_PALS
-
 OvercastBGPalette:
 if DEF(HGSS)
 INCLUDE "gfx/tilesets/palettes/hgss/ob.pal"

@@ -429,12 +429,6 @@ ApplyPals:
 	ld bc, 16 palettes
 	jmp FarCopyColorWRAM
 
-ApplyOBPals:
-	ld hl, wOBPals1
-	ld de, wOBPals2
-	ld bc, 8 palettes
-	jmp FarCopyColorWRAM
-
 LoadMailPalettes:
 	ld l, a
 	ld h, 0
@@ -951,8 +945,6 @@ LoadMapPals:
 	set NO_DYN_PAL_APPLY_F, [hl]
 	call CheckForUsedObjPals
 
-	farcall LoadSpecialMapOBPalette
-
 	ld a, [wMapTileset]
 	cp TILESET_SNOWTOP_MOUNTAIN
 	ret z
@@ -999,45 +991,6 @@ LoadMapPals:
 	ld bc, 4
 	jmp FarCopyColorWRAM
 
-_CopyTreePal:
-	ld de, wOBPals1 + 6 palettes
-	ld a, PAL_OW_COPY_BG_GREEN
-	ld [wNeededPalIndex], a
-CopySpritePal::
-	push af
-	push bc
-	push hl
-	push de
-	ld a, [wNeededPalIndex]
-	ld hl, wBGPals1 + PAL_BG_BROWN palettes
-	cp PAL_OW_COPY_BG_BROWN
-	jr z, .got_pal
-	cp PAL_OW_COPY_BG_GREEN
-	ld hl, wBGPals1 + PAL_BG_GREEN palettes
-	jr z, .got_pal
-	ld hl, MapObjectPals
-	ld bc, 1 palettes
-	rst AddNTimes
-	ld a, [wTimeOfDayPal]
-	maskbits NUM_DAYTIMES
-	ld bc, NUM_OW_STD_PALS palettes
-	rst AddNTimes
-.got_pal
-	ld bc, 1 palettes
-	pop de
-	call FarCopyColorWRAM
-	ld hl, wPalFlags
-	bit NO_DYN_PAL_APPLY_F, [hl]
-	jr nz, .skip_apply
-	call ApplyOBPals
-	ld a, TRUE
-	ldh [hCGBPalUpdate], a
-.skip_apply
-	pop af
-	pop bc
-	pop hl
-	ret
-
 INCLUDE "data/maps/environment_colors.asm"
 
 TilesetBGPalette::
@@ -1050,17 +1003,6 @@ else
 INCLUDE "gfx/tilesets/bg_tiles.pal"
 endc
 	assert_table_length 8 * 5 + 4 ; morn, day, nite, eve, indoor, water
-
-MapObjectPals:
-	table_width 1 palettes, MapObjectPals
-if DEF(HGSS)
-INCLUDE "gfx/tilesets/palettes/hgss/ob.pal"
-elif DEF(MONOCHROME)
-INCLUDE "gfx/tilesets/palettes/monochrome/ob.pal"
-else
-INCLUDE "gfx/overworld/npc_sprites.pal"
-endc
-	assert_table_length NUM_OW_STD_PALS * NUM_DAYTIMES ; morn, day, nite, eve
 
 RoofPals:
 	table_width PAL_COLOR_SIZE * 2 * 3, RoofPals
