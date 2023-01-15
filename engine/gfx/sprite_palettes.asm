@@ -14,6 +14,9 @@ CopySpritePal::
 	cp PAL_OW_COPY_BG_GREEN
 	ld hl, wBGPals1 + PAL_BG_GREEN palettes
 	jr z, .got_pal
+	cp PAL_OW_COPY_BG_GRAY
+	ld hl, wBGPals1 + PAL_BG_GRAY palettes
+	jr z, .got_pal
 
 	; CHECK DARKNESS
 	push hl
