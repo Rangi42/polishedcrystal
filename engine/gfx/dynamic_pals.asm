@@ -167,17 +167,17 @@ CheckAlolanExeggutorPals:
 ; This sprite movement's facing uses NEXT_PALETTE, and assumes
 ; that PAL_OW_BROWN exists right after PAL_OW_GREEN.
 
-	ld a, %00000011
+	ld a, %00000110
 	ld [wUsedObjectPals], a
 
 	ld a, PAL_OW_GREEN
-	ld [wLoadedObjPal0], a
-	ld [wNeededPalIndex], a
-	ld de, wOBPals1
-	farcall CopySpritePal
-
-	ld a, PAL_OW_BROWN
 	ld [wLoadedObjPal1], a
 	ld [wNeededPalIndex], a
 	ld de, wOBPals1 + 1 palettes
+	farcall CopySpritePal
+
+	ld a, PAL_OW_BROWN
+	ld [wLoadedObjPal2], a
+	ld [wNeededPalIndex], a
+	ld de, wOBPals1 + 2 palettes
 	farjp CopySpritePal
