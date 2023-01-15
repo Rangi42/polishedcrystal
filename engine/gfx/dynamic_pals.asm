@@ -19,6 +19,23 @@ CheckForUsedObjPals::
 
 	call CheckAlolanExeggutorPals
 
+	; Scan for active objects first and mark in use.
+	ld hl, wPalFlags
+	set SCAN_OBJECTS_FIRST_F, [hl]
+	call .ScanObjectStructs
+
+	; Scan for active objects and load any unloaded pals
+	ld hl, wPalFlags
+	res SCAN_OBJECTS_FIRST_F, [hl]
+	call .ScanObjectStructs
+
+.done
+	; If this flag was set, it's time to reset it
+	ld hl, wPalFlags
+	res NO_DYN_PAL_APPLY_F, [hl]
+	jmp PopAFBCDEHL
+
+.ScanObjectStructs
 	ld de, wObjectStructs
 	ld b, NUM_OBJECT_STRUCTS
 .loop
@@ -48,18 +65,12 @@ CheckForUsedObjPals::
 	ld [hl], a
 .no_sprite_skip
 	dec b
-	jr z, .done
+	ret z
 	ld hl, OBJECT_LENGTH
 	add hl, de
 	ld d, h
 	ld e, l
 	jr .loop
-
-.done
-	; If this flag was set, it's time to reset it
-	ld hl, wPalFlags
-	res NO_DYN_PAL_APPLY_F, [hl]
-	jmp PopAFBCDEHL
 
 MarkUsedPal:
 	push hl
@@ -76,6 +87,10 @@ MarkUsedPal:
 	inc c
 	dec b
 	jr nz, .loop
+
+	ld hl, wPalFlags
+	bit SCAN_OBJECTS_FIRST_F, [hl]
+	jr nz, .done
 
 	ld b, a
 	push bc

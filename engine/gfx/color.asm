@@ -940,10 +940,10 @@ LoadMapPals:
 	ldh [rSVBK], a
 
 .got_pals
-	call ClearSavedObjPals
+	farcall ClearSavedObjPals
 	ld hl, wPalFlags
 	set NO_DYN_PAL_APPLY_F, [hl]
-	call CheckForUsedObjPals
+	farcall CheckForUsedObjPals
 
 	ld a, [wMapTileset]
 	cp TILESET_SNOWTOP_MOUNTAIN

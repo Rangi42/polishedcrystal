@@ -782,8 +782,8 @@ FlyFunction:
 
 .ReturnFromFly:
 	farcall ReturnFromFly_SpawnOnlyPlayer
-	call ClearSavedObjPals
-	call CheckForUsedObjPals
+	farcall ClearSavedObjPals
+	farcall CheckForUsedObjPals
 	call DelayFrame
 	jmp UpdatePlayerSprite
 

@@ -698,6 +698,7 @@ SECTION "VWF", ROMX
 INCLUDE "engine/gfx/vwf.asm"
 
 
-SECTION "Sprite Palettes", ROMX
+SECTION "Dynamic Pals System", ROMX
 
 INCLUDE "engine/gfx/sprite_palettes.asm"
+INCLUDE "engine/gfx/dynamic_pals.asm"

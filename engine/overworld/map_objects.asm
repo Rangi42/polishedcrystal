@@ -22,7 +22,7 @@ DeleteMapObject::
 	ld [hl], -1
 .ok
 	pop bc
-	jp CheckForUsedObjPals
+	farjp CheckForUsedObjPals
 
 HandleObjectStep:
 	call _CheckObjectStillVisible

@@ -17,7 +17,7 @@ MenuTextboxWaitButton::
 ExitMenu::
 	push af
 	farcall _ExitMenu
-	call ClearSavedObjPals
+	farcall ClearSavedObjPals
 	pop af
 	ret
 

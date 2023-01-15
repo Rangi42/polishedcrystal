@@ -158,7 +158,7 @@ CopyObjectStruct::
 	ld hl, OBJECT_FLAGS2
 	add hl, de
 	set 5, [hl]
-	jp CheckForUsedObjPals
+	farjp CheckForUsedObjPals
 
 CopyMapObjectToObjectStruct:
 	ld a, TRUE
@@ -471,7 +471,7 @@ CopyTempObjectToObjectStruct:
 	add hl, de
 	ld [hl], a
 
-	call CheckForUsedObjPals
+	farcall CheckForUsedObjPals
 
 	and a
 	ret
