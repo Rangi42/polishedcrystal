@@ -85,8 +85,7 @@ _GetFlyMonColor:
 	ld [wCurPartySpecies], a
 	ld a, MON_SHINY
 	call GetPartyParamLocationAndValue
-	call GetMonIconPalette
-	ret
+	jr GetMonIconPalette
 
 SetFlyMonColor:
 	push hl
