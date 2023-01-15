@@ -95,7 +95,6 @@ HandleMap:
 	cp MAPSTATUS_HANDLE
 	ret nz
 
-	call CheckForUsedObjPals
 	call HandleMapObjects
 	call NextOverworldFrame
 	call HandleMapBackground

@@ -11,6 +11,7 @@ CheckForUsedObjPals::
 	push hl
 	push de
 	push bc
+	push af
 
 	; reset all wUsedObjectPals bits
 	xor a
@@ -58,7 +59,7 @@ CheckForUsedObjPals::
 	; If this flag was set, it's time to reset it
 	ld hl, wPalFlags
 	res NO_DYN_PAL_APPLY_F, [hl]
-	jmp PopBCDEHL
+	jmp PopAFBCDEHL
 
 MarkUsedPal:
 	push hl
