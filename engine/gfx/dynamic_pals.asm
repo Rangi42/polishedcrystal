@@ -180,4 +180,4 @@ CheckAlolanExeggutorPals:
 	ld [wLoadedObjPal2], a
 	ld [wNeededPalIndex], a
 	ld de, wOBPals1 + 2 palettes
-	jp CopySpritePal
+	jmp CopySpritePal
