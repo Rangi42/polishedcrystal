@@ -45,8 +45,9 @@ ENDM
 	ow_npc_pal_const ELECTRIC_FENCE    ; 12
 	ow_npc_pal_const LIGHTNING_CRYSTAL ; 13
 	ow_npc_pal_const ROCK_CRYSTAL      ; 14
+	ow_npc_pal_const N64               ; 15
 DEF NUM_OW_STD_PALS EQU const_value
-	ow_npc_pal_const COPY_BG_GREEN     ; 15
-	ow_npc_pal_const COPY_BG_BROWN     ; 16
+	ow_npc_pal_const COPY_BG_GREEN     ; 16
+	ow_npc_pal_const COPY_BG_BROWN     ; 17
 DEF NUM_OW_PALS EQU const_value
 	assert NUM_OW_PALS < 32 ; PAL_NPC_* must fit in 5 bits
