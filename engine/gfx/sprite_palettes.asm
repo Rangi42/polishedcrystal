@@ -1,3 +1,18 @@
+_CopyPlayerPals:
+	push de
+	ld de, wOBPals1
+	ld a, PAL_OW_RED
+	ld [wNeededPalIndex], a
+	call CopySpritePal
+	ld a, PAL_OW_BLUE
+	ld [wNeededPalIndex], a
+	call CopySpritePal
+	ld a, PAL_OW_GREEN
+	ld [wNeededPalIndex], a
+	call CopySpritePal
+	pop de
+	ret
+
 _CopyTreePal:
 	ld de, wOBPals1 + 6 palettes
 	ld a, PAL_OW_COPY_BG_GREEN

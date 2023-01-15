@@ -297,6 +297,7 @@ MagnetTrain_Jumptable:
 	ld d, (8 + 2) * TILE_WIDTH + 5
 	ld a, [wMagnetTrainPlayerSpriteInitX]
 	ld e, a
+	farcall _CopyPlayerPals
 	ldh a, [rSVBK]
 	push af
 	ld a, BANK(wPlayerGender)
