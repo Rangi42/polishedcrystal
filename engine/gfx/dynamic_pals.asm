@@ -19,12 +19,12 @@ CheckForUsedObjPals::
 
 	call CheckAlolanExeggutorPals
 
-	; Scan for active objects first and mark in use.
+	; Scan for active objects first and mark those pals still in use.
 	ld hl, wPalFlags
 	set SCAN_OBJECTS_FIRST_F, [hl]
 	call .ScanObjectStructs
 
-	; Scan for active objects and load any unloaded pals
+	; Scan for active objects that still need pals loaded
 	ld hl, wPalFlags
 	res SCAN_OBJECTS_FIRST_F, [hl]
 	call .ScanObjectStructs
@@ -88,6 +88,8 @@ MarkUsedPal:
 	dec b
 	jr nz, .loop
 
+	; If this is the first pass, we do not want to 
+	; load any pals yet, just mark the still active pals
 	ld hl, wPalFlags
 	bit SCAN_OBJECTS_FIRST_F, [hl]
 	jr nz, .done
