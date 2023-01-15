@@ -132,7 +132,7 @@ MarkUsedPal:
 	call AddNTimes
 	ld d, h
 	ld e, l
-	farcall CopySpritePal
+	call CopySpritePal
 	pop bc
 
 	; Set the corresponding bit in wUsedObjectPals
@@ -174,10 +174,10 @@ CheckAlolanExeggutorPals:
 	ld [wLoadedObjPal1], a
 	ld [wNeededPalIndex], a
 	ld de, wOBPals1 + 1 palettes
-	farcall CopySpritePal
+	call CopySpritePal
 
 	ld a, PAL_OW_BROWN
 	ld [wLoadedObjPal2], a
 	ld [wNeededPalIndex], a
 	ld de, wOBPals1 + 2 palettes
-	farjp CopySpritePal
+	jp CopySpritePal
