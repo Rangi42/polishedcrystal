@@ -15,7 +15,7 @@ IcePathB3F_MapScriptHeader:
 	def_object_events
 	object_event 10,  3, SPRITE_LORELEI, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, LoreleiScript, -1
 	itemball_event  5,  7, NEVERMELTICE, 1, EVENT_ICE_PATH_B3F_NEVERMELTICE
-	smashrock_event  6, 6
+	smashrock_event  6, 6, -1, PAL_NPC_COPY_BG_BROWN
 
 	object_const_def
 	const ICEPATHB3F_LORELEI
