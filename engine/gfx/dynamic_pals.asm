@@ -15,8 +15,6 @@ DisableDynPalUpdates::
 EnableDynPalUpdates::
 	ld hl, wPalFlags
 	res DISABLE_DYN_PAL_F, [hl]
-	ret
-
 CheckForUsedObjPals::
 	push hl
 	push de
