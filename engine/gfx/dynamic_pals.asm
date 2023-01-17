@@ -15,6 +15,7 @@ DisableDynPalUpdates::
 EnableDynPalUpdates::
 	ld hl, wPalFlags
 	res DISABLE_DYN_PAL_F, [hl]
+; fallthrough to manually run CheckForUsedObjPals
 CheckForUsedObjPals::
 	push hl
 	push de
