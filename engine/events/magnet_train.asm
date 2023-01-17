@@ -294,6 +294,8 @@ MagnetTrain_Jumptable:
 	ret
 
 .InitPlayerSpriteAnim:
+	ld hl, wPalFlags
+	set USE_DAYTIME_PAL_F, [hl]
 	ld d, (8 + 2) * TILE_WIDTH + 5
 	ld a, [wMagnetTrainPlayerSpriteInitX]
 	ld e, a
@@ -362,6 +364,8 @@ MagnetTrain_Jumptable:
 	ret
 
 .TrainArrived:
+	ld hl, wPalFlags
+	res USE_DAYTIME_PAL_F, [hl]
 	ld a, $80
 	ld [wJumptableIndex], a
 	ld de, SFX_TRAIN_ARRIVED
