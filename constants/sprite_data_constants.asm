@@ -57,4 +57,4 @@ DEF NUM_OW_STD_PALS EQU const_value
 	ow_npc_pal_const COPY_BG_BROWN     ; 1d
 	ow_npc_pal_const COPY_BG_GRAY      ; 1e
 DEF NUM_OW_PALS EQU const_value
-	assert NUM_OW_PALS < 32 ; PAL_NPC_* must fit in 5 bits
+	assert NUM_OW_PALS < 256 ; PAL_NPC_* must fit in a byte.

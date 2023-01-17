@@ -86,6 +86,7 @@ MACRO def_object_events
 ENDM
 
 MACRO object_event
+; TODO: Remove unused argument \7 (Old HOUR_1)
 	db \3 ; sprite
 	db \2 + 4 ; y
 	db \1 + 4 ; x
@@ -95,9 +96,9 @@ MACRO object_event
 	else
 		dn \5, \6 ; radius: y, x
 	endc
-	db \7 ; clock_hour
-	db \8 ; clock_daytime
-	db \9 | (\<10> << 5) ; palette, type
+	db \9 ; palette
+	db \8 ; time of day
+	db \<10> ; type
 	if \<10> == OBJECTTYPE_COMMAND
 		db \<11>_command ; command id
 	elif \3 == SPRITE_MON_ICON

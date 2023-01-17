@@ -35,9 +35,6 @@ _CheckTrainerBattle::
 	ld hl, MAPOBJECT_TYPE
 	add hl, de
 	ld a, [hl]
-	and MAPOBJECT_TYPE_MASK
-	swap a
-	rra
 	cp OBJECTTYPE_TRAINER
 	jr z, .is_trainer
 	cp OBJECTTYPE_GENERICTRAINER
@@ -120,9 +117,6 @@ LoadTrainer_continue::
 	ld hl, MAPOBJECT_TYPE
 	add hl, bc
 	ld a, [hl]
-	and MAPOBJECT_TYPE_MASK
-	swap a
-	rra
 	cp OBJECTTYPE_GENERICTRAINER
 	push af
 	ld hl, MAPOBJECT_SCRIPT_POINTER

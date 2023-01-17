@@ -31,15 +31,18 @@ SpawnPlayer:
 	ld hl, MAPOBJECT_PALETTE
 	add hl, bc
 	ld a, [wPlayerGender]
-	ld e, PAL_NPC_RED | (OBJECTTYPE_SCRIPT << 5)
+	lb de, PAL_NPC_RED, OBJECTTYPE_SCRIPT
 	and a ; PLAYER_MALE
 	jr z, .ok
-	ld e, PAL_NPC_BLUE | (OBJECTTYPE_SCRIPT << 5)
+	lb de, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT
 	dec a ; PLAYER_FEMALE
 	jr z, .ok
 	; PLAYER_ENBY
-	ld e, PAL_NPC_GREEN | (OBJECTTYPE_SCRIPT << 5)
+	lb de, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT
 .ok
+	ld [hl], d
+	ld hl, MAPOBJECT_TYPE
+	add hl, bc
 	ld [hl], e
 	xor a
 	ldh [hMapObjectIndexBuffer], a
@@ -186,7 +189,7 @@ CopyMapObjectToObjectStruct:
 	ld hl, MAPOBJECT_PALETTE
 	add hl, bc
 	ld a, [hl]
-	and MAPOBJECT_PALETTE_MASK
+	and a
 	jr z, .skip_color_override
 	dec a
 	ld [wTempObjectCopyPalette], a
