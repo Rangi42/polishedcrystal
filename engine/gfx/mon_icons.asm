@@ -85,7 +85,7 @@ _GetFlyMonColor:
 	ld [wCurPartySpecies], a
 	ld a, MON_SHINY
 	call GetPartyParamLocationAndValue
-	jr GetMonIconPalette
+	jmp GetMonIconPalette
 
 SetFlyMonColor:
 	push hl
@@ -95,7 +95,12 @@ SetFlyMonColor:
 	call _GetFlyMonColor
 	ld de, wOBPals1 + 3 palettes
 	ld [wNeededPalIndex], a
+	ld hl, wPalFlags
+	push hl
+	set USE_DAYTIME_PAL_F, [hl]
 	farcall CopySpritePal
+	pop hl
+	res USE_DAYTIME_PAL_F, [hl]
 	ld a, 3 ; OBJ 3
 	jr _SetMonColor
 
