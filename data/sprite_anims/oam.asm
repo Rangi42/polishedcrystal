@@ -29,8 +29,8 @@ SpriteAnimOAMData:
 	spriteanimoam $0e, .OAMData_TradePoofBubble        ; SPRITE_ANIM_OAMSET_TRADE_POOF_3
 	spriteanimoam $12, .OAMData_TradeTubeBulge         ; SPRITE_ANIM_OAMSET_TRADE_TUBE_BULGE_1
 	spriteanimoam $13, .OAMData_TradeTubeBulge         ; SPRITE_ANIM_OAMSET_TRADE_TUBE_BULGE_2
-	spriteanimoam $00, .OAMData_RedWalk                ; SPRITE_ANIM_OAMSET_TRADEMON_ICON_1
-	spriteanimoam $04, .OAMData_RedWalk                ; SPRITE_ANIM_OAMSET_TRADEMON_ICON_2
+	spriteanimoam $00, .OAMData_TradeMonIcon           ; SPRITE_ANIM_OAMSET_TRADEMON_ICON_1
+	spriteanimoam $04, .OAMData_TradeMonIcon           ; SPRITE_ANIM_OAMSET_TRADEMON_ICON_2
 	spriteanimoam $10, .OAMData_TradePoofBubble        ; SPRITE_ANIM_OAMSET_TRADEMON_BUBBLE
 	spriteanimoam $00, .OAMData_MagnetTrainRed         ; SPRITE_ANIM_OAMSET_EVOLUTION_BALL_OF_LIGHT_1
 	spriteanimoam $04, .OAMData_1x1_Palette0           ; SPRITE_ANIM_OAMSET_EVOLUTION_BALL_OF_LIGHT_2
@@ -158,6 +158,13 @@ SpriteAnimOAMData:
 	dsprite -1,  0,  0,  0, $01, $0
 	dsprite  0,  0, -1,  0, $02, $0
 	dsprite  0,  0,  0,  0, $03, $0
+
+.OAMData_TradeMonIcon:
+	db 4
+	dsprite -1,  0, -1,  0, $00, $1
+	dsprite -1,  0,  0,  0, $01, $1
+	dsprite  0,  0, -1,  0, $02, $1
+	dsprite  0,  0,  0,  0, $03, $1
 
 .OAMData_PartyMon:
 	db 4

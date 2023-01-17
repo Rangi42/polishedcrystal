@@ -65,6 +65,10 @@ SetMenuMonIconColor:
 	ld a, [wTempIconSpecies]
 	ld [wCurPartySpecies], a
 	call GetMonIconPalette
+	ld de, wOBPals1 + 1 palettes
+	ld [wNeededPalIndex], a
+	farcall CopySpritePal
+	ld a, 1 ; OBJ 1
 	; fallthrough
 _SetMonColor:
 	ld hl, wShadowOAM + 3
