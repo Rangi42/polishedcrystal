@@ -41,10 +41,8 @@ CopySpritePal::
 	ld hl, MapObjectPals
 	ld bc, 1 palettes
 	rst AddNTimes
-	push hl
-	ld hl, wPalFlags
-	bit USE_DAYTIME_PAL_F, [hl]
-	pop hl
+	ld a, [wPalFlags]
+	bit USE_DAYTIME_PAL_F, a
 	ld a, DAY
 	jr nz, .daytime
 	ld a, [wTimeOfDayPal]
