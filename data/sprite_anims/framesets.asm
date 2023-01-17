@@ -37,7 +37,6 @@ SpriteAnimFrameData:
 	dw .Frameset_EggHatch4
 	dw .Frameset_HeadbuttTree
 	dw .Frameset_BlueWalk
-	dw .Frameset_MagnetTrainBlue
 	dw .Frameset_IntroSuicune
 	dw .Frameset_IntroSuicune2
 	dw .Frameset_IntroPichu
@@ -64,7 +63,6 @@ SpriteAnimFrameData:
 	dw .Frameset_DexSlowpoke
 	dw .Frameset_TownMapFly
 	dw .Frameset_GreenWalk
-	dw .Frameset_MagnetTrainGreen
 	assert_table_length NUM_SPRITE_ANIM_FRAMESETS
 
 .Frameset_00:
@@ -120,20 +118,6 @@ SpriteAnimFrameData:
 	oamframe SPRITE_ANIM_OAMSET_GREEN_WALK_2,  8
 	oamframe SPRITE_ANIM_OAMSET_GREEN_WALK_1,  8
 	oamframe SPRITE_ANIM_OAMSET_GREEN_WALK_2,  8, OAM_X_FLIP
-	oamrestart
-
-.Frameset_MagnetTrainBlue:
-	oamframe SPRITE_ANIM_OAMSET_MAGNET_TRAIN_BLUE_1,  8
-	oamframe SPRITE_ANIM_OAMSET_MAGNET_TRAIN_BLUE_2,  8
-	oamframe SPRITE_ANIM_OAMSET_MAGNET_TRAIN_BLUE_1,  8
-	oamframe SPRITE_ANIM_OAMSET_MAGNET_TRAIN_BLUE_2,  8, OAM_X_FLIP
-	oamrestart
-
-.Frameset_MagnetTrainGreen:
-	oamframe SPRITE_ANIM_OAMSET_MAGNET_TRAIN_GREEN_1,  8
-	oamframe SPRITE_ANIM_OAMSET_MAGNET_TRAIN_GREEN_2,  8
-	oamframe SPRITE_ANIM_OAMSET_MAGNET_TRAIN_GREEN_1,  8
-	oamframe SPRITE_ANIM_OAMSET_MAGNET_TRAIN_GREEN_2,  8, OAM_X_FLIP
 	oamrestart
 
 .Frameset_TextEntryCursor:

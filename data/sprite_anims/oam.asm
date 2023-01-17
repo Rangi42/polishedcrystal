@@ -52,8 +52,6 @@ SpriteAnimOAMData:
 	spriteanimoam $08, .OAMData_Tree                   ; SPRITE_ANIM_OAMSET_HEADBUTT_TREE_3
 	spriteanimoam $00, .OAMData_BlueWalk               ; SPRITE_ANIM_OAMSET_BLUE_WALK_1
 	spriteanimoam $04, .OAMData_BlueWalk               ; SPRITE_ANIM_OAMSET_BLUE_WALK_2
-	spriteanimoam $00, .OAMData_MagnetTrainBlue        ; SPRITE_ANIM_OAMSET_MAGNET_TRAIN_BLUE_1
-	spriteanimoam $04, .OAMData_MagnetTrainBlue        ; SPRITE_ANIM_OAMSET_MAGNET_TRAIN_BLUE_2
 	spriteanimoam $00, .OAMData_IntroSuicune1          ; SPRITE_ANIM_OAMSET_INTRO_SUICUNE_1
 	spriteanimoam $08, .OAMData_IntroSuicune2          ; SPRITE_ANIM_OAMSET_INTRO_SUICUNE_2
 	spriteanimoam $60, .OAMData_IntroSuicune3          ; SPRITE_ANIM_OAMSET_INTRO_SUICUNE_3
@@ -102,8 +100,6 @@ SpriteAnimOAMData:
 	spriteanimoam $09, .OAMData_TownMapFly             ; SPRITE_ANIM_OAMSET_TOWN_MAP_FLY
 	spriteanimoam $00, .OAMData_GreenWalk              ; SPRITE_ANIM_OAMSET_GREEN_WALK_1
 	spriteanimoam $04, .OAMData_GreenWalk              ; SPRITE_ANIM_OAMSET_GREEN_WALK_2
-	spriteanimoam $00, .OAMData_MagnetTrainGreen       ; SPRITE_ANIM_OAMSET_MAGNET_TRAIN_GREEN_1
-	spriteanimoam $04, .OAMData_MagnetTrainGreen       ; SPRITE_ANIM_OAMSET_MAGNET_TRAIN_GREEN_2
 	assert_table_length NUM_SPRITE_ANIM_OAMSETS
 
 .OAMData_1x1_Palette0:

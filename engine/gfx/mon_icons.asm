@@ -77,8 +77,6 @@ _SetMonColor:
 	jr nz, .loop
 	jmp PopAFBCDEHL
 
-
-
 _GetFlyMonColor:
 	ld a, MON_SPECIES
 	call GetPartyParamLocationAndValue
