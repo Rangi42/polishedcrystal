@@ -7,11 +7,23 @@ ClearSavedObjPals::
 	rst ByteFill
 	ret
 
+DisableDynPalUpdates::
+	ld hl, wPalFlags
+	set DISABLE_DYN_PAL_F, [hl]
+	ret
+
+EnableDynPalUpdates::
+	ld hl, wPalFlags
+	res DISABLE_DYN_PAL_F, [hl]
 CheckForUsedObjPals::
 	push hl
 	push de
 	push bc
 	push af
+
+	ld hl, wPalFlags
+	bit DISABLE_DYN_PAL_F, [hl]
+	jmp nz, PopAFBCDEHL
 
 	; reset all wUsedObjectPals bits
 	xor a
