@@ -66,12 +66,12 @@ SpriteAnimFrameData:
 	assert_table_length NUM_SPRITE_ANIM_FRAMESETS
 
 .Frameset_00:
-	oamframe SPRITE_ANIM_OAMSET_RED_WALK_1, 32
+	oamframe SPRITE_ANIM_OAMSET_PARTY_MON_1, 32
 	oamend
 
 .Frameset_PartyMon:
-	oamframe SPRITE_ANIM_OAMSET_RED_WALK_1,  8
-	oamframe SPRITE_ANIM_OAMSET_RED_WALK_2,  8
+	oamframe SPRITE_ANIM_OAMSET_PARTY_MON_1,  8
+	oamframe SPRITE_ANIM_OAMSET_PARTY_MON_2,  8
 	oamrestart
 
 .Frameset_PartyMonWithMail:
@@ -85,8 +85,8 @@ SpriteAnimFrameData:
 	oamrestart
 
 .Frameset_PartyMonFast:
-	oamframe SPRITE_ANIM_OAMSET_RED_WALK_1,  4
-	oamframe SPRITE_ANIM_OAMSET_RED_WALK_2,  4
+	oamframe SPRITE_ANIM_OAMSET_PARTY_MON_1,  4
+	oamframe SPRITE_ANIM_OAMSET_PARTY_MON_2,  4
 	oamrestart
 
 .Frameset_PartyMonWithMailFast:
@@ -100,10 +100,10 @@ SpriteAnimFrameData:
 	oamrestart
 
 .Frameset_RedWalk:
-	oamframe SPRITE_ANIM_OAMSET_TRADEMON_ICON_1,  8
-	oamframe SPRITE_ANIM_OAMSET_TRADEMON_ICON_2,  8
-	oamframe SPRITE_ANIM_OAMSET_TRADEMON_ICON_1,  8
-	oamframe SPRITE_ANIM_OAMSET_TRADEMON_ICON_2,  8, OAM_X_FLIP
+	oamframe SPRITE_ANIM_OAMSET_RED_WALK_1,  8
+	oamframe SPRITE_ANIM_OAMSET_RED_WALK_2,  8
+	oamframe SPRITE_ANIM_OAMSET_RED_WALK_1,  8
+	oamframe SPRITE_ANIM_OAMSET_RED_WALK_2,  8, OAM_X_FLIP
 	oamrestart
 
 .Frameset_BlueWalk:

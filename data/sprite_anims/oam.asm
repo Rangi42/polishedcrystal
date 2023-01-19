@@ -7,8 +7,8 @@ ENDM
 SpriteAnimOAMData:
 ; entries correspond to SPRITE_ANIM_OAMSET_* constants (see constants/sprite_anim_constants.asm)
 	table_width 3, SpriteAnimOAMData
-	spriteanimoam $00, .OAMData_PartyMon               ; SPRITE_ANIM_OAMSET_RED_WALK_1
-	spriteanimoam $04, .OAMData_PartyMon               ; SPRITE_ANIM_OAMSET_RED_WALK_2
+	spriteanimoam $00, .OAMData_RedWalk                ; SPRITE_ANIM_OAMSET_RED_WALK_1
+	spriteanimoam $04, .OAMData_RedWalk                ; SPRITE_ANIM_OAMSET_RED_WALK_2
 	spriteanimoam $00, .OAMData_TextEntryCursor        ; SPRITE_ANIM_OAMSET_TEXT_ENTRY_CURSOR
 	spriteanimoam $00, .OAMData_TextEntryCursorBig     ; SPRITE_ANIM_OAMSET_TEXT_ENTRY_CURSOR_BIG
 	spriteanimoam $00, .OAMData_TextEntryCursorBlue    ; SPRITE_ANIM_OAMSET_TEXT_ENTRY_CURSOR_BLUE
@@ -100,6 +100,8 @@ SpriteAnimOAMData:
 	spriteanimoam $09, .OAMData_TownMapFly             ; SPRITE_ANIM_OAMSET_TOWN_MAP_FLY
 	spriteanimoam $00, .OAMData_GreenWalk              ; SPRITE_ANIM_OAMSET_GREEN_WALK_1
 	spriteanimoam $04, .OAMData_GreenWalk              ; SPRITE_ANIM_OAMSET_GREEN_WALK_2
+	spriteanimoam $00, .OAMData_PartyMon               ; SPRITE_ANIM_OAMSET_PARTY_MON_1
+	spriteanimoam $04, .OAMData_PartyMon               ; SPRITE_ANIM_OAMSET_PARTY_MON_2
 	assert_table_length NUM_SPRITE_ANIM_OAMSETS
 
 .OAMData_1x1_Palette0:
