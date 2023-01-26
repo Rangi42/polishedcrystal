@@ -576,13 +576,14 @@ RetrieveBreedmon:
 	rst CopyBytes
 	push hl
 	call GetLastPartyMon
+	pop hl
+	ld bc, BREEDMON_STRUCT_LENGTH
+	rst CopyBytes
+	call GetLastPartyMon
 	ld hl, MON_FORM
 	add hl, de
 	ld a, [hl]
 	ld [wCurForm], a
-	pop hl
-	ld bc, BREEDMON_STRUCT_LENGTH
-	rst CopyBytes
 	call GetBaseData
 	call GetLastPartyMon
 	ld b, d
