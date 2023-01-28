@@ -79,9 +79,9 @@ endr
 BattleAnimOAMUpdate:
 	call InitBattleAnimBuffer
 	call GetBattleAnimFrame
-	cp -3
+	cp oamwait_command
 	jmp z, .done
-	cp -4
+	cp oamdelete_command
 	jmp z, .delete
 	push af
 	ld hl, wBattleAnimTempOAMFlags
