@@ -901,7 +901,7 @@ BenFernText3B:
 LuckyNumberShow1:
 	call StartRadioStation
 	farcall Special_CheckLuckyNumberShowFlag
-	jr nc, .dontreset
+	jr nz, .dontreset
 	farcall Special_ResetLuckyNumberShowFlag
 .dontreset
 	ld hl, LC_Text1
