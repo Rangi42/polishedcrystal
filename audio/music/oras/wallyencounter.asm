@@ -4,8 +4,9 @@
 ; https://hax.iimarckus.org/topic/6777/5/
 
 Music_WallyEncounterORAS:
-	musicheader 2, 1, Music_WallyEncounterORAS_Ch1
-	musicheader 1, 2, Music_WallyEncounterORAS_Ch2
+	channel_count 2
+	channel 1, Music_WallyEncounterORAS_Ch1
+	channel 2, Music_WallyEncounterORAS_Ch2
 
 Music_WallyEncounterORAS_Ch1:
 	tempo 208

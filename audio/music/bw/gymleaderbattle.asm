@@ -3,10 +3,11 @@
 ; https://hax.iimarckus.org/topic/6443/
 
 Music_GymLeaderBattleBW:
-	musicheader 4, 1, GymLeaderBattleBW_Channel1
-	musicheader 1, 2, GymLeaderBattleBW_Channel2
-	musicheader 1, 3, GymLeaderBattleBW_Channel3
-	musicheader 1, 4, GymLeaderBattleBW_Channel4
+	channel_count 4
+	channel 1, GymLeaderBattleBW_Channel1
+	channel 2, GymLeaderBattleBW_Channel2
+	channel 3, GymLeaderBattleBW_Channel3
+	channel 4, GymLeaderBattleBW_Channel4
 
 GymLeaderBattleBW_Channel1:
 	tempo $35

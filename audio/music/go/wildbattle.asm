@@ -3,10 +3,11 @@
 ; https://soundcloud.com/user-927422935-571023782/pokemon-go-wild-battle-8-bit-1/s-4NapJ
 
 Music_WildBattleGo:
-	musicheader 4, 1, Music_WildBattleGo_Ch1
-	musicheader 1, 2, Music_WildBattleGo_Ch2
-	musicheader 1, 3, Music_WildBattleGo_Ch3
-	musicheader 1, 4, Music_WildBattleGo_Ch4
+	channel_count 4
+	channel 1, Music_WildBattleGo_Ch1
+	channel 2, Music_WildBattleGo_Ch2
+	channel 3, Music_WildBattleGo_Ch3
+	channel 4, Music_WildBattleGo_Ch4
 
 Music_WildBattleGo_Ch1:
 	tempo $70

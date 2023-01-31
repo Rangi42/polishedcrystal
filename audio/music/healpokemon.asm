@@ -1,7 +1,8 @@
 Music_HealPokemon:
-	musicheader 3, 1, Music_HealPokemon_Ch1
-	musicheader 1, 2, Music_HealPokemon_Ch2
-	musicheader 1, 3, Music_HealPokemon_Ch3
+	channel_count 3
+	channel 1, Music_HealPokemon_Ch1
+	channel 2, Music_HealPokemon_Ch2
+	channel 3, Music_HealPokemon_Ch3
 
 Music_HealPokemon_Ch1:
 	tempo 144

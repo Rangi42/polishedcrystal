@@ -3,15 +3,17 @@
 ; https://pastebin.com/UikDn8qP
 
 Music_LugiasSong2000:
-	musicheader 4, 1, Music_LugiasSong2000_Ch1
-	musicheader 1, 2, Music_LugiasSong2000_Ch2
-	musicheader 1, 3, Music_LugiasSong2000_Ch3
-	musicheader 1, 4, Music_LugiasSong2000_Ch4
+	channel_count 4
+	channel 1, Music_LugiasSong2000_Ch1
+	channel 2, Music_LugiasSong2000_Ch2
+	channel 3, Music_LugiasSong2000_Ch3
+	channel 4, Music_LugiasSong2000_Ch4
 
 Music_LugiasSong2000_NoIntro:
-	musicheader 3, 1, Music_LugiasSong2000_Ch1_loop_main
-	musicheader 1, 2, Music_LugiasSong2000_Ch2_loop_main
-	musicheader 1, 3, Music_LugiasSong2000_Ch3_loop
+	channel_count 3
+	channel 1, Music_LugiasSong2000_Ch1_loop_main
+	channel 2, Music_LugiasSong2000_Ch2_loop_main
+	channel 3, Music_LugiasSong2000_Ch3_loop
 
 Music_LugiasSong2000_Ch1:
 	dutycycle $3

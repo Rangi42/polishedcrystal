@@ -1,6 +1,15 @@
-MACRO musicheader
-	; number of tracks, track idx, address
-	dbw ((\1 - 1) << 6) + (\2 - 1), \3
+MACRO channel_count
+	assert 0 < (\1) && (\1) <= NUM_MUSIC_CHANS, \
+		"channel_count must be 1-{d:NUM_MUSIC_CHANS}"
+	DEF _num_channels = \1 - 1
+ENDM
+
+MACRO channel
+	assert 0 < (\1) && (\1) <= NUM_CHANNELS, \
+		"channel id must be 1-{d:NUM_CHANNELS}"
+	dn (_num_channels << 2), \1 - 1 ; channel id
+	dw \2 ; address
+	DEF _num_channels = 0
 ENDM
 
 MACRO note
