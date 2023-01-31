@@ -4,9 +4,10 @@
 ; https://hax.iimarckus.org/topic/6777/8/
 
 Music_FrostCavernXY:
-	musicheader 3, 1, Music_FrostCavernXY_Ch1
-	musicheader 1, 2, Music_FrostCavernXY_Ch2
-	musicheader 1, 3, Music_FrostCavernXY_Ch3
+	channel_count 3
+	channel 1, Music_FrostCavernXY_Ch1
+	channel 2, Music_FrostCavernXY_Ch2
+	channel 3, Music_FrostCavernXY_Ch3
 
 Music_FrostCavernXY_Ch1:
 	tempo 152

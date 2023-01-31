@@ -1,8 +1,9 @@
 Music_ContestResults:
-	musicheader 4, 1, Music_ContestResults_Ch1
-	musicheader 1, 2, Music_ContestResults_Ch2
-	musicheader 1, 3, Music_ContestResults_Ch3
-	musicheader 1, 4, Music_ContestResults_Ch4
+	channel_count 4
+	channel 1, Music_ContestResults_Ch1
+	channel 2, Music_ContestResults_Ch2
+	channel 3, Music_ContestResults_Ch3
+	channel 4, Music_ContestResults_Ch4
 
 Music_ContestResults_Ch1:
 	tempo 144

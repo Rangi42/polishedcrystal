@@ -3,9 +3,10 @@
 ; https://pastebin.com/GguFiV8e
 
 Music_CianwoodCityHGSS:
-	musicheader 3, 1, Music_CianwoodCityHGSS_Ch1
-	musicheader 1, 2, Music_CianwoodCityHGSS_Ch2
-	musicheader 1, 3, Music_CianwoodCityHGSS_Ch3
+	channel_count 3
+	channel 1, Music_CianwoodCityHGSS_Ch1
+	channel 2, Music_CianwoodCityHGSS_Ch2
+	channel 3, Music_CianwoodCityHGSS_Ch3
 
 Music_CianwoodCityHGSS_Ch1:
 	tempo 197

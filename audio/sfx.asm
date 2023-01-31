@@ -1,7 +1,8 @@
 SECTION "Sfx_PokeballsPlacedOnTable", ROMX
 
 Sfx_PokeballsPlacedOnTable:
-	musicheader 1, 5, .Ch5
+	channel_count 1
+	channel 5, .Ch5
 
 .Ch5:
 	dutycycle $2
@@ -16,7 +17,8 @@ Sfx_PokeballsPlacedOnTable:
 SECTION "Sfx_BallWiggle", ROMX
 
 Sfx_BallWiggle:
-	musicheader 1, 5, .Ch5
+	channel_count 1
+	channel 5, .Ch5
 
 .Ch5:
 	dutycycle $2
@@ -31,7 +33,8 @@ Sfx_BallWiggle:
 SECTION "Sfx_Potion", ROMX
 
 Sfx_Potion:
-	musicheader 1, 5, .Ch5
+	channel_count 1
+	channel 5, .Ch5
 
 .Ch5:
 	dutycycle $2
@@ -45,7 +48,8 @@ Sfx_Potion:
 SECTION "Sfx_FullHeal", ROMX
 
 Sfx_FullHeal:
-	musicheader 1, 5, .Ch5
+	channel_count 1
+	channel 5, .Ch5
 
 .Ch5:
 	dutycycle $2
@@ -61,7 +65,8 @@ Sfx_FullHeal:
 SECTION "Sfx_Menu", ROMX
 
 Sfx_Menu:
-	musicheader 1, 8, .Ch8
+	channel_count 1
+	channel 8, .Ch8
 
 .Ch8:
 	noise __,  2, $e2, $33
@@ -73,7 +78,8 @@ SECTION "Sfx_ReadText", ROMX
 
 Sfx_ReadText:
 Sfx_ReadText2:
-	musicheader 1, 5, .Ch5
+	channel_count 1
+	channel 5, .Ch5
 
 .Ch5:
 	dutycycle $2
@@ -87,7 +93,8 @@ Sfx_ReadText2:
 SECTION "Sfx_Poison", ROMX
 
 Sfx_Poison:
-	musicheader 1, 5, .Ch5
+	channel_count 1
+	channel 5, .Ch5
 
 .Ch5:
 .loop:
@@ -103,7 +110,8 @@ Sfx_Poison:
 SECTION "Sfx_GotSafariBalls", ROMX
 
 Sfx_GotSafariBalls:
-	musicheader 1, 5, .Ch5
+	channel_count 1
+	channel 5, .Ch5
 
 .Ch5:
 	dutycycle $2
@@ -117,7 +125,8 @@ Sfx_GotSafariBalls:
 SECTION "Sfx_BootPc", ROMX
 
 Sfx_BootPc:
-	musicheader 1, 5, .Ch5
+	channel_count 1
+	channel 5, .Ch5
 
 .Ch5:
 	dutycycle $2
@@ -137,7 +146,8 @@ Sfx_BootPc:
 SECTION "Sfx_ShutDownPc", ROMX
 
 Sfx_ShutDownPc:
-	musicheader 1, 5, .Ch5
+	channel_count 1
+	channel 5, .Ch5
 
 .Ch5:
 	dutycycle $2
@@ -151,7 +161,8 @@ Sfx_ShutDownPc:
 SECTION "Sfx_ChoosePcOption", ROMX
 
 Sfx_ChoosePcOption:
-	musicheader 1, 5, .Ch5
+	channel_count 1
+	channel 5, .Ch5
 
 .Ch5:
 	dutycycle $2
@@ -165,7 +176,8 @@ Sfx_ChoosePcOption:
 SECTION "Sfx_EscapeRope", ROMX
 
 Sfx_EscapeRope:
-	musicheader 1, 5, .Ch5
+	channel_count 1
+	channel 5, .Ch5
 
 .Ch5:
 	dutycycle $1
@@ -182,7 +194,8 @@ Sfx_EscapeRope:
 SECTION "Sfx_PushButton", ROMX
 
 Sfx_PushButton:
-	musicheader 1, 5, .Ch5
+	channel_count 1
+	channel 5, .Ch5
 
 .Ch5:
 	dutycycle $2
@@ -197,7 +210,8 @@ Sfx_PushButton:
 SECTION "Sfx_SecondPartOfItemfinder", ROMX
 
 Sfx_SecondPartOfItemfinder:
-	musicheader 1, 5, .Ch5
+	channel_count 1
+	channel 5, .Ch5
 
 .Ch5:
 	dutycycle $2
@@ -213,7 +227,8 @@ Sfx_SecondPartOfItemfinder:
 SECTION "Sfx_WarpTo", ROMX
 
 Sfx_WarpTo:
-	musicheader 1, 5, .Ch5
+	channel_count 1
+	channel 5, .Ch5
 
 .Ch5:
 	dutycycle $1
@@ -230,7 +245,8 @@ Sfx_WarpTo:
 SECTION "Sfx_WarpFrom", ROMX
 
 Sfx_WarpFrom:
-	musicheader 1, 5, .Ch5
+	channel_count 1
+	channel 5, .Ch5
 
 .Ch5:
 	dutycycle $1
@@ -247,7 +263,8 @@ Sfx_WarpFrom:
 SECTION "Sfx_ChangeDexMode", ROMX
 
 Sfx_ChangeDexMode:
-	musicheader 1, 5, .Ch5
+	channel_count 1
+	channel 5, .Ch5
 
 .Ch5:
 	dutycycle $1
@@ -260,7 +277,8 @@ Sfx_ChangeDexMode:
 SECTION "Sfx_JumpOverLedge", ROMX
 
 Sfx_JumpOverLedge:
-	musicheader 1, 5, .Ch5
+	channel_count 1
+	channel 5, .Ch5
 
 .Ch5:
 	dutycycle $2
@@ -273,7 +291,8 @@ Sfx_JumpOverLedge:
 SECTION "Sfx_GrassRustle", ROMX
 
 Sfx_GrassRustle:
-	musicheader 1, 8, .Ch8
+	channel_count 1
+	channel 8, .Ch8
 
 .Ch8:
 	noise __,  3, $f1, $32
@@ -286,7 +305,8 @@ Sfx_GrassRustle:
 SECTION "Sfx_Fly", ROMX
 
 Sfx_Fly:
-	musicheader 1, 8, .Ch8
+	channel_count 1
+	channel 8, .Ch8
 
 .Ch8:
 	noise __,  3, $f1, $12
@@ -311,8 +331,9 @@ Sfx_Fly:
 SECTION "Sfx_Wrong", ROMX
 
 Sfx_Wrong:
-	musicheader 2, 5, .Ch5
-	musicheader 1, 6, .Ch6
+	channel_count 2
+	channel 5, .Ch5
+	channel 6, .Ch6
 
 .Ch5:
 	dutycycle $3
@@ -336,7 +357,8 @@ Sfx_Wrong:
 SECTION "Sfx_Squeak", ROMX
 
 Sfx_Squeak:
-	musicheader 1, 5, .Ch5
+	channel_count 1
+	channel 5, .Ch5
 
 .Ch5:
 	dutycycle $0
@@ -349,7 +371,8 @@ Sfx_Squeak:
 SECTION "Sfx_Strength", ROMX
 
 Sfx_Strength:
-	musicheader 1, 8, .Ch8
+	channel_count 1
+	channel 8, .Ch8
 
 .Ch8:
 	noise __,  5, $a2, $23
@@ -366,8 +389,9 @@ Sfx_Strength:
 SECTION "Sfx_Boat", ROMX
 
 Sfx_Boat:
-	musicheader 2, 5, .Ch5
-	musicheader 1, 6, .Ch6
+	channel_count 2
+	channel 5, .Ch5
+	channel 6, .Ch6
 
 .Ch5:
 	dutycycle $2
@@ -395,7 +419,8 @@ Sfx_Boat:
 SECTION "Sfx_WallOpen", ROMX
 
 Sfx_WallOpen:
-	musicheader 1, 5, .Ch5
+	channel_count 1
+	channel 5, .Ch5
 
 .Ch5:
 	dutycycle $1
@@ -414,7 +439,8 @@ Sfx_WallOpen:
 SECTION "Sfx_PlacePuzzlePieceDown", ROMX
 
 Sfx_PlacePuzzlePieceDown:
-	musicheader 1, 8, .Ch8
+	channel_count 1
+	channel 8, .Ch8
 
 .Ch8:
 	noise __,  3, $f7, $24
@@ -428,7 +454,8 @@ Sfx_PlacePuzzlePieceDown:
 SECTION "Sfx_EnterDoor", ROMX
 
 Sfx_EnterDoor:
-	musicheader 1, 8, .Ch8
+	channel_count 1
+	channel 8, .Ch8
 
 .Ch8:
 	noise __, 10, $f1, $44
@@ -439,8 +466,9 @@ Sfx_EnterDoor:
 SECTION "Sfx_SwitchPokemon", ROMX
 
 Sfx_SwitchPokemon:
-	musicheader 2, 5, .Ch5
-	musicheader 1, 6, .Ch6
+	channel_count 2
+	channel 5, .Ch5
+	channel 6, .Ch6
 
 .Ch5:
 	dutycycle $2
@@ -457,8 +485,9 @@ Sfx_SwitchPokemon:
 SECTION "Sfx_Tally", ROMX
 
 Sfx_Tally:
-	musicheader 2, 5, .Ch5
-	musicheader 1, 6, .Ch6
+	channel_count 2
+	channel 5, .Ch5
+	channel 6, .Ch6
 
 .Ch5:
 	dutycycle $2
@@ -475,8 +504,9 @@ Sfx_Tally:
 SECTION "Sfx_Transaction", ROMX
 
 Sfx_Transaction:
-	musicheader 2, 5, .Ch5
-	musicheader 1, 6, .Ch6
+	channel_count 2
+	channel 5, .Ch5
+	channel 6, .Ch6
 
 .Ch5:
 	dutycycle $2
@@ -495,7 +525,8 @@ Sfx_Transaction:
 SECTION "Sfx_Bump", ROMX
 
 Sfx_Bump:
-	musicheader 1, 5, .Ch5
+	channel_count 1
+	channel 5, .Ch5
 
 .Ch5:
 	dutycycle $2
@@ -508,7 +539,8 @@ Sfx_Bump:
 SECTION "Sfx_ExitBuilding", ROMX
 
 Sfx_ExitBuilding:
-	musicheader 1, 8, .Ch8
+	channel_count 1
+	channel 8, .Ch8
 
 .Ch8:
 	noise __,  3, $f1, $54
@@ -522,8 +554,9 @@ Sfx_ExitBuilding:
 SECTION "Sfx_Save", ROMX
 
 Sfx_Save:
-	musicheader 2, 5, .Ch5
-	musicheader 1, 6, .Ch6
+	channel_count 2
+	channel 5, .Ch5
+	channel 6, .Ch6
 
 .Ch5:
 	dutycycle $2
@@ -552,7 +585,8 @@ Sfx_Save:
 SECTION "Sfx_Pokeflute", ROMX
 
 Sfx_Pokeflute:
-	musicheader 1, 7, .Ch7
+	channel_count 1
+	channel 7, .Ch7
 
 .Ch7:
 	tempo 256
@@ -583,7 +617,8 @@ Sfx_Pokeflute:
 SECTION "Sfx_ElevatorEnd", ROMX
 
 Sfx_ElevatorEnd:
-	musicheader 1, 5, .Ch5
+	channel_count 1
+	channel 5, .Ch5
 
 .Ch5:
 	dutycycle $2
@@ -599,8 +634,9 @@ Sfx_ElevatorEnd:
 SECTION "Sfx_ThrowBall", ROMX
 
 Sfx_ThrowBall:
-	musicheader 2, 5, .Ch5
-	musicheader 1, 6, .Ch6
+	channel_count 2
+	channel 5, .Ch5
+	channel 6, .Ch6
 
 .Ch5:
 	dutycycle $2
@@ -617,8 +653,9 @@ Sfx_ThrowBall:
 SECTION "Sfx_BallPoof", ROMX
 
 Sfx_BallPoof:
-	musicheader 2, 5, .Ch5
-	musicheader 1, 8, .Ch8
+	channel_count 2
+	channel 5, .Ch5
+	channel 8, .Ch8
 
 .Ch5:
 	dutycycle $2
@@ -635,8 +672,9 @@ Sfx_BallPoof:
 SECTION "Sfx_Faint", ROMX
 
 Sfx_Faint:
-	musicheader 2, 5, .Ch5
-	musicheader 1, 8, .Ch8
+	channel_count 2
+	channel 5, .Ch5
+	channel 8, .Ch8
 
 .Ch5:
 	sound __, 16, $d1, $0200
@@ -653,7 +691,8 @@ Sfx_Faint:
 SECTION "Sfx_Run", ROMX
 
 Sfx_Run:
-	musicheader 1, 8, .Ch8
+	channel_count 1
+	channel 8, .Ch8
 
 .Ch8:
 	noise __,  3, $61, $23
@@ -673,8 +712,9 @@ Sfx_Run:
 SECTION "Sfx_SlotMachineStart", ROMX
 
 Sfx_SlotMachineStart:
-	musicheader 2, 5, .Ch5
-	musicheader 1, 6, .Ch6
+	channel_count 2
+	channel 5, .Ch5
+	channel 6, .Ch6
 
 .Ch5:
 	dutycycle $2
@@ -695,7 +735,8 @@ Sfx_SlotMachineStart:
 SECTION "Sfx_Call", ROMX
 
 Sfx_Call:
-	musicheader 1, 5, .Ch5
+	channel_count 1
+	channel 5, .Ch5
 
 .Ch5:
 	soundinput $67
@@ -712,7 +753,8 @@ Sfx_Call:
 SECTION "Sfx_Unknown60", ROMX
 
 Sfx_Unknown60:
-	musicheader 1, 8, .Ch8
+	channel_count 1
+	channel 8, .Ch8
 
 .Ch8:
 	noise __,  7, $20, $10
@@ -729,7 +771,8 @@ Sfx_Unknown60:
 SECTION "Sfx_Unknown61", ROMX
 
 Sfx_Unknown61:
-	musicheader 1, 8, .Ch8
+	channel_count 1
+	channel 8, .Ch8
 
 .Ch8:
 	noise __,  5, $d1, $41
@@ -739,7 +782,8 @@ Sfx_Unknown61:
 SECTION "Sfx_SwitchPockets", ROMX
 
 Sfx_SwitchPockets:
-	musicheader 1, 8, .Ch8
+	channel_count 1
+	channel 8, .Ch8
 
 .Ch8:
 	noise __,  5, $c1, $42
@@ -749,7 +793,8 @@ Sfx_SwitchPockets:
 SECTION "Sfx_Unknown63", ROMX
 
 Sfx_Unknown63:
-	musicheader 1, 8, .Ch8
+	channel_count 1
+	channel 8, .Ch8
 
 .Ch8:
 	noise __,  3, $6f, $21
@@ -761,7 +806,8 @@ Sfx_Unknown63:
 SECTION "Sfx_Burn", ROMX
 
 Sfx_Burn:
-	musicheader 1, 8, .Ch8
+	channel_count 1
+	channel 8, .Ch8
 
 .Ch8:
 	noise __,  3, $d2, $32
@@ -772,7 +818,8 @@ Sfx_Burn:
 SECTION "Sfx_TitleScreenEntrance", ROMX
 
 Sfx_TitleScreenEntrance:
-	musicheader 1, 8, .Ch8
+	channel_count 1
+	channel 8, .Ch8
 
 .Ch8:
 	noise __,  3, $70, $22
@@ -787,7 +834,8 @@ Sfx_TitleScreenEntrance:
 SECTION "Sfx_Unknown66", ROMX
 
 Sfx_Unknown66:
-	musicheader 1, 5, .Ch5
+	channel_count 1
+	channel 5, .Ch5
 
 .Ch5:
 	dutycycle $2
@@ -800,7 +848,8 @@ Sfx_Unknown66:
 SECTION "Sfx_GetCoinFromSlots", ROMX
 
 Sfx_GetCoinFromSlots:
-	musicheader 1, 5, .Ch5
+	channel_count 1
+	channel 5, .Ch5
 
 .Ch5:
 	dutycycle $2
@@ -812,8 +861,9 @@ Sfx_GetCoinFromSlots:
 SECTION "Sfx_PayDay", ROMX
 
 Sfx_PayDay:
-	musicheader 2, 5, .Ch5
-	musicheader 1, 6, .Ch6
+	channel_count 2
+	channel 5, .Ch5
+	channel 6, .Ch6
 
 .Ch5:
 	dutycycle $3
@@ -833,7 +883,8 @@ Sfx_PayDay:
 SECTION "Sfx_Metronome", ROMX
 
 Sfx_Metronome:
-	musicheader 1, 5, .Ch5
+	channel_count 1
+	channel 5, .Ch5
 
 .Ch5:
 	dutycycle $2
@@ -854,7 +905,8 @@ Sfx_Metronome:
 SECTION "Sfx_Peck", ROMX
 
 Sfx_Peck:
-	musicheader 1, 8, .Ch8
+	channel_count 1
+	channel 8, .Ch8
 
 .Ch8:
 	noise __,  3, $a1, $12
@@ -864,7 +916,8 @@ Sfx_Peck:
 SECTION "Sfx_Kinesis", ROMX
 
 Sfx_Kinesis:
-	musicheader 1, 5, .Ch5
+	channel_count 1
+	channel 5, .Ch5
 
 .Ch5:
 	dutycycle $1
@@ -877,7 +930,8 @@ Sfx_Kinesis:
 SECTION "Sfx_Lick", ROMX
 
 Sfx_Lick:
-	musicheader 1, 5, .Ch5
+	channel_count 1
+	channel 5, .Ch5
 
 .Ch5:
 	dutycycle $1
@@ -890,7 +944,8 @@ Sfx_Lick:
 SECTION "Sfx_Pound", ROMX
 
 Sfx_Pound:
-	musicheader 1, 8, .Ch8
+	channel_count 1
+	channel 8, .Ch8
 
 .Ch8:
 	noise __,  3, $a1, $22
@@ -900,7 +955,8 @@ Sfx_Pound:
 SECTION "Sfx_MovePuzzlePiece", ROMX
 
 Sfx_MovePuzzlePiece:
-	musicheader 1, 8, .Ch8
+	channel_count 1
+	channel 8, .Ch8
 
 .Ch8:
 	noise __,  9, $f1, $54
@@ -910,7 +966,8 @@ Sfx_MovePuzzlePiece:
 SECTION "Sfx_CometPunch", ROMX
 
 Sfx_CometPunch:
-	musicheader 1, 8, .Ch8
+	channel_count 1
+	channel 8, .Ch8
 
 .Ch8:
 	noise __, 16, $8f, $11
@@ -922,7 +979,8 @@ Sfx_CometPunch:
 SECTION "Sfx_MegaPunch", ROMX
 
 Sfx_MegaPunch:
-	musicheader 1, 8, .Ch8
+	channel_count 1
+	channel 8, .Ch8
 
 .Ch8:
 	noise __, 16, $8f, $34
@@ -934,7 +992,8 @@ Sfx_MegaPunch:
 SECTION "Sfx_Scratch", ROMX
 
 Sfx_Scratch:
-	musicheader 1, 8, .Ch8
+	channel_count 1
+	channel 8, .Ch8
 
 .Ch8:
 	noise __, 16, $9f, $23
@@ -945,7 +1004,8 @@ Sfx_Scratch:
 SECTION "Sfx_Vicegrip", ROMX
 
 Sfx_Vicegrip:
-	musicheader 1, 8, .Ch8
+	channel_count 1
+	channel 8, .Ch8
 
 .Ch8:
 	noise __,  3, $e1, $4b
@@ -958,7 +1018,8 @@ Sfx_Vicegrip:
 SECTION "Sfx_RazorWind", ROMX
 
 Sfx_RazorWind:
-	musicheader 1, 8, .Ch8
+	channel_count 1
+	channel 8, .Ch8
 
 .Ch8:
 	noise __,  3, $f4, $44
@@ -970,7 +1031,8 @@ Sfx_RazorWind:
 SECTION "Sfx_Cut", ROMX
 
 Sfx_Cut:
-	musicheader 1, 8, .Ch8
+	channel_count 1
+	channel 8, .Ch8
 
 .Ch8:
 	noise __,  5, $8f, $55
@@ -983,7 +1045,8 @@ Sfx_Cut:
 SECTION "Sfx_WingAttack", ROMX
 
 Sfx_WingAttack:
-	musicheader 1, 8, .Ch8
+	channel_count 1
+	channel 8, .Ch8
 
 .Ch8:
 .branch8:
@@ -997,7 +1060,8 @@ Sfx_WingAttack:
 SECTION "Sfx_Whirlwind", ROMX
 
 Sfx_Whirlwind:
-	musicheader 1, 8, .Ch8
+	channel_count 1
+	channel 8, .Ch8
 
 .Ch8:
 	noise __,  9, $4f, $33
@@ -1010,7 +1074,8 @@ Sfx_Whirlwind:
 SECTION "Sfx_Bind", ROMX
 
 Sfx_Bind:
-	musicheader 1, 8, .Ch8
+	channel_count 1
+	channel 8, .Ch8
 
 .Ch8:
 	noise __,  9, $ff, $32
@@ -1023,7 +1088,8 @@ Sfx_Bind:
 SECTION "Sfx_VineWhip", ROMX
 
 Sfx_VineWhip:
-	musicheader 1, 8, .Ch8
+	channel_count 1
+	channel 8, .Ch8
 
 .Ch8:
 	noise __,  2, $c2, $33
@@ -1040,7 +1106,8 @@ Sfx_VineWhip:
 SECTION "Sfx_DoubleKick", ROMX
 
 Sfx_DoubleKick:
-	musicheader 1, 8, .Ch8
+	channel_count 1
+	channel 8, .Ch8
 
 .Ch8:
 	noise __,  2, $94, $23
@@ -1052,7 +1119,8 @@ Sfx_DoubleKick:
 SECTION "Sfx_MegaKick", ROMX
 
 Sfx_MegaKick:
-	musicheader 1, 8, .Ch8
+	channel_count 1
+	channel 8, .Ch8
 
 .Ch8:
 	noise __,  3, $94, $33
@@ -1065,7 +1133,8 @@ Sfx_MegaKick:
 SECTION "Sfx_Headbutt", ROMX
 
 Sfx_Headbutt:
-	musicheader 1, 8, .Ch8
+	channel_count 1
+	channel 8, .Ch8
 
 .Ch8:
 	noise __,  5, $ff, $55
@@ -1076,7 +1145,8 @@ Sfx_Headbutt:
 SECTION "Sfx_HornAttack", ROMX
 
 Sfx_HornAttack:
-	musicheader 1, 8, .Ch8
+	channel_count 1
+	channel 8, .Ch8
 
 .Ch8:
 	noise __,  3, $84, $43
@@ -1088,7 +1158,8 @@ Sfx_HornAttack:
 SECTION "Sfx_Tackle", ROMX
 
 Sfx_Tackle:
-	musicheader 1, 8, .Ch8
+	channel_count 1
+	channel 8, .Ch8
 
 .Ch8:
 	noise __,  5, $f1, $34
@@ -1099,7 +1170,8 @@ Sfx_Tackle:
 SECTION "Sfx_PoisonSting", ROMX
 
 Sfx_PoisonSting:
-	musicheader 1, 8, .Ch8
+	channel_count 1
+	channel 8, .Ch8
 
 .Ch8:
 	noise __,  3, $f1, $22
@@ -1110,7 +1182,8 @@ Sfx_PoisonSting:
 SECTION "Sfx_Powder", ROMX
 
 Sfx_Powder:
-	musicheader 1, 8, .Ch8
+	channel_count 1
+	channel 8, .Ch8
 
 .Ch8:
 	noise __,  3, $c2, $1
@@ -1122,7 +1195,8 @@ Sfx_Powder:
 SECTION "Sfx_DoubleSlap", ROMX
 
 Sfx_DoubleSlap:
-	musicheader 1, 8, .Ch8
+	channel_count 1
+	channel 8, .Ch8
 
 .Ch8:
 	noise __,  9, $f1, $32
@@ -1133,8 +1207,9 @@ Sfx_DoubleSlap:
 SECTION "Sfx_Bite", ROMX
 
 Sfx_Bite:
-	musicheader 2, 5, .Ch5
-	musicheader 1, 8, .Ch8
+	channel_count 2
+	channel 5, .Ch5
+	channel 8, .Ch8
 
 .Ch5:
 	dutycycle $0
@@ -1156,7 +1231,8 @@ Sfx_Bite:
 SECTION "Sfx_JumpKick", ROMX
 
 Sfx_JumpKick:
-	musicheader 1, 8, .Ch8
+	channel_count 1
+	channel 8, .Ch8
 
 .Ch8:
 	noise __,  4, $92, $31
@@ -1169,7 +1245,8 @@ Sfx_JumpKick:
 SECTION "Sfx_Stomp", ROMX
 
 Sfx_Stomp:
-	musicheader 1, 8, .Ch8
+	channel_count 1
+	channel 8, .Ch8
 
 .Ch8:
 	noise __, 13, $f1, $54
@@ -1180,7 +1257,8 @@ Sfx_Stomp:
 SECTION "Sfx_TailWhip", ROMX
 
 Sfx_TailWhip:
-	musicheader 1, 8, .Ch8
+	channel_count 1
+	channel 8, .Ch8
 
 .Ch8:
 	noise __,  3, $f1, $33
@@ -1194,7 +1272,8 @@ Sfx_TailWhip:
 SECTION "Sfx_KarateChop", ROMX
 
 Sfx_KarateChop:
-	musicheader 1, 8, .Ch8
+	channel_count 1
+	channel 8, .Ch8
 
 .Ch8:
 	noise __,  3, $d2, $32
@@ -1205,7 +1284,8 @@ Sfx_KarateChop:
 SECTION "Sfx_Submission", ROMX
 
 Sfx_Submission:
-	musicheader 1, 8, .Ch8
+	channel_count 1
+	channel 8, .Ch8
 
 .Ch8:
 	noise __,  3, $f2, $43
@@ -1219,8 +1299,9 @@ Sfx_Submission:
 SECTION "Sfx_WaterGun", ROMX
 
 Sfx_WaterGun:
-	musicheader 2, 5, .Ch5
-	musicheader 1, 8, .Ch8
+	channel_count 2
+	channel 5, .Ch5
+	channel 8, .Ch8
 
 .Ch5:
 	dutycycle $1
@@ -1238,7 +1319,8 @@ Sfx_WaterGun:
 SECTION "Sfx_SwordsDance", ROMX
 
 Sfx_SwordsDance:
-	musicheader 1, 8, .Ch8
+	channel_count 1
+	channel 8, .Ch8
 
 .Ch8:
 	noise __, 16, $4f, $41
@@ -1252,7 +1334,8 @@ Sfx_SwordsDance:
 SECTION "Sfx_Thunder", ROMX
 
 Sfx_Thunder:
-	musicheader 1, 8, .Ch8
+	channel_count 1
+	channel 8, .Ch8
 
 .Ch8:
 	noise __, 11, $ff, $50
@@ -1268,9 +1351,10 @@ Sfx_Thunder:
 SECTION "Sfx_Supersonic", ROMX
 
 Sfx_Supersonic:
-	musicheader 3, 5, .Ch5
-	musicheader 1, 6, .Ch6
-	musicheader 1, 8, .Ch8
+	channel_count 3
+	channel 5, .Ch5
+	channel 6, .Ch6
+	channel 8, .Ch8
 
 .Ch5:
 	dutycycle $2
@@ -1301,9 +1385,10 @@ Sfx_Supersonic:
 SECTION "Sfx_Leer", ROMX
 
 Sfx_Leer:
-	musicheader 3, 5, .Ch5
-	musicheader 1, 6, .Ch6
-	musicheader 1, 8, .Ch8
+	channel_count 3
+	channel 5, .Ch5
+	channel 6, .Ch6
+	channel 8, .Ch8
 
 .Ch5:
 .branch5:
@@ -1332,8 +1417,9 @@ Sfx_Leer:
 SECTION "Sfx_Ember", ROMX
 
 Sfx_Ember:
-	musicheader 2, 5, .Ch5
-	musicheader 1, 8, .Ch8
+	channel_count 2
+	channel 5, .Ch5
+	channel 8, .Ch8
 
 .Ch5:
 .branch5:
@@ -1359,9 +1445,10 @@ Sfx_Ember:
 SECTION "Sfx_BubbleBeam", ROMX
 
 Sfx_BubbleBeam:
-	musicheader 3, 5, .Ch5
-	musicheader 1, 6, .Ch6
-	musicheader 1, 8, .Ch8
+	channel_count 3
+	channel 5, .Ch5
+	channel 6, .Ch6
+	channel 8, .Ch8
 
 .Ch5:
 .branch5:
@@ -1397,8 +1484,9 @@ Sfx_BubbleBeam:
 SECTION "Sfx_HydroPump", ROMX
 
 Sfx_HydroPump:
-	musicheader 2, 5, .Ch5
-	musicheader 1, 8, .Ch8
+	channel_count 2
+	channel 5, .Ch5
+	channel 8, .Ch8
 
 .Ch5:
 .branch5:
@@ -1427,9 +1515,10 @@ Sfx_HydroPump:
 SECTION "Sfx_Surf", ROMX
 
 Sfx_Surf:
-	musicheader 3, 5, .Ch5
-	musicheader 1, 6, .Ch6
-	musicheader 1, 8, .Ch8
+	channel_count 3
+	channel 5, .Ch5
+	channel 6, .Ch6
+	channel 8, .Ch8
 
 .Ch5:
 .branch5:
@@ -1462,9 +1551,10 @@ Sfx_Surf:
 SECTION "Sfx_Psybeam", ROMX
 
 Sfx_Psybeam:
-	musicheader 3, 5, .Ch5
-	musicheader 1, 6, .Ch6
-	musicheader 1, 8, .Ch8
+	channel_count 3
+	channel 5, .Ch5
+	channel 6, .Ch6
+	channel 8, .Ch8
 
 .Ch5:
 .branch5:
@@ -1497,9 +1587,10 @@ Sfx_Psybeam:
 SECTION "Sfx_Charge", ROMX
 
 Sfx_Charge:
-	musicheader 3, 5, .Ch5
-	musicheader 1, 6, .Ch6
-	musicheader 1, 8, .Ch8
+	channel_count 3
+	channel 5, .Ch5
+	channel 6, .Ch6
+	channel 8, .Ch8
 
 .Ch5:
 .branch5:
@@ -1534,9 +1625,10 @@ Sfx_Charge:
 SECTION "Sfx_Thundershock", ROMX
 
 Sfx_Thundershock:
-	musicheader 3, 5, .Ch5
-	musicheader 1, 6, .Ch6
-	musicheader 1, 8, .Ch8
+	channel_count 3
+	channel 5, .Ch5
+	channel 6, .Ch6
+	channel 8, .Ch8
 
 .Ch5:
 .branch5:
@@ -1565,9 +1657,10 @@ Sfx_Thundershock:
 SECTION "Sfx_Psychic", ROMX
 
 Sfx_Psychic:
-	musicheader 3, 5, .Ch5
-	musicheader 1, 6, .Ch6
-	musicheader 1, 8, .Ch8
+	channel_count 3
+	channel 5, .Ch5
+	channel 6, .Ch6
+	channel 8, .Ch8
 
 .Ch5:
 	dutycycle $2
@@ -1604,8 +1697,9 @@ Sfx_Psychic:
 SECTION "Sfx_Screech", ROMX
 
 Sfx_Screech:
-	musicheader 2, 5, .Ch5
-	musicheader 1, 6, .Ch6
+	channel_count 2
+	channel 5, .Ch5
+	channel 6, .Ch6
 
 .Ch5:
 	dutycycle $2
@@ -1629,8 +1723,9 @@ Sfx_Screech:
 SECTION "Sfx_BoneClub", ROMX
 
 Sfx_BoneClub:
-	musicheader 2, 5, .Ch5
-	musicheader 1, 6, .Ch6
+	channel_count 2
+	channel 5, .Ch5
+	channel 6, .Ch6
 
 .Ch5:
 	dutycycle $2
@@ -1648,8 +1743,9 @@ Sfx_BoneClub:
 SECTION "Sfx_Sharpen", ROMX
 
 Sfx_Sharpen:
-	musicheader 2, 5, .Ch5
-	musicheader 1, 6, .Ch6
+	channel_count 2
+	channel 5, .Ch5
+	channel 6, .Ch6
 
 .Ch5:
 	dutycycle $2
@@ -1673,9 +1769,10 @@ Sfx_Sharpen:
 SECTION "Sfx_EggBomb", ROMX
 
 Sfx_EggBomb:
-	musicheader 3, 5, .Ch5
-	musicheader 1, 6, .Ch6
-	musicheader 1, 8, .Ch8
+	channel_count 3
+	channel 5, .Ch5
+	channel 6, .Ch6
+	channel 8, .Ch8
 
 .Ch5:
 	sound_duty 1, 3, 2, 3
@@ -1702,8 +1799,9 @@ Sfx_EggBomb:
 SECTION "Sfx_Sing", ROMX
 
 Sfx_Sing:
-	musicheader 2, 5, .Ch5
-	musicheader 1, 6, .Ch6
+	channel_count 2
+	channel 5, .Ch5
+	channel 6, .Ch6
 
 .Ch5:
 	togglesfx
@@ -1738,9 +1836,10 @@ Sfx_Sing:
 SECTION "Sfx_HyperBeam", ROMX
 
 Sfx_HyperBeam:
-	musicheader 3, 5, .Ch5
-	musicheader 1, 6, .Ch6
-	musicheader 1, 8, .Ch8
+	channel_count 3
+	channel 5, .Ch5
+	channel 6, .Ch6
+	channel 8, .Ch8
 
 .Ch5:
 	dutycycle $0
@@ -1793,7 +1892,8 @@ Sfx_HyperBeam:
 SECTION "Sfx_Shine", ROMX
 
 Sfx_Shine:
-	musicheader 1, 5, .Ch5
+	channel_count 1
+	channel 5, .Ch5
 
 .Ch5:
 	dutycycle $0
@@ -1809,10 +1909,12 @@ Sfx_Shine:
 SECTION "Sfx_Unknown5F", ROMX
 
 Sfx_Unknown5F:
-	musicheader 3, 5, Sfx_Unknown5F_Ch5
-	musicheader 1, 6, Sfx_Unknown5F_Ch6
+	channel_count 3
+	channel 5, Sfx_Unknown5F_Ch5
+	channel 6, Sfx_Unknown5F_Ch6
 Sfx_Sandstorm:
-	musicheader 1, 8, Sfx_Sandstorm_Ch8
+	channel_count 1
+	channel 8, Sfx_Sandstorm_Ch8
 
 Sfx_Unknown5F_Ch5:
 .branch5:
@@ -1842,10 +1944,12 @@ Sfx_Sandstorm_Ch8:
 SECTION "Sfx_HangUp", ROMX
 
 Sfx_HangUp:
-	musicheader 1, 5, Sfx_HangUp_Ch5
+	channel_count 1
+	channel 5, Sfx_HangUp_Ch5
 
 Sfx_NoSignal:
-	musicheader 1, 5, Sfx_NoSignal_Ch5
+	channel_count 1
+	channel 5, Sfx_NoSignal_Ch5
 
 Sfx_HangUp_Ch5:
 	dutycycle $2
@@ -1864,10 +1968,11 @@ Sfx_NoSignal_Ch5:
 SECTION "Sfx_Elevator", ROMX
 
 Sfx_Elevator:
-	musicheader 4, 5, .Ch5
-	musicheader 1, 6, .Ch6
-	musicheader 1, 7, .Ch7
-	musicheader 1, 8, .Ch8
+	channel_count 4
+	channel 5, .Ch5
+	channel 6, .Ch6
+	channel 7, .Ch7
+	channel 8, .Ch8
 
 .Ch5:
 	dutycycle $2
@@ -1901,10 +2006,11 @@ SECTION "Sfx_LevelUp", ROMX
 
 Sfx_LevelUp:
 Sfx_DexFanfare5079:
-	musicheader 4, 5, .Ch5
-	musicheader 1, 6, .Ch6
-	musicheader 1, 7, .Ch7
-	musicheader 1, 8, .Ch8
+	channel_count 4
+	channel 5, .Ch5
+	channel 6, .Ch6
+	channel 7, .Ch7
+	channel 8, .Ch8
 
 .Ch5:
 	togglesfx
@@ -1961,10 +2067,11 @@ Sfx_DexFanfare5079:
 SECTION "Sfx_KeyItem", ROMX
 
 Sfx_KeyItem:
-	musicheader 4, 5, .Ch5
-	musicheader 1, 6, .Ch6
-	musicheader 1, 7, .Ch7
-	musicheader 1, 8, .Ch8
+	channel_count 4
+	channel 5, .Ch5
+	channel 6, .Ch6
+	channel 7, .Ch7
+	channel 8, .Ch8
 
 .Ch5:
 	togglesfx
@@ -2029,10 +2136,11 @@ Sfx_KeyItem:
 SECTION "Sfx_DexFanfare2049", ROMX
 
 Sfx_DexFanfare2049:
-	musicheader 4, 5, .Ch5
-	musicheader 1, 6, .Ch6
-	musicheader 1, 7, .Ch7
-	musicheader 1, 8, .Ch8
+	channel_count 4
+	channel 5, .Ch5
+	channel 6, .Ch6
+	channel 7, .Ch7
+	channel 8, .Ch8
 
 .Ch5:
 	togglesfx
@@ -2111,10 +2219,11 @@ Sfx_DexFanfare2049:
 SECTION "Sfx_Item", ROMX
 
 Sfx_Item:
-	musicheader 4, 5, .Ch5
-	musicheader 1, 6, .Ch6
-	musicheader 1, 7, .Ch7
-	musicheader 1, 8, .Ch8
+	channel_count 4
+	channel 5, .Ch5
+	channel 6, .Ch6
+	channel 7, .Ch7
+	channel 8, .Ch8
 
 .Ch5:
 	togglesfx
@@ -2188,10 +2297,11 @@ Sfx_Item:
 SECTION "Sfx_CaughtMon", ROMX
 
 Sfx_CaughtMon:
-	musicheader 4, 5, .Ch5
-	musicheader 1, 6, .Ch6
-	musicheader 1, 7, .Ch7
-	musicheader 1, 8, .Ch8
+	channel_count 4
+	channel 5, .Ch5
+	channel 6, .Ch6
+	channel 7, .Ch7
+	channel 8, .Ch8
 
 .Ch5:
 	togglesfx
@@ -2268,10 +2378,11 @@ Sfx_CaughtMon:
 SECTION "Sfx_DexFanfare80109", ROMX
 
 Sfx_DexFanfare80109:
-	musicheader 4, 5, .Ch5
-	musicheader 1, 6, .Ch6
-	musicheader 1, 7, .Ch7
-	musicheader 1, 8, .Ch8
+	channel_count 4
+	channel 5, .Ch5
+	channel 6, .Ch6
+	channel 7, .Ch7
+	channel 8, .Ch8
 
 .Ch5:
 	togglesfx
@@ -2361,9 +2472,10 @@ Sfx_DexFanfare80109:
 SECTION "Sfx_Fanfare2", ROMX
 
 Sfx_Fanfare2:
-	musicheader 3, 5, .Ch5
-	musicheader 1, 6, .Ch6
-	musicheader 1, 8, .Ch8
+	channel_count 3
+	channel 5, .Ch5
+	channel 6, .Ch6
+	channel 8, .Ch8
 
 .Ch5:
 	togglesfx
@@ -2434,10 +2546,11 @@ Sfx_Fanfare2:
 SECTION "UnknownSfx", ROMX
 
 UnknownSfx:
-	musicheader 4, 5, .Ch5
-	musicheader 1, 6, .Ch6
-	musicheader 1, 7, .Ch7
-	musicheader 1, 8, .Ch8
+	channel_count 4
+	channel 5, .Ch5
+	channel 6, .Ch6
+	channel 7, .Ch7
+	channel 8, .Ch8
 
 .Ch5:
 	togglesfx
@@ -2514,9 +2627,10 @@ UnknownSfx:
 SECTION "Sfx_Fanfare", ROMX
 
 Sfx_Fanfare:
-	musicheader 3, 5, .Ch5
-	musicheader 1, 6, .Ch6
-	musicheader 1, 8, .Ch8
+	channel_count 3
+	channel 5, .Ch5
+	channel 6, .Ch6
+	channel 8, .Ch8
 
 .Ch5:
 	togglesfx
@@ -2613,10 +2727,11 @@ Sfx_Fanfare:
 SECTION "Sfx_RegisterPhoneNumber", ROMX
 
 Sfx_RegisterPhoneNumber:
-	musicheader 4, 5, .Ch5
-	musicheader 1, 6, .Ch6
-	musicheader 1, 7, .Ch7
-	musicheader 1, 8, .Ch8
+	channel_count 4
+	channel 5, .Ch5
+	channel 6, .Ch6
+	channel 7, .Ch7
+	channel 8, .Ch8
 
 .Ch5:
 	togglesfx
@@ -2696,9 +2811,10 @@ Sfx_RegisterPhoneNumber:
 SECTION "Sfx_3RdPlace", ROMX
 
 Sfx_3RdPlace:
-	musicheader 3, 5, .Ch5
-	musicheader 1, 6, .Ch6
-	musicheader 1, 7, .Ch7
+	channel_count 3
+	channel 5, .Ch5
+	channel 6, .Ch6
+	channel 7, .Ch7
 
 .Ch5:
 	togglesfx
@@ -2752,10 +2868,11 @@ SECTION "Sfx_GetEggFromDayCareLady", ROMX
 
 Sfx_GetEggFromDayCareLady:
 Sfx_GetEggFromDayCareMan:
-	musicheader 4, 5, .Ch5
-	musicheader 1, 6, .Ch6
-	musicheader 1, 7, .Ch7
-	musicheader 1, 8, .Ch8
+	channel_count 4
+	channel 5, .Ch5
+	channel 6, .Ch6
+	channel 7, .Ch7
+	channel 8, .Ch8
 
 .Ch5:
 	togglesfx
@@ -2845,10 +2962,11 @@ Sfx_GetEggFromDayCareMan:
 SECTION "Sfx_MoveDeleted", ROMX
 
 Sfx_MoveDeleted:
-	musicheader 4, 5, .Ch5
-	musicheader 1, 6, .Ch6
-	musicheader 1, 7, .Ch7
-	musicheader 1, 8, .Ch8
+	channel_count 4
+	channel 5, .Ch5
+	channel 6, .Ch6
+	channel 7, .Ch7
+	channel 8, .Ch8
 
 .Ch5:
 	togglesfx
@@ -2951,10 +3069,11 @@ Sfx_MoveDeleted:
 SECTION "Sfx_2ndPlace", ROMX
 
 Sfx_2ndPlace:
-	musicheader 4, 5, .Ch5
-	musicheader 1, 6, .Ch6
-	musicheader 1, 7, .Ch7
-	musicheader 1, 8, .Ch8
+	channel_count 4
+	channel 5, .Ch5
+	channel 6, .Ch6
+	channel 7, .Ch7
+	channel 8, .Ch8
 
 .Ch5:
 	togglesfx
@@ -3063,10 +3182,11 @@ Sfx_2ndPlace:
 SECTION "Sfx_1stPlace", ROMX
 
 Sfx_1stPlace:
-	musicheader 4, 5, .Ch5
-	musicheader 1, 6, .Ch6
-	musicheader 1, 7, .Ch7
-	musicheader 1, 8, .Ch8
+	channel_count 4
+	channel 5, .Ch5
+	channel 6, .Ch6
+	channel 7, .Ch7
+	channel 8, .Ch8
 
 .Ch5:
 	togglesfx
@@ -3174,10 +3294,11 @@ Sfx_1stPlace:
 SECTION "Sfx_ChooseACard", ROMX
 
 Sfx_ChooseACard:
-	musicheader 4, 5, .Ch5
-	musicheader 1, 6, .Ch6
-	musicheader 1, 7, .Ch7
-	musicheader 1, 8, .Ch8
+	channel_count 4
+	channel 5, .Ch5
+	channel 6, .Ch6
+	channel 7, .Ch7
+	channel 8, .Ch8
 
 .Ch5:
 	togglesfx
@@ -3314,10 +3435,11 @@ Sfx_ChooseACard:
 SECTION "Sfx_GetTm", ROMX
 
 Sfx_GetTm:
-	musicheader 4, 5, .Ch5
-	musicheader 1, 6, .Ch6
-	musicheader 1, 7, .Ch7
-	musicheader 1, 8, .Ch8
+	channel_count 4
+	channel 5, .Ch5
+	channel 6, .Ch6
+	channel 7, .Ch7
+	channel 8, .Ch8
 
 .Ch5:
 	togglesfx
@@ -3415,10 +3537,11 @@ Sfx_GetTm:
 SECTION "Sfx_GetBadge", ROMX
 
 Sfx_GetBadge:
-	musicheader 4, 5, .Ch5
-	musicheader 1, 6, .Ch6
-	musicheader 1, 7, .Ch7
-	musicheader 1, 8, .Ch8
+	channel_count 4
+	channel 5, .Ch5
+	channel 6, .Ch6
+	channel 7, .Ch7
+	channel 8, .Ch8
 
 .Ch5:
 	togglesfx
@@ -3573,10 +3696,11 @@ Sfx_GetBadge:
 SECTION "Sfx_QuitSlots", ROMX
 
 Sfx_QuitSlots:
-	musicheader 4, 5, .Ch5
-	musicheader 1, 6, .Ch6
-	musicheader 1, 7, .Ch7
-	musicheader 1, 8, .Ch8
+	channel_count 4
+	channel 5, .Ch5
+	channel 6, .Ch6
+	channel 7, .Ch7
+	channel 8, .Ch8
 
 .Ch5:
 	togglesfx
@@ -3684,8 +3808,9 @@ Sfx_QuitSlots:
 SECTION "Sfx_Protect", ROMX
 
 Sfx_Protect:
-	musicheader 2, 5, .Ch5
-	musicheader 1, 8, .Ch8
+	channel_count 2
+	channel 5, .Ch5
+	channel 8, .Ch8
 
 .Ch5:
 	togglesfx
@@ -3736,7 +3861,8 @@ Sfx_Protect:
 SECTION "Sfx_Sketch", ROMX
 
 Sfx_Sketch:
-	musicheader 1, 5, .Ch5
+	channel_count 1
+	channel 5, .Ch5
 
 .Ch5:
 	dutycycle $1
@@ -3754,7 +3880,8 @@ Sfx_Sketch:
 SECTION "Sfx_RainDance", ROMX
 
 Sfx_RainDance:
-	musicheader 1, 8, .Ch8
+	channel_count 1
+	channel 8, .Ch8
 
 .Ch8:
 .branch8:
@@ -3773,8 +3900,9 @@ Sfx_RainDance:
 SECTION "Sfx_Aeroblast", ROMX
 
 Sfx_Aeroblast:
-	musicheader 2, 5, .Ch5
-	musicheader 1, 8, .Ch8
+	channel_count 2
+	channel 5, .Ch5
+	channel 8, .Ch8
 
 .Ch5:
 	sound_duty 2, 0, 3, 3
@@ -3794,7 +3922,8 @@ Sfx_Aeroblast:
 SECTION "Sfx_Spark", ROMX
 
 Sfx_Spark:
-	musicheader 1, 8, .Ch8
+	channel_count 1
+	channel 8, .Ch8
 
 .Ch8:
 .branch8:
@@ -3807,8 +3936,9 @@ Sfx_Spark:
 SECTION "Sfx_Curse", ROMX
 
 Sfx_Curse:
-	musicheader 2, 5, .Ch5
-	musicheader 1, 8, .Ch8
+	channel_count 2
+	channel 5, .Ch5
+	channel 8, .Ch8
 
 .Ch5:
 	dutycycle $3
@@ -3826,8 +3956,9 @@ Sfx_Curse:
 SECTION "Sfx_Rage", ROMX
 
 Sfx_Rage:
-	musicheader 2, 5, .Ch5
-	musicheader 1, 8, .Ch8
+	channel_count 2
+	channel 5, .Ch5
+	channel 8, .Ch8
 
 .Ch5:
 	dutycycle $0
@@ -3846,7 +3977,8 @@ Sfx_Rage:
 SECTION "Sfx_Thief", ROMX
 
 Sfx_Thief:
-	musicheader 1, 8, .Ch8
+	channel_count 1
+	channel 8, .Ch8
 
 .Ch8:
 .branch8:
@@ -3861,7 +3993,8 @@ Sfx_Thief:
 SECTION "Sfx_Thief2", ROMX
 
 Sfx_Thief2:
-	musicheader 1, 5, .Ch5
+	channel_count 1
+	channel 5, .Ch5
 
 .Ch5:
 	togglesfx
@@ -3886,8 +4019,9 @@ Sfx_Thief2:
 SECTION "Sfx_SpiderWeb", ROMX
 
 Sfx_SpiderWeb:
-	musicheader 2, 5, .Ch5
-	musicheader 1, 8, .Ch8
+	channel_count 2
+	channel 5, .Ch5
+	channel 8, .Ch8
 
 .Ch5:
 	dutycycle $0
@@ -3910,8 +4044,9 @@ Sfx_SpiderWeb:
 SECTION "Sfx_MindReader", ROMX
 
 Sfx_MindReader:
-	musicheader 2, 5, .Ch5
-	musicheader 1, 8, .Ch8
+	channel_count 2
+	channel 5, .Ch5
+	channel 8, .Ch8
 
 .Ch5:
 	togglesfx
@@ -3941,7 +4076,8 @@ Sfx_MindReader:
 SECTION "Sfx_Nightmare", ROMX
 
 Sfx_Nightmare:
-	musicheader 1, 5, .Ch5
+	channel_count 1
+	channel 5, .Ch5
 
 .Ch5:
 	dutycycle $0
@@ -3965,7 +4101,8 @@ Sfx_Nightmare:
 SECTION "Sfx_Snore", ROMX
 
 Sfx_Snore:
-	musicheader 1, 8, .Ch8
+	channel_count 1
+	channel 8, .Ch8
 
 .Ch8:
 	noise __,  3, $ea, $4b
@@ -3980,7 +4117,8 @@ Sfx_Snore:
 SECTION "Sfx_SweetKiss", ROMX
 
 Sfx_SweetKiss:
-	musicheader 1, 5, .Ch5
+	channel_count 1
+	channel 5, .Ch5
 
 .Ch5:
 	dutycycle $2
@@ -3995,7 +4133,8 @@ Sfx_SweetKiss:
 SECTION "Sfx_SweetKiss2", ROMX
 
 Sfx_SweetKiss2:
-	musicheader 1, 5, .Ch5
+	channel_count 1
+	channel 5, .Ch5
 
 .Ch5:
 	dutycycle $0
@@ -4014,8 +4153,9 @@ Sfx_SweetKiss2:
 SECTION "Sfx_BellyDrum", ROMX
 
 Sfx_BellyDrum:
-	musicheader 2, 5, .Ch5
-	musicheader 1, 8, .Ch8
+	channel_count 2
+	channel 5, .Ch5
+	channel 8, .Ch8
 
 .Ch5:
 	dutycycle $2
@@ -4032,7 +4172,8 @@ Sfx_BellyDrum:
 SECTION "Sfx_Toxic", ROMX
 
 Sfx_Toxic:
-	musicheader 1, 5, .Ch5
+	channel_count 1
+	channel 5, .Ch5
 
 .Ch5:
 	dutycycle $2
@@ -4047,8 +4188,9 @@ Sfx_Toxic:
 SECTION "Sfx_SludgeBomb", ROMX
 
 Sfx_SludgeBomb:
-	musicheader 2, 5, .Ch5
-	musicheader 1, 8, .Ch8
+	channel_count 2
+	channel 5, .Ch5
+	channel 8, .Ch8
 
 .Ch5:
 	dutycycle $2
@@ -4070,7 +4212,8 @@ Sfx_SludgeBomb:
 SECTION "Sfx_Foresight", ROMX
 
 Sfx_Foresight:
-	musicheader 1, 5, .Ch5
+	channel_count 1
+	channel 5, .Ch5
 
 .Ch5:
 	sound __,  4, $f4, $07b5
@@ -4086,7 +4229,8 @@ Sfx_Foresight:
 SECTION "Sfx_Spite", ROMX
 
 Sfx_Spite:
-	musicheader 1, 5, .Ch5
+	channel_count 1
+	channel 5, .Ch5
 
 .Ch5:
 	togglesfx
@@ -4118,7 +4262,8 @@ Sfx_Spite:
 SECTION "Sfx_Outrage", ROMX
 
 Sfx_Outrage:
-	musicheader 1, 8, .Ch8
+	channel_count 1
+	channel 8, .Ch8
 
 .Ch8:
 	noise __, 12, $ea, $6c
@@ -4132,8 +4277,9 @@ Sfx_Outrage:
 SECTION "Sfx_PerishSong", ROMX
 
 Sfx_PerishSong:
-	musicheader 2, 5, .Ch5
-	musicheader 1, 6, .Ch6
+	channel_count 2
+	channel 5, .Ch5
+	channel 6, .Ch6
 
 .Ch5:
 	togglesfx
@@ -4162,8 +4308,9 @@ Sfx_PerishSong:
 SECTION "Sfx_GigaDrain", ROMX
 
 Sfx_GigaDrain:
-	musicheader 2, 5, .Ch5
-	musicheader 1, 8, .Ch8
+	channel_count 2
+	channel 5, .Ch5
+	channel 8, .Ch8
 
 .Ch5:
 	dutycycle $2
@@ -4193,7 +4340,8 @@ Sfx_GigaDrain:
 SECTION "Sfx_Attract", ROMX
 
 Sfx_Attract:
-	musicheader 1, 5, .Ch5
+	channel_count 1
+	channel 5, .Ch5
 
 .Ch5:
 	dutycycle $0
@@ -4209,7 +4357,8 @@ Sfx_Attract:
 SECTION "Sfx_Kinesis2", ROMX
 
 Sfx_Kinesis2:
-	musicheader 1, 5, .Ch5
+	channel_count 1
+	channel 5, .Ch5
 
 .Ch5:
 	dutycycle $0
@@ -4222,7 +4371,8 @@ Sfx_Kinesis2:
 SECTION "Sfx_ZapCannon", ROMX
 
 Sfx_ZapCannon:
-	musicheader 1, 8, .Ch8
+	channel_count 1
+	channel 8, .Ch8
 
 .Ch8:
 .branch8:
@@ -4236,7 +4386,8 @@ Sfx_ZapCannon:
 SECTION "Sfx_MeanLook", ROMX
 
 Sfx_MeanLook:
-	musicheader 1, 5, .Ch5
+	channel_count 1
+	channel 5, .Ch5
 
 .Ch5:
 	soundinput $77
@@ -4259,7 +4410,8 @@ Sfx_MeanLook:
 SECTION "Sfx_HealBell", ROMX
 
 Sfx_HealBell:
-	musicheader 1, 5, .Ch5
+	channel_count 1
+	channel 5, .Ch5
 
 .Ch5:
 	dutycycle $1
@@ -4273,7 +4425,8 @@ Sfx_HealBell:
 SECTION "Sfx_Return", ROMX
 
 Sfx_Return:
-	musicheader 1, 5, .Ch5
+	channel_count 1
+	channel 5, .Ch5
 
 .Ch5:
 	dutycycle $0
@@ -4291,7 +4444,8 @@ Sfx_Return:
 SECTION "Sfx_ExpBar", ROMX
 
 Sfx_ExpBar:
-	musicheader 1, 5, .Ch5
+	channel_count 1
+	channel 5, .Ch5
 
 .Ch5:
 	dutycycle $2
@@ -4312,7 +4466,8 @@ Sfx_ExpBar:
 SECTION "Sfx_MilkDrink", ROMX
 
 Sfx_MilkDrink:
-	musicheader 1, 5, .Ch5
+	channel_count 1
+	channel 5, .Ch5
 
 .Ch5:
 	dutycycle $2
@@ -4331,7 +4486,8 @@ Sfx_MilkDrink:
 SECTION "Sfx_Present", ROMX
 
 Sfx_Present:
-	musicheader 1, 5, .Ch5
+	channel_count 1
+	channel 5, .Ch5
 
 .Ch5:
 	dutycycle $2
@@ -4348,7 +4504,8 @@ Sfx_Present:
 SECTION "Sfx_MorningSun", ROMX
 
 Sfx_MorningSun:
-	musicheader 1, 5, .Ch5
+	channel_count 1
+	channel 5, .Ch5
 
 .Ch5:
 	dutycycle $3
@@ -4367,7 +4524,8 @@ Sfx_MorningSun:
 SECTION "Sfx_Moonlight", ROMX
 
 Sfx_Moonlight:
-	musicheader 1, 5, .Ch5
+	channel_count 1
+	channel 5, .Ch5
 
 .Ch5:
 	dutycycle $2
@@ -4384,8 +4542,9 @@ Sfx_Moonlight:
 SECTION "Sfx_Encore", ROMX
 
 Sfx_Encore:
-	musicheader 2, 5, .Ch5
-	musicheader 1, 8, .Ch8
+	channel_count 2
+	channel 5, .Ch5
+	channel 8, .Ch8
 
 .Ch5:
 	dutycycle $2
@@ -4407,7 +4566,8 @@ Sfx_Encore:
 SECTION "Sfx_BeatUp", ROMX
 
 Sfx_BeatUp:
-	musicheader 1, 8, .Ch8
+	channel_count 1
+	channel 8, .Ch8
 
 .Ch8:
 	noise __,  3, $e8, $69
@@ -4421,7 +4581,8 @@ Sfx_BeatUp:
 SECTION "Sfx_SweetScent", ROMX
 
 Sfx_SweetScent:
-	musicheader 1, 5, .Ch5
+	channel_count 1
+	channel 5, .Ch5
 
 .Ch5:
 	dutycycle $2
@@ -4437,8 +4598,9 @@ Sfx_SweetScent:
 SECTION "Sfx_BatonPass", ROMX
 
 Sfx_BatonPass:
-	musicheader 2, 5, .Ch5
-	musicheader 1, 8, .Ch8
+	channel_count 2
+	channel 5, .Ch5
+	channel 8, .Ch8
 
 .Ch5:
 	dutycycle $2
@@ -4460,7 +4622,8 @@ Sfx_BatonPass:
 SECTION "Sfx_EggCrack", ROMX
 
 Sfx_EggCrack:
-	musicheader 1, 5, .Ch5
+	channel_count 1
+	channel 5, .Ch5
 
 .Ch5:
 	togglesfx
@@ -4477,7 +4640,8 @@ Sfx_EggCrack:
 SECTION "Sfx_Evolved", ROMX
 
 Sfx_Evolved:
-	musicheader 1, 5, .Ch5
+	channel_count 1
+	channel 5, .Ch5
 
 .Ch5:
 	togglesfx
@@ -4503,7 +4667,8 @@ Sfx_Evolved:
 SECTION "Sfx_MasterBall", ROMX
 
 Sfx_MasterBall:
-	musicheader 1, 5, .Ch5
+	channel_count 1
+	channel 5, .Ch5
 
 .Ch5:
 	togglesfx
@@ -4539,7 +4704,8 @@ Sfx_MasterBall:
 SECTION "Sfx_EggHatch", ROMX
 
 Sfx_EggHatch:
-	musicheader 1, 5, .Ch5
+	channel_count 1
+	channel 5, .Ch5
 
 .Ch5:
 	togglesfx
@@ -4563,7 +4729,8 @@ Sfx_EggHatch:
 SECTION "Sfx_GsIntroCharizardFireball", ROMX
 
 Sfx_GsIntroCharizardFireball:
-	musicheader 1, 8, .Ch8
+	channel_count 1
+	channel 8, .Ch8
 
 .Ch8:
 	noise __,  9, $cf, $4d
@@ -4584,7 +4751,8 @@ Sfx_GsIntroCharizardFireball:
 SECTION "Sfx_GsIntroPokemonAppears", ROMX
 
 Sfx_GsIntroPokemonAppears:
-	musicheader 1, 8, .Ch8
+	channel_count 1
+	channel 8, .Ch8
 
 .Ch8:
 	noise __,  2, $88, $4f
@@ -4600,7 +4768,8 @@ Sfx_GsIntroPokemonAppears:
 SECTION "Sfx_Flash", ROMX
 
 Sfx_Flash:
-	musicheader 1, 5, .Ch5
+	channel_count 1
+	channel 5, .Ch5
 
 .Ch5:
 	dutycycle $1
@@ -4621,7 +4790,8 @@ Sfx_Flash:
 SECTION "Sfx_GameFreakLogoGs", ROMX
 
 Sfx_GameFreakLogoGs:
-	musicheader 1, 5, .Ch5
+	channel_count 1
+	channel 5, .Ch5
 
 .Ch5:
 	dutycycle $3
@@ -4643,10 +4813,11 @@ Sfx_GameFreakLogoGs:
 SECTION "Sfx_DexFanfareLessThan20", ROMX
 
 Sfx_DexFanfareLessThan20:
-	musicheader 4, 5, .Ch5
-	musicheader 1, 6, .Ch6
-	musicheader 1, 7, .Ch7
-	musicheader 1, 8, .Ch8
+	channel_count 4
+	channel 5, .Ch5
+	channel 6, .Ch6
+	channel 7, .Ch7
+	channel 8, .Ch8
 
 .Ch5:
 	togglesfx
@@ -4723,10 +4894,11 @@ Sfx_DexFanfareLessThan20:
 SECTION "Sfx_DexFanfare140169", ROMX
 
 Sfx_DexFanfare140169:
-	musicheader 4, 5, .Ch5
-	musicheader 1, 6, .Ch6
-	musicheader 1, 7, .Ch7
-	musicheader 1, 8, .Ch8
+	channel_count 4
+	channel 5, .Ch5
+	channel 6, .Ch6
+	channel 7, .Ch7
+	channel 8, .Ch8
 
 .Ch5:
 	togglesfx
@@ -4830,10 +5002,11 @@ Sfx_DexFanfare140169:
 SECTION "Sfx_DexFanfare170199", ROMX
 
 Sfx_DexFanfare170199:
-	musicheader 4, 5, .Ch5
-	musicheader 1, 6, .Ch6
-	musicheader 1, 7, .Ch7
-	musicheader 1, 8, .Ch8
+	channel_count 4
+	channel 5, .Ch5
+	channel 6, .Ch6
+	channel 7, .Ch7
+	channel 8, .Ch8
 
 .Ch5:
 	togglesfx
@@ -4940,10 +5113,11 @@ Sfx_DexFanfare170199:
 SECTION "Sfx_DexFanfare200229", ROMX
 
 Sfx_DexFanfare200229:
-	musicheader 4, 5, .Ch5
-	musicheader 1, 6, .Ch6
-	musicheader 1, 7, .Ch7
-	musicheader 1, 8, .Ch8
+	channel_count 4
+	channel 5, .Ch5
+	channel 6, .Ch6
+	channel 7, .Ch7
+	channel 8, .Ch8
 
 .Ch5:
 	togglesfx
@@ -5064,10 +5238,11 @@ Sfx_DexFanfare200229:
 SECTION "Sfx_DexFanfare230Plus", ROMX
 
 Sfx_DexFanfare230Plus:
-	musicheader 4, 5, .Ch5
-	musicheader 1, 6, .Ch6
-	musicheader 1, 7, .Ch7
-	musicheader 1, 8, .Ch8
+	channel_count 4
+	channel 5, .Ch5
+	channel 6, .Ch6
+	channel 7, .Ch7
+	channel 8, .Ch8
 
 .Ch5:
 	togglesfx
@@ -5233,7 +5408,8 @@ Sfx_DexFanfare230Plus:
 SECTION "Sfx_NotVeryEffective", ROMX
 
 Sfx_NotVeryEffective:
-	musicheader 1, 8, .Ch8
+	channel_count 1
+	channel 8, .Ch8
 
 .Ch8:
 	noise __,  5, $f1, $5f
@@ -5245,7 +5421,8 @@ Sfx_NotVeryEffective:
 SECTION "Sfx_Damage", ROMX
 
 Sfx_Damage:
-	musicheader 1, 8, .Ch8
+	channel_count 1
+	channel 8, .Ch8
 
 .Ch8:
 	noise __,  5, $f1, $5e
@@ -5258,7 +5435,8 @@ Sfx_Damage:
 SECTION "Sfx_SuperEffective", ROMX
 
 Sfx_SuperEffective:
-	musicheader 1, 8, .Ch8
+	channel_count 1
+	channel 8, .Ch8
 
 .Ch8:
 	noise __,  4, $f1, $4f
@@ -5272,8 +5450,9 @@ Sfx_SuperEffective:
 SECTION "Sfx_BallBounce", ROMX
 
 Sfx_BallBounce:
-	musicheader 2, 5, .Ch5
-	musicheader 1, 6, .Ch6
+	channel_count 2
+	channel 5, .Ch5
+	channel 6, .Ch6
 
 .Ch5:
 	dutycycle $2
@@ -5304,8 +5483,9 @@ Sfx_BallBounce:
 SECTION "Sfx_SweetScent2", ROMX
 
 Sfx_SweetScent2:
-	musicheader 2, 5, .Ch5
-	musicheader 1, 8, .Ch8
+	channel_count 2
+	channel 5, .Ch5
+	channel 8, .Ch8
 
 .Ch5:
 	soundinput $af
@@ -5334,8 +5514,9 @@ Sfx_SweetScent2:
 SECTION "Sfx_HitEndOfExpBar", ROMX
 
 Sfx_HitEndOfExpBar:
-	musicheader 2, 5, .Ch5
-	musicheader 1, 6, .Ch6
+	channel_count 2
+	channel 5, .Ch5
+	channel 6, .Ch6
 
 .Ch5:
 	dutycycle $2
@@ -5355,7 +5536,8 @@ Sfx_HitEndOfExpBar:
 SECTION "Sfx_GiveTrademon", ROMX
 
 Sfx_GiveTrademon:
-	musicheader 1, 5, .Ch5
+	channel_count 1
+	channel 5, .Ch5
 
 .Ch5:
 	sound C#,  1, $0, 0
@@ -5376,7 +5558,8 @@ Sfx_GiveTrademon:
 SECTION "Sfx_GetTrademon", ROMX
 
 Sfx_GetTrademon:
-	musicheader 1, 5, .Ch5
+	channel_count 1
+	channel 5, .Ch5
 
 .Ch5:
 	sound C#,  1, $0, 0
@@ -5397,9 +5580,10 @@ Sfx_GetTrademon:
 SECTION "Sfx_TrainArrived", ROMX
 
 Sfx_TrainArrived:
-	musicheader 3, 5, .Ch5
-	musicheader 1, 6, .Ch6
-	musicheader 1, 8, .Ch8
+	channel_count 3
+	channel 5, .Ch5
+	channel 6, .Ch6
+	channel 8, .Ch8
 
 .Ch6:
 	tone $0008
@@ -5430,7 +5614,8 @@ Sfx_TrainArrived:
 SECTION "Sfx_2Boops", ROMX
 
 Sfx_2Boops:
-	musicheader 1, 5, .Ch5
+	channel_count 1
+	channel 5, .Ch5
 
 .Ch5:
 	dutycycle $2
@@ -5448,7 +5633,8 @@ Sfx_2Boops:
 SECTION "Sfx_TitleScreenIntro", ROMX
 
 Sfx_TitleScreenIntro:
-	musicheader 1, 8, .Ch8
+	channel_count 1
+	channel 8, .Ch8
 
 .Ch8:
 	noise __,  2, $10, $10
@@ -5466,7 +5652,8 @@ Sfx_TitleScreenIntro:
 SECTION "Sfx_StopSlot", ROMX
 
 Sfx_StopSlot:
-	musicheader 1, 5, .Ch5
+	channel_count 1
+	channel 5, .Ch5
 
 .Ch5:
 	dutycycle $2
@@ -5478,7 +5665,8 @@ Sfx_StopSlot:
 SECTION "Sfx_GlassTing", ROMX
 
 Sfx_GlassTing:
-	musicheader 1, 5, .Ch5
+	channel_count 1
+	channel 5, .Ch5
 
 .Ch5:
 	dutycycle $2
@@ -5489,8 +5677,9 @@ Sfx_GlassTing:
 SECTION "Sfx_GlassTing2", ROMX
 
 Sfx_GlassTing2:
-	musicheader 2, 5, .Ch5
-	musicheader 1, 6, .Ch6
+	channel_count 2
+	channel 5, .Ch5
+	channel 6, .Ch6
 
 .Ch5:
 	dutycycle $2
@@ -5506,7 +5695,8 @@ Sfx_GlassTing2:
 SECTION "Sfx_IntroUnown1", ROMX
 
 Sfx_IntroUnown1:
-	musicheader 1, 5, .Ch5
+	channel_count 1
+	channel 5, .Ch5
 
 .Ch5:
 	vibrato $1, $a3
@@ -5519,7 +5709,8 @@ Sfx_IntroUnown1:
 SECTION "Sfx_IntroUnown2", ROMX
 
 Sfx_IntroUnown2:
-	musicheader 1, 6, .Ch6
+	channel_count 1
+	channel 6, .Ch6
 
 .Ch6:
 	vibrato $1, $73
@@ -5532,7 +5723,8 @@ Sfx_IntroUnown2:
 SECTION "Sfx_IntroUnown3", ROMX
 
 Sfx_IntroUnown3:
-	musicheader 1, 7, .Ch7
+	channel_count 1
+	channel 7, .Ch7
 
 .Ch7:
 	vibrato $1, $53
@@ -5548,7 +5740,8 @@ Sfx_IntroUnown3:
 SECTION "Sfx_DittoPopUp", ROMX
 
 Sfx_DittoPopUp:
-	musicheader 1, 5, .Ch5
+	channel_count 1
+	channel 5, .Ch5
 
 .Ch5:
 	dutycycle $2
@@ -5564,7 +5757,8 @@ Sfx_DittoPopUp:
 SECTION "Sfx_DittoTransform", ROMX
 
 Sfx_DittoTransform:
-	musicheader 1, 5, .Ch5
+	channel_count 1
+	channel 5, .Ch5
 
 .Ch5:
 	dutycycle $1
@@ -5579,7 +5773,8 @@ Sfx_DittoTransform:
 SECTION "Sfx_IntroSuicune1", ROMX
 
 Sfx_IntroSuicune1:
-	musicheader 1, 8, .Ch8
+	channel_count 1
+	channel 8, .Ch8
 
 .Ch8:
 	noise __,  2, $58, $59
@@ -5590,7 +5785,8 @@ Sfx_IntroSuicune1:
 SECTION "Sfx_IntroPichu", ROMX
 
 Sfx_IntroPichu:
-	musicheader 1, 5, .Ch5
+	channel_count 1
+	channel 5, .Ch5
 
 .Ch5:
 	dutycycle $3
@@ -5605,7 +5801,8 @@ Sfx_IntroPichu:
 SECTION "Sfx_IntroSuicune2", ROMX
 
 Sfx_IntroSuicune2:
-	musicheader 1, 8, .Ch8
+	channel_count 1
+	channel 8, .Ch8
 
 .Ch8:
 	noise __,  2, $a7, $31
@@ -5630,7 +5827,8 @@ Sfx_IntroSuicune2:
 SECTION "Sfx_IntroSuicune3", ROMX
 
 Sfx_IntroSuicune3:
-	musicheader 1, 8, .Ch8
+	channel_count 1
+	channel 8, .Ch8
 
 .Ch8:
 	noise __,  2, $88, $31
@@ -5644,7 +5842,8 @@ Sfx_IntroSuicune3:
 SECTION "Sfx_DittoBounce", ROMX
 
 Sfx_DittoBounce:
-	musicheader 1, 5, .Ch5
+	channel_count 1
+	channel 5, .Ch5
 
 .Ch5:
 	dutycycle $2
@@ -5659,7 +5858,8 @@ Sfx_DittoBounce:
 SECTION "Sfx_IntroSuicune4", ROMX
 
 Sfx_IntroSuicune4:
-	musicheader 1, 8, .Ch8
+	channel_count 1
+	channel 8, .Ch8
 
 .Ch8:
 	noise __,  2, $a1, $5c
@@ -5679,7 +5879,8 @@ Sfx_IntroSuicune4:
 SECTION "Sfx_GameFreakPresents", ROMX
 
 Sfx_GameFreakPresents:
-	musicheader 1, 5, .Ch5
+	channel_count 1
+	channel 5, .Ch5
 
 .Ch5:
 	togglesfx
@@ -5707,7 +5908,8 @@ Sfx_GameFreakPresents:
 SECTION "Sfx_Tingle", ROMX
 
 Sfx_Tingle:
-	musicheader 1, 5, .Ch5
+	channel_count 1
+	channel 5, .Ch5
 
 .Ch5:
 	togglesfx
@@ -5732,7 +5934,8 @@ Sfx_Tingle:
 SECTION "Sfx_TwoPcBeeps", ROMX
 
 Sfx_TwoPcBeeps:
-	musicheader 1, 5, .Ch5
+	channel_count 1
+	channel 5, .Ch5
 
 .Ch5:
 	dutycycle $2
@@ -5746,9 +5949,10 @@ Sfx_TwoPcBeeps:
 SECTION "Sfx_4NoteDitty", ROMX
 
 Sfx_4NoteDitty:
-	musicheader 3, 5, .Ch5
-	musicheader 1, 6, .Ch6
-	musicheader 1, 7, .Ch7
+	channel_count 3
+	channel 5, .Ch5
+	channel 6, .Ch6
+	channel 7, .Ch7
 
 .Ch5:
 	togglesfx
@@ -5793,7 +5997,8 @@ Sfx_4NoteDitty:
 SECTION "Sfx_Twinkle", ROMX
 
 Sfx_Twinkle:
-	musicheader 1, 5, .Ch5
+	channel_count 1
+	channel 5, .Ch5
 
 .Ch5:
 	togglesfx
@@ -5824,7 +6029,8 @@ Sfx_Twinkle:
 SECTION "Sfx_Puddle", ROMX
 
 Sfx_Puddle:
-	musicheader 1, 5, .Ch5
+	channel_count 1
+	channel 5, .Ch5
 
 .Ch5:
 	dutycycle $1
@@ -5837,7 +6043,8 @@ Sfx_Puddle:
 SECTION "Sfx_AbilitySlideout", ROMX
 
 Sfx_AbilitySlideout:
-	musicheader 1, 5, .Ch5
+	channel_count 1
+	channel 5, .Ch5
 
 .Ch5:
 	dutycycle $1

@@ -1,7 +1,8 @@
 Music_LavenderTown:
-	musicheader 3, 1, Music_LavenderTown_Ch1
-	musicheader 1, 2, Music_LavenderTown_Ch2
-	musicheader 1, 3, Music_LavenderTown_Ch3
+	channel_count 3
+	channel 1, Music_LavenderTown_Ch1
+	channel 2, Music_LavenderTown_Ch2
+	channel 3, Music_LavenderTown_Ch3
 
 Music_LavenderTown_Ch1:
 	tempo 160

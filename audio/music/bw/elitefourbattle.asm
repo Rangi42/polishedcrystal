@@ -4,10 +4,11 @@
 ; https://hax.iimarckus.org/topic/6777/9/
 
 Music_EliteFourBattleBW:
-	musicheader 4, 1, Music_EliteFourBattleBW_Ch1
-	musicheader 1, 2, Music_EliteFourBattleBW_Ch2
-	musicheader 1, 3, Music_EliteFourBattleBW_Ch3
-	musicheader 1, 4, Music_EliteFourBattleBW_Ch4
+	channel_count 4
+	channel 1, Music_EliteFourBattleBW_Ch1
+	channel 2, Music_EliteFourBattleBW_Ch2
+	channel 3, Music_EliteFourBattleBW_Ch3
+	channel 4, Music_EliteFourBattleBW_Ch4
 
 Music_EliteFourBattleBW_Ch1:
 	dutycycle $2
