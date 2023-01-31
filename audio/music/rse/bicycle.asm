@@ -4,10 +4,11 @@
 ; https://soundcloud.com/mmmmmmmmmmmmmmmmm-1/hoenn-bicycle-gbc-8-bit
 
 Music_BicycleRSE:
-	musicheader 4, 1, Music_BicycleRSE_Ch1
-	musicheader 1, 2, Music_BicycleRSE_Ch2
-	musicheader 1, 3, Music_BicycleRSE_Ch3
-	musicheader 1, 4, Music_BicycleRSE_Ch4
+	channel_count 4
+	channel 1, Music_BicycleRSE_Ch1
+	channel 2, Music_BicycleRSE_Ch2
+	channel 3, Music_BicycleRSE_Ch3
+	channel 4, Music_BicycleRSE_Ch4
 
 Music_BicycleRSE_Ch1:
 	tempo 70

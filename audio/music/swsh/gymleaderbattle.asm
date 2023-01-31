@@ -3,10 +3,11 @@
 ; https://soundcloud.com/user-927422935-571023782/swsh-gym-leader-theme-8-bit-by-shinkonetcavy
 
 Music_GymLeaderBattleSwSh:
-	musicheader 4, 1, Music_GymLeaderBattleSwSh_Ch1
-	musicheader 1, 2, Music_GymLeaderBattleSwSh_Ch2
-	musicheader 1, 3, Music_GymLeaderBattleSwSh_Ch3
-	musicheader 1, 4, Music_GymLeaderBattleSwSh_Ch4
+	channel_count 4
+	channel 1, Music_GymLeaderBattleSwSh_Ch1
+	channel 2, Music_GymLeaderBattleSwSh_Ch2
+	channel 3, Music_GymLeaderBattleSwSh_Ch3
+	channel 4, Music_GymLeaderBattleSwSh_Ch4
 
 Music_GymLeaderBattleSwSh_Ch1:
 	tempo $89

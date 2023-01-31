@@ -3,10 +3,11 @@
 ; https://pastebin.com/7Hz9jRHq
 
 Music_TrainerBattleBW:
-	musicheader 4, 1, Music_TrainerBattleBW_Ch1
-	musicheader 1, 2, Music_TrainerBattleBW_Ch2
-	musicheader 1, 3, Music_TrainerBattleBW_Ch3
-	musicheader 1, 4, Music_TrainerBattleBW_Ch4
+	channel_count 4
+	channel 1, Music_TrainerBattleBW_Ch1
+	channel 2, Music_TrainerBattleBW_Ch2
+	channel 3, Music_TrainerBattleBW_Ch3
+	channel 4, Music_TrainerBattleBW_Ch4
 
 Music_TrainerBattleBW_Ch1:
 	volume $77

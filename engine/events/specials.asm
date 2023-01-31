@@ -240,13 +240,14 @@ Special_CheckCoins:
 	text_far _NoCoinCaseText
 	text_end
 
+Special_CheckLuckyNumberShowFlag:
+	ld hl, wLuckyNumberShowFlag
+	bit LUCKYNUMBERSHOW_GAME_OVER_F, [hl]
+	ret
+
 SpecialCheckPokerus:
 ; Check if a monster in your party has Pokerus
 	farcall CheckPokerus
-	jr ScriptReturnCarry
-
-Special_CheckLuckyNumberShowFlag:
-	farcall CheckLuckyNumberShowFlag
 	; fallthrough
 
 ScriptReturnCarry:
@@ -283,9 +284,6 @@ StoreSwarmMapIndices::
 	ret
 
 Special_ResetLuckyNumberShowFlag:
-	farcall RestartDailyResetTimer
-	ld hl, wLuckyNumberShowFlag
-	res LUCKYNUMBERSHOW_GAME_OVER_F, [hl]
 	farjp LoadOrRegenerateLuckyIDNumber
 
 SpecialSnorlaxAwake:

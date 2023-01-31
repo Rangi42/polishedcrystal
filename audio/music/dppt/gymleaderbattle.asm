@@ -3,10 +3,11 @@
 ; https://soundcloud.com/froggestspirit/battle-gym-leader
 
 Music_GymLeaderBattleDPPt:
-	musicheader 4, 1, Music_GymLeaderBattleDPPt_Ch1
-	musicheader 1, 2, Music_GymLeaderBattleDPPt_Ch2
-	musicheader 1, 3, Music_GymLeaderBattleDPPt_Ch3
-	musicheader 1, 4, Music_GymLeaderBattleDPPt_Ch4
+	channel_count 4
+	channel 1, Music_GymLeaderBattleDPPt_Ch1
+	channel 2, Music_GymLeaderBattleDPPt_Ch2
+	channel 3, Music_GymLeaderBattleDPPt_Ch3
+	channel 4, Music_GymLeaderBattleDPPt_Ch4
 
 Music_GymLeaderBattleDPPt_Ch1:
 	tempo $6A

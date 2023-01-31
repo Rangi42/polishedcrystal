@@ -4,10 +4,11 @@
 ; https://hax.iimarckus.org/topic/6777/4/
 
 Music_ZinniaBattleORAS:
-	musicheader 4, 1, Music_ZinniaBattleORAS_Ch1
-	musicheader 1, 2, Music_ZinniaBattleORAS_Ch2
-	musicheader 1, 3, Music_ZinniaBattleORAS_Ch3
-	musicheader 1, 4, Music_ZinniaBattleORAS_Ch4
+	channel_count 4
+	channel 1, Music_ZinniaBattleORAS_Ch1
+	channel 2, Music_ZinniaBattleORAS_Ch2
+	channel 3, Music_ZinniaBattleORAS_Ch3
+	channel 4, Music_ZinniaBattleORAS_Ch4
 
 Music_ZinniaBattleORAS_Ch1:
 	tempo 212

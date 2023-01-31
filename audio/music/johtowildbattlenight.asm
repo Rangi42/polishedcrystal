@@ -1,7 +1,8 @@
 Music_JohtoWildBattleNight:
-	musicheader 3, 1, Music_JohtoWildBattleNight_Ch1
-	musicheader 1, 2, Music_JohtoWildBattleNight_Ch2
-	musicheader 1, 3, Music_JohtoWildBattleNight_Ch3
+	channel_count 3
+	channel 1, Music_JohtoWildBattleNight_Ch1
+	channel 2, Music_JohtoWildBattleNight_Ch2
+	channel 3, Music_JohtoWildBattleNight_Ch3
 
 Music_JohtoWildBattleNight_Ch1:
 	tempo 107

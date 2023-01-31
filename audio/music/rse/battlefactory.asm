@@ -4,10 +4,11 @@
 ; https://soundcloud.com/mmmmmmmmmmmmmmmmm-1/battle-factory-gbc-8-bit
 
 Music_BattleFactoryRSE:
-	musicheader 4, 1, Music_BattleFactoryRSE_Ch1
-	musicheader 1, 2, Music_BattleFactoryRSE_Ch2
-	musicheader 1, 3, Music_BattleFactoryRSE_Ch3
-	musicheader 1, 4, Music_BattleFactoryRSE_Ch4
+	channel_count 4
+	channel 1, Music_BattleFactoryRSE_Ch1
+	channel 2, Music_BattleFactoryRSE_Ch2
+	channel 3, Music_BattleFactoryRSE_Ch3
+	channel 4, Music_BattleFactoryRSE_Ch4
 
 Music_BattleFactoryRSE_Ch1:
 	tempo 132

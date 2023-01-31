@@ -4,9 +4,10 @@
 ; https://hax.iimarckus.org/topic/7697/
 
 Music_KantoWildBattleNight:
-	musicheader 3, 1, Music_KantoWildBattleNight_Ch1
-	musicheader 1, 2, Music_KantoWildBattleNight_Ch2
-	musicheader 1, 3, Music_KantoWildBattleNight_Ch3
+	channel_count 3
+	channel 1, Music_KantoWildBattleNight_Ch1
+	channel 2, Music_KantoWildBattleNight_Ch2
+	channel 3, Music_KantoWildBattleNight_Ch3
 
 Music_KantoWildBattleNight_Ch1:
 	tempo 117

@@ -45,8 +45,8 @@ RadioTower1FLuckyNumberManScript:
 .introduced
 	writetext ExplainLuckyNumberShowText
 	promptbutton
-	special Special_CheckLuckyNumberShowFlag
-	iffalsefwd .skip
+	checkflag ENGINE_LUCKY_NUMBER_SHOW
+	iftruefwd .skip
 	special Special_ResetLuckyNumberShowFlag
 .skip
 	special Special_PrintTodaysLuckyNumber

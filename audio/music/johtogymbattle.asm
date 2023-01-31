@@ -1,7 +1,8 @@
 Music_JohtoGymBattle:
-	musicheader 3, 1, Music_JohtoGymBattle_Ch1
-	musicheader 1, 2, Music_JohtoGymBattle_Ch2
-	musicheader 1, 3, Music_JohtoGymBattle_Ch3
+	channel_count 3
+	channel 1, Music_JohtoGymBattle_Ch1
+	channel 2, Music_JohtoGymBattle_Ch2
+	channel 3, Music_JohtoGymBattle_Ch3
 
 Music_JohtoGymBattle_Ch1:
 	tempo 101
