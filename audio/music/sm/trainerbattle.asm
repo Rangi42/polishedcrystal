@@ -12,7 +12,7 @@ Music_TrainerBattleSM:
 
 Music_TrainerBattleSM_Ch1:
 	tempo 204
-	volume $77
+	volume 7, 7
 	dutycycle 2
 	tone $0002
 	vibrato $12, $15

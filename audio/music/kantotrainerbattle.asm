@@ -6,7 +6,7 @@ Music_KantoTrainerBattle:
 
 Music_KantoTrainerBattle_Ch1:
 	tempo 114
-	volume $77
+	volume 7, 7
 	pitchoffset 1, B_
 	notetype $c, $b3
 	vibrato $12, $24

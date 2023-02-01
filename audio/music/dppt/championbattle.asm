@@ -10,7 +10,7 @@ Music_ChampionBattleDPPt:
 	channel 4, Music_ChampionBattleDPPt_Ch4
 
 Music_ChampionBattleDPPt_Ch1:
-	volume $77
+	volume 7, 7
 	stereopanning $77
 	tempo $80
 	dutycycle 3

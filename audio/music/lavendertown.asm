@@ -6,7 +6,7 @@ Music_LavenderTown:
 
 Music_LavenderTown_Ch1:
 	tempo 160
-	volume $77
+	volume 7, 7
 	stereopanning $f
 	vibrato $6, $24
 	dutycycle $0

@@ -10,7 +10,7 @@ Music_TrainerBattleBW:
 	channel 4, Music_TrainerBattleBW_Ch4
 
 Music_TrainerBattleBW_Ch1:
-	volume $77
+	volume 7, 7
 	stereopanning $77
 	tempo $6C
 	dutycycle 3

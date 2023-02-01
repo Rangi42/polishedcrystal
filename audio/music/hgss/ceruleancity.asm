@@ -10,7 +10,7 @@ Music_CeruleanCityHGSS:
 
 Music_CeruleanCityHGSS_Ch1:
 	tempo $94
-	volume $77
+	volume 7, 7
 	notetype $C, $B2
 	tone $0001
 	dutycycle 2

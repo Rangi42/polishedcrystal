@@ -11,7 +11,7 @@ Music_DewfordTownRSE:
 
 Music_DewfordTownRSE_Ch1:
 	tempo 138
-	volume $77
+	volume 7, 7
 	stereopanning $f
 Music_DewfordTownRSE_Ch1_b0:
 	vibrato $10, $33

@@ -12,7 +12,7 @@ Music_MountChimneyRSE:
 
 Music_MountChimneyRSE_Ch1:
 	tempo 160
-	volume $77
+	volume 7, 7
 	dutycycle 0
 	tone $0002
 	vibrato $8, $15

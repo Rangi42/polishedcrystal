@@ -7,7 +7,7 @@ Music_PokemonMarch:
 
 Music_PokemonMarch_Ch1:
 	tempo 144
-	volume $77
+	volume 7, 7
 	stereopanning $f0
 	dutycycle $3
 	tone $0001

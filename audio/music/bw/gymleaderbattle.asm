@@ -11,7 +11,7 @@ Music_GymLeaderBattleBW:
 
 GymLeaderBattleBW_Channel1:
 	tempo $35
-	volume $55
+	volume 5, 5
 	dutycycle 1
 	notetype 12, $87
 	octave 4

@@ -7,7 +7,7 @@ Music_DarkCave:
 
 Music_DarkCave_Ch1:
 	tempo 128
-	volume $77
+	volume 7, 7
 	dutycycle $3
 	tone $0001
 	vibrato $11, $15

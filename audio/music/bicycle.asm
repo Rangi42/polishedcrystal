@@ -7,7 +7,7 @@ Music_Bicycle:
 
 Music_Bicycle_Ch1:
 	tempo 140
-	volume $77
+	volume 7, 7
 	dutycycle $3
 	tone $0001
 	stereopanning $f

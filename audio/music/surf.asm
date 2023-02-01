@@ -6,7 +6,7 @@ Music_Surf:
 
 Music_Surf_Ch1:
 	tempo 108
-	volume $77
+	volume 7, 7
 	notetype $c, $a7
 	stereopanning $f
 Music_Surf_branch_f519e:

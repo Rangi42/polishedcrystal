@@ -8,7 +8,7 @@ Music_Route3:
 Music_Route3_Ch1:
 	stereopanning $f
 	tempo 160
-	volume $77
+	volume 7, 7
 	notetype $c, $91
 	note __, 10
 	dutycycle $0

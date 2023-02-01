@@ -7,7 +7,7 @@ Music_ContestResults:
 
 Music_ContestResults_Ch1:
 	tempo 144
-	volume $77
+	volume 7, 7
 	notetype $c, $51
 Music_ContestResults_branch_efb52:
 	note __, 2

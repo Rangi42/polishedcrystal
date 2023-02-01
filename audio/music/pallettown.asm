@@ -6,7 +6,7 @@ Music_PalletTown:
 
 Music_PalletTown_Ch1:
 	tempo 188
-	volume $77
+	volume 7, 7
 	vibrato $12, $24
 	tone $0001
 	stereopanning $f

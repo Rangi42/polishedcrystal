@@ -11,7 +11,7 @@ Music_GymLeaderBattleXY:
 
 Music_GymLeaderBattleXY_Ch1:
 	tempo $82
-	volume $77
+	volume 7, 7
 	dutycycle 1
 	notetype 3, $B7
 	stereopanning $F0

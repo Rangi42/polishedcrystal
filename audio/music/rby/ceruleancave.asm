@@ -10,7 +10,7 @@ Music_CeruleanCaveRBY:
 
 Music_CeruleanCaveRBY_Ch1:
 	tempo 144
-	volume 119
+	volume 7, 7
 	dutycycle 3
 	vibrato 10, 20
 	notetype 12, 77

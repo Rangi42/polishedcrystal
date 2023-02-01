@@ -8,7 +8,7 @@ Music_GoldenrodCity:
 Music_GoldenrodCity_Ch1:
 	stereopanning $f
 	tempo 176
-	volume $77
+	volume 7, 7
 	notetype $c, $97
 	note __, 16
 	note __, 16

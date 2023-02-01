@@ -10,7 +10,7 @@ Music_Route209DPPt:
 
 Music_Route209DPPt_Ch1:
 	tempo $E0
-	volume $77
+	volume 7, 7
 	notetype $C, $92
 	dutycycle 1
 	tone $0001

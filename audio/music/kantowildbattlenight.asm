@@ -11,7 +11,7 @@ Music_KantoWildBattleNight:
 
 Music_KantoWildBattleNight_Ch1:
 	tempo 117
-	volume $77
+	volume 7, 7
 	vibrato $12, $22
 	dutycycle $2
 	notetype $c, $b7

@@ -10,7 +10,7 @@ Music_CianwoodCityHGSS:
 
 Music_CianwoodCityHGSS_Ch1:
 	tempo 197
-	volume $77
+	volume 7, 7
 	stereopanning $f
 	vibrato $12, $25
 	dutycycle $2

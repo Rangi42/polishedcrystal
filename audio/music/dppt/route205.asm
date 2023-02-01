@@ -11,7 +11,7 @@ Music_Route205DPPt:
 Music_Route205DPPt_Ch1:
 Music_Route205DPPt_Ch1_loop:
 	tempo $C0
-	volume $77
+	volume 7, 7
 	notetype $C, $B2
 	dutycycle 1
 	tone $0001

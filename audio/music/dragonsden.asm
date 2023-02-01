@@ -7,7 +7,7 @@ Music_DragonsDen:
 
 Music_DragonsDen_Ch1:
 	tempo 144
-	volume $77
+	volume 7, 7
 	dutycycle $0
 	tone $0004
 	stereopanning $f0

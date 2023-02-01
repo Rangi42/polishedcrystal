@@ -9,7 +9,7 @@ Music_LookJessieJames:
 
 Music_LookJessieJames_Ch1:
 	tempo 144
-	volume 119
+	volume 7, 7
 	dutycycle 3
 	vibrato $8, $14
 	notetype $c, $b2

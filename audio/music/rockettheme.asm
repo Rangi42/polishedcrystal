@@ -7,7 +7,7 @@ Music_RocketTheme:
 
 Music_RocketTheme_Ch1:
 	tempo 128
-	volume $77
+	volume 7, 7
 	dutycycle $3
 	stereopanning $f
 	vibrato $5, $64

@@ -10,7 +10,7 @@ Music_Route210DPPt:
 
 Music_Route210DPPt_Ch1:
 	tempo $98
-	volume $77
+	volume 7, 7
 	notetype $C, $B3
 	dutycycle 3
 	tone $0001

@@ -10,7 +10,7 @@ Music_IndigoPlateauRBY:
 
 Music_IndigoPlateauRBY_Ch1:
 	tempo 132
-	volume 119
+	volume 7, 7
 	dutycycle 3
 	vibrato 6, 52
 

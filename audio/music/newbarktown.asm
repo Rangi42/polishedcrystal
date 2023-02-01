@@ -6,7 +6,7 @@ Music_NewBarkTown:
 
 Music_NewBarkTown_Ch1:
 	tempo 187
-	volume $77
+	volume 7, 7
 	stereopanning $f
 	vibrato $12, $23
 	notetype $c, $87

@@ -6,7 +6,7 @@ Music_LookSage:
 Music_LookSage_Ch1:
 	tempo 144
 	stereopanning $f
-	volume $77
+	volume 7, 7
 	dutycycle $3
 	notetype $c, $b3
 	note __, 2

@@ -7,7 +7,7 @@ Music_PokeComCenter:
 
 Music_PokeComCenter_Ch1:
 	tempo 160
-	volume $77
+	volume 7, 7
 	dutycycle $1
 	tone $0002
 	vibrato $8, $22

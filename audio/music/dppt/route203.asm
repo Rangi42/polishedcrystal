@@ -11,7 +11,7 @@ Music_Route203DPPt:
 Music_Route203DPPt_Ch1:
 	tempo $97
 	;transpose $19
-	volume $77
+	volume 7, 7
 	notetype $4, $91
 	dutycycle 1
 	tone $0002

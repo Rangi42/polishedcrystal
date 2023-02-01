@@ -7,7 +7,7 @@ Music_GymLeaderVictory:
 
 Music_GymLeaderVictory_Ch1:
 	tempo 116
-	volume $77
+	volume 7, 7
 	vibrato $12, $34
 	dutycycle $3
 	tone $0001

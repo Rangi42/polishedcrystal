@@ -7,7 +7,7 @@ Music_ShowMeAround:
 
 Music_ShowMeAround_Ch1:
 	tempo 144
-	volume $77
+	volume 7, 7
 	stereopanning $f
 	dutycycle $2
 	notetype $c, $b1

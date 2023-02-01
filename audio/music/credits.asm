@@ -7,7 +7,7 @@ Music_Credits:
 
 Music_Credits_Ch1:
 	tempo 139
-	volume $77
+	volume 7, 7
 	stereopanning $f
 	dutycycle $3
 	notetype $c, $2f

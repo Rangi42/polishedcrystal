@@ -6,7 +6,7 @@ Music_SuicuneBattle:
 
 Music_SuicuneBattle_Ch1:
 	tempo 101
-	volume $77
+	volume 7, 7
 	dutycycle $3
 	tone $0002
 	vibrato $12, $15

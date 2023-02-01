@@ -7,7 +7,7 @@ Music_AzaleaTown:
 
 Music_AzaleaTown_Ch1:
 	tempo 160
-	volume $77
+	volume 7, 7
 	dutycycle $2
 	stereopanning $f
 	notetype $c, $a1

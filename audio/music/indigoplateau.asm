@@ -7,7 +7,7 @@ Music_IndigoPlateau:
 
 Music_IndigoPlateau_Ch1:
 	tempo 128
-	volume $77
+	volume 7, 7
 	dutycycle $3
 	tone $0002
 	stereopanning $f

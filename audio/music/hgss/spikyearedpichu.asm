@@ -11,7 +11,7 @@ Music_SpikyEaredPichuHGSS:
 
 Music_SpikyEaredPichuHGSS_Ch1:
 	tempo 160
-	volume $77
+	volume 7, 7
 	callchannel Music_SpikyEaredPichuHGSS_Ch1_branch_1
 	callchannel Music_SpikyEaredPichuHGSS_Ch1_branch_1
 	dutycycle 1
@@ -130,7 +130,7 @@ Music_SpikyEaredPichuHGSS_Ch1_branch_1:
 	endchannel
 
 Music_SpikyEaredPichuHGSS_Ch2:
-	volume $77
+	volume 7, 7
 	dutycycle 2
 	notetype $c, $b3
 	octave 3

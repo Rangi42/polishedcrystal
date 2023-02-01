@@ -11,7 +11,7 @@ Music_MeteorFallsRSE:
 
 Music_MeteorFallsRSE_Ch1:
 	tempo 190
-	volume $77
+	volume 7, 7
 	vibrato $6, $23
 	notetype $8, $92
 	note __, 6

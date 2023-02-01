@@ -9,7 +9,7 @@ Music_PokemonTowerRBY:
 
 Music_PokemonTowerRBY_Ch1:
 	tempo 152
-	volume 119
+	volume 7, 7
 	dutycycle 3
 	vibrato 12, 35
 	notetype 12, 128

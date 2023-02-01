@@ -10,7 +10,7 @@ Music_GameCornerDPPt:
 
 Music_GameCornerDPPt_Ch1:
 	tempo $7C
-	volume $77
+	volume 7, 7
 	notetype $C, $A2
 	dutycycle 2
 	tone $0001

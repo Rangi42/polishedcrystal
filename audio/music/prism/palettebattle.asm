@@ -10,7 +10,7 @@ Music_PaletteBattlePrism:
 
 Music_PaletteBattlePrism_Ch1:
 	tempo 96
-	volume $77
+	volume 7, 7
 	dutycycle $3
 	tone $0002
 	vibrato $10, $12

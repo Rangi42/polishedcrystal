@@ -12,7 +12,7 @@ Music_BattleFactoryRSE:
 
 Music_BattleFactoryRSE_Ch1:
 	tempo 132
-	volume $77
+	volume 7, 7
 	stereopanning $ff
 	notetype $c, $47
 	note __, 12

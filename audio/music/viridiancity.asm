@@ -7,7 +7,7 @@ Music_ViridianCity:
 
 Music_ViridianCity_Ch1:
 	tempo 157
-	volume $77
+	volume 7, 7
 	stereopanning $f
 	dutycycle $2
 	vibrato $12, $34

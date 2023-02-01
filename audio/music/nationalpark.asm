@@ -7,7 +7,7 @@ Music_NationalPark:
 
 Music_NationalPark_Ch1:
 	tempo 192
-	volume $77
+	volume 7, 7
 	stereopanning $f
 	vibrato $18, $24
 	dutycycle $1

@@ -12,7 +12,7 @@ Music_EverGrandeCityRSE:
 
 Music_EverGrandeCityRSE_Ch1:
 	tempo 100
-	volume $77
+	volume 7, 7
 	stereopanning $f
 	vibrato $12, $25
 	dutycycle $2

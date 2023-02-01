@@ -6,7 +6,7 @@ Music_JohtoTrainerBattle:
 
 Music_JohtoTrainerBattle_Ch1:
 	tempo 102
-	volume $77
+	volume 7, 7
 	dutycycle $3
 	tone $0002
 	vibrato $12, $15

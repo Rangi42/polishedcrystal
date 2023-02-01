@@ -12,7 +12,7 @@ Music_ReversalMountainWhite2:
 
 Music_ReversalMountainWhite2_Ch1:
 	tempo 176
-	volume $77
+	volume 7, 7
 	dutycycle $2
 	tone $0002
 	vibrato $10, $22

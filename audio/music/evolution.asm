@@ -7,7 +7,7 @@ Music_Evolution:
 
 Music_Evolution_Ch1:
 	tempo 132
-	volume $77
+	volume 7, 7
 	vibrato $6, $34
 	tone $0001
 	dutycycle $2

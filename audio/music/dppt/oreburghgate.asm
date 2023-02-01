@@ -10,7 +10,7 @@ Music_OreburghGateDPPt:
 
 Music_OreburghGateDPPt_Ch1:
 	tempo 130
-	volume $77
+	volume 7, 7
 	dutycycle 0
 	tone $0001
 	notetype $C, $20

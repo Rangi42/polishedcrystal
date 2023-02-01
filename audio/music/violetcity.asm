@@ -7,7 +7,7 @@ Music_VioletCity:
 
 Music_VioletCity_Ch1:
 	tempo 164
-	volume $77
+	volume 7, 7
 	vibrato $12, $25
 	dutycycle $2
 	notetype $c, $95

@@ -7,7 +7,7 @@ Music_VermilionCity:
 Music_VermilionCity_Ch1:
 	stereopanning $f
 	tempo 176
-	volume $77
+	volume 7, 7
 	dutycycle $2
 	notetype $c, $65
 	octave 4

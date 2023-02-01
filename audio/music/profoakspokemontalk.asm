@@ -6,7 +6,7 @@ Music_ProfOaksPokemonTalk:
 
 Music_ProfOaksPokemonTalk_Ch1:
 	tempo 164
-	volume $77
+	volume 7, 7
 	stereopanning $f
 	vibrato $6, $25
 	dutycycle $1

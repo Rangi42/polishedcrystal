@@ -10,7 +10,7 @@ Music_GymLeaderBattlePrism:
 
 Music_GymLeaderBattlePrism_Ch1:
 	tempo 101
-	volume $77
+	volume 7, 7
 	notetype $c, $b2
 	dutycycle $3
 	tone $0002

@@ -6,7 +6,7 @@ Music_LakeOfRageRocketRadio:
 
 Music_LakeOfRageRocketRadio_Ch1:
 	tempo 160
-	volume $77
+	volume 7, 7
 	dutycycle $1
 	tone $1118
 	vibrato $0, $f0

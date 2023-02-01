@@ -6,7 +6,7 @@ Music_SuccessfulCapture:
 
 Music_SuccessfulCapture_Ch1:
 	tempo 126
-	volume $77
+	volume 7, 7
 	dutycycle $3
 	tone $0001
 	notetype $c, $a1

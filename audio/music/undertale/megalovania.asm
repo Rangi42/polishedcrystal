@@ -10,7 +10,7 @@ Music_Megalovania:
 
 Music_Megalovania_Ch1:
 	tempo $A0
-	volume $77
+	volume 7, 7
 	stereopanning $77
 Music_Megalovania_Ch1_loop:
 	notetype $C, $00

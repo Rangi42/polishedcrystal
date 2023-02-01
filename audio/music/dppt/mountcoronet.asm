@@ -10,7 +10,7 @@ Music_MountCoronetDPPt:
 
 Music_MountCoronetDPPt_Ch1:
 	tempo 124
-	volume $77
+	volume 7, 7
 	dutycycle 0
 	tone $0001
 	notetype $C, $87

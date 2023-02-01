@@ -10,7 +10,7 @@ Music_LavenderTownRBY:
 
 Music_LavenderTownRBY_Ch1:
 	tempo 152
-	volume 119
+	volume 7, 7
 	dutycycle 1
 	vibrato 0, 136
 	notetype 12, 135

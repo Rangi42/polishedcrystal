@@ -11,7 +11,7 @@ Music_PowerPlantXY:
 
 Music_PowerPlantXY_Ch1:
 	tempo 175
-	volume $77
+	volume 7, 7
 	stereopanning $f
 	vibrato $12, $23
 	notetype $c, $87

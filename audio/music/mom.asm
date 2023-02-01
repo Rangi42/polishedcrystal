@@ -6,7 +6,7 @@ Music_Mom:
 
 Music_Mom_Ch2:
 	tempo 144
-	volume $77
+	volume 7, 7
 	stereopanning $f
 	dutycycle $2
 	notetype $6, $b3

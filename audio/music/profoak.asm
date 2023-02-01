@@ -6,7 +6,7 @@ Music_ProfOak:
 
 Music_ProfOak_Ch1:
 	tempo 118
-	volume $77
+	volume 7, 7
 	vibrato $12, $34
 	tone $0001
 	stereopanning $f0

@@ -12,7 +12,7 @@ Music_AbandonedShipRSE:
 
 Music_AbandonedShipRSE_Ch1:
 	tempo 188
-	volume $77
+	volume 7, 7
 	dutycycle $0
 	tone $0002
 	vibrato $10, $22

@@ -7,7 +7,7 @@ Music_HallOfFame:
 
 Music_HallOfFame_Ch1:
 	tempo 112
-	volume $77
+	volume 7, 7
 	dutycycle $2
 	vibrato $c, $22
 	tone $0001

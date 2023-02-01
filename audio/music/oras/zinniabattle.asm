@@ -12,7 +12,7 @@ Music_ZinniaBattleORAS:
 
 Music_ZinniaBattleORAS_Ch1:
 	tempo 212
-	volume $77
+	volume 7, 7
 	dutycycle 1
 	tone $0002
 	vibrato $8, $15

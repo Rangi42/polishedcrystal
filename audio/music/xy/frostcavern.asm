@@ -11,7 +11,7 @@ Music_FrostCavernXY:
 
 Music_FrostCavernXY_Ch1:
 	tempo 152
-	volume $77
+	volume 7, 7
 	vibrato $6, $23
 	notetype $c, $92
 	dutycycle 0

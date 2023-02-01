@@ -10,7 +10,7 @@ Music_MartHGSS:
 
 Music_MartHGSS_Ch1:
 	tempo $90
-	volume $77
+	volume 7, 7
 	dutycycle 1
 	notetype $C, $B2
 	stereopanning $f

@@ -6,7 +6,7 @@ Music_LookOfficer:
 
 Music_LookOfficer_Ch1:
 	tempo 116
-	volume $77
+	volume 7, 7
 	tone $0001
 	vibrato $12, $34
 	stereopanning $f

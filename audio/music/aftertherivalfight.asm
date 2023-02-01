@@ -7,7 +7,7 @@ Music_AfterTheRivalFight:
 
 Music_AfterTheRivalFight_Ch1:
 	tempo 112
-	volume $77
+	volume 7, 7
 	dutycycle $0
 	tone $0001
 	vibrato $8, $14

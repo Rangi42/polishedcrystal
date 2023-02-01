@@ -7,7 +7,7 @@ Music_LookMysticalMan:
 
 Music_LookMysticalMan_Ch1:
 	tempo 136
-	volume $77
+	volume 7, 7
 	vibrato $a, $34
 	tone $0001
 	stereopanning $f

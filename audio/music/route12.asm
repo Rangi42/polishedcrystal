@@ -7,7 +7,7 @@ Music_Route12:
 
 Music_Route12_Ch1:
 	tempo 148
-	volume $77
+	volume 7, 7
 	vibrato $12, $34
 	tone $0001
 	stereopanning $f

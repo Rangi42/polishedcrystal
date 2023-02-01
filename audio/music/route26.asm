@@ -9,7 +9,7 @@ Music_Route26_Ch1:
 	stereopanning $f
 	vibrato $12, $23
 	tempo 151
-	volume $77
+	volume 7, 7
 	vibrato $14, $23
 	dutycycle $0
 	notetype $c, $a7

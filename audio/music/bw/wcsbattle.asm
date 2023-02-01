@@ -308,7 +308,7 @@ Music_WCSBattleBW_Ch1_L:
 
 Music_WCSBattleBW_Ch2:
 	tempo $69
-	volume $77
+	volume 7, 7
 	dutycycle $2
 	notetype $c, $8c
 	octave 2

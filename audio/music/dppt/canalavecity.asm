@@ -10,7 +10,7 @@ Music_CanalaveCityDPPt:
 
 Music_CanalaveCityDPPt_Ch1:
 	tempo $CE
-	volume $77
+	volume 7, 7
 	notetype $C, $A7
 	dutycycle 1
 	tone $0002

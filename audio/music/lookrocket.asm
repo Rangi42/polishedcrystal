@@ -7,7 +7,7 @@ Music_LookRocket:
 
 Music_LookRocket_Ch1:
 	tempo 123
-	volume $77
+	volume 7, 7
 	pitchoffset 0, D_
 	stereopanning $f
 	dutycycle $3

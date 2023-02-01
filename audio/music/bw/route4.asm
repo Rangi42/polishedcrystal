@@ -12,7 +12,7 @@ Music_Route4BW:
 
 Music_Route4BW_Ch1:
 	tempo 144
-	volume $77
+	volume 7, 7
 	dutycycle $3
 	tone $0002
 	vibrato $10, $22

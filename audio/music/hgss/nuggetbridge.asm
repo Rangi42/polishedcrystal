@@ -10,7 +10,7 @@ Music_NuggetBridgeHGSS:
 
 Music_NuggetBridgeHGSS_Ch1:
 	tempo $A8
-	volume $77
+	volume 7, 7
 	tone $0001
 	dutycycle 1
 	notetype $C, $B5

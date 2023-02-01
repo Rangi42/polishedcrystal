@@ -7,7 +7,7 @@ Music_ViridianForest:
 
 Music_ViridianForest_Ch1:
 	tempo 151
-	volume $77
+	volume 7, 7
 	stereopanning $f
 	vibrato $6, $23
 	notetype $c, $b1

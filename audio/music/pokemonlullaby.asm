@@ -6,7 +6,7 @@ Music_PokemonLullaby:
 
 Music_PokemonLullaby_Ch1:
 	tempo 224
-	volume $77
+	volume 7, 7
 	dutycycle $3
 	tone $0001
 Music_PokemonLullaby_branch_f6d8c:

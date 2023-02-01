@@ -7,7 +7,7 @@ Music_VictoryRoad:
 
 Music_VictoryRoad_Ch1:
 	tempo 144
-	volume $77
+	volume 7, 7
 	stereopanning $f
 	dutycycle $3
 	tone $0002

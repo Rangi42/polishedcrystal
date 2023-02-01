@@ -12,7 +12,7 @@ Music_RivalBattleXY:
 
 Music_RivalBattleXY_Ch1:
 	tempo 116
-	volume $77
+	volume 7, 7
 	dutycycle $3
 	tone $0002
 	vibrato $8, $15

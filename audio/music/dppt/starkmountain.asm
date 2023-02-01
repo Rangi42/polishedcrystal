@@ -10,7 +10,7 @@ Music_StarkMountainDPPt:
 	channel 4, Music_StarkMountainDPPt_Ch4
 
 Music_StarkMountainDPPt_Ch1:
-	volume $77
+	volume 7, 7
 	stereopanning $77
 	tempo $A0
 	tone $0002

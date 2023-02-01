@@ -7,7 +7,7 @@ Music_LookHiker:
 
 Music_LookHiker_Ch1:
 	tempo 132
-	volume $77
+	volume 7, 7
 	tone $0001
 	vibrato $12, $24
 	dutycycle $2

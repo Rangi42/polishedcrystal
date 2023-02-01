@@ -7,7 +7,7 @@ Music_SSAqua:
 
 Music_SSAqua_Ch1:
 	tempo 117
-	volume $77
+	volume 7, 7
 	stereopanning $f
 	tone $0001
 	vibrato $12, $33

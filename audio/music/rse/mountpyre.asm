@@ -12,7 +12,7 @@ Music_MountPyreRSE:
 
 Music_MountPyreRSE_Ch1:
 	tempo 212
-	volume $77
+	volume 7, 7
 	dutycycle 1
 	tone $0002
 	vibrato $10, $22

@@ -7,7 +7,7 @@ Music_Route29:
 
 Music_Route29_Ch1:
 	tempo 146
-	volume $77
+	volume 7, 7
 	dutycycle $3
 	tone $0001
 	vibrato $10, $15

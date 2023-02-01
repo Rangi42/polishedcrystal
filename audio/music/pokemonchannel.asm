@@ -7,7 +7,7 @@ Music_PokemonChannel:
 
 Music_PokemonChannel_Ch1:
 	tempo 128
-	volume $77
+	volume 7, 7
 	vibrato $8, $38
 	dutycycle $1
 	stereopanning $f

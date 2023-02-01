@@ -12,7 +12,7 @@ Music_RoadToReversalMountainB2W2:
 
 Music_RoadToReversalMountainB2W2_Ch1:
 	tempo 140
-	volume $77
+	volume 7, 7
 	dutycycle 3
 	tone $0002
 	vibrato $10, $22

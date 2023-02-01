@@ -11,7 +11,7 @@ Music_GymLeaderBattleSwSh:
 
 Music_GymLeaderBattleSwSh_Ch1:
 	tempo $89
-	volume $77
+	volume 7, 7
 	dutycycle $2
 	notetype $c, $b2
 	stereopanning $ff

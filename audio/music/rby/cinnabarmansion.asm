@@ -10,7 +10,7 @@ Music_CinnabarMansionRBY:
 
 Music_CinnabarMansionRBY_Ch1:
 	tempo 144
-	volume 119
+	volume 7, 7
 	vibrato 11, 37
 	dutycycle 2
 

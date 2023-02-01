@@ -7,7 +7,7 @@ Music_MtMoon:
 
 Music_MtMoon_Ch1:
 	tempo 208
-	volume $77
+	volume 7, 7
 	dutycycle $2
 	tone $0001
 	vibrato $8, $14

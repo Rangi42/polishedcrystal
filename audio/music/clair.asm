@@ -7,7 +7,7 @@ Music_Clair:
 
 Music_Clair_Ch1:
 	tempo 136
-	volume $77
+	volume 7, 7
 	tone $0001
 	vibrato $12, $34
 	stereopanning $f

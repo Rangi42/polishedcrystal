@@ -10,7 +10,7 @@ Music_LookBeauty_Ch1:
 	vibrato $12, $25
 	dutycycle $2
 	tempo 128
-	volume $77
+	volume 7, 7
 	notetype $c, $a3
 	note __, 16
 	note __, 8

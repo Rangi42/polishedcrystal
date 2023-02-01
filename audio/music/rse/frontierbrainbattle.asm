@@ -9,7 +9,7 @@ Music_FrontierBrainBattleRSE:
 
 Music_FrontierBrainBattleRSE_Ch1:
 	tempo $60
-	volume $77
+	volume 7, 7
 	notetype $C, $C2
 	dutycycle 1
 	tone $0002

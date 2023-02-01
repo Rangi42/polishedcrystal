@@ -7,7 +7,7 @@ Music_PokemonCenter:
 
 Music_PokemonCenter_Ch1:
 	tempo 152
-	volume $77
+	volume 7, 7
 	dutycycle $2
 	vibrato $a, $14
 	tone $0001

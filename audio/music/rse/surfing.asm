@@ -11,7 +11,7 @@ Music_SurfRSE:
 
 Music_SurfRSE_Ch1:
 	tempo $75
-	volume $77
+	volume 7, 7
 	stereopanning $77
 	notetype $C, $00
 	note __, 12

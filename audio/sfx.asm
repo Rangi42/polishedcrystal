@@ -590,7 +590,7 @@ Sfx_Pokeflute:
 
 .Ch7:
 	tempo 256
-	volume $77
+	volume 7, 7
 	togglesfx
 	vibrato $10, $14
 	notetype $c, $10
@@ -2015,7 +2015,7 @@ Sfx_DexFanfare5079:
 .Ch5:
 	togglesfx
 	tempo 120
-	volume $77
+	volume 7, 7
 	dutycycle $2
 	notetype $8, $b1
 	octave 3
@@ -2076,7 +2076,7 @@ Sfx_KeyItem:
 .Ch5:
 	togglesfx
 	tempo 120
-	volume $77
+	volume 7, 7
 	dutycycle $2
 	notetype $6, $b1
 	octave 3
@@ -2145,7 +2145,7 @@ Sfx_DexFanfare2049:
 .Ch5:
 	togglesfx
 	tempo 104
-	volume $77
+	volume 7, 7
 	dutycycle $2
 	notetype $c, $88
 	octave 3
@@ -2228,7 +2228,7 @@ Sfx_Item:
 .Ch5:
 	togglesfx
 	tempo 108
-	volume $77
+	volume 7, 7
 	vibrato $8, $27
 	dutycycle $2
 	notetype $8, $b2
@@ -2306,7 +2306,7 @@ Sfx_CaughtMon:
 .Ch5:
 	togglesfx
 	tempo 112
-	volume $77
+	volume 7, 7
 	vibrato $8, $27
 	dutycycle $2
 	notetype $8, $b3
@@ -2387,7 +2387,7 @@ Sfx_DexFanfare80109:
 .Ch5:
 	togglesfx
 	tempo 112
-	volume $77
+	volume 7, 7
 	vibrato $8, $27
 	dutycycle $2
 	notetype $c, $b1
@@ -2481,7 +2481,7 @@ Sfx_Fanfare2:
 	togglesfx
 	sfxpriorityon
 	tempo 256
-	volume $77
+	volume 7, 7
 	tone $0001
 	dutycycle $3
 	notetype $6, $b5
@@ -2555,7 +2555,7 @@ UnknownSfx:
 .Ch5:
 	togglesfx
 	tempo 124
-	volume $77
+	volume 7, 7
 	vibrato $8, $27
 	dutycycle $2
 	notetype $c, $b1
@@ -2636,7 +2636,7 @@ Sfx_Fanfare:
 	togglesfx
 	sfxpriorityon
 	tempo 256
-	volume $77
+	volume 7, 7
 	dutycycle $3
 	tone $0001
 	notetype $6, $b3
@@ -2736,7 +2736,7 @@ Sfx_RegisterPhoneNumber:
 .Ch5:
 	togglesfx
 	tempo 124
-	volume $77
+	volume 7, 7
 	dutycycle $3
 	notetype $c, $a2
 	note __, 2
@@ -2819,7 +2819,7 @@ Sfx_3RdPlace:
 .Ch5:
 	togglesfx
 	tempo 120
-	volume $77
+	volume 7, 7
 	dutycycle $2
 	notetype $c, $a4
 	octave 4
@@ -2877,7 +2877,7 @@ Sfx_GetEggFromDayCareMan:
 .Ch5:
 	togglesfx
 	tempo 120
-	volume $77
+	volume 7, 7
 	vibrato $12, $34
 	dutycycle $2
 	notetype $8, $a1
@@ -2971,7 +2971,7 @@ Sfx_MoveDeleted:
 .Ch5:
 	togglesfx
 	tempo 116
-	volume $77
+	volume 7, 7
 	dutycycle $2
 	vibrato $c, $44
 	notetype $c, $a4
@@ -3078,7 +3078,7 @@ Sfx_2ndPlace:
 .Ch5:
 	togglesfx
 	tempo 116
-	volume $77
+	volume 7, 7
 	dutycycle $2
 	vibrato $c, $34
 	notetype $8, $a1
@@ -3191,7 +3191,7 @@ Sfx_1stPlace:
 .Ch5:
 	togglesfx
 	tempo 124
-	volume $77
+	volume 7, 7
 	dutycycle $3
 	vibrato $c, $34
 	notetype $c, $a1
@@ -3303,7 +3303,7 @@ Sfx_ChooseACard:
 .Ch5:
 	togglesfx
 	tempo 152
-	volume $77
+	volume 7, 7
 	dutycycle $3
 	notetype $6, $a4
 	octave 3
@@ -3444,7 +3444,7 @@ Sfx_GetTm:
 .Ch5:
 	togglesfx
 	tempo 144
-	volume $77
+	volume 7, 7
 	dutycycle $3
 	vibrato $8, $24
 	notetype $c, $a3
@@ -3546,7 +3546,7 @@ Sfx_GetBadge:
 .Ch5:
 	togglesfx
 	tempo 120
-	volume $77
+	volume 7, 7
 	dutycycle $2
 	vibrato $8, $24
 	notetype $6, $92
@@ -3705,7 +3705,7 @@ Sfx_QuitSlots:
 .Ch5:
 	togglesfx
 	tempo 144
-	volume $77
+	volume 7, 7
 	dutycycle $2
 	notetype $8, $82
 	octave 3
@@ -4822,7 +4822,7 @@ Sfx_DexFanfareLessThan20:
 .Ch5:
 	togglesfx
 	tempo 124
-	volume $77
+	volume 7, 7
 	notetype $8, $b1
 	octave 3
 	note A_, 4
@@ -4903,7 +4903,7 @@ Sfx_DexFanfare140169:
 .Ch5:
 	togglesfx
 	tempo 120
-	volume $77
+	volume 7, 7
 	dutycycle $3
 	vibrato $12, $34
 	notetype $6, $b1
@@ -5011,7 +5011,7 @@ Sfx_DexFanfare170199:
 .Ch5:
 	togglesfx
 	tempo 112
-	volume $77
+	volume 7, 7
 	vibrato $12, $34
 	dutycycle $3
 	notetype $8, $b4
@@ -5122,7 +5122,7 @@ Sfx_DexFanfare200229:
 .Ch5:
 	togglesfx
 	tempo 124
-	volume $77
+	volume 7, 7
 	vibrato $12, $34
 	dutycycle $3
 	notetype $8, $b2
@@ -5247,7 +5247,7 @@ Sfx_DexFanfare230Plus:
 .Ch5:
 	togglesfx
 	tempo 112
-	volume $77
+	volume 7, 7
 	vibrato $12, $34
 	dutycycle $3
 	notetype $8, $a5

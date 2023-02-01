@@ -6,7 +6,7 @@ Music_DancingHall:
 
 Music_DancingHall_Ch1:
 	tempo 208
-	volume $77
+	volume 7, 7
 	stereopanning $f
 	notetype $6, $b7
 	note __, 3

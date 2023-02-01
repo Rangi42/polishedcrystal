@@ -11,7 +11,7 @@ Music_TitleScreenXY:
 
 Music_TitleScreenXY_Ch1:
 	tempo 125
-	volume $77
+	volume 7, 7
 	stereopanning $f
 	vibrato $10, $33
 	soundinput $0

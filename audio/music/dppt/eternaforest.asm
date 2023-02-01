@@ -10,7 +10,7 @@ Music_EternaForestDPPt:
 
 Music_EternaForestDPPt_Ch1:
 	tempo $88
-	volume $77
+	volume 7, 7
 Music_EternaForestDPPt_Ch1_loop:
 	notetype $C, $82
 	dutycycle 0

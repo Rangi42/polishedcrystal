@@ -10,7 +10,7 @@ Music_GymLeaderBattleGo:
 
 Music_GymLeaderBattleGo_Ch1:
 	tempo $B4
-	volume $77
+	volume 7, 7
 	stereopanning $77
 	dutycycle 3
 	notetype $C, $A2

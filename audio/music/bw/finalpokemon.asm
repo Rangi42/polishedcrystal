@@ -12,7 +12,7 @@ Music_FinalPokemonBW:
 
 Music_FinalPokemonBW_Ch1:
 	tempo 240
-	volume $77
+	volume 7, 7
 	vibrato $12, $15
 	dutycycle 0
 	octave 1

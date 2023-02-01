@@ -10,7 +10,7 @@ Music_SunyshoreCityDPPt:
 	channel 4, Music_SunyshoreCityDPPt_Ch4
 
 Music_SunyshoreCityDPPt_Ch1:
-	volume $77
+	volume 7, 7
 	stereopanning $77
 	tempo $90
 	tone $0002

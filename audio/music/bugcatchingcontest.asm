@@ -7,7 +7,7 @@ Music_BugCatchingContest:
 
 Music_BugCatchingContest_Ch1:
 	tempo 144
-	volume $77
+	volume 7, 7
 	stereopanning $f
 	vibrato $8, $24
 	dutycycle $2

@@ -12,7 +12,7 @@ Music_Route101RSE:
 
 Music_Route101RSE_Ch1:
 	tempo 166
-	volume $77
+	volume 7, 7
 	tone $0001
 	vibrato $10, $15
 	stereopanning $f

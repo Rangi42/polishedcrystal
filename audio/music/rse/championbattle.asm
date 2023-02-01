@@ -12,7 +12,7 @@ Music_ChampionBattleRSE:
 
 Music_ChampionBattleRSE_Ch1:
 	tempo 192
-	volume $77
+	volume 7, 7
 	dutycycle 2
 	tone $0002
 	vibrato $8, $15

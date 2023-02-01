@@ -7,7 +7,7 @@ Music_TinTower:
 
 Music_TinTower_Ch1:
 	tempo 208
-	volume $77
+	volume 7, 7
 	dutycycle $3
 	tone $0004
 	vibrato $8, $45

@@ -12,7 +12,7 @@ Music_Route47HGSS:
 
 Music_Route47HGSS_Ch1:
 	tempo 192
-	volume $77
+	volume 7, 7
 	dutycycle 0
 	tone $0002
 	vibrato $8, $15

@@ -7,7 +7,7 @@ Music_Route36:
 
 Music_Route36_Ch1:
 	tempo 144
-	volume $77
+	volume 7, 7
 	dutycycle $3
 	tone $0001
 	vibrato $10, $15

@@ -6,7 +6,7 @@ Music_TrainerVictory:
 
 Music_TrainerVictory_Ch1:
 	tempo 120
-	volume $77
+	volume 7, 7
 	dutycycle $2
 	tone $0001
 	notetype $8, $b1

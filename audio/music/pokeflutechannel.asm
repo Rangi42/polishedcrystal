@@ -6,7 +6,7 @@ Music_PokeFluteChannel:
 
 Music_PokeFluteChannel_Ch1:
 	tempo 240
-	volume $77
+	volume 7, 7
 	stereopanning $f0
 	dutycycle $3
 	tone $0002

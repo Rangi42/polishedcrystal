@@ -7,7 +7,7 @@ Music_LookLass:
 
 Music_LookLass_Ch1:
 	tempo 132
-	volume $77
+	volume 7, 7
 	tone $0001
 	dutycycle $2
 	notetype $c, $c7

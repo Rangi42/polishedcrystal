@@ -10,7 +10,7 @@ Music_WallyEncounterORAS:
 
 Music_WallyEncounterORAS_Ch1:
 	tempo 208
-	volume $77
+	volume 7, 7
 	dutycycle 0
 	vibrato $8, $15
 	notetype $c, $67

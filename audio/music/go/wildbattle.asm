@@ -11,7 +11,7 @@ Music_WildBattleGo:
 
 Music_WildBattleGo_Ch1:
 	tempo $70
-	volume $77
+	volume 7, 7
 	stereopanning $77
 	sound_duty $5A
 	octave 3

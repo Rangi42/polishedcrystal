@@ -6,7 +6,7 @@ Music_EcruteakCity:
 
 Music_EcruteakCity_Ch1:
 	tempo 197
-	volume $77
+	volume 7, 7
 	stereopanning $f
 	vibrato $12, $25
 	dutycycle $2

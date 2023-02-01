@@ -9,7 +9,7 @@ Music_SurfingRBY:
 
 Music_SurfingRBY_Ch1:
 	tempo 160
-	volume 119
+	volume 7, 7
 	dutycycle 3
 	vibrato 12, 52
 

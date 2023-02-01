@@ -12,7 +12,7 @@ Music_Route12BW:
 
 Music_Route12BW_Ch1:
 	tempo 236
-	volume $77
+	volume 7, 7
 	dutycycle $0
 	tone $0002
 	vibrato $10, $22

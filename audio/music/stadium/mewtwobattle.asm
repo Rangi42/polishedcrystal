@@ -11,7 +11,7 @@ Music_MewtwoBattleStadium:
 
 Music_MewtwoBattleStadium_Ch1:
 	tempo $78
-	volume $77
+	volume 7, 7
 	stereopanning $77
 	notetype $C, $00
 	note __, 16

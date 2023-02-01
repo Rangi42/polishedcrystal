@@ -8,7 +8,7 @@ Music_CinnabarIslandHGSS:
 
 Music_CinnabarIslandHGSS_Ch1:
 	tempo $118
-	volume $77
+	volume 7, 7
 	dutycycle 2
 	notetype $C, $B6
 Music_CinnabarIslandHGSS_Loop1:

@@ -7,7 +7,7 @@ Music_BurnedTower:
 
 Music_BurnedTower_Ch1:
 	tempo 168
-	volume $77
+	volume 7, 7
 	dutycycle $1
 	tone $0004
 	vibrato $8, $45

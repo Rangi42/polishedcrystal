@@ -6,7 +6,7 @@ Music_LookKimonoGirl:
 
 Music_LookKimonoGirl_Ch1:
 	tempo 160
-	volume $77
+	volume 7, 7
 	stereopanning $f
 	dutycycle $1
 	notetype $6, $87

@@ -10,7 +10,7 @@ Music_BicycleXY:
 
 BicycleXY_Ch1::
 	tempo 120
-	volume $77
+	volume 7, 7
 	stereopanning $ff
 	dutycycle $1
 	vibrato $10, $22

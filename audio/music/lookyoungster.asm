@@ -6,7 +6,7 @@ Music_LookYoungster:
 
 Music_LookYoungster_Ch1:
 	tempo 118
-	volume $77
+	volume 7, 7
 	stereopanning $f
 	dutycycle $3
 	notetype $c, $a3

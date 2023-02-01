@@ -8,7 +8,7 @@ Music_KantoWildBattle:
 
 Music_KantoWildBattle_Ch1:
 	tempo 112
-	volume $77
+	volume 7, 7
 	vibrato $12, $23
 	dutycycle $2
 	notetype $c, $b7

@@ -7,7 +7,7 @@ Music_MainMenu:
 
 Music_MainMenu_Ch1:
 	tempo 160
-	volume $77
+	volume 7, 7
 	dutycycle $3
 	tone $0001
 	vibrato $10, $15

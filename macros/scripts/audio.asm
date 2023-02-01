@@ -128,7 +128,11 @@ ENDM
 	const volume_cmd
 MACRO volume
 	db volume_cmd
-	db \1 ; volume
+	if _NARG > 1
+		dn \1, \2 ; left volume, right volume
+	else
+		db \1 ; LEGACY: Support for 1-arg volume
+	endc
 ENDM
 
 	const tone_cmd

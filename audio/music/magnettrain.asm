@@ -7,7 +7,7 @@ Music_MagnetTrain:
 
 Music_MagnetTrain_Ch1:
 	tempo 110
-	volume $77
+	volume 7, 7
 	stereopanning $f
 	vibrato $14, $23
 	dutycycle $2

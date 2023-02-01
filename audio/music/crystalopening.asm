@@ -7,7 +7,7 @@ Music_CrystalOpening:
 
 Music_CrystalOpening_Ch1:
 	tempo 136
-	volume $77
+	volume 7, 7
 	tone $0002
 	vibrato $10, $34
 	dutycycle $3

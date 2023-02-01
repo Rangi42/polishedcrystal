@@ -12,7 +12,7 @@ Music_LaverreCityXY:
 
 Music_LaverreCityXY_Ch1:
 	tempo 120
-	volume $77
+	volume 7, 7
 	stereopanning $f
 	vibrato $12, $25
 Music_LaverreCityXY_branch_ef2e5:

@@ -7,7 +7,7 @@ Music_LookRival:
 
 Music_LookRival_Ch1:
 	tempo 112
-	volume $77
+	volume 7, 7
 	dutycycle $1
 	tone $0001
 	vibrato $12, $15

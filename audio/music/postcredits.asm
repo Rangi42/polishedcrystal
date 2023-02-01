@@ -5,7 +5,7 @@ Music_PostCredits:
 
 Music_PostCredits_Ch1:
 	tempo 271
-	volume $77
+	volume 7, 7
 	pitchoffset 0, D#
 	dutycycle $2
 	notetype $c, $93

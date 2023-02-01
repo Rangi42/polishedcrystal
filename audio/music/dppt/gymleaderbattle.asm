@@ -11,7 +11,7 @@ Music_GymLeaderBattleDPPt:
 
 Music_GymLeaderBattleDPPt_Ch1:
 	tempo $6A
-	volume $77
+	volume 7, 7
 	stereopanning $77
 	dutycycle 1
 	tone $0002

@@ -7,7 +7,7 @@ Music_Gym:
 
 Music_Gym_Ch1:
 	tempo 156
-	volume $77
+	volume 7, 7
 	stereopanning $f
 	vibrato $12, $24
 	dutycycle $1

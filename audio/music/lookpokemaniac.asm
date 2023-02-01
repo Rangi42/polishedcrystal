@@ -7,7 +7,7 @@ Music_LookPokemaniac:
 Music_LookPokemaniac_Ch1:
 	stereopanning $f
 	tempo 144
-	volume $77
+	volume 7, 7
 	vibrato $2, $33
 	tone $0002
 	notetype $c, $b3

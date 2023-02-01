@@ -12,7 +12,7 @@ Music_EliteFourBattleSM:
 
 Music_EliteFourBattleSM_Ch1:
 	tempo 184
-	volume $77
+	volume 7, 7
 	dutycycle 0
 	tone $0002
 	vibrato $12, $15
