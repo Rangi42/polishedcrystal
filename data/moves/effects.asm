@@ -1692,8 +1692,6 @@ Thief:
 	checkhit
 	checkpriority
 	critical
-	; Yes, thief is 100% but this makes Sheer Force and Substitute be handled correctly
-	effectchance
 	damagestats
 	damagecalc
 	stab
