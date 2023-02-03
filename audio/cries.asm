@@ -191,10 +191,10 @@ Cry_Entei_Ch6:
 	endchannel
 
 Cry_Entei_Ch8:
-	noise __, 11, $d6, $6a
-	noise __,  7, $bc, $6c
-	noise __,  7, $e2, $5c
-	noise C#,  1, $b4, $6c
+	noise_note 10, 13, 6, 106
+	noise_note 6, 11, -4, 108
+	noise_note 6, 14, 2, 92
+	noise_note 32, 11, 4, 108
 	endchannel
 
 Cry_Magcargo_Ch5:
@@ -220,12 +220,12 @@ Cry_Magcargo_Ch6:
 	endchannel
 
 Cry_Magcargo_Ch8:
-	noise __,  3, $e8, $3b
+	noise_note 2, 14, 8, 59
 Cry_Magcargo_branch_f2ef5:
-	noise __,  2, $f1, $4e
+	noise_note 1, 15, 1, 78
 	loopchannel 5, Cry_Magcargo_branch_f2ef5
-	noise __,  3, $d8, $3f
-	noise C_,  5, $c2, $5f
+	noise_note 2, 13, 8, 63
+	noise_note 20, 12, 2, 95
 	endchannel
 
 Cry_Dunsparce_Ch5:
@@ -248,9 +248,9 @@ Cry_Dunsparce_Ch6:
 	endchannel
 
 Cry_Dunsparce_Ch8:
-	noise __,  4, $ff, $4b
-	noise __,  4, $ef, $4c
-	noise C#,  1, $b5, $5f
+	noise_note 3, 15, -7, 75
+	noise_note 3, 14, -7, 76
+	noise_note 32, 11, 5, 95
 	endchannel
 
 Cry_Slowking_Ch5:
@@ -274,14 +274,14 @@ Cry_Slowking_Ch6:
 	endchannel
 
 Cry_Slowking_Ch8:
-	noise __,  3, $8a, $5d
-	noise __,  3, $9a, $4c
-	noise __,  6, $9a, $5d
-	noise __,  3, $9a, $4d
-	noise __,  3, $9a, $4b
-	noise __,  3, $9a, $4d
-	noise __,  3, $9a, $5f
-	noise C_,  1, $b2, $6f
+	noise_note 2, 8, -2, 93
+	noise_note 2, 9, -2, 76
+	noise_note 5, 9, -2, 93
+	noise_note 2, 9, -2, 77
+	noise_note 2, 9, -2, 75
+	noise_note 2, 9, -2, 77
+	noise_note 2, 9, -2, 95
+	noise_note 16, 11, 2, 111
 	endchannel
 
 Cry_Pichu_Ch5:
@@ -308,11 +308,11 @@ Cry_Pichu_Ch6:
 	endchannel
 
 Cry_Pichu_Ch8:
-	noise __,  3, $b8, $1
-	noise __,  3, $b8, $19
-	noise __,  3, $c8, $18
-	noise __,  3, $b8, $10
-	noise __,  9, $c2, $18
+	noise_note 2, 11, 8, 1
+	noise_note 2, 11, 8, 25
+	noise_note 2, 12, 8, 24
+	noise_note 2, 11, 8, 16
+	noise_note 8, 12, 2, 24
 	endchannel
 
 Cry_Marill_Ch5:
@@ -337,12 +337,12 @@ Cry_Marill_Ch6:
 	endchannel
 
 Cry_Marill_Ch8:
-	noise __,  2, $99, $6c
-	noise __,  2, $92, $5c
-	noise __, 11, $62, $4c
-	noise __,  3, $68, $6a
-	noise __,  3, $68, $6b
-	noise __, 11, $62, $6c
+	noise_note 1, 9, -1, 108
+	noise_note 1, 9, 2, 92
+	noise_note 10, 6, 2, 76
+	noise_note 2, 6, 8, 106
+	noise_note 2, 6, 8, 107
+	noise_note 10, 6, 2, 108
 	endchannel
 
 Cry_Togepi_Ch5:
@@ -383,10 +383,10 @@ Cry_Spinarak_Ch6:
 	endchannel
 
 Cry_Spinarak_Ch8:
-	noise __,  4, $92, $10
-	noise __,  2, $39, $0
-	noise __,  6, $69, $10
-	noise __,  7, $93, $0
+	noise_note 3, 9, 2, 16
+	noise_note 1, 3, -1, 0
+	noise_note 5, 6, -1, 16
+	noise_note 6, 9, 3, 0
 	endchannel
 
 Cry_Raikou_Ch5:
@@ -413,14 +413,14 @@ Cry_Raikou_Ch6:
 	endchannel
 
 Cry_Raikou_Ch8:
-	noise __,  3, $89, $2e
-	noise __,  3, $99, $1f
-	noise __,  5, $89, $4e
-	noise __,  5, $89, $7b
-	noise __,  4, $d8, $4b
-	noise __,  4, $e7, $4c
-	noise __,  4, $ec, $4d
-	noise C_,  1, $d2, $4f
+	noise_note 2, 8, -1, 46
+	noise_note 2, 9, -1, 31
+	noise_note 4, 8, -1, 78
+	noise_note 4, 8, -1, 123
+	noise_note 3, 13, 8, 75
+	noise_note 3, 14, 7, 76
+	noise_note 3, 14, -4, 77
+	noise_note 16, 13, 2, 79
 	endchannel
 
 Cry_Hoothoot_Ch5:
@@ -448,10 +448,10 @@ Cry_Hoothoot_branch_f3103:
 	endchannel
 
 Cry_Hoothoot_Ch8:
-	noise __,  2, $68, $36
-	noise C_,  1, $88, $6a
-	noise __,  2, $98, $5e
-	noise C_,  1, $a7, $6e
+	noise_note 1, 6, 8, 54
+	noise_note 16, 8, 8, 106
+	noise_note 1, 9, 8, 94
+	noise_note 16, 10, 7, 110
 	endchannel
 
 Cry_Sentret_Ch5:
@@ -498,8 +498,8 @@ Cry_Cyndaquil_branch_f316b:
 
 Cry_Cyndaquil_Ch8:
 Cry_Gligar_Ch8:
-	noise __,  9, $3f, $52
-	noise C#,  1, $93, $4f
+	noise_note 8, 3, -7, 82
+	noise_note 32, 9, 3, 79
 	endchannel
 
 Cry_Chikorita_Ch5:
@@ -514,8 +514,8 @@ Cry_Chikorita_Ch6:
 	endchannel
 
 Cry_Chikorita_Ch8:
-	noise __,  5, $91, $10
-	noise __,  9, $94, $3
+	noise_note 4, 9, 1, 16
+	noise_note 8, 9, 4, 3
 	endchannel
 
 Cry_Gligar_Ch5:
@@ -538,11 +538,11 @@ Cry_Girafarig_branch_f31af:
 	endchannel
 
 Cry_Girafarig_Ch8:
-	noise __,  5, $29, $0
-	noise __,  3, $39, $1
-	noise __,  3, $49, $2
-	noise __,  3, $59, $1
-	noise __,  8, $41, $0
+	noise_note 4, 2, -1, 0
+	noise_note 2, 3, -1, 1
+	noise_note 2, 4, -1, 2
+	noise_note 2, 5, -1, 1
+	noise_note 7, 4, 1, 0
 	endchannel
 
 Cry_Slugma_Ch5:
@@ -555,10 +555,10 @@ Cry_Slugma_Ch5:
 	endchannel
 
 Cry_Slugma_Ch8:
-	noise __, 13, $b2, $50
-	noise __,  9, $a8, $60
-	noise __,  7, $a8, $5b
-	noise __,  9, $a1, $5c
+	noise_note 12, 11, 2, 80
+	noise_note 8, 10, 8, 96
+	noise_note 6, 10, 8, 91
+	noise_note 8, 10, 1, 92
 	endchannel
 
 Cry_Ledyba_Ch5:
@@ -578,12 +578,12 @@ Cry_Ledyba_branch_f3202:
 	endchannel
 
 Cry_Ledyba_Ch8:
-	noise __,  4, $59, $21
-	noise __,  4, $81, $0
-	noise __,  3, $20, $0
-	noise __,  2, $80, $21
-	noise __,  2, $80, $10
-	noise __,  5, $87, $0
+	noise_note 3, 5, -1, 33
+	noise_note 3, 8, 1, 0
+	noise_note 2, 2, 0, 0
+	noise_note 1, 8, 0, 33
+	noise_note 1, 8, 0, 16
+	noise_note 4, 8, 7, 0
 	endchannel
 
 Cry_Wooper_Ch5:
@@ -609,19 +609,19 @@ Cry_Donphan_Ch6:
 	endchannel
 
 Cry_Wooper_Ch8:
-	noise __,  3, $5b, $4
-	noise __,  5, $68, $13
-	noise __,  9, $68, $20
-	noise __,  5, $68, $13
-	noise C_,  1, $51, $4
+	noise_note 2, 5, -3, 4
+	noise_note 4, 6, 8, 19
+	noise_note 8, 6, 8, 32
+	noise_note 4, 6, 8, 19
+	noise_note 16, 5, 1, 4
 	endchannel
 
 Cry_Donphan_Ch8:
-	noise __,  3, $8b, $59
-	noise __,  5, $a8, $6a
-	noise __,  9, $a8, $70
-	noise __,  5, $a8, $69
-	noise C_,  1, $92, $6c
+	noise_note 2, 8, -3, 89
+	noise_note 4, 10, 8, 106
+	noise_note 8, 10, 8, 112
+	noise_note 4, 10, 8, 105
+	noise_note 16, 9, 2, 108
 	endchannel
 
 Cry_Typhlosion_Ch5:
@@ -660,10 +660,10 @@ Cry_Teddiursa_Ch6:
 	endchannel
 
 Cry_Typhlosion_Ch8:
-	noise C_,  1, $a6, $16
-	noise C_,  9, $98, $3d
-	noise C#,  1, $98, $5c
-	noise C#,  1, $75, $5f
+	noise_note 16, 10, 6, 22
+	noise_note 24, 9, 8, 61
+	noise_note 32, 9, 8, 92
+	noise_note 32, 7, 5, 95
 	endchannel
 
 Cry_Natu_Ch5:
@@ -695,18 +695,18 @@ Cry_Mantine_branch_f3310:
 Cry_Mantine_branch_f331d:
 Cry_Natu_Ch8:
 Cry_Remoraid_Ch8:
-	noise __,  5, $88, $5
-	noise __,  5, $88, $4
-	noise __,  5, $38, $3
+	noise_note 4, 8, 8, 5
+	noise_note 4, 8, 8, 4
+	noise_note 4, 3, 8, 3
 Cry_Mantine_branch_f3326:
-	noise __,  5, $88, $5
-	noise __,  5, $88, $4
-	noise __,  5, $87, $4
+	noise_note 4, 8, 8, 5
+	noise_note 4, 8, 8, 4
+	noise_note 4, 8, 7, 4
 	endchannel
 
 Cry_Teddiursa_Ch8:
-	noise __,  9, $a6, $3a
-	noise __,  9, $a1, $5a
+	noise_note 8, 10, 6, 58
+	noise_note 8, 10, 1, 90
 	endchannel
 
 Cry_Remoraid_Ch5:
@@ -751,12 +751,12 @@ Cry_Ampharos_Ch6:
 	endchannel
 
 Cry_Ampharos_Ch8:
-	noise __,  5, $88, $6d
-	noise __,  5, $d8, $68
-	noise __,  8, $c8, $69
-	noise __,  5, $98, $3a
-	noise __,  5, $98, $3c
-	noise C_,  9, $d2, $5b
+	noise_note 4, 8, 8, 109
+	noise_note 4, 13, 8, 104
+	noise_note 7, 12, 8, 105
+	noise_note 4, 9, 8, 58
+	noise_note 4, 9, 8, 60
+	noise_note 24, 13, 2, 91
 	endchannel
 
 Cry_Totodile_Ch5:
@@ -778,10 +778,10 @@ Cry_Totodile_Ch6:
 	endchannel
 
 Cry_Totodile_Ch8:
-	noise __,  3, $be, $49
-	noise __,  6, $be, $3a
-	noise __,  3, $be, $29
-	noise C#,  9, $d3, $6e
+	noise_note 2, 11, -6, 73
+	noise_note 5, 11, -6, 58
+	noise_note 2, 11, -6, 41
+	noise_note 40, 13, 3, 110
 	endchannel
 
 Cry_Bellossom_Ch5:
@@ -808,12 +808,12 @@ Cry_Bellossom_Ch6:
 	endchannel
 
 Cry_Bellossom_Ch8:
-	noise __,  3, $64, $7f
-	noise __,  3, $84, $7d
-	noise __,  3, $a4, $6f
-	noise __,  3, $64, $6c
-	noise __,  3, $94, $6f
-	noise __,  3, $61, $6b
+	noise_note 2, 6, 4, 127
+	noise_note 2, 8, 4, 125
+	noise_note 2, 10, 4, 111
+	noise_note 2, 6, 4, 108
+	noise_note 2, 9, 4, 111
+	noise_note 2, 6, 1, 107
 	endchannel
 
 Cry_Tyrogue_Ch5:
@@ -843,15 +843,15 @@ Cry_Tyrogue_branch_f3453:
 
 Cry_Tyrogue_Ch8:
 Cry_Tyrogue_branch_f3460:
-	noise __,  1, $f1, $28
+	noise_note 0, 15, 1, 40
 	loopchannel 4, Cry_Tyrogue_branch_f3460
-	noise __,  1, $91, $49
-	noise __,  2, $a8, $4a
-	noise __,  1, $e1, $4b
-	noise __,  6, $d2, $4f
-	noise __,  4, $c2, $4e
-	noise __,  4, $b2, $4d
-	noise C_,  5, $a3, $4c
+	noise_note 0, 9, 1, 73
+	noise_note 1, 10, 8, 74
+	noise_note 0, 14, 1, 75
+	noise_note 5, 13, 2, 79
+	noise_note 3, 12, 2, 78
+	noise_note 3, 11, 2, 77
+	noise_note 20, 10, 3, 76
 	endchannel
 
 Cry_Nidoran_M:
@@ -1106,14 +1106,14 @@ Cry_Raichu_Ch6:
 	endchannel
 
 Cry_Raichu_Ch8:
-	noise __,  3, $f2, $3c
-	noise __,  9, $e4, $3e
-	noise __, 16, $d7, $3c
-	noise __,  7, $c5, $3b
-	noise __,  7, $e4, $3d
-	noise __,  9, $b6, $3c
-	noise __,  7, $d4, $3d
-	noise __,  9, $c1, $3b
+	noise_note 2, 15, 2, 60
+	noise_note 8, 14, 4, 62
+	noise_note 15, 13, 7, 60
+	noise_note 6, 12, 5, 59
+	noise_note 6, 14, 4, 61
+	noise_note 8, 11, 6, 60
+	noise_note 6, 13, 4, 61
+	noise_note 8, 12, 1, 59
 	endchannel
 
 Cry_Vileplume_Ch5:
@@ -1134,10 +1134,10 @@ Cry_Vileplume_Ch6:
 	endchannel
 
 Cry_Vileplume_Ch8:
-	noise __,  4, $f2, $3c
-	noise __, 14, $e6, $2c
-	noise __, 16, $d7, $3c
-	noise __,  9, $c1, $2c
+	noise_note 3, 15, 2, 60
+	noise_note 13, 14, 6, 44
+	noise_note 15, 13, 7, 60
+	noise_note 8, 12, 1, 44
 	endchannel
 
 Cry_Vulpix_Ch5:
@@ -1165,11 +1165,11 @@ Cry_Vulpix_Ch6:
 	endchannel
 
 Cry_Vulpix_Ch8:
-	noise __, 16, $e4, $3c
-	noise __, 11, $c7, $4c
-	noise __, 11, $c7, $3c
-	noise __, 13, $b7, $4c
-	noise __, 16, $a2, $5c
+	noise_note 15, 14, 4, 60
+	noise_note 10, 12, 7, 76
+	noise_note 10, 12, 7, 60
+	noise_note 12, 11, 7, 76
+	noise_note 15, 10, 2, 92
 	endchannel
 
 Cry_Rhydon_Ch5:
@@ -1196,13 +1196,13 @@ Cry_Rhydon_Ch6:
 	endchannel
 
 Cry_Rhydon_Ch8:
-	noise __,  3, $f2, $4c
-	noise __,  7, $e6, $3a
-	noise __,  5, $d7, $3a
-	noise __,  7, $d6, $2c
-	noise __,  9, $e5, $3c
-	noise __, 13, $d2, $3d
-	noise __,  9, $d1, $2c
+	noise_note 2, 15, 2, 76
+	noise_note 6, 14, 6, 58
+	noise_note 4, 13, 7, 58
+	noise_note 6, 13, 6, 44
+	noise_note 8, 14, 5, 60
+	noise_note 12, 13, 2, 61
+	noise_note 8, 13, 1, 44
 	endchannel
 
 Cry_Weepinbell_Ch5:
@@ -1224,10 +1224,10 @@ Cry_Weepinbell_Ch6:
 	endchannel
 
 Cry_Weepinbell_Ch8:
-	noise __,  9, $d6, $2c
-	noise __, 13, $c6, $3c
-	noise __, 11, $b6, $2c
-	noise __,  9, $91, $1c
+	noise_note 8, 13, 6, 44
+	noise_note 12, 12, 6, 60
+	noise_note 10, 11, 6, 44
+	noise_note 8, 9, 1, 28
 	endchannel
 
 Cry_Kangaskhan_Ch5:
@@ -1253,10 +1253,10 @@ Cry_Kangaskhan_Ch6:
 	endchannel
 
 Cry_Kangaskhan_Ch8:
-	noise __, 13, $e4, $4c
-	noise __, 11, $c7, $5c
-	noise __, 13, $b6, $4c
-	noise __, 16, $a2, $5c
+	noise_note 12, 14, 4, 76
+	noise_note 10, 12, 7, 92
+	noise_note 12, 11, 6, 76
+	noise_note 15, 10, 2, 92
 	endchannel
 
 Cry_Bulbasaur_Ch5:
@@ -1280,11 +1280,11 @@ Cry_Bulbasaur_Ch6:
 	endchannel
 
 Cry_Bulbasaur_Ch8:
-	noise __,  4, $e4, $3c
-	noise __, 13, $d6, $2c
-	noise __,  5, $e4, $3c
-	noise __,  9, $b7, $5c
-	noise __, 16, $c2, $5d
+	noise_note 3, 14, 4, 60
+	noise_note 12, 13, 6, 44
+	noise_note 4, 14, 4, 60
+	noise_note 8, 11, 7, 92
+	noise_note 15, 12, 2, 93
 	endchannel
 
 Cry_Farfetch_d_Ch5:
@@ -1312,9 +1312,9 @@ Cry_Farfetch_d_Ch6:
 	endchannel
 
 Cry_Farfetch_d_Ch8:
-	noise __,  5, $74, $21
-	noise __,  5, $74, $10
-	noise __,  5, $71, $20
+	noise_note 4, 7, 4, 33
+	noise_note 4, 7, 4, 16
+	noise_note 4, 7, 1, 32
 	endchannel
 
 Cry_Nidoran_M_Ch5:
@@ -1332,9 +1332,9 @@ Cry_Nidoran_M_Ch6:
 	endchannel
 
 Cry_Nidoran_M_Ch8:
-	noise __,  4, $a1, $1c
-	noise __, 15, $94, $2c
-	noise __,  9, $81, $1c
+	noise_note 3, 10, 1, 28
+	noise_note 14, 9, 4, 44
+	noise_note 8, 8, 1, 28
 	endchannel
 
 Cry_Pidgey_Ch5:
@@ -1354,9 +1354,9 @@ Cry_Pidgey_Ch6:
 	endchannel
 
 Cry_Pidgey_Ch8:
-	noise __,  3, $61, $32
-	noise __,  3, $61, $21
-	noise __,  9, $61, $11
+	noise_note 2, 6, 1, 50
+	noise_note 2, 6, 1, 33
+	noise_note 8, 6, 1, 17
 	endchannel
 
 Cry_Voltorb_Ch5:
@@ -1371,12 +1371,12 @@ Cry_Voltorb_Ch6:
 	endchannel
 
 Cry_Voltorb_Ch8:
-	noise __,  9, $d4, $8c
-	noise __,  5, $e2, $9c
-	noise __, 16, $c6, $8c
-	noise __,  9, $e4, $ac
-	noise __, 16, $d7, $9c
-	noise __, 16, $f2, $ac
+	noise_note 8, 13, 4, 140
+	noise_note 4, 14, 2, 156
+	noise_note 15, 12, 6, 140
+	noise_note 8, 14, 4, 172
+	noise_note 15, 13, 7, 156
+	noise_note 15, 15, 2, 172
 	endchannel
 
 Cry_Muk_Ch5:
@@ -1394,9 +1394,9 @@ Cry_Muk_Ch6:
 	endchannel
 
 Cry_Muk_Ch8:
-	noise __,  5, $d3, $5c
-	noise __, 16, $e6, $4c
-	noise __,  9, $b1, $5c
+	noise_note 4, 13, 3, 92
+	noise_note 15, 14, 6, 76
+	noise_note 8, 11, 1, 92
 	endchannel
 
 Cry_Grimer_Ch5:
@@ -1442,14 +1442,14 @@ Cry_Diglett_Ch6:
 	endchannel
 
 Cry_Diglett_Ch8:
-	noise __, 16, $8, $0
-	noise __,  5, $8, $0
-	noise __,  5, $d1, $4c
-	noise __,  5, $b1, $2c
-	noise __,  5, $d1, $3c
-	noise __,  5, $b1, $3c
-	noise __,  5, $c1, $2c
-	noise __,  9, $a1, $4c
+	noise_note 15, 0, 8, 0
+	noise_note 4, 0, 8, 0
+	noise_note 4, 13, 1, 76
+	noise_note 4, 11, 1, 44
+	noise_note 4, 13, 1, 60
+	noise_note 4, 11, 1, 60
+	noise_note 4, 12, 1, 44
+	noise_note 8, 10, 1, 76
 	endchannel
 
 Cry_Seel_Ch5:
@@ -1522,16 +1522,16 @@ Cry_Drowzee_Ch6:
 	endchannel
 
 Cry_Drowzee_Ch8:
-	noise __,  7, $d2, $1c
-	noise __, 10, $b1, $2c
-	noise __,  9, $c2, $2c
-	noise __, 10, $b1, $3c
-	noise __,  7, $c2, $2c
-	noise __, 10, $a2, $3c
-	noise __,  8, $c2, $2c
-	noise __,  6, $a1, $3c
-	noise __, 10, $c2, $2c
-	noise __,  5, $a1, $3c
+	noise_note 6, 13, 2, 28
+	noise_note 9, 11, 1, 44
+	noise_note 8, 12, 2, 44
+	noise_note 9, 11, 1, 60
+	noise_note 6, 12, 2, 44
+	noise_note 9, 10, 2, 60
+	noise_note 7, 12, 2, 44
+	noise_note 5, 10, 1, 60
+	noise_note 9, 12, 2, 44
+	noise_note 4, 10, 1, 60
 	endchannel
 
 Cry_Nidoran_F_Ch5:
@@ -1551,10 +1551,10 @@ Cry_Nidoran_F_Ch6:
 	endchannel
 
 Cry_Nidoran_F_Ch8:
-	noise __,  4, $a2, $3c
-	noise __, 13, $94, $2c
-	noise __,  4, $82, $1c
-	noise __,  9, $71, $2c
+	noise_note 3, 10, 2, 60
+	noise_note 12, 9, 4, 44
+	noise_note 3, 8, 2, 28
+	noise_note 8, 7, 1, 44
 	endchannel
 
 Cry_Nidoqueen_Ch5:
@@ -1581,14 +1581,14 @@ Cry_Nidoqueen_Ch6:
 	endchannel
 
 Cry_Nidoqueen_Ch8:
-	noise __,  3, $f2, $3c
-	noise __,  9, $e4, $3e
-	noise __,  9, $d7, $3c
-	noise __,  6, $c5, $3b
-	noise __,  4, $d4, $2c
-	noise __,  3, $b6, $3c
-	noise __,  4, $a4, $2c
-	noise __,  9, $91, $3c
+	noise_note 2, 15, 2, 60
+	noise_note 8, 14, 4, 62
+	noise_note 8, 13, 7, 60
+	noise_note 5, 12, 5, 59
+	noise_note 3, 13, 4, 44
+	noise_note 2, 11, 6, 60
+	noise_note 3, 10, 4, 44
+	noise_note 8, 9, 1, 60
 	endchannel
 
 Cry_Oddish_Ch5:
@@ -1608,9 +1608,9 @@ Cry_Oddish_Ch6:
 	endchannel
 
 Cry_Oddish_Ch8:
-	noise __, 13, $e6, $4c
-	noise __, 12, $d7, $5c
-	noise __, 16, $c2, $4c
+	noise_note 12, 14, 6, 76
+	noise_note 11, 13, 7, 92
+	noise_note 15, 12, 2, 76
 	endchannel
 
 Cry_Charmander_Ch5:
@@ -1636,12 +1636,12 @@ Cry_Charmander_Ch6:
 	endchannel
 
 Cry_Charmander_Ch8:
-	noise __,  8, $d6, $5c
-	noise __,  9, $e6, $4c
-	noise __,  5, $d4, $5c
-	noise __,  5, $d4, $4c
-	noise __,  8, $c3, $4c
-	noise __,  9, $a1, $5c
+	noise_note 7, 13, 6, 92
+	noise_note 8, 14, 6, 76
+	noise_note 4, 13, 4, 92
+	noise_note 4, 13, 4, 76
+	noise_note 7, 12, 3, 76
+	noise_note 8, 10, 1, 92
 	endchannel
 
 Cry_Clefairy_Ch5:
@@ -1675,9 +1675,9 @@ Cry_Caterpie_Ch6:
 	endchannel
 
 Cry_Caterpie_Ch8:
-	noise __, 14, $f6, $4c
-	noise __,  5, $e6, $3c
-	noise __, 16, $f2, $4c
+	noise_note 13, 15, 6, 76
+	noise_note 4, 14, 6, 60
+	noise_note 15, 15, 2, 76
 	endchannel
 
 Cry_Lapras_Ch5:
@@ -1699,10 +1699,10 @@ Cry_Lapras_Ch6:
 	endchannel
 
 Cry_Lapras_Ch8:
-	noise __, 11, $a6, $3c
-	noise __, 15, $94, $2c
-	noise __,  6, $a3, $3c
-	noise __,  9, $91, $2c
+	noise_note 10, 10, 6, 60
+	noise_note 14, 9, 4, 44
+	noise_note 5, 10, 3, 60
+	noise_note 8, 9, 1, 44
 	endchannel
 
 Cry_Golem_Ch5:
@@ -1722,10 +1722,10 @@ Cry_Golem_Ch6:
 	endchannel
 
 Cry_Golem_Ch8:
-	noise __, 11, $e6, $6c
-	noise __, 16, $d2, $5c
-	noise __,  4, $c2, $6c
-	noise __,  9, $d1, $5c
+	noise_note 10, 14, 6, 108
+	noise_note 15, 13, 2, 92
+	noise_note 3, 12, 2, 108
+	noise_note 8, 13, 1, 92
 	endchannel
 
 Cry_Blastoise_Ch5:
@@ -1749,12 +1749,12 @@ Cry_Blastoise_Ch6:
 	endchannel
 
 Cry_Blastoise_Ch8:
-	noise __, 11, $e6, $5c
-	noise __, 11, $d6, $6c
-	noise __,  5, $c2, $4c
-	noise __,  7, $d3, $5c
-	noise __,  9, $b3, $4c
-	noise __,  9, $a1, $5c
+	noise_note 10, 14, 6, 92
+	noise_note 10, 13, 6, 108
+	noise_note 4, 12, 2, 76
+	noise_note 6, 13, 3, 92
+	noise_note 8, 11, 3, 76
+	noise_note 8, 10, 1, 92
 	endchannel
 
 Cry_Pidgeotto_Ch5:
@@ -1772,9 +1772,9 @@ Cry_Pidgeotto_Ch6:
 	endchannel
 
 Cry_Pidgeotto_Ch8:
-	noise __,  9, $e4, $4c
-	noise __, 15, $c4, $3c
-	noise __,  9, $d1, $2c
+	noise_note 8, 14, 4, 76
+	noise_note 14, 12, 4, 60
+	noise_note 8, 13, 1, 44
 	endchannel
 
 Cry_Paras_Ch5:
@@ -1803,15 +1803,15 @@ Cry_Paras_Ch6:
 	endchannel
 
 Cry_Paras_Ch8:
-	noise __,  7, $8, $1
-	noise __,  6, $e2, $5c
-	noise __,  6, $c2, $4c
-	noise __,  6, $d2, $3c
-	noise __,  6, $b2, $2c
-	noise __,  6, $c2, $1c
-	noise __,  6, $a2, $1b
-	noise __,  6, $92, $1a
-	noise __,  9, $81, $18
+	noise_note 6, 0, 8, 1
+	noise_note 5, 14, 2, 92
+	noise_note 5, 12, 2, 76
+	noise_note 5, 13, 2, 60
+	noise_note 5, 11, 2, 44
+	noise_note 5, 12, 2, 28
+	noise_note 5, 10, 2, 27
+	noise_note 5, 9, 2, 26
+	noise_note 8, 8, 1, 24
 	endchannel
 
 Cry_Weedle_Ch5:
@@ -1835,12 +1835,12 @@ Cry_Weedle_Ch6:
 	endchannel
 
 Cry_Weedle_Ch8:
-	noise __,  7, $e3, $5c
-	noise __, 15, $d6, $4c
-	noise __,  7, $c6, $3c
-	noise __,  4, $b3, $4c
-	noise __,  4, $a2, $5c
-	noise __,  9, $b1, $6c
+	noise_note 6, 14, 3, 92
+	noise_note 14, 13, 6, 76
+	noise_note 6, 12, 6, 60
+	noise_note 3, 11, 3, 76
+	noise_note 3, 10, 2, 92
+	noise_note 8, 11, 1, 108
 	endchannel
 
 Cry_Ekans_Ch5:
@@ -1860,10 +1860,10 @@ Cry_Ekans_Ch6:
 	endchannel
 
 Cry_Ekans_Ch8:
-	noise __, 15, $f7, $7c
-	noise __, 13, $f6, $6c
-	noise __, 10, $e4, $7c
-	noise __, 16, $e2, $6c
+	noise_note 14, 15, 7, 124
+	noise_note 12, 15, 6, 108
+	noise_note 9, 14, 4, 124
+	noise_note 15, 14, 2, 108
 	endchannel
 
 Cry_Metapod_Ch5:
@@ -1889,11 +1889,11 @@ Cry_Metapod_Ch6:
 	endchannel
 
 Cry_Metapod_Ch8:
-	noise __, 14, $19, $7c
-	noise __, 14, $f7, $8c
-	noise __, 13, $d6, $7c
-	noise __,  9, $c4, $6c
-	noise __, 16, $b3, $5c
+	noise_note 13, 1, -1, 124
+	noise_note 13, 15, 7, 140
+	noise_note 12, 13, 6, 124
+	noise_note 8, 12, 4, 108
+	noise_note 15, 11, 3, 92
 	endchannel
 
 Cry_Venonat_Ch5:
@@ -1917,12 +1917,12 @@ Cry_Venonat_Ch6:
 	endchannel
 
 Cry_Venonat_Ch8:
-	noise __,  4, $e2, $3c
-	noise __,  9, $d6, $4c
-	noise __,  6, $d4, $3c
-	noise __, 13, $c7, $4c
-	noise __,  3, $e2, $3c
-	noise __,  9, $d1, $2c
+	noise_note 3, 14, 2, 60
+	noise_note 8, 13, 6, 76
+	noise_note 5, 13, 4, 60
+	noise_note 12, 12, 7, 76
+	noise_note 2, 14, 2, 60
+	noise_note 8, 13, 1, 44
 	endchannel
 
 Cry_Squirtle_Ch5:
@@ -1946,11 +1946,11 @@ Cry_Squirtle_Ch6:
 	endchannel
 
 Cry_Squirtle_Ch8:
-	noise __,  7, $e6, $4c
-	noise __, 16, $d6, $3c
-	noise __, 11, $c5, $4a
-	noise __,  2, $b2, $5b
-	noise __, 16, $c2, $4c
+	noise_note 6, 14, 6, 76
+	noise_note 15, 13, 6, 60
+	noise_note 10, 12, 5, 74
+	noise_note 1, 11, 2, 91
+	noise_note 15, 12, 2, 76
 	endchannel
 
 Cry_Shellder_Ch5:
@@ -1978,12 +1978,12 @@ Cry_Shellder_Ch6:
 	endchannel
 
 Cry_Shellder_Ch8:
-	noise __,  7, $e3, $4c
-	noise __,  5, $c3, $3c
-	noise __,  6, $d4, $3c
-	noise __,  5, $c4, $2c
-	noise __,  7, $b4, $3c
-	noise __,  9, $c1, $2c
+	noise_note 6, 14, 3, 76
+	noise_note 4, 12, 3, 60
+	noise_note 5, 13, 4, 60
+	noise_note 4, 12, 4, 44
+	noise_note 6, 11, 4, 60
+	noise_note 8, 12, 1, 44
 	endchannel
 
 Cry_Growlithe_Ch5:
@@ -2003,10 +2003,10 @@ Cry_Growlithe_Ch6:
 	endchannel
 
 Cry_Growlithe_Ch8:
-	noise __,  6, $c4, $46
-	noise __, 14, $a5, $44
-	noise __,  9, $c4, $45
-	noise __,  9, $b1, $44
+	noise_note 5, 12, 4, 70
+	noise_note 13, 10, 5, 68
+	noise_note 8, 12, 4, 69
+	noise_note 8, 11, 1, 68
 	endchannel
 
 Cry_Krabby_Ch5:
@@ -2026,10 +2026,10 @@ Cry_Krabby_Ch6:
 	endchannel
 
 Cry_Krabby_Ch8:
-	noise __, 15, $f2, $65
-	noise __, 14, $e2, $55
-	noise __, 15, $d2, $56
-	noise __,  9, $d1, $66
+	noise_note 14, 15, 2, 101
+	noise_note 13, 14, 2, 85
+	noise_note 14, 13, 2, 86
+	noise_note 8, 13, 1, 102
 	endchannel
 
 Cry_Psyduck_Ch5:
@@ -2074,8 +2074,8 @@ Cry_Rattata_Ch6:
 	endchannel
 
 Cry_Rattata_Ch8:
-	noise __,  3, $92, $49
-	noise __,  8, $b5, $29
-	noise __,  2, $a2, $39
-	noise __,  9, $91, $49
+	noise_note 2, 9, 2, 73
+	noise_note 7, 11, 5, 41
+	noise_note 1, 10, 2, 57
+	noise_note 8, 9, 1, 73
 	endchannel

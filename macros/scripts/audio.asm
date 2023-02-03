@@ -26,9 +26,13 @@ MACRO square_note
 	dw \4 ; frequency
 ENDM
 
-MACRO noise
-	note \1, \2 ; duration
-	db \3 ; intensity
+MACRO noise_note
+	db \1 ; length
+	if \3 < 0
+		dn \2, %1000 | (\3 * -1) ; volume envelope
+	else
+		dn \2, \3 ; volume envelope
+	endc
 	db \4 ; frequency
 ENDM
 

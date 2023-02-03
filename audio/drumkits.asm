@@ -93,169 +93,169 @@ Drumkit5:
 
 Drum00:
 ; unused
-	noise C#,  1, $11, $00
+	noise_note 32, 1, 1, 0
 	endchannel
 
 Snare1:
-	noise C#,  1, $c1, $33
+	noise_note 32, 12, 1, 51
 	endchannel
 
 Snare2:
-	noise C#,  1, $b1, $33
+	noise_note 32, 11, 1, 51
 	endchannel
 
 Snare3:
-	noise C#,  1, $a1, $33
+	noise_note 32, 10, 1, 51
 	endchannel
 
 Snare4:
-	noise C#,  1, $81, $33
+	noise_note 32, 8, 1, 51
 	endchannel
 
 Drum05:
-	noise C#,  8, $84, $37
-	noise C#,  7, $84, $36
-	noise C#,  6, $83, $35
-	noise C#,  5, $83, $34
-	noise C#,  4, $82, $33
-	noise C#,  3, $81, $32
+	noise_note 39, 8, 4, 55
+	noise_note 38, 8, 4, 54
+	noise_note 37, 8, 3, 53
+	noise_note 36, 8, 3, 52
+	noise_note 35, 8, 2, 51
+	noise_note 34, 8, 1, 50
 	endchannel
 
 Triangle1:
-	noise C#,  1, $51, $2a
+	noise_note 32, 5, 1, 42
 	endchannel
 
 Triangle2:
-	noise C#,  2, $41, $2b
-	noise C#,  1, $61, $2a
+	noise_note 33, 4, 1, 43
+	noise_note 32, 6, 1, 42
 	endchannel
 
 HiHat1:
-	noise C#,  1, $81, $10
+	noise_note 32, 8, 1, 16
 	endchannel
 
 Snare5:
-	noise C#,  1, $82, $23
+	noise_note 32, 8, 2, 35
 	endchannel
 
 Snare6:
-	noise C#,  1, $82, $25
+	noise_note 32, 8, 2, 37
 	endchannel
 
 Snare7:
-	noise C#,  1, $82, $26
+	noise_note 32, 8, 2, 38
 	endchannel
 
 HiHat2:
-	noise C#,  1, $a1, $10
+	noise_note 32, 10, 1, 16
 	endchannel
 
 HiHat3:
-	noise C#,  1, $a2, $11
+	noise_note 32, 10, 2, 17
 	endchannel
 
 Snare8:
-	noise C#,  1, $a2, $50
+	noise_note 32, 10, 2, 80
 	endchannel
 
 Triangle3:
-	noise C#,  1, $a1, $18
-	noise C#,  1, $31, $33
+	noise_note 32, 10, 1, 24
+	noise_note 32, 3, 1, 51
 	endchannel
 
 Triangle4:
-	noise C#,  3, $91, $28
-	noise C#,  1, $71, $18
+	noise_note 34, 9, 1, 40
+	noise_note 32, 7, 1, 24
 	endchannel
 
 Snare9:
-	noise C#,  1, $91, $22
+	noise_note 32, 9, 1, 34
 	endchannel
 
 Snare10:
-	noise C#,  1, $71, $22
+	noise_note 32, 7, 1, 34
 	endchannel
 
 Snare11:
-	noise C#,  1, $61, $22
+	noise_note 32, 6, 1, 34
 	endchannel
 
 Drum20:
-	noise C#,  1, $11, $11
+	noise_note 32, 1, 1, 17
 	endchannel
 
 Drum21:
 	endchannel
 
 Snare12:
-	noise C#,  1, $91, $33
+	noise_note 32, 9, 1, 51
 	endchannel
 
 Snare13:
-	noise C#,  1, $51, $32
+	noise_note 32, 5, 1, 50
 	endchannel
 
 Snare14:
-	noise C#,  1, $81, $31
+	noise_note 32, 8, 1, 49
 	endchannel
 
 Kick1:
-	noise C#,  1, $88, $6b
-	noise C#,  1, $71, $00
+	noise_note 32, 8, 8, 107
+	noise_note 32, 7, 1, 0
 	endchannel
 
 Triangle5:
-	noise D_,  1, $91, $18
+	noise_note 48, 9, 1, 24
 	endchannel
 
 Drum27:
-	noise C#,  8, $92, $10
+	noise_note 39, 9, 2, 16
 	endchannel
 
 Drum28:
-	noise D_,  4, $91, $00
-	noise D_,  4, $11, $00
+	noise_note 51, 9, 1, 0
+	noise_note 51, 1, 1, 0
 	endchannel
 
 Drum29:
-	noise D_,  4, $91, $11
-	noise D_,  4, $11, $00
+	noise_note 51, 9, 1, 17
+	noise_note 51, 1, 1, 0
 	endchannel
 
 Crash1:
-	noise D_,  4, $88, $15
-	noise C#,  1, $65, $12
+	noise_note 51, 8, 8, 21
+	noise_note 32, 6, 5, 18
 	endchannel
 
 Drum31:
-	noise D_,  4, $51, $21
-	noise D_,  4, $11, $11
+	noise_note 51, 5, 1, 33
+	noise_note 51, 1, 1, 17
 	endchannel
 
 Drum32:
-	noise D_,  4, $51, $50
-	noise D_,  4, $11, $11
+	noise_note 51, 5, 1, 80
+	noise_note 51, 1, 1, 17
 	endchannel
 
 Drum33:
-	noise C#,  1, $a1, $31
+	noise_note 32, 10, 1, 49
 	endchannel
 
 Crash2:
-	noise C#,  1, $84, $12
+	noise_note 32, 8, 4, 18
 	endchannel
 
 Drum35:
-	noise D_,  4, $81, $00
-	noise D_,  4, $11, $00
+	noise_note 51, 8, 1, 0
+	noise_note 51, 1, 1, 0
 	endchannel
 
 Drum36:
-	noise D_,  4, $81, $21
-	noise D_,  4, $11, $11
+	noise_note 51, 8, 1, 33
+	noise_note 51, 1, 1, 17
 	endchannel
 
 Kick2:
-	noise C#,  1, $a8, $6b
-	noise C#,  1, $71, $00
+	noise_note 32, 10, 8, 107
+	noise_note 32, 7, 1, 0
 	endchannel

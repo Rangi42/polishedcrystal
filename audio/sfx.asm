@@ -69,8 +69,8 @@ Sfx_Menu:
 	channel 8, .Ch8
 
 .Ch8:
-	noise __,  2, $e2, $33
-	noise __,  9, $e1, $22
+	noise_note 1, 14, 2, 51
+	noise_note 8, 14, 1, 34
 	endchannel
 
 
@@ -295,10 +295,10 @@ Sfx_GrassRustle:
 	channel 8, .Ch8
 
 .Ch8:
-	noise __,  3, $f1, $32
-	noise __,  3, $0, $0
-	noise __,  3, $f1, $22
-	noise __,  2, $0, $0
+	noise_note 2, 15, 1, 50
+	noise_note 2, 0, 0, 0
+	noise_note 2, 15, 1, 34
+	noise_note 1, 0, 0, 0
 	endchannel
 
 
@@ -309,22 +309,22 @@ Sfx_Fly:
 	channel 8, .Ch8
 
 .Ch8:
-	noise __,  3, $f1, $12
-	noise __,  3, $0, $0
-	noise __,  3, $a1, $12
-	noise __,  3, $0, $0
-	noise __,  3, $d1, $12
-	noise __,  3, $0, $0
-	noise __,  3, $81, $12
-	noise __,  3, $0, $0
-	noise __,  3, $b1, $12
-	noise __,  3, $0, $0
-	noise __,  3, $61, $12
-	noise __,  3, $0, $0
-	noise __,  3, $91, $12
-	noise __,  3, $0, $0
-	noise __,  3, $41, $12
-	noise __,  3, $0, $0
+	noise_note 2, 15, 1, 18
+	noise_note 2, 0, 0, 0
+	noise_note 2, 10, 1, 18
+	noise_note 2, 0, 0, 0
+	noise_note 2, 13, 1, 18
+	noise_note 2, 0, 0, 0
+	noise_note 2, 8, 1, 18
+	noise_note 2, 0, 0, 0
+	noise_note 2, 11, 1, 18
+	noise_note 2, 0, 0, 0
+	noise_note 2, 6, 1, 18
+	noise_note 2, 0, 0, 0
+	noise_note 2, 9, 1, 18
+	noise_note 2, 0, 0, 0
+	noise_note 2, 4, 1, 18
+	noise_note 2, 0, 0, 0
 	endchannel
 
 
@@ -375,14 +375,14 @@ Sfx_Strength:
 	channel 8, .Ch8
 
 .Ch8:
-	noise __,  5, $a2, $23
-	noise __,  9, $f1, $34
-	noise __, 16, $0, $0
-	noise __,  3, $f7, $24
-	noise __,  3, $f7, $34
-	noise __,  5, $f7, $44
-	noise __,  9, $f4, $55
-	noise __,  9, $f1, $44
+	noise_note 4, 10, 2, 35
+	noise_note 8, 15, 1, 52
+	noise_note 15, 0, 0, 0
+	noise_note 2, 15, 7, 36
+	noise_note 2, 15, 7, 52
+	noise_note 4, 15, 7, 68
+	noise_note 8, 15, 4, 85
+	noise_note 8, 15, 1, 68
 	endchannel
 
 
@@ -443,11 +443,11 @@ Sfx_PlacePuzzlePieceDown:
 	channel 8, .Ch8
 
 .Ch8:
-	noise __,  3, $f7, $24
-	noise __,  3, $f7, $34
-	noise __,  5, $f7, $44
-	noise __,  9, $f4, $55
-	noise __,  9, $f1, $44
+	noise_note 2, 15, 7, 36
+	noise_note 2, 15, 7, 52
+	noise_note 4, 15, 7, 68
+	noise_note 8, 15, 4, 85
+	noise_note 8, 15, 1, 68
 	endchannel
 
 
@@ -458,8 +458,8 @@ Sfx_EnterDoor:
 	channel 8, .Ch8
 
 .Ch8:
-	noise __, 10, $f1, $44
-	noise __,  9, $d1, $43
+	noise_note 9, 15, 1, 68
+	noise_note 8, 13, 1, 67
 	endchannel
 
 
@@ -543,11 +543,11 @@ Sfx_ExitBuilding:
 	channel 8, .Ch8
 
 .Ch8:
-	noise __,  3, $f1, $54
-	noise __, 13, $71, $23
-	noise __,  3, $b1, $54
-	noise __, 13, $61, $23
-	noise __,  7, $41, $54
+	noise_note 2, 15, 1, 84
+	noise_note 12, 7, 1, 35
+	noise_note 2, 11, 1, 84
+	noise_note 12, 6, 1, 35
+	noise_note 6, 4, 1, 84
 	endchannel
 
 
@@ -665,7 +665,7 @@ Sfx_BallPoof:
 	endchannel
 
 .Ch8:
-	noise __, 16, $a2, $22
+	noise_note 15, 10, 2, 34
 	endchannel
 
 
@@ -682,9 +682,9 @@ Sfx_Faint:
 	endchannel
 
 .Ch8:
-	noise __,  5, $f5, $33
-	noise __,  9, $f4, $22
-	noise __, 16, $f2, $21
+	noise_note 4, 15, 5, 51
+	noise_note 8, 15, 4, 34
+	noise_note 15, 15, 2, 33
 	endchannel
 
 
@@ -695,17 +695,17 @@ Sfx_Run:
 	channel 8, .Ch8
 
 .Ch8:
-	noise __,  3, $61, $23
-	noise __,  3, $a1, $33
-	noise __,  3, $c1, $33
-	noise __,  3, $51, $11
-	noise __,  3, $f1, $33
-	noise __,  3, $41, $11
-	noise __,  3, $c1, $33
-	noise __,  3, $31, $11
-	noise __,  3, $81, $33
-	noise __,  3, $31, $11
-	noise __,  9, $41, $33
+	noise_note 2, 6, 1, 35
+	noise_note 2, 10, 1, 51
+	noise_note 2, 12, 1, 51
+	noise_note 2, 5, 1, 17
+	noise_note 2, 15, 1, 51
+	noise_note 2, 4, 1, 17
+	noise_note 2, 12, 1, 51
+	noise_note 2, 3, 1, 17
+	noise_note 2, 8, 1, 51
+	noise_note 2, 3, 1, 17
+	noise_note 8, 4, 1, 51
 	endchannel
 
 
@@ -757,14 +757,14 @@ Sfx_Unknown60:
 	channel 8, .Ch8
 
 .Ch8:
-	noise __,  7, $20, $10
-	noise __,  7, $2f, $40
-	noise __,  7, $4f, $41
-	noise __,  7, $8f, $41
-	noise __,  7, $cf, $42
-	noise __,  9, $d7, $42
-	noise __, 16, $e7, $43
-	noise __, 16, $f2, $43
+	noise_note 6, 2, 0, 16
+	noise_note 6, 2, -7, 64
+	noise_note 6, 4, -7, 65
+	noise_note 6, 8, -7, 65
+	noise_note 6, 12, -7, 66
+	noise_note 8, 13, 7, 66
+	noise_note 15, 14, 7, 67
+	noise_note 15, 15, 2, 67
 	endchannel
 
 
@@ -775,7 +775,7 @@ Sfx_Unknown61:
 	channel 8, .Ch8
 
 .Ch8:
-	noise __,  5, $d1, $41
+	noise_note 4, 13, 1, 65
 	endchannel
 
 
@@ -786,7 +786,7 @@ Sfx_SwitchPockets:
 	channel 8, .Ch8
 
 .Ch8:
-	noise __,  5, $c1, $42
+	noise_note 4, 12, 1, 66
 	endchannel
 
 
@@ -797,9 +797,9 @@ Sfx_Unknown63:
 	channel 8, .Ch8
 
 .Ch8:
-	noise __,  3, $6f, $21
-	noise __,  3, $af, $31
-	noise __, 16, $f2, $41
+	noise_note 2, 6, -7, 33
+	noise_note 2, 10, -7, 49
+	noise_note 15, 15, 2, 65
 	endchannel
 
 
@@ -810,8 +810,8 @@ Sfx_Burn:
 	channel 8, .Ch8
 
 .Ch8:
-	noise __,  3, $d2, $32
-	noise __, 16, $f2, $43
+	noise_note 2, 13, 2, 50
+	noise_note 15, 15, 2, 67
 	endchannel
 
 
@@ -822,12 +822,12 @@ Sfx_TitleScreenEntrance:
 	channel 8, .Ch8
 
 .Ch8:
-	noise __,  3, $70, $22
-	noise __,  3, $80, $23
-	noise __,  3, $90, $24
-	noise __,  3, $a0, $25
-	noise __,  3, $b0, $26
-	noise __, 16, $c2, $26
+	noise_note 2, 7, 0, 34
+	noise_note 2, 8, 0, 35
+	noise_note 2, 9, 0, 36
+	noise_note 2, 10, 0, 37
+	noise_note 2, 11, 0, 38
+	noise_note 15, 12, 2, 38
 	endchannel
 
 
@@ -909,7 +909,7 @@ Sfx_Peck:
 	channel 8, .Ch8
 
 .Ch8:
-	noise __,  3, $a1, $12
+	noise_note 2, 10, 1, 18
 	endchannel
 
 
@@ -948,7 +948,7 @@ Sfx_Pound:
 	channel 8, .Ch8
 
 .Ch8:
-	noise __,  3, $a1, $22
+	noise_note 2, 10, 1, 34
 	endchannel
 
 
@@ -959,7 +959,7 @@ Sfx_MovePuzzlePiece:
 	channel 8, .Ch8
 
 .Ch8:
-	noise __,  9, $f1, $54
+	noise_note 8, 15, 1, 84
 	endchannel
 
 
@@ -970,9 +970,9 @@ Sfx_CometPunch:
 	channel 8, .Ch8
 
 .Ch8:
-	noise __, 16, $8f, $11
-	noise __,  5, $ff, $12
-	noise __, 11, $f1, $55
+	noise_note 15, 8, -7, 17
+	noise_note 4, 15, -7, 18
+	noise_note 10, 15, 1, 85
 	endchannel
 
 
@@ -983,9 +983,9 @@ Sfx_MegaPunch:
 	channel 8, .Ch8
 
 .Ch8:
-	noise __, 16, $8f, $34
-	noise __,  9, $f2, $35
-	noise __, 11, $f1, $55
+	noise_note 15, 8, -7, 52
+	noise_note 8, 15, 2, 53
+	noise_note 10, 15, 1, 85
 	endchannel
 
 
@@ -996,8 +996,8 @@ Sfx_Scratch:
 	channel 8, .Ch8
 
 .Ch8:
-	noise __, 16, $9f, $23
-	noise __,  9, $f1, $21
+	noise_note 15, 9, -7, 35
+	noise_note 8, 15, 1, 33
 	endchannel
 
 
@@ -1008,10 +1008,10 @@ Sfx_Vicegrip:
 	channel 8, .Ch8
 
 .Ch8:
-	noise __,  3, $e1, $4b
-	noise __, 11, $f1, $44
-	noise __,  3, $e1, $3a
-	noise __,  7, $f1, $34
+	noise_note 2, 14, 1, 75
+	noise_note 10, 15, 1, 68
+	noise_note 2, 14, 1, 58
+	noise_note 6, 15, 1, 52
 	endchannel
 
 
@@ -1022,9 +1022,9 @@ Sfx_RazorWind:
 	channel 8, .Ch8
 
 .Ch8:
-	noise __,  3, $f4, $44
-	noise __,  3, $f4, $14
-	noise __, 16, $f1, $32
+	noise_note 2, 15, 4, 68
+	noise_note 2, 15, 4, 20
+	noise_note 15, 15, 1, 50
 	endchannel
 
 
@@ -1035,10 +1035,10 @@ Sfx_Cut:
 	channel 8, .Ch8
 
 .Ch8:
-	noise __,  5, $8f, $55
-	noise __,  3, $f4, $44
-	noise __,  9, $f4, $22
-	noise __, 16, $f2, $21
+	noise_note 4, 8, -7, 85
+	noise_note 2, 15, 4, 68
+	noise_note 8, 15, 4, 34
+	noise_note 15, 15, 2, 33
 	endchannel
 
 
@@ -1050,9 +1050,9 @@ Sfx_WingAttack:
 
 .Ch8:
 .branch8:
-	noise __,  9, $4f, $23
-	noise __,  5, $c4, $22
-	noise __,  7, $f2, $23
+	noise_note 8, 4, -7, 35
+	noise_note 4, 12, 4, 34
+	noise_note 6, 15, 2, 35
 	loopchannel 4, .branch8
 	endchannel
 
@@ -1064,10 +1064,10 @@ Sfx_Whirlwind:
 	channel 8, .Ch8
 
 .Ch8:
-	noise __,  9, $4f, $33
-	noise __,  5, $c4, $22
-	noise __,  7, $f2, $23
-	noise __, 16, $f2, $22
+	noise_note 8, 4, -7, 51
+	noise_note 4, 12, 4, 34
+	noise_note 6, 15, 2, 35
+	noise_note 15, 15, 2, 34
 	endchannel
 
 
@@ -1078,10 +1078,10 @@ Sfx_Bind:
 	channel 8, .Ch8
 
 .Ch8:
-	noise __,  9, $ff, $32
-	noise __,  9, $f4, $43
-	noise __,  9, $f2, $54
-	noise __,  9, $f1, $65
+	noise_note 8, 15, -7, 50
+	noise_note 8, 15, 4, 67
+	noise_note 8, 15, 2, 84
+	noise_note 8, 15, 1, 101
 	endchannel
 
 
@@ -1092,14 +1092,14 @@ Sfx_VineWhip:
 	channel 8, .Ch8
 
 .Ch8:
-	noise __,  2, $c2, $33
-	noise __,  3, $f2, $21
-	noise __,  2, $e2, $33
-	noise __,  2, $c2, $32
-	noise __,  2, $92, $12
-	noise __,  2, $b2, $31
-	noise __, 13, $91, $10
-	noise __,  9, $f2, $41
+	noise_note 1, 12, 2, 51
+	noise_note 2, 15, 2, 33
+	noise_note 1, 14, 2, 51
+	noise_note 1, 12, 2, 50
+	noise_note 1, 9, 2, 18
+	noise_note 1, 11, 2, 49
+	noise_note 12, 9, 1, 16
+	noise_note 8, 15, 2, 65
 	endchannel
 
 
@@ -1110,9 +1110,9 @@ Sfx_DoubleKick:
 	channel 8, .Ch8
 
 .Ch8:
-	noise __,  2, $94, $23
-	noise __,  2, $b4, $22
-	noise __,  9, $f1, $44
+	noise_note 1, 9, 4, 35
+	noise_note 1, 11, 4, 34
+	noise_note 8, 15, 1, 68
 	endchannel
 
 
@@ -1123,10 +1123,10 @@ Sfx_MegaKick:
 	channel 8, .Ch8
 
 .Ch8:
-	noise __,  3, $94, $33
-	noise __,  5, $b4, $22
-	noise __,  5, $f1, $44
-	noise __,  9, $f1, $55
+	noise_note 2, 9, 4, 51
+	noise_note 4, 11, 4, 34
+	noise_note 4, 15, 1, 68
+	noise_note 8, 15, 1, 85
 	endchannel
 
 
@@ -1137,8 +1137,8 @@ Sfx_Headbutt:
 	channel 8, .Ch8
 
 .Ch8:
-	noise __,  5, $ff, $55
-	noise __,  9, $f1, $65
+	noise_note 4, 15, -7, 85
+	noise_note 8, 15, 1, 101
 	endchannel
 
 
@@ -1149,9 +1149,9 @@ Sfx_HornAttack:
 	channel 8, .Ch8
 
 .Ch8:
-	noise __,  3, $84, $43
-	noise __,  3, $c4, $22
-	noise __,  9, $f2, $34
+	noise_note 2, 8, 4, 67
+	noise_note 2, 12, 4, 34
+	noise_note 8, 15, 2, 52
 	endchannel
 
 
@@ -1162,8 +1162,8 @@ Sfx_Tackle:
 	channel 8, .Ch8
 
 .Ch8:
-	noise __,  5, $f1, $34
-	noise __, 16, $f2, $64
+	noise_note 4, 15, 1, 52
+	noise_note 15, 15, 2, 100
 	endchannel
 
 
@@ -1174,8 +1174,8 @@ Sfx_PoisonSting:
 	channel 8, .Ch8
 
 .Ch8:
-	noise __,  3, $f1, $22
-	noise __, 16, $f2, $12
+	noise_note 2, 15, 1, 34
+	noise_note 15, 15, 2, 18
 	endchannel
 
 
@@ -1186,9 +1186,9 @@ Sfx_Powder:
 	channel 8, .Ch8
 
 .Ch8:
-	noise __,  3, $c2, $1
-	noise __, 16, $f4, $1
-	noise __, 16, $f2, $1
+	noise_note 2, 12, 2, 1
+	noise_note 15, 15, 4, 1
+	noise_note 15, 15, 2, 1
 	endchannel
 
 
@@ -1199,8 +1199,8 @@ Sfx_DoubleSlap:
 	channel 8, .Ch8
 
 .Ch8:
-	noise __,  9, $f1, $32
-	noise __,  9, $f1, $33
+	noise_note 8, 15, 1, 50
+	noise_note 8, 15, 1, 51
 	endchannel
 
 
@@ -1221,10 +1221,10 @@ Sfx_Bite:
 	endchannel
 
 .Ch8:
-	noise __,  1, $d1, $42
-	noise __,  5, $a1, $32
-	noise __,  1, $d1, $22
-	noise __,  7, $a1, $32
+	noise_note 0, 13, 1, 66
+	noise_note 4, 10, 1, 50
+	noise_note 0, 13, 1, 34
+	noise_note 6, 10, 1, 50
 	endchannel
 
 
@@ -1235,10 +1235,10 @@ Sfx_JumpKick:
 	channel 8, .Ch8
 
 .Ch8:
-	noise __,  4, $92, $31
-	noise __,  4, $b2, $32
-	noise __,  4, $c2, $33
-	noise __,  9, $f1, $54
+	noise_note 3, 9, 2, 49
+	noise_note 3, 11, 2, 50
+	noise_note 3, 12, 2, 51
+	noise_note 8, 15, 1, 84
 	endchannel
 
 
@@ -1249,8 +1249,8 @@ Sfx_Stomp:
 	channel 8, .Ch8
 
 .Ch8:
-	noise __, 13, $f1, $54
-	noise __,  9, $f1, $64
+	noise_note 12, 15, 1, 84
+	noise_note 8, 15, 1, 100
 	endchannel
 
 
@@ -1261,11 +1261,11 @@ Sfx_TailWhip:
 	channel 8, .Ch8
 
 .Ch8:
-	noise __,  3, $f1, $33
-	noise __,  3, $c1, $32
-	noise __,  3, $a1, $31
-	noise __, 16, $82, $32
-	noise __,  9, $f1, $34
+	noise_note 2, 15, 1, 51
+	noise_note 2, 12, 1, 50
+	noise_note 2, 10, 1, 49
+	noise_note 15, 8, 2, 50
+	noise_note 8, 15, 1, 52
 	endchannel
 
 
@@ -1276,8 +1276,8 @@ Sfx_KarateChop:
 	channel 8, .Ch8
 
 .Ch8:
-	noise __,  3, $d2, $32
-	noise __, 16, $f2, $43
+	noise_note 2, 13, 2, 50
+	noise_note 15, 15, 2, 67
 	endchannel
 
 
@@ -1288,11 +1288,11 @@ Sfx_Submission:
 	channel 8, .Ch8
 
 .Ch8:
-	noise __,  3, $f2, $43
-	noise __,  5, $b5, $32
-	noise __, 10, $86, $31
-	noise __,  8, $64, $0
-	noise __, 16, $f2, $55
+	noise_note 2, 15, 2, 67
+	noise_note 4, 11, 5, 50
+	noise_note 9, 8, 6, 49
+	noise_note 7, 6, 4, 0
+	noise_note 15, 15, 2, 85
 	endchannel
 
 
@@ -1311,8 +1311,8 @@ Sfx_WaterGun:
 	endchannel
 
 .Ch8:
-	noise __, 16, $3f, $22
-	noise __, 16, $f2, $21
+	noise_note 15, 3, -7, 34
+	noise_note 15, 15, 2, 33
 	endchannel
 
 
@@ -1323,11 +1323,11 @@ Sfx_SwordsDance:
 	channel 8, .Ch8
 
 .Ch8:
-	noise __, 16, $4f, $41
-	noise __,  9, $8f, $41
-	noise __,  9, $cf, $41
-	noise __,  9, $f2, $42
-	noise __, 16, $f2, $41
+	noise_note 15, 4, -7, 65
+	noise_note 8, 8, -7, 65
+	noise_note 8, 12, -7, 65
+	noise_note 8, 15, 2, 66
+	noise_note 15, 15, 2, 65
 	endchannel
 
 
@@ -1338,13 +1338,13 @@ Sfx_Thunder:
 	channel 8, .Ch8
 
 .Ch8:
-	noise __, 11, $ff, $50
-	noise __, 16, $ff, $51
-	noise __,  9, $f2, $51
-	noise __,  7, $ff, $52
-	noise __,  7, $ff, $53
-	noise __,  9, $ff, $54
-	noise __, 16, $f2, $54
+	noise_note 10, 15, -7, 80
+	noise_note 15, 15, -7, 81
+	noise_note 8, 15, 2, 81
+	noise_note 6, 15, -7, 82
+	noise_note 6, 15, -7, 83
+	noise_note 8, 15, -7, 84
+	noise_note 15, 15, 2, 84
 	endchannel
 
 
@@ -1376,8 +1376,8 @@ Sfx_Supersonic:
 
 .Ch8:
 .branch8:
-	noise __,  4, $97, $12
-	noise __,  4, $a1, $11
+	noise_note 3, 9, 7, 18
+	noise_note 3, 10, 1, 17
 	loopchannel 10, .branch8
 	endchannel
 
@@ -1408,8 +1408,8 @@ Sfx_Leer:
 
 .Ch8:
 .branch8:
-	noise __,  2, $d1, $49
-	noise __,  2, $d1, $29
+	noise_note 1, 13, 1, 73
+	noise_note 1, 13, 1, 41
 	loopchannel 6, .branch8
 	endchannel
 
@@ -1433,12 +1433,12 @@ Sfx_Ember:
 
 .Ch8:
 .branch8:
-	noise __, 11, $f3, $35
-	noise __, 15, $f6, $45
+	noise_note 10, 15, 3, 53
+	noise_note 14, 15, 6, 69
 	loopchannel 4, .branch8
-	noise __, 13, $f4, $bc
-	noise __, 13, $f5, $9c
-	noise __, 16, $f4, $ac
+	noise_note 12, 15, 4, 188
+	noise_note 12, 15, 5, 156
+	noise_note 15, 15, 4, 172
 	endchannel
 
 
@@ -1473,10 +1473,10 @@ Sfx_BubbleBeam:
 
 .Ch8:
 .branch8:
-	noise __,  6, $c3, $33
-	noise __,  4, $92, $43
-	noise __, 11, $b5, $33
-	noise __, 16, $c3, $32
+	noise_note 5, 12, 3, 51
+	noise_note 3, 9, 2, 67
+	noise_note 10, 11, 5, 51
+	noise_note 15, 12, 3, 50
 	loopchannel 2, .branch8
 	endchannel
 
@@ -1502,13 +1502,13 @@ Sfx_HydroPump:
 
 .Ch8:
 .branch8:
-	noise __,  4, $62, $22
-	noise __,  4, $a2, $32
-	noise __,  4, $d2, $33
-	noise __,  4, $92, $23
-	noise __,  4, $52, $12
+	noise_note 3, 6, 2, 34
+	noise_note 3, 10, 2, 50
+	noise_note 3, 13, 2, 51
+	noise_note 3, 9, 2, 35
+	noise_note 3, 5, 2, 18
 	loopchannel 5, .branch8
-	noise __,  9, $81, $12
+	noise_note 8, 8, 1, 18
 	endchannel
 
 
@@ -1540,10 +1540,10 @@ Sfx_Surf:
 
 .Ch8:
 .branch8:
-	noise __, 10, $f4, $44
-	noise __, 10, $f2, $43
-	noise __, 16, $f4, $42
-	noise __, 16, $f4, $41
+	noise_note 9, 15, 4, 68
+	noise_note 9, 15, 2, 67
+	noise_note 15, 15, 4, 66
+	noise_note 15, 15, 4, 65
 	loopchannel 3, .branch8
 	endchannel
 
@@ -1578,8 +1578,8 @@ Sfx_Psybeam:
 
 .Ch8:
 .branch8:
-	noise __,  3, $d1, $4a
-	noise __,  3, $d2, $2a
+	noise_note 2, 13, 1, 74
+	noise_note 2, 13, 2, 42
 	loopchannel 21, .branch8
 	endchannel
 
@@ -1614,10 +1614,10 @@ Sfx_Charge:
 
 .Ch8:
 .branch8:
-	noise __,  3, $d3, $10
-	noise __,  4, $d3, $11
-	noise __,  3, $d2, $10
-	noise __,  6, $d2, $12
+	noise_note 2, 13, 3, 16
+	noise_note 3, 13, 3, 17
+	noise_note 2, 13, 2, 16
+	noise_note 5, 13, 2, 18
 	loopchannel 9, .branch8
 	endchannel
 
@@ -1648,8 +1648,8 @@ Sfx_Thundershock:
 
 .Ch8:
 .branch8:
-	noise __,  5, $ff, $43
-	noise __,  5, $f2, $44
+	noise_note 4, 15, -7, 67
+	noise_note 4, 15, 2, 68
 	loopchannel 9, .branch8
 	endchannel
 
@@ -1685,12 +1685,12 @@ Sfx_Psychic:
 	endchannel
 
 .Ch8:
-	noise __, 16, $3f, $14
-	noise __, 16, $cf, $13
-	noise __, 16, $cf, $12
-	noise __, 16, $cf, $11
-	noise __, 16, $cf, $10
-	noise __, 16, $c2, $10
+	noise_note 15, 3, -7, 20
+	noise_note 15, 12, -7, 19
+	noise_note 15, 12, -7, 18
+	noise_note 15, 12, -7, 17
+	noise_note 15, 12, -7, 16
+	noise_note 15, 12, 2, 16
 	endchannel
 
 
@@ -1789,10 +1789,10 @@ Sfx_EggBomb:
 	endchannel
 
 .Ch8:
-	noise __,  5, $ff, $51
-	noise __,  9, $ff, $54
-	noise __, 16, $ff, $55
-	noise __, 16, $f3, $56
+	noise_note 4, 15, -7, 81
+	noise_note 8, 15, -7, 84
+	noise_note 15, 15, -7, 85
+	noise_note 15, 15, 3, 86
 	endchannel
 
 
@@ -1883,8 +1883,8 @@ Sfx_HyperBeam:
 
 .Ch8:
 .branch8:
-	noise __,  2, $d1, $49
-	noise __,  2, $d1, $29
+	noise_note 1, 13, 1, 73
+	noise_note 1, 13, 1, 41
 	loopchannel 26, .branch8
 	endchannel
 
@@ -1932,11 +1932,11 @@ Sfx_Unknown5F_Ch6:
 
 Sfx_Sandstorm_Ch8:
 .branch8:
-	noise __,  2, $f8, $41
-	noise __,  3, $9c, $24
-	noise __,  1, $0, $0
-	noise __,  4, $59, $16
-	noise __,  3, $0, $0
+	noise_note 1, 15, 8, 65
+	noise_note 2, 9, -4, 36
+	noise_note 0, 0, 0, 0
+	noise_note 3, 5, -1, 22
+	noise_note 2, 0, 0, 0
 	loopchannel 3, .branch8
 	endchannel
 
@@ -1997,8 +1997,8 @@ Sfx_Elevator:
 	endchannel
 
 .Ch8:
-	noise F_,  1, $0, $0
-	noise E_,  4, $0, $0
+	noise_note 96, 0, 0, 0
+	noise_note 83, 0, 0, 0
 	endchannel
 
 
@@ -3850,11 +3850,11 @@ Sfx_Protect:
 
 .Ch8:
 .branch8:
-	noise __, 10, $9e, $0
-	noise __, 10, $be, $11
+	noise_note 9, 9, -6, 0
+	noise_note 9, 11, -6, 17
 	loopchannel 6, .branch8
-	noise __, 10, $a7, $0
-	noise C_,  1, $75, $11
+	noise_note 9, 10, 7, 0
+	noise_note 16, 7, 5, 17
 	endchannel
 
 
@@ -3885,15 +3885,15 @@ Sfx_RainDance:
 
 .Ch8:
 .branch8:
-	noise __, 12, $7d, $50
-	noise __,  7, $7d, $4f
-	noise __, 12, $7f, $47
-	noise __, 16, $6e, $22
+	noise_note 11, 7, -5, 80
+	noise_note 6, 7, -5, 79
+	noise_note 11, 7, -7, 71
+	noise_note 15, 6, -6, 34
 	loopchannel 3, .branch8
-	noise __,  7, $6d, $50
-	noise __,  6, $5d, $4f
-	noise __,  6, $4f, $47
-	noise __, 11, $32, $46
+	noise_note 6, 6, -5, 80
+	noise_note 5, 5, -5, 79
+	noise_note 5, 4, -7, 71
+	noise_note 10, 3, 2, 70
 	endchannel
 
 
@@ -3912,10 +3912,10 @@ Sfx_Aeroblast:
 	endchannel
 
 .Ch8:
-	noise __,  5, $f8, $6c
-	noise __,  5, $c8, $5c
-	noise __,  5, $78, $5b
-	noise C_,  1, $31, $5a
+	noise_note 4, 15, 8, 108
+	noise_note 4, 12, 8, 92
+	noise_note 4, 7, 8, 91
+	noise_note 16, 3, 1, 90
 	endchannel
 
 
@@ -3927,8 +3927,8 @@ Sfx_Spark:
 
 .Ch8:
 .branch8:
-	noise __,  5, $f8, $5d
-	noise __,  5, $d8, $6f
+	noise_note 4, 15, 8, 93
+	noise_note 4, 13, 8, 111
 	loopchannel 2, .branch8
 	endchannel
 
@@ -3949,7 +3949,7 @@ Sfx_Curse:
 	endchannel
 
 .Ch8:
-	noise C_,  5, $9a, $9
+	noise_note 20, 9, -2, 9
 	endchannel
 
 
@@ -3968,9 +3968,9 @@ Sfx_Rage:
 	endchannel
 
 .Ch8:
-	noise __,  4, $f4, $1a
-	noise __,  4, $f4, $19
-	noise C_,  9, $f2, $18
+	noise_note 3, 15, 4, 26
+	noise_note 3, 15, 4, 25
+	noise_note 24, 15, 2, 24
 	endchannel
 
 
@@ -3982,10 +3982,10 @@ Sfx_Thief:
 
 .Ch8:
 .branch8:
-	noise __,  1, $0, $0
-	noise __,  5, $e1, $12
-	noise __,  1, $0, $0
-	noise __,  3, $b1, $22
+	noise_note 0, 0, 0, 0
+	noise_note 4, 14, 1, 18
+	noise_note 0, 0, 0, 0
+	noise_note 2, 11, 1, 34
 	loopchannel 2, .branch8
 	endchannel
 
@@ -4037,7 +4037,7 @@ Sfx_SpiderWeb:
 	endchannel
 
 .Ch8:
-	noise C#,  1, $ef, $0
+	noise_note 32, 14, -7, 0
 	endchannel
 
 
@@ -4068,8 +4068,8 @@ Sfx_MindReader:
 	endchannel
 
 .Ch8:
-	noise C_,  2, $af, $19
-	noise C_,  3, $af, $18
+	noise_note 17, 10, -7, 25
+	noise_note 18, 10, -7, 24
 	endchannel
 
 
@@ -4105,12 +4105,12 @@ Sfx_Snore:
 	channel 8, .Ch8
 
 .Ch8:
-	noise __,  3, $ea, $4b
-	noise __,  3, $ea, $5b
-	noise __,  3, $0, $0
-	noise __,  5, $ee, $47
-	noise __,  5, $ee, $46
-	noise __,  5, $ee, $45
+	noise_note 2, 14, -2, 75
+	noise_note 2, 14, -2, 91
+	noise_note 2, 0, 0, 0
+	noise_note 4, 14, -6, 71
+	noise_note 4, 14, -6, 70
+	noise_note 4, 14, -6, 69
 	endchannel
 
 
@@ -4165,7 +4165,7 @@ Sfx_BellyDrum:
 	endchannel
 
 .Ch8:
-	noise __, 13, $b1, $6c
+	noise_note 12, 11, 1, 108
 	endchannel
 
 
@@ -4203,9 +4203,9 @@ Sfx_SludgeBomb:
 	endchannel
 
 .Ch8:
-	noise __,  4, $e2, $6e
-	noise __,  2, $0, $0
-	noise C_,  1, $e2, $6d
+	noise_note 3, 14, 2, 110
+	noise_note 1, 0, 0, 0
+	noise_note 16, 14, 2, 109
 	endchannel
 
 
@@ -4266,11 +4266,11 @@ Sfx_Outrage:
 	channel 8, .Ch8
 
 .Ch8:
-	noise __, 12, $ea, $6c
-	noise __, 12, $ea, $6b
-	noise __, 12, $ea, $6a
-	noise __, 12, $ea, $69
-	noise __, 12, $e1, $59
+	noise_note 11, 14, -2, 108
+	noise_note 11, 14, -2, 107
+	noise_note 11, 14, -2, 106
+	noise_note 11, 14, -2, 105
+	noise_note 11, 14, 1, 89
 	endchannel
 
 
@@ -4328,12 +4328,12 @@ Sfx_GigaDrain:
 	endchannel
 
 .Ch8:
-	noise __,  5, $c8, $44
-	noise C_,  5, $c8, $50
-	noise C_,  5, $c8, $52
-	noise C_,  5, $c8, $54
-	noise C_,  5, $c8, $56
-	noise D#,  1, $c7, $57
+	noise_note 4, 12, 8, 68
+	noise_note 20, 12, 8, 80
+	noise_note 20, 12, 8, 82
+	noise_note 20, 12, 8, 84
+	noise_note 20, 12, 8, 86
+	noise_note 64, 12, 7, 87
 	endchannel
 
 
@@ -4376,10 +4376,10 @@ Sfx_ZapCannon:
 
 .Ch8:
 .branch8:
-	noise __,  3, $e1, $49
-	noise __,  1, $0, $0
+	noise_note 2, 14, 1, 73
+	noise_note 0, 0, 0, 0
 	loopchannel 8, .branch8
-	noise __,  9, $e1, $49
+	noise_note 8, 14, 1, 73
 	endchannel
 
 
@@ -4558,8 +4558,8 @@ Sfx_Encore:
 	endchannel
 
 .Ch8:
-	noise D_,  1, $1f, $36
-	noise D_,  1, $76, $36
+	noise_note 48, 1, -7, 54
+	noise_note 48, 7, 6, 54
 	endchannel
 
 
@@ -4570,11 +4570,11 @@ Sfx_BeatUp:
 	channel 8, .Ch8
 
 .Ch8:
-	noise __,  3, $e8, $69
-	noise __,  7, $d8, $24
-	noise __,  3, $e8, $6c
-	noise __,  5, $c8, $46
-	noise __,  7, $d1, $24
+	noise_note 2, 14, 8, 105
+	noise_note 6, 13, 8, 36
+	noise_note 2, 14, 8, 108
+	noise_note 4, 12, 8, 70
+	noise_note 6, 13, 1, 36
 	endchannel
 
 
@@ -4615,7 +4615,7 @@ Sfx_BatonPass:
 	endchannel
 
 .Ch8:
-	noise C#,  1, $f2, $20
+	noise_note 32, 15, 2, 32
 	endchannel
 
 
@@ -4733,18 +4733,18 @@ Sfx_GsIntroCharizardFireball:
 	channel 8, .Ch8
 
 .Ch8:
-	noise __,  9, $cf, $4d
-	noise __,  9, $f1, $37
+	noise_note 8, 12, -7, 77
+	noise_note 8, 15, 1, 55
 .branch8:
-	noise __,  2, $f8, $4f
-	noise __,  1, $c8, $26
-	noise __,  2, $d8, $5f
-	noise __,  1, $a8, $37
+	noise_note 1, 15, 8, 79
+	noise_note 0, 12, 8, 38
+	noise_note 1, 13, 8, 95
+	noise_note 0, 10, 8, 55
 	loopchannel 12, .branch8
-	noise __,  4, $f8, $6f
-	noise __,  5, $d8, $5f
-	noise __, 13, $d8, $5c
-	noise C#,  9, $d3, $4f
+	noise_note 3, 15, 8, 111
+	noise_note 4, 13, 8, 95
+	noise_note 12, 13, 8, 92
+	noise_note 40, 13, 3, 79
 	endchannel
 
 
@@ -4755,13 +4755,13 @@ Sfx_GsIntroPokemonAppears:
 	channel 8, .Ch8
 
 .Ch8:
-	noise __,  2, $88, $4f
-	noise __,  3, $8f, $2
-	noise __,  3, $5f, $12
-	noise __,  3, $3f, $22
-	noise __,  1, $f8, $27
-	noise __,  2, $f8, $4f
-	noise __,  9, $f1, $0
+	noise_note 1, 8, 8, 79
+	noise_note 2, 8, -7, 2
+	noise_note 2, 5, -7, 18
+	noise_note 2, 3, -7, 34
+	noise_note 0, 15, 8, 39
+	noise_note 1, 15, 8, 79
+	noise_note 8, 15, 1, 0
 	endchannel
 
 
@@ -5412,9 +5412,9 @@ Sfx_NotVeryEffective:
 	channel 8, .Ch8
 
 .Ch8:
-	noise __,  5, $f1, $5f
-	noise __,  2, $a0, $42
-	noise C_,  1, $f1, $53
+	noise_note 4, 15, 1, 95
+	noise_note 1, 10, 0, 66
+	noise_note 16, 15, 1, 83
 	endchannel
 
 
@@ -5425,10 +5425,10 @@ Sfx_Damage:
 	channel 8, .Ch8
 
 .Ch8:
-	noise __,  5, $f1, $5e
-	noise __,  2, $a0, $12
-	noise __,  5, $f0, $32
-	noise C_,  1, $f1, $44
+	noise_note 4, 15, 1, 94
+	noise_note 1, 10, 0, 18
+	noise_note 4, 15, 0, 50
+	noise_note 16, 15, 1, 68
 	endchannel
 
 
@@ -5439,11 +5439,11 @@ Sfx_SuperEffective:
 	channel 8, .Ch8
 
 .Ch8:
-	noise __,  4, $f1, $4f
-	noise __,  2, $c8, $22
-	noise __,  3, $f8, $3f
-	noise __,  4, $d0, $15
-	noise C#,  1, $f2, $35
+	noise_note 3, 15, 1, 79
+	noise_note 1, 12, 8, 34
+	noise_note 2, 15, 8, 63
+	noise_note 3, 13, 0, 21
+	noise_note 32, 15, 2, 53
 	endchannel
 
 
@@ -5497,17 +5497,17 @@ Sfx_SweetScent2:
 	endchannel
 
 .Ch8:
-	noise __,  3, $e8, $22
-	noise C_,  2, $aa, $0
+	noise_note 2, 14, 8, 34
+	noise_note 17, 10, -2, 0
 .branch8:
-	noise __,  5, $d9, $10
-	noise __,  9, $91, $0
-	noise __,  3, $61, $7
+	noise_note 4, 13, -1, 16
+	noise_note 8, 9, 1, 0
+	noise_note 2, 6, 1, 7
 	loopchannel 5, .branch8
-	noise __,  5, $99, $0
-	noise __, 11, $61, $0
-	noise __,  7, $59, $0
-	noise __,  3, $21, $7
+	noise_note 4, 9, -1, 0
+	noise_note 10, 6, 1, 0
+	noise_note 6, 5, -1, 0
+	noise_note 2, 2, 1, 7
 	endchannel
 
 
@@ -5600,14 +5600,14 @@ Sfx_TrainArrived:
 	endchannel
 
 .Ch8:
-	noise __,  6, $af, $10
-	noise __,  5, $9f, $20
-	noise __,  5, $8f, $21
-	noise __,  5, $7f, $22
-	noise __,  5, $8f, $21
-	noise __,  5, $9f, $20
-	noise __,  5, $9f, $10
-	noise F_,  9, $a3, $0
+	noise_note 5, 10, -7, 16
+	noise_note 4, 9, -7, 32
+	noise_note 4, 8, -7, 33
+	noise_note 4, 7, -7, 34
+	noise_note 4, 8, -7, 33
+	noise_note 4, 9, -7, 32
+	noise_note 4, 9, -7, 16
+	noise_note 104, 10, 3, 0
 	endchannel
 
 
@@ -5637,15 +5637,15 @@ Sfx_TitleScreenIntro:
 	channel 8, .Ch8
 
 .Ch8:
-	noise __,  2, $10, $10
-	noise __,  3, $20, $10
-	noise __,  3, $30, $20
-	noise __,  3, $40, $20
-	noise __,  3, $50, $21
-	noise __,  3, $60, $22
-	noise __,  5, $70, $22
-	noise __,  9, $80, $22
-	noise __, 16, $94, $22
+	noise_note 1, 1, 0, 16
+	noise_note 2, 2, 0, 16
+	noise_note 2, 3, 0, 32
+	noise_note 2, 4, 0, 32
+	noise_note 2, 5, 0, 33
+	noise_note 2, 6, 0, 34
+	noise_note 4, 7, 0, 34
+	noise_note 8, 8, 0, 34
+	noise_note 15, 9, 4, 34
 	endchannel
 
 
@@ -5777,8 +5777,8 @@ Sfx_IntroSuicune1:
 	channel 8, .Ch8
 
 .Ch8:
-	noise __,  2, $58, $59
-	noise __,  3, $91, $23
+	noise_note 1, 5, 8, 89
+	noise_note 2, 9, 1, 35
 	endchannel
 
 
@@ -5805,22 +5805,22 @@ Sfx_IntroSuicune2:
 	channel 8, .Ch8
 
 .Ch8:
-	noise __,  2, $a7, $31
-	noise __,  2, $91, $0
-	noise __,  2, $92, $21
-	noise __,  2, $91, $0
-	noise __,  2, $92, $22
-	noise __,  2, $82, $11
-	noise __,  2, $82, $22
-	noise __,  2, $72, $11
-	noise __,  2, $72, $12
-	noise __,  2, $62, $10
-	noise __,  2, $63, $0
-	noise __,  2, $53, $10
-	noise __,  2, $43, $0
-	noise __,  2, $33, $10
-	noise __,  2, $23, $0
-	noise __,  2, $13, $10
+	noise_note 1, 10, 7, 49
+	noise_note 1, 9, 1, 0
+	noise_note 1, 9, 2, 33
+	noise_note 1, 9, 1, 0
+	noise_note 1, 9, 2, 34
+	noise_note 1, 8, 2, 17
+	noise_note 1, 8, 2, 34
+	noise_note 1, 7, 2, 17
+	noise_note 1, 7, 2, 18
+	noise_note 1, 6, 2, 16
+	noise_note 1, 6, 3, 0
+	noise_note 1, 5, 3, 16
+	noise_note 1, 4, 3, 0
+	noise_note 1, 3, 3, 16
+	noise_note 1, 2, 3, 0
+	noise_note 1, 1, 3, 16
 	endchannel
 
 
@@ -5831,11 +5831,11 @@ Sfx_IntroSuicune3:
 	channel 8, .Ch8
 
 .Ch8:
-	noise __,  2, $88, $31
-	noise __,  9, $39, $11
-	noise __,  5, $a4, $10
-	noise __,  5, $44, $10
-	noise __,  5, $24, $10
+	noise_note 1, 8, 8, 49
+	noise_note 8, 3, -1, 17
+	noise_note 4, 10, 4, 16
+	noise_note 4, 4, 4, 16
+	noise_note 4, 2, 4, 16
 	endchannel
 
 
@@ -5862,17 +5862,17 @@ Sfx_IntroSuicune4:
 	channel 8, .Ch8
 
 .Ch8:
-	noise __,  2, $a1, $5c
-	noise __,  1, $0, $0
-	noise __,  2, $c1, $4d
-	noise __,  1, $0, $0
-	noise __,  5, $b2, $31
-	noise __,  1, $0, $0
-	noise __,  5, $a2, $2
-	noise __,  1, $0, $0
-	noise __,  5, $92, $1
-	noise __,  1, $0, $0
-	noise C#,  1, $72, $0
+	noise_note 1, 10, 1, 92
+	noise_note 0, 0, 0, 0
+	noise_note 1, 12, 1, 77
+	noise_note 0, 0, 0, 0
+	noise_note 4, 11, 2, 49
+	noise_note 0, 0, 0, 0
+	noise_note 4, 10, 2, 2
+	noise_note 0, 0, 0, 0
+	noise_note 4, 9, 2, 1
+	noise_note 0, 0, 0, 0
+	noise_note 32, 7, 2, 0
 	endchannel
 
 
