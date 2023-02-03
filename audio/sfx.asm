@@ -6,11 +6,11 @@ Sfx_PokeballsPlacedOnTable:
 
 .Ch5:
 	duty_cycle 2
-	soundinput $3a
+	pitch_sweep 3, -2
 	square_note 4, 15, 2, 512
-	soundinput $22
+	pitch_sweep 2, 2
 	square_note 8, 14, 2, 512
-	soundinput $8
+	pitch_sweep 0, 8
 	endchannel
 
 
@@ -22,11 +22,11 @@ Sfx_BallWiggle:
 
 .Ch5:
 	duty_cycle 2
-	soundinput $3a
+	pitch_sweep 3, -2
 	square_note 4, 15, 2, 1024
-	soundinput $22
+	pitch_sweep 2, 2
 	square_note 8, 14, 2, 1024
-	soundinput $8
+	pitch_sweep 0, 8
 	endchannel
 
 
@@ -38,10 +38,10 @@ Sfx_Potion:
 
 .Ch5:
 	duty_cycle 2
-	soundinput $17
+	pitch_sweep 1, 7
 	square_note 15, 15, 0, 1264
 	square_note 15, 15, 2, 1616
-	soundinput $8
+	pitch_sweep 0, 8
 	endchannel
 
 
@@ -53,12 +53,12 @@ Sfx_FullHeal:
 
 .Ch5:
 	duty_cycle 2
-	soundinput $14
+	pitch_sweep 1, 4
 	square_note 4, 15, 2, 1536
 	square_note 4, 15, 2, 1536
-	soundinput $17
+	pitch_sweep 1, 7
 	square_note 15, 15, 2, 1536
-	soundinput $8
+	pitch_sweep 0, 8
 	endchannel
 
 
@@ -99,11 +99,11 @@ Sfx_Poison:
 .Ch5:
 .loop:
 	duty_cycle 0
-	soundinput $14
+	pitch_sweep 1, 4
 	square_note 4, 15, 2, 1536
 	loopchannel 4, .loop
 	square_note 15, 15, 3, 1536
-	soundinput $8
+	pitch_sweep 0, 8
 	endchannel
 
 
@@ -115,10 +115,10 @@ Sfx_GotSafariBalls:
 
 .Ch5:
 	duty_cycle 2
-	soundinput $15
+	pitch_sweep 1, 5
 	square_note 15, 15, 0, 1264
 	square_note 15, 15, 2, 1616
-	soundinput $8
+	pitch_sweep 0, 8
 	endchannel
 
 
@@ -181,13 +181,13 @@ Sfx_EscapeRope:
 
 .Ch5:
 	duty_cycle 1
-	soundinput $17
+	pitch_sweep 1, 7
 	square_note 15, 13, 7, 1536
 	square_note 15, 11, 7, 1408
 	square_note 15, 8, 7, 1280
 	square_note 15, 4, 7, 1152
 	square_note 15, 1, 7, 1024
-	soundinput $8
+	pitch_sweep 0, 8
 	endchannel
 
 
@@ -215,11 +215,11 @@ Sfx_SecondPartOfItemfinder:
 
 .Ch5:
 	duty_cycle 2
-	soundinput $2c
+	pitch_sweep 2, -4
 	square_note 4, 15, 2, 1280
-	soundinput $22
+	pitch_sweep 2, 2
 	square_note 2, 15, 1, 1280
-	soundinput $8
+	pitch_sweep 0, 8
 	square_note 1, 0, 0, 0
 	endchannel
 
@@ -232,13 +232,13 @@ Sfx_WarpTo:
 
 .Ch5:
 	duty_cycle 1
-	soundinput $17
+	pitch_sweep 1, 7
 	square_note 15, 13, 7, 1280
 	square_note 15, 11, 7, 1408
 	square_note 15, 8, 7, 1536
 	square_note 15, 4, 7, 1664
 	square_note 15, 1, 7, 1792
-	soundinput $8
+	pitch_sweep 0, 8
 	endchannel
 
 
@@ -250,13 +250,13 @@ Sfx_WarpFrom:
 
 .Ch5:
 	duty_cycle 1
-	soundinput $17
+	pitch_sweep 1, 7
 	square_note 15, 13, 7, 1792
 	square_note 15, 11, 7, 1664
 	square_note 15, 8, 7, 1536
 	square_note 15, 4, 7, 1408
 	square_note 15, 1, 7, 1280
-	soundinput $8
+	pitch_sweep 0, 8
 	endchannel
 
 
@@ -268,9 +268,9 @@ Sfx_ChangeDexMode:
 
 .Ch5:
 	duty_cycle 1
-	soundinput $16
+	pitch_sweep 1, 6
 	square_note 15, 13, 2, 1280
-	soundinput $8
+	pitch_sweep 0, 8
 	endchannel
 
 
@@ -282,9 +282,9 @@ Sfx_JumpOverLedge:
 
 .Ch5:
 	duty_cycle 2
-	soundinput $95
+	pitch_sweep 9, 5
 	square_note 15, 15, 2, 1024
-	soundinput $8
+	pitch_sweep 0, 8
 	endchannel
 
 
@@ -337,9 +337,9 @@ Sfx_Wrong:
 
 .Ch5:
 	duty_cycle 3
-	soundinput $5a
+	pitch_sweep 5, -2
 	square_note 4, 15, 0, 1280
-	soundinput $8
+	pitch_sweep 0, 8
 	square_note 4, 0, 0, 0
 	square_note 15, 15, 0, 1280
 	square_note 1, 0, 0, 0
@@ -362,9 +362,9 @@ Sfx_Squeak:
 
 .Ch5:
 	duty_cycle 0
-	soundinput $17
+	pitch_sweep 1, 7
 	square_note 15, 13, 2, 1792
-	soundinput $8
+	pitch_sweep 0, 8
 	endchannel
 
 
@@ -424,15 +424,15 @@ Sfx_WallOpen:
 
 .Ch5:
 	duty_cycle 1
-	soundinput $3a
+	pitch_sweep 3, -2
 	square_note 4, 15, 2, 1280
-	soundinput $22
+	pitch_sweep 2, 2
 	square_note 4, 14, 2, 1280
-	soundinput $3a
+	pitch_sweep 3, -2
 	square_note 4, 15, 2, 1792
-	soundinput $22
+	pitch_sweep 2, 2
 	square_note 15, 14, 2, 1792
-	soundinput $8
+	pitch_sweep 0, 8
 	endchannel
 
 
@@ -530,9 +530,9 @@ Sfx_Bump:
 
 .Ch5:
 	duty_cycle 2
-	soundinput $5a
+	pitch_sweep 5, -2
 	square_note 15, 15, 1, 768
-	soundinput $8
+	pitch_sweep 0, 8
 	endchannel
 
 
@@ -640,7 +640,7 @@ Sfx_ThrowBall:
 
 .Ch5:
 	duty_cycle 2
-	soundinput $2f
+	pitch_sweep 2, -7
 	square_note 15, 15, 2, 1920
 	endchannel
 
@@ -659,9 +659,9 @@ Sfx_BallPoof:
 
 .Ch5:
 	duty_cycle 2
-	soundinput $16
+	pitch_sweep 1, 6
 	square_note 15, 15, 2, 1024
-	soundinput $8
+	pitch_sweep 0, 8
 	endchannel
 
 .Ch8:
@@ -678,7 +678,7 @@ Sfx_Faint:
 
 .Ch5:
 	square_note 15, 13, 1, 512
-	soundinput $8
+	pitch_sweep 0, 8
 	endchannel
 
 .Ch8:
@@ -718,11 +718,11 @@ Sfx_SlotMachineStart:
 
 .Ch5:
 	duty_cycle 2
-	soundinput $44
+	pitch_sweep 4, 4
 	square_note 15, 15, 0, 1264
-	soundinput $17
+	pitch_sweep 1, 7
 	square_note 15, 15, 2, 1616
-	soundinput $8
+	pitch_sweep 0, 8
 	endchannel
 
 .Ch6:
@@ -739,13 +739,13 @@ Sfx_Call:
 	channel 5, .Ch5
 
 .Ch5:
-	soundinput $67
+	pitch_sweep 6, 7
 	square_note 4, 15, 7, 1952
 	square_note 4, 15, 7, 1952
 	square_note 4, 15, 7, 1952
 	square_note 4, 15, 7, 1952
 	square_note 4, 15, 7, 1952
-	soundinput $8
+	pitch_sweep 0, 8
 	square_note 4, 0, 0, 0
 	endchannel
 
@@ -888,7 +888,7 @@ Sfx_Metronome:
 
 .Ch5:
 	duty_cycle 2
-	soundinput $5f
+	pitch_sweep 5, -7
 	square_note 4, 4, 0, 2016
 	square_note 4, 6, 0, 2016
 	square_note 4, 8, 0, 2016
@@ -898,7 +898,7 @@ Sfx_Metronome:
 	square_note 8, 6, 0, 2016
 	square_note 8, 3, 0, 2016
 	square_note 15, 1, 2, 2016
-	soundinput $8
+	pitch_sweep 0, 8
 	endchannel
 
 
@@ -921,9 +921,9 @@ Sfx_Kinesis:
 
 .Ch5:
 	duty_cycle 1
-	soundinput $af
+	pitch_sweep 10, -7
 	square_note 15, 15, 2, 1920
-	soundinput $8
+	pitch_sweep 0, 8
 	endchannel
 
 
@@ -935,9 +935,9 @@ Sfx_Lick:
 
 .Ch5:
 	duty_cycle 1
-	soundinput $97
+	pitch_sweep 9, 7
 	square_note 15, 15, 2, 1280
-	soundinput $8
+	pitch_sweep 0, 8
 	endchannel
 
 
@@ -1213,11 +1213,11 @@ Sfx_Bite:
 
 .Ch5:
 	duty_cycle 0
-	soundinput $3a
+	pitch_sweep 3, -2
 	square_note 4, 15, 2, 512
-	soundinput $22
+	pitch_sweep 2, 2
 	square_note 8, 14, 2, 512
-	soundinput $8
+	pitch_sweep 0, 8
 	endchannel
 
 .Ch8:
@@ -1305,9 +1305,9 @@ Sfx_WaterGun:
 
 .Ch5:
 	duty_cycle 1
-	soundinput $97
+	pitch_sweep 9, 7
 	square_note 15, 15, 2, 1792
-	soundinput $8
+	pitch_sweep 0, 8
 	endchannel
 
 .Ch8:
@@ -1664,14 +1664,14 @@ Sfx_Psychic:
 
 .Ch5:
 	duty_cycle 2
-	soundinput $f7
+	pitch_sweep 15, 7
 	square_note 8, 12, 4, 1981
 	square_note 8, 12, 4, 1982
 	square_note 8, 12, 4, 1983
 	square_note 8, 12, 4, 1984
 	square_note 15, 12, 4, 1985
 	square_note 15, 15, 2, 1984
-	soundinput $8
+	pitch_sweep 0, 8
 	endchannel
 
 .Ch6:
@@ -1729,9 +1729,9 @@ Sfx_BoneClub:
 
 .Ch5:
 	duty_cycle 2
-	soundinput $af
+	pitch_sweep 10, -7
 	square_note 8, 15, 1, 1792
-	soundinput $8
+	pitch_sweep 0, 8
 	endchannel
 
 .Ch6:
@@ -1976,11 +1976,11 @@ Sfx_Elevator:
 
 .Ch5:
 	duty_cycle 2
-	soundinput $5a
+	pitch_sweep 5, -2
 .branch5:
 	square_note 2, 15, 1, 768
 	loopchannel 48, .branch5
-	soundinput $8
+	pitch_sweep 0, 8
 	duty_cycle 2
 	square_note 15, 15, 3, 1840
 	square_note 8, 6, 5, 1840
@@ -3866,14 +3866,14 @@ Sfx_Sketch:
 
 .Ch5:
 	duty_cycle 1
-	soundinput $a5
+	pitch_sweep 10, 5
 .branch5:
 	square_note 2, 15, 1, 1760
 	square_note 13, 10, -7, 1456
 	square_note 4, 0, 0, 0
 	square_note 9, 15, 4, 1816
 	loopchannel 3, .branch5
-	soundinput $8
+	pitch_sweep 0, 8
 	endchannel
 
 
@@ -3906,9 +3906,9 @@ Sfx_Aeroblast:
 
 .Ch5:
 	sound_duty 2, 0, 3, 3
-	soundinput $f5
+	pitch_sweep 15, 5
 	square_note 28, 15, 8, 1408
-	soundinput $8
+	pitch_sweep 0, 8
 	endchannel
 
 .Ch8:
@@ -4026,14 +4026,14 @@ Sfx_SpiderWeb:
 .Ch5:
 	duty_cycle 0
 	square_note 32, 7, -7, 1824
-	soundinput $95
+	pitch_sweep 9, 5
 	square_note 4, 15, 8, 1568
 	square_note 4, 14, 8, 1584
 	square_note 4, 13, 8, 1600
 	square_note 4, 9, 5, 1568
 	square_note 4, 7, 3, 1584
 	square_note 4, 5, 1, 1600
-	soundinput $8
+	pitch_sweep 0, 8
 	endchannel
 
 .Ch8:
@@ -4081,7 +4081,7 @@ Sfx_Nightmare:
 
 .Ch5:
 	duty_cycle 0
-	soundinput $34
+	pitch_sweep 3, 4
 .branch5:
 	square_note 3, 11, -2, 1585
 	square_note 2, 0, 0, 0
@@ -4094,7 +4094,7 @@ Sfx_Nightmare:
 	square_note 3, 14, 8, 1521
 	square_note 2, 0, 0, 0
 	loopchannel 2, .branch5
-	soundinput $8
+	pitch_sweep 0, 8
 	endchannel
 
 
@@ -4138,7 +4138,7 @@ Sfx_SweetKiss2:
 
 .Ch5:
 	duty_cycle 0
-	soundinput $97
+	pitch_sweep 9, 7
 	square_note 2, 15, 4, 1906
 	square_note 4, 0, 0, 0
 	square_note 2, 12, 4, 1906
@@ -4146,7 +4146,7 @@ Sfx_SweetKiss2:
 	square_note 2, 11, 4, 1906
 	square_note 4, 0, 0, 0
 	square_note 2, 10, 1, 1906
-	soundinput $8
+	pitch_sweep 0, 8
 	endchannel
 
 
@@ -4159,9 +4159,9 @@ Sfx_BellyDrum:
 
 .Ch5:
 	duty_cycle 2
-	soundinput $ac
+	pitch_sweep 10, -4
 	square_note 12, 15, 1, 1443
-	soundinput $8
+	pitch_sweep 0, 8
 	endchannel
 
 .Ch8:
@@ -4177,11 +4177,11 @@ Sfx_Toxic:
 
 .Ch5:
 	duty_cycle 2
-	soundinput $95
+	pitch_sweep 9, 5
 	square_note 2, 12, -1, 947
 	square_note 5, 15, 8, 1123
 	square_note 4, 13, 1, 1347
-	soundinput $8
+	pitch_sweep 0, 8
 	endchannel
 
 
@@ -4194,12 +4194,12 @@ Sfx_SludgeBomb:
 
 .Ch5:
 	duty_cycle 2
-	soundinput $c5
+	pitch_sweep 12, 5
 	square_note 3, 15, 8, 1409
 	square_note 1, 0, 0, 0
-	soundinput $cb
+	pitch_sweep 12, -3
 	square_note 16, 15, 2, 1489
-	soundinput $8
+	pitch_sweep 0, 8
 	endchannel
 
 .Ch8:
@@ -4236,7 +4236,7 @@ Sfx_Spite:
 	togglesfx
 	vibrato $0, $12
 	duty_cycle 3
-	soundinput $fd
+	pitch_sweep 15, -5
 	note_type 3, 15, 8
 	octave 3
 	note F_, 3
@@ -4254,7 +4254,7 @@ Sfx_Spite:
 	volume_envelope 2, -7
 	note F_, 3
 	note G#, 3
-	soundinput $8
+	pitch_sweep 0, 8
 	togglesfx
 	endchannel
 
@@ -4314,7 +4314,7 @@ Sfx_GigaDrain:
 
 .Ch5:
 	duty_cycle 2
-	soundinput $97
+	pitch_sweep 9, 7
 	square_note 4, 15, 8, 1664
 	square_note 20, 15, 8, 1664
 	square_note 20, 12, 8, 1632
@@ -4324,7 +4324,7 @@ Sfx_GigaDrain:
 	square_note 20, 12, 8, 1345
 	square_note 20, 10, 8, 1313
 	square_note 20, 8, 8, 1297
-	soundinput $8
+	pitch_sweep 0, 8
 	endchannel
 
 .Ch8:
@@ -4345,12 +4345,12 @@ Sfx_Attract:
 
 .Ch5:
 	duty_cycle 0
-	soundinput $77
+	pitch_sweep 7, 7
 	square_note 4, 10, -1, 1776
 	square_note 12, 15, 8, 1824
-	soundinput $7f
+	pitch_sweep 7, -7
 	square_note 8, 15, 1, 1856
-	soundinput $8
+	pitch_sweep 0, 8
 	endchannel
 
 
@@ -4390,7 +4390,7 @@ Sfx_MeanLook:
 	channel 5, .Ch5
 
 .Ch5:
-	soundinput $77
+	pitch_sweep 7, 7
 	duty_cycle 3
 	square_note 2, 15, 8, 1824
 .branch5:
@@ -4403,7 +4403,7 @@ Sfx_MeanLook:
 	square_note 12, 7, 8, 1824
 	square_note 12, 4, 8, 1792
 	square_note 12, 2, 8, 1824
-	soundinput $8
+	pitch_sweep 0, 8
 	endchannel
 
 
@@ -4431,13 +4431,13 @@ Sfx_Return:
 .Ch5:
 	duty_cycle 0
 .branch5:
-	soundinput $bf
+	pitch_sweep 11, -7
 	square_note 8, 15, 1, 1881
-	soundinput $57
+	pitch_sweep 5, 7
 	square_note 8, 15, 1, 1881
 	square_note 16, 0, 0, 0
 	loopchannel 2, .branch5
-	soundinput $8
+	pitch_sweep 0, 8
 	endchannel
 
 
@@ -4449,9 +4449,9 @@ Sfx_ExpBar:
 
 .Ch5:
 	duty_cycle 2
-	soundinput $d7
+	pitch_sweep 13, 7
 	square_note 8, 14, 1, 1872
-	soundinput $e7
+	pitch_sweep 14, 7
 	square_note 8, 4, 8, 1760
 	square_note 8, 5, 8, 1784
 	square_note 8, 6, 8, 1808
@@ -4459,7 +4459,7 @@ Sfx_ExpBar:
 	square_note 8, 8, 8, 1856
 	square_note 8, 9, 8, 1880
 	square_note 16, 10, 8, 1904
-	soundinput $8
+	pitch_sweep 0, 8
 	endchannel
 
 
@@ -4472,14 +4472,14 @@ Sfx_MilkDrink:
 .Ch5:
 	duty_cycle 2
 .branch5:
-	soundinput $a4
+	pitch_sweep 10, 4
 	square_note 2, 14, -2, 1248
 	square_note 13, 15, 7, 656
-	soundinput $9e
+	pitch_sweep 9, -6
 	square_note 4, 12, -1, 1505
 	square_note 2, 0, 0, 0
 	loopchannel 6, .branch5
-	soundinput $8
+	pitch_sweep 0, 8
 	endchannel
 
 
@@ -4491,13 +4491,13 @@ Sfx_Present:
 
 .Ch5:
 	duty_cycle 2
-	soundinput $d6
+	pitch_sweep 13, 6
 .branch5:
 	square_note 2, 15, 1, 1856
 	square_note 1, 0, 0, 0
 	loopchannel 3, .branch5
 	square_note 16, 15, 1, 1920
-	soundinput $8
+	pitch_sweep 0, 8
 	endchannel
 
 
@@ -4548,13 +4548,13 @@ Sfx_Encore:
 
 .Ch5:
 	duty_cycle 2
-	soundinput $ce
+	pitch_sweep 12, -6
 	square_note 16, 0, 0, 0
 .branch5:
 	square_note 2, 15, 8, 1908
 	square_note 36, 0, 0, 0
 	loopchannel 2, .branch5
-	soundinput $8
+	pitch_sweep 0, 8
 	endchannel
 
 .Ch8:
@@ -4586,12 +4586,12 @@ Sfx_SweetScent:
 
 .Ch5:
 	duty_cycle 2
-	soundinput $96
+	pitch_sweep 9, 6
 	square_note 6, 15, 8, 1888
 	square_note 6, 14, 8, 1824
-	soundinput $df
+	pitch_sweep 13, -7
 	square_note 22, 15, 1, 1840
-	soundinput $8
+	pitch_sweep 0, 8
 	endchannel
 
 
@@ -4604,14 +4604,14 @@ Sfx_BatonPass:
 
 .Ch5:
 	duty_cycle 2
-	soundinput $f7
+	pitch_sweep 15, 7
 	square_note 32, 15, 2, 1664
 	square_note 1, 15, 1, 1888
 	square_note 32, 0, 0, 0
 	square_note 1, 15, 1, 1888
 	square_note 26, 0, 0, 0
 	square_note 1, 15, 1, 1888
-	soundinput $8
+	pitch_sweep 0, 8
 	endchannel
 
 .Ch8:
@@ -4773,7 +4773,7 @@ Sfx_Flash:
 
 .Ch5:
 	duty_cycle 1
-	soundinput $ef
+	pitch_sweep 14, -7
 	square_note 1, 4, 0, 2024
 	square_note 1, 6, 0, 2024
 	square_note 2, 8, 0, 2024
@@ -4783,7 +4783,7 @@ Sfx_Flash:
 	square_note 8, 6, 0, 2024
 	square_note 9, 3, 0, 2024
 	square_note 15, 1, 2, 2024
-	soundinput $8
+	pitch_sweep 0, 8
 	endchannel
 
 
@@ -4795,7 +4795,7 @@ Sfx_GameFreakLogoGs:
 
 .Ch5:
 	duty_cycle 3
-	soundinput $7f
+	pitch_sweep 7, -7
 	square_note 4, 5, 5, 2018
 	square_note 5, 7, 5, 2018
 	square_note 6, 9, 4, 2018
@@ -4806,7 +4806,7 @@ Sfx_GameFreakLogoGs:
 	square_note 10, 5, 3, 2018
 	square_note 10, 3, 4, 2018
 	square_note 10, 1, 5, 2018
-	soundinput $8
+	pitch_sweep 0, 8
 	endchannel
 
 
@@ -5488,12 +5488,12 @@ Sfx_SweetScent2:
 	channel 8, .Ch8
 
 .Ch5:
-	soundinput $af
+	pitch_sweep 10, -7
 	duty_cycle 1
 	square_note 6, 15, 8, 1520
 	square_note 2, 15, 1, 1568
 	square_note 16, 15, 1, 1616
-	soundinput $8
+	pitch_sweep 0, 8
 	endchannel
 
 .Ch8:
@@ -5542,7 +5542,7 @@ Sfx_GiveTrademon:
 .Ch5:
 	square_note 32, 0, 0, 0
 	duty_cycle 1
-	soundinput $a7
+	pitch_sweep 10, 7
 	square_note 27, 15, 4, 1872
 	square_note 27, 13, 4, 1872
 	square_note 27, 11, 4, 1872
@@ -5551,7 +5551,7 @@ Sfx_GiveTrademon:
 	square_note 27, 5, 4, 1872
 	square_note 27, 3, 4, 1872
 	square_note 27, 1, 4, 1872
-	soundinput $8
+	pitch_sweep 0, 8
 	endchannel
 
 
@@ -5564,7 +5564,7 @@ Sfx_GetTrademon:
 .Ch5:
 	square_note 32, 0, 0, 0
 	duty_cycle 2
-	soundinput $bf
+	pitch_sweep 11, -7
 	square_note 27, 1, 4, 1980
 	square_note 27, 3, 4, 1980
 	square_note 27, 5, 4, 1980
@@ -5573,7 +5573,7 @@ Sfx_GetTrademon:
 	square_note 27, 11, 4, 1980
 	square_note 27, 13, 4, 1980
 	square_note 27, 15, 4, 1980
-	soundinput $8
+	pitch_sweep 0, 8
 	endchannel
 
 
@@ -5620,13 +5620,13 @@ Sfx_2Boops:
 .Ch5:
 	duty_cycle 2
 .branch5:
-	soundinput $79
+	pitch_sweep 7, -1
 	square_note 1, 9, -1, 1379
 	square_note 4, 15, 2, 1205
-	soundinput $43
+	pitch_sweep 4, 3
 	square_note 16, 15, 8, 1485
 	loopchannel 2, .branch5
-	soundinput $8
+	pitch_sweep 0, 8
 	endchannel
 
 
@@ -5745,10 +5745,10 @@ Sfx_DittoPopUp:
 
 .Ch5:
 	duty_cycle 2
-	soundinput $1e
+	pitch_sweep 1, -6
 	square_note 3, 8, 2, 1792
 	square_note 1, 3, 1, 1793
-	soundinput $16
+	pitch_sweep 1, 6
 	square_note 4, 11, 1, 1600
 	square_note 16, 3, 1, 1601
 	endchannel
@@ -5762,7 +5762,7 @@ Sfx_DittoTransform:
 
 .Ch5:
 	duty_cycle 1
-	soundinput $26
+	pitch_sweep 2, 6
 	square_note 20, 3, -3, 1088
 	square_note 4, 9, 7, 1216
 	square_note 4, 6, 7, 1217
@@ -5790,10 +5790,10 @@ Sfx_IntroPichu:
 
 .Ch5:
 	duty_cycle 3
-	soundinput $4d
+	pitch_sweep 4, -5
 	square_note 1, 8, 8, 1904
 	square_note 3, 0, 0, 0
-	soundinput $17
+	pitch_sweep 1, 7
 	square_note 2, 8, 8, 1910
 	endchannel
 
@@ -5847,10 +5847,10 @@ Sfx_DittoBounce:
 
 .Ch5:
 	duty_cycle 2
-	soundinput $2c
+	pitch_sweep 2, -4
 	square_note 2, 8, 2, 1200
 	square_note 0, 3, 1, 1200
-	soundinput $34
+	pitch_sweep 3, 4
 	square_note 16, 11, 1, 1056
 	endchannel
 
@@ -5886,7 +5886,7 @@ Sfx_GameFreakPresents:
 	togglesfx
 	duty_cycle 2
 	note_type 2, 11, 1
-	soundinput $ff
+	pitch_sweep 15, -7
 	transpose 1, 10
 	octave 5
 	note C_, 2
@@ -6034,9 +6034,9 @@ Sfx_Puddle:
 
 .Ch5:
 	duty_cycle 1
-	soundinput $97
+	pitch_sweep 9, 7
 	square_note 15, 9, 8, 1792
-	soundinput $8
+	pitch_sweep 0, 8
 	endchannel
 
 
@@ -6048,8 +6048,8 @@ Sfx_AbilitySlideout:
 
 .Ch5:
 	duty_cycle 1
-	soundinput $9f
+	pitch_sweep 9, -7
 	square_note 3, 14, 8, 2047
 	square_note 23, 14, 8, 2016
-	soundinput $8
+	pitch_sweep 0, 8
 	endchannel

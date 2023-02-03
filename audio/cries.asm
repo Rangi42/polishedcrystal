@@ -173,13 +173,13 @@ Cry_Mantine:
 	channel 8, Cry_Mantine_Ch8
 
 Cry_Entei_Ch5:
-	soundinput $ff
+	pitch_sweep 15, -7
 	sound_duty 3, 0, 2, 1
 	square_note 1, 15, 8, 1528
 	square_note 8, 9, -7, 1240
 	square_note 6, 15, 8, 1476
 	square_note 20, 15, 2, 1396
-	soundinput $88
+	pitch_sweep 8, 8
 	endchannel
 
 Cry_Entei_Ch6:
@@ -236,9 +236,9 @@ Cry_Dunsparce_Ch5:
 	square_note 3, 15, 8, 1472
 	square_note 8, 12, 8, 1168
 	square_note 8, 12, 8, 1152
-	soundinput $fe
+	pitch_sweep 15, -6
 	square_note 16, 12, 3, 1168
-	soundinput $88
+	pitch_sweep 8, 8
 	endchannel
 
 Cry_Dunsparce_Ch6:
@@ -286,16 +286,16 @@ Cry_Slowking_Ch8:
 
 Cry_Pichu_Ch5:
 	duty_cycle 0
-	soundinput $f7
+	pitch_sweep 15, 7
 	square_note 2, 15, 8, 1933
 	square_note 2, 15, 8, 1937
-	soundinput $ff
+	pitch_sweep 15, -7
 	square_note 2, 15, 8, 1965
-	soundinput $88
+	pitch_sweep 8, 8
 	square_note 2, 15, 8, 1972
-	soundinput $f7
+	pitch_sweep 15, 7
 	square_note 2, 15, 8, 1976
-	soundinput $88
+	pitch_sweep 8, 8
 	endchannel
 
 Cry_Pichu_Ch6:
@@ -786,17 +786,17 @@ Cry_Totodile_Ch8:
 
 Cry_Bellossom_Ch5:
 	sound_duty 1, 2, 3, 0
-	soundinput $ff
+	pitch_sweep 15, -7
 	square_note 2, 15, 8, 1824
 	square_note 2, 15, 8, 1831
 	square_note 2, 15, 8, 1920
-	soundinput $88
+	pitch_sweep 8, 8
 	square_note 2, 15, 8, 1913
 	square_note 4, 15, 8, 1856
 	square_note 4, 15, 8, 1852
-	soundinput $ff
+	pitch_sweep 15, -7
 	square_note 8, 15, 1, 1847
-	soundinput $88
+	pitch_sweep 8, 8
 	endchannel
 
 Cry_Bellossom_Ch6:

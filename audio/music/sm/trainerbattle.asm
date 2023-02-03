@@ -185,9 +185,9 @@ Music_TrainerBattleSM_Ch1_loop_1:
 	octave 3
 	note C_, 10
 	vibrato $0, $0
-	soundinput $6b
+	pitch_sweep 6, -3
 	note C_, 4
-	soundinput $00
+	pitch_sweep 0, 0
 	vibrato $12, $15
 	duty_cycle 1
 	note_type 12, 10, 3

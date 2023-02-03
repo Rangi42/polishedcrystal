@@ -88,10 +88,14 @@ MACRO volume_envelope
 	endc
 ENDM
 
-	const soundinput_cmd
-MACRO soundinput
-	db soundinput_cmd
-	db \1 ; input
+	const pitch_sweep_cmd ; $dd
+MACRO pitch_sweep
+	db pitch_sweep_cmd
+	if \2 < 0
+		dn \1, %1000 | (\2 * -1) ; pitch sweep
+	else
+		dn \1, \2 ; pitch sweep
+	endc
 ENDM
 
 	const sound_duty_cmd

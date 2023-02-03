@@ -285,32 +285,32 @@ Music_LegendaryBattleXY_Ch1_loop_main:
 	octave 3
 Music_LegendaryBattleXY_Ch1_loop_1:
 	volume_envelope 8, 0
-	soundinput $3f
+	pitch_sweep 3, -7
 	note D_, 1
-	soundinput $00
+	pitch_sweep 0, 0
 	note C_, 3
 	volume_envelope 8, 7
 	note C_, 4
 	volume_envelope 8, 0
-	soundinput $37
+	pitch_sweep 3, 7
 	note C_, 1
-	soundinput $00
+	pitch_sweep 0, 0
 	note D_, 3
 	volume_envelope 8, 7
 	note D_, 4
 	loopchannel 3, Music_LegendaryBattleXY_Ch1_loop_1
 	volume_envelope 8, 0
-	soundinput $3f
+	pitch_sweep 3, -7
 	note D_, 1
-	soundinput $00
+	pitch_sweep 0, 0
 	note C_, 3
 	volume_envelope 8, 7
 	note C_, 4
 	volume_envelope 8, 0
-	soundinput $37
+	pitch_sweep 3, 7
 	note D#, 1
 	octave 3
-	soundinput $00
+	pitch_sweep 0, 0
 	note F_, 3
 	volume_envelope 8, 7
 	note F_, 4

@@ -92,9 +92,9 @@ Music_WallyBattleORAS_Ch1:
 	volume_envelope 12, 5
 	note D#, 2
 	volume_envelope 9, 4
-	soundinput $6c
+	pitch_sweep 6, -4
 	note D#, 2
-	soundinput $00
+	pitch_sweep 0, 0
 	note __, 2
 	duty_cycle 3
 Music_WallyBattleORAS_Ch1_loop_1:
@@ -117,9 +117,9 @@ Music_WallyBattleORAS_Ch1_loop_1:
 	note G_, 3
 	note E_, 3
 	volume_envelope 12, 3
-	soundinput $6c
+	pitch_sweep 6, -4
 	note E_, 2
-	soundinput $00
+	pitch_sweep 0, 0
 	duty_cycle 3
 	note __, 10
 	loopchannel 2, Music_WallyBattleORAS_Ch1_loop_1
@@ -156,9 +156,9 @@ Music_WallyBattleORAS_Ch1_loop_1:
 	volume_envelope 13, 5
 	note D#, 1
 	volume_envelope 10, 4
-	soundinput $6c
+	pitch_sweep 6, -4
 	note D#, 2
-	soundinput $00
+	pitch_sweep 0, 0
 	duty_cycle 3
 	jumpchannel Music_WallyBattleORAS_Ch1
 

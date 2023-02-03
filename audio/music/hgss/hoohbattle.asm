@@ -86,57 +86,57 @@ Music_HoOhBattleHGSS_Ch1_L:
 	note B_, 1
 	volume_envelope 12, 8
 	octave 3
-	soundinput $37
+	pitch_sweep 3, 7
 	note D_, 1
 	volume_envelope 12, 7
-	soundinput $00
+	pitch_sweep 0, 0
 	note E_, 11
 	note D_, 2
 	note E_, 2
 	volume_envelope 12, 8
-	soundinput $37
+	pitch_sweep 3, 7
 	note D_, 1
 	volume_envelope 12, 7
-	soundinput $00
+	pitch_sweep 0, 0
 	note E_, 11
 	note D_, 2
 	note E_, 2
 	volume_envelope 12, 8
-	soundinput $47
+	pitch_sweep 4, 7
 	note G_, 1
 	volume_envelope 12, 7
-	soundinput $00
+	pitch_sweep 0, 0
 	note A_, 11
 	volume_envelope 12, 8
-	soundinput $57
+	pitch_sweep 5, 7
 	note A_, 1
 	volume_envelope 12, 7
-	soundinput $00
+	pitch_sweep 0, 0
 	note B_, 3
 	note E_, 12
 	note D_, 2
 	note F_, 2
 	volume_envelope 12, 8
-	soundinput $37
+	pitch_sweep 3, 7
 	note D_, 1
 	volume_envelope 12, 7
-	soundinput $00
+	pitch_sweep 0, 0
 	note E_, 11
 	note F_, 2
 	note D_, 2
 	volume_envelope 12, 8
-	soundinput $37
+	pitch_sweep 3, 7
 	note D_, 1
 	volume_envelope 12, 7
-	soundinput $00
+	pitch_sweep 0, 0
 	note E_, 11
 	note D_, 2
 	note E_, 2
 	volume_envelope 12, 8
-	soundinput $37
+	pitch_sweep 3, 7
 	note D_, 1
 	volume_envelope 12, 7
-	soundinput $00
+	pitch_sweep 0, 0
 	note E_, 15
 	volume_envelope 12, 2
 	octave 2
@@ -166,32 +166,32 @@ Music_HoOhBattleHGSS_Ch1_L:
 	note B_, 1
 	volume_envelope 12, 8
 	octave 3
-	soundinput $37
+	pitch_sweep 3, 7
 	note D_, 1
 	volume_envelope 12, 7
-	soundinput $00
+	pitch_sweep 0, 0
 	note E_, 11
 	note D_, 2
 	note E_, 2
 	volume_envelope 12, 8
-	soundinput $37
+	pitch_sweep 3, 7
 	note D_, 1
 	volume_envelope 12, 7
-	soundinput $00
+	pitch_sweep 0, 0
 	note E_, 11
 	note D_, 2
 	note E_, 2
 	volume_envelope 12, 8
-	soundinput $47
+	pitch_sweep 4, 7
 	note G_, 1
 	volume_envelope 12, 7
-	soundinput $00
+	pitch_sweep 0, 0
 	note A_, 11
 	volume_envelope 12, 8
-	soundinput $57
+	pitch_sweep 5, 7
 	note A_, 1
 	volume_envelope 12, 7
-	soundinput $00
+	pitch_sweep 0, 0
 	note B_, 3
 	octave 4
 	note D_, 10
@@ -200,37 +200,37 @@ Music_HoOhBattleHGSS_Ch1_L:
 	note F_, 2
 	note A_, 2
 	volume_envelope 12, 8
-	soundinput $47
+	pitch_sweep 4, 7
 	note F#, 1
 	volume_envelope 12, 7
-	soundinput $00
+	pitch_sweep 0, 0
 	note G#, 9
 	note B_, 2
 	note E_, 2
 	note A_, 2
 	volume_envelope 12, 8
-	soundinput $37
+	pitch_sweep 3, 7
 	note D#, 1
 	volume_envelope 12, 7
-	soundinput $00
+	pitch_sweep 0, 0
 	note F_, 9
 	note A_, 2
 	note D_, 2
 	note F_, 2
 	volume_envelope 12, 8
-	soundinput $37
+	pitch_sweep 3, 7
 	note D_, 1
 	volume_envelope 12, 7
-	soundinput $00
+	pitch_sweep 0, 0
 	note E_, 9
 	note E_, 2
 	note F_, 2
 	note D_, 2
 	volume_envelope 12, 8
-	soundinput $37
+	pitch_sweep 3, 7
 	note D_, 1
 	volume_envelope 12, 7
-	soundinput $00
+	pitch_sweep 0, 0
 	note E_, 7
 	note_type 8, 11, 7
 	vibrato $7, $26
@@ -363,36 +363,36 @@ Music_HoOhBattleHGSS_Ch1_L:
 	volume_envelope 12, 8
 	note A_, 2
 	volume_envelope 12, 7
-	soundinput $6f
+	pitch_sweep 6, -7
 	note A_, 2
-	soundinput $00
+	pitch_sweep 0, 0
 	note G_, 2
 	note A_, 2
 	volume_envelope 12, 8
 	octave 3
 	note C_, 2
 	volume_envelope 12, 7
-	soundinput $6f
+	pitch_sweep 6, -7
 	note C_, 2
 	octave 2
-	soundinput $00
+	pitch_sweep 0, 0
 	note A_, 2
 	octave 3
 	note C_, 2
 	volume_envelope 12, 8
 	note D_, 2
 	volume_envelope 12, 7
-	soundinput $6f
+	pitch_sweep 6, -7
 	note D_, 2
-	soundinput $00
+	pitch_sweep 0, 0
 	note C_, 2
 	note D_, 2
 	volume_envelope 12, 8
 	note G_, 2
 	volume_envelope 12, 7
-	soundinput $6f
+	pitch_sweep 6, -7
 	note G_, 2
-	soundinput $00
+	pitch_sweep 0, 0
 	note E_, 2
 	note __, 16
 	note __, 14
@@ -401,19 +401,19 @@ Music_HoOhBattleHGSS_Ch1_L:
 	volume_envelope 12, 8
 	note A_, 2
 	volume_envelope 12, 7
-	soundinput $6f
+	pitch_sweep 6, -7
 	note A_, 2
-	soundinput $00
+	pitch_sweep 0, 0
 	note G_, 2
 	note A_, 2
 	octave 3
 	volume_envelope 12, 8
 	note C_, 2
 	volume_envelope 12, 7
-	soundinput $6f
+	pitch_sweep 6, -7
 	note C_, 2
 	octave 2
-	soundinput $00
+	pitch_sweep 0, 0
 	note A_, 2
 	octave 3
 	note C_, 2
@@ -427,9 +427,9 @@ Music_HoOhBattleHGSS_Ch1_L:
 	volume_envelope 12, 8
 	note G_, 2
 	volume_envelope 12, 7
-	soundinput $6f
+	pitch_sweep 6, -7
 	note G_, 2
-	soundinput $00
+	pitch_sweep 0, 0
 	note E_, 2
 	note __, 16
 	note __, 14
@@ -467,10 +467,10 @@ Music_HoOhBattleHGSS_Ch1_L:
 	volume_envelope 12, 8
 	vibrato $0, $0
 	octave 3
-	soundinput $47
+	pitch_sweep 4, 7
 	note D_, 1
 	volume_envelope 12, 7
-	soundinput $00
+	pitch_sweep 0, 0
 	note E_, 3
 	note D_, 2
 	note E_, 2
@@ -481,10 +481,10 @@ Music_HoOhBattleHGSS_Ch1_L:
 	note B_, 2
 	volume_envelope 12, 8
 	octave 3
-	soundinput $47
+	pitch_sweep 4, 7
 	note D_, 1
 	volume_envelope 12, 7
-	soundinput $00
+	pitch_sweep 0, 0
 	note E_, 3
 	note D_, 2
 	note E_, 2

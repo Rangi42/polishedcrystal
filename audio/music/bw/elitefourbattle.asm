@@ -24,16 +24,16 @@ Music_EliteFourBattleBW_Ch1:
 	note C#, 2
 	octave 3
 	volume_envelope 6, 3
-	soundinput $6c
+	pitch_sweep 6, -4
 Music_EliteFourBattleBW_Ch1_loop_1:
 	note C#, 2
 	loopchannel 31, Music_EliteFourBattleBW_Ch1_loop_1
 Music_EliteFourBattleBW_Ch1_loop_main:
 	note_type 6, 10, 0
-	soundinput $67
+	pitch_sweep 6, 7
 	octave 3
 	note D#, 2
-	soundinput $00
+	pitch_sweep 0, 0
 	note F#, 4
 	octave 4
 	note C#, 6
@@ -41,35 +41,35 @@ Music_EliteFourBattleBW_Ch1_loop_main:
 	note A#, 4
 	octave 4
 	note C_, 6
-	soundinput $67
+	pitch_sweep 6, 7
 	note D#, 2
-	soundinput $00
+	pitch_sweep 0, 0
 	note F#, 4
 	volume_envelope 10, 4
 	note F#, 4
 	volume_envelope 10, 0
 	octave 3
 	note F#, 6
-	soundinput $67
+	pitch_sweep 6, 7
 	note A#, 2
 	octave 4
-	soundinput $00
+	pitch_sweep 0, 0
 	note C#, 4
 	octave 3
 	note A#, 4
 	note A_, 6
-	soundinput $6f
+	pitch_sweep 6, -7
 	note A_, 2
-	soundinput $00
+	pitch_sweep 0, 0
 	note F#, 4
 	volume_envelope 10, 4
 	note F#, 4
 
 	volume_envelope 10, 0
-	soundinput $67
+	pitch_sweep 6, 7
 	octave 4
 	note E_, 1
-	soundinput $00
+	pitch_sweep 0, 0
 	note F#, 5
 	octave 5
 	note C#, 6
@@ -77,26 +77,26 @@ Music_EliteFourBattleBW_Ch1_loop_main:
 	note A#, 4
 	octave 5
 	note C_, 6
-	soundinput $67
+	pitch_sweep 6, 7
 	note D#, 1
-	soundinput $00
+	pitch_sweep 0, 0
 	note F#, 5
 	volume_envelope 10, 4
 	note F#, 4
 	volume_envelope 10, 0
 	octave 4
 	note F#, 6
-	soundinput $67
+	pitch_sweep 6, 7
 	note B_, 1
 	octave 5
-	soundinput $00
+	pitch_sweep 0, 0
 	note C#, 5
 	octave 4
 	note A#, 4
 	note A_, 6
-	soundinput $6f
+	pitch_sweep 6, -7
 	note A_, 2
-	soundinput $00
+	pitch_sweep 0, 0
 	note F#, 4
 	volume_envelope 10, 4
 	note F#, 4
@@ -135,10 +135,10 @@ Music_EliteFourBattleBW_Ch1_loop_main:
 	note G_, 2
 	duty_cycle 2
 	volume_envelope 10, 0
-	soundinput $67
+	pitch_sweep 6, 7
 	octave 2
 	note D#, 2
-	soundinput $00
+	pitch_sweep 0, 0
 	note F#, 4
 	octave 3
 	note C#, 6
@@ -146,34 +146,34 @@ Music_EliteFourBattleBW_Ch1_loop_main:
 	note A#, 4
 	octave 3
 	note C_, 6
-	soundinput $67
+	pitch_sweep 6, 7
 	note D#, 2
-	soundinput $00
+	pitch_sweep 0, 0
 	note F#, 4
 	volume_envelope 10, 4
 	note F#, 4
 	volume_envelope 10, 0
 	octave 2
 	note F#, 6
-	soundinput $67
+	pitch_sweep 6, 7
 	note A#, 2
 	octave 3
-	soundinput $00
+	pitch_sweep 0, 0
 	note C#, 4
 	octave 2
 	note A#, 4
 	note A_, 6
-	soundinput $6f
+	pitch_sweep 6, -7
 	note A_, 2
-	soundinput $00
+	pitch_sweep 0, 0
 	note F#, 4
 	volume_envelope 10, 4
 	note F#, 4
 	volume_envelope 10, 0
-	soundinput $67
+	pitch_sweep 6, 7
 	octave 3
 	note D#, 2
-	soundinput $00
+	pitch_sweep 0, 0
 	note F#, 4
 	octave 4
 	note C#, 6
@@ -181,19 +181,19 @@ Music_EliteFourBattleBW_Ch1_loop_main:
 	note A#, 4
 	octave 4
 	note C_, 6
-	soundinput $67
+	pitch_sweep 6, 7
 	note D#, 2
-	soundinput $00
+	pitch_sweep 0, 0
 	note F#, 4
 	volume_envelope 10, 4
 	note F#, 4
 	volume_envelope 10, 0
 	octave 3
 	note F#, 6
-	soundinput $67
+	pitch_sweep 6, 7
 	note A#, 2
 	octave 4
-	soundinput $00
+	pitch_sweep 0, 0
 	note C#, 4
 	octave 3
 	note A#, 4

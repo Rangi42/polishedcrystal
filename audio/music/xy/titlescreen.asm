@@ -14,7 +14,7 @@ Music_TitleScreenXY_Ch1:
 	volume 7, 7
 	stereopanning $f
 	vibrato $10, $33
-	soundinput $0
+	pitch_sweep 0, 0
 Music_TitleScreenXY_Ch1_b0:
 	duty_cycle 0
 	note_type 8, 8, 7
