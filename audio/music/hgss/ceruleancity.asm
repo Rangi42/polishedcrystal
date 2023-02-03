@@ -26,7 +26,7 @@ Music_CeruleanCityHGSS_Ch1:
 	note C#, 2
 	note D#, 2
 Music_CeruleanCityHGSS_Loop1:
-	intensity $B1
+	volume_envelope 11, 1
 	octave 3
 	note G#, 2
 	octave 4
@@ -94,7 +94,7 @@ Music_CeruleanCityHGSS_Loop1:
 	note G#, 1
 	note E_, 2
 	note F#, 2
-	intensity $B4
+	volume_envelope 11, 4
 	note G#, 1
 	note A_, 1
 	note B_, 1
@@ -107,7 +107,7 @@ Music_CeruleanCityHGSS_Loop1:
 	octave 3
 	note B_, 1
 	note A_, 8
-	intensity $B2
+	volume_envelope 11, 2
 	note G#, 1
 	note G#, 1
 	note G#, 1
@@ -117,7 +117,7 @@ Music_CeruleanCityHGSS_Loop1:
 	note G#, 1
 	note E_, 2
 	note F#, 2
-	intensity $B4
+	volume_envelope 11, 4
 	note G#, 1
 	note A_, 1
 	note B_, 1
@@ -177,7 +177,7 @@ Music_CeruleanCityHGSS_Loop1:
 	note D#, 1
 	note F#, 1
 	note B_, 8
-	intensity $B6
+	volume_envelope 11, 6
 	octave 3
 	note G#, 8
 	note G#, 4
@@ -195,7 +195,7 @@ Music_CeruleanCityHGSS_Loop1:
 ;Channel1_Bar17:
 	note A_, 4
 	note B_, 4
-	intensity $B2
+	volume_envelope 11, 2
 	note E_, 2
 	note D#, 2
 	note C#, 2
@@ -239,13 +239,13 @@ Music_CeruleanCityHGSS_Loop2:
 	note G#, 1
 	note A_, 1
 ;Channel2_Bar3:
-	intensity $C4
+	volume_envelope 12, 4
 	note G#, 6
 	note A_, 1
 	note G#, 1
 	note F#, 14
 ;Channel2_Bar4:
-	intensity $C2
+	volume_envelope 12, 2
 	note E_, 1
 	octave 2
 	note B_, 1
@@ -257,13 +257,13 @@ Music_CeruleanCityHGSS_Loop2:
 	note G#, 1
 	note A_, 1
 ;Channel2_Bar5:
-	intensity $C4
+	volume_envelope 12, 4
 	note G#, 6
 	note E_, 1
 	note G#, 1
 	note B_, 14
 ;Channel2_Bar6:
-	intensity $C2
+	volume_envelope 12, 2
 	duty_cycle 1
 	octave 4
 	note E_, 1
@@ -277,13 +277,13 @@ Music_CeruleanCityHGSS_Loop2:
 	note G#, 1
 	note A_, 1
 ;Channel2_Bar7:
-	intensity $C4
+	volume_envelope 12, 4
 	note G#, 6
 	note A_, 1
 	note G#, 1
 	note F#, 8
 ;Channel2_Bar8:
-	intensity $C2
+	volume_envelope 12, 2
 	note B_, 1
 	note B_, 1
 	note B_, 1
@@ -300,7 +300,7 @@ Music_CeruleanCityHGSS_Loop2:
 	note G#, 1
 	note A_, 1
 ;Channel2_Bar9:
-	intensity $C4
+	volume_envelope 12, 4
 	note G#, 6
 	note E_, 1
 	note G#, 1
@@ -371,7 +371,7 @@ Music_CeruleanCityHGSS_Loop2:
 	note B_, 8
 ;Channel2_Bar14:
 	sound_duty 2, 2, 0, 0
-	intensity $C6
+	volume_envelope 12, 6
 	duty_cycle 2
 	octave 4
 	note E_, 8

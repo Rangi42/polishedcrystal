@@ -19,7 +19,7 @@ Music_Megalovania_Ch1_loop:
 	note __, 16
 	note __, 16
 	sound_duty $55
-	intensity $F3
+	volume_envelope 15, 3
 Music_Megalovania_Ch1_loop_1:
 	octave 4
 	note D_, 1
@@ -38,12 +38,12 @@ Music_Megalovania_Ch1_loop_1:
 	callchannel Music_Megalovania_Ch1_ditty_2
 	loopchannel 2, Music_Megalovania_Ch1_loop_1
 	sound_duty $00
-	intensity $91
+	volume_envelope 9, 1
 	callchannel Music_Megalovania_Ch1Ch3_ditty_2
 	octave 3
 	note C_, 1
 	note C_, 1
-	intensity $8D
+	volume_envelope 8, -5
 	vibrato $08, $13
 	octave 4
 	note A_, 2
@@ -93,13 +93,13 @@ Music_Megalovania_Ch1_loop_1:
 	note __, 1
 	note F_, 1
 	note __, 1
-	intensity $6D
+	volume_envelope 6, -5
 	vibrato $0F, $13
 	octave 5
 	note C_, 8
 	note __, 1
 	sound_duty $5A
-	intensity $F3
+	volume_envelope 15, 3
 	callchannel Music_Megalovania_Ch1_ditty_3
 	callchannel Music_Megalovania_Ch1_ditty_4
 	callchannel Music_Megalovania_Ch1_ditty_3
@@ -118,28 +118,28 @@ Music_Megalovania_Ch1_loop_1:
 	note D_, 1
 	callchannel Music_Megalovania_Ch1Ch2_ditty_1
 	sound_duty $55
-	intensity $A3
+	volume_envelope 10, 3
 	octave 2
 	note A_, 4
 	octave 3
 	note F_, 4
 	note E_, 4
-	intensity $A1
+	volume_envelope 10, 1
 	octave 2
 	note G_, 2
-	intensity $A6
+	volume_envelope 10, 6
 	note A_, 16
 	note __, 2
-	intensity $A1
+	volume_envelope 10, 1
 	note A_, 2
 	note __, 2
-	intensity $A3
+	volume_envelope 10, 3
 	octave 3
 	note G_, 4
 	note F_, 4
-	intensity $A1
+	volume_envelope 10, 1
 	note E_, 2
-	intensity $A3
+	volume_envelope 10, 3
 	note F_, 6
 	note E_, 4
 	note D_, 4
@@ -148,53 +148,53 @@ Music_Megalovania_Ch1_loop_1:
 	note C_, 4
 	octave 2
 	note A_, 4
-	intensity $A1
+	volume_envelope 10, 1
 	octave 3
 	note C_, 2
-	intensity $A3
+	volume_envelope 10, 3
 	note D_, 6
 	note C_, 4
 	octave 2
 	note A_, 4
-	intensity $A1
+	volume_envelope 10, 1
 	octave 3
 	note C_, 2
-	intensity $A3
+	volume_envelope 10, 3
 	octave 2
 	note A_, 6
-	intensity $A1
+	volume_envelope 10, 1
 	note G_, 2
 	note __, 2
 	note A_, 2
 	note __, 2
 	octave 3
 	note C_, 2
-	intensity $A4
+	volume_envelope 10, 4
 	octave 2
 	note A_, 10
-	intensity $A3
+	volume_envelope 10, 3
 	note G_, 6
 	note __, 2
 	note A_, 4
 	octave 3
 	note F_, 4
 	note E_, 4
-	intensity $A1
+	volume_envelope 10, 1
 	octave 2
 	note G_, 2
-	intensity $A5
+	volume_envelope 10, 5
 	note A_, 14
 	note __, 4
-	intensity $A1
+	volume_envelope 10, 1
 	note A_, 2
 	note __, 2
-	intensity $A3
+	volume_envelope 10, 3
 	octave 3
 	note G_, 4
 	note F_, 4
-	intensity $A1
+	volume_envelope 10, 1
 	note E_, 2
-	intensity $A3
+	volume_envelope 10, 3
 	note F_, 6
 	note E_, 4
 	note D_, 4
@@ -209,7 +209,7 @@ Music_Megalovania_Ch1_loop_1:
 	note C_, 4
 	octave 2
 	note A_, 4
-	intensity $A1
+	volume_envelope 10, 1
 	octave 3
 	note C_, 2
 	note __, 1
@@ -228,16 +228,16 @@ Music_Megalovania_Ch1_loop_1:
 	sound_duty $00
 	vibrato $00, $13
 	callchannel Music_Megalovania_Ch1_ditty_5
-	intensity $3F
+	volume_envelope 3, -7
 	note F_, 4
-	intensity $88
+	volume_envelope 8, 8
 	note F_, 12
-	intensity $87
+	volume_envelope 8, 7
 	note F_, 12
 	note __, 4
 	callchannel Music_Megalovania_Ch1_ditty_5
 	sound_duty $55
-	intensity $A1
+	volume_envelope 10, 1
 	vibrato $0F, $13
 	octave 3
 	note D_, 1
@@ -253,7 +253,7 @@ Music_Megalovania_Ch1_loop_1:
 	note A#, 1
 	note A#, 1
 	note __, 14
-	intensity $F2
+	volume_envelope 15, 2
 	octave 3
 	note D_, 1
 	note D_, 1
@@ -346,7 +346,7 @@ Music_Megalovania_Ch1_loop_3:
 	note D_, 1
 	note_type 6, 15, 1
 	note __, 1
-	intensity $F2
+	volume_envelope 15, 2
 	note A_, 2
 	note __, 2
 	note G_, 2
@@ -383,13 +383,13 @@ Music_Megalovania_Ch1_loop_3:
 	note __, 2
 	note A_, 2
 	note __, 2
-	intensity $F1
+	volume_envelope 15, 1
 	octave 4
 Music_Megalovania_Ch1_loop3:
 	note D_, 1
 	note D#, 1
 	loopchannel 4, Music_Megalovania_Ch1_loop3
-	intensity $F2
+	volume_envelope 15, 2
 	octave 3
 	note A_, 6
 	note __, 2
@@ -535,20 +535,20 @@ Music_Megalovania_Ch1_ditty_4:
 	endchannel
 
 Music_Megalovania_Ch1_ditty_5:
-	intensity $3F
+	volume_envelope 3, -7
 	octave 1
 	note A#, 4
-	intensity $88
+	volume_envelope 8, 8
 	note A#, 8
-	intensity $3F
+	volume_envelope 3, -7
 	octave 2
 	note F_, 4
 	note E_, 4
-	intensity $88
+	volume_envelope 8, 8
 	note E_, 4
-	intensity $3F
+	volume_envelope 3, -7
 	note D_, 4
-	intensity $88
+	volume_envelope 8, 8
 	note D_, 4
 	endchannel
 
@@ -577,7 +577,7 @@ Music_Megalovania_Ch1_ditty_7:
 
 Music_Megalovania_Ch1Ch2_ditty_1:
 	sound_duty $00
-	intensity $F1
+	volume_envelope 15, 1
 	octave 4
 	note F_, 1
 	note D_, 1
@@ -592,14 +592,14 @@ Music_Megalovania_Ch1Ch2_ditty_1:
 	note G_, 1
 	note E_, 1
 	note C#, 1
-	intensity $F3
+	volume_envelope 15, 3
 	note F_, 4
-	intensity $F4
+	volume_envelope 15, 4
 	note G_, 16
 	note __, 2
-	intensity $F3
+	volume_envelope 15, 3
 	note G#, 4
-	intensity $F1
+	volume_envelope 15, 1
 	note A_, 2
 	octave 5
 	note C_, 2
@@ -611,24 +611,24 @@ Music_Megalovania_Ch1Ch2_ditty_1:
 	note F_, 2
 	note D_, 2
 	note E_, 2
-	intensity $F3
+	volume_envelope 15, 3
 	note F_, 4
 	note G_, 4
 	note A_, 4
 	octave 5
 	note C_, 4
 	note C#, 4
-	intensity $F1
+	volume_envelope 15, 1
 	octave 4
 	note G#, 2
 	note __, 2
 	note G#, 2
 	note G_, 2
 	note F_, 2
-	intensity $F4
+	volume_envelope 15, 4
 	note G_, 16
 	note __, 2
-	intensity $F3
+	volume_envelope 15, 3
 	octave 3
 	note A#, 2
 	note __, 2
@@ -646,9 +646,9 @@ Music_Megalovania_Ch1Ch2_ditty_1a:
 	note F_, 8
 	note G_, 8
 	note E_, 8
-	intensity $F4
+	volume_envelope 15, 4
 	note A_, 16
-	intensity $F1
+	volume_envelope 15, 1
 	note A_, 2
 	note G#, 2
 	note G_, 2
@@ -657,7 +657,7 @@ Music_Megalovania_Ch1Ch2_ditty_1a:
 	note E_, 2
 	note D#, 2
 	note D_, 2
-	intensity $F4
+	volume_envelope 15, 4
 	note C#, 16
 	note D_, 16
 	endchannel
@@ -872,7 +872,7 @@ Music_Megalovania_Ch2_loop:
 	note __, 8
 	callchannel Music_Megalovania_Ch1Ch2_ditty_1
 	note __, 16
-	intensity $F1
+	volume_envelope 15, 1
 	octave 3
 	note F_, 2
 	note D_, 2
@@ -886,14 +886,14 @@ Music_Megalovania_Ch2_loop:
 	note G_, 1
 	note E_, 1
 	note C#, 1
-	intensity $F3
+	volume_envelope 15, 3
 	note F_, 4
-	intensity $F4
+	volume_envelope 15, 4
 	note G_, 16
 	note __, 2
-	intensity $F3
+	volume_envelope 15, 3
 	note G#, 4
-	intensity $F1
+	volume_envelope 15, 1
 	note A_, 2
 	octave 4
 	note C_, 2
@@ -905,24 +905,24 @@ Music_Megalovania_Ch2_loop:
 	note F_, 2
 	note D_, 2
 	note E_, 2
-	intensity $F3
+	volume_envelope 15, 3
 	note F_, 4
 	note G_, 4
 	note A_, 4
 	octave 4
 	note C_, 4
 	note C#, 4
-	intensity $F1
+	volume_envelope 15, 1
 	octave 3
 	note G#, 2
 	note __, 2
 	note G#, 2
 	note G_, 2
 	note F_, 2
-	intensity $F4
+	volume_envelope 15, 4
 	note G_, 16
 	note __, 2
-	intensity $F3
+	volume_envelope 15, 3
 	octave 2
 	note A#, 2
 	note __, 2
@@ -1073,7 +1073,7 @@ Music_Megalovania_Ch2_ditty3:
 	note_type 3, 10, 7
 	note __, 11
 	sound_duty $5A
-	intensity $A1
+	volume_envelope 10, 1
 	vibrato $0F, $34
 	note C_, 2
 	note E_, 1
@@ -1099,7 +1099,7 @@ Music_Megalovania_Ch2_ditty3:
 	note_type 3, 10, 7
 	note __, 10
 	sound_duty $5A
-	intensity $A1
+	volume_envelope 10, 1
 	vibrato $0F, $34
 	octave 3
 	note D_, 4
@@ -1128,7 +1128,7 @@ Music_Megalovania_Ch2_ditty3:
 	note_type 3, 10, 7
 	note __, 11
 	sound_duty $5A
-	intensity $A1
+	volume_envelope 10, 1
 	vibrato $0F, $34
 	note C_, 2
 	note E_, 1
@@ -1160,11 +1160,11 @@ Music_Megalovania_Ch3_loop:
 	note A#, 1
 	callchannel Music_Megalovania_Ch1Ch3_ditty_1
 	duty_cycle 7
-	intensity $17
+	volume_envelope 1, 7
 	callchannel Music_Megalovania_Ch1Ch3_ditty_2
 	callchannel Music_Megalovania_Ch3_ditty_1
 	duty_cycle 5
-	intensity $35
+	volume_envelope 3, 5
 	vibrato $07, $33
 	octave 5
 	note F_, 2
@@ -1240,7 +1240,7 @@ Music_Megalovania_Ch3_loop:
 	callchannel Music_Megalovania_Ch3_ditty_3
 	callchannel Music_Megalovania_Ch3_ditty_3
 	duty_cycle 3
-	intensity $23
+	volume_envelope 2, 3
 	vibrato $07, $33
 	octave 4
 	note A#, 12
@@ -1259,7 +1259,7 @@ Music_Megalovania_Ch3_loop:
 	note D_, 16
 	note __, 16
 	duty_cycle 2
-	intensity $32
+	volume_envelope 3, 2
 	vibrato $03, $13
 	note D_, 1
 	note D_, 1
@@ -1267,7 +1267,7 @@ Music_Megalovania_Ch3_loop:
 	note C_, 1
 	note C_, 1
 	callchannel Music_Megalovania_Ch3_ditty_4
-	intensity $22
+	volume_envelope 2, 2
 	octave 4
 	note B_, 1
 	note B_, 1
@@ -1276,7 +1276,7 @@ Music_Megalovania_Ch3_loop:
 	note A#, 1
 	note A#, 1
 	callchannel Music_Megalovania_Ch3_ditty_4
-	intensity $12
+	volume_envelope 1, 2
 	note D_, 1
 	note D_, 1
 	callchannel Music_Megalovania_Ch3_ditty_4
@@ -1285,12 +1285,12 @@ Music_Megalovania_Ch3_loop:
 	callchannel Music_Megalovania_Ch3_ditty_4
 	note __, 2
 	duty_cycle 6
-	intensity $36
+	volume_envelope 3, 6
 	octave 6
 	callchannel Music_Megalovania_Ch3_ditty_5
-	intensity $26
+	volume_envelope 2, 6
 	callchannel Music_Megalovania_Ch3_ditty_5
-	intensity $16
+	volume_envelope 1, 6
 	note A_, 1
 	note __, 1
 	note G_, 1
@@ -1306,7 +1306,7 @@ Music_Megalovania_Ch3_loop:
 	note F_, 1
 	note __, 16
 	duty_cycle 7
-	intensity $17
+	volume_envelope 1, 7
 	callchannel Music_Megalovania_Ch1Ch3_ditty_2
 	callchannel Music_Megalovania_Ch3_ditty_1
 	callchannel Music_Megalovania_Ch1Ch3_ditty_2

@@ -19,22 +19,22 @@ Music_MotherBeastBattleSM_Ch1:
 	octave 3
 	note D_, 4
 	duty_cycle 2
-	intensity $60
+	volume_envelope 6, 0
 	note A#, 16
 	note A#, 8
-	intensity $67
+	volume_envelope 6, 7
 	note A#, 6
-	intensity $60
+	volume_envelope 6, 0
 	note B_, 14
-	intensity $67
+	volume_envelope 6, 7
 	note B_, 6
-	intensity $30
+	volume_envelope 3, 0
 	note D#, 12
 	note D#, 9
-	intensity $37
+	volume_envelope 3, 7
 	note D#, 3
 Music_MotherBeastBattleSM_Ch1_loop_main:
-	intensity $30
+	volume_envelope 3, 0
 	duty_cycle 3
 	octave 3
 	callchannel Music_MotherBeastBattleSM_Ch2_branch_1
@@ -49,16 +49,16 @@ Music_MotherBeastBattleSM_Ch1_loop_main:
 	callchannel Music_MotherBeastBattleSM_Ch2_branch_2
 	octave 3
 	duty_cycle 0
-	intensity $50
+	volume_envelope 5, 0
 	note D_, 12
 	note D#, 12
 	note A#, 12
 	octave 4
-	intensity $50
+	volume_envelope 5, 0
 	note A#, 8
-	intensity $5f
+	volume_envelope 5, -7
 	note A#, 4
-	intensity $72
+	volume_envelope 7, 2
 	duty_cycle 2
 	octave 5
 	callchannel Music_MotherBeastBattleSM_Ch2_branch_1
@@ -71,7 +71,7 @@ Music_MotherBeastBattleSM_Ch1_loop_main:
 	note A_, 1
 	octave 5
 	callchannel Music_MotherBeastBattleSM_Ch2_branch_2
-	intensity $60
+	volume_envelope 6, 0
 	duty_cycle 2
 	octave 2
 	note A_, 1
@@ -129,49 +129,49 @@ Music_MotherBeastBattleSM_Ch1_loop_main:
 	note __, 16
 	note __, 16
 	note __, 16
-	intensity $30
+	volume_envelope 3, 0
 	octave 2
 	note G_, 16
 	note G_, 16
 	note G_, 14
-	intensity $37
+	volume_envelope 3, 7
 	note G_, 2
 	note __, 4
 	octave 3
 	duty_cycle 1
-	intensity $1f
+	volume_envelope 1, -7
 	note C_, 4
-	intensity $60
+	volume_envelope 6, 0
 	note C_, 12
-	intensity $67
+	volume_envelope 6, 7
 	note C_, 4
 	octave 4
-	intensity $1f
+	volume_envelope 1, -7
 	note G_, 4
-	intensity $60
+	volume_envelope 6, 0
 	note G_, 4
 	note F#, 4
 	octave 5
-	intensity $60
+	volume_envelope 6, 0
 	note D_, 4
-	intensity $67
+	volume_envelope 6, 7
 	note D_, 2
-	intensity $60
+	volume_envelope 6, 0
 	note C#, 10
-	intensity $67
+	volume_envelope 6, 7
 	note C#, 2
-	intensity $60
+	volume_envelope 6, 0
 	note C_, 4
-	intensity $67
+	volume_envelope 6, 7
 	note C_, 2
 	octave 4
-	intensity $60
+	volume_envelope 6, 0
 	note B_, 4
-	intensity $67
+	volume_envelope 6, 7
 	note B_, 2
-	intensity $60
+	volume_envelope 6, 0
 	note A#, 4
-	intensity $67
+	volume_envelope 6, 7
 	note A#, 2
 	note G_, 2
 	note G#, 2
@@ -183,18 +183,18 @@ Music_MotherBeastBattleSM_Ch1_loop_main:
 	note G_, 2
 	octave 3
 	note G#, 2
-	intensity $60
+	volume_envelope 6, 0
 	note G_, 2
-	intensity $67
+	volume_envelope 6, 7
 	note G_, 4
-	intensity $1f
+	volume_envelope 1, -7
 	note C#, 3
-	intensity $50
+	volume_envelope 5, 0
 	note C#, 15
 	note C#, 15
-	intensity $57
+	volume_envelope 5, 7
 	note C#, 3
-	intensity $30
+	volume_envelope 3, 0
 	duty_cycle 1
 	callchannel Music_MotherBeastBattleSM_Ch2_branch_3
 	jumpchannel Music_MotherBeastBattleSM_Ch1_loop_main
@@ -334,19 +334,19 @@ Music_MotherBeastBattleSM_Ch2:
 	note G#, 1
 	note D#, 1
 	note D_, 1
-	intensity $71
+	volume_envelope 7, 1
 	note G#, 1
-	intensity $61
+	volume_envelope 6, 1
 	note D_, 1
-	intensity $51
+	volume_envelope 5, 1
 	note G#, 1
-	intensity $41
+	volume_envelope 4, 1
 	note D_, 1
-	intensity $31
+	volume_envelope 3, 1
 	note G#, 1
-	intensity $21
+	volume_envelope 2, 1
 	note D_, 1
-	intensity $11
+	volume_envelope 1, 1
 	note G#, 1
 	note_type 3, 6, 5
 	octave 4
@@ -391,7 +391,7 @@ Music_MotherBeastBattleSM_Ch2_loop_1:
 	note E_, 1
 	note A_, 7 ;
 	octave 3
-	intensity $92
+	volume_envelope 9, 2
 	note E_, 1
 	note A_, 7 ;
 	octave 4
@@ -461,11 +461,11 @@ Music_MotherBeastBattleSM_Ch2_loop_1:
 	note A#, 1
 	note E_, 1
 	octave 3
-	intensity $72
+	volume_envelope 7, 2
 	note A#, 1
-	intensity $52
+	volume_envelope 5, 2
 	note E_, 1
-	intensity $32
+	volume_envelope 3, 2
 	octave 2
 	note A#, 3
 	duty_cycle 0
@@ -566,7 +566,7 @@ Music_MotherBeastBattleSM_Ch2_loop_1:
 	octave 4
 	note G_, 4
 	note __, 2
-	intensity $94
+	volume_envelope 9, 4
 	octave 3
 	note D_, 1
 	note D_, 1
@@ -588,9 +588,9 @@ Music_MotherBeastBattleSM_Ch2_loop_1:
 	note A#, 1
 	note __, 2
 	octave 3
-	intensity $90
+	volume_envelope 9, 0
 	note G_, 5
-	intensity $94
+	volume_envelope 9, 4
 	note G_, 3
 	note D_, 1
 	note F#, 1
@@ -651,7 +651,7 @@ Music_MotherBeastBattleSM_Ch2_loop_1:
 	note __, 3
 	duty_cycle 2
 	octave 3
-	intensity $70
+	volume_envelope 7, 0
 	note D_, 1
 	note G_, 1
 	note D_, 1
@@ -685,11 +685,11 @@ Music_MotherBeastBattleSM_Ch2_loop_1:
 	note C#, 1
 	note G_, 1
 	note D_, 1
-	intensity $50
+	volume_envelope 5, 0
 	note G_, 1
-	intensity $30
+	volume_envelope 3, 0
 	note D_, 1
-	intensity $90
+	volume_envelope 9, 0
 	duty_cycle 0
 	callchannel Music_MotherBeastBattleSM_Ch2_branch_3
 	jumpchannel Music_MotherBeastBattleSM_Ch2_loop_main
@@ -750,28 +750,28 @@ Music_MotherBeastBattleSM_Ch3:
 	note __, 4
 	note D_, 16
 	note D_, 8
-	intensity $29
+	volume_envelope 2, -1
 	note D_, 4
-	intensity $39
+	volume_envelope 3, -1
 	note D_, 2
-	intensity $19
+	volume_envelope 1, -1
 	note G#, 11
-	intensity $29
+	volume_envelope 2, -1
 	note G#, 2
-	intensity $39
+	volume_envelope 3, -1
 	note G#, 2
 	note __, 5
 	octave 1
-	intensity $29
+	volume_envelope 2, -1
 	note A#, 12
 	note A#, 9
-	intensity $39
+	volume_envelope 3, -1
 	note A#, 3
 Music_MotherBeastBattleSM_Ch3_loop_main:
 	note __, 12
 	note __, 12
 	note __, 12
-	intensity $19
+	volume_envelope 1, -1
 	octave 2
 	note A_, 1
 	note __, 1
@@ -784,7 +784,7 @@ Music_MotherBeastBattleSM_Ch3_loop_main:
 	note __, 1
 	note E_, 1
 	note __, 1
-	intensity $29
+	volume_envelope 2, -1
 	octave 2
 	note D_, 12
 	note D#, 12
@@ -833,7 +833,7 @@ Music_MotherBeastBattleSM_Ch3_loop_main:
 	octave 1
 	note B_, 12
 	octave 2
-	intensity $29
+	volume_envelope 2, -1
 	note D_, 12
 	note C#, 12
 	note C_, 12
@@ -849,14 +849,14 @@ Music_MotherBeastBattleSM_Ch3_loop_main:
 	note G_, 7
 	note __, 1
 	note G_, 4
-	intensity $19
+	volume_envelope 1, -1
 	octave 2
 Music_MotherBeastBattleSM_Ch3_loop_1:
 	note C_, 4
 	note __, 2
 	loopchannel 16, Music_MotherBeastBattleSM_Ch3_loop_1
 	octave 1
-	intensity $29
+	volume_envelope 2, -1
 Music_MotherBeastBattleSM_Ch3_loop_2:
 	note C_, 4
 	note __, 2

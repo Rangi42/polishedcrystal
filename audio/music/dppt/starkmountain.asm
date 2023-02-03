@@ -302,16 +302,16 @@ Music_StarkMountainDPPt_Ch1_loop:
 	note G#, 1
 	note_type 12, 10, 8
 	note A_, 16
-	intensity $68
+	volume_envelope 6, 8
 	note A_, 16
-	intensity $38
+	volume_envelope 3, 8
 	note A_, 16
 	note __, 16
 	note __, 16
 	note __, 16
 	note __, 4
 	duty_cycle 0
-	intensity $A1
+	volume_envelope 10, 1
 	octave 1
 	note G_, 1
 	note F#, 1
@@ -756,7 +756,7 @@ Music_StarkMountainDPPt_Ch2_loop:
 
 Music_StarkMountainDPPt_Ch3:
 	tone $0001
-	intensity $19
+	volume_envelope 1, -1
 	vibrato $08, $45
 Music_StarkMountainDPPt_Ch3_loop:
 	note_type 12, 1, -1
@@ -777,7 +777,7 @@ Music_StarkMountainDPPt_Ch3_loop:
 	note __, 1
 	note C_, 1
 	note __, 1
-	intensity $14
+	volume_envelope 1, 4
 	octave 3
 	note G_, 2
 	note __, 4
@@ -891,7 +891,7 @@ Music_StarkMountainDPPt_Ch3_loop:
 	note __, 1
 	note C_, 1
 	note __, 1
-	intensity $14
+	volume_envelope 1, 4
 	octave 3
 	note G_, 2
 	note C#, 2
@@ -915,7 +915,7 @@ Music_StarkMountainDPPt_Ch3_loop:
 	note __, 16
 	note __, 16
 	note __, 10
-	intensity $19
+	volume_envelope 1, -1
 	octave 4
 	note C_, 1
 	note __, 1
@@ -931,7 +931,7 @@ Music_StarkMountainDPPt_Ch3_loop:
 	note __, 1
 	note C_, 1
 	note __, 1
-	intensity $14
+	volume_envelope 1, 4
 	octave 3
 	note D_, 2
 	octave 2
@@ -978,7 +978,7 @@ Music_StarkMountainDPPt_Ch3_loop:
 	note __, 16
 	note __, 16
 	note __, 3
-	intensity $16
+	volume_envelope 1, 6
 	octave 1
 	note A#, 1
 	note __, 2
@@ -1065,12 +1065,12 @@ Music_StarkMountainDPPt_Ch3_loop:
 	note C_, 1
 	note_type 12, 1, -1
 	note D_, 16
-	intensity $29
+	volume_envelope 2, -1
 	note D_, 16
-	intensity $39
+	volume_envelope 3, -1
 	note D_, 16
 	note __, 16
-	intensity $15
+	volume_envelope 1, 5
 	octave 3
 	note G_, 1
 	note __, 2
@@ -1111,7 +1111,7 @@ Music_StarkMountainDPPt_Ch3_loop:
 	note __, 1
 	note F#, 4
 	note __, 4
-	intensity $14
+	volume_envelope 1, 4
 	octave 2
 	note F#, 8
 	note __, 4

@@ -42,7 +42,7 @@ Music_Mom_Ch3:
 	note B_, 1
 	note G#, 1
 	note E_, 8
-	intensity $23
+	volume_envelope 2, 3
 Music_Mom_branch_f6c2e:
 	octave 2
 	note A_, 2

@@ -24,7 +24,7 @@ Music_NewBarkTown_branch_eb2eb:
 	note G_, 2
 	note F#, 2
 	duty_cycle 2
-	intensity $82
+	volume_envelope 8, 2
 	note E_, 1
 	note F#, 1
 	note E_, 1
@@ -35,7 +35,7 @@ Music_NewBarkTown_branch_eb2eb:
 	note A_, 1
 	note G_, 1
 	duty_cycle 0
-	intensity $87
+	volume_envelope 8, 7
 	callchannel Music_NewBarkTown_branch_eb349
 	octave 3
 	note C#, 1
@@ -46,7 +46,7 @@ Music_NewBarkTown_branch_eb2eb:
 	octave 3
 	note E_, 2
 	duty_cycle 2
-	intensity $82
+	volume_envelope 8, 2
 	note C#, 1
 	note __, 1
 	octave 2
@@ -61,7 +61,7 @@ Music_NewBarkTown_branch_eb2eb:
 	note E_, 1
 	note A_, 1
 	duty_cycle 1
-	intensity $5e
+	volume_envelope 5, -6
 	callchannel Music_NewBarkTown_branch_eb37c
 	callchannel Music_NewBarkTown_branch_eb37c
 	callchannel Music_NewBarkTown_branch_eb37c
@@ -81,7 +81,7 @@ Music_NewBarkTown_branch_eb2eb:
 	note G_, 4
 	note A_, 4
 	note B_, 2
-	intensity $87
+	volume_envelope 8, 7
 	jumpchannel Music_NewBarkTown_branch_eb2eb
 
 Music_NewBarkTown_branch_eb349:
@@ -167,20 +167,20 @@ Music_NewBarkTown_branch_eb396:
 	callchannel Music_NewBarkTown_branch_eb3bf
 	callchannel Music_NewBarkTown_branch_eb3bf
 	callchannel Music_NewBarkTown_branch_eb3f2
-	intensity $87
+	volume_envelope 8, 7
 	octave 5
 	note B_, 6
 	note A_, 6
-	intensity $77
+	volume_envelope 7, 7
 	octave 6
 	note D_, 4
 	note C#, 16
 	callchannel Music_NewBarkTown_branch_eb3f2
-	intensity $87
+	volume_envelope 8, 7
 	octave 5
 	note B_, 6
 	note A_, 6
-	intensity $77
+	volume_envelope 7, 7
 	octave 6
 	note D_, 4
 	note E_, 16
@@ -304,7 +304,7 @@ Music_NewBarkTown_branch_eb408:
 	note F#, 1
 	note E_, 4
 	note __, 4
-	intensity $25
+	volume_envelope 2, 5
 	vibrato $12, $53
 	octave 2
 	note G_, 16
@@ -315,7 +315,7 @@ Music_NewBarkTown_branch_eb408:
 	note A_, 16
 	note G_, 16
 	note A_, 14
-	intensity $10
+	volume_envelope 1, 0
 	vibrato $16, $23
 	octave 5
 	note D_, 1

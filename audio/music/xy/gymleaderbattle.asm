@@ -1610,7 +1610,7 @@ Music_GymLeaderBattleXY_Ch3_loop:
 	note C_, 2
 	note F_, 2
 	octave 4
-	intensity $24
+	volume_envelope 2, 4
 	note G_, 1
 	note A#, 1
 	octave 5

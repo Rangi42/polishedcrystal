@@ -17,13 +17,13 @@ Music_TrainerVictory_Ch1:
 	note E_, 2
 	note F#, 2
 	note G_, 2
-	intensity $b6
+	volume_envelope 11, 6
 	note A_, 12
 	stereopanning $f
 Music_TrainerVictory_branch_ebecd:
-	intensity $72
+	volume_envelope 7, 2
 	callchannel Music_TrainerVictory_branch_ebf11
-	intensity $51
+	volume_envelope 5, 1
 	note C#, 2
 	note E_, 2
 	note F#, 2
@@ -31,7 +31,7 @@ Music_TrainerVictory_branch_ebecd:
 	note B_, 2
 	octave 4
 	note C#, 2
-	intensity $72
+	volume_envelope 7, 2
 	octave 3
 	note A_, 2
 	note __, 2
@@ -49,7 +49,7 @@ Music_TrainerVictory_branch_ebecd:
 	note G_, 2
 	note A#, 6
 Music_TrainerVictory_branch_ebef2:
-	intensity $72
+	volume_envelope 7, 2
 	octave 4
 	note D_, 2
 	note C#, 2
@@ -96,7 +96,7 @@ Music_TrainerVictory_Ch2:
 	note B_, 2
 	octave 5
 	note C#, 2
-	intensity $d6
+	volume_envelope 13, 6
 	note D_, 12
 	stereopanning $f0
 Music_TrainerVictory_branch_ebf30:

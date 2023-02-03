@@ -45,9 +45,9 @@ Music_BikeRiding_branch_7dbc9:
 	note C_, 2
 	note D_, 2
 	note E_, 2
-	intensity $b6
+	volume_envelope 11, 6
 	note F_, 10
-	intensity $a6
+	volume_envelope 10, 6
 	note F_, 2
 	note E_, 2
 	note F_, 2
@@ -56,7 +56,7 @@ Music_BikeRiding_branch_7dbc9:
 	note D_, 2
 	note E_, 2
 	note F_, 6
-	intensity $b3
+	volume_envelope 11, 3
 	note E_, 2
 	note D_, 2
 	note D_, 1
@@ -64,19 +64,19 @@ Music_BikeRiding_branch_7dbc9:
 	note F_, 2
 	note E_, 1
 	note F_, 1
-	intensity $b5
+	volume_envelope 11, 5
 	note G_, 6
 	note G_, 6
 	note A_, 2
 	note F_, 2
 	note G_, 6
-	intensity $b4
+	volume_envelope 11, 4
 	note G_, 2
 	note F_, 4
-	intensity $a4
+	volume_envelope 10, 4
 	note E_, 2
 	note D_, 2
-	intensity $93
+	volume_envelope 9, 3
 	octave 3
 	note A_, 2
 	octave 4
@@ -121,9 +121,9 @@ Music_BikeRiding_branch_7dbc9:
 	note B_, 1
 	octave 4
 	note C_, 4
-	intensity $3d
+	volume_envelope 3, -5
 	note C_, 4
-	intensity $b4
+	volume_envelope 11, 4
 	note F_, 6
 	note G_, 4
 	note F_, 1
@@ -136,7 +136,7 @@ Music_BikeRiding_branch_7dbc9:
 	note E_, 1
 	note D_, 2
 	note C_, 2
-	intensity $b5
+	volume_envelope 11, 5
 	octave 3
 	note A_, 4
 	octave 4
@@ -150,12 +150,12 @@ Music_BikeRiding_branch_7dbc9:
 	note D_, 4
 	note F#, 4
 	vibrato $a, $26
-	intensity $80
+	volume_envelope 8, 0
 	note G_, 16
 	note G_, 4
-	intensity $87
+	volume_envelope 8, 7
 	note G_, 12
-	intensity $b5
+	volume_envelope 11, 5
 	vibrato $8, $14
 	jumpchannel Music_BikeRiding_branch_7dbc9
 Music_BikeRiding_Ch2:

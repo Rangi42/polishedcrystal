@@ -227,7 +227,7 @@ Music_PokemonCenter_branch_ed6d1:
 	note A_, 2
 	octave 4
 	note D_, 2
-	intensity $c3
+	volume_envelope 12, 3
 	note A_, 4
 	note G_, 4
 	note F#, 2
@@ -243,7 +243,7 @@ Music_PokemonCenter_branch_ed6e4:
 	note A_, 2
 	octave 4
 	note C#, 2
-	intensity $c3
+	volume_envelope 12, 3
 	note F#, 4
 	note E_, 4
 	note C#, 2

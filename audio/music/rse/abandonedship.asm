@@ -105,10 +105,10 @@ Music_AbandonedShipRSE_Ch1_loop:
 	note F_, 2
 	note D#, 4
 	note C#, 4
-	intensity $84
+	volume_envelope 8, 4
 	octave 3
 	note F_, 6
-	intensity $82
+	volume_envelope 8, 2
 	duty_cycle 2
 	octave 3
 	note F#, 1
@@ -268,13 +268,13 @@ Music_AbandonedShipRSE_Ch2_loop:
 	note D#, 2
 	note C#, 2
 	note D#, 2
-	intensity $a0
+	volume_envelope 10, 0
 	note C_, 4
-	intensity $a7
+	volume_envelope 10, 7
 	vibrato $15, $F2
 	note C_, 6
 	duty_cycle 2
-	intensity $85
+	volume_envelope 8, 5
 	note __, 2
 	vibrato $1c, $12
 	octave 5
@@ -283,9 +283,9 @@ Music_AbandonedShipRSE_Ch2_loop:
 	note A_, 4
 	note __, 6
 	duty_cycle 3
-	intensity $a0
+	volume_envelope 10, 0
 	note D#, 4
-	intensity $a7
+	volume_envelope 10, 7
 	vibrato $15, $72
 	note D#, 6
 	vibrato $1c, $12
@@ -293,9 +293,9 @@ Music_AbandonedShipRSE_Ch2_loop:
 	note F_, 2
 	note D#, 2
 	octave 3
-	intensity $a0
+	volume_envelope 10, 0
 	note G#, 4
-	intensity $a7
+	volume_envelope 10, 7
 	vibrato $15, $72
 	note G#, 6
 	octave 4
@@ -308,13 +308,13 @@ Music_AbandonedShipRSE_Ch2_loop:
 	note A#, 2
 	octave 4
 	note C_, 2
-	intensity $a0
+	volume_envelope 10, 0
 	note C#, 4
 	vibrato $15, $62
-	intensity $a7
+	volume_envelope 10, 7
 	note C#, 6
 	duty_cycle 2
-	intensity $85
+	volume_envelope 8, 5
 	vibrato $1c, $12
 	note __, 2
 	octave 5
@@ -322,16 +322,16 @@ Music_AbandonedShipRSE_Ch2_loop:
 	octave 4
 	note A#, 4
 	note __, 6
-	intensity $84
+	volume_envelope 8, 4
 	note C#, 2
-	intensity $64
+	volume_envelope 6, 4
 	note C#, 2
-	intensity $54
+	volume_envelope 5, 4
 	note C#, 2
-	intensity $44
+	volume_envelope 4, 4
 	note C#, 2
 	octave 3
-	intensity $84
+	volume_envelope 8, 4
 	note A_, 2
 	note B_, 2
 	octave 4
@@ -339,48 +339,48 @@ Music_AbandonedShipRSE_Ch2_loop:
 	octave 3
 	note F#, 2
 	note G#, 2
-	intensity $64
+	volume_envelope 6, 4
 	note G#, 2
-	intensity $54
+	volume_envelope 5, 4
 	note G#, 2
-	intensity $44
+	volume_envelope 4, 4
 	note G#, 2
-	intensity $84
+	volume_envelope 8, 4
 	octave 4
 	note C_, 2
-	intensity $64
+	volume_envelope 6, 4
 	note C_, 2
-	intensity $54
+	volume_envelope 5, 4
 	note C_, 2
-	intensity $44
+	volume_envelope 4, 4
 	note C_, 2
-	intensity $84
+	volume_envelope 8, 4
 	note C#, 2
-	intensity $64
+	volume_envelope 6, 4
 	note C#, 2
-	intensity $54
+	volume_envelope 5, 4
 	note C#, 2
-	intensity $84
+	volume_envelope 8, 4
 	note F_, 2
-	intensity $64
+	volume_envelope 6, 4
 	note F_, 2
-	intensity $84
+	volume_envelope 8, 4
 	note G#, 2
-	intensity $64
+	volume_envelope 6, 4
 	note G#, 2
-	intensity $84
+	volume_envelope 8, 4
 	octave 5
 	note C#, 2
 	note C_, 2
-	intensity $64
+	volume_envelope 6, 4
 	note C_, 2
-	intensity $54
+	volume_envelope 5, 4
 	note C_, 2
-	intensity $44
+	volume_envelope 4, 4
 	note C_, 2
-	intensity $34
+	volume_envelope 3, 4
 	note C_, 2
-	intensity $24
+	volume_envelope 2, 4
 	note C_, 2
 	note __, 2
 	duty_cycle 3
@@ -438,7 +438,7 @@ Music_AbandonedShipRSE_Ch2_branch_1:
 	note_type 12, 10, 0
 	octave 3
 	note A#, 4
-	intensity $a7
+	volume_envelope 10, 7
 	note A#, 6
 	octave 4
 	vibrato $1c, $12
@@ -458,11 +458,11 @@ Music_AbandonedShipRSE_Ch3_loop:
 	note F#, 1
 	note __, 3
 	octave 4
-	intensity $24
+	volume_envelope 2, 4
 	note F_, 4
 	note __, 4
 	octave 2
-	intensity $14
+	volume_envelope 1, 4
 	note F#, 1
 	note __, 1
 	note F#, 1
@@ -470,9 +470,9 @@ Music_AbandonedShipRSE_Ch3_loop:
 	note F#, 1
 	note __, 3
 	octave 4
-	intensity $24
+	volume_envelope 2, 4
 	note F_, 4
-	intensity $14
+	volume_envelope 1, 4
 	octave 2
 	note F#, 5
 	note __, 1
@@ -481,11 +481,11 @@ Music_AbandonedShipRSE_Ch3_loop:
 	note F#, 1
 	note __, 3
 	octave 4
-	intensity $24
+	volume_envelope 2, 4
 	note D#, 4
 	note __, 4
 	octave 2
-	intensity $14
+	volume_envelope 1, 4
 	note F#, 1
 	note __, 1
 	note F#, 1
@@ -493,10 +493,10 @@ Music_AbandonedShipRSE_Ch3_loop:
 	note F#, 1
 	note __, 3
 	octave 4
-	intensity $24
+	volume_envelope 2, 4
 	note D#, 4
 	octave 2
-	intensity $14
+	volume_envelope 1, 4
 	note F#, 5
 	note __, 1
 	note F_, 1
@@ -504,11 +504,11 @@ Music_AbandonedShipRSE_Ch3_loop:
 	note F_, 1
 	note __, 3
 	octave 4
-	intensity $24
+	volume_envelope 2, 4
 	note C_, 4
 	note __, 4
 	octave 2
-	intensity $14
+	volume_envelope 1, 4
 	note F_, 1
 	note __, 1
 	note F_, 1
@@ -516,10 +516,10 @@ Music_AbandonedShipRSE_Ch3_loop:
 	note F_, 1
 	note __, 3
 	octave 4
-	intensity $24
+	volume_envelope 2, 4
 	note C_, 4
 	octave 2
-	intensity $14
+	volume_envelope 1, 4
 	note F_, 5
 	note __, 1
 	note C#, 1
@@ -527,11 +527,11 @@ Music_AbandonedShipRSE_Ch3_loop:
 	note C#, 1
 	note __, 3
 	octave 3
-	intensity $24
+	volume_envelope 2, 4
 	note A#, 4
 	note __, 4
 	octave 2
-	intensity $14
+	volume_envelope 1, 4
 	note C#, 1
 	note __, 1
 	note C#, 1
@@ -539,10 +539,10 @@ Music_AbandonedShipRSE_Ch3_loop:
 	note C#, 1
 	note __, 3
 	octave 3
-	intensity $24
+	volume_envelope 2, 4
 	note A#, 4
 	octave 2
-	intensity $14
+	volume_envelope 1, 4
 	note C#, 6
 	note __, 8
 	note C#, 8
@@ -555,9 +555,9 @@ Music_AbandonedShipRSE_Ch3_loop:
 	note C#, 4
 	note F_, 2
 	note D#, 8
-	intensity $24
+	volume_envelope 2, 4
 	note D#, 8
-	intensity $14
+	volume_envelope 1, 4
 	octave 2
 	note G#, 1
 	note __, 1

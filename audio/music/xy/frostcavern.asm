@@ -36,7 +36,7 @@ Music_FrostCavernXY_Ch1:
 	note C_, 2
 	note C_, 12
 	duty_cycle 3
-	intensity $77
+	volume_envelope 7, 7
 	octave 5
 	note C_, 6
 	octave 4
@@ -53,7 +53,7 @@ Music_FrostCavernXY_Ch1:
 	note F_, 14
 Music_FrostCavernXY_Ch1_loop_1:
 	duty_cycle 0
-	intensity $b2
+	volume_envelope 11, 2
 	octave 5
 	note C_, 4
 	octave 4
@@ -164,8 +164,8 @@ Music_FrostCavernXY_Ch3_loop_1:
 	note D#, 4
 	loopchannel 6, Music_FrostCavernXY_Ch3_loop_1
 	note D#, 6
-	intensity $30
+	volume_envelope 3, 0
 	note D#, 4
-	intensity $20
+	volume_envelope 2, 0
 	note __, 4
 	jumpchannel Music_FrostCavernXY_Ch3_loop_main

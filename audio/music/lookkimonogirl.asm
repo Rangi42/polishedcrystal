@@ -22,82 +22,82 @@ Music_LookKimonoGirl_branch_f79d7:
 	callchannel Music_LookKimonoGirl_branch_f7a13
 	callchannel Music_LookKimonoGirl_branch_f7a13
 	callchannel Music_LookKimonoGirl_branch_f7a34
-	intensity $b4
+	volume_envelope 11, 4
 	octave 3
 	note E_, 1
-	intensity $54
+	volume_envelope 5, 4
 	octave 4
 	note E_, 1
-	intensity $b4
+	volume_envelope 11, 4
 	octave 3
 	note D_, 1
-	intensity $54
+	volume_envelope 5, 4
 	octave 4
 	note D_, 1
-	intensity $b4
+	volume_envelope 11, 4
 	octave 2
 	note B_, 1
-	intensity $54
+	volume_envelope 5, 4
 	octave 3
 	note B_, 1
-	intensity $b4
+	volume_envelope 11, 4
 	octave 2
 	note A_, 1
-	intensity $54
+	volume_envelope 5, 4
 	octave 3
 	note A_, 1
 	jumpchannel Music_LookKimonoGirl_branch_f79d7
 
 Music_LookKimonoGirl_branch_f7a13:
-	intensity $b4
+	volume_envelope 11, 4
 	octave 2
 	note F_, 1
-	intensity $74
+	volume_envelope 7, 4
 	octave 3
 	note F_, 1
-	intensity $b4
+	volume_envelope 11, 4
 	octave 2
 	note A_, 1
-	intensity $74
+	volume_envelope 7, 4
 	octave 3
 	note A_, 1
-	intensity $b4
+	volume_envelope 11, 4
 	octave 2
 	note B_, 1
-	intensity $74
+	volume_envelope 7, 4
 	octave 3
 	note B_, 1
-	intensity $b4
+	volume_envelope 11, 4
 	octave 3
 	note D_, 1
-	intensity $74
+	volume_envelope 7, 4
 	octave 4
 	note D_, 1
 	endchannel
 
 Music_LookKimonoGirl_branch_f7a34:
-	intensity $b4
+	volume_envelope 11, 4
 	octave 2
 	note E_, 1
-	intensity $74
+	volume_envelope 7, 4
 	octave 3
 	note E_, 1
-	intensity $b4
+	volume_envelope 11, 4
 	octave 2
 	note A_, 1
-	intensity $74
+	volume_envelope 7, 4
 	octave 3
 	note A_, 1
-	intensity $b4
+	volume_envelope 11, 4
 	octave 2
 	note B_, 1
-	intensity $74
+	volume_envelope 7, 4
 	octave 3
 	note B_, 1
-	intensity $b4
+	volume_envelope 11, 4
 	octave 3
 	note D_, 1
-	intensity $74
+	volume_envelope 7, 4
 	octave 4
 	note D_, 1
 	endchannel
@@ -182,27 +182,27 @@ Music_LookKimonoGirl_branch_f7aa8:
 	note __, 1
 	note E_, 2
 	note __, 3
-	intensity $b7
+	volume_envelope 11, 7
 	note E_, 2
 	note __, 2
-	intensity $b7
+	volume_envelope 11, 7
 	note E_, 2
 	note __, 1
-	intensity $a7
+	volume_envelope 10, 7
 	note E_, 2
 	note __, 1
 	note_type 6, 6, 5
 	note E_, 2
 	note __, 1
-	intensity $54
+	volume_envelope 5, 4
 	note E_, 2
 	note __, 1
-	intensity $63
+	volume_envelope 6, 3
 	note E_, 2
 	note E_, 2
-	intensity $91
+	volume_envelope 9, 1
 	note E_, 2
-	intensity $a1
+	volume_envelope 10, 1
 	note E_, 1
 	note_type 8, 11, 1
 	note E_, 1

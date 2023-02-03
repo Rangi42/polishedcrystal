@@ -12,113 +12,113 @@ Music_LookSage_Ch1:
 	note __, 2
 	note __, 16
 	callchannel Music_LookSage_branch_ee3fa
-	intensity $b3
+	volume_envelope 11, 3
 	octave 3
 	note D_, 2
-	intensity $93
+	volume_envelope 9, 3
 	note D_, 2
-	intensity $b3
+	volume_envelope 11, 3
 	note E_, 2
-	intensity $93
+	volume_envelope 9, 3
 	note E_, 2
-	intensity $b3
+	volume_envelope 11, 3
 	note A_, 2
-	intensity $93
+	volume_envelope 9, 3
 	note A_, 2
-	intensity $b3
+	volume_envelope 11, 3
 	note F_, 2
-	intensity $93
+	volume_envelope 9, 3
 	note F_, 2
 Music_LookSage_branch_ee38e:
-	intensity $b3
+	volume_envelope 11, 3
 	note D_, 2
-	intensity $93
+	volume_envelope 9, 3
 	note D_, 2
-	intensity $b3
+	volume_envelope 11, 3
 	octave 2
 	note B_, 2
-	intensity $93
+	volume_envelope 9, 3
 	note B_, 2
-	intensity $b3
+	volume_envelope 11, 3
 	note A_, 2
-	intensity $93
+	volume_envelope 9, 3
 	note A_, 2
-	intensity $b3
+	volume_envelope 11, 3
 	note B_, 2
-	intensity $93
+	volume_envelope 9, 3
 	note B_, 2
-	intensity $b3
+	volume_envelope 11, 3
 	octave 3
 	note D_, 2
-	intensity $93
+	volume_envelope 9, 3
 	note D_, 2
-	intensity $b3
+	volume_envelope 11, 3
 	octave 2
 	note B_, 2
-	intensity $93
+	volume_envelope 9, 3
 	note B_, 2
-	intensity $b3
+	volume_envelope 11, 3
 	octave 3
 	note D_, 2
-	intensity $93
+	volume_envelope 9, 3
 	note D_, 2
-	intensity $b3
+	volume_envelope 11, 3
 	note E_, 2
-	intensity $93
+	volume_envelope 9, 3
 	note E_, 2
-	intensity $b3
+	volume_envelope 11, 3
 	note F_, 2
-	intensity $93
+	volume_envelope 9, 3
 	note F_, 2
-	intensity $b3
+	volume_envelope 11, 3
 	note D_, 2
-	intensity $93
+	volume_envelope 9, 3
 	note D_, 2
-	intensity $b3
+	volume_envelope 11, 3
 	note E_, 2
-	intensity $93
+	volume_envelope 9, 3
 	note E_, 2
-	intensity $b3
+	volume_envelope 11, 3
 	note A_, 2
-	intensity $93
+	volume_envelope 9, 3
 	note A_, 2
-	intensity $b3
+	volume_envelope 11, 3
 	note D_, 2
-	intensity $93
+	volume_envelope 9, 3
 	note D_, 2
-	intensity $b3
+	volume_envelope 11, 3
 	octave 2
 	note B_, 2
-	intensity $93
+	volume_envelope 9, 3
 	note B_, 2
-	intensity $b3
+	volume_envelope 11, 3
 	note A_, 2
-	intensity $93
+	volume_envelope 9, 3
 	note A_, 2
-	intensity $b3
+	volume_envelope 11, 3
 	note B_, 2
-	intensity $93
+	volume_envelope 9, 3
 	note B_, 2
 	callchannel Music_LookSage_branch_ee3fa
 	jumpchannel Music_LookSage_branch_ee38e
 
 Music_LookSage_branch_ee3fa:
-	intensity $b3
+	volume_envelope 11, 3
 	octave 2
 	note E_, 2
-	intensity $93
+	volume_envelope 9, 3
 	note E_, 2
-	intensity $b3
+	volume_envelope 11, 3
 	note A_, 2
-	intensity $93
+	volume_envelope 9, 3
 	note A_, 2
-	intensity $b3
+	volume_envelope 11, 3
 	note B_, 2
-	intensity $93
+	volume_envelope 9, 3
 	note B_, 2
-	intensity $b3
+	volume_envelope 11, 3
 	note A_, 2
-	intensity $93
+	volume_envelope 9, 3
 	note A_, 2
 	endchannel
 

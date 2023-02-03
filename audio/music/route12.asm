@@ -27,11 +27,11 @@ Music_Route12_Ch1:
 	note F#, 1
 	note __, 2
 	note E_, 1
-	intensity $97
+	volume_envelope 9, 7
 	note D#, 12
 Music_Route12_branch_ec535:
 	duty_cycle 2
-	intensity $96
+	volume_envelope 9, 6
 	callchannel Music_Route12_branch_ec5b1
 	callchannel Music_Route12_branch_ec5bf
 	callchannel Music_Route12_branch_ec5b1
@@ -45,7 +45,7 @@ Music_Route12_branch_ec535:
 	callchannel Music_Route12_branch_ec5b1
 	callchannel Music_Route12_branch_ec5bf
 	callchannel Music_Route12_branch_ec5b1
-	intensity $92
+	volume_envelope 9, 2
 	octave 4
 	note E_, 1
 	octave 3
@@ -69,7 +69,7 @@ Music_Route12_branch_ec535:
 	note G#, 1
 	note B_, 1
 	duty_cycle 3
-	intensity $7f
+	volume_envelope 7, -7
 	octave 4
 	note C#, 3
 	octave 3
@@ -116,7 +116,7 @@ Music_Route12_branch_ec535:
 	note D#, 4
 	note F#, 4
 Music_Route12_branch_ec59b:
-	intensity $97
+	volume_envelope 9, 7
 	note G#, 1
 	note A_, 1
 	note B_, 4
@@ -175,7 +175,7 @@ Music_Route12_Ch2:
 	note __, 2
 	octave 4
 	note C_, 1
-	intensity $b7
+	volume_envelope 11, 7
 	octave 3
 	note B_, 8
 	note D#, 1
@@ -185,7 +185,7 @@ Music_Route12_Ch2:
 	note D#, 1
 Music_Route12_branch_ec5e5:
 	duty_cycle 3
-	intensity $b7
+	volume_envelope 11, 7
 	callchannel Music_Route12_branch_ec647
 	note F#, 1
 	note A_, 1
@@ -218,30 +218,30 @@ Music_Route12_branch_ec5e5:
 	note B_, 2
 	note __, 1
 	note A_, 1
-	intensity $b8
+	volume_envelope 11, 8
 	note G#, 6
-	intensity $b7
+	volume_envelope 11, 7
 	note G#, 6
-	intensity $6f
+	volume_envelope 6, -7
 	note G#, 16
 	duty_cycle 2
-	intensity $a8
+	volume_envelope 10, 8
 	note A_, 3
 	note G#, 3
 	note F#, 1
 	note __, 1
 	note F#, 8
-	intensity $a7
+	volume_envelope 10, 7
 	note F#, 10
 	note __, 2
 	note F#, 4
-	intensity $a8
+	volume_envelope 10, 8
 	note G#, 3
 	note F#, 3
 	note E_, 1
 	note __, 1
 	note E_, 8
-	intensity $a7
+	volume_envelope 10, 7
 	note E_, 10
 	note __, 2
 	note E_, 4
@@ -249,7 +249,7 @@ Music_Route12_branch_ec5e5:
 	note D#, 3
 	octave 3
 	note B_, 2
-	intensity $a8
+	volume_envelope 10, 8
 	octave 4
 	note B_, 8
 	note B_, 8
@@ -258,18 +258,18 @@ Music_Route12_branch_ec5e5:
 	note F#, 1
 	note E_, 14
 	note E_, 10
-	intensity $a4
+	volume_envelope 10, 4
 	note E_, 6
 	jumpchannel Music_Route12_branch_ec5e5
 
 Music_Route12_branch_ec647:
 	octave 4
 	note E_, 6
-	intensity $b1
+	volume_envelope 11, 1
 	octave 3
 	note B_, 1
 	note B_, 1
-	intensity $b7
+	volume_envelope 11, 7
 	note B_, 4
 	octave 4
 	note B_, 4

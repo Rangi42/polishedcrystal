@@ -20,17 +20,17 @@ Music_RocketTheme_branch_f768b:
 	note_type 12, 10, 8
 	callchannel Music_RocketTheme_branch_f74e6
 	duty_cycle 1
-	intensity $a8
+	volume_envelope 10, 8
 	callchannel Music_RocketTheme_branch_f74f7
 	callchannel Music_RocketTheme_branch_f758a
 	octave 4
 	note F#, 1
 	note __, 1
-	intensity $53
+	volume_envelope 5, 3
 	callchannel Music_RocketTheme_branch_f750c
-	intensity $c3
+	volume_envelope 12, 3
 	callchannel Music_RocketTheme_branch_f750c
-	intensity $e3
+	volume_envelope 14, 3
 	callchannel Music_RocketTheme_branch_f750c
 	note __, 16
 	duty_cycle 0
@@ -165,17 +165,17 @@ Music_RocketTheme_Ch2:
 Music_RocketTheme_branch_f774b:
 	note_type 12, 11, 7
 	callchannel Music_RocketTheme_branch_f7547
-	intensity $b7
+	volume_envelope 11, 7
 	callchannel Music_RocketTheme_branch_f758a
 	octave 5
 	note C_, 1
 	note __, 1
 	callchannel Music_RocketTheme_branch_f7554
-	intensity $53
+	volume_envelope 5, 3
 	callchannel Music_RocketTheme_branch_f7568
-	intensity $c3
+	volume_envelope 12, 3
 	callchannel Music_RocketTheme_branch_f7568
-	intensity $e3
+	volume_envelope 14, 3
 	callchannel Music_RocketTheme_branch_f7568
 	callchannel Music_RocketTheme_branch_f756f
 	vibrato $6, $64
@@ -183,10 +183,10 @@ Music_RocketTheme_branch_f774b:
 	octave 4
 	note A_, 1
 	vibrato $0, $0
-	intensity $b8
+	volume_envelope 11, 8
 	note A#, 14
 	vibrato $5, $22
-	intensity $b7
+	volume_envelope 11, 7
 	note A#, 5
 	vibrato $6, $64
 	note_type 12, 11, 7
@@ -198,11 +198,11 @@ Music_RocketTheme_branch_f774b:
 	callchannel Music_RocketTheme_branch_f7800
 	note B_, 1
 	vibrato $0, $0
-	intensity $b8
+	volume_envelope 11, 8
 	octave 4
 	note C_, 14
 	vibrato $5, $22
-	intensity $b7
+	volume_envelope 11, 7
 	note C_, 5
 	vibrato $6, $64
 	note_type 12, 11, 7
@@ -340,9 +340,9 @@ Music_RocketTheme_branch_f782f:
 	callchannel Music_RocketTheme_branch_f75bf
 	callchannel Music_RocketTheme_branch_f75fe
 	callchannel Music_RocketTheme_branch_f75fe
-	intensity $24
+	volume_envelope 2, 4
 	callchannel Music_RocketTheme_branch_f7623
-	intensity $14
+	volume_envelope 1, 4
 	callchannel Music_RocketTheme_branch_f75cc
 	callchannel Music_RocketTheme_branch_f7623
 	callchannel Music_RocketTheme_branch_f75e1

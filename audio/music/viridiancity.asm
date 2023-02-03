@@ -76,11 +76,11 @@ Music_ViridianCity_branch_f4039:
 	note __, 1
 	note F#, 1
 	note __, 1
-	intensity $87
+	volume_envelope 8, 7
 	octave 5
 	note F#, 4
 	note F_, 4
-	intensity $a7
+	volume_envelope 10, 7
 	octave 3
 	note G_, 6
 	note B_, 8
@@ -543,7 +543,7 @@ Music_ViridianCity_Ch3:
 	note F#, 2
 	note G_, 2
 Music_ViridianCity_branch_f4246:
-	intensity $13
+	volume_envelope 1, 3
 	callchannel Music_ViridianCity_branch_f42a2
 	octave 5
 	note F#, 2
@@ -551,7 +551,7 @@ Music_ViridianCity_branch_f4246:
 	callchannel Music_ViridianCity_branch_f42a2
 	note E_, 4
 	vibrato $18, $25
-	intensity $25
+	volume_envelope 2, 5
 	note B_, 12
 	note G_, 4
 	octave 6

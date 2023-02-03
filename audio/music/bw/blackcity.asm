@@ -20,11 +20,11 @@ Music_BlackCityBW_Ch1_loop:
 	callchannel Music_BlackCityBW_Ch1_branch_1
 	octave 4
 	duty_cycle 1
-	intensity $54
+	volume_envelope 5, 4
 	note F#, 1
-	intensity $74
+	volume_envelope 7, 4
 	note G_, 1
-	intensity $94
+	volume_envelope 9, 4
 	note A#, 2
 	note F#, 2
 	note G_, 2
@@ -35,11 +35,11 @@ Music_BlackCityBW_Ch1_loop:
 	octave 3
 	note A#, 2
 	duty_cycle 0
-	intensity $b1
+	volume_envelope 11, 1
 	callchannel Music_BlackCityBW_Ch1_branch_1
 	note __, 2
 	duty_cycle 1
-	intensity $94
+	volume_envelope 9, 4
 	note E_, 2
 	note F#, 2
 	note G_, 2
@@ -50,7 +50,7 @@ Music_BlackCityBW_Ch1_loop:
 	note G_, 2
 	note B_, 2 ;;;;; halfway point
 	duty_cycle 0
-	intensity $91
+	volume_envelope 9, 1
 	note D_, 4
 	octave 3
 	note F_, 4
@@ -155,100 +155,100 @@ Music_BlackCityBW_Ch1_branch_1:
 	octave 4
 	note E_, 2
 	octave 3
-	intensity $71
+	volume_envelope 7, 1
 	note G_, 2
-	intensity $b1
+	volume_envelope 11, 1
 	note G_, 4
 	octave 4
 	note E_, 2
 	octave 3
-	intensity $71
+	volume_envelope 7, 1
 	note G_, 2
-	intensity $b1
+	volume_envelope 11, 1
 	note G_, 4
 	octave 4
 	note E_, 2
 	octave 3
-	intensity $71
+	volume_envelope 7, 1
 	note G_, 2
-	intensity $b1
+	volume_envelope 11, 1
 	note G_, 4
 	octave 4
 	note E_, 2
 	octave 3
-	intensity $71
+	volume_envelope 7, 1
 	note G_, 2
-	intensity $b1
+	volume_envelope 11, 1
 	note G_, 4
 	octave 4
 	note D#, 2
 	octave 3
-	intensity $71
+	volume_envelope 7, 1
 	note G_, 2
-	intensity $b1
+	volume_envelope 11, 1
 	note G_, 4
 	octave 4
 	note D#, 2
 	octave 3
-	intensity $71
+	volume_envelope 7, 1
 	note G_, 2
-	intensity $b1
+	volume_envelope 11, 1
 	note G_, 4
 	octave 4
 	note D#, 2
 	octave 3
-	intensity $71
+	volume_envelope 7, 1
 	note G_, 2
-	intensity $b1
+	volume_envelope 11, 1
 	note G_, 4
 	octave 4
 	note D#, 2
 	octave 3
-	intensity $71
+	volume_envelope 7, 1
 	note G_, 2
-	intensity $b1
+	volume_envelope 11, 1
 	note G_, 4
 	octave 4
 	note D_, 2
 	octave 3
-	intensity $71
+	volume_envelope 7, 1
 	note G_, 2
-	intensity $b1
+	volume_envelope 11, 1
 	note G_, 4
 	octave 4
 	note D_, 2
 	octave 3
-	intensity $71
+	volume_envelope 7, 1
 	note G_, 2
-	intensity $b1
+	volume_envelope 11, 1
 	note G_, 4
 	octave 4
 	note D_, 2
 	octave 3
-	intensity $71
+	volume_envelope 7, 1
 	note G_, 2
-	intensity $b1
+	volume_envelope 11, 1
 	note G_, 4
 	octave 4
 	note D_, 2
 	octave 3
-	intensity $71
+	volume_envelope 7, 1
 	note G_, 2
-	intensity $b1
+	volume_envelope 11, 1
 	note G_, 4
 	octave 4
 	note C#, 2
 	octave 3
-	intensity $71
+	volume_envelope 7, 1
 	note G_, 2
-	intensity $b1
+	volume_envelope 11, 1
 	note G_, 4
 	octave 4
 	note C#, 2
 	octave 3
-	intensity $71
+	volume_envelope 7, 1
 	note G_, 2
-	intensity $b1
+	volume_envelope 11, 1
 	note G_, 2
 	endchannel
 
@@ -282,11 +282,11 @@ Music_BlackCityBW_Ch2:
 	note B_, 14
 	octave 4
 	duty_cycle 0
-	intensity $54
+	volume_envelope 5, 4
 	note C_, 1
-	intensity $74
+	volume_envelope 7, 4
 	note C#, 1
-	intensity $94
+	volume_envelope 9, 4
 	note D#, 2
 	note C_, 2
 	note C#, 2
@@ -294,7 +294,7 @@ Music_BlackCityBW_Ch2:
 	note A_, 2
 	note A#, 2
 	note F#, 3
-	intensity $a7
+	volume_envelope 10, 7
 	duty_cycle 2
 	octave 3
 	note G#, 1
@@ -319,7 +319,7 @@ Music_BlackCityBW_Ch2:
 	octave 3
 	note B_, 16
 	duty_cycle 0
-	intensity $94
+	volume_envelope 9, 4
 	octave 2
 	note B_, 2
 	octave 3
@@ -332,7 +332,7 @@ Music_BlackCityBW_Ch2:
 	note E_, 2
 	note F#, 2
 	duty_cycle 1
-	intensity $b7
+	volume_envelope 11, 7
 	vibrato $10, $44
 	note A_, 12
 	note G_, 12
@@ -340,9 +340,9 @@ Music_BlackCityBW_Ch2:
 	note C_, 8
 	octave 4
 	note G_, 12
-	intensity $b0
+	volume_envelope 11, 0
 	note F_, 4
-	intensity $b7
+	volume_envelope 11, 7
 	note F_, 16
 	note F_, 12
 	note D#, 12
@@ -350,34 +350,34 @@ Music_BlackCityBW_Ch2:
 	note C_, 8
 	octave 4
 	note F_, 12
-	intensity $b0
+	volume_envelope 11, 0
 	note D#, 4
-	intensity $b7
+	volume_envelope 11, 7
 	note D#, 16
 	note D#, 12
 	note D_, 12
 	note A#, 8
-	intensity $b0
+	volume_envelope 11, 0
 	note D_, 4
-	intensity $b7
+	volume_envelope 11, 7
 	note D_, 12
-	intensity $b0
+	volume_envelope 11, 0
 	note D#, 4
-	intensity $b7
+	volume_envelope 11, 7
 	note D#, 12
-	intensity $b0
+	volume_envelope 11, 0
 	note C_, 16
-	intensity $b7
+	volume_envelope 11, 7
 	note C_, 16
-	intensity $b0
+	volume_envelope 11, 0
 	note F_, 2
-	intensity $b7
+	volume_envelope 11, 7
 	note F_, 10
 	note D#, 2
 	note F_, 2
-	intensity $b0
+	volume_envelope 11, 0
 	note G_, 2
-	intensity $b7
+	volume_envelope 11, 7
 	note G_, 10
 	jumpchannel Music_BlackCityBW_Ch2
 

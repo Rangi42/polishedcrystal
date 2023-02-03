@@ -14,50 +14,50 @@ Music_RivalBattle_Ch1:
 	octave 3
 	note F#, 2
 	note A#, 4
-	intensity $b7
+	volume_envelope 11, 7
 	note A#, 10
-	intensity $b2
+	volume_envelope 11, 2
 	note F#, 2
 	octave 4
 	note C#, 4
-	intensity $b7
+	volume_envelope 11, 7
 	note C#, 6
 	note E_, 4
 Music_RivalBattle_branch_e9777:
-	intensity $b2
+	volume_envelope 11, 2
 	octave 2
 	note A#, 6
-	intensity $b7
+	volume_envelope 11, 7
 	octave 3
 	note C#, 6
-	intensity $b2
+	volume_envelope 11, 2
 	note D#, 4
 	loopchannel 3, Music_RivalBattle_branch_e9777
-	intensity $b2
+	volume_envelope 11, 2
 	octave 2
 	note A#, 2
 	octave 3
 	note C#, 4
-	intensity $b7
+	volume_envelope 11, 7
 	note C#, 10
 Music_RivalBattle_branch_e978f:
-	intensity $b2
+	volume_envelope 11, 2
 	octave 3
 	note G#, 6
-	intensity $b7
+	volume_envelope 11, 7
 	note B_, 6
-	intensity $b2
+	volume_envelope 11, 2
 	octave 4
 	note C#, 4
 	loopchannel 3, Music_RivalBattle_branch_e978f
-	intensity $b2
+	volume_envelope 11, 2
 	octave 3
 	note G#, 2
 	note B_, 4
-	intensity $4d
+	volume_envelope 4, -5
 	note B_, 10
 Music_RivalBattle_branch_e97a6:
-	intensity $b7
+	volume_envelope 11, 7
 	note A#, 6
 	note F#, 6
 	note D#, 4
@@ -65,21 +65,21 @@ Music_RivalBattle_branch_e97a6:
 	note F#, 4
 	note G#, 2
 	note A#, 6
-	intensity $b2
+	volume_envelope 11, 2
 	note F_, 1
 	note D#, 1
 	note C#, 1
 	note D#, 1
-	intensity $b7
+	volume_envelope 11, 7
 	note F_, 4
-	intensity $b2
+	volume_envelope 11, 2
 	note G#, 1
 	note F#, 1
 	note F_, 1
 	note F#, 1
-	intensity $b7
+	volume_envelope 11, 7
 	note G#, 4
-	intensity $b6
+	volume_envelope 11, 6
 	note G#, 2
 	note A#, 2
 	note B_, 2
@@ -91,7 +91,7 @@ Music_RivalBattle_branch_e97a6:
 	note B_, 2
 	octave 4
 	note E_, 2
-	intensity $b7
+	volume_envelope 11, 7
 	octave 3
 	note A#, 6
 	note F#, 6
@@ -107,7 +107,7 @@ Music_RivalBattle_branch_e97a6:
 	note C#, 6
 	octave 3
 	note G#, 4
-	intensity $b5
+	volume_envelope 11, 5
 	note C#, 2
 	note F_, 2
 	note G#, 2
@@ -118,32 +118,32 @@ Music_RivalBattle_branch_e97a6:
 	note G#, 2
 	note F_, 2
 	note G#, 2
-	intensity $b7
+	volume_envelope 11, 7
 	note F#, 10
-	intensity $b4
+	volume_envelope 11, 4
 	octave 2
 	note B_, 2
 	octave 3
 	note D#, 2
 	note F#, 2
-	intensity $b7
+	volume_envelope 11, 7
 	note F_, 4
 	note D#, 4
 	note C#, 2
 	note D#, 6
-	intensity $a0
+	volume_envelope 10, 0
 	note F_, 8
-	intensity $a7
+	volume_envelope 10, 7
 	note F_, 8
-	intensity $a0
+	volume_envelope 10, 0
 	octave 2
 	note A#, 8
-	intensity $a7
+	volume_envelope 10, 7
 	note A#, 8
-	intensity $b7
+	volume_envelope 11, 7
 	octave 3
 	note F#, 10
-	intensity $b5
+	volume_envelope 11, 5
 	octave 2
 	note B_, 2
 	octave 3
@@ -157,17 +157,17 @@ Music_RivalBattle_branch_e97a6:
 	note F#, 2
 	note F_, 2
 	note G#, 2
-	intensity $a0
+	volume_envelope 10, 0
 	note A#, 16
-	intensity $a7
+	volume_envelope 10, 7
 	note A#, 16
-	intensity $a0
+	volume_envelope 10, 0
 	note B_, 8
-	intensity $a7
+	volume_envelope 10, 7
 	note B_, 4
-	intensity $b7
+	volume_envelope 11, 7
 	note G#, 4
-	intensity $b5
+	volume_envelope 11, 5
 	octave 4
 	note E_, 2
 	note D#, 2
@@ -205,7 +205,7 @@ Music_RivalBattle_branch_e9837:
 	octave 4
 	note D#, 2
 	loopchannel 2, Music_RivalBattle_branch_e9837
-	intensity $94
+	volume_envelope 9, 4
 	octave 3
 	note D#, 8
 	octave 2
@@ -213,14 +213,14 @@ Music_RivalBattle_branch_e9837:
 	octave 3
 	note G_, 8
 	note F_, 8
-	intensity $96
+	volume_envelope 9, 6
 	octave 2
 	note G#, 8
 	note A#, 8
 	note B_, 8
 	octave 3
 	note C#, 8
-	intensity $b7
+	volume_envelope 11, 7
 	octave 4
 	note D#, 8
 	octave 3
@@ -234,16 +234,16 @@ Music_RivalBattle_branch_e9837:
 	note B_, 8
 	octave 4
 	note C#, 8
-	intensity $a0
+	volume_envelope 10, 0
 	note D#, 8
-	intensity $a7
+	volume_envelope 10, 7
 	note D#, 8
-	intensity $a0
+	volume_envelope 10, 0
 	octave 3
 	note G_, 8
-	intensity $a7
+	volume_envelope 10, 7
 	note G_, 8
-	intensity $b7
+	volume_envelope 11, 7
 	note D#, 8
 	note C#, 8
 	note D#, 4
@@ -252,7 +252,7 @@ Music_RivalBattle_branch_e9837:
 	note B_, 4
 	octave 3
 	note C#, 4
-	intensity $c7
+	volume_envelope 12, 7
 	octave 2
 	note A#, 6
 	octave 3
@@ -328,94 +328,94 @@ Music_RivalBattle_Ch2:
 	note C_, 1
 	octave 2
 	note B_, 1
-	intensity $c2
+	volume_envelope 12, 2
 	octave 4
 	note D#, 6
-	intensity $c7
+	volume_envelope 12, 7
 	octave 3
 	note F#, 6
-	intensity $c2
+	volume_envelope 12, 2
 	note G#, 4
 Music_RivalBattle_branch_e98ea:
-	intensity $c2
+	volume_envelope 12, 2
 	note D#, 6
-	intensity $c7
+	volume_envelope 12, 7
 	note F#, 6
-	intensity $c2
+	volume_envelope 12, 2
 	note G#, 4
 	loopchannel 2, Music_RivalBattle_branch_e98ea
-	intensity $c2
+	volume_envelope 12, 2
 	note D#, 2
 	note F#, 4
-	intensity $c7
+	volume_envelope 12, 7
 	note F#, 8
-	intensity $a2
+	volume_envelope 10, 2
 	note B_, 1
 	octave 4
 	note C_, 1
 Music_RivalBattle_branch_e9903:
-	intensity $c2
+	volume_envelope 12, 2
 	note C#, 6
-	intensity $c7
+	volume_envelope 12, 7
 	note E_, 6
-	intensity $c2
+	volume_envelope 12, 2
 	note F#, 4
 	loopchannel 3, Music_RivalBattle_branch_e9903
-	intensity $c2
+	volume_envelope 12, 2
 	note C#, 2
 	note E_, 4
-	intensity $b0
+	volume_envelope 11, 0
 	note E_, 4
-	intensity $b7
+	volume_envelope 11, 7
 	note E_, 6
 Music_RivalBattle_branch_e991a:
 	callchannel Music_RivalBattle_branch_e99e0
-	intensity $b0
+	volume_envelope 11, 0
 	note G#, 8
-	intensity $b7
+	volume_envelope 11, 7
 	note G#, 8
 	callchannel Music_RivalBattle_branch_e99e0
-	intensity $4e
+	volume_envelope 4, -6
 	note G#, 8
-	intensity $b7
+	volume_envelope 11, 7
 	note G#, 8
-	intensity $b0
+	volume_envelope 11, 0
 	octave 3
 	note B_, 10
-	intensity $b7
+	volume_envelope 11, 7
 	note B_, 6
-	intensity $b0
+	volume_envelope 11, 0
 	octave 4
 	note C#, 8
 	octave 3
 	note B_, 8
-	intensity $b0
+	volume_envelope 11, 0
 	note A#, 10
-	intensity $b7
+	volume_envelope 11, 7
 	note A#, 6
-	intensity $2f
+	volume_envelope 2, -7
 	note D#, 10
-	intensity $b7
+	volume_envelope 11, 7
 	note D#, 6
-	intensity $b0
+	volume_envelope 11, 0
 	note B_, 10
-	intensity $b7
+	volume_envelope 11, 7
 	note B_, 6
-	intensity $c7
+	volume_envelope 12, 7
 	octave 4
 	note C#, 8
 	octave 3
 	note B_, 8
-	intensity $b0
+	volume_envelope 11, 0
 	octave 4
 	note D#, 16
-	intensity $b7
+	volume_envelope 11, 7
 	note D#, 16
-	intensity $b0
+	volume_envelope 11, 0
 	note E_, 4
-	intensity $b7
+	volume_envelope 11, 7
 	note E_, 6
-	intensity $c7
+	volume_envelope 12, 7
 	note E_, 2
 	note G#, 2
 	note B_, 2
@@ -423,36 +423,36 @@ Music_RivalBattle_branch_e991a:
 	note C#, 8
 	octave 4
 	note B_, 8
-	intensity $b0
+	volume_envelope 11, 0
 	note A#, 10
-	intensity $b7
+	volume_envelope 11, 7
 	note A#, 6
-	intensity $b0
+	volume_envelope 11, 0
 	note A_, 10
-	intensity $b7
+	volume_envelope 11, 7
 	note A_, 6
-	intensity $b0
+	volume_envelope 11, 0
 	note G#, 10
-	intensity $b7
+	volume_envelope 11, 7
 	note G#, 6
-	intensity $b0
+	volume_envelope 11, 0
 	note G_, 10
-	intensity $b7
+	volume_envelope 11, 7
 	note G_, 6
-	intensity $a4
+	volume_envelope 10, 4
 	octave 3
 	note G_, 8
 	note D#, 8
 	note A#, 8
 	note G#, 8
-	intensity $a6
+	volume_envelope 10, 6
 	octave 2
 	note B_, 8
 	octave 3
 	note C#, 8
 	note D#, 8
 	note F_, 8
-	intensity $c7
+	volume_envelope 12, 7
 	octave 4
 	note G_, 8
 	note D#, 8
@@ -464,74 +464,74 @@ Music_RivalBattle_branch_e991a:
 	note C#, 8
 	note D#, 8
 	note F_, 8
-	intensity $b0
+	volume_envelope 11, 0
 	note G_, 16
 	note D#, 16
 	octave 3
 	note B_, 8
 	note A#, 8
 	note G#, 8
-	intensity $c7
+	volume_envelope 12, 7
 	note F_, 8
 Music_RivalBattle_branch_e99a6:
-	intensity $c2
+	volume_envelope 12, 2
 	octave 3
 	note A#, 6
-	intensity $c7
+	volume_envelope 12, 7
 	octave 4
 	note C#, 6
-	intensity $c2
+	volume_envelope 12, 2
 	note D#, 4
 	loopchannel 3, Music_RivalBattle_branch_e99a6
-	intensity $c2
+	volume_envelope 12, 2
 	octave 3
 	note A#, 2
 	octave 4
 	note C#, 4
-	intensity $b7
+	volume_envelope 11, 7
 	note C#, 6
-	intensity $9a
+	volume_envelope 9, -2
 	note C#, 4
 Music_RivalBattle_branch_e99c1:
-	intensity $c2
+	volume_envelope 12, 2
 	octave 3
 	note G#, 6
-	intensity $c7
+	volume_envelope 12, 7
 	note B_, 6
-	intensity $c2
+	volume_envelope 12, 2
 	octave 4
 	note C#, 4
 	loopchannel 3, Music_RivalBattle_branch_e99c1
-	intensity $c2
+	volume_envelope 12, 2
 	octave 3
 	note G#, 2
 	note B_, 4
-	intensity $c7
+	volume_envelope 12, 7
 	note B_, 6
-	intensity $6a
+	volume_envelope 6, -2
 	octave 4
 	note D_, 4
 	jumpchannel Music_RivalBattle_branch_e991a
 
 Music_RivalBattle_branch_e99e0:
-	intensity $c7
+	volume_envelope 12, 7
 	note D#, 10
-	intensity $c4
+	volume_envelope 12, 4
 	octave 3
 	note A#, 2
 	octave 4
 	note D#, 2
 	note F#, 2
-	intensity $c5
+	volume_envelope 12, 5
 	note F_, 4
 	note D#, 4
-	intensity $c2
+	volume_envelope 12, 2
 	note C#, 2
-	intensity $c7
+	volume_envelope 12, 7
 	note D#, 6
-	intensity $b0
+	volume_envelope 11, 0
 	note F_, 8
-	intensity $b7
+	volume_envelope 11, 7
 	note F_, 8
 	endchannel
 

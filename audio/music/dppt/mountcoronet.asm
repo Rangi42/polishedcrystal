@@ -79,7 +79,7 @@ Music_MountCoronetDPPt_Ch1_loop:
 	octave 4
 	note A#, 2
 Music_MountCoronetDPPt_Ch1_branch_2:
-	intensity $87
+	volume_envelope 8, 7
 	octave 2
 	note G_, 4
 	octave 3
@@ -131,12 +131,12 @@ Music_MountCoronetDPPt_Ch1_branch_2:
 	octave 2
 	note D#, 2
 	octave 5
-	intensity $85
+	volume_envelope 8, 5
 	note G_, 1
 	note G#, 1
 	note G_, 1
 	note D#, 1
-	intensity $A5
+	volume_envelope 10, 5
 	note C_, 1
 	octave 4
 	note A#, 1
@@ -148,7 +148,7 @@ Music_MountCoronetDPPt_Ch1_branch_2:
 	note C_, 1
 	note F_, 1
 	note G#, 4
-	intensity $87
+	volume_envelope 8, 7
 	octave 2
 	note F_, 6
 	note G_, 4
@@ -339,18 +339,18 @@ Music_MountCoronetDPPt_Ch1_branch_2:
 	note C_, 1
 	note F_, 1
 	note G_, 1
-	intensity $A4
+	volume_envelope 10, 4
 	note A#, 1
 	octave 4
 	note C#, 1
 	note E_, 1
 	note G_, 1
 	note A#, 3
-	intensity $84
+	volume_envelope 8, 4
 	note A#, 3
-	intensity $64
+	volume_envelope 6, 4
 	note A#, 3
-	intensity $44
+	volume_envelope 4, 4
 	note A#, 3
 	note __, 16
 	note_type 12, 8, 7
@@ -406,21 +406,21 @@ Music_MountCoronetDPPt_Ch2_loop:
 	note __, 4
 	octave 4
 	note C_, 6
-	intensity $85
+	volume_envelope 8, 5
 	note D_, 8
-	intensity $45
+	volume_envelope 4, 5
 	note C_, 10
 	note C_, 8
 	octave 3
 	note A#, 6
 	octave 4
-	intensity $85
+	volume_envelope 8, 5
 	note C_, 8
 	octave 3
-	intensity $45
+	volume_envelope 4, 5
 	note A#, 6
 	octave 5
-	intensity $85
+	volume_envelope 8, 5
 	note G_, 1
 	note G#, 1
 	note G_, 1
@@ -432,35 +432,35 @@ Music_MountCoronetDPPt_Ch2_loop:
 	note C_, 10
 	octave 4
 	note D_, 8
-	intensity $45
+	volume_envelope 4, 5
 	note C_, 10
 	note C_, 8
 	octave 3
 	note A#, 6
 	octave 4
-	intensity $85
+	volume_envelope 8, 5
 	note C_, 8
 	octave 3
-	intensity $45
+	volume_envelope 4, 5
 	note A#, 10
 	note A#, 8
 	octave 4
 	note C_, 6
-	intensity $85
+	volume_envelope 8, 5
 	note D_, 8
-	intensity $45
+	volume_envelope 4, 5
 	note C_, 10
 	note C_, 8
 	octave 3
 	note A#, 6
 	octave 4
-	intensity $85
+	volume_envelope 8, 5
 	note C_, 8
 	octave 3
-	intensity $45
+	volume_envelope 4, 5
 	note A#, 2
 	octave 5
-	intensity $85
+	volume_envelope 8, 5
 	note G_, 1
 	note G#, 1
 	note G_, 1
@@ -481,36 +481,36 @@ Music_MountCoronetDPPt_Ch2_loop:
 	note C_, 6
 	octave 4
 	note D_, 8
-	intensity $45
+	volume_envelope 4, 5
 	note C_, 10
 	note C_, 8
 	octave 3
 	note A#, 6
 	octave 4
-	intensity $85
+	volume_envelope 8, 5
 	note C_, 8
 	octave 3
-	intensity $45
+	volume_envelope 4, 5
 	note A#, 10
 	note A#, 8
 	octave 4
 	note C_, 6
 	octave 4
 	note D_, 8
-	intensity $45
+	volume_envelope 4, 5
 	note C_, 10
 	note C_, 8
 	octave 3
 	note A#, 6
 	octave 4
-	intensity $85
+	volume_envelope 8, 5
 	note C_, 8
 	octave 3
-	intensity $45
+	volume_envelope 4, 5
 	note A#, 10
 	note A#, 4
 Music_MountCoronetDPPt_Ch2_branch_2:
-	intensity $85
+	volume_envelope 8, 5
 	duty_cycle 1
 	octave 2
 	note F_, 4
@@ -526,9 +526,9 @@ Music_MountCoronetDPPt_Ch2_branch_2:
 	note G#, 1
 	note F_, 2
 	note D_, 4
-	intensity $45
+	volume_envelope 4, 5
 	note D_, 4
-	intensity $85
+	volume_envelope 8, 5
 	octave 2
 	note F#, 1
 	octave 3
@@ -585,7 +585,7 @@ Music_MountCoronetDPPt_Ch2_branch_2:
 	note E_, 3
 	note D_, 2
 	octave 3
-	intensity $85
+	volume_envelope 8, 5
 	note D_, 4
 	note __, 4
 	note C_, 4
@@ -612,7 +612,7 @@ Music_MountCoronetDPPt_Ch2_branch_2:
 	note D_, 6
 	octave 4
 	duty_cycle 3
-	intensity $B5
+	volume_envelope 11, 5
 	;quarter
 	note C_, 4
 	note C_, 1
@@ -748,27 +748,27 @@ Music_MountCoronetDPPt_Ch2_branch_2:
 	note C_, 1
 	note F_, 1
 	note G_, 1
-	intensity $A4
+	volume_envelope 10, 4
 	note A#, 1
 	octave 5
 	note C#, 1
 	note E_, 1
 	note G_, 1
 	note A#, 3
-	intensity $84
+	volume_envelope 8, 4
 	note A#, 3
-	intensity $64
+	volume_envelope 6, 4
 	note A#, 3
-	intensity $44
+	volume_envelope 4, 4
 	note A#, 3
 	note __, 4
-	intensity $1F
+	volume_envelope 1, -7
 	duty_cycle 0
 	octave 3
 	note G#, 6
-	intensity $70
+	volume_envelope 7, 0
 	note G#, 4
-	intensity $77
+	volume_envelope 7, 7
 	note G#, 6
 	jumpchannel Music_MountCoronetDPPt_Ch2_loop
 ;	octave 4
@@ -857,33 +857,33 @@ Music_MountCoronetDPPt_Ch3_branch_1:
 	note F_, 1
 	note D#, 1
 	note C_, 4
-	intensity $24
+	volume_envelope 2, 4
 	note C_, 10
 	note C_, 6
 	note __, 2
-	intensity $25
+	volume_envelope 2, 5
 	octave 4
 	note C_, 5
 	note __, 1
 	note C_, 1
 	note __, 1
 	octave 5
-	intensity $15
+	volume_envelope 1, 5
 	note C_, 1
 	note __, 1
 	note C_, 1
 	note __, 1
-	intensity $25
+	volume_envelope 2, 5
 	note C_, 1
 	note __, 1
 	note C_, 1
 	note __, 1
-	intensity $35
+	volume_envelope 3, 5
 	note C_, 1
 	note __, 1
 	note C_, 2
 	note __, 16
-	intensity $14
+	volume_envelope 1, 4
 	octave 3
 	note D#, 2
 	note E_, 2
@@ -918,12 +918,12 @@ Music_MountCoronetDPPt_Ch3_branch_1:
 	note F_, 4
 	note G_, 2
 	note D_, 4
-	intensity $24
+	volume_envelope 2, 4
 	note D_, 12
 	note __, 16
 	note __, 8
 	note __, 12
-	intensity $14
+	volume_envelope 1, 4
 	octave 4
 	note C_, 2
 	octave 3
@@ -959,7 +959,7 @@ Music_MountCoronetDPPt_Ch3_branch_1:
 	note E_, 1
 	note F_, 3
 	note __, 8
-	intensity $25
+	volume_envelope 2, 5
 	note A_, 2
 	note __, 1
 	note F_, 1
@@ -967,7 +967,7 @@ Music_MountCoronetDPPt_Ch3_branch_1:
 	note G#, 8
 	note __, 2
 	octave 4
-	intensity $15
+	volume_envelope 1, 5
 	note D_, 1
 	note D_, 1
 	note D_, 1
@@ -981,7 +981,7 @@ Music_MountCoronetDPPt_Ch3_branch_1:
 	octave 4
 	note C_, 2
 	note __, 8
-	intensity $14
+	volume_envelope 1, 4
 	octave 4
 	note C_, 2
 	octave 3
@@ -1026,10 +1026,10 @@ Music_MountCoronetDPPt_Ch3_branch_1:
 	note A#, 2
 	octave 5
 	note C_, 6
-	intensity $24
+	volume_envelope 2, 4
 	note C_, 2
 	note __, 6
-	intensity $11
+	volume_envelope 1, 1
 	octave 2
 	note F_, 2
 	note __, 1
@@ -1049,7 +1049,7 @@ Music_MountCoronetDPPt_Ch3_branch_1:
 	note A#, 1
 	octave 3
 	note C_, 1
-	intensity $14
+	volume_envelope 1, 4
 	note C#, 16
 	note D_, 16
 	note D#, 16

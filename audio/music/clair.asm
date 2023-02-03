@@ -27,18 +27,18 @@ Music_Clair_branch_1faab:
 	note __, 1
 	note G#, 1
 	duty_cycle 2
-	intensity $92
+	volume_envelope 9, 2
 	octave 5
 	note F_, 1
 	note G_, 4
-	intensity $a7
+	volume_envelope 10, 7
 	duty_cycle 3
 	octave 3
 	note D#, 4
 	note F_, 4
 	note G_, 4
 Music_Clair_branch_1fac9:
-	intensity $93
+	volume_envelope 9, 3
 	callchannel Music_Clair_branch_1fb12
 	octave 2
 	note B_, 1
@@ -160,32 +160,32 @@ Music_Clair_branch_1fb49:
 	note __, 2
 	note C#, 2
 	note __, 2
-	intensity $82
+	volume_envelope 8, 2
 	note D#, 2
 	note A#, 2
 	octave 4
 	note C#, 2
 	octave 3
 	note A#, 2
-	intensity $92
+	volume_envelope 9, 2
 	note G_, 2
 	octave 4
 	note C#, 2
 	note D#, 2
 	octave 3
 	note A#, 2
-	intensity $b2
+	volume_envelope 11, 2
 	octave 4
 	note C#, 2
 	note D#, 2
 	note G_, 2
 	note D#, 2
-	intensity $c2
+	volume_envelope 12, 2
 	note C#, 2
 	note D#, 2
 	note G_, 2
 	note A#, 2
-	intensity $b7
+	volume_envelope 11, 7
 Music_Clair_branch_1fb77:
 	callchannel Music_Clair_branch_1fba6
 	note F#, 2

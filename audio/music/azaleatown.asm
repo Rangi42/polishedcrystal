@@ -13,15 +13,15 @@ Music_AzaleaTown_Ch1:
 	note_type 12, 10, 1
 	note __, 2
 Music_AzaleaTown_branch_f5801:
-	intensity $a1
+	volume_envelope 10, 1
 	octave 3
 	note F_, 2
-	intensity $61
+	volume_envelope 6, 1
 	note F_, 2
 	note F_, 2
-	intensity $a1
+	volume_envelope 10, 1
 	note F_, 2
-	intensity $61
+	volume_envelope 6, 1
 	note F_, 2
 	note F_, 2
 	note F_, 2
@@ -30,7 +30,7 @@ Music_AzaleaTown_branch_f5801:
 Music_AzaleaTown_branch_f5816:
 	callchannel Music_AzaleaTown_branch_f588c
 	stereopanning $f0
-	intensity $a4
+	volume_envelope 10, 4
 	note G#, 2
 	note A#, 1
 	note __, 3
@@ -57,20 +57,20 @@ Music_AzaleaTown_branch_f5816:
 	note F#, 4
 	stereopanning $f
 	callchannel Music_AzaleaTown_branch_f5912
-	intensity $a3
+	volume_envelope 10, 3
 	note A#, 4
 	octave 4
 	note C#, 2
 	note __, 2
 	note C_, 2
 	note __, 2
-	intensity $a1
+	volume_envelope 10, 1
 	octave 3
 	note C#, 4
 	note A_, 2
 	note __, 14
 	callchannel Music_AzaleaTown_branch_f5912
-	intensity $a3
+	volume_envelope 10, 3
 	octave 4
 	note C_, 1
 	note C#, 3
@@ -78,12 +78,12 @@ Music_AzaleaTown_branch_f5816:
 	note __, 2
 	note C#, 2
 	note __, 2
-	intensity $a1
+	volume_envelope 10, 1
 	octave 3
 	note G_, 4
 	note A#, 4
 	note G_, 8
-	intensity $a2
+	volume_envelope 10, 2
 	note A#, 4
 	octave 4
 	note C#, 4
@@ -124,108 +124,108 @@ Music_AzaleaTown_branch_f588c:
 	note_type 12, 10, 1
 	octave 4
 	note F_, 2
-	intensity $61
+	volume_envelope 6, 1
 	note F_, 2
 	note F_, 2
-	intensity $a1
+	volume_envelope 10, 1
 	note D#, 2
-	intensity $61
+	volume_envelope 6, 1
 	note D#, 2
 	note D#, 2
-	intensity $a1
+	volume_envelope 10, 1
 	note F_, 2
-	intensity $61
+	volume_envelope 6, 1
 	note F_, 2
-	intensity $a1
+	volume_envelope 10, 1
 	note A#, 2
-	intensity $61
+	volume_envelope 6, 1
 	note A#, 2
 	note A#, 2
-	intensity $a1
+	volume_envelope 10, 1
 	note G#, 2
-	intensity $61
+	volume_envelope 6, 1
 	note G#, 2
 	note G#, 2
-	intensity $a1
+	volume_envelope 10, 1
 	note A_, 2
-	intensity $61
+	volume_envelope 6, 1
 	note A_, 2
-	intensity $a1
+	volume_envelope 10, 1
 	note C_, 2
-	intensity $61
+	volume_envelope 6, 1
 	note C_, 2
 	note C_, 2
-	intensity $a1
+	volume_envelope 10, 1
 	note C#, 2
-	intensity $61
-	note C#, 2
-	note C#, 2
+	volume_envelope 6, 1
 	note C#, 2
 	note C#, 2
-	intensity $a1
+	note C#, 2
+	note C#, 2
+	volume_envelope 10, 1
 	note D#, 2
-	intensity $61
+	volume_envelope 6, 1
 	note D#, 2
 	note D#, 2
-	intensity $a1
+	volume_envelope 10, 1
 	note C#, 2
-	intensity $61
+	volume_envelope 6, 1
 	note C#, 2
 	note C#, 2
 	note C#, 2
 	note __, 2
-	intensity $a1
+	volume_envelope 10, 1
 	octave 3
 	note F_, 2
-	intensity $61
+	volume_envelope 6, 1
 	note F_, 2
 	note F_, 2
-	intensity $a1
+	volume_envelope 10, 1
 	note F#, 2
-	intensity $61
-	note F#, 2
-	note F#, 2
+	volume_envelope 6, 1
 	note F#, 2
 	note F#, 2
-	intensity $a1
+	note F#, 2
+	note F#, 2
+	volume_envelope 10, 1
 	note F_, 2
-	intensity $61
+	volume_envelope 6, 1
 	note F_, 2
 	note F_, 2
-	intensity $a1
+	volume_envelope 10, 1
 	note D#, 2
-	intensity $61
+	volume_envelope 6, 1
 	note D#, 2
 	note D#, 2
-	intensity $a1
+	volume_envelope 10, 1
 	note C#, 2
-	intensity $61
+	volume_envelope 6, 1
 	note C#, 2
-	intensity $a1
+	volume_envelope 10, 1
 	note C_, 2
-	intensity $61
+	volume_envelope 6, 1
 	note C_, 2
 	note C_, 2
-	intensity $a1
+	volume_envelope 10, 1
 	octave 2
 	note A#, 2
-	intensity $61
+	volume_envelope 6, 1
 	note A#, 2
 	note A#, 2
-	intensity $a1
+	volume_envelope 10, 1
 	octave 3
 	note C#, 2
-	intensity $61
+	volume_envelope 6, 1
 	note C#, 2
 	endchannel
 
 Music_AzaleaTown_branch_f5912:
-	intensity $61
+	volume_envelope 6, 1
 	note G#, 8
 	note G#, 8
-	intensity $81
+	volume_envelope 8, 1
 	note A_, 8
-	intensity $a1
+	volume_envelope 10, 1
 	note A_, 8
 	endchannel
 
@@ -237,27 +237,27 @@ Music_AzaleaTown_Ch2:
 	note __, 1
 	octave 4
 	note D_, 1
-	intensity $b1
+	volume_envelope 11, 1
 	note D#, 2
-	intensity $71
+	volume_envelope 7, 1
 	note D#, 2
 	note D#, 2
-	intensity $b1
+	volume_envelope 11, 1
 	note C#, 2
-	intensity $71
-	note C#, 2
-	note C#, 2
-	intensity $51
+	volume_envelope 7, 1
 	note C#, 2
 	note C#, 2
-	intensity $b1
+	volume_envelope 5, 1
+	note C#, 2
+	note C#, 2
+	volume_envelope 11, 1
 	note C_, 2
-	intensity $71
+	volume_envelope 7, 1
 	note C_, 2
 	note C_, 2
-	intensity $b1
+	volume_envelope 11, 1
 	note C#, 2
-	intensity $71
+	volume_envelope 7, 1
 	note C#, 2
 	note C#, 2
 	note_type 6, 11, 4
@@ -355,7 +355,7 @@ Music_AzaleaTown_branch_f5952:
 	octave 4
 	note G#, 12
 	note D#, 4
-	intensity $1f
+	volume_envelope 1, -7
 	note C_, 14
 	note_type 6, 11, 4
 	duty_cycle 1
@@ -387,11 +387,11 @@ Music_AzaleaTown_branch_f59c7:
 	note_type 12, 10, 8
 	vibrato $0, $0
 	note C#, 8
-	intensity $a7
+	volume_envelope 10, 7
 	vibrato $12, $23
 	note C#, 16
 	note __, 4
-	intensity $b4
+	volume_envelope 11, 4
 	duty_cycle 2
 	octave 3
 	note A#, 2
@@ -414,7 +414,7 @@ Music_AzaleaTown_branch_f59c7:
 	note D_, 1
 	note_type 12, 11, 7
 	note D#, 12
-	intensity $b4
+	volume_envelope 11, 4
 	endchannel
 
 Music_AzaleaTown_Ch3:
@@ -548,10 +548,10 @@ Music_AzaleaTown_branch_f5a86:
 	note __, 1
 	note F_, 4
 	note A_, 2
-	intensity $15
+	volume_envelope 1, 5
 	note A#, 1
 	note __, 1
-	intensity $25
+	volume_envelope 2, 5
 	octave 4
 	note C#, 1
 	note __, 1
@@ -604,7 +604,7 @@ Music_AzaleaTown_branch_f5a86:
 	endchannel
 
 Music_AzaleaTown_branch_f5acf:
-	intensity $35
+	volume_envelope 3, 5
 	octave 3
 	note F_, 1
 	note __, 1
@@ -614,7 +614,7 @@ Music_AzaleaTown_branch_f5acf:
 	note __, 1
 	note F_, 1
 	note __, 1
-	intensity $25
+	volume_envelope 2, 5
 	note F_, 1
 	note __, 1
 	note F_, 1

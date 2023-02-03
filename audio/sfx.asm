@@ -2022,7 +2022,7 @@ Sfx_DexFanfare5079:
 	note B_, 2
 	note B_, 2
 	note B_, 2
-	intensity $b3
+	volume_envelope 11, 3
 	octave 4
 	note G#, 12
 	endchannel
@@ -2035,7 +2035,7 @@ Sfx_DexFanfare5079:
 	note E_, 2
 	note E_, 2
 	note E_, 2
-	intensity $c3
+	volume_envelope 12, 3
 	note B_, 12
 	endchannel
 
@@ -2051,7 +2051,7 @@ Sfx_DexFanfare5079:
 	note __, 1
 	octave 5
 	note E_, 5
-	intensity $35
+	volume_envelope 3, 5
 	note E_, 3
 	note __, 4
 	endchannel
@@ -2086,7 +2086,7 @@ Sfx_KeyItem:
 	note B_, 4
 	octave 4
 	note E_, 4
-	intensity $b3
+	volume_envelope 11, 3
 	note G#, 16
 	endchannel
 
@@ -2100,7 +2100,7 @@ Sfx_KeyItem:
 	note E_, 2
 	note E_, 4
 	note G#, 4
-	intensity $c3
+	volume_envelope 12, 3
 	note B_, 16
 	endchannel
 
@@ -2120,7 +2120,7 @@ Sfx_KeyItem:
 	note __, 2
 	octave 5
 	note E_, 8
-	intensity $35
+	volume_envelope 3, 5
 	note E_, 4
 	note __, 4
 	endchannel
@@ -2280,7 +2280,7 @@ Sfx_Item:
 	note E_, 2
 	note __, 2
 	note F_, 6
-	intensity $35
+	volume_envelope 3, 5
 	note F_, 4
 	note __, 14
 	endchannel
@@ -2315,7 +2315,7 @@ Sfx_CaughtMon:
 	octave 3
 	note A_, 6
 	note F_, 12
-	intensity $b1
+	volume_envelope 11, 1
 	octave 4
 	note D#, 2
 	note D#, 2
@@ -2323,7 +2323,7 @@ Sfx_CaughtMon:
 	note D#, 2
 	note D#, 2
 	note G_, 2
-	intensity $b3
+	volume_envelope 11, 3
 	note F_, 12
 	endchannel
 
@@ -2336,14 +2336,14 @@ Sfx_CaughtMon:
 	note A_, 6
 	note F_, 6
 	note C_, 12
-	intensity $c1
+	volume_envelope 12, 1
 	note A#, 2
 	note A#, 2
 	note A#, 2
 	note G_, 2
 	note G_, 2
 	note A#, 2
-	intensity $c3
+	volume_envelope 12, 3
 	note A_, 12
 	endchannel
 
@@ -2361,7 +2361,7 @@ Sfx_CaughtMon:
 	note G_, 6
 	note A#, 6
 	note A_, 6
-	intensity $35
+	volume_envelope 3, 5
 	note A_, 3
 	note __, 3
 	endchannel
@@ -2406,7 +2406,7 @@ Sfx_DexFanfare80109:
 	note F_, 2
 	note F_, 1
 	note F_, 1
-	intensity $a5
+	volume_envelope 10, 5
 	note A#, 16
 	endchannel
 
@@ -2428,7 +2428,7 @@ Sfx_DexFanfare80109:
 	note A#, 2
 	note A#, 1
 	note A#, 1
-	intensity $b5
+	volume_envelope 11, 5
 	octave 5
 	note D#, 16
 	endchannel
@@ -2455,7 +2455,7 @@ Sfx_DexFanfare80109:
 	octave 3
 	note A#, 2
 	note D#, 4
-	intensity $35
+	volume_envelope 3, 5
 	note D#, 3
 	note __, 9
 	endchannel
@@ -2572,7 +2572,7 @@ UnknownSfx:
 	note C_, 2
 	note E_, 1
 	note E_, 1
-	intensity $a5
+	volume_envelope 10, 5
 	note F_, 16
 	endchannel
 
@@ -2596,7 +2596,7 @@ UnknownSfx:
 	note A#, 2
 	note A#, 1
 	note A#, 1
-	intensity $b5
+	volume_envelope 11, 5
 	note A_, 16
 	endchannel
 
@@ -2610,7 +2610,7 @@ UnknownSfx:
 	note G_, 2
 	note A#, 2
 	note A_, 4
-	intensity $35
+	volume_envelope 3, 5
 	note A_, 3
 	note __, 9
 	endchannel
@@ -2890,16 +2890,16 @@ Sfx_GetEggFromDayCareMan:
 	note A#, 2
 	octave 4
 	note D_, 2
-	intensity $a2
+	volume_envelope 10, 2
 	note F_, 6
-	intensity $a1
+	volume_envelope 10, 1
 	duty_cycle 3
 	octave 3
 	note E_, 2
 	note G_, 2
 	octave 4
 	note C_, 2
-	intensity $a4
+	volume_envelope 10, 4
 	note F_, 9
 	note __, 9
 	endchannel
@@ -2914,19 +2914,19 @@ Sfx_GetEggFromDayCareMan:
 	note F_, 2
 	note __, 2
 	note A_, 2
-	intensity $c1
+	volume_envelope 12, 1
 	note A#, 2
 	note A_, 2
 	note A#, 2
-	intensity $c2
+	volume_envelope 12, 2
 	octave 5
 	note C_, 6
-	intensity $c1
+	volume_envelope 12, 1
 	octave 4
 	note C_, 2
 	note E_, 2
 	note G_, 2
-	intensity $c4
+	volume_envelope 12, 4
 	note A_, 9
 	note __, 9
 	endchannel
@@ -2983,14 +2983,14 @@ Sfx_MoveDeleted:
 	note E_, 1
 	note D#, 1
 	note E_, 4
-	intensity $a1
+	volume_envelope 10, 1
 	note G_, 2
 	note F_, 2
 	note E_, 2
 	note D_, 2
 	note G#, 2
 	note B_, 2
-	intensity $a6
+	volume_envelope 10, 6
 	octave 3
 	note D_, 10
 	note __, 6
@@ -3007,12 +3007,12 @@ Sfx_MoveDeleted:
 	note D_, 1
 	note F_, 1
 	note G#, 1
-	intensity $94
+	volume_envelope 9, 4
 	note D_, 1
 	note F_, 1
 	note G#, 1
 	note B_, 1
-	intensity $b4
+	volume_envelope 11, 4
 	octave 3
 	note C#, 1
 	note __, 2
@@ -3021,11 +3021,11 @@ Sfx_MoveDeleted:
 	octave 3
 	note C#, 4
 	note __, 2
-	intensity $b1
+	volume_envelope 11, 1
 	note C#, 2
 	note D#, 2
 	note E_, 2
-	intensity $b6
+	volume_envelope 11, 6
 	note F_, 16
 	note __, 6
 	endchannel
@@ -3102,7 +3102,7 @@ Sfx_2ndPlace:
 	note A_, 2
 	note A_, 2
 	note A_, 2
-	intensity $a7
+	volume_envelope 10, 7
 	note B_, 12
 	note __, 6
 	endchannel
@@ -3117,14 +3117,14 @@ Sfx_2ndPlace:
 	note G_, 2
 	note A_, 4
 	note B_, 2
-	intensity $b4
+	volume_envelope 11, 4
 	octave 5
 	note C_, 12
-	intensity $b1
+	volume_envelope 11, 1
 	note C_, 2
 	note C_, 2
 	note C_, 2
-	intensity $b7
+	volume_envelope 11, 7
 	note D_, 12
 	note __, 6
 	endchannel
@@ -3205,24 +3205,24 @@ Sfx_1stPlace:
 	note F_, 1
 	note D_, 1
 	note F_, 1
-	intensity $91
+	volume_envelope 9, 1
 	note D_, 1
 	octave 4
 	note A#, 1
 	note F_, 1
 	note A#, 1
-	intensity $81
+	volume_envelope 8, 1
 	octave 5
 	note D_, 1
 	octave 4
 	note A#, 1
 	note F_, 1
 	note D_, 1
-	intensity $a1
+	volume_envelope 10, 1
 	note C_, 2
 	note E_, 2
 	note G_, 2
-	intensity $a7
+	volume_envelope 10, 7
 	note A_, 10
 	note __, 6
 	endchannel
@@ -3236,15 +3236,15 @@ Sfx_1stPlace:
 	note B_, 2
 	note G_, 2
 	note B_, 2
-	intensity $b6
+	volume_envelope 11, 6
 	octave 4
 	note D_, 12
-	intensity $c1
+	volume_envelope 12, 1
 	note E_, 2
 	note G_, 2
 	octave 5
 	note C_, 2
-	intensity $b7
+	volume_envelope 11, 7
 	note D_, 10
 	note __, 6
 	endchannel
@@ -3327,19 +3327,19 @@ Sfx_ChooseACard:
 	note __, 1
 	octave 4
 	note E_, 4
-	intensity $71
+	volume_envelope 7, 1
 	octave 3
 	note E_, 1
 	note F#, 1
 	note G#, 1
 	note A_, 1
-	intensity $91
+	volume_envelope 9, 1
 	note B_, 1
 	octave 4
 	note C#, 1
 	note D_, 1
 	note D#, 1
-	intensity $a4
+	volume_envelope 10, 4
 	note E_, 4
 	note __, 12
 	endchannel
@@ -3456,11 +3456,11 @@ Sfx_GetTm:
 	octave 4
 	note D_, 1
 	note G_, 6
-	intensity $b1
+	volume_envelope 11, 1
 	note E_, 2
 	note F#, 2
 	note G_, 2
-	intensity $a5
+	volume_envelope 10, 5
 	note F#, 8
 	note __, 6
 	endchannel
@@ -3476,12 +3476,12 @@ Sfx_GetTm:
 	note D_, 1
 	note G_, 1
 	note B_, 6
-	intensity $c1
+	volume_envelope 12, 1
 	note A_, 2
 	note B_, 2
 	octave 5
 	note C_, 2
-	intensity $b5
+	volume_envelope 11, 5
 	note D_, 8
 	note __, 6
 	endchannel
@@ -3557,7 +3557,7 @@ Sfx_GetBadge:
 	transpose 0, 2
 	callchannel .branch5
 	transpose 0, 0
-	intensity $a7
+	volume_envelope 10, 7
 	note A_, 16
 	note __, 6
 	endchannel
@@ -3602,10 +3602,10 @@ Sfx_GetBadge:
 	octave 2
 	note G#, 2
 	note __, 1
-	intensity $95
+	volume_envelope 9, 5
 	octave 5
 	note C_, 1
-	intensity $b5
+	volume_envelope 11, 5
 	note C#, 2
 	note __, 2
 	note D_, 2
@@ -3622,10 +3622,10 @@ Sfx_GetBadge:
 	octave 2
 	note A#, 2
 	note __, 1
-	intensity $95
+	volume_envelope 9, 5
 	octave 5
 	note D_, 1
-	intensity $b5
+	volume_envelope 11, 5
 	note D#, 8
 	note F_, 16
 	note __, 6
@@ -3727,7 +3727,7 @@ Sfx_QuitSlots:
 	note A#, 2
 	note G#, 2
 	note F#, 2
-	intensity $97
+	volume_envelope 9, 7
 	note G#, 14
 	note __, 6
 	endchannel
@@ -3744,7 +3744,7 @@ Sfx_QuitSlots:
 	octave 4
 	note G#, 4
 	note A#, 2
-	intensity $c1
+	volume_envelope 12, 1
 	note B_, 4
 	note A#, 2
 	note G#, 4
@@ -3752,7 +3752,7 @@ Sfx_QuitSlots:
 	note F#, 4
 	note F_, 2
 	note D#, 4
-	intensity $b7
+	volume_envelope 11, 7
 	note F_, 14
 	note __, 6
 	endchannel
@@ -3830,19 +3830,19 @@ Sfx_Protect:
 	note C#, 5
 	note E_, 5
 	loopchannel 3, .branch5
-	intensity $c1
+	volume_envelope 12, 1
 	octave 5
 	note F_, 5
 	note A_, 5
-	intensity $91
+	volume_envelope 9, 1
 	octave 6
 	note C_, 5
 	note E_, 5
-	intensity $71
+	volume_envelope 7, 1
 	octave 5
 	note F#, 5
 	note A#, 5
-	intensity $51
+	volume_envelope 5, 1
 	octave 6
 	note C#, 5
 	note E_, 5
@@ -4003,13 +4003,13 @@ Sfx_Thief2:
 	octave 4
 	note C#, 3
 	note A#, 3
-	intensity $d2
+	volume_envelope 13, 2
 	note C#, 3
 	note A#, 3
-	intensity $b1
+	volume_envelope 11, 1
 	note C_, 3
 	note A_, 3
-	intensity $81
+	volume_envelope 8, 1
 	note C_, 3
 	note A_, 3
 	togglesfx
@@ -4054,15 +4054,15 @@ Sfx_MindReader:
 	note_type 2, 15, 1
 	octave 5
 	note C_, 3
-	intensity $41
+	volume_envelope 4, 1
 	note C_, 3
-	intensity $f1
+	volume_envelope 15, 1
 	note C#, 3
-	intensity $41
+	volume_envelope 4, 1
 	note C#, 3
-	intensity $f1
+	volume_envelope 15, 1
 	note D_, 3
-	intensity $41
+	volume_envelope 4, 1
 	note D_, 3
 	togglesfx
 	endchannel
@@ -4245,13 +4245,13 @@ Sfx_Spite:
 	note E_, 3
 	note G_, 3
 	note A#, 3
-	intensity $bf
+	volume_envelope 11, -7
 	note D#, 3
 	note F#, 3
 	note A_, 3
-	intensity $5f
+	volume_envelope 5, -7
 	note D_, 3
-	intensity $2f
+	volume_envelope 2, -7
 	note F_, 3
 	note G#, 3
 	soundinput $8
@@ -4686,15 +4686,15 @@ Sfx_MasterBall:
 	note A_, 2
 	note A#, 2
 	note A_, 2
-	intensity $c1
+	volume_envelope 12, 1
 	note G#, 2
 	note G_, 2
 	note F#, 2
-	intensity $91
+	volume_envelope 9, 1
 	note F_, 2
 	note E_, 2
 	note D#, 2
-	intensity $61
+	volume_envelope 6, 1
 	note D_, 2
 	note C#, 2
 	note C_, 2
@@ -4717,11 +4717,11 @@ Sfx_EggHatch:
 	note __, 1
 	note G_, 1
 	note D_, 1
-	intensity $e2
+	volume_envelope 14, 2
 	note B_, 7
-	intensity $82
+	volume_envelope 8, 2
 	note B_, 7
-	intensity $42
+	volume_envelope 4, 2
 	note B_, 7
 	endchannel
 
@@ -4914,7 +4914,7 @@ Sfx_DexFanfare140169:
 	note A_, 4
 	octave 4
 	note C#, 4
-	intensity $a4
+	volume_envelope 10, 4
 	note D_, 4
 	note C_, 4
 	octave 3
@@ -4939,7 +4939,7 @@ Sfx_DexFanfare140169:
 	note G_, 4
 	note G_, 4
 	note G_, 4
-	intensity $b4
+	volume_envelope 11, 4
 	note F#, 4
 	note G_, 4
 	note A_, 4
@@ -5026,7 +5026,7 @@ Sfx_DexFanfare170199:
 	note __, 1
 	note G_, 1
 	note __, 1
-	intensity $c1
+	volume_envelope 12, 1
 	note F_, 4
 	note G_, 4
 	note A_, 4
@@ -5051,7 +5051,7 @@ Sfx_DexFanfare170199:
 	note __, 1
 	note A#, 1
 	note __, 1
-	intensity $d1
+	volume_envelope 13, 1
 	octave 4
 	note D#, 4
 	note D#, 4
@@ -5259,12 +5259,12 @@ Sfx_DexFanfare230Plus:
 	note D_, 14
 	note __, 2
 	duty_cycle 2
-	intensity $85
+	volume_envelope 8, 5
 	octave 2
 	note F_, 1
 	note __, 1
 	note F_, 6
-	intensity $a5
+	volume_envelope 10, 5
 	duty_cycle 3
 	octave 3
 	note A_, 2
@@ -5272,16 +5272,16 @@ Sfx_DexFanfare230Plus:
 	note F_, 10
 	note __, 2
 	duty_cycle 2
-	intensity $85
+	volume_envelope 8, 5
 	octave 2
 	note F_, 1
 	note __, 1
 	note F_, 6
-	intensity $a5
+	volume_envelope 10, 5
 	duty_cycle 3
 	octave 3
 	note A#, 12
-	intensity $b2
+	volume_envelope 11, 2
 	note G_, 4
 	note A_, 4
 	note A#, 4
@@ -5314,7 +5314,7 @@ Sfx_DexFanfare230Plus:
 	note C_, 2
 	note D_, 2
 	note D#, 12
-	intensity $c2
+	volume_envelope 12, 2
 	note G_, 4
 	note G_, 4
 	note G_, 4
@@ -5896,11 +5896,11 @@ Sfx_GameFreakPresents:
 	note C_, 2
 	note E_, 2
 	note G_, 3
-	intensity $81
+	volume_envelope 8, 1
 	note G_, 3
-	intensity $51
+	volume_envelope 5, 1
 	note G_, 3
-	intensity $31
+	volume_envelope 3, 1
 	note G_, 3
 	endchannel
 
@@ -5926,7 +5926,7 @@ Sfx_Tingle:
 	note __, 2
 	loopchannel 2, .branch5
 	note C_, 2
-	intensity $a1
+	volume_envelope 10, 1
 	note G_, 13
 	endchannel
 
@@ -5961,21 +5961,21 @@ Sfx_4NoteDitty:
 	transpose 0, 2
 	octave 4
 	note C_, 2
-	intensity $48
+	volume_envelope 4, 8
 	note C_, 2
-	intensity $e8
+	volume_envelope 14, 8
 	note G_, 2
-	intensity $48
+	volume_envelope 4, 8
 	note G_, 2
 	octave 5
-	intensity $e8
+	volume_envelope 14, 8
 	note E_, 2
-	intensity $48
+	volume_envelope 4, 8
 	note E_, 2
 	octave 6
-	intensity $e8
+	volume_envelope 14, 8
 	note C_, 2
-	intensity $43
+	volume_envelope 4, 3
 	note C_, 16
 	endchannel
 
@@ -6007,20 +6007,20 @@ Sfx_Twinkle:
 	note_type 2, 14, 1
 	octave 3
 	note G_, 2
-	intensity $b1
+	volume_envelope 11, 1
 	octave 4
 	note D_, 2
-	intensity $e1
+	volume_envelope 14, 1
 	note B_, 2
-	intensity $b1
+	volume_envelope 11, 1
 	note G_, 2
-	intensity $e1
+	volume_envelope 14, 1
 	octave 5
 	note D_, 2
-	intensity $b1
+	volume_envelope 11, 1
 	octave 4
 	note B_, 2
-	intensity $e1
+	volume_envelope 14, 1
 	octave 5
 	note G_, 6
 	endchannel

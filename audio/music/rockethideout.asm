@@ -108,12 +108,12 @@ Music_RocketHideout_branch_eeb98:
 	note F_, 2
 	note G_, 2
 	note __, 16
-	intensity $b7
+	volume_envelope 11, 7
 	octave 2
 	note G#, 16
 	note __, 16
 	note A_, 16
-	intensity $b3
+	volume_envelope 11, 3
 Music_RocketHideout_branch_eebfe:
 	note __, 16
 	loopchannel 4, Music_RocketHideout_branch_eebfe
@@ -186,20 +186,20 @@ Music_RocketHideout_branch_eec14:
 	note G#, 4
 	note G_, 2
 	note __, 6
-	intensity $c7
+	volume_envelope 12, 7
 	octave 3
 	note C#, 16
-	intensity $c4
+	volume_envelope 12, 4
 	octave 2
 	note C#, 2
 	note __, 2
 	note G#, 4
 	note G_, 2
 	note __, 6
-	intensity $c7
+	volume_envelope 12, 7
 	octave 3
 	note C#, 16
-	intensity $c4
+	volume_envelope 12, 4
 	octave 2
 	note C#, 2
 	note __, 2

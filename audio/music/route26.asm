@@ -270,7 +270,7 @@ Music_Route26_branch_ef0ce:
 	note B_, 2
 	note_type 12, 12, 2
 	callchannel Music_Route26_branch_ef14e
-	intensity $c7
+	volume_envelope 12, 7
 	octave 2
 	note F#, 4
 	note __, 2
@@ -429,7 +429,7 @@ Music_Route26_branch_ef18a:
 	note C_, 1
 	octave 5
 	note G#, 1
-	intensity $15
+	volume_envelope 1, 5
 	octave 2
 	note A_, 1
 	note __, 1

@@ -72,16 +72,16 @@ Music_WildBattleGo_Ch1_loop:
 	callchannel Music_WildBattleGo_Ch1_ditty1
 	note __, 4
 	sound_duty $55
-	intensity $F3
+	volume_envelope 15, 3
 	vibrato $05, $13
 	octave 2
 	note A#, 4
 	octave 3
 	note D_, 4
 	note F_, 4
-	intensity $D8
+	volume_envelope 13, 8
 	note A#, 16
-	intensity $F3
+	volume_envelope 15, 3
 	note E_, 2
 	note C_, 2
 	octave 2
@@ -90,11 +90,11 @@ Music_WildBattleGo_Ch1_loop:
 	note C_, 2
 	note E_, 4
 	note G_, 4
-	intensity $D8
+	volume_envelope 13, 8
 	octave 4
 	note C_, 16
 Music_WildBattleGo_Ch1_loop_2:
-	intensity $F3
+	volume_envelope 15, 3
 	octave 3
 	note F#, 2
 	note D_, 2
@@ -104,7 +104,7 @@ Music_WildBattleGo_Ch1_loop_2:
 	note D_, 2
 	note F#, 4
 	note A_, 4
-	intensity $D8
+	volume_envelope 13, 8
 	octave 4
 	note D_, 16
 	loopchannel 2, Music_WildBattleGo_Ch1_loop_2
@@ -147,7 +147,7 @@ Music_WildBattleGo_Ch2:
 	note_type 12, 0, 0
 	note __, 4
 	sound_duty $5A
-	intensity $A3
+	volume_envelope 10, 3
 	octave 5
 	callchannel Music_WildBattleGo_Ch2_ditty2
 Music_WildBattleGo_Ch2_loop:
@@ -166,16 +166,16 @@ Music_WildBattleGo_Ch2_loop:
 	note C#, 4
 	note __, 2
 	sound_duty $55
-	intensity $A8
+	volume_envelope 10, 8
 	vibrato $08, $13
 	octave 4
 	callchannel Music_WildBattleGo_Ch2_ditty1
 	note G_, 4
 	note F#, 4
-	intensity $B7
+	volume_envelope 11, 7
 	note E_, 6
 	note E_, 10
-	intensity $A8
+	volume_envelope 10, 8
 	octave 5
 	note C_, 8
 	octave 4
@@ -231,10 +231,10 @@ Music_WildBattleGo_Ch2_loop:
 	note A_, 2
 	octave 4
 	note D_, 2
-	intensity $B7
+	volume_envelope 11, 7
 	note A_, 6
 	note A_, 4
-	intensity $A8
+	volume_envelope 10, 8
 	note B_, 4
 	note_type 15, 10, 8
 	note A_, 3
@@ -247,10 +247,10 @@ Music_WildBattleGo_Ch2_loop:
 	note A_, 4
 	octave 4
 	note D_, 4
-	intensity $B7
+	volume_envelope 11, 7
 	note A_, 12
 	note A_, 8
-	intensity $A8
+	volume_envelope 10, 8
 	note B_, 8
 	note A_, 8
 	note G_, 8

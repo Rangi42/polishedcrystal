@@ -68,9 +68,9 @@ Music_TrainerBattlePrism_L1:
 	note F#, 1
 	note G_, 6
 	note C_, 2
-	intensity $57
+	volume_envelope 5, 7
 	note C_, 2
-	intensity $c7
+	volume_envelope 12, 7
 	note C_, 2
 	note F_, 2
 	note G_, 2
@@ -97,9 +97,9 @@ Music_TrainerBattlePrism_L1:
 	note D_, 6
 	octave 3
 	note G_, 2
-	intensity $57
+	volume_envelope 5, 7
 	note G_, 2
-	intensity $c7
+	volume_envelope 12, 7
 	note G_, 2
 	octave 4
 	note F_, 2
@@ -117,24 +117,24 @@ Music_TrainerBattlePrism_L1:
 	note A#, 8
 	note G#, 8
 	note G_, 10
-	intensity $c3
+	volume_envelope 12, 3
 	note G_, 2
 	note G_, 2
 	note G_, 2
-	intensity $c7
+	volume_envelope 12, 7
 	note G_, 4
-	intensity $b7
+	volume_envelope 11, 7
 	note F_, 2
-	intensity $97
+	volume_envelope 9, 7
 	note G_, 2
-	intensity $87
+	volume_envelope 8, 7
 	note A#, 4
-	intensity $77
+	volume_envelope 7, 7
 	octave 5
 	note D_, 2
-	intensity $57
+	volume_envelope 5, 7
 	note F_, 2
-	intensity $c7
+	volume_envelope 12, 7
 	octave 4
 	note A#, 8
 	note D_, 8
@@ -217,7 +217,7 @@ Music_TrainerBattlePrism_L1:
 	note __, 1
 	note F_, 2
 	note D_, 4
-	intensity $c4
+	volume_envelope 12, 4
 	vibrato $11, $12
 	callchannel Music_TrainerBattlePrism_P2
 	callchannel Music_TrainerBattlePrism_P3
@@ -240,7 +240,7 @@ Music_TrainerBattlePrism_L1:
 	note G_, 2
 	note G_, 2
 	callchannel Music_TrainerBattlePrism_P2
-	intensity $c7
+	volume_envelope 12, 7
 	vibrato $0, $0
 	octave 4
 	note G_, 4
@@ -441,7 +441,7 @@ Music_TrainerBattlePrism_L2:
 	note D_, 4
 	note C_, 16
 	duty_cycle 2
-	intensity $84
+	volume_envelope 8, 4
 	vibrato $0, $0
 Music_TrainerBattlePrism_L3:
 	callchannel Music_TrainerBattlePrism_P7
@@ -450,7 +450,7 @@ Music_TrainerBattlePrism_L3:
 	callchannel Music_TrainerBattlePrism_P8
 	loopchannel 2, Music_TrainerBattlePrism_L3
 	duty_cycle 3
-	intensity $b4
+	volume_envelope 11, 4
 	vibrato $11, $12
 	octave 2
 	note F_, 2

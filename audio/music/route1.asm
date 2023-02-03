@@ -52,14 +52,14 @@ Music_Route1_Ch1:
 	note A_, 2
 	note G_, 2
 	note F#, 2
-	intensity $81
+	volume_envelope 8, 1
 	octave 5
 	note D_, 2
 	note D_, 2
-	intensity $83
+	volume_envelope 8, 3
 	note __, 2
 Music_Route1_branch_ec04a:
-	intensity $83
+	volume_envelope 8, 3
 	note __, 2
 	octave 4
 	note D_, 2
@@ -80,10 +80,10 @@ Music_Route1_branch_ec04a:
 	note D_, 1
 	octave 3
 	note E_, 2
-	intensity $81
+	volume_envelope 8, 1
 	note G_, 2
 	note G_, 2
-	intensity $83
+	volume_envelope 8, 3
 	note __, 2
 	note __, 2
 	octave 4
@@ -127,11 +127,11 @@ Music_Route1_branch_ec04a:
 	note A_, 1
 	note B_, 1
 	note A_, 2
-	intensity $81
+	volume_envelope 8, 1
 	octave 4
 	note G_, 2
 	note G_, 2
-	intensity $83
+	volume_envelope 8, 3
 	octave 3
 	note F#, 1
 	note E_, 1
@@ -155,16 +155,16 @@ Music_Route1_branch_ec04a:
 	note G_, 1
 	note E_, 1
 	note F#, 2
-	intensity $81
+	volume_envelope 8, 1
 	octave 4
 	note A_, 2
 	note A_, 2
-	intensity $83
+	volume_envelope 8, 3
 	octave 3
 	note A_, 1
 	note G_, 1
-	intensity $77
-	intensity $1d
+	volume_envelope 7, 7
+	volume_envelope 1, -5
 	note F#, 4
 	note A_, 4
 	note G_, 2
@@ -182,7 +182,7 @@ Music_Route1_branch_ec04a:
 	note A_, 1
 	note G_, 1
 	duty_cycle 2
-	intensity $87
+	volume_envelope 8, 7
 	octave 6
 	note F#, 4
 	note A_, 4
@@ -195,7 +195,7 @@ Music_Route1_branch_ec04a:
 	note E_, 2
 	note C#, 2
 	note D_, 2
-	intensity $81
+	volume_envelope 8, 1
 	octave 5
 	note D_, 2
 	note D_, 2
@@ -221,22 +221,22 @@ Music_Route1_Ch2:
 	note C#, 2
 	note E_, 2
 	note D_, 2
-	intensity $81
+	volume_envelope 8, 1
 	note F#, 2
 	note F#, 2
-	intensity $82
+	volume_envelope 8, 2
 	octave 4
 	note D_, 1
 	note E_, 1
 	duty_cycle 2
 Music_Route1_branch_ec112:
-	intensity $82
+	volume_envelope 8, 2
 	callchannel Music_Route1_branch_ec188
-	intensity $81
+	volume_envelope 8, 1
 	octave 3
 	note A_, 2
 	note A_, 2
-	intensity $82
+	volume_envelope 8, 2
 	octave 4
 	note C#, 1
 	note D_, 1
@@ -262,10 +262,10 @@ Music_Route1_branch_ec112:
 	note D_, 1
 	note E_, 1
 	callchannel Music_Route1_branch_ec188
-	intensity $81
+	volume_envelope 8, 1
 	note A_, 2
 	note A_, 2
-	intensity $82
+	volume_envelope 8, 2
 	note C#, 1
 	note D_, 1
 	note E_, 2
@@ -289,11 +289,11 @@ Music_Route1_branch_ec112:
 	octave 4
 	note C#, 1
 	note D_, 2
-	intensity $81
+	volume_envelope 8, 1
 	octave 5
 	note D_, 2
 	note D_, 2
-	intensity $82
+	volume_envelope 8, 2
 	octave 4
 	note F#, 1
 	note G_, 1
@@ -312,10 +312,10 @@ Music_Route1_branch_ec112:
 	octave 5
 	note C#, 1
 	note D_, 2
-	intensity $81
+	volume_envelope 8, 1
 	note F#, 2
 	note F#, 2
-	intensity $82
+	volume_envelope 8, 2
 	octave 4
 	note D_, 1
 	note E_, 1

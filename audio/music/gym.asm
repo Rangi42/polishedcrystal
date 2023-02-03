@@ -239,7 +239,7 @@ Music_Gym_branch_f4980:
 	note G_, 1
 	octave 4
 	note C_, 1
-	intensity $d2
+	volume_envelope 13, 2
 	callchannel Music_Gym_branch_f4a15
 	octave 1
 	note F#, 1
@@ -453,7 +453,7 @@ Music_Gym_branch_f4a3c:
 	note C_, 8
 	octave 5
 	note B_, 4
-	intensity $13
+	volume_envelope 1, 3
 	callchannel Music_Gym_branch_f4ab3
 	note __, 2
 	note A_, 2

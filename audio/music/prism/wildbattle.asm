@@ -54,7 +54,7 @@ Music_WildBattlePrism_Ch1:
 	note F_, 1
 	note E_, 1
 	octave 2
-	intensity $b4
+	volume_envelope 11, 4
 	note A_, 2
 	note __, 2
 	note D_, 2
@@ -110,7 +110,7 @@ Music_WildBattlePrism_Ch1:
 	octave 2
 	note D_, 2
 	note __, 2
-	intensity $b7
+	volume_envelope 11, 7
 	note F_, 8
 	note A_, 8
 
@@ -169,7 +169,7 @@ Music_WildBattlePrism_branch_19f26b:
 	note A#, 6
 	note G_, 6
 	note D_, 4
-	intensity $a2
+	volume_envelope 10, 2
 	duty_cycle 2
 	octave 3
 	note D_, 2
@@ -311,7 +311,7 @@ Music_WildBattlePrism_branch_19f26b:
 	note D_, 2
 	octave 4
 	note D_, 2
-	intensity $b7
+	volume_envelope 11, 7
 	duty_cycle 3
 	octave 2
 	jumpchannel Music_WildBattlePrism_branch_19f26b
@@ -331,7 +331,7 @@ Music_WildBattlePrism_branch_19f11b:
 	note B_, 1
 	loopchannel 8, Music_WildBattlePrism_branch_19f11b
 	octave 3
-	intensity $c4
+	volume_envelope 12, 4
 	note D_, 2
 	note __, 2
 	octave 2
@@ -395,7 +395,7 @@ Music_WildBattlePrism_branch_19f11b:
 	octave 3
 	note D_, 2
 	note __, 2
-	intensity $c7
+	volume_envelope 12, 7
 	note F_, 8
 	note D#, 8
 
@@ -461,56 +461,56 @@ Music_WildBattlePrism_branch_19f167:
 	octave 3
 	note D_, 16
 	octave 4
-	intensity $c2
+	volume_envelope 12, 2
 	note D_, 2
 	note D_, 2
 	octave 3
-	intensity $c7
+	volume_envelope 12, 7
 	note A_, 8
 	note __, 2
-	intensity $c2
+	volume_envelope 12, 2
 	note D#, 2
 	note D_, 2
 	note D_, 2
 	octave 2
-	intensity $c7
+	volume_envelope 12, 7
 	note A_, 12
 	octave 3
 	note D_, 8
-	intensity $c2
+	volume_envelope 12, 2
 	note C_, 4
 	octave 2
 	note A#, 2
 	note A#, 1
 	note A_, 1
-	intensity $c7
+	volume_envelope 12, 7
 	note A#, 16
 	octave 4
-	intensity $c2
+	volume_envelope 12, 2
 	note D_, 2
 	note D_, 2
 	octave 3
-	intensity $c7
+	volume_envelope 12, 7
 	note A_, 8
 	note __, 2
-	intensity $c2
+	volume_envelope 12, 2
 	note D#, 2
 	note D_, 2
 	note D_, 2
 	octave 2
-	intensity $c7
+	volume_envelope 12, 7
 	note A_, 12
 	octave 3
 	note C_, 8
 	octave 2
-	intensity $c2
+	volume_envelope 12, 2
 	note F_, 3
 	note G_, 3
 	note A_, 2
-	intensity $c7
+	volume_envelope 12, 7
 	note G_, 8
 	octave 3
-	intensity $c2
+	volume_envelope 12, 2
 	note C#, 1
 	note D_, 1
 	note D#, 1
@@ -533,7 +533,7 @@ Music_WildBattlePrism_branch_19f167:
 	note D_, 2
 	octave 3
 	note D_, 2
-	intensity $c7
+	volume_envelope 12, 7
 	note F_, 8
 	note D#, 8
 	jumpchannel Music_WildBattlePrism_branch_19f167

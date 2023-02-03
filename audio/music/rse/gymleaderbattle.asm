@@ -108,7 +108,7 @@ Music_GymLeaderBattleRSE_Ch1:
 	note D#, 4
 Music_GymLeaderBattleRSE_Ch1_loop:
 	duty_cycle 1
-	intensity $C7
+	volume_envelope 12, 7
 	octave 4
 	note C_, 8
 	octave 3
@@ -122,9 +122,9 @@ Music_GymLeaderBattleRSE_Ch1_loop:
 	note A#, 2
 	octave 4
 	note D_, 2
-	intensity $C0
+	volume_envelope 12, 0
 	note E_, 6
-	intensity $c7
+	volume_envelope 12, 7
 	note E_, 6
 	note D_, 2
 	note E_, 2
@@ -138,14 +138,14 @@ Music_GymLeaderBattleRSE_Ch1_loop:
 	note A_, 4
 	note G_, 4
 	note F_, 4
-	intensity $C0
+	volume_envelope 12, 0
 	note E_, 6
-	intensity $c7
+	volume_envelope 12, 7
 	note E_, 6
 	note C_, 4
-	intensity $C0
+	volume_envelope 12, 0
 	note G_, 8
-	intensity $c7
+	volume_envelope 12, 7
 	note G_, 8
 	note A#, 8
 	note A_, 8
@@ -154,14 +154,14 @@ Music_GymLeaderBattleRSE_Ch1_loop:
 	octave 5
 	note D_, 4
 	note F_, 4
-	intensity $C0
+	volume_envelope 12, 0
 	note E_, 6
-	intensity $c7
+	volume_envelope 12, 7
 	note E_, 6
 	note D_, 4
-	intensity $C0
+	volume_envelope 12, 0
 	note C_, 8
-	intensity $c7
+	volume_envelope 12, 7
 	note C_, 8
 	vibrato $11, $26
 	octave 4
@@ -177,9 +177,9 @@ Music_GymLeaderBattleRSE_Ch1_loop:
 	note A#, 2
 	octave 4
 	note D_, 2
-	intensity $C0
+	volume_envelope 12, 0
 	note E_, 6
-	intensity $c7
+	volume_envelope 12, 7
 	note E_, 6
 	note D_, 2
 	note E_, 2
@@ -193,14 +193,14 @@ Music_GymLeaderBattleRSE_Ch1_loop:
 	note A_, 4
 	note G_, 4
 	note F_, 4
-	intensity $C0
+	volume_envelope 12, 0
 	note E_, 6
-	intensity $c7
+	volume_envelope 12, 7
 	note E_, 6
 	note C_, 4
-	intensity $C0
+	volume_envelope 12, 0
 	note G_, 4
-	intensity $c7
+	volume_envelope 12, 7
 	note G_, 6
 	note G_, 2
 	octave 5
@@ -214,18 +214,18 @@ Music_GymLeaderBattleRSE_Ch1_loop:
 	octave 5
 	note D_, 4
 	note F_, 4
-	intensity $C0
+	volume_envelope 12, 0
 	note E_, 6
-	intensity $C7
+	volume_envelope 12, 7
 	note E_, 6
 	note C_, 4
-	intensity $C0
+	volume_envelope 12, 0
 	note G_, 6
-	intensity $C7
+	volume_envelope 12, 7
 	note G_, 10
 	duty_cycle 3
 	octave 3
-	intensity $C4
+	volume_envelope 12, 4
 	note C_, 6
 	octave 2
 	note A#, 6
@@ -236,14 +236,14 @@ Music_GymLeaderBattleRSE_Ch1_loop:
 	note A#, 6
 	octave 3
 	note D_, 4
-	intensity $C0
+	volume_envelope 12, 0
 	note C_, 4
-	intensity $C4
+	volume_envelope 12, 4
 	note C_, 12
 	note __, 16
 	note __, 16
 	note __, 16
-	intensity $90
+	volume_envelope 9, 0
 	octave 3
 	note C_, 16
 	note C_, 11
@@ -259,7 +259,7 @@ Music_GymLeaderBattleRSE_Ch1_loop:
 	note D#, 16
 	note C_, 16
 	octave 4
-	intensity $A0
+	volume_envelope 10, 0
 	note C_, 11
 	note_type 3, 10, 0
 	note C_, 3
@@ -277,42 +277,42 @@ Music_GymLeaderBattleRSE_Ch1_loop:
 	note F_, 16
 	note F_, 16
 	note F_, 16
-	intensity $A0
+	volume_envelope 10, 0
 	octave 3
 	note C_, 8
-	intensity $A7
+	volume_envelope 10, 7
 	note C_, 8
 	octave 2
 	note A#, 7
 	octave 3
 	note C_, 1
 	note D_, 8
-	intensity $A0
+	volume_envelope 10, 0
 	octave 2
 	note G_, 8
-	intensity $A7
+	volume_envelope 10, 7
 	note G_, 8
-	intensity $A0
+	volume_envelope 10, 0
 	octave 3
 	note C_, 8
-	intensity $A7
+	volume_envelope 10, 7
 	note C_, 8
-	intensity $A0
+	volume_envelope 10, 0
 	note C#, 8
-	intensity $A7
+	volume_envelope 10, 7
 	note C#, 8
 	octave 2
 	note A#, 8
 	octave 3
 	note C#, 6
 	note E_, 2
-	intensity $A0
+	volume_envelope 10, 0
 	note C_, 8
-	intensity $A7
+	volume_envelope 10, 7
 	note C_, 8
-	intensity $A0
+	volume_envelope 10, 0
 	note E_, 8
-	intensity $A7
+	volume_envelope 10, 7
 	note E_, 8
 	jumpchannel Music_GymLeaderBattleRSE_Ch1_loop
 
@@ -326,7 +326,7 @@ Music_GymLeaderBattleRSE_Ch2:
 	note G#, 1
 	note G_, 2
 	loopchannel 8, Music_GymLeaderBattleRSE_Ch2
-	intensity $70
+	volume_envelope 7, 0
 	octave 3
 	note C_, 8
 	octave 2
@@ -341,7 +341,7 @@ Music_GymLeaderBattleRSE_Ch2:
 	octave 3
 	note C#, 8
 	duty_cycle 1
-	intensity $90
+	volume_envelope 9, 0
 	note C_, 8
 	octave 2
 	note C_, 8
@@ -357,7 +357,7 @@ Music_GymLeaderBattleRSE_Ch2:
 	note D#, 8
 Music_GymLeaderBattleRSE_Ch2_loop_main:
 	duty_cycle 3
-	intensity $C7
+	volume_envelope 12, 7
 	octave 3
 	note G_, 8
 	note F_, 7
@@ -379,14 +379,14 @@ Music_GymLeaderBattleRSE_Ch2_loop_main:
 	note C_, 2
 	note __, 2
 	octave 3
-	intensity $97
+	volume_envelope 9, 7
 	octave 3
 	note E_, 2
 	note E_, 2
 	note E_, 2
 	note E_, 2
 	note E_, 2
-	intensity $C7
+	volume_envelope 12, 7
 	octave 4
 	note D_, 8
 	note C_, 8
@@ -397,17 +397,17 @@ Music_GymLeaderBattleRSE_Ch2_loop_main:
 	octave 3
 	note A#, 4
 	note A_, 4
-	intensity $C0
+	volume_envelope 12, 0
 	note G_, 6
-	intensity $c7
+	volume_envelope 12, 7
 	note G_, 6
 	note E_, 4
 	octave 4
-	intensity $C0
+	volume_envelope 12, 0
 	note C_, 4
-	intensity $c7
+	volume_envelope 12, 7
 	note C_, 6
-	intensity $A7
+	volume_envelope 10, 7
 	duty_cycle 0
 	octave 4
 	note E_, 2
@@ -487,7 +487,7 @@ Music_GymLeaderBattleRSE_Ch2_loop_main:
 	note E_, 2
 	note __, 2
 	note C_, 10
-	intensity $C7
+	volume_envelope 12, 7
 	duty_cycle 3
 	octave 4
 	note D_, 8
@@ -499,17 +499,17 @@ Music_GymLeaderBattleRSE_Ch2_loop_main:
 	octave 3
 	note A#, 4
 	note A_, 4
-	intensity $C0
+	volume_envelope 12, 0
 	note G_, 6
-	intensity $c7
+	volume_envelope 12, 7
 	note G_, 6
 	note E_, 4
 	octave 4
-	intensity $C0
+	volume_envelope 12, 0
 	note C_, 4
-	intensity $c7
+	volume_envelope 12, 7
 	note C_, 6
-	intensity $A7
+	volume_envelope 10, 7
 	duty_cycle 0
 	octave 4
 	note E_, 2
@@ -560,7 +560,7 @@ Music_GymLeaderBattleRSE_Ch2_loop_main:
 	note E_, 2
 	note C_, 2
 	duty_cycle 3
-	intensity $A4
+	volume_envelope 10, 4
 	octave 3
 	note G_, 6
 	note F_, 6
@@ -568,11 +568,11 @@ Music_GymLeaderBattleRSE_Ch2_loop_main:
 	note A_, 6
 	note F_, 6
 	note A_, 4
-	intensity $A0
+	volume_envelope 10, 0
 	note G_, 4
-	intensity $A4
+	volume_envelope 10, 4
 	note G_, 12
-	intensity $90
+	volume_envelope 9, 0
 	octave 2
 	note C_, 11
 	note_type 3, 9, 0
@@ -614,7 +614,7 @@ Music_GymLeaderBattleRSE_Ch2_loop_main:
 	note A#, 16
 	duty_cycle 0
 	octave 3
-	intensity $A7
+	volume_envelope 10, 7
 	note A#, 2
 	note A#, 2
 	note A#, 6
@@ -639,7 +639,7 @@ Music_GymLeaderBattleRSE_Ch2_loop_main:
 	note D_, 2
 	note D_, 2
 	note D_, 2
-	intensity $84
+	volume_envelope 8, 4
 	callchannel Music_GymLeaderBattleRSE_Ch2_branch_1
 	callchannel Music_GymLeaderBattleRSE_Ch2_branch_1
 	callchannel Music_GymLeaderBattleRSE_Ch2_branch_2

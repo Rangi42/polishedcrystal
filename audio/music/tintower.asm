@@ -64,25 +64,25 @@ Music_TinTower_branch_f682a:
 	note G_, 4
 	octave 3
 	note G_, 8
-	intensity $a2
+	volume_envelope 10, 2
 	octave 2
 	note G_, 4
 	note G_, 12
 	note G_, 4
 	note G_, 8
-	intensity $a7
+	volume_envelope 10, 7
 	note G_, 4
-	intensity $a2
+	volume_envelope 10, 2
 	note G#, 4
 	note G#, 8
-	intensity $a7
+	volume_envelope 10, 7
 	note G_, 4
-	intensity $a2
+	volume_envelope 10, 2
 	note G#, 4
 	note G#, 8
-	intensity $a7
+	volume_envelope 10, 7
 	note A#, 4
-	intensity $a2
+	volume_envelope 10, 2
 	note G_, 4
 	note G_, 12
 	note G_, 4
@@ -91,7 +91,7 @@ Music_TinTower_branch_f682a:
 	note G_, 12
 	note G_, 4
 	note G_, 8
-	intensity $a5
+	volume_envelope 10, 5
 	octave 3
 	note A#, 4
 	jumpchannel Music_TinTower_branch_f682a
@@ -134,25 +134,25 @@ Music_TinTower_branch_f6895:
 	note C_, 8
 	stereopanning $f
 	loopchannel 2, Music_TinTower_branch_f6895
-	intensity $b2
+	volume_envelope 11, 2
 	octave 3
 	note C_, 4
 	note C_, 12
 	note C_, 4
 	note C_, 8
-	intensity $b7
+	volume_envelope 11, 7
 	note C_, 4
-	intensity $b2
+	volume_envelope 11, 2
 	note C#, 4
 	note C#, 8
-	intensity $b7
+	volume_envelope 11, 7
 	note C_, 4
-	intensity $b2
+	volume_envelope 11, 2
 	note C#, 4
 	note C#, 8
-	intensity $b7
+	volume_envelope 11, 7
 	note D#, 4
-	intensity $90
+	volume_envelope 9, 0
 	stereopanning $ff
 	note G_, 4
 	octave 4
@@ -181,7 +181,7 @@ Music_TinTower_branch_f6895:
 	note C_, 4
 	octave 4
 	note C_, 6
-	intensity $95
+	volume_envelope 9, 5
 	note C#, 2
 	jumpchannel Music_TinTower_branch_f6893
 

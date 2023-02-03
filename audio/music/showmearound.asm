@@ -210,7 +210,7 @@ Music_ShowMeAround_Ch3:
 	note B_, 2
 	note E_, 2
 	note __, 6
-	intensity $14
+	volume_envelope 1, 4
 	octave 2
 	note B_, 1
 	note A#, 1
@@ -219,7 +219,7 @@ Music_ShowMeAround_Ch3:
 	note G_, 1
 	note F_, 1
 	note E_, 2
-	intensity $14
+	volume_envelope 1, 4
 Music_ShowMeAround_branch_edcd9:
 	callchannel Music_ShowMeAround_branch_edcef
 	callchannel Music_ShowMeAround_branch_edcef

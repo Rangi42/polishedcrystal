@@ -15,16 +15,16 @@ Music_Route37_Ch1:
 	note __, 16
 	note __, 16
 Music_Route37_branch_ee969:
-	intensity $b3
+	volume_envelope 11, 3
 	note __, 2
 	octave 2
 	note F#, 2
 	note B_, 2
 	octave 3
 	note E_, 2
-	intensity $b7
+	volume_envelope 11, 7
 	note D#, 10
-	intensity $b3
+	volume_envelope 11, 3
 	note E_, 4
 	note D#, 4
 	note C#, 4
@@ -34,19 +34,19 @@ Music_Route37_branch_ee969:
 	note D#, 3
 	octave 2
 	note B_, 1
-	intensity $b7
+	volume_envelope 11, 7
 	note F#, 8
 	note B_, 8
 	octave 3
 	note B_, 12
-	intensity $b3
+	volume_envelope 11, 3
 	note __, 2
 	octave 2
 	note F#, 2
 	note B_, 2
 	octave 3
 	note E_, 2
-	intensity $b7
+	volume_envelope 11, 7
 	note D#, 10
 	octave 2
 	note A_, 4
@@ -99,7 +99,7 @@ Music_Route37_branch_ee9a5:
 	jumpchannel Music_Route37_branch_ee969
 
 Music_Route37_branch_ee9da:
-	intensity $c2
+	volume_envelope 12, 2
 	octave 2
 	note A_, 2
 	note A_, 1
@@ -110,11 +110,11 @@ Music_Route37_branch_ee9da:
 	note A_, 1
 	note A_, 1
 	note A_, 2
-	intensity $b7
+	volume_envelope 11, 7
 	endchannel
 
 Music_Route37_branch_ee9e9:
-	intensity $c2
+	volume_envelope 12, 2
 	octave 2
 	note B_, 2
 	note B_, 1
@@ -125,7 +125,7 @@ Music_Route37_branch_ee9e9:
 	note B_, 1
 	note B_, 1
 	note B_, 2
-	intensity $b7
+	volume_envelope 11, 7
 	endchannel
 
 Music_Route37_Ch2:
@@ -137,45 +137,45 @@ Music_Route37_Ch2:
 	note_type 12, 12, 1
 	note B_, 1
 	note B_, 1
-	intensity $c2
+	volume_envelope 12, 2
 	note B_, 2
-	intensity $c1
+	volume_envelope 12, 1
 	note B_, 1
 	note B_, 1
 	note B_, 1
 	note B_, 1
-	intensity $c2
+	volume_envelope 12, 2
 	note B_, 6
 	note B_, 2
-	intensity $c1
+	volume_envelope 12, 1
 	note B_, 1
 	note B_, 1
-	intensity $c2
+	volume_envelope 12, 2
 	note B_, 2
-	intensity $c1
+	volume_envelope 12, 1
 	note B_, 1
 	note B_, 1
 	note B_, 1
 	note B_, 1
-	intensity $c2
+	volume_envelope 12, 2
 	note B_, 2
 Music_Route37_branch_eea24:
 	callchannel Music_Route37_branch_eeab7
-	intensity $c6
+	volume_envelope 12, 6
 	octave 4
 	note C#, 4
 	octave 3
 	note B_, 4
 	note A_, 4
 	note E_, 4
-	intensity $b0
+	volume_envelope 11, 0
 	note F#, 8
-	intensity $b7
+	volume_envelope 11, 7
 	note F#, 8
-	intensity $c7
+	volume_envelope 12, 7
 	note D#, 12
 	callchannel Music_Route37_branch_eeab7
-	intensity $c7
+	volume_envelope 12, 7
 	octave 4
 	note C#, 4
 	octave 3
@@ -183,13 +183,13 @@ Music_Route37_branch_eea24:
 	octave 4
 	note C#, 4
 	note E_, 4
-	intensity $b0
+	volume_envelope 11, 0
 	note D#, 16
-	intensity $b0
+	volume_envelope 11, 0
 	note D#, 8
-	intensity $b7
+	volume_envelope 11, 7
 	note D#, 8
-	intensity $c4
+	volume_envelope 12, 4
 	note __, 4
 	octave 3
 	note A_, 3
@@ -197,28 +197,28 @@ Music_Route37_branch_eea24:
 	note E_, 1
 	note A_, 4
 	note G#, 4
-	intensity $a0
+	volume_envelope 10, 0
 	note C#, 6
 	note D#, 6
 	note E_, 4
-	intensity $c3
+	volume_envelope 12, 3
 	note F#, 3
 	note E_, 1
-	intensity $b0
+	volume_envelope 11, 0
 	note D#, 6
-	intensity $b7
+	volume_envelope 11, 7
 	note D#, 6
-	intensity $c3
+	volume_envelope 12, 3
 	octave 3
 	note B_, 3
 	note F#, 1
-	intensity $b0
+	volume_envelope 11, 0
 	octave 4
 	note D#, 6
-	intensity $b7
+	volume_envelope 11, 7
 	octave 4
 	note D#, 6
-	intensity $c4
+	volume_envelope 12, 4
 	note __, 4
 	octave 3
 	note A_, 3
@@ -226,61 +226,61 @@ Music_Route37_branch_eea24:
 	note E_, 1
 	note A_, 4
 	note G#, 4
-	intensity $b0
+	volume_envelope 11, 0
 	note C#, 6
 	note D#, 6
 	note E_, 4
-	intensity $c3
+	volume_envelope 12, 3
 	note F#, 3
 	note D#, 1
-	intensity $b0
+	volume_envelope 11, 0
 	note B_, 6
-	intensity $b7
+	volume_envelope 11, 7
 	note B_, 6
-	intensity $c3
+	volume_envelope 12, 3
 	note B_, 3
 	note F#, 1
-	intensity $b0
+	volume_envelope 11, 0
 	octave 5
 	note D#, 6
-	intensity $b7
+	volume_envelope 11, 7
 	octave 5
 	note D#, 6
-	intensity $c2
+	volume_envelope 12, 2
 	octave 3
 	note F#, 2
 	note F#, 1
 	note F#, 1
 	note F#, 2
-	intensity $c1
+	volume_envelope 12, 1
 	note F#, 1
 	note F#, 1
 	note F#, 1
 	note F#, 1
-	intensity $c2
+	volume_envelope 12, 2
 	note F#, 6
 	note F#, 2
 	note F#, 1
 	note F#, 1
 	note F#, 2
-	intensity $c1
+	volume_envelope 12, 1
 	note F#, 1
 	note F#, 1
 	note F#, 1
 	note F#, 1
-	intensity $c2
+	volume_envelope 12, 2
 	note F#, 2
 	jumpchannel Music_Route37_branch_eea24
 
 Music_Route37_branch_eeab7:
-	intensity $c7
+	volume_envelope 12, 7
 	octave 3
 	note F#, 4
-	intensity $b0
+	volume_envelope 11, 0
 	note B_, 5
-	intensity $b7
+	volume_envelope 11, 7
 	note B_, 5
-	intensity $c3
+	volume_envelope 12, 3
 	note F#, 2
 	note F#, 2
 	note B_, 2

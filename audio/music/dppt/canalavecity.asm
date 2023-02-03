@@ -219,12 +219,12 @@ Music_CanalaveCityDPPt_Ch1_loop:
 	note B_, 6
 	note G_, 1
 	note D_, 1
-	intensity $A2
+	volume_envelope 10, 2
 	note G_, 2
-	intensity $A8
+	volume_envelope 10, 8
 	note E_, 14
 	note E_, 8
-	intensity $A7
+	volume_envelope 10, 7
 	note E_, 8
 	jumpchannel Music_CanalaveCityDPPt_Ch1_loop
 
@@ -399,12 +399,12 @@ Music_CanalaveCityDPPt_Ch2_loop:
 	octave 3
 	note B_, 1
 	note G_, 1
-	intensity $B2
+	volume_envelope 11, 2
 	note B_, 2
-	intensity $B8
+	volume_envelope 11, 8
 	note A_, 14
 	note A_, 8
-	intensity $B7
+	volume_envelope 11, 7
 	note A_, 8
 	jumpchannel Music_CanalaveCityDPPt_Ch2_loop
 

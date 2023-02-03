@@ -19,17 +19,17 @@ Music_LookRocket_Ch1:
 	callchannel Music_LookRocket_branch_f74e6
 	duty_cycle 1
 Music_LookRocket_branch_f74c7:
-	intensity $a8
+	volume_envelope 10, 8
 	callchannel Music_LookRocket_branch_f74f7
 	callchannel Music_LookRocket_branch_f758a
 	octave 4
 	note F#, 1
 	note __, 1
-	intensity $53
+	volume_envelope 5, 3
 	callchannel Music_LookRocket_branch_f750c
-	intensity $c3
+	volume_envelope 12, 3
 	callchannel Music_LookRocket_branch_f750c
-	intensity $e3
+	volume_envelope 14, 3
 	callchannel Music_LookRocket_branch_f750c
 	note __, 16
 	jumpchannel Music_LookRocket_branch_f74c7
@@ -100,17 +100,17 @@ Music_LookRocket_Ch2:
 	note D_, 1
 	callchannel Music_LookRocket_branch_f7547
 Music_LookRocket_branch_f7526:
-	intensity $b7
+	volume_envelope 11, 7
 	callchannel Music_LookRocket_branch_f758a
 	octave 5
 	note C_, 1
 	note __, 1
 	callchannel Music_LookRocket_branch_f7554
-	intensity $53
+	volume_envelope 5, 3
 	callchannel Music_LookRocket_branch_f7568
-	intensity $c3
+	volume_envelope 12, 3
 	callchannel Music_LookRocket_branch_f7568
-	intensity $e3
+	volume_envelope 14, 3
 	callchannel Music_LookRocket_branch_f7568
 	callchannel Music_LookRocket_branch_f756f
 	jumpchannel Music_LookRocket_branch_f7526
@@ -165,24 +165,24 @@ Music_RocketTheme_branch_f7568:
 
 Music_LookRocket_branch_f756f:
 Music_RocketTheme_branch_f756f:
-	intensity $63
+	volume_envelope 6, 3
 	note G#, 1
 	note F_, 1
 	note D_, 1
 	octave 2
 	note B_, 1
-	intensity $a3
+	volume_envelope 10, 3
 	octave 3
 	note A_, 1
 	note F#, 1
 	note D#, 1
 	note C_, 1
-	intensity $c3
+	volume_envelope 12, 3
 	note A#, 1
 	note G_, 1
 	note E_, 1
 	note C#, 1
-	intensity $f3
+	volume_envelope 15, 3
 	note B_, 1
 	note G#, 1
 	note F_, 1
@@ -215,9 +215,9 @@ Music_LookRocket_Ch3:
 Music_LookRocket_branch_f75a5:
 	callchannel Music_LookRocket_branch_f75fe
 	callchannel Music_LookRocket_branch_f75fe
-	intensity $24
+	volume_envelope 2, 4
 	callchannel Music_LookRocket_branch_f7623
-	intensity $14
+	volume_envelope 1, 4
 	callchannel Music_LookRocket_branch_f75cc
 	callchannel Music_LookRocket_branch_f7623
 	callchannel Music_LookRocket_branch_f75e1
@@ -265,7 +265,7 @@ Music_RocketTheme_branch_f75cc:
 
 Music_LookRocket_branch_f75e1:
 Music_RocketTheme_branch_f75e1:
-	intensity $24
+	volume_envelope 2, 4
 	octave 2
 	note G#, 1
 	note __, 1
@@ -278,7 +278,7 @@ Music_RocketTheme_branch_f75e1:
 	octave 3
 	note F#, 1
 	note __, 1
-	intensity $14
+	volume_envelope 1, 4
 	octave 2
 	note A#, 1
 	note __, 1

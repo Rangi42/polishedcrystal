@@ -17,15 +17,15 @@ Music_WallyBattleORAS_Ch1:
 	callchannel Music_WallyBattleORAS_Ch1_branch_1
 	octave 2
 	note A_, 5
-	intensity $84
+	volume_envelope 8, 4
 	note G_, 2
 	note A_, 2
-	intensity $80
+	volume_envelope 8, 0
 	note B_, 4
-	intensity $87
+	volume_envelope 8, 7
 	note B_, 5
 	octave 3
-	intensity $b1
+	volume_envelope 11, 1
 	note A_, 1
 	note B_, 1
 	note B_, 1
@@ -33,53 +33,53 @@ Music_WallyBattleORAS_Ch1:
 	callchannel Music_WallyBattleORAS_Ch1_branch_1
 	octave 2
 	note A_, 5
-	intensity $83
+	volume_envelope 8, 3
 	octave 3
 	note C_, 2
 	note C_, 2
-	intensity $80
+	volume_envelope 8, 0
 	octave 2
 	note B_, 4
-	intensity $87
+	volume_envelope 8, 7
 	note B_, 5
 	octave 3
-	intensity $b1
+	volume_envelope 11, 1
 	note A_, 1
 	note B_, 1
 	note B_, 1
 	note __, 1
-	intensity $87
+	volume_envelope 8, 7
 	note E_, 1
 	note A_, 1
 	note B_, 1
-	intensity $80
+	volume_envelope 8, 0
 	octave 4
 	note C_, 2
-	intensity $87
+	volume_envelope 8, 7
 	note C_, 4
 	note E_, 1
 	note D_, 3
-	intensity $85
+	volume_envelope 8, 5
 	note D_, 2
 	note E_, 2
 	note F#, 2
-	intensity $87
+	volume_envelope 8, 7
 	note F#, 3
 	note D_, 3
 	octave 3
 	note B_, 1
-	intensity $80
+	volume_envelope 8, 0
 	octave 4
 	note G_, 2
-	intensity $87
+	volume_envelope 8, 7
 	note G_, 3
 	note G_, 1
 	note F#, 1
 	note E_, 1
 	note D_, 1
-	intensity $80
+	volume_envelope 8, 0
 	note C_, 10
-	intensity $84
+	volume_envelope 8, 4
 	note C_, 4
 	note_type 8, 8, 3
 	note C_, 1
@@ -89,16 +89,16 @@ Music_WallyBattleORAS_Ch1:
 	note_type 12, 12, 0
 	octave 3
 	note D#, 12
-	intensity $c5
+	volume_envelope 12, 5
 	note D#, 2
-	intensity $94
+	volume_envelope 9, 4
 	soundinput $6c
 	note D#, 2
 	soundinput $00
 	note __, 2
 	duty_cycle 3
 Music_WallyBattleORAS_Ch1_loop_1:
-	intensity $87
+	volume_envelope 8, 7
 	octave 4
 	note C_, 1
 	note C_, 1
@@ -113,17 +113,17 @@ Music_WallyBattleORAS_Ch1_loop_1:
 	note A_, 2
 	note A_, 2
 	duty_cycle 0
-	intensity $c0
+	volume_envelope 12, 0
 	note G_, 3
 	note E_, 3
-	intensity $c3
+	volume_envelope 12, 3
 	soundinput $6c
 	note E_, 2
 	soundinput $00
 	duty_cycle 3
 	note __, 10
 	loopchannel 2, Music_WallyBattleORAS_Ch1_loop_1
-	intensity $87
+	volume_envelope 8, 7
 	note E_, 2
 	octave 4
 	note E_, 2
@@ -141,10 +141,10 @@ Music_WallyBattleORAS_Ch1_loop_1:
 	note E_, 3
 	note D_, 3
 	note C_, 2
-	intensity $80
+	volume_envelope 8, 0
 	octave 3
 	note B_, 10
-	intensity $84
+	volume_envelope 8, 4
 	note B_, 4
 	note_type 8, 8, 3
 	note G_, 1
@@ -153,9 +153,9 @@ Music_WallyBattleORAS_Ch1_loop_1:
 	duty_cycle 0
 	note_type 12, 13, 0
 	note D#, 10
-	intensity $d5
+	volume_envelope 13, 5
 	note D#, 1
-	intensity $a4
+	volume_envelope 10, 4
 	soundinput $6c
 	note D#, 2
 	soundinput $00
@@ -168,9 +168,9 @@ Music_WallyBattleORAS_Ch1_branch_1:
 	note D_, 1
 	note G_, 1
 	note A_, 1
-	intensity $90
+	volume_envelope 9, 0
 	note B_, 2
-	intensity $97
+	volume_envelope 9, 7
 	note B_, 4
 	octave 3
 	note C_, 1
@@ -180,53 +180,53 @@ Music_WallyBattleORAS_Ch2:
 	duty_cycle 0
 	callchannel Music_WallyBattleORAS_Ch2_branch_1
 	note F#, 5
-	intensity $c3
+	volume_envelope 12, 3
 	note E_, 2
 	note F#, 2
-	intensity $c0
+	volume_envelope 12, 0
 	note G_, 4
-	intensity $c7
+	volume_envelope 12, 7
 	note G_, 9
 	callchannel Music_WallyBattleORAS_Ch2_branch_1
 	note_type 6, 12, 7
 	note F#, 9
 	note A#, 1
-	intensity $c3
+	volume_envelope 12, 3
 	note B_, 4
 	note A_, 4
 	note_type 12, 12, 0
 	note G_, 4
-	intensity $c7
+	volume_envelope 12, 7
 	note G_, 9
 	octave 2
 	note B_, 1
 	octave 3
 	note C_, 1
 	note D_, 1
-	intensity $c0
+	volume_envelope 12, 0
 	note E_, 2
-	intensity $c7
+	volume_envelope 12, 7
 	note E_, 4
 	note G_, 1
 	note F#, 3
-	intensity $c5
+	volume_envelope 12, 5
 	note F#, 2
 	note G_, 2
 	note A_, 2
-	intensity $c7
+	volume_envelope 12, 7
 	note A_, 3
 	note F#, 3
 	note D_, 1
-	intensity $c0
+	volume_envelope 12, 0
 	note B_, 2
-	intensity $c7
+	volume_envelope 12, 7
 	note B_, 4
 	note A_, 1
 	note G_, 1
 	note F#, 1
-	intensity $c0
+	volume_envelope 12, 0
 	note E_, 10
-	intensity $c4
+	volume_envelope 12, 4
 	note E_, 4
 	note_type 8, 12, 3
 	note E_, 1
@@ -236,12 +236,12 @@ Music_WallyBattleORAS_Ch2:
 	note_type 12, 8, 0
 	octave 3
 	note B_, 8
-	intensity $87
+	volume_envelope 8, 7
 	note B_, 8
 	note __, 2
 	duty_cycle 0
 Music_WallyBattleORAS_Ch2_loop_1:
-	intensity $c7
+	volume_envelope 12, 7
 	note G_, 1
 	note G_, 1
 	note F#, 1
@@ -252,13 +252,13 @@ Music_WallyBattleORAS_Ch2_loop_1:
 	note E_, 2
 	note F#, 2
 	duty_cycle 3
-	intensity $87
+	volume_envelope 8, 7
 	note B_, 3
 	note G_, 5
 	duty_cycle 0
 	note __, 10
 	loopchannel 2, Music_WallyBattleORAS_Ch2_loop_1
-	intensity $d7
+	volume_envelope 13, 7
 	octave 2
 	note B_, 2
 	octave 3
@@ -275,9 +275,9 @@ Music_WallyBattleORAS_Ch2_loop_1:
 	note B_, 3
 	note A_, 3
 	note G_, 2
-	intensity $c0
+	volume_envelope 12, 0
 	note F#, 10
-	intensity $c4
+	volume_envelope 12, 4
 	note F#, 4
 	note_type 8, 12, 3
 	note E_, 1
@@ -286,7 +286,7 @@ Music_WallyBattleORAS_Ch2_loop_1:
 	duty_cycle 3
 	note_type 12, 8, 0
 	note F#, 8
-	intensity $87
+	volume_envelope 8, 7
 	note F#, 5
 	duty_cycle 0
 	jumpchannel Music_WallyBattleORAS_Ch2
@@ -298,9 +298,9 @@ Music_WallyBattleORAS_Ch2_branch_1:
 	octave 3
 	note E_, 1
 	note F#, 1
-	intensity $b0
+	volume_envelope 11, 0
 	note G_, 2
-	intensity $b7
+	volume_envelope 11, 7
 	note G_, 4
 	note A_, 1
 	endchannel

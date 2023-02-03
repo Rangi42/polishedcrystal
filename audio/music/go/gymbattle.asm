@@ -357,7 +357,7 @@ Music_GymLeaderBattleGo_Ch2_loop_1:
 	loopchannel 4, Music_GymLeaderBattleGo_Ch2_loop_1
 Music_GymLeaderBattleGo_Ch2_loop:
 	sound_duty $00
-	intensity $C5
+	volume_envelope 12, 5
 	vibrato $00, $33
 Music_GymLeaderBattleGo_Ch2_loop_2:
 	note C_, 3
@@ -370,7 +370,7 @@ Music_GymLeaderBattleGo_Ch2_loop_2:
 	note E_, 2
 	loopchannel 2, Music_GymLeaderBattleGo_Ch2_loop_2
 	sound_duty $55
-	intensity $A8
+	volume_envelope 10, 8
 	vibrato $09, $33
 	octave 4
 	note C_, 3
@@ -404,7 +404,7 @@ Music_GymLeaderBattleGo_Ch2_loop_2:
 	note A#, 2
 	octave 5
 	note C_, 2
-	intensity $C8
+	volume_envelope 12, 8
 	octave 3
 	note G#, 8
 	note F_, 4
@@ -430,7 +430,7 @@ Music_GymLeaderBattleGo_Ch2_loop_2:
 	note F_, 1
 	note E_, 6
 	sound_duty $00
-	intensity $C1
+	volume_envelope 12, 1
 	octave 3
 	callchannel Music_GymLeaderBattleGo_Ch1_ditty8
 	octave 4
@@ -438,19 +438,19 @@ Music_GymLeaderBattleGo_Ch2_loop_2:
 	octave 5
 	note C_, 1
 	sound_duty $FF
-	intensity $C8
+	volume_envelope 12, 8
 	vibrato $0F, $53
 	octave 4
 	note D#, 1
 	note C#, 8
 	callchannel Music_GymLeaderBattleGo_Ch2_ditty1
-	intensity $C8
+	volume_envelope 12, 8
 	vibrato $0F, $53
 	octave 4
 	note D#, 1
 	note C#, 8
 	callchannel Music_GymLeaderBattleGo_Ch2_ditty1
-	intensity $C8
+	volume_envelope 12, 8
 	octave 4
 	note C_, 1
 	sound_duty $55
@@ -640,17 +640,17 @@ Music_GymLeaderBattleGo_Ch2_loop_3:
 	jumpchannel Music_GymLeaderBattleGo_Ch2_loop
 
 Music_GymLeaderBattleGo_Ch2_ditty1:
-	intensity $C7
+	volume_envelope 12, 7
 	vibrato $00, $00
 	octave 3
 	note G#, 12
 	note __, 11
-	intensity $C8
+	volume_envelope 12, 8
 	vibrato $0F, $53
 	octave 4
 	note C#, 1
 	note D#, 8
-	intensity $C7
+	volume_envelope 12, 7
 	vibrato $00, $00
 	octave 3
 	note A#, 12
@@ -717,7 +717,7 @@ Music_GymLeaderBattleGo_Ch3_loop_1:
 	loopchannel 2, Music_GymLeaderBattleGo_Ch3_loop_1
 Music_GymLeaderBattleGo_Ch3_loop:
 	duty_cycle 6
-	intensity $16
+	volume_envelope 1, 6
 	vibrato $05, $33
 	octave 3
 Music_GymLeaderBattleGo_Ch3_loop_2:
@@ -766,7 +766,7 @@ Music_GymLeaderBattleGo_Ch3_loop_2:
 	note F_, 2
 	note G_, 2
 	duty_cycle 4
-	intensity $14
+	volume_envelope 1, 4
 	octave 4
 	note F_, 8
 	note C#, 4
@@ -801,7 +801,7 @@ Music_GymLeaderBattleGo_Ch3_loop_2:
 	octave 4
 	note D#, 1
 	duty_cycle 6
-	intensity $16
+	volume_envelope 1, 6
 	vibrato $03, $33
 Music_GymLeaderBattleGo_Ch3_loop_3:
 	callchannel Music_GymLeaderBattleGo_Ch3_ditty1

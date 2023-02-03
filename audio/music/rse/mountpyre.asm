@@ -21,22 +21,22 @@ Music_MountPyreRSE_Ch1:
 Music_MountPyreRSE_Ch1_loop_main:
 Music_MountPyreRSE_Ch1_loop_1:
 	octave 3
-	intensity $42
+	volume_envelope 4, 2
 	note C_, 1
-	intensity $72
+	volume_envelope 7, 2
 	note D_, 4
 	note G#, 4
 	note D_, 7
 	loopchannel 16, Music_MountPyreRSE_Ch1_loop_1
 Music_MountPyreRSE_Ch1_loop_2:
-	intensity $42
+	volume_envelope 4, 2
 	note D#, 1
-	intensity $72
+	volume_envelope 7, 2
 	note F_, 4
 	note B_, 4
 	note F_, 7
 	loopchannel 16, Music_MountPyreRSE_Ch1_loop_2
-	intensity $a3
+	volume_envelope 10, 3
 	note __, 7
 Music_MountPyreRSE_Ch1_loop_3:
 	octave 3
@@ -53,11 +53,11 @@ Music_MountPyreRSE_Ch1_loop_3:
 	note __, 1
 	note D_, 2
 	note D#, 2
-	intensity $a0
+	volume_envelope 10, 0
 	note F_, 16
-	intensity $a7
+	volume_envelope 10, 7
 	note F_, 12
-	intensity $a3
+	volume_envelope 10, 3
 	octave 4
 	note C_, 2
 	octave 3
@@ -127,11 +127,11 @@ Music_MountPyreRSE_Ch2_loop_1:
 	note __, 1
 	note F_, 2
 	note F#, 2
-	intensity $a0
+	volume_envelope 10, 0
 	note G#, 16
-	intensity $a7
+	volume_envelope 10, 7
 	note G#, 12
-	intensity $a3
+	volume_envelope 10, 3
 	octave 4
 	note D#, 2
 	note C_, 2
@@ -173,141 +173,141 @@ Music_MountPyreRSE_Ch2_loop_1:
 
 Music_MountPyreRSE_Ch2_branch_1:
 	octave 3
-	intensity $a3
+	volume_envelope 10, 3
 	note G_, 2
-	intensity $63
+	volume_envelope 6, 3
 	note G_, 2
-	intensity $a3
+	volume_envelope 10, 3
 	note D#, 2
-	intensity $63
+	volume_envelope 6, 3
 	note D#, 2
-	intensity $a3
+	volume_envelope 10, 3
 	note G_, 2
-	intensity $63
+	volume_envelope 6, 3
 	note G_, 2
-	intensity $a3
+	volume_envelope 10, 3
 	note G#, 2
-	intensity $63
+	volume_envelope 6, 3
 	note G#, 2
-	intensity $a3
+	volume_envelope 10, 3
 	note G_, 2
-	intensity $63
+	volume_envelope 6, 3
 	note G_, 2
-	intensity $a3
+	volume_envelope 10, 3
 	note D#, 2
-	intensity $63
+	volume_envelope 6, 3
 	note D#, 2
-	intensity $a3
+	volume_envelope 10, 3
 	note D_, 2
-	intensity $63
+	volume_envelope 6, 3
 	note D_, 2
-	intensity $a3
+	volume_envelope 10, 3
 	note C_, 2
-	intensity $63
+	volume_envelope 6, 3
 	note C_, 2
-	intensity $a3
+	volume_envelope 10, 3
 	octave 2
 	note B_, 2
-	intensity $63
+	volume_envelope 6, 3
 	note B_, 2
-	intensity $a3
+	volume_envelope 10, 3
 	note G_, 2
-	intensity $63
+	volume_envelope 6, 3
 	note G_, 2
-	intensity $a3
+	volume_envelope 10, 3
 	note B_, 2
-	intensity $63
+	volume_envelope 6, 3
 	note B_, 2
 	octave 3
-	intensity $a3
+	volume_envelope 10, 3
 	note C_, 2
-	intensity $63
+	volume_envelope 6, 3
 	note C_, 2
-	intensity $a3
+	volume_envelope 10, 3
 	note D_, 2
-	intensity $63
+	volume_envelope 6, 3
 	note D_, 2
-	intensity $a3
+	volume_envelope 10, 3
 	note D#, 2
-	intensity $63
+	volume_envelope 6, 3
 	note D#, 2
-	intensity $a3
+	volume_envelope 10, 3
 	note D_, 2
-	intensity $63
+	volume_envelope 6, 3
 	note D_, 2
-	intensity $a3
+	volume_envelope 10, 3
 	note G#, 2
-	intensity $63
+	volume_envelope 6, 3
 	note G#, 2
 	endchannel
 
 Music_MountPyreRSE_Ch2_branch_2:
 	octave 3
-	intensity $a3
+	volume_envelope 10, 3
 	note A#, 2
-	intensity $63
+	volume_envelope 6, 3
 	note A#, 2
-	intensity $a3
+	volume_envelope 10, 3
 	note F#, 2
-	intensity $63
+	volume_envelope 6, 3
 	note F#, 2
-	intensity $a3
+	volume_envelope 10, 3
 	note A#, 2
-	intensity $63
+	volume_envelope 6, 3
 	note A#, 2
-	intensity $a3
+	volume_envelope 10, 3
 	note B_, 2
-	intensity $63
+	volume_envelope 6, 3
 	note B_, 2
-	intensity $a3
+	volume_envelope 10, 3
 	note A#, 2
-	intensity $63
+	volume_envelope 6, 3
 	note A#, 2
-	intensity $a3
+	volume_envelope 10, 3
 	note F#, 2
-	intensity $63
+	volume_envelope 6, 3
 	note F#, 2
-	intensity $a3
+	volume_envelope 10, 3
 	note F_, 2
-	intensity $63
+	volume_envelope 6, 3
 	note F_, 2
-	intensity $a3
+	volume_envelope 10, 3
 	note D#, 2
-	intensity $63
+	volume_envelope 6, 3
 	note D#, 2
-	intensity $a3
+	volume_envelope 10, 3
 	note D_, 2
-	intensity $63
+	volume_envelope 6, 3
 	note D_, 2
 	octave 2
-	intensity $a3
+	volume_envelope 10, 3
 	note A#, 2
-	intensity $63
+	volume_envelope 6, 3
 	note A#, 2
-	intensity $a3
+	volume_envelope 10, 3
 	octave 3
 	note D_, 2
-	intensity $63
+	volume_envelope 6, 3
 	note D_, 2
-	intensity $a3
+	volume_envelope 10, 3
 	note D#, 2
-	intensity $63
+	volume_envelope 6, 3
 	note D#, 2
-	intensity $a3
+	volume_envelope 10, 3
 	note F_, 2
-	intensity $63
+	volume_envelope 6, 3
 	note F_, 2
-	intensity $a3
+	volume_envelope 10, 3
 	note F#, 2
-	intensity $63
+	volume_envelope 6, 3
 	note F#, 2
-	intensity $a3
+	volume_envelope 10, 3
 	note F_, 2
-	intensity $63
+	volume_envelope 6, 3
 	note F_, 2
-	intensity $a3
+	volume_envelope 10, 3
 	note B_, 2
-	intensity $63
+	volume_envelope 6, 3
 	note B_, 2
 	endchannel
 

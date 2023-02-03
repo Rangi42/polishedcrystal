@@ -30,59 +30,59 @@ Music_ReversalMountainWhite2_Ch1_loop:
 	note __, 2
 	note G_, 4
 	note __, 10
-	intensity $90
+	volume_envelope 9, 0
 	note G_, 6
-	intensity $97
+	volume_envelope 9, 7
 	note G_, 6
-	intensity $94
+	volume_envelope 9, 4
 	note F#, 6
-	intensity $96
+	volume_envelope 9, 6
 	note F#, 4
 	note __, 10
-	intensity $90
+	volume_envelope 9, 0
 	note F#, 6
-	intensity $97
+	volume_envelope 9, 7
 	note F#, 6
-	intensity $94
+	volume_envelope 9, 4
 	note G_, 4
 	note __, 2
 	note G_, 4
 	note __, 10
-	intensity $90
+	volume_envelope 9, 0
 	note G_, 2
-	intensity $94
+	volume_envelope 9, 4
 	note G_, 4
-	intensity $90
+	volume_envelope 9, 0
 	note G_, 2
-	intensity $94
+	volume_envelope 9, 4
 	note G_, 4
-	intensity $94
+	volume_envelope 9, 4
 	note A_, 4
 	note __, 2
 	note A_, 4
 	note __, 10
-	intensity $90
+	volume_envelope 9, 0
 	note F#, 2
-	intensity $94
+	volume_envelope 9, 4
 	note F#, 4
-	intensity $90
+	volume_envelope 9, 0
 	note F#, 2
-	intensity $94
+	volume_envelope 9, 4
 	note F#, 4
-	intensity $90
+	volume_envelope 9, 0
 	note F_, 2
-	intensity $94
+	volume_envelope 9, 4
 	note F_, 4
 	;;;;;;;;;;;;;;;
 	note F_, 4
 	note __, 10
-	intensity $90
+	volume_envelope 9, 0
 	note F_, 2
-	intensity $94
+	volume_envelope 9, 4
 	note F_, 4
-	intensity $90
+	volume_envelope 9, 0
 	note A_, 2
-	intensity $94
+	volume_envelope 9, 4
 	note A_, 4
 	;;;;;;;;;;;
 	note G_, 4
@@ -97,51 +97,51 @@ Music_ReversalMountainWhite2_Ch1_loop:
 	note __, 2
 	note A_, 4
 	note __, 10
-	intensity $90
+	volume_envelope 9, 0
 	note G_, 6
-	intensity $97
+	volume_envelope 9, 7
 	note G_, 6
-	intensity $94
+	volume_envelope 9, 4
 	note F#, 4
 	note __, 2
 	note F#, 4
 	note __, 10
-	intensity $90
+	volume_envelope 9, 0
 	note D_, 2
-	intensity $94
+	volume_envelope 9, 4
 	note D_, 4
-	intensity $90
+	volume_envelope 9, 0
 	note C#, 2
-	intensity $94
+	volume_envelope 9, 4
 	note C#, 4
 ;;;;;;;;;;;;;;;;mark
-	intensity $90
+	volume_envelope 9, 0
 	note C_, 16
-	intensity $97
+	volume_envelope 9, 7
 	note C_, 16
 	octave 2
-	intensity $90
+	volume_envelope 9, 0
 	note A_, 8
-	intensity $97
+	volume_envelope 9, 7
 	note A_, 8
 	octave 3
-	intensity $90
+	volume_envelope 9, 0
 	note D_, 8
-	intensity $97
+	volume_envelope 9, 7
 	note D_, 8
-	intensity $90
+	volume_envelope 9, 0
 	note C_, 8
-	intensity $97
+	volume_envelope 9, 7
 	note C_, 8
-	intensity $90
+	volume_envelope 9, 0
 	note E_, 8
-	intensity $97
+	volume_envelope 9, 7
 	note E_, 8
-	intensity $90
+	volume_envelope 9, 0
 	note D_, 16
-	intensity $97
+	volume_envelope 9, 7
 	note D_, 8
-	intensity $a4
+	volume_envelope 10, 4
 	note D_, 2
 	note E_, 4
 	note E_, 2
@@ -152,9 +152,9 @@ Music_ReversalMountainWhite2_Ch1_loop:
 	note __, 10
 	note F_, 4
 	note __, 2
-	intensity $a0
+	volume_envelope 10, 0
 	note F_, 2
-	intensity $a4
+	volume_envelope 10, 4
 	note F_, 4
 	note E_, 4
 	note __, 2
@@ -162,9 +162,9 @@ Music_ReversalMountainWhite2_Ch1_loop:
 	note __, 10
 	note E_, 4
 	note __, 2
-	intensity $a0
+	volume_envelope 10, 0
 	note E_, 2
-	intensity $a4
+	volume_envelope 10, 4
 	note E_, 4
 	note A_, 4
 	note __, 2
@@ -172,33 +172,33 @@ Music_ReversalMountainWhite2_Ch1_loop:
 	note __, 10
 	note A_, 4
 	note __, 2
-	intensity $a0
+	volume_envelope 10, 0
 	note A_, 2
-	intensity $a4
+	volume_envelope 10, 4
 	note A_, 4
-	intensity $a0
+	volume_envelope 10, 0
 	note B_, 10
-	intensity $a7
+	volume_envelope 10, 7
 	note B_, 6
-	intensity $a0
+	volume_envelope 10, 0
 	note A#, 10
-	intensity $a7
+	volume_envelope 10, 7
 	note A#, 6
-	intensity $a4
+	volume_envelope 10, 4
 	note A_, 4
 	note __, 2
 	note A_, 4
 	note __, 10
-	intensity $a0
+	volume_envelope 10, 0
 	note F_, 6
-	intensity $a7
+	volume_envelope 10, 7
 	note F_, 6
-	intensity $a4
+	volume_envelope 10, 4
 	note B_, 4
 	note __, 2
 	note B_, 4
 	note __, 10
-	intensity $a0
+	volume_envelope 10, 0
 	note G_, 6
 	note_type 3, 12, 0
 	duty_cycle 2
@@ -207,17 +207,17 @@ Music_ReversalMountainWhite2_Ch1_loop:
 	note G#, 1
 	note A_, 4
 	note G_, 8
-	intensity $90
+	volume_envelope 9, 0
 	note G_, 4
-	intensity $30
+	volume_envelope 3, 0
 	note G_, 4
-	intensity $c0
+	volume_envelope 12, 0
 	note G#, 4
 	note A_, 4
 	note C_, 4
-	intensity $90
+	volume_envelope 9, 0
 	note C_, 4
-	intensity $c0
+	volume_envelope 12, 0
 	note D_, 4
 	note E_, 16
 	note F_, 14
@@ -225,14 +225,14 @@ Music_ReversalMountainWhite2_Ch1_loop:
 	note G_, 3
 	note __, 1
 	note G_, 4
-	intensity $30
+	volume_envelope 3, 0
 	note G_, 4
 	note __, 12
-	intensity $c0
+	volume_envelope 12, 0
 	note G_, 3
 	note __, 1
 	note G_, 4
-	intensity $30
+	volume_envelope 3, 0
 	note G_, 4
 	note __, 4
 	note_type 6, 10, 4
@@ -241,7 +241,7 @@ Music_ReversalMountainWhite2_Ch1_loop:
 	note B_, 2
 	note B_, 2
 	note __, 8
-	intensity $a7
+	volume_envelope 10, 7
 	note A_, 16
 	duty_cycle 2
 	note_type 12, 6, 2
@@ -303,59 +303,59 @@ Music_ReversalMountainWhite2_Ch2_loop:
 	note __, 2
 	note C_, 4
 	note __, 10
-	intensity $90
+	volume_envelope 9, 0
 	note C_, 6
-	intensity $97
+	volume_envelope 9, 7
 	note C_, 6
-	intensity $94
+	volume_envelope 9, 4
 	note D_, 6
-	intensity $96
+	volume_envelope 9, 6
 	note D_, 4
 	note __, 10
-	intensity $90
+	volume_envelope 9, 0
 	note D_, 6
-	intensity $97
+	volume_envelope 9, 7
 	note D_, 6
-	intensity $94
+	volume_envelope 9, 4
 	note C_, 4
 	note __, 2
 	note C_, 4
 	note __, 10
-	intensity $90
+	volume_envelope 9, 0
 	note C_, 2
-	intensity $94
+	volume_envelope 9, 4
 	note C_, 4
-	intensity $90
+	volume_envelope 9, 0
 	note C_, 2
-	intensity $94
+	volume_envelope 9, 4
 	note C_, 4
-	intensity $94
+	volume_envelope 9, 4
 	note F#, 4
 	note __, 2
 	note F#, 4
 	note __, 10
-	intensity $90
+	volume_envelope 9, 0
 	note D_, 2
-	intensity $94
+	volume_envelope 9, 4
 	note D_, 4
-	intensity $90
+	volume_envelope 9, 0
 	note D_, 2
-	intensity $94
+	volume_envelope 9, 4
 	note D_, 4
-	intensity $90
+	volume_envelope 9, 0
 	note D_, 2
-	intensity $94
+	volume_envelope 9, 4
 	note D_, 4
 	;;;;;;;;;;;;;;;
 	note D_, 4
 	note __, 10
-	intensity $90
+	volume_envelope 9, 0
 	note C_, 2
-	intensity $94
+	volume_envelope 9, 4
 	note C_, 4
-	intensity $90
+	volume_envelope 9, 0
 	note F_, 2
-	intensity $94
+	volume_envelope 9, 4
 	note F_, 4
 	;;;;;;;;;;;;
 	note E_, 4
@@ -370,52 +370,52 @@ Music_ReversalMountainWhite2_Ch2_loop:
 	note __, 2
 	note G_, 4
 	note __, 10
-	intensity $90
+	volume_envelope 9, 0
 	note C_, 6
-	intensity $97
+	volume_envelope 9, 7
 	note C_, 6
-	intensity $94
+	volume_envelope 9, 4
 	note D_, 4
 	note __, 2
 	note D_, 4
 	note __, 10
 	octave 2
-	intensity $90
+	volume_envelope 9, 0
 	note A_, 2
-	intensity $94
+	volume_envelope 9, 4
 	note A_, 4
-	intensity $90
+	volume_envelope 9, 0
 	note G#, 2
-	intensity $94
+	volume_envelope 9, 4
 	note G#, 4
 ;;;;;;;;;;;;;;;;mark
-	intensity $90
+	volume_envelope 9, 0
 	note G_, 16
-	intensity $97
+	volume_envelope 9, 7
 	note G_, 16
-	intensity $90
+	volume_envelope 9, 0
 	note F#, 8
-	intensity $97
+	volume_envelope 9, 7
 	note F#, 8
-	intensity $90
+	volume_envelope 9, 0
 	note A_, 8
-	intensity $97
+	volume_envelope 9, 7
 	note A_, 8
-	intensity $90
+	volume_envelope 9, 0
 	note G_, 8
-	intensity $97
+	volume_envelope 9, 7
 	note G_, 8
 	octave 3
-	intensity $90
+	volume_envelope 9, 0
 	note C_, 8
-	intensity $97
+	volume_envelope 9, 7
 	note C_, 8
-	intensity $90
+	volume_envelope 9, 0
 	octave 2
 	note A_, 16
-	intensity $97
+	volume_envelope 9, 7
 	note A_, 8
-	intensity $a4
+	volume_envelope 10, 4
 	note A_, 2
 	note B_, 4
 	note B_, 2
@@ -427,9 +427,9 @@ Music_ReversalMountainWhite2_Ch2_loop:
 	note __, 10
 	note D_, 4
 	note __, 2
-	intensity $a0
+	volume_envelope 10, 0
 	note D_, 2
-	intensity $a4
+	volume_envelope 10, 4
 	note D_, 4
 	note C_, 4
 	note __, 2
@@ -437,9 +437,9 @@ Music_ReversalMountainWhite2_Ch2_loop:
 	note __, 10
 	note C_, 4
 	note __, 2
-	intensity $a0
+	volume_envelope 10, 0
 	note C_, 2
-	intensity $a4
+	volume_envelope 10, 4
 	note C_, 4
 	note F_, 4
 	note __, 2
@@ -447,11 +447,11 @@ Music_ReversalMountainWhite2_Ch2_loop:
 	note __, 10
 	note F_, 4
 	note __, 2
-	intensity $a0
+	volume_envelope 10, 0
 	note F_, 2
-	intensity $a4
+	volume_envelope 10, 4
 	note F_, 4
-	intensity $b4
+	volume_envelope 11, 4
 	octave 2
 	note E_, 2
 	note __, 2
@@ -460,9 +460,9 @@ Music_ReversalMountainWhite2_Ch2_loop:
 	octave 2
 	note E_, 2
 	note __, 2
-	intensity $b5
+	volume_envelope 11, 5
 	note E_, 6
-	intensity $b4
+	volume_envelope 11, 4
 	note D#, 2
 	note __, 2
 	octave 3
@@ -470,39 +470,39 @@ Music_ReversalMountainWhite2_Ch2_loop:
 	octave 2
 	note D#, 2
 	note __, 2
-	intensity $b5
+	volume_envelope 11, 5
 	note D#, 6
 	octave 3
-	intensity $a4
+	volume_envelope 10, 4
 	note F_, 4
 	note __, 2
 	note F_, 4
 	note __, 10
-	intensity $a0
+	volume_envelope 10, 0
 	note C_, 6
-	intensity $a7
+	volume_envelope 10, 7
 	note C_, 6
-	intensity $a4
+	volume_envelope 10, 4
 	note G_, 4
 	note __, 2
 	note G_, 4
 	note __, 10
-	intensity $a0
+	volume_envelope 10, 0
 	note D_, 6
-	intensity $a7
+	volume_envelope 10, 7
 	note D_, 6
 	octave 4
-	intensity $a4
+	volume_envelope 10, 4
 	note C_, 4
 	note __, 2
 	note C_, 4
 	note __, 10
 	octave 3
-	intensity $a7
+	volume_envelope 10, 7
 	note A_, 6
 	octave 4
 	note C_, 6
-	intensity $a4
+	volume_envelope 10, 4
 	note C_, 2
 	note C_, 2
 	note __, 8
@@ -512,7 +512,7 @@ Music_ReversalMountainWhite2_Ch2_loop:
 	note D_, 2
 	note D_, 2
 	note __, 8
-	intensity $a7
+	volume_envelope 10, 7
 	note C_, 16
 	note_type 12, 6, 2
 	note __, 1
@@ -568,17 +568,17 @@ Music_ReversalMountainWhite2_Ch3_loop:
 	note_type 12, 1, 4
 	octave 5
 	note C_, 4
-	intensity $24
+	volume_envelope 2, 4
 	note C_, 3
 	note_type 3, 3, 4
 	note C_, 3
-	intensity $15
+	volume_envelope 1, 5
 	note C#, 1
 	note D_, 4
 	note C_, 4
-	intensity $25
+	volume_envelope 2, 5
 	note C_, 4
-	intensity $15
+	volume_envelope 1, 5
 	octave 4
 	note E_, 4
 	note G_, 12
@@ -590,9 +590,9 @@ Music_ReversalMountainWhite2_Ch3_loop:
 	note F#, 4
 	note E_, 4
 	note D_, 4
-	intensity $25
+	volume_envelope 2, 5
 	note D_, 4
-	intensity $15
+	volume_envelope 1, 5
 	octave 3
 	note A_, 4
 	octave 4
@@ -604,11 +604,11 @@ Music_ReversalMountainWhite2_Ch3_loop:
 	note_type 12, 1, 5
 	octave 5
 	note D_, 4
-	intensity $25
+	volume_envelope 2, 5
 	note D_, 3
 	note_type 3, 3, 5
 	note D_, 3
-	intensity $14
+	volume_envelope 1, 4
 	note D#, 1
 	note E_, 4
 	note D_, 8
@@ -616,9 +616,9 @@ Music_ReversalMountainWhite2_Ch3_loop:
 	octave 4
 	note B_, 4
 	note A_, 4
-	intensity $24
+	volume_envelope 2, 4
 	note A_, 4
-	intensity $14
+	volume_envelope 1, 4
 	note G_, 4
 	note A_, 4
 	note G_, 4
@@ -626,11 +626,11 @@ Music_ReversalMountainWhite2_Ch3_loop:
 	note C#, 1
 	note D_, 11
 	note E_, 4
-	intensity $24
+	volume_envelope 2, 4
 	note E_, 4
-	intensity $34
+	volume_envelope 3, 4
 	note E_, 4
-	intensity $14
+	volume_envelope 1, 4
 	note A_, 4
 	note G_, 7
 	note E_, 1
@@ -647,27 +647,27 @@ Music_ReversalMountainWhite2_Ch3_loop:
 	note_type 12, 1, 4
 	octave 5
 	note C_, 3
-	intensity $24
+	volume_envelope 2, 4
 	note C_, 2
 	note_type 3, 3, 4
 	note C_, 3
-	intensity $15
+	volume_envelope 1, 5
 	octave 4
 	note D#, 1
 	note E_, 4
 	note B_, 4
 	note A_, 4
-	intensity $25
+	volume_envelope 2, 5
 	note A_, 4
-	intensity $15
+	volume_envelope 1, 5
 	note C_, 4
 	note E_, 8
-	intensity $25
+	volume_envelope 2, 5
 	note E_, 4
-	intensity $35
+	volume_envelope 3, 5
 	note E_, 3
 	octave 3
-	intensity $15
+	volume_envelope 1, 5
 	note D#, 1
 	note E_, 4
 	octave 4
@@ -687,9 +687,9 @@ Music_ReversalMountainWhite2_Ch3_loop:
 	note A_, 4
 	note_type 12, 1, 5
 	note A_, 4
-	intensity $25
+	volume_envelope 2, 5
 	note A_, 5
-	intensity $35
+	volume_envelope 3, 5
 	note A_, 2
 	note_type 3, 1, 5
 	note __, 7
@@ -704,9 +704,9 @@ Music_ReversalMountainWhite2_Ch3_loop:
 	note C_, 4
 	note D_, 4
 	note D#, 8
-	intensity $35
+	volume_envelope 3, 5
 	note D#, 3
-	intensity $15
+	volume_envelope 1, 5
 	note C#, 1
 	note D_, 4
 	note C_, 4
@@ -720,20 +720,20 @@ Music_ReversalMountainWhite2_Ch3_loop:
 	note F#, 4
 	note F_, 4
 	note E_, 4
-	intensity $25
+	volume_envelope 2, 5
 	note E_, 4
 	octave 3
-	intensity $15
+	volume_envelope 1, 5
 	note G#, 3
 	octave 4
 	note C#, 1
 	note D_, 4
 	note C_, 16
-	intensity $25
+	volume_envelope 2, 5
 	note C_, 8
-	intensity $35
+	volume_envelope 3, 5
 	note C_, 8
-	intensity $15
+	volume_envelope 1, 5
 	octave 2
 	note G#, 4
 	note A_, 3
@@ -742,21 +742,21 @@ Music_ReversalMountainWhite2_Ch3_loop:
 	note E_, 8
 	note G_, 4
 	note G#, 4
-	intensity $15
+	volume_envelope 1, 5
 	note A_, 16
-	intensity $25
+	volume_envelope 2, 5
 	note A_, 7
-	intensity $15
+	volume_envelope 1, 5
 	octave 4
 	note C#, 1
 	note D_, 4
 	note C_, 16
-	intensity $25
+	volume_envelope 2, 5
 	note C_, 16
-	intensity $35
+	volume_envelope 3, 5
 	note C_, 8
 	note __, 11
-	intensity $27
+	volume_envelope 2, 7
 	octave 3
 	note G#, 1
 	note A_, 4
@@ -771,26 +771,26 @@ Music_ReversalMountainWhite2_Ch3_loop:
 	note G_, 4
 	note G#, 4
 	note A_, 4
-	intensity $37
+	volume_envelope 3, 7
 	note A_, 3
-	intensity $27
+	volume_envelope 2, 7
 	note G#, 1
 	note A_, 4
-	intensity $37
+	volume_envelope 3, 7
 	note A_, 4
-	intensity $27
+	volume_envelope 2, 7
 	note G#, 3
 	note __, 1
 	note G#, 4
-	intensity $37
+	volume_envelope 3, 7
 	note G#, 4
-	intensity $27
+	volume_envelope 2, 7
 	note G_, 3
 	note __, 1
 	note G_, 4
-	intensity $37
+	volume_envelope 3, 7
 	note G_, 3
-	intensity $27
+	volume_envelope 2, 7
 	note F#, 1
 	note G_, 4
 	note G#, 4
@@ -800,9 +800,9 @@ Music_ReversalMountainWhite2_Ch3_loop:
 	note D_, 4
 	octave 3
 	note A_, 4
-	intensity $37
+	volume_envelope 3, 7
 	note A_, 4
-	intensity $27
+	volume_envelope 2, 7
 	octave 4
 	note C_, 3
 	note D#, 1
@@ -817,9 +817,9 @@ Music_ReversalMountainWhite2_Ch3_loop:
 	note A_, 4
 	octave 5
 	note C_, 4
-	intensity $37
+	volume_envelope 3, 7
 	note C_, 4
-	intensity $27
+	volume_envelope 2, 7
 	note E_, 3
 	note G#, 1
 	note A_, 4
@@ -834,9 +834,9 @@ Music_ReversalMountainWhite2_Ch3_loop:
 	note D#, 1
 	note E_, 4
 	note D#, 8
-	intensity $37
+	volume_envelope 3, 7
 	note D#, 4
-	intensity $27
+	volume_envelope 2, 7
 	note D_, 4
 	note G_, 4
 	note A_, 4
@@ -844,9 +844,9 @@ Music_ReversalMountainWhite2_Ch3_loop:
 	note D_, 4
 	note C#, 4
 	note C_, 8
-	intensity $37
+	volume_envelope 3, 7
 	note C_, 4
-	intensity $15
+	volume_envelope 1, 5
 	octave 4
 	note G_, 3
 	note G#, 1
@@ -864,11 +864,11 @@ Music_ReversalMountainWhite2_Ch3_loop:
 	note E_, 4
 	note A_, 4
 	note G_, 8
-	intensity $25
+	volume_envelope 2, 5
 	note G_, 4
-	intensity $35
+	volume_envelope 3, 5
 	note G_, 4
-	intensity $15
+	volume_envelope 1, 5
 	note G_, 4
 	note A_, 4
 	note G_, 4
@@ -879,22 +879,22 @@ Music_ReversalMountainWhite2_Ch3_loop:
 	note D_, 4
 	note C#, 4
 	note C_, 4
-	intensity $14
+	volume_envelope 1, 4
 	note C_, 4
 	note F_, 4
 	note E_, 8
-	intensity $24
+	volume_envelope 2, 4
 	note E_, 4
-	intensity $34
+	volume_envelope 3, 4
 	note E_, 4
-	intensity $14
+	volume_envelope 1, 4
 	note E_, 4
 	note F_, 4
 	octave 4
 	note G_, 4
-	intensity $24
+	volume_envelope 2, 4
 	note G_, 4
-	intensity $14
+	volume_envelope 1, 4
 	note A_, 4
 	octave 5
 	note C_, 16
@@ -903,16 +903,16 @@ Music_ReversalMountainWhite2_Ch3_loop:
 	note D_, 3
 	note __, 1
 	note D_, 4
-	intensity $34
+	volume_envelope 3, 4
 	note D_, 4
 	note __, 12
-	intensity $14
+	volume_envelope 1, 4
 	note D_, 3
 	note __, 1
 	note D_, 4
-	intensity $34
+	volume_envelope 3, 4
 	note D_, 4
-	intensity $14
+	volume_envelope 1, 4
 	octave 4
 	note G_, 4
 	note G#, 4
@@ -927,13 +927,13 @@ Music_ReversalMountainWhite2_Ch3_loop:
 	note G_, 2
 	note A_, 2
 	note B_, 12
-	intensity $24
+	volume_envelope 2, 4
 	note B_, 8
-	intensity $14
+	volume_envelope 1, 4
 	note G_, 16
-	intensity $24
+	volume_envelope 2, 4
 	note G_, 16
-	intensity $34
+	volume_envelope 3, 4
 	note G_, 16
 	note_type 12, 2, 5
 	note __, 11
@@ -942,26 +942,26 @@ Music_ReversalMountainWhite2_Ch3_loop:
 	note __, 1
 	note E_, 1
 	note A_, 1
-	intensity $35
+	volume_envelope 3, 5
 	note A_, 1
 	note __, 1
-	intensity $25
+	volume_envelope 2, 5
 	note A_, 1
-	intensity $35
+	volume_envelope 3, 5
 	note A_, 1
-	intensity $25
+	volume_envelope 2, 5
 	note __, 16
 	note __, 8
 	note E_, 1
 	note __, 1
 	note E_, 1
 	note A_, 1
-	intensity $35
+	volume_envelope 3, 5
 	note A_, 1
 	note __, 1
-	intensity $25
+	volume_envelope 2, 5
 	note A_, 1
-	intensity $35
+	volume_envelope 3, 5
 	note A_, 1
 	jumpchannel Music_ReversalMountainWhite2_Ch3_loop
 

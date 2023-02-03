@@ -15,7 +15,7 @@ Music_WildPokemonVictory_Ch1:
 	note A_, 1
 	note G#, 1
 	note F#, 1
-	intensity $b6
+	volume_envelope 11, 6
 	note E_, 12
 Music_SuccessfulCapture_branch_f4536:
 	stereopanning $f
@@ -26,7 +26,7 @@ Music_WildPokemonVictory_branch_f4538:
 	note F#, 4
 	callchannel Music_WildPokemonVictory_branch_f455c
 	note G#, 4
-	intensity $78
+	volume_envelope 7, 8
 	octave 3
 	note G_, 4
 	transpose 0, 1
@@ -37,13 +37,13 @@ Music_WildPokemonVictory_branch_f4538:
 	callchannel Music_WildPokemonVictory_branch_f455c
 	note G#, 4
 	transpose 0, 0
-	intensity $78
+	volume_envelope 7, 8
 	octave 3
 	note F#, 4
 	jumpchannel Music_WildPokemonVictory_branch_f4538
 
 Music_WildPokemonVictory_branch_f455c:
-	intensity $71
+	volume_envelope 7, 1
 	octave 3
 	note G#, 1
 	note B_, 1
@@ -77,7 +77,7 @@ Music_WildPokemonVictory_Ch2:
 	note F#, 1
 	note G#, 1
 	note A_, 1
-	intensity $d6
+	volume_envelope 13, 6
 	note B_, 12
 Music_SuccessfulCapture_branch_f4585:
 	stereopanning $f0
@@ -90,7 +90,7 @@ Music_WildPokemonVictory_branch_f4587:
 	callchannel Music_WildPokemonVictory_branch_f45b5
 	octave 4
 	note B_, 4
-	intensity $81
+	volume_envelope 8, 1
 	note C_, 1
 	note E_, 1
 	note G_, 1
@@ -105,7 +105,7 @@ Music_WildPokemonVictory_branch_f4587:
 	octave 4
 	note B_, 4
 	transpose 0, 0
-	intensity $81
+	volume_envelope 8, 1
 	octave 3
 	note B_, 1
 	octave 4
@@ -115,7 +115,7 @@ Music_WildPokemonVictory_branch_f4587:
 	jumpchannel Music_WildPokemonVictory_branch_f4587
 
 Music_WildPokemonVictory_branch_f45b5:
-	intensity $81
+	volume_envelope 8, 1
 	octave 4
 	note B_, 2
 	note A_, 2
@@ -168,7 +168,7 @@ Music_WildPokemonVictory_branch_f45cf:
 	jumpchannel Music_WildPokemonVictory_branch_f45cf
 
 Music_WildPokemonVictory_branch_f45f4:
-	intensity $25
+	volume_envelope 2, 5
 	octave 3
 	note E_, 2
 	note __, 4

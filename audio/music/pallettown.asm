@@ -30,9 +30,9 @@ Music_PalletTown_branch_f4b22:
 	note C_, 4
 	octave 3
 	note A_, 4
-	intensity $77
+	volume_envelope 7, 7
 	note G_, 8
-	intensity $78
+	volume_envelope 7, 8
 	note F#, 4
 	note A_, 4
 	note B_, 12
@@ -58,11 +58,11 @@ Music_PalletTown_branch_f4b22:
 	note C_, 2
 	octave 3
 	note B_, 8
-	intensity $77
+	volume_envelope 7, 7
 	note B_, 8
 Music_PalletTown_branch_f4b59:
 	duty_cycle 3
-	intensity $92
+	volume_envelope 9, 2
 	note G_, 2
 	note E_, 2
 	note G_, 2
@@ -71,7 +71,7 @@ Music_PalletTown_branch_f4b59:
 	note D#, 2
 	note G_, 2
 	note D#, 2
-	intensity $5f
+	volume_envelope 5, -7
 	note G_, 1
 	note A_, 1
 	note B_, 1
@@ -84,7 +84,7 @@ Music_PalletTown_branch_f4b59:
 	octave 3
 	note B_, 2
 	loopchannel 2, Music_PalletTown_branch_f4b59
-	intensity $3f
+	volume_envelope 3, -7
 	octave 4
 	note C_, 4
 	octave 3
@@ -94,7 +94,7 @@ Music_PalletTown_branch_f4b59:
 	note F#, 4
 	note D_, 4
 	note E_, 4
-	intensity $72
+	volume_envelope 7, 2
 	note C_, 1
 	note E_, 1
 	note G_, 1
@@ -104,18 +104,18 @@ Music_PalletTown_branch_f4b59:
 	note A_, 1
 	octave 5
 	note D_, 2
-	intensity $62
+	volume_envelope 6, 2
 	note D_, 2
-	intensity $22
+	volume_envelope 2, 2
 	note D_, 2
-	intensity $2f
+	volume_envelope 2, -7
 	octave 3
 	note D_, 4
 	note E_, 4
 	note G_, 6
 	note A_, 1
 	note G_, 1
-	intensity $1f
+	volume_envelope 1, -7
 	note F#, 8
 	jumpchannel Music_PalletTown_branch_f4b22
 
@@ -184,7 +184,7 @@ Music_PalletTown_branch_f4ba8:
 	note C_, 2
 	note D_, 2
 Music_PalletTown_branch_f4be5:
-	intensity $a2
+	volume_envelope 10, 2
 	octave 3
 	note E_, 2
 	octave 2
@@ -201,7 +201,7 @@ Music_PalletTown_branch_f4be5:
 	note D#, 2
 	octave 2
 	note C_, 2
-	intensity $93
+	volume_envelope 9, 3
 	note G_, 6
 	note G_, 1
 	note G_, 3
@@ -228,9 +228,9 @@ Music_PalletTown_branch_f4be5:
 	note E_, 2
 	note G_, 2
 	note E_, 2
-	intensity $1f
+	volume_envelope 1, -7
 	note F#, 4
-	intensity $88
+	volume_envelope 8, 8
 	note F#, 4
 	note B_, 4
 	note G_, 4

@@ -14,12 +14,12 @@ Music_SunyshoreCityDPPt_Ch1:
 	stereopanning $77
 	tempo $90
 	tone $0002
-	intensity $A1
+	volume_envelope 10, 1
 	note_type 12, 10, 1
 	note __, 2
 	octave 4
 	note F#, 2
-	intensity $61
+	volume_envelope 6, 1
 	note F#, 2
 	note F#, 2
 	note E_, 2
@@ -28,22 +28,22 @@ Music_SunyshoreCityDPPt_Ch1:
 	note E_, 2
 	note E_, 2
 	note D#, 2
-	intensity $A1
+	volume_envelope 10, 1
 	note D#, 2
-	intensity $61
+	volume_envelope 6, 1
 	note D#, 2
 	note E_, 2
-	intensity $A1
+	volume_envelope 10, 1
 	note E_, 2
-	intensity $61
+	volume_envelope 6, 1
 	note E_, 2
-	intensity $A1
+	volume_envelope 10, 1
 	note E_, 2
-	intensity $61
+	volume_envelope 6, 1
 	note E_, 2
-	intensity $A1
+	volume_envelope 10, 1
 	note F#, 2
-	intensity $61
+	volume_envelope 6, 1
 	note F#, 2
 	note F#, 2
 	note E_, 2
@@ -59,7 +59,7 @@ Music_SunyshoreCityDPPt_Ch1:
 	note E_, 2
 	note D#, 4
 	duty_cycle 2
-	intensity $87
+	volume_envelope 8, 7
 	octave 2
 	note A_, 6
 	note G#, 4
@@ -113,7 +113,7 @@ Music_SunyshoreCityDPPt_Ch1_loop:
 	note C_, 4
 	note E_, 12
 	duty_cycle 1
-	intensity $A1
+	volume_envelope 10, 1
 	note E_, 2
 	note C#, 2
 	note G#, 2
@@ -128,7 +128,7 @@ Music_SunyshoreCityDPPt_Ch1_loop:
 	note G#, 2
 	note B_, 6
 	duty_cycle 0
-	intensity $81
+	volume_envelope 8, 1
 	octave 4
 	note E_, 2
 	note D#, 2
@@ -150,7 +150,7 @@ Music_SunyshoreCityDPPt_Ch1_loop:
 	octave 5
 	note E_, 2
 	duty_cycle 1
-	intensity $A1
+	volume_envelope 10, 1
 	octave 2
 	note F#, 2
 	note C#, 2
@@ -167,7 +167,7 @@ Music_SunyshoreCityDPPt_Ch1_loop:
 	octave 3
 	note C#, 6
 	duty_cycle 0
-	intensity $81
+	volume_envelope 8, 1
 	octave 4
 	note E_, 2
 	note D#, 2
@@ -189,7 +189,7 @@ Music_SunyshoreCityDPPt_Ch1_loop:
 	octave 5
 	note E_, 2
 	duty_cycle 1
-	intensity $A1
+	volume_envelope 10, 1
 	octave 2
 	note C#, 4
 	note A#, 2
@@ -208,7 +208,7 @@ Music_SunyshoreCityDPPt_Ch1_loop:
 	octave 2
 	note G#, 6
 	duty_cycle 0
-	intensity $81
+	volume_envelope 8, 1
 	octave 4
 	note F#, 2
 	note F_, 2
@@ -230,7 +230,7 @@ Music_SunyshoreCityDPPt_Ch1_loop:
 	octave 5
 	note F#, 2
 	duty_cycle 1
-	intensity $A1
+	volume_envelope 10, 1
 	octave 2
 	note D_, 4
 	octave 3
@@ -252,7 +252,7 @@ Music_SunyshoreCityDPPt_Ch1_loop:
 	note F#, 2
 	note E_, 6
 	duty_cycle 0
-	intensity $81
+	volume_envelope 8, 1
 	octave 4
 	note E_, 2
 	note D#, 2
@@ -274,7 +274,7 @@ Music_SunyshoreCityDPPt_Ch1_loop:
 	octave 5
 	note E_, 2
 	duty_cycle 1
-	intensity $A3
+	volume_envelope 10, 3
 	octave 3
 	note C#, 2
 	note __, 2
@@ -296,7 +296,7 @@ Music_SunyshoreCityDPPt_Ch1_loop:
 	octave 4
 	note C#, 10
 	note E_, 16
-	intensity $A2
+	volume_envelope 10, 2
 	octave 3
 	note_type 15, 10, 2
 	note A#, 8
@@ -320,7 +320,7 @@ Music_SunyshoreCityDPPt_Ch1_loop:
 	octave 4
 	note C#, 3
 	duty_cycle 2
-	intensity $91
+	volume_envelope 9, 1
 	octave 5
 	note D_, 1
 	octave 4
@@ -353,10 +353,10 @@ Music_SunyshoreCityDPPt_Ch1_loop:
 	note E_, 1
 	note G#, 1
 	duty_cycle 1
-	intensity $A1
+	volume_envelope 10, 1
 	note C#, 2
 	note __, 2
-	intensity $61
+	volume_envelope 6, 1
 	note C#, 2
 	note __, 2
 	note C#, 2
@@ -375,33 +375,33 @@ Music_SunyshoreCityDPPt_Ch1_loop:
 	octave 5
 	note C#, 2
 	note __, 2
-	intensity $A1
+	volume_envelope 10, 1
 	note C#, 2
 	note __, 2
-	intensity $61
+	volume_envelope 6, 1
 	note C#, 2
 	note __, 2
 	octave 4
 	note B_, 2
 	note __, 2
-	intensity $A1
+	volume_envelope 10, 1
 	note B_, 2
 	note __, 2
-	intensity $61
+	volume_envelope 6, 1
 	note B_, 2
 	note __, 2
-	intensity $A1
+	volume_envelope 10, 1
 	note B_, 2
 	note __, 2
-	intensity $61
+	volume_envelope 6, 1
 	octave 5
 	note C#, 2
 	note __, 2
-	intensity $A1
+	volume_envelope 10, 1
 	octave 4
 	note B_, 2
 	note __, 2
-	intensity $61
+	volume_envelope 6, 1
 	note B_, 2
 	note __, 2
 	note B_, 2
@@ -416,10 +416,10 @@ Music_SunyshoreCityDPPt_Ch1_loop:
 	note __, 2
 	note B_, 2
 	note __, 2
-	intensity $A1
+	volume_envelope 10, 1
 	note B_, 2
 	note __, 2
-	intensity $61
+	volume_envelope 6, 1
 	note B_, 2
 	note __, 2
 	note B_, 2
@@ -435,10 +435,10 @@ Music_SunyshoreCityDPPt_Ch1_loop:
 	octave 5
 	note C#, 2
 	note __, 2
-	intensity $A1
+	volume_envelope 10, 1
 	note E_, 2
 	note __, 2
-	intensity $61
+	volume_envelope 6, 1
 	note E_, 2
 	note __, 2
 	note E_, 2
@@ -456,31 +456,31 @@ Music_SunyshoreCityDPPt_Ch1_loop:
 	note __, 2
 	note B_, 2
 	note __, 2
-	intensity $A1
+	volume_envelope 10, 1
 	note B_, 2
 	note __, 2
-	intensity $61
+	volume_envelope 6, 1
 	note B_, 2
 	note __, 2
 	octave 5
 	note C#, 2
 	note __, 2
-	intensity $A1
+	volume_envelope 10, 1
 	note C#, 2
 	note __, 2
-	intensity $61
+	volume_envelope 6, 1
 	note C#, 2
 	note __, 2
-	intensity $A1
+	volume_envelope 10, 1
 	note D_, 2
 	note __, 2
-	intensity $61
+	volume_envelope 6, 1
 	note D_, 2
 	note __, 2
-	intensity $A1
+	volume_envelope 10, 1
 	note E_, 2
 	note __, 2
-	intensity $61
+	volume_envelope 6, 1
 	note E_, 2
 	note __, 2
 	note E_, 2
@@ -498,34 +498,34 @@ Music_SunyshoreCityDPPt_Ch1_loop:
 	note __, 2
 	note A#, 2
 	note __, 2
-	intensity $A1
+	volume_envelope 10, 1
 	note A#, 2
 	note __, 2
-	intensity $61
+	volume_envelope 6, 1
 	note A#, 2
 	note __, 2
 	note B_, 2
 	note __, 2
-	intensity $A1
+	volume_envelope 10, 1
 	note B_, 2
 	note __, 2
-	intensity $61
+	volume_envelope 6, 1
 	note B_, 2
 	note __, 2
-	intensity $A1
+	volume_envelope 10, 1
 	octave 5
 	note C#, 2
 	note __, 2
-	intensity $61
+	volume_envelope 6, 1
 	note D_, 2
 	note __, 2
-	intensity $A1
+	volume_envelope 10, 1
 	note C#, 2
 	note __, 2
-	intensity $61
+	volume_envelope 6, 1
 	note C#, 2
 	note __, 2
-	intensity $97
+	volume_envelope 9, 7
 	octave 3
 	note_type 12, 9, 7
 	note A_, 12
@@ -566,7 +566,7 @@ Music_SunyshoreCityDPPt_Ch1_loop:
 	note A_, 16
 	note __, 10
 	duty_cycle 2
-	intensity $87
+	volume_envelope 8, 7
 	octave 2
 	note A_, 6
 	note G#, 4
@@ -583,13 +583,13 @@ Music_SunyshoreCityDPPt_Ch1_loop:
 
 Music_SunyshoreCityDPPt_Ch2:
 	tone $0001
-	intensity $C1
+	volume_envelope 12, 1
 	note_type 12, 12, 1
 	note __, 2
 	duty_cycle 1
 	octave 5
 	note G#, 2
-	intensity $71
+	volume_envelope 7, 1
 	note G#, 2
 	note G#, 2
 	note G#, 2
@@ -598,42 +598,42 @@ Music_SunyshoreCityDPPt_Ch2:
 	note G#, 2
 	note G#, 2
 	note G#, 2
-	intensity $C1
+	volume_envelope 12, 1
 	note G#, 2
-	intensity $71
-	note G#, 2
-	note G#, 2
-	intensity $C1
-	note G#, 2
-	intensity $71
-	note G#, 2
-	intensity $C1
-	note G#, 2
-	intensity $71
-	note G#, 2
-	intensity $C1
-	note G#, 2
-	intensity $71
+	volume_envelope 7, 1
 	note G#, 2
 	note G#, 2
+	volume_envelope 12, 1
+	note G#, 2
+	volume_envelope 7, 1
+	note G#, 2
+	volume_envelope 12, 1
+	note G#, 2
+	volume_envelope 7, 1
+	note G#, 2
+	volume_envelope 12, 1
+	note G#, 2
+	volume_envelope 7, 1
 	note G#, 2
 	note G#, 2
 	note G#, 2
 	note G#, 2
 	note G#, 2
 	note G#, 2
-	intensity $C1
-	note G#, 2
-	intensity $71
 	note G#, 2
 	note G#, 2
-	intensity $C1
+	volume_envelope 12, 1
 	note G#, 2
-	intensity $71
+	volume_envelope 7, 1
 	note G#, 2
-	intensity $C1
+	note G#, 2
+	volume_envelope 12, 1
+	note G#, 2
+	volume_envelope 7, 1
+	note G#, 2
+	volume_envelope 12, 1
 	note F#, 4
-	intensity $C6
+	volume_envelope 12, 6
 	vibrato $08, $23
 	octave 4
 	note_type 6, 12, 6
@@ -785,7 +785,7 @@ Music_SunyshoreCityDPPt_Ch2_loop:
 	octave 4
 	note C#, 6
 	duty_cycle 0
-	intensity $B8
+	volume_envelope 11, 8
 	note D_, 4
 	note C#, 4
 	octave 3
@@ -809,16 +809,16 @@ Music_SunyshoreCityDPPt_Ch2_loop:
 	octave 5
 	note D_, 2
 	note C#, 6
-	intensity $C8
+	volume_envelope 12, 8
 	octave 4
 	note B_, 16
 	octave 5
 	note C_, 16
-	intensity $C2
+	volume_envelope 12, 2
 	note C#, 4
 	note __, 4
 	duty_cycle 1
-	intensity $C7
+	volume_envelope 12, 7
 	vibrato $00, $00
 	octave 3
 	note E_, 8
@@ -860,7 +860,7 @@ Music_SunyshoreCityDPPt_Ch2_loop:
 	octave 4
 	note C#, 4
 	duty_cycle 2
-	intensity $A7
+	volume_envelope 10, 7
 	octave 3
 	note E_, 4
 	note A_, 4
@@ -874,7 +874,7 @@ Music_SunyshoreCityDPPt_Ch2_loop:
 	note C#, 2
 	octave 3
 	note A_, 16
-	intensity $C7
+	volume_envelope 12, 7
 	note_type 15, 12, 7
 	note __, 16
 	note_type 12, 12, 7
@@ -921,7 +921,7 @@ Music_SunyshoreCityDPPt_Ch2_loop:
 	jumpchannel Music_SunyshoreCityDPPt_Ch2_loop
 
 Music_SunyshoreCityDPPt_Ch3:
-	intensity $25
+	volume_envelope 2, 5
 	duty_cycle 1
 	octave 2
 	note_type 6, 2, 5
@@ -953,7 +953,7 @@ Music_SunyshoreCityDPPt_Ch3:
 	note __, 2
 	octave 2
 	note B_, 2
-	intensity $10
+	volume_envelope 1, 0
 	duty_cycle 0
 	note F#, 1
 	note G#, 1
@@ -1380,7 +1380,7 @@ Music_SunyshoreCityDPPt_Ch3_loop:
 	octave 2
 	note A_, 1
 	note E_, 1
-	intensity $12
+	volume_envelope 1, 2
 	duty_cycle 2
 	note A_, 2
 	note __, 16
@@ -1463,7 +1463,7 @@ Music_SunyshoreCityDPPt_Ch3_loop:
 	octave 3
 	note E_, 2
 	note __, 2
-	intensity $10
+	volume_envelope 1, 0
 	duty_cycle 0
 	octave 1
 	note A_, 2

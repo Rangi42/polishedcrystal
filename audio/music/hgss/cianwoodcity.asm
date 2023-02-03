@@ -25,7 +25,7 @@ Music_CianwoodCityHGSS_branch_ef2e5:
 	note F_, 4
 	note F#, 4
 	note G#, 4
-	intensity $60
+	volume_envelope 6, 0
 	note __, 4
 	note __, 16
 	note __, 10
@@ -74,7 +74,7 @@ Music_CianwoodCityHGSS_branch_ef2e5:
 	note D#, 4
 	note C#, 4
 	note __, 8
-	intensity $52
+	volume_envelope 5, 2
 	callchannel Music_CianwoodCityHGSS_branch_ef37f
 	note G#, 2
 	note F_, 2
@@ -94,7 +94,7 @@ Music_CianwoodCityHGSS_branch_ef2e5:
 	note F_, 2
 	callchannel Music_CianwoodCityHGSS_branch_ef391
 	octave 5
-	intensity $52
+	volume_envelope 5, 2
 	note E_, 2
 	note C#, 2
 	octave 4
@@ -208,7 +208,7 @@ Music_CianwoodCityHGSS_branch_ef3d0:
 	octave 5
 	note C#, 2
 	loopchannel 2, Music_CianwoodCityHGSS_branch_ef3d0
-	intensity $50
+	volume_envelope 5, 0
 	duty_cycle 0
 	octave 4
 	note A#, 16
@@ -243,7 +243,7 @@ Music_CianwoodCityHGSS_branch_ef3f2:
 	note D#, 4
 	note F_, 4
 	note_type 6, 9, 3
-	intensity $97
+	volume_envelope 9, 7
 	duty_cycle 2
 	octave 3
 	note C#, 7
@@ -367,7 +367,7 @@ Music_CianwoodCityHGSS_branch_ef3f2:
 	note A_, 4
 	note_type 12, 8, 3
 	note A#, 16
-	intensity $80
+	volume_envelope 8, 0
 	note G#, 4
 	note G_, 4
 	note B_, 4
@@ -375,7 +375,7 @@ Music_CianwoodCityHGSS_branch_ef3f2:
 	octave 4
 	note C#, 7
 	note D_, 1
-	intensity $87
+	volume_envelope 8, 7
 	note D#, 12
 	octave 3
 	note A#, 2

@@ -58,7 +58,7 @@ Music_VioletCity_Ch1:
 	note F_, 2
 	note G#, 2
 	note B_, 2
-	intensity $a4
+	volume_envelope 10, 4
 	octave 2
 	note B_, 8
 	note __, 4
@@ -183,12 +183,12 @@ Music_VioletCity_branch_f0056:
 	note B_, 2
 	octave 3
 	note E_, 2
-	intensity $a4
+	volume_envelope 10, 4
 	stereopanning $ff
 	note D#, 8
 	note __, 8
 	duty_cycle 3
-	intensity $84
+	volume_envelope 8, 4
 	note __, 4
 	note G_, 2
 	note A_, 2
@@ -349,7 +349,7 @@ Music_VioletCity_Ch2:
 	note D#, 1
 	note E_, 1
 Music_VioletCity_branch_f0199:
-	intensity $b7
+	volume_envelope 11, 7
 	note F#, 4
 	note __, 2
 	note F#, 1
@@ -423,7 +423,7 @@ Music_VioletCity_branch_f0199:
 	octave 3
 	note B_, 12
 	note __, 4
-	intensity $a7
+	volume_envelope 10, 7
 	duty_cycle 3
 	note __, 2
 	note B_, 1
@@ -472,7 +472,7 @@ Music_VioletCity_branch_f0199:
 	note __, 1
 	note F#, 2
 	vibrato $0, $0
-	intensity $87
+	volume_envelope 8, 7
 	octave 5
 	note E_, 4
 	note F#, 4
@@ -491,7 +491,7 @@ Music_VioletCity_branch_f0199:
 	note C#, 11
 	note __, 5
 	vibrato $12, $24
-	intensity $a7
+	volume_envelope 10, 7
 	duty_cycle 2
 	octave 4
 	note A#, 6

@@ -128,12 +128,12 @@ Music_LookBeauty_branch_eeec5:
 	note F_, 2
 	note __, 2
 	note E_, 2
-	intensity $b7
+	volume_envelope 11, 7
 	vibrato $10, $24
 	octave 5
 	note C_, 15
 	note_type 6, 12, 7
-	intensity $c5
+	volume_envelope 12, 5
 	vibrato $10, $23
 	note __, 1
 	note C#, 1

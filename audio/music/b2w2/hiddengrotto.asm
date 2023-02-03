@@ -73,7 +73,7 @@ Music_HiddenGrottoB2W2_Ch2_loop:
 	note D_, 2
 	note C_, 2
 	note __, 16
-	intensity $52
+	volume_envelope 5, 2
 	note C_, 2
 	note F#, 10
 	note __, 16

@@ -90,12 +90,12 @@ Music_LookPokemaniac_Ch3:
 	note A_, 1
 	octave 5
 	note C_, 4
-	intensity $10
+	volume_envelope 1, 0
 Music_LookPokemaniac_branch_ebe62:
 	callchannel Music_LookPokemaniac_branch_ebe70
-	intensity $14
+	volume_envelope 1, 4
 	callchannel Music_LookPokemaniac_branch_ebe70
-	intensity $10
+	volume_envelope 1, 0
 	jumpchannel Music_LookPokemaniac_branch_ebe62
 
 Music_LookPokemaniac_branch_ebe70:

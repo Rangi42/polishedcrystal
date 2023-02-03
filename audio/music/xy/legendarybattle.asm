@@ -17,115 +17,115 @@ Music_LegendaryBattleXY_Ch1:
 	octave 2
 	note C_, 2
 	octave 3
-	intensity $a0
+	volume_envelope 10, 0
 	note C_, 2
 	note G_, 3
 	note A#, 1
 	note A_, 2
-	intensity $a7
+	volume_envelope 10, 7
 	note A_, 6
-	intensity $84
+	volume_envelope 8, 4
 	octave 2
 	note C_, 2
-	intensity $a0
+	volume_envelope 10, 0
 	octave 3
 	note C_, 2
 	note G_, 3
 	note A#, 1
 	octave 4
 	note C_, 2
-	intensity $a7
+	volume_envelope 10, 7
 	note C_, 6
-	intensity $84
+	volume_envelope 8, 4
 	octave 2
 	note C_, 2
-	intensity $a0
+	volume_envelope 10, 0
 	octave 3
 	note C_, 2
 	note G_, 3
 	note A#, 1
 	note A_, 2
-	intensity $a7
+	volume_envelope 10, 7
 	note A_, 4
 	note G_, 1
 	note F_, 1
-	intensity $a0
+	volume_envelope 10, 0
 	note G_, 2
-	intensity $a7
+	volume_envelope 10, 7
 	note G_, 4
 	note A#, 2
 	octave 4
-	intensity $a0
+	volume_envelope 10, 0
 	note C_, 2
-	intensity $a7
+	volume_envelope 10, 7
 	note C_, 6
 Music_LegendaryBattleXY_Ch1_loop_main:
 	octave 3
-	intensity $60
+	volume_envelope 6, 0
 	note C_, 12
-	intensity $64
+	volume_envelope 6, 4
 	note C_, 4
-	intensity $60
+	volume_envelope 6, 0
 	note F_, 12
-	intensity $64
+	volume_envelope 6, 4
 	note F_, 4
-	intensity $60
+	volume_envelope 6, 0
 	note G_, 12
-	intensity $64
+	volume_envelope 6, 4
 	note G_, 4
-	intensity $60
+	volume_envelope 6, 0
 	note G_, 6
-	intensity $64
+	volume_envelope 6, 4
 	note G_, 2
-	intensity $60
+	volume_envelope 6, 0
 	note A#, 6
-	intensity $64
+	volume_envelope 6, 4
 	note A#, 2
-	intensity $60
+	volume_envelope 6, 0
 	note C_, 12
-	intensity $64
+	volume_envelope 6, 4
 	note C_, 4
-	intensity $60
+	volume_envelope 6, 0
 	note F_, 12
-	intensity $64
+	volume_envelope 6, 4
 	note F_, 4
-	intensity $60
+	volume_envelope 6, 0
 	note G_, 12
-	intensity $64
+	volume_envelope 6, 4
 	note G_, 4
-	intensity $60
+	volume_envelope 6, 0
 	note G_, 6
-	intensity $64
+	volume_envelope 6, 4
 	note G_, 2
-	intensity $60
+	volume_envelope 6, 0
 	note G_, 2
-	intensity $64
+	volume_envelope 6, 4
 	note G_, 2
-	intensity $60
+	volume_envelope 6, 0
 	note G_, 2
-	intensity $64
+	volume_envelope 6, 4
 	note G_, 2
 	octave 2
 	note C_, 2
 	octave 3
-	intensity $a0
+	volume_envelope 10, 0
 	note C_, 2
 	note G_, 3
 	note A#, 1
-	intensity $a7
+	volume_envelope 10, 7
 	note A_, 2
 	note F_, 2
 	octave 4
 	note C_, 3
 	note D#, 1
 	note D_, 2
-	intensity $a0
+	volume_envelope 10, 0
 	octave 3
 	note C_, 2
 	note G_, 3
 	note A#, 1
 	octave 4
-	intensity $a7
+	volume_envelope 10, 7
 	note C_, 2
 	octave 3
 	note F_, 2
@@ -133,33 +133,33 @@ Music_LegendaryBattleXY_Ch1_loop_main:
 	note C_, 3
 	note D#, 1
 	note F_, 2
-	intensity $a0
+	volume_envelope 10, 0
 	octave 3
 	note C_, 2
 	note G_, 3
 	note A#, 1
 	note A_, 2
-	intensity $a7
+	volume_envelope 10, 7
 	note A_, 4
 	note G_, 1
 	note F_, 1
-	intensity $a0
+	volume_envelope 10, 0
 	note G_, 2
-	intensity $a7
+	volume_envelope 10, 7
 	note G_, 4
 	note A#, 2
 	octave 4
-	intensity $a0
+	volume_envelope 10, 0
 	note C_, 2
-	intensity $a7
+	volume_envelope 10, 7
 	note C_, 4
 	note D_, 1
 	octave 3
 	note A#, 1
 	octave 4
-	intensity $a0
+	volume_envelope 10, 0
 	note C_, 2
-	intensity $a7
+	volume_envelope 10, 7
 	note C_, 4
 	note D_, 1
 	octave 3
@@ -173,63 +173,63 @@ Music_LegendaryBattleXY_Ch1_loop_main:
 	octave 3
 	note A#, 1
 	octave 4
-	intensity $a0
+	volume_envelope 10, 0
 	note C_, 2
-	intensity $a7
+	volume_envelope 10, 7
 	note C_, 4
 	note D_, 1
 	octave 3
 	note A#, 1
 	octave 4
-	intensity $a0
+	volume_envelope 10, 0
 	note C_, 2
-	intensity $a7
+	volume_envelope 10, 7
 	note C_, 6
 	duty_cycle 1
-	intensity $a0
+	volume_envelope 10, 0
 	note C#, 4
-	intensity $a7
+	volume_envelope 10, 7
 	note C#, 4
-	intensity $a2
+	volume_envelope 10, 2
 	note C_, 1
 	octave 3
 	note A#, 5
-	intensity $a4
+	volume_envelope 10, 4
 	note A_, 1
 	note A#, 1
 	octave 4
-	intensity $a0
+	volume_envelope 10, 0
 	note C_, 4
-	intensity $a7
+	volume_envelope 10, 7
 	note C_, 4
-	intensity $a2
+	volume_envelope 10, 2
 	octave 3
 	note A#, 1
 	note A_, 7
 	octave 4
-	intensity $a0
+	volume_envelope 10, 0
 	note C#, 4
-	intensity $a7
+	volume_envelope 10, 7
 	note C#, 4
-	intensity $a2
+	volume_envelope 10, 2
 	note C_, 1
 	octave 3
 	note A#, 5
-	intensity $a4
+	volume_envelope 10, 4
 	note A_, 1
 	note A#, 1
 	octave 4
-	intensity $a0
+	volume_envelope 10, 0
 	note C_, 4
-	intensity $a7
+	volume_envelope 10, 7
 	note C_, 2
 	octave 3
 	note A_, 1
 	octave 4
 	note C_, 1
-	intensity $a0
+	volume_envelope 10, 0
 	note E_, 4
-	intensity $a7
+	volume_envelope 10, 7
 	note E_, 4
 	duty_cycle 2
 	octave 2
@@ -284,35 +284,35 @@ Music_LegendaryBattleXY_Ch1_loop_main:
 	duty_cycle 0
 	octave 3
 Music_LegendaryBattleXY_Ch1_loop_1:
-	intensity $80
+	volume_envelope 8, 0
 	soundinput $3f
 	note D_, 1
 	soundinput $00
 	note C_, 3
-	intensity $87
+	volume_envelope 8, 7
 	note C_, 4
-	intensity $80
+	volume_envelope 8, 0
 	soundinput $37
 	note C_, 1
 	soundinput $00
 	note D_, 3
-	intensity $87
+	volume_envelope 8, 7
 	note D_, 4
 	loopchannel 3, Music_LegendaryBattleXY_Ch1_loop_1
-	intensity $80
+	volume_envelope 8, 0
 	soundinput $3f
 	note D_, 1
 	soundinput $00
 	note C_, 3
-	intensity $87
+	volume_envelope 8, 7
 	note C_, 4
-	intensity $80
+	volume_envelope 8, 0
 	soundinput $37
 	note D#, 1
 	octave 3
 	soundinput $00
 	note F_, 3
-	intensity $87
+	volume_envelope 8, 7
 	note F_, 4
 	jumpchannel Music_LegendaryBattleXY_Ch1_loop_main
 
@@ -324,183 +324,183 @@ Music_LegendaryBattleXY_Ch2:
 	octave 2
 	note F_, 2
 	octave 3
-	intensity $a0
+	volume_envelope 10, 0
 	note F_, 2
 	octave 4
 	note C_, 3
 	note D#, 1
 	note D_, 2
-	intensity $a7
+	volume_envelope 10, 7
 	note D_, 6
-	intensity $84
+	volume_envelope 8, 4
 	octave 2
 	note F_, 2
-	intensity $a0
+	volume_envelope 10, 0
 	octave 3
 	note F_, 2
 	octave 4
 	note C_, 3
 	note D#, 1
 	note F_, 2
-	intensity $a7
+	volume_envelope 10, 7
 	note F_, 6
-	intensity $84
+	volume_envelope 8, 4
 	octave 2
 	note F_, 2
-	intensity $a0
+	volume_envelope 10, 0
 	octave 3
 	note F_, 2
 	octave 4
 	note C_, 3
 	note D#, 1
 	note D_, 2
-	intensity $a7
+	volume_envelope 10, 7
 	note D_, 4
 	note C_, 1
 	octave 3
 	note A#, 1
-	intensity $a0
+	volume_envelope 10, 0
 	octave 4
 	note C_, 2
-	intensity $a7
+	volume_envelope 10, 7
 	note C_, 4
 	note D#, 2
-	intensity $a0
+	volume_envelope 10, 0
 	note F_, 2
-	intensity $a7
+	volume_envelope 10, 7
 	note F_, 6
 Music_LegendaryBattleXY_Ch2_loop_main:
 	duty_cycle 2
 	octave 3
-	intensity $80
+	volume_envelope 8, 0
 	note F_, 12
-	intensity $84
+	volume_envelope 8, 4
 	note F_, 4
-	intensity $80
+	volume_envelope 8, 0
 	octave 4
 	note C_, 6
-	intensity $84
+	volume_envelope 8, 4
 	note C_, 2
 	octave 3
-	intensity $80
+	volume_envelope 8, 0
 	note A#, 2
-	intensity $84
+	volume_envelope 8, 4
 	note A#, 2
 	octave 4
-	intensity $80
+	volume_envelope 8, 0
 	note D#, 2
-	intensity $84
+	volume_envelope 8, 4
 	note D#, 2
-	intensity $80
+	volume_envelope 8, 0
 	note C#, 12
-	intensity $84
+	volume_envelope 8, 4
 	note C#, 4
 	octave 3
-	intensity $80
+	volume_envelope 8, 0
 	note A#, 6
-	intensity $84
+	volume_envelope 8, 4
 	note A#, 2
 	octave 4
-	intensity $80
+	volume_envelope 8, 0
 	note C#, 2
-	intensity $84
+	volume_envelope 8, 4
 	note C#, 2
-	intensity $80
+	volume_envelope 8, 0
 	note C_, 2
-	intensity $84
+	volume_envelope 8, 4
 	note C_, 2
 	octave 3
-	intensity $80
+	volume_envelope 8, 0
 	note F_, 6
-	intensity $84
+	volume_envelope 8, 4
 	note F_, 2
-	intensity $80
+	volume_envelope 8, 0
 	octave 4
 	note C_, 6
-	intensity $84
+	volume_envelope 8, 4
 	note C_, 2
-	intensity $80
+	volume_envelope 8, 0
 	octave 3
 	note A#, 6
-	intensity $84
+	volume_envelope 8, 4
 	note A#, 2
 	octave 4
-	intensity $80
+	volume_envelope 8, 0
 	note D#, 6
-	intensity $84
+	volume_envelope 8, 4
 	note D#, 2
-	intensity $80
+	volume_envelope 8, 0
 	note C#, 12
-	intensity $84
+	volume_envelope 8, 4
 	note C#, 4
-	intensity $80
+	volume_envelope 8, 0
 	note C_, 6
-	intensity $84
+	volume_envelope 8, 4
 	note C_, 2
 	octave 3
-	intensity $80
+	volume_envelope 8, 0
 	note A#, 2
-	intensity $84
+	volume_envelope 8, 4
 	note A#, 2
 	octave 4
-	intensity $80
+	volume_envelope 8, 0
 	note C_, 2
-	intensity $84
+	volume_envelope 8, 4
 	note C_, 2
 	duty_cycle 3
 	octave 2
 	note F_, 2
 	octave 3
-	intensity $a0
+	volume_envelope 10, 0
 	note F_, 2
 	octave 4
 	note C_, 3
 	note D#, 1
 	note D_, 2
-	intensity $a7
+	volume_envelope 10, 7
 	note D_, 6
-	intensity $84
+	volume_envelope 8, 4
 	octave 2
 	note F_, 2
-	intensity $a0
+	volume_envelope 10, 0
 	octave 3
 	note F_, 2
 	octave 4
 	note C_, 3
 	note D#, 1
 	note F_, 2
-	intensity $a7
+	volume_envelope 10, 7
 	note F_, 6
-	intensity $84
+	volume_envelope 8, 4
 	octave 2
 	note F_, 2
-	intensity $a0
+	volume_envelope 10, 0
 	octave 3
 	note F_, 2
 	octave 4
 	note C_, 3
 	note D#, 1
 	note D_, 2
-	intensity $a7
+	volume_envelope 10, 7
 	note D_, 4
 	note C_, 1
 	octave 3
 	note A#, 1
-	intensity $a0
+	volume_envelope 10, 0
 	octave 4
 	note C_, 2
-	intensity $a7
+	volume_envelope 10, 7
 	note C_, 4
 	note D#, 2
-	intensity $a0
+	volume_envelope 10, 0
 	note F_, 2
-	intensity $a7
+	volume_envelope 10, 7
 	note F_, 4
 	note G_, 1
 	note D#, 1
-	intensity $a0
+	volume_envelope 10, 0
 	note F_, 2
-	intensity $a7
+	volume_envelope 10, 7
 	note F_, 4
 	note G_, 1
 	note D#, 1
@@ -510,53 +510,53 @@ Music_LegendaryBattleXY_Ch2_loop_main:
 	note A#, 2
 	note G_, 1
 	note D#, 1
-	intensity $a0
+	volume_envelope 10, 0
 	note F_, 2
-	intensity $a7
+	volume_envelope 10, 7
 	note F_, 4
 	note G_, 1
 	note D#, 1
-	intensity $a0
+	volume_envelope 10, 0
 	note F_, 2
-	intensity $a7
+	volume_envelope 10, 7
 	note F_, 6
 	duty_cycle 0
-	intensity $a0
+	volume_envelope 10, 0
 	note F#, 4
-	intensity $a7
+	volume_envelope 10, 7
 	note F#, 4
-	intensity $a2
+	volume_envelope 10, 2
 	note F_, 1
 	note D#, 5
-	intensity $a4
+	volume_envelope 10, 4
 	note D_, 1
 	note D#, 1
-	intensity $a0
+	volume_envelope 10, 0
 	note F_, 4
-	intensity $a7
+	volume_envelope 10, 7
 	note F_, 4
-	intensity $a2
+	volume_envelope 10, 2
 	note D#, 1
 	note D_, 7
-	intensity $a0
+	volume_envelope 10, 0
 	note F#, 4
-	intensity $a7
+	volume_envelope 10, 7
 	note F#, 4
-	intensity $a2
+	volume_envelope 10, 2
 	note F_, 1
 	note D#, 5
-	intensity $a4
+	volume_envelope 10, 4
 	note D_, 1
 	note D#, 1
-	intensity $a0
+	volume_envelope 10, 0
 	note F_, 4
-	intensity $a7
+	volume_envelope 10, 7
 	note F_, 2
 	note D_, 1
 	note F_, 1
-	intensity $a0
+	volume_envelope 10, 0
 	note A_, 4
-	intensity $a7
+	volume_envelope 10, 7
 	note A_, 4
 	duty_cycle 3
 	octave 3
@@ -610,38 +610,38 @@ Music_LegendaryBattleXY_Ch2_loop_main:
 	note B_, 1
 	duty_cycle 2
 	octave 2
-	intensity $80
+	volume_envelope 8, 0
 	note F_, 4
-	intensity $87
+	volume_envelope 8, 7
 	note F_, 4
-	intensity $80
+	volume_envelope 8, 0
 	note A_, 4
-	intensity $87
+	volume_envelope 8, 7
 	note A_, 4
-	intensity $80
+	volume_envelope 8, 0
 	note F_, 4
-	intensity $87
+	volume_envelope 8, 7
 	note F_, 4
-	intensity $80
+	volume_envelope 8, 0
 	note A_, 4
-	intensity $87
+	volume_envelope 8, 7
 	note A_, 4
-	intensity $80
+	volume_envelope 8, 0
 	note F_, 4
-	intensity $87
+	volume_envelope 8, 7
 	note F_, 4
-	intensity $80
+	volume_envelope 8, 0
 	note A_, 4
-	intensity $87
+	volume_envelope 8, 7
 	note A_, 4
-	intensity $80
+	volume_envelope 8, 0
 	note F_, 4
-	intensity $87
+	volume_envelope 8, 7
 	note F_, 4
-	intensity $80
+	volume_envelope 8, 0
 	octave 3
 	note D#, 4
-	intensity $87
+	volume_envelope 8, 7
 	note D#, 4
 	jumpchannel Music_LegendaryBattleXY_Ch2_loop_main
 
@@ -653,7 +653,7 @@ Music_LegendaryBattleXY_Ch3:
 	note F_, 16
 	note F_, 16
 	note F_, 8
-	intensity $29
+	volume_envelope 2, -1
 	note F_, 8
 Music_LegendaryBattleXY_Ch3_loop_main:
 Music_LegendaryBattleXY_Ch3_loop_1:
@@ -706,7 +706,7 @@ Music_LegendaryBattleXY_Ch3_loop_1:
 	note C_, 4
 	loopchannel 2, Music_LegendaryBattleXY_Ch3_loop_1
 Music_LegendaryBattleXY_Ch3_loop_2:
-	intensity $19
+	volume_envelope 1, -1
 	octave 1
 	note F_, 2
 	octave 2
@@ -753,7 +753,7 @@ Music_LegendaryBattleXY_Ch3_loop_2:
 	octave 2
 	note A#, 2
 Music_LegendaryBattleXY_Ch3_loop_3:
-	intensity $19
+	volume_envelope 1, -1
 	octave 1
 	note F_, 2
 	octave 2

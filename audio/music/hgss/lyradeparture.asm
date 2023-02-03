@@ -25,7 +25,7 @@ Music_LyraDepartureHGSS_Ch2:
 
 Music_LyraDepartureHGSS_Ch3:
 	note_type 12, 1, 5
-	intensity $10
+	volume_envelope 1, 0
 	note __, 4
 	jumpchannel Music_LyraEncounterHGSS_Ch3_loop
 

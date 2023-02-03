@@ -15,7 +15,7 @@ Music_ViridianForest_Ch1:
 	note __, 16
 	callchannel Music_ViridianForest_branch_ed931
 Music_ViridianForest_branch_ed8fb:
-	intensity $b1
+	volume_envelope 11, 1
 	octave 3
 	note B_, 4
 	note B_, 4
@@ -64,11 +64,11 @@ Music_ViridianForest_branch_ed931:
 	note C_, 4
 	note C_, 4
 	note C_, 4
-	intensity $b7
+	volume_envelope 11, 7
 	note C_, 4
 	octave 3
 	note B_, 4
-	intensity $b1
+	volume_envelope 11, 1
 	endchannel
 
 Music_ViridianForest_branch_ed940:
@@ -108,7 +108,7 @@ Music_ViridianForest_branch_ed940:
 	note G#, 2
 	note C_, 2
 	note G#, 2
-	intensity $b7
+	volume_envelope 11, 7
 	octave 2
 	note B_, 2
 	octave 3
@@ -117,7 +117,7 @@ Music_ViridianForest_branch_ed940:
 	note B_, 2
 	octave 3
 	note G_, 2
-	intensity $b1
+	volume_envelope 11, 1
 	endchannel
 
 Music_ViridianForest_branch_ed971:
@@ -165,10 +165,10 @@ Music_ViridianForest_Ch2:
 	note_type 12, 11, 2
 	callchannel Music_ViridianForest_branch_ed9ba
 Music_ViridianForest_branch_ed9a1:
-	intensity $b2
+	volume_envelope 11, 2
 	callchannel Music_ViridianForest_branch_ed9ba
 	duty_cycle 2
-	intensity $b5
+	volume_envelope 11, 5
 	callchannel Music_ViridianForest_branch_ed9dc
 	callchannel Music_ViridianForest_branch_ed9dc
 	callchannel Music_ViridianForest_branch_eda02
@@ -203,10 +203,10 @@ Music_ViridianForest_branch_ed9ba:
 	note A_, 4
 	note G#, 4
 	note G#, 4
-	intensity $b7
+	volume_envelope 11, 7
 	note G#, 4
 	note G_, 4
-	intensity $b2
+	volume_envelope 11, 2
 	endchannel
 
 Music_ViridianForest_branch_ed9dc:
@@ -344,7 +344,7 @@ Music_ViridianForest_branch_eda4b:
 	callchannel Music_ViridianForest_branch_eda9e
 	octave 3
 	note D_, 2
-	intensity $10
+	volume_envelope 1, 0
 	octave 6
 	note C_, 1
 	note D_, 1
@@ -356,7 +356,7 @@ Music_ViridianForest_branch_eda4b:
 	note_type 12, 1, 0
 	callchannel Music_ViridianForest_branch_edaaf
 	note __, 16
-	intensity $25
+	volume_envelope 2, 5
 	callchannel Music_ViridianForest_branch_edacb
 	note __, 4
 	note D#, 1

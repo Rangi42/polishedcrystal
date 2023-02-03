@@ -17,59 +17,59 @@ Music_OreburghGateDPPt_Ch1:
 	vibrato $8, $12
 	octave 3
 	note G_, 8
-	intensity $2E
+	volume_envelope 2, -6
 	note G_, 8
 Music_OreburghGateDPPt_Ch1_branch_1:
 	octave 4
-	intensity $40
+	volume_envelope 4, 0
 	note F#, 12
-	intensity $4F
+	volume_envelope 4, -7
 	note F#, 8
-	intensity $7F
+	volume_envelope 7, -7
 	note G_, 2
 	note A_, 2
-	intensity $A0
+	volume_envelope 10, 0
 	note F#, 12
-	intensity $A7
+	volume_envelope 10, 7
 	note E_, 12
-	intensity $40
+	volume_envelope 4, 0
 	note F#, 12
-	intensity $4F
+	volume_envelope 4, -7
 	note F#, 8
-	intensity $7F
+	volume_envelope 7, -7
 	note G_, 2
 	note A_, 2
-	intensity $A0
+	volume_envelope 10, 0
 	note F#, 12
-	intensity $A7
+	volume_envelope 10, 7
 	note F#, 12
-	intensity $40
+	volume_envelope 4, 0
 	note D#, 12
-	intensity $4F
+	volume_envelope 4, -7
 	note D#, 8
-	intensity $7F
+	volume_envelope 7, -7
 	note E_, 2
 	note F#, 2
-	intensity $A0
+	volume_envelope 10, 0
 	note D#, 12
-	intensity $A7
+	volume_envelope 10, 7
 	note C#, 12
-	intensity $40
+	volume_envelope 4, 0
 	note D#, 12
-	intensity $4F
+	volume_envelope 4, -7
 	note C#, 8
-	intensity $7F
+	volume_envelope 7, -7
 	note D#, 2
 	note E_, 2
-	intensity $A0
+	volume_envelope 10, 0
 	note D#, 12
-	intensity $A7
+	volume_envelope 10, 7
 	note D_, 8
-	intensity $40
+	volume_envelope 4, 0
 	note E_, 4
 	loopchannel 3, Music_OreburghGateDPPt_Ch1_branch_1
 Music_OreburghGateDPPt_Ch1_branch_2:
-	intensity $D7
+	volume_envelope 13, 7
 	octave 2
 	note C#, 2
 	octave 4
@@ -86,30 +86,30 @@ Music_OreburghGateDPPt_Ch1_branch_2:
 	note F#, 2
 	note C#, 2
 	note E_, 2
-	intensity $40
+	volume_envelope 4, 0
 	note G_, 12
-	intensity $4F
+	volume_envelope 4, -7
 	note G_, 12
-	intensity $40
+	volume_envelope 4, 0
 	note G#, 12
-	intensity $4F
+	volume_envelope 4, -7
 	note G#, 12
-	intensity $40
+	volume_envelope 4, 0
 	note A_, 12
-	intensity $4F
+	volume_envelope 4, -7
 	note A_, 12
-	intensity $40
+	volume_envelope 4, 0
 	note A_, 6
-	intensity $4F
+	volume_envelope 4, -7
 	note A_, 6
-	intensity $97
+	volume_envelope 9, 7
 	note A_, 6
-	intensity $47
+	volume_envelope 4, 7
 	note A_, 6
 	note __, 8
-	intensity $20
+	volume_envelope 2, 0
 	note G_, 8
-	intensity $2E
+	volume_envelope 2, -6
 	note G_, 8
 	jumpchannel Music_OreburghGateDPPt_Ch1_branch_1
 
@@ -120,7 +120,7 @@ Music_OreburghGateDPPt_Ch2:
 	note __, 16
 Music_OreburghGateDPPt_Ch2_branch_1:
 	octave 3
-	intensity $55
+	volume_envelope 5, 5
 	note G_, 2
 	note A#, 2
 	octave 4
@@ -255,71 +255,71 @@ Music_OreburghGateDPPt_Ch2_branch_1:
 	loopchannel 2, Music_OreburghGateDPPt_Ch2_branch_1
 Music_OreburghGateDPPt_Ch2_branch_2:
 	octave 4
-	intensity $30
+	volume_envelope 3, 0
 	note __, 8
 	note C#, 4
-	intensity $3F
+	volume_envelope 3, -7
 	note C#, 8
-	intensity $6F
+	volume_envelope 6, -7
 	note C_, 2
 	octave 3
 	note B_, 2
-	intensity $90
+	volume_envelope 9, 0
 	note A#, 8
-	intensity $97
+	volume_envelope 9, 7
 	note A#, 4
-	intensity $77
+	volume_envelope 7, 7
 	note A_, 2
 	note G#, 2
-	intensity $57
+	volume_envelope 5, 7
 	note G_, 8
-	intensity $30
+	volume_envelope 3, 0
 	note C#, 12
-	intensity $3F
+	volume_envelope 3, -7
 	note C#, 12
-	intensity $90
+	volume_envelope 9, 0
 	note C_, 12
-	intensity $97
+	volume_envelope 9, 7
 	note C_, 8
-	intensity $47
+	volume_envelope 4, 7
 	note E_, 4
 	octave 2
-	intensity $30
+	volume_envelope 3, 0
 	note B_, 12
-	intensity $3F
+	volume_envelope 3, -7
 	note B_, 8
-	intensity $6F
+	volume_envelope 6, -7
 	octave 3
 	note D#, 2
 	note C#, 2
-	intensity $90
+	volume_envelope 9, 0
 	octave 2
 	note A#, 12
-	intensity $97
+	volume_envelope 9, 7
 	note A#, 4
-	intensity $57
+	volume_envelope 5, 7
 	note A_, 2
 	note G#, 2
 	note G_, 4
 	octave 3
-	intensity $30
+	volume_envelope 3, 0
 	note D#, 12
-	intensity $3F
+	volume_envelope 3, -7
 	note D#, 8
-	intensity $6F
+	volume_envelope 6, -7
 	note C#, 2
 	octave 2
 	note B_, 2
-	intensity $90
+	volume_envelope 9, 0
 	note A#, 8
-	intensity $97
+	volume_envelope 9, 7
 	note A#, 12
-	intensity $30
+	volume_envelope 3, 0
 	octave 3
 	note E_, 4
 Music_OreburghGateDPPt_Ch2_branch_3:
 	octave 5
-	intensity $53
+	volume_envelope 5, 3
 	note __, 1
 	note F#, 1
 	note C#, 1
@@ -353,57 +353,57 @@ Music_OreburghGateDPPt_Ch2_branch_3:
 	octave 2
 	note G_, 1
 	note A#, 1
-	intensity $A7
+	volume_envelope 10, 7
 	octave 3
 	note C#, 2
 	note C#, 4
-	intensity $87
+	volume_envelope 8, 7
 	note C#, 2
 	note C#, 2
 	note C#, 4
-	intensity $57
+	volume_envelope 5, 7
 	note C#, 2
 	note C#, 2
 	note C#, 4
-	intensity $37
+	volume_envelope 3, 7
 	note C#, 2
-	intensity $A7
+	volume_envelope 10, 7
 	octave 3
 	note D_, 2
 	note D_, 4
-	intensity $87
+	volume_envelope 8, 7
 	note D_, 2
 	note D_, 2
 	note D_, 4
-	intensity $57
+	volume_envelope 5, 7
 	note D_, 2
 	note D_, 2
 	note D_, 4
-	intensity $37
+	volume_envelope 3, 7
 	note D_, 2
-	intensity $A7
+	volume_envelope 10, 7
 	octave 3
 	note D#, 2
 	note D#, 4
-	intensity $87
+	volume_envelope 8, 7
 	note D#, 2
 	note D#, 2
 	note D#, 4
-	intensity $57
+	volume_envelope 5, 7
 	note D#, 2
 	note D#, 2
 	note D#, 4
-	intensity $37
+	volume_envelope 3, 7
 	note D#, 2
-	intensity $87
+	volume_envelope 8, 7
 	octave 3
 	note D#, 2
 	note D#, 4
-	intensity $47
+	volume_envelope 4, 7
 	note D#, 2
 	note D#, 2
 	note D#, 4
-	intensity $27
+	volume_envelope 2, 7
 	note D#, 2
 	note D#, 2
 	note D#, 4
@@ -418,7 +418,7 @@ Music_OreburghGateDPPt_Ch3:
 	note __, 16
 Music_OreburghGateDPPt_Ch3_branch_1:
 	octave 3
-	intensity $12
+	volume_envelope 1, 2
 	note G_, 1
 	note __, 1
 	octave 4
@@ -643,503 +643,503 @@ Music_OreburghGateDPPt_Ch3_branch_1:
 	note __, 1
 Music_OreburghGateDPPt_Ch3_branch_2:
 	octave 3
-	intensity $12
+	volume_envelope 1, 2
 	note G_, 1
-	intensity $22
+	volume_envelope 2, 2
 	octave 4
 	note G_, 1
-	intensity $12
+	volume_envelope 1, 2
 	note C#, 1
-	intensity $22
+	volume_envelope 2, 2
 	note A#, 1
-	intensity $12
+	volume_envelope 1, 2
 	note F#, 1
-	intensity $22
+	volume_envelope 2, 2
 	octave 5
 	note C#, 1
-	intensity $12
+	volume_envelope 1, 2
 	octave 4
 	note G_, 1
-	intensity $22
-	octave 5
-	note F#, 1
-	intensity $12
-	octave 4
-	note A#, 1
-	intensity $22
-	octave 5
-	note C#, 1
-	intensity $12
-	note C#, 1
-	intensity $22
-	octave 4
-	note A#, 1
-	intensity $12
+	volume_envelope 2, 2
 	octave 5
 	note F#, 1
-	intensity $22
-	octave 4
-	note G_, 1
-	intensity $12
-	octave 5
-	note G_, 1
-	intensity $22
+	volume_envelope 1, 2
 	octave 4
 	note A#, 1
-	intensity $12
-	octave 5
-	note A#, 1
-	intensity $22
-	note C#, 1
-	intensity $12
-	note G_, 1
-	intensity $22
-	note F#, 1
-	intensity $12
-	note F#, 1
-	intensity $22
-	note C#, 1
-	intensity $12
-	note C#, 1
-	intensity $22
-	octave 4
-	note A#, 1
-	intensity $12
-	note A#, 1
-	intensity $22
-	note G_, 1
-	intensity $12
-	note G_, 1
-	intensity $22
-	note A#, 1
-	intensity $12
-	note F#, 1
-	intensity $22
+	volume_envelope 2, 2
 	octave 5
 	note C#, 1
-	intensity $12
+	volume_envelope 1, 2
+	note C#, 1
+	volume_envelope 2, 2
 	octave 4
-	note G_, 1
-	intensity $22
+	note A#, 1
+	volume_envelope 1, 2
 	octave 5
 	note F#, 1
-	intensity $12
+	volume_envelope 2, 2
+	octave 4
+	note G_, 1
+	volume_envelope 1, 2
+	octave 5
+	note G_, 1
+	volume_envelope 2, 2
 	octave 4
 	note A#, 1
-	intensity $22
+	volume_envelope 1, 2
+	octave 5
+	note A#, 1
+	volume_envelope 2, 2
+	note C#, 1
+	volume_envelope 1, 2
+	note G_, 1
+	volume_envelope 2, 2
+	note F#, 1
+	volume_envelope 1, 2
+	note F#, 1
+	volume_envelope 2, 2
+	note C#, 1
+	volume_envelope 1, 2
+	note C#, 1
+	volume_envelope 2, 2
+	octave 4
+	note A#, 1
+	volume_envelope 1, 2
+	note A#, 1
+	volume_envelope 2, 2
+	note G_, 1
+	volume_envelope 1, 2
+	note G_, 1
+	volume_envelope 2, 2
+	note A#, 1
+	volume_envelope 1, 2
+	note F#, 1
+	volume_envelope 2, 2
 	octave 5
 	note C#, 1
-	intensity $12
+	volume_envelope 1, 2
+	octave 4
+	note G_, 1
+	volume_envelope 2, 2
+	octave 5
+	note F#, 1
+	volume_envelope 1, 2
+	octave 4
+	note A#, 1
+	volume_envelope 2, 2
+	octave 5
 	note C#, 1
-	intensity $22
+	volume_envelope 1, 2
+	note C#, 1
+	volume_envelope 2, 2
 	octave 4
 	note A#, 1
 	octave 3
-	intensity $12
+	volume_envelope 1, 2
 	note G_, 1
-	intensity $22
+	volume_envelope 2, 2
 	octave 4
 	note G_, 1
-	intensity $12
+	volume_envelope 1, 2
 	note C#, 1
-	intensity $22
+	volume_envelope 2, 2
 	note A#, 1
-	intensity $12
+	volume_envelope 1, 2
 	note F#, 1
-	intensity $22
+	volume_envelope 2, 2
 	octave 5
 	note C#, 1
-	intensity $12
+	volume_envelope 1, 2
 	octave 4
 	note G_, 1
-	intensity $22
+	volume_envelope 2, 2
 	octave 5
 	note F#, 1
-	intensity $12
+	volume_envelope 1, 2
 	octave 4
 	note A#, 1
-	intensity $22
+	volume_envelope 2, 2
 	octave 5
 	note C#, 1
-	intensity $12
+	volume_envelope 1, 2
 	octave 4
 	note F#, 1
-	intensity $22
+	volume_envelope 2, 2
 	note A#, 1
 	; measure 2
 	octave 3
-	intensity $12
+	volume_envelope 1, 2
 	note F#, 1
-	intensity $22
+	volume_envelope 2, 2
 	octave 4
 	note F#, 1
-	intensity $12
+	volume_envelope 1, 2
 	octave 3
 	note A#, 1
-	intensity $22
+	volume_envelope 2, 2
 	octave 4
 	note A#, 1
-	intensity $12
+	volume_envelope 1, 2
 	note E_, 1
-	intensity $22
+	volume_envelope 2, 2
 	octave 5
 	note D#, 1
-	intensity $12
+	volume_envelope 1, 2
 	octave 4
 	note F#, 1
-	intensity $22
+	volume_envelope 2, 2
 	octave 5
 	note E_, 1
-	intensity $12
+	volume_envelope 1, 2
 	octave 4
 	note A#, 1
-	intensity $22
+	volume_envelope 2, 2
 	octave 5
 	note D#, 1
-	intensity $12
+	volume_envelope 1, 2
 	note C#, 1
-	intensity $22
+	volume_envelope 2, 2
 	octave 4
 	note A#, 1
-	intensity $12
+	volume_envelope 1, 2
 	octave 5
 	note E_, 1
-	intensity $22
+	volume_envelope 2, 2
 	octave 4
 	note F#, 1
-	intensity $12
+	volume_envelope 1, 2
 	octave 5
 	note F#, 1
-	intensity $22
+	volume_envelope 2, 2
 	octave 4
 	note A#, 1
-	intensity $12
+	volume_envelope 1, 2
 	octave 5
 	note A#, 1
-	intensity $22
+	volume_envelope 2, 2
 	note D#, 1
-	intensity $12
+	volume_envelope 1, 2
 	note F#, 1
-	intensity $22
+	volume_envelope 2, 2
 	note E_, 1
-	intensity $12
+	volume_envelope 1, 2
 	note E_, 1
-	intensity $22
+	volume_envelope 2, 2
 	note D#, 1
-	intensity $12
+	volume_envelope 1, 2
 	note C#, 1
-	intensity $22
+	volume_envelope 2, 2
 	octave 4
 	note A#, 1
-	intensity $12
+	volume_envelope 1, 2
 	note F#, 1
-	intensity $22
+	volume_envelope 2, 2
 	note F#, 1
-	intensity $12
+	volume_envelope 1, 2
 	note E_, 1
-	intensity $22
+	volume_envelope 2, 2
 	note A_, 1
-	intensity $12
+	volume_envelope 1, 2
 	note C_, 1
-	intensity $22
+	volume_envelope 2, 2
 	octave 5
 	note C_, 1
-	intensity $12
+	volume_envelope 1, 2
 	octave 4
 	note F#, 1
-	intensity $22
+	volume_envelope 2, 2
 	octave 5
 	note E_, 1
-	intensity $12
+	volume_envelope 1, 2
 	octave 4
 	note A#, 1
-	intensity $22
+	volume_envelope 2, 2
 	octave 5
 	note C_, 1
-	intensity $12
+	volume_envelope 1, 2
 	note C_, 1
-	intensity $22
+	volume_envelope 2, 2
 	octave 4
 	note A_, 1
-	intensity $12
+	volume_envelope 1, 2
 	octave 3
 	note F#, 1
-	intensity $22
+	volume_envelope 2, 2
 	octave 4
 	note F#, 1
-	intensity $12
+	volume_envelope 1, 2
 	note C_, 1
-	intensity $22
+	volume_envelope 2, 2
 	note A_, 1
-	intensity $12
+	volume_envelope 1, 2
 	note E_, 1
-	intensity $22
+	volume_envelope 2, 2
 	octave 5
 	note C_, 1
-	intensity $12
+	volume_envelope 1, 2
 	octave 4
 	note F#, 1
-	intensity $22
+	volume_envelope 2, 2
 	octave 5
 	note E_, 1
-	intensity $12
+	volume_envelope 1, 2
 	octave 4
 	note A_, 1
-	intensity $22
+	volume_envelope 2, 2
 	octave 5
 	note C_, 1
-	intensity $12
+	volume_envelope 1, 2
 	octave 4
 	note F#, 1
-	intensity $22
+	volume_envelope 2, 2
 	note A_, 1
 	; measure 3
 	octave 3
-	intensity $12
+	volume_envelope 1, 2
 	note E_, 1
 	octave 4
-	intensity $22
+	volume_envelope 2, 2
 	note E_, 1
-	intensity $12
+	volume_envelope 1, 2
 	octave 3
 	note B_, 1
-	intensity $22
+	volume_envelope 2, 2
 	octave 4
 	note G_, 1
 	octave 4
-	intensity $12
+	volume_envelope 1, 2
 	note D#, 1
-	intensity $22
+	volume_envelope 2, 2
 	note B_, 1
-	intensity $12
+	volume_envelope 1, 2
 	note E_, 1
-	intensity $22
+	volume_envelope 2, 2
 	octave 5
 	note D#, 1
-	intensity $12
+	volume_envelope 1, 2
 	octave 4
 	note G_, 1
-	intensity $22
+	volume_envelope 2, 2
 	note B_, 1
-	intensity $12
+	volume_envelope 1, 2
 	note B_, 1
-	intensity $22
+	volume_envelope 2, 2
 	note G_, 1
 	octave 5
-	intensity $12
+	volume_envelope 1, 2
 	note D#, 1
-	intensity $22
+	volume_envelope 2, 2
 	octave 4
 	note E_, 1
-	intensity $12
+	volume_envelope 1, 2
 	octave 5
 	note E_, 1
-	intensity $22
+	volume_envelope 2, 2
 	octave 4
 	note G_, 1
-	intensity $12
+	volume_envelope 1, 2
 	octave 5
 	note G_, 1
-	intensity $22
+	volume_envelope 2, 2
 	octave 5
 	note B_, 1
-	intensity $12
+	volume_envelope 1, 2
 	octave 5
 	note E_, 1
-	intensity $22
+	volume_envelope 2, 2
 	note D#, 1
-	intensity $12
+	volume_envelope 1, 2
 	note D#, 1
-	intensity $22
+	volume_envelope 2, 2
 	octave 4
 	note B_, 1
-	intensity $12
+	volume_envelope 1, 2
 	note B_, 1
-	intensity $22
+	volume_envelope 2, 2
 	note G_, 1
-	intensity $12
+	volume_envelope 1, 2
 	note G_, 1
-	intensity $22
+	volume_envelope 2, 2
 	note E_, 1
-	intensity $12
+	volume_envelope 1, 2
 	note E_, 1
-	intensity $22
+	volume_envelope 2, 2
 	note G_, 1
-	intensity $12
+	volume_envelope 1, 2
 	note D#, 1
-	intensity $22
+	volume_envelope 2, 2
 	note A#, 1
-	intensity $12
+	volume_envelope 1, 2
 	note E_, 1
-	intensity $22
+	volume_envelope 2, 2
 	octave 5
 	note E_, 1
-	intensity $12
+	volume_envelope 1, 2
 	octave 4
 	note G_, 1
-	intensity $22
+	volume_envelope 2, 2
 	note A#, 1
-	intensity $12
+	volume_envelope 1, 2
 	note A#, 1
-	intensity $22
+	volume_envelope 2, 2
 	note G_, 1
 	octave 3
-	intensity $12
+	volume_envelope 1, 2
 	note E_, 1
-	intensity $22
+	volume_envelope 2, 2
 	octave 4
 	note E_, 1
-	intensity $12
+	volume_envelope 1, 2
 	octave 3
 	note A#, 1
-	intensity $22
+	volume_envelope 2, 2
 	octave 4
 	note G_, 1
-	intensity $12
+	volume_envelope 1, 2
 	note D#, 1
-	intensity $22
+	volume_envelope 2, 2
 	note B_, 1
-	intensity $12
+	volume_envelope 1, 2
 	octave 4
 	note E_, 1
-	intensity $22
+	volume_envelope 2, 2
 	octave 5
 	note D#, 1
-	intensity $12
+	volume_envelope 1, 2
 	octave 4
 	note G_, 1
-	intensity $22
+	volume_envelope 2, 2
 	note B_, 1
-	intensity $12
+	volume_envelope 1, 2
 	note E_, 1
-	intensity $22
+	volume_envelope 2, 2
 	note G_, 1
 	; measure 4
 	octave 3
-	intensity $12
+	volume_envelope 1, 2
 	note D#, 1
-	intensity $22
+	volume_envelope 2, 2
 	octave 4
 	note D#, 1
-	intensity $12
+	volume_envelope 1, 2
 	octave 3
 	note A#, 1
-	intensity $22
+	volume_envelope 2, 2
 	octave 4
 	note G_, 1
-	intensity $12
+	volume_envelope 1, 2
 	note C#, 1
-	intensity $22
+	volume_envelope 2, 2
 	note A#, 1
-	intensity $12
+	volume_envelope 1, 2
 	note E_, 1
-	intensity $22
-	octave 5
-	note E_, 1
-	intensity $12
-	octave 4
-	note G_, 1
-	intensity $22
-	note A#, 1
-	intensity $12
-	note A#, 1
-	intensity $22
-	note G_, 1
-	octave 5
-	intensity $12
-	note C#, 1
-	intensity $22
-	octave 4
-	note D#, 1
-	intensity $12
+	volume_envelope 2, 2
 	octave 5
 	note E_, 1
-	intensity $22
+	volume_envelope 1, 2
 	octave 4
 	note G_, 1
-	intensity $12
-	octave 5
-	note G_, 1
-	intensity $22
-	octave 4
+	volume_envelope 2, 2
 	note A#, 1
-	intensity $12
+	volume_envelope 1, 2
+	note A#, 1
+	volume_envelope 2, 2
+	note G_, 1
+	octave 5
+	volume_envelope 1, 2
+	note C#, 1
+	volume_envelope 2, 2
+	octave 4
+	note D#, 1
+	volume_envelope 1, 2
 	octave 5
 	note E_, 1
-	intensity $22
+	volume_envelope 2, 2
+	octave 4
+	note G_, 1
+	volume_envelope 1, 2
+	octave 5
+	note G_, 1
+	volume_envelope 2, 2
+	octave 4
+	note A#, 1
+	volume_envelope 1, 2
+	octave 5
 	note E_, 1
-	intensity $12
+	volume_envelope 2, 2
+	note E_, 1
+	volume_envelope 1, 2
 	note C#, 1
-	intensity $22
+	volume_envelope 2, 2
 	octave 4
 	note A#, 1
-	intensity $12
+	volume_envelope 1, 2
 	note A#, 1
-	intensity $22
+	volume_envelope 2, 2
 	note G_, 1
-	intensity $12
+	volume_envelope 1, 2
 	note G_, 1
-	intensity $22
+	volume_envelope 2, 2
 	note D#, 1
-	intensity $12
+	volume_envelope 1, 2
 	note D#, 1
-	intensity $22
+	volume_envelope 2, 2
 	note G_, 1
-	intensity $12
+	volume_envelope 1, 2
 	note C#, 1
-	intensity $22
+	volume_envelope 2, 2
 	note A#, 1
-	intensity $12
+	volume_envelope 1, 2
 	note D#, 1
-	intensity $22
+	volume_envelope 2, 2
 	octave 5
 	note D#, 1
-	intensity $12
+	volume_envelope 1, 2
 	octave 4
 	note G_, 1
-	intensity $22
+	volume_envelope 2, 2
 	note A#, 1
 	octave 5
-	intensity $12
+	volume_envelope 1, 2
 	note C#, 1
-	intensity $22
+	volume_envelope 2, 2
 	octave 4
 	note G_, 1
 	octave 3
-	intensity $12
+	volume_envelope 1, 2
 	note E_, 1
-	intensity $22
+	volume_envelope 2, 2
 	octave 4
 	note E_, 1
-	intensity $12
+	volume_envelope 1, 2
 	octave 3
 	note A#, 1
-	intensity $22
+	volume_envelope 2, 2
 	octave 4
 	note G_, 1
-	intensity $12
+	volume_envelope 1, 2
 	note E_, 1
-	intensity $22
+	volume_envelope 2, 2
 	note A#, 1
-	intensity $12
+	volume_envelope 1, 2
 	note G_, 1
-	intensity $22
+	volume_envelope 2, 2
 	octave 5
 	note E_, 1
-	intensity $12
+	volume_envelope 1, 2
 	octave 4
 	note A#, 1
-	intensity $22
+	volume_envelope 2, 2
 	note A#, 1
 	octave 5
-	intensity $12
+	volume_envelope 1, 2
 	note E_, 1
 	octave 4
-	intensity $22
+	volume_envelope 2, 2
 	note G_, 1
 	loopchannel 2, Music_OreburghGateDPPt_Ch3_branch_2
 	octave 5
-	intensity $22
+	volume_envelope 2, 2
 	note F#, 1
 	note C#, 1
 	note D_, 1
@@ -1174,7 +1174,7 @@ Music_OreburghGateDPPt_Ch3_branch_2:
 	note A#, 1
 	note F#, 1
 	octave 3
-	intensity $15
+	volume_envelope 1, 5
 	note G_, 1
 	note __, 1
 	note G_, 3
@@ -1185,7 +1185,7 @@ Music_OreburghGateDPPt_Ch3_branch_2:
 	note __, 1
 	note G_, 3
 	note __, 1
-	intensity $25
+	volume_envelope 2, 5
 	note G_, 1
 	note __, 1
 	note G_, 1
@@ -1194,7 +1194,7 @@ Music_OreburghGateDPPt_Ch3_branch_2:
 	note __, 1
 	note G_, 1
 	note __, 1
-	intensity $15
+	volume_envelope 1, 5
 	note G#, 1
 	note __, 1
 	note G#, 3
@@ -1205,7 +1205,7 @@ Music_OreburghGateDPPt_Ch3_branch_2:
 	note __, 1
 	note G#, 3
 	note __, 1
-	intensity $25
+	volume_envelope 2, 5
 	note G#, 1
 	note __, 1
 	note G#, 1
@@ -1214,7 +1214,7 @@ Music_OreburghGateDPPt_Ch3_branch_2:
 	note __, 1
 	note G#, 1
 	note __, 1
-	intensity $15
+	volume_envelope 1, 5
 	note A_, 1
 	note __, 1
 	note A_, 3
@@ -1225,7 +1225,7 @@ Music_OreburghGateDPPt_Ch3_branch_2:
 	note __, 1
 	note A_, 3
 	note __, 1
-	intensity $25
+	volume_envelope 2, 5
 	note A_, 1
 	note __, 1
 	note A_, 1
@@ -1244,7 +1244,7 @@ Music_OreburghGateDPPt_Ch3_branch_2:
 	note __, 1
 	note A_, 3
 	note __, 1
-	intensity $35
+	volume_envelope 3, 5
 	note A_, 1
 	note __, 1
 	note A_, 1
@@ -1253,7 +1253,7 @@ Music_OreburghGateDPPt_Ch3_branch_2:
 	note __, 1
 	note A_, 1
 	note __, 1
-	intensity $12
+	volume_envelope 1, 2
 	note __, 12
 	note __, 12
 	jumpchannel Music_OreburghGateDPPt_Ch3_branch_1

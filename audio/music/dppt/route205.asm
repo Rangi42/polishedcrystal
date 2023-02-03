@@ -81,7 +81,7 @@ Music_Route205DPPt_Ch1_loop:
 	note D_, 1
 	octave 6
 	note D_, 3
-	intensity $B1
+	volume_envelope 11, 1
 	duty_cycle 2
 	octave 2
 	note G_, 2
@@ -150,7 +150,7 @@ Music_Route205DPPt_Ch1_loop:
 	note B_, 1
 	note D_, 1
 	note F_, 2
-	intensity $B4
+	volume_envelope 11, 4
 	duty_cycle 1
 	octave 4
 	note G_, 4
@@ -357,7 +357,7 @@ Music_Route205DPPt_Ch2_loop:
 	note F_, 1
 	octave 5
 	note C_, 1
-	intensity $C7
+	volume_envelope 12, 7
 	octave 4
 	note D_, 6
 	note_type 8, 12, 3
@@ -365,9 +365,9 @@ Music_Route205DPPt_Ch2_loop:
 	note D_, 1
 	note D_, 1
 	note D_, 6
-	intensity $C7
+	volume_envelope 12, 7
 	note D_, 6
-	intensity $C2
+	volume_envelope 12, 2
 	note D_, 3
 	note G_, 3
 	note_type 12, 12, 2
@@ -427,7 +427,7 @@ Music_Route205DPPt_Ch2_loop:
 	note F#, 1
 	note G_, 1
 	note A_, 4
-	intensity $C5
+	volume_envelope 12, 5
 	duty_cycle 2
 	octave 3
 	note G_, 1
@@ -437,10 +437,10 @@ Music_Route205DPPt_Ch2_loop:
 	note E_, 2
 	note D_, 2
 	note E_, 1
-	intensity $C2
+	volume_envelope 12, 2
 	octave 3
 	note G_, 2
-	intensity $C5
+	volume_envelope 12, 5
 	note G_, 5
 	note G_, 1
 	note E_, 1
@@ -532,7 +532,7 @@ Music_Route205DPPt_Ch2_loop:
 	note B_, 2
 	note A#, 2
 	note B_, 2
-	intensity $C1
+	volume_envelope 12, 1
 	note G_, 2
 	note E_, 2
 	note G_, 2

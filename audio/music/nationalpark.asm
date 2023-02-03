@@ -46,7 +46,7 @@ Music_NationalPark_branch_f5504:
 	note D_, 1
 	note __, 1
 	callchannel Music_NationalPark_branch_f563a
-	intensity $77
+	volume_envelope 7, 7
 	octave 3
 	note E_, 1
 	note F_, 5
@@ -55,9 +55,9 @@ Music_NationalPark_branch_f5504:
 	note C_, 12
 	note F_, 8
 	note C#, 1
-	intensity $98
+	volume_envelope 9, 8
 	note D_, 16
-	intensity $77
+	volume_envelope 7, 7
 	note D_, 7
 	note_type 12, 7, 7
 	note __, 4
@@ -68,72 +68,72 @@ Music_NationalPark_branch_f554a:
 	note G#, 6
 	octave 3
 	note F_, 2
-	intensity $47
+	volume_envelope 4, 7
 	note F_, 1
 	note G#, 1
-	intensity $57
+	volume_envelope 5, 7
 	note F_, 1
 	note G#, 1
-	intensity $77
+	volume_envelope 7, 7
 	note F_, 1
 	note G#, 1
-	intensity $97
+	volume_envelope 9, 7
 	note F_, 1
 	note G#, 1
-	intensity $77
+	volume_envelope 7, 7
 	octave 2
 	note A_, 6
 	octave 3
 	note F#, 2
-	intensity $47
+	volume_envelope 4, 7
 	note F#, 1
 	note A_, 1
-	intensity $57
+	volume_envelope 5, 7
 	note F#, 1
 	note A_, 1
-	intensity $77
+	volume_envelope 7, 7
 	note F#, 1
 	note A_, 1
-	intensity $97
+	volume_envelope 9, 7
 	note F#, 1
 	note A_, 1
-	intensity $77
+	volume_envelope 7, 7
 	octave 2
 	note G#, 6
 	octave 3
 	note F_, 2
-	intensity $47
+	volume_envelope 4, 7
 	octave 4
 	note C_, 1
 	note C#, 1
-	intensity $57
+	volume_envelope 5, 7
 	note C_, 1
 	note C#, 1
-	intensity $77
+	volume_envelope 7, 7
 	note C_, 1
 	note C#, 1
-	intensity $97
+	volume_envelope 9, 7
 	note C_, 1
 	note C#, 1
-	intensity $77
+	volume_envelope 7, 7
 	octave 2
 	note A_, 6
 	octave 3
 	note C#, 2
-	intensity $47
+	volume_envelope 4, 7
 	octave 4
 	note C#, 1
 	note D#, 1
-	intensity $57
+	volume_envelope 5, 7
 	note C#, 1
 	note D#, 1
-	intensity $77
+	volume_envelope 7, 7
 	note C#, 1
 	note D#, 1
-	intensity $97
+	volume_envelope 9, 7
 	note C#, 1
 	note D#, 1
-	intensity $77
+	volume_envelope 7, 7
 	note C#, 2
 	octave 3
 	note A#, 2
@@ -157,20 +157,20 @@ Music_NationalPark_branch_f554a:
 	note C#, 2
 	octave 3
 	note A_, 2
-	intensity $47
+	volume_envelope 4, 7
 	octave 4
 	note C#, 1
 	note D#, 1
-	intensity $57
+	volume_envelope 5, 7
 	note C#, 1
 	note D#, 1
-	intensity $77
+	volume_envelope 7, 7
 	note C#, 1
 	note D#, 1
-	intensity $97
+	volume_envelope 9, 7
 	note C#, 1
 	note D#, 1
-	intensity $77
+	volume_envelope 7, 7
 	note C_, 2
 	octave 3
 	note G#, 2
@@ -190,20 +190,20 @@ Music_NationalPark_branch_f554a:
 	note D_, 2
 	octave 3
 	note A#, 2
-	intensity $57
+	volume_envelope 5, 7
 	octave 4
 	note F_, 1
 	note D#, 1
-	intensity $67
+	volume_envelope 6, 7
 	note D_, 1
 	note D#, 1
-	intensity $77
+	volume_envelope 7, 7
 	note F_, 1
 	note F#, 1
-	intensity $97
+	volume_envelope 9, 7
 	note G#, 1
 	note A#, 1
-	intensity $77
+	volume_envelope 7, 7
 	note C#, 2
 	octave 3
 	note A#, 2
@@ -227,20 +227,20 @@ Music_NationalPark_branch_f554a:
 	note C#, 2
 	octave 3
 	note A_, 2
-	intensity $47
+	volume_envelope 4, 7
 	octave 4
 	note C#, 1
 	note D#, 1
-	intensity $57
+	volume_envelope 5, 7
 	note C#, 1
 	note D#, 1
-	intensity $77
+	volume_envelope 7, 7
 	note C#, 1
 	note D#, 1
-	intensity $97
+	volume_envelope 9, 7
 	note C#, 1
 	note D#, 1
-	intensity $77
+	volume_envelope 7, 7
 	note C_, 2
 	octave 3
 	note G#, 2
@@ -309,7 +309,7 @@ Music_NationalPark_branch_f565d:
 	note D_, 8
 	callchannel Music_NationalPark_branch_f56b8
 	note __, 2
-	intensity $a7
+	volume_envelope 10, 7
 	octave 4
 	note G#, 2
 	note F#, 2
@@ -332,7 +332,7 @@ Music_NationalPark_branch_f565d:
 	note G#, 4
 	note E_, 1
 	note F_, 14
-	intensity $87
+	volume_envelope 8, 7
 	note G_, 1
 	note G#, 1
 	note __, 1
@@ -346,7 +346,7 @@ Music_NationalPark_branch_f565d:
 	note __, 3
 	note G#, 1
 	note __, 1
-	intensity $a7
+	volume_envelope 10, 7
 	callchannel Music_NationalPark_branch_f56f5
 	octave 3
 	note B_, 1
@@ -361,10 +361,10 @@ Music_NationalPark_branch_f565d:
 	octave 3
 	note A_, 1
 	vibrato $0, $0
-	intensity $b8
+	volume_envelope 11, 8
 	note A#, 16
 	vibrato $14, $24
-	intensity $b7
+	volume_envelope 11, 7
 	note A#, 11
 	octave 2
 	note D#, 2
@@ -441,7 +441,7 @@ Music_NationalPark_branch_f56f5:
 	note F#, 4
 	note __, 2
 	note C#, 7
-	intensity $87
+	volume_envelope 8, 7
 	octave 5
 	note E_, 1
 	note F_, 1
@@ -451,7 +451,7 @@ Music_NationalPark_branch_f56f5:
 	note E_, 1
 	note __, 1
 	note F_, 2
-	intensity $a7
+	volume_envelope 10, 7
 	octave 3
 	note A#, 2
 	octave 4
@@ -462,7 +462,7 @@ Music_NationalPark_branch_f56f5:
 	note F#, 4
 	note __, 2
 	note D#, 7
-	intensity $87
+	volume_envelope 8, 7
 	octave 5
 	note D_, 1
 	note D#, 1
@@ -472,7 +472,7 @@ Music_NationalPark_branch_f56f5:
 	note D_, 1
 	note __, 1
 	note D#, 2
-	intensity $a7
+	volume_envelope 10, 7
 	octave 4
 	note D_, 2
 	note C#, 2
@@ -497,7 +497,7 @@ Music_NationalPark_branch_f572e:
 	note A#, 8
 	octave 4
 	note D_, 8
-	intensity $15
+	volume_envelope 1, 5
 	callchannel Music_NationalPark_branch_f578f
 	octave 4
 	note D_, 1
@@ -508,7 +508,7 @@ Music_NationalPark_branch_f572e:
 	note D_, 1
 	octave 3
 	note F_, 1
-	intensity $11
+	volume_envelope 1, 1
 	octave 4
 	note G#, 1
 	note A#, 1

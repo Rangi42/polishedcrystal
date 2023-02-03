@@ -13,7 +13,7 @@ Music_CeladonCity_branch_f436c:
 	note_type 12, 10, 6
 	octave 3
 	note A_, 7
-	intensity $a1
+	volume_envelope 10, 1
 	note G#, 1
 	note A_, 1
 	note D_, 3
@@ -170,7 +170,7 @@ Music_CeladonCity_branch_f441a:
 	note G_, 4
 	note B_, 4
 	callchannel Music_CeladonCity_branch_f4463
-	intensity $c1
+	volume_envelope 12, 1
 	note A_, 2
 	note G_, 2
 	note F#, 2
@@ -184,10 +184,10 @@ Music_CeladonCity_branch_f441a:
 	note E_, 1
 	note F#, 1
 	note A_, 1
-	intensity $b3
+	volume_envelope 11, 3
 	octave 5
 	note D_, 6
-	intensity $a2
+	volume_envelope 10, 2
 	octave 1
 	note F#, 2
 	callchannel Music_CeladonCity_branch_f4474
@@ -207,7 +207,7 @@ Music_CeladonCity_branch_f441a:
 	note D_, 1
 	note A_, 4
 	note D_, 6
-	intensity $97
+	volume_envelope 9, 7
 	octave 4
 	note F#, 1
 	note A_, 1
@@ -216,7 +216,7 @@ Music_CeladonCity_branch_f441a:
 	jumpchannel Music_CeladonCity_branch_f441a
 
 Music_CeladonCity_branch_f4463:
-	intensity $b2
+	volume_envelope 11, 2
 	octave 4
 	note B_, 4
 	note G_, 4
@@ -314,7 +314,7 @@ Music_CeladonCity_branch_f44a1:
 	octave 2
 	note A_, 2
 	note __, 6
-	intensity $10
+	volume_envelope 1, 0
 	callchannel Music_CeladonCity_branch_f4510
 	octave 5
 	note E_, 2

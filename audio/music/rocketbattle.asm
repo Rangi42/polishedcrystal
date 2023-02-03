@@ -49,35 +49,35 @@ Music_RocketBattle_Ch1:
 	octave 2
 	note B_, 1
 Music_RocketBattle_branch_e9bad:
-	intensity $b2
+	volume_envelope 11, 2
 	octave 3
 	note C_, 6
 	note C_, 4
 	note E_, 2
-	intensity $b7
+	volume_envelope 11, 7
 	note D_, 4
 	loopchannel 3, Music_RocketBattle_branch_e9bad
-	intensity $b2
+	volume_envelope 11, 2
 	note C_, 6
 	note C_, 6
-	intensity $b7
+	volume_envelope 11, 7
 	note D_, 4
 Music_RocketBattle_branch_e9bc1:
-	intensity $b2
+	volume_envelope 11, 2
 	octave 4
 	note E_, 6
 	note E_, 4
 	note G_, 2
-	intensity $b7
+	volume_envelope 11, 7
 	note F_, 4
 	loopchannel 3, Music_RocketBattle_branch_e9bc1
-	intensity $b2
+	volume_envelope 11, 2
 	note E_, 6
 	note E_, 4
-	intensity $b7
+	volume_envelope 11, 7
 	note D_, 2
 	note D#, 4
-	intensity $b3
+	volume_envelope 11, 3
 	octave 4
 	note C_, 2
 	octave 3
@@ -101,18 +101,18 @@ Music_RocketBattle_branch_e9bc1:
 	note F_, 2
 	note E_, 2
 	note F_, 2
-	intensity $b5
+	volume_envelope 11, 5
 	note G_, 4
-	intensity $b3
+	volume_envelope 11, 3
 	note G_, 2
 	note F_, 2
 	note D#, 2
 	note D_, 2
 	note C#, 2
 	note D_, 2
-	intensity $b5
+	volume_envelope 11, 5
 	note D#, 4
-	intensity $b3
+	volume_envelope 11, 3
 	note D#, 2
 	note D_, 2
 	note F_, 2
@@ -146,9 +146,9 @@ Music_RocketBattle_branch_e9c02:
 	note F_, 2
 	note E_, 2
 	note F_, 2
-	intensity $b5
+	volume_envelope 11, 5
 	note G_, 4
-	intensity $b3
+	volume_envelope 11, 3
 	note G_, 2
 	note F_, 2
 	octave 4
@@ -156,24 +156,24 @@ Music_RocketBattle_branch_e9c02:
 	note D_, 2
 	note C_, 2
 	note D_, 2
-	intensity $b5
+	volume_envelope 11, 5
 	note F_, 4
-	intensity $b2
+	volume_envelope 11, 2
 	octave 3
 	note F_, 2
 	note G_, 2
 	note G#, 4
-	intensity $b5
+	volume_envelope 11, 5
 	note D_, 4
 	note C_, 4
 	note D_, 4
 	note E_, 2
-	intensity $b2
+	volume_envelope 11, 2
 	note F_, 2
 	note A_, 4
-	intensity $b7
+	volume_envelope 11, 7
 	note A_, 4
-	intensity $b5
+	volume_envelope 11, 5
 	note A_, 2
 	note G_, 2
 	note F_, 4
@@ -189,7 +189,7 @@ Music_RocketBattle_branch_e9c02:
 	note G_, 2
 	note A_, 2
 	note A#, 2
-	intensity $b7
+	volume_envelope 11, 7
 	octave 4
 	note E_, 6
 	note D_, 4
@@ -203,11 +203,11 @@ Music_RocketBattle_branch_e9c02:
 	note E_, 6
 	note D_, 6
 	note D#, 4
-	intensity $a0
+	volume_envelope 10, 0
 	note E_, 8
-	intensity $a7
+	volume_envelope 10, 7
 	note E_, 8
-	intensity $b7
+	volume_envelope 11, 7
 	octave 2
 	note A_, 8
 	note G_, 8
@@ -233,7 +233,7 @@ Music_RocketBattle_branch_e9c02:
 	octave 3
 	note D_, 6
 	note C_, 4
-	intensity $b5
+	volume_envelope 11, 5
 	octave 2
 	note A#, 2
 	octave 3
@@ -262,71 +262,71 @@ Music_RocketBattle_branch_e9c02:
 	octave 3
 	note A#, 2
 	note G_, 2
-	intensity $b2
+	volume_envelope 11, 2
 	note E_, 6
 	note E_, 6
 	note E_, 4
 	note E_, 6
 	note E_, 4
-	intensity $b7
+	volume_envelope 11, 7
 	note G_, 2
 	note F_, 4
-	intensity $b2
+	volume_envelope 11, 2
 	note E_, 6
 	note E_, 4
-	intensity $b7
+	volume_envelope 11, 7
 	note G_, 2
 	note F_, 4
-	intensity $b2
+	volume_envelope 11, 2
 	note E_, 6
 	octave 4
 	note D_, 1
 	note D#, 1
-	intensity $a0
+	volume_envelope 10, 0
 	note E_, 8
-	intensity $b2
+	volume_envelope 11, 2
 	octave 3
 	note F_, 6
 	note F_, 4
-	intensity $b7
+	volume_envelope 11, 7
 	note A#, 2
 	note G_, 4
 Music_RocketBattle_branch_e9cc5:
-	intensity $b2
+	volume_envelope 11, 2
 	note F_, 6
 	note F_, 4
-	intensity $b7
+	volume_envelope 11, 7
 	note A_, 2
 	note G_, 4
 	loopchannel 2, Music_RocketBattle_branch_e9cc5
-	intensity $b2
+	volume_envelope 11, 2
 	note F_, 6
 	octave 4
 	note D_, 1
 	note E_, 1
-	intensity $a0
+	volume_envelope 10, 0
 	note F_, 8
-	intensity $b3
+	volume_envelope 11, 3
 	note D_, 2
 	octave 3
 	note A_, 2
 	note E_, 2
 	note A_, 4
 	note A_, 2
-	intensity $b7
+	volume_envelope 11, 7
 	octave 4
 	note D_, 4
-	intensity $b3
+	volume_envelope 11, 3
 	note D#, 2
 	octave 3
 	note A#, 2
 	note G_, 2
 	note A#, 4
 	note A#, 2
-	intensity $b7
+	volume_envelope 11, 7
 	octave 4
 	note D_, 4
-	intensity $b3
+	volume_envelope 11, 3
 	note E_, 2
 	note C_, 2
 	octave 3
@@ -334,16 +334,16 @@ Music_RocketBattle_branch_e9cc5:
 	octave 4
 	note C_, 4
 	note C_, 2
-	intensity $b7
+	volume_envelope 11, 7
 	note D#, 4
-	intensity $a0
+	volume_envelope 10, 0
 	note E_, 4
-	intensity $a7
+	volume_envelope 10, 7
 	note E_, 6
-	intensity $a0
+	volume_envelope 10, 0
 	octave 3
 	note G#, 6
-	intensity $b3
+	volume_envelope 11, 3
 	note C_, 2
 	note E_, 2
 	note E_, 2
@@ -371,9 +371,9 @@ Music_RocketBattle_branch_e9cc5:
 	note A#, 2
 	octave 3
 	note C_, 2
-	intensity $b5
+	volume_envelope 11, 5
 	note D_, 4
-	intensity $b3
+	volume_envelope 11, 3
 	note D_, 2
 	note C_, 2
 	octave 2
@@ -382,9 +382,9 @@ Music_RocketBattle_branch_e9cc5:
 	note D_, 2
 	note C#, 2
 	note D_, 2
-	intensity $b5
+	volume_envelope 11, 5
 	note D#, 4
-	intensity $b3
+	volume_envelope 11, 3
 	note D#, 2
 	note D_, 2
 	note F_, 2
@@ -401,36 +401,36 @@ Music_RocketBattle_Ch2:
 	note B_, 4
 	octave 5
 	note C_, 1
-	intensity $82
+	volume_envelope 8, 2
 	octave 4
 	note G#, 1
 	note A_, 1
 	note G#, 1
-	intensity $c2
+	volume_envelope 12, 2
 	octave 5
 	note C#, 1
-	intensity $92
+	volume_envelope 9, 2
 	octave 4
 	note G#, 1
 	note A_, 1
 	note G#, 1
-	intensity $c2
+	volume_envelope 12, 2
 	octave 5
 	note D_, 1
-	intensity $a2
+	volume_envelope 10, 2
 	octave 4
 	note G#, 1
 	note A_, 1
 	note G#, 1
-	intensity $c2
+	volume_envelope 12, 2
 	octave 5
 	note D#, 1
-	intensity $b2
+	volume_envelope 11, 2
 	octave 4
 	note G#, 1
 	note A_, 1
 	note G#, 1
-	intensity $c2
+	volume_envelope 12, 2
 	octave 5
 	note E_, 1
 	octave 4
@@ -438,96 +438,96 @@ Music_RocketBattle_Ch2:
 	note A_, 1
 	note G#, 1
 Music_RocketBattle_branch_e9d7b:
-	intensity $c2
+	volume_envelope 12, 2
 	octave 3
 	note A_, 6
 	note A_, 4
 	octave 4
 	note C_, 2
-	intensity $c7
+	volume_envelope 12, 7
 	octave 3
 	note A#, 4
 	loopchannel 3, Music_RocketBattle_branch_e9d7b
-	intensity $c2
+	volume_envelope 12, 2
 	note A_, 6
 	note A_, 6
-	intensity $4a
+	volume_envelope 4, -2
 	note G#, 4
 Music_RocketBattle_branch_e9d91:
-	intensity $c2
+	volume_envelope 12, 2
 	octave 4
 	note A_, 6
 	note A_, 4
 	octave 5
 	note C_, 2
-	intensity $c7
+	volume_envelope 12, 7
 	octave 4
 	note A#, 4
 	loopchannel 3, Music_RocketBattle_branch_e9d91
-	intensity $c2
+	volume_envelope 12, 2
 	note A_, 6
 	note A_, 4
-	intensity $c7
+	volume_envelope 12, 7
 	note G_, 2
 	note G#, 4
 	callchannel Music_RocketBattle_branch_e9ea0
-	intensity $b0
+	volume_envelope 11, 0
 	note F_, 16
-	intensity $b7
+	volume_envelope 11, 7
 	note F_, 16
 Music_RocketBattle_branch_e9db1:
 	callchannel Music_RocketBattle_branch_e9ea0
-	intensity $b0
+	volume_envelope 11, 0
 	note F_, 8
-	intensity $b7
+	volume_envelope 11, 7
 	note F_, 8
-	intensity $b0
+	volume_envelope 11, 0
 	note A#, 8
-	intensity $b7
+	volume_envelope 11, 7
 	note A#, 8
-	intensity $c4
+	volume_envelope 12, 4
 	octave 3
 	note A_, 2
 	note G_, 2
 	note A_, 2
-	intensity $c7
+	volume_envelope 12, 7
 	octave 4
 	note C_, 4
 	octave 3
 	note A#, 2
 	note A_, 2
 	note G_, 2
-	intensity $c2
+	volume_envelope 12, 2
 	note A_, 2
 	octave 4
 	note C_, 4
-	intensity $b0
+	volume_envelope 11, 0
 	note C_, 6
-	intensity $b7
+	volume_envelope 11, 7
 	note C_, 4
-	intensity $c4
+	volume_envelope 12, 4
 	octave 3
 	note A#, 2
 	note A_, 2
 	note A#, 2
-	intensity $c7
+	volume_envelope 12, 7
 	octave 4
 	note D_, 4
 	note C_, 2
 	octave 3
 	note A#, 2
 	note A_, 2
-	intensity $c2
+	volume_envelope 12, 2
 	note A#, 2
 	octave 4
 	note D_, 4
-	intensity $b0
+	volume_envelope 11, 0
 	note D_, 4
-	intensity $b7
+	volume_envelope 11, 7
 	note D_, 6
-	intensity $4f
+	volume_envelope 4, -7
 	note A_, 6
-	intensity $a0
+	volume_envelope 10, 0
 	note G_, 6
 	note F_, 4
 	note E_, 6
@@ -537,92 +537,92 @@ Music_RocketBattle_branch_e9db1:
 	note A#, 6
 	note G#, 4
 	note A_, 6
-	intensity $a7
+	volume_envelope 10, 7
 	note A_, 10
-	intensity $3f
+	volume_envelope 3, -7
 	octave 3
 	note D_, 8
-	intensity $b7
+	volume_envelope 11, 7
 	note D_, 8
-	intensity $3f
+	volume_envelope 3, -7
 	note C#, 8
-	intensity $b7
+	volume_envelope 11, 7
 	note C#, 8
-	intensity $3f
+	volume_envelope 3, -7
 	note D_, 8
-	intensity $b7
+	volume_envelope 11, 7
 	note D_, 8
-	intensity $3f
+	volume_envelope 3, -7
 	note E_, 8
-	intensity $b7
+	volume_envelope 11, 7
 	note E_, 8
-	intensity $4e
+	volume_envelope 4, -6
 	note F_, 8
-	intensity $a0
+	volume_envelope 10, 0
 	note F_, 8
 	note E_, 16
 	note F_, 16
 	note A_, 16
-	intensity $3f
+	volume_envelope 3, -7
 	note F_, 16
-	intensity $c7
+	volume_envelope 12, 7
 	octave 4
 	note D_, 8
 	note C#, 8
-	intensity $b0
+	volume_envelope 11, 0
 	note E_, 8
-	intensity $b7
+	volume_envelope 11, 7
 	note E_, 8
-	intensity $3c
+	volume_envelope 3, -4
 	note A_, 6
-	intensity $c7
+	volume_envelope 12, 7
 	note A_, 10
-	intensity $c2
+	volume_envelope 12, 2
 	octave 3
 	note A_, 6
 	note A_, 6
 	note A_, 4
 	note A_, 6
 	note A_, 4
-	intensity $c7
+	volume_envelope 12, 7
 	octave 4
 	note C_, 2
 	octave 3
 	note A#, 4
-	intensity $c2
+	volume_envelope 12, 2
 	note A_, 6
 	note A_, 4
-	intensity $c7
+	volume_envelope 12, 7
 	octave 4
 	note C_, 2
 	octave 3
 	note A#, 4
-	intensity $c2
+	volume_envelope 12, 2
 	note A_, 6
-	intensity $c7
+	volume_envelope 12, 7
 	octave 4
 	note G_, 1
 	note G#, 1
 	note A_, 8
 Music_RocketBattle_branch_e9e5a:
-	intensity $c2
+	volume_envelope 12, 2
 	octave 3
 	note A#, 6
 	note A#, 4
-	intensity $c7
+	volume_envelope 12, 7
 	octave 4
 	note D_, 2
 	note C_, 4
 	loopchannel 3, Music_RocketBattle_branch_e9e5a
-	intensity $c2
+	volume_envelope 12, 2
 	octave 3
 	note A#, 6
-	intensity $c7
+	volume_envelope 12, 7
 	octave 4
 	note G_, 1
 	note A_, 1
 	note A#, 8
-	intensity $c7
+	volume_envelope 12, 7
 	note A_, 6
 	note G_, 6
 	note A_, 4
@@ -633,13 +633,13 @@ Music_RocketBattle_branch_e9e5a:
 	note A#, 4
 	note A_, 6
 	note G_, 6
-	intensity $c5
+	volume_envelope 12, 5
 	note A_, 4
-	intensity $b0
+	volume_envelope 11, 0
 	note A_, 8
-	intensity $b7
+	volume_envelope 11, 7
 	note A_, 8
-	intensity $c6
+	volume_envelope 12, 6
 	octave 3
 	note A_, 6
 	note G#, 6
@@ -647,18 +647,18 @@ Music_RocketBattle_branch_e9e5a:
 	note A_, 6
 	note G#, 6
 	note E_, 4
-	intensity $b0
+	volume_envelope 11, 0
 	note F_, 8
-	intensity $b7
+	volume_envelope 11, 7
 	note F_, 8
-	intensity $3d
+	volume_envelope 3, -5
 	note A#, 8
-	intensity $c7
+	volume_envelope 12, 7
 	note A#, 8
 	jumpchannel Music_RocketBattle_branch_e9db1
 
 Music_RocketBattle_branch_e9ea0:
-	intensity $c6
+	volume_envelope 12, 6
 	octave 4
 	note A_, 6
 	note G#, 6

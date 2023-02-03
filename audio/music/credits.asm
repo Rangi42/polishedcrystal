@@ -32,7 +32,7 @@ Music_Credits_Ch1:
 	note __, 2
 	note A_, 2
 	note B_, 2
-	intensity $96
+	volume_envelope 9, 6
 	note A_, 1
 	note G_, 1
 	octave 3
@@ -41,7 +41,7 @@ Music_Credits_Ch1:
 	octave 2
 	note B_, 1
 	note A_, 1
-	intensity $94
+	volume_envelope 9, 4
 	note G_, 1
 	note F_, 1
 	note E_, 1
@@ -52,10 +52,10 @@ Music_Credits_Ch1:
 	note A_, 1
 	octave 3
 	note __, 1
-	intensity $a7
+	volume_envelope 10, 7
 	callchannel Music_Credits_branch_1f483
 	callchannel Music_Credits_branch_1f4ed
-	intensity $97
+	volume_envelope 9, 7
 	callchannel Music_Credits_branch_1f4f8
 	octave 3
 	note B_, 2
@@ -124,7 +124,7 @@ Music_Credits_Ch1:
 	octave 4
 	note C_, 7
 	note D_, 8
-	intensity $a7
+	volume_envelope 10, 7
 	octave 5
 	note E_, 2
 	note C#, 2
@@ -271,11 +271,11 @@ Music_Credits_branch_1f407:
 	octave 2
 	note D_, 1
 	note __, 7
-	intensity $c7
+	volume_envelope 12, 7
 	octave 2
 	note D_, 16
-	intensity $b8
-	intensity $b7
+	volume_envelope 11, 8
+	volume_envelope 11, 7
 	note __, 16
 	note __, 16
 	note __, 16
@@ -564,7 +564,7 @@ Music_Credits_Ch2:
 	stereopanning $f0
 	octave 4
 	note G_, 16
-	intensity $c7
+	volume_envelope 12, 7
 	octave 5
 	note G_, 8
 	octave 3
@@ -589,14 +589,14 @@ Music_Credits_Ch2:
 	note G_, 2
 	note __, 2
 	note G_, 2
-	intensity $97
+	volume_envelope 9, 7
 	note F#, 1
 	note F_, 1
 	note E_, 1
 	note D#, 1
 	note D_, 1
 	note C#, 1
-	intensity $c7
+	volume_envelope 12, 7
 	callchannel Music_Credits_branch_1f6cb
 	callchannel Music_Credits_branch_1f73f
 	callchannel Music_Credits_branch_1f748
@@ -803,11 +803,11 @@ Music_Credits_branch_1f657:
 	note_type 12, 12, 7
 	note D_, 1
 	note __, 7
-	intensity $c8
-	intensity $c7
+	volume_envelope 12, 8
+	volume_envelope 12, 7
 	octave 1
 	note D_, 16
-	intensity $c7
+	volume_envelope 12, 7
 	note __, 16
 	note __, 16
 	note __, 16
@@ -816,7 +816,7 @@ Music_Credits_branch_1f657:
 Music_Credits_branch_1f6cb:
 	octave 2
 	note C_, 4
-	intensity $b1
+	volume_envelope 11, 1
 	octave 5
 	note G_, 1
 	note __, 1
@@ -826,7 +826,7 @@ Music_Credits_branch_1f6cb:
 	note __, 1
 	note G_, 2
 	note __, 2
-	intensity $c7
+	volume_envelope 12, 7
 	octave 2
 	note C_, 1
 	note __, 1
@@ -846,7 +846,7 @@ Music_Credits_branch_1f6cb:
 	octave 1
 	note B_, 6
 	note A#, 4
-	intensity $b1
+	volume_envelope 11, 1
 	octave 5
 	note E_, 1
 	note __, 1
@@ -856,7 +856,7 @@ Music_Credits_branch_1f6cb:
 	note __, 1
 	note E_, 2
 	note __, 2
-	intensity $c7
+	volume_envelope 12, 7
 	octave 1
 	note A#, 1
 	note __, 1
@@ -875,7 +875,7 @@ Music_Credits_branch_1f6cb:
 	octave 1
 	note A_, 6
 	note G#, 4
-	intensity $b1
+	volume_envelope 11, 1
 	octave 5
 	note C_, 1
 	note __, 1
@@ -887,7 +887,7 @@ Music_Credits_branch_1f6cb:
 	octave 5
 	note C_, 2
 	note __, 2
-	intensity $c7
+	volume_envelope 12, 7
 	octave 1
 	note G#, 1
 	note __, 1
@@ -988,14 +988,14 @@ Music_Credits_Ch3:
 	note C_, 1
 	octave 5
 	note G_, 1
-	intensity $24
+	volume_envelope 2, 4
 	octave 6
 	note G_, 1
 	note D_, 1
 	note C_, 1
 	octave 5
 	note G_, 1
-	intensity $14
+	volume_envelope 1, 4
 	octave 6
 	note G_, 1
 	note D_, 1
@@ -1031,10 +1031,10 @@ Music_Credits_Ch3:
 	note F#, 1
 	note G_, 1
 	note_type 6, 1, 4
-	intensity $24
+	volume_envelope 2, 4
 	note F_, 1
 	note E_, 1
-	intensity $14
+	volume_envelope 1, 4
 	note E_, 4
 	note __, 4
 	note F_, 4
@@ -1176,7 +1176,7 @@ Music_Credits_Ch3:
 	octave 6
 	note C#, 4
 	note E_, 4
-	intensity $15
+	volume_envelope 1, 5
 	octave 4
 	note D_, 6
 	note F#, 2
@@ -1189,7 +1189,7 @@ Music_Credits_Ch3:
 	note B_, 1
 	note A#, 1
 	note A_, 8
-	intensity $14
+	volume_envelope 1, 4
 	octave 2
 	note A_, 1
 	note __, 1

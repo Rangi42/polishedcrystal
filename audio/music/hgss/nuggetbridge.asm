@@ -84,7 +84,7 @@ Music_NuggetBridgeHGSS_Loop1:
 	note E_, 2
 	note A_, 2
 	note G#, 2
-	intensity $B2
+	volume_envelope 11, 2
 	note B_, 2
 	note B_, 1
 	octave 3
@@ -98,14 +98,14 @@ Music_NuggetBridgeHGSS_Loop1:
 	note G#, 3
 	note F#, 1
 	note E_, 6
-	intensity $B1
+	volume_envelope 11, 1
 	octave 2
 	note E_, 1
 	note F#, 1
 	note G#, 2
 	note F#, 1
 	note E_, 1
-	intensity $B2
+	volume_envelope 11, 2
 	note B_, 2
 	note B_, 1
 	octave 3
@@ -119,14 +119,14 @@ Music_NuggetBridgeHGSS_Loop1:
 	note G#, 3
 	note F#, 1
 	note E_, 6
-	intensity $B1
+	volume_envelope 11, 1
 	octave 2
 	note G#, 1
 	note A_, 1
 	note B_, 2
 	note A_, 1
 	note G#, 1
-	intensity $B2
+	volume_envelope 11, 2
 	note B_, 2
 	note B_, 1
 	octave 3
@@ -149,7 +149,7 @@ Music_NuggetBridgeHGSS_Loop1:
 	note F#, 2
 	note F#, 1
 	note G#, 1
-	intensity $B5
+	volume_envelope 11, 5
 	note A_, 4
 	duty_cycle 1
 	note G#, 6
@@ -423,69 +423,69 @@ Music_NuggetBridgeHGSS_Bar7:
 	octave 2
 	note D_, 1
 	note __, 1
-	intensity $24
+	volume_envelope 2, 4
 	octave 5
 	note A_, 1
 	octave 4
 	note D_, 1
-	intensity $15
+	volume_envelope 1, 5
 	endchannel
 Music_NuggetBridgeHGSS_Bar8:
 	octave 2
 	note E_, 1
 	note __, 1
-	intensity $24
+	volume_envelope 2, 4
 	octave 5
 	note B_, 1
 	octave 4
 	note E_, 1
-	intensity $15
+	volume_envelope 1, 5
 	endchannel
 Music_NuggetBridgeHGSS_Bar9:
 	octave 1
 	note B_, 1
 	note __, 1
-	intensity $24
+	volume_envelope 2, 4
 	octave 6
 	note D_, 1
 	octave 4
 	note F#, 1
-	intensity $15
+	volume_envelope 1, 5
 	endchannel
 Music_NuggetBridgeHGSS_Bar10:
 	octave 2
 	note E_, 1
 	note __, 1
-	intensity $24
+	volume_envelope 2, 4
 	octave 6
 	note E_, 1
 	octave 4
 	note B_, 1
-	intensity $15
+	volume_envelope 1, 5
 	endchannel
 Music_NuggetBridgeHGSS_Bar11:
 	octave 1
 	note B_, 1
-	intensity $24
+	volume_envelope 2, 4
 	octave 4
 	note A_, 1
 	octave 6
 	note F#, 1
 	octave 5
 	note D_, 1
-	intensity $15
+	volume_envelope 1, 5
 	endchannel
 Music_NuggetBridgeHGSS_Bar12:
 	octave 2
 	note E_, 1
-	intensity $24
+	volume_envelope 2, 4
 	octave 4
 	note B_, 1
 	octave 6
 	note G#, 1
 	octave 5
 	note E_, 1
-	intensity $15
+	volume_envelope 1, 5
 	endchannel
 
 Music_NuggetBridgeHGSS_Ch4:

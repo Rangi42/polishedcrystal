@@ -17,78 +17,78 @@ Music_LavenderTown_Ch1:
 	note __, 16
 Music_LavenderTown_branch_ef74c:
 	callchannel Music_LavenderTown_branch_ef7fd
-	intensity $93
+	volume_envelope 9, 3
 	octave 5
 	note D_, 2
-	intensity $43
+	volume_envelope 4, 3
 	note D_, 2
-	intensity $93
+	volume_envelope 9, 3
 	note F#, 2
-	intensity $43
+	volume_envelope 4, 3
 	note F#, 2
-	intensity $93
+	volume_envelope 9, 3
 	note B_, 2
-	intensity $43
+	volume_envelope 4, 3
 	note B_, 2
-	intensity $93
+	volume_envelope 9, 3
 	note A_, 2
-	intensity $43
+	volume_envelope 4, 3
 	note A_, 2
 	callchannel Music_LavenderTown_branch_ef87f
-	intensity $93
-	intensity $93
+	volume_envelope 9, 3
+	volume_envelope 9, 3
 	note F_, 2
-	intensity $83
+	volume_envelope 8, 3
 	note F_, 2
-	intensity $93
+	volume_envelope 9, 3
 	note D_, 2
-	intensity $43
+	volume_envelope 4, 3
 	note D_, 2
-	intensity $93
+	volume_envelope 9, 3
 	octave 4
 	note B_, 2
-	intensity $43
+	volume_envelope 4, 3
 	note B_, 2
-	intensity $93
+	volume_envelope 9, 3
 	note G_, 2
-	intensity $43
+	volume_envelope 4, 3
 	note G_, 2
 	callchannel Music_LavenderTown_branch_ef7fd
-	intensity $93
+	volume_envelope 9, 3
 	octave 5
 	note D_, 2
-	intensity $43
+	volume_envelope 4, 3
 	note D_, 2
-	intensity $93
+	volume_envelope 9, 3
 	note G_, 2
-	intensity $43
+	volume_envelope 4, 3
 	note G_, 2
-	intensity $93
+	volume_envelope 9, 3
 	note B_, 2
-	intensity $43
+	volume_envelope 4, 3
 	note B_, 2
-	intensity $93
+	volume_envelope 9, 3
 	note G_, 2
-	intensity $43
+	volume_envelope 4, 3
 	note G_, 2
 	callchannel Music_LavenderTown_branch_ef87f
-	intensity $93
+	volume_envelope 9, 3
 	octave 6
 	note C_, 2
-	intensity $43
+	volume_envelope 4, 3
 	note C_, 2
-	intensity $93
+	volume_envelope 9, 3
 	octave 5
 	note G_, 2
-	intensity $43
+	volume_envelope 4, 3
 	note G_, 2
-	intensity $93
+	volume_envelope 9, 3
 	note E_, 2
-	intensity $43
+	volume_envelope 4, 3
 	note E_, 2
-	intensity $93
+	volume_envelope 9, 3
 	note C_, 2
-	intensity $43
+	volume_envelope 4, 3
 	note C_, 2
 	octave 3
 	note F_, 2
@@ -149,114 +149,114 @@ Music_LavenderTown_branch_ef7ca:
 	jumpchannel Music_LavenderTown_branch_ef74c
 
 Music_LavenderTown_branch_ef7fd:
-	intensity $83
+	volume_envelope 8, 3
 	octave 5
 	note C_, 2
-	intensity $43
+	volume_envelope 4, 3
 	note C_, 2
-	intensity $83
+	volume_envelope 8, 3
 	note G_, 2
-	intensity $43
+	volume_envelope 4, 3
 	note G_, 2
-	intensity $83
+	volume_envelope 8, 3
 	octave 6
 	note C_, 2
-	intensity $43
+	volume_envelope 4, 3
 	note C_, 2
-	intensity $83
+	volume_envelope 8, 3
 	octave 5
 	note G_, 2
-	intensity $43
+	volume_envelope 4, 3
 	note G_, 2
-	intensity $83
+	volume_envelope 8, 3
 	note D_, 2
-	intensity $43
+	volume_envelope 4, 3
 	note D_, 2
-	intensity $83
+	volume_envelope 8, 3
 	note A_, 2
-	intensity $43
+	volume_envelope 4, 3
 	note A_, 2
-	intensity $83
+	volume_envelope 8, 3
 	octave 6
 	note D_, 2
-	intensity $43
+	volume_envelope 4, 3
 	note D_, 2
-	intensity $83
+	volume_envelope 8, 3
 	octave 5
 	note A_, 2
-	intensity $43
+	volume_envelope 4, 3
 	note A_, 2
-	intensity $83
+	volume_envelope 8, 3
 	note E_, 2
-	intensity $43
+	volume_envelope 4, 3
 	note E_, 2
-	intensity $83
+	volume_envelope 8, 3
 	note B_, 2
-	intensity $43
+	volume_envelope 4, 3
 	note B_, 2
-	intensity $83
+	volume_envelope 8, 3
 	octave 6
 	note E_, 2
-	intensity $43
+	volume_envelope 4, 3
 	note E_, 2
-	intensity $83
+	volume_envelope 8, 3
 	octave 5
 	note B_, 2
-	intensity $43
+	volume_envelope 4, 3
 	note B_, 2
-	intensity $83
+	volume_envelope 8, 3
 	note C#, 2
-	intensity $43
+	volume_envelope 4, 3
 	note C#, 2
-	intensity $83
+	volume_envelope 8, 3
 	note G_, 2
-	intensity $43
+	volume_envelope 4, 3
 	note G_, 2
-	intensity $83
+	volume_envelope 8, 3
 	note A#, 2
-	intensity $43
+	volume_envelope 4, 3
 	note A#, 2
-	intensity $83
+	volume_envelope 8, 3
 	note G_, 2
-	intensity $43
+	volume_envelope 4, 3
 	note G_, 2
-	intensity $83
+	volume_envelope 8, 3
 	note C_, 2
-	intensity $43
+	volume_envelope 4, 3
 	note C_, 2
-	intensity $83
+	volume_envelope 8, 3
 	note F_, 2
-	intensity $43
+	volume_envelope 4, 3
 	note F_, 2
-	intensity $83
+	volume_envelope 8, 3
 	octave 6
 	note C_, 2
-	intensity $43
+	volume_envelope 4, 3
 	note C_, 2
-	intensity $83
+	volume_envelope 8, 3
 	octave 5
 	note F_, 2
-	intensity $43
+	volume_envelope 4, 3
 	note F_, 2
 	endchannel
 
 Music_LavenderTown_branch_ef87f:
-	intensity $93
+	volume_envelope 9, 3
 	octave 5
 	note G_, 2
-	intensity $83
+	volume_envelope 8, 3
 	note G_, 2
-	intensity $83
+	volume_envelope 8, 3
 	note F_, 2
-	intensity $43
+	volume_envelope 4, 3
 	note F_, 2
-	intensity $83
+	volume_envelope 8, 3
 	note D_, 2
-	intensity $43
+	volume_envelope 4, 3
 	note D_, 2
-	intensity $83
+	volume_envelope 8, 3
 	note G_, 2
-	intensity $43
+	volume_envelope 4, 3
 	note G_, 2
 	endchannel
 
@@ -268,40 +268,40 @@ Music_LavenderTown_branch_ef8a0:
 	note_type 12, 10, 3
 	octave 5
 	note C_, 2
-	intensity $63
+	volume_envelope 6, 3
 	note C_, 2
-	intensity $a3
+	volume_envelope 10, 3
 	note G_, 2
-	intensity $63
+	volume_envelope 6, 3
 	note G_, 2
-	intensity $a3
+	volume_envelope 10, 3
 	note B_, 2
-	intensity $63
+	volume_envelope 6, 3
 	note B_, 2
-	intensity $a3
+	volume_envelope 10, 3
 	note F#, 2
-	intensity $63
+	volume_envelope 6, 3
 	note F#, 2
 	loopchannel 3, Music_LavenderTown_branch_ef8a0
-	intensity $a3
+	volume_envelope 10, 3
 	note C_, 2
-	intensity $63
+	volume_envelope 6, 3
 	note C_, 2
-	intensity $a3
+	volume_envelope 10, 3
 	note G_, 2
-	intensity $63
+	volume_envelope 6, 3
 	note G_, 2
-	intensity $a3
+	volume_envelope 10, 3
 	note B_, 2
-	intensity $63
+	volume_envelope 6, 3
 	note B_, 2
-	intensity $a3
+	volume_envelope 10, 3
 	octave 6
 	note D_, 2
-	intensity $63
+	volume_envelope 6, 3
 	note D_, 2
 Music_LavenderTown_branch_ef8d7:
-	intensity $b5
+	volume_envelope 11, 5
 	callchannel Music_LavenderTown_branch_ef915
 	octave 2
 	note F#, 4
@@ -336,7 +336,7 @@ Music_LavenderTown_branch_ef8d7:
 	note G_, 4
 	octave 4
 	note C_, 4
-	intensity $b7
+	volume_envelope 11, 7
 	octave 2
 	note F_, 16
 	note C_, 16
@@ -347,7 +347,7 @@ Music_LavenderTown_branch_ef8d7:
 	note G_, 16
 	octave 1
 	note G_, 8
-	intensity $57
+	volume_envelope 5, 7
 	octave 5
 	note D_, 1
 	note F_, 1
@@ -397,7 +397,7 @@ Music_LavenderTown_Ch3:
 	note E_, 4
 	note F_, 4
 Music_LavenderTown_branch_ef941:
-	intensity $12
+	volume_envelope 1, 2
 	octave 5
 	note G_, 4
 	note __, 4
@@ -458,7 +458,7 @@ Music_LavenderTown_branch_ef941:
 	note C_, 16
 	note C_, 12
 	note __, 4
-	intensity $24
+	volume_envelope 2, 4
 	note A_, 2
 	note G_, 2
 	note A_, 2

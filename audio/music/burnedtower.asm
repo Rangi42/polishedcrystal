@@ -18,82 +18,82 @@ Music_BurnedTower_Ch1:
 	note A_, 4
 	note A_, 4
 	note A_, 2
-	intensity $80
+	volume_envelope 8, 0
 	octave 3
 	note D#, 6
-	intensity $91
+	volume_envelope 9, 1
 	note D_, 4
 	note D_, 4
 	note D_, 2
-	intensity $80
+	volume_envelope 8, 0
 	note C#, 6
 Music_BurnedTower_branch_f6ac8:
-	intensity $91
+	volume_envelope 9, 1
 	octave 2
 	note A_, 4
 	note A_, 4
 	note A_, 2
-	intensity $80
+	volume_envelope 8, 0
 	note A#, 6
 	loopchannel 2, Music_BurnedTower_branch_f6ac8
 	tempo 150
 Music_BurnedTower_branch_f6ad8:
-	intensity $b1
+	volume_envelope 11, 1
 	octave 2
 	note A_, 4
 	note A_, 4
 	note A_, 2
-	intensity $a0
+	volume_envelope 10, 0
 	octave 3
 	note D#, 6
-	intensity $b1
+	volume_envelope 11, 1
 	note D_, 4
 	note D_, 4
 	note D_, 2
-	intensity $a0
+	volume_envelope 10, 0
 	note C#, 6
-	intensity $b1
+	volume_envelope 11, 1
 	octave 2
 	note A_, 4
 	note A_, 4
 	note A_, 2
-	intensity $a0
+	volume_envelope 10, 0
 	note A#, 6
-	intensity $b1
+	volume_envelope 11, 1
 	note A_, 4
 	note A_, 4
 	note A_, 2
-	intensity $b3
+	volume_envelope 11, 3
 	note A#, 16
 	note A#, 16
 	note A#, 16
 	note G#, 6
-	intensity $b1
+	volume_envelope 11, 1
 	note A_, 4
 	note A_, 4
 	note A_, 2
-	intensity $a0
+	volume_envelope 10, 0
 	note A#, 6
-	intensity $b1
+	volume_envelope 11, 1
 	note B_, 4
 	note B_, 4
 	note B_, 2
-	intensity $a0
+	volume_envelope 10, 0
 	octave 3
 	note F_, 6
-	intensity $b1
+	volume_envelope 11, 1
 	note E_, 4
 	note E_, 4
 	note E_, 2
-	intensity $a0
+	volume_envelope 10, 0
 	note D#, 6
 Music_BurnedTower_branch_f6b17:
-	intensity $b1
+	volume_envelope 11, 1
 	octave 2
 	note B_, 4
 	note B_, 4
 	note B_, 2
-	intensity $a0
+	volume_envelope 10, 0
 	octave 3
 	note C_, 6
 	loopchannel 2, Music_BurnedTower_branch_f6b17
@@ -105,34 +105,34 @@ Music_BurnedTower_Ch2:
 	tone $0002
 	note_type 12, 7, 0
 	callchannel Music_BurnedTower_branch_f6b8e
-	intensity $c5
+	volume_envelope 12, 5
 Music_BurnedTower_branch_f6b39:
 	callchannel Music_BurnedTower_branch_f6b8e
-	intensity $c1
+	volume_envelope 12, 1
 	duty_cycle 3
 	note __, 2
 	octave 2
 	note A_, 4
 	note A_, 4
 	note A_, 2
-	intensity $b0
+	volume_envelope 11, 0
 	octave 3
 	note D#, 6
-	intensity $c1
+	volume_envelope 12, 1
 	note D_, 4
 	note D_, 4
 	note D_, 2
-	intensity $b0
+	volume_envelope 11, 0
 	note C#, 6
-	intensity $c1
+	volume_envelope 12, 1
 	octave 2
 	note A_, 4
 	note A_, 4
 	note A_, 2
-	intensity $b0
+	volume_envelope 11, 0
 	note A#, 4
-	intensity $c1
-	intensity $c2
+	volume_envelope 12, 1
+	volume_envelope 12, 2
 	octave 3
 	note A_, 1
 	note G_, 1
@@ -140,14 +140,14 @@ Music_BurnedTower_branch_f6b39:
 	octave 4
 	note C_, 1
 	vibrato $0, $0
-	intensity $3d
+	volume_envelope 3, -5
 	note E_, 8
 	vibrato $20, $83
-	intensity $b0
+	volume_envelope 11, 0
 	octave 2
 	note G_, 4
 	duty_cycle 2
-	intensity $b0
+	volume_envelope 11, 0
 	octave 3
 	note F#, 4
 	note E_, 2
@@ -166,7 +166,7 @@ Music_BurnedTower_branch_f6b39:
 	note F#, 2
 	note G_, 4
 	note E_, 4
-	intensity $b7
+	volume_envelope 11, 7
 	note F#, 16
 	jumpchannel Music_BurnedTower_branch_f6b39
 

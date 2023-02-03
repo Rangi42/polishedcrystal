@@ -56,12 +56,12 @@ Music_GymLeaderVictory_branch_f4658:
 	note G_, 1
 	note A_, 6
 	note G_, 2
-	intensity $87
+	volume_envelope 8, 7
 	note F#, 16
 	jumpchannel Music_GymLeaderVictory_branch_f4658
 
 Music_GymLeaderVictory_branch_f4689:
-	intensity $91
+	volume_envelope 9, 1
 	octave 3
 	note F#, 2
 	note A_, 2
@@ -85,7 +85,7 @@ Music_GymLeaderVictory_branch_f4689:
 	endchannel
 
 Music_GymLeaderVictory_branch_f46a0:
-	intensity $87
+	volume_envelope 8, 7
 	octave 3
 	note F#, 14
 	note D_, 1
@@ -131,7 +131,7 @@ Music_GymLeaderVictory_Ch2:
 	note F#, 16
 Music_GymLeaderVictory_branch_f46d0:
 	duty_cycle 3
-	intensity $a1
+	volume_envelope 10, 1
 	callchannel Music_GymLeaderVictory_branch_f4711
 	note A_, 4
 	note A_, 4
@@ -153,7 +153,7 @@ Music_GymLeaderVictory_branch_f46d0:
 	note D_, 14
 	octave 4
 	note B_, 2
-	intensity $a7
+	volume_envelope 10, 7
 	note A_, 16
 	duty_cycle 2
 	callchannel Music_GymLeaderVictory_branch_f4720
@@ -163,7 +163,7 @@ Music_GymLeaderVictory_branch_f46d0:
 	note C#, 4
 	note D_, 14
 	note E_, 2
-	intensity $a6
+	volume_envelope 10, 6
 	note D_, 12
 	note __, 2
 	duty_cycle 3
@@ -191,7 +191,7 @@ Music_GymLeaderVictory_branch_f4711:
 	endchannel
 
 Music_GymLeaderVictory_branch_f4720:
-	intensity $98
+	volume_envelope 9, 8
 	note A_, 6
 	note F#, 1
 	note A_, 1

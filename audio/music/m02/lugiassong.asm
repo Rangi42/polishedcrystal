@@ -42,7 +42,7 @@ Music_LugiasSong2000_Ch1_loop_1:
 	note D_, 16
 	note C_, 16
 	note C_, 12
-	intensity $67
+	volume_envelope 6, 7
 	note C_, 4
 Music_LugiasSong2000_Ch1_loop_main:
 	tempo 156
@@ -59,49 +59,49 @@ Music_LugiasSong2000_Ch2_loop_1:
 	octave 2
 	note B_, 16
 	note B_, 16
-	intensity $20
+	volume_envelope 2, 0
 	note B_, 16
 	note B_, 4
-	intensity $40
+	volume_envelope 4, 0
 	note B_, 2
 	octave 3
-	intensity $50
+	volume_envelope 5, 0
 	note G_, 2
-	intensity $40
+	volume_envelope 4, 0
 	note F#, 8
-	intensity $4e
+	volume_envelope 4, -6
 	note F#, 8
-	intensity $a7
+	volume_envelope 10, 7
 	octave 4
 	note E_, 8
 	note D_, 8
 	octave 3
 	note B_, 8
 	note G_, 6
-	intensity $a2
+	volume_envelope 10, 2
 	note A_, 1
 	note B_, 1
-	intensity $a7
+	volume_envelope 10, 7
 	note A_, 8
-	intensity $a0
+	volume_envelope 10, 0
 	note E_, 8
-	intensity $a7
+	volume_envelope 10, 7
 	note E_, 16
-	intensity $a7
+	volume_envelope 10, 7
 	note E_, 8
 	note B_, 8
 	note A_, 8
 	note D_, 8
-	intensity $60
+	volume_envelope 6, 0
 	note E_, 16
-	intensity $67
+	volume_envelope 6, 7
 	note E_, 16
 Music_LugiasSong2000_Ch2_loop_main:
 	duty_cycle 0
 	note_type 12, 7, 4
 	octave 2
 	note E_, 2
-	intensity $57
+	volume_envelope 5, 7
 	note G_, 2
 	note B_, 2
 	octave 3
@@ -111,9 +111,9 @@ Music_LugiasSong2000_Ch2_loop_main:
 	octave 3
 	note E_, 4
 	octave 2
-	intensity $74
+	volume_envelope 7, 4
 	note D_, 2
-	intensity $57
+	volume_envelope 5, 7
 	note F#, 2
 	note A_, 2
 	octave 3
@@ -122,10 +122,10 @@ Music_LugiasSong2000_Ch2_loop_main:
 	note A_, 2
 	octave 3
 	note D_, 4
-	intensity $74
+	volume_envelope 7, 4
 	octave 2
 	note E_, 2
-	intensity $57
+	volume_envelope 5, 7
 	note G_, 2
 	note B_, 2
 	octave 3
@@ -134,19 +134,19 @@ Music_LugiasSong2000_Ch2_loop_main:
 	note B_, 2
 	octave 3
 	note E_, 4
-	intensity $74
+	volume_envelope 7, 4
 	octave 2
 	note D_, 2
-	intensity $57
+	volume_envelope 5, 7
 	note F#, 2
 	note A_, 2
 	octave 3
 	note E_, 4
 	note D_, 6
-	intensity $74
+	volume_envelope 7, 4
 	octave 2
 	note E_, 2
-	intensity $57
+	volume_envelope 5, 7
 	note G_, 2
 	note B_, 2
 	octave 3
@@ -155,10 +155,10 @@ Music_LugiasSong2000_Ch2_loop_main:
 	note B_, 2
 	octave 3
 	note E_, 4
-	intensity $74
+	volume_envelope 7, 4
 	octave 2
 	note D_, 2
-	intensity $57
+	volume_envelope 5, 7
 	note F#, 2
 	note A_, 2
 	octave 3
@@ -167,10 +167,10 @@ Music_LugiasSong2000_Ch2_loop_main:
 	note A_, 2
 	octave 3
 	note D_, 4
-	intensity $74
+	volume_envelope 7, 4
 	octave 2
 	note E_, 2
-	intensity $57
+	volume_envelope 5, 7
 	note G_, 2
 	note B_, 2
 	octave 3
@@ -179,25 +179,25 @@ Music_LugiasSong2000_Ch2_loop_main:
 	note B_, 2
 	octave 3
 	note E_, 4
-	intensity $74
+	volume_envelope 7, 4
 	note F#, 2
 	octave 2
-	intensity $57
+	volume_envelope 5, 7
 	note F#, 2
 	note A_, 2
 	octave 3
 	note E_, 2
-	intensity $74
+	volume_envelope 7, 4
 	octave 2
 	note D_, 2
-	intensity $57
+	volume_envelope 5, 7
 	note A_, 2
 	octave 3
 	note D_, 4
-	intensity $74
+	volume_envelope 7, 4
 	octave 2
 	note C_, 2
-	intensity $57
+	volume_envelope 5, 7
 	note E_, 2
 	note G_, 2
 	octave 3
@@ -206,10 +206,10 @@ Music_LugiasSong2000_Ch2_loop_main:
 	note G_, 2
 	octave 3
 	note E_, 4
-	intensity $74
+	volume_envelope 7, 4
 	octave 2
 	note G_, 2
-	intensity $57
+	volume_envelope 5, 7
 	note B_, 2
 	octave 3
 	note D_, 2
@@ -218,10 +218,10 @@ Music_LugiasSong2000_Ch2_loop_main:
 	note G_, 2
 	octave 3
 	note D_, 4
-	intensity $74
+	volume_envelope 7, 4
 	octave 1
 	note A_, 2
-	intensity $57
+	volume_envelope 5, 7
 	octave 2
 	note E_, 2
 	note A_, 2
@@ -231,10 +231,10 @@ Music_LugiasSong2000_Ch2_loop_main:
 	note E_, 2
 	octave 3
 	note D_, 4
-	intensity $74
+	volume_envelope 7, 4
 	octave 2
 	note C_, 2
-	intensity $57
+	volume_envelope 5, 7
 	note E_, 2
 	note G_, 2
 	octave 3
@@ -243,10 +243,10 @@ Music_LugiasSong2000_Ch2_loop_main:
 	note E_, 2
 	octave 3
 	note C_, 4
-	intensity $74
+	volume_envelope 7, 4
 	octave 2
 	note E_, 2
-	intensity $57
+	volume_envelope 5, 7
 	note G_, 2
 	note B_, 2
 	octave 3
@@ -255,10 +255,10 @@ Music_LugiasSong2000_Ch2_loop_main:
 	note B_, 2
 	octave 3
 	note E_, 4
-	intensity $74
+	volume_envelope 7, 4
 	octave 2
 	note D_, 2
-	intensity $57
+	volume_envelope 5, 7
 	note F#, 2
 	note A_, 2
 	octave 3
@@ -269,9 +269,9 @@ Music_LugiasSong2000_Ch2_loop_main:
 	octave 3
 	note D_, 4
 	octave 2
-	intensity $74
+	volume_envelope 7, 4
 	note E_, 4
-	intensity $57
+	volume_envelope 5, 7
 	note B_, 2
 	octave 3
 	note G_, 2
@@ -279,7 +279,7 @@ Music_LugiasSong2000_Ch2_loop_main:
 	octave 2
 	note B_, 2
 	octave 3
-	intensity $87
+	volume_envelope 8, 7
 	note C_, 4
 	note F#, 4
 	note E_, 4
@@ -383,9 +383,9 @@ Music_LugiasSong2000_Ch3_branch_2:
 	note_type 12, 1, 3
 	note E_, 12
 	note E_, 6
-	intensity $23
+	volume_envelope 2, 3
 	note E_, 6
-	intensity $13
+	volume_envelope 1, 3
 	endchannel
 
 Music_LugiasSong2000_Ch4:

@@ -48,7 +48,7 @@ Music_KantoTrainerBattle_Ch1:
 	note F#, 1
 	note G_, 1
 	duty_cycle 2
-	intensity $b1
+	volume_envelope 11, 1
 	octave 4
 	note D#, 2
 	octave 2
@@ -110,7 +110,7 @@ Music_KantoTrainerBattle_Ch1:
 	note __, 1
 	note G_, 1
 	note __, 1
-	intensity $b3
+	volume_envelope 11, 3
 	note D#, 2
 	note __, 4
 	note F_, 2
@@ -259,7 +259,7 @@ Music_KantoTrainerBattle_branch_eca88:
 	note D_, 2
 	octave 4
 	note D_, 2
-	intensity $67
+	volume_envelope 6, 7
 	note C_, 1
 	note C#, 1
 	note D_, 1
@@ -289,7 +289,7 @@ Music_KantoTrainerBattle_branch_eca88:
 	note __, 3
 	octave 4
 	note C_, 8
-	intensity $77
+	volume_envelope 7, 7
 	note C#, 2
 	note D_, 2
 	note D#, 2
@@ -318,7 +318,7 @@ Music_KantoTrainerBattle_branch_eca88:
 	note __, 3
 	octave 4
 	note C#, 8
-	intensity $87
+	volume_envelope 8, 7
 	note D_, 2
 	note D#, 2
 	note E_, 2
@@ -347,7 +347,7 @@ Music_KantoTrainerBattle_branch_eca88:
 	note __, 3
 	octave 4
 	note D_, 8
-	intensity $97
+	volume_envelope 9, 7
 	note D#, 2
 	note E_, 2
 	note F_, 2
@@ -359,10 +359,10 @@ Music_KantoTrainerBattle_branch_eca88:
 	note D#, 2
 	note __, 6
 	note F#, 8
-	intensity $a7
+	volume_envelope 10, 7
 	note G#, 8
 	note A#, 8
-	intensity $b7
+	volume_envelope 11, 7
 	octave 5
 	note D_, 8
 	note D_, 2
@@ -383,7 +383,7 @@ Music_KantoTrainerBattle_branch_eca88:
 	note G#, 2
 	note __, 2
 	note D#, 12
-	intensity $b1
+	volume_envelope 11, 1
 	octave 6
 	note C_, 2
 	note C_, 2
@@ -394,7 +394,7 @@ Music_KantoTrainerBattle_branch_eca88:
 	note C_, 4
 	note C_, 4
 	note C_, 4
-	intensity $b7
+	volume_envelope 11, 7
 	octave 4
 	note A#, 2
 	note F#, 2
@@ -439,7 +439,7 @@ Music_KantoTrainerBattle_branch_eca88:
 	note F_, 2
 	note D#, 2
 	note F_, 2
-	intensity $67
+	volume_envelope 6, 7
 	note E_, 1
 	note D_, 1
 	note C_, 1
@@ -447,7 +447,7 @@ Music_KantoTrainerBattle_branch_eca88:
 	note B_, 1
 	note A_, 1
 	note G_, 1
-	intensity $a1
+	volume_envelope 10, 1
 	octave 4
 	note C#, 2
 	octave 2
@@ -458,7 +458,7 @@ Music_KantoTrainerBattle_branch_eca88:
 	octave 2
 	note G_, 2
 	note G_, 2
-	intensity $b7
+	volume_envelope 11, 7
 	octave 4
 	note D_, 4
 	jumpchannel Music_KantoTrainerBattle_branch_eca88
@@ -481,7 +481,7 @@ Music_KantoTrainerBattle_Ch2:
 	note G_, 1
 	note F#, 1
 	duty_cycle 3
-	intensity $62
+	volume_envelope 6, 2
 Music_KantoTrainerBattle_branch_ecc04:
 	octave 3
 	note G_, 1
@@ -498,7 +498,7 @@ Music_KantoTrainerBattle_branch_ecc04:
 	note C_, 1
 	octave 2
 	note B_, 1
-	intensity $d7
+	volume_envelope 13, 7
 	duty_cycle 2
 	note C_, 2
 	octave 3
@@ -805,11 +805,11 @@ Music_KantoTrainerBattle_branch_ecc41:
 	note_type 12, 7, 8
 	octave 4
 	note G_, 16
-	intensity $77
+	volume_envelope 7, 7
 	note G_, 16
 	note_type 6, 8, 8
 	note G#, 16
-	intensity $87
+	volume_envelope 8, 7
 	note G#, 15
 	note G_, 1
 	note G#, 7
@@ -822,11 +822,11 @@ Music_KantoTrainerBattle_branch_ecc41:
 	note __, 2
 	note_type 12, 9, 8
 	note A_, 16
-	intensity $97
+	volume_envelope 9, 7
 	note A_, 16
-	intensity $a7
+	volume_envelope 10, 7
 	note A#, 16
-	intensity $d7
+	volume_envelope 13, 7
 	octave 5
 	note D_, 8
 	note F_, 8
@@ -836,9 +836,9 @@ Music_KantoTrainerBattle_branch_ecc41:
 	note D#, 4
 	note C_, 1
 	note __, 1
-	intensity $d8
+	volume_envelope 13, 8
 	note G#, 6
-	intensity $d7
+	volume_envelope 13, 7
 	note G#, 16
 	note A#, 4
 	note D#, 4
@@ -887,7 +887,7 @@ Music_KantoTrainerBattle_branch_ecc41:
 	note G#, 2
 	note F#, 2
 	note G#, 2
-	intensity $72
+	volume_envelope 7, 2
 	note G_, 1
 	note F_, 1
 	note E_, 1
@@ -895,7 +895,7 @@ Music_KantoTrainerBattle_branch_ecc41:
 	note C_, 1
 	octave 2
 	note B_, 1
-	intensity $c1
+	volume_envelope 12, 1
 	octave 3
 	note B_, 2
 	octave 1
@@ -910,7 +910,7 @@ Music_KantoTrainerBattle_branch_ecc41:
 	note __, 1
 	note F#, 1
 	note __, 1
-	intensity $d7
+	volume_envelope 13, 7
 	octave 3
 	note B_, 4
 	jumpchannel Music_KantoTrainerBattle_branch_ecc41
@@ -966,7 +966,7 @@ Music_KantoTrainerBattle_Ch3:
 	note B_, 1
 	octave 4
 	note D_, 1
-	intensity $18
+	volume_envelope 1, 8
 	octave 6
 	note C_, 2
 	octave 3
@@ -1125,13 +1125,13 @@ Music_KantoTrainerBattle_branch_ece5a:
 	note A_, 2
 	note_type 12, 1, 0
 	note G#, 11
-	intensity $14
+	volume_envelope 1, 4
 	note C_, 1
 	note F_, 1
 	note __, 1
 	note G#, 1
 	note __, 1
-	intensity $10
+	volume_envelope 1, 0
 	octave 6
 	note C_, 6
 	note_type 6, 1, 0
@@ -1143,7 +1143,7 @@ Music_KantoTrainerBattle_branch_ece5a:
 	note G#, 16
 	note_type 12, 1, 0
 	note A#, 16
-	intensity $25
+	volume_envelope 2, 5
 	note D_, 1
 	octave 4
 	note A#, 1
@@ -1164,16 +1164,16 @@ Music_KantoTrainerBattle_branch_ece5a:
 	note D_, 2
 	note C#, 1
 	note C_, 1
-	intensity $10
+	volume_envelope 1, 0
 	octave 5
 	note G#, 11
-	intensity $14
+	volume_envelope 1, 4
 	note C_, 1
 	note F_, 1
 	note __, 1
 	note G#, 1
 	note __, 1
-	intensity $10
+	volume_envelope 1, 0
 	octave 6
 	note C_, 7
 	note_type 6, 1, 0
@@ -1184,7 +1184,7 @@ Music_KantoTrainerBattle_branch_ece5a:
 	note D_, 12
 	note G#, 1
 	note F_, 1
-	intensity $25
+	volume_envelope 2, 5
 	octave 5
 	note A#, 1
 	note F_, 1
@@ -1199,7 +1199,7 @@ Music_KantoTrainerBattle_branch_ece5a:
 	note F_, 2
 	note D#, 2
 	note F_, 2
-	intensity $24
+	volume_envelope 2, 4
 	octave 3
 	note G_, 1
 	octave 4
@@ -1328,7 +1328,7 @@ Music_KantoTrainerBattle_branch_ece5a:
 	note E_, 1
 	octave 4
 	note C#, 1
-	intensity $14
+	volume_envelope 1, 4
 	octave 3
 	note A_, 1
 	octave 4
@@ -1361,7 +1361,7 @@ Music_KantoTrainerBattle_branch_ece5a:
 	note F_, 1
 	octave 4
 	note D_, 1
-	intensity $15
+	volume_envelope 1, 5
 	octave 3
 	note A_, 1
 	octave 4
@@ -1394,7 +1394,7 @@ Music_KantoTrainerBattle_branch_ece5a:
 	note F_, 1
 	octave 4
 	note D_, 1
-	intensity $15
+	volume_envelope 1, 5
 	octave 3
 	note A#, 1
 	octave 4
@@ -1427,7 +1427,7 @@ Music_KantoTrainerBattle_branch_ece5a:
 	note F#, 1
 	octave 4
 	note D#, 1
-	intensity $14
+	volume_envelope 1, 4
 	octave 3
 	note F_, 1
 	note G#, 1
@@ -1515,7 +1515,7 @@ Music_KantoTrainerBattle_branch_ece5a:
 	note B_, 1
 	note A_, 1
 	note G_, 1
-	intensity $14
+	volume_envelope 1, 4
 	note G_, 2
 	octave 3
 	note G_, 1
@@ -1529,7 +1529,7 @@ Music_KantoTrainerBattle_branch_ece5a:
 	note __, 1
 	note G_, 1
 	note __, 1
-	intensity $14
+	volume_envelope 1, 4
 	octave 5
 	note G_, 4
 	jumpchannel Music_KantoTrainerBattle_branch_ece5a

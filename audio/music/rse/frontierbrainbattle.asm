@@ -91,7 +91,7 @@ Music_FrontierBrainBattleRSE_Ch1_loop:
 	note F_, 1
 	note E_, 1
 	note D_, 1
-	intensity $C2
+	volume_envelope 12, 2
 	note A_, 2
 	octave 3
 	note A_, 2
@@ -126,7 +126,7 @@ Music_FrontierBrainBattleRSE_Ch1_loop:
 	note A_, 1
 	note G#, 1
 	note F#, 1
-	intensity $C2
+	volume_envelope 12, 2
 	note B_, 2
 	octave 3
 	note B_, 2
@@ -175,7 +175,7 @@ Music_FrontierBrainBattleRSE_Ch1_loop:
 	note A_, 1
 	note F#, 1
 	note D#, 4
-	intensity $C4
+	volume_envelope 12, 4
 	duty_cycle 1
 	note E_, 9
 	note E_, 9
@@ -224,7 +224,7 @@ Music_FrontierBrainBattleRSE_Ch1_loop:
 	note B_, 2
 	octave 5
 	note G#, 2
-	intensity $C2
+	volume_envelope 12, 2
 	duty_cycle 2
 	octave 4
 	note E_, 1
@@ -374,7 +374,7 @@ Music_FrontierBrainBattleRSE_Ch1_loop:
 	note G#, 1
 	note F#, 1
 	note E_, 15
-	intensity $C4
+	volume_envelope 12, 4
 	duty_cycle 1
 	octave 2
 	note A_, 1
@@ -427,7 +427,7 @@ Music_FrontierBrainBattleRSE_Ch1_loop:
 	note D_, 4
 	octave 2
 	note B_, 4
-	intensity $C2
+	volume_envelope 12, 2
 	duty_cycle 0
 	octave 4
 	note G#, 2
@@ -437,7 +437,7 @@ Music_FrontierBrainBattleRSE_Ch1_loop:
 	note G#, 4
 	note G#, 4
 	note G#, 2
-	intensity $B7
+	volume_envelope 11, 7
 	note A_, 4
 	note G#, 4
 	note G_, 2
@@ -549,7 +549,7 @@ Music_FrontierBrainBattleRSE_Ch1_loop:
 	note G_, 2
 	octave 5
 	note E_, 2
-	intensity $C2
+	volume_envelope 12, 2
 	duty_cycle 2
 	octave 4
 	note C_, 1
@@ -706,7 +706,7 @@ Music_FrontierBrainBattleRSE_Ch1_loop:
 	note G_, 1
 	note_type 4, 0, 0
 	note __, 1
-	intensity $C7
+	volume_envelope 12, 7
 	note G_, 2
 	note __, 1
 	note_type 12, 12, 7
@@ -728,7 +728,7 @@ Music_FrontierBrainBattleRSE_Ch1_loop:
 	note C#, 1
 	note_type 4, 0, 0
 	note __, 1
-	intensity $C7
+	volume_envelope 12, 7
 	note C#, 3
 	note __, 1
 	note C#, 3
@@ -750,7 +750,7 @@ Music_FrontierBrainBattleRSE_Ch1_loop:
 	note C_, 1
 	note_type 4, 0, 0
 	note __, 1
-	intensity $C7
+	volume_envelope 12, 7
 	note A_, 12
 	octave 4
 	note C_, 4
@@ -901,7 +901,7 @@ Music_FrontierBrainBattleRSE_Ch2_loop:
 	note E_, 2
 	note D#, 2
 	note E_, 6
-	intensity $D7
+	volume_envelope 13, 7
 	octave 3
 	note E_, 4
 	note __, 4
@@ -938,9 +938,9 @@ Music_FrontierBrainBattleRSE_Ch2_loop:
 	note A_, 2
 	note __, 2
 	note B_, 4
-	intensity $B0
+	volume_envelope 11, 0
 	note G#, 16
-	intensity $C7
+	volume_envelope 12, 7
 	note E_, 16
 	note __, 2
 	note E_, 6
@@ -952,14 +952,14 @@ Music_FrontierBrainBattleRSE_Ch2_loop:
 	note A_, 2
 	note __, 2
 	note B_, 6
-	intensity $D2
+	volume_envelope 13, 2
 	note E_, 6
 	note E_, 6
 	note E_, 6
-	intensity $D5
+	volume_envelope 13, 5
 	octave 3
 	note B_, 6
-	intensity $D2
+	volume_envelope 13, 2
 	octave 4
 	note E_, 4
 	octave 3
@@ -968,10 +968,10 @@ Music_FrontierBrainBattleRSE_Ch2_loop:
 	note E_, 6
 	note E_, 6
 	note E_, 6
-	intensity $D5
+	volume_envelope 13, 5
 	octave 3
 	note B_, 6
-	intensity $D2
+	volume_envelope 13, 2
 	octave 4
 	note E_, 4
 	note F#, 4
@@ -979,14 +979,14 @@ Music_FrontierBrainBattleRSE_Ch2_loop:
 	note E_, 6
 	note D#, 2
 	note C#, 4
-	intensity $D5
+	volume_envelope 13, 5
 	note D#, 6
 	note E_, 2
 	note __, 2
 	note F#, 4
 	note G#, 16
 	note __, 14
-	intensity $D2
+	volume_envelope 13, 2
 	octave 3
 	note C#, 1
 	note G_, 1
@@ -1002,15 +1002,15 @@ Music_FrontierBrainBattleRSE_Ch2_loop:
 	note G#, 6
 	note A_, 4
 	note F#, 2
-	intensity $D7
+	volume_envelope 13, 7
 	duty_cycle 0
 	octave 4
 	note E_, 1
 	note F#, 1
 	note G#, 2
-	intensity $C1
+	volume_envelope 12, 1
 	note C#, 4
-	intensity $C7
+	volume_envelope 12, 7
 	octave 5
 	note C#, 6
 	note E_, 6
@@ -1029,10 +1029,10 @@ Music_FrontierBrainBattleRSE_Ch2_loop:
 	note D#, 1
 	note E_, 1
 	note F#, 2
-	intensity $C1
+	volume_envelope 12, 1
 	octave 3
 	note B_, 4
-	intensity $C7
+	volume_envelope 12, 7
 	octave 4
 	note B_, 6
 	octave 5
@@ -1049,7 +1049,7 @@ Music_FrontierBrainBattleRSE_Ch2_loop:
 	note F#, 2
 	note G#, 16
 	note __, 6
-	intensity $C2
+	volume_envelope 12, 2
 	duty_cycle 1
 	note G#, 1
 	note B_, 1
@@ -1061,7 +1061,7 @@ Music_FrontierBrainBattleRSE_Ch2_loop:
 	note C#, 4
 	note C#, 4
 	note C#, 2
-	intensity $C7
+	volume_envelope 12, 7
 	note E_, 4
 	note D#, 4
 	note D_, 8
@@ -1095,7 +1095,7 @@ Music_FrontierBrainBattleRSE_Ch2_loop:
 	note B_, 1
 	note G_, 1
 	note __, 2
-	intensity $D7
+	volume_envelope 13, 7
 	duty_cycle 3
 	octave 4
 	note C_, 6
@@ -1120,15 +1120,15 @@ Music_FrontierBrainBattleRSE_Ch2_loop:
 	note F_, 2
 	note __, 2
 	note G_, 6
-	intensity $D2
+	volume_envelope 13, 2
 	octave 5
 	note C_, 6
 	note C_, 6
 	note C_, 6
-	intensity $D5
+	volume_envelope 13, 5
 	octave 4
 	note G_, 6
-	intensity $D2
+	volume_envelope 13, 2
 	octave 5
 	note C_, 4
 	octave 4
@@ -1137,10 +1137,10 @@ Music_FrontierBrainBattleRSE_Ch2_loop:
 	note C_, 6
 	note C_, 6
 	note C_, 6
-	intensity $D5
+	volume_envelope 13, 5
 	octave 4
 	note G_, 6
-	intensity $D2
+	volume_envelope 13, 2
 	octave 5
 	note C_, 4
 	note D_, 4
@@ -1149,13 +1149,13 @@ Music_FrontierBrainBattleRSE_Ch2_loop:
 	octave 4
 	note B_, 2
 	note A_, 4
-	intensity $D5
+	volume_envelope 13, 5
 	note B_, 6
 	octave 5
 	note C_, 4
 	note D_, 16
 	note __, 1
-	intensity $D1
+	volume_envelope 13, 1
 	octave 4
 	note A_, 1
 	note B_, 1
@@ -1164,7 +1164,7 @@ Music_FrontierBrainBattleRSE_Ch2_loop:
 	note E_, 3
 	octave 4
 	note A_, 1
-	intensity $D7
+	volume_envelope 13, 7
 	note A_, 12
 	octave 5
 	note E_, 4
@@ -1180,7 +1180,7 @@ Music_FrontierBrainBattleRSE_Ch2_loop:
 	note A_, 1
 	note B_, 16
 	note __, 9
-	intensity $D1
+	volume_envelope 13, 1
 	note G_, 1
 	note A_, 1
 	note B_, 1
@@ -1188,7 +1188,7 @@ Music_FrontierBrainBattleRSE_Ch2_loop:
 	note D_, 3
 	octave 4
 	note G_, 1
-	intensity $D7
+	volume_envelope 13, 7
 	note G_, 12
 	note B_, 4
 	note G_, 4
@@ -1215,7 +1215,7 @@ Music_FrontierBrainBattleRSE_Ch2_loop:
 	note G_, 1
 	note __, 1
 	note G_, 6
-	intensity $D1
+	volume_envelope 13, 1
 	duty_cycle 3
 	note A_, 2
 	note B_, 2
@@ -1225,7 +1225,7 @@ Music_FrontierBrainBattleRSE_Ch2_loop:
 	note E_, 3
 	octave 4
 	note A_, 1
-	intensity $D7
+	volume_envelope 13, 7
 	note A_, 12
 	octave 3
 	note F_, 2
@@ -1242,7 +1242,7 @@ Music_FrontierBrainBattleRSE_Ch2_loop:
 	note E_, 3
 	octave 4
 	note A_, 1
-	intensity $D7
+	volume_envelope 13, 7
 	note A_, 12
 	octave 3
 	note F#, 2

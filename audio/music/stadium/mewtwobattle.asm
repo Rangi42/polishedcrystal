@@ -76,24 +76,24 @@ Music_MewtwoBattleStadium_Ch1:
 	note_type 1, 15, 2
 	note __, 1
 	note_type 6, 15, 2
-	intensity $F1
+	volume_envelope 15, 1
 	octave 3
 	note E_, 2
 	octave 4
 	note E_, 2
-	intensity $98
+	volume_envelope 9, 8
 	vibrato $03, $24
 	octave 5
 	note E_, 16
 	note E_, 16
 	note E_, 10
 	note __, 2
-	intensity $F1
+	volume_envelope 15, 1
 	vibrato $05, $21
 	octave 4
 	note B_, 3
 	note __, 1
-	intensity $98
+	volume_envelope 9, 8
 	vibrato $03, $24
 	octave 3
 	note B_, 16
@@ -106,7 +106,7 @@ Music_MewtwoBattleStadium_Ch1:
 	note B_, 1
 	note __, 2
 	vibrato $03, $24
-	intensity $98
+	volume_envelope 9, 8
 	note A#, 16
 	note A#, 9
 	note_type 1, 9, 8
@@ -260,7 +260,7 @@ Music_MewtwoBattleStadium_Ch1_loop:
 	note __, 16
 	note __, 16
 	sound_duty $55
-	intensity $D2
+	volume_envelope 13, 2
 	octave 4
 	note G_, 2
 	note __, 4
@@ -307,7 +307,7 @@ Music_MewtwoBattleStadium_Ch1_loop:
 	note C_, 2
 	note __, 15
 	sound_duty $AA
-	intensity $F1
+	volume_envelope 15, 1
 	octave 3
 	note C_, 1
 	note D_, 1
@@ -640,14 +640,14 @@ Music_MewtwoBattleStadium_Ch1_loop:
 	note D#, 1
 	note F_, 1
 	note G_, 1
-	intensity $98
+	volume_envelope 9, 8
 	note A_, 16
 	note A_, 16
 	note A_, 16
 	note A_, 16
 	note A_, 16
 	note A_, 10
-	intensity $F1
+	volume_envelope 15, 1
 	note G_, 1
 	note F_, 1
 	note D#, 1
@@ -655,7 +655,7 @@ Music_MewtwoBattleStadium_Ch1_loop:
 	note C_, 1
 	octave 3
 	note A#, 1
-	intensity $98
+	volume_envelope 9, 8
 	note A_, 16
 	note A_, 16
 	note A_, 16
@@ -684,7 +684,7 @@ Music_MewtwoBattleStadium_Ch1_loop:
 	note B_, 2
 	octave 4
 	note C_, 2
-	intensity $C7
+	volume_envelope 12, 7
 	note D_, 15
 	note __, 13
 	octave 3
@@ -710,7 +710,7 @@ Music_MewtwoBattleStadium_Ch1_loop:
 	note __, 16
 	note __, 9
 	sound_duty $5A
-	intensity $F1
+	volume_envelope 15, 1
 	vibrato $00, $00
 Music_MewtwoBattleStadium_Ch1_loop_2:
 	octave 4
@@ -722,12 +722,12 @@ Music_MewtwoBattleStadium_Ch1_loop_2:
 	loopchannel 2, Music_MewtwoBattleStadium_Ch1_loop_2
 	note __, 16
 	sound_duty $55
-	intensity $C7
+	volume_envelope 12, 7
 	note A_, 14
 	note_type 12, 12, 7
 	note __, 9
 	sound_duty $5A
-	intensity $F1
+	volume_envelope 15, 1
 	octave 4
 	note D_, 1
 	note C_, 1
@@ -743,11 +743,11 @@ Music_MewtwoBattleStadium_Ch1_loop_2:
 	note D_, 1
 	note __, 8
 	sound_duty $55
-	intensity $C7
+	volume_envelope 12, 7
 	note C_, 7
 	note __, 9
 	sound_duty $5A
-	intensity $F1
+	volume_envelope 15, 1
 	note D_, 1
 	note C_, 1
 	octave 3
@@ -761,17 +761,17 @@ Music_MewtwoBattleStadium_Ch1_loop_2:
 	note A_, 1
 	note __, 8
 	sound_duty $55
-	intensity $C7
+	volume_envelope 12, 7
 	note A_, 7
 	note __, 1
 	sound_duty $5A
-	intensity $F1
+	volume_envelope 15, 1
 	octave 4
 	note D_, 1
 	note D_, 2
 	note D_, 1
 	note __, 8
-	intensity $C7
+	volume_envelope 12, 7
 	vibrato $00, $13
 	octave 3
 	note E_, 1
@@ -832,7 +832,7 @@ Music_MewtwoBattleStadium_Ch2_loop_1:
 	note E_, 1
 	note D#, 1
 	loopchannel 5, Music_MewtwoBattleStadium_Ch2_loop_1
-	intensity $68
+	volume_envelope 6, 8
 	octave 3
 	note E_, 16
 	note E_, 16
@@ -846,7 +846,7 @@ Music_MewtwoBattleStadium_Ch2_loop_1:
 	note E_, 16
 	note E_, 16
 	note E_, 8
-	intensity $C5
+	volume_envelope 12, 5
 	callchannel Music_MewtwoBattleStadium_Ch2_ditty1
 	note E_, 8
 	octave 2
@@ -1028,7 +1028,7 @@ Music_MewtwoBattleStadium_Ch2_loop:
 	note C_, 1
 	note __, 16
 	note __, 15
-	intensity $F3
+	volume_envelope 15, 3
 	octave 3
 	callchannel Music_MewtwoBattleStadium_Ch2_ditty2
 	octave 3
@@ -1222,7 +1222,7 @@ Music_MewtwoBattleStadium_Ch2_loop:
 	note_type 6, 12, 8
 	note __, 1
 	sound_duty $5A
-	intensity $C5
+	volume_envelope 12, 5
 	note D_, 2
 	note C_, 2
 	note D_, 2
@@ -1283,7 +1283,7 @@ Music_MewtwoBattleStadium_Ch3:
 	note_type 12, 0, 0
 	note __, 16
 	duty_cycle 7
-	intensity $17
+	volume_envelope 1, 7
 	octave 2
 	note F_, 15
 	note __, 1

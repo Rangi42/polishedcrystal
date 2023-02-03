@@ -34,31 +34,31 @@ Music_Route12BW_Ch1_loop_1:
 	note F#, 12
 	duty_cycle 0
 	octave 2
-	intensity $70
+	volume_envelope 7, 0
 	note F#, 8
 	octave 3
-	intensity $97
+	volume_envelope 9, 7
 	note F#, 2
 	note G#, 2
-	intensity $90
+	volume_envelope 9, 0
 	note B_, 4
-	intensity $97
+	volume_envelope 9, 7
 	note B_, 4
 	callchannel Music_Route12BW_Ch1_branch_3
 	duty_cycle 0
 	octave 3
-	intensity $90
+	volume_envelope 9, 0
 	note F#, 4
-	intensity $97
+	volume_envelope 9, 7
 	note F#, 4
 	callchannel Music_Route12BW_Ch1_branch_3
 	duty_cycle 0
 	octave 3
-	intensity $90
+	volume_envelope 9, 0
 	note E_, 2
-	intensity $97
+	volume_envelope 9, 7
 	note E_, 4
-	intensity $b4
+	volume_envelope 11, 4
 	duty_cycle 2
 	octave 4
 	note E_, 6
@@ -73,21 +73,21 @@ Music_Route12BW_Ch1_branch_1:
 	note_type 6, 10, 3
 	octave 4
 	note F#, 1
-	intensity $93
+	volume_envelope 9, 3
 	note E_, 1
-	intensity $73
+	volume_envelope 7, 3
 	note D#, 1
-	intensity $63
+	volume_envelope 6, 3
 	octave 3
 	note B_, 1
-	intensity $53
+	volume_envelope 5, 3
 	note F#, 1
-	intensity $43
+	volume_envelope 4, 3
 	note C#, 1
 	octave 2
-	intensity $33
+	volume_envelope 3, 3
 	note B_, 1
-	intensity $23
+	volume_envelope 2, 3
 	note F#, 1
 	endchannel
 
@@ -95,15 +95,15 @@ Music_Route12BW_Ch1_branch_2:
 	octave 3
 	note_type 8, 9, 0
 	note D#, 4
-	intensity $95
+	volume_envelope 9, 5
 	note D#, 4
 	note C#, 2
 	note D#, 2
-	intensity $90
+	volume_envelope 9, 0
 	note B_, 2
-	intensity $97
+	volume_envelope 9, 7
 	note B_, 4
-	intensity $b4
+	volume_envelope 11, 4
 	duty_cycle 2
 	octave 4
 	note B_, 2
@@ -115,7 +115,7 @@ Music_Route12BW_Ch1_branch_2:
 	endchannel
 
 Music_Route12BW_Ch1_branch_3:
-	intensity $b4
+	volume_envelope 11, 4
 	octave 4
 	duty_cycle 2
 	note D#, 2
@@ -130,182 +130,182 @@ Music_Route12BW_Ch2:
 	vibrato $1c, $12
 Music_Route12BW_Ch2_loop:
 	octave 4
-	intensity $b0
+	volume_envelope 11, 0
 	note D#, 6
-	intensity $b7
+	volume_envelope 11, 7
 	note D#, 6
-	intensity $b0
+	volume_envelope 11, 0
 	note E_, 2
-	intensity $b7
+	volume_envelope 11, 7
 	note E_, 4
-	intensity $b0
+	volume_envelope 11, 0
 	note F#, 2
-	intensity $b7
+	volume_envelope 11, 7
 	note F#, 4
 	octave 3
-	intensity $b0
+	volume_envelope 11, 0
 	note B_, 12
-	intensity $b7
+	volume_envelope 11, 7
 	note B_, 6
-	intensity $b0
+	volume_envelope 11, 0
 	note A#, 2
-	intensity $b7
+	volume_envelope 11, 7
 	note A#, 4
-	intensity $b0
+	volume_envelope 11, 0
 	note G#, 2
-	intensity $b7
+	volume_envelope 11, 7
 	note G#, 4
-	intensity $b0
+	volume_envelope 11, 0
 	note B_, 6
-	intensity $b7
+	volume_envelope 11, 7
 	note B_, 6
-	intensity $b5
+	volume_envelope 11, 5
 	note A#, 2
 	note B_, 2
 	octave 4
 	note C#, 2
 	octave 3
-	intensity $b0
+	volume_envelope 11, 0
 	note F#, 12
-	intensity $b7
+	volume_envelope 11, 7
 	note F#, 12
-	intensity $b0
+	volume_envelope 11, 0
 	note F#, 2
-	intensity $b7
+	volume_envelope 11, 7
 	note F#, 4
-	intensity $b0
+	volume_envelope 11, 0
 	note B_, 4
-	intensity $b7
+	volume_envelope 11, 7
 	note B_, 6
-	intensity $b5
+	volume_envelope 11, 5
 	note F#, 2
 	note G#, 2
 	note A#, 2
 	note B_, 2
 	octave 4
-	intensity $b0
+	volume_envelope 11, 0
 	note F#, 4
-	intensity $b3
+	volume_envelope 11, 3
 	note F#, 4
 	octave 3
-	intensity $b5
+	volume_envelope 11, 5
 	note A#, 2
 	note B_, 2
 	octave 4
-	intensity $b0
+	volume_envelope 11, 0
 	note E_, 4
-	intensity $b7
+	volume_envelope 11, 7
 	note E_, 2
-	intensity $b0
+	volume_envelope 11, 0
 	note D#, 4
-	intensity $b7
+	volume_envelope 11, 7
 	note D#, 2
-	intensity $b0
+	volume_envelope 11, 0
 	note C#, 6
-	intensity $b7
+	volume_envelope 11, 7
 	note C#, 6
 	octave 3
-	intensity $b0
+	volume_envelope 11, 0
 	note B_, 2
-	intensity $b7
+	volume_envelope 11, 7
 	note B_, 4
 	octave 4
-	intensity $b0
+	volume_envelope 11, 0
 	note D#, 2
-	intensity $b7
+	volume_envelope 11, 7
 	note D#, 4
-	intensity $b0
+	volume_envelope 11, 0
 	note D#, 1
-	intensity $b7
+	volume_envelope 11, 7
 	note D#, 5
-	intensity $b0
+	volume_envelope 11, 0
 	note C#, 1
-	intensity $b7
+	volume_envelope 11, 7
 	note C#, 5
 	octave 3
-	intensity $b0
+	volume_envelope 11, 0
 	note B_, 1
-	intensity $b7
+	volume_envelope 11, 7
 	note B_, 5
-	intensity $b0
+	volume_envelope 11, 0
 	note A#, 1
-	intensity $b7
+	volume_envelope 11, 7
 	note A#, 5
 	callchannel Music_Route12BW_Ch2_branch_1
 	callchannel Music_Route12BW_Ch2_branch_1
-	intensity $b0
+	volume_envelope 11, 0
 	note B_, 6
-	intensity $b7
+	volume_envelope 11, 7
 	note B_, 6
-	intensity $b0
+	volume_envelope 11, 0
 	note A#, 2
-	intensity $b7
+	volume_envelope 11, 7
 	note A#, 4
 	note B_, 2
 	note A#, 2
 	note G#, 2
-	intensity $b0
+	volume_envelope 11, 0
 	note F#, 9
-	intensity $b7
+	volume_envelope 11, 7
 	note F#, 9
 	note __, 2
 	octave 4
 	note D#, 2
 	note E_, 2
-	intensity $b0
+	volume_envelope 11, 0
 	note F#, 9
-	intensity $b7
+	volume_envelope 11, 7
 	note F#, 9
 	note __, 2
 	octave 3
 	note B_, 2
 	octave 4
 	note C#, 2
-	intensity $b0
+	volume_envelope 11, 0
 	note D#, 9
-	intensity $b7
+	volume_envelope 11, 7
 	note D#, 9
 	note __, 2
 	octave 3
 	note G#, 2
 	note A#, 2
-	intensity $b0
+	volume_envelope 11, 0
 	note B_, 12
-	intensity $b7
+	volume_envelope 11, 7
 	note B_, 12
-	intensity $80
+	volume_envelope 8, 0
 	note D#, 12
-	intensity $87
+	volume_envelope 8, 7
 	note D#, 12
 	jumpchannel Music_Route12BW_Ch2_loop
 
 Music_Route12BW_Ch2_branch_1:
-	intensity $b0
+	volume_envelope 11, 0
 	note B_, 4
-	intensity $b5
+	volume_envelope 11, 5
 	note B_, 4
 	note A#, 2
 	note B_, 2
 	octave 4
-	intensity $b0
+	volume_envelope 11, 0
 	note F#, 6
-	intensity $b7
+	volume_envelope 11, 7
 	note F#, 6
 	octave 3
-	intensity $b0
+	volume_envelope 11, 0
 	note B_, 4
-	intensity $b5
+	volume_envelope 11, 5
 	note B_, 4
 	note F#, 2
 	note B_, 2
 	octave 4
-	intensity $b0
+	volume_envelope 11, 0
 	note D#, 2
-	intensity $b7
+	volume_envelope 11, 7
 	note D#, 4
-	intensity $b0
+	volume_envelope 11, 0
 	note C#, 2
-	intensity $b7
+	volume_envelope 11, 7
 	note C#, 4
 	octave 3
 	endchannel

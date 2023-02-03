@@ -17,15 +17,15 @@ Music_Bicycle_Ch1:
 	note B_, 6
 	note A_, 6
 	note G_, 4
-	intensity $b0
+	volume_envelope 11, 0
 	note A_, 6
-	intensity $b6
+	volume_envelope 11, 6
 	note A_, 8
-	intensity $b2
+	volume_envelope 11, 2
 	note F#, 2
 Music_Bicycle_branch_ee144:
 	stereopanning $f
-	intensity $b2
+	volume_envelope 11, 2
 	note G_, 2
 	note G_, 2
 	note E_, 2
@@ -91,9 +91,9 @@ Music_Bicycle_branch_ee144:
 	note F#, 2
 	note G_, 2
 	note F#, 2
-	intensity $82
+	volume_envelope 8, 2
 	note F#, 2
-	intensity $b2
+	volume_envelope 11, 2
 	note A_, 2
 	note G_, 2
 	note F#, 2
@@ -101,7 +101,7 @@ Music_Bicycle_branch_ee144:
 	note G#, 2
 	note A_, 2
 	stereopanning $f0
-	intensity $b6
+	volume_envelope 11, 6
 	note B_, 4
 	note G_, 4
 	octave 4
@@ -180,7 +180,7 @@ Music_Bicycle_Ch2:
 	note C_, 6
 	octave 3
 	note B_, 4
-	intensity $c2
+	volume_envelope 12, 2
 	octave 4
 	note D_, 2
 	note D_, 1
@@ -189,7 +189,7 @@ Music_Bicycle_Ch2:
 	note D_, 1
 	note E_, 1
 	note D_, 2
-	intensity $c3
+	volume_envelope 12, 3
 	note C_, 2
 	octave 3
 	note B_, 2
@@ -197,23 +197,23 @@ Music_Bicycle_Ch2:
 Music_Bicycle_branch_ee1fd:
 	stereopanning $ff
 	duty_cycle 2
-	intensity $c3
+	volume_envelope 12, 3
 	octave 3
 	note B_, 4
 	note G_, 4
 	note A_, 4
 	note F#, 4
-	intensity $c2
+	volume_envelope 12, 2
 	note G_, 2
 	note F#, 2
 	note E_, 2
 	note F#, 2
-	intensity $c5
+	volume_envelope 12, 5
 	note D_, 8
-	intensity $c4
+	volume_envelope 12, 4
 	note E_, 4
 	note G_, 4
-	intensity $c2
+	volume_envelope 12, 2
 	note E_, 2
 	note B_, 2
 	note A_, 2
@@ -222,24 +222,24 @@ Music_Bicycle_branch_ee1fd:
 	note G_, 2
 	note A_, 2
 	note G_, 2
-	intensity $c5
+	volume_envelope 12, 5
 	note F#, 8
-	intensity $c3
+	volume_envelope 12, 3
 	note B_, 4
 	note G_, 4
 	note A_, 4
 	note F#, 4
-	intensity $c2
+	volume_envelope 12, 2
 	note G_, 2
 	note F#, 2
 	note E_, 2
 	note F#, 2
-	intensity $c5
+	volume_envelope 12, 5
 	note D_, 8
-	intensity $c4
+	volume_envelope 12, 4
 	note E_, 4
 	note G_, 4
-	intensity $c2
+	volume_envelope 12, 2
 	note E_, 2
 	octave 4
 	note E_, 2
@@ -251,21 +251,21 @@ Music_Bicycle_branch_ee1fd:
 	note C_, 2
 	note D_, 2
 	note E_, 2
-	intensity $c7
+	volume_envelope 12, 7
 	note F#, 8
 	stereopanning $f
 	callchannel Music_Bicycle_branch_ee263
 	note F#, 4
-	intensity $c3
+	volume_envelope 12, 3
 	note A_, 2
 	note D_, 2
 	note E_, 2
 	note F_, 2
 	note F#, 4
-	intensity $c7
+	volume_envelope 12, 7
 	callchannel Music_Bicycle_branch_ee263
 	note F#, 4
-	intensity $c3
+	volume_envelope 12, 3
 	note A_, 2
 	note B_, 2
 	note A_, 2

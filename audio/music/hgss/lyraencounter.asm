@@ -73,7 +73,7 @@ Music_LyraEncounterHGSS_Ch1_loop:
 	octave 2
 	note A#, 1
 	note A#, 4
-	intensity $b4
+	volume_envelope 11, 4
 	note __, 2
 	octave 4
 	note G_, 1
@@ -140,7 +140,7 @@ Music_LyraEncounterHGSS_Ch1_loop:
 	note __, 2
 	note G_, 2
 	note A#, 2
-	intensity $84
+	volume_envelope 8, 4
 	note A_, 1
 	note F_, 1
 	note A_, 1
@@ -198,18 +198,18 @@ Music_LyraEncounterHGSS_Ch2:
 	octave 5
 	note C_, 1
 	note __, 1
-	intensity $b7
+	volume_envelope 11, 7
 	note D#, 9
 Music_LyraEncounterHGSS_Ch2_loop:
 	note __, 4
 	octave 4
-	intensity $b4
+	volume_envelope 11, 4
 	note G_, 1
 	note G#, 1
 	note __, 1
-	intensity $b6
+	volume_envelope 11, 6
 	note A#, 5
-	intensity $b4
+	volume_envelope 11, 4
 	note A#, 2
 	octave 5
 	note C_, 2
@@ -218,10 +218,10 @@ Music_LyraEncounterHGSS_Ch2_loop:
 	note D#, 1
 	note F_, 1
 	note __, 1
-	intensity $b7
+	volume_envelope 11, 7
 	note G_, 9
 	note __, 2
-	intensity $b4
+	volume_envelope 11, 4
 	note C_, 2
 	note C_, 1
 	note D_, 2
@@ -242,7 +242,7 @@ Music_LyraEncounterHGSS_Ch2_loop:
 	note_type 12, 11, 7
 	note F_, 4
 ;;;;;;;;;;;mark
-	intensity $70
+	volume_envelope 7, 0
 	duty_cycle 0
 	octave 2
 	note A#, 8
@@ -269,7 +269,7 @@ Music_LyraEncounterHGSS_Ch2_loop:
 	note D#, 4
 	note F_, 4
 ;;;;;;;;;;;;;;mark
-	intensity $b4
+	volume_envelope 11, 4
 	octave 4
 	duty_cycle 2
 	note D#, 4
@@ -293,14 +293,14 @@ Music_LyraEncounterHGSS_Ch2_loop:
 	note C_, 2
 	note G_, 1
 	note A_, 2
-	intensity $b7
+	volume_envelope 11, 7
 	note A#, 9
 	note __, 8
 	jumpchannel Music_LyraEncounterHGSS_Ch2_loop
 
 Music_LyraEncounterHGSS_Ch3:
 	note_type 12, 1, 5
-	intensity $10
+	volume_envelope 1, 0
 	octave 2
 	note A#, 1
 	note A#, 1

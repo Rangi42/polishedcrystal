@@ -65,7 +65,7 @@ Music_PokemonLullaby_branch_f6dcc:
 	note G_, 2
 	note F#, 2
 	note G_, 2
-	intensity $b7
+	volume_envelope 11, 7
 	note E_, 12
 	note D_, 2
 	note E_, 2
@@ -76,29 +76,29 @@ Music_PokemonLullaby_branch_f6dcc:
 	note D_, 2
 	note F_, 2
 	note E_, 10
-	intensity $b5
+	volume_envelope 11, 5
 	note D_, 2
 	note D_, 2
-	intensity $c7
+	volume_envelope 12, 7
 	note E_, 2
 	note F_, 4
 	note E_, 4
 	note F_, 4
-	intensity $b5
+	volume_envelope 11, 5
 	note G_, 2
 	note G_, 2
 	note D#, 2
-	intensity $b7
+	volume_envelope 11, 7
 	note E_, 14
-	intensity $87
+	volume_envelope 8, 7
 	octave 3
 	note F_, 8
 	note G_, 4
-	intensity $b5
+	volume_envelope 11, 5
 	octave 4
 	note G_, 2
 	note G_, 2
-	intensity $b7
+	volume_envelope 11, 7
 	note D#, 2
 	note E_, 16
 	note __, 14

@@ -16,7 +16,7 @@ Music_VictoryRoad_branch_f6c8d:
 	callchannel Music_VictoryRoad_branch_f6cb9
 	loopchannel 6, Music_VictoryRoad_branch_f6c8d
 Music_VictoryRoad_branch_f6c94:
-	intensity $b2
+	volume_envelope 11, 2
 	octave 2
 	note A_, 1
 	octave 3
@@ -25,7 +25,7 @@ Music_VictoryRoad_branch_f6c94:
 	note __, 1
 	octave 2
 	note A_, 1
-	intensity $b7
+	volume_envelope 11, 7
 	octave 3
 	note C#, 3
 	octave 2
@@ -43,7 +43,7 @@ Music_VictoryRoad_branch_f6cae:
 	jumpchannel Music_VictoryRoad_branch_f6c8d
 
 Music_VictoryRoad_branch_f6cb9:
-	intensity $b2
+	volume_envelope 11, 2
 	octave 2
 	note G_, 1
 	note B_, 1
@@ -52,7 +52,7 @@ Music_VictoryRoad_branch_f6cb9:
 	note __, 1
 	octave 2
 	note G_, 1
-	intensity $b7
+	volume_envelope 11, 7
 	note B_, 3
 	note G_, 1
 	octave 3

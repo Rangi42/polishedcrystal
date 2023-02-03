@@ -61,7 +61,7 @@ Music_ChampionBattleDPPt_Ch1_loop:
 	octave 2
 	note F#, 6
 	duty_cycle 2
-	intensity $A1
+	volume_envelope 10, 1
 	note F#, 1
 	note G_, 1
 	note G#, 1
@@ -81,11 +81,11 @@ Music_ChampionBattleDPPt_Ch1_loop:
 	note G#, 1
 	note G_, 1
 	duty_cycle 3
-	intensity $B7
+	volume_envelope 11, 7
 	note G#, 10
 	note D#, 6
 	duty_cycle 2
-	intensity $A1
+	volume_envelope 10, 1
 	note G#, 1
 	note A_, 1
 	note A#, 1
@@ -105,7 +105,7 @@ Music_ChampionBattleDPPt_Ch1_loop:
 	note A#, 1
 	note A_, 1
 	duty_cycle 3
-	intensity $B7
+	volume_envelope 11, 7
 	octave 5
 	note F_, 1
 	note __, 1
@@ -154,7 +154,7 @@ Music_ChampionBattleDPPt_Ch1_loop:
 	octave 2
 	note F#, 6
 	duty_cycle 2
-	intensity $A1
+	volume_envelope 10, 1
 	note F#, 1
 	note G_, 1
 	note G#, 1
@@ -174,11 +174,11 @@ Music_ChampionBattleDPPt_Ch1_loop:
 	note G#, 1
 	note G_, 1
 	duty_cycle 3
-	intensity $B7
+	volume_envelope 11, 7
 	note G#, 10
 	note D#, 6
 	duty_cycle 2
-	intensity $A1
+	volume_envelope 10, 1
 	note G#, 1
 	note A_, 1
 	note A#, 1
@@ -198,11 +198,11 @@ Music_ChampionBattleDPPt_Ch1_loop:
 	note A#, 1
 	note A_, 1
 	duty_cycle 3
-	intensity $B7
+	volume_envelope 11, 7
 	note A#, 10
 	note F_, 6
 	duty_cycle 2
-	intensity $A1
+	volume_envelope 10, 1
 	note A#, 1
 	note B_, 1
 	octave 3
@@ -222,11 +222,11 @@ Music_ChampionBattleDPPt_Ch1_loop:
 	octave 2
 	note B_, 1
 	duty_cycle 3
-	intensity $B7
+	volume_envelope 11, 7
 	note A#, 10
 	note F_, 6
 	duty_cycle 2
-	intensity $A1
+	volume_envelope 10, 1
 	note A#, 1
 	note B_, 1
 	octave 3
@@ -246,7 +246,7 @@ Music_ChampionBattleDPPt_Ch1_loop:
 	octave 2
 	note B_, 1
 	duty_cycle 3
-	intensity $B7
+	volume_envelope 11, 7
 	octave 3
 	note F_, 8
 	note D#, 8
@@ -272,7 +272,7 @@ Music_ChampionBattleDPPt_Ch1_loop:
 	note G_, 6
 	note F#, 4
 	note G_, 16
-	intensity $A8
+	volume_envelope 10, 8
 	octave 2
 	note G#, 16
 	note G#, 16
@@ -283,7 +283,7 @@ Music_ChampionBattleDPPt_Ch1_loop:
 	note A_, 16
 	note A_, 16
 	duty_cycle 2
-	intensity $B1
+	volume_envelope 11, 1
 	octave 4
 	note C#, 1
 	note __, 3
@@ -413,7 +413,7 @@ Music_ChampionBattleDPPt_Ch1_loop:
 	note D_, 1
 	note __, 1
 	duty_cycle 3
-	intensity $B7
+	volume_envelope 11, 7
 	note C#, 16
 	note __, 16
 	octave 4
@@ -431,7 +431,7 @@ Music_ChampionBattleDPPt_Ch1_loop:
 	note __, 16
 	note __, 15
 	duty_cycle 0
-	intensity $A1
+	volume_envelope 10, 1
 	octave 3
 	note G_, 2
 	octave 4
@@ -459,7 +459,7 @@ Music_ChampionBattleDPPt_Ch1_loop:
 	note __, 16
 	note __, 1
 	duty_cycle 3
-	intensity $C7
+	volume_envelope 12, 7
 	octave 1
 	note C#, 2
 	note G#, 2
@@ -653,7 +653,7 @@ Music_ChampionBattleDPPt_Ch2_loop:
 	note A#, 16
 	note __, 16
 	duty_cycle 2
-	intensity $B1
+	volume_envelope 11, 1
 	note C#, 1
 	note __, 3
 	note C#, 1
@@ -782,7 +782,7 @@ Music_ChampionBattleDPPt_Ch2_loop:
 	note C#, 1
 	note __, 1
 	duty_cycle 3
-	intensity $C7
+	volume_envelope 12, 7
 	octave 4
 	note C#, 2
 	octave 3
@@ -832,7 +832,7 @@ Music_ChampionBattleDPPt_Ch2_loop:
 	octave 3
 	note A_, 4
 	duty_cycle 0
-	intensity $C1
+	volume_envelope 12, 1
 	octave 4
 	note C#, 2
 	octave 3
@@ -857,7 +857,7 @@ Music_ChampionBattleDPPt_Ch2_loop:
 	note G#, 2
 	note E_, 2
 	duty_cycle 3
-	intensity $C7
+	volume_envelope 12, 7
 	octave 5
 	note C#, 2
 	note __, 4
@@ -873,7 +873,7 @@ Music_ChampionBattleDPPt_Ch2_loop:
 	note __, 16
 	note __, 14
 	duty_cycle 0
-	intensity $A1
+	volume_envelope 10, 1
 	octave 4
 	note C#, 2
 	octave 2
@@ -901,7 +901,7 @@ Music_ChampionBattleDPPt_Ch2_loop:
 	octave 4
 	note E_, 2
 	duty_cycle 3
-	intensity $C7
+	volume_envelope 12, 7
 	octave 2
 	note C#, 2
 	note G#, 2

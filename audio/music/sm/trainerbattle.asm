@@ -22,11 +22,11 @@ Music_TrainerBattleSM_Ch1:
 	note E_, 8
 	octave 3
 	note G_, 8
-	intensity $6f
+	volume_envelope 6, -7
 	note G_, 8
 Music_TrainerBattleSM_Ch1_loop_main:
 	duty_cycle 0
-	intensity $60
+	volume_envelope 6, 0
 	octave 3
 	note G_, 6
 	note F_, 10
@@ -43,57 +43,57 @@ Music_TrainerBattleSM_Ch1_loop_main:
 	note C_, 16
 Music_TrainerBattleSM_Ch1_loop_1:
 	octave 2
-	intensity $97
+	volume_envelope 9, 7
 	note A#, 6
-	intensity $92
+	volume_envelope 9, 2
 	note A#, 4
 	note A#, 2
 	octave 3
 	note C_, 2
 	note D_, 2
-	intensity $93
+	volume_envelope 9, 3
 	note F_, 6
 	note E_, 6
 	note D_, 4
-	intensity $97
+	volume_envelope 9, 7
 	note C_, 6
-	intensity $92
+	volume_envelope 9, 2
 	note C_, 4
 	note C_, 2
 	note D_, 2
 	note E_, 2
-	intensity $93
+	volume_envelope 9, 3
 	note G_, 6
 	note F_, 6
 	note E_, 4
 	loopchannel 2, Music_TrainerBattleSM_Ch1_loop_1
 	octave 4
-	intensity $60
+	volume_envelope 6, 0
 	note C_, 6
 	note F_, 8
 	note E_, 2
 	note D#, 2
-	intensity $64
+	volume_envelope 6, 4
 	note E_, 4
-	intensity $60
+	volume_envelope 6, 0
 	note G_, 6
-	intensity $67
+	volume_envelope 6, 7
 	note G_, 4
 	octave 5
 	note C_, 6
 	note C_, 6
-	intensity $65
+	volume_envelope 6, 5
 	note C_, 4
 	note __, 6
-	intensity $60
+	volume_envelope 6, 0
 	note C_, 6
-	intensity $64
+	volume_envelope 6, 4
 	note C_, 4
-	intensity $97
+	volume_envelope 9, 7
 	octave 3
 	note F_, 8
 	note E_, 8
-	intensity $92
+	volume_envelope 9, 2
 	note D_, 2
 	note C_, 4
 	note C_, 4
@@ -118,7 +118,7 @@ Music_TrainerBattleSM_Ch1_loop_1:
 	note C_, 2
 	octave 2
 	note A#, 2
-	intensity $a0
+	volume_envelope 10, 0
 	octave 3
 	note C_, 2
 	note __, 4
@@ -138,26 +138,26 @@ Music_TrainerBattleSM_Ch1_loop_1:
 	note __, 2
 	note C_, 2
 	note __, 2
-	intensity $a2
+	volume_envelope 10, 2
 	note C_, 4
-	intensity $a7
+	volume_envelope 10, 7
 	note F_, 4
 	octave 2
-	intensity $a2
+	volume_envelope 10, 2
 	note A#, 4
 	octave 3
-	intensity $a7
+	volume_envelope 10, 7
 	note E_, 4
 	octave 2
-	intensity $a2
+	volume_envelope 10, 2
 	note A_, 2
 	octave 3
 	note C_, 4
 	octave 2
-	intensity $a3
+	volume_envelope 10, 3
 	note A#, 6
 	note __, 4
-	intensity $a7
+	volume_envelope 10, 7
 	note A#, 2
 	note __, 4
 	note A#, 2
@@ -179,7 +179,7 @@ Music_TrainerBattleSM_Ch1_loop_1:
 	note C_, 2
 	note __, 8
 	vibrato $1, $21
-	intensity $90
+	volume_envelope 9, 0
 	octave 2
 	note B_, 2
 	octave 3
@@ -330,77 +330,77 @@ Music_TrainerBattleSM_Ch2:
 	note F_, 1
 	note A#, 1
 	note F_, 1
-	intensity $b2
+	volume_envelope 11, 2
 	note D_, 1
 	octave 4
 	note A#, 1
 	octave 5
-	intensity $92
+	volume_envelope 9, 2
 	note A#, 1
-	intensity $82
+	volume_envelope 8, 2
 	note F_, 1
-	intensity $72
+	volume_envelope 7, 2
 	note D_, 1
 Music_TrainerBattleSM_Ch2_loop_main:
 	duty_cycle 3
 	octave 4
-	intensity $a0
+	volume_envelope 10, 0
 	note C_, 6
 	note F_, 6
-	intensity $a7
+	volume_envelope 10, 7
 	note F_, 2
 	note E_, 2
-	intensity $a0
+	volume_envelope 10, 0
 	note G_, 6
-	intensity $a7
+	volume_envelope 10, 7
 	note G_, 6
 	note G_, 2
 	note A_, 2
-	intensity $a0
+	volume_envelope 10, 0
 	note A#, 6
 	note A_, 6
 	note F_, 4
 	note G_, 8
-	intensity $a5
+	volume_envelope 10, 5
 	note G_, 8
 	duty_cycle 2
 	callchannel Music_TrainerBattleSM_Ch2_branch_2
-	intensity $a7
+	volume_envelope 10, 7
 	note G_, 10
 	duty_cycle 3
 	octave 4
-	intensity $a0
+	volume_envelope 10, 0
 	note C_, 6
 	note F_, 6
-	intensity $a7
+	volume_envelope 10, 7
 	note F_, 2
 	note E_, 2
-	intensity $a0
+	volume_envelope 10, 0
 	note G_, 6
-	intensity $a7
+	volume_envelope 10, 7
 	note G_, 6
 	note G_, 2
 	note A_, 2
-	intensity $a0
+	volume_envelope 10, 0
 	note A#, 4
-	intensity $a4
+	volume_envelope 10, 4
 	note A#, 2
-	intensity $a0
+	volume_envelope 10, 0
 	note A_, 4
-	intensity $a4
+	volume_envelope 10, 4
 	note A_, 2
 	note F_, 4
 	note D#, 2
-	intensity $a2
+	volume_envelope 10, 2
 	note E_, 4
-	intensity $a0
+	volume_envelope 10, 0
 	note G_, 2
-	intensity $a6
+	volume_envelope 10, 6
 	note G_, 8
 	duty_cycle 2
 	note F_, 8
 	note E_, 8
-	intensity $a3
+	volume_envelope 10, 3
 	note D_, 2
 	note C_, 4
 	note C_, 4
@@ -425,36 +425,36 @@ Music_TrainerBattleSM_Ch2_loop_main:
 	note A_, 2
 	note G_, 2
 	note F_, 2
-	intensity $a0
+	volume_envelope 10, 0
 	note C_, 12
-	intensity $a7
+	volume_envelope 10, 7
 	note C_, 16
 	note __, 4
-	intensity $a0
+	volume_envelope 10, 0
 	note E_, 4
-	intensity $a7
+	volume_envelope 10, 7
 	note E_, 12
-	intensity $a0
+	volume_envelope 10, 0
 	note G_, 4
-	intensity $a7
+	volume_envelope 10, 7
 	note G_, 12
 	duty_cycle 3
 	octave 4
-	intensity $a2
+	volume_envelope 10, 2
 	note F_, 4
-	intensity $a7
+	volume_envelope 10, 7
 	note A#, 4
-	intensity $a2
+	volume_envelope 10, 2
 	note E_, 4
-	intensity $a7
+	volume_envelope 10, 7
 	note A_, 4
-	intensity $a2
+	volume_envelope 10, 2
 	note D_, 2
-	intensity $a7
+	volume_envelope 10, 7
 	note G_, 4
-	intensity $a3
+	volume_envelope 10, 3
 	note F_, 6
-	intensity $81
+	volume_envelope 8, 1
 	octave 4
 	note C_, 1
 	octave 5
@@ -478,67 +478,67 @@ Music_TrainerBattleSM_Ch2_loop_main:
 	note F_, 1
 	octave 3
 	duty_cycle 2
-	intensity $90
+	volume_envelope 9, 0
 	note C_, 8
-	intensity $97
+	volume_envelope 9, 7
 	note C_, 16
 	note F_, 8
-	intensity $90
+	volume_envelope 9, 0
 	note G_, 8
-	intensity $97
+	volume_envelope 9, 7
 	note G_, 8
-	intensity $90
+	volume_envelope 9, 0
 	note F_, 2
 	note G_, 6
-	intensity $97
+	volume_envelope 9, 7
 	note G_, 8
 	duty_cycle 0
 	vibrato $12, $54
-	intensity $c0
+	volume_envelope 12, 0
 	note F_, 8
-	intensity $c7
+	volume_envelope 12, 7
 	note F_, 16
 	note C_, 8
-	intensity $c0
+	volume_envelope 12, 0
 	note D#, 16
-	intensity $c7
+	volume_envelope 12, 7
 	note D#, 16
-	intensity $c0
+	volume_envelope 12, 0
 	note F_, 8
-	intensity $c7
+	volume_envelope 12, 7
 	note F_, 8
-	intensity $c0
+	volume_envelope 12, 0
 	note G#, 8
-	intensity $c7
+	volume_envelope 12, 7
 	note G#, 8
-	intensity $c0
+	volume_envelope 12, 0
 	note G_, 8
-	intensity $c7
+	volume_envelope 12, 7
 	note G_, 8
-	intensity $c0
+	volume_envelope 12, 0
 	octave 4
 	note C#, 8
-	intensity $c7
+	volume_envelope 12, 7
 	note C#, 16
 	octave 3
 	note __, 8
 	note F_, 8
 	note C_, 8
-	intensity $c0
+	volume_envelope 12, 0
 	note D#, 16
-	intensity $c7
+	volume_envelope 12, 7
 	note D#, 16
 	note __, 16
 	note F_, 6
 	note G#, 6
 	note G_, 4
-	intensity $c0
+	volume_envelope 12, 0
 	note D#, 16
-	intensity $c7
+	volume_envelope 12, 7
 	note D#, 16
 	duty_cycle 2
 	octave 2
-	intensity $97
+	volume_envelope 9, 7
 	vibrato $12, $15
 	note F_, 2
 	note F#, 2
@@ -549,7 +549,7 @@ Music_TrainerBattleSM_Ch2_loop_main:
 	note B_, 2
 	octave 3
 	note C_, 2
-	intensity $a7
+	volume_envelope 10, 7
 	note C#, 2
 	note D_, 2
 	note D#, 2
@@ -558,7 +558,7 @@ Music_TrainerBattleSM_Ch2_loop_main:
 	note F#, 2
 	note G_, 2
 	note G#, 2
-	intensity $b7
+	volume_envelope 11, 7
 	note F_, 2
 	note F#, 2
 	note G_, 2
@@ -568,19 +568,19 @@ Music_TrainerBattleSM_Ch2_loop_main:
 	note B_, 2
 	octave 4
 	note C_, 2
-	intensity $c7
+	volume_envelope 12, 7
 	note C#, 2
 	note D_, 2
 	note D#, 2
 	note E_, 2
-	intensity $d7
+	volume_envelope 13, 7
 	note F_, 2
 	note F#, 2
 	note G_, 2
 	note G#, 2
-	intensity $a5
+	volume_envelope 10, 5
 	callchannel Music_TrainerBattleSM_Ch2_branch_2
-	intensity $a7
+	volume_envelope 10, 7
 	note G_, 10
 	jumpchannel Music_TrainerBattleSM_Ch2_loop_main
 
@@ -679,7 +679,7 @@ Music_TrainerBattleSM_Ch3_loop_5:
 	note C_, 2
 	note G_, 2
 	loopchannel 16, Music_TrainerBattleSM_Ch3_loop_5
-	intensity $19
+	volume_envelope 1, -1
 Music_TrainerBattleSM_Ch3_loop_6:
 	note F_, 2
 	note __, 2

@@ -19,14 +19,14 @@ Music_LookLass_Ch1:
 	stereopanning $f
 	duty_cycle 0
 Music_LookLass_branch_ed7bd:
-	intensity $a2
+	volume_envelope 10, 2
 	octave 3
 	note E_, 4
-	intensity $a1
+	volume_envelope 10, 1
 	note E_, 4
 	note E_, 4
 	note E_, 2
-	intensity $a3
+	volume_envelope 10, 3
 	note B_, 2
 	jumpchannel Music_LookLass_branch_ed7bd
 
@@ -36,14 +36,14 @@ Music_LookLass_Ch2:
 	note_type 12, 8, 3
 	note __, 16
 Music_LookLass_branch_ed7d5:
-	intensity $92
+	volume_envelope 9, 2
 	octave 2
 	note B_, 4
-	intensity $91
+	volume_envelope 9, 1
 	note B_, 4
 	note B_, 4
 	note B_, 2
-	intensity $93
+	volume_envelope 9, 3
 	octave 3
 	note G#, 2
 	jumpchannel Music_LookLass_branch_ed7d5

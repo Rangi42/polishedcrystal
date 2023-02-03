@@ -22,21 +22,21 @@ Music_LookRival_Ch1:
 	note G#, 1
 	note F#, 2
 	note F_, 6
-	intensity $b7
+	volume_envelope 11, 7
 	note G#, 6
-	intensity $b2
+	volume_envelope 11, 2
 	note A#, 4
 	note F_, 2
 	note G#, 4
-	intensity $a0
+	volume_envelope 10, 0
 	note G#, 10
-	intensity $a5
+	volume_envelope 10, 5
 	note G#, 8
-	intensity $a6
+	volume_envelope 10, 6
 	note F#, 8
 Music_AfterTheRivalFight_branch_f4fb1:
 Music_LookRival_branch_f4fb1:
-	intensity $b5
+	volume_envelope 11, 5
 	note F_, 4
 	note D#, 2
 	note F_, 6
@@ -46,15 +46,15 @@ Music_LookRival_branch_f4fb1:
 	note A#, 4
 	note G#, 2
 	note G_, 4
-	intensity $a0
+	volume_envelope 10, 0
 	note F_, 2
-	intensity $a7
+	volume_envelope 10, 7
 	note F_, 16
-	intensity $66
+	volume_envelope 6, 6
 	note __, 2
 	note F_, 2
 	note G_, 4
-	intensity $b6
+	volume_envelope 11, 6
 	note G#, 4
 	octave 4
 	note C_, 4
@@ -62,7 +62,7 @@ Music_LookRival_branch_f4fb1:
 	note A#, 4
 	note G#, 2
 	note A#, 6
-	intensity $b4
+	volume_envelope 11, 4
 	note A#, 2
 	octave 4
 	note C_, 2
@@ -72,7 +72,7 @@ Music_LookRival_branch_f4fb1:
 	note D#, 2
 	note C#, 2
 	note C_, 6
-	intensity $b7
+	volume_envelope 11, 7
 	octave 3
 	note A#, 12
 	note G#, 2
@@ -100,18 +100,18 @@ Music_LookRival_branch_f4fb1:
 	note F_, 6
 	note C_, 2
 Music_LookRival_branch_f4ff7:
-	intensity $b2
+	volume_envelope 11, 2
 	note F_, 6
-	intensity $b7
+	volume_envelope 11, 7
 	note G#, 4
 	note F#, 2
 	note F_, 2
 	note D#, 2
 	loopchannel 3, Music_LookRival_branch_f4ff7
-	intensity $b2
+	volume_envelope 11, 2
 	note F_, 2
 	note G#, 4
-	intensity $b7
+	volume_envelope 11, 7
 	note G#, 6
 	note F#, 4
 	jumpchannel Music_LookRival_branch_f4fb1
@@ -127,43 +127,43 @@ Music_LookRival_Ch2:
 	note D#, 2
 	note C#, 2
 	note C_, 6
-	intensity $c7
+	volume_envelope 12, 7
 	note D#, 6
-	intensity $c2
+	volume_envelope 12, 2
 	note F_, 4
 	note C_, 2
 	note D#, 4
-	intensity $b0
+	volume_envelope 11, 0
 	note D#, 10
-	intensity $b7
+	volume_envelope 11, 7
 	note D#, 16
 Music_AfterTheRivalFight_branch_f502e:
 Music_LookRival_branch_f502e:
-	intensity $c7
+	volume_envelope 12, 7
 	note C_, 12
-	intensity $c4
+	volume_envelope 12, 4
 	note C_, 2
 	note D_, 2
 	note D#, 4
 	note D_, 4
 	note C_, 2
 	note D_, 4
-	intensity $b0
+	volume_envelope 11, 0
 	note C_, 6
-	intensity $b7
+	volume_envelope 11, 7
 	note C_, 8
-	intensity $b4
+	volume_envelope 11, 4
 	octave 3
 	note A_, 2
 	note G_, 2
 	note A_, 2
-	intensity $c6
+	volume_envelope 12, 6
 	octave 4
 	note C_, 6
-	intensity $c7
+	volume_envelope 12, 7
 	note D#, 8
 	note F_, 12
-	intensity $c4
+	volume_envelope 12, 4
 	note F_, 2
 	note G_, 2
 	note G#, 2
@@ -171,37 +171,37 @@ Music_LookRival_branch_f502e:
 	note G_, 2
 	note G_, 2
 	note F_, 2
-	intensity $c4
+	volume_envelope 12, 4
 	note G_, 6
-	intensity $b0
+	volume_envelope 11, 0
 	note F_, 16
-	intensity $b7
+	volume_envelope 11, 7
 	note F_, 16
-	intensity $b0
+	volume_envelope 11, 0
 	note G_, 12
 	note F_, 4
 	note E_, 16
 	note F_, 12
 	note D#, 4
-	intensity $c7
+	volume_envelope 12, 7
 	note D_, 8
-	intensity $c4
+	volume_envelope 12, 4
 	note C_, 2
 	note D_, 2
 	note D#, 1
 	note D_, 1
 	note D#, 2
 Music_LookRival_branch_f5070:
-	intensity $c2
+	volume_envelope 12, 2
 	note C_, 6
-	intensity $c7
+	volume_envelope 12, 7
 	note D#, 6
-	intensity $c2
+	volume_envelope 12, 2
 	note F_, 4
 	loopchannel 3, Music_LookRival_branch_f5070
 	note C_, 2
 	note D#, 4
-	intensity $c7
+	volume_envelope 12, 7
 	note D#, 10
 	jumpchannel Music_LookRival_branch_f502e
 

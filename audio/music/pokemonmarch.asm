@@ -14,11 +14,11 @@ Music_PokemonMarch_Ch1:
 	note_type 12, 4, 2
 	octave 3
 	note D_, 4
-	intensity $62
+	volume_envelope 6, 2
 	note D_, 4
-	intensity $82
+	volume_envelope 8, 2
 	note D_, 4
-	intensity $a2
+	volume_envelope 10, 2
 	note D_, 4
 	note_type 8, 10, 2
 Music_PokemonMarch_branch_f6e4c:

@@ -23,22 +23,22 @@ Music_HallOfFame_Ch1:
 	note F_, 1
 	note F#, 1
 Music_HallOfFame_branch_f05e6:
-	intensity $97
+	volume_envelope 9, 7
 	octave 4
 	note C_, 8
-	intensity $77
+	volume_envelope 7, 7
 	note C_, 8
-	intensity $97
+	volume_envelope 9, 7
 	note E_, 8
-	intensity $77
+	volume_envelope 7, 7
 	note E_, 8
-	intensity $97
+	volume_envelope 9, 7
 	note F#, 8
-	intensity $77
+	volume_envelope 7, 7
 	note F#, 8
-	intensity $77
+	volume_envelope 7, 7
 	note F_, 8
-	intensity $57
+	volume_envelope 5, 7
 	note F_, 8
 	loopchannel 3, Music_HallOfFame_branch_f05e6
 	note __, 16

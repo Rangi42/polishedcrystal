@@ -1148,7 +1148,7 @@ GymLeaderBattleBWChannel2_Loop:
 GymLeaderBattleBW_Channel3:
 	note_type 12, 1, 5
 	octave 3
-	intensity $12
+	volume_envelope 1, 2
 	note C_, 6
 	note __, 6
 	octave 2

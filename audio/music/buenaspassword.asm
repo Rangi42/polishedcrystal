@@ -144,17 +144,17 @@ Music_BuenasPassword_branch_178204:
 	note_type 6, 8, 4
 	octave 4
 	note D#, 2
-	intensity $71
+	volume_envelope 7, 1
 	note C#, 1
 	note C_, 1
-	intensity $51
+	volume_envelope 5, 1
 	octave 3
 	note A#, 1
 	note G#, 1
-	intensity $31
+	volume_envelope 3, 1
 	note G_, 1
 	note F_, 1
-	intensity $11
+	volume_envelope 1, 1
 	note D#, 1
 	note C#, 1
 	note C_, 1
@@ -261,7 +261,7 @@ Music_BuenasPassword_branch_17823c:
 	note A#, 1
 	note B_, 1
 	note G#, 10
-	intensity $84
+	volume_envelope 8, 4
 	octave 2
 	note D#, 1
 	note __, 1
@@ -269,7 +269,7 @@ Music_BuenasPassword_branch_17823c:
 	note __, 1
 	note G_, 1
 	note __, 1
-	intensity $a5
+	volume_envelope 10, 5
 	jumpchannel Music_BuenasPassword_branch_17823c
 
 Music_BuenasPassword_branch_1782a4:
@@ -289,16 +289,16 @@ Music_BuenasPassword_branch_1782a4:
 	note_type 6, 8, 1
 	note G_, 1
 	note F_, 1
-	intensity $71
+	volume_envelope 7, 1
 	note D#, 1
 	note C#, 1
-	intensity $61
+	volume_envelope 6, 1
 	note C_, 1
 	octave 3
 	note A#, 1
-	intensity $41
+	volume_envelope 4, 1
 	note G#, 1
-	intensity $21
+	volume_envelope 2, 1
 	note G_, 1
 	note F_, 1
 	note __, 1

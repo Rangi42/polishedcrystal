@@ -97,7 +97,7 @@ Music_TitleScreenXY_Ch1_b3:
 	octave 4
 	note C_, 3
 	note D#, 9
-	intensity $6C
+	volume_envelope 6, -4
 	octave 2
 	note G#, 1
 	octave 3
@@ -253,7 +253,7 @@ Music_TitleScreenXY_Ch1_b5:
 	octave 4
 	note C_, 3
 	note D#, 6
-	intensity $70
+	volume_envelope 7, 0
 	octave 5
 	note D#, 1
 	note C_, 1

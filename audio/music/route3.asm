@@ -132,10 +132,10 @@ Music_Route3_branch_ec307:
 	note B_, 1
 	octave 3
 	note D_, 1
-	intensity $6f
+	volume_envelope 6, -7
 	note G_, 1
 	note D_, 1
-	intensity $77
+	volume_envelope 7, 7
 	octave 2
 	note B_, 1
 	octave 3
@@ -145,7 +145,7 @@ Music_Route3_branch_ec307:
 	note E_, 1
 	note G#, 1
 	note B_, 4
-	intensity $6f
+	volume_envelope 6, -7
 	octave 3
 	note G#, 2
 	note E_, 2
@@ -174,7 +174,7 @@ Music_Route3_branch_ec307:
 	note D_, 2
 	note E_, 2
 	note F_, 2
-	intensity $91
+	volume_envelope 9, 1
 	note F#, 1
 	note D_, 1
 	octave 2
@@ -244,7 +244,7 @@ Music_Route3_Ch2:
 	note E_, 1
 	note G_, 1
 	note G#, 6
-	intensity $87
+	volume_envelope 8, 7
 	note F#, 1
 	note G#, 1
 	note A_, 1
@@ -256,7 +256,7 @@ Music_Route3_Ch2:
 	note B_, 4
 	octave 4
 	note C#, 4
-	intensity $a7
+	volume_envelope 10, 7
 	duty_cycle 2
 	octave 3
 	note A_, 1
@@ -265,22 +265,22 @@ Music_Route3_Ch2:
 	note E_, 1
 	note G#, 1
 Music_Route3_branch_ec3f5:
-	intensity $7d
+	volume_envelope 7, -5
 	callchannel Music_Route3_branch_ec443
 	note G_, 1
 	note B_, 10
-	intensity $b7
+	volume_envelope 11, 7
 	note B_, 6
-	intensity $7d
+	volume_envelope 7, -5
 	note __, 4
 	duty_cycle 3
 	note G#, 4
 	callchannel Music_Route3_branch_ec443
 	note B_, 1
-	intensity $7d
+	volume_envelope 7, -5
 	octave 5
 	note D_, 5
-	intensity $b7
+	volume_envelope 11, 7
 	octave 5
 	note D_, 5
 	duty_cycle 0
@@ -293,7 +293,7 @@ Music_Route3_branch_ec3f5:
 	note B_, 1
 	octave 4
 	note D_, 4
-	intensity $8f
+	volume_envelope 8, -7
 	duty_cycle 2
 	octave 4
 	note E_, 2
@@ -333,10 +333,10 @@ Music_Route3_branch_ec443:
 	note A_, 1
 	octave 5
 	note C#, 7
-	intensity $b7
+	volume_envelope 11, 7
 	octave 5
 	note C#, 3
-	intensity $7d
+	volume_envelope 7, -5
 	octave 4
 	note E_, 2
 	note A_, 2
@@ -363,7 +363,7 @@ Music_Route3_Ch3:
 	note D_, 1
 	octave 3
 	note B_, 1
-	intensity $14
+	volume_envelope 1, 4
 	octave 3
 	note A_, 1
 	note __, 1
@@ -381,7 +381,7 @@ Music_Route3_Ch3:
 	note G#, 2
 	callchannel Music_Route3_branch_ec4bd
 Music_Route3_branch_ec47f:
-	intensity $14
+	volume_envelope 1, 4
 	callchannel Music_Route3_branch_ec4bd
 	callchannel Music_Route3_branch_ec4bd
 	callchannel Music_Route3_branch_ec4ce

@@ -24,47 +24,47 @@ Music_ZinniaEncounterORAS_Ch1_loop:
 	octave 3
 	note F#, 1
 	note G#, 2
-	intensity $a6
+	volume_envelope 10, 6
 	note A_, 3
-	intensity $a3
+	volume_envelope 10, 3
 	note G#, 2
 	note F#, 1
 	note G#, 1
 	note __, 2
-	intensity $a7
+	volume_envelope 10, 7
 	note C#, 8
-	intensity $a4
+	volume_envelope 10, 4
 	note F#, 3
 	note G#, 3
 	note A_, 2
-	intensity $a7
+	volume_envelope 10, 7
 	note E_, 6
 	note C#, 2
-	intensity $a4
+	volume_envelope 10, 4
 	note A_, 3
 	note B_, 3
 	note A_, 2
-	intensity $a7
+	volume_envelope 10, 7
 	note G#, 6
 	note F#, 2
-	intensity $a4
+	volume_envelope 10, 4
 	note E_, 4
 	note G#, 4
-	intensity $a3
+	volume_envelope 10, 3
 	note __, 2
 	note F#, 1
 	note G#, 2
 	note A_, 2
-	intensity $a5
+	volume_envelope 10, 5
 	note B_, 3
-	intensity $a3
+	volume_envelope 10, 3
 	note A_, 2
 	note G#, 1
 	note A_, 1
 	note __, 2
-	intensity $a7
+	volume_envelope 10, 7
 	note E_, 8
-	intensity $a4
+	volume_envelope 10, 4
 	note F#, 3
 	note G#, 3
 	note A_, 2
@@ -74,57 +74,57 @@ Music_ZinniaEncounterORAS_Ch1_loop:
 	note C#, 7
 	note_type 12, 10, 6
 	note C#, 4
-	intensity $a4
+	volume_envelope 10, 4
 	note C#, 3
 	note D_, 3
 	note C#, 2
 	octave 3
-	intensity $a7
+	volume_envelope 10, 7
 	note B_, 6
-	intensity $a4
+	volume_envelope 10, 4
 	note G#, 2
 	note G#, 4
 	note B_, 4
 	octave 4
-	intensity $60
+	volume_envelope 6, 0
 	note D_, 4
-	intensity $6f
+	volume_envelope 6, -7
 	note D_, 4
-	intensity $60
+	volume_envelope 6, 0
 	note E_, 4
-	intensity $6f
+	volume_envelope 6, -7
 	note E_, 4
 	octave 3
-	intensity $60
+	volume_envelope 6, 0
 	note A_, 4
-	intensity $6f
+	volume_envelope 6, -7
 	note A_, 4
-	intensity $60
+	volume_envelope 6, 0
 	note B_, 4
-	intensity $6f
+	volume_envelope 6, -7
 	note B_, 4
-	intensity $60
+	volume_envelope 6, 0
 	note D_, 4
-	intensity $6f
+	volume_envelope 6, -7
 	note D_, 4
-	intensity $60
+	volume_envelope 6, 0
 	note C#, 4
-	intensity $6f
+	volume_envelope 6, -7
 	note C#, 4
-	intensity $60
+	volume_envelope 6, 0
 	note D_, 4
-	intensity $6f
+	volume_envelope 6, -7
 	note D_, 4
-	intensity $60
+	volume_envelope 6, 0
 	note F_, 4
-	intensity $6f
+	volume_envelope 6, -7
 	note F_, 4
 	octave 4
-	intensity $20
+	volume_envelope 2, 0
 	note D_, 2
-	intensity $2e
+	volume_envelope 2, -6
 	note D_, 4
-	intensity $a6
+	volume_envelope 10, 6
 	note F#, 2
 	note E_, 3
 	octave 3
@@ -149,16 +149,16 @@ Music_ZinniaEncounterORAS_Ch1_loop:
 	note C#, 2
 	octave 3
 	note B_, 8
-	intensity $a0
+	volume_envelope 10, 0
 	note A_, 1
 	note __, 2
 	note A_, 3
 	note G#, 2
 	note A_, 1
 	note __, 3
-	intensity $a6
+	volume_envelope 10, 6
 	note A_, 4
-	intensity $a3
+	volume_envelope 10, 3
 	jumpchannel Music_ZinniaEncounterORAS_Ch1_loop
 
 Music_ZinniaEncounterORAS_Ch2:
@@ -178,7 +178,7 @@ Music_ZinniaEncounterORAS_Ch2:
 	note G#, 1
 Music_ZinniaEncounterORAS_Ch2_loop_main:
 	vibrato $12, $25
-	intensity $b0
+	volume_envelope 11, 0
 	octave 3
 	note C#, 2
 	callchannel Music_ZinniaEncounterORAS_Ch2_branch_1
@@ -191,15 +191,15 @@ Music_ZinniaEncounterORAS_Ch2_loop_main:
 	note D_, 3
 	note C#, 2
 	octave 3
-	intensity $b7
+	volume_envelope 11, 7
 	note B_, 6
-	intensity $b6
+	volume_envelope 11, 6
 	note A_, 2
 	note G#, 4
 	note B_, 4
 	note A_, 1
 	note G#, 1
-	intensity $b0
+	volume_envelope 11, 0
 	callchannel Music_ZinniaEncounterORAS_Ch2_branch_1
 	note_type 6, 11, 0
 	note D#, 1
@@ -209,22 +209,22 @@ Music_ZinniaEncounterORAS_Ch2_loop_main:
 	note E_, 3
 	note F#, 3
 	note E_, 2
-	intensity $b7
+	volume_envelope 11, 7
 	note E_, 6
-	intensity $b3
+	volume_envelope 11, 3
 	octave 3
 	note B_, 2
-	intensity $b6
+	volume_envelope 11, 6
 	note B_, 4
 	octave 4
 	note E_, 4
 Music_ZinniaEncounterORAS_Ch2_loop_1:
 	vibrato $22, $43
-	intensity $40
+	volume_envelope 4, 0
 	note F#, 2
-	intensity $4e
+	volume_envelope 4, -6
 	note F#, 4
-	intensity $c6
+	volume_envelope 12, 6
 	note A_, 2
 	note G#, 3
 	note E_, 3
@@ -259,7 +259,7 @@ Music_ZinniaEncounterORAS_Ch2_loop_1:
 	note F#, 2
 	note E_, 2
 	note G#, 2
-	intensity $d7
+	volume_envelope 13, 7
 	note F#, 1
 	note G#, 1
 	note __, 1
@@ -274,15 +274,15 @@ Music_ZinniaEncounterORAS_Ch2_loop_1:
 
 Music_ZinniaEncounterORAS_Ch2_branch_1:
 	note C#, 6
-	intensity $b6
+	volume_envelope 11, 6
 	note C#, 6
 	octave 2
 	note A_, 1
 	note B_, 1
 	octave 3
-	intensity $b0
+	volume_envelope 11, 0
 	note C#, 4
-	intensity $b6
+	volume_envelope 11, 6
 	note C#, 4
 	note A_, 3
 	note B_, 3

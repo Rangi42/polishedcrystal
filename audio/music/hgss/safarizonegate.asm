@@ -20,13 +20,13 @@ Music_SafariZoneGateHGSS_Ch1:
 	octave 3
 	note C#, 4
 	note D_, 1
-	intensity $82
+	volume_envelope 8, 2
 	note C#, 2
-	intensity $86
+	volume_envelope 8, 6
 	note C#, 2
 	octave 2
 	note B_, 1
-	intensity $82
+	volume_envelope 8, 2
 	note A_, 4
 	note G#, 1
 	note A_, 1
@@ -42,11 +42,11 @@ Music_SafariZoneGateHGSS_Ch1:
 	note E_, 1
 	note G#, 2
 	octave 3
-	intensity $86
+	volume_envelope 8, 6
 	note C#, 7
 	note D_, 1
 	note C#, 3
-	intensity $82
+	volume_envelope 8, 2
 	note F#, 2
 	note E_, 1
 	note F#, 1
@@ -63,27 +63,27 @@ Music_SafariZoneGateHGSS_Ch1:
 	note B_, 1
 	octave 4
 	note D_, 1
-	intensity $86
+	volume_envelope 8, 6
 	note C#, 7
 	octave 3
 	note B_, 1
 	note A_, 3
-	intensity $82
+	volume_envelope 8, 2
 	note E_, 2
 	note A_, 1
-	intensity $86
+	volume_envelope 8, 6
 	note A_, 2
 	octave 4
 	note C#, 3
-	intensity $82
+	volume_envelope 8, 2
 	octave 3
 	note A_, 2
 	note F#, 1
 	note F#, 1
-	intensity $86
+	volume_envelope 8, 6
 	note A_, 2
 	note F#, 2
-	intensity $82
+	volume_envelope 8, 2
 	note E_, 2
 	note D_, 2
 	note D_, 1
@@ -97,10 +97,10 @@ Music_SafariZoneGateHGSS_Ch1:
 	note A_, 1
 	note A_, 2
 	octave 4
-	intensity $84
+	volume_envelope 8, 4
 	note C#, 7
 	octave 3
-	intensity $82
+	volume_envelope 8, 2
 	note F#, 2
 	note F#, 2
 	octave 2
@@ -108,34 +108,34 @@ Music_SafariZoneGateHGSS_Ch1:
 	octave 3
 	note G#, 1
 	note G#, 2
-	intensity $84
+	volume_envelope 8, 4
 	note B_, 2
 	duty_cycle 0
 	note B_, 1
 	note B_, 2
 	octave 4
 	note C#, 3
-	intensity $82
+	volume_envelope 8, 2
 	note C#, 3
 	octave 3
-	intensity $86
+	volume_envelope 8, 6
 	note E_, 4
 	note E_, 2
 	note A_, 2
 	note E_, 2
 	note F#, 3
 	octave 2
-	intensity $82
+	volume_envelope 8, 2
 	note A_, 3
 	octave 3
-	intensity $86
+	volume_envelope 8, 6
 	note F#, 4
 	note E_, 2
 	note D_, 2
 	note E_, 2
 
 	duty_cycle 2
-	intensity $75
+	volume_envelope 7, 5
 	octave 2
 	note A_, 1
 	note __, 5
@@ -193,7 +193,7 @@ Music_SafariZoneGateHGSS_Ch1:
 	note C#, 8
 	note D_, 8
 	note E_, 8
-	intensity $b2
+	volume_envelope 11, 2
 	octave 4
 	note A_, 16
 	note __, 16
@@ -210,12 +210,12 @@ Music_SafariZoneGateHGSS_Ch2:
 	octave 3
 	note E_, 4
 	note F#, 1
-	intensity $92
+	volume_envelope 9, 2
 	note E_, 2
-	intensity $96
+	volume_envelope 9, 6
 	note E_, 2
 	note D_, 1
-	intensity $92
+	volume_envelope 9, 2
 	note C#, 4
 	octave 2
 	note B_, 1
@@ -232,12 +232,12 @@ Music_SafariZoneGateHGSS_Ch2:
 	note E_, 2
 	note F#, 1
 	note E_, 2
-	intensity $96
+	volume_envelope 9, 6
 	note E_, 7
 	note F#, 1
 	note A_, 3
 	octave 4
-	intensity $92
+	volume_envelope 9, 2
 	note D_, 2
 	note C#, 1
 	note D_, 1
@@ -254,26 +254,26 @@ Music_SafariZoneGateHGSS_Ch2:
 	note A_, 1
 	octave 4
 	note F#, 1
-	intensity $96
+	volume_envelope 9, 6
 	note E_, 7
 	note D_, 1
 	note C#, 3
-	intensity $92
+	volume_envelope 9, 2
 	note D_, 2
 	note E_, 1
-	intensity $96
+	volume_envelope 9, 6
 	note F#, 2
 	note E_, 3
-	intensity $92
+	volume_envelope 9, 2
 	note F#, 2
 	octave 3
 	note A_, 1
 	note B_, 1
 	octave 4
-	intensity $96
+	volume_envelope 9, 6
 	note C#, 2
 	note D_, 2
-	intensity $92
+	volume_envelope 9, 2
 	note C#, 2
 	octave 3
 	note A_, 2
@@ -287,10 +287,10 @@ Music_SafariZoneGateHGSS_Ch2:
 	octave 4
 	note E_, 1
 	note E_, 2
-	intensity $94
+	volume_envelope 9, 4
 	note E_, 7
 	duty_cycle 2
-	intensity $92
+	volume_envelope 9, 2
 	octave 3
 	note A_, 2
 	note A_, 2
@@ -299,16 +299,16 @@ Music_SafariZoneGateHGSS_Ch2:
 	octave 4
 	note E_, 1
 	note E_, 2
-	intensity $94
+	volume_envelope 9, 4
 	note E_, 2
 	duty_cycle 3
 	note F#, 1
 	note E_, 2
 	note F#, 3
-	intensity $92
+	volume_envelope 9, 2
 	note E_, 3
 	octave 3
-	intensity $96
+	volume_envelope 9, 6
 	note A_, 4
 	octave 4
 	note D_, 2
@@ -316,10 +316,10 @@ Music_SafariZoneGateHGSS_Ch2:
 	octave 3
 	note B_, 2
 	note A_, 3
-	intensity $92
+	volume_envelope 9, 2
 	note E_, 3
 	octave 4
-	intensity $96
+	volume_envelope 9, 6
 	note D_, 4
 	note C#, 2
 	octave 3
@@ -328,7 +328,7 @@ Music_SafariZoneGateHGSS_Ch2:
 	note C#, 2
 	octave 3
 	duty_cycle 2
-	intensity $b2
+	volume_envelope 11, 2
 	note A_, 3
 	note G#, 3
 	note A_, 4
@@ -349,17 +349,17 @@ Music_SafariZoneGateHGSS_Ch2:
 	note D_, 2
 	note E_, 2
 	note F#, 1
-	intensity $b5
+	volume_envelope 11, 5
 	note E_, 9
-	intensity $b2
+	volume_envelope 11, 2
 	note C#, 1
 	note C#, 1
 	note D_, 2
 	note E_, 2
 	note F#, 1
-	intensity $b5
+	volume_envelope 11, 5
 	note E_, 9
-	intensity $b2
+	volume_envelope 11, 2
 	note E_, 2
 	note C#, 2
 	note A_, 3
@@ -390,13 +390,13 @@ Music_SafariZoneGateHGSS_Ch2:
 	note C#, 1
 	note D_, 1
 	note E_, 1
-	intensity $b4
+	volume_envelope 11, 4
 	note F#, 3
 	note A_, 2
 	octave 5
 	note D_, 2
 	octave 4
-	intensity $b2
+	volume_envelope 11, 2
 	note F#, 1
 	note A_, 2
 	note A_, 1
@@ -404,12 +404,12 @@ Music_SafariZoneGateHGSS_Ch2:
 	note F#, 2
 	note G#, 2
 	duty_cycle 1
-	intensity $86
+	volume_envelope 8, 6
 	octave 4
 	note C#, 4
 	callchannel Music_SafariZoneGateHGSS_Ch2_branch_1
 	note C#, 3
-	intensity $86
+	volume_envelope 8, 6
 	note C#, 2
 	callchannel Music_SafariZoneGateHGSS_Ch2_branch_1
 	note __, 1
@@ -417,13 +417,13 @@ Music_SafariZoneGateHGSS_Ch2:
 	endchannel
 
 Music_SafariZoneGateHGSS_Ch2_branch_1:
-	intensity $82
+	volume_envelope 8, 2
 	note D_, 1
 	note C#, 2
-	intensity $84
+	volume_envelope 8, 4
 	note C#, 2
 	octave 3
-	intensity $82
+	volume_envelope 8, 2
 	note B_, 1
 	note A_, 3
 	note A_, 1
@@ -567,9 +567,9 @@ Music_SafariZoneGateHGSS_Ch3_loop:
 	note E_, 4
 	note D_, 2
 	note C#, 4
-	intensity $24
+	volume_envelope 2, 4
 	note C#, 2
-	intensity $34
+	volume_envelope 3, 4
 	note C#, 2
 
 	note_type 6, 1, 2
@@ -666,9 +666,9 @@ Music_SafariZoneGateHGSS_Ch3_loop:
 	note A_, 10
 	note_type 12, 2, 2
 	note A_, 4
-	intensity $32
+	volume_envelope 3, 2
 	note A_, 4
-	intensity $25
+	volume_envelope 2, 5
 	note __, 16
 	jumpchannel Music_SafariZoneGateHGSS_Ch3_loop
 	endchannel

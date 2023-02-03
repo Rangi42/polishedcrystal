@@ -49,7 +49,7 @@ Music_CherrygroveCity_branch_f5b26:
 	note A_, 2
 	octave 3
 	note C_, 2
-	intensity $b7
+	volume_envelope 11, 7
 	octave 2
 	note A#, 6
 	octave 3
@@ -62,7 +62,7 @@ Music_CherrygroveCity_branch_f5b26:
 	note A#, 6
 	octave 3
 	note D_, 6
-	intensity $b5
+	volume_envelope 11, 5
 	note A_, 4
 	note G_, 4
 	note E_, 4
@@ -108,53 +108,53 @@ Music_CherrygroveCity_Ch2:
 	note A_, 2
 	note A#, 2
 Music_CherrygroveCity_branch_f5b87:
-	intensity $c6
+	volume_envelope 12, 6
 	octave 4
 	note C_, 6
 	note D_, 4
-	intensity $b3
+	volume_envelope 11, 3
 	note D_, 2
 	note C_, 2
 	octave 3
 	note A#, 2
-	intensity $c7
+	volume_envelope 12, 7
 	octave 4
 	note C_, 6
 	octave 3
 	note A_, 2
 	note F_, 8
-	intensity $c6
+	volume_envelope 12, 6
 	note A#, 6
 	octave 4
 	note C_, 4
-	intensity $b3
+	volume_envelope 11, 3
 	note C_, 2
 	octave 3
 	note A#, 2
 	note A_, 2
-	intensity $c7
+	volume_envelope 12, 7
 	note A#, 6
 	note G_, 2
 	note E_, 8
-	intensity $a0
+	volume_envelope 10, 0
 	note D_, 6
 	note F_, 6
 	octave 4
 	note D_, 4
 	note C_, 6
-	intensity $a5
+	volume_envelope 10, 5
 	octave 3
 	note A_, 2
-	intensity $c7
+	volume_envelope 12, 7
 	note F_, 8
-	intensity $a0
+	volume_envelope 10, 0
 	note D_, 6
 	note F_, 6
 	octave 4
 	note D_, 4
-	intensity $c7
+	volume_envelope 12, 7
 	note C_, 16
-	intensity $b5
+	volume_envelope 11, 5
 	octave 3
 	note D_, 6
 	note F_, 6
@@ -167,9 +167,9 @@ Music_CherrygroveCity_branch_f5b87:
 	note C#, 6
 	note F_, 6
 	note G_, 4
-	intensity $a0
+	volume_envelope 10, 0
 	note F_, 8
-	intensity $a7
+	volume_envelope 10, 7
 	note F_, 8
 	jumpchannel Music_CherrygroveCity_branch_f5b87
 

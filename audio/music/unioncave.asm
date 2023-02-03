@@ -38,7 +38,7 @@ Music_UnionCave_branch_f5c91:
 	note F#, 4
 	loopchannel 4, Music_UnionCave_branch_f5c91
 	note __, 4
-	intensity $80
+	volume_envelope 8, 0
 	note F_, 16
 	note F#, 16
 	note G_, 16
@@ -53,7 +53,7 @@ Music_UnionCave_branch_f5c91:
 	note C_, 8
 	octave 3
 	note A_, 8
-	intensity $95
+	volume_envelope 9, 5
 	tone $0004
 	callchannel Music_UnionCave_branch_f5ccf
 	tone $0008
@@ -79,11 +79,11 @@ Music_UnionCave_Ch2:
 Music_UnionCave_branch_f5cda:
 	note_type 12, 12, 4
 	callchannel Music_UnionCave_branch_f5d34
-	intensity $c5
+	volume_envelope 12, 5
 	callchannel Music_UnionCave_branch_f5d34
-	intensity $c7
+	volume_envelope 12, 7
 	callchannel Music_UnionCave_branch_f5d34
-	intensity $c4
+	volume_envelope 12, 4
 	note C#, 4
 	octave 3
 	note B_, 4
@@ -113,7 +113,7 @@ Music_UnionCave_branch_f5cda:
 	note D_, 4
 	note C#, 4
 	note __, 4
-	intensity $a0
+	volume_envelope 10, 0
 	note C_, 16
 	note C#, 16
 	note D_, 16
@@ -122,7 +122,7 @@ Music_UnionCave_branch_f5cda:
 	note D#, 16
 	note A#, 16
 	note A_, 16
-	intensity $a5
+	volume_envelope 10, 5
 	vibrato $6, $44
 	callchannel Music_UnionCave_branch_f5d52
 	vibrato $4, $33

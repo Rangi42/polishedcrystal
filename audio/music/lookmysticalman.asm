@@ -87,13 +87,13 @@ Music_LookMysticalMan_branch_178458:
 	note B_, 6
 	note A#, 4
 	note F#, 4
-	intensity $a5
+	volume_envelope 10, 5
 	duty_cycle 0
 	octave 4
 	note F#, 2
 	note A#, 6
 	duty_cycle 2
-	intensity $72
+	volume_envelope 7, 2
 Music_LookMysticalMan_branch_1784b4:
 	octave 5
 	note D_, 2
@@ -318,13 +318,13 @@ Music_LookMysticalMan_branch_17859a:
 	note C#, 6
 	octave 4
 	note B_, 12
-	intensity $88
+	volume_envelope 8, 8
 	note A#, 1
 	note A_, 1
-	intensity $68
+	volume_envelope 6, 8
 	note G#, 1
 	note F#, 1
-	intensity $b8
+	volume_envelope 11, 8
 	octave 5
 	note C#, 2
 	note __, 2
@@ -343,19 +343,19 @@ Music_LookMysticalMan_branch_17859a:
 
 Music_LookMysticalMan_branch_1785c8:
 	note C#, 8
-	intensity $88
+	volume_envelope 8, 8
 	note C_, 1
 	octave 3
 	note B_, 1
 	note A#, 1
-	intensity $68
+	volume_envelope 6, 8
 	note G#, 1
 	note F#, 1
-	intensity $48
+	volume_envelope 4, 8
 	note E_, 1
 	note C#, 1
 	note __, 1
-	intensity $b8
+	volume_envelope 11, 8
 	endchannel
 
 Music_LookMysticalMan_Ch3:

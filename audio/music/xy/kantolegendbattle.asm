@@ -72,7 +72,7 @@ Music_KantoLegendBattleXY_Ch1_L3:
 	note __, 1
 	note E_, 1
 	note __, 1
-	intensity $74
+	volume_envelope 7, 4
 	octave 4
 	note G_, 1
 	note A_, 1
@@ -82,7 +82,7 @@ Music_KantoLegendBattleXY_Ch1_L3:
 	note E_, 1
 Music_KantoLegendBattleXY_Ch1_L:
 	duty_cycle 2
-	intensity $53
+	volume_envelope 5, 3
 Music_KantoLegendBattleXY_Ch1_L4:
 	octave 2
 	note C_, 2
@@ -231,7 +231,7 @@ Music_KantoLegendBattleXY_Ch1_L9:
 	note E_, 1
 	octave 3
 	note E_, 1
-	intensity $74
+	volume_envelope 7, 4
 	note A_, 1
 	note B_, 1
 	octave 4
@@ -243,7 +243,7 @@ Music_KantoLegendBattleXY_Ch1_L9:
 	octave 5
 	note D_, 1
 	duty_cycle 1
-	intensity $c5
+	volume_envelope 12, 5
 	octave 3
 	note G_, 6
 	note F#, 6
@@ -258,10 +258,10 @@ Music_KantoLegendBattleXY_Ch1_L9:
 	note G#, 2
 	note G_, 2
 	note __, 4
-	intensity $b7
+	volume_envelope 11, 7
 	octave 5
 	note C#, 8
-	intensity $c5
+	volume_envelope 12, 5
 	octave 4
 	note C_, 6
 	octave 3
@@ -276,20 +276,20 @@ Music_KantoLegendBattleXY_Ch1_L9:
 	note F_, 6
 	note E_, 6
 	note D_, 4
-	intensity $c7
+	volume_envelope 12, 7
 	octave 3
 	note A#, 4
 	octave 4
 	note C_, 4
 	note D_, 4
 	note F_, 4
-	intensity $c0
+	volume_envelope 12, 0
 	note G#, 16
-	intensity $b0
+	volume_envelope 11, 0
 	note G#, 16
-	intensity $4e
+	volume_envelope 4, -6
 	note G_, 16
-	intensity $c7
+	volume_envelope 12, 7
 	note G_, 16
 	octave 3
 	note F_, 8
@@ -297,9 +297,9 @@ Music_KantoLegendBattleXY_Ch1_L9:
 	octave 4
 	note D_, 8
 	note F_, 8
-	intensity $c0
+	volume_envelope 12, 0
 	note E_, 16
-	intensity $c7
+	volume_envelope 12, 7
 	note E_, 16
 	octave 3
 	note F_, 8
@@ -307,13 +307,13 @@ Music_KantoLegendBattleXY_Ch1_L9:
 	octave 4
 	note D_, 8
 	note F_, 8
-	intensity $c0
+	volume_envelope 12, 0
 	note G_, 16
-	intensity $3f
+	volume_envelope 3, -7
 	octave 5
 	note C_, 16
 	duty_cycle 2
-	intensity $43
+	volume_envelope 4, 3
 	note C_, 1
 	note E_, 1
 	note G_, 1
@@ -449,39 +449,39 @@ Music_KantoLegendBattleXY_Ch1_L10:
 	note A_, 1
 	loopchannel 2, Music_KantoLegendBattleXY_Ch1_L10
 	duty_cycle 1
-	intensity $c5
+	volume_envelope 12, 5
 	octave 4
 	note E_, 12
 	note E_, 2
 	note __, 2
 	note F_, 2
-	intensity $c2
+	volume_envelope 12, 2
 	note E_, 4
 	note __, 10
-	intensity $c5
+	volume_envelope 12, 5
 	note F_, 12
 	note F_, 2
 	note __, 2
 	note G#, 2
-	intensity $c2
+	volume_envelope 12, 2
 	note G_, 6
-	intensity $c5
+	volume_envelope 12, 5
 	note F_, 8
 	note G_, 12
 	note G_, 2
 	note __, 2
 	note A_, 2
-	intensity $c2
+	volume_envelope 12, 2
 	note G_, 4
 	note __, 10
-	intensity $c5
+	volume_envelope 12, 5
 	note G_, 12
 	note G_, 2
 	note __, 2
 	note A_, 2
-	intensity $c2
+	volume_envelope 12, 2
 	note G_, 6
-	intensity $c5
+	volume_envelope 12, 5
 	note G_, 9
 	jumpchannel Music_KantoLegendBattleXY_Ch1_L
 
@@ -556,7 +556,7 @@ Music_KantoLegendBattleXY_Ch2_L3:
 	note D#, 1
 	note D_, 1
 	note C#, 1
-	intensity $b7
+	volume_envelope 11, 7
 Music_KantoLegendBattleXY_Ch2_L:
 	callchannel Music_KantoLegendBattleXY_Ch2_P_C
 	callchannel Music_KantoLegendBattleXY_Ch2_P_Dm
@@ -827,10 +827,10 @@ Music_KantoLegendBattleXY_Ch3:
 	note G_, 1
 	callchannel Music_KantoLegendBattleXY_Ch3_P1
 Music_KantoLegendBattleXY_Ch3_L:
-	intensity $14
+	volume_envelope 1, 4
 	callchannel Music_KantoLegendBattleXY_Ch3_P1
 	callchannel Music_KantoLegendBattleXY_Ch3_P1
-	intensity $26
+	volume_envelope 2, 6
 	note C#, 1
 	note D_, 1
 	note C#, 1
@@ -1025,7 +1025,7 @@ Music_KantoLegendBattleXY_Ch3_L:
 	note F#, 1
 	note G_, 1
 	note G#, 1
-	intensity $16
+	volume_envelope 1, 6
 	note D_, 4
 	note C_, 4
 	note D_, 4
@@ -1046,7 +1046,7 @@ Music_KantoLegendBattleXY_Ch3_L:
 	note C_, 16
 	octave 4
 	note G_, 8
-	intensity $20
+	volume_envelope 2, 0
 	note A_, 1
 	note B_, 1
 	octave 5
@@ -1066,7 +1066,7 @@ Music_KantoLegendBattleXY_Ch3_L:
 	note __, 16
 	note __, 16
 	note __, 12
-	intensity $10
+	volume_envelope 1, 0
 	octave 4
 	note C_, 1
 	note __, 1

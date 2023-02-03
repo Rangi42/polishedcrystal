@@ -35,28 +35,28 @@ Music_RivalBattleXY_Ch1:
 	note F#, 1
 	note G#, 1
 	note A#, 1
-	intensity $a3
+	volume_envelope 10, 3
 	callchannel Music_RivalBattleXY_Ch1_branch_1
 	callchannel Music_RivalBattleXY_Ch1_branch_1
 Music_RivalBattleXY_Ch1_loop_main:
 	octave 3
 	duty_cycle 3
-	intensity $a3
+	volume_envelope 10, 3
 	callchannel Music_RivalBattleXY_Ch1_branch_1
-	intensity $a0
+	volume_envelope 10, 0
 	note D#, 16
-	intensity $a7
+	volume_envelope 10, 7
 	note D#, 16
-	intensity $a3
+	volume_envelope 10, 3
 	callchannel Music_RivalBattleXY_Ch1_branch_1
-	intensity $a0
+	volume_envelope 10, 0
 	note D#, 16
-	intensity $a7
+	volume_envelope 10, 7
 	note D#, 16
 	duty_cycle 2
 Music_RivalBattleXY_Ch1_loop_1:
 	octave 4
-	intensity $82
+	volume_envelope 8, 2
 	note F_, 2
 	callchannel Music_RivalBattleXY_Ch1_branch_2
 	note F_, 2
@@ -74,7 +74,7 @@ Music_RivalBattleXY_Ch1_loop_1:
 	note G_, 2
 	callchannel Music_RivalBattleXY_Ch1_branch_3
 	loopchannel 2, Music_RivalBattleXY_Ch1_loop_1
-	intensity $a3
+	volume_envelope 10, 3
 	duty_cycle 1
 	octave 3
 	note F_, 6
@@ -82,26 +82,26 @@ Music_RivalBattleXY_Ch1_loop_1:
 	note F_, 6
 	note C#, 6
 	note F_, 4
-	intensity $a5
+	volume_envelope 10, 5
 	note G#, 4
-	intensity $a3
+	volume_envelope 10, 3
 	note G_, 6
 	note D#, 6
 	note G_, 6
 	note D#, 6
 	note A#, 4
-	intensity $a5
+	volume_envelope 10, 5
 	note G_, 4
-	intensity $a3
+	volume_envelope 10, 3
 	note G#, 6
 	note F_, 6
 	note G#, 6
 	note F_, 6
 	note G#, 4
-	intensity $a5
+	volume_envelope 10, 5
 	octave 4
 	note C#, 4
-	intensity $a3
+	volume_envelope 10, 3
 	octave 3
 	note A#, 6
 	note G_, 6
@@ -116,7 +116,7 @@ Music_RivalBattleXY_Ch1_loop_1:
 	note __, 16
 	note __, 16
 	note __, 12
-	intensity $93
+	volume_envelope 9, 3
 	octave 4
 	note G_, 1
 	note G#, 1
@@ -129,11 +129,11 @@ Music_RivalBattleXY_Ch1_loop_1:
 	note C_, 4
 	note C_, 2
 	octave 4
-	intensity $97
+	volume_envelope 9, 7
 	note A#, 4
 	note B_, 4
 	octave 5
-	intensity $93
+	volume_envelope 9, 3
 	note C_, 4
 	octave 4
 	note G_, 4
@@ -143,12 +143,12 @@ Music_RivalBattleXY_Ch1_loop_1:
 	note F_, 2
 	note A#, 4
 	octave 5
-	intensity $97
+	volume_envelope 9, 7
 	note D_, 4
-	intensity $93
+	volume_envelope 9, 3
 	note C_, 8
 	octave 4
-	intensity $a3
+	volume_envelope 10, 3
 	duty_cycle 2
 	note E_, 8
 	note C_, 8
@@ -191,10 +191,10 @@ Music_RivalBattleXY_Ch2:
 	octave 4
 	note G_, 2
 	note A#, 4
-	intensity $b7
+	volume_envelope 11, 7
 	note A#, 6
 	note B_, 4
-	intensity $b4
+	volume_envelope 11, 4
 	octave 5
 	note C_, 4
 	note __, 12
@@ -215,7 +215,7 @@ Music_RivalBattleXY_Ch2_loop:
 	note F_, 4
 	note G_, 4
 	octave 3
-	intensity $d0
+	volume_envelope 13, 0
 	note F_, 16
 	note C#, 8
 	note F_, 8
@@ -274,9 +274,9 @@ Music_RivalBattleXY_Ch2_loop:
 	note B_, 1
 	callchannel Music_RivalBattleXY_Ch2_branch_2
 	note D#, 4
-	intensity $b7
+	volume_envelope 11, 7
 	note G_, 4
-	intensity $b3
+	volume_envelope 11, 3
 	note F_, 4
 	note G_, 1
 	note G#, 1
@@ -284,23 +284,23 @@ Music_RivalBattleXY_Ch2_loop:
 	note B_, 1
 	callchannel Music_RivalBattleXY_Ch2_branch_2
 	note A#, 4
-	intensity $b7
+	volume_envelope 11, 7
 	octave 4
 	note D_, 4
-	intensity $b3
+	volume_envelope 11, 3
 	note C_, 4
 	note __, 10
 	note __, 16
 	octave 2
-	intensity $b7
+	volume_envelope 11, 7
 	note A#, 4
 	note A_, 2
 	note A#, 2
 	note B_, 2
 	octave 3
-	intensity $b3
+	volume_envelope 11, 3
 	note C_, 2
-	intensity $b7
+	volume_envelope 11, 7
 	note C_, 4
 	note __, 12
 	note C_, 2
@@ -314,7 +314,7 @@ Music_RivalBattleXY_Ch2_loop:
 	jumpchannel Music_RivalBattleXY_Ch2_loop
 
 Music_RivalBattleXY_Ch2_branch_1:
-	intensity $b3
+	volume_envelope 11, 3
 	octave 3
 	note G_, 6
 	note C_, 4
@@ -330,21 +330,21 @@ Music_RivalBattleXY_Ch2_branch_1:
 	note A_, 2
 	note A#, 1
 	note __, 1
-	intensity $b7
+	volume_envelope 11, 7
 	octave 4
 	note C_, 4
-	intensity $b4
+	volume_envelope 11, 4
 	octave 3
 	note A#, 2
 	octave 4
 	note C_, 2
 	note D_, 1
 	note __, 1
-	intensity $b7
+	volume_envelope 11, 7
 	endchannel
 
 Music_RivalBattleXY_Ch2_branch_2:
-	intensity $b3
+	volume_envelope 11, 3
 	octave 4
 	note C_, 2
 	note C_, 4
@@ -352,11 +352,11 @@ Music_RivalBattleXY_Ch2_branch_2:
 	note C_, 4
 	note C_, 2
 	octave 3
-	intensity $b7
+	volume_envelope 11, 7
 	note A#, 4
 	note B_, 4
 	octave 4
-	intensity $b3
+	volume_envelope 11, 3
 	note C_, 4
 	octave 3
 	note G_, 4

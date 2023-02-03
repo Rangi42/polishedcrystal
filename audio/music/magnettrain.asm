@@ -14,7 +14,7 @@ Music_MagnetTrain_Ch1:
 	note_type 12, 11, 2
 	note __, 16
 	note __, 16
-	intensity $b7
+	volume_envelope 11, 7
 	octave 4
 	note D_, 1
 	note C_, 1

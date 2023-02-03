@@ -23,7 +23,7 @@ Music_GymLeaderBattleDPPt_Ch1:
 	octave 3
 	note C_, 8
 	note C#, 8
-	intensity $B2
+	volume_envelope 11, 2
 	note C_, 2
 	note __, 4
 	note C_, 2
@@ -32,10 +32,10 @@ Music_GymLeaderBattleDPPt_Ch1:
 	note __, 4
 	note C_, 2
 	note __, 4
-	intensity $B4
+	volume_envelope 11, 4
 	note F_, 4
 	note C#, 4
-	intensity $B2
+	volume_envelope 11, 2
 	note C_, 2
 	note __, 4
 	note C_, 2
@@ -44,12 +44,12 @@ Music_GymLeaderBattleDPPt_Ch1:
 	note __, 4
 	note C_, 2
 	note __, 4
-	intensity $B4
+	volume_envelope 11, 4
 	octave 2
 	note A#, 4
 	octave 3
 	note C#, 4
-	intensity $B2
+	volume_envelope 11, 2
 	octave 4
 	note C_, 2
 	note __, 4
@@ -59,10 +59,10 @@ Music_GymLeaderBattleDPPt_Ch1:
 	note __, 4
 	note C_, 2
 	note __, 4
-	intensity $B4
+	volume_envelope 11, 4
 	note F_, 4
 	note C#, 4
-	intensity $B2
+	volume_envelope 11, 2
 	note C_, 2
 	note __, 4
 	note C_, 2
@@ -71,7 +71,7 @@ Music_GymLeaderBattleDPPt_Ch1:
 	note __, 4
 	note C_, 2
 	note __, 4
-	intensity $B4
+	volume_envelope 11, 4
 	octave 3
 	note A#, 4
 	octave 4
@@ -234,7 +234,7 @@ Music_GymLeaderBattleDPPt_Ch1_loop:
 	note __, 16
 	note __, 16
 	note __, 12
-	intensity $B2
+	volume_envelope 11, 2
 	note G_, 1
 	octave 3
 	note C_, 1
@@ -249,12 +249,12 @@ Music_GymLeaderBattleDPPt_Ch1_loop:
 	note __, 4
 	note C_, 2
 	note __, 4
-	intensity $B4
+	volume_envelope 11, 4
 	octave 3
 	note G#, 4
 	octave 4
 	note C#, 4
-	intensity $B2
+	volume_envelope 11, 2
 	note C_, 2
 	note __, 4
 	note C_, 2
@@ -264,10 +264,10 @@ Music_GymLeaderBattleDPPt_Ch1_loop:
 	note C_, 2
 	note __, 4
 	note C#, 4
-	intensity $B4
+	volume_envelope 11, 4
 	octave 3
 	note A#, 4
-	intensity $B2
+	volume_envelope 11, 2
 	octave 4
 	note C_, 2
 	note __, 4
@@ -277,7 +277,7 @@ Music_GymLeaderBattleDPPt_Ch1_loop:
 	note __, 4
 	note C_, 2
 	note __, 4
-	intensity $B4
+	volume_envelope 11, 4
 	octave 3
 	note G#, 8
 	duty_cycle 1
@@ -467,38 +467,38 @@ Music_GymLeaderBattleDPPt_Ch2:
 	note C#, 1
 	note C_, 1
 	note C#, 1
-	intensity $C2
+	volume_envelope 12, 2
 	octave 3
 	note E_, 6
 	note E_, 6
 	note E_, 6
 	note E_, 6
-	intensity $C4
+	volume_envelope 12, 4
 	note G#, 4
 	note F_, 4
-	intensity $C2
+	volume_envelope 12, 2
 	note E_, 6
 	note E_, 6
 	note E_, 6
 	note E_, 6
-	intensity $C4
+	volume_envelope 12, 4
 	note C#, 4
 	note F_, 4
-	intensity $C2
+	volume_envelope 12, 2
 	octave 4
 	note E_, 6
 	note E_, 6
 	note E_, 6
 	note E_, 6
-	intensity $C4
+	volume_envelope 12, 4
 	note G#, 4
 	note F_, 4
-	intensity $C2
+	volume_envelope 12, 2
 	note E_, 6
 	note E_, 6
 	note E_, 6
 	note E_, 6
-	intensity $C4
+	volume_envelope 12, 4
 	note C#, 4
 	note F_, 4
 Music_GymLeaderBattleDPPt_Ch2_loop:
@@ -541,29 +541,29 @@ Music_GymLeaderBattleDPPt_Ch2_loop:
 	note C#, 2
 	note F_, 2
 	note E_, 6
-	intensity $C7
+	volume_envelope 12, 7
 	note G_, 16
 	note __, 6
-	intensity $C5
+	volume_envelope 12, 5
 	note G_, 4
-	intensity $C4
+	volume_envelope 12, 4
 	note G#, 3
 	note G_, 3
 	note F_, 3
-	intensity $C7
+	volume_envelope 12, 7
 	note C#, 16
 	note_type 1, 12, 7
 	note __, 12
 	note_type 12, 12, 7
-	intensity $C4
+	volume_envelope 12, 4
 	note F_, 6
 	note E_, 3
 	note F_, 3
 	note G_, 3
-	intensity $C7
+	volume_envelope 12, 7
 	note G_, 16
 	note __, 3
-	intensity $C4
+	volume_envelope 12, 4
 	note G_, 4
 	note_type 8, 12, 4
 	note G#, 4
@@ -571,28 +571,28 @@ Music_GymLeaderBattleDPPt_Ch2_loop:
 	note F_, 4
 	note_type 12, 12, 7
 	note C#, 16
-	intensity $C4
+	volume_envelope 12, 4
 	note F_, 8
 	note_type 8, 12, 4
 	note E_, 4
 	note F_, 4
 	note G_, 4
-	intensity $C7
+	volume_envelope 12, 7
 	note G_, 16
 	note __, 16
 	note __, 4
 	duty_cycle 0
-	intensity $C2
+	volume_envelope 12, 2
 	octave 2
 	note C_, 3
 	octave 3
 	note C_, 3
 	octave 2
 	note C_, 3
-	intensity $C5
+	volume_envelope 12, 5
 	octave 3
 	note C#, 9
-	intensity $C2
+	volume_envelope 12, 2
 	note C#, 3
 	octave 2
 	note A#, 3
@@ -601,10 +601,10 @@ Music_GymLeaderBattleDPPt_Ch2_loop:
 	note C_, 3
 	octave 2
 	note C_, 3
-	intensity $C5
+	volume_envelope 12, 5
 	octave 3
 	note C#, 9
-	intensity $C2
+	volume_envelope 12, 2
 	note C#, 3
 	octave 2
 	note A#, 3
@@ -613,10 +613,10 @@ Music_GymLeaderBattleDPPt_Ch2_loop:
 	note C_, 3
 	octave 2
 	note C_, 3
-	intensity $C5
+	volume_envelope 12, 5
 	octave 3
 	note C#, 9
-	intensity $C2
+	volume_envelope 12, 2
 	note C#, 3
 	octave 2
 	note A#, 3
@@ -625,10 +625,10 @@ Music_GymLeaderBattleDPPt_Ch2_loop:
 	note C_, 3
 	octave 2
 	note C_, 3
-	intensity $C5
+	volume_envelope 12, 5
 	octave 3
 	note C#, 9
-	intensity $C2
+	volume_envelope 12, 2
 	note C#, 3
 	octave 2
 	note A#, 3
@@ -637,10 +637,10 @@ Music_GymLeaderBattleDPPt_Ch2_loop:
 	note D_, 3
 	octave 2
 	note D_, 3
-	intensity $C5
+	volume_envelope 12, 5
 	octave 3
 	note D#, 9
-	intensity $C2
+	volume_envelope 12, 2
 	note D#, 3
 	note C_, 3
 	octave 2
@@ -649,10 +649,10 @@ Music_GymLeaderBattleDPPt_Ch2_loop:
 	note D_, 3
 	octave 2
 	note D_, 3
-	intensity $C5
+	volume_envelope 12, 5
 	octave 3
 	note D#, 9
-	intensity $C2
+	volume_envelope 12, 2
 	note D#, 3
 	note C_, 3
 	octave 2
@@ -661,10 +661,10 @@ Music_GymLeaderBattleDPPt_Ch2_loop:
 	note D_, 3
 	octave 2
 	note D_, 3
-	intensity $C5
+	volume_envelope 12, 5
 	octave 3
 	note D#, 9
-	intensity $C2
+	volume_envelope 12, 2
 	note D#, 3
 	note C_, 3
 	octave 2
@@ -673,10 +673,10 @@ Music_GymLeaderBattleDPPt_Ch2_loop:
 	note D_, 3
 	octave 2
 	note D_, 3
-	intensity $C5
+	volume_envelope 12, 5
 	octave 3
 	note D#, 9
-	intensity $C2
+	volume_envelope 12, 2
 	note D#, 3
 	note C_, 3
 	duty_cycle 2
@@ -729,10 +729,10 @@ Music_GymLeaderBattleDPPt_Ch2_loop:
 	note __, 8
 	note E_, 4
 	note __, 8
-	intensity $C4
+	volume_envelope 12, 4
 	note C#, 8
 	note F_, 8
-	intensity $C2
+	volume_envelope 12, 2
 	note E_, 4
 	note __, 8
 	note E_, 4
@@ -741,10 +741,10 @@ Music_GymLeaderBattleDPPt_Ch2_loop:
 	note __, 8
 	note E_, 4
 	note __, 8
-	intensity $C4
+	volume_envelope 12, 4
 	note G#, 8
 	note F_, 8
-	intensity $C2
+	volume_envelope 12, 2
 	note E_, 4
 	note __, 8
 	note E_, 4
@@ -766,7 +766,7 @@ Music_GymLeaderBattleDPPt_Ch2_loop:
 	octave 3
 	note A#, 2
 	duty_cycle 1
-	intensity $C4
+	volume_envelope 12, 4
 	note G_, 4
 	note F_, 4
 	note G_, 4
@@ -831,29 +831,29 @@ Music_GymLeaderBattleDPPt_Ch2_loop:
 	note __, 2
 	note E_, 2
 	note __, 2
-	intensity $C7
+	volume_envelope 12, 7
 	note G_, 16
 	note __, 16
 	note __, 12
-	intensity $C4
+	volume_envelope 12, 4
 	note G_, 8
 	note G#, 6
 	note G_, 6
 	note F_, 6
-	intensity $C7
+	volume_envelope 12, 7
 	note C#, 16
 	note __, 16
 	note __, 2
-	intensity $C4
+	volume_envelope 12, 4
 	note F_, 12
 	note E_, 6
 	note F_, 6
 	note G_, 6
-	intensity $C7
+	volume_envelope 12, 7
 	note G_, 16
 	note __, 16
 	note __, 6
-	intensity $C4
+	volume_envelope 12, 4
 	note G_, 8
 	note_type 8, 12, 4
 	note G#, 4
@@ -861,13 +861,13 @@ Music_GymLeaderBattleDPPt_Ch2_loop:
 	note F_, 4
 	note_type 12, 12, 7
 	note C#, 16
-	intensity $C4
+	volume_envelope 12, 4
 	note F_, 8
 	note_type 8, 12, 4
 	note E_, 4
 	note F_, 4
 	note G_, 4
-	intensity $C7
+	volume_envelope 12, 7
 	note G_, 16
 	note __, 16
 	note __, 4
@@ -877,7 +877,7 @@ Music_GymLeaderBattleDPPt_Ch2_loop:
 	note __, 16
 	note __, 16
 	note __, 16
-	intensity $C2
+	volume_envelope 12, 2
 	note E_, 3
 	note __, 6
 	note E_, 3
@@ -905,7 +905,7 @@ Music_GymLeaderBattleDPPt_Ch2_loop:
 	note C#, 1
 	octave 3
 	note A#, 1
-	intensity $C4
+	volume_envelope 12, 4
 	duty_cycle 1
 	jumpchannel Music_GymLeaderBattleDPPt_Ch2_loop
 

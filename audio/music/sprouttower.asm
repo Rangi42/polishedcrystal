@@ -40,18 +40,18 @@ Music_SproutTower_branch_f6994:
 	note F_, 2
 	note D#, 2
 	note C#, 2
-	intensity $a5
+	volume_envelope 10, 5
 	note C_, 8
-	intensity $a3
+	volume_envelope 10, 3
 	note C#, 2
 	note C_, 2
 	octave 2
 	note A#, 2
 	octave 3
 	note C#, 2
-	intensity $a7
+	volume_envelope 10, 7
 	note C_, 16
-	intensity $a3
+	volume_envelope 10, 3
 	note F_, 4
 	note F_, 4
 	note F#, 4
@@ -77,7 +77,7 @@ Music_SproutTower_Ch2:
 	note D#, 4
 	note D#, 4
 Music_SproutTower_branch_f69dc:
-	intensity $b5
+	volume_envelope 11, 5
 	octave 4
 	note C_, 4
 	octave 3
@@ -92,9 +92,9 @@ Music_SproutTower_branch_f69dc:
 	octave 3
 	note A#, 2
 	note F#, 4
-	intensity $b7
+	volume_envelope 11, 7
 	note F_, 8
-	intensity $b5
+	volume_envelope 11, 5
 	note F#, 4
 	note A#, 4
 	octave 4
@@ -109,31 +109,31 @@ Music_SproutTower_branch_f69dc:
 	note D#, 2
 	note C#, 2
 	note C_, 8
-	intensity $b5
+	volume_envelope 11, 5
 	note C#, 2
 	note C_, 2
 	octave 3
 	note A#, 2
 	note F#, 2
-	intensity $b7
+	volume_envelope 11, 7
 	note A#, 8
-	intensity $b5
+	volume_envelope 11, 5
 	octave 4
 	note C_, 2
 	octave 3
 	note A#, 2
 	note F#, 2
 	note D#, 2
-	intensity $b7
+	volume_envelope 11, 7
 	note F_, 8
-	intensity $b3
+	volume_envelope 11, 3
 	note F_, 4
 	note F_, 4
 	note F#, 4
 	note A#, 2
 	note F_, 1
 	note A#, 1
-	intensity $b7
+	volume_envelope 11, 7
 	octave 4
 	note C_, 16
 	note __, 16

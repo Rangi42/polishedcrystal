@@ -21,15 +21,15 @@ Music_RoadToReversalMountainB2W2_Ch1:
 	callchannel Music_RoadToReversalMountainB2W2_Ch1_branch_1
 	octave 3
 	note A_, 15
-	intensity $67
+	volume_envelope 6, 7
 	note A_, 3
-	intensity $60
+	volume_envelope 6, 0
 	note A_, 12
 	note A#, 6
 	callchannel Music_RoadToReversalMountainB2W2_Ch1_branch_1
 	callchannel Music_RoadToReversalMountainB2W2_Ch1_branch_1
 	note D_, 15
-	intensity $67
+	volume_envelope 6, 7
 	note D_, 3
 	note __, 16
 	note __, 16
@@ -98,12 +98,12 @@ Music_RoadToReversalMountainB2W2_Ch2:
 	note D#, 1
 	note_type 12, 10, 0
 	note D_, 6
-	intensity $a7
+	volume_envelope 10, 7
 	note D_, 11
 	duty_cycle 3
-	intensity $70
+	volume_envelope 7, 0
 	note C_, 12
-	intensity $77
+	volume_envelope 7, 7
 	note C_, 6
 	duty_cycle 0
 	octave 2
@@ -141,7 +141,7 @@ Music_RoadToReversalMountainB2W2_Ch2:
 	note_type 12, 10, 6
 	octave 2
 	note A_, 10
-	intensity $a4
+	volume_envelope 10, 4
 	octave 3
 	note C_, 2
 	note C#, 2

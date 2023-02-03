@@ -26,12 +26,12 @@ Music_MountChimneyRSE_Ch1:
 	octave 2
 	note G_, 4
 	note A#, 8
-	intensity $87
+	volume_envelope 8, 7
 	note A#, 9
 Music_MountChimneyRSE_Ch1_loop_main:
 	callchannel Music_MountChimneyRSE_Ch1_branch_1
 	octave 4
-	intensity $a2
+	volume_envelope 10, 2
 	note F#, 2
 	note F_, 1
 	note E_, 1
@@ -120,7 +120,7 @@ Music_MountChimneyRSE_Ch1_loop_4:
 	note A#, 1
 	note G#, 3
 	duty_cycle 1
-	intensity $a7
+	volume_envelope 10, 7
 	octave 2
 	note A#, 12
 	note G#, 2
@@ -137,7 +137,7 @@ Music_MountChimneyRSE_Ch1_loop_4:
 	note D#, 2
 	note E_, 2
 	duty_cycle 0
-	intensity $a2
+	volume_envelope 10, 2
 	note F_, 2
 	note F_, 2
 	note F_, 2
@@ -151,50 +151,50 @@ Music_MountChimneyRSE_Ch1_loop_4:
 	note G#, 4
 	callchannel Music_MountChimneyRSE_Ch1_branch_1
 	octave 3
-	intensity $a2
+	volume_envelope 10, 2
 	note D#, 2
 	note D#, 2
 	note A#, 2
 	note A_, 2
-	intensity $a4
+	volume_envelope 10, 4
 	note G#, 4
-	intensity $a2
+	volume_envelope 10, 2
 	note G_, 4
 	note G_, 2
 	note G#, 4
 	note G#, 2
-	intensity $a7
+	volume_envelope 10, 7
 	note G_, 8
-	intensity $a2
+	volume_envelope 10, 2
 	note D#, 2
 	note D#, 2
 	note A#, 2
 	note A_, 2
-	intensity $a4
+	volume_envelope 10, 4
 	note G#, 4
-	intensity $a2
+	volume_envelope 10, 2
 	note G_, 4
 	note G_, 2
 	note G#, 4
 	note G#, 2
-	intensity $a7
+	volume_envelope 10, 7
 	note B_, 8
-	intensity $a2
+	volume_envelope 10, 2
 	note D#, 2
 	note D#, 2
 	note A#, 2
 	note A_, 2
-	intensity $a4
+	volume_envelope 10, 4
 	note G#, 4
-	intensity $a2
+	volume_envelope 10, 2
 	note G_, 4
 	note D#, 2
 	note D#, 2
 	note A#, 2
 	note A_, 2
-	intensity $a4
+	volume_envelope 10, 4
 	note G#, 4
-	intensity $a2
+	volume_envelope 10, 2
 	note G_, 4
 	note D#, 2
 	note D#, 2
@@ -228,10 +228,10 @@ Music_MountChimneyRSE_Ch1_branch_1:
 	note A_, 2
 	note A#, 4
 	note A#, 2
-	intensity $a5
+	volume_envelope 10, 5
 	note G#, 4
 	note F_, 4
-	intensity $a2
+	volume_envelope 10, 2
 	note B_, 2
 	note B_, 2
 	note A#, 2
@@ -241,23 +241,23 @@ Music_MountChimneyRSE_Ch1_branch_1:
 	note D#, 2
 	note D#, 4
 	note D#, 4
-	intensity $a4
+	volume_envelope 10, 4
 	note D_, 4
 	octave 3
 	note B_, 2
 	octave 4
-	intensity $a2
+	volume_envelope 10, 2
 	note D_, 5
 	octave 3
 	note E_, 1
 	note D#, 4
 	note G#, 4
 	note G_, 4
-	intensity $a5
+	volume_envelope 10, 5
 	note A#, 8
 	note G#, 4
 	note F_, 4
-	intensity $a2
+	volume_envelope 10, 2
 	note F#, 2
 	note G#, 4
 	note G#, 6
@@ -281,11 +281,11 @@ Music_MountChimneyRSE_Ch1_branch_1:
 	note A_, 1
 	note G_, 16
 	note __, 3
-	intensity $a3
+	volume_envelope 10, 3
 	note D_, 2
 	note D#, 8
 	octave 3
-	intensity $a2
+	volume_envelope 10, 2
 	note G_, 4
 	note D#, 2
 	note G_, 2
@@ -298,14 +298,14 @@ Music_MountChimneyRSE_Ch1_branch_1:
 	note G_, 2
 	note A#, 2
 	octave 3
-	intensity $a0
+	volume_envelope 10, 0
 	note D#, 16
-	intensity $a7
+	volume_envelope 10, 7
 	note D#, 16
 	note __, 16
 	note __, 16
 	note __, 4
-	intensity $a2
+	volume_envelope 10, 2
 	note A#, 2
 	note A_, 2
 	note G#, 4
@@ -313,10 +313,10 @@ Music_MountChimneyRSE_Ch1_branch_1:
 	note A_, 2
 	note A#, 4
 	note A#, 2
-	intensity $a5
+	volume_envelope 10, 5
 	note G#, 4
 	note F_, 4
-	intensity $a2
+	volume_envelope 10, 2
 	note B_, 2
 	note B_, 2
 	note A#, 2
@@ -326,10 +326,10 @@ Music_MountChimneyRSE_Ch1_branch_1:
 	note D#, 2
 	note D#, 4
 	note D#, 4
-	intensity $a4
+	volume_envelope 10, 4
 	note D_, 4
 	octave 3
-	intensity $a2
+	volume_envelope 10, 2
 	note B_, 2
 	octave 4
 	note D_, 2
@@ -340,11 +340,11 @@ Music_MountChimneyRSE_Ch1_branch_1:
 	note A_, 2
 	note G#, 4
 	note G_, 4
-	intensity $a5
+	volume_envelope 10, 5
 	note A#, 8
 	note G#, 4
 	note F_, 4
-	intensity $a2
+	volume_envelope 10, 2
 	note F#, 2
 	note G#, 4
 	note G#, 6
@@ -383,9 +383,9 @@ Music_MountChimneyRSE_Ch1_branch_1:
 	note G_, 2
 	note A#, 2
 	octave 3
-	intensity $a0
+	volume_envelope 10, 0
 	note D#, 16
-	intensity $a7
+	volume_envelope 10, 7
 	note D#, 16
 	note __, 16
 	note __, 16
@@ -408,75 +408,75 @@ Music_MountChimneyRSE_Ch2:
 	octave 3
 	note C#, 4
 	note D#, 8
-	intensity $87
+	volume_envelope 8, 7
 	note D#, 9
 Music_MountChimneyRSE_Ch2_loop:
 	callchannel Music_MountChimneyRSE_Ch2_branch_1
 	octave 4
-	intensity $c0
+	volume_envelope 12, 0
 	note D#, 8
-	intensity $c6
+	volume_envelope 12, 6
 	note D#, 12
-	intensity $c2
+	volume_envelope 12, 2
 	note C#, 8
 	octave 3
 	note G#, 4
-	intensity $c0
+	volume_envelope 12, 0
 	note A#, 16
-	intensity $c7
+	volume_envelope 12, 7
 	note A#, 16
 	octave 4
-	intensity $c0
+	volume_envelope 12, 0
 	note C#, 16
-	intensity $c4
+	volume_envelope 12, 4
 	note C#, 8
-	intensity $c2
+	volume_envelope 12, 2
 	octave 3
 	note B_, 4
 	octave 4
 	note C#, 2
 	octave 3
 	note B_, 2
-	intensity $c5
+	volume_envelope 12, 5
 	note A#, 2
 	octave 4
 	note C_, 1
 	octave 3
 	note A#, 1
-	intensity $c0
+	volume_envelope 12, 0
 	note G#, 16
-	intensity $c5
+	volume_envelope 12, 5
 	note G#, 12
-	intensity $c0
+	volume_envelope 12, 0
 	note F#, 4
-	intensity $c5
+	volume_envelope 12, 5
 	note F#, 8
 	note F_, 2
 	note F#, 2
 	note G#, 8
 	note D#, 8
-	intensity $c7
+	volume_envelope 12, 7
 	note G#, 12
 	note G_, 2
 	note G#, 2
-	intensity $c0
+	volume_envelope 12, 0
 	note A#, 8
-	intensity $a0
+	volume_envelope 10, 0
 	note G#, 1
 	note G_, 1
-	intensity $90
+	volume_envelope 9, 0
 	note F_, 1
-	intensity $70
+	volume_envelope 7, 0
 	note D#, 1
-	intensity $50
+	volume_envelope 5, 0
 	note C#, 1
-	intensity $40
+	volume_envelope 4, 0
 	note C_, 1
 	octave 2
-	intensity $30
+	volume_envelope 3, 0
 	note A#, 1
 	note __, 3
-	intensity $c2
+	volume_envelope 12, 2
 	octave 3
 	note A#, 4
 	note F_, 2
@@ -487,52 +487,52 @@ Music_MountChimneyRSE_Ch2_loop:
 	octave 4
 	note D_, 2
 	note F_, 4
-	intensity $a2
+	volume_envelope 10, 2
 	callchannel Music_MountChimneyRSE_Ch2_branch_1
 	octave 3
-	intensity $a2
+	volume_envelope 10, 2
 	note G#, 2
 	note G#, 2
 	octave 4
 	note F#, 2
 	note F_, 2
-	intensity $a4
+	volume_envelope 10, 4
 	note D#, 4
-	intensity $a2
+	volume_envelope 10, 2
 	note D_, 4
 	note D_, 2
 	note D#, 4
 	note D#, 2
-	intensity $a7
+	volume_envelope 10, 7
 	note D_, 8
 	duty_cycle 0
 	octave 3
-	intensity $a2
+	volume_envelope 10, 2
 	note G#, 2
 	note G#, 2
 	octave 4
 	note F#, 2
 	note F_, 2
-	intensity $a4
+	volume_envelope 10, 4
 	note D#, 4
-	intensity $a2
+	volume_envelope 10, 2
 	note D_, 4
 	note D_, 2
 	note D#, 4
 	note D#, 2
-	intensity $a7
+	volume_envelope 10, 7
 	note F#, 8
 	duty_cycle 1
 	octave 3
-	intensity $a2
+	volume_envelope 10, 2
 	note G#, 2
 	note G#, 2
 	octave 4
 	note F#, 2
 	note F_, 2
-	intensity $a4
+	volume_envelope 10, 4
 	note D#, 4
-	intensity $a2
+	volume_envelope 10, 2
 	note D_, 4
 	duty_cycle 0
 	octave 3
@@ -541,9 +541,9 @@ Music_MountChimneyRSE_Ch2_loop:
 	octave 4
 	note F#, 2
 	note F_, 2
-	intensity $a4
+	volume_envelope 10, 4
 	note D#, 4
-	intensity $a2
+	volume_envelope 10, 2
 	note D_, 4
 	duty_cycle 1
 	octave 3
@@ -588,10 +588,10 @@ Music_MountChimneyRSE_Ch2_branch_1:
 	note F_, 2
 	note F#, 4
 	note F#, 2
-	intensity $a5
+	volume_envelope 10, 5
 	note F_, 4
 	note C#, 4
-	intensity $a2
+	volume_envelope 10, 2
 	note D#, 2
 	note D#, 2
 	note D_, 2
@@ -602,10 +602,10 @@ Music_MountChimneyRSE_Ch2_branch_1:
 	note B_, 2
 	note B_, 4
 	note B_, 4
-	intensity $a4
+	volume_envelope 10, 4
 	note A#, 4
 	note G_, 2
-	intensity $a2
+	volume_envelope 10, 2
 	note A#, 5
 	duty_cycle 3
 	note A_, 1
@@ -614,25 +614,25 @@ Music_MountChimneyRSE_Ch2_branch_1:
 	note D#, 4
 	note D_, 3
 	note G_, 1
-	intensity $a5
+	volume_envelope 10, 5
 	note F#, 8
 	note F_, 4
 	note C#, 4
-	intensity $a2
+	volume_envelope 10, 2
 	note D_, 2
 	note D#, 4
 	note D#, 5
 	note G_, 1
-	intensity $a0
+	volume_envelope 10, 0
 	note G#, 8
-	intensity $a6
+	volume_envelope 10, 6
 	note G#, 12
-	intensity $a2
+	volume_envelope 10, 2
 	note D#, 2
 	octave 3
 	note A#, 2
 	note G_, 2
-	intensity $a1
+	volume_envelope 10, 1
 	note D#, 4
 	note C#, 4
 	octave 2
@@ -640,12 +640,12 @@ Music_MountChimneyRSE_Ch2_branch_1:
 	note G_, 4
 	note D#, 2
 	octave 3
-	intensity $a3
+	volume_envelope 10, 3
 	note D_, 2
 	note D#, 8
 	duty_cycle 0
 	octave 2
-	intensity $a2
+	volume_envelope 10, 2
 	note G_, 4
 	note D#, 2
 	note G_, 2
@@ -660,7 +660,7 @@ Music_MountChimneyRSE_Ch2_branch_1:
 	note G_, 2
 	note_type 12, 10, 0
 	note A#, 8
-	intensity $a7
+	volume_envelope 10, 7
 	note A#, 9
 	note_type 6, 10, 2
 	duty_cycle 0
@@ -694,10 +694,10 @@ Music_MountChimneyRSE_Ch2_branch_1:
 	note F_, 2
 	note F#, 4
 	note F#, 2
-	intensity $a5
+	volume_envelope 10, 5
 	note F_, 4
 	note C#, 4
-	intensity $a2
+	volume_envelope 10, 2
 	note D#, 2
 	note D#, 2
 	note D_, 2
@@ -708,9 +708,9 @@ Music_MountChimneyRSE_Ch2_branch_1:
 	note B_, 2
 	note B_, 4
 	note B_, 4
-	intensity $a4
+	volume_envelope 10, 4
 	note A#, 4
-	intensity $a2
+	volume_envelope 10, 2
 	note G_, 2
 	note A#, 2
 	duty_cycle 3
@@ -722,25 +722,25 @@ Music_MountChimneyRSE_Ch2_branch_1:
 	note D#, 4
 	note D_, 3
 	note G_, 1
-	intensity $a5
+	volume_envelope 10, 5
 	note F#, 8
 	note F_, 4
 	note C#, 4
-	intensity $a2
+	volume_envelope 10, 2
 	note D_, 2
 	note D#, 4
 	note D#, 5
 	note G_, 1
-	intensity $a0
+	volume_envelope 10, 0
 	note G#, 8
-	intensity $a7
+	volume_envelope 10, 7
 	note G#, 12
-	intensity $a2
+	volume_envelope 10, 2
 	note D#, 2
 	octave 3
 	note A#, 2
 	note G_, 2
-	intensity $a1
+	volume_envelope 10, 1
 	note D#, 4
 	note C#, 4
 	octave 2
@@ -748,12 +748,12 @@ Music_MountChimneyRSE_Ch2_branch_1:
 	note G_, 4
 	note D#, 2
 	octave 3
-	intensity $a3
+	volume_envelope 10, 3
 	note D_, 2
 	note D#, 8
 	octave 2
 	duty_cycle 0
-	intensity $a2
+	volume_envelope 10, 2
 	note G_, 4
 	note D#, 2
 	note G_, 2
@@ -766,20 +766,20 @@ Music_MountChimneyRSE_Ch2_branch_1:
 	note D_, 2
 	note D#, 2
 	note G_, 2
-	intensity $a0
+	volume_envelope 10, 0
 	note A#, 16
-	intensity $a7
+	volume_envelope 10, 7
 	note A#, 16
-	intensity $60
+	volume_envelope 6, 0
 	octave 2
 	note D#, 8
-	intensity $70
+	volume_envelope 7, 0
 	note A#, 8
 	octave 3
-	intensity $80
+	volume_envelope 8, 0
 	note G_, 8
 	octave 4
-	intensity $90
+	volume_envelope 9, 0
 	note C#, 8
 	endchannel
 

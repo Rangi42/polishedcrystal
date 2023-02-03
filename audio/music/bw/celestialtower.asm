@@ -201,7 +201,7 @@ Music_CelestialTowerBW_NoIntro_Ch1_loop_1:
 	note C_, 1
 	note_type 6, 7, 0
 	note F_, 16
-	intensity $77
+	volume_envelope 7, 7
 	note F_, 15
 	jumpchannel Music_CelestialTowerBW_NoIntro_Ch1
 
@@ -391,7 +391,7 @@ Music_CelestialTowerBW_NoIntro_Ch2_loop_1:
 	duty_cycle 3
 	note_type 12, 6, 0
 	note A#, 8
-	intensity $67
+	volume_envelope 6, 7
 	note A#, 8
 	jumpchannel Music_CelestialTowerBW_NoIntro_Ch2
 
@@ -421,13 +421,13 @@ Music_CelestialTowerBW_NoIntro_Ch3:
 	octave 4
 	note F#, 16
 	note F#, 8
-	intensity $26
+	volume_envelope 2, 6
 	note F#, 8
-	intensity $16
+	volume_envelope 1, 6
 	note F_, 16
-	intensity $26
+	volume_envelope 2, 6
 	note F_, 10
-	intensity $16
+	volume_envelope 1, 6
 	note A#, 2
 	octave 5
 	note C#, 2
@@ -443,14 +443,14 @@ Music_CelestialTowerBW_NoIntro_Ch3:
 	note D#, 1
 	note D_, 16
 	note D_, 8
-	intensity $26
+	volume_envelope 2, 6
 	note D_, 4
-	intensity $36
+	volume_envelope 3, 6
 	note D_, 4
-	intensity $10
+	volume_envelope 1, 0
 	octave 1
 	note D#, 2
-	intensity $20
+	volume_envelope 2, 0
 	octave 2
 	note B_, 2
 	octave 3
@@ -458,81 +458,81 @@ Music_CelestialTowerBW_NoIntro_Ch3:
 	note D#, 4
 	note __, 6
 	octave 1
-	intensity $10
+	volume_envelope 1, 0
 	note G_, 2
 	octave 2
-	intensity $20
+	volume_envelope 2, 0
 	note B_, 2
 	octave 3
 	note C#, 2
 	note D#, 4
 	note __, 6
 	octave 1
-	intensity $10
+	volume_envelope 1, 0
 	note D#, 2
 	octave 2
-	intensity $20
+	volume_envelope 2, 0
 	note B_, 2
 	octave 3
 	note C#, 2
 	note D#, 4
 	note __, 6
 	octave 1
-	intensity $10
+	volume_envelope 1, 0
 	note E_, 2
 	octave 2
-	intensity $20
+	volume_envelope 2, 0
 	note B_, 2
 	octave 3
 	note D#, 2
 	note F_, 4
 	note __, 6
 	octave 1
-	intensity $10
+	volume_envelope 1, 0
 	note G_, 2
 	octave 2
-	intensity $20
+	volume_envelope 2, 0
 	note B_, 2
 	octave 3
 	note C#, 2
 	note D#, 4
 	note __, 6
 	octave 1
-	intensity $10
+	volume_envelope 1, 0
 	note C_, 2
 	octave 2
-	intensity $20
+	volume_envelope 2, 0
 	note B_, 2
 	octave 3
 	note C#, 2
 	note D#, 4
 	note __, 6
 	octave 1
-	intensity $10
+	volume_envelope 1, 0
 	note D#, 2
 	octave 2
-	intensity $20
+	volume_envelope 2, 0
 	note B_, 2
 	octave 3
 	note C#, 2
 	note D#, 4
 	note __, 6
 	octave 1
-	intensity $10
+	volume_envelope 1, 0
 	note E_, 2
 	octave 2
-	intensity $20
+	volume_envelope 2, 0
 	note B_, 2
 	octave 3
 	note D#, 2
 	note F_, 4
 	note __, 6
-	intensity $10
+	volume_envelope 1, 0
 	octave 2
 	note D_, 16
-	intensity $20
+	volume_envelope 2, 0
 	note D_, 8
-	intensity $30
+	volume_envelope 3, 0
 	note D_, 8
 	jumpchannel Music_CelestialTowerBW_NoIntro_Ch3
 

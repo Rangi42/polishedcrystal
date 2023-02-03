@@ -96,7 +96,7 @@ Music_Route29_branch_f03a5:
 	note G_, 2
 	note G_, 2
 	note F_, 8
-	intensity $b4
+	volume_envelope 11, 4
 	note A_, 4
 	octave 4
 	note C_, 2
@@ -105,31 +105,31 @@ Music_Route29_branch_f03a5:
 	note E_, 4
 	note G_, 2
 	note E_, 2
-	intensity $b2
+	volume_envelope 11, 2
 	note G_, 6
-	intensity $b4
+	volume_envelope 11, 4
 	note F_, 4
 	note A_, 2
 	note G_, 2
 	note F_, 2
-	intensity $b2
+	volume_envelope 11, 2
 	note A_, 4
-	intensity $b4
+	volume_envelope 11, 4
 	note C#, 4
 	note E_, 2
 	note G_, 4
-	intensity $b3
+	volume_envelope 11, 3
 	note E_, 8
-	intensity $b4
+	volume_envelope 11, 4
 	note A_, 2
 	note G_, 2
 	note A_, 2
 	octave 4
 	note C_, 4
-	intensity $b2
+	volume_envelope 11, 2
 	octave 3
 	note A_, 6
-	intensity $b4
+	volume_envelope 11, 4
 	note G_, 2
 	note E_, 2
 	note G_, 2
@@ -143,10 +143,10 @@ Music_Route29_branch_f03a5:
 	octave 3
 	note B_, 2
 	note A_, 2
-	intensity $b2
+	volume_envelope 11, 2
 	note G_, 4
 	note B_, 4
-	intensity $b4
+	volume_envelope 11, 4
 	note G_, 2
 	note E_, 2
 	octave 4
@@ -163,7 +163,7 @@ Music_Route29_branch_f03a5:
 	note C_, 2
 	octave 3
 	note E_, 2
-	intensity $b2
+	volume_envelope 11, 2
 	note C_, 2
 	note G_, 2
 	note G_, 4
@@ -199,7 +199,7 @@ Music_Route29_branch_f0458:
 	note D_, 2
 	octave 3
 	note B_, 2
-	intensity $c4
+	volume_envelope 12, 4
 	octave 4
 	note C_, 8
 	octave 3
@@ -264,10 +264,10 @@ Music_Route29_branch_f0458:
 	note E_, 2
 	note D_, 2
 	note F_, 2
-	intensity $c2
+	volume_envelope 12, 2
 	note E_, 4
 	note D_, 4
-	intensity $c4
+	volume_envelope 12, 4
 	note C_, 2
 	octave 3
 	note G_, 2
@@ -291,7 +291,7 @@ Music_Route29_branch_f0458:
 	note E_, 2
 	octave 3
 	note G_, 2
-	intensity $c2
+	volume_envelope 12, 2
 	octave 4
 	note C_, 2
 	note C_, 2

@@ -15,16 +15,16 @@ Music_LookYoungster_Ch1:
 	note G#, 1
 	note A_, 1
 	note A#, 1
-	intensity $3e
+	volume_envelope 3, -6
 	note B_, 16
-	intensity $c3
+	volume_envelope 12, 3
 	octave 4
 	note C_, 1
 	note __, 3
 	note C_, 4
 	note __, 2
 	note C_, 6
-	intensity $b3
+	volume_envelope 11, 3
 Music_LookYoungster_branch_f66ea:
 	note __, 2
 	octave 3
@@ -71,11 +71,11 @@ Music_LookYoungster_Ch2:
 	note C_, 1
 	note C#, 1
 	note D_, 1
-	intensity $3e
+	volume_envelope 3, -6
 	note_type 12, 2, -6
 	note G_, 16
 	note_type 12, 11, 3
-	intensity $c3
+	volume_envelope 12, 3
 	note F_, 1
 	note __, 3
 	note F_, 4
@@ -83,7 +83,7 @@ Music_LookYoungster_Ch2:
 	note F#, 6
 Music_LookYoungster_branch_f672f:
 	duty_cycle 3
-	intensity $b3
+	volume_envelope 11, 3
 	note __, 2
 	octave 3
 	note B_, 1
@@ -101,7 +101,7 @@ Music_LookYoungster_branch_f672f:
 	note __, 3
 	note F_, 1
 	note __, 1
-	intensity $97
+	volume_envelope 9, 7
 	duty_cycle 2
 	note D#, 1
 	note F_, 1
@@ -119,7 +119,7 @@ Music_LookYoungster_branch_f672f:
 	note G#, 1
 	note __, 1
 	duty_cycle 3
-	intensity $b3
+	volume_envelope 11, 3
 	note __, 2
 	note B_, 1
 	note __, 1
@@ -137,7 +137,7 @@ Music_LookYoungster_branch_f672f:
 	note F_, 1
 	note __, 1
 	duty_cycle 2
-	intensity $97
+	volume_envelope 9, 7
 	note G#, 1
 	note A#, 1
 	note G#, 1
@@ -179,7 +179,7 @@ Music_LookYoungster_Ch3:
 	octave 3
 	note G_, 1
 	note __, 1
-	intensity $15
+	volume_envelope 1, 5
 	octave 2
 	note G_, 1
 	note __, 1
@@ -191,7 +191,7 @@ Music_LookYoungster_Ch3:
 	note D_, 4
 	note __, 2
 	note G#, 6
-	intensity $25
+	volume_envelope 2, 5
 Music_LookYoungster_branch_f67ae:
 	octave 2
 	note G_, 1

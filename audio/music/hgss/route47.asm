@@ -25,26 +25,26 @@ Music_Route47HGSS_Ch1_loop_1:
 	callchannel Music_Route47HGSS_Ch1_branch_1
 	callchannel Music_Route47HGSS_Ch1_branch_1
 	callchannel Music_Route47HGSS_Ch1_branch_1
-	intensity $82
+	volume_envelope 8, 2
 	octave 4
 	note C_, 2
-	intensity $62
+	volume_envelope 6, 2
 	octave 3
 	note C_, 2
-	intensity $42
+	volume_envelope 4, 2
 	note C_, 2
-	intensity $22
+	volume_envelope 2, 2
 	note C_, 2
 	loopchannel 4, Music_Route47HGSS_Ch1_loop_1
-	intensity $82
+	volume_envelope 8, 2
 	octave 4
 	note C_, 2
-	intensity $62
+	volume_envelope 6, 2
 	octave 3
 	note C_, 2
-	intensity $42
+	volume_envelope 4, 2
 	note C_, 2
-	intensity $22
+	volume_envelope 2, 2
 	note C_, 2
 	note_type 12, 9, 3
 	duty_cycle 2
@@ -102,19 +102,19 @@ Music_Route47HGSS_Ch1_loop_1:
 	note C_, 2
 	note C#, 2
 	duty_cycle 0
-	intensity $62
+	volume_envelope 6, 2
 	octave 2
 	note C_, 1
 	note C_, 1
 	duty_cycle 2
-	intensity $93
+	volume_envelope 9, 3
 	octave 3
 	note C_, 2
 	octave 2
 	note A#, 2
 	note A_, 2
 	duty_cycle 0
-	intensity $62
+	volume_envelope 6, 2
 	octave 3
 	note C_, 1
 	note C_, 3
@@ -463,89 +463,89 @@ Music_Route47HGSS_Ch1_loop_1:
 	note A_, 1
 	note __, 2
 	octave 3
-	intensity $52
+	volume_envelope 5, 2
 	note A_, 1
 	octave 4
 	note A_, 1
 	note __, 2
 	octave 3
-	intensity $22
+	volume_envelope 2, 2
 	note A_, 1
 	octave 4
 	note A_, 1
 	note __, 2
 	octave 3
-	intensity $82
+	volume_envelope 8, 2
 	note C_, 1
 	octave 4
 	note C_, 1
 	note __, 2
 	octave 3
-	intensity $52
+	volume_envelope 5, 2
 	note C_, 1
 	octave 4
 	note C_, 1
 	note __, 2
 	octave 3
-	intensity $22
+	volume_envelope 2, 2
 	note C_, 1
 	octave 4
 	note C_, 1
 	note __, 2
 	octave 3
-	intensity $12
+	volume_envelope 1, 2
 	note C_, 1
 	octave 4
 	note C_, 1
 	note __, 2
 	octave 3
-	intensity $12
+	volume_envelope 1, 2
 	note C_, 1
 	octave 4
 	note C_, 1
 	note __, 2
 	octave 3
-	intensity $82
+	volume_envelope 8, 2
 	note G_, 1
 	octave 4
 	note G_, 1
 	note __, 2
 	octave 3
-	intensity $52
+	volume_envelope 5, 2
 	note G_, 1
 	octave 4
 	note G_, 1
 	note __, 2
 	octave 3
-	intensity $22
+	volume_envelope 2, 2
 	note G_, 1
 	octave 4
 	note G_, 1
 	note __, 2
 	octave 2
-	intensity $82
+	volume_envelope 8, 2
 	note A#, 1
 	octave 3
 	note A#, 1
 	note __, 2
 	octave 2
-	intensity $52
+	volume_envelope 5, 2
 	note A#, 1
 	octave 3
 	note A#, 1
 	note __, 2
 	octave 2
-	intensity $22
+	volume_envelope 2, 2
 	note A#, 1
 	octave 3
 	note A#, 1
 	note __, 2
-	intensity $82
+	volume_envelope 8, 2
 	note G_, 1
 	octave 2
 	note G_, 1
 	note __, 2
-	intensity $52
+	volume_envelope 5, 2
 	note G_, 1
 	octave 3
 	note G_, 1
@@ -553,28 +553,28 @@ Music_Route47HGSS_Ch1_loop_1:
 	jumpchannel Music_Route47HGSS_Ch1_loop_main
 
 Music_Route47HGSS_Ch1_branch_1:
-	intensity $82
+	volume_envelope 8, 2
 	octave 4
 	note C_, 2
-	intensity $62
+	volume_envelope 6, 2
 	octave 3
 	note C_, 1
-	intensity $42
+	volume_envelope 4, 2
 	octave 4
 	note C_, 2
-	intensity $22
+	volume_envelope 2, 2
 	octave 3
 	note C_, 1
 	endchannel
 
 Music_Route47HGSS_Ch1_branch_2:
 	duty_cycle 0
-	intensity $62
+	volume_envelope 6, 2
 	octave 3
 	note C_, 1
 	note C_, 1
 	duty_cycle 2
-	intensity $93
+	volume_envelope 9, 3
 	endchannel
 
 Music_Route47HGSS_Ch2:
@@ -586,21 +586,21 @@ Music_Route47HGSS_Ch2:
 	note C_, 1
 	octave 5
 	note G_, 1
-	intensity $62
+	volume_envelope 6, 2
 	note F_, 1
 	note G_, 1
-	intensity $72
+	volume_envelope 7, 2
 	note F_, 1
 	note C_, 1
-	intensity $82
+	volume_envelope 8, 2
 	note F_, 1
 	note C_, 1
-	intensity $92
+	volume_envelope 9, 2
 	octave 4
 	note A#, 1
 	octave 5
 	note C_, 1
-	intensity $a2
+	volume_envelope 10, 2
 	octave 4
 	note G_, 1
 	note C_, 1
@@ -653,7 +653,7 @@ Music_Route47HGSS_Ch2_loop:
 	note G_, 1
 	note F_, 2
 	duty_cycle 3
-	intensity $b7
+	volume_envelope 11, 7
 	octave 3
 	note G_, 4
 	note A_, 4
@@ -688,7 +688,7 @@ Music_Route47HGSS_Ch2_loop:
 	note F_, 2
 	note G_, 8
 	note F_, 5
-	intensity $84
+	volume_envelope 8, 4
 	octave 5
 	note C_, 1
 	octave 4
@@ -710,250 +710,250 @@ Music_Route47HGSS_Ch2_loop:
 	note __, 4
 	duty_cycle 2
 	octave 4
-	intensity $a7
+	volume_envelope 10, 7
 	note C_, 4
-	intensity $b3
+	volume_envelope 11, 3
 	note F_, 3
-	intensity $63
+	volume_envelope 6, 3
 	note F_, 3
-	intensity $b3
+	volume_envelope 11, 3
 	note G_, 3
-	intensity $63
+	volume_envelope 6, 3
 	note G_, 1
-	intensity $b3
+	volume_envelope 11, 3
 	note F_, 3
-	intensity $63
+	volume_envelope 6, 3
 	note F_, 1
-	intensity $b3
+	volume_envelope 11, 3
 	note E_, 2
 	octave 5
 	note C_, 3
-	intensity $63
+	volume_envelope 6, 3
 	note C_, 1
 	octave 4
-	intensity $b3
+	volume_envelope 11, 3
 	note A#, 3
-	intensity $63
+	volume_envelope 6, 3
 	note A#, 1
-	intensity $b3
+	volume_envelope 11, 3
 	note A_, 3
-	intensity $63
+	volume_envelope 6, 3
 	note A_, 1
-	intensity $b3
+	volume_envelope 11, 3
 	note G_, 3
-	intensity $63
+	volume_envelope 6, 3
 	note G_, 1
-	intensity $b3
+	volume_envelope 11, 3
 	note F_, 3
-	intensity $63
+	volume_envelope 6, 3
 	note F_, 3
-	intensity $b3
+	volume_envelope 11, 3
 	note G_, 3
-	intensity $63
+	volume_envelope 6, 3
 	note G_, 1
-	intensity $b3
+	volume_envelope 11, 3
 	note F_, 3
-	intensity $63
+	volume_envelope 6, 3
 	note F_, 1
-	intensity $b3
+	volume_envelope 11, 3
 	note E_, 2
 	note A_, 3
-	intensity $63
+	volume_envelope 6, 3
 	note A_, 1
-	intensity $b3
+	volume_envelope 11, 3
 	note G_, 3
-	intensity $63
+	volume_envelope 6, 3
 	note G_, 1
-	intensity $b3
+	volume_envelope 11, 3
 	note F_, 3
-	intensity $63
+	volume_envelope 6, 3
 	note F_, 1
-	intensity $b3
+	volume_envelope 11, 3
 	note E_, 3
-	intensity $63
+	volume_envelope 6, 3
 	note E_, 1
-	intensity $b3
+	volume_envelope 11, 3
 	note D_, 3
-	intensity $63
+	volume_envelope 6, 3
 	note D_, 3
-	intensity $b3
+	volume_envelope 11, 3
 	note F_, 3
-	intensity $63
+	volume_envelope 6, 3
 	note F_, 1
-	intensity $b3
+	volume_envelope 11, 3
 	note E_, 3
-	intensity $63
+	volume_envelope 6, 3
 	note E_, 1
-	intensity $b3
+	volume_envelope 11, 3
 	note F_, 2
 	note C_, 3
-	intensity $63
+	volume_envelope 6, 3
 	note C_, 3
-	intensity $b3
+	volume_envelope 11, 3
 	note F_, 3
-	intensity $63
+	volume_envelope 6, 3
 	note F_, 1
-	intensity $b3
+	volume_envelope 11, 3
 	note E_, 3
-	intensity $63
+	volume_envelope 6, 3
 	note E_, 1
-	intensity $b3
+	volume_envelope 11, 3
 	note F_, 2
 	note G#, 3
-	intensity $63
+	volume_envelope 6, 3
 	note G#, 1
-	intensity $b3
+	volume_envelope 11, 3
 	note A#, 3
-	intensity $63
+	volume_envelope 6, 3
 	note A#, 1
 	octave 5
-	intensity $b3
+	volume_envelope 11, 3
 	note C_, 3
-	intensity $63
+	volume_envelope 6, 3
 	note C_, 1
 	octave 4
-	intensity $b3
+	volume_envelope 11, 3
 	note C_, 3
-	intensity $63
+	volume_envelope 6, 3
 	note C_, 1
-	intensity $b3
+	volume_envelope 11, 3
 	note F_, 3
-	intensity $63
+	volume_envelope 6, 3
 	note F_, 1
-	intensity $b3
+	volume_envelope 11, 3
 	note E_, 3
-	intensity $63
+	volume_envelope 6, 3
 	note E_, 1
-	intensity $b3
+	volume_envelope 11, 3
 	note A_, 3
-	intensity $63
+	volume_envelope 6, 3
 	note A_, 1
-	intensity $b3
+	volume_envelope 11, 3
 	note G_, 3
-	intensity $63
+	volume_envelope 6, 3
 	note G_, 1
 	octave 1
-	intensity $70
+	volume_envelope 7, 0
 	note F_, 8
-	intensity $77
+	volume_envelope 7, 7
 	note F_, 8
-	intensity $70
+	volume_envelope 7, 0
 	octave 2
 	note D_, 4
-	intensity $77
+	volume_envelope 7, 7
 	note D_, 4
-	intensity $70
+	volume_envelope 7, 0
 	note C_, 4
-	intensity $77
+	volume_envelope 7, 7
 	note C_, 4
 	octave 1
-	intensity $70
+	volume_envelope 7, 0
 	note B_, 8
-	intensity $77
+	volume_envelope 7, 7
 	note B_, 8
-	intensity $70
+	volume_envelope 7, 0
 	note A#, 8
-	intensity $77
+	volume_envelope 7, 7
 	note A#, 8
-	intensity $70
+	volume_envelope 7, 0
 	note A_, 8
-	intensity $77
+	volume_envelope 7, 7
 	note A_, 8
-	intensity $70
+	volume_envelope 7, 0
 	octave 2
 	note D_, 8
-	intensity $77
+	volume_envelope 7, 7
 	note D_, 8
 	note_type 3, 10, 2
 	note D_, 2
 	octave 5
-	intensity $82
+	volume_envelope 8, 2
 	note D_, 2
 	octave 4
-	intensity $52
+	volume_envelope 5, 2
 	note A_, 3
 	note F_, 3
 	note D_, 2
 	octave 3
 	note A_, 4
 	octave 4
-	intensity $a2
+	volume_envelope 10, 2
 	note C_, 2
 	octave 5
-	intensity $82
+	volume_envelope 8, 2
 	note C_, 2
 	octave 4
-	intensity $52
+	volume_envelope 5, 2
 	note A_, 3
 	note F_, 3
 	note C_, 2
 	octave 3
 	note A_, 4
-	intensity $a2
+	volume_envelope 10, 2
 	note F_, 2
 	octave 4
-	intensity $82
+	volume_envelope 8, 2
 	note F_, 2
-	intensity $52
+	volume_envelope 5, 2
 	note C_, 3
 	octave 3
 	note A_, 3
 	note F_, 2
 	note D_, 4
-	intensity $a2
+	volume_envelope 10, 2
 	note G_, 2
 	octave 4
-	intensity $82
+	volume_envelope 8, 2
 	note G_, 2
-	intensity $52
+	volume_envelope 5, 2
 	note D_, 3
 	octave 3
 	note A#, 3
 	note G_, 2
 	note D_, 4
 	octave 4
-	intensity $a2
+	volume_envelope 10, 2
 	note C#, 2
 	octave 5
-	intensity $82
+	volume_envelope 8, 2
 	note C#, 2
 	octave 4
-	intensity $52
+	volume_envelope 5, 2
 	note G_, 3
 	note C#, 3
 	octave 3
 	note A#, 2
 	note G_, 4
-	intensity $a2
+	volume_envelope 10, 2
 	note A#, 2
 	octave 4
-	intensity $82
+	volume_envelope 8, 2
 	note A#, 2
-	intensity $52
+	volume_envelope 5, 2
 	note F_, 3
 	note C#, 3
 	octave 3
 	note A#, 2
 	note F_, 4
-	intensity $a2
+	volume_envelope 10, 2
 	note D_, 2
 	octave 4
-	intensity $82
+	volume_envelope 8, 2
 	note D_, 2
 	octave 3
-	intensity $52
+	volume_envelope 5, 2
 	note A#, 3
 	note G_, 3
 	note D_, 2
 	octave 2
 	note A#, 4
 	octave 3
-	intensity $a2
+	volume_envelope 10, 2
 	note E_, 2
 	octave 4
-	intensity $82
+	volume_envelope 8, 2
 	note E_, 2
-	intensity $52
+	volume_envelope 5, 2
 	note C_, 3
 	octave 3
 	note A#, 3
@@ -970,9 +970,9 @@ Music_Route47HGSS_Ch3_loop:
 	note F_, 12
 	note A_, 4
 	note A#, 12
-	intensity $35
+	volume_envelope 3, 5
 	note A#, 4
-	intensity $25
+	volume_envelope 2, 5
 	octave 2
 	note D_, 12
 	note C_, 4
@@ -983,9 +983,9 @@ Music_Route47HGSS_Ch3_loop:
 	note C_, 4
 	octave 1
 	note F_, 12
-	intensity $35
+	volume_envelope 3, 5
 	note F_, 4
-	intensity $25
+	volume_envelope 2, 5
 	note A#, 8
 	octave 2
 	note C_, 8
@@ -1005,47 +1005,47 @@ Music_Route47HGSS_Ch3_loop:
 	note G_, 8
 	note A#, 8
 	note F_, 16
-	intensity $35
+	volume_envelope 3, 5
 	note F_, 12
-	intensity $25
+	volume_envelope 2, 5
 	octave 2
 	note C_, 4
 	octave 1
 	note F_, 12
-	intensity $35
+	volume_envelope 3, 5
 	note F_, 4
-	intensity $25
+	volume_envelope 2, 5
 	note F_, 12
-	intensity $35
+	volume_envelope 3, 5
 	note F_, 4
-	intensity $25
+	volume_envelope 2, 5
 	octave 2
 	note D_, 12
-	intensity $35
+	volume_envelope 3, 5
 	note D_, 4
-	intensity $25
+	volume_envelope 2, 5
 	octave 1
 	note B_, 12
-	intensity $35
+	volume_envelope 3, 5
 	note B_, 4
-	intensity $25
+	volume_envelope 2, 5
 	note A#, 12
-	intensity $35
+	volume_envelope 3, 5
 	note A#, 4
-	intensity $25
+	volume_envelope 2, 5
 	note G#, 12
-	intensity $35
+	volume_envelope 3, 5
 	note G#, 4
-	intensity $25
+	volume_envelope 2, 5
 	note A#, 12
-	intensity $35
+	volume_envelope 3, 5
 	note A#, 4
-	intensity $25
+	volume_envelope 2, 5
 	octave 2
 	note C_, 12
-	intensity $35
+	volume_envelope 3, 5
 	note C_, 4
-	intensity $13
+	volume_envelope 1, 3
 	vibrato $12, $24
 	octave 5
 	note F_, 6
@@ -1083,7 +1083,7 @@ Music_Route47HGSS_Ch3_loop:
 	octave 5
 	note F_, 4
 	vibrato $12, $15
-	intensity $25
+	volume_envelope 2, 5
 	octave 1
 	note G_, 16
 	octave 2

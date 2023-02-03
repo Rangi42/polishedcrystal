@@ -35,18 +35,18 @@ Music_LaverreCityXY_branch_ef2e5:
 	note B_, 8
 	octave 4
 	note C#, 1
-	intensity $A0
+	volume_envelope 10, 0
 	note D_, 7
-	intensity $A7
+	volume_envelope 10, 7
 	note D_, 16
 	note C#, 8
 	octave 3
 	note B_, 8
 	note A_, 8
 	note A_, 1
-	intensity $A0
+	volume_envelope 10, 0
 	note B_, 7
-	intensity $A7
+	volume_envelope 10, 7
 	note B_, 16
 	note_type 12, 10, 7
 	note __, 12
@@ -66,59 +66,59 @@ Music_LaverreCityXY_branch_ef2e5:
 	octave 3
 	note B_, 8
 	octave 4
-	intensity $C0
+	volume_envelope 12, 0
 	note D_, 8
-	intensity $C7
+	volume_envelope 12, 7
 	note D_, 16
 	note C#, 8
 	octave 3
 	note B_, 8
 	note A_, 8
-	intensity $C0
+	volume_envelope 12, 0
 	note B_, 8
-	intensity $C7
+	volume_envelope 12, 7
 	note B_, 16
 	note_type 12, 6, 7
 	note B_, 12
 Music_LaverreCityXY_Ch1_branch_1:
-	intensity $80
+	volume_envelope 8, 0
 	note F#, 12
-	intensity $87
+	volume_envelope 8, 7
 	note F#, 12
-	intensity $80
+	volume_envelope 8, 0
 	note G_, 12
-	intensity $87
+	volume_envelope 8, 7
 	note G_, 12
-	intensity $80
+	volume_envelope 8, 0
 	note F#, 12
-	intensity $87
+	volume_envelope 8, 7
 	note F#, 12
-	intensity $80
+	volume_envelope 8, 0
 	note A#, 12
 	note G#, 12
 	note F#, 12
-	intensity $87
+	volume_envelope 8, 7
 	note F#, 12
-	intensity $80
+	volume_envelope 8, 0
 	note G_, 12
-	intensity $87
+	volume_envelope 8, 7
 	note G_, 12
-	intensity $80
+	volume_envelope 8, 0
 	note F#, 12
-	intensity $87
+	volume_envelope 8, 7
 	note F#, 12
-	intensity $80
+	volume_envelope 8, 0
 	note F#, 12
 	note_type 8, 8, 7
 	duty_cycle 1
 	note B_, 2
 	note A#, 2
 	note G#, 2
-	intensity $A7
+	volume_envelope 10, 7
 	note C#, 2
 	note D#, 2
 	note F_, 2
-	intensity $C7
+	volume_envelope 12, 7
 	note G_, 2
 	note G#, 2
 	note A#, 2
@@ -164,24 +164,24 @@ Music_LaverreCityXY_Ch1_branch_1:
 	octave 4
 	note D#, 4
 	note C#, 4
-	intensity $AF
+	volume_envelope 10, -7
 	note C#, 8
-	intensity $F0
+	volume_envelope 15, 0
 	note C#, 1
 	note __, 3
-	intensity $A7
+	volume_envelope 10, 7
 	octave 3
 	note B_, 4
 	note A#, 2
 	note B_, 1
 	note A#, 1
-	intensity $A0
+	volume_envelope 10, 0
 	note G#, 8
-	intensity $A7
+	volume_envelope 10, 7
 	note G#, 16
 	note __, 16
 	duty_cycle 3
-	intensity $C7
+	volume_envelope 12, 7
 	note B_, 4
 	note A#, 4
 	note G#, 12
@@ -231,37 +231,37 @@ Music_LaverreCityXY_branch_ef3f2:
 	octave 1
 	note B_, 12
 Music_LaverreCityXY_Ch2_branch_1:
-	intensity $50
+	volume_envelope 5, 0
 	note D#, 12
-	intensity $57
+	volume_envelope 5, 7
 	note D#, 12
-	intensity $50
+	volume_envelope 5, 0
 	note E_, 12
-	intensity $57
+	volume_envelope 5, 7
 	note E_, 12
-	intensity $50
+	volume_envelope 5, 0
 	note F#, 12
-	intensity $57
+	volume_envelope 5, 7
 	note F#, 12
-	intensity $50
+	volume_envelope 5, 0
 	note F#, 12
 	note E_, 12
 	note D#, 12
-	intensity $57
+	volume_envelope 5, 7
 	note D#, 12
-	intensity $50
+	volume_envelope 5, 0
 	note E_, 12
-	intensity $57
+	volume_envelope 5, 7
 	note E_, 12
-	intensity $50
+	volume_envelope 5, 0
 	note F#, 12
-	intensity $57
+	volume_envelope 5, 7
 	note F#, 12
-	intensity $50
+	volume_envelope 5, 0
 	note F#, 12
 	note D#, 12
 Music_LaverreCityXY_Ch2_branch_2:
-	intensity $A7
+	volume_envelope 10, 7
 	note G#, 8
 	note G#, 2
 	note __, 2
@@ -305,13 +305,13 @@ Music_LaverreCityXY_Ch2_branch_2:
 	note C#, 2
 	note __, 2
 	note F#, 4
-	intensity $8F
+	volume_envelope 8, -7
 	note F#, 7
 	note __, 1
-	intensity $D0
+	volume_envelope 13, 0
 	note F#, 1
 	note __, 11
-	intensity $A7
+	volume_envelope 10, 7
 	note G#, 8
 	note G#, 2
 	note __, 2

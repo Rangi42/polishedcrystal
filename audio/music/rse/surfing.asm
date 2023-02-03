@@ -16,7 +16,7 @@ Music_SurfRSE_Ch1:
 	note_type 12, 0, 0
 	note __, 12
 Music_SurfRSE_Ch1_loop:
-	intensity $91
+	volume_envelope 9, 1
 	octave 4
 	note C#, 2
 	octave 3
@@ -80,7 +80,7 @@ Music_SurfRSE_Ch1_loop:
 	note C_, 2
 	note C#, 2
 	duty_cycle 1
-	intensity $B4
+	volume_envelope 11, 4
 	octave 3
 	note F#, 4
 	note G#, 4
@@ -89,27 +89,27 @@ Music_SurfRSE_Ch1_loop:
 	note G#, 4
 	note F_, 4
 	note C#, 4
-	intensity $B7
+	volume_envelope 11, 7
 	note G#, 8
-	intensity $B4
+	volume_envelope 11, 4
 	note F_, 4
 	note G#, 4
 	note F_, 4
 	octave 2
 	note B_, 4
-	intensity $B7
+	volume_envelope 11, 7
 	octave 3
 	note G#, 8
-	intensity $B4
+	volume_envelope 11, 4
 	note F_, 4
 	note F#, 4
 	note C#, 4
 	octave 2
 	note A#, 4
-	intensity $B7
+	volume_envelope 11, 7
 	octave 3
 	note F#, 8
-	intensity $B4
+	volume_envelope 11, 4
 	note G#, 4
 	note A_, 4
 	note F#, 4
@@ -120,7 +120,7 @@ Music_SurfRSE_Ch1_loop:
 	octave 4
 	note C#, 2
 	note D#, 4
-	intensity $91
+	volume_envelope 9, 1
 	note F_, 2
 	octave 3
 	note F_, 2
@@ -171,14 +171,14 @@ Music_SurfRSE_Ch1_loop:
 	note A#, 2
 	note F#, 2
 	duty_cycle 1
-	intensity $C4
+	volume_envelope 12, 4
 	octave 4
 	note F#, 4
 	note F_, 4
 	note D#, 4
-	intensity $C7
+	volume_envelope 12, 7
 	note C#, 12
-	intensity $92
+	volume_envelope 9, 2
 	note C#, 2
 	note __, 2
 	note G#, 2
@@ -257,18 +257,18 @@ Music_SurfRSE_Ch1_loop:
 	octave 3
 	note C#, 2
 	note __, 2
-	intensity $C7
+	volume_envelope 12, 7
 	note A#, 12
 	note G#, 12
 	note F#, 12
 	duty_cycle 1
-	intensity $C4
+	volume_envelope 12, 4
 	note G#, 4
 	note A#, 4
 	octave 4
 	note C_, 4
 	duty_cycle 0
-	intensity $91
+	volume_envelope 9, 1
 	octave 3
 	note G#, 2
 	octave 4
@@ -415,7 +415,7 @@ Music_SurfRSE_Ch1_loop:
 	octave 5
 	note C_, 2
 	note G#, 2
-	intensity $C7
+	volume_envelope 12, 7
 	octave 2
 	note F#, 8
 	note F#, 4
@@ -444,22 +444,22 @@ Music_SurfRSE_Ch2_loop:
 	octave 4
 	note C#, 2
 	note D#, 2
-	intensity $C4
+	volume_envelope 12, 4
 	note F_, 6
 	note F#, 2
-	intensity $C2
+	volume_envelope 12, 2
 	note F_, 2
 	note __, 2
-	intensity $C4
+	volume_envelope 12, 4
 	note F_, 6
 	note F#, 2
-	intensity $C2
+	volume_envelope 12, 2
 	note F_, 2
 	note __, 2
-	intensity $C4
+	volume_envelope 12, 4
 	note F_, 6
 	note F#, 2
-	intensity $C2
+	volume_envelope 12, 2
 	note F_, 2
 	note __, 2
 	note G#, 2
@@ -470,28 +470,28 @@ Music_SurfRSE_Ch2_loop:
 	octave 4
 	note C#, 2
 	note D#, 2
-	intensity $C4
+	volume_envelope 12, 4
 	note F_, 6
 	note F#, 2
-	intensity $C2
+	volume_envelope 12, 2
 	note F_, 2
 	note __, 2
-	intensity $C4
+	volume_envelope 12, 4
 	note F_, 6
 	note F#, 2
-	intensity $C2
+	volume_envelope 12, 2
 	note F_, 2
 	note __, 2
-	intensity $C4
+	volume_envelope 12, 4
 	note F#, 6
-	intensity $C2
+	volume_envelope 12, 2
 	octave 3
 	note A#, 2
 	octave 4
 	note C_, 2
 	note C#, 2
 	duty_cycle 1
-	intensity $C4
+	volume_envelope 12, 4
 	note D#, 2
 	duty_cycle 0
 	octave 3
@@ -507,10 +507,10 @@ Music_SurfRSE_Ch2_loop:
 	octave 3
 	note F#, 2
 	duty_cycle 1
-	intensity $94
+	volume_envelope 9, 4
 	vibrato $00, $00
 	note G#, 4
-	intensity $92
+	volume_envelope 9, 2
 	octave 4
 	note C#, 2
 	note __, 2
@@ -523,10 +523,10 @@ Music_SurfRSE_Ch2_loop:
 	octave 5
 	note C#, 2
 	note C#, 2
-	intensity $94
+	volume_envelope 9, 4
 	octave 3
 	note G#, 4
-	intensity $92
+	volume_envelope 9, 2
 	octave 4
 	note C#, 2
 	note __, 2
@@ -540,10 +540,10 @@ Music_SurfRSE_Ch2_loop:
 	note G#, 2
 	note B_, 2
 	note B_, 2
-	intensity $94
+	volume_envelope 9, 4
 	octave 3
 	note F#, 4
-	intensity $92
+	volume_envelope 9, 2
 	octave 4
 	note D#, 2
 	note __, 2
@@ -558,7 +558,7 @@ Music_SurfRSE_Ch2_loop:
 	note A#, 2
 	note A#, 2
 	duty_cycle 0
-	intensity $94
+	volume_envelope 9, 4
 	octave 3
 	note C#, 4
 	octave 2
@@ -569,81 +569,81 @@ Music_SurfRSE_Ch2_loop:
 	note D#, 4
 	note F#, 4
 	duty_cycle 1
-	intensity $C4
+	volume_envelope 12, 4
 	octave 4
 	note G#, 6
-	intensity $C2
+	volume_envelope 12, 2
 	note G#, 2
 	note F#, 2
 	note __, 2
-	intensity $C4
+	volume_envelope 12, 4
 	note F_, 6
 	note C#, 2
 	note F_, 2
 	note F#, 2
 	note G#, 6
-	intensity $C2
+	volume_envelope 12, 2
 	note G#, 2
 	note A#, 2
 	note __, 2
-	intensity $C4
+	volume_envelope 12, 4
 	note G#, 6
-	intensity $C2
+	volume_envelope 12, 2
 	note F#, 2
 	note F_, 2
 	note G#, 2
-	intensity $C4
+	volume_envelope 12, 4
 	note F#, 6
-	intensity $C2
+	volume_envelope 12, 2
 	note F_, 2
 	note D#, 2
 	note F_, 2
-	intensity $C4
+	volume_envelope 12, 4
 	note F#, 6
-	intensity $C2
+	volume_envelope 12, 2
 	note F_, 2
 	note F#, 2
 	note G#, 2
-	intensity $C4
+	volume_envelope 12, 4
 	note A_, 4
 	note G#, 4
 	note F#, 4
-	intensity $C7
+	volume_envelope 12, 7
 	note F_, 12
-	intensity $C4
+	volume_envelope 12, 4
 	octave 3
 	note C_, 6
-	intensity $C2
+	volume_envelope 12, 2
 	octave 2
 	note G#, 2
 	note A#, 2
 	octave 3
 	note C_, 2
-	intensity $C4
+	volume_envelope 12, 4
 	note D#, 6
-	intensity $C2
+	volume_envelope 12, 2
 	note C_, 2
 	note C#, 2
 	note D#, 2
-	intensity $C0
+	volume_envelope 12, 0
 	note F_, 12
-	intensity $C7
+	volume_envelope 12, 7
 	note F_, 12
-	intensity $C4
+	volume_envelope 12, 4
 	note F_, 6
-	intensity $C2
+	volume_envelope 12, 2
 	note D_, 2
 	note D#, 2
 	note F_, 2
-	intensity $C4
+	volume_envelope 12, 4
 	note G#, 6
-	intensity $C2
+	volume_envelope 12, 2
 	note F_, 2
 	note F#, 2
 	note G#, 2
-	intensity $C0
+	volume_envelope 12, 0
 	note A#, 12
-	intensity $C7
+	volume_envelope 12, 7
 	note A#, 12
 	note F#, 12
 	note F_, 12
@@ -654,77 +654,77 @@ Music_SurfRSE_Ch2_loop:
 	note C_, 12
 	octave 3
 	note A#, 12
-	intensity $C4
+	volume_envelope 12, 4
 	octave 4
 	note C_, 4
 	note C#, 4
 	note D#, 4
 	note F_, 6
 	note F#, 2
-	intensity $C2
+	volume_envelope 12, 2
 	note F_, 2
 	note __, 2
-	intensity $C4
+	volume_envelope 12, 4
 	note F_, 6
 	note F#, 2
-	intensity $C2
+	volume_envelope 12, 2
 	note F_, 2
 	note __, 2
-	intensity $C4
+	volume_envelope 12, 4
 	note F_, 6
 	note F#, 2
-	intensity $C2
+	volume_envelope 12, 2
 	note F_, 2
 	note D#, 2
-	intensity $C4
+	volume_envelope 12, 4
 	note C#, 4
 	note F_, 4
 	note G#, 4
 	duty_cycle 0
-	intensity $C5
+	volume_envelope 12, 5
 	octave 3
 	note A#, 6
 	note A_, 2
-	intensity $C2
+	volume_envelope 12, 2
 	note A#, 2
 	octave 4
 	note C_, 2
-	intensity $C4
+	volume_envelope 12, 4
 	note C#, 4
 	note D#, 4
 	note C#, 4
-	intensity $C5
+	volume_envelope 12, 5
 	note C_, 6
-	intensity $C2
+	volume_envelope 12, 2
 	octave 3
 	note A#, 2
-	intensity $C3
+	volume_envelope 12, 3
 	octave 4
 	note C_, 4
-	intensity $C7
+	volume_envelope 12, 7
 	octave 3
 	note G#, 12
 	duty_cycle 1
-	intensity $C4
+	volume_envelope 12, 4
 	octave 4
 	note F_, 6
 	note F#, 2
-	intensity $C2
+	volume_envelope 12, 2
 	note F_, 2
 	note __, 2
-	intensity $C4
+	volume_envelope 12, 4
 	note F_, 6
 	note F#, 2
-	intensity $C2
+	volume_envelope 12, 2
 	note F_, 2
 	note __, 2
-	intensity $C4
+	volume_envelope 12, 4
 	note F_, 6
 	note F#, 2
-	intensity $C2
+	volume_envelope 12, 2
 	note F_, 2
 	note D#, 2
-	intensity $C4
+	volume_envelope 12, 4
 	note C#, 4
 	note F_, 4
 	note G#, 4
@@ -743,10 +743,10 @@ Music_SurfRSE_Ch2_loop:
 	note D#, 2
 	octave 3
 	note A#, 2
-	intensity $C7
+	volume_envelope 12, 7
 	octave 4
 	note C_, 12
-	intensity $C2
+	volume_envelope 12, 2
 	octave 3
 	note G#, 2
 	note A#, 2
@@ -783,7 +783,7 @@ Music_SurfRSE_Ch2_loop:
 	note C#, 2
 	octave 3
 	note G#, 2
-	intensity $C7
+	volume_envelope 12, 7
 	octave 4
 	note A_, 12
 	note D#, 4
@@ -797,7 +797,7 @@ Music_SurfRSE_Ch3:
 	note __, 12
 Music_SurfRSE_Ch3_loop:
 	duty_cycle 4
-	intensity $14
+	volume_envelope 1, 4
 	octave 3
 	note C#, 7
 	note __, 1
@@ -860,11 +860,11 @@ Music_SurfRSE_Ch3_loop:
 	note A#, 4
 	octave 6
 	note C#, 4
-	intensity $10
+	volume_envelope 1, 0
 	note D#, 4
 	note C#, 4
 	duty_cycle 4
-	intensity $14
+	volume_envelope 1, 4
 	octave 3
 	note C#, 7
 	note __, 1
@@ -977,12 +977,12 @@ Music_SurfRSE_Ch3_loop:
 	note C#, 4
 	duty_cycle 0
 	note C_, 6
-	intensity $20
+	volume_envelope 2, 0
 	note C_, 4
-	intensity $30
+	volume_envelope 3, 0
 	note C_, 2
 	duty_cycle 4
-	intensity $14
+	volume_envelope 1, 4
 	octave 3
 	note C#, 7
 	note __, 1
@@ -1030,7 +1030,7 @@ Music_SurfRSE_Ch3_loop:
 	note __, 2
 	note G#, 12
 	duty_cycle 0
-	intensity $10
+	volume_envelope 1, 0
 	octave 6
 	note C#, 12
 	note C#, 6

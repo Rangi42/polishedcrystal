@@ -48,28 +48,28 @@ Music_HoOhBattleHGSS_Ch1:
 	octave 3
 	note C_, 1
 Music_HoOhBattleHGSS_Ch1_L:
-	intensity $c2
+	volume_envelope 12, 2
 	octave 2
 	note B_, 2
 	note B_, 4
 	note B_, 4
 	note B_, 4
-	intensity $c7
+	volume_envelope 12, 7
 	note B_, 6
 	note A_, 6
 	octave 3
 	note C_, 6
 	loopchannel 3, Music_HoOhBattleHGSS_Ch1_L
-	intensity $c2
+	volume_envelope 12, 2
 	octave 2
 	note B_, 2
 	note B_, 4
 	note B_, 4
 	note B_, 4
-	intensity $c7
+	volume_envelope 12, 7
 	note B_, 6
 	note A_, 4
-	intensity $c2
+	volume_envelope 12, 2
 	octave 3
 	note E_, 1
 	note D_, 1
@@ -84,61 +84,61 @@ Music_HoOhBattleHGSS_Ch1_L:
 	note D#, 1
 	octave 2
 	note B_, 1
-	intensity $c8
+	volume_envelope 12, 8
 	octave 3
 	soundinput $37
 	note D_, 1
-	intensity $c7
+	volume_envelope 12, 7
 	soundinput $00
 	note E_, 11
 	note D_, 2
 	note E_, 2
-	intensity $c8
+	volume_envelope 12, 8
 	soundinput $37
 	note D_, 1
-	intensity $c7
+	volume_envelope 12, 7
 	soundinput $00
 	note E_, 11
 	note D_, 2
 	note E_, 2
-	intensity $c8
+	volume_envelope 12, 8
 	soundinput $47
 	note G_, 1
-	intensity $c7
+	volume_envelope 12, 7
 	soundinput $00
 	note A_, 11
-	intensity $c8
+	volume_envelope 12, 8
 	soundinput $57
 	note A_, 1
-	intensity $c7
+	volume_envelope 12, 7
 	soundinput $00
 	note B_, 3
 	note E_, 12
 	note D_, 2
 	note F_, 2
-	intensity $c8
+	volume_envelope 12, 8
 	soundinput $37
 	note D_, 1
-	intensity $c7
+	volume_envelope 12, 7
 	soundinput $00
 	note E_, 11
 	note F_, 2
 	note D_, 2
-	intensity $c8
+	volume_envelope 12, 8
 	soundinput $37
 	note D_, 1
-	intensity $c7
+	volume_envelope 12, 7
 	soundinput $00
 	note E_, 11
 	note D_, 2
 	note E_, 2
-	intensity $c8
+	volume_envelope 12, 8
 	soundinput $37
 	note D_, 1
-	intensity $c7
+	volume_envelope 12, 7
 	soundinput $00
 	note E_, 15
-	intensity $c2
+	volume_envelope 12, 2
 	octave 2
 	note B_, 1
 	note E_, 1
@@ -164,33 +164,33 @@ Music_HoOhBattleHGSS_Ch1_L:
 	note E_, 1
 	octave 2
 	note B_, 1
-	intensity $c8
+	volume_envelope 12, 8
 	octave 3
 	soundinput $37
 	note D_, 1
-	intensity $c7
+	volume_envelope 12, 7
 	soundinput $00
 	note E_, 11
 	note D_, 2
 	note E_, 2
-	intensity $c8
+	volume_envelope 12, 8
 	soundinput $37
 	note D_, 1
-	intensity $c7
+	volume_envelope 12, 7
 	soundinput $00
 	note E_, 11
 	note D_, 2
 	note E_, 2
-	intensity $c8
+	volume_envelope 12, 8
 	soundinput $47
 	note G_, 1
-	intensity $c7
+	volume_envelope 12, 7
 	soundinput $00
 	note A_, 11
-	intensity $c8
+	volume_envelope 12, 8
 	soundinput $57
 	note A_, 1
-	intensity $c7
+	volume_envelope 12, 7
 	soundinput $00
 	note B_, 3
 	octave 4
@@ -199,37 +199,37 @@ Music_HoOhBattleHGSS_Ch1_L:
 	note B_, 2
 	note F_, 2
 	note A_, 2
-	intensity $c8
+	volume_envelope 12, 8
 	soundinput $47
 	note F#, 1
-	intensity $c7
+	volume_envelope 12, 7
 	soundinput $00
 	note G#, 9
 	note B_, 2
 	note E_, 2
 	note A_, 2
-	intensity $c8
+	volume_envelope 12, 8
 	soundinput $37
 	note D#, 1
-	intensity $c7
+	volume_envelope 12, 7
 	soundinput $00
 	note F_, 9
 	note A_, 2
 	note D_, 2
 	note F_, 2
-	intensity $c8
+	volume_envelope 12, 8
 	soundinput $37
 	note D_, 1
-	intensity $c7
+	volume_envelope 12, 7
 	soundinput $00
 	note E_, 9
 	note E_, 2
 	note F_, 2
 	note D_, 2
-	intensity $c8
+	volume_envelope 12, 8
 	soundinput $37
 	note D_, 1
-	intensity $c7
+	volume_envelope 12, 7
 	soundinput $00
 	note E_, 7
 	note_type 8, 11, 7
@@ -260,11 +260,11 @@ Music_HoOhBattleHGSS_Ch1_L:
 	note E_, 2
 	note F#, 2
 	note A_, 2
-	intensity $c8
+	volume_envelope 12, 8
 	vibrato $0, $0
 	octave 5
 	note D_, 8
-	intensity $b7
+	volume_envelope 11, 7
 	vibrato $7, $26
 	note D_, 12
 	octave 4
@@ -298,13 +298,13 @@ Music_HoOhBattleHGSS_Ch1_L:
 	note B_, 2
 	octave 5
 	note D_, 4
-	intensity $c8
+	volume_envelope 12, 8
 	vibrato $0, $0
 	note E_, 8
-	intensity $b7
+	volume_envelope 11, 7
 	vibrato $7, $26
 	note E_, 16
-	intensity $c7
+	volume_envelope 12, 7
 	vibrato $0, $0
 	octave 4
 	note E_, 1
@@ -324,10 +324,10 @@ Music_HoOhBattleHGSS_Ch1_L:
 	note E_, 2
 	note F#, 2
 	note A_, 2
-	intensity $c8
+	volume_envelope 12, 8
 	octave 4
 	note D_, 8
-	intensity $c7
+	volume_envelope 12, 7
 	note D_, 12
 	octave 3
 	note B_, 1
@@ -354,24 +354,24 @@ Music_HoOhBattleHGSS_Ch1_L:
 	note B_, 2
 	octave 4
 	note D_, 4
-	intensity $c8
+	volume_envelope 12, 8
 	note E_, 8
-	intensity $c7
+	volume_envelope 12, 7
 	note E_, 16
 	octave 2
 	note E_, 4
-	intensity $c8
+	volume_envelope 12, 8
 	note A_, 2
-	intensity $c7
+	volume_envelope 12, 7
 	soundinput $6f
 	note A_, 2
 	soundinput $00
 	note G_, 2
 	note A_, 2
-	intensity $c8
+	volume_envelope 12, 8
 	octave 3
 	note C_, 2
-	intensity $c7
+	volume_envelope 12, 7
 	soundinput $6f
 	note C_, 2
 	octave 2
@@ -379,17 +379,17 @@ Music_HoOhBattleHGSS_Ch1_L:
 	note A_, 2
 	octave 3
 	note C_, 2
-	intensity $c8
+	volume_envelope 12, 8
 	note D_, 2
-	intensity $c7
+	volume_envelope 12, 7
 	soundinput $6f
 	note D_, 2
 	soundinput $00
 	note C_, 2
 	note D_, 2
-	intensity $c8
+	volume_envelope 12, 8
 	note G_, 2
-	intensity $c7
+	volume_envelope 12, 7
 	soundinput $6f
 	note G_, 2
 	soundinput $00
@@ -398,18 +398,18 @@ Music_HoOhBattleHGSS_Ch1_L:
 	note __, 14
 	octave 2
 	note E_, 4
-	intensity $c8
+	volume_envelope 12, 8
 	note A_, 2
-	intensity $c7
+	volume_envelope 12, 7
 	soundinput $6f
 	note A_, 2
 	soundinput $00
 	note G_, 2
 	note A_, 2
 	octave 3
-	intensity $c8
+	volume_envelope 12, 8
 	note C_, 2
-	intensity $c7
+	volume_envelope 12, 7
 	soundinput $6f
 	note C_, 2
 	octave 2
@@ -424,9 +424,9 @@ Music_HoOhBattleHGSS_Ch1_L:
 	octave 3
 	note C_, 2
 	note D_, 2
-	intensity $c8
+	volume_envelope 12, 8
 	note G_, 2
-	intensity $c7
+	volume_envelope 12, 7
 	soundinput $6f
 	note G_, 2
 	soundinput $00
@@ -434,28 +434,28 @@ Music_HoOhBattleHGSS_Ch1_L:
 	note __, 16
 	note __, 14
 	duty_cycle 0
-	intensity $c4
+	volume_envelope 12, 4
 	vibrato $1, $25
 	octave 2
 	note E_, 2
 	note E_, 6
-	intensity $93
+	volume_envelope 9, 3
 	note E_, 1
 	note E_, 1
 	note E_, 2
 	note E_, 1
 	note E_, 1
 	note E_, 2
-	intensity $c4
+	volume_envelope 12, 4
 	note E_, 1
-	intensity $93
+	volume_envelope 9, 3
 	note E_, 1
-	intensity $c4
+	volume_envelope 12, 4
 	note E_, 2
 	note E_, 1
-	intensity $93
+	volume_envelope 9, 3
 	note E_, 1
-	intensity $c4
+	volume_envelope 12, 4
 	note E_, 2
 	note E_, 1
 	note E_, 1
@@ -464,12 +464,12 @@ Music_HoOhBattleHGSS_Ch1_L:
 	note E_, 1
 	note E_, 2
 	duty_cycle 3
-	intensity $c8
+	volume_envelope 12, 8
 	vibrato $0, $0
 	octave 3
 	soundinput $47
 	note D_, 1
-	intensity $c7
+	volume_envelope 12, 7
 	soundinput $00
 	note E_, 3
 	note D_, 2
@@ -479,11 +479,11 @@ Music_HoOhBattleHGSS_Ch1_L:
 	note A_, 2
 	octave 2
 	note B_, 2
-	intensity $c8
+	volume_envelope 12, 8
 	octave 3
 	soundinput $47
 	note D_, 1
-	intensity $c7
+	volume_envelope 12, 7
 	soundinput $00
 	note E_, 3
 	note D_, 2
@@ -491,9 +491,9 @@ Music_HoOhBattleHGSS_Ch1_L:
 	note __, 2
 	note G_, 2
 	note A_, 4
-	intensity $c8
+	volume_envelope 12, 8
 	note A#, 16
-	intensity $c7
+	volume_envelope 12, 7
 	note A#, 16
 	jumpchannel Music_HoOhBattleHGSS_Ch1_L
 
@@ -549,28 +549,28 @@ Music_HoOhBattleHGSS_Ch2:
 	octave 5
 	note E_, 1
 Music_HoOhBattleHGSS_Ch2_L:
-	intensity $c2
+	volume_envelope 12, 2
 	octave 3
 	note E_, 2
 	note E_, 4
 	note E_, 4
 	note E_, 4
-	intensity $c7
+	volume_envelope 12, 7
 	note E_, 6
 	note D_, 6
 	note F_, 6
 	loopchannel 3, Music_HoOhBattleHGSS_Ch2_L
-	intensity $c2
+	volume_envelope 12, 2
 	note E_, 2
 	note E_, 4
 	note E_, 4
 	note E_, 4
-	intensity $c7
+	volume_envelope 12, 7
 	note E_, 6
 	note D_, 6
 	note F_, 4
 	duty_cycle 0
-	intensity $c4
+	volume_envelope 12, 4
 	vibrato $1, $25
 	octave 2
 	note E_, 2
@@ -638,7 +638,7 @@ Music_HoOhBattleHGSS_Ch2_L:
 	note E_, 2
 	note E_, 2
 	duty_cycle 2
-	intensity $93
+	volume_envelope 9, 3
 	vibrato $0, $0
 	octave 4
 	note E_, 2
@@ -722,14 +722,14 @@ Music_HoOhBattleHGSS_Ch2_L:
 	note F#, 2
 	note D_, 6
 	duty_cycle 3
-	intensity $b7
+	volume_envelope 11, 7
 	vibrato $7, $26
 	octave 5
 	note F_, 2
 	note D_, 2
 	note E_, 8
 	duty_cycle 0
-	intensity $93
+	volume_envelope 9, 3
 	vibrato $1, $25
 	octave 3
 	note E_, 2
@@ -826,7 +826,7 @@ Music_HoOhBattleHGSS_Ch2_L:
 	note __, 16
 	note __, 16
 	note __, 1
-	intensity $c4
+	volume_envelope 12, 4
 	note D_, 1
 	note E_, 4
 	octave 2
@@ -878,23 +878,23 @@ Music_HoOhBattleHGSS_Ch2_L:
 	note G_, 2
 	note B_, 2
 	note B_, 6
-	intensity $93
+	volume_envelope 9, 3
 	note B_, 1
 	note B_, 1
 	note B_, 2
 	note B_, 1
 	note B_, 1
 	note B_, 2
-	intensity $c4
+	volume_envelope 12, 4
 	note B_, 1
-	intensity $93
+	volume_envelope 9, 3
 	note B_, 1
-	intensity $c4
+	volume_envelope 12, 4
 	note B_, 2
 	note B_, 1
-	intensity $93
+	volume_envelope 9, 3
 	note B_, 1
-	intensity $c4
+	volume_envelope 12, 4
 	note B_, 2
 	note B_, 1
 	note B_, 1
@@ -905,11 +905,11 @@ Music_HoOhBattleHGSS_Ch2_L:
 	note __, 16
 	note __, 16
 	duty_cycle 3
-	intensity $c8
+	volume_envelope 12, 8
 	vibrato $0, $0
 	octave 3
 	note F_, 16
-	intensity $c7
+	volume_envelope 12, 7
 	note F_, 16
 	jumpchannel Music_HoOhBattleHGSS_Ch2_L
 

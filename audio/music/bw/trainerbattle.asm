@@ -66,7 +66,7 @@ Music_TrainerBattleBW_Ch1:
 	octave 5
 	note E_, 1
 	note B_, 1
-	intensity $B7
+	volume_envelope 11, 7
 	octave 4
 	note B_, 14
 	note G#, 1
@@ -501,10 +501,10 @@ Music_TrainerBattleBW_Ch1_loop:
 	octave 4
 	note D#, 2
 	note F_, 14
-	intensity $C1
+	volume_envelope 12, 1
 	octave 5
 	note C#, 1
-	intensity $C1
+	volume_envelope 12, 1
 	note_type 10, 12, 1
 	note __, 2
 	note_type 12, 12, 1
@@ -585,7 +585,7 @@ Music_TrainerBattleBW_Ch2:
 	note B_, 1
 	note A#, 1
 	note A_, 1
-	intensity $C7
+	volume_envelope 12, 7
 	octave 5
 	note E_, 16
 	octave 4
@@ -929,7 +929,7 @@ Music_TrainerBattleBW_Ch2_loop:
 	note B_, 2
 	octave 5
 	note C#, 12
-	intensity $D1
+	volume_envelope 13, 1
 	note F_, 1
 	note D#, 1
 	note G#, 1

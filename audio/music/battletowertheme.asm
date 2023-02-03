@@ -27,7 +27,7 @@ Music_BattleTowerTheme_branch_1788a5:
 	note __, 2
 	note C_, 4
 	note __, 4
-	intensity $92
+	volume_envelope 9, 2
 	note G_, 2
 	note F_, 2
 	note C_, 2
@@ -46,7 +46,7 @@ Music_BattleTowerTheme_branch_1788a5:
 	octave 2
 	note A#, 4
 	note __, 4
-	intensity $92
+	volume_envelope 9, 2
 	octave 3
 	note G_, 2
 	note D#, 2
@@ -60,7 +60,7 @@ Music_BattleTowerTheme_branch_1788a5:
 	octave 3
 	note A_, 2
 	note F_, 2
-	intensity $93
+	volume_envelope 9, 3
 	note D_, 2
 	note __, 2
 	note E_, 4
@@ -172,7 +172,7 @@ Music_BattleTowerTheme_branch_1788a5:
 	note D#, 4
 	note C#, 4
 	note F_, 4
-	intensity $94
+	volume_envelope 9, 4
 	octave 4
 	note C_, 4
 	octave 3
@@ -187,7 +187,7 @@ Music_BattleTowerTheme_branch_1788a5:
 	jumpchannel Music_BattleTowerTheme_branch_1788a5
 
 Music_BattleTowerTheme_branch_17895e:
-	intensity $94
+	volume_envelope 9, 4
 	note A_, 2
 	note __, 2
 	note C_, 4
@@ -241,7 +241,7 @@ Music_BattleTowerTheme_branch_178970:
 	note F_, 4
 	note __, 4
 	tone 0
-	intensity $b7
+	volume_envelope 11, 7
 	note G_, 2
 	octave 4
 	note C_, 2

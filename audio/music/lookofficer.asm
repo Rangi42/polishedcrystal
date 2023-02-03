@@ -18,11 +18,11 @@ Music_LookOfficer_Ch1:
 	note D#, 1
 	note E_, 1
 	note F_, 12
-	intensity $2f
+	volume_envelope 2, -7
 	octave 3
 	note B_, 16
 Music_LookOfficer_branch_ed852:
-	intensity $82
+	volume_envelope 8, 2
 	note __, 4
 	note B_, 6
 	note G#, 4
@@ -30,7 +30,7 @@ Music_LookOfficer_branch_ed852:
 	note B_, 6
 	note G#, 4
 	note B_, 2
-	intensity $2f
+	volume_envelope 2, -7
 	note A#, 16
 	note A_, 16
 	jumpchannel Music_LookOfficer_branch_ed852
@@ -47,7 +47,7 @@ Music_LookOfficer_Ch2:
 	octave 4
 	note B_, 12
 	duty_cycle 3
-	intensity $a2
+	volume_envelope 10, 2
 	octave 1
 	note B_, 4
 	octave 2
@@ -104,7 +104,7 @@ Music_LookOfficer_Ch3:
 	note B_, 2
 	note __, 2
 	note B_, 2
-	intensity $12
+	volume_envelope 1, 2
 	octave 5
 	note D#, 2
 	note __, 1

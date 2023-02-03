@@ -48,7 +48,7 @@ Music_LookHiker_Ch2:
 	note D_, 1
 	note F#, 1
 	note D_, 1
-	intensity $a1
+	volume_envelope 10, 1
 Music_LookHiker_branch_f7457:
 	octave 1
 	note B_, 1

@@ -53,7 +53,7 @@ Music_WildBattleSM_Ch1:
 	note A_, 1
 	note G#, 1
 	note G_, 1
-	intensity $a2
+	volume_envelope 10, 2
 	octave 3
 	note C_, 6
 	octave 2
@@ -61,21 +61,21 @@ Music_WildBattleSM_Ch1:
 	octave 3
 	note C_, 4
 	note C_, 8
-	intensity $a7
+	volume_envelope 10, 7
 	octave 2
 	note F_, 8
-	intensity $a2
+	volume_envelope 10, 2
 	octave 3
 	note C#, 6
 	note C_, 6
 	note C#, 4
 	note C#, 8
-	intensity $a7
+	volume_envelope 10, 7
 	note F#, 8
 Music_WildBattleSM_Ch1_loop_main:
 	note __, 8
 	duty_cycle 0
-	intensity $a2
+	volume_envelope 10, 2
 	octave 4
 	note F_, 2
 	note G_, 2
@@ -86,7 +86,7 @@ Music_WildBattleSM_Ch1_loop_main:
 	octave 5
 	note C_, 4
 	octave 2
-	intensity $a4
+	volume_envelope 10, 4
 	note D_, 2
 	note F_, 4
 	note G_, 3
@@ -96,7 +96,7 @@ Music_WildBattleSM_Ch1_loop_main:
 	note A_, 2
 	note A#, 4
 	note A_, 2
-	intensity $a7
+	volume_envelope 10, 7
 	note G_, 4
 	octave 5
 	note D#, 2
@@ -105,7 +105,7 @@ Music_WildBattleSM_Ch1_loop_main:
 	octave 4
 	note A#, 12
 	octave 4
-	intensity $92
+	volume_envelope 9, 2
 	note F_, 4
 	note F_, 2
 	octave 3
@@ -115,13 +115,13 @@ Music_WildBattleSM_Ch1_loop_main:
 	note F_, 6
 	note F_, 4
 	note F_, 2
-	intensity $a0
+	volume_envelope 10, 0
 	note A#, 6
-	intensity $a7
+	volume_envelope 10, 7
 	note A#, 12
-	intensity $4f
+	volume_envelope 4, -7
 	note A#, 8
-	intensity $c2
+	volume_envelope 12, 2
 	note A_, 4
 	note A#, 2
 	octave 5
@@ -138,16 +138,16 @@ Music_WildBattleSM_Ch1_loop_main:
 	note A#, 4
 	note A#, 4
 	note A#, 2
-	intensity $c5
+	volume_envelope 12, 5
 	note A_, 4
-	intensity $c0
+	volume_envelope 12, 0
 	note A#, 8
-	intensity $c7
+	volume_envelope 12, 7
 	note A#, 8
 	octave 4
 	note C_, 8
 	note D_, 8
-	intensity $c2
+	volume_envelope 12, 2
 	note __, 4
 	note G_, 8
 	note F_, 8
@@ -167,7 +167,7 @@ Music_WildBattleSM_Ch1_loop_1:
 	note C#, 2
 	loopchannel 2, Music_WildBattleSM_Ch1_loop_1
 	duty_cycle 0
-	intensity $c7
+	volume_envelope 12, 7
 	octave 4
 	note D#, 8
 	note D_, 8
@@ -180,22 +180,22 @@ Music_WildBattleSM_Ch1_loop_1:
 	note A#, 8
 	note A_, 8
 	note B_, 2
-	intensity $c2
+	volume_envelope 12, 2
 	octave 4
 	note C_, 4
-	intensity $c0
+	volume_envelope 12, 0
 	octave 3
 	note B_, 16
-	intensity $c7
+	volume_envelope 12, 7
 	note B_, 16
-	intensity $60
+	volume_envelope 6, 0
 	octave 4
 	note D#, 2
 	note E_, 16
 	note E_, 16
 
 	octave 3
-	intensity $c2
+	volume_envelope 12, 2
 	note C_, 2
 	octave 2
 	note B_, 4
@@ -208,10 +208,10 @@ Music_WildBattleSM_Ch1_loop_1:
 	note C_, 2
 	octave 2
 	note A_, 4
-	intensity $c7
+	volume_envelope 12, 7
 	octave 3
 	note F_, 10
-	intensity $c2
+	volume_envelope 12, 2
 	note D_, 4
 	note C#, 2
 	note D_, 4
@@ -221,16 +221,16 @@ Music_WildBattleSM_Ch1_loop_1:
 	octave 2
 	note A_, 4
 	octave 3
-	intensity $c7
+	volume_envelope 12, 7
 	note G_, 10
-	intensity $c0
+	volume_envelope 12, 0
 	note E_, 16
-	intensity $c7
+	volume_envelope 12, 7
 	note E_, 16
 	octave 2
-	intensity $80
+	volume_envelope 8, 0
 	note E_, 16
-	intensity $87
+	volume_envelope 8, 7
 	note E_, 16
 	note __, 16
 	note __, 16
@@ -258,50 +258,50 @@ Music_WildBattleSM_Ch2_loop_1:
 	octave 4
 	note C_, 4
 	note C_, 8
-	intensity $c7
+	volume_envelope 12, 7
 	octave 3
 	note F_, 8
-	intensity $c2
+	volume_envelope 12, 2
 	octave 4
 	note C#, 6
 	note C_, 6
 	note C#, 4
 	note C#, 8
-	intensity $c7
+	volume_envelope 12, 7
 	note C#, 4
 	octave 3
-	intensity $c2
+	volume_envelope 12, 2
 	note G#, 1
 	note A_, 1
 Music_WildBattleSM_Ch2_loop_main:
 	octave 3
-	intensity $c2
+	volume_envelope 12, 2
 	note A#, 1
 	note B_, 1
 	octave 4
 	note C_, 6
 	note F_, 6
-	intensity $c4
+	volume_envelope 12, 4
 	note A#, 4
-	intensity $c2
+	volume_envelope 12, 2
 	note A_, 6
 	note G_, 6
-	intensity $c4
+	volume_envelope 12, 4
 	note F_, 4
 	duty_cycle 0
-	intensity $a4
+	volume_envelope 10, 4
 	note G_, 4
 	note F_, 2
 	note G_, 4
 	note F_, 2
-	intensity $a7
+	volume_envelope 10, 7
 	note D#, 4
 	note A#, 2
 	note A_, 2
 	note G_, 2
 	note F_, 6
 	duty_cycle 3
-	intensity $c2
+	volume_envelope 12, 2
 	note E_, 4
 	note A_, 2
 	note F_, 4
@@ -313,10 +313,10 @@ Music_WildBattleSM_Ch2_loop_main:
 	note C_, 6
 	octave 4
 	note A_, 4
-	intensity $c7
+	volume_envelope 12, 7
 	note A#, 8
 	octave 5
-	intensity $a1
+	volume_envelope 10, 1
 	note D#, 1
 	octave 6
 	note D#, 1
@@ -348,26 +348,26 @@ Music_WildBattleSM_Ch2_loop_main:
 	octave 5
 	note A#, 1
 	octave 4
-	intensity $71
+	volume_envelope 7, 1
 	note A#, 1
 	octave 5
 	note A#, 1
-	intensity $c2
+	volume_envelope 12, 2
 	octave 4
 	note F_, 4
 	note G_, 2
-	intensity $c5
+	volume_envelope 12, 5
 	note A_, 6
-	intensity $c2
+	volume_envelope 12, 2
 	note F_, 4
 	note F_, 4
 	note A_, 2
-	intensity $c7
+	volume_envelope 12, 7
 	note A#, 6
 	note A_, 6
 	note G_, 2
 	octave 5
-	intensity $c2
+	volume_envelope 12, 2
 	note C_, 1
 	note D_, 1
 	note D#, 6
@@ -382,9 +382,9 @@ Music_WildBattleSM_Ch2_loop_main:
 	note D_, 4
 	note D_, 2
 	note C_, 4
-	intensity $c0
+	volume_envelope 12, 0
 	note D_, 8
-	intensity $c4
+	volume_envelope 12, 4
 	note D_, 8
 	note D#, 8
 	note F_, 8
@@ -396,17 +396,17 @@ Music_WildBattleSM_Ch2_loop_main:
 	note A_, 1
 	note A#, 1
 	note G_, 1
-	intensity $c0
+	volume_envelope 12, 0
 	note A_, 6
-	intensity $c4
+	volume_envelope 12, 4
 	note A_, 10
 	note __, 13
 	note F#, 1
 	note G_, 1
 	note E_, 1
-	intensity $c0
+	volume_envelope 12, 0
 	note F#, 6
-	intensity $c4
+	volume_envelope 12, 4
 	note F#, 10
 	note __, 11
 	note_type 3, 12, 1
@@ -425,21 +425,21 @@ Music_WildBattleSM_Ch2_loop_main:
 	note G_, 8
 	note A_, 8
 	note B_, 2
-	intensity $c2
+	volume_envelope 12, 2
 	octave 5
 	note C_, 4
-	intensity $c0
+	volume_envelope 12, 0
 	octave 4
 	note B_, 16
-	intensity $c7
+	volume_envelope 12, 7
 	note B_, 16
-	intensity $60
+	volume_envelope 6, 0
 	octave 5
 	note D#, 2
 	note E_, 16
 	note E_, 16
 	octave 4
-	intensity $c2
+	volume_envelope 12, 2
 	note A_, 2
 	note G#, 4
 	note A_, 4
@@ -448,10 +448,10 @@ Music_WildBattleSM_Ch2_loop_main:
 	note A_, 2
 	note F_, 4
 	octave 5
-	intensity $c7
+	volume_envelope 12, 7
 	note C_, 10
 	octave 4
-	intensity $c2
+	volume_envelope 12, 2
 	note B_, 4
 	note A#, 2
 	note B_, 4
@@ -460,16 +460,16 @@ Music_WildBattleSM_Ch2_loop_main:
 	note B_, 2
 	note G_, 4
 	octave 5
-	intensity $c7
+	volume_envelope 12, 7
 	note D_, 10
-	intensity $c0
+	volume_envelope 12, 0
 	note C#, 16
-	intensity $c7
+	volume_envelope 12, 7
 	note C#, 16
-	intensity $80
+	volume_envelope 8, 0
 	octave 4
 	note A_, 16
-	intensity $87
+	volume_envelope 8, 7
 	note A_, 16
 	note __, 16
 	note __, 16

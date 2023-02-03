@@ -146,7 +146,7 @@ Music_Lighthouse_branch_ee604:
 	note __, 7
 	octave 3
 	note G#, 16
-	intensity $c5
+	volume_envelope 12, 5
 	note C#, 1
 	note __, 1
 	note C#, 1

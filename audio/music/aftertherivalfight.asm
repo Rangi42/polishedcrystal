@@ -16,7 +16,7 @@ Music_AfterTheRivalFight_Ch1:
 	octave 2
 	note G#, 4
 	note G#, 4
-	intensity $82
+	volume_envelope 8, 2
 	octave 3
 	note G#, 2
 	note G#, 2
@@ -32,7 +32,7 @@ Music_AfterTheRivalFight_Ch2:
 	octave 4
 	note G#, 4
 	note G#, 4
-	intensity $a2
+	volume_envelope 10, 2
 	note G#, 2
 	note G#, 2
 	note G#, 2

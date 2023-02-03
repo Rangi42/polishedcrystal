@@ -20,7 +20,7 @@ Music_LakeOfRage_Ch1:
 	note D_, 6
 	note E_, 4
 Music_LakeOfRage_branch_ee6e9:
-	intensity $b5
+	volume_envelope 11, 5
 	note F#, 6
 	note E_, 6
 	note D_, 4
@@ -39,7 +39,7 @@ Music_LakeOfRage_branch_ee6e9:
 	note_type 12, 11, 4
 	note D_, 3
 	note F#, 1
-	intensity $b7
+	volume_envelope 11, 7
 	note A_, 8
 	note F#, 4
 	note A_, 3
@@ -57,18 +57,18 @@ Music_LakeOfRage_branch_ee6e9:
 	note_type 12, 11, 7
 	octave 3
 	note C_, 12
-	intensity $b4
+	volume_envelope 11, 4
 	note E_, 4
 	note D_, 2
-	intensity $b7
+	volume_envelope 11, 7
 	octave 2
 	note A_, 10
-	intensity $b4
+	volume_envelope 11, 4
 	octave 3
 	note E_, 4
 	note D_, 3
 	note E_, 1
-	intensity $b7
+	volume_envelope 11, 7
 	note F#, 8
 	note D_, 6
 	note C_, 1
@@ -81,16 +81,16 @@ Music_LakeOfRage_branch_ee6e9:
 	note G_, 6
 	note F#, 1
 	note G_, 1
-	intensity $a0
+	volume_envelope 10, 0
 	note A_, 7
-	intensity $a7
+	volume_envelope 10, 7
 	note A_, 7
 	note A_, 1
 	octave 4
 	note C_, 1
-	intensity $a0
+	volume_envelope 10, 0
 	note D_, 6
-	intensity $a7
+	volume_envelope 10, 7
 	note D_, 6
 	jumpchannel Music_LakeOfRage_branch_ee6e9
 
@@ -101,11 +101,11 @@ Music_LakeOfRage_Ch2:
 	note_type 12, 9, 0
 	octave 3
 	note G_, 8
-	intensity $97
+	volume_envelope 9, 7
 	note G_, 8
-	intensity $a0
+	volume_envelope 10, 0
 	note A_, 8
-	intensity $a7
+	volume_envelope 10, 7
 	note A_, 8
 Music_LakeOfRage_branch_ee75e:
 	note_type 8, 12, 7
@@ -125,9 +125,9 @@ Music_LakeOfRage_branch_ee75e:
 	note B_, 4
 	note A_, 3
 	note G_, 1
-	intensity $b0
+	volume_envelope 11, 0
 	note F#, 12
-	intensity $b7
+	volume_envelope 11, 7
 	note F#, 16
 	note_type 8, 12, 3
 	octave 3
@@ -143,10 +143,10 @@ Music_LakeOfRage_branch_ee75e:
 	note __, 1
 	note E_, 1
 	note G_, 1
-	intensity $c5
+	volume_envelope 12, 5
 	octave 5
 	note C_, 10
-	intensity $c3
+	volume_envelope 12, 3
 	octave 4
 	note A_, 4
 	note G_, 4

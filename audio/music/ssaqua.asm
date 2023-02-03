@@ -42,7 +42,7 @@ Music_SSAqua_branch_eadbc:
 	note G_, 8
 	note __, 8
 	duty_cycle 1
-	intensity $61
+	volume_envelope 6, 1
 	callchannel Music_SSAqua_branch_eaff5
 	octave 5
 	note G_, 1
@@ -73,7 +73,7 @@ Music_SSAqua_branch_eadbc:
 	note __, 16
 	note __, 16
 	note __, 16
-	intensity $97
+	volume_envelope 9, 7
 	note __, 14
 	note_type 6, 9, 7
 	note D_, 1
@@ -84,7 +84,7 @@ Music_SSAqua_branch_eadbc:
 	note_type 12, 9, 7
 	note __, 16
 	note __, 16
-	intensity $95
+	volume_envelope 9, 5
 	note __, 2
 	octave 4
 	note C_, 1
@@ -118,7 +118,7 @@ Music_SSAqua_branch_eadbc:
 	note G_, 1
 	note F#, 1
 	duty_cycle 2
-	intensity $97
+	volume_envelope 9, 7
 	note G_, 8
 	note F#, 8
 	note E_, 8
@@ -131,7 +131,7 @@ Music_SSAqua_branch_eadbc:
 	note __, 1
 	octave 4
 	note F#, 2
-	intensity $75
+	volume_envelope 7, 5
 	octave 5
 	note A_, 4
 	note F#, 4
@@ -144,7 +144,7 @@ Music_SSAqua_branch_eadbc:
 	octave 3
 	note A#, 1
 	note __, 1
-	intensity $97
+	volume_envelope 9, 7
 	note G_, 16
 	note A_, 16
 	note B_, 4
@@ -156,10 +156,10 @@ Music_SSAqua_branch_eadbc:
 	note G_, 8
 	note F#, 1
 	vibrato $0, $0
-	intensity $88
+	volume_envelope 8, 8
 	note G_, 10
 	vibrato $2, $23
-	intensity $87
+	volume_envelope 8, 7
 	note G_, 9
 	vibrato $8, $33
 	note C_, 4
@@ -258,11 +258,11 @@ Music_SSAqua_Ch2:
 Music_SSAqua_branch_eaed5:
 	note_type 12, 11, 7
 	duty_cycle 1
-	intensity $61
+	volume_envelope 6, 1
 	callchannel Music_SSAqua_branch_eaff5
 	callchannel Music_SSAqua_branch_eb03e
 	duty_cycle 2
-	intensity $d7
+	volume_envelope 13, 7
 	callchannel Music_SSAqua_branch_eafe0
 	note B_, 1
 	note __, 1
@@ -287,7 +287,7 @@ Music_SSAqua_branch_eaed5:
 	note G_, 6
 	note __, 2
 	duty_cycle 3
-	intensity $b7
+	volume_envelope 11, 7
 	octave 3
 	note B_, 1
 	octave 4
@@ -321,10 +321,10 @@ Music_SSAqua_branch_eaed5:
 	octave 5
 	note D#, 1
 	vibrato $0, $0
-	intensity $98
+	volume_envelope 9, 8
 	note E_, 10
 	vibrato $4, $23
-	intensity $97
+	volume_envelope 9, 7
 	note E_, 9
 	vibrato $8, $23
 	note D_, 4

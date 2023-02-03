@@ -44,7 +44,7 @@ Music_DragonsDen_branch_eed1e:
 	endchannel
 
 Music_DragonsDen_branch_eed2d:
-	intensity $b1
+	volume_envelope 11, 1
 	note __, 2
 	octave 4
 	note C#, 3
@@ -91,7 +91,7 @@ Music_DragonsDen_branch_eed5e:
 	endchannel
 
 Music_DragonsDen_branch_eed6b:
-	intensity $c1
+	volume_envelope 12, 1
 Music_DragonsDen_branch_eed6d:
 	octave 5
 	note C#, 4

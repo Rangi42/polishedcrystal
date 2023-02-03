@@ -18,15 +18,15 @@ Music_Route210DPPt_Ch1:
 	note __, 2
 Music_Route210DPPt_Ch1_loop:
 	note __, 4
-	intensity $B4
+	volume_envelope 11, 4
 	octave 3
 	note E_, 4
 	note G#, 4
 	octave 4
 	note C_, 4
-	intensity $A8
+	volume_envelope 10, 8
 	note D#, 16
-	intensity $B3
+	volume_envelope 11, 3
 	duty_cycle 2
 	octave 3
 	note F_, 3
@@ -60,14 +60,14 @@ Music_Route210DPPt_Ch1_loop:
 	note C#, 1
 	note D#, 2
 	note C#, 1
-	intensity $B7
+	volume_envelope 11, 7
 	note C_, 11
-	intensity $B4
+	volume_envelope 11, 4
 	note C#, 1
 	note D#, 1
 	note C#, 1
 	note C_, 2
-	intensity $B7
+	volume_envelope 11, 7
 	octave 3
 	note G#, 11
 	note_type 6, 9, 1
@@ -139,30 +139,30 @@ Music_Route210DPPt_Ch1_loop:
 	note C#, 1
 	octave 4
 	note C#, 1
-	intensity $B4
+	volume_envelope 11, 4
 	note C#, 2
 	note C_, 4
 	note_type 12, 11, 7
 	note C#, 9
-	intensity $B4
+	volume_envelope 11, 4
 	note C_, 2
 	note C#, 2
 	octave 3
 	note A#, 2
 	octave 4
 	note C#, 1
-	intensity $B7
+	volume_envelope 11, 7
 	octave 3
 	note A#, 7
-	intensity $B4
+	volume_envelope 11, 4
 	note G#, 2
 	note F#, 2
 	note A#, 2
 	note G#, 1
 	note A#, 2
-	intensity $B7
+	volume_envelope 11, 7
 	note G#, 5
-	intensity $B1
+	volume_envelope 11, 1
 	octave 2
 	note G#, 1
 	octave 3
@@ -178,7 +178,7 @@ Music_Route210DPPt_Ch1_loop:
 	note A#, 1
 	note G#, 2
 	note A#, 1
-	intensity $B4
+	volume_envelope 11, 4
 	octave 4
 	note D#, 8
 	octave 3
@@ -187,23 +187,23 @@ Music_Route210DPPt_Ch1_loop:
 	note C_, 1
 	note C#, 1
 	note D#, 1
-	intensity $B7
+	volume_envelope 11, 7
 	note F_, 14
-	intensity $B4
+	volume_envelope 11, 4
 	note D#, 1
 	note C#, 1
 	note D#, 2
 	note C#, 1
-	intensity $B7
+	volume_envelope 11, 7
 	octave 3
 	note A#, 11
-	intensity $B4
+	volume_envelope 11, 4
 	octave 4
 	note C#, 1
 	note D#, 1
 	note C#, 1
 	note C_, 2
-	intensity $B7
+	volume_envelope 11, 7
 	octave 3
 	note G#, 11
 	note_type 6, 11, 1
@@ -232,7 +232,7 @@ Music_Route210DPPt_Ch1_loop:
 	note D#, 2
 	note F_, 2
 	note G#, 6
-	intensity $B4
+	volume_envelope 11, 4
 	octave 3
 	note A#, 4
 	octave 1
@@ -273,7 +273,7 @@ Music_Route210DPPt_Ch1_loop:
 	note F#, 6
 	note G_, 12
 	note G#, 8
-	intensity $B1
+	volume_envelope 11, 1
 	duty_cycle 0
 	note F#, 2
 	octave 4
@@ -479,7 +479,7 @@ Music_Route210DPPt_Ch1_loop:
 	note F_, 4
 	note F_, 1
 	note F_, 1
-	intensity $B5
+	volume_envelope 11, 5
 	note F_, 6
 	note __, 2
 	jumpchannel Music_Route210DPPt_Ch1_loop
@@ -551,14 +551,14 @@ Music_Route210DPPt_Ch2_loop:
 	note G_, 1
 	note_type 12, 12, 8
 	note G#, 12
-	intensity $C5
+	volume_envelope 12, 5
 	note F#, 2
 	note F_, 2
 	note F#, 2
 	note F_, 1
-	intensity $C8
+	volume_envelope 12, 8
 	note D#, 7
-	intensity $C5
+	volume_envelope 12, 5
 	note F_, 1
 	note D#, 2
 	note C#, 2
@@ -566,7 +566,7 @@ Music_Route210DPPt_Ch2_loop:
 	note F_, 1
 	octave 3
 	note G#, 2
-	intensity $C7
+	volume_envelope 12, 7
 	octave 4
 	note F_, 16
 	note __, 9
@@ -585,14 +585,14 @@ Music_Route210DPPt_Ch2_loop:
 	note F_, 1
 	note F#, 2
 	note F_, 1
-	intensity $C8
+	volume_envelope 12, 8
 	note D#, 11
-	intensity $C5
+	volume_envelope 12, 5
 	note F_, 1
 	note F#, 1
 	note F_, 1
 	note D#, 2
-	intensity $C7
+	volume_envelope 12, 7
 	note C#, 16
 	note __, 1
 	note_type 8, 12, 1
@@ -625,16 +625,16 @@ Music_Route210DPPt_Ch2_loop:
 	duty_cycle 1
 	note G#, 1
 	note A#, 2
-	intensity $C8
+	volume_envelope 12, 8
 	note G#, 9
-	intensity $C5
+	volume_envelope 12, 5
 	note F#, 2
 	note F_, 2
 	note F#, 2
 	note F_, 1
-	intensity $C8
+	volume_envelope 12, 8
 	note D#, 7
-	intensity $C5
+	volume_envelope 12, 5
 	note F_, 1
 	note D#, 2
 	note C#, 2
@@ -644,38 +644,38 @@ Music_Route210DPPt_Ch2_loop:
 	note F_, 1
 	note D#, 2
 	note F_, 3
-	intensity $C7
+	volume_envelope 12, 7
 	note F_, 10
-	intensity $C2
+	volume_envelope 12, 2
 	duty_cycle 0
 	note F_, 4
 	note C#, 4
 	note D#, 4
 	octave 3
 	note G#, 2
-	intensity $C5
+	volume_envelope 12, 5
 	duty_cycle 1
 	octave 4
 	note F_, 1
 	note F#, 1
-	intensity $C8
+	volume_envelope 12, 8
 	note G#, 14
-	intensity $C5
+	volume_envelope 12, 5
 	note F#, 1
 	note F_, 1
 	note F#, 2
 	note F_, 1
-	intensity $C8
+	volume_envelope 12, 8
 	note D#, 11
-	intensity $C5
+	volume_envelope 12, 5
 	note F_, 1
 	note F#, 1
 	note F_, 1
 	note D#, 2
-	intensity $C7
+	volume_envelope 12, 7
 	note C#, 16
 	note __, 11
-	intensity $C5
+	volume_envelope 12, 5
 	duty_cycle 0
 	octave 3
 	note F#, 1
@@ -749,7 +749,7 @@ Music_Route210DPPt_Ch2_loop:
 	octave 3
 	note B_, 6
 	note A_, 4
-	intensity $C8
+	volume_envelope 12, 8
 	vibrato $04, $35
 	octave 4
 	note G#, 2
@@ -833,7 +833,7 @@ Music_Route210DPPt_Ch2_loop:
 	note A#, 4
 	octave 5
 	note C_, 4
-	intensity $C7
+	volume_envelope 12, 7
 	note C#, 2
 	note C_, 2
 	octave 4
@@ -860,7 +860,7 @@ Music_Route210DPPt_Ch2_loop:
 	note C#, 16
 	note_type 8, 12, 8
 	note C#, 8
-	intensity $C7
+	volume_envelope 12, 7
 	note C#, 16
 	jumpchannel Music_Route210DPPt_Ch2_loop
 
@@ -1190,7 +1190,7 @@ Music_Route210DPPt_Ch3_loop:
 	note A#, 2
 	note D_, 2
 	note D#, 2
-	intensity $16
+	volume_envelope 1, 6
 	note G_, 2
 	note G#, 2
 	note F#, 6
@@ -1381,7 +1381,7 @@ Music_Route210DPPt_Ch3_loop:
 	note C#, 2
 	note F_, 2
 	note A#, 2
-	intensity $12
+	volume_envelope 1, 2
 	note A#, 16
 	note A_, 16
 	note G#, 16

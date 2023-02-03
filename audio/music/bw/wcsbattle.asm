@@ -12,35 +12,35 @@ Music_WCSBattleBW_Ch1:
 	note_type 12, 8, -4
 	octave 2
 	note A#, 12
-	intensity $c1
+	volume_envelope 12, 1
 	note A#, 1
 	note A#, 1
 	note A#, 1
 	note A#, 1
-	intensity $c8
+	volume_envelope 12, 8
 	note A#, 12
-	intensity $c1
+	volume_envelope 12, 1
 	note A#, 1
 	note A#, 1
 	note A#, 1
 	note A#, 1
 	octave 3
-	intensity $c8
+	volume_envelope 12, 8
 	note C_, 12
-	intensity $c1
+	volume_envelope 12, 1
 	note C_, 1
 	note C_, 1
 	note C_, 1
 	note C_, 1
-	intensity $c8
+	volume_envelope 12, 8
 	note C_, 12
-	intensity $c1
+	volume_envelope 12, 1
 	note C_, 1
 	note C_, 1
 	note C_, 1
 	note C_, 1
 	duty_cycle 3
-	intensity $e7
+	volume_envelope 14, 7
 	note C_, 8
 	note C#, 8
 	note D#, 8
@@ -64,7 +64,7 @@ Music_WCSBattleBW_Ch1:
 	note A#, 8
 	octave 4
 	note C_, 8
-	intensity $c8
+	volume_envelope 12, 8
 	vibrato $5, $22
 	note C#, 16
 	note C#, 16
@@ -80,7 +80,7 @@ Music_WCSBattleBW_Ch1:
 	octave 4
 	note C_, 16
 Music_WCSBattleBW_Ch1_L:
-	intensity $e7
+	volume_envelope 14, 7
 	vibrato $0, $0
 	note C_, 8
 	octave 3
@@ -90,7 +90,7 @@ Music_WCSBattleBW_Ch1_L:
 	note F#, 4
 	note G_, 12
 	duty_cycle 2
-	intensity $c8
+	volume_envelope 12, 8
 	octave 2
 	note A#, 1
 	note A_, 1
@@ -116,7 +116,7 @@ Music_WCSBattleBW_Ch1_L:
 	note D_, 1
 	note G_, 1
 	duty_cycle 3
-	intensity $e7
+	volume_envelope 14, 7
 	octave 4
 	note C_, 8
 	octave 3
@@ -151,55 +151,55 @@ Music_WCSBattleBW_Ch1_L:
 	octave 5
 	note C_, 1
 	note C_, 3
-	intensity $e7
+	volume_envelope 14, 7
 	octave 3
 	note A#, 4
 	octave 5
-	intensity $e1
+	volume_envelope 14, 1
 	note C_, 1
 	note C_, 3
-	intensity $e7
+	volume_envelope 14, 7
 	octave 4
 	note C#, 4
 	octave 5
-	intensity $e1
+	volume_envelope 14, 1
 	note C_, 1
 	note C_, 3
-	intensity $e7
+	volume_envelope 14, 7
 	octave 3
 	note A#, 4
 	octave 5
-	intensity $e1
+	volume_envelope 14, 1
 	note C_, 1
 	note C_, 1
-	intensity $e7
+	volume_envelope 14, 7
 	octave 3
 	note G_, 4
 	note A#, 2
 	octave 5
-	intensity $e1
+	volume_envelope 14, 1
 	note C_, 1
 	note C_, 3
-	intensity $e7
+	volume_envelope 14, 7
 	octave 4
 	note A#, 4
 	octave 5
-	intensity $e1
+	volume_envelope 14, 1
 	note C_, 1
 	note C_, 3
-	intensity $e7
+	volume_envelope 14, 7
 	note C#, 4
-	intensity $e1
+	volume_envelope 14, 1
 	note C_, 1
 	note C_, 3
-	intensity $e7
+	volume_envelope 14, 7
 	octave 4
 	note A#, 4
 	octave 5
-	intensity $e1
+	volume_envelope 14, 1
 	note C_, 1
 	note C_, 1
-	intensity $e7
+	volume_envelope 14, 7
 	octave 4
 	note G_, 4
 	note A#, 2
@@ -313,34 +313,34 @@ Music_WCSBattleBW_Ch2:
 	note_type 12, 8, -4
 	octave 2
 	note F_, 12
-	intensity $c1
+	volume_envelope 12, 1
 	note F_, 1
 	note F_, 1
 	note F_, 1
 	note F_, 1
-	intensity $c8
+	volume_envelope 12, 8
 	note F_, 12
-	intensity $c1
+	volume_envelope 12, 1
 	note F_, 1
 	note F_, 1
 	note F_, 1
 	note F_, 1
-	intensity $c8
+	volume_envelope 12, 8
 	note G_, 12
-	intensity $c1
+	volume_envelope 12, 1
 	note G_, 1
 	note G_, 1
 	note G_, 1
 	note G_, 1
-	intensity $c8
+	volume_envelope 12, 8
 	note G_, 12
-	intensity $c1
+	volume_envelope 12, 1
 	note G_, 1
 	note G_, 1
 	note G_, 1
 	note G_, 1
 	duty_cycle 3
-	intensity $e7
+	volume_envelope 14, 7
 	note G_, 8
 	note G#, 8
 	note A#, 8
@@ -360,7 +360,7 @@ Music_WCSBattleBW_Ch2:
 	note D#, 8
 	note F_, 8
 	note G_, 8
-	intensity $c8
+	volume_envelope 12, 8
 	vibrato $5, $22
 	note F#, 16
 	note G#, 8
@@ -377,7 +377,7 @@ Music_WCSBattleBW_Ch2:
 	note D_, 16
 	note E_, 16
 Music_WCSBattleBW_Ch2_L:
-	intensity $e7
+	volume_envelope 14, 7
 	vibrato $0, $0
 	octave 3
 	note G_, 8
@@ -387,7 +387,7 @@ Music_WCSBattleBW_Ch2_L:
 	note C#, 4
 	note D_, 12
 	duty_cycle 2
-	intensity $c8
+	volume_envelope 12, 8
 	octave 2
 	note G_, 1
 	note F#, 1
@@ -409,7 +409,7 @@ Music_WCSBattleBW_Ch2_L:
 	octave 3
 	note D#, 1
 	duty_cycle 3
-	intensity $e7
+	volume_envelope 14, 7
 	note G_, 8
 	note F#, 8
 	note F_, 8
@@ -422,7 +422,7 @@ Music_WCSBattleBW_Ch2_L:
 	note F_, 8
 	note G#, 8
 	note F_, 8
-	intensity $e1
+	volume_envelope 14, 1
 	note G_, 1
 	note G_, 7
 	note G_, 1
@@ -437,7 +437,7 @@ Music_WCSBattleBW_Ch2_L:
 	note G_, 1
 	note G_, 7
 	note G_, 8
-	intensity $e7
+	volume_envelope 14, 7
 	note C_, 1
 	octave 2
 	note B_, 1
@@ -698,7 +698,7 @@ Music_WCSBattleBW_Ch3:
 	note __, 1
 	note C_, 1
 	note __, 1
-	intensity $15
+	volume_envelope 1, 5
 	octave 3
 	note C_, 3
 	note __, 1
@@ -810,7 +810,7 @@ Music_WCSBattleBW_Ch3:
 	octave 3
 	note C_, 1
 	note __, 2
-	intensity $16
+	volume_envelope 1, 6
 	octave 4
 	note C#, 1
 	note __, 1
@@ -993,7 +993,7 @@ Music_WCSBattleBW_Ch3:
 	note D_, 1
 	note __, 1
 Music_WCSBattleBW_Ch3_L:
-	intensity $15
+	volume_envelope 1, 5
 	octave 3
 	note C_, 1
 	octave 2
@@ -1013,7 +1013,7 @@ Music_WCSBattleBW_Ch3_L:
 	octave 2
 	note D_, 1
 	note __, 6
-	intensity $18
+	volume_envelope 1, 8
 Music_WCSBattleBW_Ch3_L1:
 	octave 2
 	note G_, 2
@@ -1197,7 +1197,7 @@ Music_WCSBattleBW_Ch3_L17:
 	loopchannel 7, Music_WCSBattleBW_Ch3_L17
 	note D_, 2
 	note C#, 2
-	intensity $15
+	volume_envelope 1, 5
 Music_WCSBattleBW_Ch3_L18:
 	octave 3
 	note C_, 1

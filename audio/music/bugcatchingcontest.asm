@@ -49,7 +49,7 @@ Music_BugCatchingContest_branch_f7c55:
 	note __, 2
 	note B_, 2
 	loopchannel 8, Music_BugCatchingContest_branch_f7c55
-	intensity $b4
+	volume_envelope 11, 4
 	duty_cycle 1
 	octave 3
 	note B_, 6
@@ -59,7 +59,7 @@ Music_BugCatchingContest_branch_f7c55:
 	octave 4
 	note D_, 1
 	note E_, 1
-	intensity $b1
+	volume_envelope 11, 1
 	duty_cycle 2
 Music_BugCatchingContest_branch_f7c6b:
 	note __, 2
@@ -82,7 +82,7 @@ Music_BugCatchingContest_branch_f7c6b:
 	note B_, 8
 	octave 5
 	note E_, 8
-	intensity $b1
+	volume_envelope 11, 1
 	note __, 4
 	octave 2
 	note B_, 4
@@ -96,7 +96,7 @@ Music_BugCatchingContest_branch_f7c8e:
 	octave 2
 	note A_, 4
 	loopchannel 3, Music_BugCatchingContest_branch_f7c8e
-	intensity $a7
+	volume_envelope 10, 7
 	octave 4
 	note F#, 4
 	note A_, 4
@@ -412,7 +412,7 @@ Music_BugCatchingContest_branch_f7dda:
 	octave 5
 	note D_, 4
 	note C#, 2
-	intensity $10
+	volume_envelope 1, 0
 	note E_, 1
 	note G_, 1
 	note B_, 1
@@ -430,7 +430,7 @@ Music_BugCatchingContest_branch_f7dda:
 	note E_, 1
 	note F#, 1
 	note E_, 8
-	intensity $14
+	volume_envelope 1, 4
 	octave 4
 	note E_, 10
 	note __, 2
@@ -440,7 +440,7 @@ Music_BugCatchingContest_branch_f7dda:
 	octave 5
 	note C#, 8
 	note __, 4
-	intensity $10
+	volume_envelope 1, 0
 	note E_, 2
 	note G_, 2
 	note A_, 2
@@ -457,7 +457,7 @@ Music_BugCatchingContest_branch_f7dda:
 	note C#, 1
 	note D_, 1
 	note C#, 8
-	intensity $15
+	volume_envelope 1, 5
 	octave 5
 	note F#, 4
 	note __, 4

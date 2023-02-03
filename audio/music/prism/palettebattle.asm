@@ -279,7 +279,7 @@ Music_PaletteBattlePrism_branch_1edc47:
 	note D#, 2
 	octave 2
 	note A#, 2
-	intensity $b8
+	volume_envelope 11, 8
 	note G_, 16
 	note G_, 16
 	note D_, 16
@@ -288,7 +288,7 @@ Music_PaletteBattlePrism_branch_1edc47:
 	note G_, 16
 	note D_, 16
 	note D_, 16
-	intensity $b2
+	volume_envelope 11, 2
 	octave 3
 	jumpchannel Music_PaletteBattlePrism_branch_1edc47
 
@@ -353,11 +353,11 @@ Music_PaletteBattlePrism_branch_1edb37:
 	octave 2
 	note A_, 2
 	note B_, 2
-	intensity $c7
+	volume_envelope 12, 7
 	note G_, 16
 	note __, 16
 	octave 3
-	intensity $c2
+	volume_envelope 12, 2
 	note C_, 4
 	note G_, 2
 	note F_, 2
@@ -374,10 +374,10 @@ Music_PaletteBattlePrism_branch_1edb37:
 	octave 3
 	note B_, 2
 	note A_, 2
-	intensity $c7
+	volume_envelope 12, 7
 	note G_, 16
 	note __, 12
-	intensity $c2
+	volume_envelope 12, 2
 	note D_, 2
 	note D_, 2
 	note E_, 4
@@ -396,11 +396,11 @@ Music_PaletteBattlePrism_branch_1edb37:
 	note D_, 2
 	note E_, 2
 	note F_, 2
-	intensity $c7
+	volume_envelope 12, 7
 	note G_, 16
 	note __, 16
 	octave 4
-	intensity $c2
+	volume_envelope 12, 2
 	note C_, 4
 	octave 3
 	note B_, 2
@@ -420,13 +420,13 @@ Music_PaletteBattlePrism_branch_1edb37:
 	octave 2
 	note B_, 2
 	octave 3
-	intensity $c7
+	volume_envelope 12, 7
 	note C_, 16
 	note __, 16
 
 Music_PaletteBattlePrism_branch_1edb87:
 	octave 4
-	intensity $c2
+	volume_envelope 12, 2
 	note C#, 2
 	note C#, 2
 	octave 3
@@ -527,14 +527,14 @@ Music_PaletteBattlePrism_branch_1edbb7:
 
 Music_PaletteBattlePrism_branch_1edbef:
 	octave 3
-	intensity $c8
+	volume_envelope 12, 8
 	note C_, 16
 	note C_, 16
 	octave 2
 	note G_, 16
 	note G_, 16
 	loopchannel 2, Music_PaletteBattlePrism_branch_1edbef
-	intensity $c2
+	volume_envelope 12, 2
 	octave 3
 	jumpchannel Music_PaletteBattlePrism_branch_1edb37
 

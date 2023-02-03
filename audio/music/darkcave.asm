@@ -21,11 +21,11 @@ Music_DarkCave_branch_ea2dc:
 	note D_, 16
 	note C#, 16
 	note C_, 16
-	intensity $a3
+	volume_envelope 10, 3
 Music_DarkCave_branch_ea2e8:
 	callchannel Music_DarkCave_branch_ea333
 	loopchannel 3, Music_DarkCave_branch_ea2e8
-	intensity $b7
+	volume_envelope 11, 7
 	note G#, 8
 	note D#, 8
 	note G_, 8
@@ -42,13 +42,13 @@ Music_DarkCave_branch_ea2e8:
 	note C#, 8
 	note D#, 8
 	note C_, 8
-	intensity $a3
+	volume_envelope 10, 3
 Music_DarkCave_branch_ea303:
 	callchannel Music_DarkCave_branch_ea333
 	loopchannel 2, Music_DarkCave_branch_ea303
 	note __, 16
 	note __, 8
-	intensity $b7
+	volume_envelope 11, 7
 	octave 2
 	note F_, 2
 	note G_, 2
@@ -73,7 +73,7 @@ Music_DarkCave_branch_ea303:
 	note G#, 2
 	note G_, 2
 	note G#, 4
-	intensity $a3
+	volume_envelope 10, 3
 Music_DarkCave_branch_ea328:
 	callchannel Music_DarkCave_branch_ea333
 	loopchannel 2, Music_DarkCave_branch_ea328
@@ -154,10 +154,10 @@ Music_DarkCave_branch_ea37e:
 	loopchannel 4, Music_DarkCave_branch_ea37e
 	note __, 8
 	stereopanning $ff
-	intensity $c7
+	volume_envelope 12, 7
 	octave 5
 	note C_, 8
-	intensity $c4
+	volume_envelope 12, 4
 	note D_, 2
 	note C_, 2
 	octave 4
@@ -166,18 +166,18 @@ Music_DarkCave_branch_ea37e:
 	note A#, 2
 	octave 5
 	note D_, 4
-	intensity $b0
+	volume_envelope 11, 0
 	note C#, 4
-	intensity $b7
+	volume_envelope 11, 7
 	note C#, 12
-	intensity $59
+	volume_envelope 5, -1
 	note C_, 8
-	intensity $c7
+	volume_envelope 12, 7
 	note C_, 8
 	note __, 8
-	intensity $c7
+	volume_envelope 12, 7
 	note C_, 8
-	intensity $c4
+	volume_envelope 12, 4
 	note D_, 2
 	note C_, 2
 	octave 4
@@ -187,17 +187,17 @@ Music_DarkCave_branch_ea37e:
 	note A#, 2
 	octave 5
 	note D_, 4
-	intensity $c7
+	volume_envelope 12, 7
 	note C#, 12
-	intensity $c3
+	volume_envelope 12, 3
 	note C_, 2
 	note C#, 2
-	intensity $b0
+	volume_envelope 11, 0
 	note D#, 10
-	intensity $b7
+	volume_envelope 11, 7
 	note D#, 6
 	stereopanning $f
-	intensity $c4
+	volume_envelope 12, 4
 	octave 4
 	note F_, 4
 	note D#, 2
@@ -219,7 +219,7 @@ Music_DarkCave_branch_ea37e:
 	note C#, 8
 	octave 3
 	note A#, 8
-	intensity $b0
+	volume_envelope 11, 0
 	octave 4
 	note D#, 2
 	note D_, 2
@@ -254,16 +254,16 @@ Music_DarkCave_branch_ea37e:
 	note A#, 2
 	octave 4
 	note C#, 2
-	intensity $b0
+	volume_envelope 11, 0
 	note C_, 8
-	intensity $b7
+	volume_envelope 11, 7
 	note C_, 8
-	intensity $c7
+	volume_envelope 12, 7
 	stereopanning $ff
 	note __, 8
 	octave 5
 	note C_, 8
-	intensity $c4
+	volume_envelope 12, 4
 	note D_, 2
 	note C_, 2
 	octave 4
@@ -272,18 +272,18 @@ Music_DarkCave_branch_ea37e:
 	note A#, 2
 	octave 5
 	note D_, 4
-	intensity $49
+	volume_envelope 4, -1
 	note C#, 8
-	intensity $c7
+	volume_envelope 12, 7
 	note C#, 8
-	intensity $b0
+	volume_envelope 11, 0
 	note C_, 8
-	intensity $b7
+	volume_envelope 11, 7
 	note C_, 8
 	note __, 8
-	intensity $c7
+	volume_envelope 12, 7
 	note C_, 8
-	intensity $c4
+	volume_envelope 12, 4
 	note D_, 2
 	note C_, 2
 	octave 4
@@ -293,15 +293,15 @@ Music_DarkCave_branch_ea37e:
 	note A#, 2
 	octave 5
 	note D_, 4
-	intensity $b0
+	volume_envelope 11, 0
 	note C#, 8
-	intensity $b7
+	volume_envelope 11, 7
 	note C#, 8
-	intensity $b0
+	volume_envelope 11, 0
 	note C_, 8
-	intensity $b7
+	volume_envelope 11, 7
 	note C_, 8
-	intensity $c7
+	volume_envelope 12, 7
 	note __, 16
 	stereopanning $f
 	note __, 8
@@ -316,29 +316,29 @@ Music_DarkCave_branch_ea37e:
 	note C_, 2
 	note C#, 4
 	note C_, 16
-	intensity $c2
+	volume_envelope 12, 2
 	note D#, 8
-	intensity $c7
+	volume_envelope 12, 7
 	octave 3
 	note A#, 2
 	octave 4
 	note C_, 2
 	note C#, 4
 	note C_, 16
-	intensity $c2
+	volume_envelope 12, 2
 	octave 3
 	note A#, 8
-	intensity $c7
+	volume_envelope 12, 7
 	octave 4
 	note C#, 2
 	note C_, 2
-	intensity $c4
+	volume_envelope 12, 4
 	note C#, 16
 	note __, 4
 	note __, 16
 	note __, 16
 	note __, 16
-	intensity $b7
+	volume_envelope 11, 7
 	octave 5
 	note D#, 16
 	note D_, 16

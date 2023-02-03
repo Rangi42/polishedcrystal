@@ -19,11 +19,11 @@ Music_Route101RSE_Ch1:
 	note_type 12, 8, 3
 	note __, 2
 Music_Route101RSE_Ch1_loop:
-	intensity $84
+	volume_envelope 8, 4
 	duty_cycle 3
 	callchannel Music_Route101RSE_Ch1_branch_1
 	callchannel Music_Route101RSE_Ch1_branch_1
-	intensity $82
+	volume_envelope 8, 2
 	duty_cycle 0
 	callchannel Music_Route101RSE_Ch1_branch_2
 	callchannel Music_Route101RSE_Ch1_branch_3
@@ -59,7 +59,7 @@ Music_Route101RSE_Ch1_loop:
 	octave 4
 	note A_, 2
 	callchannel Music_Route101RSE_Ch1_branch_2
-	intensity $83
+	volume_envelope 8, 3
 	duty_cycle 3
 	octave 3
 	note A#, 1
@@ -69,16 +69,16 @@ Music_Route101RSE_Ch1_loop:
 	octave 4
 	note D_, 4
 	octave 5
-	intensity $84
+	volume_envelope 8, 4
 	duty_cycle 2
 	note F_, 2
-	intensity $64
+	volume_envelope 6, 4
 	note F_, 2
-	intensity $84
+	volume_envelope 8, 4
 	note A#, 2
-	intensity $64
+	volume_envelope 6, 4
 	note A#, 2
-	intensity $83
+	volume_envelope 8, 3
 	duty_cycle 3
 	octave 3
 	note A_, 1
@@ -88,13 +88,13 @@ Music_Route101RSE_Ch1_loop:
 	note A_, 4
 	octave 5
 	duty_cycle 2
-	intensity $84
+	volume_envelope 8, 4
 	note E_, 2
-	intensity $64
+	volume_envelope 6, 4
 	note E_, 2
-	intensity $84
+	volume_envelope 8, 4
 	note A_, 2
-	intensity $64
+	volume_envelope 6, 4
 	note A_, 2
 	jumpchannel Music_Route101RSE_Ch1_loop
 
@@ -226,11 +226,11 @@ Music_Route101RSE_Ch2:
 	note_type 12, 7, 7
 	note __, 2
 Music_Route101RSE_Ch2_loop:
-	intensity $77
+	volume_envelope 7, 7
 	callchannel Music_Route101RSE_Ch2_branch_1
 	callchannel Music_Route101RSE_Ch2_branch_1
 	callchannel Music_Route101RSE_Ch2_branch_2
-	intensity $97
+	volume_envelope 9, 7
 	octave 4
 	note D_, 1
 	note __, 1
@@ -240,9 +240,9 @@ Music_Route101RSE_Ch2_loop:
 	note __, 1
 	note E_, 1
 	note F#, 1
-	intensity $90
+	volume_envelope 9, 0
 	note G_, 2
-	intensity $97
+	volume_envelope 9, 7
 	note G_, 6
 	note E_, 4
 	note D_, 4
@@ -255,7 +255,7 @@ Music_Route101RSE_Ch2_loop:
 	note E_, 1
 	note F#, 1
 	note E_, 6
-	intensity $77
+	volume_envelope 7, 7
 	octave 1
 	note A_, 2
 	callchannel Music_Route101RSE_Ch2_branch_2
@@ -267,16 +267,16 @@ Music_Route101RSE_Ch2_loop:
 	note D_, 2
 	octave 1
 	note F#, 2
-	intensity $97
+	volume_envelope 9, 7
 	octave 4
 	note A#, 6
 	note A_, 2
 	note G_, 4
 	note F_, 2
 	note A#, 2
-	intensity $90
+	volume_envelope 9, 0
 	note A_, 8
-	intensity $97
+	volume_envelope 9, 7
 	note A_, 8
 	jumpchannel Music_Route101RSE_Ch2_loop
 
@@ -332,10 +332,10 @@ Music_Route101RSE_Ch2_branch_2:
 	octave 1
 	note G_, 2
 	note __, 4
-	intensity $92
+	volume_envelope 9, 2
 	note G_, 1
 	note G_, 1
-	intensity $97
+	volume_envelope 9, 7
 	note F#, 2
 	note __, 1
 	note A_, 1
@@ -414,9 +414,9 @@ Music_Route101RSE_Ch3_loop:
 	octave 6
 	note D_, 2
 	note C#, 8
-	intensity $23
+	volume_envelope 2, 3
 	note C#, 6
-	intensity $13
+	volume_envelope 1, 3
 	jumpchannel Music_Route101RSE_Ch3_loop
 
 Music_Route101RSE_Ch3_branch_1:

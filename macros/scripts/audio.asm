@@ -78,10 +78,14 @@ MACRO duty_cycle
 	db \1 ; duty cycle
 ENDM
 
-	const intensity_cmd
-MACRO intensity
-	db intensity_cmd
-	db \1 ; intensity
+	const volume_envelope_cmd ; $dc
+MACRO volume_envelope
+	db volume_envelope_cmd
+	if \2 < 0
+		dn \1, %1000 | (\2 * -1) ; volume envelope
+	else
+		dn \1, \2 ; volume envelope
+	endc
 ENDM
 
 	const soundinput_cmd

@@ -12,7 +12,7 @@ Music_GameCorner_Ch1:
 	note_type 12, 9, 1
 	note __, 8
 Music_GameCorner_branch_edd84:
-	intensity $91
+	volume_envelope 9, 1
 	note __, 16
 	note __, 16
 	note __, 16
@@ -38,7 +38,7 @@ Music_GameCorner_branch_edd84:
 	note A#, 2
 	note G#, 2
 	note G_, 2
-	intensity $71
+	volume_envelope 7, 1
 Music_GameCorner_branch_eddb1:
 	octave 4
 	note G#, 1
@@ -140,7 +140,7 @@ Music_GameCorner_Ch2:
 	note_type 12, 10, 1
 	note __, 8
 Music_GameCorner_branch_ede25:
-	intensity $92
+	volume_envelope 9, 2
 	duty_cycle 1
 	callchannel Music_GameCorner_branch_ede75
 	octave 1
@@ -151,9 +151,9 @@ Music_GameCorner_branch_ede25:
 	note F_, 1
 	octave 3
 	note G#, 2
-	intensity $a4
+	volume_envelope 10, 4
 	note G#, 3
-	intensity $92
+	volume_envelope 9, 2
 	note G_, 2
 	note A#, 1
 	octave 4
@@ -164,11 +164,11 @@ Music_GameCorner_branch_ede25:
 	note D#, 2
 	note F_, 1
 	note D#, 2
-	intensity $a4
+	volume_envelope 10, 4
 	note G_, 3
 	note F_, 4
 	duty_cycle 2
-	intensity $c7
+	volume_envelope 12, 7
 	octave 3
 	note D#, 1
 	note F_, 1
@@ -196,13 +196,13 @@ Music_GameCorner_branch_ede25:
 	note D#, 1
 	note F_, 1
 	note G_, 16
-	intensity $92
+	volume_envelope 9, 2
 	note G_, 1
 	note G_, 1
 	note G_, 3
 	note A#, 2
 	note A#, 9
-	intensity $a4
+	volume_envelope 10, 4
 	jumpchannel Music_GameCorner_branch_ede25
 
 Music_GameCorner_branch_ede75:
@@ -254,10 +254,10 @@ Music_GameCorner_branch_ede75:
 	note D#, 2
 	note F_, 1
 	note D#, 2
-	intensity $a4
+	volume_envelope 10, 4
 	note F_, 3
 	note G_, 4
-	intensity $92
+	volume_envelope 9, 2
 	note F#, 1
 	note F_, 1
 	octave 1
@@ -277,10 +277,10 @@ Music_GameCorner_branch_ede75:
 	note D#, 2
 	note G_, 1
 	note D#, 2
-	intensity $a4
+	volume_envelope 10, 4
 	note A#, 3
 	note A_, 2
-	intensity $92
+	volume_envelope 9, 2
 	note A#, 1
 	octave 5
 	note C_, 3
@@ -298,10 +298,10 @@ Music_GameCorner_branch_ede75:
 	note D#, 2
 	note F_, 1
 	note D#, 2
-	intensity $a4
+	volume_envelope 10, 4
 	note F_, 3
 	note G_, 4
-	intensity $92
+	volume_envelope 9, 2
 	note F#, 1
 	note F_, 1
 	octave 1
@@ -409,7 +409,7 @@ Music_GameCorner_branch_edeef:
 	octave 4
 	note A#, 1
 	note __, 1
-	intensity $15
+	volume_envelope 1, 5
 	callchannel Music_GameCorner_branch_ee03f
 	octave 2
 	note C_, 2

@@ -58,7 +58,7 @@ Music_VermilionCity_branch_eb6a0:
 	note C_, 1
 	callchannel Music_VermilionCity_branch_eb6f9
 	callchannel Music_VermilionCity_branch_eb701
-	intensity $93
+	volume_envelope 9, 3
 	duty_cycle 0
 	note __, 2
 	note F#, 2
@@ -70,7 +70,7 @@ Music_VermilionCity_branch_eb6a0:
 	note F#, 2
 	callchannel Music_VermilionCity_branch_eb70c
 	callchannel Music_VermilionCity_branch_eb70c
-	intensity $87
+	volume_envelope 8, 7
 	duty_cycle 2
 	octave 4
 	note D_, 8
@@ -157,7 +157,7 @@ Music_VermilionCity_branch_eb735:
 	note G#, 2
 	callchannel Music_VermilionCity_branch_eb768
 	note E_, 2
-	intensity $b7
+	volume_envelope 11, 7
 	octave 3
 	note B_, 4
 	octave 4
@@ -245,12 +245,12 @@ Music_VermilionCity_branch_eb79e:
 	callchannel Music_VermilionCity_branch_eb7de
 	octave 5
 	note A_, 6
-	intensity $24
+	volume_envelope 2, 4
 	note E_, 1
 	note G#, 1
 	callchannel Music_VermilionCity_branch_eb7de
 	note A_, 8
-	intensity $14
+	volume_envelope 1, 4
 	octave 3
 	note D_, 4
 	note C#, 4
@@ -270,7 +270,7 @@ Music_VermilionCity_branch_eb79e:
 	note __, 2
 	note D_, 2
 	callchannel Music_VermilionCity_branch_eb7f5
-	intensity $25
+	volume_envelope 2, 5
 	octave 3
 	note E_, 8
 	octave 4
@@ -283,7 +283,7 @@ Music_VermilionCity_branch_eb79e:
 	note E_, 16
 	octave 3
 	note E_, 14
-	intensity $22
+	volume_envelope 2, 2
 	octave 5
 	note E_, 1
 	note G#, 1

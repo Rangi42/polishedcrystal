@@ -31,7 +31,7 @@ Music_WhiteTreehollowWhite2_Ch1:
 Music_WhiteTreehollowWhite2_Ch1_loop:
 	octave 4
 	duty_cycle 3
-	intensity $62
+	volume_envelope 6, 2
 	note G_, 1
 	octave 3
 	note A#, 1
@@ -239,7 +239,7 @@ Music_WhiteTreehollowWhite2_Ch1_loop:
 	octave 4
 	note F_, 1
 	duty_cycle 1
-	intensity $84
+	volume_envelope 8, 4
 	octave 2
 	note C_, 1
 	octave 3
@@ -419,7 +419,7 @@ Music_WhiteTreehollowWhite2_Ch1_loop:
 	note A#, 1
 	octave 4
 	note D#, 1
-	intensity $84
+	volume_envelope 8, 4
 	octave 3
 	note D#, 3
 	note D#, 6
@@ -449,12 +449,12 @@ Music_WhiteTreehollowWhite2_Ch1_loop:
 	note D_, 3
 	duty_cycle 2
 	octave 5
-	intensity $a5
+	volume_envelope 10, 5
 	note D#, 8
 	jumpchannel Music_WhiteTreehollowWhite2_Ch1_loop
 
 Music_WhiteTreehollowWhite2_Ch1_branch_1:
-	intensity $62
+	volume_envelope 6, 2
 	octave 4
 	note A#, 8
 	octave 3
@@ -465,7 +465,7 @@ Music_WhiteTreehollowWhite2_Ch1_branch_1:
 	note A#, 4
 	octave 4
 	note A#, 8
-	intensity $42
+	volume_envelope 4, 2
 	endchannel
 
 Music_WhiteTreehollowWhite2_Ch2:
@@ -643,7 +643,7 @@ Music_WhiteTreehollowWhite2_Ch2_loop:
 	callchannel Music_WhiteTreehollowWhite2_Ch2_branch_1
 	octave 2
 	note G_, 1
-	intensity $92
+	volume_envelope 9, 2
 	octave 2
 	note G#, 3
 	note G#, 6
@@ -666,7 +666,7 @@ Music_WhiteTreehollowWhite2_Ch2_loop:
 	note D#, 2
 	octave 1
 	note A#, 1
-	intensity $80
+	volume_envelope 8, 0
 	octave 1
 	note G_, 8
 	note G#, 8
@@ -674,7 +674,7 @@ Music_WhiteTreehollowWhite2_Ch2_loop:
 	octave 2
 	note C_, 8
 	duty_cycle 0
-	intensity $a3
+	volume_envelope 10, 3
 	note __, 1
 	octave 2
 	note A#, 1
@@ -692,13 +692,13 @@ Music_WhiteTreehollowWhite2_Ch2_loop:
 	note G_, 1
 	note G#, 1
 	note A#, 1
-	intensity $a0
+	volume_envelope 10, 0
 	note A#, 5
-	intensity $a7
+	volume_envelope 10, 7
 	note A#, 6
 	duty_cycle 2
 	octave 4
-	intensity $a2
+	volume_envelope 10, 2
 	note D#, 1
 	note G_, 1
 	note G#, 1
@@ -706,13 +706,13 @@ Music_WhiteTreehollowWhite2_Ch2_loop:
 	jumpchannel Music_WhiteTreehollowWhite2_Ch2
 
 Music_WhiteTreehollowWhite2_Ch2_branch_1:
-	intensity $80
+	volume_envelope 8, 0
 	octave 2
 	note G#, 4
-	intensity $87
+	volume_envelope 8, 7
 	note G#, 6
 	octave 1
-	intensity $82
+	volume_envelope 8, 2
 	note G#, 1
 	octave 2
 	note G#, 1
@@ -720,12 +720,12 @@ Music_WhiteTreehollowWhite2_Ch2_branch_1:
 	note G#, 1
 	note A#, 1
 	octave 3
-	intensity $80
+	volume_envelope 8, 0
 	note C_, 5
-	intensity $87
+	volume_envelope 8, 7
 	note C_, 6
 	octave 2
-	intensity $82
+	volume_envelope 8, 2
 	note C_, 1
 	octave 3
 	note C_, 2
@@ -749,11 +749,11 @@ Music_WhiteTreehollowWhite2_Ch3:
 	note C_, 1
 	octave 4
 	note A#, 14
-	intensity $20
+	volume_envelope 2, 0
 	note A#, 4
-	intensity $30
+	volume_envelope 3, 0
 	note A#, 4
-	intensity $10
+	volume_envelope 1, 0
 	octave 5
 	note A#, 4
 	note G#, 2
@@ -762,11 +762,11 @@ Music_WhiteTreehollowWhite2_Ch3:
 	note F_, 1
 	octave 4
 	note A#, 14
-	intensity $20
+	volume_envelope 2, 0
 	note A#, 4
-	intensity $30
+	volume_envelope 3, 0
 	note A#, 2
-	intensity $10
+	volume_envelope 1, 0
 	note A#, 2
 	octave 5
 	note F_, 2
@@ -790,19 +790,19 @@ Music_WhiteTreehollowWhite2_Ch3:
 	note D#, 1
 	note F_, 1
 	note G_, 12
-	intensity $20
+	volume_envelope 2, 0
 	note G_, 3
-	intensity $10
+	volume_envelope 1, 0
 	note G#, 1
 	note G_, 12
-	intensity $20
+	volume_envelope 2, 0
 	note G_, 3
-	intensity $10
+	volume_envelope 1, 0
 	note G#, 1
 	note F_, 13
-	intensity $20
+	volume_envelope 2, 0
 	note F_, 4
-	intensity $25
+	volume_envelope 2, 5
 	octave 3
 	note C_, 6
 	octave 2
@@ -848,7 +848,7 @@ Music_WhiteTreehollowWhite2_Ch3:
 	note F_, 1
 	note D#, 1
 	note A#, 1
-	intensity $10
+	volume_envelope 1, 0
 	note __, 1
 	note G#, 1
 	note A#, 1
@@ -899,9 +899,9 @@ Music_WhiteTreehollowWhite2_Ch3:
 	octave 6
 	note C_, 1
 	note D#, 7
-	intensity $20
+	volume_envelope 2, 0
 	note D#, 2
-	intensity $14
+	volume_envelope 1, 4
 	octave 3
 	note __, 1
 	note G#, 1
@@ -921,9 +921,9 @@ Music_WhiteTreehollowWhite2_Ch3:
 	note G_, 2
 	note F_, 1
 	note D#, 6
-	intensity $24
+	volume_envelope 2, 4
 	note D#, 4
-	intensity $12
+	volume_envelope 1, 2
 	note __, 1
 	octave 3
 	note A#, 1
@@ -949,7 +949,7 @@ Music_WhiteTreehollowWhite2_Ch3:
 	note C_, 1
 	octave 4
 	note D#, 10
-	intensity $25
+	volume_envelope 2, 5
 	octave 2
 	note G_, 1
 	note __, 2

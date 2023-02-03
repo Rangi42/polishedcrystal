@@ -21,65 +21,65 @@ Music_EliteFourBattleSM_Ch1:
 	note __, 16
 	note __, 16
 	callchannel Music_EliteFourBattleSM_Ch1_branch_1
-	intensity $22
+	volume_envelope 2, 2
 	callchannel Music_EliteFourBattleSM_Ch1_branch_1
-	intensity $31
+	volume_envelope 3, 1
 	callchannel Music_EliteFourBattleSM_Ch1_branch_1
-	intensity $41
+	volume_envelope 4, 1
 	callchannel Music_EliteFourBattleSM_Ch1_branch_1
-	intensity $51
+	volume_envelope 5, 1
 	callchannel Music_EliteFourBattleSM_Ch1_branch_1
-	intensity $61
+	volume_envelope 6, 1
 	callchannel Music_EliteFourBattleSM_Ch1_branch_1
-	intensity $71
+	volume_envelope 7, 1
 	callchannel Music_EliteFourBattleSM_Ch1_branch_1
-	intensity $81
+	volume_envelope 8, 1
 	callchannel Music_EliteFourBattleSM_Ch1_branch_1
-	intensity $91
+	volume_envelope 9, 1
 	callchannel Music_EliteFourBattleSM_Ch1_branch_1
 Music_EliteFourBattleSM_Ch1_loop_main:
 Music_EliteFourBattleSM_Ch1_loop_1:
 	octave 2
-	intensity $b1
+	volume_envelope 11, 1
 	note B_, 2
 	note B_, 2
 	note B_, 2
 	note B_, 4
-	intensity $b4
+	volume_envelope 11, 4
 	note B_, 4
-	intensity $b1
+	volume_envelope 11, 1
 	note B_, 2
 	octave 3
 	note C_, 2
 	note C_, 2
 	note C_, 2
 	note C_, 4
-	intensity $b4
+	volume_envelope 11, 4
 	note C_, 4
-	intensity $b1
+	volume_envelope 11, 1
 	note C_, 2
 	note D_, 2
 	note D_, 2
 	note D_, 2
 	note D_, 4
-	intensity $b4
+	volume_envelope 11, 4
 	note D_, 4
-	intensity $b2
+	volume_envelope 11, 2
 	note D_, 2
 	note C_, 4
 	octave 2
-	intensity $91
+	volume_envelope 9, 1
 	note F_, 2
-	intensity $92
+	volume_envelope 9, 2
 	note F_, 4
 	note F_, 4
-	intensity $91
+	volume_envelope 9, 1
 	note F_, 1
 	note F_, 1
 	loopchannel 2, Music_EliteFourBattleSM_Ch1_loop_1
 	note __, 16
 	duty_cycle 2
-	intensity $87
+	volume_envelope 8, 7
 	note E_, 6
 	note F_, 6
 	note E_, 4
@@ -103,23 +103,23 @@ Music_EliteFourBattleSM_Ch1_loop_1:
 	note G#, 4
 	note G_, 4
 	note F_, 4
-	intensity $80
+	volume_envelope 8, 0
 	note E_, 8
-	intensity $84
+	volume_envelope 8, 4
 	note E_, 8
 	note __, 16
 	note __, 16
 	note __, 16
 	duty_cycle 0
 Music_EliteFourBattleSM_Ch1_loop_2:
-	intensity $92
+	volume_envelope 9, 2
 	note B_, 4
-	intensity $91
+	volume_envelope 9, 1
 	note B_, 2
-	intensity $92
+	volume_envelope 9, 2
 	note B_, 4
 	note B_, 4
-	intensity $91
+	volume_envelope 9, 1
 	note B_, 1
 	note B_, 1
 	loopchannel 4, Music_EliteFourBattleSM_Ch1_loop_2
@@ -143,7 +143,7 @@ Music_EliteFourBattleSM_Ch1_loop_3:
 	note B_, 4
 	note G_, 4
 	note D#, 2
-	intensity $a1
+	volume_envelope 10, 1
 	note E_, 2
 	octave 2
 	note B_, 2
@@ -152,7 +152,7 @@ Music_EliteFourBattleSM_Ch1_loop_3:
 	note B_, 4
 	note G_, 4
 	note D#, 2
-	intensity $b1
+	volume_envelope 11, 1
 	octave 4
 	note E_, 2
 	octave 3
@@ -160,21 +160,21 @@ Music_EliteFourBattleSM_Ch1_loop_3:
 	octave 4
 	note E_, 2
 	note A_, 2
-	intensity $c1
+	volume_envelope 12, 1
 	note B_, 2
 	note G_, 2
 	octave 3
 	note B_, 2
 	octave 4
 	note D#, 2
-	intensity $d1
+	volume_envelope 13, 1
 	note E_, 2
 	octave 3
 	note B_, 2
 	octave 4
 	note E_, 2
 	note A_, 2
-	intensity $e1
+	volume_envelope 14, 1
 	note B_, 2
 	note G_, 2
 	octave 3
@@ -182,42 +182,42 @@ Music_EliteFourBattleSM_Ch1_loop_3:
 	octave 4
 	note D#, 2
 	duty_cycle 0
-	intensity $d2
+	volume_envelope 13, 2
 	octave 3
 	note __, 8
 	note E_, 2
 	note D#, 4
 	note A#, 2
-	intensity $d7
+	volume_envelope 13, 7
 	note A_, 12
-	intensity $6f
+	volume_envelope 6, -7
 	note A_, 12
-	intensity $d2
+	volume_envelope 13, 2
 	note E_, 2
 	note D#, 4
 	note A#, 2
-	intensity $d7
+	volume_envelope 13, 7
 	note A_, 12
-	intensity $6f
+	volume_envelope 6, -7
 	note A_, 12
-	intensity $d2
+	volume_envelope 13, 2
 	note A#, 2
 	note A_, 4
 	octave 4
 	note E_, 2
-	intensity $d6
+	volume_envelope 13, 6
 	note D#, 12
-	intensity $6f
+	volume_envelope 6, -7
 	note D#, 12
-	intensity $d2
+	volume_envelope 13, 2
 	octave 3
 	note A#, 2
 	note A_, 4
 	octave 4
 	note E_, 2
-	intensity $d7
+	volume_envelope 13, 7
 	note D#, 8
-	intensity $8e
+	volume_envelope 8, -6
 	note D#, 8
 	jumpchannel Music_EliteFourBattleSM_Ch1_loop_main
 
@@ -244,38 +244,38 @@ Music_EliteFourBattleSM_Ch2:
 	note_type 6, 10, 2
 	octave 3
 	note F_, 4
-	intensity $a1
+	volume_envelope 10, 1
 	note F_, 2
-	intensity $a2
+	volume_envelope 10, 2
 	note F_, 4
 	note F_, 4
-	intensity $a1
+	volume_envelope 10, 1
 	note F_, 1
 	note F_, 1
 	loopchannel 3, Music_EliteFourBattleSM_Ch2
 	note __, 16
 Music_EliteFourBattleSM_Ch2_loop_1:
-	intensity $a2
+	volume_envelope 10, 2
 	note G_, 4
-	intensity $a1
+	volume_envelope 10, 1
 	note G_, 2
-	intensity $a2
+	volume_envelope 10, 2
 	note G_, 4
 	note G_, 4
-	intensity $a1
+	volume_envelope 10, 1
 	note G_, 1
 	note G_, 1
 	loopchannel 3, Music_EliteFourBattleSM_Ch2_loop_1
 	note __, 16
 Music_EliteFourBattleSM_Ch2_loop_2:
-	intensity $a2
+	volume_envelope 10, 2
 	note A_, 4
-	intensity $a1
+	volume_envelope 10, 1
 	note A_, 2
-	intensity $a2
+	volume_envelope 10, 2
 	note A_, 4
 	note A_, 4
-	intensity $a1
+	volume_envelope 10, 1
 	note A_, 1
 	note A_, 1
 	loopchannel 3, Music_EliteFourBattleSM_Ch2_loop_2
@@ -283,35 +283,35 @@ Music_EliteFourBattleSM_Ch2_loop_2:
 Music_EliteFourBattleSM_Ch2_loop_main:
 Music_EliteFourBattleSM_Ch2_loop_3:
 	octave 4
-	intensity $c1
+	volume_envelope 12, 1
 	note E_, 2
 	note E_, 2
 	note E_, 2
 	note E_, 4
-	intensity $c4
+	volume_envelope 12, 4
 	note E_, 4
-	intensity $c1
+	volume_envelope 12, 1
 	note E_, 2
 	note F_, 2
 	note F_, 2
 	note F_, 2
 	note F_, 4
-	intensity $c4
+	volume_envelope 12, 4
 	note F_, 4
-	intensity $c1
+	volume_envelope 12, 1
 	note F_, 2
 	note G_, 2
 	note G_, 2
 	note G_, 2
 	note G_, 4
-	intensity $c4
+	volume_envelope 12, 4
 	note G_, 4
-	intensity $c2
+	volume_envelope 12, 2
 	note G_, 2
-	intensity $c1
+	volume_envelope 12, 1
 	note F_, 16
 	loopchannel 2, Music_EliteFourBattleSM_Ch2_loop_3
-	intensity $b7
+	volume_envelope 11, 7
 	octave 3
 	note E_, 6
 	note F_, 6
@@ -340,27 +340,27 @@ Music_EliteFourBattleSM_Ch2_loop_3:
 	note G#, 6
 	octave 4
 	note D#, 4
-	intensity $b0
+	volume_envelope 11, 0
 	note E_, 8
-	intensity $b4
+	volume_envelope 11, 4
 	note E_, 8
 	duty_cycle 0
 	octave 2
 Music_EliteFourBattleSM_Ch2_loop_4:
 	duty_cycle 0
-	intensity $92
+	volume_envelope 9, 2
 	note B_, 4
-	intensity $91
+	volume_envelope 9, 1
 	note B_, 2
-	intensity $92
+	volume_envelope 9, 2
 	note B_, 4
 	note B_, 4
-	intensity $91
+	volume_envelope 9, 1
 	note B_, 1
 	note B_, 1
 	loopchannel 3, Music_EliteFourBattleSM_Ch2_loop_4
 	duty_cycle 2
-	intensity $80
+	volume_envelope 8, 0
 	note E_, 8
 	note F_, 8
 	note E_, 2
@@ -376,13 +376,13 @@ Music_EliteFourBattleSM_Ch2_loop_4:
 	note E_, 8
 	note F_, 8
 	note G_, 16
-	intensity $90
+	volume_envelope 9, 0
 	note A_, 16
-	intensity $a0
+	volume_envelope 10, 0
 	note B_, 16
 	note B_, 16
 	note B_, 16
-	intensity $e2
+	volume_envelope 14, 2
 	duty_cycle 1
 	octave 4
 	note E_, 2
@@ -586,13 +586,13 @@ Music_EliteFourBattleSM_Ch3_branch_1:
 	note_type 3, 1, -1
 	note E_, 3
 	note __, 1
-	intensity $29
+	volume_envelope 2, -1
 	note E_, 3
 	note __, 1
 	note E_, 3
 	note __, 1
 	loopchannel 8, Music_EliteFourBattleSM_Ch3_branch_1
-	intensity $19
+	volume_envelope 1, -1
 	note F_, 4
 	note __, 12
 	note __, 16
