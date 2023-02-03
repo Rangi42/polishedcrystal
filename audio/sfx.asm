@@ -7,9 +7,9 @@ Sfx_PokeballsPlacedOnTable:
 .Ch5:
 	dutycycle $2
 	soundinput $3a
-	sound __,  5, $f2, $0200
+	square_note 4, 15, 2, 512
 	soundinput $22
-	sound __,  9, $e2, $0200
+	square_note 8, 14, 2, 512
 	soundinput $8
 	endchannel
 
@@ -23,9 +23,9 @@ Sfx_BallWiggle:
 .Ch5:
 	dutycycle $2
 	soundinput $3a
-	sound __,  5, $f2, $0400
+	square_note 4, 15, 2, 1024
 	soundinput $22
-	sound __,  9, $e2, $0400
+	square_note 8, 14, 2, 1024
 	soundinput $8
 	endchannel
 
@@ -39,8 +39,8 @@ Sfx_Potion:
 .Ch5:
 	dutycycle $2
 	soundinput $17
-	sound __, 16, $f0, $04f0
-	sound __, 16, $f2, $0650
+	square_note 15, 15, 0, 1264
+	square_note 15, 15, 2, 1616
 	soundinput $8
 	endchannel
 
@@ -54,10 +54,10 @@ Sfx_FullHeal:
 .Ch5:
 	dutycycle $2
 	soundinput $14
-	sound __,  5, $f2, $0600
-	sound __,  5, $f2, $0600
+	square_note 4, 15, 2, 1536
+	square_note 4, 15, 2, 1536
 	soundinput $17
-	sound __, 16, $f2, $0600
+	square_note 15, 15, 2, 1536
 	soundinput $8
 	endchannel
 
@@ -83,10 +83,10 @@ Sfx_ReadText2:
 
 .Ch5:
 	dutycycle $2
-	sound __,  1, $91, $07c0
-	sound __,  1, $81, $07d0
-	sound __,  1, $91, $07c0
-	sound __, 13, $a1, $07d0
+	square_note 0, 9, 1, 1984
+	square_note 0, 8, 1, 2000
+	square_note 0, 9, 1, 1984
+	square_note 12, 10, 1, 2000
 	endchannel
 
 
@@ -100,9 +100,9 @@ Sfx_Poison:
 .loop:
 	dutycycle $0
 	soundinput $14
-	sound __,  5, $f2, $0600
+	square_note 4, 15, 2, 1536
 	loopchannel 4, .loop
-	sound __, 16, $f3, $0600
+	square_note 15, 15, 3, 1536
 	soundinput $8
 	endchannel
 
@@ -116,8 +116,8 @@ Sfx_GotSafariBalls:
 .Ch5:
 	dutycycle $2
 	soundinput $15
-	sound __, 16, $f0, $04f0
-	sound __, 16, $f2, $0650
+	square_note 15, 15, 0, 1264
+	square_note 15, 15, 2, 1616
 	soundinput $8
 	endchannel
 
@@ -130,16 +130,16 @@ Sfx_BootPc:
 
 .Ch5:
 	dutycycle $2
-	sound __, 16, $f2, $07c0
-	sound __, 16, $0, 0
-	sound __,  4, $a1, $0780
-	sound __,  4, $a1, $0700
-	sound __,  4, $a1, $0740
-	sound __,  4, $a1, $0700
-	sound __,  4, $a1, $0780
-	sound __,  4, $a1, $0700
-	sound __,  4, $a1, $07c0
-	sound __,  9, $a1, $0700
+	square_note 15, 15, 2, 1984
+	square_note 15, 0, 0, 0
+	square_note 3, 10, 1, 1920
+	square_note 3, 10, 1, 1792
+	square_note 3, 10, 1, 1856
+	square_note 3, 10, 1, 1792
+	square_note 3, 10, 1, 1920
+	square_note 3, 10, 1, 1792
+	square_note 3, 10, 1, 1984
+	square_note 8, 10, 1, 1792
 	endchannel
 
 
@@ -151,10 +151,10 @@ Sfx_ShutDownPc:
 
 .Ch5:
 	dutycycle $2
-	sound __,  5, $f0, $0600
-	sound __,  5, $f0, $0400
-	sound __,  5, $f0, $0200
-	sound __,  2, $0, 0
+	square_note 4, 15, 0, 1536
+	square_note 4, 15, 0, 1024
+	square_note 4, 15, 0, 512
+	square_note 1, 0, 0, 0
 	endchannel
 
 
@@ -166,10 +166,10 @@ Sfx_ChoosePcOption:
 
 .Ch5:
 	dutycycle $2
-	sound __,  7, $f0, $0700
-	sound __,  5, $0, 0
-	sound __,  7, $f0, $0700
-	sound __,  2, $0, 0
+	square_note 6, 15, 0, 1792
+	square_note 4, 0, 0, 0
+	square_note 6, 15, 0, 1792
+	square_note 1, 0, 0, 0
 	endchannel
 
 
@@ -182,11 +182,11 @@ Sfx_EscapeRope:
 .Ch5:
 	dutycycle $1
 	soundinput $17
-	sound __, 16, $d7, $0600
-	sound __, 16, $b7, $0580
-	sound __, 16, $87, $0500
-	sound __, 16, $47, $0480
-	sound __, 16, $17, $0400
+	square_note 15, 13, 7, 1536
+	square_note 15, 11, 7, 1408
+	square_note 15, 8, 7, 1280
+	square_note 15, 4, 7, 1152
+	square_note 15, 1, 7, 1024
 	soundinput $8
 	endchannel
 
@@ -199,11 +199,11 @@ Sfx_PushButton:
 
 .Ch5:
 	dutycycle $2
-	sound __,  5, $0, 0
-	sound __,  3, $f1, $0680
-	sound __,  2, $0, 0
-	sound __,  5, $f1, $0780
-	sound __,  5, $0, 0
+	square_note 4, 0, 0, 0
+	square_note 2, 15, 1, 1664
+	square_note 1, 0, 0, 0
+	square_note 4, 15, 1, 1920
+	square_note 4, 0, 0, 0
 	endchannel
 
 
@@ -216,11 +216,11 @@ Sfx_SecondPartOfItemfinder:
 .Ch5:
 	dutycycle $2
 	soundinput $2c
-	sound __,  5, $f2, $0500
+	square_note 4, 15, 2, 1280
 	soundinput $22
-	sound __,  3, $f1, $0500
+	square_note 2, 15, 1, 1280
 	soundinput $8
-	sound __,  2, $0, 0
+	square_note 1, 0, 0, 0
 	endchannel
 
 
@@ -233,11 +233,11 @@ Sfx_WarpTo:
 .Ch5:
 	dutycycle $1
 	soundinput $17
-	sound __, 16, $d7, $0500
-	sound __, 16, $b7, $0580
-	sound __, 16, $87, $0600
-	sound __, 16, $47, $0680
-	sound __, 16, $17, $0700
+	square_note 15, 13, 7, 1280
+	square_note 15, 11, 7, 1408
+	square_note 15, 8, 7, 1536
+	square_note 15, 4, 7, 1664
+	square_note 15, 1, 7, 1792
 	soundinput $8
 	endchannel
 
@@ -251,11 +251,11 @@ Sfx_WarpFrom:
 .Ch5:
 	dutycycle $1
 	soundinput $17
-	sound __, 16, $d7, $0700
-	sound __, 16, $b7, $0680
-	sound __, 16, $87, $0600
-	sound __, 16, $47, $0580
-	sound __, 16, $17, $0500
+	square_note 15, 13, 7, 1792
+	square_note 15, 11, 7, 1664
+	square_note 15, 8, 7, 1536
+	square_note 15, 4, 7, 1408
+	square_note 15, 1, 7, 1280
 	soundinput $8
 	endchannel
 
@@ -269,7 +269,7 @@ Sfx_ChangeDexMode:
 .Ch5:
 	dutycycle $1
 	soundinput $16
-	sound __, 16, $d2, $0500
+	square_note 15, 13, 2, 1280
 	soundinput $8
 	endchannel
 
@@ -283,7 +283,7 @@ Sfx_JumpOverLedge:
 .Ch5:
 	dutycycle $2
 	soundinput $95
-	sound __, 16, $f2, $0400
+	square_note 15, 15, 2, 1024
 	soundinput $8
 	endchannel
 
@@ -338,19 +338,19 @@ Sfx_Wrong:
 .Ch5:
 	dutycycle $3
 	soundinput $5a
-	sound __,  5, $f0, $0500
+	square_note 4, 15, 0, 1280
 	soundinput $8
-	sound __,  5, $0, 0
-	sound __, 16, $f0, $0500
-	sound __,  2, $0, 0
+	square_note 4, 0, 0, 0
+	square_note 15, 15, 0, 1280
+	square_note 1, 0, 0, 0
 	endchannel
 
 .Ch6:
 	dutycycle $3
-	sound __,  5, $f0, $0401
-	sound __,  5, $0, 0
-	sound __, 16, $f0, $0401
-	sound __,  2, $0, 0
+	square_note 4, 15, 0, 1025
+	square_note 4, 0, 0, 0
+	square_note 15, 15, 0, 1025
+	square_note 1, 0, 0, 0
 	endchannel
 
 
@@ -363,7 +363,7 @@ Sfx_Squeak:
 .Ch5:
 	dutycycle $0
 	soundinput $17
-	sound __, 16, $d2, $0700
+	square_note 15, 13, 2, 1792
 	soundinput $8
 	endchannel
 
@@ -395,24 +395,24 @@ Sfx_Boat:
 
 .Ch5:
 	dutycycle $2
-	sound __, 16, $f0, $0500
-	sound __,  5, $0, 0
-	sound __, 16, $f0, $0500
-	sound __, 16, $f0, $0500
-	sound __, 16, $f0, $0500
-	sound __, 16, $f0, $0500
-	sound __, 16, $f2, $0500
+	square_note 15, 15, 0, 1280
+	square_note 4, 0, 0, 0
+	square_note 15, 15, 0, 1280
+	square_note 15, 15, 0, 1280
+	square_note 15, 15, 0, 1280
+	square_note 15, 15, 0, 1280
+	square_note 15, 15, 2, 1280
 	endchannel
 
 .Ch6:
 	dutycycle $3
-	sound __, 16, $f0, $0482
-	sound __,  5, $0, 0
-	sound __, 16, $f0, $0482
-	sound __, 16, $f0, $0482
-	sound __, 16, $f0, $0482
-	sound __, 16, $f0, $0482
-	sound __, 16, $f2, $0482
+	square_note 15, 15, 0, 1154
+	square_note 4, 0, 0, 0
+	square_note 15, 15, 0, 1154
+	square_note 15, 15, 0, 1154
+	square_note 15, 15, 0, 1154
+	square_note 15, 15, 0, 1154
+	square_note 15, 15, 2, 1154
 	endchannel
 
 
@@ -425,13 +425,13 @@ Sfx_WallOpen:
 .Ch5:
 	dutycycle $1
 	soundinput $3a
-	sound __,  5, $f2, $0500
+	square_note 4, 15, 2, 1280
 	soundinput $22
-	sound __,  5, $e2, $0500
+	square_note 4, 14, 2, 1280
 	soundinput $3a
-	sound __,  5, $f2, $0700
+	square_note 4, 15, 2, 1792
 	soundinput $22
-	sound __, 16, $e2, $0700
+	square_note 15, 14, 2, 1792
 	soundinput $8
 	endchannel
 
@@ -472,13 +472,13 @@ Sfx_SwitchPokemon:
 
 .Ch5:
 	dutycycle $2
-	sound __,  9, $e1, $0740
+	square_note 8, 14, 1, 1856
 	endchannel
 
 .Ch6:
 	dutycycle $2
-	sound __,  3, $8, 0
-	sound __,  9, $b1, $0741
+	square_note 2, 0, 8, 0
+	square_note 8, 11, 1, 1857
 	endchannel
 
 
@@ -491,13 +491,13 @@ Sfx_Tally:
 
 .Ch5:
 	dutycycle $2
-	sound __,  5, $f1, $0780
+	square_note 4, 15, 1, 1920
 	endchannel
 
 .Ch6:
 	dutycycle $2
-	sound __,  2, $8, 0
-	sound __,  5, $a1, $0761
+	square_note 1, 0, 8, 0
+	square_note 4, 10, 1, 1889
 	endchannel
 
 
@@ -510,15 +510,15 @@ Sfx_Transaction:
 
 .Ch5:
 	dutycycle $2
-	sound __,  5, $e1, $0700
-	sound C_,  9, $f2, $07e0
+	square_note 4, 14, 1, 1792
+	square_note 24, 15, 2, 2016
 	endchannel
 
 .Ch6:
 	dutycycle $2
-	sound __,  2, $8, 0
-	sound __,  5, $91, $06c1
-	sound C_,  9, $a2, $07a1
+	square_note 1, 0, 8, 0
+	square_note 4, 9, 1, 1729
+	square_note 24, 10, 2, 1953
 	endchannel
 
 
@@ -531,7 +531,7 @@ Sfx_Bump:
 .Ch5:
 	dutycycle $2
 	soundinput $5a
-	sound __, 16, $f1, $0300
+	square_note 15, 15, 1, 768
 	soundinput $8
 	endchannel
 
@@ -560,25 +560,25 @@ Sfx_Save:
 
 .Ch5:
 	dutycycle $2
-	sound __,  3, $f1, $0700
-	sound __,  2, $e1, $0600
-	sound __,  2, $e1, $0680
-	sound __,  2, $e1, $06c0
-	sound __,  3, $e1, $0700
-	sound __,  3, $e1, $07c0
-	sound __, 16, $f2, $07e0
+	square_note 2, 15, 1, 1792
+	square_note 1, 14, 1, 1536
+	square_note 1, 14, 1, 1664
+	square_note 1, 14, 1, 1728
+	square_note 2, 14, 1, 1792
+	square_note 2, 14, 1, 1984
+	square_note 15, 15, 2, 2016
 	endchannel
 
 .Ch6:
 	dutycycle $2
-	sound __,  3, $8, 0
-	sound __,  3, $a1, $0701
-	sound __,  2, $91, $0601
-	sound __,  2, $91, $0681
-	sound __,  2, $91, $06c1
-	sound __,  3, $91, $0701
-	sound __,  3, $91, $07c1
-	sound __, 16, $d2, $07e1
+	square_note 2, 0, 8, 0
+	square_note 2, 10, 1, 1793
+	square_note 1, 9, 1, 1537
+	square_note 1, 9, 1, 1665
+	square_note 1, 9, 1, 1729
+	square_note 2, 9, 1, 1793
+	square_note 2, 9, 1, 1985
+	square_note 15, 13, 2, 2017
 	endchannel
 
 
@@ -622,12 +622,12 @@ Sfx_ElevatorEnd:
 
 .Ch5:
 	dutycycle $2
-	sound __, 16, $f3, $0730
-	sound __,  9, $65, $0730
-	sound __, 16, $f4, $0700
-	sound __, 16, $74, $0700
-	sound __, 16, $44, $0700
-	sound __, 16, $24, $0700
+	square_note 15, 15, 3, 1840
+	square_note 8, 6, 5, 1840
+	square_note 15, 15, 4, 1792
+	square_note 15, 7, 4, 1792
+	square_note 15, 4, 4, 1792
+	square_note 15, 2, 4, 1792
 	endchannel
 
 
@@ -641,12 +641,12 @@ Sfx_ThrowBall:
 .Ch5:
 	dutycycle $2
 	soundinput $2f
-	sound __, 16, $f2, $0780
+	square_note 15, 15, 2, 1920
 	endchannel
 
 .Ch6:
 	dutycycle $2
-	sound __, 16, $c2, $0782
+	square_note 15, 12, 2, 1922
 	endchannel
 
 
@@ -660,7 +660,7 @@ Sfx_BallPoof:
 .Ch5:
 	dutycycle $2
 	soundinput $16
-	sound __, 16, $f2, $0400
+	square_note 15, 15, 2, 1024
 	soundinput $8
 	endchannel
 
@@ -677,7 +677,7 @@ Sfx_Faint:
 	channel 8, .Ch8
 
 .Ch5:
-	sound __, 16, $d1, $0200
+	square_note 15, 13, 1, 512
 	soundinput $8
 	endchannel
 
@@ -719,16 +719,16 @@ Sfx_SlotMachineStart:
 .Ch5:
 	dutycycle $2
 	soundinput $44
-	sound __, 16, $f0, $04f0
+	square_note 15, 15, 0, 1264
 	soundinput $17
-	sound __, 16, $f2, $0650
+	square_note 15, 15, 2, 1616
 	soundinput $8
 	endchannel
 
 .Ch6:
 	dutycycle $2
-	sound __, 16, $92, $0600
-	sound __, 16, $92, $0782
+	square_note 15, 9, 2, 1536
+	square_note 15, 9, 2, 1922
 	endchannel
 
 
@@ -740,13 +740,13 @@ Sfx_Call:
 
 .Ch5:
 	soundinput $67
-	sound __,  5, $f7, $07a0
-	sound __,  5, $f7, $07a0
-	sound __,  5, $f7, $07a0
-	sound __,  5, $f7, $07a0
-	sound __,  5, $f7, $07a0
+	square_note 4, 15, 7, 1952
+	square_note 4, 15, 7, 1952
+	square_note 4, 15, 7, 1952
+	square_note 4, 15, 7, 1952
+	square_note 4, 15, 7, 1952
 	soundinput $8
-	sound __,  5, $0, 0
+	square_note 4, 0, 0, 0
 	endchannel
 
 
@@ -839,9 +839,9 @@ Sfx_Unknown66:
 
 .Ch5:
 	dutycycle $2
-	sound __,  2, $f2, $06a0
-	sound __,  2, $f2, $06e0
-	sound __,  9, $f1, $0700
+	square_note 1, 15, 2, 1696
+	square_note 1, 15, 2, 1760
+	square_note 8, 15, 1, 1792
 	endchannel
 
 
@@ -853,8 +853,8 @@ Sfx_GetCoinFromSlots:
 
 .Ch5:
 	dutycycle $2
-	sound __,  3, $f1, $0700
-	sound __,  9, $81, $07e0
+	square_note 2, 15, 1, 1792
+	square_note 8, 8, 1, 2016
 	endchannel
 
 
@@ -867,16 +867,16 @@ Sfx_PayDay:
 
 .Ch5:
 	dutycycle $3
-	sound __,  6, $e1, $0700
-	sound __,  3, $e1, $0780
-	sound __, 16, $f1, $07c0
+	square_note 5, 14, 1, 1792
+	square_note 2, 14, 1, 1920
+	square_note 15, 15, 1, 1984
 	endchannel
 
 .Ch6:
 	dutycycle $2
-	sound __,  5, $c1, $06c1
-	sound __,  3, $c1, $0741
-	sound __, 16, $d1, $0781
+	square_note 4, 12, 1, 1729
+	square_note 2, 12, 1, 1857
+	square_note 15, 13, 1, 1921
 	endchannel
 
 
@@ -889,15 +889,15 @@ Sfx_Metronome:
 .Ch5:
 	dutycycle $2
 	soundinput $5f
-	sound __,  5, $40, $07e0
-	sound __,  5, $60, $07e0
-	sound __,  5, $80, $07e0
-	sound __,  9, $a0, $07e0
-	sound __,  9, $a0, $07e0
-	sound __,  9, $80, $07e0
-	sound __,  9, $60, $07e0
-	sound __,  9, $30, $07e0
-	sound __, 16, $12, $07e0
+	square_note 4, 4, 0, 2016
+	square_note 4, 6, 0, 2016
+	square_note 4, 8, 0, 2016
+	square_note 8, 10, 0, 2016
+	square_note 8, 10, 0, 2016
+	square_note 8, 8, 0, 2016
+	square_note 8, 6, 0, 2016
+	square_note 8, 3, 0, 2016
+	square_note 15, 1, 2, 2016
 	soundinput $8
 	endchannel
 
@@ -922,7 +922,7 @@ Sfx_Kinesis:
 .Ch5:
 	dutycycle $1
 	soundinput $af
-	sound __, 16, $f2, $0780
+	square_note 15, 15, 2, 1920
 	soundinput $8
 	endchannel
 
@@ -936,7 +936,7 @@ Sfx_Lick:
 .Ch5:
 	dutycycle $1
 	soundinput $97
-	sound __, 16, $f2, $0500
+	square_note 15, 15, 2, 1280
 	soundinput $8
 	endchannel
 
@@ -1214,9 +1214,9 @@ Sfx_Bite:
 .Ch5:
 	dutycycle $0
 	soundinput $3a
-	sound __,  5, $f2, $0200
+	square_note 4, 15, 2, 512
 	soundinput $22
-	sound __,  9, $e2, $0200
+	square_note 8, 14, 2, 512
 	soundinput $8
 	endchannel
 
@@ -1306,7 +1306,7 @@ Sfx_WaterGun:
 .Ch5:
 	dutycycle $1
 	soundinput $97
-	sound __, 16, $f2, $0700
+	square_note 15, 15, 2, 1792
 	soundinput $8
 	endchannel
 
@@ -1358,20 +1358,20 @@ Sfx_Supersonic:
 
 .Ch5:
 	dutycycle $2
-	sound __, 16, $3f, $07c0
+	square_note 15, 3, -7, 1984
 .branch5:
-	sound __, 16, $df, $07c0
+	square_note 15, 13, -7, 1984
 	loopchannel 4, .branch5
-	sound __, 16, $d1, $07c0
+	square_note 15, 13, 1, 1984
 	endchannel
 
 .Ch6:
 	sound_duty 3, 0, 3, 2
-	sound __, 16, $2f, $07c8
+	square_note 15, 2, -7, 1992
 .branch6:
-	sound __, 16, $cf, $07c7
+	square_note 15, 12, -7, 1991
 	loopchannel 4, .branch6
-	sound __, 16, $c1, $07c8
+	square_note 15, 12, 1, 1992
 	endchannel
 
 .Ch8:
@@ -1393,16 +1393,16 @@ Sfx_Leer:
 .Ch5:
 .branch5:
 	dutycycle $0
-	sound __,  1, $f1, $07c0
-	sound __,  1, $f1, $0700
+	square_note 0, 15, 1, 1984
+	square_note 0, 15, 1, 1792
 	loopchannel 12, .branch5
 	endchannel
 
 .Ch6:
 .branch6:
 	sound_duty 3, 0, 3, 2
-	sound __,  1, $e1, $07c1
-	sound __,  1, $e1, $0701
+	square_note 0, 14, 1, 1985
+	square_note 0, 14, 1, 1793
 	loopchannel 12, .branch6
 	endchannel
 
@@ -1424,11 +1424,11 @@ Sfx_Ember:
 .Ch5:
 .branch5:
 	sound_duty 1, 2, 0, 3
-	sound __, 12, $f3, $0120
-	sound __, 10, $d3, $0150
+	square_note 11, 15, 3, 288
+	square_note 9, 13, 3, 336
 	loopchannel 5, .branch5
-	sound __,  9, $e3, $0130
-	sound __, 16, $c2, $0110
+	square_note 8, 14, 3, 304
+	square_note 15, 12, 2, 272
 	endchannel
 
 .Ch8:
@@ -1453,21 +1453,21 @@ Sfx_BubbleBeam:
 .Ch5:
 .branch5:
 	sound_duty 1, 2, 3, 0
-	sound __,  5, $f4, $0600
-	sound __,  4, $c4, $0500
-	sound __,  6, $b5, $0600
-	sound __, 14, $e2, $06c0
+	square_note 4, 15, 4, 1536
+	square_note 3, 12, 4, 1280
+	square_note 5, 11, 5, 1536
+	square_note 13, 14, 2, 1728
 	loopchannel 3, .branch5
-	sound __,  9, $d1, $0600
+	square_note 8, 13, 1, 1536
 	endchannel
 
 .Ch6:
 .branch6:
 	sound_duty 1, 3, 0, 2
-	sound __,  6, $e4, $05e0
-	sound __,  5, $b4, $04e0
-	sound __,  7, $a5, $05e8
-	sound __, 15, $d1, $06a0
+	square_note 5, 14, 4, 1504
+	square_note 4, 11, 4, 1248
+	square_note 6, 10, 5, 1512
+	square_note 14, 13, 1, 1696
 	loopchannel 3, .branch6
 	endchannel
 
@@ -1491,13 +1491,13 @@ Sfx_HydroPump:
 .Ch5:
 .branch5:
 	sound_duty 2, 0, 1, 3
-	sound __,  4, $81, $0300
-	sound __,  4, $c1, $0400
-	sound __,  4, $f1, $0500
-	sound __,  4, $b1, $0400
-	sound __,  4, $71, $0300
+	square_note 3, 8, 1, 768
+	square_note 3, 12, 1, 1024
+	square_note 3, 15, 1, 1280
+	square_note 3, 11, 1, 1024
+	square_note 3, 7, 1, 768
 	loopchannel 5, .branch5
-	sound __,  9, $81, $0400
+	square_note 8, 8, 1, 1024
 	endchannel
 
 .Ch8:
@@ -1523,18 +1523,18 @@ Sfx_Surf:
 .Ch5:
 .branch5:
 	sound_duty 1, 2, 3, 0
-	sound __, 16, $f4, $0500
-	sound __, 16, $c4, $0400
-	sound __, 16, $e2, $05c0
+	square_note 15, 15, 4, 1280
+	square_note 15, 12, 4, 1024
+	square_note 15, 14, 2, 1472
 	loopchannel 3, .branch5
 	endchannel
 
 .Ch6:
 .branch6:
 	sound_duty 1, 3, 0, 2
-	sound __,  8, $e4, $0430
-	sound __, 16, $b4, $0330
-	sound __, 16, $a2, $0438
+	square_note 7, 14, 4, 1072
+	square_note 15, 11, 4, 816
+	square_note 15, 10, 2, 1080
 	loopchannel 4, .branch6
 	endchannel
 
@@ -1559,21 +1559,21 @@ Sfx_Psybeam:
 .Ch5:
 .branch5:
 	sound_duty 1, 0, 2, 2
-	sound __, 11, $f1, $0640
-	sound __, 11, $f3, $0680
-	sound __, 11, $f2, $0620
+	square_note 10, 15, 1, 1600
+	square_note 10, 15, 3, 1664
+	square_note 10, 15, 2, 1568
 	loopchannel 4, .branch5
-	sound __, 11, $f1, $0640
+	square_note 10, 15, 1, 1600
 	endchannel
 
 .Ch6:
 .branch6:
 	sound_duty 3, 0, 3, 2
-	sound __, 11, $f3, $0571
-	sound __,  8, $e3, $0531
-	sound __, 11, $f1, $0551
+	square_note 10, 15, 3, 1393
+	square_note 7, 14, 3, 1329
+	square_note 10, 15, 1, 1361
 	loopchannel 4, .branch6
-	sound __, 11, $f1, $0571
+	square_note 10, 15, 1, 1393
 	endchannel
 
 .Ch8:
@@ -1595,20 +1595,20 @@ Sfx_Charge:
 .Ch5:
 .branch5:
 	dutycycle $0
-	sound __,  3, $f1, $0200
-	sound __,  4, $f1, $0700
-	sound __,  5, $f1, $0500
-	sound __,  6, $f1, $07f0
+	square_note 2, 15, 1, 512
+	square_note 3, 15, 1, 1792
+	square_note 4, 15, 1, 1280
+	square_note 5, 15, 1, 2032
 	loopchannel 8, .branch5
 	endchannel
 
 .Ch6:
 .branch6:
 	sound_duty 3, 0, 3, 2
-	sound __,  3, $e1, $0302
-	sound __,  4, $e1, $07f2
-	sound __,  5, $e1, $0602
-	sound __,  6, $e1, $0702
+	square_note 2, 14, 1, 770
+	square_note 3, 14, 1, 2034
+	square_note 4, 14, 1, 1538
+	square_note 5, 14, 1, 1794
 	loopchannel 8, .branch6
 	endchannel
 
@@ -1633,16 +1633,16 @@ Sfx_Thundershock:
 .Ch5:
 .branch5:
 	sound_duty 3, 2, 2, 0
-	sound __,  4, $f1, $07f0
-	sound __,  5, $f2, $0200
+	square_note 3, 15, 1, 2032
+	square_note 4, 15, 2, 512
 	loopchannel 8, .branch5
 	endchannel
 
 .Ch6:
 .branch6:
 	sound_duty 3, 0, 3, 2
-	sound __,  5, $e2, $0202
-	sound __,  5, $e1, $07e2
+	square_note 4, 14, 2, 514
+	square_note 4, 14, 1, 2018
 	loopchannel 9, .branch6
 	endchannel
 
@@ -1665,23 +1665,23 @@ Sfx_Psychic:
 .Ch5:
 	dutycycle $2
 	soundinput $f7
-	sound __,  9, $c4, $07bd
-	sound __,  9, $c4, $07be
-	sound __,  9, $c4, $07bf
-	sound __,  9, $c4, $07c0
-	sound __, 16, $c4, $07c1
-	sound __, 16, $f2, $07c0
+	square_note 8, 12, 4, 1981
+	square_note 8, 12, 4, 1982
+	square_note 8, 12, 4, 1983
+	square_note 8, 12, 4, 1984
+	square_note 15, 12, 4, 1985
+	square_note 15, 15, 2, 1984
 	soundinput $8
 	endchannel
 
 .Ch6:
 	dutycycle $2
-	sound __,  9, $c4, $0770
-	sound __,  9, $c4, $0761
-	sound __,  9, $c4, $0762
-	sound __,  9, $c4, $0763
-	sound __, 16, $c4, $0764
-	sound __, 16, $f2, $0764
+	square_note 8, 12, 4, 1904
+	square_note 8, 12, 4, 1889
+	square_note 8, 12, 4, 1890
+	square_note 8, 12, 4, 1891
+	square_note 15, 12, 4, 1892
+	square_note 15, 15, 2, 1892
 	endchannel
 
 .Ch8:
@@ -1703,20 +1703,20 @@ Sfx_Screech:
 
 .Ch5:
 	dutycycle $2
-	sound __, 16, $ff, $07e0
-	sound __, 16, $ff, $07e0
-	sound __, 16, $ff, $07e0
-	sound __, 16, $ff, $07e0
-	sound __, 16, $f2, $07e0
+	square_note 15, 15, -7, 2016
+	square_note 15, 15, -7, 2016
+	square_note 15, 15, -7, 2016
+	square_note 15, 15, -7, 2016
+	square_note 15, 15, 2, 2016
 	endchannel
 
 .Ch6:
 	dutycycle $3
-	sound __, 16, $ff, $07e2
-	sound __, 16, $ff, $07e1
-	sound __, 16, $ff, $07e2
-	sound __, 16, $ff, $07e1
-	sound __, 16, $f2, $07e2
+	square_note 15, 15, -7, 2018
+	square_note 15, 15, -7, 2017
+	square_note 15, 15, -7, 2018
+	square_note 15, 15, -7, 2017
+	square_note 15, 15, 2, 2018
 	endchannel
 
 
@@ -1730,13 +1730,13 @@ Sfx_BoneClub:
 .Ch5:
 	dutycycle $2
 	soundinput $af
-	sound __,  9, $f1, $0700
+	square_note 8, 15, 1, 1792
 	soundinput $8
 	endchannel
 
 .Ch6:
 	dutycycle $3
-	sound __,  9, $f1, $0701
+	square_note 8, 15, 1, 1793
 	endchannel
 
 
@@ -1749,20 +1749,20 @@ Sfx_Sharpen:
 
 .Ch5:
 	dutycycle $2
-	sound __,  7, $f1, $0500
-	sound __,  7, $f1, $0580
-	sound __,  7, $f1, $0600
-	sound __,  7, $f1, $0680
-	sound __,  9, $f1, $0700
+	square_note 6, 15, 1, 1280
+	square_note 6, 15, 1, 1408
+	square_note 6, 15, 1, 1536
+	square_note 6, 15, 1, 1664
+	square_note 8, 15, 1, 1792
 	endchannel
 
 .Ch6:
 	dutycycle $3
-	sound __,  7, $e1, $0510
-	sound __,  7, $e1, $0590
-	sound __,  7, $e1, $0610
-	sound __,  7, $e1, $0690
-	sound __,  9, $e1, $0710
+	square_note 6, 14, 1, 1296
+	square_note 6, 14, 1, 1424
+	square_note 6, 14, 1, 1552
+	square_note 6, 14, 1, 1680
+	square_note 8, 14, 1, 1808
 	endchannel
 
 
@@ -1776,16 +1776,16 @@ Sfx_EggBomb:
 
 .Ch5:
 	sound_duty 1, 3, 2, 3
-	sound __,  9, $ff, $03f8
-	sound __, 16, $ff, $0400
-	sound __, 16, $f3, $0400
+	square_note 8, 15, -7, 1016
+	square_note 15, 15, -7, 1024
+	square_note 15, 15, 3, 1024
 	endchannel
 
 .Ch6:
 	sound_duty 0, 1, 3, 2
-	sound __,  9, $ef, $03c0
-	sound __, 16, $ef, $03c0
-	sound __, 16, $e3, $03c0
+	square_note 8, 14, -7, 960
+	square_note 15, 14, -7, 960
+	square_note 15, 14, 3, 960
 	endchannel
 
 .Ch8:
@@ -1843,42 +1843,42 @@ Sfx_HyperBeam:
 
 .Ch5:
 	dutycycle $0
-	sound __,  3, $f1, $0780
-	sound __,  3, $f1, $0700
-	sound __,  3, $f1, $0790
-	sound __,  3, $f1, $0700
-	sound __,  3, $f1, $07a0
-	sound __,  3, $f1, $0700
-	sound __,  3, $f1, $07b0
-	sound __,  3, $f1, $0700
-	sound __,  3, $f1, $07c0
-	sound __,  3, $f1, $0700
-	sound __,  3, $f1, $07d0
+	square_note 2, 15, 1, 1920
+	square_note 2, 15, 1, 1792
+	square_note 2, 15, 1, 1936
+	square_note 2, 15, 1, 1792
+	square_note 2, 15, 1, 1952
+	square_note 2, 15, 1, 1792
+	square_note 2, 15, 1, 1968
+	square_note 2, 15, 1, 1792
+	square_note 2, 15, 1, 1984
+	square_note 2, 15, 1, 1792
+	square_note 2, 15, 1, 2000
 .branch5:
-	sound __,  3, $f1, $0700
-	sound __,  3, $f1, $07e0
+	square_note 2, 15, 1, 1792
+	square_note 2, 15, 1, 2016
 	loopchannel 12, .branch5
-	sound __, 16, $f1, $0700
+	square_note 15, 15, 1, 1792
 	endchannel
 
 .Ch6:
 	sound_duty 3, 0, 3, 2
-	sound __,  3, $f1, $0781
-	sound __,  3, $f1, $0701
-	sound __,  3, $f1, $0791
-	sound __,  3, $f1, $0701
-	sound __,  3, $f1, $07a1
-	sound __,  3, $f1, $0701
-	sound __,  3, $f1, $07b1
-	sound __,  3, $f1, $0701
-	sound __,  3, $f1, $07c1
-	sound __,  3, $f1, $0701
-	sound __,  3, $f1, $07d1
+	square_note 2, 15, 1, 1921
+	square_note 2, 15, 1, 1793
+	square_note 2, 15, 1, 1937
+	square_note 2, 15, 1, 1793
+	square_note 2, 15, 1, 1953
+	square_note 2, 15, 1, 1793
+	square_note 2, 15, 1, 1969
+	square_note 2, 15, 1, 1793
+	square_note 2, 15, 1, 1985
+	square_note 2, 15, 1, 1793
+	square_note 2, 15, 1, 2001
 .branch6:
-	sound __,  3, $f1, $0701
-	sound __,  3, $f1, $07e1
+	square_note 2, 15, 1, 1793
+	square_note 2, 15, 1, 2017
 	loopchannel 12, .branch6
-	sound __, 16, $f1, $0701
+	square_note 15, 15, 1, 1793
 	endchannel
 
 .Ch8:
@@ -1897,12 +1897,12 @@ Sfx_Shine:
 
 .Ch5:
 	dutycycle $0
-	sound __,  1, $d2, $0700
-	sound __,  1, $d2, $0740
-	sound __,  1, $d2, $0780
-	sound __,  1, $d2, $07c0
-	sound __, 11, $e1, $07e0
-	sound __,  2, $0, 0
+	square_note 0, 13, 2, 1792
+	square_note 0, 13, 2, 1856
+	square_note 0, 13, 2, 1920
+	square_note 0, 13, 2, 1984
+	square_note 10, 14, 1, 2016
+	square_note 1, 0, 0, 0
 	endchannel
 
 
@@ -1918,15 +1918,15 @@ Sfx_Sandstorm:
 
 Sfx_Unknown5F_Ch5:
 .branch5:
-	sound __,  3, $f7, $0601
-	sound __,  3, $f7, $0701
+	square_note 2, 15, 7, 1537
+	square_note 2, 15, 7, 1793
 	loopchannel 8, .branch5
 	endchannel
 
 Sfx_Unknown5F_Ch6:
-	sound __,  2, $f7, $ffff
-	sound __,  3, $f7, $0602
-	sound __,  3, $f7, $0702
+	square_note 1, 15, 7, 65535
+	square_note 2, 15, 7, 1538
+	square_note 2, 15, 7, 1794
 	loopchannel 8, Sfx_Unknown5F_Ch5.branch5
 	endchannel
 
@@ -1953,14 +1953,14 @@ Sfx_NoSignal:
 
 Sfx_HangUp_Ch5:
 	dutycycle $2
-	sound __,  5, $b8, $077b
-	sound __,  3, $21, $077b
-	sound C_,  1, $0, 0
+	square_note 4, 11, 8, 1915
+	square_note 2, 2, 1, 1915
+	square_note 16, 0, 0, 0
 Sfx_NoSignal_Ch5:
 .branch5:
 	dutycycle $2
-	sound C_,  5, $e8, $070b
-	sound C_, 13, $0, 0
+	square_note 20, 14, 8, 1803
+	square_note 28, 0, 0, 0
 	loopchannel 3, .branch5
 	endchannel
 
@@ -1978,22 +1978,22 @@ Sfx_Elevator:
 	dutycycle $2
 	soundinput $5a
 .branch5:
-	sound __,  3, $f1, $0300
+	square_note 2, 15, 1, 768
 	loopchannel 48, .branch5
 	soundinput $8
 	dutycycle $2
-	sound __, 16, $f3, $0730
-	sound __,  9, $65, $0730
-	sound __, 16, $f4, $0700
-	sound __, 16, $74, $0700
-	sound __, 16, $44, $0700
-	sound __, 16, $24, $0700
+	square_note 15, 15, 3, 1840
+	square_note 8, 6, 5, 1840
+	square_note 15, 15, 4, 1792
+	square_note 15, 7, 4, 1792
+	square_note 15, 4, 4, 1792
+	square_note 15, 2, 4, 1792
 	endchannel
 
 .Ch6:
 .Ch7:
-	sound F_,  1, $0, 0
-	sound E_,  4, $0, 0
+	square_note 96, 0, 0, 0
+	square_note 83, 0, 0, 0
 	endchannel
 
 .Ch8:
@@ -3868,10 +3868,10 @@ Sfx_Sketch:
 	dutycycle $1
 	soundinput $a5
 .branch5:
-	sound __,  3, $f1, $06e0
-	sound __, 14, $af, $05b0
-	sound __,  5, $0, 0
-	sound __, 10, $f4, $0718
+	square_note 2, 15, 1, 1760
+	square_note 13, 10, -7, 1456
+	square_note 4, 0, 0, 0
+	square_note 9, 15, 4, 1816
 	loopchannel 3, .branch5
 	soundinput $8
 	endchannel
@@ -3907,7 +3907,7 @@ Sfx_Aeroblast:
 .Ch5:
 	sound_duty 2, 0, 3, 3
 	soundinput $f5
-	sound C_, 13, $f8, $0580
+	square_note 28, 15, 8, 1408
 	soundinput $8
 	endchannel
 
@@ -3942,10 +3942,10 @@ Sfx_Curse:
 
 .Ch5:
 	dutycycle $3
-	sound __,  5, $f2, $0483
-	sound __,  5, $f2, $0511
-	sound __,  5, $f2, $0589
-	sound __,  5, $f2, $05ed
+	square_note 4, 15, 2, 1155
+	square_note 4, 15, 2, 1297
+	square_note 4, 15, 2, 1417
+	square_note 4, 15, 2, 1517
 	endchannel
 
 .Ch8:
@@ -3962,9 +3962,9 @@ Sfx_Rage:
 
 .Ch5:
 	dutycycle $0
-	sound __,  4, $d1, $07b0
-	sound __,  4, $d1, $07c2
-	sound C_,  9, $d2, $07d5
+	square_note 3, 13, 1, 1968
+	square_note 3, 13, 1, 1986
+	square_note 24, 13, 2, 2005
 	endchannel
 
 .Ch8:
@@ -4025,14 +4025,14 @@ Sfx_SpiderWeb:
 
 .Ch5:
 	dutycycle $0
-	sound C#,  1, $7f, $0720
+	square_note 32, 7, -7, 1824
 	soundinput $95
-	sound __,  5, $f8, $0620
-	sound __,  5, $e8, $0630
-	sound __,  5, $d8, $0640
-	sound __,  5, $95, $0620
-	sound __,  5, $73, $0630
-	sound __,  5, $51, $0640
+	square_note 4, 15, 8, 1568
+	square_note 4, 14, 8, 1584
+	square_note 4, 13, 8, 1600
+	square_note 4, 9, 5, 1568
+	square_note 4, 7, 3, 1584
+	square_note 4, 5, 1, 1600
 	soundinput $8
 	endchannel
 
@@ -4083,16 +4083,16 @@ Sfx_Nightmare:
 	dutycycle $0
 	soundinput $34
 .branch5:
-	sound __,  4, $ba, $0631
-	sound __,  3, $0, 0
-	sound __,  4, $f8, $0621
-	sound __,  3, $0, 0
-	sound __,  4, $f8, $0611
-	sound __,  3, $0, 0
-	sound __,  4, $e8, $0601
-	sound __,  3, $0, 0
-	sound __,  4, $e8, $05f1
-	sound __,  3, $0, 0
+	square_note 3, 11, -2, 1585
+	square_note 2, 0, 0, 0
+	square_note 3, 15, 8, 1569
+	square_note 2, 0, 0, 0
+	square_note 3, 15, 8, 1553
+	square_note 2, 0, 0, 0
+	square_note 3, 14, 8, 1537
+	square_note 2, 0, 0, 0
+	square_note 3, 14, 8, 1521
+	square_note 2, 0, 0, 0
 	loopchannel 2, .branch5
 	soundinput $8
 	endchannel
@@ -4123,10 +4123,10 @@ Sfx_SweetKiss:
 .Ch5:
 	dutycycle $2
 .branch5:
-	sound __,  3, $c1, $07c8
-	sound __,  3, $d1, $07da
+	square_note 2, 12, 1, 1992
+	square_note 2, 13, 1, 2010
 	loopchannel 2, .branch5
-	sound C_, 11, $f1, $07e2
+	square_note 26, 15, 1, 2018
 	endchannel
 
 
@@ -4139,13 +4139,13 @@ Sfx_SweetKiss2:
 .Ch5:
 	dutycycle $0
 	soundinput $97
-	sound __,  3, $f4, $0772
-	sound __,  5, $0, 0
-	sound __,  3, $c4, $0772
-	sound __,  5, $0, 0
-	sound __,  3, $b4, $0772
-	sound __,  5, $0, 0
-	sound __,  3, $a1, $0772
+	square_note 2, 15, 4, 1906
+	square_note 4, 0, 0, 0
+	square_note 2, 12, 4, 1906
+	square_note 4, 0, 0, 0
+	square_note 2, 11, 4, 1906
+	square_note 4, 0, 0, 0
+	square_note 2, 10, 1, 1906
 	soundinput $8
 	endchannel
 
@@ -4160,7 +4160,7 @@ Sfx_BellyDrum:
 .Ch5:
 	dutycycle $2
 	soundinput $ac
-	sound __, 13, $f1, $05a3
+	square_note 12, 15, 1, 1443
 	soundinput $8
 	endchannel
 
@@ -4178,9 +4178,9 @@ Sfx_Toxic:
 .Ch5:
 	dutycycle $2
 	soundinput $95
-	sound __,  3, $c9, $03b3
-	sound __,  6, $f8, $0463
-	sound __,  5, $d1, $0543
+	square_note 2, 12, -1, 947
+	square_note 5, 15, 8, 1123
+	square_note 4, 13, 1, 1347
 	soundinput $8
 	endchannel
 
@@ -4195,10 +4195,10 @@ Sfx_SludgeBomb:
 .Ch5:
 	dutycycle $2
 	soundinput $c5
-	sound __,  4, $f8, $0581
-	sound __,  2, $0, 0
+	square_note 3, 15, 8, 1409
+	square_note 1, 0, 0, 0
 	soundinput $cb
-	sound C_,  1, $f2, $05d1
+	square_note 16, 15, 2, 1489
 	soundinput $8
 	endchannel
 
@@ -4216,13 +4216,13 @@ Sfx_Foresight:
 	channel 5, .Ch5
 
 .Ch5:
-	sound __,  4, $f4, $07b5
-	sound __,  4, $f5, $07c8
-	sound __,  9, $f4, $07da
-	sound __,  3, $0, 0
-	sound __,  9, $c1, $07da
-	sound __,  3, $0, 0
-	sound __,  9, $91, $07da
+	square_note 3, 15, 4, 1973
+	square_note 3, 15, 5, 1992
+	square_note 8, 15, 4, 2010
+	square_note 2, 0, 0, 0
+	square_note 8, 12, 1, 2010
+	square_note 2, 0, 0, 0
+	square_note 8, 9, 1, 2010
 	endchannel
 
 
@@ -4315,15 +4315,15 @@ Sfx_GigaDrain:
 .Ch5:
 	dutycycle $2
 	soundinput $97
-	sound __,  5, $f8, $0680
-	sound C_,  5, $f8, $0680
-	sound C_,  5, $c8, $0660
-	sound C_,  5, $a8, $0670
-	sound C_,  5, $88, $0680
-	sound C_,  5, $f8, $0561
-	sound C_,  5, $c8, $0541
-	sound C_,  5, $a8, $0521
-	sound C_,  5, $88, $0511
+	square_note 4, 15, 8, 1664
+	square_note 20, 15, 8, 1664
+	square_note 20, 12, 8, 1632
+	square_note 20, 10, 8, 1648
+	square_note 20, 8, 8, 1664
+	square_note 20, 15, 8, 1377
+	square_note 20, 12, 8, 1345
+	square_note 20, 10, 8, 1313
+	square_note 20, 8, 8, 1297
 	soundinput $8
 	endchannel
 
@@ -4346,10 +4346,10 @@ Sfx_Attract:
 .Ch5:
 	dutycycle $0
 	soundinput $77
-	sound __,  5, $a9, $06f0
-	sound __, 13, $f8, $0720
+	square_note 4, 10, -1, 1776
+	square_note 12, 15, 8, 1824
 	soundinput $7f
-	sound __,  9, $f1, $0740
+	square_note 8, 15, 1, 1856
 	soundinput $8
 	endchannel
 
@@ -4362,9 +4362,9 @@ Sfx_Kinesis2:
 
 .Ch5:
 	dutycycle $0
-	sound __,  3, $f3, $0796
-	sound __,  3, $23, $0796
-	sound C_,  5, $f1, $07c4
+	square_note 2, 15, 3, 1942
+	square_note 2, 2, 3, 1942
+	square_note 20, 15, 1, 1988
 	endchannel
 
 
@@ -4392,17 +4392,17 @@ Sfx_MeanLook:
 .Ch5:
 	soundinput $77
 	dutycycle $3
-	sound __,  3, $f8, $0720
+	square_note 2, 15, 8, 1824
 .branch5:
-	sound __,  2, $88, $0660
-	sound __,  3, $f8, $0790
+	square_note 1, 8, 8, 1632
+	square_note 2, 15, 8, 1936
 	loopchannel 5, .branch5
-	sound __, 13, $f8, $0700
-	sound __, 13, $c8, $0720
-	sound __, 13, $a8, $0700
-	sound __, 13, $78, $0720
-	sound __, 13, $48, $0700
-	sound __, 13, $28, $0720
+	square_note 12, 15, 8, 1792
+	square_note 12, 12, 8, 1824
+	square_note 12, 10, 8, 1792
+	square_note 12, 7, 8, 1824
+	square_note 12, 4, 8, 1792
+	square_note 12, 2, 8, 1824
 	soundinput $8
 	endchannel
 
@@ -4415,10 +4415,10 @@ Sfx_HealBell:
 
 .Ch5:
 	dutycycle $1
-	sound __,  2, $f1, $07da
-	sound __,  2, $d1, $07d9
-	sound __,  2, $f1, $07da
-	sound __,  9, $d1, $07db
+	square_note 1, 15, 1, 2010
+	square_note 1, 13, 1, 2009
+	square_note 1, 15, 1, 2010
+	square_note 8, 13, 1, 2011
 	endchannel
 
 
@@ -4432,10 +4432,10 @@ Sfx_Return:
 	dutycycle $0
 .branch5:
 	soundinput $bf
-	sound __,  9, $f1, $0759
+	square_note 8, 15, 1, 1881
 	soundinput $57
-	sound __,  9, $f1, $0759
-	sound C_,  1, $0, 0
+	square_note 8, 15, 1, 1881
+	square_note 16, 0, 0, 0
 	loopchannel 2, .branch5
 	soundinput $8
 	endchannel
@@ -4450,15 +4450,15 @@ Sfx_ExpBar:
 .Ch5:
 	dutycycle $2
 	soundinput $d7
-	sound __,  9, $e1, $0750
+	square_note 8, 14, 1, 1872
 	soundinput $e7
-	sound __,  9, $48, $06e0
-	sound __,  9, $58, $06f8
-	sound __,  9, $68, $0710
-	sound __,  9, $78, $0728
-	sound __,  9, $88, $0740
-	sound __,  9, $98, $0758
-	sound C_,  1, $a8, $0770
+	square_note 8, 4, 8, 1760
+	square_note 8, 5, 8, 1784
+	square_note 8, 6, 8, 1808
+	square_note 8, 7, 8, 1832
+	square_note 8, 8, 8, 1856
+	square_note 8, 9, 8, 1880
+	square_note 16, 10, 8, 1904
 	soundinput $8
 	endchannel
 
@@ -4473,11 +4473,11 @@ Sfx_MilkDrink:
 	dutycycle $2
 .branch5:
 	soundinput $a4
-	sound __,  3, $ea, $04e0
-	sound __, 14, $f7, $0290
+	square_note 2, 14, -2, 1248
+	square_note 13, 15, 7, 656
 	soundinput $9e
-	sound __,  5, $c9, $05e1
-	sound __,  3, $0, 0
+	square_note 4, 12, -1, 1505
+	square_note 2, 0, 0, 0
 	loopchannel 6, .branch5
 	soundinput $8
 	endchannel
@@ -4493,10 +4493,10 @@ Sfx_Present:
 	dutycycle $2
 	soundinput $d6
 .branch5:
-	sound __,  3, $f1, $0740
-	sound __,  2, $0, 0
+	square_note 2, 15, 1, 1856
+	square_note 1, 0, 0, 0
 	loopchannel 3, .branch5
-	sound C_,  1, $f1, $0780
+	square_note 16, 15, 1, 1920
 	soundinput $8
 	endchannel
 
@@ -4510,14 +4510,14 @@ Sfx_MorningSun:
 .Ch5:
 	dutycycle $3
 .branch5:
-	sound __,  3, $f1, $07e4
-	sound __,  3, $f1, $07e0
-	sound __,  6, $f2, $07e7
+	square_note 2, 15, 1, 2020
+	square_note 2, 15, 1, 2016
+	square_note 5, 15, 2, 2023
 	loopchannel 3, .branch5
-	sound __,  2, $0, 0
-	sound __,  9, $c2, $07e7
-	sound __,  2, $0, 0
-	sound __,  9, $82, $07e7
+	square_note 1, 0, 0, 0
+	square_note 8, 12, 2, 2023
+	square_note 1, 0, 0, 0
+	square_note 8, 8, 2, 2023
 	endchannel
 
 
@@ -4530,12 +4530,12 @@ Sfx_Moonlight:
 .Ch5:
 	dutycycle $2
 .branch5:
-	sound __,  2, $f8, $07d0
-	sound __,  5, $f1, $07e0
+	square_note 1, 15, 8, 2000
+	square_note 4, 15, 1, 2016
 	loopchannel 2, .branch5
-	sound C_,  1, $f1, $07e0
-	sound C_,  1, $d1, $07e0
-	sound C_,  1, $81, $07e0
+	square_note 16, 15, 1, 2016
+	square_note 16, 13, 1, 2016
+	square_note 16, 8, 1, 2016
 	endchannel
 
 
@@ -4549,10 +4549,10 @@ Sfx_Encore:
 .Ch5:
 	dutycycle $2
 	soundinput $ce
-	sound C_,  1, $0, 0
+	square_note 16, 0, 0, 0
 .branch5:
-	sound __,  3, $f8, $0774
-	sound C#,  5, $0, 0
+	square_note 2, 15, 8, 1908
+	square_note 36, 0, 0, 0
 	loopchannel 2, .branch5
 	soundinput $8
 	endchannel
@@ -4587,10 +4587,10 @@ Sfx_SweetScent:
 .Ch5:
 	dutycycle $2
 	soundinput $96
-	sound __,  7, $f8, $0760
-	sound __,  7, $e8, $0720
+	square_note 6, 15, 8, 1888
+	square_note 6, 14, 8, 1824
 	soundinput $df
-	sound C_,  7, $f1, $0730
+	square_note 22, 15, 1, 1840
 	soundinput $8
 	endchannel
 
@@ -4605,12 +4605,12 @@ Sfx_BatonPass:
 .Ch5:
 	dutycycle $2
 	soundinput $f7
-	sound C#,  1, $f2, $0680
-	sound __,  2, $f1, $0760
-	sound C#,  1, $0, 0
-	sound __,  2, $f1, $0760
-	sound C_, 11, $0, 0
-	sound __,  2, $f1, $0760
+	square_note 32, 15, 2, 1664
+	square_note 1, 15, 1, 1888
+	square_note 32, 0, 0, 0
+	square_note 1, 15, 1, 1888
+	square_note 26, 0, 0, 0
+	square_note 1, 15, 1, 1888
 	soundinput $8
 	endchannel
 
@@ -4774,15 +4774,15 @@ Sfx_Flash:
 .Ch5:
 	dutycycle $1
 	soundinput $ef
-	sound __,  2, $40, $07e8
-	sound __,  2, $60, $07e8
-	sound __,  3, $80, $07e8
-	sound __,  6, $a0, $07e8
-	sound __,  7, $a0, $07e8
-	sound __,  8, $80, $07e8
-	sound __,  9, $60, $07e8
-	sound __, 10, $30, $07e8
-	sound __, 16, $12, $07e8
+	square_note 1, 4, 0, 2024
+	square_note 1, 6, 0, 2024
+	square_note 2, 8, 0, 2024
+	square_note 5, 10, 0, 2024
+	square_note 6, 10, 0, 2024
+	square_note 7, 8, 0, 2024
+	square_note 8, 6, 0, 2024
+	square_note 9, 3, 0, 2024
+	square_note 15, 1, 2, 2024
 	soundinput $8
 	endchannel
 
@@ -4796,16 +4796,16 @@ Sfx_GameFreakLogoGs:
 .Ch5:
 	dutycycle $3
 	soundinput $7f
-	sound __,  5, $55, $07e2
-	sound __,  6, $75, $07e2
-	sound __,  7, $94, $07e2
-	sound __,  8, $b4, $07e2
-	sound __,  9, $b3, $07e2
-	sound __, 10, $93, $07e2
-	sound __, 11, $72, $07e2
-	sound __, 11, $53, $07e2
-	sound __, 11, $34, $07e2
-	sound __, 11, $15, $07e2
+	square_note 4, 5, 5, 2018
+	square_note 5, 7, 5, 2018
+	square_note 6, 9, 4, 2018
+	square_note 7, 11, 4, 2018
+	square_note 8, 11, 3, 2018
+	square_note 9, 9, 3, 2018
+	square_note 10, 7, 2, 2018
+	square_note 10, 5, 3, 2018
+	square_note 10, 3, 4, 2018
+	square_note 10, 1, 5, 2018
 	soundinput $8
 	endchannel
 
@@ -5456,27 +5456,27 @@ Sfx_BallBounce:
 
 .Ch5:
 	dutycycle $2
-	sound __,  9, $e1, $0740
-	sound C_,  8, $0, 0
-	sound __,  9, $b1, $0740
-	sound C_,  8, $0, 0
-	sound __,  9, $81, $0740
-	sound C_,  8, $0, 0
-	sound __,  9, $51, $0740
-	sound C_,  8, $0, 0
+	square_note 8, 14, 1, 1856
+	square_note 23, 0, 0, 0
+	square_note 8, 11, 1, 1856
+	square_note 23, 0, 0, 0
+	square_note 8, 8, 1, 1856
+	square_note 23, 0, 0, 0
+	square_note 8, 5, 1, 1856
+	square_note 23, 0, 0, 0
 	endchannel
 
 .Ch6:
 	dutycycle $2
-	sound __,  3, $8, 0
-	sound __,  9, $b1, $0741
-	sound C_,  8, $0, 0
-	sound __,  9, $81, $0741
-	sound C_,  8, $0, 0
-	sound __,  9, $51, $0741
-	sound C_,  8, $0, 0
-	sound __,  9, $21, $0741
-	sound C_,  8, $0, 0
+	square_note 2, 0, 8, 0
+	square_note 8, 11, 1, 1857
+	square_note 23, 0, 0, 0
+	square_note 8, 8, 1, 1857
+	square_note 23, 0, 0, 0
+	square_note 8, 5, 1, 1857
+	square_note 23, 0, 0, 0
+	square_note 8, 2, 1, 1857
+	square_note 23, 0, 0, 0
 	endchannel
 
 
@@ -5490,9 +5490,9 @@ Sfx_SweetScent2:
 .Ch5:
 	soundinput $af
 	dutycycle $1
-	sound __,  7, $f8, $05f0
-	sound __,  3, $f1, $0620
-	sound C_,  1, $f1, $0650
+	square_note 6, 15, 8, 1520
+	square_note 2, 15, 1, 1568
+	square_note 16, 15, 1, 1616
 	soundinput $8
 	endchannel
 
@@ -5520,16 +5520,16 @@ Sfx_HitEndOfExpBar:
 
 .Ch5:
 	dutycycle $2
-	sound __,  2, $e1, $0789
-	sound __,  2, $e1, $07a2
-	sound C_,  1, $e1, $07b1
+	square_note 1, 14, 1, 1929
+	square_note 1, 14, 1, 1954
+	square_note 16, 14, 1, 1969
 	endchannel
 
 .Ch6:
 	dutycycle $2
-	sound __,  2, $e1, $07a2
-	sound __,  2, $e1, $07b1
-	sound C_,  1, $e1, $07c4
+	square_note 1, 14, 1, 1954
+	square_note 1, 14, 1, 1969
+	square_note 16, 14, 1, 1988
 	endchannel
 
 
@@ -5540,17 +5540,17 @@ Sfx_GiveTrademon:
 	channel 5, .Ch5
 
 .Ch5:
-	sound C#,  1, $0, 0
+	square_note 32, 0, 0, 0
 	dutycycle $1
 	soundinput $a7
-	sound C_, 12, $f4, $0750
-	sound C_, 12, $d4, $0750
-	sound C_, 12, $b4, $0750
-	sound C_, 12, $94, $0750
-	sound C_, 12, $74, $0750
-	sound C_, 12, $54, $0750
-	sound C_, 12, $34, $0750
-	sound C_, 12, $14, $0750
+	square_note 27, 15, 4, 1872
+	square_note 27, 13, 4, 1872
+	square_note 27, 11, 4, 1872
+	square_note 27, 9, 4, 1872
+	square_note 27, 7, 4, 1872
+	square_note 27, 5, 4, 1872
+	square_note 27, 3, 4, 1872
+	square_note 27, 1, 4, 1872
 	soundinput $8
 	endchannel
 
@@ -5562,17 +5562,17 @@ Sfx_GetTrademon:
 	channel 5, .Ch5
 
 .Ch5:
-	sound C#,  1, $0, 0
+	square_note 32, 0, 0, 0
 	dutycycle $2
 	soundinput $bf
-	sound C_, 12, $14, $07bc
-	sound C_, 12, $34, $07bc
-	sound C_, 12, $54, $07bc
-	sound C_, 12, $74, $07bc
-	sound C_, 12, $94, $07bc
-	sound C_, 12, $b4, $07bc
-	sound C_, 12, $d4, $07bc
-	sound C_, 12, $f4, $07bc
+	square_note 27, 1, 4, 1980
+	square_note 27, 3, 4, 1980
+	square_note 27, 5, 4, 1980
+	square_note 27, 7, 4, 1980
+	square_note 27, 9, 4, 1980
+	square_note 27, 11, 4, 1980
+	square_note 27, 13, 4, 1980
+	square_note 27, 15, 4, 1980
 	soundinput $8
 	endchannel
 
@@ -5587,16 +5587,16 @@ Sfx_TrainArrived:
 
 .Ch6:
 	tone $0008
-	sound __,  9, $0, 0
+	square_note 8, 0, 0, 0
 .Ch5:
 	dutycycle $2
-	sound __,  5, $5f, $0691
-	sound __,  5, $6f, $0694
-	sound __,  5, $78, $0697
-	sound __,  5, $7f, $069a
-	sound __,  5, $68, $06ae
-	sound C_,  1, $6f, $06ab
-	sound F_,  9, $65, $06a8
+	square_note 4, 5, -7, 1681
+	square_note 4, 6, -7, 1684
+	square_note 4, 7, 8, 1687
+	square_note 4, 7, -7, 1690
+	square_note 4, 6, 8, 1710
+	square_note 16, 6, -7, 1707
+	square_note 104, 6, 5, 1704
 	endchannel
 
 .Ch8:
@@ -5621,10 +5621,10 @@ Sfx_2Boops:
 	dutycycle $2
 .branch5:
 	soundinput $79
-	sound __,  2, $99, $0563
-	sound __,  5, $f2, $04b5
+	square_note 1, 9, -1, 1379
+	square_note 4, 15, 2, 1205
 	soundinput $43
-	sound C_,  1, $f8, $05cd
+	square_note 16, 15, 8, 1485
 	loopchannel 2, .branch5
 	soundinput $8
 	endchannel
@@ -5657,8 +5657,8 @@ Sfx_StopSlot:
 
 .Ch5:
 	dutycycle $2
-	sound __,  2, $f8, $0760
-	sound __,  5, $82, $0760
+	square_note 1, 15, 8, 1888
+	square_note 4, 8, 2, 1888
 	endchannel
 
 
@@ -5670,7 +5670,7 @@ Sfx_GlassTing:
 
 .Ch5:
 	dutycycle $2
-	sound C#,  1, $d1, $07dc
+	square_note 32, 13, 1, 2012
 	endchannel
 
 
@@ -5683,12 +5683,12 @@ Sfx_GlassTing2:
 
 .Ch5:
 	dutycycle $2
-	sound C_,  1, $f1, $07dc
+	square_note 16, 15, 1, 2012
 	endchannel
 
 .Ch6:
 	dutycycle $2
-	sound C_,  1, $d1, $07dd
+	square_note 16, 13, 1, 2013
 	endchannel
 
 
@@ -5701,8 +5701,8 @@ Sfx_IntroUnown1:
 .Ch5:
 	vibrato $1, $a3
 	dutycycle $2
-	sound __,  9, $39, $0705
-	sound C#,  1, $e2, $0705
+	square_note 8, 3, -1, 1797
+	square_note 32, 14, 2, 1797
 	endchannel
 
 
@@ -5715,8 +5715,8 @@ Sfx_IntroUnown2:
 .Ch6:
 	vibrato $1, $73
 	dutycycle $2
-	sound __,  9, $39, $0758
-	sound C#,  1, $e2, $0758
+	square_note 8, 3, -1, 1880
+	square_note 32, 14, 2, 1880
 	endchannel
 
 
@@ -5728,12 +5728,12 @@ Sfx_IntroUnown3:
 
 .Ch7:
 	vibrato $1, $53
-	sound __,  4, $32, $07c2
-	sound __,  4, $22, $07c2
-	sound __,  4, $12, $07c2
-	sound C_,  1, $12, $07c2
-	sound __,  7, $22, $07c2
-	sound __,  7, $32, $07c2
+	square_note 3, 3, 2, 1986
+	square_note 3, 2, 2, 1986
+	square_note 3, 1, 2, 1986
+	square_note 16, 1, 2, 1986
+	square_note 6, 2, 2, 1986
+	square_note 6, 3, 2, 1986
 	endchannel
 
 
@@ -5746,11 +5746,11 @@ Sfx_DittoPopUp:
 .Ch5:
 	dutycycle $2
 	soundinput $1e
-	sound __,  4, $82, $0700
-	sound __,  2, $31, $0701
+	square_note 3, 8, 2, 1792
+	square_note 1, 3, 1, 1793
 	soundinput $16
-	sound __,  5, $b1, $0640
-	sound C_,  1, $31, $0641
+	square_note 4, 11, 1, 1600
+	square_note 16, 3, 1, 1601
 	endchannel
 
 
@@ -5763,10 +5763,10 @@ Sfx_DittoTransform:
 .Ch5:
 	dutycycle $1
 	soundinput $26
-	sound C_,  5, $3b, $0440
-	sound __,  5, $97, $04c0
-	sound __,  5, $67, $04c1
-	sound __,  5, $42, $04c2
+	square_note 20, 3, -3, 1088
+	square_note 4, 9, 7, 1216
+	square_note 4, 6, 7, 1217
+	square_note 4, 4, 2, 1218
 	endchannel
 
 
@@ -5791,10 +5791,10 @@ Sfx_IntroPichu:
 .Ch5:
 	dutycycle $3
 	soundinput $4d
-	sound __,  2, $88, $0770
-	sound __,  4, $0, 0
+	square_note 1, 8, 8, 1904
+	square_note 3, 0, 0, 0
 	soundinput $17
-	sound __,  3, $88, $0776
+	square_note 2, 8, 8, 1910
 	endchannel
 
 
@@ -5848,10 +5848,10 @@ Sfx_DittoBounce:
 .Ch5:
 	dutycycle $2
 	soundinput $2c
-	sound __,  3, $82, $04b0
-	sound __,  1, $31, $04b0
+	square_note 2, 8, 2, 1200
+	square_note 0, 3, 1, 1200
 	soundinput $34
-	sound C_,  1, $b1, $0420
+	square_note 16, 11, 1, 1056
 	endchannel
 
 
@@ -5939,10 +5939,10 @@ Sfx_TwoPcBeeps:
 
 .Ch5:
 	dutycycle $2
-	sound __,  3, $e8, $07c2
-	sound __,  3, $28, $07c2
-	sound __,  3, $e8, $07c2
-	sound __,  3, $28, $07c2
+	square_note 2, 14, 8, 1986
+	square_note 2, 2, 8, 1986
+	square_note 2, 14, 8, 1986
+	square_note 2, 2, 8, 1986
 	endchannel
 
 
@@ -6035,7 +6035,7 @@ Sfx_Puddle:
 .Ch5:
 	dutycycle $1
 	soundinput $97
-	sound __, 16, $98, $0700
+	square_note 15, 9, 8, 1792
 	soundinput $8
 	endchannel
 
@@ -6049,7 +6049,7 @@ Sfx_AbilitySlideout:
 .Ch5:
 	dutycycle $1
 	soundinput $9f
-	sound __, 4, $e8, $07ff
-	sound __, 24, $e8, $07e0
+	square_note 3, 14, 8, 2047
+	square_note 23, 14, 8, 2016
 	soundinput $8
 	endchannel

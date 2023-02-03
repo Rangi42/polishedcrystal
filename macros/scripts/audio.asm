@@ -16,9 +16,13 @@ MACRO note
 	dn (\1), (\2) - 1
 ENDM
 
-MACRO sound
-	note \1, \2
-	db \3 ; intensity
+MACRO square_note
+	db \1 ; length
+	if \3 < 0
+		dn \2, %1000 | (\3 * -1) ; volume envelope
+	else
+		dn \2, \3 ; volume envelope
+	endc
 	dw \4 ; frequency
 ENDM
 
