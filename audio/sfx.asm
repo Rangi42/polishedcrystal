@@ -591,7 +591,7 @@ Sfx_Pokeflute:
 .Ch7:
 	tempo 256
 	volume 7, 7
-	togglesfx
+	toggle_sfx
 	vibrato $10, $14
 	note_type 12, 1, 0
 	octave 5
@@ -1804,7 +1804,7 @@ Sfx_Sing:
 	channel 6, .Ch6
 
 .Ch5:
-	togglesfx
+	toggle_sfx
 	vibrato $a, $24
 	duty_cycle 2
 	note_type 10, 8, 7
@@ -1818,7 +1818,7 @@ Sfx_Sing:
 	endchannel
 
 .Ch6:
-	togglesfx
+	toggle_sfx
 	vibrato $a, $23
 	duty_cycle 2
 	note_type 11, 6, 7
@@ -2013,7 +2013,7 @@ Sfx_DexFanfare5079:
 	channel 8, .Ch8
 
 .Ch5:
-	togglesfx
+	toggle_sfx
 	tempo 120
 	volume 7, 7
 	duty_cycle 2
@@ -2028,7 +2028,7 @@ Sfx_DexFanfare5079:
 	endchannel
 
 .Ch6:
-	togglesfx
+	toggle_sfx
 	duty_cycle 2
 	note_type 8, 12, 1
 	octave 4
@@ -2040,7 +2040,7 @@ Sfx_DexFanfare5079:
 	endchannel
 
 .Ch7:
-	togglesfx
+	toggle_sfx
 	note_type 8, 2, 5
 	octave 4
 	note G#, 1
@@ -2057,7 +2057,7 @@ Sfx_DexFanfare5079:
 	endchannel
 
 .Ch8:
-	togglesfx
+	toggle_sfx
 	sfxtogglenoise $4
 	note_type 12
 	note C_, 12
@@ -2074,7 +2074,7 @@ Sfx_KeyItem:
 	channel 8, .Ch8
 
 .Ch5:
-	togglesfx
+	toggle_sfx
 	tempo 120
 	volume 7, 7
 	duty_cycle 2
@@ -2091,7 +2091,7 @@ Sfx_KeyItem:
 	endchannel
 
 .Ch6:
-	togglesfx
+	toggle_sfx
 	duty_cycle 2
 	note_type 6, 12, 1
 	octave 4
@@ -2105,7 +2105,7 @@ Sfx_KeyItem:
 	endchannel
 
 .Ch7:
-	togglesfx
+	toggle_sfx
 	note_type 6, 2, 5
 	octave 4
 	note G#, 2
@@ -2126,7 +2126,7 @@ Sfx_KeyItem:
 	endchannel
 
 .Ch8:
-	togglesfx
+	toggle_sfx
 	sfxtogglenoise $4
 	note_type 12
 	note C_, 16
@@ -2143,7 +2143,7 @@ Sfx_DexFanfare2049:
 	channel 8, .Ch8
 
 .Ch5:
-	togglesfx
+	toggle_sfx
 	tempo 104
 	volume 7, 7
 	duty_cycle 2
@@ -2168,7 +2168,7 @@ Sfx_DexFanfare2049:
 	endchannel
 
 .Ch6:
-	togglesfx
+	toggle_sfx
 	duty_cycle 2
 	note_type 12, 12, 1
 	octave 5
@@ -2188,7 +2188,7 @@ Sfx_DexFanfare2049:
 	endchannel
 
 .Ch7:
-	togglesfx
+	toggle_sfx
 	note_type 12, 2, 5
 	octave 4
 	note F_, 4
@@ -2208,7 +2208,7 @@ Sfx_DexFanfare2049:
 	endchannel
 
 .Ch8:
-	togglesfx
+	toggle_sfx
 	sfxtogglenoise $4
 	note_type 12
 	note C_, 16
@@ -2226,7 +2226,7 @@ Sfx_Item:
 	channel 8, .Ch8
 
 .Ch5:
-	togglesfx
+	toggle_sfx
 	tempo 108
 	volume 7, 7
 	vibrato $8, $27
@@ -2245,7 +2245,7 @@ Sfx_Item:
 	endchannel
 
 .Ch6:
-	togglesfx
+	toggle_sfx
 	vibrato $8, $27
 	duty_cycle 2
 	note_type 8, 12, 3
@@ -2262,7 +2262,7 @@ Sfx_Item:
 	endchannel
 
 .Ch7:
-	togglesfx
+	toggle_sfx
 	note_type 8, 2, 5
 	octave 4
 	note F_, 4
@@ -2286,7 +2286,7 @@ Sfx_Item:
 	endchannel
 
 .Ch8:
-	togglesfx
+	toggle_sfx
 	sfxtogglenoise $4
 	note_type 12
 	note C_, 16
@@ -2304,7 +2304,7 @@ Sfx_CaughtMon:
 	channel 8, .Ch8
 
 .Ch5:
-	togglesfx
+	toggle_sfx
 	tempo 112
 	volume 7, 7
 	vibrato $8, $27
@@ -2328,7 +2328,7 @@ Sfx_CaughtMon:
 	endchannel
 
 .Ch6:
-	togglesfx
+	toggle_sfx
 	duty_cycle 2
 	vibrato $8, $27
 	note_type 8, 12, 3
@@ -2348,7 +2348,7 @@ Sfx_CaughtMon:
 	endchannel
 
 .Ch7:
-	togglesfx
+	toggle_sfx
 	note_type 8, 2, 5
 	octave 3
 	note C_, 12
@@ -2367,7 +2367,7 @@ Sfx_CaughtMon:
 	endchannel
 
 .Ch8:
-	togglesfx
+	toggle_sfx
 	sfxtogglenoise $4
 	note_type 12
 	note C_, 16
@@ -2385,7 +2385,7 @@ Sfx_DexFanfare80109:
 	channel 8, .Ch8
 
 .Ch5:
-	togglesfx
+	toggle_sfx
 	tempo 112
 	volume 7, 7
 	vibrato $8, $27
@@ -2411,7 +2411,7 @@ Sfx_DexFanfare80109:
 	endchannel
 
 .Ch6:
-	togglesfx
+	toggle_sfx
 	vibrato $8, $27
 	duty_cycle 2
 	note_type 12, 12, 1
@@ -2434,7 +2434,7 @@ Sfx_DexFanfare80109:
 	endchannel
 
 .Ch7:
-	togglesfx
+	toggle_sfx
 	note_type 12, 2, 5
 	octave 4
 	note D#, 1
@@ -2461,7 +2461,7 @@ Sfx_DexFanfare80109:
 	endchannel
 
 .Ch8:
-	togglesfx
+	toggle_sfx
 	sfxtogglenoise $4
 	note_type 12
 	note C_, 16
@@ -2478,7 +2478,7 @@ Sfx_Fanfare2:
 	channel 8, .Ch8
 
 .Ch5:
-	togglesfx
+	toggle_sfx
 	sfxpriorityon
 	tempo 256
 	volume 7, 7
@@ -2503,7 +2503,7 @@ Sfx_Fanfare2:
 	endchannel
 
 .Ch6:
-	togglesfx
+	toggle_sfx
 	duty_cycle 2
 	note_type 6, 12, 5
 	octave 4
@@ -2523,7 +2523,7 @@ Sfx_Fanfare2:
 	endchannel
 
 .Ch8:
-	togglesfx
+	toggle_sfx
 	note_type 6
 	note C_, 1
 	octave 5
@@ -2553,7 +2553,7 @@ UnknownSfx:
 	channel 8, .Ch8
 
 .Ch5:
-	togglesfx
+	toggle_sfx
 	tempo 124
 	volume 7, 7
 	vibrato $8, $27
@@ -2577,7 +2577,7 @@ UnknownSfx:
 	endchannel
 
 .Ch6:
-	togglesfx
+	toggle_sfx
 	vibrato $8, $27
 	duty_cycle 2
 	note_type 12, 12, 1
@@ -2601,7 +2601,7 @@ UnknownSfx:
 	endchannel
 
 .Ch7:
-	togglesfx
+	toggle_sfx
 	note_type 12, 2, 5
 	octave 4
 	note F_, 8
@@ -2616,7 +2616,7 @@ UnknownSfx:
 	endchannel
 
 .Ch8:
-	togglesfx
+	toggle_sfx
 	sfxtogglenoise $4
 	note_type 12
 	note C_, 16
@@ -2633,7 +2633,7 @@ Sfx_Fanfare:
 	channel 8, .Ch8
 
 .Ch5:
-	togglesfx
+	toggle_sfx
 	sfxpriorityon
 	tempo 256
 	volume 7, 7
@@ -2663,7 +2663,7 @@ Sfx_Fanfare:
 	endchannel
 
 .Ch6:
-	togglesfx
+	toggle_sfx
 	duty_cycle 2
 	note_type 6, 12, 4
 	octave 4
@@ -2699,7 +2699,7 @@ Sfx_Fanfare:
 	endchannel
 
 .Ch8:
-	togglesfx
+	toggle_sfx
 	note_type 6
 	note C_, 1
 	octave 4
@@ -2734,7 +2734,7 @@ Sfx_RegisterPhoneNumber:
 	channel 8, .Ch8
 
 .Ch5:
-	togglesfx
+	toggle_sfx
 	tempo 124
 	volume 7, 7
 	duty_cycle 3
@@ -2758,7 +2758,7 @@ Sfx_RegisterPhoneNumber:
 	endchannel
 
 .Ch6:
-	togglesfx
+	toggle_sfx
 	duty_cycle 3
 	note_type 12, 12, 2
 	note __, 2
@@ -2780,7 +2780,7 @@ Sfx_RegisterPhoneNumber:
 	endchannel
 
 .Ch7:
-	togglesfx
+	toggle_sfx
 	note_type 12, 2, 5
 	note __, 2
 	octave 3
@@ -2799,7 +2799,7 @@ Sfx_RegisterPhoneNumber:
 	endchannel
 
 .Ch8:
-	togglesfx
+	toggle_sfx
 	sfxtogglenoise $4
 	note_type 12
 	note C_, 2
@@ -2817,7 +2817,7 @@ Sfx_3RdPlace:
 	channel 7, .Ch7
 
 .Ch5:
-	togglesfx
+	toggle_sfx
 	tempo 120
 	volume 7, 7
 	duty_cycle 2
@@ -2834,7 +2834,7 @@ Sfx_3RdPlace:
 	endchannel
 
 .Ch6:
-	togglesfx
+	toggle_sfx
 	duty_cycle 2
 	note_type 12, 11, 4
 	octave 4
@@ -2849,7 +2849,7 @@ Sfx_3RdPlace:
 	endchannel
 
 .Ch7:
-	togglesfx
+	toggle_sfx
 	note_type 12, 2, 5
 	octave 3
 	note A_, 1
@@ -2875,7 +2875,7 @@ Sfx_GetEggFromDayCareMan:
 	channel 8, .Ch8
 
 .Ch5:
-	togglesfx
+	toggle_sfx
 	tempo 120
 	volume 7, 7
 	vibrato $12, $34
@@ -2905,7 +2905,7 @@ Sfx_GetEggFromDayCareMan:
 	endchannel
 
 .Ch6:
-	togglesfx
+	toggle_sfx
 	vibrato $12, $34
 	duty_cycle 3
 	note_type 8, 12, 2
@@ -2932,7 +2932,7 @@ Sfx_GetEggFromDayCareMan:
 	endchannel
 
 .Ch7:
-	togglesfx
+	toggle_sfx
 	note_type 8, 2, 5
 	note __, 2
 	octave 3
@@ -2949,7 +2949,7 @@ Sfx_GetEggFromDayCareMan:
 	endchannel
 
 .Ch8:
-	togglesfx
+	toggle_sfx
 	sfxtogglenoise $4
 	note_type 8
 	note __, 2
@@ -2969,7 +2969,7 @@ Sfx_MoveDeleted:
 	channel 8, .Ch8
 
 .Ch5:
-	togglesfx
+	toggle_sfx
 	tempo 116
 	volume 7, 7
 	duty_cycle 2
@@ -2997,7 +2997,7 @@ Sfx_MoveDeleted:
 	endchannel
 
 .Ch6:
-	togglesfx
+	toggle_sfx
 	duty_cycle 3
 	vibrato $c, $44
 	note_type 12, 7, 4
@@ -3031,7 +3031,7 @@ Sfx_MoveDeleted:
 	endchannel
 
 .Ch7:
-	togglesfx
+	toggle_sfx
 	note_type 6, 2, 5
 	octave 2
 	note G#, 8
@@ -3056,7 +3056,7 @@ Sfx_MoveDeleted:
 	endchannel
 
 .Ch8:
-	togglesfx
+	toggle_sfx
 	sfxtogglenoise $3
 	note_type 12
 	note F_, 8
@@ -3076,7 +3076,7 @@ Sfx_2ndPlace:
 	channel 8, .Ch8
 
 .Ch5:
-	togglesfx
+	toggle_sfx
 	tempo 116
 	volume 7, 7
 	duty_cycle 2
@@ -3108,7 +3108,7 @@ Sfx_2ndPlace:
 	endchannel
 
 .Ch6:
-	togglesfx
+	toggle_sfx
 	duty_cycle 2
 	note_type 8, 11, 1
 	octave 4
@@ -3130,7 +3130,7 @@ Sfx_2ndPlace:
 	endchannel
 
 .Ch7:
-	togglesfx
+	toggle_sfx
 	note_type 8, 2, 5
 	octave 3
 	note C_, 1
@@ -3166,7 +3166,7 @@ Sfx_2ndPlace:
 	endchannel
 
 .Ch8:
-	togglesfx
+	toggle_sfx
 	sfxtogglenoise $3
 	note_type 8
 .branch8:
@@ -3189,7 +3189,7 @@ Sfx_1stPlace:
 	channel 8, .Ch8
 
 .Ch5:
-	togglesfx
+	toggle_sfx
 	tempo 124
 	volume 7, 7
 	duty_cycle 3
@@ -3228,7 +3228,7 @@ Sfx_1stPlace:
 	endchannel
 
 .Ch6:
-	togglesfx
+	toggle_sfx
 	duty_cycle 3
 	vibrato $c, $34
 	note_type 12, 12, 1
@@ -3250,7 +3250,7 @@ Sfx_1stPlace:
 	endchannel
 
 .Ch7:
-	togglesfx
+	toggle_sfx
 	note_type 12, 2, 5
 	octave 2
 	note G_, 1
@@ -3272,7 +3272,7 @@ Sfx_1stPlace:
 	endchannel
 
 .Ch8:
-	togglesfx
+	toggle_sfx
 	sfxtogglenoise $4
 	note_type 6
 	note D_, 4
@@ -3301,7 +3301,7 @@ Sfx_ChooseACard:
 	channel 8, .Ch8
 
 .Ch5:
-	togglesfx
+	toggle_sfx
 	tempo 152
 	volume 7, 7
 	duty_cycle 3
@@ -3345,7 +3345,7 @@ Sfx_ChooseACard:
 	endchannel
 
 .Ch6:
-	togglesfx
+	toggle_sfx
 	duty_cycle 3
 	note_type 6, 11, 4
 	octave 3
@@ -3375,7 +3375,7 @@ Sfx_ChooseACard:
 	endchannel
 
 .Ch7:
-	togglesfx
+	toggle_sfx
 	note_type 6, 2, 5
 	octave 3
 	note C#, 1
@@ -3409,7 +3409,7 @@ Sfx_ChooseACard:
 	endchannel
 
 .Ch8:
-	togglesfx
+	toggle_sfx
 	sfxtogglenoise $4
 	note_type 6
 	note D_, 2
@@ -3442,7 +3442,7 @@ Sfx_GetTm:
 	channel 8, .Ch8
 
 .Ch5:
-	togglesfx
+	toggle_sfx
 	tempo 144
 	volume 7, 7
 	duty_cycle 3
@@ -3466,7 +3466,7 @@ Sfx_GetTm:
 	endchannel
 
 .Ch6:
-	togglesfx
+	toggle_sfx
 	duty_cycle 3
 	vibrato $8, $24
 	note_type 12, 11, 3
@@ -3487,7 +3487,7 @@ Sfx_GetTm:
 	endchannel
 
 .Ch7:
-	togglesfx
+	toggle_sfx
 	note_type 6, 2, 5
 	octave 2
 	note B_, 2
@@ -3516,7 +3516,7 @@ Sfx_GetTm:
 	endchannel
 
 .Ch8:
-	togglesfx
+	toggle_sfx
 	sfxtogglenoise $4
 	note_type 6
 	note D_, 4
@@ -3544,7 +3544,7 @@ Sfx_GetBadge:
 	channel 8, .Ch8
 
 .Ch5:
-	togglesfx
+	toggle_sfx
 	tempo 120
 	volume 7, 7
 	duty_cycle 2
@@ -3585,7 +3585,7 @@ Sfx_GetBadge:
 	endchannel
 
 .Ch6:
-	togglesfx
+	toggle_sfx
 	duty_cycle 3
 	vibrato $8, $24
 	note_type 6, 11, 5
@@ -3632,7 +3632,7 @@ Sfx_GetBadge:
 	endchannel
 
 .Ch7:
-	togglesfx
+	toggle_sfx
 	note_type 6, 2, 5
 	octave 2
 	note G#, 3
@@ -3669,7 +3669,7 @@ Sfx_GetBadge:
 	endchannel
 
 .Ch8:
-	togglesfx
+	toggle_sfx
 	sfxtogglenoise $4
 	note_type 6
 .branch8:
@@ -3703,7 +3703,7 @@ Sfx_QuitSlots:
 	channel 8, .Ch8
 
 .Ch5:
-	togglesfx
+	toggle_sfx
 	tempo 144
 	volume 7, 7
 	duty_cycle 2
@@ -3733,7 +3733,7 @@ Sfx_QuitSlots:
 	endchannel
 
 .Ch6:
-	togglesfx
+	toggle_sfx
 	duty_cycle 2
 	note_type 8, 11, 3
 	note __, 3
@@ -3758,7 +3758,7 @@ Sfx_QuitSlots:
 	endchannel
 
 .Ch7:
-	togglesfx
+	toggle_sfx
 	note_type 8, 2, 5
 	octave 3
 	note C#, 2
@@ -3787,7 +3787,7 @@ Sfx_QuitSlots:
 	endchannel
 
 .Ch8:
-	togglesfx
+	toggle_sfx
 	sfxtogglenoise $3
 	note_type 8
 	note D#, 6
@@ -3813,7 +3813,7 @@ Sfx_Protect:
 	channel 8, .Ch8
 
 .Ch5:
-	togglesfx
+	toggle_sfx
 	note_type 1, 15, 1
 	duty_cycle 0
 .branch5:
@@ -3997,7 +3997,7 @@ Sfx_Thief2:
 	channel 5, .Ch5
 
 .Ch5:
-	togglesfx
+	toggle_sfx
 	note_type 2, 15, 4
 	duty_cycle 0
 	octave 4
@@ -4012,7 +4012,7 @@ Sfx_Thief2:
 	volume_envelope 8, 1
 	note C_, 3
 	note A_, 3
-	togglesfx
+	toggle_sfx
 	endchannel
 
 
@@ -4049,7 +4049,7 @@ Sfx_MindReader:
 	channel 8, .Ch8
 
 .Ch5:
-	togglesfx
+	toggle_sfx
 	duty_cycle 2
 	note_type 2, 15, 1
 	octave 5
@@ -4064,7 +4064,7 @@ Sfx_MindReader:
 	note D_, 3
 	volume_envelope 4, 1
 	note D_, 3
-	togglesfx
+	toggle_sfx
 	endchannel
 
 .Ch8:
@@ -4233,7 +4233,7 @@ Sfx_Spite:
 	channel 5, .Ch5
 
 .Ch5:
-	togglesfx
+	toggle_sfx
 	vibrato $0, $12
 	duty_cycle 3
 	pitch_sweep 15, -5
@@ -4255,7 +4255,7 @@ Sfx_Spite:
 	note F_, 3
 	note G#, 3
 	pitch_sweep 0, 8
-	togglesfx
+	toggle_sfx
 	endchannel
 
 
@@ -4282,18 +4282,18 @@ Sfx_PerishSong:
 	channel 6, .Ch6
 
 .Ch5:
-	togglesfx
+	toggle_sfx
 	duty_cycle 0
 	vibrato $12, $53
 	note_type 8, 10, -7
 	octave 4
 	note A_, 9
 	note G#, 9
-	togglesfx
+	toggle_sfx
 	endchannel
 
 .Ch6:
-	togglesfx
+	toggle_sfx
 	duty_cycle 0
 	vibrato $12, $53
 	note_type 8, 10, -7
@@ -4301,7 +4301,7 @@ Sfx_PerishSong:
 	note C_, 9
 	octave 3
 	note B_, 9
-	togglesfx
+	toggle_sfx
 	endchannel
 
 
@@ -4626,7 +4626,7 @@ Sfx_EggCrack:
 	channel 5, .Ch5
 
 .Ch5:
-	togglesfx
+	toggle_sfx
 	note_type 1, 15, 1
 	duty_cycle 0
 	octave 4
@@ -4644,7 +4644,7 @@ Sfx_Evolved:
 	channel 5, .Ch5
 
 .Ch5:
-	togglesfx
+	toggle_sfx
 	note_type 1, 12, 1
 	octave 4
 	note C_, 2
@@ -4671,7 +4671,7 @@ Sfx_MasterBall:
 	channel 5, .Ch5
 
 .Ch5:
-	togglesfx
+	toggle_sfx
 	duty_cycle 1
 	note_type 2, 14, 1
 	octave 6
@@ -4708,7 +4708,7 @@ Sfx_EggHatch:
 	channel 5, .Ch5
 
 .Ch5:
-	togglesfx
+	toggle_sfx
 	note_type 2, 15, 1
 	duty_cycle 2
 	octave 5
@@ -4820,7 +4820,7 @@ Sfx_DexFanfareLessThan20:
 	channel 8, .Ch8
 
 .Ch5:
-	togglesfx
+	toggle_sfx
 	tempo 124
 	volume 7, 7
 	note_type 8, 11, 1
@@ -4839,7 +4839,7 @@ Sfx_DexFanfareLessThan20:
 	endchannel
 
 .Ch6:
-	togglesfx
+	toggle_sfx
 	note_type 8, 12, 1
 	octave 3
 	note B_, 4
@@ -4856,7 +4856,7 @@ Sfx_DexFanfareLessThan20:
 	endchannel
 
 .Ch7:
-	togglesfx
+	toggle_sfx
 	note_type 8, 2, 5
 	octave 4
 	note D_, 6
@@ -4882,7 +4882,7 @@ Sfx_DexFanfareLessThan20:
 	endchannel
 
 .Ch8:
-	togglesfx
+	toggle_sfx
 	sfxtogglenoise $4
 	note_type 12
 	note C#, 6
@@ -4901,7 +4901,7 @@ Sfx_DexFanfare140169:
 	channel 8, .Ch8
 
 .Ch5:
-	togglesfx
+	toggle_sfx
 	tempo 120
 	volume 7, 7
 	duty_cycle 3
@@ -4928,7 +4928,7 @@ Sfx_DexFanfare140169:
 	endchannel
 
 .Ch6:
-	togglesfx
+	toggle_sfx
 	duty_cycle 2
 	vibrato $12, $34
 	note_type 6, 12, 1
@@ -4952,7 +4952,7 @@ Sfx_DexFanfare140169:
 	endchannel
 
 .Ch7:
-	togglesfx
+	toggle_sfx
 	note_type 12, 2, 5
 	note __, 4
 	octave 2
@@ -4984,7 +4984,7 @@ Sfx_DexFanfare140169:
 	endchannel
 
 .Ch8:
-	togglesfx
+	toggle_sfx
 	sfxtogglenoise $4
 	note_type 12
 	note C_, 4
@@ -5009,7 +5009,7 @@ Sfx_DexFanfare170199:
 	channel 8, .Ch8
 
 .Ch5:
-	togglesfx
+	toggle_sfx
 	tempo 112
 	volume 7, 7
 	vibrato $12, $34
@@ -5036,7 +5036,7 @@ Sfx_DexFanfare170199:
 	endchannel
 
 .Ch6:
-	togglesfx
+	toggle_sfx
 	vibrato $12, $34
 	duty_cycle 3
 	note_type 8, 12, 4
@@ -5062,7 +5062,7 @@ Sfx_DexFanfare170199:
 	endchannel
 
 .Ch7:
-	togglesfx
+	toggle_sfx
 	note_type 8, 2, 5
 	octave 3
 	note D#, 1
@@ -5088,7 +5088,7 @@ Sfx_DexFanfare170199:
 	endchannel
 
 .Ch8:
-	togglesfx
+	toggle_sfx
 	sfxtogglenoise $4
 	note_type 8
 	note D_, 2
@@ -5120,7 +5120,7 @@ Sfx_DexFanfare200229:
 	channel 8, .Ch8
 
 .Ch5:
-	togglesfx
+	toggle_sfx
 	tempo 124
 	volume 7, 7
 	vibrato $12, $34
@@ -5145,7 +5145,7 @@ Sfx_DexFanfare200229:
 	endchannel
 
 .Ch6:
-	togglesfx
+	toggle_sfx
 	vibrato $12, $34
 	duty_cycle 3
 	note_type 8, 11, 2
@@ -5166,7 +5166,7 @@ Sfx_DexFanfare200229:
 	endchannel
 
 .Ch7:
-	togglesfx
+	toggle_sfx
 	note_type 8, 2, 5
 	octave 3
 	note C_, 1
@@ -5208,7 +5208,7 @@ Sfx_DexFanfare200229:
 	endchannel
 
 .Ch8:
-	togglesfx
+	toggle_sfx
 	sfxtogglenoise $4
 	note_type 8
 	note C#, 1
@@ -5245,7 +5245,7 @@ Sfx_DexFanfare230Plus:
 	channel 8, .Ch8
 
 .Ch5:
-	togglesfx
+	toggle_sfx
 	tempo 112
 	volume 7, 7
 	vibrato $12, $34
@@ -5291,7 +5291,7 @@ Sfx_DexFanfare230Plus:
 	endchannel
 
 .Ch6:
-	togglesfx
+	toggle_sfx
 	vibrato $12, $34
 	duty_cycle 3
 	note_type 8, 11, 5
@@ -5324,7 +5324,7 @@ Sfx_DexFanfare230Plus:
 	endchannel
 
 .Ch7:
-	togglesfx
+	toggle_sfx
 	note_type 8, 2, 5
 	octave 3
 	note G_, 6
@@ -5371,7 +5371,7 @@ Sfx_DexFanfare230Plus:
 	endchannel
 
 .Ch8:
-	togglesfx
+	toggle_sfx
 	sfxtogglenoise $4
 	note_type 8
 	note D_, 2
@@ -5883,7 +5883,7 @@ Sfx_GameFreakPresents:
 	channel 5, .Ch5
 
 .Ch5:
-	togglesfx
+	toggle_sfx
 	duty_cycle 2
 	note_type 2, 11, 1
 	pitch_sweep 15, -7
@@ -5912,7 +5912,7 @@ Sfx_Tingle:
 	channel 5, .Ch5
 
 .Ch5:
-	togglesfx
+	toggle_sfx
 	duty_cycle 1
 	transpose 0, 11
 	note_type 1, 11, 1
@@ -5955,7 +5955,7 @@ Sfx_4NoteDitty:
 	channel 7, .Ch7
 
 .Ch5:
-	togglesfx
+	toggle_sfx
 	duty_cycle 2
 	note_type 2, 14, 8
 	transpose 0, 2
@@ -5980,14 +5980,14 @@ Sfx_4NoteDitty:
 	endchannel
 
 .Ch6:
-	togglesfx
+	toggle_sfx
 	note_type 2, 11, 8
 	note __, 9
 	note __, 16
 	endchannel
 
 .Ch7:
-	togglesfx
+	toggle_sfx
 	note_type 2, 11, 8
 	note __, 9
 	note __, 16
@@ -6001,7 +6001,7 @@ Sfx_Twinkle:
 	channel 5, .Ch5
 
 .Ch5:
-	togglesfx
+	toggle_sfx
 	duty_cycle 0
 	transpose 0, 2
 	note_type 2, 14, 1

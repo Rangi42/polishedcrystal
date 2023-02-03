@@ -104,9 +104,9 @@ MACRO duty_cycle_pattern
 	db (\1 << 6) | (\2 << 4) | (\3 << 2) | (\4 << 0) ; duty cycle pattern
 ENDM
 
-	const togglesfx_cmd
-MACRO togglesfx
-	db togglesfx_cmd
+	const toggle_sfx_cmd ; $df
+MACRO toggle_sfx
+	db toggle_sfx_cmd
 ENDM
 
 	const slidepitchto_cmd
