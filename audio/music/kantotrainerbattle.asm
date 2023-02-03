@@ -7,7 +7,7 @@ Music_KantoTrainerBattle:
 Music_KantoTrainerBattle_Ch1:
 	tempo 114
 	volume 7, 7
-	pitchoffset 1, B_
+	transpose 1, 11
 	note_type 12, 11, 3
 	vibrato $12, $24
 	dutycycle $1
@@ -464,7 +464,7 @@ Music_KantoTrainerBattle_branch_eca88:
 	jumpchannel Music_KantoTrainerBattle_branch_eca88
 
 Music_KantoTrainerBattle_Ch2:
-	pitchoffset 1, B_
+	transpose 1, 11
 	vibrato $6, $36
 	dutycycle $1
 	note_type 12, 13, 1
@@ -916,7 +916,7 @@ Music_KantoTrainerBattle_branch_ecc41:
 	jumpchannel Music_KantoTrainerBattle_branch_ecc41
 
 Music_KantoTrainerBattle_Ch3:
-	pitchoffset 1, B_
+	transpose 1, 11
 	vibrato $12, $23
 	note_type 12, 1, 5
 	octave 2

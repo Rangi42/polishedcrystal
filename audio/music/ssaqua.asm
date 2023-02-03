@@ -275,9 +275,9 @@ Music_SSAqua_branch_eaed5:
 	octave 4
 	note C#, 1
 	note E_, 1
-	pitchoffset 0, CC
+	transpose 0, 12
 	callchannel Music_SSAqua_branch_eafe0
-	pitchoffset 0, C_
+	transpose 0, 0
 	octave 3
 	note B_, 1
 	note __, 1

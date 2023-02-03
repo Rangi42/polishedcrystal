@@ -8,7 +8,7 @@ Music_LookRocket:
 Music_LookRocket_Ch1:
 	tempo 123
 	volume 7, 7
-	pitchoffset 0, D_
+	transpose 0, 2
 	stereopanning $f
 	dutycycle $3
 	vibrato $5, $64
@@ -90,7 +90,7 @@ Music_RocketTheme_branch_f750c:
 	endchannel
 
 Music_LookRocket_Ch2:
-	pitchoffset 0, D_
+	transpose 0, 2
 	vibrato $4, $64
 	dutycycle $3
 	note_type 12, 11, 7
@@ -206,7 +206,7 @@ Music_RocketTheme_branch_f758a:
 	endchannel
 
 Music_LookRocket_Ch3:
-	pitchoffset 0, D_
+	transpose 0, 2
 	vibrato $4, $22
 	note_type 12, 1, 4
 	stereopanning $f0

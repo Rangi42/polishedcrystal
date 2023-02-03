@@ -419,7 +419,7 @@ Music_Surf_branch_f5333:
 	note B_, 16
 	octave 4
 	note C#, 8
-	pitchoffset 0, CC
+	transpose 0, 12
 	dutycycle $3
 	callchannel Music_Surf_branch_f53d6
 	intensity $b8
@@ -430,7 +430,7 @@ Music_Surf_branch_f5333:
 	intensity $b8
 	dutycycle $1
 	callchannel Music_Surf_branch_f5404
-	pitchoffset 0, C_
+	transpose 0, 0
 	note_type 12, 11, 8
 	octave 4
 	note B_, 12

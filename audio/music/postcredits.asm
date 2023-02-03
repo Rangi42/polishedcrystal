@@ -6,7 +6,7 @@ Music_PostCredits:
 Music_PostCredits_Ch1:
 	tempo 271
 	volume 7, 7
-	pitchoffset 0, D#
+	transpose 0, 3
 	dutycycle $2
 	note_type 12, 9, 3
 	note __, 8
@@ -130,7 +130,7 @@ Music_PostCredits_branch_cfdb2:
 	jumpchannel Music_PostCredits_branch_cfdb2
 
 Music_PostCredits_Ch2:
-	pitchoffset 0, D#
+	transpose 0, 3
 	dutycycle $2
 	note_type 12, 10, 3
 	octave 5

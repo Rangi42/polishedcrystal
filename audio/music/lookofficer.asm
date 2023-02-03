@@ -72,9 +72,9 @@ Music_LookOfficer_branch_ed882:
 	note E_, 2
 	note G#, 2
 	loopchannel 2, Music_LookOfficer_branch_ed882
-	pitchoffset 0, C#
+	transpose 0, 1
 	callchannel Music_LookOfficer_branch_ed89e
-	pitchoffset 0, C_
+	transpose 0, 0
 	callchannel Music_LookOfficer_branch_ed89e
 	jumpchannel Music_LookOfficer_branch_ed882
 

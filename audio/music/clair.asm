@@ -204,9 +204,9 @@ Music_Clair_branch_1fb77:
 	octave 3
 	note A#, 16
 	note __, 4
-	pitchoffset 0, CC
+	transpose 0, 12
 	callchannel Music_Clair_branch_1fba6
-	pitchoffset 0, C_
+	transpose 0, 0
 	octave 5
 	note F#, 2
 	note __, 4
@@ -249,7 +249,7 @@ Music_Clair_branch_1fba6:
 
 Music_Clair_Ch3:
 	note_type 12, 1, 4
-	pitchoffset 0, CC
+	transpose 0, 12
 	octave 3
 	note C#, 2
 	note __, 4

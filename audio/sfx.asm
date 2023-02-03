@@ -3554,9 +3554,9 @@ Sfx_GetBadge:
 	note F_, 3
 	callchannel .branch5
 	note A#, 3
-	pitchoffset 0, D_
+	transpose 0, 2
 	callchannel .branch5
-	pitchoffset 0, C_
+	transpose 0, 0
 	intensity $a7
 	note A_, 16
 	note __, 6
@@ -5887,7 +5887,7 @@ Sfx_GameFreakPresents:
 	dutycycle $2
 	note_type 2, 11, 1
 	soundinput $ff
-	pitchoffset 1, A#
+	transpose 1, 10
 	octave 5
 	note C_, 2
 	note E_, 2
@@ -5914,7 +5914,7 @@ Sfx_Tingle:
 .Ch5:
 	togglesfx
 	dutycycle $1
-	pitchoffset 0, B_
+	transpose 0, 11
 	note_type 1, 11, 1
 .branch5:
 	octave 5
@@ -5958,7 +5958,7 @@ Sfx_4NoteDitty:
 	togglesfx
 	dutycycle $2
 	note_type 2, 14, 8
-	pitchoffset 0, D_
+	transpose 0, 2
 	octave 4
 	note C_, 2
 	intensity $48
@@ -6003,7 +6003,7 @@ Sfx_Twinkle:
 .Ch5:
 	togglesfx
 	dutycycle $0
-	pitchoffset 0, D_
+	transpose 0, 2
 	note_type 2, 14, 1
 	octave 3
 	note G_, 2

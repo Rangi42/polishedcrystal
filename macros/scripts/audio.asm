@@ -60,10 +60,10 @@ MACRO note_type
 	endc
 ENDM
 
-	const pitchoffset_cmd
-MACRO pitchoffset
-	db pitchoffset_cmd
-	dn \1, \2 - 1 ; octave, key
+	const transpose_cmd ; $d9
+MACRO transpose
+	db transpose_cmd
+	dn \1, \2 ; num octaves, num pitches
 ENDM
 
 	const tempo_cmd
