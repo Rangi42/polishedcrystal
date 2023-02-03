@@ -8,7 +8,7 @@ Music_Route36:
 Music_Route36_Ch1:
 	tempo 144
 	volume 7, 7
-	dutycycle $3
+	duty_cycle 3
 	tone $0001
 	vibrato $10, $15
 	stereopanning $f
@@ -165,7 +165,7 @@ Music_Route36_branch_e9517:
 	jumpchannel Music_Route36_branch_e9517
 
 Music_Route36_Ch2:
-	dutycycle $3
+	duty_cycle 3
 	vibrato $10, $36
 	stereopanning $f0
 	note_type 12, 12, 2

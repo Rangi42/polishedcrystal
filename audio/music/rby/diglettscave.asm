@@ -11,7 +11,7 @@ Music_DiglettsCaveRBY:
 Music_DiglettsCaveRBY_Ch1:
 	tempo 144
 	volume 7, 7
-	dutycycle 3
+	duty_cycle 3
 	vibrato 10, 20
 
 Music_DiglettsCaveRBY_branch_7e892:
@@ -82,7 +82,7 @@ Music_DiglettsCaveRBY_Ch2:
 	vibrato 11, 21
 
 Music_DiglettsCaveRBY_branch_7e8db:
-	dutycycle 3
+	duty_cycle 3
 	note_type 12, 12, 2
 	octave 3
 	note E_, 4
@@ -161,7 +161,7 @@ Music_DiglettsCaveRBY_branch_7e8db:
 	note __, 16
 	note __, 16
 	note_type 12, 12, 7
-	dutycycle 1
+	duty_cycle 1
 	octave 4
 	note E_, 16
 	note D_, 16

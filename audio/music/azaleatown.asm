@@ -8,7 +8,7 @@ Music_AzaleaTown:
 Music_AzaleaTown_Ch1:
 	tempo 160
 	volume 7, 7
-	dutycycle $2
+	duty_cycle 2
 	stereopanning $f
 	note_type 12, 10, 1
 	note __, 2
@@ -231,7 +231,7 @@ Music_AzaleaTown_branch_f5912:
 
 Music_AzaleaTown_Ch2:
 	vibrato $12, $23
-	dutycycle $2
+	duty_cycle 2
 	stereopanning $f0
 	note_type 12, 6, 2
 	note __, 1
@@ -262,7 +262,7 @@ Music_AzaleaTown_Ch2:
 	note C#, 2
 	note_type 6, 11, 4
 	note F_, 7
-	dutycycle $1
+	duty_cycle 1
 	octave 5
 	note C_, 1
 Music_AzaleaTown_branch_f5952:
@@ -274,7 +274,7 @@ Music_AzaleaTown_branch_f5952:
 	note_type 6, 11, 4
 	note D#, 11
 	note __, 8
-	dutycycle $1
+	duty_cycle 1
 	octave 5
 	note C_, 1
 	callchannel Music_AzaleaTown_branch_f59c7
@@ -290,7 +290,7 @@ Music_AzaleaTown_branch_f5952:
 	note G#, 12
 	note F#, 4
 	note F_, 4
-	dutycycle $0
+	duty_cycle 0
 	note D_, 1
 	note D#, 3
 	note C#, 4
@@ -333,7 +333,7 @@ Music_AzaleaTown_branch_f5952:
 	note D#, 4
 	note __, 4
 	note C#, 4
-	dutycycle $2
+	duty_cycle 2
 	note F_, 4
 	note D#, 4
 	note C#, 4
@@ -358,7 +358,7 @@ Music_AzaleaTown_branch_f5952:
 	intensity $1f
 	note C_, 14
 	note_type 6, 11, 4
-	dutycycle $1
+	duty_cycle 1
 	note G#, 2
 	octave 5
 	note C_, 2
@@ -392,7 +392,7 @@ Music_AzaleaTown_branch_f59c7:
 	note C#, 16
 	note __, 4
 	intensity $b4
-	dutycycle $2
+	duty_cycle 2
 	octave 3
 	note A#, 2
 	octave 4

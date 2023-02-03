@@ -8,7 +8,7 @@ Music_RocketHideout:
 Music_RocketHideout_Ch1:
 	tempo 144
 	volume 7, 7
-	dutycycle $3
+	duty_cycle 3
 	tone $0004
 	vibrato $10, $44
 	note_type 12, 11, 3
@@ -120,7 +120,7 @@ Music_RocketHideout_branch_eebfe:
 	jumpchannel Music_RocketHideout_branch_eeb93
 
 Music_RocketHideout_Ch2:
-	dutycycle $3
+	duty_cycle 3
 	tone $0002
 	vibrato $0, $f0
 	note_type 12, 12, 4

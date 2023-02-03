@@ -190,7 +190,7 @@ Music_StarkMountainDPPt_Ch1_loop:
 	note D#, 1
 	note D_, 1
 	note D#, 1
-	dutycycle 2
+	duty_cycle 2
 	octave 4
 	note_type 8, 10, 1
 	note F#, 1
@@ -239,7 +239,7 @@ Music_StarkMountainDPPt_Ch1_loop:
 	note_type 1, 10, 1
 	note __, 4
 	note_type 7, 10, 1
-	dutycycle 3
+	duty_cycle 3
 	octave 1
 	note_type 12, 10, 1
 	note D_, 1
@@ -310,7 +310,7 @@ Music_StarkMountainDPPt_Ch1_loop:
 	note __, 16
 	note __, 16
 	note __, 4
-	dutycycle 0
+	duty_cycle 0
 	intensity $A1
 	octave 1
 	note G_, 1
@@ -354,7 +354,7 @@ Music_StarkMountainDPPt_Ch1_loop:
 Music_StarkMountainDPPt_Ch2:
 Music_StarkMountainDPPt_Ch2_loop:
 	note_type 12, 11, 5
-	dutycycle 1
+	duty_cycle 1
 	octave 1
 	note __, 16
 	note G_, 2
@@ -578,7 +578,7 @@ Music_StarkMountainDPPt_Ch2_loop:
 	note F_, 1
 	note F#, 1
 	note __, 3
-	dutycycle 2
+	duty_cycle 2
 	note G_, 1
 	note __, 2
 	note G_, 1
@@ -682,7 +682,7 @@ Music_StarkMountainDPPt_Ch2_loop:
 	note __, 16
 	note __, 16
 	note __, 12
-	dutycycle 1
+	duty_cycle 1
 	note F#, 4
 	note __, 2
 	octave 2

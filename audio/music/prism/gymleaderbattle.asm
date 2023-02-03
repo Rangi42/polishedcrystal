@@ -12,7 +12,7 @@ Music_GymLeaderBattlePrism_Ch1:
 	tempo 101
 	volume 7, 7
 	note_type 12, 11, 2
-	dutycycle $3
+	duty_cycle 3
 	tone $0002
 	vibrato $12, $15
 	octave 2
@@ -210,7 +210,7 @@ Music_GymLeaderBattlePrism_Loop1:
 	note F_, 16
 	note E_, 14
 	intensity $b2
-	dutycycle $2
+	duty_cycle 2
 	octave 3
 	note A_, 1
 	octave 4
@@ -284,14 +284,14 @@ Music_GymLeaderBattlePrism_Loop1:
 	note F_, 16
 	note E_, 12
 	intensity $b2
-	dutycycle $3
+	duty_cycle 3
 	note F_, 2
 	note E_, 2
 	jumpchannel Music_GymLeaderBattlePrism_Loop1
 
 Music_GymLeaderBattlePrism_Ch2:
 	note_type 12, 12, 2
-	dutycycle $3
+	duty_cycle 3
 	vibrato $8, $36
 	tone $0001
 	octave 5

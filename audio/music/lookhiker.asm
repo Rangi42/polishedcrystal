@@ -10,7 +10,7 @@ Music_LookHiker_Ch1:
 	volume 7, 7
 	tone $0001
 	vibrato $12, $24
-	dutycycle $2
+	duty_cycle 2
 	stereopanning $f
 	note_type 12, 6, 8
 	octave 3
@@ -33,7 +33,7 @@ Music_LookHiker_branch_f7433:
 	jumpchannel Music_LookHiker_branch_f7433
 
 Music_LookHiker_Ch2:
-	dutycycle $0
+	duty_cycle 0
 	note_type 12, 10, 1
 	note __, 4
 	octave 1

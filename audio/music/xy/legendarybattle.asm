@@ -185,7 +185,7 @@ Music_LegendaryBattleXY_Ch1_loop_main:
 	note C_, 2
 	intensity $a7
 	note C_, 6
-	dutycycle 1
+	duty_cycle 1
 	intensity $a0
 	note C#, 4
 	intensity $a7
@@ -231,7 +231,7 @@ Music_LegendaryBattleXY_Ch1_loop_main:
 	note E_, 4
 	intensity $a7
 	note E_, 4
-	dutycycle 2
+	duty_cycle 2
 	octave 2
 	note A#, 1
 	octave 3
@@ -281,7 +281,7 @@ Music_LegendaryBattleXY_Ch1_loop_main:
 	note C_, 1
 	octave 2
 	note B_, 1
-	dutycycle 0
+	duty_cycle 0
 	octave 3
 Music_LegendaryBattleXY_Ch1_loop_1:
 	intensity $80
@@ -317,7 +317,7 @@ Music_LegendaryBattleXY_Ch1_loop_1:
 	jumpchannel Music_LegendaryBattleXY_Ch1_loop_main
 
 Music_LegendaryBattleXY_Ch2:
-	dutycycle $3
+	duty_cycle 3
 	vibrato $12, $15
 	tone $0001
 	note_type 12, 8, 4
@@ -370,7 +370,7 @@ Music_LegendaryBattleXY_Ch2:
 	intensity $a7
 	note F_, 6
 Music_LegendaryBattleXY_Ch2_loop_main:
-	dutycycle 2
+	duty_cycle 2
 	octave 3
 	intensity $80
 	note F_, 12
@@ -447,7 +447,7 @@ Music_LegendaryBattleXY_Ch2_loop_main:
 	note C_, 2
 	intensity $84
 	note C_, 2
-	dutycycle 3 ;;;;;;;;;;;;;;;;;;;;
+	duty_cycle 3
 	octave 2
 	note F_, 2
 	octave 3
@@ -520,7 +520,7 @@ Music_LegendaryBattleXY_Ch2_loop_main:
 	note F_, 2
 	intensity $a7
 	note F_, 6
-	dutycycle 0
+	duty_cycle 0
 	intensity $a0
 	note F#, 4
 	intensity $a7
@@ -558,7 +558,7 @@ Music_LegendaryBattleXY_Ch2_loop_main:
 	note A_, 4
 	intensity $a7
 	note A_, 4
-	dutycycle 3
+	duty_cycle 3
 	octave 3
 	note A#, 1
 	octave 4
@@ -608,7 +608,7 @@ Music_LegendaryBattleXY_Ch2_loop_main:
 	note C_, 1
 	octave 3
 	note B_, 1
-	dutycycle 2
+	duty_cycle 2
 	octave 2
 	intensity $80
 	note F_, 4

@@ -16,7 +16,7 @@ Music_LugiasSong2000_NoIntro:
 	channel 3, Music_LugiasSong2000_Ch3_loop
 
 Music_LugiasSong2000_Ch1:
-	dutycycle $3
+	duty_cycle 3
 	vibrato $12, $15
 	tone $0001
 	tempo 136
@@ -49,7 +49,7 @@ Music_LugiasSong2000_Ch1_loop_main:
 	endchannel
 
 Music_LugiasSong2000_Ch2:
-	dutycycle 0
+	duty_cycle 0
 	vibrato $12, $15
 	tone $0001
 	note_type 12, 1, 0
@@ -97,7 +97,7 @@ Music_LugiasSong2000_Ch2_loop_1:
 	intensity $67
 	note E_, 16
 Music_LugiasSong2000_Ch2_loop_main:
-	dutycycle 0
+	duty_cycle 0
 	note_type 12, 7, 4
 	octave 2
 	note E_, 2

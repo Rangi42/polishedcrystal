@@ -8,7 +8,7 @@ Music_Route37:
 Music_Route37_Ch1:
 	tempo 144
 	volume 7, 7
-	dutycycle $3
+	duty_cycle 3
 	tone $0002
 	vibrato $10, $22
 	note_type 12, 11, 3
@@ -129,7 +129,7 @@ Music_Route37_branch_ee9e9:
 	endchannel
 
 Music_Route37_Ch2:
-	dutycycle $3
+	duty_cycle 3
 	vibrato $1c, $12
 	note_type 12, 12, 2
 	octave 2

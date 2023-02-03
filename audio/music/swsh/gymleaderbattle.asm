@@ -12,7 +12,7 @@ Music_GymLeaderBattleSwSh:
 Music_GymLeaderBattleSwSh_Ch1:
 	tempo $89
 	volume 7, 7
-	dutycycle $2
+	duty_cycle 2
 	note_type 12, 11, 2
 	stereopanning $ff
 	jumpif COND_FINAL_MON, Music_GymLeaderBattleSwSh_Ch1_EnterLastPokemonPhase
@@ -23,7 +23,7 @@ Music_GymLeaderBattleSwSh_Ch1:
 	note __, 16
 	callchannel Music_GymLeaderBattleSwSh_Ch1_ditty2
 	note __, 1
-	dutycycle $2
+	duty_cycle 2
 	intensity $b2
 	callchannel Music_GymLeaderBattleSwSh_Ch1_ditty2
 	note __, 1
@@ -35,7 +35,7 @@ Music_GymLeaderBattleSwSh_Ch1_NeutralPhase_Loop:
 Music_GymLeaderBattleSwSh_Ch1_NeutralPhase_Loop_1:
 	stereopanning $ff
 	octave 3
-	dutycycle $2
+	duty_cycle 2
 	intensity $b2
 	note __, 2
 	callchannel Music_GymLeaderBattleSwSh_Ch1_ditty3
@@ -44,7 +44,7 @@ Music_GymLeaderBattleSwSh_Ch1_NeutralPhase_Loop_1:
 Music_GymLeaderBattleSwSh_Ch1_NeutralPhase_Loop_2:
 	stereopanning $ff
 	octave 3
-	dutycycle $2
+	duty_cycle 2
 	intensity $b2
 	note __, 2
 	callchannel Music_GymLeaderBattleSwSh_Ch1_ditty3
@@ -53,7 +53,7 @@ Music_GymLeaderBattleSwSh_Ch1_NeutralPhase_Loop_2:
 Music_GymLeaderBattleSwSh_Ch1_NeutralPhase_Loop_3:
 	stereopanning $ff
 	octave 3
-	dutycycle $2
+	duty_cycle 2
 	intensity $b2
 	note __, 2
 	callchannel Music_GymLeaderBattleSwSh_Ch2_ditty4
@@ -62,7 +62,7 @@ Music_GymLeaderBattleSwSh_Ch1_NeutralPhase_Loop_3:
 Music_GymLeaderBattleSwSh_Ch1_NeutralPhase_Loop_4:
 	stereopanning $ff
 	octave 3
-	dutycycle $2
+	duty_cycle 2
 	intensity $b2
 	note __, 2
 	callchannel Music_GymLeaderBattleSwSh_Ch2_ditty3
@@ -73,7 +73,7 @@ Music_GymLeaderBattleSwSh_Ch1_AdvantagePhase_Loop:
 	jumpif COND_DEFAULT, Music_GymLeaderBattleSwSh_Ch1_NeutralPhase_Loop_1
 	jumpif COND_DISADVANTAGE, Music_GymLeaderBattleSwSh_Ch1_DisadvantagePhase_Loop_1
 Music_GymLeaderBattleSwSh_Ch1_AdvantagePhase_Loop_1:
-	dutycycle $1
+	duty_cycle 1
 	intensity $c7
 	octave 3
 	note __, 2
@@ -82,7 +82,7 @@ Music_GymLeaderBattleSwSh_Ch1_AdvantagePhase_Loop_1:
 	jumpif COND_DEFAULT, Music_GymLeaderBattleSwSh_Ch1_NeutralPhase_Loop_2
 	jumpif COND_DISADVANTAGE, Music_GymLeaderBattleSwSh_Ch1_DisadvantagePhase_Loop_2
 Music_GymLeaderBattleSwSh_Ch1_AdvantagePhase_Loop_2:
-	dutycycle $1
+	duty_cycle 1
 	intensity $c7
 	octave 3
 	note __, 2
@@ -91,13 +91,13 @@ Music_GymLeaderBattleSwSh_Ch1_AdvantagePhase_Loop_2:
 	jumpif COND_DEFAULT, Music_GymLeaderBattleSwSh_Ch1_NeutralPhase_Loop_3
 	jumpif COND_DISADVANTAGE, Music_GymLeaderBattleSwSh_Ch1_DisadvantagePhase_Loop_3
 Music_GymLeaderBattleSwSh_Ch1_AdvantagePhase_Loop_3:
-	dutycycle $1
+	duty_cycle 1
 	intensity $c7
 	callchannel Music_GymLeaderBattleSwSh_Ch1_ditty7
 	jumpif COND_DEFAULT, Music_GymLeaderBattleSwSh_Ch1_NeutralPhase_Loop_4
 	jumpif COND_DISADVANTAGE, Music_GymLeaderBattleSwSh_Ch1_DisadvantagePhase_Loop_4
 Music_GymLeaderBattleSwSh_Ch1_AdvantagePhase_Loop_4:
-	dutycycle $1
+	duty_cycle 1
 	intensity $c7
 	callchannel Music_GymLeaderBattleSwSh_Ch1_ditty7
 	jumpchannel Music_GymLeaderBattleSwSh_Ch1_AdvantagePhase_Loop
@@ -108,7 +108,7 @@ Music_GymLeaderBattleSwSh_Ch1_DisadvantagePhase_Loop:
 	jumpif COND_ADVANTAGE, Music_GymLeaderBattleSwSh_Ch1_AdvantagePhase_Loop_1
 Music_GymLeaderBattleSwSh_Ch1_DisadvantagePhase_Loop_1:
 	stereopanning $ff
-	dutycycle $2
+	duty_cycle 2
 	intensity $72
 	octave 3
 	note __, 2
@@ -120,7 +120,7 @@ Music_GymLeaderBattleSwSh_Ch1_DisadvantagePhase_Loop_1:
 	jumpif COND_ADVANTAGE, Music_GymLeaderBattleSwSh_Ch1_AdvantagePhase_Loop_2
 Music_GymLeaderBattleSwSh_Ch1_DisadvantagePhase_Loop_2:
 	stereopanning $ff
-	dutycycle $2
+	duty_cycle 2
 	intensity $72
 	octave 3
 	note __, 2
@@ -130,7 +130,7 @@ Music_GymLeaderBattleSwSh_Ch1_DisadvantagePhase_Loop_2:
 	jumpif COND_ADVANTAGE, Music_GymLeaderBattleSwSh_Ch1_AdvantagePhase_Loop_3
 Music_GymLeaderBattleSwSh_Ch1_DisadvantagePhase_Loop_3:
 	stereopanning $ff
-	dutycycle $2
+	duty_cycle 2
 	intensity $72
 	octave 3
 	note __, 2
@@ -142,7 +142,7 @@ Music_GymLeaderBattleSwSh_Ch1_DisadvantagePhase_Loop_3:
 	jumpif COND_ADVANTAGE, Music_GymLeaderBattleSwSh_Ch1_AdvantagePhase_Loop_4
 Music_GymLeaderBattleSwSh_Ch1_DisadvantagePhase_Loop_4:
 	stereopanning $ff
-	dutycycle $2
+	duty_cycle 2
 	intensity $72
 	octave 3
 	note __, 2
@@ -151,7 +151,7 @@ Music_GymLeaderBattleSwSh_Ch1_DisadvantagePhase_Loop_4:
 	jumpchannel Music_GymLeaderBattleSwSh_Ch1_DisadvantagePhase_Loop
 
 Music_GymLeaderBattleSwSh_Ch2:
-	dutycycle $2
+	duty_cycle 2
 	note_type 12, 11, 2
 	stereopanning $ff
 	jumpif COND_FINAL_MON, Music_GymLeaderBattleSwSh_Ch2_EnterLastPokemonPhase
@@ -159,7 +159,7 @@ Music_GymLeaderBattleSwSh_Ch2:
 	callchannel Music_GymLeaderBattleSwSh_Ch2_ditty1
 	callchannel Music_GymLeaderBattleSwSh_Ch2_ditty1
 	note __, 16
-	dutycycle $1
+	duty_cycle 1
 	intensity $c7
 	octave 3
 	callchannel Music_GymLeaderBattleSwSh_Ch2_ditty2
@@ -171,7 +171,7 @@ Music_GymLeaderBattleSwSh_Ch2_NeutralPhase_Loop:
 	jumpif COND_DISADVANTAGE, Music_GymLeaderBattleSwSh_Ch2_DisadvantagePhase_Loop_1
 Music_GymLeaderBattleSwSh_Ch2_NeutralPhase_Loop_1:
 	stereopanning $ff
-	dutycycle $2
+	duty_cycle 2
 	intensity $b2
 	octave 3
 	note __, 2
@@ -180,7 +180,7 @@ Music_GymLeaderBattleSwSh_Ch2_NeutralPhase_Loop_1:
 	jumpif COND_DISADVANTAGE, Music_GymLeaderBattleSwSh_Ch2_DisadvantagePhase_Loop_2
 Music_GymLeaderBattleSwSh_Ch2_NeutralPhase_Loop_2:
 	stereopanning $ff
-	dutycycle $2
+	duty_cycle 2
 	intensity $b2
 	octave 3
 	note __, 2
@@ -189,7 +189,7 @@ Music_GymLeaderBattleSwSh_Ch2_NeutralPhase_Loop_2:
 	jumpif COND_DISADVANTAGE, Music_GymLeaderBattleSwSh_Ch2_DisadvantagePhase_Loop_3
 Music_GymLeaderBattleSwSh_Ch2_NeutralPhase_Loop_3:
 	stereopanning $f0
-	dutycycle $0
+	duty_cycle 0
 	intensity $c7
 	vibrato $9, $12
 	octave 4
@@ -199,7 +199,7 @@ Music_GymLeaderBattleSwSh_Ch2_NeutralPhase_Loop_3:
 	jumpif COND_DISADVANTAGE, Music_GymLeaderBattleSwSh_Ch2_DisadvantagePhase_Loop_4
 Music_GymLeaderBattleSwSh_Ch2_NeutralPhase_Loop_4:
 	stereopanning $f0
-	dutycycle $0
+	duty_cycle 0
 	intensity $c7
 	vibrato $9, $12
 	octave 4
@@ -213,7 +213,7 @@ Music_GymLeaderBattleSwSh_Ch2_AdvantagePhase_Loop:
 	jumpif COND_DISADVANTAGE, Music_GymLeaderBattleSwSh_Ch2_DisadvantagePhase_Loop_1
 Music_GymLeaderBattleSwSh_Ch2_AdvantagePhase_Loop_1:
 	note __, 2
-	dutycycle $1
+	duty_cycle 1
 	intensity $c7
 	octave 3
 	callchannel Music_GymLeaderBattleSwSh_Ch2_ditty7
@@ -222,7 +222,7 @@ Music_GymLeaderBattleSwSh_Ch2_AdvantagePhase_Loop_1:
 	jumpif COND_DISADVANTAGE, Music_GymLeaderBattleSwSh_Ch2_DisadvantagePhase_Loop_2
 Music_GymLeaderBattleSwSh_Ch2_AdvantagePhase_Loop_2:
 	note __, 2
-	dutycycle $1
+	duty_cycle 1
 	intensity $c7
 	octave 3
 	callchannel Music_GymLeaderBattleSwSh_Ch2_ditty7
@@ -230,13 +230,13 @@ Music_GymLeaderBattleSwSh_Ch2_AdvantagePhase_Loop_2:
 	jumpif COND_DEFAULT, Music_GymLeaderBattleSwSh_Ch2_NeutralPhase_Loop_3
 	jumpif COND_DISADVANTAGE, Music_GymLeaderBattleSwSh_Ch2_DisadvantagePhase_Loop_3
 Music_GymLeaderBattleSwSh_Ch2_AdvantagePhase_Loop_3:
-	dutycycle $2
+	duty_cycle 2
 	intensity $b2
 	callchannel Music_GymLeaderBattleSwSh_Ch2_ditty8
 	jumpif COND_DEFAULT, Music_GymLeaderBattleSwSh_Ch2_NeutralPhase_Loop_4
 	jumpif COND_DISADVANTAGE, Music_GymLeaderBattleSwSh_Ch2_DisadvantagePhase_Loop_4
 Music_GymLeaderBattleSwSh_Ch2_AdvantagePhase_Loop_4:
-	dutycycle $2
+	duty_cycle 2
 	intensity $b2
 	callchannel Music_GymLeaderBattleSwSh_Ch2_ditty8
 	jumpchannel Music_GymLeaderBattleSwSh_Ch2_AdvantagePhase_Loop
@@ -247,7 +247,7 @@ Music_GymLeaderBattleSwSh_Ch2_DisadvantagePhase_Loop:
 	jumpif COND_ADVANTAGE, Music_GymLeaderBattleSwSh_Ch2_AdvantagePhase_Loop_1
 Music_GymLeaderBattleSwSh_Ch2_DisadvantagePhase_Loop_1:
 	stereopanning $f0
-	dutycycle $2
+	duty_cycle 2
 	intensity $72
 	octave 3
 	note __, 2
@@ -259,7 +259,7 @@ Music_GymLeaderBattleSwSh_Ch2_DisadvantagePhase_Loop_1:
 	jumpif COND_ADVANTAGE, Music_GymLeaderBattleSwSh_Ch2_AdvantagePhase_Loop_2
 Music_GymLeaderBattleSwSh_Ch2_DisadvantagePhase_Loop_2:
 	stereopanning $f0
-	dutycycle $2
+	duty_cycle 2
 	intensity $72
 	octave 3
 	note __, 2
@@ -269,7 +269,7 @@ Music_GymLeaderBattleSwSh_Ch2_DisadvantagePhase_Loop_2:
 	jumpif COND_ADVANTAGE, Music_GymLeaderBattleSwSh_Ch2_AdvantagePhase_Loop_3
 Music_GymLeaderBattleSwSh_Ch2_DisadvantagePhase_Loop_3:
 	stereopanning $f0
-	dutycycle $2
+	duty_cycle 2
 	intensity $72
 	octave 3
 	note __, 2
@@ -281,7 +281,7 @@ Music_GymLeaderBattleSwSh_Ch2_DisadvantagePhase_Loop_3:
 	jumpif COND_ADVANTAGE, Music_GymLeaderBattleSwSh_Ch2_AdvantagePhase_Loop_4
 Music_GymLeaderBattleSwSh_Ch2_DisadvantagePhase_Loop_4:
 	stereopanning $f0
-	dutycycle $2
+	duty_cycle 2
 	intensity $72
 	octave 3
 	note __, 2
@@ -495,7 +495,7 @@ Music_GymLeaderBattleSwSh_Ch4_DisadvantagePhase_Loop_4:
 
 ; Advantage/Last Pokemon Intro
 Music_GymLeaderBattleSwSh_Ch2_EnterLastPokemonPhase:
-	dutycycle $1
+	duty_cycle 1
 	intensity $a8
 	vibrato $0, $0
 	octave 3
@@ -512,7 +512,7 @@ Music_GymLeaderBattleSwSh_Ch2_EnterLastPokemonPhase:
 	vibrato $1, $21
 	octave 4
 	note G_, 8
-	dutycycle $3
+	duty_cycle 3
 	intensity $c1
 	vibrato $0, $0
 	callchannel Music_GymLeaderBattleSwSh_Ch2_ditty6
@@ -522,7 +522,7 @@ Music_GymLeaderBattleSwSh_Ch2_EnterLastPokemonPhase:
 	note B_, 2
 ;Last Pokemon Loop
 Music_GymLeaderBattleSwSh_Ch2_LastPokemonPhase_Loop:
-	dutycycle $1
+	duty_cycle 1
 	intensity $c4
 	stereopanning $ff
 	callchannel Music_GymLeaderBattleSwSh_Ch2_ditty9
@@ -547,7 +547,7 @@ Music_GymLeaderBattleSwSh_Ch2_LastPokemonPhase_Loop:
 	note A_, 2
 	note G_, 6
 	note __, 12
-	dutycycle $2
+	duty_cycle 2
 	intensity $b2
 	octave 3
 	callchannel Music_GymLeaderBattleSwSh_Ch2_ditty10
@@ -560,7 +560,7 @@ Music_GymLeaderBattleSwSh_Ch2_LastPokemonPhase_Loop:
 
 ; Advantage/Last Pokemon Intro
 Music_GymLeaderBattleSwSh_Ch1_EnterLastPokemonPhase:
-	dutycycle $1
+	duty_cycle 1
 	intensity $a8
 	vibrato $0, $0
 	octave 2
@@ -577,7 +577,7 @@ Music_GymLeaderBattleSwSh_Ch1_EnterLastPokemonPhase:
 	vibrato $1, $21
 	octave 3
 	note G_, 8
-	dutycycle $3
+	duty_cycle 3
 	intensity $c1
 	vibrato $0, $0
 	callchannel Music_GymLeaderBattleSwSh_Ch1_ditty4
@@ -585,18 +585,18 @@ Music_GymLeaderBattleSwSh_Ch1_EnterLastPokemonPhase:
 ;Last Pokemon Loop
 Music_GymLeaderBattleSwSh_Ch1_LastPokemonPhase_Loop:
 	note __, 2
-	dutycycle $1
+	duty_cycle 1
 	intensity $c7
 	stereopanning $ff
 	callchannel Music_GymLeaderBattleSwSh_Ch2_ditty7
 	note __, 3
 	callchannel Music_GymLeaderBattleSwSh_Ch2_ditty7
 	note __, 1
-	dutycycle $2
+	duty_cycle 2
 	intensity $b2
 	callchannel Music_GymLeaderBattleSwSh_Ch2_ditty8
 	callchannel Music_GymLeaderBattleSwSh_Ch2_ditty8
-	dutycycle $1
+	duty_cycle 1
 	intensity $c4
 	octave 4
 	callchannel Music_GymLeaderBattleSwSh_Ch1_ditty8
@@ -716,7 +716,7 @@ Music_GymLeaderBattleSwSh_Ch2_ditty2:
 	note __, 1
 	note A#, 1
 	note __, 3
-	dutycycle $2
+	duty_cycle 2
 	intensity $b2
 	note G_, 1
 	note G_, 1
@@ -724,7 +724,7 @@ Music_GymLeaderBattleSwSh_Ch2_ditty2:
 	note G_, 1
 	note G_, 1
 	note G_, 1
-	dutycycle $1
+	duty_cycle 1
 	intensity $c7
 	note A#, 2
 	note __, 1
@@ -744,7 +744,7 @@ Music_GymLeaderBattleSwSh_Ch2_ditty2:
 	note C_, 2
 	note __, 1
 	note D_, 4
-	dutycycle $2
+	duty_cycle 2
 	intensity $b2
 	octave 3
 	note A#, 1
@@ -753,7 +753,7 @@ Music_GymLeaderBattleSwSh_Ch2_ditty2:
 	note A#, 1
 	note A#, 1
 	note A#, 1
-	dutycycle $1
+	duty_cycle 1
 	intensity $c7
 	octave 4
 	note C_, 2
@@ -1215,7 +1215,7 @@ Music_GymLeaderBattleSwSh_Ch1_ditty2:
 	note __, 1
 	note A#, 1
 	note __, 1
-	dutycycle $1
+	duty_cycle 1
 	intensity $c7
 	octave 3
 	note G_, 3
@@ -1229,7 +1229,7 @@ Music_GymLeaderBattleSwSh_Ch1_ditty2:
 	note F_, 2
 	note __, 1
 	note G_, 4
-	dutycycle $2
+	duty_cycle 2
 	intensity $b2
 	note G_, 1
 	note G_, 1
@@ -1237,7 +1237,7 @@ Music_GymLeaderBattleSwSh_Ch1_ditty2:
 	note G_, 1
 	note G_, 1
 	note G_, 1
-	dutycycle $1
+	duty_cycle 1
 	intensity $c7
 	note F_, 2
 	note __, 1

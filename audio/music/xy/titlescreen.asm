@@ -16,7 +16,7 @@ Music_TitleScreenXY_Ch1:
 	vibrato $10, $33
 	soundinput $0
 Music_TitleScreenXY_Ch1_b0:
-	dutycycle $0
+	duty_cycle 0
 	note_type 8, 8, 7
 Music_TitleScreenXY_Ch1_b1:
 	octave 3
@@ -169,7 +169,7 @@ Music_TitleScreenXY_Ch1_b3:
 	note G#, 16
 	note __, 8
 	note __, 16
-	dutycycle $2
+	duty_cycle 2
 	octave 3
 	note D#, 8
 	octave 2
@@ -178,7 +178,7 @@ Music_TitleScreenXY_Ch1_b3:
 	note C_, 4
 	note F_, 16
 	note F_, 8
-	dutycycle $0
+	duty_cycle 0
 	octave 2
 	note G#, 4
 	note A_, 4
@@ -284,7 +284,7 @@ Music_TitleScreenXY_Ch1_b5:
 Music_TitleScreenXY_Ch2:
 	vibrato $10, $33
 	stereopanning $f0
-	dutycycle $1
+	duty_cycle 1
 Music_TitleScreenXY_Ch2_b0:
 	note_type 8, 9, 7
 Music_TitleScreenXY_Ch2_b1:
@@ -434,7 +434,7 @@ Music_TitleScreenXY_Ch2_b3:
 	note B_, 3
 	note_type 12, 12, 7 ; measure 24.3
 	note G#, 16
-	dutycycle $2
+	duty_cycle 2
 	note_type 12, 3, -4
 	note A#, 8
 	note_type 12, 12, 7
@@ -453,7 +453,7 @@ Music_TitleScreenXY_Ch2_b3:
 	octave 4
 	note C#, 4
 	note D_, 4
-	dutycycle $1
+	duty_cycle 1
 	note D#, 2
 	note __, 2
 	note_type 8, 12, 7 ; measure 30.2

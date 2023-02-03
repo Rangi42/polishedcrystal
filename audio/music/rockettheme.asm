@@ -8,7 +8,7 @@ Music_RocketTheme:
 Music_RocketTheme_Ch1:
 	tempo 128
 	volume 7, 7
-	dutycycle $3
+	duty_cycle 3
 	stereopanning $f
 	vibrato $5, $64
 	note_type 12, 10, 8
@@ -16,10 +16,10 @@ Music_RocketTheme_Ch1:
 	note C_, 1
 	note D_, 1
 Music_RocketTheme_branch_f768b:
-	dutycycle $3
+	duty_cycle 3
 	note_type 12, 10, 8
 	callchannel Music_RocketTheme_branch_f74e6
-	dutycycle $1
+	duty_cycle 1
 	intensity $a8
 	callchannel Music_RocketTheme_branch_f74f7
 	callchannel Music_RocketTheme_branch_f758a
@@ -33,7 +33,7 @@ Music_RocketTheme_branch_f768b:
 	intensity $e3
 	callchannel Music_RocketTheme_branch_f750c
 	note __, 16
-	dutycycle $0
+	duty_cycle 0
 	note_type 6, 11, 3
 	vibrato $6, $64
 	callchannel Music_RocketTheme_branch_f7727
@@ -157,7 +157,7 @@ Music_RocketTheme_branch_f7727:
 Music_RocketTheme_Ch2:
 	stereopanning $ff
 	vibrato $4, $64
-	dutycycle $3
+	duty_cycle 3
 	note_type 12, 11, 7
 	octave 5
 	note C_, 1

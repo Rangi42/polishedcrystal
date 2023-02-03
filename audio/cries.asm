@@ -285,7 +285,7 @@ Cry_Slowking_Ch8:
 	endchannel
 
 Cry_Pichu_Ch5:
-	dutycycle $0
+	duty_cycle 0
 	soundinput $f7
 	square_note 2, 15, 8, 1933
 	square_note 2, 15, 8, 1937
@@ -367,7 +367,7 @@ Cry_Togetic_branch_f3038:
 	endchannel
 
 Cry_Spinarak_Ch5:
-	dutycycle $1
+	duty_cycle 1
 	square_note 3, 2, -4, 1988
 	square_note 1, 0, 0, 1
 	square_note 5, 5, -1, 1977
@@ -456,7 +456,7 @@ Cry_Hoothoot_Ch8:
 
 Cry_Sentret_Ch5:
 	tone $0020
-	dutycycle $0
+	duty_cycle 0
 	jumpchannel Cry_Sentret_branch_f312b
 
 Cry_Sentret_Ch6:
@@ -468,7 +468,7 @@ Cry_Sentret_branch_f312b:
 
 Cry_Mareep_Ch5:
 	tone $0020
-	dutycycle $0
+	duty_cycle 0
 	jumpchannel Cry_Mareep_branch_f3145
 
 Cry_Mareep_Ch6:
@@ -484,7 +484,7 @@ Cry_Gligar_branch_f3145:
 Cry_Cyndaquil_Ch5:
 	tone $0020
 Cry_Cyndaquil_Ch6:
-	dutycycle $2
+	duty_cycle 2
 	square_note 8, 2, -7, 263
 Cry_Cyndaquil_branch_f315f:
 	square_note 0, 14, 1, 1155
@@ -523,7 +523,7 @@ Cry_Gligar_Ch5:
 	jumpchannel Cry_Gligar_branch_f3145
 
 Cry_Girafarig_Ch5:
-	dutycycle $1
+	duty_cycle 1
 	tone $0004
 	jumpchannel Cry_Girafarig_branch_f31af
 
@@ -563,7 +563,7 @@ Cry_Slugma_Ch8:
 
 Cry_Ledyba_Ch5:
 	tone $0002
-	dutycycle $2
+	duty_cycle 2
 	jumpchannel Cry_Ledyba_branch_f3202
 
 Cry_Ledyba_Ch6:
@@ -588,7 +588,7 @@ Cry_Ledyba_Ch8:
 
 Cry_Wooper_Ch5:
 Cry_Donphan_Ch5:
-	dutycycle $2
+	duty_cycle 2
 	square_note 2, 9, -1, 1816
 	square_note 4, 10, -3, 1826
 	square_note 8, 10, -3, 1844
@@ -710,11 +710,11 @@ Cry_Teddiursa_Ch8:
 	endchannel
 
 Cry_Remoraid_Ch5:
-	dutycycle $0
+	duty_cycle 0
 	jumpchannel Cry_Remoraid_branch_f32e9
 
 Cry_Mantine_Ch5:
-	dutycycle $0
+	duty_cycle 0
 	callchannel Cry_Mantine_branch_f32e9
 	callchannel Cry_Mantine_branch_f32f5
 	endchannel
@@ -735,7 +735,7 @@ Cry_Ampharos_branch_f3355:
 	square_note 1, 12, 1, 1312
 	square_note 1, 10, 1, 1056
 	loopchannel 4, Cry_Ampharos_branch_f3355
-	dutycycle $0
+	duty_cycle 0
 	square_note 4, 7, 8, 1888
 	square_note 4, 7, 8, 1840
 	square_note 24, 12, 2, 1056

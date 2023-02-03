@@ -8,7 +8,7 @@ Music_HallOfFame:
 Music_HallOfFame_Ch1:
 	tempo 112
 	volume 7, 7
-	dutycycle $2
+	duty_cycle 2
 	vibrato $c, $22
 	tone $0001
 	stereopanning $f0
@@ -49,7 +49,7 @@ Music_HallOfFame_branch_f05e6:
 
 Music_HallOfFame_Ch2:
 	vibrato $8, $25
-	dutycycle $3
+	duty_cycle 3
 Music_HallOfFame_branch_f0610:
 	note_type 12, 12, 4
 	octave 3

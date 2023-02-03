@@ -10,7 +10,7 @@ Music_SurfingRBY:
 Music_SurfingRBY_Ch1:
 	tempo 160
 	volume 7, 7
-	dutycycle 3
+	duty_cycle 3
 	vibrato 12, 52
 
 	note_type 12, 11, 5
@@ -125,7 +125,7 @@ Music_Surfing_branch_7fa30:
 	jumpchannel Music_Surfing_branch_7fa30
 
 Music_SurfingRBY_Ch2:
-	dutycycle 3
+	duty_cycle 3
 	vibrato 16, 37
 	note_type 12, 12, 6
 	octave 3

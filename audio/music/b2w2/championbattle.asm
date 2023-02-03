@@ -14,12 +14,12 @@ Music_ChampionBattleB2W2_Ch1:
 	tone $0001
 	vibrato $12, $15
 	note_type 12, 8, 2
-	dutycycle 0
+	duty_cycle 0
 	octave 2
 	note D_, 1
 	note D_, 1
 	callchannel Music_ChampionBattleB2W2_Ch1_branch_1
-	dutycycle 0
+	duty_cycle 0
 	intensity $80
 	octave 3
 	note G_, 16
@@ -34,14 +34,14 @@ Music_ChampionBattleB2W2_Ch1:
 	note A_, 8
 Music_ChampionBattleB2W2_Ch1_loop_main:
 	intensity $80
-	dutycycle 0
+	duty_cycle 0
 	octave 2
 	callchannel Music_ChampionBattleB2W2_Ch1_branch_3
 	callchannel Music_ChampionBattleB2W2_Ch1_branch_4
 	callchannel Music_ChampionBattleB2W2_Ch1_branch_4
 	callchannel Music_ChampionBattleB2W2_Ch1_branch_3
 	callchannel Music_ChampionBattleB2W2_Ch1_branch_4
-	dutycycle 1
+	duty_cycle 1
 	octave 5
 	intensity $62
 	note B_, 2
@@ -58,7 +58,7 @@ Music_ChampionBattleB2W2_Ch1_loop_main:
 	note G_, 2
 	note D_, 2
 	octave 2
-	dutycycle 0
+	duty_cycle 0
 	intensity $80
 	callchannel Music_ChampionBattleB2W2_Ch1_branch_4
 	callchannel Music_ChampionBattleB2W2_Ch1_branch_4
@@ -74,11 +74,11 @@ Music_ChampionBattleB2W2_Ch1_loop_main:
 	callchannel Music_ChampionBattleB2W2_Ch1_branch_3
 	callchannel Music_ChampionBattleB2W2_Ch1_branch_5
 	octave 2
-	dutycycle 0
+	duty_cycle 0
 	intensity $80
 	callchannel Music_ChampionBattleB2W2_Ch1_branch_2
 	note G_, 2
-	dutycycle 1
+	duty_cycle 1
 	octave 5
 	intensity $62
 	note D_, 2
@@ -86,18 +86,18 @@ Music_ChampionBattleB2W2_Ch1_loop_main:
 	note E_, 2
 	note A_, 2
 	octave 2
-	dutycycle 0
+	duty_cycle 0
 	intensity $80
 	note D_, 2
 	callchannel Music_ChampionBattleB2W2_Ch1_branch_2
 	callchannel Music_ChampionBattleB2W2_Ch1_branch_5
 	octave 2
-	dutycycle 0
+	duty_cycle 0
 	intensity $80
 	note G_, 2
 	intensity $50
 	note G_, 2
-	dutycycle 1
+	duty_cycle 1
 	octave 4
 	intensity $62
 	note A_, 2
@@ -106,13 +106,13 @@ Music_ChampionBattleB2W2_Ch1_loop_main:
 	note D_, 2
 	note G_, 2
 	octave 2
-	dutycycle 0
+	duty_cycle 0
 	intensity $80
 	octave 3
 	note D_, 2
 	intensity $50
 	note D_, 2
-	dutycycle 1
+	duty_cycle 1
 	octave 5
 	intensity $62
 	note B_, 2
@@ -134,7 +134,7 @@ Music_ChampionBattleB2W2_Ch1_loop_main:
 	note D_, 1
 	note __, 16
 	note __, 8
-	dutycycle 0
+	duty_cycle 0
 	intensity $84
 	note B_, 4
 	note_type 8, 8, 2
@@ -259,7 +259,7 @@ Music_ChampionBattleB2W2_Ch1_loop_main:
 	note A_, 4
 	octave 2
 	note C_, 4
-	dutycycle 1
+	duty_cycle 1
 	intensity $80
 	octave 2
 	note A_, 4
@@ -367,7 +367,7 @@ Music_ChampionBattleB2W2_Ch1_loop_1:
 	note F#, 2
 	octave 4
 	note D_, 2
-	dutycycle 0
+	duty_cycle 0
 	intensity $90
 	octave 3
 	note __, 2
@@ -478,7 +478,7 @@ Music_ChampionBattleB2W2_Ch1_loop_1:
 	octave 7
 	note D_, 1
 	intensity $90
-	dutycycle 0
+	duty_cycle 0
 	octave 2
 	note A#, 5
 	note __, 1
@@ -547,7 +547,7 @@ Music_ChampionBattleB2W2_Ch1_loop_1:
 
 Music_ChampionBattleB2W2_Ch1_branch_1:
 	intensity $42
-	dutycycle 1
+	duty_cycle 1
 	octave 6
 	note B_, 1
 	octave 7
@@ -616,7 +616,7 @@ Music_ChampionBattleB2W2_Ch1_branch_4:
 	endchannel
 
 Music_ChampionBattleB2W2_Ch1_branch_5:
-	dutycycle 1
+	duty_cycle 1
 	octave 5
 	intensity $62
 	note G_, 1
@@ -693,7 +693,7 @@ Music_ChampionBattleB2W2_Ch1_branch_9:
 
 Music_ChampionBattleB2W2_Ch2:
 	tone $0001
-	dutycycle 2
+	duty_cycle 2
 	vibrato $12, $15
 	note_type 12, 11, 0
 	note __, 2
@@ -821,7 +821,7 @@ Music_ChampionBattleB2W2_Ch2_loop_main:
 	intensity $B7
 	note G_, 16
 	note __, 8
-	dutycycle 1
+	duty_cycle 1
 	octave 5
 	intensity $82
 	note G_, 1
@@ -839,7 +839,7 @@ Music_ChampionBattleB2W2_Ch2_loop_main:
 	note G_, 3
 	note __, 6
 	octave 4
-	dutycycle 2
+	duty_cycle 2
 	intensity $B5
 	note F_, 2
 	note G#, 2
@@ -910,11 +910,11 @@ Music_ChampionBattleB2W2_Ch2_loop_main:
 	octave 7
 	intensity $50
 	note C_, 1
-	dutycycle 0
+	duty_cycle 0
 	octave 3
 	callchannel Music_ChampionBattleB2W2_Ch2_branch_3
 	note __, 2
-	dutycycle 2
+	duty_cycle 2
 	octave 5
 	note G_, 2
 	note C#, 2
@@ -928,10 +928,10 @@ Music_ChampionBattleB2W2_Ch2_loop_main:
 	octave 4
 	callchannel Music_ChampionBattleB2W2_Ch2_branch_3
 	note __, 16
-	dutycycle 0
+	duty_cycle 0
 	octave 3
 	callchannel Music_ChampionBattleB2W2_Ch2_branch_3
-	dutycycle 2
+	duty_cycle 2
 	intensity $90
 	octave 4
 	note D_, 2

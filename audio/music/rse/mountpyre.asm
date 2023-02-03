@@ -13,7 +13,7 @@ Music_MountPyreRSE:
 Music_MountPyreRSE_Ch1:
 	tempo 212
 	volume 7, 7
-	dutycycle 1
+	duty_cycle 1
 	tone $0002
 	vibrato $10, $22
 	note_type 6, 6, 3
@@ -99,12 +99,12 @@ Music_MountPyreRSE_Ch1_loop_3:
 	jumpchannel Music_MountPyreRSE_Ch1_loop_main
 
 Music_MountPyreRSE_Ch2:
-	dutycycle 2
+	duty_cycle 2
 	vibrato $1c, $12
 	note_type 12, 10, 3
 	note __, 1
 Music_MountPyreRSE_Ch2_loop_main:
-	dutycycle 2
+	duty_cycle 2
 	callchannel Music_MountPyreRSE_Ch2_branch_1
 	callchannel Music_MountPyreRSE_Ch2_branch_1
 	callchannel Music_MountPyreRSE_Ch2_branch_2
@@ -112,7 +112,7 @@ Music_MountPyreRSE_Ch2_loop_main:
 	note_type 6, 10, 3
 	note __, 10
 Music_MountPyreRSE_Ch2_loop_1:
-	dutycycle 0
+	duty_cycle 0
 	octave 3
 	note A#, 1
 	note __, 1

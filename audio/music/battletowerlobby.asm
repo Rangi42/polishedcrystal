@@ -8,7 +8,7 @@ Music_BattleTowerLobby:
 Music_BattleTowerLobby_Ch1:
 	tempo 152
 	volume 7, 7
-	dutycycle $3
+	duty_cycle 3
 	tone $0001
 	vibrato $8, $22
 	stereopanning $f0
@@ -118,7 +118,7 @@ Music_BattleTowerLobby_branch_1794a9:
 	jumpchannel Music_BattleTowerLobby_branch_1794a9
 
 Music_BattleTowerLobby_Ch2:
-	dutycycle $2
+	duty_cycle 2
 	vibrato $10, $34
 	stereopanning $f
 	note_type 12, 8, 2

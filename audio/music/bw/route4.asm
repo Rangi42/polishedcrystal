@@ -13,14 +13,14 @@ Music_Route4BW:
 Music_Route4BW_Ch1:
 	tempo 144
 	volume 7, 7
-	dutycycle $3
+	duty_cycle 3
 	tone $0002
 	vibrato $10, $22
 	callchannel Music_Route4BW_Ch1_branch_1
 Music_Route4BW_Ch1_loop:
 	callchannel Music_Route4BW_Ch1_branch_1
 	callchannel Music_Route4BW_Ch1_branch_1
-	dutycycle $0
+	duty_cycle 0
 	intensity $80
 	callchannel Music_Route4BW_Ch1_branch_2
 	callchannel Music_Route4BW_Ch1_branch_3
@@ -55,7 +55,7 @@ Music_Route4BW_Ch1_loop:
 	note E_, 4
 	intensity $c7
 	note E_, 8
-	dutycycle $3
+	duty_cycle 3
 	jumpchannel Music_Route4BW_Ch1_loop
 
 Music_Route4BW_Ch1_branch_1:
@@ -145,7 +145,7 @@ Music_Route4BW_Ch1_branch_4:
 	endchannel
 
 Music_Route4BW_Ch2:
-	dutycycle $3
+	duty_cycle 3
 	vibrato $1c, $12
 	note_type 12, 12, 2
 	octave 3

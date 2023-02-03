@@ -11,7 +11,7 @@ Music_PalletTown_Ch1:
 	tone $0001
 	stereopanning $f
 Music_PalletTown_branch_f4b22:
-	dutycycle $2
+	duty_cycle 2
 	note_type 12, 7, 8
 	octave 3
 	note B_, 12
@@ -61,7 +61,7 @@ Music_PalletTown_branch_f4b22:
 	intensity $77
 	note B_, 8
 Music_PalletTown_branch_f4b59:
-	dutycycle $3
+	duty_cycle 3
 	intensity $92
 	note G_, 2
 	note E_, 2
@@ -121,7 +121,7 @@ Music_PalletTown_branch_f4b59:
 
 Music_PalletTown_Ch2:
 	vibrato $12, $44
-	dutycycle $2
+	duty_cycle 2
 	stereopanning $f0
 Music_PalletTown_branch_f4ba8:
 	note_type 12, 8, 8

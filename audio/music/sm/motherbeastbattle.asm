@@ -11,14 +11,14 @@ Music_MotherBeastBattleSM:
 	channel 4, Music_MotherBeastBattleSM_Ch4
 
 Music_MotherBeastBattleSM_Ch1:
-	dutycycle 3
+	duty_cycle 3
 	tempo 220
 	vibrato $12, $15
 	tone $0001
 	note_type 12, 1, -7
 	octave 3
 	note D_, 4
-	dutycycle 2
+	duty_cycle 2
 	intensity $60
 	note A#, 16
 	note A#, 8
@@ -35,7 +35,7 @@ Music_MotherBeastBattleSM_Ch1:
 	note D#, 3
 Music_MotherBeastBattleSM_Ch1_loop_main:
 	intensity $30
-	dutycycle 3
+	duty_cycle 3
 	octave 3
 	callchannel Music_MotherBeastBattleSM_Ch2_branch_1
 	octave 2
@@ -48,7 +48,7 @@ Music_MotherBeastBattleSM_Ch1_loop_main:
 	octave 3
 	callchannel Music_MotherBeastBattleSM_Ch2_branch_2
 	octave 3
-	dutycycle 0
+	duty_cycle 0
 	intensity $50
 	note D_, 12
 	note D#, 12
@@ -59,7 +59,7 @@ Music_MotherBeastBattleSM_Ch1_loop_main:
 	intensity $5f
 	note A#, 4
 	intensity $72
-	dutycycle 2
+	duty_cycle 2
 	octave 5
 	callchannel Music_MotherBeastBattleSM_Ch2_branch_1
 	octave 4
@@ -72,7 +72,7 @@ Music_MotherBeastBattleSM_Ch1_loop_main:
 	octave 5
 	callchannel Music_MotherBeastBattleSM_Ch2_branch_2
 	intensity $60
-	dutycycle 2
+	duty_cycle 2
 	octave 2
 	note A_, 1
 	octave 3
@@ -138,7 +138,7 @@ Music_MotherBeastBattleSM_Ch1_loop_main:
 	note G_, 2
 	note __, 4
 	octave 3
-	dutycycle 1
+	duty_cycle 1
 	intensity $1f
 	note C_, 4
 	intensity $60
@@ -195,12 +195,12 @@ Music_MotherBeastBattleSM_Ch1_loop_main:
 	intensity $57
 	note C#, 3
 	intensity $30
-	dutycycle 1
+	duty_cycle 1
 	callchannel Music_MotherBeastBattleSM_Ch2_branch_3
 	jumpchannel Music_MotherBeastBattleSM_Ch1_loop_main
 
 Music_MotherBeastBattleSM_Ch2:
-	dutycycle 3
+	duty_cycle 3
 	vibrato $12, $15
 	note_type 6, 9, 1
 	note __, 8
@@ -375,7 +375,7 @@ Music_MotherBeastBattleSM_Ch2:
 	note D#, 9
 	note_type 12, 9, 0
 Music_MotherBeastBattleSM_Ch2_loop_main:
-	dutycycle 2
+	duty_cycle 2
 Music_MotherBeastBattleSM_Ch2_loop_1:
 	octave 3
 	callchannel Music_MotherBeastBattleSM_Ch2_branch_1
@@ -385,7 +385,7 @@ Music_MotherBeastBattleSM_Ch2_loop_1:
 	callchannel Music_MotherBeastBattleSM_Ch2_branch_2
 	loopchannel 6, Music_MotherBeastBattleSM_Ch2_loop_1
 	note_type 3, 4, 2
-	dutycycle 2
+	duty_cycle 2
 	note __, 8  ;
 	octave 2
 	note E_, 1
@@ -468,7 +468,7 @@ Music_MotherBeastBattleSM_Ch2_loop_1:
 	intensity $32
 	octave 2
 	note A#, 3
-	dutycycle 0
+	duty_cycle 0
 	note_type 12, 7, 4
 	octave 3
 	note __, 2
@@ -603,7 +603,7 @@ Music_MotherBeastBattleSM_Ch2_loop_1:
 	note G_, 1
 	note __, 3
 	octave 4
-	dutycycle 3
+	duty_cycle 3
 	note C_, 1
 	note D_, 1
 	note D#, 1
@@ -612,15 +612,15 @@ Music_MotherBeastBattleSM_Ch2_loop_1:
 	octave 4
 	note A#, 1
 	note __, 1
-	dutycycle 0
+	duty_cycle 0
 	octave 3
 	note D_, 1
 	note __, 1
-	dutycycle 3
+	duty_cycle 3
 	octave 5
 	note C_, 2
 	note __, 2
-	dutycycle 0
+	duty_cycle 0
 	octave 3
 	note C#, 1
 	note __, 1
@@ -633,13 +633,13 @@ Music_MotherBeastBattleSM_Ch2_loop_1:
 	note A#, 1
 	note __, 2
 	octave 3
-	dutycycle 3
+	duty_cycle 3
 	note D_, 2
 	note D#, 2
 	note A_, 2
 	octave 4
 	note D#, 2
-	dutycycle 0
+	duty_cycle 0
 	octave 3
 	note D_, 1
 	note D_, 1
@@ -649,7 +649,7 @@ Music_MotherBeastBattleSM_Ch2_loop_1:
 	note __, 1
 	note G_, 1
 	note __, 3
-	dutycycle 2
+	duty_cycle 2
 	octave 3
 	intensity $70
 	note D_, 1
@@ -690,7 +690,7 @@ Music_MotherBeastBattleSM_Ch2_loop_1:
 	intensity $30
 	note D_, 1
 	intensity $90
-	dutycycle 0
+	duty_cycle 0
 	callchannel Music_MotherBeastBattleSM_Ch2_branch_3
 	jumpchannel Music_MotherBeastBattleSM_Ch2_loop_main
 

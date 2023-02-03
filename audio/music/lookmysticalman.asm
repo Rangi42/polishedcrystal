@@ -14,7 +14,7 @@ Music_LookMysticalMan_Ch1:
 	note_type 12, 11, 3
 	note __, 8
 Music_LookMysticalMan_branch_178458:
-	dutycycle $3
+	duty_cycle 3
 	note_type 6, 9, 6
 	octave 3
 	note F#, 1
@@ -60,7 +60,7 @@ Music_LookMysticalMan_branch_178458:
 	note E_, 4
 	note __, 4
 	note C#, 4
-	dutycycle $2
+	duty_cycle 2
 	callchannel Music_LookMysticalMan_branch_1784f9
 	octave 4
 	note C#, 2
@@ -88,11 +88,11 @@ Music_LookMysticalMan_branch_178458:
 	note A#, 4
 	note F#, 4
 	intensity $a5
-	dutycycle $0
+	duty_cycle 0
 	octave 4
 	note F#, 2
 	note A#, 6
-	dutycycle $2
+	duty_cycle 2
 	intensity $72
 Music_LookMysticalMan_branch_1784b4:
 	octave 5
@@ -193,7 +193,7 @@ Music_LookMysticalMan_branch_1784f9:
 	endchannel
 
 Music_LookMysticalMan_Ch2:
-	dutycycle $3
+	duty_cycle 3
 	vibrato $a, $34
 	note_type 12, 11, 3
 	note __, 8

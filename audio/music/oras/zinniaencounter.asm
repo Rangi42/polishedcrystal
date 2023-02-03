@@ -13,7 +13,7 @@ Music_ZinniaEncounterORAS:
 Music_ZinniaEncounterORAS_Ch1:
 	tempo 176
 	volume 7, 7
-	dutycycle 0
+	duty_cycle 0
 	tone $0002
 	vibrato $8, $15
 	note_type 12, 10, 3
@@ -162,7 +162,7 @@ Music_ZinniaEncounterORAS_Ch1_loop:
 	jumpchannel Music_ZinniaEncounterORAS_Ch1_loop
 
 Music_ZinniaEncounterORAS_Ch2:
-	dutycycle 1
+	duty_cycle 1
 	vibrato $12, $25
 	tone $0001
 	note_type 12, 11, 3

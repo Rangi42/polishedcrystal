@@ -11,7 +11,7 @@ Music_MountCoronetDPPt:
 Music_MountCoronetDPPt_Ch1:
 	tempo 124
 	volume 7, 7
-	dutycycle 0
+	duty_cycle 0
 	tone $0001
 	note_type 12, 8, 7
 	octave 3
@@ -185,7 +185,7 @@ Music_MountCoronetDPPt_Ch1_branch_2:
 	octave 3
 	note D_, 4
 	note_type 8, 8, 2
-	dutycycle 1
+	duty_cycle 1
 	octave 6
 	note C_, 2
 	octave 5
@@ -355,7 +355,7 @@ Music_MountCoronetDPPt_Ch1_branch_2:
 	note __, 16
 	note_type 12, 8, 7
 	octave 3
-	dutycycle 0
+	duty_cycle 0
 	note F_, 4
 	octave 4
 	note D_, 2
@@ -395,7 +395,7 @@ Music_MountCoronetDPPt_Ch1_branch_2:
 
 Music_MountCoronetDPPt_Ch2:
 	tone $0001
-	dutycycle 0
+	duty_cycle 0
 	note_type 12, 4, 5
 	note __, 4
 Music_MountCoronetDPPt_Ch2_loop:
@@ -511,7 +511,7 @@ Music_MountCoronetDPPt_Ch2_loop:
 	note A#, 4
 Music_MountCoronetDPPt_Ch2_branch_2:
 	intensity $85
-	dutycycle 1
+	duty_cycle 1
 	octave 2
 	note F_, 4
 	octave 4
@@ -611,7 +611,7 @@ Music_MountCoronetDPPt_Ch2_branch_2:
 	note E_, 3
 	note D_, 6
 	octave 4
-	dutycycle 3
+	duty_cycle 3
 	intensity $B5
 	;quarter
 	note C_, 4
@@ -763,7 +763,7 @@ Music_MountCoronetDPPt_Ch2_branch_2:
 	note A#, 3
 	note __, 4
 	intensity $1F
-	dutycycle 0
+	duty_cycle 0
 	octave 3
 	note G#, 6
 	intensity $70

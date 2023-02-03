@@ -10,7 +10,7 @@ Music_Gym_Ch1:
 	volume 7, 7
 	stereopanning $f
 	vibrato $12, $24
-	dutycycle $1
+	duty_cycle 1
 	note_type 12, 11, 7
 Music_Gym_branch_f48c9:
 	octave 4
@@ -191,7 +191,7 @@ Music_Gym_branch_f48c9:
 	jumpchannel Music_Gym_branch_f48c9
 
 Music_Gym_Ch2:
-	dutycycle $1
+	duty_cycle 1
 	stereopanning $f0
 Music_Gym_branch_f4980:
 	note_type 12, 12, 3

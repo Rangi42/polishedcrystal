@@ -141,7 +141,7 @@ Music_GameCorner_Ch2:
 	note __, 8
 Music_GameCorner_branch_ede25:
 	intensity $92
-	dutycycle $1
+	duty_cycle 1
 	callchannel Music_GameCorner_branch_ede75
 	octave 1
 	note F_, 2
@@ -167,7 +167,7 @@ Music_GameCorner_branch_ede25:
 	intensity $a4
 	note G_, 3
 	note F_, 4
-	dutycycle $2
+	duty_cycle 2
 	intensity $c7
 	octave 3
 	note D#, 1

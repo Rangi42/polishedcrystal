@@ -7,7 +7,7 @@ Music_JohtoTrainerBattle:
 Music_JohtoTrainerBattle_Ch1:
 	tempo 102
 	volume 7, 7
-	dutycycle $3
+	duty_cycle 3
 	tone $0002
 	vibrato $12, $15
 	note_type 12, 9, 2
@@ -452,7 +452,7 @@ Music_JohtoTrainerBattle_branch_f629f:
 	endchannel
 
 Music_JohtoTrainerBattle_Ch2:
-	dutycycle $3
+	duty_cycle 3
 	vibrato $8, $36
 	tone $0001
 	note_type 12, 12, 2

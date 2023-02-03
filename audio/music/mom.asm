@@ -8,7 +8,7 @@ Music_Mom_Ch2:
 	tempo 144
 	volume 7, 7
 	stereopanning $f
-	dutycycle $2
+	duty_cycle 2
 	note_type 6, 11, 3
 	octave 3
 	note B_, 1

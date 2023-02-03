@@ -11,7 +11,7 @@ Music_SummoningDanceHGSS:
 
 Music_SummoningDanceHGSS_Ch1:
 	tempo 220
-	dutycycle 0
+	duty_cycle 0
 	note_type 12, 8, 5
 	octave 3
 	note __, 4
@@ -58,7 +58,7 @@ Music_SummoningDanceHGSS_Ch1:
 	jumpchannel Music_SummoningDanceHGSS_Ch1
 
 Music_SummoningDanceHGSS_Ch2:
-	dutycycle 0
+	duty_cycle 0
 	vibrato $10, $24
 	note_type 12, 10, 5
 	octave 3

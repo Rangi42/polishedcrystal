@@ -13,7 +13,7 @@ Music_EliteFourBattleSM:
 Music_EliteFourBattleSM_Ch1:
 	tempo 184
 	volume 7, 7
-	dutycycle 0
+	duty_cycle 0
 	tone $0002
 	vibrato $12, $15
 	note_type 6, 1, 2
@@ -78,7 +78,7 @@ Music_EliteFourBattleSM_Ch1_loop_1:
 	note F_, 1
 	loopchannel 2, Music_EliteFourBattleSM_Ch1_loop_1
 	note __, 16
-	dutycycle 2
+	duty_cycle 2
 	intensity $87
 	note E_, 6
 	note F_, 6
@@ -110,7 +110,7 @@ Music_EliteFourBattleSM_Ch1_loop_1:
 	note __, 16
 	note __, 16
 	note __, 16
-	dutycycle 0
+	duty_cycle 0
 Music_EliteFourBattleSM_Ch1_loop_2:
 	intensity $92
 	note B_, 4
@@ -123,7 +123,7 @@ Music_EliteFourBattleSM_Ch1_loop_2:
 	note B_, 1
 	note B_, 1
 	loopchannel 4, Music_EliteFourBattleSM_Ch1_loop_2
-	dutycycle 1
+	duty_cycle 1
 Music_EliteFourBattleSM_Ch1_loop_3:
 	octave 3
 	note E_, 2
@@ -181,7 +181,7 @@ Music_EliteFourBattleSM_Ch1_loop_3:
 	note B_, 2
 	octave 4
 	note D#, 2
-	dutycycle 0
+	duty_cycle 0
 	intensity $d2
 	octave 3
 	note __, 8
@@ -238,7 +238,7 @@ Music_EliteFourBattleSM_Ch1_branch_1:
 	endchannel
 
 Music_EliteFourBattleSM_Ch2:
-	dutycycle 1
+	duty_cycle 1
 	vibrato $8, $36
 	tone $0001
 	note_type 6, 10, 2
@@ -344,10 +344,10 @@ Music_EliteFourBattleSM_Ch2_loop_3:
 	note E_, 8
 	intensity $b4
 	note E_, 8
-	dutycycle 0
+	duty_cycle 0
 	octave 2
 Music_EliteFourBattleSM_Ch2_loop_4:
-	dutycycle 0
+	duty_cycle 0
 	intensity $92
 	note B_, 4
 	intensity $91
@@ -359,7 +359,7 @@ Music_EliteFourBattleSM_Ch2_loop_4:
 	note B_, 1
 	note B_, 1
 	loopchannel 3, Music_EliteFourBattleSM_Ch2_loop_4
-	dutycycle 2
+	duty_cycle 2
 	intensity $80
 	note E_, 8
 	note F_, 8
@@ -383,7 +383,7 @@ Music_EliteFourBattleSM_Ch2_loop_4:
 	note B_, 16
 	note B_, 16
 	intensity $e2
-	dutycycle 1
+	duty_cycle 1
 	octave 4
 	note E_, 2
 	note D#, 4

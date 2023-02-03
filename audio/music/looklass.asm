@@ -9,7 +9,7 @@ Music_LookLass_Ch1:
 	tempo 132
 	volume 7, 7
 	tone $0001
-	dutycycle $2
+	duty_cycle 2
 	note_type 12, 12, 7
 	octave 3
 	note B_, 1
@@ -17,7 +17,7 @@ Music_LookLass_Ch1:
 	octave 4
 	note B_, 14
 	stereopanning $f
-	dutycycle $0
+	duty_cycle 0
 Music_LookLass_branch_ed7bd:
 	intensity $a2
 	octave 3
@@ -32,7 +32,7 @@ Music_LookLass_branch_ed7bd:
 
 Music_LookLass_Ch2:
 	stereopanning $f0
-	dutycycle $0
+	duty_cycle 0
 	note_type 12, 8, 3
 	note __, 16
 Music_LookLass_branch_ed7d5:

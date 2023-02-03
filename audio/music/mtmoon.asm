@@ -8,7 +8,7 @@ Music_MtMoon:
 Music_MtMoon_Ch1:
 	tempo 208
 	volume 7, 7
-	dutycycle $2
+	duty_cycle 2
 	tone $0001
 	vibrato $8, $14
 	stereopanning $f0
@@ -18,7 +18,7 @@ Music_MtMoon_Ch1:
 
 Music_MtMoon_Ch2:
 	vibrato $b, $15
-	dutycycle $2
+	duty_cycle 2
 	note_type 12, 8, 4
 	stereopanning $f
 Music_MtMoon_branch_edb56:

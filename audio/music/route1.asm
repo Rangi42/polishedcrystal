@@ -9,7 +9,7 @@ Music_Route1_Ch1:
 	tempo 184
 	volume 7, 7
 	vibrato $16, $11
-	dutycycle $3
+	duty_cycle 3
 	note_type 12, 8, 3
 	octave 4
 	note D_, 1
@@ -181,7 +181,7 @@ Music_Route1_branch_ec04a:
 	octave 3
 	note A_, 1
 	note G_, 1
-	dutycycle $2
+	duty_cycle 2
 	intensity $87
 	octave 6
 	note F#, 4
@@ -205,7 +205,7 @@ Music_Route1_branch_ec04a:
 Music_Route1_Ch2:
 	stereopanning $f0
 	vibrato $12, $22
-	dutycycle $2
+	duty_cycle 2
 	note_type 12, 9, 2
 	octave 4
 	note F#, 1
@@ -228,7 +228,7 @@ Music_Route1_Ch2:
 	octave 4
 	note D_, 1
 	note E_, 1
-	dutycycle $2
+	duty_cycle 2
 Music_Route1_branch_ec112:
 	intensity $82
 	callchannel Music_Route1_branch_ec188

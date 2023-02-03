@@ -17,7 +17,7 @@ Music_Route225DPPt_Ch1_loop:
 	tone $0002
 	note_type 14, 10, 7
 	note __, 12
-	dutycycle 1
+	duty_cycle 1
 	octave 2
 	note_type 6, 10, 7
 	note E_, 1
@@ -34,13 +34,13 @@ Music_Route225DPPt_Ch1_loop:
 	octave 3
 	note C_, 4
 	note D_, 4
-	dutycycle 2
+	duty_cycle 2
 	intensity $95
 	octave 5
 	note C_, 8
 	note C_, 8
 	note C_, 8
-	dutycycle 1
+	duty_cycle 1
 	intensity $A7
 	octave 1
 	note G#, 2
@@ -82,13 +82,13 @@ Music_Route225DPPt_Ch1_loop:
 	note F_, 4
 	note F#, 4
 	note G_, 8
-	dutycycle 2
+	duty_cycle 2
 	intensity $95
 	octave 5
 	note C_, 8
 	note C_, 8
 	note C_, 12
-	dutycycle 1
+	duty_cycle 1
 	intensity $A7
 	octave 1
 	note G_, 4
@@ -114,7 +114,7 @@ Music_Route225DPPt_Ch1_loop:
 	note __, 1
 	note G_, 1
 	note __, 1
-	dutycycle 0
+	duty_cycle 0
 	intensity $A1
 	octave 3
 	note E_, 4
@@ -191,7 +191,7 @@ Music_Route225DPPt_Ch1_loop:
 	intensity $71
 	note D_, 4
 	note D_, 4
-	dutycycle 1
+	duty_cycle 1
 	intensity $A7
 	vibrato $02, $12
 	octave 4
@@ -431,7 +431,7 @@ Music_Route225DPPt_Ch2_loop:
 	note_type 12, 12, 7
 	note __, 16
 	note __, 2
-	dutycycle 1
+	duty_cycle 1
 	octave 3
 	note_type 6, 12, 7
 	note G_, 1
@@ -521,7 +521,7 @@ Music_Route225DPPt_Ch2_loop:
 	note G_, 2
 	note __, 2
 	note F_, 4
-	dutycycle 2
+	duty_cycle 2
 	vibrato $02, $12
 	octave 3
 	note B_, 1
@@ -681,7 +681,7 @@ Music_Route225DPPt_Ch2_loop:
 	note F_, 2
 	note E_, 2
 	note D_, 4
-	dutycycle 0
+	duty_cycle 0
 	intensity $77
 	note G_, 4
 	note B_, 4
@@ -689,7 +689,7 @@ Music_Route225DPPt_Ch2_loop:
 	note D#, 4
 	note G_, 8
 	note __, 8
-	dutycycle 1
+	duty_cycle 1
 	intensity $A7
 	vibrato $00, $00
 	octave 4

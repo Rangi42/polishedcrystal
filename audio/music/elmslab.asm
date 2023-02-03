@@ -8,7 +8,7 @@ Music_ElmsLab:
 Music_ElmsLab_Ch1:
 	tempo 144
 	volume 7, 7
-	dutycycle $3
+	duty_cycle 3
 	tone $0001
 	vibrato $10, $15
 	stereopanning $f0
@@ -184,7 +184,7 @@ Music_ElmsLab_branch_ea075:
 	jumpchannel Music_ElmsLab_branch_ea075
 
 Music_ElmsLab_Ch2:
-	dutycycle $3
+	duty_cycle 3
 	vibrato $10, $26
 	stereopanning $f
 	note_type 12, 12, 3

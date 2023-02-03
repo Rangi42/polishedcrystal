@@ -12,7 +12,7 @@ Music_GymLeaderBattleGo_Ch1:
 	tempo $B4
 	volume 7, 7
 	stereopanning $77
-	dutycycle 3
+	duty_cycle 3
 	note_type 12, 10, 2
 	callchannel Music_GymLeaderBattleGo_Ch1_ditty1
 	octave 1
@@ -698,7 +698,7 @@ Music_GymLeaderBattleGo_Ch2_ditty6:
 	endchannel
 
 Music_GymLeaderBattleGo_Ch3:
-	dutycycle 4
+	duty_cycle 4
 	octave 4
 	note_type 12, 1, 4
 Music_GymLeaderBattleGo_Ch3_loop_1:
@@ -716,7 +716,7 @@ Music_GymLeaderBattleGo_Ch3_loop_1:
 	note __, 1
 	loopchannel 2, Music_GymLeaderBattleGo_Ch3_loop_1
 Music_GymLeaderBattleGo_Ch3_loop:
-	dutycycle 6
+	duty_cycle 6
 	intensity $16
 	vibrato $05, $33
 	octave 3
@@ -765,7 +765,7 @@ Music_GymLeaderBattleGo_Ch3_loop_2:
 	note C_, 3
 	note F_, 2
 	note G_, 2
-	dutycycle 4
+	duty_cycle 4
 	intensity $14
 	octave 4
 	note F_, 8
@@ -800,7 +800,7 @@ Music_GymLeaderBattleGo_Ch3_loop_2:
 	note C_, 1
 	octave 4
 	note D#, 1
-	dutycycle 6
+	duty_cycle 6
 	intensity $16
 	vibrato $03, $33
 Music_GymLeaderBattleGo_Ch3_loop_3:

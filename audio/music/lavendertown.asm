@@ -9,7 +9,7 @@ Music_LavenderTown_Ch1:
 	volume 7, 7
 	stereopanning $f
 	vibrato $6, $24
-	dutycycle $0
+	duty_cycle 0
 	note_type 12, 11, 3
 	note __, 16
 	note __, 16
@@ -261,7 +261,7 @@ Music_LavenderTown_branch_ef87f:
 	endchannel
 
 Music_LavenderTown_Ch2:
-	dutycycle $1
+	duty_cycle 1
 	vibrato $8, $24
 	stereopanning $ff
 Music_LavenderTown_branch_ef8a0:

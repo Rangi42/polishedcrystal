@@ -8,7 +8,7 @@ Music_LakeOfRage:
 Music_LakeOfRage_Ch1:
 	tempo 144
 	volume 7, 7
-	dutycycle $3
+	duty_cycle 3
 	tone $0002
 	vibrato $8, $22
 	stereopanning $f0
@@ -95,7 +95,7 @@ Music_LakeOfRage_branch_ee6e9:
 	jumpchannel Music_LakeOfRage_branch_ee6e9
 
 Music_LakeOfRage_Ch2:
-	dutycycle $3
+	duty_cycle 3
 	vibrato $20, $44
 	stereopanning $ff
 	note_type 12, 9, 0

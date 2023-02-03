@@ -14,7 +14,7 @@ Music_FrostCavernXY_Ch1:
 	volume 7, 7
 	vibrato $6, $23
 	note_type 12, 9, 2
-	dutycycle 0
+	duty_cycle 0
 	octave 3
 	note __, 2
 	note F_, 2
@@ -35,7 +35,7 @@ Music_FrostCavernXY_Ch1:
 	octave 4
 	note C_, 2
 	note C_, 12
-	dutycycle 3
+	duty_cycle 3
 	intensity $77
 	octave 5
 	note C_, 6
@@ -52,7 +52,7 @@ Music_FrostCavernXY_Ch1:
 	note A#, 6
 	note F_, 14
 Music_FrostCavernXY_Ch1_loop_1:
-	dutycycle 0
+	duty_cycle 0
 	intensity $b2
 	octave 5
 	note C_, 4
@@ -83,7 +83,7 @@ Music_FrostCavernXY_Ch1_loop_1:
 Music_FrostCavernXY_Ch2:
 	vibrato $8, $24
 	note_type 12, 11, 2
-	dutycycle 2
+	duty_cycle 2
 	octave 3
 	note C_, 2
 	note A#, 2

@@ -11,7 +11,7 @@ Music_WildBattlePrism:
 Music_WildBattlePrism_Ch1:
 	tempo 104
 	volume 7, 7
-	dutycycle $3
+	duty_cycle 3
 	tone $0002
 	vibrato $12, $15
 	note_type 12, 11, 2
@@ -170,7 +170,7 @@ Music_WildBattlePrism_branch_19f26b:
 	note G_, 6
 	note D_, 4
 	intensity $a2
-	dutycycle 2
+	duty_cycle 2
 	octave 3
 	note D_, 2
 	note __, 2
@@ -312,12 +312,12 @@ Music_WildBattlePrism_branch_19f26b:
 	octave 4
 	note D_, 2
 	intensity $b7
-	dutycycle 3
+	duty_cycle 3
 	octave 2
 	jumpchannel Music_WildBattlePrism_branch_19f26b
 
 Music_WildBattlePrism_Ch2:
-	dutycycle $3
+	duty_cycle 3
 	tone $0001
 	vibrato $8, $36
 	note_type 12, 12, 2

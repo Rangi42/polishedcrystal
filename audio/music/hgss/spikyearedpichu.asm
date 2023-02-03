@@ -14,7 +14,7 @@ Music_SpikyEaredPichuHGSS_Ch1:
 	volume 7, 7
 	callchannel Music_SpikyEaredPichuHGSS_Ch1_branch_1
 	callchannel Music_SpikyEaredPichuHGSS_Ch1_branch_1
-	dutycycle 1
+	duty_cycle 1
 	intensity $b3
 	note F_, 2
 	note F_, 2
@@ -59,7 +59,7 @@ Music_SpikyEaredPichuHGSS_Ch1:
 
 Music_SpikyEaredPichuHGSS_Ch1_branch_1:
 	note_type 4, 9, 2
-	dutycycle 0
+	duty_cycle 0
 	octave 3
 	note __, 6
 	note A_, 1
@@ -131,7 +131,7 @@ Music_SpikyEaredPichuHGSS_Ch1_branch_1:
 
 Music_SpikyEaredPichuHGSS_Ch2:
 	volume 7, 7
-	dutycycle 2
+	duty_cycle 2
 	note_type 12, 11, 3
 	octave 3
 	note C_, 2

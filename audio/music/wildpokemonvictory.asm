@@ -7,7 +7,7 @@ Music_WildPokemonVictory:
 Music_WildPokemonVictory_Ch1:
 	tempo 126
 	volume 7, 7
-	dutycycle $3
+	duty_cycle 3
 	tone $0001
 	note_type 12, 11, 1
 	octave 3
@@ -70,7 +70,7 @@ Music_WildPokemonVictory_branch_f455c:
 
 Music_WildPokemonVictory_Ch2:
 	vibrato $12, $24
-	dutycycle $2
+	duty_cycle 2
 	note_type 12, 13, 1
 	octave 4
 	note E_, 1

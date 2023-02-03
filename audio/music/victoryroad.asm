@@ -9,7 +9,7 @@ Music_VictoryRoad_Ch1:
 	tempo 144
 	volume 7, 7
 	stereopanning $f
-	dutycycle $3
+	duty_cycle 3
 	tone $0002
 	note_type 12, 11, 3
 Music_VictoryRoad_branch_f6c8d:
@@ -64,7 +64,7 @@ Music_VictoryRoad_branch_f6cb9:
 	endchannel
 
 Music_VictoryRoad_Ch2:
-	dutycycle $3
+	duty_cycle 3
 	vibrato $10, $24
 Music_VictoryRoad_branch_f6cd3:
 	note_type 12, 12, 2

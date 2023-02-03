@@ -8,7 +8,7 @@ Music_SproutTower:
 Music_SproutTower_Ch1:
 	tempo 176
 	volume 7, 7
-	dutycycle $3
+	duty_cycle 3
 	tone $0002
 	vibrato $8, $45
 	stereopanning $f
@@ -63,7 +63,7 @@ Music_SproutTower_branch_f6994:
 	jumpchannel Music_SproutTower_branch_f6994
 
 Music_SproutTower_Ch2:
-	dutycycle $3
+	duty_cycle 3
 	tone $0001
 	vibrato $8, $48
 	note_type 12, 11, 2

@@ -10,7 +10,7 @@ Music_LookOfficer_Ch1:
 	tone $0001
 	vibrato $12, $34
 	stereopanning $f
-	dutycycle $3
+	duty_cycle 3
 	note_type 12, 10, 7
 	octave 4
 	note C#, 1
@@ -37,7 +37,7 @@ Music_LookOfficer_branch_ed852:
 
 Music_LookOfficer_Ch2:
 	vibrato $12, $34
-	dutycycle $3
+	duty_cycle 3
 	note_type 12, 11, 7
 	octave 5
 	note D#, 1
@@ -46,7 +46,7 @@ Music_LookOfficer_Ch2:
 	note C_, 1
 	octave 4
 	note B_, 12
-	dutycycle $3
+	duty_cycle 3
 	intensity $a2
 	octave 1
 	note B_, 4

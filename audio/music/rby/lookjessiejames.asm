@@ -10,7 +10,7 @@ Music_LookJessieJames:
 Music_LookJessieJames_Ch1:
 	tempo 144
 	volume 7, 7
-	dutycycle 3
+	duty_cycle 3
 	vibrato $8, $14
 	note_type 12, 11, 2
 	octave 3
@@ -84,7 +84,7 @@ Music_LookJessieJames_branch_83187:
 	note A#, 4
 	jumpchannel Music_LookJessieJames_branch_83187
 Music_LookJessieJames_Ch2:
-	dutycycle 3
+	duty_cycle 3
 	vibrato $6, $15
 	note_type 12, 12, 2
 	octave 4

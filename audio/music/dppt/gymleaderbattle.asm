@@ -13,7 +13,7 @@ Music_GymLeaderBattleDPPt_Ch1:
 	tempo $6A
 	volume 7, 7
 	stereopanning $77
-	dutycycle 1
+	duty_cycle 1
 	tone $0002
 	vibrato $08, $15
 	octave 2
@@ -108,19 +108,19 @@ Music_GymLeaderBattleDPPt_Ch1_loop:
 	note F_, 2
 	note E_, 6
 	note G_, 10
-	dutycycle 2
+	duty_cycle 2
 	octave 2
 	note E_, 6
 	note G_, 10
 	note __, 12
-	dutycycle 1
+	duty_cycle 1
 	note G_, 4
 	note G#, 3
 	note G_, 3
 	note F_, 3
 	note G#, 7
 	note __, 12
-	dutycycle 0
+	duty_cycle 0
 	octave 4
 	note C#, 4
 	note C_, 3
@@ -226,7 +226,7 @@ Music_GymLeaderBattleDPPt_Ch1_loop:
 	note A_, 2
 	octave 1
 	note A_, 4
-	dutycycle 2
+	duty_cycle 2
 	slidepitchto 1, 7, G_
 	octave 2
 	note A#, 8
@@ -280,7 +280,7 @@ Music_GymLeaderBattleDPPt_Ch1_loop:
 	intensity $B4
 	octave 3
 	note G#, 8
-	dutycycle 1
+	duty_cycle 1
 	octave 2
 	note E_, 2
 	note D_, 2
@@ -358,7 +358,7 @@ Music_GymLeaderBattleDPPt_Ch1_loop:
 	note F_, 3
 	note G#, 7
 	note __, 12
-	dutycycle 0
+	duty_cycle 0
 	octave 4
 	note C#, 4
 	note C_, 3
@@ -411,11 +411,11 @@ Music_GymLeaderBattleDPPt_Ch1_loop:
 	octave 2
 	note A#, 2
 	note F#, 2
-	dutycycle 1
+	duty_cycle 1
 	jumpchannel Music_GymLeaderBattleDPPt_Ch1_loop
 
 Music_GymLeaderBattleDPPt_Ch2:
-	dutycycle 1
+	duty_cycle 1
 	tone $0001
 	vibrato $08, $36
 	octave 4
@@ -517,7 +517,7 @@ Music_GymLeaderBattleDPPt_Ch2_loop:
 	note F_, 2
 	note E_, 6
 	note C_, 6
-	dutycycle 2
+	duty_cycle 2
 	octave 3
 	note G_, 1
 	octave 4
@@ -526,7 +526,7 @@ Music_GymLeaderBattleDPPt_Ch2_loop:
 	note __, 1
 	note E_, 6
 	note C_, 10
-	dutycycle 1
+	duty_cycle 1
 	octave 3
 	note G_, 6
 	octave 4
@@ -581,7 +581,7 @@ Music_GymLeaderBattleDPPt_Ch2_loop:
 	note G_, 16
 	note __, 16
 	note __, 4
-	dutycycle 0
+	duty_cycle 0
 	intensity $C2
 	octave 2
 	note C_, 3
@@ -679,7 +679,7 @@ Music_GymLeaderBattleDPPt_Ch2_loop:
 	intensity $C2
 	note D#, 3
 	note C_, 3
-	dutycycle 2
+	duty_cycle 2
 	octave 2
 	note G_, 3
 	note F_, 3
@@ -715,7 +715,7 @@ Music_GymLeaderBattleDPPt_Ch2_loop:
 	octave 3
 	note C_, 4
 	note C_, 4
-	dutycycle 1
+	duty_cycle 1
 	note E_, 2
 	note G_, 2
 	octave 4
@@ -753,7 +753,7 @@ Music_GymLeaderBattleDPPt_Ch2_loop:
 	note __, 8
 	note E_, 4
 	note __, 8
-	dutycycle 2
+	duty_cycle 2
 	note G#, 2
 	note F_, 2
 	note C#, 2
@@ -765,7 +765,7 @@ Music_GymLeaderBattleDPPt_Ch2_loop:
 	note C#, 2
 	octave 3
 	note A#, 2
-	dutycycle 1
+	duty_cycle 1
 	intensity $C4
 	note G_, 4
 	note F_, 4
@@ -788,7 +788,7 @@ Music_GymLeaderBattleDPPt_Ch2_loop:
 	note __, 4
 	note E_, 4
 	note C_, 12
-	dutycycle 2
+	duty_cycle 2
 	octave 3
 	note G_, 2
 	octave 4
@@ -799,7 +799,7 @@ Music_GymLeaderBattleDPPt_Ch2_loop:
 	note __, 4
 	note E_, 4
 	note C_, 12
-	dutycycle 1
+	duty_cycle 1
 	note E_, 2
 	note C#, 2
 	octave 3
@@ -892,7 +892,7 @@ Music_GymLeaderBattleDPPt_Ch2_loop:
 	note __, 16
 	note __, 16
 	note __, 10
-	dutycycle 2
+	duty_cycle 2
 	note_type 12, 12, 2
 	note G#, 1
 	note F_, 1
@@ -906,7 +906,7 @@ Music_GymLeaderBattleDPPt_Ch2_loop:
 	octave 3
 	note A#, 1
 	intensity $C4
-	dutycycle 1
+	duty_cycle 1
 	jumpchannel Music_GymLeaderBattleDPPt_Ch2_loop
 
 Music_GymLeaderBattleDPPt_Ch3:

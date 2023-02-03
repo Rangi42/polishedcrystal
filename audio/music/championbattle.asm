@@ -7,7 +7,7 @@ Music_ChampionBattle:
 Music_ChampionBattle_Ch1:
 	tempo 98
 	volume 7, 7
-	dutycycle $3
+	duty_cycle 3
 	tone $0002
 	vibrato $12, $15
 	note_type 12, 11, 2
@@ -296,7 +296,7 @@ Music_ChampionBattle_branch_eab31:
 	endchannel
 
 Music_ChampionBattle_Ch2:
-	dutycycle $3
+	duty_cycle 3
 	vibrato $8, $36
 	tone $0001
 	note_type 12, 12, 2

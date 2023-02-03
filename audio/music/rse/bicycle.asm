@@ -12,7 +12,7 @@ Music_BicycleRSE:
 
 Music_BicycleRSE_Ch1:
 	tempo 70
-	dutycycle $3
+	duty_cycle 3
 	vibrato $12, $15
 	tone $0001
 	note_type 12, 8, 2
@@ -316,7 +316,7 @@ Music_BicycleRSE_Ch1:
 	jumpchannel Music_BicycleRSE_Ch1
 
 Music_BicycleRSE_Ch2:
-	dutycycle $2
+	duty_cycle 2
 	vibrato $12, $15
 	tone $0001
 	note_type 12, 10, 4
@@ -403,7 +403,7 @@ Music_BicycleRSE_Ch2:
 	note A_, 16
 	note __, 16
 	note __, 16
-	dutycycle $1
+	duty_cycle 1
 	intensity $54
 	callchannel Music_BicycleRSE_Ch2_branch_1
 	callchannel Music_BicycleRSE_Ch2_branch_2

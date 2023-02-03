@@ -9,7 +9,7 @@ Music_VioletCity_Ch1:
 	tempo 164
 	volume 7, 7
 	vibrato $12, $25
-	dutycycle $2
+	duty_cycle 2
 	note_type 12, 9, 5
 	note __, 16
 	stereopanning $f0
@@ -158,14 +158,14 @@ Music_VioletCity_branch_f0056:
 	note __, 8
 	octave 4
 	note F_, 3
-	dutycycle $1
+	duty_cycle 1
 	note_type 6, 7, 5
 	note G#, 1
 	note B_, 1
 	octave 5
 	note D#, 8
 	note_type 12, 9, 3
-	dutycycle $2
+	duty_cycle 2
 	note __, 16
 	note_type 6, 9, 1
 	stereopanning $f0
@@ -187,7 +187,7 @@ Music_VioletCity_branch_f0056:
 	stereopanning $ff
 	note D#, 8
 	note __, 8
-	dutycycle $3
+	duty_cycle 3
 	intensity $84
 	note __, 4
 	note G_, 2
@@ -286,7 +286,7 @@ Music_VioletCity_branch_f0056:
 	note A#, 1
 	octave 5
 	note C#, 1
-	dutycycle $2
+	duty_cycle 2
 	octave 4
 	note C#, 6
 	note C_, 1
@@ -299,7 +299,7 @@ Music_VioletCity_branch_f0056:
 
 Music_VioletCity_Ch2:
 	vibrato $12, $24
-	dutycycle $2
+	duty_cycle 2
 	note_type 12, 12, 7
 	note __, 16
 	octave 3
@@ -424,7 +424,7 @@ Music_VioletCity_branch_f0199:
 	note B_, 12
 	note __, 4
 	intensity $a7
-	dutycycle $3
+	duty_cycle 3
 	note __, 2
 	note B_, 1
 	octave 4
@@ -492,7 +492,7 @@ Music_VioletCity_branch_f0199:
 	note __, 5
 	vibrato $12, $24
 	intensity $a7
-	dutycycle $2
+	duty_cycle 2
 	octave 4
 	note A#, 6
 	note A_, 1

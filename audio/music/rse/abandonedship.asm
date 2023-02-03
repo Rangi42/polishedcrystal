@@ -13,7 +13,7 @@ Music_AbandonedShipRSE:
 Music_AbandonedShipRSE_Ch1:
 	tempo 188
 	volume 7, 7
-	dutycycle $0
+	duty_cycle 0
 	tone $0002
 	vibrato $10, $22
 	note_type 12, 8, 2
@@ -109,7 +109,7 @@ Music_AbandonedShipRSE_Ch1_loop:
 	octave 3
 	note F_, 6
 	intensity $82
-	dutycycle $2
+	duty_cycle 2
 	octave 3
 	note F#, 1
 	note A_, 1
@@ -190,7 +190,7 @@ Music_AbandonedShipRSE_Ch1_loop:
 	note G_, 1
 	note D#, 1
 	note C_, 1
-	dutycycle $0
+	duty_cycle 0
 	octave 4
 	note F#, 2
 	note D#, 4
@@ -257,7 +257,7 @@ Music_AbandonedShipRSE_Ch1_loop:
 	jumpchannel Music_AbandonedShipRSE_Ch1_loop
 
 Music_AbandonedShipRSE_Ch2:
-	dutycycle $3
+	duty_cycle 3
 	vibrato $1c, $12
 	note_type 12, 10, 0
 	note __, 6
@@ -273,7 +273,7 @@ Music_AbandonedShipRSE_Ch2_loop:
 	intensity $a7
 	vibrato $15, $F2
 	note C_, 6
-	dutycycle $2
+	duty_cycle 2
 	intensity $85
 	note __, 2
 	vibrato $1c, $12
@@ -282,7 +282,7 @@ Music_AbandonedShipRSE_Ch2_loop:
 	octave 4
 	note A_, 4
 	note __, 6
-	dutycycle $3
+	duty_cycle 3
 	intensity $a0
 	note D#, 4
 	intensity $a7
@@ -313,7 +313,7 @@ Music_AbandonedShipRSE_Ch2_loop:
 	vibrato $15, $62
 	intensity $a7
 	note C#, 6
-	dutycycle $2
+	duty_cycle 2
 	intensity $85
 	vibrato $1c, $12
 	note __, 2
@@ -383,7 +383,7 @@ Music_AbandonedShipRSE_Ch2_loop:
 	intensity $24
 	note C_, 2
 	note __, 2
-	dutycycle $3
+	duty_cycle 3
 	note_type 6, 10, 7
 	octave 3
 	note G_, 1

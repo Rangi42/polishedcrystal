@@ -10,7 +10,7 @@ Music_LugiaBattleHGSS:
 
 Music_LugiaBattleHGSS_Ch1:
 	tempo $66
-	dutycycle $3
+	duty_cycle 3
 	note_type 12, 12, 7
 	note __, 4
 	octave 3
@@ -39,7 +39,7 @@ Music_LugiaBattleHGSS_Ch1:
 	note F#, 1
 	note D#, 1
 Music_LugiaBattleHGSS_Ch1_L:
-	dutycycle $0
+	duty_cycle 0
 	intensity $c7
 	octave 2
 	note B_, 2
@@ -78,14 +78,14 @@ Music_LugiaBattleHGSS_Ch1_L:
 	note E_, 2
 	note F#, 4
 	note B_, 12
-	dutycycle $2
+	duty_cycle 2
 	intensity $a6
 	octave 3
 	note E_, 6
 	note G_, 6
 	note C_, 6
 	note E_, 6
-	dutycycle $0
+	duty_cycle 0
 	intensity $c7
 	note G_, 2
 	note A#, 6
@@ -265,7 +265,7 @@ Music_LugiaBattleHGSS_Ch1_L:
 	note __, 6
 	note C_, 2
 	note __, 6
-	dutycycle $3
+	duty_cycle 3
 	note F#, 12
 	octave 4
 	note E_, 1
@@ -276,7 +276,7 @@ Music_LugiaBattleHGSS_Ch1_L:
 	jumpchannel Music_LugiaBattleHGSS_Ch1_L
 
 Music_LugiaBattleHGSS_Ch2:
-	dutycycle $3
+	duty_cycle 3
 	note_type 12, 12, 7
 	note __, 4
 	octave 3
@@ -298,7 +298,7 @@ Music_LugiaBattleHGSS_Ch2:
 	note C#, 16
 Music_LugiaBattleHGSS_Ch2_L:
 	note __, 10
-	dutycycle $0
+	duty_cycle 0
 	octave 3
 	note G_, 2
 	note F#, 2
@@ -306,7 +306,7 @@ Music_LugiaBattleHGSS_Ch2_L:
 	note B_, 4
 	octave 4
 	note D_, 12
-	dutycycle $2
+	duty_cycle 2
 	intensity $a6
 	octave 3
 	note G_, 6
@@ -316,7 +316,7 @@ Music_LugiaBattleHGSS_Ch2_L:
 	note G_, 2
 	octave 2
 	note A#, 8
-	dutycycle $3
+	duty_cycle 3
 	intensity $c7
 	octave 4
 	note F#, 1
@@ -339,7 +339,7 @@ Music_LugiaBattleHGSS_Ch2_L:
 	note E_, 1
 	note F#, 2
 	note F#, 6
-	dutycycle $2
+	duty_cycle 2
 	intensity $a6
 	octave 3
 	note C_, 2
@@ -362,7 +362,7 @@ Music_LugiaBattleHGSS_Ch2_L:
 	octave 3
 	note G_, 2
 	note A#, 6
-	dutycycle $3
+	duty_cycle 3
 	intensity $c7
 	vibrato $5, $25
 	octave 4
@@ -496,7 +496,7 @@ Music_LugiaBattleHGSS_Ch2_L2:
 	note __, 2
 	note A#, 2
 	note __, 2
-	dutycycle $0
+	duty_cycle 0
 	note_type 8, 12, 7
 	vibrato $0, $0
 	octave 4
@@ -523,7 +523,7 @@ Music_LugiaBattleHGSS_Ch2_L2:
 	note __, 16
 	note __, 16
 	note __, 12
-	dutycycle $3
+	duty_cycle 3
 	octave 3
 	note G_, 1
 	note G#, 1

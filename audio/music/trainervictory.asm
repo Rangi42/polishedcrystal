@@ -7,7 +7,7 @@ Music_TrainerVictory:
 Music_TrainerVictory_Ch1:
 	tempo 120
 	volume 7, 7
-	dutycycle $2
+	duty_cycle 2
 	tone $0001
 	note_type 8, 11, 1
 	octave 4
@@ -86,7 +86,7 @@ Music_TrainerVictory_branch_ebf11:
 
 Music_TrainerVictory_Ch2:
 	vibrato $12, $34
-	dutycycle $3
+	duty_cycle 3
 	note_type 8, 13, 1
 	octave 4
 	note A_, 2

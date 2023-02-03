@@ -8,7 +8,7 @@ Music_TinTower:
 Music_TinTower_Ch1:
 	tempo 208
 	volume 7, 7
-	dutycycle $3
+	duty_cycle 3
 	tone $0004
 	vibrato $8, $45
 Music_TinTower_branch_f682a:
@@ -97,7 +97,7 @@ Music_TinTower_branch_f682a:
 	jumpchannel Music_TinTower_branch_f682a
 
 Music_TinTower_Ch2:
-	dutycycle $3
+	duty_cycle 3
 	tone $0002
 	vibrato $18, $44
 Music_TinTower_branch_f6893:

@@ -8,7 +8,7 @@ Music_BurnedTower:
 Music_BurnedTower_Ch1:
 	tempo 168
 	volume 7, 7
-	dutycycle $1
+	duty_cycle 1
 	tone $0004
 	vibrato $8, $45
 	stereopanning $f0
@@ -100,7 +100,7 @@ Music_BurnedTower_branch_f6b17:
 	jumpchannel Music_BurnedTower_branch_f6ad8
 
 Music_BurnedTower_Ch2:
-	dutycycle $2
+	duty_cycle 2
 	vibrato $20, $82
 	tone $0002
 	note_type 12, 7, 0
@@ -109,7 +109,7 @@ Music_BurnedTower_Ch2:
 Music_BurnedTower_branch_f6b39:
 	callchannel Music_BurnedTower_branch_f6b8e
 	intensity $c1
-	dutycycle $3
+	duty_cycle 3
 	note __, 2
 	octave 2
 	note A_, 4
@@ -146,7 +146,7 @@ Music_BurnedTower_branch_f6b39:
 	intensity $b0
 	octave 2
 	note G_, 4
-	dutycycle $2
+	duty_cycle 2
 	intensity $b0
 	octave 3
 	note F#, 4

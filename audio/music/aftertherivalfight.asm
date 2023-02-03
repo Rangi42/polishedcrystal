@@ -8,7 +8,7 @@ Music_AfterTheRivalFight:
 Music_AfterTheRivalFight_Ch1:
 	tempo 112
 	volume 7, 7
-	dutycycle $0
+	duty_cycle 0
 	tone $0001
 	vibrato $8, $14
 	stereopanning $f0
@@ -25,7 +25,7 @@ Music_AfterTheRivalFight_Ch1:
 	jumpchannel Music_AfterTheRivalFight_branch_f4fb1
 
 Music_AfterTheRivalFight_Ch2:
-	dutycycle $1
+	duty_cycle 1
 	vibrato $6, $35
 	stereopanning $f
 	note_type 12, 12, 2

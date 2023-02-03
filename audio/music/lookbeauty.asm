@@ -8,7 +8,7 @@ Music_LookBeauty:
 Music_LookBeauty_Ch1:
 	stereopanning $f
 	vibrato $12, $25
-	dutycycle $2
+	duty_cycle 2
 	tempo 128
 	volume 7, 7
 	note_type 12, 10, 3
@@ -16,7 +16,7 @@ Music_LookBeauty_Ch1:
 	note __, 8
 	octave 4
 	note C_, 8
-	dutycycle $3
+	duty_cycle 3
 Music_LookBeauty_branch_eee5f:
 	note __, 4
 	octave 3
@@ -80,7 +80,7 @@ Music_LookBeauty_branch_eee5f:
 Music_LookBeauty_Ch2:
 	stereopanning $f0
 	vibrato $10, $23
-	dutycycle $2
+	duty_cycle 2
 	note_type 12, 12, 7
 	octave 3
 	note D_, 1
@@ -111,7 +111,7 @@ Music_LookBeauty_Ch2:
 	note __, 1
 	note F#, 1
 	note __, 1
-	dutycycle $3
+	duty_cycle 3
 Music_LookBeauty_branch_eeec5:
 	note_type 12, 12, 7
 	note G_, 16

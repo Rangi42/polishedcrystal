@@ -12,7 +12,7 @@ Music_LyraEncounterHGSS:
 
 Music_LyraEncounterHGSS_Ch1:
 	tempo 184
-	dutycycle 1
+	duty_cycle 1
 	note_type 12, 8, 5
 	octave 2
 	note A#, 1
@@ -187,7 +187,7 @@ Music_LyraEncounterHGSS_Ch1_loop:
 	jumpchannel Music_LyraEncounterHGSS_Ch1_loop
 
 Music_LyraEncounterHGSS_Ch2:
-	dutycycle 2
+	duty_cycle 2
 	note_type 12, 11, 4
 	octave 4
 	note C_, 1
@@ -243,7 +243,7 @@ Music_LyraEncounterHGSS_Ch2_loop:
 	note F_, 4
 ;;;;;;;;;;;mark
 	intensity $70
-	dutycycle 0
+	duty_cycle 0
 	octave 2
 	note A#, 8
 	octave 3
@@ -271,7 +271,7 @@ Music_LyraEncounterHGSS_Ch2_loop:
 ;;;;;;;;;;;;;;mark
 	intensity $b4
 	octave 4
-	dutycycle 2
+	duty_cycle 2
 	note D#, 4
 	note D#, 1
 	note G_, 2

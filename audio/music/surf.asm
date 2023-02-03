@@ -10,7 +10,7 @@ Music_Surf_Ch1:
 	note_type 12, 10, 7
 	stereopanning $f
 Music_Surf_branch_f519e:
-	dutycycle $2
+	duty_cycle 2
 	vibrato $10, $24
 	intensity $73
 	octave 3
@@ -66,9 +66,9 @@ Music_Surf_branch_f519e:
 	note A#, 2
 	octave 4
 	note D_, 2
-	dutycycle $0
+	duty_cycle 0
 	callchannel Music_Surf_branch_f5233
-	dutycycle $1
+	duty_cycle 1
 	note_type 8, 10, 7
 	callchannel Music_Surf_branch_f5233
 	callchannel Music_Surf_branch_f5293
@@ -84,7 +84,7 @@ Music_Surf_branch_f519e:
 	note C_, 2
 	note D#, 2
 	note G_, 2
-	dutycycle $1
+	duty_cycle 1
 	note_type 6, 9, 7
 	callchannel Music_Surf_branch_f5293
 	intensity $a8
@@ -94,13 +94,13 @@ Music_Surf_branch_f519e:
 	octave 4
 	note D_, 3
 	intensity $a8
-	dutycycle $1
+	duty_cycle 1
 	callchannel Music_Surf_branch_f52d9
 	octave 3
 	note D#, 8
 	note G#, 8
 	note D#, 8
-	dutycycle $3
+	duty_cycle 3
 	note_type 8, 9, 8
 	callchannel Music_Surf_branch_f52d9
 	note_type 12, 10, 7
@@ -341,7 +341,7 @@ Music_Surf_Ch2:
 Music_Surf_branch_f5317:
 	note_type 12, 12, 2
 	stereopanning $f0
-	dutycycle $2
+	duty_cycle 2
 	vibrato $14, $23
 Music_Surf_branch_f5321:
 	octave 1
@@ -407,12 +407,12 @@ Music_Surf_branch_f5333:
 	note A#, 4
 	note_type 6, 11, 8
 	callchannel Music_Surf_branch_f53d6
-	dutycycle $1
+	duty_cycle 1
 	intensity $b8
 	callchannel Music_Surf_branch_f53e8
-	dutycycle $2
+	duty_cycle 2
 	callchannel Music_Surf_branch_f53f3
-	dutycycle $1
+	duty_cycle 1
 	intensity $b8
 	callchannel Music_Surf_branch_f5404
 	octave 3
@@ -420,21 +420,21 @@ Music_Surf_branch_f5333:
 	octave 4
 	note C#, 8
 	transpose 0, 12
-	dutycycle $3
+	duty_cycle 3
 	callchannel Music_Surf_branch_f53d6
 	intensity $b8
-	dutycycle $1
+	duty_cycle 1
 	callchannel Music_Surf_branch_f53e8
-	dutycycle $3
+	duty_cycle 3
 	callchannel Music_Surf_branch_f53f3
 	intensity $b8
-	dutycycle $1
+	duty_cycle 1
 	callchannel Music_Surf_branch_f5404
 	transpose 0, 0
 	note_type 12, 11, 8
 	octave 4
 	note B_, 12
-	dutycycle $2
+	duty_cycle 2
 	note A#, 4
 	note G#, 4
 	note D#, 4

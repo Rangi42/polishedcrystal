@@ -13,7 +13,7 @@ Music_Route47HGSS:
 Music_Route47HGSS_Ch1:
 	tempo 192
 	volume 7, 7
-	dutycycle 0
+	duty_cycle 0
 	tone $0002
 	vibrato $8, $15
 	note_type 6, 8, 2
@@ -47,7 +47,7 @@ Music_Route47HGSS_Ch1_loop_1:
 	intensity $22
 	note C_, 2
 	note_type 12, 9, 3
-	dutycycle 2
+	duty_cycle 2
 	octave 3
 	note E_, 2
 	note C_, 2
@@ -101,19 +101,19 @@ Music_Route47HGSS_Ch1_loop_1:
 	octave 3
 	note C_, 2
 	note C#, 2
-	dutycycle 0
+	duty_cycle 0
 	intensity $62
 	octave 2
 	note C_, 1
 	note C_, 1
-	dutycycle 2
+	duty_cycle 2
 	intensity $93
 	octave 3
 	note C_, 2
 	octave 2
 	note A#, 2
 	note A_, 2
-	dutycycle 0
+	duty_cycle 0
 	intensity $62
 	octave 3
 	note C_, 1
@@ -318,7 +318,7 @@ Music_Route47HGSS_Ch1_loop_1:
 	note G_, 4
 	note C_, 4
 	note G_, 4
-	dutycycle 2
+	duty_cycle 2
 	note_type 12, 8, 2
 	octave 3
 	note F_, 1
@@ -456,7 +456,7 @@ Music_Route47HGSS_Ch1_loop_1:
 	note C_, 1
 	note F_, 1
 	octave 3
-	dutycycle 0
+	duty_cycle 0
 	note_type 6, 8, 2
 	note A_, 1
 	octave 4
@@ -568,17 +568,17 @@ Music_Route47HGSS_Ch1_branch_1:
 	endchannel
 
 Music_Route47HGSS_Ch1_branch_2:
-	dutycycle 0
+	duty_cycle 0
 	intensity $62
 	octave 3
 	note C_, 1
 	note C_, 1
-	dutycycle 2
+	duty_cycle 2
 	intensity $93
 	endchannel
 
 Music_Route47HGSS_Ch2:
-	dutycycle $2
+	duty_cycle 2
 	vibrato $12, $25
 	tone $0001
 	note_type 8, 5, 2
@@ -652,7 +652,7 @@ Music_Route47HGSS_Ch2_loop:
 	note A_, 1
 	note G_, 1
 	note F_, 2
-	dutycycle 3
+	duty_cycle 3
 	intensity $b7
 	octave 3
 	note G_, 4
@@ -708,7 +708,7 @@ Music_Route47HGSS_Ch2_loop:
 	note A#, 1
 	note A_, 1
 	note __, 4
-	dutycycle 2
+	duty_cycle 2
 	octave 4
 	intensity $a7
 	note C_, 4

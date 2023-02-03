@@ -167,7 +167,7 @@ Music_ViridianForest_Ch2:
 Music_ViridianForest_branch_ed9a1:
 	intensity $b2
 	callchannel Music_ViridianForest_branch_ed9ba
-	dutycycle $2
+	duty_cycle 2
 	intensity $b5
 	callchannel Music_ViridianForest_branch_ed9dc
 	callchannel Music_ViridianForest_branch_ed9dc

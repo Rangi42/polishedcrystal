@@ -10,7 +10,7 @@ Music_MagnetTrain_Ch1:
 	volume 7, 7
 	stereopanning $f
 	vibrato $14, $23
-	dutycycle $2
+	duty_cycle 2
 	note_type 12, 11, 2
 	note __, 16
 	note __, 16
@@ -71,7 +71,7 @@ Music_MagnetTrain_Ch1:
 
 Music_MagnetTrain_Ch2:
 	vibrato $14, $23
-	dutycycle $1
+	duty_cycle 1
 	note_type 12, 13, 2
 	stereopanning $f0
 	note_type 12, 13, 8
@@ -92,7 +92,7 @@ Music_MagnetTrain_Ch2:
 	note __, 4
 	note F_, 4
 	note __, 4
-	dutycycle $3
+	duty_cycle 3
 	note_type 12, 13, 7
 	octave 4
 	note G_, 16

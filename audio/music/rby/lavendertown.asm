@@ -11,7 +11,7 @@ Music_LavenderTownRBY:
 Music_LavenderTownRBY_Ch1:
 	tempo 152
 	volume 7, 7
-	dutycycle 1
+	duty_cycle 1
 	vibrato 0, 136
 	note_type 12, 8, 7
 	note __, 16
@@ -72,7 +72,7 @@ Music_LavenderTownRBY_branch_bb6b:
 
 Music_LavenderTownRBY_Ch2:
 	vibrato 0, 52
-	dutycycle 3
+	duty_cycle 3
 	note_type 12, 9, 1
 
 Music_LavenderTownRBY_branch_bba5:

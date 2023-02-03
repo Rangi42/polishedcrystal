@@ -5,7 +5,7 @@ Sfx_PokeballsPlacedOnTable:
 	channel 5, .Ch5
 
 .Ch5:
-	dutycycle $2
+	duty_cycle 2
 	soundinput $3a
 	square_note 4, 15, 2, 512
 	soundinput $22
@@ -21,7 +21,7 @@ Sfx_BallWiggle:
 	channel 5, .Ch5
 
 .Ch5:
-	dutycycle $2
+	duty_cycle 2
 	soundinput $3a
 	square_note 4, 15, 2, 1024
 	soundinput $22
@@ -37,7 +37,7 @@ Sfx_Potion:
 	channel 5, .Ch5
 
 .Ch5:
-	dutycycle $2
+	duty_cycle 2
 	soundinput $17
 	square_note 15, 15, 0, 1264
 	square_note 15, 15, 2, 1616
@@ -52,7 +52,7 @@ Sfx_FullHeal:
 	channel 5, .Ch5
 
 .Ch5:
-	dutycycle $2
+	duty_cycle 2
 	soundinput $14
 	square_note 4, 15, 2, 1536
 	square_note 4, 15, 2, 1536
@@ -82,7 +82,7 @@ Sfx_ReadText2:
 	channel 5, .Ch5
 
 .Ch5:
-	dutycycle $2
+	duty_cycle 2
 	square_note 0, 9, 1, 1984
 	square_note 0, 8, 1, 2000
 	square_note 0, 9, 1, 1984
@@ -98,7 +98,7 @@ Sfx_Poison:
 
 .Ch5:
 .loop:
-	dutycycle $0
+	duty_cycle 0
 	soundinput $14
 	square_note 4, 15, 2, 1536
 	loopchannel 4, .loop
@@ -114,7 +114,7 @@ Sfx_GotSafariBalls:
 	channel 5, .Ch5
 
 .Ch5:
-	dutycycle $2
+	duty_cycle 2
 	soundinput $15
 	square_note 15, 15, 0, 1264
 	square_note 15, 15, 2, 1616
@@ -129,7 +129,7 @@ Sfx_BootPc:
 	channel 5, .Ch5
 
 .Ch5:
-	dutycycle $2
+	duty_cycle 2
 	square_note 15, 15, 2, 1984
 	square_note 15, 0, 0, 0
 	square_note 3, 10, 1, 1920
@@ -150,7 +150,7 @@ Sfx_ShutDownPc:
 	channel 5, .Ch5
 
 .Ch5:
-	dutycycle $2
+	duty_cycle 2
 	square_note 4, 15, 0, 1536
 	square_note 4, 15, 0, 1024
 	square_note 4, 15, 0, 512
@@ -165,7 +165,7 @@ Sfx_ChoosePcOption:
 	channel 5, .Ch5
 
 .Ch5:
-	dutycycle $2
+	duty_cycle 2
 	square_note 6, 15, 0, 1792
 	square_note 4, 0, 0, 0
 	square_note 6, 15, 0, 1792
@@ -180,7 +180,7 @@ Sfx_EscapeRope:
 	channel 5, .Ch5
 
 .Ch5:
-	dutycycle $1
+	duty_cycle 1
 	soundinput $17
 	square_note 15, 13, 7, 1536
 	square_note 15, 11, 7, 1408
@@ -198,7 +198,7 @@ Sfx_PushButton:
 	channel 5, .Ch5
 
 .Ch5:
-	dutycycle $2
+	duty_cycle 2
 	square_note 4, 0, 0, 0
 	square_note 2, 15, 1, 1664
 	square_note 1, 0, 0, 0
@@ -214,7 +214,7 @@ Sfx_SecondPartOfItemfinder:
 	channel 5, .Ch5
 
 .Ch5:
-	dutycycle $2
+	duty_cycle 2
 	soundinput $2c
 	square_note 4, 15, 2, 1280
 	soundinput $22
@@ -231,7 +231,7 @@ Sfx_WarpTo:
 	channel 5, .Ch5
 
 .Ch5:
-	dutycycle $1
+	duty_cycle 1
 	soundinput $17
 	square_note 15, 13, 7, 1280
 	square_note 15, 11, 7, 1408
@@ -249,7 +249,7 @@ Sfx_WarpFrom:
 	channel 5, .Ch5
 
 .Ch5:
-	dutycycle $1
+	duty_cycle 1
 	soundinput $17
 	square_note 15, 13, 7, 1792
 	square_note 15, 11, 7, 1664
@@ -267,7 +267,7 @@ Sfx_ChangeDexMode:
 	channel 5, .Ch5
 
 .Ch5:
-	dutycycle $1
+	duty_cycle 1
 	soundinput $16
 	square_note 15, 13, 2, 1280
 	soundinput $8
@@ -281,7 +281,7 @@ Sfx_JumpOverLedge:
 	channel 5, .Ch5
 
 .Ch5:
-	dutycycle $2
+	duty_cycle 2
 	soundinput $95
 	square_note 15, 15, 2, 1024
 	soundinput $8
@@ -336,7 +336,7 @@ Sfx_Wrong:
 	channel 6, .Ch6
 
 .Ch5:
-	dutycycle $3
+	duty_cycle 3
 	soundinput $5a
 	square_note 4, 15, 0, 1280
 	soundinput $8
@@ -346,7 +346,7 @@ Sfx_Wrong:
 	endchannel
 
 .Ch6:
-	dutycycle $3
+	duty_cycle 3
 	square_note 4, 15, 0, 1025
 	square_note 4, 0, 0, 0
 	square_note 15, 15, 0, 1025
@@ -361,7 +361,7 @@ Sfx_Squeak:
 	channel 5, .Ch5
 
 .Ch5:
-	dutycycle $0
+	duty_cycle 0
 	soundinput $17
 	square_note 15, 13, 2, 1792
 	soundinput $8
@@ -394,7 +394,7 @@ Sfx_Boat:
 	channel 6, .Ch6
 
 .Ch5:
-	dutycycle $2
+	duty_cycle 2
 	square_note 15, 15, 0, 1280
 	square_note 4, 0, 0, 0
 	square_note 15, 15, 0, 1280
@@ -405,7 +405,7 @@ Sfx_Boat:
 	endchannel
 
 .Ch6:
-	dutycycle $3
+	duty_cycle 3
 	square_note 15, 15, 0, 1154
 	square_note 4, 0, 0, 0
 	square_note 15, 15, 0, 1154
@@ -423,7 +423,7 @@ Sfx_WallOpen:
 	channel 5, .Ch5
 
 .Ch5:
-	dutycycle $1
+	duty_cycle 1
 	soundinput $3a
 	square_note 4, 15, 2, 1280
 	soundinput $22
@@ -471,12 +471,12 @@ Sfx_SwitchPokemon:
 	channel 6, .Ch6
 
 .Ch5:
-	dutycycle $2
+	duty_cycle 2
 	square_note 8, 14, 1, 1856
 	endchannel
 
 .Ch6:
-	dutycycle $2
+	duty_cycle 2
 	square_note 2, 0, 8, 0
 	square_note 8, 11, 1, 1857
 	endchannel
@@ -490,12 +490,12 @@ Sfx_Tally:
 	channel 6, .Ch6
 
 .Ch5:
-	dutycycle $2
+	duty_cycle 2
 	square_note 4, 15, 1, 1920
 	endchannel
 
 .Ch6:
-	dutycycle $2
+	duty_cycle 2
 	square_note 1, 0, 8, 0
 	square_note 4, 10, 1, 1889
 	endchannel
@@ -509,13 +509,13 @@ Sfx_Transaction:
 	channel 6, .Ch6
 
 .Ch5:
-	dutycycle $2
+	duty_cycle 2
 	square_note 4, 14, 1, 1792
 	square_note 24, 15, 2, 2016
 	endchannel
 
 .Ch6:
-	dutycycle $2
+	duty_cycle 2
 	square_note 1, 0, 8, 0
 	square_note 4, 9, 1, 1729
 	square_note 24, 10, 2, 1953
@@ -529,7 +529,7 @@ Sfx_Bump:
 	channel 5, .Ch5
 
 .Ch5:
-	dutycycle $2
+	duty_cycle 2
 	soundinput $5a
 	square_note 15, 15, 1, 768
 	soundinput $8
@@ -559,7 +559,7 @@ Sfx_Save:
 	channel 6, .Ch6
 
 .Ch5:
-	dutycycle $2
+	duty_cycle 2
 	square_note 2, 15, 1, 1792
 	square_note 1, 14, 1, 1536
 	square_note 1, 14, 1, 1664
@@ -570,7 +570,7 @@ Sfx_Save:
 	endchannel
 
 .Ch6:
-	dutycycle $2
+	duty_cycle 2
 	square_note 2, 0, 8, 0
 	square_note 2, 10, 1, 1793
 	square_note 1, 9, 1, 1537
@@ -621,7 +621,7 @@ Sfx_ElevatorEnd:
 	channel 5, .Ch5
 
 .Ch5:
-	dutycycle $2
+	duty_cycle 2
 	square_note 15, 15, 3, 1840
 	square_note 8, 6, 5, 1840
 	square_note 15, 15, 4, 1792
@@ -639,13 +639,13 @@ Sfx_ThrowBall:
 	channel 6, .Ch6
 
 .Ch5:
-	dutycycle $2
+	duty_cycle 2
 	soundinput $2f
 	square_note 15, 15, 2, 1920
 	endchannel
 
 .Ch6:
-	dutycycle $2
+	duty_cycle 2
 	square_note 15, 12, 2, 1922
 	endchannel
 
@@ -658,7 +658,7 @@ Sfx_BallPoof:
 	channel 8, .Ch8
 
 .Ch5:
-	dutycycle $2
+	duty_cycle 2
 	soundinput $16
 	square_note 15, 15, 2, 1024
 	soundinput $8
@@ -717,7 +717,7 @@ Sfx_SlotMachineStart:
 	channel 6, .Ch6
 
 .Ch5:
-	dutycycle $2
+	duty_cycle 2
 	soundinput $44
 	square_note 15, 15, 0, 1264
 	soundinput $17
@@ -726,7 +726,7 @@ Sfx_SlotMachineStart:
 	endchannel
 
 .Ch6:
-	dutycycle $2
+	duty_cycle 2
 	square_note 15, 9, 2, 1536
 	square_note 15, 9, 2, 1922
 	endchannel
@@ -838,7 +838,7 @@ Sfx_Unknown66:
 	channel 5, .Ch5
 
 .Ch5:
-	dutycycle $2
+	duty_cycle 2
 	square_note 1, 15, 2, 1696
 	square_note 1, 15, 2, 1760
 	square_note 8, 15, 1, 1792
@@ -852,7 +852,7 @@ Sfx_GetCoinFromSlots:
 	channel 5, .Ch5
 
 .Ch5:
-	dutycycle $2
+	duty_cycle 2
 	square_note 2, 15, 1, 1792
 	square_note 8, 8, 1, 2016
 	endchannel
@@ -866,14 +866,14 @@ Sfx_PayDay:
 	channel 6, .Ch6
 
 .Ch5:
-	dutycycle $3
+	duty_cycle 3
 	square_note 5, 14, 1, 1792
 	square_note 2, 14, 1, 1920
 	square_note 15, 15, 1, 1984
 	endchannel
 
 .Ch6:
-	dutycycle $2
+	duty_cycle 2
 	square_note 4, 12, 1, 1729
 	square_note 2, 12, 1, 1857
 	square_note 15, 13, 1, 1921
@@ -887,7 +887,7 @@ Sfx_Metronome:
 	channel 5, .Ch5
 
 .Ch5:
-	dutycycle $2
+	duty_cycle 2
 	soundinput $5f
 	square_note 4, 4, 0, 2016
 	square_note 4, 6, 0, 2016
@@ -920,7 +920,7 @@ Sfx_Kinesis:
 	channel 5, .Ch5
 
 .Ch5:
-	dutycycle $1
+	duty_cycle 1
 	soundinput $af
 	square_note 15, 15, 2, 1920
 	soundinput $8
@@ -934,7 +934,7 @@ Sfx_Lick:
 	channel 5, .Ch5
 
 .Ch5:
-	dutycycle $1
+	duty_cycle 1
 	soundinput $97
 	square_note 15, 15, 2, 1280
 	soundinput $8
@@ -1212,7 +1212,7 @@ Sfx_Bite:
 	channel 8, .Ch8
 
 .Ch5:
-	dutycycle $0
+	duty_cycle 0
 	soundinput $3a
 	square_note 4, 15, 2, 512
 	soundinput $22
@@ -1304,7 +1304,7 @@ Sfx_WaterGun:
 	channel 8, .Ch8
 
 .Ch5:
-	dutycycle $1
+	duty_cycle 1
 	soundinput $97
 	square_note 15, 15, 2, 1792
 	soundinput $8
@@ -1357,7 +1357,7 @@ Sfx_Supersonic:
 	channel 8, .Ch8
 
 .Ch5:
-	dutycycle $2
+	duty_cycle 2
 	square_note 15, 3, -7, 1984
 .branch5:
 	square_note 15, 13, -7, 1984
@@ -1392,7 +1392,7 @@ Sfx_Leer:
 
 .Ch5:
 .branch5:
-	dutycycle $0
+	duty_cycle 0
 	square_note 0, 15, 1, 1984
 	square_note 0, 15, 1, 1792
 	loopchannel 12, .branch5
@@ -1594,7 +1594,7 @@ Sfx_Charge:
 
 .Ch5:
 .branch5:
-	dutycycle $0
+	duty_cycle 0
 	square_note 2, 15, 1, 512
 	square_note 3, 15, 1, 1792
 	square_note 4, 15, 1, 1280
@@ -1663,7 +1663,7 @@ Sfx_Psychic:
 	channel 8, .Ch8
 
 .Ch5:
-	dutycycle $2
+	duty_cycle 2
 	soundinput $f7
 	square_note 8, 12, 4, 1981
 	square_note 8, 12, 4, 1982
@@ -1675,7 +1675,7 @@ Sfx_Psychic:
 	endchannel
 
 .Ch6:
-	dutycycle $2
+	duty_cycle 2
 	square_note 8, 12, 4, 1904
 	square_note 8, 12, 4, 1889
 	square_note 8, 12, 4, 1890
@@ -1702,7 +1702,7 @@ Sfx_Screech:
 	channel 6, .Ch6
 
 .Ch5:
-	dutycycle $2
+	duty_cycle 2
 	square_note 15, 15, -7, 2016
 	square_note 15, 15, -7, 2016
 	square_note 15, 15, -7, 2016
@@ -1711,7 +1711,7 @@ Sfx_Screech:
 	endchannel
 
 .Ch6:
-	dutycycle $3
+	duty_cycle 3
 	square_note 15, 15, -7, 2018
 	square_note 15, 15, -7, 2017
 	square_note 15, 15, -7, 2018
@@ -1728,14 +1728,14 @@ Sfx_BoneClub:
 	channel 6, .Ch6
 
 .Ch5:
-	dutycycle $2
+	duty_cycle 2
 	soundinput $af
 	square_note 8, 15, 1, 1792
 	soundinput $8
 	endchannel
 
 .Ch6:
-	dutycycle $3
+	duty_cycle 3
 	square_note 8, 15, 1, 1793
 	endchannel
 
@@ -1748,7 +1748,7 @@ Sfx_Sharpen:
 	channel 6, .Ch6
 
 .Ch5:
-	dutycycle $2
+	duty_cycle 2
 	square_note 6, 15, 1, 1280
 	square_note 6, 15, 1, 1408
 	square_note 6, 15, 1, 1536
@@ -1757,7 +1757,7 @@ Sfx_Sharpen:
 	endchannel
 
 .Ch6:
-	dutycycle $3
+	duty_cycle 3
 	square_note 6, 14, 1, 1296
 	square_note 6, 14, 1, 1424
 	square_note 6, 14, 1, 1552
@@ -1806,7 +1806,7 @@ Sfx_Sing:
 .Ch5:
 	togglesfx
 	vibrato $a, $24
-	dutycycle $2
+	duty_cycle 2
 	note_type 10, 8, 7
 	octave 5
 	note G_, 8
@@ -1820,7 +1820,7 @@ Sfx_Sing:
 .Ch6:
 	togglesfx
 	vibrato $a, $23
-	dutycycle $2
+	duty_cycle 2
 	note_type 11, 6, 7
 	octave 5
 	note G_, 8
@@ -1842,7 +1842,7 @@ Sfx_HyperBeam:
 	channel 8, .Ch8
 
 .Ch5:
-	dutycycle $0
+	duty_cycle 0
 	square_note 2, 15, 1, 1920
 	square_note 2, 15, 1, 1792
 	square_note 2, 15, 1, 1936
@@ -1896,7 +1896,7 @@ Sfx_Shine:
 	channel 5, .Ch5
 
 .Ch5:
-	dutycycle $0
+	duty_cycle 0
 	square_note 0, 13, 2, 1792
 	square_note 0, 13, 2, 1856
 	square_note 0, 13, 2, 1920
@@ -1952,13 +1952,13 @@ Sfx_NoSignal:
 	channel 5, Sfx_NoSignal_Ch5
 
 Sfx_HangUp_Ch5:
-	dutycycle $2
+	duty_cycle 2
 	square_note 4, 11, 8, 1915
 	square_note 2, 2, 1, 1915
 	square_note 16, 0, 0, 0
 Sfx_NoSignal_Ch5:
 .branch5:
-	dutycycle $2
+	duty_cycle 2
 	square_note 20, 14, 8, 1803
 	square_note 28, 0, 0, 0
 	loopchannel 3, .branch5
@@ -1975,13 +1975,13 @@ Sfx_Elevator:
 	channel 8, .Ch8
 
 .Ch5:
-	dutycycle $2
+	duty_cycle 2
 	soundinput $5a
 .branch5:
 	square_note 2, 15, 1, 768
 	loopchannel 48, .branch5
 	soundinput $8
-	dutycycle $2
+	duty_cycle 2
 	square_note 15, 15, 3, 1840
 	square_note 8, 6, 5, 1840
 	square_note 15, 15, 4, 1792
@@ -2016,7 +2016,7 @@ Sfx_DexFanfare5079:
 	togglesfx
 	tempo 120
 	volume 7, 7
-	dutycycle $2
+	duty_cycle 2
 	note_type 8, 11, 1
 	octave 3
 	note B_, 2
@@ -2029,7 +2029,7 @@ Sfx_DexFanfare5079:
 
 .Ch6:
 	togglesfx
-	dutycycle $2
+	duty_cycle 2
 	note_type 8, 12, 1
 	octave 4
 	note E_, 2
@@ -2077,7 +2077,7 @@ Sfx_KeyItem:
 	togglesfx
 	tempo 120
 	volume 7, 7
-	dutycycle $2
+	duty_cycle 2
 	note_type 6, 11, 1
 	octave 3
 	note B_, 4
@@ -2092,7 +2092,7 @@ Sfx_KeyItem:
 
 .Ch6:
 	togglesfx
-	dutycycle $2
+	duty_cycle 2
 	note_type 6, 12, 1
 	octave 4
 	note E_, 4
@@ -2146,7 +2146,7 @@ Sfx_DexFanfare2049:
 	togglesfx
 	tempo 104
 	volume 7, 7
-	dutycycle $2
+	duty_cycle 2
 	note_type 12, 8, 8
 	octave 3
 	note A_, 4
@@ -2169,7 +2169,7 @@ Sfx_DexFanfare2049:
 
 .Ch6:
 	togglesfx
-	dutycycle $2
+	duty_cycle 2
 	note_type 12, 12, 1
 	octave 5
 	note F_, 2
@@ -2230,7 +2230,7 @@ Sfx_Item:
 	tempo 108
 	volume 7, 7
 	vibrato $8, $27
-	dutycycle $2
+	duty_cycle 2
 	note_type 8, 11, 2
 	octave 4
 	note C_, 6
@@ -2247,7 +2247,7 @@ Sfx_Item:
 .Ch6:
 	togglesfx
 	vibrato $8, $27
-	dutycycle $2
+	duty_cycle 2
 	note_type 8, 12, 3
 	octave 4
 	note A_, 6
@@ -2308,7 +2308,7 @@ Sfx_CaughtMon:
 	tempo 112
 	volume 7, 7
 	vibrato $8, $27
-	dutycycle $2
+	duty_cycle 2
 	note_type 8, 11, 3
 	octave 4
 	note C_, 6
@@ -2329,7 +2329,7 @@ Sfx_CaughtMon:
 
 .Ch6:
 	togglesfx
-	dutycycle $2
+	duty_cycle 2
 	vibrato $8, $27
 	note_type 8, 12, 3
 	octave 4
@@ -2389,7 +2389,7 @@ Sfx_DexFanfare80109:
 	tempo 112
 	volume 7, 7
 	vibrato $8, $27
-	dutycycle $2
+	duty_cycle 2
 	note_type 12, 11, 1
 	octave 4
 	note D#, 2
@@ -2413,7 +2413,7 @@ Sfx_DexFanfare80109:
 .Ch6:
 	togglesfx
 	vibrato $8, $27
-	dutycycle $2
+	duty_cycle 2
 	note_type 12, 12, 1
 	octave 4
 	note G_, 2
@@ -2483,7 +2483,7 @@ Sfx_Fanfare2:
 	tempo 256
 	volume 7, 7
 	tone $0001
-	dutycycle $3
+	duty_cycle 3
 	note_type 6, 11, 5
 	octave 3
 	note G#, 4
@@ -2504,7 +2504,7 @@ Sfx_Fanfare2:
 
 .Ch6:
 	togglesfx
-	dutycycle $2
+	duty_cycle 2
 	note_type 6, 12, 5
 	octave 4
 	note C#, 6
@@ -2557,7 +2557,7 @@ UnknownSfx:
 	tempo 124
 	volume 7, 7
 	vibrato $8, $27
-	dutycycle $2
+	duty_cycle 2
 	note_type 12, 11, 1
 	octave 4
 	note F_, 2
@@ -2579,7 +2579,7 @@ UnknownSfx:
 .Ch6:
 	togglesfx
 	vibrato $8, $27
-	dutycycle $2
+	duty_cycle 2
 	note_type 12, 12, 1
 	octave 4
 	note A_, 2
@@ -2637,7 +2637,7 @@ Sfx_Fanfare:
 	sfxpriorityon
 	tempo 256
 	volume 7, 7
-	dutycycle $3
+	duty_cycle 3
 	tone $0001
 	note_type 6, 11, 3
 	octave 3
@@ -2664,7 +2664,7 @@ Sfx_Fanfare:
 
 .Ch6:
 	togglesfx
-	dutycycle $2
+	duty_cycle 2
 	note_type 6, 12, 4
 	octave 4
 	note C#, 4
@@ -2737,7 +2737,7 @@ Sfx_RegisterPhoneNumber:
 	togglesfx
 	tempo 124
 	volume 7, 7
-	dutycycle $3
+	duty_cycle 3
 	note_type 12, 10, 2
 	note __, 2
 	octave 3
@@ -2759,7 +2759,7 @@ Sfx_RegisterPhoneNumber:
 
 .Ch6:
 	togglesfx
-	dutycycle $3
+	duty_cycle 3
 	note_type 12, 12, 2
 	note __, 2
 	octave 4
@@ -2820,7 +2820,7 @@ Sfx_3RdPlace:
 	togglesfx
 	tempo 120
 	volume 7, 7
-	dutycycle $2
+	duty_cycle 2
 	note_type 12, 10, 4
 	octave 4
 	note F_, 1
@@ -2835,7 +2835,7 @@ Sfx_3RdPlace:
 
 .Ch6:
 	togglesfx
-	dutycycle $2
+	duty_cycle 2
 	note_type 12, 11, 4
 	octave 4
 	note A_, 1
@@ -2879,7 +2879,7 @@ Sfx_GetEggFromDayCareMan:
 	tempo 120
 	volume 7, 7
 	vibrato $12, $34
-	dutycycle $2
+	duty_cycle 2
 	note_type 8, 10, 1
 	note __, 2
 	octave 3
@@ -2893,7 +2893,7 @@ Sfx_GetEggFromDayCareMan:
 	intensity $a2
 	note F_, 6
 	intensity $a1
-	dutycycle $3
+	duty_cycle 3
 	octave 3
 	note E_, 2
 	note G_, 2
@@ -2907,7 +2907,7 @@ Sfx_GetEggFromDayCareMan:
 .Ch6:
 	togglesfx
 	vibrato $12, $34
-	dutycycle $3
+	duty_cycle 3
 	note_type 8, 12, 2
 	note __, 2
 	octave 4
@@ -2972,7 +2972,7 @@ Sfx_MoveDeleted:
 	togglesfx
 	tempo 116
 	volume 7, 7
-	dutycycle $2
+	duty_cycle 2
 	vibrato $c, $44
 	note_type 12, 10, 4
 	note __, 8
@@ -2998,7 +2998,7 @@ Sfx_MoveDeleted:
 
 .Ch6:
 	togglesfx
-	dutycycle $3
+	duty_cycle 3
 	vibrato $c, $44
 	note_type 12, 7, 4
 	octave 1
@@ -3079,7 +3079,7 @@ Sfx_2ndPlace:
 	togglesfx
 	tempo 116
 	volume 7, 7
-	dutycycle $2
+	duty_cycle 2
 	vibrato $c, $34
 	note_type 8, 10, 1
 	octave 4
@@ -3109,7 +3109,7 @@ Sfx_2ndPlace:
 
 .Ch6:
 	togglesfx
-	dutycycle $2
+	duty_cycle 2
 	note_type 8, 11, 1
 	octave 4
 	note G_, 2
@@ -3192,7 +3192,7 @@ Sfx_1stPlace:
 	togglesfx
 	tempo 124
 	volume 7, 7
-	dutycycle $3
+	duty_cycle 3
 	vibrato $c, $34
 	note_type 12, 10, 1
 	octave 5
@@ -3229,7 +3229,7 @@ Sfx_1stPlace:
 
 .Ch6:
 	togglesfx
-	dutycycle $3
+	duty_cycle 3
 	vibrato $c, $34
 	note_type 12, 12, 1
 	octave 3
@@ -3304,7 +3304,7 @@ Sfx_ChooseACard:
 	togglesfx
 	tempo 152
 	volume 7, 7
-	dutycycle $3
+	duty_cycle 3
 	note_type 6, 10, 4
 	octave 3
 	note E_, 1
@@ -3346,7 +3346,7 @@ Sfx_ChooseACard:
 
 .Ch6:
 	togglesfx
-	dutycycle $3
+	duty_cycle 3
 	note_type 6, 11, 4
 	octave 3
 	note A_, 1
@@ -3445,7 +3445,7 @@ Sfx_GetTm:
 	togglesfx
 	tempo 144
 	volume 7, 7
-	dutycycle $3
+	duty_cycle 3
 	vibrato $8, $24
 	note_type 12, 10, 3
 	octave 4
@@ -3467,7 +3467,7 @@ Sfx_GetTm:
 
 .Ch6:
 	togglesfx
-	dutycycle $3
+	duty_cycle 3
 	vibrato $8, $24
 	note_type 12, 11, 3
 	octave 4
@@ -3547,7 +3547,7 @@ Sfx_GetBadge:
 	togglesfx
 	tempo 120
 	volume 7, 7
-	dutycycle $2
+	duty_cycle 2
 	vibrato $8, $24
 	note_type 6, 9, 2
 	octave 4
@@ -3586,7 +3586,7 @@ Sfx_GetBadge:
 
 .Ch6:
 	togglesfx
-	dutycycle $3
+	duty_cycle 3
 	vibrato $8, $24
 	note_type 6, 11, 5
 	octave 5
@@ -3706,7 +3706,7 @@ Sfx_QuitSlots:
 	togglesfx
 	tempo 144
 	volume 7, 7
-	dutycycle $2
+	duty_cycle 2
 	note_type 8, 8, 2
 	octave 3
 	note G#, 2
@@ -3734,7 +3734,7 @@ Sfx_QuitSlots:
 
 .Ch6:
 	togglesfx
-	dutycycle $2
+	duty_cycle 2
 	note_type 8, 11, 3
 	note __, 3
 	octave 4
@@ -3815,7 +3815,7 @@ Sfx_Protect:
 .Ch5:
 	togglesfx
 	note_type 1, 15, 1
-	dutycycle $0
+	duty_cycle 0
 .branch5:
 	octave 5
 	note F_, 5
@@ -3865,7 +3865,7 @@ Sfx_Sketch:
 	channel 5, .Ch5
 
 .Ch5:
-	dutycycle $1
+	duty_cycle 1
 	soundinput $a5
 .branch5:
 	square_note 2, 15, 1, 1760
@@ -3941,7 +3941,7 @@ Sfx_Curse:
 	channel 8, .Ch8
 
 .Ch5:
-	dutycycle $3
+	duty_cycle 3
 	square_note 4, 15, 2, 1155
 	square_note 4, 15, 2, 1297
 	square_note 4, 15, 2, 1417
@@ -3961,7 +3961,7 @@ Sfx_Rage:
 	channel 8, .Ch8
 
 .Ch5:
-	dutycycle $0
+	duty_cycle 0
 	square_note 3, 13, 1, 1968
 	square_note 3, 13, 1, 1986
 	square_note 24, 13, 2, 2005
@@ -3999,7 +3999,7 @@ Sfx_Thief2:
 .Ch5:
 	togglesfx
 	note_type 2, 15, 4
-	dutycycle $0
+	duty_cycle 0
 	octave 4
 	note C#, 3
 	note A#, 3
@@ -4024,7 +4024,7 @@ Sfx_SpiderWeb:
 	channel 8, .Ch8
 
 .Ch5:
-	dutycycle $0
+	duty_cycle 0
 	square_note 32, 7, -7, 1824
 	soundinput $95
 	square_note 4, 15, 8, 1568
@@ -4050,7 +4050,7 @@ Sfx_MindReader:
 
 .Ch5:
 	togglesfx
-	dutycycle $2
+	duty_cycle 2
 	note_type 2, 15, 1
 	octave 5
 	note C_, 3
@@ -4080,7 +4080,7 @@ Sfx_Nightmare:
 	channel 5, .Ch5
 
 .Ch5:
-	dutycycle $0
+	duty_cycle 0
 	soundinput $34
 .branch5:
 	square_note 3, 11, -2, 1585
@@ -4121,7 +4121,7 @@ Sfx_SweetKiss:
 	channel 5, .Ch5
 
 .Ch5:
-	dutycycle $2
+	duty_cycle 2
 .branch5:
 	square_note 2, 12, 1, 1992
 	square_note 2, 13, 1, 2010
@@ -4137,7 +4137,7 @@ Sfx_SweetKiss2:
 	channel 5, .Ch5
 
 .Ch5:
-	dutycycle $0
+	duty_cycle 0
 	soundinput $97
 	square_note 2, 15, 4, 1906
 	square_note 4, 0, 0, 0
@@ -4158,7 +4158,7 @@ Sfx_BellyDrum:
 	channel 8, .Ch8
 
 .Ch5:
-	dutycycle $2
+	duty_cycle 2
 	soundinput $ac
 	square_note 12, 15, 1, 1443
 	soundinput $8
@@ -4176,7 +4176,7 @@ Sfx_Toxic:
 	channel 5, .Ch5
 
 .Ch5:
-	dutycycle $2
+	duty_cycle 2
 	soundinput $95
 	square_note 2, 12, -1, 947
 	square_note 5, 15, 8, 1123
@@ -4193,7 +4193,7 @@ Sfx_SludgeBomb:
 	channel 8, .Ch8
 
 .Ch5:
-	dutycycle $2
+	duty_cycle 2
 	soundinput $c5
 	square_note 3, 15, 8, 1409
 	square_note 1, 0, 0, 0
@@ -4235,7 +4235,7 @@ Sfx_Spite:
 .Ch5:
 	togglesfx
 	vibrato $0, $12
-	dutycycle $3
+	duty_cycle 3
 	soundinput $fd
 	note_type 3, 15, 8
 	octave 3
@@ -4283,7 +4283,7 @@ Sfx_PerishSong:
 
 .Ch5:
 	togglesfx
-	dutycycle $0
+	duty_cycle 0
 	vibrato $12, $53
 	note_type 8, 10, -7
 	octave 4
@@ -4294,7 +4294,7 @@ Sfx_PerishSong:
 
 .Ch6:
 	togglesfx
-	dutycycle $0
+	duty_cycle 0
 	vibrato $12, $53
 	note_type 8, 10, -7
 	octave 4
@@ -4313,7 +4313,7 @@ Sfx_GigaDrain:
 	channel 8, .Ch8
 
 .Ch5:
-	dutycycle $2
+	duty_cycle 2
 	soundinput $97
 	square_note 4, 15, 8, 1664
 	square_note 20, 15, 8, 1664
@@ -4344,7 +4344,7 @@ Sfx_Attract:
 	channel 5, .Ch5
 
 .Ch5:
-	dutycycle $0
+	duty_cycle 0
 	soundinput $77
 	square_note 4, 10, -1, 1776
 	square_note 12, 15, 8, 1824
@@ -4361,7 +4361,7 @@ Sfx_Kinesis2:
 	channel 5, .Ch5
 
 .Ch5:
-	dutycycle $0
+	duty_cycle 0
 	square_note 2, 15, 3, 1942
 	square_note 2, 2, 3, 1942
 	square_note 20, 15, 1, 1988
@@ -4391,7 +4391,7 @@ Sfx_MeanLook:
 
 .Ch5:
 	soundinput $77
-	dutycycle $3
+	duty_cycle 3
 	square_note 2, 15, 8, 1824
 .branch5:
 	square_note 1, 8, 8, 1632
@@ -4414,7 +4414,7 @@ Sfx_HealBell:
 	channel 5, .Ch5
 
 .Ch5:
-	dutycycle $1
+	duty_cycle 1
 	square_note 1, 15, 1, 2010
 	square_note 1, 13, 1, 2009
 	square_note 1, 15, 1, 2010
@@ -4429,7 +4429,7 @@ Sfx_Return:
 	channel 5, .Ch5
 
 .Ch5:
-	dutycycle $0
+	duty_cycle 0
 .branch5:
 	soundinput $bf
 	square_note 8, 15, 1, 1881
@@ -4448,7 +4448,7 @@ Sfx_ExpBar:
 	channel 5, .Ch5
 
 .Ch5:
-	dutycycle $2
+	duty_cycle 2
 	soundinput $d7
 	square_note 8, 14, 1, 1872
 	soundinput $e7
@@ -4470,7 +4470,7 @@ Sfx_MilkDrink:
 	channel 5, .Ch5
 
 .Ch5:
-	dutycycle $2
+	duty_cycle 2
 .branch5:
 	soundinput $a4
 	square_note 2, 14, -2, 1248
@@ -4490,7 +4490,7 @@ Sfx_Present:
 	channel 5, .Ch5
 
 .Ch5:
-	dutycycle $2
+	duty_cycle 2
 	soundinput $d6
 .branch5:
 	square_note 2, 15, 1, 1856
@@ -4508,7 +4508,7 @@ Sfx_MorningSun:
 	channel 5, .Ch5
 
 .Ch5:
-	dutycycle $3
+	duty_cycle 3
 .branch5:
 	square_note 2, 15, 1, 2020
 	square_note 2, 15, 1, 2016
@@ -4528,7 +4528,7 @@ Sfx_Moonlight:
 	channel 5, .Ch5
 
 .Ch5:
-	dutycycle $2
+	duty_cycle 2
 .branch5:
 	square_note 1, 15, 8, 2000
 	square_note 4, 15, 1, 2016
@@ -4547,7 +4547,7 @@ Sfx_Encore:
 	channel 8, .Ch8
 
 .Ch5:
-	dutycycle $2
+	duty_cycle 2
 	soundinput $ce
 	square_note 16, 0, 0, 0
 .branch5:
@@ -4585,7 +4585,7 @@ Sfx_SweetScent:
 	channel 5, .Ch5
 
 .Ch5:
-	dutycycle $2
+	duty_cycle 2
 	soundinput $96
 	square_note 6, 15, 8, 1888
 	square_note 6, 14, 8, 1824
@@ -4603,7 +4603,7 @@ Sfx_BatonPass:
 	channel 8, .Ch8
 
 .Ch5:
-	dutycycle $2
+	duty_cycle 2
 	soundinput $f7
 	square_note 32, 15, 2, 1664
 	square_note 1, 15, 1, 1888
@@ -4628,7 +4628,7 @@ Sfx_EggCrack:
 .Ch5:
 	togglesfx
 	note_type 1, 15, 1
-	dutycycle $0
+	duty_cycle 0
 	octave 4
 	note D#, 1
 	note C_, 1
@@ -4672,7 +4672,7 @@ Sfx_MasterBall:
 
 .Ch5:
 	togglesfx
-	dutycycle $1
+	duty_cycle 1
 	note_type 2, 14, 1
 	octave 6
 	note B_, 2
@@ -4710,7 +4710,7 @@ Sfx_EggHatch:
 .Ch5:
 	togglesfx
 	note_type 2, 15, 1
-	dutycycle $2
+	duty_cycle 2
 	octave 5
 	note E_, 1
 	note C_, 1
@@ -4772,7 +4772,7 @@ Sfx_Flash:
 	channel 5, .Ch5
 
 .Ch5:
-	dutycycle $1
+	duty_cycle 1
 	soundinput $ef
 	square_note 1, 4, 0, 2024
 	square_note 1, 6, 0, 2024
@@ -4794,7 +4794,7 @@ Sfx_GameFreakLogoGs:
 	channel 5, .Ch5
 
 .Ch5:
-	dutycycle $3
+	duty_cycle 3
 	soundinput $7f
 	square_note 4, 5, 5, 2018
 	square_note 5, 7, 5, 2018
@@ -4904,7 +4904,7 @@ Sfx_DexFanfare140169:
 	togglesfx
 	tempo 120
 	volume 7, 7
-	dutycycle $3
+	duty_cycle 3
 	vibrato $12, $34
 	note_type 6, 11, 1
 	note __, 8
@@ -4929,7 +4929,7 @@ Sfx_DexFanfare140169:
 
 .Ch6:
 	togglesfx
-	dutycycle $2
+	duty_cycle 2
 	vibrato $12, $34
 	note_type 6, 12, 1
 	octave 4
@@ -5013,7 +5013,7 @@ Sfx_DexFanfare170199:
 	tempo 112
 	volume 7, 7
 	vibrato $12, $34
-	dutycycle $3
+	duty_cycle 3
 	note_type 8, 11, 4
 	octave 3
 	note G_, 1
@@ -5038,7 +5038,7 @@ Sfx_DexFanfare170199:
 .Ch6:
 	togglesfx
 	vibrato $12, $34
-	dutycycle $3
+	duty_cycle 3
 	note_type 8, 12, 4
 	octave 3
 	note A#, 1
@@ -5124,7 +5124,7 @@ Sfx_DexFanfare200229:
 	tempo 124
 	volume 7, 7
 	vibrato $12, $34
-	dutycycle $3
+	duty_cycle 3
 	note_type 8, 11, 2
 	octave 3
 	note C_, 2
@@ -5147,7 +5147,7 @@ Sfx_DexFanfare200229:
 .Ch6:
 	togglesfx
 	vibrato $12, $34
-	dutycycle $3
+	duty_cycle 3
 	note_type 8, 11, 2
 	octave 3
 	note E_, 2
@@ -5249,7 +5249,7 @@ Sfx_DexFanfare230Plus:
 	tempo 112
 	volume 7, 7
 	vibrato $12, $34
-	dutycycle $3
+	duty_cycle 3
 	note_type 8, 10, 5
 	octave 3
 	note B_, 2
@@ -5258,27 +5258,27 @@ Sfx_DexFanfare230Plus:
 	octave 4
 	note D_, 14
 	note __, 2
-	dutycycle $2
+	duty_cycle 2
 	intensity $85
 	octave 2
 	note F_, 1
 	note __, 1
 	note F_, 6
 	intensity $a5
-	dutycycle $3
+	duty_cycle 3
 	octave 3
 	note A_, 2
 	note G_, 2
 	note F_, 10
 	note __, 2
-	dutycycle $2
+	duty_cycle 2
 	intensity $85
 	octave 2
 	note F_, 1
 	note __, 1
 	note F_, 6
 	intensity $a5
-	dutycycle $3
+	duty_cycle 3
 	octave 3
 	note A#, 12
 	intensity $b2
@@ -5293,7 +5293,7 @@ Sfx_DexFanfare230Plus:
 .Ch6:
 	togglesfx
 	vibrato $12, $34
-	dutycycle $3
+	duty_cycle 3
 	note_type 8, 11, 5
 	octave 4
 	note G_, 2
@@ -5455,7 +5455,7 @@ Sfx_BallBounce:
 	channel 6, .Ch6
 
 .Ch5:
-	dutycycle $2
+	duty_cycle 2
 	square_note 8, 14, 1, 1856
 	square_note 23, 0, 0, 0
 	square_note 8, 11, 1, 1856
@@ -5467,7 +5467,7 @@ Sfx_BallBounce:
 	endchannel
 
 .Ch6:
-	dutycycle $2
+	duty_cycle 2
 	square_note 2, 0, 8, 0
 	square_note 8, 11, 1, 1857
 	square_note 23, 0, 0, 0
@@ -5489,7 +5489,7 @@ Sfx_SweetScent2:
 
 .Ch5:
 	soundinput $af
-	dutycycle $1
+	duty_cycle 1
 	square_note 6, 15, 8, 1520
 	square_note 2, 15, 1, 1568
 	square_note 16, 15, 1, 1616
@@ -5519,14 +5519,14 @@ Sfx_HitEndOfExpBar:
 	channel 6, .Ch6
 
 .Ch5:
-	dutycycle $2
+	duty_cycle 2
 	square_note 1, 14, 1, 1929
 	square_note 1, 14, 1, 1954
 	square_note 16, 14, 1, 1969
 	endchannel
 
 .Ch6:
-	dutycycle $2
+	duty_cycle 2
 	square_note 1, 14, 1, 1954
 	square_note 1, 14, 1, 1969
 	square_note 16, 14, 1, 1988
@@ -5541,7 +5541,7 @@ Sfx_GiveTrademon:
 
 .Ch5:
 	square_note 32, 0, 0, 0
-	dutycycle $1
+	duty_cycle 1
 	soundinput $a7
 	square_note 27, 15, 4, 1872
 	square_note 27, 13, 4, 1872
@@ -5563,7 +5563,7 @@ Sfx_GetTrademon:
 
 .Ch5:
 	square_note 32, 0, 0, 0
-	dutycycle $2
+	duty_cycle 2
 	soundinput $bf
 	square_note 27, 1, 4, 1980
 	square_note 27, 3, 4, 1980
@@ -5589,7 +5589,7 @@ Sfx_TrainArrived:
 	tone $0008
 	square_note 8, 0, 0, 0
 .Ch5:
-	dutycycle $2
+	duty_cycle 2
 	square_note 4, 5, -7, 1681
 	square_note 4, 6, -7, 1684
 	square_note 4, 7, 8, 1687
@@ -5618,7 +5618,7 @@ Sfx_2Boops:
 	channel 5, .Ch5
 
 .Ch5:
-	dutycycle $2
+	duty_cycle 2
 .branch5:
 	soundinput $79
 	square_note 1, 9, -1, 1379
@@ -5656,7 +5656,7 @@ Sfx_StopSlot:
 	channel 5, .Ch5
 
 .Ch5:
-	dutycycle $2
+	duty_cycle 2
 	square_note 1, 15, 8, 1888
 	square_note 4, 8, 2, 1888
 	endchannel
@@ -5669,7 +5669,7 @@ Sfx_GlassTing:
 	channel 5, .Ch5
 
 .Ch5:
-	dutycycle $2
+	duty_cycle 2
 	square_note 32, 13, 1, 2012
 	endchannel
 
@@ -5682,12 +5682,12 @@ Sfx_GlassTing2:
 	channel 6, .Ch6
 
 .Ch5:
-	dutycycle $2
+	duty_cycle 2
 	square_note 16, 15, 1, 2012
 	endchannel
 
 .Ch6:
-	dutycycle $2
+	duty_cycle 2
 	square_note 16, 13, 1, 2013
 	endchannel
 
@@ -5700,7 +5700,7 @@ Sfx_IntroUnown1:
 
 .Ch5:
 	vibrato $1, $a3
-	dutycycle $2
+	duty_cycle 2
 	square_note 8, 3, -1, 1797
 	square_note 32, 14, 2, 1797
 	endchannel
@@ -5714,7 +5714,7 @@ Sfx_IntroUnown2:
 
 .Ch6:
 	vibrato $1, $73
-	dutycycle $2
+	duty_cycle 2
 	square_note 8, 3, -1, 1880
 	square_note 32, 14, 2, 1880
 	endchannel
@@ -5744,7 +5744,7 @@ Sfx_DittoPopUp:
 	channel 5, .Ch5
 
 .Ch5:
-	dutycycle $2
+	duty_cycle 2
 	soundinput $1e
 	square_note 3, 8, 2, 1792
 	square_note 1, 3, 1, 1793
@@ -5761,7 +5761,7 @@ Sfx_DittoTransform:
 	channel 5, .Ch5
 
 .Ch5:
-	dutycycle $1
+	duty_cycle 1
 	soundinput $26
 	square_note 20, 3, -3, 1088
 	square_note 4, 9, 7, 1216
@@ -5789,7 +5789,7 @@ Sfx_IntroPichu:
 	channel 5, .Ch5
 
 .Ch5:
-	dutycycle $3
+	duty_cycle 3
 	soundinput $4d
 	square_note 1, 8, 8, 1904
 	square_note 3, 0, 0, 0
@@ -5846,7 +5846,7 @@ Sfx_DittoBounce:
 	channel 5, .Ch5
 
 .Ch5:
-	dutycycle $2
+	duty_cycle 2
 	soundinput $2c
 	square_note 2, 8, 2, 1200
 	square_note 0, 3, 1, 1200
@@ -5884,7 +5884,7 @@ Sfx_GameFreakPresents:
 
 .Ch5:
 	togglesfx
-	dutycycle $2
+	duty_cycle 2
 	note_type 2, 11, 1
 	soundinput $ff
 	transpose 1, 10
@@ -5913,7 +5913,7 @@ Sfx_Tingle:
 
 .Ch5:
 	togglesfx
-	dutycycle $1
+	duty_cycle 1
 	transpose 0, 11
 	note_type 1, 11, 1
 .branch5:
@@ -5938,7 +5938,7 @@ Sfx_TwoPcBeeps:
 	channel 5, .Ch5
 
 .Ch5:
-	dutycycle $2
+	duty_cycle 2
 	square_note 2, 14, 8, 1986
 	square_note 2, 2, 8, 1986
 	square_note 2, 14, 8, 1986
@@ -5956,7 +5956,7 @@ Sfx_4NoteDitty:
 
 .Ch5:
 	togglesfx
-	dutycycle $2
+	duty_cycle 2
 	note_type 2, 14, 8
 	transpose 0, 2
 	octave 4
@@ -6002,7 +6002,7 @@ Sfx_Twinkle:
 
 .Ch5:
 	togglesfx
-	dutycycle $0
+	duty_cycle 0
 	transpose 0, 2
 	note_type 2, 14, 1
 	octave 3
@@ -6033,7 +6033,7 @@ Sfx_Puddle:
 	channel 5, .Ch5
 
 .Ch5:
-	dutycycle $1
+	duty_cycle 1
 	soundinput $97
 	square_note 15, 9, 8, 1792
 	soundinput $8
@@ -6047,7 +6047,7 @@ Sfx_AbilitySlideout:
 	channel 5, .Ch5
 
 .Ch5:
-	dutycycle $1
+	duty_cycle 1
 	soundinput $9f
 	square_note 3, 14, 8, 2047
 	square_note 23, 14, 8, 2016

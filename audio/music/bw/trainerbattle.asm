@@ -13,7 +13,7 @@ Music_TrainerBattleBW_Ch1:
 	volume 7, 7
 	stereopanning $77
 	tempo $6C
-	dutycycle 3
+	duty_cycle 3
 	tone $0002
 	vibrato $12, $15
 	octave 5
@@ -174,7 +174,7 @@ Music_TrainerBattleBW_Ch1_loop:
 	note A#, 2
 	octave 4
 	note C_, 14
-	dutycycle 2
+	duty_cycle 2
 	note C#, 1
 	note __, 1
 	octave 3
@@ -191,7 +191,7 @@ Music_TrainerBattleBW_Ch1_loop:
 	note __, 3
 	note D#, 1
 	note __, 1
-	dutycycle 3
+	duty_cycle 3
 	note F_, 6
 	note D#, 2
 	note C#, 6
@@ -229,7 +229,7 @@ Music_TrainerBattleBW_Ch1_loop:
 	note G#, 1
 	note E_, 2
 	note D#, 2
-	dutycycle 0
+	duty_cycle 0
 	note A#, 1
 	note __, 1
 	note A#, 1
@@ -247,7 +247,7 @@ Music_TrainerBattleBW_Ch1_loop:
 	note __, 1
 	note D#, 1
 	note __, 3
-	dutycycle 2
+	duty_cycle 2
 	octave 3
 	note D#, 1
 	note __, 1
@@ -258,7 +258,7 @@ Music_TrainerBattleBW_Ch1_loop:
 	octave 2
 	note A#, 1
 	note __, 1
-	dutycycle 0
+	duty_cycle 0
 	octave 3
 	note A#, 1
 	note __, 1
@@ -277,7 +277,7 @@ Music_TrainerBattleBW_Ch1_loop:
 	note __, 1
 	note D#, 1
 	note __, 1
-	dutycycle 2
+	duty_cycle 2
 	octave 3
 	note D#, 2
 	note B_, 2
@@ -296,7 +296,7 @@ Music_TrainerBattleBW_Ch1_loop:
 	note __, 1
 	note D#, 1
 	note __, 1
-	dutycycle 0
+	duty_cycle 0
 	note A#, 1
 	note __, 1
 	note A#, 1
@@ -317,7 +317,7 @@ Music_TrainerBattleBW_Ch1_loop:
 	note D#, 1
 	note __, 16
 	note __, 1
-	dutycycle 3
+	duty_cycle 3
 	note D#, 2
 	note F_, 2
 	note G#, 2
@@ -389,7 +389,7 @@ Music_TrainerBattleBW_Ch1_loop:
 	note A_, 4
 	octave 4
 	note A_, 6
-	dutycycle 2
+	duty_cycle 2
 	octave 5
 	note C_, 1
 	note __, 1
@@ -403,11 +403,11 @@ Music_TrainerBattleBW_Ch1_loop:
 	octave 3
 	note A_, 1
 	note __, 1
-	dutycycle 3
+	duty_cycle 3
 	note B_, 6
 	note G_, 6
 	note B_, 10
-	dutycycle 2
+	duty_cycle 2
 	octave 5
 	note D_, 1
 	note __, 1
@@ -421,7 +421,7 @@ Music_TrainerBattleBW_Ch1_loop:
 	octave 3
 	note B_, 1
 	note __, 1
-	dutycycle 3
+	duty_cycle 3
 	octave 4
 	note C#, 6
 	octave 3
@@ -545,7 +545,7 @@ Music_TrainerBattleBW_Ch1_loop:
 	jumpchannel Music_TrainerBattleBW_Ch1_loop
 
 Music_TrainerBattleBW_Ch2:
-	dutycycle 3
+	duty_cycle 3
 	tone $0001
 	vibrato $08, $36
 	octave 4
@@ -709,7 +709,7 @@ Music_TrainerBattleBW_Ch2_loop:
 	note E_, 2
 	note D#, 1
 	note __, 1
-	dutycycle 0
+	duty_cycle 0
 	note D#, 1
 	note __, 1
 	note D#, 1
@@ -776,7 +776,7 @@ Music_TrainerBattleBW_Ch2_loop:
 	note __, 1
 	note G_, 1
 	note __, 1
-	dutycycle 3
+	duty_cycle 3
 	octave 2
 	note D#, 2
 	note A#, 2

@@ -8,7 +8,7 @@ Music_LookRival:
 Music_LookRival_Ch1:
 	tempo 112
 	volume 7, 7
-	dutycycle $1
+	duty_cycle 1
 	tone $0001
 	vibrato $12, $15
 	stereopanning $f
@@ -117,7 +117,7 @@ Music_LookRival_branch_f4ff7:
 	jumpchannel Music_LookRival_branch_f4fb1
 
 Music_LookRival_Ch2:
-	dutycycle $3
+	duty_cycle 3
 	vibrato $8, $36
 	stereopanning $f0
 	note_type 12, 12, 2

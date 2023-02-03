@@ -13,7 +13,7 @@ Music_ReversalMountainWhite2:
 Music_ReversalMountainWhite2_Ch1:
 	tempo 176
 	volume 7, 7
-	dutycycle $2
+	duty_cycle 2
 	tone $0002
 	vibrato $10, $22
 	note_type 12, 6, 2
@@ -23,7 +23,7 @@ Music_ReversalMountainWhite2_Ch1_loop:
 	octave 4
 	note C_, 2
 	callchannel Music_ReversalMountainWhite2_Ch1_branch_1
-	dutycycle $0
+	duty_cycle 0
 	note_type 6, 9, 4
 	octave 3
 	note G_, 4
@@ -201,7 +201,7 @@ Music_ReversalMountainWhite2_Ch1_loop:
 	intensity $a0
 	note G_, 6
 	note_type 3, 12, 0
-	dutycycle 2
+	duty_cycle 2
 	octave 4
 	note E_, 3
 	note G#, 1
@@ -236,14 +236,14 @@ Music_ReversalMountainWhite2_Ch1_loop:
 	note G_, 4
 	note __, 4
 	note_type 6, 10, 4
-	dutycycle 0
+	duty_cycle 0
 	octave 3
 	note B_, 2
 	note B_, 2
 	note __, 8
 	intensity $a7
 	note A_, 16
-	dutycycle 2
+	duty_cycle 2
 	note_type 12, 6, 2
 	note __, 2
 	octave 4
@@ -286,7 +286,7 @@ Music_ReversalMountainWhite2_Ch1_branch_1:
 	endchannel
 
 Music_ReversalMountainWhite2_Ch2:
-	dutycycle $3
+	duty_cycle 3
 	vibrato $1c, $12
 	note_type 12, 6, 2
 	callchannel Music_ReversalMountainWhite2_Ch1_branch_1
@@ -296,7 +296,7 @@ Music_ReversalMountainWhite2_Ch2_loop:
 	callchannel Music_ReversalMountainWhite2_Ch1_branch_1
 	octave 4
 	note C_, 1
-	dutycycle $0
+	duty_cycle 0
 	note_type 6, 9, 4
 	octave 3
 	note C_, 4
@@ -516,7 +516,7 @@ Music_ReversalMountainWhite2_Ch2_loop:
 	note C_, 16
 	note_type 12, 6, 2
 	note __, 1
-	dutycycle 3
+	duty_cycle 3
 	note A_, 2
 	octave 5
 	note C_, 2

@@ -7,7 +7,7 @@ Music_JohtoWildBattle:
 Music_JohtoWildBattle_Ch1:
 	tempo 104
 	volume 7, 7
-	dutycycle $3
+	duty_cycle 3
 	tone $0002
 	vibrato $12, $15
 Music_JohtoWildBattleNight_branch_f5ddb:
@@ -202,7 +202,7 @@ Music_JohtoWildBattle_branch_f5e2d:
 	jumpchannel Music_JohtoWildBattle_branch_f5e2d
 
 Music_JohtoWildBattle_Ch2:
-	dutycycle $3
+	duty_cycle 3
 	vibrato $8, $36
 	tone $0001
 	callchannel Music_JohtoWildBattle_branch_f5f5d

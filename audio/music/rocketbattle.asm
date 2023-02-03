@@ -7,7 +7,7 @@ Music_RocketBattle:
 Music_RocketBattle_Ch1:
 	tempo 101
 	volume 7, 7
-	dutycycle $3
+	duty_cycle 3
 	tone $0002
 	vibrato $10, $15
 	note_type 12, 11, 2
@@ -391,7 +391,7 @@ Music_RocketBattle_branch_e9cc5:
 	jumpchannel Music_RocketBattle_branch_e9c02
 
 Music_RocketBattle_Ch2:
-	dutycycle $3
+	duty_cycle 3
 	vibrato $8, $36
 	tone $0001
 	note_type 12, 11, 2

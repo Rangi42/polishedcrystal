@@ -13,7 +13,7 @@ Music_MountChimneyRSE:
 Music_MountChimneyRSE_Ch1:
 	tempo 160
 	volume 7, 7
-	dutycycle 0
+	duty_cycle 0
 	tone $0002
 	vibrato $8, $15
 	note_type 12, 8, 0
@@ -41,7 +41,7 @@ Music_MountChimneyRSE_Ch1_loop_main:
 	note B_, 1
 	note __, 1
 	note_type 8, 5, 2
-	dutycycle 1
+	duty_cycle 1
 Music_MountChimneyRSE_Ch1_loop_1:
 	octave 2
 	note B_, 1
@@ -62,7 +62,7 @@ Music_MountChimneyRSE_Ch1_loop_2:
 	note F_, 1
 	note C#, 1
 	loopchannel 2, Music_MountChimneyRSE_Ch1_loop_2
-	dutycycle 0
+	duty_cycle 0
 	note_type 6, 10, 2
 	note G#, 2
 	octave 4
@@ -84,7 +84,7 @@ Music_MountChimneyRSE_Ch1_loop_2:
 	note C#, 4
 	note C#, 2
 	note_type 8, 5, 2
-	dutycycle 1
+	duty_cycle 1
 Music_MountChimneyRSE_Ch1_loop_3:
 	octave 2
 	note A_, 1
@@ -105,7 +105,7 @@ Music_MountChimneyRSE_Ch1_loop_4:
 	note D#, 1
 	note C_, 1
 	loopchannel 2, Music_MountChimneyRSE_Ch1_loop_4
-	dutycycle 0
+	duty_cycle 0
 	note_type 6, 10, 2
 	note G#, 2
 	octave 4
@@ -119,7 +119,7 @@ Music_MountChimneyRSE_Ch1_loop_4:
 	octave 3
 	note A#, 1
 	note G#, 3
-	dutycycle 1
+	duty_cycle 1
 	intensity $a7
 	octave 2
 	note A#, 12
@@ -136,7 +136,7 @@ Music_MountChimneyRSE_Ch1_loop_4:
 	note D#, 12
 	note D#, 2
 	note E_, 2
-	dutycycle 0
+	duty_cycle 0
 	intensity $a2
 	note F_, 2
 	note F_, 2
@@ -397,7 +397,7 @@ Music_MountChimneyRSE_blank:
 	endchannel
 
 Music_MountChimneyRSE_Ch2:
-	dutycycle 3
+	duty_cycle 3
 	vibrato $12, $25
 	tone $0001
 	note_type 12, 8, 0
@@ -505,7 +505,7 @@ Music_MountChimneyRSE_Ch2_loop:
 	note D#, 2
 	intensity $a7
 	note D_, 8
-	dutycycle 0
+	duty_cycle 0
 	octave 3
 	intensity $a2
 	note G#, 2
@@ -522,7 +522,7 @@ Music_MountChimneyRSE_Ch2_loop:
 	note D#, 2
 	intensity $a7
 	note F#, 8
-	dutycycle 1
+	duty_cycle 1
 	octave 3
 	intensity $a2
 	note G#, 2
@@ -534,7 +534,7 @@ Music_MountChimneyRSE_Ch2_loop:
 	note D#, 4
 	intensity $a2
 	note D_, 4
-	dutycycle 0
+	duty_cycle 0
 	octave 3
 	note G#, 2
 	note G#, 2
@@ -545,7 +545,7 @@ Music_MountChimneyRSE_Ch2_loop:
 	note D#, 4
 	intensity $a2
 	note D_, 4
-	dutycycle 1
+	duty_cycle 1
 	octave 3
 	note G#, 2
 	note G#, 2
@@ -558,7 +558,7 @@ Music_MountChimneyRSE_Ch2_loop:
 	octave 4
 	note F#, 2
 	note F_, 2
-	dutycycle 0
+	duty_cycle 0
 	octave 3
 	note G#, 2
 	note G#, 2
@@ -572,7 +572,7 @@ Music_MountChimneyRSE_Ch2_loop:
 	note G#, 1
 	note G#, 1
 	callchannel Music_MountChimneyRSE_blank
-	dutycycle 3
+	duty_cycle 3
 	note __, 2
 	jumpchannel Music_MountChimneyRSE_Ch2_loop
 
@@ -596,7 +596,7 @@ Music_MountChimneyRSE_Ch2_branch_1:
 	note D#, 2
 	note D_, 2
 	note D#, 6
-	dutycycle 0
+	duty_cycle 0
 	octave 3
 	note B_, 2
 	note B_, 2
@@ -607,7 +607,7 @@ Music_MountChimneyRSE_Ch2_branch_1:
 	note G_, 2
 	intensity $a2
 	note A#, 5
-	dutycycle 3
+	duty_cycle 3
 	note A_, 1
 	note G#, 4
 	octave 4
@@ -643,7 +643,7 @@ Music_MountChimneyRSE_Ch2_branch_1:
 	intensity $a3
 	note D_, 2
 	note D#, 8
-	dutycycle 0
+	duty_cycle 0
 	octave 2
 	intensity $a2
 	note G_, 4
@@ -652,7 +652,7 @@ Music_MountChimneyRSE_Ch2_branch_1:
 	note F_, 2
 	note G_, 2
 	note A#, 10
-	dutycycle 3
+	duty_cycle 3
 	octave 3
 	note D#, 2
 	note D_, 2
@@ -663,7 +663,7 @@ Music_MountChimneyRSE_Ch2_branch_1:
 	intensity $a7
 	note A#, 9
 	note_type 6, 10, 2
-	dutycycle 0
+	duty_cycle 0
 	octave 4
 	note D#, 4
 	note C#, 2
@@ -685,7 +685,7 @@ Music_MountChimneyRSE_Ch2_branch_1:
 	note A#, 1
 	note A_, 1
 	note G_, 7
-	dutycycle 3
+	duty_cycle 3
 	octave 4
 	note F#, 2
 	note F_, 2
@@ -702,7 +702,7 @@ Music_MountChimneyRSE_Ch2_branch_1:
 	note D#, 2
 	note D_, 2
 	note D#, 6
-	dutycycle 0
+	duty_cycle 0
 	octave 3
 	note B_, 2
 	note B_, 2
@@ -713,7 +713,7 @@ Music_MountChimneyRSE_Ch2_branch_1:
 	intensity $a2
 	note G_, 2
 	note A#, 2
-	dutycycle 3
+	duty_cycle 3
 	note G#, 2
 	note G#, 2
 	octave 4
@@ -752,7 +752,7 @@ Music_MountChimneyRSE_Ch2_branch_1:
 	note D_, 2
 	note D#, 8
 	octave 2
-	dutycycle 0
+	duty_cycle 0
 	intensity $a2
 	note G_, 4
 	note D#, 2
@@ -760,7 +760,7 @@ Music_MountChimneyRSE_Ch2_branch_1:
 	note F_, 2
 	note G_, 2
 	note A#, 10
-	dutycycle 3
+	duty_cycle 3
 	octave 3
 	note D#, 2
 	note D_, 2

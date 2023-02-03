@@ -7,7 +7,7 @@ Music_LakeOfRageRocketRadio:
 Music_LakeOfRageRocketRadio_Ch1:
 	tempo 160
 	volume 7, 7
-	dutycycle $1
+	duty_cycle 1
 	tone $1118
 	vibrato $0, $f0
 	stereopanning $f0
@@ -22,7 +22,7 @@ Music_LakeOfRageRocketRadio_branch_ef5c9:
 	jumpchannel Music_LakeOfRageRocketRadio_branch_ef5c9
 
 Music_LakeOfRageRocketRadio_Ch2:
-	dutycycle $1
+	duty_cycle 1
 	vibrato $13, $e8
 	note_type 12, 10, 7
 	note __, 2

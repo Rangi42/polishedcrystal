@@ -13,7 +13,7 @@ Music_Route12BW:
 Music_Route12BW_Ch1:
 	tempo 236
 	volume 7, 7
-	dutycycle $0
+	duty_cycle 0
 	tone $0002
 	vibrato $10, $22
 Music_Route12BW_Ch1_loop_1:
@@ -22,7 +22,7 @@ Music_Route12BW_Ch1_loop_1:
 	loopchannel 16, Music_Route12BW_Ch1_loop_1
 	callchannel Music_Route12BW_Ch1_branch_2
 	note E_, 6
-	dutycycle 0
+	duty_cycle 0
 	callchannel Music_Route12BW_Ch1_branch_2
 	note G_, 6
 	note G#, 12
@@ -32,7 +32,7 @@ Music_Route12BW_Ch1_loop_1:
 	note C#, 2
 	octave 4
 	note F#, 12
-	dutycycle 0
+	duty_cycle 0
 	octave 2
 	intensity $70
 	note F#, 8
@@ -45,21 +45,21 @@ Music_Route12BW_Ch1_loop_1:
 	intensity $97
 	note B_, 4
 	callchannel Music_Route12BW_Ch1_branch_3
-	dutycycle 0
+	duty_cycle 0
 	octave 3
 	intensity $90
 	note F#, 4
 	intensity $97
 	note F#, 4
 	callchannel Music_Route12BW_Ch1_branch_3
-	dutycycle 0
+	duty_cycle 0
 	octave 3
 	intensity $90
 	note E_, 2
 	intensity $97
 	note E_, 4
 	intensity $b4
-	dutycycle 2
+	duty_cycle 2
 	octave 4
 	note E_, 6
 	note G_, 6
@@ -104,7 +104,7 @@ Music_Route12BW_Ch1_branch_2:
 	intensity $97
 	note B_, 4
 	intensity $b4
-	dutycycle 2
+	duty_cycle 2
 	octave 4
 	note B_, 2
 	note A#, 2
@@ -117,7 +117,7 @@ Music_Route12BW_Ch1_branch_2:
 Music_Route12BW_Ch1_branch_3:
 	intensity $b4
 	octave 4
-	dutycycle 2
+	duty_cycle 2
 	note D#, 2
 	note E_, 2
 	note F#, 6
@@ -126,7 +126,7 @@ Music_Route12BW_Ch1_branch_3:
 
 Music_Route12BW_Ch2:
 	note_type 8, 11, 0
-	dutycycle $1
+	duty_cycle 1
 	vibrato $1c, $12
 Music_Route12BW_Ch2_loop:
 	octave 4

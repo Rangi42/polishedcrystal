@@ -13,7 +13,7 @@ Music_EternaForestDPPt_Ch1:
 	volume 7, 7
 Music_EternaForestDPPt_Ch1_loop:
 	note_type 12, 8, 2
-	dutycycle 0
+	duty_cycle 0
 	octave 5
 	note __, 1
 	note B_, 5
@@ -70,7 +70,7 @@ Music_EternaForestDPPt_Ch1_loop:
 	note D_, 4
 	intensity $82
 	note C_, 16
-	dutycycle 1
+	duty_cycle 1
 	note __, 16
 	note __, 12
 	octave 6
@@ -240,7 +240,7 @@ Music_EternaForestDPPt_Ch1_loop:
 	octave 4
 	note A_, 2
 	note D#, 3
-	dutycycle 0
+	duty_cycle 0
 	octave 5
 	note B_, 5
 	intensity $72
@@ -286,7 +286,7 @@ Music_EternaForestDPPt_Ch1_loop:
 Music_EternaForestDPPt_Ch2:
 Music_EternaForestDPPt_Ch2_loop:
 	note_type 12, 9, 2
-	dutycycle 0
+	duty_cycle 0
 	octave 5
 	note D_, 6
 	intensity $82
@@ -342,7 +342,7 @@ Music_EternaForestDPPt_Ch2_loop:
 	intensity $92
 	note F#, 6
 	intensity $B6
-	dutycycle 2
+	duty_cycle 2
 	octave 2
 	note C_, 2
 	note __, 4
@@ -471,7 +471,7 @@ Music_EternaForestDPPt_Ch2_loop:
 	octave 3
 	note C_, 10
 	intensity $92
-	dutycycle 0
+	duty_cycle 0
 	octave 5
 	note C_, 6
 	intensity $82

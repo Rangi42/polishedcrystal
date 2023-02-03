@@ -12,7 +12,7 @@ Music_Route210DPPt_Ch1:
 	tempo $98
 	volume 7, 7
 	note_type 12, 11, 3
-	dutycycle 3
+	duty_cycle 3
 	tone $0001
 	octave 5
 	note __, 2
@@ -27,7 +27,7 @@ Music_Route210DPPt_Ch1_loop:
 	intensity $A8
 	note D#, 16
 	intensity $B3
-	dutycycle 2
+	duty_cycle 2
 	octave 3
 	note F_, 3
 	note C#, 3
@@ -44,14 +44,14 @@ Music_Route210DPPt_Ch1_loop:
 	note F_, 6
 	note F_, 1
 	note F_, 3
-	dutycycle 0
+	duty_cycle 0
 	octave 4
 	note F_, 4
 	note C#, 4
 	note D#, 4
 	note G#, 4
 	note_type 8, 11, 8
-	dutycycle 2
+	duty_cycle 2
 	note E_, 1
 	note_type 10, 11, 7
 	note F_, 16
@@ -274,7 +274,7 @@ Music_Route210DPPt_Ch1_loop:
 	note G_, 12
 	note G#, 8
 	intensity $B1
-	dutycycle 0
+	duty_cycle 0
 	note F#, 2
 	octave 4
 	note F_, 2
@@ -366,7 +366,7 @@ Music_Route210DPPt_Ch1_loop:
 	note F#, 2
 	note G#, 2
 	note A_, 2
-	dutycycle 1
+	duty_cycle 1
 	octave 3
 	note C#, 1
 	note D#, 1
@@ -420,7 +420,7 @@ Music_Route210DPPt_Ch1_loop:
 	note B_, 3
 	note B_, 3
 	note_type 6, 11, 3
-	dutycycle 2
+	duty_cycle 2
 	octave 4
 	note C#, 2
 	note C_, 2
@@ -447,7 +447,7 @@ Music_Route210DPPt_Ch1_loop:
 	note F_, 4
 	note G#, 4
 	note_type 12, 11, 2
-	dutycycle 3
+	duty_cycle 3
 	octave 3
 	note C#, 2
 	note C#, 4
@@ -486,7 +486,7 @@ Music_Route210DPPt_Ch1_loop:
 
 Music_Route210DPPt_Ch2:
 	note_type 12, 12, 7
-	dutycycle 1
+	duty_cycle 1
 	tone $0002
 	vibrato $08, $24
 	octave 4
@@ -596,7 +596,7 @@ Music_Route210DPPt_Ch2_loop:
 	note C#, 16
 	note __, 1
 	note_type 8, 12, 1
-	dutycycle 0
+	duty_cycle 0
 	octave 3
 	note F#, 1
 	note F_, 1
@@ -622,7 +622,7 @@ Music_Route210DPPt_Ch2_loop:
 	note D#, 1
 	note F#, 1
 	note_type 12, 12, 5
-	dutycycle 1
+	duty_cycle 1
 	note G#, 1
 	note A#, 2
 	intensity $C8
@@ -647,14 +647,14 @@ Music_Route210DPPt_Ch2_loop:
 	intensity $C7
 	note F_, 10
 	intensity $C2
-	dutycycle 0
+	duty_cycle 0
 	note F_, 4
 	note C#, 4
 	note D#, 4
 	octave 3
 	note G#, 2
 	intensity $C5
-	dutycycle 1
+	duty_cycle 1
 	octave 4
 	note F_, 1
 	note F#, 1
@@ -676,7 +676,7 @@ Music_Route210DPPt_Ch2_loop:
 	note C#, 16
 	note __, 11
 	intensity $C5
-	dutycycle 0
+	duty_cycle 0
 	octave 3
 	note F#, 1
 	note G#, 1
@@ -710,7 +710,7 @@ Music_Route210DPPt_Ch2_loop:
 	note F#, 3
 	note G_, 6
 	note G#, 2
-	dutycycle 2
+	duty_cycle 2
 	note F#, 1
 	note G#, 1
 	note A#, 6
@@ -809,7 +809,7 @@ Music_Route210DPPt_Ch2_loop:
 	note C_, 1
 	note C#, 7
 	note D#, 8
-	dutycycle 1
+	duty_cycle 1
 	vibrato $08, $24
 	octave 4
 	note F_, 2

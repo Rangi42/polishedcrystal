@@ -58,7 +58,7 @@ Music_SunyshoreCityDPPt_Ch1:
 	note E_, 2
 	note E_, 2
 	note D#, 4
-	dutycycle 2
+	duty_cycle 2
 	intensity $87
 	octave 2
 	note A_, 6
@@ -112,7 +112,7 @@ Music_SunyshoreCityDPPt_Ch1_loop:
 	note B_, 4
 	note C_, 4
 	note E_, 12
-	dutycycle 1
+	duty_cycle 1
 	intensity $A1
 	note E_, 2
 	note C#, 2
@@ -127,7 +127,7 @@ Music_SunyshoreCityDPPt_Ch1_loop:
 	note F#, 2
 	note G#, 2
 	note B_, 6
-	dutycycle 0
+	duty_cycle 0
 	intensity $81
 	octave 4
 	note E_, 2
@@ -149,7 +149,7 @@ Music_SunyshoreCityDPPt_Ch1_loop:
 	note E_, 2
 	octave 5
 	note E_, 2
-	dutycycle 1
+	duty_cycle 1
 	intensity $A1
 	octave 2
 	note F#, 2
@@ -166,7 +166,7 @@ Music_SunyshoreCityDPPt_Ch1_loop:
 	note A_, 2
 	octave 3
 	note C#, 6
-	dutycycle 0
+	duty_cycle 0
 	intensity $81
 	octave 4
 	note E_, 2
@@ -188,7 +188,7 @@ Music_SunyshoreCityDPPt_Ch1_loop:
 	note E_, 2
 	octave 5
 	note E_, 2
-	dutycycle 1
+	duty_cycle 1
 	intensity $A1
 	octave 2
 	note C#, 4
@@ -207,7 +207,7 @@ Music_SunyshoreCityDPPt_Ch1_loop:
 	note C#, 2
 	octave 2
 	note G#, 6
-	dutycycle 0
+	duty_cycle 0
 	intensity $81
 	octave 4
 	note F#, 2
@@ -229,7 +229,7 @@ Music_SunyshoreCityDPPt_Ch1_loop:
 	note F#, 2
 	octave 5
 	note F#, 2
-	dutycycle 1
+	duty_cycle 1
 	intensity $A1
 	octave 2
 	note D_, 4
@@ -251,7 +251,7 @@ Music_SunyshoreCityDPPt_Ch1_loop:
 	note E_, 2
 	note F#, 2
 	note E_, 6
-	dutycycle 0
+	duty_cycle 0
 	intensity $81
 	octave 4
 	note E_, 2
@@ -273,7 +273,7 @@ Music_SunyshoreCityDPPt_Ch1_loop:
 	note E_, 2
 	octave 5
 	note E_, 2
-	dutycycle 1
+	duty_cycle 1
 	intensity $A3
 	octave 3
 	note C#, 2
@@ -319,7 +319,7 @@ Music_SunyshoreCityDPPt_Ch1_loop:
 	note B_, 1
 	octave 4
 	note C#, 3
-	dutycycle 2
+	duty_cycle 2
 	intensity $91
 	octave 5
 	note D_, 1
@@ -352,7 +352,7 @@ Music_SunyshoreCityDPPt_Ch1_loop:
 	note C_, 1
 	note E_, 1
 	note G#, 1
-	dutycycle 1
+	duty_cycle 1
 	intensity $A1
 	note C#, 2
 	note __, 2
@@ -565,7 +565,7 @@ Music_SunyshoreCityDPPt_Ch1_loop:
 	note B_, 6
 	note A_, 16
 	note __, 10
-	dutycycle 2
+	duty_cycle 2
 	intensity $87
 	octave 2
 	note A_, 6
@@ -586,7 +586,7 @@ Music_SunyshoreCityDPPt_Ch2:
 	intensity $C1
 	note_type 12, 12, 1
 	note __, 2
-	dutycycle 1
+	duty_cycle 1
 	octave 5
 	note G#, 2
 	intensity $71
@@ -689,7 +689,7 @@ Music_SunyshoreCityDPPt_Ch2_loop:
 	note B_, 1
 	octave 4
 	note C_, 11
-	dutycycle 2
+	duty_cycle 2
 	note C_, 1
 	note C#, 7
 	octave 3
@@ -749,7 +749,7 @@ Music_SunyshoreCityDPPt_Ch2_loop:
 	note B_, 8
 	octave 4
 	note D_, 8
-	dutycycle 1
+	duty_cycle 1
 	note E_, 2
 	note F_, 2
 	note F#, 8
@@ -784,7 +784,7 @@ Music_SunyshoreCityDPPt_Ch2_loop:
 	note B_, 2
 	octave 4
 	note C#, 6
-	dutycycle 0
+	duty_cycle 0
 	intensity $B8
 	note D_, 4
 	note C#, 4
@@ -817,7 +817,7 @@ Music_SunyshoreCityDPPt_Ch2_loop:
 	intensity $C2
 	note C#, 4
 	note __, 4
-	dutycycle 1
+	duty_cycle 1
 	intensity $C7
 	vibrato $00, $00
 	octave 3
@@ -859,7 +859,7 @@ Music_SunyshoreCityDPPt_Ch2_loop:
 	note B_, 2
 	octave 4
 	note C#, 4
-	dutycycle 2
+	duty_cycle 2
 	intensity $A7
 	octave 3
 	note E_, 4
@@ -906,7 +906,7 @@ Music_SunyshoreCityDPPt_Ch2_loop:
 	note_type 12, 12, 7
 	note C#, 16
 	note __, 10
-	dutycycle 1
+	duty_cycle 1
 	vibrato $08, $23
 	note_type 6, 12, 7
 	note C_, 1
@@ -922,7 +922,7 @@ Music_SunyshoreCityDPPt_Ch2_loop:
 
 Music_SunyshoreCityDPPt_Ch3:
 	intensity $25
-	dutycycle 1
+	duty_cycle 1
 	octave 2
 	note_type 6, 2, 5
 	note B_, 1
@@ -954,7 +954,7 @@ Music_SunyshoreCityDPPt_Ch3:
 	octave 2
 	note B_, 2
 	intensity $10
-	dutycycle 0
+	duty_cycle 0
 	note F#, 1
 	note G#, 1
 	octave 1
@@ -1381,7 +1381,7 @@ Music_SunyshoreCityDPPt_Ch3_loop:
 	note A_, 1
 	note E_, 1
 	intensity $12
-	dutycycle 2
+	duty_cycle 2
 	note A_, 2
 	note __, 16
 	note A_, 2
@@ -1464,7 +1464,7 @@ Music_SunyshoreCityDPPt_Ch3_loop:
 	note E_, 2
 	note __, 2
 	intensity $10
-	dutycycle 0
+	duty_cycle 0
 	octave 1
 	note A_, 2
 	note __, 1

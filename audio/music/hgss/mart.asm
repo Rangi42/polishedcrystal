@@ -11,7 +11,7 @@ Music_MartHGSS:
 Music_MartHGSS_Ch1:
 	tempo $90
 	volume 7, 7
-	dutycycle 1
+	duty_cycle 1
 	note_type 12, 11, 2
 	stereopanning $f
 	octave 4
@@ -78,7 +78,7 @@ Music_MartHGSS_Loop1:
 	note F#, 2
 	note G#, 2
 	note A#, 16
-	dutycycle 2
+	duty_cycle 2
 	note A#, 4
 	note B_, 2
 	note D#, 4
@@ -137,7 +137,7 @@ Music_MartHGSS_Loop1:
 	note F#, 2
 	note E_, 2
 	intensity $B1
-	dutycycle 0
+	duty_cycle 0
 	note D#, 2
 	octave 2
 	note G_, 2
@@ -172,7 +172,7 @@ Music_MartHGSS_Loop1:
 	octave 2
 	note G#, 2
 	intensity $B4
-	dutycycle 1
+	duty_cycle 1
 	octave 3
 	note G_, 2
 	note D#, 2
@@ -252,7 +252,7 @@ Music_MartHGSS_Loop1:
 	jumpchannel Music_MartHGSS_Loop1
 
 Music_MartHGSS_Ch2:
-	dutycycle 2
+	duty_cycle 2
 	note_type 12, 11, 1
 	stereopanning $f
 	octave 4
@@ -263,7 +263,7 @@ Music_MartHGSS_Ch2:
 	note F#, 6
 	intensity $C5
 	note F#, 6
-	dutycycle 1
+	duty_cycle 1
 	stereopanning $ff
 	octave 3
 	note F#, 2
@@ -394,7 +394,7 @@ Music_MartHGSS_Loop2:
 	note_type 12, 12, 5
 	octave 4
 	note C#, 12
-	dutycycle 2
+	duty_cycle 2
 	octave 3
 	note B_, 2
 	octave 4
@@ -450,7 +450,7 @@ Music_MartHGSS_Loop2:
 	note A#, 12
 	note B_, 4
 	note G#, 7
-	dutycycle 0
+	duty_cycle 0
 	octave 5
 	note C_, 1
 	note C#, 4
@@ -474,7 +474,7 @@ Music_MartHGSS_Loop2:
 	note A#, 2
 	note G#, 4
 	note F#, 10
-	dutycycle 1
+	duty_cycle 1
 	jumpchannel Music_MartHGSS_Loop2
 
 Music_MartHGSS_Ch3:

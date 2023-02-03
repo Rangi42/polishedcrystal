@@ -11,7 +11,7 @@ Music_WallyEncounterORAS:
 Music_WallyEncounterORAS_Ch1:
 	tempo 208
 	volume 7, 7
-	dutycycle 0
+	duty_cycle 0
 	vibrato $8, $15
 	note_type 12, 6, 7
 	note __, 4
@@ -128,7 +128,7 @@ Music_WallyEncounterORAS_Ch1_loop:
 	jumpchannel Music_WallyEncounterORAS_Ch1_loop
 
 Music_WallyEncounterORAS_Ch2:
-	dutycycle $2
+	duty_cycle 2
 	vibrato $12, $44
 	note_type 6, 9, 7
 	octave 2

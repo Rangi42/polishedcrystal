@@ -9,7 +9,7 @@ Music_PokemonChannel_Ch1:
 	tempo 128
 	volume 7, 7
 	vibrato $8, $38
-	dutycycle $1
+	duty_cycle 1
 	stereopanning $f
 	note_type 12, 11, 3
 	octave 2
@@ -20,7 +20,7 @@ Music_PokemonChannel_Ch1:
 	note __, 1
 	octave 3
 	note F#, 4
-	dutycycle $0
+	duty_cycle 0
 	octave 2
 	note B_, 1
 	note __, 1
@@ -31,7 +31,7 @@ Music_PokemonChannel_Ch1:
 	note __, 1
 	note B_, 1
 	note __, 1
-	dutycycle $1
+	duty_cycle 1
 	octave 3
 	note C_, 2
 	note __, 4
@@ -39,13 +39,13 @@ Music_PokemonChannel_Ch1:
 	note C_, 2
 	note __, 2
 	note B_, 8
-	dutycycle $0
+	duty_cycle 0
 	note C_, 4
 	note C_, 4
 	octave 2
 	note G_, 2
 	note __, 2
-	dutycycle $3
+	duty_cycle 3
 	octave 4
 	note D_, 2
 	note __, 2
@@ -76,7 +76,7 @@ Music_PokemonChannel_Ch1:
 	endchannel
 
 Music_PokemonChannel_Ch2:
-	dutycycle $1
+	duty_cycle 1
 	vibrato $8, $38
 	stereopanning $ff
 	note_type 12, 11, 3
@@ -87,7 +87,7 @@ Music_PokemonChannel_Ch2:
 	note __, 1
 	octave 4
 	note D_, 4
-	dutycycle $0
+	duty_cycle 0
 	octave 3
 	note G_, 1
 	note __, 1
@@ -98,20 +98,20 @@ Music_PokemonChannel_Ch2:
 	note __, 1
 	note G_, 1
 	note __, 1
-	dutycycle $1
+	duty_cycle 1
 	octave 4
 	note C_, 6
 	note D_, 2
 	note E_, 2
 	note __, 2
 	note G_, 8
-	dutycycle $0
+	duty_cycle 0
 	octave 3
 	note G_, 4
 	note F#, 4
 	note E_, 2
 	note __, 2
-	dutycycle $3
+	duty_cycle 3
 	octave 4
 	note B_, 2
 	note __, 2

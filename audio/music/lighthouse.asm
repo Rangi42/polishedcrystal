@@ -8,7 +8,7 @@ Music_Lighthouse:
 Music_Lighthouse_Ch1:
 	tempo 144
 	volume 7, 7
-	dutycycle $3
+	duty_cycle 3
 	tone $0004
 	vibrato $8, $45
 	stereopanning $f
@@ -130,7 +130,7 @@ Music_Lighthouse_branch_ee584:
 	jumpchannel Music_Lighthouse_branch_ee584
 
 Music_Lighthouse_Ch2:
-	dutycycle $3
+	duty_cycle 3
 	tone $0002
 	vibrato $10, $45
 Music_Lighthouse_branch_ee604:

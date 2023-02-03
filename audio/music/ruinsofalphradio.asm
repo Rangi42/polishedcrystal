@@ -7,7 +7,7 @@ Music_RuinsOfAlphRadio:
 Music_RuinsOfAlphRadio_Ch1:
 	tempo 160
 	volume 7, 7
-	dutycycle $0
+	duty_cycle 0
 	tone $0118
 	vibrato $0, $f0
 	stereopanning $f0
@@ -48,7 +48,7 @@ Music_RuinsOfAlphRadio_branch_eee08:
 	endchannel
 
 Music_RuinsOfAlphRadio_Ch2:
-	dutycycle $1
+	duty_cycle 1
 	vibrato $1, $e0
 Music_RuinsOfAlphRadio_branch_eee17:
 	stereopanning $f

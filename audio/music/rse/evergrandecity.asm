@@ -15,7 +15,7 @@ Music_EverGrandeCityRSE_Ch1:
 	volume 7, 7
 	stereopanning $f
 	vibrato $12, $25
-	dutycycle $2
+	duty_cycle 2
 	note_type 12, 7, 4
 	octave 3
 	note F_, 1
@@ -304,7 +304,7 @@ Music_EverGrandeCityRSE_Ch1_loop:
 
 Music_EverGrandeCityRSE_Ch2:
 	vibrato $12, $25
-	dutycycle $3
+	duty_cycle 3
 	stereopanning $f0
 	tone $0002
 	note_type 12, 6, 3
@@ -374,7 +374,7 @@ Music_EverGrandeCityRSE_Ch2:
 Music_EverGrandeCityRSE_Ch2_loop:
 	intensity $97
 	octave 2
-	dutycycle $3
+	duty_cycle 3
 	note A#, 6
 	note F_, 6
 	octave 3
@@ -456,7 +456,7 @@ Music_EverGrandeCityRSE_Ch2_loop:
 	note __, 1
 	octave 3
 	note C_, 6
-	dutycycle $0
+	duty_cycle 0
 	intensity $B7
 	octave 3
 	note A_, 2
@@ -475,14 +475,14 @@ Music_EverGrandeCityRSE_Ch2_loop:
 	note D_, 8
 	intensity $B7
 	note D_, 10
-	dutycycle $3
+	duty_cycle 3
 	intensity $93
 	octave 2
 	note A#, 2
 	octave 3
 	note F_, 2
 	note D_, 2
-	dutycycle $0
+	duty_cycle 0
 	intensity $B7
 	octave 4
 	note D#, 6
@@ -523,7 +523,7 @@ Music_EverGrandeCityRSE_Ch2_loop:
 	note D#, 1
 	note D_, 1
 	note C_, 6
-	dutycycle $3
+	duty_cycle 3
 	intensity $A7
 	octave 3
 	note A#, 14
@@ -544,13 +544,13 @@ Music_EverGrandeCityRSE_Ch2_loop:
 	octave 4
 	note C_, 14
 	octave 5
-	dutycycle $2
+	duty_cycle 2
 	intensity $A4
 	note G#, 6
 	note F#, 6
 	note F_, 6
 	note D#, 6
-	dutycycle $3
+	duty_cycle 3
 	octave 3
 	intensity $A7
 	note A#, 16
@@ -574,7 +574,7 @@ Music_EverGrandeCityRSE_Ch2_loop:
 	note F_, 1
 	note F#, 1
 	note G#, 12
-	dutycycle $2
+	duty_cycle 2
 	octave 4
 	intensity $A4
 	note G#, 6
@@ -592,13 +592,13 @@ Music_EverGrandeCityRSE_Ch2_loop:
 	note F_, 12
 	note F#, 12
 	note D_, 12
-	dutycycle $3
+	duty_cycle 3
 	octave 3
 	note A#, 4
 	note G#, 1
 	note __, 5
 	note F#, 8
-	dutycycle $2
+	duty_cycle 2
 	octave 4
 	note F#, 1
 	note __, 1

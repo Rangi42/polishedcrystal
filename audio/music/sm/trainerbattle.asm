@@ -13,7 +13,7 @@ Music_TrainerBattleSM:
 Music_TrainerBattleSM_Ch1:
 	tempo 204
 	volume 7, 7
-	dutycycle 2
+	duty_cycle 2
 	tone $0002
 	vibrato $12, $15
 	note_type 6, 6, 0
@@ -25,7 +25,7 @@ Music_TrainerBattleSM_Ch1:
 	intensity $6f
 	note G_, 8
 Music_TrainerBattleSM_Ch1_loop_main:
-	dutycycle 0
+	duty_cycle 0
 	intensity $60
 	octave 3
 	note G_, 6
@@ -189,7 +189,7 @@ Music_TrainerBattleSM_Ch1_loop_1:
 	note C_, 4
 	soundinput $00
 	vibrato $12, $15
-	dutycycle 1
+	duty_cycle 1
 	note_type 12, 10, 3
 Music_TrainerBattleSM_Ch1_loop_2:
 	note C_, 11
@@ -291,7 +291,7 @@ Music_TrainerBattleSM_Ch1_loop_3:
 	jumpchannel Music_TrainerBattleSM_Ch1_loop_main
 
 Music_TrainerBattleSM_Ch2:
-	dutycycle 3
+	duty_cycle 3
 	vibrato $8, $36
 	tone $0001
 	note_type 6, 12, 2
@@ -342,7 +342,7 @@ Music_TrainerBattleSM_Ch2:
 	intensity $72
 	note D_, 1
 Music_TrainerBattleSM_Ch2_loop_main:
-	dutycycle 3
+	duty_cycle 3
 	octave 4
 	intensity $a0
 	note C_, 6
@@ -363,11 +363,11 @@ Music_TrainerBattleSM_Ch2_loop_main:
 	note G_, 8
 	intensity $a5
 	note G_, 8
-	dutycycle 2
+	duty_cycle 2
 	callchannel Music_TrainerBattleSM_Ch2_branch_2
 	intensity $a7
 	note G_, 10
-	dutycycle 3
+	duty_cycle 3
 	octave 4
 	intensity $a0
 	note C_, 6
@@ -397,7 +397,7 @@ Music_TrainerBattleSM_Ch2_loop_main:
 	note G_, 2
 	intensity $a6
 	note G_, 8
-	dutycycle 2
+	duty_cycle 2
 	note F_, 8
 	note E_, 8
 	intensity $a3
@@ -438,7 +438,7 @@ Music_TrainerBattleSM_Ch2_loop_main:
 	note G_, 4
 	intensity $a7
 	note G_, 12
-	dutycycle 3
+	duty_cycle 3
 	octave 4
 	intensity $a2
 	note F_, 4
@@ -477,7 +477,7 @@ Music_TrainerBattleSM_Ch2_loop_main:
 	octave 4
 	note F_, 1
 	octave 3
-	dutycycle 2
+	duty_cycle 2
 	intensity $90
 	note C_, 8
 	intensity $97
@@ -492,7 +492,7 @@ Music_TrainerBattleSM_Ch2_loop_main:
 	note G_, 6
 	intensity $97
 	note G_, 8
-	dutycycle 0
+	duty_cycle 0
 	vibrato $12, $54
 	intensity $c0
 	note F_, 8
@@ -536,7 +536,7 @@ Music_TrainerBattleSM_Ch2_loop_main:
 	note D#, 16
 	intensity $c7
 	note D#, 16
-	dutycycle 2
+	duty_cycle 2
 	octave 2
 	intensity $97
 	vibrato $12, $15

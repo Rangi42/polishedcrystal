@@ -10,14 +10,14 @@ Music_LookRocket_Ch1:
 	volume 7, 7
 	transpose 0, 2
 	stereopanning $f
-	dutycycle $3
+	duty_cycle 3
 	vibrato $5, $64
 	note_type 12, 10, 8
 	octave 4
 	note C_, 1
 	note D_, 1
 	callchannel Music_LookRocket_branch_f74e6
-	dutycycle $1
+	duty_cycle 1
 Music_LookRocket_branch_f74c7:
 	intensity $a8
 	callchannel Music_LookRocket_branch_f74f7
@@ -92,7 +92,7 @@ Music_RocketTheme_branch_f750c:
 Music_LookRocket_Ch2:
 	transpose 0, 2
 	vibrato $4, $64
-	dutycycle $3
+	duty_cycle 3
 	note_type 12, 11, 7
 	stereopanning $ff
 	octave 5
@@ -127,7 +127,7 @@ Music_RocketTheme_branch_f7547:
 	note __, 3
 	octave 3
 	note B_, 6
-	dutycycle $0
+	duty_cycle 0
 	endchannel
 
 Music_LookRocket_branch_f7554:

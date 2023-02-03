@@ -13,7 +13,7 @@ Music_ScaryHouseXY_Ch1:
 	vibrato $12, $15
 	tone $0003
 	note_type 6, 3, 7
-	dutycycle 2
+	duty_cycle 2
 	tempo 188
 	octave 4
 	note __, 1
@@ -44,7 +44,7 @@ Music_ScaryHouseXY_Ch1:
 	note B_, 4
 	note E_, 4
 	note A#, 15
-	dutycycle 1
+	duty_cycle 1
 	tone $0003
 Music_ScaryHouseXY_Ch1_loop_main:
 	intensity $75
@@ -112,7 +112,7 @@ Music_ScaryHouseXY_Ch1_loop_main:
 	jumpchannel Music_ScaryHouseXY_Ch1_loop_main
 
 Music_ScaryHouseXY_Ch2:
-	dutycycle 2
+	duty_cycle 2
 	vibrato $12, $15
 	tone $0002
 	note_type 12, 9, 3

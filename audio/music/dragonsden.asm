@@ -8,7 +8,7 @@ Music_DragonsDen:
 Music_DragonsDen_Ch1:
 	tempo 144
 	volume 7, 7
-	dutycycle $0
+	duty_cycle 0
 	tone $0004
 	stereopanning $f0
 	note_type 12, 8, 0
@@ -60,7 +60,7 @@ Music_DragonsDen_branch_eed2d:
 	endchannel
 
 Music_DragonsDen_Ch2:
-	dutycycle $0
+	duty_cycle 0
 	tone $0004
 	stereopanning $f
 	note_type 12, 9, 0

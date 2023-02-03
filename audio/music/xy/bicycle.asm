@@ -12,7 +12,7 @@ BicycleXY_Ch1::
 	tempo 120
 	volume 7, 7
 	stereopanning $ff
-	dutycycle $1
+	duty_cycle 1
 	vibrato $10, $22
 	note_type 12, 10, 7
 
@@ -151,13 +151,13 @@ BicycleXY_Ch1_sub_0:
 	jumpchannel BicycleXY_Ch1_sub_0
 
 BicycleXY_Ch2::
-	dutycycle $1
+	duty_cycle 1
 	note_type 12, 12, 7
 	vibrato $10, $00
 
 BicycleXY_Ch2_sub_0:
 	note_type 12, 12, 8
-	dutycycle $2
+	duty_cycle 2
 	octave 4
 	note E_, 2
 	note D#, 2
@@ -208,7 +208,7 @@ BicycleXY_Ch2_sub_0:
 	note F#, 5
 	note __, 1
 	note F#, 1
-	dutycycle $3
+	duty_cycle 3
 	note_type 6, 12, 7
 	vibrato $8, $23
 	octave 5
@@ -261,7 +261,7 @@ BicycleXY_Ch2_sub_0:
 	note D#, 10
 	vibrato $10, $23
 	note_type 12, 12, 4
-	dutycycle $1
+	duty_cycle 1
 	octave 4
 	note G#, 8
 	note E_, 4

@@ -12,7 +12,7 @@ Music_GameCornerDPPt_Ch1:
 	tempo $7C
 	volume 7, 7
 	note_type 12, 10, 2
-	dutycycle 2
+	duty_cycle 2
 	tone $0001
 	stereopanning $f
 	octave 4
@@ -482,7 +482,7 @@ Music_GameCornerDPPt_Ch1_loop:
 	note A#, 2
 	note G#, 1
 
-	dutycycle 0
+	duty_cycle 0
 	intensity $C4
 	octave 1
 	note D#, 2
@@ -514,7 +514,7 @@ Music_GameCornerDPPt_Ch1_loop:
 	note __, 16
 	note __, 16
 	note __, 16
-	dutycycle 2
+	duty_cycle 2
 	intensity $39
 	octave 4
 	note C_, 1
@@ -616,7 +616,7 @@ Music_GameCornerDPPt_Ch1_loop:
 
 Music_GameCornerDPPt_Ch2:
 	note_type 12, 12, 7
-	dutycycle 0
+	duty_cycle 0
 	tone $0002
 	stereopanning $ff
 	octave 1
@@ -723,7 +723,7 @@ Music_GameCornerDPPt_Ch2:
 	note A_, 8
 Music_GameCornerDPPt_Ch2_loop:
 	note_type 8, 12, 8
-	dutycycle 2
+	duty_cycle 2
 	octave 1
 	note E_, 1
 	note F_, 1
@@ -776,7 +776,7 @@ Music_GameCornerDPPt_Ch2_loop:
 	note_type 12, 12, 8
 	octave 6
 	note E_, 12
-	dutycycle 0
+	duty_cycle 0
 	octave 2
 	note E_, 2
 	octave 1
@@ -990,7 +990,7 @@ Music_GameCornerDPPt_Ch2_loop:
 	note F#, 2
 
 	note_type 6, 9, 4
-	dutycycle 2
+	duty_cycle 2
 	stereopanning $f0
 	octave 5
 	note C#, 1
@@ -1054,7 +1054,7 @@ Music_GameCornerDPPt_Ch2_loop:
 	note B_, 1
 	note A#, 1
 	note G#, 1
-	dutycycle 0
+	duty_cycle 0
 	note_type 6, 12, 4
 	stereopanning $ff
 	note __, 4
@@ -1090,7 +1090,7 @@ Music_GameCornerDPPt_Ch2_loop:
 	note D#, 2
 	note D_, 2
 	note D_, 1
-	dutycycle 1
+	duty_cycle 1
 	note D#, 7
 	octave 2
 	note A#, 8
@@ -1143,7 +1143,7 @@ Music_GameCornerDPPt_Ch2_loop:
 	note __, 16
 	note __, 16
 	note __, 16
-	dutycycle 0
+	duty_cycle 0
 	octave 1
 	note A_, 4
 	octave 2

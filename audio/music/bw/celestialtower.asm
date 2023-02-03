@@ -12,7 +12,7 @@ Music_CelestialTowerBW_NoIntro:
 
 Music_CelestialTowerBW_NoIntro_Ch1:
 	tempo 232
-	dutycycle $2
+	duty_cycle 2
 	vibrato $12, $15
 	tone $0001
 	note_type 6, 8, 5
@@ -206,7 +206,7 @@ Music_CelestialTowerBW_NoIntro_Ch1_loop_1:
 	jumpchannel Music_CelestialTowerBW_NoIntro_Ch1
 
 Music_CelestialTowerBW_NoIntro_Ch2:
-	dutycycle $3
+	duty_cycle 3
 	vibrato $12, $15
 	tone $0001
 	note_type 6, 6, 7
@@ -311,7 +311,7 @@ Music_CelestialTowerBW_NoIntro_Ch2_loop_1:
 	octave 3
 	note D_, 10
 	note_type 3, 9, 2
-	dutycycle 2
+	duty_cycle 2
 	octave 4
 	note D_, 1
 	note A#, 11
@@ -388,7 +388,7 @@ Music_CelestialTowerBW_NoIntro_Ch2_loop_1:
 	octave 4
 	note F#, 7
 	octave 3
-	dutycycle 3
+	duty_cycle 3
 	note_type 12, 6, 0
 	note A#, 8
 	intensity $67

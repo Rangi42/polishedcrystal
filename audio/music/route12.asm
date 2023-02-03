@@ -11,7 +11,7 @@ Music_Route12_Ch1:
 	vibrato $12, $34
 	tone $0001
 	stereopanning $f
-	dutycycle $3
+	duty_cycle 3
 	note_type 12, 9, 8
 	octave 3
 	note G#, 1
@@ -30,7 +30,7 @@ Music_Route12_Ch1:
 	intensity $97
 	note D#, 12
 Music_Route12_branch_ec535:
-	dutycycle $2
+	duty_cycle 2
 	intensity $96
 	callchannel Music_Route12_branch_ec5b1
 	callchannel Music_Route12_branch_ec5bf
@@ -68,7 +68,7 @@ Music_Route12_branch_ec535:
 	note F_, 1
 	note G#, 1
 	note B_, 1
-	dutycycle $3
+	duty_cycle 3
 	intensity $7f
 	octave 4
 	note C#, 3
@@ -162,7 +162,7 @@ Music_Route12_branch_ec5bf:
 	endchannel
 
 Music_Route12_Ch2:
-	dutycycle $3
+	duty_cycle 3
 	vibrato $12, $34
 	note_type 12, 11, 8
 	octave 4
@@ -184,7 +184,7 @@ Music_Route12_Ch2:
 	octave 4
 	note D#, 1
 Music_Route12_branch_ec5e5:
-	dutycycle $3
+	duty_cycle 3
 	intensity $b7
 	callchannel Music_Route12_branch_ec647
 	note F#, 1
@@ -196,7 +196,7 @@ Music_Route12_branch_ec5e5:
 	note E_, 1
 	octave 3
 	note B_, 12
-	dutycycle $2
+	duty_cycle 2
 	octave 2
 	note B_, 1
 	note __, 2
@@ -207,7 +207,7 @@ Music_Route12_branch_ec5e5:
 	octave 3
 	note D#, 4
 	note F#, 4
-	dutycycle $3
+	duty_cycle 3
 	callchannel Music_Route12_branch_ec647
 	note A_, 1
 	octave 5
@@ -224,7 +224,7 @@ Music_Route12_branch_ec5e5:
 	note G#, 6
 	intensity $6f
 	note G#, 16
-	dutycycle $2
+	duty_cycle 2
 	intensity $a8
 	note A_, 3
 	note G#, 3

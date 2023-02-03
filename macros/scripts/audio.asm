@@ -72,10 +72,10 @@ MACRO tempo
 	bigdw \1 ; tempo
 ENDM
 
-	const dutycycle_cmd
-MACRO dutycycle
-	db dutycycle_cmd
-	db \1 ; duty_cycle
+	const duty_cycle_cmd ; $db
+MACRO duty_cycle
+	db duty_cycle_cmd
+	db \1 ; duty cycle
 ENDM
 
 	const intensity_cmd

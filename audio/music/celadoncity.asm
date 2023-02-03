@@ -142,7 +142,7 @@ Music_CeladonCity_branch_f43fe:
 
 Music_CeladonCity_Ch2:
 	vibrato $12, $34
-	dutycycle $2
+	duty_cycle 2
 	stereopanning $f0
 	note_type 12, 11, 7
 	octave 4

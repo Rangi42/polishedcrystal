@@ -9,7 +9,7 @@ Music_ViridianCity_Ch1:
 	tempo 157
 	volume 7, 7
 	stereopanning $f
-	dutycycle $2
+	duty_cycle 2
 	vibrato $12, $34
 	note_type 12, 10, 7
 	octave 3
@@ -273,7 +273,7 @@ Music_ViridianCity_branch_f410f:
 
 Music_ViridianCity_Ch2:
 	vibrato $10, $46
-	dutycycle $1
+	duty_cycle 1
 	note_type 12, 11, 7
 	stereopanning $f0
 	octave 2

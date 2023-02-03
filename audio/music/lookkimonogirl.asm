@@ -8,7 +8,7 @@ Music_LookKimonoGirl_Ch1:
 	tempo 160
 	volume 7, 7
 	stereopanning $f
-	dutycycle $1
+	duty_cycle 1
 	note_type 6, 8, 7
 	tone $0001
 	callchannel Music_LookKimonoGirl_branch_f7aa8
@@ -103,12 +103,12 @@ Music_LookKimonoGirl_branch_f7a34:
 	endchannel
 
 Music_LookKimonoGirl_Ch2:
-	dutycycle $0
+	duty_cycle 0
 	note_type 6, 10, 7
 	stereopanning $f0
 	callchannel Music_LookKimonoGirl_branch_f7aa8
 Music_LookKimonoGirl_branch_f7a5f:
-	dutycycle $3
+	duty_cycle 3
 	note_type 12, 9, 1
 	octave 5
 	note E_, 1

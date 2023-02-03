@@ -11,7 +11,7 @@ Music_EliteFourBattleBW:
 	channel 4, Music_EliteFourBattleBW_Ch4
 
 Music_EliteFourBattleBW_Ch1:
-	dutycycle $2
+	duty_cycle 2
 	vibrato $12, $15
 	tone $0001
 	tempo 200
@@ -100,7 +100,7 @@ Music_EliteFourBattleBW_Ch1_loop_main:
 	note F#, 4
 	intensity $a4
 	note F#, 4
-	dutycycle 0
+	duty_cycle 0
 	intensity $b2
 	note F#, 2
 	note F#, 4
@@ -133,7 +133,7 @@ Music_EliteFourBattleBW_Ch1_loop_main:
 	note B_, 2
 	note A_, 2
 	note G_, 2
-	dutycycle 2
+	duty_cycle 2
 	intensity $a0
 	soundinput $67
 	octave 2
@@ -203,7 +203,7 @@ Music_EliteFourBattleBW_Ch1_loop_main:
 	note A_, 6
 	intensity $a4
 	note A_, 4
-	dutycycle 3
+	duty_cycle 3
 	octave 4
 	note_type 12, 12, 1
 	note F#, 1
@@ -220,7 +220,7 @@ Music_EliteFourBattleBW_Ch1_loop_main:
 	intensity $c7
 	note G_, 8
 	octave 3
-	dutycycle 0
+	duty_cycle 0
 	intensity $b2
 	note F#, 2
 	intensity $b5
@@ -339,7 +339,7 @@ Music_EliteFourBattleBW_Ch1_loop_main:
 	note F#, 8
 	intensity $a7
 	note F#, 8
-	dutycycle 2
+	duty_cycle 2
 	note_type 6, 10, 1
 	octave 4
 	note F_, 1
@@ -453,7 +453,7 @@ Music_EliteFourBattleBW_Ch1_loop_main:
 	jumpchannel Music_EliteFourBattleBW_Ch1_loop_main
 
 Music_EliteFourBattleBW_Ch2:
-	dutycycle $3
+	duty_cycle 3
 	vibrato $12, $15
 	tone $0001
 	note_type 12, 11, 2
@@ -638,7 +638,7 @@ Music_EliteFourBattleBW_Ch2_loop_main:
 	note D_, 2
 	note E_, 2
 	intensity $71
-	dutycycle 2
+	duty_cycle 2
 Music_EliteFourBattleBW_Ch2_loop_1:
 	octave 4
 	note C#, 1
@@ -688,7 +688,7 @@ Music_EliteFourBattleBW_Ch2_loop_1:
 	note B_, 1
 	octave 6
 	note G_, 1
-	dutycycle 3
+	duty_cycle 3
 	octave 3
 	note_type 12, 10, 0
 	note F#, 3

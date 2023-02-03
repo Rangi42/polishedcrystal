@@ -11,7 +11,7 @@ Music_PaletteBattlePrism:
 Music_PaletteBattlePrism_Ch1:
 	tempo 96
 	volume 7, 7
-	dutycycle $3
+	duty_cycle 3
 	tone $0002
 	vibrato $10, $12
 	note_type 12, 11, 2
@@ -293,7 +293,7 @@ Music_PaletteBattlePrism_branch_1edc47:
 	jumpchannel Music_PaletteBattlePrism_branch_1edc47
 
 Music_PaletteBattlePrism_Ch2:
-	dutycycle $3
+	duty_cycle 3
 	tone $0001
 	vibrato $8, $36
 	note_type 12, 12, 2

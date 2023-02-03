@@ -8,7 +8,7 @@ Music_PokeComCenter:
 Music_PokeComCenter_Ch1:
 	tempo 160
 	volume 7, 7
-	dutycycle $1
+	duty_cycle 1
 	tone $0002
 	vibrato $8, $22
 	stereopanning $f0
@@ -159,7 +159,7 @@ Music_PokeComCenter_branch_179642:
 
 Music_PokeComCenter_Ch2:
 	note_type 12, 12, 2
-	dutycycle $3
+	duty_cycle 3
 	note __, 10
 	octave 1
 	note G_, 2

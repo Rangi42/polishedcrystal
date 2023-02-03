@@ -13,7 +13,7 @@ Music_CeruleanCityHGSS_Ch1:
 	volume 7, 7
 	note_type 12, 11, 2
 	tone $0001
-	dutycycle 2
+	duty_cycle 2
 	octave 4
 	note E_, 2
 	note D#, 2
@@ -206,7 +206,7 @@ Music_CeruleanCityHGSS_Loop1:
 Music_CeruleanCityHGSS_Ch2:
 ;Channel2_Bar1:
 	vibrato 12,$34
-	dutycycle 2
+	duty_cycle 2
 	note_type 2, 12, 2
 	tone $0002
 	note __, 2
@@ -264,7 +264,7 @@ Music_CeruleanCityHGSS_Loop2:
 	note B_, 14
 ;Channel2_Bar6:
 	intensity $C2
-	dutycycle 1
+	duty_cycle 1
 	octave 4
 	note E_, 1
 	octave 3
@@ -316,13 +316,13 @@ Music_CeruleanCityHGSS_Loop2:
 	note E_, 1
 	note __, 3
 	sound_duty 2, 2, 0, 0
-	dutycycle 0
+	duty_cycle 0
 	octave 4
 	note G#, 4
 	note E_, 4
 ;Channel2_Bar11:
 	sound_duty 1, 1, 1, 1
-	dutycycle 1
+	duty_cycle 1
 	octave 3
 	note D#, 1
 	note C#, 1
@@ -331,13 +331,13 @@ Music_CeruleanCityHGSS_Loop2:
 	note F#, 1
 	note __, 3
 	sound_duty 2, 2, 0, 0
-	dutycycle 0
+	duty_cycle 0
 	octave 4
 	note B_, 4
 	note F#, 4
 ;Channel2_Bar12:
 	sound_duty 1, 1, 1, 1
-	dutycycle 1
+	duty_cycle 1
 	octave 3
 	note C#, 1
 	octave 2
@@ -372,7 +372,7 @@ Music_CeruleanCityHGSS_Loop2:
 ;Channel2_Bar14:
 	sound_duty 2, 2, 0, 0
 	intensity $C6
-	dutycycle 2
+	duty_cycle 2
 	octave 4
 	note E_, 8
 	octave 3

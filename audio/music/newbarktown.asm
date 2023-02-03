@@ -12,7 +12,7 @@ Music_NewBarkTown_Ch1:
 	note_type 12, 8, 7
 	note __, 4
 Music_NewBarkTown_branch_eb2eb:
-	dutycycle $0
+	duty_cycle 0
 	callchannel Music_NewBarkTown_branch_eb349
 	octave 3
 	note C#, 1
@@ -23,7 +23,7 @@ Music_NewBarkTown_branch_eb2eb:
 	octave 3
 	note G_, 2
 	note F#, 2
-	dutycycle $2
+	duty_cycle 2
 	intensity $82
 	note E_, 1
 	note F#, 1
@@ -34,7 +34,7 @@ Music_NewBarkTown_branch_eb2eb:
 	note B_, 1
 	note A_, 1
 	note G_, 1
-	dutycycle $0
+	duty_cycle 0
 	intensity $87
 	callchannel Music_NewBarkTown_branch_eb349
 	octave 3
@@ -45,7 +45,7 @@ Music_NewBarkTown_branch_eb2eb:
 	note __, 1
 	octave 3
 	note E_, 2
-	dutycycle $2
+	duty_cycle 2
 	intensity $82
 	note C#, 1
 	note __, 1
@@ -60,7 +60,7 @@ Music_NewBarkTown_branch_eb2eb:
 	note C#, 1
 	note E_, 1
 	note A_, 1
-	dutycycle $1
+	duty_cycle 1
 	intensity $5e
 	callchannel Music_NewBarkTown_branch_eb37c
 	callchannel Music_NewBarkTown_branch_eb37c
@@ -162,7 +162,7 @@ Music_NewBarkTown_Ch2:
 	note_type 6, 10, 7
 	note __, 8
 Music_NewBarkTown_branch_eb396:
-	dutycycle $2
+	duty_cycle 2
 	note_type 6, 10, 7
 	callchannel Music_NewBarkTown_branch_eb3bf
 	callchannel Music_NewBarkTown_branch_eb3bf
@@ -241,7 +241,7 @@ Music_NewBarkTown_branch_eb3bf:
 
 Music_NewBarkTown_branch_eb3f2:
 	note_type 6, 9, 7
-	dutycycle $2
+	duty_cycle 2
 	octave 4
 	note B_, 12
 	note A_, 12

@@ -11,7 +11,7 @@ Music_Route26_Ch1:
 	tempo 151
 	volume 7, 7
 	vibrato $14, $23
-	dutycycle $0
+	duty_cycle 0
 	note_type 12, 10, 7
 	octave 3
 	note D_, 4
@@ -28,7 +28,7 @@ Music_Route26_Ch1:
 	note G#, 2
 	note F#, 2
 Music_Route26_branch_eefe0:
-	dutycycle $0
+	duty_cycle 0
 	note_type 12, 10, 7
 	octave 3
 	note F_, 1
@@ -110,7 +110,7 @@ Music_Route26_branch_eefe0:
 	note C_, 6
 	octave 3
 	note G#, 6
-	dutycycle $2
+	duty_cycle 2
 	note_type 12, 10, 5
 	note A_, 3
 	note G#, 3
@@ -198,7 +198,7 @@ Music_Route26_branch_eefe0:
 Music_Route26_Ch2:
 	stereopanning $f0
 	vibrato $14, $23
-	dutycycle $2
+	duty_cycle 2
 	note_type 12, 12, 7
 	octave 1
 	note A#, 4
@@ -234,7 +234,7 @@ Music_Route26_Ch2:
 	note C_, 2
 	note D#, 2
 Music_Route26_branch_ef0ce:
-	dutycycle $2
+	duty_cycle 2
 	note_type 12, 12, 2
 	octave 2
 	note C#, 6
@@ -300,7 +300,7 @@ Music_Route26_branch_ef10e:
 	note C_, 1
 	octave 1
 	note G#, 1
-	dutycycle $3
+	duty_cycle 3
 	octave 4
 	note C#, 6
 	note D#, 6

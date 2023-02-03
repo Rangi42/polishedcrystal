@@ -13,7 +13,7 @@ Music_ZinniaBattleORAS:
 Music_ZinniaBattleORAS_Ch1:
 	tempo 212
 	volume 7, 7
-	dutycycle 1
+	duty_cycle 1
 	tone $0002
 	vibrato $8, $15
 	note_type 3, 11, 3
@@ -31,7 +31,7 @@ Music_ZinniaBattleORAS_Ch1:
 	note C#, 12
 	intensity $b3
 	note C#, 4
-	dutycycle 2
+	duty_cycle 2
 Music_ZinniaBattleORAS_Ch1_loop_1:
 	callchannel Music_ZinniaBattleORAS_Ch1_branch_1
 	loopchannel 4, Music_ZinniaBattleORAS_Ch1_loop_1
@@ -39,7 +39,7 @@ Music_ZinniaBattleORAS_Ch1_loop_main:
 Music_ZinniaBattleORAS_Ch1_loop_2:
 	callchannel Music_ZinniaBattleORAS_Ch1_branch_1
 	loopchannel 4, Music_ZinniaBattleORAS_Ch1_loop_2
-	dutycycle 0
+	duty_cycle 0
 	note_type 6, 8, 0
 	note D_, 8
 	intensity $87
@@ -198,7 +198,7 @@ Music_ZinniaBattleORAS_Ch1_loop_2:
 	note A_, 8
 	intensity $97
 	note A_, 8
-	dutycycle 3
+	duty_cycle 3
 	intensity $70
 	note F#, 8
 	intensity $77
@@ -251,7 +251,7 @@ Music_ZinniaBattleORAS_Ch1_loop_2:
 	callchannel Music_ZinniaBattleORAS_Ch1_branch_2
 	callchannel Music_ZinniaBattleORAS_Ch1_branch_3
 	callchannel Music_ZinniaBattleORAS_Ch1_branch_3
-	dutycycle 2
+	duty_cycle 2
 Music_ZinniaBattleORAS_Ch1_loop_3:
 	callchannel Music_ZinniaBattleORAS_Ch1_branch_1
 	loopchannel 3, Music_ZinniaBattleORAS_Ch1_loop_3
@@ -321,7 +321,7 @@ Music_ZinniaBattleORAS_Ch1_branch_3:
 	endchannel
 
 Music_ZinniaBattleORAS_Ch2:
-	dutycycle 3
+	duty_cycle 3
 	vibrato $12, $33
 	note_type 3, 14, 3
 	octave 3
@@ -364,7 +364,7 @@ Music_ZinniaBattleORAS_Ch2:
 	note A_, 2
 	note G#, 2
 	note_type 6, 10, 0
-	dutycycle 0
+	duty_cycle 0
 	octave 3
 	note F#, 16
 	note G#, 14
@@ -391,7 +391,7 @@ Music_ZinniaBattleORAS_Ch2:
 	note C#, 4
 Music_ZinniaBattleORAS_Ch2_loop:
 	note_type 6, 10, 0
-	dutycycle 3
+	duty_cycle 3
 	octave 3
 	note C#, 2
 	note D_, 1
@@ -496,7 +496,7 @@ Music_ZinniaBattleORAS_Ch2_loop:
 	note D_, 8
 	intensity $c7
 	note D_, 8
-	dutycycle 0
+	duty_cycle 0
 	note_type 6, 7, -7
 	octave 4
 	note A#, 1
@@ -682,7 +682,7 @@ Music_ZinniaBattleORAS_Ch2_loop:
 	note C#, 4
 	intensity $b4
 	note C#, 3
-	dutycycle 3
+	duty_cycle 3
 	vibrato $12, $53
 	note_type 3, 12, 0
 	note D_, 1

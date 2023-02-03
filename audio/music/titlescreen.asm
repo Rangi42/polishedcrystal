@@ -8,7 +8,7 @@ Music_TitleScreen:
 Music_TitleScreen_Ch1:
 	tempo 134
 	volume 7, 7
-	dutycycle $3
+	duty_cycle 3
 	tone $0002
 	vibrato $10, $12
 	stereopanning $f0
@@ -293,7 +293,7 @@ Music_TitleScreen_branch_eb971:
 	endchannel
 
 Music_TitleScreen_Ch2:
-	dutycycle $3
+	duty_cycle 3
 	vibrato $14, $12
 	note_type 12, 12, 7
 	intensity $a4

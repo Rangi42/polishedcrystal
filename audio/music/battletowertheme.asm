@@ -17,7 +17,7 @@ Music_BattleTowerTheme_branch_1788a5:
 	note __, 16
 	note __, 12
 	note __, 12
-	dutycycle $2
+	duty_cycle 2
 	octave 3
 	note C_, 2
 	note E_, 2
@@ -103,7 +103,7 @@ Music_BattleTowerTheme_branch_1788a5:
 	note C_, 2
 	note E_, 4
 	note __, 4
-	dutycycle $3
+	duty_cycle 3
 	note C_, 2
 	note E_, 2
 	note G_, 4
@@ -205,7 +205,7 @@ Music_BattleTowerTheme_branch_17895e:
 Music_BattleTowerTheme_Ch2:
 	vibrato $12, $34
 Music_BattleTowerTheme_branch_178970:
-	dutycycle $3
+	duty_cycle 3
 	note_type 6, 11, 8
 	octave 3
 	note F_, 2
@@ -286,7 +286,7 @@ Music_BattleTowerTheme_branch_178970:
 	note F_, 1
 	note E_, 8
 	stereopanning $f0
-	dutycycle $2
+	duty_cycle 2
 	note F_, 6
 	note A_, 1
 	note A#, 1
@@ -337,7 +337,7 @@ Music_BattleTowerTheme_branch_178970:
 	note G_, 4
 	note __, 4
 	stereopanning $ff
-	dutycycle $3
+	duty_cycle 3
 	octave 3
 	note C_, 2
 	note D_, 2

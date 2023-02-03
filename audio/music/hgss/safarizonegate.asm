@@ -13,7 +13,7 @@ Music_SafariZoneGateHGSS:
 Music_SafariZoneGateHGSS_Ch1:
 	tempo 164
 	volume 7, 7
-	dutycycle 0
+	duty_cycle 0
 	tone $0002
 	vibrato $8, $15
 	note_type 12, 8, 6
@@ -88,7 +88,7 @@ Music_SafariZoneGateHGSS_Ch1:
 	note D_, 2
 	note D_, 1
 	note C#, 3
-	dutycycle 2
+	duty_cycle 2
 	note C#, 2
 	note C#, 2
 	octave 2
@@ -110,7 +110,7 @@ Music_SafariZoneGateHGSS_Ch1:
 	note G#, 2
 	intensity $84
 	note B_, 2
-	dutycycle 0
+	duty_cycle 0
 	note B_, 1
 	note B_, 2
 	octave 4
@@ -134,7 +134,7 @@ Music_SafariZoneGateHGSS_Ch1:
 	note D_, 2
 	note E_, 2
 
-	dutycycle 2
+	duty_cycle 2
 	intensity $75
 	octave 2
 	note A_, 1
@@ -203,7 +203,7 @@ Music_SafariZoneGateHGSS_Ch1:
 	endchannel
 
 Music_SafariZoneGateHGSS_Ch2:
-	dutycycle 3
+	duty_cycle 3
 	vibrato $12, $25
 	tone $0001
 	note_type 12, 9, 6
@@ -279,29 +279,29 @@ Music_SafariZoneGateHGSS_Ch2:
 	note A_, 2
 	note B_, 1
 	note A_, 3
-	dutycycle 2
+	duty_cycle 2
 	note A_, 2
 	note A_, 2
 	note E_, 2
-	dutycycle 0
+	duty_cycle 0
 	octave 4
 	note E_, 1
 	note E_, 2
 	intensity $94
 	note E_, 7
-	dutycycle 2
+	duty_cycle 2
 	intensity $92
 	octave 3
 	note A_, 2
 	note A_, 2
 	note E_, 2
-	dutycycle 0
+	duty_cycle 0
 	octave 4
 	note E_, 1
 	note E_, 2
 	intensity $94
 	note E_, 2
-	dutycycle 3
+	duty_cycle 3
 	note F#, 1
 	note E_, 2
 	note F#, 3
@@ -327,7 +327,7 @@ Music_SafariZoneGateHGSS_Ch2:
 	octave 4
 	note C#, 2
 	octave 3
-	dutycycle 2
+	duty_cycle 2
 	intensity $b2
 	note A_, 3
 	note G#, 3
@@ -403,7 +403,7 @@ Music_SafariZoneGateHGSS_Ch2:
 	note G#, 2
 	note F#, 2
 	note G#, 2
-	dutycycle 1
+	duty_cycle 1
 	intensity $86
 	octave 4
 	note C#, 4

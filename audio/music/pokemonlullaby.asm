@@ -7,7 +7,7 @@ Music_PokemonLullaby:
 Music_PokemonLullaby_Ch1:
 	tempo 224
 	volume 7, 7
-	dutycycle $3
+	duty_cycle 3
 	tone $0001
 Music_PokemonLullaby_branch_f6d8c:
 	note_type 12, 10, 7
@@ -56,7 +56,7 @@ Music_PokemonLullaby_branch_f6d8c:
 
 Music_PokemonLullaby_Ch2:
 	vibrato $10, $14
-	dutycycle $0
+	duty_cycle 0
 	note_type 12, 11, 4
 Music_PokemonLullaby_branch_f6dcc:
 	note __, 16

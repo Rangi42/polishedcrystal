@@ -9,7 +9,7 @@ Music_Credits_Ch1:
 	tempo 139
 	volume 7, 7
 	stereopanning $f
-	dutycycle $3
+	duty_cycle 3
 	note_type 12, 2, -7
 	octave 2
 	note G_, 16
@@ -558,7 +558,7 @@ Music_Credits_branch_1f582:
 	endchannel
 
 Music_Credits_Ch2:
-	dutycycle $1
+	duty_cycle 1
 	vibrato $14, $23
 	note_type 12, 2, -7
 	stereopanning $f0

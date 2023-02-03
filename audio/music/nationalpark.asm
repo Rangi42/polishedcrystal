@@ -10,7 +10,7 @@ Music_NationalPark_Ch1:
 	volume 7, 7
 	stereopanning $f
 	vibrato $18, $24
-	dutycycle $1
+	duty_cycle 1
 	note_type 12, 7, 7
 	note __, 2
 Music_NationalPark_branch_f5504:
@@ -298,7 +298,7 @@ Music_NationalPark_branch_f563a:
 
 Music_NationalPark_Ch2:
 	vibrato $14, $24
-	dutycycle $1
+	duty_cycle 1
 	note_type 12, 10, 7
 	note __, 2
 	stereopanning $f0

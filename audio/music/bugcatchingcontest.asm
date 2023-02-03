@@ -10,7 +10,7 @@ Music_BugCatchingContest_Ch1:
 	volume 7, 7
 	stereopanning $f
 	vibrato $8, $24
-	dutycycle $2
+	duty_cycle 2
 	note_type 12, 11, 7
 	note __, 8
 	octave 4
@@ -50,7 +50,7 @@ Music_BugCatchingContest_branch_f7c55:
 	note B_, 2
 	loopchannel 8, Music_BugCatchingContest_branch_f7c55
 	intensity $b4
-	dutycycle $1
+	duty_cycle 1
 	octave 3
 	note B_, 6
 	note A_, 1
@@ -60,7 +60,7 @@ Music_BugCatchingContest_branch_f7c55:
 	note D_, 1
 	note E_, 1
 	intensity $b1
-	dutycycle $2
+	duty_cycle 2
 Music_BugCatchingContest_branch_f7c6b:
 	note __, 2
 	octave 2
@@ -191,7 +191,7 @@ Music_BugCatchingContest_branch_f7c8e:
 Music_BugCatchingContest_Ch2:
 	stereopanning $f0
 	vibrato $8, $23
-	dutycycle $1
+	duty_cycle 1
 	note_type 12, 12, 7
 	note __, 8
 Music_BugCatchingContest_branch_f7cff:
@@ -204,7 +204,7 @@ Music_BugCatchingContest_branch_f7cff:
 	note A_, 1
 	loopchannel 4, Music_BugCatchingContest_branch_f7cff
 Music_BugCatchingContest_branch_f7d0a:
-	dutycycle $0
+	duty_cycle 0
 	callchannel Music_BugCatchingContest_branch_f7d8e
 	octave 2
 	note E_, 2
@@ -287,7 +287,7 @@ Music_BugCatchingContest_branch_f7d0a:
 	octave 3
 	note A_, 1
 	note __, 1
-	dutycycle $0
+	duty_cycle 0
 	note __, 2
 	octave 5
 	note D_, 1

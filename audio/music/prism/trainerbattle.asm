@@ -10,7 +10,7 @@ Music_TrainerBattlePrism:
 
 Music_TrainerBattlePrism_Ch1:
 	tempo 102
-	dutycycle $1
+	duty_cycle 1
 	note_type 12, 12, 7
 	octave 5
 	note C_, 1
@@ -325,7 +325,7 @@ Music_TrainerBattlePrism_L1:
 
 Music_TrainerBattlePrism_Ch2:
 	tempo 102
-	dutycycle $3
+	duty_cycle 3
 	note_type 12, 11, 4
 	vibrato $11, $12
 	octave 3
@@ -440,7 +440,7 @@ Music_TrainerBattlePrism_L2:
 	note E_, 12
 	note D_, 4
 	note C_, 16
-	dutycycle $2
+	duty_cycle 2
 	intensity $84
 	vibrato $0, $0
 Music_TrainerBattlePrism_L3:
@@ -449,7 +449,7 @@ Music_TrainerBattlePrism_L3:
 	callchannel Music_TrainerBattlePrism_P8
 	callchannel Music_TrainerBattlePrism_P8
 	loopchannel 2, Music_TrainerBattlePrism_L3
-	dutycycle $3
+	duty_cycle 3
 	intensity $b4
 	vibrato $11, $12
 	octave 2

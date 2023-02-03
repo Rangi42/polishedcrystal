@@ -11,7 +11,7 @@ Music_GymLeaderBattleRSE:
 
 Music_GymLeaderBattleRSE_Ch1:
 	tempo 100
-	dutycycle 1
+	duty_cycle 1
 	tone $0001
 	note_type 12, 12, 4
 	vibrato $12, $15
@@ -107,7 +107,7 @@ Music_GymLeaderBattleRSE_Ch1:
 	note __, 4
 	note D#, 4
 Music_GymLeaderBattleRSE_Ch1_loop:
-	dutycycle 1
+	duty_cycle 1
 	intensity $C7
 	octave 4
 	note C_, 8
@@ -223,7 +223,7 @@ Music_GymLeaderBattleRSE_Ch1_loop:
 	note G_, 6
 	intensity $C7
 	note G_, 10
-	dutycycle 3
+	duty_cycle 3
 	octave 3
 	intensity $C4
 	note C_, 6
@@ -318,7 +318,7 @@ Music_GymLeaderBattleRSE_Ch1_loop:
 
 Music_GymLeaderBattleRSE_Ch2:
 	tone $0001
-	dutycycle 2
+	duty_cycle 2
 	note_type 12, 9, 4
 	vibrato $12, $15
 	octave 5
@@ -340,7 +340,7 @@ Music_GymLeaderBattleRSE_Ch2:
 	note C_, 8
 	octave 3
 	note C#, 8
-	dutycycle 1
+	duty_cycle 1
 	intensity $90
 	note C_, 8
 	octave 2
@@ -356,7 +356,7 @@ Music_GymLeaderBattleRSE_Ch2:
 	octave 2
 	note D#, 8
 Music_GymLeaderBattleRSE_Ch2_loop_main:
-	dutycycle 3
+	duty_cycle 3
 	intensity $C7
 	octave 3
 	note G_, 8
@@ -408,7 +408,7 @@ Music_GymLeaderBattleRSE_Ch2_loop_main:
 	intensity $c7
 	note C_, 6
 	intensity $A7
-	dutycycle 0
+	duty_cycle 0
 	octave 4
 	note E_, 2
 	note C_, 2
@@ -488,7 +488,7 @@ Music_GymLeaderBattleRSE_Ch2_loop_main:
 	note __, 2
 	note C_, 10
 	intensity $C7
-	dutycycle 3
+	duty_cycle 3
 	octave 4
 	note D_, 8
 	note C_, 8
@@ -510,7 +510,7 @@ Music_GymLeaderBattleRSE_Ch2_loop_main:
 	intensity $c7
 	note C_, 6
 	intensity $A7
-	dutycycle 0
+	duty_cycle 0
 	octave 4
 	note E_, 2
 	note C_, 2
@@ -559,7 +559,7 @@ Music_GymLeaderBattleRSE_Ch2_loop_main:
 	note G_, 2
 	note E_, 2
 	note C_, 2
-	dutycycle 3
+	duty_cycle 3
 	intensity $A4
 	octave 3
 	note G_, 6
@@ -612,7 +612,7 @@ Music_GymLeaderBattleRSE_Ch2_loop_main:
 	octave 1
 	note A#, 16
 	note A#, 16
-	dutycycle 0
+	duty_cycle 0
 	octave 3
 	intensity $A7
 	note A#, 2
@@ -651,7 +651,7 @@ Music_GymLeaderBattleRSE_Ch2_loop_main:
 	jumpchannel Music_GymLeaderBattleRSE_Ch2_loop_main
 
 Music_GymLeaderBattleRSE_Ch2_branch_1:
-	dutycycle 0
+	duty_cycle 0
 	octave 3
 	note G_, 2
 	note C_, 2
@@ -667,7 +667,7 @@ Music_GymLeaderBattleRSE_Ch2_branch_1:
 	endchannel
 
 Music_GymLeaderBattleRSE_Ch2_branch_2:
-	dutycycle 1
+	duty_cycle 1
 	octave 3
 	note G_, 2
 	note C_, 2
@@ -683,7 +683,7 @@ Music_GymLeaderBattleRSE_Ch2_branch_2:
 	endchannel
 
 Music_GymLeaderBattleRSE_Ch2_branch_3:
-	dutycycle 0
+	duty_cycle 0
 	octave 3
 	note G#, 2
 	note C#, 2

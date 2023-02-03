@@ -42,7 +42,7 @@ Music_SurfRSE_Ch1_loop:
 	octave 4
 	note C#, 2
 	note F#, 2
-	dutycycle 1
+	duty_cycle 1
 	note G#, 2
 	note C#, 2
 	note F_, 2
@@ -50,7 +50,7 @@ Music_SurfRSE_Ch1_loop:
 	octave 5
 	note C#, 2
 	note F_, 2
-	dutycycle 0
+	duty_cycle 0
 	octave 4
 	note C#, 2
 	octave 3
@@ -79,13 +79,13 @@ Music_SurfRSE_Ch1_loop:
 	octave 4
 	note C_, 2
 	note C#, 2
-	dutycycle 1
+	duty_cycle 1
 	intensity $B4
 	octave 3
 	note F#, 4
 	note G#, 4
 	note A_, 4
-	dutycycle 0
+	duty_cycle 0
 	note G#, 4
 	note F_, 4
 	note C#, 4
@@ -170,7 +170,7 @@ Music_SurfRSE_Ch1_loop:
 	octave 3
 	note A#, 2
 	note F#, 2
-	dutycycle 1
+	duty_cycle 1
 	intensity $C4
 	octave 4
 	note F#, 4
@@ -227,7 +227,7 @@ Music_SurfRSE_Ch1_loop:
 	note G#, 2
 	note A#, 2
 	note __, 2
-	dutycycle 0
+	duty_cycle 0
 	octave 3
 	note A#, 2
 	note __, 2
@@ -261,13 +261,13 @@ Music_SurfRSE_Ch1_loop:
 	note A#, 12
 	note G#, 12
 	note F#, 12
-	dutycycle 1
+	duty_cycle 1
 	intensity $C4
 	note G#, 4
 	note A#, 4
 	octave 4
 	note C_, 4
-	dutycycle 0
+	duty_cycle 0
 	intensity $91
 	octave 3
 	note G#, 2
@@ -490,23 +490,23 @@ Music_SurfRSE_Ch2_loop:
 	octave 4
 	note C_, 2
 	note C#, 2
-	dutycycle 1
+	duty_cycle 1
 	intensity $C4
 	note D#, 2
-	dutycycle 0
+	duty_cycle 0
 	octave 3
 	note D#, 2
 	octave 4
 	note F_, 2
-	dutycycle 1
+	duty_cycle 1
 	octave 3
 	note F_, 2
 	octave 4
 	note F#, 2
-	dutycycle 0
+	duty_cycle 0
 	octave 3
 	note F#, 2
-	dutycycle 1
+	duty_cycle 1
 	intensity $94
 	vibrato $00, $00
 	note G#, 4
@@ -557,7 +557,7 @@ Music_SurfRSE_Ch2_loop:
 	note F#, 2
 	note A#, 2
 	note A#, 2
-	dutycycle 0
+	duty_cycle 0
 	intensity $94
 	octave 3
 	note C#, 4
@@ -568,7 +568,7 @@ Music_SurfRSE_Ch2_loop:
 	octave 3
 	note D#, 4
 	note F#, 4
-	dutycycle 1
+	duty_cycle 1
 	intensity $C4
 	octave 4
 	note G#, 6
@@ -680,7 +680,7 @@ Music_SurfRSE_Ch2_loop:
 	note C#, 4
 	note F_, 4
 	note G#, 4
-	dutycycle 0
+	duty_cycle 0
 	intensity $C5
 	octave 3
 	note A#, 6
@@ -704,7 +704,7 @@ Music_SurfRSE_Ch2_loop:
 	intensity $C7
 	octave 3
 	note G#, 12
-	dutycycle 1
+	duty_cycle 1
 	intensity $C4
 	octave 4
 	note F_, 6
@@ -728,7 +728,7 @@ Music_SurfRSE_Ch2_loop:
 	note C#, 4
 	note F_, 4
 	note G#, 4
-	dutycycle 0
+	duty_cycle 0
 	octave 3
 	note A#, 6
 	note A_, 2
@@ -796,7 +796,7 @@ Music_SurfRSE_Ch3:
 	note_type 12, 0, 0
 	note __, 12
 Music_SurfRSE_Ch3_loop:
-	dutycycle 4
+	duty_cycle 4
 	intensity $14
 	octave 3
 	note C#, 7
@@ -822,7 +822,7 @@ Music_SurfRSE_Ch3_loop:
 	note A#, 2
 	note __, 2
 	note A_, 12
-	dutycycle 0
+	duty_cycle 0
 	vibrato $08, $24
 	octave 5
 	note G#, 5
@@ -863,7 +863,7 @@ Music_SurfRSE_Ch3_loop:
 	intensity $10
 	note D#, 4
 	note C#, 4
-	dutycycle 4
+	duty_cycle 4
 	intensity $14
 	octave 3
 	note C#, 7
@@ -892,7 +892,7 @@ Music_SurfRSE_Ch3_loop:
 	note G#, 4
 	note F#, 4
 	note C#, 6
-	dutycycle 2
+	duty_cycle 2
 	octave 4
 	note C#, 2
 	note C_, 2
@@ -902,7 +902,7 @@ Music_SurfRSE_Ch3_loop:
 	note G#, 12
 	octave 3
 	note D#, 12
-	dutycycle 0
+	duty_cycle 0
 	octave 5
 	note C#, 6
 	octave 4
@@ -915,7 +915,7 @@ Music_SurfRSE_Ch3_loop:
 	note __, 2
 	note F_, 2
 	note __, 2
-	dutycycle 2
+	duty_cycle 2
 	octave 3
 	note C#, 12
 	octave 2
@@ -932,7 +932,7 @@ Music_SurfRSE_Ch3_loop:
 	note __, 2
 	note F#, 2
 	note __, 2
-	dutycycle 0
+	duty_cycle 0
 	octave 4
 	note A#, 5
 	note __, 1
@@ -956,7 +956,7 @@ Music_SurfRSE_Ch3_loop:
 	note F#, 2
 	note __, 2
 	note G#, 4
-	dutycycle 2
+	duty_cycle 2
 	octave 5
 	note A#, 5
 	note __, 1
@@ -971,17 +971,17 @@ Music_SurfRSE_Ch3_loop:
 	note F#, 2
 	note G#, 2
 	note A#, 4
-	dutycycle 1
+	duty_cycle 1
 	octave 6
 	note C_, 4
 	note C#, 4
-	dutycycle 0
+	duty_cycle 0
 	note C_, 6
 	intensity $20
 	note C_, 4
 	intensity $30
 	note C_, 2
-	dutycycle 4
+	duty_cycle 4
 	intensity $14
 	octave 3
 	note C#, 7
@@ -1029,7 +1029,7 @@ Music_SurfRSE_Ch3_loop:
 	note G#, 2
 	note __, 2
 	note G#, 12
-	dutycycle 0
+	duty_cycle 0
 	intensity $10
 	octave 6
 	note C#, 12

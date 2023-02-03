@@ -10,7 +10,7 @@ Music_CrystalOpening_Ch1:
 	volume 7, 7
 	tone $0002
 	vibrato $10, $34
-	dutycycle $3
+	duty_cycle 3
 	stereopanning $f0
 	note_type 12, 9, 2
 	octave 2
@@ -124,7 +124,7 @@ Music_CrystalOpening_Ch1:
 
 Music_CrystalOpening_Ch2:
 	note_type 12, 10, 2
-	dutycycle $3
+	duty_cycle 3
 	vibrato $8, $44
 	octave 2
 	note B_, 2

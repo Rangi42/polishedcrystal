@@ -8,7 +8,7 @@ Music_VermilionCity_Ch1:
 	stereopanning $f
 	tempo 176
 	volume 7, 7
-	dutycycle $2
+	duty_cycle 2
 	note_type 12, 6, 5
 	octave 4
 	note B_, 4
@@ -29,7 +29,7 @@ Music_VermilionCity_Ch1:
 	note D_, 1
 	vibrato $10, $23
 Music_VermilionCity_branch_eb6a0:
-	dutycycle $1
+	duty_cycle 1
 	note_type 12, 8, 5
 	callchannel Music_VermilionCity_branch_eb6f9
 	note F_, 4
@@ -39,7 +39,7 @@ Music_VermilionCity_branch_eb6a0:
 	note E_, 4
 	callchannel Music_VermilionCity_branch_eb6f9
 	callchannel Music_VermilionCity_branch_eb701
-	dutycycle $2
+	duty_cycle 2
 	note_type 12, 8, 5
 	callchannel Music_VermilionCity_branch_eb6f9
 	note F_, 4
@@ -59,7 +59,7 @@ Music_VermilionCity_branch_eb6a0:
 	callchannel Music_VermilionCity_branch_eb6f9
 	callchannel Music_VermilionCity_branch_eb701
 	intensity $93
-	dutycycle $0
+	duty_cycle 0
 	note __, 2
 	note F#, 2
 	note __, 2
@@ -71,7 +71,7 @@ Music_VermilionCity_branch_eb6a0:
 	callchannel Music_VermilionCity_branch_eb70c
 	callchannel Music_VermilionCity_branch_eb70c
 	intensity $87
-	dutycycle $2
+	duty_cycle 2
 	octave 4
 	note D_, 8
 	octave 3
@@ -138,7 +138,7 @@ Music_VermilionCity_branch_eb70c:
 
 Music_VermilionCity_Ch2:
 	stereopanning $ff
-	dutycycle $3
+	duty_cycle 3
 	note_type 12, 7, 7
 	vibrato $10, $23
 	octave 5

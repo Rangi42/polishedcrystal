@@ -13,7 +13,7 @@ Music_WallyBattleORAS:
 Music_WallyBattleORAS_Ch1:
 	tempo 192
 	volume 7, 7
-	dutycycle 3
+	duty_cycle 3
 	callchannel Music_WallyBattleORAS_Ch1_branch_1
 	octave 2
 	note A_, 5
@@ -85,7 +85,7 @@ Music_WallyBattleORAS_Ch1:
 	note C_, 1
 	note D_, 1
 	note C_, 1
-	dutycycle 0
+	duty_cycle 0
 	note_type 12, 12, 0
 	octave 3
 	note D#, 12
@@ -96,7 +96,7 @@ Music_WallyBattleORAS_Ch1:
 	note D#, 2
 	soundinput $00
 	note __, 2
-	dutycycle 3
+	duty_cycle 3
 Music_WallyBattleORAS_Ch1_loop_1:
 	intensity $87
 	octave 4
@@ -112,7 +112,7 @@ Music_WallyBattleORAS_Ch1_loop_1:
 	note B_, 2
 	note A_, 2
 	note A_, 2
-	dutycycle 0
+	duty_cycle 0
 	intensity $c0
 	note G_, 3
 	note E_, 3
@@ -120,7 +120,7 @@ Music_WallyBattleORAS_Ch1_loop_1:
 	soundinput $6c
 	note E_, 2
 	soundinput $00
-	dutycycle 3
+	duty_cycle 3
 	note __, 10
 	loopchannel 2, Music_WallyBattleORAS_Ch1_loop_1
 	intensity $87
@@ -150,7 +150,7 @@ Music_WallyBattleORAS_Ch1_loop_1:
 	note G_, 1
 	note A_, 1
 	note G_, 1
-	dutycycle 0
+	duty_cycle 0
 	note_type 12, 13, 0
 	note D#, 10
 	intensity $d5
@@ -159,7 +159,7 @@ Music_WallyBattleORAS_Ch1_loop_1:
 	soundinput $6c
 	note D#, 2
 	soundinput $00
-	dutycycle 3
+	duty_cycle 3
 	jumpchannel Music_WallyBattleORAS_Ch1
 
 Music_WallyBattleORAS_Ch1_branch_1:
@@ -177,7 +177,7 @@ Music_WallyBattleORAS_Ch1_branch_1:
 	endchannel
 
 Music_WallyBattleORAS_Ch2:
-	dutycycle 0
+	duty_cycle 0
 	callchannel Music_WallyBattleORAS_Ch2_branch_1
 	note F#, 5
 	intensity $c3
@@ -232,14 +232,14 @@ Music_WallyBattleORAS_Ch2:
 	note E_, 1
 	note F#, 1
 	note E_, 1
-	dutycycle 3
+	duty_cycle 3
 	note_type 12, 8, 0
 	octave 3
 	note B_, 8
 	intensity $87
 	note B_, 8
 	note __, 2
-	dutycycle 0
+	duty_cycle 0
 Music_WallyBattleORAS_Ch2_loop_1:
 	intensity $c7
 	note G_, 1
@@ -251,11 +251,11 @@ Music_WallyBattleORAS_Ch2_loop_1:
 	note F#, 2
 	note E_, 2
 	note F#, 2
-	dutycycle 3
+	duty_cycle 3
 	intensity $87
 	note B_, 3
 	note G_, 5
-	dutycycle 0
+	duty_cycle 0
 	note __, 10
 	loopchannel 2, Music_WallyBattleORAS_Ch2_loop_1
 	intensity $d7
@@ -283,12 +283,12 @@ Music_WallyBattleORAS_Ch2_loop_1:
 	note E_, 1
 	note F#, 1
 	note E_, 1
-	dutycycle 3
+	duty_cycle 3
 	note_type 12, 8, 0
 	note F#, 8
 	intensity $87
 	note F#, 5
-	dutycycle 0
+	duty_cycle 0
 	jumpchannel Music_WallyBattleORAS_Ch2
 
 Music_WallyBattleORAS_Ch2_branch_1:

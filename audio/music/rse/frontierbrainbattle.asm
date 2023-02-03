@@ -11,7 +11,7 @@ Music_FrontierBrainBattleRSE_Ch1:
 	tempo $60
 	volume 7, 7
 	note_type 12, 12, 2
-	dutycycle 1
+	duty_cycle 1
 	tone $0002
 	vibrato $06, $34
 	note __, 4
@@ -145,7 +145,7 @@ Music_FrontierBrainBattleRSE_Ch1_loop:
 	note __, 16
 	note __, 2
 	note_type 8, 12, 2
-	dutycycle 2
+	duty_cycle 2
 	note B_, 1
 	octave 4
 	note D#, 1
@@ -176,7 +176,7 @@ Music_FrontierBrainBattleRSE_Ch1_loop:
 	note F#, 1
 	note D#, 4
 	intensity $C4
-	dutycycle 1
+	duty_cycle 1
 	note E_, 9
 	note E_, 9
 	note E_, 6
@@ -225,7 +225,7 @@ Music_FrontierBrainBattleRSE_Ch1_loop:
 	octave 5
 	note G#, 2
 	intensity $C2
-	dutycycle 2
+	duty_cycle 2
 	octave 4
 	note E_, 1
 	note G_, 1
@@ -375,7 +375,7 @@ Music_FrontierBrainBattleRSE_Ch1_loop:
 	note F#, 1
 	note E_, 15
 	intensity $C4
-	dutycycle 1
+	duty_cycle 1
 	octave 2
 	note A_, 1
 	octave 3
@@ -428,7 +428,7 @@ Music_FrontierBrainBattleRSE_Ch1_loop:
 	octave 2
 	note B_, 4
 	intensity $C2
-	dutycycle 0
+	duty_cycle 0
 	octave 4
 	note G#, 2
 	note G#, 4
@@ -505,7 +505,7 @@ Music_FrontierBrainBattleRSE_Ch1_loop:
 	note F#, 1
 	note E_, 1
 	note D_, 3
-	dutycycle 1
+	duty_cycle 1
 	octave 4
 	note C_, 6
 	note C_, 6
@@ -550,7 +550,7 @@ Music_FrontierBrainBattleRSE_Ch1_loop:
 	octave 5
 	note E_, 2
 	intensity $C2
-	dutycycle 2
+	duty_cycle 2
 	octave 4
 	note C_, 1
 	note D#, 1
@@ -678,7 +678,7 @@ Music_FrontierBrainBattleRSE_Ch1_loop:
 	note D_, 16
 	note __, 9
 	note_type 8, 12, 7
-	dutycycle 1
+	duty_cycle 1
 	octave 3
 	note A_, 2
 	note_type 10, 0, 0
@@ -724,7 +724,7 @@ Music_FrontierBrainBattleRSE_Ch1_loop:
 	note D_, 12
 	note D#, 8
 	note E_, 12
-	dutycycle 2
+	duty_cycle 2
 	note C#, 1
 	note_type 4, 0, 0
 	note __, 1
@@ -742,7 +742,7 @@ Music_FrontierBrainBattleRSE_Ch1_loop:
 	note_type 12, 12, 7
 	note B_, 8
 	note_type 8, 12, 7
-	dutycycle 1
+	duty_cycle 1
 	note F_, 2
 	note_type 10, 0, 0
 	note __, 2
@@ -821,7 +821,7 @@ Music_FrontierBrainBattleRSE_Ch1_loop:
 
 Music_FrontierBrainBattleRSE_Ch2:
 	note_type 8, 13, 4
-	dutycycle 3
+	duty_cycle 3
 	tone $0001
 	vibrato $0A, $25
 	octave 3
@@ -1003,7 +1003,7 @@ Music_FrontierBrainBattleRSE_Ch2_loop:
 	note A_, 4
 	note F#, 2
 	intensity $D7
-	dutycycle 0
+	duty_cycle 0
 	octave 4
 	note E_, 1
 	note F#, 1
@@ -1050,7 +1050,7 @@ Music_FrontierBrainBattleRSE_Ch2_loop:
 	note G#, 16
 	note __, 6
 	intensity $C2
-	dutycycle 1
+	duty_cycle 1
 	note G#, 1
 	note B_, 1
 	octave 5
@@ -1096,7 +1096,7 @@ Music_FrontierBrainBattleRSE_Ch2_loop:
 	note G_, 1
 	note __, 2
 	intensity $D7
-	dutycycle 3
+	duty_cycle 3
 	octave 4
 	note C_, 6
 	note D_, 2
@@ -1201,7 +1201,7 @@ Music_FrontierBrainBattleRSE_Ch2_loop:
 	note D_, 1
 	note E_, 8
 	note_type 8, 13, 7
-	dutycycle 2
+	duty_cycle 2
 	octave 4
 	note A_, 1
 	note __, 1
@@ -1216,7 +1216,7 @@ Music_FrontierBrainBattleRSE_Ch2_loop:
 	note __, 1
 	note G_, 6
 	intensity $D1
-	dutycycle 3
+	duty_cycle 3
 	note A_, 2
 	note B_, 2
 	octave 5

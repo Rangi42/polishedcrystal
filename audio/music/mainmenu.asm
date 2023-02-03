@@ -8,7 +8,7 @@ Music_MainMenu:
 Music_MainMenu_Ch1:
 	tempo 160
 	volume 7, 7
-	dutycycle $3
+	duty_cycle 3
 	tone $0001
 	vibrato $10, $15
 	stereopanning $f0
@@ -43,7 +43,7 @@ Music_MainMenu_branch_f791d:
 	jumpchannel Music_MainMenu_branch_f791d
 
 Music_MainMenu_Ch2:
-	dutycycle $3
+	duty_cycle 3
 	stereopanning $f
 	note_type 12, 0, -7
 	octave 3

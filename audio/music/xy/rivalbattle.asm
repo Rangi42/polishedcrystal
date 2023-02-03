@@ -13,7 +13,7 @@ Music_RivalBattleXY:
 Music_RivalBattleXY_Ch1:
 	tempo 116
 	volume 7, 7
-	dutycycle $3
+	duty_cycle 3
 	tone $0002
 	vibrato $8, $15
 	note_type 12, 12, 2
@@ -40,7 +40,7 @@ Music_RivalBattleXY_Ch1:
 	callchannel Music_RivalBattleXY_Ch1_branch_1
 Music_RivalBattleXY_Ch1_loop_main:
 	octave 3
-	dutycycle $3
+	duty_cycle 3
 	intensity $a3
 	callchannel Music_RivalBattleXY_Ch1_branch_1
 	intensity $a0
@@ -53,7 +53,7 @@ Music_RivalBattleXY_Ch1_loop_main:
 	note D#, 16
 	intensity $a7
 	note D#, 16
-	dutycycle 2
+	duty_cycle 2
 Music_RivalBattleXY_Ch1_loop_1:
 	octave 4
 	intensity $82
@@ -75,7 +75,7 @@ Music_RivalBattleXY_Ch1_loop_1:
 	callchannel Music_RivalBattleXY_Ch1_branch_3
 	loopchannel 2, Music_RivalBattleXY_Ch1_loop_1
 	intensity $a3
-	dutycycle 1
+	duty_cycle 1
 	octave 3
 	note F_, 6
 	note C#, 6
@@ -149,7 +149,7 @@ Music_RivalBattleXY_Ch1_loop_1:
 	note C_, 8
 	octave 4
 	intensity $a3
-	dutycycle 2
+	duty_cycle 2
 	note E_, 8
 	note C_, 8
 	note E_, 6
@@ -184,7 +184,7 @@ Music_RivalBattleXY_Ch1_branch_3:
 	endchannel
 
 Music_RivalBattleXY_Ch2:
-	dutycycle $3
+	duty_cycle 3
 	vibrato $8, $36
 	tone $0001
 	note_type 12, 11, 2
@@ -202,7 +202,7 @@ Music_RivalBattleXY_Ch2:
 	note __, 16
 	note __, 16
 Music_RivalBattleXY_Ch2_loop:
-	dutycycle $0
+	duty_cycle 0
 	callchannel Music_RivalBattleXY_Ch2_branch_1
 	note F_, 4
 	note D#, 4

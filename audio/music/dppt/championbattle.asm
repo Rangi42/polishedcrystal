@@ -13,7 +13,7 @@ Music_ChampionBattleDPPt_Ch1:
 	volume 7, 7
 	stereopanning $77
 	tempo $80
-	dutycycle 3
+	duty_cycle 3
 	tone $0002
 	vibrato $10, $24
 	octave 4
@@ -60,7 +60,7 @@ Music_ChampionBattleDPPt_Ch1_loop:
 	note C#, 10
 	octave 2
 	note F#, 6
-	dutycycle 2
+	duty_cycle 2
 	intensity $A1
 	note F#, 1
 	note G_, 1
@@ -80,11 +80,11 @@ Music_ChampionBattleDPPt_Ch1_loop:
 	note A_, 1
 	note G#, 1
 	note G_, 1
-	dutycycle 3
+	duty_cycle 3
 	intensity $B7
 	note G#, 10
 	note D#, 6
-	dutycycle 2
+	duty_cycle 2
 	intensity $A1
 	note G#, 1
 	note A_, 1
@@ -104,7 +104,7 @@ Music_ChampionBattleDPPt_Ch1_loop:
 	note B_, 1
 	note A#, 1
 	note A_, 1
-	dutycycle 3
+	duty_cycle 3
 	intensity $B7
 	octave 5
 	note F_, 1
@@ -153,7 +153,7 @@ Music_ChampionBattleDPPt_Ch1_loop:
 	note C#, 10
 	octave 2
 	note F#, 6
-	dutycycle 2
+	duty_cycle 2
 	intensity $A1
 	note F#, 1
 	note G_, 1
@@ -173,11 +173,11 @@ Music_ChampionBattleDPPt_Ch1_loop:
 	note A_, 1
 	note G#, 1
 	note G_, 1
-	dutycycle 3
+	duty_cycle 3
 	intensity $B7
 	note G#, 10
 	note D#, 6
-	dutycycle 2
+	duty_cycle 2
 	intensity $A1
 	note G#, 1
 	note A_, 1
@@ -197,11 +197,11 @@ Music_ChampionBattleDPPt_Ch1_loop:
 	note B_, 1
 	note A#, 1
 	note A_, 1
-	dutycycle 3
+	duty_cycle 3
 	intensity $B7
 	note A#, 10
 	note F_, 6
-	dutycycle 2
+	duty_cycle 2
 	intensity $A1
 	note A#, 1
 	note B_, 1
@@ -221,11 +221,11 @@ Music_ChampionBattleDPPt_Ch1_loop:
 	note C_, 1
 	octave 2
 	note B_, 1
-	dutycycle 3
+	duty_cycle 3
 	intensity $B7
 	note A#, 10
 	note F_, 6
-	dutycycle 2
+	duty_cycle 2
 	intensity $A1
 	note A#, 1
 	note B_, 1
@@ -245,7 +245,7 @@ Music_ChampionBattleDPPt_Ch1_loop:
 	note C_, 1
 	octave 2
 	note B_, 1
-	dutycycle 3
+	duty_cycle 3
 	intensity $B7
 	octave 3
 	note F_, 8
@@ -282,7 +282,7 @@ Music_ChampionBattleDPPt_Ch1_loop:
 	note D_, 16
 	note A_, 16
 	note A_, 16
-	dutycycle 2
+	duty_cycle 2
 	intensity $B1
 	octave 4
 	note C#, 1
@@ -412,7 +412,7 @@ Music_ChampionBattleDPPt_Ch1_loop:
 	octave 5
 	note D_, 1
 	note __, 1
-	dutycycle 3
+	duty_cycle 3
 	intensity $B7
 	note C#, 16
 	note __, 16
@@ -430,7 +430,7 @@ Music_ChampionBattleDPPt_Ch1_loop:
 	note G#, 2
 	note __, 16
 	note __, 15
-	dutycycle 0
+	duty_cycle 0
 	intensity $A1
 	octave 3
 	note G_, 2
@@ -458,7 +458,7 @@ Music_ChampionBattleDPPt_Ch1_loop:
 	note A_, 16
 	note __, 16
 	note __, 1
-	dutycycle 3
+	duty_cycle 3
 	intensity $C7
 	octave 1
 	note C#, 2
@@ -481,7 +481,7 @@ Music_ChampionBattleDPPt_Ch1_loop:
 	jumpchannel Music_ChampionBattleDPPt_Ch1_loop
 
 Music_ChampionBattleDPPt_Ch2:
-	dutycycle 2
+	duty_cycle 2
 	tone $0001
 	vibrato $08, $36
 	octave 3
@@ -510,7 +510,7 @@ Music_ChampionBattleDPPt_Ch2:
 	note B_, 2
 	octave 4
 	note C#, 2
-	dutycycle 3
+	duty_cycle 3
 	note_type 12, 12, 7
 	octave 2
 	note A#, 16
@@ -522,7 +522,7 @@ Music_ChampionBattleDPPt_Ch2_loop:
 	note __, 16
 	note __, 16
 	note __, 12
-	dutycycle 0
+	duty_cycle 0
 	note A#, 1
 	note B_, 1
 	octave 3
@@ -633,7 +633,7 @@ Music_ChampionBattleDPPt_Ch2_loop:
 	note D#, 2
 	note E_, 2
 	note F_, 8
-	dutycycle 3
+	duty_cycle 3
 	note A#, 8
 	note G#, 8
 	note G_, 6
@@ -652,7 +652,7 @@ Music_ChampionBattleDPPt_Ch2_loop:
 	note G#, 4
 	note A#, 16
 	note __, 16
-	dutycycle 2
+	duty_cycle 2
 	intensity $B1
 	note C#, 1
 	note __, 3
@@ -781,7 +781,7 @@ Music_ChampionBattleDPPt_Ch2_loop:
 	octave 5
 	note C#, 1
 	note __, 1
-	dutycycle 3
+	duty_cycle 3
 	intensity $C7
 	octave 4
 	note C#, 2
@@ -831,7 +831,7 @@ Music_ChampionBattleDPPt_Ch2_loop:
 	note D_, 4
 	octave 3
 	note A_, 4
-	dutycycle 0
+	duty_cycle 0
 	intensity $C1
 	octave 4
 	note C#, 2
@@ -856,7 +856,7 @@ Music_ChampionBattleDPPt_Ch2_loop:
 	note A#, 2
 	note G#, 2
 	note E_, 2
-	dutycycle 3
+	duty_cycle 3
 	intensity $C7
 	octave 5
 	note C#, 2
@@ -872,7 +872,7 @@ Music_ChampionBattleDPPt_Ch2_loop:
 	note C#, 2
 	note __, 16
 	note __, 14
-	dutycycle 0
+	duty_cycle 0
 	intensity $A1
 	octave 4
 	note C#, 2
@@ -900,7 +900,7 @@ Music_ChampionBattleDPPt_Ch2_loop:
 	note E_, 2
 	octave 4
 	note E_, 2
-	dutycycle 3
+	duty_cycle 3
 	intensity $C7
 	octave 2
 	note C#, 2

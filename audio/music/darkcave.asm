@@ -8,7 +8,7 @@ Music_DarkCave:
 Music_DarkCave_Ch1:
 	tempo 128
 	volume 7, 7
-	dutycycle $3
+	duty_cycle 3
 	tone $0001
 	vibrato $11, $15
 	stereopanning $f0
@@ -137,7 +137,7 @@ Music_DarkCave_branch_ea333:
 	endchannel
 
 Music_DarkCave_Ch2:
-	dutycycle $1
+	duty_cycle 1
 	vibrato $12, $36
 	stereopanning $f
 	note_type 12, 10, 7

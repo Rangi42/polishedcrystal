@@ -10,7 +10,7 @@ Music_DancingHall_Ch1:
 	stereopanning $f
 	note_type 6, 11, 7
 	note __, 3
-	dutycycle $0
+	duty_cycle 0
 Music_DancingHall_branch_ef9d3:
 	note_type 12, 11, 7
 	callchannel Music_DancingHall_branch_efa17
@@ -89,7 +89,7 @@ Music_DancingHall_branch_efa17:
 Music_DancingHall_Ch2:
 	stereopanning $f0
 	note_type 6, 10, 1
-	dutycycle $0
+	duty_cycle 0
 	vibrato $10, $24
 	note __, 3
 Music_DancingHall_branch_efa37:

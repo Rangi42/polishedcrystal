@@ -19,7 +19,7 @@ Music_BlackCityBW_Ch1:
 Music_BlackCityBW_Ch1_loop:
 	callchannel Music_BlackCityBW_Ch1_branch_1
 	octave 4
-	dutycycle 1
+	duty_cycle 1
 	intensity $54
 	note F#, 1
 	intensity $74
@@ -34,11 +34,11 @@ Music_BlackCityBW_Ch1_loop:
 	note C#, 2
 	octave 3
 	note A#, 2
-	dutycycle 0
+	duty_cycle 0
 	intensity $b1
 	callchannel Music_BlackCityBW_Ch1_branch_1
 	note __, 2
-	dutycycle 1
+	duty_cycle 1
 	intensity $94
 	note E_, 2
 	note F#, 2
@@ -49,7 +49,7 @@ Music_BlackCityBW_Ch1_loop:
 	note F#, 2
 	note G_, 2
 	note B_, 2 ;;;;; halfway point
-	dutycycle 0
+	duty_cycle 0
 	intensity $91
 	note D_, 4
 	octave 3
@@ -253,7 +253,7 @@ Music_BlackCityBW_Ch1_branch_1:
 	endchannel
 
 Music_BlackCityBW_Ch2:
-	dutycycle 2
+	duty_cycle 2
 	vibrato $12, $24
 	tone $0001
 	note_type 6, 10, 7
@@ -281,7 +281,7 @@ Music_BlackCityBW_Ch2:
 	octave 3
 	note B_, 14
 	octave 4
-	dutycycle 0
+	duty_cycle 0
 	intensity $54
 	note C_, 1
 	intensity $74
@@ -295,7 +295,7 @@ Music_BlackCityBW_Ch2:
 	note A#, 2
 	note F#, 3
 	intensity $a7
-	dutycycle 2
+	duty_cycle 2
 	octave 3
 	note G#, 1
 	note A_, 1
@@ -318,7 +318,7 @@ Music_BlackCityBW_Ch2:
 	note C_, 2
 	octave 3
 	note B_, 16
-	dutycycle 0
+	duty_cycle 0
 	intensity $94
 	octave 2
 	note B_, 2
@@ -331,7 +331,7 @@ Music_BlackCityBW_Ch2:
 	note D_, 2
 	note E_, 2
 	note F#, 2
-	dutycycle 1
+	duty_cycle 1
 	intensity $b7
 	vibrato $10, $44
 	note A_, 12

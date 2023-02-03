@@ -11,7 +11,7 @@ Music_Route3_Ch1:
 	volume 7, 7
 	note_type 12, 9, 1
 	note __, 10
-	dutycycle $0
+	duty_cycle 0
 	vibrato $14, $6
 	octave 3
 	note C#, 1
@@ -238,7 +238,7 @@ Music_Route3_branch_ec3bd:
 Music_Route3_Ch2:
 	stereopanning $f0
 	note_type 12, 5, -6
-	dutycycle $2
+	duty_cycle 2
 	vibrato $6, $3
 	octave 4
 	note E_, 1
@@ -257,7 +257,7 @@ Music_Route3_Ch2:
 	octave 4
 	note C#, 4
 	intensity $a7
-	dutycycle $2
+	duty_cycle 2
 	octave 3
 	note A_, 1
 	octave 4
@@ -273,7 +273,7 @@ Music_Route3_branch_ec3f5:
 	note B_, 6
 	intensity $7d
 	note __, 4
-	dutycycle $3
+	duty_cycle 3
 	note G#, 4
 	callchannel Music_Route3_branch_ec443
 	note B_, 1
@@ -283,7 +283,7 @@ Music_Route3_branch_ec3f5:
 	intensity $b7
 	octave 5
 	note D_, 5
-	dutycycle $0
+	duty_cycle 0
 	octave 3
 	note D_, 1
 	note G_, 1
@@ -294,7 +294,7 @@ Music_Route3_branch_ec3f5:
 	octave 4
 	note D_, 4
 	intensity $8f
-	dutycycle $2
+	duty_cycle 2
 	octave 4
 	note E_, 2
 	note D_, 2
@@ -317,7 +317,7 @@ Music_Route3_branch_ec3f5:
 	note C#, 3
 	octave 3
 	note A_, 10
-	dutycycle $2
+	duty_cycle 2
 	octave 4
 	note F#, 6
 	note E_, 1

@@ -12,7 +12,7 @@ Music_Route209DPPt_Ch1:
 	tempo $E0
 	volume 7, 7
 	note_type 12, 9, 2
-	dutycycle 1
+	duty_cycle 1
 	tone $0001
 	octave 4
 	note __, 2
@@ -28,7 +28,7 @@ Music_Route209DPPt_Ch1:
 	note C#, 2
 Music_Route209DPPt_Ch1_loop:
 	intensity $91
-	dutycycle 0
+	duty_cycle 0
 	note A_, 2
 	note E_, 2
 	note A_, 2
@@ -251,7 +251,7 @@ Music_Route209DPPt_Ch1_loop:
 	intensity $93
 	note F#, 7
 	intensity $91
-	dutycycle 2
+	duty_cycle 2
 	octave 5
 	note A_, 1
 	note E_, 1
@@ -324,7 +324,7 @@ Music_Route209DPPt_Ch1_loop:
 	note B_, 2
 	note A_, 1
 	intensity $A2
-	dutycycle 1
+	duty_cycle 1
 	vibrato $08, $25
 	octave 4
 	note B_, 1
@@ -335,7 +335,7 @@ Music_Route209DPPt_Ch1_loop:
 
 Music_Route209DPPt_Ch2:
 	note_type 12, 10, 1
-	dutycycle 2
+	duty_cycle 2
 	octave 5
 	note B_, 1
 	note A_, 1
@@ -356,7 +356,7 @@ Music_Route209DPPt_Ch2:
 	note E_, 1
 Music_Route209DPPt_Ch2_loop:
 	note_type 3, 10, 7
-	dutycycle 3
+	duty_cycle 3
 	tone $0002
 	vibrato $08, $25
 	octave 2
@@ -398,7 +398,7 @@ Music_Route209DPPt_Ch2_loop:
 	intensity $A1
 	note __, 2
 	intensity $A3
-	dutycycle 2
+	duty_cycle 2
 	octave 5
 	note C#, 2
 	note A_, 2
@@ -417,7 +417,7 @@ Music_Route209DPPt_Ch2_loop:
 	note B_, 2
 	octave 6
 	note E_, 2
-	dutycycle 1
+	duty_cycle 1
 	octave 3
 	note A_, 4
 	note E_, 2
@@ -480,7 +480,7 @@ Music_Route209DPPt_Ch2_loop:
 	note E_, 2
 	note A_, 4
 	intensity $A4
-	dutycycle 2
+	duty_cycle 2
 	octave 3
 	note E_, 2
 	note A_, 2
@@ -526,7 +526,7 @@ Music_Route209DPPt_Ch2_loop:
 	note A_, 16
 	note __, 12
 	intensity $A2
-	dutycycle 1
+	duty_cycle 1
 	note A_, 1
 	note E_, 2
 	note A_, 3
@@ -584,7 +584,7 @@ Music_Route209DPPt_Ch2_loop:
 	octave 4
 	note A_, 1
 	intensity $A1
-	dutycycle 2
+	duty_cycle 2
 	tone $0000
 	octave 5
 	note B_, 1

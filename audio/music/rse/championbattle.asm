@@ -13,7 +13,7 @@ Music_ChampionBattleRSE:
 Music_ChampionBattleRSE_Ch1:
 	tempo 192
 	volume 7, 7
-	dutycycle 2
+	duty_cycle 2
 	tone $0002
 	vibrato $8, $15
 	note_type 3, 9, 4
@@ -23,7 +23,7 @@ Music_ChampionBattleRSE_Ch1_loop_1:
 	note G#, 2
 	note A#, 4
 	loopchannel 8, Music_ChampionBattleRSE_Ch1_loop_1
-	dutycycle 1
+	duty_cycle 1
 	note_type 12, 11, 3
 	octave 4
 	note C_, 3
@@ -71,7 +71,7 @@ Music_ChampionBattleRSE_Ch1_loop_1:
 	intensity $b5
 	note G_, 2
 Music_ChampionBattleRSE_Ch1_loop_main:
-	dutycycle 1
+	duty_cycle 1
 Music_ChampionBattleRSE_Ch1_loop_2:
 	intensity $b0
 	octave 4
@@ -102,7 +102,7 @@ Music_ChampionBattleRSE_Ch1_loop_2:
 	intensity $b5
 	note F#, 5
 	loopchannel 2, Music_ChampionBattleRSE_Ch1_loop_2
-	dutycycle 2
+	duty_cycle 2
 	intensity $a6
 	octave 3
 	note G_, 3
@@ -121,7 +121,7 @@ Music_ChampionBattleRSE_Ch1_loop_2:
 	note G#, 8
 	intensity $a7
 	note G#, 8
-	dutycycle 3
+	duty_cycle 3
 	intensity $a6
 	note A#, 3
 	note G#, 1
@@ -141,7 +141,7 @@ Music_ChampionBattleRSE_Ch1_loop_2:
 	note F_, 8
 	intensity $a7
 	note F_, 8
-	dutycycle 2
+	duty_cycle 2
 	octave 2
 	intensity $33
 	note C_, 1
@@ -164,10 +164,10 @@ Music_ChampionBattleRSE_Ch1_loop_2:
 	note C_, 1
 	note C_, 1
 	note C_, 1
-	dutycycle 3
+	duty_cycle 3
 	intensity $b4
 	callchannel Music_ChampionBattleRSE_Ch1_branch_1
-	dutycycle 0
+	duty_cycle 0
 	octave 5
 	note C_, 1
 	note C_, 1
@@ -195,7 +195,7 @@ Music_ChampionBattleRSE_Ch1_loop_2:
 	note C_, 1
 	note D#, 1
 	note F#, 1
-	dutycycle 1
+	duty_cycle 1
 	octave 4
 	note C#, 2
 	note G#, 2
@@ -343,7 +343,7 @@ Music_ChampionBattleRSE_Ch1_branch_1:
 	endchannel
 
 Music_ChampionBattleRSE_Ch2:
-	dutycycle 3
+	duty_cycle 3
 	vibrato $12, $25
 	tone $0001
 	note_type 3, 13, 4
@@ -429,7 +429,7 @@ Music_ChampionBattleRSE_Ch2:
 	intensity $b5
 	note G_, 2
 Music_ChampionBattleRSE_Ch2_loop_main:
-	dutycycle 0
+	duty_cycle 0
 Music_ChampionBattleRSE_Ch2_loop_1:
 	intensity $b0
 	octave 3
@@ -493,9 +493,9 @@ Music_ChampionBattleRSE_Ch2_loop_1:
 	note E_, 8
 	intensity $b4
 	callchannel Music_ChampionBattleRSE_Ch2_branch_1
-	dutycycle 3
+	duty_cycle 3
 	callchannel Music_ChampionBattleRSE_Ch1_branch_1
-	dutycycle 0
+	duty_cycle 0
 	octave 3
 	note G#, 2
 	octave 4

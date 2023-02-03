@@ -7,13 +7,13 @@ Music_JohtoWildBattleNight:
 Music_JohtoWildBattleNight_Ch1:
 	tempo 107
 	volume 7, 7
-	dutycycle $3
+	duty_cycle 3
 	tone $0002
 	vibrato $10, $25
 	jumpchannel Music_JohtoWildBattleNight_branch_f5ddb
 
 Music_JohtoWildBattleNight_Ch2:
-	dutycycle $3
+	duty_cycle 3
 	vibrato $20, $36
 	tone $0001
 	callchannel Music_JohtoWildBattleNight_branch_f5f5d
@@ -21,7 +21,7 @@ Music_JohtoWildBattleNight_Ch2:
 	octave 4
 	note G_, 6
 	tone $0001
-	dutycycle $2
+	duty_cycle 2
 	jumpchannel Music_JohtoWildBattleNight_branch_f5eb2
 
 Music_JohtoWildBattleNight_Ch3:

@@ -15,7 +15,7 @@ Music_BuenasPassword_branch_17816b:
 	stereopanning $ff
 	note __, 16
 	note __, 16
-	dutycycle $3
+	duty_cycle 3
 	note_type 6, 9, 7
 	stereopanning $f
 	octave 4
@@ -37,7 +37,7 @@ Music_BuenasPassword_branch_17816b:
 	note F#, 2
 	note G#, 2
 	note __, 12
-	dutycycle $2
+	duty_cycle 2
 	callchannel Music_BuenasPassword_branch_178204
 	stereopanning $ff
 	callchannel Music_BuenasPassword_branch_1782df
@@ -47,7 +47,7 @@ Music_BuenasPassword_branch_17816b:
 	callchannel Music_BuenasPassword_branch_1782df
 	callchannel Music_BuenasPassword_branch_178222
 	callchannel Music_BuenasPassword_branch_178204
-	dutycycle $1
+	duty_cycle 1
 	note C#, 2
 	note __, 2
 	note D#, 2
@@ -181,7 +181,7 @@ Music_BuenasPassword_branch_178222:
 
 Music_BuenasPassword_Ch2:
 	vibrato $12, $34
-	dutycycle $2
+	duty_cycle 2
 	note_type 12, 10, 5
 	note __, 7
 	octave 3

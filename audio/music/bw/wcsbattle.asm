@@ -8,7 +8,7 @@ Music_WCSBattleBW:
 	dbw $02, Music_WCSBattleBW_Ch3
 
 Music_WCSBattleBW_Ch1:
-	dutycycle $2
+	duty_cycle 2
 	note_type 12, 8, -4
 	octave 2
 	note A#, 12
@@ -39,7 +39,7 @@ Music_WCSBattleBW_Ch1:
 	note C_, 1
 	note C_, 1
 	note C_, 1
-	dutycycle $3
+	duty_cycle 3
 	intensity $e7
 	note C_, 8
 	note C#, 8
@@ -89,7 +89,7 @@ Music_WCSBattleBW_Ch1_L:
 	note G_, 8
 	note F#, 4
 	note G_, 12
-	dutycycle $2
+	duty_cycle 2
 	intensity $c8
 	octave 2
 	note A#, 1
@@ -115,7 +115,7 @@ Music_WCSBattleBW_Ch1_L:
 	octave 3
 	note D_, 1
 	note G_, 1
-	dutycycle $3
+	duty_cycle 3
 	intensity $e7
 	octave 4
 	note C_, 8
@@ -309,7 +309,7 @@ Music_WCSBattleBW_Ch1_L:
 Music_WCSBattleBW_Ch2:
 	tempo $69
 	volume 7, 7
-	dutycycle $2
+	duty_cycle 2
 	note_type 12, 8, -4
 	octave 2
 	note F_, 12
@@ -339,7 +339,7 @@ Music_WCSBattleBW_Ch2:
 	note G_, 1
 	note G_, 1
 	note G_, 1
-	dutycycle $3
+	duty_cycle 3
 	intensity $e7
 	note G_, 8
 	note G#, 8
@@ -386,7 +386,7 @@ Music_WCSBattleBW_Ch2_L:
 	note D_, 8
 	note C#, 4
 	note D_, 12
-	dutycycle $2
+	duty_cycle 2
 	intensity $c8
 	octave 2
 	note G_, 1
@@ -408,7 +408,7 @@ Music_WCSBattleBW_Ch2_L:
 	note A#, 1
 	octave 3
 	note D#, 1
-	dutycycle $3
+	duty_cycle 3
 	intensity $e7
 	note G_, 8
 	note F#, 8

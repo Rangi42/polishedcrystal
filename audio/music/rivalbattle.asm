@@ -7,7 +7,7 @@ Music_RivalBattle:
 Music_RivalBattle_Ch1:
 	tempo 102
 	volume 7, 7
-	dutycycle $3
+	duty_cycle 3
 	tone $0002
 	vibrato $8, $15
 	note_type 12, 11, 2
@@ -287,7 +287,7 @@ Music_RivalBattle_branch_e9837:
 	jumpchannel Music_RivalBattle_branch_e97a6
 
 Music_RivalBattle_Ch2:
-	dutycycle $3
+	duty_cycle 3
 	vibrato $8, $36
 	tone $0001
 	note_type 12, 12, 2

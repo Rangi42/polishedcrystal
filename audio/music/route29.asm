@@ -8,7 +8,7 @@ Music_Route29:
 Music_Route29_Ch1:
 	tempo 146
 	volume 7, 7
-	dutycycle $3
+	duty_cycle 3
 	tone $0001
 	vibrato $10, $15
 	stereopanning $f
@@ -170,7 +170,7 @@ Music_Route29_branch_f03a5:
 	jumpchannel Music_Route29_branch_f03a5
 
 Music_Route29_Ch2:
-	dutycycle $3
+	duty_cycle 3
 	vibrato $12, $36
 	note_type 12, 12, 2
 	octave 4

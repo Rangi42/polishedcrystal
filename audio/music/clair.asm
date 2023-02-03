@@ -12,7 +12,7 @@ Music_Clair_Ch1:
 	vibrato $12, $34
 	stereopanning $f
 	note_type 12, 9, 3
-	dutycycle $3
+	duty_cycle 3
 Music_Clair_branch_1faab:
 	octave 4
 	note F_, 1
@@ -26,13 +26,13 @@ Music_Clair_branch_1faab:
 	note B_, 1
 	note __, 1
 	note G#, 1
-	dutycycle $2
+	duty_cycle 2
 	intensity $92
 	octave 5
 	note F_, 1
 	note G_, 4
 	intensity $a7
-	dutycycle $3
+	duty_cycle 3
 	octave 3
 	note D#, 4
 	note F_, 4
@@ -66,12 +66,12 @@ Music_Clair_branch_1fac9:
 	octave 5
 	note D#, 1
 	callchannel Music_Clair_branch_1fb2e
-	dutycycle $3
+	duty_cycle 3
 	note G#, 3
 	note F_, 2
 	note __, 1
 	note A#, 4
-	dutycycle $2
+	duty_cycle 2
 	note D#, 1
 	note C#, 1
 	note D#, 1
@@ -80,13 +80,13 @@ Music_Clair_branch_1fac9:
 	octave 5
 	note D#, 1
 	callchannel Music_Clair_branch_1fb2e
-	dutycycle $3
+	duty_cycle 3
 	note D#, 3
 	note C#, 2
 	note __, 1
 	octave 3
 	note B_, 4
-	dutycycle $2
+	duty_cycle 2
 	note G#, 1
 	note C#, 1
 	note D#, 1
@@ -97,13 +97,13 @@ Music_Clair_branch_1fac9:
 	jumpchannel Music_Clair_branch_1fac9
 
 Music_Clair_branch_1fb12:
-	dutycycle $3
+	duty_cycle 3
 	stereopanning $ff
 	octave 3
 	note B_, 1
 	note __, 2
 	note G#, 5
-	dutycycle $2
+	duty_cycle 2
 	stereopanning $f
 	octave 2
 	note B_, 2
@@ -144,7 +144,7 @@ Music_Clair_branch_1fb2e:
 	endchannel
 
 Music_Clair_Ch2:
-	dutycycle $3
+	duty_cycle 3
 	vibrato $12, $34
 	note_type 6, 11, 7
 Music_Clair_branch_1fb49:

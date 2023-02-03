@@ -15,7 +15,7 @@ Music_DewfordTownRSE_Ch1:
 	stereopanning $f
 Music_DewfordTownRSE_Ch1_b0:
 	vibrato $10, $33
-	dutycycle $2
+	duty_cycle 2
 	note_type 12, 3, -7
 	octave 3
 	note D_, 6
@@ -29,7 +29,7 @@ Music_DewfordTownRSE_Ch1_b0:
 	note F_, 6
 	note __, 6
 	note_type 12, 9, 7
-	dutycycle $1
+	duty_cycle 1
 	octave 2
 	note C_, 10
 	octave 1
@@ -88,7 +88,7 @@ Music_DewfordTownRSE_Ch1_b0:
 	note __, 6
 	note_type 12, 6, 1
 	octave 5
-	dutycycle $0
+	duty_cycle 0
 Music_DewfordTownRSE_Ch1_b1:
 	note D#, 2
 	note D#, 1
@@ -180,7 +180,7 @@ Music_DewfordTownRSE_Ch2:
 Music_DewfordTownRSE_Ch2_b0:
 	note_type 12, 5, -7
 	vibrato $10, $00
-	dutycycle $2
+	duty_cycle 2
 	octave 4
 	note A#, 6
 	note_type 12, 9, 0
@@ -194,7 +194,7 @@ Music_DewfordTownRSE_Ch2_b0:
 	note D_, 6
 	vibrato $10, $33
 	note_type 12, 9, 7
-	dutycycle $2
+	duty_cycle 2
 	octave 2
 	note A#, 2
 	octave 3
@@ -273,7 +273,7 @@ Music_DewfordTownRSE_Ch2_b0:
 	note A#, 2
 	note __, 16
 	note_type 12, 12, 7
-	dutycycle $0
+	duty_cycle 0
 	octave 3
 	note_type 12, 12, 3
 	note G#, 2
@@ -344,7 +344,7 @@ Music_DewfordTownRSE_Ch2_b0:
 	note G#, 2
 	note __, 10
 	note_type 12, 6, 7
-	dutycycle $2
+	duty_cycle 2
 	octave 4
 	note D_, 1
 	note C_, 1
@@ -361,7 +361,7 @@ Music_DewfordTownRSE_Ch2_b0:
 	note G_, 1
 	note G#, 1
 	note_type 12, 12, 7
-	dutycycle $0
+	duty_cycle 0
 	octave 2
 	note D#, 2
 	note __, 2

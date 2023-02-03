@@ -13,7 +13,7 @@ Music_WildBattleSM:
 Music_WildBattleSM_Ch1:
 	tempo 204
 	volume 7, 7
-	dutycycle $3
+	duty_cycle 3
 	tone $0002
 	vibrato $12, $15
 	note_type 6, 9, 2
@@ -74,7 +74,7 @@ Music_WildBattleSM_Ch1:
 	note F#, 8
 Music_WildBattleSM_Ch1_loop_main:
 	note __, 8
-	dutycycle 0
+	duty_cycle 0
 	intensity $a2
 	octave 4
 	note F_, 2
@@ -166,7 +166,7 @@ Music_WildBattleSM_Ch1_loop_1:
 	note D_, 4
 	note C#, 2
 	loopchannel 2, Music_WildBattleSM_Ch1_loop_1
-	dutycycle 0
+	duty_cycle 0
 	intensity $c7
 	octave 4
 	note D#, 8
@@ -239,7 +239,7 @@ Music_WildBattleSM_Ch1_loop_1:
 	jumpchannel Music_WildBattleSM_Ch1_loop_main
 
 Music_WildBattleSM_Ch2:
-	dutycycle $3
+	duty_cycle 3
 	vibrato $8, $36
 	tone $0001
 	note_type 6, 12, 2
@@ -288,7 +288,7 @@ Music_WildBattleSM_Ch2_loop_main:
 	note G_, 6
 	intensity $c4
 	note F_, 4
-	dutycycle 0
+	duty_cycle 0
 	intensity $a4
 	note G_, 4
 	note F_, 2
@@ -300,7 +300,7 @@ Music_WildBattleSM_Ch2_loop_main:
 	note A_, 2
 	note G_, 2
 	note F_, 6
-	dutycycle 3
+	duty_cycle 3
 	intensity $c2
 	note E_, 4
 	note A_, 2

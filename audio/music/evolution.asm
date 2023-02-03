@@ -10,7 +10,7 @@ Music_Evolution_Ch1:
 	volume 7, 7
 	vibrato $6, $34
 	tone $0001
-	dutycycle $2
+	duty_cycle 2
 	note_type 12, 9, 2
 	octave 3
 	slidepitchto 1, 4, A_
@@ -22,7 +22,7 @@ Music_Evolution_Ch1:
 	slidepitchto 1, 4, A_
 	note G_, 1
 	note __, 4
-	dutycycle $3
+	duty_cycle 3
 	stereopanning $f
 Music_Evolution_branch_f0713:
 	callchannel Music_Evolution_branch_f0737
@@ -65,7 +65,7 @@ Music_Evolution_branch_f0743:
 	endchannel
 
 Music_Evolution_Ch2:
-	dutycycle $2
+	duty_cycle 2
 	vibrato $8, $25
 	note_type 12, 10, 2
 	octave 4
@@ -74,7 +74,7 @@ Music_Evolution_Ch2:
 	note G_, 1
 	note D_, 1
 	note __, 4
-	dutycycle $3
+	duty_cycle 3
 	stereopanning $f0
 Music_Evolution_branch_f0761:
 	callchannel Music_Evolution_branch_f0787

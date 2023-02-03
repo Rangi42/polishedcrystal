@@ -7,7 +7,7 @@ Music_HealPokemon:
 Music_HealPokemon_Ch1:
 	tempo 144
 	volume 7, 7
-	dutycycle $2
+	duty_cycle 2
 	tone $0001
 	note_type 12, 8, 1
 	note __, 2
@@ -25,7 +25,7 @@ Music_HealPokemon_Ch1:
 	endchannel
 
 Music_HealPokemon_Ch2:
-	dutycycle $2
+	duty_cycle 2
 	note_type 12, 12, 3
 	octave 4
 	note B_, 4

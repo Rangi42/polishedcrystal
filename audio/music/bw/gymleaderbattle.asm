@@ -12,7 +12,7 @@ Music_GymLeaderBattleBW:
 GymLeaderBattleBW_Channel1:
 	tempo $35
 	volume 5, 5
-	dutycycle 1
+	duty_cycle 1
 	note_type 12, 8, 7
 	octave 4
 	note C_, 1
@@ -75,7 +75,7 @@ GymLeaderBattleBW_Channel1:
 	note C_, 4
 	note __, 16
 	note __, 8
-	dutycycle 2
+	duty_cycle 2
 	octave 1
 	note A#, 4
 	octave 3
@@ -146,7 +146,7 @@ GymLeaderBattleBW_Channel1:
 	note __, 2
 GymLeaderBattleBWChannel1_Loop:
 	stereopanning $F0
-	dutycycle 1
+	duty_cycle 1
 	note C_, 12
 	octave 4
 	note G_, 12
@@ -686,7 +686,7 @@ GymLeaderBattleBWChannel1_Loop:
 	endchannel
 
 GymLeaderBattleBW_Channel2:
-	dutycycle 1
+	duty_cycle 1
 	note_type 12, 9, 7
 	octave 2
 	note C_, 8
@@ -741,7 +741,7 @@ GymLeaderBattleBW_Channel2:
 	note_type 12, 9, 7
 	note E_, 8
 	octave 5
-	dutycycle 0
+	duty_cycle 0
 	note E_, 2
 	note F_, 2
 	note E_, 2
@@ -750,7 +750,7 @@ GymLeaderBattleBW_Channel2:
 	note E_, 16
 	note_type 12, 9, 7
 	note E_, 8
-	dutycycle 1
+	duty_cycle 1
 	octave 3
 	note A#, 12
 	octave 4
@@ -1006,7 +1006,7 @@ GymLeaderBattleBWChannel2_Loop:
 	note E_, 16
 	note_type 12, 9, 7
 	note E_, 8
-	dutycycle 2
+	duty_cycle 2
 	note C_, 2
 	note C#, 2
 	note C_, 2
@@ -1017,7 +1017,7 @@ GymLeaderBattleBWChannel2_Loop:
 	note C_, 16
 	note_type 12, 9, 7
 	note C_, 8
-	dutycycle 1
+	duty_cycle 1
 	octave 3
 	stereopanning $0F
 	note A#, 12

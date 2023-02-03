@@ -15,7 +15,7 @@ Music_PowerPlantXY_Ch1:
 	stereopanning $f
 	vibrato $12, $23
 	note_type 12, 8, 7
-	dutycycle $0
+	duty_cycle 0
 
 Music_PowerPlantXY_Ch1_branch_0:
 	callchannel Music_PowerPlantXY_Ch1_branch_4
@@ -130,7 +130,7 @@ Music_PowerPlantXY_Ch1_branch_3:
 
 Music_PowerPlantXY_Ch1_branch_4:
 	vibrato $12, $35
-	dutycycle $2
+	duty_cycle 2
 	note_type 12, 5, 1
 	note __, 3
 	octave 4
@@ -172,7 +172,7 @@ Music_PowerPlantXY_Ch2_branch_0:
 
 Music_PowerPlantXY_Ch2_branch_1:
 	note_type 12, 12, 2
-	dutycycle $1
+	duty_cycle 1
 	octave 3
 	note G#, 2
 	octave 4
@@ -196,22 +196,22 @@ Music_PowerPlantXY_Ch2_branch_1:
 	note __, 3
 	octave 4
 	note E_, 1
-	dutycycle $2
+	duty_cycle 2
 	octave 5
 	note E_, 1
-	dutycycle $1
+	duty_cycle 1
 	octave 4
 	note E_, 1
-	dutycycle $2
+	duty_cycle 2
 	octave 5
 	note E_, 2
-	dutycycle $1
+	duty_cycle 1
 	octave 4
 	note E_, 1
-	dutycycle $2
+	duty_cycle 2
 	octave 5
 	note E_, 2
-	dutycycle $1
+	duty_cycle 1
 	octave 4
 	note E_, 1
 	octave 5
@@ -232,7 +232,7 @@ Music_PowerPlantXY_Ch2_branch_1:
 
 Music_PowerPlantXY_Ch2_branch_2:
 	vibrato $12, $23
-	dutycycle $1
+	duty_cycle 1
 	note_type 12, 12, 2
 	octave 4
 	note C#, 1
@@ -295,7 +295,7 @@ Music_PowerPlantXY_Ch2_branch_3:
 
 Music_PowerPlantXY_Ch2_branch_4:
 	vibrato $12, $35
-	dutycycle $2
+	duty_cycle 2
 	note_type 12, 12, 2
 	octave 3
 	note C#, 1

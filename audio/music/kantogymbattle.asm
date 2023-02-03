@@ -7,7 +7,7 @@ Music_KantoGymBattle:
 Music_KantoGymBattle_Ch1:
 	tempo 101
 	volume 7, 7
-	dutycycle $3
+	duty_cycle 3
 	tone $0002
 	vibrato $12, $15
 	note_type 12, 11, 2
@@ -253,7 +253,7 @@ Music_KantoGymBattle_branch_ec832:
 	endchannel
 
 Music_KantoGymBattle_Ch2:
-	dutycycle $3
+	duty_cycle 3
 	vibrato $8, $36
 	tone $0001
 	note_type 12, 12, 2
@@ -405,7 +405,7 @@ Music_KantoGymBattle_branch_ec894:
 	jumpchannel Music_KantoGymBattle_branch_ec894
 
 Music_KantoGymBattle_branch_ec907:
-	dutycycle $2
+	duty_cycle 2
 	intensity $d1
 	octave 3
 	note A#, 2
@@ -431,7 +431,7 @@ Music_KantoGymBattle_branch_ec907:
 	note F#, 2
 	note G#, 2
 	note A#, 2
-	dutycycle $3
+	duty_cycle 3
 	intensity $b0
 	endchannel
 

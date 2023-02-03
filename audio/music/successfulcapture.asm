@@ -7,7 +7,7 @@ Music_SuccessfulCapture:
 Music_SuccessfulCapture_Ch1:
 	tempo 126
 	volume 7, 7
-	dutycycle $3
+	duty_cycle 3
 	tone $0001
 	note_type 12, 10, 1
 	jumpchannel Music_SuccessfulCapture_branch_f4536
@@ -15,7 +15,7 @@ Music_SuccessfulCapture_Ch1:
 Music_SuccessfulCapture_Ch2:
 	vibrato $12, $24
 	note_type 12, 12, 1
-	dutycycle $2
+	duty_cycle 2
 	jumpchannel Music_SuccessfulCapture_branch_f4585
 
 Music_SuccessfulCapture_Ch3:

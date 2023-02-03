@@ -20,11 +20,11 @@ Music_Route101RSE_Ch1:
 	note __, 2
 Music_Route101RSE_Ch1_loop:
 	intensity $84
-	dutycycle $3
+	duty_cycle 3
 	callchannel Music_Route101RSE_Ch1_branch_1
 	callchannel Music_Route101RSE_Ch1_branch_1
 	intensity $82
-	dutycycle $0
+	duty_cycle 0
 	callchannel Music_Route101RSE_Ch1_branch_2
 	callchannel Music_Route101RSE_Ch1_branch_3
 	callchannel Music_Route101RSE_Ch1_branch_3
@@ -60,7 +60,7 @@ Music_Route101RSE_Ch1_loop:
 	note A_, 2
 	callchannel Music_Route101RSE_Ch1_branch_2
 	intensity $83
-	dutycycle $3
+	duty_cycle 3
 	octave 3
 	note A#, 1
 	note D_, 1
@@ -70,7 +70,7 @@ Music_Route101RSE_Ch1_loop:
 	note D_, 4
 	octave 5
 	intensity $84
-	dutycycle $2
+	duty_cycle 2
 	note F_, 2
 	intensity $64
 	note F_, 2
@@ -79,7 +79,7 @@ Music_Route101RSE_Ch1_loop:
 	intensity $64
 	note A#, 2
 	intensity $83
-	dutycycle $3
+	duty_cycle 3
 	octave 3
 	note A_, 1
 	note C#, 1
@@ -87,7 +87,7 @@ Music_Route101RSE_Ch1_loop:
 	note G_, 1
 	note A_, 4
 	octave 5
-	dutycycle $2
+	duty_cycle 2
 	intensity $84
 	note E_, 2
 	intensity $64
@@ -221,7 +221,7 @@ Music_Route101RSE_Ch1_branch_3:
 	endchannel
 
 Music_Route101RSE_Ch2:
-	dutycycle $2
+	duty_cycle 2
 	vibrato $12, $36
 	note_type 12, 7, 7
 	note __, 2

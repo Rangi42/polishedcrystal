@@ -6,7 +6,7 @@ Music_MtMoonSquare:
 Music_MtMoonSquare_Ch1:
 	tempo 112
 	volume 7, 7
-	dutycycle $2
+	duty_cycle 2
 	tone $0001
 	note __, 1
 Music_MtMoonSquare_branch_f4826:
@@ -54,7 +54,7 @@ Music_MtMoonSquare_branch_f484d:
 	jumpchannel Music_MtMoonSquare_branch_f4826
 
 Music_MtMoonSquare_Ch2:
-	dutycycle $2
+	duty_cycle 2
 	vibrato $18, $24
 Music_MtMoonSquare_branch_f4862:
 	note_type 12, 8, 2

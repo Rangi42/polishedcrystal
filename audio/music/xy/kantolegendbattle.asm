@@ -10,7 +10,7 @@ Music_KantoLegendBattleXY:
 
 Music_KantoLegendBattleXY_Ch1:
 	tempo $6a
-	dutycycle $2
+	duty_cycle 2
 	note_type 12, 12, 7
 	octave 4
 	note C_, 1
@@ -81,7 +81,7 @@ Music_KantoLegendBattleXY_Ch1_L3:
 	note D_, 1
 	note E_, 1
 Music_KantoLegendBattleXY_Ch1_L:
-	dutycycle $2
+	duty_cycle 2
 	intensity $53
 Music_KantoLegendBattleXY_Ch1_L4:
 	octave 2
@@ -242,7 +242,7 @@ Music_KantoLegendBattleXY_Ch1_L9:
 	note B_, 1
 	octave 5
 	note D_, 1
-	dutycycle $1
+	duty_cycle 1
 	intensity $c5
 	octave 3
 	note G_, 6
@@ -312,7 +312,7 @@ Music_KantoLegendBattleXY_Ch1_L9:
 	intensity $3f
 	octave 5
 	note C_, 16
-	dutycycle $2
+	duty_cycle 2
 	intensity $43
 	note C_, 1
 	note E_, 1
@@ -448,7 +448,7 @@ Music_KantoLegendBattleXY_Ch1_L10:
 	note E_, 1
 	note A_, 1
 	loopchannel 2, Music_KantoLegendBattleXY_Ch1_L10
-	dutycycle $1
+	duty_cycle 1
 	intensity $c5
 	octave 4
 	note E_, 12
@@ -486,7 +486,7 @@ Music_KantoLegendBattleXY_Ch1_L10:
 	jumpchannel Music_KantoLegendBattleXY_Ch1_L
 
 Music_KantoLegendBattleXY_Ch2:
-	dutycycle $1
+	duty_cycle 1
 	note_type 12, 12, 2
 	octave 3
 	note G_, 1

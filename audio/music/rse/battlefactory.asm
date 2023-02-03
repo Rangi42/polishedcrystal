@@ -18,7 +18,7 @@ Music_BattleFactoryRSE_Ch1:
 	note __, 12
 	note __, 16
 Music_BattleFactoryRSE_Ch1_loop:
-	dutycycle $2
+	duty_cycle 2
 	vibrato $12, $24
 	note __, 16
 	note_type 6, 4, 7
@@ -31,7 +31,7 @@ Music_BattleFactoryRSE_Ch1_loop:
 	note D_, 16
 	note __, 12
 	intensity $42
-	dutycycle $0
+	duty_cycle 0
 	note D_, 2
 	note D_, 2
 	note D_, 2
@@ -83,7 +83,7 @@ Music_BattleFactoryRSE_Ch1_loop:
 	note D_, 2
 	note F_, 2
 	note G_, 2
-	dutycycle $2
+	duty_cycle 2
 	intensity $47
 	octave 4
 	note B_, 12
@@ -98,7 +98,7 @@ Music_BattleFactoryRSE_Ch1_loop:
 	note F_, 16
 
 	intensity $42
-	dutycycle $0
+	duty_cycle 0
 	octave 4
 	note __, 8
 	note F_, 2
@@ -146,7 +146,7 @@ Music_BattleFactoryRSE_Ch1_loop:
 	octave 1
 	note E_, 1
 	note __, 1
-	dutycycle 3
+	duty_cycle 3
 	octave 4
 	note E_, 2
 	octave 2
@@ -172,7 +172,7 @@ Music_BattleFactoryRSE_Ch1_loop:
 	note E_, 2
 	note F#, 2
 	note G_, 2
-	dutycycle $0
+	duty_cycle 0
 	intensity $47
 	vibrato $12, $F2
 	octave 2
@@ -213,7 +213,7 @@ Music_BattleFactoryRSE_Ch1_loop:
 	note D_, 2
 
 	note __, 16
-	dutycycle $3
+	duty_cycle 3
 	octave 3
 	note A#, 2
 	note B_, 2
@@ -261,7 +261,7 @@ Music_BattleFactoryRSE_Ch1_loop:
 	note G_, 2
 	note A_, 2
 	note B_, 2
-	dutycycle $0
+	duty_cycle 0
 	intensity $47
 	vibrato $12, $F2
 	octave 2
@@ -276,7 +276,7 @@ Music_BattleFactoryRSE_Ch1_loop:
 	note D#, 16
 	vibrato $12, $24
 	note __, 16
-	dutycycle $3
+	duty_cycle 3
 	intensity $42
 	callchannel Music_BattleFactoryRSE_Ch2_branch_1
 	note G_, 2
@@ -306,7 +306,7 @@ Music_BattleFactoryRSE_Ch1_loop:
 	note B_, 2
 	note F#, 2
 	note D_, 2
-	dutycycle $0
+	duty_cycle 0
 	note_type 12, 1, -7
 	note F#, 6
 	intensity $47
@@ -335,7 +335,7 @@ Music_BattleFactoryRSE_Ch1_loop:
 	note __, 16
 	note __, 12
 	note_type 8, 10, 7
-	dutycycle $2
+	duty_cycle 2
 	octave 6
 	note D#, 1
 	note D_, 5
@@ -354,7 +354,7 @@ Music_BattleFactoryRSE_Ch1_loop:
 	note __, 16
 	note __, 8
 
-	dutycycle $0
+	duty_cycle 0
 	octave 1
 	note B_, 2
 	octave 2
@@ -389,7 +389,7 @@ Music_BattleFactoryRSE_Ch1_loop:
 	note F#, 16
 	vibrato $12, $24
 	note __, 8
-	dutycycle $1
+	duty_cycle 1
 	note_type 8, 10, 7
 	note G#, 2
 	note __, 2
@@ -404,11 +404,11 @@ Music_BattleFactoryRSE_Ch1_loop:
 	note_type 6, 9, 4
 	note __, 12
 	octave 4
-	dutycycle $2
+	duty_cycle 2
 	note G#, 16
 	note __, 12
 	note __, 8
-	dutycycle $0
+	duty_cycle 0
 	intensity $62
 	octave 2
 	note E_, 1
@@ -458,7 +458,7 @@ Music_BattleFactoryRSE_Ch2:
 Music_BattleFactoryRSE_Ch2_loop:
 	note __, 16
 	note __, 16
-	dutycycle $2
+	duty_cycle 2
 	note_type 6, 9, 7
 	octave 4
 	note G_, 11
@@ -471,7 +471,7 @@ Music_BattleFactoryRSE_Ch2_loop:
 	note D_, 16
 	note __, 4
 	intensity $92
-	dutycycle $0
+	duty_cycle 0
 	note D_, 2
 	note D_, 2
 	note D_, 2
@@ -530,7 +530,7 @@ Music_BattleFactoryRSE_Ch2_loop:
 	note E_, 2
 	octave 3
 	note B_, 2
-	dutycycle $2
+	duty_cycle 2
 	intensity $97
 	octave 4
 	note B_, 11
@@ -550,7 +550,7 @@ Music_BattleFactoryRSE_Ch2_loop:
 	note F_, 16
 
 	intensity $92
-	dutycycle $0
+	duty_cycle 0
 	octave 4
 	note F_, 2
 	note F_, 2
@@ -566,7 +566,7 @@ Music_BattleFactoryRSE_Ch2_loop:
 	note F_, 2
 	note F_, 4
 	note __, 2
-	dutycycle $2
+	duty_cycle 2
 	octave 3
 	note E_, 2
 	octave 4
@@ -579,7 +579,7 @@ Music_BattleFactoryRSE_Ch2_loop:
 	note G_, 2
 	octave 3
 	note E_, 2
-	dutycycle $0
+	duty_cycle 0
 	octave 1
 	note E_, 1
 	note __, 1
@@ -611,7 +611,7 @@ Music_BattleFactoryRSE_Ch2_loop:
 	octave 1
 	note E_, 1
 	note __, 1
-	dutycycle 3
+	duty_cycle 3
 	octave 4
 	note E_, 2
 	octave 2
@@ -637,7 +637,7 @@ Music_BattleFactoryRSE_Ch2_loop:
 	note E_, 2
 	note F#, 2
 	note G_, 2
-	dutycycle $0
+	duty_cycle 0
 	intensity $97
 	vibrato $12, $F2
 	octave 2
@@ -677,14 +677,14 @@ Music_BattleFactoryRSE_Ch2_loop:
 	note D_, 2
 	note D_, 2
 
-	dutycycle $2
+	duty_cycle 2
 	note __, 10
 	octave 4
 	note E_, 2
 	note G_, 2
 	octave 3
 	note E_, 2
-	dutycycle $3
+	duty_cycle 3
 	octave 3
 	note A#, 2
 	note B_, 2
@@ -732,7 +732,7 @@ Music_BattleFactoryRSE_Ch2_loop:
 	note G_, 2
 	note A_, 2
 	note B_, 2
-	dutycycle $0
+	duty_cycle 0
 	intensity $97
 	vibrato $12, $F2
 	octave 2
@@ -745,7 +745,7 @@ Music_BattleFactoryRSE_Ch2_loop:
 	octave 2
 	note F#, 8
 	note D#, 16
-	dutycycle $2
+	duty_cycle 2
 	intensity $92
 	note __, 10
 	octave 4
@@ -753,7 +753,7 @@ Music_BattleFactoryRSE_Ch2_loop:
 	note G_, 2
 	octave 3
 	note E_, 2
-	dutycycle $3
+	duty_cycle 3
 	octave 3
 	callchannel Music_BattleFactoryRSE_Ch2_branch_1
 	note G_, 2
@@ -783,7 +783,7 @@ Music_BattleFactoryRSE_Ch2_loop:
 	note B_, 2
 	note F#, 2
 	note D_, 2
-	dutycycle $0
+	duty_cycle 0
 	note_type 12, 6, -7
 	note F#, 6
 	intensity $97
@@ -842,7 +842,7 @@ Music_BattleFactoryRSE_Ch2_loop:
 	note C#, 1
 	note C_, 1
 	note_type 8, 9, 2
-	dutycycle $2
+	duty_cycle 2
 	octave 3
 	note D_, 4
 	note A_, 2
@@ -899,7 +899,7 @@ Music_BattleFactoryRSE_Ch2_loop:
 	note D_, 2
 
 	note_type 6, 9, 2
-	dutycycle $0
+	duty_cycle 0
 	octave 1
 	note B_, 2
 	octave 2
@@ -934,7 +934,7 @@ Music_BattleFactoryRSE_Ch2_loop:
 	note F#, 16
 	vibrato $12, $24
 	note __, 16
-	dutycycle $3
+	duty_cycle 3
 	octave 3
 	intensity $42
 	callchannel Music_BattleFactoryRSE_Ch2_branch_1

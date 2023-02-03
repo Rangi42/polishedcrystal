@@ -12,7 +12,7 @@ Music_GymLeaderBattleXY:
 Music_GymLeaderBattleXY_Ch1:
 	tempo $82
 	volume 7, 7
-	dutycycle 1
+	duty_cycle 1
 	note_type 3, 11, 7
 	stereopanning $F0
 	octave 4
@@ -404,7 +404,7 @@ Music_GymLeaderBattleXY_Ch1_loop:
 	note A#, 4
 	octave 2
 	note_type 3, 14, 7
-	dutycycle 1
+	duty_cycle 1
 	note G_, 3
 	note __, 1
 	note G_, 3
@@ -452,7 +452,7 @@ Music_GymLeaderBattleXY_Ch1_loop:
 	note __, 1
 	note A#, 8
 	note_type 3, 14, 7
-	dutycycle 2
+	duty_cycle 2
 	note F_, 4
 	note __, 4
 	note F_, 4
@@ -486,7 +486,7 @@ Music_GymLeaderBattleXY_Ch1_loop:
 	note D_, 4
 	octave 1
 	note B_, 4
-	dutycycle 1
+	duty_cycle 1
 	octave 2
 	note G_, 3
 	note __, 1
@@ -534,7 +534,7 @@ Music_GymLeaderBattleXY_Ch1_loop:
 	note A#, 3
 	note __, 1
 	note A#, 8
-	dutycycle 2
+	duty_cycle 2
 	note F_, 4
 	note __, 4
 	note F_, 4
@@ -711,7 +711,7 @@ Music_GymLeaderBattleXY_Ch1_loop:
 	endchannel
 
 Music_GymLeaderBattleXY_Ch2:
-	dutycycle 2
+	duty_cycle 2
 	note_type 3, 11, 7
 	octave 3
 	stereopanning $0F
@@ -867,7 +867,7 @@ Music_GymLeaderBattleXY_Ch2_loop:
 	vibrato 0, $0
 	stereopanning $0F
 	note_type 3, 14, 7
-	dutycycle 1
+	duty_cycle 1
 	octave 2
 	note G_, 2
 	note __, 1
@@ -915,7 +915,7 @@ Music_GymLeaderBattleXY_Ch2_loop:
 	note A#, 3
 	note __, 1
 	note A#, 8
-	dutycycle 2
+	duty_cycle 2
 	note F_, 4
 	note __, 4
 	note F_, 4
@@ -950,7 +950,7 @@ Music_GymLeaderBattleXY_Ch2_loop:
 	octave 1
 	note B_, 4
 	octave 2
-	dutycycle 1
+	duty_cycle 1
 	note G_, 3
 	note __, 1
 	note G_, 3
@@ -997,7 +997,7 @@ Music_GymLeaderBattleXY_Ch2_loop:
 	note A#, 3
 	note __, 1
 	note A#, 8
-	dutycycle 2
+	duty_cycle 2
 	note F_, 4
 	note __, 4
 	note F_, 4

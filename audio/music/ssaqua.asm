@@ -11,7 +11,7 @@ Music_SSAqua_Ch1:
 	stereopanning $f
 	tone $0001
 	vibrato $12, $33
-	dutycycle $2
+	duty_cycle 2
 	note_type 6, 9, 7
 	octave 2
 	note G_, 1
@@ -41,7 +41,7 @@ Music_SSAqua_branch_eadbc:
 	note G_, 2
 	note G_, 8
 	note __, 8
-	dutycycle $1
+	duty_cycle 1
 	intensity $61
 	callchannel Music_SSAqua_branch_eaff5
 	octave 5
@@ -117,7 +117,7 @@ Music_SSAqua_branch_eadbc:
 	octave 4
 	note G_, 1
 	note F#, 1
-	dutycycle $2
+	duty_cycle 2
 	intensity $97
 	note G_, 8
 	note F#, 8
@@ -251,17 +251,17 @@ Music_SSAqua_branch_eadbc:
 
 Music_SSAqua_Ch2:
 	stereopanning $f0
-	dutycycle $2
+	duty_cycle 2
 	vibrato $8, $33
 	note_type 12, 11, 7
 	note __, 2
 Music_SSAqua_branch_eaed5:
 	note_type 12, 11, 7
-	dutycycle $1
+	duty_cycle 1
 	intensity $61
 	callchannel Music_SSAqua_branch_eaff5
 	callchannel Music_SSAqua_branch_eb03e
-	dutycycle $2
+	duty_cycle 2
 	intensity $d7
 	callchannel Music_SSAqua_branch_eafe0
 	note B_, 1
@@ -286,7 +286,7 @@ Music_SSAqua_branch_eaed5:
 	octave 4
 	note G_, 6
 	note __, 2
-	dutycycle $3
+	duty_cycle 3
 	intensity $b7
 	octave 3
 	note B_, 1
@@ -334,7 +334,7 @@ Music_SSAqua_branch_eaed5:
 	note B_, 12
 	note A_, 12
 	note __, 4
-	dutycycle $0
+	duty_cycle 0
 	note B_, 2
 	note A_, 2
 	callchannel Music_SSAqua_branch_eafd5
@@ -419,7 +419,7 @@ Music_SSAqua_branch_eaf88:
 	note B_, 6
 	note F#, 6
 	note __, 4
-	dutycycle $1
+	duty_cycle 1
 	note_type 6, 11, 7
 	octave 3
 	note A_, 1
@@ -453,7 +453,7 @@ Music_SSAqua_branch_eaf88:
 	note __, 1
 	note F#, 1
 	note __, 1
-	dutycycle $3
+	duty_cycle 3
 	note E_, 2
 	note F#, 2
 	note G_, 12

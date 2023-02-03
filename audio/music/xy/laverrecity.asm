@@ -16,7 +16,7 @@ Music_LaverreCityXY_Ch1:
 	stereopanning $f
 	vibrato $12, $25
 Music_LaverreCityXY_branch_ef2e5:
-	dutycycle $0
+	duty_cycle 0
 	note_type 12, 10, 4
 	note __, 4
 	octave 3
@@ -50,7 +50,7 @@ Music_LaverreCityXY_branch_ef2e5:
 	note B_, 16
 	note_type 12, 10, 7
 	note __, 12
-	dutycycle $3
+	duty_cycle 3
 	note_type 12, 12, 4
 	note __, 4
 	octave 3
@@ -110,7 +110,7 @@ Music_LaverreCityXY_Ch1_branch_1:
 	intensity $80
 	note F#, 12
 	note_type 8, 8, 7
-	dutycycle 1
+	duty_cycle 1
 	note B_, 2
 	note A#, 2
 	note G#, 2
@@ -180,7 +180,7 @@ Music_LaverreCityXY_Ch1_branch_1:
 	intensity $A7
 	note G#, 16
 	note __, 16
-	dutycycle 3
+	duty_cycle 3
 	intensity $C7
 	note B_, 4
 	note A#, 4
@@ -195,7 +195,7 @@ Music_LaverreCityXY_Ch1_branch_1:
 
 Music_LaverreCityXY_Ch2:
 	vibrato $12, $25
-	dutycycle $2
+	duty_cycle 2
 	stereopanning $f0
 	tone $0002
 Music_LaverreCityXY_branch_ef3f2:

@@ -14,7 +14,7 @@ Music_FinalPokemonBW_Ch1:
 	tempo 240
 	volume 7, 7
 	vibrato $12, $15
-	dutycycle 0
+	duty_cycle 0
 	octave 1
 	note_type 6, 9, 1
 	note D_, 1
@@ -388,7 +388,7 @@ Music_FinalPokemonBW_Ch1_branch_2:
 	endchannel
 
 Music_FinalPokemonBW_Ch2:
-	dutycycle 0
+	duty_cycle 0
 	vibrato $12, $15
 	note_type 6, 9, 1
 	octave 1
@@ -440,7 +440,7 @@ Music_FinalPokemonBW_Ch2_loop:
 	intensity $d7
 	note D_, 10
 	intensity $a7
-	dutycycle 0
+	duty_cycle 0
 	octave 3
 	note G_, 6
 	intensity $a2
@@ -482,7 +482,7 @@ Music_FinalPokemonBW_Ch2_loop:
 	intensity $d7
 	note D_, 10
 	intensity $a7
-	dutycycle 0
+	duty_cycle 0
 	octave 3
 	note G_, 6
 	intensity $a2
@@ -616,7 +616,7 @@ Music_FinalPokemonBW_Ch2_loop:
 	note A_, 8
 	intensity $d7
 	note A_, 9
-	dutycycle 0
+	duty_cycle 0
 	note D_, 6
 	intensity $d1
 	note D_, 1
@@ -644,7 +644,7 @@ Music_FinalPokemonBW_Ch2_branch_1:
 Music_FinalPokemonBW_Ch2_branch_2:
 	note_type 6, 13, 7
 	octave 3
-	dutycycle 3
+	duty_cycle 3
 	note G_, 6
 	intensity $d3
 	note B_, 2

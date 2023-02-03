@@ -12,7 +12,7 @@ Music_NuggetBridgeHGSS_Ch1:
 	tempo $A8
 	volume 7, 7
 	tone $0001
-	dutycycle 1
+	duty_cycle 1
 	note_type 12, 11, 5
 	octave 2
 	note G#, 6
@@ -27,11 +27,11 @@ Music_NuggetBridgeHGSS_Loop1:
 	note B_, 3
 	note G#, 1
 	note A_, 6
-	dutycycle 2
+	duty_cycle 2
 	note A_, 1
 	note G#, 1
 	note F#, 4
-	dutycycle 1
+	duty_cycle 1
 	note G#, 6
 	note G#, 1
 	note B_, 1
@@ -44,7 +44,7 @@ Music_NuggetBridgeHGSS_Loop1:
 	note G#, 1
 	octave 3
 	note E_, 6
-	dutycycle 2
+	duty_cycle 2
 	octave 2
 	note B_, 1
 	octave 3
@@ -151,7 +151,7 @@ Music_NuggetBridgeHGSS_Loop1:
 	note G#, 1
 	intensity $B5
 	note A_, 4
-	dutycycle 1
+	duty_cycle 1
 	note G#, 6
 	octave 2
 	note G#, 1
@@ -163,7 +163,7 @@ Music_NuggetBridgeHGSS_Loop1:
 	jumpchannel Music_NuggetBridgeHGSS_Loop1
 
 Music_NuggetBridgeHGSS_Ch2:
-	dutycycle 1
+	duty_cycle 1
 	note_type 12, 12, 5
 	tone $0002
 	octave 3
@@ -188,7 +188,7 @@ Music_NuggetBridgeHGSS_Loop2:
 	note G#, 3
 	note E_, 1
 	note B_, 12
-	dutycycle 0
+	duty_cycle 0
 	octave 4
 	note C#, 6
 	octave 3
@@ -201,7 +201,7 @@ Music_NuggetBridgeHGSS_Loop2:
 	note G#, 1
 	note F#, 1
 	note G#, 4
-	dutycycle 2
+	duty_cycle 2
 	note F#, 2
 	note E_, 2
 	note D_, 2
@@ -212,7 +212,7 @@ Music_NuggetBridgeHGSS_Loop2:
 	note G#, 3
 	note F#, 1
 	note E_, 8
-	dutycycle 1
+	duty_cycle 1
 	note F#, 2
 	note E_, 2
 	note D_, 2
@@ -228,7 +228,7 @@ Music_NuggetBridgeHGSS_Loop2:
 	note B_, 3
 	note A_, 1
 	note G#, 12
-	dutycycle 0
+	duty_cycle 0
 	note D_, 2
 	note D_, 1
 	note E_, 1
@@ -242,7 +242,7 @@ Music_NuggetBridgeHGSS_Loop2:
 	note B_, 3
 	note A_, 1
 	note G#, 12
-	dutycycle 2
+	duty_cycle 2
 	note D_, 2
 	note D_, 1
 	note E_, 1
@@ -274,7 +274,7 @@ Music_NuggetBridgeHGSS_Loop2:
 	note C#, 1
 	note D#, 1
 	note_type 12, 12, 5
-	dutycycle 1
+	duty_cycle 1
 	note E_, 6
 	octave 2
 	note B_, 1

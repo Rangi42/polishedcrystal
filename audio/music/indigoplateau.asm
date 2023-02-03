@@ -8,7 +8,7 @@ Music_IndigoPlateau:
 Music_IndigoPlateau_Ch1:
 	tempo 128
 	volume 7, 7
-	dutycycle $3
+	duty_cycle 3
 	tone $0002
 	stereopanning $f
 Music_IndigoPlateau_branch_ee86a:
@@ -41,7 +41,7 @@ Music_IndigoPlateau_branch_ee881:
 	endchannel
 
 Music_IndigoPlateau_Ch2:
-	dutycycle $3
+	duty_cycle 3
 	vibrato $10, $22
 	stereopanning $f0
 Music_IndigoPlateau_branch_ee899:

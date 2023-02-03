@@ -13,7 +13,7 @@ Music_RoadToReversalMountainB2W2:
 Music_RoadToReversalMountainB2W2_Ch1:
 	tempo 140
 	volume 7, 7
-	dutycycle 3
+	duty_cycle 3
 	tone $0002
 	vibrato $10, $22
 	note_type 12, 6, 0
@@ -46,7 +46,7 @@ Music_RoadToReversalMountainB2W2_Ch1_branch_1:
 	endchannel
 
 Music_RoadToReversalMountainB2W2_Ch2:
-	dutycycle $0
+	duty_cycle 0
 	tone $0001
 	vibrato $1c, $12
 	note_type 6, 10, 4
@@ -100,12 +100,12 @@ Music_RoadToReversalMountainB2W2_Ch2:
 	note D_, 6
 	intensity $a7
 	note D_, 11
-	dutycycle 3
+	duty_cycle 3
 	intensity $70
 	note C_, 12
 	intensity $77
 	note C_, 6
-	dutycycle 0
+	duty_cycle 0
 	octave 2
 	note_type 6, 10, 4
 	note G#, 4

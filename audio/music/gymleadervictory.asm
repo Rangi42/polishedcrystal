@@ -9,7 +9,7 @@ Music_GymLeaderVictory_Ch1:
 	tempo 116
 	volume 7, 7
 	vibrato $12, $34
-	dutycycle $3
+	duty_cycle 3
 	tone $0001
 	note_type 12, 11, 7
 	octave 4
@@ -28,7 +28,7 @@ Music_GymLeaderVictory_Ch1:
 	note D_, 8
 	stereopanning $f
 Music_GymLeaderVictory_branch_f4658:
-	dutycycle $1
+	duty_cycle 1
 	callchannel Music_GymLeaderVictory_branch_f4689
 	octave 4
 	note C#, 4
@@ -36,7 +36,7 @@ Music_GymLeaderVictory_branch_f4658:
 	callchannel Music_GymLeaderVictory_branch_f4689
 	note F#, 8
 	loopchannel 2, Music_GymLeaderVictory_branch_f4658
-	dutycycle $2
+	duty_cycle 2
 	callchannel Music_GymLeaderVictory_branch_f46a0
 	note A_, 4
 	note G_, 4
@@ -47,7 +47,7 @@ Music_GymLeaderVictory_branch_f4658:
 	note E_, 2
 	note D_, 8
 	note C#, 8
-	dutycycle $3
+	duty_cycle 3
 	callchannel Music_GymLeaderVictory_branch_f46a0
 	note C#, 4
 	note E_, 4
@@ -116,7 +116,7 @@ Music_GymLeaderVictory_branch_f46a0:
 
 Music_GymLeaderVictory_Ch2:
 	vibrato $12, $34
-	dutycycle $3
+	duty_cycle 3
 	note_type 12, 13, 7
 	octave 4
 	note A_, 6
@@ -130,14 +130,14 @@ Music_GymLeaderVictory_Ch2:
 	note D_, 1
 	note F#, 16
 Music_GymLeaderVictory_branch_f46d0:
-	dutycycle $3
+	duty_cycle 3
 	intensity $a1
 	callchannel Music_GymLeaderVictory_branch_f4711
 	note A_, 4
 	note A_, 4
 	callchannel Music_GymLeaderVictory_branch_f4711
 	note D_, 6
-	dutycycle $2
+	duty_cycle 2
 	note B_, 1
 	octave 5
 	note C#, 1
@@ -146,7 +146,7 @@ Music_GymLeaderVictory_branch_f46d0:
 	note A_, 4
 	callchannel Music_GymLeaderVictory_branch_f4711
 	note D_, 8
-	dutycycle $3
+	duty_cycle 3
 	callchannel Music_GymLeaderVictory_branch_f4720
 	note F#, 4
 	note E_, 4
@@ -155,7 +155,7 @@ Music_GymLeaderVictory_branch_f46d0:
 	note B_, 2
 	intensity $a7
 	note A_, 16
-	dutycycle $2
+	duty_cycle 2
 	callchannel Music_GymLeaderVictory_branch_f4720
 	octave 4
 	note A_, 4
@@ -166,7 +166,7 @@ Music_GymLeaderVictory_branch_f46d0:
 	intensity $a6
 	note D_, 12
 	note __, 2
-	dutycycle $3
+	duty_cycle 3
 	octave 4
 	note B_, 1
 	octave 5

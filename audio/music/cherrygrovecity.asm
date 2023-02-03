@@ -8,7 +8,7 @@ Music_CherrygroveCity:
 Music_CherrygroveCity_Ch1:
 	tempo 152
 	volume 7, 7
-	dutycycle $3
+	duty_cycle 3
 	tone $0001
 	vibrato $8, $15
 	stereopanning $f0
@@ -94,7 +94,7 @@ Music_CherrygroveCity_branch_f5b26:
 	jumpchannel Music_CherrygroveCity_branch_f5b26
 
 Music_CherrygroveCity_Ch2:
-	dutycycle $3
+	duty_cycle 3
 	vibrato $10, $36
 	stereopanning $f
 	note_type 12, 12, 3

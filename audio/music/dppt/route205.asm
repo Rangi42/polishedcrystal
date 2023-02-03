@@ -13,7 +13,7 @@ Music_Route205DPPt_Ch1_loop:
 	tempo $C0
 	volume 7, 7
 	note_type 12, 11, 2
-	dutycycle 1
+	duty_cycle 1
 	tone $0001
 	octave 3
 	note G_, 2
@@ -82,7 +82,7 @@ Music_Route205DPPt_Ch1_loop:
 	octave 6
 	note D_, 3
 	intensity $B1
-	dutycycle 2
+	duty_cycle 2
 	octave 2
 	note G_, 2
 	octave 3
@@ -151,7 +151,7 @@ Music_Route205DPPt_Ch1_loop:
 	note D_, 1
 	note F_, 2
 	intensity $B4
-	dutycycle 1
+	duty_cycle 1
 	octave 4
 	note G_, 4
 	octave 5
@@ -288,7 +288,7 @@ Music_Route205DPPt_Ch1_loop:
 Music_Route205DPPt_Ch2:
 Music_Route205DPPt_Ch2_loop:
 	note_type 12, 12, 2
-	dutycycle 1
+	duty_cycle 1
 	tone $0002
 	octave 4
 	note G_, 2
@@ -428,7 +428,7 @@ Music_Route205DPPt_Ch2_loop:
 	note G_, 1
 	note A_, 4
 	intensity $C5
-	dutycycle 2
+	duty_cycle 2
 	octave 3
 	note G_, 1
 	note E_, 1
@@ -473,7 +473,7 @@ Music_Route205DPPt_Ch2_loop:
 	note A_, 1
 	octave 5
 	note D_, 2
-	dutycycle 0
+	duty_cycle 0
 	octave 4
 	note D_, 1
 	note D#, 1

@@ -8,7 +8,7 @@ Music_PokemonCenter:
 Music_PokemonCenter_Ch1:
 	tempo 152
 	volume 7, 7
-	dutycycle $2
+	duty_cycle 2
 	vibrato $a, $14
 	tone $0001
 Music_PokemonCenter_branch_ed5df:
@@ -219,7 +219,7 @@ Music_PokemonCenter_branch_ed674:
 	jumpchannel Music_PokemonCenter_branch_ed674
 
 Music_PokemonCenter_branch_ed6d1:
-	dutycycle $2
+	duty_cycle 2
 	note_type 12, 12, 2
 	octave 4
 	note D_, 2

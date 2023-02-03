@@ -8,7 +8,7 @@ Music_Bicycle:
 Music_Bicycle_Ch1:
 	tempo 140
 	volume 7, 7
-	dutycycle $3
+	duty_cycle 3
 	tone $0001
 	stereopanning $f
 	vibrato $8, $15
@@ -171,7 +171,7 @@ Music_Bicycle_branch_ee144:
 	jumpchannel Music_Bicycle_branch_ee144
 
 Music_Bicycle_Ch2:
-	dutycycle $2
+	duty_cycle 2
 	vibrato $10, $24
 	stereopanning $f0
 	note_type 12, 12, 6
@@ -196,7 +196,7 @@ Music_Bicycle_Ch2:
 	note A_, 2
 Music_Bicycle_branch_ee1fd:
 	stereopanning $ff
-	dutycycle $2
+	duty_cycle 2
 	intensity $c3
 	octave 3
 	note B_, 4

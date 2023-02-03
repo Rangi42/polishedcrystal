@@ -11,7 +11,7 @@ Music_HiddenGrottoB2W2:
 	channel 4, Music_HiddenGrottoB2W2_Ch4
 
 Music_HiddenGrottoB2W2_Ch1:
-	dutycycle 2
+	duty_cycle 2
 	vibrato $12, $15
 	tempo 188
 	note_type 12, 9, 2
@@ -61,7 +61,7 @@ Music_HiddenGrottoB2W2_Ch1_branch_1:
 	endchannel
 
 Music_HiddenGrottoB2W2_Ch2:
-	dutycycle 2
+	duty_cycle 2
 	vibrato $12, $15
 	note_type 6, 5, 2
 	octave 4

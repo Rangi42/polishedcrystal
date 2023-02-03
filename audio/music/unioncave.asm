@@ -8,7 +8,7 @@ Music_UnionCave:
 Music_UnionCave_Ch1:
 	tempo 160
 	volume 7, 7
-	dutycycle $1
+	duty_cycle 1
 	tone $0002
 	vibrato $18, $34
 	stereopanning $f
@@ -74,7 +74,7 @@ Music_UnionCave_branch_f5ccf:
 	endchannel
 
 Music_UnionCave_Ch2:
-	dutycycle $3
+	duty_cycle 3
 	vibrato $8, $24
 Music_UnionCave_branch_f5cda:
 	note_type 12, 12, 4

@@ -12,7 +12,7 @@ Music_CanalaveCityDPPt_Ch1:
 	tempo $CE
 	volume 7, 7
 	note_type 12, 10, 7
-	dutycycle 1
+	duty_cycle 1
 	tone $0002
 	octave 1
 	note E_, 2
@@ -230,7 +230,7 @@ Music_CanalaveCityDPPt_Ch1_loop:
 
 Music_CanalaveCityDPPt_Ch2:
 	note_type 12, 11, 7
-	dutycycle 1
+	duty_cycle 1
 	tone $0001
 	octave 3
 	note __, 2

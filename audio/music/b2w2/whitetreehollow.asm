@@ -13,7 +13,7 @@ Music_WhiteTreehollowWhite2:
 Music_WhiteTreehollowWhite2_Ch1:
 	tempo 176
 	volume 7, 7
-	dutycycle $3
+	duty_cycle 3
 	tone $0002
 	vibrato $8, $15
 	note_type 12, 6, 2
@@ -30,7 +30,7 @@ Music_WhiteTreehollowWhite2_Ch1:
 	note G#, 1
 Music_WhiteTreehollowWhite2_Ch1_loop:
 	octave 4
-	dutycycle 3
+	duty_cycle 3
 	intensity $62
 	note G_, 1
 	octave 3
@@ -238,7 +238,7 @@ Music_WhiteTreehollowWhite2_Ch1_loop:
 	note A#, 1
 	octave 4
 	note F_, 1
-	dutycycle 1
+	duty_cycle 1
 	intensity $84
 	octave 2
 	note C_, 1
@@ -370,7 +370,7 @@ Music_WhiteTreehollowWhite2_Ch1_loop:
 	callchannel Music_WhiteTreehollowWhite2_Ch1_branch_1
 	note __, 4
 	note_type 12, 6, 2
-	dutycycle 3
+	duty_cycle 3
 	note A#, 1
 	octave 3
 	note A#, 1
@@ -447,7 +447,7 @@ Music_WhiteTreehollowWhite2_Ch1_loop:
 	note D#, 7
 	note D#, 3
 	note D_, 3
-	dutycycle 2
+	duty_cycle 2
 	octave 5
 	intensity $a5
 	note D#, 8
@@ -469,7 +469,7 @@ Music_WhiteTreehollowWhite2_Ch1_branch_1:
 	endchannel
 
 Music_WhiteTreehollowWhite2_Ch2:
-	dutycycle $2
+	duty_cycle 2
 	vibrato $12, $25
 	tone $0001
 	note_type 12, 10, 2
@@ -542,7 +542,7 @@ Music_WhiteTreehollowWhite2_Ch2_loop:
 	note G_, 1
 	note G#, 1
 	note A#, 1
-	dutycycle 0
+	duty_cycle 0
 	note __, 1
 	octave 4
 	note G_, 1
@@ -636,7 +636,7 @@ Music_WhiteTreehollowWhite2_Ch2_loop:
 	note D#, 3
 	note_type 12, 10, 2
 	note D#, 5
-	dutycycle $2
+	duty_cycle 2
 	callchannel Music_WhiteTreehollowWhite2_Ch2_branch_1
 	octave 2
 	note A#, 1
@@ -673,7 +673,7 @@ Music_WhiteTreehollowWhite2_Ch2_loop:
 	note A#, 8
 	octave 2
 	note C_, 8
-	dutycycle 0
+	duty_cycle 0
 	intensity $a3
 	note __, 1
 	octave 2
@@ -696,7 +696,7 @@ Music_WhiteTreehollowWhite2_Ch2_loop:
 	note A#, 5
 	intensity $a7
 	note A#, 6
-	dutycycle 2
+	duty_cycle 2
 	octave 4
 	intensity $a2
 	note D#, 1

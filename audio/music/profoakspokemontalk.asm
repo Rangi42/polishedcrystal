@@ -9,7 +9,7 @@ Music_ProfOaksPokemonTalk_Ch1:
 	volume 7, 7
 	stereopanning $f
 	vibrato $6, $25
-	dutycycle $1
+	duty_cycle 1
 	note_type 12, 9, 4
 	note __, 8
 	octave 3
@@ -133,7 +133,7 @@ Music_ProfOaksPokemonTalk_branch_f4cc3:
 
 Music_ProfOaksPokemonTalk_Ch2:
 	vibrato $8, $24
-	dutycycle $3
+	duty_cycle 3
 	note_type 12, 10, 7
 	stereopanning $ff
 	octave 3
