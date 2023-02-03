@@ -344,7 +344,7 @@ Music_GymLeaderBattleGo_Ch1_ditty7:
 	endchannel
 
 Music_GymLeaderBattleGo_Ch2:
-	sound_duty $FF
+	duty_cycle_pattern 3, 3, 3, 3
 	vibrato $07, $95
 	octave 3
 	note_type 12, 10, 5
@@ -356,7 +356,7 @@ Music_GymLeaderBattleGo_Ch2_loop_1:
 	note D#, 2
 	loopchannel 4, Music_GymLeaderBattleGo_Ch2_loop_1
 Music_GymLeaderBattleGo_Ch2_loop:
-	sound_duty $00
+	duty_cycle_pattern 0, 0, 0, 0
 	volume_envelope 12, 5
 	vibrato $00, $33
 Music_GymLeaderBattleGo_Ch2_loop_2:
@@ -369,7 +369,7 @@ Music_GymLeaderBattleGo_Ch2_loop_2:
 	note F_, 2
 	note E_, 2
 	loopchannel 2, Music_GymLeaderBattleGo_Ch2_loop_2
-	sound_duty $55
+	duty_cycle_pattern 1, 1, 1, 1
 	volume_envelope 10, 8
 	vibrato $09, $33
 	octave 4
@@ -429,7 +429,7 @@ Music_GymLeaderBattleGo_Ch2_loop_2:
 	note G_, 1
 	note F_, 1
 	note E_, 6
-	sound_duty $00
+	duty_cycle_pattern 0, 0, 0, 0
 	volume_envelope 12, 1
 	octave 3
 	callchannel Music_GymLeaderBattleGo_Ch1_ditty8
@@ -437,7 +437,7 @@ Music_GymLeaderBattleGo_Ch2_loop_2:
 	callchannel Music_GymLeaderBattleGo_Ch1_ditty8
 	octave 5
 	note C_, 1
-	sound_duty $FF
+	duty_cycle_pattern 3, 3, 3, 3
 	volume_envelope 12, 8
 	vibrato $0F, $53
 	octave 4
@@ -453,7 +453,7 @@ Music_GymLeaderBattleGo_Ch2_loop_2:
 	volume_envelope 12, 8
 	octave 4
 	note C_, 1
-	sound_duty $55
+	duty_cycle_pattern 1, 1, 1, 1
 	octave 3
 	callchannel Music_GymLeaderBattleGo_Ch2_ditty3
 	octave 4
@@ -491,7 +491,7 @@ Music_GymLeaderBattleGo_Ch2_loop_2:
 	callchannel Music_GymLeaderBattleGo_Ch2_ditty2
 	note_type 3, 12, 8
 	note __, 1
-	sound_duty $5A
+	duty_cycle_pattern 1, 1, 2, 2
 	octave 4
 	note B_, 4
 	octave 5
@@ -527,7 +527,7 @@ Music_GymLeaderBattleGo_Ch2_loop_2:
 	octave 4
 	note G_, 4
 	note __, 4
-	sound_duty $55
+	duty_cycle_pattern 1, 1, 1, 1
 	octave 3
 	note E_, 4
 	note D_, 4
@@ -540,7 +540,7 @@ Music_GymLeaderBattleGo_Ch2_loop_2:
 	octave 4
 	note C_, 4
 	note __, 8
-	sound_duty $5A
+	duty_cycle_pattern 1, 1, 2, 2
 	octave 3
 Music_GymLeaderBattleGo_Ch2_loop_3:
 	note D_, 4
@@ -548,7 +548,7 @@ Music_GymLeaderBattleGo_Ch2_loop_3:
 	loopchannel 3, Music_GymLeaderBattleGo_Ch2_loop_3
 	note D_, 4
 	note __, 12
-	sound_duty $55
+	duty_cycle_pattern 1, 1, 1, 1
 	callchannel Music_GymLeaderBattleGo_Ch2_ditty4
 	note G_, 12
 	octave 4
@@ -562,68 +562,68 @@ Music_GymLeaderBattleGo_Ch2_loop_3:
 	note A#, 8
 	octave 4
 	note F#, 8
-	sound_duty $50
+	duty_cycle_pattern 1, 1, 0, 0
 	note C_, 1
 	note C_, 1
 	octave 3
 	note A#, 1
-	sound_duty $5A
+	duty_cycle_pattern 1, 1, 2, 2
 	callchannel Music_GymLeaderBattleGo_Ch2_ditty5
 	note C_, 1
-	sound_duty $50
+	duty_cycle_pattern 1, 1, 0, 0
 	octave 4
 	note C_, 1
 	octave 3
 	note A#, 1
-	sound_duty $5A
+	duty_cycle_pattern 1, 1, 2, 2
 	callchannel Music_GymLeaderBattleGo_Ch2_ditty5
-	sound_duty $50
+	duty_cycle_pattern 1, 1, 0, 0
 	octave 4
 	note C#, 1
 	note C#, 1
 	octave 3
 	note B_, 1
-	sound_duty $5A
+	duty_cycle_pattern 1, 1, 2, 2
 	callchannel Music_GymLeaderBattleGo_Ch2_ditty6
-	sound_duty $50
+	duty_cycle_pattern 1, 1, 0, 0
 	octave 4
 	note C#, 1
 	octave 3
 	note B_, 1
-	sound_duty $5A
+	duty_cycle_pattern 1, 1, 2, 2
 	callchannel Music_GymLeaderBattleGo_Ch1_ditty9
-	sound_duty $50
+	duty_cycle_pattern 1, 1, 0, 0
 	octave 4
 	note C_, 1
 	note C_, 1
 	octave 3
 	note A#, 1
-	sound_duty $5A
+	duty_cycle_pattern 1, 1, 2, 2
 	callchannel Music_GymLeaderBattleGo_Ch2_ditty5
 	note C_, 1
-	sound_duty $50
+	duty_cycle_pattern 1, 1, 0, 0
 	octave 4
 	note C_, 1
 	octave 3
 	note A#, 1
-	sound_duty $5A
+	duty_cycle_pattern 1, 1, 2, 2
 	callchannel Music_GymLeaderBattleGo_Ch2_ditty5
-	sound_duty $50
+	duty_cycle_pattern 1, 1, 0, 0
 	octave 4
 	note C#, 1
 	note C#, 1
 	octave 3
 	note B_, 1
-	sound_duty $5A
+	duty_cycle_pattern 1, 1, 2, 2
 	callchannel Music_GymLeaderBattleGo_Ch2_ditty6
-	sound_duty $50
+	duty_cycle_pattern 1, 1, 0, 0
 	octave 4
 	note C#, 1
 	octave 3
 	note B_, 1
-	sound_duty $5A
+	duty_cycle_pattern 1, 1, 2, 2
 	callchannel Music_GymLeaderBattleGo_Ch1_ditty9
-	sound_duty $55
+	duty_cycle_pattern 1, 1, 1, 1
 	note C_, 8
 	note C#, 8
 	octave 2

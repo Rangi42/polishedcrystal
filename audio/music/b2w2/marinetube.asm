@@ -12,7 +12,7 @@ Music_MarineTubeB2W2:
 
 Music_MarineTubeB2W2_Ch1:
 	tempo 132
-	sound_duty 3, 3, 3, 3
+	duty_cycle_pattern 3, 3, 3, 3
 	vibrato $12, $15
 	tone $0001
 	note_type 12, 6, 1
@@ -197,7 +197,7 @@ Music_MarineTubeB2W2_Ch1:
 	note G_, 1
 	note F#, 1
 	volume_envelope 5, 0
-	sound_duty 2, 2, 0, 0
+	duty_cycle_pattern 0, 0, 2, 2
 	octave 3
 	note G_, 8
 	note F_, 8
@@ -217,7 +217,7 @@ Music_MarineTubeB2W2_Ch1:
 	octave 3
 	note F#, 8
 	note F_, 8
-	sound_duty 2, 2, 2, 2
+	duty_cycle_pattern 2, 2, 2, 2
 	volume_envelope 6, 0
 	note D_, 8
 	note C_, 8
@@ -255,7 +255,7 @@ Music_MarineTubeB2W2_Ch1:
 	note D#, 6
 	note F_, 8
 	note F_, 6
-	sound_duty 1, 1, 1, 1
+	duty_cycle_pattern 1, 1, 1, 1
 	volume_envelope 8, 4
 	octave 1
 	note G_, 2
@@ -470,7 +470,7 @@ Music_MarineTubeB2W2_Ch2:
 	vibrato $8, $26
 	tone $0001
 	note_type 12, 10, 0
-	sound_duty 2, 2, 2, 2
+	duty_cycle_pattern 2, 2, 2, 2
 	octave 5
 	note F_, 8
 	volume_envelope 10, 7
@@ -550,7 +550,7 @@ Music_MarineTubeB2W2_Ch2:
 	note A#, 4
 	volume_envelope 10, 7
 	note A#, 12
-	sound_duty 0, 0, 0, 0
+	duty_cycle_pattern 0, 0, 0, 0
 	note C_, 4
 	octave 4
 	volume_envelope 10, 0
@@ -587,7 +587,7 @@ Music_MarineTubeB2W2_Ch2:
 	note F_, 4
 	volume_envelope 10, 7
 	note F_, 12
-	sound_duty 2, 2, 0, 0
+	duty_cycle_pattern 0, 0, 2, 2
 	octave 5
 	note C_, 6
 	note D_, 2
@@ -633,7 +633,7 @@ Music_MarineTubeB2W2_Ch2:
 	note G_, 16
 	note __, 16
 	note __, 12
-	sound_duty 0, 0, 0, 0
+	duty_cycle_pattern 0, 0, 0, 0
 	volume_envelope 2, 0
 	octave 1
 	note A#, 2

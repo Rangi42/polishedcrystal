@@ -18,7 +18,7 @@ Music_Megalovania_Ch1_loop:
 	note __, 16
 	note __, 16
 	note __, 16
-	sound_duty $55
+	duty_cycle_pattern 1, 1, 1, 1
 	volume_envelope 15, 3
 Music_Megalovania_Ch1_loop_1:
 	octave 4
@@ -37,7 +37,7 @@ Music_Megalovania_Ch1_loop_1:
 	note A#, 1
 	callchannel Music_Megalovania_Ch1_ditty_2
 	loopchannel 2, Music_Megalovania_Ch1_loop_1
-	sound_duty $00
+	duty_cycle_pattern 0, 0, 0, 0
 	volume_envelope 9, 1
 	callchannel Music_Megalovania_Ch1Ch3_ditty_2
 	octave 3
@@ -98,7 +98,7 @@ Music_Megalovania_Ch1_loop_1:
 	octave 5
 	note C_, 8
 	note __, 1
-	sound_duty $5A
+	duty_cycle_pattern 1, 1, 2, 2
 	volume_envelope 15, 3
 	callchannel Music_Megalovania_Ch1_ditty_3
 	callchannel Music_Megalovania_Ch1_ditty_4
@@ -117,7 +117,7 @@ Music_Megalovania_Ch1_loop_1:
 	note F_, 1
 	note D_, 1
 	callchannel Music_Megalovania_Ch1Ch2_ditty_1
-	sound_duty $55
+	duty_cycle_pattern 1, 1, 1, 1
 	volume_envelope 10, 3
 	octave 2
 	note A_, 4
@@ -225,7 +225,7 @@ Music_Megalovania_Ch1_loop_1:
 	note C#, 1
 	note_type 12, 10, 6
 	note D_, 8
-	sound_duty $00
+	duty_cycle_pattern 0, 0, 0, 0
 	vibrato $00, $13
 	callchannel Music_Megalovania_Ch1_ditty_5
 	volume_envelope 3, -7
@@ -236,7 +236,7 @@ Music_Megalovania_Ch1_loop_1:
 	note F_, 12
 	note __, 4
 	callchannel Music_Megalovania_Ch1_ditty_5
-	sound_duty $55
+	duty_cycle_pattern 1, 1, 1, 1
 	volume_envelope 10, 1
 	vibrato $0F, $13
 	octave 3
@@ -576,7 +576,7 @@ Music_Megalovania_Ch1_ditty_7:
 	endchannel
 
 Music_Megalovania_Ch1Ch2_ditty_1:
-	sound_duty $00
+	duty_cycle_pattern 0, 0, 0, 0
 	volume_envelope 15, 1
 	octave 4
 	note F_, 1
@@ -782,7 +782,7 @@ Music_Megalovania_Ch2_loop:
 	note F_, 2
 	note D_, 1
 	note F_, 1
-	sound_duty $AA
+	duty_cycle_pattern 2, 2, 2, 2
 	vibrato $05, $13
 	octave 4
 	note_type 6, 13, 3
@@ -929,7 +929,7 @@ Music_Megalovania_Ch2_loop:
 	octave 3
 	callchannel Music_Megalovania_Ch1Ch2_ditty_1a
 	callchannel Music_Megalovania_Ch2_ditty3
-	sound_duty $5A
+	duty_cycle_pattern 1, 1, 2, 2
 	vibrato $0F, $34
 	octave 3
 	note_type 6, 10, 1
@@ -937,14 +937,14 @@ Music_Megalovania_Ch2_loop:
 	note_type 3, 10, 1
 	note F_, 1
 	note A_, 1
-	sound_duty $55
+	duty_cycle_pattern 1, 1, 1, 1
 	vibrato $0F, $1F
 	octave 4
 	note_type 9, 10, 7
 	note D_, 16
 	note_type 3, 10, 1
 	note __, 12
-	sound_duty $5A
+	duty_cycle_pattern 1, 1, 2, 2
 	vibrato $0F, $34
 	octave 3
 	note_type 9, 10, 1
@@ -952,7 +952,7 @@ Music_Megalovania_Ch2_loop:
 	note_type 3, 10, 1
 	note F_, 1
 	note A_, 1
-	sound_duty $55
+	duty_cycle_pattern 1, 1, 1, 1
 	vibrato $0F, $1F
 	octave 4
 	note_type 9, 10, 7
@@ -972,7 +972,7 @@ Music_Megalovania_Ch2_loop:
 	note __, 16
 	note __, 1
 	note_type 12, 6, -1
-	sound_duty $00
+	duty_cycle_pattern 0, 0, 0, 0
 	vibrato $00, $22
 	octave 2
 	note D_, 1
@@ -1057,7 +1057,7 @@ Music_Megalovania_Ch2_ditty2:
 	endchannel
 
 Music_Megalovania_Ch2_ditty3:
-	sound_duty $5A
+	duty_cycle_pattern 1, 1, 2, 2
 	vibrato $0F, $34
 	octave 2
 	note_type 9, 10, 1
@@ -1066,24 +1066,24 @@ Music_Megalovania_Ch2_ditty3:
 	note_type 3, 10, 1
 	note D_, 1
 	note F_, 1
-	sound_duty $55
+	duty_cycle_pattern 1, 1, 1, 1
 	note_type 9, 10, 7
 	vibrato $0F, $1F
 	note A#, 16
 	note_type 3, 10, 7
 	note __, 11
-	sound_duty $5A
+	duty_cycle_pattern 1, 1, 2, 2
 	volume_envelope 10, 1
 	vibrato $0F, $34
 	note C_, 2
 	note E_, 1
 	note G_, 1
-	sound_duty $55
+	duty_cycle_pattern 1, 1, 1, 1
 	vibrato $0F, $1F
 	octave 4
 	note_type 15, 10, 7
 	note C_, 12
-	sound_duty $5A
+	duty_cycle_pattern 1, 1, 2, 2
 	vibrato $0F, $34
 	octave 3
 	note_type 9, 10, 1
@@ -1091,28 +1091,28 @@ Music_Megalovania_Ch2_ditty3:
 	note_type 3, 10, 1
 	note F_, 1
 	note A_, 2
-	sound_duty $55
+	duty_cycle_pattern 1, 1, 1, 1
 	note_type 9, 10, 7
 	vibrato $0F, $1F
 	octave 4
 	note D_, 16
 	note_type 3, 10, 7
 	note __, 10
-	sound_duty $5A
+	duty_cycle_pattern 1, 1, 2, 2
 	volume_envelope 10, 1
 	vibrato $0F, $34
 	octave 3
 	note D_, 4
 	note F_, 1
 	note A_, 1
-	sound_duty $55
+	duty_cycle_pattern 1, 1, 1, 1
 	vibrato $0F, $1F
 	octave 4
 	note_type 13, 10, 7
 	note E_, 6
 	note_type 12, 10, 7
 	note D_, 8
-	sound_duty $5A
+	duty_cycle_pattern 1, 1, 2, 2
 	vibrato $0F, $34
 	octave 2
 	note_type 9, 10, 1
@@ -1121,19 +1121,19 @@ Music_Megalovania_Ch2_ditty3:
 	note_type 3, 10, 1
 	note D_, 1
 	note F_, 1
-	sound_duty $55
+	duty_cycle_pattern 1, 1, 1, 1
 	note_type 9, 10, 7
 	vibrato $0F, $1F
 	note A#, 16
 	note_type 3, 10, 7
 	note __, 11
-	sound_duty $5A
+	duty_cycle_pattern 1, 1, 2, 2
 	volume_envelope 10, 1
 	vibrato $0F, $34
 	note C_, 2
 	note E_, 1
 	note G_, 1
-	sound_duty $55
+	duty_cycle_pattern 1, 1, 1, 1
 	vibrato $0F, $1F
 	octave 4
 	note_type 15, 10, 7

@@ -13,7 +13,7 @@ Music_WildBattleGo_Ch1:
 	tempo $70
 	volume 7, 7
 	stereopanning $77
-	sound_duty $5A
+	duty_cycle_pattern 1, 1, 2, 2
 	octave 3
 	note_type 12, 10, 3
 	note D_, 1
@@ -48,7 +48,7 @@ Music_WildBattleGo_Ch1_loop:
 	note __, 3
 	note C#, 4
 	note __, 2
-	sound_duty $AA
+	duty_cycle_pattern 2, 2, 2, 2
 	callchannel Music_WildBattleGo_Ch1_ditty1
 	callchannel Music_WildBattleGo_Ch1_ditty2
 	callchannel Music_WildBattleGo_Ch1_ditty1
@@ -71,7 +71,7 @@ Music_WildBattleGo_Ch1_loop:
 	callchannel Music_WildBattleGo_Ch1_ditty1
 	callchannel Music_WildBattleGo_Ch1_ditty1
 	note __, 4
-	sound_duty $55
+	duty_cycle_pattern 1, 1, 1, 1
 	volume_envelope 15, 3
 	vibrato $05, $13
 	octave 2
@@ -108,7 +108,7 @@ Music_WildBattleGo_Ch1_loop_2:
 	octave 4
 	note D_, 16
 	loopchannel 2, Music_WildBattleGo_Ch1_loop_2
-	sound_duty $5A
+	duty_cycle_pattern 1, 1, 2, 2
 	octave 3
 	callchannel Music_WildBattleGo_Ch2_ditty2
 	jumpchannel Music_WildBattleGo_Ch1_loop
@@ -146,7 +146,7 @@ Music_WildBattleGo_Ch1_ditty2:
 Music_WildBattleGo_Ch2:
 	note_type 12, 0, 0
 	note __, 4
-	sound_duty $5A
+	duty_cycle_pattern 1, 1, 2, 2
 	volume_envelope 10, 3
 	octave 5
 	callchannel Music_WildBattleGo_Ch2_ditty2
@@ -165,7 +165,7 @@ Music_WildBattleGo_Ch2_loop:
 	note __, 3
 	note C#, 4
 	note __, 2
-	sound_duty $55
+	duty_cycle_pattern 1, 1, 1, 1
 	volume_envelope 10, 8
 	vibrato $08, $13
 	octave 4
@@ -258,7 +258,7 @@ Music_WildBattleGo_Ch2_loop:
 Music_WildBattleGo_Ch2_loop_1:
 	note __, 16
 	loopchannel 8, Music_WildBattleGo_Ch2_loop_1
-	sound_duty $5A
+	duty_cycle_pattern 1, 1, 2, 2
 	octave 5
 	note D_, 2
 	note __, 10

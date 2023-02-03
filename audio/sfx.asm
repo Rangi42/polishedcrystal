@@ -1366,7 +1366,7 @@ Sfx_Supersonic:
 	endchannel
 
 .Ch6:
-	sound_duty 3, 0, 3, 2
+	duty_cycle_pattern 2, 3, 0, 3
 	square_note 15, 2, -7, 1992
 .branch6:
 	square_note 15, 12, -7, 1991
@@ -1400,7 +1400,7 @@ Sfx_Leer:
 
 .Ch6:
 .branch6:
-	sound_duty 3, 0, 3, 2
+	duty_cycle_pattern 2, 3, 0, 3
 	square_note 0, 14, 1, 1985
 	square_note 0, 14, 1, 1793
 	loopchannel 12, .branch6
@@ -1423,7 +1423,7 @@ Sfx_Ember:
 
 .Ch5:
 .branch5:
-	sound_duty 1, 2, 0, 3
+	duty_cycle_pattern 3, 0, 2, 1
 	square_note 11, 15, 3, 288
 	square_note 9, 13, 3, 336
 	loopchannel 5, .branch5
@@ -1452,7 +1452,7 @@ Sfx_BubbleBeam:
 
 .Ch5:
 .branch5:
-	sound_duty 1, 2, 3, 0
+	duty_cycle_pattern 0, 3, 2, 1
 	square_note 4, 15, 4, 1536
 	square_note 3, 12, 4, 1280
 	square_note 5, 11, 5, 1536
@@ -1463,7 +1463,7 @@ Sfx_BubbleBeam:
 
 .Ch6:
 .branch6:
-	sound_duty 1, 3, 0, 2
+	duty_cycle_pattern 2, 0, 3, 1
 	square_note 5, 14, 4, 1504
 	square_note 4, 11, 4, 1248
 	square_note 6, 10, 5, 1512
@@ -1490,7 +1490,7 @@ Sfx_HydroPump:
 
 .Ch5:
 .branch5:
-	sound_duty 2, 0, 1, 3
+	duty_cycle_pattern 3, 1, 0, 2
 	square_note 3, 8, 1, 768
 	square_note 3, 12, 1, 1024
 	square_note 3, 15, 1, 1280
@@ -1522,7 +1522,7 @@ Sfx_Surf:
 
 .Ch5:
 .branch5:
-	sound_duty 1, 2, 3, 0
+	duty_cycle_pattern 0, 3, 2, 1
 	square_note 15, 15, 4, 1280
 	square_note 15, 12, 4, 1024
 	square_note 15, 14, 2, 1472
@@ -1531,7 +1531,7 @@ Sfx_Surf:
 
 .Ch6:
 .branch6:
-	sound_duty 1, 3, 0, 2
+	duty_cycle_pattern 2, 0, 3, 1
 	square_note 7, 14, 4, 1072
 	square_note 15, 11, 4, 816
 	square_note 15, 10, 2, 1080
@@ -1558,7 +1558,7 @@ Sfx_Psybeam:
 
 .Ch5:
 .branch5:
-	sound_duty 1, 0, 2, 2
+	duty_cycle_pattern 2, 2, 0, 1
 	square_note 10, 15, 1, 1600
 	square_note 10, 15, 3, 1664
 	square_note 10, 15, 2, 1568
@@ -1568,7 +1568,7 @@ Sfx_Psybeam:
 
 .Ch6:
 .branch6:
-	sound_duty 3, 0, 3, 2
+	duty_cycle_pattern 2, 3, 0, 3
 	square_note 10, 15, 3, 1393
 	square_note 7, 14, 3, 1329
 	square_note 10, 15, 1, 1361
@@ -1604,7 +1604,7 @@ Sfx_Charge:
 
 .Ch6:
 .branch6:
-	sound_duty 3, 0, 3, 2
+	duty_cycle_pattern 2, 3, 0, 3
 	square_note 2, 14, 1, 770
 	square_note 3, 14, 1, 2034
 	square_note 4, 14, 1, 1538
@@ -1632,7 +1632,7 @@ Sfx_Thundershock:
 
 .Ch5:
 .branch5:
-	sound_duty 3, 2, 2, 0
+	duty_cycle_pattern 0, 2, 2, 3
 	square_note 3, 15, 1, 2032
 	square_note 4, 15, 2, 512
 	loopchannel 8, .branch5
@@ -1640,7 +1640,7 @@ Sfx_Thundershock:
 
 .Ch6:
 .branch6:
-	sound_duty 3, 0, 3, 2
+	duty_cycle_pattern 2, 3, 0, 3
 	square_note 4, 14, 2, 514
 	square_note 4, 14, 1, 2018
 	loopchannel 9, .branch6
@@ -1775,14 +1775,14 @@ Sfx_EggBomb:
 	channel 8, .Ch8
 
 .Ch5:
-	sound_duty 1, 3, 2, 3
+	duty_cycle_pattern 3, 2, 3, 1
 	square_note 8, 15, -7, 1016
 	square_note 15, 15, -7, 1024
 	square_note 15, 15, 3, 1024
 	endchannel
 
 .Ch6:
-	sound_duty 0, 1, 3, 2
+	duty_cycle_pattern 2, 3, 1, 0
 	square_note 8, 14, -7, 960
 	square_note 15, 14, -7, 960
 	square_note 15, 14, 3, 960
@@ -1862,7 +1862,7 @@ Sfx_HyperBeam:
 	endchannel
 
 .Ch6:
-	sound_duty 3, 0, 3, 2
+	duty_cycle_pattern 2, 3, 0, 3
 	square_note 2, 15, 1, 1921
 	square_note 2, 15, 1, 1793
 	square_note 2, 15, 1, 1937
@@ -3905,7 +3905,7 @@ Sfx_Aeroblast:
 	channel 8, .Ch8
 
 .Ch5:
-	sound_duty 2, 0, 3, 3
+	duty_cycle_pattern 3, 3, 0, 2
 	pitch_sweep 15, 5
 	square_note 28, 15, 8, 1408
 	pitch_sweep 0, 8

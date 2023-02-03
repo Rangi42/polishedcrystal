@@ -98,14 +98,10 @@ MACRO pitch_sweep
 	endc
 ENDM
 
-	const sound_duty_cmd
-MACRO sound_duty
-	db sound_duty_cmd
-	if _NARG == 4
-		db \1 | (\2 << 2) | (\3 << 4) | (\4 << 6) ; duty sequence
-	else
-		db \1 ; duty sequence byte
-	endc
+	const duty_cycle_pattern_cmd ; $de
+MACRO duty_cycle_pattern
+	db duty_cycle_pattern_cmd
+	db (\1 << 6) | (\2 << 4) | (\3 << 2) | (\4 << 0) ; duty cycle pattern
 ENDM
 
 	const togglesfx_cmd
