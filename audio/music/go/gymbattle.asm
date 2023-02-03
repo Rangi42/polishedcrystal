@@ -13,7 +13,7 @@ Music_GymLeaderBattleGo_Ch1:
 	volume 7, 7
 	stereopanning $77
 	dutycycle 3
-	notetype $C, $A2
+	note_type 12, 10, 2
 	callchannel Music_GymLeaderBattleGo_Ch1_ditty1
 	octave 1
 	note D#, 1
@@ -347,7 +347,7 @@ Music_GymLeaderBattleGo_Ch2:
 	sound_duty $FF
 	vibrato $07, $95
 	octave 3
-	notetype $C, $A5
+	note_type 12, 10, 5
 Music_GymLeaderBattleGo_Ch2_loop_1:
 	note F#, 2
 	note __, 1
@@ -458,38 +458,38 @@ Music_GymLeaderBattleGo_Ch2_loop_2:
 	callchannel Music_GymLeaderBattleGo_Ch2_ditty3
 	octave 4
 	callchannel Music_GymLeaderBattleGo_Ch2_ditty2
-	notetype $F, $C8
+	note_type 15, 12, 8
 	note __, 1
-	notetype $C, $C8
+	note_type 12, 12, 8
 	note D_, 2
 	callchannel Music_GymLeaderBattleGo_Ch2_ditty2
-	notetype $F, $C8
+	note_type 15, 12, 8
 	note __, 1
-	notetype $9, $C8
+	note_type 9, 12, 8
 	note A#, 1
-	notetype $F, $C8
+	note_type 15, 12, 8
 	note __, 1
-	notetype $C, $C8
+	note_type 12, 12, 8
 	note F_, 2
-	notetype $9, $C8
+	note_type 9, 12, 8
 	note F_, 1
-	notetype $F, $C8
+	note_type 15, 12, 8
 	note __, 1
-	notetype $9, $C8
+	note_type 9, 12, 8
 	note A#, 1
-	notetype $F, $C8
+	note_type 15, 12, 8
 	note __, 1
 	octave 5
-	notetype $9, $C8
+	note_type 9, 12, 8
 	note D_, 1
-	notetype $F, $C8
+	note_type 15, 12, 8
 	note __, 1
 	octave 4
-	notetype $C, $C8
+	note_type 12, 12, 8
 	callchannel Music_GymLeaderBattleGo_Ch2_ditty3
 	octave 5
 	callchannel Music_GymLeaderBattleGo_Ch2_ditty2
-	notetype $3, $C8
+	note_type 3, 12, 8
 	note __, 1
 	sound_duty $5A
 	octave 4
@@ -554,7 +554,7 @@ Music_GymLeaderBattleGo_Ch2_loop_3:
 	octave 4
 	note C_, 8
 	octave 3
-	notetype $C, $C8
+	note_type 12, 12, 8
 	note A#, 8
 	octave 4
 	note C#, 8
@@ -658,19 +658,19 @@ Music_GymLeaderBattleGo_Ch2_ditty1:
 	endchannel
 
 Music_GymLeaderBattleGo_Ch2_ditty2:
-	notetype $9, $C8
+	note_type 9, 12, 8
 	note D_, 1
-	notetype $F, $C8
+	note_type 15, 12, 8
 	note __, 1
-	notetype $9, $C8
+	note_type 9, 12, 8
 	note F_, 1
 	endchannel
 
 Music_GymLeaderBattleGo_Ch2_ditty3:
 	note A#, 2
-	notetype $9, $C8
+	note_type 9, 12, 8
 	note A#, 1
-	notetype $F, $C8
+	note_type 15, 12, 8
 	note __, 1
 	endchannel
 
@@ -700,7 +700,7 @@ Music_GymLeaderBattleGo_Ch2_ditty6:
 Music_GymLeaderBattleGo_Ch3:
 	dutycycle 4
 	octave 4
-	notetype $C, $14
+	note_type 12, 1, 4
 Music_GymLeaderBattleGo_Ch3_loop_1:
 	note C_, 1
 	note __, 2

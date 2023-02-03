@@ -11,7 +11,7 @@ Music_LugiaBattleHGSS:
 Music_LugiaBattleHGSS_Ch1:
 	tempo $66
 	dutycycle $3
-	notetype $c, $c7
+	note_type 12, 12, 7
 	note __, 4
 	octave 3
 	note G#, 6
@@ -183,7 +183,7 @@ Music_LugiaBattleHGSS_Ch1_L:
 	octave 4
 	note C_, 4
 	note D#, 4
-	notetype $8, $c7
+	note_type 8, 12, 7
 	note A#, 6
 	note A_, 2
 	note G#, 2
@@ -248,18 +248,18 @@ Music_LugiaBattleHGSS_Ch1_L:
 	note A_, 2
 	note A_, 2
 	note A_, 2
-	notetype $c, $c7
+	note_type 12, 12, 7
 	note A#, 2
 	note __, 6
 	note A#, 2
 	note __, 10
 	note A#, 4
 	note __, 4
-	notetype $8, $c2
+	note_type 8, 12, 2
 	note A#, 2
 	note A#, 2
 	note A#, 2
-	notetype $c, $c7
+	note_type 12, 12, 7
 	octave 4
 	note C_, 2
 	note __, 6
@@ -277,7 +277,7 @@ Music_LugiaBattleHGSS_Ch1_L:
 
 Music_LugiaBattleHGSS_Ch2:
 	dutycycle $3
-	notetype $c, $c7
+	note_type 12, 12, 7
 	note __, 4
 	octave 3
 	note D#, 6
@@ -497,7 +497,7 @@ Music_LugiaBattleHGSS_Ch2_L2:
 	note A#, 2
 	note __, 2
 	dutycycle $0
-	notetype $8, $c7
+	note_type 8, 12, 7
 	vibrato $0, $0
 	octave 4
 	note D_, 6
@@ -518,7 +518,7 @@ Music_LugiaBattleHGSS_Ch2_L2:
 	note C_, 2
 	octave 2
 	note B_, 2
-	notetype $c, $c7
+	note_type 12, 12, 7
 	note __, 16
 	note __, 16
 	note __, 16
@@ -536,11 +536,11 @@ Music_LugiaBattleHGSS_Ch2_L2:
 	note __, 10
 	note D_, 4
 	note __, 4
-	notetype $8, $c7
+	note_type 8, 12, 7
 	note D_, 2
 	note D_, 2
 	note D_, 2
-	notetype $c, $c7
+	note_type 12, 12, 7
 	note E_, 2
 	note __, 6
 	note E_, 2
@@ -549,7 +549,7 @@ Music_LugiaBattleHGSS_Ch2_L2:
 	jumpchannel Music_LugiaBattleHGSS_Ch2_L
 
 Music_LugiaBattleHGSS_Ch3:
-	notetype $c, $23
+	note_type 12, 2, 3
 	octave 6
 	note G_, 1
 	note G#, 1
@@ -748,11 +748,11 @@ Music_LugiaBattleHGSS_Ch3_L8:
 	note D_, 4
 	note G_, 2
 	note __, 6
-	notetype $8, $16
+	note_type 8, 1, 6
 	note G_, 2
 	note G_, 2
 	note G_, 2
-	notetype $c, $16
+	note_type 12, 1, 6
 	note C_, 2
 	note __, 6
 	note C_, 2

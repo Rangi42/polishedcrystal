@@ -10,7 +10,7 @@ Music_RivalBattle_Ch1:
 	dutycycle $3
 	tone $0002
 	vibrato $8, $15
-	notetype $c, $b2
+	note_type 12, 11, 2
 	octave 3
 	note F#, 2
 	note A#, 4
@@ -290,7 +290,7 @@ Music_RivalBattle_Ch2:
 	dutycycle $3
 	vibrato $8, $36
 	tone $0001
-	notetype $c, $c2
+	note_type 12, 12, 2
 	octave 4
 	note E_, 1
 	note D#, 1
@@ -536,7 +536,7 @@ Music_RivalBattle_branch_e99e0:
 	endchannel
 
 Music_RivalBattle_Ch3:
-	notetype $c, $19
+	note_type 12, 1, -1
 	octave 3
 	note F#, 2
 	note A#, 2

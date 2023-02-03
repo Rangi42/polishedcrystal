@@ -15,7 +15,7 @@ Music_CinnabarMansionRBY_Ch1:
 	dutycycle 2
 
 Music_CinnabarMansionRBY_branch_7ed19:
-	notetype 12, 98
+	note_type 12, 6, 2
 	octave 5
 	note E_, 1
 	note E_, 1
@@ -36,7 +36,7 @@ Music_CinnabarMansionRBY_branch_7ed19:
 	note B_, 1
 	note __, 2
 	loopchannel 14, Music_CinnabarMansionRBY_branch_7ed19
-	notetype 12, 165
+	note_type 12, 10, 5
 	note __, 16
 	note __, 16
 	note __, 15
@@ -51,7 +51,7 @@ Music_CinnabarMansionRBY_Ch2:
 	dutycycle 2
 
 	vibrato 10, 36
-	notetype 12, 194
+	note_type 12, 12, 2
 
 Music_CinnabarMansionRBY_branch_7ed48:
 	note __, 16
@@ -59,7 +59,7 @@ Music_CinnabarMansionRBY_branch_7ed48:
 	loopchannel 4, Music_CinnabarMansionRBY_branch_7ed48
 
 Music_CinnabarMansionRBY_branch_7ed4e:
-	notetype 12, 194
+	note_type 12, 12, 2
 
 Music_CinnabarMansionRBY_branch_7ed50:
 	callchannel Music_CinnabarMansionRBY_branch_7ed6c
@@ -104,7 +104,7 @@ Music_CinnabarMansionRBY_branch_7ed6c:
 	endchannel
 
 Music_CinnabarMansionRBY_Ch3:
-	notetype 12, 17
+	note_type 12, 1, 1
 
 Music_CinnabarMansionRBY_branch_7ed80:
 	octave 2
@@ -151,7 +151,7 @@ Music_CinnabarMansionRBY_branch_7ed80:
 	jumpchannel Music_CinnabarMansionRBY_branch_7ed80
 
 Music_CinnabarMansionRBY_Ch4:
-	notetype 6
+	note_type 6
 	togglenoise 1
 	note __, 16
 	note __, 16

@@ -16,7 +16,7 @@ Music_RoadToReversalMountainB2W2_Ch1:
 	dutycycle 3
 	tone $0002
 	vibrato $10, $22
-	notetype $c, $60
+	note_type 12, 6, 0
 	callchannel Music_RoadToReversalMountainB2W2_Ch1_branch_1
 	callchannel Music_RoadToReversalMountainB2W2_Ch1_branch_1
 	octave 3
@@ -49,7 +49,7 @@ Music_RoadToReversalMountainB2W2_Ch2:
 	dutycycle $0
 	tone $0001
 	vibrato $1c, $12
-	notetype $6, $a4
+	note_type 6, 10, 4
 	note __, 4
 	octave 3
 	note D_, 2
@@ -96,7 +96,7 @@ Music_RoadToReversalMountainB2W2_Ch2:
 	note D#, 4
 	note D_, 1
 	note D#, 1
-	notetype $C, $a0
+	note_type 12, 10, 0
 	note D_, 6
 	intensity $a7
 	note D_, 11
@@ -107,7 +107,7 @@ Music_RoadToReversalMountainB2W2_Ch2:
 	note C_, 6
 	dutycycle 0
 	octave 2
-	notetype $6, $a4
+	note_type 6, 10, 4
 	note G#, 4
 	note A#, 4
 	octave 3
@@ -134,11 +134,11 @@ Music_RoadToReversalMountainB2W2_Ch2:
 	note D_, 4
 	note D#, 4
 	note D_, 4
-	notetype $8, $a4
+	note_type 8, 10, 4
 	note C#, 1
 	note D_, 1
 	note C#, 1
-	notetype $c, $a6
+	note_type 12, 10, 6
 	octave 2
 	note A_, 10
 	intensity $a4
@@ -146,20 +146,20 @@ Music_RoadToReversalMountainB2W2_Ch2:
 	note C_, 2
 	note C#, 2
 	note C_, 2
-	notetype $8, $a4
+	note_type 8, 10, 4
 	octave 2
 	note B_, 1
 	octave 3
 	note C_, 1
 	octave 2
 	note B_, 1
-	notetype $c, $a7
+	note_type 12, 10, 7
 	note G#, 10
 	note A_, 16
 	note __, 16
 	note __, 4
 	octave 3
-	notetype $3, $a4
+	note_type 3, 10, 4
 	note A_, 8
 	note A_, 4
 	note G_, 4
@@ -171,7 +171,7 @@ Music_RoadToReversalMountainB2W2_Ch2:
 	note C#, 1
 	note D_, 1
 	note C#, 12
-	notetype $6, $a4
+	note_type 6, 10, 4
 	note D#, 12
 	note D_, 4
 	octave 3
@@ -187,7 +187,7 @@ Music_RoadToReversalMountainB2W2_Ch2:
 	jumpchannel Music_RoadToReversalMountainB2W2_Ch2
 
 Music_RoadToReversalMountainB2W2_Ch3:
-	notetype $c, $25
+	note_type 12, 2, 5
 	octave 2
 	callchannel Music_RoadToReversalMountainB2W2_Ch3_branch_1
 	note D_, 2
@@ -215,7 +215,7 @@ Music_RoadToReversalMountainB2W2_Ch3_branch_1:
 Music_RoadToReversalMountainB2W2_Ch4:
 	stereopanning $f
 	togglenoise $3
-	notetype $c
+	note_type 12
 Music_RoadToReversalMountainB2W2_Ch4_loop:
 	note C_, 4
 	note D#, 2

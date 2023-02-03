@@ -16,7 +16,7 @@ Music_WhiteTreehollowWhite2_Ch1:
 	dutycycle $3
 	tone $0002
 	vibrato $8, $15
-	notetype $c, $62
+	note_type 12, 6, 2
 	octave 4
 	note A#, 1
 	note D#, 1
@@ -304,7 +304,7 @@ Music_WhiteTreehollowWhite2_Ch1_loop:
 	note A#, 2
 	note A#, 1
 	note __, 3
-	notetype $3, $42
+	note_type 3, 4, 2
 	octave 7
 	note D#, 2
 	note D_, 2
@@ -369,7 +369,7 @@ Music_WhiteTreehollowWhite2_Ch1_loop:
 	note E_, 2
 	callchannel Music_WhiteTreehollowWhite2_Ch1_branch_1
 	note __, 4
-	notetype $c, $62
+	note_type 12, 6, 2
 	dutycycle 3
 	note A#, 1
 	octave 3
@@ -472,7 +472,7 @@ Music_WhiteTreehollowWhite2_Ch2:
 	dutycycle $2
 	vibrato $12, $25
 	tone $0001
-	notetype $c, $a2
+	note_type 12, 10, 2
 	octave 2
 	note G#, 3
 	note G#, 7
@@ -550,17 +550,17 @@ Music_WhiteTreehollowWhite2_Ch2_loop:
 	note A_, 1
 	note A#, 1
 	note D#, 2
-	notetype $3, $a2
+	note_type 3, 10, 2
 	octave 5
 	note D_, 1
 	note D#, 7
-	notetype $c, $a2
+	note_type 12, 10, 2
 	octave 4
 	note D#, 1
-	notetype $3, $a2
+	note_type 3, 10, 2
 	note F#, 2
 	note F_, 2
-	notetype $c, $a2
+	note_type 12, 10, 2
 	note D#, 1
 	note C_, 1
 	octave 3
@@ -575,20 +575,20 @@ Music_WhiteTreehollowWhite2_Ch2_loop:
 	octave 4
 	note F_, 1
 	note D#, 1
-	notetype $3, $a2
+	note_type 3, 10, 2
 	note G_, 1
 	note G#, 3
-	notetype $c, $a2
+	note_type 12, 10, 2
 	note G_, 1
 	note F#, 1
 	note F_, 1
 	note D#, 1
-	notetype $3, $a2
+	note_type 3, 10, 2
 	octave 3
 	note B_, 1
 	octave 4
 	note C_, 3
-	notetype $c, $a2
+	note_type 12, 10, 2
 	note D#, 1
 	note F_, 1
 	octave 3
@@ -600,19 +600,19 @@ Music_WhiteTreehollowWhite2_Ch2_loop:
 	octave 5
 	note D#, 2
 	octave 4
-	notetype $3, $a2
+	note_type 3, 10, 2
 	note G_, 2
 	note G#, 2
-	notetype $c, $a2
+	note_type 12, 10, 2
 	note G_, 1
 	note F#, 1
 	octave 5
 	note D#, 1
 	note D#, 2
-	notetype $3, $a2
+	note_type 3, 10, 2
 	note F_, 1
 	note F#, 3
-	notetype $c, $a2
+	note_type 12, 10, 2
 	note F_, 1
 	octave 4
 	note A#, 1
@@ -622,19 +622,19 @@ Music_WhiteTreehollowWhite2_Ch2_loop:
 	note G#, 1
 	note G_, 1
 	note C_, 1
-	notetype $3, $a2
+	note_type 3, 10, 2
 	note F_, 1
 	note F#, 11
-	notetype $c, $a2
+	note_type 12, 10, 2
 	note F#, 1
 	note F_, 1
 	octave 3
 	note A#, 1
 	octave 4
-	notetype $3, $a2
+	note_type 3, 10, 2
 	note D_, 1
 	note D#, 3
-	notetype $c, $a2
+	note_type 12, 10, 2
 	note D#, 5
 	dutycycle $2
 	callchannel Music_WhiteTreehollowWhite2_Ch2_branch_1
@@ -736,7 +736,7 @@ Music_WhiteTreehollowWhite2_Ch2_branch_1:
 	endchannel
 
 Music_WhiteTreehollowWhite2_Ch3:
-	notetype $c, $10
+	note_type 12, 1, 0
 	vibrato $12, $25
 	octave 5
 	note __, 4
@@ -868,7 +868,7 @@ Music_WhiteTreehollowWhite2_Ch3:
 	note C_, 1
 	octave 4
 	note D#, 7
-	notetype $3, $10
+	note_type 3, 1, 0
 	note D_, 1
 	note C#, 1
 	note C_, 1
@@ -877,7 +877,7 @@ Music_WhiteTreehollowWhite2_Ch3:
 	note A#, 1
 	note A_, 1
 	note __, 10
-	notetype $c, $10
+	note_type 12, 1, 0
 	note A#, 1
 	octave 4
 	note D#, 1
@@ -985,7 +985,7 @@ Music_WhiteTreehollowWhite2_Ch3:
 
 Music_WhiteTreehollowWhite2_Ch4:
 	togglenoise $3
-	notetype $c
+	note_type 12
 Music_WhiteTreehollowWhite2_Ch4_loop_main:
 Music_WhiteTreehollowWhite2_Ch4_loop_1:
 	note D#, 4

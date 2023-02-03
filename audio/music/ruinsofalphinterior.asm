@@ -9,7 +9,7 @@ Music_RuinsOfAlphInterior_Ch1:
 	volume 7, 7
 	dutycycle $0
 	stereopanning $f0
-	notetype $c, $44
+	note_type 12, 4, 4
 	note __, 1
 	jumpchannel Music_RuinsOfAlphInterior_branch_ebdc2
 
@@ -17,7 +17,7 @@ Music_RuinsOfAlphInterior_Ch2:
 	tone $0002
 	dutycycle $0
 	stereopanning $f
-	notetype $c, $a4
+	note_type 12, 10, 4
 Music_RuinsOfAlphInterior_branch_ebdc2:
 	octave 4
 	note C_, 4
@@ -36,7 +36,7 @@ Music_RuinsOfAlphInterior_branch_ebdc2:
 	jumpchannel Music_RuinsOfAlphInterior_branch_ebdc2
 
 Music_RuinsOfAlphInterior_Ch3:
-	notetype $c, $10
+	note_type 12, 1, 0
 Music_RuinsOfAlphInterior_branch_ebdd7:
 	octave 2
 	note G#, 2

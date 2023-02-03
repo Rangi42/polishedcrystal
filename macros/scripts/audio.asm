@@ -47,12 +47,16 @@ ENDM
 
 	const_skip 7 ; all octave values
 
-	const notetype_cmd
-MACRO notetype
-	db notetype_cmd
-	db \1 ; note_length
+	const note_type_cmd ; $d8
+MACRO note_type
+	db note_type_cmd
+	db \1 ; note length
 	if _NARG >= 2
-		db \2 ; intensity
+		if \3 < 0
+			dn \2, %1000 | (\3 * -1) ; volume envelope
+		else
+			dn \2, \3 ; volume envelope
+		endc
 	endc
 ENDM
 

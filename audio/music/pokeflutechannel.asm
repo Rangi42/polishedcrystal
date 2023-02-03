@@ -10,12 +10,12 @@ Music_PokeFluteChannel_Ch1:
 	stereopanning $f0
 	dutycycle $3
 	tone $0002
-	notetype $c, $b4
+	note_type 12, 11, 4
 	note __, 4
 	octave 3
 	note E_, 8
 	note E_, 8
-	notetype $c, $b3
+	note_type 12, 11, 3
 	note F_, 2
 	note E_, 2
 	note D_, 2
@@ -73,7 +73,7 @@ Music_PokeFluteChannel_Ch2:
 	stereopanning $f
 	dutycycle $3
 	tone $0001
-	notetype $c, $c4
+	note_type 12, 12, 4
 	note __, 4
 	octave 3
 	note C_, 8
@@ -82,7 +82,7 @@ Music_PokeFluteChannel_Ch2:
 	note A_, 8
 	octave 3
 	note E_, 8
-	notetype $c, $c3
+	note_type 12, 12, 3
 	octave 2
 	note E_, 2
 	note G_, 2
@@ -172,7 +172,7 @@ Music_PokeFluteChannel_branch_f7b94:
 
 Music_PokeFluteChannel_Ch3:
 	vibrato $10, $14
-	notetype $c, $10
+	note_type 12, 1, 0
 	callchannel Music_PokeFluteChannel_branch_f7c05
 	callchannel Music_PokeFluteChannel_branch_f7c05
 Music_PokeFluteChannel_branch_f7be1:

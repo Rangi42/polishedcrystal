@@ -15,7 +15,7 @@ Music_BicycleRSE_Ch1:
 	dutycycle $3
 	vibrato $12, $15
 	tone $0001
-	notetype $c, $82
+	note_type 12, 8, 2
 	octave 2
 	note C#, 2
 	octave 1
@@ -319,7 +319,7 @@ Music_BicycleRSE_Ch2:
 	dutycycle $2
 	vibrato $12, $15
 	tone $0001
-	notetype $c, $a4
+	note_type 12, 10, 4
 	octave 2
 	note A_, 2
 	note G_, 2
@@ -572,11 +572,11 @@ Music_BicycleRSE_Ch2:
 	note D_, 2
 	intensity $a7
 	note E_, 8
-	notetype $8, $a7
+	note_type 8, 10, 7
 	note E_, 4
 	note F#, 4
 	note E_, 4
-	notetype $c, $a7
+	note_type 12, 10, 7
 	note D_, 16
 	octave 3
 	note G_, 2
@@ -709,7 +709,7 @@ Music_BicycleRSE_Ch2_branch_2:
 	endchannel
 
 Music_BicycleRSE_Ch3:
-	notetype $c, $13
+	note_type 12, 1, 3
 	note __, 16
 	octave 5
 	note G_, 2
@@ -1067,7 +1067,7 @@ Music_BicycleRSE_Ch3_loop_1:
 
 Music_BicycleRSE_Ch4:
 	togglenoise $3
-	notetype $c
+	note_type 12
 	note __, 16
 	note __, 16
 Music_BicycleRSE_Ch4_loop_main:

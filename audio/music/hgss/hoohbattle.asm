@@ -11,7 +11,7 @@ Music_HoOhBattleHGSS:
 Music_HoOhBattleHGSS_Ch1:
 	tempo $6a
 	dutycycle $3
-	notetype $c, $c2
+	note_type 12, 12, 2
 	octave 3
 	note B_, 1
 	note A#, 1
@@ -232,7 +232,7 @@ Music_HoOhBattleHGSS_Ch1_L:
 	intensity $c7
 	soundinput $00
 	note E_, 7
-	notetype $8, $b7
+	note_type 8, 11, 7
 	vibrato $7, $26
 	octave 4
 	note D_, 2
@@ -242,7 +242,7 @@ Music_HoOhBattleHGSS_Ch1_L:
 	octave 5
 	note D_, 2
 	note D#, 2
-	notetype $c, $b7
+	note_type 12, 11, 7
 	note E_, 1
 	note F_, 1
 	note E_, 12
@@ -499,7 +499,7 @@ Music_HoOhBattleHGSS_Ch1_L:
 
 Music_HoOhBattleHGSS_Ch2:
 	dutycycle $3
-	notetype $c, $c2
+	note_type 12, 12, 2
 	octave 4
 	note E_, 1
 	note D#, 1
@@ -914,7 +914,7 @@ Music_HoOhBattleHGSS_Ch2_L:
 	jumpchannel Music_HoOhBattleHGSS_Ch2_L
 
 Music_HoOhBattleHGSS_Ch3:
-	notetype $c, $16
+	note_type 12, 1, 6
 	octave 2
 	note E_, 16
 	note D_, 8

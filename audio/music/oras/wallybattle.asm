@@ -81,12 +81,12 @@ Music_WallyBattleORAS_Ch1:
 	note C_, 10
 	intensity $84
 	note C_, 4
-	notetype $8, $83
+	note_type 8, 8, 3
 	note C_, 1
 	note D_, 1
 	note C_, 1
 	dutycycle 0
-	notetype $c, $c0
+	note_type 12, 12, 0
 	octave 3
 	note D#, 12
 	intensity $c5
@@ -146,12 +146,12 @@ Music_WallyBattleORAS_Ch1_loop_1:
 	note B_, 10
 	intensity $84
 	note B_, 4
-	notetype $8, $83
+	note_type 8, 8, 3
 	note G_, 1
 	note A_, 1
 	note G_, 1
 	dutycycle 0
-	notetype $c, $d0
+	note_type 12, 13, 0
 	note D#, 10
 	intensity $d5
 	note D#, 1
@@ -163,7 +163,7 @@ Music_WallyBattleORAS_Ch1_loop_1:
 	jumpchannel Music_WallyBattleORAS_Ch1
 
 Music_WallyBattleORAS_Ch1_branch_1:
-	notetype $c, $97
+	note_type 12, 9, 7
 	octave 2
 	note D_, 1
 	note G_, 1
@@ -188,13 +188,13 @@ Music_WallyBattleORAS_Ch2:
 	intensity $c7
 	note G_, 9
 	callchannel Music_WallyBattleORAS_Ch2_branch_1
-	notetype $6, $c7
+	note_type 6, 12, 7
 	note F#, 9
 	note A#, 1
 	intensity $c3
 	note B_, 4
 	note A_, 4
-	notetype $c, $c0
+	note_type 12, 12, 0
 	note G_, 4
 	intensity $c7
 	note G_, 9
@@ -228,12 +228,12 @@ Music_WallyBattleORAS_Ch2:
 	note E_, 10
 	intensity $c4
 	note E_, 4
-	notetype $8, $c3
+	note_type 8, 12, 3
 	note E_, 1
 	note F#, 1
 	note E_, 1
 	dutycycle 3
-	notetype $c, $80
+	note_type 12, 8, 0
 	octave 3
 	note B_, 8
 	intensity $87
@@ -279,12 +279,12 @@ Music_WallyBattleORAS_Ch2_loop_1:
 	note F#, 10
 	intensity $c4
 	note F#, 4
-	notetype $8, $c3
+	note_type 8, 12, 3
 	note E_, 1
 	note F#, 1
 	note E_, 1
 	dutycycle 3
-	notetype $c, $80
+	note_type 12, 8, 0
 	note F#, 8
 	intensity $87
 	note F#, 5
@@ -292,7 +292,7 @@ Music_WallyBattleORAS_Ch2_loop_1:
 	jumpchannel Music_WallyBattleORAS_Ch2
 
 Music_WallyBattleORAS_Ch2_branch_1:
-	notetype $c, $b7
+	note_type 12, 11, 7
 	octave 2
 	note B_, 1
 	octave 3
@@ -306,7 +306,7 @@ Music_WallyBattleORAS_Ch2_branch_1:
 	endchannel
 
 Music_WallyBattleORAS_Ch3:
-	notetype $6, $19
+	note_type 6, 1, -1
 	vibrato $12, $15
 	note __, 6
 Music_WallyBattleORAS_Ch3_loop_main:
@@ -563,7 +563,7 @@ Music_WallyBattleORAS_Ch3_branch_2:
 
 Music_WallyBattleORAS_Ch4:
 	togglenoise $4
-	notetype $c
+	note_type 12
 	note __, 3
 Music_WallyBattleORAS_Ch4_loop_main:
 	callchannel Music_WallyBattleORAS_Ch4_branch_1

@@ -17,7 +17,7 @@ Music_ChampionBattleDPPt_Ch1:
 	tone $0002
 	vibrato $10, $24
 	octave 4
-	notetype $C, $B7
+	note_type 12, 11, 7
 	note A#, 16
 	note __, 16
 	tempo $68
@@ -485,7 +485,7 @@ Music_ChampionBattleDPPt_Ch2:
 	tone $0001
 	vibrato $08, $36
 	octave 3
-	notetype $C, $C2
+	note_type 12, 12, 2
 	note A#, 2
 	note F_, 2
 	octave 2
@@ -502,7 +502,7 @@ Music_ChampionBattleDPPt_Ch2:
 	note B_, 2
 	octave 3
 	note D_, 2
-	notetype $8, $C2
+	note_type 8, 12, 2
 	note D#, 2
 	note F_, 2
 	note G#, 2
@@ -511,7 +511,7 @@ Music_ChampionBattleDPPt_Ch2:
 	octave 4
 	note C#, 2
 	dutycycle 3
-	notetype $C, $C7
+	note_type 12, 12, 7
 	octave 2
 	note A#, 16
 	note __, 16
@@ -939,7 +939,7 @@ Music_ChampionBattleDPPt_Ch2_loop:
 
 Music_ChampionBattleDPPt_Ch3:
 	octave 1
-	notetype $C, $14
+	note_type 12, 1, 4
 	note F_, 4
 	note __, 4
 	note F_, 4
@@ -1730,7 +1730,7 @@ Music_ChampionBattleDPPt_Ch3_loop:
 
 Music_ChampionBattleDPPt_Ch4:
 	togglenoise 3
-	notetype $C
+	note_type 12
 	note D#, 8
 	note D#, 8
 	note D#, 8

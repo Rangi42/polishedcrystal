@@ -12,7 +12,7 @@ Music_ElmsLab_Ch1:
 	tone $0001
 	vibrato $10, $15
 	stereopanning $f0
-	notetype $c, $b2
+	note_type 12, 11, 2
 	octave 2
 	note F_, 2
 	note G_, 2
@@ -187,7 +187,7 @@ Music_ElmsLab_Ch2:
 	dutycycle $3
 	vibrato $10, $26
 	stereopanning $f
-	notetype $c, $c3
+	note_type 12, 12, 3
 	octave 4
 	note F_, 2
 	note E_, 2
@@ -352,7 +352,7 @@ Music_ElmsLab_branch_ea14f:
 
 Music_ElmsLab_Ch3:
 	stereopanning $f
-	notetype $c, $25
+	note_type 12, 2, 5
 	note __, 8
 	note __, 14
 	octave 3
@@ -530,7 +530,7 @@ Music_ElmsLab_branch_ea216:
 Music_ElmsLab_Ch4:
 	stereopanning $f0
 	togglenoise $0
-	notetype $c
+	note_type 12
 	note __, 16
 	note __, 2
 Music_ElmsLab_branch_ea2b9:

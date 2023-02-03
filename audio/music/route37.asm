@@ -11,7 +11,7 @@ Music_Route37_Ch1:
 	dutycycle $3
 	tone $0002
 	vibrato $10, $22
-	notetype $c, $b3
+	note_type 12, 11, 3
 	note __, 16
 	note __, 16
 Music_Route37_branch_ee969:
@@ -131,10 +131,10 @@ Music_Route37_branch_ee9e9:
 Music_Route37_Ch2:
 	dutycycle $3
 	vibrato $1c, $12
-	notetype $c, $c2
+	note_type 12, 12, 2
 	octave 2
 	note B_, 2
-	notetype $c, $c1
+	note_type 12, 12, 1
 	note B_, 1
 	note B_, 1
 	intensity $c2
@@ -288,7 +288,7 @@ Music_Route37_branch_eeab7:
 
 Music_Route37_Ch3:
 	stereopanning $f0
-	notetype $c, $14
+	note_type 12, 1, 4
 Music_Route37_branch_eeacc:
 	octave 2
 	note F#, 2
@@ -397,14 +397,14 @@ Music_Route37_Ch4:
 	stereopanning $f
 	togglenoise $0
 Music_Route37_branch_eeb51:
-	notetype $c
+	note_type 12
 	callchannel Music_Route37_branch_eeb6b
 	note D_, 1
 	note D#, 1
 	note D#, 1
 	note D_, 1
 	callchannel Music_Route37_branch_eeb6b
-	notetype $6
+	note_type 6
 	note D#, 1
 	note D#, 1
 	note D#, 1

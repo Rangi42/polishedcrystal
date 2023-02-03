@@ -10,7 +10,7 @@ Music_Route1_Ch1:
 	volume 7, 7
 	vibrato $16, $11
 	dutycycle $3
-	notetype $c, $83
+	note_type 12, 8, 3
 	octave 4
 	note D_, 1
 	note E_, 1
@@ -147,11 +147,11 @@ Music_Route1_branch_ec04a:
 	note E_, 1
 	note F#, 1
 	note G_, 4
-	notetype $8, $83
+	note_type 8, 8, 3
 	note A_, 1
 	note B_, 1
 	note A_, 1
-	notetype $c, $83
+	note_type 12, 8, 3
 	note G_, 1
 	note E_, 1
 	note F#, 2
@@ -206,7 +206,7 @@ Music_Route1_Ch2:
 	stereopanning $f0
 	vibrato $12, $22
 	dutycycle $2
-	notetype $c, $92
+	note_type 12, 9, 2
 	octave 4
 	note F#, 1
 	note G_, 1
@@ -279,11 +279,11 @@ Music_Route1_branch_ec112:
 	note A_, 2
 	octave 4
 	note B_, 4
-	notetype $8, $92
+	note_type 8, 9, 2
 	note C#, 1
 	note D_, 1
 	note C#, 1
-	notetype $c, $92
+	note_type 12, 9, 2
 	octave 3
 	note B_, 1
 	octave 4
@@ -302,11 +302,11 @@ Music_Route1_branch_ec112:
 	note F#, 1
 	note G_, 1
 	callchannel Music_Route1_branch_ec1aa
-	notetype $8, $92
+	note_type 8, 9, 2
 	note C#, 1
 	note D_, 1
 	note C#, 1
-	notetype $c, $92
+	note_type 12, 9, 2
 	octave 4
 	note B_, 1
 	octave 5
@@ -378,7 +378,7 @@ Music_Route1_branch_ec1aa:
 Music_Route1_Ch3:
 	stereopanning $ff
 	vibrato $10, $23
-	notetype $c, $25
+	note_type 12, 2, 5
 	note __, 2
 	octave 3
 	note D_, 1

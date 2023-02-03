@@ -10,7 +10,7 @@ Music_ViridianForest_Ch1:
 	volume 7, 7
 	stereopanning $f
 	vibrato $6, $23
-	notetype $c, $b1
+	note_type 12, 11, 1
 	note __, 16
 	note __, 16
 	callchannel Music_ViridianForest_branch_ed931
@@ -162,7 +162,7 @@ Music_ViridianForest_branch_ed971:
 Music_ViridianForest_Ch2:
 	stereopanning $ff
 	vibrato $8, $24
-	notetype $c, $b2
+	note_type 12, 11, 2
 	callchannel Music_ViridianForest_branch_ed9ba
 Music_ViridianForest_branch_ed9a1:
 	intensity $b2
@@ -296,7 +296,7 @@ Music_ViridianForest_branch_eda02:
 Music_ViridianForest_Ch3:
 	stereopanning $f0
 	vibrato $16, $15
-	notetype $c, $14
+	note_type 12, 1, 4
 	octave 4
 	note B_, 1
 	note __, 3
@@ -319,7 +319,7 @@ Music_ViridianForest_Ch3:
 	octave 3
 	note D_, 4
 Music_ViridianForest_branch_eda4b:
-	notetype $c, $15
+	note_type 12, 1, 5
 	octave 3
 	note C_, 4
 	note __, 2
@@ -353,7 +353,7 @@ Music_ViridianForest_branch_eda4b:
 	note G_, 8
 	note F_, 2
 	note G_, 2
-	notetype $c, $10
+	note_type 12, 1, 0
 	callchannel Music_ViridianForest_branch_edaaf
 	note __, 16
 	intensity $25
@@ -409,7 +409,7 @@ Music_ViridianForest_branch_edaaf:
 	note D_, 2
 	note __, 2
 	note C_, 2
-	notetype $6, $10
+	note_type 6, 1, 0
 	octave 5
 	note F#, 1
 	note G_, 15
@@ -452,7 +452,7 @@ Music_ViridianForest_branch_edacb:
 
 Music_ViridianForest_Ch4:
 	togglenoise $5
-	notetype $c
+	note_type 12
 Music_ViridianForest_branch_edae0:
 	note A_, 4
 	note A_, 4

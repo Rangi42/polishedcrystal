@@ -11,7 +11,7 @@ Music_RocketHideout_Ch1:
 	dutycycle $3
 	tone $0004
 	vibrato $10, $44
-	notetype $c, $b3
+	note_type 12, 11, 3
 	stereopanning $f0
 Music_RocketHideout_branch_eeb93:
 	note __, 16
@@ -123,7 +123,7 @@ Music_RocketHideout_Ch2:
 	dutycycle $3
 	tone $0002
 	vibrato $0, $f0
-	notetype $c, $c4
+	note_type 12, 12, 4
 	stereopanning $f
 Music_RocketHideout_branch_eec14:
 	octave 2
@@ -222,7 +222,7 @@ Music_RocketHideout_branch_eec14:
 	jumpchannel Music_RocketHideout_branch_eec14
 
 Music_RocketHideout_Ch3:
-	notetype $c, $19
+	note_type 12, 1, -1
 Music_RocketHideout_branch_eec7c:
 	octave 2
 	note D#, 2
@@ -275,7 +275,7 @@ Music_RocketHideout_branch_eeca6:
 
 Music_RocketHideout_Ch4:
 	togglenoise $0
-	notetype $c
+	note_type 12
 	stereopanning $f
 	note __, 16
 	note __, 16

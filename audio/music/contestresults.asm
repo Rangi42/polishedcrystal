@@ -8,7 +8,7 @@ Music_ContestResults:
 Music_ContestResults_Ch1:
 	tempo 144
 	volume 7, 7
-	notetype $c, $51
+	note_type 12, 5, 1
 Music_ContestResults_branch_efb52:
 	note __, 2
 	octave 2
@@ -50,7 +50,7 @@ Music_ContestResults_branch_efb52:
 	jumpchannel Music_ContestResults_branch_efb52
 
 Music_ContestResults_Ch2:
-	notetype $c, $61
+	note_type 12, 6, 1
 Music_ContestResults_branch_efb7e:
 	octave 2
 	note C_, 2
@@ -128,7 +128,7 @@ Music_ContestResults_branch_efba6:
 
 Music_ContestResults_Ch3:
 	vibrato $8, $24
-	notetype $c, $23
+	note_type 12, 2, 3
 Music_ContestResults_branch_efbd2:
 	octave 4
 	note E_, 5
@@ -153,7 +153,7 @@ Music_ContestResults_branch_efbd2:
 
 Music_ContestResults_Ch4:
 	togglenoise $4
-	notetype $6
+	note_type 6
 Music_ContestResults_branch_efbed:
 	note C#, 4
 	note C#, 4

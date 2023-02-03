@@ -16,7 +16,7 @@ Music_MountPyreRSE_Ch1:
 	dutycycle 1
 	tone $0002
 	vibrato $10, $22
-	notetype $6, $63
+	note_type 6, 6, 3
 	note __, 5
 Music_MountPyreRSE_Ch1_loop_main:
 Music_MountPyreRSE_Ch1_loop_1:
@@ -84,7 +84,7 @@ Music_MountPyreRSE_Ch1_loop_3:
 	note __, 1
 	note F#, 1
 	note __, 1
-	notetype $8, $a3
+	note_type 8, 10, 3
 	note A_, 1
 	octave 3
 	note C_, 1
@@ -93,7 +93,7 @@ Music_MountPyreRSE_Ch1_loop_3:
 	octave 4
 	note C_, 1
 	note F#, 4
-	notetype $6, $a3
+	note_type 6, 10, 3
 	note __, 16
 	note __, 15
 	jumpchannel Music_MountPyreRSE_Ch1_loop_main
@@ -101,7 +101,7 @@ Music_MountPyreRSE_Ch1_loop_3:
 Music_MountPyreRSE_Ch2:
 	dutycycle 2
 	vibrato $1c, $12
-	notetype $c, $a3
+	note_type 12, 10, 3
 	note __, 1
 Music_MountPyreRSE_Ch2_loop_main:
 	dutycycle 2
@@ -109,7 +109,7 @@ Music_MountPyreRSE_Ch2_loop_main:
 	callchannel Music_MountPyreRSE_Ch2_branch_1
 	callchannel Music_MountPyreRSE_Ch2_branch_2
 	callchannel Music_MountPyreRSE_Ch2_branch_2
-	notetype $6, $a3
+	note_type 6, 10, 3
 	note __, 10
 Music_MountPyreRSE_Ch2_loop_1:
 	dutycycle 0
@@ -158,7 +158,7 @@ Music_MountPyreRSE_Ch2_loop_1:
 	note __, 1
 	note A_, 1
 	note __, 1
-	notetype $8, $a3
+	note_type 8, 10, 3
 	octave 3
 	note C_, 1
 	note D#, 1
@@ -167,7 +167,7 @@ Music_MountPyreRSE_Ch2_loop_1:
 	note C_, 1
 	note D#, 1
 	note A#, 4
-	notetype $c, $a3
+	note_type 12, 10, 3
 	note __, 14
 	jumpchannel Music_MountPyreRSE_Ch2_loop_main
 
@@ -312,7 +312,7 @@ Music_MountPyreRSE_Ch2_branch_2:
 	endchannel
 
 Music_MountPyreRSE_Ch3:
-	notetype $6, $24
+	note_type 6, 2, 4
 Music_MountPyreRSE_Ch3_loop_main:
 Music_MountPyreRSE_Ch3_loop_1:
 	octave 2
@@ -328,7 +328,7 @@ Music_MountPyreRSE_Ch3_loop_2:
 	loopchannel 16, Music_MountPyreRSE_Ch3_loop_2
 	note G_, 1
 	note A_, 1
-	notetype $c, $14
+	note_type 12, 1, 4
 	octave 3
 	note A#, 2
 	octave 2
@@ -351,7 +351,7 @@ Music_MountPyreRSE_Ch3_loop_2:
 	note F_, 1
 	octave 2
 	note A_, 12
-	notetype $8, $14
+	note_type 8, 1, 4
 	note A_, 1
 	octave 3
 	note C_, 1
@@ -359,14 +359,14 @@ Music_MountPyreRSE_Ch3_loop_2:
 	note F#, 1
 	note A_, 1
 	note A#, 4
-	notetype $6, $24
+	note_type 6, 2, 4
 	note __, 13
 	note __, 13
 	jumpchannel Music_MountPyreRSE_Ch3_loop_main
 
 Music_MountPyreRSE_Ch4:
 	togglenoise $3
-	notetype $c
+	note_type 12
 	note __, 1
 ;	note C_, 8
 ;	note C#, 8

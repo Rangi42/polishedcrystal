@@ -12,7 +12,7 @@ Music_Route12_Ch1:
 	tone $0001
 	stereopanning $f
 	dutycycle $3
-	notetype $c, $98
+	note_type 12, 9, 8
 	octave 3
 	note G#, 1
 	note __, 2
@@ -164,7 +164,7 @@ Music_Route12_branch_ec5bf:
 Music_Route12_Ch2:
 	dutycycle $3
 	vibrato $12, $34
-	notetype $c, $b8
+	note_type 12, 11, 8
 	octave 4
 	note E_, 1
 	note __, 2
@@ -280,7 +280,7 @@ Music_Route12_branch_ec647:
 
 Music_Route12_Ch3:
 	vibrato $12, $54
-	notetype $c, $16
+	note_type 12, 1, 6
 	octave 3
 	note G#, 2
 	note __, 4
@@ -392,7 +392,7 @@ Music_Route12_branch_ec6b4:
 Music_Route12_Ch4:
 	togglenoise $4
 	stereopanning $f0
-	notetype $c
+	note_type 12
 	note B_, 10
 	note C#, 1
 	note C#, 1
@@ -401,7 +401,7 @@ Music_Route12_Ch4:
 	note C#, 1
 	note C#, 1
 	note D_, 4
-	notetype $6
+	note_type 6
 	callchannel Music_Route12_branch_ec717
 Music_Route12_branch_ec6e1:
 	note D_, 4
@@ -412,7 +412,7 @@ Music_Route12_branch_ec6e1:
 	callchannel Music_Route12_branch_ec717
 	loopchannel 8, Music_Route12_branch_ec6e1
 Music_Route12_branch_ec6ed:
-	notetype $c
+	note_type 12
 	note B_, 10
 	note D_, 1
 	note D_, 1
@@ -425,7 +425,7 @@ Music_Route12_branch_ec6ed:
 	note D_, 4
 	loopchannel 2, Music_Route12_branch_ec6ed
 	note B_, 16
-	notetype $6
+	note_type 6
 	callchannel Music_Route12_branch_ec717
 	callchannel Music_Route12_branch_ec717
 	note B_, 16

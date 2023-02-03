@@ -12,7 +12,7 @@ Music_BurnedTower_Ch1:
 	tone $0004
 	vibrato $8, $45
 	stereopanning $f0
-	notetype $c, $91
+	note_type 12, 9, 1
 	note __, 2
 	octave 2
 	note A_, 4
@@ -103,7 +103,7 @@ Music_BurnedTower_Ch2:
 	dutycycle $2
 	vibrato $20, $82
 	tone $0002
-	notetype $c, $70
+	note_type 12, 7, 0
 	callchannel Music_BurnedTower_branch_f6b8e
 	intensity $c5
 Music_BurnedTower_branch_f6b39:
@@ -194,7 +194,7 @@ Music_BurnedTower_branch_f6b8e:
 
 Music_BurnedTower_Ch3:
 	stereopanning $f
-	notetype $c, $14
+	note_type 12, 1, 4
 	note __, 16
 	note __, 16
 	note __, 16
@@ -245,7 +245,7 @@ Music_BurnedTower_branch_f6bc3:
 
 Music_BurnedTower_Ch4:
 	togglenoise $0
-	notetype $c
+	note_type 12
 Music_BurnedTower_branch_f6be1:
 	note __, 16
 	loopchannel 4, Music_BurnedTower_branch_f6be1

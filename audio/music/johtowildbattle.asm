@@ -11,7 +11,7 @@ Music_JohtoWildBattle_Ch1:
 	tone $0002
 	vibrato $12, $15
 Music_JohtoWildBattleNight_branch_f5ddb:
-	notetype $c, $b2
+	note_type 12, 11, 2
 	octave 4
 	note C_, 1
 	octave 3
@@ -206,7 +206,7 @@ Music_JohtoWildBattle_Ch2:
 	vibrato $8, $36
 	tone $0001
 	callchannel Music_JohtoWildBattle_branch_f5f5d
-	notetype $c, $c2
+	note_type 12, 12, 2
 	octave 4
 	note G_, 6
 Music_JohtoWildBattleNight_branch_f5eb2:
@@ -365,7 +365,7 @@ Music_JohtoWildBattle_branch_f5ed1:
 
 Music_JohtoWildBattleNight_branch_f5f5d:
 Music_JohtoWildBattle_branch_f5f5d:
-	notetype $c, $c2
+	note_type 12, 12, 2
 	octave 4
 	note F_, 1
 	note F#, 1
@@ -417,7 +417,7 @@ Music_JohtoWildBattle_branch_f5f5d:
 	endchannel
 
 Music_JohtoWildBattle_Ch3:
-	notetype $c, $14
+	note_type 12, 1, 4
 Music_JohtoWildBattleNight_branch_f5f94:
 	octave 4
 	note G_, 2

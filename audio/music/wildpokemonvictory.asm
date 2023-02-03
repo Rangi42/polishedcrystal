@@ -9,7 +9,7 @@ Music_WildPokemonVictory_Ch1:
 	volume 7, 7
 	dutycycle $3
 	tone $0001
-	notetype $c, $b1
+	note_type 12, 11, 1
 	octave 3
 	note B_, 1
 	note A_, 1
@@ -71,7 +71,7 @@ Music_WildPokemonVictory_branch_f455c:
 Music_WildPokemonVictory_Ch2:
 	vibrato $12, $24
 	dutycycle $2
-	notetype $c, $d1
+	note_type 12, 13, 1
 	octave 4
 	note E_, 1
 	note F#, 1
@@ -131,7 +131,7 @@ Music_WildPokemonVictory_branch_f45b5:
 	endchannel
 
 Music_WildPokemonVictory_Ch3:
-	notetype $c, $20
+	note_type 12, 2, 0
 	note __, 6
 	octave 6
 	note D#, 1

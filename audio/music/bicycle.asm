@@ -12,7 +12,7 @@ Music_Bicycle_Ch1:
 	tone $0001
 	stereopanning $f
 	vibrato $8, $15
-	notetype $c, $b4
+	note_type 12, 11, 4
 	octave 3
 	note B_, 6
 	note A_, 6
@@ -174,7 +174,7 @@ Music_Bicycle_Ch2:
 	dutycycle $2
 	vibrato $10, $24
 	stereopanning $f0
-	notetype $c, $c6
+	note_type 12, 12, 6
 	octave 4
 	note D_, 6
 	note C_, 6
@@ -286,7 +286,7 @@ Music_Bicycle_branch_ee263:
 	endchannel
 
 Music_Bicycle_Ch3:
-	notetype $c, $14
+	note_type 12, 1, 4
 	note __, 16
 	octave 3
 	note A_, 2
@@ -497,7 +497,7 @@ Music_Bicycle_branch_ee333:
 
 Music_Bicycle_Ch4:
 	togglenoise $0
-	notetype $c
+	note_type 12
 	note __, 16
 	note __, 16
 Music_Bicycle_branch_ee34b:

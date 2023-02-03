@@ -17,7 +17,7 @@ Music_StarkMountainDPPt_Ch1:
 	vibrato $10, $36
 Music_StarkMountainDPPt_Ch1_loop:
 	octave 2
-	notetype $C, $A1
+	note_type 12, 10, 1
 	note __, 9
 	note D_, 1
 	note D#, 1
@@ -93,7 +93,7 @@ Music_StarkMountainDPPt_Ch1_loop:
 	octave 2
 	note A#, 1
 	note G_, 1
-	notetype $6, $A1
+	note_type 6, 10, 1
 	note F_, 1
 	note D_, 1
 	note C#, 1
@@ -105,7 +105,7 @@ Music_StarkMountainDPPt_Ch1_loop:
 	note G_, 2
 	note G_, 2
 	note G#, 2
-	notetype $C, $A1
+	note_type 12, 10, 1
 	note G_, 9
 	note D_, 2
 	note A_, 1
@@ -116,7 +116,7 @@ Music_StarkMountainDPPt_Ch1_loop:
 	note A#, 1
 	note A_, 1
 	note A#, 1
-	notetype $6, $A1
+	note_type 6, 10, 1
 	note A_, 1
 	note A#, 1
 	note A_, 1
@@ -162,7 +162,7 @@ Music_StarkMountainDPPt_Ch1_loop:
 	note G_, 1
 	note F#, 1
 	note E_, 1
-	notetype $C, $A1
+	note_type 12, 10, 1
 	note D_, 16
 	octave 3
 	note D_, 1
@@ -173,7 +173,7 @@ Music_StarkMountainDPPt_Ch1_loop:
 	note D#, 1
 	note D_, 1
 	note D#, 1
-	notetype $6, $A1
+	note_type 6, 10, 1
 	note D_, 1
 	note D#, 1
 	note D_, 1
@@ -192,7 +192,7 @@ Music_StarkMountainDPPt_Ch1_loop:
 	note D#, 1
 	dutycycle 2
 	octave 4
-	notetype $8, $A1
+	note_type 8, 10, 1
 	note F#, 1
 	note G_, 1
 	note F#, 1
@@ -226,7 +226,7 @@ Music_StarkMountainDPPt_Ch1_loop:
 	note F#, 1
 	note G_, 1
 	note F#, 1
-	notetype $7, $A1
+	note_type 7, 10, 1
 	note G_, 1
 	note __, 16
 	note __, 16
@@ -236,17 +236,17 @@ Music_StarkMountainDPPt_Ch1_loop:
 	note __, 16
 	note __, 16
 	note __, 15
-	notetype $1, $A1
+	note_type 1, 10, 1
 	note __, 4
-	notetype $7, $A1
+	note_type 7, 10, 1
 	dutycycle 3
 	octave 1
-	notetype $C, $A1
+	note_type 12, 10, 1
 	note D_, 1
 	note __, 2
 	note D_, 1
 	note __, 1
-	notetype $6, $A1
+	note_type 6, 10, 1
 	note D_, 1
 	note __, 1
 	note D_, 4
@@ -262,13 +262,13 @@ Music_StarkMountainDPPt_Ch1_loop:
 	note D_, 1
 	note __, 1
 	note D_, 2
-	notetype $C, $A1
+	note_type 12, 10, 1
 	note __, 9
 	note D_, 1
 	note __, 2
 	note D_, 1
 	note __, 1
-	notetype $6, $A1
+	note_type 6, 10, 1
 	note D_, 1
 	note __, 1
 	note D_, 2
@@ -300,7 +300,7 @@ Music_StarkMountainDPPt_Ch1_loop:
 	note D_, 1
 	note F#, 1
 	note G#, 1
-	notetype $C, $A8
+	note_type 12, 10, 8
 	note A_, 16
 	intensity $68
 	note A_, 16
@@ -353,14 +353,14 @@ Music_StarkMountainDPPt_Ch1_loop:
 
 Music_StarkMountainDPPt_Ch2:
 Music_StarkMountainDPPt_Ch2_loop:
-	notetype $C, $B5
+	note_type 12, 11, 5
 	dutycycle 1
 	octave 1
 	note __, 16
 	note G_, 2
 	note __, 1
 	octave 2
-	notetype $6, $B5
+	note_type 6, 11, 5
 	note G_, 1
 	note __, 1
 	octave 1
@@ -437,12 +437,12 @@ Music_StarkMountainDPPt_Ch2_loop:
 	note C#, 1
 	note __, 3
 	note C#, 2
-	notetype $F, $B5
+	note_type 15, 11, 5
 	note __, 8
 	octave 2
-	notetype $C, $B5
+	note_type 12, 11, 5
 	note C#, 1
-	notetype $6, $B5
+	note_type 6, 11, 5
 	note D_, 1
 	note __, 1
 	note D_, 2
@@ -539,7 +539,7 @@ Music_StarkMountainDPPt_Ch2_loop:
 	note D_, 2
 	octave 1
 	note D_, 2
-	notetype $C, $B5
+	note_type 12, 11, 5
 	note __, 14
 	octave 2
 	note D_, 1
@@ -583,7 +583,7 @@ Music_StarkMountainDPPt_Ch2_loop:
 	note __, 2
 	note G_, 1
 	note __, 1
-	notetype $6, $B5
+	note_type 6, 11, 5
 	note G_, 1
 	note __, 1
 	note G_, 2
@@ -600,13 +600,13 @@ Music_StarkMountainDPPt_Ch2_loop:
 	note G_, 1
 	note __, 1
 	note G_, 2
-	notetype $C, $B5
+	note_type 12, 11, 5
 	note __, 9
 	note G_, 1
 	note __, 2
 	note G_, 1
 	note __, 1
-	notetype $6, $B5
+	note_type 6, 11, 5
 	note G_, 1
 	note __, 1
 	note G_, 2
@@ -646,13 +646,13 @@ Music_StarkMountainDPPt_Ch2_loop:
 	note G_, 1
 	note __, 1
 	note G_, 2
-	notetype $C, $B5
+	note_type 12, 11, 5
 	note __, 9
 	note G_, 1
 	note __, 2
 	note G_, 1
 	note __, 1
-	notetype $6, $B5
+	note_type 6, 11, 5
 	note G_, 1
 	note __, 1
 	note G_, 2
@@ -759,10 +759,10 @@ Music_StarkMountainDPPt_Ch3:
 	intensity $19
 	vibrato $08, $45
 Music_StarkMountainDPPt_Ch3_loop:
-	notetype $C, $19
+	note_type 12, 1, -1
 	octave 4
 	note __, 9
-	notetype $6, $19
+	note_type 6, 1, -1
 	note C_, 1
 	note __, 1
 	note C#, 1
@@ -855,18 +855,18 @@ Music_StarkMountainDPPt_Ch3_loop:
 	octave 4
 	note D_, 4
 	note C#, 8
-	notetype $F, $14
+	note_type 15, 1, 4
 	note __, 8
-	notetype $6, $14
+	note_type 6, 1, 4
 	note D#, 1
 	note __, 1
 	note E_, 1
 	note __, 1
 	note D_, 8
-	notetype $F, $14
+	note_type 15, 1, 4
 	note __, 8
 	octave 3
-	notetype $4, $14
+	note_type 4, 1, 4
 	note G_, 1
 	note __, 1
 	note G_, 1
@@ -876,7 +876,7 @@ Music_StarkMountainDPPt_Ch3_loop:
 	note G_, 12
 	note __, 15
 	octave 4
-	notetype $6, $19
+	note_type 6, 1, -1
 	note C_, 1
 	note __, 1
 	note C#, 1
@@ -936,10 +936,10 @@ Music_StarkMountainDPPt_Ch3_loop:
 	note D_, 2
 	octave 2
 	note D_, 2
-	notetype $E, $14
+	note_type 14, 1, 4
 	note __, 12
 	octave 3
-	notetype $C, $14
+	note_type 12, 1, 4
 	note D_, 1
 	octave 2
 	note D_, 1
@@ -984,7 +984,7 @@ Music_StarkMountainDPPt_Ch3_loop:
 	note __, 2
 	note A#, 1
 	note __, 1
-	notetype $6, $16
+	note_type 6, 1, 6
 	note A#, 1
 	note __, 1
 	note A#, 2
@@ -1024,14 +1024,14 @@ Music_StarkMountainDPPt_Ch3_loop:
 	note A#, 1
 	note __, 1
 	note A#, 2
-	notetype $C, $19
+	note_type 12, 1, -1
 	note __, 9
 	octave 4
 	note A#, 1
 	note __, 2
 	note A#, 1
 	note __, 1
-	notetype $6, $19
+	note_type 6, 1, -1
 	note A#, 1
 	note __, 1
 	note A#, 2
@@ -1063,7 +1063,7 @@ Music_StarkMountainDPPt_Ch3_loop:
 	note A_, 1
 	octave 6
 	note C_, 1
-	notetype $C, $19
+	note_type 12, 1, -1
 	note D_, 16
 	intensity $29
 	note D_, 16
@@ -1101,9 +1101,9 @@ Music_StarkMountainDPPt_Ch3_loop:
 	octave 3
 	note D_, 1
 	note __, 1
-	notetype $9, $15
+	note_type 9, 1, 5
 	note D_, 1
-	notetype $3, $15
+	note_type 3, 1, 5
 	note __, 1
 	note D_, 3
 	note __, 1
@@ -1185,7 +1185,7 @@ Music_StarkMountainDPPt_Ch3_loop:
 
 Music_StarkMountainDPPt_Ch4:
 	togglenoise 3
-	notetype $C
+	note_type 12
 Music_StarkMountainDPPt_Ch4_loop:
 	note D#, 8
 	note D#, 8

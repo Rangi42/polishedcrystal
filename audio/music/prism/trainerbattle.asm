@@ -11,7 +11,7 @@ Music_TrainerBattlePrism:
 Music_TrainerBattlePrism_Ch1:
 	tempo 102
 	dutycycle $1
-	notetype $c, $c7
+	note_type 12, 12, 7
 	octave 5
 	note C_, 1
 	octave 4
@@ -326,7 +326,7 @@ Music_TrainerBattlePrism_L1:
 Music_TrainerBattlePrism_Ch2:
 	tempo 102
 	dutycycle $3
-	notetype $c, $b4
+	note_type 12, 11, 4
 	vibrato $11, $12
 	octave 3
 	note G_, 2
@@ -579,7 +579,7 @@ Music_TrainerBattlePrism_L4:
 	jumpchannel Music_TrainerBattlePrism_L2
 
 Music_TrainerBattlePrism_Ch3:
-	notetype $c, $19
+	note_type 12, 1, -1
 	octave 3
 	note C_, 16
 	note C#, 16

@@ -12,7 +12,7 @@ Music_CherrygroveCity_Ch1:
 	tone $0001
 	vibrato $8, $15
 	stereopanning $f0
-	notetype $c, $b5
+	note_type 12, 11, 5
 	note __, 10
 	octave 3
 	note C_, 2
@@ -97,7 +97,7 @@ Music_CherrygroveCity_Ch2:
 	dutycycle $3
 	vibrato $10, $36
 	stereopanning $f
-	notetype $c, $c3
+	note_type 12, 12, 3
 	octave 3
 	note C_, 2
 	note D_, 2
@@ -174,7 +174,7 @@ Music_CherrygroveCity_branch_f5b87:
 	jumpchannel Music_CherrygroveCity_branch_f5b87
 
 Music_CherrygroveCity_Ch3:
-	notetype $c, $16
+	note_type 12, 1, 6
 	note __, 4
 	octave 4
 	note C_, 2
@@ -285,7 +285,7 @@ Music_CherrygroveCity_branch_f5be4:
 
 Music_CherrygroveCity_Ch4:
 	togglenoise $3
-	notetype $c
+	note_type 12
 	note __, 16
 Music_CherrygroveCity_branch_f5c4d:
 	note C#, 2

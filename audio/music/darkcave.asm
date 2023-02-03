@@ -12,7 +12,7 @@ Music_DarkCave_Ch1:
 	tone $0001
 	vibrato $11, $15
 	stereopanning $f0
-	notetype $c, $a7
+	note_type 12, 10, 7
 Music_DarkCave_branch_ea2dc:
 	note __, 16
 	loopchannel 4, Music_DarkCave_branch_ea2dc
@@ -140,7 +140,7 @@ Music_DarkCave_Ch2:
 	dutycycle $1
 	vibrato $12, $36
 	stereopanning $f
-	notetype $c, $a7
+	note_type 12, 10, 7
 Music_DarkCave_branch_ea374:
 	note __, 16
 	loopchannel 4, Music_DarkCave_branch_ea374
@@ -347,7 +347,7 @@ Music_DarkCave_branch_ea37e:
 	jumpchannel Music_DarkCave_branch_ea37e
 
 Music_DarkCave_Ch3:
-	notetype $c, $27
+	note_type 12, 2, 7
 Music_DarkCave_branch_ea471:
 	callchannel Music_DarkCave_branch_ea4ce
 	loopchannel 2, Music_DarkCave_branch_ea471
@@ -459,7 +459,7 @@ Music_DarkCave_branch_ea4ce:
 
 Music_DarkCave_Ch4:
 	togglenoise $3
-	notetype $c
+	note_type 12
 Music_DarkCave_branch_ea4ee:
 	stereopanning $ff
 	note D#, 8

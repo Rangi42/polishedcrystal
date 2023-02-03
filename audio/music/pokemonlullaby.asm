@@ -10,7 +10,7 @@ Music_PokemonLullaby_Ch1:
 	dutycycle $3
 	tone $0001
 Music_PokemonLullaby_branch_f6d8c:
-	notetype $c, $a7
+	note_type 12, 10, 7
 	octave 3
 	note G_, 16
 	octave 4
@@ -57,7 +57,7 @@ Music_PokemonLullaby_branch_f6d8c:
 Music_PokemonLullaby_Ch2:
 	vibrato $10, $14
 	dutycycle $0
-	notetype $c, $b4
+	note_type 12, 11, 4
 Music_PokemonLullaby_branch_f6dcc:
 	note __, 16
 	note __, 10
@@ -105,7 +105,7 @@ Music_PokemonLullaby_branch_f6dcc:
 	jumpchannel Music_PokemonLullaby_branch_f6dcc
 
 Music_PokemonLullaby_Ch3:
-	notetype $c, $11
+	note_type 12, 1, 1
 Music_PokemonLullaby_branch_f6e06:
 	stereopanning $f0
 	octave 4

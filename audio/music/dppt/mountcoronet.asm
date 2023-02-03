@@ -13,7 +13,7 @@ Music_MountCoronetDPPt_Ch1:
 	volume 7, 7
 	dutycycle 0
 	tone $0001
-	notetype $C, $87
+	note_type 12, 8, 7
 	octave 3
 	note F_, 4
 	octave 4
@@ -184,7 +184,7 @@ Music_MountCoronetDPPt_Ch1_branch_2:
 	note F_, 6
 	octave 3
 	note D_, 4
-	notetype $8, $82
+	note_type 8, 8, 2
 	dutycycle 1
 	octave 6
 	note C_, 2
@@ -262,7 +262,7 @@ Music_MountCoronetDPPt_Ch1_branch_2:
 	octave 5
 	note A#, 1
 	note G_, 2
-	notetype $C, $84
+	note_type 12, 8, 4
 	octave 4
 	note F_, 1
 	octave 3
@@ -353,7 +353,7 @@ Music_MountCoronetDPPt_Ch1_branch_2:
 	intensity $44
 	note A#, 3
 	note __, 16
-	notetype $C, $87
+	note_type 12, 8, 7
 	octave 3
 	dutycycle 0
 	note F_, 4
@@ -396,10 +396,10 @@ Music_MountCoronetDPPt_Ch1_branch_2:
 Music_MountCoronetDPPt_Ch2:
 	tone $0001
 	dutycycle 0
-	notetype $C, $45
+	note_type 12, 4, 5
 	note __, 4
 Music_MountCoronetDPPt_Ch2_loop:
-	notetype $C, $45
+	note_type 12, 4, 5
 	octave 4
 	note C_, 2
 	note __, 2
@@ -620,7 +620,7 @@ Music_MountCoronetDPPt_Ch2_branch_2:
 	note C_, 1
 	note C_, 1
 	;triplet
-	notetype $8, $B5
+	note_type 8, 11, 5
 	note C_, 4
 	note C_, 2
 	note C_, 2
@@ -639,13 +639,13 @@ Music_MountCoronetDPPt_Ch2_branch_2:
 	note D_, 2
 	note __, 6
 	;quartet
-	notetype $C, $B5
+	note_type 12, 11, 5
 	note C_, 1
 	note C_, 1
 	note C_, 1
 	note C_, 1
 	;triplet
-	notetype $8, $B5
+	note_type 8, 11, 5
 	note C_, 4
 	note C_, 2
 	note C_, 2
@@ -654,7 +654,7 @@ Music_MountCoronetDPPt_Ch2_branch_2:
 	note C_, 4
 	note C_, 2
 	;quartet
-	notetype $C, $B5
+	note_type 12, 11, 5
 	note __, 2
 	note C_, 1
 	note D#, 1
@@ -664,14 +664,14 @@ Music_MountCoronetDPPt_Ch2_branch_2:
 	note G_, 1
 	note E_, 1
 	;triplet
-	notetype $8, $B5
+	note_type 8, 11, 5
 	note A#, 2
 	note A#, 2
 	note A#, 2
 	octave 4
 	note C_, 4
 	note C_, 2
-	notetype $C, $85
+	note_type 12, 8, 5
 	octave 5
 	note F_, 1
 	octave 4
@@ -817,7 +817,7 @@ Music_MountCoronetDPPt_Ch2_branch_2:
 Music_MountCoronetDPPt_Ch3:
 	stereopanning $ff
 Music_MountCoronetDPPt_Ch3_branch_0:
-	notetype $C, $14
+	note_type 12, 1, 4
 	vibrato $16, $23
 	note __, 6
 	note __, 16

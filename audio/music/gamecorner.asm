@@ -9,7 +9,7 @@ Music_GameCorner_Ch1:
 	tempo 147
 	volume 7, 7
 	stereopanning $f
-	notetype $c, $91
+	note_type 12, 9, 1
 	note __, 8
 Music_GameCorner_branch_edd84:
 	intensity $91
@@ -137,7 +137,7 @@ Music_GameCorner_branch_ede13:
 Music_GameCorner_Ch2:
 	stereopanning $ff
 	vibrato $8, $24
-	notetype $c, $a1
+	note_type 12, 10, 1
 	note __, 8
 Music_GameCorner_branch_ede25:
 	intensity $92
@@ -318,11 +318,11 @@ Music_GameCorner_branch_ede75:
 
 Music_GameCorner_Ch3:
 	vibrato $8, $22
-	notetype $c, $14
+	note_type 12, 1, 4
 	note __, 8
 Music_GameCorner_branch_edeef:
 	stereopanning $ff
-	notetype $c, $14
+	note_type 12, 1, 4
 	callchannel Music_GameCorner_branch_edfdd
 	callchannel Music_GameCorner_branch_edff8
 	octave 4
@@ -487,7 +487,7 @@ Music_GameCorner_branch_edeef:
 	note __, 1
 	note B_, 1
 	note __, 4
-	notetype $6, $15
+	note_type 6, 1, 5
 	octave 3
 	note D_, 1
 	note C_, 1
@@ -658,12 +658,12 @@ Music_GameCorner_branch_ee03f:
 
 Music_GameCorner_Ch4:
 	togglenoise $3
-	notetype $c
-	notetype $8
+	note_type 12
+	note_type 8
 	note D_, 1
 	note D_, 1
 	note D_, 1
-	notetype $c
+	note_type 12
 	note D_, 1
 	note D_, 1
 	note D_, 2

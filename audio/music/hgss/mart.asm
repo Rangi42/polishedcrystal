@@ -12,7 +12,7 @@ Music_MartHGSS_Ch1:
 	tempo $90
 	volume 7, 7
 	dutycycle 1
-	notetype $C, $B2
+	note_type 12, 11, 2
 	stereopanning $f
 	octave 4
 	note C#, 4
@@ -253,7 +253,7 @@ Music_MartHGSS_Loop1:
 
 Music_MartHGSS_Ch2:
 	dutycycle 2
-	notetype $C, $B1
+	note_type 12, 11, 1
 	stereopanning $f
 	octave 4
 	note F#, 4
@@ -357,7 +357,7 @@ Music_MartHGSS_Loop2:
 	note B_, 1
 	octave 4
 	note C#, 1
-	notetype 6, $C5
+	note_type 6, 12, 5
 	note D#, 11
 	note G_, 1
 	note G#, 8
@@ -391,7 +391,7 @@ Music_MartHGSS_Loop2:
 	note B_, 4
 	note A#, 4
 	note B_, 4
-	notetype $C, $C5
+	note_type 12, 12, 5
 	octave 4
 	note C#, 12
 	dutycycle 2
@@ -403,7 +403,7 @@ Music_MartHGSS_Loop2:
 	note D#, 4
 	note D#, 2
 	note D_, 2
-	notetype 6, $C5
+	note_type 6, 12, 5
 	note D#, 3
 	note G#, 1
 	note A#, 12
@@ -457,12 +457,12 @@ Music_MartHGSS_Loop2:
 	octave 4
 	note B_, 4
 	note A#, 4
-	notetype $C, $C5
+	note_type 12, 12, 5
 	note B_, 15
-	notetype 6, $C5
+	note_type 6, 12, 5
 	note G#, 1
 	note A#, 1
-	notetype $C, $C5
+	note_type 12, 12, 5
 	note B_, 10
 	note G#, 2
 	note A#, 2
@@ -478,7 +478,7 @@ Music_MartHGSS_Loop2:
 	jumpchannel Music_MartHGSS_Loop2
 
 Music_MartHGSS_Ch3:
-	notetype $C, $14
+	note_type 12, 1, 4
 	stereopanning $f0
 	octave 4
 	note D#, 1
@@ -805,7 +805,7 @@ Music_MartHGSS_Branch:
 	endchannel
 
 Music_MartHGSS_Ch4:
-	notetype $C
+	note_type 12
 	togglenoise 0
 	stereopanning $f0
 	note G_, 4

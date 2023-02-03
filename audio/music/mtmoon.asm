@@ -12,14 +12,14 @@ Music_MtMoon_Ch1:
 	tone $0001
 	vibrato $8, $14
 	stereopanning $f0
-	notetype $c, $45
+	note_type 12, 4, 5
 	note __, 2
 	jumpchannel Music_MtMoon_branch_edb56
 
 Music_MtMoon_Ch2:
 	vibrato $b, $15
 	dutycycle $2
-	notetype $c, $84
+	note_type 12, 8, 4
 	stereopanning $f
 Music_MtMoon_branch_edb56:
 	octave 4
@@ -74,7 +74,7 @@ Music_MtMoon_branch_edb56:
 
 Music_MtMoon_Ch3:
 Music_MtMoon_branch_edb8a:
-	notetype $c, $28
+	note_type 12, 2, 8
 Music_MtMoon_branch_edb8d:
 	octave 2
 	note B_, 2
@@ -121,7 +121,7 @@ Music_MtMoon_branch_edbab:
 
 Music_MtMoon_Ch4:
 	togglenoise $5
-	notetype $c
+	note_type 12
 Music_MtMoon_branch_edbc3:
 	stereopanning $f
 	note A#, 4

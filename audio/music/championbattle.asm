@@ -10,7 +10,7 @@ Music_ChampionBattle_Ch1:
 	dutycycle $3
 	tone $0002
 	vibrato $12, $15
-	notetype $c, $b2
+	note_type 12, 11, 2
 	octave 2
 	note A#, 8
 	note A#, 8
@@ -299,7 +299,7 @@ Music_ChampionBattle_Ch2:
 	dutycycle $3
 	vibrato $8, $36
 	tone $0001
-	notetype $c, $c2
+	note_type 12, 12, 2
 	octave 3
 	note D#, 8
 	note D#, 8
@@ -541,7 +541,7 @@ Music_ChampionBattle_branch_eac79:
 	endchannel
 
 Music_ChampionBattle_Ch3:
-	notetype $c, $14
+	note_type 12, 1, 4
 Music_ChampionBattle_branch_eac88:
 	octave 3
 	note D#, 1

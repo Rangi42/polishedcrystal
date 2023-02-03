@@ -11,7 +11,7 @@ Music_VictoryRoad_Ch1:
 	stereopanning $f
 	dutycycle $3
 	tone $0002
-	notetype $c, $b3
+	note_type 12, 11, 3
 Music_VictoryRoad_branch_f6c8d:
 	callchannel Music_VictoryRoad_branch_f6cb9
 	loopchannel 6, Music_VictoryRoad_branch_f6c8d
@@ -67,14 +67,14 @@ Music_VictoryRoad_Ch2:
 	dutycycle $3
 	vibrato $10, $24
 Music_VictoryRoad_branch_f6cd3:
-	notetype $c, $c2
+	note_type 12, 12, 2
 	callchannel Music_VictoryRoad_branch_f6d1e
 	note __, 2
 	callchannel Music_VictoryRoad_branch_f6d1e
 	note __, 1
 	octave 4
 	note C_, 1
-	notetype $c, $b0
+	note_type 12, 11, 0
 	note E_, 8
 	octave 5
 	note C_, 4
@@ -82,18 +82,18 @@ Music_VictoryRoad_branch_f6cd3:
 	note B_, 4
 	note E_, 15
 	note D#, 1
-	notetype $c, $b0
+	note_type 12, 11, 0
 	note E_, 8
 	octave 5
 	note C_, 4
 	octave 4
 	note B_, 4
-	notetype $c, $b0
+	note_type 12, 11, 0
 	octave 5
 	note E_, 8
-	notetype $c, $b7
+	note_type 12, 11, 7
 	note E_, 8
-	notetype $c, $c7
+	note_type 12, 12, 7
 	note D_, 8
 	stereopanning $f0
 	note C#, 4
@@ -136,7 +136,7 @@ Music_VictoryRoad_branch_f6d1e:
 
 Music_VictoryRoad_Ch3:
 	stereopanning $f0
-	notetype $c, $28
+	note_type 12, 2, 8
 Music_VictoryRoad_branch_f6d31:
 	callchannel Music_VictoryRoad_branch_f6d52
 	loopchannel 6, Music_VictoryRoad_branch_f6d31
@@ -175,7 +175,7 @@ Music_VictoryRoad_branch_f6d52:
 
 Music_VictoryRoad_Ch4:
 	togglenoise $0
-	notetype $c
+	note_type 12
 Music_VictoryRoad_branch_f6d63:
 	note D_, 2
 	note D_, 2

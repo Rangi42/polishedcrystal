@@ -10,7 +10,7 @@ Music_JohtoGymBattle_Ch1:
 	dutycycle $3
 	tone $0002
 	vibrato $12, $15
-	notetype $c, $b2
+	note_type 12, 11, 2
 Music_JohtoGymBattle_branch_ea526:
 	octave 3
 	note A#, 1
@@ -291,7 +291,7 @@ Music_JohtoGymBattle_Ch2:
 	dutycycle $3
 	vibrato $8, $36
 	tone $0001
-	notetype $c, $c2
+	note_type 12, 12, 2
 Music_JohtoGymBattle_branch_ea66a:
 	octave 4
 	note F#, 1
@@ -340,7 +340,7 @@ Music_JohtoGymBattle_branch_ea673:
 	octave 4
 	note C_, 4
 	note G_, 2
-	notetype $c, $92
+	note_type 12, 9, 2
 	octave 3
 	note D_, 2
 	note D_, 2
@@ -614,7 +614,7 @@ Music_JohtoGymBattle_branch_ea6ee:
 	jumpchannel Music_JohtoGymBattle_branch_ea6ee
 
 Music_JohtoGymBattle_Ch3:
-	notetype $c, $19
+	note_type 12, 1, -1
 	octave 4
 	note F_, 1
 	note __, 1

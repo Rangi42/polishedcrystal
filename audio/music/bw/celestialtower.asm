@@ -15,7 +15,7 @@ Music_CelestialTowerBW_NoIntro_Ch1:
 	dutycycle $2
 	vibrato $12, $15
 	tone $0001
-	notetype $6, $85
+	note_type 6, 8, 5
 Music_CelestialTowerBW_NoIntro_Ch1_loop_1:
 	octave 4
 	note A#, 2
@@ -165,7 +165,7 @@ Music_CelestialTowerBW_NoIntro_Ch1_loop_1:
 	octave 4
 	note D_, 2
 	octave 3
-	notetype $3, $92
+	note_type 3, 9, 2
 	note B_, 12
 	note B_, 8
 	note B_, 8
@@ -199,7 +199,7 @@ Music_CelestialTowerBW_NoIntro_Ch1_loop_1:
 	note A#, 1
 	octave 4
 	note C_, 1
-	notetype $6, $70
+	note_type 6, 7, 0
 	note F_, 16
 	intensity $77
 	note F_, 15
@@ -209,7 +209,7 @@ Music_CelestialTowerBW_NoIntro_Ch2:
 	dutycycle $3
 	vibrato $12, $15
 	tone $0001
-	notetype $6, $67
+	note_type 6, 6, 7
 Music_CelestialTowerBW_NoIntro_Ch2_loop_1:
 	octave 2
 	note G_, 2
@@ -310,7 +310,7 @@ Music_CelestialTowerBW_NoIntro_Ch2_loop_1:
 	note A_, 2
 	octave 3
 	note D_, 10
-	notetype $3, $92
+	note_type 3, 9, 2
 	dutycycle 2
 	octave 4
 	note D_, 1
@@ -389,7 +389,7 @@ Music_CelestialTowerBW_NoIntro_Ch2_loop_1:
 	note F#, 7
 	octave 3
 	dutycycle 3
-	notetype $c, $60
+	note_type 12, 6, 0
 	note A#, 8
 	intensity $67
 	note A#, 8
@@ -397,14 +397,14 @@ Music_CelestialTowerBW_NoIntro_Ch2_loop_1:
 
 Music_CelestialTowerBW_NoIntro_Ch3:
 	vibrato $0, $0
-	notetype $c, $20
+	note_type 12, 2, 0
 	octave 3
 	note G_, 16
 	note G#, 16
 	note F_, 16
 	note D#, 16
 	vibrato $3, $24
-	notetype $6, $16
+	note_type 6, 1, 6
 	octave 5
 	note D_, 16
 	note C_, 8
@@ -538,12 +538,12 @@ Music_CelestialTowerBW_NoIntro_Ch3:
 
 Music_CelestialTowerBW_NoIntro_Ch4:
 	togglenoise $4
-	notetype $c
+	note_type 12
 	note __, 16
 	note __, 16
 	note __, 16
 	note __, 16
-	notetype $6
+	note_type 6
 	callchannel Music_CelestialTowerBW_NoIntro_Ch4_branch_1
 	callchannel Music_CelestialTowerBW_NoIntro_Ch4_branch_1
 	callchannel Music_CelestialTowerBW_NoIntro_Ch4_branch_2

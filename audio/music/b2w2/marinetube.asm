@@ -15,7 +15,7 @@ Music_MarineTubeB2W2_Ch1:
 	sound_duty 3, 3, 3, 3
 	vibrato $12, $15
 	tone $0001
-	notetype $c, $61
+	note_type 12, 6, 1
 	octave 6
 	note A#, 1
 	octave 7
@@ -227,14 +227,14 @@ Music_MarineTubeB2W2_Ch1:
 	note F_, 8
 	note F#, 8
 	note G_, 8
-	notetype $8, $87
+	note_type 8, 8, 7
 	note A#, 4
 	octave 3
 	intensity $82
 	note G#, 4
 	note G_, 2
 	note G#, 2
-	notetype $c, $87
+	note_type 12, 8, 7
 	note G#, 10
 	octave 4
 	note D#, 4
@@ -243,14 +243,14 @@ Music_MarineTubeB2W2_Ch1:
 	note G#, 4
 	note G#, 1
 	note A_, 1
-	notetype $8, $87
+	note_type 8, 8, 7
 	note A#, 4
 	octave 3
 	intensity $82
 	note G#, 4
 	note G_, 2
 	note G#, 2
-	notetype $c, $87
+	note_type 12, 8, 7
 	note G#, 4
 	note D#, 6
 	note F_, 8
@@ -287,7 +287,7 @@ Music_MarineTubeB2W2_Ch1:
 	note G_, 2
 	octave 4
 	note C_, 2
-	notetype $8, $82
+	note_type 8, 8, 2
 	note G_, 2
 	note E_, 2
 	note C_, 2
@@ -300,14 +300,14 @@ Music_MarineTubeB2W2_Ch1:
 	note C_, 2
 	octave 3
 	note G_, 2
-	notetype $c, $82
+	note_type 12, 8, 2
 	note E_, 1
 	note C_, 1
 	octave 2
 	note G_, 1
 	note E_, 1
 	octave 3
-	notetype $8, $84
+	note_type 8, 8, 4
 	note D#, 4
 	note C_, 4
 	octave 2
@@ -316,7 +316,7 @@ Music_MarineTubeB2W2_Ch1:
 	note C_, 2
 	note C_, 6
 	note D#, 6
-	notetype $c, $81
+	note_type 12, 8, 1
 	octave 2
 	note G#, 1
 	octave 3
@@ -339,7 +339,7 @@ Music_MarineTubeB2W2_Ch1:
 	note D#, 1
 	note D_, 1
 	note D#, 1
-	notetype $8, $84
+	note_type 8, 8, 4
 	note D#, 4
 	octave 2
 	note B_, 4
@@ -351,7 +351,7 @@ Music_MarineTubeB2W2_Ch1:
 	note D#, 6
 	note D_, 9
 	note F_, 3
-	notetype $c, $81
+	note_type 12, 8, 1
 	note D#, 1
 	octave 3
 	note C_, 1
@@ -469,7 +469,7 @@ Music_MarineTubeB2W2_Ch1:
 Music_MarineTubeB2W2_Ch2:
 	vibrato $8, $26
 	tone $0001
-	notetype $c, $a0
+	note_type 12, 10, 0
 	sound_duty 2, 2, 2, 2
 	octave 5
 	note F_, 8
@@ -536,13 +536,13 @@ Music_MarineTubeB2W2_Ch2:
 	note C_, 4
 	intensity $a0
 	note G#, 16
-	notetype $8, $a7
+	note_type 8, 10, 7
 	note G#, 16
 	octave 6
 	note C_, 4
 	octave 5
 	note A#, 4
-	notetype $c, $a0
+	note_type 12, 10, 0
 	note G#, 4
 	intensity $a7
 	note G#, 12
@@ -563,23 +563,23 @@ Music_MarineTubeB2W2_Ch2:
 	note A#, 16
 	intensity $a7
 	note A#, 16
-	notetype $8, $a7
+	note_type 8, 10, 7
 	note A#, 4
 	note G#, 4
 	note G_, 2
 	note G#, 2
-	notetype $c, $a0
+	note_type 12, 10, 0
 	note G#, 12
 	intensity $a7
 	note G#, 8
 	note G_, 2
 	note G#, 2
-	notetype $8, $a7
+	note_type 8, 10, 7
 	note A#, 4
 	note G#, 4
 	note G_, 2
 	note G#, 2
-	notetype $c, $a7
+	note_type 12, 10, 7
 	note G#, 6
 	note G_, 1
 	note G#, 1
@@ -602,13 +602,13 @@ Music_MarineTubeB2W2_Ch2:
 	note A#, 16
 	intensity $a7
 	note A#, 16
-	notetype $8, $a7
+	note_type 8, 10, 7
 	note A#, 4
 	note G#, 4
 	intensity $a2
 	note G_, 2
 	note G#, 2
-	notetype $c, $a0
+	note_type 12, 10, 0
 	note G#, 12
 	intensity $a7
 	note G#, 10
@@ -670,7 +670,7 @@ Music_MarineTubeB2W2_Ch2:
 	jumpchannel Music_MarineTubeB2W2_Ch2
 
 Music_MarineTubeB2W2_Ch3:
-	notetype $c, $12
+	note_type 12, 1, 2
 	vibrato $12, $15
 	octave 3
 	note G_, 2
@@ -785,7 +785,7 @@ Music_MarineTubeB2W2_Ch3:
 	octave 3
 	note C_, 2
 	note D_, 2
-	notetype $8, $12
+	note_type 8, 1, 2
 	note D#, 2
 	note F_, 2
 	note G_, 2
@@ -793,7 +793,7 @@ Music_MarineTubeB2W2_Ch3:
 	note A#, 2
 	octave 4
 	note C_, 2
-	notetype $c, $12
+	note_type 12, 1, 2
 	note D#, 2
 	intensity $32
 	note D#, 2
@@ -857,24 +857,24 @@ Music_MarineTubeB2W2_Ch3:
 	note G_, 4
 	note D#, 8
 	note G#, 8
-	notetype $8, $12
+	note_type 8, 1, 2
 	note A#, 4
 	note G#, 2
 	note __, 2
 	note G#, 2
 	note G_, 2
-	notetype $c, $12
+	note_type 12, 1, 2
 	note G#, 8
 	note D#, 8
 	octave 3
 	note B_, 8
-	notetype $8, $12
+	note_type 8, 1, 2
 	note A#, 4
 	note G#, 2
 	note __, 2
 	note G_, 2
 	note G#, 2
-	notetype $c, $12
+	note_type 12, 1, 2
 	note F_, 8
 	note G#, 16
 	note B_, 16
@@ -922,7 +922,7 @@ Music_MarineTubeB2W2_Ch3:
 
 Music_MarineTubeB2W2_Ch4:
 	togglenoise $3
-	notetype $c
+	note_type 12
 Music_MarineTubeB2W2_Ch4_loop_main:
 Music_MarineTubeB2W2_Ch4_loop_1:
 	note D_, 2
@@ -951,12 +951,12 @@ Music_MarineTubeB2W2_Ch4_loop_1:
 	note D#, 2
 	note D_, 1
 	note D_, 1
-	notetype $8
+	note_type 8
 	note C_, 4
 	note C_, 4
 	note D#, 2
 	note D#, 2
-	notetype $c
+	note_type 12
 	note D#, 2
 	note D_, 2
 	note C_, 2

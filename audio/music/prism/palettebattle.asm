@@ -14,7 +14,7 @@ Music_PaletteBattlePrism_Ch1:
 	dutycycle $3
 	tone $0002
 	vibrato $10, $12
-	notetype $c, $b2
+	note_type 12, 11, 2
 	octave 1
 	note G_, 1
 	note G#, 1
@@ -296,7 +296,7 @@ Music_PaletteBattlePrism_Ch2:
 	dutycycle $3
 	tone $0001
 	vibrato $8, $36
-	notetype $c, $c2
+	note_type 12, 12, 2
 	octave 5
 	note C#, 1
 	note C_, 1
@@ -539,7 +539,7 @@ Music_PaletteBattlePrism_branch_1edbef:
 	jumpchannel Music_PaletteBattlePrism_branch_1edb37
 
 Music_PaletteBattlePrism_Ch3:
-	notetype $c, $19
+	note_type 12, 1, -1
 	note __, 16
 	note __, 16
 

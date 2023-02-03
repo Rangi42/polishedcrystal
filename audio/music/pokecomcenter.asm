@@ -12,7 +12,7 @@ Music_PokeComCenter_Ch1:
 	tone $0002
 	vibrato $8, $22
 	stereopanning $f0
-	notetype $c, $a2
+	note_type 12, 10, 2
 	octave 3
 	note E_, 2
 	note F_, 2
@@ -158,7 +158,7 @@ Music_PokeComCenter_branch_179642:
 	jumpchannel Music_PokeComCenter_branch_179642
 
 Music_PokeComCenter_Ch2:
-	notetype $c, $c2
+	note_type 12, 12, 2
 	dutycycle $3
 	note __, 10
 	octave 1
@@ -326,7 +326,7 @@ Music_PokeComCenter_branch_1796d6:
 	jumpchannel Music_PokeComCenter_branch_1796d6
 
 Music_PokeComCenter_Ch3:
-	notetype $c, $24
+	note_type 12, 2, 4
 	vibrato $10, $34
 	octave 4
 	note G_, 2
@@ -336,7 +336,7 @@ Music_PokeComCenter_Ch3:
 	octave 5
 	note C_, 2
 	note D_, 4
-	notetype $c, $25
+	note_type 12, 2, 5
 Music_PokeComCenter_branch_179788:
 	note C_, 2
 	octave 4
@@ -349,7 +349,7 @@ Music_PokeComCenter_branch_179788:
 	note D_, 2
 	octave 4
 	note B_, 6
-	notetype $c, $10
+	note_type 12, 1, 0
 	octave 6
 	note G_, 1
 	note __, 1
@@ -358,7 +358,7 @@ Music_PokeComCenter_branch_179788:
 	octave 7
 	note D_, 1
 	note __, 3
-	notetype $c, $25
+	note_type 12, 2, 5
 	octave 4
 	note B_, 2
 	note G_, 2
@@ -388,7 +388,7 @@ Music_PokeComCenter_branch_179788:
 	note D_, 2
 	octave 4
 	note B_, 6
-	notetype $c, $10
+	note_type 12, 1, 0
 	octave 6
 	note G_, 1
 	note __, 1
@@ -397,7 +397,7 @@ Music_PokeComCenter_branch_179788:
 	octave 7
 	note D_, 1
 	note __, 3
-	notetype $c, $25
+	note_type 12, 2, 5
 	octave 4
 	note B_, 2
 	note G_, 2
@@ -454,7 +454,7 @@ Music_PokeComCenter_branch_179788:
 Music_PokeComCenter_Ch4:
 	togglenoise $3
 	stereopanning $f
-	notetype $c
+	note_type 12
 	note A_, 8
 	note A_, 4
 	note C#, 1

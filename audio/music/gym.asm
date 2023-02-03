@@ -11,7 +11,7 @@ Music_Gym_Ch1:
 	stereopanning $f
 	vibrato $12, $24
 	dutycycle $1
-	notetype $c, $b7
+	note_type 12, 11, 7
 Music_Gym_branch_f48c9:
 	octave 4
 	note F#, 2
@@ -194,7 +194,7 @@ Music_Gym_Ch2:
 	dutycycle $1
 	stereopanning $f0
 Music_Gym_branch_f4980:
-	notetype $c, $c3
+	note_type 12, 12, 3
 	octave 2
 	note D_, 2
 	octave 1
@@ -372,7 +372,7 @@ Music_Gym_Ch3:
 	vibrato $14, $23
 	stereopanning $ff
 Music_Gym_branch_f4a3c:
-	notetype $c, $14
+	note_type 12, 1, 4
 	octave 6
 	note D_, 2
 	octave 4
@@ -505,7 +505,7 @@ Music_Gym_branch_f4ab3:
 Music_Gym_Ch4:
 	togglenoise $4
 Music_Gym_branch_f4ac7:
-	notetype $c
+	note_type 12
 	note D_, 2
 	note C#, 1
 	note C#, 1
@@ -528,7 +528,7 @@ Music_Gym_branch_f4ac7:
 	note C#, 1
 	note D_, 1
 	note D_, 1
-	notetype $6
+	note_type 6
 Music_Gym_branch_f4ae1:
 	note D_, 6
 	note D_, 6

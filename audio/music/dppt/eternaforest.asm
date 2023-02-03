@@ -12,7 +12,7 @@ Music_EternaForestDPPt_Ch1:
 	tempo $88
 	volume 7, 7
 Music_EternaForestDPPt_Ch1_loop:
-	notetype $C, $82
+	note_type 12, 8, 2
 	dutycycle 0
 	octave 5
 	note __, 1
@@ -112,16 +112,16 @@ Music_EternaForestDPPt_Ch1_loop:
 	note D_, 2
 	octave 5
 	note G_, 2
-	notetype $F, $82
+	note_type 15, 8, 2
 	note B_, 16
-	notetype $C, $82
+	note_type 12, 8, 2
 	octave 6
 	note D_, 2
 	octave 5
 	note F#, 2
-	notetype $F, $82
+	note_type 15, 8, 2
 	note A_, 16
-	notetype $C, $82
+	note_type 12, 8, 2
 	octave 6
 	note D_, 2
 	octave 5
@@ -285,7 +285,7 @@ Music_EternaForestDPPt_Ch1_loop:
 
 Music_EternaForestDPPt_Ch2:
 Music_EternaForestDPPt_Ch2_loop:
-	notetype $C, $92
+	note_type 12, 9, 2
 	dutycycle 0
 	octave 5
 	note D_, 6
@@ -519,7 +519,7 @@ Music_EternaForestDPPt_Ch2_loop:
 
 Music_EternaForestDPPt_Ch3:
 Music_EternaForestDPPt_Ch3_loop:
-	notetype $C, $12
+	note_type 12, 1, 2
 	vibrato $10, $14
 	octave 7
 	note __, 16
@@ -677,7 +677,7 @@ Music_EternaForestDPPt_Ch3_loop:
 	note C_, 2
 	note D_, 4
 	note E_, 2
-	notetype $8, $12
+	note_type 8, 1, 2
 	note F#, 4
 	note G_, 4
 	note F#, 4
@@ -686,17 +686,17 @@ Music_EternaForestDPPt_Ch3_loop:
 	note B_, 4
 	octave 6
 	note E_, 4
-	notetype $C, $12
+	note_type 12, 1, 2
 	octave 5
 	note G_, 16
-	notetype $8, $12
+	note_type 8, 1, 2
 	note A_, 4
 	note B_, 4
 	note A_, 4
 	note G_, 4
 	note E_, 4
 	note A_, 4
-	notetype $C, $12
+	note_type 12, 1, 2
 	note D_, 12
 	note A_, 4
 	note G_, 8
@@ -765,7 +765,7 @@ Music_EternaForestDPPt_Ch3_loop:
 Music_EternaForestDPPt_Ch4:
 	togglenoise 4
 Music_EternaForestDPPt_Ch4_loop:
-	notetype $C
+	note_type 12
 	note __, 16
 	note __, 16
 	note __, 16

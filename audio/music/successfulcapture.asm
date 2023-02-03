@@ -9,15 +9,15 @@ Music_SuccessfulCapture_Ch1:
 	volume 7, 7
 	dutycycle $3
 	tone $0001
-	notetype $c, $a1
+	note_type 12, 10, 1
 	jumpchannel Music_SuccessfulCapture_branch_f4536
 
 Music_SuccessfulCapture_Ch2:
 	vibrato $12, $24
-	notetype $c, $c1
+	note_type 12, 12, 1
 	dutycycle $2
 	jumpchannel Music_SuccessfulCapture_branch_f4585
 
 Music_SuccessfulCapture_Ch3:
-	notetype $c, $25
+	note_type 12, 2, 5
 	jumpchannel Music_SuccessfulCapture_branch_f45cf

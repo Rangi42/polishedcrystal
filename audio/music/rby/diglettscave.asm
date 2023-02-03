@@ -15,7 +15,7 @@ Music_DiglettsCaveRBY_Ch1:
 	vibrato 10, 20
 
 Music_DiglettsCaveRBY_branch_7e892:
-	notetype 12, 178
+	note_type 12, 11, 2
 	octave 4
 	note E_, 4
 	note E_, 4
@@ -61,7 +61,7 @@ Music_DiglettsCaveRBY_branch_7e892:
 	note A_, 4
 	note F#, 2
 	loopchannel 2, Music_DiglettsCaveRBY_branch_7e892
-	notetype 12, 31
+	note_type 12, 1, -7
 	octave 3
 	note E_, 16
 	note C_, 16
@@ -83,7 +83,7 @@ Music_DiglettsCaveRBY_Ch2:
 
 Music_DiglettsCaveRBY_branch_7e8db:
 	dutycycle 3
-	notetype 12, 194
+	note_type 12, 12, 2
 	octave 3
 	note E_, 4
 	note E_, 4
@@ -160,7 +160,7 @@ Music_DiglettsCaveRBY_branch_7e8db:
 	note __, 16
 	note __, 16
 	note __, 16
-	notetype 12, 199
+	note_type 12, 12, 7
 	dutycycle 1
 	octave 4
 	note E_, 16
@@ -170,7 +170,7 @@ Music_DiglettsCaveRBY_branch_7e8db:
 	jumpchannel Music_DiglettsCaveRBY_branch_7e8db
 
 Music_DiglettsCaveRBY_Ch3:
-	notetype 12, 19
+	note_type 12, 1, 3
 	vibrato 8, 38
 
 Music_DiglettsCaveRBY_branch_7e940:
@@ -309,7 +309,7 @@ Music_DiglettsCaveRBY_branch_7e9d1:
 	endchannel
 
 Music_DiglettsCaveRBY_Ch4:
-	notetype 12
+	note_type 12
 	togglenoise 1
 
 Music_DiglettsCaveRBY_branch_7e9dd:

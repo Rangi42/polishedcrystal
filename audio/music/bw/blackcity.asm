@@ -13,7 +13,7 @@ Music_BlackCityBW:
 Music_BlackCityBW_Ch1:
 	vibrato $12, $15
 	tone $0001
-	notetype $6, $91
+	note_type 6, 9, 1
 	tempo 156
 	note __, 4
 Music_BlackCityBW_Ch1_loop:
@@ -256,7 +256,7 @@ Music_BlackCityBW_Ch2:
 	dutycycle 2
 	vibrato $12, $24
 	tone $0001
-	notetype $6, $a7
+	note_type 6, 10, 7
 	octave 3
 	note __, 1
 	note G#, 1
@@ -382,7 +382,7 @@ Music_BlackCityBW_Ch2:
 	jumpchannel Music_BlackCityBW_Ch2
 
 Music_BlackCityBW_Ch3:
-	notetype $c, $24
+	note_type 12, 2, 4
 	note __, 2
 Music_BlackCityBW_Ch3_loop:
 	octave 4
@@ -417,7 +417,7 @@ Music_BlackCityBW_Ch3_loop:
 
 Music_BlackCityBW_Ch4:
 	togglenoise $3
-	notetype $6
+	note_type 6
 	note __, 4
 Music_BlackCityBW_Ch4_loop_main:
 Music_BlackCityBW_Ch4_loop_1:

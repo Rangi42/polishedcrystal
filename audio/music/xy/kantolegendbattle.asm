@@ -11,7 +11,7 @@ Music_KantoLegendBattleXY:
 Music_KantoLegendBattleXY_Ch1:
 	tempo $6a
 	dutycycle $2
-	notetype $c, $c7
+	note_type 12, 12, 7
 	octave 4
 	note C_, 1
 	octave 3
@@ -487,7 +487,7 @@ Music_KantoLegendBattleXY_Ch1_L10:
 
 Music_KantoLegendBattleXY_Ch2:
 	dutycycle $1
-	notetype $c, $c2
+	note_type 12, 12, 2
 	octave 3
 	note G_, 1
 	note F#, 1
@@ -776,7 +776,7 @@ Music_KantoLegendBattleXY_Ch2_P_Em:
 	endchannel
 
 Music_KantoLegendBattleXY_Ch3:
-	notetype $c, $14
+	note_type 12, 1, 4
 	octave 3
 	note C_, 1
 	note __, 1

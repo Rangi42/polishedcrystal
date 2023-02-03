@@ -13,7 +13,7 @@ Music_OreburghGateDPPt_Ch1:
 	volume 7, 7
 	dutycycle 0
 	tone $0001
-	notetype $C, $20
+	note_type 12, 2, 0
 	vibrato $8, $12
 	octave 3
 	note G_, 8
@@ -116,7 +116,7 @@ Music_OreburghGateDPPt_Ch1_branch_2:
 Music_OreburghGateDPPt_Ch2:
 	tone $0001
 	dutycycle 1
-	notetype $C, $55
+	note_type 12, 5, 5
 	note __, 16
 Music_OreburghGateDPPt_Ch2_branch_1:
 	octave 3
@@ -413,7 +413,7 @@ Music_OreburghGateDPPt_Ch2_branch_3:
 	jumpchannel Music_OreburghGateDPPt_Ch2_branch_1
 
 Music_OreburghGateDPPt_Ch3:
-	notetype $C, $12
+	note_type 12, 1, 2
 	vibrato $8, $12
 	note __, 16
 Music_OreburghGateDPPt_Ch3_branch_1:

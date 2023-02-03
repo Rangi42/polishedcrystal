@@ -14,7 +14,7 @@ Music_WildBattlePrism_Ch1:
 	dutycycle $3
 	tone $0002
 	vibrato $12, $15
-	notetype $c, $b2
+	note_type 12, 11, 2
 	octave 4
 	note D_, 1
 	note C#, 1
@@ -320,7 +320,7 @@ Music_WildBattlePrism_Ch2:
 	dutycycle $3
 	tone $0001
 	vibrato $8, $36
-	notetype $c, $c2
+	note_type 12, 12, 2
 
 Music_WildBattlePrism_branch_19f11b:
 	octave 3
@@ -539,7 +539,7 @@ Music_WildBattlePrism_branch_19f167:
 	jumpchannel Music_WildBattlePrism_branch_19f167
 
 Music_WildBattlePrism_Ch3:
-	notetype $c, $14
+	note_type 12, 1, 4
 	octave 4
 	note D_, 2
 	note D_, 1

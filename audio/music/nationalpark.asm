@@ -11,14 +11,14 @@ Music_NationalPark_Ch1:
 	stereopanning $f
 	vibrato $18, $24
 	dutycycle $1
-	notetype $c, $77
+	note_type 12, 7, 7
 	note __, 2
 Music_NationalPark_branch_f5504:
 	callchannel Music_NationalPark_branch_f554a
 	callchannel Music_NationalPark_branch_f554a
-	notetype $6, $67
+	note_type 6, 6, 7
 	callchannel Music_NationalPark_branch_f563a
-	notetype $c, $77
+	note_type 12, 7, 7
 	note __, 16
 	octave 2
 	note A#, 1
@@ -29,7 +29,7 @@ Music_NationalPark_branch_f5504:
 	note D_, 1
 	note F_, 1
 	note A#, 1
-	notetype $6, $67
+	note_type 6, 6, 7
 	octave 4
 	note D_, 1
 	note C#, 1
@@ -59,7 +59,7 @@ Music_NationalPark_branch_f5504:
 	note D_, 16
 	intensity $77
 	note D_, 7
-	notetype $c, $77
+	note_type 12, 7, 7
 	note __, 4
 	jumpchannel Music_NationalPark_branch_f5504
 
@@ -299,11 +299,11 @@ Music_NationalPark_branch_f563a:
 Music_NationalPark_Ch2:
 	vibrato $14, $24
 	dutycycle $1
-	notetype $c, $a7
+	note_type 12, 10, 7
 	note __, 2
 	stereopanning $f0
 Music_NationalPark_branch_f565d:
-	notetype $c, $a7
+	note_type 12, 10, 7
 	callchannel Music_NationalPark_branch_f56b8
 	octave 3
 	note D_, 8
@@ -314,7 +314,7 @@ Music_NationalPark_branch_f565d:
 	note G#, 2
 	note F#, 2
 	note F_, 2
-	notetype $6, $a7
+	note_type 6, 10, 7
 	callchannel Music_NationalPark_branch_f56f5
 	octave 3
 	note B_, 1
@@ -480,7 +480,7 @@ Music_NationalPark_branch_f56f5:
 
 Music_NationalPark_Ch3:
 	vibrato $16, $24
-	notetype $c, $11
+	note_type 12, 1, 1
 	octave 4
 	note G#, 1
 	note A#, 1
@@ -618,7 +618,7 @@ Music_NationalPark_branch_f578f:
 
 Music_NationalPark_Ch4:
 	togglenoise $3
-	notetype $c
+	note_type 12
 	note __, 2
 Music_NationalPark_branch_f57bd:
 	note __, 16

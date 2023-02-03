@@ -11,7 +11,7 @@ Music_ProfOak_Ch1:
 	tone $0001
 	stereopanning $f0
 	dutycycle $3
-	notetype $c, $98
+	note_type 12, 9, 8
 	octave 2
 	note F#, 1
 	note B_, 1
@@ -105,7 +105,7 @@ Music_ProfOak_branch_f4e6c:
 Music_ProfOak_Ch2:
 	vibrato $12, $34
 	dutycycle $3
-	notetype $c, $a8
+	note_type 12, 10, 8
 	octave 3
 	note B_, 1
 	octave 4
@@ -206,7 +206,7 @@ Music_ProfOak_branch_f4ebf:
 
 Music_ProfOak_Ch3:
 	stereopanning $f
-	notetype $c, $14
+	note_type 12, 1, 4
 	note __, 4
 	octave 3
 	note E_, 2

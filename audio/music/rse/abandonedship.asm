@@ -16,7 +16,7 @@ Music_AbandonedShipRSE_Ch1:
 	dutycycle $0
 	tone $0002
 	vibrato $10, $22
-	notetype $c, $82
+	note_type 12, 8, 2
 	note __, 6
 Music_AbandonedShipRSE_Ch1_loop:
 	octave 3
@@ -222,7 +222,7 @@ Music_AbandonedShipRSE_Ch1_loop:
 	note C#, 1
 	octave 3
 	note B_, 1
-	notetype $6, $82
+	note_type 6, 8, 2
 	octave 4
 	note C#, 1
 	octave 3
@@ -246,7 +246,7 @@ Music_AbandonedShipRSE_Ch1_loop:
 	octave 5
 	note C#, 1
 	octave 4
-	notetype $c, $82
+	note_type 12, 8, 2
 	note G#, 3
 	note F#, 3
 	note F_, 2
@@ -259,7 +259,7 @@ Music_AbandonedShipRSE_Ch1_loop:
 Music_AbandonedShipRSE_Ch2:
 	dutycycle $3
 	vibrato $1c, $12
-	notetype $c, $a0
+	note_type 12, 10, 0
 	note __, 6
 Music_AbandonedShipRSE_Ch2_loop:
 	callchannel Music_AbandonedShipRSE_Ch2_branch_1
@@ -384,13 +384,13 @@ Music_AbandonedShipRSE_Ch2_loop:
 	note C_, 2
 	note __, 2
 	dutycycle $3
-	notetype $6, $a7
+	note_type 6, 10, 7
 	octave 3
 	note G_, 1
 	note G#, 1
 	note A_, 1
 	note A#, 1
-	notetype $c, $a7
+	note_type 12, 10, 7
 	note B_, 6
 	note A#, 1
 	note B_, 1
@@ -435,7 +435,7 @@ Music_AbandonedShipRSE_Ch2_loop:
 	jumpchannel Music_AbandonedShipRSE_Ch2_loop
 
 Music_AbandonedShipRSE_Ch2_branch_1:
-	notetype $c, $a0
+	note_type 12, 10, 0
 	octave 3
 	note A#, 4
 	intensity $a7
@@ -449,7 +449,7 @@ Music_AbandonedShipRSE_Ch2_branch_1:
 
 Music_AbandonedShipRSE_Ch3:
 	stereopanning $f0
-	notetype $c, $14
+	note_type 12, 1, 4
 	note __, 6
 Music_AbandonedShipRSE_Ch3_loop:
 	octave 2
@@ -600,7 +600,7 @@ Music_AbandonedShipRSE_Ch3_loop:
 Music_AbandonedShipRSE_Ch4:
 	stereopanning $f
 	togglenoise $3
-	notetype $6
+	note_type 6
 	note C#, 1
 	note C#, 1
 	note C#, 1
@@ -614,14 +614,14 @@ Music_AbandonedShipRSE_Ch4:
 	note D_, 1
 	note D_, 1
 Music_AbandonedShipRSE_branch_1:
-	notetype $c
+	note_type 12
 	callchannel Music_AbandonedShipRSE_branch_eeb6b
 	note D_, 1
 	note C#, 1
 	note C#, 1
 	note D_, 1
 	callchannel Music_AbandonedShipRSE_branch_eeb6b
-	notetype $6
+	note_type 6
 	note C#, 1
 	note C#, 1
 	note C#, 1
@@ -632,7 +632,7 @@ Music_AbandonedShipRSE_branch_1:
 	note D_, 1
 	loopchannel 4, Music_AbandonedShipRSE_branch_1
 Music_AbandonedShipRSE_branch_2:
-	notetype $c
+	note_type 12
 	note __, 16
 	loopchannel 4, Music_AbandonedShipRSE_branch_2
 	callchannel Music_AbandonedShipRSE_branch_eeb6b
@@ -641,7 +641,7 @@ Music_AbandonedShipRSE_branch_2:
 	note C#, 1
 	note D_, 1
 	callchannel Music_AbandonedShipRSE_branch_eeb6b
-	notetype $6
+	note_type 6
 	note C#, 1
 	note C#, 1
 	note C#, 1
@@ -650,7 +650,7 @@ Music_AbandonedShipRSE_branch_2:
 	note D_, 1
 	note D_, 1
 	note D_, 1
-	notetype $c
+	note_type 12
 	callchannel Music_AbandonedShipRSE_branch_eeb6b
 	note D_, 1
 	note C#, 1
@@ -663,7 +663,7 @@ Music_AbandonedShipRSE_branch_2:
 	note C#, 1
 	note C#, 1
 	note D_, 2
-	notetype $6
+	note_type 6
 	note C#, 1
 	note C#, 1
 	note C#, 1

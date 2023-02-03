@@ -11,7 +11,7 @@ Music_BugCatchingContest_Ch1:
 	stereopanning $f
 	vibrato $8, $24
 	dutycycle $2
-	notetype $c, $b7
+	note_type 12, 11, 7
 	note __, 8
 	octave 4
 	note C#, 1
@@ -39,7 +39,7 @@ Music_BugCatchingContest_Ch1:
 	note E_, 1
 	note E_, 1
 Music_BugCatchingContest_branch_f7c4b:
-	notetype $c, $b1
+	note_type 12, 11, 1
 Music_BugCatchingContest_branch_f7c4e:
 	note __, 2
 	octave 2
@@ -70,7 +70,7 @@ Music_BugCatchingContest_branch_f7c6b:
 	note B_, 2
 	note __, 2
 	note B_, 2
-	notetype $6, $b7
+	note_type 6, 11, 7
 	octave 4
 	note E_, 4
 	note __, 1
@@ -192,7 +192,7 @@ Music_BugCatchingContest_Ch2:
 	stereopanning $f0
 	vibrato $8, $23
 	dutycycle $1
-	notetype $c, $c7
+	note_type 12, 12, 7
 	note __, 8
 Music_BugCatchingContest_branch_f7cff:
 	octave 4
@@ -374,7 +374,7 @@ Music_BugCatchingContest_branch_f7d8e:
 Music_BugCatchingContest_Ch3:
 	stereopanning $ff
 	vibrato $10, $23
-	notetype $c, $14
+	note_type 12, 1, 4
 	note __, 8
 	octave 3
 	note A_, 1
@@ -403,7 +403,7 @@ Music_BugCatchingContest_Ch3:
 	note C#, 1
 	note C#, 1
 Music_BugCatchingContest_branch_f7dda:
-	notetype $c, $14
+	note_type 12, 1, 4
 	note F#, 5
 	note __, 1
 	note F#, 1
@@ -419,7 +419,7 @@ Music_BugCatchingContest_branch_f7dda:
 	note __, 1
 	note G_, 1
 	note E_, 1
-	notetype $6, $20
+	note_type 6, 2, 0
 	octave 6
 	note E_, 1
 	note F#, 1
@@ -587,7 +587,7 @@ Music_BugCatchingContest_branch_f7dda:
 
 Music_BugCatchingContest_Ch4:
 	togglenoise $4
-	notetype $6
+	note_type 6
 	note C#, 1
 	note C#, 1
 	note C#, 1

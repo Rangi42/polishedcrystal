@@ -12,7 +12,7 @@ Music_PalletTown_Ch1:
 	stereopanning $f
 Music_PalletTown_branch_f4b22:
 	dutycycle $2
-	notetype $c, $78
+	note_type 12, 7, 8
 	octave 3
 	note B_, 12
 	note A_, 1
@@ -124,7 +124,7 @@ Music_PalletTown_Ch2:
 	dutycycle $2
 	stereopanning $f0
 Music_PalletTown_branch_f4ba8:
-	notetype $c, $88
+	note_type 12, 8, 8
 	octave 1
 	note G_, 2
 	note B_, 2
@@ -247,7 +247,7 @@ Music_PalletTown_branch_f4be5:
 Music_PalletTown_Ch3:
 	vibrato $14, $24
 Music_PalletTown_branch_f4c2d:
-	notetype $c, $10
+	note_type 12, 1, 0
 	octave 6
 	note D_, 2
 	note C_, 2

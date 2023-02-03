@@ -20,7 +20,7 @@ Music_LugiasSong2000_Ch1:
 	vibrato $12, $15
 	tone $0001
 	tempo 136
-	notetype $c, $60
+	note_type 12, 6, 0
 Music_LugiasSong2000_Ch1_loop_1:
 	note __, 8
 	loopchannel 16, Music_LugiasSong2000_Ch1_loop_1
@@ -52,7 +52,7 @@ Music_LugiasSong2000_Ch2:
 	dutycycle 0
 	vibrato $12, $15
 	tone $0001
-	notetype $c, $10
+	note_type 12, 1, 0
 Music_LugiasSong2000_Ch2_loop_1:
 	note __, 16
 	loopchannel 4, Music_LugiasSong2000_Ch2_loop_1
@@ -98,7 +98,7 @@ Music_LugiasSong2000_Ch2_loop_1:
 	note E_, 16
 Music_LugiasSong2000_Ch2_loop_main:
 	dutycycle 0
-	notetype $c, $74
+	note_type 12, 7, 4
 	octave 2
 	note E_, 2
 	intensity $57
@@ -288,14 +288,14 @@ Music_LugiasSong2000_Ch2_loop_main:
 	jumpchannel Music_LugiasSong2000_Ch2_loop_main
 
 Music_LugiasSong2000_Ch3:
-	notetype $c, $23
+	note_type 12, 2, 3
 	vibrato $8, $16
 	callchannel Music_LugiasSong2000_Ch3_branch_1
 	note B_, 8
 	callchannel Music_LugiasSong2000_Ch3_branch_2
 Music_LugiasSong2000_Ch3_loop:
 	vibrato $8, $16
-	notetype $c, $13
+	note_type 12, 1, 3
 	callchannel Music_LugiasSong2000_Ch3_branch_1
 	callchannel Music_LugiasSong2000_Ch3_branch_2
 	note E_, 8
@@ -312,7 +312,7 @@ Music_LugiasSong2000_Ch3_loop:
 	note F#, 8
 	octave 6
 	note D_, 10
-	notetype $6, $13
+	note_type 6, 1, 3
 	note D_, 2
 	octave 5
 	note B_, 1
@@ -321,7 +321,7 @@ Music_LugiasSong2000_Ch3_loop:
 	octave 5
 	note B_, 4
 	note A_, 4
-	notetype $c, $13
+	note_type 12, 1, 3
 	note B_, 12
 	note B_, 12
 	callchannel Music_LugiasSong2000_Ch3_branch_2
@@ -351,7 +351,7 @@ Music_LugiasSong2000_Ch3_branch_1:
 	endchannel
 
 Music_LugiasSong2000_Ch3_branch_2:
-	notetype $6, $13
+	note_type 6, 1, 3
 	octave 6
 	note E_, 16
 	note D_, 14
@@ -362,11 +362,11 @@ Music_LugiasSong2000_Ch3_branch_2:
 	note G_, 12
 	note A_, 2
 	note B_, 2
-	notetype $c, $13
+	note_type 12, 1, 3
 	note A_, 8
 	note E_, 12
 	note E_, 12
-	notetype $6, $13
+	note_type 6, 1, 3
 	note E_, 14
 	note B_, 1
 	octave 6
@@ -380,7 +380,7 @@ Music_LugiasSong2000_Ch3_branch_2:
 	note F#, 1
 	note E_, 4
 	note D_, 4
-	notetype $c, $13
+	note_type 12, 1, 3
 	note E_, 12
 	note E_, 6
 	intensity $23
@@ -390,11 +390,11 @@ Music_LugiasSong2000_Ch3_branch_2:
 
 Music_LugiasSong2000_Ch4:
 	togglenoise $3
-	notetype $c
+	note_type 12
 Music_LugiasSong2000_Ch4_loop_1:
 	note __, 16
 	loopchannel 8, Music_LugiasSong2000_Ch4_loop_1
-	notetype $6
+	note_type 6
 	note C#, 2
 	note C#, 2
 	note C#, 2
@@ -407,7 +407,7 @@ Music_LugiasSong2000_Ch4_loop_1:
 	note D_, 1
 	note D_, 1
 	note D_, 1
-	notetype $c
+	note_type 12
 	note B_, 16
 	note C_, 8
 	note C_, 8

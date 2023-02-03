@@ -11,7 +11,7 @@ Music_GymLeaderVictory_Ch1:
 	vibrato $12, $34
 	dutycycle $3
 	tone $0001
-	notetype $c, $b7
+	note_type 12, 11, 7
 	octave 4
 	note D_, 6
 	octave 3
@@ -117,7 +117,7 @@ Music_GymLeaderVictory_branch_f46a0:
 Music_GymLeaderVictory_Ch2:
 	vibrato $12, $34
 	dutycycle $3
-	notetype $c, $d7
+	note_type 12, 13, 7
 	octave 4
 	note A_, 6
 	note F#, 1
@@ -215,7 +215,7 @@ Music_GymLeaderVictory_branch_f4720:
 	endchannel
 
 Music_GymLeaderVictory_Ch3:
-	notetype $c, $25
+	note_type 12, 2, 5
 	octave 3
 	note F#, 16
 	note D_, 10
@@ -382,7 +382,7 @@ Music_GymLeaderVictory_branch_f479e:
 
 Music_GymLeaderVictory_Ch4:
 	togglenoise $4
-	notetype $c
+	note_type 12
 	note B_, 16
 	note B_, 16
 Music_GymLeaderVictory_branch_f47eb:

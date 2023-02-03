@@ -12,7 +12,7 @@ Music_Route36_Ch1:
 	tone $0001
 	vibrato $10, $15
 	stereopanning $f
-	notetype $c, $b3
+	note_type 12, 11, 3
 	octave 3
 	note C_, 4
 	note C_, 6
@@ -168,7 +168,7 @@ Music_Route36_Ch2:
 	dutycycle $3
 	vibrato $10, $36
 	stereopanning $f0
-	notetype $c, $c2
+	note_type 12, 12, 2
 	octave 3
 	note F_, 2
 	note C_, 1
@@ -312,7 +312,7 @@ Music_Route36_branch_e95ce:
 	jumpchannel Music_Route36_branch_e95ce
 
 Music_Route36_Ch3:
-	notetype $c, $25
+	note_type 12, 2, 5
 	octave 3
 	note F_, 1
 	note __, 3
@@ -469,7 +469,7 @@ Music_Route36_branch_e9684:
 
 Music_Route36_Ch4:
 	togglenoise $1
-	notetype $c
+	note_type 12
 	callchannel Music_Route36_branch_e9734
 	callchannel Music_Route36_branch_e9741
 Music_Route36_branch_e9713:
@@ -512,10 +512,10 @@ Music_Route36_branch_e9741:
 	note A#, 1
 	note A#, 1
 	note A_, 2
-	notetype $6
+	note_type 6
 	note A#, 1
 	note A#, 1
 	note A_, 1
 	note A_, 1
-	notetype $c
+	note_type 12
 	endchannel

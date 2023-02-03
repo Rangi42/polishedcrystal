@@ -70,7 +70,7 @@ Music_Route12BW_Ch1_loop_1:
 	jumpchannel Music_Route12BW_Ch1
 
 Music_Route12BW_Ch1_branch_1:
-	notetype $6, $a3
+	note_type 6, 10, 3
 	octave 4
 	note F#, 1
 	intensity $93
@@ -93,7 +93,7 @@ Music_Route12BW_Ch1_branch_1:
 
 Music_Route12BW_Ch1_branch_2:
 	octave 3
-	notetype $8, $90
+	note_type 8, 9, 0
 	note D#, 4
 	intensity $95
 	note D#, 4
@@ -125,7 +125,7 @@ Music_Route12BW_Ch1_branch_3:
 	endchannel
 
 Music_Route12BW_Ch2:
-	notetype $8, $b0
+	note_type 8, 11, 0
 	dutycycle $1
 	vibrato $1c, $12
 Music_Route12BW_Ch2_loop:
@@ -311,7 +311,7 @@ Music_Route12BW_Ch2_branch_1:
 	endchannel
 
 Music_Route12BW_Ch3:
-	notetype $8, $14
+	note_type 8, 1, 4
 	octave 1
 	note B_, 12
 	note B_, 6
@@ -375,7 +375,7 @@ Music_Route12BW_Ch4:
 	stereopanning $f
 	togglenoise $0
 Music_Route12BW_Ch4_loop:
-	notetype $4
+	note_type 4
 	callchannel Music_Route12BW_Ch4_branch_1
 	callchannel Music_Route12BW_Ch4_branch_2
 	callchannel Music_Route12BW_Ch4_branch_3

@@ -9,7 +9,7 @@ Music_Route3_Ch1:
 	stereopanning $f
 	tempo 160
 	volume 7, 7
-	notetype $c, $91
+	note_type 12, 9, 1
 	note __, 10
 	dutycycle $0
 	vibrato $14, $6
@@ -237,7 +237,7 @@ Music_Route3_branch_ec3bd:
 
 Music_Route3_Ch2:
 	stereopanning $f0
-	notetype $c, $5e
+	note_type 12, 5, -6
 	dutycycle $2
 	vibrato $6, $3
 	octave 4
@@ -354,7 +354,7 @@ Music_Route3_branch_ec443:
 Music_Route3_Ch3:
 	stereopanning $ff
 	vibrato $6, $3
-	notetype $c, $13
+	note_type 12, 1, 3
 	octave 3
 	note B_, 1
 	octave 4
@@ -480,17 +480,17 @@ Music_Route3_branch_ec4ce:
 
 Music_Route3_Ch4:
 	togglenoise $4
-	notetype $c
+	note_type 12
 	note __, 10
 Music_Route3_branch_ec4f0:
-	notetype $c
+	note_type 12
 	note D_, 2
 	note D_, 4
 	note D_, 1
 	note D_, 1
 	note D_, 2
 	note D_, 2
-	notetype $6
+	note_type 6
 	note C#, 1
 	note C#, 1
 	note C#, 1

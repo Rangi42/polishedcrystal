@@ -14,7 +14,7 @@ Music_HiddenGrottoB2W2_Ch1:
 	dutycycle 2
 	vibrato $12, $15
 	tempo 188
-	notetype $c, $92
+	note_type 12, 9, 2
 	octave 4
 	note F#, 2
 	note E_, 2
@@ -63,11 +63,11 @@ Music_HiddenGrottoB2W2_Ch1_branch_1:
 Music_HiddenGrottoB2W2_Ch2:
 	dutycycle 2
 	vibrato $12, $15
-	notetype $6, $52
+	note_type 6, 5, 2
 	octave 4
 	note __, 1
 Music_HiddenGrottoB2W2_Ch2_loop:
-	notetype $c, $52
+	note_type 12, 5, 2
 	note F#, 2
 	note E_, 2
 	note D_, 2
@@ -92,7 +92,7 @@ Music_HiddenGrottoB2W2_Ch2_loop:
 
 Music_HiddenGrottoB2W2_Ch3:
 	vibrato $12, $15
-	notetype $c, $35
+	note_type 12, 3, 5
 	octave 3
 	note D_, 2
 	note C_, 2
@@ -121,7 +121,7 @@ Music_HiddenGrottoB2W2_Ch3:
 	jumpchannel Music_HiddenGrottoB2W2_Ch3
 
 Music_HiddenGrottoB2W2_Ch4:
-	notetype $6
+	note_type 6
 	togglenoise $5
 Music_HiddenGrottoB2W2_Ch4_loop:
 	note __, 16

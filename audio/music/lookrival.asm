@@ -12,7 +12,7 @@ Music_LookRival_Ch1:
 	tone $0001
 	vibrato $12, $15
 	stereopanning $f
-	notetype $c, $b2
+	note_type 12, 11, 2
 	octave 4
 	note C_, 1
 	octave 3
@@ -120,7 +120,7 @@ Music_LookRival_Ch2:
 	dutycycle $3
 	vibrato $8, $36
 	stereopanning $f0
-	notetype $c, $c2
+	note_type 12, 12, 2
 	octave 4
 	note F#, 2
 	note F_, 2
@@ -206,7 +206,7 @@ Music_LookRival_branch_f5070:
 	jumpchannel Music_LookRival_branch_f502e
 
 Music_LookRival_Ch3:
-	notetype $c, $28
+	note_type 12, 2, 8
 	note __, 2
 	octave 4
 	note C_, 2
@@ -324,7 +324,7 @@ Music_LookRival_branch_f50ff:
 Music_LookRival_Ch4:
 	stereopanning $f0
 	togglenoise $3
-	notetype $c
+	note_type 12
 	note __, 8
 	note __, 16
 	note D#, 2

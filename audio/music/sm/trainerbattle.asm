@@ -16,7 +16,7 @@ Music_TrainerBattleSM_Ch1:
 	dutycycle 2
 	tone $0002
 	vibrato $12, $15
-	notetype $6, $60
+	note_type 6, 6, 0
 	octave 2
 	note A#, 8
 	note E_, 8
@@ -190,13 +190,13 @@ Music_TrainerBattleSM_Ch1_loop_1:
 	soundinput $00
 	vibrato $12, $15
 	dutycycle 1
-	notetype $c, $a3
+	note_type 12, 10, 3
 Music_TrainerBattleSM_Ch1_loop_2:
 	note C_, 11
 	note C_, 5
 	note C_, 16
 	loopchannel 5, Music_TrainerBattleSM_Ch1_loop_2
-	notetype $6, $a1
+	note_type 6, 10, 1
 Music_TrainerBattleSM_Ch1_loop_3:
 	octave 4
 	note A#, 1
@@ -294,7 +294,7 @@ Music_TrainerBattleSM_Ch2:
 	dutycycle 3
 	vibrato $8, $36
 	tone $0001
-	notetype $6, $c2
+	note_type 6, 12, 2
 	octave 4
 	note A#, 1
 	note G_, 1
@@ -634,7 +634,7 @@ Music_TrainerBattleSM_Ch2_branch_2:
 	endchannel
 
 Music_TrainerBattleSM_Ch3:
-	notetype $6, $19
+	note_type 6, 1, -1
 	octave 2
 	note C_, 7
 	note __, 1
@@ -804,7 +804,7 @@ Music_TrainerBattleSM_Ch3_loop_7:
 
 Music_TrainerBattleSM_Ch4:
 	togglenoise $3
-	notetype $6
+	note_type 6
 	note __, 16
 	note __, 12
 	note C_, 4

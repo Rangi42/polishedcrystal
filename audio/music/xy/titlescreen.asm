@@ -17,7 +17,7 @@ Music_TitleScreenXY_Ch1:
 	soundinput $0
 Music_TitleScreenXY_Ch1_b0:
 	dutycycle $0
-	notetype $8, $87
+	note_type 8, 8, 7
 Music_TitleScreenXY_Ch1_b1:
 	octave 3
 	note G#, 2
@@ -28,7 +28,7 @@ Music_TitleScreenXY_Ch1_b1:
 	note D#, 2
 	note C#, 2
 	loopchannel 8, Music_TitleScreenXY_Ch1_b1
-	notetype $8, $97
+	note_type 8, 9, 7
 Music_TitleScreenXY_Ch1_b2:
 	octave 3
 	note B_, 2
@@ -39,7 +39,7 @@ Music_TitleScreenXY_Ch1_b2:
 	note F#, 2
 	note E_, 2
 	loopchannel 4, Music_TitleScreenXY_Ch1_b2
-	notetype $8, $B7
+	note_type 8, 11, 7
 Music_TitleScreenXY_Ch1_b3:
 	octave 4
 	note D_, 2
@@ -51,7 +51,7 @@ Music_TitleScreenXY_Ch1_b3:
 	note A_, 2
 	note G_, 2
 	loopchannel 2, Music_TitleScreenXY_Ch1_b3
-	notetype $8, $B2
+	note_type 8, 11, 2
 	octave 3
 	note G#, 6
 	note G#, 6
@@ -71,15 +71,15 @@ Music_TitleScreenXY_Ch1_b3:
 	octave 3
 	note C_, 2
 	note D#, 2
-	notetype $8, $B7
+	note_type 8, 11, 7
 	callchannel Music_TitleScreenXY_Ch1_b5
 	octave 4
 	note F#, 8 ; measure 11.3
 	note F_, 2
 	note E_, 2
-	notetype $c, $B7
+	note_type 12, 11, 7
 	note D#, 16
-	notetype $8, $B7
+	note_type 8, 11, 7
 	octave 2
 	note D#, 2
 	note __, 2
@@ -118,13 +118,13 @@ Music_TitleScreenXY_Ch1_b3:
 	note G#, 1
 	note D#, 1
 	note C_, 1
-	notetype $8, $B7
+	note_type 8, 11, 7
 	note F#, 8
 	note F_, 2
 	note E_, 2
-	notetype $c, $B7
+	note_type 12, 11, 7
 	note D#, 16
-	notetype $8, $B7
+	note_type 8, 11, 7
 	octave 2
 	note D#, 2
 	note __, 2
@@ -141,9 +141,9 @@ Music_TitleScreenXY_Ch1_b3:
 	note F#, 8
 	note F_, 2
 	note E_, 2
-	notetype $c, $B7
+	note_type 12, 11, 7
 	note D#, 16
-	notetype $8, $B7
+	note_type 8, 11, 7
 	octave 1
 	note B_, 2
 	note __, 2
@@ -159,13 +159,13 @@ Music_TitleScreenXY_Ch1_b3:
 	note __, 2
 	callchannel Music_TitleScreenXY_Ch1_b5
 	octave 4
-	notetype $8, $B7
+	note_type 8, 11, 7
 	note F#, 8
 	note F_, 2
 	note F#, 2
 	note G#, 9
 	note B_, 3
-	notetype $c, $B7
+	note_type 12, 11, 7
 	note G#, 16
 	note __, 8
 	note __, 16
@@ -184,27 +184,27 @@ Music_TitleScreenXY_Ch1_b3:
 	note A_, 4
 	note D#, 2
 	note __, 2
-	notetype $8, $B7
+	note_type 8, 11, 7
 	note D#, 1
 	note __, 1
 	note G_, 1
 	note __, 1
 	note A#, 1
 	note __, 1
-	notetype $c, $B7
+	note_type 12, 11, 7
 	octave 3
 	note D#, 16
 	note G#, 4
-	notetype $8, $B7
+	note_type 8, 11, 7
 	note F_, 1
 	note __, 1
 	note F_, 1
 	note __, 1
 	note E_, 1
 	note __, 1
-	notetype $c, $B7
+	note_type 12, 11, 7
 	note D#, 16
-	notetype $8, $B7
+	note_type 8, 11, 7
 	octave 2
 	note A#, 1
 	note __, 1
@@ -222,7 +222,7 @@ Music_TitleScreenXY_Ch1_b3:
 	octave 2
 	note C#, 6
 	note C_, 6
-	notetype $8, $B1
+	note_type 8, 11, 1
 	octave 3
 	note D#, 6
 	note D#, 6
@@ -286,7 +286,7 @@ Music_TitleScreenXY_Ch2:
 	stereopanning $f0
 	dutycycle $1
 Music_TitleScreenXY_Ch2_b0:
-	notetype $8, $97
+	note_type 8, 9, 7
 Music_TitleScreenXY_Ch2_b1:
 	octave 2
 	note G#, 2
@@ -297,7 +297,7 @@ Music_TitleScreenXY_Ch2_b1:
 	note D#, 2
 	note C#, 2
 	loopchannel 8, Music_TitleScreenXY_Ch2_b1
-	notetype $8, $A7
+	note_type 8, 10, 7
 Music_TitleScreenXY_Ch2_b2:
 	octave 2
 	note B_, 2
@@ -308,7 +308,7 @@ Music_TitleScreenXY_Ch2_b2:
 	note F#, 2
 	note E_, 2
 	loopchannel 4, Music_TitleScreenXY_Ch2_b2
-	notetype $8, $C7
+	note_type 8, 12, 7
 Music_TitleScreenXY_Ch2_b3:
 	octave 3
 	note D_, 2
@@ -350,19 +350,19 @@ Music_TitleScreenXY_Ch2_b3:
 	note __, 1
 	note G_, 1
 	note __, 1
-	notetype $c, $C7 ; measure 10
+	note_type 12, 12, 7 ; measure 10
 	octave 2
 	note G#, 6
 	octave 3
 	note C_, 2
 	note D#, 16
-	notetype $8, $C7 ; measure 11.3
+	note_type 8, 12, 7 ; measure 11.3
 	note F#, 8
 	note F_, 2
 	note E_, 2
-	notetype $c, $C7 ; measure 12
+	note_type 12, 12, 7 ; measure 12
 	note D#, 16
-	notetype $8, $C7 ; measure 13
+	note_type 8, 12, 7 ; measure 13
 	octave 2
 	note G#, 2
 	note __, 2
@@ -373,20 +373,20 @@ Music_TitleScreenXY_Ch2_b3:
 	note __, 2
 	note G_, 4
 	note __, 2
-	notetype $c, $C7 ; measure 14
+	note_type 12, 12, 7 ; measure 14
 	note G#, 6
 	octave 3
 	note C_, 2
 	note D#, 16
-	notetype $8, $C7 ; measure 15
+	note_type 8, 12, 7 ; measure 15
 	note C#, 8
 	octave 2
 	note A#, 2
 	octave 3
 	note C#, 2
-	notetype $c, $C7 ; measure 16
+	note_type 12, 12, 7 ; measure 16
 	note D#, 16
-	notetype $8, $C7 ; measure 17
+	note_type 8, 12, 7 ; measure 17
 	octave 2
 	note G#, 2
 	note __, 2
@@ -397,19 +397,19 @@ Music_TitleScreenXY_Ch2_b3:
 	note __, 2
 	note G_, 4
 	note __, 2
-	notetype $c, $C7 ; measure 18
+	note_type 12, 12, 7 ; measure 18
 	octave 2
 	note G#, 6
 	octave 3
 	note C_, 2
 	note D#, 16
-	notetype $8, $C7 ; measure 19.3
+	note_type 8, 12, 7 ; measure 19.3
 	note F#, 8
 	note F_, 2
 	note E_, 2
-	notetype $c, $C7 ; measure 20
+	note_type 12, 12, 7 ; measure 20
 	note D#, 16
-	notetype $8, $C7 ; measure 21
+	note_type 8, 12, 7 ; measure 21
 	octave 2
 	note E_, 2
 	note __, 2
@@ -420,24 +420,24 @@ Music_TitleScreenXY_Ch2_b3:
 	note __, 2
 	note G_, 4
 	note __, 2
-	notetype $c, $C7 ; measure 22
+	note_type 12, 12, 7 ; measure 22
 	octave 2
 	note G#, 6
 	octave 3
 	note C_, 2
 	note D#, 16
-	notetype $8, $C7 ; measure 23.3
+	note_type 8, 12, 7 ; measure 23.3
 	note F#, 8
 	note F_, 2
 	note F#, 2
 	note G#, 9
 	note B_, 3
-	notetype $c, $C7 ; measure 24.3
+	note_type 12, 12, 7 ; measure 24.3
 	note G#, 16
 	dutycycle $2
-	notetype $c, $3C
+	note_type 12, 3, -4
 	note A#, 8
-	notetype $c, $C7
+	note_type 12, 12, 7
 	note B_, 6
 	note F#, 1
 	note __, 1
@@ -456,7 +456,7 @@ Music_TitleScreenXY_Ch2_b3:
 	dutycycle $1
 	note D#, 2
 	note __, 2
-	notetype $8, $C7 ; measure 30.2
+	note_type 8, 12, 7 ; measure 30.2
 	octave 4
 	note D#, 1
 	note __, 1
@@ -464,9 +464,9 @@ Music_TitleScreenXY_Ch2_b3:
 	note __, 1
 	note G_, 1
 	note __, 1
-	notetype $c, $C7 ; measure 31
+	note_type 12, 12, 7 ; measure 31
 	note A#, 16
-	notetype $8, $C7 ; measure 31.3
+	note_type 8, 12, 7 ; measure 31.3
 	octave 5
 	note C#,  7
 	note __, 1
@@ -475,9 +475,9 @@ Music_TitleScreenXY_Ch2_b3:
 	octave 4
 	note B_, 1
 	note __, 1
-	notetype $c, $C7 ; measure 32
+	note_type 12, 12, 7 ; measure 32
 	note A#, 16
-	notetype $8, $C7 ; measure 33
+	note_type 8, 12, 7 ; measure 33
 	octave 4
 	note A#, 1
 	note __, 1
@@ -534,34 +534,34 @@ Music_TitleScreenXY_Ch2_b4:
 Music_TitleScreenXY_Ch3:
 	stereopanning $ff
 Music_TitleScreenXY_Ch3_b0:
-	notetype $8, $12
+	note_type 8, 1, 2
 	note __, 12
 	octave 3
 	note G#, 1
 	note __, 3
 	octave 4
 	note C#, 2
-	notetype $c, $12
+	note_type 12, 1, 2
 	note D#, 12
-	notetype $8, $12
+	note_type 8, 1, 2
 	note F#, 8
 	note F_, 2
 	note E_, 2
-	notetype $c, $12
+	note_type 12, 1, 2
 	note D#, 16
 	note __, 16
 	note __, 4
-	notetype $8, $12
+	note_type 8, 1, 2
 	octave 3
 	note A_, 1
 	note __, 3
 	octave 4
 	note C#, 2
-	notetype $c, $12
+	note_type 12, 1, 2
 	note E_, 16
 	note __, 8
 	note D_, 16
-	notetype $8, $12 ; measure 8
+	note_type 8, 1, 2 ; measure 8
 	octave 3
 	note G#, 2
 	note __, 4
@@ -666,7 +666,7 @@ Music_TitleScreenXY_Ch3_b1:
 	note C#, 2
 	octave 2
 	note A#, 2
-	notetype $c, $12 ; measure 26
+	note_type 12, 1, 2 ; measure 26
 	octave 2
 	note B_, 2
 	octave 3
@@ -715,7 +715,7 @@ Music_TitleScreenXY_Ch3_b1:
 	octave 4
 	note D_, 2
 	octave 3
-	notetype $c, $14
+	note_type 12, 1, 4
 	note D#, 2
 	note __, 2
 	octave 2
@@ -763,7 +763,7 @@ Music_TitleScreenXY_Ch3_b1:
 	octave 2
 	note A#, 2
 	note __, 2
-	notetype $8, $12 ; measure 34
+	note_type 8, 1, 2 ; measure 34
 	octave 3
 	note G#, 2
 	note __, 4
@@ -864,21 +864,21 @@ DEF SNARE2 EQU 3
 Music_TitleScreenXY_Ch4:
 	togglenoise $3
 Music_TitleScreenXY_Ch4_b0:
-	notetype $c
+	note_type 12
 	note __, 16
 	note __, 12
-	notetype $4
+	note_type 4
 	note SNARE, 2
 	note SNARE, 2
 	note SNARE, 4
 	note SNARE, 4
-	notetype $c
+	note_type 12
 	note 12, 16
 	note __, 16
 	note __, 16
 	note __, 16
 	note __, 12
-	notetype $4
+	note_type 4
 	note SNARE, 2
 	note SNARE, 2
 	note SNARE, 2
@@ -914,13 +914,13 @@ Music_TitleScreenXY_Ch4_b1:
 	note SNARE2, 8
 	note SNARE2, 4
 	loopchannel 4, Music_TitleScreenXY_Ch4_b1
-	notetype $c
+	note_type 12
 	note __, 8
 	note 12, 16
 	note 12, 16
 	note 12, 16
 	note 12, 8
-	notetype $4
+	note_type 4
 	callchannel Music_TitleScreenXY_Ch4_b2
 	callchannel Music_TitleScreenXY_Ch4_b2
 	callchannel Music_TitleScreenXY_Ch4_b2

@@ -16,7 +16,7 @@ Music_Route101RSE_Ch1:
 	tone $0001
 	vibrato $10, $15
 	stereopanning $f
-	notetype $c, $83
+	note_type 12, 8, 3
 	note __, 2
 Music_Route101RSE_Ch1_loop:
 	intensity $84
@@ -223,7 +223,7 @@ Music_Route101RSE_Ch1_branch_3:
 Music_Route101RSE_Ch2:
 	dutycycle $2
 	vibrato $12, $36
-	notetype $c, $77
+	note_type 12, 7, 7
 	note __, 2
 Music_Route101RSE_Ch2_loop:
 	intensity $77
@@ -348,7 +348,7 @@ Music_Route101RSE_Ch2_branch_2:
 
 Music_Route101RSE_Ch3:
 	stereopanning $f0
-	notetype $c, $13
+	note_type 12, 1, 3
 	vibrato $15, $24
 Music_Route101RSE_Ch3_loop:
 	callchannel Music_Route101RSE_Ch3_branch_1
@@ -477,7 +477,7 @@ Music_Route101RSE_Ch3_branch_2:
 Music_Route101RSE_Ch4:
 	stereopanning $f
 	togglenoise $0
-	notetype $c
+	note_type 12
 	note __, 2
 Music_Route101RSE_Ch4_loop:
 	callchannel Music_Route101RSE_Ch4_branch_1

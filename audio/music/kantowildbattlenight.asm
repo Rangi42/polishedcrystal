@@ -14,7 +14,7 @@ Music_KantoWildBattleNight_Ch1:
 	volume 7, 7
 	vibrato $12, $22
 	dutycycle $2
-	notetype $c, $b7
+	note_type 12, 11, 7
 	note __, 16
 	octave 4
 	note A#, 6
@@ -33,7 +33,7 @@ Music_KantoWildBattleNight_Ch1:
 Music_KantoWildBattleNight_Ch2:
 	dutycycle $3
 	vibrato $12, $22
-	notetype $c, $b1
+	note_type 12, 11, 1
 	octave 4
 rept 5
 	note G_, 1
@@ -58,10 +58,10 @@ endr
 
 Music_KantoWildBattleNight_Ch3:
 	vibrato $12, $23
-	notetype $c, $12
+	note_type 12, 1, 2
 	callchannel Music_KantoWildBattle_Ch3Intro
 Music_KantoWildBattleNight_Ch3loop:
-	notetype $c, $12
+	note_type 12, 1, 2
 	callchannel Music_KantoWildBattle_Type1
 	callchannel Music_KantoWildBattle_Ch3_Part3
 	callchannel Music_KantoWildBattle_Type1
@@ -162,7 +162,7 @@ Music_KantoWildBattleNight_Ch3loop:
 	note D_, 4
 	note F_, 4
 	note G#, 16
-	notetype $6, $12
+	note_type 6, 1, 2
 	note G#, 1
 	note __, 1
 	intensity $22
@@ -187,10 +187,10 @@ endr
 	note F_, 2
 	note E_, 2
 	note F_, 2
-	notetype $c, $12
+	note_type 12, 1, 2
 	note G_, 12
 	note G_, 8
-	notetype $6, $12
+	note_type 6, 1, 2
 rept 4
 	note G_, 1
 	note __, 1
@@ -205,7 +205,7 @@ endr
 	note __, 1
 	note G_, 1
 	note __, 1
-	notetype $c, $12
+	note_type 12, 1, 2
 	octave 2
 	note A#, 16
 	note A#, 1
@@ -223,7 +223,7 @@ endr
 	note __, 1
 	note C_, 1
 	note __, 2
-	notetype $6, $12
+	note_type 6, 1, 2
 	callchannel Music_KantoWildBattle_Type6
 	octave 4
 	note C_, 2
@@ -238,7 +238,7 @@ endr
 	note __, 2
 	note A#, 2
 	note __, 2
-	notetype $c, $12
+	note_type 12, 1, 2
 	callchannel Music_KantoWildBattle_Ch3_Part1
 	intensity $11
 	callchannel Music_KantoWildBattle_Ch3_Part2

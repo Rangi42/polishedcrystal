@@ -11,7 +11,7 @@ Music_ViridianCity_Ch1:
 	stereopanning $f
 	dutycycle $2
 	vibrato $12, $34
-	notetype $c, $a7
+	note_type 12, 10, 7
 	octave 3
 	note F#, 1
 	note __, 3
@@ -274,7 +274,7 @@ Music_ViridianCity_branch_f410f:
 Music_ViridianCity_Ch2:
 	vibrato $10, $46
 	dutycycle $1
-	notetype $c, $b7
+	note_type 12, 11, 7
 	stereopanning $f0
 	octave 2
 	note D_, 4
@@ -508,7 +508,7 @@ Music_ViridianCity_branch_f4215:
 
 Music_ViridianCity_Ch3:
 	vibrato $12, $24
-	notetype $c, $13
+	note_type 12, 1, 3
 	stereopanning $ff
 	octave 4
 	note A_, 1
@@ -690,7 +690,7 @@ Music_ViridianCity_branch_f42a2:
 
 Music_ViridianCity_Ch4:
 	togglenoise $3
-	notetype $c
+	note_type 12
 	callchannel Music_ViridianCity_branch_f431d
 	callchannel Music_ViridianCity_branch_f432c
 Music_ViridianCity_branch_f42e9:

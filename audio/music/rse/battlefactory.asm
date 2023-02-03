@@ -14,14 +14,14 @@ Music_BattleFactoryRSE_Ch1:
 	tempo 132
 	volume 7, 7
 	stereopanning $ff
-	notetype $c, $47
+	note_type 12, 4, 7
 	note __, 12
 	note __, 16
 Music_BattleFactoryRSE_Ch1_loop:
 	dutycycle $2
 	vibrato $12, $24
 	note __, 16
-	notetype $6, $47
+	note_type 6, 4, 7
 	octave 4
 	note G_, 12
 	octave 5
@@ -307,7 +307,7 @@ Music_BattleFactoryRSE_Ch1_loop:
 	note F#, 2
 	note D_, 2
 	dutycycle $0
-	notetype $c, $1F
+	note_type 12, 1, -7
 	note F#, 6
 	intensity $47
 	vibrato $12, $73
@@ -334,7 +334,7 @@ Music_BattleFactoryRSE_Ch1_loop:
 	note __, 16
 	note __, 16
 	note __, 12
-	notetype $8, $A7
+	note_type 8, 10, 7
 	dutycycle $2
 	octave 6
 	note D#, 1
@@ -350,7 +350,7 @@ Music_BattleFactoryRSE_Ch1_loop:
 	note G_, 6
 	note D#, 1
 	note D_, 5
-	notetype $6, $42
+	note_type 6, 4, 2
 	note __, 16
 	note __, 8
 
@@ -390,7 +390,7 @@ Music_BattleFactoryRSE_Ch1_loop:
 	vibrato $12, $24
 	note __, 8
 	dutycycle $1
-	notetype $8, $A7
+	note_type 8, 10, 7
 	note G#, 2
 	note __, 2
 	note E_, 2
@@ -401,7 +401,7 @@ Music_BattleFactoryRSE_Ch1_loop:
 	note __, 2
 	note E_, 2
 	note F#, 12
-	notetype $6, $94
+	note_type 6, 9, 4
 	note __, 12
 	octave 4
 	dutycycle $2
@@ -453,13 +453,13 @@ Music_BattleFactoryRSE_Ch1_loop:
 
 Music_BattleFactoryRSE_Ch2:
 	stereopanning $ff
-	notetype $c, $90
+	note_type 12, 9, 0
 	note __, 12
 Music_BattleFactoryRSE_Ch2_loop:
 	note __, 16
 	note __, 16
 	dutycycle $2
-	notetype $6, $97
+	note_type 6, 9, 7
 	octave 4
 	note G_, 11
 	note B_, 1
@@ -784,7 +784,7 @@ Music_BattleFactoryRSE_Ch2_loop:
 	note F#, 2
 	note D_, 2
 	dutycycle $0
-	notetype $c, $6F
+	note_type 12, 6, -7
 	note F#, 6
 	intensity $97
 	vibrato $12, $73
@@ -807,7 +807,7 @@ Music_BattleFactoryRSE_Ch2_loop:
 	intensity $97
 	vibrato $12, $73
 	note A_, 10
-	notetype $6, $92
+	note_type 6, 9, 2
 	vibrato $12, $24
 	octave 2
 	note C_, 2
@@ -823,7 +823,7 @@ Music_BattleFactoryRSE_Ch2_loop:
 	note F_, 2
 	note G_, 2
 	note B_, 2
-	notetype $3, $92
+	note_type 3, 9, 2
 	note D#, 1
 	note D_, 1
 	note C#, 1
@@ -841,7 +841,7 @@ Music_BattleFactoryRSE_Ch2_loop:
 	note D_, 1
 	note C#, 1
 	note C_, 1
-	notetype $8, $92
+	note_type 8, 9, 2
 	dutycycle $2
 	octave 3
 	note D_, 4
@@ -898,7 +898,7 @@ Music_BattleFactoryRSE_Ch2_loop:
 	octave 4
 	note D_, 2
 
-	notetype $6, $92
+	note_type 6, 9, 2
 	dutycycle $0
 	octave 1
 	note B_, 2
@@ -1017,7 +1017,7 @@ Music_BattleFactoryRSE_Ch2_branch_1:
 Music_BattleFactoryRSE_Ch3:
 	vibrato $14, $23
 	stereopanning $ff
-	notetype $6, $25
+	note_type 6, 2, 5
 	octave 2
 	note E_, 2
 	note __, 2
@@ -1249,7 +1249,7 @@ Music_BattleFactoryRSE_Ch3_branch_3:
 
 Music_BattleFactoryRSE_Ch4:
 	togglenoise $4
-	notetype $6
+	note_type 6
 Music_BattleFactoryRSE_Ch4_loop:
 	note D#, 8
 	jumpchannel Music_BattleFactoryRSE_Ch4_loop

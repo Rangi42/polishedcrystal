@@ -13,7 +13,7 @@ Music_BikeRiding_Ch1:
 	volume 7, 7
 	dutycycle 3
 	vibrato $8, $14
-	notetype $c, $b5
+	note_type 12, 11, 5
 	octave 3
 	note G_, 2
 Music_BikeRiding_branch_7dbc9:
@@ -161,7 +161,7 @@ Music_BikeRiding_branch_7dbc9:
 Music_BikeRiding_Ch2:
 	dutycycle 2
 	vibrato $6, $15
-	notetype $c, $c3
+	note_type 12, 12, 3
 	octave 4
 	note C_, 2
 Music_BikeRiding_branch_7dc75:
@@ -191,10 +191,10 @@ Music_BikeRiding_branch_7dc75:
 	note A_, 2
 	note G_, 4
 	dutycycle 3
-	notetype $c, $84
+	note_type 12, 8, 4
 	note A#, 6
 	dutycycle 2
-	notetype $c, $c5
+	note_type 12, 12, 5
 	octave 5
 	note C_, 2
 	octave 4
@@ -211,7 +211,7 @@ Music_BikeRiding_branch_7dc75:
 	note C_, 2
 	octave 4
 	note G_, 10
-	notetype $c, $c3
+	note_type 12, 12, 3
 	octave 5
 	note C_, 4
 	note E_, 2
@@ -221,18 +221,18 @@ Music_BikeRiding_branch_7dc75:
 	note B_, 2
 	octave 5
 	note C_, 2
-	notetype $c, $b0
+	note_type 12, 11, 0
 	note D_, 4
-	notetype $c, $c7
+	note_type 12, 12, 7
 	note D_, 10
 	note D_, 1
 	note C_, 1
-	notetype $c, $b0
+	note_type 12, 11, 0
 	octave 4
 	note B_, 4
-	notetype $c, $c7
+	note_type 12, 12, 7
 	note B_, 12
-	notetype $c, $c4
+	note_type 12, 12, 4
 	note F_, 6
 	note F_, 2
 	note G_, 2
@@ -256,12 +256,12 @@ Music_BikeRiding_branch_7dc75:
 	note G_, 4
 	note F_, 2
 	note E_, 6
-	notetype $6, $c2
+	note_type 6, 12, 2
 	note F_, 1
 	note G_, 1
 	note A_, 1
 	note B_, 1
-	notetype $c, $c3
+	note_type 12, 12, 3
 	octave 5
 	note C_, 2
 	octave 4
@@ -278,7 +278,7 @@ Music_BikeRiding_branch_7dc75:
 	note G_, 4
 	note F_, 2
 	note E_, 2
-	notetype $8, $c4
+	note_type 8, 12, 4
 	note A_, 4
 	note G_, 4
 	note F_, 4
@@ -294,18 +294,18 @@ Music_BikeRiding_branch_7dc75:
 	note D_, 4
 	note E_, 4
 	note C_, 4
-	notetype $c, $c7
+	note_type 12, 12, 7
 	note D_, 12
 	note C_, 4
-	notetype $c, $b0
+	note_type 12, 11, 0
 	octave 4
 	note B_, 4
-	notetype $c, $c7
+	note_type 12, 12, 7
 	note B_, 12
-	notetype $c, $c3
+	note_type 12, 12, 3
 	jumpchannel Music_BikeRiding_branch_7dc75
 Music_BikeRiding_Ch3:
-	notetype $c, $13
+	note_type 12, 1, 3
 	note __, 2
 Music_BikeRiding_branch_7dd17:
 	octave 4
@@ -644,7 +644,7 @@ Music_BikeRiding_branch_7dd17:
 	jumpchannel Music_BikeRiding_branch_7dd17
 Music_BikeRiding_Ch4:
 	togglenoise $1
-	notetype $c
+	note_type 12
 	note __, 2
 Music_BikeRiding_branch_7de6a:
 	callchannel Music_BikeRiding_branch_7dea7

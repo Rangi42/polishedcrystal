@@ -16,7 +16,7 @@ Music_WildBattleSM_Ch1:
 	dutycycle $3
 	tone $0002
 	vibrato $12, $15
-	notetype $6, $92
+	note_type 6, 9, 2
 	note __, 4
 	octave 4
 	note G#, 1
@@ -242,7 +242,7 @@ Music_WildBattleSM_Ch2:
 	dutycycle $3
 	vibrato $8, $36
 	tone $0001
-	notetype $6, $c2
+	note_type 6, 12, 2
 	note __, 4
 Music_WildBattleSM_Ch2_loop_1:
 	octave 5
@@ -409,14 +409,14 @@ Music_WildBattleSM_Ch2_loop_main:
 	intensity $c4
 	note F#, 10
 	note __, 11
-	notetype $3, $c1
+	note_type 3, 12, 1
 	octave 3
 	note A#, 1
 	note B_, 1
 	octave 4
 	note C_, 1
 	note D_, 1
-	notetype $6, $c7
+	note_type 6, 12, 7
 	note D#, 8
 	note F_, 8
 	note G_, 8
@@ -478,7 +478,7 @@ Music_WildBattleSM_Ch2_loop_main:
 	jumpchannel Music_WildBattleSM_Ch2_loop_main
 
 Music_WildBattleSM_Ch3:
-	notetype $3, $19
+	note_type 3, 1, -1
 	octave 3
 	note C_, 8
 	octave 2
@@ -854,7 +854,7 @@ Music_WildBattleSM_Ch3_loop_3:
 
 Music_WildBattleSM_Ch4:
 	togglenoise $3
-	notetype $6
+	note_type 6
 	note B_, 4
 	note D#, 4
 	note D#, 4

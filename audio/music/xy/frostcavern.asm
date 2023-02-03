@@ -13,7 +13,7 @@ Music_FrostCavernXY_Ch1:
 	tempo 152
 	volume 7, 7
 	vibrato $6, $23
-	notetype $c, $92
+	note_type 12, 9, 2
 	dutycycle 0
 	octave 3
 	note __, 2
@@ -82,7 +82,7 @@ Music_FrostCavernXY_Ch1_loop_1:
 
 Music_FrostCavernXY_Ch2:
 	vibrato $8, $24
-	notetype $c, $b2
+	note_type 12, 11, 2
 	dutycycle 2
 	octave 3
 	note C_, 2
@@ -139,7 +139,7 @@ Music_FrostCavernXY_Ch2:
 
 Music_FrostCavernXY_Ch3:
 	vibrato $16, $15
-	notetype $c, $20
+	note_type 12, 2, 0
 	note __, 16
 Music_FrostCavernXY_Ch3_loop_main:
 	note __, 16

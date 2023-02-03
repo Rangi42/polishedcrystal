@@ -13,7 +13,7 @@ Music_SurfRSE_Ch1:
 	tempo $75
 	volume 7, 7
 	stereopanning $77
-	notetype $C, $00
+	note_type 12, 0, 0
 	note __, 12
 Music_SurfRSE_Ch1_loop:
 	intensity $91
@@ -435,7 +435,7 @@ Music_SurfRSE_Ch2:
 Music_SurfRSE_Ch2_loop:
 	vibrato $00, $16
 	octave 4
-	notetype $C, $C2
+	note_type 12, 12, 2
 	note C#, 2
 	note C_, 2
 	note C#, 2
@@ -793,7 +793,7 @@ Music_SurfRSE_Ch2_loop:
 	jumpchannel Music_SurfRSE_Ch2_loop
 
 Music_SurfRSE_Ch3:
-	notetype $C, $00
+	note_type 12, 0, 0
 	note __, 12
 Music_SurfRSE_Ch3_loop:
 	dutycycle 4

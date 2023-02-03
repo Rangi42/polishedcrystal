@@ -12,11 +12,11 @@ Music_MainMenu_Ch1:
 	tone $0001
 	vibrato $10, $15
 	stereopanning $f0
-	notetype $c, $f
+	note_type 12, 0, -7
 	octave 3
 	note D_, 8
 Music_MainMenu_branch_f791d:
-	notetype $c, $92
+	note_type 12, 9, 2
 	octave 3
 	note C#, 6
 	note C#, 1
@@ -37,7 +37,7 @@ Music_MainMenu_branch_f791d:
 	note B_, 1
 	note B_, 2
 	note B_, 2
-	notetype $c, $94
+	note_type 12, 9, 4
 	octave 3
 	note C_, 4
 	jumpchannel Music_MainMenu_branch_f791d
@@ -45,11 +45,11 @@ Music_MainMenu_branch_f791d:
 Music_MainMenu_Ch2:
 	dutycycle $3
 	stereopanning $f
-	notetype $c, $f
+	note_type 12, 0, -7
 	octave 3
 	note G_, 8
 Music_MainMenu_branch_f7949:
-	notetype $c, $a2
+	note_type 12, 10, 2
 	note F#, 6
 	note F#, 1
 	note F#, 1
@@ -68,13 +68,13 @@ Music_MainMenu_branch_f7949:
 	note E_, 1
 	note E_, 2
 	note E_, 2
-	notetype $c, $a4
+	note_type 12, 10, 4
 	note F_, 4
 	jumpchannel Music_MainMenu_branch_f7949
 
 Music_MainMenu_Ch3:
 	stereopanning $f0
-	notetype $c, $25
+	note_type 12, 2, 5
 	note __, 8
 Music_MainMenu_branch_f796f:
 	octave 2
@@ -114,7 +114,7 @@ Music_MainMenu_branch_f796f:
 Music_MainMenu_Ch4:
 	stereopanning $f
 	togglenoise $3
-	notetype $c
+	note_type 12
 	note __, 8
 	note __, 16
 	note __, 16

@@ -10,7 +10,7 @@ Music_LavenderTown_Ch1:
 	stereopanning $f
 	vibrato $6, $24
 	dutycycle $0
-	notetype $c, $b3
+	note_type 12, 11, 3
 	note __, 16
 	note __, 16
 	note __, 16
@@ -265,7 +265,7 @@ Music_LavenderTown_Ch2:
 	vibrato $8, $24
 	stereopanning $ff
 Music_LavenderTown_branch_ef8a0:
-	notetype $c, $a3
+	note_type 12, 10, 3
 	octave 5
 	note C_, 2
 	intensity $63
@@ -387,7 +387,7 @@ Music_LavenderTown_branch_ef915:
 
 Music_LavenderTown_Ch3:
 	vibrato $12, $24
-	notetype $c, $13
+	note_type 12, 1, 3
 	stereopanning $f0
 	note __, 16
 	note __, 16
@@ -481,11 +481,11 @@ Music_LavenderTown_branch_ef941:
 	note G_, 4
 	octave 6
 	note F_, 4
-	notetype $8, $24
+	note_type 8, 2, 4
 	note E_, 2
 	note F_, 2
 	note E_, 2
-	notetype $c, $24
+	note_type 12, 2, 4
 	note D_, 4
 	note C_, 4
 	octave 5

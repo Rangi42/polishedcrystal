@@ -11,7 +11,7 @@ Music_Clair_Ch1:
 	tone $0001
 	vibrato $12, $34
 	stereopanning $f
-	notetype $c, $93
+	note_type 12, 9, 3
 	dutycycle $3
 Music_Clair_branch_1faab:
 	octave 4
@@ -146,7 +146,7 @@ Music_Clair_branch_1fb2e:
 Music_Clair_Ch2:
 	dutycycle $3
 	vibrato $12, $34
-	notetype $6, $b7
+	note_type 6, 11, 7
 Music_Clair_branch_1fb49:
 	octave 3
 	note A#, 2
@@ -248,7 +248,7 @@ Music_Clair_branch_1fba6:
 	endchannel
 
 Music_Clair_Ch3:
-	notetype $c, $14
+	note_type 12, 1, 4
 	pitchoffset 0, CC
 	octave 3
 	note C#, 2
@@ -390,7 +390,7 @@ Music_Clair_branch_1fc3c:
 
 Music_Clair_Ch4:
 	togglenoise $3
-	notetype $c
+	note_type 12
 	stereopanning $f0
 	note B_, 8
 	note B_, 8

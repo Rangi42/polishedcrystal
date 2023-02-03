@@ -13,7 +13,7 @@ Music_Lighthouse_Ch1:
 	vibrato $8, $45
 	stereopanning $f
 Music_Lighthouse_branch_ee584:
-	notetype $c, $b3
+	note_type 12, 11, 3
 	octave 3
 	note C#, 8
 	octave 2
@@ -134,7 +134,7 @@ Music_Lighthouse_Ch2:
 	tone $0002
 	vibrato $10, $45
 Music_Lighthouse_branch_ee604:
-	notetype $c, $c5
+	note_type 12, 12, 5
 	octave 3
 	note G#, 12
 	note F#, 2
@@ -212,7 +212,7 @@ Music_Lighthouse_branch_ee604:
 	jumpchannel Music_Lighthouse_branch_ee604
 
 Music_Lighthouse_Ch3:
-	notetype $c, $19
+	note_type 12, 1, -1
 	stereopanning $f0
 Music_Lighthouse_branch_ee65b:
 	octave 2
@@ -291,7 +291,7 @@ Music_Lighthouse_branch_ee69b:
 
 Music_Lighthouse_Ch4:
 	togglenoise $0
-	notetype $c
+	note_type 12
 Music_Lighthouse_branch_ee6b1:
 	stereopanning $f
 	note G#, 4

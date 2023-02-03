@@ -9,12 +9,12 @@ Music_LookKimonoGirl_Ch1:
 	volume 7, 7
 	stereopanning $f
 	dutycycle $1
-	notetype $6, $87
+	note_type 6, 8, 7
 	tone $0001
 	callchannel Music_LookKimonoGirl_branch_f7aa8
 	tone 0
 Music_LookKimonoGirl_branch_f79d7:
-	notetype $c, $b2
+	note_type 12, 11, 2
 	callchannel Music_LookKimonoGirl_branch_f7a13
 	callchannel Music_LookKimonoGirl_branch_f7a13
 	callchannel Music_LookKimonoGirl_branch_f7a34
@@ -104,12 +104,12 @@ Music_LookKimonoGirl_branch_f7a34:
 
 Music_LookKimonoGirl_Ch2:
 	dutycycle $0
-	notetype $6, $a7
+	note_type 6, 10, 7
 	stereopanning $f0
 	callchannel Music_LookKimonoGirl_branch_f7aa8
 Music_LookKimonoGirl_branch_f7a5f:
 	dutycycle $3
-	notetype $c, $91
+	note_type 12, 9, 1
 	octave 5
 	note E_, 1
 	note D_, 1
@@ -191,7 +191,7 @@ Music_LookKimonoGirl_branch_f7aa8:
 	intensity $a7
 	note E_, 2
 	note __, 1
-	notetype $6, $65
+	note_type 6, 6, 5
 	note E_, 2
 	note __, 1
 	intensity $54
@@ -204,7 +204,7 @@ Music_LookKimonoGirl_branch_f7aa8:
 	note E_, 2
 	intensity $a1
 	note E_, 1
-	notetype $8, $b1
+	note_type 8, 11, 1
 	note E_, 1
 	note E_, 1
 	endchannel
@@ -212,16 +212,16 @@ Music_LookKimonoGirl_branch_f7aa8:
 Music_LookKimonoGirl_Ch3:
 	stereopanning $ff
 	vibrato $12, $24
-	notetype $6, $13
+	note_type 6, 1, 3
 	note __, 1
 	note __, 16
 	octave 5
 	note E_, 1
 	note F_, 1
 	note E_, 2
-	notetype $c, $13
+	note_type 12, 1, 3
 	note E_, 12
-	notetype $6, $13
+	note_type 6, 1, 3
 	octave 5
 	note D_, 2
 	note E_, 2

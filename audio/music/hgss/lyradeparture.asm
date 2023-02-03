@@ -13,25 +13,25 @@ Music_LyraDepartureHGSS:
 Music_LyraDepartureHGSS_Ch1:
 	tempo 184
 	dutycycle 1
-	notetype $c, $85
+	note_type 12, 8, 5
 	note __, 4
 	jumpchannel Music_LyraEncounterHGSS_Ch1_loop
 
 Music_LyraDepartureHGSS_Ch2:
 	dutycycle 2
-	notetype $c, $b4
+	note_type 12, 11, 4
 	note __, 4
 	jumpchannel Music_LyraEncounterHGSS_Ch2_loop
 
 Music_LyraDepartureHGSS_Ch3:
-	notetype $c, $15
+	note_type 12, 1, 5
 	intensity $10
 	note __, 4
 	jumpchannel Music_LyraEncounterHGSS_Ch3_loop
 
 Music_LyraDepartureHGSS_Ch4:
 	togglenoise $3
-	notetype $6
+	note_type 6
 	note C_, 2
 	note C_, 2
 	note D#, 4

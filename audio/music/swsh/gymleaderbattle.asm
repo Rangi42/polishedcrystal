@@ -13,7 +13,7 @@ Music_GymLeaderBattleSwSh_Ch1:
 	tempo $89
 	volume 7, 7
 	dutycycle $2
-	notetype $c, $b2
+	note_type 12, 11, 2
 	stereopanning $ff
 	jumpif COND_FINAL_MON, Music_GymLeaderBattleSwSh_Ch1_EnterLastPokemonPhase
 ; Neutral Intro
@@ -152,7 +152,7 @@ Music_GymLeaderBattleSwSh_Ch1_DisadvantagePhase_Loop_4:
 
 Music_GymLeaderBattleSwSh_Ch2:
 	dutycycle $2
-	notetype $c, $b2
+	note_type 12, 11, 2
 	stereopanning $ff
 	jumpif COND_FINAL_MON, Music_GymLeaderBattleSwSh_Ch2_EnterLastPokemonPhase
 ; Neutral Intro
@@ -290,7 +290,7 @@ Music_GymLeaderBattleSwSh_Ch2_DisadvantagePhase_Loop_4:
 	jumpchannel Music_GymLeaderBattleSwSh_Ch2_DisadvantagePhase_Loop
 
 Music_GymLeaderBattleSwSh_Ch3:
-	notetype $c, $11
+	note_type 12, 1, 1
 	stereopanning $ff
 	jumpif COND_FINAL_MON, Music_GymLeaderBattleSwSh_Ch3_EnterLastPokemonPhase
 ; Neutral Intro
@@ -403,7 +403,7 @@ Music_GymLeaderBattleSwSh_Ch3_DisadvantagePhase_Loop_4:
 	jumpchannel Music_GymLeaderBattleSwSh_Ch3_DisadvantagePhase_Loop
 
 Music_GymLeaderBattleSwSh_Ch4:
-	notetype $c
+	note_type 12
 	togglenoise $4
 	stereopanning $ff
 	jumpif COND_FINAL_MON, Music_GymLeaderBattleSwSh_Ch4_EnterLastPokemonPhase

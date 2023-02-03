@@ -10,7 +10,7 @@ Music_ShowMeAround_Ch1:
 	volume 7, 7
 	stereopanning $f
 	dutycycle $2
-	notetype $c, $b1
+	note_type 12, 11, 1
 	octave 4
 	note B_, 2
 	note A_, 2
@@ -65,7 +65,7 @@ Music_ShowMeAround_branch_edc15:
 Music_ShowMeAround_Ch2:
 	stereopanning $ff
 	dutycycle $2
-	notetype $c, $b1
+	note_type 12, 11, 1
 	octave 5
 	note E_, 2
 	note D_, 2
@@ -181,7 +181,7 @@ Music_ShowMeAround_branch_edc98:
 Music_ShowMeAround_Ch3:
 	stereopanning $f0
 	vibrato $10, $22
-	notetype $6, $25
+	note_type 6, 2, 5
 	octave 2
 	note B_, 1
 	note __, 3
@@ -300,7 +300,7 @@ Music_ShowMeAround_branch_edd0f:
 
 Music_ShowMeAround_Ch4:
 	togglenoise $3
-	notetype $c
+	note_type 12
 	note __, 16
 	note __, 8
 	note D_, 2

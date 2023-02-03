@@ -9,7 +9,7 @@ Music_Mom_Ch2:
 	volume 7, 7
 	stereopanning $f
 	dutycycle $2
-	notetype $6, $b3
+	note_type 6, 11, 3
 	octave 3
 	note B_, 1
 	octave 4
@@ -18,7 +18,7 @@ Music_Mom_Ch2:
 	note A_, 1
 	note B_, 8
 Music_Mom_branch_f6c0e:
-	notetype $c, $b1
+	note_type 12, 11, 1
 	note __, 4
 	octave 3
 	note C#, 6
@@ -34,7 +34,7 @@ Music_Mom_branch_f6c0e:
 
 Music_Mom_Ch3:
 	stereopanning $f0
-	notetype $6, $25
+	note_type 6, 2, 5
 	octave 3
 	note E_, 1
 	note D_, 1
@@ -79,7 +79,7 @@ Music_Mom_branch_f6c2e:
 
 Music_Mom_Ch4:
 	togglenoise $3
-	notetype $c
+	note_type 12
 	note __, 6
 Music_Mom_branch_f6c56:
 	note D#, 1

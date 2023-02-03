@@ -15,11 +15,11 @@ Music_Route225DPPt_Ch1:
 	tempo $88
 Music_Route225DPPt_Ch1_loop:
 	tone $0002
-	notetype $E, $A7
+	note_type 14, 10, 7
 	note __, 12
 	dutycycle 1
 	octave 2
-	notetype $6, $A7
+	note_type 6, 10, 7
 	note E_, 1
 	note __, 1
 	note E_, 1
@@ -212,11 +212,11 @@ Music_Route225DPPt_Ch1_loop:
 	note C_, 2
 	note __, 2
 	note C_, 4
-	notetype $F, $A7
+	note_type 15, 10, 7
 	note __, 8
-	notetype $C, $A7
+	note_type 12, 10, 7
 	note D#, 1
-	notetype $6, $A7
+	note_type 6, 10, 7
 	note E_, 1
 	note __, 1
 	note E_, 2
@@ -229,11 +229,11 @@ Music_Route225DPPt_Ch1_loop:
 	note E_, 2
 	note D_, 2
 	note C_, 4
-	notetype $F, $A7
+	note_type 15, 10, 7
 	note __, 8
-	notetype $C, $A7
+	note_type 12, 10, 7
 	note G#, 1
-	notetype $6, $A7
+	note_type 6, 10, 7
 	note A_, 1
 	note __, 1
 	note A_, 2
@@ -247,11 +247,11 @@ Music_Route225DPPt_Ch1_loop:
 	note F_, 2
 	note __, 2
 	note F_, 4
-	notetype $F, $A7
+	note_type 15, 10, 7
 	note __, 8
-	notetype $C, $A7
+	note_type 12, 10, 7
 	note G#, 1
-	notetype $6, $A7
+	note_type 6, 10, 7
 	note A_, 1
 	note __, 1
 	note A_, 2
@@ -265,11 +265,11 @@ Music_Route225DPPt_Ch1_loop:
 	note G_, 2
 	note F_, 4
 	intensity $97
-	notetype $E, $97
+	note_type 14, 9, 7
 	note __, 12
 	vibrato $00, $00
 	octave 3
-	notetype $C, $97
+	note_type 12, 9, 7
 	note C_, 1
 	note __, 3
 	octave 2
@@ -331,7 +331,7 @@ Music_Route225DPPt_Ch1_loop:
 	note __, 3
 	note F_, 1
 	note __, 5
-	notetype $6, $97
+	note_type 6, 9, 7
 	note G#, 1
 	note A_, 5
 	note __, 2
@@ -421,19 +421,19 @@ Music_Route225DPPt_Ch1_loop:
 	note __, 2
 	note F#, 1
 	note G_, 3
-	notetype $E, $97
+	note_type 14, 9, 7
 	note E_, 12
 	jumpchannel Music_Route225DPPt_Ch1_loop
 
 Music_Route225DPPt_Ch2:
 Music_Route225DPPt_Ch2_loop:
 	tone $0001
-	notetype $C, $C7
+	note_type 12, 12, 7
 	note __, 16
 	note __, 2
 	dutycycle 1
 	octave 3
-	notetype $6, $C7
+	note_type 6, 12, 7
 	note G_, 1
 	octave 4
 	note C_, 1
@@ -450,34 +450,34 @@ Music_Route225DPPt_Ch2_loop:
 	note E_, 8
 	note D_, 8
 	note E_, 4
-	notetype $F, $C7
+	note_type 15, 12, 7
 	note C_, 8
 	octave 3
-	notetype $C, $C7
+	note_type 12, 12, 7
 	note G#, 1
 	note __, 1
 	octave 4
 	note C_, 1
 	note __, 1
 	note G#, 2
-	notetype $E, $C7
+	note_type 14, 12, 7
 	note G_, 3
-	notetype $6, $C7
+	note_type 6, 12, 7
 	note __, 1
 	note G_, 2
 	note __, 2
 	note F_, 4
 	note __, 2
 	octave 3
-	notetype $2, $C7
+	note_type 2, 12, 7
 	note F_, 1
 	note G_, 1
-	notetype $3, $C7
+	note_type 3, 12, 7
 	note A_, 1
 	octave 4
-	notetype $2, $C7
+	note_type 2, 12, 7
 	note C_, 1
-	notetype $3, $C7
+	note_type 3, 12, 7
 	note D_, 1
 	note E_, 6
 	note __, 10
@@ -492,21 +492,21 @@ Music_Route225DPPt_Ch2_loop:
 	note E_, 6
 	note __, 10
 	note D_, 6
-	notetype $9, $C7
+	note_type 9, 12, 7
 	note __, 6
-	notetype $E, $C7
+	note_type 14, 12, 7
 	note F_, 3
-	notetype $6, $C7
+	note_type 6, 12, 7
 	note __, 1
 	note F_, 2
 	note __, 2
 	note E_, 8
 	note D_, 8
 	note E_, 4
-	notetype $F, $C7
+	note_type 15, 12, 7
 	note C_, 8
 	octave 3
-	notetype $C, $C7
+	note_type 12, 12, 7
 	note G#, 2
 	octave 4
 	note F_, 1
@@ -526,7 +526,7 @@ Music_Route225DPPt_Ch2_loop:
 	octave 3
 	note B_, 1
 	octave 4
-	notetype $6, $C7
+	note_type 6, 12, 7
 	note C_, 1
 	note __, 1
 	note C_, 2
@@ -542,12 +542,12 @@ Music_Route225DPPt_Ch2_loop:
 	note A_, 2
 	note __, 2
 	note A_, 4
-	notetype $F, $C7
+	note_type 15, 12, 7
 	note __, 8
-	notetype $C, $C7
+	note_type 12, 12, 7
 	note B_, 1
 	octave 4
-	notetype $6, $C7
+	note_type 6, 12, 7
 	note C_, 1
 	note __, 1
 	note C_, 2
@@ -565,12 +565,12 @@ Music_Route225DPPt_Ch2_loop:
 	octave 3
 	note B_, 2
 	note A_, 4
-	notetype $F, $C7
+	note_type 15, 12, 7
 	note __, 8
 	octave 4
-	notetype $C, $C7
+	note_type 12, 12, 7
 	note E_, 1
-	notetype $6, $C7
+	note_type 6, 12, 7
 	note F_, 1
 	note __, 1
 	note F_, 2
@@ -583,11 +583,11 @@ Music_Route225DPPt_Ch2_loop:
 	note D_, 2
 	note __, 2
 	note D_, 4
-	notetype $F, $C7
+	note_type 15, 12, 7
 	note __, 8
-	notetype $C, $C7
+	note_type 12, 12, 7
 	note E_, 1
-	notetype $6, $C7
+	note_type 6, 12, 7
 	note F_, 1
 	note __, 1
 	note F_, 2
@@ -622,12 +622,12 @@ Music_Route225DPPt_Ch2_loop:
 	note A_, 2
 	note __, 2
 	note A_, 4
-	notetype $F, $C7
+	note_type 15, 12, 7
 	note __, 8
-	notetype $C, $C7
+	note_type 12, 12, 7
 	note B_, 1
 	octave 4
-	notetype $6, $C7
+	note_type 6, 12, 7
 	note C_, 1
 	note __, 1
 	note C_, 2
@@ -645,12 +645,12 @@ Music_Route225DPPt_Ch2_loop:
 	octave 3
 	note B_, 2
 	note A_, 4
-	notetype $F, $C7
+	note_type 15, 12, 7
 	note __, 8
 	octave 4
-	notetype $C, $C7
+	note_type 12, 12, 7
 	note E_, 1
-	notetype $6, $C7
+	note_type 6, 12, 7
 	note F_, 1
 	note __, 1
 	note F_, 2
@@ -664,11 +664,11 @@ Music_Route225DPPt_Ch2_loop:
 	note D_, 2
 	note __, 2
 	note D_, 4
-	notetype $F, $C7
+	note_type 15, 12, 7
 	note __, 8
-	notetype $C, $C7
+	note_type 12, 12, 7
 	note E_, 1
-	notetype $6, $C7
+	note_type 6, 12, 7
 	note F_, 1
 	note __, 1
 	note F_, 2
@@ -729,14 +729,14 @@ Music_Route225DPPt_Ch2_loop:
 	note __, 6
 	note D_, 12
 	note D#, 2
-	notetype $C, $4F
+	note_type 12, 4, -7
 	note E_, 9
 	intensity $A7
 	note E_, 2
 	note __, 2
 	note A_, 1
 	note __, 1
-	notetype $6, $A7
+	note_type 6, 10, 7
 	note A#, 1
 	note B_, 7
 	note A_, 2
@@ -801,14 +801,14 @@ Music_Route225DPPt_Ch2_loop:
 	note __, 4
 	note D_, 12
 	note D#, 2
-	notetype $C, $4F
+	note_type 12, 4, -7
 	note E_, 9
 	intensity $A7
 	note E_, 2
 	note __, 2
 	note A_, 1
 	note __, 1
-	notetype $6, $A7
+	note_type 6, 10, 7
 	note A#, 1
 	note B_, 7
 	note A_, 2
@@ -860,13 +860,13 @@ Music_Route225DPPt_Ch2_loop:
 	note __, 2
 	note C#, 1
 	note D_, 3
-	notetype $E, $A7
+	note_type 14, 10, 7
 	note C_, 12
 	jumpchannel Music_Route225DPPt_Ch2_loop
 
 Music_Route225DPPt_Ch3:
 Music_Route225DPPt_Ch3_loop:
-	notetype $C, $13
+	note_type 12, 1, 3
 	note __, 16
 	octave 2
 	note C_, 4
@@ -899,9 +899,9 @@ Music_Route225DPPt_Ch3_loop:
 	note G#, 1
 	note __, 3
 	octave 1
-	notetype $9, $13
+	note_type 9, 1, 3
 	note G_, 2
-	notetype $6, $13
+	note_type 6, 1, 3
 	note __, 1
 	note G#, 2
 	note __, 2
@@ -990,15 +990,15 @@ Music_Route225DPPt_Ch3_loop:
 	note A_, 4
 	note G_, 4
 	note F#, 16
-	notetype $F, $14
+	note_type 15, 1, 4
 	note __, 16
-	notetype $C, $14
+	note_type 12, 1, 4
 	note F#, 2
 	note E_, 2
 	note D_, 8
-	notetype $F, $14
+	note_type 15, 1, 4
 	note __, 16
-	notetype $C, $14
+	note_type 12, 1, 4
 	note D_, 2
 	note E_, 2
 	note F_, 10
@@ -1010,7 +1010,7 @@ Music_Route225DPPt_Ch3_loop:
 	note G#, 8
 	note __, 2
 	note A_, 2
-	notetype $6, $14
+	note_type 6, 1, 4
 	note A_, 1
 	note __, 11
 	note A_, 4
@@ -1395,7 +1395,7 @@ Music_Route225DPPt_Ch3_loop:
 Music_Route225DPPt_Ch4:
 	togglenoise 3
 Music_Route225DPPt_Ch4_loop:
-	notetype $C
+	note_type 12
 	note C_, 1
 	note C_, 1
 	note D#, 2
@@ -1431,13 +1431,13 @@ Music_Route225DPPt_Ch4_loop:
 	note C_, 2
 	note D#, 4
 	note D#, 2
-	notetype $6
+	note_type 6
 	note C_, 1
 	note C_, 3
 	note C_, 4
-	notetype $A
+	note_type 10
 	note C_, 4
-	notetype $8
+	note_type 8
 	note D#, 1
 	note C_, 3
 	note D#, 3
@@ -1456,9 +1456,9 @@ Music_Route225DPPt_Ch4_loop:
 	note D#, 3
 	note D#, 3
 	note C_, 3
-	notetype $F
+	note_type 15
 	note D#, 4
-	notetype $C
+	note_type 12
 	note D#, 4
 	note D#, 1
 	note C_, 1
@@ -1542,7 +1542,7 @@ Music_Route225DPPt_Ch4_loop:
 	note D#, 2
 	note C_, 2
 	note D#, 2
-	notetype $6
+	note_type 6
 	note C_, 1
 	note C_, 3
 	note D#, 4

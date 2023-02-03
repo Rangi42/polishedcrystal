@@ -16,7 +16,7 @@ Music_MountChimneyRSE_Ch1:
 	dutycycle 0
 	tone $0002
 	vibrato $8, $15
-	notetype $c, $80
+	note_type 12, 8, 0
 	octave 1
 	note G_, 4
 	octave 2
@@ -40,7 +40,7 @@ Music_MountChimneyRSE_Ch1_loop_main:
 	octave 3
 	note B_, 1
 	note __, 1
-	notetype $8, $52
+	note_type 8, 5, 2
 	dutycycle 1
 Music_MountChimneyRSE_Ch1_loop_1:
 	octave 2
@@ -63,7 +63,7 @@ Music_MountChimneyRSE_Ch1_loop_2:
 	note C#, 1
 	loopchannel 2, Music_MountChimneyRSE_Ch1_loop_2
 	dutycycle 0
-	notetype $6, $a2
+	note_type 6, 10, 2
 	note G#, 2
 	octave 4
 	note C#, 4
@@ -83,7 +83,7 @@ Music_MountChimneyRSE_Ch1_loop_2:
 	note C#, 4
 	note C#, 4
 	note C#, 2
-	notetype $8, $52
+	note_type 8, 5, 2
 	dutycycle 1
 Music_MountChimneyRSE_Ch1_loop_3:
 	octave 2
@@ -106,7 +106,7 @@ Music_MountChimneyRSE_Ch1_loop_4:
 	note C_, 1
 	loopchannel 2, Music_MountChimneyRSE_Ch1_loop_4
 	dutycycle 0
-	notetype $6, $a2
+	note_type 6, 10, 2
 	note G#, 2
 	octave 4
 	note C_, 4
@@ -218,7 +218,7 @@ Music_MountChimneyRSE_Ch1_loop_4:
 	jumpchannel Music_MountChimneyRSE_Ch1_loop_main
 
 Music_MountChimneyRSE_Ch1_branch_1:
-	notetype $6, $a2
+	note_type 6, 10, 2
 	octave 3
 	note F_, 1
 	note E_, 1
@@ -400,7 +400,7 @@ Music_MountChimneyRSE_Ch2:
 	dutycycle 3
 	vibrato $12, $25
 	tone $0001
-	notetype $c, $80
+	note_type 12, 8, 0
 	octave 2
 	note D#, 4
 	note A#, 4
@@ -577,7 +577,7 @@ Music_MountChimneyRSE_Ch2_loop:
 	jumpchannel Music_MountChimneyRSE_Ch2_loop
 
 Music_MountChimneyRSE_Ch2_branch_1:
-	notetype $6, $a2
+	note_type 6, 10, 2
 	octave 3
 	note A#, 1
 	note A_, 1
@@ -658,11 +658,11 @@ Music_MountChimneyRSE_Ch2_branch_1:
 	note D_, 2
 	note D#, 2
 	note G_, 2
-	notetype $c, $a0
+	note_type 12, 10, 0
 	note A#, 8
 	intensity $a7
 	note A#, 9
-	notetype $6, $a2
+	note_type 6, 10, 2
 	dutycycle 0
 	octave 4
 	note D#, 4
@@ -784,7 +784,7 @@ Music_MountChimneyRSE_Ch2_branch_1:
 	endchannel
 
 Music_MountChimneyRSE_Ch3:
-	notetype $6, $25
+	note_type 6, 2, 5
 	vibrato $12, $15
 	octave 2
 	note D#, 4
@@ -1154,7 +1154,7 @@ Music_MountChimneyRSE_Ch3_branch_2:
 
 Music_MountChimneyRSE_Ch4:
 	togglenoise $4
-	notetype $6
+	note_type 6
 	note B_, 4
 	note E_, 2
 	note C#, 1

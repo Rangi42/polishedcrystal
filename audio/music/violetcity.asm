@@ -10,7 +10,7 @@ Music_VioletCity_Ch1:
 	volume 7, 7
 	vibrato $12, $25
 	dutycycle $2
-	notetype $c, $95
+	note_type 12, 9, 5
 	note __, 16
 	stereopanning $f0
 	octave 2
@@ -50,7 +50,7 @@ Music_VioletCity_Ch1:
 	note __, 1
 	octave 2
 	note B_, 4
-	notetype $6, $91
+	note_type 6, 9, 1
 	octave 3
 	note C#, 2
 	note F_, 2
@@ -66,7 +66,7 @@ Music_VioletCity_Ch1:
 	note C#, 12
 	note __, 8
 Music_VioletCity_branch_f0056:
-	notetype $6, $95
+	note_type 6, 9, 5
 	note __, 4
 	octave 2
 	note B_, 2
@@ -154,20 +154,20 @@ Music_VioletCity_branch_f0056:
 	note D#, 4
 	note F#, 2
 	note __, 2
-	notetype $c, $95
+	note_type 12, 9, 5
 	note __, 8
 	octave 4
 	note F_, 3
 	dutycycle $1
-	notetype $6, $75
+	note_type 6, 7, 5
 	note G#, 1
 	note B_, 1
 	octave 5
 	note D#, 8
-	notetype $c, $93
+	note_type 12, 9, 3
 	dutycycle $2
 	note __, 16
-	notetype $6, $91
+	note_type 6, 9, 1
 	stereopanning $f0
 	octave 3
 	note E_, 2
@@ -196,7 +196,7 @@ Music_VioletCity_branch_f0056:
 	octave 4
 	note D_, 4
 	note C#, 4
-	notetype $8, $84
+	note_type 8, 8, 4
 	octave 3
 	note B_, 1
 	octave 4
@@ -204,7 +204,7 @@ Music_VioletCity_branch_f0056:
 	octave 3
 	note B_, 1
 	note A_, 3
-	notetype $c, $84
+	note_type 12, 8, 4
 	note F#, 1
 	note __, 1
 	note F#, 2
@@ -222,12 +222,12 @@ Music_VioletCity_branch_f0056:
 	note D_, 2
 	note F#, 2
 	note E_, 2
-	notetype $8, $84
+	note_type 8, 8, 4
 	note D_, 1
 	note E_, 1
 	note D_, 1
 	note C#, 3
-	notetype $c, $84
+	note_type 12, 8, 4
 	octave 3
 	note B_, 1
 	note __, 1
@@ -300,7 +300,7 @@ Music_VioletCity_branch_f0056:
 Music_VioletCity_Ch2:
 	vibrato $12, $24
 	dutycycle $2
-	notetype $c, $c7
+	note_type 12, 12, 7
 	note __, 16
 	octave 3
 	note G#, 1
@@ -432,12 +432,12 @@ Music_VioletCity_branch_f0199:
 	note D_, 2
 	note F#, 2
 	note E_, 2
-	notetype $8, $a7
+	note_type 8, 10, 7
 	note D_, 1
 	note E_, 1
 	note D_, 1
 	note C#, 3
-	notetype $c, $a7
+	note_type 12, 10, 7
 	octave 3
 	note B_, 1
 	note __, 1
@@ -456,7 +456,7 @@ Music_VioletCity_branch_f0199:
 	octave 5
 	note D_, 2
 	note C#, 2
-	notetype $8, $a7
+	note_type 8, 10, 7
 	octave 4
 	note B_, 1
 	octave 5
@@ -464,7 +464,7 @@ Music_VioletCity_branch_f0199:
 	octave 4
 	note B_, 1
 	note A_, 3
-	notetype $c, $a7
+	note_type 12, 10, 7
 	note G_, 1
 	note __, 1
 	note F#, 2
@@ -504,7 +504,7 @@ Music_VioletCity_branch_f0199:
 	jumpchannel Music_VioletCity_branch_f0199
 
 Music_VioletCity_Ch3:
-	notetype $c, $25
+	note_type 12, 2, 5
 	note __, 16
 	note __, 6
 	octave 4
@@ -529,7 +529,7 @@ Music_VioletCity_Ch3:
 	octave 2
 	note A#, 2
 Music_VioletCity_branch_f0261:
-	notetype $c, $25
+	note_type 12, 2, 5
 	note B_, 1
 	note __, 5
 	note B_, 1
@@ -587,7 +587,7 @@ Music_VioletCity_branch_f0261:
 	note F#, 2
 	note F#, 1
 	note __, 1
-	notetype $6, $25
+	note_type 6, 2, 5
 	octave 3
 	note C#, 2
 	note F_, 2
@@ -600,9 +600,9 @@ Music_VioletCity_branch_f0261:
 	note B_, 2
 	octave 4
 	note C#, 6
-	notetype $c, $25
+	note_type 12, 2, 5
 	note __, 5
-	notetype $6, $25
+	note_type 6, 2, 5
 	octave 2
 	note E_, 2
 	note __, 10
@@ -708,7 +708,7 @@ Music_VioletCity_branch_f0311:
 
 Music_VioletCity_Ch4:
 	togglenoise $3
-	notetype $c
+	note_type 12
 	note D#, 2
 	note D_, 2
 	note D#, 1

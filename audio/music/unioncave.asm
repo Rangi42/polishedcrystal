@@ -13,7 +13,7 @@ Music_UnionCave_Ch1:
 	vibrato $18, $34
 	stereopanning $f
 Music_UnionCave_branch_f5c7b:
-	notetype $c, $b3
+	note_type 12, 11, 3
 Music_UnionCave_branch_f5c7e:
 	callchannel Music_UnionCave_branch_f5ccf
 	loopchannel 4, Music_UnionCave_branch_f5c7e
@@ -77,7 +77,7 @@ Music_UnionCave_Ch2:
 	dutycycle $3
 	vibrato $8, $24
 Music_UnionCave_branch_f5cda:
-	notetype $c, $c4
+	note_type 12, 12, 4
 	callchannel Music_UnionCave_branch_f5d34
 	intensity $c5
 	callchannel Music_UnionCave_branch_f5d34
@@ -175,7 +175,7 @@ Music_UnionCave_branch_f5d52:
 	endchannel
 
 Music_UnionCave_Ch3:
-	notetype $c, $16
+	note_type 12, 1, 6
 	stereopanning $f0
 Music_UnionCave_branch_f5d5d:
 	note __, 16
@@ -239,7 +239,7 @@ Music_UnionCave_branch_f5d9c:
 
 Music_UnionCave_Ch4:
 	togglenoise $1
-	notetype $c
+	note_type 12
 Music_UnionCave_branch_f5da9:
 	stereopanning $f0
 	note E_, 4

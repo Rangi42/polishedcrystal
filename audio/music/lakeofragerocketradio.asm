@@ -12,7 +12,7 @@ Music_LakeOfRageRocketRadio_Ch1:
 	vibrato $0, $f0
 	stereopanning $f0
 Music_LakeOfRageRocketRadio_branch_ef5c9:
-	notetype $c, $a7
+	note_type 12, 10, 7
 	octave 7
 	note G_, 4
 	note F#, 4
@@ -24,13 +24,13 @@ Music_LakeOfRageRocketRadio_branch_ef5c9:
 Music_LakeOfRageRocketRadio_Ch2:
 	dutycycle $1
 	vibrato $13, $e8
-	notetype $c, $a7
+	note_type 12, 10, 7
 	note __, 2
 	stereopanning $f
 	jumpchannel Music_LakeOfRageRocketRadio_branch_ef5c9
 
 Music_LakeOfRageRocketRadio_Ch3:
-	notetype $c, $26
+	note_type 12, 2, 6
 	vibrato $10, $44
 	note __, 4
 	jumpchannel Music_LakeOfRageRocketRadio_branch_ef5c9

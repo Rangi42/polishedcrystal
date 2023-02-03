@@ -9,7 +9,7 @@ Music_HealPokemon_Ch1:
 	volume 7, 7
 	dutycycle $2
 	tone $0001
-	notetype $c, $81
+	note_type 12, 8, 1
 	note __, 2
 	slidepitchto 1, 4, __
 	note B_, 2
@@ -26,19 +26,19 @@ Music_HealPokemon_Ch1:
 
 Music_HealPokemon_Ch2:
 	dutycycle $2
-	notetype $c, $c3
+	note_type 12, 12, 3
 	octave 4
 	note B_, 4
 	note B_, 4
 	note B_, 2
 	note G#, 2
-	notetype $c, $c4
+	note_type 12, 12, 4
 	octave 5
 	note E_, 8
 	endchannel
 
 Music_HealPokemon_Ch3:
-	notetype $c, $10
+	note_type 12, 1, 0
 	octave 4
 	note E_, 2
 	note __, 2

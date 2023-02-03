@@ -14,37 +14,37 @@ Music_IndigoPlateauRBY_Ch1:
 	dutycycle 3
 	vibrato 6, 52
 
-	notetype 12, 178
+	note_type 12, 11, 2
 	octave 2
 	note A_, 8
 	note A_, 8
 	note A_, 8
 	note A_, 4
-	notetype 12, 164
+	note_type 12, 10, 4
 	note A#, 4
 
 Music_IndigoPlateauRBY_branch_a605:
 	callchannel Music_IndigoPlateauRBY_branch_a659
-	notetype 12, 180
+	note_type 12, 11, 4
 	octave 3
 	note D_, 4
 	callchannel Music_IndigoPlateauRBY_branch_a659
-	notetype 12, 180
+	note_type 12, 11, 4
 	octave 3
 	note D#, 4
 	callchannel Music_IndigoPlateauRBY_branch_a659
-	notetype 12, 180
+	note_type 12, 11, 4
 	octave 3
 	note D_, 4
 	callchannel Music_IndigoPlateauRBY_branch_a659
-	notetype 12, 160
+	note_type 12, 10, 0
 	octave 2
 	note A#, 4
 	callchannel Music_IndigoPlateauRBY_branch_a659
-	notetype 12, 180
+	note_type 12, 11, 4
 	octave 3
 	note D_, 4
-	notetype 12, 212
+	note_type 12, 13, 4
 	octave 3
 	note A_, 4
 	note A_, 4
@@ -53,10 +53,10 @@ Music_IndigoPlateauRBY_branch_a605:
 	note A_, 4
 	note A_, 4
 	note A_, 4
-	notetype 12, 180
+	note_type 12, 11, 4
 	octave 3
 	note D#, 4
-	notetype 12, 212
+	note_type 12, 13, 4
 	octave 3
 	note A#, 4
 	note A#, 4
@@ -65,26 +65,26 @@ Music_IndigoPlateauRBY_branch_a605:
 	note A#, 4
 	note A#, 4
 	note A#, 4
-	notetype 12, 180
+	note_type 12, 11, 4
 	octave 3
 	note F_, 2
-	notetype 12, 180
+	note_type 12, 11, 4
 	octave 3
 	note G_, 2
-	notetype 12, 176
+	note_type 12, 11, 0
 	note A_, 8
 	octave 2
 	note A_, 8
-	notetype 12, 183
+	note_type 12, 11, 7
 	octave 3
 	note F_, 8
-	notetype 12, 78
+	note_type 12, 4, -6
 	octave 2
 	note A#, 8
 	jumpchannel Music_IndigoPlateauRBY_branch_a605
 
 Music_IndigoPlateauRBY_branch_a659:
-	notetype 12, 178
+	note_type 12, 11, 2
 	octave 2
 	note A_, 4
 	note A_, 4
@@ -98,39 +98,39 @@ Music_IndigoPlateauRBY_branch_a659:
 Music_IndigoPlateauRBY_Ch2:
 	dutycycle 3
 	vibrato 8, 37
-	notetype 12, 194
+	note_type 12, 12, 2
 	octave 3
 	note D_, 8
 	note D_, 8
 	note D_, 8
 	note D_, 4
-	notetype 12, 90
+	note_type 12, 5, -2
 	note D#, 4
 
 Music_IndigoPlateauRBY_branch_a673:
 	callchannel Music_IndigoPlateauRBY_branch_a6af
-	notetype 12, 197
+	note_type 12, 12, 5
 	note A_, 4
 	callchannel Music_IndigoPlateauRBY_branch_a6af
-	notetype 12, 197
+	note_type 12, 12, 5
 	note A#, 4
 	callchannel Music_IndigoPlateauRBY_branch_a6af
-	notetype 12, 197
+	note_type 12, 12, 5
 	note A_, 4
 	callchannel Music_IndigoPlateauRBY_branch_a6af
-	notetype 12, 199
+	note_type 12, 12, 7
 	note C#, 4
 	callchannel Music_IndigoPlateauRBY_branch_a6af
-	notetype 12, 197
+	note_type 12, 12, 5
 	note A_, 4
 	callchannel Music_IndigoPlateauRBY_branch_a6af
-	notetype 12, 197
+	note_type 12, 12, 5
 	note A#, 4
 	callchannel Music_IndigoPlateauRBY_branch_a6af
-	notetype 12, 197
+	note_type 12, 12, 5
 	octave 4
 	note C_, 2
-	notetype 12, 199
+	note_type 12, 12, 7
 	octave 4
 	note C#, 2
 	note D_, 8
@@ -138,13 +138,13 @@ Music_IndigoPlateauRBY_branch_a673:
 	note D_, 8
 	octave 4
 	note C_, 8
-	notetype 12, 77
+	note_type 12, 4, -5
 	octave 4
 	note D#, 8
 	jumpchannel Music_IndigoPlateauRBY_branch_a673
 
 Music_IndigoPlateauRBY_branch_a6af:
-	notetype 12, 194
+	note_type 12, 12, 2
 	octave 3
 	note D_, 4
 	note D_, 4
@@ -156,7 +156,7 @@ Music_IndigoPlateauRBY_branch_a6af:
 	endchannel
 
 Music_IndigoPlateauRBY_Ch3:
-	notetype 12, 16
+	note_type 12, 1, 0
 	octave 4
 	note D_, 2
 	note __, 6
@@ -233,7 +233,7 @@ Music_IndigoPlateauRBY_branch_a6fe:
 	endchannel
 
 Music_IndigoPlateauRBY_Ch4:
-	notetype 6
+	note_type 6
 	togglenoise 1
 	note A_, 16
 	note A_, 16

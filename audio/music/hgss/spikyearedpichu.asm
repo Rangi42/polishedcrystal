@@ -58,7 +58,7 @@ Music_SpikyEaredPichuHGSS_Ch1:
 	jumpchannel Music_SpikyEaredPichuHGSS_Ch1
 
 Music_SpikyEaredPichuHGSS_Ch1_branch_1:
-	notetype $4, $92
+	note_type 4, 9, 2
 	dutycycle 0
 	octave 3
 	note __, 6
@@ -73,7 +73,7 @@ Music_SpikyEaredPichuHGSS_Ch1_branch_1:
 	note A_, 1
 	octave 4
 	note C_, 1
-	notetype $C, $92
+	note_type 12, 9, 2
 	octave 3
 	note B_, 2
 	octave 4
@@ -84,11 +84,11 @@ Music_SpikyEaredPichuHGSS_Ch1_branch_1:
 	note A#, 2
 	note A_, 2
 	note A#, 2
-	notetype $8, $92
+	note_type 8, 9, 2
 	note A_, 1
 	note A#, 1
 	note A_, 1
-	notetype $C, $92
+	note_type 12, 9, 2
 	note G_, 2
 	note F_, 2
 	note E_, 2
@@ -97,7 +97,7 @@ Music_SpikyEaredPichuHGSS_Ch1_branch_1:
 	note A_, 2
 	note A#, 2
 	note G_, 2
-	notetype $6, $92
+	note_type 6, 9, 2
 	note A#, 1
 	octave 4
 	note D#, 1
@@ -109,7 +109,7 @@ Music_SpikyEaredPichuHGSS_Ch1_branch_1:
 	note A#, 1
 	octave 4
 	note D#, 3
-	notetype $C, $92
+	note_type 12, 9, 2
 	octave 4
 	note D_, 2
 	octave 3
@@ -132,7 +132,7 @@ Music_SpikyEaredPichuHGSS_Ch1_branch_1:
 Music_SpikyEaredPichuHGSS_Ch2:
 	volume 7, 7
 	dutycycle 2
-	notetype $c, $b3
+	note_type 12, 11, 3
 	octave 3
 	note C_, 2
 	note C_, 2
@@ -147,11 +147,11 @@ Music_SpikyEaredPichuHGSS_Ch2:
 	note F_, 2
 	note C_, 2
 	note D_, 2
-	notetype $8, $b3
+	note_type 8, 11, 3
 	note C_, 1
 	note D_, 1
 	note C_, 1
-	notetype $c, $b3
+	note_type 12, 11, 3
 	octave 2
 	note A#, 2
 	note A_, 2
@@ -249,7 +249,7 @@ Music_SpikyEaredPichuHGSS_Ch2_loop_1:
 	jumpchannel Music_SpikyEaredPichuHGSS_Ch2
 
 Music_SpikyEaredPichuHGSS_Ch3:
-	notetype $6, $15
+	note_type 6, 1, 5
 	intensity $10
 	note __, 16
 	octave 6
@@ -282,13 +282,13 @@ Music_SpikyEaredPichuHGSS_Ch3:
 	intensity $30
 	note F_, 4
 	note __, 8
-	notetype $3, $10
+	note_type 3, 1, 0
 	note F_, 1
 	note B_, 1
 	octave 6
 	note C_, 1
 	note D_, 1
-	notetype $c, $10
+	note_type 12, 1, 0
 	note E_, 1
 	intensity $30
 	note E_, 1
@@ -346,12 +346,12 @@ Music_SpikyEaredPichuHGSS_Ch3:
 	note C_, 1
 	intensity $10
 	note D_, 2
-	notetype $8, $10
+	note_type 8, 1, 0
 	note C_, 1
 	note D_, 1
 	note C_, 1
 	octave 5
-	notetype $c, $10
+	note_type 12, 1, 0
 	note A#, 1
 	intensity $30
 	note A#, 1
@@ -378,7 +378,7 @@ Music_SpikyEaredPichuHGSS_Ch3:
 	intensity $10
 	note G_, 2
 	note D#, 2
-	notetype $6, $10
+	note_type 6, 1, 0
 	octave 6
 	note D#, 1
 	note F_, 1
@@ -389,7 +389,7 @@ Music_SpikyEaredPichuHGSS_Ch3:
 	note F_, 1
 	note D#, 1
 	note F_, 1
-	notetype $c, $10
+	note_type 12, 1, 0
 	note D_, 1
 	intensity $30
 	note D_, 1
@@ -467,13 +467,13 @@ Music_SpikyEaredPichuHGSS_Ch3:
 	note G_, 6
 	intensity $35
 	note G_, 1
-	notetype $3, $10
+	note_type 3, 1, 0
 	octave 5
 	note C_, 1
 	note G_, 1
 	note A_, 1
 	note B_, 1
-	notetype $c, $10
+	note_type 12, 1, 0
 	octave 6
 	note C_, 1
 	intensity $30
@@ -508,7 +508,7 @@ Music_SpikyEaredPichuHGSS_Ch3:
 	intensity $10
 	octave 6
 	note C_, 2
-	notetype $3, $10
+	note_type 3, 1, 0
 	octave 5
 	note B_, 4
 	intensity $30
@@ -524,7 +524,7 @@ Music_SpikyEaredPichuHGSS_Ch3:
 
 Music_SpikyEaredPichuHGSS_Ch4:
 	togglenoise $3
-	notetype $c
+	note_type 12
 Music_SpikyEaredPichuHGSS_Ch4_loop_main:
 Music_SpikyEaredPichuHGSS_Ch4_loop_1:
 	note G#, 8
@@ -533,12 +533,12 @@ Music_SpikyEaredPichuHGSS_Ch4_loop_1:
 	note G#, 8
 	note G#, 8
 	note G#, 7
-	notetype $3
+	note_type 3
 	note C_, 1
 	note C_, 1
 	note C_, 1
 	note C_, 1
-	notetype $c
+	note_type 12
 	note B_, 6
 	note D#, 2
 	note C_, 4

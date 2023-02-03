@@ -10,7 +10,7 @@ Music_RocketBattle_Ch1:
 	dutycycle $3
 	tone $0002
 	vibrato $10, $15
-	notetype $c, $b2
+	note_type 12, 11, 2
 	octave 4
 	note E_, 1
 	note D#, 1
@@ -394,7 +394,7 @@ Music_RocketBattle_Ch2:
 	dutycycle $3
 	vibrato $8, $36
 	tone $0001
-	notetype $c, $b2
+	note_type 12, 11, 2
 	octave 4
 	note A_, 4
 	note A#, 4
@@ -669,7 +669,7 @@ Music_RocketBattle_branch_e9ea0:
 	endchannel
 
 Music_RocketBattle_Ch3:
-	notetype $c, $19
+	note_type 12, 1, -1
 	octave 3
 	note A_, 2
 	octave 4

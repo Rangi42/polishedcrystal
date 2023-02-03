@@ -11,7 +11,7 @@ Music_LookBeauty_Ch1:
 	dutycycle $2
 	tempo 128
 	volume 7, 7
-	notetype $c, $a3
+	note_type 12, 10, 3
 	note __, 16
 	note __, 8
 	octave 4
@@ -81,7 +81,7 @@ Music_LookBeauty_Ch2:
 	stereopanning $f0
 	vibrato $10, $23
 	dutycycle $2
-	notetype $c, $c7
+	note_type 12, 12, 7
 	octave 3
 	note D_, 1
 	note __, 1
@@ -113,7 +113,7 @@ Music_LookBeauty_Ch2:
 	note __, 1
 	dutycycle $3
 Music_LookBeauty_branch_eeec5:
-	notetype $c, $c7
+	note_type 12, 12, 7
 	note G_, 16
 	note A_, 8
 	note B_, 8
@@ -132,7 +132,7 @@ Music_LookBeauty_branch_eeec5:
 	vibrato $10, $24
 	octave 5
 	note C_, 15
-	notetype $6, $c7
+	note_type 6, 12, 7
 	intensity $c5
 	vibrato $10, $23
 	note __, 1
@@ -157,7 +157,7 @@ Music_LookBeauty_branch_eeec5:
 Music_LookBeauty_Ch3:
 	stereopanning $ff
 	vibrato $8, $12
-	notetype $c, $15
+	note_type 12, 1, 5
 	note __, 16
 	octave 5
 	note E_, 1
@@ -296,7 +296,7 @@ Music_LookBeauty_branch_eef0f:
 
 Music_LookBeauty_Ch4:
 	togglenoise $3
-	notetype $c
+	note_type 12
 	note __, 16
 	note __, 16
 Music_LookBeauty_branch_eef91:

@@ -12,7 +12,7 @@ Music_SproutTower_Ch1:
 	tone $0002
 	vibrato $8, $45
 	stereopanning $f
-	notetype $c, $a3
+	note_type 12, 10, 3
 	note __, 16
 	note __, 16
 Music_SproutTower_branch_f6994:
@@ -66,7 +66,7 @@ Music_SproutTower_Ch2:
 	dutycycle $3
 	tone $0001
 	vibrato $8, $48
-	notetype $c, $b2
+	note_type 12, 11, 2
 	octave 3
 	note F_, 4
 	note F_, 4
@@ -141,7 +141,7 @@ Music_SproutTower_branch_f69dc:
 
 Music_SproutTower_Ch3:
 	vibrato $14, $e8
-	notetype $c, $14
+	note_type 12, 1, 4
 	octave 3
 	note F_, 2
 	note __, 2
@@ -221,7 +221,7 @@ Music_SproutTower_branch_f6a3e:
 
 Music_SproutTower_Ch4:
 	togglenoise $0
-	notetype $c
+	note_type 12
 	note __, 4
 Music_SproutTower_branch_f6a7f:
 	note F#, 4

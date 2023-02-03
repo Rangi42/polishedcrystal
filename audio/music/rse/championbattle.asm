@@ -16,7 +16,7 @@ Music_ChampionBattleRSE_Ch1:
 	dutycycle 2
 	tone $0002
 	vibrato $8, $15
-	notetype $3, $94
+	note_type 3, 9, 4
 Music_ChampionBattleRSE_Ch1_loop_1:
 	octave 5
 	note G_, 2
@@ -24,7 +24,7 @@ Music_ChampionBattleRSE_Ch1_loop_1:
 	note A#, 4
 	loopchannel 8, Music_ChampionBattleRSE_Ch1_loop_1
 	dutycycle 1
-	notetype $c, $b3
+	note_type 12, 11, 3
 	octave 4
 	note C_, 3
 	note C#, 3
@@ -346,7 +346,7 @@ Music_ChampionBattleRSE_Ch2:
 	dutycycle 3
 	vibrato $12, $25
 	tone $0001
-	notetype $3, $d4
+	note_type 3, 13, 4
 	octave 4
 	note D#, 2
 	note D_, 2
@@ -385,7 +385,7 @@ Music_ChampionBattleRSE_Ch2:
 	note A_, 2
 	note A#, 2
 	note B_, 2
-	notetype $c, $b3
+	note_type 12, 11, 3
 	note G_, 3
 	note G#, 3
 	intensity $b5
@@ -641,7 +641,7 @@ Music_ChampionBattleRSE_Ch2_branch_1:
 	endchannel
 
 Music_ChampionBattleRSE_Ch3:
-	notetype $c, $19
+	note_type 12, 1, -1
 	vibrato $12, $15
 	octave 3
 	note C_, 1
@@ -973,7 +973,7 @@ Music_ChampionBattleRSE_Ch3_branch_7:
 
 Music_ChampionBattleRSE_Ch4:
 	togglenoise $3
-	notetype $6
+	note_type 6
 	note C_, 6
 	note C_, 8
 	note D#, 4

@@ -12,7 +12,7 @@ Music_SummoningDanceHGSS:
 Music_SummoningDanceHGSS_Ch1:
 	tempo 220
 	dutycycle 0
-	notetype $c, $85
+	note_type 12, 8, 5
 	octave 3
 	note __, 4
 	note E_, 2
@@ -60,7 +60,7 @@ Music_SummoningDanceHGSS_Ch1:
 Music_SummoningDanceHGSS_Ch2:
 	dutycycle 0
 	vibrato $10, $24
-	notetype $c, $a5
+	note_type 12, 10, 5
 	octave 3
 	note __, 4
 	note B_, 2
@@ -85,20 +85,20 @@ Music_SummoningDanceHGSS_Ch2:
 	note G_, 2
 	note A_, 4
 	note G_, 2
-	notetype $8, $a5
+	note_type 8, 10, 5
 	note A#, 1
 	octave 4
 	note D_, 1
 	octave 3
 	note A#, 1
-	notetype $c, $a5
+	note_type 12, 10, 5
 	note A_, 2
 	octave 4
-	notetype $8, $a5
+	note_type 8, 10, 5
 	note G_, 1
 	note A_, 1
 	note G_, 1
-	notetype $c, $a5
+	note_type 12, 10, 5
 	note E_, 2
 	note C_, 4
 	note D_, 2
@@ -123,16 +123,16 @@ Music_SummoningDanceHGSS_Ch2:
 	note F_, 2
 	note E_, 2
 	note F_, 2
-	notetype $8, $a5
+	note_type 8, 10, 5
 	note F_, 1
 	note A_, 1
 	note F_, 1
-	notetype $c, $a5
+	note_type 12, 10, 5
 	note E_, 8
 	jumpchannel Music_SummoningDanceHGSS_Ch2
 
 Music_SummoningDanceHGSS_Ch3:
-	notetype $c, $14
+	note_type 12, 1, 4
 	octave 2
 	note E_, 4
 	note G_, 2

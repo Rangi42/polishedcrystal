@@ -12,7 +12,7 @@ Music_AfterTheRivalFight_Ch1:
 	tone $0001
 	vibrato $8, $14
 	stereopanning $f0
-	notetype $c, $b2
+	note_type 12, 11, 2
 	octave 2
 	note G#, 4
 	note G#, 4
@@ -28,7 +28,7 @@ Music_AfterTheRivalFight_Ch2:
 	dutycycle $1
 	vibrato $6, $35
 	stereopanning $f
-	notetype $c, $c2
+	note_type 12, 12, 2
 	octave 4
 	note G#, 4
 	note G#, 4
@@ -40,7 +40,7 @@ Music_AfterTheRivalFight_Ch2:
 	jumpchannel Music_AfterTheRivalFight_branch_f502e
 
 Music_AfterTheRivalFight_Ch3:
-	notetype $c, $28
+	note_type 12, 2, 8
 	octave 3
 	note D#, 2
 	note __, 2
@@ -55,7 +55,7 @@ Music_AfterTheRivalFight_Ch3:
 Music_AfterTheRivalFight_Ch4:
 	togglenoise $3
 	stereopanning $f
-	notetype $c
+	note_type 12
 	note D_, 4
 	note D_, 4
 	note D#, 2

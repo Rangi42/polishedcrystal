@@ -10,7 +10,7 @@ Music_JohtoTrainerBattle_Ch1:
 	dutycycle $3
 	tone $0002
 	vibrato $12, $15
-	notetype $c, $92
+	note_type 12, 9, 2
 	note __, 8
 	octave 3
 	note A_, 1
@@ -455,7 +455,7 @@ Music_JohtoTrainerBattle_Ch2:
 	dutycycle $3
 	vibrato $8, $36
 	tone $0001
-	notetype $c, $c2
+	note_type 12, 12, 2
 	octave 4
 	note G#, 1
 	note G_, 1
@@ -900,7 +900,7 @@ Music_JohtoTrainerBattle_branch_f64d2:
 	endchannel
 
 Music_JohtoTrainerBattle_Ch3:
-	notetype $c, $19
+	note_type 12, 1, -1
 	octave 4
 	note E_, 1
 	note D#, 1

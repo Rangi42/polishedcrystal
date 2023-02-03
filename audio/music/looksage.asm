@@ -8,7 +8,7 @@ Music_LookSage_Ch1:
 	stereopanning $f
 	volume 7, 7
 	dutycycle $3
-	notetype $c, $b3
+	note_type 12, 11, 3
 	note __, 2
 	note __, 16
 	callchannel Music_LookSage_branch_ee3fa
@@ -125,7 +125,7 @@ Music_LookSage_branch_ee3fa:
 Music_LookSage_Ch3:
 	stereopanning $f0
 	vibrato $16, $23
-	notetype $c, $10
+	note_type 12, 1, 0
 	octave 5
 	note B_, 1
 	octave 6
@@ -158,7 +158,7 @@ Music_LookSage_branch_ee430:
 	note B_, 8
 	octave 6
 	note F_, 8
-	notetype $6, $10
+	note_type 6, 1, 0
 	note E_, 1
 	note D#, 1
 	note D_, 1
@@ -172,7 +172,7 @@ Music_LookSage_branch_ee430:
 	octave 6
 	note E_, 2
 	note F_, 2
-	notetype $c, $10
+	note_type 12, 1, 0
 	note E_, 14
 	note G_, 1
 	note G#, 1

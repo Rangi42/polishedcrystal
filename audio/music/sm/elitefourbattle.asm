@@ -16,7 +16,7 @@ Music_EliteFourBattleSM_Ch1:
 	dutycycle 0
 	tone $0002
 	vibrato $12, $15
-	notetype $6, $12
+	note_type 6, 1, 2
 	note __, 16
 	note __, 16
 	note __, 16
@@ -241,7 +241,7 @@ Music_EliteFourBattleSM_Ch2:
 	dutycycle 1
 	vibrato $8, $36
 	tone $0001
-	notetype $6, $a2
+	note_type 6, 10, 2
 	octave 3
 	note F_, 4
 	intensity $a1
@@ -443,7 +443,7 @@ Music_EliteFourBattleSM_Ch3:
 	callchannel Music_EliteFourBattleSM_Ch3_branch_1
 Music_EliteFourBattleSM_Ch3_loop_main:
 Music_EliteFourBattleSM_Ch3_loop_1:
-	notetype $6, $19
+	note_type 6, 1, -1
 	note E_, 2
 	note B_, 2
 	note E_, 2
@@ -583,7 +583,7 @@ Music_EliteFourBattleSM_Ch3_loop_9:
 	jumpchannel Music_EliteFourBattleSM_Ch3_loop_main
 
 Music_EliteFourBattleSM_Ch3_branch_1:
-	notetype $3, $19
+	note_type 3, 1, -1
 	note E_, 3
 	note __, 1
 	intensity $29
@@ -600,7 +600,7 @@ Music_EliteFourBattleSM_Ch3_branch_1:
 
 Music_EliteFourBattleSM_Ch4:
 	togglenoise $3
-	notetype $c
+	note_type 12
 	note __, 16
 	note __, 16
 	note __, 16
@@ -615,7 +615,7 @@ Music_EliteFourBattleSM_Ch4:
 	note C_, 1
 Music_EliteFourBattleSM_Ch4_loop_main:
 Music_EliteFourBattleSM_Ch4_loop_1:
-	notetype $6
+	note_type 6
 	note D#, 4
 	note C_, 2
 	note G#, 1

@@ -11,7 +11,7 @@ Music_BattleTowerTheme_Ch1:
 	tone $0001
 	vibrato $12, $34
 	stereopanning $f
-	notetype $6, $94
+	note_type 6, 9, 4
 Music_BattleTowerTheme_branch_1788a5:
 	note __, 16
 	note __, 16
@@ -206,7 +206,7 @@ Music_BattleTowerTheme_Ch2:
 	vibrato $12, $34
 Music_BattleTowerTheme_branch_178970:
 	dutycycle $3
-	notetype $6, $b8
+	note_type 6, 11, 8
 	octave 3
 	note F_, 2
 	note __, 2
@@ -250,11 +250,11 @@ Music_BattleTowerTheme_branch_178970:
 	note A#, 4
 	note __, 2
 	note F_, 2
-	notetype $c, $b7
+	note_type 12, 11, 7
 	note C_, 12
-	notetype $6, $b7
+	note_type 6, 11, 7
 	callchannel Music_BattleTowerTheme_branch_178a15
-	notetype $c, $b7
+	note_type 12, 11, 7
 	note A#, 2
 	note __, 1
 	note G_, 1
@@ -329,7 +329,7 @@ Music_BattleTowerTheme_branch_178970:
 	note G#, 2
 	note G_, 5
 	note __, 1
-	notetype $6, $b7
+	note_type 6, 11, 7
 	note G_, 1
 	note __, 1
 	note G_, 1
@@ -359,7 +359,7 @@ Music_BattleTowerTheme_branch_178a15:
 
 Music_BattleTowerTheme_Ch3:
 	vibrato $12, $34
-	notetype $6, $16
+	note_type 6, 1, 6
 Music_BattleTowerTheme_branch_178a26:
 	stereopanning $ff
 	callchannel Music_BattleTowerTheme_branch_178afe
@@ -585,7 +585,7 @@ Music_BattleTowerTheme_branch_178afe:
 
 Music_BattleTowerTheme_Ch4:
 	togglenoise $3
-	notetype $c
+	note_type 12
 Music_BattleTowerTheme_branch_178b11:
 	callchannel Music_BattleTowerTheme_branch_178b58
 	note D_, 2

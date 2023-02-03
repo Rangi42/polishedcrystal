@@ -15,7 +15,7 @@ Music_WildBattleGo_Ch1:
 	stereopanning $77
 	sound_duty $5A
 	octave 3
-	notetype $C, $A3
+	note_type 12, 10, 3
 	note D_, 1
 	note F#, 1
 	note A_, 1
@@ -33,7 +33,7 @@ Music_WildBattleGo_Ch1:
 	note D_, 1
 	note __, 5
 Music_WildBattleGo_Ch1_loop:
-	notetype $C, $A3
+	note_type 12, 10, 3
 	note D#, 3
 	note __, 1
 	note A_, 1
@@ -144,7 +144,7 @@ Music_WildBattleGo_Ch1_ditty2:
 	endchannel
 
 Music_WildBattleGo_Ch2:
-	notetype $C, $00
+	note_type 12, 0, 0
 	note __, 4
 	sound_duty $5A
 	intensity $A3
@@ -236,10 +236,10 @@ Music_WildBattleGo_Ch2_loop:
 	note A_, 4
 	intensity $A8
 	note B_, 4
-	notetype $F, $A8
+	note_type 15, 10, 8
 	note A_, 3
 	note G_, 3
-	notetype $6, $A8
+	note_type 6, 10, 8
 	note G_, 1
 	note F#, 8
 	note D_, 4
@@ -269,7 +269,7 @@ Music_WildBattleGo_Ch2_loop_1:
 	note D_, 2
 	note __, 10
 	note D_, 2
-	notetype $C, $A8
+	note_type 12, 10, 8
 	note __, 9
 	note D_, 1
 	note __, 5
@@ -312,7 +312,7 @@ Music_WildBattleGo_Ch2_ditty2:
 Music_WildBattleGo_Ch3:
 	dutycycle 6
 	octave 3
-	notetype $C, $16
+	note_type 12, 1, 6
 	note D_, 2
 	note __, 2
 	octave 2
@@ -432,7 +432,7 @@ Music_WildBattleGo_Ch3_loop_8:
 	jumpchannel Music_WildBattleGo_Ch3_loop
 
 Music_WildBattleGo_Ch4:
-	notetype $C
+	note_type 12
 	note __, 4
 	togglenoise 3
 	callchannel Music_WildBattleGo_Ch4_ditty1

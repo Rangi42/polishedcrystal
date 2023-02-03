@@ -12,7 +12,7 @@ Music_Route29_Ch1:
 	tone $0001
 	vibrato $10, $15
 	stereopanning $f
-	notetype $c, $b2
+	note_type 12, 11, 2
 	note __, 2
 Music_Route29_branch_f03a5:
 	note __, 2
@@ -172,7 +172,7 @@ Music_Route29_branch_f03a5:
 Music_Route29_Ch2:
 	dutycycle $3
 	vibrato $12, $36
-	notetype $c, $c2
+	note_type 12, 12, 2
 	octave 4
 	note C_, 1
 	note D_, 1
@@ -334,7 +334,7 @@ Music_Route29_branch_f04de:
 
 Music_Route29_Ch3:
 	stereopanning $f0
-	notetype $c, $25
+	note_type 12, 2, 5
 	vibrato $9, $27
 	note __, 2
 Music_Route29_branch_f0504:
@@ -504,7 +504,7 @@ Music_Route29_branch_f0504:
 Music_Route29_Ch4:
 	stereopanning $f
 	togglenoise $0
-	notetype $c
+	note_type 12
 	note __, 2
 Music_Route29_branch_f05b0:
 	note __, 2

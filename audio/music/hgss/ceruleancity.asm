@@ -11,7 +11,7 @@ Music_CeruleanCityHGSS:
 Music_CeruleanCityHGSS_Ch1:
 	tempo $94
 	volume 7, 7
-	notetype $C, $B2
+	note_type 12, 11, 2
 	tone $0001
 	dutycycle 2
 	octave 4
@@ -207,10 +207,10 @@ Music_CeruleanCityHGSS_Ch2:
 ;Channel2_Bar1:
 	vibrato 12,$34
 	dutycycle 2
-	notetype 2, $C2
+	note_type 2, 12, 2
 	tone $0002
 	note __, 2
-	notetype 12, $C2
+	note_type 12, 12, 2
 	octave 5
 	note E_, 2
 	note D#, 2
@@ -221,11 +221,11 @@ Music_CeruleanCityHGSS_Ch2:
 	note B_, 2
 	octave 5
 	note C#, 2
-	notetype 2, $C2
+	note_type 2, 12, 2
 	note D#, 10
 ;Channel2_Bar2:
 Music_CeruleanCityHGSS_Loop2:
-	notetype 12, $C2
+	note_type 12, 12, 2
 	note E_, 6
 	octave 3
 	note E_, 1
@@ -392,19 +392,19 @@ Music_CeruleanCityHGSS_Loop2:
 	note C#, 4
 	note D#, 4
 	sound_duty 2, 2, 2, 2
-	notetype 2, $C2
+	note_type 2, 12, 2
 	note __, 2
-	notetype 12, $C2
+	note_type 12, 12, 2
 	note E_, 2
 	note D#, 2
 	note C#, 2
-	notetype 2, $C2
+	note_type 2, 12, 2
 	note D#, 10
 ;Channel2_Bar18:
 	jumpchannel Music_CeruleanCityHGSS_Loop2
 
 Music_CeruleanCityHGSS_Ch3:
-	notetype 6, $15
+	note_type 6, 1, 5
 	vibrato 12, $24
 ;Channel3_Bar1:
 	note __, 16
@@ -749,7 +749,7 @@ Music_CeruleanCityHGSS_Loop3:
 	jumpchannel Music_CeruleanCityHGSS_Loop3
 
 Music_CeruleanCityHGSS_Ch4:
-	notetype $C
+	note_type 12
 	togglenoise 0
 ;Channel4_Bar1:
 	note __, 16

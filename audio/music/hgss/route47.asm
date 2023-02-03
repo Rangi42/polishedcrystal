@@ -16,10 +16,10 @@ Music_Route47HGSS_Ch1:
 	dutycycle 0
 	tone $0002
 	vibrato $8, $15
-	notetype $6, $82
+	note_type 6, 8, 2
 	note __, 16
 Music_Route47HGSS_Ch1_loop_main:
-	notetype $6, $82
+	note_type 6, 8, 2
 Music_Route47HGSS_Ch1_loop_1:
 	callchannel Music_Route47HGSS_Ch1_branch_1
 	callchannel Music_Route47HGSS_Ch1_branch_1
@@ -46,7 +46,7 @@ Music_Route47HGSS_Ch1_loop_1:
 	note C_, 2
 	intensity $22
 	note C_, 2
-	notetype $c, $93
+	note_type 12, 9, 3
 	dutycycle 2
 	octave 3
 	note E_, 2
@@ -130,7 +130,7 @@ Music_Route47HGSS_Ch1_loop_1:
 	note A_, 3
 	note F_, 1
 	note F_, 1
-	notetype $3, $72
+	note_type 3, 7, 2
 	octave 3
 	note C_, 2
 	note F_, 2
@@ -319,7 +319,7 @@ Music_Route47HGSS_Ch1_loop_1:
 	note C_, 4
 	note G_, 4
 	dutycycle 2
-	notetype $c, $82
+	note_type 12, 8, 2
 	octave 3
 	note F_, 1
 	note C_, 1
@@ -457,7 +457,7 @@ Music_Route47HGSS_Ch1_loop_1:
 	note F_, 1
 	octave 3
 	dutycycle 0
-	notetype $6, $82
+	note_type 6, 8, 2
 	note A_, 1
 	octave 4
 	note A_, 1
@@ -581,7 +581,7 @@ Music_Route47HGSS_Ch2:
 	dutycycle $2
 	vibrato $12, $25
 	tone $0001
-	notetype $8, $52
+	note_type 8, 5, 2
 	octave 6
 	note C_, 1
 	octave 5
@@ -605,7 +605,7 @@ Music_Route47HGSS_Ch2:
 	note G_, 1
 	note C_, 1
 Music_Route47HGSS_Ch2_loop:
-	notetype $c, $a4
+	note_type 12, 10, 4
 	octave 3
 	note C_, 1
 	note F_, 1
@@ -864,7 +864,7 @@ Music_Route47HGSS_Ch2_loop:
 	note D_, 8
 	intensity $77
 	note D_, 8
-	notetype $3, $a2
+	note_type 3, 10, 2
 	note D_, 2
 	octave 5
 	intensity $82
@@ -962,7 +962,7 @@ Music_Route47HGSS_Ch2_loop:
 	jumpchannel Music_Route47HGSS_Ch2_loop
 
 Music_Route47HGSS_Ch3:
-	notetype $c, $25
+	note_type 12, 2, 5
 	vibrato $12, $15
 	note __, 8
 Music_Route47HGSS_Ch3_loop:
@@ -1074,11 +1074,11 @@ Music_Route47HGSS_Ch3_loop:
 	note F_, 6
 	note A#, 6
 	octave 6
-	notetype $4, $13
+	note_type 4, 1, 3
 	note C_, 16
 	note D#, 1
 	note E_, 1
-	notetype $c, $13
+	note_type 12, 1, 3
 	note F_, 4
 	octave 5
 	note F_, 4
@@ -1092,7 +1092,7 @@ Music_Route47HGSS_Ch3_loop:
 
 Music_Route47HGSS_Ch4:
 	togglenoise $3
-	notetype $c
+	note_type 12
 Music_Route47HGSS_Ch4_loop_main:
 	note __, 5
 	callchannel Music_Route47HGSS_Ch4_branch_1
@@ -1147,7 +1147,7 @@ Music_Route47HGSS_Ch4_loop_2:
 	jumpchannel Music_Route47HGSS_Ch4_loop_main
 
 Music_Route47HGSS_Ch4_branch_1:
-	notetype $4
+	note_type 4
 	note C#, 1
 	note C#, 1
 	note C#, 1
@@ -1157,7 +1157,7 @@ Music_Route47HGSS_Ch4_branch_1:
 	note C#, 1
 	note C#, 1
 	note C#, 1
-	notetype $c
+	note_type 12
 	endchannel
 
 Music_Route47HGSS_Ch4_branch_2:

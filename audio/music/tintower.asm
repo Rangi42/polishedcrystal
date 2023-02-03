@@ -13,7 +13,7 @@ Music_TinTower_Ch1:
 	vibrato $8, $45
 Music_TinTower_branch_f682a:
 	stereopanning $f0
-	notetype $c, $a5
+	note_type 12, 10, 5
 	octave 3
 	note G_, 4
 	note C_, 4
@@ -103,7 +103,7 @@ Music_TinTower_Ch2:
 Music_TinTower_branch_f6893:
 	stereopanning $ff
 Music_TinTower_branch_f6895:
-	notetype $c, $b5
+	note_type 12, 11, 5
 	octave 4
 	note C_, 4
 	note C_, 4
@@ -186,7 +186,7 @@ Music_TinTower_branch_f6895:
 	jumpchannel Music_TinTower_branch_f6893
 
 Music_TinTower_Ch3:
-	notetype $c, $14
+	note_type 12, 1, 4
 Music_TinTower_branch_f68fb:
 	note __, 16
 	note __, 16
@@ -261,7 +261,7 @@ Music_TinTower_branch_f68fb:
 
 Music_TinTower_Ch4:
 	togglenoise $0
-	notetype $c
+	note_type 12
 Music_TinTower_branch_f694c:
 	stereopanning $f
 	note G_, 2

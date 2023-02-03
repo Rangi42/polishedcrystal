@@ -13,7 +13,7 @@ Music_Megalovania_Ch1:
 	volume 7, 7
 	stereopanning $77
 Music_Megalovania_Ch1_loop:
-	notetype $C, $00
+	note_type 12, 0, 0
 	note __, 16
 	note __, 16
 	note __, 16
@@ -214,16 +214,16 @@ Music_Megalovania_Ch1_loop_1:
 	note C_, 2
 	note __, 1
 	note C_, 1
-	notetype $9, $A5
+	note_type 9, 10, 5
 	note D_, 9
-	notetype $3, $A1
+	note_type 3, 10, 1
 	note A_, 1
 	note A#, 1
 	note B_, 1
 	octave 4
 	note C_, 1
 	note C#, 1
-	notetype $C, $A6
+	note_type 12, 10, 6
 	note D_, 8
 	sound_duty $00
 	vibrato $00, $13
@@ -334,17 +334,17 @@ Music_Megalovania_Ch1_loop_3:
 	note A_, 1
 	octave 4
 	note C_, 1
-	notetype $A, $F1
+	note_type 10, 15, 1
 	note D_, 1
-	notetype $6, $F1
+	note_type 6, 15, 1
 	note __, 1
-	notetype $A, $F1
+	note_type 10, 15, 1
 	note D_, 1
-	notetype $6, $F1
+	note_type 6, 15, 1
 	note __, 1
-	notetype $A, $F1
+	note_type 10, 15, 1
 	note D_, 1
-	notetype $6, $F1
+	note_type 6, 15, 1
 	note __, 1
 	intensity $F2
 	note A_, 2
@@ -587,7 +587,7 @@ Music_Megalovania_Ch1Ch2_ditty_1:
 	note G_, 1
 	note F_, 1
 	note D_, 1
-	notetype $6, $F1
+	note_type 6, 15, 1
 	note G#, 1
 	note G_, 1
 	note E_, 1
@@ -738,7 +738,7 @@ Music_Megalovania_Ch1Ch3_ditty_2:
 
 Music_Megalovania_Ch2:
 	vibrato $00, $22
-	notetype $C, $69
+	note_type 12, 6, -1
 Music_Megalovania_Ch2_loop:
 	octave 2
 	note D_, 1
@@ -785,7 +785,7 @@ Music_Megalovania_Ch2_loop:
 	sound_duty $AA
 	vibrato $05, $13
 	octave 4
-	notetype $6, $D3
+	note_type 6, 13, 3
 	note D_, 1
 	note E_, 1
 	note F_, 4
@@ -827,7 +827,7 @@ Music_Megalovania_Ch2_loop:
 	note __, 2
 	callchannel Music_Megalovania_Ch2_ditty2
 	octave 4
-	notetype $C, $D3
+	note_type 12, 13, 3
 	note A_, 2
 	note A_, 1
 	note A_, 1
@@ -846,7 +846,7 @@ Music_Megalovania_Ch2_loop:
 	note G_, 1
 	note __, 1
 	note G#, 2
-	notetype $6, $D3
+	note_type 6, 13, 3
 	note G_, 1
 	note G#, 1
 	note G_, 1
@@ -868,7 +868,7 @@ Music_Megalovania_Ch2_loop:
 	note A_, 2
 	note G_, 2
 	callchannel Music_Megalovania_Ch2_ditty2
-	notetype $C, $D3
+	note_type 12, 13, 3
 	note __, 8
 	callchannel Music_Megalovania_Ch1Ch2_ditty_1
 	note __, 16
@@ -932,38 +932,38 @@ Music_Megalovania_Ch2_loop:
 	sound_duty $5A
 	vibrato $0F, $34
 	octave 3
-	notetype $6, $A1
+	note_type 6, 10, 1
 	note D_, 1
-	notetype $3, $A1
+	note_type 3, 10, 1
 	note F_, 1
 	note A_, 1
 	sound_duty $55
 	vibrato $0F, $1F
 	octave 4
-	notetype $9, $A7
+	note_type 9, 10, 7
 	note D_, 16
-	notetype $3, $A1
+	note_type 3, 10, 1
 	note __, 12
 	sound_duty $5A
 	vibrato $0F, $34
 	octave 3
-	notetype $9, $A1
+	note_type 9, 10, 1
 	note C_, 1
-	notetype $3, $A1
+	note_type 3, 10, 1
 	note F_, 1
 	note A_, 1
 	sound_duty $55
 	vibrato $0F, $1F
 	octave 4
-	notetype $9, $A7
+	note_type 9, 10, 7
 	note C_, 9
 	octave 3
-	notetype $C, $A7
+	note_type 12, 10, 7
 	note B_, 8
 	callchannel Music_Megalovania_Ch2_ditty3
 	octave 5
 	note D_, 12
-	notetype $C, $A7
+	note_type 12, 10, 7
 	note __, 1
 	note C_, 15
 	note __, 1
@@ -971,7 +971,7 @@ Music_Megalovania_Ch2_loop:
 	note B_, 15
 	note __, 16
 	note __, 1
-	notetype $C, $69
+	note_type 12, 6, -1
 	sound_duty $00
 	vibrato $00, $22
 	octave 2
@@ -1052,7 +1052,7 @@ Music_Megalovania_Ch2_ditty2:
 	note A_, 2
 	octave 5
 	note D_, 2
-	notetype $C, $D7
+	note_type 12, 13, 7
 	note C_, 9
 	endchannel
 
@@ -1060,17 +1060,17 @@ Music_Megalovania_Ch2_ditty3:
 	sound_duty $5A
 	vibrato $0F, $34
 	octave 2
-	notetype $9, $A1
+	note_type 9, 10, 1
 	note A#, 1
 	octave 3
-	notetype $3, $A1
+	note_type 3, 10, 1
 	note D_, 1
 	note F_, 1
 	sound_duty $55
-	notetype $9, $A7
+	note_type 9, 10, 7
 	vibrato $0F, $1F
 	note A#, 16
-	notetype $3, $A7
+	note_type 3, 10, 7
 	note __, 11
 	sound_duty $5A
 	intensity $A1
@@ -1081,22 +1081,22 @@ Music_Megalovania_Ch2_ditty3:
 	sound_duty $55
 	vibrato $0F, $1F
 	octave 4
-	notetype $F, $A7
+	note_type 15, 10, 7
 	note C_, 12
 	sound_duty $5A
 	vibrato $0F, $34
 	octave 3
-	notetype $9, $A1
+	note_type 9, 10, 1
 	note D_, 1
-	notetype $3, $A1
+	note_type 3, 10, 1
 	note F_, 1
 	note A_, 2
 	sound_duty $55
-	notetype $9, $A7
+	note_type 9, 10, 7
 	vibrato $0F, $1F
 	octave 4
 	note D_, 16
-	notetype $3, $A7
+	note_type 3, 10, 7
 	note __, 10
 	sound_duty $5A
 	intensity $A1
@@ -1108,24 +1108,24 @@ Music_Megalovania_Ch2_ditty3:
 	sound_duty $55
 	vibrato $0F, $1F
 	octave 4
-	notetype $D, $A7
+	note_type 13, 10, 7
 	note E_, 6
-	notetype $C, $A7
+	note_type 12, 10, 7
 	note D_, 8
 	sound_duty $5A
 	vibrato $0F, $34
 	octave 2
-	notetype $9, $A1
+	note_type 9, 10, 1
 	note A#, 1
 	octave 3
-	notetype $3, $A1
+	note_type 3, 10, 1
 	note D_, 1
 	note F_, 1
 	sound_duty $55
-	notetype $9, $A7
+	note_type 9, 10, 7
 	vibrato $0F, $1F
 	note A#, 16
-	notetype $3, $A7
+	note_type 3, 10, 7
 	note __, 11
 	sound_duty $5A
 	intensity $A1
@@ -1136,7 +1136,7 @@ Music_Megalovania_Ch2_ditty3:
 	sound_duty $55
 	vibrato $0F, $1F
 	octave 4
-	notetype $F, $A7
+	note_type 15, 10, 7
 	note C_, 12
 	endchannel
 
@@ -1144,7 +1144,7 @@ Music_Megalovania_Ch3:
 Music_Megalovania_Ch3_loop:
 	dutycycle 9
 	octave 3
-	notetype $C, $19
+	note_type 12, 1, -1
 	note D_, 1
 	note D_, 1
 	callchannel Music_Megalovania_Ch1Ch3_ditty_1
@@ -1185,7 +1185,7 @@ Music_Megalovania_Ch3_loop:
 	note G_, 1
 	note __, 1
 	note G#, 2
-	notetype $6, $35
+	note_type 6, 3, 5
 	note G_, 1
 	note G#, 1
 	note G_, 1
@@ -1222,18 +1222,18 @@ Music_Megalovania_Ch3_loop:
 	note D_, 2
 	note C_, 3
 	note D_, 1
-	notetype $3, $35
+	note_type 3, 3, 5
 	note D#, 1
 	note E_, 2
-	notetype $3, $25
+	note_type 3, 2, 5
 	note F_, 2
 	note F#, 2
-	notetype $9, $25
+	note_type 9, 2, 5
 	note G_, 7
 	dutycycle 7
 	vibrato $00, $00
 	octave 2
-	notetype $C, $17
+	note_type 12, 1, 7
 	callchannel Music_Megalovania_Ch3_ditty_2
 	callchannel Music_Megalovania_Ch3_ditty_3
 	callchannel Music_Megalovania_Ch3_ditty_3
@@ -1471,7 +1471,7 @@ Music_Megalovania_Ch3_ditty_5:
 	endchannel
 
 Music_Megalovania_Ch4:
-	notetype $C
+	note_type 12
 	togglenoise 5
 Music_Megalovania_Ch4_loop:
 	note __, 16

@@ -12,7 +12,7 @@ Music_LookHiker_Ch1:
 	vibrato $12, $24
 	dutycycle $2
 	stereopanning $f
-	notetype $c, $68
+	note_type 12, 6, 8
 	octave 3
 	note F#, 2
 	note F_, 2
@@ -34,7 +34,7 @@ Music_LookHiker_branch_f7433:
 
 Music_LookHiker_Ch2:
 	dutycycle $0
-	notetype $c, $a1
+	note_type 12, 10, 1
 	note __, 4
 	octave 1
 	note B_, 1
@@ -71,7 +71,7 @@ Music_LookHiker_branch_f7457:
 Music_LookHiker_Ch3:
 	vibrato $12, $24
 	stereopanning $f0
-	notetype $c, $14
+	note_type 12, 1, 4
 	octave 4
 	note B_, 2
 	note A#, 2
@@ -104,7 +104,7 @@ Music_LookHiker_branch_f748a:
 
 Music_LookHiker_Ch4:
 	togglenoise $3
-	notetype $c
+	note_type 12
 	note F_, 4
 	note __, 16
 Music_LookHiker_branch_f749a:

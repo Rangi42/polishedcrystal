@@ -18,7 +18,7 @@ Music_TrainerBattleDPPt_Ch1:
 	intensity $B2
 	vibrato $12, $15
 	octave 4
-	notetype $C, $B2
+	note_type 12, 11, 2
 	note E_, 2
 	note D#, 1
 	note D_, 1
@@ -299,13 +299,13 @@ Music_TrainerBattleDPPt_Ch1_loop:
 	note C_, 16
 	note __, 8
 	octave 3
-	notetype $8, $B4
+	note_type 8, 11, 4
 	note A#, 4
 	octave 4
 	note C_, 4
 	octave 3
 	note A#, 4
-	notetype $C, $B4
+	note_type 12, 11, 4
 	note A_, 16
 	note F_, 16
 	intensity $B7
@@ -545,7 +545,7 @@ Music_TrainerBattleDPPt_Ch2:
 	intensity $C2
 	vibrato $08, $36
 	octave 5
-	notetype $C, $C2
+	note_type 12, 12, 2
 	note C_, 2
 	octave 4
 	note B_, 1
@@ -709,7 +709,7 @@ Music_TrainerBattleDPPt_Ch2_loop:
 	note E_, 2
 	note D_, 2
 	note E_, 16
-	notetype $8, $C7
+	note_type 8, 12, 7
 	note F_, 4
 	note E_, 4
 	note F_, 4
@@ -743,7 +743,7 @@ Music_TrainerBattleDPPt_Ch2_loop:
 	note G_, 3
 	note A#, 3
 	intensity $C0
-	notetype $C, $C0
+	note_type 12, 12, 0
 	note A_, 16
 	note A#, 16
 	octave 5
@@ -1026,7 +1026,7 @@ Music_TrainerBattleDPPt_Ch2_loop:
 Music_TrainerBattleDPPt_Ch3:
 	intensity $19
 	intensity $16
-	notetype $C, $16
+	note_type 12, 1, 6
 	note __, 16
 	octave 3
 	note A#, 1
@@ -1802,7 +1802,7 @@ Music_TrainerBattleDPPt_Ch3_loop:
 
 Music_TrainerBattleDPPt_Ch4:
 	togglenoise 3
-	notetype $C
+	note_type 12
 	note __, 16
 	note D#, 4
 	note D#, 4

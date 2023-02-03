@@ -15,7 +15,7 @@ Music_CianwoodCityHGSS_Ch1:
 	vibrato $12, $25
 	dutycycle $2
 Music_CianwoodCityHGSS_branch_ef2e5:
-	notetype $c, $57
+	note_type 12, 5, 7
 	note __, 10
 	octave 3
 	note F#, 6
@@ -40,7 +40,7 @@ Music_CianwoodCityHGSS_branch_ef2e5:
 	note B_, 2
 	octave 4
 	note F#, 6
-	notetype $6, $67
+	note_type 6, 6, 7
 	note G_, 4
 	note G#, 10
 	note __, 2
@@ -222,7 +222,7 @@ Music_CianwoodCityHGSS_Ch2:
 	dutycycle $3
 	stereopanning $f0
 Music_CianwoodCityHGSS_branch_ef3f2:
-	notetype $6, $67
+	note_type 6, 6, 7
 	note __, 16
 	note __, 5
 	octave 4
@@ -234,7 +234,7 @@ Music_CianwoodCityHGSS_branch_ef3f2:
 	note D#, 1
 	note A#, 1
 	note B_, 9
-	notetype $c, $77
+	note_type 12, 7, 7
 	note __, 10
 	note G#, 2
 	note F#, 2
@@ -242,7 +242,7 @@ Music_CianwoodCityHGSS_branch_ef3f2:
 	note C#, 4
 	note D#, 4
 	note F_, 4
-	notetype $6, $93
+	note_type 6, 9, 3
 	intensity $97
 	dutycycle $2
 	octave 3
@@ -365,13 +365,13 @@ Music_CianwoodCityHGSS_branch_ef3f2:
 	note F#, 4
 	note G#, 4
 	note A_, 4
-	notetype $c, $83
+	note_type 12, 8, 3
 	note A#, 16
 	intensity $80
 	note G#, 4
 	note G_, 4
 	note B_, 4
-	notetype $6, $80
+	note_type 6, 8, 0
 	octave 4
 	note C#, 7
 	note D_, 1
@@ -417,7 +417,7 @@ Music_CianwoodCityHGSS_branch_ef3f2:
 	octave 3
 	note D#, 4
 	note F#, 4
-	notetype $c, $87
+	note_type 12, 8, 7
 	note B_, 10
 	octave 4
 	note C#, 2
@@ -436,7 +436,7 @@ Music_CianwoodCityHGSS_Ch3:
 	stereopanning $ff
 Music_CianwoodCityHGSS_branch_ef4e3:
 	vibrato $12, $25
-	notetype $c, $25
+	note_type 12, 2, 5
 	octave 2
 	note F#, 2
 	octave 3
@@ -550,7 +550,7 @@ Music_CianwoodCityHGSS_branch_ef4e3:
 	octave 3
 	note A#, 8
 	note G_, 8
-	notetype $c, $25
+	note_type 12, 2, 5
 	callchannel Music_CianwoodCityHGSS_branch_ef569
 	note F#, 8
 	note C#, 8
@@ -631,7 +631,7 @@ Music_CianwoodCityHGSS_branch_ef569:
 	note D#, 1
 	note __, 1
 	note E_, 1
-	notetype $6, $25
+	note_type 6, 2, 5
 	note __, 1
 	note F_, 1
 	endchannel

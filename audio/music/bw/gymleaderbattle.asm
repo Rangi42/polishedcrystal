@@ -13,7 +13,7 @@ GymLeaderBattleBW_Channel1:
 	tempo $35
 	volume 5, 5
 	dutycycle 1
-	notetype 12, $87
+	note_type 12, 8, 7
 	octave 4
 	note C_, 1
 	note __, 3
@@ -55,9 +55,9 @@ GymLeaderBattleBW_Channel1:
 	note A#, 8
 	octave 4
 	note C#, 4
-	notetype 12, $88
+	note_type 12, 8, 8
 	note C_, 16
-	notetype 12, $87
+	note_type 12, 8, 7
 	note C_, 16
 	octave 2
 	note C_, 2
@@ -126,7 +126,7 @@ GymLeaderBattleBW_Channel1:
 	octave 3
 	note D#, 4
 	octave 4
-	notetype 12, $A7
+	note_type 12, 10, 7
 	note D_, 2
 	note D#, 2
 	note D_, 2
@@ -178,12 +178,12 @@ GymLeaderBattleBWChannel1_Loop:
 	note A_, 12
 	octave 5
 	note C#, 8
-	notetype 12, $A8
+	note_type 12, 10, 8
 	note E_, 16
-	notetype 12, $A7
+	note_type 12, 10, 7
 	note E_, 16
 	stereopanning $FF
-	notetype 12, $87
+	note_type 12, 8, 7
 	octave 4
 	note D_, 12
 	octave 3
@@ -213,7 +213,7 @@ GymLeaderBattleBWChannel1_Loop:
 	note D_, 3
 	octave 4
 	stereopanning $0F
-	notetype 12, $A7
+	note_type 12, 10, 7
 	note C_, 4
 	octave 3
 	note B_, 4
@@ -249,12 +249,12 @@ GymLeaderBattleBWChannel1_Loop:
 	note A_, 12
 	octave 4
 	note C#, 8
-	notetype 12, $A8
+	note_type 12, 10, 8
 	note E_, 16
-	notetype 12, $A7
+	note_type 12, 10, 7
 	note E_, 16
 	stereopanning $FF
-	notetype 12, $87
+	note_type 12, 8, 7
 	note A_, 12
 	note E_, 12
 	note A_, 8
@@ -285,12 +285,12 @@ GymLeaderBattleBWChannel1_Loop:
 	note F_, 2
 	note E_, 2
 	note D_, 2
-	notetype 12, $88
+	note_type 12, 8, 8
 	note E_, 16
-	notetype 12, $87
+	note_type 12, 8, 7
 	note E_, 8
 	stereopanning $F0
-	notetype 12, $A7
+	note_type 12, 10, 7
 	note C#, 2
 	note D_, 2
 	note C#, 2
@@ -330,9 +330,9 @@ GymLeaderBattleBWChannel1_Loop:
 	octave 4
 	note A#, 2
 	octave 5
-	notetype 12, $A8
+	note_type 12, 10, 8
 	note C_, 16
-	notetype 12, $A7
+	note_type 12, 10, 7
 	note C_, 8
 	octave 4
 	note C_, 2
@@ -341,20 +341,20 @@ GymLeaderBattleBWChannel1_Loop:
 	octave 3
 	note A#, 2
 	octave 4
-	notetype 12, $A8
+	note_type 12, 10, 8
 	note C_, 16
-	notetype 12, $A7
+	note_type 12, 10, 7
 	note C_, 8
 	note E_, 2
 	note F_, 2
 	note E_, 2
 	note D_, 2
-	notetype 12, $A8
+	note_type 12, 10, 8
 	note E_, 16
-	notetype 12, $A7
+	note_type 12, 10, 7
 	note E_, 8
 	stereopanning $FF
-	notetype 12, $87
+	note_type 12, 8, 7
 	note __, 16
 	note __, 16
 	octave 2
@@ -429,9 +429,9 @@ GymLeaderBattleBWChannel1_Loop:
 	note D#, 2
 	note D_, 2
 	note C_, 2
-	notetype 12, $88
+	note_type 12, 8, 8
 	note D_, 16
-	notetype 12, $87
+	note_type 12, 8, 7
 	note D_, 8
 	octave 3
 	note D_, 2
@@ -626,9 +626,9 @@ GymLeaderBattleBWChannel1_Loop:
 	octave 4
 	note C_, 2
 	note __, 2
-	notetype 12, $88
+	note_type 12, 8, 8
 	note F_, 16
-	notetype 12, $87
+	note_type 12, 8, 7
 	note F_, 7
 	note __, 1
 	note F_, 2
@@ -643,9 +643,9 @@ GymLeaderBattleBWChannel1_Loop:
 	note F_, 16
 	note __, 4
 	octave 4
-	notetype 12, $88
+	note_type 12, 8, 8
 	note E_, 16
-	notetype 12, $87
+	note_type 12, 8, 7
 	note E_, 7
 	note __, 1
 	note E_, 2
@@ -687,7 +687,7 @@ GymLeaderBattleBWChannel1_Loop:
 
 GymLeaderBattleBW_Channel2:
 	dutycycle 1
-	notetype 12, $97
+	note_type 12, 9, 7
 	octave 2
 	note C_, 8
 	note __, 4
@@ -736,9 +736,9 @@ GymLeaderBattleBW_Channel2:
 	note F_, 2
 	note E_, 2
 	note D_, 2
-	notetype 12, $98
+	note_type 12, 9, 8
 	note E_, 16
-	notetype 12, $97
+	note_type 12, 9, 7
 	note E_, 8
 	octave 5
 	dutycycle 0
@@ -746,9 +746,9 @@ GymLeaderBattleBW_Channel2:
 	note F_, 2
 	note E_, 2
 	note D_, 2
-	notetype 12, $98
+	note_type 12, 9, 8
 	note E_, 16
-	notetype 12, $97
+	note_type 12, 9, 7
 	note E_, 8
 	dutycycle 1
 	octave 3
@@ -764,9 +764,9 @@ GymLeaderBattleBW_Channel2:
 	note D#, 2
 	note D_, 2
 	note C_, 2
-	notetype 12, $98
+	note_type 12, 9, 8
 	note D_, 16
-	notetype 12, $97
+	note_type 12, 9, 7
 	note D_, 8
 	note __, 16
 	note __, 16
@@ -804,12 +804,12 @@ GymLeaderBattleBWChannel2_Loop:
 	note A_, 12
 	octave 3
 	note C#, 8
-	notetype 12, $98
+	note_type 12, 9, 8
 	note E_, 16
-	notetype 12, $97
+	note_type 12, 9, 7
 	note E_, 16
 	stereopanning $0F
-	notetype 12, $A7
+	note_type 12, 10, 7
 	octave 4
 	note D_, 12
 	octave 3
@@ -834,7 +834,7 @@ GymLeaderBattleBWChannel2_Loop:
 	note B_, 1
 	note A#, 3
 	stereopanning $FF
-	notetype 12, $97
+	note_type 12, 9, 7
 	note C_, 4
 	octave 2
 	note B_, 4
@@ -870,12 +870,12 @@ GymLeaderBattleBWChannel2_Loop:
 	note A_, 12
 	octave 3
 	note C#, 8
-	notetype 12, $98
+	note_type 12, 9, 8
 	note E_, 16
-	notetype 12, $97
+	note_type 12, 9, 7
 	note E_, 16
 	stereopanning $F0
-	notetype 12, $A7
+	note_type 12, 10, 7
 	note A_, 12
 	note E_, 12
 	note A_, 8
@@ -912,12 +912,12 @@ GymLeaderBattleBWChannel2_Loop:
 	note A#, 2
 	note A_, 2
 	note G_, 2
-	notetype 12, $A8
+	note_type 12, 10, 8
 	note A_, 16
-	notetype 12, $A7
+	note_type 12, 10, 7
 	note A_, 6
 	stereopanning $FF
-	notetype 12, $97
+	note_type 12, 9, 7
 	note __, 2
 	note A_, 2
 	note A#, 2
@@ -959,9 +959,9 @@ GymLeaderBattleBWChannel2_Loop:
 	note F_, 2
 	note E_, 2
 	note D_, 2
-	notetype 12, $98
+	note_type 12, 9, 8
 	note E_, 16
-	notetype 12, $97
+	note_type 12, 9, 7
 	note E_, 8
 	octave 3
 	note C_, 2
@@ -970,22 +970,22 @@ GymLeaderBattleBWChannel2_Loop:
 	octave 2
 	note A#, 2
 	octave 3
-	notetype 12, $98
+	note_type 12, 9, 8
 	note C_, 16
-	notetype 12, $97
+	note_type 12, 9, 7
 	note C_, 8
 	note E_, 2
 	note F_, 2
 	note E_, 2
 	note D_, 2
-	notetype 12, $98
+	note_type 12, 9, 8
 	note E_, 16
-	notetype 12, $97
+	note_type 12, 9, 7
 	note E_, 8
 	stereopanning $FF
-	notetype 12, $98
+	note_type 12, 9, 8
 	note G_, 16
-	notetype 12, $97
+	note_type 12, 9, 7
 	note G_, 12
 	note __, 4
 	octave 4
@@ -1002,9 +1002,9 @@ GymLeaderBattleBWChannel2_Loop:
 	note F_, 2
 	note E_, 2
 	note D_, 2
-	notetype 12, $98
+	note_type 12, 9, 8
 	note E_, 16
-	notetype 12, $97
+	note_type 12, 9, 7
 	note E_, 8
 	dutycycle 2
 	note C_, 2
@@ -1013,9 +1013,9 @@ GymLeaderBattleBWChannel2_Loop:
 	octave 3
 	note A#, 2
 	octave 4
-	notetype 12, $98
+	note_type 12, 9, 8
 	note C_, 16
-	notetype 12, $97
+	note_type 12, 9, 7
 	note C_, 8
 	dutycycle 1
 	octave 3
@@ -1034,9 +1034,9 @@ GymLeaderBattleBWChannel2_Loop:
 	note D#, 2
 	note D_, 2
 	note C_, 2
-	notetype 12, $98
+	note_type 12, 9, 8
 	note D_, 16
-	notetype 12, $97
+	note_type 12, 9, 7
 	note D_, 7
 	note __, 1
 	note D_, 2
@@ -1053,61 +1053,61 @@ GymLeaderBattleBWChannel2_Loop:
 	note A#, 4
 	octave 5
 	note D_, 4
-	notetype 12, $98
+	note_type 12, 9, 8
 	stereopanning $FF
 	note C_, 16
-	notetype 12, $97
+	note_type 12, 9, 7
 	note C_, 16
 	octave 4
-	notetype 12, $98
+	note_type 12, 9, 8
 	note A#, 16
-	notetype 12, $97
+	note_type 12, 9, 7
 	note A#, 16
-	notetype 12, $98
+	note_type 12, 9, 8
 	note A_, 16
-	notetype 12, $97
+	note_type 12, 9, 7
 	note A_, 16
-	notetype 12, $98
+	note_type 12, 9, 8
 	note G_, 16
-	notetype 12, $97
+	note_type 12, 9, 7
 	note G_, 16
-	notetype 12, $98
+	note_type 12, 9, 8
 	note F_, 16
-	notetype 12, $97
+	note_type 12, 9, 7
 	note F_, 16
 	note D_, 16
 	note A_, 8
 	note F_, 8
-	notetype 12, $98
+	note_type 12, 9, 8
 	note E_, 16
-	notetype 12, $97
+	note_type 12, 9, 7
 	note E_, 16
-	notetype 12, $98
+	note_type 12, 9, 8
 	note G_, 16
-	notetype 12, $97
+	note_type 12, 9, 7
 	note G_, 16
-	notetype 12, $98
+	note_type 12, 9, 8
 	note F_, 16
-	notetype 12, $97
+	note_type 12, 9, 7
 	note F_, 16
 	note D_, 16
 	note A_, 4
 	note F_, 12
-	notetype 12, $98
+	note_type 12, 9, 8
 	note G_, 16
-	notetype 12, $97
+	note_type 12, 9, 7
 	note G_, 16
 	note B_, 2
 	note __, 2
 	octave 5
-	notetype 12, $98
+	note_type 12, 9, 8
 	note C_, 16
-	notetype 12, $97
+	note_type 12, 9, 7
 	note C_, 12
 	octave 4
-	notetype 12, $98
+	note_type 12, 9, 8
 	note C#, 16
-	notetype 12, $97
+	note_type 12, 9, 7
 	note C#, 7
 	note __, 1
 	note C#, 2
@@ -1120,9 +1120,9 @@ GymLeaderBattleBWChannel2_Loop:
 	note F_, 16
 	note __, 4
 	octave 4
-	notetype 12, $98
+	note_type 12, 9, 8
 	note C_, 16
-	notetype 12, $97
+	note_type 12, 9, 7
 	note C_, 7
 	note __, 1
 	note C_, 2
@@ -1146,7 +1146,7 @@ GymLeaderBattleBWChannel2_Loop:
 	endchannel
 
 GymLeaderBattleBW_Channel3:
-	notetype 12, $15
+	note_type 12, 1, 5
 	octave 3
 	intensity $12
 	note C_, 6
@@ -2170,7 +2170,7 @@ GymLeaderBattleBWChannel3_Loop:
 	endchannel
 
 GymLeaderBattleBW_Channel4:
-	notetype $C
+	note_type 12
 	togglenoise 5
 	note C_, 4
 	note C_, 4

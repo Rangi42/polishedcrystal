@@ -13,7 +13,7 @@ Music_LegendaryBattleXY_Ch1:
 	vibrato $12, $15
 	tone $0001
 	tempo 200
-	notetype $c, $84
+	note_type 12, 8, 4
 	octave 2
 	note C_, 2
 	octave 3
@@ -320,7 +320,7 @@ Music_LegendaryBattleXY_Ch2:
 	dutycycle $3
 	vibrato $12, $15
 	tone $0001
-	notetype $c, $84
+	note_type 12, 8, 4
 	octave 2
 	note F_, 2
 	octave 3
@@ -646,7 +646,7 @@ Music_LegendaryBattleXY_Ch2_loop_main:
 	jumpchannel Music_LegendaryBattleXY_Ch2_loop_main
 
 Music_LegendaryBattleXY_Ch3:
-	notetype $c, $19
+	note_type 12, 1, -1
 	vibrato $12, $34
 	octave 2
 	note F_, 16
@@ -657,7 +657,7 @@ Music_LegendaryBattleXY_Ch3:
 	note F_, 8
 Music_LegendaryBattleXY_Ch3_loop_main:
 Music_LegendaryBattleXY_Ch3_loop_1:
-	notetype $6, $14
+	note_type 6, 1, 4
 	octave 1
 	note F_, 6
 	octave 2

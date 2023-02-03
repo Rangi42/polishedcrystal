@@ -16,7 +16,7 @@ Music_ZinniaEncounterORAS_Ch1:
 	dutycycle 0
 	tone $0002
 	vibrato $8, $15
-	notetype $c, $a3
+	note_type 12, 10, 3
 	octave 2
 	note B_, 8
 Music_ZinniaEncounterORAS_Ch1_loop:
@@ -68,11 +68,11 @@ Music_ZinniaEncounterORAS_Ch1_loop:
 	note F#, 3
 	note G#, 3
 	note A_, 2
-	notetype $6, $a0
+	note_type 6, 10, 0
 	octave 4
 	note C_, 1
 	note C#, 7
-	notetype $c, $a6
+	note_type 12, 10, 6
 	note C#, 4
 	intensity $a4
 	note C#, 3
@@ -165,7 +165,7 @@ Music_ZinniaEncounterORAS_Ch2:
 	dutycycle 1
 	vibrato $12, $25
 	tone $0001
-	notetype $c, $b3
+	note_type 12, 11, 3
 	octave 2
 	note C#, 1
 	octave 3
@@ -182,10 +182,10 @@ Music_ZinniaEncounterORAS_Ch2_loop_main:
 	octave 3
 	note C#, 2
 	callchannel Music_ZinniaEncounterORAS_Ch2_branch_1
-	notetype $6, $b0
+	note_type 6, 11, 0
 	note C_, 1
 	note C#, 7
-	notetype $c, $b6
+	note_type 12, 11, 6
 	note C#, 4
 	note C#, 3
 	note D_, 3
@@ -201,10 +201,10 @@ Music_ZinniaEncounterORAS_Ch2_loop_main:
 	note G#, 1
 	intensity $b0
 	callchannel Music_ZinniaEncounterORAS_Ch2_branch_1
-	notetype $6, $b0
+	note_type 6, 11, 0
 	note D#, 1
 	note E_, 7
-	notetype $c, $b6
+	note_type 12, 11, 6
 	note E_, 4
 	note E_, 3
 	note F#, 3
@@ -291,7 +291,7 @@ Music_ZinniaEncounterORAS_Ch2_branch_1:
 	endchannel
 
 Music_ZinniaEncounterORAS_Ch3:
-	notetype $c, $14
+	note_type 12, 1, 4
 	vibrato $12, $15
 	octave 2
 	note G#, 2
@@ -429,7 +429,7 @@ Music_ZinniaEncounterORAS_Ch3_branch_2:
 
 Music_ZinniaEncounterORAS_Ch4:
 	togglenoise $3
-	notetype $c
+	note_type 12
 	note B_, 8
 Music_ZinniaEncounterORAS_Ch4_loop_main:
 Music_ZinniaEncounterORAS_Ch4_loop_1:

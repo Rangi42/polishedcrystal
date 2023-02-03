@@ -11,7 +11,7 @@ Music_Route209DPPt:
 Music_Route209DPPt_Ch1:
 	tempo $E0
 	volume 7, 7
-	notetype $C, $92
+	note_type 12, 9, 2
 	dutycycle 1
 	tone $0001
 	octave 4
@@ -193,11 +193,11 @@ Music_Route209DPPt_Ch1_loop:
 	note C#, 10
 	intensity $91
 	note D_, 2
-	notetype $8, $91
+	note_type 8, 9, 1
 	note D_, 1
 	note D_, 1
 	note D_, 1
-	notetype $C, $91
+	note_type 12, 9, 1
 	octave 3
 	note A_, 1
 	octave 4
@@ -206,11 +206,11 @@ Music_Route209DPPt_Ch1_loop:
 	note A_, 1
 	octave 4
 	note E_, 2
-	notetype $8, $91
+	note_type 8, 9, 1
 	note E_, 1
 	note E_, 1
 	note E_, 1
-	notetype $C, $91
+	note_type 12, 9, 1
 	octave 3
 	note B_, 1
 	octave 4
@@ -219,20 +219,20 @@ Music_Route209DPPt_Ch1_loop:
 	note B_, 1
 	octave 4
 	note F_, 2
-	notetype $8, $91
+	note_type 8, 9, 1
 	note F_, 1
 	note F_, 1
 	note F_, 1
-	notetype $C, $91
+	note_type 12, 9, 1
 	note C_, 1
 	note F_, 2
 	note C_, 1
 	note G_, 2
-	notetype $8, $91
+	note_type 8, 9, 1
 	note G_, 1
 	note G_, 1
 	note G_, 1
-	notetype $C, $91
+	note_type 12, 9, 1
 	note D_, 1
 	note G_, 2
 	note G#, 1
@@ -334,7 +334,7 @@ Music_Route209DPPt_Ch1_loop:
 	jumpchannel Music_Route209DPPt_Ch1_loop
 
 Music_Route209DPPt_Ch2:
-	notetype $C, $A1
+	note_type 12, 10, 1
 	dutycycle 2
 	octave 5
 	note B_, 1
@@ -355,7 +355,7 @@ Music_Route209DPPt_Ch2:
 	note A_, 1
 	note E_, 1
 Music_Route209DPPt_Ch2_loop:
-	notetype $3, $A7
+	note_type 3, 10, 7
 	dutycycle 3
 	tone $0002
 	vibrato $08, $25
@@ -367,11 +367,11 @@ Music_Route209DPPt_Ch2_loop:
 	note C#, 8
 	note D_, 8
 	note E_, 8
-	notetype $2, $A7
+	note_type 2, 10, 7
 	note G#, 1
-	notetype $E, $A7
+	note_type 14, 10, 7
 	note A_, 5
-	notetype $C, $A7
+	note_type 12, 10, 7
 	note E_, 4
 	note C#, 2
 	note D_, 2
@@ -625,13 +625,13 @@ Music_Route209DPPt_Ch2_loop:
 	jumpchannel Music_Route209DPPt_Ch2_loop
 
 Music_Route209DPPt_Ch3:
-	notetype $C, $12
+	note_type 12, 1, 2
 	octave 2
 	note __, 16
 Music_Route209DPPt_Ch3_loop:
-	notetype $E, $12
+	note_type 14, 1, 2
 	note A_, 3
-	notetype $6, $12
+	note_type 6, 1, 2
 	note __, 1
 	note A_, 7
 	note __, 1
@@ -663,7 +663,7 @@ Music_Route209DPPt_Ch3_loop:
 	note __, 1
 	note G_, 7
 	note __, 1
-	notetype $C, $12
+	note_type 12, 1, 2
 	octave 1
 	note A_, 12
 	note __, 4
@@ -795,7 +795,7 @@ Music_Route209DPPt_Ch3_loop:
 	note E_, 1
 	note __, 1
 	note E_, 1
-	notetype $6, $12
+	note_type 6, 1, 2
 	octave 1
 	note A_, 1
 	note __, 1
@@ -884,11 +884,11 @@ Music_Route209DPPt_Ch3_loop:
 
 Music_Route209DPPt_Ch4:
 	togglenoise 3
-	notetype $C
+	note_type 12
 	note C#, 2
 	note C#, 2
 	note C#, 2
-	notetype $8
+	note_type 8
 	note C#, 1
 	note C#, 1
 	note C#, 1
@@ -947,7 +947,7 @@ Music_Route209DPPt_Ch4_loop:
 	note C#, 1
 	note C#, 1
 	note C#, 1
-	notetype $C
+	note_type 12
 	note B_, 16
 	note B_, 16
 	note __, 16
@@ -999,7 +999,7 @@ Music_Route209DPPt_Ch4_loop:
 	note C#, 2
 	note C#, 2
 	note B_, 2
-	notetype $8
+	note_type 8
 	note C#, 1
 	note C#, 1
 	note C#, 1
@@ -1018,7 +1018,7 @@ Music_Route209DPPt_Ch4_loop:
 	note C#, 3
 	note C#, 3
 	note B_, 6
-	notetype $C
+	note_type 12
 	note B_, 12
 	note C#, 1
 	note C#, 3
@@ -1071,7 +1071,7 @@ Music_Route209DPPt_Ch4_loop:
 	note C#, 2
 	note C#, 2
 	note C#, 2
-	notetype $8
+	note_type 8
 	note C#, 1
 	note C#, 1
 	note C#, 1

@@ -13,7 +13,7 @@ Music_LyraEncounterHGSS:
 Music_LyraEncounterHGSS_Ch1:
 	tempo 184
 	dutycycle 1
-	notetype $c, $85
+	note_type 12, 8, 5
 	octave 2
 	note A#, 1
 	note A#, 2
@@ -44,11 +44,11 @@ Music_LyraEncounterHGSS_Ch1_loop:
 	octave 3
 	note F_, 4
 	octave 2
-	notetype $3, $85
+	note_type 3, 8, 5
 	note G#, 1
 	octave 3
 	note D#, 15
-	notetype $c, $85
+	note_type 12, 8, 5
 	octave 2
 	note G#, 2
 	octave 3
@@ -112,12 +112,12 @@ Music_LyraEncounterHGSS_Ch1_loop:
 	note G#, 1
 	note A#, 1
 	note __, 1
-	notetype $6, $b4
+	note_type 6, 11, 4
 	note G_, 8
 	note G#, 1
 	note G_, 1
 	note F_, 8
-	notetype $c, $86
+	note_type 12, 8, 6
 	note D#, 5
 	note C_, 1
 	note D_, 1
@@ -188,7 +188,7 @@ Music_LyraEncounterHGSS_Ch1_loop:
 
 Music_LyraEncounterHGSS_Ch2:
 	dutycycle 2
-	notetype $c, $b4
+	note_type 12, 11, 4
 	octave 4
 	note C_, 1
 	note D#, 1
@@ -236,10 +236,10 @@ Music_LyraEncounterHGSS_Ch2_loop:
 	note G#, 1
 	note A#, 2
 	note G_, 4
-	notetype $6, $B3
+	note_type 6, 11, 3
 	note G#, 1
 	note G_, 1
-	notetype $c, $B7
+	note_type 12, 11, 7
 	note F_, 4
 ;;;;;;;;;;;mark
 	intensity $70
@@ -250,11 +250,11 @@ Music_LyraEncounterHGSS_Ch2_loop:
 	note D#, 4
 	note F_, 4
 	note G_, 6
-	notetype $8, $80
+	note_type 8, 8, 0
 	note F_, 1
 	note G_, 1
 	note F_, 1
-	notetype $c, $80
+	note_type 12, 8, 0
 	note E_, 8
 	note F_, 5
 	octave 2
@@ -299,7 +299,7 @@ Music_LyraEncounterHGSS_Ch2_loop:
 	jumpchannel Music_LyraEncounterHGSS_Ch2_loop
 
 Music_LyraEncounterHGSS_Ch3:
-	notetype $c, $15
+	note_type 12, 1, 5
 	intensity $10
 	octave 2
 	note A#, 1
@@ -489,7 +489,7 @@ Music_LyraEncounterHGSS_Ch3_loop:
 
 Music_LyraEncounterHGSS_Ch4:
 	togglenoise $3
-	notetype $6
+	note_type 6
 	note D_, 2
 	note D_, 4
 	note D_, 4

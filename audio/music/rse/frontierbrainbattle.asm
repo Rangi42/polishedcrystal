@@ -10,12 +10,12 @@ Music_FrontierBrainBattleRSE:
 Music_FrontierBrainBattleRSE_Ch1:
 	tempo $60
 	volume 7, 7
-	notetype $C, $C2
+	note_type 12, 12, 2
 	dutycycle 1
 	tone $0002
 	vibrato $06, $34
 	note __, 4
-	notetype $8, $C2
+	note_type 8, 12, 2
 	octave 3
 	note B_, 2
 	octave 4
@@ -52,7 +52,7 @@ Music_FrontierBrainBattleRSE_Ch1:
 	octave 4
 	note F_, 2
 Music_FrontierBrainBattleRSE_Ch1_loop:
-	notetype $C, $C2
+	note_type 12, 12, 2
 	note E_, 1
 	note F_, 1
 	note E_, 1
@@ -74,7 +74,7 @@ Music_FrontierBrainBattleRSE_Ch1_loop:
 	note A_, 16
 	note __, 16
 	note __, 2
-	notetype $8, $C1
+	note_type 8, 12, 1
 	octave 4
 	note A_, 2
 	note A_, 1
@@ -86,7 +86,7 @@ Music_FrontierBrainBattleRSE_Ch1_loop:
 	note A_, 2
 	note A_, 2
 	note A_, 2
-	notetype $C, $C1
+	note_type 12, 12, 1
 	note E_, 1
 	note F_, 1
 	note E_, 1
@@ -109,7 +109,7 @@ Music_FrontierBrainBattleRSE_Ch1_loop:
 	note A_, 16
 	note __, 16
 	note __, 2
-	notetype $8, $C1
+	note_type 8, 12, 1
 	octave 4
 	note G#, 2
 	note G#, 1
@@ -121,7 +121,7 @@ Music_FrontierBrainBattleRSE_Ch1_loop:
 	note G#, 2
 	note G#, 2
 	note G#, 2
-	notetype $C, $C1
+	note_type 12, 12, 1
 	note G#, 1
 	note A_, 1
 	note G#, 1
@@ -144,7 +144,7 @@ Music_FrontierBrainBattleRSE_Ch1_loop:
 	note B_, 16
 	note __, 16
 	note __, 2
-	notetype $8, $C2
+	note_type 8, 12, 2
 	dutycycle 2
 	note B_, 1
 	octave 4
@@ -182,7 +182,7 @@ Music_FrontierBrainBattleRSE_Ch1_loop:
 	note E_, 6
 	note E_, 9
 	note E_, 6
-	notetype $C, $C4
+	note_type 12, 12, 4
 	octave 3
 	note B_, 1
 	octave 4
@@ -465,7 +465,7 @@ Music_FrontierBrainBattleRSE_Ch1_loop:
 	note B_, 2
 	octave 3
 	note F#, 2
-	notetype $8, $B7
+	note_type 8, 11, 7
 	octave 4
 	note G_, 2
 	octave 3
@@ -486,7 +486,7 @@ Music_FrontierBrainBattleRSE_Ch1_loop:
 	octave 3
 	note G#, 2
 	note E_, 2
-	notetype $C, $B7
+	note_type 12, 11, 7
 	octave 4
 	note G_, 1
 	note F#, 1
@@ -677,17 +677,17 @@ Music_FrontierBrainBattleRSE_Ch1_loop:
 	note G_, 1
 	note D_, 16
 	note __, 9
-	notetype $8, $C7
+	note_type 8, 12, 7
 	dutycycle 1
 	octave 3
 	note A_, 2
-	notetype $A, $00
+	note_type 10, 0, 0
 	note __, 2
-	notetype $8, $C7
+	note_type 8, 12, 7
 	note F_, 1
-	notetype $4, $00
+	note_type 4, 0, 0
 	note __, 1
-	notetype $C, $C7
+	note_type 12, 12, 7
 	octave 4
 	note C_, 12
 	note D_, 4
@@ -702,31 +702,31 @@ Music_FrontierBrainBattleRSE_Ch1_loop:
 	note G_, 1
 	note F#, 1
 	note G_, 10
-	notetype $8, $C7
+	note_type 8, 12, 7
 	note G_, 1
-	notetype $4, $00
+	note_type 4, 0, 0
 	note __, 1
 	intensity $C7
 	note G_, 2
 	note __, 1
-	notetype $C, $C7
+	note_type 12, 12, 7
 	note G_, 16
-	notetype $8, $C7
+	note_type 8, 12, 7
 	note B_, 2
-	notetype $A, $00
+	note_type 10, 0, 0
 	note __, 2
-	notetype $8, $C7
+	note_type 8, 12, 7
 	note G_, 1
-	notetype $4, $00
+	note_type 4, 0, 0
 	note __, 1
-	notetype $C, $C7
+	note_type 12, 12, 7
 	octave 4
 	note D_, 12
 	note D#, 8
 	note E_, 12
 	dutycycle 2
 	note C#, 1
-	notetype $4, $00
+	note_type 4, 0, 0
 	note __, 1
 	intensity $C7
 	note C#, 3
@@ -739,16 +739,16 @@ Music_FrontierBrainBattleRSE_Ch1_loop:
 	note __, 1
 	note B_, 3
 	note __, 1
-	notetype $C, $C7
+	note_type 12, 12, 7
 	note B_, 8
-	notetype $8, $C7
+	note_type 8, 12, 7
 	dutycycle 1
 	note F_, 2
-	notetype $A, $00
+	note_type 10, 0, 0
 	note __, 2
-	notetype $8, $C7
+	note_type 8, 12, 7
 	note C_, 1
-	notetype $4, $00
+	note_type 4, 0, 0
 	note __, 1
 	intensity $C7
 	note A_, 12
@@ -776,12 +776,12 @@ Music_FrontierBrainBattleRSE_Ch1_loop:
 	octave 3
 	note A_, 2
 	note __, 1
-	notetype $C, $C7
+	note_type 12, 12, 7
 	octave 4
 	note F#, 12
 	octave 5
 	note C_, 8
-	notetype $8, $C2
+	note_type 8, 12, 2
 	octave 3
 	note B_, 2
 	octave 4
@@ -820,7 +820,7 @@ Music_FrontierBrainBattleRSE_Ch1_loop:
 	jumpchannel Music_FrontierBrainBattleRSE_Ch1_loop
 
 Music_FrontierBrainBattleRSE_Ch2:
-	notetype $8, $D4
+	note_type 8, 13, 4
 	dutycycle 3
 	tone $0001
 	vibrato $0A, $25
@@ -839,7 +839,7 @@ Music_FrontierBrainBattleRSE_Ch2:
 	note A_, 6
 	note G#, 6
 Music_FrontierBrainBattleRSE_Ch2_loop:
-	notetype $C, $D4
+	note_type 12, 13, 4
 	octave 2
 	note __, 8
 	note A_, 2
@@ -1200,7 +1200,7 @@ Music_FrontierBrainBattleRSE_Ch2_loop:
 	note E_, 1
 	note D_, 1
 	note E_, 8
-	notetype $8, $D7
+	note_type 8, 13, 7
 	dutycycle 2
 	octave 4
 	note A_, 1
@@ -1221,7 +1221,7 @@ Music_FrontierBrainBattleRSE_Ch2_loop:
 	note B_, 2
 	octave 5
 	note C_, 2
-	notetype $C, $D1
+	note_type 12, 13, 1
 	note E_, 3
 	octave 4
 	note A_, 1
@@ -1232,13 +1232,13 @@ Music_FrontierBrainBattleRSE_Ch2_loop:
 	note C_, 4
 	note F_, 4
 	note A_, 2
-	notetype $8, $D1
+	note_type 8, 13, 1
 	octave 4
 	note A_, 2
 	note B_, 2
 	octave 5
 	note C_, 2
-	notetype $C, $D1
+	note_type 12, 13, 1
 	note E_, 3
 	octave 4
 	note A_, 1
@@ -1257,10 +1257,10 @@ Music_FrontierBrainBattleRSE_Ch2_loop:
 	jumpchannel Music_FrontierBrainBattleRSE_Ch2_loop
 
 Music_FrontierBrainBattleRSE_Ch3:
-	notetype $C, $19
+	note_type 12, 1, -1
 	vibrato $00, $20
 	note __, 4
-	notetype $8, $19
+	note_type 8, 1, -1
 	octave 2
 	note F#, 2
 	octave 3
@@ -1297,7 +1297,7 @@ Music_FrontierBrainBattleRSE_Ch3:
 	octave 3
 	note C_, 2
 Music_FrontierBrainBattleRSE_Ch3_loop:
-	notetype $C, $19
+	note_type 12, 1, -1
 	octave 2
 	note B_, 1
 	octave 3
@@ -1428,7 +1428,7 @@ Music_FrontierBrainBattleRSE_Ch3_loop:
 	note D_, 1
 	octave 2
 	note A#, 2
-	notetype $8, $19
+	note_type 8, 1, -1
 	note E_, 2
 	note __, 1
 	note E_, 2
@@ -1502,7 +1502,7 @@ Music_FrontierBrainBattleRSE_Ch3_loop:
 	note E_, 3
 	octave 2
 	note E_, 3
-	notetype $C, $19
+	note_type 12, 1, -1
 	octave 3
 	note E_, 1
 	note D#, 1
@@ -2250,7 +2250,7 @@ Music_FrontierBrainBattleRSE_Ch3_loop:
 	note E_, 2
 	note __, 2
 	note A_, 2
-	notetype $8, $19
+	note_type 8, 1, -1
 	octave 2
 	note F#, 2
 	octave 3

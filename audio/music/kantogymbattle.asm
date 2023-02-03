@@ -10,7 +10,7 @@ Music_KantoGymBattle_Ch1:
 	dutycycle $3
 	tone $0002
 	vibrato $12, $15
-	notetype $c, $b2
+	note_type 12, 11, 2
 	octave 3
 	note A#, 1
 	note A_, 1
@@ -256,7 +256,7 @@ Music_KantoGymBattle_Ch2:
 	dutycycle $3
 	vibrato $8, $36
 	tone $0001
-	notetype $c, $c2
+	note_type 12, 12, 2
 Music_KantoGymBattle_branch_ec852:
 	octave 4
 	note A#, 1
@@ -436,7 +436,7 @@ Music_KantoGymBattle_branch_ec907:
 	endchannel
 
 Music_KantoGymBattle_Ch3:
-	notetype $c, $19
+	note_type 12, 1, -1
 	octave 2
 	note E_, 1
 	note __, 1

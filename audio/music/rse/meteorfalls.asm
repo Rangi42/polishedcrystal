@@ -13,7 +13,7 @@ Music_MeteorFallsRSE_Ch1:
 	tempo 190
 	volume 7, 7
 	vibrato $6, $23
-	notetype $8, $92
+	note_type 8, 9, 2
 	note __, 6
 Music_MeteorFallsRSE_Ch1_loop_main:
 	intensity $92
@@ -321,7 +321,7 @@ Music_MeteorFallsRSE_Ch1_loop_main:
 
 Music_MeteorFallsRSE_Ch2:
 	vibrato $6, $23
-	notetype $8, $b2
+	note_type 8, 11, 2
 	dutycycle 3
 	octave 3
 	note A#, 1
@@ -505,26 +505,26 @@ Music_MeteorFallsRSE_Ch2:
 
 Music_MeteorFallsRSE_Ch3:
 	vibrato $16, $15
-	notetype $c, $14
+	note_type 12, 1, 4
 	note __, 4
 Music_MeteorFallsRSE_Ch3_loop_main:
-	notetype $c, $14
+	note_type 12, 1, 4
 	octave 2
 	note D#, 14
 	note A#, 2
 	note D#, 8
-	notetype $8, $14
+	note_type 8, 1, 4
 	note G_, 4
 	note F_, 4
 	note G_, 4
-	notetype $c, $14
+	note_type 12, 1, 4
 	note A_, 14
 	octave 3
 	note C#, 2
 	octave 2
 	note A_, 7
 	note __, 1
-	notetype $8, $14
+	note_type 8, 1, 4
 	note A_, 4
 	note G_, 4
 	note A_, 4

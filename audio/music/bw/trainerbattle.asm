@@ -17,7 +17,7 @@ Music_TrainerBattleBW_Ch1:
 	tone $0002
 	vibrato $12, $15
 	octave 5
-	notetype $C, $B2
+	note_type 12, 11, 2
 	note E_, 1
 	octave 4
 	note B_, 1
@@ -505,15 +505,15 @@ Music_TrainerBattleBW_Ch1_loop:
 	octave 5
 	note C#, 1
 	intensity $C1
-	notetype $A, $C1
+	note_type 10, 12, 1
 	note __, 2
-	notetype $C, $C1
+	note_type 12, 12, 1
 	note C#, 1
-	notetype $A, $C1
+	note_type 10, 12, 1
 	note __, 2
-	notetype $C, $C1
+	note_type 12, 12, 1
 	note C#, 1
-	notetype $4, $C1
+	note_type 4, 12, 1
 	note __, 1
 	note C#, 3
 	note __, 1
@@ -541,7 +541,7 @@ Music_TrainerBattleBW_Ch1_loop:
 	note __, 16
 	note __, 16
 	note __, 13
-	notetype $C, $B7
+	note_type 12, 11, 7
 	jumpchannel Music_TrainerBattleBW_Ch1_loop
 
 Music_TrainerBattleBW_Ch2:
@@ -549,7 +549,7 @@ Music_TrainerBattleBW_Ch2:
 	tone $0001
 	vibrato $08, $36
 	octave 4
-	notetype $C, $C2
+	note_type 12, 12, 2
 	note G#, 1
 	note G_, 1
 	note F#, 1
@@ -933,15 +933,15 @@ Music_TrainerBattleBW_Ch2_loop:
 	note F_, 1
 	note D#, 1
 	note G#, 1
-	notetype $A, $D1
+	note_type 10, 13, 1
 	note __, 2
-	notetype $C, $D1
+	note_type 12, 13, 1
 	note G#, 1
-	notetype $A, $D1
+	note_type 10, 13, 1
 	note __, 2
-	notetype $C, $D1
+	note_type 12, 13, 1
 	note G#, 1
-	notetype $4, $D1
+	note_type 4, 13, 1
 	note __, 1
 	note G#, 3
 	note __, 1
@@ -954,7 +954,7 @@ Music_TrainerBattleBW_Ch2_loop:
 	note C#, 3
 	note __, 1
 	note C#, 3
-	notetype $2, $D1
+	note_type 2, 13, 1
 	note __, 1
 	note __, 1
 	note C#, 6
@@ -982,12 +982,12 @@ Music_TrainerBattleBW_Ch2_loop:
 	note __, 16
 	note __, 16
 	note __, 10
-	notetype $C, $C7
+	note_type 12, 12, 7
 	jumpchannel Music_TrainerBattleBW_Ch2_loop
 
 Music_TrainerBattleBW_Ch3:
 	octave 1
-	notetype $C, $19
+	note_type 12, 1, -1
 	note B_, 2
 	octave 2
 	note E_, 2
@@ -1901,7 +1901,7 @@ Music_TrainerBattleBW_Ch3_loop:
 	note D#, 2
 	octave 2
 	note D#, 1
-	notetype $4, $19
+	note_type 4, 1, -1
 	note __, 1
 	note F#, 3
 	note __, 1
@@ -2124,11 +2124,11 @@ Music_TrainerBattleBW_Ch3_loop:
 	note C_, 6
 	note F_, 6
 	note F#, 6
-	notetype $C, $19
+	note_type 12, 1, -1
 	jumpchannel Music_TrainerBattleBW_Ch3_loop
 
 Music_TrainerBattleBW_Ch4:
-	notetype $C
+	note_type 12
 	togglenoise 3
 	note D#, 2
 	note C_, 2
@@ -2147,11 +2147,11 @@ Music_TrainerBattleBW_Ch4:
 	note C_, 1
 	note B_, 4
 	note D#, 4
-	notetype $7
+	note_type 7
 	note D#, 3
-	notetype $9
+	note_type 9
 	note D#, 3
-	notetype $C
+	note_type 12
 	note D#, 4
 	note D#, 4
 	note D#, 4
@@ -2163,15 +2163,15 @@ Music_TrainerBattleBW_Ch4:
 	note D#, 4
 	note D#, 4
 	note C_, 10
-	notetype $3
+	note_type 3
 	note C_, 1
-	notetype $B
+	note_type 11
 	note C_, 6
-	notetype $3
+	note_type 3
 	note C_, 1
-	notetype $F
+	note_type 15
 	note C_, 5
-	notetype $3
+	note_type 3
 	note C_, 1
 	note C_, 6
 	note D#, 16
@@ -2282,9 +2282,9 @@ Music_TrainerBattleBW_Ch4_loop:
 	note D#, 8
 	note C_, 16
 	note C_, 2
-	notetype $F
+	note_type 15
 	note C_, 4
-	notetype $6
+	note_type 6
 	note C_, 1
 	note C_, 8
 	note D#, 8
@@ -2303,22 +2303,22 @@ Music_TrainerBattleBW_Ch4_loop:
 	note C_, 4
 	note D#, 4
 	note C_, 4
-	notetype $B
+	note_type 11
 	note C_, 1
-	notetype $C
+	note_type 12
 	note C_, 1
-	notetype $5
+	note_type 5
 	note C_, 5
-	notetype $C
+	note_type 12
 	note C_, 2
 	note D#, 1
 	note D#, 1
 	note C_, 2
-	notetype $B
+	note_type 11
 	note D#, 1
-	notetype $D
+	note_type 13
 	note D#, 1
-	notetype $C
+	note_type 12
 	note D#, 2
 	note C_, 2
 	note C_, 1
@@ -2335,36 +2335,14 @@ Music_TrainerBattleBW_Ch4_loop:
 	note D#, 1
 	note D#, 1
 	note C_, 2
-	notetype $B
+	note_type 11
 	note D#, 1
-	notetype $D
+	note_type 13
 	note D#, 1
-	notetype $C
+	note_type 12
 	note D#, 2
 	note C_, 1
 	note C_, 1
-	note C_, 2
-	note C_, 1
-	note C_, 1
-	note D#, 4
-	note C_, 4
-	note D#, 2
-	note D#, 2
-	note C_, 4
-	note D#, 4
-	note C_, 4
-	note D#, 2
-	note D#, 2
-	note C_, 4
-	note D#, 4
-	note C_, 4
-	note D#, 2
-	note D#, 2
-	note C_, 4
-	note D#, 4
-	note C_, 4
-	note D#, 2
-	note D#, 2
 	note C_, 2
 	note C_, 1
 	note C_, 1
@@ -2383,13 +2361,35 @@ Music_TrainerBattleBW_Ch4_loop:
 	note D#, 2
 	note D#, 2
 	note C_, 4
+	note D#, 4
+	note C_, 4
+	note D#, 2
 	note D#, 2
 	note C_, 2
-	notetype $9
+	note C_, 1
+	note C_, 1
+	note D#, 4
+	note C_, 4
+	note D#, 2
+	note D#, 2
+	note C_, 4
+	note D#, 4
+	note C_, 4
+	note D#, 2
+	note D#, 2
+	note C_, 4
+	note D#, 4
+	note C_, 4
+	note D#, 2
+	note D#, 2
+	note C_, 4
+	note D#, 2
+	note C_, 2
+	note_type 9
 	note C_, 3
-	notetype $7
+	note_type 7
 	note D#, 3
-	notetype $C
+	note_type 12
 	note C_, 2
 	note D#, 2
 	note C_, 2
@@ -2433,7 +2433,7 @@ Music_TrainerBattleBW_Ch4_loop:
 	note D#, 2
 	note C_, 4
 	note D#, 2
-	notetype $6
+	note_type 6
 	note C_, 1
 	note C_, 1
 	note C_, 1
@@ -2515,7 +2515,7 @@ Music_TrainerBattleBW_Ch4_loop:
 	note C_, 4
 	note D#, 4
 	note C_, 8
-	notetype $3
+	note_type 3
 	note C_, 1
 	note C_, 4
 	note C_, 3
@@ -2523,7 +2523,7 @@ Music_TrainerBattleBW_Ch4_loop:
 	note D#, 9
 	note C_, 8
 	note D#, 8
-	notetype $C
+	note_type 12
 	note C_, 6
 	note D#, 2
 	note D#, 2
@@ -2582,7 +2582,7 @@ Music_TrainerBattleBW_Ch4_loop:
 	note D#, 2
 	note C_, 4
 	note C_, 4
-	notetype $8
+	note_type 8
 	note D#, 2
 	note D#, 2
 	note D#, 1
@@ -2681,8 +2681,8 @@ Music_TrainerBattleBW_Ch4_loop:
 	note D#, 3
 	note D#, 3
 	note C_, 3
-	notetype $C
+	note_type 12
 	note C_, 1
 	note C_, 1
-	notetype $3
+	note_type 3
 	jumpchannel Music_TrainerBattleBW_Ch4_loop

@@ -13,12 +13,12 @@ Music_LavenderTownRBY_Ch1:
 	volume 7, 7
 	dutycycle 1
 	vibrato 0, 136
-	notetype 12, 135
+	note_type 12, 8, 7
 	note __, 16
 	note __, 16
 	note __, 16
 	note __, 16
-	notetype 12, 167
+	note_type 12, 10, 7
 
 Music_LavenderTownRBY_branch_bb6b:
 	octave 3
@@ -73,7 +73,7 @@ Music_LavenderTownRBY_branch_bb6b:
 Music_LavenderTownRBY_Ch2:
 	vibrato 0, 52
 	dutycycle 3
-	notetype 12, 145
+	note_type 12, 9, 1
 
 Music_LavenderTownRBY_branch_bba5:
 	octave 5
@@ -85,12 +85,12 @@ Music_LavenderTownRBY_branch_bba5:
 
 Music_LavenderTownRBY_Ch3:
 	vibrato 4, 17
-	notetype 12, $3a ; waveform 10
+	note_type 12, 3, -2 ; waveform 10
 	note __, 16
 	note __, 16
 	note __, 16
 	note __, 16
-	notetype 12, $2a ; waveform 10
+	note_type 12, 2, -2 ; waveform 10
 Music_LavenderTownRBY_branch_bbb9:
 	octave 4
 	note E_, 16
@@ -120,13 +120,13 @@ Music_LavenderTownRBY_branch_bbb9:
 	note B_, 4
 	octave 4
 	note E_, 4
-	notetype 12, $3a ; waveform 10
+	note_type 12, 3, -2 ; waveform 10
 	octave 6
 	note B_, 4
 	note G_, 4
 	note F#, 4
 	note B_, 4
-	notetype 12, $2a ; waveform 10
+	note_type 12, 2, -2 ; waveform 10
 	note B_, 4
 	note G_, 4
 	note F#, 4
@@ -168,7 +168,7 @@ Music_LavenderTownRBY_branch_bbb9:
 	note B_, 4
 	octave 4
 	note E_, 4
-	notetype 12, $2a ; waveform 10
+	note_type 12, 2, -2 ; waveform 10
 	octave 6
 	note B_, 4
 	note G_, 4
@@ -192,7 +192,7 @@ Music_LavenderTownRBY_branch_bbb9:
 	jumpchannel Music_LavenderTownRBY_branch_bbb9
 
 Music_LavenderTownRBY_Ch4:
-	notetype 12
+	note_type 12
 	togglenoise 0
 	note __, 16
 	note __, 16

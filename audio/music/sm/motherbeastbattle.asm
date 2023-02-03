@@ -15,7 +15,7 @@ Music_MotherBeastBattleSM_Ch1:
 	tempo 220
 	vibrato $12, $15
 	tone $0001
-	notetype $c, $1f
+	note_type 12, 1, -7
 	octave 3
 	note D_, 4
 	dutycycle 2
@@ -202,7 +202,7 @@ Music_MotherBeastBattleSM_Ch1_loop_main:
 Music_MotherBeastBattleSM_Ch2:
 	dutycycle 3
 	vibrato $12, $15
-	notetype $6, $91
+	note_type 6, 9, 1
 	note __, 8
 	octave 3
 	note D_, 1
@@ -348,7 +348,7 @@ Music_MotherBeastBattleSM_Ch2:
 	note D_, 1
 	intensity $11
 	note G#, 1
-	notetype $3, $65
+	note_type 3, 6, 5
 	octave 4
 	note D_, 4
 	note A_, 4
@@ -373,7 +373,7 @@ Music_MotherBeastBattleSM_Ch2:
 	note G_, 4
 	octave 5
 	note D#, 9
-	notetype $c, $90
+	note_type 12, 9, 0
 Music_MotherBeastBattleSM_Ch2_loop_main:
 	dutycycle 2
 Music_MotherBeastBattleSM_Ch2_loop_1:
@@ -384,7 +384,7 @@ Music_MotherBeastBattleSM_Ch2_loop_1:
 	octave 3
 	callchannel Music_MotherBeastBattleSM_Ch2_branch_2
 	loopchannel 6, Music_MotherBeastBattleSM_Ch2_loop_1
-	notetype $3, $42
+	note_type 3, 4, 2
 	dutycycle 2
 	note __, 8  ;
 	octave 2
@@ -409,7 +409,7 @@ Music_MotherBeastBattleSM_Ch2_loop_1:
 	octave 4
 	note E_, 2 ;
 	note A#, 2
-	notetype $4, $92
+	note_type 4, 9, 2
 	octave 5
 	note E_, 1
 	note A#, 1
@@ -429,7 +429,7 @@ Music_MotherBeastBattleSM_Ch2_loop_1:
 	note A#, 1
 	note E_, 1
 	note A#, 4
-	notetype $3, $92
+	note_type 3, 9, 2
 	note __, 12
 	note F_, 1
 	octave 6
@@ -469,7 +469,7 @@ Music_MotherBeastBattleSM_Ch2_loop_1:
 	octave 2
 	note A#, 3
 	dutycycle 0
-	notetype $c, $74
+	note_type 12, 7, 4
 	octave 3
 	note __, 2
 	note E_, 1
@@ -547,7 +547,7 @@ Music_MotherBeastBattleSM_Ch2_loop_1:
 	note G_, 1
 	octave 4
 	note G_, 4
-	notetype $6, $72
+	note_type 6, 7, 2
 	octave 5
 	note C_, 1
 	octave 4
@@ -562,7 +562,7 @@ Music_MotherBeastBattleSM_Ch2_loop_1:
 	octave 1
 	note G_, 1
 	note C_, 4
-	notetype $c, $74
+	note_type 12, 7, 4
 	octave 4
 	note G_, 4
 	note __, 2
@@ -745,7 +745,7 @@ Music_MotherBeastBattleSM_Ch2_branch_3:
 	endchannel
 
 Music_MotherBeastBattleSM_Ch3:
-	notetype $c, $19
+	note_type 12, 1, -1
 	octave 2
 	note __, 4
 	note D_, 16
@@ -790,7 +790,7 @@ Music_MotherBeastBattleSM_Ch3_loop_main:
 	note D#, 12
 	note D_, 12
 	note D_, 12
-	notetype $6, $19
+	note_type 6, 1, -1
 	note A_, 1
 	note __, 1
 	note A_, 2
@@ -825,7 +825,7 @@ Music_MotherBeastBattleSM_Ch3_loop_main:
 	note __, 2
 	note E_, 2
 	note __, 2
-	notetype $c, $19
+	note_type 12, 1, -1
 	octave 2
 	note A_, 12
 	note G#, 12
@@ -927,7 +927,7 @@ Music_MotherBeastBattleSM_Ch4_loop_main:
 	callchannel Music_MotherBeastBattleSM_Ch4_branch_2
 	callchannel Music_MotherBeastBattleSM_Ch4_branch_1
 	callchannel Music_MotherBeastBattleSM_Ch4_branch_3
-	notetype $c
+	note_type 12
 	note C_, 12
 	note D#, 12
 	note D#, 12
@@ -1037,7 +1037,7 @@ Music_MotherBeastBattleSM_Ch4_branch_3:
 	endchannel
 
 Music_MotherBeastBattleSM_Ch4_buildup:
-	notetype $3
+	note_type 3
 	note G_, 1
 	note G_, 1
 	note G_, 1
@@ -1054,5 +1054,5 @@ Music_MotherBeastBattleSM_Ch4_buildup:
 	note F#, 1
 	note F#, 1
 	note F#, 1
-	notetype $6
+	note_type 6
 	endchannel

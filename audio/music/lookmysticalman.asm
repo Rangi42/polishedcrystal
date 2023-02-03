@@ -11,11 +11,11 @@ Music_LookMysticalMan_Ch1:
 	vibrato $a, $34
 	tone $0001
 	stereopanning $f
-	notetype $c, $b3
+	note_type 12, 11, 3
 	note __, 8
 Music_LookMysticalMan_branch_178458:
 	dutycycle $3
-	notetype $6, $96
+	note_type 6, 9, 6
 	octave 3
 	note F#, 1
 	note __, 1
@@ -195,11 +195,11 @@ Music_LookMysticalMan_branch_1784f9:
 Music_LookMysticalMan_Ch2:
 	dutycycle $3
 	vibrato $a, $34
-	notetype $c, $b3
+	note_type 12, 11, 3
 	note __, 8
 Music_LookMysticalMan_branch_178523:
 	stereopanning $f0
-	notetype $6, $b8
+	note_type 6, 11, 8
 	octave 3
 	note B_, 1
 	note __, 1
@@ -269,7 +269,7 @@ Music_LookMysticalMan_branch_178523:
 	note E_, 2
 	note D_, 6
 	callchannel Music_LookMysticalMan_branch_1785c8
-	notetype $c, $b7
+	note_type 12, 11, 7
 	note B_, 2
 	note __, 2
 	note B_, 2
@@ -359,7 +359,7 @@ Music_LookMysticalMan_branch_1785c8:
 	endchannel
 
 Music_LookMysticalMan_Ch3:
-	notetype $6, $16
+	note_type 6, 1, 6
 	note __, 16
 Music_LookMysticalMan_branch_1785df:
 	octave 2
@@ -535,7 +535,7 @@ Music_LookMysticalMan_branch_178615:
 
 Music_LookMysticalMan_Ch4:
 	togglenoise $3
-	notetype $c
+	note_type 12
 	note D#, 2
 	note D#, 2
 	note D_, 2

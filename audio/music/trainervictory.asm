@@ -9,7 +9,7 @@ Music_TrainerVictory_Ch1:
 	volume 7, 7
 	dutycycle $2
 	tone $0001
-	notetype $8, $b1
+	note_type 8, 11, 1
 	octave 4
 	note E_, 2
 	note E_, 2
@@ -87,7 +87,7 @@ Music_TrainerVictory_branch_ebf11:
 Music_TrainerVictory_Ch2:
 	vibrato $12, $34
 	dutycycle $3
-	notetype $8, $d1
+	note_type 8, 13, 1
 	octave 4
 	note A_, 2
 	note A_, 2
@@ -100,7 +100,7 @@ Music_TrainerVictory_Ch2:
 	note D_, 12
 	stereopanning $f0
 Music_TrainerVictory_branch_ebf30:
-	notetype $8, $82
+	note_type 8, 8, 2
 	callchannel Music_TrainerVictory_branch_ebf56
 	note F#, 2
 	note __, 2
@@ -120,7 +120,7 @@ Music_TrainerVictory_branch_ebf30:
 	note __, 2
 	note D_, 2
 	note G_, 6
-	notetype $c, $88
+	note_type 12, 8, 8
 	note F#, 16
 	note E_, 16
 	jumpchannel Music_TrainerVictory_branch_ebf30
@@ -142,7 +142,7 @@ Music_TrainerVictory_branch_ebf56:
 	endchannel
 
 Music_TrainerVictory_Ch3:
-	notetype $8, $25
+	note_type 8, 2, 5
 	octave 3
 	note G_, 6
 	note G_, 1

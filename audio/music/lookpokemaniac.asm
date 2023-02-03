@@ -10,7 +10,7 @@ Music_LookPokemaniac_Ch1:
 	volume 7, 7
 	vibrato $2, $33
 	tone $0002
-	notetype $c, $b3
+	note_type 12, 11, 3
 	note __, 8
 Music_LookPokemaniac_branch_ebdfb:
 	note __, 4
@@ -32,7 +32,7 @@ Music_LookPokemaniac_Ch2:
 	stereopanning $ff
 	vibrato $2, $33
 	tone $0001
-	notetype $c, $b3
+	note_type 12, 11, 3
 	octave 2
 	note A_, 1
 	note F#, 1
@@ -82,7 +82,7 @@ Music_LookPokemaniac_branch_ebe38:
 Music_LookPokemaniac_Ch3:
 	stereopanning $f0
 	vibrato $6, $33
-	notetype $c, $15
+	note_type 12, 1, 5
 	octave 4
 	note C_, 1
 	note D#, 1

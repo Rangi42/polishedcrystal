@@ -12,7 +12,7 @@ Music_LookRocket_Ch1:
 	stereopanning $f
 	dutycycle $3
 	vibrato $5, $64
-	notetype $c, $a8
+	note_type 12, 10, 8
 	octave 4
 	note C_, 1
 	note D_, 1
@@ -93,7 +93,7 @@ Music_LookRocket_Ch2:
 	pitchoffset 0, D_
 	vibrato $4, $64
 	dutycycle $3
-	notetype $c, $b7
+	note_type 12, 11, 7
 	stereopanning $ff
 	octave 5
 	note C_, 1
@@ -208,7 +208,7 @@ Music_RocketTheme_branch_f758a:
 Music_LookRocket_Ch3:
 	pitchoffset 0, D_
 	vibrato $4, $22
-	notetype $c, $14
+	note_type 12, 1, 4
 	stereopanning $f0
 	note __, 2
 	callchannel Music_LookRocket_branch_f75bf
@@ -359,7 +359,7 @@ Music_RocketTheme_branch_f7623:
 
 Music_LookRocket_Ch4:
 	togglenoise $3
-	notetype $c
+	note_type 12
 	note __, 2
 	callchannel Music_LookRocket_branch_f765c
 Music_LookRocket_branch_f7640:

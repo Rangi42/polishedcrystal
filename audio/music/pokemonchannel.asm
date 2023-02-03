@@ -11,7 +11,7 @@ Music_PokemonChannel_Ch1:
 	vibrato $8, $38
 	dutycycle $1
 	stereopanning $f
-	notetype $c, $b3
+	note_type 12, 11, 3
 	octave 2
 	note B_, 1
 	note __, 2
@@ -26,7 +26,7 @@ Music_PokemonChannel_Ch1:
 	note __, 1
 	note B_, 1
 	note __, 1
-	notetype $6, $b3
+	note_type 6, 11, 3
 	note G_, 1
 	note __, 1
 	note B_, 1
@@ -79,7 +79,7 @@ Music_PokemonChannel_Ch2:
 	dutycycle $1
 	vibrato $8, $38
 	stereopanning $ff
-	notetype $c, $b3
+	note_type 12, 11, 3
 	octave 3
 	note G_, 3
 	note A_, 1
@@ -93,7 +93,7 @@ Music_PokemonChannel_Ch2:
 	note __, 1
 	note G_, 1
 	note __, 1
-	notetype $6, $b3
+	note_type 6, 11, 3
 	note D_, 1
 	note __, 1
 	note G_, 1
@@ -147,7 +147,7 @@ Music_PokemonChannel_Ch2:
 
 Music_PokemonChannel_Ch3:
 	vibrato $8, $38
-	notetype $c, $25
+	note_type 12, 2, 5
 	stereopanning $f0
 	octave 2
 	note G_, 1
@@ -203,7 +203,7 @@ Music_PokemonChannel_Ch3:
 
 Music_PokemonChannel_Ch4:
 	togglenoise $3
-	notetype $c
+	note_type 12
 Music_PokemonChannel_branch_ee54d:
 	note A#, 3
 	note A#, 1

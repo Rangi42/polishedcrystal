@@ -13,7 +13,7 @@ Music_GymLeaderBattleRSE_Ch1:
 	tempo 100
 	dutycycle 1
 	tone $0001
-	notetype $C, $C4
+	note_type 12, 12, 4
 	vibrato $12, $15
 	octave 5
 	note C_, 1
@@ -247,10 +247,10 @@ Music_GymLeaderBattleRSE_Ch1_loop:
 	octave 3
 	note C_, 16
 	note C_, 11
-	notetype $3, $90
+	note_type 3, 9, 0
 	note C_, 3
 	note __, 1
-	notetype $C, $90
+	note_type 12, 9, 0
 	note C_, 2
 	octave 2
 	note A#, 2
@@ -261,10 +261,10 @@ Music_GymLeaderBattleRSE_Ch1_loop:
 	octave 4
 	intensity $A0
 	note C_, 11
-	notetype $3, $A0
+	note_type 3, 10, 0
 	note C_, 3
 	note __, 1
-	notetype $C, $A0
+	note_type 12, 10, 0
 	note C_, 2
 	octave 3
 	note A#, 2
@@ -319,7 +319,7 @@ Music_GymLeaderBattleRSE_Ch1_loop:
 Music_GymLeaderBattleRSE_Ch2:
 	tone $0001
 	dutycycle 2
-	notetype $C, $94
+	note_type 12, 9, 4
 	vibrato $12, $15
 	octave 5
 	note G_, 1
@@ -575,10 +575,10 @@ Music_GymLeaderBattleRSE_Ch2_loop_main:
 	intensity $90
 	octave 2
 	note C_, 11
-	notetype $3, $90
+	note_type 3, 9, 0
 	note C_, 3
 	note __, 1
-	notetype $C, $90
+	note_type 12, 9, 0
 	note C_, 2
 	octave 1
 	note A#, 2
@@ -587,10 +587,10 @@ Music_GymLeaderBattleRSE_Ch2_loop_main:
 	note D#, 16
 	note C_, 16
 	note C_, 11
-	notetype $3, $90
+	note_type 3, 9, 0
 	note C_, 3
 	note __, 1
-	notetype $C, $90
+	note_type 12, 9, 0
 	note C_, 2
 	octave 1
 	note A#, 2
@@ -599,10 +599,10 @@ Music_GymLeaderBattleRSE_Ch2_loop_main:
 	note D#, 16
 	note C_, 16
 	note C_, 11
-	notetype $3, $90
+	note_type 3, 9, 0
 	note C_, 3
 	note __, 1
-	notetype $C, $90
+	note_type 12, 9, 0
 	note C_, 2
 	octave 1
 	note A#, 2
@@ -700,7 +700,7 @@ Music_GymLeaderBattleRSE_Ch2_branch_3:
 
 Music_GymLeaderBattleRSE_Ch3:
 	stereopanning $ff
-	notetype $C, $19
+	note_type 12, 1, -1
 	octave 3
 	note C_, 4
 	octave 2
@@ -886,7 +886,7 @@ Music_GymLeaderBattleRSE_Ch3_branch_5:
 
 Music_GymLeaderBattleRSE_Ch4:
 	togglenoise $3
-	notetype $c
+	note_type 12
 	note C_, 6
 	note C_, 8
 	note D#, 4

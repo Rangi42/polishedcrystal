@@ -16,7 +16,7 @@ Music_EverGrandeCityRSE_Ch1:
 	stereopanning $f
 	vibrato $12, $25
 	dutycycle $2
-	notetype $c, $74
+	note_type 12, 7, 4
 	octave 3
 	note F_, 1
 	note G_, 1
@@ -307,7 +307,7 @@ Music_EverGrandeCityRSE_Ch2:
 	dutycycle $3
 	stereopanning $f0
 	tone $0002
-	notetype $c, $63
+	note_type 12, 6, 3
 	octave 2
 	note G_, 1
 	note A#, 1
@@ -621,7 +621,7 @@ Music_EverGrandeCityRSE_Ch2_loop:
 Music_EverGrandeCityRSE_Ch3:
 	stereopanning $ff
 	vibrato $12, $15
-	notetype $c, $14
+	note_type 12, 1, 4
 	octave 2
 	note __, 6
 	note C_, 2
@@ -1166,7 +1166,7 @@ Music_EverGrandeCityRSE_branch_ef4e3:
 Music_EverGrandeCityRSE_Ch4:
 	togglenoise $3
 	stereopanning $f
-	notetype $c
+	note_type 12
 	note __, 6
 Music_EverGrandeCityRSE_Ch4_loop:
 	note G#, 4

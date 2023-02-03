@@ -13,7 +13,7 @@ Music_ChampionBattleB2W2_Ch1:
 	tempo 100
 	tone $0001
 	vibrato $12, $15
-	notetype $C, $82
+	note_type 12, 8, 2
 	dutycycle 0
 	octave 2
 	note D_, 1
@@ -137,11 +137,11 @@ Music_ChampionBattleB2W2_Ch1_loop_main:
 	dutycycle 0
 	intensity $84
 	note B_, 4
-	notetype $8, $82
+	note_type 8, 8, 2
 	note G#, 2
 	note B_, 2
 	note G#, 2
-	notetype $C, $84
+	note_type 12, 8, 4
 	note G_, 14
 	note __, 10
 	intensity $82
@@ -159,12 +159,12 @@ Music_ChampionBattleB2W2_Ch1_loop_main:
 	note D_, 11
 	note __, 9
 	note B_, 4
-	notetype $8, $82
+	note_type 8, 8, 2
 	octave 4
 	note D#, 2
 	note F_, 2
 	note D#, 2
-	notetype $C, $84
+	note_type 12, 8, 4
 	note D_, 2
 	note C_, 2
 	octave 3
@@ -499,12 +499,12 @@ Music_ChampionBattleB2W2_Ch1_loop_1:
 	note D#, 16
 	note D_, 14
 	octave 1
-	notetype $6, $90
+	note_type 6, 9, 0
 	note D_, 1
 	note __, 1
 	note D_, 1
 	note __, 1
-	notetype $c, $90
+	note_type 12, 9, 0
 	octave 2
 	note C_, 8
 	note D_, 8
@@ -695,7 +695,7 @@ Music_ChampionBattleB2W2_Ch2:
 	tone $0001
 	dutycycle 2
 	vibrato $12, $15
-	notetype $C, $B0
+	note_type 12, 11, 0
 	note __, 2
 	callchannel Music_ChampionBattleB2W2_Ch2_branch_1
 	note G_, 8
@@ -713,13 +713,13 @@ Music_ChampionBattleB2W2_Ch2:
 	note D_, 2
 	note E_, 2
 	note D_, 2
-	notetype $8, $B0
+	note_type 8, 11, 0
 	note A_, 4
 	note G_, 4
 	note F_, 4
 Music_ChampionBattleB2W2_Ch2_loop_main:
 	octave 4
-	notetype $C, $B0
+	note_type 12, 11, 0
 	note G_, 4
 	intensity $80
 	note G_, 4
@@ -1168,13 +1168,13 @@ Music_ChampionBattleB2W2_Ch2_branch_6:
 
 Music_ChampionBattleB2W2_Ch3:
 	stereopanning $ff
-	notetype $6, $19
+	note_type 6, 1, -1
 	octave 1
 	note D_, 1
 	note __, 1
 	note D_, 1
 	note __, 1
-	notetype $C, $19
+	note_type 12, 1, -1
 	octave 2
 	callchannel Music_ChampionBattleB2W2_Ch3_branch_1
 	callchannel Music_ChampionBattleB2W2_Ch3_branch_1
@@ -1538,12 +1538,12 @@ Music_ChampionBattleB2W2_Ch3_loop_5:
 	note G#, 16
 	note G_, 14
 	octave 1
-	notetype $6, $19
+	note_type 6, 1, -1
 	note G_, 1
 	note __, 1
 	note G_, 1
 	note __, 1
-	notetype $c, $19
+	note_type 12, 1, -1
 	octave 2
 	note F_, 8
 	note G_, 8
@@ -1744,7 +1744,7 @@ Music_ChampionBattleB2W2_Ch3_branch_12:
 
 Music_ChampionBattleB2W2_Ch4:
 	togglenoise $3
-	notetype $c
+	note_type 12
 	note C_, 1
 	note C_, 1
 	callchannel Music_ChampionBattleB2W2_Ch4_branch_1
@@ -1752,12 +1752,12 @@ Music_ChampionBattleB2W2_Ch4:
 	note C_, 4
 	note D#, 2
 	callchannel Music_ChampionBattleB2W2_Ch4_branch_1
-	notetype $8
+	note_type 8
 	note C_, 4
 	note C_, 4
 	note D#, 4
 Music_ChampionBattleB2W2_Ch4_loop_main:
-	notetype $c
+	note_type 12
 	callchannel Music_ChampionBattleB2W2_Ch4_branch_2
 	callchannel Music_ChampionBattleB2W2_Ch4_branch_2
 	callchannel Music_ChampionBattleB2W2_Ch4_branch_2
@@ -1910,7 +1910,7 @@ Music_ChampionBattleB2W2_Ch4_branch_3:
 	endchannel
 
 Music_ChampionBattleB2W2_Ch4_branch_4:
-	notetype $6
+	note_type 6
 	note C_, 1
 	note C_, 1
 	note C_, 1
@@ -1919,5 +1919,5 @@ Music_ChampionBattleB2W2_Ch4_branch_4:
 	note C_, 1
 	note C_, 1
 	note C_, 1
-	notetype $c
+	note_type 12
 	endchannel

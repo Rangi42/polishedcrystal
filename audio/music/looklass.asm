@@ -10,7 +10,7 @@ Music_LookLass_Ch1:
 	volume 7, 7
 	tone $0001
 	dutycycle $2
-	notetype $c, $c7
+	note_type 12, 12, 7
 	octave 3
 	note B_, 1
 	note __, 1
@@ -33,7 +33,7 @@ Music_LookLass_branch_ed7bd:
 Music_LookLass_Ch2:
 	stereopanning $f0
 	dutycycle $0
-	notetype $c, $83
+	note_type 12, 8, 3
 	note __, 16
 Music_LookLass_branch_ed7d5:
 	intensity $92
@@ -49,7 +49,7 @@ Music_LookLass_branch_ed7d5:
 	jumpchannel Music_LookLass_branch_ed7d5
 
 Music_LookLass_Ch3:
-	notetype $c, $10
+	note_type 12, 1, 0
 	note __, 8
 	octave 6
 	note E_, 2
@@ -100,10 +100,10 @@ Music_LookLass_branch_ed7ef:
 
 Music_LookLass_Ch4:
 	togglenoise $4
-	notetype $c
+	note_type 12
 	note C_, 16
 Music_LookLass_branch_ed81f:
-	notetype $6
+	note_type 6
 	note D_, 8
 	note C#, 8
 	note C#, 8

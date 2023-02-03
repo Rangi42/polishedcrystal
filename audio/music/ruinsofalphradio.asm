@@ -12,17 +12,17 @@ Music_RuinsOfAlphRadio_Ch1:
 	vibrato $0, $f0
 	stereopanning $f0
 Music_RuinsOfAlphRadio_branch_eede3:
-	notetype $6, $71
+	note_type 6, 7, 1
 	callchannel Music_RuinsOfAlphRadio_branch_eee01
-	notetype $c, $a1
+	note_type 12, 10, 1
 	note __, 16
 	note __, 16
 	callchannel Music_RuinsOfAlphRadio_branch_eee08
-	notetype $c, $a1
+	note_type 12, 10, 1
 	note __, 16
 	note __, 16
 	callchannel Music_RuinsOfAlphRadio_branch_eee01
-	notetype $c, $a1
+	note_type 12, 10, 1
 	note __, 16
 	jumpchannel Music_RuinsOfAlphRadio_branch_eede3
 
@@ -52,19 +52,19 @@ Music_RuinsOfAlphRadio_Ch2:
 	vibrato $1, $e0
 Music_RuinsOfAlphRadio_branch_eee17:
 	stereopanning $f
-	notetype $6, $81
+	note_type 6, 8, 1
 	callchannel Music_RuinsOfAlphRadio_branch_eee01
-	notetype $c, $a1
+	note_type 12, 10, 1
 	note __, 16
 	note __, 16
-	notetype $6, $81
+	note_type 6, 8, 1
 	callchannel Music_RuinsOfAlphRadio_branch_eee08
-	notetype $c, $a1
+	note_type 12, 10, 1
 	note __, 16
 	jumpchannel Music_RuinsOfAlphRadio_branch_eee17
 
 Music_RuinsOfAlphRadio_Ch3:
-	notetype $6, $26
+	note_type 6, 2, 6
 Music_RuinsOfAlphRadio_branch_eee35:
 	octave 2
 	note C_, 1

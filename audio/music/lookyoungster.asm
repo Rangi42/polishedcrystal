@@ -9,7 +9,7 @@ Music_LookYoungster_Ch1:
 	volume 7, 7
 	stereopanning $f
 	dutycycle $3
-	notetype $c, $a3
+	note_type 12, 10, 3
 	octave 3
 	note G_, 1
 	note G#, 1
@@ -64,7 +64,7 @@ Music_LookYoungster_Ch2:
 	stereopanning $f0
 	vibrato $12, $26
 	dutycycle $1
-	notetype $c, $a3
+	note_type 12, 10, 3
 	octave 3
 	note B_, 1
 	octave 4
@@ -72,9 +72,9 @@ Music_LookYoungster_Ch2:
 	note C#, 1
 	note D_, 1
 	intensity $3e
-	notetype $c, $2e
+	note_type 12, 2, -6
 	note G_, 16
-	notetype $c, $b3
+	note_type 12, 11, 3
 	intensity $c3
 	note F_, 1
 	note __, 3
@@ -159,7 +159,7 @@ Music_LookYoungster_branch_f672f:
 Music_LookYoungster_Ch3:
 	stereopanning $ff
 	vibrato $2, $24
-	notetype $c, $25
+	note_type 12, 2, 5
 	note __, 4
 	octave 2
 	note G_, 1

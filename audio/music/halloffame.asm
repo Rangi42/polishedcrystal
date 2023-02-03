@@ -12,7 +12,7 @@ Music_HallOfFame_Ch1:
 	vibrato $c, $22
 	tone $0001
 	stereopanning $f0
-	notetype $c, $93
+	note_type 12, 9, 3
 	note __, 16
 	note __, 16
 	note __, 16
@@ -51,7 +51,7 @@ Music_HallOfFame_Ch2:
 	vibrato $8, $25
 	dutycycle $3
 Music_HallOfFame_branch_f0610:
-	notetype $c, $c4
+	note_type 12, 12, 4
 	octave 3
 	note G_, 2
 	note D_, 2
@@ -79,7 +79,7 @@ Music_HallOfFame_branch_f0610:
 
 Music_HallOfFame_Ch3:
 Music_HallOfFame_branch_f062e:
-	notetype $c, $28
+	note_type 12, 2, 8
 Music_HallOfFame_branch_f0631:
 	octave 3
 	note D_, 2
@@ -138,12 +138,12 @@ Music_HallOfFame_branch_f0631:
 
 Music_HallOfFame_Ch4:
 	togglenoise $5
-	notetype $c
+	note_type 12
 	note __, 16
 	note __, 16
 	note __, 16
 	note __, 16
-	notetype $6
+	note_type 6
 Music_HallOfFame_branch_f0677:
 	stereopanning $f
 	note A#, 4

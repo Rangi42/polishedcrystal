@@ -15,7 +15,7 @@ Music_SunyshoreCityDPPt_Ch1:
 	tempo $90
 	tone $0002
 	intensity $A1
-	notetype $C, $A1
+	note_type 12, 10, 1
 	note __, 2
 	octave 4
 	note F#, 2
@@ -73,7 +73,7 @@ Music_SunyshoreCityDPPt_Ch1:
 	note A_, 1
 	note G#, 1
 Music_SunyshoreCityDPPt_Ch1_loop:
-	notetype $6, $87
+	note_type 6, 8, 7
 	note G#, 1
 	note A_, 3
 	note F#, 8
@@ -298,9 +298,9 @@ Music_SunyshoreCityDPPt_Ch1_loop:
 	note E_, 16
 	intensity $A2
 	octave 3
-	notetype $F, $A2
+	note_type 15, 10, 2
 	note A#, 8
-	notetype $C, $A2
+	note_type 12, 10, 2
 	note A_, 3
 	note A_, 3
 	note A_, 6
@@ -341,7 +341,7 @@ Music_SunyshoreCityDPPt_Ch1_loop:
 	octave 5
 	note D_, 1
 	octave 3
-	notetype $6, $91
+	note_type 6, 9, 1
 	note D_, 1
 	note G#, 1
 	octave 4
@@ -527,7 +527,7 @@ Music_SunyshoreCityDPPt_Ch1_loop:
 	note __, 2
 	intensity $97
 	octave 3
-	notetype $C, $97
+	note_type 12, 9, 7
 	note A_, 12
 	octave 4
 	note F#, 6
@@ -584,7 +584,7 @@ Music_SunyshoreCityDPPt_Ch1_loop:
 Music_SunyshoreCityDPPt_Ch2:
 	tone $0001
 	intensity $C1
-	notetype $C, $C1
+	note_type 12, 12, 1
 	note __, 2
 	dutycycle 1
 	octave 5
@@ -636,13 +636,13 @@ Music_SunyshoreCityDPPt_Ch2:
 	intensity $C6
 	vibrato $08, $23
 	octave 4
-	notetype $6, $C6
+	note_type 6, 12, 6
 	note C_, 1
 	note C#, 11
 	note D_, 8
 	note E_, 8
 	octave 3
-	notetype $C, $C6
+	note_type 12, 12, 6
 	note B_, 16
 	note A_, 1
 	note B_, 1
@@ -653,7 +653,7 @@ Music_SunyshoreCityDPPt_Ch2_loop:
 	note C_, 1
 	note C#, 5
 	octave 3
-	notetype $6, $C6
+	note_type 6, 12, 6
 	note A#, 1
 	note B_, 7
 	note E_, 4
@@ -702,14 +702,14 @@ Music_SunyshoreCityDPPt_Ch2_loop:
 	octave 4
 	note E_, 8
 	octave 3
-	notetype $C, $C6
+	note_type 12, 12, 6
 	note B_, 16
 	note A_, 1
 	note B_, 1
 	octave 4
 	note C#, 6
 	note D_, 4
-	notetype $6, $C6
+	note_type 6, 12, 6
 	note C_, 1
 	note C#, 11
 	octave 3
@@ -832,11 +832,11 @@ Music_SunyshoreCityDPPt_Ch2_loop:
 	octave 4
 	note C#, 4
 	octave 3
-	notetype $C, $C7
+	note_type 12, 12, 7
 	note A_, 16
-	notetype $F, $C7
+	note_type 15, 12, 7
 	note __, 16
-	notetype $C, $C7
+	note_type 12, 12, 7
 	note F#, 4
 	note A_, 4
 	octave 4
@@ -875,9 +875,9 @@ Music_SunyshoreCityDPPt_Ch2_loop:
 	octave 3
 	note A_, 16
 	intensity $C7
-	notetype $F, $C7
+	note_type 15, 12, 7
 	note __, 16
-	notetype $C, $C7
+	note_type 12, 12, 7
 	note F#, 4
 	note A_, 4
 	octave 4
@@ -889,7 +889,7 @@ Music_SunyshoreCityDPPt_Ch2_loop:
 	octave 4
 	note D_, 2
 	octave 3
-	notetype $6, $C7
+	note_type 6, 12, 7
 	note G#, 1
 	note A_, 16
 	note __, 3
@@ -903,18 +903,18 @@ Music_SunyshoreCityDPPt_Ch2_loop:
 	note B_, 4
 	octave 4
 	note D_, 12
-	notetype $C, $C7
+	note_type 12, 12, 7
 	note C#, 16
 	note __, 10
 	dutycycle 1
 	vibrato $08, $23
-	notetype $6, $C7
+	note_type 6, 12, 7
 	note C_, 1
 	note C#, 11
 	note D_, 8
 	note E_, 8
 	octave 3
-	notetype $C, $C7
+	note_type 12, 12, 7
 	note B_, 16
 	note A_, 1
 	note B_, 1
@@ -924,14 +924,14 @@ Music_SunyshoreCityDPPt_Ch3:
 	intensity $25
 	dutycycle 1
 	octave 2
-	notetype $6, $25
+	note_type 6, 2, 5
 	note B_, 1
 	note __, 1
 	note B_, 1
 	note __, 1
 	octave 3
 	note E_, 4
-	notetype $C, $25
+	note_type 12, 2, 5
 	note __, 16
 	note E_, 2
 	note __, 2
@@ -1507,7 +1507,7 @@ Music_SunyshoreCityDPPt_Ch3_loop:
 
 Music_SunyshoreCityDPPt_Ch4:
 	togglenoise 3
-	notetype $C
+	note_type 12
 	note D#, 1
 	note D#, 1
 	note D#, 4
@@ -1838,7 +1838,7 @@ Music_SunyshoreCityDPPt_Ch4_loop:
 	note D#, 2
 	note D#, 4
 	note D#, 2
-	notetype $6
+	note_type 6
 	note C_, 1
 	note C_, 3
 	note C_, 8
@@ -1890,6 +1890,6 @@ Music_SunyshoreCityDPPt_Ch4_loop:
 	note G_, 4
 	note C_, 4
 	note G_, 4
-	notetype $C
+	note_type 12
 	jumpchannel Music_SunyshoreCityDPPt_Ch4_loop
 

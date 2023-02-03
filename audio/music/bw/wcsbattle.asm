@@ -9,7 +9,7 @@ Music_WCSBattleBW:
 
 Music_WCSBattleBW_Ch1:
 	dutycycle $2
-	notetype $c, $8c
+	note_type 12, 8, -4
 	octave 2
 	note A#, 12
 	intensity $c1
@@ -138,7 +138,7 @@ Music_WCSBattleBW_Ch1_L:
 	note F_, 1
 	octave 3
 	note A#, 1
-	notetype $6, $7e
+	note_type 6, 7, -6
 	octave 4
 	note C_, 1
 	note D_, 1
@@ -147,7 +147,7 @@ Music_WCSBattleBW_Ch1_L:
 	note G_, 1
 	note A_, 1
 	note B_, 1
-	notetype $c, $1e
+	note_type 12, 1, -6
 	octave 5
 	note C_, 1
 	note C_, 3
@@ -310,7 +310,7 @@ Music_WCSBattleBW_Ch2:
 	tempo $69
 	volume 7, 7
 	dutycycle $2
-	notetype $c, $8c
+	note_type 12, 8, -4
 	octave 2
 	note F_, 12
 	intensity $c1
@@ -665,7 +665,7 @@ Music_WCSBattleBW_Ch2_L:
 	jumpchannel Music_WCSBattleBW_Ch2_L
 
 Music_WCSBattleBW_Ch3:
-	notetype $c, $16
+	note_type 12, 1, 6
 	octave 4
 	note __, 16
 	note __, 16

@@ -14,7 +14,7 @@ Music_PowerPlantXY_Ch1:
 	volume 7, 7
 	stereopanning $f
 	vibrato $12, $23
-	notetype $c, $87
+	note_type 12, 8, 7
 	dutycycle $0
 
 Music_PowerPlantXY_Ch1_branch_0:
@@ -29,37 +29,37 @@ Music_PowerPlantXY_Ch1_branch_0:
 
 Music_PowerPlantXY_Ch1_branch_1:
 	vibrato $12, $23
-	notetype $c, $c3
+	note_type 12, 12, 3
 	octave 2
 	note G#, 3
-	notetype $c, $c2
+	note_type 12, 12, 2
 	note G#, 1
 	note __, 6
 	note G#, 2
 	note __, 1
 	note G#, 2
 	note __, 1
-	notetype $c, $c3
+	note_type 12, 12, 3
 	note G#, 3
-	notetype $c, $c2
+	note_type 12, 12, 2
 	note G#, 1
 	note __, 6
 	note G#, 2
 	note __, 1
 	note G#, 2
 	note __, 1
-	notetype $c, $c3
+	note_type 12, 12, 3
 	note G_, 3
-	notetype $c, $c2
+	note_type 12, 12, 2
 	note G_, 1
 	note __, 6
 	note G_, 2
 	note __, 1
 	note G_, 2
 	note __, 1
-	notetype $c, $c3
+	note_type 12, 12, 3
 	note G_, 3
-	notetype $c, $c2
+	note_type 12, 12, 2
 	note G_, 1
 	note __, 6
 	note G_, 2
@@ -69,13 +69,13 @@ Music_PowerPlantXY_Ch1_branch_1:
 	endchannel
 
 Music_PowerPlantXY_Ch1_branch_2:
-	notetype $c, $c2
+	note_type 12, 12, 2
 	octave 3
 	note C#, 1
 	note __, 2
 	note D_, 1
 	note __, 2
-	notetype $c, $b9
+	note_type 12, 11, -1
 	note C#, 6
 	note __, 4
 	octave 2
@@ -83,9 +83,9 @@ Music_PowerPlantXY_Ch1_branch_2:
 	note __, 2
 	note D#, 1
 	note __, 2
-	notetype $c, $b9
+	note_type 12, 11, -1
 	note D_, 10
-	notetype $c, $aa
+	note_type 12, 10, -2
 	note F#, 2
 	note F#, 2
 	note F#, 2
@@ -95,19 +95,19 @@ Music_PowerPlantXY_Ch1_branch_2:
 	note C_, 2
 	note C#, 2
 	note D#, 2
-	notetype $c, $6e
+	note_type 12, 6, -6
 	note C_, 8
 	note __, 2
 	octave 2
-	notetype $c, $d3
+	note_type 12, 13, 3
 	note G#, 1
 	note __, 2
-	notetype $c, $c8
+	note_type 12, 12, 8
 	note F#, 3
 	endchannel
 
 Music_PowerPlantXY_Ch1_branch_3:
-	notetype $c, $6a
+	note_type 12, 6, -2
 	octave 4
 	note E_, 16
 	note C_, 8
@@ -131,7 +131,7 @@ Music_PowerPlantXY_Ch1_branch_3:
 Music_PowerPlantXY_Ch1_branch_4:
 	vibrato $12, $35
 	dutycycle $2
-	notetype $c, $51
+	note_type 12, 5, 1
 	note __, 3
 	octave 4
 	note E_, 2
@@ -158,7 +158,7 @@ Music_PowerPlantXY_Ch1_branch_4:
 Music_PowerPlantXY_Ch2:
 	stereopanning $ff
 	vibrato $12, $23
-	notetype $c, $c4
+	note_type 12, 12, 4
 
 Music_PowerPlantXY_Ch2_branch_0:
 	callchannel Music_PowerPlantXY_Ch2_branch_4
@@ -171,7 +171,7 @@ Music_PowerPlantXY_Ch2_branch_0:
 	jumpchannel Music_PowerPlantXY_Ch2_branch_0
 
 Music_PowerPlantXY_Ch2_branch_1:
-	notetype $c, $c2
+	note_type 12, 12, 2
 	dutycycle $1
 	octave 3
 	note G#, 2
@@ -233,29 +233,29 @@ Music_PowerPlantXY_Ch2_branch_1:
 Music_PowerPlantXY_Ch2_branch_2:
 	vibrato $12, $23
 	dutycycle $1
-	notetype $c, $c2
+	note_type 12, 12, 2
 	octave 4
 	note C#, 1
 	note __, 2
 	octave 3
 	note G#, 1
 	note __, 2
-	notetype $c, $b9
+	note_type 12, 11, -1
 	note A_, 6
 	octave 4
 	note C#, 1
 	note D#, 1
 	note E_, 1
 	note F_, 1
-	notetype $c, $d2
+	note_type 12, 13, 2
 	note F#, 1
 	note __, 2
 	octave 3
 	note F#, 1
 	note __, 2
-	notetype $c, $b9
+	note_type 12, 11, -1
 	note B_, 10
-	notetype $c, $aa
+	note_type 12, 10, -2
 	note A_, 2
 	note B_, 2
 	note A_, 2
@@ -265,18 +265,18 @@ Music_PowerPlantXY_Ch2_branch_2:
 	note D#, 2
 	note E_, 2
 	note F#, 2
-	notetype $c, $4f
+	note_type 12, 4, -7
 	note D#, 8
 	note __, 2
-	notetype $c, $d3
+	note_type 12, 13, 3
 	note E_, 1
 	note __, 2
-	notetype $c, $c8
+	note_type 12, 12, 8
 	note D#, 3
 	endchannel
 
 Music_PowerPlantXY_Ch2_branch_3:
-	notetype $c, $6a
+	note_type 12, 6, -2
 	octave 4
 	note G#, 16
 	note F#, 8
@@ -296,7 +296,7 @@ Music_PowerPlantXY_Ch2_branch_3:
 Music_PowerPlantXY_Ch2_branch_4:
 	vibrato $12, $35
 	dutycycle $2
-	notetype $c, $c2
+	note_type 12, 12, 2
 	octave 3
 	note C#, 1
 	note G#, 1
@@ -325,7 +325,7 @@ Music_PowerPlantXY_Ch2_branch_4:
 
 Music_PowerPlantXY_Ch3:
 	stereopanning $ff
-	notetype $c, $11
+	note_type 12, 1, 1
 
 Music_PowerPlantXY_Ch3_branch_0:
 	callchannel Music_PowerPlantXY_Ch3_branch_4
@@ -339,15 +339,15 @@ Music_PowerPlantXY_Ch3_branch_0:
 
 Music_PowerPlantXY_Ch3_branch_1:
 	vibrato $0, $66
-	notetype $c, $14
+	note_type 12, 1, 4
 	octave 3
 	note C#, 3
 	note C#, 1
 	note __, 2
 	octave 2
-	notetype $c, $12
+	note_type 12, 1, 2
 	note C#, 4
-	notetype $c, $14
+	note_type 12, 1, 4
 	octave 3
 	note C#, 2
 	note __, 1
@@ -356,10 +356,10 @@ Music_PowerPlantXY_Ch3_branch_1:
 	note C#, 3
 	note C#, 1
 	note __, 2
-	notetype $c, $12
+	note_type 12, 1, 2
 	octave 2
 	note C#, 4
-	notetype $c, $14
+	note_type 12, 1, 4
 	octave 3
 	note C#, 2
 	note __, 1
@@ -368,10 +368,10 @@ Music_PowerPlantXY_Ch3_branch_1:
 	note E_, 3
 	note E_, 1
 	note __, 2
-	notetype $c, $12
+	note_type 12, 1, 2
 	octave 2
 	note E_, 4
-	notetype $c, $14
+	note_type 12, 1, 4
 	octave 3
 	note E_, 2
 	note __, 1
@@ -380,10 +380,10 @@ Music_PowerPlantXY_Ch3_branch_1:
 	note E_, 3
 	note E_, 1
 	note __, 2
-	notetype $c, $12
+	note_type 12, 1, 2
 	octave 2
 	note E_, 4
-	notetype $c, $14
+	note_type 12, 1, 4
 	octave 3
 	note E_, 2
 	note __, 1
@@ -392,7 +392,7 @@ Music_PowerPlantXY_Ch3_branch_1:
 	endchannel
 
 Music_PowerPlantXY_Ch3_branch_2:
-	notetype $c, $14
+	note_type 12, 1, 4
 	octave 2
 	note A_, 1
 	note __, 2
@@ -494,7 +494,7 @@ Music_PowerPlantXY_Ch3_branch_3:
 	endchannel
 
 Music_PowerPlantXY_Ch3_branch_4:
-	notetype $c, $11
+	note_type 12, 1, 1
 	octave 3
 	note C#, 16
 	note C#, 13
@@ -502,7 +502,7 @@ Music_PowerPlantXY_Ch3_branch_4:
 	endchannel
 
 Music_PowerPlantXY_Ch4:
-	notetype $c
+	note_type 12
 	togglenoise $3
 Music_PowerPlantXY_Ch4_branch_0:
 	note A#, 3

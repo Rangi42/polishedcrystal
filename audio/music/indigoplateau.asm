@@ -26,7 +26,7 @@ Music_IndigoPlateau_branch_ee86a:
 	jumpchannel Music_IndigoPlateau_branch_ee86a
 
 Music_IndigoPlateau_branch_ee881:
-	notetype $c, $b6
+	note_type 12, 11, 6
 	octave 2
 	note A_, 4
 	intensity $b2
@@ -100,7 +100,7 @@ Music_IndigoPlateau_branch_ee899:
 	jumpchannel Music_IndigoPlateau_branch_ee899
 
 Music_IndigoPlateau_branch_ee8e9:
-	notetype $c, $c6
+	note_type 12, 12, 6
 	octave 3
 	note D_, 4
 	intensity $c2
@@ -115,7 +115,7 @@ Music_IndigoPlateau_branch_ee8e9:
 	endchannel
 
 Music_IndigoPlateau_Ch3:
-	notetype $c, $19
+	note_type 12, 1, -1
 Music_IndigoPlateau_branch_ee8fd:
 	callchannel Music_IndigoPlateau_branch_ee915
 	octave 3
@@ -151,7 +151,7 @@ Music_IndigoPlateau_branch_ee915:
 Music_IndigoPlateau_Ch4:
 	stereopanning $f0
 	togglenoise $0
-	notetype $c
+	note_type 12
 Music_IndigoPlateau_branch_ee92a:
 	note D#, 4
 	note D_, 2
@@ -161,7 +161,7 @@ Music_IndigoPlateau_branch_ee92a:
 	note D_, 4
 	note D_, 2
 	note D_, 2
-	notetype $6
+	note_type 6
 	note D_, 1
 	note D_, 1
 	note D#, 1
@@ -170,7 +170,7 @@ Music_IndigoPlateau_branch_ee92a:
 	note D#, 1
 	note D_, 1
 	note D_, 1
-	notetype $c
+	note_type 12
 	note D#, 4
 	note D_, 2
 	note D#, 2

@@ -9,7 +9,7 @@ Music_GoldenrodCity_Ch1:
 	stereopanning $f
 	tempo 176
 	volume 7, 7
-	notetype $c, $97
+	note_type 12, 9, 7
 	note __, 16
 	note __, 16
 	note __, 16
@@ -177,7 +177,7 @@ Music_GoldenrodCity_Ch2:
 	stereopanning $f0
 	vibrato $12, $23
 	dutycycle $2
-	notetype $c, $97
+	note_type 12, 9, 7
 Music_GoldenrodCity_branch_eb523:
 	intensity $97
 	callchannel Music_GoldenrodCity_branch_eb555
@@ -267,7 +267,7 @@ Music_GoldenrodCity_branch_eb572:
 Music_GoldenrodCity_Ch3:
 	stereopanning $ff
 	vibrato $8, $23
-	notetype $c, $25
+	note_type 12, 2, 5
 Music_GoldenrodCity_branch_eb58c:
 	callchannel Music_GoldenrodCity_branch_eb5aa
 	callchannel Music_GoldenrodCity_branch_eb5aa
@@ -387,7 +387,7 @@ Music_GoldenrodCity_branch_eb5d2:
 
 Music_GoldenrodCity_Ch4:
 	togglenoise $3
-	notetype $c
+	note_type 12
 	note __, 16
 	note __, 16
 	note __, 16

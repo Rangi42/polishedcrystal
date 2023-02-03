@@ -16,7 +16,7 @@ Music_ZinniaBattleORAS_Ch1:
 	dutycycle 1
 	tone $0002
 	vibrato $8, $15
-	notetype $3, $b3
+	note_type 3, 11, 3
 	octave 4
 	note C#, 12
 	note __, 12
@@ -26,7 +26,7 @@ Music_ZinniaBattleORAS_Ch1:
 	note D#, 1
 	note E_, 1
 	note F_, 1
-	notetype $6, $b0
+	note_type 6, 11, 0
 	octave 4
 	note C#, 12
 	intensity $b3
@@ -40,7 +40,7 @@ Music_ZinniaBattleORAS_Ch1_loop_2:
 	callchannel Music_ZinniaBattleORAS_Ch1_branch_1
 	loopchannel 4, Music_ZinniaBattleORAS_Ch1_loop_2
 	dutycycle 0
-	notetype $6, $80
+	note_type 6, 8, 0
 	note D_, 8
 	intensity $87
 	note D_, 8
@@ -83,7 +83,7 @@ Music_ZinniaBattleORAS_Ch1_loop_2:
 	intensity $70
 	note G_, 1
 	note A_, 1
-	notetype $6, $7f
+	note_type 6, 7, -7
 	octave 3
 	note G_, 1
 	intensity $90
@@ -167,7 +167,7 @@ Music_ZinniaBattleORAS_Ch1_loop_2:
 	note D#, 10
 	intensity $95
 	note D#, 6
-	notetype $8, $94
+	note_type 8, 9, 4
 	note C_, 1
 	octave 2
 	note G_, 1
@@ -186,7 +186,7 @@ Music_ZinniaBattleORAS_Ch1_loop_2:
 	note D#, 1
 	note F_, 1
 	note G_, 1
-	notetype $6, $90
+	note_type 6, 9, 0
 	note A#, 8
 	intensity $95
 	note A#, 6
@@ -323,7 +323,7 @@ Music_ZinniaBattleORAS_Ch1_branch_3:
 Music_ZinniaBattleORAS_Ch2:
 	dutycycle 3
 	vibrato $12, $33
-	notetype $3, $e3
+	note_type 3, 14, 3
 	octave 3
 	note G#, 2
 	octave 4
@@ -363,7 +363,7 @@ Music_ZinniaBattleORAS_Ch2:
 	note B_, 2
 	note A_, 2
 	note G#, 2
-	notetype $6, $a0
+	note_type 6, 10, 0
 	dutycycle 0
 	octave 3
 	note F#, 16
@@ -376,11 +376,11 @@ Music_ZinniaBattleORAS_Ch2:
 	note B_, 16
 	octave 4
 	note C#, 12
-	notetype $3, $a0
+	note_type 3, 10, 0
 	note E_, 6
 	note D#, 1
 	note D_, 1
-	notetype $6, $a0
+	note_type 6, 10, 0
 	note C#, 12
 	note G#, 4
 	note A_, 14
@@ -390,13 +390,13 @@ Music_ZinniaBattleORAS_Ch2:
 	octave 5
 	note C#, 4
 Music_ZinniaBattleORAS_Ch2_loop:
-	notetype $6, $a0
+	note_type 6, 10, 0
 	dutycycle 3
 	octave 3
 	note C#, 2
 	note D_, 1
 	note E_, 1
-	notetype $c, $af
+	note_type 12, 10, -7
 	note F#, 2
 	intensity $c0
 	note F#, 3
@@ -406,12 +406,12 @@ Music_ZinniaBattleORAS_Ch2_loop:
 	note G#, 3
 	note A_, 2
 	octave 4
-	notetype $6, $c0
+	note_type 6, 12, 0
 	note E_, 2
 	note D#, 1
 	note D_, 1
 	vibrato $12, $54
-	notetype $c, $c0
+	note_type 12, 12, 0
 	note C#, 5
 	intensity $c5
 	note C#, 4
@@ -444,11 +444,11 @@ Music_ZinniaBattleORAS_Ch2_loop:
 	note C#, 8
 	intensity $c7
 	note C#, 6
-	notetype $6, $a0
+	note_type 6, 10, 0
 	note D_, 2
 	note D#, 1
 	note F_, 1
-	notetype $c, $af
+	note_type 12, 10, -7
 	note G_, 2
 	intensity $c0
 	note G_, 3
@@ -458,12 +458,12 @@ Music_ZinniaBattleORAS_Ch2_loop:
 	note A_, 3
 	note A#, 2
 	octave 4
-	notetype $6, $c0
+	note_type 6, 12, 0
 	note F_, 2
 	note E_, 1
 	note D#, 1
 	vibrato $12, $54
-	notetype $c, $c0
+	note_type 12, 12, 0
 	note D_, 5
 	intensity $c5
 	note D_, 4
@@ -497,7 +497,7 @@ Music_ZinniaBattleORAS_Ch2_loop:
 	intensity $c7
 	note D_, 8
 	dutycycle 0
-	notetype $6, $7f
+	note_type 6, 7, -7
 	octave 4
 	note A#, 1
 	intensity $90
@@ -583,7 +583,7 @@ Music_ZinniaBattleORAS_Ch2_loop:
 	note D#, 10
 	intensity $95
 	note D#, 6
-	notetype $8, $94
+	note_type 8, 9, 4
 	note C_, 1
 	octave 3
 	note G_, 1
@@ -602,7 +602,7 @@ Music_ZinniaBattleORAS_Ch2_loop:
 	note D#, 1
 	note F_, 1
 	note G_, 1
-	notetype $6, $90
+	note_type 6, 9, 0
 	note A#, 8
 	intensity $95
 	note A#, 6
@@ -618,7 +618,7 @@ Music_ZinniaBattleORAS_Ch2_loop:
 	note F#, 8
 	intensity $b5
 	note F#, 4
-	notetype $8, $b4
+	note_type 8, 11, 4
 	note F#, 1
 	note C#, 1
 	note F#, 1
@@ -631,7 +631,7 @@ Music_ZinniaBattleORAS_Ch2_loop:
 	note B_, 1
 	note C#, 1
 	note B_, 1
-	notetype $6, $b4
+	note_type 6, 11, 4
 	octave 5
 	note E_, 2
 	octave 4
@@ -669,7 +669,7 @@ Music_ZinniaBattleORAS_Ch2_loop:
 	note D_, 5
 	intensity $b4
 	note D_, 3
-	notetype $8, $b4
+	note_type 8, 11, 4
 	octave 3
 	note B_, 1
 	note D_, 1
@@ -677,14 +677,14 @@ Music_ZinniaBattleORAS_Ch2_loop:
 	note B_, 1
 	note D_, 1
 	note F#, 1
-	notetype $c, $b0
+	note_type 12, 11, 0
 	octave 4
 	note C#, 4
 	intensity $b4
 	note C#, 3
 	dutycycle 3
 	vibrato $12, $53
-	notetype $3, $c0
+	note_type 3, 12, 0
 	note D_, 1
 	note D#, 1
 	intensity $d0
@@ -693,7 +693,7 @@ Music_ZinniaBattleORAS_Ch2_loop:
 	octave 4
 	intensity $e0
 	note F#, 8
-	notetype $6, $e7
+	note_type 6, 14, 7
 	note F#, 8
 	intensity $e5
 	note A_, 4
@@ -715,7 +715,7 @@ Music_ZinniaBattleORAS_Ch2_loop:
 	note C#, 1
 	octave 3
 	note B_, 1
-	notetype $c, $e7
+	note_type 12, 14, 7
 	note F#, 6
 	octave 4
 	note C#, 2
@@ -742,7 +742,7 @@ Music_ZinniaBattleORAS_Ch2_loop:
 	note F#, 8
 	intensity $e7
 	note F#, 9
-	notetype $6, $c4
+	note_type 6, 12, 4
 	octave 3
 	note A_, 2
 	note B_, 2
@@ -804,7 +804,7 @@ Music_ZinniaBattleORAS_Ch2_loop:
 	jumpchannel Music_ZinniaBattleORAS_Ch2_loop
 
 Music_ZinniaBattleORAS_Ch3:
-	notetype $3, $19
+	note_type 3, 1, -1
 	vibrato $12, $15
 	octave 2
 	note G#, 8
@@ -816,7 +816,7 @@ Music_ZinniaBattleORAS_Ch3:
 	note A#, 1
 	note D_, 16
 	note E_, 16
-	notetype $6, $19
+	note_type 6, 1, -1
 	octave 2
 	note C#, 16
 	note E_, 14
@@ -827,13 +827,13 @@ Music_ZinniaBattleORAS_Ch3:
 	note F#, 1
 	note G#, 16
 	note A_, 12
-	notetype $3, $19
+	note_type 3, 1, -1
 	octave 3
 	note C#, 6
 	note C_, 1
 	octave 2
 	note B_, 1
-	notetype $6, $19
+	note_type 6, 1, -1
 	note A_, 12
 	octave 3
 	note E_, 4
@@ -1080,7 +1080,7 @@ Music_ZinniaBattleORAS_Ch3_branch_2:
 
 Music_ZinniaBattleORAS_Ch4:
 	togglenoise $3
-	notetype $3
+	note_type 3
 	note C_, 16
 	note __, 16
 	note B_, 8
@@ -1093,7 +1093,7 @@ Music_ZinniaBattleORAS_Ch4_loop_1:
 	note C#, 2
 	loopchannel 6, Music_ZinniaBattleORAS_Ch4_loop_1
 	note C#, 2
-	notetype $3
+	note_type 3
 	note D_, 1
 	note D_, 1
 	note D_, 1
@@ -1102,7 +1102,7 @@ Music_ZinniaBattleORAS_Ch4_loop_1:
 	note D_, 1
 	note D_, 1
 	note D_, 1
-	notetype $c
+	note_type 12
 	note B_, 2
 	callchannel Music_ZinniaBattleORAS_Ch4_branch_1
 	note D#, 1
@@ -1180,7 +1180,7 @@ Music_ZinniaBattleORAS_Ch4_branch_1:
 	endchannel
 
 Music_ZinniaBattleORAS_Ch4_branch_2:
-	notetype $3
+	note_type 3
 	note D#, 2
 	note D#, 2
 	note D#, 2
@@ -1193,5 +1193,5 @@ Music_ZinniaBattleORAS_Ch4_branch_2:
 	note D_, 1
 	note D_, 1
 	note D_, 1
-	notetype $c
+	note_type 12
 	endchannel

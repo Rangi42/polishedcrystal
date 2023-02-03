@@ -12,7 +12,7 @@ Music_Route30_Ch1:
 	tone $0001
 	vibrato $10, $15
 	stereopanning $f0
-	notetype $c, $b2
+	note_type 12, 11, 2
 	octave 3
 	note D_, 6
 	note D_, 1
@@ -188,7 +188,7 @@ Music_Route30_Ch2:
 	dutycycle $3
 	vibrato $12, $36
 	stereopanning $f
-	notetype $c, $c2
+	note_type 12, 12, 2
 	octave 3
 	note G_, 6
 	note G_, 1
@@ -296,7 +296,7 @@ Music_Route30_branch_efcf6:
 	jumpchannel Music_Route30_branch_efcf6
 
 Music_Route30_Ch3:
-	notetype $c, $27
+	note_type 12, 2, 7
 	octave 2
 	note G_, 1
 	note __, 5
@@ -578,7 +578,7 @@ Music_Route30_branch_efd79:
 
 Music_Route30_Ch4:
 	togglenoise $3
-	notetype $c
+	note_type 12
 	callchannel Music_Route30_branch_efeb8
 	callchannel Music_Route30_branch_efec1
 Music_Route30_branch_efe84:
@@ -657,7 +657,7 @@ Music_Route30_branch_efee1:
 	note D_, 1
 	note D_, 2
 	note D_, 2
-	notetype $6
+	note_type 6
 	note D_, 1
 	note D_, 1
 	note D_, 1
@@ -666,5 +666,5 @@ Music_Route30_branch_efee1:
 	note D_, 1
 	note D_, 1
 	note D_, 1
-	notetype $c
+	note_type 12
 	endchannel
