@@ -214,7 +214,7 @@ Music_RoadToReversalMountainB2W2_Ch3_branch_1:
 
 Music_RoadToReversalMountainB2W2_Ch4:
 	stereopanning $f
-	togglenoise $3
+	toggle_noise 3
 	note_type 12
 Music_RoadToReversalMountainB2W2_Ch4_loop:
 	note C_, 4

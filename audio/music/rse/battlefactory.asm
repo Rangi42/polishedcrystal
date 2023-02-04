@@ -1248,7 +1248,7 @@ Music_BattleFactoryRSE_Ch3_branch_3:
 	endchannel
 
 Music_BattleFactoryRSE_Ch4:
-	togglenoise $4
+	toggle_noise 4
 	note_type 6
 Music_BattleFactoryRSE_Ch4_loop:
 	note D#, 8

@@ -763,7 +763,7 @@ Music_EternaForestDPPt_Ch3_loop:
 	jumpchannel Music_EternaForestDPPt_Ch3_loop
 
 Music_EternaForestDPPt_Ch4:
-	togglenoise 4
+	toggle_noise 4
 Music_EternaForestDPPt_Ch4_loop:
 	note_type 12
 	note __, 16

@@ -365,7 +365,7 @@ Music_MountPyreRSE_Ch3_loop_2:
 	jumpchannel Music_MountPyreRSE_Ch3_loop_main
 
 Music_MountPyreRSE_Ch4:
-	togglenoise $3
+	toggle_noise 3
 	note_type 12
 	note __, 1
 ;	note C_, 8

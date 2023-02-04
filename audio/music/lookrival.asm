@@ -323,7 +323,7 @@ Music_LookRival_branch_f50ff:
 
 Music_LookRival_Ch4:
 	stereopanning $f0
-	togglenoise $3
+	toggle_noise 3
 	note_type 12
 	note __, 8
 	note __, 16

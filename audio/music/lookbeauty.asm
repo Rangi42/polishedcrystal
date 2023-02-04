@@ -295,7 +295,7 @@ Music_LookBeauty_branch_eef0f:
 	jumpchannel Music_LookBeauty_branch_eef0f
 
 Music_LookBeauty_Ch4:
-	togglenoise $3
+	toggle_noise 3
 	note_type 12
 	note __, 16
 	note __, 16

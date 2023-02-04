@@ -150,7 +150,7 @@ Music_IndigoPlateau_branch_ee915:
 
 Music_IndigoPlateau_Ch4:
 	stereopanning $f0
-	togglenoise $0
+	toggle_noise 0
 	note_type 12
 Music_IndigoPlateau_branch_ee92a:
 	note D#, 4

@@ -122,7 +122,7 @@ Music_HiddenGrottoB2W2_Ch3:
 
 Music_HiddenGrottoB2W2_Ch4:
 	note_type 6
-	togglenoise $5
+	toggle_noise 5
 Music_HiddenGrottoB2W2_Ch4_loop:
 	note __, 16
 	note __, 6

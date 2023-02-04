@@ -1801,7 +1801,7 @@ Music_TrainerBattleDPPt_Ch3_loop:
 	jumpchannel Music_TrainerBattleDPPt_Ch3_loop
 
 Music_TrainerBattleDPPt_Ch4:
-	togglenoise 3
+	toggle_noise 3
 	note_type 12
 	note __, 16
 	note D#, 4

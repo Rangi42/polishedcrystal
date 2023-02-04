@@ -290,7 +290,7 @@ Music_Lighthouse_branch_ee69b:
 	jumpchannel Music_Lighthouse_branch_ee65b
 
 Music_Lighthouse_Ch4:
-	togglenoise $0
+	toggle_noise 0
 	note_type 12
 Music_Lighthouse_branch_ee6b1:
 	stereopanning $f

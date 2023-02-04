@@ -904,7 +904,7 @@ Music_FinalPokemonBW_Ch3_branch_3:
 	endchannel
 
 Music_FinalPokemonBW_Ch4:
-	togglenoise $3
+	toggle_noise 3
 	note_type 6
 	note C_, 1
 	note C_, 1

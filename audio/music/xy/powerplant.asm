@@ -503,7 +503,7 @@ Music_PowerPlantXY_Ch3_branch_4:
 
 Music_PowerPlantXY_Ch4:
 	note_type 12
-	togglenoise $3
+	toggle_noise 3
 Music_PowerPlantXY_Ch4_branch_0:
 	note A#, 3
 	note C#, 1

@@ -234,7 +234,7 @@ Music_IndigoPlateauRBY_branch_a6fe:
 
 Music_IndigoPlateauRBY_Ch4:
 	note_type 6
-	togglenoise 1
+	toggle_noise 1
 	note A_, 16
 	note A_, 16
 	note A_, 16

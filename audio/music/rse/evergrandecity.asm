@@ -1164,7 +1164,7 @@ Music_EverGrandeCityRSE_branch_ef4e3:
 	jumpchannel Music_EverGrandeCityRSE_branch_ef4e3
 
 Music_EverGrandeCityRSE_Ch4:
-	togglenoise $3
+	toggle_noise 3
 	stereopanning $f
 	note_type 12
 	note __, 6

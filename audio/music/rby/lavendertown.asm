@@ -193,7 +193,7 @@ Music_LavenderTownRBY_branch_bbb9:
 
 Music_LavenderTownRBY_Ch4:
 	note_type 12
-	togglenoise 0
+	toggle_noise 0
 	note __, 16
 	note __, 16
 	note __, 16

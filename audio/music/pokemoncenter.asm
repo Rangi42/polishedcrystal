@@ -393,7 +393,7 @@ Music_PokemonCenter_branch_ed783:
 	endchannel
 
 Music_PokemonCenter_Ch4:
-	togglenoise $3
+	toggle_noise 3
 	note_type 12
 	stereopanning $ff
 Music_PokemonCenter_branch_ed792:

@@ -202,7 +202,7 @@ Music_PokemonChannel_Ch3:
 	endchannel
 
 Music_PokemonChannel_Ch4:
-	togglenoise $3
+	toggle_noise 3
 	note_type 12
 Music_PokemonChannel_branch_ee54d:
 	note A#, 3

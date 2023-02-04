@@ -451,7 +451,7 @@ Music_ViridianForest_branch_edacb:
 	endchannel
 
 Music_ViridianForest_Ch4:
-	togglenoise $5
+	toggle_noise 5
 	note_type 12
 Music_ViridianForest_branch_edae0:
 	note A_, 4

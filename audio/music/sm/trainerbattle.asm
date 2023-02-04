@@ -803,7 +803,7 @@ Music_TrainerBattleSM_Ch3_loop_7:
 	jumpchannel Music_TrainerBattleSM_Ch3_loop_main
 
 Music_TrainerBattleSM_Ch4:
-	togglenoise $3
+	toggle_noise 3
 	note_type 6
 	note __, 16
 	note __, 12

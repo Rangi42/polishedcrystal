@@ -707,7 +707,7 @@ Music_VioletCity_branch_f0311:
 	endchannel
 
 Music_VioletCity_Ch4:
-	togglenoise $3
+	toggle_noise 3
 	note_type 12
 	note D#, 2
 	note D_, 2

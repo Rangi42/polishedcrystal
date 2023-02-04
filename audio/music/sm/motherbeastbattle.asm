@@ -866,7 +866,7 @@ Music_MotherBeastBattleSM_Ch3_loop_2:
 	jumpchannel Music_MotherBeastBattleSM_Ch3_loop_main
 
 Music_MotherBeastBattleSM_Ch4:
-	togglenoise $3
+	toggle_noise 3
 	callchannel Music_MotherBeastBattleSM_Ch4_buildup
 	note C_, 2 ;
 	note C#, 1

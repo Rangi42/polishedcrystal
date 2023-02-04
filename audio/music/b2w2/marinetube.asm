@@ -921,7 +921,7 @@ Music_MarineTubeB2W2_Ch3:
 	jumpchannel Music_MarineTubeB2W2_Ch3
 
 Music_MarineTubeB2W2_Ch4:
-	togglenoise $3
+	toggle_noise 3
 	note_type 12
 Music_MarineTubeB2W2_Ch4_loop_main:
 Music_MarineTubeB2W2_Ch4_loop_1:

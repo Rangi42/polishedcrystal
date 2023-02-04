@@ -534,7 +534,7 @@ Music_LookMysticalMan_branch_178615:
 	jumpchannel Music_LookMysticalMan_branch_1785df
 
 Music_LookMysticalMan_Ch4:
-	togglenoise $3
+	toggle_noise 3
 	note_type 12
 	note D#, 2
 	note D#, 2

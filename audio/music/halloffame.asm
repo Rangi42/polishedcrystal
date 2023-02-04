@@ -137,7 +137,7 @@ Music_HallOfFame_branch_f0631:
 	jumpchannel Music_HallOfFame_branch_f062e
 
 Music_HallOfFame_Ch4:
-	togglenoise $5
+	toggle_noise 5
 	note_type 12
 	note __, 16
 	note __, 16

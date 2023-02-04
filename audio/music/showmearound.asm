@@ -299,7 +299,7 @@ Music_ShowMeAround_branch_edd0f:
 	endchannel
 
 Music_ShowMeAround_Ch4:
-	togglenoise $3
+	toggle_noise 3
 	note_type 12
 	note __, 16
 	note __, 8

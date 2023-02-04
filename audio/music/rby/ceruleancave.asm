@@ -602,7 +602,7 @@ Music_CeruleanCaveRBY_branch_7e177:
 
 Music_CeruleanCaveRBY_Ch4:
 	note_type 12
-	togglenoise 1
+	toggle_noise 1
 	note __, 14
 	note E_, 1
 	note E_, 1

@@ -516,7 +516,7 @@ Music_RivalBattleXY_Ch3_branch_5:
 	endchannel
 
 Music_RivalBattleXY_Ch4:
-	togglenoise $3
+	toggle_noise 3
 	note_type 12
 	note B_, 2
 	note B_, 4

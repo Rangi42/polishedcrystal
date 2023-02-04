@@ -1472,7 +1472,7 @@ Music_Megalovania_Ch3_ditty_5:
 
 Music_Megalovania_Ch4:
 	note_type 12
-	togglenoise 5
+	toggle_noise 5
 Music_Megalovania_Ch4_loop:
 	note __, 16
 	note __, 16

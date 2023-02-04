@@ -78,7 +78,7 @@ Music_Mom_branch_f6c2e:
 	jumpchannel Music_Mom_branch_f6c2e
 
 Music_Mom_Ch4:
-	togglenoise $3
+	toggle_noise 3
 	note_type 12
 	note __, 6
 Music_Mom_branch_f6c56:

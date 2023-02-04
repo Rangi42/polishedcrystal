@@ -2129,7 +2129,7 @@ Music_TrainerBattleBW_Ch3_loop:
 
 Music_TrainerBattleBW_Ch4:
 	note_type 12
-	togglenoise 3
+	toggle_noise 3
 	note D#, 2
 	note C_, 2
 	note D#, 4

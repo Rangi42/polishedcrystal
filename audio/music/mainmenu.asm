@@ -113,7 +113,7 @@ Music_MainMenu_branch_f796f:
 
 Music_MainMenu_Ch4:
 	stereopanning $f
-	togglenoise $3
+	toggle_noise 3
 	note_type 12
 	note __, 8
 	note __, 16

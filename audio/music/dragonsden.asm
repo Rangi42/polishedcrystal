@@ -157,7 +157,7 @@ Music_DragonsDen_branch_eed99:
 	jumpchannel Music_DragonsDen_branch_eed78
 
 Music_DragonsDen_Ch4:
-	togglenoise $0
+	toggle_noise 0
 	note_type 12
 	note __, 16
 	note __, 16

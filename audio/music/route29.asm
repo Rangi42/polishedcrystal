@@ -503,7 +503,7 @@ Music_Route29_branch_f0504:
 
 Music_Route29_Ch4:
 	stereopanning $f
-	togglenoise $0
+	toggle_noise 0
 	note_type 12
 	note __, 2
 Music_Route29_branch_f05b0:

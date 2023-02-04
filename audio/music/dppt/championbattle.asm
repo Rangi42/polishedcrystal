@@ -1729,7 +1729,7 @@ Music_ChampionBattleDPPt_Ch3_loop:
 	jumpchannel Music_ChampionBattleDPPt_Ch3_loop
 
 Music_ChampionBattleDPPt_Ch4:
-	togglenoise 3
+	toggle_noise 3
 	note_type 12
 	note D#, 8
 	note D#, 8

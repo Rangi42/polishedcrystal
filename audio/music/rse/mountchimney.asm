@@ -1153,7 +1153,7 @@ Music_MountChimneyRSE_Ch3_branch_2:
 	endchannel
 
 Music_MountChimneyRSE_Ch4:
-	togglenoise $4
+	toggle_noise 4
 	note_type 6
 	note B_, 4
 	note E_, 2

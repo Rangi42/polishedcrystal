@@ -862,7 +862,7 @@ DEF SNARE EQU 3
 DEF SNARE2 EQU 3
 
 Music_TitleScreenXY_Ch4:
-	togglenoise $3
+	toggle_noise 3
 Music_TitleScreenXY_Ch4_b0:
 	note_type 12
 	note __, 16

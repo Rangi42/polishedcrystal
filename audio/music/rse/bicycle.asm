@@ -1066,7 +1066,7 @@ Music_BicycleRSE_Ch3_loop_1:
 	jumpchannel Music_BicycleRSE_Ch3_loop_main
 
 Music_BicycleRSE_Ch4:
-	togglenoise $3
+	toggle_noise 3
 	note_type 12
 	note __, 16
 	note __, 16

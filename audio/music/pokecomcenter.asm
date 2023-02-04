@@ -452,7 +452,7 @@ Music_PokeComCenter_branch_179788:
 	jumpchannel Music_PokeComCenter_branch_179788
 
 Music_PokeComCenter_Ch4:
-	togglenoise $3
+	toggle_noise 3
 	stereopanning $f
 	note_type 12
 	note A_, 8

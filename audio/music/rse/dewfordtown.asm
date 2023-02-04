@@ -846,7 +846,7 @@ Music_DewfordTownRSE_Ch3_b0:
 	jumpchannel Music_DewfordTownRSE_Ch3_b0
 
 Music_DewfordTownRSE_Ch4:
-	togglenoise $2
+	toggle_noise 2
 Music_DewfordTownRSE_Ch4_b0:
 Music_DewfordTownRSE_Ch4_b1:
 	note_type 12

@@ -584,7 +584,7 @@ Music_BattleTowerTheme_branch_178afe:
 	endchannel
 
 Music_BattleTowerTheme_Ch4:
-	togglenoise $3
+	toggle_noise 3
 	note_type 12
 Music_BattleTowerTheme_branch_178b11:
 	callchannel Music_BattleTowerTheme_branch_178b58

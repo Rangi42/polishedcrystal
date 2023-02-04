@@ -577,7 +577,7 @@ Music_Route30_branch_efd79:
 	jumpchannel Music_Route30_branch_efd79
 
 Music_Route30_Ch4:
-	togglenoise $3
+	toggle_noise 3
 	note_type 12
 	callchannel Music_Route30_branch_efeb8
 	callchannel Music_Route30_branch_efec1

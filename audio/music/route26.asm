@@ -548,7 +548,7 @@ Music_Route26_branch_ef22f:
 	endchannel
 
 Music_Route26_Ch4:
-	togglenoise $4
+	toggle_noise 4
 	note_type 12
 Music_Route26_branch_ef23c:
 	note B_, 6

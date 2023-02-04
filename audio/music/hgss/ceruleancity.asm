@@ -750,7 +750,7 @@ Music_CeruleanCityHGSS_Loop3:
 
 Music_CeruleanCityHGSS_Ch4:
 	note_type 12
-	togglenoise 0
+	toggle_noise 0
 ;Channel4_Bar1:
 	note __, 16
 ;Channel4_Bar2:

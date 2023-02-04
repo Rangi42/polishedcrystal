@@ -396,7 +396,7 @@ Music_PokemonMarch_branch_f6fe8:
 
 Music_PokemonMarch_Ch4:
 	stereopanning $f0
-	togglenoise $5
+	toggle_noise 5
 	note_type 8
 	callchannel Music_PokemonMarch_branch_f704c
 Music_PokemonMarch_branch_f7003:

@@ -496,7 +496,7 @@ Music_Bicycle_branch_ee333:
 	endchannel
 
 Music_Bicycle_Ch4:
-	togglenoise $0
+	toggle_noise 0
 	note_type 12
 	note __, 16
 	note __, 16

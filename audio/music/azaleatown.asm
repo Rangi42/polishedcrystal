@@ -626,7 +626,7 @@ Music_AzaleaTown_branch_f5acf:
 	endchannel
 
 Music_AzaleaTown_Ch4:
-	togglenoise $3
+	toggle_noise 3
 	note_type 12
 	note F_, 2
 Music_AzaleaTown_branch_f5aea:

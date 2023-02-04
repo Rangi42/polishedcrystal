@@ -120,7 +120,7 @@ Music_MtMoon_branch_edbab:
 	jumpchannel Music_MtMoon_branch_edb8a
 
 Music_MtMoon_Ch4:
-	togglenoise $5
+	toggle_noise 5
 	note_type 12
 Music_MtMoon_branch_edbc3:
 	stereopanning $f

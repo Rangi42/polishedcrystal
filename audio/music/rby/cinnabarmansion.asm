@@ -152,7 +152,7 @@ Music_CinnabarMansionRBY_branch_7ed80:
 
 Music_CinnabarMansionRBY_Ch4:
 	note_type 6
-	togglenoise 1
+	toggle_noise 1
 	note __, 16
 	note __, 16
 	note __, 16

@@ -562,7 +562,7 @@ Music_LaverreCityXY_Ch3_branch_1:
 	jumpchannel Music_LaverreCityXY_branch_ef4e3
 
 Music_LaverreCityXY_Ch4:
-	togglenoise $3
+	toggle_noise 3
 	stereopanning $f
 	note_type 12
 Music_LaverreCityXY_Ch4_loop:

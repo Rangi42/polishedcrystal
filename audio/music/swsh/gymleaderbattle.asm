@@ -404,7 +404,7 @@ Music_GymLeaderBattleSwSh_Ch3_DisadvantagePhase_Loop_4:
 
 Music_GymLeaderBattleSwSh_Ch4:
 	note_type 12
-	togglenoise $4
+	toggle_noise 4
 	stereopanning $ff
 	jumpif COND_FINAL_MON, Music_GymLeaderBattleSwSh_Ch4_EnterLastPokemonPhase
 ; Neutral Intro

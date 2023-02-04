@@ -243,7 +243,7 @@ Music_CrystalOpening_Ch3:
 
 Music_CrystalOpening_Ch4:
 	stereopanning $f
-	togglenoise $3
+	toggle_noise 3
 	note_type 12
 	note __, 16
 	note __, 12

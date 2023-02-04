@@ -984,7 +984,7 @@ Music_WhiteTreehollowWhite2_Ch3:
 	jumpchannel Music_WhiteTreehollowWhite2_Ch3
 
 Music_WhiteTreehollowWhite2_Ch4:
-	togglenoise $3
+	toggle_noise 3
 	note_type 12
 Music_WhiteTreehollowWhite2_Ch4_loop_main:
 Music_WhiteTreehollowWhite2_Ch4_loop_1:

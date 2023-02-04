@@ -479,7 +479,7 @@ Music_Route3_branch_ec4ce:
 	endchannel
 
 Music_Route3_Ch4:
-	togglenoise $4
+	toggle_noise 4
 	note_type 12
 	note __, 10
 Music_Route3_branch_ec4f0:

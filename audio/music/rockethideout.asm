@@ -274,7 +274,7 @@ Music_RocketHideout_branch_eeca6:
 	jumpchannel Music_RocketHideout_branch_eec7c
 
 Music_RocketHideout_Ch4:
-	togglenoise $0
+	toggle_noise 0
 	note_type 12
 	stereopanning $f
 	note __, 16

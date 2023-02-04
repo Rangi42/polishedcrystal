@@ -1506,7 +1506,7 @@ Music_SunyshoreCityDPPt_Ch3_loop:
 	jumpchannel Music_SunyshoreCityDPPt_Ch3_loop
 
 Music_SunyshoreCityDPPt_Ch4:
-	togglenoise 3
+	toggle_noise 3
 	note_type 12
 	note D#, 1
 	note D#, 1

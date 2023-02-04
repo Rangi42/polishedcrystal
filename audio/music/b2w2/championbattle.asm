@@ -1743,7 +1743,7 @@ Music_ChampionBattleB2W2_Ch3_branch_12:
 	endchannel
 
 Music_ChampionBattleB2W2_Ch4:
-	togglenoise $3
+	toggle_noise 3
 	note_type 12
 	note C_, 1
 	note C_, 1

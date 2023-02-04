@@ -617,7 +617,7 @@ Music_NationalPark_branch_f578f:
 	endchannel
 
 Music_NationalPark_Ch4:
-	togglenoise $3
+	toggle_noise 3
 	note_type 12
 	note __, 2
 Music_NationalPark_branch_f57bd:

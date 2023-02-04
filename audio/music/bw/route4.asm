@@ -531,7 +531,7 @@ Music_Route4BW_Ch3_branch_1:
 
 Music_Route4BW_Ch4:
 	stereopanning $f
-	togglenoise $0
+	toggle_noise 0
 Music_Route4BW_Ch4_branch_1:
 	note_type 12
 	callchannel Music_Route4BW_Ch4_branch_2

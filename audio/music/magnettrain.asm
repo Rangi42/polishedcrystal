@@ -224,7 +224,7 @@ Music_MagnetTrain_Ch3:
 	endchannel
 
 Music_MagnetTrain_Ch4:
-	togglenoise $3
+	toggle_noise 3
 	note_type 12
 	note B_, 12
 	note D_, 2

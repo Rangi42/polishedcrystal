@@ -458,7 +458,7 @@ Music_DarkCave_branch_ea4ce:
 	endchannel
 
 Music_DarkCave_Ch4:
-	togglenoise $3
+	toggle_noise 3
 	note_type 12
 Music_DarkCave_branch_ea4ee:
 	stereopanning $ff

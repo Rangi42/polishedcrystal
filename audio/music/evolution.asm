@@ -186,7 +186,7 @@ Music_Evolution_branch_f07d5:
 	endchannel
 
 Music_Evolution_Ch4:
-	togglenoise $5
+	toggle_noise 5
 	note_type 12
 	note __, 8
 Music_Evolution_branch_f07f0:

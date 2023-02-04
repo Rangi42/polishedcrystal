@@ -395,7 +395,7 @@ Music_Route37_branch_eeb3c:
 
 Music_Route37_Ch4:
 	stereopanning $f
-	togglenoise $0
+	toggle_noise 0
 Music_Route37_branch_eeb51:
 	note_type 12
 	callchannel Music_Route37_branch_eeb6b

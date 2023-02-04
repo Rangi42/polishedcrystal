@@ -806,7 +806,7 @@ Music_MartHGSS_Branch:
 
 Music_MartHGSS_Ch4:
 	note_type 12
-	togglenoise 0
+	toggle_noise 0
 	stereopanning $f0
 	note G_, 4
 	note G_, 4

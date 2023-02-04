@@ -1184,7 +1184,7 @@ Music_StarkMountainDPPt_Ch3_loop:
 	jumpchannel Music_StarkMountainDPPt_Ch3_loop
 
 Music_StarkMountainDPPt_Ch4:
-	togglenoise 3
+	toggle_noise 3
 	note_type 12
 Music_StarkMountainDPPt_Ch4_loop:
 	note D#, 8

@@ -643,7 +643,7 @@ Music_BikeRiding_branch_7dd17:
 	note __, 1
 	jumpchannel Music_BikeRiding_branch_7dd17
 Music_BikeRiding_Ch4:
-	togglenoise $1
+	toggle_noise 1
 	note_type 12
 	note __, 2
 Music_BikeRiding_branch_7de6a:

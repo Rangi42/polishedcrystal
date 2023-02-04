@@ -53,7 +53,7 @@ Music_AfterTheRivalFight_Ch3:
 	jumpchannel Music_AfterTheRivalFight_branch_f509d
 
 Music_AfterTheRivalFight_Ch4:
-	togglenoise $3
+	toggle_noise 3
 	stereopanning $f
 	note_type 12
 	note D_, 4

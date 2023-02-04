@@ -1757,7 +1757,7 @@ Music_MewtwoBattleStadium_Ch3_ditty19:
 Music_MewtwoBattleStadium_Ch4:
 	note_type 12
 	note __, 16
-	togglenoise 1
+	toggle_noise 1
 	note F#, 15
 	note __, 1
 	note F#, 2

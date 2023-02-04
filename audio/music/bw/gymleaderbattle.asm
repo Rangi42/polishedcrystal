@@ -2171,7 +2171,7 @@ GymLeaderBattleBWChannel3_Loop:
 
 GymLeaderBattleBW_Channel4:
 	note_type 12
-	togglenoise 5
+	toggle_noise 5
 	note C_, 4
 	note C_, 4
 	note C_, 4

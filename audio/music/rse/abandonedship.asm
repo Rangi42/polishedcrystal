@@ -599,7 +599,7 @@ Music_AbandonedShipRSE_Ch3_loop:
 
 Music_AbandonedShipRSE_Ch4:
 	stereopanning $f
-	togglenoise $3
+	toggle_noise 3
 	note_type 6
 	note C#, 1
 	note C#, 1

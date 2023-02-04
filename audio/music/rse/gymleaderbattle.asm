@@ -885,7 +885,7 @@ Music_GymLeaderBattleRSE_Ch3_branch_5:
 	endchannel
 
 Music_GymLeaderBattleRSE_Ch4:
-	togglenoise $3
+	toggle_noise 3
 	note_type 12
 	note C_, 6
 	note C_, 8

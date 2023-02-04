@@ -244,7 +244,7 @@ Music_BurnedTower_branch_f6bc3:
 	jumpchannel Music_BurnedTower_branch_f6bad
 
 Music_BurnedTower_Ch4:
-	togglenoise $0
+	toggle_noise 0
 	note_type 12
 Music_BurnedTower_branch_f6be1:
 	note __, 16

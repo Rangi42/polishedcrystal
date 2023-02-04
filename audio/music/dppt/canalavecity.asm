@@ -735,7 +735,7 @@ Music_CanalaveCityDPPt_Ch3_loop:
 	jumpchannel Music_CanalaveCityDPPt_Ch3_loop
 
 Music_CanalaveCityDPPt_Ch4:
-	togglenoise 3
+	toggle_noise 3
 	note_type 12
 	note __, 2
 Music_CanalaveCityDPPt_Ch4_loop:

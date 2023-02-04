@@ -562,7 +562,7 @@ Music_WallyBattleORAS_Ch3_branch_2:
 	endchannel
 
 Music_WallyBattleORAS_Ch4:
-	togglenoise $4
+	toggle_noise 4
 	note_type 12
 	note __, 3
 Music_WallyBattleORAS_Ch4_loop_main:

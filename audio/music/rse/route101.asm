@@ -476,7 +476,7 @@ Music_Route101RSE_Ch3_branch_2:
 
 Music_Route101RSE_Ch4:
 	stereopanning $f
-	togglenoise $0
+	toggle_noise 0
 	note_type 12
 	note __, 2
 Music_Route101RSE_Ch4_loop:

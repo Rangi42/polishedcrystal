@@ -537,7 +537,7 @@ Music_CelestialTowerBW_NoIntro_Ch3:
 	jumpchannel Music_CelestialTowerBW_NoIntro_Ch3
 
 Music_CelestialTowerBW_NoIntro_Ch4:
-	togglenoise $4
+	toggle_noise 4
 	note_type 12
 	note __, 16
 	note __, 16

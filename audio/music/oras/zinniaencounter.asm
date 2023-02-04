@@ -428,7 +428,7 @@ Music_ZinniaEncounterORAS_Ch3_branch_2:
 	endchannel
 
 Music_ZinniaEncounterORAS_Ch4:
-	togglenoise $3
+	toggle_noise 3
 	note_type 12
 	note B_, 8
 Music_ZinniaEncounterORAS_Ch4_loop_main:

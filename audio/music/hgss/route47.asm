@@ -1091,7 +1091,7 @@ Music_Route47HGSS_Ch3_loop:
 	jumpchannel Music_Route47HGSS_Ch3_loop
 
 Music_Route47HGSS_Ch4:
-	togglenoise $3
+	toggle_noise 3
 	note_type 12
 Music_Route47HGSS_Ch4_loop_main:
 	note __, 5

@@ -444,7 +444,7 @@ Music_RocketTheme_branch_f782f:
 	jumpchannel Music_RocketTheme_branch_f782f
 
 Music_RocketTheme_Ch4:
-	togglenoise $3
+	toggle_noise 3
 	note_type 12
 	note __, 2
 Music_RocketTheme_branch_f78c3:

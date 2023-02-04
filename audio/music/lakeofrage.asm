@@ -298,7 +298,7 @@ Music_LakeOfRage_branch_ee7d0:
 
 Music_LakeOfRage_Ch4:
 	stereopanning $f0
-	togglenoise $3
+	toggle_noise 3
 	note_type 12
 Music_LakeOfRage_branch_ee83b:
 	note D_, 2

@@ -529,7 +529,7 @@ Music_ElmsLab_branch_ea216:
 
 Music_ElmsLab_Ch4:
 	stereopanning $f0
-	togglenoise $0
+	toggle_noise 0
 	note_type 12
 	note __, 16
 	note __, 2

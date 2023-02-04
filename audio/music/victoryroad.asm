@@ -174,7 +174,7 @@ Music_VictoryRoad_branch_f6d52:
 	endchannel
 
 Music_VictoryRoad_Ch4:
-	togglenoise $0
+	toggle_noise 0
 	note_type 12
 Music_VictoryRoad_branch_f6d63:
 	note D_, 2

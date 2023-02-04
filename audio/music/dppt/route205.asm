@@ -869,7 +869,7 @@ Music_Route205DPPt_Ch3_loop:
 	jumpchannel Music_Route205DPPt_Ch3_loop
 
 Music_Route205DPPt_Ch4:
-	togglenoise 3
+	toggle_noise 3
 Music_Route205DPPt_Ch4_loop:
 	note_type 12
 	note C#, 2

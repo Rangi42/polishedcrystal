@@ -152,7 +152,7 @@ Music_ContestResults_branch_efbd2:
 	jumpchannel Music_ContestResults_branch_efbd2
 
 Music_ContestResults_Ch4:
-	togglenoise $4
+	toggle_noise 4
 	note_type 6
 Music_ContestResults_branch_efbed:
 	note C#, 4

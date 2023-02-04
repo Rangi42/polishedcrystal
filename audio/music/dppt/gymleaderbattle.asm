@@ -1502,7 +1502,7 @@ Music_GymLeaderBattleDPPt_Ch3_loop:
 	jumpchannel Music_GymLeaderBattleDPPt_Ch3_loop
 
 Music_GymLeaderBattleDPPt_Ch4:
-	togglenoise 0
+	toggle_noise 0
 	note_type 12
 	note __, 2
 	note D#, 4

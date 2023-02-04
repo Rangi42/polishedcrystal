@@ -284,7 +284,7 @@ Music_CherrygroveCity_branch_f5be4:
 	jumpchannel Music_CherrygroveCity_branch_f5be4
 
 Music_CherrygroveCity_Ch4:
-	togglenoise $3
+	toggle_noise 3
 	note_type 12
 	note __, 16
 Music_CherrygroveCity_branch_f5c4d:

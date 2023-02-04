@@ -390,7 +390,7 @@ Music_Route12_branch_ec6b4:
 	endchannel
 
 Music_Route12_Ch4:
-	togglenoise $4
+	toggle_noise 4
 	stereopanning $f0
 	note_type 12
 	note B_, 10

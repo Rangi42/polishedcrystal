@@ -238,7 +238,7 @@ Music_UnionCave_branch_f5d9c:
 	jumpchannel Music_UnionCave_branch_f5d5d
 
 Music_UnionCave_Ch4:
-	togglenoise $1
+	toggle_noise 1
 	note_type 12
 Music_UnionCave_branch_f5da9:
 	stereopanning $f0

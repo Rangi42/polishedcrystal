@@ -358,7 +358,7 @@ Music_RocketTheme_branch_f7623:
 	endchannel
 
 Music_LookRocket_Ch4:
-	togglenoise $3
+	toggle_noise 3
 	note_type 12
 	note __, 2
 	callchannel Music_LookRocket_branch_f765c

@@ -99,7 +99,7 @@ Music_LookLass_branch_ed7ef:
 	jumpchannel Music_LookLass_branch_ed7ef
 
 Music_LookLass_Ch4:
-	togglenoise $4
+	toggle_noise 4
 	note_type 12
 	note C_, 16
 Music_LookLass_branch_ed81f:

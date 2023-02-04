@@ -1081,7 +1081,7 @@ Music_SSAqua_branch_eb230:
 	endchannel
 
 Music_SSAqua_Ch4:
-	togglenoise $3
+	toggle_noise 3
 	note_type 12
 	note __, 2
 Music_SSAqua_branch_eb24e:

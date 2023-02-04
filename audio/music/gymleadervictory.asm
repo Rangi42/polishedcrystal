@@ -381,7 +381,7 @@ Music_GymLeaderVictory_branch_f479e:
 	endchannel
 
 Music_GymLeaderVictory_Ch4:
-	togglenoise $4
+	toggle_noise 4
 	note_type 12
 	note B_, 16
 	note B_, 16

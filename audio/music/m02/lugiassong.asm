@@ -389,7 +389,7 @@ Music_LugiasSong2000_Ch3_branch_2:
 	endchannel
 
 Music_LugiasSong2000_Ch4:
-	togglenoise $3
+	toggle_noise 3
 	note_type 12
 Music_LugiasSong2000_Ch4_loop_1:
 	note __, 16

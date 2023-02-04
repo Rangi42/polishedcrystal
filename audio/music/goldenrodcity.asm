@@ -386,7 +386,7 @@ Music_GoldenrodCity_branch_eb5d2:
 	endchannel
 
 Music_GoldenrodCity_Ch4:
-	togglenoise $3
+	toggle_noise 3
 	note_type 12
 	note __, 16
 	note __, 16

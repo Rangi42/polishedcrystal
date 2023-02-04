@@ -30,7 +30,7 @@ Music_LyraDepartureHGSS_Ch3:
 	jumpchannel Music_LyraEncounterHGSS_Ch3_loop
 
 Music_LyraDepartureHGSS_Ch4:
-	togglenoise $3
+	toggle_noise 3
 	note_type 6
 	note C_, 2
 	note C_, 2

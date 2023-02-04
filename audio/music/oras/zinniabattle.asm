@@ -1079,7 +1079,7 @@ Music_ZinniaBattleORAS_Ch3_branch_2:
 	endchannel
 
 Music_ZinniaBattleORAS_Ch4:
-	togglenoise $3
+	toggle_noise 3
 	note_type 3
 	note C_, 16
 	note __, 16

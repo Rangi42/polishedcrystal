@@ -416,7 +416,7 @@ Music_BlackCityBW_Ch3_loop:
 	jumpchannel Music_BlackCityBW_Ch3_loop
 
 Music_BlackCityBW_Ch4:
-	togglenoise $3
+	toggle_noise 3
 	note_type 6
 	note __, 4
 Music_BlackCityBW_Ch4_loop_main:

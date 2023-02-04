@@ -586,7 +586,7 @@ Music_BugCatchingContest_branch_f7dda:
 	jumpchannel Music_BugCatchingContest_branch_f7dda
 
 Music_BugCatchingContest_Ch4:
-	togglenoise $4
+	toggle_noise 4
 	note_type 6
 	note C#, 1
 	note C#, 1

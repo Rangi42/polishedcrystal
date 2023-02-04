@@ -468,7 +468,7 @@ Music_Route36_branch_e9684:
 	jumpchannel Music_Route36_branch_e9684
 
 Music_Route36_Ch4:
-	togglenoise $1
+	toggle_noise 1
 	note_type 12
 	callchannel Music_Route36_branch_e9734
 	callchannel Music_Route36_branch_e9741

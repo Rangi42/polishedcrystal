@@ -490,7 +490,7 @@ Music_NuggetBridgeHGSS_Bar12:
 
 Music_NuggetBridgeHGSS_Ch4:
 	note_type 4
-	togglenoise 0
+	toggle_noise 0
 	note A_, 16
 	note __, 2
 	note D_, 3

@@ -894,7 +894,7 @@ Music_TitleScreen_Ch3:
 	endchannel
 
 Music_TitleScreen_Ch4:
-	togglenoise $5
+	toggle_noise 5
 	stereopanning $f0
 	note_type 12
 	note __, 4

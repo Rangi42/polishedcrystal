@@ -689,7 +689,7 @@ Music_ViridianCity_branch_f42a2:
 	endchannel
 
 Music_ViridianCity_Ch4:
-	togglenoise $3
+	toggle_noise 3
 	note_type 12
 	callchannel Music_ViridianCity_branch_f431d
 	callchannel Music_ViridianCity_branch_f432c

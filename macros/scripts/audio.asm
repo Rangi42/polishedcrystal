@@ -129,10 +129,12 @@ MACRO unknownmusic0xe2
 	db \1 ; unknown
 ENDM
 
-	const togglenoise_cmd
-MACRO togglenoise
-	db togglenoise_cmd
-	db \1 ; id
+	const toggle_noise_cmd ; $e3
+MACRO toggle_noise
+	db toggle_noise_cmd
+	if _NARG > 0
+		db \1 ; drum kit
+	endc
 ENDM
 
 	const panning_cmd

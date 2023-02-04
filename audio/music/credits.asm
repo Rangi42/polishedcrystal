@@ -1429,7 +1429,7 @@ Music_Credits_branch_1f94b:
 	endchannel
 
 Music_Credits_Ch4:
-	togglenoise $3
+	toggle_noise 3
 	note_type 12
 	note G#, 1
 	note G_, 1

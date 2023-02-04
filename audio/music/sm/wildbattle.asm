@@ -853,7 +853,7 @@ Music_WildBattleSM_Ch3_loop_3:
 	jumpchannel Music_WildBattleSM_Ch3_loop_main
 
 Music_WildBattleSM_Ch4:
-	togglenoise $3
+	toggle_noise 3
 	note_type 6
 	note B_, 4
 	note D#, 4

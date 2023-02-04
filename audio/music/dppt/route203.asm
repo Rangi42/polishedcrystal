@@ -1668,7 +1668,7 @@ Music_Route203DPPt_Ch3_loop:
 	jumpchannel Music_Route203DPPt_Ch3_loop
 
 Music_Route203DPPt_Ch4:
-	togglenoise 3
+	toggle_noise 3
 	note_type 12
 	note __, 8
 	note C#, 4

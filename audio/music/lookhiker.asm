@@ -103,7 +103,7 @@ Music_LookHiker_branch_f748a:
 	endchannel
 
 Music_LookHiker_Ch4:
-	togglenoise $3
+	toggle_noise 3
 	note_type 12
 	note F_, 4
 	note __, 16

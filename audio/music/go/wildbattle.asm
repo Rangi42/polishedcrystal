@@ -434,7 +434,7 @@ Music_WildBattleGo_Ch3_loop_8:
 Music_WildBattleGo_Ch4:
 	note_type 12
 	note __, 4
-	togglenoise 3
+	toggle_noise 3
 	callchannel Music_WildBattleGo_Ch4_ditty1
 	callchannel Music_WildBattleGo_Ch4_ditty2
 	callchannel Music_WildBattleGo_Ch4_ditty1

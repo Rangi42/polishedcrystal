@@ -389,7 +389,7 @@ Music_Clair_branch_1fc3c:
 	endchannel
 
 Music_Clair_Ch4:
-	togglenoise $3
+	toggle_noise 3
 	note_type 12
 	stereopanning $f0
 	note B_, 8

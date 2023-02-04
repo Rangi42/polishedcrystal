@@ -220,7 +220,7 @@ Music_SproutTower_branch_f6a3e:
 	jumpchannel Music_SproutTower_branch_f6a3e
 
 Music_SproutTower_Ch4:
-	togglenoise $0
+	toggle_noise 0
 	note_type 12
 	note __, 4
 Music_SproutTower_branch_f6a7f:

@@ -310,7 +310,7 @@ Music_DiglettsCaveRBY_branch_7e9d1:
 
 Music_DiglettsCaveRBY_Ch4:
 	note_type 12
-	togglenoise 1
+	toggle_noise 1
 
 Music_DiglettsCaveRBY_branch_7e9dd:
 	note E_, 4

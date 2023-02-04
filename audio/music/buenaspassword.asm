@@ -559,7 +559,7 @@ Music_BuenasPassword_branch_1783bc:
 	endchannel
 
 Music_BuenasPassword_Ch4:
-	togglenoise $3
+	toggle_noise 3
 	note_type 12
 	note D#, 2
 	note D_, 2

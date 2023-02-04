@@ -503,7 +503,7 @@ Music_Gym_branch_f4ab3:
 	endchannel
 
 Music_Gym_Ch4:
-	togglenoise $4
+	toggle_noise 4
 Music_Gym_branch_f4ac7:
 	note_type 12
 	note D_, 2
