@@ -282,7 +282,7 @@ DoPlayerMovement::
 .run
 	ld a, STEP_RUN
 	call .DoStep
-;   Trainer faces player
+; Trainer faces player if they're running
 	push af
 	ld a, [wWalkingDirection]
 	cp STANDING
@@ -928,13 +928,6 @@ CheckTrainerRun:
 	push af
 	push de
 
-; Has a sprite
-	ld hl, MAPOBJECT_SPRITE
-	add hl, de
-	ld a, [hl]
-	and a
-	jr z, .next
-
 ; Is a trainer
 	ld hl, MAPOBJECT_TYPE
 	add hl, de
@@ -945,12 +938,6 @@ CheckTrainerRun:
 	cp OBJECTTYPE_GENERICTRAINER
 	jr nz, .next
 .trainer
-; Is visible on the map
-	ld hl, MAPOBJECT_OBJECT_STRUCT_ID
-	add hl, de
-	ld a, [hl]
-	cp -1
-	jr z, .next
 
 ; Spins around
 	ld hl, MAPOBJECT_MOVEMENT
@@ -964,15 +951,30 @@ CheckTrainerRun:
 	jr z, .spinner
 	cp SPRITEMOVEDATA_SPINCLOCKWISE
 	jr nz, .next
-
 .spinner
+
+; Has a sprite
+	ld hl, MAPOBJECT_SPRITE
+	add hl, de
+	ld a, [hl]
+	and a
+	jr z, .next
+
+; Is visible on the map
+	ld hl, MAPOBJECT_OBJECT_STRUCT_ID
+	add hl, de
+	ld a, [hl]
+	inc a ; cp -1
+	jr z, .next
 
 ; You're within their sight range
 	ld hl, MAPOBJECT_OBJECT_STRUCT_ID
 	add hl, de
 	ld a, [hl]
 	call GetObjectStruct
-	call AnyFacingPlayerDistance_bc
+	push de
+	call AnyFacingPlayerDistance
+	pop de
 	ld hl, MAPOBJECT_SIGHT_RANGE
 	add hl, de
 	ld a, [hl]
@@ -1010,16 +1012,8 @@ CheckTrainerRun:
 	xor a
 	ret
 
-AnyFacingPlayerDistance_bc::
+AnyFacingPlayerDistance:
 ; Returns distance in c and direction in b.
-	push de
-	call .AnyFacingPlayerDistance
-	ld b, d
-	ld c, e
-	pop de
-	ret
-
-.AnyFacingPlayerDistance
 	ld hl, OBJECT_MAP_X
 	add hl, bc
 	ld d, [hl]
@@ -1028,7 +1022,7 @@ AnyFacingPlayerDistance_bc::
 	add hl, bc
 	ld e, [hl]
 
-	ld a, [hJoypadDown]
+	ldh a, [hJoypadDown]
 	ld bc, 0
 	bit D_DOWN_F, a
 	jr nz, .down
@@ -1071,12 +1065,11 @@ AnyFacingPlayerDistance_bc::
 	ld h, OW_UP
 .compare
 	cp d
-	ld e, a
-	ld a, d
-	ld d, h
+	ld c, a
+	ld b, h
 	ret nc
-	ld e, a
-	ld d, l
+	ld c, d
+	ld b, l
 	ret
 
 CheckSpinning::
