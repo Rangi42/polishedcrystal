@@ -183,9 +183,9 @@ MACRO restart_channel
 	dw \1 ; address
 ENDM
 
-	const newsong_cmd
-MACRO newsong
-	db newsong_cmd
+	const new_song_cmd ; $eb
+MACRO new_song
+	db new_song_cmd
 	bigdw \1 ; id
 ENDM
 
