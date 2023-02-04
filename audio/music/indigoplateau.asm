@@ -153,31 +153,31 @@ Music_IndigoPlateau_Ch4:
 	toggle_noise 0
 	note_type 12
 Music_IndigoPlateau_branch_ee92a:
-	note D#, 4
-	note D_, 2
-	note D#, 2
-	note D#, 2
-	note D#, 2
-	note D_, 4
-	note D_, 2
-	note D_, 2
+	drum_note 4, 4
+	drum_note 3, 2
+	drum_note 4, 2
+	drum_note 4, 2
+	drum_note 4, 2
+	drum_note 3, 4
+	drum_note 3, 2
+	drum_note 3, 2
 	note_type 6
-	note D_, 1
-	note D_, 1
-	note D#, 1
-	note D#, 1
-	note D#, 1
-	note D#, 1
-	note D_, 1
-	note D_, 1
+	drum_note 3, 1
+	drum_note 3, 1
+	drum_note 4, 1
+	drum_note 4, 1
+	drum_note 4, 1
+	drum_note 4, 1
+	drum_note 3, 1
+	drum_note 3, 1
 	note_type 12
-	note D#, 4
-	note D_, 2
-	note D#, 2
-	note D#, 2
-	note D_, 2
-	note C#, 4
-	note D_, 2
-	note D_, 2
-	note C#, 4
+	drum_note 4, 4
+	drum_note 3, 2
+	drum_note 4, 2
+	drum_note 4, 2
+	drum_note 3, 2
+	drum_note 2, 4
+	drum_note 3, 2
+	drum_note 3, 2
+	drum_note 2, 4
 	sound_jump Music_IndigoPlateau_branch_ee92a

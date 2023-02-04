@@ -32,7 +32,7 @@ Music_LyraDepartureHGSS_Ch3:
 Music_LyraDepartureHGSS_Ch4:
 	toggle_noise 3
 	note_type 6
-	note C_, 2
-	note C_, 2
-	note D#, 4
+	drum_note 1, 2
+	drum_note 1, 2
+	drum_note 4, 4
 	sound_jump Music_LyraEncounterHGSS_Ch4_loop

@@ -294,17 +294,17 @@ Music_Lighthouse_Ch4:
 	note_type 12
 Music_Lighthouse_branch_ee6b1:
 	stereo_panning FALSE, TRUE
-	note G#, 4
-	note F_, 2
-	note G#, 4
-	note F_, 2
-	note A_, 2
-	note A#, 2
+	drum_note 9, 4
+	drum_note 6, 2
+	drum_note 9, 4
+	drum_note 6, 2
+	drum_note 10, 2
+	drum_note 11, 2
 	stereo_panning TRUE, TRUE
-	note G#, 2
-	note F_, 4
-	note G#, 2
-	note F_, 4
-	note G#, 2
-	note A_, 2
+	drum_note 9, 2
+	drum_note 6, 4
+	drum_note 9, 2
+	drum_note 6, 4
+	drum_note 9, 2
+	drum_note 10, 2
 	sound_jump Music_Lighthouse_branch_ee6b1

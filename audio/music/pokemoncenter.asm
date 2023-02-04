@@ -397,9 +397,9 @@ Music_PokemonCenter_Ch4:
 	note_type 12
 	stereo_panning TRUE, TRUE
 Music_PokemonCenter_branch_ed792:
-	note G_, 6
-	note G_, 4
-	note G_, 2
-	note G_, 2
-	note G_, 2
+	drum_note 8, 6
+	drum_note 8, 4
+	drum_note 8, 2
+	drum_note 8, 2
+	drum_note 8, 2
 	sound_jump Music_PokemonCenter_branch_ed792

@@ -177,22 +177,22 @@ Music_VictoryRoad_Ch4:
 	toggle_noise 0
 	note_type 12
 Music_VictoryRoad_branch_f6d63:
-	note D_, 2
-	note D_, 2
-	note D#, 1
-	note D_, 3
-	note D#, 1
-	note D_, 3
-	note D#, 1
-	note D_, 3
-	note D_, 2
-	note D_, 2
-	note D#, 1
-	note D_, 3
-	note D#, 1
-	note D#, 1
-	note D_, 2
-	note D#, 1
-	note D_, 2
-	note D#, 1
+	drum_note 3, 2
+	drum_note 3, 2
+	drum_note 4, 1
+	drum_note 3, 3
+	drum_note 4, 1
+	drum_note 3, 3
+	drum_note 4, 1
+	drum_note 3, 3
+	drum_note 3, 2
+	drum_note 3, 2
+	drum_note 4, 1
+	drum_note 3, 3
+	drum_note 4, 1
+	drum_note 4, 1
+	drum_note 3, 2
+	drum_note 4, 1
+	drum_note 3, 2
+	drum_note 4, 1
 	sound_jump Music_VictoryRoad_branch_f6d63

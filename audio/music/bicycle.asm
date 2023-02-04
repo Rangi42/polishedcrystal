@@ -504,12 +504,12 @@ Music_Bicycle_branch_ee34b:
 	rest 2
 Music_Bicycle_branch_ee34c:
 	stereo_panning TRUE, FALSE
-	note F_, 4
+	drum_note 6, 4
 	sound_loop 12, Music_Bicycle_branch_ee34c
-	note F_, 4
-	note F_, 4
+	drum_note 6, 4
+	drum_note 6, 4
 	stereo_panning TRUE, TRUE
-	note F_, 2
-	note F_, 2
-	note F_, 2
+	drum_note 6, 2
+	drum_note 6, 2
+	drum_note 6, 2
 	sound_jump Music_Bicycle_branch_ee34b

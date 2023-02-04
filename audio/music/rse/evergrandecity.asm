@@ -1169,21 +1169,21 @@ Music_EverGrandeCityRSE_Ch4:
 	note_type 12
 	rest 6
 Music_EverGrandeCityRSE_Ch4_loop:
-	note G#, 4
-	note G#, 2
-	note D_, 4
-	note G#, 2
-	note G#, 4
-	note G#, 2
-	note D_, 4
-	note G#, 2
-	note G#, 4
-	note G#, 2
-	note D_, 4
-	note G#, 2
-	note G#, 4
-	note G#, 2
-	note D_, 2
-	note D_, 2
-	note G#, 2
+	drum_note 9, 4
+	drum_note 9, 2
+	drum_note 3, 4
+	drum_note 9, 2
+	drum_note 9, 4
+	drum_note 9, 2
+	drum_note 3, 4
+	drum_note 9, 2
+	drum_note 9, 4
+	drum_note 9, 2
+	drum_note 3, 4
+	drum_note 9, 2
+	drum_note 9, 4
+	drum_note 9, 2
+	drum_note 3, 2
+	drum_note 3, 2
+	drum_note 9, 2
 	sound_jump Music_EverGrandeCityRSE_Ch4_loop

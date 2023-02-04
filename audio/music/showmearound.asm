@@ -303,9 +303,9 @@ Music_ShowMeAround_Ch4:
 	note_type 12
 	rest 16
 	rest 8
-	note D_, 2
-	note D#, 2
-	note F#, 4
+	drum_note 3, 2
+	drum_note 4, 2
+	drum_note 7, 4
 Music_ShowMeAround_branch_edd39:
 	sound_call Music_ShowMeAround_branch_edd4f
 	sound_call Music_ShowMeAround_branch_edd4f

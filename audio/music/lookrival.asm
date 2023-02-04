@@ -327,27 +327,27 @@ Music_LookRival_Ch4:
 	note_type 12
 	rest 8
 	rest 16
-	note D#, 2
-	note D_, 4
-	note D_, 6
-	note D_, 4
-	note D#, 4
-	note D#, 4
-	note D_, 2
-	note D_, 2
-	note D_, 2
-	note D_, 2
+	drum_note 4, 2
+	drum_note 3, 4
+	drum_note 3, 6
+	drum_note 3, 4
+	drum_note 4, 4
+	drum_note 4, 4
+	drum_note 3, 2
+	drum_note 3, 2
+	drum_note 3, 2
+	drum_note 3, 2
 Music_AfterTheRivalFight_branch_f5118:
 Music_LookRival_branch_f5118:
-	note D#, 4
-	note D_, 2
-	note D#, 4
-	note D#, 2
-	note D_, 4
-	note D#, 4
-	note D_, 2
-	note D#, 4
-	note D#, 2
-	note D_, 2
-	note D_, 2
+	drum_note 4, 4
+	drum_note 3, 2
+	drum_note 4, 4
+	drum_note 4, 2
+	drum_note 3, 4
+	drum_note 4, 4
+	drum_note 3, 2
+	drum_note 4, 4
+	drum_note 4, 2
+	drum_note 3, 2
+	drum_note 3, 2
 	sound_jump Music_LookRival_branch_f5118

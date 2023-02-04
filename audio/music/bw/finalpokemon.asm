@@ -906,40 +906,40 @@ Music_FinalPokemonBW_Ch3_branch_3:
 Music_FinalPokemonBW_Ch4:
 	toggle_noise 3
 	note_type 6
-	note C_, 1
-	note C_, 1
-	note B_, 16
+	drum_note 1, 1
+	drum_note 1, 1
+	drum_note 12, 16
 	rest 12
 	note_type 3
-	note D_, 1
-	note D_, 1
-	note D_, 1
-	note D_, 1
-	note D_, 1
-	note D_, 1
-	note D_, 1
-	note D_, 1
+	drum_note 3, 1
+	drum_note 3, 1
+	drum_note 3, 1
+	drum_note 3, 1
+	drum_note 3, 1
+	drum_note 3, 1
+	drum_note 3, 1
+	drum_note 3, 1
 	sound_call Music_FinalPokemonBW_Ch4_branch_1
 	sound_call Music_FinalPokemonBW_Ch4_branch_1
 	sound_call Music_FinalPokemonBW_Ch4_branch_1
-	note D_, 2
-	note D_, 2
-	note D_, 4
-	note B_, 4
-	note B_, 4
+	drum_note 3, 2
+	drum_note 3, 2
+	drum_note 3, 4
+	drum_note 12, 4
+	drum_note 12, 4
 	note_type 4
-	note D_, 1
-	note D_, 1
-	note D_, 1
-	note D_, 1
-	note D_, 1
-	note D_, 1
-	note D_, 1
-	note D_, 1
-	note D_, 1
-	note D_, 1
-	note D_, 1
-	note D_, 1
+	drum_note 3, 1
+	drum_note 3, 1
+	drum_note 3, 1
+	drum_note 3, 1
+	drum_note 3, 1
+	drum_note 3, 1
+	drum_note 3, 1
+	drum_note 3, 1
+	drum_note 3, 1
+	drum_note 3, 1
+	drum_note 3, 1
+	drum_note 3, 1
 	note_type 3
 Music_FinalPokemonBW_Ch4_loop:
 	sound_call Music_FinalPokemonBW_Ch4_branch_2
@@ -957,146 +957,146 @@ Music_FinalPokemonBW_Ch4_loop:
 	sound_call Music_FinalPokemonBW_Ch4_branch_2
 	sound_call Music_FinalPokemonBW_Ch4_branch_4
 	sound_call Music_FinalPokemonBW_Ch4_branch_2
-	note D_, 4
-	note D_, 2
-	note D_, 2
-	note D_, 4
-	note D_, 2
-	note D_, 2
-	note D_, 2
-	note D_, 2
-	note D_, 4
-	note D_, 1
-	note D_, 1
-	note D_, 1
-	note D_, 1
-	note D_, 1
-	note D_, 1
-	note D_, 1
-	note D_, 1
-	note B_, 10
-	note D_, 2
-	note D_, 2
-	note C_, 6
-	note D_, 4
-	note D_, 2
-	note D_, 2
-	note D_, 4
+	drum_note 3, 4
+	drum_note 3, 2
+	drum_note 3, 2
+	drum_note 3, 4
+	drum_note 3, 2
+	drum_note 3, 2
+	drum_note 3, 2
+	drum_note 3, 2
+	drum_note 3, 4
+	drum_note 3, 1
+	drum_note 3, 1
+	drum_note 3, 1
+	drum_note 3, 1
+	drum_note 3, 1
+	drum_note 3, 1
+	drum_note 3, 1
+	drum_note 3, 1
+	drum_note 12, 10
+	drum_note 3, 2
+	drum_note 3, 2
+	drum_note 1, 6
+	drum_note 3, 4
+	drum_note 3, 2
+	drum_note 3, 2
+	drum_note 3, 4
 	sound_call Music_FinalPokemonBW_Ch4_branch_2
 	sound_call Music_FinalPokemonBW_Ch4_branch_1
 	sound_call Music_FinalPokemonBW_Ch4_branch_2
 	sound_call Music_FinalPokemonBW_Ch4_branch_4
-	note D_, 2
-	note D_, 2
-	note D_, 4
-	note D_, 4
-	note D_, 2
-	note D_, 2
-	note D_, 2
-	note D_, 2
-	note D_, 4
-	note D_, 2
-	note D_, 2
-	note D_, 2
-	note D_, 2
+	drum_note 3, 2
+	drum_note 3, 2
+	drum_note 3, 4
+	drum_note 3, 4
+	drum_note 3, 2
+	drum_note 3, 2
+	drum_note 3, 2
+	drum_note 3, 2
+	drum_note 3, 4
+	drum_note 3, 2
+	drum_note 3, 2
+	drum_note 3, 2
+	drum_note 3, 2
 	sound_call Music_FinalPokemonBW_Ch4_branch_2
 	sound_call Music_FinalPokemonBW_Ch4_branch_2
 	sound_call Music_FinalPokemonBW_Ch4_branch_4
 	sound_call Music_FinalPokemonBW_Ch4_branch_2
 	sound_call Music_FinalPokemonBW_Ch4_branch_2
-	note B_, 16
-	note B_, 8
-	note D_, 1
-	note D_, 1
-	note D_, 1
-	note D_, 1
-	note D_, 1
-	note D_, 1
-	note D_, 1
-	note D_, 1
+	drum_note 12, 16
+	drum_note 12, 8
+	drum_note 3, 1
+	drum_note 3, 1
+	drum_note 3, 1
+	drum_note 3, 1
+	drum_note 3, 1
+	drum_note 3, 1
+	drum_note 3, 1
+	drum_note 3, 1
 	sound_jump Music_FinalPokemonBW_Ch4_loop
 
 Music_FinalPokemonBW_Ch4_branch_1:
-	note D_, 2
-	note D_, 2
-	note D_, 8
-	note D_, 2
-	note D_, 2
-	note D_, 2
-	note D_, 2
-	note D_, 2
-	note D_, 2
-	note D_, 2
-	note D_, 2
-	note D_, 4
+	drum_note 3, 2
+	drum_note 3, 2
+	drum_note 3, 8
+	drum_note 3, 2
+	drum_note 3, 2
+	drum_note 3, 2
+	drum_note 3, 2
+	drum_note 3, 2
+	drum_note 3, 2
+	drum_note 3, 2
+	drum_note 3, 2
+	drum_note 3, 4
 	sound_ret
 
 Music_FinalPokemonBW_Ch4_branch_2:
-	note D_, 4
-	note D_, 2
-	note D_, 2
-	note D_, 4
-	note D_, 2
-	note D_, 2
-	note D_, 2
-	note D_, 2
-	note D_, 4
-	note D_, 2
-	note D_, 2
-	note D_, 2
-	note D_, 2
+	drum_note 3, 4
+	drum_note 3, 2
+	drum_note 3, 2
+	drum_note 3, 4
+	drum_note 3, 2
+	drum_note 3, 2
+	drum_note 3, 2
+	drum_note 3, 2
+	drum_note 3, 4
+	drum_note 3, 2
+	drum_note 3, 2
+	drum_note 3, 2
+	drum_note 3, 2
 	sound_ret
 
 Music_FinalPokemonBW_Ch4_branch_3:
-	note D_, 4
-	note D_, 2
-	note D_, 2
-	note D_, 4
-	note D_, 2
-	note D_, 2
-	note D_, 2
-	note D_, 2
-	note D_, 4
+	drum_note 3, 4
+	drum_note 3, 2
+	drum_note 3, 2
+	drum_note 3, 4
+	drum_note 3, 2
+	drum_note 3, 2
+	drum_note 3, 2
+	drum_note 3, 2
+	drum_note 3, 4
 	note_type 4
-	note D_, 2
-	note D_, 2
-	note D_, 2
+	drum_note 3, 2
+	drum_note 3, 2
+	drum_note 3, 2
 	note_type 3
 	sound_ret
 
 Music_FinalPokemonBW_Ch4_branch_4:
-	note D_, 2
-	note D_, 2
-	note D_, 2
-	note D_, 1
-	note D_, 1
-	note D_, 1
-	note D_, 3
-	note D_, 2
-	note D_, 2
-	note D_, 2
-	note D_, 2
-	note D_, 4
-	note D_, 2
-	note D_, 2
-	note D_, 2
-	note D_, 2
+	drum_note 3, 2
+	drum_note 3, 2
+	drum_note 3, 2
+	drum_note 3, 1
+	drum_note 3, 1
+	drum_note 3, 1
+	drum_note 3, 3
+	drum_note 3, 2
+	drum_note 3, 2
+	drum_note 3, 2
+	drum_note 3, 2
+	drum_note 3, 4
+	drum_note 3, 2
+	drum_note 3, 2
+	drum_note 3, 2
+	drum_note 3, 2
 	sound_ret
 
 Music_FinalPokemonBW_Ch4_branch_5:
-	note D_, 4
-	note D_, 2
-	note D_, 2
-	note D_, 4
-	note D_, 2
-	note D_, 2
-	note D_, 1
-	note D_, 1
-	note D_, 1
-	note D_, 1
-	note D_, 4
-	note D_, 2
-	note D_, 2
-	note D_, 2
-	note D_, 2
+	drum_note 3, 4
+	drum_note 3, 2
+	drum_note 3, 2
+	drum_note 3, 4
+	drum_note 3, 2
+	drum_note 3, 2
+	drum_note 3, 1
+	drum_note 3, 1
+	drum_note 3, 1
+	drum_note 3, 1
+	drum_note 3, 4
+	drum_note 3, 2
+	drum_note 3, 2
+	drum_note 3, 2
+	drum_note 3, 2
 	sound_ret

@@ -302,8 +302,8 @@ Music_BattleTowerLobby_Ch4:
 Music_BattleTowerLobby_branch_179612:
 	note_type 12
 	rest 2
-	note F_, 4
-	note F_, 4
-	note F_, 2
-	note F_, 4
+	drum_note 6, 4
+	drum_note 6, 4
+	drum_note 6, 2
+	drum_note 6, 4
 	sound_jump Music_BattleTowerLobby_branch_179612

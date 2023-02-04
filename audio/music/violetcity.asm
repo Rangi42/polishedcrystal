@@ -709,22 +709,22 @@ Music_VioletCity_branch_f0311:
 Music_VioletCity_Ch4:
 	toggle_noise 3
 	note_type 12
-	note D#, 2
-	note D_, 2
-	note D#, 1
-	note D#, 1
-	note D_, 2
-	note D_, 4
-	note F#, 4
+	drum_note 4, 2
+	drum_note 3, 2
+	drum_note 4, 1
+	drum_note 4, 1
+	drum_note 3, 2
+	drum_note 3, 4
+	drum_note 7, 4
 	sound_call Music_VioletCity_branch_f036c
 	sound_call Music_VioletCity_branch_f036c
 	sound_call Music_VioletCity_branch_f036c
-	note D_, 2
-	note D#, 1
-	note D#, 1
-	note D_, 2
-	note C_, 8
-	note D#, 2
+	drum_note 3, 2
+	drum_note 4, 1
+	drum_note 4, 1
+	drum_note 3, 2
+	drum_note 1, 8
+	drum_note 4, 2
 Music_VioletCity_branch_f0338:
 	sound_call Music_VioletCity_branch_f037a
 	sound_call Music_VioletCity_branch_f037a

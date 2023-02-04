@@ -399,20 +399,20 @@ Music_Route37_Ch4:
 Music_Route37_branch_eeb51:
 	note_type 12
 	sound_call Music_Route37_branch_eeb6b
-	note D_, 1
-	note D#, 1
-	note D#, 1
-	note D_, 1
+	drum_note 3, 1
+	drum_note 4, 1
+	drum_note 4, 1
+	drum_note 3, 1
 	sound_call Music_Route37_branch_eeb6b
 	note_type 6
-	note D#, 1
-	note D#, 1
-	note D#, 1
-	note D#, 1
-	note D#, 1
-	note D_, 1
-	note D_, 1
-	note D_, 1
+	drum_note 4, 1
+	drum_note 4, 1
+	drum_note 4, 1
+	drum_note 4, 1
+	drum_note 4, 1
+	drum_note 3, 1
+	drum_note 3, 1
+	drum_note 3, 1
 	sound_jump Music_Route37_branch_eeb51
 
 Music_Route37_branch_eeb6b:

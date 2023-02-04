@@ -462,23 +462,23 @@ Music_DarkCave_Ch4:
 	note_type 12
 Music_DarkCave_branch_ea4ee:
 	stereo_panning TRUE, TRUE
-	note D#, 8
-	note D#, 8
-	note D#, 4
+	drum_note 4, 8
+	drum_note 4, 8
+	drum_note 4, 4
 	stereo_panning TRUE, FALSE
-	note C#, 4
+	drum_note 2, 4
 	stereo_panning FALSE, TRUE
-	note C#, 2
-	note C#, 2
+	drum_note 2, 2
+	drum_note 2, 2
 	stereo_panning TRUE, FALSE
-	note C#, 4
+	drum_note 2, 4
 	stereo_panning TRUE, TRUE
-	note D#, 8
-	note D#, 8
-	note D#, 4
+	drum_note 4, 8
+	drum_note 4, 8
+	drum_note 4, 4
 	stereo_panning FALSE, TRUE
-	note C#, 8
+	drum_note 2, 8
 	stereo_panning TRUE, FALSE
-	note C#, 2
-	note C#, 2
+	drum_note 2, 2
+	drum_note 2, 2
 	sound_jump Music_DarkCave_branch_ea4ee

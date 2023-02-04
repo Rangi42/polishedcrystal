@@ -1073,31 +1073,31 @@ Music_BicycleRSE_Ch4:
 Music_BicycleRSE_Ch4_loop_main:
 Music_BicycleRSE_Ch4_loop_1:
 	rest 4
-	note G#, 4
+	drum_note 9, 4
 	sound_loop 14, Music_BicycleRSE_Ch4_loop_1
-	note G#, 2
-	note G#, 2
-	note G#, 4
-	note G#, 4
-	note G#, 4
+	drum_note 9, 2
+	drum_note 9, 2
+	drum_note 9, 4
+	drum_note 9, 4
+	drum_note 9, 4
 Music_BicycleRSE_Ch4_loop_2:
 	rest 4
-	note G#, 4
+	drum_note 9, 4
 	sound_loop 14, Music_BicycleRSE_Ch4_loop_2
-	note G#, 2
-	note G#, 2
-	note G#, 4
-	note G#, 4
-	note G#, 4
-	note B_, 16
+	drum_note 9, 2
+	drum_note 9, 2
+	drum_note 9, 4
+	drum_note 9, 4
+	drum_note 9, 4
+	drum_note 12, 16
 Music_BicycleRSE_Ch4_loop_3:
 	rest 16
 	sound_loop 31, Music_BicycleRSE_Ch4_loop_3
 Music_BicycleRSE_Ch4_loop_4:
 	rest 4
-	note G#, 4
+	drum_note 9, 4
 	sound_loop 8, Music_BicycleRSE_Ch4_loop_4
-	note B_, 16
+	drum_note 12, 16
 	rest 16
 	rest 16
 	rest 16

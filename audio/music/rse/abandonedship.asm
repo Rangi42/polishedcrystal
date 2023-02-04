@@ -601,81 +601,81 @@ Music_AbandonedShipRSE_Ch4:
 	stereo_panning FALSE, TRUE
 	toggle_noise 3
 	note_type 6
-	note C#, 1
-	note C#, 1
-	note C#, 1
-	note C#, 1
-	note C#, 1
-	note C#, 1
-	note C#, 1
-	note C#, 1
-	note D_, 1
-	note D_, 1
-	note D_, 1
-	note D_, 1
+	drum_note 2, 1
+	drum_note 2, 1
+	drum_note 2, 1
+	drum_note 2, 1
+	drum_note 2, 1
+	drum_note 2, 1
+	drum_note 2, 1
+	drum_note 2, 1
+	drum_note 3, 1
+	drum_note 3, 1
+	drum_note 3, 1
+	drum_note 3, 1
 Music_AbandonedShipRSE_branch_1:
 	note_type 12
 	sound_call Music_AbandonedShipRSE_branch_eeb6b
-	note D_, 1
-	note C#, 1
-	note C#, 1
-	note D_, 1
+	drum_note 3, 1
+	drum_note 2, 1
+	drum_note 2, 1
+	drum_note 3, 1
 	sound_call Music_AbandonedShipRSE_branch_eeb6b
 	note_type 6
-	note C#, 1
-	note C#, 1
-	note C#, 1
-	note C#, 1
-	note C#, 1
-	note D_, 1
-	note D_, 1
-	note D_, 1
+	drum_note 2, 1
+	drum_note 2, 1
+	drum_note 2, 1
+	drum_note 2, 1
+	drum_note 2, 1
+	drum_note 3, 1
+	drum_note 3, 1
+	drum_note 3, 1
 	sound_loop 4, Music_AbandonedShipRSE_branch_1
 Music_AbandonedShipRSE_branch_2:
 	note_type 12
 	rest 16
 	sound_loop 4, Music_AbandonedShipRSE_branch_2
 	sound_call Music_AbandonedShipRSE_branch_eeb6b
-	note D_, 1
-	note C#, 1
-	note C#, 1
-	note D_, 1
+	drum_note 3, 1
+	drum_note 2, 1
+	drum_note 2, 1
+	drum_note 3, 1
 	sound_call Music_AbandonedShipRSE_branch_eeb6b
 	note_type 6
-	note C#, 1
-	note C#, 1
-	note C#, 1
-	note C#, 1
-	note C#, 1
-	note D_, 1
-	note D_, 1
-	note D_, 1
+	drum_note 2, 1
+	drum_note 2, 1
+	drum_note 2, 1
+	drum_note 2, 1
+	drum_note 2, 1
+	drum_note 3, 1
+	drum_note 3, 1
+	drum_note 3, 1
 	note_type 12
 	sound_call Music_AbandonedShipRSE_branch_eeb6b
-	note D_, 1
-	note C#, 1
-	note C#, 1
-	note D_, 1
-	note D_, 2
-	note C#, 1
-	note C#, 1
-	note D_, 2
-	note C#, 1
-	note C#, 1
-	note D_, 2
+	drum_note 3, 1
+	drum_note 2, 1
+	drum_note 2, 1
+	drum_note 3, 1
+	drum_note 3, 2
+	drum_note 2, 1
+	drum_note 2, 1
+	drum_note 3, 2
+	drum_note 2, 1
+	drum_note 2, 1
+	drum_note 3, 2
 	note_type 6
-	note C#, 1
-	note C#, 1
-	note C#, 1
-	note C#, 1
-	note C#, 1
-	note C#, 1
-	note C#, 1
-	note C#, 1
-	note D_, 1
-	note D_, 1
-	note D_, 1
-	note D_, 1
+	drum_note 2, 1
+	drum_note 2, 1
+	drum_note 2, 1
+	drum_note 2, 1
+	drum_note 2, 1
+	drum_note 2, 1
+	drum_note 2, 1
+	drum_note 2, 1
+	drum_note 3, 1
+	drum_note 3, 1
+	drum_note 3, 1
+	drum_note 3, 1
 	sound_jump Music_AbandonedShipRSE_branch_1
 
 Music_AbandonedShipRSE_branch_eeb6b:

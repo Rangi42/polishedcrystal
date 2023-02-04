@@ -395,24 +395,24 @@ Music_LugiasSong2000_Ch4_loop_1:
 	rest 16
 	sound_loop 8, Music_LugiasSong2000_Ch4_loop_1
 	note_type 6
-	note C#, 2
-	note C#, 2
-	note C#, 2
-	note C#, 2
-	note D_, 1
-	note D_, 1
-	note D_, 1
-	note D_, 1
-	note D_, 1
-	note D_, 1
-	note D_, 1
-	note D_, 1
+	drum_note 2, 2
+	drum_note 2, 2
+	drum_note 2, 2
+	drum_note 2, 2
+	drum_note 3, 1
+	drum_note 3, 1
+	drum_note 3, 1
+	drum_note 3, 1
+	drum_note 3, 1
+	drum_note 3, 1
+	drum_note 3, 1
+	drum_note 3, 1
 	note_type 12
-	note B_, 16
-	note C_, 8
-	note C_, 8
-	note B_, 16
-	note C_, 8
-	note C_, 8
-	note B_, 16
+	drum_note 12, 16
+	drum_note 1, 8
+	drum_note 1, 8
+	drum_note 12, 16
+	drum_note 1, 8
+	drum_note 1, 8
+	drum_note 12, 16
 	sound_ret

@@ -518,16 +518,16 @@ Music_RivalBattleXY_Ch3_branch_5:
 Music_RivalBattleXY_Ch4:
 	toggle_noise 3
 	note_type 12
-	note B_, 2
-	note B_, 4
-	note B_, 6
-	note C_, 1
-	note C_, 1
-	note C_, 1
-	note C_, 1
+	drum_note 12, 2
+	drum_note 12, 4
+	drum_note 12, 6
+	drum_note 1, 1
+	drum_note 1, 1
+	drum_note 1, 1
+	drum_note 1, 1
 Music_RivalBattleXY_Ch4_loop:
-	note D#, 2
-	note D#, 2
-	note C_, 2
-	note D#, 2
+	drum_note 4, 2
+	drum_note 4, 2
+	drum_note 1, 2
+	drum_note 4, 2
 	sound_jump Music_RivalBattleXY_Ch4_loop

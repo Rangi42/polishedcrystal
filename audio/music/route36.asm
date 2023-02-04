@@ -479,12 +479,12 @@ Music_Route36_branch_e9713:
 	sound_call Music_Route36_branch_e9741
 	sound_loop 2, Music_Route36_branch_e9713
 Music_Route36_branch_e9723:
-	note A#, 4
-	note A_, 2
-	note F_, 4
-	note B_, 1
-	note B_, 1
-	note A_, 4
+	drum_note 11, 4
+	drum_note 10, 2
+	drum_note 6, 4
+	drum_note 12, 1
+	drum_note 12, 1
+	drum_note 10, 4
 	sound_loop 11, Music_Route36_branch_e9723
 	sound_call Music_Route36_branch_e9741
 	sound_jump Music_Route36_branch_e9713

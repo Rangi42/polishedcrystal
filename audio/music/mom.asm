@@ -82,28 +82,28 @@ Music_Mom_Ch4:
 	note_type 12
 	rest 6
 Music_Mom_branch_f6c56:
-	note D#, 1
+	drum_note 4, 1
 	rest 1
-	note F#, 2
-	note D_, 1
+	drum_note 7, 2
+	drum_note 3, 1
 	rest 1
-	note G_, 1
+	drum_note 8, 1
 	rest 1
-	note G_, 1
+	drum_note 8, 1
 	rest 1
-	note F#, 4
-	note D_, 1
+	drum_note 7, 4
+	drum_note 3, 1
 	rest 1
-	note D#, 1
+	drum_note 4, 1
 	rest 1
-	note F#, 4
-	note D_, 1
+	drum_note 7, 4
+	drum_note 3, 1
 	rest 1
-	note G_, 1
+	drum_note 8, 1
 	rest 1
-	note G_, 1
+	drum_note 8, 1
 	rest 1
-	note D_, 2
-	note D#, 1
+	drum_note 3, 2
+	drum_note 4, 1
 	rest 1
 	sound_jump Music_Mom_branch_f6c56

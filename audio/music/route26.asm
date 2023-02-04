@@ -551,9 +551,9 @@ Music_Route26_Ch4:
 	toggle_noise 4
 	note_type 12
 Music_Route26_branch_ef23c:
-	note B_, 6
-	note D_, 1
-	note D_, 1
+	drum_note 12, 6
+	drum_note 3, 1
+	drum_note 3, 1
 	sound_loop 3, Music_Route26_branch_ef23c
 	sound_call Music_Route26_branch_ef2b0
 Music_Route26_branch_ef246:
@@ -561,25 +561,25 @@ Music_Route26_branch_ef246:
 	sound_call Music_Route26_branch_ef29a
 	sound_call Music_Route26_branch_ef29a
 	sound_call Music_Route26_branch_ef2a8
-	note D_, 12
-	note D_, 2
-	note D_, 2
+	drum_note 3, 12
+	drum_note 3, 2
+	drum_note 3, 2
 	note_type 8
-	note D_, 2
-	note C#, 2
-	note C#, 2
-	note D_, 2
-	note D_, 2
-	note E_, 2
+	drum_note 3, 2
+	drum_note 2, 2
+	drum_note 2, 2
+	drum_note 3, 2
+	drum_note 3, 2
+	drum_note 5, 2
 	note_type 6
 	sound_call Music_Route26_branch_ef29a
 	sound_call Music_Route26_branch_ef29a
 	note_type 8
 Music_Route26_branch_ef266:
-	note D_, 2
-	note D_, 2
-	note D_, 2
-	note B_, 6
+	drum_note 3, 2
+	drum_note 3, 2
+	drum_note 3, 2
+	drum_note 12, 6
 	sound_loop 4, Music_Route26_branch_ef266
 	note_type 6
 	sound_call Music_Route26_branch_ef2a8
@@ -588,22 +588,22 @@ Music_Route26_branch_ef266:
 	sound_call Music_Route26_branch_ef2a8
 Music_Route26_branch_ef27c:
 	note_type 6
-	note D_, 1
-	note D_, 1
-	note D_, 1
-	note D_, 1
-	note D_, 1
-	note D_, 1
-	note D_, 1
-	note D_, 1
+	drum_note 3, 1
+	drum_note 3, 1
+	drum_note 3, 1
+	drum_note 3, 1
+	drum_note 3, 1
+	drum_note 3, 1
+	drum_note 3, 1
+	drum_note 3, 1
 	note_type 8
-	note D_, 2
-	note D_, 2
-	note D_, 2
-	note B_, 12
+	drum_note 3, 2
+	drum_note 3, 2
+	drum_note 3, 2
+	drum_note 12, 12
 	sound_loop 2, Music_Route26_branch_ef27c
 	note_type 12
-	note B_, 16
+	drum_note 12, 16
 	sound_call Music_Route26_branch_ef2b0
 	sound_jump Music_Route26_branch_ef246
 

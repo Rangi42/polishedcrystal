@@ -224,20 +224,20 @@ Music_SproutTower_Ch4:
 	note_type 12
 	rest 4
 Music_SproutTower_branch_f6a7f:
-	note F#, 4
+	drum_note 7, 4
 	stereo_panning TRUE, FALSE
-	note D#, 4
-	note F#, 2
+	drum_note 4, 4
+	drum_note 7, 2
 	stereo_panning FALSE, TRUE
-	note D#, 2
+	drum_note 4, 2
 	stereo_panning TRUE, TRUE
-	note F#, 4
-	note F#, 4
+	drum_note 7, 4
+	drum_note 7, 4
 	stereo_panning FALSE, TRUE
-	note D#, 4
-	note F#, 2
+	drum_note 4, 4
+	drum_note 7, 2
 	stereo_panning TRUE, FALSE
-	note D#, 2
+	drum_note 4, 2
 	stereo_panning TRUE, TRUE
-	note F#, 4
+	drum_note 7, 4
 	sound_jump Music_SproutTower_branch_f6a7f

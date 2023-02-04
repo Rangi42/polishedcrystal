@@ -553,57 +553,57 @@ Music_CelestialTowerBW_NoIntro_Ch4:
 	sound_call Music_CelestialTowerBW_NoIntro_Ch4_branch_2
 	sound_call Music_CelestialTowerBW_NoIntro_Ch4_branch_1
 Music_CelestialTowerBW_NoIntro_Ch4_loop_1:
-	note C#, 1
-	note G#, 1
-	note C#, 1
-	note G#, 1
-	note C#, 1
-	note G#, 1
-	note C#, 1
-	note G#, 1
-	note G#, 2
-	note G#, 6
+	drum_note 2, 1
+	drum_note 9, 1
+	drum_note 2, 1
+	drum_note 9, 1
+	drum_note 2, 1
+	drum_note 9, 1
+	drum_note 2, 1
+	drum_note 9, 1
+	drum_note 9, 2
+	drum_note 9, 6
 	rest 16
 	sound_loop 4, Music_CelestialTowerBW_NoIntro_Ch4_loop_1
 	rest 16
 	sound_jump Music_CelestialTowerBW_NoIntro_Ch4
 
 Music_CelestialTowerBW_NoIntro_Ch4_branch_1:
-	note C#, 1
-	note G#, 1
-	note C#, 1
-	note G#, 1
-	note C#, 1
-	note G#, 1
-	note C#, 1
-	note G#, 1
-	note G#, 1
-	note F#, 1
-	note G#, 1
-	note F#, 1
-	note D#, 2
-	note D#, 2
+	drum_note 2, 1
+	drum_note 9, 1
+	drum_note 2, 1
+	drum_note 9, 1
+	drum_note 2, 1
+	drum_note 9, 1
+	drum_note 2, 1
+	drum_note 9, 1
+	drum_note 9, 1
+	drum_note 7, 1
+	drum_note 9, 1
+	drum_note 7, 1
+	drum_note 4, 2
+	drum_note 4, 2
 	rest 16
 	sound_ret
 
 Music_CelestialTowerBW_NoIntro_Ch4_branch_2:
-	note C#, 1
-	note G#, 1
-	note C#, 1
-	note G#, 1
-	note C#, 1
-	note G#, 1
-	note C#, 1
-	note G#, 1
-	note G#, 1
-	note F#, 1
-	note G#, 1
-	note F#, 1
-	note D#, 2
-	note D#, 2
+	drum_note 2, 1
+	drum_note 9, 1
+	drum_note 2, 1
+	drum_note 9, 1
+	drum_note 2, 1
+	drum_note 9, 1
+	drum_note 2, 1
+	drum_note 9, 1
+	drum_note 9, 1
+	drum_note 7, 1
+	drum_note 9, 1
+	drum_note 7, 1
+	drum_note 4, 2
+	drum_note 4, 2
 	rest 12
-	note D#, 1
-	note D#, 1
-	note D#, 1
-	note D#, 1
+	drum_note 4, 1
+	drum_note 4, 1
+	drum_note 4, 1
+	drum_note 4, 1
 	sound_ret

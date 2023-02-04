@@ -124,16 +124,16 @@ Music_MtMoon_Ch4:
 	note_type 12
 Music_MtMoon_branch_edbc3:
 	stereo_panning FALSE, TRUE
-	note A#, 4
-	note A#, 8
-	note A#, 4
+	drum_note 11, 4
+	drum_note 11, 8
+	drum_note 11, 4
 	stereo_panning TRUE, FALSE
-	note A#, 4
-	note A#, 4
-	note A#, 4
+	drum_note 11, 4
+	drum_note 11, 4
+	drum_note 11, 4
 	stereo_panning FALSE, TRUE
-	note A#, 4
-	note A#, 4
+	drum_note 11, 4
+	drum_note 11, 4
 	stereo_panning TRUE, FALSE
-	note A#, 8
+	drum_note 11, 8
 	sound_jump Music_MtMoon_branch_edbc3

@@ -393,48 +393,48 @@ Music_Route12_Ch4:
 	toggle_noise 4
 	stereo_panning TRUE, FALSE
 	note_type 12
-	note B_, 10
-	note C#, 1
-	note C#, 1
-	note D_, 4
-	note B_, 6
-	note C#, 1
-	note C#, 1
-	note D_, 4
+	drum_note 12, 10
+	drum_note 2, 1
+	drum_note 2, 1
+	drum_note 3, 4
+	drum_note 12, 6
+	drum_note 2, 1
+	drum_note 2, 1
+	drum_note 3, 4
 	note_type 6
 	sound_call Music_Route12_branch_ec717
 Music_Route12_branch_ec6e1:
-	note D_, 4
-	note D_, 8
-	note C#, 2
-	note C#, 2
-	note D_, 8
+	drum_note 3, 4
+	drum_note 3, 8
+	drum_note 2, 2
+	drum_note 2, 2
+	drum_note 3, 8
 	sound_call Music_Route12_branch_ec717
 	sound_loop 8, Music_Route12_branch_ec6e1
 Music_Route12_branch_ec6ed:
 	note_type 12
-	note B_, 10
-	note D_, 1
-	note D_, 1
-	note D_, 6
-	note C#, 1
-	note C#, 1
-	note D_, 6
-	note C#, 1
-	note C#, 1
-	note D_, 4
+	drum_note 12, 10
+	drum_note 3, 1
+	drum_note 3, 1
+	drum_note 3, 6
+	drum_note 2, 1
+	drum_note 2, 1
+	drum_note 3, 6
+	drum_note 2, 1
+	drum_note 2, 1
+	drum_note 3, 4
 	sound_loop 2, Music_Route12_branch_ec6ed
-	note B_, 16
+	drum_note 12, 16
 	note_type 6
 	sound_call Music_Route12_branch_ec717
 	sound_call Music_Route12_branch_ec717
-	note B_, 16
+	drum_note 12, 16
 Music_Route12_branch_ec707:
-	note D_, 4
-	note D_, 8
-	note C#, 2
-	note C#, 2
-	note D_, 8
+	drum_note 3, 4
+	drum_note 3, 8
+	drum_note 2, 2
+	drum_note 2, 2
+	drum_note 3, 8
 	sound_call Music_Route12_branch_ec717
 	sound_loop 2, Music_Route12_branch_ec707
 	sound_jump Music_Route12_branch_ec6e1

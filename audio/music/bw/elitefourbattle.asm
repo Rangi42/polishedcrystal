@@ -1163,13 +1163,13 @@ Music_EliteFourBattleBW_Ch4:
 	rest 16
 	rest 16
 Music_EliteFourBattleBW_Ch4_loop_1:
-	note D#, 2
-	note D_, 2
+	drum_note 4, 2
+	drum_note 3, 2
 	sound_loop 8, Music_EliteFourBattleBW_Ch4_loop_1
 Music_EliteFourBattleBW_Ch4_loop_2:
-	note C#, 1
-	note C#, 1
-	note C#, 2
+	drum_note 2, 1
+	drum_note 2, 1
+	drum_note 2, 2
 	sound_loop 8, Music_EliteFourBattleBW_Ch4_loop_2
 Music_EliteFourBattleBW_Ch4_loop_3:
 	sound_call Music_EliteFourBattleBW_Ch4_branch_1
@@ -1178,105 +1178,105 @@ Music_EliteFourBattleBW_Ch4_loop_main:
 Music_EliteFourBattleBW_Ch4_loop_4:
 	sound_call Music_EliteFourBattleBW_Ch4_branch_1
 	sound_loop 4, Music_EliteFourBattleBW_Ch4_loop_4
-	note C_, 2
-	note C_, 2
-	note G#, 1
-	note G#, 1
-	note D#, 2
-	note C_, 2
-	note D#, 2
-	note C_, 2
-	note D#, 2
-	note C_, 2
-	note C_, 2
-	note G#, 1
-	note G#, 1
-	note D#, 2
-	note C_, 2
-	note D#, 2
-	note C_, 2
-	note D#, 2
-	note C_, 2
-	note C_, 2
-	note G#, 1
-	note G#, 1
-	note D#, 2
-	note C_, 2
-	note D#, 2
-	note C_, 2
-	note D#, 2
-	note C_, 2
-	note C_, 2
-	note G#, 1
-	note G#, 1
-	note D#, 2
-	note C_, 2
-	note D#, 2
-	note C_, 1
-	note C_, 1
-	note C_, 1
-	note C_, 1
+	drum_note 1, 2
+	drum_note 1, 2
+	drum_note 9, 1
+	drum_note 9, 1
+	drum_note 4, 2
+	drum_note 1, 2
+	drum_note 4, 2
+	drum_note 1, 2
+	drum_note 4, 2
+	drum_note 1, 2
+	drum_note 1, 2
+	drum_note 9, 1
+	drum_note 9, 1
+	drum_note 4, 2
+	drum_note 1, 2
+	drum_note 4, 2
+	drum_note 1, 2
+	drum_note 4, 2
+	drum_note 1, 2
+	drum_note 1, 2
+	drum_note 9, 1
+	drum_note 9, 1
+	drum_note 4, 2
+	drum_note 1, 2
+	drum_note 4, 2
+	drum_note 1, 2
+	drum_note 4, 2
+	drum_note 1, 2
+	drum_note 1, 2
+	drum_note 9, 1
+	drum_note 9, 1
+	drum_note 4, 2
+	drum_note 1, 2
+	drum_note 4, 2
+	drum_note 1, 1
+	drum_note 1, 1
+	drum_note 1, 1
+	drum_note 1, 1
 Music_EliteFourBattleBW_Ch4_loop_5:
 	sound_call Music_EliteFourBattleBW_Ch4_branch_1
 	sound_loop 12, Music_EliteFourBattleBW_Ch4_loop_5
-	note A#, 2
-	note A#, 1
-	note A#, 1
-	note A#, 2
-	note A#, 1
-	note A#, 1
-	note A#, 1
-	note A#, 2
-	note A#, 1
-	note A#, 1
-	note A#, 2
-	note A#, 1
-	note A#, 1
-	note A#, 1
-	note B_, 6
-	note C_, 2
-	note D_, 1
-	note D_, 1
-	note C_, 2
-	note C_, 2
+	drum_note 11, 2
+	drum_note 11, 1
+	drum_note 11, 1
+	drum_note 11, 2
+	drum_note 11, 1
+	drum_note 11, 1
+	drum_note 11, 1
+	drum_note 11, 2
+	drum_note 11, 1
+	drum_note 11, 1
+	drum_note 11, 2
+	drum_note 11, 1
+	drum_note 11, 1
+	drum_note 11, 1
+	drum_note 12, 6
+	drum_note 1, 2
+	drum_note 3, 1
+	drum_note 3, 1
+	drum_note 1, 2
+	drum_note 1, 2
 Music_EliteFourBattleBW_Ch4_loop_6:
 	sound_call Music_EliteFourBattleBW_Ch4_branch_1
 	sound_loop 6, Music_EliteFourBattleBW_Ch4_loop_6
 Music_EliteFourBattleBW_Ch4_loop_7:
-	note D#, 4
+	drum_note 4, 4
 	sound_loop 16, Music_EliteFourBattleBW_Ch4_loop_7
 Music_EliteFourBattleBW_Ch4_loop_8:
-	note D#, 2
-	note D_, 2
+	drum_note 4, 2
+	drum_note 3, 2
 	sound_loop 15, Music_EliteFourBattleBW_Ch4_loop_8
-	note C_, 1
-	note C_, 1
-	note C_, 1
-	note C_, 1
+	drum_note 1, 1
+	drum_note 1, 1
+	drum_note 1, 1
+	drum_note 1, 1
 	sound_jump Music_EliteFourBattleBW_Ch4_loop_main
 
 Music_EliteFourBattleBW_Ch4_branch_1:
-	note C_, 2
-	note D_, 1
-	note D_, 1
-	note C_, 2
-	note D_, 1
-	note D_, 1
-	note C_, 1
-	note D_, 2
-	note D_, 1
-	note C_, 1
-	note D_, 2
-	note D_, 1
-	note C_, 1
-	note D_, 1
-	note D_, 2
-	note C_, 1
-	note D_, 2
-	note D_, 1
-	note C_, 2
-	note D_, 1
-	note D_, 1
-	note C_, 2
-	note C_, 2
+	drum_note 1, 2
+	drum_note 3, 1
+	drum_note 3, 1
+	drum_note 1, 2
+	drum_note 3, 1
+	drum_note 3, 1
+	drum_note 1, 1
+	drum_note 3, 2
+	drum_note 3, 1
+	drum_note 1, 1
+	drum_note 3, 2
+	drum_note 3, 1
+	drum_note 1, 1
+	drum_note 3, 1
+	drum_note 3, 2
+	drum_note 1, 1
+	drum_note 3, 2
+	drum_note 3, 1
+	drum_note 1, 2
+	drum_note 3, 1
+	drum_note 3, 1
+	drum_note 1, 2
+	drum_note 1, 2
 	sound_ret

@@ -455,30 +455,30 @@ Music_PokeComCenter_Ch4:
 	toggle_noise 3
 	stereo_panning FALSE, TRUE
 	note_type 12
-	note A_, 8
-	note A_, 4
-	note C#, 1
-	note C#, 1
-	note C#, 1
-	note C#, 1
+	drum_note 10, 8
+	drum_note 10, 4
+	drum_note 2, 1
+	drum_note 2, 1
+	drum_note 2, 1
+	drum_note 2, 1
 Music_PokeComCenter_branch_179813:
-	note A_, 2
-	note C#, 2
-	note C#, 2
-	note C#, 2
-	note A_, 2
-	note C#, 2
-	note D_, 2
-	note C#, 2
+	drum_note 10, 2
+	drum_note 2, 2
+	drum_note 2, 2
+	drum_note 2, 2
+	drum_note 10, 2
+	drum_note 2, 2
+	drum_note 3, 2
+	drum_note 2, 2
 	sound_loop 3, Music_PokeComCenter_branch_179813
-	note A_, 2
-	note C#, 2
-	note C#, 2
-	note C#, 2
-	note A_, 2
-	note D_, 2
-	note C#, 1
-	note C#, 1
-	note C#, 1
-	note C#, 1
+	drum_note 10, 2
+	drum_note 2, 2
+	drum_note 2, 2
+	drum_note 2, 2
+	drum_note 10, 2
+	drum_note 3, 2
+	drum_note 2, 1
+	drum_note 2, 1
+	drum_note 2, 1
+	drum_note 2, 1
 	sound_jump Music_PokeComCenter_branch_179813

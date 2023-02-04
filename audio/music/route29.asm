@@ -508,14 +508,14 @@ Music_Route29_Ch4:
 	rest 2
 Music_Route29_branch_f05b0:
 	rest 2
-	note F_, 2
-	note F_, 6
-	note F_, 2
-	note F_, 2
-	note F_, 2
+	drum_note 6, 2
+	drum_note 6, 6
+	drum_note 6, 2
+	drum_note 6, 2
+	drum_note 6, 2
 	rest 2
-	note F_, 4
-	note F_, 4
-	note F_, 2
-	note F_, 4
+	drum_note 6, 4
+	drum_note 6, 4
+	drum_note 6, 2
+	drum_note 6, 4
 	sound_jump Music_Route29_branch_f05b0

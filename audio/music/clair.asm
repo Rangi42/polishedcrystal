@@ -392,25 +392,25 @@ Music_Clair_Ch4:
 	toggle_noise 3
 	note_type 12
 	stereo_panning TRUE, FALSE
-	note B_, 8
-	note B_, 8
-	note B_, 6
+	drum_note 12, 8
+	drum_note 12, 8
+	drum_note 12, 6
 	stereo_panning TRUE, TRUE
-	note D#, 1
-	note D#, 1
-	note D_, 2
-	note D#, 1
-	note D#, 1
-	note D_, 2
-	note D_, 1
-	note D_, 1
+	drum_note 4, 1
+	drum_note 4, 1
+	drum_note 3, 2
+	drum_note 4, 1
+	drum_note 4, 1
+	drum_note 3, 2
+	drum_note 3, 1
+	drum_note 3, 1
 Music_Clair_branch_1fc5e:
 	stereo_panning TRUE, TRUE
 	sound_call Music_Clair_branch_1fc6e
-	note G_, 1
+	drum_note 8, 1
 	stereo_panning TRUE, TRUE
 	sound_call Music_Clair_branch_1fc6e
-	note F#, 1
+	drum_note 7, 1
 	sound_jump Music_Clair_branch_1fc5e
 
 Music_Clair_branch_1fc6e:

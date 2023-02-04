@@ -205,28 +205,28 @@ Music_PokemonChannel_Ch4:
 	toggle_noise 3
 	note_type 12
 Music_PokemonChannel_branch_ee54d:
-	note A#, 3
-	note A#, 1
-	note D_, 2
-	note C_, 4
-	note D_, 2
-	note D_, 2
-	note A#, 1
-	note D_, 1
+	drum_note 11, 3
+	drum_note 11, 1
+	drum_note 3, 2
+	drum_note 1, 4
+	drum_note 3, 2
+	drum_note 3, 2
+	drum_note 11, 1
+	drum_note 3, 1
 	sound_loop 2, Music_PokemonChannel_branch_ee54d
-	note G#, 2
-	note A#, 2
-	note G#, 1
-	note G#, 1
-	note G#, 1
-	note G#, 1
-	note C_, 4
-	note G#, 1
-	note G#, 1
-	note G#, 1
-	note G#, 1
-	note B_, 4
-	note D_, 4
-	note A#, 4
-	note A#, 4
+	drum_note 9, 2
+	drum_note 11, 2
+	drum_note 9, 1
+	drum_note 9, 1
+	drum_note 9, 1
+	drum_note 9, 1
+	drum_note 1, 4
+	drum_note 9, 1
+	drum_note 9, 1
+	drum_note 9, 1
+	drum_note 9, 1
+	drum_note 12, 4
+	drum_note 3, 4
+	drum_note 11, 4
+	drum_note 11, 4
 	sound_ret

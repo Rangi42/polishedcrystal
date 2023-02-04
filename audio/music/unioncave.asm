@@ -242,17 +242,17 @@ Music_UnionCave_Ch4:
 	note_type 12
 Music_UnionCave_branch_f5da9:
 	stereo_panning TRUE, FALSE
-	note E_, 4
+	drum_note 5, 4
 	stereo_panning TRUE, TRUE
-	note F_, 4
+	drum_note 6, 4
 	stereo_panning FALSE, TRUE
-	note G#, 4
+	drum_note 9, 4
 	rest 8
 	stereo_panning FALSE, TRUE
-	note E_, 4
+	drum_note 5, 4
 	stereo_panning TRUE, TRUE
-	note F_, 4
+	drum_note 6, 4
 	stereo_panning TRUE, FALSE
-	note G#, 4
+	drum_note 9, 4
 	rest 8
 	sound_jump Music_UnionCave_branch_f5da9

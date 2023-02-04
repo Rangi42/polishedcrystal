@@ -105,11 +105,11 @@ Music_LookHiker_branch_f748a:
 Music_LookHiker_Ch4:
 	toggle_noise 3
 	note_type 12
-	note F_, 4
+	drum_note 6, 4
 	rest 16
 Music_LookHiker_branch_f749a:
-	note D#, 2
-	note G_, 2
-	note D_, 2
-	note G_, 2
+	drum_note 4, 2
+	drum_note 8, 2
+	drum_note 3, 2
+	drum_note 8, 2
 	sound_jump Music_LookHiker_branch_f749a

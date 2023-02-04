@@ -120,24 +120,24 @@ Music_MainMenu_Ch4:
 	rest 16
 	rest 16
 	rest 12
-	note D_, 1
-	note D_, 1
-	note D_, 1
-	note D_, 1
+	drum_note 3, 1
+	drum_note 3, 1
+	drum_note 3, 1
+	drum_note 3, 1
 Music_MainMenu_branch_f79a5:
-	note D_, 6
-	note D_, 1
-	note D_, 1
-	note D_, 2
-	note D_, 2
-	note D_, 4
-	note D_, 6
-	note D_, 1
-	note D_, 1
-	note D_, 2
-	note D_, 2
-	note D#, 1
-	note D#, 1
-	note D_, 1
-	note D_, 1
+	drum_note 3, 6
+	drum_note 3, 1
+	drum_note 3, 1
+	drum_note 3, 2
+	drum_note 3, 2
+	drum_note 3, 4
+	drum_note 3, 6
+	drum_note 3, 1
+	drum_note 3, 1
+	drum_note 3, 2
+	drum_note 3, 2
+	drum_note 4, 1
+	drum_note 4, 1
+	drum_note 3, 1
+	drum_note 3, 1
 	sound_jump Music_MainMenu_branch_f79a5

@@ -536,11 +536,11 @@ Music_LookMysticalMan_branch_178615:
 Music_LookMysticalMan_Ch4:
 	toggle_noise 3
 	note_type 12
-	note D#, 2
-	note D#, 2
-	note D_, 2
-	note D_, 1
-	note D_, 1
+	drum_note 4, 2
+	drum_note 4, 2
+	drum_note 3, 2
+	drum_note 3, 1
+	drum_note 3, 1
 Music_LookMysticalMan_branch_178697:
 	sound_call Music_LookMysticalMan_branch_1786d3
 	sound_call Music_LookMysticalMan_branch_1786d9
@@ -550,34 +550,34 @@ Music_LookMysticalMan_branch_178697:
 	sound_call Music_LookMysticalMan_branch_1786d3
 	sound_call Music_LookMysticalMan_branch_1786d9
 	sound_call Music_LookMysticalMan_branch_1786d3
-	note D_, 2
-	note D#, 2
-	note D_, 2
-	note D#, 1
-	note D_, 1
-	note D_, 2
-	note D#, 2
-	note D_, 2
-	note D_, 1
-	note D_, 1
+	drum_note 3, 2
+	drum_note 4, 2
+	drum_note 3, 2
+	drum_note 4, 1
+	drum_note 3, 1
+	drum_note 3, 2
+	drum_note 4, 2
+	drum_note 3, 2
+	drum_note 3, 1
+	drum_note 3, 1
 Music_LookMysticalMan_branch_1786ba:
-	note D_, 2
-	note D#, 2
-	note D_, 3
-	note D#, 1
-	note D#, 2
-	note D#, 2
-	note D_, 2
-	note D#, 2
-	note D_, 2
-	note D#, 2
-	note D_, 3
-	note D#, 1
-	note D#, 2
-	note D_, 2
-	note D_, 2
-	note D_, 1
-	note D_, 1
+	drum_note 3, 2
+	drum_note 4, 2
+	drum_note 3, 3
+	drum_note 4, 1
+	drum_note 4, 2
+	drum_note 4, 2
+	drum_note 3, 2
+	drum_note 4, 2
+	drum_note 3, 2
+	drum_note 4, 2
+	drum_note 3, 3
+	drum_note 4, 1
+	drum_note 4, 2
+	drum_note 3, 2
+	drum_note 3, 2
+	drum_note 3, 1
+	drum_note 3, 1
 	sound_loop 2, Music_LookMysticalMan_branch_1786ba
 	sound_jump Music_LookMysticalMan_branch_178697
 

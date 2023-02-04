@@ -401,17 +401,17 @@ Music_PokemonMarch_Ch4:
 	sound_call Music_PokemonMarch_branch_f704c
 Music_PokemonMarch_branch_f7003:
 	sound_call Music_PokemonMarch_branch_f7042
-	note C_, 4
-	note C_, 2
-	note C_, 4
-	note C_, 2
-	note C_, 4
-	note C_, 5
+	drum_note 1, 4
+	drum_note 1, 2
+	drum_note 1, 4
+	drum_note 1, 2
+	drum_note 1, 4
+	drum_note 1, 5
 	note_type 6
-	note D_, 1
-	note D_, 1
-	note C#, 1
-	note C#, 1
+	drum_note 3, 1
+	drum_note 3, 1
+	drum_note 2, 1
+	drum_note 2, 1
 	note_type 8
 	sound_call Music_PokemonMarch_branch_f7042
 	sound_call Music_PokemonMarch_branch_f704c
@@ -421,17 +421,17 @@ Music_PokemonMarch_branch_f7003:
 	sound_call Music_PokemonMarch_branch_f704c
 	sound_call Music_PokemonMarch_branch_f7042
 	sound_call Music_PokemonMarch_branch_f704c
-	note C#, 4
-	note C#, 2
-	note C#, 4
-	note C#, 2
-	note C#, 6
-	note C_, 2
+	drum_note 2, 4
+	drum_note 2, 2
+	drum_note 2, 4
+	drum_note 2, 2
+	drum_note 2, 6
+	drum_note 1, 2
 	note_type 4
 	rest 5
 	note_type 6
-	note D_, 1
-	note D_, 1
+	drum_note 3, 1
+	drum_note 3, 1
 	note_type 8
 	sound_call Music_PokemonMarch_branch_f704c
 	sound_jump Music_PokemonMarch_branch_f7003

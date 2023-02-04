@@ -1096,44 +1096,44 @@ Music_Route47HGSS_Ch4:
 Music_Route47HGSS_Ch4_loop_main:
 	rest 5
 	sound_call Music_Route47HGSS_Ch4_branch_1
-	note B_, 16
+	drum_note 12, 16
 	rest 16
-	note B_, 16
+	drum_note 12, 16
 	rest 13
 	sound_call Music_Route47HGSS_Ch4_branch_1
-	note B_, 3
+	drum_note 12, 3
 	sound_call Music_Route47HGSS_Ch4_branch_2
 Music_Route47HGSS_Ch4_loop_1:
-	note C_, 1
-	note C#, 1
-	note C#, 1
+	drum_note 1, 1
+	drum_note 2, 1
+	drum_note 2, 1
 	sound_call Music_Route47HGSS_Ch4_branch_2
 	sound_loop 6, Music_Route47HGSS_Ch4_loop_1
-	note C_, 1
-	note C#, 1
-	note C#, 1
-	note C_, 1
-	note C#, 1
-	note C#, 1
-	note C_, 1
-	note C#, 1
+	drum_note 1, 1
+	drum_note 2, 1
+	drum_note 2, 1
+	drum_note 1, 1
+	drum_note 2, 1
+	drum_note 2, 1
+	drum_note 1, 1
+	drum_note 2, 1
 	rest 2
-	note C#, 1
-	note C#, 1
+	drum_note 2, 1
+	drum_note 2, 1
 	rest 4
-	note B_, 3
+	drum_note 12, 3
 	sound_call Music_Route47HGSS_Ch4_branch_2
 Music_Route47HGSS_Ch4_loop_2:
-	note C_, 1
-	note C#, 1
-	note C#, 1
+	drum_note 1, 1
+	drum_note 2, 1
+	drum_note 2, 1
 	sound_call Music_Route47HGSS_Ch4_branch_2
 	sound_loop 7, Music_Route47HGSS_Ch4_loop_2
-	note B_, 3
-	note C#, 1
-	note C#, 2
-	note C#, 1
-	note C#, 9
+	drum_note 12, 3
+	drum_note 2, 1
+	drum_note 2, 2
+	drum_note 2, 1
+	drum_note 2, 9
 	sound_call Music_Route47HGSS_Ch4_branch_3
 	sound_call Music_Route47HGSS_Ch4_branch_3
 	sound_call Music_Route47HGSS_Ch4_branch_3
@@ -1148,43 +1148,43 @@ Music_Route47HGSS_Ch4_loop_2:
 
 Music_Route47HGSS_Ch4_branch_1:
 	note_type 4
-	note C#, 1
-	note C#, 1
-	note C#, 1
-	note C#, 1
-	note C#, 1
-	note C#, 1
-	note C#, 1
-	note C#, 1
-	note C#, 1
+	drum_note 2, 1
+	drum_note 2, 1
+	drum_note 2, 1
+	drum_note 2, 1
+	drum_note 2, 1
+	drum_note 2, 1
+	drum_note 2, 1
+	drum_note 2, 1
+	drum_note 2, 1
 	note_type 12
 	sound_ret
 
 Music_Route47HGSS_Ch4_branch_2:
-	note C_, 1
-	note C#, 1
-	note C#, 1
-	note C_, 1
-	note C#, 3
-	note C#, 1
-	note C#, 1
-	note C_, 1
-	note C#, 1
-	note C#, 2
+	drum_note 1, 1
+	drum_note 2, 1
+	drum_note 2, 1
+	drum_note 1, 1
+	drum_note 2, 3
+	drum_note 2, 1
+	drum_note 2, 1
+	drum_note 1, 1
+	drum_note 2, 1
+	drum_note 2, 2
 	sound_ret
 
 Music_Route47HGSS_Ch4_branch_3:
-	note C#, 1
-	note C#, 2
-	note C#, 1
-	note C#, 2
-	note C#, 1
-	note C#, 9
+	drum_note 2, 1
+	drum_note 2, 2
+	drum_note 2, 1
+	drum_note 2, 2
+	drum_note 2, 1
+	drum_note 2, 9
 	sound_ret
 
 Music_Route47HGSS_Ch4_branch_4:
-	note C#, 2
-	note C#, 1
-	note C#, 2
-	note C#, 3
+	drum_note 2, 2
+	drum_note 2, 1
+	drum_note 2, 2
+	drum_note 2, 3
 	sound_ret

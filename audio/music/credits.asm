@@ -1431,31 +1431,31 @@ Music_Credits_branch_1f94b:
 Music_Credits_Ch4:
 	toggle_noise 3
 	note_type 12
-	note G#, 1
-	note G_, 1
-	note G_, 1
-	note G_, 1
-	note G_, 1
-	note G_, 1
-	note G_, 1
-	note G_, 1
-	note G_, 1
-	note G_, 1
-	note G_, 1
-	note G_, 1
-	note G_, 1
-	note G_, 1
-	note G_, 1
-	note G_, 1
-	note G#, 1
-	note G_, 1
-	note B_, 2
-	note G#, 1
-	note G_, 1
-	note G#, 1
-	note G_, 1
-	note A#, 4
-	note A#, 4
+	drum_note 9, 1
+	drum_note 8, 1
+	drum_note 8, 1
+	drum_note 8, 1
+	drum_note 8, 1
+	drum_note 8, 1
+	drum_note 8, 1
+	drum_note 8, 1
+	drum_note 8, 1
+	drum_note 8, 1
+	drum_note 8, 1
+	drum_note 8, 1
+	drum_note 8, 1
+	drum_note 8, 1
+	drum_note 8, 1
+	drum_note 8, 1
+	drum_note 9, 1
+	drum_note 8, 1
+	drum_note 12, 2
+	drum_note 9, 1
+	drum_note 8, 1
+	drum_note 9, 1
+	drum_note 8, 1
+	drum_note 11, 4
+	drum_note 11, 4
 	sound_call Music_Credits_branch_1fa4d
 	sound_call Music_Credits_branch_1fa4d
 	sound_call Music_Credits_branch_1fa4d
@@ -1465,142 +1465,142 @@ Music_Credits_Ch4:
 	sound_call Music_Credits_branch_1fa4d
 	sound_call Music_Credits_branch_1fa6d
 Music_Credits_branch_1f9a8:
-	note A#, 2
-	note G_, 1
-	note G_, 1
-	note D_, 2
-	note G_, 1
-	note G_, 1
-	note A#, 2
-	note G_, 1
-	note G_, 1
-	note D_, 2
-	note F#, 2
+	drum_note 11, 2
+	drum_note 8, 1
+	drum_note 8, 1
+	drum_note 3, 2
+	drum_note 8, 1
+	drum_note 8, 1
+	drum_note 11, 2
+	drum_note 8, 1
+	drum_note 8, 1
+	drum_note 3, 2
+	drum_note 7, 2
 	sound_loop 7, Music_Credits_branch_1f9a8
-	note G#, 1
-	note G_, 1
-	note D_, 1
-	note G_, 1
-	note G_, 1
-	note D_, 1
-	note F#, 2
-	note D_, 1
-	note G_, 1
-	note D_, 1
-	note G_, 1
-	note C#, 1
-	note C#, 1
-	note D_, 1
-	note D_, 1
+	drum_note 9, 1
+	drum_note 8, 1
+	drum_note 3, 1
+	drum_note 8, 1
+	drum_note 8, 1
+	drum_note 3, 1
+	drum_note 7, 2
+	drum_note 3, 1
+	drum_note 8, 1
+	drum_note 3, 1
+	drum_note 8, 1
+	drum_note 2, 1
+	drum_note 2, 1
+	drum_note 3, 1
+	drum_note 3, 1
 Music_Credits_branch_1f9c6:
-	note A#, 2
-	note G_, 1
-	note G_, 1
-	note D_, 2
-	note G_, 1
-	note G_, 1
-	note A#, 2
-	note G_, 1
-	note G_, 1
-	note D_, 2
-	note F#, 2
+	drum_note 11, 2
+	drum_note 8, 1
+	drum_note 8, 1
+	drum_note 3, 2
+	drum_note 8, 1
+	drum_note 8, 1
+	drum_note 11, 2
+	drum_note 8, 1
+	drum_note 8, 1
+	drum_note 3, 2
+	drum_note 7, 2
 	sound_loop 7, Music_Credits_branch_1f9c6
-	note G#, 1
-	note G_, 1
-	note F#, 2
-	note G_, 1
-	note G_, 1
-	note G_, 1
-	note G_, 1
-	note A#, 4
-	note C#, 4
-	note G#, 1
-	note G_, 1
-	note B_, 2
-	note G#, 1
-	note G_, 1
-	note B_, 2
-	note A#, 4
-	note A#, 4
+	drum_note 9, 1
+	drum_note 8, 1
+	drum_note 7, 2
+	drum_note 8, 1
+	drum_note 8, 1
+	drum_note 8, 1
+	drum_note 8, 1
+	drum_note 11, 4
+	drum_note 2, 4
+	drum_note 9, 1
+	drum_note 8, 1
+	drum_note 12, 2
+	drum_note 9, 1
+	drum_note 8, 1
+	drum_note 12, 2
+	drum_note 11, 4
+	drum_note 11, 4
 	sound_call Music_Credits_branch_1fa4d
 	sound_call Music_Credits_branch_1fa4d
 	sound_call Music_Credits_branch_1fa4d
 	sound_call Music_Credits_branch_1fa6d
 Music_Credits_branch_1f9f2:
-	note A#, 2
-	note G_, 1
-	note G_, 1
-	note D_, 2
-	note G_, 1
-	note G_, 1
-	note A#, 2
-	note G_, 1
-	note G_, 1
-	note D_, 2
-	note F#, 2
+	drum_note 11, 2
+	drum_note 8, 1
+	drum_note 8, 1
+	drum_note 3, 2
+	drum_note 8, 1
+	drum_note 8, 1
+	drum_note 11, 2
+	drum_note 8, 1
+	drum_note 8, 1
+	drum_note 3, 2
+	drum_note 7, 2
 	sound_loop 7, Music_Credits_branch_1f9f2
-	note G#, 1
-	note G_, 1
-	note F#, 2
-	note G_, 1
-	note G_, 1
-	note G_, 1
-	note G_, 7
+	drum_note 9, 1
+	drum_note 8, 1
+	drum_note 7, 2
+	drum_note 8, 1
+	drum_note 8, 1
+	drum_note 8, 1
+	drum_note 8, 7
 	note_type 8
-	note A#, 1
-	note A#, 1
-	note A#, 1
+	drum_note 11, 1
+	drum_note 11, 1
+	drum_note 11, 1
 	note_type 12
-	note B_, 16
+	drum_note 12, 16
 	rest 16
-	note B_, 15
+	drum_note 12, 15
 	rest 1
-	note B_, 8
-	note B_, 8
-	note B_, 16
+	drum_note 12, 8
+	drum_note 12, 8
+	drum_note 12, 16
 	rest 16
-	note B_, 16
-	note B_, 8
-	note B_, 6
-	note D_, 1
-	note D_, 1
-	note B_, 12
+	drum_note 12, 16
+	drum_note 12, 8
+	drum_note 12, 6
+	drum_note 3, 1
+	drum_note 3, 1
+	drum_note 12, 12
 	note_type 8
-	note D_, 2
-	note D_, 2
-	note D_, 2
+	drum_note 3, 2
+	drum_note 3, 2
+	drum_note 3, 2
 	note_type 12
-	note B_, 12
+	drum_note 12, 12
 	note_type 8
-	note D_, 2
-	note D_, 2
-	note D_, 2
-	note B_, 12
+	drum_note 3, 2
+	drum_note 3, 2
+	drum_note 3, 2
+	drum_note 12, 12
 	note_type 12
-	note D_, 1
+	drum_note 3, 1
 	rest 1
-	note D_, 1
+	drum_note 3, 1
 	rest 1
 	note_type 8
-	note C#, 2
-	note C#, 2
-	note D_, 2
+	drum_note 2, 2
+	drum_note 2, 2
+	drum_note 3, 2
 	note_type 12
-	note D_, 1
+	drum_note 3, 1
 	rest 3
-	note D_, 1
+	drum_note 3, 1
 	rest 3
 	note_type 8
-	note C#, 2
-	note C#, 2
-	note C#, 2
-	note D_, 2
-	note D_, 2
-	note D_, 2
+	drum_note 2, 2
+	drum_note 2, 2
+	drum_note 2, 2
+	drum_note 3, 2
+	drum_note 3, 2
+	drum_note 3, 2
 	note_type 12
-	note D_, 1
+	drum_note 3, 1
 	rest 7
-	note A#, 8
+	drum_note 11, 8
 	rest 16
 	rest 16
 	rest 16

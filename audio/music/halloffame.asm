@@ -146,28 +146,28 @@ Music_HallOfFame_Ch4:
 	note_type 6
 Music_HallOfFame_branch_f0677:
 	stereo_panning FALSE, TRUE
-	note A#, 4
-	note A#, 8
-	note A#, 4
-	note A#, 4
-	note A#, 4
+	drum_note 11, 4
+	drum_note 11, 8
+	drum_note 11, 4
+	drum_note 11, 4
+	drum_note 11, 4
 	stereo_panning TRUE, FALSE
-	note A_, 2
-	note A_, 2
-	note A#, 2
-	note A#, 2
-	note A#, 4
-	note A#, 4
-	note A#, 8
-	note A#, 4
-	note A#, 4
+	drum_note 10, 2
+	drum_note 10, 2
+	drum_note 11, 2
+	drum_note 11, 2
+	drum_note 11, 4
+	drum_note 11, 4
+	drum_note 11, 8
+	drum_note 11, 4
+	drum_note 11, 4
 	stereo_panning FALSE, TRUE
-	note A#, 1
-	note A#, 1
-	note A_, 1
-	note A_, 1
-	note A#, 1
-	note A#, 1
-	note A#, 1
-	note A#, 1
+	drum_note 11, 1
+	drum_note 11, 1
+	drum_note 10, 1
+	drum_note 10, 1
+	drum_note 11, 1
+	drum_note 11, 1
+	drum_note 11, 1
+	drum_note 11, 1
 	sound_jump Music_HallOfFame_branch_f0677

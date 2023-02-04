@@ -438,15 +438,15 @@ Music_WildBattleGo_Ch4:
 	sound_call Music_WildBattleGo_Ch4_ditty1
 	sound_call Music_WildBattleGo_Ch4_ditty2
 	sound_call Music_WildBattleGo_Ch4_ditty1
-	note D_, 1
+	drum_note 3, 1
 	rest 1
-	note C#, 1
+	drum_note 2, 1
 	rest 1
 Music_WildBattleGo_Ch4_loop:
-	note F#, 1
+	drum_note 7, 1
 	rest 1
-	note C#, 1
-	note G_, 1
+	drum_note 2, 1
+	drum_note 8, 1
 Music_WildBattleGo_Ch4_loop_1:
 	sound_call Music_WildBattleGo_Ch4_ditty1
 	sound_call Music_WildBattleGo_Ch4_ditty2
@@ -468,54 +468,54 @@ Music_WildBattleGo_Ch4_loop_1:
 	sound_call Music_WildBattleGo_Ch4_ditty1
 	sound_call Music_WildBattleGo_Ch4_ditty2
 	sound_call Music_WildBattleGo_Ch4_ditty1
-	note D_, 1
+	drum_note 3, 1
 	rest 1
-	note C#, 1
+	drum_note 2, 1
 	rest 1
-	note F#, 1
-	note F#, 1
-	note C#, 1
-	note F#, 1
+	drum_note 7, 1
+	drum_note 7, 1
+	drum_note 2, 1
+	drum_note 7, 1
 Music_WildBattleGo_Ch4_loop_2:
 	sound_call Music_WildBattleGo_Ch4_ditty1
 	sound_call Music_WildBattleGo_Ch4_ditty2
 	sound_loop 9, Music_WildBattleGo_Ch4_loop_2
 	sound_call Music_WildBattleGo_Ch4_ditty1
-	note D_, 1
+	drum_note 3, 1
 	rest 1
-	note C#, 1
+	drum_note 2, 1
 	rest 1
 	sound_jump Music_WildBattleGo_Ch4_loop
 
 Music_WildBattleGo_Ch4_ditty1:
-	note D_, 1
+	drum_note 3, 1
 	rest 1
-	note C#, 1
+	drum_note 2, 1
 	rest 1
-	note F#, 1
+	drum_note 7, 1
 	rest 1
-	note C#, 1
-	note C#, 1
+	drum_note 2, 1
+	drum_note 2, 1
 	sound_ret
 
 Music_WildBattleGo_Ch4_ditty2:
-	note D_, 1
+	drum_note 3, 1
 	rest 1
-	note C#, 1
+	drum_note 2, 1
 	rest 1
-	note F#, 1
+	drum_note 7, 1
 	rest 1
-	note C#, 1
+	drum_note 2, 1
 	rest 1
 	sound_ret
 
 Music_WildBattleGo_Ch4_ditty3:
-	note D_, 1
+	drum_note 3, 1
 	rest 1
-	note C#, 1
+	drum_note 2, 1
 	rest 1
-	note F#, 1
+	drum_note 7, 1
 	rest 1
-	note C#, 1
-	note G_, 1
+	drum_note 2, 1
+	drum_note 8, 1
 	sound_ret

@@ -101,15 +101,15 @@ Music_LookLass_branch_ed7ef:
 Music_LookLass_Ch4:
 	toggle_noise 4
 	note_type 12
-	note C_, 16
+	drum_note 1, 16
 Music_LookLass_branch_ed81f:
 	note_type 6
-	note D_, 8
-	note C#, 8
-	note C#, 8
-	note C#, 4
-	note D_, 1
-	note C#, 1
-	note C#, 1
-	note C#, 1
+	drum_note 3, 8
+	drum_note 2, 8
+	drum_note 2, 8
+	drum_note 2, 4
+	drum_note 3, 1
+	drum_note 2, 1
+	drum_note 2, 1
+	drum_note 2, 1
 	sound_jump Music_LookLass_branch_ed81f

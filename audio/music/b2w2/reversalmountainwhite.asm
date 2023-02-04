@@ -1010,8 +1010,8 @@ Music_ReversalMountainWhite2_Ch4_loop:
 	sound_call Music_ReversalMountainWhite2_Ch4_branch_1
 	sound_call Music_ReversalMountainWhite2_Ch4_branch_1
 	sound_call Music_ReversalMountainWhite2_Ch4_branch_1
-	note D#, 3
-	note D#, 2
+	drum_note 4, 3
+	drum_note 4, 2
 	rest 11
 	rest 16
 	rest 16
@@ -1019,19 +1019,19 @@ Music_ReversalMountainWhite2_Ch4_loop:
 	sound_jump Music_ReversalMountainWhite2_Ch4_loop
 
 Music_ReversalMountainWhite2_Ch4_branch_1:
-	note D#, 2
-	note D#, 1
-	note D#, 2
-	note C_, 3
+	drum_note 4, 2
+	drum_note 4, 1
+	drum_note 4, 2
+	drum_note 1, 3
 	sound_ret
 
 Music_ReversalMountainWhite2_Ch4_branch_2:
-	note D#, 3
-	note D#, 2
-	note C_, 3
+	drum_note 4, 3
+	drum_note 4, 2
+	drum_note 1, 3
 	sound_ret
 
 Music_ReversalMountainWhite2_Ch4_branch_3:
-	note D#, 4
-	note C_, 4
+	drum_note 4, 4
+	drum_note 1, 4
 	sound_ret

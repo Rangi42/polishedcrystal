@@ -279,20 +279,20 @@ Music_RocketHideout_Ch4:
 	stereo_panning FALSE, TRUE
 	rest 16
 	rest 16
-	note D_, 1
-	note D_, 1
-	note D#, 1
-	note D#, 1
+	drum_note 3, 1
+	drum_note 3, 1
+	drum_note 4, 1
+	drum_note 4, 1
 	sound_call Music_RocketHideout_branch_eecdb
 Music_RocketHideout_branch_eecc7:
 	sound_call Music_RocketHideout_branch_eecdb
-	note E_, 4
+	drum_note 5, 4
 	sound_call Music_RocketHideout_branch_eecdb
-	note F_, 4
+	drum_note 6, 4
 	sound_call Music_RocketHideout_branch_eecdb
-	note A#, 4
+	drum_note 11, 4
 	sound_call Music_RocketHideout_branch_eecdb
-	note F#, 4
+	drum_note 7, 4
 	sound_jump Music_RocketHideout_branch_eecc7
 
 Music_RocketHideout_branch_eecdb:

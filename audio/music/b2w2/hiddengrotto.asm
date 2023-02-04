@@ -126,47 +126,47 @@ Music_HiddenGrottoB2W2_Ch4:
 Music_HiddenGrottoB2W2_Ch4_loop:
 	rest 16
 	rest 6
-	note D#, 5
-	note E_, 1
-	note E_, 1
-	note E_, 1
-	note E_, 1
-	note E_, 1
-	note E_, 1
-	note E_, 2
-	note C_, 13
+	drum_note 4, 5
+	drum_note 5, 1
+	drum_note 5, 1
+	drum_note 5, 1
+	drum_note 5, 1
+	drum_note 5, 1
+	drum_note 5, 1
+	drum_note 5, 2
+	drum_note 1, 13
 	rest 8
 	rest 16
-	note D#, 1
-	note D#, 1
-	note D#, 1
-	note D#, 1
-	note D#, 2
-	note E_, 10
+	drum_note 4, 1
+	drum_note 4, 1
+	drum_note 4, 1
+	drum_note 4, 1
+	drum_note 4, 2
+	drum_note 5, 10
 	rest 16
 	rest 16
 	rest 8
-	note D_, 1
-	note D_, 1
-	note D_, 1
-	note D_, 1
-	note D_, 2
-	note D_, 3
-	note D_, 3
-	note D#, 8
+	drum_note 3, 1
+	drum_note 3, 1
+	drum_note 3, 1
+	drum_note 3, 1
+	drum_note 3, 2
+	drum_note 3, 3
+	drum_note 3, 3
+	drum_note 4, 8
 	rest 14
-	note E_, 1
-	note E_, 1
-	note E_, 1
-	note E_, 1
-	note E_, 1
-	note B_, 2
-	note C_, 13
+	drum_note 5, 1
+	drum_note 5, 1
+	drum_note 5, 1
+	drum_note 5, 1
+	drum_note 5, 1
+	drum_note 12, 2
+	drum_note 1, 13
 	rest 16
 	rest 8
-	note D#, 1
-	note D#, 1
-	note D#, 1
-	note D#, 16
+	drum_note 4, 1
+	drum_note 4, 1
+	drum_note 4, 1
+	drum_note 4, 16
 	rest 9
 	sound_jump Music_HiddenGrottoB2W2_Ch4_loop

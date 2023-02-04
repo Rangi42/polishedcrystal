@@ -397,31 +397,31 @@ Music_MountPyreRSE_Ch4_loop_4:
 	rest 16
 	rest 16
 	rest 8
-	note B_, 8
+	drum_note 12, 8
 	sound_jump Music_MountPyreRSE_Ch4_loop_main
 
 Music_MountPyreRSE_Ch4_branch_1:
 	stereo_panning TRUE, FALSE
-	note G#, 2
-	note F#, 2
-	note G#, 2
-	note F#, 2
+	drum_note 9, 2
+	drum_note 7, 2
+	drum_note 9, 2
+	drum_note 7, 2
 	stereo_panning FALSE, TRUE
-	note G#, 2
-	note F#, 2
-	note G#, 2
-	note F#, 2
+	drum_note 9, 2
+	drum_note 7, 2
+	drum_note 9, 2
+	drum_note 7, 2
 	sound_ret
 
 Music_MountPyreRSE_Ch4_branch_2:
 	stereo_panning TRUE, FALSE
-	note G#, 1
-	note F#, 1
-	note G#, 1
-	note G_, 1
+	drum_note 9, 1
+	drum_note 7, 1
+	drum_note 9, 1
+	drum_note 8, 1
 	stereo_panning FALSE, TRUE
-	note G#, 1
-	note F#, 1
-	note G#, 1
-	note G_, 1
+	drum_note 9, 1
+	drum_note 7, 1
+	drum_note 9, 1
+	drum_note 8, 1
 	sound_ret

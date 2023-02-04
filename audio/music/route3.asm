@@ -484,19 +484,19 @@ Music_Route3_Ch4:
 	rest 10
 Music_Route3_branch_ec4f0:
 	note_type 12
-	note D_, 2
-	note D_, 4
-	note D_, 1
-	note D_, 1
-	note D_, 2
-	note D_, 2
+	drum_note 3, 2
+	drum_note 3, 4
+	drum_note 3, 1
+	drum_note 3, 1
+	drum_note 3, 2
+	drum_note 3, 2
 	note_type 6
-	note C#, 1
-	note C#, 1
-	note C#, 1
-	note C#, 1
-	note C#, 1
-	note C#, 1
-	note C#, 1
-	note C#, 1
+	drum_note 2, 1
+	drum_note 2, 1
+	drum_note 2, 1
+	drum_note 2, 1
+	drum_note 2, 1
+	drum_note 2, 1
+	drum_note 2, 1
+	drum_note 2, 1
 	sound_jump Music_Route3_branch_ec4f0

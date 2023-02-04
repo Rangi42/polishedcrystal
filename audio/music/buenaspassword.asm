@@ -561,11 +561,11 @@ Music_BuenasPassword_branch_1783bc:
 Music_BuenasPassword_Ch4:
 	toggle_noise 3
 	note_type 12
-	note D#, 2
-	note D_, 2
-	note D_, 2
-	note D_, 1
-	note D_, 1
+	drum_note 4, 2
+	drum_note 3, 2
+	drum_note 3, 2
+	drum_note 3, 1
+	drum_note 3, 1
 Music_BuenasPassword_branch_1783d9:
 	sound_call Music_BuenasPassword_branch_17840c
 	sound_call Music_BuenasPassword_branch_17840c
@@ -576,21 +576,21 @@ Music_BuenasPassword_branch_1783d9:
 	sound_call Music_BuenasPassword_branch_17840c
 	sound_call Music_BuenasPassword_branch_17840c
 	stereo_panning TRUE, TRUE
-	note D#, 2
+	drum_note 4, 2
 	stereo_panning TRUE, FALSE
-	note G_, 2
+	drum_note 8, 2
 	stereo_panning TRUE, TRUE
-	note D_, 2
+	drum_note 3, 2
 	stereo_panning FALSE, TRUE
-	note G_, 1
-	note G_, 1
+	drum_note 8, 1
+	drum_note 8, 1
 	stereo_panning TRUE, FALSE
-	note G_, 2
+	drum_note 8, 2
 	stereo_panning TRUE, TRUE
-	note D_, 2
-	note D_, 2
-	note D_, 1
-	note D_, 1
+	drum_note 3, 2
+	drum_note 3, 2
+	drum_note 3, 1
+	drum_note 3, 1
 	sound_jump Music_BuenasPassword_branch_1783d9
 
 Music_BuenasPassword_branch_17840c:

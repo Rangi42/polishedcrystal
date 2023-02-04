@@ -850,64 +850,64 @@ Music_DewfordTownRSE_Ch4:
 Music_DewfordTownRSE_Ch4_b0:
 Music_DewfordTownRSE_Ch4_b1:
 	note_type 12
-	note 3, 4
-	note 8, 2
-	note 8, 4
-	note 8, 2
+	drum_note 3, 4
+	drum_note 8, 2
+	drum_note 8, 4
+	drum_note 8, 2
 	sound_loop 19, Music_DewfordTownRSE_Ch4_b1
-	note 1, 1
-	note 1, 1
-	note 8, 1
-	note 1, 1
-	note 8, 2
-	note 8, 2
-	note 1, 1
+	drum_note 1, 1
+	drum_note 1, 1
+	drum_note 8, 1
+	drum_note 1, 1
+	drum_note 8, 2
+	drum_note 8, 2
+	drum_note 1, 1
 	rest 3
 Music_DewfordTownRSE_Ch4_b2:
 	rest 6
-	note 1, 6
+	drum_note 1, 6
 	sound_loop 7, Music_DewfordTownRSE_Ch4_b2
 	rest 2
-	note 1, 2
+	drum_note 1, 2
 	rest 2
-	note 1, 2
+	drum_note 1, 2
 	rest 2
-	note 1, 2
+	drum_note 1, 2
 Music_DewfordTownRSE_Ch4_b3:
 	rest 6
-	note 1, 6
+	drum_note 1, 6
 	sound_loop 6, Music_DewfordTownRSE_Ch4_b3
 	rest 2
-	note 1, 4
-	note 1, 2
-	note 8, 2
-	note 8, 2
+	drum_note 1, 4
+	drum_note 1, 2
+	drum_note 8, 2
+	drum_note 8, 2
 
-	note 8, 2
+	drum_note 8, 2
 	rest 2
-	note 1, 2
-	note 1, 2
-	note 1, 1
-	note 1, 1
-	note 9, 2
+	drum_note 1, 2
+	drum_note 1, 2
+	drum_note 1, 1
+	drum_note 1, 1
+	drum_note 9, 2
 Music_DewfordTownRSE_Ch4_b4:
 	rest 6
-	note 1, 6
+	drum_note 1, 6
 	sound_loop 7, Music_DewfordTownRSE_Ch4_b4
-	note 1, 1
-	note 1, 1
+	drum_note 1, 1
+	drum_note 1, 1
 	rest 1
-	note 1, 3
-	note 1, 4
-	note 1, 2
+	drum_note 1, 3
+	drum_note 1, 4
+	drum_note 1, 2
 Music_DewfordTownRSE_Ch4_b5:
 	rest 6
-	note 1, 6
+	drum_note 1, 6
 	sound_loop 7, Music_DewfordTownRSE_Ch4_b5
-	note 1, 1
-	note 1, 1
+	drum_note 1, 1
+	drum_note 1, 1
 	rest 1
-	note 1, 3
-	note 1, 4
-	note 1, 2
+	drum_note 1, 3
+	drum_note 1, 4
+	drum_note 1, 2
 	sound_jump Music_DewfordTownRSE_Ch4_b0

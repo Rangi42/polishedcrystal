@@ -155,20 +155,20 @@ Music_ContestResults_Ch4:
 	toggle_noise 4
 	note_type 6
 Music_ContestResults_branch_efbed:
-	note C#, 4
-	note C#, 4
-	note C#, 2
-	note C#, 2
-	note C#, 2
-	note C#, 2
-	note C#, 4
-	note C#, 4
-	note G_, 1
-	note G_, 1
-	note G_, 1
-	note G_, 1
-	note G_, 1
-	note G_, 1
-	note G_, 1
-	note G_, 1
+	drum_note 2, 4
+	drum_note 2, 4
+	drum_note 2, 2
+	drum_note 2, 2
+	drum_note 2, 2
+	drum_note 2, 2
+	drum_note 2, 4
+	drum_note 2, 4
+	drum_note 8, 1
+	drum_note 8, 1
+	drum_note 8, 1
+	drum_note 8, 1
+	drum_note 8, 1
+	drum_note 8, 1
+	drum_note 8, 1
+	drum_note 8, 1
 	sound_jump Music_ContestResults_branch_efbed

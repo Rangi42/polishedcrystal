@@ -226,24 +226,24 @@ Music_MagnetTrain_Ch3:
 Music_MagnetTrain_Ch4:
 	toggle_noise 3
 	note_type 12
-	note B_, 12
-	note D_, 2
-	note A#, 1
-	note A#, 1
+	drum_note 12, 12
+	drum_note 3, 2
+	drum_note 11, 1
+	drum_note 11, 1
 	note_type 6
-	note D#, 4
-	note F#, 4
-	note D#, 4
-	note F#, 4
-	note A#, 4
-	note F#, 4
-	note A#, 4
-	note D_, 2
-	note D_, 2
+	drum_note 4, 4
+	drum_note 7, 4
+	drum_note 4, 4
+	drum_note 7, 4
+	drum_note 11, 4
+	drum_note 7, 4
+	drum_note 11, 4
+	drum_note 3, 2
+	drum_note 3, 2
 	sound_call Music_MagnetTrain_branch_ef71e
 	sound_call Music_MagnetTrain_branch_ef71e
 	note_type 12
-	note B_, 16
+	drum_note 12, 16
 	sound_ret
 
 Music_MagnetTrain_branch_ef71e:

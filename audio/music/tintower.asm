@@ -264,29 +264,29 @@ Music_TinTower_Ch4:
 	note_type 12
 Music_TinTower_branch_f694c:
 	stereo_panning FALSE, TRUE
-	note G_, 2
+	drum_note 8, 2
 	stereo_panning TRUE, FALSE
-	note G_, 1
-	note G_, 1
+	drum_note 8, 1
+	drum_note 8, 1
 	stereo_panning FALSE, TRUE
-	note G_, 2
+	drum_note 8, 2
 	stereo_panning TRUE, FALSE
-	note F_, 4
+	drum_note 6, 4
 	stereo_panning FALSE, TRUE
-	note G_, 2
-	note G_, 2
-	note F_, 2
+	drum_note 8, 2
+	drum_note 8, 2
+	drum_note 6, 2
 	stereo_panning TRUE, FALSE
-	note G_, 2
+	drum_note 8, 2
 	stereo_panning FALSE, TRUE
-	note G_, 1
-	note G_, 1
+	drum_note 8, 1
+	drum_note 8, 1
 	stereo_panning TRUE, FALSE
-	note G_, 2
+	drum_note 8, 2
 	stereo_panning FALSE, TRUE
-	note F_, 4
+	drum_note 6, 4
 	stereo_panning TRUE, FALSE
-	note G_, 2
-	note G_, 2
-	note F_, 2
+	drum_note 8, 2
+	drum_note 8, 2
+	drum_note 6, 2
 	sound_jump Music_TinTower_branch_f694c

@@ -410,12 +410,12 @@ Music_GymLeaderBattleSwSh_Ch4:
 ; Neutral Intro
 	sound_call Music_GymLeaderBattleSwSh_Ch4_ditty1
 	sound_call Music_GymLeaderBattleSwSh_Ch4_ditty1
-	note C#, 1
-	note C#, 1
-	note C#, 1
-	note C#, 1
-	note C#, 1
-	note C#, 11
+	drum_note 2, 1
+	drum_note 2, 1
+	drum_note 2, 1
+	drum_note 2, 1
+	drum_note 2, 1
+	drum_note 2, 11
 	sound_call Music_GymLeaderBattleSwSh_Ch4_ditty2
 	sound_call Music_GymLeaderBattleSwSh_Ch4_ditty2
 
@@ -511,15 +511,15 @@ Music_GymLeaderBattleSwSh_Ch2_EnterLastPokemonPhase:
 	volume_envelope 1, -4
 	vibrato 1, 2, 1
 	octave 4
-	note G_, 8
+	drum_note 8, 8
 	duty_cycle 3
 	volume_envelope 12, 1
 	vibrato 0, 0, 0
 	sound_call Music_GymLeaderBattleSwSh_Ch2_ditty6
-	note B_, 2
+	drum_note 12, 2
 	octave 4
 	sound_call Music_GymLeaderBattleSwSh_Ch2_ditty6
-	note B_, 2
+	drum_note 12, 2
 ;Last Pokemon Loop
 Music_GymLeaderBattleSwSh_Ch2_LastPokemonPhase_Loop:
 	duty_cycle 1
@@ -529,23 +529,23 @@ Music_GymLeaderBattleSwSh_Ch2_LastPokemonPhase_Loop:
 	sound_call Music_GymLeaderBattleSwSh_Ch2_ditty9
 	sound_call Music_GymLeaderBattleSwSh_Ch2_ditty9
 	octave 5
-	note D_, 8
+	drum_note 3, 8
 	octave 4
-	note B_, 4
-	note G_, 2
+	drum_note 12, 4
+	drum_note 8, 2
 	octave 5
-	note D_, 6
+	drum_note 3, 6
 	rest 6
-	note D_, 4
+	drum_note 3, 4
 	octave 4
-	note G_, 2
+	drum_note 8, 2
 	octave 5
-	note E_, 2
-	note D_, 8
+	drum_note 5, 2
+	drum_note 3, 8
 	octave 4
-	note B_, 2
-	note A_, 2
-	note G_, 6
+	drum_note 12, 2
+	drum_note 10, 2
+	drum_note 8, 6
 	rest 12
 	duty_cycle 2
 	volume_envelope 11, 2
@@ -654,55 +654,55 @@ Music_GymLeaderBattleSwSh_Ch4_LastPokemonPhase_Loop:
 
 Music_GymLeaderBattleSwSh_Ch2_ditty1:
 	octave 3
-	note G_, 1
+	drum_note 8, 1
 	rest 1
-	note G_, 2
+	drum_note 8, 2
 	rest 1
-	note G_, 2
-	note G#, 1
-	note G_, 1
+	drum_note 8, 2
+	drum_note 9, 1
+	drum_note 8, 1
 	rest 1
-	note G_, 2
+	drum_note 8, 2
 	rest 1
-	note G_, 2
-	note G#, 1
-	note G_, 1
+	drum_note 8, 2
+	drum_note 9, 1
+	drum_note 8, 1
 	rest 1
-	note G_, 2
+	drum_note 8, 2
 	rest 1
-	note G_, 2
-	note G#, 1
-	note G_, 1
+	drum_note 8, 2
+	drum_note 9, 1
+	drum_note 8, 1
 	rest 1
-	note G_, 2
+	drum_note 8, 2
 	rest 1
-	note G_, 2
-	note G#, 1
+	drum_note 8, 2
+	drum_note 9, 1
 	octave 4
-	note D_, 1
+	drum_note 3, 1
 	rest 1
-	note D_, 2
+	drum_note 3, 2
 	rest 1
-	note D_, 2
-	note D#, 1
-	note D_, 1
+	drum_note 3, 2
+	drum_note 4, 1
+	drum_note 3, 1
 	rest 1
-	note D_, 2
+	drum_note 3, 2
 	rest 1
-	note D_, 2
-	note D#, 1
-	note D_, 1
+	drum_note 3, 2
+	drum_note 4, 1
+	drum_note 3, 1
 	rest 1
-	note D_, 2
+	drum_note 3, 2
 	rest 1
-	note D_, 2
-	note D#, 1
-	note D_, 1
+	drum_note 3, 2
+	drum_note 4, 1
+	drum_note 3, 1
 	rest 1
-	note D_, 2
+	drum_note 3, 2
 	rest 1
-	note D_, 2
-	note D#, 1
+	drum_note 3, 2
+	drum_note 4, 1
 	sound_ret
 
 Music_GymLeaderBattleSwSh_Ch2_ditty2:
@@ -2016,248 +2016,248 @@ Music_GymLeaderBattleSwSh_Ch3_ditty10:
 	sound_ret
 
 Music_GymLeaderBattleSwSh_Ch4_ditty1:
-	note D#, 1
+	drum_note 4, 1
 	rest 1
-	note A_, 2
-	note D#, 1
+	drum_note 10, 2
+	drum_note 4, 1
 	rest 1
-	note A_, 2
-	note C#, 1
+	drum_note 10, 2
+	drum_note 2, 1
 	rest 1
-	note A_, 2
-	note D#, 1
+	drum_note 10, 2
+	drum_note 4, 1
 	rest 1
-	note A_, 2
-	note C#, 1
+	drum_note 10, 2
+	drum_note 2, 1
 	rest 1
-	note A_, 2
-	note D#, 1
+	drum_note 10, 2
+	drum_note 4, 1
 	rest 1
-	note A_, 2
-	note C#, 1
+	drum_note 10, 2
+	drum_note 2, 1
 	rest 1
-	note A_, 2
-	note D#, 1
+	drum_note 10, 2
+	drum_note 4, 1
 	rest 1
-	note A_, 2
-	note C#, 1
+	drum_note 10, 2
+	drum_note 2, 1
 	rest 1
-	note A_, 2
-	note D#, 1
+	drum_note 10, 2
+	drum_note 4, 1
 	rest 1
-	note A_, 2
-	note C#, 1
+	drum_note 10, 2
+	drum_note 2, 1
 	rest 1
-	note A_, 2
-	note D#, 1
+	drum_note 10, 2
+	drum_note 4, 1
 	rest 1
-	note A_, 2
-	note C#, 1
+	drum_note 10, 2
+	drum_note 2, 1
 	rest 1
-	note A_, 2
-	note D#, 1
+	drum_note 10, 2
+	drum_note 4, 1
 	rest 1
-	note A_, 2
-	note C#, 1
-	note D#, 3
-	note C#, 1
-	note D#, 3
+	drum_note 10, 2
+	drum_note 2, 1
+	drum_note 4, 3
+	drum_note 2, 1
+	drum_note 4, 3
 	sound_ret
 
 Music_GymLeaderBattleSwSh_Ch4_ditty2:
-	note E_, 4
-	note D#, 4
-	note D#, 3
-	note D#, 3
-	note D#, 1
+	drum_note 5, 4
+	drum_note 4, 4
+	drum_note 4, 3
+	drum_note 4, 3
+	drum_note 4, 1
 	rest 3
-	note D#, 1
+	drum_note 4, 1
 	rest 5
-	note D#, 1
+	drum_note 4, 1
 	rest 2
-	note D#, 1
+	drum_note 4, 1
 	rest 2
-	note D#, 1
+	drum_note 4, 1
 	rest 1
-	note D#, 1
+	drum_note 4, 1
 	rest 3
-	note D#, 1
+	drum_note 4, 1
 	rest 1
-	note D#, 1
+	drum_note 4, 1
 	rest 1
-	note D#, 1
+	drum_note 4, 1
 	rest 2
-	note D#, 1
+	drum_note 4, 1
 	rest 2
-	note D#, 1
+	drum_note 4, 1
 	rest 3
-	note D#, 1
+	drum_note 4, 1
 	rest 5
-	note D#, 1
+	drum_note 4, 1
 	rest 2
-	note D#, 1
+	drum_note 4, 1
 	rest 2
-	note D#, 1
+	drum_note 4, 1
 	rest 1
 	sound_ret
 
 Music_GymLeaderBattleSwSh_Ch4_ditty3:
-	note D#, 2
-	note A_, 2
-	note C#, 2
-	note A_, 1
-	note A_, 1
-	note D#, 2
-	note A_, 2
-	note C#, 2
-	note A_, 1
-	note A_, 1
-	note D#, 2
-	note A_, 2
-	note C#, 2
-	note A_, 1
-	note A_, 1
-	note D#, 2
-	note A_, 2
-	note C#, 2
-	note A_, 1
-	note A_, 1
-	note D#, 2
-	note A_, 2
-	note C#, 2
-	note A_, 1
-	note A_, 1
-	note D#, 2
-	note A_, 2
-	note C#, 2
-	note A_, 1
-	note A_, 1
-	note D#, 2
-	note A_, 2
-	note C#, 2
-	note A_, 1
-	note A_, 1
-	note D#, 2
-	note A_, 2
-	note C#, 2
-	note A_, 1
-	note A_, 1
+	drum_note 4, 2
+	drum_note 10, 2
+	drum_note 2, 2
+	drum_note 10, 1
+	drum_note 10, 1
+	drum_note 4, 2
+	drum_note 10, 2
+	drum_note 2, 2
+	drum_note 10, 1
+	drum_note 10, 1
+	drum_note 4, 2
+	drum_note 10, 2
+	drum_note 2, 2
+	drum_note 10, 1
+	drum_note 10, 1
+	drum_note 4, 2
+	drum_note 10, 2
+	drum_note 2, 2
+	drum_note 10, 1
+	drum_note 10, 1
+	drum_note 4, 2
+	drum_note 10, 2
+	drum_note 2, 2
+	drum_note 10, 1
+	drum_note 10, 1
+	drum_note 4, 2
+	drum_note 10, 2
+	drum_note 2, 2
+	drum_note 10, 1
+	drum_note 10, 1
+	drum_note 4, 2
+	drum_note 10, 2
+	drum_note 2, 2
+	drum_note 10, 1
+	drum_note 10, 1
+	drum_note 4, 2
+	drum_note 10, 2
+	drum_note 2, 2
+	drum_note 10, 1
+	drum_note 10, 1
 	sound_ret
 
 Music_GymLeaderBattleSwSh_Ch4_ditty4:
-	note C#, 1
-	note C#, 1
-	note C#, 1
-	note C#, 1
-	note C#, 1
-	note C#, 11
-	note D#, 16
-	note D#, 16
-	note D#, 16
+	drum_note 2, 1
+	drum_note 2, 1
+	drum_note 2, 1
+	drum_note 2, 1
+	drum_note 2, 1
+	drum_note 2, 11
+	drum_note 4, 16
+	drum_note 4, 16
+	drum_note 4, 16
 	sound_ret
 
 Music_GymLeaderBattleSwSh_Ch4_ditty5:
 	noisesampleset 5
-	note C#, 4
-	note C#, 4
-	note C#, 4
-	note C#, 4
-	note C#, 2
-	note C#, 2
-	note C#, 2
-	note C#, 2
-	note C#, 2
-	note C#, 2
-	note C#, 2
-	note C#, 2
-	note C#, 1
-	note C#, 1
-	note C#, 1
-	note C#, 1
-	note C#, 1
-	note C#, 1
-	note C#, 1
-	note C#, 1
-	note C#, 1
-	note C#, 1
-	note C#, 1
-	note C#, 1
-	note C#, 1
-	note C#, 1
-	note C#, 1
-	note C#, 1
-	note G#, 16
+	drum_note 2, 4
+	drum_note 2, 4
+	drum_note 2, 4
+	drum_note 2, 4
+	drum_note 2, 2
+	drum_note 2, 2
+	drum_note 2, 2
+	drum_note 2, 2
+	drum_note 2, 2
+	drum_note 2, 2
+	drum_note 2, 2
+	drum_note 2, 2
+	drum_note 2, 1
+	drum_note 2, 1
+	drum_note 2, 1
+	drum_note 2, 1
+	drum_note 2, 1
+	drum_note 2, 1
+	drum_note 2, 1
+	drum_note 2, 1
+	drum_note 2, 1
+	drum_note 2, 1
+	drum_note 2, 1
+	drum_note 2, 1
+	drum_note 2, 1
+	drum_note 2, 1
+	drum_note 2, 1
+	drum_note 2, 1
+	drum_note 9, 16
 	noisesampleset 4
 	sound_ret
 
 Music_GymLeaderBattleSwSh_Ch4_ditty6:
-	note E_, 12
-	note D#, 2
-	note D#, 1
+	drum_note 5, 12
+	drum_note 4, 2
+	drum_note 4, 1
 	rest 1
-	note E_, 12
-	note D#, 2
-	note D#, 1
+	drum_note 5, 12
+	drum_note 4, 2
+	drum_note 4, 1
 	rest 1
-	note E_, 12
-	note D#, 2
-	note D#, 1
+	drum_note 5, 12
+	drum_note 4, 2
+	drum_note 4, 1
 	rest 1
-	note E_, 8
-	note D#, 1
+	drum_note 5, 8
+	drum_note 4, 1
 	rest 2
-	note D#, 1
+	drum_note 4, 1
 	rest 2
-	note D#, 1
+	drum_note 4, 1
 	rest 1
 	sound_ret
 
 Music_GymLeaderBattleSwSh_Ch4_ditty7:
-	note D#, 2
-	note A_, 2
-	note C#, 2
-	note A_, 1
-	note C#, 1
-	note D#, 2
-	note A_, 2
-	note C#, 2
-	note A_, 1
-	note C#, 1
-	note D#, 2
-	note A_, 2
-	note C#, 2
-	note A_, 1
-	note D#, 3
-	note A_, 2
-	note C#, 2
-	note A_, 2
-	note D#, 2
-	note A_, 2
-	note C#, 2
-	note A_, 1
-	note C#, 1
-	note D#, 2
-	note A_, 2
-	note C#, 2
-	note A_, 1
-	note C#, 1
-	note D#, 2
-	note A_, 2
-	note C#, 2
-	note A_, 1
-	note D#, 3
-	note A_, 2
-	note C#, 2
-	note A_, 2
+	drum_note 4, 2
+	drum_note 10, 2
+	drum_note 2, 2
+	drum_note 10, 1
+	drum_note 2, 1
+	drum_note 4, 2
+	drum_note 10, 2
+	drum_note 2, 2
+	drum_note 10, 1
+	drum_note 2, 1
+	drum_note 4, 2
+	drum_note 10, 2
+	drum_note 2, 2
+	drum_note 10, 1
+	drum_note 4, 3
+	drum_note 10, 2
+	drum_note 2, 2
+	drum_note 10, 2
+	drum_note 4, 2
+	drum_note 10, 2
+	drum_note 2, 2
+	drum_note 10, 1
+	drum_note 2, 1
+	drum_note 4, 2
+	drum_note 10, 2
+	drum_note 2, 2
+	drum_note 10, 1
+	drum_note 2, 1
+	drum_note 4, 2
+	drum_note 10, 2
+	drum_note 2, 2
+	drum_note 10, 1
+	drum_note 4, 3
+	drum_note 10, 2
+	drum_note 2, 2
+	drum_note 10, 2
 	sound_ret
 
 Music_GymLeaderBattleSwSh_Ch4_ditty8:
-	note A#, 2
-	note G_, 2
-	note G_, 2
-	note G_, 2
-	note G_, 2
-	note G_, 2
-	note G_, 2
-	note A#, 2
+	drum_note 11, 2
+	drum_note 8, 2
+	drum_note 8, 2
+	drum_note 8, 2
+	drum_note 8, 2
+	drum_note 8, 2
+	drum_note 8, 2
+	drum_note 11, 2
 	sound_ret

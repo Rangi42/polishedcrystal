@@ -392,61 +392,61 @@ Music_GoldenrodCity_Ch4:
 	rest 16
 	rest 16
 	rest 8
-	note D_, 2
-	note F#, 2
-	note D_, 1
-	note D_, 1
-	note F#, 2
+	drum_note 3, 2
+	drum_note 7, 2
+	drum_note 3, 1
+	drum_note 3, 1
+	drum_note 7, 2
 Music_GoldenrodCity_branch_eb613:
-	note D#, 2
-	note F#, 2
-	note D_, 2
-	note F#, 2
-	note D#, 2
-	note F#, 2
-	note D_, 2
-	note F#, 2
+	drum_note 4, 2
+	drum_note 7, 2
+	drum_note 3, 2
+	drum_note 7, 2
+	drum_note 4, 2
+	drum_note 7, 2
+	drum_note 3, 2
+	drum_note 7, 2
 	sound_loop 3, Music_GoldenrodCity_branch_eb613
 	sound_call Music_GoldenrodCity_branch_eb663
 	sound_call Music_GoldenrodCity_branch_eb66d
-	note G_, 1
-	note G_, 1
-	note F#, 2
+	drum_note 8, 1
+	drum_note 8, 1
+	drum_note 7, 2
 	sound_call Music_GoldenrodCity_branch_eb66d
-	note D_, 2
-	note F#, 2
+	drum_note 3, 2
+	drum_note 7, 2
 	sound_call Music_GoldenrodCity_branch_eb66d
-	note D_, 1
-	note D_, 1
-	note F#, 2
+	drum_note 3, 1
+	drum_note 3, 1
+	drum_note 7, 2
 	sound_call Music_GoldenrodCity_branch_eb66d
-	note D_, 2
-	note D_, 1
-	note D_, 1
+	drum_note 3, 2
+	drum_note 3, 1
+	drum_note 3, 1
 	sound_call Music_GoldenrodCity_branch_eb66d
-	note G_, 1
-	note G_, 1
-	note F#, 2
+	drum_note 8, 1
+	drum_note 8, 1
+	drum_note 7, 2
 	sound_call Music_GoldenrodCity_branch_eb66d
-	note D_, 2
-	note F#, 2
+	drum_note 3, 2
+	drum_note 7, 2
 	sound_call Music_GoldenrodCity_branch_eb66d
-	note D_, 1
-	note D_, 1
-	note F#, 2
+	drum_note 3, 1
+	drum_note 3, 1
+	drum_note 7, 2
 	sound_call Music_GoldenrodCity_branch_eb66d
-	note D_, 2
-	note D_, 1
-	note D_, 1
+	drum_note 3, 2
+	drum_note 3, 1
+	drum_note 3, 1
 Music_GoldenrodCity_branch_eb650:
-	note D#, 2
-	note F#, 2
-	note D_, 2
-	note F#, 2
-	note D#, 2
-	note F#, 2
-	note D_, 2
-	note F#, 2
+	drum_note 4, 2
+	drum_note 7, 2
+	drum_note 3, 2
+	drum_note 7, 2
+	drum_note 4, 2
+	drum_note 7, 2
+	drum_note 3, 2
+	drum_note 7, 2
 	sound_loop 3, Music_GoldenrodCity_branch_eb650
 	sound_call Music_GoldenrodCity_branch_eb663
 	sound_jump Music_GoldenrodCity_branch_eb613

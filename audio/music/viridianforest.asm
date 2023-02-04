@@ -454,62 +454,62 @@ Music_ViridianForest_Ch4:
 	toggle_noise 5
 	note_type 12
 Music_ViridianForest_branch_edae0:
-	note A_, 4
-	note A_, 4
-	note A_, 2
-	note B_, 2
-	note A_, 2
-	note B_, 2
+	drum_note 10, 4
+	drum_note 10, 4
+	drum_note 10, 2
+	drum_note 12, 2
+	drum_note 10, 2
+	drum_note 12, 2
 	sound_loop 3, Music_ViridianForest_branch_edae0
-	note A_, 4
-	note A_, 4
-	note A_, 2
-	note A_, 2
-	note D#, 4
+	drum_note 10, 4
+	drum_note 10, 4
+	drum_note 10, 2
+	drum_note 10, 2
+	drum_note 4, 4
 Music_ViridianForest_branch_edaef:
-	note A_, 4
-	note A_, 4
-	note A_, 2
-	note A_, 2
-	note B_, 2
-	note A_, 2
+	drum_note 10, 4
+	drum_note 10, 4
+	drum_note 10, 2
+	drum_note 10, 2
+	drum_note 12, 2
+	drum_note 10, 2
 	sound_loop 4, Music_ViridianForest_branch_edaef
 Music_ViridianForest_branch_edaf9:
-	note B_, 4
-	note A_, 2
-	note B_, 2
-	note A_, 2
-	note B_, 2
-	note A_, 2
-	note B_, 2
+	drum_note 12, 4
+	drum_note 10, 2
+	drum_note 12, 2
+	drum_note 10, 2
+	drum_note 12, 2
+	drum_note 10, 2
+	drum_note 12, 2
 	sound_loop 7, Music_ViridianForest_branch_edaf9
-	note B_, 4
-	note A_, 4
-	note A_, 2
-	note A_, 2
-	note D#, 4
+	drum_note 12, 4
+	drum_note 10, 4
+	drum_note 10, 2
+	drum_note 10, 2
+	drum_note 4, 4
 Music_ViridianForest_branch_edb09:
-	note B_, 4
-	note C_, 4
-	note B_, 2
-	note B_, 2
-	note C_, 4
+	drum_note 12, 4
+	drum_note 1, 4
+	drum_note 12, 2
+	drum_note 12, 2
+	drum_note 1, 4
 	sound_loop 3, Music_ViridianForest_branch_edb09
-	note B_, 4
-	note C_, 4
-	note C#, 2
-	note C_, 2
-	note C#, 4
+	drum_note 12, 4
+	drum_note 1, 4
+	drum_note 2, 2
+	drum_note 1, 2
+	drum_note 2, 4
 Music_ViridianForest_branch_edb17:
-	note B_, 4
-	note C_, 4
-	note B_, 2
-	note B_, 2
-	note C_, 4
+	drum_note 12, 4
+	drum_note 1, 4
+	drum_note 12, 2
+	drum_note 12, 2
+	drum_note 1, 4
 	sound_loop 3, Music_ViridianForest_branch_edb17
-	note B_, 4
-	note C_, 4
-	note D_, 2
-	note D_, 2
-	note D#, 4
+	drum_note 12, 4
+	drum_note 1, 4
+	drum_note 3, 2
+	drum_note 3, 2
+	drum_note 4, 4
 	sound_jump Music_ViridianForest_branch_edaef

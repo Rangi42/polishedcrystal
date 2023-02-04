@@ -252,9 +252,9 @@ Music_BurnedTower_branch_f6be1:
 	rest 2
 Music_BurnedTower_branch_f6be7:
 	stereo_panning TRUE, FALSE
-	note G_, 2
-	note G#, 2
-	note G_, 4
-	note G#, 2
-	note G_, 4
+	drum_note 8, 2
+	drum_note 9, 2
+	drum_note 8, 4
+	drum_note 9, 2
+	drum_note 8, 4
 	sound_jump Music_BurnedTower_branch_f6be7

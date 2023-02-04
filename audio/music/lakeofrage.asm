@@ -301,23 +301,23 @@ Music_LakeOfRage_Ch4:
 	toggle_noise 3
 	note_type 12
 Music_LakeOfRage_branch_ee83b:
-	note D_, 2
-	note D_, 1
-	note D_, 1
-	note G_, 2
-	note D_, 2
-	note D_, 1
-	note D_, 1
-	note F#, 6
-	note D_, 2
-	note D_, 1
-	note D_, 1
-	note G_, 2
-	note D_, 2
-	note D_, 1
-	note D_, 1
-	note F#, 3
-	note D_, 1
-	note D_, 1
-	note D_, 1
+	drum_note 3, 2
+	drum_note 3, 1
+	drum_note 3, 1
+	drum_note 8, 2
+	drum_note 3, 2
+	drum_note 3, 1
+	drum_note 3, 1
+	drum_note 7, 6
+	drum_note 3, 2
+	drum_note 3, 1
+	drum_note 3, 1
+	drum_note 8, 2
+	drum_note 3, 2
+	drum_note 3, 1
+	drum_note 3, 1
+	drum_note 7, 3
+	drum_note 3, 1
+	drum_note 3, 1
+	drum_note 3, 1
 	sound_jump Music_LakeOfRage_branch_ee83b

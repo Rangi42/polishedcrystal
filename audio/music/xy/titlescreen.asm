@@ -868,105 +868,105 @@ Music_TitleScreenXY_Ch4_b0:
 	rest 16
 	rest 12
 	note_type 4
-	note SNARE, 2
-	note SNARE, 2
-	note SNARE, 4
-	note SNARE, 4
+	drum_note SNARE, 2
+	drum_note SNARE, 2
+	drum_note SNARE, 4
+	drum_note SNARE, 4
 	note_type 12
-	note 12, 16
+	drum_note 12, 16
 	rest 16
 	rest 16
 	rest 16
 	rest 12
 	note_type 4
-	note SNARE, 2
-	note SNARE, 2
-	note SNARE, 2
-	note SNARE, 2
-	note SNARE, 2
-	note SNARE, 2
-	note SNARE2, 12
-	note SNARE2, 12
-	note SNARE, 2
-	note SNARE, 2
-	note SNARE, 4
-	note SNARE, 4
-	note SNARE2, 12
-	note SNARE2, 12
-	note SNARE2, 12
-	note SNARE, 2
-	note SNARE, 2
-	note SNARE, 4
-	note SNARE, 4
-	note SNARE, 4
-	note SNARE, 4
-	note SNARE, 4
+	drum_note SNARE, 2
+	drum_note SNARE, 2
+	drum_note SNARE, 2
+	drum_note SNARE, 2
+	drum_note SNARE, 2
+	drum_note SNARE, 2
+	drum_note SNARE2, 12
+	drum_note SNARE2, 12
+	drum_note SNARE, 2
+	drum_note SNARE, 2
+	drum_note SNARE, 4
+	drum_note SNARE, 4
+	drum_note SNARE2, 12
+	drum_note SNARE2, 12
+	drum_note SNARE2, 12
+	drum_note SNARE, 2
+	drum_note SNARE, 2
+	drum_note SNARE, 4
+	drum_note SNARE, 4
+	drum_note SNARE, 4
+	drum_note SNARE, 4
+	drum_note SNARE, 4
 Music_TitleScreenXY_Ch4_b1:
 	sound_call Music_TitleScreenXY_Ch4_b2
 	sound_call Music_TitleScreenXY_Ch4_b2
 	sound_call Music_TitleScreenXY_Ch4_b2
-	note SNARE2, 8
-	note SNARE2, 12
-	note SNARE2, 4
-	note SNARE2, 4
-	note SNARE2, 4
-	note SNARE2, 4
-	note SNARE2, 8
-	note SNARE2, 4
+	drum_note SNARE2, 8
+	drum_note SNARE2, 12
+	drum_note SNARE2, 4
+	drum_note SNARE2, 4
+	drum_note SNARE2, 4
+	drum_note SNARE2, 4
+	drum_note SNARE2, 8
+	drum_note SNARE2, 4
 	sound_loop 4, Music_TitleScreenXY_Ch4_b1
 	note_type 12
 	rest 8
-	note 12, 16
-	note 12, 16
-	note 12, 16
-	note 12, 8
+	drum_note 12, 16
+	drum_note 12, 16
+	drum_note 12, 16
+	drum_note 12, 8
 	note_type 4
 	sound_call Music_TitleScreenXY_Ch4_b2
 	sound_call Music_TitleScreenXY_Ch4_b2
 	sound_call Music_TitleScreenXY_Ch4_b2
-	note SNARE2, 8
-	note SNARE2, 12
-	note SNARE2, 4
-	note SNARE2, 4
-	note SNARE2, 4
-	note SNARE2, 4
-	note SNARE2, 8
-	note SNARE2, 4
-	note SNARE, 12
-	note SNARE, 12
-	note SNARE, 2
-	note SNARE, 2
-	note SNARE, 4
-	note SNARE, 4
-	note SNARE, 12
-	note SNARE, 12
-	note SNARE, 12
-	note SNARE, 2
-	note SNARE, 2
-	note SNARE, 4
-	note SNARE, 4
-	note SNARE, 2
-	note SNARE, 2
-	note SNARE, 4
-	note SNARE, 4
-	note SNARE, 12
-	note SNARE, 4
-	note SNARE, 4
-	note SNARE, 4
-	note SNARE, 12
+	drum_note SNARE2, 8
+	drum_note SNARE2, 12
+	drum_note SNARE2, 4
+	drum_note SNARE2, 4
+	drum_note SNARE2, 4
+	drum_note SNARE2, 4
+	drum_note SNARE2, 8
+	drum_note SNARE2, 4
+	drum_note SNARE, 12
+	drum_note SNARE, 12
+	drum_note SNARE, 2
+	drum_note SNARE, 2
+	drum_note SNARE, 4
+	drum_note SNARE, 4
+	drum_note SNARE, 12
+	drum_note SNARE, 12
+	drum_note SNARE, 12
+	drum_note SNARE, 2
+	drum_note SNARE, 2
+	drum_note SNARE, 4
+	drum_note SNARE, 4
+	drum_note SNARE, 2
+	drum_note SNARE, 2
+	drum_note SNARE, 4
+	drum_note SNARE, 4
+	drum_note SNARE, 12
+	drum_note SNARE, 4
+	drum_note SNARE, 4
+	drum_note SNARE, 4
+	drum_note SNARE, 12
 	rest 12
 	rest 16
 	rest 16
 	sound_jump Music_TitleScreenXY_Ch4_b0
 
 Music_TitleScreenXY_Ch4_b2:
-	note SNARE2, 8
-	note SNARE2, 12
-	note SNARE2, 4
-	note SNARE, 2
-	note SNARE, 2
-	note SNARE, 4
-	note SNARE2, 4
-	note SNARE2, 8
-	note SNARE2, 4
+	drum_note SNARE2, 8
+	drum_note SNARE2, 12
+	drum_note SNARE2, 4
+	drum_note SNARE, 2
+	drum_note SNARE, 2
+	drum_note SNARE, 4
+	drum_note SNARE2, 4
+	drum_note SNARE2, 8
+	drum_note SNARE2, 4
 	sound_ret

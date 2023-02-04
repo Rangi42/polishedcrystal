@@ -430,68 +430,68 @@ Music_ZinniaEncounterORAS_Ch3_branch_2:
 Music_ZinniaEncounterORAS_Ch4:
 	toggle_noise 3
 	note_type 12
-	note B_, 8
+	drum_note 12, 8
 Music_ZinniaEncounterORAS_Ch4_loop_main:
 Music_ZinniaEncounterORAS_Ch4_loop_1:
-	note C_, 2
-	note C#, 1
-	note C#, 1
-	note C_, 2
-	note D#, 2
+	drum_note 1, 2
+	drum_note 2, 1
+	drum_note 2, 1
+	drum_note 1, 2
+	drum_note 4, 2
 	sound_loop 8, Music_ZinniaEncounterORAS_Ch4_loop_1
-	note B_, 2
-	note C#, 1
-	note C#, 1
-	note C_, 2
-	note D#, 2
+	drum_note 12, 2
+	drum_note 2, 1
+	drum_note 2, 1
+	drum_note 1, 2
+	drum_note 4, 2
 Music_ZinniaEncounterORAS_Ch4_loop_2:
-	note C_, 2
-	note C#, 1
-	note C#, 1
-	note C_, 2
-	note D#, 2
+	drum_note 1, 2
+	drum_note 2, 1
+	drum_note 2, 1
+	drum_note 1, 2
+	drum_note 4, 2
 	sound_loop 7, Music_ZinniaEncounterORAS_Ch4_loop_2
-	note B_, 2
-	note C#, 1
-	note C#, 1
-	note C_, 2
-	note D#, 2
+	drum_note 12, 2
+	drum_note 2, 1
+	drum_note 2, 1
+	drum_note 1, 2
+	drum_note 4, 2
 Music_ZinniaEncounterORAS_Ch4_loop_3:
-	note C_, 2
-	note C#, 1
-	note C#, 1
-	note C_, 2
-	note D#, 2
+	drum_note 1, 2
+	drum_note 2, 1
+	drum_note 2, 1
+	drum_note 1, 2
+	drum_note 4, 2
 	sound_loop 7, Music_ZinniaEncounterORAS_Ch4_loop_3
-	note B_, 2
-	note C#, 1
-	note C#, 1
-	note C_, 2
-	note D#, 2
+	drum_note 12, 2
+	drum_note 2, 1
+	drum_note 2, 1
+	drum_note 1, 2
+	drum_note 4, 2
 Music_ZinniaEncounterORAS_Ch4_loop_4:
-	note C_, 2
-	note C#, 1
-	note C#, 1
-	note C_, 2
-	note D#, 2
+	drum_note 1, 2
+	drum_note 2, 1
+	drum_note 2, 1
+	drum_note 1, 2
+	drum_note 4, 2
 	sound_loop 7, Music_ZinniaEncounterORAS_Ch4_loop_4
-	note B_, 2
-	note C#, 1
-	note C#, 1
-	note C_, 2
-	note D#, 2
-	note C_, 2
-	note C#, 1
-	note C#, 1
-	note C_, 2
-	note D#, 2
-	note C_, 2
-	note C#, 1
-	note C_, 2
-	note C#, 1
-	note C_, 2
-	note B_, 2
-	note C#, 1
-	note C#, 1
-	note C_, 4
+	drum_note 12, 2
+	drum_note 2, 1
+	drum_note 2, 1
+	drum_note 1, 2
+	drum_note 4, 2
+	drum_note 1, 2
+	drum_note 2, 1
+	drum_note 2, 1
+	drum_note 1, 2
+	drum_note 4, 2
+	drum_note 1, 2
+	drum_note 2, 1
+	drum_note 1, 2
+	drum_note 2, 1
+	drum_note 1, 2
+	drum_note 12, 2
+	drum_note 2, 1
+	drum_note 2, 1
+	drum_note 1, 4
 	sound_jump Music_ZinniaEncounterORAS_Ch4_loop_main

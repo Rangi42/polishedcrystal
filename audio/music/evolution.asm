@@ -191,10 +191,10 @@ Music_Evolution_Ch4:
 	rest 8
 Music_Evolution_branch_f07f0:
 	stereo_panning TRUE, FALSE
-	note A#, 6
-	note A#, 4
+	drum_note 11, 6
+	drum_note 11, 4
 	stereo_panning FALSE, TRUE
-	note E_, 2
-	note E_, 2
-	note E_, 2
+	drum_note 5, 2
+	drum_note 5, 2
+	drum_note 5, 2
 	sound_jump Music_Evolution_branch_f07f0

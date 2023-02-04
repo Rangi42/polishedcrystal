@@ -481,77 +481,77 @@ Music_Route101RSE_Ch4:
 	rest 2
 Music_Route101RSE_Ch4_loop:
 	sound_call Music_Route101RSE_Ch4_branch_1
-	note D#, 1
-	note D#, 1
+	drum_note 4, 1
+	drum_note 4, 1
 	sound_loop 4, Music_Route101RSE_Ch4_loop
 Music_Route101RSE_Ch4_loop_2:
 	sound_call Music_Route101RSE_Ch4_branch_2
-	note D_, 1
-	note B_, 1
-	note B_, 1
-	note B_, 1
-	note D#, 1
-	note B_, 1
-	note D_, 1
-	note D_, 1
+	drum_note 3, 1
+	drum_note 12, 1
+	drum_note 12, 1
+	drum_note 12, 1
+	drum_note 4, 1
+	drum_note 12, 1
+	drum_note 3, 1
+	drum_note 3, 1
 	sound_call Music_Route101RSE_Ch4_branch_2
-	note D_, 1
-	note B_, 1
-	note B_, 1
-	note D_, 1
-	note D#, 1
-	note B_, 1
-	note D_, 1
-	note B_, 1
+	drum_note 3, 1
+	drum_note 12, 1
+	drum_note 12, 1
+	drum_note 3, 1
+	drum_note 4, 1
+	drum_note 12, 1
+	drum_note 3, 1
+	drum_note 12, 1
 	sound_loop 3, Music_Route101RSE_Ch4_loop_2
-	note D_, 1
-	note B_, 1
-	note B_, 1
-	note D_, 1
-	note D#, 2
-	note F_, 1
-	note F_, 1
-	note F_, 2
-	note D#, 1
-	note D#, 1
-	note D_, 2
-	note F#, 2
-	note D_, 1
-	note B_, 1
-	note B_, 1
-	note D_, 1
-	note D#, 2
-	note F_, 1
-	note F_, 1
-	note F_, 2
-	note D#, 1
-	note D#, 1
-	note D_, 4
+	drum_note 3, 1
+	drum_note 12, 1
+	drum_note 12, 1
+	drum_note 3, 1
+	drum_note 4, 2
+	drum_note 6, 1
+	drum_note 6, 1
+	drum_note 6, 2
+	drum_note 4, 1
+	drum_note 4, 1
+	drum_note 3, 2
+	drum_note 7, 2
+	drum_note 3, 1
+	drum_note 12, 1
+	drum_note 12, 1
+	drum_note 3, 1
+	drum_note 4, 2
+	drum_note 6, 1
+	drum_note 6, 1
+	drum_note 6, 2
+	drum_note 4, 1
+	drum_note 4, 1
+	drum_note 3, 4
 	sound_jump Music_Route101RSE_Ch4_loop
 
 Music_Route101RSE_Ch4_branch_1:
-	note D#, 4
-	note F_, 3
-	note D#, 1
-	note D#, 4
-	note F_, 2
-	note D#, 1
-	note D#, 1
-	note D#, 4
-	note F_, 4
-	note D#, 2
-	note F_, 1
-	note F_, 1
-	note F_, 2
+	drum_note 4, 4
+	drum_note 6, 3
+	drum_note 4, 1
+	drum_note 4, 4
+	drum_note 6, 2
+	drum_note 4, 1
+	drum_note 4, 1
+	drum_note 4, 4
+	drum_note 6, 4
+	drum_note 4, 2
+	drum_note 6, 1
+	drum_note 6, 1
+	drum_note 6, 2
 	sound_ret
 
 Music_Route101RSE_Ch4_branch_2:
-	note D_, 1
-	note B_, 1
-	note B_, 1
-	note B_, 1
-	note D#, 1
-	note B_, 1
-	note D_, 1
-	note B_, 1
+	drum_note 3, 1
+	drum_note 12, 1
+	drum_note 12, 1
+	drum_note 12, 1
+	drum_note 4, 1
+	drum_note 12, 1
+	drum_note 3, 1
+	drum_note 12, 1
 	sound_ret

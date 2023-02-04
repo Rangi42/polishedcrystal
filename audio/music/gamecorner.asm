@@ -660,127 +660,127 @@ Music_GameCorner_Ch4:
 	toggle_noise 3
 	note_type 12
 	note_type 8
-	note D_, 1
-	note D_, 1
-	note D_, 1
+	drum_note 3, 1
+	drum_note 3, 1
+	drum_note 3, 1
 	note_type 12
-	note D_, 1
-	note D_, 1
-	note D_, 2
-	note D_, 1
-	note D_, 1
+	drum_note 3, 1
+	drum_note 3, 1
+	drum_note 3, 2
+	drum_note 3, 1
+	drum_note 3, 1
 Music_GameCorner_branch_ee07f:
 	sound_call Music_GameCorner_branch_ee106
 Music_GameCorner_branch_ee082:
-	note A#, 2
-	note F#, 2
-	note D_, 2
-	note F#, 2
-	note A#, 2
-	note F#, 2
-	note D_, 2
-	note F#, 2
+	drum_note 11, 2
+	drum_note 7, 2
+	drum_note 3, 2
+	drum_note 7, 2
+	drum_note 11, 2
+	drum_note 7, 2
+	drum_note 3, 2
+	drum_note 7, 2
 	sound_loop 6, Music_GameCorner_branch_ee082
 	sound_call Music_GameCorner_branch_ee10f
 Music_GameCorner_branch_ee091:
-	note A#, 2
-	note F#, 2
-	note D_, 2
-	note F#, 2
-	note A#, 2
-	note F#, 2
-	note D_, 2
-	note F#, 2
+	drum_note 11, 2
+	drum_note 7, 2
+	drum_note 3, 2
+	drum_note 7, 2
+	drum_note 11, 2
+	drum_note 7, 2
+	drum_note 3, 2
+	drum_note 7, 2
 	sound_loop 3, Music_GameCorner_branch_ee091
 	rest 12
-	note D_, 1
-	note D_, 1
-	note F#, 2
+	drum_note 3, 1
+	drum_note 3, 1
+	drum_note 7, 2
 	sound_call Music_GameCorner_branch_ee106
 Music_GameCorner_branch_ee0a4:
-	note A#, 2
-	note F#, 2
-	note D_, 2
-	note F#, 2
-	note A#, 2
-	note F#, 2
-	note D_, 2
-	note F#, 2
+	drum_note 11, 2
+	drum_note 7, 2
+	drum_note 3, 2
+	drum_note 7, 2
+	drum_note 11, 2
+	drum_note 7, 2
+	drum_note 3, 2
+	drum_note 7, 2
 	sound_loop 6, Music_GameCorner_branch_ee0a4
 	sound_call Music_GameCorner_branch_ee10f
 Music_GameCorner_branch_ee0b3:
-	note A#, 2
-	note F#, 2
-	note D_, 2
-	note F#, 2
-	note A#, 2
-	note F#, 2
-	note D_, 2
-	note F#, 2
+	drum_note 11, 2
+	drum_note 7, 2
+	drum_note 3, 2
+	drum_note 7, 2
+	drum_note 11, 2
+	drum_note 7, 2
+	drum_note 3, 2
+	drum_note 7, 2
 	sound_loop 3, Music_GameCorner_branch_ee0b3
-	note A#, 2
-	note F#, 2
-	note D_, 2
-	note F#, 2
-	note D#, 2
-	note F#, 2
-	note D_, 1
-	note D_, 1
-	note D_, 1
-	note D_, 1
+	drum_note 11, 2
+	drum_note 7, 2
+	drum_note 3, 2
+	drum_note 7, 2
+	drum_note 4, 2
+	drum_note 7, 2
+	drum_note 3, 1
+	drum_note 3, 1
+	drum_note 3, 1
+	drum_note 3, 1
 Music_GameCorner_branch_ee0c9:
-	note A#, 2
-	note F#, 1
-	note D#, 1
-	note D_, 1
-	note D#, 1
-	note F#, 1
-	note D#, 1
-	note D#, 1
-	note D_, 1
-	note F#, 1
-	note D#, 1
-	note D_, 2
-	note F#, 2
+	drum_note 11, 2
+	drum_note 7, 1
+	drum_note 4, 1
+	drum_note 3, 1
+	drum_note 4, 1
+	drum_note 7, 1
+	drum_note 4, 1
+	drum_note 4, 1
+	drum_note 3, 1
+	drum_note 7, 1
+	drum_note 4, 1
+	drum_note 3, 2
+	drum_note 7, 2
 	sound_loop 3, Music_GameCorner_branch_ee0c9
-	note A#, 2
-	note F#, 1
-	note D#, 1
-	note D_, 1
-	note D#, 1
-	note F#, 1
-	note D#, 1
-	note D#, 1
-	note D_, 1
-	note F#, 1
-	note D#, 1
-	note D_, 2
-	note D_, 1
-	note D_, 1
+	drum_note 11, 2
+	drum_note 7, 1
+	drum_note 4, 1
+	drum_note 3, 1
+	drum_note 4, 1
+	drum_note 7, 1
+	drum_note 4, 1
+	drum_note 4, 1
+	drum_note 3, 1
+	drum_note 7, 1
+	drum_note 4, 1
+	drum_note 3, 2
+	drum_note 3, 1
+	drum_note 3, 1
 Music_GameCorner_branch_ee0e8:
-	note A#, 2
-	note F#, 1
-	note D#, 1
-	note D_, 1
-	note D#, 1
-	note F#, 1
-	note D#, 1
-	note D#, 1
-	note D_, 1
-	note F#, 1
-	note D#, 1
-	note D_, 2
-	note F#, 2
+	drum_note 11, 2
+	drum_note 7, 1
+	drum_note 4, 1
+	drum_note 3, 1
+	drum_note 4, 1
+	drum_note 7, 1
+	drum_note 4, 1
+	drum_note 4, 1
+	drum_note 3, 1
+	drum_note 7, 1
+	drum_note 4, 1
+	drum_note 3, 2
+	drum_note 7, 2
 	sound_loop 3, Music_GameCorner_branch_ee0e8
-	note D_, 1
-	note D_, 1
-	note D_, 2
-	note A#, 1
-	note F#, 2
-	note F#, 5
-	note D_, 1
-	note D_, 1
-	note D#, 2
+	drum_note 3, 1
+	drum_note 3, 1
+	drum_note 3, 2
+	drum_note 11, 1
+	drum_note 7, 2
+	drum_note 7, 5
+	drum_note 3, 1
+	drum_note 3, 1
+	drum_note 4, 2
 	sound_jump Music_GameCorner_branch_ee07f
 
 Music_GameCorner_branch_ee106:

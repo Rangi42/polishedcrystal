@@ -56,10 +56,10 @@ Music_AfterTheRivalFight_Ch4:
 	toggle_noise 3
 	stereo_panning FALSE, TRUE
 	note_type 12
-	note D_, 4
-	note D_, 4
-	note D#, 2
-	note D_, 2
-	note D_, 2
-	note D_, 2
+	drum_note 3, 4
+	drum_note 3, 4
+	drum_note 4, 2
+	drum_note 3, 2
+	drum_note 3, 2
+	drum_note 3, 2
 	sound_jump Music_AfterTheRivalFight_branch_f5118

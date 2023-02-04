@@ -163,10 +163,10 @@ Music_DragonsDen_Ch4:
 	rest 16
 Music_DragonsDen_branch_eedbd:
 	stereo_panning TRUE, FALSE
-	note F_, 4
+	drum_note 6, 4
 	stereo_panning FALSE, TRUE
-	note F#, 4
-	note F#, 4
+	drum_note 7, 4
+	drum_note 7, 4
 	stereo_panning TRUE, FALSE
-	note F#, 4
+	drum_note 7, 4
 	sound_jump Music_DragonsDen_branch_eedbd

@@ -628,27 +628,27 @@ Music_AzaleaTown_branch_f5acf:
 Music_AzaleaTown_Ch4:
 	toggle_noise 3
 	note_type 12
-	note F_, 2
+	drum_note 6, 2
 Music_AzaleaTown_branch_f5aea:
-	note D#, 2
-	note F#, 2
-	note D_, 2
-	note D#, 1
-	note G_, 1
-	note G_, 1
-	note G_, 1
-	note D#, 2
-	note D_, 2
-	note G_, 1
-	note G_, 1
-	note D#, 2
-	note F#, 2
-	note D_, 2
-	note D#, 1
-	note G_, 1
-	note G_, 1
-	note G_, 1
-	note D#, 2
-	note D_, 2
-	note F#, 2
+	drum_note 4, 2
+	drum_note 7, 2
+	drum_note 3, 2
+	drum_note 4, 1
+	drum_note 8, 1
+	drum_note 8, 1
+	drum_note 8, 1
+	drum_note 4, 2
+	drum_note 3, 2
+	drum_note 8, 1
+	drum_note 8, 1
+	drum_note 4, 2
+	drum_note 7, 2
+	drum_note 3, 2
+	drum_note 4, 1
+	drum_note 8, 1
+	drum_note 8, 1
+	drum_note 8, 1
+	drum_note 4, 2
+	drum_note 3, 2
+	drum_note 7, 2
 	sound_jump Music_AzaleaTown_branch_f5aea

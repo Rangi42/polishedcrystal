@@ -534,5 +534,5 @@ Music_ElmsLab_Ch4:
 	rest 16
 	rest 2
 Music_ElmsLab_branch_ea2b9:
-	note G_, 4
+	drum_note 8, 4
 	sound_jump Music_ElmsLab_branch_ea2b9

@@ -490,23 +490,23 @@ Music_LyraEncounterHGSS_Ch3_loop:
 Music_LyraEncounterHGSS_Ch4:
 	toggle_noise 3
 	note_type 6
-	note D_, 2
-	note D_, 4
-	note D_, 4
-	note D_, 4
-	note D_, 6
-	note D#, 1
-	note D#, 1
-	note D#, 1
-	note D#, 1
-	note C_, 2
-	note C_, 2
-	note D#, 4
+	drum_note 3, 2
+	drum_note 3, 4
+	drum_note 3, 4
+	drum_note 3, 4
+	drum_note 3, 6
+	drum_note 4, 1
+	drum_note 4, 1
+	drum_note 4, 1
+	drum_note 4, 1
+	drum_note 1, 2
+	drum_note 1, 2
+	drum_note 4, 4
 Music_LyraEncounterHGSS_Ch4_loop:
-	note D#, 4
-	note D#, 2
-	note D#, 2
-	note C_, 4
-	note D#, 2
-	note D#, 2
+	drum_note 4, 4
+	drum_note 4, 2
+	drum_note 4, 2
+	drum_note 1, 4
+	drum_note 4, 2
+	drum_note 4, 2
 	sound_jump Music_LyraEncounterHGSS_Ch4_loop

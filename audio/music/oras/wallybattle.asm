@@ -573,130 +573,130 @@ Music_WallyBattleORAS_Ch4_loop_main:
 	sound_call Music_WallyBattleORAS_Ch4_branch_1
 	sound_call Music_WallyBattleORAS_Ch4_branch_2
 	sound_call Music_WallyBattleORAS_Ch4_branch_4
-	note E_, 1
-	note C#, 1
-	note E_, 1
-	note C#, 1
+	drum_note 5, 1
+	drum_note 2, 1
+	drum_note 5, 1
+	drum_note 2, 1
 	sound_call Music_WallyBattleORAS_Ch4_branch_1
 	sound_call Music_WallyBattleORAS_Ch4_branch_2
 	sound_call Music_WallyBattleORAS_Ch4_branch_2
-	note C#, 1
-	note D#, 1
-	note D#, 1
-	note C#, 1
-	note D#, 1
-	note D#, 1
-	note E_, 1
-	note C#, 1
+	drum_note 2, 1
+	drum_note 4, 1
+	drum_note 4, 1
+	drum_note 2, 1
+	drum_note 4, 1
+	drum_note 4, 1
+	drum_note 5, 1
+	drum_note 2, 1
 	sound_call Music_WallyBattleORAS_Ch4_branch_1
 	sound_call Music_WallyBattleORAS_Ch4_branch_2
 	sound_call Music_WallyBattleORAS_Ch4_branch_6
-	note E_, 1
-	note C#, 1
-	note D#, 1
-	note C#, 1
+	drum_note 5, 1
+	drum_note 2, 1
+	drum_note 4, 1
+	drum_note 2, 1
 Music_WallyBattleORAS_Ch4_loop_1:
 	sound_call Music_WallyBattleORAS_Ch4_branch_1
 	sound_call Music_WallyBattleORAS_Ch4_branch_5
 	sound_call Music_WallyBattleORAS_Ch4_branch_2
-	note A#, 1
-	note D_, 1
-	note A#, 1
-	note A#, 1
-	note B_, 1
-	note B_, 2
-	note D#, 1
+	drum_note 11, 1
+	drum_note 3, 1
+	drum_note 11, 1
+	drum_note 11, 1
+	drum_note 12, 1
+	drum_note 12, 2
+	drum_note 4, 1
 	sound_loop 2, Music_WallyBattleORAS_Ch4_loop_1
 	sound_call Music_WallyBattleORAS_Ch4_branch_1
 	sound_call Music_WallyBattleORAS_Ch4_branch_5
 	sound_call Music_WallyBattleORAS_Ch4_branch_2
-	note E_, 1
-	note D_, 1
-	note D#, 1
-	note E_, 1
-	note D_, 1
-	note D#, 1
-	note E_, 1
-	note D#, 1
+	drum_note 5, 1
+	drum_note 3, 1
+	drum_note 4, 1
+	drum_note 5, 1
+	drum_note 3, 1
+	drum_note 4, 1
+	drum_note 5, 1
+	drum_note 4, 1
 	sound_call Music_WallyBattleORAS_Ch4_branch_1
 	sound_call Music_WallyBattleORAS_Ch4_branch_5
 	sound_call Music_WallyBattleORAS_Ch4_branch_6
-	note E_, 1
-	note E_, 1
-	note D#, 1
-	note D#, 1
+	drum_note 5, 1
+	drum_note 5, 1
+	drum_note 4, 1
+	drum_note 4, 1
 	sound_jump Music_WallyBattleORAS_Ch4_loop_main
 	sound_ret
 
 Music_WallyBattleORAS_Ch4_branch_1:
-	note B_, 2
-	note D#, 1
-	note D#, 1
-	note E_, 1
-	note C#, 1
-	note D#, 1
-	note D#, 1
+	drum_note 12, 2
+	drum_note 4, 1
+	drum_note 4, 1
+	drum_note 5, 1
+	drum_note 2, 1
+	drum_note 4, 1
+	drum_note 4, 1
 	sound_ret
 
 Music_WallyBattleORAS_Ch4_branch_2:
-	note D_, 1
-	note D_, 1
-	note D#, 1
-	note D#, 1
-	note E_, 1
-	note C#, 1
-	note D#, 1
-	note D#, 1
+	drum_note 3, 1
+	drum_note 3, 1
+	drum_note 4, 1
+	drum_note 4, 1
+	drum_note 5, 1
+	drum_note 2, 1
+	drum_note 4, 1
+	drum_note 4, 1
 	sound_ret
 
 Music_WallyBattleORAS_Ch4_branch_3:
-	note D_, 1
-	note D_, 1
-	note D#, 1
-	note D#, 1
-	note E_, 1
-	note D#, 1
-	note E_, 1
-	note C#, 1
+	drum_note 3, 1
+	drum_note 3, 1
+	drum_note 4, 1
+	drum_note 4, 1
+	drum_note 5, 1
+	drum_note 4, 1
+	drum_note 5, 1
+	drum_note 2, 1
 	sound_ret
 
 Music_WallyBattleORAS_Ch4_branch_4:
-	note E_, 1
-	note E_, 1
-	note C#, 1
-	note D#, 1
-	note D#, 1
-	note C#, 1
-	note E_, 1
-	note E_, 1
-	note C#, 1
-	note D#, 1
-	note D#, 1
-	note C#, 1
+	drum_note 5, 1
+	drum_note 5, 1
+	drum_note 2, 1
+	drum_note 4, 1
+	drum_note 4, 1
+	drum_note 2, 1
+	drum_note 5, 1
+	drum_note 5, 1
+	drum_note 2, 1
+	drum_note 4, 1
+	drum_note 4, 1
+	drum_note 2, 1
 	sound_ret
 
 Music_WallyBattleORAS_Ch4_branch_5:
-	note D_, 1
-	note A#, 1
-	note A#, 1
-	note D_, 1
-	note E_, 1
-	note C#, 1
-	note E_, 1
-	note D#, 1
+	drum_note 3, 1
+	drum_note 11, 1
+	drum_note 11, 1
+	drum_note 3, 1
+	drum_note 5, 1
+	drum_note 2, 1
+	drum_note 5, 1
+	drum_note 4, 1
 	sound_ret
 
 Music_WallyBattleORAS_Ch4_branch_6:
-	note B_, 1
-	note B_, 1
-	note C#, 1
-	note D#, 1
-	note D#, 1
-	note C#, 1
-	note B_, 1
-	note B_, 1
-	note C#, 1
-	note D#, 1
-	note D#, 1
-	note C#, 1
+	drum_note 12, 1
+	drum_note 12, 1
+	drum_note 2, 1
+	drum_note 4, 1
+	drum_note 4, 1
+	drum_note 2, 1
+	drum_note 12, 1
+	drum_note 12, 1
+	drum_note 2, 1
+	drum_note 4, 1
+	drum_note 4, 1
+	drum_note 2, 1
 	sound_ret

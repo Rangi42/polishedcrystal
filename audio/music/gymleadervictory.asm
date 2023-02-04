@@ -383,30 +383,30 @@ Music_GymLeaderVictory_branch_f479e:
 Music_GymLeaderVictory_Ch4:
 	toggle_noise 4
 	note_type 12
-	note B_, 16
-	note B_, 16
+	drum_note 12, 16
+	drum_note 12, 16
 Music_GymLeaderVictory_branch_f47eb:
 	sound_call Music_GymLeaderVictory_branch_f480b
-	note D#, 6
-	note D#, 2
-	note D#, 8
+	drum_note 4, 6
+	drum_note 4, 2
+	drum_note 4, 8
 	sound_call Music_GymLeaderVictory_branch_f480b
-	note D#, 6
-	note D#, 2
-	note D#, 4
-	note C#, 1
-	note C#, 1
-	note C#, 1
-	note C#, 1
+	drum_note 4, 6
+	drum_note 4, 2
+	drum_note 4, 4
+	drum_note 2, 1
+	drum_note 2, 1
+	drum_note 2, 1
+	drum_note 2, 1
 Music_GymLeaderVictory_branch_f47fb:
-	note D#, 2
-	note G_, 2
-	note D_, 2
-	note D#, 2
-	note G_, 2
-	note D#, 2
-	note D_, 2
-	note G_, 2
+	drum_note 4, 2
+	drum_note 8, 2
+	drum_note 3, 2
+	drum_note 4, 2
+	drum_note 8, 2
+	drum_note 4, 2
+	drum_note 3, 2
+	drum_note 8, 2
 	sound_loop 16, Music_GymLeaderVictory_branch_f47fb
 	sound_jump Music_GymLeaderVictory_branch_f47eb
 

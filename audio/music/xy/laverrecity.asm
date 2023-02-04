@@ -590,20 +590,20 @@ Music_LaverreCityXY_Ch4_loop:
 	sound_call Music_LaverreCityXY_Ch4_branch_1
 	sound_call Music_LaverreCityXY_Ch4_branch_1
 	note_type 8
-	note C#, 1
-	note C#, 1
-	note C#, 1
+	drum_note 2, 1
+	drum_note 2, 1
+	drum_note 2, 1
 	rest 3
-	note C#, 1
-	note C#, 1
-	note C#, 1
+	drum_note 2, 1
+	drum_note 2, 1
+	drum_note 2, 1
 	rest 3
-	note C#, 1
-	note C#, 1
-	note C#, 1
+	drum_note 2, 1
+	drum_note 2, 1
+	drum_note 2, 1
 	rest 3
 	note_type 12
-	note C#, 12
+	drum_note 2, 12
 	sound_call Music_LaverreCityXY_Ch4_branch_1
 	sound_call Music_LaverreCityXY_Ch4_branch_1
 	sound_call Music_LaverreCityXY_Ch4_branch_1
@@ -612,16 +612,16 @@ Music_LaverreCityXY_Ch4_loop:
 
 Music_LaverreCityXY_Ch4_branch_1:
 	note_type 8
-	note C#, 1
-	note C#, 1
-	note C#, 1
+	drum_note 2, 1
+	drum_note 2, 1
+	drum_note 2, 1
 	rest 3
 	note_type 12
-	note C#, 4
-	note C#, 4
+	drum_note 2, 4
+	drum_note 2, 4
 	rest 4
-	note C#, 4
-	note C#, 4
+	drum_note 2, 4
+	drum_note 2, 4
 	sound_ret
 
 Music_LaverreCityXY_Ch4_branch_2:

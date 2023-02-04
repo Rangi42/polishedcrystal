@@ -1085,22 +1085,22 @@ Music_SSAqua_Ch4:
 	note_type 12
 	rest 2
 Music_SSAqua_branch_eb24e:
-	note G#, 1
-	note G_, 1
-	note G_, 1
-	note G_, 1
-	note G_, 1
-	note G_, 1
-	note G_, 1
-	note G_, 1
-	note G_, 1
-	note G_, 1
-	note G_, 1
-	note G_, 1
-	note G_, 1
-	note G_, 1
-	note G#, 1
-	note G_, 1
+	drum_note 9, 1
+	drum_note 8, 1
+	drum_note 8, 1
+	drum_note 8, 1
+	drum_note 8, 1
+	drum_note 8, 1
+	drum_note 8, 1
+	drum_note 8, 1
+	drum_note 8, 1
+	drum_note 8, 1
+	drum_note 8, 1
+	drum_note 8, 1
+	drum_note 8, 1
+	drum_note 8, 1
+	drum_note 9, 1
+	drum_note 8, 1
 	sound_loop 12, Music_SSAqua_branch_eb24e
 	sound_call Music_SSAqua_branch_eb2ae
 	sound_call Music_SSAqua_branch_eb2ae

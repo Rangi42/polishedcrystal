@@ -1081,117 +1081,117 @@ Music_ZinniaBattleORAS_Ch3_branch_2:
 Music_ZinniaBattleORAS_Ch4:
 	toggle_noise 3
 	note_type 3
-	note C_, 16
+	drum_note 1, 16
 	rest 16
-	note B_, 8
-	note C_, 8
+	drum_note 12, 8
+	drum_note 1, 8
 	sound_call Music_ZinniaBattleORAS_Ch4_branch_2
-	note B_, 2
-	note C#, 2
+	drum_note 12, 2
+	drum_note 2, 2
 Music_ZinniaBattleORAS_Ch4_loop_1:
-	note C#, 2
-	note C#, 2
+	drum_note 2, 2
+	drum_note 2, 2
 	sound_loop 6, Music_ZinniaBattleORAS_Ch4_loop_1
-	note C#, 2
+	drum_note 2, 2
 	note_type 3
-	note D_, 1
-	note D_, 1
-	note D_, 1
-	note D_, 1
-	note D_, 1
-	note D_, 1
-	note D_, 1
-	note D_, 1
+	drum_note 3, 1
+	drum_note 3, 1
+	drum_note 3, 1
+	drum_note 3, 1
+	drum_note 3, 1
+	drum_note 3, 1
+	drum_note 3, 1
+	drum_note 3, 1
 	note_type 12
-	note B_, 2
+	drum_note 12, 2
 	sound_call Music_ZinniaBattleORAS_Ch4_branch_1
-	note D#, 1
-	note D_, 1
+	drum_note 4, 1
+	drum_note 3, 1
 	sound_call Music_ZinniaBattleORAS_Ch4_branch_1
 Music_ZinniaBattleORAS_Ch4_loop_main:
 Music_ZinniaBattleORAS_Ch4_loop_2:
-	note D#, 1
-	note D_, 1
+	drum_note 4, 1
+	drum_note 3, 1
 	sound_call Music_ZinniaBattleORAS_Ch4_branch_1
 	sound_loop 8, Music_ZinniaBattleORAS_Ch4_loop_2
-	note B_, 2
+	drum_note 12, 2
 	sound_call Music_ZinniaBattleORAS_Ch4_branch_1
 Music_ZinniaBattleORAS_Ch4_loop_3:
-	note D#, 1
-	note D_, 1
+	drum_note 4, 1
+	drum_note 3, 1
 	sound_call Music_ZinniaBattleORAS_Ch4_branch_1
 	sound_loop 7, Music_ZinniaBattleORAS_Ch4_loop_3
 	rest 16
-	note D#, 14
-	note D#, 2
+	drum_note 4, 14
+	drum_note 4, 2
 Music_ZinniaBattleORAS_Ch4_loop_4:
-	note C#, 1
-	note C#, 1
-	note C_, 1
-	note C#, 1
+	drum_note 2, 1
+	drum_note 2, 1
+	drum_note 1, 1
+	drum_note 2, 1
 	sound_loop 7, Music_ZinniaBattleORAS_Ch4_loop_4
 	sound_call Music_ZinniaBattleORAS_Ch4_branch_2
-	note B_, 2
+	drum_note 12, 2
 	sound_call Music_ZinniaBattleORAS_Ch4_branch_1
-	note D#, 1
-	note D_, 1
+	drum_note 4, 1
+	drum_note 3, 1
 	sound_call Music_ZinniaBattleORAS_Ch4_branch_1
 Music_ZinniaBattleORAS_Ch4_loop_5:
-	note B_, 2
+	drum_note 12, 2
 	sound_call Music_ZinniaBattleORAS_Ch4_branch_1
 	sound_loop 4, Music_ZinniaBattleORAS_Ch4_loop_5
-	note D#, 1
-	note D_, 1
+	drum_note 4, 1
+	drum_note 3, 1
 	sound_call Music_ZinniaBattleORAS_Ch4_branch_1
-	note B_, 2
+	drum_note 12, 2
 	sound_call Music_ZinniaBattleORAS_Ch4_branch_1
-	note D#, 1
-	note D_, 1
+	drum_note 4, 1
+	drum_note 3, 1
 	sound_call Music_ZinniaBattleORAS_Ch4_branch_1
-	note B_, 2
-	note C_, 1
-	note D#, 1
-	note D_, 1
-	note D_, 1
-	note C_, 1
-	note D_, 1
-	note D_, 1
-	note D#, 1
-	note C_, 1
-	note D_, 1
+	drum_note 12, 2
+	drum_note 1, 1
+	drum_note 4, 1
+	drum_note 3, 1
+	drum_note 3, 1
+	drum_note 1, 1
+	drum_note 3, 1
+	drum_note 3, 1
+	drum_note 4, 1
+	drum_note 1, 1
+	drum_note 3, 1
 	sound_call Music_ZinniaBattleORAS_Ch4_branch_2
 	sound_jump Music_ZinniaBattleORAS_Ch4_loop_main
 
 Music_ZinniaBattleORAS_Ch4_branch_1:
-	note C_, 1
-	note D#, 1
-	note D_, 1
-	note D_, 1
-	note C_, 1
-	note D_, 1
-	note D_, 1
-	note D#, 1
-	note C_, 1
-	note D_, 1
-	note D#, 1
-	note D_, 1
-	note C_, 1
-	note D_, 1
+	drum_note 1, 1
+	drum_note 4, 1
+	drum_note 3, 1
+	drum_note 3, 1
+	drum_note 1, 1
+	drum_note 3, 1
+	drum_note 3, 1
+	drum_note 4, 1
+	drum_note 1, 1
+	drum_note 3, 1
+	drum_note 4, 1
+	drum_note 3, 1
+	drum_note 1, 1
+	drum_note 3, 1
 	sound_ret
 
 Music_ZinniaBattleORAS_Ch4_branch_2:
 	note_type 3
-	note D#, 2
-	note D#, 2
-	note D#, 2
-	note D#, 2
-	note D_, 1
-	note D_, 1
-	note D_, 1
-	note D_, 1
-	note D_, 1
-	note D_, 1
-	note D_, 1
-	note D_, 1
+	drum_note 4, 2
+	drum_note 4, 2
+	drum_note 4, 2
+	drum_note 4, 2
+	drum_note 3, 1
+	drum_note 3, 1
+	drum_note 3, 1
+	drum_note 3, 1
+	drum_note 3, 1
+	drum_note 3, 1
+	drum_note 3, 1
+	drum_note 3, 1
 	note_type 12
 	sound_ret

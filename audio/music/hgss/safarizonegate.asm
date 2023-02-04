@@ -709,60 +709,60 @@ Music_SafariZoneGateHGSS_Ch4:
 	rest 16
 Music_SafariZoneGateHGSS_Ch4_loop_main:
 	rest 12
-	note C_, 1
-	note C_, 2
-	note C_, 1
-	note B_, 3
-	note C#, 1
+	drum_note 1, 1
+	drum_note 1, 2
+	drum_note 1, 1
+	drum_note 12, 3
+	drum_note 2, 1
 Music_SafariZoneGateHGSS_Ch4_loop_1:
-	note D_, 1
-	note G_, 1
-	note G_, 1
-	note C#, 1
+	drum_note 3, 1
+	drum_note 8, 1
+	drum_note 8, 1
+	drum_note 2, 1
 	sound_loop 15, Music_SafariZoneGateHGSS_Ch4_loop_1
 Music_SafariZoneGateHGSS_Ch4_loop_2:
 	sound_call Music_SafariZoneGateHGSS_Ch4_branch_1
 	sound_loop 16, Music_SafariZoneGateHGSS_Ch4_loop_2
 Music_SafariZoneGateHGSS_Ch4_loop_3:
-	note C_, 1
-	note G_, 1
-	note G_, 1
-	note D_, 1
-	note D#, 1
-	note G_, 1
-	note G_, 1
-	note D_, 1
-	note D#, 1
-	note G_, 1
-	note G_, 1
-	note D_, 1
-	note D#, 1
-	note G_, 1
-	note G_, 1
-	note D_, 1
+	drum_note 1, 1
+	drum_note 8, 1
+	drum_note 8, 1
+	drum_note 3, 1
+	drum_note 4, 1
+	drum_note 8, 1
+	drum_note 8, 1
+	drum_note 3, 1
+	drum_note 4, 1
+	drum_note 8, 1
+	drum_note 8, 1
+	drum_note 3, 1
+	drum_note 4, 1
+	drum_note 8, 1
+	drum_note 8, 1
+	drum_note 3, 1
 	sound_loop 2, Music_SafariZoneGateHGSS_Ch4_loop_3
 Music_SafariZoneGateHGSS_Ch4_loop_4:
 	sound_call Music_SafariZoneGateHGSS_Ch4_branch_1
 	sound_loop 4, Music_SafariZoneGateHGSS_Ch4_loop_4
-	note B_, 3
-	note F#, 1
+	drum_note 12, 3
+	drum_note 7, 1
 Music_SafariZoneGateHGSS_Ch4_loop_5:
-	note C#, 1
-	note G_, 1
-	note G_, 1
-	note F#, 1
+	drum_note 2, 1
+	drum_note 8, 1
+	drum_note 8, 1
+	drum_note 7, 1
 	sound_loop 15, Music_SafariZoneGateHGSS_Ch4_loop_5
-	note B_, 16
+	drum_note 12, 16
 	sound_jump Music_SafariZoneGateHGSS_Ch4_loop_main
 	sound_ret
 
 Music_SafariZoneGateHGSS_Ch4_branch_1:
-	note D_, 1
-	note G_, 1
-	note G_, 1
-	note C#, 1
-	note C_, 1
-	note G_, 1
-	note G_, 1
-	note C#, 1
+	drum_note 3, 1
+	drum_note 8, 1
+	drum_note 8, 1
+	drum_note 2, 1
+	drum_note 1, 1
+	drum_note 8, 1
+	drum_note 8, 1
+	drum_note 2, 1
 	sound_ret

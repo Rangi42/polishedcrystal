@@ -624,35 +624,35 @@ Music_NationalPark_branch_f57bd:
 	rest 16
 	sound_loop 23, Music_NationalPark_branch_f57bd
 	rest 8
-	note A#, 2
-	note D_, 2
-	note A#, 1
-	note D_, 1
-	note B_, 2
+	drum_note 11, 2
+	drum_note 3, 2
+	drum_note 11, 1
+	drum_note 3, 1
+	drum_note 12, 2
 Music_NationalPark_branch_f57c8:
-	note A#, 2
-	note G_, 1
-	note G_, 1
-	note D_, 2
-	note G_, 1
-	note G_, 1
-	note A#, 2
-	note G_, 1
-	note G_, 1
-	note D_, 2
-	note B_, 2
+	drum_note 11, 2
+	drum_note 8, 1
+	drum_note 8, 1
+	drum_note 3, 2
+	drum_note 8, 1
+	drum_note 8, 1
+	drum_note 11, 2
+	drum_note 8, 1
+	drum_note 8, 1
+	drum_note 3, 2
+	drum_note 12, 2
 	sound_loop 7, Music_NationalPark_branch_f57c8
-	note A#, 2
-	note G_, 1
-	note G_, 1
-	note D_, 2
-	note G_, 1
-	note G_, 1
-	note A#, 2
-	note D#, 1
-	note D#, 1
-	note D_, 1
-	note D_, 1
-	note A#, 1
-	note D#, 1
+	drum_note 11, 2
+	drum_note 8, 1
+	drum_note 8, 1
+	drum_note 3, 2
+	drum_note 8, 1
+	drum_note 8, 1
+	drum_note 11, 2
+	drum_note 4, 1
+	drum_note 4, 1
+	drum_note 3, 1
+	drum_note 3, 1
+	drum_note 11, 1
+	drum_note 4, 1
 	sound_jump Music_NationalPark_branch_f57bd

@@ -217,13 +217,13 @@ Music_RoadToReversalMountainB2W2_Ch4:
 	toggle_noise 3
 	note_type 12
 Music_RoadToReversalMountainB2W2_Ch4_loop:
-	note C_, 4
-	note D#, 2
-	note D#, 2
-	note C_, 2
-	note D#, 1
-	note D#, 1
-	note C_, 2
-	note C_, 2
-	note D#, 2
+	drum_note 1, 4
+	drum_note 4, 2
+	drum_note 4, 2
+	drum_note 1, 2
+	drum_note 4, 1
+	drum_note 4, 1
+	drum_note 1, 2
+	drum_note 1, 2
+	drum_note 4, 2
 	sound_jump Music_RoadToReversalMountainB2W2_Ch4_loop

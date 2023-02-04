@@ -288,19 +288,19 @@ Music_CherrygroveCity_Ch4:
 	note_type 12
 	rest 16
 Music_CherrygroveCity_branch_f5c4d:
-	note C#, 2
+	drum_note 2, 2
 	rest 2
-	note G_, 2
-	note C#, 2
-	note C#, 2
-	note F#, 2
-	note C#, 4
-	note C#, 2
+	drum_note 8, 2
+	drum_note 2, 2
+	drum_note 2, 2
+	drum_note 7, 2
+	drum_note 2, 4
+	drum_note 2, 2
 	rest 2
-	note G_, 2
-	note C#, 1
-	note C#, 1
-	note F#, 4
-	note C#, 2
-	note G_, 2
+	drum_note 8, 2
+	drum_note 2, 1
+	drum_note 2, 1
+	drum_note 7, 4
+	drum_note 2, 2
+	drum_note 8, 2
 	sound_jump Music_CherrygroveCity_branch_f5c4d

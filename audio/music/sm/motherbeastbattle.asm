@@ -868,52 +868,52 @@ Music_MotherBeastBattleSM_Ch3_loop_2:
 Music_MotherBeastBattleSM_Ch4:
 	toggle_noise 3
 	sound_call Music_MotherBeastBattleSM_Ch4_buildup
-	note C_, 2 ;
-	note C#, 1
-	note C#, 3
-	note C_, 2
-	note C#, 1 ;
-	note F#, 2
-	note F#, 1
-	note C#, 1
-	note F#, 1
-	note E_, 4 ;
-	note C#, 1
-	note F#, 1
-	note F#, 1
-	note F#, 2
-	note F#, 1
-	note C_, 2 ;
-	note F#, 1
-	note F#, 1
-	note E_, 2
-	note E_, 2
-	note C_, 1 ;
-	note C#, 1
-	note C#, 1
-	note C_, 1
-	note C#, 1
-	note C#, 1
-	note C_, 2
-	note E_, 3 ;
-	note F#, 1
-	note C#, 2
-	note C#, 2
-	note F#, 1 ;
-	note C#, 1
-	note A#, 2
-	note C#, 1
-	note C#, 3
-	note A#, 4 ;
-	note C_, 16
+	drum_note 1, 2 ;
+	drum_note 2, 1
+	drum_note 2, 3
+	drum_note 1, 2
+	drum_note 2, 1 ;
+	drum_note 7, 2
+	drum_note 7, 1
+	drum_note 2, 1
+	drum_note 7, 1
+	drum_note 5, 4 ;
+	drum_note 2, 1
+	drum_note 7, 1
+	drum_note 7, 1
+	drum_note 7, 2
+	drum_note 7, 1
+	drum_note 1, 2 ;
+	drum_note 7, 1
+	drum_note 7, 1
+	drum_note 5, 2
+	drum_note 5, 2
+	drum_note 1, 1 ;
+	drum_note 2, 1
+	drum_note 2, 1
+	drum_note 1, 1
+	drum_note 2, 1
+	drum_note 2, 1
+	drum_note 1, 2
+	drum_note 5, 3 ;
+	drum_note 7, 1
+	drum_note 2, 2
+	drum_note 2, 2
+	drum_note 7, 1 ;
+	drum_note 2, 1
+	drum_note 11, 2
+	drum_note 2, 1
+	drum_note 2, 3
+	drum_note 11, 4 ;
+	drum_note 1, 16
 	rest 2
-	note F#, 2
-	note E_, 6
-	note C_, 1
-	note C_, 1
-	note C_, 1
-	note C_, 1
-	note B_, 12
+	drum_note 7, 2
+	drum_note 5, 6
+	drum_note 1, 1
+	drum_note 1, 1
+	drum_note 1, 1
+	drum_note 1, 1
+	drum_note 12, 12
 	rest 12
 	rest 12
 	rest 14
@@ -928,131 +928,131 @@ Music_MotherBeastBattleSM_Ch4_loop_main:
 	sound_call Music_MotherBeastBattleSM_Ch4_branch_1
 	sound_call Music_MotherBeastBattleSM_Ch4_branch_3
 	note_type 12
-	note C_, 12
-	note D#, 12
-	note D#, 12
-	note D#, 6
-	note D#, 2
-	note C_, 4
-	note C_, 12
-	note D#, 12
-	note D#, 12
-	note D#, 6
-	note D#, 2
-	note C_, 4
+	drum_note 1, 12
+	drum_note 4, 12
+	drum_note 4, 12
+	drum_note 4, 6
+	drum_note 4, 2
+	drum_note 1, 4
+	drum_note 1, 12
+	drum_note 4, 12
+	drum_note 4, 12
+	drum_note 4, 6
+	drum_note 4, 2
+	drum_note 1, 4
 Music_MotherBeastBattleSM_Ch4_loop_1:
-	note C_, 3
-	note C_, 3
-	note C_, 3
-	note C_, 1
-	note D#, 2
+	drum_note 1, 3
+	drum_note 1, 3
+	drum_note 1, 3
+	drum_note 1, 1
+	drum_note 4, 2
 	sound_loop 11, Music_MotherBeastBattleSM_Ch4_loop_1
-	note C_, 8
+	drum_note 1, 8
 	sound_jump Music_MotherBeastBattleSM_Ch4_loop_main
 
 Music_MotherBeastBattleSM_Ch4_branch_1:
-	note C_, 6
-	note C_, 2
-	note D#, 2
-	note D#, 1
-	note D#, 1
-	note C_, 2
-	note D#, 2
-	note E_, 2
-	note C_, 2
-	note E_, 1
-	note E_, 1
-	note D#, 2
-	note C_, 2
-	note D#, 2
-	note C_, 2
-	note G#, 1
-	note G#, 1
-	note C_, 2
-	note F#, 2
-	note F#, 2
-	note C_, 2
-	note D#, 2
-	note E_, 1
-	note E_, 1
-	note C_, 2
-	note D#, 2
+	drum_note 1, 6
+	drum_note 1, 2
+	drum_note 4, 2
+	drum_note 4, 1
+	drum_note 4, 1
+	drum_note 1, 2
+	drum_note 4, 2
+	drum_note 5, 2
+	drum_note 1, 2
+	drum_note 5, 1
+	drum_note 5, 1
+	drum_note 4, 2
+	drum_note 1, 2
+	drum_note 4, 2
+	drum_note 1, 2
+	drum_note 9, 1
+	drum_note 9, 1
+	drum_note 1, 2
+	drum_note 7, 2
+	drum_note 7, 2
+	drum_note 1, 2
+	drum_note 4, 2
+	drum_note 5, 1
+	drum_note 5, 1
+	drum_note 1, 2
+	drum_note 4, 2
 	sound_ret
 
 Music_MotherBeastBattleSM_Ch4_branch_2:
-	note C_, 2
-	note D#, 2
-	note E_, 1
-	note E_, 1
-	note C_, 2
-	note F#, 2
-	note D#, 1
-	note E_, 1
-	note C_, 2
-	note F#, 1
-	note F#, 1
-	note C#, 2
-	note C_, 2
-	note F#, 1
-	note F#, 1
-	note C#, 2
-	note C_, 4
-	note C_, 4
-	note C_, 2
-	note D#, 2
-	note D#, 2
-	note C_, 2
-	note C_, 2
-	note D#, 2
-	note C_, 2
-	note D#, 2
+	drum_note 1, 2
+	drum_note 4, 2
+	drum_note 5, 1
+	drum_note 5, 1
+	drum_note 1, 2
+	drum_note 7, 2
+	drum_note 4, 1
+	drum_note 5, 1
+	drum_note 1, 2
+	drum_note 7, 1
+	drum_note 7, 1
+	drum_note 2, 2
+	drum_note 1, 2
+	drum_note 7, 1
+	drum_note 7, 1
+	drum_note 2, 2
+	drum_note 1, 4
+	drum_note 1, 4
+	drum_note 1, 2
+	drum_note 4, 2
+	drum_note 4, 2
+	drum_note 1, 2
+	drum_note 1, 2
+	drum_note 4, 2
+	drum_note 1, 2
+	drum_note 4, 2
 	sound_ret
 
 Music_MotherBeastBattleSM_Ch4_branch_3:
-	note C_, 6
-	note C_, 2
-	note D#, 2
-	note D#, 1
-	note D#, 1
-	note C_, 2
-	note D#, 2
-	note E_, 2
-	note C_, 2
-	note E_, 1
-	note E_, 1
-	note D#, 2
-	note C_, 2
-	note D#, 2
-	note C_, 2
-	note G#, 1
-	note G#, 1
-	note C_, 2
-	note F#, 2
-	note F#, 2
-	note C_, 2
-	note D#, 2
-	note C_, 2
-	note C_, 1
-	note E_, 3
+	drum_note 1, 6
+	drum_note 1, 2
+	drum_note 4, 2
+	drum_note 4, 1
+	drum_note 4, 1
+	drum_note 1, 2
+	drum_note 4, 2
+	drum_note 5, 2
+	drum_note 1, 2
+	drum_note 5, 1
+	drum_note 5, 1
+	drum_note 4, 2
+	drum_note 1, 2
+	drum_note 4, 2
+	drum_note 1, 2
+	drum_note 9, 1
+	drum_note 9, 1
+	drum_note 1, 2
+	drum_note 7, 2
+	drum_note 7, 2
+	drum_note 1, 2
+	drum_note 4, 2
+	drum_note 1, 2
+	drum_note 1, 1
+	drum_note 5, 3
 	sound_ret
 
 Music_MotherBeastBattleSM_Ch4_buildup:
 	note_type 3
-	note G_, 1
-	note G_, 1
-	note G_, 1
-	note G_, 1
-	note G_, 1
-	note G_, 1
-	note G_, 1
-	note G_, 1
-	note F#, 1
-	note F#, 1
-	note F#, 1
-	note F#, 1
-	note F#, 1
-	note F#, 1
-	note F#, 1
-	note F#, 1
+	drum_note 8, 1
+	drum_note 8, 1
+	drum_note 8, 1
+	drum_note 8, 1
+	drum_note 8, 1
+	drum_note 8, 1
+	drum_note 8, 1
+	drum_note 8, 1
+	drum_note 7, 1
+	drum_note 7, 1
+	drum_note 7, 1
+	drum_note 7, 1
+	drum_note 7, 1
+	drum_note 7, 1
+	drum_note 7, 1
+	drum_note 7, 1
 	note_type 6
 	sound_ret

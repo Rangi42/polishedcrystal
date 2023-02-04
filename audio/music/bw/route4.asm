@@ -535,64 +535,64 @@ Music_Route4BW_Ch4:
 Music_Route4BW_Ch4_branch_1:
 	note_type 12
 	sound_call Music_Route4BW_Ch4_branch_2
-	note D_, 1
-	note D#, 1
-	note D#, 1
-	note D_, 1
+	drum_note 3, 1
+	drum_note 4, 1
+	drum_note 4, 1
+	drum_note 3, 1
 	sound_call Music_Route4BW_Ch4_branch_2
 	note_type 6
-	note D#, 1
-	note D#, 1
-	note D#, 1
-	note D#, 1
-	note D#, 1
-	note D_, 1
-	note D_, 1
-	note D_, 1
+	drum_note 4, 1
+	drum_note 4, 1
+	drum_note 4, 1
+	drum_note 4, 1
+	drum_note 4, 1
+	drum_note 3, 1
+	drum_note 3, 1
+	drum_note 3, 1
 	sound_loop 6, Music_Route4BW_Ch4_branch_1
 	sound_call Music_Route4BW_Ch4_branch_3
 	sound_call Music_Route4BW_Ch4_branch_3
 	note_type 12
-	note D_, 10
-	note D#, 1
-	note D_, 3
-	note D#, 1
-	note D#, 1
+	drum_note 3, 10
+	drum_note 4, 1
+	drum_note 3, 3
+	drum_note 4, 1
+	drum_note 4, 1
 	note_type 8
-	note D_, 4
-	note D_, 4
-	note D_, 4
+	drum_note 3, 4
+	drum_note 3, 4
+	drum_note 3, 4
 	note_type 6
-	note B_, 12
-	note D#, 1
-	note D#, 1
-	note D#, 1
-	note D_, 1
+	drum_note 12, 12
+	drum_note 4, 1
+	drum_note 4, 1
+	drum_note 4, 1
+	drum_note 3, 1
 	sound_jump Music_Route4BW_Ch4_branch_1
 
 Music_Route4BW_Ch4_branch_2:
-	note D_, 2
-	note D#, 1
-	note D#, 1
-	note D_, 2
-	note D#, 1
-	note D#, 1
-	note D_, 2
-	note D#, 1
-	note D#, 1
+	drum_note 3, 2
+	drum_note 4, 1
+	drum_note 4, 1
+	drum_note 3, 2
+	drum_note 4, 1
+	drum_note 4, 1
+	drum_note 3, 2
+	drum_note 4, 1
+	drum_note 4, 1
 	sound_ret
 
 Music_Route4BW_Ch4_branch_3:
 	note_type 12
-	note D_, 16
+	drum_note 3, 16
 	rest 12
 	note_type 6
-	note D#, 1
-	note D#, 1
-	note D#, 1
-	note D#, 1
-	note D#, 1
-	note D_, 1
-	note D_, 1
-	note D_, 1
+	drum_note 4, 1
+	drum_note 4, 1
+	drum_note 4, 1
+	drum_note 4, 1
+	drum_note 4, 1
+	drum_note 3, 1
+	drum_note 3, 1
+	drum_note 3, 1
 	sound_ret

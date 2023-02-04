@@ -607,68 +607,68 @@ Music_EliteFourBattleSM_Ch4:
 	rest 16
 	rest 16
 	rest 8
-	note C#, 1
-	note C#, 2
-	note C#, 1
-	note C#, 2
-	note C_, 1
-	note C_, 1
+	drum_note 2, 1
+	drum_note 2, 2
+	drum_note 2, 1
+	drum_note 2, 2
+	drum_note 1, 1
+	drum_note 1, 1
 Music_EliteFourBattleSM_Ch4_loop_main:
 Music_EliteFourBattleSM_Ch4_loop_1:
 	note_type 6
-	note D#, 4
-	note C_, 2
-	note G#, 1
-	note G_, 1
-	note D#, 2
-	note D#, 2
-	note C_, 4
+	drum_note 4, 4
+	drum_note 1, 2
+	drum_note 9, 1
+	drum_note 8, 1
+	drum_note 4, 2
+	drum_note 4, 2
+	drum_note 1, 4
 	sound_loop 16, Music_EliteFourBattleSM_Ch4_loop_1
-	note B_, 16
+	drum_note 12, 16
 	rest 16
 	rest 16
 	rest 16
 Music_EliteFourBattleSM_Ch4_loop_2:
-	note C#, 1
-	note C#, 1
-	note C#, 2
-	note C#, 2
-	note C#, 1
-	note C#, 1
-	note C#, 1
-	note C#, 2
-	note C#, 1
-	note C#, 1
-	note C#, 1
-	note C#, 1
-	note C#, 1
+	drum_note 2, 1
+	drum_note 2, 1
+	drum_note 2, 2
+	drum_note 2, 2
+	drum_note 2, 1
+	drum_note 2, 1
+	drum_note 2, 1
+	drum_note 2, 2
+	drum_note 2, 1
+	drum_note 2, 1
+	drum_note 2, 1
+	drum_note 2, 1
+	drum_note 2, 1
 	sound_loop 11, Music_EliteFourBattleSM_Ch4_loop_2
-	note B_, 2
-	note C_, 1
-	note C_, 1
-	note B_, 2
-	note C_, 1
-	note C_, 1
-	note B_, 2
-	note C_, 1
-	note C_, 1
-	note B_, 2
-	note C_, 1
-	note C_, 1
+	drum_note 12, 2
+	drum_note 1, 1
+	drum_note 1, 1
+	drum_note 12, 2
+	drum_note 1, 1
+	drum_note 1, 1
+	drum_note 12, 2
+	drum_note 1, 1
+	drum_note 1, 1
+	drum_note 12, 2
+	drum_note 1, 1
+	drum_note 1, 1
 Music_EliteFourBattleSM_Ch4_loop_3:
-	note C_, 1
-	note C_, 1
-	note C_, 1
-	note C_, 1
-	note C_, 2
-	note C_, 1
-	note C_, 1
-	note C_, 1
-	note C_, 1
-	note C_, 2
-	note C_, 1
-	note C_, 1
-	note C_, 1
-	note C_, 1
+	drum_note 1, 1
+	drum_note 1, 1
+	drum_note 1, 1
+	drum_note 1, 1
+	drum_note 1, 2
+	drum_note 1, 1
+	drum_note 1, 1
+	drum_note 1, 1
+	drum_note 1, 1
+	drum_note 1, 2
+	drum_note 1, 1
+	drum_note 1, 1
+	drum_note 1, 1
+	drum_note 1, 1
 	sound_loop 8, Music_EliteFourBattleSM_Ch4_loop_3
 	sound_jump Music_EliteFourBattleSM_Ch4_loop_main

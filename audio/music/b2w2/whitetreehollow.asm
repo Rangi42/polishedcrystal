@@ -988,33 +988,33 @@ Music_WhiteTreehollowWhite2_Ch4:
 	note_type 12
 Music_WhiteTreehollowWhite2_Ch4_loop_main:
 Music_WhiteTreehollowWhite2_Ch4_loop_1:
-	note D#, 4
-	note C_, 3
-	note D#, 3
-	note D#, 2
-	note C_, 4
+	drum_note 4, 4
+	drum_note 1, 3
+	drum_note 4, 3
+	drum_note 4, 2
+	drum_note 1, 4
 	sound_loop 10, Music_WhiteTreehollowWhite2_Ch4_loop_1
 Music_WhiteTreehollowWhite2_Ch4_loop_2:
-	note C#, 1
-	note C#, 1
-	note C#, 1
-	note C#, 1
-	note C_, 1
-	note C#, 1
-	note C#, 1
-	note C#, 1
+	drum_note 2, 1
+	drum_note 2, 1
+	drum_note 2, 1
+	drum_note 2, 1
+	drum_note 1, 1
+	drum_note 2, 1
+	drum_note 2, 1
+	drum_note 2, 1
 	sound_loop 8, Music_WhiteTreehollowWhite2_Ch4_loop_2
 	rest 16
 	rest 16
 	rest 16
 	rest 16
 Music_WhiteTreehollowWhite2_Ch4_loop_3:
-	note D#, 4
-	note C_, 3
-	note D#, 2
-	note D#, 2
-	note D#, 1
-	note C_, 1
-	note C_, 3
+	drum_note 4, 4
+	drum_note 1, 3
+	drum_note 4, 2
+	drum_note 4, 2
+	drum_note 4, 1
+	drum_note 1, 1
+	drum_note 1, 3
 	sound_loop 6, Music_WhiteTreehollowWhite2_Ch4_loop_3
 	sound_jump Music_WhiteTreehollowWhite2_Ch4_loop_main
