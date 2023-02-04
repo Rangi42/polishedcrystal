@@ -96,7 +96,7 @@ Music_Route37_branch_ee9a5:
 	note __, 4
 	callchannel Music_Route37_branch_ee9e9
 	note __, 4
-	jumpchannel Music_Route37_branch_ee969
+	sound_jump Music_Route37_branch_ee969
 
 Music_Route37_branch_ee9da:
 	volume_envelope 12, 2
@@ -270,7 +270,7 @@ Music_Route37_branch_eea24:
 	note F#, 1
 	volume_envelope 12, 2
 	note F#, 2
-	jumpchannel Music_Route37_branch_eea24
+	sound_jump Music_Route37_branch_eea24
 
 Music_Route37_branch_eeab7:
 	volume_envelope 12, 7
@@ -360,7 +360,7 @@ Music_Route37_branch_eeb28:
 	note F#, 2
 	note __, 6
 	loopchannel 4, Music_Route37_branch_eeb28
-	jumpchannel Music_Route37_branch_eead3
+	sound_jump Music_Route37_branch_eead3
 
 Music_Route37_branch_eeb32:
 	octave 2
@@ -413,7 +413,7 @@ Music_Route37_branch_eeb51:
 	note D_, 1
 	note D_, 1
 	note D_, 1
-	jumpchannel Music_Route37_branch_eeb51
+	sound_jump Music_Route37_branch_eeb51
 
 Music_Route37_branch_eeb6b:
 	note D_, 2

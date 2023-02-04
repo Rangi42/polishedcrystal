@@ -245,7 +245,7 @@ Music_TitleScreenXY_Ch1_b3:
 	note D#, 12
 	note __, 16
 	note __, 16
-	jumpchannel Music_TitleScreenXY_Ch1_b0
+	sound_jump Music_TitleScreenXY_Ch1_b0
 
 Music_TitleScreenXY_Ch1_b5:
 	octave 3
@@ -529,7 +529,7 @@ Music_TitleScreenXY_Ch2_b4:
 	note __, 10
 	note __, 16
 	note __, 16
-	jumpchannel Music_TitleScreenXY_Ch2_b0
+	sound_jump Music_TitleScreenXY_Ch2_b0
 
 Music_TitleScreenXY_Ch3:
 	stereo_panning TRUE, TRUE
@@ -817,7 +817,7 @@ Music_TitleScreenXY_Ch3_b1:
 	note __, 10
 	note __, 16
 	note __, 16
-	jumpchannel Music_TitleScreenXY_Ch3_b0
+	sound_jump Music_TitleScreenXY_Ch3_b0
 
 Music_TitleScreenXY_Ch3_b2:
 	octave 2
@@ -957,7 +957,7 @@ Music_TitleScreenXY_Ch4_b1:
 	note __, 12
 	note __, 16
 	note __, 16
-	jumpchannel Music_TitleScreenXY_Ch4_b0
+	sound_jump Music_TitleScreenXY_Ch4_b0
 
 Music_TitleScreenXY_Ch4_b2:
 	note SNARE2, 8

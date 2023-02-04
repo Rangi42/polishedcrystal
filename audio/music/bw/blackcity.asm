@@ -149,7 +149,7 @@ Music_BlackCityBW_Ch1_loop:
 	note G_, 4
 	octave 2
 	note B_, 4
-	jumpchannel Music_BlackCityBW_Ch1_loop
+	sound_jump Music_BlackCityBW_Ch1_loop
 
 Music_BlackCityBW_Ch1_branch_1:
 	octave 4
@@ -379,7 +379,7 @@ Music_BlackCityBW_Ch2:
 	note G_, 2
 	volume_envelope 11, 7
 	note G_, 10
-	jumpchannel Music_BlackCityBW_Ch2
+	sound_jump Music_BlackCityBW_Ch2
 
 Music_BlackCityBW_Ch3:
 	note_type 12, 2, 4
@@ -413,7 +413,7 @@ Music_BlackCityBW_Ch3_loop:
 	note C_, 8
 	octave 3
 	note B_, 8
-	jumpchannel Music_BlackCityBW_Ch3_loop
+	sound_jump Music_BlackCityBW_Ch3_loop
 
 Music_BlackCityBW_Ch4:
 	toggle_noise 3
@@ -482,7 +482,7 @@ Music_BlackCityBW_Ch4_loop_1:
 	note D#, 1
 	note D#, 1
 	note D#, 1
-	jumpchannel Music_BlackCityBW_Ch4_loop_main
+	sound_jump Music_BlackCityBW_Ch4_loop_main
 
 Music_BlackCityBW_Ch4_branch_1:
 	note B_, 8

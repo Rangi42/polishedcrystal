@@ -10,7 +10,7 @@ Music_JohtoWildBattleNight_Ch1:
 	duty_cycle 3
 	pitch_offset 2
 	vibrato $10, $25
-	jumpchannel Music_JohtoWildBattleNight_branch_f5ddb
+	sound_jump Music_JohtoWildBattleNight_branch_f5ddb
 
 Music_JohtoWildBattleNight_Ch2:
 	duty_cycle 3
@@ -22,8 +22,8 @@ Music_JohtoWildBattleNight_Ch2:
 	note G_, 6
 	pitch_offset 1
 	duty_cycle 2
-	jumpchannel Music_JohtoWildBattleNight_branch_f5eb2
+	sound_jump Music_JohtoWildBattleNight_branch_f5eb2
 
 Music_JohtoWildBattleNight_Ch3:
 	note_type 12, 1, 1
-	jumpchannel Music_JohtoWildBattleNight_branch_f5f94
+	sound_jump Music_JohtoWildBattleNight_branch_f5f94

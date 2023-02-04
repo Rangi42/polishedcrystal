@@ -92,7 +92,7 @@ Music_LakeOfRage_branch_ee6e9:
 	note D_, 6
 	volume_envelope 10, 7
 	note D_, 6
-	jumpchannel Music_LakeOfRage_branch_ee6e9
+	sound_jump Music_LakeOfRage_branch_ee6e9
 
 Music_LakeOfRage_Ch2:
 	duty_cycle 3
@@ -181,7 +181,7 @@ Music_LakeOfRage_branch_ee75e:
 	note F#, 4
 	note_type 12, 12, 7
 	note A_, 16
-	jumpchannel Music_LakeOfRage_branch_ee75e
+	sound_jump Music_LakeOfRage_branch_ee75e
 
 Music_LakeOfRage_Ch3:
 	stereo_panning FALSE, TRUE
@@ -294,7 +294,7 @@ Music_LakeOfRage_branch_ee7d0:
 	note D_, 2
 	octave 2
 	note A_, 2
-	jumpchannel Music_LakeOfRage_branch_ee7d0
+	sound_jump Music_LakeOfRage_branch_ee7d0
 
 Music_LakeOfRage_Ch4:
 	stereo_panning TRUE, FALSE
@@ -320,4 +320,4 @@ Music_LakeOfRage_branch_ee83b:
 	note D_, 1
 	note D_, 1
 	note D_, 1
-	jumpchannel Music_LakeOfRage_branch_ee83b
+	sound_jump Music_LakeOfRage_branch_ee83b

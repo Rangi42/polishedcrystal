@@ -111,7 +111,7 @@ Music_WildBattleGo_Ch1_loop_2:
 	duty_cycle_pattern 1, 1, 2, 2
 	octave 3
 	callchannel Music_WildBattleGo_Ch2_ditty2
-	jumpchannel Music_WildBattleGo_Ch1_loop
+	sound_jump Music_WildBattleGo_Ch1_loop
 
 Music_WildBattleGo_Ch1_ditty1:
 	note D_, 4
@@ -282,7 +282,7 @@ Music_WildBattleGo_Ch2_loop_1:
 	note D_, 1
 	note __, 9
 	callchannel Music_WildBattleGo_Ch2_ditty2
-	jumpchannel Music_WildBattleGo_Ch2_loop
+	sound_jump Music_WildBattleGo_Ch2_loop
 
 Music_WildBattleGo_Ch2_ditty1:
 	note D_, 6
@@ -429,7 +429,7 @@ Music_WildBattleGo_Ch3_loop_8:
 	note D_, 2
 	note A_, 2
 	loopchannel 7, Music_WildBattleGo_Ch3_loop_8
-	jumpchannel Music_WildBattleGo_Ch3_loop
+	sound_jump Music_WildBattleGo_Ch3_loop
 
 Music_WildBattleGo_Ch4:
 	note_type 12
@@ -485,7 +485,7 @@ Music_WildBattleGo_Ch4_loop_2:
 	note __, 1
 	note C#, 1
 	note __, 1
-	jumpchannel Music_WildBattleGo_Ch4_loop
+	sound_jump Music_WildBattleGo_Ch4_loop
 
 Music_WildBattleGo_Ch4_ditty1:
 	note D_, 1

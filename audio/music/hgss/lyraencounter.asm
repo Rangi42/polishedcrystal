@@ -184,7 +184,7 @@ Music_LyraEncounterHGSS_Ch1_loop:
 	note D_, 1
 	note D#, 2
 	note F_, 3
-	jumpchannel Music_LyraEncounterHGSS_Ch1_loop
+	sound_jump Music_LyraEncounterHGSS_Ch1_loop
 
 Music_LyraEncounterHGSS_Ch2:
 	duty_cycle 2
@@ -296,7 +296,7 @@ Music_LyraEncounterHGSS_Ch2_loop:
 	volume_envelope 11, 7
 	note A#, 9
 	note __, 8
-	jumpchannel Music_LyraEncounterHGSS_Ch2_loop
+	sound_jump Music_LyraEncounterHGSS_Ch2_loop
 
 Music_LyraEncounterHGSS_Ch3:
 	note_type 12, 1, 5
@@ -485,7 +485,7 @@ Music_LyraEncounterHGSS_Ch3_loop:
 	octave 3
 	note C_, 2
 	note D_, 3
-	jumpchannel Music_LyraEncounterHGSS_Ch3_loop
+	sound_jump Music_LyraEncounterHGSS_Ch3_loop
 
 Music_LyraEncounterHGSS_Ch4:
 	toggle_noise 3
@@ -509,4 +509,4 @@ Music_LyraEncounterHGSS_Ch4_loop:
 	note C_, 4
 	note D#, 2
 	note D#, 2
-	jumpchannel Music_LyraEncounterHGSS_Ch4_loop
+	sound_jump Music_LyraEncounterHGSS_Ch4_loop

@@ -173,7 +173,7 @@ Music_DewfordTownRSE_Ch1_b1:
 	note __, 1
 	note G_, 6
 	note __, 6
-	jumpchannel Music_DewfordTownRSE_Ch1_b0
+	sound_jump Music_DewfordTownRSE_Ch1_b0
 
 Music_DewfordTownRSE_Ch2:
 	stereo_panning TRUE, FALSE
@@ -460,7 +460,7 @@ Music_DewfordTownRSE_Ch2_b0:
 	note __, 2
 	note D#, 2
 	note __, 6
-	jumpchannel Music_DewfordTownRSE_Ch2_b0
+	sound_jump Music_DewfordTownRSE_Ch2_b0
 
 Music_DewfordTownRSE_Ch3:
 	stereo_panning TRUE, TRUE
@@ -843,7 +843,7 @@ Music_DewfordTownRSE_Ch3_b0:
 	note __, 1
 	note D#, 16
 	note __, 8
-	jumpchannel Music_DewfordTownRSE_Ch3_b0
+	sound_jump Music_DewfordTownRSE_Ch3_b0
 
 Music_DewfordTownRSE_Ch4:
 	toggle_noise 2
@@ -910,4 +910,4 @@ Music_DewfordTownRSE_Ch4_b5:
 	note 1, 3
 	note 1, 4
 	note 1, 2
-	jumpchannel Music_DewfordTownRSE_Ch4_b0
+	sound_jump Music_DewfordTownRSE_Ch4_b0

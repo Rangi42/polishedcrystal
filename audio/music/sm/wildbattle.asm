@@ -236,7 +236,7 @@ Music_WildBattleSM_Ch1_loop_1:
 	note __, 16
 	note __, 16
 	note __, 16
-	jumpchannel Music_WildBattleSM_Ch1_loop_main
+	sound_jump Music_WildBattleSM_Ch1_loop_main
 
 Music_WildBattleSM_Ch2:
 	duty_cycle 3
@@ -475,7 +475,7 @@ Music_WildBattleSM_Ch2_loop_main:
 	note __, 16
 	note __, 16
 	note __, 14
-	jumpchannel Music_WildBattleSM_Ch2_loop_main
+	sound_jump Music_WildBattleSM_Ch2_loop_main
 
 Music_WildBattleSM_Ch3:
 	note_type 3, 1, -1
@@ -850,7 +850,7 @@ Music_WildBattleSM_Ch3_loop_3:
 	note F_, 4
 	note G_, 4
 	note C_, 8
-	jumpchannel Music_WildBattleSM_Ch3_loop_main
+	sound_jump Music_WildBattleSM_Ch3_loop_main
 
 Music_WildBattleSM_Ch4:
 	toggle_noise 3
@@ -1115,7 +1115,7 @@ Music_WildBattleSM_Ch4_loop_main:
 	note D#, 2
 	note C_, 4
 	note C_, 2
-	jumpchannel Music_WildBattleSM_Ch4_loop_main
+	sound_jump Music_WildBattleSM_Ch4_loop_main
 
 Music_WildBattleSM_Ch4_branch_1:
 	note D#, 4

@@ -159,7 +159,7 @@ Music_RivalBattleXY_Ch1_loop_1:
 	note G_, 4
 	note C_, 10
 	note __, 8
-	jumpchannel Music_RivalBattleXY_Ch1_loop_main
+	sound_jump Music_RivalBattleXY_Ch1_loop_main
 
 Music_RivalBattleXY_Ch1_branch_1:
 	note G_, 6
@@ -311,7 +311,7 @@ Music_RivalBattleXY_Ch2_loop:
 	note C_, 2
 	note __, 2
 	note C_, 4
-	jumpchannel Music_RivalBattleXY_Ch2_loop
+	sound_jump Music_RivalBattleXY_Ch2_loop
 
 Music_RivalBattleXY_Ch2_branch_1:
 	volume_envelope 11, 3
@@ -429,7 +429,7 @@ Music_RivalBattleXY_Ch3_loop_1:
 	note __, 1
 	note B_, 1
 	note __, 1
-	jumpchannel Music_RivalBattleXY_Ch3_loop_main
+	sound_jump Music_RivalBattleXY_Ch3_loop_main
 
 Music_RivalBattleXY_Ch3_branch_1:
 	octave 2
@@ -530,4 +530,4 @@ Music_RivalBattleXY_Ch4_loop:
 	note D#, 2
 	note C_, 2
 	note D#, 2
-	jumpchannel Music_RivalBattleXY_Ch4_loop
+	sound_jump Music_RivalBattleXY_Ch4_loop

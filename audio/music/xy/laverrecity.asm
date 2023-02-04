@@ -191,7 +191,7 @@ Music_LaverreCityXY_Ch1_branch_1:
 	note G#, 4
 	note F#, 4
 	note G#, 12
-	jumpchannel Music_LaverreCityXY_branch_ef2e5
+	sound_jump Music_LaverreCityXY_branch_ef2e5
 
 Music_LaverreCityXY_Ch2:
 	vibrato $12, $25
@@ -336,7 +336,7 @@ Music_LaverreCityXY_Ch2_branch_2:
 	note G#, 8
 	note G#, 2
 	note __, 2
-	jumpchannel Music_LaverreCityXY_branch_ef3f2
+	sound_jump Music_LaverreCityXY_branch_ef3f2
 
 Music_LaverreCityXY_Ch3:
 	stereo_panning TRUE, TRUE
@@ -559,7 +559,7 @@ Music_LaverreCityXY_Ch3_branch_1:
 	note G#, 4
 	note F#, 4
 	note G#, 12
-	jumpchannel Music_LaverreCityXY_branch_ef4e3
+	sound_jump Music_LaverreCityXY_branch_ef4e3
 
 Music_LaverreCityXY_Ch4:
 	toggle_noise 3
@@ -608,7 +608,7 @@ Music_LaverreCityXY_Ch4_loop:
 	callchannel Music_LaverreCityXY_Ch4_branch_1
 	callchannel Music_LaverreCityXY_Ch4_branch_1
 	callchannel Music_LaverreCityXY_Ch4_branch_1
-	jumpchannel Music_LaverreCityXY_Ch4_loop
+	sound_jump Music_LaverreCityXY_Ch4_loop
 
 Music_LaverreCityXY_Ch4_branch_1:
 	note_type 8

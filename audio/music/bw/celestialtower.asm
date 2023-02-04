@@ -203,7 +203,7 @@ Music_CelestialTowerBW_NoIntro_Ch1_loop_1:
 	note F_, 16
 	volume_envelope 7, 7
 	note F_, 15
-	jumpchannel Music_CelestialTowerBW_NoIntro_Ch1
+	sound_jump Music_CelestialTowerBW_NoIntro_Ch1
 
 Music_CelestialTowerBW_NoIntro_Ch2:
 	duty_cycle 3
@@ -393,7 +393,7 @@ Music_CelestialTowerBW_NoIntro_Ch2_loop_1:
 	note A#, 8
 	volume_envelope 6, 7
 	note A#, 8
-	jumpchannel Music_CelestialTowerBW_NoIntro_Ch2
+	sound_jump Music_CelestialTowerBW_NoIntro_Ch2
 
 Music_CelestialTowerBW_NoIntro_Ch3:
 	vibrato $0, $0
@@ -534,7 +534,7 @@ Music_CelestialTowerBW_NoIntro_Ch3:
 	note D_, 8
 	volume_envelope 3, 0
 	note D_, 8
-	jumpchannel Music_CelestialTowerBW_NoIntro_Ch3
+	sound_jump Music_CelestialTowerBW_NoIntro_Ch3
 
 Music_CelestialTowerBW_NoIntro_Ch4:
 	toggle_noise 4
@@ -566,7 +566,7 @@ Music_CelestialTowerBW_NoIntro_Ch4_loop_1:
 	note __, 16
 	loopchannel 4, Music_CelestialTowerBW_NoIntro_Ch4_loop_1
 	note __, 16
-	jumpchannel Music_CelestialTowerBW_NoIntro_Ch4
+	sound_jump Music_CelestialTowerBW_NoIntro_Ch4
 
 Music_CelestialTowerBW_NoIntro_Ch4_branch_1:
 	note C#, 1

@@ -38,7 +38,7 @@ Music_Evolution_branch_f0713:
 	callchannel Music_Evolution_branch_f0743
 	note_type 12, 10, 4
 	note G#, 4
-	jumpchannel Music_Evolution_branch_f0713
+	sound_jump Music_Evolution_branch_f0713
 
 Music_Evolution_branch_f0737:
 	note_type 12, 10, 2
@@ -92,7 +92,7 @@ Music_Evolution_branch_f0761:
 	octave 4
 	note C#, 4
 	octave 3
-	jumpchannel Music_Evolution_branch_f0761
+	sound_jump Music_Evolution_branch_f0761
 
 Music_Evolution_branch_f0787:
 	note_type 12, 11, 2
@@ -135,7 +135,7 @@ Music_Evolution_branch_f07a3:
 	callchannel Music_Evolution_branch_f07d5
 	octave 4
 	note C#, 4
-	jumpchannel Music_Evolution_branch_f07a3
+	sound_jump Music_Evolution_branch_f07a3
 
 Music_Evolution_branch_f07bf:
 	octave 2
@@ -197,4 +197,4 @@ Music_Evolution_branch_f07f0:
 	note E_, 2
 	note E_, 2
 	note E_, 2
-	jumpchannel Music_Evolution_branch_f07f0
+	sound_jump Music_Evolution_branch_f07f0

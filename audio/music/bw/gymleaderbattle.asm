@@ -682,7 +682,7 @@ GymLeaderBattleBWChannel1_Loop:
 	octave 1
 	note G_, 8
 	octave 5
-	jumpchannel GymLeaderBattleBWChannel1_Loop
+	sound_jump GymLeaderBattleBWChannel1_Loop
 	endchannel
 
 GymLeaderBattleBW_Channel2:
@@ -1142,7 +1142,7 @@ GymLeaderBattleBWChannel2_Loop:
 	note __, 16
 	note __, 16
 	note __, 16
-	jumpchannel GymLeaderBattleBWChannel2_Loop
+	sound_jump GymLeaderBattleBWChannel2_Loop
 	endchannel
 
 GymLeaderBattleBW_Channel3:
@@ -2166,7 +2166,7 @@ GymLeaderBattleBWChannel3_Loop:
 	note C_, 4
 	octave 3
 	note C_, 4
-	jumpchannel GymLeaderBattleBWChannel3_Loop
+	sound_jump GymLeaderBattleBWChannel3_Loop
 	endchannel
 
 GymLeaderBattleBW_Channel4:
@@ -2551,5 +2551,5 @@ GymLeaderBattleBWChannel4_Loop:
 	note C_, 4
 	note C_, 4
 	note C#, 8
-	jumpchannel GymLeaderBattleBWChannel4_Loop
+	sound_jump GymLeaderBattleBWChannel4_Loop
 	endchannel

@@ -317,7 +317,7 @@ Music_MeteorFallsRSE_Ch1_loop_main:
 	note A#, 16
 	volume_envelope 8, 7
 	note A#, 8
-	jumpchannel Music_MeteorFallsRSE_Ch1_loop_main
+	sound_jump Music_MeteorFallsRSE_Ch1_loop_main
 
 Music_MeteorFallsRSE_Ch2:
 	vibrato $6, $23
@@ -501,7 +501,7 @@ Music_MeteorFallsRSE_Ch2:
 	volume_envelope 11, 7
 	note D#, 6
 	note D_, 6
-	jumpchannel Music_MeteorFallsRSE_Ch2
+	sound_jump Music_MeteorFallsRSE_Ch2
 
 Music_MeteorFallsRSE_Ch3:
 	vibrato $16, $15
@@ -640,4 +640,4 @@ Music_MeteorFallsRSE_Ch3_loop_main:
 	note A#, 4
 	note G#, 4
 	note F_, 4
-	jumpchannel Music_MeteorFallsRSE_Ch3_loop_main
+	sound_jump Music_MeteorFallsRSE_Ch3_loop_main

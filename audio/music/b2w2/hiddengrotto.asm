@@ -35,7 +35,7 @@ Music_HiddenGrottoB2W2_Ch1:
 	octave 4
 	note C_, 16
 	note __, 4
-	jumpchannel Music_HiddenGrottoB2W2_Ch1
+	sound_jump Music_HiddenGrottoB2W2_Ch1
 
 Music_HiddenGrottoB2W2_Ch1_branch_1:
 	octave 4
@@ -88,7 +88,7 @@ Music_HiddenGrottoB2W2_Ch2_loop:
 	octave 4
 	note C_, 4
 	note __, 16
-	jumpchannel Music_HiddenGrottoB2W2_Ch2_loop
+	sound_jump Music_HiddenGrottoB2W2_Ch2_loop
 
 Music_HiddenGrottoB2W2_Ch3:
 	vibrato $12, $15
@@ -118,7 +118,7 @@ Music_HiddenGrottoB2W2_Ch3:
 	note G_, 2
 	note __, 16
 	note __, 2
-	jumpchannel Music_HiddenGrottoB2W2_Ch3
+	sound_jump Music_HiddenGrottoB2W2_Ch3
 
 Music_HiddenGrottoB2W2_Ch4:
 	note_type 6
@@ -169,4 +169,4 @@ Music_HiddenGrottoB2W2_Ch4_loop:
 	note D#, 1
 	note D#, 16
 	note __, 9
-	jumpchannel Music_HiddenGrottoB2W2_Ch4_loop
+	sound_jump Music_HiddenGrottoB2W2_Ch4_loop

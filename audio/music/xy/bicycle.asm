@@ -148,7 +148,7 @@ BicycleXY_Ch1_sub_0:
 	note __, 6
 	note G#, 8
 	note B_, 4
-	jumpchannel BicycleXY_Ch1_sub_0
+	sound_jump BicycleXY_Ch1_sub_0
 
 BicycleXY_Ch2::
 	duty_cycle 1
@@ -304,7 +304,7 @@ BicycleXY_Ch2_sub_0:
 	note D#, 2
 	note C#, 8
 	note D#, 4
-	jumpchannel BicycleXY_Ch2_sub_0
+	sound_jump BicycleXY_Ch2_sub_0
 
 BicycleXY_Ch3::
 	stereo_panning TRUE, TRUE
@@ -499,7 +499,7 @@ BicycleXY_Ch3_sub_0:
 	note D#, 2
 	note F#, 2
 	note B_, 4
-	jumpchannel BicycleXY_Ch3_sub_0
+	sound_jump BicycleXY_Ch3_sub_0
 
 BicycleXY_Ch4::
 	toggle_noise 3
@@ -527,7 +527,7 @@ BicycleXY_Ch4_0:
 	note __, 4
 	note A#, 4
 	note B_, 8
-	jumpchannel BicycleXY_Ch4_0
+	sound_jump BicycleXY_Ch4_0
 
 BicycleXY_Ch4_sub_0:
 	note C#, 4

@@ -127,7 +127,7 @@ Music_Lighthouse_branch_ee584:
 	note B_, 2
 	note A_, 2
 	note G#, 8
-	jumpchannel Music_Lighthouse_branch_ee584
+	sound_jump Music_Lighthouse_branch_ee584
 
 Music_Lighthouse_Ch2:
 	duty_cycle 3
@@ -209,7 +209,7 @@ Music_Lighthouse_branch_ee604:
 	note D#, 2
 	note C#, 2
 	note C_, 8
-	jumpchannel Music_Lighthouse_branch_ee604
+	sound_jump Music_Lighthouse_branch_ee604
 
 Music_Lighthouse_Ch3:
 	note_type 12, 1, -1
@@ -287,7 +287,7 @@ Music_Lighthouse_branch_ee69b:
 	note F_, 2
 	note __, 2
 	loopchannel 8, Music_Lighthouse_branch_ee69b
-	jumpchannel Music_Lighthouse_branch_ee65b
+	sound_jump Music_Lighthouse_branch_ee65b
 
 Music_Lighthouse_Ch4:
 	toggle_noise 0
@@ -307,4 +307,4 @@ Music_Lighthouse_branch_ee6b1:
 	note F_, 4
 	note G#, 2
 	note A_, 2
-	jumpchannel Music_Lighthouse_branch_ee6b1
+	sound_jump Music_Lighthouse_branch_ee6b1

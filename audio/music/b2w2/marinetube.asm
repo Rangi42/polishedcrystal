@@ -464,7 +464,7 @@ Music_MarineTubeB2W2_Ch1:
 	note __, 16
 	note __, 16
 	note __, 16
-	jumpchannel Music_MarineTubeB2W2_Ch1
+	sound_jump Music_MarineTubeB2W2_Ch1
 
 Music_MarineTubeB2W2_Ch2:
 	vibrato $8, $26
@@ -667,7 +667,7 @@ Music_MarineTubeB2W2_Ch2:
 	octave 2
 	note A#, 2
 	note __, 2
-	jumpchannel Music_MarineTubeB2W2_Ch2
+	sound_jump Music_MarineTubeB2W2_Ch2
 
 Music_MarineTubeB2W2_Ch3:
 	note_type 12, 1, 2
@@ -918,7 +918,7 @@ Music_MarineTubeB2W2_Ch3:
 	note __, 1
 	note A#, 2
 	note __, 4
-	jumpchannel Music_MarineTubeB2W2_Ch3
+	sound_jump Music_MarineTubeB2W2_Ch3
 
 Music_MarineTubeB2W2_Ch4:
 	toggle_noise 3
@@ -1037,7 +1037,7 @@ Music_MarineTubeB2W2_Ch4_loop_3:
 	note D_, 2
 	note G_, 2
 	loopchannel 2, Music_MarineTubeB2W2_Ch4_loop_3
-	jumpchannel Music_MarineTubeB2W2_Ch4_loop_main
+	sound_jump Music_MarineTubeB2W2_Ch4_loop_main
 
 Music_MarineTubeB2W2_Ch4_branch_1:
 	note D_, 2

@@ -55,7 +55,7 @@ Music_GoldenrodCity_branch_eb46d:
 	note G#, 2
 	octave 4
 	note C_, 2
-	jumpchannel Music_GoldenrodCity_branch_eb46d
+	sound_jump Music_GoldenrodCity_branch_eb46d
 
 Music_GoldenrodCity_branch_eb4a9:
 	octave 4
@@ -212,7 +212,7 @@ Music_GoldenrodCity_branch_eb523:
 	note C_, 2
 	octave 4
 	note G#, 2
-	jumpchannel Music_GoldenrodCity_branch_eb523
+	sound_jump Music_GoldenrodCity_branch_eb523
 
 Music_GoldenrodCity_branch_eb555:
 	octave 4
@@ -287,7 +287,7 @@ Music_GoldenrodCity_branch_eb58c:
 	note D#, 2
 	octave 2
 	note G#, 2
-	jumpchannel Music_GoldenrodCity_branch_eb58c
+	sound_jump Music_GoldenrodCity_branch_eb58c
 
 Music_GoldenrodCity_branch_eb5aa:
 	octave 3
@@ -449,7 +449,7 @@ Music_GoldenrodCity_branch_eb650:
 	note F#, 2
 	loopchannel 3, Music_GoldenrodCity_branch_eb650
 	callchannel Music_GoldenrodCity_branch_eb663
-	jumpchannel Music_GoldenrodCity_branch_eb613
+	sound_jump Music_GoldenrodCity_branch_eb613
 
 Music_GoldenrodCity_branch_eb663:
 	note D#, 2

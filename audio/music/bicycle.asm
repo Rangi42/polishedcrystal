@@ -168,7 +168,7 @@ Music_Bicycle_branch_ee144:
 	note G_, 2
 	note G#, 2
 	note A_, 2
-	jumpchannel Music_Bicycle_branch_ee144
+	sound_jump Music_Bicycle_branch_ee144
 
 Music_Bicycle_Ch2:
 	duty_cycle 2
@@ -271,7 +271,7 @@ Music_Bicycle_branch_ee1fd:
 	note A_, 2
 	note G_, 2
 	note F#, 4
-	jumpchannel Music_Bicycle_branch_ee1fd
+	sound_jump Music_Bicycle_branch_ee1fd
 
 Music_Bicycle_branch_ee263:
 	note G_, 6
@@ -473,7 +473,7 @@ Music_Bicycle_branch_ee2e9:
 	note A_, 1
 	note __, 1
 	loopchannel 2, Music_Bicycle_branch_ee2e9
-	jumpchannel Music_Bicycle_branch_ee27f
+	sound_jump Music_Bicycle_branch_ee27f
 
 Music_Bicycle_branch_ee333:
 	octave 3
@@ -512,4 +512,4 @@ Music_Bicycle_branch_ee34c:
 	note F_, 2
 	note F_, 2
 	note F_, 2
-	jumpchannel Music_Bicycle_branch_ee34b
+	sound_jump Music_Bicycle_branch_ee34b

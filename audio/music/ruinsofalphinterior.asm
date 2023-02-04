@@ -11,7 +11,7 @@ Music_RuinsOfAlphInterior_Ch1:
 	stereo_panning TRUE, FALSE
 	note_type 12, 4, 4
 	note __, 1
-	jumpchannel Music_RuinsOfAlphInterior_branch_ebdc2
+	sound_jump Music_RuinsOfAlphInterior_branch_ebdc2
 
 Music_RuinsOfAlphInterior_Ch2:
 	pitch_offset 2
@@ -33,7 +33,7 @@ Music_RuinsOfAlphInterior_branch_ebdc2:
 	note C_, 4
 	octave 3
 	note A#, 4
-	jumpchannel Music_RuinsOfAlphInterior_branch_ebdc2
+	sound_jump Music_RuinsOfAlphInterior_branch_ebdc2
 
 Music_RuinsOfAlphInterior_Ch3:
 	note_type 12, 1, 0
@@ -44,4 +44,4 @@ Music_RuinsOfAlphInterior_branch_ebdd7:
 	note C#, 2
 	note E_, 2
 	note __, 10
-	jumpchannel Music_RuinsOfAlphInterior_branch_ebdd7
+	sound_jump Music_RuinsOfAlphInterior_branch_ebdd7

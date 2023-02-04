@@ -450,7 +450,7 @@ Music_EliteFourBattleBW_Ch1_loop_main:
 	note F#, 2
 	volume_envelope 10, 6
 	note F_, 10
-	jumpchannel Music_EliteFourBattleBW_Ch1_loop_main
+	sound_jump Music_EliteFourBattleBW_Ch1_loop_main
 
 Music_EliteFourBattleBW_Ch2:
 	duty_cycle 3
@@ -793,7 +793,7 @@ Music_EliteFourBattleBW_Ch2_loop_1:
 	note F_, 2
 	note F#, 3
 	note F_, 5
-	jumpchannel Music_EliteFourBattleBW_Ch2_loop_main
+	sound_jump Music_EliteFourBattleBW_Ch2_loop_main
 
 Music_EliteFourBattleBW_Ch2_branch_1:
 	volume_envelope 9, 1
@@ -992,7 +992,7 @@ Music_EliteFourBattleBW_Ch3_loop_6:
 	octave 1
 	note A#, 6
 	note G_, 4
-	jumpchannel Music_EliteFourBattleBW_Ch3_loop_main
+	sound_jump Music_EliteFourBattleBW_Ch3_loop_main
 
 Music_EliteFourBattleBW_Ch3_branch_1:
 	octave 1
@@ -1253,7 +1253,7 @@ Music_EliteFourBattleBW_Ch4_loop_8:
 	note C_, 1
 	note C_, 1
 	note C_, 1
-	jumpchannel Music_EliteFourBattleBW_Ch4_loop_main
+	sound_jump Music_EliteFourBattleBW_Ch4_loop_main
 
 Music_EliteFourBattleBW_Ch4_branch_1:
 	note C_, 2

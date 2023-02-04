@@ -146,7 +146,7 @@ Music_LavenderTown_branch_ef7ca:
 	octave 3
 	note B_, 8
 	note B_, 8
-	jumpchannel Music_LavenderTown_branch_ef74c
+	sound_jump Music_LavenderTown_branch_ef74c
 
 Music_LavenderTown_branch_ef7fd:
 	volume_envelope 8, 3
@@ -352,7 +352,7 @@ Music_LavenderTown_branch_ef8d7:
 	note D_, 1
 	note F_, 1
 	note G_, 6
-	jumpchannel Music_LavenderTown_branch_ef8d7
+	sound_jump Music_LavenderTown_branch_ef8d7
 
 Music_LavenderTown_branch_ef915:
 	octave 2
@@ -510,4 +510,4 @@ Music_LavenderTown_branch_ef941:
 	note B_, 12
 	note E_, 2
 	note F_, 2
-	jumpchannel Music_LavenderTown_branch_ef941
+	sound_jump Music_LavenderTown_branch_ef941

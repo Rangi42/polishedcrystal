@@ -117,7 +117,7 @@ Music_RocketHideout_branch_eeb98:
 Music_RocketHideout_branch_eebfe:
 	note __, 16
 	loopchannel 4, Music_RocketHideout_branch_eebfe
-	jumpchannel Music_RocketHideout_branch_eeb93
+	sound_jump Music_RocketHideout_branch_eeb93
 
 Music_RocketHideout_Ch2:
 	duty_cycle 3
@@ -219,7 +219,7 @@ Music_RocketHideout_branch_eec14:
 	note G#, 4
 	note G_, 2
 	note __, 8
-	jumpchannel Music_RocketHideout_branch_eec14
+	sound_jump Music_RocketHideout_branch_eec14
 
 Music_RocketHideout_Ch3:
 	note_type 12, 1, -1
@@ -271,7 +271,7 @@ Music_RocketHideout_branch_eeca6:
 	note G_, 2
 	note __, 8
 	loopchannel 2, Music_RocketHideout_branch_eeca6
-	jumpchannel Music_RocketHideout_branch_eec7c
+	sound_jump Music_RocketHideout_branch_eec7c
 
 Music_RocketHideout_Ch4:
 	toggle_noise 0
@@ -293,7 +293,7 @@ Music_RocketHideout_branch_eecc7:
 	note A#, 4
 	callchannel Music_RocketHideout_branch_eecdb
 	note F#, 4
-	jumpchannel Music_RocketHideout_branch_eecc7
+	sound_jump Music_RocketHideout_branch_eecc7
 
 Music_RocketHideout_branch_eecdb:
 	stereo_panning TRUE, FALSE

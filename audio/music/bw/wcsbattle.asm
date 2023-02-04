@@ -304,7 +304,7 @@ Music_WCSBattleBW_Ch1_L:
 	note C_, 16
 	note F#, 4
 	note G_, 12
-	jumpchannel Music_WCSBattleBW_Ch1_L
+	sound_jump Music_WCSBattleBW_Ch1_L
 
 Music_WCSBattleBW_Ch2:
 	tempo $69
@@ -662,7 +662,7 @@ Music_WCSBattleBW_Ch2_L:
 	note G_, 16
 	octave 4
 	note C_, 16
-	jumpchannel Music_WCSBattleBW_Ch2_L
+	sound_jump Music_WCSBattleBW_Ch2_L
 
 Music_WCSBattleBW_Ch3:
 	note_type 12, 1, 6
@@ -1205,7 +1205,7 @@ Music_WCSBattleBW_Ch3_L18:
 	note C_, 1
 	note __, 6
 	loopchannel 4, Music_WCSBattleBW_Ch3_L18
-	jumpchannel Music_WCSBattleBW_Ch3_L
+	sound_jump Music_WCSBattleBW_Ch3_L
 
 Music_WCSBattleBW_Ch3_P1:
 	octave 3

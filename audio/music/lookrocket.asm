@@ -32,7 +32,7 @@ Music_LookRocket_branch_f74c7:
 	volume_envelope 14, 3
 	callchannel Music_LookRocket_branch_f750c
 	note __, 16
-	jumpchannel Music_LookRocket_branch_f74c7
+	sound_jump Music_LookRocket_branch_f74c7
 
 Music_LookRocket_branch_f74e6:
 Music_RocketTheme_branch_f74e6:
@@ -113,7 +113,7 @@ Music_LookRocket_branch_f7526:
 	volume_envelope 14, 3
 	callchannel Music_LookRocket_branch_f7568
 	callchannel Music_LookRocket_branch_f756f
-	jumpchannel Music_LookRocket_branch_f7526
+	sound_jump Music_LookRocket_branch_f7526
 
 Music_LookRocket_branch_f7547:
 Music_RocketTheme_branch_f7547:
@@ -221,7 +221,7 @@ Music_LookRocket_branch_f75a5:
 	callchannel Music_LookRocket_branch_f75cc
 	callchannel Music_LookRocket_branch_f7623
 	callchannel Music_LookRocket_branch_f75e1
-	jumpchannel Music_LookRocket_branch_f75a5
+	sound_jump Music_LookRocket_branch_f75a5
 
 Music_LookRocket_branch_f75bf:
 Music_RocketTheme_branch_f75bf:
@@ -371,7 +371,7 @@ Music_LookRocket_branch_f7640:
 	callchannel Music_LookRocket_branch_f7664
 	callchannel Music_LookRocket_branch_f7664
 	callchannel Music_LookRocket_branch_f765c
-	jumpchannel Music_LookRocket_branch_f7640
+	sound_jump Music_LookRocket_branch_f7640
 
 Music_LookRocket_branch_f765c:
 Music_RocketTheme_branch_f765c:

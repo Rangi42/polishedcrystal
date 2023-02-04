@@ -40,7 +40,7 @@ Music_ProfOak_branch_f4e22:
 	transpose 0, 0
 	callchannel Music_ProfOak_branch_f4e6c
 	callchannel Music_ProfOak_branch_f4e6c
-	jumpchannel Music_ProfOak_branch_f4e22
+	sound_jump Music_ProfOak_branch_f4e22
 
 Music_ProfOak_branch_f4e42:
 	octave 2
@@ -202,7 +202,7 @@ Music_ProfOak_branch_f4ebf:
 	octave 4
 	note E_, 1
 	note G#, 16
-	jumpchannel Music_ProfOak_branch_f4ebf
+	sound_jump Music_ProfOak_branch_f4ebf
 
 Music_ProfOak_Ch3:
 	stereo_panning FALSE, TRUE
@@ -241,7 +241,7 @@ Music_ProfOak_branch_f4f1d:
 	transpose 0, 0
 	callchannel Music_ProfOak_branch_f4f69
 	callchannel Music_ProfOak_branch_f4f69
-	jumpchannel Music_ProfOak_branch_f4f1d
+	sound_jump Music_ProfOak_branch_f4f1d
 
 Music_ProfOak_branch_f4f3d:
 	note E_, 2

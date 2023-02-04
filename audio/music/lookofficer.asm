@@ -33,7 +33,7 @@ Music_LookOfficer_branch_ed852:
 	volume_envelope 2, -7
 	note A#, 16
 	note A_, 16
-	jumpchannel Music_LookOfficer_branch_ed852
+	sound_jump Music_LookOfficer_branch_ed852
 
 Music_LookOfficer_Ch2:
 	vibrato $12, $34
@@ -76,7 +76,7 @@ Music_LookOfficer_branch_ed882:
 	callchannel Music_LookOfficer_branch_ed89e
 	transpose 0, 0
 	callchannel Music_LookOfficer_branch_ed89e
-	jumpchannel Music_LookOfficer_branch_ed882
+	sound_jump Music_LookOfficer_branch_ed882
 
 Music_LookOfficer_branch_ed89e:
 	octave 1
@@ -135,4 +135,4 @@ Music_LookOfficer_branch_ed8c8:
 	note D_, 8
 	note E_, 8
 	note C#, 8
-	jumpchannel Music_LookOfficer_branch_ed8c8
+	sound_jump Music_LookOfficer_branch_ed8c8

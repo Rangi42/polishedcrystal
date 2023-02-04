@@ -188,7 +188,7 @@ Music_Gym_branch_f48c9:
 	note G_, 1
 	note F#, 1
 	note E_, 1
-	jumpchannel Music_Gym_branch_f48c9
+	sound_jump Music_Gym_branch_f48c9
 
 Music_Gym_Ch2:
 	duty_cycle 1
@@ -284,7 +284,7 @@ Music_Gym_branch_f4980:
 	octave 2
 	note F#, 2
 	note D_, 2
-	jumpchannel Music_Gym_branch_f4980
+	sound_jump Music_Gym_branch_f4980
 
 Music_Gym_branch_f49e9:
 	octave 3
@@ -480,7 +480,7 @@ Music_Gym_branch_f4a3c:
 	note E_, 1
 	note F#, 8
 	note E_, 4
-	jumpchannel Music_Gym_branch_f4a3c
+	sound_jump Music_Gym_branch_f4a3c
 
 Music_Gym_branch_f4ab3:
 	octave 5
@@ -564,4 +564,4 @@ Music_Gym_branch_f4afa:
 	note D_, 4
 	note F#, 4
 	loopchannel 8, Music_Gym_branch_f4afa
-	jumpchannel Music_Gym_branch_f4ac7
+	sound_jump Music_Gym_branch_f4ac7

@@ -52,7 +52,7 @@ Music_PokemonLullaby_branch_f6d8c:
 	note C_, 8
 	octave 3
 	note B_, 8
-	jumpchannel Music_PokemonLullaby_branch_f6d8c
+	sound_jump Music_PokemonLullaby_branch_f6d8c
 
 Music_PokemonLullaby_Ch2:
 	vibrato $10, $14
@@ -102,7 +102,7 @@ Music_PokemonLullaby_branch_f6dcc:
 	note D#, 2
 	note E_, 16
 	note __, 14
-	jumpchannel Music_PokemonLullaby_branch_f6dcc
+	sound_jump Music_PokemonLullaby_branch_f6dcc
 
 Music_PokemonLullaby_Ch3:
 	note_type 12, 1, 1
@@ -130,4 +130,4 @@ Music_PokemonLullaby_branch_f6e06:
 	octave 4
 	note B_, 2
 	note A_, 2
-	jumpchannel Music_PokemonLullaby_branch_f6e06
+	sound_jump Music_PokemonLullaby_branch_f6e06

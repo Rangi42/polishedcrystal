@@ -571,7 +571,7 @@ Music_Route203DPPt_Ch1_loop:
 	note D_, 14
 	octave 3
 	note A#, 12
-	jumpchannel Music_Route203DPPt_Ch1_loop
+	sound_jump Music_Route203DPPt_Ch1_loop
 
 Music_Route203DPPt_Ch2:
 	note_type 4, 10, 1
@@ -1070,7 +1070,7 @@ Music_Route203DPPt_Ch2_loop:
 	octave 4
 	note A#, 14
 	note G_, 12
-	jumpchannel Music_Route203DPPt_Ch2_loop
+	sound_jump Music_Route203DPPt_Ch2_loop
 
 Music_Route203DPPt_Ch3:
 	;transpose $19
@@ -1665,7 +1665,7 @@ Music_Route203DPPt_Ch3_loop:
 	octave 2
 	note A#, 4
 	note __, 2
-	jumpchannel Music_Route203DPPt_Ch3_loop
+	sound_jump Music_Route203DPPt_Ch3_loop
 
 Music_Route203DPPt_Ch4:
 	toggle_noise 3
@@ -2071,4 +2071,4 @@ Music_Route203DPPt_Ch4_loop:
 	note G_, 2
 	note B_, 2
 	note C#, 2
-	jumpchannel Music_Route203DPPt_Ch4_loop
+	sound_jump Music_Route203DPPt_Ch4_loop

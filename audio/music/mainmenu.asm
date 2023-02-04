@@ -40,7 +40,7 @@ Music_MainMenu_branch_f791d:
 	note_type 12, 9, 4
 	octave 3
 	note C_, 4
-	jumpchannel Music_MainMenu_branch_f791d
+	sound_jump Music_MainMenu_branch_f791d
 
 Music_MainMenu_Ch2:
 	duty_cycle 3
@@ -70,7 +70,7 @@ Music_MainMenu_branch_f7949:
 	note E_, 2
 	note_type 12, 10, 4
 	note F_, 4
-	jumpchannel Music_MainMenu_branch_f7949
+	sound_jump Music_MainMenu_branch_f7949
 
 Music_MainMenu_Ch3:
 	stereo_panning TRUE, FALSE
@@ -109,7 +109,7 @@ Music_MainMenu_branch_f796f:
 	note __, 1
 	note F_, 1
 	note __, 3
-	jumpchannel Music_MainMenu_branch_f796f
+	sound_jump Music_MainMenu_branch_f796f
 
 Music_MainMenu_Ch4:
 	stereo_panning FALSE, TRUE
@@ -140,4 +140,4 @@ Music_MainMenu_branch_f79a5:
 	note D#, 1
 	note D_, 1
 	note D_, 1
-	jumpchannel Music_MainMenu_branch_f79a5
+	sound_jump Music_MainMenu_branch_f79a5

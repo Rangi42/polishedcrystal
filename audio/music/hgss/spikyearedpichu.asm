@@ -55,7 +55,7 @@ Music_SpikyEaredPichuHGSS_Ch1:
 	note B_, 4
 	octave 4
 	note C_, 4
-	jumpchannel Music_SpikyEaredPichuHGSS_Ch1
+	sound_jump Music_SpikyEaredPichuHGSS_Ch1
 
 Music_SpikyEaredPichuHGSS_Ch1_branch_1:
 	note_type 4, 9, 2
@@ -246,7 +246,7 @@ Music_SpikyEaredPichuHGSS_Ch2_loop_1:
 	note D_, 4
 	note B_, 4
 	note __, 4
-	jumpchannel Music_SpikyEaredPichuHGSS_Ch2
+	sound_jump Music_SpikyEaredPichuHGSS_Ch2
 
 Music_SpikyEaredPichuHGSS_Ch3:
 	note_type 6, 1, 5
@@ -520,7 +520,7 @@ Music_SpikyEaredPichuHGSS_Ch3:
 	note F#, 1
 	note G_, 8
 	note __, 8
-	jumpchannel Music_SpikyEaredPichuHGSS_Ch3
+	sound_jump Music_SpikyEaredPichuHGSS_Ch3
 
 Music_SpikyEaredPichuHGSS_Ch4:
 	toggle_noise 3
@@ -556,4 +556,4 @@ Music_SpikyEaredPichuHGSS_Ch4_loop_1:
 	note C_, 2
 	note B_, 4
 	note D#, 4
-	jumpchannel Music_SpikyEaredPichuHGSS_Ch4_loop_main
+	sound_jump Music_SpikyEaredPichuHGSS_Ch4_loop_main

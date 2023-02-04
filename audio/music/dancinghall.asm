@@ -61,7 +61,7 @@ Music_DancingHall_branch_ef9d3:
 	note A_, 1
 	note __, 1
 	note F_, 2
-	jumpchannel Music_DancingHall_branch_ef9d3
+	sound_jump Music_DancingHall_branch_ef9d3
 
 Music_DancingHall_branch_efa17:
 	octave 3
@@ -139,7 +139,7 @@ Music_DancingHall_branch_efa37:
 	note E_, 1
 	note __, 1
 	note D_, 2
-	jumpchannel Music_DancingHall_branch_efa37
+	sound_jump Music_DancingHall_branch_efa37
 
 Music_DancingHall_branch_efa7a:
 	volume_envelope 10, 1
@@ -301,4 +301,4 @@ Music_DancingHall_branch_efae3:
 	note B_, 1
 	octave 6
 	note D_, 1
-	jumpchannel Music_DancingHall_branch_efae3
+	sound_jump Music_DancingHall_branch_efae3

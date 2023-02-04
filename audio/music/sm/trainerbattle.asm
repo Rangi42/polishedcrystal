@@ -288,7 +288,7 @@ Music_TrainerBattleSM_Ch1_loop_3:
 	note E_, 1
 	note C_, 1
 	loopchannel 2, Music_TrainerBattleSM_Ch1_loop_3
-	jumpchannel Music_TrainerBattleSM_Ch1_loop_main
+	sound_jump Music_TrainerBattleSM_Ch1_loop_main
 
 Music_TrainerBattleSM_Ch2:
 	duty_cycle 3
@@ -582,7 +582,7 @@ Music_TrainerBattleSM_Ch2_loop_main:
 	callchannel Music_TrainerBattleSM_Ch2_branch_2
 	volume_envelope 10, 7
 	note G_, 10
-	jumpchannel Music_TrainerBattleSM_Ch2_loop_main
+	sound_jump Music_TrainerBattleSM_Ch2_loop_main
 
 Music_TrainerBattleSM_Ch2_branch_1:
 	octave 4
@@ -800,7 +800,7 @@ Music_TrainerBattleSM_Ch3_loop_7:
 	note C_, 2
 	note G_, 2
 	loopchannel 16, Music_TrainerBattleSM_Ch3_loop_7
-	jumpchannel Music_TrainerBattleSM_Ch3_loop_main
+	sound_jump Music_TrainerBattleSM_Ch3_loop_main
 
 Music_TrainerBattleSM_Ch4:
 	toggle_noise 3
@@ -982,4 +982,4 @@ Music_TrainerBattleSM_Ch4_loop_9:
 	note C_, 2
 	note D_, 1
 	note D_, 1
-	jumpchannel Music_TrainerBattleSM_Ch4_loop_main
+	sound_jump Music_TrainerBattleSM_Ch4_loop_main

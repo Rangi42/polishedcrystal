@@ -579,7 +579,7 @@ Music_SunyshoreCityDPPt_Ch1_loop:
 	note B_, 6
 	note A_, 1
 	note G#, 1
-	jumpchannel Music_SunyshoreCityDPPt_Ch1_loop
+	sound_jump Music_SunyshoreCityDPPt_Ch1_loop
 
 Music_SunyshoreCityDPPt_Ch2:
 	pitch_offset 1
@@ -918,7 +918,7 @@ Music_SunyshoreCityDPPt_Ch2_loop:
 	note B_, 16
 	note A_, 1
 	note B_, 1
-	jumpchannel Music_SunyshoreCityDPPt_Ch2_loop
+	sound_jump Music_SunyshoreCityDPPt_Ch2_loop
 
 Music_SunyshoreCityDPPt_Ch3:
 	volume_envelope 2, 5
@@ -1503,7 +1503,7 @@ Music_SunyshoreCityDPPt_Ch3_loop:
 	note E_, 1
 	note __, 1
 	note D#, 2
-	jumpchannel Music_SunyshoreCityDPPt_Ch3_loop
+	sound_jump Music_SunyshoreCityDPPt_Ch3_loop
 
 Music_SunyshoreCityDPPt_Ch4:
 	toggle_noise 3
@@ -1891,5 +1891,5 @@ Music_SunyshoreCityDPPt_Ch4_loop:
 	note C_, 4
 	note G_, 4
 	note_type 12
-	jumpchannel Music_SunyshoreCityDPPt_Ch4_loop
+	sound_jump Music_SunyshoreCityDPPt_Ch4_loop
 

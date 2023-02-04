@@ -295,7 +295,7 @@ Music_VioletCity_branch_f0056:
 	octave 4
 	note C#, 4
 	note __, 4
-	jumpchannel Music_VioletCity_branch_f0056
+	sound_jump Music_VioletCity_branch_f0056
 
 Music_VioletCity_Ch2:
 	vibrato $12, $24
@@ -501,7 +501,7 @@ Music_VioletCity_branch_f0199:
 	note __, 2
 	note D#, 1
 	note E_, 1
-	jumpchannel Music_VioletCity_branch_f0199
+	sound_jump Music_VioletCity_branch_f0199
 
 Music_VioletCity_Ch3:
 	note_type 12, 2, 5
@@ -689,7 +689,7 @@ Music_VioletCity_branch_f0261:
 	note __, 4
 	octave 2
 	note A#, 4
-	jumpchannel Music_VioletCity_branch_f0261
+	sound_jump Music_VioletCity_branch_f0261
 
 Music_VioletCity_branch_f0311:
 	note G_, 2
@@ -742,7 +742,7 @@ Music_VioletCity_branch_f0338:
 	callchannel Music_VioletCity_branch_f037a
 	callchannel Music_VioletCity_branch_f037a
 	callchannel Music_VioletCity_branch_f037a
-	jumpchannel Music_VioletCity_branch_f0338
+	sound_jump Music_VioletCity_branch_f0338
 
 Music_VioletCity_branch_f036c:
 	note D_, 1

@@ -137,7 +137,7 @@ Music_BuenasPassword_branch_17816b:
 	note __, 1
 	note G_, 1
 	note __, 1
-	jumpchannel Music_BuenasPassword_branch_17816b
+	sound_jump Music_BuenasPassword_branch_17816b
 
 Music_BuenasPassword_branch_178204:
 	stereo_panning FALSE, TRUE
@@ -270,7 +270,7 @@ Music_BuenasPassword_branch_17823c:
 	note G_, 1
 	note __, 1
 	volume_envelope 10, 5
-	jumpchannel Music_BuenasPassword_branch_17823c
+	sound_jump Music_BuenasPassword_branch_17823c
 
 Music_BuenasPassword_branch_1782a4:
 	octave 3
@@ -511,7 +511,7 @@ Music_BuenasPassword_branch_178315:
 	note __, 1
 	note G_, 1
 	note __, 1
-	jumpchannel Music_BuenasPassword_branch_178315
+	sound_jump Music_BuenasPassword_branch_178315
 
 Music_BuenasPassword_branch_1783a7:
 	octave 2
@@ -591,7 +591,7 @@ Music_BuenasPassword_branch_1783d9:
 	note D_, 2
 	note D_, 1
 	note D_, 1
-	jumpchannel Music_BuenasPassword_branch_1783d9
+	sound_jump Music_BuenasPassword_branch_1783d9
 
 Music_BuenasPassword_branch_17840c:
 	stereo_panning TRUE, TRUE

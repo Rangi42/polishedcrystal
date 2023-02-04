@@ -206,7 +206,7 @@ Music_ChampionBattle_branch_eaabe:
 	volume_envelope 11, 7
 	octave 4
 	note D_, 4
-	jumpchannel Music_ChampionBattle_branch_eaa35
+	sound_jump Music_ChampionBattle_branch_eaa35
 
 Music_ChampionBattle_branch_eaaee:
 	volume_envelope 11, 2
@@ -490,7 +490,7 @@ Music_ChampionBattle_branch_eabef:
 	note E_, 8
 	note F#, 8
 	note G#, 8
-	jumpchannel Music_ChampionBattle_branch_eab9d
+	sound_jump Music_ChampionBattle_branch_eab9d
 
 Music_ChampionBattle_branch_eac4f:
 	volume_envelope 12, 2
@@ -711,7 +711,7 @@ Music_ChampionBattle_branch_ead4e:
 	note B_, 2
 	note A#, 2
 	note G#, 2
-	jumpchannel Music_ChampionBattle_branch_eacc6
+	sound_jump Music_ChampionBattle_branch_eacc6
 
 Music_ChampionBattle_branch_ead61:
 	note D#, 1

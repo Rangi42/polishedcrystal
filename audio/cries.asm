@@ -457,7 +457,7 @@ Cry_Hoothoot_Ch8:
 Cry_Sentret_Ch5:
 	pitch_offset 32
 	duty_cycle 0
-	jumpchannel Cry_Sentret_branch_f312b
+	sound_jump Cry_Sentret_branch_f312b
 
 Cry_Sentret_Ch6:
 	duty_cycle_pattern 0, 1, 2, 3
@@ -469,7 +469,7 @@ Cry_Sentret_branch_f312b:
 Cry_Mareep_Ch5:
 	pitch_offset 32
 	duty_cycle 0
-	jumpchannel Cry_Mareep_branch_f3145
+	sound_jump Cry_Mareep_branch_f3145
 
 Cry_Mareep_Ch6:
 	duty_cycle_pattern 0, 0, 0, 1
@@ -520,12 +520,12 @@ Cry_Chikorita_Ch8:
 
 Cry_Gligar_Ch5:
 	duty_cycle_pattern 2, 2, 0, 2
-	jumpchannel Cry_Gligar_branch_f3145
+	sound_jump Cry_Gligar_branch_f3145
 
 Cry_Girafarig_Ch5:
 	duty_cycle 1
 	pitch_offset 4
-	jumpchannel Cry_Girafarig_branch_f31af
+	sound_jump Cry_Girafarig_branch_f31af
 
 Cry_Girafarig_Ch6:
 	duty_cycle_pattern 1, 0, 0, 1
@@ -564,7 +564,7 @@ Cry_Slugma_Ch8:
 Cry_Ledyba_Ch5:
 	pitch_offset 2
 	duty_cycle 2
-	jumpchannel Cry_Ledyba_branch_f3202
+	sound_jump Cry_Ledyba_branch_f3202
 
 Cry_Ledyba_Ch6:
 	duty_cycle_pattern 0, 0, 0, 1
@@ -711,7 +711,7 @@ Cry_Teddiursa_Ch8:
 
 Cry_Remoraid_Ch5:
 	duty_cycle 0
-	jumpchannel Cry_Remoraid_branch_f32e9
+	sound_jump Cry_Remoraid_branch_f32e9
 
 Cry_Mantine_Ch5:
 	duty_cycle 0

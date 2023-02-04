@@ -314,7 +314,7 @@ Music_WildBattlePrism_branch_19f26b:
 	volume_envelope 11, 7
 	duty_cycle 3
 	octave 2
-	jumpchannel Music_WildBattlePrism_branch_19f26b
+	sound_jump Music_WildBattlePrism_branch_19f26b
 
 Music_WildBattlePrism_Ch2:
 	duty_cycle 3
@@ -536,7 +536,7 @@ Music_WildBattlePrism_branch_19f167:
 	volume_envelope 12, 7
 	note F_, 8
 	note D#, 8
-	jumpchannel Music_WildBattlePrism_branch_19f167
+	sound_jump Music_WildBattlePrism_branch_19f167
 
 Music_WildBattlePrism_Ch3:
 	note_type 12, 1, 4
@@ -806,4 +806,4 @@ Music_WildBattlePrism_branch_19f3ed:
 	octave 4
 	note C#, 2
 	note D_, 16
-	jumpchannel Music_WildBattlePrism_branch_19f3ba
+	sound_jump Music_WildBattlePrism_branch_19f3ba

@@ -181,7 +181,7 @@ Music_ElmsLab_branch_ea075:
 	volume_envelope 11, 2
 	note F_, 2
 	note F_, 4
-	jumpchannel Music_ElmsLab_branch_ea075
+	sound_jump Music_ElmsLab_branch_ea075
 
 Music_ElmsLab_Ch2:
 	duty_cycle 3
@@ -348,7 +348,7 @@ Music_ElmsLab_branch_ea14f:
 	volume_envelope 12, 4
 	octave 3
 	note E_, 2
-	jumpchannel Music_ElmsLab_branch_ea14f
+	sound_jump Music_ElmsLab_branch_ea14f
 
 Music_ElmsLab_Ch3:
 	stereo_panning FALSE, TRUE
@@ -525,7 +525,7 @@ Music_ElmsLab_branch_ea216:
 	note C_, 2
 	note F_, 2
 	note A_, 2
-	jumpchannel Music_ElmsLab_branch_ea216
+	sound_jump Music_ElmsLab_branch_ea216
 
 Music_ElmsLab_Ch4:
 	stereo_panning TRUE, FALSE
@@ -535,4 +535,4 @@ Music_ElmsLab_Ch4:
 	note __, 2
 Music_ElmsLab_branch_ea2b9:
 	note G_, 4
-	jumpchannel Music_ElmsLab_branch_ea2b9
+	sound_jump Music_ElmsLab_branch_ea2b9

@@ -510,7 +510,7 @@ Music_SuicuneBattle_branch_178bfc:
 	note A_, 16
 	vibrato $12, $15
 	duty_cycle 3
-	jumpchannel Music_SuicuneBattle_branch_178bfc
+	sound_jump Music_SuicuneBattle_branch_178bfc
 
 Music_SuicuneBattle_Ch2:
 	duty_cycle 3
@@ -1185,7 +1185,7 @@ Music_SuicuneBattle_branch_178e4e:
 	note E_, 2
 	note A_, 2
 	note B_, 2
-	jumpchannel Music_SuicuneBattle_branch_178e4e
+	sound_jump Music_SuicuneBattle_branch_178e4e
 
 Music_SuicuneBattle_Ch3:
 	note_type 12, 1, 8
@@ -2054,4 +2054,4 @@ Music_SuicuneBattle_branch_179182:
 	note E_, 2
 	note D_, 2
 	note E_, 2
-	jumpchannel Music_SuicuneBattle_branch_179182
+	sound_jump Music_SuicuneBattle_branch_179182

@@ -219,7 +219,7 @@ Music_EliteFourBattleSM_Ch1_loop_3:
 	note D#, 8
 	volume_envelope 8, -6
 	note D#, 8
-	jumpchannel Music_EliteFourBattleSM_Ch1_loop_main
+	sound_jump Music_EliteFourBattleSM_Ch1_loop_main
 
 Music_EliteFourBattleSM_Ch1_branch_1:
 	octave 3
@@ -434,7 +434,7 @@ Music_EliteFourBattleSM_Ch2_loop_4:
 	note G#, 2
 	note G_, 4
 	note B_, 4
-	jumpchannel Music_EliteFourBattleSM_Ch2_loop_main
+	sound_jump Music_EliteFourBattleSM_Ch2_loop_main
 
 Music_EliteFourBattleSM_Ch3:
 	octave 2
@@ -580,7 +580,7 @@ Music_EliteFourBattleSM_Ch3_loop_9:
 	note E_, 2
 	note A_, 2
 	loopchannel 16, Music_EliteFourBattleSM_Ch3_loop_9
-	jumpchannel Music_EliteFourBattleSM_Ch3_loop_main
+	sound_jump Music_EliteFourBattleSM_Ch3_loop_main
 
 Music_EliteFourBattleSM_Ch3_branch_1:
 	note_type 3, 1, -1
@@ -671,4 +671,4 @@ Music_EliteFourBattleSM_Ch4_loop_3:
 	note C_, 1
 	note C_, 1
 	loopchannel 8, Music_EliteFourBattleSM_Ch4_loop_3
-	jumpchannel Music_EliteFourBattleSM_Ch4_loop_main
+	sound_jump Music_EliteFourBattleSM_Ch4_loop_main

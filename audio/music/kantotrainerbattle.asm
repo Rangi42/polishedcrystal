@@ -461,7 +461,7 @@ Music_KantoTrainerBattle_branch_eca88:
 	volume_envelope 11, 7
 	octave 4
 	note D_, 4
-	jumpchannel Music_KantoTrainerBattle_branch_eca88
+	sound_jump Music_KantoTrainerBattle_branch_eca88
 
 Music_KantoTrainerBattle_Ch2:
 	transpose 1, 11
@@ -913,7 +913,7 @@ Music_KantoTrainerBattle_branch_ecc41:
 	volume_envelope 13, 7
 	octave 3
 	note B_, 4
-	jumpchannel Music_KantoTrainerBattle_branch_ecc41
+	sound_jump Music_KantoTrainerBattle_branch_ecc41
 
 Music_KantoTrainerBattle_Ch3:
 	transpose 1, 11
@@ -1532,4 +1532,4 @@ Music_KantoTrainerBattle_branch_ece5a:
 	volume_envelope 1, 4
 	octave 5
 	note G_, 4
-	jumpchannel Music_KantoTrainerBattle_branch_ece5a
+	sound_jump Music_KantoTrainerBattle_branch_ece5a

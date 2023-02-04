@@ -68,7 +68,7 @@ Music_LavenderTownRBY_branch_bb6b:
 	note __, 16
 	note __, 16
 	note __, 16
-	jumpchannel Music_LavenderTownRBY_branch_bb6b
+	sound_jump Music_LavenderTownRBY_branch_bb6b
 
 Music_LavenderTownRBY_Ch2:
 	vibrato 0, 52
@@ -81,7 +81,7 @@ Music_LavenderTownRBY_branch_bba5:
 	note G_, 4
 	note B_, 4
 	note F#, 4
-	jumpchannel Music_LavenderTownRBY_branch_bba5
+	sound_jump Music_LavenderTownRBY_branch_bba5
 
 Music_LavenderTownRBY_Ch3:
 	vibrato 4, 17
@@ -189,7 +189,7 @@ Music_LavenderTownRBY_branch_bbb9:
 	note G_, 4
 	note F#, 4
 	note B_, 4
-	jumpchannel Music_LavenderTownRBY_branch_bbb9
+	sound_jump Music_LavenderTownRBY_branch_bbb9
 
 Music_LavenderTownRBY_Ch4:
 	note_type 12
@@ -202,4 +202,4 @@ Music_LavenderTownRBY_Ch4:
 Music_LavenderTownRBY_branch_bc26:
 	note F#, 8
 	note F#, 8
-	jumpchannel Music_LavenderTownRBY_branch_bc26
+	sound_jump Music_LavenderTownRBY_branch_bc26

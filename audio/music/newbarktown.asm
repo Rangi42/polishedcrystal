@@ -82,7 +82,7 @@ Music_NewBarkTown_branch_eb2eb:
 	note A_, 4
 	note B_, 2
 	volume_envelope 8, 7
-	jumpchannel Music_NewBarkTown_branch_eb2eb
+	sound_jump Music_NewBarkTown_branch_eb2eb
 
 Music_NewBarkTown_branch_eb349:
 	octave 3
@@ -184,7 +184,7 @@ Music_NewBarkTown_branch_eb396:
 	octave 6
 	note D_, 4
 	note E_, 16
-	jumpchannel Music_NewBarkTown_branch_eb396
+	sound_jump Music_NewBarkTown_branch_eb396
 
 Music_NewBarkTown_branch_eb3bf:
 	octave 2
@@ -320,4 +320,4 @@ Music_NewBarkTown_branch_eb408:
 	octave 5
 	note D_, 1
 	note E_, 1
-	jumpchannel Music_NewBarkTown_branch_eb408
+	sound_jump Music_NewBarkTown_branch_eb408

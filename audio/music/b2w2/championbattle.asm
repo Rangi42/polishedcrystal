@@ -543,7 +543,7 @@ Music_ChampionBattleB2W2_Ch1_loop_1:
 	note G_, 2
 	volume_envelope 3, 0
 	note G_, 2
-	jumpchannel Music_ChampionBattleB2W2_Ch1_loop_main
+	sound_jump Music_ChampionBattleB2W2_Ch1_loop_main
 
 Music_ChampionBattleB2W2_Ch1_branch_1:
 	volume_envelope 4, 2
@@ -1074,7 +1074,7 @@ Music_ChampionBattleB2W2_Ch2_loop_main:
 	note B_, 8
 	volume_envelope 4, -7
 	note B_, 8
-	jumpchannel Music_ChampionBattleB2W2_Ch2_loop_main
+	sound_jump Music_ChampionBattleB2W2_Ch2_loop_main
 
 Music_ChampionBattleB2W2_Ch2_branch_1:
 	octave 5
@@ -1580,7 +1580,7 @@ Music_ChampionBattleB2W2_Ch3_loop_5:
 	note B_, 2
 	volume_envelope 3, -1
 	note B_, 2
-	jumpchannel Music_ChampionBattleB2W2_Ch3_loop_main
+	sound_jump Music_ChampionBattleB2W2_Ch3_loop_main
 
 Music_ChampionBattleB2W2_Ch3_branch_1:
 	note G_, 16
@@ -1873,7 +1873,7 @@ Music_ChampionBattleB2W2_Ch4_loop_9:
 	note D#, 2
 	loopchannel 7, Music_ChampionBattleB2W2_Ch4_loop_9
 	callchannel Music_ChampionBattleB2W2_Ch4_branch_4
-	jumpchannel Music_ChampionBattleB2W2_Ch4_loop_main
+	sound_jump Music_ChampionBattleB2W2_Ch4_loop_main
 
 Music_ChampionBattleB2W2_Ch4_branch_1:
 	note D#, 4

@@ -193,7 +193,7 @@ Music_Route26_branch_eefe0:
 	octave 2
 	note B_, 4
 	note __, 4
-	jumpchannel Music_Route26_branch_eefe0
+	sound_jump Music_Route26_branch_eefe0
 
 Music_Route26_Ch2:
 	stereo_panning TRUE, FALSE
@@ -337,7 +337,7 @@ Music_Route26_branch_ef10e:
 	note C#, 1
 	note C_, 1
 	note D#, 1
-	jumpchannel Music_Route26_branch_ef0ce
+	sound_jump Music_Route26_branch_ef0ce
 
 Music_Route26_branch_ef14e:
 	note A#, 6
@@ -534,7 +534,7 @@ Music_Route26_branch_ef18a:
 	note G#, 1
 	octave 3
 	note C_, 1
-	jumpchannel Music_Route26_branch_ef18a
+	sound_jump Music_Route26_branch_ef18a
 
 Music_Route26_branch_ef22f:
 	octave 5
@@ -605,7 +605,7 @@ Music_Route26_branch_ef27c:
 	note_type 12
 	note B_, 16
 	callchannel Music_Route26_branch_ef2b0
-	jumpchannel Music_Route26_branch_ef246
+	sound_jump Music_Route26_branch_ef246
 
 Music_Route26_branch_ef29a:
 	note E_, 12

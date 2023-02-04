@@ -122,7 +122,7 @@ Music_Surfing_branch_7fa30:
 	note G#, 2
 	note F#, 2
 	note E_, 4
-	jumpchannel Music_Surfing_branch_7fa30
+	sound_jump Music_Surfing_branch_7fa30
 
 Music_SurfingRBY_Ch2:
 	duty_cycle 3
@@ -208,7 +208,7 @@ Music_Surfing_branch_7faae:
 	note A_, 1
 	octave 5
 	note C#, 6
-	jumpchannel Music_Surfing_branch_7faae
+	sound_jump Music_Surfing_branch_7faae
 
 Music_SurfingRBY_Ch3:
 	note_type 12, 1, 0
@@ -339,4 +339,4 @@ Music_Surfing_branch_7fb03:
 	note C#, 2
 	note D_, 2
 	note E_, 2
-	jumpchannel Music_Surfing_branch_7fb03
+	sound_jump Music_Surfing_branch_7fb03

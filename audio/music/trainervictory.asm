@@ -70,7 +70,7 @@ Music_TrainerVictory_branch_ebf01:
 	note E_, 2
 	note F#, 2
 	note G_, 2
-	jumpchannel Music_TrainerVictory_branch_ebecd
+	sound_jump Music_TrainerVictory_branch_ebecd
 
 Music_TrainerVictory_branch_ebf11:
 	octave 3
@@ -123,7 +123,7 @@ Music_TrainerVictory_branch_ebf30:
 	note_type 12, 8, 8
 	note F#, 16
 	note E_, 16
-	jumpchannel Music_TrainerVictory_branch_ebf30
+	sound_jump Music_TrainerVictory_branch_ebf30
 
 Music_TrainerVictory_branch_ebf56:
 	octave 4
@@ -207,7 +207,7 @@ Music_TrainerVictory_branch_ebf74:
 	note G_, 2
 	note E_, 2
 	note C#, 2
-	jumpchannel Music_TrainerVictory_branch_ebf74
+	sound_jump Music_TrainerVictory_branch_ebf74
 
 Music_TrainerVictory_branch_ebfb1:
 	octave 2

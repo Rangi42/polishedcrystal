@@ -478,7 +478,7 @@ Music_ChampionBattleDPPt_Ch1_loop:
 	note B_, 2
 	note E_, 2
 	octave 3
-	jumpchannel Music_ChampionBattleDPPt_Ch1_loop
+	sound_jump Music_ChampionBattleDPPt_Ch1_loop
 
 Music_ChampionBattleDPPt_Ch2:
 	duty_cycle 2
@@ -935,7 +935,7 @@ Music_ChampionBattleDPPt_Ch2_loop:
 	note F#, 2
 	note B_, 2
 	note E_, 2
-	jumpchannel Music_ChampionBattleDPPt_Ch2_loop
+	sound_jump Music_ChampionBattleDPPt_Ch2_loop
 
 Music_ChampionBattleDPPt_Ch3:
 	octave 1
@@ -1726,7 +1726,7 @@ Music_ChampionBattleDPPt_Ch3_loop:
 	note F#, 2
 	note B_, 2
 	note E_, 2
-	jumpchannel Music_ChampionBattleDPPt_Ch3_loop
+	sound_jump Music_ChampionBattleDPPt_Ch3_loop
 
 Music_ChampionBattleDPPt_Ch4:
 	toggle_noise 3
@@ -2364,4 +2364,4 @@ Music_ChampionBattleDPPt_Ch4_loop:
 	note C_, 1
 	note C_, 1
 	note C_, 1
-	jumpchannel Music_ChampionBattleDPPt_Ch4_loop
+	sound_jump Music_ChampionBattleDPPt_Ch4_loop

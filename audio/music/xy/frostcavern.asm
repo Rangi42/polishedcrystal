@@ -78,7 +78,7 @@ Music_FrostCavernXY_Ch1_loop_1:
 	note G#, 2
 	note G#, 12
 	loopchannel 2, Music_FrostCavernXY_Ch1_loop_1
-	jumpchannel Music_FrostCavernXY_Ch1
+	sound_jump Music_FrostCavernXY_Ch1
 
 Music_FrostCavernXY_Ch2:
 	vibrato $8, $24
@@ -135,7 +135,7 @@ Music_FrostCavernXY_Ch2:
 	note C_, 4
 	note C_, 4
 	note C_, 2
-	jumpchannel Music_FrostCavernXY_Ch2
+	sound_jump Music_FrostCavernXY_Ch2
 
 Music_FrostCavernXY_Ch3:
 	vibrato $16, $15
@@ -168,4 +168,4 @@ Music_FrostCavernXY_Ch3_loop_1:
 	note D#, 4
 	volume_envelope 2, 0
 	note __, 4
-	jumpchannel Music_FrostCavernXY_Ch3_loop_main
+	sound_jump Music_FrostCavernXY_Ch3_loop_main

@@ -495,7 +495,7 @@ Music_HoOhBattleHGSS_Ch1_L:
 	note A#, 16
 	volume_envelope 12, 7
 	note A#, 16
-	jumpchannel Music_HoOhBattleHGSS_Ch1_L
+	sound_jump Music_HoOhBattleHGSS_Ch1_L
 
 Music_HoOhBattleHGSS_Ch2:
 	duty_cycle 3
@@ -911,7 +911,7 @@ Music_HoOhBattleHGSS_Ch2_L:
 	note F_, 16
 	volume_envelope 12, 7
 	note F_, 16
-	jumpchannel Music_HoOhBattleHGSS_Ch2_L
+	sound_jump Music_HoOhBattleHGSS_Ch2_L
 
 Music_HoOhBattleHGSS_Ch3:
 	note_type 12, 1, 6
@@ -1139,4 +1139,4 @@ Music_HoOhBattleHGSS_Ch3_L1:
 	note G_, 2
 	note A_, 2
 	note E_, 2
-	jumpchannel Music_HoOhBattleHGSS_Ch3_L
+	sound_jump Music_HoOhBattleHGSS_Ch3_L

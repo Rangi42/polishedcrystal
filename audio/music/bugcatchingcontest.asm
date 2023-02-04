@@ -186,7 +186,7 @@ Music_BugCatchingContest_branch_f7c8e:
 	note __, 2
 	note E_, 2
 	note E_, 2
-	jumpchannel Music_BugCatchingContest_branch_f7c4b
+	sound_jump Music_BugCatchingContest_branch_f7c4b
 
 Music_BugCatchingContest_Ch2:
 	stereo_panning TRUE, FALSE
@@ -326,7 +326,7 @@ Music_BugCatchingContest_branch_f7d0a:
 	note A_, 1
 	note __, 3
 	note A_, 10
-	jumpchannel Music_BugCatchingContest_branch_f7d0a
+	sound_jump Music_BugCatchingContest_branch_f7d0a
 
 Music_BugCatchingContest_branch_f7d8e:
 	octave 2
@@ -583,7 +583,7 @@ Music_BugCatchingContest_branch_f7dda:
 	note __, 2
 	note C#, 2
 	note C#, 2
-	jumpchannel Music_BugCatchingContest_branch_f7dda
+	sound_jump Music_BugCatchingContest_branch_f7dda
 
 Music_BugCatchingContest_Ch4:
 	toggle_noise 4
@@ -646,7 +646,7 @@ Music_BugCatchingContest_branch_f7eaf:
 	note D_, 2
 	note D_, 2
 	callchannel Music_BugCatchingContest_branch_f7ee2
-	jumpchannel Music_BugCatchingContest_branch_f7eaf
+	sound_jump Music_BugCatchingContest_branch_f7eaf
 
 Music_BugCatchingContest_branch_f7ee2:
 	note D_, 4

@@ -200,7 +200,7 @@ Music_Route1_branch_ec04a:
 	note D_, 2
 	note D_, 2
 	note __, 2
-	jumpchannel Music_Route1_branch_ec04a
+	sound_jump Music_Route1_branch_ec04a
 
 Music_Route1_Ch2:
 	stereo_panning TRUE, FALSE
@@ -319,7 +319,7 @@ Music_Route1_branch_ec112:
 	octave 4
 	note D_, 1
 	note E_, 1
-	jumpchannel Music_Route1_branch_ec112
+	sound_jump Music_Route1_branch_ec112
 
 Music_Route1_branch_ec188:
 	note F#, 2
@@ -642,4 +642,4 @@ Music_Route1_branch_ec20c:
 	note __, 1
 	note A_, 1
 	note __, 3
-	jumpchannel Music_Route1_branch_ec20c
+	sound_jump Music_Route1_branch_ec20c

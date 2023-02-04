@@ -284,7 +284,7 @@ Music_RivalBattle_branch_e9837:
 	note B_, 6
 	octave 3
 	note C#, 10
-	jumpchannel Music_RivalBattle_branch_e97a6
+	sound_jump Music_RivalBattle_branch_e97a6
 
 Music_RivalBattle_Ch2:
 	duty_cycle 3
@@ -511,7 +511,7 @@ Music_RivalBattle_branch_e99c1:
 	volume_envelope 6, -2
 	octave 4
 	note D_, 4
-	jumpchannel Music_RivalBattle_branch_e991a
+	sound_jump Music_RivalBattle_branch_e991a
 
 Music_RivalBattle_branch_e99e0:
 	volume_envelope 12, 7
@@ -819,7 +819,7 @@ Music_RivalBattle_branch_e9b32:
 	note E_, 2
 	note D#, 2
 	note D_, 2
-	jumpchannel Music_RivalBattle_branch_e9a30
+	sound_jump Music_RivalBattle_branch_e9a30
 
 Music_RivalBattle_branch_e9b47:
 	octave 2

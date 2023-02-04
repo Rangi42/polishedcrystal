@@ -75,7 +75,7 @@ Music_LookBeauty_branch_eee5f:
 	note A_, 1
 	octave 4
 	note C_, 1
-	jumpchannel Music_LookBeauty_branch_eee5f
+	sound_jump Music_LookBeauty_branch_eee5f
 
 Music_LookBeauty_Ch2:
 	stereo_panning TRUE, FALSE
@@ -152,7 +152,7 @@ Music_LookBeauty_branch_eeec5:
 	note __, 14
 	note F#, 8
 	note A_, 8
-	jumpchannel Music_LookBeauty_branch_eeec5
+	sound_jump Music_LookBeauty_branch_eeec5
 
 Music_LookBeauty_Ch3:
 	stereo_panning TRUE, TRUE
@@ -292,7 +292,7 @@ Music_LookBeauty_branch_eef0f:
 	note __, 7
 	octave 3
 	note D_, 8
-	jumpchannel Music_LookBeauty_branch_eef0f
+	sound_jump Music_LookBeauty_branch_eef0f
 
 Music_LookBeauty_Ch4:
 	toggle_noise 3
@@ -304,7 +304,7 @@ Music_LookBeauty_branch_eef91:
 	callchannel Music_LookBeauty_branch_eefa1
 	callchannel Music_LookBeauty_branch_eefa1
 	callchannel Music_LookBeauty_branch_eefa1
-	jumpchannel Music_LookBeauty_branch_eef91
+	sound_jump Music_LookBeauty_branch_eef91
 
 Music_LookBeauty_branch_eefa1:
 	note F#, 2

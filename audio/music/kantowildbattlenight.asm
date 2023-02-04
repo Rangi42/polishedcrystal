@@ -242,4 +242,4 @@ endr
 	callchannel Music_KantoWildBattle_Ch3_Part1
 	volume_envelope 1, 1
 	callchannel Music_KantoWildBattle_Ch3_Part2
-	jumpchannel Music_KantoWildBattleNight_Ch3loop
+	sound_jump Music_KantoWildBattleNight_Ch3loop

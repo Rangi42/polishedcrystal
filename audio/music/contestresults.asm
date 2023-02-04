@@ -47,7 +47,7 @@ Music_ContestResults_branch_efb52:
 	note __, 3
 	note G_, 1
 	note __, 1
-	jumpchannel Music_ContestResults_branch_efb52
+	sound_jump Music_ContestResults_branch_efb52
 
 Music_ContestResults_Ch2:
 	note_type 12, 6, 1
@@ -124,7 +124,7 @@ Music_ContestResults_branch_efba6:
 	octave 3
 	note D_, 1
 	note __, 1
-	jumpchannel Music_ContestResults_branch_efb7e
+	sound_jump Music_ContestResults_branch_efb7e
 
 Music_ContestResults_Ch3:
 	vibrato $8, $24
@@ -149,7 +149,7 @@ Music_ContestResults_branch_efbd2:
 	note B_, 4
 	note A_, 8
 	note G_, 8
-	jumpchannel Music_ContestResults_branch_efbd2
+	sound_jump Music_ContestResults_branch_efbd2
 
 Music_ContestResults_Ch4:
 	toggle_noise 4
@@ -171,4 +171,4 @@ Music_ContestResults_branch_efbed:
 	note G_, 1
 	note G_, 1
 	note G_, 1
-	jumpchannel Music_ContestResults_branch_efbed
+	sound_jump Music_ContestResults_branch_efbed

@@ -290,7 +290,7 @@ Music_PaletteBattlePrism_branch_1edc47:
 	note D_, 16
 	volume_envelope 11, 2
 	octave 3
-	jumpchannel Music_PaletteBattlePrism_branch_1edc47
+	sound_jump Music_PaletteBattlePrism_branch_1edc47
 
 Music_PaletteBattlePrism_Ch2:
 	duty_cycle 3
@@ -536,7 +536,7 @@ Music_PaletteBattlePrism_branch_1edbef:
 	loopchannel 2, Music_PaletteBattlePrism_branch_1edbef
 	volume_envelope 12, 2
 	octave 3
-	jumpchannel Music_PaletteBattlePrism_branch_1edb37
+	sound_jump Music_PaletteBattlePrism_branch_1edb37
 
 Music_PaletteBattlePrism_Ch3:
 	note_type 12, 1, -1
@@ -666,4 +666,4 @@ Music_PaletteBattlePrism_branch_1edea9:
 	octave 3
 	note D_, 2
 	loopchannel 8, Music_PaletteBattlePrism_branch_1edea9
-	jumpchannel Music_PaletteBattlePrism_branch_1ede24
+	sound_jump Music_PaletteBattlePrism_branch_1ede24

@@ -114,7 +114,7 @@ Music_LookRival_branch_f4ff7:
 	volume_envelope 11, 7
 	note G#, 6
 	note F#, 4
-	jumpchannel Music_LookRival_branch_f4fb1
+	sound_jump Music_LookRival_branch_f4fb1
 
 Music_LookRival_Ch2:
 	duty_cycle 3
@@ -203,7 +203,7 @@ Music_LookRival_branch_f5070:
 	note D#, 4
 	volume_envelope 12, 7
 	note D#, 10
-	jumpchannel Music_LookRival_branch_f502e
+	sound_jump Music_LookRival_branch_f502e
 
 Music_LookRival_Ch3:
 	note_type 12, 2, 8
@@ -290,7 +290,7 @@ Music_LookRival_branch_f509d:
 	note C_, 2
 	note F#, 2
 	note E_, 2
-	jumpchannel Music_LookRival_branch_f509d
+	sound_jump Music_LookRival_branch_f509d
 
 Music_LookRival_branch_f50ef:
 	note F_, 2
@@ -350,4 +350,4 @@ Music_LookRival_branch_f5118:
 	note D#, 2
 	note D_, 2
 	note D_, 2
-	jumpchannel Music_LookRival_branch_f5118
+	sound_jump Music_LookRival_branch_f5118

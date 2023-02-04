@@ -349,7 +349,7 @@ Music_StarkMountainDPPt_Ch1_loop:
 	note C#, 3
 	note C#, 16
 	note __, 5
-	jumpchannel Music_StarkMountainDPPt_Ch1_loop
+	sound_jump Music_StarkMountainDPPt_Ch1_loop
 
 Music_StarkMountainDPPt_Ch2:
 Music_StarkMountainDPPt_Ch2_loop:
@@ -752,7 +752,7 @@ Music_StarkMountainDPPt_Ch2_loop:
 	note __, 2
 	octave 2
 	note C_, 4
-	jumpchannel Music_StarkMountainDPPt_Ch2_loop
+	sound_jump Music_StarkMountainDPPt_Ch2_loop
 
 Music_StarkMountainDPPt_Ch3:
 	pitch_offset 1
@@ -1181,7 +1181,7 @@ Music_StarkMountainDPPt_Ch3_loop:
 	note __, 4
 	octave 3
 	note C_, 8
-	jumpchannel Music_StarkMountainDPPt_Ch3_loop
+	sound_jump Music_StarkMountainDPPt_Ch3_loop
 
 Music_StarkMountainDPPt_Ch4:
 	toggle_noise 3
@@ -1455,4 +1455,4 @@ Music_StarkMountainDPPt_Ch4_loop:
 	note D#, 1
 	note D#, 2
 	note D#, 2
-	jumpchannel Music_StarkMountainDPPt_Ch4_loop
+	sound_jump Music_StarkMountainDPPt_Ch4_loop

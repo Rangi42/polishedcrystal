@@ -56,7 +56,7 @@ Music_Route4BW_Ch1_loop:
 	volume_envelope 12, 7
 	note E_, 8
 	duty_cycle 3
-	jumpchannel Music_Route4BW_Ch1_loop
+	sound_jump Music_Route4BW_Ch1_loop
 
 Music_Route4BW_Ch1_branch_1:
 	note_type 12, 11, 2
@@ -289,7 +289,7 @@ Music_Route4BW_Ch2:
 	note_type 12, 12, 7
 	note F#, 4
 	note E_, 4
-	jumpchannel Music_Route4BW_Ch2
+	sound_jump Music_Route4BW_Ch2
 
 Music_Route4BW_Ch3:
 	stereo_panning TRUE, FALSE
@@ -509,7 +509,7 @@ Music_Route4BW_Ch3:
 	note_type 12, 1, 4
 	note D#, 4
 	note C#, 4
-	jumpchannel Music_Route4BW_Ch3
+	sound_jump Music_Route4BW_Ch3
 
 Music_Route4BW_Ch3_branch_1:
 	note D#, 5
@@ -568,7 +568,7 @@ Music_Route4BW_Ch4_branch_1:
 	note D#, 1
 	note D#, 1
 	note D_, 1
-	jumpchannel Music_Route4BW_Ch4_branch_1
+	sound_jump Music_Route4BW_Ch4_branch_1
 
 Music_Route4BW_Ch4_branch_2:
 	note D_, 2

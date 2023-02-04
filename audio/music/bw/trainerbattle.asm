@@ -542,7 +542,7 @@ Music_TrainerBattleBW_Ch1_loop:
 	note __, 16
 	note __, 13
 	note_type 12, 11, 7
-	jumpchannel Music_TrainerBattleBW_Ch1_loop
+	sound_jump Music_TrainerBattleBW_Ch1_loop
 
 Music_TrainerBattleBW_Ch2:
 	duty_cycle 3
@@ -983,7 +983,7 @@ Music_TrainerBattleBW_Ch2_loop:
 	note __, 16
 	note __, 10
 	note_type 12, 12, 7
-	jumpchannel Music_TrainerBattleBW_Ch2_loop
+	sound_jump Music_TrainerBattleBW_Ch2_loop
 
 Music_TrainerBattleBW_Ch3:
 	octave 1
@@ -2125,7 +2125,7 @@ Music_TrainerBattleBW_Ch3_loop:
 	note F_, 6
 	note F#, 6
 	note_type 12, 1, -1
-	jumpchannel Music_TrainerBattleBW_Ch3_loop
+	sound_jump Music_TrainerBattleBW_Ch3_loop
 
 Music_TrainerBattleBW_Ch4:
 	note_type 12
@@ -2685,4 +2685,4 @@ Music_TrainerBattleBW_Ch4_loop:
 	note C_, 1
 	note C_, 1
 	note_type 3
-	jumpchannel Music_TrainerBattleBW_Ch4_loop
+	sound_jump Music_TrainerBattleBW_Ch4_loop

@@ -228,7 +228,7 @@ Music_KantoGymBattle_branch_ec78b:
 	volume_envelope 4, -4
 	octave 3
 	note D_, 4
-	jumpchannel Music_KantoGymBattle_branch_ec78b
+	sound_jump Music_KantoGymBattle_branch_ec78b
 
 Music_KantoGymBattle_branch_ec832:
 	volume_envelope 11, 5
@@ -402,7 +402,7 @@ Music_KantoGymBattle_branch_ec894:
 	note A#, 6
 	octave 3
 	note A_, 4
-	jumpchannel Music_KantoGymBattle_branch_ec894
+	sound_jump Music_KantoGymBattle_branch_ec894
 
 Music_KantoGymBattle_branch_ec907:
 	duty_cycle 2
@@ -608,4 +608,4 @@ Music_KantoGymBattle_branch_ec9e5:
 	octave 3
 	note D#, 2
 	note F_, 2
-	jumpchannel Music_KantoGymBattle_branch_ec965
+	sound_jump Music_KantoGymBattle_branch_ec965

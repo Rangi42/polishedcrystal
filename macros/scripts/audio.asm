@@ -278,9 +278,9 @@ MACRO sound_jump_if
 	dw \2 ; address
 ENDM
 
-	const jumpchannel_cmd
-MACRO jumpchannel
-	db jumpchannel_cmd
+	const sound_jump_cmd ; $fc
+MACRO sound_jump
+	db sound_jump_cmd
 	dw \1 ; address
 ENDM
 

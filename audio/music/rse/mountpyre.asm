@@ -96,7 +96,7 @@ Music_MountPyreRSE_Ch1_loop_3:
 	note_type 6, 10, 3
 	note __, 16
 	note __, 15
-	jumpchannel Music_MountPyreRSE_Ch1_loop_main
+	sound_jump Music_MountPyreRSE_Ch1_loop_main
 
 Music_MountPyreRSE_Ch2:
 	duty_cycle 2
@@ -169,7 +169,7 @@ Music_MountPyreRSE_Ch2_loop_1:
 	note A#, 4
 	note_type 12, 10, 3
 	note __, 14
-	jumpchannel Music_MountPyreRSE_Ch2_loop_main
+	sound_jump Music_MountPyreRSE_Ch2_loop_main
 
 Music_MountPyreRSE_Ch2_branch_1:
 	octave 3
@@ -362,7 +362,7 @@ Music_MountPyreRSE_Ch3_loop_2:
 	note_type 6, 2, 4
 	note __, 13
 	note __, 13
-	jumpchannel Music_MountPyreRSE_Ch3_loop_main
+	sound_jump Music_MountPyreRSE_Ch3_loop_main
 
 Music_MountPyreRSE_Ch4:
 	toggle_noise 3
@@ -398,7 +398,7 @@ Music_MountPyreRSE_Ch4_loop_4:
 	note __, 16
 	note __, 8
 	note B_, 8
-	jumpchannel Music_MountPyreRSE_Ch4_loop_main
+	sound_jump Music_MountPyreRSE_Ch4_loop_main
 
 Music_MountPyreRSE_Ch4_branch_1:
 	stereo_panning TRUE, FALSE

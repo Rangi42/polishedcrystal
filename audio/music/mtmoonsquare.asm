@@ -51,7 +51,7 @@ Music_MtMoonSquare_branch_f484d:
 	octave 5
 	note D_, 4
 	loopchannel 2, Music_MtMoonSquare_branch_f484d
-	jumpchannel Music_MtMoonSquare_branch_f4826
+	sound_jump Music_MtMoonSquare_branch_f4826
 
 Music_MtMoonSquare_Ch2:
 	duty_cycle 2
@@ -105,4 +105,4 @@ Music_MtMoonSquare_branch_f489b:
 	note D_, 4
 	note_type 12, 6, 2
 	loopchannel 2, Music_MtMoonSquare_branch_f489b
-	jumpchannel Music_MtMoonSquare_branch_f4862
+	sound_jump Music_MtMoonSquare_branch_f4862

@@ -111,7 +111,7 @@ Music_OreburghGateDPPt_Ch1_branch_2:
 	note G_, 8
 	volume_envelope 2, -6
 	note G_, 8
-	jumpchannel Music_OreburghGateDPPt_Ch1_branch_1
+	sound_jump Music_OreburghGateDPPt_Ch1_branch_1
 
 Music_OreburghGateDPPt_Ch2:
 	pitch_offset 1
@@ -410,7 +410,7 @@ Music_OreburghGateDPPt_Ch2_branch_3:
 	note D#, 2
 	note __, 12
 	note __, 12
-	jumpchannel Music_OreburghGateDPPt_Ch2_branch_1
+	sound_jump Music_OreburghGateDPPt_Ch2_branch_1
 
 Music_OreburghGateDPPt_Ch3:
 	note_type 12, 1, 2
@@ -1256,4 +1256,4 @@ Music_OreburghGateDPPt_Ch3_branch_2:
 	volume_envelope 1, 2
 	note __, 12
 	note __, 12
-	jumpchannel Music_OreburghGateDPPt_Ch3_branch_1
+	sound_jump Music_OreburghGateDPPt_Ch3_branch_1

@@ -285,7 +285,7 @@ Music_JohtoGymBattle_branch_ea55d:
 	octave 3
 	note D#, 2
 	note F#, 2
-	jumpchannel Music_JohtoGymBattle_branch_ea55d
+	sound_jump Music_JohtoGymBattle_branch_ea55d
 
 Music_JohtoGymBattle_Ch2:
 	duty_cycle 3
@@ -611,7 +611,7 @@ Music_JohtoGymBattle_branch_ea6ee:
 	octave 3
 	note B_, 16
 	note G_, 16
-	jumpchannel Music_JohtoGymBattle_branch_ea6ee
+	sound_jump Music_JohtoGymBattle_branch_ea6ee
 
 Music_JohtoGymBattle_Ch3:
 	note_type 12, 1, -1
@@ -897,7 +897,7 @@ Music_JohtoGymBattle_branch_ea83f:
 	note F#, 2
 	note F_, 2
 	note D#, 2
-	jumpchannel Music_JohtoGymBattle_branch_ea83f
+	sound_jump Music_JohtoGymBattle_branch_ea83f
 
 Music_JohtoGymBattle_branch_ea952:
 	note G_, 2

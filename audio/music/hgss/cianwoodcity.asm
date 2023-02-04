@@ -134,7 +134,7 @@ Music_CianwoodCityHGSS_branch_ef2e5:
 	note D_, 2
 	note F#, 2
 	callchannel Music_CianwoodCityHGSS_branch_ef391
-	jumpchannel Music_CianwoodCityHGSS_branch_ef2e5
+	sound_jump Music_CianwoodCityHGSS_branch_ef2e5
 
 Music_CianwoodCityHGSS_branch_ef37f:
 	note A#, 2
@@ -430,7 +430,7 @@ Music_CianwoodCityHGSS_branch_ef3f2:
 	note F#, 2
 	note G#, 2
 	note A#, 16
-	jumpchannel Music_CianwoodCityHGSS_branch_ef3f2
+	sound_jump Music_CianwoodCityHGSS_branch_ef3f2
 
 Music_CianwoodCityHGSS_Ch3:
 	stereo_panning TRUE, TRUE
@@ -557,7 +557,7 @@ Music_CianwoodCityHGSS_branch_ef4e3:
 	octave 2
 	note A#, 8
 	note G#, 8
-	jumpchannel Music_CianwoodCityHGSS_branch_ef4e3
+	sound_jump Music_CianwoodCityHGSS_branch_ef4e3
 
 Music_CianwoodCityHGSS_branch_ef569:
 	octave 2

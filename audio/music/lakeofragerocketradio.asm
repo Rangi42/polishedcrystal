@@ -19,7 +19,7 @@ Music_LakeOfRageRocketRadio_branch_ef5c9:
 	note G_, 4
 	note F#, 4
 	note __, 16
-	jumpchannel Music_LakeOfRageRocketRadio_branch_ef5c9
+	sound_jump Music_LakeOfRageRocketRadio_branch_ef5c9
 
 Music_LakeOfRageRocketRadio_Ch2:
 	duty_cycle 1
@@ -27,10 +27,10 @@ Music_LakeOfRageRocketRadio_Ch2:
 	note_type 12, 10, 7
 	note __, 2
 	stereo_panning FALSE, TRUE
-	jumpchannel Music_LakeOfRageRocketRadio_branch_ef5c9
+	sound_jump Music_LakeOfRageRocketRadio_branch_ef5c9
 
 Music_LakeOfRageRocketRadio_Ch3:
 	note_type 12, 2, 6
 	vibrato $10, $44
 	note __, 4
-	jumpchannel Music_LakeOfRageRocketRadio_branch_ef5c9
+	sound_jump Music_LakeOfRageRocketRadio_branch_ef5c9

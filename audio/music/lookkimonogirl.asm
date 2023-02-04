@@ -46,7 +46,7 @@ Music_LookKimonoGirl_branch_f79d7:
 	volume_envelope 5, 4
 	octave 3
 	note A_, 1
-	jumpchannel Music_LookKimonoGirl_branch_f79d7
+	sound_jump Music_LookKimonoGirl_branch_f79d7
 
 Music_LookKimonoGirl_branch_f7a13:
 	volume_envelope 11, 4
@@ -150,7 +150,7 @@ Music_LookKimonoGirl_branch_f7a5f:
 	note E_, 1
 	note D_, 1
 	callchannel Music_LookKimonoGirl_branch_f7a94
-	jumpchannel Music_LookKimonoGirl_branch_f7a5f
+	sound_jump Music_LookKimonoGirl_branch_f7a5f
 
 Music_LookKimonoGirl_branch_f7a94:
 	octave 5
@@ -261,4 +261,4 @@ Music_LookKimonoGirl_branch_f7aec:
 	note E_, 2
 	note D_, 8
 	note E_, 8
-	jumpchannel Music_LookKimonoGirl_branch_f7aec
+	sound_jump Music_LookKimonoGirl_branch_f7aec

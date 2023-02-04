@@ -15,19 +15,19 @@ Music_LyraDepartureHGSS_Ch1:
 	duty_cycle 1
 	note_type 12, 8, 5
 	note __, 4
-	jumpchannel Music_LyraEncounterHGSS_Ch1_loop
+	sound_jump Music_LyraEncounterHGSS_Ch1_loop
 
 Music_LyraDepartureHGSS_Ch2:
 	duty_cycle 2
 	note_type 12, 11, 4
 	note __, 4
-	jumpchannel Music_LyraEncounterHGSS_Ch2_loop
+	sound_jump Music_LyraEncounterHGSS_Ch2_loop
 
 Music_LyraDepartureHGSS_Ch3:
 	note_type 12, 1, 5
 	volume_envelope 1, 0
 	note __, 4
-	jumpchannel Music_LyraEncounterHGSS_Ch3_loop
+	sound_jump Music_LyraEncounterHGSS_Ch3_loop
 
 Music_LyraDepartureHGSS_Ch4:
 	toggle_noise 3
@@ -35,4 +35,4 @@ Music_LyraDepartureHGSS_Ch4:
 	note C_, 2
 	note C_, 2
 	note D#, 4
-	jumpchannel Music_LyraEncounterHGSS_Ch4_loop
+	sound_jump Music_LyraEncounterHGSS_Ch4_loop

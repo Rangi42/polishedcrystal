@@ -199,7 +199,7 @@ Music_SafariZoneGateHGSS_Ch1:
 	note __, 16
 	note __, 16
 	note __, 16
-	jumpchannel Music_SafariZoneGateHGSS_Ch1
+	sound_jump Music_SafariZoneGateHGSS_Ch1
 	endchannel
 
 Music_SafariZoneGateHGSS_Ch2:
@@ -413,7 +413,7 @@ Music_SafariZoneGateHGSS_Ch2:
 	note C#, 2
 	callchannel Music_SafariZoneGateHGSS_Ch2_branch_1
 	note __, 1
-	jumpchannel Music_SafariZoneGateHGSS_Ch2
+	sound_jump Music_SafariZoneGateHGSS_Ch2
 	endchannel
 
 Music_SafariZoneGateHGSS_Ch2_branch_1:
@@ -670,7 +670,7 @@ Music_SafariZoneGateHGSS_Ch3_loop:
 	note A_, 4
 	volume_envelope 2, 5
 	note __, 16
-	jumpchannel Music_SafariZoneGateHGSS_Ch3_loop
+	sound_jump Music_SafariZoneGateHGSS_Ch3_loop
 	endchannel
 
 Music_SafariZoneGateHGSS_Ch3_branch_1:
@@ -753,7 +753,7 @@ Music_SafariZoneGateHGSS_Ch4_loop_5:
 	note F#, 1
 	loopchannel 15, Music_SafariZoneGateHGSS_Ch4_loop_5
 	note B_, 16
-	jumpchannel Music_SafariZoneGateHGSS_Ch4_loop_main
+	sound_jump Music_SafariZoneGateHGSS_Ch4_loop_main
 	endchannel
 
 Music_SafariZoneGateHGSS_Ch4_branch_1:

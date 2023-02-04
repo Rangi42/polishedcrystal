@@ -58,7 +58,7 @@ Music_LookYoungster_branch_f66ea:
 	note C_, 1
 	note __, 1
 	note __, 16
-	jumpchannel Music_LookYoungster_branch_f66ea
+	sound_jump Music_LookYoungster_branch_f66ea
 
 Music_LookYoungster_Ch2:
 	stereo_panning TRUE, FALSE
@@ -154,7 +154,7 @@ Music_LookYoungster_branch_f672f:
 	octave 4
 	note C_, 1
 	note __, 1
-	jumpchannel Music_LookYoungster_branch_f672f
+	sound_jump Music_LookYoungster_branch_f672f
 
 Music_LookYoungster_Ch3:
 	stereo_panning TRUE, TRUE
@@ -287,4 +287,4 @@ Music_LookYoungster_branch_f67ae:
 	note __, 1
 	note G#, 1
 	note __, 1
-	jumpchannel Music_LookYoungster_branch_f67ae
+	sound_jump Music_LookYoungster_branch_f67ae

@@ -313,7 +313,7 @@ Music_BicycleRSE_Ch1:
 	note D_, 16
 	volume_envelope 8, 7
 	note D_, 16
-	jumpchannel Music_BicycleRSE_Ch1
+	sound_jump Music_BicycleRSE_Ch1
 
 Music_BicycleRSE_Ch2:
 	duty_cycle 2
@@ -678,7 +678,7 @@ Music_BicycleRSE_Ch2:
 	note G_, 4
 	volume_envelope 10, 1
 	note A_, 4
-	jumpchannel Music_BicycleRSE_Ch2
+	sound_jump Music_BicycleRSE_Ch2
 
 Music_BicycleRSE_Ch2_branch_1:
 	octave 4
@@ -1063,7 +1063,7 @@ Music_BicycleRSE_Ch3_loop_1:
 	note A_, 1
 	note __, 3
 	loopchannel 8, Music_BicycleRSE_Ch3_loop_1
-	jumpchannel Music_BicycleRSE_Ch3_loop_main
+	sound_jump Music_BicycleRSE_Ch3_loop_main
 
 Music_BicycleRSE_Ch4:
 	toggle_noise 3
@@ -1101,4 +1101,4 @@ Music_BicycleRSE_Ch4_loop_4:
 	note __, 16
 	note __, 16
 	note __, 16
-	jumpchannel Music_BicycleRSE_Ch4_loop_main
+	sound_jump Music_BicycleRSE_Ch4_loop_main

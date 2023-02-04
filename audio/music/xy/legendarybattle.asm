@@ -314,7 +314,7 @@ Music_LegendaryBattleXY_Ch1_loop_1:
 	note F_, 3
 	volume_envelope 8, 7
 	note F_, 4
-	jumpchannel Music_LegendaryBattleXY_Ch1_loop_main
+	sound_jump Music_LegendaryBattleXY_Ch1_loop_main
 
 Music_LegendaryBattleXY_Ch2:
 	duty_cycle 3
@@ -643,7 +643,7 @@ Music_LegendaryBattleXY_Ch2_loop_main:
 	note D#, 4
 	volume_envelope 8, 7
 	note D#, 4
-	jumpchannel Music_LegendaryBattleXY_Ch2_loop_main
+	sound_jump Music_LegendaryBattleXY_Ch2_loop_main
 
 Music_LegendaryBattleXY_Ch3:
 	note_type 12, 1, -1
@@ -829,4 +829,4 @@ Music_LegendaryBattleXY_Ch3_loop_12:
 	octave 2
 	note F_, 2
 	loopchannel 32, Music_LegendaryBattleXY_Ch3_loop_12
-	jumpchannel Music_LegendaryBattleXY_Ch3_loop_main
+	sound_jump Music_LegendaryBattleXY_Ch3_loop_main

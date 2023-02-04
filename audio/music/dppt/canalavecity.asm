@@ -226,7 +226,7 @@ Music_CanalaveCityDPPt_Ch1_loop:
 	note E_, 8
 	volume_envelope 10, 7
 	note E_, 8
-	jumpchannel Music_CanalaveCityDPPt_Ch1_loop
+	sound_jump Music_CanalaveCityDPPt_Ch1_loop
 
 Music_CanalaveCityDPPt_Ch2:
 	note_type 12, 11, 7
@@ -406,7 +406,7 @@ Music_CanalaveCityDPPt_Ch2_loop:
 	note A_, 8
 	volume_envelope 11, 7
 	note A_, 8
-	jumpchannel Music_CanalaveCityDPPt_Ch2_loop
+	sound_jump Music_CanalaveCityDPPt_Ch2_loop
 
 Music_CanalaveCityDPPt_Ch3:
 	note_type 12, 2, 5
@@ -732,7 +732,7 @@ Music_CanalaveCityDPPt_Ch3_loop:
 	note C#, 1
 	octave 4
 	note E_, 1
-	jumpchannel Music_CanalaveCityDPPt_Ch3_loop
+	sound_jump Music_CanalaveCityDPPt_Ch3_loop
 
 Music_CanalaveCityDPPt_Ch4:
 	toggle_noise 3
@@ -881,4 +881,4 @@ Music_CanalaveCityDPPt_Ch4_loop:
 	note C_, 1
 	note A#, 2
 	note C_, 1
-	jumpchannel Music_CanalaveCityDPPt_Ch4_loop
+	sound_jump Music_CanalaveCityDPPt_Ch4_loop

@@ -26,7 +26,7 @@ Music_LookPokemaniac_branch_ebdfb:
 	note G_, 1
 	note __, 3
 	loopchannel 4, Music_LookPokemaniac_branch_ebdfb
-	jumpchannel Music_LookPokemaniac_branch_ebdfb
+	sound_jump Music_LookPokemaniac_branch_ebdfb
 
 Music_LookPokemaniac_Ch2:
 	stereo_panning TRUE, TRUE
@@ -77,7 +77,7 @@ Music_LookPokemaniac_branch_ebe38:
 	note C_, 1
 	note __, 3
 	loopchannel 2, Music_LookPokemaniac_branch_ebe38
-	jumpchannel Music_LookPokemaniac_branch_ebe24
+	sound_jump Music_LookPokemaniac_branch_ebe24
 
 Music_LookPokemaniac_Ch3:
 	stereo_panning TRUE, FALSE
@@ -96,7 +96,7 @@ Music_LookPokemaniac_branch_ebe62:
 	volume_envelope 1, 4
 	callchannel Music_LookPokemaniac_branch_ebe70
 	volume_envelope 1, 0
-	jumpchannel Music_LookPokemaniac_branch_ebe62
+	sound_jump Music_LookPokemaniac_branch_ebe62
 
 Music_LookPokemaniac_branch_ebe70:
 	note A#, 6

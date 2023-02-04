@@ -127,7 +127,7 @@ Music_PostCredits_branch_cfdb2:
 	note D_, 2
 	octave 2
 	note G_, 2
-	jumpchannel Music_PostCredits_branch_cfdb2
+	sound_jump Music_PostCredits_branch_cfdb2
 
 Music_PostCredits_Ch2:
 	transpose 0, 3
@@ -260,4 +260,4 @@ Music_PostCredits_branch_cfe5a:
 	volume_envelope 10, 3
 	note E_, 2
 	note F_, 2
-	jumpchannel Music_PostCredits_branch_cfe5a
+	sound_jump Music_PostCredits_branch_cfe5a

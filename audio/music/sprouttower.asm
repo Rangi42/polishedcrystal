@@ -60,7 +60,7 @@ Music_SproutTower_branch_f6994:
 	note F_, 4
 	note D#, 4
 	note D#, 4
-	jumpchannel Music_SproutTower_branch_f6994
+	sound_jump Music_SproutTower_branch_f6994
 
 Music_SproutTower_Ch2:
 	duty_cycle 3
@@ -137,7 +137,7 @@ Music_SproutTower_branch_f69dc:
 	octave 4
 	note C_, 16
 	note __, 16
-	jumpchannel Music_SproutTower_branch_f69dc
+	sound_jump Music_SproutTower_branch_f69dc
 
 Music_SproutTower_Ch3:
 	vibrato $14, $e8
@@ -217,7 +217,7 @@ Music_SproutTower_branch_f6a3e:
 	note D#, 2
 	note __, 2
 	note F_, 2
-	jumpchannel Music_SproutTower_branch_f6a3e
+	sound_jump Music_SproutTower_branch_f6a3e
 
 Music_SproutTower_Ch4:
 	toggle_noise 0
@@ -240,4 +240,4 @@ Music_SproutTower_branch_f6a7f:
 	note D#, 2
 	stereo_panning TRUE, TRUE
 	note F#, 4
-	jumpchannel Music_SproutTower_branch_f6a7f
+	sound_jump Music_SproutTower_branch_f6a7f

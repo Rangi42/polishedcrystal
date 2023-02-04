@@ -273,7 +273,7 @@ Music_LugiaBattleHGSS_Ch1_L:
 	octave 3
 	note F#, 1
 	note D#, 1
-	jumpchannel Music_LugiaBattleHGSS_Ch1_L
+	sound_jump Music_LugiaBattleHGSS_Ch1_L
 
 Music_LugiaBattleHGSS_Ch2:
 	duty_cycle 3
@@ -546,7 +546,7 @@ Music_LugiaBattleHGSS_Ch2_L2:
 	note E_, 2
 	note __, 6
 	note C#, 16
-	jumpchannel Music_LugiaBattleHGSS_Ch2_L
+	sound_jump Music_LugiaBattleHGSS_Ch2_L
 
 Music_LugiaBattleHGSS_Ch3:
 	note_type 12, 2, 3
@@ -761,4 +761,4 @@ Music_LugiaBattleHGSS_Ch3_L8:
 	note C#, 14
 	octave 2
 	note F#, 2
-	jumpchannel Music_LugiaBattleHGSS_Ch3_L
+	sound_jump Music_LugiaBattleHGSS_Ch3_L

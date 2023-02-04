@@ -612,7 +612,7 @@ Music_GameCornerDPPt_Ch1_loop:
 	note A_, 1
 	note A_, 1
 	note A_, 2
-	jumpchannel Music_GameCornerDPPt_Ch1_loop
+	sound_jump Music_GameCornerDPPt_Ch1_loop
 
 Music_GameCornerDPPt_Ch2:
 	note_type 12, 12, 7
@@ -1282,7 +1282,7 @@ Music_GameCornerDPPt_Ch2_loop:
 	volume_envelope 12, 7
 	note D_, 16
 	note __, 4
-	jumpchannel Music_GameCornerDPPt_Ch2_loop
+	sound_jump Music_GameCornerDPPt_Ch2_loop
 
 Music_GameCornerDPPt_Ch3:
 	stereo_panning TRUE, FALSE
@@ -2190,7 +2190,7 @@ Music_GameCornerDPPt_Ch3_loop:
 	note C_, 1
 	note __, 1
 	note C_, 4
-	jumpchannel Music_GameCornerDPPt_Ch3_loop
+	sound_jump Music_GameCornerDPPt_Ch3_loop
 
 Music_GameCornerDPPt_Ch4:
 	toggle_noise 3
@@ -2461,4 +2461,4 @@ Music_GameCornerDPPt_Ch4_loop:
 	note A#, 16
 	note __, 16
 	note __, 4
-	jumpchannel Music_GameCornerDPPt_Ch4_loop
+	sound_jump Music_GameCornerDPPt_Ch4_loop

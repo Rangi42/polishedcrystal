@@ -482,7 +482,7 @@ Music_Route210DPPt_Ch1_loop:
 	volume_envelope 11, 5
 	note F_, 6
 	note __, 2
-	jumpchannel Music_Route210DPPt_Ch1_loop
+	sound_jump Music_Route210DPPt_Ch1_loop
 
 Music_Route210DPPt_Ch2:
 	note_type 12, 12, 7
@@ -862,7 +862,7 @@ Music_Route210DPPt_Ch2_loop:
 	note C#, 8
 	volume_envelope 12, 7
 	note C#, 16
-	jumpchannel Music_Route210DPPt_Ch2_loop
+	sound_jump Music_Route210DPPt_Ch2_loop
 
 Music_Route210DPPt_Ch3:
 	note_type 6, 1, 2
@@ -1473,7 +1473,7 @@ Music_Route210DPPt_Ch3_loop:
 	note __, 1
 	note G#, 1
 	note __, 1
-	jumpchannel Music_Route210DPPt_Ch3_loop
+	sound_jump Music_Route210DPPt_Ch3_loop
 
 Music_Route210DPPt_Ch4:
 	toggle_noise 0
@@ -1879,4 +1879,4 @@ Music_Route210DPPt_Ch4_loop:
 	note C_, 4
 	note C_, 2
 	note C_, 2
-	jumpchannel Music_Route210DPPt_Ch4_loop
+	sound_jump Music_Route210DPPt_Ch4_loop

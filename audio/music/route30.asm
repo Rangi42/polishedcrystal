@@ -182,7 +182,7 @@ Music_Route30_branch_efc2e:
 	note B_, 2
 	octave 4
 	note D_, 2
-	jumpchannel Music_Route30_branch_efc2e
+	sound_jump Music_Route30_branch_efc2e
 
 Music_Route30_Ch2:
 	duty_cycle 3
@@ -293,7 +293,7 @@ Music_Route30_branch_efcf6:
 	volume_envelope 10, 7
 	octave 3
 	note F#, 2
-	jumpchannel Music_Route30_branch_efcf6
+	sound_jump Music_Route30_branch_efcf6
 
 Music_Route30_Ch3:
 	note_type 12, 2, 7
@@ -574,7 +574,7 @@ Music_Route30_branch_efd79:
 	note __, 1
 	note G_, 1
 	note __, 1
-	jumpchannel Music_Route30_branch_efd79
+	sound_jump Music_Route30_branch_efd79
 
 Music_Route30_Ch4:
 	toggle_noise 3
@@ -598,7 +598,7 @@ Music_Route30_branch_efe84:
 	callchannel Music_Route30_branch_efed7
 	callchannel Music_Route30_branch_efecd
 	callchannel Music_Route30_branch_efee1
-	jumpchannel Music_Route30_branch_efe84
+	sound_jump Music_Route30_branch_efe84
 
 Music_Route30_branch_efeb8:
 	note D_, 2

@@ -449,7 +449,7 @@ Music_BattleFactoryRSE_Ch1_loop:
 	note G_, 2
 	octave 2
 	note E_, 2
-	jumpchannel Music_BattleFactoryRSE_Ch1_loop
+	sound_jump Music_BattleFactoryRSE_Ch1_loop
 
 Music_BattleFactoryRSE_Ch2:
 	stereo_panning TRUE, TRUE
@@ -990,7 +990,7 @@ Music_BattleFactoryRSE_Ch2_loop:
 	octave 2
 	note E_, 1
 	note __, 1
-	jumpchannel Music_BattleFactoryRSE_Ch2_loop
+	sound_jump Music_BattleFactoryRSE_Ch2_loop
 
 Music_BattleFactoryRSE_Ch2_branch_1:
 	octave 3
@@ -1164,7 +1164,7 @@ Music_BattleFactoryRSE_Ch3_loop:
 	callchannel Music_BattleFactoryRSE_Ch3_branch_1
 	callchannel Music_BattleFactoryRSE_Ch3_branch_3
 	callchannel Music_BattleFactoryRSE_Ch3_branch_1
-	jumpchannel Music_BattleFactoryRSE_Ch3_loop
+	sound_jump Music_BattleFactoryRSE_Ch3_loop
 
 Music_BattleFactoryRSE_Ch3_branch_1:
 	octave 1
@@ -1252,7 +1252,7 @@ Music_BattleFactoryRSE_Ch4:
 	note_type 6
 Music_BattleFactoryRSE_Ch4_loop:
 	note D#, 8
-	jumpchannel Music_BattleFactoryRSE_Ch4_loop
+	sound_jump Music_BattleFactoryRSE_Ch4_loop
 
 Music_BattleFactoryRSE_Ch4_branch_1:
 	note E_, 4

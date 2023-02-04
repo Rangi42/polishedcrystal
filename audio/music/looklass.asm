@@ -28,7 +28,7 @@ Music_LookLass_branch_ed7bd:
 	note E_, 2
 	volume_envelope 10, 3
 	note B_, 2
-	jumpchannel Music_LookLass_branch_ed7bd
+	sound_jump Music_LookLass_branch_ed7bd
 
 Music_LookLass_Ch2:
 	stereo_panning TRUE, FALSE
@@ -46,7 +46,7 @@ Music_LookLass_branch_ed7d5:
 	volume_envelope 9, 3
 	octave 3
 	note G#, 2
-	jumpchannel Music_LookLass_branch_ed7d5
+	sound_jump Music_LookLass_branch_ed7d5
 
 Music_LookLass_Ch3:
 	note_type 12, 1, 0
@@ -96,7 +96,7 @@ Music_LookLass_branch_ed7ef:
 	note F#, 2
 	note G#, 2
 	note A_, 2
-	jumpchannel Music_LookLass_branch_ed7ef
+	sound_jump Music_LookLass_branch_ed7ef
 
 Music_LookLass_Ch4:
 	toggle_noise 4
@@ -112,4 +112,4 @@ Music_LookLass_branch_ed81f:
 	note C#, 1
 	note C#, 1
 	note C#, 1
-	jumpchannel Music_LookLass_branch_ed81f
+	sound_jump Music_LookLass_branch_ed81f

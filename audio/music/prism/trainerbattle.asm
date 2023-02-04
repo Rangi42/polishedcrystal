@@ -321,7 +321,7 @@ Music_TrainerBattlePrism_L1:
 	note G_, 1
 	note G#, 1
 	note A#, 1
-	jumpchannel Music_TrainerBattlePrism_L1
+	sound_jump Music_TrainerBattlePrism_L1
 
 Music_TrainerBattlePrism_Ch2:
 	tempo 102
@@ -576,7 +576,7 @@ Music_TrainerBattlePrism_L4:
 	octave 4
 	note A#, 3
 	note __, 1
-	jumpchannel Music_TrainerBattlePrism_L2
+	sound_jump Music_TrainerBattlePrism_L2
 
 Music_TrainerBattlePrism_Ch3:
 	note_type 12, 1, -1
@@ -807,7 +807,7 @@ Music_TrainerBattlePrism_L14:
 	octave 3
 	note C#, 2
 	note A#, 2
-	jumpchannel Music_TrainerBattlePrism_L6
+	sound_jump Music_TrainerBattlePrism_L6
 
 Music_TrainerBattlePrism_P1:
 	note C_, 6

@@ -94,7 +94,7 @@ Music_TinTower_branch_f682a:
 	volume_envelope 10, 5
 	octave 3
 	note A#, 4
-	jumpchannel Music_TinTower_branch_f682a
+	sound_jump Music_TinTower_branch_f682a
 
 Music_TinTower_Ch2:
 	duty_cycle 3
@@ -183,7 +183,7 @@ Music_TinTower_branch_f6895:
 	note C_, 6
 	volume_envelope 9, 5
 	note C#, 2
-	jumpchannel Music_TinTower_branch_f6893
+	sound_jump Music_TinTower_branch_f6893
 
 Music_TinTower_Ch3:
 	note_type 12, 1, 4
@@ -257,7 +257,7 @@ Music_TinTower_branch_f68fb:
 	note C_, 1
 	note __, 11
 	stereo_panning TRUE, TRUE
-	jumpchannel Music_TinTower_branch_f68fb
+	sound_jump Music_TinTower_branch_f68fb
 
 Music_TinTower_Ch4:
 	toggle_noise 0
@@ -289,4 +289,4 @@ Music_TinTower_branch_f694c:
 	note G_, 2
 	note G_, 2
 	note F_, 2
-	jumpchannel Music_TinTower_branch_f694c
+	sound_jump Music_TinTower_branch_f694c

@@ -63,7 +63,7 @@ Music_UnionCave_branch_f5c91:
 	pitch_offset 16
 	callchannel Music_UnionCave_branch_f5ccf
 	pitch_offset 2
-	jumpchannel Music_UnionCave_branch_f5c7b
+	sound_jump Music_UnionCave_branch_f5c7b
 
 Music_UnionCave_branch_f5ccf:
 	octave 2
@@ -132,7 +132,7 @@ Music_UnionCave_branch_f5cda:
 	vibrato $1, $41
 	callchannel Music_UnionCave_branch_f5d52
 	vibrato $8, $24
-	jumpchannel Music_UnionCave_branch_f5cda
+	sound_jump Music_UnionCave_branch_f5cda
 
 Music_UnionCave_branch_f5d34:
 	octave 4
@@ -235,7 +235,7 @@ Music_UnionCave_branch_f5d8d:
 Music_UnionCave_branch_f5d9c:
 	note __, 16
 	loopchannel 4, Music_UnionCave_branch_f5d9c
-	jumpchannel Music_UnionCave_branch_f5d5d
+	sound_jump Music_UnionCave_branch_f5d5d
 
 Music_UnionCave_Ch4:
 	toggle_noise 1
@@ -255,4 +255,4 @@ Music_UnionCave_branch_f5da9:
 	stereo_panning TRUE, FALSE
 	note G#, 4
 	note __, 8
-	jumpchannel Music_UnionCave_branch_f5da9
+	sound_jump Music_UnionCave_branch_f5da9

@@ -287,7 +287,7 @@ Music_GymLeaderBattlePrism_Loop1:
 	duty_cycle 3
 	note F_, 2
 	note E_, 2
-	jumpchannel Music_GymLeaderBattlePrism_Loop1
+	sound_jump Music_GymLeaderBattlePrism_Loop1
 
 Music_GymLeaderBattlePrism_Ch2:
 	note_type 12, 12, 2
@@ -501,7 +501,7 @@ Music_GymLeaderBattlePrism_Loop2:
 	note A#, 2
 	note A_, 16
 	note G_, 16
-	jumpchannel Music_GymLeaderBattlePrism_Loop2
+	sound_jump Music_GymLeaderBattlePrism_Loop2
 
 Music_GymLeaderBattlePrism_Ch3:
 	note_type 4, 1, -1
@@ -1075,4 +1075,4 @@ Music_GymLeaderBattlePrism_Loop3:
 	note G_, 2
 	note C_, 2
 	note G_, 2
-	jumpchannel Music_GymLeaderBattlePrism_Loop3
+	sound_jump Music_GymLeaderBattlePrism_Loop3

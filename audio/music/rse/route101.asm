@@ -96,7 +96,7 @@ Music_Route101RSE_Ch1_loop:
 	note A_, 2
 	volume_envelope 6, 4
 	note A_, 2
-	jumpchannel Music_Route101RSE_Ch1_loop
+	sound_jump Music_Route101RSE_Ch1_loop
 
 Music_Route101RSE_Ch1_branch_1:
 	octave 3
@@ -278,7 +278,7 @@ Music_Route101RSE_Ch2_loop:
 	note A_, 8
 	volume_envelope 9, 7
 	note A_, 8
-	jumpchannel Music_Route101RSE_Ch2_loop
+	sound_jump Music_Route101RSE_Ch2_loop
 
 Music_Route101RSE_Ch2_branch_1:
 	octave 1
@@ -417,7 +417,7 @@ Music_Route101RSE_Ch3_loop:
 	volume_envelope 2, 3
 	note C#, 6
 	volume_envelope 1, 3
-	jumpchannel Music_Route101RSE_Ch3_loop
+	sound_jump Music_Route101RSE_Ch3_loop
 
 Music_Route101RSE_Ch3_branch_1:
 	octave 5
@@ -527,7 +527,7 @@ Music_Route101RSE_Ch4_loop_2:
 	note D#, 1
 	note D#, 1
 	note D_, 4
-	jumpchannel Music_Route101RSE_Ch4_loop
+	sound_jump Music_Route101RSE_Ch4_loop
 
 Music_Route101RSE_Ch4_branch_1:
 	note D#, 4

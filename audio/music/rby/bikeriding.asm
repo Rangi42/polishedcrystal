@@ -157,7 +157,7 @@ Music_BikeRiding_branch_7dbc9:
 	note G_, 12
 	volume_envelope 11, 5
 	vibrato $8, $14
-	jumpchannel Music_BikeRiding_branch_7dbc9
+	sound_jump Music_BikeRiding_branch_7dbc9
 Music_BikeRiding_Ch2:
 	duty_cycle 2
 	vibrato $6, $15
@@ -303,7 +303,7 @@ Music_BikeRiding_branch_7dc75:
 	note_type 12, 12, 7
 	note B_, 12
 	note_type 12, 12, 3
-	jumpchannel Music_BikeRiding_branch_7dc75
+	sound_jump Music_BikeRiding_branch_7dc75
 Music_BikeRiding_Ch3:
 	note_type 12, 1, 3
 	note __, 2
@@ -641,7 +641,7 @@ Music_BikeRiding_branch_7dd17:
 	octave 4
 	note F_, 1
 	note __, 1
-	jumpchannel Music_BikeRiding_branch_7dd17
+	sound_jump Music_BikeRiding_branch_7dd17
 Music_BikeRiding_Ch4:
 	toggle_noise 1
 	note_type 12
@@ -666,7 +666,7 @@ Music_BikeRiding_branch_7de6a:
 	callchannel Music_BikeRiding_branch_7dea7
 	callchannel Music_BikeRiding_branch_7dea7
 	callchannel Music_BikeRiding_branch_7dea7
-	jumpchannel Music_BikeRiding_branch_7de6a
+	sound_jump Music_BikeRiding_branch_7de6a
 Music_BikeRiding_branch_7dea7:
 	note __, 2
 	note G#, 2

@@ -483,7 +483,7 @@ Music_KantoLegendBattleXY_Ch1_L10:
 	note G_, 6
 	volume_envelope 12, 5
 	note G_, 9
-	jumpchannel Music_KantoLegendBattleXY_Ch1_L
+	sound_jump Music_KantoLegendBattleXY_Ch1_L
 
 Music_KantoLegendBattleXY_Ch2:
 	duty_cycle 1
@@ -610,7 +610,7 @@ Music_KantoLegendBattleXY_Ch2_L:
 	callchannel Music_KantoLegendBattleXY_Ch2_P_C
 	callchannel Music_KantoLegendBattleXY_Ch2_P_Dm
 	callchannel Music_KantoLegendBattleXY_Ch2_P_Em
-	jumpchannel Music_KantoLegendBattleXY_Ch2_L
+	sound_jump Music_KantoLegendBattleXY_Ch2_L
 
 Music_KantoLegendBattleXY_Ch2_P_C:
 	octave 1
@@ -1227,7 +1227,7 @@ Music_KantoLegendBattleXY_Ch3_L:
 	octave 5
 	note E_, 1
 	note __, 1
-	jumpchannel Music_KantoLegendBattleXY_Ch3_L
+	sound_jump Music_KantoLegendBattleXY_Ch3_L
 
 Music_KantoLegendBattleXY_Ch3_P1:
 	octave 3

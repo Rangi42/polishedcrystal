@@ -201,7 +201,7 @@ Music_CeruleanCityHGSS_Loop1:
 	note C#, 2
 	note C_, 2
 ;Channel1_Bar18:
-	jumpchannel Music_CeruleanCityHGSS_Loop1
+	sound_jump Music_CeruleanCityHGSS_Loop1
 
 Music_CeruleanCityHGSS_Ch2:
 ;Channel2_Bar1:
@@ -401,7 +401,7 @@ Music_CeruleanCityHGSS_Loop2:
 	note_type 2, 12, 2
 	note D#, 10
 ;Channel2_Bar18:
-	jumpchannel Music_CeruleanCityHGSS_Loop2
+	sound_jump Music_CeruleanCityHGSS_Loop2
 
 Music_CeruleanCityHGSS_Ch3:
 	note_type 6, 1, 5
@@ -746,7 +746,7 @@ Music_CeruleanCityHGSS_Loop3:
 	octave 2
 	note A_, 2
 	note __, 2
-	jumpchannel Music_CeruleanCityHGSS_Loop3
+	sound_jump Music_CeruleanCityHGSS_Loop3
 
 Music_CeruleanCityHGSS_Ch4:
 	note_type 12
@@ -951,4 +951,4 @@ Music_CeruleanCityHGSS_Loop4:
 	note F_, 1
 	note F_, 1
 ;Channel4_Bar18:
-	jumpchannel Music_CeruleanCityHGSS_Loop4
+	sound_jump Music_CeruleanCityHGSS_Loop4

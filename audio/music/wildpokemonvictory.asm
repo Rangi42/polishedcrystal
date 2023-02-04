@@ -40,7 +40,7 @@ Music_WildPokemonVictory_branch_f4538:
 	volume_envelope 7, 8
 	octave 3
 	note F#, 4
-	jumpchannel Music_WildPokemonVictory_branch_f4538
+	sound_jump Music_WildPokemonVictory_branch_f4538
 
 Music_WildPokemonVictory_branch_f455c:
 	volume_envelope 7, 1
@@ -112,7 +112,7 @@ Music_WildPokemonVictory_branch_f4587:
 	note D#, 1
 	note F#, 1
 	note A_, 1
-	jumpchannel Music_WildPokemonVictory_branch_f4587
+	sound_jump Music_WildPokemonVictory_branch_f4587
 
 Music_WildPokemonVictory_branch_f45b5:
 	volume_envelope 8, 1
@@ -165,7 +165,7 @@ Music_WildPokemonVictory_branch_f45cf:
 	transpose 0, 0
 	octave 2
 	note B_, 4
-	jumpchannel Music_WildPokemonVictory_branch_f45cf
+	sound_jump Music_WildPokemonVictory_branch_f45cf
 
 Music_WildPokemonVictory_branch_f45f4:
 	volume_envelope 2, 5

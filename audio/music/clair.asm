@@ -94,7 +94,7 @@ Music_Clair_branch_1fac9:
 	note B_, 1
 	octave 4
 	note D#, 1
-	jumpchannel Music_Clair_branch_1fac9
+	sound_jump Music_Clair_branch_1fac9
 
 Music_Clair_branch_1fb12:
 	duty_cycle 3
@@ -224,7 +224,7 @@ Music_Clair_branch_1fb77:
 	note __, 2
 	note G#, 16
 	note __, 4
-	jumpchannel Music_Clair_branch_1fb77
+	sound_jump Music_Clair_branch_1fb77
 
 Music_Clair_branch_1fba6:
 	octave 4
@@ -369,7 +369,7 @@ Music_Clair_branch_1fbd1:
 	note G#, 1
 	octave 1
 	note G#, 1
-	jumpchannel Music_Clair_branch_1fbd1
+	sound_jump Music_Clair_branch_1fbd1
 
 Music_Clair_branch_1fc3c:
 	octave 1
@@ -411,7 +411,7 @@ Music_Clair_branch_1fc5e:
 	stereo_panning TRUE, TRUE
 	callchannel Music_Clair_branch_1fc6e
 	note F#, 1
-	jumpchannel Music_Clair_branch_1fc5e
+	sound_jump Music_Clair_branch_1fc5e
 
 Music_Clair_branch_1fc6e:
 	note D#, 2

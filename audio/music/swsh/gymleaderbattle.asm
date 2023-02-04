@@ -66,7 +66,7 @@ Music_GymLeaderBattleSwSh_Ch1_NeutralPhase_Loop_4:
 	volume_envelope 11, 2
 	note __, 2
 	callchannel Music_GymLeaderBattleSwSh_Ch2_ditty3
-	jumpchannel Music_GymLeaderBattleSwSh_Ch1_NeutralPhase_Loop
+	sound_jump Music_GymLeaderBattleSwSh_Ch1_NeutralPhase_Loop
 
 ;Advantage Loop
 Music_GymLeaderBattleSwSh_Ch1_AdvantagePhase_Loop:
@@ -100,7 +100,7 @@ Music_GymLeaderBattleSwSh_Ch1_AdvantagePhase_Loop_4:
 	duty_cycle 1
 	volume_envelope 12, 7
 	callchannel Music_GymLeaderBattleSwSh_Ch1_ditty7
-	jumpchannel Music_GymLeaderBattleSwSh_Ch1_AdvantagePhase_Loop
+	sound_jump Music_GymLeaderBattleSwSh_Ch1_AdvantagePhase_Loop
 
 ;Disadvantage Loop
 Music_GymLeaderBattleSwSh_Ch1_DisadvantagePhase_Loop:
@@ -148,7 +148,7 @@ Music_GymLeaderBattleSwSh_Ch1_DisadvantagePhase_Loop_4:
 	note __, 2
 	callchannel Music_GymLeaderBattleSwSh_Ch1_ditty11
 	callchannel Music_GymLeaderBattleSwSh_Ch1_ditty12
-	jumpchannel Music_GymLeaderBattleSwSh_Ch1_DisadvantagePhase_Loop
+	sound_jump Music_GymLeaderBattleSwSh_Ch1_DisadvantagePhase_Loop
 
 Music_GymLeaderBattleSwSh_Ch2:
 	duty_cycle 2
@@ -205,7 +205,7 @@ Music_GymLeaderBattleSwSh_Ch2_NeutralPhase_Loop_4:
 	octave 4
 	callchannel Music_GymLeaderBattleSwSh_Ch2_ditty5
 	note __, 9
-	jumpchannel Music_GymLeaderBattleSwSh_Ch2_NeutralPhase_Loop
+	sound_jump Music_GymLeaderBattleSwSh_Ch2_NeutralPhase_Loop
 
 ;Advantage Loop
 Music_GymLeaderBattleSwSh_Ch2_AdvantagePhase_Loop:
@@ -239,7 +239,7 @@ Music_GymLeaderBattleSwSh_Ch2_AdvantagePhase_Loop_4:
 	duty_cycle 2
 	volume_envelope 11, 2
 	callchannel Music_GymLeaderBattleSwSh_Ch2_ditty8
-	jumpchannel Music_GymLeaderBattleSwSh_Ch2_AdvantagePhase_Loop
+	sound_jump Music_GymLeaderBattleSwSh_Ch2_AdvantagePhase_Loop
 
 ;Disadvantage Loop
 Music_GymLeaderBattleSwSh_Ch2_DisadvantagePhase_Loop:
@@ -287,7 +287,7 @@ Music_GymLeaderBattleSwSh_Ch2_DisadvantagePhase_Loop_4:
 	note __, 2
 	callchannel Music_GymLeaderBattleSwSh_Ch2_ditty11
 	callchannel Music_GymLeaderBattleSwSh_Ch2_ditty12
-	jumpchannel Music_GymLeaderBattleSwSh_Ch2_DisadvantagePhase_Loop
+	sound_jump Music_GymLeaderBattleSwSh_Ch2_DisadvantagePhase_Loop
 
 Music_GymLeaderBattleSwSh_Ch3:
 	note_type 12, 1, 1
@@ -328,7 +328,7 @@ Music_GymLeaderBattleSwSh_Ch3_NeutralPhase_Loop_3:
 Music_GymLeaderBattleSwSh_Ch3_NeutralPhase_Loop_4:
 	callchannel Music_GymLeaderBattleSwSh_Ch3_ditty3
 	callchannel Music_GymLeaderBattleSwSh_Ch3_ditty3
-	jumpchannel Music_GymLeaderBattleSwSh_Ch3_NeutralPhase_Loop
+	sound_jump Music_GymLeaderBattleSwSh_Ch3_NeutralPhase_Loop
 
 ;Advantage Loop
 Music_GymLeaderBattleSwSh_Ch3_AdvantagePhase_Loop:
@@ -348,7 +348,7 @@ Music_GymLeaderBattleSwSh_Ch3_AdvantagePhase_Loop_3:
 	sound_jump_if COND_DISADVANTAGE, Music_GymLeaderBattleSwSh_Ch3_DisadvantagePhase_Loop_4
 Music_GymLeaderBattleSwSh_Ch3_AdvantagePhase_Loop_4:
 	callchannel Music_GymLeaderBattleSwSh_Ch3_ditty5
-	jumpchannel Music_GymLeaderBattleSwSh_Ch3_AdvantagePhase_Loop
+	sound_jump Music_GymLeaderBattleSwSh_Ch3_AdvantagePhase_Loop
 
 ;Disadvantage Loop
 Music_GymLeaderBattleSwSh_Ch3_DisadvantagePhase_Loop:
@@ -400,7 +400,7 @@ Music_GymLeaderBattleSwSh_Ch3_DisadvantagePhase_Loop_4:
 	callchannel Music_GymLeaderBattleSwSh_Ch3_ditty9
 	callchannel Music_GymLeaderBattleSwSh_Ch3_ditty8
 	callchannel Music_GymLeaderBattleSwSh_Ch3_ditty10
-	jumpchannel Music_GymLeaderBattleSwSh_Ch3_DisadvantagePhase_Loop
+	sound_jump Music_GymLeaderBattleSwSh_Ch3_DisadvantagePhase_Loop
 
 Music_GymLeaderBattleSwSh_Ch4:
 	note_type 12
@@ -437,7 +437,7 @@ Music_GymLeaderBattleSwSh_Ch4_NeutralPhase_Loop_3:
 	sound_jump_if COND_DISADVANTAGE, Music_GymLeaderBattleSwSh_Ch4_DisadvantagePhase_Loop_4
 Music_GymLeaderBattleSwSh_Ch4_NeutralPhase_Loop_4:
 	callchannel Music_GymLeaderBattleSwSh_Ch4_ditty4
-	jumpchannel Music_GymLeaderBattleSwSh_Ch4_NeutralPhase_Loop
+	sound_jump Music_GymLeaderBattleSwSh_Ch4_NeutralPhase_Loop
 
 ;Advantage Loop
 Music_GymLeaderBattleSwSh_Ch4_AdvantagePhase_Loop:
@@ -457,7 +457,7 @@ Music_GymLeaderBattleSwSh_Ch4_AdvantagePhase_Loop_3:
 	sound_jump_if COND_DISADVANTAGE, Music_GymLeaderBattleSwSh_Ch4_DisadvantagePhase_Loop_4
 Music_GymLeaderBattleSwSh_Ch4_AdvantagePhase_Loop_4:
 	callchannel Music_GymLeaderBattleSwSh_Ch4_ditty6
-	jumpchannel Music_GymLeaderBattleSwSh_Ch4_AdvantagePhase_Loop
+	sound_jump Music_GymLeaderBattleSwSh_Ch4_AdvantagePhase_Loop
 
 ;Disadvantage Loop
 Music_GymLeaderBattleSwSh_Ch4_DisadvantagePhase_Loop:
@@ -489,7 +489,7 @@ Music_GymLeaderBattleSwSh_Ch4_DisadvantagePhase_Loop_4:
 	callchannel Music_GymLeaderBattleSwSh_Ch4_ditty8
 	callchannel Music_GymLeaderBattleSwSh_Ch4_ditty8
 	callchannel Music_GymLeaderBattleSwSh_Ch4_ditty8
-	jumpchannel Music_GymLeaderBattleSwSh_Ch4_DisadvantagePhase_Loop
+	sound_jump Music_GymLeaderBattleSwSh_Ch4_DisadvantagePhase_Loop
 
 ; Advantage/Last Pokemon Intros - This could be its own song.
 
@@ -556,7 +556,7 @@ Music_GymLeaderBattleSwSh_Ch2_LastPokemonPhase_Loop:
 	callchannel Music_GymLeaderBattleSwSh_Ch2_ditty10
 	callchannel Music_GymLeaderBattleSwSh_Ch2_ditty10
 	callchannel Music_GymLeaderBattleSwSh_Ch2_ditty10
-	jumpchannel Music_GymLeaderBattleSwSh_Ch2_LastPokemonPhase_Loop
+	sound_jump Music_GymLeaderBattleSwSh_Ch2_LastPokemonPhase_Loop
 
 ; Advantage/Last Pokemon Intro
 Music_GymLeaderBattleSwSh_Ch1_EnterLastPokemonPhase:
@@ -606,7 +606,7 @@ Music_GymLeaderBattleSwSh_Ch1_LastPokemonPhase_Loop:
 	callchannel Music_GymLeaderBattleSwSh_Ch1_ditty10
 	octave 4
 	callchannel Music_GymLeaderBattleSwSh_Ch1_ditty10
-	jumpchannel Music_GymLeaderBattleSwSh_Ch1_LastPokemonPhase_Loop
+	sound_jump Music_GymLeaderBattleSwSh_Ch1_LastPokemonPhase_Loop
 
 
 ; Advantage/Last Pokemon Intro
@@ -630,7 +630,7 @@ Music_GymLeaderBattleSwSh_Ch3_LastPokemonPhase_Loop:
 	callchannel Music_GymLeaderBattleSwSh_Ch3_ditty6
 	callchannel Music_GymLeaderBattleSwSh_Ch3_ditty7
 	callchannel Music_GymLeaderBattleSwSh_Ch3_ditty7
-	jumpchannel Music_GymLeaderBattleSwSh_Ch3_LastPokemonPhase_Loop
+	sound_jump Music_GymLeaderBattleSwSh_Ch3_LastPokemonPhase_Loop
 
 
 ; Advantage/Last Pokemon Intro
@@ -650,7 +650,7 @@ Music_GymLeaderBattleSwSh_Ch4_LastPokemonPhase_Loop:
 	callchannel Music_GymLeaderBattleSwSh_Ch4_ditty7
 	callchannel Music_GymLeaderBattleSwSh_Ch4_ditty7
 	callchannel Music_GymLeaderBattleSwSh_Ch4_ditty7
-	jumpchannel Music_GymLeaderBattleSwSh_Ch4_LastPokemonPhase_Loop
+	sound_jump Music_GymLeaderBattleSwSh_Ch4_LastPokemonPhase_Loop
 
 Music_GymLeaderBattleSwSh_Ch2_ditty1:
 	octave 3

@@ -331,7 +331,7 @@ Music_Route209DPPt_Ch1_loop:
 	volume_envelope 10, 7
 	note A_, 16
 	note __, 15
-	jumpchannel Music_Route209DPPt_Ch1_loop
+	sound_jump Music_Route209DPPt_Ch1_loop
 
 Music_Route209DPPt_Ch2:
 	note_type 12, 10, 1
@@ -622,7 +622,7 @@ Music_Route209DPPt_Ch2_loop:
 	note B_, 1
 	note A_, 1
 	note E_, 1
-	jumpchannel Music_Route209DPPt_Ch2_loop
+	sound_jump Music_Route209DPPt_Ch2_loop
 
 Music_Route209DPPt_Ch3:
 	note_type 12, 1, 2
@@ -880,7 +880,7 @@ Music_Route209DPPt_Ch3_loop:
 	note B_, 4
 	note A_, 4
 	note E_, 4
-	jumpchannel Music_Route209DPPt_Ch3_loop
+	sound_jump Music_Route209DPPt_Ch3_loop
 
 Music_Route209DPPt_Ch4:
 	toggle_noise 3
@@ -1093,4 +1093,4 @@ Music_Route209DPPt_Ch4_loop:
 	note C#, 1
 	note C#, 1
 	note C#, 1
-	jumpchannel Music_Route209DPPt_Ch4_loop
+	sound_jump Music_Route209DPPt_Ch4_loop

@@ -300,7 +300,7 @@ Music_EverGrandeCityRSE_Ch1_loop:
 	volume_envelope 12, 7
 	note G#, 16
 	note __, 8
-	jumpchannel Music_EverGrandeCityRSE_Ch1_loop
+	sound_jump Music_EverGrandeCityRSE_Ch1_loop
 
 Music_EverGrandeCityRSE_Ch2:
 	vibrato $12, $25
@@ -616,7 +616,7 @@ Music_EverGrandeCityRSE_Ch2_loop:
 	note A#, 12
 	octave 6
 	note C_, 12
-	jumpchannel Music_EverGrandeCityRSE_Ch2_loop
+	sound_jump Music_EverGrandeCityRSE_Ch2_loop
 
 Music_EverGrandeCityRSE_Ch3:
 	stereo_panning TRUE, TRUE
@@ -1161,7 +1161,7 @@ Music_EverGrandeCityRSE_branch_ef4e3:
 	note A#, 2
 	octave 3
 	note C_, 2
-	jumpchannel Music_EverGrandeCityRSE_branch_ef4e3
+	sound_jump Music_EverGrandeCityRSE_branch_ef4e3
 
 Music_EverGrandeCityRSE_Ch4:
 	toggle_noise 3
@@ -1186,4 +1186,4 @@ Music_EverGrandeCityRSE_Ch4_loop:
 	note D_, 2
 	note D_, 2
 	note G#, 2
-	jumpchannel Music_EverGrandeCityRSE_Ch4_loop
+	sound_jump Music_EverGrandeCityRSE_Ch4_loop

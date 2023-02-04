@@ -159,7 +159,7 @@ Music_ZinniaEncounterORAS_Ch1_loop:
 	volume_envelope 10, 6
 	note A_, 4
 	volume_envelope 10, 3
-	jumpchannel Music_ZinniaEncounterORAS_Ch1_loop
+	sound_jump Music_ZinniaEncounterORAS_Ch1_loop
 
 Music_ZinniaEncounterORAS_Ch2:
 	duty_cycle 1
@@ -270,7 +270,7 @@ Music_ZinniaEncounterORAS_Ch2_loop_1:
 	note F#, 1
 	note __, 3
 	note F#, 4
-	jumpchannel Music_ZinniaEncounterORAS_Ch2_loop_main
+	sound_jump Music_ZinniaEncounterORAS_Ch2_loop_main
 
 Music_ZinniaEncounterORAS_Ch2_branch_1:
 	note C#, 6
@@ -351,7 +351,7 @@ Music_ZinniaEncounterORAS_Ch3_loop:
 	note __, 3
 	note F#, 2
 	note __, 2
-	jumpchannel Music_ZinniaEncounterORAS_Ch3_loop
+	sound_jump Music_ZinniaEncounterORAS_Ch3_loop
 
 Music_ZinniaEncounterORAS_Ch3_branch_1:
 	note F#, 2
@@ -494,4 +494,4 @@ Music_ZinniaEncounterORAS_Ch4_loop_4:
 	note C#, 1
 	note C#, 1
 	note C_, 4
-	jumpchannel Music_ZinniaEncounterORAS_Ch4_loop_main
+	sound_jump Music_ZinniaEncounterORAS_Ch4_loop_main

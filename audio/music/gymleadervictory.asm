@@ -58,7 +58,7 @@ Music_GymLeaderVictory_branch_f4658:
 	note G_, 2
 	volume_envelope 8, 7
 	note F#, 16
-	jumpchannel Music_GymLeaderVictory_branch_f4658
+	sound_jump Music_GymLeaderVictory_branch_f4658
 
 Music_GymLeaderVictory_branch_f4689:
 	volume_envelope 9, 1
@@ -171,7 +171,7 @@ Music_GymLeaderVictory_branch_f46d0:
 	note B_, 1
 	octave 5
 	note C#, 1
-	jumpchannel Music_GymLeaderVictory_branch_f46d0
+	sound_jump Music_GymLeaderVictory_branch_f46d0
 
 Music_GymLeaderVictory_branch_f4711:
 	octave 5
@@ -305,7 +305,7 @@ Music_GymLeaderVictory_branch_f4744:
 	note B_, 2
 	octave 3
 	note C#, 2
-	jumpchannel Music_GymLeaderVictory_branch_f4744
+	sound_jump Music_GymLeaderVictory_branch_f4744
 
 Music_GymLeaderVictory_branch_f479e:
 	octave 3
@@ -408,7 +408,7 @@ Music_GymLeaderVictory_branch_f47fb:
 	note D_, 2
 	note G_, 2
 	loopchannel 16, Music_GymLeaderVictory_branch_f47fb
-	jumpchannel Music_GymLeaderVictory_branch_f47eb
+	sound_jump Music_GymLeaderVictory_branch_f47eb
 
 Music_GymLeaderVictory_branch_f480b:
 	note D#, 6

@@ -451,7 +451,7 @@ Music_WhiteTreehollowWhite2_Ch1_loop:
 	octave 5
 	volume_envelope 10, 5
 	note D#, 8
-	jumpchannel Music_WhiteTreehollowWhite2_Ch1_loop
+	sound_jump Music_WhiteTreehollowWhite2_Ch1_loop
 
 Music_WhiteTreehollowWhite2_Ch1_branch_1:
 	volume_envelope 6, 2
@@ -703,7 +703,7 @@ Music_WhiteTreehollowWhite2_Ch2_loop:
 	note G_, 1
 	note G#, 1
 	note A#, 1
-	jumpchannel Music_WhiteTreehollowWhite2_Ch2
+	sound_jump Music_WhiteTreehollowWhite2_Ch2
 
 Music_WhiteTreehollowWhite2_Ch2_branch_1:
 	volume_envelope 8, 0
@@ -981,7 +981,7 @@ Music_WhiteTreehollowWhite2_Ch3:
 	octave 2
 	note A#, 1
 	note A#, 3
-	jumpchannel Music_WhiteTreehollowWhite2_Ch3
+	sound_jump Music_WhiteTreehollowWhite2_Ch3
 
 Music_WhiteTreehollowWhite2_Ch4:
 	toggle_noise 3
@@ -1017,4 +1017,4 @@ Music_WhiteTreehollowWhite2_Ch4_loop_3:
 	note C_, 1
 	note C_, 3
 	loopchannel 6, Music_WhiteTreehollowWhite2_Ch4_loop_3
-	jumpchannel Music_WhiteTreehollowWhite2_Ch4_loop_main
+	sound_jump Music_WhiteTreehollowWhite2_Ch4_loop_main

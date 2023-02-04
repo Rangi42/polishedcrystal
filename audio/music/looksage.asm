@@ -100,7 +100,7 @@ Music_LookSage_branch_ee38e:
 	volume_envelope 9, 3
 	note B_, 2
 	callchannel Music_LookSage_branch_ee3fa
-	jumpchannel Music_LookSage_branch_ee38e
+	sound_jump Music_LookSage_branch_ee38e
 
 Music_LookSage_branch_ee3fa:
 	volume_envelope 11, 3
@@ -176,4 +176,4 @@ Music_LookSage_branch_ee430:
 	note E_, 14
 	note G_, 1
 	note G#, 1
-	jumpchannel Music_LookSage_branch_ee430
+	sound_jump Music_LookSage_branch_ee430

@@ -118,7 +118,7 @@ Music_AzaleaTown_branch_f5816:
 	octave 3
 	note G#, 14
 	note __, 2
-	jumpchannel Music_AzaleaTown_branch_f5816
+	sound_jump Music_AzaleaTown_branch_f5816
 
 Music_AzaleaTown_branch_f588c:
 	note_type 12, 10, 1
@@ -362,7 +362,7 @@ Music_AzaleaTown_branch_f5952:
 	note G#, 2
 	octave 5
 	note C_, 2
-	jumpchannel Music_AzaleaTown_branch_f5952
+	sound_jump Music_AzaleaTown_branch_f5952
 
 Music_AzaleaTown_branch_f59c7:
 	note C#, 4
@@ -528,7 +528,7 @@ Music_AzaleaTown_branch_f5a24:
 	note B_, 1
 	octave 3
 	note C_, 1
-	jumpchannel Music_AzaleaTown_branch_f5a24
+	sound_jump Music_AzaleaTown_branch_f5a24
 
 Music_AzaleaTown_branch_f5a86:
 	note C#, 1
@@ -651,4 +651,4 @@ Music_AzaleaTown_branch_f5aea:
 	note D#, 2
 	note D_, 2
 	note F#, 2
-	jumpchannel Music_AzaleaTown_branch_f5aea
+	sound_jump Music_AzaleaTown_branch_f5aea
