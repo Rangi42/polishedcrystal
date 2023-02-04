@@ -14,7 +14,7 @@ Music_ZinniaBattleORAS_Ch1:
 	tempo 212
 	volume 7, 7
 	duty_cycle 1
-	tone $0002
+	pitch_offset 2
 	vibrato $8, $15
 	note_type 3, 11, 3
 	octave 4

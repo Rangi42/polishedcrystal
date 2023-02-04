@@ -8,7 +8,7 @@ Music_SuccessfulCapture_Ch1:
 	tempo 126
 	volume 7, 7
 	duty_cycle 3
-	tone $0001
+	pitch_offset 1
 	note_type 12, 10, 1
 	jumpchannel Music_SuccessfulCapture_branch_f4536
 

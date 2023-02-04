@@ -14,7 +14,7 @@ Music_EliteFourBattleSM_Ch1:
 	tempo 184
 	volume 7, 7
 	duty_cycle 0
-	tone $0002
+	pitch_offset 2
 	vibrato $12, $15
 	note_type 6, 1, 2
 	note __, 16
@@ -240,7 +240,7 @@ Music_EliteFourBattleSM_Ch1_branch_1:
 Music_EliteFourBattleSM_Ch2:
 	duty_cycle 1
 	vibrato $8, $36
-	tone $0001
+	pitch_offset 1
 	note_type 6, 10, 2
 	octave 3
 	note F_, 4

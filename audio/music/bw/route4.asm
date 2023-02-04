@@ -14,7 +14,7 @@ Music_Route4BW_Ch1:
 	tempo 144
 	volume 7, 7
 	duty_cycle 3
-	tone $0002
+	pitch_offset 2
 	vibrato $10, $22
 	callchannel Music_Route4BW_Ch1_branch_1
 Music_Route4BW_Ch1_loop:

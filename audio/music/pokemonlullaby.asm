@@ -8,7 +8,7 @@ Music_PokemonLullaby_Ch1:
 	tempo 224
 	volume 7, 7
 	duty_cycle 3
-	tone $0001
+	pitch_offset 1
 Music_PokemonLullaby_branch_f6d8c:
 	note_type 12, 10, 7
 	octave 3

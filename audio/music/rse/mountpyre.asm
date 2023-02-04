@@ -14,7 +14,7 @@ Music_MountPyreRSE_Ch1:
 	tempo 212
 	volume 7, 7
 	duty_cycle 1
-	tone $0002
+	pitch_offset 2
 	vibrato $10, $22
 	note_type 6, 6, 3
 	note __, 5

@@ -8,7 +8,7 @@ Music_HealPokemon_Ch1:
 	tempo 144
 	volume 7, 7
 	duty_cycle 2
-	tone $0001
+	pitch_offset 1
 	note_type 12, 8, 1
 	note __, 2
 	pitch_slide 1, 4, B_

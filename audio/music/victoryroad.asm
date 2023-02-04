@@ -10,7 +10,7 @@ Music_VictoryRoad_Ch1:
 	volume 7, 7
 	stereo_panning FALSE, TRUE
 	duty_cycle 3
-	tone $0002
+	pitch_offset 2
 	note_type 12, 11, 3
 Music_VictoryRoad_branch_f6c8d:
 	callchannel Music_VictoryRoad_branch_f6cb9

@@ -8,19 +8,19 @@ Music_JohtoWildBattleNight_Ch1:
 	tempo 107
 	volume 7, 7
 	duty_cycle 3
-	tone $0002
+	pitch_offset 2
 	vibrato $10, $25
 	jumpchannel Music_JohtoWildBattleNight_branch_f5ddb
 
 Music_JohtoWildBattleNight_Ch2:
 	duty_cycle 3
 	vibrato $20, $36
-	tone $0001
+	pitch_offset 1
 	callchannel Music_JohtoWildBattleNight_branch_f5f5d
 	note_type 12, 12, 2
 	octave 4
 	note G_, 6
-	tone $0001
+	pitch_offset 1
 	duty_cycle 2
 	jumpchannel Music_JohtoWildBattleNight_branch_f5eb2
 

@@ -14,7 +14,7 @@ Music_MountChimneyRSE_Ch1:
 	tempo 160
 	volume 7, 7
 	duty_cycle 0
-	tone $0002
+	pitch_offset 2
 	vibrato $8, $15
 	note_type 12, 8, 0
 	octave 1
@@ -399,7 +399,7 @@ Music_MountChimneyRSE_blank:
 Music_MountChimneyRSE_Ch2:
 	duty_cycle 3
 	vibrato $12, $25
-	tone $0001
+	pitch_offset 1
 	note_type 12, 8, 0
 	octave 2
 	note D#, 4

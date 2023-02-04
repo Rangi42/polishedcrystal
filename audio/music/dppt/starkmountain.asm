@@ -13,7 +13,7 @@ Music_StarkMountainDPPt_Ch1:
 	volume 7, 7
 	stereo_panning TRUE, TRUE
 	tempo $A0
-	tone $0002
+	pitch_offset 2
 	vibrato $10, $36
 Music_StarkMountainDPPt_Ch1_loop:
 	octave 2
@@ -755,7 +755,7 @@ Music_StarkMountainDPPt_Ch2_loop:
 	jumpchannel Music_StarkMountainDPPt_Ch2_loop
 
 Music_StarkMountainDPPt_Ch3:
-	tone $0001
+	pitch_offset 1
 	volume_envelope 1, -1
 	vibrato $08, $45
 Music_StarkMountainDPPt_Ch3_loop:

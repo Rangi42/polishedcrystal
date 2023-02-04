@@ -8,7 +8,7 @@ Music_RuinsOfAlphRadio_Ch1:
 	tempo 160
 	volume 7, 7
 	duty_cycle 0
-	tone $0118
+	pitch_offset 280
 	vibrato $0, $f0
 	stereo_panning TRUE, FALSE
 Music_RuinsOfAlphRadio_branch_eede3:

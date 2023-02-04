@@ -14,7 +14,7 @@ Music_ChampionBattleDPPt_Ch1:
 	stereo_panning TRUE, TRUE
 	tempo $80
 	duty_cycle 3
-	tone $0002
+	pitch_offset 2
 	vibrato $10, $24
 	octave 4
 	note_type 12, 11, 7
@@ -482,7 +482,7 @@ Music_ChampionBattleDPPt_Ch1_loop:
 
 Music_ChampionBattleDPPt_Ch2:
 	duty_cycle 2
-	tone $0001
+	pitch_offset 1
 	vibrato $08, $36
 	octave 3
 	note_type 12, 12, 2

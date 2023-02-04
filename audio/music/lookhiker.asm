@@ -8,7 +8,7 @@ Music_LookHiker:
 Music_LookHiker_Ch1:
 	tempo 132
 	volume 7, 7
-	tone $0001
+	pitch_offset 1
 	vibrato $12, $24
 	duty_cycle 2
 	stereo_panning FALSE, TRUE

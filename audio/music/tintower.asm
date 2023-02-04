@@ -9,7 +9,7 @@ Music_TinTower_Ch1:
 	tempo 208
 	volume 7, 7
 	duty_cycle 3
-	tone $0004
+	pitch_offset 4
 	vibrato $8, $45
 Music_TinTower_branch_f682a:
 	stereo_panning TRUE, FALSE
@@ -98,7 +98,7 @@ Music_TinTower_branch_f682a:
 
 Music_TinTower_Ch2:
 	duty_cycle 3
-	tone $0002
+	pitch_offset 2
 	vibrato $18, $44
 Music_TinTower_branch_f6893:
 	stereo_panning TRUE, TRUE

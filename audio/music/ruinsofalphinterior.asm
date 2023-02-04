@@ -14,7 +14,7 @@ Music_RuinsOfAlphInterior_Ch1:
 	jumpchannel Music_RuinsOfAlphInterior_branch_ebdc2
 
 Music_RuinsOfAlphInterior_Ch2:
-	tone $0002
+	pitch_offset 2
 	duty_cycle 0
 	stereo_panning FALSE, TRUE
 	note_type 12, 10, 4

@@ -14,7 +14,7 @@ Music_RoadToReversalMountainB2W2_Ch1:
 	tempo 140
 	volume 7, 7
 	duty_cycle 3
-	tone $0002
+	pitch_offset 2
 	vibrato $10, $22
 	note_type 12, 6, 0
 	callchannel Music_RoadToReversalMountainB2W2_Ch1_branch_1
@@ -47,7 +47,7 @@ Music_RoadToReversalMountainB2W2_Ch1_branch_1:
 
 Music_RoadToReversalMountainB2W2_Ch2:
 	duty_cycle 0
-	tone $0001
+	pitch_offset 1
 	vibrato $1c, $12
 	note_type 6, 10, 4
 	note __, 4

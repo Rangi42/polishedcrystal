@@ -8,7 +8,7 @@ Music_PalletTown_Ch1:
 	tempo 188
 	volume 7, 7
 	vibrato $12, $24
-	tone $0001
+	pitch_offset 1
 	stereo_panning FALSE, TRUE
 Music_PalletTown_branch_f4b22:
 	duty_cycle 2

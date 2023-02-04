@@ -14,7 +14,7 @@ Music_Route12BW_Ch1:
 	tempo 236
 	volume 7, 7
 	duty_cycle 0
-	tone $0002
+	pitch_offset 2
 	vibrato $10, $22
 Music_Route12BW_Ch1_loop_1:
 	callchannel Music_Route12BW_Ch1_branch_1

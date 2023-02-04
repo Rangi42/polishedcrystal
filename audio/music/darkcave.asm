@@ -9,7 +9,7 @@ Music_DarkCave_Ch1:
 	tempo 128
 	volume 7, 7
 	duty_cycle 3
-	tone $0001
+	pitch_offset 1
 	vibrato $11, $15
 	stereo_panning TRUE, FALSE
 	note_type 12, 10, 7

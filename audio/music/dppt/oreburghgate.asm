@@ -12,7 +12,7 @@ Music_OreburghGateDPPt_Ch1:
 	tempo 130
 	volume 7, 7
 	duty_cycle 0
-	tone $0001
+	pitch_offset 1
 	note_type 12, 2, 0
 	vibrato $8, $12
 	octave 3
@@ -114,7 +114,7 @@ Music_OreburghGateDPPt_Ch1_branch_2:
 	jumpchannel Music_OreburghGateDPPt_Ch1_branch_1
 
 Music_OreburghGateDPPt_Ch2:
-	tone $0001
+	pitch_offset 1
 	duty_cycle 1
 	note_type 12, 5, 5
 	note __, 16

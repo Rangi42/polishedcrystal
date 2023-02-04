@@ -2482,7 +2482,7 @@ Sfx_Fanfare2:
 	sfxpriorityon
 	tempo 256
 	volume 7, 7
-	tone $0001
+	pitch_offset 1
 	duty_cycle 3
 	note_type 6, 11, 5
 	octave 3
@@ -2638,7 +2638,7 @@ Sfx_Fanfare:
 	tempo 256
 	volume 7, 7
 	duty_cycle 3
-	tone $0001
+	pitch_offset 1
 	note_type 6, 11, 3
 	octave 3
 	note F_, 4
@@ -5586,7 +5586,7 @@ Sfx_TrainArrived:
 	channel 8, .Ch8
 
 .Ch6:
-	tone $0008
+	pitch_offset 8
 	square_note 8, 0, 0, 0
 .Ch5:
 	duty_cycle 2

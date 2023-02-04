@@ -8,7 +8,7 @@ Music_RocketBattle_Ch1:
 	tempo 101
 	volume 7, 7
 	duty_cycle 3
-	tone $0002
+	pitch_offset 2
 	vibrato $10, $15
 	note_type 12, 11, 2
 	octave 4
@@ -393,7 +393,7 @@ Music_RocketBattle_branch_e9cc5:
 Music_RocketBattle_Ch2:
 	duty_cycle 3
 	vibrato $8, $36
-	tone $0001
+	pitch_offset 1
 	note_type 12, 11, 2
 	octave 4
 	note A_, 4

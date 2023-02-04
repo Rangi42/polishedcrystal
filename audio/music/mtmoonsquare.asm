@@ -7,7 +7,7 @@ Music_MtMoonSquare_Ch1:
 	tempo 112
 	volume 7, 7
 	duty_cycle 2
-	tone $0001
+	pitch_offset 1
 	note __, 1
 Music_MtMoonSquare_branch_f4826:
 	note_type 12, 4, 4

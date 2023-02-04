@@ -13,7 +13,7 @@ Music_Route210DPPt_Ch1:
 	volume 7, 7
 	note_type 12, 11, 3
 	duty_cycle 3
-	tone $0001
+	pitch_offset 1
 	octave 5
 	note __, 2
 Music_Route210DPPt_Ch1_loop:
@@ -487,7 +487,7 @@ Music_Route210DPPt_Ch1_loop:
 Music_Route210DPPt_Ch2:
 	note_type 12, 12, 7
 	duty_cycle 1
-	tone $0002
+	pitch_offset 2
 	vibrato $08, $24
 	octave 4
 	note __, 2

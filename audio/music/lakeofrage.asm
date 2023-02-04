@@ -9,7 +9,7 @@ Music_LakeOfRage_Ch1:
 	tempo 144
 	volume 7, 7
 	duty_cycle 3
-	tone $0002
+	pitch_offset 2
 	vibrato $8, $22
 	stereo_panning TRUE, FALSE
 	note_type 12, 11, 4

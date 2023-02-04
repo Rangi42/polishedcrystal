@@ -10,7 +10,7 @@ Music_PokemonMarch_Ch1:
 	volume 7, 7
 	stereo_panning TRUE, FALSE
 	duty_cycle 3
-	tone $0001
+	pitch_offset 1
 	note_type 12, 4, 2
 	octave 3
 	note D_, 4

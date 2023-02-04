@@ -11,7 +11,7 @@ Music_ScaryHouseXY:
 
 Music_ScaryHouseXY_Ch1:
 	vibrato $12, $15
-	tone $0003
+	pitch_offset 3
 	note_type 6, 3, 7
 	duty_cycle 2
 	tempo 188
@@ -45,7 +45,7 @@ Music_ScaryHouseXY_Ch1:
 	note E_, 4
 	note A#, 15
 	duty_cycle 1
-	tone $0003
+	pitch_offset 3
 Music_ScaryHouseXY_Ch1_loop_main:
 	volume_envelope 7, 5
 	octave 3
@@ -114,7 +114,7 @@ Music_ScaryHouseXY_Ch1_loop_main:
 Music_ScaryHouseXY_Ch2:
 	duty_cycle 2
 	vibrato $12, $15
-	tone $0002
+	pitch_offset 2
 	note_type 12, 9, 3
 	octave 4
 	note B_, 2
@@ -192,7 +192,7 @@ Music_ScaryHouseXY_Ch2_loop_main:
 
 Music_ScaryHouseXY_Ch3:
 	note_type 12, 2, 0
-	tone $0002
+	pitch_offset 2
 	octave 3
 	note E_, 4
 	note A#, 4

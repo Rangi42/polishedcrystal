@@ -8,7 +8,7 @@ Music_LakeOfRageRocketRadio_Ch1:
 	tempo 160
 	volume 7, 7
 	duty_cycle 1
-	tone $1118
+	pitch_offset 4376
 	vibrato $0, $f0
 	stereo_panning TRUE, FALSE
 Music_LakeOfRageRocketRadio_branch_ef5c9:

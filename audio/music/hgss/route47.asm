@@ -14,7 +14,7 @@ Music_Route47HGSS_Ch1:
 	tempo 192
 	volume 7, 7
 	duty_cycle 0
-	tone $0002
+	pitch_offset 2
 	vibrato $8, $15
 	note_type 6, 8, 2
 	note __, 16
@@ -580,7 +580,7 @@ Music_Route47HGSS_Ch1_branch_2:
 Music_Route47HGSS_Ch2:
 	duty_cycle 2
 	vibrato $12, $25
-	tone $0001
+	pitch_offset 1
 	note_type 8, 5, 2
 	octave 6
 	note C_, 1

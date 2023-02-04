@@ -14,7 +14,7 @@ Music_GymLeaderBattleDPPt_Ch1:
 	volume 7, 7
 	stereo_panning TRUE, TRUE
 	duty_cycle 1
-	tone $0002
+	pitch_offset 2
 	vibrato $08, $15
 	octave 2
 	note_type 12, 11, 6
@@ -416,7 +416,7 @@ Music_GymLeaderBattleDPPt_Ch1_loop:
 
 Music_GymLeaderBattleDPPt_Ch2:
 	duty_cycle 1
-	tone $0001
+	pitch_offset 1
 	vibrato $08, $36
 	octave 4
 	note_type 12, 12, 1

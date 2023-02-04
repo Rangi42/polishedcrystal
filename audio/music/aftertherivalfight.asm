@@ -9,7 +9,7 @@ Music_AfterTheRivalFight_Ch1:
 	tempo 112
 	volume 7, 7
 	duty_cycle 0
-	tone $0001
+	pitch_offset 1
 	vibrato $8, $14
 	stereo_panning TRUE, FALSE
 	note_type 12, 11, 2

@@ -9,7 +9,7 @@ Music_RocketHideout_Ch1:
 	tempo 144
 	volume 7, 7
 	duty_cycle 3
-	tone $0004
+	pitch_offset 4
 	vibrato $10, $44
 	note_type 12, 11, 3
 	stereo_panning TRUE, FALSE
@@ -121,7 +121,7 @@ Music_RocketHideout_branch_eebfe:
 
 Music_RocketHideout_Ch2:
 	duty_cycle 3
-	tone $0002
+	pitch_offset 2
 	vibrato $0, $f0
 	note_type 12, 12, 4
 	stereo_panning FALSE, TRUE

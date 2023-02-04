@@ -7,7 +7,7 @@ Music_LookOfficer:
 Music_LookOfficer_Ch1:
 	tempo 116
 	volume 7, 7
-	tone $0001
+	pitch_offset 1
 	vibrato $12, $34
 	stereo_panning FALSE, TRUE
 	duty_cycle 3

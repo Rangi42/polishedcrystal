@@ -12,7 +12,7 @@ Music_CeruleanCityHGSS_Ch1:
 	tempo $94
 	volume 7, 7
 	note_type 12, 11, 2
-	tone $0001
+	pitch_offset 1
 	duty_cycle 2
 	octave 4
 	note E_, 2
@@ -208,7 +208,7 @@ Music_CeruleanCityHGSS_Ch2:
 	vibrato 12,$34
 	duty_cycle 2
 	note_type 2, 12, 2
-	tone $0002
+	pitch_offset 2
 	note __, 2
 	note_type 12, 12, 2
 	octave 5

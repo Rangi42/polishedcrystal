@@ -346,7 +346,7 @@ Cry_Marill_Ch8:
 	endchannel
 
 Cry_Togepi_Ch5:
-	tone $0002
+	pitch_offset 2
 Cry_Togepi_Ch6:
 Cry_Togetic_branch_f3022:
 	duty_cycle_pattern 1, 1, 0, 2
@@ -357,7 +357,7 @@ Cry_Togetic_branch_f3022:
 	endchannel
 
 Cry_Togetic_Ch5:
-	tone $0002
+	pitch_offset 2
 Cry_Togetic_Ch6:
 Cry_Togetic_branch_f3038:
 	callchannel Cry_Togetic_branch_f3022
@@ -455,7 +455,7 @@ Cry_Hoothoot_Ch8:
 	endchannel
 
 Cry_Sentret_Ch5:
-	tone $0020
+	pitch_offset 32
 	duty_cycle 0
 	jumpchannel Cry_Sentret_branch_f312b
 
@@ -467,7 +467,7 @@ Cry_Sentret_branch_f312b:
 	endchannel
 
 Cry_Mareep_Ch5:
-	tone $0020
+	pitch_offset 32
 	duty_cycle 0
 	jumpchannel Cry_Mareep_branch_f3145
 
@@ -482,7 +482,7 @@ Cry_Gligar_branch_f3145:
 	endchannel
 
 Cry_Cyndaquil_Ch5:
-	tone $0020
+	pitch_offset 32
 Cry_Cyndaquil_Ch6:
 	duty_cycle 2
 	square_note 8, 2, -7, 263
@@ -503,7 +503,7 @@ Cry_Gligar_Ch8:
 	endchannel
 
 Cry_Chikorita_Ch5:
-	tone $0020
+	pitch_offset 32
 Cry_Chikorita_Ch6:
 	duty_cycle_pattern 0, 2, 0, 1
 	square_note 2, 12, 8, 1601
@@ -524,7 +524,7 @@ Cry_Gligar_Ch5:
 
 Cry_Girafarig_Ch5:
 	duty_cycle 1
-	tone $0004
+	pitch_offset 4
 	jumpchannel Cry_Girafarig_branch_f31af
 
 Cry_Girafarig_Ch6:
@@ -562,7 +562,7 @@ Cry_Slugma_Ch8:
 	endchannel
 
 Cry_Ledyba_Ch5:
-	tone $0002
+	pitch_offset 2
 	duty_cycle 2
 	jumpchannel Cry_Ledyba_branch_f3202
 

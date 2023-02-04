@@ -8,7 +8,7 @@ Music_Clair:
 Music_Clair_Ch1:
 	tempo 136
 	volume 7, 7
-	tone $0001
+	pitch_offset 1
 	vibrato $12, $34
 	stereo_panning FALSE, TRUE
 	note_type 12, 9, 3

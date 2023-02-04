@@ -12,7 +12,7 @@ Music_MountCoronetDPPt_Ch1:
 	tempo 124
 	volume 7, 7
 	duty_cycle 0
-	tone $0001
+	pitch_offset 1
 	note_type 12, 8, 7
 	octave 3
 	note F_, 4
@@ -394,7 +394,7 @@ Music_MountCoronetDPPt_Ch1_branch_2:
 ;	note A#, 6
 
 Music_MountCoronetDPPt_Ch2:
-	tone $0001
+	pitch_offset 1
 	duty_cycle 0
 	note_type 12, 4, 5
 	note __, 4

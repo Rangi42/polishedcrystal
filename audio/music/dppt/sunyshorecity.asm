@@ -13,7 +13,7 @@ Music_SunyshoreCityDPPt_Ch1:
 	volume 7, 7
 	stereo_panning TRUE, TRUE
 	tempo $90
-	tone $0002
+	pitch_offset 2
 	volume_envelope 10, 1
 	note_type 12, 10, 1
 	note __, 2
@@ -582,7 +582,7 @@ Music_SunyshoreCityDPPt_Ch1_loop:
 	jumpchannel Music_SunyshoreCityDPPt_Ch1_loop
 
 Music_SunyshoreCityDPPt_Ch2:
-	tone $0001
+	pitch_offset 1
 	volume_envelope 12, 1
 	note_type 12, 12, 1
 	note __, 2

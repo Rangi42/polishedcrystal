@@ -14,7 +14,7 @@ Music_Route203DPPt_Ch1:
 	volume 7, 7
 	note_type 4, 9, 1
 	duty_cycle 1
-	tone $0002
+	pitch_offset 2
 	octave 3
 	note A#, 1
 	note A_, 1
@@ -577,7 +577,7 @@ Music_Route203DPPt_Ch2:
 	note_type 4, 10, 1
 	;transpose $19
 	duty_cycle 1
-	tone $0001
+	pitch_offset 1
 	vibrato $00, $12
 	octave 4
 	note D#, 1

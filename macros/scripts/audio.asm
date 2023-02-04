@@ -153,10 +153,10 @@ MACRO volume
 	endc
 ENDM
 
-	const tone_cmd
-MACRO tone
-	db tone_cmd
-	bigdw \1 ; tone
+	const pitch_offset_cmd ; $e6
+MACRO pitch_offset
+	db pitch_offset_cmd
+	bigdw \1 ; pitch offset
 ENDM
 
 	const unknownmusic0xe7_cmd

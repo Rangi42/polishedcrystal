@@ -10,9 +10,9 @@ Music_LookKimonoGirl_Ch1:
 	stereo_panning FALSE, TRUE
 	duty_cycle 1
 	note_type 6, 8, 7
-	tone $0001
+	pitch_offset 1
 	callchannel Music_LookKimonoGirl_branch_f7aa8
-	tone 0
+	pitch_offset 0
 Music_LookKimonoGirl_branch_f79d7:
 	note_type 12, 11, 2
 	callchannel Music_LookKimonoGirl_branch_f7a13

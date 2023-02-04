@@ -8,7 +8,7 @@ Music_JohtoTrainerBattle_Ch1:
 	tempo 102
 	volume 7, 7
 	duty_cycle 3
-	tone $0002
+	pitch_offset 2
 	vibrato $12, $15
 	note_type 12, 9, 2
 	note __, 8
@@ -454,7 +454,7 @@ Music_JohtoTrainerBattle_branch_f629f:
 Music_JohtoTrainerBattle_Ch2:
 	duty_cycle 3
 	vibrato $8, $36
-	tone $0001
+	pitch_offset 1
 	note_type 12, 12, 2
 	octave 4
 	note G#, 1

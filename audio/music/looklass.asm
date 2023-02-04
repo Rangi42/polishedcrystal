@@ -8,7 +8,7 @@ Music_LookLass:
 Music_LookLass_Ch1:
 	tempo 132
 	volume 7, 7
-	tone $0001
+	pitch_offset 1
 	duty_cycle 2
 	note_type 12, 12, 7
 	octave 3

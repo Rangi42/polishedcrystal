@@ -14,7 +14,7 @@ Music_ChampionBattleRSE_Ch1:
 	tempo 192
 	volume 7, 7
 	duty_cycle 2
-	tone $0002
+	pitch_offset 2
 	vibrato $8, $15
 	note_type 3, 9, 4
 Music_ChampionBattleRSE_Ch1_loop_1:
@@ -345,7 +345,7 @@ Music_ChampionBattleRSE_Ch1_branch_1:
 Music_ChampionBattleRSE_Ch2:
 	duty_cycle 3
 	vibrato $12, $25
-	tone $0001
+	pitch_offset 1
 	note_type 3, 13, 4
 	octave 4
 	note D#, 2

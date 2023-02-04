@@ -14,7 +14,7 @@ Music_RivalBattleXY_Ch1:
 	tempo 116
 	volume 7, 7
 	duty_cycle 3
-	tone $0002
+	pitch_offset 2
 	vibrato $8, $15
 	note_type 12, 12, 2
 	octave 4
@@ -186,7 +186,7 @@ Music_RivalBattleXY_Ch1_branch_3:
 Music_RivalBattleXY_Ch2:
 	duty_cycle 3
 	vibrato $8, $36
-	tone $0001
+	pitch_offset 1
 	note_type 12, 11, 2
 	octave 4
 	note G_, 2

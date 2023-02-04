@@ -14,7 +14,7 @@ Music_TrainerBattleDPPt_Ch1:
 	stereo_panning TRUE, TRUE
 	tempo $69
 	duty_cycle 3
-	tone $0002
+	pitch_offset 2
 	volume_envelope 11, 2
 	vibrato $12, $15
 	octave 4
@@ -541,7 +541,7 @@ Music_TrainerBattleDPPt_Ch1_loop:
 
 Music_TrainerBattleDPPt_Ch2:
 	duty_cycle 3
-	tone $0001
+	pitch_offset 1
 	volume_envelope 12, 2
 	vibrato $08, $36
 	octave 5

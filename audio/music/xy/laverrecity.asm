@@ -197,7 +197,7 @@ Music_LaverreCityXY_Ch2:
 	vibrato $12, $25
 	duty_cycle 2
 	stereo_panning TRUE, FALSE
-	tone $0002
+	pitch_offset 2
 Music_LaverreCityXY_branch_ef3f2:
 	note_type 12, 10, 7
 	octave 2

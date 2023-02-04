@@ -18,7 +18,7 @@ Music_LugiasSong2000_NoIntro:
 Music_LugiasSong2000_Ch1:
 	duty_cycle 3
 	vibrato $12, $15
-	tone $0001
+	pitch_offset 1
 	tempo 136
 	note_type 12, 6, 0
 Music_LugiasSong2000_Ch1_loop_1:
@@ -51,7 +51,7 @@ Music_LugiasSong2000_Ch1_loop_main:
 Music_LugiasSong2000_Ch2:
 	duty_cycle 0
 	vibrato $12, $15
-	tone $0001
+	pitch_offset 1
 	note_type 12, 1, 0
 Music_LugiasSong2000_Ch2_loop_1:
 	note __, 16

@@ -8,7 +8,7 @@ Music_JohtoWildBattle_Ch1:
 	tempo 104
 	volume 7, 7
 	duty_cycle 3
-	tone $0002
+	pitch_offset 2
 	vibrato $12, $15
 Music_JohtoWildBattleNight_branch_f5ddb:
 	note_type 12, 11, 2
@@ -204,7 +204,7 @@ Music_JohtoWildBattle_branch_f5e2d:
 Music_JohtoWildBattle_Ch2:
 	duty_cycle 3
 	vibrato $8, $36
-	tone $0001
+	pitch_offset 1
 	callchannel Music_JohtoWildBattle_branch_f5f5d
 	note_type 12, 12, 2
 	octave 4

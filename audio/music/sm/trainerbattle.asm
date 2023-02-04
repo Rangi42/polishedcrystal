@@ -14,7 +14,7 @@ Music_TrainerBattleSM_Ch1:
 	tempo 204
 	volume 7, 7
 	duty_cycle 2
-	tone $0002
+	pitch_offset 2
 	vibrato $12, $15
 	note_type 6, 6, 0
 	octave 2
@@ -293,7 +293,7 @@ Music_TrainerBattleSM_Ch1_loop_3:
 Music_TrainerBattleSM_Ch2:
 	duty_cycle 3
 	vibrato $8, $36
-	tone $0001
+	pitch_offset 1
 	note_type 6, 12, 2
 	octave 4
 	note A#, 1

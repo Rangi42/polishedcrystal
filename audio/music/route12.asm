@@ -9,7 +9,7 @@ Music_Route12_Ch1:
 	tempo 148
 	volume 7, 7
 	vibrato $12, $34
-	tone $0001
+	pitch_offset 1
 	stereo_panning FALSE, TRUE
 	duty_cycle 3
 	note_type 12, 9, 8

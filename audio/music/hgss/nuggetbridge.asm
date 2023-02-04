@@ -11,7 +11,7 @@ Music_NuggetBridgeHGSS:
 Music_NuggetBridgeHGSS_Ch1:
 	tempo $A8
 	volume 7, 7
-	tone $0001
+	pitch_offset 1
 	duty_cycle 1
 	note_type 12, 11, 5
 	octave 2
@@ -165,7 +165,7 @@ Music_NuggetBridgeHGSS_Loop1:
 Music_NuggetBridgeHGSS_Ch2:
 	duty_cycle 1
 	note_type 12, 12, 5
-	tone $0002
+	pitch_offset 2
 	octave 3
 	note E_, 6
 	octave 2

@@ -12,7 +12,7 @@ Music_GymLeaderBattleRSE:
 Music_GymLeaderBattleRSE_Ch1:
 	tempo 100
 	duty_cycle 1
-	tone $0001
+	pitch_offset 1
 	note_type 12, 12, 4
 	vibrato $12, $15
 	octave 5
@@ -317,7 +317,7 @@ Music_GymLeaderBattleRSE_Ch1_loop:
 	jumpchannel Music_GymLeaderBattleRSE_Ch1_loop
 
 Music_GymLeaderBattleRSE_Ch2:
-	tone $0001
+	pitch_offset 1
 	duty_cycle 2
 	note_type 12, 9, 4
 	vibrato $12, $15

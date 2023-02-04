@@ -14,7 +14,7 @@ Music_ReversalMountainWhite2_Ch1:
 	tempo 176
 	volume 7, 7
 	duty_cycle 2
-	tone $0002
+	pitch_offset 2
 	vibrato $10, $22
 	note_type 12, 6, 2
 	note __, 1

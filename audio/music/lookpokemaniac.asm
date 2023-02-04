@@ -9,7 +9,7 @@ Music_LookPokemaniac_Ch1:
 	tempo 144
 	volume 7, 7
 	vibrato $2, $33
-	tone $0002
+	pitch_offset 2
 	note_type 12, 11, 3
 	note __, 8
 Music_LookPokemaniac_branch_ebdfb:
@@ -31,7 +31,7 @@ Music_LookPokemaniac_branch_ebdfb:
 Music_LookPokemaniac_Ch2:
 	stereo_panning TRUE, TRUE
 	vibrato $2, $33
-	tone $0001
+	pitch_offset 1
 	note_type 12, 11, 3
 	octave 2
 	note A_, 1

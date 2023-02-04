@@ -9,7 +9,7 @@ Music_Evolution_Ch1:
 	tempo 132
 	volume 7, 7
 	vibrato $6, $34
-	tone $0001
+	pitch_offset 1
 	duty_cycle 2
 	note_type 12, 9, 2
 	octave 3

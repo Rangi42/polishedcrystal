@@ -8,7 +8,7 @@ Music_ChampionBattle_Ch1:
 	tempo 98
 	volume 7, 7
 	duty_cycle 3
-	tone $0002
+	pitch_offset 2
 	vibrato $12, $15
 	note_type 12, 11, 2
 	octave 2
@@ -298,7 +298,7 @@ Music_ChampionBattle_branch_eab31:
 Music_ChampionBattle_Ch2:
 	duty_cycle 3
 	vibrato $8, $36
-	tone $0001
+	pitch_offset 1
 	note_type 12, 12, 2
 	octave 3
 	note D#, 8

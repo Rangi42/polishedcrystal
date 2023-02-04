@@ -14,7 +14,7 @@ Music_AbandonedShipRSE_Ch1:
 	tempo 188
 	volume 7, 7
 	duty_cycle 0
-	tone $0002
+	pitch_offset 2
 	vibrato $10, $22
 	note_type 12, 8, 2
 	note __, 6

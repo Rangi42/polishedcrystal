@@ -8,7 +8,7 @@ Music_BuenasPassword:
 Music_BuenasPassword_Ch1:
 	tempo 136
 	volume 7, 7
-	tone $0001
+	pitch_offset 1
 	note_type 12, 11, 3
 	note __, 8
 Music_BuenasPassword_branch_17816b:

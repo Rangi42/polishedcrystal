@@ -9,7 +9,7 @@ Music_Lighthouse_Ch1:
 	tempo 144
 	volume 7, 7
 	duty_cycle 3
-	tone $0004
+	pitch_offset 4
 	vibrato $8, $45
 	stereo_panning FALSE, TRUE
 Music_Lighthouse_branch_ee584:
@@ -131,7 +131,7 @@ Music_Lighthouse_branch_ee584:
 
 Music_Lighthouse_Ch2:
 	duty_cycle 3
-	tone $0002
+	pitch_offset 2
 	vibrato $10, $45
 Music_Lighthouse_branch_ee604:
 	note_type 12, 12, 5

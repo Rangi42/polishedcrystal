@@ -13,7 +13,7 @@ Music_GameCornerDPPt_Ch1:
 	volume 7, 7
 	note_type 12, 10, 2
 	duty_cycle 2
-	tone $0001
+	pitch_offset 1
 	stereo_panning FALSE, TRUE
 	octave 4
 	note __, 16
@@ -617,7 +617,7 @@ Music_GameCornerDPPt_Ch1_loop:
 Music_GameCornerDPPt_Ch2:
 	note_type 12, 12, 7
 	duty_cycle 0
-	tone $0002
+	pitch_offset 2
 	stereo_panning TRUE, TRUE
 	octave 1
 	note A_, 2

@@ -8,7 +8,7 @@ Music_BattleTowerTheme:
 Music_BattleTowerTheme_Ch1:
 	tempo 141
 	volume 7, 7
-	tone $0001
+	pitch_offset 1
 	vibrato $12, $34
 	stereo_panning FALSE, TRUE
 	note_type 6, 9, 4
@@ -232,7 +232,7 @@ Music_BattleTowerTheme_branch_178970:
 	octave 2
 	note A_, 4
 	note __, 4
-	tone $0001
+	pitch_offset 1
 	note A_, 1
 	note __, 1
 	octave 3
@@ -240,7 +240,7 @@ Music_BattleTowerTheme_branch_178970:
 	note __, 1
 	note F_, 4
 	note __, 4
-	tone 0
+	pitch_offset 0
 	volume_envelope 11, 7
 	note G_, 2
 	octave 4

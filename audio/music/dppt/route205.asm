@@ -14,7 +14,7 @@ Music_Route205DPPt_Ch1_loop:
 	volume 7, 7
 	note_type 12, 11, 2
 	duty_cycle 1
-	tone $0001
+	pitch_offset 1
 	octave 3
 	note G_, 2
 	note G_, 3
@@ -289,7 +289,7 @@ Music_Route205DPPt_Ch2:
 Music_Route205DPPt_Ch2_loop:
 	note_type 12, 12, 2
 	duty_cycle 1
-	tone $0002
+	pitch_offset 2
 	octave 4
 	note G_, 2
 	note G_, 3

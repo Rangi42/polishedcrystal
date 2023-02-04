@@ -9,7 +9,7 @@ Music_SproutTower_Ch1:
 	tempo 176
 	volume 7, 7
 	duty_cycle 3
-	tone $0002
+	pitch_offset 2
 	vibrato $8, $45
 	stereo_panning FALSE, TRUE
 	note_type 12, 10, 3
@@ -64,7 +64,7 @@ Music_SproutTower_branch_f6994:
 
 Music_SproutTower_Ch2:
 	duty_cycle 3
-	tone $0001
+	pitch_offset 1
 	vibrato $8, $48
 	note_type 12, 11, 2
 	octave 3

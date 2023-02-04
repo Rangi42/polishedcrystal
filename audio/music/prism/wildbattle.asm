@@ -12,7 +12,7 @@ Music_WildBattlePrism_Ch1:
 	tempo 104
 	volume 7, 7
 	duty_cycle 3
-	tone $0002
+	pitch_offset 2
 	vibrato $12, $15
 	note_type 12, 11, 2
 	octave 4
@@ -318,7 +318,7 @@ Music_WildBattlePrism_branch_19f26b:
 
 Music_WildBattlePrism_Ch2:
 	duty_cycle 3
-	tone $0001
+	pitch_offset 1
 	vibrato $8, $36
 	note_type 12, 12, 2
 

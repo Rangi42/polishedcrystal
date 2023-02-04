@@ -10,7 +10,7 @@ Music_GymLeaderVictory_Ch1:
 	volume 7, 7
 	vibrato $12, $34
 	duty_cycle 3
-	tone $0001
+	pitch_offset 1
 	note_type 12, 11, 7
 	octave 4
 	note D_, 6

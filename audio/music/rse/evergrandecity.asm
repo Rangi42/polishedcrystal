@@ -306,7 +306,7 @@ Music_EverGrandeCityRSE_Ch2:
 	vibrato $12, $25
 	duty_cycle 3
 	stereo_panning TRUE, FALSE
-	tone $0002
+	pitch_offset 2
 	note_type 12, 6, 3
 	octave 2
 	note G_, 1

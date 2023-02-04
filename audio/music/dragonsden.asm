@@ -9,7 +9,7 @@ Music_DragonsDen_Ch1:
 	tempo 144
 	volume 7, 7
 	duty_cycle 0
-	tone $0004
+	pitch_offset 4
 	stereo_panning TRUE, FALSE
 	note_type 12, 8, 0
 Music_DragonsDen_branch_eed03:
@@ -61,7 +61,7 @@ Music_DragonsDen_branch_eed2d:
 
 Music_DragonsDen_Ch2:
 	duty_cycle 0
-	tone $0004
+	pitch_offset 4
 	stereo_panning FALSE, TRUE
 	note_type 12, 9, 0
 Music_DragonsDen_branch_eed46:

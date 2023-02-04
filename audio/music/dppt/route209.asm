@@ -13,7 +13,7 @@ Music_Route209DPPt_Ch1:
 	volume 7, 7
 	note_type 12, 9, 2
 	duty_cycle 1
-	tone $0001
+	pitch_offset 1
 	octave 4
 	note __, 2
 	octave 2
@@ -357,7 +357,7 @@ Music_Route209DPPt_Ch2:
 Music_Route209DPPt_Ch2_loop:
 	note_type 3, 10, 7
 	duty_cycle 3
-	tone $0002
+	pitch_offset 2
 	vibrato $08, $25
 	octave 2
 	note G#, 1
@@ -585,7 +585,7 @@ Music_Route209DPPt_Ch2_loop:
 	note A_, 1
 	volume_envelope 10, 1
 	duty_cycle 2
-	tone $0000
+	pitch_offset 0
 	octave 5
 	note B_, 1
 	note A_, 1

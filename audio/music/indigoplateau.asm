@@ -9,7 +9,7 @@ Music_IndigoPlateau_Ch1:
 	tempo 128
 	volume 7, 7
 	duty_cycle 3
-	tone $0002
+	pitch_offset 2
 	stereo_panning FALSE, TRUE
 Music_IndigoPlateau_branch_ee86a:
 	callchannel Music_IndigoPlateau_branch_ee881

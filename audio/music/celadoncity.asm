@@ -7,7 +7,7 @@ Music_CeladonCity:
 Music_CeladonCity_Ch1:
 	tempo 146
 	volume 7, 7
-	tone $0001
+	pitch_offset 1
 Music_CeladonCity_branch_f436c:
 	stereo_panning FALSE, TRUE
 	note_type 12, 10, 6

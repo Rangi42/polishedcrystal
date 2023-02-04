@@ -10,7 +10,7 @@ Music_PokemonCenter_Ch1:
 	volume 7, 7
 	duty_cycle 2
 	vibrato $a, $14
-	tone $0001
+	pitch_offset 1
 Music_PokemonCenter_branch_ed5df:
 	stereo_panning FALSE, TRUE
 	note_type 12, 8, 3

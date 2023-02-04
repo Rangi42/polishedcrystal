@@ -14,7 +14,7 @@ Music_WhiteTreehollowWhite2_Ch1:
 	tempo 176
 	volume 7, 7
 	duty_cycle 3
-	tone $0002
+	pitch_offset 2
 	vibrato $8, $15
 	note_type 12, 6, 2
 	octave 4
@@ -471,7 +471,7 @@ Music_WhiteTreehollowWhite2_Ch1_branch_1:
 Music_WhiteTreehollowWhite2_Ch2:
 	duty_cycle 2
 	vibrato $12, $25
-	tone $0001
+	pitch_offset 1
 	note_type 12, 10, 2
 	octave 2
 	note G#, 3

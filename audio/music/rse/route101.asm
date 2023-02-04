@@ -13,7 +13,7 @@ Music_Route101RSE:
 Music_Route101RSE_Ch1:
 	tempo 166
 	volume 7, 7
-	tone $0001
+	pitch_offset 1
 	vibrato $10, $15
 	stereo_panning FALSE, TRUE
 	note_type 12, 8, 3

@@ -11,7 +11,7 @@ Music_LegendaryBattleXY:
 
 Music_LegendaryBattleXY_Ch1:
 	vibrato $12, $15
-	tone $0001
+	pitch_offset 1
 	tempo 200
 	note_type 12, 8, 4
 	octave 2
@@ -319,7 +319,7 @@ Music_LegendaryBattleXY_Ch1_loop_1:
 Music_LegendaryBattleXY_Ch2:
 	duty_cycle 3
 	vibrato $12, $15
-	tone $0001
+	pitch_offset 1
 	note_type 12, 8, 4
 	octave 2
 	note F_, 2

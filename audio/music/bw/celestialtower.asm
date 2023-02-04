@@ -14,7 +14,7 @@ Music_CelestialTowerBW_NoIntro_Ch1:
 	tempo 232
 	duty_cycle 2
 	vibrato $12, $15
-	tone $0001
+	pitch_offset 1
 	note_type 6, 8, 5
 Music_CelestialTowerBW_NoIntro_Ch1_loop_1:
 	octave 4
@@ -208,7 +208,7 @@ Music_CelestialTowerBW_NoIntro_Ch1_loop_1:
 Music_CelestialTowerBW_NoIntro_Ch2:
 	duty_cycle 3
 	vibrato $12, $15
-	tone $0001
+	pitch_offset 1
 	note_type 6, 6, 7
 Music_CelestialTowerBW_NoIntro_Ch2_loop_1:
 	octave 2

@@ -9,7 +9,7 @@ Music_UnionCave_Ch1:
 	tempo 160
 	volume 7, 7
 	duty_cycle 1
-	tone $0002
+	pitch_offset 2
 	vibrato $18, $34
 	stereo_panning FALSE, TRUE
 Music_UnionCave_branch_f5c7b:
@@ -54,15 +54,15 @@ Music_UnionCave_branch_f5c91:
 	octave 3
 	note A_, 8
 	volume_envelope 9, 5
-	tone $0004
+	pitch_offset 4
 	callchannel Music_UnionCave_branch_f5ccf
-	tone $0008
+	pitch_offset 8
 	callchannel Music_UnionCave_branch_f5ccf
-	tone $000c
+	pitch_offset 12
 	callchannel Music_UnionCave_branch_f5ccf
-	tone $0010
+	pitch_offset 16
 	callchannel Music_UnionCave_branch_f5ccf
-	tone $0002
+	pitch_offset 2
 	jumpchannel Music_UnionCave_branch_f5c7b
 
 Music_UnionCave_branch_f5ccf:

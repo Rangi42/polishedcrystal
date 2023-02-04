@@ -13,7 +13,7 @@ Music_EliteFourBattleBW:
 Music_EliteFourBattleBW_Ch1:
 	duty_cycle 2
 	vibrato $12, $15
-	tone $0001
+	pitch_offset 1
 	tempo 200
 	note_type 12, 11, 2
 	octave 4
@@ -455,7 +455,7 @@ Music_EliteFourBattleBW_Ch1_loop_main:
 Music_EliteFourBattleBW_Ch2:
 	duty_cycle 3
 	vibrato $12, $15
-	tone $0001
+	pitch_offset 1
 	note_type 12, 11, 2
 	note __, 16
 	note __, 14

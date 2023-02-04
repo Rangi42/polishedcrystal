@@ -9,7 +9,7 @@ Music_LookMysticalMan_Ch1:
 	tempo 136
 	volume 7, 7
 	vibrato $a, $34
-	tone $0001
+	pitch_offset 1
 	stereo_panning FALSE, TRUE
 	note_type 12, 11, 3
 	note __, 8

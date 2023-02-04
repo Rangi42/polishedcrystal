@@ -14,7 +14,7 @@ Music_Route225DPPt_Ch1:
 	stereo_panning TRUE, TRUE
 	tempo $88
 Music_Route225DPPt_Ch1_loop:
-	tone $0002
+	pitch_offset 2
 	note_type 14, 10, 7
 	note __, 12
 	duty_cycle 1
@@ -427,7 +427,7 @@ Music_Route225DPPt_Ch1_loop:
 
 Music_Route225DPPt_Ch2:
 Music_Route225DPPt_Ch2_loop:
-	tone $0001
+	pitch_offset 1
 	note_type 12, 12, 7
 	note __, 16
 	note __, 2

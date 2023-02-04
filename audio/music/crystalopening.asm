@@ -8,7 +8,7 @@ Music_CrystalOpening:
 Music_CrystalOpening_Ch1:
 	tempo 136
 	volume 7, 7
-	tone $0002
+	pitch_offset 2
 	vibrato $10, $34
 	duty_cycle 3
 	stereo_panning TRUE, FALSE

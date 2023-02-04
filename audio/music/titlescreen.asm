@@ -9,7 +9,7 @@ Music_TitleScreen_Ch1:
 	tempo 134
 	volume 7, 7
 	duty_cycle 3
-	tone $0002
+	pitch_offset 2
 	vibrato $10, $12
 	stereo_panning TRUE, FALSE
 	note_type 12, 10, 7
@@ -478,7 +478,7 @@ Music_TitleScreen_Ch2:
 	octave 5
 	note C_, 4
 	note C#, 4
-	tone $0001
+	pitch_offset 1
 	stereo_panning FALSE, TRUE
 	callchannel Music_TitleScreen_branch_ebae7
 	note C#, 4
@@ -488,7 +488,7 @@ Music_TitleScreen_Ch2:
 	octave 4
 	note A_, 4
 	stereo_panning TRUE, TRUE
-	tone 0
+	pitch_offset 0
 	note_type 12, 11, 0
 	octave 3
 	note B_, 6
@@ -580,7 +580,7 @@ Music_TitleScreen_branch_ebaeb:
 Music_TitleScreen_Ch3:
 	stereo_panning FALSE, TRUE
 	vibrato $10, $14
-	tone $0001
+	pitch_offset 1
 	note_type 12, 1, 6
 	octave 3
 	octave 3
@@ -771,7 +771,7 @@ Music_TitleScreen_Ch3:
 	note __, 1
 	stereo_panning TRUE, TRUE
 	note_type 12, 1, 6
-	tone 0
+	pitch_offset 0
 	octave 4
 	note A_, 2
 	octave 5
@@ -821,7 +821,7 @@ Music_TitleScreen_Ch3:
 	note F#, 1
 	note E_, 1
 	note D_, 6
-	tone $0001
+	pitch_offset 1
 	note_type 8, 1, 6
 	octave 3
 	note C_, 4

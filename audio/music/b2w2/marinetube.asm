@@ -14,7 +14,7 @@ Music_MarineTubeB2W2_Ch1:
 	tempo 132
 	duty_cycle_pattern 3, 3, 3, 3
 	vibrato $12, $15
-	tone $0001
+	pitch_offset 1
 	note_type 12, 6, 1
 	octave 6
 	note A#, 1
@@ -468,7 +468,7 @@ Music_MarineTubeB2W2_Ch1:
 
 Music_MarineTubeB2W2_Ch2:
 	vibrato $8, $26
-	tone $0001
+	pitch_offset 1
 	note_type 12, 10, 0
 	duty_cycle_pattern 2, 2, 2, 2
 	octave 5

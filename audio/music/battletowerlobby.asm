@@ -9,7 +9,7 @@ Music_BattleTowerLobby_Ch1:
 	tempo 152
 	volume 7, 7
 	duty_cycle 3
-	tone $0001
+	pitch_offset 1
 	vibrato $8, $22
 	stereo_panning TRUE, FALSE
 	note_type 12, 7, 2

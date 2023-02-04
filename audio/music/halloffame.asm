@@ -10,7 +10,7 @@ Music_HallOfFame_Ch1:
 	volume 7, 7
 	duty_cycle 2
 	vibrato $c, $22
-	tone $0001
+	pitch_offset 1
 	stereo_panning TRUE, FALSE
 	note_type 12, 9, 3
 	note __, 16

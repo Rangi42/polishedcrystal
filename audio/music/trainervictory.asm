@@ -8,7 +8,7 @@ Music_TrainerVictory_Ch1:
 	tempo 120
 	volume 7, 7
 	duty_cycle 2
-	tone $0001
+	pitch_offset 1
 	note_type 8, 11, 1
 	octave 4
 	note E_, 2

@@ -9,7 +9,7 @@ Music_BurnedTower_Ch1:
 	tempo 168
 	volume 7, 7
 	duty_cycle 1
-	tone $0004
+	pitch_offset 4
 	vibrato $8, $45
 	stereo_panning TRUE, FALSE
 	note_type 12, 9, 1
@@ -102,7 +102,7 @@ Music_BurnedTower_branch_f6b17:
 Music_BurnedTower_Ch2:
 	duty_cycle 2
 	vibrato $20, $82
-	tone $0002
+	pitch_offset 2
 	note_type 12, 7, 0
 	callchannel Music_BurnedTower_branch_f6b8e
 	volume_envelope 12, 5

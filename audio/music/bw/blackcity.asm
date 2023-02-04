@@ -12,7 +12,7 @@ Music_BlackCityBW:
 
 Music_BlackCityBW_Ch1:
 	vibrato $12, $15
-	tone $0001
+	pitch_offset 1
 	note_type 6, 9, 1
 	tempo 156
 	note __, 4
@@ -255,7 +255,7 @@ Music_BlackCityBW_Ch1_branch_1:
 Music_BlackCityBW_Ch2:
 	duty_cycle 2
 	vibrato $12, $24
-	tone $0001
+	pitch_offset 1
 	note_type 6, 10, 7
 	octave 3
 	note __, 1

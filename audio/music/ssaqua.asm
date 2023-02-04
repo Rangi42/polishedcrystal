@@ -9,7 +9,7 @@ Music_SSAqua_Ch1:
 	tempo 117
 	volume 7, 7
 	stereo_panning FALSE, TRUE
-	tone $0001
+	pitch_offset 1
 	vibrato $12, $33
 	duty_cycle 2
 	note_type 6, 9, 7
