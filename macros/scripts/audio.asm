@@ -177,9 +177,9 @@ MACRO tempo_relative
 	bigdw \1 ; value
 ENDM
 
-	const restartchannel_cmd
-MACRO restartchannel
-	db restartchannel_cmd
+	const restart_channel_cmd ; $ea
+MACRO restart_channel
+	db restart_channel_cmd
 	dw \1 ; address
 ENDM
 
