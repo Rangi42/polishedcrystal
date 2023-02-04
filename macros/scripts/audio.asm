@@ -194,9 +194,9 @@ MACRO sfx_priority_on
 	db sfx_priority_on_cmd
 ENDM
 
-	const sfxpriorityoff_cmd
-MACRO sfxpriorityoff
-	db sfxpriorityoff_cmd
+	const sfx_priority_off_cmd ; $ed
+MACRO sfx_priority_off
+	db sfx_priority_off_cmd
 ENDM
 
 	const unknownmusic0xee_cmd

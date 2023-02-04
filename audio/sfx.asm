@@ -2499,7 +2499,7 @@ Sfx_Fanfare2:
 	note C_, 2
 	note_type 4, 11, 6
 	note C#, 12
-	sfxpriorityoff
+	sfx_priority_off
 	endchannel
 
 .Ch6:
@@ -2659,7 +2659,7 @@ Sfx_Fanfare:
 	note C_, 4
 	note_type 4, 11, 6
 	note C#, 12
-	sfxpriorityoff
+	sfx_priority_off
 	endchannel
 
 .Ch6:
