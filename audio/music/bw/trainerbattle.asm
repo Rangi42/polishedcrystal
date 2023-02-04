@@ -2128,7 +2128,7 @@ Music_TrainerBattleBW_Ch3_loop:
 	sound_jump Music_TrainerBattleBW_Ch3_loop
 
 Music_TrainerBattleBW_Ch4:
-	note_type 12
+	drum_speed 12
 	toggle_noise 3
 	drum_note 4, 2
 	drum_note 1, 2
@@ -2147,11 +2147,11 @@ Music_TrainerBattleBW_Ch4:
 	drum_note 1, 1
 	drum_note 12, 4
 	drum_note 4, 4
-	note_type 7
+	drum_speed 7
 	drum_note 4, 3
-	note_type 9
+	drum_speed 9
 	drum_note 4, 3
-	note_type 12
+	drum_speed 12
 	drum_note 4, 4
 	drum_note 4, 4
 	drum_note 4, 4
@@ -2163,15 +2163,15 @@ Music_TrainerBattleBW_Ch4:
 	drum_note 4, 4
 	drum_note 4, 4
 	drum_note 1, 10
-	note_type 3
+	drum_speed 3
 	drum_note 1, 1
-	note_type 11
+	drum_speed 11
 	drum_note 1, 6
-	note_type 3
+	drum_speed 3
 	drum_note 1, 1
-	note_type 15
+	drum_speed 15
 	drum_note 1, 5
-	note_type 3
+	drum_speed 3
 	drum_note 1, 1
 	drum_note 1, 6
 	drum_note 4, 16
@@ -2282,9 +2282,9 @@ Music_TrainerBattleBW_Ch4_loop:
 	drum_note 4, 8
 	drum_note 1, 16
 	drum_note 1, 2
-	note_type 15
+	drum_speed 15
 	drum_note 1, 4
-	note_type 6
+	drum_speed 6
 	drum_note 1, 1
 	drum_note 1, 8
 	drum_note 4, 8
@@ -2303,22 +2303,22 @@ Music_TrainerBattleBW_Ch4_loop:
 	drum_note 1, 4
 	drum_note 4, 4
 	drum_note 1, 4
-	note_type 11
+	drum_speed 11
 	drum_note 1, 1
-	note_type 12
+	drum_speed 12
 	drum_note 1, 1
-	note_type 5
+	drum_speed 5
 	drum_note 1, 5
-	note_type 12
+	drum_speed 12
 	drum_note 1, 2
 	drum_note 4, 1
 	drum_note 4, 1
 	drum_note 1, 2
-	note_type 11
+	drum_speed 11
 	drum_note 4, 1
-	note_type 13
+	drum_speed 13
 	drum_note 4, 1
-	note_type 12
+	drum_speed 12
 	drum_note 4, 2
 	drum_note 1, 2
 	drum_note 1, 1
@@ -2335,36 +2335,14 @@ Music_TrainerBattleBW_Ch4_loop:
 	drum_note 4, 1
 	drum_note 4, 1
 	drum_note 1, 2
-	note_type 11
+	drum_speed 11
 	drum_note 4, 1
-	note_type 13
+	drum_speed 13
 	drum_note 4, 1
-	note_type 12
+	drum_speed 12
 	drum_note 4, 2
 	drum_note 1, 1
 	drum_note 1, 1
-	drum_note 1, 2
-	drum_note 1, 1
-	drum_note 1, 1
-	drum_note 4, 4
-	drum_note 1, 4
-	drum_note 4, 2
-	drum_note 4, 2
-	drum_note 1, 4
-	drum_note 4, 4
-	drum_note 1, 4
-	drum_note 4, 2
-	drum_note 4, 2
-	drum_note 1, 4
-	drum_note 4, 4
-	drum_note 1, 4
-	drum_note 4, 2
-	drum_note 4, 2
-	drum_note 1, 4
-	drum_note 4, 4
-	drum_note 1, 4
-	drum_note 4, 2
-	drum_note 4, 2
 	drum_note 1, 2
 	drum_note 1, 1
 	drum_note 1, 1
@@ -2383,13 +2361,35 @@ Music_TrainerBattleBW_Ch4_loop:
 	drum_note 4, 2
 	drum_note 4, 2
 	drum_note 1, 4
+	drum_note 4, 4
+	drum_note 1, 4
+	drum_note 4, 2
 	drum_note 4, 2
 	drum_note 1, 2
-	note_type 9
+	drum_note 1, 1
+	drum_note 1, 1
+	drum_note 4, 4
+	drum_note 1, 4
+	drum_note 4, 2
+	drum_note 4, 2
+	drum_note 1, 4
+	drum_note 4, 4
+	drum_note 1, 4
+	drum_note 4, 2
+	drum_note 4, 2
+	drum_note 1, 4
+	drum_note 4, 4
+	drum_note 1, 4
+	drum_note 4, 2
+	drum_note 4, 2
+	drum_note 1, 4
+	drum_note 4, 2
+	drum_note 1, 2
+	drum_speed 9
 	drum_note 1, 3
-	note_type 7
+	drum_speed 7
 	drum_note 4, 3
-	note_type 12
+	drum_speed 12
 	drum_note 1, 2
 	drum_note 4, 2
 	drum_note 1, 2
@@ -2433,7 +2433,7 @@ Music_TrainerBattleBW_Ch4_loop:
 	drum_note 4, 2
 	drum_note 1, 4
 	drum_note 4, 2
-	note_type 6
+	drum_speed 6
 	drum_note 1, 1
 	drum_note 1, 1
 	drum_note 1, 1
@@ -2515,7 +2515,7 @@ Music_TrainerBattleBW_Ch4_loop:
 	drum_note 1, 4
 	drum_note 4, 4
 	drum_note 1, 8
-	note_type 3
+	drum_speed 3
 	drum_note 1, 1
 	drum_note 1, 4
 	drum_note 1, 3
@@ -2523,7 +2523,7 @@ Music_TrainerBattleBW_Ch4_loop:
 	drum_note 4, 9
 	drum_note 1, 8
 	drum_note 4, 8
-	note_type 12
+	drum_speed 12
 	drum_note 1, 6
 	drum_note 4, 2
 	drum_note 4, 2
@@ -2582,7 +2582,7 @@ Music_TrainerBattleBW_Ch4_loop:
 	drum_note 4, 2
 	drum_note 1, 4
 	drum_note 1, 4
-	note_type 8
+	drum_speed 8
 	drum_note 4, 2
 	drum_note 4, 2
 	drum_note 4, 1
@@ -2681,8 +2681,8 @@ Music_TrainerBattleBW_Ch4_loop:
 	drum_note 4, 3
 	drum_note 4, 3
 	drum_note 1, 3
-	note_type 12
+	drum_speed 12
 	drum_note 1, 1
 	drum_note 1, 1
-	note_type 3
+	drum_speed 3
 	sound_jump Music_TrainerBattleBW_Ch4_loop

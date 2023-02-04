@@ -225,12 +225,12 @@ Music_MagnetTrain_Ch3:
 
 Music_MagnetTrain_Ch4:
 	toggle_noise 3
-	note_type 12
+	drum_speed 12
 	drum_note 12, 12
 	drum_note 3, 2
 	drum_note 11, 1
 	drum_note 11, 1
-	note_type 6
+	drum_speed 6
 	drum_note 4, 4
 	drum_note 7, 4
 	drum_note 4, 4
@@ -242,7 +242,7 @@ Music_MagnetTrain_Ch4:
 	drum_note 3, 2
 	sound_call Music_MagnetTrain_branch_ef71e
 	sound_call Music_MagnetTrain_branch_ef71e
-	note_type 12
+	drum_speed 12
 	drum_note 12, 16
 	sound_ret
 

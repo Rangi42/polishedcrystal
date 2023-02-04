@@ -417,7 +417,7 @@ Music_BlackCityBW_Ch3_loop:
 
 Music_BlackCityBW_Ch4:
 	toggle_noise 3
-	note_type 6
+	drum_speed 6
 	rest 4
 Music_BlackCityBW_Ch4_loop_main:
 Music_BlackCityBW_Ch4_loop_1:

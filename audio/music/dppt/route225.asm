@@ -1395,7 +1395,7 @@ Music_Route225DPPt_Ch3_loop:
 Music_Route225DPPt_Ch4:
 	toggle_noise 3
 Music_Route225DPPt_Ch4_loop:
-	note_type 12
+	drum_speed 12
 	drum_note 1, 1
 	drum_note 1, 1
 	drum_note 4, 2
@@ -1431,13 +1431,13 @@ Music_Route225DPPt_Ch4_loop:
 	drum_note 1, 2
 	drum_note 4, 4
 	drum_note 4, 2
-	note_type 6
+	drum_speed 6
 	drum_note 1, 1
 	drum_note 1, 3
 	drum_note 1, 4
-	note_type 10
+	drum_speed 10
 	drum_note 1, 4
-	note_type 8
+	drum_speed 8
 	drum_note 4, 1
 	drum_note 1, 3
 	drum_note 4, 3
@@ -1456,9 +1456,9 @@ Music_Route225DPPt_Ch4_loop:
 	drum_note 4, 3
 	drum_note 4, 3
 	drum_note 1, 3
-	note_type 15
+	drum_speed 15
 	drum_note 4, 4
-	note_type 12
+	drum_speed 12
 	drum_note 4, 4
 	drum_note 4, 1
 	drum_note 1, 1
@@ -1542,7 +1542,7 @@ Music_Route225DPPt_Ch4_loop:
 	drum_note 4, 2
 	drum_note 1, 2
 	drum_note 4, 2
-	note_type 6
+	drum_speed 6
 	drum_note 1, 1
 	drum_note 1, 3
 	drum_note 4, 4

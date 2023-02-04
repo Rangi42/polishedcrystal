@@ -390,11 +390,11 @@ Music_LugiasSong2000_Ch3_branch_2:
 
 Music_LugiasSong2000_Ch4:
 	toggle_noise 3
-	note_type 12
+	drum_speed 12
 Music_LugiasSong2000_Ch4_loop_1:
 	rest 16
 	sound_loop 8, Music_LugiasSong2000_Ch4_loop_1
-	note_type 6
+	drum_speed 6
 	drum_note 2, 2
 	drum_note 2, 2
 	drum_note 2, 2
@@ -407,7 +407,7 @@ Music_LugiasSong2000_Ch4_loop_1:
 	drum_note 3, 1
 	drum_note 3, 1
 	drum_note 3, 1
-	note_type 12
+	drum_speed 12
 	drum_note 12, 16
 	drum_note 1, 8
 	drum_note 1, 8

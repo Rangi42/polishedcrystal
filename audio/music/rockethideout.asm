@@ -275,7 +275,7 @@ Music_RocketHideout_branch_eeca6:
 
 Music_RocketHideout_Ch4:
 	toggle_noise 0
-	note_type 12
+	drum_speed 12
 	stereo_panning FALSE, TRUE
 	rest 16
 	rest 16

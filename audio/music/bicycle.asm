@@ -497,7 +497,7 @@ Music_Bicycle_branch_ee333:
 
 Music_Bicycle_Ch4:
 	toggle_noise 0
-	note_type 12
+	drum_speed 12
 	rest 16
 	rest 16
 Music_Bicycle_branch_ee34b:

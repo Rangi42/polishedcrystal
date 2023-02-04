@@ -158,7 +158,7 @@ Music_DragonsDen_branch_eed99:
 
 Music_DragonsDen_Ch4:
 	toggle_noise 0
-	note_type 12
+	drum_speed 12
 	rest 16
 	rest 16
 Music_DragonsDen_branch_eedbd:

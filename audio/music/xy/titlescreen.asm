@@ -864,21 +864,21 @@ DEF SNARE2 EQU 3
 Music_TitleScreenXY_Ch4:
 	toggle_noise 3
 Music_TitleScreenXY_Ch4_b0:
-	note_type 12
+	drum_speed 12
 	rest 16
 	rest 12
-	note_type 4
+	drum_speed 4
 	drum_note SNARE, 2
 	drum_note SNARE, 2
 	drum_note SNARE, 4
 	drum_note SNARE, 4
-	note_type 12
+	drum_speed 12
 	drum_note 12, 16
 	rest 16
 	rest 16
 	rest 16
 	rest 12
-	note_type 4
+	drum_speed 4
 	drum_note SNARE, 2
 	drum_note SNARE, 2
 	drum_note SNARE, 2
@@ -914,13 +914,13 @@ Music_TitleScreenXY_Ch4_b1:
 	drum_note SNARE2, 8
 	drum_note SNARE2, 4
 	sound_loop 4, Music_TitleScreenXY_Ch4_b1
-	note_type 12
+	drum_speed 12
 	rest 8
 	drum_note 12, 16
 	drum_note 12, 16
 	drum_note 12, 16
 	drum_note 12, 8
-	note_type 4
+	drum_speed 4
 	sound_call Music_TitleScreenXY_Ch4_b2
 	sound_call Music_TitleScreenXY_Ch4_b2
 	sound_call Music_TitleScreenXY_Ch4_b2

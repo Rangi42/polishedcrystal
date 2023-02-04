@@ -397,7 +397,7 @@ Music_PokemonMarch_branch_f6fe8:
 Music_PokemonMarch_Ch4:
 	stereo_panning TRUE, FALSE
 	toggle_noise 5
-	note_type 8
+	drum_speed 8
 	sound_call Music_PokemonMarch_branch_f704c
 Music_PokemonMarch_branch_f7003:
 	sound_call Music_PokemonMarch_branch_f7042
@@ -407,12 +407,12 @@ Music_PokemonMarch_branch_f7003:
 	drum_note 1, 2
 	drum_note 1, 4
 	drum_note 1, 5
-	note_type 6
+	drum_speed 6
 	drum_note 3, 1
 	drum_note 3, 1
 	drum_note 2, 1
 	drum_note 2, 1
-	note_type 8
+	drum_speed 8
 	sound_call Music_PokemonMarch_branch_f7042
 	sound_call Music_PokemonMarch_branch_f704c
 	sound_call Music_PokemonMarch_branch_f7042
@@ -427,12 +427,12 @@ Music_PokemonMarch_branch_f7003:
 	drum_note 2, 2
 	drum_note 2, 6
 	drum_note 1, 2
-	note_type 4
+	drum_speed 4
 	rest 5
-	note_type 6
+	drum_speed 6
 	drum_note 3, 1
 	drum_note 3, 1
-	note_type 8
+	drum_speed 8
 	sound_call Music_PokemonMarch_branch_f704c
 	sound_jump Music_PokemonMarch_branch_f7003
 

@@ -366,7 +366,7 @@ Music_MountPyreRSE_Ch3_loop_2:
 
 Music_MountPyreRSE_Ch4:
 	toggle_noise 3
-	note_type 12
+	drum_speed 12
 	rest 1
 ;	note C_, 8
 ;	note C#, 8

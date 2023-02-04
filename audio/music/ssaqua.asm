@@ -1082,7 +1082,7 @@ Music_SSAqua_branch_eb230:
 
 Music_SSAqua_Ch4:
 	toggle_noise 3
-	note_type 12
+	drum_speed 12
 	rest 2
 Music_SSAqua_branch_eb24e:
 	drum_note 9, 1

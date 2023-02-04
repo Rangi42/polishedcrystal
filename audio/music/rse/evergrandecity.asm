@@ -1166,7 +1166,7 @@ Music_EverGrandeCityRSE_branch_ef4e3:
 Music_EverGrandeCityRSE_Ch4:
 	toggle_noise 3
 	stereo_panning FALSE, TRUE
-	note_type 12
+	drum_speed 12
 	rest 6
 Music_EverGrandeCityRSE_Ch4_loop:
 	drum_note 9, 4

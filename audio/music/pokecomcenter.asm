@@ -454,7 +454,7 @@ Music_PokeComCenter_branch_179788:
 Music_PokeComCenter_Ch4:
 	toggle_noise 3
 	stereo_panning FALSE, TRUE
-	note_type 12
+	drum_speed 12
 	drum_note 10, 8
 	drum_note 10, 4
 	drum_note 2, 1

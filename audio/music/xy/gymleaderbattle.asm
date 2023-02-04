@@ -2192,7 +2192,7 @@ Music_GymLeaderBattleXY_Ch3_loop:
 	sound_ret
 
 Music_GymLeaderBattleXY_Ch4:
-	note_type 12
+	drum_speed 12
 	toggle_noise 0
 	drum_note 8, 4
 	drum_note 8, 4

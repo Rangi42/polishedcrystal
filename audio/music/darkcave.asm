@@ -459,7 +459,7 @@ Music_DarkCave_branch_ea4ce:
 
 Music_DarkCave_Ch4:
 	toggle_noise 3
-	note_type 12
+	drum_speed 12
 Music_DarkCave_branch_ea4ee:
 	stereo_panning TRUE, TRUE
 	drum_note 4, 8

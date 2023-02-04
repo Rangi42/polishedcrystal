@@ -291,7 +291,7 @@ Music_Lighthouse_branch_ee69b:
 
 Music_Lighthouse_Ch4:
 	toggle_noise 0
-	note_type 12
+	drum_speed 12
 Music_Lighthouse_branch_ee6b1:
 	stereo_panning FALSE, TRUE
 	drum_note 9, 4

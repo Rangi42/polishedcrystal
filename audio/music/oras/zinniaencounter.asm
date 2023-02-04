@@ -429,7 +429,7 @@ Music_ZinniaEncounterORAS_Ch3_branch_2:
 
 Music_ZinniaEncounterORAS_Ch4:
 	toggle_noise 3
-	note_type 12
+	drum_speed 12
 	drum_note 12, 8
 Music_ZinniaEncounterORAS_Ch4_loop_main:
 Music_ZinniaEncounterORAS_Ch4_loop_1:

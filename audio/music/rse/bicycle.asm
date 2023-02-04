@@ -1067,7 +1067,7 @@ Music_BicycleRSE_Ch3_loop_1:
 
 Music_BicycleRSE_Ch4:
 	toggle_noise 3
-	note_type 12
+	drum_speed 12
 	rest 16
 	rest 16
 Music_BicycleRSE_Ch4_loop_main:

@@ -1430,7 +1430,7 @@ Music_Credits_branch_1f94b:
 
 Music_Credits_Ch4:
 	toggle_noise 3
-	note_type 12
+	drum_speed 12
 	drum_note 9, 1
 	drum_note 8, 1
 	drum_note 8, 1
@@ -1546,11 +1546,11 @@ Music_Credits_branch_1f9f2:
 	drum_note 8, 1
 	drum_note 8, 1
 	drum_note 8, 7
-	note_type 8
+	drum_speed 8
 	drum_note 11, 1
 	drum_note 11, 1
 	drum_note 11, 1
-	note_type 12
+	drum_speed 12
 	drum_note 12, 16
 	rest 16
 	drum_note 12, 15
@@ -1565,39 +1565,39 @@ Music_Credits_branch_1f9f2:
 	drum_note 3, 1
 	drum_note 3, 1
 	drum_note 12, 12
-	note_type 8
+	drum_speed 8
 	drum_note 3, 2
 	drum_note 3, 2
 	drum_note 3, 2
-	note_type 12
+	drum_speed 12
 	drum_note 12, 12
-	note_type 8
+	drum_speed 8
 	drum_note 3, 2
 	drum_note 3, 2
 	drum_note 3, 2
 	drum_note 12, 12
-	note_type 12
+	drum_speed 12
 	drum_note 3, 1
 	rest 1
 	drum_note 3, 1
 	rest 1
-	note_type 8
+	drum_speed 8
 	drum_note 2, 2
 	drum_note 2, 2
 	drum_note 3, 2
-	note_type 12
+	drum_speed 12
 	drum_note 3, 1
 	rest 3
 	drum_note 3, 1
 	rest 3
-	note_type 8
+	drum_speed 8
 	drum_note 2, 2
 	drum_note 2, 2
 	drum_note 2, 2
 	drum_note 3, 2
 	drum_note 3, 2
 	drum_note 3, 2
-	note_type 12
+	drum_speed 12
 	drum_note 3, 1
 	rest 7
 	drum_note 11, 8

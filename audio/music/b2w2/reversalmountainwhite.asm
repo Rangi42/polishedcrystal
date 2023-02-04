@@ -968,7 +968,7 @@ Music_ReversalMountainWhite2_Ch3_loop:
 Music_ReversalMountainWhite2_Ch4:
 	stereo_panning FALSE, TRUE
 	toggle_noise 3
-	note_type 12
+	drum_speed 12
 	rest 16
 	rest 16
 	rest 16

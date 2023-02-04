@@ -114,7 +114,7 @@ Music_MainMenu_branch_f796f:
 Music_MainMenu_Ch4:
 	stereo_panning FALSE, TRUE
 	toggle_noise 3
-	note_type 12
+	drum_speed 12
 	rest 8
 	rest 16
 	rest 16

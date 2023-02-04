@@ -985,7 +985,7 @@ Music_WhiteTreehollowWhite2_Ch3:
 
 Music_WhiteTreehollowWhite2_Ch4:
 	toggle_noise 3
-	note_type 12
+	drum_speed 12
 Music_WhiteTreehollowWhite2_Ch4_loop_main:
 Music_WhiteTreehollowWhite2_Ch4_loop_1:
 	drum_note 4, 4

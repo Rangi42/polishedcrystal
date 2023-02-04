@@ -1507,7 +1507,7 @@ Music_SunyshoreCityDPPt_Ch3_loop:
 
 Music_SunyshoreCityDPPt_Ch4:
 	toggle_noise 3
-	note_type 12
+	drum_speed 12
 	drum_note 4, 1
 	drum_note 4, 1
 	drum_note 4, 4
@@ -1838,7 +1838,7 @@ Music_SunyshoreCityDPPt_Ch4_loop:
 	drum_note 4, 2
 	drum_note 4, 4
 	drum_note 4, 2
-	note_type 6
+	drum_speed 6
 	drum_note 1, 1
 	drum_note 1, 3
 	drum_note 1, 8
@@ -1890,6 +1890,6 @@ Music_SunyshoreCityDPPt_Ch4_loop:
 	drum_note 8, 4
 	drum_note 1, 4
 	drum_note 8, 4
-	note_type 12
+	drum_speed 12
 	sound_jump Music_SunyshoreCityDPPt_Ch4_loop
 

@@ -1157,7 +1157,7 @@ Music_EliteFourBattleBW_Ch3_branch_3:
 
 Music_EliteFourBattleBW_Ch4:
 	toggle_noise 3
-	note_type 6
+	drum_speed 6
 	rest 16
 	rest 16
 	rest 16

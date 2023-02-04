@@ -55,7 +55,7 @@ Music_AfterTheRivalFight_Ch3:
 Music_AfterTheRivalFight_Ch4:
 	toggle_noise 3
 	stereo_panning FALSE, TRUE
-	note_type 12
+	drum_speed 12
 	drum_note 3, 4
 	drum_note 3, 4
 	drum_note 4, 2

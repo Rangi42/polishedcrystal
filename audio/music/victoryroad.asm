@@ -175,7 +175,7 @@ Music_VictoryRoad_branch_f6d52:
 
 Music_VictoryRoad_Ch4:
 	toggle_noise 0
-	note_type 12
+	drum_speed 12
 Music_VictoryRoad_branch_f6d63:
 	drum_note 3, 2
 	drum_note 3, 2

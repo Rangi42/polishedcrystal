@@ -469,7 +469,7 @@ Music_Route36_branch_e9684:
 
 Music_Route36_Ch4:
 	toggle_noise 1
-	note_type 12
+	drum_speed 12
 	sound_call Music_Route36_branch_e9734
 	sound_call Music_Route36_branch_e9741
 Music_Route36_branch_e9713:

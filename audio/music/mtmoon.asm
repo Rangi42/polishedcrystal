@@ -121,7 +121,7 @@ Music_MtMoon_branch_edbab:
 
 Music_MtMoon_Ch4:
 	toggle_noise 5
-	note_type 12
+	drum_speed 12
 Music_MtMoon_branch_edbc3:
 	stereo_panning FALSE, TRUE
 	drum_note 11, 4

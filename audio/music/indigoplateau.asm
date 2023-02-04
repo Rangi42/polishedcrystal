@@ -151,7 +151,7 @@ Music_IndigoPlateau_branch_ee915:
 Music_IndigoPlateau_Ch4:
 	stereo_panning TRUE, FALSE
 	toggle_noise 0
-	note_type 12
+	drum_speed 12
 Music_IndigoPlateau_branch_ee92a:
 	drum_note 4, 4
 	drum_note 3, 2
@@ -161,7 +161,7 @@ Music_IndigoPlateau_branch_ee92a:
 	drum_note 3, 4
 	drum_note 3, 2
 	drum_note 3, 2
-	note_type 6
+	drum_speed 6
 	drum_note 3, 1
 	drum_note 3, 1
 	drum_note 4, 1
@@ -170,7 +170,7 @@ Music_IndigoPlateau_branch_ee92a:
 	drum_note 4, 1
 	drum_note 3, 1
 	drum_note 3, 1
-	note_type 12
+	drum_speed 12
 	drum_note 4, 4
 	drum_note 3, 2
 	drum_note 4, 2

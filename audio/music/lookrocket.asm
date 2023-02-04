@@ -359,7 +359,7 @@ Music_RocketTheme_branch_f7623:
 
 Music_LookRocket_Ch4:
 	toggle_noise 3
-	note_type 12
+	drum_speed 12
 	rest 2
 	sound_call Music_LookRocket_branch_f765c
 Music_LookRocket_branch_f7640:

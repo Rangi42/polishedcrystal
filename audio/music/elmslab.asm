@@ -530,7 +530,7 @@ Music_ElmsLab_branch_ea216:
 Music_ElmsLab_Ch4:
 	stereo_panning TRUE, FALSE
 	toggle_noise 0
-	note_type 12
+	drum_speed 12
 	rest 16
 	rest 2
 Music_ElmsLab_branch_ea2b9:

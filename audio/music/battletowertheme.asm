@@ -585,7 +585,7 @@ Music_BattleTowerTheme_branch_178afe:
 
 Music_BattleTowerTheme_Ch4:
 	toggle_noise 3
-	note_type 12
+	drum_speed 12
 Music_BattleTowerTheme_branch_178b11:
 	sound_call Music_BattleTowerTheme_branch_178b58
 	drum_note 3, 2

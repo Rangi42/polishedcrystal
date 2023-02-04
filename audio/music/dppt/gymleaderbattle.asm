@@ -1503,7 +1503,7 @@ Music_GymLeaderBattleDPPt_Ch3_loop:
 
 Music_GymLeaderBattleDPPt_Ch4:
 	toggle_noise 0
-	note_type 12
+	drum_speed 12
 	rest 2
 	drum_note 4, 4
 	drum_note 4, 4

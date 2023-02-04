@@ -922,7 +922,7 @@ Music_MarineTubeB2W2_Ch3:
 
 Music_MarineTubeB2W2_Ch4:
 	toggle_noise 3
-	note_type 12
+	drum_speed 12
 Music_MarineTubeB2W2_Ch4_loop_main:
 Music_MarineTubeB2W2_Ch4_loop_1:
 	drum_note 3, 2
@@ -951,12 +951,12 @@ Music_MarineTubeB2W2_Ch4_loop_1:
 	drum_note 4, 2
 	drum_note 3, 1
 	drum_note 3, 1
-	note_type 8
+	drum_speed 8
 	drum_note 1, 4
 	drum_note 1, 4
 	drum_note 4, 2
 	drum_note 4, 2
-	note_type 12
+	drum_speed 12
 	drum_note 4, 2
 	drum_note 3, 2
 	drum_note 1, 2

@@ -382,7 +382,7 @@ Music_GymLeaderVictory_branch_f479e:
 
 Music_GymLeaderVictory_Ch4:
 	toggle_noise 4
-	note_type 12
+	drum_speed 12
 	drum_note 12, 16
 	drum_note 12, 16
 Music_GymLeaderVictory_branch_f47eb:

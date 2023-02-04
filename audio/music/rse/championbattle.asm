@@ -973,7 +973,7 @@ Music_ChampionBattleRSE_Ch3_branch_7:
 
 Music_ChampionBattleRSE_Ch4:
 	toggle_noise 3
-	note_type 6
+	drum_speed 6
 	drum_note 1, 6
 	drum_note 1, 8
 	drum_note 4, 4

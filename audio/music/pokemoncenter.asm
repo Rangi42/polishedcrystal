@@ -394,7 +394,7 @@ Music_PokemonCenter_branch_ed783:
 
 Music_PokemonCenter_Ch4:
 	toggle_noise 3
-	note_type 12
+	drum_speed 12
 	stereo_panning TRUE, TRUE
 Music_PokemonCenter_branch_ed792:
 	drum_note 8, 6

@@ -627,7 +627,7 @@ Music_AzaleaTown_branch_f5acf:
 
 Music_AzaleaTown_Ch4:
 	toggle_noise 3
-	note_type 12
+	drum_speed 12
 	drum_note 6, 2
 Music_AzaleaTown_branch_f5aea:
 	drum_note 4, 2

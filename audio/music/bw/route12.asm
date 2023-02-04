@@ -375,7 +375,7 @@ Music_Route12BW_Ch4:
 	stereo_panning FALSE, TRUE
 	toggle_noise 0
 Music_Route12BW_Ch4_loop:
-	note_type 4
+	drum_speed 4
 	sound_call Music_Route12BW_Ch4_branch_1
 	sound_call Music_Route12BW_Ch4_branch_2
 	sound_call Music_Route12BW_Ch4_branch_3

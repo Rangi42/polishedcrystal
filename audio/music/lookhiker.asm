@@ -104,7 +104,7 @@ Music_LookHiker_branch_f748a:
 
 Music_LookHiker_Ch4:
 	toggle_noise 3
-	note_type 12
+	drum_speed 12
 	drum_note 6, 4
 	rest 16
 Music_LookHiker_branch_f749a:

@@ -489,7 +489,7 @@ Music_LyraEncounterHGSS_Ch3_loop:
 
 Music_LyraEncounterHGSS_Ch4:
 	toggle_noise 3
-	note_type 6
+	drum_speed 6
 	drum_note 3, 2
 	drum_note 3, 4
 	drum_note 3, 4

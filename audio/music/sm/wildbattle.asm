@@ -854,7 +854,7 @@ Music_WildBattleSM_Ch3_loop_3:
 
 Music_WildBattleSM_Ch4:
 	toggle_noise 3
-	note_type 6
+	drum_speed 6
 	drum_note 12, 4
 	drum_note 4, 4
 	drum_note 4, 4

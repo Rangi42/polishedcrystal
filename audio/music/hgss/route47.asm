@@ -1092,7 +1092,7 @@ Music_Route47HGSS_Ch3_loop:
 
 Music_Route47HGSS_Ch4:
 	toggle_noise 3
-	note_type 12
+	drum_speed 12
 Music_Route47HGSS_Ch4_loop_main:
 	rest 5
 	sound_call Music_Route47HGSS_Ch4_branch_1
@@ -1147,7 +1147,7 @@ Music_Route47HGSS_Ch4_loop_2:
 	sound_jump Music_Route47HGSS_Ch4_loop_main
 
 Music_Route47HGSS_Ch4_branch_1:
-	note_type 4
+	drum_speed 4
 	drum_note 2, 1
 	drum_note 2, 1
 	drum_note 2, 1
@@ -1157,7 +1157,7 @@ Music_Route47HGSS_Ch4_branch_1:
 	drum_note 2, 1
 	drum_note 2, 1
 	drum_note 2, 1
-	note_type 12
+	drum_speed 12
 	sound_ret
 
 Music_Route47HGSS_Ch4_branch_2:

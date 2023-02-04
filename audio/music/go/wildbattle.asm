@@ -432,7 +432,7 @@ Music_WildBattleGo_Ch3_loop_8:
 	sound_jump Music_WildBattleGo_Ch3_loop
 
 Music_WildBattleGo_Ch4:
-	note_type 12
+	drum_speed 12
 	rest 4
 	toggle_noise 3
 	sound_call Music_WildBattleGo_Ch4_ditty1

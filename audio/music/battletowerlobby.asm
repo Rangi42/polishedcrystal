@@ -300,7 +300,7 @@ Music_BattleTowerLobby_branch_1795b1:
 Music_BattleTowerLobby_Ch4:
 	toggle_noise 0
 Music_BattleTowerLobby_branch_179612:
-	note_type 12
+	drum_speed 12
 	rest 2
 	drum_note 6, 4
 	drum_note 6, 4

@@ -517,7 +517,7 @@ Music_RivalBattleXY_Ch3_branch_5:
 
 Music_RivalBattleXY_Ch4:
 	toggle_noise 3
-	note_type 12
+	drum_speed 12
 	drum_note 12, 2
 	drum_note 12, 4
 	drum_note 12, 6

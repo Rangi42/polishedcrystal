@@ -905,12 +905,12 @@ Music_FinalPokemonBW_Ch3_branch_3:
 
 Music_FinalPokemonBW_Ch4:
 	toggle_noise 3
-	note_type 6
+	drum_speed 6
 	drum_note 1, 1
 	drum_note 1, 1
 	drum_note 12, 16
 	rest 12
-	note_type 3
+	drum_speed 3
 	drum_note 3, 1
 	drum_note 3, 1
 	drum_note 3, 1
@@ -927,7 +927,7 @@ Music_FinalPokemonBW_Ch4:
 	drum_note 3, 4
 	drum_note 12, 4
 	drum_note 12, 4
-	note_type 4
+	drum_speed 4
 	drum_note 3, 1
 	drum_note 3, 1
 	drum_note 3, 1
@@ -940,7 +940,7 @@ Music_FinalPokemonBW_Ch4:
 	drum_note 3, 1
 	drum_note 3, 1
 	drum_note 3, 1
-	note_type 3
+	drum_speed 3
 Music_FinalPokemonBW_Ch4_loop:
 	sound_call Music_FinalPokemonBW_Ch4_branch_2
 	sound_call Music_FinalPokemonBW_Ch4_branch_2
@@ -1057,11 +1057,11 @@ Music_FinalPokemonBW_Ch4_branch_3:
 	drum_note 3, 2
 	drum_note 3, 2
 	drum_note 3, 4
-	note_type 4
+	drum_speed 4
 	drum_note 3, 2
 	drum_note 3, 2
 	drum_note 3, 2
-	note_type 3
+	drum_speed 3
 	sound_ret
 
 Music_FinalPokemonBW_Ch4_branch_4:

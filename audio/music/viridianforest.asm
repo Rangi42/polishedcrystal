@@ -452,7 +452,7 @@ Music_ViridianForest_branch_edacb:
 
 Music_ViridianForest_Ch4:
 	toggle_noise 5
-	note_type 12
+	drum_speed 12
 Music_ViridianForest_branch_edae0:
 	drum_note 10, 4
 	drum_note 10, 4

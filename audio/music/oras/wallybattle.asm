@@ -563,7 +563,7 @@ Music_WallyBattleORAS_Ch3_branch_2:
 
 Music_WallyBattleORAS_Ch4:
 	toggle_noise 4
-	note_type 12
+	drum_speed 12
 	rest 3
 Music_WallyBattleORAS_Ch4_loop_main:
 	sound_call Music_WallyBattleORAS_Ch4_branch_1

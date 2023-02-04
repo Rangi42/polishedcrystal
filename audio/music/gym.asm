@@ -505,7 +505,7 @@ Music_Gym_branch_f4ab3:
 Music_Gym_Ch4:
 	toggle_noise 4
 Music_Gym_branch_f4ac7:
-	note_type 12
+	drum_speed 12
 	drum_note 3, 2
 	drum_note 2, 1
 	drum_note 2, 1
@@ -528,7 +528,7 @@ Music_Gym_branch_f4ac7:
 	drum_note 2, 1
 	drum_note 3, 1
 	drum_note 3, 1
-	note_type 6
+	drum_speed 6
 Music_Gym_branch_f4ae1:
 	drum_note 3, 6
 	drum_note 3, 6

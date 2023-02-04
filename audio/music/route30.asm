@@ -578,7 +578,7 @@ Music_Route30_branch_efd79:
 
 Music_Route30_Ch4:
 	toggle_noise 3
-	note_type 12
+	drum_speed 12
 	sound_call Music_Route30_branch_efeb8
 	sound_call Music_Route30_branch_efec1
 Music_Route30_branch_efe84:

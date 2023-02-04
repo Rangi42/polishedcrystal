@@ -245,7 +245,7 @@ Music_BurnedTower_branch_f6bc3:
 
 Music_BurnedTower_Ch4:
 	toggle_noise 0
-	note_type 12
+	drum_speed 12
 Music_BurnedTower_branch_f6be1:
 	rest 16
 	sound_loop 4, Music_BurnedTower_branch_f6be1

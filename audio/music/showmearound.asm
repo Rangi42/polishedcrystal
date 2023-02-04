@@ -300,7 +300,7 @@ Music_ShowMeAround_branch_edd0f:
 
 Music_ShowMeAround_Ch4:
 	toggle_noise 3
-	note_type 12
+	drum_speed 12
 	rest 16
 	rest 8
 	drum_note 3, 2

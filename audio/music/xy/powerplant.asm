@@ -502,7 +502,7 @@ Music_PowerPlantXY_Ch3_branch_4:
 	sound_ret
 
 Music_PowerPlantXY_Ch4:
-	note_type 12
+	drum_speed 12
 	toggle_noise 3
 Music_PowerPlantXY_Ch4_branch_0:
 	drum_note 11, 3

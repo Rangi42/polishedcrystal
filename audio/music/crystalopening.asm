@@ -244,7 +244,7 @@ Music_CrystalOpening_Ch3:
 Music_CrystalOpening_Ch4:
 	stereo_panning FALSE, TRUE
 	toggle_noise 3
-	note_type 12
+	drum_speed 12
 	rest 16
 	rest 12
 	octave 2
@@ -253,7 +253,7 @@ Music_CrystalOpening_Ch4:
 	drum_note 2, 1
 	drum_note 2, 1
 	drum_note 3, 4
-	note_type 8
+	drum_speed 8
 	drum_note 2, 1
 	drum_note 2, 1
 	drum_note 2, 1
@@ -268,7 +268,7 @@ Music_CrystalOpening_Ch4:
 	drum_note 2, 1
 	drum_note 2, 1
 	drum_note 3, 3
-	note_type 12
+	drum_speed 12
 	drum_note 2, 1
 	drum_note 2, 1
 	drum_note 8, 1

@@ -296,7 +296,7 @@ Music_LookBeauty_branch_eef0f:
 
 Music_LookBeauty_Ch4:
 	toggle_noise 3
-	note_type 12
+	drum_speed 12
 	rest 16
 	rest 16
 Music_LookBeauty_branch_eef91:

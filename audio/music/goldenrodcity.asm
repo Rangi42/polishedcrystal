@@ -387,7 +387,7 @@ Music_GoldenrodCity_branch_eb5d2:
 
 Music_GoldenrodCity_Ch4:
 	toggle_noise 3
-	note_type 12
+	drum_speed 12
 	rest 16
 	rest 16
 	rest 16

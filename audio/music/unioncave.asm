@@ -239,7 +239,7 @@ Music_UnionCave_branch_f5d9c:
 
 Music_UnionCave_Ch4:
 	toggle_noise 1
-	note_type 12
+	drum_speed 12
 Music_UnionCave_branch_f5da9:
 	stereo_panning TRUE, FALSE
 	drum_note 5, 4

@@ -504,7 +504,7 @@ Music_Route29_branch_f0504:
 Music_Route29_Ch4:
 	stereo_panning FALSE, TRUE
 	toggle_noise 0
-	note_type 12
+	drum_speed 12
 	rest 2
 Music_Route29_branch_f05b0:
 	rest 2

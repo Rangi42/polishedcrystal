@@ -690,7 +690,7 @@ Music_ViridianCity_branch_f42a2:
 
 Music_ViridianCity_Ch4:
 	toggle_noise 3
-	note_type 12
+	drum_speed 12
 	sound_call Music_ViridianCity_branch_f431d
 	sound_call Music_ViridianCity_branch_f432c
 Music_ViridianCity_branch_f42e9:

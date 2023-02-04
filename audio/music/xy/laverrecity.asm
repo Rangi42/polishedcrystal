@@ -564,7 +564,7 @@ Music_LaverreCityXY_Ch3_branch_1:
 Music_LaverreCityXY_Ch4:
 	toggle_noise 3
 	stereo_panning FALSE, TRUE
-	note_type 12
+	drum_speed 12
 Music_LaverreCityXY_Ch4_loop:
 	sound_call Music_LaverreCityXY_Ch4_branch_1
 	sound_call Music_LaverreCityXY_Ch4_branch_1
@@ -589,7 +589,7 @@ Music_LaverreCityXY_Ch4_loop:
 	sound_call Music_LaverreCityXY_Ch4_branch_1
 	sound_call Music_LaverreCityXY_Ch4_branch_1
 	sound_call Music_LaverreCityXY_Ch4_branch_1
-	note_type 8
+	drum_speed 8
 	drum_note 2, 1
 	drum_note 2, 1
 	drum_note 2, 1
@@ -602,7 +602,7 @@ Music_LaverreCityXY_Ch4_loop:
 	drum_note 2, 1
 	drum_note 2, 1
 	rest 3
-	note_type 12
+	drum_speed 12
 	drum_note 2, 12
 	sound_call Music_LaverreCityXY_Ch4_branch_1
 	sound_call Music_LaverreCityXY_Ch4_branch_1
@@ -611,12 +611,12 @@ Music_LaverreCityXY_Ch4_loop:
 	sound_jump Music_LaverreCityXY_Ch4_loop
 
 Music_LaverreCityXY_Ch4_branch_1:
-	note_type 8
+	drum_speed 8
 	drum_note 2, 1
 	drum_note 2, 1
 	drum_note 2, 1
 	rest 3
-	note_type 12
+	drum_speed 12
 	drum_note 2, 4
 	drum_note 2, 4
 	rest 4
@@ -625,7 +625,7 @@ Music_LaverreCityXY_Ch4_branch_1:
 	sound_ret
 
 Music_LaverreCityXY_Ch4_branch_2:
-	note_type 12
+	drum_speed 12
 	rest 12
 	rest 12
 	sound_ret

@@ -397,14 +397,14 @@ Music_Route37_Ch4:
 	stereo_panning FALSE, TRUE
 	toggle_noise 0
 Music_Route37_branch_eeb51:
-	note_type 12
+	drum_speed 12
 	sound_call Music_Route37_branch_eeb6b
 	drum_note 3, 1
 	drum_note 4, 1
 	drum_note 4, 1
 	drum_note 3, 1
 	sound_call Music_Route37_branch_eeb6b
-	note_type 6
+	drum_speed 6
 	drum_note 4, 1
 	drum_note 4, 1
 	drum_note 4, 1

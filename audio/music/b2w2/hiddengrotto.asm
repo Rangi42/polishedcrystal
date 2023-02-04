@@ -121,7 +121,7 @@ Music_HiddenGrottoB2W2_Ch3:
 	sound_jump Music_HiddenGrottoB2W2_Ch3
 
 Music_HiddenGrottoB2W2_Ch4:
-	note_type 6
+	drum_speed 6
 	toggle_noise 5
 Music_HiddenGrottoB2W2_Ch4_loop:
 	rest 16

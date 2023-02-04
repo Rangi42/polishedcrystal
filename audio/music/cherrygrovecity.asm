@@ -285,7 +285,7 @@ Music_CherrygroveCity_branch_f5be4:
 
 Music_CherrygroveCity_Ch4:
 	toggle_noise 3
-	note_type 12
+	drum_speed 12
 	rest 16
 Music_CherrygroveCity_branch_f5c4d:
 	drum_note 2, 2

@@ -480,17 +480,17 @@ Music_Route3_branch_ec4ce:
 
 Music_Route3_Ch4:
 	toggle_noise 4
-	note_type 12
+	drum_speed 12
 	rest 10
 Music_Route3_branch_ec4f0:
-	note_type 12
+	drum_speed 12
 	drum_note 3, 2
 	drum_note 3, 4
 	drum_note 3, 1
 	drum_note 3, 1
 	drum_note 3, 2
 	drum_note 3, 2
-	note_type 6
+	drum_speed 6
 	drum_note 2, 1
 	drum_note 2, 1
 	drum_note 2, 1

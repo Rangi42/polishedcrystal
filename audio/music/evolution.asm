@@ -187,7 +187,7 @@ Music_Evolution_branch_f07d5:
 
 Music_Evolution_Ch4:
 	toggle_noise 5
-	note_type 12
+	drum_speed 12
 	rest 8
 Music_Evolution_branch_f07f0:
 	stereo_panning TRUE, FALSE

@@ -100,10 +100,10 @@ Music_LookLass_branch_ed7ef:
 
 Music_LookLass_Ch4:
 	toggle_noise 4
-	note_type 12
+	drum_speed 12
 	drum_note 1, 16
 Music_LookLass_branch_ed81f:
-	note_type 6
+	drum_speed 6
 	drum_note 3, 8
 	drum_note 2, 8
 	drum_note 2, 8

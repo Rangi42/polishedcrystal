@@ -392,7 +392,7 @@ Music_Route12_branch_ec6b4:
 Music_Route12_Ch4:
 	toggle_noise 4
 	stereo_panning TRUE, FALSE
-	note_type 12
+	drum_speed 12
 	drum_note 12, 10
 	drum_note 2, 1
 	drum_note 2, 1
@@ -401,7 +401,7 @@ Music_Route12_Ch4:
 	drum_note 2, 1
 	drum_note 2, 1
 	drum_note 3, 4
-	note_type 6
+	drum_speed 6
 	sound_call Music_Route12_branch_ec717
 Music_Route12_branch_ec6e1:
 	drum_note 3, 4
@@ -412,7 +412,7 @@ Music_Route12_branch_ec6e1:
 	sound_call Music_Route12_branch_ec717
 	sound_loop 8, Music_Route12_branch_ec6e1
 Music_Route12_branch_ec6ed:
-	note_type 12
+	drum_speed 12
 	drum_note 12, 10
 	drum_note 3, 1
 	drum_note 3, 1
@@ -425,7 +425,7 @@ Music_Route12_branch_ec6ed:
 	drum_note 3, 4
 	sound_loop 2, Music_Route12_branch_ec6ed
 	drum_note 12, 16
-	note_type 6
+	drum_speed 6
 	sound_call Music_Route12_branch_ec717
 	sound_call Music_Route12_branch_ec717
 	drum_note 12, 16

@@ -153,7 +153,7 @@ Music_ContestResults_branch_efbd2:
 
 Music_ContestResults_Ch4:
 	toggle_noise 4
-	note_type 6
+	drum_speed 6
 Music_ContestResults_branch_efbed:
 	drum_note 2, 4
 	drum_note 2, 4

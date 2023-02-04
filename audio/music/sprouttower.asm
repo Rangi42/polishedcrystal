@@ -221,7 +221,7 @@ Music_SproutTower_branch_f6a3e:
 
 Music_SproutTower_Ch4:
 	toggle_noise 0
-	note_type 12
+	drum_speed 12
 	rest 4
 Music_SproutTower_branch_f6a7f:
 	drum_note 7, 4

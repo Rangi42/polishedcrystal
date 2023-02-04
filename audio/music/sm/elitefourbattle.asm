@@ -600,7 +600,7 @@ Music_EliteFourBattleSM_Ch3_branch_1:
 
 Music_EliteFourBattleSM_Ch4:
 	toggle_noise 3
-	note_type 12
+	drum_speed 12
 	rest 16
 	rest 16
 	rest 16
@@ -615,7 +615,7 @@ Music_EliteFourBattleSM_Ch4:
 	drum_note 1, 1
 Music_EliteFourBattleSM_Ch4_loop_main:
 Music_EliteFourBattleSM_Ch4_loop_1:
-	note_type 6
+	drum_speed 6
 	drum_note 4, 4
 	drum_note 1, 2
 	drum_note 9, 1

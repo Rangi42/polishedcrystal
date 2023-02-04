@@ -390,7 +390,7 @@ Music_Clair_branch_1fc3c:
 
 Music_Clair_Ch4:
 	toggle_noise 3
-	note_type 12
+	drum_speed 12
 	stereo_panning TRUE, FALSE
 	drum_note 12, 8
 	drum_note 12, 8

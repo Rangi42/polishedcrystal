@@ -299,7 +299,7 @@ Music_LakeOfRage_branch_ee7d0:
 Music_LakeOfRage_Ch4:
 	stereo_panning TRUE, FALSE
 	toggle_noise 3
-	note_type 12
+	drum_speed 12
 Music_LakeOfRage_branch_ee83b:
 	drum_note 3, 2
 	drum_note 3, 1

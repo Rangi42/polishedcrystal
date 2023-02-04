@@ -705,7 +705,7 @@ Music_SafariZoneGateHGSS_Ch3_branch_1:
 
 Music_SafariZoneGateHGSS_Ch4:
 	toggle_noise 3
-	note_type 12
+	drum_speed 12
 	rest 16
 Music_SafariZoneGateHGSS_Ch4_loop_main:
 	rest 12

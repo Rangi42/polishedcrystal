@@ -849,7 +849,7 @@ Music_DewfordTownRSE_Ch4:
 	toggle_noise 2
 Music_DewfordTownRSE_Ch4_b0:
 Music_DewfordTownRSE_Ch4_b1:
-	note_type 12
+	drum_speed 12
 	drum_note 3, 4
 	drum_note 8, 2
 	drum_note 8, 4

@@ -1730,7 +1730,7 @@ Music_ChampionBattleDPPt_Ch3_loop:
 
 Music_ChampionBattleDPPt_Ch4:
 	toggle_noise 3
-	note_type 12
+	drum_speed 12
 	drum_note 4, 8
 	drum_note 4, 8
 	drum_note 4, 8

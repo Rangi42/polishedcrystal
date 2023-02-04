@@ -927,7 +927,7 @@ Music_MotherBeastBattleSM_Ch4_loop_main:
 	sound_call Music_MotherBeastBattleSM_Ch4_branch_2
 	sound_call Music_MotherBeastBattleSM_Ch4_branch_1
 	sound_call Music_MotherBeastBattleSM_Ch4_branch_3
-	note_type 12
+	drum_speed 12
 	drum_note 1, 12
 	drum_note 4, 12
 	drum_note 4, 12
@@ -1037,7 +1037,7 @@ Music_MotherBeastBattleSM_Ch4_branch_3:
 	sound_ret
 
 Music_MotherBeastBattleSM_Ch4_buildup:
-	note_type 3
+	drum_speed 3
 	drum_note 8, 1
 	drum_note 8, 1
 	drum_note 8, 1
@@ -1054,5 +1054,5 @@ Music_MotherBeastBattleSM_Ch4_buildup:
 	drum_note 7, 1
 	drum_note 7, 1
 	drum_note 7, 1
-	note_type 6
+	drum_speed 6
 	sound_ret

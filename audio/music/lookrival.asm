@@ -324,7 +324,7 @@ Music_LookRival_branch_f50ff:
 Music_LookRival_Ch4:
 	stereo_panning TRUE, FALSE
 	toggle_noise 3
-	note_type 12
+	drum_speed 12
 	rest 8
 	rest 16
 	drum_note 4, 2

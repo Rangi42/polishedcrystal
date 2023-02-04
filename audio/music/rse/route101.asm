@@ -477,7 +477,7 @@ Music_Route101RSE_Ch3_branch_2:
 Music_Route101RSE_Ch4:
 	stereo_panning FALSE, TRUE
 	toggle_noise 0
-	note_type 12
+	drum_speed 12
 	rest 2
 Music_Route101RSE_Ch4_loop:
 	sound_call Music_Route101RSE_Ch4_branch_1

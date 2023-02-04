@@ -533,14 +533,14 @@ Music_Route4BW_Ch4:
 	stereo_panning FALSE, TRUE
 	toggle_noise 0
 Music_Route4BW_Ch4_branch_1:
-	note_type 12
+	drum_speed 12
 	sound_call Music_Route4BW_Ch4_branch_2
 	drum_note 3, 1
 	drum_note 4, 1
 	drum_note 4, 1
 	drum_note 3, 1
 	sound_call Music_Route4BW_Ch4_branch_2
-	note_type 6
+	drum_speed 6
 	drum_note 4, 1
 	drum_note 4, 1
 	drum_note 4, 1
@@ -552,17 +552,17 @@ Music_Route4BW_Ch4_branch_1:
 	sound_loop 6, Music_Route4BW_Ch4_branch_1
 	sound_call Music_Route4BW_Ch4_branch_3
 	sound_call Music_Route4BW_Ch4_branch_3
-	note_type 12
+	drum_speed 12
 	drum_note 3, 10
 	drum_note 4, 1
 	drum_note 3, 3
 	drum_note 4, 1
 	drum_note 4, 1
-	note_type 8
+	drum_speed 8
 	drum_note 3, 4
 	drum_note 3, 4
 	drum_note 3, 4
-	note_type 6
+	drum_speed 6
 	drum_note 12, 12
 	drum_note 4, 1
 	drum_note 4, 1
@@ -583,10 +583,10 @@ Music_Route4BW_Ch4_branch_2:
 	sound_ret
 
 Music_Route4BW_Ch4_branch_3:
-	note_type 12
+	drum_speed 12
 	drum_note 3, 16
 	rest 12
-	note_type 6
+	drum_speed 6
 	drum_note 4, 1
 	drum_note 4, 1
 	drum_note 4, 1

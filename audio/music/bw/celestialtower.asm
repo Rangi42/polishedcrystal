@@ -538,12 +538,12 @@ Music_CelestialTowerBW_NoIntro_Ch3:
 
 Music_CelestialTowerBW_NoIntro_Ch4:
 	toggle_noise 4
-	note_type 12
+	drum_speed 12
 	rest 16
 	rest 16
 	rest 16
 	rest 16
-	note_type 6
+	drum_speed 6
 	sound_call Music_CelestialTowerBW_NoIntro_Ch4_branch_1
 	sound_call Music_CelestialTowerBW_NoIntro_Ch4_branch_1
 	sound_call Music_CelestialTowerBW_NoIntro_Ch4_branch_2

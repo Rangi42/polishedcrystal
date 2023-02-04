@@ -215,7 +215,7 @@ Music_RoadToReversalMountainB2W2_Ch3_branch_1:
 Music_RoadToReversalMountainB2W2_Ch4:
 	stereo_panning FALSE, TRUE
 	toggle_noise 3
-	note_type 12
+	drum_speed 12
 Music_RoadToReversalMountainB2W2_Ch4_loop:
 	drum_note 1, 4
 	drum_note 4, 2

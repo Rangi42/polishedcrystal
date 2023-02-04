@@ -1755,7 +1755,7 @@ Music_MewtwoBattleStadium_Ch3_ditty19:
 	sound_ret
 
 Music_MewtwoBattleStadium_Ch4:
-	note_type 12
+	drum_speed 12
 	rest 16
 	toggle_noise 1
 	drum_note 7, 15

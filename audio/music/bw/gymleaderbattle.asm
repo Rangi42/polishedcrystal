@@ -2170,7 +2170,7 @@ GymLeaderBattleBWChannel3_Loop:
 	sound_ret
 
 GymLeaderBattleBW_Channel4:
-	note_type 12
+	drum_speed 12
 	toggle_noise 5
 	drum_note 1, 4
 	drum_note 1, 4

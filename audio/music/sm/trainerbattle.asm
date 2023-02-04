@@ -804,7 +804,7 @@ Music_TrainerBattleSM_Ch3_loop_7:
 
 Music_TrainerBattleSM_Ch4:
 	toggle_noise 3
-	note_type 6
+	drum_speed 6
 	rest 16
 	rest 12
 	drum_note 1, 4

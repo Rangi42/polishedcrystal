@@ -1249,7 +1249,7 @@ Music_BattleFactoryRSE_Ch3_branch_3:
 
 Music_BattleFactoryRSE_Ch4:
 	toggle_noise 4
-	note_type 6
+	drum_speed 6
 Music_BattleFactoryRSE_Ch4_loop:
 	drum_note 4, 8
 	sound_jump Music_BattleFactoryRSE_Ch4_loop

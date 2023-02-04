@@ -1154,7 +1154,7 @@ Music_MountChimneyRSE_Ch3_branch_2:
 
 Music_MountChimneyRSE_Ch4:
 	toggle_noise 4
-	note_type 6
+	drum_speed 6
 	drum_note 12, 4
 	drum_note 5, 2
 	drum_note 2, 1

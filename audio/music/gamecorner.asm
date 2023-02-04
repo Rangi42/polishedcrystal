@@ -658,12 +658,12 @@ Music_GameCorner_branch_ee03f:
 
 Music_GameCorner_Ch4:
 	toggle_noise 3
-	note_type 12
-	note_type 8
+	drum_speed 12
+	drum_speed 8
 	drum_note 3, 1
 	drum_note 3, 1
 	drum_note 3, 1
-	note_type 12
+	drum_speed 12
 	drum_note 3, 1
 	drum_note 3, 1
 	drum_note 3, 2

@@ -1080,7 +1080,7 @@ Music_ZinniaBattleORAS_Ch3_branch_2:
 
 Music_ZinniaBattleORAS_Ch4:
 	toggle_noise 3
-	note_type 3
+	drum_speed 3
 	drum_note 1, 16
 	rest 16
 	drum_note 12, 8
@@ -1093,7 +1093,7 @@ Music_ZinniaBattleORAS_Ch4_loop_1:
 	drum_note 2, 2
 	sound_loop 6, Music_ZinniaBattleORAS_Ch4_loop_1
 	drum_note 2, 2
-	note_type 3
+	drum_speed 3
 	drum_note 3, 1
 	drum_note 3, 1
 	drum_note 3, 1
@@ -1102,7 +1102,7 @@ Music_ZinniaBattleORAS_Ch4_loop_1:
 	drum_note 3, 1
 	drum_note 3, 1
 	drum_note 3, 1
-	note_type 12
+	drum_speed 12
 	drum_note 12, 2
 	sound_call Music_ZinniaBattleORAS_Ch4_branch_1
 	drum_note 4, 1
@@ -1180,7 +1180,7 @@ Music_ZinniaBattleORAS_Ch4_branch_1:
 	sound_ret
 
 Music_ZinniaBattleORAS_Ch4_branch_2:
-	note_type 3
+	drum_speed 3
 	drum_note 4, 2
 	drum_note 4, 2
 	drum_note 4, 2
@@ -1193,5 +1193,5 @@ Music_ZinniaBattleORAS_Ch4_branch_2:
 	drum_note 3, 1
 	drum_note 3, 1
 	drum_note 3, 1
-	note_type 12
+	drum_speed 12
 	sound_ret

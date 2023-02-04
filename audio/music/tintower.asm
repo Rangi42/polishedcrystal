@@ -261,7 +261,7 @@ Music_TinTower_branch_f68fb:
 
 Music_TinTower_Ch4:
 	toggle_noise 0
-	note_type 12
+	drum_speed 12
 Music_TinTower_branch_f694c:
 	stereo_panning FALSE, TRUE
 	drum_note 8, 2

@@ -79,7 +79,7 @@ Music_Mom_branch_f6c2e:
 
 Music_Mom_Ch4:
 	toggle_noise 3
-	note_type 12
+	drum_speed 12
 	rest 6
 Music_Mom_branch_f6c56:
 	drum_note 4, 1

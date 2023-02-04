@@ -403,7 +403,7 @@ Music_GymLeaderBattleSwSh_Ch3_DisadvantagePhase_Loop_4:
 	sound_jump Music_GymLeaderBattleSwSh_Ch3_DisadvantagePhase_Loop
 
 Music_GymLeaderBattleSwSh_Ch4:
-	note_type 12
+	drum_speed 12
 	toggle_noise 4
 	stereo_panning TRUE, TRUE
 	sound_jump_if COND_FINAL_MON, Music_GymLeaderBattleSwSh_Ch4_EnterLastPokemonPhase

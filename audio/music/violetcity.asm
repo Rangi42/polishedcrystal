@@ -708,7 +708,7 @@ Music_VioletCity_branch_f0311:
 
 Music_VioletCity_Ch4:
 	toggle_noise 3
-	note_type 12
+	drum_speed 12
 	drum_note 4, 2
 	drum_note 3, 2
 	drum_note 4, 1

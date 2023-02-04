@@ -138,12 +138,12 @@ Music_HallOfFame_branch_f0631:
 
 Music_HallOfFame_Ch4:
 	toggle_noise 5
-	note_type 12
+	drum_speed 12
 	rest 16
 	rest 16
 	rest 16
 	rest 16
-	note_type 6
+	drum_speed 6
 Music_HallOfFame_branch_f0677:
 	stereo_panning FALSE, TRUE
 	drum_note 11, 4
