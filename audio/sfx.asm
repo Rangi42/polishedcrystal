@@ -2479,7 +2479,7 @@ Sfx_Fanfare2:
 
 .Ch5:
 	toggle_sfx
-	sfxpriorityon
+	sfx_priority_on
 	tempo 256
 	volume 7, 7
 	pitch_offset 1
@@ -2634,7 +2634,7 @@ Sfx_Fanfare:
 
 .Ch5:
 	toggle_sfx
-	sfxpriorityon
+	sfx_priority_on
 	tempo 256
 	volume 7, 7
 	duty_cycle 3

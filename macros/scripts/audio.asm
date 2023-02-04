@@ -189,9 +189,9 @@ MACRO new_song
 	bigdw \1 ; id
 ENDM
 
-	const sfxpriorityon_cmd
-MACRO sfxpriorityon
-	db sfxpriorityon_cmd
+	const sfx_priority_on_cmd ; $ec
+MACRO sfx_priority_on
+	db sfx_priority_on_cmd
 ENDM
 
 	const sfxpriorityoff_cmd
