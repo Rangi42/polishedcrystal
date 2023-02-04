@@ -265,9 +265,9 @@ MACRO noisesampleset
 	db \1 ; noise
 ENDM
 
-	const setcondition_cmd
-MACRO setcondition
-	db setcondition_cmd
+	const set_condition_cmd ; $fa
+MACRO set_condition
+	db set_condition_cmd
 	db \1 ; condition
 ENDM
 
