@@ -211,10 +211,12 @@ MACRO stereo_panning
 	dn %1111 * (1 && \1), %1111 * (1 && \2) ; left enable, right enable
 ENDM
 
-	const sfxtogglenoise_cmd
-MACRO sfxtogglenoise
-	db sfxtogglenoise_cmd
-	db \1 ; id
+	const sfx_toggle_noise_cmd ; $f0
+MACRO sfx_toggle_noise
+	db sfx_toggle_noise_cmd
+	if _NARG > 0
+		db \1 ; drum kit
+	endc
 ENDM
 
 	const music0xf1_cmd

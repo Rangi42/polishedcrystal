@@ -2058,7 +2058,7 @@ Sfx_DexFanfare5079:
 
 .Ch8:
 	toggle_sfx
-	sfxtogglenoise $4
+	sfx_toggle_noise 4
 	note_type 12
 	note C_, 12
 	endchannel
@@ -2127,7 +2127,7 @@ Sfx_KeyItem:
 
 .Ch8:
 	toggle_sfx
-	sfxtogglenoise $4
+	sfx_toggle_noise 4
 	note_type 12
 	note C_, 16
 	endchannel
@@ -2209,7 +2209,7 @@ Sfx_DexFanfare2049:
 
 .Ch8:
 	toggle_sfx
-	sfxtogglenoise $4
+	sfx_toggle_noise 4
 	note_type 12
 	note C_, 16
 	note __, 16
@@ -2287,7 +2287,7 @@ Sfx_Item:
 
 .Ch8:
 	toggle_sfx
-	sfxtogglenoise $4
+	sfx_toggle_noise 4
 	note_type 12
 	note C_, 16
 	note __, 16
@@ -2368,7 +2368,7 @@ Sfx_CaughtMon:
 
 .Ch8:
 	toggle_sfx
-	sfxtogglenoise $4
+	sfx_toggle_noise 4
 	note_type 12
 	note C_, 16
 	note __, 16
@@ -2462,7 +2462,7 @@ Sfx_DexFanfare80109:
 
 .Ch8:
 	toggle_sfx
-	sfxtogglenoise $4
+	sfx_toggle_noise 4
 	note_type 12
 	note C_, 16
 	note __, 16
@@ -2617,7 +2617,7 @@ UnknownSfx:
 
 .Ch8:
 	toggle_sfx
-	sfxtogglenoise $4
+	sfx_toggle_noise 4
 	note_type 12
 	note C_, 16
 	note __, 16
@@ -2800,7 +2800,7 @@ Sfx_RegisterPhoneNumber:
 
 .Ch8:
 	toggle_sfx
-	sfxtogglenoise $4
+	sfx_toggle_noise 4
 	note_type 12
 	note C_, 2
 	note __, 16
@@ -2950,7 +2950,7 @@ Sfx_GetEggFromDayCareMan:
 
 .Ch8:
 	toggle_sfx
-	sfxtogglenoise $4
+	sfx_toggle_noise 4
 	note_type 8
 	note __, 2
 	note_type 12
@@ -3057,7 +3057,7 @@ Sfx_MoveDeleted:
 
 .Ch8:
 	toggle_sfx
-	sfxtogglenoise $3
+	sfx_toggle_noise 3
 	note_type 12
 	note F_, 8
 	note __, 16
@@ -3167,7 +3167,7 @@ Sfx_2ndPlace:
 
 .Ch8:
 	toggle_sfx
-	sfxtogglenoise $3
+	sfx_toggle_noise 3
 	note_type 8
 .branch8:
 	note C#, 1
@@ -3273,7 +3273,7 @@ Sfx_1stPlace:
 
 .Ch8:
 	toggle_sfx
-	sfxtogglenoise $4
+	sfx_toggle_noise 4
 	note_type 6
 	note D_, 4
 	note D_, 4
@@ -3410,7 +3410,7 @@ Sfx_ChooseACard:
 
 .Ch8:
 	toggle_sfx
-	sfxtogglenoise $4
+	sfx_toggle_noise 4
 	note_type 6
 	note D_, 2
 	note C#, 2
@@ -3517,7 +3517,7 @@ Sfx_GetTm:
 
 .Ch8:
 	toggle_sfx
-	sfxtogglenoise $4
+	sfx_toggle_noise 4
 	note_type 6
 	note D_, 4
 	note C#, 2
@@ -3670,7 +3670,7 @@ Sfx_GetBadge:
 
 .Ch8:
 	toggle_sfx
-	sfxtogglenoise $4
+	sfx_toggle_noise 4
 	note_type 6
 .branch8:
 	note B_, 12
@@ -3788,7 +3788,7 @@ Sfx_QuitSlots:
 
 .Ch8:
 	toggle_sfx
-	sfxtogglenoise $3
+	sfx_toggle_noise 3
 	note_type 8
 	note D#, 6
 	note D_, 4
@@ -4883,7 +4883,7 @@ Sfx_DexFanfareLessThan20:
 
 .Ch8:
 	toggle_sfx
-	sfxtogglenoise $4
+	sfx_toggle_noise 4
 	note_type 12
 	note C#, 6
 	note __, 16
@@ -4985,7 +4985,7 @@ Sfx_DexFanfare140169:
 
 .Ch8:
 	toggle_sfx
-	sfxtogglenoise $4
+	sfx_toggle_noise 4
 	note_type 12
 	note C_, 4
 .branch8:
@@ -5089,7 +5089,7 @@ Sfx_DexFanfare170199:
 
 .Ch8:
 	toggle_sfx
-	sfxtogglenoise $4
+	sfx_toggle_noise 4
 	note_type 8
 	note D_, 2
 	note D_, 2
@@ -5209,7 +5209,7 @@ Sfx_DexFanfare200229:
 
 .Ch8:
 	toggle_sfx
-	sfxtogglenoise $4
+	sfx_toggle_noise 4
 	note_type 8
 	note C#, 1
 	note C#, 1
@@ -5372,7 +5372,7 @@ Sfx_DexFanfare230Plus:
 
 .Ch8:
 	toggle_sfx
-	sfxtogglenoise $4
+	sfx_toggle_noise 4
 	note_type 8
 	note D_, 2
 	note D_, 2
