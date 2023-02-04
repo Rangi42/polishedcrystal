@@ -107,7 +107,8 @@ EusinesHouseGrampsScript:
 	waitbutton
 	writetext ReceivedAbraDollText
 	playsound SFX_ITEM
-	waitsfx
+	pause 60
+	waitbutton
 	writetext AbraDollSentHomeText
 	setevent EVENT_DECO_ABRA_DOLL
 	waitbutton
@@ -115,8 +116,8 @@ EusinesHouseGrampsScript:
 	end
 
 ReceivedAbraDollText:
-	text "Received Abra"
-	line "Doll!"
+	text "<PLAYER> received"
+	line "Abra Doll."
 	done
 
 AbraDollSentHomeText:
