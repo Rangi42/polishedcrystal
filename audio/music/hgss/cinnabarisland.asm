@@ -8,11 +8,11 @@ Music_CinnabarIslandHGSS:
 
 Music_CinnabarIslandHGSS_Ch1:
 	tempo $118
-	volume $77
-	dutycycle 2
-	notetype $C, $B6
+	volume 7, 7
+	duty_cycle 2
+	note_type 12, 11, 6
 Music_CinnabarIslandHGSS_Loop1:
-	note __, 4
+	rest 4
 	octave 3
 	note D_, 4
 	note E_, 6
@@ -75,11 +75,11 @@ Music_CinnabarIslandHGSS_Loop1:
 	note G_, 8
 	note F#, 4
 	note E_, 4
-	jumpchannel Music_CinnabarIslandHGSS_Loop1
+	sound_jump Music_CinnabarIslandHGSS_Loop1
 
 Music_CinnabarIslandHGSS_Ch2:
-	dutycycle 2
-	notetype $C, $C6
+	duty_cycle 2
+	note_type 12, 12, 6
 Music_CinnabarIslandHGSS_Loop2:
 	octave 3
 	note G_, 6
@@ -156,4 +156,4 @@ Music_CinnabarIslandHGSS_Loop2:
 	octave 3
 	note B_, 2
 	note A_, 6
-	jumpchannel Music_CinnabarIslandHGSS_Loop2
+	sound_jump Music_CinnabarIslandHGSS_Loop2

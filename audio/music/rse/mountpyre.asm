@@ -12,79 +12,79 @@ Music_MountPyreRSE:
 
 Music_MountPyreRSE_Ch1:
 	tempo 212
-	volume $77
-	dutycycle 1
-	tone $0002
-	vibrato $10, $22
-	notetype $6, $63
-	note __, 5
+	volume 7, 7
+	duty_cycle 1
+	pitch_offset 2
+	vibrato 16, 2, 2
+	note_type 6, 6, 3
+	rest 5
 Music_MountPyreRSE_Ch1_loop_main:
 Music_MountPyreRSE_Ch1_loop_1:
 	octave 3
-	intensity $42
+	volume_envelope 4, 2
 	note C_, 1
-	intensity $72
+	volume_envelope 7, 2
 	note D_, 4
 	note G#, 4
 	note D_, 7
-	loopchannel 16, Music_MountPyreRSE_Ch1_loop_1
+	sound_loop 16, Music_MountPyreRSE_Ch1_loop_1
 Music_MountPyreRSE_Ch1_loop_2:
-	intensity $42
+	volume_envelope 4, 2
 	note D#, 1
-	intensity $72
+	volume_envelope 7, 2
 	note F_, 4
 	note B_, 4
 	note F_, 7
-	loopchannel 16, Music_MountPyreRSE_Ch1_loop_2
-	intensity $a3
-	note __, 7
+	sound_loop 16, Music_MountPyreRSE_Ch1_loop_2
+	volume_envelope 10, 3
+	rest 7
 Music_MountPyreRSE_Ch1_loop_3:
 	octave 3
 	note F#, 1
-	note __, 1
-	loopchannel 7, Music_MountPyreRSE_Ch1_loop_3
+	rest 1
+	sound_loop 7, Music_MountPyreRSE_Ch1_loop_3
 	note F#, 1
 	note G#, 1
 	note F#, 1
-	note __, 1
+	rest 1
 	note F_, 1
-	note __, 1
+	rest 1
 	note D#, 1
-	note __, 1
+	rest 1
 	note D_, 2
 	note D#, 2
-	intensity $a0
+	volume_envelope 10, 0
 	note F_, 16
-	intensity $a7
+	volume_envelope 10, 7
 	note F_, 12
-	intensity $a3
+	volume_envelope 10, 3
 	octave 4
 	note C_, 2
 	octave 3
 	note A_, 2
-	note __, 2
+	rest 2
 	note F#, 1
-	note __, 1
+	rest 1
 	note D#, 1
-	note __, 1
+	rest 1
 	note F#, 1
-	note __, 1
+	rest 1
 	octave 2
 	note A_, 1
-	note __, 1
+	rest 1
 	octave 3
 	note C_, 1
-	note __, 1
+	rest 1
 	octave 2
 	note F#, 1
-	note __, 1
+	rest 1
 	note A_, 1
-	note __, 1
+	rest 1
 	note D#, 1
-	note __, 1
+	rest 1
 	note F#, 1
-	note __, 1
-	notetype $8, $a3
+	rest 1
+	note_type 8, 10, 3
 	note A_, 1
 	octave 3
 	note C_, 1
@@ -93,72 +93,72 @@ Music_MountPyreRSE_Ch1_loop_3:
 	octave 4
 	note C_, 1
 	note F#, 4
-	notetype $6, $a3
-	note __, 16
-	note __, 15
-	jumpchannel Music_MountPyreRSE_Ch1_loop_main
+	note_type 6, 10, 3
+	rest 16
+	rest 15
+	sound_jump Music_MountPyreRSE_Ch1_loop_main
 
 Music_MountPyreRSE_Ch2:
-	dutycycle 2
-	vibrato $1c, $12
-	notetype $c, $a3
-	note __, 1
+	duty_cycle 2
+	vibrato 28, 1, 2
+	note_type 12, 10, 3
+	rest 1
 Music_MountPyreRSE_Ch2_loop_main:
-	dutycycle 2
-	callchannel Music_MountPyreRSE_Ch2_branch_1
-	callchannel Music_MountPyreRSE_Ch2_branch_1
-	callchannel Music_MountPyreRSE_Ch2_branch_2
-	callchannel Music_MountPyreRSE_Ch2_branch_2
-	notetype $6, $a3
-	note __, 10
+	duty_cycle 2
+	sound_call Music_MountPyreRSE_Ch2_branch_1
+	sound_call Music_MountPyreRSE_Ch2_branch_1
+	sound_call Music_MountPyreRSE_Ch2_branch_2
+	sound_call Music_MountPyreRSE_Ch2_branch_2
+	note_type 6, 10, 3
+	rest 10
 Music_MountPyreRSE_Ch2_loop_1:
-	dutycycle 0
+	duty_cycle 0
 	octave 3
 	note A#, 1
-	note __, 1
-	loopchannel 7, Music_MountPyreRSE_Ch2_loop_1
+	rest 1
+	sound_loop 7, Music_MountPyreRSE_Ch2_loop_1
 	note A#, 1
 	note B_, 1
 	note A#, 1
-	note __, 1
+	rest 1
 	note G#, 1
-	note __, 1
+	rest 1
 	note F#, 1
-	note __, 1
+	rest 1
 	note F_, 2
 	note F#, 2
-	intensity $a0
+	volume_envelope 10, 0
 	note G#, 16
-	intensity $a7
+	volume_envelope 10, 7
 	note G#, 12
-	intensity $a3
+	volume_envelope 10, 3
 	octave 4
 	note D#, 2
 	note C_, 2
-	note __, 2
+	rest 2
 	octave 3
 	note A_, 1
-	note __, 1
+	rest 1
 	note F#, 1
-	note __, 1
+	rest 1
 	note A_, 1
-	note __, 1
+	rest 1
 	note C_, 1
-	note __, 1
+	rest 1
 	note D#, 1
-	note __, 1
+	rest 1
 	octave 2
 	note A_, 1
-	note __, 1
+	rest 1
 	octave 3
 	note C_, 1
-	note __, 1
+	rest 1
 	octave 2
 	note F#, 1
-	note __, 1
+	rest 1
 	note A_, 1
-	note __, 1
-	notetype $8, $a3
+	rest 1
+	note_type 8, 10, 3
 	octave 3
 	note C_, 1
 	note D#, 1
@@ -167,168 +167,168 @@ Music_MountPyreRSE_Ch2_loop_1:
 	note C_, 1
 	note D#, 1
 	note A#, 4
-	notetype $c, $a3
-	note __, 14
-	jumpchannel Music_MountPyreRSE_Ch2_loop_main
+	note_type 12, 10, 3
+	rest 14
+	sound_jump Music_MountPyreRSE_Ch2_loop_main
 
 Music_MountPyreRSE_Ch2_branch_1:
 	octave 3
-	intensity $a3
+	volume_envelope 10, 3
 	note G_, 2
-	intensity $63
+	volume_envelope 6, 3
 	note G_, 2
-	intensity $a3
+	volume_envelope 10, 3
 	note D#, 2
-	intensity $63
+	volume_envelope 6, 3
 	note D#, 2
-	intensity $a3
+	volume_envelope 10, 3
 	note G_, 2
-	intensity $63
+	volume_envelope 6, 3
 	note G_, 2
-	intensity $a3
+	volume_envelope 10, 3
 	note G#, 2
-	intensity $63
+	volume_envelope 6, 3
 	note G#, 2
-	intensity $a3
+	volume_envelope 10, 3
 	note G_, 2
-	intensity $63
+	volume_envelope 6, 3
 	note G_, 2
-	intensity $a3
+	volume_envelope 10, 3
 	note D#, 2
-	intensity $63
+	volume_envelope 6, 3
 	note D#, 2
-	intensity $a3
+	volume_envelope 10, 3
 	note D_, 2
-	intensity $63
+	volume_envelope 6, 3
 	note D_, 2
-	intensity $a3
+	volume_envelope 10, 3
 	note C_, 2
-	intensity $63
+	volume_envelope 6, 3
 	note C_, 2
-	intensity $a3
+	volume_envelope 10, 3
 	octave 2
 	note B_, 2
-	intensity $63
+	volume_envelope 6, 3
 	note B_, 2
-	intensity $a3
+	volume_envelope 10, 3
 	note G_, 2
-	intensity $63
+	volume_envelope 6, 3
 	note G_, 2
-	intensity $a3
+	volume_envelope 10, 3
 	note B_, 2
-	intensity $63
+	volume_envelope 6, 3
 	note B_, 2
 	octave 3
-	intensity $a3
+	volume_envelope 10, 3
 	note C_, 2
-	intensity $63
+	volume_envelope 6, 3
 	note C_, 2
-	intensity $a3
+	volume_envelope 10, 3
 	note D_, 2
-	intensity $63
+	volume_envelope 6, 3
 	note D_, 2
-	intensity $a3
+	volume_envelope 10, 3
 	note D#, 2
-	intensity $63
+	volume_envelope 6, 3
 	note D#, 2
-	intensity $a3
+	volume_envelope 10, 3
 	note D_, 2
-	intensity $63
+	volume_envelope 6, 3
 	note D_, 2
-	intensity $a3
+	volume_envelope 10, 3
 	note G#, 2
-	intensity $63
+	volume_envelope 6, 3
 	note G#, 2
-	endchannel
+	sound_ret
 
 Music_MountPyreRSE_Ch2_branch_2:
 	octave 3
-	intensity $a3
+	volume_envelope 10, 3
 	note A#, 2
-	intensity $63
+	volume_envelope 6, 3
 	note A#, 2
-	intensity $a3
+	volume_envelope 10, 3
 	note F#, 2
-	intensity $63
+	volume_envelope 6, 3
 	note F#, 2
-	intensity $a3
+	volume_envelope 10, 3
 	note A#, 2
-	intensity $63
+	volume_envelope 6, 3
 	note A#, 2
-	intensity $a3
+	volume_envelope 10, 3
 	note B_, 2
-	intensity $63
+	volume_envelope 6, 3
 	note B_, 2
-	intensity $a3
+	volume_envelope 10, 3
 	note A#, 2
-	intensity $63
+	volume_envelope 6, 3
 	note A#, 2
-	intensity $a3
+	volume_envelope 10, 3
 	note F#, 2
-	intensity $63
+	volume_envelope 6, 3
 	note F#, 2
-	intensity $a3
+	volume_envelope 10, 3
 	note F_, 2
-	intensity $63
+	volume_envelope 6, 3
 	note F_, 2
-	intensity $a3
+	volume_envelope 10, 3
 	note D#, 2
-	intensity $63
+	volume_envelope 6, 3
 	note D#, 2
-	intensity $a3
+	volume_envelope 10, 3
 	note D_, 2
-	intensity $63
+	volume_envelope 6, 3
 	note D_, 2
 	octave 2
-	intensity $a3
+	volume_envelope 10, 3
 	note A#, 2
-	intensity $63
+	volume_envelope 6, 3
 	note A#, 2
-	intensity $a3
+	volume_envelope 10, 3
 	octave 3
 	note D_, 2
-	intensity $63
+	volume_envelope 6, 3
 	note D_, 2
-	intensity $a3
+	volume_envelope 10, 3
 	note D#, 2
-	intensity $63
+	volume_envelope 6, 3
 	note D#, 2
-	intensity $a3
+	volume_envelope 10, 3
 	note F_, 2
-	intensity $63
+	volume_envelope 6, 3
 	note F_, 2
-	intensity $a3
+	volume_envelope 10, 3
 	note F#, 2
-	intensity $63
+	volume_envelope 6, 3
 	note F#, 2
-	intensity $a3
+	volume_envelope 10, 3
 	note F_, 2
-	intensity $63
+	volume_envelope 6, 3
 	note F_, 2
-	intensity $a3
+	volume_envelope 10, 3
 	note B_, 2
-	intensity $63
+	volume_envelope 6, 3
 	note B_, 2
-	endchannel
+	sound_ret
 
 Music_MountPyreRSE_Ch3:
-	notetype $6, $24
+	note_type 6, 2, 4
 Music_MountPyreRSE_Ch3_loop_main:
 Music_MountPyreRSE_Ch3_loop_1:
 	octave 2
 	note E_, 1
 	note F#, 1
 	note G_, 14
-	loopchannel 16, Music_MountPyreRSE_Ch3_loop_1
+	sound_loop 16, Music_MountPyreRSE_Ch3_loop_1
 Music_MountPyreRSE_Ch3_loop_2:
 	octave 2
 	note G_, 1
 	note A_, 1
 	note A#, 14
-	loopchannel 16, Music_MountPyreRSE_Ch3_loop_2
+	sound_loop 16, Music_MountPyreRSE_Ch3_loop_2
 	note G_, 1
 	note A_, 1
-	notetype $c, $14
+	note_type 12, 1, 4
 	octave 3
 	note A#, 2
 	octave 2
@@ -351,7 +351,7 @@ Music_MountPyreRSE_Ch3_loop_2:
 	note F_, 1
 	octave 2
 	note A_, 12
-	notetype $8, $14
+	note_type 8, 1, 4
 	note A_, 1
 	octave 3
 	note C_, 1
@@ -359,15 +359,15 @@ Music_MountPyreRSE_Ch3_loop_2:
 	note F#, 1
 	note A_, 1
 	note A#, 4
-	notetype $6, $24
-	note __, 13
-	note __, 13
-	jumpchannel Music_MountPyreRSE_Ch3_loop_main
+	note_type 6, 2, 4
+	rest 13
+	rest 13
+	sound_jump Music_MountPyreRSE_Ch3_loop_main
 
 Music_MountPyreRSE_Ch4:
-	togglenoise $3
-	notetype $c
-	note __, 1
+	toggle_noise 3
+	drum_speed 12
+	rest 1
 ;	note C_, 8
 ;	note C#, 8
 ;	note D_, 8
@@ -382,46 +382,46 @@ Music_MountPyreRSE_Ch4:
 ;	note B_, 8
 Music_MountPyreRSE_Ch4_loop_main:
 Music_MountPyreRSE_Ch4_loop_1:
-	callchannel Music_MountPyreRSE_Ch4_branch_1
-	loopchannel 4, Music_MountPyreRSE_Ch4_loop_1
+	sound_call Music_MountPyreRSE_Ch4_branch_1
+	sound_loop 4, Music_MountPyreRSE_Ch4_loop_1
 Music_MountPyreRSE_Ch4_loop_2:
-	callchannel Music_MountPyreRSE_Ch4_branch_2
-	loopchannel 8, Music_MountPyreRSE_Ch4_loop_2
+	sound_call Music_MountPyreRSE_Ch4_branch_2
+	sound_loop 8, Music_MountPyreRSE_Ch4_loop_2
 Music_MountPyreRSE_Ch4_loop_3:
-	callchannel Music_MountPyreRSE_Ch4_branch_1
-	loopchannel 4, Music_MountPyreRSE_Ch4_loop_3
+	sound_call Music_MountPyreRSE_Ch4_branch_1
+	sound_loop 4, Music_MountPyreRSE_Ch4_loop_3
 Music_MountPyreRSE_Ch4_loop_4:
-	callchannel Music_MountPyreRSE_Ch4_branch_2
-	loopchannel 8, Music_MountPyreRSE_Ch4_loop_4
-	note __, 16
-	note __, 16
-	note __, 16
-	note __, 8
-	note B_, 8
-	jumpchannel Music_MountPyreRSE_Ch4_loop_main
+	sound_call Music_MountPyreRSE_Ch4_branch_2
+	sound_loop 8, Music_MountPyreRSE_Ch4_loop_4
+	rest 16
+	rest 16
+	rest 16
+	rest 8
+	drum_note 12, 8
+	sound_jump Music_MountPyreRSE_Ch4_loop_main
 
 Music_MountPyreRSE_Ch4_branch_1:
-	stereopanning $f0
-	note G#, 2
-	note F#, 2
-	note G#, 2
-	note F#, 2
-	stereopanning $f
-	note G#, 2
-	note F#, 2
-	note G#, 2
-	note F#, 2
-	endchannel
+	stereo_panning TRUE, FALSE
+	drum_note 9, 2
+	drum_note 7, 2
+	drum_note 9, 2
+	drum_note 7, 2
+	stereo_panning FALSE, TRUE
+	drum_note 9, 2
+	drum_note 7, 2
+	drum_note 9, 2
+	drum_note 7, 2
+	sound_ret
 
 Music_MountPyreRSE_Ch4_branch_2:
-	stereopanning $f0
-	note G#, 1
-	note F#, 1
-	note G#, 1
-	note G_, 1
-	stereopanning $f
-	note G#, 1
-	note F#, 1
-	note G#, 1
-	note G_, 1
-	endchannel
+	stereo_panning TRUE, FALSE
+	drum_note 9, 1
+	drum_note 7, 1
+	drum_note 9, 1
+	drum_note 8, 1
+	stereo_panning FALSE, TRUE
+	drum_note 9, 1
+	drum_note 7, 1
+	drum_note 9, 1
+	drum_note 8, 1
+	sound_ret

@@ -10,66 +10,66 @@ Music_Megalovania:
 
 Music_Megalovania_Ch1:
 	tempo $A0
-	volume $77
-	stereopanning $77
+	volume 7, 7
+	stereo_panning TRUE, TRUE
 Music_Megalovania_Ch1_loop:
-	notetype $C, $00
-	note __, 16
-	note __, 16
-	note __, 16
-	note __, 16
-	sound_duty $55
-	intensity $F3
+	note_type 12, 0, 0
+	rest 16
+	rest 16
+	rest 16
+	rest 16
+	duty_cycle_pattern 1, 1, 1, 1
+	volume_envelope 15, 3
 Music_Megalovania_Ch1_loop_1:
 	octave 4
 	note D_, 1
 	note D_, 1
-	callchannel Music_Megalovania_Ch1_ditty_1
+	sound_call Music_Megalovania_Ch1_ditty_1
 	note C_, 1
 	note C_, 1
-	callchannel Music_Megalovania_Ch1_ditty_1
+	sound_call Music_Megalovania_Ch1_ditty_1
 	octave 3
 	note B_, 1
 	note B_, 1
-	callchannel Music_Megalovania_Ch1_ditty_1
+	sound_call Music_Megalovania_Ch1_ditty_1
 	octave 3
 	note A#, 1
 	note A#, 1
-	callchannel Music_Megalovania_Ch1_ditty_2
-	loopchannel 2, Music_Megalovania_Ch1_loop_1
-	sound_duty $00
-	intensity $91
-	callchannel Music_Megalovania_Ch1Ch3_ditty_2
+	sound_call Music_Megalovania_Ch1_ditty_2
+	sound_loop 2, Music_Megalovania_Ch1_loop_1
+	duty_cycle_pattern 0, 0, 0, 0
+	volume_envelope 9, 1
+	sound_call Music_Megalovania_Ch1Ch3_ditty_2
 	octave 3
 	note C_, 1
 	note C_, 1
-	intensity $8D
-	vibrato $08, $13
+	volume_envelope 8, -5
+	vibrato 8, 1, 3
 	octave 4
 	note A_, 2
 	note A_, 1
 	note A_, 1
-	note __, 1
+	rest 1
 	note A_, 1
-	note __, 1
+	rest 1
 	note A_, 2
 	note G_, 1
-	note __, 1
+	rest 1
 	note G_, 4
-	note __, 1
+	rest 1
 	note A_, 2
 	note A_, 1
 	note A_, 1
-	note __, 1
+	rest 1
 	note A_, 1
-	note __, 1
+	rest 1
 	note G_, 1
-	note __, 1
+	rest 1
 	note A_, 1
-	note __, 1
+	rest 1
 	octave 5
 	note D_, 1
-	note __, 1
+	rest 1
 	octave 4
 	note A_, 1
 	note G_, 2
@@ -90,20 +90,20 @@ Music_Megalovania_Ch1_loop_1:
 	octave 4
 	note C_, 1
 	note D_, 1
-	note __, 1
+	rest 1
 	note F_, 1
-	note __, 1
-	intensity $6D
-	vibrato $0F, $13
+	rest 1
+	volume_envelope 6, -5
+	vibrato 15, 1, 3
 	octave 5
 	note C_, 8
-	note __, 1
-	sound_duty $5A
-	intensity $F3
-	callchannel Music_Megalovania_Ch1_ditty_3
-	callchannel Music_Megalovania_Ch1_ditty_4
-	callchannel Music_Megalovania_Ch1_ditty_3
-	callchannel Music_Megalovania_Ch1_ditty_4
+	rest 1
+	duty_cycle_pattern 1, 1, 2, 2
+	volume_envelope 15, 3
+	sound_call Music_Megalovania_Ch1_ditty_3
+	sound_call Music_Megalovania_Ch1_ditty_4
+	sound_call Music_Megalovania_Ch1_ditty_3
+	sound_call Music_Megalovania_Ch1_ditty_4
 	octave 2
 	note A#, 1
 	octave 3
@@ -116,30 +116,30 @@ Music_Megalovania_Ch1_loop_1:
 	note D_, 1
 	note F_, 1
 	note D_, 1
-	callchannel Music_Megalovania_Ch1Ch2_ditty_1
-	sound_duty $55
-	intensity $A3
+	sound_call Music_Megalovania_Ch1Ch2_ditty_1
+	duty_cycle_pattern 1, 1, 1, 1
+	volume_envelope 10, 3
 	octave 2
 	note A_, 4
 	octave 3
 	note F_, 4
 	note E_, 4
-	intensity $A1
+	volume_envelope 10, 1
 	octave 2
 	note G_, 2
-	intensity $A6
+	volume_envelope 10, 6
 	note A_, 16
-	note __, 2
-	intensity $A1
+	rest 2
+	volume_envelope 10, 1
 	note A_, 2
-	note __, 2
-	intensity $A3
+	rest 2
+	volume_envelope 10, 3
 	octave 3
 	note G_, 4
 	note F_, 4
-	intensity $A1
+	volume_envelope 10, 1
 	note E_, 2
-	intensity $A3
+	volume_envelope 10, 3
 	note F_, 6
 	note E_, 4
 	note D_, 4
@@ -148,53 +148,53 @@ Music_Megalovania_Ch1_loop_1:
 	note C_, 4
 	octave 2
 	note A_, 4
-	intensity $A1
+	volume_envelope 10, 1
 	octave 3
 	note C_, 2
-	intensity $A3
+	volume_envelope 10, 3
 	note D_, 6
 	note C_, 4
 	octave 2
 	note A_, 4
-	intensity $A1
+	volume_envelope 10, 1
 	octave 3
 	note C_, 2
-	intensity $A3
+	volume_envelope 10, 3
 	octave 2
 	note A_, 6
-	intensity $A1
+	volume_envelope 10, 1
 	note G_, 2
-	note __, 2
+	rest 2
 	note A_, 2
-	note __, 2
+	rest 2
 	octave 3
 	note C_, 2
-	intensity $A4
+	volume_envelope 10, 4
 	octave 2
 	note A_, 10
-	intensity $A3
+	volume_envelope 10, 3
 	note G_, 6
-	note __, 2
+	rest 2
 	note A_, 4
 	octave 3
 	note F_, 4
 	note E_, 4
-	intensity $A1
+	volume_envelope 10, 1
 	octave 2
 	note G_, 2
-	intensity $A5
+	volume_envelope 10, 5
 	note A_, 14
-	note __, 4
-	intensity $A1
+	rest 4
+	volume_envelope 10, 1
 	note A_, 2
-	note __, 2
-	intensity $A3
+	rest 2
+	volume_envelope 10, 3
 	octave 3
 	note G_, 4
 	note F_, 4
-	intensity $A1
+	volume_envelope 10, 1
 	note E_, 2
-	intensity $A3
+	volume_envelope 10, 3
 	note F_, 6
 	note E_, 4
 	note D_, 4
@@ -209,75 +209,75 @@ Music_Megalovania_Ch1_loop_1:
 	note C_, 4
 	octave 2
 	note A_, 4
-	intensity $A1
+	volume_envelope 10, 1
 	octave 3
 	note C_, 2
-	note __, 1
+	rest 1
 	note C_, 1
-	notetype $9, $A5
+	note_type 9, 10, 5
 	note D_, 9
-	notetype $3, $A1
+	note_type 3, 10, 1
 	note A_, 1
 	note A#, 1
 	note B_, 1
 	octave 4
 	note C_, 1
 	note C#, 1
-	notetype $C, $A6
+	note_type 12, 10, 6
 	note D_, 8
-	sound_duty $00
-	vibrato $00, $13
-	callchannel Music_Megalovania_Ch1_ditty_5
-	intensity $3F
+	duty_cycle_pattern 0, 0, 0, 0
+	vibrato 0, 1, 3
+	sound_call Music_Megalovania_Ch1_ditty_5
+	volume_envelope 3, -7
 	note F_, 4
-	intensity $88
+	volume_envelope 8, 8
 	note F_, 12
-	intensity $87
+	volume_envelope 8, 7
 	note F_, 12
-	note __, 4
-	callchannel Music_Megalovania_Ch1_ditty_5
-	sound_duty $55
-	intensity $A1
-	vibrato $0F, $13
+	rest 4
+	sound_call Music_Megalovania_Ch1_ditty_5
+	duty_cycle_pattern 1, 1, 1, 1
+	volume_envelope 10, 1
+	vibrato 15, 1, 3
 	octave 3
 	note D_, 1
 	note D_, 1
-	note __, 14
+	rest 14
 	note C_, 1
 	note C_, 1
-	note __, 14
+	rest 14
 	octave 2
 	note B_, 1
 	note B_, 1
-	note __, 14
+	rest 14
 	note A#, 1
 	note A#, 1
-	note __, 14
-	intensity $F2
+	rest 14
+	volume_envelope 15, 2
 	octave 3
 	note D_, 1
 	note D_, 1
-	callchannel Music_Megalovania_Ch1Ch3_ditty_1
+	sound_call Music_Megalovania_Ch1Ch3_ditty_1
 	note C_, 1
 	note C_, 1
-	callchannel Music_Megalovania_Ch1Ch3_ditty_1
-	note __, 2
+	sound_call Music_Megalovania_Ch1Ch3_ditty_1
+	rest 2
 	octave 4
 	note F_, 1
-	note __, 1
+	rest 1
 	note E_, 1
-	note __, 2
+	rest 2
 	note C_, 1
-	note __, 1
+	rest 1
 	note E_, 1
-	note __, 1
+	rest 1
 	note D_, 2
 	octave 3
 	note G_, 1
 	note A_, 1
 	octave 4
 	note C_, 1
-	note __, 1
+	rest 1
 	note D_, 1
 	note A_, 1
 	note D_, 1
@@ -285,9 +285,9 @@ Music_Megalovania_Ch1_loop_1:
 	note A_, 1
 	note F_, 1
 	note C_, 1
-	note __, 1
+	rest 1
 	note G_, 1
-	note __, 1
+	rest 1
 	note A_, 2
 	octave 3
 	note A_, 1
@@ -300,7 +300,7 @@ Music_Megalovania_Ch1_loop_2:
 	octave 3
 	note A_, 1
 	octave 4
-	loopchannel 5, Music_Megalovania_Ch1_loop_2
+	sound_loop 5, Music_Megalovania_Ch1_loop_2
 	note C_, 1
 Music_Megalovania_Ch1_loop_3:
 	note E_, 1
@@ -308,7 +308,7 @@ Music_Megalovania_Ch1_loop_3:
 	octave 3
 	note A_, 1
 	octave 4
-	loopchannel 5, Music_Megalovania_Ch1_loop_3
+	sound_loop 5, Music_Megalovania_Ch1_loop_3
 	note G_, 1
 	note A_, 1
 	note F_, 1
@@ -334,26 +334,26 @@ Music_Megalovania_Ch1_loop_3:
 	note A_, 1
 	octave 4
 	note C_, 1
-	notetype $A, $F1
+	note_type 10, 15, 1
 	note D_, 1
-	notetype $6, $F1
-	note __, 1
-	notetype $A, $F1
+	note_type 6, 15, 1
+	rest 1
+	note_type 10, 15, 1
 	note D_, 1
-	notetype $6, $F1
-	note __, 1
-	notetype $A, $F1
+	note_type 6, 15, 1
+	rest 1
+	note_type 10, 15, 1
 	note D_, 1
-	notetype $6, $F1
-	note __, 1
-	intensity $F2
+	note_type 6, 15, 1
+	rest 1
+	volume_envelope 15, 2
 	note A_, 2
-	note __, 2
+	rest 2
 	note G_, 2
 	note A_, 2
-	note __, 2
+	rest 2
 	note G_, 2
-	note __, 2
+	rest 2
 	octave 5
 	note C_, 4
 	octave 4
@@ -362,81 +362,81 @@ Music_Megalovania_Ch1_loop_3:
 	note C_, 2
 	octave 3
 	note A_, 2
-	callchannel Music_Megalovania_Ch1_ditty_6
+	sound_call Music_Megalovania_Ch1_ditty_6
 	note F_, 4
 	octave 4
 	note D_, 2
-	callchannel Music_Megalovania_Ch1_ditty_7
+	sound_call Music_Megalovania_Ch1_ditty_7
 	note G_, 2
-	callchannel Music_Megalovania_Ch1_ditty_6
+	sound_call Music_Megalovania_Ch1_ditty_6
 	note A_, 2
 	octave 4
 	note D_, 2
 	octave 3
 	note A_, 2
 	octave 4
-	callchannel Music_Megalovania_Ch1_ditty_7
-	note __, 4
+	sound_call Music_Megalovania_Ch1_ditty_7
+	rest 4
 	note D_, 2
-	note __, 2
+	rest 2
 	note F_, 2
-	note __, 2
+	rest 2
 	note A_, 2
-	note __, 2
-	intensity $F1
+	rest 2
+	volume_envelope 15, 1
 	octave 4
 Music_Megalovania_Ch1_loop3:
 	note D_, 1
 	note D#, 1
-	loopchannel 4, Music_Megalovania_Ch1_loop3
-	intensity $F2
+	sound_loop 4, Music_Megalovania_Ch1_loop3
+	volume_envelope 15, 2
 	octave 3
 	note A_, 6
-	note __, 2
+	rest 2
 	note F_, 4
 	note G_, 4
 	note A_, 6
-	note __, 2
+	rest 2
 	note E_, 4
 	note D_, 4
 	note C_, 4
 	note E_, 4
-	jumpchannel Music_Megalovania_Ch1_loop
+	sound_jump Music_Megalovania_Ch1_loop
 
 Music_Megalovania_Ch1_ditty_1:
 	octave 5
 	note D_, 1
-	note __, 1
+	rest 1
 	octave 4
 	note A_, 1
-	note __, 2
+	rest 2
 	note G#, 1
-	note __, 1
+	rest 1
 	note G_, 1
-	note __, 1
+	rest 1
 	note F_, 2
 	note D_, 1
 	note F_, 1
 	note G_, 1
-	endchannel
+	sound_ret
 
 Music_Megalovania_Ch1_ditty_2:
 	octave 5
 	note D_, 1
-	note __, 1
+	rest 1
 	octave 4
 	note A_, 1
-	note __, 1
+	rest 1
 	note G#, 1
-	note __, 1
+	rest 1
 	note F_, 1
-	note __, 1
+	rest 1
 	note C_, 1
 	note G_, 2
 	note D_, 1
 	note F_, 1
 	note G_, 1
-	endchannel
+	sound_ret
 
 Music_Megalovania_Ch1_ditty_3:
 	octave 2
@@ -487,7 +487,7 @@ Music_Megalovania_Ch1_ditty_3:
 	note C#, 1
 	note E_, 1
 	note C#, 1
-	endchannel
+	sound_ret
 
 Music_Megalovania_Ch1_ditty_4:
 	note D_, 1
@@ -498,7 +498,7 @@ Music_Megalovania_Ch1_ditty_4:
 	note F_, 1
 	note A_, 1
 	note F_, 1
-	note __, 1
+	rest 1
 	note F_, 1
 	note D_, 1
 	octave 2
@@ -512,7 +512,7 @@ Music_Megalovania_Ch1_ditty_4:
 	octave 3
 	note F_, 1
 	note D_, 1
-	note __, 1
+	rest 1
 	octave 2
 	note B_, 1
 	octave 3
@@ -522,7 +522,7 @@ Music_Megalovania_Ch1_ditty_4:
 	note B_, 1
 	octave 3
 	note D_, 1
-	note __, 1
+	rest 1
 	note F_, 1
 	note E_, 1
 	note D_, 1
@@ -532,25 +532,25 @@ Music_Megalovania_Ch1_ditty_4:
 	note D_, 1
 	note D_, 1
 	note D_, 1
-	endchannel
+	sound_ret
 
 Music_Megalovania_Ch1_ditty_5:
-	intensity $3F
+	volume_envelope 3, -7
 	octave 1
 	note A#, 4
-	intensity $88
+	volume_envelope 8, 8
 	note A#, 8
-	intensity $3F
+	volume_envelope 3, -7
 	octave 2
 	note F_, 4
 	note E_, 4
-	intensity $88
+	volume_envelope 8, 8
 	note E_, 4
-	intensity $3F
+	volume_envelope 3, -7
 	note D_, 4
-	intensity $88
+	volume_envelope 8, 8
 	note D_, 4
-	endchannel
+	sound_ret
 
 Music_Megalovania_Ch1_ditty_6:
 	octave 4
@@ -560,8 +560,8 @@ Music_Megalovania_Ch1_ditty_6:
 	note D_, 2
 	octave 3
 	note A_, 2
-	note __, 2
-	endchannel
+	rest 2
+	sound_ret
 
 Music_Megalovania_Ch1_ditty_7:
 	note F_, 2
@@ -573,11 +573,11 @@ Music_Megalovania_Ch1_ditty_7:
 	note D_, 2
 	octave 3
 	note A_, 2
-	endchannel
+	sound_ret
 
 Music_Megalovania_Ch1Ch2_ditty_1:
-	sound_duty $00
-	intensity $F1
+	duty_cycle_pattern 0, 0, 0, 0
+	volume_envelope 15, 1
 	octave 4
 	note F_, 1
 	note D_, 1
@@ -587,23 +587,23 @@ Music_Megalovania_Ch1Ch2_ditty_1:
 	note G_, 1
 	note F_, 1
 	note D_, 1
-	notetype $6, $F1
+	note_type 6, 15, 1
 	note G#, 1
 	note G_, 1
 	note E_, 1
 	note C#, 1
-	intensity $F3
+	volume_envelope 15, 3
 	note F_, 4
-	intensity $F4
+	volume_envelope 15, 4
 	note G_, 16
-	note __, 2
-	intensity $F3
+	rest 2
+	volume_envelope 15, 3
 	note G#, 4
-	intensity $F1
+	volume_envelope 15, 1
 	note A_, 2
 	octave 5
 	note C_, 2
-	note __, 2
+	rest 2
 	octave 4
 	note A_, 2
 	note G#, 2
@@ -611,44 +611,44 @@ Music_Megalovania_Ch1Ch2_ditty_1:
 	note F_, 2
 	note D_, 2
 	note E_, 2
-	intensity $F3
+	volume_envelope 15, 3
 	note F_, 4
 	note G_, 4
 	note A_, 4
 	octave 5
 	note C_, 4
 	note C#, 4
-	intensity $F1
+	volume_envelope 15, 1
 	octave 4
 	note G#, 2
-	note __, 2
+	rest 2
 	note G#, 2
 	note G_, 2
 	note F_, 2
-	intensity $F4
+	volume_envelope 15, 4
 	note G_, 16
-	note __, 2
-	intensity $F3
+	rest 2
+	volume_envelope 15, 3
 	octave 3
 	note A#, 2
-	note __, 2
+	rest 2
 	octave 4
 Music_Megalovania_Ch1Ch2_ditty_1a:
 	note C_, 2
-	note __, 2
+	rest 2
 	note D_, 2
-	note __, 2
+	rest 2
 	note F_, 2
-	note __, 2
+	rest 2
 	note E_, 8
 	note D_, 8
 	note E_, 8
 	note F_, 8
 	note G_, 8
 	note E_, 8
-	intensity $F4
+	volume_envelope 15, 4
 	note A_, 16
-	intensity $F1
+	volume_envelope 15, 1
 	note A_, 2
 	note G#, 2
 	note G_, 2
@@ -657,27 +657,27 @@ Music_Megalovania_Ch1Ch2_ditty_1a:
 	note E_, 2
 	note D#, 2
 	note D_, 2
-	intensity $F4
+	volume_envelope 15, 4
 	note C#, 16
 	note D_, 16
-	endchannel
+	sound_ret
 
 Music_Megalovania_Ch1Ch3_ditty_1:
 	octave 4
 	note D_, 1
-	note __, 1
+	rest 1
 	octave 3
 	note A_, 1
-	note __, 2
+	rest 2
 	note G#, 1
-	note __, 1
+	rest 1
 	note G_, 1
-	note __, 1
+	rest 1
 	note F_, 2
 	note D_, 1
 	note F_, 1
 	note G_, 1
-	endchannel
+	sound_ret
 
 Music_Megalovania_Ch1Ch3_ditty_2:
 	octave 2
@@ -734,123 +734,123 @@ Music_Megalovania_Ch1Ch3_ditty_2:
 	note C_, 1
 	note C_, 1
 	note C_, 1
-	endchannel
+	sound_ret
 
 Music_Megalovania_Ch2:
-	vibrato $00, $22
-	notetype $C, $69
+	vibrato 0, 2, 2
+	note_type 12, 6, -1
 Music_Megalovania_Ch2_loop:
 	octave 2
 	note D_, 1
 	note D_, 1
-	callchannel Music_Megalovania_Ch2_ditty1
+	sound_call Music_Megalovania_Ch2_ditty1
 	note C_, 1
 	note C_, 1
-	callchannel Music_Megalovania_Ch2_ditty1
+	sound_call Music_Megalovania_Ch2_ditty1
 	octave 1
 	note B_, 1
 	note B_, 1
-	callchannel Music_Megalovania_Ch2_ditty1
+	sound_call Music_Megalovania_Ch2_ditty1
 	octave 1
 	note A#, 1
 	note A#, 1
-	callchannel Music_Megalovania_Ch2_ditty1
-	loopchannel 2, Music_Megalovania_Ch2_loop
+	sound_call Music_Megalovania_Ch2_ditty1
+	sound_loop 2, Music_Megalovania_Ch2_loop
 	note D_, 1
 	note D_, 1
-	callchannel Music_Megalovania_Ch2_ditty1
+	sound_call Music_Megalovania_Ch2_ditty1
 	note C_, 1
 	note C_, 1
-	callchannel Music_Megalovania_Ch2_ditty1
+	sound_call Music_Megalovania_Ch2_ditty1
 	octave 1
 	note B_, 1
 	note B_, 1
-	callchannel Music_Megalovania_Ch2_ditty1
+	sound_call Music_Megalovania_Ch2_ditty1
 	octave 1
 	note A#, 1
 	note A#, 1
 	octave 3
 	note D_, 1
-	note __, 1
+	rest 1
 	octave 2
 	note A_, 1
-	note __, 2
+	rest 2
 	note G#, 1
-	note __, 1
+	rest 1
 	note G_, 1
-	note __, 1
+	rest 1
 	note F_, 2
 	note D_, 1
 	note F_, 1
-	sound_duty $AA
-	vibrato $05, $13
+	duty_cycle_pattern 2, 2, 2, 2
+	vibrato 5, 1, 3
 	octave 4
-	notetype $6, $D3
+	note_type 6, 13, 3
 	note D_, 1
 	note E_, 1
 	note F_, 4
 	note F_, 2
 	note F_, 2
-	note __, 2
+	rest 2
 	note F_, 2
-	note __, 2
+	rest 2
 	note F_, 4
 	note D_, 2
-	note __, 2
+	rest 2
 	note D_, 8
-	note __, 2
+	rest 2
 	note F_, 4
 	note F_, 2
 	note F_, 2
-	note __, 2
+	rest 2
 	note G_, 2
-	note __, 2
+	rest 2
 	note G#, 4
 	note G_, 1
 	note G#, 1
 	note G_, 1
-	note __, 1
+	rest 1
 	note D_, 2
 	note F_, 2
 	note G_, 2
-	note __, 4
+	rest 4
 	note F_, 2
-	note __, 2
+	rest 2
 	note F_, 2
 	note F_, 2
-	note __, 2
+	rest 2
 	note G_, 2
-	note __, 2
+	rest 2
 	note G#, 2
-	note __, 2
+	rest 2
 	note A_, 2
-	note __, 2
-	callchannel Music_Megalovania_Ch2_ditty2
+	rest 2
+	sound_call Music_Megalovania_Ch2_ditty2
 	octave 4
-	notetype $C, $D3
+	note_type 12, 13, 3
 	note A_, 2
 	note A_, 1
 	note A_, 1
-	note __, 1
+	rest 1
 	note A_, 1
-	note __, 1
+	rest 1
 	note A_, 2
 	note G_, 1
-	note __, 1
+	rest 1
 	note G_, 4
-	note __, 1
+	rest 1
 	note A_, 2
 	note A_, 1
 	note A_, 1
-	note __, 1
+	rest 1
 	note G_, 1
-	note __, 1
+	rest 1
 	note G#, 2
-	notetype $6, $D3
+	note_type 6, 13, 3
 	note G_, 1
 	note G#, 1
 	note G_, 1
-	note __, 1
+	rest 1
 	note E_, 2
 	note F_, 2
 	note G_, 2
@@ -858,7 +858,7 @@ Music_Megalovania_Ch2_loop:
 	note F_, 4
 	note F_, 2
 	note F_, 2
-	note __, 2
+	rest 2
 	note D_, 2
 	note C_, 2
 	note D_, 2
@@ -867,12 +867,12 @@ Music_Megalovania_Ch2_loop:
 	octave 4
 	note A_, 2
 	note G_, 2
-	callchannel Music_Megalovania_Ch2_ditty2
-	notetype $C, $D3
-	note __, 8
-	callchannel Music_Megalovania_Ch1Ch2_ditty_1
-	note __, 16
-	intensity $F1
+	sound_call Music_Megalovania_Ch2_ditty2
+	note_type 12, 13, 3
+	rest 8
+	sound_call Music_Megalovania_Ch1Ch2_ditty_1
+	rest 16
+	volume_envelope 15, 1
 	octave 3
 	note F_, 2
 	note D_, 2
@@ -886,18 +886,18 @@ Music_Megalovania_Ch2_loop:
 	note G_, 1
 	note E_, 1
 	note C#, 1
-	intensity $F3
+	volume_envelope 15, 3
 	note F_, 4
-	intensity $F4
+	volume_envelope 15, 4
 	note G_, 16
-	note __, 2
-	intensity $F3
+	rest 2
+	volume_envelope 15, 3
 	note G#, 4
-	intensity $F1
+	volume_envelope 15, 1
 	note A_, 2
 	octave 4
 	note C_, 2
-	note __, 2
+	rest 2
 	octave 3
 	note A_, 2
 	note G#, 2
@@ -905,316 +905,316 @@ Music_Megalovania_Ch2_loop:
 	note F_, 2
 	note D_, 2
 	note E_, 2
-	intensity $F3
+	volume_envelope 15, 3
 	note F_, 4
 	note G_, 4
 	note A_, 4
 	octave 4
 	note C_, 4
 	note C#, 4
-	intensity $F1
+	volume_envelope 15, 1
 	octave 3
 	note G#, 2
-	note __, 2
+	rest 2
 	note G#, 2
 	note G_, 2
 	note F_, 2
-	intensity $F4
+	volume_envelope 15, 4
 	note G_, 16
-	note __, 2
-	intensity $F3
+	rest 2
+	volume_envelope 15, 3
 	octave 2
 	note A#, 2
-	note __, 2
+	rest 2
 	octave 3
-	callchannel Music_Megalovania_Ch1Ch2_ditty_1a
-	callchannel Music_Megalovania_Ch2_ditty3
-	sound_duty $5A
-	vibrato $0F, $34
+	sound_call Music_Megalovania_Ch1Ch2_ditty_1a
+	sound_call Music_Megalovania_Ch2_ditty3
+	duty_cycle_pattern 1, 1, 2, 2
+	vibrato 15, 3, 4
 	octave 3
-	notetype $6, $A1
+	note_type 6, 10, 1
 	note D_, 1
-	notetype $3, $A1
+	note_type 3, 10, 1
 	note F_, 1
 	note A_, 1
-	sound_duty $55
-	vibrato $0F, $1F
+	duty_cycle_pattern 1, 1, 1, 1
+	vibrato 15, 1, 15
 	octave 4
-	notetype $9, $A7
+	note_type 9, 10, 7
 	note D_, 16
-	notetype $3, $A1
-	note __, 12
-	sound_duty $5A
-	vibrato $0F, $34
+	note_type 3, 10, 1
+	rest 12
+	duty_cycle_pattern 1, 1, 2, 2
+	vibrato 15, 3, 4
 	octave 3
-	notetype $9, $A1
+	note_type 9, 10, 1
 	note C_, 1
-	notetype $3, $A1
+	note_type 3, 10, 1
 	note F_, 1
 	note A_, 1
-	sound_duty $55
-	vibrato $0F, $1F
+	duty_cycle_pattern 1, 1, 1, 1
+	vibrato 15, 1, 15
 	octave 4
-	notetype $9, $A7
+	note_type 9, 10, 7
 	note C_, 9
 	octave 3
-	notetype $C, $A7
+	note_type 12, 10, 7
 	note B_, 8
-	callchannel Music_Megalovania_Ch2_ditty3
+	sound_call Music_Megalovania_Ch2_ditty3
 	octave 5
 	note D_, 12
-	notetype $C, $A7
-	note __, 1
+	note_type 12, 10, 7
+	rest 1
 	note C_, 15
-	note __, 1
+	rest 1
 	octave 4
 	note B_, 15
-	note __, 16
-	note __, 1
-	notetype $C, $69
-	sound_duty $00
-	vibrato $00, $22
+	rest 16
+	rest 1
+	note_type 12, 6, -1
+	duty_cycle_pattern 0, 0, 0, 0
+	vibrato 0, 2, 2
 	octave 2
 	note D_, 1
 	note D_, 1
-	callchannel Music_Megalovania_Ch2_ditty1
+	sound_call Music_Megalovania_Ch2_ditty1
 	note C_, 1
 	note C_, 1
-	callchannel Music_Megalovania_Ch2_ditty1
+	sound_call Music_Megalovania_Ch2_ditty1
 	octave 1
 	note B_, 1
 	note B_, 1
-	callchannel Music_Megalovania_Ch2_ditty1
+	sound_call Music_Megalovania_Ch2_ditty1
 	octave 1
 	note A#, 1
 	note A#, 1
-	callchannel Music_Megalovania_Ch2_ditty1
+	sound_call Music_Megalovania_Ch2_ditty1
 	note D_, 1
 	note D_, 1
-	callchannel Music_Megalovania_Ch2_ditty1
+	sound_call Music_Megalovania_Ch2_ditty1
 	note C_, 1
 	note C_, 1
-	callchannel Music_Megalovania_Ch2_ditty1
+	sound_call Music_Megalovania_Ch2_ditty1
 	octave 1
 	note B_, 1
 	note B_, 1
-	callchannel Music_Megalovania_Ch2_ditty1
+	sound_call Music_Megalovania_Ch2_ditty1
 	octave 1
 	note A#, 1
 	note A#, 1
-	callchannel Music_Megalovania_Ch2_ditty1
+	sound_call Music_Megalovania_Ch2_ditty1
 	note D_, 1
 	note D_, 1
-	callchannel Music_Megalovania_Ch2_ditty1
+	sound_call Music_Megalovania_Ch2_ditty1
 	note C_, 1
 	note C_, 1
-	callchannel Music_Megalovania_Ch2_ditty1
+	sound_call Music_Megalovania_Ch2_ditty1
 	octave 1
 	note B_, 1
 	note B_, 1
-	callchannel Music_Megalovania_Ch2_ditty1
+	sound_call Music_Megalovania_Ch2_ditty1
 	octave 1
 	note A#, 1
 	note A#, 1
-	callchannel Music_Megalovania_Ch2_ditty1
-	jumpchannel Music_Megalovania_Ch2_loop
+	sound_call Music_Megalovania_Ch2_ditty1
+	sound_jump Music_Megalovania_Ch2_loop
 
 Music_Megalovania_Ch2_ditty1:
 	octave 3
 	note D_, 1
-	note __, 1
+	rest 1
 	octave 2
 	note A_, 1
-	note __, 2
+	rest 2
 	note G#, 1
-	note __, 1
+	rest 1
 	note G_, 1
-	note __, 1
+	rest 1
 	note F_, 2
 	note D_, 1
 	note F_, 1
 	note G_, 1
-	endchannel
+	sound_ret
 
 Music_Megalovania_Ch2_ditty2:
 	octave 5
 	note C_, 2
-	note __, 2
+	rest 2
 	octave 4
 	note A_, 6
 	octave 5
 	note D_, 2
-	note __, 2
+	rest 2
 	note D_, 2
-	note __, 2
+	rest 2
 	note D_, 2
 	octave 4
 	note A_, 2
 	octave 5
 	note D_, 2
-	notetype $C, $D7
+	note_type 12, 13, 7
 	note C_, 9
-	endchannel
+	sound_ret
 
 Music_Megalovania_Ch2_ditty3:
-	sound_duty $5A
-	vibrato $0F, $34
+	duty_cycle_pattern 1, 1, 2, 2
+	vibrato 15, 3, 4
 	octave 2
-	notetype $9, $A1
+	note_type 9, 10, 1
 	note A#, 1
 	octave 3
-	notetype $3, $A1
+	note_type 3, 10, 1
 	note D_, 1
 	note F_, 1
-	sound_duty $55
-	notetype $9, $A7
-	vibrato $0F, $1F
+	duty_cycle_pattern 1, 1, 1, 1
+	note_type 9, 10, 7
+	vibrato 15, 1, 15
 	note A#, 16
-	notetype $3, $A7
-	note __, 11
-	sound_duty $5A
-	intensity $A1
-	vibrato $0F, $34
+	note_type 3, 10, 7
+	rest 11
+	duty_cycle_pattern 1, 1, 2, 2
+	volume_envelope 10, 1
+	vibrato 15, 3, 4
 	note C_, 2
 	note E_, 1
 	note G_, 1
-	sound_duty $55
-	vibrato $0F, $1F
+	duty_cycle_pattern 1, 1, 1, 1
+	vibrato 15, 1, 15
 	octave 4
-	notetype $F, $A7
+	note_type 15, 10, 7
 	note C_, 12
-	sound_duty $5A
-	vibrato $0F, $34
+	duty_cycle_pattern 1, 1, 2, 2
+	vibrato 15, 3, 4
 	octave 3
-	notetype $9, $A1
+	note_type 9, 10, 1
 	note D_, 1
-	notetype $3, $A1
+	note_type 3, 10, 1
 	note F_, 1
 	note A_, 2
-	sound_duty $55
-	notetype $9, $A7
-	vibrato $0F, $1F
+	duty_cycle_pattern 1, 1, 1, 1
+	note_type 9, 10, 7
+	vibrato 15, 1, 15
 	octave 4
 	note D_, 16
-	notetype $3, $A7
-	note __, 10
-	sound_duty $5A
-	intensity $A1
-	vibrato $0F, $34
+	note_type 3, 10, 7
+	rest 10
+	duty_cycle_pattern 1, 1, 2, 2
+	volume_envelope 10, 1
+	vibrato 15, 3, 4
 	octave 3
 	note D_, 4
 	note F_, 1
 	note A_, 1
-	sound_duty $55
-	vibrato $0F, $1F
+	duty_cycle_pattern 1, 1, 1, 1
+	vibrato 15, 1, 15
 	octave 4
-	notetype $D, $A7
+	note_type 13, 10, 7
 	note E_, 6
-	notetype $C, $A7
+	note_type 12, 10, 7
 	note D_, 8
-	sound_duty $5A
-	vibrato $0F, $34
+	duty_cycle_pattern 1, 1, 2, 2
+	vibrato 15, 3, 4
 	octave 2
-	notetype $9, $A1
+	note_type 9, 10, 1
 	note A#, 1
 	octave 3
-	notetype $3, $A1
+	note_type 3, 10, 1
 	note D_, 1
 	note F_, 1
-	sound_duty $55
-	notetype $9, $A7
-	vibrato $0F, $1F
+	duty_cycle_pattern 1, 1, 1, 1
+	note_type 9, 10, 7
+	vibrato 15, 1, 15
 	note A#, 16
-	notetype $3, $A7
-	note __, 11
-	sound_duty $5A
-	intensity $A1
-	vibrato $0F, $34
+	note_type 3, 10, 7
+	rest 11
+	duty_cycle_pattern 1, 1, 2, 2
+	volume_envelope 10, 1
+	vibrato 15, 3, 4
 	note C_, 2
 	note E_, 1
 	note G_, 1
-	sound_duty $55
-	vibrato $0F, $1F
+	duty_cycle_pattern 1, 1, 1, 1
+	vibrato 15, 1, 15
 	octave 4
-	notetype $F, $A7
+	note_type 15, 10, 7
 	note C_, 12
-	endchannel
+	sound_ret
 
 Music_Megalovania_Ch3:
 Music_Megalovania_Ch3_loop:
-	dutycycle 9
+	duty_cycle 9
 	octave 3
-	notetype $C, $19
+	note_type 12, 1, -1
 	note D_, 1
 	note D_, 1
-	callchannel Music_Megalovania_Ch1Ch3_ditty_1
+	sound_call Music_Megalovania_Ch1Ch3_ditty_1
 	note C_, 1
 	note C_, 1
-	callchannel Music_Megalovania_Ch1Ch3_ditty_1
+	sound_call Music_Megalovania_Ch1Ch3_ditty_1
 	octave 2
 	note B_, 1
 	note B_, 1
-	callchannel Music_Megalovania_Ch1Ch3_ditty_1
+	sound_call Music_Megalovania_Ch1Ch3_ditty_1
 	octave 2
 	note A#, 1
 	note A#, 1
-	callchannel Music_Megalovania_Ch1Ch3_ditty_1
-	dutycycle 7
-	intensity $17
-	callchannel Music_Megalovania_Ch1Ch3_ditty_2
-	callchannel Music_Megalovania_Ch3_ditty_1
-	dutycycle 5
-	intensity $35
-	vibrato $07, $33
+	sound_call Music_Megalovania_Ch1Ch3_ditty_1
+	duty_cycle 7
+	volume_envelope 1, 7
+	sound_call Music_Megalovania_Ch1Ch3_ditty_2
+	sound_call Music_Megalovania_Ch3_ditty_1
+	duty_cycle 5
+	volume_envelope 3, 5
+	vibrato 7, 3, 3
 	octave 5
 	note F_, 2
 	note F_, 1
 	note F_, 1
-	note __, 1
+	rest 1
 	note F_, 1
-	note __, 1
+	rest 1
 	note F_, 2
 	note D_, 1
-	note __, 1
+	rest 1
 	note D_, 4
-	note __, 1
+	rest 1
 	note F_, 2
 	note F_, 1
 	note F_, 1
-	note __, 1
+	rest 1
 	note G_, 1
-	note __, 1
+	rest 1
 	note G#, 2
-	notetype $6, $35
+	note_type 6, 3, 5
 	note G_, 1
 	note G#, 1
 	note G_, 1
-	note __, 1
+	rest 1
 	note D_, 2
 	note F_, 2
 	note G_, 2
-	note __, 4
+	rest 4
 	note F_, 2
-	note __, 2
+	rest 2
 	note F_, 2
 	note F_, 2
-	note __, 2
+	rest 2
 	note G_, 2
-	note __, 2
+	rest 2
 	note G#, 2
-	note __, 2
+	rest 2
 	note A_, 2
-	note __, 2
+	rest 2
 	octave 6
 	note C_, 2
-	note __, 2
+	rest 2
 	octave 5
 	note A_, 6
 	octave 6
 	note D_, 2
-	note __, 2
+	rest 2
 	note D_, 2
-	note __, 2
+	rest 2
 	note D_, 2
 	octave 5
 	note A_, 2
@@ -1222,26 +1222,26 @@ Music_Megalovania_Ch3_loop:
 	note D_, 2
 	note C_, 3
 	note D_, 1
-	notetype $3, $35
+	note_type 3, 3, 5
 	note D#, 1
 	note E_, 2
-	notetype $3, $25
+	note_type 3, 2, 5
 	note F_, 2
 	note F#, 2
-	notetype $9, $25
+	note_type 9, 2, 5
 	note G_, 7
-	dutycycle 7
-	vibrato $00, $00
+	duty_cycle 7
+	vibrato 0, 0, 0
 	octave 2
-	notetype $C, $17
-	callchannel Music_Megalovania_Ch3_ditty_2
-	callchannel Music_Megalovania_Ch3_ditty_3
-	callchannel Music_Megalovania_Ch3_ditty_3
-	callchannel Music_Megalovania_Ch3_ditty_3
-	callchannel Music_Megalovania_Ch3_ditty_3
-	dutycycle 3
-	intensity $23
-	vibrato $07, $33
+	note_type 12, 1, 7
+	sound_call Music_Megalovania_Ch3_ditty_2
+	sound_call Music_Megalovania_Ch3_ditty_3
+	sound_call Music_Megalovania_Ch3_ditty_3
+	sound_call Music_Megalovania_Ch3_ditty_3
+	sound_call Music_Megalovania_Ch3_ditty_3
+	duty_cycle 3
+	volume_envelope 2, 3
+	vibrato 7, 3, 3
 	octave 4
 	note A#, 12
 	octave 5
@@ -1257,62 +1257,62 @@ Music_Megalovania_Ch3_loop:
 	note E_, 8
 	note D_, 8
 	note D_, 16
-	note __, 16
-	dutycycle 2
-	intensity $32
-	vibrato $03, $13
+	rest 16
+	duty_cycle 2
+	volume_envelope 3, 2
+	vibrato 3, 1, 3
 	note D_, 1
 	note D_, 1
-	callchannel Music_Megalovania_Ch3_ditty_4
+	sound_call Music_Megalovania_Ch3_ditty_4
 	note C_, 1
 	note C_, 1
-	callchannel Music_Megalovania_Ch3_ditty_4
-	intensity $22
+	sound_call Music_Megalovania_Ch3_ditty_4
+	volume_envelope 2, 2
 	octave 4
 	note B_, 1
 	note B_, 1
-	callchannel Music_Megalovania_Ch3_ditty_4
+	sound_call Music_Megalovania_Ch3_ditty_4
 	octave 4
 	note A#, 1
 	note A#, 1
-	callchannel Music_Megalovania_Ch3_ditty_4
-	intensity $12
+	sound_call Music_Megalovania_Ch3_ditty_4
+	volume_envelope 1, 2
 	note D_, 1
 	note D_, 1
-	callchannel Music_Megalovania_Ch3_ditty_4
+	sound_call Music_Megalovania_Ch3_ditty_4
 	note C_, 1
 	note C_, 1
-	callchannel Music_Megalovania_Ch3_ditty_4
-	note __, 2
-	dutycycle 6
-	intensity $36
+	sound_call Music_Megalovania_Ch3_ditty_4
+	rest 2
+	duty_cycle 6
+	volume_envelope 3, 6
 	octave 6
-	callchannel Music_Megalovania_Ch3_ditty_5
-	intensity $26
-	callchannel Music_Megalovania_Ch3_ditty_5
-	intensity $16
+	sound_call Music_Megalovania_Ch3_ditty_5
+	volume_envelope 2, 6
+	sound_call Music_Megalovania_Ch3_ditty_5
+	volume_envelope 1, 6
 	note A_, 1
-	note __, 1
+	rest 1
 	note G_, 1
-	note __, 2
+	rest 2
 	note E_, 1
-	note __, 1
+	rest 1
 	note G_, 1
-	note __, 1
+	rest 1
 	note F_, 1
-	note __, 1
+	rest 1
 	note D_, 1
 	note E_, 1
 	note F_, 1
-	note __, 16
-	dutycycle 7
-	intensity $17
-	callchannel Music_Megalovania_Ch1Ch3_ditty_2
-	callchannel Music_Megalovania_Ch3_ditty_1
-	callchannel Music_Megalovania_Ch1Ch3_ditty_2
+	rest 16
+	duty_cycle 7
+	volume_envelope 1, 7
+	sound_call Music_Megalovania_Ch1Ch3_ditty_2
+	sound_call Music_Megalovania_Ch3_ditty_1
+	sound_call Music_Megalovania_Ch1Ch3_ditty_2
 	note C_, 1
 	note C_, 1
-	jumpchannel Music_Megalovania_Ch3_loop
+	sound_jump Music_Megalovania_Ch3_loop
 
 Music_Megalovania_Ch3_ditty_1:
 	note C_, 1
@@ -1374,7 +1374,7 @@ Music_Megalovania_Ch3_ditty_2:
 	octave 3
 	note C_, 1
 	note C_, 1
-	endchannel
+	sound_ret
 
 Music_Megalovania_Ch3_ditty_3:
 	octave 1
@@ -1432,597 +1432,597 @@ Music_Megalovania_Ch3_ditty_3:
 	octave 2
 	note B_, 1
 	note B_, 1
-	endchannel
+	sound_ret
 
 Music_Megalovania_Ch3_ditty_4:
 	octave 6
 	note D_, 1
-	note __, 1
+	rest 1
 	octave 5
 	note A_, 1
-	note __, 2
+	rest 2
 	note G#, 1
-	note __, 1
+	rest 1
 	note G_, 1
-	note __, 1
+	rest 1
 	note F_, 2
 	note D_, 1
 	note F_, 1
 	note G_, 1
-	endchannel
+	sound_ret
 
 Music_Megalovania_Ch3_ditty_5:
 	note F_, 1
-	note __, 1
+	rest 1
 	note E_, 1
-	note __, 2
+	rest 2
 	note C_, 1
-	note __, 1
+	rest 1
 	note E_, 1
-	note __, 1
+	rest 1
 	note D_, 1
-	note __, 1
+	rest 1
 	octave 5
 	note G_, 1
 	note A_, 1
 	octave 6
 	note C_, 1
-	note __, 2
-	endchannel
+	rest 2
+	sound_ret
 
 Music_Megalovania_Ch4:
-	notetype $C
-	togglenoise 5
+	drum_speed 12
+	toggle_noise 5
 Music_Megalovania_Ch4_loop:
-	note __, 16
-	note __, 16
-	note __, 16
-	note __, 9
+	rest 16
+	rest 16
+	rest 16
+	rest 9
 	noisesampleset 5
-	note D#, 1
-	note __, 1
-	note D#, 1
-	note __, 1
-	note D#, 1
-	note D#, 1
-	note __, 1
-	note F#, 1
+	drum_note 4, 1
+	rest 1
+	drum_note 4, 1
+	rest 1
+	drum_note 4, 1
+	drum_note 4, 1
+	rest 1
+	drum_note 7, 1
 Music_Megalovania_Ch4_loop1:
-	callchannel Music_Megalovania_Ch4_ditty3
-	loopchannel 3, Music_Megalovania_Ch4_loop1
-	note E_, 1
+	sound_call Music_Megalovania_Ch4_ditty3
+	sound_loop 3, Music_Megalovania_Ch4_loop1
+	drum_note 5, 1
 	noisesampleset 0
-	note A#, 1
-	note __, 1
+	drum_note 11, 1
+	rest 1
 	noisesampleset 5
-	note B_, 1
-	note E_, 1
+	drum_note 12, 1
+	drum_note 5, 1
 	noisesampleset 0
-	note A#, 1
+	drum_note 11, 1
 	noisesampleset 5
-	note B_, 1
-	note F#, 1
-	note E_, 1
+	drum_note 12, 1
+	drum_note 7, 1
+	drum_note 5, 1
 	noisesampleset 0
-	note A#, 1
+	drum_note 11, 1
 	noisesampleset 5
-	note F#, 1
-	note E_, 1
+	drum_note 7, 1
+	drum_note 5, 1
 	noisesampleset 0
-	note A#, 1
+	drum_note 11, 1
 	noisesampleset 5
-	note F#, 1
+	drum_note 7, 1
 	noisesampleset 0
-	note A#, 1
+	drum_note 11, 1
 	noisesampleset 5
-	note F#, 1
-	note E_, 1
+	drum_note 7, 1
+	drum_note 5, 1
 	noisesampleset 0
-	note A#, 1
-	note __, 1
+	drum_note 11, 1
+	rest 1
 	noisesampleset 5
-	note B_, 1
-	note E_, 1
+	drum_note 12, 1
+	drum_note 5, 1
 	noisesampleset 0
-	note A#, 1
+	drum_note 11, 1
 Music_Megalovania_Ch4_loop2:
-	callchannel Music_Megalovania_Ch4_ditty4
-	note A#, 1
-	note __, 1
+	sound_call Music_Megalovania_Ch4_ditty4
+	drum_note 11, 1
+	rest 1
 	noisesampleset 5
-	note B_, 1
-	note E_, 1
+	drum_note 12, 1
+	drum_note 5, 1
 	noisesampleset 0
-	note A#, 1
-	loopchannel 3, Music_Megalovania_Ch4_loop2
+	drum_note 11, 1
+	sound_loop 3, Music_Megalovania_Ch4_loop2
 	noisesampleset 5
-	note B_, 1
-	note F#, 1
-	note __, 1
+	drum_note 12, 1
+	drum_note 7, 1
+	rest 1
 	noisesampleset 0
-	note A#, 1
+	drum_note 11, 1
 	noisesampleset 5
-	note F#, 1
-	note __, 1
+	drum_note 7, 1
+	rest 1
 	noisesampleset 0
-	note A#, 1
+	drum_note 11, 1
 	noisesampleset 5
-	note F#, 1
+	drum_note 7, 1
 	noisesampleset 0
-	note A#, 1
+	drum_note 11, 1
 	noisesampleset 5
 Music_Megalovania_Ch4_loop3:
-	note B_, 1
-	note E_, 1
+	drum_note 12, 1
+	drum_note 5, 1
 	noisesampleset 0
-	note A#, 1
+	drum_note 11, 1
 	noisesampleset 5
-	note F_, 1
-	note B_, 1
-	note E_, 1
+	drum_note 6, 1
+	drum_note 12, 1
+	drum_note 5, 1
 	noisesampleset 0
-	note A#, 1
+	drum_note 11, 1
 	noisesampleset 5
-	note F_, 1
-	note B_, 1
-	note E_, 1
+	drum_note 6, 1
+	drum_note 12, 1
+	drum_note 5, 1
 	noisesampleset 0
-	note A#, 1
+	drum_note 11, 1
 	noisesampleset 5
-	note B_, 1
-	note E_, 1
-	note B_, 1
+	drum_note 12, 1
+	drum_note 5, 1
+	drum_note 12, 1
 	noisesampleset 0
-	note A#, 1
+	drum_note 11, 1
 	noisesampleset 5
-	note F_, 1
-	loopchannel 3, Music_Megalovania_Ch4_loop3
-	note B_, 1
-	note F_, 1
+	drum_note 6, 1
+	sound_loop 3, Music_Megalovania_Ch4_loop3
+	drum_note 12, 1
+	drum_note 6, 1
 	noisesampleset 0
-	note A#, 1
-	note __, 1
+	drum_note 11, 1
+	rest 1
 	noisesampleset 5
-	note B_, 1
-	note F_, 1
+	drum_note 12, 1
+	drum_note 6, 1
 	noisesampleset 0
-	note A#, 1
-	note __, 1
+	drum_note 11, 1
+	rest 1
 	noisesampleset 5
-	note F#, 1
-	note __, 1
+	drum_note 7, 1
+	rest 1
 	noisesampleset 0
-	note A#, 1
+	drum_note 11, 1
 	noisesampleset 5
-	note F#, 1
-	note __, 1
-	note B_, 1
-	note F#, 1
-	note __, 1
-	note F#, 1
-	note E_, 1
+	drum_note 7, 1
+	rest 1
+	drum_note 12, 1
+	drum_note 7, 1
+	rest 1
+	drum_note 7, 1
+	drum_note 5, 1
 	noisesampleset 0
 Music_Megalovania_Ch4_loop4:
-	note A#, 1
-	note __, 1
+	drum_note 11, 1
+	rest 1
 	noisesampleset 5
-	note B_, 1
-	note E_, 1
+	drum_note 12, 1
+	drum_note 5, 1
 	noisesampleset 0
-	note A#, 1
-	callchannel Music_Megalovania_Ch4_ditty4
-	loopchannel 3, Music_Megalovania_Ch4_loop4
-	note A#, 1
-	note __, 1
+	drum_note 11, 1
+	sound_call Music_Megalovania_Ch4_ditty4
+	sound_loop 3, Music_Megalovania_Ch4_loop4
+	drum_note 11, 1
+	rest 1
 	noisesampleset 5
-	note B_, 1
-	note E_, 1
+	drum_note 12, 1
+	drum_note 5, 1
 	noisesampleset 0
-	note A#, 1
+	drum_note 11, 1
 	noisesampleset 5
-	note B_, 1
-	note F#, 1
-	note E_, 1
+	drum_note 12, 1
+	drum_note 7, 1
+	drum_note 5, 1
 	noisesampleset 0
-	note A#, 1
+	drum_note 11, 1
 	noisesampleset 5
-	note F#, 1
-	note E_, 1
+	drum_note 7, 1
+	drum_note 5, 1
 	noisesampleset 0
-	note A#, 1
+	drum_note 11, 1
 	noisesampleset 5
-	note F#, 1
+	drum_note 7, 1
 	noisesampleset 0
-	note A#, 1
+	drum_note 11, 1
 	noisesampleset 5
-	note F#, 1
+	drum_note 7, 1
 Music_Megalovania_Ch4_loop5:
-	note E_, 1
+	drum_note 5, 1
 	noisesampleset 0
-	note A#, 1
-	note __, 1
-	callchannel Music_Megalovania_Ch4_ditty2
+	drum_note 11, 1
+	rest 1
+	sound_call Music_Megalovania_Ch4_ditty2
 	noisesampleset 5
-	note B_, 1
-	loopchannel 3, Music_Megalovania_Ch4_loop5
-	note E_, 1
+	drum_note 12, 1
+	sound_loop 3, Music_Megalovania_Ch4_loop5
+	drum_note 5, 1
 	noisesampleset 0
-	note A#, 1
-	note __, 1
+	drum_note 11, 1
+	rest 1
 	noisesampleset 5
-	note B_, 1
+	drum_note 12, 1
 	noisesampleset 0
-	note F_, 1
-	note A#, 1
+	drum_note 6, 1
+	drum_note 11, 1
 	noisesampleset 5
-	note B_, 1
-	note F#, 1
-	note __, 1
+	drum_note 12, 1
+	drum_note 7, 1
+	rest 1
 	noisesampleset 0
-	note A#, 1
+	drum_note 11, 1
 	noisesampleset 5
-	note F#, 1
-	note __, 1
+	drum_note 7, 1
+	rest 1
 	noisesampleset 0
-	note A#, 1
+	drum_note 11, 1
 	noisesampleset 5
-	note F#, 1
+	drum_note 7, 1
 	noisesampleset 0
-	note A#, 1
+	drum_note 11, 1
 	noisesampleset 5
-	note F#, 1
+	drum_note 7, 1
 Music_Megalovania_Ch4_loop6:
-	note E_, 1
+	drum_note 5, 1
 	noisesampleset 0
-	note A#, 1
-	note __, 1
-	callchannel Music_Megalovania_Ch4_ditty2
+	drum_note 11, 1
+	rest 1
+	sound_call Music_Megalovania_Ch4_ditty2
 	noisesampleset 5
-	note B_, 1
-	loopchannel 3, Music_Megalovania_Ch4_loop6
-	note E_, 1
+	drum_note 12, 1
+	sound_loop 3, Music_Megalovania_Ch4_loop6
+	drum_note 5, 1
 	noisesampleset 0
-	note A#, 1
-	note __, 1
+	drum_note 11, 1
+	rest 1
 	noisesampleset 5
-	note B_, 1
-	note E_, 1
+	drum_note 12, 1
+	drum_note 5, 1
 	noisesampleset 0
-	note A#, 1
+	drum_note 11, 1
 	noisesampleset 5
-	note B_, 1
-	note F#, 1
-	note __, 1
+	drum_note 12, 1
+	drum_note 7, 1
+	rest 1
 	noisesampleset 0
-	note A#, 1
+	drum_note 11, 1
 	noisesampleset 5
-	note F#, 1
-	note __, 1
+	drum_note 7, 1
+	rest 1
 	noisesampleset 0
-	note A#, 1
+	drum_note 11, 1
 	noisesampleset 5
-	note F#, 1
+	drum_note 7, 1
 	noisesampleset 0
-	note A#, 1
+	drum_note 11, 1
 	noisesampleset 5
-	note F#, 1
-	note E_, 1
+	drum_note 7, 1
+	drum_note 5, 1
 Music_Megalovania_Ch4_loop7:
 	noisesampleset 0
-	note A#, 1
-	note __, 1
-	callchannel Music_Megalovania_Ch4_ditty2
+	drum_note 11, 1
+	rest 1
+	sound_call Music_Megalovania_Ch4_ditty2
 	noisesampleset 5
-	note B_, 1
-	note E_, 1
-	loopchannel 3, Music_Megalovania_Ch4_loop7
+	drum_note 12, 1
+	drum_note 5, 1
+	sound_loop 3, Music_Megalovania_Ch4_loop7
 	noisesampleset 0
-	note A#, 1
-	note __, 1
+	drum_note 11, 1
+	rest 1
 	noisesampleset 5
-	note B_, 1
+	drum_note 12, 1
 	noisesampleset 0
-	note F_, 1
-	note A#, 1
+	drum_note 6, 1
+	drum_note 11, 1
 	noisesampleset 5
-	note B_, 1
-	note F#, 1
-	note __, 1
+	drum_note 12, 1
+	drum_note 7, 1
+	rest 1
 	noisesampleset 0
-	note A#, 1
+	drum_note 11, 1
 	noisesampleset 5
-	note F#, 1
-	note __, 1
+	drum_note 7, 1
+	rest 1
 	noisesampleset 0
-	note A#, 1
+	drum_note 11, 1
 	noisesampleset 5
-	note F#, 1
+	drum_note 7, 1
 	noisesampleset 0
-	note A#, 1
+	drum_note 11, 1
 	noisesampleset 5
-	note F#, 1
-	note E_, 1
+	drum_note 7, 1
+	drum_note 5, 1
 Music_Megalovania_Ch4_loop8:
 	noisesampleset 0
-	note A#, 1
-	note __, 1
-	callchannel Music_Megalovania_Ch4_ditty2
+	drum_note 11, 1
+	rest 1
+	sound_call Music_Megalovania_Ch4_ditty2
 	noisesampleset 5
-	note B_, 1
-	note E_, 1
-	loopchannel 3, Music_Megalovania_Ch4_loop8
+	drum_note 12, 1
+	drum_note 5, 1
+	sound_loop 3, Music_Megalovania_Ch4_loop8
 	noisesampleset 0
-	note A#, 1
-	note __, 1
+	drum_note 11, 1
+	rest 1
 	noisesampleset 5
-	note B_, 1
-	note E_, 1
+	drum_note 12, 1
+	drum_note 5, 1
 	noisesampleset 0
-	note A#, 1
+	drum_note 11, 1
 	noisesampleset 5
-	note B_, 1
-	note F#, 1
-	note __, 1
+	drum_note 12, 1
+	drum_note 7, 1
+	rest 1
 	noisesampleset 0
-	note A#, 1
+	drum_note 11, 1
 	noisesampleset 5
-	note F#, 1
-	note __, 1
+	drum_note 7, 1
+	rest 1
 	noisesampleset 0
-	note A#, 1
+	drum_note 11, 1
 	noisesampleset 5
-	note F#, 1
+	drum_note 7, 1
 	noisesampleset 0
-	note A#, 1
+	drum_note 11, 1
 	noisesampleset 2
-	note D#, 1
-	note __, 1
+	drum_note 4, 1
+	rest 1
 Music_Megalovania_Ch4_loop9:
-	note D#, 1
-	loopchannel 63, Music_Megalovania_Ch4_loop9
+	drum_note 4, 1
+	sound_loop 63, Music_Megalovania_Ch4_loop9
 	noisesampleset 5
-	note F#, 1
+	drum_note 7, 1
 	noisesampleset 2
 Music_Megalovania_Ch4_loop10:
-	callchannel Music_Megalovania_Ch4_ditty1
-	note G#, 1
-	note __, 1
-	note G#, 1
-	note D#, 1
-	note G#, 1
-	note __, 1
-	note G#, 1
-	note G#, 1
-	note D#, 1
-	note G#, 1
-	note G#, 1
-	note G#, 1
-	note G#, 1
-	note D#, 1
-	note G#, 1
-	note D#, 1
-	note G#, 1
-	note __, 1
-	note G#, 1
-	note D#, 1
-	note G#, 1
-	note __, 1
-	note G#, 1
-	note G#, 1
-	note D#, 1
-	note G#, 1
-	note G#, 1
-	note G#, 1
-	note G#, 1
-	note D#, 1
-	note G#, 1
-	note D#, 1
-	note A#, 1
-	note __, 1
-	loopchannel 2, Music_Megalovania_Ch4_loop10
-	callchannel Music_Megalovania_Ch4_ditty1
-	note __, 16
-	note __, 16
-	note __, 14
+	sound_call Music_Megalovania_Ch4_ditty1
+	drum_note 9, 1
+	rest 1
+	drum_note 9, 1
+	drum_note 4, 1
+	drum_note 9, 1
+	rest 1
+	drum_note 9, 1
+	drum_note 9, 1
+	drum_note 4, 1
+	drum_note 9, 1
+	drum_note 9, 1
+	drum_note 9, 1
+	drum_note 9, 1
+	drum_note 4, 1
+	drum_note 9, 1
+	drum_note 4, 1
+	drum_note 9, 1
+	rest 1
+	drum_note 9, 1
+	drum_note 4, 1
+	drum_note 9, 1
+	rest 1
+	drum_note 9, 1
+	drum_note 9, 1
+	drum_note 4, 1
+	drum_note 9, 1
+	drum_note 9, 1
+	drum_note 9, 1
+	drum_note 9, 1
+	drum_note 4, 1
+	drum_note 9, 1
+	drum_note 4, 1
+	drum_note 11, 1
+	rest 1
+	sound_loop 2, Music_Megalovania_Ch4_loop10
+	sound_call Music_Megalovania_Ch4_ditty1
+	rest 16
+	rest 16
+	rest 14
 	noisesampleset 5
-	note B_, 1
-	note B_, 1
-	note B_, 1
-	note B_, 1
+	drum_note 12, 1
+	drum_note 12, 1
+	drum_note 12, 1
+	drum_note 12, 1
 	noisesampleset 0
-	note A#, 1
-	note __, 1
-	note A#, 1
-	note A#, 1
+	drum_note 11, 1
+	rest 1
+	drum_note 11, 1
+	drum_note 11, 1
 	noisesampleset 5
-	note B_, 1
-	note F#, 1
+	drum_note 12, 1
+	drum_note 7, 1
 	noisesampleset 7
-	note B_, 1
+	drum_note 12, 1
 	noisesampleset 5
-	note F#, 1
+	drum_note 7, 1
 	noisesampleset 7
-	note B_, 1
+	drum_note 12, 1
 	noisesampleset 5
-	note F#, 1
+	drum_note 7, 1
 	noisesampleset 2
-	note D#, 1
-	note G#, 1
-	note A_, 1
-	note A#, 1
+	drum_note 4, 1
+	drum_note 9, 1
+	drum_note 10, 1
+	drum_note 11, 1
 	noisesampleset 5
-	note F#, 1
+	drum_note 7, 1
 Music_Megalovania_Ch4_loop11:
-	callchannel Music_Megalovania_Ch4_ditty3
-	loopchannel 3, Music_Megalovania_Ch4_loop11
-	note E_, 1
+	sound_call Music_Megalovania_Ch4_ditty3
+	sound_loop 3, Music_Megalovania_Ch4_loop11
+	drum_note 5, 1
 	noisesampleset 0
-	note A#, 1
-	note __, 1
+	drum_note 11, 1
+	rest 1
 	noisesampleset 5
-	note B_, 1
-	note E_, 1
+	drum_note 12, 1
+	drum_note 5, 1
 	noisesampleset 0
-	note A#, 1
+	drum_note 11, 1
 	noisesampleset 5
-	note B_, 1
-	note F#, 1
-	note E_, 1
+	drum_note 12, 1
+	drum_note 7, 1
+	drum_note 5, 1
 	noisesampleset 0
-	note A#, 1
+	drum_note 11, 1
 	noisesampleset 5
-	note F#, 1
-	note E_, 1
+	drum_note 7, 1
+	drum_note 5, 1
 	noisesampleset 0
-	note A#, 1
+	drum_note 11, 1
 	noisesampleset 5
-	note F#, 1
+	drum_note 7, 1
 	noisesampleset 0
-	note A#, 1
+	drum_note 11, 1
 	noisesampleset 5
-	note F#, 1
+	drum_note 7, 1
 Music_Megalovania_Ch4_loop12:
-	callchannel Music_Megalovania_Ch4_ditty3
-	loopchannel 3, Music_Megalovania_Ch4_loop12
-	note E_, 1
+	sound_call Music_Megalovania_Ch4_ditty3
+	sound_loop 3, Music_Megalovania_Ch4_loop12
+	drum_note 5, 1
 	noisesampleset 0
-	note A#, 1
-	note __, 1
+	drum_note 11, 1
+	rest 1
 	noisesampleset 5
-	note B_, 1
-	note E_, 1
+	drum_note 12, 1
+	drum_note 5, 1
 	noisesampleset 0
-	note A#, 1
+	drum_note 11, 1
 	noisesampleset 5
-	note B_, 1
-	note F#, 1
-	note __, 1
+	drum_note 12, 1
+	drum_note 7, 1
+	rest 1
 	noisesampleset 0
-	note A#, 1
+	drum_note 11, 1
 	noisesampleset 5
-	note F#, 1
-	note __, 1
+	drum_note 7, 1
+	rest 1
 	noisesampleset 0
-	note A#, 1
+	drum_note 11, 1
 	noisesampleset 5
-	note F#, 1
+	drum_note 7, 1
 	noisesampleset 0
-	note A#, 1
+	drum_note 11, 1
 	noisesampleset 5
-	note F#, 1
-	note E_, 1
+	drum_note 7, 1
+	drum_note 5, 1
 	noisesampleset 0
-	note A#, 1
-	note __, 1
+	drum_note 11, 1
+	rest 1
 Music_Megalovania_Ch4_loop13:
-	callchannel Music_Megalovania_Ch4_ditty2
+	sound_call Music_Megalovania_Ch4_ditty2
 	noisesampleset 5
-	note B_, 1
-	note E_, 1
+	drum_note 12, 1
+	drum_note 5, 1
 	noisesampleset 0
-	note A#, 1
-	note __, 1
-	loopchannel 3, Music_Megalovania_Ch4_loop13
-	callchannel Music_Megalovania_Ch4_ditty2
-	jumpchannel Music_Megalovania_Ch4_loop
+	drum_note 11, 1
+	rest 1
+	sound_loop 3, Music_Megalovania_Ch4_loop13
+	sound_call Music_Megalovania_Ch4_ditty2
+	sound_jump Music_Megalovania_Ch4_loop
 
 Music_Megalovania_Ch4_ditty1:
-	note A#, 1
-	note D#, 1
-	note A#, 1
-	note __, 1
-	note A#, 1
-	note A#, 1
-	note D#, 1
-	note A#, 1
-	note A#, 1
-	note A#, 1
-	note A#, 1
-	note D#, 1
-	note A#, 1
-	note D#, 1
-	note A_, 1
-	note __, 1
-	note A_, 1
-	note D#, 1
-	note A_, 1
-	note __, 1
-	note A_, 1
-	note A_, 1
-	note D#, 1
-	note A_, 1
-	note A_, 1
-	note A_, 1
-	note A_, 1
-	note D#, 1
-	note A_, 1
-	note D#, 1
-	endchannel
+	drum_note 11, 1
+	drum_note 4, 1
+	drum_note 11, 1
+	rest 1
+	drum_note 11, 1
+	drum_note 11, 1
+	drum_note 4, 1
+	drum_note 11, 1
+	drum_note 11, 1
+	drum_note 11, 1
+	drum_note 11, 1
+	drum_note 4, 1
+	drum_note 11, 1
+	drum_note 4, 1
+	drum_note 10, 1
+	rest 1
+	drum_note 10, 1
+	drum_note 4, 1
+	drum_note 10, 1
+	rest 1
+	drum_note 10, 1
+	drum_note 10, 1
+	drum_note 4, 1
+	drum_note 10, 1
+	drum_note 10, 1
+	drum_note 10, 1
+	drum_note 10, 1
+	drum_note 4, 1
+	drum_note 10, 1
+	drum_note 4, 1
+	sound_ret
 
 Music_Megalovania_Ch4_ditty2:
 	noisesampleset 5
-	note B_, 1
-	note E_, 1
+	drum_note 12, 1
+	drum_note 5, 1
 	noisesampleset 0
-	note A#, 1
-	note __, 1
+	drum_note 11, 1
+	rest 1
 	noisesampleset 5
-	note B_, 1
-	note E_, 1
+	drum_note 12, 1
+	drum_note 5, 1
 	noisesampleset 0
-	note A#, 1
+	drum_note 11, 1
 	noisesampleset 5
-	note B_, 1
-	note E_, 1
-	note B_, 1
+	drum_note 12, 1
+	drum_note 5, 1
+	drum_note 12, 1
 	noisesampleset 0
-	note A#, 1
-	note __, 1
-	endchannel
+	drum_note 11, 1
+	rest 1
+	sound_ret
 
 Music_Megalovania_Ch4_ditty3:
-	note E_, 1
+	drum_note 5, 1
 	noisesampleset 0
-	note A#, 1
-	note __, 1
+	drum_note 11, 1
+	rest 1
 	noisesampleset 5
-	note B_, 1
-	note E_, 1
+	drum_note 12, 1
+	drum_note 5, 1
 	noisesampleset 0
-	note A#, 1
-	note F_, 1
+	drum_note 11, 1
+	drum_note 6, 1
 	noisesampleset 5
-	note B_, 1
-	note E_, 1
+	drum_note 12, 1
+	drum_note 5, 1
 	noisesampleset 0
-	note A#, 1
+	drum_note 11, 1
 	noisesampleset 5
-	note B_, 1
-	note E_, 1
-	note B_, 1
+	drum_note 12, 1
+	drum_note 5, 1
+	drum_note 12, 1
 	noisesampleset 0
-	note A#, 1
-	note __, 1
+	drum_note 11, 1
+	rest 1
 	noisesampleset 5
-	note B_, 1
-	endchannel
+	drum_note 12, 1
+	sound_ret
 
 Music_Megalovania_Ch4_ditty4:
-	note F_, 1
+	drum_note 6, 1
 	noisesampleset 5
-	note B_, 1
-	note E_, 1
+	drum_note 12, 1
+	drum_note 5, 1
 	noisesampleset 0
-	note A#, 1
+	drum_note 11, 1
 	noisesampleset 5
-	note B_, 1
-	note E_, 1
-	note B_, 1
+	drum_note 12, 1
+	drum_note 5, 1
+	drum_note 12, 1
 	noisesampleset 0
-	note A#, 1
-	note __, 1
+	drum_note 11, 1
+	rest 1
 	noisesampleset 5
-	note B_, 1
-	note E_, 1
+	drum_note 12, 1
+	drum_note 5, 1
 	noisesampleset 0
-	endchannel
+	sound_ret
