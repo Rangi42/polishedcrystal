@@ -300,7 +300,7 @@ Music_GymLeaderBattleSwSh_Ch3:
 	note G_, 8
 	note __, 4
 	octave 3
-	slidepitchto 1, 5, C_
+	pitch_slide 1, 3, C_
 	note G_, 4
 	octave 2
 	callchannel Music_GymLeaderBattleSwSh_Ch3_ditty2

@@ -109,11 +109,11 @@ MACRO toggle_sfx
 	db toggle_sfx_cmd
 ENDM
 
-	const slidepitchto_cmd
-MACRO slidepitchto
-	db slidepitchto_cmd
+	const pitch_slide_cmd ; $e0
+MACRO pitch_slide
+	db pitch_slide_cmd
 	db \1 - 1 ; duration
-	dn \2, \3 ; octave, pitch
+	dn 8 - \2, \3 % 12 ; octave, pitch
 ENDM
 
 	const vibrato_cmd

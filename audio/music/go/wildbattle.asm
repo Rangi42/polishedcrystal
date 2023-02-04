@@ -205,7 +205,7 @@ Music_WildBattleGo_Ch2_loop:
 	octave 3
 	note D_, 2
 	note F_, 2
-	slidepitchto 1, 5, A#
+	pitch_slide 1, 3, A#
 	note A_, 1
 	note A#, 3
 	note F_, 2

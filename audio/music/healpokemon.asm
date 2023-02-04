@@ -11,16 +11,16 @@ Music_HealPokemon_Ch1:
 	tone $0001
 	note_type 12, 8, 1
 	note __, 2
-	slidepitchto 1, 4, __
+	pitch_slide 1, 4, B_
 	note B_, 2
-	slidepitchto 1, 5, E_
+	pitch_slide 1, 3, E_
 	note B_, 2
-	slidepitchto 1, 4, E_
+	pitch_slide 1, 4, E_
 	note E_, 2
 	note __, 4
-	slidepitchto 1, 3, __
+	pitch_slide 1, 5, B_
 	note E_, 4
-	slidepitchto 1, 4, __
+	pitch_slide 1, 4, B_
 	note B_, 4
 	endchannel
 

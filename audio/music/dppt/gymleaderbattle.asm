@@ -227,7 +227,7 @@ Music_GymLeaderBattleDPPt_Ch1_loop:
 	octave 1
 	note A_, 4
 	duty_cycle 2
-	slidepitchto 1, 7, G_
+	pitch_slide 1, 1, G_
 	octave 2
 	note A#, 8
 	note __, 16
