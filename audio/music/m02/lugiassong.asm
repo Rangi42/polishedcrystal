@@ -23,7 +23,7 @@ Music_LugiasSong2000_Ch1:
 	note_type 12, 6, 0
 Music_LugiasSong2000_Ch1_loop_1:
 	note __, 8
-	loopchannel 16, Music_LugiasSong2000_Ch1_loop_1
+	sound_loop 16, Music_LugiasSong2000_Ch1_loop_1
 	note __, 8
 	octave 2
 	note E_, 16
@@ -55,7 +55,7 @@ Music_LugiasSong2000_Ch2:
 	note_type 12, 1, 0
 Music_LugiasSong2000_Ch2_loop_1:
 	note __, 16
-	loopchannel 4, Music_LugiasSong2000_Ch2_loop_1
+	sound_loop 4, Music_LugiasSong2000_Ch2_loop_1
 	octave 2
 	note B_, 16
 	note B_, 16
@@ -393,7 +393,7 @@ Music_LugiasSong2000_Ch4:
 	note_type 12
 Music_LugiasSong2000_Ch4_loop_1:
 	note __, 16
-	loopchannel 8, Music_LugiasSong2000_Ch4_loop_1
+	sound_loop 8, Music_LugiasSong2000_Ch4_loop_1
 	note_type 6
 	note C#, 2
 	note C#, 2

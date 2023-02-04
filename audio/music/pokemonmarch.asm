@@ -291,7 +291,7 @@ Music_PokemonMarch_branch_f6f7b:
 	octave 4
 	note F_, 2
 	note __, 1
-	loopchannel 3, Music_PokemonMarch_branch_f6f7b
+	sound_loop 3, Music_PokemonMarch_branch_f6f7b
 	octave 3
 	note A#, 2
 	note __, 2

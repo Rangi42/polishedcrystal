@@ -99,7 +99,7 @@ Music_DragonsDen_branch_eed6d:
 	note G#, 4
 	note G#, 4
 	note G#, 4
-	loopchannel 2, Music_DragonsDen_branch_eed6d
+	sound_loop 2, Music_DragonsDen_branch_eed6d
 	endchannel
 
 Music_DragonsDen_Ch3:
@@ -127,7 +127,7 @@ Music_DragonsDen_branch_eed78:
 	note G#, 1
 	octave 4
 	note C#, 1
-	loopchannel 15, Music_DragonsDen_branch_eed78
+	sound_loop 15, Music_DragonsDen_branch_eed78
 	note __, 16
 	note_type 6, 2, 7
 Music_DragonsDen_branch_eed99:
@@ -153,7 +153,7 @@ Music_DragonsDen_branch_eed99:
 	note G#, 2
 	octave 3
 	note C#, 2
-	loopchannel 16, Music_DragonsDen_branch_eed99
+	sound_loop 16, Music_DragonsDen_branch_eed99
 	sound_jump Music_DragonsDen_branch_eed78
 
 Music_DragonsDen_Ch4:

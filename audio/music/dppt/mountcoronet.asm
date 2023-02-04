@@ -45,7 +45,7 @@ Music_MountCoronetDPPt_Ch1_loop:
 	note D#, 6
 	octave 4
 	note C_, 2
-	loopchannel 4, Music_MountCoronetDPPt_Ch1_loop
+	sound_loop 4, Music_MountCoronetDPPt_Ch1_loop
 	octave 3
 	note G_, 6
 	octave 4

@@ -27,7 +27,7 @@ Music_TitleScreenXY_Ch1_b1:
 	note G#, 2
 	note D#, 2
 	note C#, 2
-	loopchannel 8, Music_TitleScreenXY_Ch1_b1
+	sound_loop 8, Music_TitleScreenXY_Ch1_b1
 	note_type 8, 9, 7
 Music_TitleScreenXY_Ch1_b2:
 	octave 3
@@ -38,7 +38,7 @@ Music_TitleScreenXY_Ch1_b2:
 	note B_, 2
 	note F#, 2
 	note E_, 2
-	loopchannel 4, Music_TitleScreenXY_Ch1_b2
+	sound_loop 4, Music_TitleScreenXY_Ch1_b2
 	note_type 8, 11, 7
 Music_TitleScreenXY_Ch1_b3:
 	octave 4
@@ -50,7 +50,7 @@ Music_TitleScreenXY_Ch1_b3:
 	octave 4
 	note A_, 2
 	note G_, 2
-	loopchannel 2, Music_TitleScreenXY_Ch1_b3
+	sound_loop 2, Music_TitleScreenXY_Ch1_b3
 	note_type 8, 11, 2
 	octave 3
 	note G#, 6
@@ -296,7 +296,7 @@ Music_TitleScreenXY_Ch2_b1:
 	note G#, 2
 	note D#, 2
 	note C#, 2
-	loopchannel 8, Music_TitleScreenXY_Ch2_b1
+	sound_loop 8, Music_TitleScreenXY_Ch2_b1
 	note_type 8, 10, 7
 Music_TitleScreenXY_Ch2_b2:
 	octave 2
@@ -307,7 +307,7 @@ Music_TitleScreenXY_Ch2_b2:
 	note B_, 2
 	note F#, 2
 	note E_, 2
-	loopchannel 4, Music_TitleScreenXY_Ch2_b2
+	sound_loop 4, Music_TitleScreenXY_Ch2_b2
 	note_type 8, 12, 7
 Music_TitleScreenXY_Ch2_b3:
 	octave 3
@@ -319,7 +319,7 @@ Music_TitleScreenXY_Ch2_b3:
 	octave 3
 	note A_, 2
 	note G_, 2
-	loopchannel 2, Music_TitleScreenXY_Ch2_b3
+	sound_loop 2, Music_TitleScreenXY_Ch2_b3
 	octave 2
 	note G#, 2
 	note __, 4
@@ -514,7 +514,7 @@ Music_TitleScreenXY_Ch2_b3:
 Music_TitleScreenXY_Ch2_b4:
 	note F#, 1
 	note __, 1
-	loopchannel 5, Music_TitleScreenXY_Ch2_b4
+	sound_loop 5, Music_TitleScreenXY_Ch2_b4
 	note G_, 1
 	note __, 1
 	note G#, 2
@@ -618,7 +618,7 @@ Music_TitleScreenXY_Ch3_b1:
 	note __, 2
 	note A#, 4
 	note __, 2
-	loopchannel 2, Music_TitleScreenXY_Ch3_b1
+	sound_loop 2, Music_TitleScreenXY_Ch3_b1
 	callchannel Music_TitleScreenXY_Ch3_b2
 	callchannel Music_TitleScreenXY_Ch3_b3
 	octave 2
@@ -913,7 +913,7 @@ Music_TitleScreenXY_Ch4_b1:
 	note SNARE2, 4
 	note SNARE2, 8
 	note SNARE2, 4
-	loopchannel 4, Music_TitleScreenXY_Ch4_b1
+	sound_loop 4, Music_TitleScreenXY_Ch4_b1
 	note_type 12
 	note __, 8
 	note 12, 16

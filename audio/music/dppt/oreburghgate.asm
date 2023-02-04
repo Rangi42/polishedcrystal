@@ -67,7 +67,7 @@ Music_OreburghGateDPPt_Ch1_branch_1:
 	note D_, 8
 	volume_envelope 4, 0
 	note E_, 4
-	loopchannel 3, Music_OreburghGateDPPt_Ch1_branch_1
+	sound_loop 3, Music_OreburghGateDPPt_Ch1_branch_1
 Music_OreburghGateDPPt_Ch1_branch_2:
 	volume_envelope 13, 7
 	octave 2
@@ -252,7 +252,7 @@ Music_OreburghGateDPPt_Ch2_branch_1:
 	octave 3
 	note A#, 2
 	note G_, 2
-	loopchannel 2, Music_OreburghGateDPPt_Ch2_branch_1
+	sound_loop 2, Music_OreburghGateDPPt_Ch2_branch_1
 Music_OreburghGateDPPt_Ch2_branch_2:
 	octave 4
 	volume_envelope 3, 0
@@ -1137,7 +1137,7 @@ Music_OreburghGateDPPt_Ch3_branch_2:
 	octave 4
 	volume_envelope 2, 2
 	note G_, 1
-	loopchannel 2, Music_OreburghGateDPPt_Ch3_branch_2
+	sound_loop 2, Music_OreburghGateDPPt_Ch3_branch_2
 	octave 5
 	volume_envelope 2, 2
 	note F#, 1

@@ -156,7 +156,7 @@ Music_MewtwoBattleStadium_Ch1:
 	note C_, 1
 Music_MewtwoBattleStadium_Ch1_loop_1:
 	callchannel Music_MewtwoBattleStadium_Ch1_ditty1
-	loopchannel 31, Music_MewtwoBattleStadium_Ch1_loop_1
+	sound_loop 31, Music_MewtwoBattleStadium_Ch1_loop_1
 Music_MewtwoBattleStadium_Ch1_loop:
 	duty_cycle_pattern 1, 1, 1, 1
 	vibrato $00, $13
@@ -719,7 +719,7 @@ Music_MewtwoBattleStadium_Ch1_loop_2:
 	octave 3
 	note B_, 2
 	note A_, 2
-	loopchannel 2, Music_MewtwoBattleStadium_Ch1_loop_2
+	sound_loop 2, Music_MewtwoBattleStadium_Ch1_loop_2
 	note __, 16
 	duty_cycle_pattern 1, 1, 1, 1
 	volume_envelope 12, 7
@@ -831,7 +831,7 @@ Music_MewtwoBattleStadium_Ch2_loop_1:
 	note F_, 1
 	note E_, 1
 	note D#, 1
-	loopchannel 5, Music_MewtwoBattleStadium_Ch2_loop_1
+	sound_loop 5, Music_MewtwoBattleStadium_Ch2_loop_1
 	volume_envelope 6, 8
 	octave 3
 	note E_, 16
@@ -1292,7 +1292,7 @@ Music_MewtwoBattleStadium_Ch3_loop_1:
 	note __, 1
 	note D_, 1
 	note __, 1
-	loopchannel 32, Music_MewtwoBattleStadium_Ch3_loop_1
+	sound_loop 32, Music_MewtwoBattleStadium_Ch3_loop_1
 Music_MewtwoBattleStadium_Ch3_loop:
 	octave 1
 	callchannel Music_MewtwoBattleStadium_Ch3_ditty1
@@ -1393,27 +1393,27 @@ Music_MewtwoBattleStadium_Ch3_loop:
 	note A#, 1
 Music_MewtwoBattleStadium_Ch3_loop_2:
 	callchannel Music_MewtwoBattleStadium_Ch3_ditty6
-	loopchannel 10, Music_MewtwoBattleStadium_Ch3_loop_2
+	sound_loop 10, Music_MewtwoBattleStadium_Ch3_loop_2
 	note E_, 2
 	note A_, 2
 	note A_, 2
 	note G_, 2
 Music_MewtwoBattleStadium_Ch3_loop_3:
 	callchannel Music_MewtwoBattleStadium_Ch3_ditty6
-	loopchannel 4, Music_MewtwoBattleStadium_Ch3_loop_3
+	sound_loop 4, Music_MewtwoBattleStadium_Ch3_loop_3
 	note E_, 2
 	note A_, 2
 Music_MewtwoBattleStadium_Ch3_loop_5:
 	note A#, 2
 	note G#, 2
 	note F_, 2
-	loopchannel 5, Music_MewtwoBattleStadium_Ch3_loop_5
+	sound_loop 5, Music_MewtwoBattleStadium_Ch3_loop_5
 	note A#, 2
 	note A_, 2
 	note G_, 2
 Music_MewtwoBattleStadium_Ch3_loop_4:
 	callchannel Music_MewtwoBattleStadium_Ch3_ditty6
-	loopchannel 4, Music_MewtwoBattleStadium_Ch3_loop_4
+	sound_loop 4, Music_MewtwoBattleStadium_Ch3_loop_4
 	note E_, 2
 	note A_, 2
 	note F_, 2
@@ -1421,23 +1421,23 @@ Music_MewtwoBattleStadium_Ch3_loop_4:
 	note C_, 2
 Music_MewtwoBattleStadium_Ch3_loop_6:
 	callchannel Music_MewtwoBattleStadium_Ch3_ditty7
-	loopchannel 4, Music_MewtwoBattleStadium_Ch3_loop_6
+	sound_loop 4, Music_MewtwoBattleStadium_Ch3_loop_6
 	callchannel Music_MewtwoBattleStadium_Ch3_ditty9
 Music_MewtwoBattleStadium_Ch3_loop_9:
 	callchannel Music_MewtwoBattleStadium_Ch3_ditty8
-	loopchannel 4, Music_MewtwoBattleStadium_Ch3_loop_9
+	sound_loop 4, Music_MewtwoBattleStadium_Ch3_loop_9
 	callchannel Music_MewtwoBattleStadium_Ch3_ditty10
 Music_MewtwoBattleStadium_Ch3_loop_7:
 	callchannel Music_MewtwoBattleStadium_Ch3_ditty7
-	loopchannel 4, Music_MewtwoBattleStadium_Ch3_loop_7
+	sound_loop 4, Music_MewtwoBattleStadium_Ch3_loop_7
 	callchannel Music_MewtwoBattleStadium_Ch3_ditty9
 Music_MewtwoBattleStadium_Ch3_loop_10:
 	callchannel Music_MewtwoBattleStadium_Ch3_ditty8
-	loopchannel 4, Music_MewtwoBattleStadium_Ch3_loop_10
+	sound_loop 4, Music_MewtwoBattleStadium_Ch3_loop_10
 	callchannel Music_MewtwoBattleStadium_Ch3_ditty10
 Music_MewtwoBattleStadium_Ch3_loop_8:
 	callchannel Music_MewtwoBattleStadium_Ch3_ditty7
-	loopchannel 3, Music_MewtwoBattleStadium_Ch3_loop_8
+	sound_loop 3, Music_MewtwoBattleStadium_Ch3_loop_8
 	octave 1
 	note A#, 2
 	note F_, 2
@@ -1448,7 +1448,7 @@ Music_MewtwoBattleStadium_Ch3_loop_8:
 Music_MewtwoBattleStadium_Ch3_loop_11:
 	callchannel Music_MewtwoBattleStadium_Ch3_ditty11
 	callchannel Music_MewtwoBattleStadium_Ch3_ditty12
-	loopchannel 7, Music_MewtwoBattleStadium_Ch3_loop_11
+	sound_loop 7, Music_MewtwoBattleStadium_Ch3_loop_11
 	callchannel Music_MewtwoBattleStadium_Ch3_ditty11
 	note C_, 1
 	note C_, 1
@@ -1763,12 +1763,12 @@ Music_MewtwoBattleStadium_Ch4:
 	note F#, 2
 Music_MewtwoBattleStadium_Ch4_loop1:
 	callchannel Music_MewtwoBattleStadium_Ch4_ditty1
-	loopchannel 16, Music_MewtwoBattleStadium_Ch4_loop1
+	sound_loop 16, Music_MewtwoBattleStadium_Ch4_loop1
 	callchannel Music_MewtwoBattleStadium_Ch4_ditty6
 Music_MewtwoBattleStadium_Ch4_loop2:
 	callchannel Music_MewtwoBattleStadium_Ch4_ditty1
 	callchannel Music_MewtwoBattleStadium_Ch4_ditty2
-	loopchannel 3, Music_MewtwoBattleStadium_Ch4_loop2
+	sound_loop 3, Music_MewtwoBattleStadium_Ch4_loop2
 	callchannel Music_MewtwoBattleStadium_Ch4_ditty23
 	note D#, 1
 	note D#, 1
@@ -1779,28 +1779,28 @@ Music_MewtwoBattleStadium_Ch4_loop2:
 	note D#, 1
 Music_MewtwoBattleStadium_Ch4_loop:
 	callchannel Music_MewtwoBattleStadium_Ch4_ditty3
-	loopchannel 4, Music_MewtwoBattleStadium_Ch4_loop
+	sound_loop 4, Music_MewtwoBattleStadium_Ch4_loop
 	note F#, 1
 	note E_, 1
 Music_MewtwoBattleStadium_Ch4_loop3:
 	callchannel Music_MewtwoBattleStadium_Ch4_ditty4
-	loopchannel 14, Music_MewtwoBattleStadium_Ch4_loop3
+	sound_loop 14, Music_MewtwoBattleStadium_Ch4_loop3
 	callchannel Music_MewtwoBattleStadium_Ch4_ditty5
 Music_MewtwoBattleStadium_Ch4_loop4:
 	callchannel Music_MewtwoBattleStadium_Ch4_ditty4
-	loopchannel 15, Music_MewtwoBattleStadium_Ch4_loop4
+	sound_loop 15, Music_MewtwoBattleStadium_Ch4_loop4
 	callchannel Music_MewtwoBattleStadium_Ch4_ditty5
 Music_MewtwoBattleStadium_Ch4_loop5:
 	callchannel Music_MewtwoBattleStadium_Ch4_ditty4
-	loopchannel 15, Music_MewtwoBattleStadium_Ch4_loop5
+	sound_loop 15, Music_MewtwoBattleStadium_Ch4_loop5
 	callchannel Music_MewtwoBattleStadium_Ch4_ditty5
 Music_MewtwoBattleStadium_Ch4_loop6:
 	callchannel Music_MewtwoBattleStadium_Ch4_ditty4
-	loopchannel 15, Music_MewtwoBattleStadium_Ch4_loop6
+	sound_loop 15, Music_MewtwoBattleStadium_Ch4_loop6
 	callchannel Music_MewtwoBattleStadium_Ch4_ditty5
 Music_MewtwoBattleStadium_Ch4_loop7:
 	callchannel Music_MewtwoBattleStadium_Ch4_ditty4
-	loopchannel 12, Music_MewtwoBattleStadium_Ch4_loop7
+	sound_loop 12, Music_MewtwoBattleStadium_Ch4_loop7
 	note F#, 2
 	callchannel Music_MewtwoBattleStadium_Ch4_ditty14
 	callchannel Music_MewtwoBattleStadium_Ch4_ditty7
@@ -1830,7 +1830,7 @@ Music_MewtwoBattleStadium_Ch4_loop8:
 	callchannel Music_MewtwoBattleStadium_Ch4_ditty11
 	callchannel Music_MewtwoBattleStadium_Ch4_ditty7
 	callchannel Music_MewtwoBattleStadium_Ch4_ditty15
-	loopchannel 4, Music_MewtwoBattleStadium_Ch4_loop8
+	sound_loop 4, Music_MewtwoBattleStadium_Ch4_loop8
 	note D#, 1
 	callchannel Music_MewtwoBattleStadium_Ch4_ditty19
 	note F#, 1
@@ -1895,13 +1895,13 @@ Music_MewtwoBattleStadium_Ch4_loop9:
 	callchannel Music_MewtwoBattleStadium_Ch4_ditty16
 	callchannel Music_MewtwoBattleStadium_Ch4_ditty7
 	callchannel Music_MewtwoBattleStadium_Ch4_ditty14
-	loopchannel 3, Music_MewtwoBattleStadium_Ch4_loop9
+	sound_loop 3, Music_MewtwoBattleStadium_Ch4_loop9
 Music_MewtwoBattleStadium_Ch4_loop10:
 	callchannel Music_MewtwoBattleStadium_Ch4_ditty7
 	callchannel Music_MewtwoBattleStadium_Ch4_ditty9
 	callchannel Music_MewtwoBattleStadium_Ch4_ditty7
 	callchannel Music_MewtwoBattleStadium_Ch4_ditty13
-	loopchannel 3, Music_MewtwoBattleStadium_Ch4_loop10
+	sound_loop 3, Music_MewtwoBattleStadium_Ch4_loop10
 	callchannel Music_MewtwoBattleStadium_Ch4_ditty7
 	callchannel Music_MewtwoBattleStadium_Ch4_ditty16
 	callchannel Music_MewtwoBattleStadium_Ch4_ditty23

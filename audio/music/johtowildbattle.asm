@@ -470,7 +470,7 @@ Music_JohtoWildBattleNight_branch_f5f94:
 Music_JohtoWildBattle_branch_f5fc6:
 	note D_, 2
 	note G_, 2
-	loopchannel 6, Music_JohtoWildBattle_branch_f5fc6
+	sound_loop 6, Music_JohtoWildBattle_branch_f5fc6
 	note D_, 2
 	note E_, 2
 	note F_, 2
@@ -487,20 +487,20 @@ Music_JohtoWildBattle_branch_f5fc6:
 Music_JohtoWildBattle_branch_f5fdb:
 	note D_, 2
 	note G_, 2
-	loopchannel 7, Music_JohtoWildBattle_branch_f5fdb
+	sound_loop 7, Music_JohtoWildBattle_branch_f5fdb
 	note F#, 4
 	callchannel Music_JohtoWildBattle_branch_f6055
 	callchannel Music_JohtoWildBattle_branch_f6055
 Music_JohtoWildBattle_branch_f5fe8:
 	note D_, 2
 	note G_, 2
-	loopchannel 7, Music_JohtoWildBattle_branch_f5fe8
+	sound_loop 7, Music_JohtoWildBattle_branch_f5fe8
 	note D_, 2
 	note A_, 2
 Music_JohtoWildBattle_branch_f5ff0:
 	note C_, 2
 	note F_, 2
-	loopchannel 5, Music_JohtoWildBattle_branch_f5ff0
+	sound_loop 5, Music_JohtoWildBattle_branch_f5ff0
 	note E_, 2
 	note D_, 2
 	note C_, 2
@@ -518,7 +518,7 @@ Music_JohtoWildBattle_branch_f5ff0:
 Music_JohtoWildBattle_branch_f6006:
 	note E_, 2
 	note A_, 2
-	loopchannel 8, Music_JohtoWildBattle_branch_f6006
+	sound_loop 8, Music_JohtoWildBattle_branch_f6006
 	callchannel Music_JohtoWildBattle_branch_f6055
 	note D#, 2
 	note G#, 2
@@ -547,11 +547,11 @@ Music_JohtoWildBattle_branch_f6006:
 Music_JohtoWildBattle_branch_f6027:
 	note D_, 2
 	note G_, 2
-	loopchannel 8, Music_JohtoWildBattle_branch_f6027
+	sound_loop 8, Music_JohtoWildBattle_branch_f6027
 Music_JohtoWildBattle_branch_f602d:
 	note C_, 2
 	note F_, 2
-	loopchannel 7, Music_JohtoWildBattle_branch_f602d
+	sound_loop 7, Music_JohtoWildBattle_branch_f602d
 	note E_, 2
 	note C_, 2
 	note D_, 4
@@ -561,17 +561,17 @@ Music_JohtoWildBattle_branch_f602d:
 Music_JohtoWildBattle_branch_f6039:
 	note D_, 2
 	note G_, 2
-	loopchannel 12, Music_JohtoWildBattle_branch_f6039
+	sound_loop 12, Music_JohtoWildBattle_branch_f6039
 Music_JohtoWildBattle_branch_f603f:
 	note C_, 2
 	note E_, 2
-	loopchannel 7, Music_JohtoWildBattle_branch_f603f
+	sound_loop 7, Music_JohtoWildBattle_branch_f603f
 	note F_, 2
 	note F#, 2
 Music_JohtoWildBattle_branch_f6047:
 	note D_, 2
 	note G_, 2
-	loopchannel 6, Music_JohtoWildBattle_branch_f6047
+	sound_loop 6, Music_JohtoWildBattle_branch_f6047
 	note A_, 2
 	note G_, 2
 	note F#, 2
@@ -581,5 +581,5 @@ Music_JohtoWildBattle_branch_f6047:
 Music_JohtoWildBattle_branch_f6055:
 	note D#, 2
 	note G#, 2
-	loopchannel 4, Music_JohtoWildBattle_branch_f6055
+	sound_loop 4, Music_JohtoWildBattle_branch_f6055
 	endchannel

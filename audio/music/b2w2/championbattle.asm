@@ -326,7 +326,7 @@ Music_ChampionBattleB2W2_Ch1_loop_1:
 	octave 4
 	note A_, 1
 	note D_, 1
-	loopchannel 3, Music_ChampionBattleB2W2_Ch1_loop_1
+	sound_loop 3, Music_ChampionBattleB2W2_Ch1_loop_1
 	note A#, 2
 	note D#, 2
 	note A#, 2
@@ -1235,7 +1235,7 @@ Music_ChampionBattleB2W2_Ch3_loop_1:
 	note G_, 2
 	octave 2
 	note D_, 2
-	loopchannel 8, Music_ChampionBattleB2W2_Ch3_loop_1
+	sound_loop 8, Music_ChampionBattleB2W2_Ch3_loop_1
 	callchannel Music_ChampionBattleB2W2_Ch3_branch_7
 	callchannel Music_ChampionBattleB2W2_Ch3_branch_8
 	octave 2
@@ -1320,19 +1320,19 @@ Music_ChampionBattleB2W2_Ch3_loop_2:
 	note D_, 2
 	octave 2
 	note D_, 2
-	loopchannel 12, Music_ChampionBattleB2W2_Ch3_loop_2
+	sound_loop 12, Music_ChampionBattleB2W2_Ch3_loop_2
 Music_ChampionBattleB2W2_Ch3_loop_3:
 	octave 1
 	note C_, 2
 	octave 2
 	note C_, 2
-	loopchannel 4, Music_ChampionBattleB2W2_Ch3_loop_3
+	sound_loop 4, Music_ChampionBattleB2W2_Ch3_loop_3
 Music_ChampionBattleB2W2_Ch3_loop_4:
 	octave 1
 	note D_, 2
 	octave 2
 	note D_, 2
-	loopchannel 10, Music_ChampionBattleB2W2_Ch3_loop_4
+	sound_loop 10, Music_ChampionBattleB2W2_Ch3_loop_4
 	octave 1
 	note F_, 2
 	octave 2
@@ -1394,7 +1394,7 @@ Music_ChampionBattleB2W2_Ch3_loop_5:
 	note D_, 2
 	octave 3
 	note D_, 2
-	loopchannel 8, Music_ChampionBattleB2W2_Ch3_loop_5
+	sound_loop 8, Music_ChampionBattleB2W2_Ch3_loop_5
 	octave 1
 	note D_, 2
 	octave 2
@@ -1730,7 +1730,7 @@ Music_ChampionBattleB2W2_Ch3_branch_12:
 	note C_, 1
 	volume_envelope 3, -1
 	note C_, 1
-	loopchannel 3, Music_ChampionBattleB2W2_Ch3_branch_12
+	sound_loop 3, Music_ChampionBattleB2W2_Ch3_branch_12
 	volume_envelope 1, -1
 	note D_, 2
 	volume_envelope 3, -1
@@ -1771,7 +1771,7 @@ Music_ChampionBattleB2W2_Ch4_loop_main:
 Music_ChampionBattleB2W2_Ch4_loop_1:
 	note C_, 2
 	note D#, 2
-	loopchannel 14, Music_ChampionBattleB2W2_Ch4_loop_1
+	sound_loop 14, Music_ChampionBattleB2W2_Ch4_loop_1
 	note C_, 1
 	note C_, 1
 	note C_, 2
@@ -1780,10 +1780,10 @@ Music_ChampionBattleB2W2_Ch4_loop_1:
 	note C_, 2
 Music_ChampionBattleB2W2_Ch4_loop_2:
 	callchannel Music_ChampionBattleB2W2_Ch4_branch_3
-	loopchannel 16, Music_ChampionBattleB2W2_Ch4_loop_2
+	sound_loop 16, Music_ChampionBattleB2W2_Ch4_loop_2
 Music_ChampionBattleB2W2_Ch4_loop_3:
 	callchannel Music_ChampionBattleB2W2_Ch4_branch_3
-	loopchannel 15, Music_ChampionBattleB2W2_Ch4_loop_3
+	sound_loop 15, Music_ChampionBattleB2W2_Ch4_loop_3
 	note C_, 1
 	note C_, 1
 	note C_, 1
@@ -1794,7 +1794,7 @@ Music_ChampionBattleB2W2_Ch4_loop_3:
 	note C_, 1
 Music_ChampionBattleB2W2_Ch4_loop_4:
 	callchannel Music_ChampionBattleB2W2_Ch4_branch_3
-	loopchannel 12, Music_ChampionBattleB2W2_Ch4_loop_4
+	sound_loop 12, Music_ChampionBattleB2W2_Ch4_loop_4
 	note C_, 6
 	note C_, 6
 	note C_, 4
@@ -1804,7 +1804,7 @@ Music_ChampionBattleB2W2_Ch4_loop_4:
 	note G#, 4
 Music_ChampionBattleB2W2_Ch4_loop_5:
 	callchannel Music_ChampionBattleB2W2_Ch4_branch_3
-	loopchannel 16, Music_ChampionBattleB2W2_Ch4_loop_5
+	sound_loop 16, Music_ChampionBattleB2W2_Ch4_loop_5
 Music_ChampionBattleB2W2_Ch4_loop_6:
 	note B_, 2
 	note D#, 2
@@ -1817,7 +1817,7 @@ Music_ChampionBattleB2W2_Ch4_loop_6:
 	note C_, 2
 	note G#, 2
 	callchannel Music_ChampionBattleB2W2_Ch4_branch_4
-	loopchannel 3, Music_ChampionBattleB2W2_Ch4_loop_6
+	sound_loop 3, Music_ChampionBattleB2W2_Ch4_loop_6
 	note C_, 2
 	note D#, 2
 	note C_, 2
@@ -1854,10 +1854,10 @@ Music_ChampionBattleB2W2_Ch4_loop_6:
 	callchannel Music_ChampionBattleB2W2_Ch4_branch_4
 Music_ChampionBattleB2W2_Ch4_loop_7:
 	callchannel Music_ChampionBattleB2W2_Ch4_branch_3
-	loopchannel 16, Music_ChampionBattleB2W2_Ch4_loop_7
+	sound_loop 16, Music_ChampionBattleB2W2_Ch4_loop_7
 Music_ChampionBattleB2W2_Ch4_loop_8:
 	callchannel Music_ChampionBattleB2W2_Ch4_branch_3
-	loopchannel 16, Music_ChampionBattleB2W2_Ch4_loop_8
+	sound_loop 16, Music_ChampionBattleB2W2_Ch4_loop_8
 	note C_, 16
 	note __, 16
 	note __, 16
@@ -1871,7 +1871,7 @@ Music_ChampionBattleB2W2_Ch4_loop_8:
 Music_ChampionBattleB2W2_Ch4_loop_9:
 	note C_, 2
 	note D#, 2
-	loopchannel 7, Music_ChampionBattleB2W2_Ch4_loop_9
+	sound_loop 7, Music_ChampionBattleB2W2_Ch4_loop_9
 	callchannel Music_ChampionBattleB2W2_Ch4_branch_4
 	sound_jump Music_ChampionBattleB2W2_Ch4_loop_main
 

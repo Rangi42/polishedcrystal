@@ -59,7 +59,7 @@ Music_HoOhBattleHGSS_Ch1_L:
 	note A_, 6
 	octave 3
 	note C_, 6
-	loopchannel 3, Music_HoOhBattleHGSS_Ch1_L
+	sound_loop 3, Music_HoOhBattleHGSS_Ch1_L
 	volume_envelope 12, 2
 	octave 2
 	note B_, 2
@@ -559,7 +559,7 @@ Music_HoOhBattleHGSS_Ch2_L:
 	note E_, 6
 	note D_, 6
 	note F_, 6
-	loopchannel 3, Music_HoOhBattleHGSS_Ch2_L
+	sound_loop 3, Music_HoOhBattleHGSS_Ch2_L
 	volume_envelope 12, 2
 	note E_, 2
 	note E_, 4
@@ -924,7 +924,7 @@ Music_HoOhBattleHGSS_Ch3_L:
 	note B_, 2
 	octave 2
 	note E_, 2
-	loopchannel 93, Music_HoOhBattleHGSS_Ch3_L
+	sound_loop 93, Music_HoOhBattleHGSS_Ch3_L
 	note F_, 2
 	note D_, 2
 	note E_, 2
@@ -1108,7 +1108,7 @@ Music_HoOhBattleHGSS_Ch3_L1:
 	note G_, 2
 	octave 2
 	note D_, 2
-	loopchannel 2, Music_HoOhBattleHGSS_Ch3_L1
+	sound_loop 2, Music_HoOhBattleHGSS_Ch3_L1
 	note F_, 4
 	note B_, 4
 	note F_, 4

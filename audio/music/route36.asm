@@ -477,7 +477,7 @@ Music_Route36_branch_e9713:
 	callchannel Music_Route36_branch_e973b
 	callchannel Music_Route36_branch_e9734
 	callchannel Music_Route36_branch_e9741
-	loopchannel 2, Music_Route36_branch_e9713
+	sound_loop 2, Music_Route36_branch_e9713
 Music_Route36_branch_e9723:
 	note A#, 4
 	note A_, 2
@@ -485,7 +485,7 @@ Music_Route36_branch_e9723:
 	note B_, 1
 	note B_, 1
 	note A_, 4
-	loopchannel 11, Music_Route36_branch_e9723
+	sound_loop 11, Music_Route36_branch_e9723
 	callchannel Music_Route36_branch_e9741
 	sound_jump Music_Route36_branch_e9713
 

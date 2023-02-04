@@ -14,7 +14,7 @@ Music_VictoryRoad_Ch1:
 	note_type 12, 11, 3
 Music_VictoryRoad_branch_f6c8d:
 	callchannel Music_VictoryRoad_branch_f6cb9
-	loopchannel 6, Music_VictoryRoad_branch_f6c8d
+	sound_loop 6, Music_VictoryRoad_branch_f6c8d
 Music_VictoryRoad_branch_f6c94:
 	volume_envelope 11, 2
 	octave 2
@@ -36,10 +36,10 @@ Music_VictoryRoad_branch_f6c94:
 	note A_, 1
 	octave 3
 	note G#, 3
-	loopchannel 2, Music_VictoryRoad_branch_f6c94
+	sound_loop 2, Music_VictoryRoad_branch_f6c94
 Music_VictoryRoad_branch_f6cae:
 	callchannel Music_VictoryRoad_branch_f6cb9
-	loopchannel 2, Music_VictoryRoad_branch_f6cae
+	sound_loop 2, Music_VictoryRoad_branch_f6cae
 	sound_jump Music_VictoryRoad_branch_f6c8d
 
 Music_VictoryRoad_branch_f6cb9:
@@ -139,7 +139,7 @@ Music_VictoryRoad_Ch3:
 	note_type 12, 2, 8
 Music_VictoryRoad_branch_f6d31:
 	callchannel Music_VictoryRoad_branch_f6d52
-	loopchannel 6, Music_VictoryRoad_branch_f6d31
+	sound_loop 6, Music_VictoryRoad_branch_f6d31
 Music_VictoryRoad_branch_f6d38:
 	note D_, 1
 	note __, 1
@@ -152,10 +152,10 @@ Music_VictoryRoad_branch_f6d38:
 	note __, 2
 	note D_, 1
 	note B_, 3
-	loopchannel 2, Music_VictoryRoad_branch_f6d38
+	sound_loop 2, Music_VictoryRoad_branch_f6d38
 Music_VictoryRoad_branch_f6d47:
 	callchannel Music_VictoryRoad_branch_f6d52
-	loopchannel 2, Music_VictoryRoad_branch_f6d47
+	sound_loop 2, Music_VictoryRoad_branch_f6d47
 	sound_jump Music_VictoryRoad_branch_f6d31
 
 Music_VictoryRoad_branch_f6d52:

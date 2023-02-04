@@ -551,7 +551,7 @@ Music_Gym_branch_f4ae1:
 	note D_, 2
 	note D_, 4
 	note B_, 8
-	loopchannel 4, Music_Gym_branch_f4ae1
+	sound_loop 4, Music_Gym_branch_f4ae1
 Music_Gym_branch_f4afa:
 	note D#, 4
 	note F#, 4
@@ -563,5 +563,5 @@ Music_Gym_branch_f4afa:
 	note D#, 4
 	note D_, 4
 	note F#, 4
-	loopchannel 8, Music_Gym_branch_f4afa
+	sound_loop 8, Music_Gym_branch_f4afa
 	sound_jump Music_Gym_branch_f4ac7

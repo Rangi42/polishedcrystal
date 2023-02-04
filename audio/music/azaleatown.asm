@@ -26,7 +26,7 @@ Music_AzaleaTown_branch_f5801:
 	note F_, 2
 	note F_, 2
 	note F_, 2
-	loopchannel 2, Music_AzaleaTown_branch_f5801
+	sound_loop 2, Music_AzaleaTown_branch_f5801
 Music_AzaleaTown_branch_f5816:
 	callchannel Music_AzaleaTown_branch_f588c
 	stereo_panning TRUE, FALSE

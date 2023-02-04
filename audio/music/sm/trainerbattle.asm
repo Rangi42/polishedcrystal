@@ -66,7 +66,7 @@ Music_TrainerBattleSM_Ch1_loop_1:
 	note G_, 6
 	note F_, 6
 	note E_, 4
-	loopchannel 2, Music_TrainerBattleSM_Ch1_loop_1
+	sound_loop 2, Music_TrainerBattleSM_Ch1_loop_1
 	octave 4
 	volume_envelope 6, 0
 	note C_, 6
@@ -195,7 +195,7 @@ Music_TrainerBattleSM_Ch1_loop_2:
 	note C_, 11
 	note C_, 5
 	note C_, 16
-	loopchannel 5, Music_TrainerBattleSM_Ch1_loop_2
+	sound_loop 5, Music_TrainerBattleSM_Ch1_loop_2
 	note_type 6, 10, 1
 Music_TrainerBattleSM_Ch1_loop_3:
 	octave 4
@@ -287,7 +287,7 @@ Music_TrainerBattleSM_Ch1_loop_3:
 	note G_, 1
 	note E_, 1
 	note C_, 1
-	loopchannel 2, Music_TrainerBattleSM_Ch1_loop_3
+	sound_loop 2, Music_TrainerBattleSM_Ch1_loop_3
 	sound_jump Music_TrainerBattleSM_Ch1_loop_main
 
 Music_TrainerBattleSM_Ch2:
@@ -658,27 +658,27 @@ Music_TrainerBattleSM_Ch3_loop_1:
 	note G_, 2
 	note C_, 2
 	note G_, 2
-	loopchannel 16, Music_TrainerBattleSM_Ch3_loop_1
+	sound_loop 16, Music_TrainerBattleSM_Ch3_loop_1
 Music_TrainerBattleSM_Ch3_loop_2:
 	octave 1
 	note A#, 2
 	octave 2
 	note F_, 2
-	loopchannel 16, Music_TrainerBattleSM_Ch3_loop_2
+	sound_loop 16, Music_TrainerBattleSM_Ch3_loop_2
 Music_TrainerBattleSM_Ch3_loop_3:
 	note C_, 2
 	note G_, 2
-	loopchannel 16, Music_TrainerBattleSM_Ch3_loop_3
+	sound_loop 16, Music_TrainerBattleSM_Ch3_loop_3
 Music_TrainerBattleSM_Ch3_loop_4:
 	octave 1
 	note A#, 2
 	octave 2
 	note F_, 2
-	loopchannel 16, Music_TrainerBattleSM_Ch3_loop_4
+	sound_loop 16, Music_TrainerBattleSM_Ch3_loop_4
 Music_TrainerBattleSM_Ch3_loop_5:
 	note C_, 2
 	note G_, 2
-	loopchannel 16, Music_TrainerBattleSM_Ch3_loop_5
+	sound_loop 16, Music_TrainerBattleSM_Ch3_loop_5
 	volume_envelope 1, -1
 Music_TrainerBattleSM_Ch3_loop_6:
 	note F_, 2
@@ -753,7 +753,7 @@ Music_TrainerBattleSM_Ch3_loop_6:
 	note __, 1
 	note D#, 2
 	note __, 2
-	loopchannel 2, Music_TrainerBattleSM_Ch3_loop_6
+	sound_loop 2, Music_TrainerBattleSM_Ch3_loop_6
 	octave 1
 	note F_, 2
 	note F#, 2
@@ -799,7 +799,7 @@ Music_TrainerBattleSM_Ch3_loop_6:
 Music_TrainerBattleSM_Ch3_loop_7:
 	note C_, 2
 	note G_, 2
-	loopchannel 16, Music_TrainerBattleSM_Ch3_loop_7
+	sound_loop 16, Music_TrainerBattleSM_Ch3_loop_7
 	sound_jump Music_TrainerBattleSM_Ch3_loop_main
 
 Music_TrainerBattleSM_Ch4:
@@ -816,7 +816,7 @@ Music_TrainerBattleSM_Ch4_loop_1:
 	note D#, 2
 	note D#, 2
 	note C_, 4
-	loopchannel 4, Music_TrainerBattleSM_Ch4_loop_1
+	sound_loop 4, Music_TrainerBattleSM_Ch4_loop_1
 Music_TrainerBattleSM_Ch4_loop_2:
 	note D#, 2
 	note C#, 2
@@ -826,14 +826,14 @@ Music_TrainerBattleSM_Ch4_loop_2:
 	note D#, 2
 	note D_, 2
 	note C#, 2
-	loopchannel 4, Music_TrainerBattleSM_Ch4_loop_2
+	sound_loop 4, Music_TrainerBattleSM_Ch4_loop_2
 Music_TrainerBattleSM_Ch4_loop_3:
 	note D#, 4
 	note C_, 4
 	note D#, 2
 	note D#, 2
 	note D_, 4
-	loopchannel 4, Music_TrainerBattleSM_Ch4_loop_3
+	sound_loop 4, Music_TrainerBattleSM_Ch4_loop_3
 	note B_, 3
 	note F#, 1
 	note C_, 4
@@ -865,7 +865,7 @@ Music_TrainerBattleSM_Ch4_loop_4:
 	note D#, 2
 	note D#, 2
 	note D_, 4
-	loopchannel 7, Music_TrainerBattleSM_Ch4_loop_4
+	sound_loop 7, Music_TrainerBattleSM_Ch4_loop_4
 	note D#, 4
 	note C_, 4
 	note D#, 2
@@ -904,7 +904,7 @@ Music_TrainerBattleSM_Ch4_loop_5:
 	note D#, 2
 	note D#, 2
 	note D_, 4
-	loopchannel 3, Music_TrainerBattleSM_Ch4_loop_5
+	sound_loop 3, Music_TrainerBattleSM_Ch4_loop_5
 	note D#, 4
 	note C_, 4
 	note D#, 2
@@ -918,7 +918,7 @@ Music_TrainerBattleSM_Ch4_loop_6:
 	note C_, 1
 	note D_, 1
 	note D#, 2
-	loopchannel 16, Music_TrainerBattleSM_Ch4_loop_6
+	sound_loop 16, Music_TrainerBattleSM_Ch4_loop_6
 	note B_, 4
 	note C_, 1
 	note D_, 1
@@ -929,7 +929,7 @@ Music_TrainerBattleSM_Ch4_loop_7:
 	note C_, 1
 	note D_, 1
 	note D#, 2
-	loopchannel 15, Music_TrainerBattleSM_Ch4_loop_7
+	sound_loop 15, Music_TrainerBattleSM_Ch4_loop_7
 	note B_, 4
 	note C_, 1
 	note D_, 1
@@ -940,7 +940,7 @@ Music_TrainerBattleSM_Ch4_loop_8:
 	note C_, 1
 	note D_, 1
 	note D#, 2
-	loopchannel 3, Music_TrainerBattleSM_Ch4_loop_8
+	sound_loop 3, Music_TrainerBattleSM_Ch4_loop_8
 	note B_, 4
 	note D#, 2
 	note D_, 2
@@ -972,7 +972,7 @@ Music_TrainerBattleSM_Ch4_loop_9:
 	note D#, 2
 	note D_, 2
 	note C#, 2
-	loopchannel 3, Music_TrainerBattleSM_Ch4_loop_9
+	sound_loop 3, Music_TrainerBattleSM_Ch4_loop_9
 	note D#, 2
 	note C#, 2
 	note C_, 2

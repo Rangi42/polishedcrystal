@@ -77,7 +77,7 @@ Music_FrostCavernXY_Ch1_loop_1:
 	note G_, 4
 	note G#, 2
 	note G#, 12
-	loopchannel 2, Music_FrostCavernXY_Ch1_loop_1
+	sound_loop 2, Music_FrostCavernXY_Ch1_loop_1
 	sound_jump Music_FrostCavernXY_Ch1
 
 Music_FrostCavernXY_Ch2:
@@ -162,7 +162,7 @@ Music_FrostCavernXY_Ch3_loop_1:
 	octave 4
 	note C_, 2
 	note D#, 4
-	loopchannel 6, Music_FrostCavernXY_Ch3_loop_1
+	sound_loop 6, Music_FrostCavernXY_Ch3_loop_1
 	note D#, 6
 	volume_envelope 3, 0
 	note D#, 4

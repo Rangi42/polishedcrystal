@@ -201,7 +201,7 @@ Music_ScaryHouseXY_Ch3:
 	note E_, 8
 	volume_envelope 3, 0
 	note E_, 4
-	loopchannel 2, Music_ScaryHouseXY_Ch3
+	sound_loop 2, Music_ScaryHouseXY_Ch3
 Music_ScaryHouseXY_Ch3_loop_main:
 Music_ScaryHouseXY_Ch3_loop_1:
 	volume_envelope 2, 0
@@ -225,7 +225,7 @@ Music_ScaryHouseXY_Ch3_loop_1:
 	volume_envelope 3, 0
 	note F#, 4
 	volume_envelope 2, 0
-	loopchannel 2, Music_ScaryHouseXY_Ch3_loop_1
+	sound_loop 2, Music_ScaryHouseXY_Ch3_loop_1
 	octave 3
 	note E_, 2
 	note F#, 2

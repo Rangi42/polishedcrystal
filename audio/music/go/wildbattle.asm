@@ -107,7 +107,7 @@ Music_WildBattleGo_Ch1_loop_2:
 	volume_envelope 13, 8
 	octave 4
 	note D_, 16
-	loopchannel 2, Music_WildBattleGo_Ch1_loop_2
+	sound_loop 2, Music_WildBattleGo_Ch1_loop_2
 	duty_cycle_pattern 1, 1, 2, 2
 	octave 3
 	callchannel Music_WildBattleGo_Ch2_ditty2
@@ -257,7 +257,7 @@ Music_WildBattleGo_Ch2_loop:
 	note F#, 8
 Music_WildBattleGo_Ch2_loop_1:
 	note __, 16
-	loopchannel 8, Music_WildBattleGo_Ch2_loop_1
+	sound_loop 8, Music_WildBattleGo_Ch2_loop_1
 	duty_cycle_pattern 1, 1, 2, 2
 	octave 5
 	note D_, 2
@@ -319,14 +319,14 @@ Music_WildBattleGo_Ch3:
 Music_WildBattleGo_Ch3_loop_1:
 	note D_, 2
 	note A_, 2
-	loopchannel 7, Music_WildBattleGo_Ch3_loop_1
+	sound_loop 7, Music_WildBattleGo_Ch3_loop_1
 Music_WildBattleGo_Ch3_loop:
 	note A#, 2
 	note A_, 2
 Music_WildBattleGo_Ch3_loop_2:
 	note D_, 2
 	note A_, 2
-	loopchannel 6, Music_WildBattleGo_Ch3_loop_2
+	sound_loop 6, Music_WildBattleGo_Ch3_loop_2
 	octave 3
 	note D_, 2
 	note C#, 2
@@ -336,21 +336,21 @@ Music_WildBattleGo_Ch3_loop_2:
 Music_WildBattleGo_Ch3_loop_3:
 	note D_, 2
 	note A_, 2
-	loopchannel 8, Music_WildBattleGo_Ch3_loop_3
+	sound_loop 8, Music_WildBattleGo_Ch3_loop_3
 Music_WildBattleGo_Ch3_loop_10:
 	note C_, 2
 	note G_, 2
-	loopchannel 7, Music_WildBattleGo_Ch3_loop_10
+	sound_loop 7, Music_WildBattleGo_Ch3_loop_10
 	note A_, 2
 	note G_, 2
 Music_WildBattleGo_Ch3_loop_4:
 	note D_, 2
 	note A_, 2
-	loopchannel 8, Music_WildBattleGo_Ch3_loop_4
+	sound_loop 8, Music_WildBattleGo_Ch3_loop_4
 Music_WildBattleGo_Ch3_loop_11:
 	note C_, 2
 	note G_, 2
-	loopchannel 5, Music_WildBattleGo_Ch3_loop_11
+	sound_loop 5, Music_WildBattleGo_Ch3_loop_11
 	note F_, 2
 	note E_, 2
 	note F_, 2
@@ -362,15 +362,15 @@ Music_WildBattleGo_Ch3_loop_14:
 	note A#, 2
 	octave 2
 	note F_, 2
-	loopchannel 8, Music_WildBattleGo_Ch3_loop_14
+	sound_loop 8, Music_WildBattleGo_Ch3_loop_14
 Music_WildBattleGo_Ch3_loop_12:
 	note C_, 2
 	note G_, 2
-	loopchannel 8, Music_WildBattleGo_Ch3_loop_12
+	sound_loop 8, Music_WildBattleGo_Ch3_loop_12
 Music_WildBattleGo_Ch3_loop_9:
 	note D_, 2
 	note A_, 2
-	loopchannel 10, Music_WildBattleGo_Ch3_loop_9
+	sound_loop 10, Music_WildBattleGo_Ch3_loop_9
 	octave 3
 	note D_, 2
 	octave 2
@@ -394,15 +394,15 @@ Music_WildBattleGo_Ch3_loop_15:
 	note A#, 2
 	octave 2
 	note F_, 2
-	loopchannel 8, Music_WildBattleGo_Ch3_loop_15
+	sound_loop 8, Music_WildBattleGo_Ch3_loop_15
 Music_WildBattleGo_Ch3_loop_13:
 	note C_, 2
 	note G_, 2
-	loopchannel 8, Music_WildBattleGo_Ch3_loop_13
+	sound_loop 8, Music_WildBattleGo_Ch3_loop_13
 Music_WildBattleGo_Ch3_loop_5:
 	note D_, 2
 	note A_, 2
-	loopchannel 3, Music_WildBattleGo_Ch3_loop_5
+	sound_loop 3, Music_WildBattleGo_Ch3_loop_5
 	octave 3
 	note D_, 2
 	octave 2
@@ -410,13 +410,13 @@ Music_WildBattleGo_Ch3_loop_5:
 Music_WildBattleGo_Ch3_loop_6:
 	note D_, 2
 	note A_, 2
-	loopchannel 3, Music_WildBattleGo_Ch3_loop_6
+	sound_loop 3, Music_WildBattleGo_Ch3_loop_6
 	note A#, 2
 	note A_, 2
 Music_WildBattleGo_Ch3_loop_7:
 	note D_, 2
 	note A_, 2
-	loopchannel 6, Music_WildBattleGo_Ch3_loop_7
+	sound_loop 6, Music_WildBattleGo_Ch3_loop_7
 	octave 3
 	note D_, 2
 	octave 2
@@ -428,7 +428,7 @@ Music_WildBattleGo_Ch3_loop_7:
 Music_WildBattleGo_Ch3_loop_8:
 	note D_, 2
 	note A_, 2
-	loopchannel 7, Music_WildBattleGo_Ch3_loop_8
+	sound_loop 7, Music_WildBattleGo_Ch3_loop_8
 	sound_jump Music_WildBattleGo_Ch3_loop
 
 Music_WildBattleGo_Ch4:
@@ -464,7 +464,7 @@ Music_WildBattleGo_Ch4_loop_1:
 	callchannel Music_WildBattleGo_Ch4_ditty2
 	callchannel Music_WildBattleGo_Ch4_ditty1
 	callchannel Music_WildBattleGo_Ch4_ditty2
-	loopchannel 2, Music_WildBattleGo_Ch4_loop_1
+	sound_loop 2, Music_WildBattleGo_Ch4_loop_1
 	callchannel Music_WildBattleGo_Ch4_ditty1
 	callchannel Music_WildBattleGo_Ch4_ditty2
 	callchannel Music_WildBattleGo_Ch4_ditty1
@@ -479,7 +479,7 @@ Music_WildBattleGo_Ch4_loop_1:
 Music_WildBattleGo_Ch4_loop_2:
 	callchannel Music_WildBattleGo_Ch4_ditty1
 	callchannel Music_WildBattleGo_Ch4_ditty2
-	loopchannel 9, Music_WildBattleGo_Ch4_loop_2
+	sound_loop 9, Music_WildBattleGo_Ch4_loop_2
 	callchannel Music_WildBattleGo_Ch4_ditty1
 	note D_, 1
 	note __, 1

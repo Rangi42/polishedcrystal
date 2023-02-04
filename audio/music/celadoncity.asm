@@ -28,7 +28,7 @@ Music_CeladonCity_branch_f437d:
 	note F#, 1
 	note A_, 1
 	note F#, 1
-	loopchannel 3, Music_CeladonCity_branch_f437d
+	sound_loop 3, Music_CeladonCity_branch_f437d
 	note D_, 2
 	note G_, 1
 	note B_, 1
@@ -93,7 +93,7 @@ Music_CeladonCity_branch_f43cc:
 	note G_, 1
 	note B_, 1
 	note G_, 1
-	loopchannel 3, Music_CeladonCity_branch_f43cc
+	sound_loop 3, Music_CeladonCity_branch_f43cc
 	note D_, 2
 	note F#, 1
 	note A_, 1
@@ -111,7 +111,7 @@ Music_CeladonCity_branch_f43e1:
 	note B_, 1
 	octave 3
 	note D_, 1
-	loopchannel 4, Music_CeladonCity_branch_f43e1
+	sound_loop 4, Music_CeladonCity_branch_f43e1
 	note C_, 2
 	octave 2
 	note B_, 1
@@ -137,7 +137,7 @@ Music_CeladonCity_branch_f43fe:
 	note D_, 2
 	note F#, 1
 	note A_, 1
-	loopchannel 4, Music_CeladonCity_branch_f43fe
+	sound_loop 4, Music_CeladonCity_branch_f43fe
 	endchannel
 
 Music_CeladonCity_Ch2:
@@ -282,7 +282,7 @@ Music_CeladonCity_branch_f44a1:
 	note __, 2
 	octave 3
 	note D_, 4
-	loopchannel 3, Music_CeladonCity_branch_f44a1
+	sound_loop 3, Music_CeladonCity_branch_f44a1
 	octave 2
 	note G_, 1
 	note __, 1
@@ -363,7 +363,7 @@ Music_CeladonCity_branch_f44fd:
 	note __, 2
 	octave 3
 	note D_, 4
-	loopchannel 3, Music_CeladonCity_branch_f44fd
+	sound_loop 3, Music_CeladonCity_branch_f44fd
 	octave 2
 	note A_, 1
 	note __, 1

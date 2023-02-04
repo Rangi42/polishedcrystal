@@ -35,7 +35,7 @@ Music_CinnabarMansionRBY_branch_7ed19:
 	octave 5
 	note B_, 1
 	note __, 2
-	loopchannel 14, Music_CinnabarMansionRBY_branch_7ed19
+	sound_loop 14, Music_CinnabarMansionRBY_branch_7ed19
 	note_type 12, 10, 5
 	note __, 16
 	note __, 16
@@ -56,14 +56,14 @@ Music_CinnabarMansionRBY_Ch2:
 Music_CinnabarMansionRBY_branch_7ed48:
 	note __, 16
 	note __, 16
-	loopchannel 4, Music_CinnabarMansionRBY_branch_7ed48
+	sound_loop 4, Music_CinnabarMansionRBY_branch_7ed48
 
 Music_CinnabarMansionRBY_branch_7ed4e:
 	note_type 12, 12, 2
 
 Music_CinnabarMansionRBY_branch_7ed50:
 	callchannel Music_CinnabarMansionRBY_branch_7ed6c
-	loopchannel 3, Music_CinnabarMansionRBY_branch_7ed50
+	sound_loop 3, Music_CinnabarMansionRBY_branch_7ed50
 	octave 3
 	note E_, 4
 	note D#, 4
@@ -142,7 +142,7 @@ Music_CinnabarMansionRBY_branch_7ed80:
 	note __, 2
 	note D#, 2
 	note __, 2
-	loopchannel 8, Music_CinnabarMansionRBY_branch_7ed80
+	sound_loop 8, Music_CinnabarMansionRBY_branch_7ed80
 	note E_, 16
 	note D#, 16
 	note G_, 16

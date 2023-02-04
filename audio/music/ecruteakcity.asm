@@ -160,7 +160,7 @@ Music_EcruteakCity_branch_ef37f:
 	note C_, 2
 	note E_, 2
 	note C_, 2
-	loopchannel 2, Music_EcruteakCity_branch_ef37f
+	sound_loop 2, Music_EcruteakCity_branch_ef37f
 	endchannel
 
 Music_EcruteakCity_branch_ef391:
@@ -224,7 +224,7 @@ Music_EcruteakCity_branch_ef3be:
 	octave 5
 	note C_, 2
 	note F_, 2
-	loopchannel 2, Music_EcruteakCity_branch_ef3be
+	sound_loop 2, Music_EcruteakCity_branch_ef3be
 Music_EcruteakCity_branch_ef3d0:
 	octave 4
 	note G_, 2
@@ -240,7 +240,7 @@ Music_EcruteakCity_branch_ef3d0:
 	octave 5
 	note D_, 2
 	note G_, 2
-	loopchannel 2, Music_EcruteakCity_branch_ef3d0
+	sound_loop 2, Music_EcruteakCity_branch_ef3d0
 	volume_envelope 5, 0
 	duty_cycle 0
 	note E_, 16

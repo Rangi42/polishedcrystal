@@ -123,7 +123,7 @@ Music_LavenderTown_branch_ef7ca:
 	octave 3
 	note A_, 2
 	note F_, 2
-	loopchannel 2, Music_LavenderTown_branch_ef7ca
+	sound_loop 2, Music_LavenderTown_branch_ef7ca
 	note F#, 2
 	note A_, 2
 	octave 4
@@ -282,7 +282,7 @@ Music_LavenderTown_branch_ef8a0:
 	note F#, 2
 	volume_envelope 6, 3
 	note F#, 2
-	loopchannel 3, Music_LavenderTown_branch_ef8a0
+	sound_loop 3, Music_LavenderTown_branch_ef8a0
 	volume_envelope 10, 3
 	note C_, 2
 	volume_envelope 6, 3

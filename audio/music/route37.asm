@@ -72,7 +72,7 @@ Music_Route37_branch_ee9a5:
 	callchannel Music_Route37_branch_ee9da
 	octave 3
 	note C#, 4
-	loopchannel 2, Music_Route37_branch_ee9a5
+	sound_loop 2, Music_Route37_branch_ee9a5
 	callchannel Music_Route37_branch_ee9e9
 	octave 3
 	note F#, 4
@@ -293,7 +293,7 @@ Music_Route37_branch_eeacc:
 	octave 2
 	note F#, 2
 	note __, 6
-	loopchannel 4, Music_Route37_branch_eeacc
+	sound_loop 4, Music_Route37_branch_eeacc
 Music_Route37_branch_eead3:
 	callchannel Music_Route37_branch_eeb32
 	note A_, 2
@@ -309,7 +309,7 @@ Music_Route37_branch_eead3:
 Music_Route37_branch_eeae0:
 	note D#, 2
 	note F#, 2
-	loopchannel 4, Music_Route37_branch_eeae0
+	sound_loop 4, Music_Route37_branch_eeae0
 	callchannel Music_Route37_branch_eeb32
 	callchannel Music_Route37_branch_eeb32
 	note A_, 2
@@ -330,13 +330,13 @@ Music_Route37_branch_eeafb:
 	note B_, 2
 	octave 3
 	note D#, 2
-	loopchannel 4, Music_Route37_branch_eeafb
+	sound_loop 4, Music_Route37_branch_eeafb
 Music_Route37_branch_eeb03:
 	octave 2
 	note A_, 2
 	octave 3
 	note C#, 2
-	loopchannel 7, Music_Route37_branch_eeb03
+	sound_loop 7, Music_Route37_branch_eeb03
 	note E_, 2
 	note C#, 2
 	callchannel Music_Route37_branch_eeb3c
@@ -345,13 +345,13 @@ Music_Route37_branch_eeb10:
 	note B_, 2
 	octave 3
 	note F#, 2
-	loopchannel 4, Music_Route37_branch_eeb10
+	sound_loop 4, Music_Route37_branch_eeb10
 Music_Route37_branch_eeb18:
 	octave 2
 	note A_, 2
 	octave 3
 	note C#, 2
-	loopchannel 7, Music_Route37_branch_eeb18
+	sound_loop 7, Music_Route37_branch_eeb18
 	note E_, 2
 	note C#, 2
 	callchannel Music_Route37_branch_eeb3c
@@ -359,7 +359,7 @@ Music_Route37_branch_eeb18:
 Music_Route37_branch_eeb28:
 	note F#, 2
 	note __, 6
-	loopchannel 4, Music_Route37_branch_eeb28
+	sound_loop 4, Music_Route37_branch_eeb28
 	sound_jump Music_Route37_branch_eead3
 
 Music_Route37_branch_eeb32:

@@ -36,7 +36,7 @@ Music_Megalovania_Ch1_loop_1:
 	note A#, 1
 	note A#, 1
 	callchannel Music_Megalovania_Ch1_ditty_2
-	loopchannel 2, Music_Megalovania_Ch1_loop_1
+	sound_loop 2, Music_Megalovania_Ch1_loop_1
 	duty_cycle_pattern 0, 0, 0, 0
 	volume_envelope 9, 1
 	callchannel Music_Megalovania_Ch1Ch3_ditty_2
@@ -300,7 +300,7 @@ Music_Megalovania_Ch1_loop_2:
 	octave 3
 	note A_, 1
 	octave 4
-	loopchannel 5, Music_Megalovania_Ch1_loop_2
+	sound_loop 5, Music_Megalovania_Ch1_loop_2
 	note C_, 1
 Music_Megalovania_Ch1_loop_3:
 	note E_, 1
@@ -308,7 +308,7 @@ Music_Megalovania_Ch1_loop_3:
 	octave 3
 	note A_, 1
 	octave 4
-	loopchannel 5, Music_Megalovania_Ch1_loop_3
+	sound_loop 5, Music_Megalovania_Ch1_loop_3
 	note G_, 1
 	note A_, 1
 	note F_, 1
@@ -388,7 +388,7 @@ Music_Megalovania_Ch1_loop_3:
 Music_Megalovania_Ch1_loop3:
 	note D_, 1
 	note D#, 1
-	loopchannel 4, Music_Megalovania_Ch1_loop3
+	sound_loop 4, Music_Megalovania_Ch1_loop3
 	volume_envelope 15, 2
 	octave 3
 	note A_, 6
@@ -755,7 +755,7 @@ Music_Megalovania_Ch2_loop:
 	note A#, 1
 	note A#, 1
 	callchannel Music_Megalovania_Ch2_ditty1
-	loopchannel 2, Music_Megalovania_Ch2_loop
+	sound_loop 2, Music_Megalovania_Ch2_loop
 	note D_, 1
 	note D_, 1
 	callchannel Music_Megalovania_Ch2_ditty1
@@ -1489,7 +1489,7 @@ Music_Megalovania_Ch4_loop:
 	note F#, 1
 Music_Megalovania_Ch4_loop1:
 	callchannel Music_Megalovania_Ch4_ditty3
-	loopchannel 3, Music_Megalovania_Ch4_loop1
+	sound_loop 3, Music_Megalovania_Ch4_loop1
 	note E_, 1
 	noisesampleset 0
 	note A#, 1
@@ -1534,7 +1534,7 @@ Music_Megalovania_Ch4_loop2:
 	note E_, 1
 	noisesampleset 0
 	note A#, 1
-	loopchannel 3, Music_Megalovania_Ch4_loop2
+	sound_loop 3, Music_Megalovania_Ch4_loop2
 	noisesampleset 5
 	note B_, 1
 	note F#, 1
@@ -1576,7 +1576,7 @@ Music_Megalovania_Ch4_loop3:
 	note A#, 1
 	noisesampleset 5
 	note F_, 1
-	loopchannel 3, Music_Megalovania_Ch4_loop3
+	sound_loop 3, Music_Megalovania_Ch4_loop3
 	note B_, 1
 	note F_, 1
 	noisesampleset 0
@@ -1611,7 +1611,7 @@ Music_Megalovania_Ch4_loop4:
 	noisesampleset 0
 	note A#, 1
 	callchannel Music_Megalovania_Ch4_ditty4
-	loopchannel 3, Music_Megalovania_Ch4_loop4
+	sound_loop 3, Music_Megalovania_Ch4_loop4
 	note A#, 1
 	note __, 1
 	noisesampleset 5
@@ -1644,7 +1644,7 @@ Music_Megalovania_Ch4_loop5:
 	callchannel Music_Megalovania_Ch4_ditty2
 	noisesampleset 5
 	note B_, 1
-	loopchannel 3, Music_Megalovania_Ch4_loop5
+	sound_loop 3, Music_Megalovania_Ch4_loop5
 	note E_, 1
 	noisesampleset 0
 	note A#, 1
@@ -1679,7 +1679,7 @@ Music_Megalovania_Ch4_loop6:
 	callchannel Music_Megalovania_Ch4_ditty2
 	noisesampleset 5
 	note B_, 1
-	loopchannel 3, Music_Megalovania_Ch4_loop6
+	sound_loop 3, Music_Megalovania_Ch4_loop6
 	note E_, 1
 	noisesampleset 0
 	note A#, 1
@@ -1715,7 +1715,7 @@ Music_Megalovania_Ch4_loop7:
 	noisesampleset 5
 	note B_, 1
 	note E_, 1
-	loopchannel 3, Music_Megalovania_Ch4_loop7
+	sound_loop 3, Music_Megalovania_Ch4_loop7
 	noisesampleset 0
 	note A#, 1
 	note __, 1
@@ -1750,7 +1750,7 @@ Music_Megalovania_Ch4_loop8:
 	noisesampleset 5
 	note B_, 1
 	note E_, 1
-	loopchannel 3, Music_Megalovania_Ch4_loop8
+	sound_loop 3, Music_Megalovania_Ch4_loop8
 	noisesampleset 0
 	note A#, 1
 	note __, 1
@@ -1779,7 +1779,7 @@ Music_Megalovania_Ch4_loop8:
 	note __, 1
 Music_Megalovania_Ch4_loop9:
 	note D#, 1
-	loopchannel 63, Music_Megalovania_Ch4_loop9
+	sound_loop 63, Music_Megalovania_Ch4_loop9
 	noisesampleset 5
 	note F#, 1
 	noisesampleset 2
@@ -1819,7 +1819,7 @@ Music_Megalovania_Ch4_loop10:
 	note D#, 1
 	note A#, 1
 	note __, 1
-	loopchannel 2, Music_Megalovania_Ch4_loop10
+	sound_loop 2, Music_Megalovania_Ch4_loop10
 	callchannel Music_Megalovania_Ch4_ditty1
 	note __, 16
 	note __, 16
@@ -1854,7 +1854,7 @@ Music_Megalovania_Ch4_loop10:
 	note F#, 1
 Music_Megalovania_Ch4_loop11:
 	callchannel Music_Megalovania_Ch4_ditty3
-	loopchannel 3, Music_Megalovania_Ch4_loop11
+	sound_loop 3, Music_Megalovania_Ch4_loop11
 	note E_, 1
 	noisesampleset 0
 	note A#, 1
@@ -1883,7 +1883,7 @@ Music_Megalovania_Ch4_loop11:
 	note F#, 1
 Music_Megalovania_Ch4_loop12:
 	callchannel Music_Megalovania_Ch4_ditty3
-	loopchannel 3, Music_Megalovania_Ch4_loop12
+	sound_loop 3, Music_Megalovania_Ch4_loop12
 	note E_, 1
 	noisesampleset 0
 	note A#, 1
@@ -1922,7 +1922,7 @@ Music_Megalovania_Ch4_loop13:
 	noisesampleset 0
 	note A#, 1
 	note __, 1
-	loopchannel 3, Music_Megalovania_Ch4_loop13
+	sound_loop 3, Music_Megalovania_Ch4_loop13
 	callchannel Music_Megalovania_Ch4_ditty2
 	sound_jump Music_Megalovania_Ch4_loop
 

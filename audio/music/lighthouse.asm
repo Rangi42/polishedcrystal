@@ -233,7 +233,7 @@ Music_Lighthouse_branch_ee664:
 	note __, 2
 	note A_, 2
 	note __, 2
-	loopchannel 2, Music_Lighthouse_branch_ee664
+	sound_loop 2, Music_Lighthouse_branch_ee664
 	note G#, 2
 	note __, 2
 	note D#, 2
@@ -264,7 +264,7 @@ Music_Lighthouse_branch_ee683:
 	octave 3
 	note D_, 2
 	note __, 2
-	loopchannel 2, Music_Lighthouse_branch_ee683
+	sound_loop 2, Music_Lighthouse_branch_ee683
 	note C#, 2
 	note __, 2
 	octave 2
@@ -286,7 +286,7 @@ Music_Lighthouse_branch_ee69b:
 	note __, 2
 	note F_, 2
 	note __, 2
-	loopchannel 8, Music_Lighthouse_branch_ee69b
+	sound_loop 8, Music_Lighthouse_branch_ee69b
 	sound_jump Music_Lighthouse_branch_ee65b
 
 Music_Lighthouse_Ch4:

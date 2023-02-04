@@ -40,7 +40,7 @@ Music_HallOfFame_branch_f05e6:
 	note F_, 8
 	volume_envelope 5, 7
 	note F_, 8
-	loopchannel 3, Music_HallOfFame_branch_f05e6
+	sound_loop 3, Music_HallOfFame_branch_f05e6
 	note __, 16
 	note __, 16
 	note __, 16
@@ -117,7 +117,7 @@ Music_HallOfFame_branch_f0631:
 	note F_, 2
 	note C_, 2
 	note F_, 2
-	loopchannel 3, Music_HallOfFame_branch_f0631
+	sound_loop 3, Music_HallOfFame_branch_f0631
 	note D_, 4
 	note G_, 4
 	note D_, 4

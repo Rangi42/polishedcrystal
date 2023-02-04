@@ -284,7 +284,7 @@ Music_TitleScreen_branch_eb971:
 	note A_, 1
 	octave 2
 	note D_, 1
-	loopchannel 5, Music_TitleScreen_branch_eb971
+	sound_loop 5, Music_TitleScreen_branch_eb971
 	note __, 1
 	note D_, 1
 	octave 1
@@ -565,7 +565,7 @@ Music_TitleScreen_branch_ebaeb:
 	note D_, 1
 	note A_, 1
 	note D_, 1
-	loopchannel 5, Music_TitleScreen_branch_ebaeb
+	sound_loop 5, Music_TitleScreen_branch_ebaeb
 	octave 3
 	note A_, 1
 	octave 4
@@ -1078,7 +1078,7 @@ Music_TitleScreen_Ch4:
 	note G#, 16
 Music_TitleScreen_branch_ebd40:
 	note __, 16
-	loopchannel 6, Music_TitleScreen_branch_ebd40
+	sound_loop 6, Music_TitleScreen_branch_ebd40
 	note __, 12
 	note_type 6
 	note D_, 1
@@ -1153,7 +1153,7 @@ Music_TitleScreen_branch_ebd8b:
 	note C_, 2
 	note C_, 1
 	note C_, 1
-	loopchannel 4, Music_TitleScreen_branch_ebd8b
+	sound_loop 4, Music_TitleScreen_branch_ebd8b
 	endchannel
 
 Music_TitleScreen_branch_ebd93:

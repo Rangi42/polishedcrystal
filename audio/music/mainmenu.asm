@@ -24,7 +24,7 @@ Music_MainMenu_branch_f791d:
 	note C#, 2
 	note C#, 2
 	note C#, 4
-	loopchannel 2, Music_MainMenu_branch_f791d
+	sound_loop 2, Music_MainMenu_branch_f791d
 	note D#, 6
 	note D#, 1
 	note D#, 1
@@ -56,7 +56,7 @@ Music_MainMenu_branch_f7949:
 	note F#, 2
 	note F#, 2
 	note F#, 4
-	loopchannel 2, Music_MainMenu_branch_f7949
+	sound_loop 2, Music_MainMenu_branch_f7949
 	note G#, 6
 	note G#, 1
 	note G#, 1
@@ -88,7 +88,7 @@ Music_MainMenu_branch_f796f:
 	note __, 1
 	note F#, 1
 	note __, 3
-	loopchannel 2, Music_MainMenu_branch_f796f
+	sound_loop 2, Music_MainMenu_branch_f796f
 	note G#, 1
 	note __, 5
 	note G#, 1

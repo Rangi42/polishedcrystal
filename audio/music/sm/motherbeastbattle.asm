@@ -383,7 +383,7 @@ Music_MotherBeastBattleSM_Ch2_loop_1:
 	note A_, 1
 	octave 3
 	callchannel Music_MotherBeastBattleSM_Ch2_branch_2
-	loopchannel 6, Music_MotherBeastBattleSM_Ch2_loop_1
+	sound_loop 6, Music_MotherBeastBattleSM_Ch2_loop_1
 	note_type 3, 4, 2
 	duty_cycle 2
 	note __, 8  ;
@@ -854,13 +854,13 @@ Music_MotherBeastBattleSM_Ch3_loop_main:
 Music_MotherBeastBattleSM_Ch3_loop_1:
 	note C_, 4
 	note __, 2
-	loopchannel 16, Music_MotherBeastBattleSM_Ch3_loop_1
+	sound_loop 16, Music_MotherBeastBattleSM_Ch3_loop_1
 	octave 1
 	volume_envelope 2, -1
 Music_MotherBeastBattleSM_Ch3_loop_2:
 	note C_, 4
 	note __, 2
-	loopchannel 6, Music_MotherBeastBattleSM_Ch3_loop_2
+	sound_loop 6, Music_MotherBeastBattleSM_Ch3_loop_2
 	note C_, 1
 	note __, 11
 	sound_jump Music_MotherBeastBattleSM_Ch3_loop_main
@@ -946,7 +946,7 @@ Music_MotherBeastBattleSM_Ch4_loop_1:
 	note C_, 3
 	note C_, 1
 	note D#, 2
-	loopchannel 11, Music_MotherBeastBattleSM_Ch4_loop_1
+	sound_loop 11, Music_MotherBeastBattleSM_Ch4_loop_1
 	note C_, 8
 	sound_jump Music_MotherBeastBattleSM_Ch4_loop_main
 

@@ -38,7 +38,7 @@ Music_TrainerVictory_branch_ebecd:
 	octave 4
 	note C#, 2
 	note E_, 6
-	loopchannel 2, Music_TrainerVictory_branch_ebecd
+	sound_loop 2, Music_TrainerVictory_branch_ebecd
 	callchannel Music_TrainerVictory_branch_ebf11
 	note A_, 2
 	note __, 2
@@ -55,7 +55,7 @@ Music_TrainerVictory_branch_ebef2:
 	note C#, 2
 	octave 3
 	note A_, 2
-	loopchannel 3, Music_TrainerVictory_branch_ebef2
+	sound_loop 3, Music_TrainerVictory_branch_ebef2
 	note F#, 2
 	note A_, 2
 	octave 4
@@ -66,7 +66,7 @@ Music_TrainerVictory_branch_ebf01:
 	octave 3
 	note B_, 2
 	note A_, 2
-	loopchannel 3, Music_TrainerVictory_branch_ebf01
+	sound_loop 3, Music_TrainerVictory_branch_ebf01
 	note E_, 2
 	note F#, 2
 	note G_, 2
@@ -110,7 +110,7 @@ Music_TrainerVictory_branch_ebf30:
 	note __, 2
 	note F#, 2
 	note G_, 6
-	loopchannel 2, Music_TrainerVictory_branch_ebf30
+	sound_loop 2, Music_TrainerVictory_branch_ebf30
 	callchannel Music_TrainerVictory_branch_ebf56
 	note F_, 2
 	note __, 2
@@ -172,7 +172,7 @@ Music_TrainerVictory_branch_ebf74:
 	note A_, 1
 	note __, 1
 	note A_, 6
-	loopchannel 2, Music_TrainerVictory_branch_ebf74
+	sound_loop 2, Music_TrainerVictory_branch_ebf74
 	callchannel Music_TrainerVictory_branch_ebfb1
 	octave 3
 	note C_, 2

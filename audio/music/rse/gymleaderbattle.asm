@@ -325,7 +325,7 @@ Music_GymLeaderBattleRSE_Ch2:
 	note G_, 1
 	note G#, 1
 	note G_, 2
-	loopchannel 8, Music_GymLeaderBattleRSE_Ch2
+	sound_loop 8, Music_GymLeaderBattleRSE_Ch2
 	volume_envelope 7, 0
 	octave 3
 	note C_, 8
@@ -719,7 +719,7 @@ Music_GymLeaderBattleRSE_Ch3_loop_1:
 	note F_, 2
 	callchannel Music_GymLeaderBattleRSE_Ch3_branch_1
 	note C#, 2
-	loopchannel 4, Music_GymLeaderBattleRSE_Ch3_loop_1
+	sound_loop 4, Music_GymLeaderBattleRSE_Ch3_loop_1
 Music_GymLeaderBattleRSE_Ch3_loop_main:
 	callchannel Music_GymLeaderBattleRSE_Ch3_branch_2
 	callchannel Music_GymLeaderBattleRSE_Ch3_branch_2
@@ -824,13 +824,13 @@ Music_GymLeaderBattleRSE_Ch3_loop_2:
 	callchannel Music_GymLeaderBattleRSE_Ch3_branch_4
 	callchannel Music_GymLeaderBattleRSE_Ch3_branch_5
 	callchannel Music_GymLeaderBattleRSE_Ch3_branch_5
-	loopchannel 3, Music_GymLeaderBattleRSE_Ch3_loop_2
+	sound_loop 3, Music_GymLeaderBattleRSE_Ch3_loop_2
 Music_GymLeaderBattleRSE_Ch3_loop_3:
 	callchannel Music_GymLeaderBattleRSE_Ch3_branch_3
-	loopchannel 12, Music_GymLeaderBattleRSE_Ch3_loop_3
+	sound_loop 12, Music_GymLeaderBattleRSE_Ch3_loop_3
 Music_GymLeaderBattleRSE_Ch3_loop_4:
 	callchannel Music_GymLeaderBattleRSE_Ch3_branch_2
-	loopchannel 8, Music_GymLeaderBattleRSE_Ch3_loop_4
+	sound_loop 8, Music_GymLeaderBattleRSE_Ch3_loop_4
 	callchannel Music_GymLeaderBattleRSE_Ch3_branch_3
 	callchannel Music_GymLeaderBattleRSE_Ch3_branch_3
 	callchannel Music_GymLeaderBattleRSE_Ch3_branch_3
@@ -895,14 +895,14 @@ Music_GymLeaderBattleRSE_Ch4:
 	note D#, 4
 Music_GymLeaderBattleRSE_Ch4_loop_1:
 	callchannel Music_GymLeaderBattleRSE_Ch4_branch_1
-	loopchannel 8, Music_GymLeaderBattleRSE_Ch4_loop_1
+	sound_loop 8, Music_GymLeaderBattleRSE_Ch4_loop_1
 Music_GymLeaderBattleRSE_Ch4_loop_main:
 	callchannel Music_GymLeaderBattleRSE_Ch4_branch_2
-	loopchannel 11, Music_GymLeaderBattleRSE_Ch4_loop_main
+	sound_loop 11, Music_GymLeaderBattleRSE_Ch4_loop_main
 	callchannel Music_GymLeaderBattleRSE_Ch4_branch_1
 Music_GymLeaderBattleRSE_Ch4_loop_2:
 	callchannel Music_GymLeaderBattleRSE_Ch4_branch_2
-	loopchannel 11, Music_GymLeaderBattleRSE_Ch4_loop_2
+	sound_loop 11, Music_GymLeaderBattleRSE_Ch4_loop_2
 	callchannel Music_GymLeaderBattleRSE_Ch4_branch_1
 	callchannel Music_GymLeaderBattleRSE_Ch4_branch_1
 	callchannel Music_GymLeaderBattleRSE_Ch4_branch_2
@@ -911,10 +911,10 @@ Music_GymLeaderBattleRSE_Ch4_loop_2:
 	callchannel Music_GymLeaderBattleRSE_Ch4_branch_2
 Music_GymLeaderBattleRSE_Ch4_loop_3:
 	callchannel Music_GymLeaderBattleRSE_Ch4_branch_2
-	loopchannel 15, Music_GymLeaderBattleRSE_Ch4_loop_3
+	sound_loop 15, Music_GymLeaderBattleRSE_Ch4_loop_3
 Music_GymLeaderBattleRSE_Ch4_loop_4:
 	callchannel Music_GymLeaderBattleRSE_Ch4_branch_3
-	loopchannel 6, Music_GymLeaderBattleRSE_Ch4_loop_4
+	sound_loop 6, Music_GymLeaderBattleRSE_Ch4_loop_4
 	note __, 4
 	note C_, 4
 	note C_, 2

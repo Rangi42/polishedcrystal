@@ -76,7 +76,7 @@ Music_EliteFourBattleSM_Ch1_loop_1:
 	volume_envelope 9, 1
 	note F_, 1
 	note F_, 1
-	loopchannel 2, Music_EliteFourBattleSM_Ch1_loop_1
+	sound_loop 2, Music_EliteFourBattleSM_Ch1_loop_1
 	note __, 16
 	duty_cycle 2
 	volume_envelope 8, 7
@@ -122,7 +122,7 @@ Music_EliteFourBattleSM_Ch1_loop_2:
 	volume_envelope 9, 1
 	note B_, 1
 	note B_, 1
-	loopchannel 4, Music_EliteFourBattleSM_Ch1_loop_2
+	sound_loop 4, Music_EliteFourBattleSM_Ch1_loop_2
 	duty_cycle 1
 Music_EliteFourBattleSM_Ch1_loop_3:
 	octave 3
@@ -134,7 +134,7 @@ Music_EliteFourBattleSM_Ch1_loop_3:
 	note A#, 4
 	note G_, 4
 	note D#, 2
-	loopchannel 4, Music_EliteFourBattleSM_Ch1_loop_3
+	sound_loop 4, Music_EliteFourBattleSM_Ch1_loop_3
 	note E_, 2
 	octave 2
 	note B_, 2
@@ -252,7 +252,7 @@ Music_EliteFourBattleSM_Ch2:
 	volume_envelope 10, 1
 	note F_, 1
 	note F_, 1
-	loopchannel 3, Music_EliteFourBattleSM_Ch2
+	sound_loop 3, Music_EliteFourBattleSM_Ch2
 	note __, 16
 Music_EliteFourBattleSM_Ch2_loop_1:
 	volume_envelope 10, 2
@@ -265,7 +265,7 @@ Music_EliteFourBattleSM_Ch2_loop_1:
 	volume_envelope 10, 1
 	note G_, 1
 	note G_, 1
-	loopchannel 3, Music_EliteFourBattleSM_Ch2_loop_1
+	sound_loop 3, Music_EliteFourBattleSM_Ch2_loop_1
 	note __, 16
 Music_EliteFourBattleSM_Ch2_loop_2:
 	volume_envelope 10, 2
@@ -278,7 +278,7 @@ Music_EliteFourBattleSM_Ch2_loop_2:
 	volume_envelope 10, 1
 	note A_, 1
 	note A_, 1
-	loopchannel 3, Music_EliteFourBattleSM_Ch2_loop_2
+	sound_loop 3, Music_EliteFourBattleSM_Ch2_loop_2
 	note __, 16
 Music_EliteFourBattleSM_Ch2_loop_main:
 Music_EliteFourBattleSM_Ch2_loop_3:
@@ -310,7 +310,7 @@ Music_EliteFourBattleSM_Ch2_loop_3:
 	note G_, 2
 	volume_envelope 12, 1
 	note F_, 16
-	loopchannel 2, Music_EliteFourBattleSM_Ch2_loop_3
+	sound_loop 2, Music_EliteFourBattleSM_Ch2_loop_3
 	volume_envelope 11, 7
 	octave 3
 	note E_, 6
@@ -358,7 +358,7 @@ Music_EliteFourBattleSM_Ch2_loop_4:
 	volume_envelope 9, 1
 	note B_, 1
 	note B_, 1
-	loopchannel 3, Music_EliteFourBattleSM_Ch2_loop_4
+	sound_loop 3, Music_EliteFourBattleSM_Ch2_loop_4
 	duty_cycle 2
 	volume_envelope 8, 0
 	note E_, 8
@@ -491,11 +491,11 @@ Music_EliteFourBattleSM_Ch3_loop_1:
 	note E_, 2
 	note D_, 2
 	note D#, 2
-	loopchannel 2, Music_EliteFourBattleSM_Ch3_loop_1
+	sound_loop 2, Music_EliteFourBattleSM_Ch3_loop_1
 Music_EliteFourBattleSM_Ch3_loop_2:
 	note E_, 2
 	note B_, 2
-	loopchannel 15, Music_EliteFourBattleSM_Ch3_loop_2
+	sound_loop 15, Music_EliteFourBattleSM_Ch3_loop_2
 	octave 3
 	note C_, 2
 	octave 2
@@ -503,7 +503,7 @@ Music_EliteFourBattleSM_Ch3_loop_2:
 Music_EliteFourBattleSM_Ch3_loop_3:
 	note E_, 2
 	note B_, 2
-	loopchannel 15, Music_EliteFourBattleSM_Ch3_loop_3
+	sound_loop 15, Music_EliteFourBattleSM_Ch3_loop_3
 	octave 3
 	note C_, 2
 	octave 2
@@ -511,7 +511,7 @@ Music_EliteFourBattleSM_Ch3_loop_3:
 Music_EliteFourBattleSM_Ch3_loop_4:
 	note E_, 2
 	note B_, 2
-	loopchannel 13, Music_EliteFourBattleSM_Ch3_loop_4
+	sound_loop 13, Music_EliteFourBattleSM_Ch3_loop_4
 	octave 3
 	note C_, 2
 	octave 2
@@ -525,7 +525,7 @@ Music_EliteFourBattleSM_Ch3_loop_4:
 Music_EliteFourBattleSM_Ch3_loop_5:
 	note E_, 2
 	note B_, 2
-	loopchannel 5, Music_EliteFourBattleSM_Ch3_loop_5
+	sound_loop 5, Music_EliteFourBattleSM_Ch3_loop_5
 	octave 3
 	note C_, 2
 	octave 2
@@ -539,7 +539,7 @@ Music_EliteFourBattleSM_Ch3_loop_5:
 Music_EliteFourBattleSM_Ch3_loop_6:
 	note E_, 2
 	note B_, 2
-	loopchannel 5, Music_EliteFourBattleSM_Ch3_loop_6
+	sound_loop 5, Music_EliteFourBattleSM_Ch3_loop_6
 	octave 3
 	note C_, 2
 	octave 2
@@ -555,7 +555,7 @@ Music_EliteFourBattleSM_Ch3_loop_7:
 	note B_, 2
 	note E_, 2
 	note B_, 2
-	loopchannel 14, Music_EliteFourBattleSM_Ch3_loop_7
+	sound_loop 14, Music_EliteFourBattleSM_Ch3_loop_7
 	note E_, 2
 	note B_, 2
 	octave 1
@@ -571,7 +571,7 @@ Music_EliteFourBattleSM_Ch3_loop_7:
 Music_EliteFourBattleSM_Ch3_loop_8:
 	note E_, 2
 	note B_, 2
-	loopchannel 15, Music_EliteFourBattleSM_Ch3_loop_8
+	sound_loop 15, Music_EliteFourBattleSM_Ch3_loop_8
 	octave 3
 	note C_, 2
 	octave 2
@@ -579,7 +579,7 @@ Music_EliteFourBattleSM_Ch3_loop_8:
 Music_EliteFourBattleSM_Ch3_loop_9:
 	note E_, 2
 	note A_, 2
-	loopchannel 16, Music_EliteFourBattleSM_Ch3_loop_9
+	sound_loop 16, Music_EliteFourBattleSM_Ch3_loop_9
 	sound_jump Music_EliteFourBattleSM_Ch3_loop_main
 
 Music_EliteFourBattleSM_Ch3_branch_1:
@@ -591,7 +591,7 @@ Music_EliteFourBattleSM_Ch3_branch_1:
 	note __, 1
 	note E_, 3
 	note __, 1
-	loopchannel 8, Music_EliteFourBattleSM_Ch3_branch_1
+	sound_loop 8, Music_EliteFourBattleSM_Ch3_branch_1
 	volume_envelope 1, -1
 	note F_, 4
 	note __, 12
@@ -623,7 +623,7 @@ Music_EliteFourBattleSM_Ch4_loop_1:
 	note D#, 2
 	note D#, 2
 	note C_, 4
-	loopchannel 16, Music_EliteFourBattleSM_Ch4_loop_1
+	sound_loop 16, Music_EliteFourBattleSM_Ch4_loop_1
 	note B_, 16
 	note __, 16
 	note __, 16
@@ -642,7 +642,7 @@ Music_EliteFourBattleSM_Ch4_loop_2:
 	note C#, 1
 	note C#, 1
 	note C#, 1
-	loopchannel 11, Music_EliteFourBattleSM_Ch4_loop_2
+	sound_loop 11, Music_EliteFourBattleSM_Ch4_loop_2
 	note B_, 2
 	note C_, 1
 	note C_, 1
@@ -670,5 +670,5 @@ Music_EliteFourBattleSM_Ch4_loop_3:
 	note C_, 1
 	note C_, 1
 	note C_, 1
-	loopchannel 8, Music_EliteFourBattleSM_Ch4_loop_3
+	sound_loop 8, Music_EliteFourBattleSM_Ch4_loop_3
 	sound_jump Music_EliteFourBattleSM_Ch4_loop_main

@@ -21,7 +21,7 @@ Music_Clair_branch_1faab:
 	note __, 1
 	note C#, 1
 	note __, 1
-	loopchannel 2, Music_Clair_branch_1faab
+	sound_loop 2, Music_Clair_branch_1faab
 	octave 3
 	note B_, 1
 	note __, 1
@@ -155,7 +155,7 @@ Music_Clair_branch_1fb49:
 	note __, 2
 	note G#, 2
 	note __, 2
-	loopchannel 2, Music_Clair_branch_1fb49
+	sound_loop 2, Music_Clair_branch_1fb49
 	note F_, 2
 	note __, 2
 	note C#, 2

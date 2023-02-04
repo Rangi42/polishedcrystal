@@ -215,31 +215,31 @@ Music_KantoWildBattle_branch_ed15b:
 	note D#, 1
 	note D_, 1
 	note C#, 1
-	loopchannel 8, Music_KantoWildBattle_branch_ed15b
+	sound_loop 8, Music_KantoWildBattle_branch_ed15b
 Music_KantoWildBattle_branch_ed166:
 	note C#, 1
 	note F_, 1
 	note E_, 1
 	note D#, 1
-	loopchannel 8, Music_KantoWildBattle_branch_ed166
+	sound_loop 8, Music_KantoWildBattle_branch_ed166
 Music_KantoWildBattle_branch_ed16e:
 	note C_, 1
 	note D#, 1
 	note D_, 1
 	note C#, 1
-	loopchannel 16, Music_KantoWildBattle_branch_ed16e
+	sound_loop 16, Music_KantoWildBattle_branch_ed16e
 Music_KantoWildBattle_branch_ed176:
 	note C#, 1
 	note E_, 1
 	note D#, 1
 	note D_, 1
-	loopchannel 8, Music_KantoWildBattle_branch_ed176
+	sound_loop 8, Music_KantoWildBattle_branch_ed176
 Music_KantoWildBattle_branch_ed17e:
 	note C_, 1
 	note D#, 1
 	note D_, 1
 	note C#, 1
-	loopchannel 8, Music_KantoWildBattle_branch_ed17e
+	sound_loop 8, Music_KantoWildBattle_branch_ed17e
 	sound_jump Music_KantoWildBattle_branch_ed091
 
 Music_KantoWildBattle_branch_ed18a:
@@ -939,7 +939,7 @@ Music_KantoWildBattle_Type4:
 Music_KantoWildBattle_Type5:
 	note G#, 1
 	note __, 1
-	loopchannel 4, Music_KantoWildBattle_Type5
+	sound_loop 4, Music_KantoWildBattle_Type5
 	endchannel
 
 Music_KantoWildBattle_Type6:

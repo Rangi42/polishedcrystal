@@ -34,11 +34,11 @@ Music_ZinniaBattleORAS_Ch1:
 	duty_cycle 2
 Music_ZinniaBattleORAS_Ch1_loop_1:
 	callchannel Music_ZinniaBattleORAS_Ch1_branch_1
-	loopchannel 4, Music_ZinniaBattleORAS_Ch1_loop_1
+	sound_loop 4, Music_ZinniaBattleORAS_Ch1_loop_1
 Music_ZinniaBattleORAS_Ch1_loop_main:
 Music_ZinniaBattleORAS_Ch1_loop_2:
 	callchannel Music_ZinniaBattleORAS_Ch1_branch_1
-	loopchannel 4, Music_ZinniaBattleORAS_Ch1_loop_2
+	sound_loop 4, Music_ZinniaBattleORAS_Ch1_loop_2
 	duty_cycle 0
 	note_type 6, 8, 0
 	note D_, 8
@@ -254,7 +254,7 @@ Music_ZinniaBattleORAS_Ch1_loop_2:
 	duty_cycle 2
 Music_ZinniaBattleORAS_Ch1_loop_3:
 	callchannel Music_ZinniaBattleORAS_Ch1_branch_1
-	loopchannel 3, Music_ZinniaBattleORAS_Ch1_loop_3
+	sound_loop 3, Music_ZinniaBattleORAS_Ch1_loop_3
 	sound_jump Music_ZinniaBattleORAS_Ch1_loop_main
 
 Music_ZinniaBattleORAS_Ch1_branch_1:
@@ -894,7 +894,7 @@ Music_ZinniaBattleORAS_Ch3_loop_1:
 	volume_envelope 2, -1
 	note F#, 1
 	note __, 1
-	loopchannel 4, Music_ZinniaBattleORAS_Ch3_loop_1
+	sound_loop 4, Music_ZinniaBattleORAS_Ch3_loop_1
 Music_ZinniaBattleORAS_Ch3_loop_2:
 	volume_envelope 1, -1
 	octave 2
@@ -946,7 +946,7 @@ Music_ZinniaBattleORAS_Ch3_loop_2:
 	volume_envelope 2, -1
 	note G_, 1
 	note __, 1
-	loopchannel 12, Music_ZinniaBattleORAS_Ch3_loop_2
+	sound_loop 12, Music_ZinniaBattleORAS_Ch3_loop_2
 	octave 2
 	volume_envelope 2, -1
 	note D_, 12
@@ -1091,7 +1091,7 @@ Music_ZinniaBattleORAS_Ch4:
 Music_ZinniaBattleORAS_Ch4_loop_1:
 	note C#, 2
 	note C#, 2
-	loopchannel 6, Music_ZinniaBattleORAS_Ch4_loop_1
+	sound_loop 6, Music_ZinniaBattleORAS_Ch4_loop_1
 	note C#, 2
 	note_type 3
 	note D_, 1
@@ -1113,14 +1113,14 @@ Music_ZinniaBattleORAS_Ch4_loop_2:
 	note D#, 1
 	note D_, 1
 	callchannel Music_ZinniaBattleORAS_Ch4_branch_1
-	loopchannel 8, Music_ZinniaBattleORAS_Ch4_loop_2
+	sound_loop 8, Music_ZinniaBattleORAS_Ch4_loop_2
 	note B_, 2
 	callchannel Music_ZinniaBattleORAS_Ch4_branch_1
 Music_ZinniaBattleORAS_Ch4_loop_3:
 	note D#, 1
 	note D_, 1
 	callchannel Music_ZinniaBattleORAS_Ch4_branch_1
-	loopchannel 7, Music_ZinniaBattleORAS_Ch4_loop_3
+	sound_loop 7, Music_ZinniaBattleORAS_Ch4_loop_3
 	note __, 16
 	note D#, 14
 	note D#, 2
@@ -1129,7 +1129,7 @@ Music_ZinniaBattleORAS_Ch4_loop_4:
 	note C#, 1
 	note C_, 1
 	note C#, 1
-	loopchannel 7, Music_ZinniaBattleORAS_Ch4_loop_4
+	sound_loop 7, Music_ZinniaBattleORAS_Ch4_loop_4
 	callchannel Music_ZinniaBattleORAS_Ch4_branch_2
 	note B_, 2
 	callchannel Music_ZinniaBattleORAS_Ch4_branch_1
@@ -1139,7 +1139,7 @@ Music_ZinniaBattleORAS_Ch4_loop_4:
 Music_ZinniaBattleORAS_Ch4_loop_5:
 	note B_, 2
 	callchannel Music_ZinniaBattleORAS_Ch4_branch_1
-	loopchannel 4, Music_ZinniaBattleORAS_Ch4_loop_5
+	sound_loop 4, Music_ZinniaBattleORAS_Ch4_loop_5
 	note D#, 1
 	note D_, 1
 	callchannel Music_ZinniaBattleORAS_Ch4_branch_1

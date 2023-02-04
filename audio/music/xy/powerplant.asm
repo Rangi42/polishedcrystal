@@ -536,7 +536,7 @@ Music_PowerPlantXY_Ch4_branch_1:
 	note D_, 1
 	note G#, 1
 	note B_, 2
-	loopchannel 5, Music_PowerPlantXY_Ch4_branch_1
+	sound_loop 5, Music_PowerPlantXY_Ch4_branch_1
 	note D_, 4
 	note D_, 2
 	note D_, 2
@@ -574,5 +574,5 @@ Music_PowerPlantXY_Ch4_branch_3:
 	note D_, 1
 	note G#, 1
 	note B_, 2
-	loopchannel 8, Music_PowerPlantXY_Ch4_branch_3
+	sound_loop 8, Music_PowerPlantXY_Ch4_branch_3
 	sound_jump Music_PowerPlantXY_Ch4_branch_0

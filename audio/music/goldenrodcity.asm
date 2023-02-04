@@ -406,7 +406,7 @@ Music_GoldenrodCity_branch_eb613:
 	note F#, 2
 	note D_, 2
 	note F#, 2
-	loopchannel 3, Music_GoldenrodCity_branch_eb613
+	sound_loop 3, Music_GoldenrodCity_branch_eb613
 	callchannel Music_GoldenrodCity_branch_eb663
 	callchannel Music_GoldenrodCity_branch_eb66d
 	note G_, 1
@@ -447,7 +447,7 @@ Music_GoldenrodCity_branch_eb650:
 	note F#, 2
 	note D_, 2
 	note F#, 2
-	loopchannel 3, Music_GoldenrodCity_branch_eb650
+	sound_loop 3, Music_GoldenrodCity_branch_eb650
 	callchannel Music_GoldenrodCity_branch_eb663
 	sound_jump Music_GoldenrodCity_branch_eb613
 

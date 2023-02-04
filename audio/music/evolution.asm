@@ -31,7 +31,7 @@ Music_Evolution_branch_f0713:
 	callchannel Music_Evolution_branch_f0737
 	note_type 12, 10, 4
 	note F#, 4
-	loopchannel 2, Music_Evolution_branch_f0713
+	sound_loop 2, Music_Evolution_branch_f0713
 	callchannel Music_Evolution_branch_f0743
 	note_type 12, 10, 4
 	note G#, 4
@@ -83,7 +83,7 @@ Music_Evolution_branch_f0761:
 	callchannel Music_Evolution_branch_f0787
 	note_type 12, 11, 5
 	note B_, 4
-	loopchannel 2, Music_Evolution_branch_f0761
+	sound_loop 2, Music_Evolution_branch_f0761
 	callchannel Music_Evolution_branch_f0793
 	note_type 12, 11, 5
 	note B_, 4
@@ -128,7 +128,7 @@ Music_Evolution_branch_f07a3:
 	callchannel Music_Evolution_branch_f07bf
 	octave 3
 	note B_, 4
-	loopchannel 2, Music_Evolution_branch_f07a3
+	sound_loop 2, Music_Evolution_branch_f07a3
 	callchannel Music_Evolution_branch_f07d5
 	octave 3
 	note B_, 4

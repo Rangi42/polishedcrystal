@@ -90,7 +90,7 @@ Music_MtMoon_branch_edb8d:
 	note B_, 2
 	octave 3
 	note D#, 2
-	loopchannel 3, Music_MtMoon_branch_edb8d
+	sound_loop 3, Music_MtMoon_branch_edb8d
 	octave 2
 	note B_, 2
 	octave 3
@@ -116,7 +116,7 @@ Music_MtMoon_branch_edbab:
 	octave 3
 	note E_, 2
 	note G#, 2
-	loopchannel 4, Music_MtMoon_branch_edbab
+	sound_loop 4, Music_MtMoon_branch_edbab
 	sound_jump Music_MtMoon_branch_edb8a
 
 Music_MtMoon_Ch4:

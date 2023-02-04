@@ -16,7 +16,7 @@ Music_UnionCave_branch_f5c7b:
 	note_type 12, 11, 3
 Music_UnionCave_branch_f5c7e:
 	callchannel Music_UnionCave_branch_f5ccf
-	loopchannel 4, Music_UnionCave_branch_f5c7e
+	sound_loop 4, Music_UnionCave_branch_f5c7e
 Music_UnionCave_branch_f5c85:
 	octave 2
 	note G#, 2
@@ -26,7 +26,7 @@ Music_UnionCave_branch_f5c85:
 	note C#, 2
 	note E_, 2
 	note F_, 4
-	loopchannel 8, Music_UnionCave_branch_f5c85
+	sound_loop 8, Music_UnionCave_branch_f5c85
 Music_UnionCave_branch_f5c91:
 	octave 2
 	note A_, 2
@@ -36,7 +36,7 @@ Music_UnionCave_branch_f5c91:
 	note D_, 2
 	note F_, 2
 	note F#, 4
-	loopchannel 4, Music_UnionCave_branch_f5c91
+	sound_loop 4, Music_UnionCave_branch_f5c91
 	note __, 4
 	volume_envelope 8, 0
 	note F_, 16
@@ -179,7 +179,7 @@ Music_UnionCave_Ch3:
 	stereo_panning TRUE, FALSE
 Music_UnionCave_branch_f5d5d:
 	note __, 16
-	loopchannel 7, Music_UnionCave_branch_f5d5d
+	sound_loop 7, Music_UnionCave_branch_f5d5d
 	note __, 14
 	octave 4
 	note C_, 2
@@ -194,7 +194,7 @@ Music_UnionCave_branch_f5d65:
 	note __, 2
 	octave 4
 	note C_, 2
-	loopchannel 4, Music_UnionCave_branch_f5d65
+	sound_loop 4, Music_UnionCave_branch_f5d65
 Music_UnionCave_branch_f5d73:
 	note __, 2
 	octave 3
@@ -206,7 +206,7 @@ Music_UnionCave_branch_f5d73:
 	note __, 2
 	octave 4
 	note C#, 2
-	loopchannel 4, Music_UnionCave_branch_f5d73
+	sound_loop 4, Music_UnionCave_branch_f5d73
 	note __, 4
 	note C_, 8
 	octave 3
@@ -228,13 +228,13 @@ Music_UnionCave_branch_f5d8d:
 	octave 3
 	note A_, 2
 	note G_, 2
-	loopchannel 3, Music_UnionCave_branch_f5d8d
+	sound_loop 3, Music_UnionCave_branch_f5d8d
 	note A_, 4
 	note G_, 4
 	note A#, 8
 Music_UnionCave_branch_f5d9c:
 	note __, 16
-	loopchannel 4, Music_UnionCave_branch_f5d9c
+	sound_loop 4, Music_UnionCave_branch_f5d9c
 	sound_jump Music_UnionCave_branch_f5d5d
 
 Music_UnionCave_Ch4:

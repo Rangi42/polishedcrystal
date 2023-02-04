@@ -289,7 +289,7 @@ Music_Route26_branch_ef10e:
 	note G#, 2
 	octave 1
 	note G#, 6
-	loopchannel 3, Music_Route26_branch_ef10e
+	sound_loop 3, Music_Route26_branch_ef10e
 	octave 2
 	note G#, 2
 	note G#, 2
@@ -554,7 +554,7 @@ Music_Route26_branch_ef23c:
 	note B_, 6
 	note D_, 1
 	note D_, 1
-	loopchannel 3, Music_Route26_branch_ef23c
+	sound_loop 3, Music_Route26_branch_ef23c
 	callchannel Music_Route26_branch_ef2b0
 Music_Route26_branch_ef246:
 	note_type 6
@@ -580,7 +580,7 @@ Music_Route26_branch_ef266:
 	note D_, 2
 	note D_, 2
 	note B_, 6
-	loopchannel 4, Music_Route26_branch_ef266
+	sound_loop 4, Music_Route26_branch_ef266
 	note_type 6
 	callchannel Music_Route26_branch_ef2a8
 	callchannel Music_Route26_branch_ef2a8
@@ -601,7 +601,7 @@ Music_Route26_branch_ef27c:
 	note D_, 2
 	note D_, 2
 	note B_, 12
-	loopchannel 2, Music_Route26_branch_ef27c
+	sound_loop 2, Music_Route26_branch_ef27c
 	note_type 12
 	note B_, 16
 	callchannel Music_Route26_branch_ef2b0

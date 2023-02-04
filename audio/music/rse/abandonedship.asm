@@ -630,11 +630,11 @@ Music_AbandonedShipRSE_branch_1:
 	note D_, 1
 	note D_, 1
 	note D_, 1
-	loopchannel 4, Music_AbandonedShipRSE_branch_1
+	sound_loop 4, Music_AbandonedShipRSE_branch_1
 Music_AbandonedShipRSE_branch_2:
 	note_type 12
 	note __, 16
-	loopchannel 4, Music_AbandonedShipRSE_branch_2
+	sound_loop 4, Music_AbandonedShipRSE_branch_2
 	callchannel Music_AbandonedShipRSE_branch_eeb6b
 	note D_, 1
 	note C#, 1

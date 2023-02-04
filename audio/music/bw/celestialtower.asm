@@ -78,7 +78,7 @@ Music_CelestialTowerBW_NoIntro_Ch1_loop_1:
 	note B_, 2
 	octave 4
 	note F#, 2
-	loopchannel 2, Music_CelestialTowerBW_NoIntro_Ch1_loop_1
+	sound_loop 2, Music_CelestialTowerBW_NoIntro_Ch1_loop_1
 	note F_, 2
 	octave 3
 	note A#, 2
@@ -259,7 +259,7 @@ Music_CelestialTowerBW_NoIntro_Ch2_loop_1:
 	note B_, 2
 	octave 3
 	note F#, 10
-	loopchannel 2, Music_CelestialTowerBW_NoIntro_Ch2_loop_1
+	sound_loop 2, Music_CelestialTowerBW_NoIntro_Ch2_loop_1
 	octave 2
 	note D_, 2
 	note A_, 2
@@ -564,7 +564,7 @@ Music_CelestialTowerBW_NoIntro_Ch4_loop_1:
 	note G#, 2
 	note G#, 6
 	note __, 16
-	loopchannel 4, Music_CelestialTowerBW_NoIntro_Ch4_loop_1
+	sound_loop 4, Music_CelestialTowerBW_NoIntro_Ch4_loop_1
 	note __, 16
 	sound_jump Music_CelestialTowerBW_NoIntro_Ch4
 

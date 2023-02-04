@@ -107,7 +107,7 @@ Music_LookRival_branch_f4ff7:
 	note F#, 2
 	note F_, 2
 	note D#, 2
-	loopchannel 3, Music_LookRival_branch_f4ff7
+	sound_loop 3, Music_LookRival_branch_f4ff7
 	volume_envelope 11, 2
 	note F_, 2
 	note G#, 4
@@ -198,7 +198,7 @@ Music_LookRival_branch_f5070:
 	note D#, 6
 	volume_envelope 12, 2
 	note F_, 4
-	loopchannel 3, Music_LookRival_branch_f5070
+	sound_loop 3, Music_LookRival_branch_f5070
 	note C_, 2
 	note D#, 4
 	volume_envelope 12, 7
@@ -230,7 +230,7 @@ Music_LookRival_Ch3:
 Music_AfterTheRivalFight_branch_f509d:
 Music_LookRival_branch_f509d:
 	callchannel Music_LookRival_branch_f50ef
-	loopchannel 3, Music_LookRival_branch_f509d
+	sound_loop 3, Music_LookRival_branch_f509d
 	note F_, 4
 	note C_, 2
 	note D#, 4

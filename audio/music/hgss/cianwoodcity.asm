@@ -145,7 +145,7 @@ Music_CianwoodCityHGSS_branch_ef37f:
 	note F#, 2
 	note A#, 2
 	note F#, 2
-	loopchannel 2, Music_CianwoodCityHGSS_branch_ef37f
+	sound_loop 2, Music_CianwoodCityHGSS_branch_ef37f
 	endchannel
 
 Music_CianwoodCityHGSS_branch_ef391:
@@ -195,7 +195,7 @@ Music_CianwoodCityHGSS_branch_ef3be:
 	note D#, 2
 	note F#, 2
 	note B_, 2
-	loopchannel 2, Music_CianwoodCityHGSS_branch_ef3be
+	sound_loop 2, Music_CianwoodCityHGSS_branch_ef3be
 Music_CianwoodCityHGSS_branch_ef3d0:
 	octave 4
 	note C#, 2
@@ -207,7 +207,7 @@ Music_CianwoodCityHGSS_branch_ef3d0:
 	note G#, 2
 	octave 5
 	note C#, 2
-	loopchannel 2, Music_CianwoodCityHGSS_branch_ef3d0
+	sound_loop 2, Music_CianwoodCityHGSS_branch_ef3d0
 	volume_envelope 5, 0
 	duty_cycle 0
 	octave 4

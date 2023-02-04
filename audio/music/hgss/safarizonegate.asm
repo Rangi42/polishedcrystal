@@ -719,10 +719,10 @@ Music_SafariZoneGateHGSS_Ch4_loop_1:
 	note G_, 1
 	note G_, 1
 	note C#, 1
-	loopchannel 15, Music_SafariZoneGateHGSS_Ch4_loop_1
+	sound_loop 15, Music_SafariZoneGateHGSS_Ch4_loop_1
 Music_SafariZoneGateHGSS_Ch4_loop_2:
 	callchannel Music_SafariZoneGateHGSS_Ch4_branch_1
-	loopchannel 16, Music_SafariZoneGateHGSS_Ch4_loop_2
+	sound_loop 16, Music_SafariZoneGateHGSS_Ch4_loop_2
 Music_SafariZoneGateHGSS_Ch4_loop_3:
 	note C_, 1
 	note G_, 1
@@ -740,10 +740,10 @@ Music_SafariZoneGateHGSS_Ch4_loop_3:
 	note G_, 1
 	note G_, 1
 	note D_, 1
-	loopchannel 2, Music_SafariZoneGateHGSS_Ch4_loop_3
+	sound_loop 2, Music_SafariZoneGateHGSS_Ch4_loop_3
 Music_SafariZoneGateHGSS_Ch4_loop_4:
 	callchannel Music_SafariZoneGateHGSS_Ch4_branch_1
-	loopchannel 4, Music_SafariZoneGateHGSS_Ch4_loop_4
+	sound_loop 4, Music_SafariZoneGateHGSS_Ch4_loop_4
 	note B_, 3
 	note F#, 1
 Music_SafariZoneGateHGSS_Ch4_loop_5:
@@ -751,7 +751,7 @@ Music_SafariZoneGateHGSS_Ch4_loop_5:
 	note G_, 1
 	note G_, 1
 	note F#, 1
-	loopchannel 15, Music_SafariZoneGateHGSS_Ch4_loop_5
+	sound_loop 15, Music_SafariZoneGateHGSS_Ch4_loop_5
 	note B_, 16
 	sound_jump Music_SafariZoneGateHGSS_Ch4_loop_main
 	endchannel

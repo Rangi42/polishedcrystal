@@ -101,7 +101,7 @@ Music_LookMysticalMan_branch_1784b4:
 	note B_, 2
 	note F#, 2
 	note D_, 2
-	loopchannel 4, Music_LookMysticalMan_branch_1784b4
+	sound_loop 4, Music_LookMysticalMan_branch_1784b4
 	octave 5
 	note D_, 2
 	octave 4
@@ -132,7 +132,7 @@ Music_LookMysticalMan_branch_1784d4:
 	note E_, 2
 	octave 3
 	note B_, 2
-	loopchannel 4, Music_LookMysticalMan_branch_1784d4
+	sound_loop 4, Music_LookMysticalMan_branch_1784d4
 	octave 5
 	note C#, 2
 	octave 4
@@ -470,7 +470,7 @@ Music_LookMysticalMan_branch_178615:
 	note C#, 2
 	octave 2
 	note E_, 6
-	loopchannel 2, Music_LookMysticalMan_branch_178615
+	sound_loop 2, Music_LookMysticalMan_branch_178615
 	note F#, 4
 	note A#, 2
 	note __, 2
@@ -546,7 +546,7 @@ Music_LookMysticalMan_branch_178697:
 	callchannel Music_LookMysticalMan_branch_1786d9
 	callchannel Music_LookMysticalMan_branch_1786d3
 	callchannel Music_LookMysticalMan_branch_1786df
-	loopchannel 2, Music_LookMysticalMan_branch_178697
+	sound_loop 2, Music_LookMysticalMan_branch_178697
 	callchannel Music_LookMysticalMan_branch_1786d3
 	callchannel Music_LookMysticalMan_branch_1786d9
 	callchannel Music_LookMysticalMan_branch_1786d3
@@ -578,7 +578,7 @@ Music_LookMysticalMan_branch_1786ba:
 	note D_, 2
 	note D_, 1
 	note D_, 1
-	loopchannel 2, Music_LookMysticalMan_branch_1786ba
+	sound_loop 2, Music_LookMysticalMan_branch_1786ba
 	sound_jump Music_LookMysticalMan_branch_178697
 
 Music_LookMysticalMan_branch_1786d3:

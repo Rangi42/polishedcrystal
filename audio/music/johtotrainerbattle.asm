@@ -266,7 +266,7 @@ Music_JohtoTrainerBattle_branch_f61bd:
 	note D#, 2
 	note F_, 4
 	note F_, 4
-	loopchannel 2, Music_JohtoTrainerBattle_branch_f61bd
+	sound_loop 2, Music_JohtoTrainerBattle_branch_f61bd
 	volume_envelope 11, 7
 	note F_, 8
 	volume_envelope 11, 4
@@ -594,7 +594,7 @@ Music_JohtoTrainerBattle_branch_f635a:
 	note A_, 2
 	note G_, 2
 	note A#, 2
-	loopchannel 3, Music_JohtoTrainerBattle_branch_f635a
+	sound_loop 3, Music_JohtoTrainerBattle_branch_f635a
 	note A_, 2
 	octave 4
 	note D_, 2
@@ -615,7 +615,7 @@ Music_JohtoTrainerBattle_branch_f6376:
 	note G_, 2
 	note F_, 2
 	note G#, 2
-	loopchannel 3, Music_JohtoTrainerBattle_branch_f6376
+	sound_loop 3, Music_JohtoTrainerBattle_branch_f6376
 	note F_, 2
 	octave 4
 	note C_, 2
@@ -700,7 +700,7 @@ Music_JohtoTrainerBattle_branch_f63dd:
 	note G_, 2
 	octave 3
 	note A#, 2
-	loopchannel 8, Music_JohtoTrainerBattle_branch_f63dd
+	sound_loop 8, Music_JohtoTrainerBattle_branch_f63dd
 	callchannel Music_JohtoTrainerBattle_branch_f64be
 	octave 3
 	note A#, 2
@@ -942,7 +942,7 @@ Music_JohtoTrainerBattle_branch_f6501:
 	note F#, 2
 	note G_, 2
 	note E_, 2
-	loopchannel 3, Music_JohtoTrainerBattle_branch_f6501
+	sound_loop 3, Music_JohtoTrainerBattle_branch_f6501
 	note A_, 2
 	note E_, 2
 	note F#, 2
@@ -1059,7 +1059,7 @@ Music_JohtoTrainerBattle_branch_f6591:
 	note A_, 2
 	octave 4
 	note C_, 2
-	loopchannel 2, Music_JohtoTrainerBattle_branch_f6591
+	sound_loop 2, Music_JohtoTrainerBattle_branch_f6591
 	callchannel Music_JohtoTrainerBattle_branch_f66ac
 	note C_, 2
 	octave 4
@@ -1074,13 +1074,13 @@ Music_JohtoTrainerBattle_branch_f6591:
 Music_JohtoTrainerBattle_branch_f65ac:
 	note C#, 2
 	note G#, 2
-	loopchannel 7, Music_JohtoTrainerBattle_branch_f65ac
+	sound_loop 7, Music_JohtoTrainerBattle_branch_f65ac
 	note B_, 2
 	note A_, 2
 Music_JohtoTrainerBattle_branch_f65b4:
 	note D_, 2
 	note A_, 2
-	loopchannel 5, Music_JohtoTrainerBattle_branch_f65b4
+	sound_loop 5, Music_JohtoTrainerBattle_branch_f65b4
 	note B_, 2
 	note A_, 2
 	note G#, 2
@@ -1090,13 +1090,13 @@ Music_JohtoTrainerBattle_branch_f65b4:
 Music_JohtoTrainerBattle_branch_f65c0:
 	note A#, 4
 	note D#, 4
-	loopchannel 4, Music_JohtoTrainerBattle_branch_f65c0
+	sound_loop 4, Music_JohtoTrainerBattle_branch_f65c0
 Music_JohtoTrainerBattle_branch_f65c6:
 	octave 4
 	note G_, 4
 	octave 3
 	note A#, 4
-	loopchannel 4, Music_JohtoTrainerBattle_branch_f65c6
+	sound_loop 4, Music_JohtoTrainerBattle_branch_f65c6
 Music_JohtoTrainerBattle_branch_f65ce:
 	callchannel Music_JohtoTrainerBattle_branch_f66b4
 	note D#, 2
@@ -1106,7 +1106,7 @@ Music_JohtoTrainerBattle_branch_f65ce:
 	note C_, 2
 	octave 3
 	note A#, 8
-	loopchannel 2, Music_JohtoTrainerBattle_branch_f65ce
+	sound_loop 2, Music_JohtoTrainerBattle_branch_f65ce
 	octave 4
 	note C#, 8
 	note C_, 8
@@ -1174,11 +1174,11 @@ Music_JohtoTrainerBattle_branch_f65ce:
 Music_JohtoTrainerBattle_branch_f661e:
 	note D#, 2
 	note A#, 2
-	loopchannel 8, Music_JohtoTrainerBattle_branch_f661e
+	sound_loop 8, Music_JohtoTrainerBattle_branch_f661e
 Music_JohtoTrainerBattle_branch_f6624:
 	note C#, 2
 	note G#, 2
-	loopchannel 6, Music_JohtoTrainerBattle_branch_f6624
+	sound_loop 6, Music_JohtoTrainerBattle_branch_f6624
 	note C#, 2
 	octave 4
 	note C_, 2
@@ -1188,11 +1188,11 @@ Music_JohtoTrainerBattle_branch_f6624:
 Music_JohtoTrainerBattle_branch_f6630:
 	note D#, 2
 	note A#, 2
-	loopchannel 8, Music_JohtoTrainerBattle_branch_f6630
+	sound_loop 8, Music_JohtoTrainerBattle_branch_f6630
 Music_JohtoTrainerBattle_branch_f6636:
 	note C#, 2
 	note G#, 2
-	loopchannel 4, Music_JohtoTrainerBattle_branch_f6636
+	sound_loop 4, Music_JohtoTrainerBattle_branch_f6636
 	note C#, 2
 	octave 4
 	note C#, 2
@@ -1298,20 +1298,20 @@ Music_JohtoTrainerBattle_branch_f669d:
 	octave 3
 	note E_, 2
 	note A_, 2
-	loopchannel 4, Music_JohtoTrainerBattle_branch_f669d
+	sound_loop 4, Music_JohtoTrainerBattle_branch_f669d
 	endchannel
 
 Music_JohtoTrainerBattle_branch_f66a5:
 	note D_, 2
 	note A_, 2
-	loopchannel 4, Music_JohtoTrainerBattle_branch_f66a5
+	sound_loop 4, Music_JohtoTrainerBattle_branch_f66a5
 	endchannel
 
 Music_JohtoTrainerBattle_branch_f66ac:
 	octave 3
 	note C_, 2
 	note G_, 2
-	loopchannel 4, Music_JohtoTrainerBattle_branch_f66ac
+	sound_loop 4, Music_JohtoTrainerBattle_branch_f66ac
 	endchannel
 
 Music_JohtoTrainerBattle_branch_f66b4:

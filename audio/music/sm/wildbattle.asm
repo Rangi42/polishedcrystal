@@ -165,7 +165,7 @@ Music_WildBattleSM_Ch1_loop_1:
 	note D_, 4
 	note D_, 4
 	note C#, 2
-	loopchannel 2, Music_WildBattleSM_Ch1_loop_1
+	sound_loop 2, Music_WildBattleSM_Ch1_loop_1
 	duty_cycle 0
 	volume_envelope 12, 7
 	octave 4
@@ -250,7 +250,7 @@ Music_WildBattleSM_Ch2_loop_1:
 	note F_, 1
 	note F#, 1
 	note G_, 1
-	loopchannel 8, Music_WildBattleSM_Ch2_loop_1
+	sound_loop 8, Music_WildBattleSM_Ch2_loop_1
 	octave 4
 	note C_, 6
 	octave 3
@@ -712,7 +712,7 @@ Music_WildBattleSM_Ch3_loop_1:
 	note D_, 4
 	octave 2
 	note D_, 4
-	loopchannel 12, Music_WildBattleSM_Ch3_loop_1
+	sound_loop 12, Music_WildBattleSM_Ch3_loop_1
 	octave 1
 	note D_, 4
 	octave 2
@@ -771,7 +771,7 @@ Music_WildBattleSM_Ch3_loop_2:
 	note B_, 4
 	octave 2
 	note E_, 4
-	loopchannel 16, Music_WildBattleSM_Ch3_loop_2
+	sound_loop 16, Music_WildBattleSM_Ch3_loop_2
 	note C_, 4
 	note F_, 4
 	note C_, 4
@@ -840,7 +840,7 @@ Music_WildBattleSM_Ch3_loop_2:
 Music_WildBattleSM_Ch3_loop_3:
 	note C_, 4
 	note F_, 4
-	loopchannel 12, Music_WildBattleSM_Ch3_loop_3
+	sound_loop 12, Music_WildBattleSM_Ch3_loop_3
 	note C_, 4
 	octave 3
 	note C_, 4

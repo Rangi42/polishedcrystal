@@ -55,19 +55,19 @@ Music_KantoLegendBattleXY_Ch1_L1:
 	note __, 1
 	note C_, 1
 	note __, 5
-	loopchannel 4, Music_KantoLegendBattleXY_Ch1_L1
+	sound_loop 4, Music_KantoLegendBattleXY_Ch1_L1
 Music_KantoLegendBattleXY_Ch1_L2:
 	note D_, 1
 	note __, 1
 	note D_, 1
 	note __, 5
-	loopchannel 4, Music_KantoLegendBattleXY_Ch1_L2
+	sound_loop 4, Music_KantoLegendBattleXY_Ch1_L2
 Music_KantoLegendBattleXY_Ch1_L3:
 	note E_, 1
 	note __, 1
 	note E_, 1
 	note __, 5
-	loopchannel 7, Music_KantoLegendBattleXY_Ch1_L3
+	sound_loop 7, Music_KantoLegendBattleXY_Ch1_L3
 	note E_, 1
 	note __, 1
 	note E_, 1
@@ -90,7 +90,7 @@ Music_KantoLegendBattleXY_Ch1_L4:
 	note G_, 2
 	octave 3
 	note C_, 2
-	loopchannel 4, Music_KantoLegendBattleXY_Ch1_L4
+	sound_loop 4, Music_KantoLegendBattleXY_Ch1_L4
 Music_KantoLegendBattleXY_Ch1_L5:
 	octave 2
 	note D_, 2
@@ -98,7 +98,7 @@ Music_KantoLegendBattleXY_Ch1_L5:
 	note A_, 2
 	octave 3
 	note D_, 2
-	loopchannel 4, Music_KantoLegendBattleXY_Ch1_L5
+	sound_loop 4, Music_KantoLegendBattleXY_Ch1_L5
 Music_KantoLegendBattleXY_Ch1_L6:
 	octave 2
 	note E_, 2
@@ -106,7 +106,7 @@ Music_KantoLegendBattleXY_Ch1_L6:
 	note B_, 2
 	octave 3
 	note E_, 2
-	loopchannel 7, Music_KantoLegendBattleXY_Ch1_L6
+	sound_loop 7, Music_KantoLegendBattleXY_Ch1_L6
 	octave 2
 	note E_, 2
 	note A_, 2
@@ -146,7 +146,7 @@ Music_KantoLegendBattleXY_Ch1_L7:
 	note C_, 1
 	octave 3
 	note C_, 1
-	loopchannel 2, Music_KantoLegendBattleXY_Ch1_L7
+	sound_loop 2, Music_KantoLegendBattleXY_Ch1_L7
 Music_KantoLegendBattleXY_Ch1_L8:
 	octave 4
 	note D_, 1
@@ -180,7 +180,7 @@ Music_KantoLegendBattleXY_Ch1_L8:
 	note D_, 1
 	octave 3
 	note D_, 1
-	loopchannel 2, Music_KantoLegendBattleXY_Ch1_L8
+	sound_loop 2, Music_KantoLegendBattleXY_Ch1_L8
 Music_KantoLegendBattleXY_Ch1_L9:
 	octave 4
 	note E_, 1
@@ -214,7 +214,7 @@ Music_KantoLegendBattleXY_Ch1_L9:
 	note E_, 1
 	octave 3
 	note E_, 1
-	loopchannel 3, Music_KantoLegendBattleXY_Ch1_L9
+	sound_loop 3, Music_KantoLegendBattleXY_Ch1_L9
 	octave 4
 	note E_, 1
 	octave 3
@@ -447,7 +447,7 @@ Music_KantoLegendBattleXY_Ch1_L10:
 	note A_, 1
 	note E_, 1
 	note A_, 1
-	loopchannel 2, Music_KantoLegendBattleXY_Ch1_L10
+	sound_loop 2, Music_KantoLegendBattleXY_Ch1_L10
 	duty_cycle 1
 	volume_envelope 12, 5
 	octave 4
@@ -540,15 +540,15 @@ Music_KantoLegendBattleXY_Ch2:
 Music_KantoLegendBattleXY_Ch2_L1:
 	note C_, 2
 	note C_, 6
-	loopchannel 4, Music_KantoLegendBattleXY_Ch2_L1
+	sound_loop 4, Music_KantoLegendBattleXY_Ch2_L1
 Music_KantoLegendBattleXY_Ch2_L2:
 	note D_, 2
 	note D_, 6
-	loopchannel 4, Music_KantoLegendBattleXY_Ch2_L2
+	sound_loop 4, Music_KantoLegendBattleXY_Ch2_L2
 Music_KantoLegendBattleXY_Ch2_L3:
 	note E_, 2
 	note E_, 6
-	loopchannel 6, Music_KantoLegendBattleXY_Ch2_L3
+	sound_loop 6, Music_KantoLegendBattleXY_Ch2_L3
 	note E_, 4
 	note E_, 4
 	note E_, 4

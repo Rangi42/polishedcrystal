@@ -35,7 +35,7 @@ Music_Route47HGSS_Ch1_loop_1:
 	note C_, 2
 	volume_envelope 2, 2
 	note C_, 2
-	loopchannel 4, Music_Route47HGSS_Ch1_loop_1
+	sound_loop 4, Music_Route47HGSS_Ch1_loop_1
 	volume_envelope 8, 2
 	octave 4
 	note C_, 2
@@ -1108,7 +1108,7 @@ Music_Route47HGSS_Ch4_loop_1:
 	note C#, 1
 	note C#, 1
 	callchannel Music_Route47HGSS_Ch4_branch_2
-	loopchannel 6, Music_Route47HGSS_Ch4_loop_1
+	sound_loop 6, Music_Route47HGSS_Ch4_loop_1
 	note C_, 1
 	note C#, 1
 	note C#, 1
@@ -1128,7 +1128,7 @@ Music_Route47HGSS_Ch4_loop_2:
 	note C#, 1
 	note C#, 1
 	callchannel Music_Route47HGSS_Ch4_branch_2
-	loopchannel 7, Music_Route47HGSS_Ch4_loop_2
+	sound_loop 7, Music_Route47HGSS_Ch4_loop_2
 	note B_, 3
 	note C#, 1
 	note C#, 2

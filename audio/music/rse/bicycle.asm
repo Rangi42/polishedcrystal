@@ -1062,7 +1062,7 @@ Music_BicycleRSE_Ch3_loop_1:
 	octave 4
 	note A_, 1
 	note __, 3
-	loopchannel 8, Music_BicycleRSE_Ch3_loop_1
+	sound_loop 8, Music_BicycleRSE_Ch3_loop_1
 	sound_jump Music_BicycleRSE_Ch3_loop_main
 
 Music_BicycleRSE_Ch4:
@@ -1074,7 +1074,7 @@ Music_BicycleRSE_Ch4_loop_main:
 Music_BicycleRSE_Ch4_loop_1:
 	note __, 4
 	note G#, 4
-	loopchannel 14, Music_BicycleRSE_Ch4_loop_1
+	sound_loop 14, Music_BicycleRSE_Ch4_loop_1
 	note G#, 2
 	note G#, 2
 	note G#, 4
@@ -1083,7 +1083,7 @@ Music_BicycleRSE_Ch4_loop_1:
 Music_BicycleRSE_Ch4_loop_2:
 	note __, 4
 	note G#, 4
-	loopchannel 14, Music_BicycleRSE_Ch4_loop_2
+	sound_loop 14, Music_BicycleRSE_Ch4_loop_2
 	note G#, 2
 	note G#, 2
 	note G#, 4
@@ -1092,11 +1092,11 @@ Music_BicycleRSE_Ch4_loop_2:
 	note B_, 16
 Music_BicycleRSE_Ch4_loop_3:
 	note __, 16
-	loopchannel 31, Music_BicycleRSE_Ch4_loop_3
+	sound_loop 31, Music_BicycleRSE_Ch4_loop_3
 Music_BicycleRSE_Ch4_loop_4:
 	note __, 4
 	note G#, 4
-	loopchannel 8, Music_BicycleRSE_Ch4_loop_4
+	sound_loop 8, Music_BicycleRSE_Ch4_loop_4
 	note B_, 16
 	note __, 16
 	note __, 16

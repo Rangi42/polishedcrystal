@@ -101,7 +101,7 @@ Sfx_Poison:
 	duty_cycle 0
 	pitch_sweep 1, 4
 	square_note 4, 15, 2, 1536
-	loopchannel 4, .loop
+	sound_loop 4, .loop
 	square_note 15, 15, 3, 1536
 	pitch_sweep 0, 8
 	endchannel
@@ -1053,7 +1053,7 @@ Sfx_WingAttack:
 	noise_note 8, 4, -7, 35
 	noise_note 4, 12, 4, 34
 	noise_note 6, 15, 2, 35
-	loopchannel 4, .branch8
+	sound_loop 4, .branch8
 	endchannel
 
 
@@ -1361,7 +1361,7 @@ Sfx_Supersonic:
 	square_note 15, 3, -7, 1984
 .branch5:
 	square_note 15, 13, -7, 1984
-	loopchannel 4, .branch5
+	sound_loop 4, .branch5
 	square_note 15, 13, 1, 1984
 	endchannel
 
@@ -1370,7 +1370,7 @@ Sfx_Supersonic:
 	square_note 15, 2, -7, 1992
 .branch6:
 	square_note 15, 12, -7, 1991
-	loopchannel 4, .branch6
+	sound_loop 4, .branch6
 	square_note 15, 12, 1, 1992
 	endchannel
 
@@ -1378,7 +1378,7 @@ Sfx_Supersonic:
 .branch8:
 	noise_note 3, 9, 7, 18
 	noise_note 3, 10, 1, 17
-	loopchannel 10, .branch8
+	sound_loop 10, .branch8
 	endchannel
 
 
@@ -1395,7 +1395,7 @@ Sfx_Leer:
 	duty_cycle 0
 	square_note 0, 15, 1, 1984
 	square_note 0, 15, 1, 1792
-	loopchannel 12, .branch5
+	sound_loop 12, .branch5
 	endchannel
 
 .Ch6:
@@ -1403,14 +1403,14 @@ Sfx_Leer:
 	duty_cycle_pattern 2, 3, 0, 3
 	square_note 0, 14, 1, 1985
 	square_note 0, 14, 1, 1793
-	loopchannel 12, .branch6
+	sound_loop 12, .branch6
 	endchannel
 
 .Ch8:
 .branch8:
 	noise_note 1, 13, 1, 73
 	noise_note 1, 13, 1, 41
-	loopchannel 6, .branch8
+	sound_loop 6, .branch8
 	endchannel
 
 
@@ -1426,7 +1426,7 @@ Sfx_Ember:
 	duty_cycle_pattern 3, 0, 2, 1
 	square_note 11, 15, 3, 288
 	square_note 9, 13, 3, 336
-	loopchannel 5, .branch5
+	sound_loop 5, .branch5
 	square_note 8, 14, 3, 304
 	square_note 15, 12, 2, 272
 	endchannel
@@ -1435,7 +1435,7 @@ Sfx_Ember:
 .branch8:
 	noise_note 10, 15, 3, 53
 	noise_note 14, 15, 6, 69
-	loopchannel 4, .branch8
+	sound_loop 4, .branch8
 	noise_note 12, 15, 4, 188
 	noise_note 12, 15, 5, 156
 	noise_note 15, 15, 4, 172
@@ -1457,7 +1457,7 @@ Sfx_BubbleBeam:
 	square_note 3, 12, 4, 1280
 	square_note 5, 11, 5, 1536
 	square_note 13, 14, 2, 1728
-	loopchannel 3, .branch5
+	sound_loop 3, .branch5
 	square_note 8, 13, 1, 1536
 	endchannel
 
@@ -1468,7 +1468,7 @@ Sfx_BubbleBeam:
 	square_note 4, 11, 4, 1248
 	square_note 6, 10, 5, 1512
 	square_note 14, 13, 1, 1696
-	loopchannel 3, .branch6
+	sound_loop 3, .branch6
 	endchannel
 
 .Ch8:
@@ -1477,7 +1477,7 @@ Sfx_BubbleBeam:
 	noise_note 3, 9, 2, 67
 	noise_note 10, 11, 5, 51
 	noise_note 15, 12, 3, 50
-	loopchannel 2, .branch8
+	sound_loop 2, .branch8
 	endchannel
 
 
@@ -1496,7 +1496,7 @@ Sfx_HydroPump:
 	square_note 3, 15, 1, 1280
 	square_note 3, 11, 1, 1024
 	square_note 3, 7, 1, 768
-	loopchannel 5, .branch5
+	sound_loop 5, .branch5
 	square_note 8, 8, 1, 1024
 	endchannel
 
@@ -1507,7 +1507,7 @@ Sfx_HydroPump:
 	noise_note 3, 13, 2, 51
 	noise_note 3, 9, 2, 35
 	noise_note 3, 5, 2, 18
-	loopchannel 5, .branch8
+	sound_loop 5, .branch8
 	noise_note 8, 8, 1, 18
 	endchannel
 
@@ -1526,7 +1526,7 @@ Sfx_Surf:
 	square_note 15, 15, 4, 1280
 	square_note 15, 12, 4, 1024
 	square_note 15, 14, 2, 1472
-	loopchannel 3, .branch5
+	sound_loop 3, .branch5
 	endchannel
 
 .Ch6:
@@ -1535,7 +1535,7 @@ Sfx_Surf:
 	square_note 7, 14, 4, 1072
 	square_note 15, 11, 4, 816
 	square_note 15, 10, 2, 1080
-	loopchannel 4, .branch6
+	sound_loop 4, .branch6
 	endchannel
 
 .Ch8:
@@ -1544,7 +1544,7 @@ Sfx_Surf:
 	noise_note 9, 15, 2, 67
 	noise_note 15, 15, 4, 66
 	noise_note 15, 15, 4, 65
-	loopchannel 3, .branch8
+	sound_loop 3, .branch8
 	endchannel
 
 
@@ -1562,7 +1562,7 @@ Sfx_Psybeam:
 	square_note 10, 15, 1, 1600
 	square_note 10, 15, 3, 1664
 	square_note 10, 15, 2, 1568
-	loopchannel 4, .branch5
+	sound_loop 4, .branch5
 	square_note 10, 15, 1, 1600
 	endchannel
 
@@ -1572,7 +1572,7 @@ Sfx_Psybeam:
 	square_note 10, 15, 3, 1393
 	square_note 7, 14, 3, 1329
 	square_note 10, 15, 1, 1361
-	loopchannel 4, .branch6
+	sound_loop 4, .branch6
 	square_note 10, 15, 1, 1393
 	endchannel
 
@@ -1580,7 +1580,7 @@ Sfx_Psybeam:
 .branch8:
 	noise_note 2, 13, 1, 74
 	noise_note 2, 13, 2, 42
-	loopchannel 21, .branch8
+	sound_loop 21, .branch8
 	endchannel
 
 
@@ -1599,7 +1599,7 @@ Sfx_Charge:
 	square_note 3, 15, 1, 1792
 	square_note 4, 15, 1, 1280
 	square_note 5, 15, 1, 2032
-	loopchannel 8, .branch5
+	sound_loop 8, .branch5
 	endchannel
 
 .Ch6:
@@ -1609,7 +1609,7 @@ Sfx_Charge:
 	square_note 3, 14, 1, 2034
 	square_note 4, 14, 1, 1538
 	square_note 5, 14, 1, 1794
-	loopchannel 8, .branch6
+	sound_loop 8, .branch6
 	endchannel
 
 .Ch8:
@@ -1618,7 +1618,7 @@ Sfx_Charge:
 	noise_note 3, 13, 3, 17
 	noise_note 2, 13, 2, 16
 	noise_note 5, 13, 2, 18
-	loopchannel 9, .branch8
+	sound_loop 9, .branch8
 	endchannel
 
 
@@ -1635,7 +1635,7 @@ Sfx_Thundershock:
 	duty_cycle_pattern 0, 2, 2, 3
 	square_note 3, 15, 1, 2032
 	square_note 4, 15, 2, 512
-	loopchannel 8, .branch5
+	sound_loop 8, .branch5
 	endchannel
 
 .Ch6:
@@ -1643,14 +1643,14 @@ Sfx_Thundershock:
 	duty_cycle_pattern 2, 3, 0, 3
 	square_note 4, 14, 2, 514
 	square_note 4, 14, 1, 2018
-	loopchannel 9, .branch6
+	sound_loop 9, .branch6
 	endchannel
 
 .Ch8:
 .branch8:
 	noise_note 4, 15, -7, 67
 	noise_note 4, 15, 2, 68
-	loopchannel 9, .branch8
+	sound_loop 9, .branch8
 	endchannel
 
 
@@ -1857,7 +1857,7 @@ Sfx_HyperBeam:
 .branch5:
 	square_note 2, 15, 1, 1792
 	square_note 2, 15, 1, 2016
-	loopchannel 12, .branch5
+	sound_loop 12, .branch5
 	square_note 15, 15, 1, 1792
 	endchannel
 
@@ -1877,7 +1877,7 @@ Sfx_HyperBeam:
 .branch6:
 	square_note 2, 15, 1, 1793
 	square_note 2, 15, 1, 2017
-	loopchannel 12, .branch6
+	sound_loop 12, .branch6
 	square_note 15, 15, 1, 1793
 	endchannel
 
@@ -1885,7 +1885,7 @@ Sfx_HyperBeam:
 .branch8:
 	noise_note 1, 13, 1, 73
 	noise_note 1, 13, 1, 41
-	loopchannel 26, .branch8
+	sound_loop 26, .branch8
 	endchannel
 
 
@@ -1920,14 +1920,14 @@ Sfx_Unknown5F_Ch5:
 .branch5:
 	square_note 2, 15, 7, 1537
 	square_note 2, 15, 7, 1793
-	loopchannel 8, .branch5
+	sound_loop 8, .branch5
 	endchannel
 
 Sfx_Unknown5F_Ch6:
 	square_note 1, 15, 7, 65535
 	square_note 2, 15, 7, 1538
 	square_note 2, 15, 7, 1794
-	loopchannel 8, Sfx_Unknown5F_Ch5.branch5
+	sound_loop 8, Sfx_Unknown5F_Ch5.branch5
 	endchannel
 
 Sfx_Sandstorm_Ch8:
@@ -1937,7 +1937,7 @@ Sfx_Sandstorm_Ch8:
 	noise_note 0, 0, 0, 0
 	noise_note 3, 5, -1, 22
 	noise_note 2, 0, 0, 0
-	loopchannel 3, .branch8
+	sound_loop 3, .branch8
 	endchannel
 
 
@@ -1961,7 +1961,7 @@ Sfx_NoSignal_Ch5:
 	duty_cycle 2
 	square_note 20, 14, 8, 1803
 	square_note 28, 0, 0, 0
-	loopchannel 3, .branch5
+	sound_loop 3, .branch5
 	endchannel
 
 
@@ -1979,7 +1979,7 @@ Sfx_Elevator:
 	pitch_sweep 5, -2
 .branch5:
 	square_note 2, 15, 1, 768
-	loopchannel 48, .branch5
+	sound_loop 48, .branch5
 	pitch_sweep 0, 8
 	duty_cycle 2
 	square_note 15, 15, 3, 1840
@@ -3171,7 +3171,7 @@ Sfx_2ndPlace:
 	note_type 8
 .branch8:
 	note C#, 1
-	loopchannel 6, .branch8
+	sound_loop 6, .branch8
 	note B_, 12
 	note B_, 12
 	note B_, 12
@@ -3687,7 +3687,7 @@ Sfx_GetBadge:
 	note C#, 1
 	note C#, 1
 	note C#, 1
-	loopchannel 2, .branch8
+	sound_loop 2, .branch8
 	note B_, 16
 	note __, 6
 	endchannel
@@ -3829,7 +3829,7 @@ Sfx_Protect:
 	octave 6
 	note C#, 5
 	note E_, 5
-	loopchannel 3, .branch5
+	sound_loop 3, .branch5
 	volume_envelope 12, 1
 	octave 5
 	note F_, 5
@@ -3852,7 +3852,7 @@ Sfx_Protect:
 .branch8:
 	noise_note 9, 9, -6, 0
 	noise_note 9, 11, -6, 17
-	loopchannel 6, .branch8
+	sound_loop 6, .branch8
 	noise_note 9, 10, 7, 0
 	noise_note 16, 7, 5, 17
 	endchannel
@@ -3872,7 +3872,7 @@ Sfx_Sketch:
 	square_note 13, 10, -7, 1456
 	square_note 4, 0, 0, 0
 	square_note 9, 15, 4, 1816
-	loopchannel 3, .branch5
+	sound_loop 3, .branch5
 	pitch_sweep 0, 8
 	endchannel
 
@@ -3889,7 +3889,7 @@ Sfx_RainDance:
 	noise_note 6, 7, -5, 79
 	noise_note 11, 7, -7, 71
 	noise_note 15, 6, -6, 34
-	loopchannel 3, .branch8
+	sound_loop 3, .branch8
 	noise_note 6, 6, -5, 80
 	noise_note 5, 5, -5, 79
 	noise_note 5, 4, -7, 71
@@ -3929,7 +3929,7 @@ Sfx_Spark:
 .branch8:
 	noise_note 4, 15, 8, 93
 	noise_note 4, 13, 8, 111
-	loopchannel 2, .branch8
+	sound_loop 2, .branch8
 	endchannel
 
 
@@ -3986,7 +3986,7 @@ Sfx_Thief:
 	noise_note 4, 14, 1, 18
 	noise_note 0, 0, 0, 0
 	noise_note 2, 11, 1, 34
-	loopchannel 2, .branch8
+	sound_loop 2, .branch8
 	endchannel
 
 
@@ -4093,7 +4093,7 @@ Sfx_Nightmare:
 	square_note 2, 0, 0, 0
 	square_note 3, 14, 8, 1521
 	square_note 2, 0, 0, 0
-	loopchannel 2, .branch5
+	sound_loop 2, .branch5
 	pitch_sweep 0, 8
 	endchannel
 
@@ -4125,7 +4125,7 @@ Sfx_SweetKiss:
 .branch5:
 	square_note 2, 12, 1, 1992
 	square_note 2, 13, 1, 2010
-	loopchannel 2, .branch5
+	sound_loop 2, .branch5
 	square_note 26, 15, 1, 2018
 	endchannel
 
@@ -4378,7 +4378,7 @@ Sfx_ZapCannon:
 .branch8:
 	noise_note 2, 14, 1, 73
 	noise_note 0, 0, 0, 0
-	loopchannel 8, .branch8
+	sound_loop 8, .branch8
 	noise_note 8, 14, 1, 73
 	endchannel
 
@@ -4396,7 +4396,7 @@ Sfx_MeanLook:
 .branch5:
 	square_note 1, 8, 8, 1632
 	square_note 2, 15, 8, 1936
-	loopchannel 5, .branch5
+	sound_loop 5, .branch5
 	square_note 12, 15, 8, 1792
 	square_note 12, 12, 8, 1824
 	square_note 12, 10, 8, 1792
@@ -4436,7 +4436,7 @@ Sfx_Return:
 	pitch_sweep 5, 7
 	square_note 8, 15, 1, 1881
 	square_note 16, 0, 0, 0
-	loopchannel 2, .branch5
+	sound_loop 2, .branch5
 	pitch_sweep 0, 8
 	endchannel
 
@@ -4478,7 +4478,7 @@ Sfx_MilkDrink:
 	pitch_sweep 9, -6
 	square_note 4, 12, -1, 1505
 	square_note 2, 0, 0, 0
-	loopchannel 6, .branch5
+	sound_loop 6, .branch5
 	pitch_sweep 0, 8
 	endchannel
 
@@ -4495,7 +4495,7 @@ Sfx_Present:
 .branch5:
 	square_note 2, 15, 1, 1856
 	square_note 1, 0, 0, 0
-	loopchannel 3, .branch5
+	sound_loop 3, .branch5
 	square_note 16, 15, 1, 1920
 	pitch_sweep 0, 8
 	endchannel
@@ -4513,7 +4513,7 @@ Sfx_MorningSun:
 	square_note 2, 15, 1, 2020
 	square_note 2, 15, 1, 2016
 	square_note 5, 15, 2, 2023
-	loopchannel 3, .branch5
+	sound_loop 3, .branch5
 	square_note 1, 0, 0, 0
 	square_note 8, 12, 2, 2023
 	square_note 1, 0, 0, 0
@@ -4532,7 +4532,7 @@ Sfx_Moonlight:
 .branch5:
 	square_note 1, 15, 8, 2000
 	square_note 4, 15, 1, 2016
-	loopchannel 2, .branch5
+	sound_loop 2, .branch5
 	square_note 16, 15, 1, 2016
 	square_note 16, 13, 1, 2016
 	square_note 16, 8, 1, 2016
@@ -4553,7 +4553,7 @@ Sfx_Encore:
 .branch5:
 	square_note 2, 15, 8, 1908
 	square_note 36, 0, 0, 0
-	loopchannel 2, .branch5
+	sound_loop 2, .branch5
 	pitch_sweep 0, 8
 	endchannel
 
@@ -4740,7 +4740,7 @@ Sfx_GsIntroCharizardFireball:
 	noise_note 0, 12, 8, 38
 	noise_note 1, 13, 8, 95
 	noise_note 0, 10, 8, 55
-	loopchannel 12, .branch8
+	sound_loop 12, .branch8
 	noise_note 3, 15, 8, 111
 	noise_note 4, 13, 8, 95
 	noise_note 12, 13, 8, 92
@@ -4994,7 +4994,7 @@ Sfx_DexFanfare140169:
 	note C#, 1
 	note C#, 1
 	note C#, 1
-	loopchannel 3, .branch8
+	sound_loop 3, .branch8
 	note D_, 8
 	endchannel
 
@@ -5389,7 +5389,7 @@ Sfx_DexFanfare230Plus:
 	note C#, 1
 	note C#, 1
 	note C#, 1
-	loopchannel 2, .branch8_1
+	sound_loop 2, .branch8_1
 	note D_, 6
 	note D_, 2
 	note D_, 2
@@ -5400,7 +5400,7 @@ Sfx_DexFanfare230Plus:
 	note D_, 4
 .branch8_2:
 	note C#, 1
-	loopchannel 18, .branch8_2
+	sound_loop 18, .branch8_2
 	note D_, 6
 	endchannel
 
@@ -5503,7 +5503,7 @@ Sfx_SweetScent2:
 	noise_note 4, 13, -1, 16
 	noise_note 8, 9, 1, 0
 	noise_note 2, 6, 1, 7
-	loopchannel 5, .branch8
+	sound_loop 5, .branch8
 	noise_note 4, 9, -1, 0
 	noise_note 10, 6, 1, 0
 	noise_note 6, 5, -1, 0
@@ -5625,7 +5625,7 @@ Sfx_2Boops:
 	square_note 4, 15, 2, 1205
 	pitch_sweep 4, 3
 	square_note 16, 15, 8, 1485
-	loopchannel 2, .branch5
+	sound_loop 2, .branch5
 	pitch_sweep 0, 8
 	endchannel
 
@@ -5924,7 +5924,7 @@ Sfx_Tingle:
 	octave 5
 	note C_, 3
 	note __, 2
-	loopchannel 2, .branch5
+	sound_loop 2, .branch5
 	note C_, 2
 	volume_envelope 10, 1
 	note G_, 13

@@ -488,7 +488,7 @@ Music_KantoTrainerBattle_branch_ecc04:
 	note G#, 1
 	note G_, 1
 	note F#, 1
-	loopchannel 14, Music_KantoTrainerBattle_branch_ecc04
+	sound_loop 14, Music_KantoTrainerBattle_branch_ecc04
 	note G_, 1
 	note G#, 1
 	note G_, 1

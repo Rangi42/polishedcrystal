@@ -470,7 +470,7 @@ Music_PokeComCenter_branch_179813:
 	note C#, 2
 	note D_, 2
 	note C#, 2
-	loopchannel 3, Music_PokeComCenter_branch_179813
+	sound_loop 3, Music_PokeComCenter_branch_179813
 	note A_, 2
 	note C#, 2
 	note C#, 2

@@ -252,7 +252,7 @@ Music_ZinniaEncounterORAS_Ch2_loop_1:
 	note C#, 2
 	note D_, 2
 	note E_, 2
-	loopchannel 2, Music_ZinniaEncounterORAS_Ch2_loop_1
+	sound_loop 2, Music_ZinniaEncounterORAS_Ch2_loop_1
 	note F#, 6
 	note A_, 2
 	note G#, 2
@@ -438,7 +438,7 @@ Music_ZinniaEncounterORAS_Ch4_loop_1:
 	note C#, 1
 	note C_, 2
 	note D#, 2
-	loopchannel 8, Music_ZinniaEncounterORAS_Ch4_loop_1
+	sound_loop 8, Music_ZinniaEncounterORAS_Ch4_loop_1
 	note B_, 2
 	note C#, 1
 	note C#, 1
@@ -450,7 +450,7 @@ Music_ZinniaEncounterORAS_Ch4_loop_2:
 	note C#, 1
 	note C_, 2
 	note D#, 2
-	loopchannel 7, Music_ZinniaEncounterORAS_Ch4_loop_2
+	sound_loop 7, Music_ZinniaEncounterORAS_Ch4_loop_2
 	note B_, 2
 	note C#, 1
 	note C#, 1
@@ -462,7 +462,7 @@ Music_ZinniaEncounterORAS_Ch4_loop_3:
 	note C#, 1
 	note C_, 2
 	note D#, 2
-	loopchannel 7, Music_ZinniaEncounterORAS_Ch4_loop_3
+	sound_loop 7, Music_ZinniaEncounterORAS_Ch4_loop_3
 	note B_, 2
 	note C#, 1
 	note C#, 1
@@ -474,7 +474,7 @@ Music_ZinniaEncounterORAS_Ch4_loop_4:
 	note C#, 1
 	note C_, 2
 	note D#, 2
-	loopchannel 7, Music_ZinniaEncounterORAS_Ch4_loop_4
+	sound_loop 7, Music_ZinniaEncounterORAS_Ch4_loop_4
 	note B_, 2
 	note C#, 1
 	note C#, 1

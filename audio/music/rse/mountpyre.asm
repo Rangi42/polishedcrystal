@@ -27,7 +27,7 @@ Music_MountPyreRSE_Ch1_loop_1:
 	note D_, 4
 	note G#, 4
 	note D_, 7
-	loopchannel 16, Music_MountPyreRSE_Ch1_loop_1
+	sound_loop 16, Music_MountPyreRSE_Ch1_loop_1
 Music_MountPyreRSE_Ch1_loop_2:
 	volume_envelope 4, 2
 	note D#, 1
@@ -35,14 +35,14 @@ Music_MountPyreRSE_Ch1_loop_2:
 	note F_, 4
 	note B_, 4
 	note F_, 7
-	loopchannel 16, Music_MountPyreRSE_Ch1_loop_2
+	sound_loop 16, Music_MountPyreRSE_Ch1_loop_2
 	volume_envelope 10, 3
 	note __, 7
 Music_MountPyreRSE_Ch1_loop_3:
 	octave 3
 	note F#, 1
 	note __, 1
-	loopchannel 7, Music_MountPyreRSE_Ch1_loop_3
+	sound_loop 7, Music_MountPyreRSE_Ch1_loop_3
 	note F#, 1
 	note G#, 1
 	note F#, 1
@@ -116,7 +116,7 @@ Music_MountPyreRSE_Ch2_loop_1:
 	octave 3
 	note A#, 1
 	note __, 1
-	loopchannel 7, Music_MountPyreRSE_Ch2_loop_1
+	sound_loop 7, Music_MountPyreRSE_Ch2_loop_1
 	note A#, 1
 	note B_, 1
 	note A#, 1
@@ -319,13 +319,13 @@ Music_MountPyreRSE_Ch3_loop_1:
 	note E_, 1
 	note F#, 1
 	note G_, 14
-	loopchannel 16, Music_MountPyreRSE_Ch3_loop_1
+	sound_loop 16, Music_MountPyreRSE_Ch3_loop_1
 Music_MountPyreRSE_Ch3_loop_2:
 	octave 2
 	note G_, 1
 	note A_, 1
 	note A#, 14
-	loopchannel 16, Music_MountPyreRSE_Ch3_loop_2
+	sound_loop 16, Music_MountPyreRSE_Ch3_loop_2
 	note G_, 1
 	note A_, 1
 	note_type 12, 1, 4
@@ -383,16 +383,16 @@ Music_MountPyreRSE_Ch4:
 Music_MountPyreRSE_Ch4_loop_main:
 Music_MountPyreRSE_Ch4_loop_1:
 	callchannel Music_MountPyreRSE_Ch4_branch_1
-	loopchannel 4, Music_MountPyreRSE_Ch4_loop_1
+	sound_loop 4, Music_MountPyreRSE_Ch4_loop_1
 Music_MountPyreRSE_Ch4_loop_2:
 	callchannel Music_MountPyreRSE_Ch4_branch_2
-	loopchannel 8, Music_MountPyreRSE_Ch4_loop_2
+	sound_loop 8, Music_MountPyreRSE_Ch4_loop_2
 Music_MountPyreRSE_Ch4_loop_3:
 	callchannel Music_MountPyreRSE_Ch4_branch_1
-	loopchannel 4, Music_MountPyreRSE_Ch4_loop_3
+	sound_loop 4, Music_MountPyreRSE_Ch4_loop_3
 Music_MountPyreRSE_Ch4_loop_4:
 	callchannel Music_MountPyreRSE_Ch4_branch_2
-	loopchannel 8, Music_MountPyreRSE_Ch4_loop_4
+	sound_loop 8, Music_MountPyreRSE_Ch4_loop_4
 	note __, 16
 	note __, 16
 	note __, 16

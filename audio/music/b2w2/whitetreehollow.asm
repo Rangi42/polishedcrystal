@@ -993,7 +993,7 @@ Music_WhiteTreehollowWhite2_Ch4_loop_1:
 	note D#, 3
 	note D#, 2
 	note C_, 4
-	loopchannel 10, Music_WhiteTreehollowWhite2_Ch4_loop_1
+	sound_loop 10, Music_WhiteTreehollowWhite2_Ch4_loop_1
 Music_WhiteTreehollowWhite2_Ch4_loop_2:
 	note C#, 1
 	note C#, 1
@@ -1003,7 +1003,7 @@ Music_WhiteTreehollowWhite2_Ch4_loop_2:
 	note C#, 1
 	note C#, 1
 	note C#, 1
-	loopchannel 8, Music_WhiteTreehollowWhite2_Ch4_loop_2
+	sound_loop 8, Music_WhiteTreehollowWhite2_Ch4_loop_2
 	note __, 16
 	note __, 16
 	note __, 16
@@ -1016,5 +1016,5 @@ Music_WhiteTreehollowWhite2_Ch4_loop_3:
 	note D#, 1
 	note C_, 1
 	note C_, 3
-	loopchannel 6, Music_WhiteTreehollowWhite2_Ch4_loop_3
+	sound_loop 6, Music_WhiteTreehollowWhite2_Ch4_loop_3
 	sound_jump Music_WhiteTreehollowWhite2_Ch4_loop_main

@@ -600,7 +600,7 @@ Music_BattleTowerTheme_branch_178b11:
 Music_BattleTowerTheme_branch_178b1d:
 	callchannel Music_BattleTowerTheme_branch_178b58
 	callchannel Music_BattleTowerTheme_branch_178b61
-	loopchannel 2, Music_BattleTowerTheme_branch_178b1d
+	sound_loop 2, Music_BattleTowerTheme_branch_178b1d
 	callchannel Music_BattleTowerTheme_branch_178b6c
 	callchannel Music_BattleTowerTheme_branch_178b61
 	callchannel Music_BattleTowerTheme_branch_178b6c
@@ -622,7 +622,7 @@ Music_BattleTowerTheme_branch_178b35:
 	note C#, 1
 	note D_, 1
 	note C#, 1
-	loopchannel 3, Music_BattleTowerTheme_branch_178b35
+	sound_loop 3, Music_BattleTowerTheme_branch_178b35
 	callchannel Music_BattleTowerTheme_branch_178b76
 	note D_, 2
 	note D_, 2

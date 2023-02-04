@@ -457,7 +457,7 @@ Music_BlackCityBW_Ch4_loop_1:
 	note C_, 2
 	note C_, 2
 	note D#, 4
-	loopchannel 2, Music_BlackCityBW_Ch4_loop_1
+	sound_loop 2, Music_BlackCityBW_Ch4_loop_1
 	callchannel Music_BlackCityBW_Ch4_branch_1
 	note D#, 4
 	note D_, 4

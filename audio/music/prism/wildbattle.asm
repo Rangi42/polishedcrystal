@@ -329,7 +329,7 @@ Music_WildBattlePrism_branch_19f11b:
 	note C_, 1
 	octave 2
 	note B_, 1
-	loopchannel 8, Music_WildBattlePrism_branch_19f11b
+	sound_loop 8, Music_WildBattlePrism_branch_19f11b
 	octave 3
 	volume_envelope 12, 4
 	note D_, 2
@@ -665,49 +665,49 @@ Music_WildBattlePrism_branch_19f3ba:
 	note A_, 2
 	octave 4
 	note D_, 2
-	loopchannel 8, Music_WildBattlePrism_branch_19f3ba
+	sound_loop 8, Music_WildBattlePrism_branch_19f3ba
 
 Music_WildBattlePrism_branch_19f3c2:
 	note C_, 2
 	note F_, 2
-	loopchannel 8, Music_WildBattlePrism_branch_19f3c2
+	sound_loop 8, Music_WildBattlePrism_branch_19f3c2
 
 Music_WildBattlePrism_branch_19f3c8:
 	octave 3
 	note A_, 2
 	octave 4
 	note D_, 2
-	loopchannel 8, Music_WildBattlePrism_branch_19f3c8
+	sound_loop 8, Music_WildBattlePrism_branch_19f3c8
 	octave 3
 
 Music_WildBattlePrism_branch_19f3d1:
 	note E_, 2
 	note A_, 2
-	loopchannel 8, Music_WildBattlePrism_branch_19f3d1
+	sound_loop 8, Music_WildBattlePrism_branch_19f3d1
 
 Music_WildBattlePrism_branch_19f3d7:
 	octave 3
 	note A_, 2
 	octave 3
 	note D_, 2
-	loopchannel 8, Music_WildBattlePrism_branch_19f3d7
+	sound_loop 8, Music_WildBattlePrism_branch_19f3d7
 
 Music_WildBattlePrism_branch_19f3df:
 	note C_, 2
 	note F_, 2
-	loopchannel 8, Music_WildBattlePrism_branch_19f3df
+	sound_loop 8, Music_WildBattlePrism_branch_19f3df
 
 Music_WildBattlePrism_branch_19f3e5:
 	octave 3
 	note A_, 2
 	octave 4
 	note D_, 2
-	loopchannel 8, Music_WildBattlePrism_branch_19f3e5
+	sound_loop 8, Music_WildBattlePrism_branch_19f3e5
 
 Music_WildBattlePrism_branch_19f3ed:
 	note D_, 2
 	note G_, 2
-	loopchannel 8, Music_WildBattlePrism_branch_19f3ed
+	sound_loop 8, Music_WildBattlePrism_branch_19f3ed
 	octave 3
 	note A_, 2
 	octave 4

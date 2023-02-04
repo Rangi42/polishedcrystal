@@ -1019,19 +1019,19 @@ Music_WCSBattleBW_Ch3_L1:
 	note G_, 2
 	octave 3
 	note D_, 2
-	loopchannel 8, Music_WCSBattleBW_Ch3_L1
+	sound_loop 8, Music_WCSBattleBW_Ch3_L1
 Music_WCSBattleBW_Ch3_L2:
 	octave 2
 	note G_, 2
 	octave 3
 	note C_, 2
-	loopchannel 8, Music_WCSBattleBW_Ch3_L2
+	sound_loop 8, Music_WCSBattleBW_Ch3_L2
 Music_WCSBattleBW_Ch3_L3:
 	octave 2
 	note G_, 2
 	octave 3
 	note D_, 2
-	loopchannel 4, Music_WCSBattleBW_Ch3_L3
+	sound_loop 4, Music_WCSBattleBW_Ch3_L3
 	note C#, 1
 	octave 2
 	note B_, 1
@@ -1104,45 +1104,45 @@ Music_WCSBattleBW_Ch3_L3:
 Music_WCSBattleBW_Ch3_L4:
 	note C_, 2
 	note G_, 2
-	loopchannel 7, Music_WCSBattleBW_Ch3_L4
+	sound_loop 7, Music_WCSBattleBW_Ch3_L4
 	note G#, 2
 	note G_, 2
 Music_WCSBattleBW_Ch3_L5:
 	note C#, 2
 	note G#, 2
-	loopchannel 7, Music_WCSBattleBW_Ch3_L5
+	sound_loop 7, Music_WCSBattleBW_Ch3_L5
 	note A#, 2
 	note G#, 2
 Music_WCSBattleBW_Ch3_L6:
 	note D_, 2
 	note A_, 2
-	loopchannel 7, Music_WCSBattleBW_Ch3_L6
+	sound_loop 7, Music_WCSBattleBW_Ch3_L6
 	note A#, 2
 	note A_, 2
 Music_WCSBattleBW_Ch3_L7:
 	note D_, 2
 	note A_, 2
-	loopchannel 12, Music_WCSBattleBW_Ch3_L7
+	sound_loop 12, Music_WCSBattleBW_Ch3_L7
 Music_WCSBattleBW_Ch3_L8:
 	note D#, 2
 	note A#, 2
-	loopchannel 4, Music_WCSBattleBW_Ch3_L8
+	sound_loop 4, Music_WCSBattleBW_Ch3_L8
 Music_WCSBattleBW_Ch3_L9:
 	note D#, 2
 	note G_, 2
-	loopchannel 4, Music_WCSBattleBW_Ch3_L9
+	sound_loop 4, Music_WCSBattleBW_Ch3_L9
 Music_WCSBattleBW_Ch3_L10:
 	octave 3
 	note F_, 2
 	octave 4
 	note C_, 2
-	loopchannel 8, Music_WCSBattleBW_Ch3_L10
+	sound_loop 8, Music_WCSBattleBW_Ch3_L10
 Music_WCSBattleBW_Ch3_L11:
 	octave 3
 	note F#, 2
 	octave 4
 	note C#, 2
-	loopchannel 5, Music_WCSBattleBW_Ch3_L11
+	sound_loop 5, Music_WCSBattleBW_Ch3_L11
 	note D#, 2
 	note C#, 2
 	octave 3
@@ -1155,14 +1155,14 @@ Music_WCSBattleBW_Ch3_L12:
 	note F_, 2
 	octave 4
 	note C_, 2
-	loopchannel 7, Music_WCSBattleBW_Ch3_L12
+	sound_loop 7, Music_WCSBattleBW_Ch3_L12
 	octave 3
 	note F_, 2
 	note E_, 2
 Music_WCSBattleBW_Ch3_L13:
 	note D#, 2
 	note A#, 2
-	loopchannel 5, Music_WCSBattleBW_Ch3_L13
+	sound_loop 5, Music_WCSBattleBW_Ch3_L13
 	octave 4
 	note C_, 2
 	octave 3
@@ -1178,15 +1178,15 @@ Music_WCSBattleBW_Ch3_L13:
 Music_WCSBattleBW_Ch3_L14:
 	note C_, 2
 	note G_, 2
-	loopchannel 6, Music_WCSBattleBW_Ch3_L14
+	sound_loop 6, Music_WCSBattleBW_Ch3_L14
 Music_WCSBattleBW_Ch3_L15:
 	note D#, 2
 	note A#, 2
-	loopchannel 8, Music_WCSBattleBW_Ch3_L15
+	sound_loop 8, Music_WCSBattleBW_Ch3_L15
 Music_WCSBattleBW_Ch3_L16:
 	note C_, 2
 	note G_, 2
-	loopchannel 6, Music_WCSBattleBW_Ch3_L16
+	sound_loop 6, Music_WCSBattleBW_Ch3_L16
 	note C_, 2
 	note C#, 2
 	note D#, 2
@@ -1194,7 +1194,7 @@ Music_WCSBattleBW_Ch3_L16:
 Music_WCSBattleBW_Ch3_L17:
 	note D#, 2
 	note A#, 2
-	loopchannel 7, Music_WCSBattleBW_Ch3_L17
+	sound_loop 7, Music_WCSBattleBW_Ch3_L17
 	note D_, 2
 	note C#, 2
 	volume_envelope 1, 5
@@ -1204,7 +1204,7 @@ Music_WCSBattleBW_Ch3_L18:
 	octave 2
 	note C_, 1
 	note __, 6
-	loopchannel 4, Music_WCSBattleBW_Ch3_L18
+	sound_loop 4, Music_WCSBattleBW_Ch3_L18
 	sound_jump Music_WCSBattleBW_Ch3_L
 
 Music_WCSBattleBW_Ch3_P1:

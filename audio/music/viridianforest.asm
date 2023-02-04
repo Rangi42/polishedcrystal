@@ -460,7 +460,7 @@ Music_ViridianForest_branch_edae0:
 	note B_, 2
 	note A_, 2
 	note B_, 2
-	loopchannel 3, Music_ViridianForest_branch_edae0
+	sound_loop 3, Music_ViridianForest_branch_edae0
 	note A_, 4
 	note A_, 4
 	note A_, 2
@@ -473,7 +473,7 @@ Music_ViridianForest_branch_edaef:
 	note A_, 2
 	note B_, 2
 	note A_, 2
-	loopchannel 4, Music_ViridianForest_branch_edaef
+	sound_loop 4, Music_ViridianForest_branch_edaef
 Music_ViridianForest_branch_edaf9:
 	note B_, 4
 	note A_, 2
@@ -482,7 +482,7 @@ Music_ViridianForest_branch_edaf9:
 	note B_, 2
 	note A_, 2
 	note B_, 2
-	loopchannel 7, Music_ViridianForest_branch_edaf9
+	sound_loop 7, Music_ViridianForest_branch_edaf9
 	note B_, 4
 	note A_, 4
 	note A_, 2
@@ -494,7 +494,7 @@ Music_ViridianForest_branch_edb09:
 	note B_, 2
 	note B_, 2
 	note C_, 4
-	loopchannel 3, Music_ViridianForest_branch_edb09
+	sound_loop 3, Music_ViridianForest_branch_edb09
 	note B_, 4
 	note C_, 4
 	note C#, 2
@@ -506,7 +506,7 @@ Music_ViridianForest_branch_edb17:
 	note B_, 2
 	note B_, 2
 	note C_, 4
-	loopchannel 3, Music_ViridianForest_branch_edb17
+	sound_loop 3, Music_ViridianForest_branch_edb17
 	note B_, 4
 	note C_, 4
 	note D_, 2

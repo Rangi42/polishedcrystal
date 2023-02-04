@@ -60,7 +60,7 @@ Music_DiglettsCaveRBY_branch_7e892:
 	note G_, 2
 	note A_, 4
 	note F#, 2
-	loopchannel 2, Music_DiglettsCaveRBY_branch_7e892
+	sound_loop 2, Music_DiglettsCaveRBY_branch_7e892
 	note_type 12, 1, -7
 	octave 3
 	note E_, 16
@@ -118,7 +118,7 @@ Music_DiglettsCaveRBY_branch_7e8db:
 	note G_, 4
 	note G_, 4
 	note F#, 4
-	loopchannel 2, Music_DiglettsCaveRBY_branch_7e8db
+	sound_loop 2, Music_DiglettsCaveRBY_branch_7e8db
 	octave 3
 	note E_, 2
 	note G_, 2
@@ -175,7 +175,7 @@ Music_DiglettsCaveRBY_Ch3:
 
 Music_DiglettsCaveRBY_branch_7e940:
 	callchannel Music_DiglettsCaveRBY_branch_7e9d1
-	loopchannel 16, Music_DiglettsCaveRBY_branch_7e940
+	sound_loop 16, Music_DiglettsCaveRBY_branch_7e940
 	note E_, 4
 	note __, 4
 	note __, 4
@@ -230,7 +230,7 @@ Music_DiglettsCaveRBY_branch_7e958:
 	note __, 2
 	note D#, 2
 	note __, 2
-	loopchannel 3, Music_DiglettsCaveRBY_branch_7e958
+	sound_loop 3, Music_DiglettsCaveRBY_branch_7e958
 	octave 4
 	note E_, 4
 	note B_, 4

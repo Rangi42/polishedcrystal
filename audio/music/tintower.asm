@@ -133,7 +133,7 @@ Music_TinTower_branch_f6895:
 	octave 4
 	note C_, 8
 	stereo_panning FALSE, TRUE
-	loopchannel 2, Music_TinTower_branch_f6895
+	sound_loop 2, Music_TinTower_branch_f6895
 	volume_envelope 11, 2
 	octave 3
 	note C_, 4

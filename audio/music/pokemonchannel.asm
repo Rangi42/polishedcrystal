@@ -213,7 +213,7 @@ Music_PokemonChannel_branch_ee54d:
 	note D_, 2
 	note A#, 1
 	note D_, 1
-	loopchannel 2, Music_PokemonChannel_branch_ee54d
+	sound_loop 2, Music_PokemonChannel_branch_ee54d
 	note G#, 2
 	note A#, 2
 	note G#, 1

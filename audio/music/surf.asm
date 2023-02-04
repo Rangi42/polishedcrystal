@@ -351,7 +351,7 @@ Music_Surf_branch_f5321:
 	note __, 3
 	note A#, 1
 	note __, 3
-	loopchannel 3, Music_Surf_branch_f5321
+	sound_loop 3, Music_Surf_branch_f5321
 	octave 1
 	note A#, 4
 	octave 2
@@ -394,7 +394,7 @@ Music_Surf_branch_f5333:
 	note B_, 4
 	note A#, 4
 	note G#, 4
-	loopchannel 2, Music_Surf_branch_f5333
+	sound_loop 2, Music_Surf_branch_f5333
 	volume_envelope 12, 7
 	callchannel Music_Surf_branch_f53b2
 	note D#, 4

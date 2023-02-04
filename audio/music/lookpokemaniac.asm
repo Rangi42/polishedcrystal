@@ -19,13 +19,13 @@ Music_LookPokemaniac_branch_ebdfb:
 	note __, 3
 	note A#, 1
 	note __, 3
-	loopchannel 4, Music_LookPokemaniac_branch_ebdfb
+	sound_loop 4, Music_LookPokemaniac_branch_ebdfb
 	note __, 4
 	note G_, 1
 	note __, 3
 	note G_, 1
 	note __, 3
-	loopchannel 4, Music_LookPokemaniac_branch_ebdfb
+	sound_loop 4, Music_LookPokemaniac_branch_ebdfb
 	sound_jump Music_LookPokemaniac_branch_ebdfb
 
 Music_LookPokemaniac_Ch2:
@@ -57,7 +57,7 @@ Music_LookPokemaniac_branch_ebe24:
 	note __, 3
 	note D#, 1
 	note __, 3
-	loopchannel 2, Music_LookPokemaniac_branch_ebe24
+	sound_loop 2, Music_LookPokemaniac_branch_ebe24
 Music_LookPokemaniac_branch_ebe38:
 	octave 1
 	note A_, 2
@@ -76,7 +76,7 @@ Music_LookPokemaniac_branch_ebe38:
 	octave 3
 	note C_, 1
 	note __, 3
-	loopchannel 2, Music_LookPokemaniac_branch_ebe38
+	sound_loop 2, Music_LookPokemaniac_branch_ebe38
 	sound_jump Music_LookPokemaniac_branch_ebe24
 
 Music_LookPokemaniac_Ch3:

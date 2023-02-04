@@ -472,7 +472,7 @@ Music_Bicycle_branch_ee2e9:
 	note __, 1
 	note A_, 1
 	note __, 1
-	loopchannel 2, Music_Bicycle_branch_ee2e9
+	sound_loop 2, Music_Bicycle_branch_ee2e9
 	sound_jump Music_Bicycle_branch_ee27f
 
 Music_Bicycle_branch_ee333:
@@ -505,7 +505,7 @@ Music_Bicycle_branch_ee34b:
 Music_Bicycle_branch_ee34c:
 	stereo_panning TRUE, FALSE
 	note F_, 4
-	loopchannel 12, Music_Bicycle_branch_ee34c
+	sound_loop 12, Music_Bicycle_branch_ee34c
 	note F_, 4
 	note F_, 4
 	stereo_panning TRUE, TRUE

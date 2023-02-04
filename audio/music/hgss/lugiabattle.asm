@@ -419,7 +419,7 @@ Music_LugiaBattleHGSS_Ch2_L1:
 	note __, 2
 	note E_, 2
 	note __, 2
-	loopchannel 2, Music_LugiaBattleHGSS_Ch2_L1
+	sound_loop 2, Music_LugiaBattleHGSS_Ch2_L1
 Music_LugiaBattleHGSS_Ch2_L2:
 	octave 2
 	note B_, 2
@@ -440,7 +440,7 @@ Music_LugiaBattleHGSS_Ch2_L2:
 	note __, 2
 	note B_, 2
 	note __, 2
-	loopchannel 2, Music_LugiaBattleHGSS_Ch2_L2
+	sound_loop 2, Music_LugiaBattleHGSS_Ch2_L2
 	octave 3
 	note E_, 2
 	note __, 2
@@ -668,13 +668,13 @@ Music_LugiaBattleHGSS_Ch3_L:
 	note G_, 2
 	note C_, 2
 	note G_, 2
-	loopchannel 3, Music_LugiaBattleHGSS_Ch3_L
+	sound_loop 3, Music_LugiaBattleHGSS_Ch3_L
 Music_LugiaBattleHGSS_Ch3_L1:
 	octave 1
 	note B_, 2
 	octave 2
 	note F#, 2
-	loopchannel 14, Music_LugiaBattleHGSS_Ch3_L1
+	sound_loop 14, Music_LugiaBattleHGSS_Ch3_L1
 	octave 1
 	note A#, 2
 	octave 2
@@ -688,39 +688,39 @@ Music_LugiaBattleHGSS_Ch3_L2:
 	note A#, 2
 	octave 2
 	note E_, 2
-	loopchannel 8, Music_LugiaBattleHGSS_Ch3_L2
+	sound_loop 8, Music_LugiaBattleHGSS_Ch3_L2
 Music_LugiaBattleHGSS_Ch3_L3:
 	note C_, 2
 	note F#, 2
-	loopchannel 8, Music_LugiaBattleHGSS_Ch3_L3
+	sound_loop 8, Music_LugiaBattleHGSS_Ch3_L3
 Music_LugiaBattleHGSS_Ch3_L4:
 	octave 1
 	note G#, 2
 	octave 2
 	note C#, 2
-	loopchannel 8, Music_LugiaBattleHGSS_Ch3_L4
+	sound_loop 8, Music_LugiaBattleHGSS_Ch3_L4
 Music_LugiaBattleHGSS_Ch3_L5:
 	octave 1
 	note A_, 2
 	octave 2
 	note D_, 2
-	loopchannel 8, Music_LugiaBattleHGSS_Ch3_L5
+	sound_loop 8, Music_LugiaBattleHGSS_Ch3_L5
 Music_LugiaBattleHGSS_Ch3_L6:
 	octave 1
 	note A#, 2
 	octave 2
 	note E_, 2
-	loopchannel 8, Music_LugiaBattleHGSS_Ch3_L6
+	sound_loop 8, Music_LugiaBattleHGSS_Ch3_L6
 Music_LugiaBattleHGSS_Ch3_L7:
 	note C#, 2
 	note G#, 2
-	loopchannel 8, Music_LugiaBattleHGSS_Ch3_L7
+	sound_loop 8, Music_LugiaBattleHGSS_Ch3_L7
 Music_LugiaBattleHGSS_Ch3_L8:
 	octave 1
 	note A#, 2
 	octave 2
 	note G_, 2
-	loopchannel 8, Music_LugiaBattleHGSS_Ch3_L8
+	sound_loop 8, Music_LugiaBattleHGSS_Ch3_L8
 	note A#, 4
 	note __, 4
 	note A#, 4

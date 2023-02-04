@@ -19,7 +19,7 @@ Music_Route12BW_Ch1:
 Music_Route12BW_Ch1_loop_1:
 	callchannel Music_Route12BW_Ch1_branch_1
 	callchannel Music_Route12BW_Ch1_branch_1
-	loopchannel 16, Music_Route12BW_Ch1_loop_1
+	sound_loop 16, Music_Route12BW_Ch1_loop_1
 	callchannel Music_Route12BW_Ch1_branch_2
 	note E_, 6
 	duty_cycle 0

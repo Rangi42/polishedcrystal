@@ -93,7 +93,7 @@ Music_RocketTheme_branch_f76ef:
 	note __, 14
 	note F#, 2
 	note __, 10
-	loopchannel 3, Music_RocketTheme_branch_f76ef
+	sound_loop 3, Music_RocketTheme_branch_f76ef
 	note __, 4
 	note F_, 2
 	note __, 14
@@ -106,21 +106,21 @@ Music_RocketTheme_branch_f76ef:
 Music_RocketTheme_branch_f7701:
 	note F#, 2
 	note A_, 2
-	loopchannel 4, Music_RocketTheme_branch_f7701
+	sound_loop 4, Music_RocketTheme_branch_f7701
 Music_RocketTheme_branch_f7707:
 	note G_, 2
 	note A#, 2
-	loopchannel 4, Music_RocketTheme_branch_f7707
+	sound_loop 4, Music_RocketTheme_branch_f7707
 Music_RocketTheme_branch_f770d:
 	note G#, 2
 	note B_, 2
-	loopchannel 4, Music_RocketTheme_branch_f770d
+	sound_loop 4, Music_RocketTheme_branch_f770d
 Music_RocketTheme_branch_f7713:
 	octave 3
 	note A_, 2
 	octave 4
 	note C_, 2
-	loopchannel 4, Music_RocketTheme_branch_f7713
+	sound_loop 4, Music_RocketTheme_branch_f7713
 	note_type 12, 11, 3
 	note __, 16
 	note __, 12
@@ -466,7 +466,7 @@ Music_RocketTheme_branch_f78de:
 	note F#, 2
 	note D_, 2
 	note F#, 2
-	loopchannel 11, Music_RocketTheme_branch_f78de
+	sound_loop 11, Music_RocketTheme_branch_f78de
 	callchannel Music_RocketTheme_branch_f7664
 	callchannel Music_RocketTheme_branch_f7664
 	callchannel Music_RocketTheme_branch_f7664

@@ -941,7 +941,7 @@ Music_MarineTubeB2W2_Ch4_loop_1:
 	note G_, 2
 	note D#, 2
 	note D_, 2
-	loopchannel 8, Music_MarineTubeB2W2_Ch4_loop_1
+	sound_loop 8, Music_MarineTubeB2W2_Ch4_loop_1
 	callchannel Music_MarineTubeB2W2_Ch4_branch_1
 	note D#, 2
 	note D_, 2
@@ -1020,7 +1020,7 @@ Music_MarineTubeB2W2_Ch4_loop_2:
 	note G_, 2
 	note D_, 2
 	note D_, 2
-	loopchannel 6, Music_MarineTubeB2W2_Ch4_loop_2
+	sound_loop 6, Music_MarineTubeB2W2_Ch4_loop_2
 Music_MarineTubeB2W2_Ch4_loop_3:
 	note D#, 2
 	note D#, 2
@@ -1036,7 +1036,7 @@ Music_MarineTubeB2W2_Ch4_loop_3:
 	note D#, 2
 	note D_, 2
 	note G_, 2
-	loopchannel 2, Music_MarineTubeB2W2_Ch4_loop_3
+	sound_loop 2, Music_MarineTubeB2W2_Ch4_loop_3
 	sound_jump Music_MarineTubeB2W2_Ch4_loop_main
 
 Music_MarineTubeB2W2_Ch4_branch_1:

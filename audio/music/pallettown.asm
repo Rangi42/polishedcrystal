@@ -83,7 +83,7 @@ Music_PalletTown_branch_f4b59:
 	note C_, 2
 	octave 3
 	note B_, 2
-	loopchannel 2, Music_PalletTown_branch_f4b59
+	sound_loop 2, Music_PalletTown_branch_f4b59
 	volume_envelope 3, -7
 	octave 4
 	note C_, 4
@@ -207,7 +207,7 @@ Music_PalletTown_branch_f4be5:
 	note G_, 3
 	note D_, 2
 	note G_, 4
-	loopchannel 2, Music_PalletTown_branch_f4be5
+	sound_loop 2, Music_PalletTown_branch_f4be5
 	note C_, 2
 	octave 3
 	note E_, 4

@@ -188,7 +188,7 @@ Music_SpikyEaredPichuHGSS_Ch2_loop_1:
 	note C_, 2
 	note __, 2
 	note C_, 2
-	loopchannel 4, Music_SpikyEaredPichuHGSS_Ch2_loop_1
+	sound_loop 4, Music_SpikyEaredPichuHGSS_Ch2_loop_1
 	octave 1
 	note D#, 2
 	note A#, 4
@@ -543,7 +543,7 @@ Music_SpikyEaredPichuHGSS_Ch4_loop_1:
 	note D#, 2
 	note C_, 4
 	note C_, 4
-	loopchannel 2, Music_SpikyEaredPichuHGSS_Ch4_loop_1
+	sound_loop 2, Music_SpikyEaredPichuHGSS_Ch4_loop_1
 	note G#, 8
 	note G#, 8
 	note G#, 8

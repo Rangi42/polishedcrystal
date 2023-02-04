@@ -1244,7 +1244,7 @@ Music_BattleFactoryRSE_Ch3_branch_3:
 	octave 1
 	note E_, 1
 	note __, 1
-	loopchannel 4, Music_BattleFactoryRSE_Ch3_branch_3
+	sound_loop 4, Music_BattleFactoryRSE_Ch3_branch_3
 	endchannel
 
 Music_BattleFactoryRSE_Ch4:
@@ -1259,5 +1259,5 @@ Music_BattleFactoryRSE_Ch4_branch_1:
 	note F#, 4
 	note D#, 4
 	note F#, 4
-	loopchannel 6, Music_BattleFactoryRSE_Ch4_branch_1
+	sound_loop 6, Music_BattleFactoryRSE_Ch4_branch_1
 	endchannel

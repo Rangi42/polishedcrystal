@@ -44,11 +44,11 @@ Music_BugCatchingContest_branch_f7c4e:
 	note __, 2
 	octave 2
 	note A_, 2
-	loopchannel 4, Music_BugCatchingContest_branch_f7c4e
+	sound_loop 4, Music_BugCatchingContest_branch_f7c4e
 Music_BugCatchingContest_branch_f7c55:
 	note __, 2
 	note B_, 2
-	loopchannel 8, Music_BugCatchingContest_branch_f7c55
+	sound_loop 8, Music_BugCatchingContest_branch_f7c55
 	volume_envelope 11, 4
 	duty_cycle 1
 	octave 3
@@ -65,7 +65,7 @@ Music_BugCatchingContest_branch_f7c6b:
 	note __, 2
 	octave 2
 	note A_, 2
-	loopchannel 4, Music_BugCatchingContest_branch_f7c6b
+	sound_loop 4, Music_BugCatchingContest_branch_f7c6b
 	note __, 2
 	note B_, 2
 	note __, 2
@@ -95,7 +95,7 @@ Music_BugCatchingContest_branch_f7c8e:
 	note __, 4
 	octave 2
 	note A_, 4
-	loopchannel 3, Music_BugCatchingContest_branch_f7c8e
+	sound_loop 3, Music_BugCatchingContest_branch_f7c8e
 	volume_envelope 10, 7
 	octave 4
 	note F#, 4
@@ -202,7 +202,7 @@ Music_BugCatchingContest_branch_f7cff:
 	note __, 1
 	note A_, 1
 	note A_, 1
-	loopchannel 4, Music_BugCatchingContest_branch_f7cff
+	sound_loop 4, Music_BugCatchingContest_branch_f7cff
 Music_BugCatchingContest_branch_f7d0a:
 	duty_cycle 0
 	callchannel Music_BugCatchingContest_branch_f7d8e
@@ -632,7 +632,7 @@ Music_BugCatchingContest_branch_f7eaf:
 	note C#, 1
 	note C#, 1
 	note C#, 1
-	loopchannel 5, Music_BugCatchingContest_branch_f7eaf
+	sound_loop 5, Music_BugCatchingContest_branch_f7eaf
 	note D_, 4
 	note D_, 4
 	note D_, 2

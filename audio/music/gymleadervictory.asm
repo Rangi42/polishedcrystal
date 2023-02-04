@@ -35,7 +35,7 @@ Music_GymLeaderVictory_branch_f4658:
 	note E_, 4
 	callchannel Music_GymLeaderVictory_branch_f4689
 	note F#, 8
-	loopchannel 2, Music_GymLeaderVictory_branch_f4658
+	sound_loop 2, Music_GymLeaderVictory_branch_f4658
 	duty_cycle 2
 	callchannel Music_GymLeaderVictory_branch_f46a0
 	note A_, 4
@@ -257,7 +257,7 @@ Music_GymLeaderVictory_branch_f4744:
 	octave 3
 	note D_, 2
 	note __, 6
-	loopchannel 2, Music_GymLeaderVictory_branch_f4744
+	sound_loop 2, Music_GymLeaderVictory_branch_f4744
 	callchannel Music_GymLeaderVictory_branch_f479e
 	octave 3
 	note D_, 2
@@ -407,7 +407,7 @@ Music_GymLeaderVictory_branch_f47fb:
 	note D#, 2
 	note D_, 2
 	note G_, 2
-	loopchannel 16, Music_GymLeaderVictory_branch_f47fb
+	sound_loop 16, Music_GymLeaderVictory_branch_f47fb
 	sound_jump Music_GymLeaderVictory_branch_f47eb
 
 Music_GymLeaderVictory_branch_f480b:
@@ -416,5 +416,5 @@ Music_GymLeaderVictory_branch_f480b:
 	note D#, 4
 	note D_, 2
 	note D#, 2
-	loopchannel 3, Music_GymLeaderVictory_branch_f480b
+	sound_loop 3, Music_GymLeaderVictory_branch_f480b
 	endchannel

@@ -28,7 +28,7 @@ Music_ProfOak_branch_f4e10:
 	callchannel Music_ProfOak_branch_f4e42
 	callchannel Music_ProfOak_branch_f4e4d
 	callchannel Music_ProfOak_branch_f4e4d
-	loopchannel 2, Music_ProfOak_branch_f4e10
+	sound_loop 2, Music_ProfOak_branch_f4e10
 Music_ProfOak_branch_f4e22:
 	callchannel Music_ProfOak_branch_f4e58
 	callchannel Music_ProfOak_branch_f4e58
@@ -151,7 +151,7 @@ Music_ProfOak_branch_f4e92:
 	note A_, 4
 	note B_, 2
 	note B_, 4
-	loopchannel 2, Music_ProfOak_branch_f4e92
+	sound_loop 2, Music_ProfOak_branch_f4e92
 	note __, 6
 	volume_envelope 11, 4
 Music_ProfOak_branch_f4ebf:
@@ -229,7 +229,7 @@ Music_ProfOak_branch_f4f0d:
 	callchannel Music_ProfOak_branch_f4f3d
 	callchannel Music_ProfOak_branch_f4f4c
 	callchannel Music_ProfOak_branch_f4f4c
-	loopchannel 2, Music_ProfOak_branch_f4f0d
+	sound_loop 2, Music_ProfOak_branch_f4f0d
 Music_ProfOak_branch_f4f1d:
 	callchannel Music_ProfOak_branch_f4f5a
 	callchannel Music_ProfOak_branch_f4f5a

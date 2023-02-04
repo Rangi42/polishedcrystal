@@ -122,7 +122,7 @@ Music_WallyBattleORAS_Ch1_loop_1:
 	pitch_sweep 0, 0
 	duty_cycle 3
 	note __, 10
-	loopchannel 2, Music_WallyBattleORAS_Ch1_loop_1
+	sound_loop 2, Music_WallyBattleORAS_Ch1_loop_1
 	volume_envelope 8, 7
 	note E_, 2
 	octave 4
@@ -257,7 +257,7 @@ Music_WallyBattleORAS_Ch2_loop_1:
 	note G_, 5
 	duty_cycle 0
 	note __, 10
-	loopchannel 2, Music_WallyBattleORAS_Ch2_loop_1
+	sound_loop 2, Music_WallyBattleORAS_Ch2_loop_1
 	volume_envelope 13, 7
 	octave 2
 	note B_, 2
@@ -455,7 +455,7 @@ Music_WallyBattleORAS_Ch3_loop_1:
 	octave 2
 	note E_, 2
 	note D_, 6
-	loopchannel 2, Music_WallyBattleORAS_Ch3_loop_1
+	sound_loop 2, Music_WallyBattleORAS_Ch3_loop_1
 	note C_, 4
 	note G_, 2
 	octave 3
@@ -606,7 +606,7 @@ Music_WallyBattleORAS_Ch4_loop_1:
 	note B_, 1
 	note B_, 2
 	note D#, 1
-	loopchannel 2, Music_WallyBattleORAS_Ch4_loop_1
+	sound_loop 2, Music_WallyBattleORAS_Ch4_loop_1
 	callchannel Music_WallyBattleORAS_Ch4_branch_1
 	callchannel Music_WallyBattleORAS_Ch4_branch_5
 	callchannel Music_WallyBattleORAS_Ch4_branch_2

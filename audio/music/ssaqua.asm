@@ -671,7 +671,7 @@ Music_SSAqua_branch_eb08d:
 	octave 2
 	note G_, 1
 	note __, 1
-	loopchannel 4, Music_SSAqua_branch_eb08d
+	sound_loop 4, Music_SSAqua_branch_eb08d
 	callchannel Music_SSAqua_branch_eb172
 	callchannel Music_SSAqua_branch_eb172
 	callchannel Music_SSAqua_branch_eb230
@@ -1101,7 +1101,7 @@ Music_SSAqua_branch_eb24e:
 	note G_, 1
 	note G#, 1
 	note G_, 1
-	loopchannel 12, Music_SSAqua_branch_eb24e
+	sound_loop 12, Music_SSAqua_branch_eb24e
 	callchannel Music_SSAqua_branch_eb2ae
 	callchannel Music_SSAqua_branch_eb2ae
 	callchannel Music_SSAqua_branch_eb2ae

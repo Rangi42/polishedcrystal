@@ -483,7 +483,7 @@ Music_Route101RSE_Ch4_loop:
 	callchannel Music_Route101RSE_Ch4_branch_1
 	note D#, 1
 	note D#, 1
-	loopchannel 4, Music_Route101RSE_Ch4_loop
+	sound_loop 4, Music_Route101RSE_Ch4_loop
 Music_Route101RSE_Ch4_loop_2:
 	callchannel Music_Route101RSE_Ch4_branch_2
 	note D_, 1
@@ -503,7 +503,7 @@ Music_Route101RSE_Ch4_loop_2:
 	note B_, 1
 	note D_, 1
 	note B_, 1
-	loopchannel 3, Music_Route101RSE_Ch4_loop_2
+	sound_loop 3, Music_Route101RSE_Ch4_loop_2
 	note D_, 1
 	note B_, 1
 	note B_, 1

@@ -284,11 +284,11 @@ MACRO sound_jump
 	dw \1 ; address
 ENDM
 
-	const loopchannel_cmd
-MACRO loopchannel
-	db loopchannel_cmd
-	assert (\1) != 0, "'loopchannel 0' can be 'jumpchannel'"
-	assert (\1) != 1, "'loopchannel 1' is pointless"
+	const sound_loop_cmd ; $fd
+MACRO sound_loop
+	db sound_loop_cmd
+	assert (\1) != 0, "'sound_loop 0' can be 'sound_jump'"
+	assert (\1) != 1, "'sound_loop 1' is pointless"
 	db \1 ; count
 	dw \2 ; address
 ENDM

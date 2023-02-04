@@ -103,7 +103,7 @@ Music_ContestResults_branch_efba6:
 	octave 3
 	note F_, 1
 	note __, 1
-	loopchannel 2, Music_ContestResults_branch_efba6
+	sound_loop 2, Music_ContestResults_branch_efba6
 	octave 2
 	note G_, 2
 	octave 3

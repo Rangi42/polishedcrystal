@@ -549,7 +549,7 @@ Music_Route4BW_Ch4_branch_1:
 	note D_, 1
 	note D_, 1
 	note D_, 1
-	loopchannel 6, Music_Route4BW_Ch4_branch_1
+	sound_loop 6, Music_Route4BW_Ch4_branch_1
 	callchannel Music_Route4BW_Ch4_branch_3
 	callchannel Music_Route4BW_Ch4_branch_3
 	note_type 12

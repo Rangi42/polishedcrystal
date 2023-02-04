@@ -100,7 +100,7 @@ Music_DewfordTownRSE_Ch1_b1:
 	note D#, 1
 	note D_, 1
 	note D#, 1
-	loopchannel 12, Music_DewfordTownRSE_Ch1_b1
+	sound_loop 12, Music_DewfordTownRSE_Ch1_b1
 	note F_, 2
 	note F_, 1
 	note E_, 1
@@ -854,7 +854,7 @@ Music_DewfordTownRSE_Ch4_b1:
 	note 8, 2
 	note 8, 4
 	note 8, 2
-	loopchannel 19, Music_DewfordTownRSE_Ch4_b1
+	sound_loop 19, Music_DewfordTownRSE_Ch4_b1
 	note 1, 1
 	note 1, 1
 	note 8, 1
@@ -866,7 +866,7 @@ Music_DewfordTownRSE_Ch4_b1:
 Music_DewfordTownRSE_Ch4_b2:
 	note __, 6
 	note 1, 6
-	loopchannel 7, Music_DewfordTownRSE_Ch4_b2
+	sound_loop 7, Music_DewfordTownRSE_Ch4_b2
 	note __, 2
 	note 1, 2
 	note __, 2
@@ -876,7 +876,7 @@ Music_DewfordTownRSE_Ch4_b2:
 Music_DewfordTownRSE_Ch4_b3:
 	note __, 6
 	note 1, 6
-	loopchannel 6, Music_DewfordTownRSE_Ch4_b3
+	sound_loop 6, Music_DewfordTownRSE_Ch4_b3
 	note __, 2
 	note 1, 4
 	note 1, 2
@@ -893,7 +893,7 @@ Music_DewfordTownRSE_Ch4_b3:
 Music_DewfordTownRSE_Ch4_b4:
 	note __, 6
 	note 1, 6
-	loopchannel 7, Music_DewfordTownRSE_Ch4_b4
+	sound_loop 7, Music_DewfordTownRSE_Ch4_b4
 	note 1, 1
 	note 1, 1
 	note __, 1
@@ -903,7 +903,7 @@ Music_DewfordTownRSE_Ch4_b4:
 Music_DewfordTownRSE_Ch4_b5:
 	note __, 6
 	note 1, 6
-	loopchannel 7, Music_DewfordTownRSE_Ch4_b5
+	sound_loop 7, Music_DewfordTownRSE_Ch4_b5
 	note 1, 1
 	note 1, 1
 	note __, 1

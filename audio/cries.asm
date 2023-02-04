@@ -223,7 +223,7 @@ Cry_Magcargo_Ch8:
 	noise_note 2, 14, 8, 59
 Cry_Magcargo_branch_f2ef5:
 	noise_note 1, 15, 1, 78
-	loopchannel 5, Cry_Magcargo_branch_f2ef5
+	sound_loop 5, Cry_Magcargo_branch_f2ef5
 	noise_note 2, 13, 8, 63
 	noise_note 20, 12, 2, 95
 	endchannel
@@ -361,7 +361,7 @@ Cry_Togetic_Ch5:
 Cry_Togetic_Ch6:
 Cry_Togetic_branch_f3038:
 	callchannel Cry_Togetic_branch_f3022
-	loopchannel 2, Cry_Togetic_branch_f3038
+	sound_loop 2, Cry_Togetic_branch_f3038
 	square_note 14, 0, 0, 0
 	square_note 8, 15, 2, 1986
 	endchannel
@@ -439,10 +439,10 @@ Cry_Hoothoot_Ch6:
 	duty_cycle_pattern 0, 2, 0, 2
 Cry_Hoothoot_branch_f30fb:
 	square_note 2, 10, 1, 1536
-	loopchannel 3, Cry_Hoothoot_branch_f30fb
+	sound_loop 3, Cry_Hoothoot_branch_f30fb
 Cry_Hoothoot_branch_f3103:
 	square_note 2, 10, 1, 1584
-	loopchannel 4, Cry_Hoothoot_branch_f3103
+	sound_loop 4, Cry_Hoothoot_branch_f3103
 	square_note 4, 10, 2, 1588
 	square_note 4, 9, 1, 1592
 	endchannel
@@ -489,11 +489,11 @@ Cry_Cyndaquil_Ch6:
 Cry_Cyndaquil_branch_f315f:
 	square_note 0, 14, 1, 1155
 	square_note 0, 5, 1, 1102
-	loopchannel 4, Cry_Cyndaquil_branch_f315f
+	sound_loop 4, Cry_Cyndaquil_branch_f315f
 Cry_Cyndaquil_branch_f316b:
 	square_note 0, 14, 1, 986
 	square_note 1, 5, 1, 786
-	loopchannel 4, Cry_Cyndaquil_branch_f316b
+	sound_loop 4, Cry_Cyndaquil_branch_f316b
 	endchannel
 
 Cry_Cyndaquil_Ch8:
@@ -629,22 +629,22 @@ Cry_Teddiursa_Ch5:
 	duty_cycle_pattern 0, 1, 0, 2
 Cry_Typhlosion_branch_f3286:
 	square_note 3, 12, 1, 1937
-	loopchannel 3, Cry_Typhlosion_branch_f3286
+	sound_loop 3, Cry_Typhlosion_branch_f3286
 Cry_Typhlosion_branch_f328e:
 	square_note 3, 13, 1, 1201
-	loopchannel 6, Cry_Typhlosion_branch_f328e
+	sound_loop 6, Cry_Typhlosion_branch_f328e
 Cry_Typhlosion_branch_f3296:
 	square_note 1, 13, 1, 1169
 	square_note 1, 11, 1, 1105
-	loopchannel 6, Cry_Typhlosion_branch_f3296
+	sound_loop 6, Cry_Typhlosion_branch_f3296
 Cry_Typhlosion_branch_f32a2:
 	square_note 1, 10, 3, 1137
 	square_note 1, 8, 1, 1089
-	loopchannel 6, Cry_Typhlosion_branch_f32a2
+	sound_loop 6, Cry_Typhlosion_branch_f32a2
 Cry_Typhlosion_branch_f32ae:
 	square_note 1, 4, 1, 1057
 	square_note 1, 2, 1, 1025
-	loopchannel 4, Cry_Typhlosion_branch_f32ae
+	sound_loop 4, Cry_Typhlosion_branch_f32ae
 	endchannel
 
 Cry_Typhlosion_Ch6:
@@ -734,7 +734,7 @@ Cry_Ampharos_Ch5:
 Cry_Ampharos_branch_f3355:
 	square_note 1, 12, 1, 1312
 	square_note 1, 10, 1, 1056
-	loopchannel 4, Cry_Ampharos_branch_f3355
+	sound_loop 4, Cry_Ampharos_branch_f3355
 	duty_cycle 0
 	square_note 4, 7, 8, 1888
 	square_note 4, 7, 8, 1840
@@ -831,20 +831,20 @@ Cry_Tyrogue_Ch6:
 	duty_cycle_pattern 0, 2, 1, 3
 Cry_Tyrogue_branch_f3443:
 	square_note 1, 15, 1, 1972
-	loopchannel 8, Cry_Tyrogue_branch_f3443
+	sound_loop 8, Cry_Tyrogue_branch_f3443
 Cry_Tyrogue_branch_f344b:
 	square_note 1, 12, 1, 1936
-	loopchannel 3, Cry_Tyrogue_branch_f344b
+	sound_loop 3, Cry_Tyrogue_branch_f344b
 Cry_Tyrogue_branch_f3453:
 	square_note 1, 11, 1, 1933
-	loopchannel 2, Cry_Tyrogue_branch_f3453
+	sound_loop 2, Cry_Tyrogue_branch_f3453
 	square_note 16, 9, 2, 1941
 	endchannel
 
 Cry_Tyrogue_Ch8:
 Cry_Tyrogue_branch_f3460:
 	noise_note 0, 15, 1, 40
-	loopchannel 4, Cry_Tyrogue_branch_f3460
+	sound_loop 4, Cry_Tyrogue_branch_f3460
 	noise_note 0, 9, 1, 73
 	noise_note 1, 10, 8, 74
 	noise_note 0, 14, 1, 75
@@ -1503,7 +1503,7 @@ Cry_Drowzee_branch_f3a1a:
 	square_note 9, 12, 1, 1570
 	square_note 5, 15, 2, 1552
 	square_note 6, 13, 1, 1568
-	loopchannel 2, Cry_Drowzee_branch_f3a1a
+	sound_loop 2, Cry_Drowzee_branch_f3a1a
 	endchannel
 
 Cry_Drowzee_Ch6:

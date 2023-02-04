@@ -56,7 +56,7 @@ Music_RocketBattle_branch_e9bad:
 	note E_, 2
 	volume_envelope 11, 7
 	note D_, 4
-	loopchannel 3, Music_RocketBattle_branch_e9bad
+	sound_loop 3, Music_RocketBattle_branch_e9bad
 	volume_envelope 11, 2
 	note C_, 6
 	note C_, 6
@@ -70,7 +70,7 @@ Music_RocketBattle_branch_e9bc1:
 	note G_, 2
 	volume_envelope 11, 7
 	note F_, 4
-	loopchannel 3, Music_RocketBattle_branch_e9bc1
+	sound_loop 3, Music_RocketBattle_branch_e9bc1
 	volume_envelope 11, 2
 	note E_, 6
 	note E_, 4
@@ -298,7 +298,7 @@ Music_RocketBattle_branch_e9cc5:
 	volume_envelope 11, 7
 	note A_, 2
 	note G_, 4
-	loopchannel 2, Music_RocketBattle_branch_e9cc5
+	sound_loop 2, Music_RocketBattle_branch_e9cc5
 	volume_envelope 11, 2
 	note F_, 6
 	octave 4
@@ -447,7 +447,7 @@ Music_RocketBattle_branch_e9d7b:
 	volume_envelope 12, 7
 	octave 3
 	note A#, 4
-	loopchannel 3, Music_RocketBattle_branch_e9d7b
+	sound_loop 3, Music_RocketBattle_branch_e9d7b
 	volume_envelope 12, 2
 	note A_, 6
 	note A_, 6
@@ -463,7 +463,7 @@ Music_RocketBattle_branch_e9d91:
 	volume_envelope 12, 7
 	octave 4
 	note A#, 4
-	loopchannel 3, Music_RocketBattle_branch_e9d91
+	sound_loop 3, Music_RocketBattle_branch_e9d91
 	volume_envelope 12, 2
 	note A_, 6
 	note A_, 4
@@ -613,7 +613,7 @@ Music_RocketBattle_branch_e9e5a:
 	octave 4
 	note D_, 2
 	note C_, 4
-	loopchannel 3, Music_RocketBattle_branch_e9e5a
+	sound_loop 3, Music_RocketBattle_branch_e9e5a
 	volume_envelope 12, 2
 	octave 3
 	note A#, 6
@@ -703,7 +703,7 @@ Music_RocketBattle_Ch3:
 	note A#, 2
 Music_RocketBattle_branch_e9ecc:
 	callchannel Music_RocketBattle_branch_e9fe6
-	loopchannel 3, Music_RocketBattle_branch_e9ecc
+	sound_loop 3, Music_RocketBattle_branch_e9ecc
 	octave 2
 	note A_, 2
 	octave 3
@@ -718,7 +718,7 @@ Music_RocketBattle_branch_e9ecc:
 	note D_, 2
 Music_RocketBattle_branch_e9edf:
 	callchannel Music_RocketBattle_branch_e9fe6
-	loopchannel 3, Music_RocketBattle_branch_e9edf
+	sound_loop 3, Music_RocketBattle_branch_e9edf
 	octave 2
 	note A_, 2
 	octave 3
@@ -776,7 +776,7 @@ Music_RocketBattle_branch_e9f25:
 	note A#, 2
 	octave 3
 	note F_, 2
-	loopchannel 5, Music_RocketBattle_branch_e9f25
+	sound_loop 5, Music_RocketBattle_branch_e9f25
 	note A#, 2
 	octave 2
 	note A#, 2
@@ -817,7 +817,7 @@ Music_RocketBattle_branch_e9f4e:
 	note D_, 2
 	note G_, 2
 	note F_, 2
-	loopchannel 7, Music_RocketBattle_branch_e9f4e
+	sound_loop 7, Music_RocketBattle_branch_e9f4e
 	octave 2
 	note A_, 2
 	octave 3
@@ -835,7 +835,7 @@ Music_RocketBattle_branch_e9f6a:
 	note A#, 2
 	octave 3
 	note F_, 2
-	loopchannel 4, Music_RocketBattle_branch_e9f6a
+	sound_loop 4, Music_RocketBattle_branch_e9f6a
 	octave 2
 	note A#, 2
 	octave 3
@@ -851,7 +851,7 @@ Music_RocketBattle_branch_e9f7c:
 	note A_, 2
 	octave 3
 	note E_, 2
-	loopchannel 13, Music_RocketBattle_branch_e9f7c
+	sound_loop 13, Music_RocketBattle_branch_e9f7c
 	octave 2
 	note A_, 2
 	octave 3
@@ -865,7 +865,7 @@ Music_RocketBattle_branch_e9f8c:
 	note A_, 2
 	octave 3
 	note E_, 2
-	loopchannel 4, Music_RocketBattle_branch_e9f8c
+	sound_loop 4, Music_RocketBattle_branch_e9f8c
 	octave 2
 	note A_, 2
 	octave 4
@@ -881,7 +881,7 @@ Music_RocketBattle_branch_e9f9e:
 	note A#, 2
 	octave 3
 	note F_, 2
-	loopchannel 7, Music_RocketBattle_branch_e9f9e
+	sound_loop 7, Music_RocketBattle_branch_e9f9e
 	note E_, 2
 	note F_, 2
 Music_RocketBattle_branch_e9fa8:
@@ -889,7 +889,7 @@ Music_RocketBattle_branch_e9fa8:
 	note A#, 2
 	octave 3
 	note F_, 2
-	loopchannel 5, Music_RocketBattle_branch_e9fa8
+	sound_loop 5, Music_RocketBattle_branch_e9fa8
 	octave 3
 	note A#, 2
 	octave 4
@@ -1011,7 +1011,7 @@ Music_RocketBattle_branch_ea02a:
 	note A_, 2
 	octave 3
 	note E_, 2
-	loopchannel 4, Music_RocketBattle_branch_ea02a
+	sound_loop 4, Music_RocketBattle_branch_ea02a
 	endchannel
 
 Music_RocketBattle_branch_ea033:

@@ -401,7 +401,7 @@ Music_BuenasPassword_branch_178315:
 	note B_, 1
 	note __, 1
 	note G#, 4
-	loopchannel 3, Music_BuenasPassword_branch_178315
+	sound_loop 3, Music_BuenasPassword_branch_178315
 	note F#, 1
 	note __, 1
 	note A#, 1
@@ -571,7 +571,7 @@ Music_BuenasPassword_branch_1783d9:
 	callchannel Music_BuenasPassword_branch_17840c
 	callchannel Music_BuenasPassword_branch_17840c
 	callchannel Music_BuenasPassword_branch_178424
-	loopchannel 4, Music_BuenasPassword_branch_1783d9
+	sound_loop 4, Music_BuenasPassword_branch_1783d9
 	callchannel Music_BuenasPassword_branch_17840c
 	callchannel Music_BuenasPassword_branch_17840c
 	callchannel Music_BuenasPassword_branch_17840c

@@ -298,7 +298,7 @@ Music_LegendaryBattleXY_Ch1_loop_1:
 	note D_, 3
 	volume_envelope 8, 7
 	note D_, 4
-	loopchannel 3, Music_LegendaryBattleXY_Ch1_loop_1
+	sound_loop 3, Music_LegendaryBattleXY_Ch1_loop_1
 	volume_envelope 8, 0
 	pitch_sweep 3, -7
 	note D_, 1
@@ -704,7 +704,7 @@ Music_LegendaryBattleXY_Ch3_loop_1:
 	note C_, 6
 	note C#, 4
 	note C_, 4
-	loopchannel 2, Music_LegendaryBattleXY_Ch3_loop_1
+	sound_loop 2, Music_LegendaryBattleXY_Ch3_loop_1
 Music_LegendaryBattleXY_Ch3_loop_2:
 	volume_envelope 1, -1
 	octave 1
@@ -715,7 +715,7 @@ Music_LegendaryBattleXY_Ch3_loop_2:
 	note F_, 2
 	octave 2
 	note F_, 2
-	loopchannel 15, Music_LegendaryBattleXY_Ch3_loop_2
+	sound_loop 15, Music_LegendaryBattleXY_Ch3_loop_2
 	octave 1
 	note F_, 2
 	octave 2
@@ -758,7 +758,7 @@ Music_LegendaryBattleXY_Ch3_loop_3:
 	note F_, 2
 	octave 2
 	note F_, 2
-	loopchannel 6, Music_LegendaryBattleXY_Ch3_loop_3
+	sound_loop 6, Music_LegendaryBattleXY_Ch3_loop_3
 	note A_, 2
 	note A#, 2
 	note A_, 2
@@ -776,43 +776,43 @@ Music_LegendaryBattleXY_Ch3_loop_4:
 	note F#, 2
 	octave 2
 	note F#, 2
-	loopchannel 4, Music_LegendaryBattleXY_Ch3_loop_4
+	sound_loop 4, Music_LegendaryBattleXY_Ch3_loop_4
 Music_LegendaryBattleXY_Ch3_loop_5:
 	octave 1
 	note D#, 2
 	octave 2
 	note D#, 2
-	loopchannel 4, Music_LegendaryBattleXY_Ch3_loop_5
+	sound_loop 4, Music_LegendaryBattleXY_Ch3_loop_5
 Music_LegendaryBattleXY_Ch3_loop_6:
 	octave 1
 	note F_, 2
 	octave 2
 	note F_, 2
-	loopchannel 4, Music_LegendaryBattleXY_Ch3_loop_6
+	sound_loop 4, Music_LegendaryBattleXY_Ch3_loop_6
 Music_LegendaryBattleXY_Ch3_loop_7:
 	octave 1
 	note D_, 2
 	octave 2
 	note D_, 2
-	loopchannel 4, Music_LegendaryBattleXY_Ch3_loop_7
+	sound_loop 4, Music_LegendaryBattleXY_Ch3_loop_7
 Music_LegendaryBattleXY_Ch3_loop_8:
 	octave 1
 	note F#, 2
 	octave 2
 	note F#, 2
-	loopchannel 4, Music_LegendaryBattleXY_Ch3_loop_8
+	sound_loop 4, Music_LegendaryBattleXY_Ch3_loop_8
 Music_LegendaryBattleXY_Ch3_loop_9:
 	octave 1
 	note D#, 2
 	octave 2
 	note D#, 2
-	loopchannel 4, Music_LegendaryBattleXY_Ch3_loop_9
+	sound_loop 4, Music_LegendaryBattleXY_Ch3_loop_9
 Music_LegendaryBattleXY_Ch3_loop_10:
 	octave 1
 	note F_, 2
 	octave 2
 	note F_, 2
-	loopchannel 8, Music_LegendaryBattleXY_Ch3_loop_10
+	sound_loop 8, Music_LegendaryBattleXY_Ch3_loop_10
 Music_LegendaryBattleXY_Ch3_loop_11:
 	octave 1
 	note A#, 2
@@ -822,11 +822,11 @@ Music_LegendaryBattleXY_Ch3_loop_11:
 	note A#, 2
 	octave 2
 	note A#, 2
-	loopchannel 8, Music_LegendaryBattleXY_Ch3_loop_11
+	sound_loop 8, Music_LegendaryBattleXY_Ch3_loop_11
 Music_LegendaryBattleXY_Ch3_loop_12:
 	octave 1
 	note F_, 2
 	octave 2
 	note F_, 2
-	loopchannel 32, Music_LegendaryBattleXY_Ch3_loop_12
+	sound_loop 32, Music_LegendaryBattleXY_Ch3_loop_12
 	sound_jump Music_LegendaryBattleXY_Ch3_loop_main

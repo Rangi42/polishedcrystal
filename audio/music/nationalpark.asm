@@ -622,7 +622,7 @@ Music_NationalPark_Ch4:
 	note __, 2
 Music_NationalPark_branch_f57bd:
 	note __, 16
-	loopchannel 23, Music_NationalPark_branch_f57bd
+	sound_loop 23, Music_NationalPark_branch_f57bd
 	note __, 8
 	note A#, 2
 	note D_, 2
@@ -641,7 +641,7 @@ Music_NationalPark_branch_f57c8:
 	note G_, 1
 	note D_, 2
 	note B_, 2
-	loopchannel 7, Music_NationalPark_branch_f57c8
+	sound_loop 7, Music_NationalPark_branch_f57c8
 	note A#, 2
 	note G_, 1
 	note G_, 1

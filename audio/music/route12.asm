@@ -129,7 +129,7 @@ Music_Route12_branch_ec59b:
 	note E_, 1
 	note F#, 1
 	note G#, 4
-	loopchannel 2, Music_Route12_branch_ec59b
+	sound_loop 2, Music_Route12_branch_ec59b
 	sound_jump Music_Route12_branch_ec535
 
 Music_Route12_branch_ec5b1:
@@ -358,7 +358,7 @@ Music_Route12_branch_ec6a3:
 	note G#, 4
 	note E_, 3
 	note __, 1
-	loopchannel 2, Music_Route12_branch_ec6a3
+	sound_loop 2, Music_Route12_branch_ec6a3
 	sound_jump Music_Route12_branch_ec66c
 
 Music_Route12_branch_ec6b4:
@@ -410,7 +410,7 @@ Music_Route12_branch_ec6e1:
 	note C#, 2
 	note D_, 8
 	callchannel Music_Route12_branch_ec717
-	loopchannel 8, Music_Route12_branch_ec6e1
+	sound_loop 8, Music_Route12_branch_ec6e1
 Music_Route12_branch_ec6ed:
 	note_type 12
 	note B_, 10
@@ -423,7 +423,7 @@ Music_Route12_branch_ec6ed:
 	note C#, 1
 	note C#, 1
 	note D_, 4
-	loopchannel 2, Music_Route12_branch_ec6ed
+	sound_loop 2, Music_Route12_branch_ec6ed
 	note B_, 16
 	note_type 6
 	callchannel Music_Route12_branch_ec717
@@ -436,7 +436,7 @@ Music_Route12_branch_ec707:
 	note C#, 2
 	note D_, 8
 	callchannel Music_Route12_branch_ec717
-	loopchannel 2, Music_Route12_branch_ec707
+	sound_loop 2, Music_Route12_branch_ec707
 	sound_jump Music_Route12_branch_ec6e1
 
 Music_Route12_branch_ec717:

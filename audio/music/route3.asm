@@ -202,7 +202,7 @@ Music_Route3_branch_ec3a4:
 	note E_, 1
 	note C#, 1
 	note E_, 1
-	loopchannel 3, Music_Route3_branch_ec3a4
+	sound_loop 3, Music_Route3_branch_ec3a4
 	note C#, 1
 	note E_, 1
 	note C#, 1
@@ -212,7 +212,7 @@ Music_Route3_branch_ec3b1:
 	note E_, 1
 	note C#, 1
 	note E_, 1
-	loopchannel 3, Music_Route3_branch_ec3b1
+	sound_loop 3, Music_Route3_branch_ec3b1
 	note C#, 1
 	note E_, 1
 	note C#, 1
@@ -224,7 +224,7 @@ Music_Route3_branch_ec3bd:
 	note B_, 1
 	octave 3
 	note D_, 1
-	loopchannel 3, Music_Route3_branch_ec3bd
+	sound_loop 3, Music_Route3_branch_ec3bd
 	octave 2
 	note B_, 1
 	octave 3
