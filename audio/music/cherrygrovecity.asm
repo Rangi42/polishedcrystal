@@ -11,7 +11,7 @@ Music_CherrygroveCity_Ch1:
 	duty_cycle 3
 	tone $0001
 	vibrato $8, $15
-	stereopanning $f0
+	stereo_panning TRUE, FALSE
 	note_type 12, 11, 5
 	note __, 10
 	octave 3
@@ -96,7 +96,7 @@ Music_CherrygroveCity_branch_f5b26:
 Music_CherrygroveCity_Ch2:
 	duty_cycle 3
 	vibrato $10, $36
-	stereopanning $f
+	stereo_panning FALSE, TRUE
 	note_type 12, 12, 3
 	octave 3
 	note C_, 2

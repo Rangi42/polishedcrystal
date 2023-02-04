@@ -14,7 +14,7 @@ Music_GymLeaderBattleXY_Ch1:
 	volume 7, 7
 	duty_cycle 1
 	note_type 3, 11, 7
-	stereopanning $F0
+	stereo_panning TRUE, FALSE
 	octave 4
 	note C_, 4
 	note __, 4
@@ -110,7 +110,7 @@ Music_GymLeaderBattleXY_Ch1:
 	note A#, 4
 Music_GymLeaderBattleXY_Ch1_loop:
 	note_type 3, 9, 7
-	stereopanning $FF
+	stereo_panning TRUE, TRUE
 	octave 4
 	note C_, 4
 	note __, 4
@@ -304,7 +304,7 @@ Music_GymLeaderBattleXY_Ch1_loop:
 	note __, 16
 	note __, 16
 	note_type 3, 11, 7
-	stereopanning $F0
+	stereo_panning TRUE, FALSE
 	octave 4
 	note C_, 4
 	note __, 4
@@ -714,7 +714,7 @@ Music_GymLeaderBattleXY_Ch2:
 	duty_cycle 2
 	note_type 3, 11, 7
 	octave 3
-	stereopanning $0F
+	stereo_panning FALSE, TRUE
 	note C_, 4
 	note __, 4
 	note C_, 4
@@ -795,46 +795,46 @@ Music_GymLeaderBattleXY_Ch2:
 	note __, 2
 	note D#, 4
 Music_GymLeaderBattleXY_Ch2_loop:
-	stereopanning $F0
+	stereo_panning TRUE, FALSE
 	vibrato 0, $46
 	octave 3
 	note_type 12, 11, -7
 	note G_, 10
 	note_type 12, 15, 7
 	note G_, 6
-	stereopanning $0F
+	stereo_panning FALSE, TRUE
 	note_type 12, 11, -7
 	note A#, 10
 	note_type 12, 15, 7
 	note A#, 6
-	stereopanning $F0
+	stereo_panning TRUE, FALSE
 	note_type 12, 11, -7
 	note A_, 10
 	note_type 12, 15, 7
 	note A_, 6
-	stereopanning $0F
+	stereo_panning FALSE, TRUE
 	octave 4
 	note_type 12, 11, -7
 	note C_, 10
 	note_type 12, 15, 7
 	note C_, 6
-	stereopanning $F0
+	stereo_panning TRUE, FALSE
 	octave 3
 	note_type 12, 11, -7
 	note G_, 10
 	note_type 12, 15, 7
 	note G_, 6
-	stereopanning $0F
+	stereo_panning FALSE, TRUE
 	note_type 12, 11, -7
 	note A#, 10
 	note_type 12, 15, 7
 	note A#, 6
-	stereopanning $F0
+	stereo_panning TRUE, FALSE
 	note_type 12, 11, -7
 	note A_, 10
 	note_type 12, 15, 7
 	note A_, 6
-	stereopanning $0F
+	stereo_panning FALSE, TRUE
 	octave 4
 	note_type 12, 11, -7
 	note C_, 10
@@ -842,7 +842,7 @@ Music_GymLeaderBattleXY_Ch2_loop:
 	note C_, 6
 	note __, 16
 	note __, 16
-	stereopanning $FF
+	stereo_panning TRUE, TRUE
 	vibrato 0, $C1
 	octave 2
 	note_type 12, 1, -7
@@ -865,7 +865,7 @@ Music_GymLeaderBattleXY_Ch2_loop:
 	note_type 12, 15, 7
 	note F_, 16
 	vibrato 0, $0
-	stereopanning $0F
+	stereo_panning FALSE, TRUE
 	note_type 3, 14, 7
 	duty_cycle 1
 	octave 2
@@ -1345,7 +1345,7 @@ Music_GymLeaderBattleXY_Ch3_loop:
 	note E_, 4
 	note D_, 4
 	note C_, 4
-	stereopanning $0F
+	stereo_panning FALSE, TRUE
 	note F_, 4
 	note __, 4
 	note F_, 4
@@ -1416,7 +1416,7 @@ Music_GymLeaderBattleXY_Ch3_loop:
 	note F#, 4
 	note D#, 4
 	note_type 12, 1, 6
-	stereopanning $FF
+	stereo_panning TRUE, TRUE
 	octave 1
 	note A#, 2
 	octave 2

@@ -16,7 +16,7 @@ Music_LookLass_Ch1:
 	note __, 1
 	octave 4
 	note B_, 14
-	stereopanning $f
+	stereo_panning FALSE, TRUE
 	duty_cycle 0
 Music_LookLass_branch_ed7bd:
 	volume_envelope 10, 2
@@ -31,7 +31,7 @@ Music_LookLass_branch_ed7bd:
 	jumpchannel Music_LookLass_branch_ed7bd
 
 Music_LookLass_Ch2:
-	stereopanning $f0
+	stereo_panning TRUE, FALSE
 	duty_cycle 0
 	note_type 12, 8, 3
 	note __, 16

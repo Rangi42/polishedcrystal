@@ -11,7 +11,7 @@ Music_DarkCave_Ch1:
 	duty_cycle 3
 	tone $0001
 	vibrato $11, $15
-	stereopanning $f0
+	stereo_panning TRUE, FALSE
 	note_type 12, 10, 7
 Music_DarkCave_branch_ea2dc:
 	note __, 16
@@ -139,7 +139,7 @@ Music_DarkCave_branch_ea333:
 Music_DarkCave_Ch2:
 	duty_cycle 1
 	vibrato $12, $36
-	stereopanning $f
+	stereo_panning FALSE, TRUE
 	note_type 12, 10, 7
 Music_DarkCave_branch_ea374:
 	note __, 16
@@ -153,7 +153,7 @@ Music_DarkCave_branch_ea37e:
 	note __, 16
 	loopchannel 4, Music_DarkCave_branch_ea37e
 	note __, 8
-	stereopanning $ff
+	stereo_panning TRUE, TRUE
 	volume_envelope 12, 7
 	octave 5
 	note C_, 8
@@ -196,7 +196,7 @@ Music_DarkCave_branch_ea37e:
 	note D#, 10
 	volume_envelope 11, 7
 	note D#, 6
-	stereopanning $f
+	stereo_panning FALSE, TRUE
 	volume_envelope 12, 4
 	octave 4
 	note F_, 4
@@ -259,7 +259,7 @@ Music_DarkCave_branch_ea37e:
 	volume_envelope 11, 7
 	note C_, 8
 	volume_envelope 12, 7
-	stereopanning $ff
+	stereo_panning TRUE, TRUE
 	note __, 8
 	octave 5
 	note C_, 8
@@ -303,7 +303,7 @@ Music_DarkCave_branch_ea37e:
 	note C_, 8
 	volume_envelope 12, 7
 	note __, 16
-	stereopanning $f
+	stereo_panning FALSE, TRUE
 	note __, 8
 	octave 3
 	note A#, 2
@@ -461,24 +461,24 @@ Music_DarkCave_Ch4:
 	toggle_noise 3
 	note_type 12
 Music_DarkCave_branch_ea4ee:
-	stereopanning $ff
+	stereo_panning TRUE, TRUE
 	note D#, 8
 	note D#, 8
 	note D#, 4
-	stereopanning $f0
+	stereo_panning TRUE, FALSE
 	note C#, 4
-	stereopanning $f
+	stereo_panning FALSE, TRUE
 	note C#, 2
 	note C#, 2
-	stereopanning $f0
+	stereo_panning TRUE, FALSE
 	note C#, 4
-	stereopanning $ff
+	stereo_panning TRUE, TRUE
 	note D#, 8
 	note D#, 8
 	note D#, 4
-	stereopanning $f
+	stereo_panning FALSE, TRUE
 	note C#, 8
-	stereopanning $f0
+	stereo_panning TRUE, FALSE
 	note C#, 2
 	note C#, 2
 	jumpchannel Music_DarkCave_branch_ea4ee

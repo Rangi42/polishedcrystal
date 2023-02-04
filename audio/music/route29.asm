@@ -11,7 +11,7 @@ Music_Route29_Ch1:
 	duty_cycle 3
 	tone $0001
 	vibrato $10, $15
-	stereopanning $f
+	stereo_panning FALSE, TRUE
 	note_type 12, 11, 2
 	note __, 2
 Music_Route29_branch_f03a5:
@@ -333,7 +333,7 @@ Music_Route29_branch_f04de:
 	endchannel
 
 Music_Route29_Ch3:
-	stereopanning $f0
+	stereo_panning TRUE, FALSE
 	note_type 12, 2, 5
 	vibrato $9, $27
 	note __, 2
@@ -502,7 +502,7 @@ Music_Route29_branch_f0504:
 	jumpchannel Music_Route29_branch_f0504
 
 Music_Route29_Ch4:
-	stereopanning $f
+	stereo_panning FALSE, TRUE
 	toggle_noise 0
 	note_type 12
 	note __, 2

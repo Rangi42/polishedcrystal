@@ -9,7 +9,7 @@ Music_CeladonCity_Ch1:
 	volume 7, 7
 	tone $0001
 Music_CeladonCity_branch_f436c:
-	stereopanning $f
+	stereo_panning FALSE, TRUE
 	note_type 12, 10, 6
 	octave 3
 	note A_, 7
@@ -143,7 +143,7 @@ Music_CeladonCity_branch_f43fe:
 Music_CeladonCity_Ch2:
 	vibrato $12, $34
 	duty_cycle 2
-	stereopanning $f0
+	stereo_panning TRUE, FALSE
 	note_type 12, 11, 7
 	octave 4
 	note D_, 1

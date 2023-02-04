@@ -7,7 +7,7 @@ Music_PokeFluteChannel:
 Music_PokeFluteChannel_Ch1:
 	tempo 240
 	volume 7, 7
-	stereopanning $f0
+	stereo_panning TRUE, FALSE
 	duty_cycle 3
 	tone $0002
 	note_type 12, 11, 4
@@ -70,7 +70,7 @@ Music_PokeFluteChannel_branch_f7b40:
 	jumpchannel Music_PokeFluteChannel_branch_f7b40
 
 Music_PokeFluteChannel_Ch2:
-	stereopanning $f
+	stereo_panning FALSE, TRUE
 	duty_cycle 3
 	tone $0001
 	note_type 12, 12, 4

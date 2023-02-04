@@ -12,7 +12,7 @@ Music_RocketHideout_Ch1:
 	tone $0004
 	vibrato $10, $44
 	note_type 12, 11, 3
-	stereopanning $f0
+	stereo_panning TRUE, FALSE
 Music_RocketHideout_branch_eeb93:
 	note __, 16
 	loopchannel 4, Music_RocketHideout_branch_eeb93
@@ -124,7 +124,7 @@ Music_RocketHideout_Ch2:
 	tone $0002
 	vibrato $0, $f0
 	note_type 12, 12, 4
-	stereopanning $f
+	stereo_panning FALSE, TRUE
 Music_RocketHideout_branch_eec14:
 	octave 2
 	note D#, 2
@@ -276,7 +276,7 @@ Music_RocketHideout_branch_eeca6:
 Music_RocketHideout_Ch4:
 	toggle_noise 0
 	note_type 12
-	stereopanning $f
+	stereo_panning FALSE, TRUE
 	note __, 16
 	note __, 16
 	note D_, 1
@@ -296,13 +296,13 @@ Music_RocketHideout_branch_eecc7:
 	jumpchannel Music_RocketHideout_branch_eecc7
 
 Music_RocketHideout_branch_eecdb:
-	stereopanning $f0
+	stereo_panning TRUE, FALSE
 	note D#, 1
 	note D#, 1
-	stereopanning $f
+	stereo_panning FALSE, TRUE
 	note A_, 4
 	note D#, 1
 	note D#, 1
-	stereopanning $f0
+	stereo_panning TRUE, FALSE
 	note A_, 4
 	endchannel

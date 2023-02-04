@@ -12,7 +12,7 @@ Music_PowerPlantXY:
 Music_PowerPlantXY_Ch1:
 	tempo 175
 	volume 7, 7
-	stereopanning $f
+	stereo_panning FALSE, TRUE
 	vibrato $12, $23
 	note_type 12, 8, 7
 	duty_cycle 0
@@ -156,7 +156,7 @@ Music_PowerPlantXY_Ch1_branch_4:
 	endchannel
 
 Music_PowerPlantXY_Ch2:
-	stereopanning $ff
+	stereo_panning TRUE, TRUE
 	vibrato $12, $23
 	note_type 12, 12, 4
 
@@ -324,7 +324,7 @@ Music_PowerPlantXY_Ch2_branch_4:
 	endchannel
 
 Music_PowerPlantXY_Ch3:
-	stereopanning $ff
+	stereo_panning TRUE, TRUE
 	note_type 12, 1, 1
 
 Music_PowerPlantXY_Ch3_branch_0:

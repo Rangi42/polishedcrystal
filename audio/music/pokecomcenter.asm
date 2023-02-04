@@ -11,7 +11,7 @@ Music_PokeComCenter_Ch1:
 	duty_cycle 1
 	tone $0002
 	vibrato $8, $22
-	stereopanning $f0
+	stereo_panning TRUE, FALSE
 	note_type 12, 10, 2
 	octave 3
 	note E_, 2
@@ -453,7 +453,7 @@ Music_PokeComCenter_branch_179788:
 
 Music_PokeComCenter_Ch4:
 	toggle_noise 3
-	stereopanning $f
+	stereo_panning FALSE, TRUE
 	note_type 12
 	note A_, 8
 	note A_, 4

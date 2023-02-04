@@ -10,7 +10,7 @@ Music_IndigoPlateau_Ch1:
 	volume 7, 7
 	duty_cycle 3
 	tone $0002
-	stereopanning $f
+	stereo_panning FALSE, TRUE
 Music_IndigoPlateau_branch_ee86a:
 	callchannel Music_IndigoPlateau_branch_ee881
 	octave 3
@@ -43,7 +43,7 @@ Music_IndigoPlateau_branch_ee881:
 Music_IndigoPlateau_Ch2:
 	duty_cycle 3
 	vibrato $10, $22
-	stereopanning $f0
+	stereo_panning TRUE, FALSE
 Music_IndigoPlateau_branch_ee899:
 	callchannel Music_IndigoPlateau_branch_ee8e9
 	note A_, 4
@@ -149,7 +149,7 @@ Music_IndigoPlateau_branch_ee915:
 	endchannel
 
 Music_IndigoPlateau_Ch4:
-	stereopanning $f0
+	stereo_panning TRUE, FALSE
 	toggle_noise 0
 	note_type 12
 Music_IndigoPlateau_branch_ee92a:

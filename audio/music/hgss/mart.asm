@@ -13,7 +13,7 @@ Music_MartHGSS_Ch1:
 	volume 7, 7
 	duty_cycle 1
 	note_type 12, 11, 2
-	stereopanning $f
+	stereo_panning FALSE, TRUE
 	octave 4
 	note C#, 4
 	note C#, 4
@@ -254,7 +254,7 @@ Music_MartHGSS_Loop1:
 Music_MartHGSS_Ch2:
 	duty_cycle 2
 	note_type 12, 11, 1
-	stereopanning $f
+	stereo_panning FALSE, TRUE
 	octave 4
 	note F#, 4
 	note F#, 4
@@ -264,7 +264,7 @@ Music_MartHGSS_Ch2:
 	volume_envelope 12, 5
 	note F#, 6
 	duty_cycle 1
-	stereopanning $ff
+	stereo_panning TRUE, TRUE
 	octave 3
 	note F#, 2
 	note G#, 2
@@ -479,7 +479,7 @@ Music_MartHGSS_Loop2:
 
 Music_MartHGSS_Ch3:
 	note_type 12, 1, 4
-	stereopanning $f0
+	stereo_panning TRUE, FALSE
 	octave 4
 	note D#, 1
 	note __, 3
@@ -807,7 +807,7 @@ Music_MartHGSS_Branch:
 Music_MartHGSS_Ch4:
 	note_type 12
 	toggle_noise 0
-	stereopanning $f0
+	stereo_panning TRUE, FALSE
 	note G_, 4
 	note G_, 4
 	note G_, 2

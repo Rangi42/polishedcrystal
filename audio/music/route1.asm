@@ -5,7 +5,7 @@ Music_Route1:
 	channel 3, Music_Route1_Ch3
 
 Music_Route1_Ch1:
-	stereopanning $f
+	stereo_panning FALSE, TRUE
 	tempo 184
 	volume 7, 7
 	vibrato $16, $11
@@ -203,7 +203,7 @@ Music_Route1_branch_ec04a:
 	jumpchannel Music_Route1_branch_ec04a
 
 Music_Route1_Ch2:
-	stereopanning $f0
+	stereo_panning TRUE, FALSE
 	vibrato $12, $22
 	duty_cycle 2
 	note_type 12, 9, 2
@@ -376,7 +376,7 @@ Music_Route1_branch_ec1aa:
 	endchannel
 
 Music_Route1_Ch3:
-	stereopanning $ff
+	stereo_panning TRUE, TRUE
 	vibrato $10, $23
 	note_type 12, 2, 5
 	note __, 2

@@ -15,7 +15,7 @@ Music_Route101RSE_Ch1:
 	volume 7, 7
 	tone $0001
 	vibrato $10, $15
-	stereopanning $f
+	stereo_panning FALSE, TRUE
 	note_type 12, 8, 3
 	note __, 2
 Music_Route101RSE_Ch1_loop:
@@ -347,7 +347,7 @@ Music_Route101RSE_Ch2_branch_2:
 	endchannel
 
 Music_Route101RSE_Ch3:
-	stereopanning $f0
+	stereo_panning TRUE, FALSE
 	note_type 12, 1, 3
 	vibrato $15, $24
 Music_Route101RSE_Ch3_loop:
@@ -475,7 +475,7 @@ Music_Route101RSE_Ch3_branch_2:
 	endchannel
 
 Music_Route101RSE_Ch4:
-	stereopanning $f
+	stereo_panning FALSE, TRUE
 	toggle_noise 0
 	note_type 12
 	note __, 2

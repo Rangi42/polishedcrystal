@@ -11,7 +11,7 @@ Music_BicycleXY:
 BicycleXY_Ch1::
 	tempo 120
 	volume 7, 7
-	stereopanning $ff
+	stereo_panning TRUE, TRUE
 	duty_cycle 1
 	vibrato $10, $22
 	note_type 12, 10, 7
@@ -307,7 +307,7 @@ BicycleXY_Ch2_sub_0:
 	jumpchannel BicycleXY_Ch2_sub_0
 
 BicycleXY_Ch3::
-	stereopanning $ff
+	stereo_panning TRUE, TRUE
 	vibrato $0, $0
 	note_type 12, 1, 6
 

@@ -12,7 +12,7 @@ Music_MewtwoBattleStadium:
 Music_MewtwoBattleStadium_Ch1:
 	tempo $78
 	volume 7, 7
-	stereopanning $77
+	stereo_panning TRUE, TRUE
 	note_type 12, 0, 0
 	note __, 16
 	duty_cycle_pattern 1, 1, 1, 1

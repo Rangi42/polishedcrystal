@@ -205,10 +205,10 @@ MACRO unknownmusic0xee
 	dw \1 ; address
 ENDM
 
-	const stereopanning_cmd
-MACRO stereopanning
-	db stereopanning_cmd
-	db \1 ; tracks
+	const stereo_panning_cmd ; $ef
+MACRO stereo_panning
+	db stereo_panning_cmd
+	dn %1111 * (1 && \1), %1111 * (1 && \2) ; left enable, right enable
 ENDM
 
 	const sfxtogglenoise_cmd

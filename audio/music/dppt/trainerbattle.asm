@@ -11,7 +11,7 @@ Music_TrainerBattleDPPt:
 
 Music_TrainerBattleDPPt_Ch1:
 	volume 7, 7
-	stereopanning $77
+	stereo_panning TRUE, TRUE
 	tempo $69
 	duty_cycle 3
 	tone $0002

@@ -12,12 +12,12 @@ Music_BuenasPassword_Ch1:
 	note_type 12, 11, 3
 	note __, 8
 Music_BuenasPassword_branch_17816b:
-	stereopanning $ff
+	stereo_panning TRUE, TRUE
 	note __, 16
 	note __, 16
 	duty_cycle 3
 	note_type 6, 9, 7
-	stereopanning $f
+	stereo_panning FALSE, TRUE
 	octave 4
 	note G#, 1
 	note __, 1
@@ -27,7 +27,7 @@ Music_BuenasPassword_branch_17816b:
 	note G#, 2
 	note __, 10
 	note __, 10
-	stereopanning $f0
+	stereo_panning TRUE, FALSE
 	note C#, 2
 	note F_, 2
 	note G#, 1
@@ -39,11 +39,11 @@ Music_BuenasPassword_branch_17816b:
 	note __, 12
 	duty_cycle 2
 	callchannel Music_BuenasPassword_branch_178204
-	stereopanning $ff
+	stereo_panning TRUE, TRUE
 	callchannel Music_BuenasPassword_branch_1782df
 	callchannel Music_BuenasPassword_branch_178222
 	callchannel Music_BuenasPassword_branch_178204
-	stereopanning $ff
+	stereo_panning TRUE, TRUE
 	callchannel Music_BuenasPassword_branch_1782df
 	callchannel Music_BuenasPassword_branch_178222
 	callchannel Music_BuenasPassword_branch_178204
@@ -140,7 +140,7 @@ Music_BuenasPassword_branch_17816b:
 	jumpchannel Music_BuenasPassword_branch_17816b
 
 Music_BuenasPassword_branch_178204:
-	stereopanning $f
+	stereo_panning FALSE, TRUE
 	note_type 6, 8, 4
 	octave 4
 	note D#, 2
@@ -187,10 +187,10 @@ Music_BuenasPassword_Ch2:
 	octave 3
 	note F#, 1
 Music_BuenasPassword_branch_17823c:
-	stereopanning $ff
+	stereo_panning TRUE, TRUE
 	callchannel Music_BuenasPassword_branch_1782df
 	callchannel Music_BuenasPassword_branch_1782a4
-	stereopanning $ff
+	stereo_panning TRUE, TRUE
 	callchannel Music_BuenasPassword_branch_1782cc
 	octave 3
 	note B_, 2
@@ -198,7 +198,7 @@ Music_BuenasPassword_branch_17823c:
 	note B_, 2
 	note G#, 16
 	callchannel Music_BuenasPassword_branch_1782a4
-	stereopanning $ff
+	stereo_panning TRUE, TRUE
 	callchannel Music_BuenasPassword_branch_1782cc
 	note B_, 2
 	note A#, 2
@@ -283,7 +283,7 @@ Music_BuenasPassword_branch_1782a4:
 	note __, 1
 	note F#, 1
 	note __, 2
-	stereopanning $f0
+	stereo_panning TRUE, FALSE
 	octave 4
 	note G#, 1
 	note_type 6, 8, 1
@@ -575,18 +575,18 @@ Music_BuenasPassword_branch_1783d9:
 	callchannel Music_BuenasPassword_branch_17840c
 	callchannel Music_BuenasPassword_branch_17840c
 	callchannel Music_BuenasPassword_branch_17840c
-	stereopanning $ff
+	stereo_panning TRUE, TRUE
 	note D#, 2
-	stereopanning $f0
+	stereo_panning TRUE, FALSE
 	note G_, 2
-	stereopanning $ff
+	stereo_panning TRUE, TRUE
 	note D_, 2
-	stereopanning $f
+	stereo_panning FALSE, TRUE
 	note G_, 1
 	note G_, 1
-	stereopanning $f0
+	stereo_panning TRUE, FALSE
 	note G_, 2
-	stereopanning $ff
+	stereo_panning TRUE, TRUE
 	note D_, 2
 	note D_, 2
 	note D_, 1
@@ -594,37 +594,37 @@ Music_BuenasPassword_branch_1783d9:
 	jumpchannel Music_BuenasPassword_branch_1783d9
 
 Music_BuenasPassword_branch_17840c:
-	stereopanning $ff
+	stereo_panning TRUE, TRUE
 	note D#, 2
-	stereopanning $f0
+	stereo_panning TRUE, FALSE
 	note G_, 2
-	stereopanning $ff
+	stereo_panning TRUE, TRUE
 	note D_, 2
-	stereopanning $f
+	stereo_panning FALSE, TRUE
 	note G_, 1
 	note G_, 1
-	stereopanning $f0
+	stereo_panning TRUE, FALSE
 	note G_, 2
-	stereopanning $ff
+	stereo_panning TRUE, TRUE
 	note D#, 2
 	note D_, 2
-	stereopanning $f
+	stereo_panning FALSE, TRUE
 	note G_, 2
 	endchannel
 
 Music_BuenasPassword_branch_178424:
-	stereopanning $ff
+	stereo_panning TRUE, TRUE
 	note D#, 2
-	stereopanning $f0
+	stereo_panning TRUE, FALSE
 	note G_, 2
-	stereopanning $ff
+	stereo_panning TRUE, TRUE
 	note D_, 2
-	stereopanning $f
+	stereo_panning FALSE, TRUE
 	note G_, 1
 	note G_, 1
-	stereopanning $f0
+	stereo_panning TRUE, FALSE
 	note G_, 2
-	stereopanning $ff
+	stereo_panning TRUE, TRUE
 	note D#, 2
 	note D_, 2
 	note D_, 1

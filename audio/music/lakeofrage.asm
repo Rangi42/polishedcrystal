@@ -11,7 +11,7 @@ Music_LakeOfRage_Ch1:
 	duty_cycle 3
 	tone $0002
 	vibrato $8, $22
-	stereopanning $f0
+	stereo_panning TRUE, FALSE
 	note_type 12, 11, 4
 	octave 3
 	note D_, 6
@@ -97,7 +97,7 @@ Music_LakeOfRage_branch_ee6e9:
 Music_LakeOfRage_Ch2:
 	duty_cycle 3
 	vibrato $20, $44
-	stereopanning $ff
+	stereo_panning TRUE, TRUE
 	note_type 12, 9, 0
 	octave 3
 	note G_, 8
@@ -184,7 +184,7 @@ Music_LakeOfRage_branch_ee75e:
 	jumpchannel Music_LakeOfRage_branch_ee75e
 
 Music_LakeOfRage_Ch3:
-	stereopanning $f
+	stereo_panning FALSE, TRUE
 	note_type 12, 1, 6
 	octave 3
 	note G_, 4
@@ -297,7 +297,7 @@ Music_LakeOfRage_branch_ee7d0:
 	jumpchannel Music_LakeOfRage_branch_ee7d0
 
 Music_LakeOfRage_Ch4:
-	stereopanning $f0
+	stereo_panning TRUE, FALSE
 	toggle_noise 3
 	note_type 12
 Music_LakeOfRage_branch_ee83b:

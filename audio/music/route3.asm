@@ -6,7 +6,7 @@ Music_Route3:
 	channel 4, Music_Route3_Ch4
 
 Music_Route3_Ch1:
-	stereopanning $f
+	stereo_panning FALSE, TRUE
 	tempo 160
 	volume 7, 7
 	note_type 12, 9, 1
@@ -236,7 +236,7 @@ Music_Route3_branch_ec3bd:
 	endchannel
 
 Music_Route3_Ch2:
-	stereopanning $f0
+	stereo_panning TRUE, FALSE
 	note_type 12, 5, -6
 	duty_cycle 2
 	vibrato $6, $3
@@ -352,7 +352,7 @@ Music_Route3_branch_ec443:
 	endchannel
 
 Music_Route3_Ch3:
-	stereopanning $ff
+	stereo_panning TRUE, TRUE
 	vibrato $6, $3
 	note_type 12, 1, 3
 	octave 3

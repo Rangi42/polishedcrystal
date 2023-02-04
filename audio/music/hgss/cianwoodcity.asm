@@ -11,7 +11,7 @@ Music_CianwoodCityHGSS:
 Music_CianwoodCityHGSS_Ch1:
 	tempo 197
 	volume 7, 7
-	stereopanning $f
+	stereo_panning FALSE, TRUE
 	vibrato $12, $25
 	duty_cycle 2
 Music_CianwoodCityHGSS_branch_ef2e5:
@@ -44,9 +44,9 @@ Music_CianwoodCityHGSS_branch_ef2e5:
 	note G_, 4
 	note G#, 10
 	note __, 2
-	stereopanning $ff
+	stereo_panning TRUE, TRUE
 	note F_, 8
-	stereopanning $f
+	stereo_panning FALSE, TRUE
 	octave 3
 	note E_, 1
 	note F_, 11
@@ -220,7 +220,7 @@ Music_CianwoodCityHGSS_branch_ef3d0:
 Music_CianwoodCityHGSS_Ch2:
 	vibrato $12, $25
 	duty_cycle 3
-	stereopanning $f0
+	stereo_panning TRUE, FALSE
 Music_CianwoodCityHGSS_branch_ef3f2:
 	note_type 6, 6, 7
 	note __, 16
@@ -280,9 +280,9 @@ Music_CianwoodCityHGSS_branch_ef3f2:
 	note A#, 4
 	note G#, 10
 	note __, 1
-	stereopanning $ff
+	stereo_panning TRUE, TRUE
 	note A_, 9
-	stereopanning $f0
+	stereo_panning TRUE, FALSE
 	duty_cycle 0
 	octave 4
 	note G_, 1
@@ -433,7 +433,7 @@ Music_CianwoodCityHGSS_branch_ef3f2:
 	jumpchannel Music_CianwoodCityHGSS_branch_ef3f2
 
 Music_CianwoodCityHGSS_Ch3:
-	stereopanning $ff
+	stereo_panning TRUE, TRUE
 Music_CianwoodCityHGSS_branch_ef4e3:
 	vibrato $12, $25
 	note_type 12, 2, 5

@@ -8,7 +8,7 @@ Music_ShowMeAround:
 Music_ShowMeAround_Ch1:
 	tempo 144
 	volume 7, 7
-	stereopanning $f
+	stereo_panning FALSE, TRUE
 	duty_cycle 2
 	note_type 12, 11, 1
 	octave 4
@@ -63,7 +63,7 @@ Music_ShowMeAround_branch_edc15:
 	endchannel
 
 Music_ShowMeAround_Ch2:
-	stereopanning $ff
+	stereo_panning TRUE, TRUE
 	duty_cycle 2
 	note_type 12, 11, 1
 	octave 5
@@ -179,7 +179,7 @@ Music_ShowMeAround_branch_edc98:
 	endchannel
 
 Music_ShowMeAround_Ch3:
-	stereopanning $f0
+	stereo_panning TRUE, FALSE
 	vibrato $10, $22
 	note_type 6, 2, 5
 	octave 2

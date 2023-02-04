@@ -12,7 +12,7 @@ Music_DewfordTownRSE:
 Music_DewfordTownRSE_Ch1:
 	tempo 138
 	volume 7, 7
-	stereopanning $f
+	stereo_panning FALSE, TRUE
 Music_DewfordTownRSE_Ch1_b0:
 	vibrato $10, $33
 	duty_cycle 2
@@ -176,7 +176,7 @@ Music_DewfordTownRSE_Ch1_b1:
 	jumpchannel Music_DewfordTownRSE_Ch1_b0
 
 Music_DewfordTownRSE_Ch2:
-	stereopanning $f0
+	stereo_panning TRUE, FALSE
 Music_DewfordTownRSE_Ch2_b0:
 	note_type 12, 5, -7
 	vibrato $10, $00
@@ -463,7 +463,7 @@ Music_DewfordTownRSE_Ch2_b0:
 	jumpchannel Music_DewfordTownRSE_Ch2_b0
 
 Music_DewfordTownRSE_Ch3:
-	stereopanning $ff
+	stereo_panning TRUE, TRUE
 Music_DewfordTownRSE_Ch3_b0:
 	note_type 12, 1, 1
 	octave 5

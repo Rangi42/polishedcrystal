@@ -18,7 +18,7 @@ Music_WildPokemonVictory_Ch1:
 	volume_envelope 11, 6
 	note E_, 12
 Music_SuccessfulCapture_branch_f4536:
-	stereopanning $f
+	stereo_panning FALSE, TRUE
 Music_WildPokemonVictory_branch_f4538:
 	callchannel Music_WildPokemonVictory_branch_f455c
 	note F#, 2
@@ -80,7 +80,7 @@ Music_WildPokemonVictory_Ch2:
 	volume_envelope 13, 6
 	note B_, 12
 Music_SuccessfulCapture_branch_f4585:
-	stereopanning $f0
+	stereo_panning TRUE, FALSE
 Music_WildPokemonVictory_branch_f4587:
 	callchannel Music_WildPokemonVictory_branch_f45b5
 	octave 4

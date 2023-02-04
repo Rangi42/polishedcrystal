@@ -8,7 +8,7 @@ Music_Gym:
 Music_Gym_Ch1:
 	tempo 156
 	volume 7, 7
-	stereopanning $f
+	stereo_panning FALSE, TRUE
 	vibrato $12, $24
 	duty_cycle 1
 	note_type 12, 11, 7
@@ -192,7 +192,7 @@ Music_Gym_branch_f48c9:
 
 Music_Gym_Ch2:
 	duty_cycle 1
-	stereopanning $f0
+	stereo_panning TRUE, FALSE
 Music_Gym_branch_f4980:
 	note_type 12, 12, 3
 	octave 2
@@ -370,7 +370,7 @@ Music_Gym_branch_f4a15:
 
 Music_Gym_Ch3:
 	vibrato $14, $23
-	stereopanning $ff
+	stereo_panning TRUE, TRUE
 Music_Gym_branch_f4a3c:
 	note_type 12, 1, 4
 	octave 6

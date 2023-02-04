@@ -12,7 +12,7 @@ Music_GymLeaderBattleDPPt:
 Music_GymLeaderBattleDPPt_Ch1:
 	tempo $6A
 	volume 7, 7
-	stereopanning $77
+	stereo_panning TRUE, TRUE
 	duty_cycle 1
 	tone $0002
 	vibrato $08, $15

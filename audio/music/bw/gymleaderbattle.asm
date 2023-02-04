@@ -145,7 +145,7 @@ GymLeaderBattleBW_Channel1:
 	note D_, 2
 	note __, 2
 GymLeaderBattleBWChannel1_Loop:
-	stereopanning $F0
+	stereo_panning TRUE, FALSE
 	duty_cycle 1
 	note C_, 12
 	octave 4
@@ -182,7 +182,7 @@ GymLeaderBattleBWChannel1_Loop:
 	note E_, 16
 	note_type 12, 10, 7
 	note E_, 16
-	stereopanning $FF
+	stereo_panning TRUE, TRUE
 	note_type 12, 8, 7
 	octave 4
 	note D_, 12
@@ -212,7 +212,7 @@ GymLeaderBattleBWChannel1_Loop:
 	note D#, 1
 	note D_, 3
 	octave 4
-	stereopanning $0F
+	stereo_panning FALSE, TRUE
 	note_type 12, 10, 7
 	note C_, 4
 	octave 3
@@ -253,7 +253,7 @@ GymLeaderBattleBWChannel1_Loop:
 	note E_, 16
 	note_type 12, 10, 7
 	note E_, 16
-	stereopanning $FF
+	stereo_panning TRUE, TRUE
 	note_type 12, 8, 7
 	note A_, 12
 	note E_, 12
@@ -289,7 +289,7 @@ GymLeaderBattleBWChannel1_Loop:
 	note E_, 16
 	note_type 12, 8, 7
 	note E_, 8
-	stereopanning $F0
+	stereo_panning TRUE, FALSE
 	note_type 12, 10, 7
 	note C#, 2
 	note D_, 2
@@ -353,7 +353,7 @@ GymLeaderBattleBWChannel1_Loop:
 	note E_, 16
 	note_type 12, 10, 7
 	note E_, 8
-	stereopanning $FF
+	stereo_panning TRUE, TRUE
 	note_type 12, 8, 7
 	note __, 16
 	note __, 16
@@ -414,7 +414,7 @@ GymLeaderBattleBWChannel1_Loop:
 	note __, 2
 	note F_, 4
 	note E_, 12
-	stereopanning $F0
+	stereo_panning TRUE, FALSE
 	note A#, 12
 	octave 4
 	note F_, 12
@@ -451,7 +451,7 @@ GymLeaderBattleBWChannel1_Loop:
 	octave 4
 	note D_, 2
 	note __, 2
-	stereopanning $FF
+	stereo_panning TRUE, TRUE
 	octave 3
 	note C_, 2
 	note __, 2
@@ -771,7 +771,7 @@ GymLeaderBattleBW_Channel2:
 	note __, 16
 	note __, 16
 GymLeaderBattleBWChannel2_Loop:
-	stereopanning $FF
+	stereo_panning TRUE, TRUE
 	octave 3
 	note C_, 12
 	octave 2
@@ -808,7 +808,7 @@ GymLeaderBattleBWChannel2_Loop:
 	note E_, 16
 	note_type 12, 9, 7
 	note E_, 16
-	stereopanning $0F
+	stereo_panning FALSE, TRUE
 	note_type 12, 10, 7
 	octave 4
 	note D_, 12
@@ -833,7 +833,7 @@ GymLeaderBattleBWChannel2_Loop:
 	note __, 4
 	note B_, 1
 	note A#, 3
-	stereopanning $FF
+	stereo_panning TRUE, TRUE
 	note_type 12, 9, 7
 	note C_, 4
 	octave 2
@@ -874,7 +874,7 @@ GymLeaderBattleBWChannel2_Loop:
 	note E_, 16
 	note_type 12, 9, 7
 	note E_, 16
-	stereopanning $F0
+	stereo_panning TRUE, FALSE
 	note_type 12, 10, 7
 	note A_, 12
 	note E_, 12
@@ -916,7 +916,7 @@ GymLeaderBattleBWChannel2_Loop:
 	note A_, 16
 	note_type 12, 10, 7
 	note A_, 6
-	stereopanning $FF
+	stereo_panning TRUE, TRUE
 	note_type 12, 9, 7
 	note __, 2
 	note A_, 2
@@ -982,7 +982,7 @@ GymLeaderBattleBWChannel2_Loop:
 	note E_, 16
 	note_type 12, 9, 7
 	note E_, 8
-	stereopanning $FF
+	stereo_panning TRUE, TRUE
 	note_type 12, 9, 8
 	note G_, 16
 	note_type 12, 9, 7
@@ -1019,7 +1019,7 @@ GymLeaderBattleBWChannel2_Loop:
 	note C_, 8
 	duty_cycle 1
 	octave 3
-	stereopanning $0F
+	stereo_panning FALSE, TRUE
 	note A#, 12
 	octave 4
 	note F_, 12
@@ -1054,7 +1054,7 @@ GymLeaderBattleBWChannel2_Loop:
 	octave 5
 	note D_, 4
 	note_type 12, 9, 8
-	stereopanning $FF
+	stereo_panning TRUE, TRUE
 	note C_, 16
 	note_type 12, 9, 7
 	note C_, 16

@@ -699,7 +699,7 @@ Music_GymLeaderBattleRSE_Ch2_branch_3:
 	endchannel
 
 Music_GymLeaderBattleRSE_Ch3:
-	stereopanning $ff
+	stereo_panning TRUE, TRUE
 	note_type 12, 1, -1
 	octave 3
 	note C_, 4

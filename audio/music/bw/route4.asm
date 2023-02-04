@@ -292,7 +292,7 @@ Music_Route4BW_Ch2:
 	jumpchannel Music_Route4BW_Ch2
 
 Music_Route4BW_Ch3:
-	stereopanning $f0
+	stereo_panning TRUE, FALSE
 	note_type 6, 1, 4
 	octave 2
 	note B_, 3
@@ -530,7 +530,7 @@ Music_Route4BW_Ch3_branch_1:
 	endchannel
 
 Music_Route4BW_Ch4:
-	stereopanning $f
+	stereo_panning FALSE, TRUE
 	toggle_noise 0
 Music_Route4BW_Ch4_branch_1:
 	note_type 12

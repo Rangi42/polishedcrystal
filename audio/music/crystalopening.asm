@@ -11,7 +11,7 @@ Music_CrystalOpening_Ch1:
 	tone $0002
 	vibrato $10, $34
 	duty_cycle 3
-	stereopanning $f0
+	stereo_panning TRUE, FALSE
 	note_type 12, 9, 2
 	octave 2
 	note F#, 2
@@ -242,7 +242,7 @@ Music_CrystalOpening_Ch3:
 	endchannel
 
 Music_CrystalOpening_Ch4:
-	stereopanning $f
+	stereo_panning FALSE, TRUE
 	toggle_noise 3
 	note_type 12
 	note __, 16

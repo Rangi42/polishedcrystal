@@ -5,7 +5,7 @@ Music_VermilionCity:
 	channel 3, Music_VermilionCity_Ch3
 
 Music_VermilionCity_Ch1:
-	stereopanning $f
+	stereo_panning FALSE, TRUE
 	tempo 176
 	volume 7, 7
 	duty_cycle 2
@@ -137,7 +137,7 @@ Music_VermilionCity_branch_eb70c:
 	endchannel
 
 Music_VermilionCity_Ch2:
-	stereopanning $ff
+	stereo_panning TRUE, TRUE
 	duty_cycle 3
 	note_type 12, 7, 7
 	vibrato $10, $23
@@ -220,7 +220,7 @@ Music_VermilionCity_branch_eb77e:
 	endchannel
 
 Music_VermilionCity_Ch3:
-	stereopanning $f0
+	stereo_panning TRUE, FALSE
 	vibrato $22, $23
 	note_type 12, 2, 5
 	octave 2

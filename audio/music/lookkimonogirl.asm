@@ -7,7 +7,7 @@ Music_LookKimonoGirl:
 Music_LookKimonoGirl_Ch1:
 	tempo 160
 	volume 7, 7
-	stereopanning $f
+	stereo_panning FALSE, TRUE
 	duty_cycle 1
 	note_type 6, 8, 7
 	tone $0001
@@ -105,7 +105,7 @@ Music_LookKimonoGirl_branch_f7a34:
 Music_LookKimonoGirl_Ch2:
 	duty_cycle 0
 	note_type 6, 10, 7
-	stereopanning $f0
+	stereo_panning TRUE, FALSE
 	callchannel Music_LookKimonoGirl_branch_f7aa8
 Music_LookKimonoGirl_branch_f7a5f:
 	duty_cycle 3
@@ -210,7 +210,7 @@ Music_LookKimonoGirl_branch_f7aa8:
 	endchannel
 
 Music_LookKimonoGirl_Ch3:
-	stereopanning $ff
+	stereo_panning TRUE, TRUE
 	vibrato $12, $24
 	note_type 6, 1, 3
 	note __, 1

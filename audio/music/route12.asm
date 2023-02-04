@@ -10,7 +10,7 @@ Music_Route12_Ch1:
 	volume 7, 7
 	vibrato $12, $34
 	tone $0001
-	stereopanning $f
+	stereo_panning FALSE, TRUE
 	duty_cycle 3
 	note_type 12, 9, 8
 	octave 3
@@ -391,7 +391,7 @@ Music_Route12_branch_ec6b4:
 
 Music_Route12_Ch4:
 	toggle_noise 4
-	stereopanning $f0
+	stereo_panning TRUE, FALSE
 	note_type 12
 	note B_, 10
 	note C#, 1

@@ -11,7 +11,7 @@ Music_Route225DPPt:
 
 Music_Route225DPPt_Ch1:
 	volume 7, 7
-	stereopanning $77
+	stereo_panning TRUE, TRUE
 	tempo $88
 Music_Route225DPPt_Ch1_loop:
 	tone $0002

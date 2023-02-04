@@ -8,7 +8,7 @@ Music_PokemonMarch:
 Music_PokemonMarch_Ch1:
 	tempo 144
 	volume 7, 7
-	stereopanning $f0
+	stereo_panning TRUE, FALSE
 	duty_cycle 3
 	tone $0001
 	note_type 12, 4, 2
@@ -233,7 +233,7 @@ Music_PokemonMarch_branch_f6ece:
 	jumpchannel Music_PokemonMarch_branch_f6ece
 
 Music_PokemonMarch_Ch3:
-	stereopanning $f
+	stereo_panning FALSE, TRUE
 	note_type 12, 1, 6
 	note __, 16
 	note_type 8, 1, 6
@@ -395,7 +395,7 @@ Music_PokemonMarch_branch_f6fe8:
 	endchannel
 
 Music_PokemonMarch_Ch4:
-	stereopanning $f0
+	stereo_panning TRUE, FALSE
 	toggle_noise 5
 	note_type 8
 	callchannel Music_PokemonMarch_branch_f704c

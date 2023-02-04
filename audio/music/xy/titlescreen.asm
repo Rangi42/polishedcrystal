@@ -12,7 +12,7 @@ Music_TitleScreenXY:
 Music_TitleScreenXY_Ch1:
 	tempo 125
 	volume 7, 7
-	stereopanning $f
+	stereo_panning FALSE, TRUE
 	vibrato $10, $33
 	pitch_sweep 0, 0
 Music_TitleScreenXY_Ch1_b0:
@@ -283,7 +283,7 @@ Music_TitleScreenXY_Ch1_b5:
 
 Music_TitleScreenXY_Ch2:
 	vibrato $10, $33
-	stereopanning $f0
+	stereo_panning TRUE, FALSE
 	duty_cycle 1
 Music_TitleScreenXY_Ch2_b0:
 	note_type 8, 9, 7
@@ -532,7 +532,7 @@ Music_TitleScreenXY_Ch2_b4:
 	jumpchannel Music_TitleScreenXY_Ch2_b0
 
 Music_TitleScreenXY_Ch3:
-	stereopanning $ff
+	stereo_panning TRUE, TRUE
 Music_TitleScreenXY_Ch3_b0:
 	note_type 8, 1, 2
 	note __, 12

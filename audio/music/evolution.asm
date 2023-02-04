@@ -23,7 +23,7 @@ Music_Evolution_Ch1:
 	note G_, 1
 	note __, 4
 	duty_cycle 3
-	stereopanning $f
+	stereo_panning FALSE, TRUE
 Music_Evolution_branch_f0713:
 	callchannel Music_Evolution_branch_f0737
 	note_type 12, 10, 4
@@ -75,7 +75,7 @@ Music_Evolution_Ch2:
 	note D_, 1
 	note __, 4
 	duty_cycle 3
-	stereopanning $f0
+	stereo_panning TRUE, FALSE
 Music_Evolution_branch_f0761:
 	callchannel Music_Evolution_branch_f0787
 	note_type 12, 11, 5
@@ -190,10 +190,10 @@ Music_Evolution_Ch4:
 	note_type 12
 	note __, 8
 Music_Evolution_branch_f07f0:
-	stereopanning $f0
+	stereo_panning TRUE, FALSE
 	note A#, 6
 	note A#, 4
-	stereopanning $f
+	stereo_panning FALSE, TRUE
 	note E_, 2
 	note E_, 2
 	note E_, 2

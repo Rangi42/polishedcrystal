@@ -213,7 +213,7 @@ Music_RoadToReversalMountainB2W2_Ch3_branch_1:
 	endchannel
 
 Music_RoadToReversalMountainB2W2_Ch4:
-	stereopanning $f
+	stereo_panning FALSE, TRUE
 	toggle_noise 3
 	note_type 12
 Music_RoadToReversalMountainB2W2_Ch4_loop:

@@ -14,7 +14,7 @@ Music_GameCornerDPPt_Ch1:
 	note_type 12, 10, 2
 	duty_cycle 2
 	tone $0001
-	stereopanning $f
+	stereo_panning FALSE, TRUE
 	octave 4
 	note __, 16
 	note __, 16
@@ -618,7 +618,7 @@ Music_GameCornerDPPt_Ch2:
 	note_type 12, 12, 7
 	duty_cycle 0
 	tone $0002
-	stereopanning $ff
+	stereo_panning TRUE, TRUE
 	octave 1
 	note A_, 2
 	octave 2
@@ -949,7 +949,7 @@ Music_GameCornerDPPt_Ch2_loop:
 	octave 2
 	note A#, 2
 
-	stereopanning $f0
+	stereo_panning TRUE, FALSE
 	octave 1
 	note D#, 2
 	note D#, 2
@@ -961,10 +961,10 @@ Music_GameCornerDPPt_Ch2_loop:
 	note B_, 1
 	note A#, 7
 	note D#, 4
-	stereopanning $f
+	stereo_panning FALSE, TRUE
 	octave 5
 	note D#, 12
-	stereopanning $ff
+	stereo_panning TRUE, TRUE
 	octave 2
 	note E_, 4
 	note F#, 4
@@ -991,7 +991,7 @@ Music_GameCornerDPPt_Ch2_loop:
 
 	note_type 6, 9, 4
 	duty_cycle 2
-	stereopanning $f0
+	stereo_panning TRUE, FALSE
 	octave 5
 	note C#, 1
 	octave 6
@@ -1000,7 +1000,7 @@ Music_GameCornerDPPt_Ch2_loop:
 	note A#, 1
 	octave 5
 	note A#, 1
-	stereopanning $f
+	stereo_panning FALSE, TRUE
 	note A#, 1
 	octave 6
 	note A#, 1
@@ -1008,7 +1008,7 @@ Music_GameCornerDPPt_Ch2_loop:
 	note F#, 1
 	octave 6
 	note F#, 1
-	stereopanning $f0
+	stereo_panning TRUE, FALSE
 	octave 4
 	note A#, 1
 	octave 5
@@ -1016,7 +1016,7 @@ Music_GameCornerDPPt_Ch2_loop:
 	note A#, 1
 	octave 6
 	note A#, 1
-	stereopanning $f
+	stereo_panning FALSE, TRUE
 	octave 5
 	note F#, 1
 	octave 6
@@ -1025,7 +1025,7 @@ Music_GameCornerDPPt_Ch2_loop:
 	note C#, 1
 	octave 6
 	note C#, 1
-	stereopanning $f0
+	stereo_panning TRUE, FALSE
 	octave 4
 	note A#, 1
 	octave 5
@@ -1034,7 +1034,7 @@ Music_GameCornerDPPt_Ch2_loop:
 	note F#, 1
 	octave 5
 	note F#, 1
-	stereopanning $f
+	stereo_panning FALSE, TRUE
 	octave 4
 	note C#, 1
 	octave 5
@@ -1043,7 +1043,7 @@ Music_GameCornerDPPt_Ch2_loop:
 	note A#, 1
 	octave 4
 	note A#, 1
-	stereopanning $f0
+	stereo_panning TRUE, FALSE
 	octave 3
 	note G#, 1
 	note F#, 1
@@ -1056,7 +1056,7 @@ Music_GameCornerDPPt_Ch2_loop:
 	note G#, 1
 	duty_cycle 0
 	note_type 6, 12, 4
-	stereopanning $ff
+	stereo_panning TRUE, TRUE
 	note __, 4
 	note G#, 4
 	note A#, 4
@@ -1285,7 +1285,7 @@ Music_GameCornerDPPt_Ch2_loop:
 	jumpchannel Music_GameCornerDPPt_Ch2_loop
 
 Music_GameCornerDPPt_Ch3:
-	stereopanning $f0
+	stereo_panning TRUE, FALSE
 	note_type 12, 1, 5
 	octave 4
 	note __, 16
@@ -2195,23 +2195,23 @@ Music_GameCornerDPPt_Ch3_loop:
 Music_GameCornerDPPt_Ch4:
 	toggle_noise 3
 	note_type 12
-	stereopanning $f0
+	stereo_panning TRUE, FALSE
 	note __, 16
 	note __, 16
 	note C_, 8
-	stereopanning $f
+	stereo_panning FALSE, TRUE
 	note C_, 8
-	stereopanning $f0
+	stereo_panning TRUE, FALSE
 	note C_, 4
-	stereopanning $f
+	stereo_panning FALSE, TRUE
 	note C_, 4
-	stereopanning $ff
+	stereo_panning TRUE, TRUE
 	note C_, 1
 	note C_, 2
 	note C_, 1
 	note C_, 2
 	note C_, 2
-	stereopanning $ff
+	stereo_panning TRUE, TRUE
 	note C#, 4
 	note C#, 4
 	note C#, 4
@@ -2228,21 +2228,21 @@ Music_GameCornerDPPt_Ch4:
 	note C#, 4
 	note C#, 4
 	note C#, 4
-	stereopanning $f
+	stereo_panning FALSE, TRUE
 	note B_, 2
-	stereopanning $f0
+	stereo_panning TRUE, FALSE
 	note B_, 16
 	note __, 2
 Music_GameCornerDPPt_Ch4_loop:
 	note_type 12
-	stereopanning $f
+	stereo_panning FALSE, TRUE
 	note B_, 14
-	stereopanning $f0
+	stereo_panning TRUE, FALSE
 	note B_, 2
 	note B_, 8
-	stereopanning $f
+	stereo_panning FALSE, TRUE
 	note B_, 8
-	stereopanning $ff
+	stereo_panning TRUE, TRUE
 	note C#, 1
 	note C#, 1
 	note C#, 1
@@ -2423,19 +2423,19 @@ Music_GameCornerDPPt_Ch4_loop:
 	note A#, 8
 	note A#, 4
 	note A#, 4
-	stereopanning $f0
+	stereo_panning TRUE, FALSE
 	note B_, 16
 	note __, 16
 	note __, 16
 	note __, 16
 	note A#, 16
-	stereopanning $f
+	stereo_panning FALSE, TRUE
 	note A#, 16
-	stereopanning $f0
+	stereo_panning TRUE, FALSE
 	note A#, 8
-	stereopanning $f
+	stereo_panning FALSE, TRUE
 	note A#, 8
-	stereopanning $ff
+	stereo_panning TRUE, TRUE
 	note A#, 2
 	note A#, 4
 	note A#, 2

@@ -10,7 +10,7 @@ Music_DragonsDen_Ch1:
 	volume 7, 7
 	duty_cycle 0
 	tone $0004
-	stereopanning $f0
+	stereo_panning TRUE, FALSE
 	note_type 12, 8, 0
 Music_DragonsDen_branch_eed03:
 	callchannel Music_DragonsDen_branch_eed1e
@@ -62,7 +62,7 @@ Music_DragonsDen_branch_eed2d:
 Music_DragonsDen_Ch2:
 	duty_cycle 0
 	tone $0004
-	stereopanning $f
+	stereo_panning FALSE, TRUE
 	note_type 12, 9, 0
 Music_DragonsDen_branch_eed46:
 	callchannel Music_DragonsDen_branch_eed5e
@@ -162,11 +162,11 @@ Music_DragonsDen_Ch4:
 	note __, 16
 	note __, 16
 Music_DragonsDen_branch_eedbd:
-	stereopanning $f0
+	stereo_panning TRUE, FALSE
 	note F_, 4
-	stereopanning $f
+	stereo_panning FALSE, TRUE
 	note F#, 4
 	note F#, 4
-	stereopanning $f0
+	stereo_panning TRUE, FALSE
 	note F#, 4
 	jumpchannel Music_DragonsDen_branch_eedbd

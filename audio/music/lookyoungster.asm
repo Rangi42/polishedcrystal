@@ -7,7 +7,7 @@ Music_LookYoungster:
 Music_LookYoungster_Ch1:
 	tempo 118
 	volume 7, 7
-	stereopanning $f
+	stereo_panning FALSE, TRUE
 	duty_cycle 3
 	note_type 12, 10, 3
 	octave 3
@@ -61,7 +61,7 @@ Music_LookYoungster_branch_f66ea:
 	jumpchannel Music_LookYoungster_branch_f66ea
 
 Music_LookYoungster_Ch2:
-	stereopanning $f0
+	stereo_panning TRUE, FALSE
 	vibrato $12, $26
 	duty_cycle 1
 	note_type 12, 10, 3
@@ -157,7 +157,7 @@ Music_LookYoungster_branch_f672f:
 	jumpchannel Music_LookYoungster_branch_f672f
 
 Music_LookYoungster_Ch3:
-	stereopanning $ff
+	stereo_panning TRUE, TRUE
 	vibrato $2, $24
 	note_type 12, 2, 5
 	note __, 4

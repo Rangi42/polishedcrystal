@@ -11,7 +11,7 @@ Music_UnionCave_Ch1:
 	duty_cycle 1
 	tone $0002
 	vibrato $18, $34
-	stereopanning $f
+	stereo_panning FALSE, TRUE
 Music_UnionCave_branch_f5c7b:
 	note_type 12, 11, 3
 Music_UnionCave_branch_f5c7e:
@@ -176,7 +176,7 @@ Music_UnionCave_branch_f5d52:
 
 Music_UnionCave_Ch3:
 	note_type 12, 1, 6
-	stereopanning $f0
+	stereo_panning TRUE, FALSE
 Music_UnionCave_branch_f5d5d:
 	note __, 16
 	loopchannel 7, Music_UnionCave_branch_f5d5d
@@ -241,18 +241,18 @@ Music_UnionCave_Ch4:
 	toggle_noise 1
 	note_type 12
 Music_UnionCave_branch_f5da9:
-	stereopanning $f0
+	stereo_panning TRUE, FALSE
 	note E_, 4
-	stereopanning $ff
+	stereo_panning TRUE, TRUE
 	note F_, 4
-	stereopanning $f
+	stereo_panning FALSE, TRUE
 	note G#, 4
 	note __, 8
-	stereopanning $f
+	stereo_panning FALSE, TRUE
 	note E_, 4
-	stereopanning $ff
+	stereo_panning TRUE, TRUE
 	note F_, 4
-	stereopanning $f0
+	stereo_panning TRUE, FALSE
 	note G#, 4
 	note __, 8
 	jumpchannel Music_UnionCave_branch_f5da9

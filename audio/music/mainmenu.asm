@@ -11,7 +11,7 @@ Music_MainMenu_Ch1:
 	duty_cycle 3
 	tone $0001
 	vibrato $10, $15
-	stereopanning $f0
+	stereo_panning TRUE, FALSE
 	note_type 12, 0, -7
 	octave 3
 	note D_, 8
@@ -44,7 +44,7 @@ Music_MainMenu_branch_f791d:
 
 Music_MainMenu_Ch2:
 	duty_cycle 3
-	stereopanning $f
+	stereo_panning FALSE, TRUE
 	note_type 12, 0, -7
 	octave 3
 	note G_, 8
@@ -73,7 +73,7 @@ Music_MainMenu_branch_f7949:
 	jumpchannel Music_MainMenu_branch_f7949
 
 Music_MainMenu_Ch3:
-	stereopanning $f0
+	stereo_panning TRUE, FALSE
 	note_type 12, 2, 5
 	note __, 8
 Music_MainMenu_branch_f796f:
@@ -112,7 +112,7 @@ Music_MainMenu_branch_f796f:
 	jumpchannel Music_MainMenu_branch_f796f
 
 Music_MainMenu_Ch4:
-	stereopanning $f
+	stereo_panning FALSE, TRUE
 	toggle_noise 3
 	note_type 12
 	note __, 8

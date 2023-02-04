@@ -7,7 +7,7 @@ Music_Mom:
 Music_Mom_Ch2:
 	tempo 144
 	volume 7, 7
-	stereopanning $f
+	stereo_panning FALSE, TRUE
 	duty_cycle 2
 	note_type 6, 11, 3
 	octave 3
@@ -33,7 +33,7 @@ Music_Mom_branch_f6c0e:
 	jumpchannel Music_Mom_branch_f6c0e
 
 Music_Mom_Ch3:
-	stereopanning $f0
+	stereo_panning TRUE, FALSE
 	note_type 6, 2, 5
 	octave 3
 	note E_, 1

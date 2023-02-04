@@ -10,7 +10,7 @@ Music_BattleTowerTheme_Ch1:
 	volume 7, 7
 	tone $0001
 	vibrato $12, $34
-	stereopanning $f
+	stereo_panning FALSE, TRUE
 	note_type 6, 9, 4
 Music_BattleTowerTheme_branch_1788a5:
 	note __, 16
@@ -285,7 +285,7 @@ Music_BattleTowerTheme_branch_178970:
 	note G_, 1
 	note F_, 1
 	note E_, 8
-	stereopanning $f0
+	stereo_panning TRUE, FALSE
 	duty_cycle 2
 	note F_, 6
 	note A_, 1
@@ -336,7 +336,7 @@ Music_BattleTowerTheme_branch_178970:
 	note __, 1
 	note G_, 4
 	note __, 4
-	stereopanning $ff
+	stereo_panning TRUE, TRUE
 	duty_cycle 3
 	octave 3
 	note C_, 2
@@ -361,7 +361,7 @@ Music_BattleTowerTheme_Ch3:
 	vibrato $12, $34
 	note_type 6, 1, 6
 Music_BattleTowerTheme_branch_178a26:
-	stereopanning $ff
+	stereo_panning TRUE, TRUE
 	callchannel Music_BattleTowerTheme_branch_178afe
 	note C_, 2
 	note __, 2
@@ -375,7 +375,7 @@ Music_BattleTowerTheme_branch_178a26:
 	note __, 1
 	note F_, 4
 	note __, 4
-	stereopanning $f0
+	stereo_panning TRUE, FALSE
 	note C_, 8
 	callchannel Music_BattleTowerTheme_branch_178afe
 	note C_, 2
@@ -469,7 +469,7 @@ Music_BattleTowerTheme_branch_178a26:
 	note F_, 2
 	note G_, 4
 	note __, 4
-	stereopanning $ff
+	stereo_panning TRUE, TRUE
 	note G_, 2
 	octave 3
 	note C_, 2

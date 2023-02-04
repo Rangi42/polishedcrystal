@@ -1167,7 +1167,7 @@ Music_ChampionBattleB2W2_Ch2_branch_6:
 	endchannel
 
 Music_ChampionBattleB2W2_Ch3:
-	stereopanning $ff
+	stereo_panning TRUE, TRUE
 	note_type 6, 1, -1
 	octave 1
 	note D_, 1

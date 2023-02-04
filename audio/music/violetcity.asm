@@ -12,12 +12,12 @@ Music_VioletCity_Ch1:
 	duty_cycle 2
 	note_type 12, 9, 5
 	note __, 16
-	stereopanning $f0
+	stereo_panning TRUE, FALSE
 	octave 2
 	note E_, 1
 	note G#, 1
 	note B_, 1
-	stereopanning $ff
+	stereo_panning TRUE, TRUE
 	octave 3
 	note D#, 1
 	note G#, 1
@@ -26,12 +26,12 @@ Music_VioletCity_Ch1:
 	note G#, 2
 	note F#, 2
 	note C#, 2
-	stereopanning $f
+	stereo_panning FALSE, TRUE
 	octave 2
 	note D#, 1
 	note F#, 1
 	note A#, 1
-	stereopanning $ff
+	stereo_panning TRUE, TRUE
 	octave 3
 	note C#, 1
 	note F#, 1
@@ -83,7 +83,7 @@ Music_VioletCity_branch_f0056:
 	note __, 2
 	note B_, 2
 	note __, 2
-	stereopanning $f0
+	stereo_panning TRUE, FALSE
 	octave 4
 	note C#, 2
 	octave 3
@@ -91,21 +91,21 @@ Music_VioletCity_branch_f0056:
 	note E_, 2
 	octave 4
 	note C#, 2
-	stereopanning $ff
+	stereo_panning TRUE, TRUE
 	note C_, 2
 	octave 3
 	note G#, 2
 	note E_, 2
 	octave 4
 	note C_, 2
-	stereopanning $f
+	stereo_panning FALSE, TRUE
 	octave 3
 	note B_, 2
 	note __, 2
 	note B_, 2
 	note __, 2
 	note A#, 8
-	stereopanning $ff
+	stereo_panning TRUE, TRUE
 	note __, 4
 	note C#, 2
 	note E_, 2
@@ -122,11 +122,11 @@ Music_VioletCity_branch_f0056:
 	note __, 2
 	note C#, 2
 	note __, 2
-	stereopanning $f
+	stereo_panning FALSE, TRUE
 	note D#, 8
-	stereopanning $ff
+	stereo_panning TRUE, TRUE
 	note E_, 8
-	stereopanning $f0
+	stereo_panning TRUE, FALSE
 	note F_, 2
 	note __, 2
 	note F_, 2
@@ -134,7 +134,7 @@ Music_VioletCity_branch_f0056:
 	note F#, 2
 	note __, 2
 	note G_, 4
-	stereopanning $ff
+	stereo_panning TRUE, TRUE
 	note G#, 2
 	note D#, 1
 	note __, 1
@@ -168,7 +168,7 @@ Music_VioletCity_branch_f0056:
 	duty_cycle 2
 	note __, 16
 	note_type 6, 9, 1
-	stereopanning $f0
+	stereo_panning TRUE, FALSE
 	octave 3
 	note E_, 2
 	octave 2
@@ -176,7 +176,7 @@ Music_VioletCity_branch_f0056:
 	note G#, 2
 	octave 3
 	note E_, 2
-	stereopanning $f
+	stereo_panning FALSE, TRUE
 	octave 2
 	note B_, 2
 	note G#, 2
@@ -184,7 +184,7 @@ Music_VioletCity_branch_f0056:
 	octave 3
 	note E_, 2
 	volume_envelope 10, 4
-	stereopanning $ff
+	stereo_panning TRUE, TRUE
 	note D#, 8
 	note __, 8
 	duty_cycle 3

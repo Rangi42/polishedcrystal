@@ -6,7 +6,7 @@ Music_GoldenrodCity:
 	channel 4, Music_GoldenrodCity_Ch4
 
 Music_GoldenrodCity_Ch1:
-	stereopanning $f
+	stereo_panning FALSE, TRUE
 	tempo 176
 	volume 7, 7
 	note_type 12, 9, 7
@@ -174,7 +174,7 @@ Music_GoldenrodCity_branch_eb4d1:
 	endchannel
 
 Music_GoldenrodCity_Ch2:
-	stereopanning $f0
+	stereo_panning TRUE, FALSE
 	vibrato $12, $23
 	duty_cycle 2
 	note_type 12, 9, 7
@@ -265,7 +265,7 @@ Music_GoldenrodCity_branch_eb572:
 	endchannel
 
 Music_GoldenrodCity_Ch3:
-	stereopanning $ff
+	stereo_panning TRUE, TRUE
 	vibrato $8, $23
 	note_type 12, 2, 5
 Music_GoldenrodCity_branch_eb58c:

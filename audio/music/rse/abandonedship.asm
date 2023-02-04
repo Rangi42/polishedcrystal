@@ -448,7 +448,7 @@ Music_AbandonedShipRSE_Ch2_branch_1:
 	endchannel
 
 Music_AbandonedShipRSE_Ch3:
-	stereopanning $f0
+	stereo_panning TRUE, FALSE
 	note_type 12, 1, 4
 	note __, 6
 Music_AbandonedShipRSE_Ch3_loop:
@@ -598,7 +598,7 @@ Music_AbandonedShipRSE_Ch3_loop:
 	jumpchannel Music_AbandonedShipRSE_Ch3_loop
 
 Music_AbandonedShipRSE_Ch4:
-	stereopanning $f
+	stereo_panning FALSE, TRUE
 	toggle_noise 3
 	note_type 6
 	note C#, 1

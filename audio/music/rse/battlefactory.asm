@@ -13,7 +13,7 @@ Music_BattleFactoryRSE:
 Music_BattleFactoryRSE_Ch1:
 	tempo 132
 	volume 7, 7
-	stereopanning $ff
+	stereo_panning TRUE, TRUE
 	note_type 12, 4, 7
 	note __, 12
 	note __, 16
@@ -452,7 +452,7 @@ Music_BattleFactoryRSE_Ch1_loop:
 	jumpchannel Music_BattleFactoryRSE_Ch1_loop
 
 Music_BattleFactoryRSE_Ch2:
-	stereopanning $ff
+	stereo_panning TRUE, TRUE
 	note_type 12, 9, 0
 	note __, 12
 Music_BattleFactoryRSE_Ch2_loop:
@@ -1016,7 +1016,7 @@ Music_BattleFactoryRSE_Ch2_branch_1:
 
 Music_BattleFactoryRSE_Ch3:
 	vibrato $14, $23
-	stereopanning $ff
+	stereo_panning TRUE, TRUE
 	note_type 6, 2, 5
 	octave 2
 	note E_, 2

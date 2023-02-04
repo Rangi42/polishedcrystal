@@ -10,7 +10,7 @@ Music_LakeOfRageRocketRadio_Ch1:
 	duty_cycle 1
 	tone $1118
 	vibrato $0, $f0
-	stereopanning $f0
+	stereo_panning TRUE, FALSE
 Music_LakeOfRageRocketRadio_branch_ef5c9:
 	note_type 12, 10, 7
 	octave 7
@@ -26,7 +26,7 @@ Music_LakeOfRageRocketRadio_Ch2:
 	vibrato $13, $e8
 	note_type 12, 10, 7
 	note __, 2
-	stereopanning $f
+	stereo_panning FALSE, TRUE
 	jumpchannel Music_LakeOfRageRocketRadio_branch_ef5c9
 
 Music_LakeOfRageRocketRadio_Ch3:

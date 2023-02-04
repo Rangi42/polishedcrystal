@@ -7,7 +7,7 @@ Music_ProfOaksPokemonTalk:
 Music_ProfOaksPokemonTalk_Ch1:
 	tempo 164
 	volume 7, 7
-	stereopanning $f
+	stereo_panning FALSE, TRUE
 	vibrato $6, $25
 	duty_cycle 1
 	note_type 12, 9, 4
@@ -135,7 +135,7 @@ Music_ProfOaksPokemonTalk_Ch2:
 	vibrato $8, $24
 	duty_cycle 3
 	note_type 12, 10, 7
-	stereopanning $ff
+	stereo_panning TRUE, TRUE
 	octave 3
 	note B_, 1
 	octave 4
@@ -209,7 +209,7 @@ Music_ProfOaksPokemonTalk_branch_f4d4d:
 Music_ProfOaksPokemonTalk_Ch3:
 	vibrato $6, $38
 	note_type 12, 2, 5
-	stereopanning $f0
+	stereo_panning TRUE, FALSE
 	note __, 8
 	octave 3
 	note F#, 1

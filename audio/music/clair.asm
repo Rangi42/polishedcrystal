@@ -10,7 +10,7 @@ Music_Clair_Ch1:
 	volume 7, 7
 	tone $0001
 	vibrato $12, $34
-	stereopanning $f
+	stereo_panning FALSE, TRUE
 	note_type 12, 9, 3
 	duty_cycle 3
 Music_Clair_branch_1faab:
@@ -98,13 +98,13 @@ Music_Clair_branch_1fac9:
 
 Music_Clair_branch_1fb12:
 	duty_cycle 3
-	stereopanning $ff
+	stereo_panning TRUE, TRUE
 	octave 3
 	note B_, 1
 	note __, 2
 	note G#, 5
 	duty_cycle 2
-	stereopanning $f
+	stereo_panning FALSE, TRUE
 	octave 2
 	note B_, 2
 	note G#, 1
@@ -391,11 +391,11 @@ Music_Clair_branch_1fc3c:
 Music_Clair_Ch4:
 	toggle_noise 3
 	note_type 12
-	stereopanning $f0
+	stereo_panning TRUE, FALSE
 	note B_, 8
 	note B_, 8
 	note B_, 6
-	stereopanning $ff
+	stereo_panning TRUE, TRUE
 	note D#, 1
 	note D#, 1
 	note D_, 2
@@ -405,30 +405,30 @@ Music_Clair_Ch4:
 	note D_, 1
 	note D_, 1
 Music_Clair_branch_1fc5e:
-	stereopanning $ff
+	stereo_panning TRUE, TRUE
 	callchannel Music_Clair_branch_1fc6e
 	note G_, 1
-	stereopanning $ff
+	stereo_panning TRUE, TRUE
 	callchannel Music_Clair_branch_1fc6e
 	note F#, 1
 	jumpchannel Music_Clair_branch_1fc5e
 
 Music_Clair_branch_1fc6e:
 	note D#, 2
-	stereopanning $f0
+	stereo_panning TRUE, FALSE
 	note G_, 2
-	stereopanning $ff
+	stereo_panning TRUE, TRUE
 	note D_, 2
-	stereopanning $f0
+	stereo_panning TRUE, FALSE
 	note G_, 1
 	note G_, 1
 	note G_, 2
-	stereopanning $ff
+	stereo_panning TRUE, TRUE
 	note D#, 1
-	stereopanning $f0
+	stereo_panning TRUE, FALSE
 	note G_, 1
-	stereopanning $ff
+	stereo_panning TRUE, TRUE
 	note D_, 2
-	stereopanning $f0
+	stereo_panning TRUE, FALSE
 	note G_, 1
 	endchannel

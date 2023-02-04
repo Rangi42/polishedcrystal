@@ -11,7 +11,7 @@ Music_BurnedTower_Ch1:
 	duty_cycle 1
 	tone $0004
 	vibrato $8, $45
-	stereopanning $f0
+	stereo_panning TRUE, FALSE
 	note_type 12, 9, 1
 	note __, 2
 	octave 2
@@ -193,7 +193,7 @@ Music_BurnedTower_branch_f6b8e:
 	endchannel
 
 Music_BurnedTower_Ch3:
-	stereopanning $f
+	stereo_panning FALSE, TRUE
 	note_type 12, 1, 4
 	note __, 16
 	note __, 16
@@ -251,7 +251,7 @@ Music_BurnedTower_branch_f6be1:
 	loopchannel 4, Music_BurnedTower_branch_f6be1
 	note __, 2
 Music_BurnedTower_branch_f6be7:
-	stereopanning $f0
+	stereo_panning TRUE, FALSE
 	note G_, 2
 	note G#, 2
 	note G_, 4

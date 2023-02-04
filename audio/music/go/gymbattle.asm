@@ -11,7 +11,7 @@ Music_GymLeaderBattleGo:
 Music_GymLeaderBattleGo_Ch1:
 	tempo $B4
 	volume 7, 7
-	stereopanning $77
+	stereo_panning TRUE, TRUE
 	duty_cycle 3
 	note_type 12, 10, 2
 	callchannel Music_GymLeaderBattleGo_Ch1_ditty1

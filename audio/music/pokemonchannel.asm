@@ -10,7 +10,7 @@ Music_PokemonChannel_Ch1:
 	volume 7, 7
 	vibrato $8, $38
 	duty_cycle 1
-	stereopanning $f
+	stereo_panning FALSE, TRUE
 	note_type 12, 11, 3
 	octave 2
 	note B_, 1
@@ -78,7 +78,7 @@ Music_PokemonChannel_Ch1:
 Music_PokemonChannel_Ch2:
 	duty_cycle 1
 	vibrato $8, $38
-	stereopanning $ff
+	stereo_panning TRUE, TRUE
 	note_type 12, 11, 3
 	octave 3
 	note G_, 3
@@ -148,7 +148,7 @@ Music_PokemonChannel_Ch2:
 Music_PokemonChannel_Ch3:
 	vibrato $8, $38
 	note_type 12, 2, 5
-	stereopanning $f0
+	stereo_panning TRUE, FALSE
 	octave 2
 	note G_, 1
 	note __, 2

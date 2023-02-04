@@ -11,7 +11,7 @@ Music_HallOfFame_Ch1:
 	duty_cycle 2
 	vibrato $c, $22
 	tone $0001
-	stereopanning $f0
+	stereo_panning TRUE, FALSE
 	note_type 12, 9, 3
 	note __, 16
 	note __, 16
@@ -145,13 +145,13 @@ Music_HallOfFame_Ch4:
 	note __, 16
 	note_type 6
 Music_HallOfFame_branch_f0677:
-	stereopanning $f
+	stereo_panning FALSE, TRUE
 	note A#, 4
 	note A#, 8
 	note A#, 4
 	note A#, 4
 	note A#, 4
-	stereopanning $f0
+	stereo_panning TRUE, FALSE
 	note A_, 2
 	note A_, 2
 	note A#, 2
@@ -161,7 +161,7 @@ Music_HallOfFame_branch_f0677:
 	note A#, 8
 	note A#, 4
 	note A#, 4
-	stereopanning $f
+	stereo_panning FALSE, TRUE
 	note A#, 1
 	note A#, 1
 	note A_, 1

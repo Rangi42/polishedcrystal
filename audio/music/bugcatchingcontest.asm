@@ -8,7 +8,7 @@ Music_BugCatchingContest:
 Music_BugCatchingContest_Ch1:
 	tempo 144
 	volume 7, 7
-	stereopanning $f
+	stereo_panning FALSE, TRUE
 	vibrato $8, $24
 	duty_cycle 2
 	note_type 12, 11, 7
@@ -189,7 +189,7 @@ Music_BugCatchingContest_branch_f7c8e:
 	jumpchannel Music_BugCatchingContest_branch_f7c4b
 
 Music_BugCatchingContest_Ch2:
-	stereopanning $f0
+	stereo_panning TRUE, FALSE
 	vibrato $8, $23
 	duty_cycle 1
 	note_type 12, 12, 7
@@ -372,7 +372,7 @@ Music_BugCatchingContest_branch_f7d8e:
 	endchannel
 
 Music_BugCatchingContest_Ch3:
-	stereopanning $ff
+	stereo_panning TRUE, TRUE
 	vibrato $10, $23
 	note_type 12, 1, 4
 	note __, 8

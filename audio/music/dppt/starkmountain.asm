@@ -11,7 +11,7 @@ Music_StarkMountainDPPt:
 
 Music_StarkMountainDPPt_Ch1:
 	volume 7, 7
-	stereopanning $77
+	stereo_panning TRUE, TRUE
 	tempo $A0
 	tone $0002
 	vibrato $10, $36

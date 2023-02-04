@@ -6,7 +6,7 @@ Music_LookBeauty:
 	channel 4, Music_LookBeauty_Ch4
 
 Music_LookBeauty_Ch1:
-	stereopanning $f
+	stereo_panning FALSE, TRUE
 	vibrato $12, $25
 	duty_cycle 2
 	tempo 128
@@ -78,7 +78,7 @@ Music_LookBeauty_branch_eee5f:
 	jumpchannel Music_LookBeauty_branch_eee5f
 
 Music_LookBeauty_Ch2:
-	stereopanning $f0
+	stereo_panning TRUE, FALSE
 	vibrato $10, $23
 	duty_cycle 2
 	note_type 12, 12, 7
@@ -155,7 +155,7 @@ Music_LookBeauty_branch_eeec5:
 	jumpchannel Music_LookBeauty_branch_eeec5
 
 Music_LookBeauty_Ch3:
-	stereopanning $ff
+	stereo_panning TRUE, TRUE
 	vibrato $8, $12
 	note_type 12, 1, 5
 	note __, 16

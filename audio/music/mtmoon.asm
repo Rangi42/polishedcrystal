@@ -11,7 +11,7 @@ Music_MtMoon_Ch1:
 	duty_cycle 2
 	tone $0001
 	vibrato $8, $14
-	stereopanning $f0
+	stereo_panning TRUE, FALSE
 	note_type 12, 4, 5
 	note __, 2
 	jumpchannel Music_MtMoon_branch_edb56
@@ -20,7 +20,7 @@ Music_MtMoon_Ch2:
 	vibrato $b, $15
 	duty_cycle 2
 	note_type 12, 8, 4
-	stereopanning $f
+	stereo_panning FALSE, TRUE
 Music_MtMoon_branch_edb56:
 	octave 4
 	note D#, 6
@@ -123,17 +123,17 @@ Music_MtMoon_Ch4:
 	toggle_noise 5
 	note_type 12
 Music_MtMoon_branch_edbc3:
-	stereopanning $f
+	stereo_panning FALSE, TRUE
 	note A#, 4
 	note A#, 8
 	note A#, 4
-	stereopanning $f0
+	stereo_panning TRUE, FALSE
 	note A#, 4
 	note A#, 4
 	note A#, 4
-	stereopanning $f
+	stereo_panning FALSE, TRUE
 	note A#, 4
 	note A#, 4
-	stereopanning $f0
+	stereo_panning TRUE, FALSE
 	note A#, 8
 	jumpchannel Music_MtMoon_branch_edbc3

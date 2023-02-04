@@ -8,7 +8,7 @@ Music_SSAqua:
 Music_SSAqua_Ch1:
 	tempo 117
 	volume 7, 7
-	stereopanning $f
+	stereo_panning FALSE, TRUE
 	tone $0001
 	vibrato $12, $33
 	duty_cycle 2
@@ -250,7 +250,7 @@ Music_SSAqua_branch_eadbc:
 	jumpchannel Music_SSAqua_branch_eadbc
 
 Music_SSAqua_Ch2:
-	stereopanning $f0
+	stereo_panning TRUE, FALSE
 	duty_cycle 2
 	vibrato $8, $33
 	note_type 12, 11, 7
@@ -603,7 +603,7 @@ Music_SSAqua_branch_eb03e:
 	endchannel
 
 Music_SSAqua_Ch3:
-	stereopanning $ff
+	stereo_panning TRUE, TRUE
 	vibrato $8, $34
 	note_type 6, 1, 5
 	octave 2

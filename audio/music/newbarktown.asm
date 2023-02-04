@@ -7,7 +7,7 @@ Music_NewBarkTown:
 Music_NewBarkTown_Ch1:
 	tempo 187
 	volume 7, 7
-	stereopanning $f
+	stereo_panning FALSE, TRUE
 	vibrato $12, $23
 	note_type 12, 8, 7
 	note __, 4
@@ -157,7 +157,7 @@ Music_NewBarkTown_branch_eb37c:
 	endchannel
 
 Music_NewBarkTown_Ch2:
-	stereopanning $ff
+	stereo_panning TRUE, TRUE
 	vibrato $12, $23
 	note_type 6, 10, 7
 	note __, 8
@@ -251,7 +251,7 @@ Music_NewBarkTown_branch_eb3f2:
 	endchannel
 
 Music_NewBarkTown_Ch3:
-	stereopanning $f0
+	stereo_panning TRUE, FALSE
 	note_type 12, 1, 0
 	octave 5
 	note D_, 2

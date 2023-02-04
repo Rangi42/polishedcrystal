@@ -11,7 +11,7 @@ Music_SunyshoreCityDPPt:
 
 Music_SunyshoreCityDPPt_Ch1:
 	volume 7, 7
-	stereopanning $77
+	stereo_panning TRUE, TRUE
 	tempo $90
 	tone $0002
 	volume_envelope 10, 1

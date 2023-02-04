@@ -6,7 +6,7 @@ Music_Route26:
 	channel 4, Music_Route26_Ch4
 
 Music_Route26_Ch1:
-	stereopanning $f
+	stereo_panning FALSE, TRUE
 	vibrato $12, $23
 	tempo 151
 	volume 7, 7
@@ -196,7 +196,7 @@ Music_Route26_branch_eefe0:
 	jumpchannel Music_Route26_branch_eefe0
 
 Music_Route26_Ch2:
-	stereopanning $f0
+	stereo_panning TRUE, FALSE
 	vibrato $14, $23
 	duty_cycle 2
 	note_type 12, 12, 7
@@ -354,7 +354,7 @@ Music_Route26_branch_ef14e:
 	endchannel
 
 Music_Route26_Ch3:
-	stereopanning $ff
+	stereo_panning TRUE, TRUE
 	vibrato $12, $23
 	note_type 12, 1, 4
 	vibrato $18, $23

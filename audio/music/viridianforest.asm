@@ -8,7 +8,7 @@ Music_ViridianForest:
 Music_ViridianForest_Ch1:
 	tempo 151
 	volume 7, 7
-	stereopanning $f
+	stereo_panning FALSE, TRUE
 	vibrato $6, $23
 	note_type 12, 11, 1
 	note __, 16
@@ -160,7 +160,7 @@ Music_ViridianForest_branch_ed971:
 	endchannel
 
 Music_ViridianForest_Ch2:
-	stereopanning $ff
+	stereo_panning TRUE, TRUE
 	vibrato $8, $24
 	note_type 12, 11, 2
 	callchannel Music_ViridianForest_branch_ed9ba
@@ -294,7 +294,7 @@ Music_ViridianForest_branch_eda02:
 	endchannel
 
 Music_ViridianForest_Ch3:
-	stereopanning $f0
+	stereo_panning TRUE, FALSE
 	vibrato $16, $15
 	note_type 12, 1, 4
 	octave 4

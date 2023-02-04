@@ -13,7 +13,7 @@ Music_EverGrandeCityRSE:
 Music_EverGrandeCityRSE_Ch1:
 	tempo 100
 	volume 7, 7
-	stereopanning $f
+	stereo_panning FALSE, TRUE
 	vibrato $12, $25
 	duty_cycle 2
 	note_type 12, 7, 4
@@ -305,7 +305,7 @@ Music_EverGrandeCityRSE_Ch1_loop:
 Music_EverGrandeCityRSE_Ch2:
 	vibrato $12, $25
 	duty_cycle 3
-	stereopanning $f0
+	stereo_panning TRUE, FALSE
 	tone $0002
 	note_type 12, 6, 3
 	octave 2
@@ -619,7 +619,7 @@ Music_EverGrandeCityRSE_Ch2_loop:
 	jumpchannel Music_EverGrandeCityRSE_Ch2_loop
 
 Music_EverGrandeCityRSE_Ch3:
-	stereopanning $ff
+	stereo_panning TRUE, TRUE
 	vibrato $12, $15
 	note_type 12, 1, 4
 	octave 2
@@ -1165,7 +1165,7 @@ Music_EverGrandeCityRSE_branch_ef4e3:
 
 Music_EverGrandeCityRSE_Ch4:
 	toggle_noise 3
-	stereopanning $f
+	stereo_panning FALSE, TRUE
 	note_type 12
 	note __, 6
 Music_EverGrandeCityRSE_Ch4_loop:

@@ -10,7 +10,7 @@ Music_LookMysticalMan_Ch1:
 	volume 7, 7
 	vibrato $a, $34
 	tone $0001
-	stereopanning $f
+	stereo_panning FALSE, TRUE
 	note_type 12, 11, 3
 	note __, 8
 Music_LookMysticalMan_branch_178458:
@@ -198,7 +198,7 @@ Music_LookMysticalMan_Ch2:
 	note_type 12, 11, 3
 	note __, 8
 Music_LookMysticalMan_branch_178523:
-	stereopanning $f0
+	stereo_panning TRUE, FALSE
 	note_type 6, 11, 8
 	octave 3
 	note B_, 1
@@ -210,10 +210,10 @@ Music_LookMysticalMan_branch_178523:
 	note __, 4
 	note B_, 2
 	note __, 6
-	stereopanning $ff
+	stereo_panning TRUE, TRUE
 	note B_, 8
 	note A_, 4
-	stereopanning $f0
+	stereo_panning TRUE, FALSE
 	note G#, 1
 	note __, 1
 	note G#, 1
@@ -223,10 +223,10 @@ Music_LookMysticalMan_branch_178523:
 	note __, 4
 	note G#, 2
 	note __, 6
-	stereopanning $ff
+	stereo_panning TRUE, TRUE
 	note F#, 8
 	note G#, 4
-	stereopanning $f0
+	stereo_panning TRUE, FALSE
 	note A_, 1
 	note __, 1
 	note A_, 1
@@ -236,10 +236,10 @@ Music_LookMysticalMan_branch_178523:
 	note __, 4
 	note A_, 2
 	note __, 6
-	stereopanning $ff
+	stereo_panning TRUE, TRUE
 	note A_, 8
 	note G_, 4
-	stereopanning $f0
+	stereo_panning TRUE, FALSE
 	note F#, 1
 	note __, 1
 	note F#, 1

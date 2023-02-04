@@ -8,7 +8,7 @@ Music_VictoryRoad:
 Music_VictoryRoad_Ch1:
 	tempo 144
 	volume 7, 7
-	stereopanning $f
+	stereo_panning FALSE, TRUE
 	duty_cycle 3
 	tone $0002
 	note_type 12, 11, 3
@@ -95,20 +95,20 @@ Music_VictoryRoad_branch_f6cd3:
 	note E_, 8
 	note_type 12, 12, 7
 	note D_, 8
-	stereopanning $f0
+	stereo_panning TRUE, FALSE
 	note C#, 4
-	stereopanning $f
+	stereo_panning FALSE, TRUE
 	octave 4
 	note A_, 4
-	stereopanning $ff
+	stereo_panning TRUE, TRUE
 	octave 5
 	note C_, 8
-	stereopanning $f
+	stereo_panning FALSE, TRUE
 	octave 4
 	note A#, 4
-	stereopanning $f0
+	stereo_panning TRUE, FALSE
 	note F_, 4
-	stereopanning $ff
+	stereo_panning TRUE, TRUE
 	note A_, 12
 	note D_, 1
 	note F#, 1
@@ -135,7 +135,7 @@ Music_VictoryRoad_branch_f6d1e:
 	endchannel
 
 Music_VictoryRoad_Ch3:
-	stereopanning $f0
+	stereo_panning TRUE, FALSE
 	note_type 12, 2, 8
 Music_VictoryRoad_branch_f6d31:
 	callchannel Music_VictoryRoad_branch_f6d52

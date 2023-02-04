@@ -9,7 +9,7 @@ Music_ProfOak_Ch1:
 	volume 7, 7
 	vibrato $12, $34
 	tone $0001
-	stereopanning $f0
+	stereo_panning TRUE, FALSE
 	duty_cycle 3
 	note_type 12, 9, 8
 	octave 2
@@ -205,7 +205,7 @@ Music_ProfOak_branch_f4ebf:
 	jumpchannel Music_ProfOak_branch_f4ebf
 
 Music_ProfOak_Ch3:
-	stereopanning $f
+	stereo_panning FALSE, TRUE
 	note_type 12, 1, 4
 	note __, 4
 	octave 3

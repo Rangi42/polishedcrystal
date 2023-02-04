@@ -11,7 +11,7 @@ Music_Lighthouse_Ch1:
 	duty_cycle 3
 	tone $0004
 	vibrato $8, $45
-	stereopanning $f
+	stereo_panning FALSE, TRUE
 Music_Lighthouse_branch_ee584:
 	note_type 12, 11, 3
 	octave 3
@@ -213,7 +213,7 @@ Music_Lighthouse_branch_ee604:
 
 Music_Lighthouse_Ch3:
 	note_type 12, 1, -1
-	stereopanning $f0
+	stereo_panning TRUE, FALSE
 Music_Lighthouse_branch_ee65b:
 	octave 2
 	note G#, 2
@@ -293,14 +293,14 @@ Music_Lighthouse_Ch4:
 	toggle_noise 0
 	note_type 12
 Music_Lighthouse_branch_ee6b1:
-	stereopanning $f
+	stereo_panning FALSE, TRUE
 	note G#, 4
 	note F_, 2
 	note G#, 4
 	note F_, 2
 	note A_, 2
 	note A#, 2
-	stereopanning $ff
+	stereo_panning TRUE, TRUE
 	note G#, 2
 	note F_, 4
 	note G#, 2

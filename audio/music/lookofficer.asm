@@ -9,7 +9,7 @@ Music_LookOfficer_Ch1:
 	volume 7, 7
 	tone $0001
 	vibrato $12, $34
-	stereopanning $f
+	stereo_panning FALSE, TRUE
 	duty_cycle 3
 	note_type 12, 10, 7
 	octave 4
@@ -97,7 +97,7 @@ Music_LookOfficer_branch_ed89e:
 
 Music_LookOfficer_Ch3:
 	vibrato $14, $14
-	stereopanning $f0
+	stereo_panning TRUE, FALSE
 	note_type 12, 1, 4
 	note __, 10
 	octave 3

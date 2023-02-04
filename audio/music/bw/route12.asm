@@ -372,7 +372,7 @@ Music_Route12BW_Ch3_branch_1:
 	endchannel
 
 Music_Route12BW_Ch4:
-	stereopanning $f
+	stereo_panning FALSE, TRUE
 	toggle_noise 0
 Music_Route12BW_Ch4_loop:
 	note_type 4

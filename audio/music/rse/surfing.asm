@@ -12,7 +12,7 @@ Music_SurfRSE:
 Music_SurfRSE_Ch1:
 	tempo $75
 	volume 7, 7
-	stereopanning $77
+	stereo_panning TRUE, TRUE
 	note_type 12, 0, 0
 	note __, 12
 Music_SurfRSE_Ch1_loop:

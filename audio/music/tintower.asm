@@ -12,7 +12,7 @@ Music_TinTower_Ch1:
 	tone $0004
 	vibrato $8, $45
 Music_TinTower_branch_f682a:
-	stereopanning $f0
+	stereo_panning TRUE, FALSE
 	note_type 12, 10, 5
 	octave 3
 	note G_, 4
@@ -101,7 +101,7 @@ Music_TinTower_Ch2:
 	tone $0002
 	vibrato $18, $44
 Music_TinTower_branch_f6893:
-	stereopanning $ff
+	stereo_panning TRUE, TRUE
 Music_TinTower_branch_f6895:
 	note_type 12, 11, 5
 	octave 4
@@ -132,7 +132,7 @@ Music_TinTower_branch_f6895:
 	note C_, 4
 	octave 4
 	note C_, 8
-	stereopanning $f
+	stereo_panning FALSE, TRUE
 	loopchannel 2, Music_TinTower_branch_f6895
 	volume_envelope 11, 2
 	octave 3
@@ -153,7 +153,7 @@ Music_TinTower_branch_f6895:
 	volume_envelope 11, 7
 	note D#, 4
 	volume_envelope 9, 0
-	stereopanning $ff
+	stereo_panning TRUE, TRUE
 	note G_, 4
 	octave 4
 	note C_, 4
@@ -231,7 +231,7 @@ Music_TinTower_branch_f68fb:
 	note C#, 1
 	note __, 7
 	note D#, 4
-	stereopanning $f
+	stereo_panning FALSE, TRUE
 	note C_, 1
 	note __, 3
 	note C_, 1
@@ -240,14 +240,14 @@ Music_TinTower_branch_f68fb:
 	note __, 3
 	note C_, 1
 	note __, 3
-	stereopanning $ff
+	stereo_panning TRUE, TRUE
 	octave 2
 	note A#, 2
 	octave 3
 	note C_, 2
 	note C#, 2
 	note D#, 2
-	stereopanning $f
+	stereo_panning FALSE, TRUE
 	note C_, 1
 	note __, 3
 	note C_, 1
@@ -256,36 +256,36 @@ Music_TinTower_branch_f68fb:
 	note __, 3
 	note C_, 1
 	note __, 11
-	stereopanning $ff
+	stereo_panning TRUE, TRUE
 	jumpchannel Music_TinTower_branch_f68fb
 
 Music_TinTower_Ch4:
 	toggle_noise 0
 	note_type 12
 Music_TinTower_branch_f694c:
-	stereopanning $f
+	stereo_panning FALSE, TRUE
 	note G_, 2
-	stereopanning $f0
+	stereo_panning TRUE, FALSE
 	note G_, 1
 	note G_, 1
-	stereopanning $f
+	stereo_panning FALSE, TRUE
 	note G_, 2
-	stereopanning $f0
+	stereo_panning TRUE, FALSE
 	note F_, 4
-	stereopanning $f
+	stereo_panning FALSE, TRUE
 	note G_, 2
 	note G_, 2
 	note F_, 2
-	stereopanning $f0
+	stereo_panning TRUE, FALSE
 	note G_, 2
-	stereopanning $f
+	stereo_panning FALSE, TRUE
 	note G_, 1
 	note G_, 1
-	stereopanning $f0
+	stereo_panning TRUE, FALSE
 	note G_, 2
-	stereopanning $f
+	stereo_panning FALSE, TRUE
 	note F_, 4
-	stereopanning $f0
+	stereo_panning TRUE, FALSE
 	note G_, 2
 	note G_, 2
 	note F_, 2

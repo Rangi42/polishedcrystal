@@ -8,7 +8,7 @@ Music_Surf_Ch1:
 	tempo 108
 	volume 7, 7
 	note_type 12, 10, 7
-	stereopanning $f
+	stereo_panning FALSE, TRUE
 Music_Surf_branch_f519e:
 	duty_cycle 2
 	vibrato $10, $24
@@ -340,7 +340,7 @@ Music_Surf_branch_f52d9:
 Music_Surf_Ch2:
 Music_Surf_branch_f5317:
 	note_type 12, 12, 2
-	stereopanning $f0
+	stereo_panning TRUE, FALSE
 	duty_cycle 2
 	vibrato $14, $23
 Music_Surf_branch_f5321:
@@ -543,7 +543,7 @@ Music_Surf_branch_f5404:
 
 Music_Surf_Ch3:
 Music_Surf_branch_f540c:
-	stereopanning $ff
+	stereo_panning TRUE, TRUE
 	note_type 12, 1, 5
 	vibrato $16, $23
 	octave 4

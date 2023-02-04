@@ -11,7 +11,7 @@ Music_Megalovania:
 Music_Megalovania_Ch1:
 	tempo $A0
 	volume 7, 7
-	stereopanning $77
+	stereo_panning TRUE, TRUE
 Music_Megalovania_Ch1_loop:
 	note_type 12, 0, 0
 	note __, 16

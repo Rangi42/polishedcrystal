@@ -11,7 +11,7 @@ Music_SproutTower_Ch1:
 	duty_cycle 3
 	tone $0002
 	vibrato $8, $45
-	stereopanning $f
+	stereo_panning FALSE, TRUE
 	note_type 12, 10, 3
 	note __, 16
 	note __, 16
@@ -159,7 +159,7 @@ Music_SproutTower_Ch3:
 	note D#, 2
 	note __, 2
 	note F#, 2
-	stereopanning $f0
+	stereo_panning TRUE, FALSE
 Music_SproutTower_branch_f6a3e:
 	note __, 4
 	note C_, 2
@@ -225,19 +225,19 @@ Music_SproutTower_Ch4:
 	note __, 4
 Music_SproutTower_branch_f6a7f:
 	note F#, 4
-	stereopanning $f0
+	stereo_panning TRUE, FALSE
 	note D#, 4
 	note F#, 2
-	stereopanning $f
+	stereo_panning FALSE, TRUE
 	note D#, 2
-	stereopanning $ff
+	stereo_panning TRUE, TRUE
 	note F#, 4
 	note F#, 4
-	stereopanning $f
+	stereo_panning FALSE, TRUE
 	note D#, 4
 	note F#, 2
-	stereopanning $f0
+	stereo_panning TRUE, FALSE
 	note D#, 2
-	stereopanning $ff
+	stereo_panning TRUE, TRUE
 	note F#, 4
 	jumpchannel Music_SproutTower_branch_f6a7f

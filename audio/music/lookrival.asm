@@ -11,7 +11,7 @@ Music_LookRival_Ch1:
 	duty_cycle 1
 	tone $0001
 	vibrato $12, $15
-	stereopanning $f
+	stereo_panning FALSE, TRUE
 	note_type 12, 11, 2
 	octave 4
 	note C_, 1
@@ -119,7 +119,7 @@ Music_LookRival_branch_f4ff7:
 Music_LookRival_Ch2:
 	duty_cycle 3
 	vibrato $8, $36
-	stereopanning $f0
+	stereo_panning TRUE, FALSE
 	note_type 12, 12, 2
 	octave 4
 	note F#, 2
@@ -322,7 +322,7 @@ Music_LookRival_branch_f50ff:
 	endchannel
 
 Music_LookRival_Ch4:
-	stereopanning $f0
+	stereo_panning TRUE, FALSE
 	toggle_noise 3
 	note_type 12
 	note __, 8

@@ -12,7 +12,7 @@ Music_WildBattleGo:
 Music_WildBattleGo_Ch1:
 	tempo $70
 	volume 7, 7
-	stereopanning $77
+	stereo_panning TRUE, TRUE
 	duty_cycle_pattern 1, 1, 2, 2
 	octave 3
 	note_type 12, 10, 3

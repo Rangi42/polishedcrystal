@@ -67,7 +67,7 @@ Music_Route37_branch_ee969:
 	note F#, 4
 	note E_, 2
 	note D#, 4
-	stereopanning $f
+	stereo_panning FALSE, TRUE
 Music_Route37_branch_ee9a5:
 	callchannel Music_Route37_branch_ee9da
 	octave 3
@@ -91,7 +91,7 @@ Music_Route37_branch_ee9a5:
 	callchannel Music_Route37_branch_ee9e9
 	octave 3
 	note F_, 4
-	stereopanning $ff
+	stereo_panning TRUE, TRUE
 	callchannel Music_Route37_branch_ee9e9
 	note __, 4
 	callchannel Music_Route37_branch_ee9e9
@@ -287,7 +287,7 @@ Music_Route37_branch_eeab7:
 	endchannel
 
 Music_Route37_Ch3:
-	stereopanning $f0
+	stereo_panning TRUE, FALSE
 	note_type 12, 1, 4
 Music_Route37_branch_eeacc:
 	octave 2
@@ -394,7 +394,7 @@ Music_Route37_branch_eeb3c:
 	endchannel
 
 Music_Route37_Ch4:
-	stereopanning $f
+	stereo_panning FALSE, TRUE
 	toggle_noise 0
 Music_Route37_branch_eeb51:
 	note_type 12

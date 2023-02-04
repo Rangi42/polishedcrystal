@@ -7,7 +7,7 @@ Music_LavenderTown:
 Music_LavenderTown_Ch1:
 	tempo 160
 	volume 7, 7
-	stereopanning $f
+	stereo_panning FALSE, TRUE
 	vibrato $6, $24
 	duty_cycle 0
 	note_type 12, 11, 3
@@ -263,7 +263,7 @@ Music_LavenderTown_branch_ef87f:
 Music_LavenderTown_Ch2:
 	duty_cycle 1
 	vibrato $8, $24
-	stereopanning $ff
+	stereo_panning TRUE, TRUE
 Music_LavenderTown_branch_ef8a0:
 	note_type 12, 10, 3
 	octave 5
@@ -388,7 +388,7 @@ Music_LavenderTown_branch_ef915:
 Music_LavenderTown_Ch3:
 	vibrato $12, $24
 	note_type 12, 1, 3
-	stereopanning $f0
+	stereo_panning TRUE, FALSE
 	note __, 16
 	note __, 16
 	note __, 16

@@ -7,7 +7,7 @@ Music_DancingHall:
 Music_DancingHall_Ch1:
 	tempo 208
 	volume 7, 7
-	stereopanning $f
+	stereo_panning FALSE, TRUE
 	note_type 6, 11, 7
 	note __, 3
 	duty_cycle 0
@@ -87,7 +87,7 @@ Music_DancingHall_branch_efa17:
 	endchannel
 
 Music_DancingHall_Ch2:
-	stereopanning $f0
+	stereo_panning TRUE, FALSE
 	note_type 6, 10, 1
 	duty_cycle 0
 	vibrato $10, $24
@@ -219,7 +219,7 @@ Music_DancingHall_branch_efa7a:
 	endchannel
 
 Music_DancingHall_Ch3:
-	stereopanning $ff
+	stereo_panning TRUE, TRUE
 	vibrato $16, $24
 	note_type 6, 1, 0
 	octave 5

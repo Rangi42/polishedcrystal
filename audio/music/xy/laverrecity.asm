@@ -13,7 +13,7 @@ Music_LaverreCityXY:
 Music_LaverreCityXY_Ch1:
 	tempo 120
 	volume 7, 7
-	stereopanning $f
+	stereo_panning FALSE, TRUE
 	vibrato $12, $25
 Music_LaverreCityXY_branch_ef2e5:
 	duty_cycle 0
@@ -196,7 +196,7 @@ Music_LaverreCityXY_Ch1_branch_1:
 Music_LaverreCityXY_Ch2:
 	vibrato $12, $25
 	duty_cycle 2
-	stereopanning $f0
+	stereo_panning TRUE, FALSE
 	tone $0002
 Music_LaverreCityXY_branch_ef3f2:
 	note_type 12, 10, 7
@@ -339,7 +339,7 @@ Music_LaverreCityXY_Ch2_branch_2:
 	jumpchannel Music_LaverreCityXY_branch_ef3f2
 
 Music_LaverreCityXY_Ch3:
-	stereopanning $ff
+	stereo_panning TRUE, TRUE
 	vibrato $12, $25
 Music_LaverreCityXY_branch_ef4e3:
 	note_type 12, 2, 5
@@ -563,7 +563,7 @@ Music_LaverreCityXY_Ch3_branch_1:
 
 Music_LaverreCityXY_Ch4:
 	toggle_noise 3
-	stereopanning $f
+	stereo_panning FALSE, TRUE
 	note_type 12
 Music_LaverreCityXY_Ch4_loop:
 	callchannel Music_LaverreCityXY_Ch4_branch_1

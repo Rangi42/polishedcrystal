@@ -534,7 +534,7 @@ Music_ReversalMountainWhite2_Ch2_loop:
 	jumpchannel Music_ReversalMountainWhite2_Ch2_loop
 
 Music_ReversalMountainWhite2_Ch3:
-	stereopanning $f0
+	stereo_panning TRUE, FALSE
 	note_type 12, 1, 4
 	note __, 16
 	note __, 16
@@ -966,7 +966,7 @@ Music_ReversalMountainWhite2_Ch3_loop:
 	jumpchannel Music_ReversalMountainWhite2_Ch3_loop
 
 Music_ReversalMountainWhite2_Ch4:
-	stereopanning $f
+	stereo_panning FALSE, TRUE
 	toggle_noise 3
 	note_type 12
 	note __, 16

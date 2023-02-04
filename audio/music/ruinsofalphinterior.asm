@@ -8,7 +8,7 @@ Music_RuinsOfAlphInterior_Ch1:
 	tempo 224
 	volume 7, 7
 	duty_cycle 0
-	stereopanning $f0
+	stereo_panning TRUE, FALSE
 	note_type 12, 4, 4
 	note __, 1
 	jumpchannel Music_RuinsOfAlphInterior_branch_ebdc2
@@ -16,7 +16,7 @@ Music_RuinsOfAlphInterior_Ch1:
 Music_RuinsOfAlphInterior_Ch2:
 	tone $0002
 	duty_cycle 0
-	stereopanning $f
+	stereo_panning FALSE, TRUE
 	note_type 12, 10, 4
 Music_RuinsOfAlphInterior_branch_ebdc2:
 	octave 4

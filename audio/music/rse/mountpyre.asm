@@ -401,12 +401,12 @@ Music_MountPyreRSE_Ch4_loop_4:
 	jumpchannel Music_MountPyreRSE_Ch4_loop_main
 
 Music_MountPyreRSE_Ch4_branch_1:
-	stereopanning $f0
+	stereo_panning TRUE, FALSE
 	note G#, 2
 	note F#, 2
 	note G#, 2
 	note F#, 2
-	stereopanning $f
+	stereo_panning FALSE, TRUE
 	note G#, 2
 	note F#, 2
 	note G#, 2
@@ -414,12 +414,12 @@ Music_MountPyreRSE_Ch4_branch_1:
 	endchannel
 
 Music_MountPyreRSE_Ch4_branch_2:
-	stereopanning $f0
+	stereo_panning TRUE, FALSE
 	note G#, 1
 	note F#, 1
 	note G#, 1
 	note G_, 1
-	stereopanning $f
+	stereo_panning FALSE, TRUE
 	note G#, 1
 	note F#, 1
 	note G#, 1
