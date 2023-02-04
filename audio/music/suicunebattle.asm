@@ -9,7 +9,7 @@ Music_SuicuneBattle_Ch1:
 	volume 7, 7
 	duty_cycle 3
 	pitch_offset 2
-	vibrato $12, $15
+	vibrato 18, 1, 5
 	note_type 12, 11, 7
 	octave 4
 	note A_, 1
@@ -498,7 +498,7 @@ Music_SuicuneBattle_branch_178bfc:
 	note __, 16
 	note __, 16
 	note __, 16
-	vibrato $8, $24
+	vibrato 8, 2, 4
 	duty_cycle 2
 	note_type 12, 9, 6
 	octave 4
@@ -508,13 +508,13 @@ Music_SuicuneBattle_branch_178bfc:
 	note A_, 4
 	octave 4
 	note A_, 16
-	vibrato $12, $15
+	vibrato 18, 1, 5
 	duty_cycle 3
 	sound_jump Music_SuicuneBattle_branch_178bfc
 
 Music_SuicuneBattle_Ch2:
 	duty_cycle 3
-	vibrato $14, $34
+	vibrato 20, 3, 4
 	pitch_offset 1
 	note_type 12, 12, 3
 	octave 5
@@ -601,7 +601,7 @@ Music_SuicuneBattle_branch_178e4e:
 	note D_, 8
 	note_type 12, 11, 6
 	note D_, 8
-	vibrato $10, $24
+	vibrato 16, 2, 4
 	duty_cycle 2
 	note_type 12, 10, 4
 	octave 5
@@ -610,7 +610,7 @@ Music_SuicuneBattle_branch_178e4e:
 	note D_, 4
 	octave 6
 	note D_, 8
-	vibrato $14, $34
+	vibrato 20, 3, 4
 	duty_cycle 3
 	note_type 12, 12, 7
 	octave 4
@@ -643,7 +643,7 @@ Music_SuicuneBattle_branch_178e4e:
 	note_type 12, 12, 6
 	note D_, 4
 	note_type 12, 10, 4
-	vibrato $8, $24
+	vibrato 8, 2, 4
 	duty_cycle 2
 	octave 5
 	note A_, 6
@@ -651,7 +651,7 @@ Music_SuicuneBattle_branch_178e4e:
 	note D_, 4
 	octave 6
 	note D_, 8
-	vibrato $14, $34
+	vibrato 20, 3, 4
 	note_type 12, 12, 7
 	duty_cycle 3
 	octave 4

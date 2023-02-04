@@ -180,7 +180,7 @@ Music_ShowMeAround_branch_edc98:
 
 Music_ShowMeAround_Ch3:
 	stereo_panning TRUE, FALSE
-	vibrato $10, $22
+	vibrato 16, 2, 2
 	note_type 6, 2, 5
 	octave 2
 	note B_, 1

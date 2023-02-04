@@ -11,7 +11,7 @@ Music_Bicycle_Ch1:
 	duty_cycle 3
 	pitch_offset 1
 	stereo_panning FALSE, TRUE
-	vibrato $8, $15
+	vibrato 8, 1, 5
 	note_type 12, 11, 4
 	octave 3
 	note B_, 6
@@ -172,7 +172,7 @@ Music_Bicycle_branch_ee144:
 
 Music_Bicycle_Ch2:
 	duty_cycle 2
-	vibrato $10, $24
+	vibrato 16, 2, 4
 	stereo_panning TRUE, FALSE
 	note_type 12, 12, 6
 	octave 4

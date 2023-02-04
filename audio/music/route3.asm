@@ -12,7 +12,7 @@ Music_Route3_Ch1:
 	note_type 12, 9, 1
 	note __, 10
 	duty_cycle 0
-	vibrato $14, $6
+	vibrato 20, 0, 6
 	octave 3
 	note C#, 1
 	note E_, 1
@@ -239,7 +239,7 @@ Music_Route3_Ch2:
 	stereo_panning TRUE, FALSE
 	note_type 12, 5, -6
 	duty_cycle 2
-	vibrato $6, $3
+	vibrato 6, 0, 3
 	octave 4
 	note E_, 1
 	note G_, 1
@@ -353,7 +353,7 @@ Music_Route3_branch_ec443:
 
 Music_Route3_Ch3:
 	stereo_panning TRUE, TRUE
-	vibrato $6, $3
+	vibrato 6, 0, 3
 	note_type 12, 1, 3
 	octave 3
 	note B_, 1

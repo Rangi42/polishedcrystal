@@ -12,7 +12,7 @@ Music_BikeRiding_Ch1:
 	tempo 144
 	volume 7, 7
 	duty_cycle 3
-	vibrato $8, $14
+	vibrato 8, 1, 4
 	note_type 12, 11, 5
 	octave 3
 	note G_, 2
@@ -149,18 +149,18 @@ Music_BikeRiding_branch_7dbc9:
 	note F_, 4
 	note D_, 4
 	note F#, 4
-	vibrato $a, $26
+	vibrato 10, 2, 6
 	volume_envelope 8, 0
 	note G_, 16
 	note G_, 4
 	volume_envelope 8, 7
 	note G_, 12
 	volume_envelope 11, 5
-	vibrato $8, $14
+	vibrato 8, 1, 4
 	sound_jump Music_BikeRiding_branch_7dbc9
 Music_BikeRiding_Ch2:
 	duty_cycle 2
-	vibrato $6, $15
+	vibrato 6, 1, 5
 	note_type 12, 12, 3
 	octave 4
 	note C_, 2

@@ -69,7 +69,7 @@ Music_WildPokemonVictory_branch_f455c:
 	sound_ret
 
 Music_WildPokemonVictory_Ch2:
-	vibrato $12, $24
+	vibrato 18, 2, 4
 	duty_cycle 2
 	note_type 12, 13, 1
 	octave 4

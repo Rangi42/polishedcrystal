@@ -10,7 +10,7 @@ Music_Lighthouse_Ch1:
 	volume 7, 7
 	duty_cycle 3
 	pitch_offset 4
-	vibrato $8, $45
+	vibrato 8, 4, 5
 	stereo_panning FALSE, TRUE
 Music_Lighthouse_branch_ee584:
 	note_type 12, 11, 3
@@ -132,7 +132,7 @@ Music_Lighthouse_branch_ee584:
 Music_Lighthouse_Ch2:
 	duty_cycle 3
 	pitch_offset 2
-	vibrato $10, $45
+	vibrato 16, 4, 5
 Music_Lighthouse_branch_ee604:
 	note_type 12, 12, 5
 	octave 3

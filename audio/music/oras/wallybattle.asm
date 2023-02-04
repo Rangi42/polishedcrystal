@@ -307,7 +307,7 @@ Music_WallyBattleORAS_Ch2_branch_1:
 
 Music_WallyBattleORAS_Ch3:
 	note_type 6, 1, -1
-	vibrato $12, $15
+	vibrato 18, 1, 5
 	note __, 6
 Music_WallyBattleORAS_Ch3_loop_main:
 	sound_call Music_WallyBattleORAS_Ch3_branch_1

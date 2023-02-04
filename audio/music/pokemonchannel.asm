@@ -8,7 +8,7 @@ Music_PokemonChannel:
 Music_PokemonChannel_Ch1:
 	tempo 128
 	volume 7, 7
-	vibrato $8, $38
+	vibrato 8, 3, 8
 	duty_cycle 1
 	stereo_panning FALSE, TRUE
 	note_type 12, 11, 3
@@ -77,7 +77,7 @@ Music_PokemonChannel_Ch1:
 
 Music_PokemonChannel_Ch2:
 	duty_cycle 1
-	vibrato $8, $38
+	vibrato 8, 3, 8
 	stereo_panning TRUE, TRUE
 	note_type 12, 11, 3
 	octave 3
@@ -146,7 +146,7 @@ Music_PokemonChannel_Ch2:
 	sound_ret
 
 Music_PokemonChannel_Ch3:
-	vibrato $8, $38
+	vibrato 8, 3, 8
 	note_type 12, 2, 5
 	stereo_panning TRUE, FALSE
 	octave 2

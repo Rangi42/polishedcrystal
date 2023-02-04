@@ -12,7 +12,7 @@ Music_MeteorFallsRSE:
 Music_MeteorFallsRSE_Ch1:
 	tempo 190
 	volume 7, 7
-	vibrato $6, $23
+	vibrato 6, 2, 3
 	note_type 8, 9, 2
 	note __, 6
 Music_MeteorFallsRSE_Ch1_loop_main:
@@ -320,7 +320,7 @@ Music_MeteorFallsRSE_Ch1_loop_main:
 	sound_jump Music_MeteorFallsRSE_Ch1_loop_main
 
 Music_MeteorFallsRSE_Ch2:
-	vibrato $6, $23
+	vibrato 6, 2, 3
 	note_type 8, 11, 2
 	duty_cycle 3
 	octave 3
@@ -504,7 +504,7 @@ Music_MeteorFallsRSE_Ch2:
 	sound_jump Music_MeteorFallsRSE_Ch2
 
 Music_MeteorFallsRSE_Ch3:
-	vibrato $16, $15
+	vibrato 22, 1, 5
 	note_type 12, 1, 4
 	note __, 4
 Music_MeteorFallsRSE_Ch3_loop_main:

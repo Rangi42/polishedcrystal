@@ -13,7 +13,7 @@ Music_FrontierBrainBattleRSE_Ch1:
 	note_type 12, 12, 2
 	duty_cycle 1
 	pitch_offset 2
-	vibrato $06, $34
+	vibrato 6, 3, 4
 	note __, 4
 	note_type 8, 12, 2
 	octave 3
@@ -823,7 +823,7 @@ Music_FrontierBrainBattleRSE_Ch2:
 	note_type 8, 13, 4
 	duty_cycle 3
 	pitch_offset 1
-	vibrato $0A, $25
+	vibrato 10, 2, 5
 	octave 3
 	note B_, 2
 	octave 4
@@ -1258,7 +1258,7 @@ Music_FrontierBrainBattleRSE_Ch2_loop:
 
 Music_FrontierBrainBattleRSE_Ch3:
 	note_type 12, 1, -1
-	vibrato $00, $20
+	vibrato 0, 2, 0
 	note __, 4
 	note_type 8, 1, -1
 	octave 2

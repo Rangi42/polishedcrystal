@@ -15,7 +15,7 @@ Music_AbandonedShipRSE_Ch1:
 	volume 7, 7
 	duty_cycle 0
 	pitch_offset 2
-	vibrato $10, $22
+	vibrato 16, 2, 2
 	note_type 12, 8, 2
 	note __, 6
 Music_AbandonedShipRSE_Ch1_loop:
@@ -258,12 +258,12 @@ Music_AbandonedShipRSE_Ch1_loop:
 
 Music_AbandonedShipRSE_Ch2:
 	duty_cycle 3
-	vibrato $1c, $12
+	vibrato 28, 1, 2
 	note_type 12, 10, 0
 	note __, 6
 Music_AbandonedShipRSE_Ch2_loop:
 	sound_call Music_AbandonedShipRSE_Ch2_branch_1
-	vibrato $1c, $F2
+	vibrato 28, 15, 2
 	sound_call Music_AbandonedShipRSE_Ch2_branch_1
 	note D#, 2
 	note C#, 2
@@ -271,12 +271,12 @@ Music_AbandonedShipRSE_Ch2_loop:
 	volume_envelope 10, 0
 	note C_, 4
 	volume_envelope 10, 7
-	vibrato $15, $F2
+	vibrato 21, 15, 2
 	note C_, 6
 	duty_cycle 2
 	volume_envelope 8, 5
 	note __, 2
-	vibrato $1c, $12
+	vibrato 28, 1, 2
 	octave 5
 	note C_, 4
 	octave 4
@@ -286,9 +286,9 @@ Music_AbandonedShipRSE_Ch2_loop:
 	volume_envelope 10, 0
 	note D#, 4
 	volume_envelope 10, 7
-	vibrato $15, $72
+	vibrato 21, 7, 2
 	note D#, 6
-	vibrato $1c, $12
+	vibrato 28, 1, 2
 	note D#, 2
 	note F_, 2
 	note D#, 2
@@ -296,10 +296,10 @@ Music_AbandonedShipRSE_Ch2_loop:
 	volume_envelope 10, 0
 	note G#, 4
 	volume_envelope 10, 7
-	vibrato $15, $72
+	vibrato 21, 7, 2
 	note G#, 6
 	octave 4
-	vibrato $1c, $12
+	vibrato 28, 1, 2
 	note D#, 2
 	note F_, 2
 	note C_, 2
@@ -310,12 +310,12 @@ Music_AbandonedShipRSE_Ch2_loop:
 	note C_, 2
 	volume_envelope 10, 0
 	note C#, 4
-	vibrato $15, $62
+	vibrato 21, 6, 2
 	volume_envelope 10, 7
 	note C#, 6
 	duty_cycle 2
 	volume_envelope 8, 5
-	vibrato $1c, $12
+	vibrato 28, 1, 2
 	note __, 2
 	octave 5
 	note C#, 4
@@ -441,7 +441,7 @@ Music_AbandonedShipRSE_Ch2_branch_1:
 	volume_envelope 10, 7
 	note A#, 6
 	octave 4
-	vibrato $1c, $12
+	vibrato 28, 1, 2
 	note F_, 2
 	note F#, 2
 	note F_, 2

@@ -15,7 +15,7 @@ Music_ChampionBattleRSE_Ch1:
 	volume 7, 7
 	duty_cycle 2
 	pitch_offset 2
-	vibrato $8, $15
+	vibrato 8, 1, 5
 	note_type 3, 9, 4
 Music_ChampionBattleRSE_Ch1_loop_1:
 	octave 5
@@ -344,7 +344,7 @@ Music_ChampionBattleRSE_Ch1_branch_1:
 
 Music_ChampionBattleRSE_Ch2:
 	duty_cycle 3
-	vibrato $12, $25
+	vibrato 18, 2, 5
 	pitch_offset 1
 	note_type 3, 13, 4
 	octave 4
@@ -642,7 +642,7 @@ Music_ChampionBattleRSE_Ch2_branch_1:
 
 Music_ChampionBattleRSE_Ch3:
 	note_type 12, 1, -1
-	vibrato $12, $15
+	vibrato 18, 1, 5
 	octave 3
 	note C_, 1
 	octave 2

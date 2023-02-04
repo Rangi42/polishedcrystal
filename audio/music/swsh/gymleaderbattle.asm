@@ -191,7 +191,7 @@ Music_GymLeaderBattleSwSh_Ch2_NeutralPhase_Loop_3:
 	stereo_panning TRUE, FALSE
 	duty_cycle 0
 	volume_envelope 12, 7
-	vibrato $9, $12
+	vibrato 9, 1, 2
 	octave 4
 	sound_call Music_GymLeaderBattleSwSh_Ch2_ditty5
 	note __, 9
@@ -201,7 +201,7 @@ Music_GymLeaderBattleSwSh_Ch2_NeutralPhase_Loop_4:
 	stereo_panning TRUE, FALSE
 	duty_cycle 0
 	volume_envelope 12, 7
-	vibrato $9, $12
+	vibrato 9, 1, 2
 	octave 4
 	sound_call Music_GymLeaderBattleSwSh_Ch2_ditty5
 	note __, 9
@@ -497,7 +497,7 @@ Music_GymLeaderBattleSwSh_Ch4_DisadvantagePhase_Loop_4:
 Music_GymLeaderBattleSwSh_Ch2_EnterLastPokemonPhase:
 	duty_cycle 1
 	volume_envelope 10, 8
-	vibrato $0, $0
+	vibrato 0, 0, 0
 	octave 3
 	stereo_panning TRUE, FALSE
 	;slidepitchto 1, 5, G_
@@ -509,12 +509,12 @@ Music_GymLeaderBattleSwSh_Ch2_EnterLastPokemonPhase:
 	note __, 16
 	note __, 8
 	volume_envelope 1, -4
-	vibrato $1, $21
+	vibrato 1, 2, 1
 	octave 4
 	note G_, 8
 	duty_cycle 3
 	volume_envelope 12, 1
-	vibrato $0, $0
+	vibrato 0, 0, 0
 	sound_call Music_GymLeaderBattleSwSh_Ch2_ditty6
 	note B_, 2
 	octave 4
@@ -562,7 +562,7 @@ Music_GymLeaderBattleSwSh_Ch2_LastPokemonPhase_Loop:
 Music_GymLeaderBattleSwSh_Ch1_EnterLastPokemonPhase:
 	duty_cycle 1
 	volume_envelope 10, 8
-	vibrato $0, $0
+	vibrato 0, 0, 0
 	octave 2
 	stereo_panning FALSE, TRUE
 	;slidepitchto 1, 5, G_
@@ -574,12 +574,12 @@ Music_GymLeaderBattleSwSh_Ch1_EnterLastPokemonPhase:
 	note __, 16
 	note __, 8
 	volume_envelope 1, -4
-	vibrato $1, $21
+	vibrato 1, 2, 1
 	octave 3
 	note G_, 8
 	duty_cycle 3
 	volume_envelope 12, 1
-	vibrato $0, $0
+	vibrato 0, 0, 0
 	sound_call Music_GymLeaderBattleSwSh_Ch1_ditty4
 	sound_call Music_GymLeaderBattleSwSh_Ch1_ditty5
 ;Last Pokemon Loop

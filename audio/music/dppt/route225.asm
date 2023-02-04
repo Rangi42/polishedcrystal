@@ -193,7 +193,7 @@ Music_Route225DPPt_Ch1_loop:
 	note D_, 4
 	duty_cycle 1
 	volume_envelope 10, 7
-	vibrato $02, $12
+	vibrato 2, 1, 2
 	octave 4
 	note B_, 12
 	octave 2
@@ -267,7 +267,7 @@ Music_Route225DPPt_Ch1_loop:
 	volume_envelope 9, 7
 	note_type 14, 9, 7
 	note __, 12
-	vibrato $00, $00
+	vibrato 0, 0, 0
 	octave 3
 	note_type 12, 9, 7
 	note C_, 1
@@ -522,7 +522,7 @@ Music_Route225DPPt_Ch2_loop:
 	note __, 2
 	note F_, 4
 	duty_cycle 2
-	vibrato $02, $12
+	vibrato 2, 1, 2
 	octave 3
 	note B_, 1
 	octave 4
@@ -691,7 +691,7 @@ Music_Route225DPPt_Ch2_loop:
 	note __, 8
 	duty_cycle 1
 	volume_envelope 10, 7
-	vibrato $00, $00
+	vibrato 0, 0, 0
 	octave 4
 	note E_, 2
 	note __, 6

@@ -8,7 +8,7 @@ Music_NewBarkTown_Ch1:
 	tempo 187
 	volume 7, 7
 	stereo_panning FALSE, TRUE
-	vibrato $12, $23
+	vibrato 18, 2, 3
 	note_type 12, 8, 7
 	note __, 4
 Music_NewBarkTown_branch_eb2eb:
@@ -158,7 +158,7 @@ Music_NewBarkTown_branch_eb37c:
 
 Music_NewBarkTown_Ch2:
 	stereo_panning TRUE, TRUE
-	vibrato $12, $23
+	vibrato 18, 2, 3
 	note_type 6, 10, 7
 	note __, 8
 Music_NewBarkTown_branch_eb396:
@@ -257,7 +257,7 @@ Music_NewBarkTown_Ch3:
 	note D_, 2
 	note E_, 2
 Music_NewBarkTown_branch_eb408:
-	vibrato $16, $23
+	vibrato 22, 2, 3
 	note F#, 4
 	note A_, 4
 	note G_, 2
@@ -305,7 +305,7 @@ Music_NewBarkTown_branch_eb408:
 	note E_, 4
 	note __, 4
 	volume_envelope 2, 5
-	vibrato $12, $53
+	vibrato 18, 5, 3
 	octave 2
 	note G_, 16
 	note A_, 16
@@ -316,7 +316,7 @@ Music_NewBarkTown_branch_eb408:
 	note G_, 16
 	note A_, 14
 	volume_envelope 1, 0
-	vibrato $16, $23
+	vibrato 22, 2, 3
 	octave 5
 	note D_, 1
 	note E_, 1

@@ -10,7 +10,7 @@ Music_SSAqua_Ch1:
 	volume 7, 7
 	stereo_panning FALSE, TRUE
 	pitch_offset 1
-	vibrato $12, $33
+	vibrato 18, 3, 3
 	duty_cycle 2
 	note_type 6, 9, 7
 	octave 2
@@ -155,13 +155,13 @@ Music_SSAqua_branch_eadbc:
 	note E_, 8
 	note G_, 8
 	note F#, 1
-	vibrato $0, $0
+	vibrato 0, 0, 0
 	volume_envelope 8, 8
 	note G_, 10
-	vibrato $2, $23
+	vibrato 2, 2, 3
 	volume_envelope 8, 7
 	note G_, 9
-	vibrato $8, $33
+	vibrato 8, 3, 3
 	note C_, 4
 	note E_, 4
 	note C_, 4
@@ -252,7 +252,7 @@ Music_SSAqua_branch_eadbc:
 Music_SSAqua_Ch2:
 	stereo_panning TRUE, FALSE
 	duty_cycle 2
-	vibrato $8, $33
+	vibrato 8, 3, 3
 	note_type 12, 11, 7
 	note __, 2
 Music_SSAqua_branch_eaed5:
@@ -320,13 +320,13 @@ Music_SSAqua_branch_eaed5:
 	note B_, 8
 	octave 5
 	note D#, 1
-	vibrato $0, $0
+	vibrato 0, 0, 0
 	volume_envelope 9, 8
 	note E_, 10
-	vibrato $4, $23
+	vibrato 4, 2, 3
 	volume_envelope 9, 7
 	note E_, 9
-	vibrato $8, $23
+	vibrato 8, 2, 3
 	note D_, 4
 	note C_, 4
 	octave 4
@@ -604,7 +604,7 @@ Music_SSAqua_branch_eb03e:
 
 Music_SSAqua_Ch3:
 	stereo_panning TRUE, TRUE
-	vibrato $8, $34
+	vibrato 8, 3, 4
 	note_type 6, 1, 5
 	octave 2
 	note G_, 1

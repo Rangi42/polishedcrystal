@@ -65,7 +65,7 @@ Music_WCSBattleBW_Ch1:
 	octave 4
 	note C_, 8
 	volume_envelope 12, 8
-	vibrato $5, $22
+	vibrato 5, 2, 2
 	note C#, 16
 	note C#, 16
 	note C_, 16
@@ -81,7 +81,7 @@ Music_WCSBattleBW_Ch1:
 	note C_, 16
 Music_WCSBattleBW_Ch1_L:
 	volume_envelope 14, 7
-	vibrato $0, $0
+	vibrato 0, 0, 0
 	note C_, 8
 	octave 3
 	note B_, 8
@@ -361,7 +361,7 @@ Music_WCSBattleBW_Ch2:
 	note F_, 8
 	note G_, 8
 	volume_envelope 12, 8
-	vibrato $5, $22
+	vibrato 5, 2, 2
 	note F#, 16
 	note G#, 8
 	note F#, 8
@@ -378,7 +378,7 @@ Music_WCSBattleBW_Ch2:
 	note E_, 16
 Music_WCSBattleBW_Ch2_L:
 	volume_envelope 14, 7
-	vibrato $0, $0
+	vibrato 0, 0, 0
 	octave 3
 	note G_, 8
 	note F#, 8

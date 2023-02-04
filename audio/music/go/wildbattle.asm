@@ -73,7 +73,7 @@ Music_WildBattleGo_Ch1_loop:
 	note __, 4
 	duty_cycle_pattern 1, 1, 1, 1
 	volume_envelope 15, 3
-	vibrato $05, $13
+	vibrato 5, 1, 3
 	octave 2
 	note A#, 4
 	octave 3
@@ -167,7 +167,7 @@ Music_WildBattleGo_Ch2_loop:
 	note __, 2
 	duty_cycle_pattern 1, 1, 1, 1
 	volume_envelope 10, 8
-	vibrato $08, $13
+	vibrato 8, 1, 3
 	octave 4
 	sound_call Music_WildBattleGo_Ch2_ditty1
 	note G_, 4

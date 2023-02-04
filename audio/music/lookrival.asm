@@ -10,7 +10,7 @@ Music_LookRival_Ch1:
 	volume 7, 7
 	duty_cycle 1
 	pitch_offset 1
-	vibrato $12, $15
+	vibrato 18, 1, 5
 	stereo_panning FALSE, TRUE
 	note_type 12, 11, 2
 	octave 4
@@ -118,7 +118,7 @@ Music_LookRival_branch_f4ff7:
 
 Music_LookRival_Ch2:
 	duty_cycle 3
-	vibrato $8, $36
+	vibrato 8, 3, 6
 	stereo_panning TRUE, FALSE
 	note_type 12, 12, 2
 	octave 4

@@ -13,7 +13,7 @@ Music_MarineTubeB2W2:
 Music_MarineTubeB2W2_Ch1:
 	tempo 132
 	duty_cycle_pattern 3, 3, 3, 3
-	vibrato $12, $15
+	vibrato 18, 1, 5
 	pitch_offset 1
 	note_type 12, 6, 1
 	octave 6
@@ -467,7 +467,7 @@ Music_MarineTubeB2W2_Ch1:
 	sound_jump Music_MarineTubeB2W2_Ch1
 
 Music_MarineTubeB2W2_Ch2:
-	vibrato $8, $26
+	vibrato 8, 2, 6
 	pitch_offset 1
 	note_type 12, 10, 0
 	duty_cycle_pattern 2, 2, 2, 2
@@ -618,7 +618,7 @@ Music_MarineTubeB2W2_Ch2:
 	note F_, 16
 	volume_envelope 10, 7
 	note F_, 16
-	vibrato $8, $48
+	vibrato 8, 4, 8
 	volume_envelope 11, 0
 	note D#, 8
 	volume_envelope 11, 7
@@ -671,7 +671,7 @@ Music_MarineTubeB2W2_Ch2:
 
 Music_MarineTubeB2W2_Ch3:
 	note_type 12, 1, 2
-	vibrato $12, $15
+	vibrato 18, 1, 5
 	octave 3
 	note G_, 2
 	volume_envelope 3, 2

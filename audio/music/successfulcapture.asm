@@ -13,7 +13,7 @@ Music_SuccessfulCapture_Ch1:
 	sound_jump Music_SuccessfulCapture_branch_f4536
 
 Music_SuccessfulCapture_Ch2:
-	vibrato $12, $24
+	vibrato 18, 2, 4
 	note_type 12, 12, 1
 	duty_cycle 2
 	sound_jump Music_SuccessfulCapture_branch_f4585

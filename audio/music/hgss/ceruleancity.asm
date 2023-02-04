@@ -205,7 +205,7 @@ Music_CeruleanCityHGSS_Loop1:
 
 Music_CeruleanCityHGSS_Ch2:
 ;Channel2_Bar1:
-	vibrato 12,$34
+	vibrato 12, 3, 4
 	duty_cycle 2
 	note_type 2, 12, 2
 	pitch_offset 2
@@ -405,7 +405,7 @@ Music_CeruleanCityHGSS_Loop2:
 
 Music_CeruleanCityHGSS_Ch3:
 	note_type 6, 1, 5
-	vibrato 12, $24
+	vibrato 12, 2, 4
 ;Channel3_Bar1:
 	note __, 16
 	octave 4

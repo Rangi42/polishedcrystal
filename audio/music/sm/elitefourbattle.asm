@@ -15,7 +15,7 @@ Music_EliteFourBattleSM_Ch1:
 	volume 7, 7
 	duty_cycle 0
 	pitch_offset 2
-	vibrato $12, $15
+	vibrato 18, 1, 5
 	note_type 6, 1, 2
 	note __, 16
 	note __, 16
@@ -239,7 +239,7 @@ Music_EliteFourBattleSM_Ch1_branch_1:
 
 Music_EliteFourBattleSM_Ch2:
 	duty_cycle 1
-	vibrato $8, $36
+	vibrato 8, 3, 6
 	pitch_offset 1
 	note_type 6, 10, 2
 	octave 3

@@ -9,7 +9,7 @@ Music_LookHiker_Ch1:
 	tempo 132
 	volume 7, 7
 	pitch_offset 1
-	vibrato $12, $24
+	vibrato 18, 2, 4
 	duty_cycle 2
 	stereo_panning FALSE, TRUE
 	note_type 12, 6, 8
@@ -69,7 +69,7 @@ Music_LookHiker_branch_f7457:
 	sound_jump Music_LookHiker_branch_f7457
 
 Music_LookHiker_Ch3:
-	vibrato $12, $24
+	vibrato 18, 2, 4
 	stereo_panning TRUE, FALSE
 	note_type 12, 1, 4
 	octave 4

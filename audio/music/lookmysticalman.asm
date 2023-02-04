@@ -8,7 +8,7 @@ Music_LookMysticalMan:
 Music_LookMysticalMan_Ch1:
 	tempo 136
 	volume 7, 7
-	vibrato $a, $34
+	vibrato 10, 3, 4
 	pitch_offset 1
 	stereo_panning FALSE, TRUE
 	note_type 12, 11, 3
@@ -194,7 +194,7 @@ Music_LookMysticalMan_branch_1784f9:
 
 Music_LookMysticalMan_Ch2:
 	duty_cycle 3
-	vibrato $a, $34
+	vibrato 10, 3, 4
 	note_type 12, 11, 3
 	note __, 8
 Music_LookMysticalMan_branch_178523:

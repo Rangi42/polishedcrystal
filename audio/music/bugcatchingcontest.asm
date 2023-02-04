@@ -9,7 +9,7 @@ Music_BugCatchingContest_Ch1:
 	tempo 144
 	volume 7, 7
 	stereo_panning FALSE, TRUE
-	vibrato $8, $24
+	vibrato 8, 2, 4
 	duty_cycle 2
 	note_type 12, 11, 7
 	note __, 8
@@ -190,7 +190,7 @@ Music_BugCatchingContest_branch_f7c8e:
 
 Music_BugCatchingContest_Ch2:
 	stereo_panning TRUE, FALSE
-	vibrato $8, $23
+	vibrato 8, 2, 3
 	duty_cycle 1
 	note_type 12, 12, 7
 	note __, 8
@@ -373,7 +373,7 @@ Music_BugCatchingContest_branch_f7d8e:
 
 Music_BugCatchingContest_Ch3:
 	stereo_panning TRUE, TRUE
-	vibrato $10, $23
+	vibrato 16, 2, 3
 	note_type 12, 1, 4
 	note __, 8
 	octave 3

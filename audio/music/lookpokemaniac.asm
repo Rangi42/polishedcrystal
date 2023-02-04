@@ -8,7 +8,7 @@ Music_LookPokemaniac_Ch1:
 	stereo_panning FALSE, TRUE
 	tempo 144
 	volume 7, 7
-	vibrato $2, $33
+	vibrato 2, 3, 3
 	pitch_offset 2
 	note_type 12, 11, 3
 	note __, 8
@@ -30,7 +30,7 @@ Music_LookPokemaniac_branch_ebdfb:
 
 Music_LookPokemaniac_Ch2:
 	stereo_panning TRUE, TRUE
-	vibrato $2, $33
+	vibrato 2, 3, 3
 	pitch_offset 1
 	note_type 12, 11, 3
 	octave 2
@@ -81,7 +81,7 @@ Music_LookPokemaniac_branch_ebe38:
 
 Music_LookPokemaniac_Ch3:
 	stereo_panning TRUE, FALSE
-	vibrato $6, $33
+	vibrato 6, 3, 3
 	note_type 12, 1, 5
 	octave 4
 	note C_, 1

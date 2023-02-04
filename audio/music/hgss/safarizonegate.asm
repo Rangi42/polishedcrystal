@@ -15,7 +15,7 @@ Music_SafariZoneGateHGSS_Ch1:
 	volume 7, 7
 	duty_cycle 0
 	pitch_offset 2
-	vibrato $8, $15
+	vibrato 8, 1, 5
 	note_type 12, 8, 6
 	octave 3
 	note C#, 4
@@ -204,7 +204,7 @@ Music_SafariZoneGateHGSS_Ch1:
 
 Music_SafariZoneGateHGSS_Ch2:
 	duty_cycle 3
-	vibrato $12, $25
+	vibrato 18, 2, 5
 	pitch_offset 1
 	note_type 12, 9, 6
 	octave 3
@@ -444,7 +444,7 @@ Music_SafariZoneGateHGSS_Ch2_branch_1:
 
 Music_SafariZoneGateHGSS_Ch3:
 	note_type 12, 2, 5
-	vibrato $12, $15
+	vibrato 18, 1, 5
 	note __, 16
 	note __, 12
 Music_SafariZoneGateHGSS_Ch3_loop:

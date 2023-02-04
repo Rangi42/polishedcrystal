@@ -14,7 +14,7 @@ Music_EverGrandeCityRSE_Ch1:
 	tempo 100
 	volume 7, 7
 	stereo_panning FALSE, TRUE
-	vibrato $12, $25
+	vibrato 18, 2, 5
 	duty_cycle 2
 	note_type 12, 7, 4
 	octave 3
@@ -303,7 +303,7 @@ Music_EverGrandeCityRSE_Ch1_loop:
 	sound_jump Music_EverGrandeCityRSE_Ch1_loop
 
 Music_EverGrandeCityRSE_Ch2:
-	vibrato $12, $25
+	vibrato 18, 2, 5
 	duty_cycle 3
 	stereo_panning TRUE, FALSE
 	pitch_offset 2
@@ -620,7 +620,7 @@ Music_EverGrandeCityRSE_Ch2_loop:
 
 Music_EverGrandeCityRSE_Ch3:
 	stereo_panning TRUE, TRUE
-	vibrato $12, $15
+	vibrato 18, 1, 5
 	note_type 12, 1, 4
 	octave 2
 	note __, 6

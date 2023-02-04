@@ -15,7 +15,7 @@ Music_ZinniaEncounterORAS_Ch1:
 	volume 7, 7
 	duty_cycle 0
 	pitch_offset 2
-	vibrato $8, $15
+	vibrato 8, 1, 5
 	note_type 12, 10, 3
 	octave 2
 	note B_, 8
@@ -163,7 +163,7 @@ Music_ZinniaEncounterORAS_Ch1_loop:
 
 Music_ZinniaEncounterORAS_Ch2:
 	duty_cycle 1
-	vibrato $12, $25
+	vibrato 18, 2, 5
 	pitch_offset 1
 	note_type 12, 11, 3
 	octave 2
@@ -177,7 +177,7 @@ Music_ZinniaEncounterORAS_Ch2:
 	note A_, 1
 	note G#, 1
 Music_ZinniaEncounterORAS_Ch2_loop_main:
-	vibrato $12, $25
+	vibrato 18, 2, 5
 	volume_envelope 11, 0
 	octave 3
 	note C#, 2
@@ -219,7 +219,7 @@ Music_ZinniaEncounterORAS_Ch2_loop_main:
 	octave 4
 	note E_, 4
 Music_ZinniaEncounterORAS_Ch2_loop_1:
-	vibrato $22, $43
+	vibrato 34, 4, 3
 	volume_envelope 4, 0
 	note F#, 2
 	volume_envelope 4, -6
@@ -292,7 +292,7 @@ Music_ZinniaEncounterORAS_Ch2_branch_1:
 
 Music_ZinniaEncounterORAS_Ch3:
 	note_type 12, 1, 4
-	vibrato $12, $15
+	vibrato 18, 1, 5
 	octave 2
 	note G#, 2
 	note __, 6

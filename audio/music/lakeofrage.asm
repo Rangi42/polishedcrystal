@@ -10,7 +10,7 @@ Music_LakeOfRage_Ch1:
 	volume 7, 7
 	duty_cycle 3
 	pitch_offset 2
-	vibrato $8, $22
+	vibrato 8, 2, 2
 	stereo_panning TRUE, FALSE
 	note_type 12, 11, 4
 	octave 3
@@ -96,7 +96,7 @@ Music_LakeOfRage_branch_ee6e9:
 
 Music_LakeOfRage_Ch2:
 	duty_cycle 3
-	vibrato $20, $44
+	vibrato 32, 4, 4
 	stereo_panning TRUE, TRUE
 	note_type 12, 9, 0
 	octave 3

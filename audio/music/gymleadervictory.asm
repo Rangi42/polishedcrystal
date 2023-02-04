@@ -8,7 +8,7 @@ Music_GymLeaderVictory:
 Music_GymLeaderVictory_Ch1:
 	tempo 116
 	volume 7, 7
-	vibrato $12, $34
+	vibrato 18, 3, 4
 	duty_cycle 3
 	pitch_offset 1
 	note_type 12, 11, 7
@@ -115,7 +115,7 @@ Music_GymLeaderVictory_branch_f46a0:
 	sound_ret
 
 Music_GymLeaderVictory_Ch2:
-	vibrato $12, $34
+	vibrato 18, 3, 4
 	duty_cycle 3
 	note_type 12, 13, 7
 	octave 4

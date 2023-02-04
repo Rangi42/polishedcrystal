@@ -8,7 +8,7 @@ Music_Evolution:
 Music_Evolution_Ch1:
 	tempo 132
 	volume 7, 7
-	vibrato $6, $34
+	vibrato 6, 3, 4
 	pitch_offset 1
 	duty_cycle 2
 	note_type 12, 9, 2
@@ -66,7 +66,7 @@ Music_Evolution_branch_f0743:
 
 Music_Evolution_Ch2:
 	duty_cycle 2
-	vibrato $8, $25
+	vibrato 8, 2, 5
 	note_type 12, 10, 2
 	octave 4
 	note G_, 1

@@ -9,7 +9,7 @@ Music_JohtoTrainerBattle_Ch1:
 	volume 7, 7
 	duty_cycle 3
 	pitch_offset 2
-	vibrato $12, $15
+	vibrato 18, 1, 5
 	note_type 12, 9, 2
 	note __, 8
 	octave 3
@@ -453,7 +453,7 @@ Music_JohtoTrainerBattle_branch_f629f:
 
 Music_JohtoTrainerBattle_Ch2:
 	duty_cycle 3
-	vibrato $8, $36
+	vibrato 8, 3, 6
 	pitch_offset 1
 	note_type 12, 12, 2
 	octave 4

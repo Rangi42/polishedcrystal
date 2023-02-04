@@ -123,7 +123,7 @@ Music_PokemonMarch_branch_f6eb8:
 
 Music_PokemonMarch_Ch2:
 	duty_cycle 2
-	vibrato $10, $22
+	vibrato 16, 2, 2
 	note_type 12, 11, 2
 	octave 3
 	note G_, 4

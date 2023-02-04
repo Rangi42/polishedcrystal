@@ -85,7 +85,7 @@ Music_TrainerVictory_branch_ebf11:
 	sound_ret
 
 Music_TrainerVictory_Ch2:
-	vibrato $12, $34
+	vibrato 18, 3, 4
 	duty_cycle 3
 	note_type 8, 13, 1
 	octave 4

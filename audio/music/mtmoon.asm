@@ -10,14 +10,14 @@ Music_MtMoon_Ch1:
 	volume 7, 7
 	duty_cycle 2
 	pitch_offset 1
-	vibrato $8, $14
+	vibrato 8, 1, 4
 	stereo_panning TRUE, FALSE
 	note_type 12, 4, 5
 	note __, 2
 	sound_jump Music_MtMoon_branch_edb56
 
 Music_MtMoon_Ch2:
-	vibrato $b, $15
+	vibrato 11, 1, 5
 	duty_cycle 2
 	note_type 12, 8, 4
 	stereo_panning FALSE, TRUE

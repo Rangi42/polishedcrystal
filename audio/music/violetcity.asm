@@ -8,7 +8,7 @@ Music_VioletCity:
 Music_VioletCity_Ch1:
 	tempo 164
 	volume 7, 7
-	vibrato $12, $25
+	vibrato 18, 2, 5
 	duty_cycle 2
 	note_type 12, 9, 5
 	note __, 16
@@ -298,7 +298,7 @@ Music_VioletCity_branch_f0056:
 	sound_jump Music_VioletCity_branch_f0056
 
 Music_VioletCity_Ch2:
-	vibrato $12, $24
+	vibrato 18, 2, 4
 	duty_cycle 2
 	note_type 12, 12, 7
 	note __, 16
@@ -471,7 +471,7 @@ Music_VioletCity_branch_f0199:
 	note C#, 1
 	note __, 1
 	note F#, 2
-	vibrato $0, $0
+	vibrato 0, 0, 0
 	volume_envelope 8, 7
 	octave 5
 	note E_, 4
@@ -490,7 +490,7 @@ Music_VioletCity_branch_f0199:
 	octave 5
 	note C#, 11
 	note __, 5
-	vibrato $12, $24
+	vibrato 18, 2, 4
 	volume_envelope 10, 7
 	duty_cycle 2
 	octave 4

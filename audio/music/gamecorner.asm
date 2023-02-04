@@ -136,7 +136,7 @@ Music_GameCorner_branch_ede13:
 
 Music_GameCorner_Ch2:
 	stereo_panning TRUE, TRUE
-	vibrato $8, $24
+	vibrato 8, 2, 4
 	note_type 12, 10, 1
 	note __, 8
 Music_GameCorner_branch_ede25:
@@ -317,7 +317,7 @@ Music_GameCorner_branch_ede75:
 	sound_ret
 
 Music_GameCorner_Ch3:
-	vibrato $8, $22
+	vibrato 8, 2, 2
 	note_type 12, 1, 4
 	note __, 8
 Music_GameCorner_branch_edeef:

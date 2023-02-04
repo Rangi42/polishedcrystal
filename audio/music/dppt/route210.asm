@@ -488,7 +488,7 @@ Music_Route210DPPt_Ch2:
 	note_type 12, 12, 7
 	duty_cycle 1
 	pitch_offset 2
-	vibrato $08, $24
+	vibrato 8, 2, 4
 	octave 4
 	note __, 2
 Music_Route210DPPt_Ch2_loop:
@@ -750,7 +750,7 @@ Music_Route210DPPt_Ch2_loop:
 	note B_, 6
 	note A_, 4
 	volume_envelope 12, 8
-	vibrato $04, $35
+	vibrato 4, 3, 5
 	octave 4
 	note G#, 2
 	note F_, 2
@@ -810,7 +810,7 @@ Music_Route210DPPt_Ch2_loop:
 	note C#, 7
 	note D#, 8
 	duty_cycle 1
-	vibrato $08, $24
+	vibrato 8, 2, 4
 	octave 4
 	note F_, 2
 	note D#, 2

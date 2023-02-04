@@ -8,7 +8,7 @@ Music_Route12:
 Music_Route12_Ch1:
 	tempo 148
 	volume 7, 7
-	vibrato $12, $34
+	vibrato 18, 3, 4
 	pitch_offset 1
 	stereo_panning FALSE, TRUE
 	duty_cycle 3
@@ -163,7 +163,7 @@ Music_Route12_branch_ec5bf:
 
 Music_Route12_Ch2:
 	duty_cycle 3
-	vibrato $12, $34
+	vibrato 18, 3, 4
 	note_type 12, 11, 8
 	octave 4
 	note E_, 1
@@ -279,7 +279,7 @@ Music_Route12_branch_ec647:
 	sound_ret
 
 Music_Route12_Ch3:
-	vibrato $12, $54
+	vibrato 18, 5, 4
 	note_type 12, 1, 6
 	octave 3
 	note G#, 2

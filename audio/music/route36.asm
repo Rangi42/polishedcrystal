@@ -10,7 +10,7 @@ Music_Route36_Ch1:
 	volume 7, 7
 	duty_cycle 3
 	pitch_offset 1
-	vibrato $10, $15
+	vibrato 16, 1, 5
 	stereo_panning FALSE, TRUE
 	note_type 12, 11, 3
 	octave 3
@@ -166,7 +166,7 @@ Music_Route36_branch_e9517:
 
 Music_Route36_Ch2:
 	duty_cycle 3
-	vibrato $10, $36
+	vibrato 16, 3, 6
 	stereo_panning TRUE, FALSE
 	note_type 12, 12, 2
 	octave 3

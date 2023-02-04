@@ -230,7 +230,7 @@ Music_AzaleaTown_branch_f5912:
 	sound_ret
 
 Music_AzaleaTown_Ch2:
-	vibrato $12, $23
+	vibrato 18, 2, 3
 	duty_cycle 2
 	stereo_panning TRUE, FALSE
 	note_type 12, 6, 2
@@ -385,10 +385,10 @@ Music_AzaleaTown_branch_f59c7:
 	note __, 1
 	note C_, 1
 	note_type 12, 10, 8
-	vibrato $0, $0
+	vibrato 0, 0, 0
 	note C#, 8
 	volume_envelope 10, 7
-	vibrato $12, $23
+	vibrato 18, 2, 3
 	note C#, 16
 	note __, 4
 	volume_envelope 11, 4
@@ -419,7 +419,7 @@ Music_AzaleaTown_branch_f59c7:
 
 Music_AzaleaTown_Ch3:
 	stereo_panning TRUE, TRUE
-	vibrato $6, $26
+	vibrato 6, 2, 6
 	note_type 12, 2, 5
 	octave 2
 	note G#, 1

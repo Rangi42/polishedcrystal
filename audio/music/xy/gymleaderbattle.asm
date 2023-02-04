@@ -574,7 +574,7 @@ Music_GymLeaderBattleXY_Ch1_loop:
 	note D#, 4
 	octave 3
 	note_type 12, 15, 7
-	vibrato 0, $26
+	vibrato 0, 2, 6
 	note A#, 12
 	note A_, 4
 	note A#, 4
@@ -660,7 +660,7 @@ Music_GymLeaderBattleXY_Ch1_loop:
 	note A_, 16
 	note F_, 16
 	note C_, 16
-	vibrato 0, $0
+	vibrato 0, 0, 0
 	octave 5
 	note_type 3, 11, 7
 	note D#, 4
@@ -796,7 +796,7 @@ Music_GymLeaderBattleXY_Ch2:
 	note D#, 4
 Music_GymLeaderBattleXY_Ch2_loop:
 	stereo_panning TRUE, FALSE
-	vibrato 0, $46
+	vibrato 0, 4, 6
 	octave 3
 	note_type 12, 11, -7
 	note G_, 10
@@ -843,7 +843,7 @@ Music_GymLeaderBattleXY_Ch2_loop:
 	note __, 16
 	note __, 16
 	stereo_panning TRUE, TRUE
-	vibrato 0, $C1
+	vibrato 0, 12, 1
 	octave 2
 	note_type 12, 1, -7
 	note F_, 4
@@ -864,7 +864,7 @@ Music_GymLeaderBattleXY_Ch2_loop:
 	note F_, 16
 	note_type 12, 15, 7
 	note F_, 16
-	vibrato 0, $0
+	vibrato 0, 0, 0
 	stereo_panning FALSE, TRUE
 	note_type 3, 14, 7
 	duty_cycle 1
@@ -1037,7 +1037,7 @@ Music_GymLeaderBattleXY_Ch2_loop:
 	note D#, 5
 	octave 2
 	note_type 12, 15, 7
-	vibrato 0, $26
+	vibrato 0, 2, 6
 	note A#, 12
 	note A_, 4
 	note A#, 4
@@ -1128,7 +1128,7 @@ Music_GymLeaderBattleXY_Ch2_loop:
 	note F_, 16
 	octave 1
 	note F_, 16
-	vibrato 0, $0
+	vibrato 0, 0, 0
 	note_type 3, 9, 7
 	octave 5
 	note D#, 4

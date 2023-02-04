@@ -9,7 +9,7 @@ Music_Clair_Ch1:
 	tempo 136
 	volume 7, 7
 	pitch_offset 1
-	vibrato $12, $34
+	vibrato 18, 3, 4
 	stereo_panning FALSE, TRUE
 	note_type 12, 9, 3
 	duty_cycle 3
@@ -145,7 +145,7 @@ Music_Clair_branch_1fb2e:
 
 Music_Clair_Ch2:
 	duty_cycle 3
-	vibrato $12, $34
+	vibrato 18, 3, 4
 	note_type 6, 11, 7
 Music_Clair_branch_1fb49:
 	octave 3

@@ -233,7 +233,7 @@ Music_HoOhBattleHGSS_Ch1_L:
 	pitch_sweep 0, 0
 	note E_, 7
 	note_type 8, 11, 7
-	vibrato $7, $26
+	vibrato 7, 2, 6
 	octave 4
 	note D_, 2
 	note F_, 2
@@ -261,11 +261,11 @@ Music_HoOhBattleHGSS_Ch1_L:
 	note F#, 2
 	note A_, 2
 	volume_envelope 12, 8
-	vibrato $0, $0
+	vibrato 0, 0, 0
 	octave 5
 	note D_, 8
 	volume_envelope 11, 7
-	vibrato $7, $26
+	vibrato 7, 2, 6
 	note D_, 12
 	octave 4
 	note B_, 1
@@ -299,13 +299,13 @@ Music_HoOhBattleHGSS_Ch1_L:
 	octave 5
 	note D_, 4
 	volume_envelope 12, 8
-	vibrato $0, $0
+	vibrato 0, 0, 0
 	note E_, 8
 	volume_envelope 11, 7
-	vibrato $7, $26
+	vibrato 7, 2, 6
 	note E_, 16
 	volume_envelope 12, 7
-	vibrato $0, $0
+	vibrato 0, 0, 0
 	octave 4
 	note E_, 1
 	note F_, 1
@@ -435,7 +435,7 @@ Music_HoOhBattleHGSS_Ch1_L:
 	note __, 14
 	duty_cycle 0
 	volume_envelope 12, 4
-	vibrato $1, $25
+	vibrato 1, 2, 5
 	octave 2
 	note E_, 2
 	note E_, 6
@@ -465,7 +465,7 @@ Music_HoOhBattleHGSS_Ch1_L:
 	note E_, 2
 	duty_cycle 3
 	volume_envelope 12, 8
-	vibrato $0, $0
+	vibrato 0, 0, 0
 	octave 3
 	pitch_sweep 4, 7
 	note D_, 1
@@ -571,7 +571,7 @@ Music_HoOhBattleHGSS_Ch2_L:
 	note F_, 4
 	duty_cycle 0
 	volume_envelope 12, 4
-	vibrato $1, $25
+	vibrato 1, 2, 5
 	octave 2
 	note E_, 2
 	note E_, 14
@@ -639,7 +639,7 @@ Music_HoOhBattleHGSS_Ch2_L:
 	note E_, 2
 	duty_cycle 2
 	volume_envelope 9, 3
-	vibrato $0, $0
+	vibrato 0, 0, 0
 	octave 4
 	note E_, 2
 	octave 5
@@ -723,14 +723,14 @@ Music_HoOhBattleHGSS_Ch2_L:
 	note D_, 6
 	duty_cycle 3
 	volume_envelope 11, 7
-	vibrato $7, $26
+	vibrato 7, 2, 6
 	octave 5
 	note F_, 2
 	note D_, 2
 	note E_, 8
 	duty_cycle 0
 	volume_envelope 9, 3
-	vibrato $1, $25
+	vibrato 1, 2, 5
 	octave 3
 	note E_, 2
 	octave 4
@@ -906,7 +906,7 @@ Music_HoOhBattleHGSS_Ch2_L:
 	note __, 16
 	duty_cycle 3
 	volume_envelope 12, 8
-	vibrato $0, $0
+	vibrato 0, 0, 0
 	octave 3
 	note F_, 16
 	volume_envelope 12, 7

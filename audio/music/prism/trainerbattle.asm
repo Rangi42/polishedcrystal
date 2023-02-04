@@ -218,7 +218,7 @@ Music_TrainerBattlePrism_L1:
 	note F_, 2
 	note D_, 4
 	volume_envelope 12, 4
-	vibrato $11, $12
+	vibrato 17, 1, 2
 	sound_call Music_TrainerBattlePrism_P2
 	sound_call Music_TrainerBattlePrism_P3
 	note D_, 2
@@ -241,7 +241,7 @@ Music_TrainerBattlePrism_L1:
 	note G_, 2
 	sound_call Music_TrainerBattlePrism_P2
 	volume_envelope 12, 7
-	vibrato $0, $0
+	vibrato 0, 0, 0
 	octave 4
 	note G_, 4
 	note C_, 2
@@ -327,7 +327,7 @@ Music_TrainerBattlePrism_Ch2:
 	tempo 102
 	duty_cycle 3
 	note_type 12, 11, 4
-	vibrato $11, $12
+	vibrato 17, 1, 2
 	octave 3
 	note G_, 2
 	note C_, 1
@@ -442,7 +442,7 @@ Music_TrainerBattlePrism_L2:
 	note C_, 16
 	duty_cycle 2
 	volume_envelope 8, 4
-	vibrato $0, $0
+	vibrato 0, 0, 0
 Music_TrainerBattlePrism_L3:
 	sound_call Music_TrainerBattlePrism_P7
 	sound_call Music_TrainerBattlePrism_P7
@@ -451,7 +451,7 @@ Music_TrainerBattlePrism_L3:
 	sound_loop 2, Music_TrainerBattlePrism_L3
 	duty_cycle 3
 	volume_envelope 11, 4
-	vibrato $11, $12
+	vibrato 17, 1, 2
 	octave 2
 	note F_, 2
 	note F_, 2

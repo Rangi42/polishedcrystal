@@ -15,7 +15,7 @@ Music_TrainerBattleBW_Ch1:
 	tempo $6C
 	duty_cycle 3
 	pitch_offset 2
-	vibrato $12, $15
+	vibrato 18, 1, 5
 	octave 5
 	note_type 12, 11, 2
 	note E_, 1
@@ -547,7 +547,7 @@ Music_TrainerBattleBW_Ch1_loop:
 Music_TrainerBattleBW_Ch2:
 	duty_cycle 3
 	pitch_offset 1
-	vibrato $08, $36
+	vibrato 8, 3, 6
 	octave 4
 	note_type 12, 12, 2
 	note G#, 1

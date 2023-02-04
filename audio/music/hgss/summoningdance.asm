@@ -59,7 +59,7 @@ Music_SummoningDanceHGSS_Ch1:
 
 Music_SummoningDanceHGSS_Ch2:
 	duty_cycle 0
-	vibrato $10, $24
+	vibrato 16, 2, 4
 	note_type 12, 10, 5
 	octave 3
 	note __, 4

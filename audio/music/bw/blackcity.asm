@@ -11,7 +11,7 @@ Music_BlackCityBW:
 	channel 4, Music_BlackCityBW_Ch4
 
 Music_BlackCityBW_Ch1:
-	vibrato $12, $15
+	vibrato 18, 1, 5
 	pitch_offset 1
 	note_type 6, 9, 1
 	tempo 156
@@ -254,7 +254,7 @@ Music_BlackCityBW_Ch1_branch_1:
 
 Music_BlackCityBW_Ch2:
 	duty_cycle 2
-	vibrato $12, $24
+	vibrato 18, 2, 4
 	pitch_offset 1
 	note_type 6, 10, 7
 	octave 3
@@ -333,7 +333,7 @@ Music_BlackCityBW_Ch2:
 	note F#, 2
 	duty_cycle 1
 	volume_envelope 11, 7
-	vibrato $10, $44
+	vibrato 16, 4, 4
 	note A_, 12
 	note G_, 12
 	octave 5

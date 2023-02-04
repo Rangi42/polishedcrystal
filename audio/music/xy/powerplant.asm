@@ -13,7 +13,7 @@ Music_PowerPlantXY_Ch1:
 	tempo 175
 	volume 7, 7
 	stereo_panning FALSE, TRUE
-	vibrato $12, $23
+	vibrato 18, 2, 3
 	note_type 12, 8, 7
 	duty_cycle 0
 
@@ -28,7 +28,7 @@ Music_PowerPlantXY_Ch1_branch_0:
 	sound_jump Music_PowerPlantXY_Ch1_branch_0
 
 Music_PowerPlantXY_Ch1_branch_1:
-	vibrato $12, $23
+	vibrato 18, 2, 3
 	note_type 12, 12, 3
 	octave 2
 	note G#, 3
@@ -129,7 +129,7 @@ Music_PowerPlantXY_Ch1_branch_3:
 	sound_ret
 
 Music_PowerPlantXY_Ch1_branch_4:
-	vibrato $12, $35
+	vibrato 18, 3, 5
 	duty_cycle 2
 	note_type 12, 5, 1
 	note __, 3
@@ -157,7 +157,7 @@ Music_PowerPlantXY_Ch1_branch_4:
 
 Music_PowerPlantXY_Ch2:
 	stereo_panning TRUE, TRUE
-	vibrato $12, $23
+	vibrato 18, 2, 3
 	note_type 12, 12, 4
 
 Music_PowerPlantXY_Ch2_branch_0:
@@ -231,7 +231,7 @@ Music_PowerPlantXY_Ch2_branch_1:
 	sound_ret
 
 Music_PowerPlantXY_Ch2_branch_2:
-	vibrato $12, $23
+	vibrato 18, 2, 3
 	duty_cycle 1
 	note_type 12, 12, 2
 	octave 4
@@ -294,7 +294,7 @@ Music_PowerPlantXY_Ch2_branch_3:
 	sound_ret
 
 Music_PowerPlantXY_Ch2_branch_4:
-	vibrato $12, $35
+	vibrato 18, 3, 5
 	duty_cycle 2
 	note_type 12, 12, 2
 	octave 3
@@ -338,7 +338,7 @@ Music_PowerPlantXY_Ch3_branch_0:
 	sound_jump Music_PowerPlantXY_Ch3_branch_0
 
 Music_PowerPlantXY_Ch3_branch_1:
-	vibrato $0, $66
+	vibrato 0, 6, 6
 	note_type 12, 1, 4
 	octave 3
 	note C#, 3

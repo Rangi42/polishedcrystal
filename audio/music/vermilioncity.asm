@@ -27,7 +27,7 @@ Music_VermilionCity_Ch1:
 	note B_, 1
 	octave 5
 	note D_, 1
-	vibrato $10, $23
+	vibrato 16, 2, 3
 Music_VermilionCity_branch_eb6a0:
 	duty_cycle 1
 	note_type 12, 8, 5
@@ -140,7 +140,7 @@ Music_VermilionCity_Ch2:
 	stereo_panning TRUE, TRUE
 	duty_cycle 3
 	note_type 12, 7, 7
-	vibrato $10, $23
+	vibrato 16, 2, 3
 	octave 5
 	note E_, 4
 	note D_, 4
@@ -221,7 +221,7 @@ Music_VermilionCity_branch_eb77e:
 
 Music_VermilionCity_Ch3:
 	stereo_panning TRUE, FALSE
-	vibrato $22, $23
+	vibrato 34, 2, 3
 	note_type 12, 2, 5
 	octave 2
 	note E_, 4

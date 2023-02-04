@@ -13,7 +13,7 @@ Music_WildBattlePrism_Ch1:
 	volume 7, 7
 	duty_cycle 3
 	pitch_offset 2
-	vibrato $12, $15
+	vibrato 18, 1, 5
 	note_type 12, 11, 2
 	octave 4
 	note D_, 1
@@ -319,7 +319,7 @@ Music_WildBattlePrism_branch_19f26b:
 Music_WildBattlePrism_Ch2:
 	duty_cycle 3
 	pitch_offset 1
-	vibrato $8, $36
+	vibrato 8, 3, 6
 	note_type 12, 12, 2
 
 Music_WildBattlePrism_branch_19f11b:

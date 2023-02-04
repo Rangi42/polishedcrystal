@@ -14,7 +14,7 @@ Music_DewfordTownRSE_Ch1:
 	volume 7, 7
 	stereo_panning FALSE, TRUE
 Music_DewfordTownRSE_Ch1_b0:
-	vibrato $10, $33
+	vibrato 16, 3, 3
 	duty_cycle 2
 	note_type 12, 3, -7
 	octave 3
@@ -179,7 +179,7 @@ Music_DewfordTownRSE_Ch2:
 	stereo_panning TRUE, FALSE
 Music_DewfordTownRSE_Ch2_b0:
 	note_type 12, 5, -7
-	vibrato $10, $00
+	vibrato 16, 0, 0
 	duty_cycle 2
 	octave 4
 	note A#, 6
@@ -192,7 +192,7 @@ Music_DewfordTownRSE_Ch2_b0:
 	octave 4
 	note C_, 6
 	note D_, 6
-	vibrato $10, $33
+	vibrato 16, 3, 3
 	note_type 12, 9, 7
 	duty_cycle 2
 	octave 2
@@ -264,7 +264,7 @@ Music_DewfordTownRSE_Ch2_b0:
 	note G_, 2
 	note G#, 2
 	note D#, 2
-	vibrato $3f, $14
+	vibrato 63, 1, 4
 	note_type 12, 1, -7
 	note F_, 12
 	note_type 12, 11, 0
@@ -726,7 +726,7 @@ Music_DewfordTownRSE_Ch3_b0:
 
 	note __, 16
 	note __, 6
-	vibrato $14, $14
+	vibrato 20, 1, 4
 	note_type 6, 1, 0
 	note __, 1
 	octave 5

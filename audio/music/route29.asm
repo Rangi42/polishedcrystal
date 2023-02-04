@@ -10,7 +10,7 @@ Music_Route29_Ch1:
 	volume 7, 7
 	duty_cycle 3
 	pitch_offset 1
-	vibrato $10, $15
+	vibrato 16, 1, 5
 	stereo_panning FALSE, TRUE
 	note_type 12, 11, 2
 	note __, 2
@@ -171,7 +171,7 @@ Music_Route29_branch_f03a5:
 
 Music_Route29_Ch2:
 	duty_cycle 3
-	vibrato $12, $36
+	vibrato 18, 3, 6
 	note_type 12, 12, 2
 	octave 4
 	note C_, 1
@@ -335,7 +335,7 @@ Music_Route29_branch_f04de:
 Music_Route29_Ch3:
 	stereo_panning TRUE, FALSE
 	note_type 12, 2, 5
-	vibrato $9, $27
+	vibrato 9, 2, 7
 	note __, 2
 Music_Route29_branch_f0504:
 	note __, 2

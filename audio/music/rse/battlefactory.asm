@@ -19,7 +19,7 @@ Music_BattleFactoryRSE_Ch1:
 	note __, 16
 Music_BattleFactoryRSE_Ch1_loop:
 	duty_cycle 2
-	vibrato $12, $24
+	vibrato 18, 2, 4
 	note __, 16
 	note_type 6, 4, 7
 	octave 4
@@ -174,7 +174,7 @@ Music_BattleFactoryRSE_Ch1_loop:
 	note G_, 2
 	duty_cycle 0
 	volume_envelope 4, 7
-	vibrato $12, $F2
+	vibrato 18, 15, 2
 	octave 2
 	note B_, 12
 	octave 3
@@ -187,7 +187,7 @@ Music_BattleFactoryRSE_Ch1_loop:
 	note G#, 8
 	octave 4
 	note F_, 16
-	vibrato $12, $24
+	vibrato 18, 2, 4
 	volume_envelope 4, 4
 	octave 4
 	note D_, 2
@@ -263,7 +263,7 @@ Music_BattleFactoryRSE_Ch1_loop:
 	note B_, 2
 	duty_cycle 0
 	volume_envelope 4, 7
-	vibrato $12, $F2
+	vibrato 18, 15, 2
 	octave 2
 	note B_, 12
 	note G_, 12
@@ -274,7 +274,7 @@ Music_BattleFactoryRSE_Ch1_loop:
 	octave 2
 	note F#, 8
 	note D#, 16
-	vibrato $12, $24
+	vibrato 18, 2, 4
 	note __, 16
 	duty_cycle 3
 	volume_envelope 4, 2
@@ -310,26 +310,26 @@ Music_BattleFactoryRSE_Ch1_loop:
 	note_type 12, 1, -7
 	note F#, 6
 	volume_envelope 4, 7
-	vibrato $12, $73
+	vibrato 18, 7, 3
 	note F#, 10
 	volume_envelope 1, -7
-	vibrato $12, $24
+	vibrato 18, 2, 4
 	note B_, 6
 	volume_envelope 4, 7
-	vibrato $12, $73
+	vibrato 18, 7, 3
 	note B_, 10
 	volume_envelope 1, -7
-	vibrato $12, $24
+	vibrato 18, 2, 4
 	note D#, 6
 	volume_envelope 4, 7
-	vibrato $12, $73
+	vibrato 18, 7, 3
 	note D#, 10
 	volume_envelope 1, -7
-	vibrato $12, $24
+	vibrato 18, 2, 4
 	note A_, 6
 	volume_envelope 4, 7
-	vibrato $12, $73
-	vibrato $12, $24
+	vibrato 18, 7, 3
+	vibrato 18, 2, 4
 	note A_, 10
 	note __, 16
 	note __, 16
@@ -384,10 +384,10 @@ Music_BattleFactoryRSE_Ch1_loop:
 	note B_, 2
 	octave 3
 	note F_, 2
-	vibrato $12, $73
+	vibrato 18, 7, 3
 	volume_envelope 4, 7
 	note F#, 16
-	vibrato $12, $24
+	vibrato 18, 2, 4
 	note __, 8
 	duty_cycle 1
 	note_type 8, 10, 7
@@ -639,7 +639,7 @@ Music_BattleFactoryRSE_Ch2_loop:
 	note G_, 2
 	duty_cycle 0
 	volume_envelope 9, 7
-	vibrato $12, $F2
+	vibrato 18, 15, 2
 	octave 2
 	note B_, 12
 	octave 3
@@ -652,7 +652,7 @@ Music_BattleFactoryRSE_Ch2_loop:
 	note G#, 8
 	octave 4
 	note F_, 16
-	vibrato $12, $24
+	vibrato 18, 2, 4
 	volume_envelope 8, 4
 	octave 4
 	note D_, 2
@@ -734,7 +734,7 @@ Music_BattleFactoryRSE_Ch2_loop:
 	note B_, 2
 	duty_cycle 0
 	volume_envelope 9, 7
-	vibrato $12, $F2
+	vibrato 18, 15, 2
 	octave 2
 	note B_, 12
 	note G_, 12
@@ -787,28 +787,28 @@ Music_BattleFactoryRSE_Ch2_loop:
 	note_type 12, 6, -7
 	note F#, 6
 	volume_envelope 9, 7
-	vibrato $12, $73
+	vibrato 18, 7, 3
 	note F#, 10
 	volume_envelope 6, -7
-	vibrato $12, $24
+	vibrato 18, 2, 4
 	note B_, 6
 	volume_envelope 9, 7
-	vibrato $12, $73
+	vibrato 18, 7, 3
 	note B_, 10
 	volume_envelope 6, -7
-	vibrato $12, $24
+	vibrato 18, 2, 4
 	note D#, 6
 	volume_envelope 9, 7
-	vibrato $12, $73
+	vibrato 18, 7, 3
 	note D#, 10
 	volume_envelope 6, -7
-	vibrato $12, $24
+	vibrato 18, 2, 4
 	note A_, 6
 	volume_envelope 9, 7
-	vibrato $12, $73
+	vibrato 18, 7, 3
 	note A_, 10
 	note_type 6, 9, 2
-	vibrato $12, $24
+	vibrato 18, 2, 4
 	octave 2
 	note C_, 2
 	note E_, 2
@@ -929,10 +929,10 @@ Music_BattleFactoryRSE_Ch2_loop:
 	note B_, 2
 	octave 3
 	note F_, 2
-	vibrato $12, $73
+	vibrato 18, 7, 3
 	volume_envelope 9, 7
 	note F#, 16
-	vibrato $12, $24
+	vibrato 18, 2, 4
 	note __, 16
 	duty_cycle 3
 	octave 3
@@ -1015,7 +1015,7 @@ Music_BattleFactoryRSE_Ch2_branch_1:
 	sound_ret
 
 Music_BattleFactoryRSE_Ch3:
-	vibrato $14, $23
+	vibrato 20, 2, 3
 	stereo_panning TRUE, TRUE
 	note_type 6, 2, 5
 	octave 2

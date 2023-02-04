@@ -10,7 +10,7 @@ Music_ScaryHouseXY:
 	channel 3, Music_ScaryHouseXY_Ch3
 
 Music_ScaryHouseXY_Ch1:
-	vibrato $12, $15
+	vibrato 18, 1, 5
 	pitch_offset 3
 	note_type 6, 3, 7
 	duty_cycle 2
@@ -113,7 +113,7 @@ Music_ScaryHouseXY_Ch1_loop_main:
 
 Music_ScaryHouseXY_Ch2:
 	duty_cycle 2
-	vibrato $12, $15
+	vibrato 18, 1, 5
 	pitch_offset 2
 	note_type 12, 9, 3
 	octave 4

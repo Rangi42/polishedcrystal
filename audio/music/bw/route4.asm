@@ -15,7 +15,7 @@ Music_Route4BW_Ch1:
 	volume 7, 7
 	duty_cycle 3
 	pitch_offset 2
-	vibrato $10, $22
+	vibrato 16, 2, 2
 	sound_call Music_Route4BW_Ch1_branch_1
 Music_Route4BW_Ch1_loop:
 	sound_call Music_Route4BW_Ch1_branch_1
@@ -146,7 +146,7 @@ Music_Route4BW_Ch1_branch_4:
 
 Music_Route4BW_Ch2:
 	duty_cycle 3
-	vibrato $1c, $12
+	vibrato 28, 1, 2
 	note_type 12, 12, 2
 	octave 3
 	note D#, 2

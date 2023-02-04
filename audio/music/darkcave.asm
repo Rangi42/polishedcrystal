@@ -10,7 +10,7 @@ Music_DarkCave_Ch1:
 	volume 7, 7
 	duty_cycle 3
 	pitch_offset 1
-	vibrato $11, $15
+	vibrato 17, 1, 5
 	stereo_panning TRUE, FALSE
 	note_type 12, 10, 7
 Music_DarkCave_branch_ea2dc:
@@ -138,7 +138,7 @@ Music_DarkCave_branch_ea333:
 
 Music_DarkCave_Ch2:
 	duty_cycle 1
-	vibrato $12, $36
+	vibrato 18, 3, 6
 	stereo_panning FALSE, TRUE
 	note_type 12, 10, 7
 Music_DarkCave_branch_ea374:

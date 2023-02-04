@@ -141,7 +141,7 @@ Music_CeladonCity_branch_f43fe:
 	sound_ret
 
 Music_CeladonCity_Ch2:
-	vibrato $12, $34
+	vibrato 18, 3, 4
 	duty_cycle 2
 	stereo_panning TRUE, FALSE
 	note_type 12, 11, 7
@@ -266,7 +266,7 @@ Music_CeladonCity_branch_f4474:
 	sound_ret
 
 Music_CeladonCity_Ch3:
-	vibrato $12, $24
+	vibrato 18, 2, 4
 Music_CeladonCity_branch_f4495:
 	note_type 12, 2, 5
 	octave 3

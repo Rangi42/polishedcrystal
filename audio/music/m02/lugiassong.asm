@@ -17,7 +17,7 @@ Music_LugiasSong2000_NoIntro:
 
 Music_LugiasSong2000_Ch1:
 	duty_cycle 3
-	vibrato $12, $15
+	vibrato 18, 1, 5
 	pitch_offset 1
 	tempo 136
 	note_type 12, 6, 0
@@ -50,7 +50,7 @@ Music_LugiasSong2000_Ch1_loop_main:
 
 Music_LugiasSong2000_Ch2:
 	duty_cycle 0
-	vibrato $12, $15
+	vibrato 18, 1, 5
 	pitch_offset 1
 	note_type 12, 1, 0
 Music_LugiasSong2000_Ch2_loop_1:
@@ -289,12 +289,12 @@ Music_LugiasSong2000_Ch2_loop_main:
 
 Music_LugiasSong2000_Ch3:
 	note_type 12, 2, 3
-	vibrato $8, $16
+	vibrato 8, 1, 6
 	sound_call Music_LugiasSong2000_Ch3_branch_1
 	note B_, 8
 	sound_call Music_LugiasSong2000_Ch3_branch_2
 Music_LugiasSong2000_Ch3_loop:
-	vibrato $8, $16
+	vibrato 8, 1, 6
 	note_type 12, 1, 3
 	sound_call Music_LugiasSong2000_Ch3_branch_1
 	sound_call Music_LugiasSong2000_Ch3_branch_2

@@ -12,7 +12,7 @@ Music_CeruleanCaveRBY_Ch1:
 	tempo 144
 	volume 7, 7
 	duty_cycle 3
-	vibrato 10, 20
+	vibrato 10, 1, 4
 	note_type 12, 4, -5
 	note __, 8
 	octave 4
@@ -233,7 +233,7 @@ Music_CeruleanCaveRBY_branch_7dfd5:
 	sound_ret
 
 Music_CeruleanCaveRBY_Ch2:
-	vibrato 11, 21
+	vibrato 11, 1, 5
 	duty_cycle 3
 	note_type 12, 0, -7
 	octave 4
@@ -448,7 +448,7 @@ Music_CeruleanCaveRBY_branch_7e0cd:
 
 Music_CeruleanCaveRBY_Ch3:
 	note_type 12, 1, 1
-	vibrato 8, 38
+	vibrato 8, 2, 6
 	note __, 14
 	octave 4
 	note D_, 1

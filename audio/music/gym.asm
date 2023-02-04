@@ -9,7 +9,7 @@ Music_Gym_Ch1:
 	tempo 156
 	volume 7, 7
 	stereo_panning FALSE, TRUE
-	vibrato $12, $24
+	vibrato 18, 2, 4
 	duty_cycle 1
 	note_type 12, 11, 7
 Music_Gym_branch_f48c9:
@@ -369,7 +369,7 @@ Music_Gym_branch_f4a15:
 	sound_ret
 
 Music_Gym_Ch3:
-	vibrato $14, $23
+	vibrato 20, 2, 3
 	stereo_panning TRUE, TRUE
 Music_Gym_branch_f4a3c:
 	note_type 12, 1, 4

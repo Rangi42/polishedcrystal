@@ -7,7 +7,7 @@ Music_LookBeauty:
 
 Music_LookBeauty_Ch1:
 	stereo_panning FALSE, TRUE
-	vibrato $12, $25
+	vibrato 18, 2, 5
 	duty_cycle 2
 	tempo 128
 	volume 7, 7
@@ -79,7 +79,7 @@ Music_LookBeauty_branch_eee5f:
 
 Music_LookBeauty_Ch2:
 	stereo_panning TRUE, FALSE
-	vibrato $10, $23
+	vibrato 16, 2, 3
 	duty_cycle 2
 	note_type 12, 12, 7
 	octave 3
@@ -129,12 +129,12 @@ Music_LookBeauty_branch_eeec5:
 	note __, 2
 	note E_, 2
 	volume_envelope 11, 7
-	vibrato $10, $24
+	vibrato 16, 2, 4
 	octave 5
 	note C_, 15
 	note_type 6, 12, 7
 	volume_envelope 12, 5
-	vibrato $10, $23
+	vibrato 16, 2, 3
 	note __, 1
 	note C#, 1
 	note D_, 16
@@ -156,7 +156,7 @@ Music_LookBeauty_branch_eeec5:
 
 Music_LookBeauty_Ch3:
 	stereo_panning TRUE, TRUE
-	vibrato $8, $12
+	vibrato 8, 1, 2
 	note_type 12, 1, 5
 	note __, 16
 	octave 5

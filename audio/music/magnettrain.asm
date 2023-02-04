@@ -9,7 +9,7 @@ Music_MagnetTrain_Ch1:
 	tempo 110
 	volume 7, 7
 	stereo_panning FALSE, TRUE
-	vibrato $14, $23
+	vibrato 20, 2, 3
 	duty_cycle 2
 	note_type 12, 11, 2
 	note __, 16
@@ -70,7 +70,7 @@ Music_MagnetTrain_Ch1:
 	sound_ret
 
 Music_MagnetTrain_Ch2:
-	vibrato $14, $23
+	vibrato 20, 2, 3
 	duty_cycle 1
 	note_type 12, 13, 2
 	stereo_panning TRUE, FALSE
@@ -109,7 +109,7 @@ Music_MagnetTrain_Ch2:
 
 Music_MagnetTrain_Ch3:
 	stereo_panning TRUE, TRUE
-	vibrato $10, $23
+	vibrato 16, 2, 3
 	note_type 12, 1, 5
 	octave 6
 	note C_, 1

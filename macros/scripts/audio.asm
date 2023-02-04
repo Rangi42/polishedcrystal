@@ -116,11 +116,15 @@ MACRO pitch_slide
 	dn 8 - \2, \3 % 12 ; octave, pitch
 ENDM
 
-	const vibrato_cmd
+	const vibrato_cmd ; $e1
 MACRO vibrato
 	db vibrato_cmd
 	db \1 ; delay
-	db \2 ; extent
+	if _NARG > 2
+		dn \2, \3 ; extent, rate
+	else
+		db \2 ; LEGACY: Support for 1-arg extent
+	endc
 ENDM
 
 	const unknownmusic0xe2_cmd

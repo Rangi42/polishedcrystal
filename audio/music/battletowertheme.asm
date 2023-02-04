@@ -9,7 +9,7 @@ Music_BattleTowerTheme_Ch1:
 	tempo 141
 	volume 7, 7
 	pitch_offset 1
-	vibrato $12, $34
+	vibrato 18, 3, 4
 	stereo_panning FALSE, TRUE
 	note_type 6, 9, 4
 Music_BattleTowerTheme_branch_1788a5:
@@ -203,7 +203,7 @@ Music_BattleTowerTheme_branch_17895e:
 	sound_ret
 
 Music_BattleTowerTheme_Ch2:
-	vibrato $12, $34
+	vibrato 18, 3, 4
 Music_BattleTowerTheme_branch_178970:
 	duty_cycle 3
 	note_type 6, 11, 8
@@ -358,7 +358,7 @@ Music_BattleTowerTheme_branch_178a15:
 	sound_ret
 
 Music_BattleTowerTheme_Ch3:
-	vibrato $12, $34
+	vibrato 18, 3, 4
 	note_type 6, 1, 6
 Music_BattleTowerTheme_branch_178a26:
 	stereo_panning TRUE, TRUE

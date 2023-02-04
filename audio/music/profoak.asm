@@ -7,7 +7,7 @@ Music_ProfOak:
 Music_ProfOak_Ch1:
 	tempo 118
 	volume 7, 7
-	vibrato $12, $34
+	vibrato 18, 3, 4
 	pitch_offset 1
 	stereo_panning TRUE, FALSE
 	duty_cycle 3
@@ -103,7 +103,7 @@ Music_ProfOak_branch_f4e6c:
 	sound_ret
 
 Music_ProfOak_Ch2:
-	vibrato $12, $34
+	vibrato 18, 3, 4
 	duty_cycle 3
 	note_type 12, 10, 8
 	octave 3

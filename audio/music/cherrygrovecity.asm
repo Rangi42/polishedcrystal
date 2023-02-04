@@ -10,7 +10,7 @@ Music_CherrygroveCity_Ch1:
 	volume 7, 7
 	duty_cycle 3
 	pitch_offset 1
-	vibrato $8, $15
+	vibrato 8, 1, 5
 	stereo_panning TRUE, FALSE
 	note_type 12, 11, 5
 	note __, 10
@@ -95,7 +95,7 @@ Music_CherrygroveCity_branch_f5b26:
 
 Music_CherrygroveCity_Ch2:
 	duty_cycle 3
-	vibrato $10, $36
+	vibrato 16, 3, 6
 	stereo_panning FALSE, TRUE
 	note_type 12, 12, 3
 	octave 3

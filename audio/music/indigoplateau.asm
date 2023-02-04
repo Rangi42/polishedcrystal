@@ -42,7 +42,7 @@ Music_IndigoPlateau_branch_ee881:
 
 Music_IndigoPlateau_Ch2:
 	duty_cycle 3
-	vibrato $10, $22
+	vibrato 16, 2, 2
 	stereo_panning TRUE, FALSE
 Music_IndigoPlateau_branch_ee899:
 	sound_call Music_IndigoPlateau_branch_ee8e9

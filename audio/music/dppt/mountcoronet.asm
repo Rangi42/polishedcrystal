@@ -818,7 +818,7 @@ Music_MountCoronetDPPt_Ch3:
 	stereo_panning TRUE, TRUE
 Music_MountCoronetDPPt_Ch3_branch_0:
 	note_type 12, 1, 4
-	vibrato $16, $23
+	vibrato 22, 2, 3
 	note __, 6
 	note __, 16
 	note __, 16

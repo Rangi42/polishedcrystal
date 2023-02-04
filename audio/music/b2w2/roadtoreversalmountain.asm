@@ -15,7 +15,7 @@ Music_RoadToReversalMountainB2W2_Ch1:
 	volume 7, 7
 	duty_cycle 3
 	pitch_offset 2
-	vibrato $10, $22
+	vibrato 16, 2, 2
 	note_type 12, 6, 0
 	sound_call Music_RoadToReversalMountainB2W2_Ch1_branch_1
 	sound_call Music_RoadToReversalMountainB2W2_Ch1_branch_1
@@ -48,7 +48,7 @@ Music_RoadToReversalMountainB2W2_Ch1_branch_1:
 Music_RoadToReversalMountainB2W2_Ch2:
 	duty_cycle 0
 	pitch_offset 1
-	vibrato $1c, $12
+	vibrato 28, 1, 2
 	note_type 6, 10, 4
 	note __, 4
 	octave 3

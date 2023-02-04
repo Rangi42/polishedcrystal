@@ -10,7 +10,7 @@ Music_RocketHideout_Ch1:
 	volume 7, 7
 	duty_cycle 3
 	pitch_offset 4
-	vibrato $10, $44
+	vibrato 16, 4, 4
 	note_type 12, 11, 3
 	stereo_panning TRUE, FALSE
 Music_RocketHideout_branch_eeb93:
@@ -122,7 +122,7 @@ Music_RocketHideout_branch_eebfe:
 Music_RocketHideout_Ch2:
 	duty_cycle 3
 	pitch_offset 2
-	vibrato $0, $f0
+	vibrato 0, 15, 0
 	note_type 12, 12, 4
 	stereo_panning FALSE, TRUE
 Music_RocketHideout_branch_eec14:

@@ -11,7 +11,7 @@ Music_PokemonTowerRBY_Ch1:
 	tempo 152
 	volume 7, 7
 	duty_cycle 3
-	vibrato 12, 35
+	vibrato 12, 2, 3
 	note_type 12, 8, 0
 	note __, 4
 	octave 4
@@ -148,7 +148,7 @@ Music_PokemonTowerRBY_branch_7f05a:
 	sound_jump Music_PokemonTowerRBY_branch_7f05a
 
 Music_PokemonTowerRBY_Ch2:
-	vibrato 20, 52
+	vibrato 20, 3, 4
 	duty_cycle 3
 	note_type 12, 10, 0
 	octave 5
@@ -293,13 +293,13 @@ Music_PokemonTowerRBY_branch_7f0ee:
 	note G_, 8
 	octave 6
 	note C_, 16
-	vibrato 0, 52
+	vibrato 0, 3, 4
 	note_type 12, 10, 7
 	note C_, 16
 	sound_jump Music_PokemonTowerRBY_branch_7f0ee
 
 Music_PokemonTowerRBY_Ch3:
-	vibrato 4, 17
+	vibrato 4, 1, 1
 	note_type 12, 1, 3
 	note __, 8
 	octave 5

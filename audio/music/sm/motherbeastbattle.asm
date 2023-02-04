@@ -13,7 +13,7 @@ Music_MotherBeastBattleSM:
 Music_MotherBeastBattleSM_Ch1:
 	duty_cycle 3
 	tempo 220
-	vibrato $12, $15
+	vibrato 18, 1, 5
 	pitch_offset 1
 	note_type 12, 1, -7
 	octave 3
@@ -201,7 +201,7 @@ Music_MotherBeastBattleSM_Ch1_loop_main:
 
 Music_MotherBeastBattleSM_Ch2:
 	duty_cycle 3
-	vibrato $12, $15
+	vibrato 18, 1, 5
 	note_type 6, 9, 1
 	note __, 8
 	octave 3

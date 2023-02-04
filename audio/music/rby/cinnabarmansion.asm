@@ -11,7 +11,7 @@ Music_CinnabarMansionRBY:
 Music_CinnabarMansionRBY_Ch1:
 	tempo 144
 	volume 7, 7
-	vibrato 11, 37
+	vibrato 11, 2, 5
 	duty_cycle 2
 
 Music_CinnabarMansionRBY_branch_7ed19:
@@ -50,7 +50,7 @@ Music_CinnabarMansionRBY_branch_7ed19:
 Music_CinnabarMansionRBY_Ch2:
 	duty_cycle 2
 
-	vibrato 10, 36
+	vibrato 10, 2, 4
 	note_type 12, 12, 2
 
 Music_CinnabarMansionRBY_branch_7ed48:

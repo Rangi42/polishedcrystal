@@ -55,7 +55,7 @@ Music_PokemonLullaby_branch_f6d8c:
 	sound_jump Music_PokemonLullaby_branch_f6d8c
 
 Music_PokemonLullaby_Ch2:
-	vibrato $10, $14
+	vibrato 16, 1, 4
 	duty_cycle 0
 	note_type 12, 11, 4
 Music_PokemonLullaby_branch_f6dcc:

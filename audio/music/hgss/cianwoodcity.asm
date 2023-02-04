@@ -12,7 +12,7 @@ Music_CianwoodCityHGSS_Ch1:
 	tempo 197
 	volume 7, 7
 	stereo_panning FALSE, TRUE
-	vibrato $12, $25
+	vibrato 18, 2, 5
 	duty_cycle 2
 Music_CianwoodCityHGSS_branch_ef2e5:
 	note_type 12, 5, 7
@@ -218,7 +218,7 @@ Music_CianwoodCityHGSS_branch_ef3d0:
 	sound_ret
 
 Music_CianwoodCityHGSS_Ch2:
-	vibrato $12, $25
+	vibrato 18, 2, 5
 	duty_cycle 3
 	stereo_panning TRUE, FALSE
 Music_CianwoodCityHGSS_branch_ef3f2:
@@ -435,7 +435,7 @@ Music_CianwoodCityHGSS_branch_ef3f2:
 Music_CianwoodCityHGSS_Ch3:
 	stereo_panning TRUE, TRUE
 Music_CianwoodCityHGSS_branch_ef4e3:
-	vibrato $12, $25
+	vibrato 18, 2, 5
 	note_type 12, 2, 5
 	octave 2
 	note F#, 2

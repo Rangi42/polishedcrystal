@@ -10,7 +10,7 @@ Music_PokeComCenter_Ch1:
 	volume 7, 7
 	duty_cycle 1
 	pitch_offset 2
-	vibrato $8, $22
+	vibrato 8, 2, 2
 	stereo_panning TRUE, FALSE
 	note_type 12, 10, 2
 	octave 3
@@ -327,7 +327,7 @@ Music_PokeComCenter_branch_1796d6:
 
 Music_PokeComCenter_Ch3:
 	note_type 12, 2, 4
-	vibrato $10, $34
+	vibrato 16, 3, 4
 	octave 4
 	note G_, 2
 	note A_, 2
@@ -415,7 +415,7 @@ Music_PokeComCenter_branch_179788:
 	note B_, 2
 	octave 5
 	note D_, 2
-	vibrato $18, $44
+	vibrato 24, 4, 4
 	note E_, 8
 	note G_, 8
 	note F_, 2
@@ -448,7 +448,7 @@ Music_PokeComCenter_branch_179788:
 	note E_, 2
 	note D_, 2
 	note C_, 8
-	vibrato $10, $34
+	vibrato 16, 3, 4
 	sound_jump Music_PokeComCenter_branch_179788
 
 Music_PokeComCenter_Ch4:

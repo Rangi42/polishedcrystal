@@ -11,7 +11,7 @@ Music_LookRocket_Ch1:
 	transpose 0, 2
 	stereo_panning FALSE, TRUE
 	duty_cycle 3
-	vibrato $5, $64
+	vibrato 5, 6, 4
 	note_type 12, 10, 8
 	octave 4
 	note C_, 1
@@ -91,7 +91,7 @@ Music_RocketTheme_branch_f750c:
 
 Music_LookRocket_Ch2:
 	transpose 0, 2
-	vibrato $4, $64
+	vibrato 4, 6, 4
 	duty_cycle 3
 	note_type 12, 11, 7
 	stereo_panning TRUE, TRUE
@@ -207,7 +207,7 @@ Music_RocketTheme_branch_f758a:
 
 Music_LookRocket_Ch3:
 	transpose 0, 2
-	vibrato $4, $22
+	vibrato 4, 2, 2
 	note_type 12, 1, 4
 	stereo_panning TRUE, FALSE
 	note __, 2

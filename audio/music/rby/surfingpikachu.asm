@@ -11,7 +11,7 @@ Music_SurfingPikachu_Ch1:
 	tempo 117
 	volume 7, 7
 	duty_cycle 3
-	vibrato $8, $14
+	vibrato 8, 1, 4
 	note_type 12, 11, 3
 	octave 3
 	note E_, 6
@@ -170,7 +170,7 @@ Music_SurfingPikachu_branch_82d1a:
 	sound_jump Music_SurfingPikachu_branch_82d1a
 Music_SurfingPikachu_Ch2:
 	duty_cycle 3
-	vibrato $6, $15
+	vibrato 6, 1, 5
 	note_type 12, 12, 4
 	octave 3
 	note B_, 6

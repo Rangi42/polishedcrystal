@@ -11,7 +11,7 @@ Music_SurfingRBY_Ch1:
 	tempo 160
 	volume 7, 7
 	duty_cycle 3
-	vibrato 12, 52
+	vibrato 12, 3, 4
 
 	note_type 12, 11, 5
 	note __, 6
@@ -126,7 +126,7 @@ Music_Surfing_branch_7fa30:
 
 Music_SurfingRBY_Ch2:
 	duty_cycle 3
-	vibrato 16, 37
+	vibrato 16, 2, 5
 	note_type 12, 12, 6
 	octave 3
 	note A_, 2

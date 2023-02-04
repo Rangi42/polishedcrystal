@@ -14,7 +14,7 @@ Music_LaverreCityXY_Ch1:
 	tempo 120
 	volume 7, 7
 	stereo_panning FALSE, TRUE
-	vibrato $12, $25
+	vibrato 18, 2, 5
 Music_LaverreCityXY_branch_ef2e5:
 	duty_cycle 0
 	note_type 12, 10, 4
@@ -194,7 +194,7 @@ Music_LaverreCityXY_Ch1_branch_1:
 	sound_jump Music_LaverreCityXY_branch_ef2e5
 
 Music_LaverreCityXY_Ch2:
-	vibrato $12, $25
+	vibrato 18, 2, 5
 	duty_cycle 2
 	stereo_panning TRUE, FALSE
 	pitch_offset 2
@@ -340,7 +340,7 @@ Music_LaverreCityXY_Ch2_branch_2:
 
 Music_LaverreCityXY_Ch3:
 	stereo_panning TRUE, TRUE
-	vibrato $12, $25
+	vibrato 18, 2, 5
 Music_LaverreCityXY_branch_ef4e3:
 	note_type 12, 2, 5
 	octave 3

@@ -15,7 +15,7 @@ Music_ZinniaBattleORAS_Ch1:
 	volume 7, 7
 	duty_cycle 1
 	pitch_offset 2
-	vibrato $8, $15
+	vibrato 8, 1, 5
 	note_type 3, 11, 3
 	octave 4
 	note C#, 12
@@ -322,7 +322,7 @@ Music_ZinniaBattleORAS_Ch1_branch_3:
 
 Music_ZinniaBattleORAS_Ch2:
 	duty_cycle 3
-	vibrato $12, $33
+	vibrato 18, 3, 3
 	note_type 3, 14, 3
 	octave 3
 	note G#, 2
@@ -410,12 +410,12 @@ Music_ZinniaBattleORAS_Ch2_loop:
 	note E_, 2
 	note D#, 1
 	note D_, 1
-	vibrato $12, $54
+	vibrato 18, 5, 4
 	note_type 12, 12, 0
 	note C#, 5
 	volume_envelope 12, 5
 	note C#, 4
-	vibrato $12, $33
+	vibrato 18, 3, 3
 	volume_envelope 12, 1
 	octave 3
 	note B_, 1
@@ -462,12 +462,12 @@ Music_ZinniaBattleORAS_Ch2_loop:
 	note F_, 2
 	note E_, 1
 	note D#, 1
-	vibrato $12, $54
+	vibrato 18, 5, 4
 	note_type 12, 12, 0
 	note D_, 5
 	volume_envelope 12, 5
 	note D_, 4
-	vibrato $12, $33
+	vibrato 18, 3, 3
 	volume_envelope 12, 1
 	note C_, 1
 	note D_, 1
@@ -683,7 +683,7 @@ Music_ZinniaBattleORAS_Ch2_loop:
 	volume_envelope 11, 4
 	note C#, 3
 	duty_cycle 3
-	vibrato $12, $53
+	vibrato 18, 5, 3
 	note_type 3, 12, 0
 	note D_, 1
 	note D#, 1
@@ -805,7 +805,7 @@ Music_ZinniaBattleORAS_Ch2_loop:
 
 Music_ZinniaBattleORAS_Ch3:
 	note_type 3, 1, -1
-	vibrato $12, $15
+	vibrato 18, 1, 5
 	octave 2
 	note G#, 8
 	note __, 16

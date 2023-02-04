@@ -14,7 +14,7 @@ Music_OreburghGateDPPt_Ch1:
 	duty_cycle 0
 	pitch_offset 1
 	note_type 12, 2, 0
-	vibrato $8, $12
+	vibrato 8, 1, 2
 	octave 3
 	note G_, 8
 	volume_envelope 2, -6
@@ -414,7 +414,7 @@ Music_OreburghGateDPPt_Ch2_branch_3:
 
 Music_OreburghGateDPPt_Ch3:
 	note_type 12, 1, 2
-	vibrato $8, $12
+	vibrato 8, 1, 2
 	note __, 16
 Music_OreburghGateDPPt_Ch3_branch_1:
 	octave 3

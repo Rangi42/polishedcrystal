@@ -15,7 +15,7 @@ Music_Route47HGSS_Ch1:
 	volume 7, 7
 	duty_cycle 0
 	pitch_offset 2
-	vibrato $8, $15
+	vibrato 8, 1, 5
 	note_type 6, 8, 2
 	note __, 16
 Music_Route47HGSS_Ch1_loop_main:
@@ -579,7 +579,7 @@ Music_Route47HGSS_Ch1_branch_2:
 
 Music_Route47HGSS_Ch2:
 	duty_cycle 2
-	vibrato $12, $25
+	vibrato 18, 2, 5
 	pitch_offset 1
 	note_type 8, 5, 2
 	octave 6
@@ -963,7 +963,7 @@ Music_Route47HGSS_Ch2_loop:
 
 Music_Route47HGSS_Ch3:
 	note_type 12, 2, 5
-	vibrato $12, $15
+	vibrato 18, 1, 5
 	note __, 8
 Music_Route47HGSS_Ch3_loop:
 	octave 1
@@ -1046,7 +1046,7 @@ Music_Route47HGSS_Ch3_loop:
 	volume_envelope 3, 5
 	note C_, 4
 	volume_envelope 1, 3
-	vibrato $12, $24
+	vibrato 18, 2, 4
 	octave 5
 	note F_, 6
 	note G_, 4
@@ -1082,7 +1082,7 @@ Music_Route47HGSS_Ch3_loop:
 	note F_, 4
 	octave 5
 	note F_, 4
-	vibrato $12, $15
+	vibrato 18, 1, 5
 	volume_envelope 2, 5
 	octave 1
 	note G_, 16

@@ -11,7 +11,7 @@ Music_Surf_Ch1:
 	stereo_panning FALSE, TRUE
 Music_Surf_branch_f519e:
 	duty_cycle 2
-	vibrato $10, $24
+	vibrato 16, 2, 4
 	volume_envelope 7, 3
 	octave 3
 	note F_, 1
@@ -342,7 +342,7 @@ Music_Surf_branch_f5317:
 	note_type 12, 12, 2
 	stereo_panning TRUE, FALSE
 	duty_cycle 2
-	vibrato $14, $23
+	vibrato 20, 2, 3
 Music_Surf_branch_f5321:
 	octave 1
 	note A#, 4
@@ -545,7 +545,7 @@ Music_Surf_Ch3:
 Music_Surf_branch_f540c:
 	stereo_panning TRUE, TRUE
 	note_type 12, 1, 5
-	vibrato $16, $23
+	vibrato 22, 2, 3
 	octave 4
 	note A#, 12
 	octave 5

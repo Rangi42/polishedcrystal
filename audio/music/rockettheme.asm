@@ -10,7 +10,7 @@ Music_RocketTheme_Ch1:
 	volume 7, 7
 	duty_cycle 3
 	stereo_panning FALSE, TRUE
-	vibrato $5, $64
+	vibrato 5, 6, 4
 	note_type 12, 10, 8
 	octave 4
 	note C_, 1
@@ -35,7 +35,7 @@ Music_RocketTheme_branch_f768b:
 	note __, 16
 	duty_cycle 0
 	note_type 6, 11, 3
-	vibrato $6, $64
+	vibrato 6, 6, 4
 	sound_call Music_RocketTheme_branch_f7727
 	octave 4
 	note F_, 1
@@ -156,7 +156,7 @@ Music_RocketTheme_branch_f7727:
 
 Music_RocketTheme_Ch2:
 	stereo_panning TRUE, TRUE
-	vibrato $4, $64
+	vibrato 4, 6, 4
 	duty_cycle 3
 	note_type 12, 11, 7
 	octave 5
@@ -178,17 +178,17 @@ Music_RocketTheme_branch_f774b:
 	volume_envelope 14, 3
 	sound_call Music_RocketTheme_branch_f7568
 	sound_call Music_RocketTheme_branch_f756f
-	vibrato $6, $64
+	vibrato 6, 6, 4
 	sound_call Music_RocketTheme_branch_f7800
 	octave 4
 	note A_, 1
-	vibrato $0, $0
+	vibrato 0, 0, 0
 	volume_envelope 11, 8
 	note A#, 14
-	vibrato $5, $22
+	vibrato 5, 2, 2
 	volume_envelope 11, 7
 	note A#, 5
-	vibrato $6, $64
+	vibrato 6, 6, 4
 	note_type 12, 11, 7
 	note A#, 12
 	note __, 2
@@ -197,14 +197,14 @@ Music_RocketTheme_branch_f774b:
 	note D_, 1
 	sound_call Music_RocketTheme_branch_f7800
 	note B_, 1
-	vibrato $0, $0
+	vibrato 0, 0, 0
 	volume_envelope 11, 8
 	octave 4
 	note C_, 14
-	vibrato $5, $22
+	vibrato 5, 2, 2
 	volume_envelope 11, 7
 	note C_, 5
-	vibrato $6, $64
+	vibrato 6, 6, 4
 	note_type 12, 11, 7
 	note C_, 12
 	octave 3
@@ -332,7 +332,7 @@ Music_RocketTheme_branch_f781c:
 
 Music_RocketTheme_Ch3:
 	stereo_panning TRUE, FALSE
-	vibrato $4, $22
+	vibrato 4, 2, 2
 	note_type 12, 1, 4
 	note __, 2
 Music_RocketTheme_branch_f782f:

@@ -13,7 +13,7 @@ Music_BicycleRSE:
 Music_BicycleRSE_Ch1:
 	tempo 70
 	duty_cycle 3
-	vibrato $12, $15
+	vibrato 18, 1, 5
 	pitch_offset 1
 	note_type 12, 8, 2
 	octave 2
@@ -317,7 +317,7 @@ Music_BicycleRSE_Ch1:
 
 Music_BicycleRSE_Ch2:
 	duty_cycle 2
-	vibrato $12, $15
+	vibrato 18, 1, 5
 	pitch_offset 1
 	note_type 12, 10, 4
 	octave 2

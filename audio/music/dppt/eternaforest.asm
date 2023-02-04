@@ -520,7 +520,7 @@ Music_EternaForestDPPt_Ch2_loop:
 Music_EternaForestDPPt_Ch3:
 Music_EternaForestDPPt_Ch3_loop:
 	note_type 12, 1, 2
-	vibrato $10, $14
+	vibrato 16, 1, 4
 	octave 7
 	note __, 16
 	note __, 16

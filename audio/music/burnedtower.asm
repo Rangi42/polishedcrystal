@@ -10,7 +10,7 @@ Music_BurnedTower_Ch1:
 	volume 7, 7
 	duty_cycle 1
 	pitch_offset 4
-	vibrato $8, $45
+	vibrato 8, 4, 5
 	stereo_panning TRUE, FALSE
 	note_type 12, 9, 1
 	note __, 2
@@ -101,7 +101,7 @@ Music_BurnedTower_branch_f6b17:
 
 Music_BurnedTower_Ch2:
 	duty_cycle 2
-	vibrato $20, $82
+	vibrato 32, 8, 2
 	pitch_offset 2
 	note_type 12, 7, 0
 	sound_call Music_BurnedTower_branch_f6b8e
@@ -139,10 +139,10 @@ Music_BurnedTower_branch_f6b39:
 	note A_, 1
 	octave 4
 	note C_, 1
-	vibrato $0, $0
+	vibrato 0, 0, 0
 	volume_envelope 3, -5
 	note E_, 8
-	vibrato $20, $83
+	vibrato 32, 8, 3
 	volume_envelope 11, 0
 	octave 2
 	note G_, 4

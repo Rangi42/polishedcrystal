@@ -12,7 +12,7 @@ Music_ChampionBattleB2W2:
 Music_ChampionBattleB2W2_Ch1:
 	tempo 100
 	pitch_offset 1
-	vibrato $12, $15
+	vibrato 18, 1, 5
 	note_type 12, 8, 2
 	duty_cycle 0
 	octave 2
@@ -694,7 +694,7 @@ Music_ChampionBattleB2W2_Ch1_branch_9:
 Music_ChampionBattleB2W2_Ch2:
 	pitch_offset 1
 	duty_cycle 2
-	vibrato $12, $15
+	vibrato 18, 1, 5
 	note_type 12, 11, 0
 	note __, 2
 	sound_call Music_ChampionBattleB2W2_Ch2_branch_1

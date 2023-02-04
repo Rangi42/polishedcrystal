@@ -364,17 +364,17 @@ Music_LugiaBattleHGSS_Ch2_L:
 	note A#, 6
 	duty_cycle 3
 	volume_envelope 12, 7
-	vibrato $5, $25
+	vibrato 5, 2, 5
 	octave 4
 	note D#, 1
 	note __, 1
 	note D#, 2
 	volume_envelope 12, 8
-	vibrato $0, $0
+	vibrato 0, 0, 0
 	octave 3
 	note B_, 8
 	volume_envelope 12, 7
-	vibrato $5, $25
+	vibrato 5, 2, 5
 	note B_, 12
 	note __, 2
 	note F#, 2
@@ -382,19 +382,19 @@ Music_LugiaBattleHGSS_Ch2_L:
 	octave 4
 	note D#, 2
 	volume_envelope 12, 8
-	vibrato $0, $0
+	vibrato 0, 0, 0
 	note E_, 8
 	volume_envelope 12, 7
-	vibrato $5, $25
+	vibrato 5, 2, 5
 	note E_, 8
 	note G_, 6
 	note F#, 6
 	note F_, 4
 	volume_envelope 12, 8
-	vibrato $0, $0
+	vibrato 0, 0, 0
 	note F#, 12
 	volume_envelope 12, 7
-	vibrato $5, $25
+	vibrato 5, 2, 5
 	note F#, 12
 	note E_, 8
 	note D#, 16
@@ -498,7 +498,7 @@ Music_LugiaBattleHGSS_Ch2_L2:
 	note __, 2
 	duty_cycle 0
 	note_type 8, 12, 7
-	vibrato $0, $0
+	vibrato 0, 0, 0
 	octave 4
 	note D_, 6
 	note C#, 2

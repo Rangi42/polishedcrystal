@@ -634,7 +634,7 @@ Music_SunyshoreCityDPPt_Ch2:
 	volume_envelope 12, 1
 	note F#, 4
 	volume_envelope 12, 6
-	vibrato $08, $23
+	vibrato 8, 2, 3
 	octave 4
 	note_type 6, 12, 6
 	note C_, 1
@@ -819,7 +819,7 @@ Music_SunyshoreCityDPPt_Ch2_loop:
 	note __, 4
 	duty_cycle 1
 	volume_envelope 12, 7
-	vibrato $00, $00
+	vibrato 0, 0, 0
 	octave 3
 	note E_, 8
 	note A_, 8
@@ -907,7 +907,7 @@ Music_SunyshoreCityDPPt_Ch2_loop:
 	note C#, 16
 	note __, 10
 	duty_cycle 1
-	vibrato $08, $23
+	vibrato 8, 2, 3
 	note_type 6, 12, 7
 	note C_, 1
 	note C#, 11

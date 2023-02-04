@@ -9,7 +9,7 @@ Music_JohtoWildBattle_Ch1:
 	volume 7, 7
 	duty_cycle 3
 	pitch_offset 2
-	vibrato $12, $15
+	vibrato 18, 1, 5
 Music_JohtoWildBattleNight_branch_f5ddb:
 	note_type 12, 11, 2
 	octave 4
@@ -203,7 +203,7 @@ Music_JohtoWildBattle_branch_f5e2d:
 
 Music_JohtoWildBattle_Ch2:
 	duty_cycle 3
-	vibrato $8, $36
+	vibrato 8, 3, 6
 	pitch_offset 1
 	sound_call Music_JohtoWildBattle_branch_f5f5d
 	note_type 12, 12, 2

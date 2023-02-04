@@ -578,7 +578,7 @@ Music_Route203DPPt_Ch2:
 	;transpose $19
 	duty_cycle 1
 	pitch_offset 1
-	vibrato $00, $12
+	vibrato 0, 1, 2
 	octave 4
 	note D#, 1
 	note D_, 1
@@ -752,7 +752,7 @@ Music_Route203DPPt_Ch2_loop:
 	octave 3
 	note D_, 6
 	duty_cycle 2
-	vibrato $00, $12
+	vibrato 0, 1, 2
 	note D_, 2
 	note G_, 2
 	note B_, 2
@@ -834,7 +834,7 @@ Music_Route203DPPt_Ch2_loop:
 	note C_, 6
 	octave 3
 	note A#, 6
-	vibrato $00, $34
+	vibrato 0, 3, 4
 	note A_, 2
 	note A#, 2
 	octave 4
@@ -919,7 +919,7 @@ Music_Route203DPPt_Ch2_loop:
 	note G_, 4
 	note_type 12, 12, 0
 	duty_cycle 1
-	vibrato $00, $12
+	vibrato 0, 1, 2
 	note G#, 8
 	note A#, 8
 	volume_envelope 10, 0

@@ -9,7 +9,7 @@ Music_NationalPark_Ch1:
 	tempo 192
 	volume 7, 7
 	stereo_panning FALSE, TRUE
-	vibrato $18, $24
+	vibrato 24, 2, 4
 	duty_cycle 1
 	note_type 12, 7, 7
 	note __, 2
@@ -297,7 +297,7 @@ Music_NationalPark_branch_f563a:
 	sound_ret
 
 Music_NationalPark_Ch2:
-	vibrato $14, $24
+	vibrato 20, 2, 4
 	duty_cycle 1
 	note_type 12, 10, 7
 	note __, 2
@@ -360,10 +360,10 @@ Music_NationalPark_branch_f565d:
 	note C_, 8
 	octave 3
 	note A_, 1
-	vibrato $0, $0
+	vibrato 0, 0, 0
 	volume_envelope 11, 8
 	note A#, 16
-	vibrato $14, $24
+	vibrato 20, 2, 4
 	volume_envelope 11, 7
 	note A#, 11
 	octave 2
@@ -479,7 +479,7 @@ Music_NationalPark_branch_f56f5:
 	sound_ret
 
 Music_NationalPark_Ch3:
-	vibrato $16, $24
+	vibrato 22, 2, 4
 	note_type 12, 1, 1
 	octave 4
 	note G#, 1

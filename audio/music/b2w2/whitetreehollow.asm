@@ -15,7 +15,7 @@ Music_WhiteTreehollowWhite2_Ch1:
 	volume 7, 7
 	duty_cycle 3
 	pitch_offset 2
-	vibrato $8, $15
+	vibrato 8, 1, 5
 	note_type 12, 6, 2
 	octave 4
 	note A#, 1
@@ -470,7 +470,7 @@ Music_WhiteTreehollowWhite2_Ch1_branch_1:
 
 Music_WhiteTreehollowWhite2_Ch2:
 	duty_cycle 2
-	vibrato $12, $25
+	vibrato 18, 2, 5
 	pitch_offset 1
 	note_type 12, 10, 2
 	octave 2
@@ -737,7 +737,7 @@ Music_WhiteTreehollowWhite2_Ch2_branch_1:
 
 Music_WhiteTreehollowWhite2_Ch3:
 	note_type 12, 1, 0
-	vibrato $12, $25
+	vibrato 18, 2, 5
 	octave 5
 	note __, 4
 	note G#, 4

@@ -10,7 +10,7 @@ Music_TitleScreen_Ch1:
 	volume 7, 7
 	duty_cycle 3
 	pitch_offset 2
-	vibrato $10, $12
+	vibrato 16, 1, 2
 	stereo_panning TRUE, FALSE
 	note_type 12, 10, 7
 	volume_envelope 10, 0
@@ -294,7 +294,7 @@ Music_TitleScreen_branch_eb971:
 
 Music_TitleScreen_Ch2:
 	duty_cycle 3
-	vibrato $14, $12
+	vibrato 20, 1, 2
 	note_type 12, 12, 7
 	volume_envelope 10, 4
 	octave 1
@@ -579,7 +579,7 @@ Music_TitleScreen_branch_ebaeb:
 
 Music_TitleScreen_Ch3:
 	stereo_panning FALSE, TRUE
-	vibrato $10, $14
+	vibrato 16, 1, 4
 	pitch_offset 1
 	note_type 12, 1, 6
 	octave 3

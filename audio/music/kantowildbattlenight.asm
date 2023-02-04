@@ -12,7 +12,7 @@ Music_KantoWildBattleNight:
 Music_KantoWildBattleNight_Ch1:
 	tempo 117
 	volume 7, 7
-	vibrato $12, $22
+	vibrato 18, 2, 2
 	duty_cycle 2
 	note_type 12, 11, 7
 	note __, 16
@@ -32,7 +32,7 @@ Music_KantoWildBattleNight_Ch1:
 
 Music_KantoWildBattleNight_Ch2:
 	duty_cycle 3
-	vibrato $12, $22
+	vibrato 18, 2, 2
 	note_type 12, 11, 1
 	octave 4
 rept 5
@@ -57,7 +57,7 @@ endr
 	sound_call Music_KantoWildBattle_branch_ed1c8
 
 Music_KantoWildBattleNight_Ch3:
-	vibrato $12, $23
+	vibrato 18, 2, 3
 	note_type 12, 1, 2
 	sound_call Music_KantoWildBattle_Ch3Intro
 Music_KantoWildBattleNight_Ch3loop:

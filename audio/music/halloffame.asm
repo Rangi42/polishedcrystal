@@ -9,7 +9,7 @@ Music_HallOfFame_Ch1:
 	tempo 112
 	volume 7, 7
 	duty_cycle 2
-	vibrato $c, $22
+	vibrato 12, 2, 2
 	pitch_offset 1
 	stereo_panning TRUE, FALSE
 	note_type 12, 9, 3
@@ -48,7 +48,7 @@ Music_HallOfFame_branch_f05e6:
 	sound_jump Music_HallOfFame_branch_f05e6
 
 Music_HallOfFame_Ch2:
-	vibrato $8, $25
+	vibrato 8, 2, 5
 	duty_cycle 3
 Music_HallOfFame_branch_f0610:
 	note_type 12, 12, 4

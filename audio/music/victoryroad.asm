@@ -65,7 +65,7 @@ Music_VictoryRoad_branch_f6cb9:
 
 Music_VictoryRoad_Ch2:
 	duty_cycle 3
-	vibrato $10, $24
+	vibrato 16, 2, 4
 Music_VictoryRoad_branch_f6cd3:
 	note_type 12, 12, 2
 	sound_call Music_VictoryRoad_branch_f6d1e

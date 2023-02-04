@@ -559,7 +559,7 @@ Music_Credits_branch_1f582:
 
 Music_Credits_Ch2:
 	duty_cycle 1
-	vibrato $14, $23
+	vibrato 20, 2, 3
 	note_type 12, 2, -7
 	stereo_panning TRUE, FALSE
 	octave 4
@@ -973,7 +973,7 @@ Music_Credits_branch_1f748:
 	sound_ret
 
 Music_Credits_Ch3:
-	vibrato $16, $23
+	vibrato 22, 2, 3
 	note_type 12, 3, 4
 	stereo_panning TRUE, TRUE
 	octave 6

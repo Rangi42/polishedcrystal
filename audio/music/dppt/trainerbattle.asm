@@ -16,7 +16,7 @@ Music_TrainerBattleDPPt_Ch1:
 	duty_cycle 3
 	pitch_offset 2
 	volume_envelope 11, 2
-	vibrato $12, $15
+	vibrato 18, 1, 5
 	octave 4
 	note_type 12, 11, 2
 	note E_, 2
@@ -543,7 +543,7 @@ Music_TrainerBattleDPPt_Ch2:
 	duty_cycle 3
 	pitch_offset 1
 	volume_envelope 12, 2
-	vibrato $08, $36
+	vibrato 8, 3, 6
 	octave 5
 	note_type 12, 12, 2
 	note C_, 2

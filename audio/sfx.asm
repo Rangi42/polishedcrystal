@@ -592,7 +592,7 @@ Sfx_Pokeflute:
 	tempo 256
 	volume 7, 7
 	toggle_sfx
-	vibrato $10, $14
+	vibrato 16, 1, 4
 	note_type 12, 1, 0
 	octave 5
 	note E_, 2
@@ -1805,7 +1805,7 @@ Sfx_Sing:
 
 .Ch5:
 	toggle_sfx
-	vibrato $a, $24
+	vibrato 10, 2, 4
 	duty_cycle 2
 	note_type 10, 8, 7
 	octave 5
@@ -1819,7 +1819,7 @@ Sfx_Sing:
 
 .Ch6:
 	toggle_sfx
-	vibrato $a, $23
+	vibrato 10, 2, 3
 	duty_cycle 2
 	note_type 11, 6, 7
 	octave 5
@@ -2229,7 +2229,7 @@ Sfx_Item:
 	toggle_sfx
 	tempo 108
 	volume 7, 7
-	vibrato $8, $27
+	vibrato 8, 2, 7
 	duty_cycle 2
 	note_type 8, 11, 2
 	octave 4
@@ -2246,7 +2246,7 @@ Sfx_Item:
 
 .Ch6:
 	toggle_sfx
-	vibrato $8, $27
+	vibrato 8, 2, 7
 	duty_cycle 2
 	note_type 8, 12, 3
 	octave 4
@@ -2307,7 +2307,7 @@ Sfx_CaughtMon:
 	toggle_sfx
 	tempo 112
 	volume 7, 7
-	vibrato $8, $27
+	vibrato 8, 2, 7
 	duty_cycle 2
 	note_type 8, 11, 3
 	octave 4
@@ -2330,7 +2330,7 @@ Sfx_CaughtMon:
 .Ch6:
 	toggle_sfx
 	duty_cycle 2
-	vibrato $8, $27
+	vibrato 8, 2, 7
 	note_type 8, 12, 3
 	octave 4
 	note A_, 6
@@ -2388,7 +2388,7 @@ Sfx_DexFanfare80109:
 	toggle_sfx
 	tempo 112
 	volume 7, 7
-	vibrato $8, $27
+	vibrato 8, 2, 7
 	duty_cycle 2
 	note_type 12, 11, 1
 	octave 4
@@ -2412,7 +2412,7 @@ Sfx_DexFanfare80109:
 
 .Ch6:
 	toggle_sfx
-	vibrato $8, $27
+	vibrato 8, 2, 7
 	duty_cycle 2
 	note_type 12, 12, 1
 	octave 4
@@ -2556,7 +2556,7 @@ UnknownSfx:
 	toggle_sfx
 	tempo 124
 	volume 7, 7
-	vibrato $8, $27
+	vibrato 8, 2, 7
 	duty_cycle 2
 	note_type 12, 11, 1
 	octave 4
@@ -2578,7 +2578,7 @@ UnknownSfx:
 
 .Ch6:
 	toggle_sfx
-	vibrato $8, $27
+	vibrato 8, 2, 7
 	duty_cycle 2
 	note_type 12, 12, 1
 	octave 4
@@ -2878,7 +2878,7 @@ Sfx_GetEggFromDayCareMan:
 	toggle_sfx
 	tempo 120
 	volume 7, 7
-	vibrato $12, $34
+	vibrato 18, 3, 4
 	duty_cycle 2
 	note_type 8, 10, 1
 	note __, 2
@@ -2906,7 +2906,7 @@ Sfx_GetEggFromDayCareMan:
 
 .Ch6:
 	toggle_sfx
-	vibrato $12, $34
+	vibrato 18, 3, 4
 	duty_cycle 3
 	note_type 8, 12, 2
 	note __, 2
@@ -2973,7 +2973,7 @@ Sfx_MoveDeleted:
 	tempo 116
 	volume 7, 7
 	duty_cycle 2
-	vibrato $c, $44
+	vibrato 12, 4, 4
 	note_type 12, 10, 4
 	note __, 8
 	octave 2
@@ -2999,7 +2999,7 @@ Sfx_MoveDeleted:
 .Ch6:
 	toggle_sfx
 	duty_cycle 3
-	vibrato $c, $44
+	vibrato 12, 4, 4
 	note_type 12, 7, 4
 	octave 1
 	note B_, 1
@@ -3080,7 +3080,7 @@ Sfx_2ndPlace:
 	tempo 116
 	volume 7, 7
 	duty_cycle 2
-	vibrato $c, $34
+	vibrato 12, 3, 4
 	note_type 8, 10, 1
 	octave 4
 	note E_, 2
@@ -3193,7 +3193,7 @@ Sfx_1stPlace:
 	tempo 124
 	volume 7, 7
 	duty_cycle 3
-	vibrato $c, $34
+	vibrato 12, 3, 4
 	note_type 12, 10, 1
 	octave 5
 	note D_, 2
@@ -3230,7 +3230,7 @@ Sfx_1stPlace:
 .Ch6:
 	toggle_sfx
 	duty_cycle 3
-	vibrato $c, $34
+	vibrato 12, 3, 4
 	note_type 12, 12, 1
 	octave 3
 	note B_, 2
@@ -3446,7 +3446,7 @@ Sfx_GetTm:
 	tempo 144
 	volume 7, 7
 	duty_cycle 3
-	vibrato $8, $24
+	vibrato 8, 2, 4
 	note_type 12, 10, 3
 	octave 4
 	note D_, 1
@@ -3468,7 +3468,7 @@ Sfx_GetTm:
 .Ch6:
 	toggle_sfx
 	duty_cycle 3
-	vibrato $8, $24
+	vibrato 8, 2, 4
 	note_type 12, 11, 3
 	octave 4
 	note G_, 1
@@ -3548,7 +3548,7 @@ Sfx_GetBadge:
 	tempo 120
 	volume 7, 7
 	duty_cycle 2
-	vibrato $8, $24
+	vibrato 8, 2, 4
 	note_type 6, 9, 2
 	octave 4
 	note F_, 3
@@ -3587,7 +3587,7 @@ Sfx_GetBadge:
 .Ch6:
 	toggle_sfx
 	duty_cycle 3
-	vibrato $8, $24
+	vibrato 8, 2, 4
 	note_type 6, 11, 5
 	octave 5
 	note C#, 3
@@ -4234,7 +4234,7 @@ Sfx_Spite:
 
 .Ch5:
 	toggle_sfx
-	vibrato $0, $12
+	vibrato 0, 1, 2
 	duty_cycle 3
 	pitch_sweep 15, -5
 	note_type 3, 15, 8
@@ -4284,7 +4284,7 @@ Sfx_PerishSong:
 .Ch5:
 	toggle_sfx
 	duty_cycle 0
-	vibrato $12, $53
+	vibrato 18, 5, 3
 	note_type 8, 10, -7
 	octave 4
 	note A_, 9
@@ -4295,7 +4295,7 @@ Sfx_PerishSong:
 .Ch6:
 	toggle_sfx
 	duty_cycle 0
-	vibrato $12, $53
+	vibrato 18, 5, 3
 	note_type 8, 10, -7
 	octave 4
 	note C_, 9
@@ -4905,7 +4905,7 @@ Sfx_DexFanfare140169:
 	tempo 120
 	volume 7, 7
 	duty_cycle 3
-	vibrato $12, $34
+	vibrato 18, 3, 4
 	note_type 6, 11, 1
 	note __, 8
 	octave 3
@@ -4930,7 +4930,7 @@ Sfx_DexFanfare140169:
 .Ch6:
 	toggle_sfx
 	duty_cycle 2
-	vibrato $12, $34
+	vibrato 18, 3, 4
 	note_type 6, 12, 1
 	octave 4
 	note E_, 4
@@ -5012,7 +5012,7 @@ Sfx_DexFanfare170199:
 	toggle_sfx
 	tempo 112
 	volume 7, 7
-	vibrato $12, $34
+	vibrato 18, 3, 4
 	duty_cycle 3
 	note_type 8, 11, 4
 	octave 3
@@ -5037,7 +5037,7 @@ Sfx_DexFanfare170199:
 
 .Ch6:
 	toggle_sfx
-	vibrato $12, $34
+	vibrato 18, 3, 4
 	duty_cycle 3
 	note_type 8, 12, 4
 	octave 3
@@ -5123,7 +5123,7 @@ Sfx_DexFanfare200229:
 	toggle_sfx
 	tempo 124
 	volume 7, 7
-	vibrato $12, $34
+	vibrato 18, 3, 4
 	duty_cycle 3
 	note_type 8, 11, 2
 	octave 3
@@ -5146,7 +5146,7 @@ Sfx_DexFanfare200229:
 
 .Ch6:
 	toggle_sfx
-	vibrato $12, $34
+	vibrato 18, 3, 4
 	duty_cycle 3
 	note_type 8, 11, 2
 	octave 3
@@ -5248,7 +5248,7 @@ Sfx_DexFanfare230Plus:
 	toggle_sfx
 	tempo 112
 	volume 7, 7
-	vibrato $12, $34
+	vibrato 18, 3, 4
 	duty_cycle 3
 	note_type 8, 10, 5
 	octave 3
@@ -5292,7 +5292,7 @@ Sfx_DexFanfare230Plus:
 
 .Ch6:
 	toggle_sfx
-	vibrato $12, $34
+	vibrato 18, 3, 4
 	duty_cycle 3
 	note_type 8, 11, 5
 	octave 4
@@ -5699,7 +5699,7 @@ Sfx_IntroUnown1:
 	channel 5, .Ch5
 
 .Ch5:
-	vibrato $1, $a3
+	vibrato 1, 10, 3
 	duty_cycle 2
 	square_note 8, 3, -1, 1797
 	square_note 32, 14, 2, 1797
@@ -5713,7 +5713,7 @@ Sfx_IntroUnown2:
 	channel 6, .Ch6
 
 .Ch6:
-	vibrato $1, $73
+	vibrato 1, 7, 3
 	duty_cycle 2
 	square_note 8, 3, -1, 1880
 	square_note 32, 14, 2, 1880
@@ -5727,7 +5727,7 @@ Sfx_IntroUnown3:
 	channel 7, .Ch7
 
 .Ch7:
-	vibrato $1, $53
+	vibrato 1, 5, 3
 	square_note 3, 3, 2, 1986
 	square_note 3, 2, 2, 1986
 	square_note 3, 1, 2, 1986

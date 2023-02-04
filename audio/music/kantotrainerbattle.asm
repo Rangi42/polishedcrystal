@@ -9,7 +9,7 @@ Music_KantoTrainerBattle_Ch1:
 	volume 7, 7
 	transpose 1, 11
 	note_type 12, 11, 3
-	vibrato $12, $24
+	vibrato 18, 2, 4
 	duty_cycle 1
 	note __, 1
 	octave 4
@@ -465,7 +465,7 @@ Music_KantoTrainerBattle_branch_eca88:
 
 Music_KantoTrainerBattle_Ch2:
 	transpose 1, 11
-	vibrato $6, $36
+	vibrato 6, 3, 6
 	duty_cycle 1
 	note_type 12, 13, 1
 	octave 4
@@ -801,7 +801,7 @@ Music_KantoTrainerBattle_branch_ecc41:
 	note __, 1
 	octave 3
 	note G#, 4
-	vibrato $12, $24
+	vibrato 18, 2, 4
 	note_type 12, 7, 8
 	octave 4
 	note G_, 16
@@ -830,7 +830,7 @@ Music_KantoTrainerBattle_branch_ecc41:
 	octave 5
 	note D_, 8
 	note F_, 8
-	vibrato $4, $36
+	vibrato 4, 3, 6
 	octave 2
 	note A#, 4
 	note D#, 4
@@ -917,7 +917,7 @@ Music_KantoTrainerBattle_branch_ecc41:
 
 Music_KantoTrainerBattle_Ch3:
 	transpose 1, 11
-	vibrato $12, $23
+	vibrato 18, 2, 3
 	note_type 12, 1, 5
 	octave 2
 	note A#, 1

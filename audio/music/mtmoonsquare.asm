@@ -55,7 +55,7 @@ Music_MtMoonSquare_branch_f484d:
 
 Music_MtMoonSquare_Ch2:
 	duty_cycle 2
-	vibrato $18, $24
+	vibrato 24, 2, 4
 Music_MtMoonSquare_branch_f4862:
 	note_type 12, 8, 2
 Music_MtMoonSquare_branch_f4865:

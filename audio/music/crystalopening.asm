@@ -9,7 +9,7 @@ Music_CrystalOpening_Ch1:
 	tempo 136
 	volume 7, 7
 	pitch_offset 2
-	vibrato $10, $34
+	vibrato 16, 3, 4
 	duty_cycle 3
 	stereo_panning TRUE, FALSE
 	note_type 12, 9, 2
@@ -125,7 +125,7 @@ Music_CrystalOpening_Ch1:
 Music_CrystalOpening_Ch2:
 	note_type 12, 10, 2
 	duty_cycle 3
-	vibrato $8, $44
+	vibrato 8, 4, 4
 	octave 2
 	note B_, 2
 	note B_, 4

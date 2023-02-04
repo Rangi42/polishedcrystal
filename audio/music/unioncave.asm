@@ -10,7 +10,7 @@ Music_UnionCave_Ch1:
 	volume 7, 7
 	duty_cycle 1
 	pitch_offset 2
-	vibrato $18, $34
+	vibrato 24, 3, 4
 	stereo_panning FALSE, TRUE
 Music_UnionCave_branch_f5c7b:
 	note_type 12, 11, 3
@@ -75,7 +75,7 @@ Music_UnionCave_branch_f5ccf:
 
 Music_UnionCave_Ch2:
 	duty_cycle 3
-	vibrato $8, $24
+	vibrato 8, 2, 4
 Music_UnionCave_branch_f5cda:
 	note_type 12, 12, 4
 	sound_call Music_UnionCave_branch_f5d34
@@ -123,15 +123,15 @@ Music_UnionCave_branch_f5cda:
 	note A#, 16
 	note A_, 16
 	volume_envelope 10, 5
-	vibrato $6, $44
+	vibrato 6, 4, 4
 	sound_call Music_UnionCave_branch_f5d52
-	vibrato $4, $33
+	vibrato 4, 3, 3
 	sound_call Music_UnionCave_branch_f5d52
-	vibrato $2, $22
+	vibrato 2, 2, 2
 	sound_call Music_UnionCave_branch_f5d52
-	vibrato $1, $41
+	vibrato 1, 4, 1
 	sound_call Music_UnionCave_branch_f5d52
-	vibrato $8, $24
+	vibrato 8, 2, 4
 	sound_jump Music_UnionCave_branch_f5cda
 
 Music_UnionCave_branch_f5d34:

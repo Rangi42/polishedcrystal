@@ -9,7 +9,7 @@ Music_RuinsOfAlphRadio_Ch1:
 	volume 7, 7
 	duty_cycle 0
 	pitch_offset 280
-	vibrato $0, $f0
+	vibrato 0, 15, 0
 	stereo_panning TRUE, FALSE
 Music_RuinsOfAlphRadio_branch_eede3:
 	note_type 6, 7, 1
@@ -49,7 +49,7 @@ Music_RuinsOfAlphRadio_branch_eee08:
 
 Music_RuinsOfAlphRadio_Ch2:
 	duty_cycle 1
-	vibrato $1, $e0
+	vibrato 1, 14, 0
 Music_RuinsOfAlphRadio_branch_eee17:
 	stereo_panning FALSE, TRUE
 	note_type 6, 8, 1

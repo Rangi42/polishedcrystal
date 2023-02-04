@@ -10,7 +10,7 @@ Music_TinTower_Ch1:
 	volume 7, 7
 	duty_cycle 3
 	pitch_offset 4
-	vibrato $8, $45
+	vibrato 8, 4, 5
 Music_TinTower_branch_f682a:
 	stereo_panning TRUE, FALSE
 	note_type 12, 10, 5
@@ -99,7 +99,7 @@ Music_TinTower_branch_f682a:
 Music_TinTower_Ch2:
 	duty_cycle 3
 	pitch_offset 2
-	vibrato $18, $44
+	vibrato 24, 4, 4
 Music_TinTower_branch_f6893:
 	stereo_panning TRUE, TRUE
 Music_TinTower_branch_f6895:

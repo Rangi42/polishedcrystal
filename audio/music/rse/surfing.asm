@@ -433,7 +433,7 @@ Music_SurfRSE_Ch1_loop:
 
 Music_SurfRSE_Ch2:
 Music_SurfRSE_Ch2_loop:
-	vibrato $00, $16
+	vibrato 0, 1, 6
 	octave 4
 	note_type 12, 12, 2
 	note C#, 2
@@ -508,7 +508,7 @@ Music_SurfRSE_Ch2_loop:
 	note F#, 2
 	duty_cycle 1
 	volume_envelope 9, 4
-	vibrato $00, $00
+	vibrato 0, 0, 0
 	note G#, 4
 	volume_envelope 9, 2
 	octave 4
@@ -823,7 +823,7 @@ Music_SurfRSE_Ch3_loop:
 	note __, 2
 	note A_, 12
 	duty_cycle 0
-	vibrato $08, $24
+	vibrato 8, 2, 4
 	octave 5
 	note G#, 5
 	note __, 1

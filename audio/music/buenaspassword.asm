@@ -180,7 +180,7 @@ Music_BuenasPassword_branch_178222:
 	sound_ret
 
 Music_BuenasPassword_Ch2:
-	vibrato $12, $34
+	vibrato 18, 3, 4
 	duty_cycle 2
 	note_type 12, 10, 5
 	note __, 7

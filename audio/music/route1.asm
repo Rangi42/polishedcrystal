@@ -8,7 +8,7 @@ Music_Route1_Ch1:
 	stereo_panning FALSE, TRUE
 	tempo 184
 	volume 7, 7
-	vibrato $16, $11
+	vibrato 22, 1, 1
 	duty_cycle 3
 	note_type 12, 8, 3
 	octave 4
@@ -204,7 +204,7 @@ Music_Route1_branch_ec04a:
 
 Music_Route1_Ch2:
 	stereo_panning TRUE, FALSE
-	vibrato $12, $22
+	vibrato 18, 2, 2
 	duty_cycle 2
 	note_type 12, 9, 2
 	octave 4
@@ -377,7 +377,7 @@ Music_Route1_branch_ec1aa:
 
 Music_Route1_Ch3:
 	stereo_panning TRUE, TRUE
-	vibrato $10, $23
+	vibrato 16, 2, 3
 	note_type 12, 2, 5
 	note __, 2
 	octave 3

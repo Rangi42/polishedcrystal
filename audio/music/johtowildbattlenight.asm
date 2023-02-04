@@ -9,12 +9,12 @@ Music_JohtoWildBattleNight_Ch1:
 	volume 7, 7
 	duty_cycle 3
 	pitch_offset 2
-	vibrato $10, $25
+	vibrato 16, 2, 5
 	sound_jump Music_JohtoWildBattleNight_branch_f5ddb
 
 Music_JohtoWildBattleNight_Ch2:
 	duty_cycle 3
-	vibrato $20, $36
+	vibrato 32, 3, 6
 	pitch_offset 1
 	sound_call Music_JohtoWildBattleNight_branch_f5f5d
 	note_type 12, 12, 2

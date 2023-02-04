@@ -13,7 +13,7 @@ Music_PaletteBattlePrism_Ch1:
 	volume 7, 7
 	duty_cycle 3
 	pitch_offset 2
-	vibrato $10, $12
+	vibrato 16, 1, 2
 	note_type 12, 11, 2
 	octave 1
 	note G_, 1
@@ -295,7 +295,7 @@ Music_PaletteBattlePrism_branch_1edc47:
 Music_PaletteBattlePrism_Ch2:
 	duty_cycle 3
 	pitch_offset 1
-	vibrato $8, $36
+	vibrato 8, 3, 6
 	note_type 12, 12, 2
 	octave 5
 	note C#, 1

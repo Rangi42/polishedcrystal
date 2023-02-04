@@ -8,7 +8,7 @@ Music_LookOfficer_Ch1:
 	tempo 116
 	volume 7, 7
 	pitch_offset 1
-	vibrato $12, $34
+	vibrato 18, 3, 4
 	stereo_panning FALSE, TRUE
 	duty_cycle 3
 	note_type 12, 10, 7
@@ -36,7 +36,7 @@ Music_LookOfficer_branch_ed852:
 	sound_jump Music_LookOfficer_branch_ed852
 
 Music_LookOfficer_Ch2:
-	vibrato $12, $34
+	vibrato 18, 3, 4
 	duty_cycle 3
 	note_type 12, 11, 7
 	octave 5
@@ -96,7 +96,7 @@ Music_LookOfficer_branch_ed89e:
 	sound_ret
 
 Music_LookOfficer_Ch3:
-	vibrato $14, $14
+	vibrato 20, 1, 4
 	stereo_panning TRUE, FALSE
 	note_type 12, 1, 4
 	note __, 10

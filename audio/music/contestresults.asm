@@ -127,7 +127,7 @@ Music_ContestResults_branch_efba6:
 	sound_jump Music_ContestResults_branch_efb7e
 
 Music_ContestResults_Ch3:
-	vibrato $8, $24
+	vibrato 8, 2, 4
 	note_type 12, 2, 3
 Music_ContestResults_branch_efbd2:
 	octave 4

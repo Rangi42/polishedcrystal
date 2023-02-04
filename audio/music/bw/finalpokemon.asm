@@ -13,7 +13,7 @@ Music_FinalPokemonBW:
 Music_FinalPokemonBW_Ch1:
 	tempo 240
 	volume 7, 7
-	vibrato $12, $15
+	vibrato 18, 1, 5
 	duty_cycle 0
 	octave 1
 	note_type 6, 9, 1
@@ -389,7 +389,7 @@ Music_FinalPokemonBW_Ch1_branch_2:
 
 Music_FinalPokemonBW_Ch2:
 	duty_cycle 0
-	vibrato $12, $15
+	vibrato 18, 1, 5
 	note_type 6, 9, 1
 	octave 1
 	note D_, 1
@@ -656,7 +656,7 @@ Music_FinalPokemonBW_Ch2_branch_2:
 	sound_ret
 
 Music_FinalPokemonBW_Ch3:
-	vibrato $12, $25
+	vibrato 18, 2, 5
 	note_type 3, 1, 6
 	octave 2
 	note D_, 1

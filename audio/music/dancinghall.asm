@@ -90,7 +90,7 @@ Music_DancingHall_Ch2:
 	stereo_panning TRUE, FALSE
 	note_type 6, 10, 1
 	duty_cycle 0
-	vibrato $10, $24
+	vibrato 16, 2, 4
 	note __, 3
 Music_DancingHall_branch_efa37:
 	note_type 6, 10, 2
@@ -220,7 +220,7 @@ Music_DancingHall_branch_efa7a:
 
 Music_DancingHall_Ch3:
 	stereo_panning TRUE, TRUE
-	vibrato $16, $24
+	vibrato 22, 2, 4
 	note_type 6, 1, 0
 	octave 5
 	note A_, 1

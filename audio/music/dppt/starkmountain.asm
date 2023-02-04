@@ -14,7 +14,7 @@ Music_StarkMountainDPPt_Ch1:
 	stereo_panning TRUE, TRUE
 	tempo $A0
 	pitch_offset 2
-	vibrato $10, $36
+	vibrato 16, 3, 6
 Music_StarkMountainDPPt_Ch1_loop:
 	octave 2
 	note_type 12, 10, 1
@@ -757,7 +757,7 @@ Music_StarkMountainDPPt_Ch2_loop:
 Music_StarkMountainDPPt_Ch3:
 	pitch_offset 1
 	volume_envelope 1, -1
-	vibrato $08, $45
+	vibrato 8, 4, 5
 Music_StarkMountainDPPt_Ch3_loop:
 	note_type 12, 1, -1
 	octave 4

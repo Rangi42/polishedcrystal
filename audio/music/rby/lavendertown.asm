@@ -12,7 +12,7 @@ Music_LavenderTownRBY_Ch1:
 	tempo 152
 	volume 7, 7
 	duty_cycle 1
-	vibrato 0, 136
+	vibrato 0, 8, 8
 	note_type 12, 8, 7
 	note __, 16
 	note __, 16
@@ -71,7 +71,7 @@ Music_LavenderTownRBY_branch_bb6b:
 	sound_jump Music_LavenderTownRBY_branch_bb6b
 
 Music_LavenderTownRBY_Ch2:
-	vibrato 0, 52
+	vibrato 0, 3, 4
 	duty_cycle 3
 	note_type 12, 9, 1
 
@@ -84,7 +84,7 @@ Music_LavenderTownRBY_branch_bba5:
 	sound_jump Music_LavenderTownRBY_branch_bba5
 
 Music_LavenderTownRBY_Ch3:
-	vibrato 4, 17
+	vibrato 4, 1, 1
 	note_type 12, 3, -2 ; waveform 10
 	note __, 16
 	note __, 16

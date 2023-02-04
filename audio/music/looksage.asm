@@ -124,7 +124,7 @@ Music_LookSage_branch_ee3fa:
 
 Music_LookSage_Ch3:
 	stereo_panning TRUE, FALSE
-	vibrato $16, $23
+	vibrato 22, 2, 3
 	note_type 12, 1, 0
 	octave 5
 	note B_, 1
@@ -132,9 +132,9 @@ Music_LookSage_Ch3:
 	note C_, 1
 	octave 5
 	note B_, 16
-	vibrato $7, $23
+	vibrato 7, 2, 3
 	note B_, 8
-	vibrato $14, $23
+	vibrato 20, 2, 3
 	octave 6
 	note D_, 6
 	note E_, 1
@@ -149,11 +149,11 @@ Music_LookSage_branch_ee430:
 	note E_, 1
 	note F_, 1
 	note D_, 1
-	vibrato $0, $0
+	vibrato 0, 0, 0
 	note E_, 4
-	vibrato $7, $23
+	vibrato 7, 2, 3
 	note E_, 8
-	vibrato $14, $23
+	vibrato 20, 2, 3
 	octave 5
 	note B_, 8
 	octave 6

@@ -10,7 +10,7 @@ Music_Route37_Ch1:
 	volume 7, 7
 	duty_cycle 3
 	pitch_offset 2
-	vibrato $10, $22
+	vibrato 16, 2, 2
 	note_type 12, 11, 3
 	note __, 16
 	note __, 16
@@ -130,7 +130,7 @@ Music_Route37_branch_ee9e9:
 
 Music_Route37_Ch2:
 	duty_cycle 3
-	vibrato $1c, $12
+	vibrato 28, 1, 2
 	note_type 12, 12, 2
 	octave 2
 	note B_, 2

@@ -12,7 +12,7 @@ Music_IndigoPlateauRBY_Ch1:
 	tempo 132
 	volume 7, 7
 	duty_cycle 3
-	vibrato 6, 52
+	vibrato 6, 3, 4
 
 	note_type 12, 11, 2
 	octave 2
@@ -97,7 +97,7 @@ Music_IndigoPlateauRBY_branch_a659:
 
 Music_IndigoPlateauRBY_Ch2:
 	duty_cycle 3
-	vibrato 8, 37
+	vibrato 8, 2, 5
 	note_type 12, 12, 2
 	octave 3
 	note D_, 8

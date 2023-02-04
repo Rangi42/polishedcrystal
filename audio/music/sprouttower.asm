@@ -10,7 +10,7 @@ Music_SproutTower_Ch1:
 	volume 7, 7
 	duty_cycle 3
 	pitch_offset 2
-	vibrato $8, $45
+	vibrato 8, 4, 5
 	stereo_panning FALSE, TRUE
 	note_type 12, 10, 3
 	note __, 16
@@ -65,7 +65,7 @@ Music_SproutTower_branch_f6994:
 Music_SproutTower_Ch2:
 	duty_cycle 3
 	pitch_offset 1
-	vibrato $8, $48
+	vibrato 8, 4, 8
 	note_type 12, 11, 2
 	octave 3
 	note F_, 4
@@ -140,7 +140,7 @@ Music_SproutTower_branch_f69dc:
 	sound_jump Music_SproutTower_branch_f69dc
 
 Music_SproutTower_Ch3:
-	vibrato $14, $e8
+	vibrato 20, 14, 8
 	note_type 12, 1, 4
 	octave 3
 	note F_, 2

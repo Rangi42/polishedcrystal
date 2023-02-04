@@ -171,7 +171,7 @@ Music_PokeFluteChannel_branch_f7b94:
 	sound_jump Music_PokeFluteChannel_branch_f7b94
 
 Music_PokeFluteChannel_Ch3:
-	vibrato $10, $14
+	vibrato 16, 1, 4
 	note_type 12, 1, 0
 	sound_call Music_PokeFluteChannel_branch_f7c05
 	sound_call Music_PokeFluteChannel_branch_f7c05

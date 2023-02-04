@@ -62,7 +62,7 @@ Music_LookYoungster_branch_f66ea:
 
 Music_LookYoungster_Ch2:
 	stereo_panning TRUE, FALSE
-	vibrato $12, $26
+	vibrato 18, 2, 6
 	duty_cycle 1
 	note_type 12, 10, 3
 	octave 3
@@ -158,7 +158,7 @@ Music_LookYoungster_branch_f672f:
 
 Music_LookYoungster_Ch3:
 	stereo_panning TRUE, TRUE
-	vibrato $2, $24
+	vibrato 2, 2, 4
 	note_type 12, 2, 5
 	note __, 4
 	octave 2

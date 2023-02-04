@@ -10,7 +10,7 @@ Music_ViridianCity_Ch1:
 	volume 7, 7
 	stereo_panning FALSE, TRUE
 	duty_cycle 2
-	vibrato $12, $34
+	vibrato 18, 3, 4
 	note_type 12, 10, 7
 	octave 3
 	note F#, 1
@@ -272,7 +272,7 @@ Music_ViridianCity_branch_f410f:
 	sound_ret
 
 Music_ViridianCity_Ch2:
-	vibrato $10, $46
+	vibrato 16, 4, 6
 	duty_cycle 1
 	note_type 12, 11, 7
 	stereo_panning TRUE, FALSE
@@ -507,7 +507,7 @@ Music_ViridianCity_branch_f4215:
 	sound_ret
 
 Music_ViridianCity_Ch3:
-	vibrato $12, $24
+	vibrato 18, 2, 4
 	note_type 12, 1, 3
 	stereo_panning TRUE, TRUE
 	octave 4
@@ -550,7 +550,7 @@ Music_ViridianCity_branch_f4246:
 	note G_, 2
 	sound_call Music_ViridianCity_branch_f42a2
 	note E_, 4
-	vibrato $18, $25
+	vibrato 24, 2, 5
 	volume_envelope 2, 5
 	note B_, 12
 	note G_, 4

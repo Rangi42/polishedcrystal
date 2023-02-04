@@ -7,10 +7,10 @@ Music_Route26:
 
 Music_Route26_Ch1:
 	stereo_panning FALSE, TRUE
-	vibrato $12, $23
+	vibrato 18, 2, 3
 	tempo 151
 	volume 7, 7
-	vibrato $14, $23
+	vibrato 20, 2, 3
 	duty_cycle 0
 	note_type 12, 10, 7
 	octave 3
@@ -197,7 +197,7 @@ Music_Route26_branch_eefe0:
 
 Music_Route26_Ch2:
 	stereo_panning TRUE, FALSE
-	vibrato $14, $23
+	vibrato 20, 2, 3
 	duty_cycle 2
 	note_type 12, 12, 7
 	octave 1
@@ -355,9 +355,9 @@ Music_Route26_branch_ef14e:
 
 Music_Route26_Ch3:
 	stereo_panning TRUE, TRUE
-	vibrato $12, $23
+	vibrato 18, 2, 3
 	note_type 12, 1, 4
-	vibrato $18, $23
+	vibrato 24, 2, 3
 	octave 4
 	note A#, 4
 	note __, 2
@@ -390,7 +390,7 @@ Music_Route26_Ch3:
 	note F_, 2
 	note D#, 2
 Music_Route26_branch_ef18a:
-	vibrato $18, $23
+	vibrato 24, 2, 3
 	note_type 12, 1, 4
 	octave 5
 	note C#, 1
@@ -398,7 +398,7 @@ Music_Route26_branch_ef18a:
 	octave 4
 	note G#, 1
 	sound_call Music_Route26_branch_ef22f
-	vibrato $25, $13
+	vibrato 37, 1, 3
 	note C#, 1
 	note __, 1
 	octave 4

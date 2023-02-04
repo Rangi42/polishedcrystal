@@ -9,7 +9,7 @@ Music_PokemonCenter_Ch1:
 	tempo 152
 	volume 7, 7
 	duty_cycle 2
-	vibrato $a, $14
+	vibrato 10, 1, 4
 	pitch_offset 1
 Music_PokemonCenter_branch_ed5df:
 	stereo_panning FALSE, TRUE
@@ -151,7 +151,7 @@ Music_PokemonCenter_branch_ed5df:
 	sound_jump Music_PokemonCenter_branch_ed5df
 
 Music_PokemonCenter_Ch2:
-	vibrato $10, $25
+	vibrato 16, 2, 5
 Music_PokemonCenter_branch_ed674:
 	stereo_panning TRUE, TRUE
 	sound_call Music_PokemonCenter_branch_ed6d1

@@ -15,7 +15,7 @@ Music_ChampionBattleDPPt_Ch1:
 	tempo $80
 	duty_cycle 3
 	pitch_offset 2
-	vibrato $10, $24
+	vibrato 16, 2, 4
 	octave 4
 	note_type 12, 11, 7
 	note A#, 16
@@ -483,7 +483,7 @@ Music_ChampionBattleDPPt_Ch1_loop:
 Music_ChampionBattleDPPt_Ch2:
 	duty_cycle 2
 	pitch_offset 1
-	vibrato $08, $36
+	vibrato 8, 3, 6
 	octave 3
 	note_type 12, 12, 2
 	note A#, 2

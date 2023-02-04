@@ -211,7 +211,7 @@ Music_LookKimonoGirl_branch_f7aa8:
 
 Music_LookKimonoGirl_Ch3:
 	stereo_panning TRUE, TRUE
-	vibrato $12, $24
+	vibrato 18, 2, 4
 	note_type 6, 1, 3
 	note __, 1
 	note __, 16

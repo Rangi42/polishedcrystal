@@ -15,7 +15,7 @@ Music_TrainerBattleSM_Ch1:
 	volume 7, 7
 	duty_cycle 2
 	pitch_offset 2
-	vibrato $12, $15
+	vibrato 18, 1, 5
 	note_type 6, 6, 0
 	octave 2
 	note A#, 8
@@ -178,17 +178,17 @@ Music_TrainerBattleSM_Ch1_loop_1:
 	note C_, 5
 	note C_, 2
 	note __, 8
-	vibrato $1, $21
+	vibrato 1, 2, 1
 	volume_envelope 9, 0
 	octave 2
 	note B_, 2
 	octave 3
 	note C_, 10
-	vibrato $0, $0
+	vibrato 0, 0, 0
 	pitch_sweep 6, -3
 	note C_, 4
 	pitch_sweep 0, 0
-	vibrato $12, $15
+	vibrato 18, 1, 5
 	duty_cycle 1
 	note_type 12, 10, 3
 Music_TrainerBattleSM_Ch1_loop_2:
@@ -292,7 +292,7 @@ Music_TrainerBattleSM_Ch1_loop_3:
 
 Music_TrainerBattleSM_Ch2:
 	duty_cycle 3
-	vibrato $8, $36
+	vibrato 8, 3, 6
 	pitch_offset 1
 	note_type 6, 12, 2
 	octave 4
@@ -493,7 +493,7 @@ Music_TrainerBattleSM_Ch2_loop_main:
 	volume_envelope 9, 7
 	note G_, 8
 	duty_cycle 0
-	vibrato $12, $54
+	vibrato 18, 5, 4
 	volume_envelope 12, 0
 	note F_, 8
 	volume_envelope 12, 7
@@ -539,7 +539,7 @@ Music_TrainerBattleSM_Ch2_loop_main:
 	duty_cycle 2
 	octave 2
 	volume_envelope 9, 7
-	vibrato $12, $15
+	vibrato 18, 1, 5
 	note F_, 2
 	note F#, 2
 	note G_, 2

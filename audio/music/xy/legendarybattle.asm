@@ -10,7 +10,7 @@ Music_LegendaryBattleXY:
 	channel 3, Music_LegendaryBattleXY_Ch3
 
 Music_LegendaryBattleXY_Ch1:
-	vibrato $12, $15
+	vibrato 18, 1, 5
 	pitch_offset 1
 	tempo 200
 	note_type 12, 8, 4
@@ -318,7 +318,7 @@ Music_LegendaryBattleXY_Ch1_loop_1:
 
 Music_LegendaryBattleXY_Ch2:
 	duty_cycle 3
-	vibrato $12, $15
+	vibrato 18, 1, 5
 	pitch_offset 1
 	note_type 12, 8, 4
 	octave 2
@@ -647,7 +647,7 @@ Music_LegendaryBattleXY_Ch2_loop_main:
 
 Music_LegendaryBattleXY_Ch3:
 	note_type 12, 1, -1
-	vibrato $12, $34
+	vibrato 18, 3, 4
 	octave 2
 	note F_, 16
 	note F_, 16

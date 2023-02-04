@@ -10,7 +10,7 @@ Music_MainMenu_Ch1:
 	volume 7, 7
 	duty_cycle 3
 	pitch_offset 1
-	vibrato $10, $15
+	vibrato 16, 1, 5
 	stereo_panning TRUE, FALSE
 	note_type 12, 0, -7
 	octave 3

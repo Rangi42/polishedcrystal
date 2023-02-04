@@ -15,7 +15,7 @@ Music_MountChimneyRSE_Ch1:
 	volume 7, 7
 	duty_cycle 0
 	pitch_offset 2
-	vibrato $8, $15
+	vibrato 8, 1, 5
 	note_type 12, 8, 0
 	octave 1
 	note G_, 4
@@ -398,7 +398,7 @@ Music_MountChimneyRSE_blank:
 
 Music_MountChimneyRSE_Ch2:
 	duty_cycle 3
-	vibrato $12, $25
+	vibrato 18, 2, 5
 	pitch_offset 1
 	note_type 12, 8, 0
 	octave 2
@@ -785,7 +785,7 @@ Music_MountChimneyRSE_Ch2_branch_1:
 
 Music_MountChimneyRSE_Ch3:
 	note_type 6, 2, 5
-	vibrato $12, $15
+	vibrato 18, 1, 5
 	octave 2
 	note D#, 4
 	note __, 12

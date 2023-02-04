@@ -14,7 +14,7 @@ Music_Route101RSE_Ch1:
 	tempo 166
 	volume 7, 7
 	pitch_offset 1
-	vibrato $10, $15
+	vibrato 16, 1, 5
 	stereo_panning FALSE, TRUE
 	note_type 12, 8, 3
 	note __, 2
@@ -222,7 +222,7 @@ Music_Route101RSE_Ch1_branch_3:
 
 Music_Route101RSE_Ch2:
 	duty_cycle 2
-	vibrato $12, $36
+	vibrato 18, 3, 6
 	note_type 12, 7, 7
 	note __, 2
 Music_Route101RSE_Ch2_loop:
@@ -349,7 +349,7 @@ Music_Route101RSE_Ch2_branch_2:
 Music_Route101RSE_Ch3:
 	stereo_panning TRUE, FALSE
 	note_type 12, 1, 3
-	vibrato $15, $24
+	vibrato 21, 2, 4
 Music_Route101RSE_Ch3_loop:
 	sound_call Music_Route101RSE_Ch3_branch_1
 	sound_call Music_Route101RSE_Ch3_branch_1

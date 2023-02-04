@@ -13,7 +13,7 @@ Music_TitleScreenXY_Ch1:
 	tempo 125
 	volume 7, 7
 	stereo_panning FALSE, TRUE
-	vibrato $10, $33
+	vibrato 16, 3, 3
 	pitch_sweep 0, 0
 Music_TitleScreenXY_Ch1_b0:
 	duty_cycle 0
@@ -282,7 +282,7 @@ Music_TitleScreenXY_Ch1_b5:
 	sound_ret
 
 Music_TitleScreenXY_Ch2:
-	vibrato $10, $33
+	vibrato 16, 3, 3
 	stereo_panning TRUE, FALSE
 	duty_cycle 1
 Music_TitleScreenXY_Ch2_b0:

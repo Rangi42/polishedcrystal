@@ -13,7 +13,7 @@ BicycleXY_Ch1::
 	volume 7, 7
 	stereo_panning TRUE, TRUE
 	duty_cycle 1
-	vibrato $10, $22
+	vibrato 16, 2, 2
 	note_type 12, 10, 7
 
 BicycleXY_Ch1_sub_0:
@@ -153,7 +153,7 @@ BicycleXY_Ch1_sub_0:
 BicycleXY_Ch2::
 	duty_cycle 1
 	note_type 12, 12, 7
-	vibrato $10, $00
+	vibrato 16, 0, 0
 
 BicycleXY_Ch2_sub_0:
 	note_type 12, 12, 8
@@ -182,9 +182,9 @@ BicycleXY_Ch2_sub_0:
 	note E_, 4
 	note F#, 4
 	note G#, 4
-	vibrato $0, $23
+	vibrato 0, 2, 3
 	note E_, 5
-	vibrato $10, $00
+	vibrato 16, 0, 0
 	note __, 1
 	note E_, 1
 	note __, 3
@@ -210,7 +210,7 @@ BicycleXY_Ch2_sub_0:
 	note F#, 1
 	duty_cycle 3
 	note_type 6, 12, 7
-	vibrato $8, $23
+	vibrato 8, 2, 3
 	octave 5
 	note __, 5
 	note D#, 1
@@ -259,7 +259,7 @@ BicycleXY_Ch2_sub_0:
 	note __, 2
 	note E_, 8
 	note D#, 10
-	vibrato $10, $23
+	vibrato 16, 2, 3
 	note_type 12, 12, 4
 	duty_cycle 1
 	octave 4
@@ -308,7 +308,7 @@ BicycleXY_Ch2_sub_0:
 
 BicycleXY_Ch3::
 	stereo_panning TRUE, TRUE
-	vibrato $0, $0
+	vibrato 0, 0, 0
 	note_type 12, 1, 6
 
 BicycleXY_Ch3_sub_0:

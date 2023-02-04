@@ -345,7 +345,7 @@ Music_GymLeaderBattleGo_Ch1_ditty7:
 
 Music_GymLeaderBattleGo_Ch2:
 	duty_cycle_pattern 3, 3, 3, 3
-	vibrato $07, $95
+	vibrato 7, 9, 5
 	octave 3
 	note_type 12, 10, 5
 Music_GymLeaderBattleGo_Ch2_loop_1:
@@ -358,7 +358,7 @@ Music_GymLeaderBattleGo_Ch2_loop_1:
 Music_GymLeaderBattleGo_Ch2_loop:
 	duty_cycle_pattern 0, 0, 0, 0
 	volume_envelope 12, 5
-	vibrato $00, $33
+	vibrato 0, 3, 3
 Music_GymLeaderBattleGo_Ch2_loop_2:
 	note C_, 3
 	note G_, 3
@@ -371,7 +371,7 @@ Music_GymLeaderBattleGo_Ch2_loop_2:
 	sound_loop 2, Music_GymLeaderBattleGo_Ch2_loop_2
 	duty_cycle_pattern 1, 1, 1, 1
 	volume_envelope 10, 8
-	vibrato $09, $33
+	vibrato 9, 3, 3
 	octave 4
 	note C_, 3
 	octave 3
@@ -439,13 +439,13 @@ Music_GymLeaderBattleGo_Ch2_loop_2:
 	note C_, 1
 	duty_cycle_pattern 3, 3, 3, 3
 	volume_envelope 12, 8
-	vibrato $0F, $53
+	vibrato 15, 5, 3
 	octave 4
 	note D#, 1
 	note C#, 8
 	sound_call Music_GymLeaderBattleGo_Ch2_ditty1
 	volume_envelope 12, 8
-	vibrato $0F, $53
+	vibrato 15, 5, 3
 	octave 4
 	note D#, 1
 	note C#, 8
@@ -641,17 +641,17 @@ Music_GymLeaderBattleGo_Ch2_loop_3:
 
 Music_GymLeaderBattleGo_Ch2_ditty1:
 	volume_envelope 12, 7
-	vibrato $00, $00
+	vibrato 0, 0, 0
 	octave 3
 	note G#, 12
 	note __, 11
 	volume_envelope 12, 8
-	vibrato $0F, $53
+	vibrato 15, 5, 3
 	octave 4
 	note C#, 1
 	note D#, 8
 	volume_envelope 12, 7
-	vibrato $00, $00
+	vibrato 0, 0, 0
 	octave 3
 	note A#, 12
 	note __, 11
@@ -718,7 +718,7 @@ Music_GymLeaderBattleGo_Ch3_loop_1:
 Music_GymLeaderBattleGo_Ch3_loop:
 	duty_cycle 6
 	volume_envelope 1, 6
-	vibrato $05, $33
+	vibrato 5, 3, 3
 	octave 3
 Music_GymLeaderBattleGo_Ch3_loop_2:
 	note G_, 3
@@ -791,7 +791,7 @@ Music_GymLeaderBattleGo_Ch3_loop_2:
 	note E_, 1
 	note D_, 1
 	note C_, 6
-	vibrato $01, $33
+	vibrato 1, 3, 3
 	octave 3
 	sound_call Music_GymLeaderBattleGo_Ch1_ditty8
 	octave 4
@@ -802,7 +802,7 @@ Music_GymLeaderBattleGo_Ch3_loop_2:
 	note D#, 1
 	duty_cycle 6
 	volume_envelope 1, 6
-	vibrato $03, $33
+	vibrato 3, 3, 3
 Music_GymLeaderBattleGo_Ch3_loop_3:
 	sound_call Music_GymLeaderBattleGo_Ch3_ditty1
 	sound_loop 4, Music_GymLeaderBattleGo_Ch3_loop_3
@@ -815,7 +815,7 @@ Music_GymLeaderBattleGo_Ch3_loop_5:
 Music_GymLeaderBattleGo_Ch3_loop_6:
 	sound_call Music_GymLeaderBattleGo_Ch3_ditty2
 	sound_loop 4, Music_GymLeaderBattleGo_Ch3_loop_6
-	vibrato $05, $33
+	vibrato 5, 3, 3
 	note F_, 8
 	note A#, 8
 	octave 5
