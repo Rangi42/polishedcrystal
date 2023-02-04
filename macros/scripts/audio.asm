@@ -16,6 +16,10 @@ MACRO note
 	dn (\1), (\2) - 1 ; pitch, length
 ENDM
 
+MACRO drum_note
+	note \1, \2 ; drum instrument, length
+ENDM
+
 MACRO rest
 	note 0, \1 ; length
 ENDM
@@ -40,13 +44,14 @@ MACRO noise_note
 	db \4 ; frequency
 ENDM
 
+; MusicCommands indexes (see audio/engine.asm)
 	const_def $d0
 DEF FIRST_MUSIC_CMD EQU const_value
 
-	const octave_cmd
+	const octave_cmd ; $d0
 MACRO octave
 	assert 1 <= (\1) && (\1) <= 8, "octave must be 1-8"
-	db octave_cmd + 8 - (\1)
+	db octave_cmd + 8 - (\1) ; octave
 ENDM
 
 	const_skip 7 ; all octave values
@@ -64,13 +69,18 @@ MACRO note_type
 	endc
 ENDM
 
+; only valid on the noise channel
+MACRO drum_speed
+	note_type \1 ; note length
+ENDM
+
 	const transpose_cmd ; $d9
 MACRO transpose
 	db transpose_cmd
 	dn \1, \2 ; num octaves, num pitches
 ENDM
 
-	const tempo_cmd
+	const tempo_cmd ; $da
 MACRO tempo
 	db tempo_cmd
 	bigdw \1 ; tempo
@@ -131,7 +141,7 @@ MACRO vibrato
 	endc
 ENDM
 
-	const unknownmusic0xe2_cmd
+	const unknownmusic0xe2_cmd ; $e2
 MACRO unknownmusic0xe2
 	db unknownmusic0xe2_cmd
 	db \1 ; unknown
@@ -151,7 +161,7 @@ MACRO force_stereo_panning
 	dn %1111 * (1 && \1), %1111 * (1 && \2) ; left enable, right enable
 ENDM
 
-	const volume_cmd
+	const volume_cmd ; $e5
 MACRO volume
 	db volume_cmd
 	if _NARG > 1
@@ -167,22 +177,22 @@ MACRO pitch_offset
 	bigdw \1 ; pitch offset
 ENDM
 
-	const unknownmusic0xe7_cmd
+	const unknownmusic0xe7_cmd ; $e7
 MACRO unknownmusic0xe7
 	db unknownmusic0xe7_cmd
 	db \1 ; unknown
 ENDM
 
-	const unknownmusic0xe8_cmd
+	const unknownmusic0xe8_cmd ; $e8
 MACRO unknownmusic0xe8
 	db unknownmusic0xe8_cmd
 	db \1 ; unknown
 ENDM
 
-	const tempo_relative_cmd
+	const tempo_relative_cmd ; $e9
 MACRO tempo_relative
 	db tempo_relative_cmd
-	bigdw \1 ; value
+	bigdw \1 ; tempo adjustment
 ENDM
 
 	const restart_channel_cmd ; $ea
@@ -207,7 +217,7 @@ MACRO sfx_priority_off
 	db sfx_priority_off_cmd
 ENDM
 
-	const unknownmusic0xee_cmd
+	const unknownmusic0xee_cmd ; $ee
 MACRO unknownmusic0xee
 	db unknownmusic0xee_cmd
 	dw \1 ; address
@@ -227,42 +237,42 @@ MACRO sfx_toggle_noise
 	endc
 ENDM
 
-	const music0xf1_cmd
+	const music0xf1_cmd ; $f1
 MACRO music0xf1
 	db music0xf1_cmd
 ENDM
 
-	const music0xf2_cmd
+	const music0xf2_cmd ; $f2
 MACRO music0xf2
 	db music0xf2_cmd
 ENDM
 
-	const music0xf3_cmd
+	const music0xf3_cmd ; $f3
 MACRO music0xf3
 	db music0xf3_cmd
 ENDM
 
-	const music0xf4_cmd
+	const music0xf4_cmd ; $f4
 MACRO music0xf4
 	db music0xf4_cmd
 ENDM
 
-	const music0xf5_cmd
+	const music0xf5_cmd ; $f5
 MACRO music0xf5
 	db music0xf5_cmd
 ENDM
 
-	const music0xf6_cmd
+	const music0xf6_cmd ; $f6
 MACRO music0xf6
 	db music0xf6_cmd
 ENDM
 
-	const music0xf7_cmd
+	const music0xf7_cmd ; $f7
 MACRO music0xf7
 	db music0xf7_cmd
 ENDM
 
-	const music0xf8_cmd
+	const music0xf8_cmd ; $f8
 MACRO music0xf8
 	db music0xf8_cmd
 ENDM
