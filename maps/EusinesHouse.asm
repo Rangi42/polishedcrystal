@@ -94,7 +94,7 @@ EusinesHouseGrampsScript:
 	iffalse_jumptextfaceplayer EusinesHouseGrampsGrandsonHomeText
 	checkevent EVENT_FOUGHT_SUICUNE
 	iffalse_jumptextfaceplayer EusinesHouseGrampsEusineSearchingForSuicuneText
-	checkevent EVENT_GOT_RARE_CANDY_FROM_EUSINE_GRAMPS
+	checkevent EVENT_DECO_ABRA_DOLL
 	iftrue_jumptextfaceplayer EusinesHouseGrampsEusineTravelingWorldText
 	checkevent EVENT_FOUGHT_HO_OH
 	iftruefwd .AfterHoOhFight
@@ -105,10 +105,24 @@ EusinesHouseGrampsScript:
 	opentext
 	writetext EusinesHouseGrampsThankYouGiftText
 	waitbutton
-	verbosegiveitem RARE_CANDY
-	setevent EVENT_GOT_RARE_CANDY_FROM_EUSINE_GRAMPS
+	writetext ReceivedAbraDollText
+	playsound SFX_ITEM
+	waitsfx
+	writetext AbraDollSentHomeText
+	setevent EVENT_DECO_ABRA_DOLL
+	waitbutton
 	closetext
 	end
+
+ReceivedAbraDollText:
+	text "Received Abra"
+	line "Doll!"
+	done
+
+AbraDollSentHomeText:
+	text "Abra Doll"
+	line "was sent home."
+	done
 
 CeladonEusineText1:
 	text "Eusine: Hi!"
