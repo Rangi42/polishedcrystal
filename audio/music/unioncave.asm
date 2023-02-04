@@ -15,7 +15,7 @@ Music_UnionCave_Ch1:
 Music_UnionCave_branch_f5c7b:
 	note_type 12, 11, 3
 Music_UnionCave_branch_f5c7e:
-	callchannel Music_UnionCave_branch_f5ccf
+	sound_call Music_UnionCave_branch_f5ccf
 	sound_loop 4, Music_UnionCave_branch_f5c7e
 Music_UnionCave_branch_f5c85:
 	octave 2
@@ -55,13 +55,13 @@ Music_UnionCave_branch_f5c91:
 	note A_, 8
 	volume_envelope 9, 5
 	pitch_offset 4
-	callchannel Music_UnionCave_branch_f5ccf
+	sound_call Music_UnionCave_branch_f5ccf
 	pitch_offset 8
-	callchannel Music_UnionCave_branch_f5ccf
+	sound_call Music_UnionCave_branch_f5ccf
 	pitch_offset 12
-	callchannel Music_UnionCave_branch_f5ccf
+	sound_call Music_UnionCave_branch_f5ccf
 	pitch_offset 16
-	callchannel Music_UnionCave_branch_f5ccf
+	sound_call Music_UnionCave_branch_f5ccf
 	pitch_offset 2
 	sound_jump Music_UnionCave_branch_f5c7b
 
@@ -78,11 +78,11 @@ Music_UnionCave_Ch2:
 	vibrato $8, $24
 Music_UnionCave_branch_f5cda:
 	note_type 12, 12, 4
-	callchannel Music_UnionCave_branch_f5d34
+	sound_call Music_UnionCave_branch_f5d34
 	volume_envelope 12, 5
-	callchannel Music_UnionCave_branch_f5d34
+	sound_call Music_UnionCave_branch_f5d34
 	volume_envelope 12, 7
-	callchannel Music_UnionCave_branch_f5d34
+	sound_call Music_UnionCave_branch_f5d34
 	volume_envelope 12, 4
 	note C#, 4
 	octave 3
@@ -124,13 +124,13 @@ Music_UnionCave_branch_f5cda:
 	note A_, 16
 	volume_envelope 10, 5
 	vibrato $6, $44
-	callchannel Music_UnionCave_branch_f5d52
+	sound_call Music_UnionCave_branch_f5d52
 	vibrato $4, $33
-	callchannel Music_UnionCave_branch_f5d52
+	sound_call Music_UnionCave_branch_f5d52
 	vibrato $2, $22
-	callchannel Music_UnionCave_branch_f5d52
+	sound_call Music_UnionCave_branch_f5d52
 	vibrato $1, $41
-	callchannel Music_UnionCave_branch_f5d52
+	sound_call Music_UnionCave_branch_f5d52
 	vibrato $8, $24
 	sound_jump Music_UnionCave_branch_f5cda
 

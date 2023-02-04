@@ -13,15 +13,15 @@ Music_RuinsOfAlphRadio_Ch1:
 	stereo_panning TRUE, FALSE
 Music_RuinsOfAlphRadio_branch_eede3:
 	note_type 6, 7, 1
-	callchannel Music_RuinsOfAlphRadio_branch_eee01
+	sound_call Music_RuinsOfAlphRadio_branch_eee01
 	note_type 12, 10, 1
 	note __, 16
 	note __, 16
-	callchannel Music_RuinsOfAlphRadio_branch_eee08
+	sound_call Music_RuinsOfAlphRadio_branch_eee08
 	note_type 12, 10, 1
 	note __, 16
 	note __, 16
-	callchannel Music_RuinsOfAlphRadio_branch_eee01
+	sound_call Music_RuinsOfAlphRadio_branch_eee01
 	note_type 12, 10, 1
 	note __, 16
 	sound_jump Music_RuinsOfAlphRadio_branch_eede3
@@ -53,12 +53,12 @@ Music_RuinsOfAlphRadio_Ch2:
 Music_RuinsOfAlphRadio_branch_eee17:
 	stereo_panning FALSE, TRUE
 	note_type 6, 8, 1
-	callchannel Music_RuinsOfAlphRadio_branch_eee01
+	sound_call Music_RuinsOfAlphRadio_branch_eee01
 	note_type 12, 10, 1
 	note __, 16
 	note __, 16
 	note_type 6, 8, 1
-	callchannel Music_RuinsOfAlphRadio_branch_eee08
+	sound_call Music_RuinsOfAlphRadio_branch_eee08
 	note_type 12, 10, 1
 	note __, 16
 	sound_jump Music_RuinsOfAlphRadio_branch_eee17

@@ -87,7 +87,7 @@ Music_KantoGymBattle_Ch1:
 	note E_, 4
 	note E_, 2
 Music_KantoGymBattle_branch_ec78b:
-	callchannel Music_KantoGymBattle_branch_ec832
+	sound_call Music_KantoGymBattle_branch_ec832
 	octave 2
 	note A#, 2
 	volume_envelope 11, 7
@@ -96,7 +96,7 @@ Music_KantoGymBattle_branch_ec78b:
 	octave 3
 	note D#, 10
 	note E_, 6
-	callchannel Music_KantoGymBattle_branch_ec832
+	sound_call Music_KantoGymBattle_branch_ec832
 	note D#, 2
 	volume_envelope 11, 7
 	note C#, 8
@@ -315,12 +315,12 @@ Music_KantoGymBattle_branch_ec85d:
 	octave 4
 	sound_loop 2, Music_KantoGymBattle_branch_ec85d
 Music_KantoGymBattle_branch_ec894:
-	callchannel Music_KantoGymBattle_branch_ec907
+	sound_call Music_KantoGymBattle_branch_ec907
 	note E_, 8
 	note G#, 8
 	note B_, 10
 	note G#, 6
-	callchannel Music_KantoGymBattle_branch_ec907
+	sound_call Music_KantoGymBattle_branch_ec907
 	note E_, 8
 	note G#, 8
 	note B_, 10

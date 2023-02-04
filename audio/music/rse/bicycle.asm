@@ -405,10 +405,10 @@ Music_BicycleRSE_Ch2:
 	note __, 16
 	duty_cycle 1
 	volume_envelope 5, 4
-	callchannel Music_BicycleRSE_Ch2_branch_1
-	callchannel Music_BicycleRSE_Ch2_branch_2
-	callchannel Music_BicycleRSE_Ch2_branch_1
-	callchannel Music_BicycleRSE_Ch2_branch_2
+	sound_call Music_BicycleRSE_Ch2_branch_1
+	sound_call Music_BicycleRSE_Ch2_branch_2
+	sound_call Music_BicycleRSE_Ch2_branch_1
+	sound_call Music_BicycleRSE_Ch2_branch_2
 	octave 4
 	note E_, 2
 	octave 3
@@ -501,7 +501,7 @@ Music_BicycleRSE_Ch2:
 	note A_, 2
 	note G_, 2
 	note A_, 2
-	callchannel Music_BicycleRSE_Ch2_branch_1
+	sound_call Music_BicycleRSE_Ch2_branch_1
 	octave 4
 	note C#, 2
 	octave 3

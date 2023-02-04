@@ -37,16 +37,16 @@ Music_MotherBeastBattleSM_Ch1_loop_main:
 	volume_envelope 3, 0
 	duty_cycle 3
 	octave 3
-	callchannel Music_MotherBeastBattleSM_Ch2_branch_1
+	sound_call Music_MotherBeastBattleSM_Ch2_branch_1
 	octave 2
 	note A_, 1
 	octave 3
-	callchannel Music_MotherBeastBattleSM_Ch2_branch_2
-	callchannel Music_MotherBeastBattleSM_Ch2_branch_1
+	sound_call Music_MotherBeastBattleSM_Ch2_branch_2
+	sound_call Music_MotherBeastBattleSM_Ch2_branch_1
 	octave 2
 	note A_, 1
 	octave 3
-	callchannel Music_MotherBeastBattleSM_Ch2_branch_2
+	sound_call Music_MotherBeastBattleSM_Ch2_branch_2
 	octave 3
 	duty_cycle 0
 	volume_envelope 5, 0
@@ -61,16 +61,16 @@ Music_MotherBeastBattleSM_Ch1_loop_main:
 	volume_envelope 7, 2
 	duty_cycle 2
 	octave 5
-	callchannel Music_MotherBeastBattleSM_Ch2_branch_1
+	sound_call Music_MotherBeastBattleSM_Ch2_branch_1
 	octave 4
 	note A_, 1
 	octave 5
-	callchannel Music_MotherBeastBattleSM_Ch2_branch_2
-	callchannel Music_MotherBeastBattleSM_Ch2_branch_1
+	sound_call Music_MotherBeastBattleSM_Ch2_branch_2
+	sound_call Music_MotherBeastBattleSM_Ch2_branch_1
 	octave 4
 	note A_, 1
 	octave 5
-	callchannel Music_MotherBeastBattleSM_Ch2_branch_2
+	sound_call Music_MotherBeastBattleSM_Ch2_branch_2
 	volume_envelope 6, 0
 	duty_cycle 2
 	octave 2
@@ -196,7 +196,7 @@ Music_MotherBeastBattleSM_Ch1_loop_main:
 	note C#, 3
 	volume_envelope 3, 0
 	duty_cycle 1
-	callchannel Music_MotherBeastBattleSM_Ch2_branch_3
+	sound_call Music_MotherBeastBattleSM_Ch2_branch_3
 	sound_jump Music_MotherBeastBattleSM_Ch1_loop_main
 
 Music_MotherBeastBattleSM_Ch2:
@@ -378,11 +378,11 @@ Music_MotherBeastBattleSM_Ch2_loop_main:
 	duty_cycle 2
 Music_MotherBeastBattleSM_Ch2_loop_1:
 	octave 3
-	callchannel Music_MotherBeastBattleSM_Ch2_branch_1
+	sound_call Music_MotherBeastBattleSM_Ch2_branch_1
 	octave 2
 	note A_, 1
 	octave 3
-	callchannel Music_MotherBeastBattleSM_Ch2_branch_2
+	sound_call Music_MotherBeastBattleSM_Ch2_branch_2
 	sound_loop 6, Music_MotherBeastBattleSM_Ch2_loop_1
 	note_type 3, 4, 2
 	duty_cycle 2
@@ -691,7 +691,7 @@ Music_MotherBeastBattleSM_Ch2_loop_1:
 	note D_, 1
 	volume_envelope 9, 0
 	duty_cycle 0
-	callchannel Music_MotherBeastBattleSM_Ch2_branch_3
+	sound_call Music_MotherBeastBattleSM_Ch2_branch_3
 	sound_jump Music_MotherBeastBattleSM_Ch2_loop_main
 
 Music_MotherBeastBattleSM_Ch2_branch_1:
@@ -867,7 +867,7 @@ Music_MotherBeastBattleSM_Ch3_loop_2:
 
 Music_MotherBeastBattleSM_Ch4:
 	toggle_noise 3
-	callchannel Music_MotherBeastBattleSM_Ch4_buildup
+	sound_call Music_MotherBeastBattleSM_Ch4_buildup
 	note C_, 2 ;
 	note C#, 1
 	note C#, 3
@@ -918,15 +918,15 @@ Music_MotherBeastBattleSM_Ch4:
 	note __, 12
 	note __, 14
 Music_MotherBeastBattleSM_Ch4_loop_main:
-	callchannel Music_MotherBeastBattleSM_Ch4_buildup
-	callchannel Music_MotherBeastBattleSM_Ch4_branch_1
-	callchannel Music_MotherBeastBattleSM_Ch4_branch_2
-	callchannel Music_MotherBeastBattleSM_Ch4_branch_1
-	callchannel Music_MotherBeastBattleSM_Ch4_branch_3
-	callchannel Music_MotherBeastBattleSM_Ch4_branch_1
-	callchannel Music_MotherBeastBattleSM_Ch4_branch_2
-	callchannel Music_MotherBeastBattleSM_Ch4_branch_1
-	callchannel Music_MotherBeastBattleSM_Ch4_branch_3
+	sound_call Music_MotherBeastBattleSM_Ch4_buildup
+	sound_call Music_MotherBeastBattleSM_Ch4_branch_1
+	sound_call Music_MotherBeastBattleSM_Ch4_branch_2
+	sound_call Music_MotherBeastBattleSM_Ch4_branch_1
+	sound_call Music_MotherBeastBattleSM_Ch4_branch_3
+	sound_call Music_MotherBeastBattleSM_Ch4_branch_1
+	sound_call Music_MotherBeastBattleSM_Ch4_branch_2
+	sound_call Music_MotherBeastBattleSM_Ch4_branch_1
+	sound_call Music_MotherBeastBattleSM_Ch4_branch_3
 	note_type 12
 	note C_, 12
 	note D#, 12

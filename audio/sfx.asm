@@ -3552,10 +3552,10 @@ Sfx_GetBadge:
 	note_type 6, 9, 2
 	octave 4
 	note F_, 3
-	callchannel .branch5
+	sound_call .branch5
 	note A#, 3
 	transpose 0, 2
-	callchannel .branch5
+	sound_call .branch5
 	transpose 0, 0
 	volume_envelope 10, 7
 	note A_, 16

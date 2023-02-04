@@ -12,8 +12,8 @@ Music_SpikyEaredPichuHGSS:
 Music_SpikyEaredPichuHGSS_Ch1:
 	tempo 160
 	volume 7, 7
-	callchannel Music_SpikyEaredPichuHGSS_Ch1_branch_1
-	callchannel Music_SpikyEaredPichuHGSS_Ch1_branch_1
+	sound_call Music_SpikyEaredPichuHGSS_Ch1_branch_1
+	sound_call Music_SpikyEaredPichuHGSS_Ch1_branch_1
 	duty_cycle 1
 	volume_envelope 11, 3
 	note F_, 2

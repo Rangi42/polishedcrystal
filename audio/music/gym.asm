@@ -227,12 +227,12 @@ Music_Gym_branch_f4980:
 	octave 3
 	note C_, 1
 	note C#, 1
-	callchannel Music_Gym_branch_f49e9
+	sound_call Music_Gym_branch_f49e9
 	octave 3
 	note E_, 2
 	note C_, 1
 	note C#, 1
-	callchannel Music_Gym_branch_f49e9
+	sound_call Music_Gym_branch_f49e9
 	octave 3
 	note C_, 1
 	note E_, 1
@@ -240,7 +240,7 @@ Music_Gym_branch_f4980:
 	octave 4
 	note C_, 1
 	volume_envelope 13, 2
-	callchannel Music_Gym_branch_f4a15
+	sound_call Music_Gym_branch_f4a15
 	octave 1
 	note F#, 1
 	note B_, 1
@@ -261,7 +261,7 @@ Music_Gym_branch_f4980:
 	octave 2
 	note G_, 2
 	note E_, 2
-	callchannel Music_Gym_branch_f4a15
+	sound_call Music_Gym_branch_f4a15
 	octave 1
 	note G_, 1
 	octave 2
@@ -454,7 +454,7 @@ Music_Gym_branch_f4a3c:
 	octave 5
 	note B_, 4
 	volume_envelope 1, 3
-	callchannel Music_Gym_branch_f4ab3
+	sound_call Music_Gym_branch_f4ab3
 	note __, 2
 	note A_, 2
 	octave 6
@@ -467,7 +467,7 @@ Music_Gym_branch_f4a3c:
 	note A#, 4
 	note A_, 4
 	note G_, 4
-	callchannel Music_Gym_branch_f4ab3
+	sound_call Music_Gym_branch_f4ab3
 	note A_, 1
 	note __, 1
 	note A_, 1

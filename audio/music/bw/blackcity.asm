@@ -17,7 +17,7 @@ Music_BlackCityBW_Ch1:
 	tempo 156
 	note __, 4
 Music_BlackCityBW_Ch1_loop:
-	callchannel Music_BlackCityBW_Ch1_branch_1
+	sound_call Music_BlackCityBW_Ch1_branch_1
 	octave 4
 	duty_cycle 1
 	volume_envelope 5, 4
@@ -36,7 +36,7 @@ Music_BlackCityBW_Ch1_loop:
 	note A#, 2
 	duty_cycle 0
 	volume_envelope 11, 1
-	callchannel Music_BlackCityBW_Ch1_branch_1
+	sound_call Music_BlackCityBW_Ch1_branch_1
 	note __, 2
 	duty_cycle 1
 	volume_envelope 9, 4
@@ -458,7 +458,7 @@ Music_BlackCityBW_Ch4_loop_1:
 	note C_, 2
 	note D#, 4
 	sound_loop 2, Music_BlackCityBW_Ch4_loop_1
-	callchannel Music_BlackCityBW_Ch4_branch_1
+	sound_call Music_BlackCityBW_Ch4_branch_1
 	note D#, 4
 	note D_, 4
 	note D#, 4
@@ -468,7 +468,7 @@ Music_BlackCityBW_Ch4_loop_1:
 	note C_, 4
 	note C_, 2
 	note C_, 2
-	callchannel Music_BlackCityBW_Ch4_branch_1
+	sound_call Music_BlackCityBW_Ch4_branch_1
 	note D#, 2
 	note D#, 2
 	note D_, 4

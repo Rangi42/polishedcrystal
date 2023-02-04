@@ -360,7 +360,7 @@ Cry_Togetic_Ch5:
 	pitch_offset 2
 Cry_Togetic_Ch6:
 Cry_Togetic_branch_f3038:
-	callchannel Cry_Togetic_branch_f3022
+	sound_call Cry_Togetic_branch_f3022
 	sound_loop 2, Cry_Togetic_branch_f3038
 	square_note 14, 0, 0, 0
 	square_note 8, 15, 2, 1986
@@ -715,18 +715,18 @@ Cry_Remoraid_Ch5:
 
 Cry_Mantine_Ch5:
 	duty_cycle 0
-	callchannel Cry_Mantine_branch_f32e9
-	callchannel Cry_Mantine_branch_f32f5
+	sound_call Cry_Mantine_branch_f32e9
+	sound_call Cry_Mantine_branch_f32f5
 	endchannel
 
 Cry_Mantine_Ch6:
-	callchannel Cry_Mantine_branch_f3302
-	callchannel Cry_Mantine_branch_f3310
+	sound_call Cry_Mantine_branch_f3302
+	sound_call Cry_Mantine_branch_f3310
 	endchannel
 
 Cry_Mantine_Ch8:
-	callchannel Cry_Mantine_branch_f331d
-	callchannel Cry_Mantine_branch_f3326
+	sound_call Cry_Mantine_branch_f331d
+	sound_call Cry_Mantine_branch_f3326
 	endchannel
 
 Cry_Ampharos_Ch5:

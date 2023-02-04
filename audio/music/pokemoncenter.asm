@@ -154,14 +154,14 @@ Music_PokemonCenter_Ch2:
 	vibrato $10, $25
 Music_PokemonCenter_branch_ed674:
 	stereo_panning TRUE, TRUE
-	callchannel Music_PokemonCenter_branch_ed6d1
+	sound_call Music_PokemonCenter_branch_ed6d1
 	stereo_panning FALSE, TRUE
 	note_type 12, 10, 5
 	octave 3
 	note A_, 4
 	note E_, 4
 	stereo_panning TRUE, TRUE
-	callchannel Music_PokemonCenter_branch_ed6e4
+	sound_call Music_PokemonCenter_branch_ed6e4
 	note D_, 2
 	note F#, 6
 	stereo_panning FALSE, TRUE
@@ -170,14 +170,14 @@ Music_PokemonCenter_branch_ed674:
 	note A_, 4
 	note E_, 4
 	stereo_panning TRUE, TRUE
-	callchannel Music_PokemonCenter_branch_ed6d1
+	sound_call Music_PokemonCenter_branch_ed6d1
 	stereo_panning FALSE, TRUE
 	note_type 12, 10, 5
 	octave 3
 	note A_, 4
 	note E_, 4
 	stereo_panning TRUE, TRUE
-	callchannel Music_PokemonCenter_branch_ed6e4
+	sound_call Music_PokemonCenter_branch_ed6e4
 	note D_, 8
 	stereo_panning FALSE, TRUE
 	note_type 12, 10, 5
@@ -264,8 +264,8 @@ Music_PokemonCenter_branch_ed6f6:
 	note __, 1
 	note F#, 1
 	note __, 1
-	callchannel Music_PokemonCenter_branch_ed76f
-	callchannel Music_PokemonCenter_branch_ed778
+	sound_call Music_PokemonCenter_branch_ed76f
+	sound_call Music_PokemonCenter_branch_ed778
 	note F#, 1
 	note __, 5
 	note A_, 1
@@ -286,8 +286,8 @@ Music_PokemonCenter_branch_ed6f6:
 	note __, 1
 	note F#, 1
 	note __, 1
-	callchannel Music_PokemonCenter_branch_ed76f
-	callchannel Music_PokemonCenter_branch_ed778
+	sound_call Music_PokemonCenter_branch_ed76f
+	sound_call Music_PokemonCenter_branch_ed778
 	note D_, 1
 	note __, 5
 	note F#, 1
@@ -299,7 +299,7 @@ Music_PokemonCenter_branch_ed6f6:
 	note G_, 1
 	note __, 1
 	stereo_panning TRUE, TRUE
-	callchannel Music_PokemonCenter_branch_ed783
+	sound_call Music_PokemonCenter_branch_ed783
 	note G_, 1
 	note __, 5
 	note B_, 1
@@ -328,7 +328,7 @@ Music_PokemonCenter_branch_ed6f6:
 	note __, 1
 	note A_, 1
 	note __, 1
-	callchannel Music_PokemonCenter_branch_ed783
+	sound_call Music_PokemonCenter_branch_ed783
 	note G_, 1
 	note __, 5
 	note B_, 1

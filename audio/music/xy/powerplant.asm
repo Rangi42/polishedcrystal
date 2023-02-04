@@ -18,13 +18,13 @@ Music_PowerPlantXY_Ch1:
 	duty_cycle 0
 
 Music_PowerPlantXY_Ch1_branch_0:
-	callchannel Music_PowerPlantXY_Ch1_branch_4
-	callchannel Music_PowerPlantXY_Ch1_branch_1
-	callchannel Music_PowerPlantXY_Ch1_branch_1
-	callchannel Music_PowerPlantXY_Ch1_branch_2
-	callchannel Music_PowerPlantXY_Ch1_branch_1
-	callchannel Music_PowerPlantXY_Ch1_branch_1
-	callchannel Music_PowerPlantXY_Ch1_branch_3
+	sound_call Music_PowerPlantXY_Ch1_branch_4
+	sound_call Music_PowerPlantXY_Ch1_branch_1
+	sound_call Music_PowerPlantXY_Ch1_branch_1
+	sound_call Music_PowerPlantXY_Ch1_branch_2
+	sound_call Music_PowerPlantXY_Ch1_branch_1
+	sound_call Music_PowerPlantXY_Ch1_branch_1
+	sound_call Music_PowerPlantXY_Ch1_branch_3
 	sound_jump Music_PowerPlantXY_Ch1_branch_0
 
 Music_PowerPlantXY_Ch1_branch_1:
@@ -161,13 +161,13 @@ Music_PowerPlantXY_Ch2:
 	note_type 12, 12, 4
 
 Music_PowerPlantXY_Ch2_branch_0:
-	callchannel Music_PowerPlantXY_Ch2_branch_4
-	callchannel Music_PowerPlantXY_Ch2_branch_1
-	callchannel Music_PowerPlantXY_Ch2_branch_1
-	callchannel Music_PowerPlantXY_Ch2_branch_2
-	callchannel Music_PowerPlantXY_Ch2_branch_1
-	callchannel Music_PowerPlantXY_Ch2_branch_1
-	callchannel Music_PowerPlantXY_Ch2_branch_3
+	sound_call Music_PowerPlantXY_Ch2_branch_4
+	sound_call Music_PowerPlantXY_Ch2_branch_1
+	sound_call Music_PowerPlantXY_Ch2_branch_1
+	sound_call Music_PowerPlantXY_Ch2_branch_2
+	sound_call Music_PowerPlantXY_Ch2_branch_1
+	sound_call Music_PowerPlantXY_Ch2_branch_1
+	sound_call Music_PowerPlantXY_Ch2_branch_3
 	sound_jump Music_PowerPlantXY_Ch2_branch_0
 
 Music_PowerPlantXY_Ch2_branch_1:
@@ -328,13 +328,13 @@ Music_PowerPlantXY_Ch3:
 	note_type 12, 1, 1
 
 Music_PowerPlantXY_Ch3_branch_0:
-	callchannel Music_PowerPlantXY_Ch3_branch_4
-	callchannel Music_PowerPlantXY_Ch3_branch_1
-	callchannel Music_PowerPlantXY_Ch3_branch_1
-	callchannel Music_PowerPlantXY_Ch3_branch_2
-	callchannel Music_PowerPlantXY_Ch3_branch_1
-	callchannel Music_PowerPlantXY_Ch3_branch_1
-	callchannel Music_PowerPlantXY_Ch3_branch_3
+	sound_call Music_PowerPlantXY_Ch3_branch_4
+	sound_call Music_PowerPlantXY_Ch3_branch_1
+	sound_call Music_PowerPlantXY_Ch3_branch_1
+	sound_call Music_PowerPlantXY_Ch3_branch_2
+	sound_call Music_PowerPlantXY_Ch3_branch_1
+	sound_call Music_PowerPlantXY_Ch3_branch_1
+	sound_call Music_PowerPlantXY_Ch3_branch_3
 	sound_jump Music_PowerPlantXY_Ch3_branch_0
 
 Music_PowerPlantXY_Ch3_branch_1:

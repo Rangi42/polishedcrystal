@@ -28,7 +28,7 @@ Music_AzaleaTown_branch_f5801:
 	note F_, 2
 	sound_loop 2, Music_AzaleaTown_branch_f5801
 Music_AzaleaTown_branch_f5816:
-	callchannel Music_AzaleaTown_branch_f588c
+	sound_call Music_AzaleaTown_branch_f588c
 	stereo_panning TRUE, FALSE
 	volume_envelope 10, 4
 	note G#, 2
@@ -43,7 +43,7 @@ Music_AzaleaTown_branch_f5816:
 	note D#, 2
 	note __, 2
 	stereo_panning FALSE, TRUE
-	callchannel Music_AzaleaTown_branch_f588c
+	sound_call Music_AzaleaTown_branch_f588c
 	stereo_panning TRUE, FALSE
 	note_type 6, 10, 4
 	note D#, 4
@@ -56,7 +56,7 @@ Music_AzaleaTown_branch_f5816:
 	note A#, 4
 	note F#, 4
 	stereo_panning FALSE, TRUE
-	callchannel Music_AzaleaTown_branch_f5912
+	sound_call Music_AzaleaTown_branch_f5912
 	volume_envelope 10, 3
 	note A#, 4
 	octave 4
@@ -69,7 +69,7 @@ Music_AzaleaTown_branch_f5816:
 	note C#, 4
 	note A_, 2
 	note __, 14
-	callchannel Music_AzaleaTown_branch_f5912
+	sound_call Music_AzaleaTown_branch_f5912
 	volume_envelope 10, 3
 	octave 4
 	note C_, 1
@@ -266,7 +266,7 @@ Music_AzaleaTown_Ch2:
 	octave 5
 	note C_, 1
 Music_AzaleaTown_branch_f5952:
-	callchannel Music_AzaleaTown_branch_f59c7
+	sound_call Music_AzaleaTown_branch_f59c7
 	note C#, 4
 	note C_, 2
 	note C#, 1
@@ -277,7 +277,7 @@ Music_AzaleaTown_branch_f5952:
 	duty_cycle 1
 	octave 5
 	note C_, 1
-	callchannel Music_AzaleaTown_branch_f59c7
+	sound_call Music_AzaleaTown_branch_f59c7
 	note __, 2
 	note C#, 2
 	note C_, 2
@@ -442,14 +442,14 @@ Music_AzaleaTown_Ch3:
 	note __, 1
 	note G#, 4
 Music_AzaleaTown_branch_f5a24:
-	callchannel Music_AzaleaTown_branch_f5a86
+	sound_call Music_AzaleaTown_branch_f5a86
 	note G#, 4
 	note D#, 2
-	callchannel Music_AzaleaTown_branch_f5a86
+	sound_call Music_AzaleaTown_branch_f5a86
 	note G#, 2
 	note __, 2
 	note F#, 2
-	callchannel Music_AzaleaTown_branch_f5acf
+	sound_call Music_AzaleaTown_branch_f5acf
 	note A#, 1
 	note __, 1
 	octave 4
@@ -463,7 +463,7 @@ Music_AzaleaTown_branch_f5a24:
 	note __, 3
 	note F_, 1
 	note __, 1
-	callchannel Music_AzaleaTown_branch_f5acf
+	sound_call Music_AzaleaTown_branch_f5acf
 	octave 2
 	note A#, 2
 	octave 3

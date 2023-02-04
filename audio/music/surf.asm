@@ -67,11 +67,11 @@ Music_Surf_branch_f519e:
 	octave 4
 	note D_, 2
 	duty_cycle 0
-	callchannel Music_Surf_branch_f5233
+	sound_call Music_Surf_branch_f5233
 	duty_cycle 1
 	note_type 8, 10, 7
-	callchannel Music_Surf_branch_f5233
-	callchannel Music_Surf_branch_f5293
+	sound_call Music_Surf_branch_f5233
+	sound_call Music_Surf_branch_f5293
 	octave 4
 	note C_, 2
 	octave 3
@@ -86,7 +86,7 @@ Music_Surf_branch_f519e:
 	note G_, 2
 	duty_cycle 1
 	note_type 6, 9, 7
-	callchannel Music_Surf_branch_f5293
+	sound_call Music_Surf_branch_f5293
 	volume_envelope 10, 8
 	note G#, 6
 	note A_, 6
@@ -95,14 +95,14 @@ Music_Surf_branch_f519e:
 	note D_, 3
 	volume_envelope 10, 8
 	duty_cycle 1
-	callchannel Music_Surf_branch_f52d9
+	sound_call Music_Surf_branch_f52d9
 	octave 3
 	note D#, 8
 	note G#, 8
 	note D#, 8
 	duty_cycle 3
 	note_type 8, 9, 8
-	callchannel Music_Surf_branch_f52d9
+	sound_call Music_Surf_branch_f52d9
 	note_type 12, 10, 7
 	octave 3
 	note D#, 12
@@ -396,40 +396,40 @@ Music_Surf_branch_f5333:
 	note G#, 4
 	sound_loop 2, Music_Surf_branch_f5333
 	volume_envelope 12, 7
-	callchannel Music_Surf_branch_f53b2
+	sound_call Music_Surf_branch_f53b2
 	note D#, 4
 	note D_, 4
 	note C#, 4
-	callchannel Music_Surf_branch_f53b2
+	sound_call Music_Surf_branch_f53b2
 	note D_, 4
 	note D#, 4
 	octave 1
 	note A#, 4
 	note_type 6, 11, 8
-	callchannel Music_Surf_branch_f53d6
+	sound_call Music_Surf_branch_f53d6
 	duty_cycle 1
 	volume_envelope 11, 8
-	callchannel Music_Surf_branch_f53e8
+	sound_call Music_Surf_branch_f53e8
 	duty_cycle 2
-	callchannel Music_Surf_branch_f53f3
+	sound_call Music_Surf_branch_f53f3
 	duty_cycle 1
 	volume_envelope 11, 8
-	callchannel Music_Surf_branch_f5404
+	sound_call Music_Surf_branch_f5404
 	octave 3
 	note B_, 16
 	octave 4
 	note C#, 8
 	transpose 0, 12
 	duty_cycle 3
-	callchannel Music_Surf_branch_f53d6
+	sound_call Music_Surf_branch_f53d6
 	volume_envelope 11, 8
 	duty_cycle 1
-	callchannel Music_Surf_branch_f53e8
+	sound_call Music_Surf_branch_f53e8
 	duty_cycle 3
-	callchannel Music_Surf_branch_f53f3
+	sound_call Music_Surf_branch_f53f3
 	volume_envelope 11, 8
 	duty_cycle 1
-	callchannel Music_Surf_branch_f5404
+	sound_call Music_Surf_branch_f5404
 	transpose 0, 0
 	note_type 12, 11, 8
 	octave 4
@@ -662,7 +662,7 @@ Music_Surf_branch_f540c:
 	octave 5
 	note A#, 4
 	volume_envelope 1, 5
-	callchannel Music_Surf_branch_f54c8
+	sound_call Music_Surf_branch_f54c8
 	octave 2
 	note B_, 4
 	octave 3
@@ -671,7 +671,7 @@ Music_Surf_branch_f540c:
 	note G#, 4
 	note A#, 4
 	note B_, 4
-	callchannel Music_Surf_branch_f54c8
+	sound_call Music_Surf_branch_f54c8
 	octave 2
 	note B_, 4
 	octave 3

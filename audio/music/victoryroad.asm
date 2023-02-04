@@ -13,7 +13,7 @@ Music_VictoryRoad_Ch1:
 	pitch_offset 2
 	note_type 12, 11, 3
 Music_VictoryRoad_branch_f6c8d:
-	callchannel Music_VictoryRoad_branch_f6cb9
+	sound_call Music_VictoryRoad_branch_f6cb9
 	sound_loop 6, Music_VictoryRoad_branch_f6c8d
 Music_VictoryRoad_branch_f6c94:
 	volume_envelope 11, 2
@@ -38,7 +38,7 @@ Music_VictoryRoad_branch_f6c94:
 	note G#, 3
 	sound_loop 2, Music_VictoryRoad_branch_f6c94
 Music_VictoryRoad_branch_f6cae:
-	callchannel Music_VictoryRoad_branch_f6cb9
+	sound_call Music_VictoryRoad_branch_f6cb9
 	sound_loop 2, Music_VictoryRoad_branch_f6cae
 	sound_jump Music_VictoryRoad_branch_f6c8d
 
@@ -68,9 +68,9 @@ Music_VictoryRoad_Ch2:
 	vibrato $10, $24
 Music_VictoryRoad_branch_f6cd3:
 	note_type 12, 12, 2
-	callchannel Music_VictoryRoad_branch_f6d1e
+	sound_call Music_VictoryRoad_branch_f6d1e
 	note __, 2
-	callchannel Music_VictoryRoad_branch_f6d1e
+	sound_call Music_VictoryRoad_branch_f6d1e
 	note __, 1
 	octave 4
 	note C_, 1
@@ -138,7 +138,7 @@ Music_VictoryRoad_Ch3:
 	stereo_panning TRUE, FALSE
 	note_type 12, 2, 8
 Music_VictoryRoad_branch_f6d31:
-	callchannel Music_VictoryRoad_branch_f6d52
+	sound_call Music_VictoryRoad_branch_f6d52
 	sound_loop 6, Music_VictoryRoad_branch_f6d31
 Music_VictoryRoad_branch_f6d38:
 	note D_, 1
@@ -154,7 +154,7 @@ Music_VictoryRoad_branch_f6d38:
 	note B_, 3
 	sound_loop 2, Music_VictoryRoad_branch_f6d38
 Music_VictoryRoad_branch_f6d47:
-	callchannel Music_VictoryRoad_branch_f6d52
+	sound_call Music_VictoryRoad_branch_f6d52
 	sound_loop 2, Music_VictoryRoad_branch_f6d47
 	sound_jump Music_VictoryRoad_branch_f6d31
 

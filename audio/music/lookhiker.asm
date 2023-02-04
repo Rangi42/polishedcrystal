@@ -82,12 +82,12 @@ Music_LookHiker_branch_f7477:
 	note D_, 2
 	note C#, 2
 	note C_, 2
-	callchannel Music_LookHiker_branch_f748a
+	sound_call Music_LookHiker_branch_f748a
 	note G_, 2
 	note G#, 2
 	note A_, 2
 	note A#, 2
-	callchannel Music_LookHiker_branch_f748a
+	sound_call Music_LookHiker_branch_f748a
 	sound_jump Music_LookHiker_branch_f7477
 
 Music_LookHiker_branch_f748a:

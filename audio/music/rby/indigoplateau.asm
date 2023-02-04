@@ -24,23 +24,23 @@ Music_IndigoPlateauRBY_Ch1:
 	note A#, 4
 
 Music_IndigoPlateauRBY_branch_a605:
-	callchannel Music_IndigoPlateauRBY_branch_a659
+	sound_call Music_IndigoPlateauRBY_branch_a659
 	note_type 12, 11, 4
 	octave 3
 	note D_, 4
-	callchannel Music_IndigoPlateauRBY_branch_a659
+	sound_call Music_IndigoPlateauRBY_branch_a659
 	note_type 12, 11, 4
 	octave 3
 	note D#, 4
-	callchannel Music_IndigoPlateauRBY_branch_a659
+	sound_call Music_IndigoPlateauRBY_branch_a659
 	note_type 12, 11, 4
 	octave 3
 	note D_, 4
-	callchannel Music_IndigoPlateauRBY_branch_a659
+	sound_call Music_IndigoPlateauRBY_branch_a659
 	note_type 12, 10, 0
 	octave 2
 	note A#, 4
-	callchannel Music_IndigoPlateauRBY_branch_a659
+	sound_call Music_IndigoPlateauRBY_branch_a659
 	note_type 12, 11, 4
 	octave 3
 	note D_, 4
@@ -108,25 +108,25 @@ Music_IndigoPlateauRBY_Ch2:
 	note D#, 4
 
 Music_IndigoPlateauRBY_branch_a673:
-	callchannel Music_IndigoPlateauRBY_branch_a6af
+	sound_call Music_IndigoPlateauRBY_branch_a6af
 	note_type 12, 12, 5
 	note A_, 4
-	callchannel Music_IndigoPlateauRBY_branch_a6af
+	sound_call Music_IndigoPlateauRBY_branch_a6af
 	note_type 12, 12, 5
 	note A#, 4
-	callchannel Music_IndigoPlateauRBY_branch_a6af
+	sound_call Music_IndigoPlateauRBY_branch_a6af
 	note_type 12, 12, 5
 	note A_, 4
-	callchannel Music_IndigoPlateauRBY_branch_a6af
+	sound_call Music_IndigoPlateauRBY_branch_a6af
 	note_type 12, 12, 7
 	note C#, 4
-	callchannel Music_IndigoPlateauRBY_branch_a6af
+	sound_call Music_IndigoPlateauRBY_branch_a6af
 	note_type 12, 12, 5
 	note A_, 4
-	callchannel Music_IndigoPlateauRBY_branch_a6af
+	sound_call Music_IndigoPlateauRBY_branch_a6af
 	note_type 12, 12, 5
 	note A#, 4
-	callchannel Music_IndigoPlateauRBY_branch_a6af
+	sound_call Music_IndigoPlateauRBY_branch_a6af
 	note_type 12, 12, 5
 	octave 4
 	note C_, 2
@@ -169,9 +169,9 @@ Music_IndigoPlateauRBY_Ch3:
 	note D#, 4
 
 Music_IndigoPlateauRBY_branch_a6c6:
-	callchannel Music_IndigoPlateauRBY_branch_a6fe
-	callchannel Music_IndigoPlateauRBY_branch_a6fe
-	callchannel Music_IndigoPlateauRBY_branch_a6fe
+	sound_call Music_IndigoPlateauRBY_branch_a6fe
+	sound_call Music_IndigoPlateauRBY_branch_a6fe
+	sound_call Music_IndigoPlateauRBY_branch_a6fe
 	note D_, 2
 	note __, 2
 	note D_, 2
@@ -187,8 +187,8 @@ Music_IndigoPlateauRBY_branch_a6c6:
 	note D_, 2
 	note __, 2
 	note F#, 4
-	callchannel Music_IndigoPlateauRBY_branch_a6fe
-	callchannel Music_IndigoPlateauRBY_branch_a6fe
+	sound_call Music_IndigoPlateauRBY_branch_a6fe
+	sound_call Music_IndigoPlateauRBY_branch_a6fe
 	note D_, 2
 	note __, 2
 	note D_, 2
@@ -249,20 +249,20 @@ Music_IndigoPlateauRBY_Ch4:
 	note A#, 1
 
 Music_IndigoPlateauRBY_branch_a728:
-	callchannel Music_IndigoPlateauRBY_branch_a791
-	callchannel Music_IndigoPlateauRBY_branch_a77e
-	callchannel Music_IndigoPlateauRBY_branch_a791
-	callchannel Music_IndigoPlateauRBY_branch_a7a8
-	callchannel Music_IndigoPlateauRBY_branch_a791
-	callchannel Music_IndigoPlateauRBY_branch_a77e
-	callchannel Music_IndigoPlateauRBY_branch_a791
-	callchannel Music_IndigoPlateauRBY_branch_a7a8
-	callchannel Music_IndigoPlateauRBY_branch_a791
-	callchannel Music_IndigoPlateauRBY_branch_a77e
-	callchannel Music_IndigoPlateauRBY_branch_a791
-	callchannel Music_IndigoPlateauRBY_branch_a7a8
-	callchannel Music_IndigoPlateauRBY_branch_a77e
-	callchannel Music_IndigoPlateauRBY_branch_a7a8
+	sound_call Music_IndigoPlateauRBY_branch_a791
+	sound_call Music_IndigoPlateauRBY_branch_a77e
+	sound_call Music_IndigoPlateauRBY_branch_a791
+	sound_call Music_IndigoPlateauRBY_branch_a7a8
+	sound_call Music_IndigoPlateauRBY_branch_a791
+	sound_call Music_IndigoPlateauRBY_branch_a77e
+	sound_call Music_IndigoPlateauRBY_branch_a791
+	sound_call Music_IndigoPlateauRBY_branch_a7a8
+	sound_call Music_IndigoPlateauRBY_branch_a791
+	sound_call Music_IndigoPlateauRBY_branch_a77e
+	sound_call Music_IndigoPlateauRBY_branch_a791
+	sound_call Music_IndigoPlateauRBY_branch_a7a8
+	sound_call Music_IndigoPlateauRBY_branch_a77e
+	sound_call Music_IndigoPlateauRBY_branch_a7a8
 	note A_, 16
 	note A_, 8
 	note A#, 8

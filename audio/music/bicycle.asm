@@ -254,7 +254,7 @@ Music_Bicycle_branch_ee1fd:
 	volume_envelope 12, 7
 	note F#, 8
 	stereo_panning FALSE, TRUE
-	callchannel Music_Bicycle_branch_ee263
+	sound_call Music_Bicycle_branch_ee263
 	note F#, 4
 	volume_envelope 12, 3
 	note A_, 2
@@ -263,7 +263,7 @@ Music_Bicycle_branch_ee1fd:
 	note F_, 2
 	note F#, 4
 	volume_envelope 12, 7
-	callchannel Music_Bicycle_branch_ee263
+	sound_call Music_Bicycle_branch_ee263
 	note F#, 4
 	volume_envelope 12, 3
 	note A_, 2
@@ -303,7 +303,7 @@ Music_Bicycle_Ch3:
 	note A_, 1
 	note __, 1
 Music_Bicycle_branch_ee27f:
-	callchannel Music_Bicycle_branch_ee333
+	sound_call Music_Bicycle_branch_ee333
 	note E_, 1
 	note __, 1
 	note G_, 1
@@ -354,7 +354,7 @@ Music_Bicycle_branch_ee27f:
 	note __, 1
 	note F#, 1
 	note __, 1
-	callchannel Music_Bicycle_branch_ee333
+	sound_call Music_Bicycle_branch_ee333
 	note E_, 1
 	note __, 1
 	note G_, 1

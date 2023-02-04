@@ -283,15 +283,15 @@ Music_RocketHideout_Ch4:
 	note D_, 1
 	note D#, 1
 	note D#, 1
-	callchannel Music_RocketHideout_branch_eecdb
+	sound_call Music_RocketHideout_branch_eecdb
 Music_RocketHideout_branch_eecc7:
-	callchannel Music_RocketHideout_branch_eecdb
+	sound_call Music_RocketHideout_branch_eecdb
 	note E_, 4
-	callchannel Music_RocketHideout_branch_eecdb
+	sound_call Music_RocketHideout_branch_eecdb
 	note F_, 4
-	callchannel Music_RocketHideout_branch_eecdb
+	sound_call Music_RocketHideout_branch_eecdb
 	note A#, 4
-	callchannel Music_RocketHideout_branch_eecdb
+	sound_call Music_RocketHideout_branch_eecdb
 	note F#, 4
 	sound_jump Music_RocketHideout_branch_eecc7
 

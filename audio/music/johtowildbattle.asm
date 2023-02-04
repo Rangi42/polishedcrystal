@@ -205,7 +205,7 @@ Music_JohtoWildBattle_Ch2:
 	duty_cycle 3
 	vibrato $8, $36
 	pitch_offset 1
-	callchannel Music_JohtoWildBattle_branch_f5f5d
+	sound_call Music_JohtoWildBattle_branch_f5f5d
 	note_type 12, 12, 2
 	octave 4
 	note G_, 6
@@ -458,7 +458,7 @@ Music_JohtoWildBattleNight_branch_f5f94:
 	note E_, 2
 	note F_, 2
 	note G_, 2
-	callchannel Music_JohtoWildBattle_branch_f6055
+	sound_call Music_JohtoWildBattle_branch_f6055
 	note D#, 2
 	note G#, 2
 	note D#, 2
@@ -475,7 +475,7 @@ Music_JohtoWildBattle_branch_f5fc6:
 	note E_, 2
 	note F_, 2
 	note G_, 2
-	callchannel Music_JohtoWildBattle_branch_f6055
+	sound_call Music_JohtoWildBattle_branch_f6055
 	note F_, 2
 	note F_, 2
 	note G_, 2
@@ -489,8 +489,8 @@ Music_JohtoWildBattle_branch_f5fdb:
 	note G_, 2
 	sound_loop 7, Music_JohtoWildBattle_branch_f5fdb
 	note F#, 4
-	callchannel Music_JohtoWildBattle_branch_f6055
-	callchannel Music_JohtoWildBattle_branch_f6055
+	sound_call Music_JohtoWildBattle_branch_f6055
+	sound_call Music_JohtoWildBattle_branch_f6055
 Music_JohtoWildBattle_branch_f5fe8:
 	note D_, 2
 	note G_, 2
@@ -507,7 +507,7 @@ Music_JohtoWildBattle_branch_f5ff0:
 	note D_, 2
 	note E_, 2
 	note F_, 2
-	callchannel Music_JohtoWildBattle_branch_f6055
+	sound_call Music_JohtoWildBattle_branch_f6055
 	note D#, 2
 	note G#, 2
 	note D#, 2
@@ -519,7 +519,7 @@ Music_JohtoWildBattle_branch_f6006:
 	note E_, 2
 	note A_, 2
 	sound_loop 8, Music_JohtoWildBattle_branch_f6006
-	callchannel Music_JohtoWildBattle_branch_f6055
+	sound_call Music_JohtoWildBattle_branch_f6055
 	note D#, 2
 	note G#, 2
 	note D#, 2

@@ -62,7 +62,7 @@ Music_CinnabarMansionRBY_branch_7ed4e:
 	note_type 12, 12, 2
 
 Music_CinnabarMansionRBY_branch_7ed50:
-	callchannel Music_CinnabarMansionRBY_branch_7ed6c
+	sound_call Music_CinnabarMansionRBY_branch_7ed6c
 	sound_loop 3, Music_CinnabarMansionRBY_branch_7ed50
 	octave 3
 	note E_, 4

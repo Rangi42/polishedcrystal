@@ -556,10 +556,10 @@ Music_MartHGSS_Loop3:
 	octave 2
 	note F#, 2
 	note __, 14
-	callchannel Music_MartHGSS_Branch
-	callchannel Music_MartHGSS_Branch
-	callchannel Music_MartHGSS_Branch
-	callchannel Music_MartHGSS_Branch
+	sound_call Music_MartHGSS_Branch
+	sound_call Music_MartHGSS_Branch
+	sound_call Music_MartHGSS_Branch
+	sound_call Music_MartHGSS_Branch
 	note E_, 4
 	volume_envelope 2, 4
 	octave 6

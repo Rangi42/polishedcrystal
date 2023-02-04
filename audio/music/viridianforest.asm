@@ -13,7 +13,7 @@ Music_ViridianForest_Ch1:
 	note_type 12, 11, 1
 	note __, 16
 	note __, 16
-	callchannel Music_ViridianForest_branch_ed931
+	sound_call Music_ViridianForest_branch_ed931
 Music_ViridianForest_branch_ed8fb:
 	volume_envelope 11, 1
 	octave 3
@@ -26,10 +26,10 @@ Music_ViridianForest_branch_ed8fb:
 	note E_, 4
 	note E_, 4
 	note E_, 4
-	callchannel Music_ViridianForest_branch_ed931
-	callchannel Music_ViridianForest_branch_ed940
-	callchannel Music_ViridianForest_branch_ed940
-	callchannel Music_ViridianForest_branch_ed971
+	sound_call Music_ViridianForest_branch_ed931
+	sound_call Music_ViridianForest_branch_ed940
+	sound_call Music_ViridianForest_branch_ed940
+	sound_call Music_ViridianForest_branch_ed971
 	octave 3
 	note G_, 2
 	octave 4
@@ -43,7 +43,7 @@ Music_ViridianForest_branch_ed8fb:
 	octave 3
 	note B_, 2
 	note G_, 2
-	callchannel Music_ViridianForest_branch_ed971
+	sound_call Music_ViridianForest_branch_ed971
 	note G_, 2
 	octave 4
 	note C_, 2
@@ -163,16 +163,16 @@ Music_ViridianForest_Ch2:
 	stereo_panning TRUE, TRUE
 	vibrato $8, $24
 	note_type 12, 11, 2
-	callchannel Music_ViridianForest_branch_ed9ba
+	sound_call Music_ViridianForest_branch_ed9ba
 Music_ViridianForest_branch_ed9a1:
 	volume_envelope 11, 2
-	callchannel Music_ViridianForest_branch_ed9ba
+	sound_call Music_ViridianForest_branch_ed9ba
 	duty_cycle 2
 	volume_envelope 11, 5
-	callchannel Music_ViridianForest_branch_ed9dc
-	callchannel Music_ViridianForest_branch_ed9dc
-	callchannel Music_ViridianForest_branch_eda02
-	callchannel Music_ViridianForest_branch_eda02
+	sound_call Music_ViridianForest_branch_ed9dc
+	sound_call Music_ViridianForest_branch_ed9dc
+	sound_call Music_ViridianForest_branch_eda02
+	sound_call Music_ViridianForest_branch_eda02
 	sound_jump Music_ViridianForest_branch_ed9a1
 
 Music_ViridianForest_branch_ed9ba:
@@ -315,7 +315,7 @@ Music_ViridianForest_Ch3:
 	note __, 3
 	note E_, 1
 	note __, 3
-	callchannel Music_ViridianForest_branch_eda9e
+	sound_call Music_ViridianForest_branch_eda9e
 	octave 3
 	note D_, 4
 Music_ViridianForest_branch_eda4b:
@@ -341,23 +341,23 @@ Music_ViridianForest_branch_eda4b:
 	note __, 2
 	note G_, 1
 	note __, 1
-	callchannel Music_ViridianForest_branch_eda9e
+	sound_call Music_ViridianForest_branch_eda9e
 	octave 3
 	note D_, 2
 	volume_envelope 1, 0
 	octave 6
 	note C_, 1
 	note D_, 1
-	callchannel Music_ViridianForest_branch_edaaf
+	sound_call Music_ViridianForest_branch_edaaf
 	note __, 4
 	note G_, 8
 	note F_, 2
 	note G_, 2
 	note_type 12, 1, 0
-	callchannel Music_ViridianForest_branch_edaaf
+	sound_call Music_ViridianForest_branch_edaaf
 	note __, 16
 	volume_envelope 2, 5
-	callchannel Music_ViridianForest_branch_edacb
+	sound_call Music_ViridianForest_branch_edacb
 	note __, 4
 	note D#, 1
 	note E_, 7
@@ -374,7 +374,7 @@ Music_ViridianForest_branch_eda4b:
 	octave 6
 	note A_, 4
 	note G_, 4
-	callchannel Music_ViridianForest_branch_edacb
+	sound_call Music_ViridianForest_branch_edacb
 	note __, 4
 	note G#, 1
 	note A_, 7

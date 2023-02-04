@@ -177,7 +177,7 @@ Music_Route29_Ch2:
 	note C_, 1
 	note D_, 1
 Music_Route29_branch_f0458:
-	callchannel Music_Route29_branch_f04de
+	sound_call Music_Route29_branch_f04de
 	note F_, 1
 	note E_, 1
 	note D_, 2
@@ -192,7 +192,7 @@ Music_Route29_branch_f0458:
 	octave 4
 	note C_, 1
 	note D_, 1
-	callchannel Music_Route29_branch_f04de
+	sound_call Music_Route29_branch_f04de
 	note F_, 1
 	note E_, 1
 	note D_, 2

@@ -566,29 +566,29 @@ Music_LaverreCityXY_Ch4:
 	stereo_panning FALSE, TRUE
 	note_type 12
 Music_LaverreCityXY_Ch4_loop:
-	callchannel Music_LaverreCityXY_Ch4_branch_1
-	callchannel Music_LaverreCityXY_Ch4_branch_1
-	callchannel Music_LaverreCityXY_Ch4_branch_1
-	callchannel Music_LaverreCityXY_Ch4_branch_1
-	callchannel Music_LaverreCityXY_Ch4_branch_1
-	callchannel Music_LaverreCityXY_Ch4_branch_1
-	callchannel Music_LaverreCityXY_Ch4_branch_1
-	callchannel Music_LaverreCityXY_Ch4_branch_1
-	callchannel Music_LaverreCityXY_Ch4_branch_2
-	callchannel Music_LaverreCityXY_Ch4_branch_2
-	callchannel Music_LaverreCityXY_Ch4_branch_2
-	callchannel Music_LaverreCityXY_Ch4_branch_2
-	callchannel Music_LaverreCityXY_Ch4_branch_2
-	callchannel Music_LaverreCityXY_Ch4_branch_2
-	callchannel Music_LaverreCityXY_Ch4_branch_2
-	callchannel Music_LaverreCityXY_Ch4_branch_2
-	callchannel Music_LaverreCityXY_Ch4_branch_1
-	callchannel Music_LaverreCityXY_Ch4_branch_1
-	callchannel Music_LaverreCityXY_Ch4_branch_1
-	callchannel Music_LaverreCityXY_Ch4_branch_1
-	callchannel Music_LaverreCityXY_Ch4_branch_1
-	callchannel Music_LaverreCityXY_Ch4_branch_1
-	callchannel Music_LaverreCityXY_Ch4_branch_1
+	sound_call Music_LaverreCityXY_Ch4_branch_1
+	sound_call Music_LaverreCityXY_Ch4_branch_1
+	sound_call Music_LaverreCityXY_Ch4_branch_1
+	sound_call Music_LaverreCityXY_Ch4_branch_1
+	sound_call Music_LaverreCityXY_Ch4_branch_1
+	sound_call Music_LaverreCityXY_Ch4_branch_1
+	sound_call Music_LaverreCityXY_Ch4_branch_1
+	sound_call Music_LaverreCityXY_Ch4_branch_1
+	sound_call Music_LaverreCityXY_Ch4_branch_2
+	sound_call Music_LaverreCityXY_Ch4_branch_2
+	sound_call Music_LaverreCityXY_Ch4_branch_2
+	sound_call Music_LaverreCityXY_Ch4_branch_2
+	sound_call Music_LaverreCityXY_Ch4_branch_2
+	sound_call Music_LaverreCityXY_Ch4_branch_2
+	sound_call Music_LaverreCityXY_Ch4_branch_2
+	sound_call Music_LaverreCityXY_Ch4_branch_2
+	sound_call Music_LaverreCityXY_Ch4_branch_1
+	sound_call Music_LaverreCityXY_Ch4_branch_1
+	sound_call Music_LaverreCityXY_Ch4_branch_1
+	sound_call Music_LaverreCityXY_Ch4_branch_1
+	sound_call Music_LaverreCityXY_Ch4_branch_1
+	sound_call Music_LaverreCityXY_Ch4_branch_1
+	sound_call Music_LaverreCityXY_Ch4_branch_1
 	note_type 8
 	note C#, 1
 	note C#, 1
@@ -604,10 +604,10 @@ Music_LaverreCityXY_Ch4_loop:
 	note __, 3
 	note_type 12
 	note C#, 12
-	callchannel Music_LaverreCityXY_Ch4_branch_1
-	callchannel Music_LaverreCityXY_Ch4_branch_1
-	callchannel Music_LaverreCityXY_Ch4_branch_1
-	callchannel Music_LaverreCityXY_Ch4_branch_1
+	sound_call Music_LaverreCityXY_Ch4_branch_1
+	sound_call Music_LaverreCityXY_Ch4_branch_1
+	sound_call Music_LaverreCityXY_Ch4_branch_1
+	sound_call Music_LaverreCityXY_Ch4_branch_1
 	sound_jump Music_LaverreCityXY_Ch4_loop
 
 Music_LaverreCityXY_Ch4_branch_1:

@@ -364,7 +364,7 @@ Music_TrainerBattleSM_Ch2_loop_main:
 	volume_envelope 10, 5
 	note G_, 8
 	duty_cycle 2
-	callchannel Music_TrainerBattleSM_Ch2_branch_2
+	sound_call Music_TrainerBattleSM_Ch2_branch_2
 	volume_envelope 10, 7
 	note G_, 10
 	duty_cycle 3
@@ -467,11 +467,11 @@ Music_TrainerBattleSM_Ch2_loop_main:
 	note F_, 1
 	octave 5
 	note F_, 1
-	callchannel Music_TrainerBattleSM_Ch2_branch_1
+	sound_call Music_TrainerBattleSM_Ch2_branch_1
 	note F_, 1
 	octave 5
 	note F_, 3
-	callchannel Music_TrainerBattleSM_Ch2_branch_1
+	sound_call Music_TrainerBattleSM_Ch2_branch_1
 	octave 3
 	note F_, 1
 	octave 4
@@ -579,7 +579,7 @@ Music_TrainerBattleSM_Ch2_loop_main:
 	note G_, 2
 	note G#, 2
 	volume_envelope 10, 5
-	callchannel Music_TrainerBattleSM_Ch2_branch_2
+	sound_call Music_TrainerBattleSM_Ch2_branch_2
 	volume_envelope 10, 7
 	note G_, 10
 	sound_jump Music_TrainerBattleSM_Ch2_loop_main

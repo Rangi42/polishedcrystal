@@ -22,7 +22,7 @@ Music_BattleTowerTheme_branch_1788a5:
 	note C_, 2
 	note E_, 2
 	note G_, 4
-	callchannel Music_BattleTowerTheme_branch_17895e
+	sound_call Music_BattleTowerTheme_branch_17895e
 	note G_, 2
 	note __, 2
 	note C_, 4
@@ -40,7 +40,7 @@ Music_BattleTowerTheme_branch_1788a5:
 	octave 3
 	note G_, 2
 	note E_, 2
-	callchannel Music_BattleTowerTheme_branch_17895e
+	sound_call Music_BattleTowerTheme_branch_17895e
 	note G_, 2
 	note __, 2
 	octave 2
@@ -246,14 +246,14 @@ Music_BattleTowerTheme_branch_178970:
 	octave 4
 	note C_, 2
 	note E_, 4
-	callchannel Music_BattleTowerTheme_branch_178a15
+	sound_call Music_BattleTowerTheme_branch_178a15
 	note A#, 4
 	note __, 2
 	note F_, 2
 	note_type 12, 11, 7
 	note C_, 12
 	note_type 6, 11, 7
-	callchannel Music_BattleTowerTheme_branch_178a15
+	sound_call Music_BattleTowerTheme_branch_178a15
 	note_type 12, 11, 7
 	note A#, 2
 	note __, 1
@@ -362,7 +362,7 @@ Music_BattleTowerTheme_Ch3:
 	note_type 6, 1, 6
 Music_BattleTowerTheme_branch_178a26:
 	stereo_panning TRUE, TRUE
-	callchannel Music_BattleTowerTheme_branch_178afe
+	sound_call Music_BattleTowerTheme_branch_178afe
 	note C_, 2
 	note __, 2
 	note F_, 4
@@ -377,7 +377,7 @@ Music_BattleTowerTheme_branch_178a26:
 	note __, 4
 	stereo_panning TRUE, FALSE
 	note C_, 8
-	callchannel Music_BattleTowerTheme_branch_178afe
+	sound_call Music_BattleTowerTheme_branch_178afe
 	note C_, 2
 	note __, 2
 	note F_, 4
@@ -391,7 +391,7 @@ Music_BattleTowerTheme_branch_178a26:
 	note __, 4
 	note C_, 2
 	note __, 2
-	callchannel Music_BattleTowerTheme_branch_178afe
+	sound_call Music_BattleTowerTheme_branch_178afe
 	octave 2
 	note A#, 2
 	note __, 2
@@ -587,7 +587,7 @@ Music_BattleTowerTheme_Ch4:
 	toggle_noise 3
 	note_type 12
 Music_BattleTowerTheme_branch_178b11:
-	callchannel Music_BattleTowerTheme_branch_178b58
+	sound_call Music_BattleTowerTheme_branch_178b58
 	note D_, 2
 	note D_, 4
 	note D_, 1
@@ -598,19 +598,19 @@ Music_BattleTowerTheme_branch_178b11:
 	note D_, 1
 	note C#, 1
 Music_BattleTowerTheme_branch_178b1d:
-	callchannel Music_BattleTowerTheme_branch_178b58
-	callchannel Music_BattleTowerTheme_branch_178b61
+	sound_call Music_BattleTowerTheme_branch_178b58
+	sound_call Music_BattleTowerTheme_branch_178b61
 	sound_loop 2, Music_BattleTowerTheme_branch_178b1d
-	callchannel Music_BattleTowerTheme_branch_178b6c
-	callchannel Music_BattleTowerTheme_branch_178b61
-	callchannel Music_BattleTowerTheme_branch_178b6c
+	sound_call Music_BattleTowerTheme_branch_178b6c
+	sound_call Music_BattleTowerTheme_branch_178b61
+	sound_call Music_BattleTowerTheme_branch_178b6c
 	note D_, 2
 	note D_, 4
 	note D_, 1
 	note D_, 1
 	note D_, 8
 Music_BattleTowerTheme_branch_178b35:
-	callchannel Music_BattleTowerTheme_branch_178b76
+	sound_call Music_BattleTowerTheme_branch_178b76
 	note D_, 2
 	note D_, 2
 	note D_, 2
@@ -623,7 +623,7 @@ Music_BattleTowerTheme_branch_178b35:
 	note D_, 1
 	note C#, 1
 	sound_loop 3, Music_BattleTowerTheme_branch_178b35
-	callchannel Music_BattleTowerTheme_branch_178b76
+	sound_call Music_BattleTowerTheme_branch_178b76
 	note D_, 2
 	note D_, 2
 	note D_, 2

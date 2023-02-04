@@ -624,7 +624,7 @@ Music_VioletCity_branch_f0261:
 	note B_, 2
 	note __, 2
 	note A_, 8
-	callchannel Music_VioletCity_branch_f0311
+	sound_call Music_VioletCity_branch_f0311
 	note F#, 2
 	note __, 10
 	note B_, 2
@@ -634,7 +634,7 @@ Music_VioletCity_branch_f0261:
 	note A#, 8
 	note A_, 2
 	note __, 2
-	callchannel Music_VioletCity_branch_f0311
+	sound_call Music_VioletCity_branch_f0311
 	note F#, 2
 	note __, 10
 	note B_, 2
@@ -716,9 +716,9 @@ Music_VioletCity_Ch4:
 	note D_, 2
 	note D_, 4
 	note F#, 4
-	callchannel Music_VioletCity_branch_f036c
-	callchannel Music_VioletCity_branch_f036c
-	callchannel Music_VioletCity_branch_f036c
+	sound_call Music_VioletCity_branch_f036c
+	sound_call Music_VioletCity_branch_f036c
+	sound_call Music_VioletCity_branch_f036c
 	note D_, 2
 	note D#, 1
 	note D#, 1
@@ -726,22 +726,22 @@ Music_VioletCity_Ch4:
 	note C_, 8
 	note D#, 2
 Music_VioletCity_branch_f0338:
-	callchannel Music_VioletCity_branch_f037a
-	callchannel Music_VioletCity_branch_f037a
-	callchannel Music_VioletCity_branch_f037a
-	callchannel Music_VioletCity_branch_f037a
-	callchannel Music_VioletCity_branch_f037a
-	callchannel Music_VioletCity_branch_f037a
-	callchannel Music_VioletCity_branch_f037a
-	callchannel Music_VioletCity_branch_f037a
-	callchannel Music_VioletCity_branch_f037a
-	callchannel Music_VioletCity_branch_f037a
-	callchannel Music_VioletCity_branch_f037a
-	callchannel Music_VioletCity_branch_f037a
-	callchannel Music_VioletCity_branch_f037a
-	callchannel Music_VioletCity_branch_f037a
-	callchannel Music_VioletCity_branch_f037a
-	callchannel Music_VioletCity_branch_f037a
+	sound_call Music_VioletCity_branch_f037a
+	sound_call Music_VioletCity_branch_f037a
+	sound_call Music_VioletCity_branch_f037a
+	sound_call Music_VioletCity_branch_f037a
+	sound_call Music_VioletCity_branch_f037a
+	sound_call Music_VioletCity_branch_f037a
+	sound_call Music_VioletCity_branch_f037a
+	sound_call Music_VioletCity_branch_f037a
+	sound_call Music_VioletCity_branch_f037a
+	sound_call Music_VioletCity_branch_f037a
+	sound_call Music_VioletCity_branch_f037a
+	sound_call Music_VioletCity_branch_f037a
+	sound_call Music_VioletCity_branch_f037a
+	sound_call Music_VioletCity_branch_f037a
+	sound_call Music_VioletCity_branch_f037a
+	sound_call Music_VioletCity_branch_f037a
 	sound_jump Music_VioletCity_branch_f0338
 
 Music_VioletCity_branch_f036c:

@@ -647,25 +647,25 @@ Music_BikeRiding_Ch4:
 	note_type 12
 	note __, 2
 Music_BikeRiding_branch_7de6a:
-	callchannel Music_BikeRiding_branch_7dea7
-	callchannel Music_BikeRiding_branch_7deb4
-	callchannel Music_BikeRiding_branch_7dea7
-	callchannel Music_BikeRiding_branch_7dec2
-	callchannel Music_BikeRiding_branch_7deb4
-	callchannel Music_BikeRiding_branch_7deb4
-	callchannel Music_BikeRiding_branch_7dea7
-	callchannel Music_BikeRiding_branch_7dea7
-	callchannel Music_BikeRiding_branch_7dea7
-	callchannel Music_BikeRiding_branch_7dea7
-	callchannel Music_BikeRiding_branch_7deb4
-	callchannel Music_BikeRiding_branch_7dea7
-	callchannel Music_BikeRiding_branch_7dec2
-	callchannel Music_BikeRiding_branch_7dea7
-	callchannel Music_BikeRiding_branch_7deb4
-	callchannel Music_BikeRiding_branch_7dea7
-	callchannel Music_BikeRiding_branch_7dea7
-	callchannel Music_BikeRiding_branch_7dea7
-	callchannel Music_BikeRiding_branch_7dea7
+	sound_call Music_BikeRiding_branch_7dea7
+	sound_call Music_BikeRiding_branch_7deb4
+	sound_call Music_BikeRiding_branch_7dea7
+	sound_call Music_BikeRiding_branch_7dec2
+	sound_call Music_BikeRiding_branch_7deb4
+	sound_call Music_BikeRiding_branch_7deb4
+	sound_call Music_BikeRiding_branch_7dea7
+	sound_call Music_BikeRiding_branch_7dea7
+	sound_call Music_BikeRiding_branch_7dea7
+	sound_call Music_BikeRiding_branch_7dea7
+	sound_call Music_BikeRiding_branch_7deb4
+	sound_call Music_BikeRiding_branch_7dea7
+	sound_call Music_BikeRiding_branch_7dec2
+	sound_call Music_BikeRiding_branch_7dea7
+	sound_call Music_BikeRiding_branch_7deb4
+	sound_call Music_BikeRiding_branch_7dea7
+	sound_call Music_BikeRiding_branch_7dea7
+	sound_call Music_BikeRiding_branch_7dea7
+	sound_call Music_BikeRiding_branch_7dea7
 	sound_jump Music_BikeRiding_branch_7de6a
 Music_BikeRiding_branch_7dea7:
 	note __, 2

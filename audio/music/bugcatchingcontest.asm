@@ -205,7 +205,7 @@ Music_BugCatchingContest_branch_f7cff:
 	sound_loop 4, Music_BugCatchingContest_branch_f7cff
 Music_BugCatchingContest_branch_f7d0a:
 	duty_cycle 0
-	callchannel Music_BugCatchingContest_branch_f7d8e
+	sound_call Music_BugCatchingContest_branch_f7d8e
 	octave 2
 	note E_, 2
 	octave 3
@@ -246,7 +246,7 @@ Music_BugCatchingContest_branch_f7d0a:
 	octave 3
 	note E_, 1
 	note __, 1
-	callchannel Music_BugCatchingContest_branch_f7d8e
+	sound_call Music_BugCatchingContest_branch_f7d8e
 	octave 2
 	note E_, 2
 	octave 3
@@ -602,7 +602,7 @@ Music_BugCatchingContest_Ch4:
 	note C#, 1
 	note E_, 2
 	note E_, 2
-	callchannel Music_BugCatchingContest_branch_f7ee2
+	sound_call Music_BugCatchingContest_branch_f7ee2
 Music_BugCatchingContest_branch_f7eaf:
 	note D_, 4
 	note D_, 4
@@ -645,7 +645,7 @@ Music_BugCatchingContest_branch_f7eaf:
 	note D_, 2
 	note D_, 2
 	note D_, 2
-	callchannel Music_BugCatchingContest_branch_f7ee2
+	sound_call Music_BugCatchingContest_branch_f7ee2
 	sound_jump Music_BugCatchingContest_branch_f7eaf
 
 Music_BugCatchingContest_branch_f7ee2:

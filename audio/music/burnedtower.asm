@@ -104,10 +104,10 @@ Music_BurnedTower_Ch2:
 	vibrato $20, $82
 	pitch_offset 2
 	note_type 12, 7, 0
-	callchannel Music_BurnedTower_branch_f6b8e
+	sound_call Music_BurnedTower_branch_f6b8e
 	volume_envelope 12, 5
 Music_BurnedTower_branch_f6b39:
-	callchannel Music_BurnedTower_branch_f6b8e
+	sound_call Music_BurnedTower_branch_f6b8e
 	volume_envelope 12, 1
 	duty_cycle 3
 	note __, 2

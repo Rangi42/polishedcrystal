@@ -18,14 +18,14 @@ Music_GymLeaderBattleSwSh_Ch1:
 	sound_jump_if COND_FINAL_MON, Music_GymLeaderBattleSwSh_Ch1_EnterLastPokemonPhase
 ; Neutral Intro
 	octave 3
-	callchannel Music_GymLeaderBattleSwSh_Ch1_ditty1
-	callchannel Music_GymLeaderBattleSwSh_Ch1_ditty1
+	sound_call Music_GymLeaderBattleSwSh_Ch1_ditty1
+	sound_call Music_GymLeaderBattleSwSh_Ch1_ditty1
 	note __, 16
-	callchannel Music_GymLeaderBattleSwSh_Ch1_ditty2
+	sound_call Music_GymLeaderBattleSwSh_Ch1_ditty2
 	note __, 1
 	duty_cycle 2
 	volume_envelope 11, 2
-	callchannel Music_GymLeaderBattleSwSh_Ch1_ditty2
+	sound_call Music_GymLeaderBattleSwSh_Ch1_ditty2
 	note __, 1
 
 ;Neutral Loop
@@ -38,7 +38,7 @@ Music_GymLeaderBattleSwSh_Ch1_NeutralPhase_Loop_1:
 	duty_cycle 2
 	volume_envelope 11, 2
 	note __, 2
-	callchannel Music_GymLeaderBattleSwSh_Ch1_ditty3
+	sound_call Music_GymLeaderBattleSwSh_Ch1_ditty3
 	sound_jump_if COND_ADVANTAGE, Music_GymLeaderBattleSwSh_Ch1_AdvantagePhase_Loop_2
 	sound_jump_if COND_DISADVANTAGE, Music_GymLeaderBattleSwSh_Ch1_DisadvantagePhase_Loop_2
 Music_GymLeaderBattleSwSh_Ch1_NeutralPhase_Loop_2:
@@ -47,7 +47,7 @@ Music_GymLeaderBattleSwSh_Ch1_NeutralPhase_Loop_2:
 	duty_cycle 2
 	volume_envelope 11, 2
 	note __, 2
-	callchannel Music_GymLeaderBattleSwSh_Ch1_ditty3
+	sound_call Music_GymLeaderBattleSwSh_Ch1_ditty3
 	sound_jump_if COND_ADVANTAGE, Music_GymLeaderBattleSwSh_Ch1_AdvantagePhase_Loop_3
 	sound_jump_if COND_DISADVANTAGE, Music_GymLeaderBattleSwSh_Ch1_DisadvantagePhase_Loop_3
 Music_GymLeaderBattleSwSh_Ch1_NeutralPhase_Loop_3:
@@ -56,7 +56,7 @@ Music_GymLeaderBattleSwSh_Ch1_NeutralPhase_Loop_3:
 	duty_cycle 2
 	volume_envelope 11, 2
 	note __, 2
-	callchannel Music_GymLeaderBattleSwSh_Ch2_ditty4
+	sound_call Music_GymLeaderBattleSwSh_Ch2_ditty4
 	sound_jump_if COND_ADVANTAGE, Music_GymLeaderBattleSwSh_Ch1_AdvantagePhase_Loop_4
 	sound_jump_if COND_DISADVANTAGE, Music_GymLeaderBattleSwSh_Ch1_DisadvantagePhase_Loop_4
 Music_GymLeaderBattleSwSh_Ch1_NeutralPhase_Loop_4:
@@ -65,7 +65,7 @@ Music_GymLeaderBattleSwSh_Ch1_NeutralPhase_Loop_4:
 	duty_cycle 2
 	volume_envelope 11, 2
 	note __, 2
-	callchannel Music_GymLeaderBattleSwSh_Ch2_ditty3
+	sound_call Music_GymLeaderBattleSwSh_Ch2_ditty3
 	sound_jump Music_GymLeaderBattleSwSh_Ch1_NeutralPhase_Loop
 
 ;Advantage Loop
@@ -77,7 +77,7 @@ Music_GymLeaderBattleSwSh_Ch1_AdvantagePhase_Loop_1:
 	volume_envelope 12, 7
 	octave 3
 	note __, 2
-	callchannel Music_GymLeaderBattleSwSh_Ch1_ditty6
+	sound_call Music_GymLeaderBattleSwSh_Ch1_ditty6
 	note __, 1
 	sound_jump_if COND_DEFAULT, Music_GymLeaderBattleSwSh_Ch1_NeutralPhase_Loop_2
 	sound_jump_if COND_DISADVANTAGE, Music_GymLeaderBattleSwSh_Ch1_DisadvantagePhase_Loop_2
@@ -86,20 +86,20 @@ Music_GymLeaderBattleSwSh_Ch1_AdvantagePhase_Loop_2:
 	volume_envelope 12, 7
 	octave 3
 	note __, 2
-	callchannel Music_GymLeaderBattleSwSh_Ch1_ditty6
+	sound_call Music_GymLeaderBattleSwSh_Ch1_ditty6
 	note __, 1
 	sound_jump_if COND_DEFAULT, Music_GymLeaderBattleSwSh_Ch1_NeutralPhase_Loop_3
 	sound_jump_if COND_DISADVANTAGE, Music_GymLeaderBattleSwSh_Ch1_DisadvantagePhase_Loop_3
 Music_GymLeaderBattleSwSh_Ch1_AdvantagePhase_Loop_3:
 	duty_cycle 1
 	volume_envelope 12, 7
-	callchannel Music_GymLeaderBattleSwSh_Ch1_ditty7
+	sound_call Music_GymLeaderBattleSwSh_Ch1_ditty7
 	sound_jump_if COND_DEFAULT, Music_GymLeaderBattleSwSh_Ch1_NeutralPhase_Loop_4
 	sound_jump_if COND_DISADVANTAGE, Music_GymLeaderBattleSwSh_Ch1_DisadvantagePhase_Loop_4
 Music_GymLeaderBattleSwSh_Ch1_AdvantagePhase_Loop_4:
 	duty_cycle 1
 	volume_envelope 12, 7
-	callchannel Music_GymLeaderBattleSwSh_Ch1_ditty7
+	sound_call Music_GymLeaderBattleSwSh_Ch1_ditty7
 	sound_jump Music_GymLeaderBattleSwSh_Ch1_AdvantagePhase_Loop
 
 ;Disadvantage Loop
@@ -112,9 +112,9 @@ Music_GymLeaderBattleSwSh_Ch1_DisadvantagePhase_Loop_1:
 	volume_envelope 7, 2
 	octave 3
 	note __, 2
-	callchannel Music_GymLeaderBattleSwSh_Ch1_ditty11
+	sound_call Music_GymLeaderBattleSwSh_Ch1_ditty11
 	note __, 3
-	callchannel Music_GymLeaderBattleSwSh_Ch1_ditty11
+	sound_call Music_GymLeaderBattleSwSh_Ch1_ditty11
 	note __, 1
 	sound_jump_if COND_DEFAULT, Music_GymLeaderBattleSwSh_Ch1_NeutralPhase_Loop_2
 	sound_jump_if COND_ADVANTAGE, Music_GymLeaderBattleSwSh_Ch1_AdvantagePhase_Loop_2
@@ -124,8 +124,8 @@ Music_GymLeaderBattleSwSh_Ch1_DisadvantagePhase_Loop_2:
 	volume_envelope 7, 2
 	octave 3
 	note __, 2
-	callchannel Music_GymLeaderBattleSwSh_Ch1_ditty11
-	callchannel Music_GymLeaderBattleSwSh_Ch1_ditty12
+	sound_call Music_GymLeaderBattleSwSh_Ch1_ditty11
+	sound_call Music_GymLeaderBattleSwSh_Ch1_ditty12
 	sound_jump_if COND_DEFAULT, Music_GymLeaderBattleSwSh_Ch1_NeutralPhase_Loop_3
 	sound_jump_if COND_ADVANTAGE, Music_GymLeaderBattleSwSh_Ch1_AdvantagePhase_Loop_3
 Music_GymLeaderBattleSwSh_Ch1_DisadvantagePhase_Loop_3:
@@ -134,9 +134,9 @@ Music_GymLeaderBattleSwSh_Ch1_DisadvantagePhase_Loop_3:
 	volume_envelope 7, 2
 	octave 3
 	note __, 2
-	callchannel Music_GymLeaderBattleSwSh_Ch1_ditty11
+	sound_call Music_GymLeaderBattleSwSh_Ch1_ditty11
 	note __, 3
-	callchannel Music_GymLeaderBattleSwSh_Ch1_ditty11
+	sound_call Music_GymLeaderBattleSwSh_Ch1_ditty11
 	note __, 1
 	sound_jump_if COND_DEFAULT, Music_GymLeaderBattleSwSh_Ch1_NeutralPhase_Loop_4
 	sound_jump_if COND_ADVANTAGE, Music_GymLeaderBattleSwSh_Ch1_AdvantagePhase_Loop_4
@@ -146,8 +146,8 @@ Music_GymLeaderBattleSwSh_Ch1_DisadvantagePhase_Loop_4:
 	volume_envelope 7, 2
 	octave 3
 	note __, 2
-	callchannel Music_GymLeaderBattleSwSh_Ch1_ditty11
-	callchannel Music_GymLeaderBattleSwSh_Ch1_ditty12
+	sound_call Music_GymLeaderBattleSwSh_Ch1_ditty11
+	sound_call Music_GymLeaderBattleSwSh_Ch1_ditty12
 	sound_jump Music_GymLeaderBattleSwSh_Ch1_DisadvantagePhase_Loop
 
 Music_GymLeaderBattleSwSh_Ch2:
@@ -156,14 +156,14 @@ Music_GymLeaderBattleSwSh_Ch2:
 	stereo_panning TRUE, TRUE
 	sound_jump_if COND_FINAL_MON, Music_GymLeaderBattleSwSh_Ch2_EnterLastPokemonPhase
 ; Neutral Intro
-	callchannel Music_GymLeaderBattleSwSh_Ch2_ditty1
-	callchannel Music_GymLeaderBattleSwSh_Ch2_ditty1
+	sound_call Music_GymLeaderBattleSwSh_Ch2_ditty1
+	sound_call Music_GymLeaderBattleSwSh_Ch2_ditty1
 	note __, 16
 	duty_cycle 1
 	volume_envelope 12, 7
 	octave 3
-	callchannel Music_GymLeaderBattleSwSh_Ch2_ditty2
-	callchannel Music_GymLeaderBattleSwSh_Ch2_ditty2
+	sound_call Music_GymLeaderBattleSwSh_Ch2_ditty2
+	sound_call Music_GymLeaderBattleSwSh_Ch2_ditty2
 
 ;Neutral Loop
 Music_GymLeaderBattleSwSh_Ch2_NeutralPhase_Loop:
@@ -175,7 +175,7 @@ Music_GymLeaderBattleSwSh_Ch2_NeutralPhase_Loop_1:
 	volume_envelope 11, 2
 	octave 3
 	note __, 2
-	callchannel Music_GymLeaderBattleSwSh_Ch2_ditty4
+	sound_call Music_GymLeaderBattleSwSh_Ch2_ditty4
 	sound_jump_if COND_ADVANTAGE, Music_GymLeaderBattleSwSh_Ch2_AdvantagePhase_Loop_2
 	sound_jump_if COND_DISADVANTAGE, Music_GymLeaderBattleSwSh_Ch2_DisadvantagePhase_Loop_2
 Music_GymLeaderBattleSwSh_Ch2_NeutralPhase_Loop_2:
@@ -184,7 +184,7 @@ Music_GymLeaderBattleSwSh_Ch2_NeutralPhase_Loop_2:
 	volume_envelope 11, 2
 	octave 3
 	note __, 2
-	callchannel Music_GymLeaderBattleSwSh_Ch2_ditty3
+	sound_call Music_GymLeaderBattleSwSh_Ch2_ditty3
 	sound_jump_if COND_ADVANTAGE, Music_GymLeaderBattleSwSh_Ch2_AdvantagePhase_Loop_3
 	sound_jump_if COND_DISADVANTAGE, Music_GymLeaderBattleSwSh_Ch2_DisadvantagePhase_Loop_3
 Music_GymLeaderBattleSwSh_Ch2_NeutralPhase_Loop_3:
@@ -193,7 +193,7 @@ Music_GymLeaderBattleSwSh_Ch2_NeutralPhase_Loop_3:
 	volume_envelope 12, 7
 	vibrato $9, $12
 	octave 4
-	callchannel Music_GymLeaderBattleSwSh_Ch2_ditty5
+	sound_call Music_GymLeaderBattleSwSh_Ch2_ditty5
 	note __, 9
 	sound_jump_if COND_ADVANTAGE, Music_GymLeaderBattleSwSh_Ch2_AdvantagePhase_Loop_4
 	sound_jump_if COND_DISADVANTAGE, Music_GymLeaderBattleSwSh_Ch2_DisadvantagePhase_Loop_4
@@ -203,7 +203,7 @@ Music_GymLeaderBattleSwSh_Ch2_NeutralPhase_Loop_4:
 	volume_envelope 12, 7
 	vibrato $9, $12
 	octave 4
-	callchannel Music_GymLeaderBattleSwSh_Ch2_ditty5
+	sound_call Music_GymLeaderBattleSwSh_Ch2_ditty5
 	note __, 9
 	sound_jump Music_GymLeaderBattleSwSh_Ch2_NeutralPhase_Loop
 
@@ -216,7 +216,7 @@ Music_GymLeaderBattleSwSh_Ch2_AdvantagePhase_Loop_1:
 	duty_cycle 1
 	volume_envelope 12, 7
 	octave 3
-	callchannel Music_GymLeaderBattleSwSh_Ch2_ditty7
+	sound_call Music_GymLeaderBattleSwSh_Ch2_ditty7
 	note __, 1
 	sound_jump_if COND_DEFAULT, Music_GymLeaderBattleSwSh_Ch2_NeutralPhase_Loop_2
 	sound_jump_if COND_DISADVANTAGE, Music_GymLeaderBattleSwSh_Ch2_DisadvantagePhase_Loop_2
@@ -225,20 +225,20 @@ Music_GymLeaderBattleSwSh_Ch2_AdvantagePhase_Loop_2:
 	duty_cycle 1
 	volume_envelope 12, 7
 	octave 3
-	callchannel Music_GymLeaderBattleSwSh_Ch2_ditty7
+	sound_call Music_GymLeaderBattleSwSh_Ch2_ditty7
 	note __, 1
 	sound_jump_if COND_DEFAULT, Music_GymLeaderBattleSwSh_Ch2_NeutralPhase_Loop_3
 	sound_jump_if COND_DISADVANTAGE, Music_GymLeaderBattleSwSh_Ch2_DisadvantagePhase_Loop_3
 Music_GymLeaderBattleSwSh_Ch2_AdvantagePhase_Loop_3:
 	duty_cycle 2
 	volume_envelope 11, 2
-	callchannel Music_GymLeaderBattleSwSh_Ch2_ditty8
+	sound_call Music_GymLeaderBattleSwSh_Ch2_ditty8
 	sound_jump_if COND_DEFAULT, Music_GymLeaderBattleSwSh_Ch2_NeutralPhase_Loop_4
 	sound_jump_if COND_DISADVANTAGE, Music_GymLeaderBattleSwSh_Ch2_DisadvantagePhase_Loop_4
 Music_GymLeaderBattleSwSh_Ch2_AdvantagePhase_Loop_4:
 	duty_cycle 2
 	volume_envelope 11, 2
-	callchannel Music_GymLeaderBattleSwSh_Ch2_ditty8
+	sound_call Music_GymLeaderBattleSwSh_Ch2_ditty8
 	sound_jump Music_GymLeaderBattleSwSh_Ch2_AdvantagePhase_Loop
 
 ;Disadvantage Loop
@@ -251,9 +251,9 @@ Music_GymLeaderBattleSwSh_Ch2_DisadvantagePhase_Loop_1:
 	volume_envelope 7, 2
 	octave 3
 	note __, 2
-	callchannel Music_GymLeaderBattleSwSh_Ch2_ditty11
+	sound_call Music_GymLeaderBattleSwSh_Ch2_ditty11
 	note __, 3
-	callchannel Music_GymLeaderBattleSwSh_Ch2_ditty11
+	sound_call Music_GymLeaderBattleSwSh_Ch2_ditty11
 	note __, 1
 	sound_jump_if COND_DEFAULT, Music_GymLeaderBattleSwSh_Ch2_NeutralPhase_Loop_2
 	sound_jump_if COND_ADVANTAGE, Music_GymLeaderBattleSwSh_Ch2_AdvantagePhase_Loop_2
@@ -263,8 +263,8 @@ Music_GymLeaderBattleSwSh_Ch2_DisadvantagePhase_Loop_2:
 	volume_envelope 7, 2
 	octave 3
 	note __, 2
-	callchannel Music_GymLeaderBattleSwSh_Ch2_ditty11
-	callchannel Music_GymLeaderBattleSwSh_Ch2_ditty12
+	sound_call Music_GymLeaderBattleSwSh_Ch2_ditty11
+	sound_call Music_GymLeaderBattleSwSh_Ch2_ditty12
 	sound_jump_if COND_DEFAULT, Music_GymLeaderBattleSwSh_Ch2_NeutralPhase_Loop_3
 	sound_jump_if COND_ADVANTAGE, Music_GymLeaderBattleSwSh_Ch2_AdvantagePhase_Loop_3
 Music_GymLeaderBattleSwSh_Ch2_DisadvantagePhase_Loop_3:
@@ -273,9 +273,9 @@ Music_GymLeaderBattleSwSh_Ch2_DisadvantagePhase_Loop_3:
 	volume_envelope 7, 2
 	octave 3
 	note __, 2
-	callchannel Music_GymLeaderBattleSwSh_Ch2_ditty11
+	sound_call Music_GymLeaderBattleSwSh_Ch2_ditty11
 	note __, 3
-	callchannel Music_GymLeaderBattleSwSh_Ch2_ditty11
+	sound_call Music_GymLeaderBattleSwSh_Ch2_ditty11
 	note __, 1
 	sound_jump_if COND_DEFAULT, Music_GymLeaderBattleSwSh_Ch2_NeutralPhase_Loop_4
 	sound_jump_if COND_ADVANTAGE, Music_GymLeaderBattleSwSh_Ch2_AdvantagePhase_Loop_4
@@ -285,8 +285,8 @@ Music_GymLeaderBattleSwSh_Ch2_DisadvantagePhase_Loop_4:
 	volume_envelope 7, 2
 	octave 3
 	note __, 2
-	callchannel Music_GymLeaderBattleSwSh_Ch2_ditty11
-	callchannel Music_GymLeaderBattleSwSh_Ch2_ditty12
+	sound_call Music_GymLeaderBattleSwSh_Ch2_ditty11
+	sound_call Music_GymLeaderBattleSwSh_Ch2_ditty12
 	sound_jump Music_GymLeaderBattleSwSh_Ch2_DisadvantagePhase_Loop
 
 Music_GymLeaderBattleSwSh_Ch3:
@@ -294,8 +294,8 @@ Music_GymLeaderBattleSwSh_Ch3:
 	stereo_panning TRUE, TRUE
 	sound_jump_if COND_FINAL_MON, Music_GymLeaderBattleSwSh_Ch3_EnterLastPokemonPhase
 ; Neutral Intro
-	callchannel Music_GymLeaderBattleSwSh_Ch3_ditty1
-	callchannel Music_GymLeaderBattleSwSh_Ch3_ditty1
+	sound_call Music_GymLeaderBattleSwSh_Ch3_ditty1
+	sound_call Music_GymLeaderBattleSwSh_Ch3_ditty1
 	octave 1
 	note G_, 8
 	note __, 4
@@ -303,31 +303,31 @@ Music_GymLeaderBattleSwSh_Ch3:
 	pitch_slide 1, 3, C_
 	note G_, 4
 	octave 2
-	callchannel Music_GymLeaderBattleSwSh_Ch3_ditty2
-	callchannel Music_GymLeaderBattleSwSh_Ch3_ditty2
+	sound_call Music_GymLeaderBattleSwSh_Ch3_ditty2
+	sound_call Music_GymLeaderBattleSwSh_Ch3_ditty2
 
 ;Neutral Loop
 Music_GymLeaderBattleSwSh_Ch3_NeutralPhase_Loop:
 	sound_jump_if COND_ADVANTAGE, Music_GymLeaderBattleSwSh_Ch3_AdvantagePhase_Loop_1
 	sound_jump_if COND_DISADVANTAGE, Music_GymLeaderBattleSwSh_Ch3_DisadvantagePhase_Loop_1
 Music_GymLeaderBattleSwSh_Ch3_NeutralPhase_Loop_1:
-	callchannel Music_GymLeaderBattleSwSh_Ch3_ditty3
-	callchannel Music_GymLeaderBattleSwSh_Ch3_ditty3
+	sound_call Music_GymLeaderBattleSwSh_Ch3_ditty3
+	sound_call Music_GymLeaderBattleSwSh_Ch3_ditty3
 	sound_jump_if COND_ADVANTAGE, Music_GymLeaderBattleSwSh_Ch3_AdvantagePhase_Loop_2
 	sound_jump_if COND_DISADVANTAGE, Music_GymLeaderBattleSwSh_Ch3_DisadvantagePhase_Loop_2
 Music_GymLeaderBattleSwSh_Ch3_NeutralPhase_Loop_2:
-	callchannel Music_GymLeaderBattleSwSh_Ch3_ditty3
-	callchannel Music_GymLeaderBattleSwSh_Ch3_ditty3
+	sound_call Music_GymLeaderBattleSwSh_Ch3_ditty3
+	sound_call Music_GymLeaderBattleSwSh_Ch3_ditty3
 	sound_jump_if COND_ADVANTAGE, Music_GymLeaderBattleSwSh_Ch3_AdvantagePhase_Loop_3
 	sound_jump_if COND_DISADVANTAGE, Music_GymLeaderBattleSwSh_Ch3_DisadvantagePhase_Loop_3
 Music_GymLeaderBattleSwSh_Ch3_NeutralPhase_Loop_3:
-	callchannel Music_GymLeaderBattleSwSh_Ch3_ditty3
-	callchannel Music_GymLeaderBattleSwSh_Ch3_ditty3
+	sound_call Music_GymLeaderBattleSwSh_Ch3_ditty3
+	sound_call Music_GymLeaderBattleSwSh_Ch3_ditty3
 	sound_jump_if COND_ADVANTAGE, Music_GymLeaderBattleSwSh_Ch3_AdvantagePhase_Loop_4
 	sound_jump_if COND_DISADVANTAGE, Music_GymLeaderBattleSwSh_Ch3_DisadvantagePhase_Loop_4
 Music_GymLeaderBattleSwSh_Ch3_NeutralPhase_Loop_4:
-	callchannel Music_GymLeaderBattleSwSh_Ch3_ditty3
-	callchannel Music_GymLeaderBattleSwSh_Ch3_ditty3
+	sound_call Music_GymLeaderBattleSwSh_Ch3_ditty3
+	sound_call Music_GymLeaderBattleSwSh_Ch3_ditty3
 	sound_jump Music_GymLeaderBattleSwSh_Ch3_NeutralPhase_Loop
 
 ;Advantage Loop
@@ -335,19 +335,19 @@ Music_GymLeaderBattleSwSh_Ch3_AdvantagePhase_Loop:
 	sound_jump_if COND_DEFAULT, Music_GymLeaderBattleSwSh_Ch3_NeutralPhase_Loop_1
 	sound_jump_if COND_DISADVANTAGE, Music_GymLeaderBattleSwSh_Ch3_DisadvantagePhase_Loop_1
 Music_GymLeaderBattleSwSh_Ch3_AdvantagePhase_Loop_1:
-	callchannel Music_GymLeaderBattleSwSh_Ch3_ditty5
+	sound_call Music_GymLeaderBattleSwSh_Ch3_ditty5
 	sound_jump_if COND_DEFAULT, Music_GymLeaderBattleSwSh_Ch3_NeutralPhase_Loop_2
 	sound_jump_if COND_DISADVANTAGE, Music_GymLeaderBattleSwSh_Ch3_DisadvantagePhase_Loop_2
 Music_GymLeaderBattleSwSh_Ch3_AdvantagePhase_Loop_2:
-	callchannel Music_GymLeaderBattleSwSh_Ch3_ditty5
+	sound_call Music_GymLeaderBattleSwSh_Ch3_ditty5
 	sound_jump_if COND_DEFAULT, Music_GymLeaderBattleSwSh_Ch3_NeutralPhase_Loop_3
 	sound_jump_if COND_DISADVANTAGE, Music_GymLeaderBattleSwSh_Ch3_DisadvantagePhase_Loop_3
 Music_GymLeaderBattleSwSh_Ch3_AdvantagePhase_Loop_3:
-	callchannel Music_GymLeaderBattleSwSh_Ch3_ditty5
+	sound_call Music_GymLeaderBattleSwSh_Ch3_ditty5
 	sound_jump_if COND_DEFAULT, Music_GymLeaderBattleSwSh_Ch3_NeutralPhase_Loop_4
 	sound_jump_if COND_DISADVANTAGE, Music_GymLeaderBattleSwSh_Ch3_DisadvantagePhase_Loop_4
 Music_GymLeaderBattleSwSh_Ch3_AdvantagePhase_Loop_4:
-	callchannel Music_GymLeaderBattleSwSh_Ch3_ditty5
+	sound_call Music_GymLeaderBattleSwSh_Ch3_ditty5
 	sound_jump Music_GymLeaderBattleSwSh_Ch3_AdvantagePhase_Loop
 
 ;Disadvantage Loop
@@ -356,50 +356,50 @@ Music_GymLeaderBattleSwSh_Ch3_DisadvantagePhase_Loop:
 	sound_jump_if COND_ADVANTAGE, Music_GymLeaderBattleSwSh_Ch3_AdvantagePhase_Loop_1
 Music_GymLeaderBattleSwSh_Ch3_DisadvantagePhase_Loop_1:
 	volume_envelope 2, 3
-	callchannel Music_GymLeaderBattleSwSh_Ch3_ditty8
-	callchannel Music_GymLeaderBattleSwSh_Ch3_ditty9
-	callchannel Music_GymLeaderBattleSwSh_Ch3_ditty8
-	callchannel Music_GymLeaderBattleSwSh_Ch3_ditty10
-	callchannel Music_GymLeaderBattleSwSh_Ch3_ditty8
-	callchannel Music_GymLeaderBattleSwSh_Ch3_ditty9
-	callchannel Music_GymLeaderBattleSwSh_Ch3_ditty8
-	callchannel Music_GymLeaderBattleSwSh_Ch3_ditty10
+	sound_call Music_GymLeaderBattleSwSh_Ch3_ditty8
+	sound_call Music_GymLeaderBattleSwSh_Ch3_ditty9
+	sound_call Music_GymLeaderBattleSwSh_Ch3_ditty8
+	sound_call Music_GymLeaderBattleSwSh_Ch3_ditty10
+	sound_call Music_GymLeaderBattleSwSh_Ch3_ditty8
+	sound_call Music_GymLeaderBattleSwSh_Ch3_ditty9
+	sound_call Music_GymLeaderBattleSwSh_Ch3_ditty8
+	sound_call Music_GymLeaderBattleSwSh_Ch3_ditty10
 	sound_jump_if COND_DEFAULT, Music_GymLeaderBattleSwSh_Ch3_NeutralPhase_Loop_2
 	sound_jump_if COND_ADVANTAGE, Music_GymLeaderBattleSwSh_Ch3_AdvantagePhase_Loop_2
 Music_GymLeaderBattleSwSh_Ch3_DisadvantagePhase_Loop_2:
 	volume_envelope 2, 3
-	callchannel Music_GymLeaderBattleSwSh_Ch3_ditty8
-	callchannel Music_GymLeaderBattleSwSh_Ch3_ditty9
-	callchannel Music_GymLeaderBattleSwSh_Ch3_ditty8
-	callchannel Music_GymLeaderBattleSwSh_Ch3_ditty10
-	callchannel Music_GymLeaderBattleSwSh_Ch3_ditty8
-	callchannel Music_GymLeaderBattleSwSh_Ch3_ditty9
-	callchannel Music_GymLeaderBattleSwSh_Ch3_ditty8
-	callchannel Music_GymLeaderBattleSwSh_Ch3_ditty10
+	sound_call Music_GymLeaderBattleSwSh_Ch3_ditty8
+	sound_call Music_GymLeaderBattleSwSh_Ch3_ditty9
+	sound_call Music_GymLeaderBattleSwSh_Ch3_ditty8
+	sound_call Music_GymLeaderBattleSwSh_Ch3_ditty10
+	sound_call Music_GymLeaderBattleSwSh_Ch3_ditty8
+	sound_call Music_GymLeaderBattleSwSh_Ch3_ditty9
+	sound_call Music_GymLeaderBattleSwSh_Ch3_ditty8
+	sound_call Music_GymLeaderBattleSwSh_Ch3_ditty10
 	sound_jump_if COND_DEFAULT, Music_GymLeaderBattleSwSh_Ch3_NeutralPhase_Loop_3
 	sound_jump_if COND_ADVANTAGE, Music_GymLeaderBattleSwSh_Ch3_AdvantagePhase_Loop_3
 Music_GymLeaderBattleSwSh_Ch3_DisadvantagePhase_Loop_3:
 	volume_envelope 2, 3
-	callchannel Music_GymLeaderBattleSwSh_Ch3_ditty8
-	callchannel Music_GymLeaderBattleSwSh_Ch3_ditty9
-	callchannel Music_GymLeaderBattleSwSh_Ch3_ditty8
-	callchannel Music_GymLeaderBattleSwSh_Ch3_ditty10
-	callchannel Music_GymLeaderBattleSwSh_Ch3_ditty8
-	callchannel Music_GymLeaderBattleSwSh_Ch3_ditty9
-	callchannel Music_GymLeaderBattleSwSh_Ch3_ditty8
-	callchannel Music_GymLeaderBattleSwSh_Ch3_ditty10
+	sound_call Music_GymLeaderBattleSwSh_Ch3_ditty8
+	sound_call Music_GymLeaderBattleSwSh_Ch3_ditty9
+	sound_call Music_GymLeaderBattleSwSh_Ch3_ditty8
+	sound_call Music_GymLeaderBattleSwSh_Ch3_ditty10
+	sound_call Music_GymLeaderBattleSwSh_Ch3_ditty8
+	sound_call Music_GymLeaderBattleSwSh_Ch3_ditty9
+	sound_call Music_GymLeaderBattleSwSh_Ch3_ditty8
+	sound_call Music_GymLeaderBattleSwSh_Ch3_ditty10
 	sound_jump_if COND_DEFAULT, Music_GymLeaderBattleSwSh_Ch3_NeutralPhase_Loop_4
 	sound_jump_if COND_ADVANTAGE, Music_GymLeaderBattleSwSh_Ch3_AdvantagePhase_Loop_4
 Music_GymLeaderBattleSwSh_Ch3_DisadvantagePhase_Loop_4:
 	volume_envelope 2, 3
-	callchannel Music_GymLeaderBattleSwSh_Ch3_ditty8
-	callchannel Music_GymLeaderBattleSwSh_Ch3_ditty9
-	callchannel Music_GymLeaderBattleSwSh_Ch3_ditty8
-	callchannel Music_GymLeaderBattleSwSh_Ch3_ditty10
-	callchannel Music_GymLeaderBattleSwSh_Ch3_ditty8
-	callchannel Music_GymLeaderBattleSwSh_Ch3_ditty9
-	callchannel Music_GymLeaderBattleSwSh_Ch3_ditty8
-	callchannel Music_GymLeaderBattleSwSh_Ch3_ditty10
+	sound_call Music_GymLeaderBattleSwSh_Ch3_ditty8
+	sound_call Music_GymLeaderBattleSwSh_Ch3_ditty9
+	sound_call Music_GymLeaderBattleSwSh_Ch3_ditty8
+	sound_call Music_GymLeaderBattleSwSh_Ch3_ditty10
+	sound_call Music_GymLeaderBattleSwSh_Ch3_ditty8
+	sound_call Music_GymLeaderBattleSwSh_Ch3_ditty9
+	sound_call Music_GymLeaderBattleSwSh_Ch3_ditty8
+	sound_call Music_GymLeaderBattleSwSh_Ch3_ditty10
 	sound_jump Music_GymLeaderBattleSwSh_Ch3_DisadvantagePhase_Loop
 
 Music_GymLeaderBattleSwSh_Ch4:
@@ -408,35 +408,35 @@ Music_GymLeaderBattleSwSh_Ch4:
 	stereo_panning TRUE, TRUE
 	sound_jump_if COND_FINAL_MON, Music_GymLeaderBattleSwSh_Ch4_EnterLastPokemonPhase
 ; Neutral Intro
-	callchannel Music_GymLeaderBattleSwSh_Ch4_ditty1
-	callchannel Music_GymLeaderBattleSwSh_Ch4_ditty1
+	sound_call Music_GymLeaderBattleSwSh_Ch4_ditty1
+	sound_call Music_GymLeaderBattleSwSh_Ch4_ditty1
 	note C#, 1
 	note C#, 1
 	note C#, 1
 	note C#, 1
 	note C#, 1
 	note C#, 11
-	callchannel Music_GymLeaderBattleSwSh_Ch4_ditty2
-	callchannel Music_GymLeaderBattleSwSh_Ch4_ditty2
+	sound_call Music_GymLeaderBattleSwSh_Ch4_ditty2
+	sound_call Music_GymLeaderBattleSwSh_Ch4_ditty2
 
 ;Neutral Loop
 Music_GymLeaderBattleSwSh_Ch4_NeutralPhase_Loop:
 	sound_jump_if COND_ADVANTAGE, Music_GymLeaderBattleSwSh_Ch4_AdvantagePhase_Loop_1
 	sound_jump_if COND_DISADVANTAGE, Music_GymLeaderBattleSwSh_Ch4_DisadvantagePhase_Loop_1
 Music_GymLeaderBattleSwSh_Ch4_NeutralPhase_Loop_1:
-	callchannel Music_GymLeaderBattleSwSh_Ch4_ditty3
+	sound_call Music_GymLeaderBattleSwSh_Ch4_ditty3
 	sound_jump_if COND_ADVANTAGE, Music_GymLeaderBattleSwSh_Ch4_AdvantagePhase_Loop_2
 	sound_jump_if COND_DISADVANTAGE, Music_GymLeaderBattleSwSh_Ch4_DisadvantagePhase_Loop_2
 Music_GymLeaderBattleSwSh_Ch4_NeutralPhase_Loop_2:
-	callchannel Music_GymLeaderBattleSwSh_Ch4_ditty3
+	sound_call Music_GymLeaderBattleSwSh_Ch4_ditty3
 	sound_jump_if COND_ADVANTAGE, Music_GymLeaderBattleSwSh_Ch4_AdvantagePhase_Loop_3
 	sound_jump_if COND_DISADVANTAGE, Music_GymLeaderBattleSwSh_Ch4_DisadvantagePhase_Loop_3
 Music_GymLeaderBattleSwSh_Ch4_NeutralPhase_Loop_3:
-	callchannel Music_GymLeaderBattleSwSh_Ch4_ditty4
+	sound_call Music_GymLeaderBattleSwSh_Ch4_ditty4
 	sound_jump_if COND_ADVANTAGE, Music_GymLeaderBattleSwSh_Ch4_AdvantagePhase_Loop_4
 	sound_jump_if COND_DISADVANTAGE, Music_GymLeaderBattleSwSh_Ch4_DisadvantagePhase_Loop_4
 Music_GymLeaderBattleSwSh_Ch4_NeutralPhase_Loop_4:
-	callchannel Music_GymLeaderBattleSwSh_Ch4_ditty4
+	sound_call Music_GymLeaderBattleSwSh_Ch4_ditty4
 	sound_jump Music_GymLeaderBattleSwSh_Ch4_NeutralPhase_Loop
 
 ;Advantage Loop
@@ -444,19 +444,19 @@ Music_GymLeaderBattleSwSh_Ch4_AdvantagePhase_Loop:
 	sound_jump_if COND_DEFAULT, Music_GymLeaderBattleSwSh_Ch4_NeutralPhase_Loop_1
 	sound_jump_if COND_DISADVANTAGE, Music_GymLeaderBattleSwSh_Ch4_DisadvantagePhase_Loop_1
 Music_GymLeaderBattleSwSh_Ch4_AdvantagePhase_Loop_1:
-	callchannel Music_GymLeaderBattleSwSh_Ch4_ditty3
+	sound_call Music_GymLeaderBattleSwSh_Ch4_ditty3
 	sound_jump_if COND_DEFAULT, Music_GymLeaderBattleSwSh_Ch4_NeutralPhase_Loop_2
 	sound_jump_if COND_DISADVANTAGE, Music_GymLeaderBattleSwSh_Ch4_DisadvantagePhase_Loop_2
 Music_GymLeaderBattleSwSh_Ch4_AdvantagePhase_Loop_2:
-	callchannel Music_GymLeaderBattleSwSh_Ch4_ditty3
+	sound_call Music_GymLeaderBattleSwSh_Ch4_ditty3
 	sound_jump_if COND_DEFAULT, Music_GymLeaderBattleSwSh_Ch4_NeutralPhase_Loop_3
 	sound_jump_if COND_DISADVANTAGE, Music_GymLeaderBattleSwSh_Ch4_DisadvantagePhase_Loop_3
 Music_GymLeaderBattleSwSh_Ch4_AdvantagePhase_Loop_3:
-	callchannel Music_GymLeaderBattleSwSh_Ch4_ditty6
+	sound_call Music_GymLeaderBattleSwSh_Ch4_ditty6
 	sound_jump_if COND_DEFAULT, Music_GymLeaderBattleSwSh_Ch4_NeutralPhase_Loop_4
 	sound_jump_if COND_DISADVANTAGE, Music_GymLeaderBattleSwSh_Ch4_DisadvantagePhase_Loop_4
 Music_GymLeaderBattleSwSh_Ch4_AdvantagePhase_Loop_4:
-	callchannel Music_GymLeaderBattleSwSh_Ch4_ditty6
+	sound_call Music_GymLeaderBattleSwSh_Ch4_ditty6
 	sound_jump Music_GymLeaderBattleSwSh_Ch4_AdvantagePhase_Loop
 
 ;Disadvantage Loop
@@ -464,31 +464,31 @@ Music_GymLeaderBattleSwSh_Ch4_DisadvantagePhase_Loop:
 	sound_jump_if COND_DEFAULT, Music_GymLeaderBattleSwSh_Ch4_NeutralPhase_Loop_1
 	sound_jump_if COND_ADVANTAGE, Music_GymLeaderBattleSwSh_Ch4_AdvantagePhase_Loop_1
 Music_GymLeaderBattleSwSh_Ch4_DisadvantagePhase_Loop_1:
-	callchannel Music_GymLeaderBattleSwSh_Ch4_ditty8
-	callchannel Music_GymLeaderBattleSwSh_Ch4_ditty8
-	callchannel Music_GymLeaderBattleSwSh_Ch4_ditty8
-	callchannel Music_GymLeaderBattleSwSh_Ch4_ditty8
+	sound_call Music_GymLeaderBattleSwSh_Ch4_ditty8
+	sound_call Music_GymLeaderBattleSwSh_Ch4_ditty8
+	sound_call Music_GymLeaderBattleSwSh_Ch4_ditty8
+	sound_call Music_GymLeaderBattleSwSh_Ch4_ditty8
 	sound_jump_if COND_DEFAULT, Music_GymLeaderBattleSwSh_Ch4_NeutralPhase_Loop_2
 	sound_jump_if COND_ADVANTAGE, Music_GymLeaderBattleSwSh_Ch4_AdvantagePhase_Loop_2
 Music_GymLeaderBattleSwSh_Ch4_DisadvantagePhase_Loop_2:
-	callchannel Music_GymLeaderBattleSwSh_Ch4_ditty8
-	callchannel Music_GymLeaderBattleSwSh_Ch4_ditty8
-	callchannel Music_GymLeaderBattleSwSh_Ch4_ditty8
-	callchannel Music_GymLeaderBattleSwSh_Ch4_ditty8
+	sound_call Music_GymLeaderBattleSwSh_Ch4_ditty8
+	sound_call Music_GymLeaderBattleSwSh_Ch4_ditty8
+	sound_call Music_GymLeaderBattleSwSh_Ch4_ditty8
+	sound_call Music_GymLeaderBattleSwSh_Ch4_ditty8
 	sound_jump_if COND_DEFAULT, Music_GymLeaderBattleSwSh_Ch4_NeutralPhase_Loop_3
 	sound_jump_if COND_ADVANTAGE, Music_GymLeaderBattleSwSh_Ch4_AdvantagePhase_Loop_3
 Music_GymLeaderBattleSwSh_Ch4_DisadvantagePhase_Loop_3:
-	callchannel Music_GymLeaderBattleSwSh_Ch4_ditty8
-	callchannel Music_GymLeaderBattleSwSh_Ch4_ditty8
-	callchannel Music_GymLeaderBattleSwSh_Ch4_ditty8
-	callchannel Music_GymLeaderBattleSwSh_Ch4_ditty8
+	sound_call Music_GymLeaderBattleSwSh_Ch4_ditty8
+	sound_call Music_GymLeaderBattleSwSh_Ch4_ditty8
+	sound_call Music_GymLeaderBattleSwSh_Ch4_ditty8
+	sound_call Music_GymLeaderBattleSwSh_Ch4_ditty8
 	sound_jump_if COND_DEFAULT, Music_GymLeaderBattleSwSh_Ch4_NeutralPhase_Loop_4
 	sound_jump_if COND_ADVANTAGE, Music_GymLeaderBattleSwSh_Ch4_AdvantagePhase_Loop_4
 Music_GymLeaderBattleSwSh_Ch4_DisadvantagePhase_Loop_4:
-	callchannel Music_GymLeaderBattleSwSh_Ch4_ditty8
-	callchannel Music_GymLeaderBattleSwSh_Ch4_ditty8
-	callchannel Music_GymLeaderBattleSwSh_Ch4_ditty8
-	callchannel Music_GymLeaderBattleSwSh_Ch4_ditty8
+	sound_call Music_GymLeaderBattleSwSh_Ch4_ditty8
+	sound_call Music_GymLeaderBattleSwSh_Ch4_ditty8
+	sound_call Music_GymLeaderBattleSwSh_Ch4_ditty8
+	sound_call Music_GymLeaderBattleSwSh_Ch4_ditty8
 	sound_jump Music_GymLeaderBattleSwSh_Ch4_DisadvantagePhase_Loop
 
 ; Advantage/Last Pokemon Intros - This could be its own song.
@@ -515,19 +515,19 @@ Music_GymLeaderBattleSwSh_Ch2_EnterLastPokemonPhase:
 	duty_cycle 3
 	volume_envelope 12, 1
 	vibrato $0, $0
-	callchannel Music_GymLeaderBattleSwSh_Ch2_ditty6
+	sound_call Music_GymLeaderBattleSwSh_Ch2_ditty6
 	note B_, 2
 	octave 4
-	callchannel Music_GymLeaderBattleSwSh_Ch2_ditty6
+	sound_call Music_GymLeaderBattleSwSh_Ch2_ditty6
 	note B_, 2
 ;Last Pokemon Loop
 Music_GymLeaderBattleSwSh_Ch2_LastPokemonPhase_Loop:
 	duty_cycle 1
 	volume_envelope 12, 4
 	stereo_panning TRUE, TRUE
-	callchannel Music_GymLeaderBattleSwSh_Ch2_ditty9
-	callchannel Music_GymLeaderBattleSwSh_Ch2_ditty9
-	callchannel Music_GymLeaderBattleSwSh_Ch2_ditty9
+	sound_call Music_GymLeaderBattleSwSh_Ch2_ditty9
+	sound_call Music_GymLeaderBattleSwSh_Ch2_ditty9
+	sound_call Music_GymLeaderBattleSwSh_Ch2_ditty9
 	octave 5
 	note D_, 8
 	octave 4
@@ -550,12 +550,12 @@ Music_GymLeaderBattleSwSh_Ch2_LastPokemonPhase_Loop:
 	duty_cycle 2
 	volume_envelope 11, 2
 	octave 3
-	callchannel Music_GymLeaderBattleSwSh_Ch2_ditty10
-	callchannel Music_GymLeaderBattleSwSh_Ch2_ditty10
-	callchannel Music_GymLeaderBattleSwSh_Ch2_ditty10
-	callchannel Music_GymLeaderBattleSwSh_Ch2_ditty10
-	callchannel Music_GymLeaderBattleSwSh_Ch2_ditty10
-	callchannel Music_GymLeaderBattleSwSh_Ch2_ditty10
+	sound_call Music_GymLeaderBattleSwSh_Ch2_ditty10
+	sound_call Music_GymLeaderBattleSwSh_Ch2_ditty10
+	sound_call Music_GymLeaderBattleSwSh_Ch2_ditty10
+	sound_call Music_GymLeaderBattleSwSh_Ch2_ditty10
+	sound_call Music_GymLeaderBattleSwSh_Ch2_ditty10
+	sound_call Music_GymLeaderBattleSwSh_Ch2_ditty10
 	sound_jump Music_GymLeaderBattleSwSh_Ch2_LastPokemonPhase_Loop
 
 ; Advantage/Last Pokemon Intro
@@ -580,32 +580,32 @@ Music_GymLeaderBattleSwSh_Ch1_EnterLastPokemonPhase:
 	duty_cycle 3
 	volume_envelope 12, 1
 	vibrato $0, $0
-	callchannel Music_GymLeaderBattleSwSh_Ch1_ditty4
-	callchannel Music_GymLeaderBattleSwSh_Ch1_ditty5
+	sound_call Music_GymLeaderBattleSwSh_Ch1_ditty4
+	sound_call Music_GymLeaderBattleSwSh_Ch1_ditty5
 ;Last Pokemon Loop
 Music_GymLeaderBattleSwSh_Ch1_LastPokemonPhase_Loop:
 	note __, 2
 	duty_cycle 1
 	volume_envelope 12, 7
 	stereo_panning TRUE, TRUE
-	callchannel Music_GymLeaderBattleSwSh_Ch2_ditty7
+	sound_call Music_GymLeaderBattleSwSh_Ch2_ditty7
 	note __, 3
-	callchannel Music_GymLeaderBattleSwSh_Ch2_ditty7
+	sound_call Music_GymLeaderBattleSwSh_Ch2_ditty7
 	note __, 1
 	duty_cycle 2
 	volume_envelope 11, 2
-	callchannel Music_GymLeaderBattleSwSh_Ch2_ditty8
-	callchannel Music_GymLeaderBattleSwSh_Ch2_ditty8
+	sound_call Music_GymLeaderBattleSwSh_Ch2_ditty8
+	sound_call Music_GymLeaderBattleSwSh_Ch2_ditty8
 	duty_cycle 1
 	volume_envelope 12, 4
 	octave 4
-	callchannel Music_GymLeaderBattleSwSh_Ch1_ditty8
-	callchannel Music_GymLeaderBattleSwSh_Ch1_ditty8
-	callchannel Music_GymLeaderBattleSwSh_Ch1_ditty9
-	callchannel Music_GymLeaderBattleSwSh_Ch1_ditty9
-	callchannel Music_GymLeaderBattleSwSh_Ch1_ditty10
+	sound_call Music_GymLeaderBattleSwSh_Ch1_ditty8
+	sound_call Music_GymLeaderBattleSwSh_Ch1_ditty8
+	sound_call Music_GymLeaderBattleSwSh_Ch1_ditty9
+	sound_call Music_GymLeaderBattleSwSh_Ch1_ditty9
+	sound_call Music_GymLeaderBattleSwSh_Ch1_ditty10
 	octave 4
-	callchannel Music_GymLeaderBattleSwSh_Ch1_ditty10
+	sound_call Music_GymLeaderBattleSwSh_Ch1_ditty10
 	sound_jump Music_GymLeaderBattleSwSh_Ch1_LastPokemonPhase_Loop
 
 
@@ -616,40 +616,40 @@ Music_GymLeaderBattleSwSh_Ch3_EnterLastPokemonPhase:
 	note __, 16
 	note __, 16
 	octave 2
-	callchannel Music_GymLeaderBattleSwSh_Ch3_ditty4
-	callchannel Music_GymLeaderBattleSwSh_Ch3_ditty4
+	sound_call Music_GymLeaderBattleSwSh_Ch3_ditty4
+	sound_call Music_GymLeaderBattleSwSh_Ch3_ditty4
 ;Last Pokemon Loop
 Music_GymLeaderBattleSwSh_Ch3_LastPokemonPhase_Loop:
-	callchannel Music_GymLeaderBattleSwSh_Ch3_ditty5
-	callchannel Music_GymLeaderBattleSwSh_Ch3_ditty5
-	callchannel Music_GymLeaderBattleSwSh_Ch3_ditty5
-	callchannel Music_GymLeaderBattleSwSh_Ch3_ditty5
-	callchannel Music_GymLeaderBattleSwSh_Ch3_ditty6
-	callchannel Music_GymLeaderBattleSwSh_Ch3_ditty6
-	callchannel Music_GymLeaderBattleSwSh_Ch3_ditty6
-	callchannel Music_GymLeaderBattleSwSh_Ch3_ditty6
-	callchannel Music_GymLeaderBattleSwSh_Ch3_ditty7
-	callchannel Music_GymLeaderBattleSwSh_Ch3_ditty7
+	sound_call Music_GymLeaderBattleSwSh_Ch3_ditty5
+	sound_call Music_GymLeaderBattleSwSh_Ch3_ditty5
+	sound_call Music_GymLeaderBattleSwSh_Ch3_ditty5
+	sound_call Music_GymLeaderBattleSwSh_Ch3_ditty5
+	sound_call Music_GymLeaderBattleSwSh_Ch3_ditty6
+	sound_call Music_GymLeaderBattleSwSh_Ch3_ditty6
+	sound_call Music_GymLeaderBattleSwSh_Ch3_ditty6
+	sound_call Music_GymLeaderBattleSwSh_Ch3_ditty6
+	sound_call Music_GymLeaderBattleSwSh_Ch3_ditty7
+	sound_call Music_GymLeaderBattleSwSh_Ch3_ditty7
 	sound_jump Music_GymLeaderBattleSwSh_Ch3_LastPokemonPhase_Loop
 
 
 ; Advantage/Last Pokemon Intro
 Music_GymLeaderBattleSwSh_Ch4_EnterLastPokemonPhase:
-	callchannel Music_GymLeaderBattleSwSh_Ch4_ditty5
-	callchannel Music_GymLeaderBattleSwSh_Ch4_ditty2
-	callchannel Music_GymLeaderBattleSwSh_Ch4_ditty2
+	sound_call Music_GymLeaderBattleSwSh_Ch4_ditty5
+	sound_call Music_GymLeaderBattleSwSh_Ch4_ditty2
+	sound_call Music_GymLeaderBattleSwSh_Ch4_ditty2
 ;Last Pokemon Loop
 Music_GymLeaderBattleSwSh_Ch4_LastPokemonPhase_Loop:
-	callchannel Music_GymLeaderBattleSwSh_Ch4_ditty3
-	callchannel Music_GymLeaderBattleSwSh_Ch4_ditty3
-	callchannel Music_GymLeaderBattleSwSh_Ch4_ditty6
-	callchannel Music_GymLeaderBattleSwSh_Ch4_ditty6
-	callchannel Music_GymLeaderBattleSwSh_Ch4_ditty7
-	callchannel Music_GymLeaderBattleSwSh_Ch4_ditty7
-	callchannel Music_GymLeaderBattleSwSh_Ch4_ditty7
-	callchannel Music_GymLeaderBattleSwSh_Ch4_ditty7
-	callchannel Music_GymLeaderBattleSwSh_Ch4_ditty7
-	callchannel Music_GymLeaderBattleSwSh_Ch4_ditty7
+	sound_call Music_GymLeaderBattleSwSh_Ch4_ditty3
+	sound_call Music_GymLeaderBattleSwSh_Ch4_ditty3
+	sound_call Music_GymLeaderBattleSwSh_Ch4_ditty6
+	sound_call Music_GymLeaderBattleSwSh_Ch4_ditty6
+	sound_call Music_GymLeaderBattleSwSh_Ch4_ditty7
+	sound_call Music_GymLeaderBattleSwSh_Ch4_ditty7
+	sound_call Music_GymLeaderBattleSwSh_Ch4_ditty7
+	sound_call Music_GymLeaderBattleSwSh_Ch4_ditty7
+	sound_call Music_GymLeaderBattleSwSh_Ch4_ditty7
+	sound_call Music_GymLeaderBattleSwSh_Ch4_ditty7
 	sound_jump Music_GymLeaderBattleSwSh_Ch4_LastPokemonPhase_Loop
 
 Music_GymLeaderBattleSwSh_Ch2_ditty1:

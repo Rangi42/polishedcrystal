@@ -558,18 +558,18 @@ Music_KantoLegendBattleXY_Ch2_L3:
 	note C#, 1
 	volume_envelope 11, 7
 Music_KantoLegendBattleXY_Ch2_L:
-	callchannel Music_KantoLegendBattleXY_Ch2_P_C
-	callchannel Music_KantoLegendBattleXY_Ch2_P_Dm
-	callchannel Music_KantoLegendBattleXY_Ch2_P_Em
-	callchannel Music_KantoLegendBattleXY_Ch2_P_C
-	callchannel Music_KantoLegendBattleXY_Ch2_P_Dm
-	callchannel Music_KantoLegendBattleXY_Ch2_P_Em
-	callchannel Music_KantoLegendBattleXY_Ch2_P_C2
-	callchannel Music_KantoLegendBattleXY_Ch2_P_C#
-	callchannel Music_KantoLegendBattleXY_Ch2_P_C2
-	callchannel Music_KantoLegendBattleXY_Ch2_P_C2
-	callchannel Music_KantoLegendBattleXY_Ch2_P_C#
-	callchannel Music_KantoLegendBattleXY_Ch2_P_C
+	sound_call Music_KantoLegendBattleXY_Ch2_P_C
+	sound_call Music_KantoLegendBattleXY_Ch2_P_Dm
+	sound_call Music_KantoLegendBattleXY_Ch2_P_Em
+	sound_call Music_KantoLegendBattleXY_Ch2_P_C
+	sound_call Music_KantoLegendBattleXY_Ch2_P_Dm
+	sound_call Music_KantoLegendBattleXY_Ch2_P_Em
+	sound_call Music_KantoLegendBattleXY_Ch2_P_C2
+	sound_call Music_KantoLegendBattleXY_Ch2_P_C#
+	sound_call Music_KantoLegendBattleXY_Ch2_P_C2
+	sound_call Music_KantoLegendBattleXY_Ch2_P_C2
+	sound_call Music_KantoLegendBattleXY_Ch2_P_C#
+	sound_call Music_KantoLegendBattleXY_Ch2_P_C
 	note C_, 2
 	note C_, 2
 	note A#, 4
@@ -582,7 +582,7 @@ Music_KantoLegendBattleXY_Ch2_L:
 	note C_, 4
 	note C_, 2
 	note A#, 4
-	callchannel Music_KantoLegendBattleXY_Ch2_P_C
+	sound_call Music_KantoLegendBattleXY_Ch2_P_C
 	note C_, 2
 	note C_, 2
 	note G_, 2
@@ -603,13 +603,13 @@ Music_KantoLegendBattleXY_Ch2_L:
 	octave 1
 	note G_, 2
 	note F_, 2
-	callchannel Music_KantoLegendBattleXY_Ch2_P_C
-	callchannel Music_KantoLegendBattleXY_Ch2_P_C
-	callchannel Music_KantoLegendBattleXY_Ch2_P_Dm
-	callchannel Music_KantoLegendBattleXY_Ch2_P_Em
-	callchannel Music_KantoLegendBattleXY_Ch2_P_C
-	callchannel Music_KantoLegendBattleXY_Ch2_P_Dm
-	callchannel Music_KantoLegendBattleXY_Ch2_P_Em
+	sound_call Music_KantoLegendBattleXY_Ch2_P_C
+	sound_call Music_KantoLegendBattleXY_Ch2_P_C
+	sound_call Music_KantoLegendBattleXY_Ch2_P_Dm
+	sound_call Music_KantoLegendBattleXY_Ch2_P_Em
+	sound_call Music_KantoLegendBattleXY_Ch2_P_C
+	sound_call Music_KantoLegendBattleXY_Ch2_P_Dm
+	sound_call Music_KantoLegendBattleXY_Ch2_P_Em
 	sound_jump Music_KantoLegendBattleXY_Ch2_L
 
 Music_KantoLegendBattleXY_Ch2_P_C:
@@ -825,11 +825,11 @@ Music_KantoLegendBattleXY_Ch3:
 	note G_, 1
 	octave 4
 	note G_, 1
-	callchannel Music_KantoLegendBattleXY_Ch3_P1
+	sound_call Music_KantoLegendBattleXY_Ch3_P1
 Music_KantoLegendBattleXY_Ch3_L:
 	volume_envelope 1, 4
-	callchannel Music_KantoLegendBattleXY_Ch3_P1
-	callchannel Music_KantoLegendBattleXY_Ch3_P1
+	sound_call Music_KantoLegendBattleXY_Ch3_P1
+	sound_call Music_KantoLegendBattleXY_Ch3_P1
 	volume_envelope 2, 6
 	note C#, 1
 	note D_, 1

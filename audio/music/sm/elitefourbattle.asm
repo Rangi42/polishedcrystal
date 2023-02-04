@@ -20,23 +20,23 @@ Music_EliteFourBattleSM_Ch1:
 	note __, 16
 	note __, 16
 	note __, 16
-	callchannel Music_EliteFourBattleSM_Ch1_branch_1
+	sound_call Music_EliteFourBattleSM_Ch1_branch_1
 	volume_envelope 2, 2
-	callchannel Music_EliteFourBattleSM_Ch1_branch_1
+	sound_call Music_EliteFourBattleSM_Ch1_branch_1
 	volume_envelope 3, 1
-	callchannel Music_EliteFourBattleSM_Ch1_branch_1
+	sound_call Music_EliteFourBattleSM_Ch1_branch_1
 	volume_envelope 4, 1
-	callchannel Music_EliteFourBattleSM_Ch1_branch_1
+	sound_call Music_EliteFourBattleSM_Ch1_branch_1
 	volume_envelope 5, 1
-	callchannel Music_EliteFourBattleSM_Ch1_branch_1
+	sound_call Music_EliteFourBattleSM_Ch1_branch_1
 	volume_envelope 6, 1
-	callchannel Music_EliteFourBattleSM_Ch1_branch_1
+	sound_call Music_EliteFourBattleSM_Ch1_branch_1
 	volume_envelope 7, 1
-	callchannel Music_EliteFourBattleSM_Ch1_branch_1
+	sound_call Music_EliteFourBattleSM_Ch1_branch_1
 	volume_envelope 8, 1
-	callchannel Music_EliteFourBattleSM_Ch1_branch_1
+	sound_call Music_EliteFourBattleSM_Ch1_branch_1
 	volume_envelope 9, 1
-	callchannel Music_EliteFourBattleSM_Ch1_branch_1
+	sound_call Music_EliteFourBattleSM_Ch1_branch_1
 Music_EliteFourBattleSM_Ch1_loop_main:
 Music_EliteFourBattleSM_Ch1_loop_1:
 	octave 2
@@ -438,9 +438,9 @@ Music_EliteFourBattleSM_Ch2_loop_4:
 
 Music_EliteFourBattleSM_Ch3:
 	octave 2
-	callchannel Music_EliteFourBattleSM_Ch3_branch_1
-	callchannel Music_EliteFourBattleSM_Ch3_branch_1
-	callchannel Music_EliteFourBattleSM_Ch3_branch_1
+	sound_call Music_EliteFourBattleSM_Ch3_branch_1
+	sound_call Music_EliteFourBattleSM_Ch3_branch_1
+	sound_call Music_EliteFourBattleSM_Ch3_branch_1
 Music_EliteFourBattleSM_Ch3_loop_main:
 Music_EliteFourBattleSM_Ch3_loop_1:
 	note_type 6, 1, -1

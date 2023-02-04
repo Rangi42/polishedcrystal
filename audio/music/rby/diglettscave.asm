@@ -174,7 +174,7 @@ Music_DiglettsCaveRBY_Ch3:
 	vibrato 8, 38
 
 Music_DiglettsCaveRBY_branch_7e940:
-	callchannel Music_DiglettsCaveRBY_branch_7e9d1
+	sound_call Music_DiglettsCaveRBY_branch_7e9d1
 	sound_loop 16, Music_DiglettsCaveRBY_branch_7e940
 	note E_, 4
 	note __, 4
@@ -266,14 +266,14 @@ Music_DiglettsCaveRBY_branch_7e958:
 	note __, 16
 	note __, 16
 	note __, 16
-	callchannel Music_DiglettsCaveRBY_branch_7e9d1
-	callchannel Music_DiglettsCaveRBY_branch_7e9d1
-	callchannel Music_DiglettsCaveRBY_branch_7e9d1
-	callchannel Music_DiglettsCaveRBY_branch_7e9d1
-	callchannel Music_DiglettsCaveRBY_branch_7e9d1
-	callchannel Music_DiglettsCaveRBY_branch_7e9d1
-	callchannel Music_DiglettsCaveRBY_branch_7e9d1
-	callchannel Music_DiglettsCaveRBY_branch_7e9d1
+	sound_call Music_DiglettsCaveRBY_branch_7e9d1
+	sound_call Music_DiglettsCaveRBY_branch_7e9d1
+	sound_call Music_DiglettsCaveRBY_branch_7e9d1
+	sound_call Music_DiglettsCaveRBY_branch_7e9d1
+	sound_call Music_DiglettsCaveRBY_branch_7e9d1
+	sound_call Music_DiglettsCaveRBY_branch_7e9d1
+	sound_call Music_DiglettsCaveRBY_branch_7e9d1
+	sound_call Music_DiglettsCaveRBY_branch_7e9d1
 	sound_jump Music_DiglettsCaveRBY_branch_7e940
 	octave 2
 	note G_, 2

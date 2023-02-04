@@ -39,7 +39,7 @@ Music_Clair_branch_1faab:
 	note G_, 4
 Music_Clair_branch_1fac9:
 	volume_envelope 9, 3
-	callchannel Music_Clair_branch_1fb12
+	sound_call Music_Clair_branch_1fb12
 	octave 2
 	note B_, 1
 	octave 3
@@ -53,7 +53,7 @@ Music_Clair_branch_1fac9:
 	octave 2
 	note A#, 1
 	note G_, 1
-	callchannel Music_Clair_branch_1fb12
+	sound_call Music_Clair_branch_1fb12
 	note D#, 1
 	note C#, 1
 	note D#, 2
@@ -65,7 +65,7 @@ Music_Clair_branch_1fac9:
 	note A#, 1
 	octave 5
 	note D#, 1
-	callchannel Music_Clair_branch_1fb2e
+	sound_call Music_Clair_branch_1fb2e
 	duty_cycle 3
 	note G#, 3
 	note F_, 2
@@ -79,7 +79,7 @@ Music_Clair_branch_1fac9:
 	note A#, 1
 	octave 5
 	note D#, 1
-	callchannel Music_Clair_branch_1fb2e
+	sound_call Music_Clair_branch_1fb2e
 	duty_cycle 3
 	note D#, 3
 	note C#, 2
@@ -187,7 +187,7 @@ Music_Clair_branch_1fb49:
 	note A#, 2
 	volume_envelope 11, 7
 Music_Clair_branch_1fb77:
-	callchannel Music_Clair_branch_1fba6
+	sound_call Music_Clair_branch_1fba6
 	note F#, 2
 	note __, 4
 	note D#, 12
@@ -205,7 +205,7 @@ Music_Clair_branch_1fb77:
 	note A#, 16
 	note __, 4
 	transpose 0, 12
-	callchannel Music_Clair_branch_1fba6
+	sound_call Music_Clair_branch_1fba6
 	transpose 0, 0
 	octave 5
 	note F#, 2
@@ -270,7 +270,7 @@ Music_Clair_Ch3:
 	note G#, 4
 	note G_, 4
 Music_Clair_branch_1fbd1:
-	callchannel Music_Clair_branch_1fc3c
+	sound_call Music_Clair_branch_1fc3c
 	octave 2
 	note C#, 2
 	note __, 1
@@ -281,7 +281,7 @@ Music_Clair_branch_1fbd1:
 	note D#, 2
 	note A#, 2
 	note D#, 2
-	callchannel Music_Clair_branch_1fc3c
+	sound_call Music_Clair_branch_1fc3c
 	octave 2
 	note G#, 2
 	note __, 1
@@ -406,10 +406,10 @@ Music_Clair_Ch4:
 	note D_, 1
 Music_Clair_branch_1fc5e:
 	stereo_panning TRUE, TRUE
-	callchannel Music_Clair_branch_1fc6e
+	sound_call Music_Clair_branch_1fc6e
 	note G_, 1
 	stereo_panning TRUE, TRUE
-	callchannel Music_Clair_branch_1fc6e
+	sound_call Music_Clair_branch_1fc6e
 	note F#, 1
 	sound_jump Music_Clair_branch_1fc5e
 

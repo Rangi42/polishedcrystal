@@ -75,7 +75,7 @@ Music_CianwoodCityHGSS_branch_ef2e5:
 	note C#, 4
 	note __, 8
 	volume_envelope 5, 2
-	callchannel Music_CianwoodCityHGSS_branch_ef37f
+	sound_call Music_CianwoodCityHGSS_branch_ef37f
 	note G#, 2
 	note F_, 2
 	note D#, 2
@@ -92,7 +92,7 @@ Music_CianwoodCityHGSS_branch_ef2e5:
 	note F_, 2
 	note D#, 2
 	note F_, 2
-	callchannel Music_CianwoodCityHGSS_branch_ef391
+	sound_call Music_CianwoodCityHGSS_branch_ef391
 	octave 5
 	volume_envelope 5, 2
 	note E_, 2
@@ -116,7 +116,7 @@ Music_CianwoodCityHGSS_branch_ef2e5:
 	note A#, 2
 	note G_, 2
 	octave 4
-	callchannel Music_CianwoodCityHGSS_branch_ef37f
+	sound_call Music_CianwoodCityHGSS_branch_ef37f
 	note G#, 2
 	note F#, 2
 	note D_, 2
@@ -133,7 +133,7 @@ Music_CianwoodCityHGSS_branch_ef2e5:
 	note F#, 2
 	note D_, 2
 	note F#, 2
-	callchannel Music_CianwoodCityHGSS_branch_ef391
+	sound_call Music_CianwoodCityHGSS_branch_ef391
 	sound_jump Music_CianwoodCityHGSS_branch_ef2e5
 
 Music_CianwoodCityHGSS_branch_ef37f:
@@ -539,7 +539,7 @@ Music_CianwoodCityHGSS_branch_ef4e3:
 	note C#, 2
 	note F_, 2
 	note G#, 2
-	callchannel Music_CianwoodCityHGSS_branch_ef569
+	sound_call Music_CianwoodCityHGSS_branch_ef569
 	note F#, 8
 	note A#, 8
 	octave 4
@@ -551,7 +551,7 @@ Music_CianwoodCityHGSS_branch_ef4e3:
 	note A#, 8
 	note G_, 8
 	note_type 12, 2, 5
-	callchannel Music_CianwoodCityHGSS_branch_ef569
+	sound_call Music_CianwoodCityHGSS_branch_ef569
 	note F#, 8
 	note C#, 8
 	octave 2

@@ -25,17 +25,17 @@ Music_Evolution_Ch1:
 	duty_cycle 3
 	stereo_panning FALSE, TRUE
 Music_Evolution_branch_f0713:
-	callchannel Music_Evolution_branch_f0737
+	sound_call Music_Evolution_branch_f0737
 	note_type 12, 10, 4
 	note F#, 4
-	callchannel Music_Evolution_branch_f0737
+	sound_call Music_Evolution_branch_f0737
 	note_type 12, 10, 4
 	note F#, 4
 	sound_loop 2, Music_Evolution_branch_f0713
-	callchannel Music_Evolution_branch_f0743
+	sound_call Music_Evolution_branch_f0743
 	note_type 12, 10, 4
 	note G#, 4
-	callchannel Music_Evolution_branch_f0743
+	sound_call Music_Evolution_branch_f0743
 	note_type 12, 10, 4
 	note G#, 4
 	sound_jump Music_Evolution_branch_f0713
@@ -77,17 +77,17 @@ Music_Evolution_Ch2:
 	duty_cycle 3
 	stereo_panning TRUE, FALSE
 Music_Evolution_branch_f0761:
-	callchannel Music_Evolution_branch_f0787
+	sound_call Music_Evolution_branch_f0787
 	note_type 12, 11, 5
 	note A_, 4
-	callchannel Music_Evolution_branch_f0787
+	sound_call Music_Evolution_branch_f0787
 	note_type 12, 11, 5
 	note B_, 4
 	sound_loop 2, Music_Evolution_branch_f0761
-	callchannel Music_Evolution_branch_f0793
+	sound_call Music_Evolution_branch_f0793
 	note_type 12, 11, 5
 	note B_, 4
-	callchannel Music_Evolution_branch_f0793
+	sound_call Music_Evolution_branch_f0793
 	note_type 12, 11, 5
 	octave 4
 	note C#, 4
@@ -122,17 +122,17 @@ Music_Evolution_Ch3:
 	note_type 12, 1, 6
 	note __, 8
 Music_Evolution_branch_f07a3:
-	callchannel Music_Evolution_branch_f07bf
+	sound_call Music_Evolution_branch_f07bf
 	octave 3
 	note A_, 4
-	callchannel Music_Evolution_branch_f07bf
+	sound_call Music_Evolution_branch_f07bf
 	octave 3
 	note B_, 4
 	sound_loop 2, Music_Evolution_branch_f07a3
-	callchannel Music_Evolution_branch_f07d5
+	sound_call Music_Evolution_branch_f07d5
 	octave 3
 	note B_, 4
-	callchannel Music_Evolution_branch_f07d5
+	sound_call Music_Evolution_branch_f07d5
 	octave 4
 	note C#, 4
 	sound_jump Music_Evolution_branch_f07a3

@@ -21,10 +21,10 @@ Music_Route47HGSS_Ch1:
 Music_Route47HGSS_Ch1_loop_main:
 	note_type 6, 8, 2
 Music_Route47HGSS_Ch1_loop_1:
-	callchannel Music_Route47HGSS_Ch1_branch_1
-	callchannel Music_Route47HGSS_Ch1_branch_1
-	callchannel Music_Route47HGSS_Ch1_branch_1
-	callchannel Music_Route47HGSS_Ch1_branch_1
+	sound_call Music_Route47HGSS_Ch1_branch_1
+	sound_call Music_Route47HGSS_Ch1_branch_1
+	sound_call Music_Route47HGSS_Ch1_branch_1
+	sound_call Music_Route47HGSS_Ch1_branch_1
 	volume_envelope 8, 2
 	octave 4
 	note C_, 2
@@ -52,12 +52,12 @@ Music_Route47HGSS_Ch1_loop_1:
 	note E_, 2
 	note C_, 2
 	note F_, 2
-	callchannel Music_Route47HGSS_Ch1_branch_2
+	sound_call Music_Route47HGSS_Ch1_branch_2
 	note A_, 2
 	note F_, 2
 	octave 4
 	note C_, 2
-	callchannel Music_Route47HGSS_Ch1_branch_2
+	sound_call Music_Route47HGSS_Ch1_branch_2
 	octave 4
 	note C_, 2
 	octave 3
@@ -67,12 +67,12 @@ Music_Route47HGSS_Ch1_loop_1:
 	note F_, 2
 	note G_, 2
 	note F_, 2
-	callchannel Music_Route47HGSS_Ch1_branch_2
+	sound_call Music_Route47HGSS_Ch1_branch_2
 	note C_, 2
 	octave 2
 	note A#, 2
 	note A_, 2
-	callchannel Music_Route47HGSS_Ch1_branch_2
+	sound_call Music_Route47HGSS_Ch1_branch_2
 	octave 2
 	note G_, 2
 	note F_, 2
@@ -83,7 +83,7 @@ Music_Route47HGSS_Ch1_loop_1:
 	note A#, 2
 	note A_, 2
 	note G_, 2
-	callchannel Music_Route47HGSS_Ch1_branch_2
+	sound_call Music_Route47HGSS_Ch1_branch_2
 	octave 3
 	note C_, 2
 	note D_, 2
@@ -91,7 +91,7 @@ Music_Route47HGSS_Ch1_loop_1:
 	note F_, 2
 	note G_, 2
 	note A_, 2
-	callchannel Music_Route47HGSS_Ch1_branch_2
+	sound_call Music_Route47HGSS_Ch1_branch_2
 	note G_, 2
 	note F_, 2
 	octave 2
@@ -1095,19 +1095,19 @@ Music_Route47HGSS_Ch4:
 	note_type 12
 Music_Route47HGSS_Ch4_loop_main:
 	note __, 5
-	callchannel Music_Route47HGSS_Ch4_branch_1
+	sound_call Music_Route47HGSS_Ch4_branch_1
 	note B_, 16
 	note __, 16
 	note B_, 16
 	note __, 13
-	callchannel Music_Route47HGSS_Ch4_branch_1
+	sound_call Music_Route47HGSS_Ch4_branch_1
 	note B_, 3
-	callchannel Music_Route47HGSS_Ch4_branch_2
+	sound_call Music_Route47HGSS_Ch4_branch_2
 Music_Route47HGSS_Ch4_loop_1:
 	note C_, 1
 	note C#, 1
 	note C#, 1
-	callchannel Music_Route47HGSS_Ch4_branch_2
+	sound_call Music_Route47HGSS_Ch4_branch_2
 	sound_loop 6, Music_Route47HGSS_Ch4_loop_1
 	note C_, 1
 	note C#, 1
@@ -1122,28 +1122,28 @@ Music_Route47HGSS_Ch4_loop_1:
 	note C#, 1
 	note __, 4
 	note B_, 3
-	callchannel Music_Route47HGSS_Ch4_branch_2
+	sound_call Music_Route47HGSS_Ch4_branch_2
 Music_Route47HGSS_Ch4_loop_2:
 	note C_, 1
 	note C#, 1
 	note C#, 1
-	callchannel Music_Route47HGSS_Ch4_branch_2
+	sound_call Music_Route47HGSS_Ch4_branch_2
 	sound_loop 7, Music_Route47HGSS_Ch4_loop_2
 	note B_, 3
 	note C#, 1
 	note C#, 2
 	note C#, 1
 	note C#, 9
-	callchannel Music_Route47HGSS_Ch4_branch_3
-	callchannel Music_Route47HGSS_Ch4_branch_3
-	callchannel Music_Route47HGSS_Ch4_branch_3
-	callchannel Music_Route47HGSS_Ch4_branch_4
+	sound_call Music_Route47HGSS_Ch4_branch_3
+	sound_call Music_Route47HGSS_Ch4_branch_3
+	sound_call Music_Route47HGSS_Ch4_branch_3
+	sound_call Music_Route47HGSS_Ch4_branch_4
 	note __, 8
-	callchannel Music_Route47HGSS_Ch4_branch_4
+	sound_call Music_Route47HGSS_Ch4_branch_4
 	note __, 8
-	callchannel Music_Route47HGSS_Ch4_branch_4
+	sound_call Music_Route47HGSS_Ch4_branch_4
 	note __, 8
-	callchannel Music_Route47HGSS_Ch4_branch_4
+	sound_call Music_Route47HGSS_Ch4_branch_4
 	sound_jump Music_Route47HGSS_Ch4_loop_main
 
 Music_Route47HGSS_Ch4_branch_1:

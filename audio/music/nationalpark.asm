@@ -14,10 +14,10 @@ Music_NationalPark_Ch1:
 	note_type 12, 7, 7
 	note __, 2
 Music_NationalPark_branch_f5504:
-	callchannel Music_NationalPark_branch_f554a
-	callchannel Music_NationalPark_branch_f554a
+	sound_call Music_NationalPark_branch_f554a
+	sound_call Music_NationalPark_branch_f554a
 	note_type 6, 6, 7
-	callchannel Music_NationalPark_branch_f563a
+	sound_call Music_NationalPark_branch_f563a
 	note_type 12, 7, 7
 	note __, 16
 	octave 2
@@ -45,7 +45,7 @@ Music_NationalPark_branch_f5504:
 	note __, 3
 	note D_, 1
 	note __, 1
-	callchannel Music_NationalPark_branch_f563a
+	sound_call Music_NationalPark_branch_f563a
 	volume_envelope 7, 7
 	octave 3
 	note E_, 1
@@ -304,10 +304,10 @@ Music_NationalPark_Ch2:
 	stereo_panning TRUE, FALSE
 Music_NationalPark_branch_f565d:
 	note_type 12, 10, 7
-	callchannel Music_NationalPark_branch_f56b8
+	sound_call Music_NationalPark_branch_f56b8
 	octave 3
 	note D_, 8
-	callchannel Music_NationalPark_branch_f56b8
+	sound_call Music_NationalPark_branch_f56b8
 	note __, 2
 	volume_envelope 10, 7
 	octave 4
@@ -315,7 +315,7 @@ Music_NationalPark_branch_f565d:
 	note F#, 2
 	note F_, 2
 	note_type 6, 10, 7
-	callchannel Music_NationalPark_branch_f56f5
+	sound_call Music_NationalPark_branch_f56f5
 	octave 3
 	note B_, 1
 	octave 4
@@ -347,7 +347,7 @@ Music_NationalPark_branch_f565d:
 	note G#, 1
 	note __, 1
 	volume_envelope 10, 7
-	callchannel Music_NationalPark_branch_f56f5
+	sound_call Music_NationalPark_branch_f56f5
 	octave 3
 	note B_, 1
 	octave 4
@@ -486,24 +486,24 @@ Music_NationalPark_Ch3:
 	note A#, 1
 	stereo_panning TRUE, TRUE
 Music_NationalPark_branch_f572e:
-	callchannel Music_NationalPark_branch_f5756
+	sound_call Music_NationalPark_branch_f5756
 	octave 5
 	note A#, 14
 	octave 4
 	note G#, 1
 	note A#, 1
-	callchannel Music_NationalPark_branch_f5756
+	sound_call Music_NationalPark_branch_f5756
 	octave 5
 	note A#, 8
 	octave 4
 	note D_, 8
 	volume_envelope 1, 5
-	callchannel Music_NationalPark_branch_f578f
+	sound_call Music_NationalPark_branch_f578f
 	octave 4
 	note D_, 1
 	octave 3
 	note F_, 3
-	callchannel Music_NationalPark_branch_f578f
+	sound_call Music_NationalPark_branch_f578f
 	octave 4
 	note D_, 1
 	octave 3

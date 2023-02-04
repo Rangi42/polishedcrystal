@@ -23,7 +23,7 @@ Music_DarkCave_branch_ea2dc:
 	note C_, 16
 	volume_envelope 10, 3
 Music_DarkCave_branch_ea2e8:
-	callchannel Music_DarkCave_branch_ea333
+	sound_call Music_DarkCave_branch_ea333
 	sound_loop 3, Music_DarkCave_branch_ea2e8
 	volume_envelope 11, 7
 	note G#, 8
@@ -44,7 +44,7 @@ Music_DarkCave_branch_ea2e8:
 	note C_, 8
 	volume_envelope 10, 3
 Music_DarkCave_branch_ea303:
-	callchannel Music_DarkCave_branch_ea333
+	sound_call Music_DarkCave_branch_ea333
 	sound_loop 2, Music_DarkCave_branch_ea303
 	note __, 16
 	note __, 8
@@ -75,7 +75,7 @@ Music_DarkCave_branch_ea303:
 	note G#, 4
 	volume_envelope 10, 3
 Music_DarkCave_branch_ea328:
-	callchannel Music_DarkCave_branch_ea333
+	sound_call Music_DarkCave_branch_ea333
 	sound_loop 2, Music_DarkCave_branch_ea328
 	sound_jump Music_DarkCave_branch_ea2e8
 
@@ -349,12 +349,12 @@ Music_DarkCave_branch_ea37e:
 Music_DarkCave_Ch3:
 	note_type 12, 2, 7
 Music_DarkCave_branch_ea471:
-	callchannel Music_DarkCave_branch_ea4ce
+	sound_call Music_DarkCave_branch_ea4ce
 	sound_loop 2, Music_DarkCave_branch_ea471
 Music_DarkCave_branch_ea478:
-	callchannel Music_DarkCave_branch_ea4ce
+	sound_call Music_DarkCave_branch_ea4ce
 	sound_loop 7, Music_DarkCave_branch_ea478
-	callchannel Music_DarkCave_branch_ea4c3
+	sound_call Music_DarkCave_branch_ea4c3
 	octave 3
 	note C_, 4
 	note G_, 2
@@ -365,7 +365,7 @@ Music_DarkCave_branch_ea478:
 	note __, 2
 	octave 2
 	note A#, 12
-	callchannel Music_DarkCave_branch_ea4c3
+	sound_call Music_DarkCave_branch_ea4c3
 	octave 3
 	note C_, 4
 	note G_, 2
@@ -380,8 +380,8 @@ Music_DarkCave_branch_ea478:
 	note C#, 2
 	note C_, 2
 	note C#, 4
-	callchannel Music_DarkCave_branch_ea4a7
-	callchannel Music_DarkCave_branch_ea4a7
+	sound_call Music_DarkCave_branch_ea4a7
+	sound_call Music_DarkCave_branch_ea4a7
 	sound_jump Music_DarkCave_branch_ea478
 
 Music_DarkCave_branch_ea4a7:

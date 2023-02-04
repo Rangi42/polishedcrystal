@@ -22,7 +22,7 @@ Music_TrainerVictory_Ch1:
 	stereo_panning FALSE, TRUE
 Music_TrainerVictory_branch_ebecd:
 	volume_envelope 7, 2
-	callchannel Music_TrainerVictory_branch_ebf11
+	sound_call Music_TrainerVictory_branch_ebf11
 	volume_envelope 5, 1
 	note C#, 2
 	note E_, 2
@@ -39,7 +39,7 @@ Music_TrainerVictory_branch_ebecd:
 	note C#, 2
 	note E_, 6
 	sound_loop 2, Music_TrainerVictory_branch_ebecd
-	callchannel Music_TrainerVictory_branch_ebf11
+	sound_call Music_TrainerVictory_branch_ebf11
 	note A_, 2
 	note __, 2
 	note F_, 2
@@ -101,7 +101,7 @@ Music_TrainerVictory_Ch2:
 	stereo_panning TRUE, FALSE
 Music_TrainerVictory_branch_ebf30:
 	note_type 8, 8, 2
-	callchannel Music_TrainerVictory_branch_ebf56
+	sound_call Music_TrainerVictory_branch_ebf56
 	note F#, 2
 	note __, 2
 	note G_, 2
@@ -111,7 +111,7 @@ Music_TrainerVictory_branch_ebf30:
 	note F#, 2
 	note G_, 6
 	sound_loop 2, Music_TrainerVictory_branch_ebf30
-	callchannel Music_TrainerVictory_branch_ebf56
+	sound_call Music_TrainerVictory_branch_ebf56
 	note F_, 2
 	note __, 2
 	note C_, 2
@@ -157,7 +157,7 @@ Music_TrainerVictory_Ch3:
 	octave 2
 	note B_, 2
 Music_TrainerVictory_branch_ebf74:
-	callchannel Music_TrainerVictory_branch_ebfb1
+	sound_call Music_TrainerVictory_branch_ebfb1
 	octave 3
 	note C#, 2
 	note __, 2
@@ -173,7 +173,7 @@ Music_TrainerVictory_branch_ebf74:
 	note __, 1
 	note A_, 6
 	sound_loop 2, Music_TrainerVictory_branch_ebf74
-	callchannel Music_TrainerVictory_branch_ebfb1
+	sound_call Music_TrainerVictory_branch_ebfb1
 	octave 3
 	note C_, 2
 	note __, 2

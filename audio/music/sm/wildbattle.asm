@@ -1000,9 +1000,9 @@ Music_WildBattleSM_Ch4_loop_main:
 	note D#, 2
 	note B_, 4
 	note D#, 2
-	callchannel Music_WildBattleSM_Ch4_branch_1
+	sound_call Music_WildBattleSM_Ch4_branch_1
 	note D#, 2
-	callchannel Music_WildBattleSM_Ch4_branch_1
+	sound_call Music_WildBattleSM_Ch4_branch_1
 	note C_, 1
 	note C_, 1
 	note D#, 3

@@ -319,7 +319,7 @@ Music_WhiteTreehollowWhite2_Ch1_loop:
 	note F#, 2
 	note F_, 2
 	note E_, 2
-	callchannel Music_WhiteTreehollowWhite2_Ch1_branch_1
+	sound_call Music_WhiteTreehollowWhite2_Ch1_branch_1
 	note __, 8
 	octave 6
 	note G_, 2
@@ -335,7 +335,7 @@ Music_WhiteTreehollowWhite2_Ch1_loop:
 	note A#, 2
 	note A_, 2
 	note G#, 2
-	callchannel Music_WhiteTreehollowWhite2_Ch1_branch_1
+	sound_call Music_WhiteTreehollowWhite2_Ch1_branch_1
 	note __, 8
 	octave 6
 	note A#, 2
@@ -351,7 +351,7 @@ Music_WhiteTreehollowWhite2_Ch1_loop:
 	note C_, 2
 	octave 5
 	note B_, 2
-	callchannel Music_WhiteTreehollowWhite2_Ch1_branch_1
+	sound_call Music_WhiteTreehollowWhite2_Ch1_branch_1
 	note __, 8
 	octave 7
 	note D#, 2
@@ -367,7 +367,7 @@ Music_WhiteTreehollowWhite2_Ch1_loop:
 	note F#, 2
 	note F_, 2
 	note E_, 2
-	callchannel Music_WhiteTreehollowWhite2_Ch1_branch_1
+	sound_call Music_WhiteTreehollowWhite2_Ch1_branch_1
 	note __, 4
 	note_type 12, 6, 2
 	duty_cycle 3
@@ -637,10 +637,10 @@ Music_WhiteTreehollowWhite2_Ch2_loop:
 	note_type 12, 10, 2
 	note D#, 5
 	duty_cycle 2
-	callchannel Music_WhiteTreehollowWhite2_Ch2_branch_1
+	sound_call Music_WhiteTreehollowWhite2_Ch2_branch_1
 	octave 2
 	note A#, 1
-	callchannel Music_WhiteTreehollowWhite2_Ch2_branch_1
+	sound_call Music_WhiteTreehollowWhite2_Ch2_branch_1
 	octave 2
 	note G_, 1
 	volume_envelope 9, 2

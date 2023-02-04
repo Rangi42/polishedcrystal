@@ -73,9 +73,9 @@ Music_LookOfficer_branch_ed882:
 	note G#, 2
 	sound_loop 2, Music_LookOfficer_branch_ed882
 	transpose 0, 1
-	callchannel Music_LookOfficer_branch_ed89e
+	sound_call Music_LookOfficer_branch_ed89e
 	transpose 0, 0
-	callchannel Music_LookOfficer_branch_ed89e
+	sound_call Music_LookOfficer_branch_ed89e
 	sound_jump Music_LookOfficer_branch_ed882
 
 Music_LookOfficer_branch_ed89e:

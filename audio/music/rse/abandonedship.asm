@@ -262,9 +262,9 @@ Music_AbandonedShipRSE_Ch2:
 	note_type 12, 10, 0
 	note __, 6
 Music_AbandonedShipRSE_Ch2_loop:
-	callchannel Music_AbandonedShipRSE_Ch2_branch_1
+	sound_call Music_AbandonedShipRSE_Ch2_branch_1
 	vibrato $1c, $F2
-	callchannel Music_AbandonedShipRSE_Ch2_branch_1
+	sound_call Music_AbandonedShipRSE_Ch2_branch_1
 	note D#, 2
 	note C#, 2
 	note D#, 2
@@ -615,12 +615,12 @@ Music_AbandonedShipRSE_Ch4:
 	note D_, 1
 Music_AbandonedShipRSE_branch_1:
 	note_type 12
-	callchannel Music_AbandonedShipRSE_branch_eeb6b
+	sound_call Music_AbandonedShipRSE_branch_eeb6b
 	note D_, 1
 	note C#, 1
 	note C#, 1
 	note D_, 1
-	callchannel Music_AbandonedShipRSE_branch_eeb6b
+	sound_call Music_AbandonedShipRSE_branch_eeb6b
 	note_type 6
 	note C#, 1
 	note C#, 1
@@ -635,12 +635,12 @@ Music_AbandonedShipRSE_branch_2:
 	note_type 12
 	note __, 16
 	sound_loop 4, Music_AbandonedShipRSE_branch_2
-	callchannel Music_AbandonedShipRSE_branch_eeb6b
+	sound_call Music_AbandonedShipRSE_branch_eeb6b
 	note D_, 1
 	note C#, 1
 	note C#, 1
 	note D_, 1
-	callchannel Music_AbandonedShipRSE_branch_eeb6b
+	sound_call Music_AbandonedShipRSE_branch_eeb6b
 	note_type 6
 	note C#, 1
 	note C#, 1
@@ -651,7 +651,7 @@ Music_AbandonedShipRSE_branch_2:
 	note D_, 1
 	note D_, 1
 	note_type 12
-	callchannel Music_AbandonedShipRSE_branch_eeb6b
+	sound_call Music_AbandonedShipRSE_branch_eeb6b
 	note D_, 1
 	note C#, 1
 	note C#, 1

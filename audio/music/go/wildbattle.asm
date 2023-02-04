@@ -49,10 +49,10 @@ Music_WildBattleGo_Ch1_loop:
 	note C#, 4
 	note __, 2
 	duty_cycle_pattern 2, 2, 2, 2
-	callchannel Music_WildBattleGo_Ch1_ditty1
-	callchannel Music_WildBattleGo_Ch1_ditty2
-	callchannel Music_WildBattleGo_Ch1_ditty1
-	callchannel Music_WildBattleGo_Ch1_ditty2
+	sound_call Music_WildBattleGo_Ch1_ditty1
+	sound_call Music_WildBattleGo_Ch1_ditty2
+	sound_call Music_WildBattleGo_Ch1_ditty1
+	sound_call Music_WildBattleGo_Ch1_ditty2
 	octave 2
 	note A#, 4
 	note A#, 1
@@ -67,9 +67,9 @@ Music_WildBattleGo_Ch1_loop:
 	note F_, 2
 	note F_, 2
 	octave 3
-	callchannel Music_WildBattleGo_Ch1_ditty2
-	callchannel Music_WildBattleGo_Ch1_ditty1
-	callchannel Music_WildBattleGo_Ch1_ditty1
+	sound_call Music_WildBattleGo_Ch1_ditty2
+	sound_call Music_WildBattleGo_Ch1_ditty1
+	sound_call Music_WildBattleGo_Ch1_ditty1
 	note __, 4
 	duty_cycle_pattern 1, 1, 1, 1
 	volume_envelope 15, 3
@@ -110,7 +110,7 @@ Music_WildBattleGo_Ch1_loop_2:
 	sound_loop 2, Music_WildBattleGo_Ch1_loop_2
 	duty_cycle_pattern 1, 1, 2, 2
 	octave 3
-	callchannel Music_WildBattleGo_Ch2_ditty2
+	sound_call Music_WildBattleGo_Ch2_ditty2
 	sound_jump Music_WildBattleGo_Ch1_loop
 
 Music_WildBattleGo_Ch1_ditty1:
@@ -149,7 +149,7 @@ Music_WildBattleGo_Ch2:
 	duty_cycle_pattern 1, 1, 2, 2
 	volume_envelope 10, 3
 	octave 5
-	callchannel Music_WildBattleGo_Ch2_ditty2
+	sound_call Music_WildBattleGo_Ch2_ditty2
 Music_WildBattleGo_Ch2_loop:
 	note D#, 3
 	note __, 1
@@ -169,7 +169,7 @@ Music_WildBattleGo_Ch2_loop:
 	volume_envelope 10, 8
 	vibrato $08, $13
 	octave 4
-	callchannel Music_WildBattleGo_Ch2_ditty1
+	sound_call Music_WildBattleGo_Ch2_ditty1
 	note G_, 4
 	note F#, 4
 	volume_envelope 11, 7
@@ -180,7 +180,7 @@ Music_WildBattleGo_Ch2_loop:
 	note C_, 8
 	octave 4
 	note G_, 8
-	callchannel Music_WildBattleGo_Ch2_ditty1
+	sound_call Music_WildBattleGo_Ch2_ditty1
 	note A_, 4
 	note B_, 4
 	octave 5
@@ -281,7 +281,7 @@ Music_WildBattleGo_Ch2_loop_1:
 	note __, 5
 	note D_, 1
 	note __, 9
-	callchannel Music_WildBattleGo_Ch2_ditty2
+	sound_call Music_WildBattleGo_Ch2_ditty2
 	sound_jump Music_WildBattleGo_Ch2_loop
 
 Music_WildBattleGo_Ch2_ditty1:
@@ -435,9 +435,9 @@ Music_WildBattleGo_Ch4:
 	note_type 12
 	note __, 4
 	toggle_noise 3
-	callchannel Music_WildBattleGo_Ch4_ditty1
-	callchannel Music_WildBattleGo_Ch4_ditty2
-	callchannel Music_WildBattleGo_Ch4_ditty1
+	sound_call Music_WildBattleGo_Ch4_ditty1
+	sound_call Music_WildBattleGo_Ch4_ditty2
+	sound_call Music_WildBattleGo_Ch4_ditty1
 	note D_, 1
 	note __, 1
 	note C#, 1
@@ -448,26 +448,26 @@ Music_WildBattleGo_Ch4_loop:
 	note C#, 1
 	note G_, 1
 Music_WildBattleGo_Ch4_loop_1:
-	callchannel Music_WildBattleGo_Ch4_ditty1
-	callchannel Music_WildBattleGo_Ch4_ditty2
-	callchannel Music_WildBattleGo_Ch4_ditty1
-	callchannel Music_WildBattleGo_Ch4_ditty3
-	callchannel Music_WildBattleGo_Ch4_ditty1
-	callchannel Music_WildBattleGo_Ch4_ditty2
-	callchannel Music_WildBattleGo_Ch4_ditty1
-	callchannel Music_WildBattleGo_Ch4_ditty2
-	callchannel Music_WildBattleGo_Ch4_ditty1
-	callchannel Music_WildBattleGo_Ch4_ditty2
-	callchannel Music_WildBattleGo_Ch4_ditty1
-	callchannel Music_WildBattleGo_Ch4_ditty2
-	callchannel Music_WildBattleGo_Ch4_ditty1
-	callchannel Music_WildBattleGo_Ch4_ditty2
-	callchannel Music_WildBattleGo_Ch4_ditty1
-	callchannel Music_WildBattleGo_Ch4_ditty2
+	sound_call Music_WildBattleGo_Ch4_ditty1
+	sound_call Music_WildBattleGo_Ch4_ditty2
+	sound_call Music_WildBattleGo_Ch4_ditty1
+	sound_call Music_WildBattleGo_Ch4_ditty3
+	sound_call Music_WildBattleGo_Ch4_ditty1
+	sound_call Music_WildBattleGo_Ch4_ditty2
+	sound_call Music_WildBattleGo_Ch4_ditty1
+	sound_call Music_WildBattleGo_Ch4_ditty2
+	sound_call Music_WildBattleGo_Ch4_ditty1
+	sound_call Music_WildBattleGo_Ch4_ditty2
+	sound_call Music_WildBattleGo_Ch4_ditty1
+	sound_call Music_WildBattleGo_Ch4_ditty2
+	sound_call Music_WildBattleGo_Ch4_ditty1
+	sound_call Music_WildBattleGo_Ch4_ditty2
+	sound_call Music_WildBattleGo_Ch4_ditty1
+	sound_call Music_WildBattleGo_Ch4_ditty2
 	sound_loop 2, Music_WildBattleGo_Ch4_loop_1
-	callchannel Music_WildBattleGo_Ch4_ditty1
-	callchannel Music_WildBattleGo_Ch4_ditty2
-	callchannel Music_WildBattleGo_Ch4_ditty1
+	sound_call Music_WildBattleGo_Ch4_ditty1
+	sound_call Music_WildBattleGo_Ch4_ditty2
+	sound_call Music_WildBattleGo_Ch4_ditty1
 	note D_, 1
 	note __, 1
 	note C#, 1
@@ -477,10 +477,10 @@ Music_WildBattleGo_Ch4_loop_1:
 	note C#, 1
 	note F#, 1
 Music_WildBattleGo_Ch4_loop_2:
-	callchannel Music_WildBattleGo_Ch4_ditty1
-	callchannel Music_WildBattleGo_Ch4_ditty2
+	sound_call Music_WildBattleGo_Ch4_ditty1
+	sound_call Music_WildBattleGo_Ch4_ditty2
 	sound_loop 9, Music_WildBattleGo_Ch4_loop_2
-	callchannel Music_WildBattleGo_Ch4_ditty1
+	sound_call Music_WildBattleGo_Ch4_ditty1
 	note D_, 1
 	note __, 1
 	note C#, 1

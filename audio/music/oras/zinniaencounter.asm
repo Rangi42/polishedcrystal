@@ -181,7 +181,7 @@ Music_ZinniaEncounterORAS_Ch2_loop_main:
 	volume_envelope 11, 0
 	octave 3
 	note C#, 2
-	callchannel Music_ZinniaEncounterORAS_Ch2_branch_1
+	sound_call Music_ZinniaEncounterORAS_Ch2_branch_1
 	note_type 6, 11, 0
 	note C_, 1
 	note C#, 7
@@ -200,7 +200,7 @@ Music_ZinniaEncounterORAS_Ch2_loop_main:
 	note A_, 1
 	note G#, 1
 	volume_envelope 11, 0
-	callchannel Music_ZinniaEncounterORAS_Ch2_branch_1
+	sound_call Music_ZinniaEncounterORAS_Ch2_branch_1
 	note_type 6, 11, 0
 	note D#, 1
 	note E_, 7
@@ -297,17 +297,17 @@ Music_ZinniaEncounterORAS_Ch3:
 	note G#, 2
 	note __, 6
 Music_ZinniaEncounterORAS_Ch3_loop:
-	callchannel Music_ZinniaEncounterORAS_Ch3_branch_1
+	sound_call Music_ZinniaEncounterORAS_Ch3_branch_1
 	octave 1
 	note B_, 2
 	note __, 2
 	octave 2
-	callchannel Music_ZinniaEncounterORAS_Ch3_branch_1
+	sound_call Music_ZinniaEncounterORAS_Ch3_branch_1
 	octave 1
 	note B_, 2
 	octave 2
 	note E_, 2
-	callchannel Music_ZinniaEncounterORAS_Ch3_branch_2
+	sound_call Music_ZinniaEncounterORAS_Ch3_branch_2
 	octave 1
 	note B_, 2
 	note __, 2
@@ -318,7 +318,7 @@ Music_ZinniaEncounterORAS_Ch3_loop:
 	note __, 2
 	note G#, 2
 	note C#, 2
-	callchannel Music_ZinniaEncounterORAS_Ch3_branch_2
+	sound_call Music_ZinniaEncounterORAS_Ch3_branch_2
 	octave 1
 	note B_, 2
 	note __, 2

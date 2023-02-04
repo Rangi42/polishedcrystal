@@ -579,25 +579,25 @@ Music_Route30_branch_efd79:
 Music_Route30_Ch4:
 	toggle_noise 3
 	note_type 12
-	callchannel Music_Route30_branch_efeb8
-	callchannel Music_Route30_branch_efec1
+	sound_call Music_Route30_branch_efeb8
+	sound_call Music_Route30_branch_efec1
 Music_Route30_branch_efe84:
-	callchannel Music_Route30_branch_efecd
-	callchannel Music_Route30_branch_efed7
-	callchannel Music_Route30_branch_efed7
-	callchannel Music_Route30_branch_efee1
-	callchannel Music_Route30_branch_efed7
-	callchannel Music_Route30_branch_efecd
-	callchannel Music_Route30_branch_efed7
-	callchannel Music_Route30_branch_efee1
-	callchannel Music_Route30_branch_efed7
-	callchannel Music_Route30_branch_efed7
-	callchannel Music_Route30_branch_efecd
-	callchannel Music_Route30_branch_efed7
-	callchannel Music_Route30_branch_efed7
-	callchannel Music_Route30_branch_efed7
-	callchannel Music_Route30_branch_efecd
-	callchannel Music_Route30_branch_efee1
+	sound_call Music_Route30_branch_efecd
+	sound_call Music_Route30_branch_efed7
+	sound_call Music_Route30_branch_efed7
+	sound_call Music_Route30_branch_efee1
+	sound_call Music_Route30_branch_efed7
+	sound_call Music_Route30_branch_efecd
+	sound_call Music_Route30_branch_efed7
+	sound_call Music_Route30_branch_efee1
+	sound_call Music_Route30_branch_efed7
+	sound_call Music_Route30_branch_efed7
+	sound_call Music_Route30_branch_efecd
+	sound_call Music_Route30_branch_efed7
+	sound_call Music_Route30_branch_efed7
+	sound_call Music_Route30_branch_efed7
+	sound_call Music_Route30_branch_efecd
+	sound_call Music_Route30_branch_efee1
 	sound_jump Music_Route30_branch_efe84
 
 Music_Route30_branch_efeb8:

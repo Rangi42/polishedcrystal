@@ -11,17 +11,17 @@ Music_LookKimonoGirl_Ch1:
 	duty_cycle 1
 	note_type 6, 8, 7
 	pitch_offset 1
-	callchannel Music_LookKimonoGirl_branch_f7aa8
+	sound_call Music_LookKimonoGirl_branch_f7aa8
 	pitch_offset 0
 Music_LookKimonoGirl_branch_f79d7:
 	note_type 12, 11, 2
-	callchannel Music_LookKimonoGirl_branch_f7a13
-	callchannel Music_LookKimonoGirl_branch_f7a13
-	callchannel Music_LookKimonoGirl_branch_f7a34
-	callchannel Music_LookKimonoGirl_branch_f7a34
-	callchannel Music_LookKimonoGirl_branch_f7a13
-	callchannel Music_LookKimonoGirl_branch_f7a13
-	callchannel Music_LookKimonoGirl_branch_f7a34
+	sound_call Music_LookKimonoGirl_branch_f7a13
+	sound_call Music_LookKimonoGirl_branch_f7a13
+	sound_call Music_LookKimonoGirl_branch_f7a34
+	sound_call Music_LookKimonoGirl_branch_f7a34
+	sound_call Music_LookKimonoGirl_branch_f7a13
+	sound_call Music_LookKimonoGirl_branch_f7a13
+	sound_call Music_LookKimonoGirl_branch_f7a34
 	volume_envelope 11, 4
 	octave 3
 	note E_, 1
@@ -106,7 +106,7 @@ Music_LookKimonoGirl_Ch2:
 	duty_cycle 0
 	note_type 6, 10, 7
 	stereo_panning TRUE, FALSE
-	callchannel Music_LookKimonoGirl_branch_f7aa8
+	sound_call Music_LookKimonoGirl_branch_f7aa8
 Music_LookKimonoGirl_branch_f7a5f:
 	duty_cycle 3
 	note_type 12, 9, 1
@@ -129,7 +129,7 @@ Music_LookKimonoGirl_branch_f7a5f:
 	note A_, 1
 	note E_, 1
 	note D_, 1
-	callchannel Music_LookKimonoGirl_branch_f7a94
+	sound_call Music_LookKimonoGirl_branch_f7a94
 	octave 5
 	note F_, 1
 	note D_, 1
@@ -149,7 +149,7 @@ Music_LookKimonoGirl_branch_f7a5f:
 	note A_, 1
 	note E_, 1
 	note D_, 1
-	callchannel Music_LookKimonoGirl_branch_f7a94
+	sound_call Music_LookKimonoGirl_branch_f7a94
 	sound_jump Music_LookKimonoGirl_branch_f7a5f
 
 Music_LookKimonoGirl_branch_f7a94:

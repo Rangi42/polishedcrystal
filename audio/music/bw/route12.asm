@@ -17,13 +17,13 @@ Music_Route12BW_Ch1:
 	pitch_offset 2
 	vibrato $10, $22
 Music_Route12BW_Ch1_loop_1:
-	callchannel Music_Route12BW_Ch1_branch_1
-	callchannel Music_Route12BW_Ch1_branch_1
+	sound_call Music_Route12BW_Ch1_branch_1
+	sound_call Music_Route12BW_Ch1_branch_1
 	sound_loop 16, Music_Route12BW_Ch1_loop_1
-	callchannel Music_Route12BW_Ch1_branch_2
+	sound_call Music_Route12BW_Ch1_branch_2
 	note E_, 6
 	duty_cycle 0
-	callchannel Music_Route12BW_Ch1_branch_2
+	sound_call Music_Route12BW_Ch1_branch_2
 	note G_, 6
 	note G#, 12
 	note F#, 6
@@ -44,14 +44,14 @@ Music_Route12BW_Ch1_loop_1:
 	note B_, 4
 	volume_envelope 9, 7
 	note B_, 4
-	callchannel Music_Route12BW_Ch1_branch_3
+	sound_call Music_Route12BW_Ch1_branch_3
 	duty_cycle 0
 	octave 3
 	volume_envelope 9, 0
 	note F#, 4
 	volume_envelope 9, 7
 	note F#, 4
-	callchannel Music_Route12BW_Ch1_branch_3
+	sound_call Music_Route12BW_Ch1_branch_3
 	duty_cycle 0
 	octave 3
 	volume_envelope 9, 0
@@ -231,8 +231,8 @@ Music_Route12BW_Ch2_loop:
 	note A#, 1
 	volume_envelope 11, 7
 	note A#, 5
-	callchannel Music_Route12BW_Ch2_branch_1
-	callchannel Music_Route12BW_Ch2_branch_1
+	sound_call Music_Route12BW_Ch2_branch_1
+	sound_call Music_Route12BW_Ch2_branch_1
 	volume_envelope 11, 0
 	note B_, 6
 	volume_envelope 11, 7
@@ -337,9 +337,9 @@ Music_Route12BW_Ch3:
 	note F#, 12
 	note F#, 6
 	note E_, 6
-	callchannel Music_Route12BW_Ch3_branch_1
+	sound_call Music_Route12BW_Ch3_branch_1
 	note E_, 6
-	callchannel Music_Route12BW_Ch3_branch_1
+	sound_call Music_Route12BW_Ch3_branch_1
 	note G_, 6
 	note G#, 12
 	note F#, 6
@@ -376,14 +376,14 @@ Music_Route12BW_Ch4:
 	toggle_noise 0
 Music_Route12BW_Ch4_loop:
 	note_type 4
-	callchannel Music_Route12BW_Ch4_branch_1
-	callchannel Music_Route12BW_Ch4_branch_2
-	callchannel Music_Route12BW_Ch4_branch_3
-	callchannel Music_Route12BW_Ch4_branch_4
-	callchannel Music_Route12BW_Ch4_branch_5
-	callchannel Music_Route12BW_Ch4_branch_6
-	callchannel Music_Route12BW_Ch4_branch_1
-	callchannel Music_Route12BW_Ch4_branch_7
+	sound_call Music_Route12BW_Ch4_branch_1
+	sound_call Music_Route12BW_Ch4_branch_2
+	sound_call Music_Route12BW_Ch4_branch_3
+	sound_call Music_Route12BW_Ch4_branch_4
+	sound_call Music_Route12BW_Ch4_branch_5
+	sound_call Music_Route12BW_Ch4_branch_6
+	sound_call Music_Route12BW_Ch4_branch_1
+	sound_call Music_Route12BW_Ch4_branch_7
 	sound_jump Music_Route12BW_Ch4_loop
 
 Music_Route12BW_Ch4_branch_1:

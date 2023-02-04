@@ -24,22 +24,22 @@ Music_ProfOak_Ch1:
 	note G#, 8
 Music_ProfOak_branch_f4e10:
 	volume_envelope 9, 1
-	callchannel Music_ProfOak_branch_f4e42
-	callchannel Music_ProfOak_branch_f4e42
-	callchannel Music_ProfOak_branch_f4e4d
-	callchannel Music_ProfOak_branch_f4e4d
+	sound_call Music_ProfOak_branch_f4e42
+	sound_call Music_ProfOak_branch_f4e42
+	sound_call Music_ProfOak_branch_f4e4d
+	sound_call Music_ProfOak_branch_f4e4d
 	sound_loop 2, Music_ProfOak_branch_f4e10
 Music_ProfOak_branch_f4e22:
-	callchannel Music_ProfOak_branch_f4e58
-	callchannel Music_ProfOak_branch_f4e58
-	callchannel Music_ProfOak_branch_f4e6c
-	callchannel Music_ProfOak_branch_f4e6c
+	sound_call Music_ProfOak_branch_f4e58
+	sound_call Music_ProfOak_branch_f4e58
+	sound_call Music_ProfOak_branch_f4e6c
+	sound_call Music_ProfOak_branch_f4e6c
 	transpose 0, 2
-	callchannel Music_ProfOak_branch_f4e58
-	callchannel Music_ProfOak_branch_f4e58
+	sound_call Music_ProfOak_branch_f4e58
+	sound_call Music_ProfOak_branch_f4e58
 	transpose 0, 0
-	callchannel Music_ProfOak_branch_f4e6c
-	callchannel Music_ProfOak_branch_f4e6c
+	sound_call Music_ProfOak_branch_f4e6c
+	sound_call Music_ProfOak_branch_f4e6c
 	sound_jump Music_ProfOak_branch_f4e22
 
 Music_ProfOak_branch_f4e42:
@@ -223,24 +223,24 @@ Music_ProfOak_Ch3:
 	note B_, 1
 	note __, 1
 	note E_, 2
-	callchannel Music_ProfOak_branch_f4f3d
+	sound_call Music_ProfOak_branch_f4f3d
 Music_ProfOak_branch_f4f0d:
-	callchannel Music_ProfOak_branch_f4f3d
-	callchannel Music_ProfOak_branch_f4f3d
-	callchannel Music_ProfOak_branch_f4f4c
-	callchannel Music_ProfOak_branch_f4f4c
+	sound_call Music_ProfOak_branch_f4f3d
+	sound_call Music_ProfOak_branch_f4f3d
+	sound_call Music_ProfOak_branch_f4f4c
+	sound_call Music_ProfOak_branch_f4f4c
 	sound_loop 2, Music_ProfOak_branch_f4f0d
 Music_ProfOak_branch_f4f1d:
-	callchannel Music_ProfOak_branch_f4f5a
-	callchannel Music_ProfOak_branch_f4f5a
-	callchannel Music_ProfOak_branch_f4f69
-	callchannel Music_ProfOak_branch_f4f69
+	sound_call Music_ProfOak_branch_f4f5a
+	sound_call Music_ProfOak_branch_f4f5a
+	sound_call Music_ProfOak_branch_f4f69
+	sound_call Music_ProfOak_branch_f4f69
 	transpose 0, 2
-	callchannel Music_ProfOak_branch_f4f5a
-	callchannel Music_ProfOak_branch_f4f5a
+	sound_call Music_ProfOak_branch_f4f5a
+	sound_call Music_ProfOak_branch_f4f5a
 	transpose 0, 0
-	callchannel Music_ProfOak_branch_f4f69
-	callchannel Music_ProfOak_branch_f4f69
+	sound_call Music_ProfOak_branch_f4f69
+	sound_call Music_ProfOak_branch_f4f69
 	sound_jump Music_ProfOak_branch_f4f1d
 
 Music_ProfOak_branch_f4f3d:

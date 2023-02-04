@@ -470,13 +470,13 @@ Music_Route36_branch_e9684:
 Music_Route36_Ch4:
 	toggle_noise 1
 	note_type 12
-	callchannel Music_Route36_branch_e9734
-	callchannel Music_Route36_branch_e9741
+	sound_call Music_Route36_branch_e9734
+	sound_call Music_Route36_branch_e9741
 Music_Route36_branch_e9713:
-	callchannel Music_Route36_branch_e9734
-	callchannel Music_Route36_branch_e973b
-	callchannel Music_Route36_branch_e9734
-	callchannel Music_Route36_branch_e9741
+	sound_call Music_Route36_branch_e9734
+	sound_call Music_Route36_branch_e973b
+	sound_call Music_Route36_branch_e9734
+	sound_call Music_Route36_branch_e9741
 	sound_loop 2, Music_Route36_branch_e9713
 Music_Route36_branch_e9723:
 	note A#, 4
@@ -486,7 +486,7 @@ Music_Route36_branch_e9723:
 	note B_, 1
 	note A_, 4
 	sound_loop 11, Music_Route36_branch_e9723
-	callchannel Music_Route36_branch_e9741
+	sound_call Music_Route36_branch_e9741
 	sound_jump Music_Route36_branch_e9713
 
 Music_Route36_branch_e9734:

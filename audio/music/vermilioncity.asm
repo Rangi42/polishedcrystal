@@ -31,17 +31,17 @@ Music_VermilionCity_Ch1:
 Music_VermilionCity_branch_eb6a0:
 	duty_cycle 1
 	note_type 12, 8, 5
-	callchannel Music_VermilionCity_branch_eb6f9
+	sound_call Music_VermilionCity_branch_eb6f9
 	note F_, 4
 	octave 4
 	note D_, 4
 	note C#, 4
 	note E_, 4
-	callchannel Music_VermilionCity_branch_eb6f9
-	callchannel Music_VermilionCity_branch_eb701
+	sound_call Music_VermilionCity_branch_eb6f9
+	sound_call Music_VermilionCity_branch_eb701
 	duty_cycle 2
 	note_type 12, 8, 5
-	callchannel Music_VermilionCity_branch_eb6f9
+	sound_call Music_VermilionCity_branch_eb6f9
 	note F_, 4
 	octave 4
 	note D_, 4
@@ -56,8 +56,8 @@ Music_VermilionCity_branch_eb6a0:
 	note A_, 1
 	note E_, 1
 	note C_, 1
-	callchannel Music_VermilionCity_branch_eb6f9
-	callchannel Music_VermilionCity_branch_eb701
+	sound_call Music_VermilionCity_branch_eb6f9
+	sound_call Music_VermilionCity_branch_eb701
 	volume_envelope 9, 3
 	duty_cycle 0
 	note __, 2
@@ -68,8 +68,8 @@ Music_VermilionCity_branch_eb6a0:
 	note F#, 2
 	note __, 2
 	note F#, 2
-	callchannel Music_VermilionCity_branch_eb70c
-	callchannel Music_VermilionCity_branch_eb70c
+	sound_call Music_VermilionCity_branch_eb70c
+	sound_call Music_VermilionCity_branch_eb70c
 	volume_envelope 8, 7
 	duty_cycle 2
 	octave 4
@@ -153,9 +153,9 @@ Music_VermilionCity_Ch2:
 	note G#, 4
 Music_VermilionCity_branch_eb735:
 	note_type 12, 9, 7
-	callchannel Music_VermilionCity_branch_eb768
+	sound_call Music_VermilionCity_branch_eb768
 	note G#, 2
-	callchannel Music_VermilionCity_branch_eb768
+	sound_call Music_VermilionCity_branch_eb768
 	note E_, 2
 	volume_envelope 11, 7
 	octave 3
@@ -164,8 +164,8 @@ Music_VermilionCity_branch_eb735:
 	note C#, 4
 	note D_, 4
 	note E_, 4
-	callchannel Music_VermilionCity_branch_eb77e
-	callchannel Music_VermilionCity_branch_eb77e
+	sound_call Music_VermilionCity_branch_eb77e
+	sound_call Music_VermilionCity_branch_eb77e
 	note F#, 6
 	note E_, 1
 	note F#, 1
@@ -242,13 +242,13 @@ Music_VermilionCity_Ch3:
 	note B_, 1
 Music_VermilionCity_branch_eb79e:
 	note_type 12, 2, 2
-	callchannel Music_VermilionCity_branch_eb7de
+	sound_call Music_VermilionCity_branch_eb7de
 	octave 5
 	note A_, 6
 	volume_envelope 2, 4
 	note E_, 1
 	note G#, 1
-	callchannel Music_VermilionCity_branch_eb7de
+	sound_call Music_VermilionCity_branch_eb7de
 	note A_, 8
 	volume_envelope 1, 4
 	octave 3
@@ -262,14 +262,14 @@ Music_VermilionCity_branch_eb79e:
 	note __, 4
 	note D_, 1
 	note D_, 1
-	callchannel Music_VermilionCity_branch_eb7f5
+	sound_call Music_VermilionCity_branch_eb7f5
 	octave 4
 	note D_, 2
 	octave 3
 	note D_, 2
 	note __, 2
 	note D_, 2
-	callchannel Music_VermilionCity_branch_eb7f5
+	sound_call Music_VermilionCity_branch_eb7f5
 	volume_envelope 2, 5
 	octave 3
 	note E_, 8

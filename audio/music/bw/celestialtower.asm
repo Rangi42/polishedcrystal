@@ -544,14 +544,14 @@ Music_CelestialTowerBW_NoIntro_Ch4:
 	note __, 16
 	note __, 16
 	note_type 6
-	callchannel Music_CelestialTowerBW_NoIntro_Ch4_branch_1
-	callchannel Music_CelestialTowerBW_NoIntro_Ch4_branch_1
-	callchannel Music_CelestialTowerBW_NoIntro_Ch4_branch_2
-	callchannel Music_CelestialTowerBW_NoIntro_Ch4_branch_2
-	callchannel Music_CelestialTowerBW_NoIntro_Ch4_branch_1
-	callchannel Music_CelestialTowerBW_NoIntro_Ch4_branch_1
-	callchannel Music_CelestialTowerBW_NoIntro_Ch4_branch_2
-	callchannel Music_CelestialTowerBW_NoIntro_Ch4_branch_1
+	sound_call Music_CelestialTowerBW_NoIntro_Ch4_branch_1
+	sound_call Music_CelestialTowerBW_NoIntro_Ch4_branch_1
+	sound_call Music_CelestialTowerBW_NoIntro_Ch4_branch_2
+	sound_call Music_CelestialTowerBW_NoIntro_Ch4_branch_2
+	sound_call Music_CelestialTowerBW_NoIntro_Ch4_branch_1
+	sound_call Music_CelestialTowerBW_NoIntro_Ch4_branch_1
+	sound_call Music_CelestialTowerBW_NoIntro_Ch4_branch_2
+	sound_call Music_CelestialTowerBW_NoIntro_Ch4_branch_1
 Music_CelestialTowerBW_NoIntro_Ch4_loop_1:
 	note C#, 1
 	note G#, 1

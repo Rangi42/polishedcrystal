@@ -20,21 +20,21 @@ Music_WildPokemonVictory_Ch1:
 Music_SuccessfulCapture_branch_f4536:
 	stereo_panning FALSE, TRUE
 Music_WildPokemonVictory_branch_f4538:
-	callchannel Music_WildPokemonVictory_branch_f455c
+	sound_call Music_WildPokemonVictory_branch_f455c
 	note F#, 2
 	note F#, 2
 	note F#, 4
-	callchannel Music_WildPokemonVictory_branch_f455c
+	sound_call Music_WildPokemonVictory_branch_f455c
 	note G#, 4
 	volume_envelope 7, 8
 	octave 3
 	note G_, 4
 	transpose 0, 1
-	callchannel Music_WildPokemonVictory_branch_f455c
+	sound_call Music_WildPokemonVictory_branch_f455c
 	note F#, 2
 	note F#, 2
 	note F#, 4
-	callchannel Music_WildPokemonVictory_branch_f455c
+	sound_call Music_WildPokemonVictory_branch_f455c
 	note G#, 4
 	transpose 0, 0
 	volume_envelope 7, 8
@@ -82,12 +82,12 @@ Music_WildPokemonVictory_Ch2:
 Music_SuccessfulCapture_branch_f4585:
 	stereo_panning TRUE, FALSE
 Music_WildPokemonVictory_branch_f4587:
-	callchannel Music_WildPokemonVictory_branch_f45b5
+	sound_call Music_WildPokemonVictory_branch_f45b5
 	octave 4
 	note B_, 2
 	note B_, 2
 	note B_, 4
-	callchannel Music_WildPokemonVictory_branch_f45b5
+	sound_call Music_WildPokemonVictory_branch_f45b5
 	octave 4
 	note B_, 4
 	volume_envelope 8, 1
@@ -96,12 +96,12 @@ Music_WildPokemonVictory_branch_f4587:
 	note G_, 1
 	note A#, 1
 	transpose 0, 1
-	callchannel Music_WildPokemonVictory_branch_f45b5
+	sound_call Music_WildPokemonVictory_branch_f45b5
 	octave 4
 	note B_, 2
 	note B_, 2
 	note B_, 4
-	callchannel Music_WildPokemonVictory_branch_f45b5
+	sound_call Music_WildPokemonVictory_branch_f45b5
 	octave 4
 	note B_, 4
 	transpose 0, 0
@@ -142,24 +142,24 @@ Music_WildPokemonVictory_Ch3:
 	note __, 3
 Music_SuccessfulCapture_branch_f45cf:
 Music_WildPokemonVictory_branch_f45cf:
-	callchannel Music_WildPokemonVictory_branch_f45f4
+	sound_call Music_WildPokemonVictory_branch_f45f4
 	note D#, 2
 	note C#, 2
 	octave 2
 	note B_, 2
 	note __, 2
-	callchannel Music_WildPokemonVictory_branch_f45f4
+	sound_call Music_WildPokemonVictory_branch_f45f4
 	note E_, 2
 	note __, 2
 	note C_, 4
 	transpose 0, 1
-	callchannel Music_WildPokemonVictory_branch_f45f4
+	sound_call Music_WildPokemonVictory_branch_f45f4
 	note D#, 2
 	note C#, 2
 	octave 2
 	note B_, 2
 	note __, 2
-	callchannel Music_WildPokemonVictory_branch_f45f4
+	sound_call Music_WildPokemonVictory_branch_f45f4
 	note E_, 2
 	note __, 2
 	transpose 0, 0

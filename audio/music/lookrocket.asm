@@ -16,21 +16,21 @@ Music_LookRocket_Ch1:
 	octave 4
 	note C_, 1
 	note D_, 1
-	callchannel Music_LookRocket_branch_f74e6
+	sound_call Music_LookRocket_branch_f74e6
 	duty_cycle 1
 Music_LookRocket_branch_f74c7:
 	volume_envelope 10, 8
-	callchannel Music_LookRocket_branch_f74f7
-	callchannel Music_LookRocket_branch_f758a
+	sound_call Music_LookRocket_branch_f74f7
+	sound_call Music_LookRocket_branch_f758a
 	octave 4
 	note F#, 1
 	note __, 1
 	volume_envelope 5, 3
-	callchannel Music_LookRocket_branch_f750c
+	sound_call Music_LookRocket_branch_f750c
 	volume_envelope 12, 3
-	callchannel Music_LookRocket_branch_f750c
+	sound_call Music_LookRocket_branch_f750c
 	volume_envelope 14, 3
-	callchannel Music_LookRocket_branch_f750c
+	sound_call Music_LookRocket_branch_f750c
 	note __, 16
 	sound_jump Music_LookRocket_branch_f74c7
 
@@ -98,21 +98,21 @@ Music_LookRocket_Ch2:
 	octave 5
 	note C_, 1
 	note D_, 1
-	callchannel Music_LookRocket_branch_f7547
+	sound_call Music_LookRocket_branch_f7547
 Music_LookRocket_branch_f7526:
 	volume_envelope 11, 7
-	callchannel Music_LookRocket_branch_f758a
+	sound_call Music_LookRocket_branch_f758a
 	octave 5
 	note C_, 1
 	note __, 1
-	callchannel Music_LookRocket_branch_f7554
+	sound_call Music_LookRocket_branch_f7554
 	volume_envelope 5, 3
-	callchannel Music_LookRocket_branch_f7568
+	sound_call Music_LookRocket_branch_f7568
 	volume_envelope 12, 3
-	callchannel Music_LookRocket_branch_f7568
+	sound_call Music_LookRocket_branch_f7568
 	volume_envelope 14, 3
-	callchannel Music_LookRocket_branch_f7568
-	callchannel Music_LookRocket_branch_f756f
+	sound_call Music_LookRocket_branch_f7568
+	sound_call Music_LookRocket_branch_f756f
 	sound_jump Music_LookRocket_branch_f7526
 
 Music_LookRocket_branch_f7547:
@@ -211,16 +211,16 @@ Music_LookRocket_Ch3:
 	note_type 12, 1, 4
 	stereo_panning TRUE, FALSE
 	note __, 2
-	callchannel Music_LookRocket_branch_f75bf
+	sound_call Music_LookRocket_branch_f75bf
 Music_LookRocket_branch_f75a5:
-	callchannel Music_LookRocket_branch_f75fe
-	callchannel Music_LookRocket_branch_f75fe
+	sound_call Music_LookRocket_branch_f75fe
+	sound_call Music_LookRocket_branch_f75fe
 	volume_envelope 2, 4
-	callchannel Music_LookRocket_branch_f7623
+	sound_call Music_LookRocket_branch_f7623
 	volume_envelope 1, 4
-	callchannel Music_LookRocket_branch_f75cc
-	callchannel Music_LookRocket_branch_f7623
-	callchannel Music_LookRocket_branch_f75e1
+	sound_call Music_LookRocket_branch_f75cc
+	sound_call Music_LookRocket_branch_f7623
+	sound_call Music_LookRocket_branch_f75e1
 	sound_jump Music_LookRocket_branch_f75a5
 
 Music_LookRocket_branch_f75bf:
@@ -361,16 +361,16 @@ Music_LookRocket_Ch4:
 	toggle_noise 3
 	note_type 12
 	note __, 2
-	callchannel Music_LookRocket_branch_f765c
+	sound_call Music_LookRocket_branch_f765c
 Music_LookRocket_branch_f7640:
-	callchannel Music_LookRocket_branch_f7664
-	callchannel Music_LookRocket_branch_f7664
-	callchannel Music_LookRocket_branch_f7664
-	callchannel Music_LookRocket_branch_f7664
-	callchannel Music_LookRocket_branch_f7664
-	callchannel Music_LookRocket_branch_f7664
-	callchannel Music_LookRocket_branch_f7664
-	callchannel Music_LookRocket_branch_f765c
+	sound_call Music_LookRocket_branch_f7664
+	sound_call Music_LookRocket_branch_f7664
+	sound_call Music_LookRocket_branch_f7664
+	sound_call Music_LookRocket_branch_f7664
+	sound_call Music_LookRocket_branch_f7664
+	sound_call Music_LookRocket_branch_f7664
+	sound_call Music_LookRocket_branch_f7664
+	sound_call Music_LookRocket_branch_f765c
 	sound_jump Music_LookRocket_branch_f7640
 
 Music_LookRocket_branch_f765c:

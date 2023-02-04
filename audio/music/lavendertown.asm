@@ -16,7 +16,7 @@ Music_LavenderTown_Ch1:
 	note __, 16
 	note __, 16
 Music_LavenderTown_branch_ef74c:
-	callchannel Music_LavenderTown_branch_ef7fd
+	sound_call Music_LavenderTown_branch_ef7fd
 	volume_envelope 9, 3
 	octave 5
 	note D_, 2
@@ -34,7 +34,7 @@ Music_LavenderTown_branch_ef74c:
 	note A_, 2
 	volume_envelope 4, 3
 	note A_, 2
-	callchannel Music_LavenderTown_branch_ef87f
+	sound_call Music_LavenderTown_branch_ef87f
 	volume_envelope 9, 3
 	volume_envelope 9, 3
 	note F_, 2
@@ -53,7 +53,7 @@ Music_LavenderTown_branch_ef74c:
 	note G_, 2
 	volume_envelope 4, 3
 	note G_, 2
-	callchannel Music_LavenderTown_branch_ef7fd
+	sound_call Music_LavenderTown_branch_ef7fd
 	volume_envelope 9, 3
 	octave 5
 	note D_, 2
@@ -71,7 +71,7 @@ Music_LavenderTown_branch_ef74c:
 	note G_, 2
 	volume_envelope 4, 3
 	note G_, 2
-	callchannel Music_LavenderTown_branch_ef87f
+	sound_call Music_LavenderTown_branch_ef87f
 	volume_envelope 9, 3
 	octave 6
 	note C_, 2
@@ -302,7 +302,7 @@ Music_LavenderTown_branch_ef8a0:
 	note D_, 2
 Music_LavenderTown_branch_ef8d7:
 	volume_envelope 11, 5
-	callchannel Music_LavenderTown_branch_ef915
+	sound_call Music_LavenderTown_branch_ef915
 	octave 2
 	note F#, 4
 	octave 3
@@ -320,7 +320,7 @@ Music_LavenderTown_branch_ef8d7:
 	octave 2
 	note B_, 4
 	note G_, 4
-	callchannel Music_LavenderTown_branch_ef915
+	sound_call Music_LavenderTown_branch_ef915
 	octave 2
 	note G_, 4
 	octave 3

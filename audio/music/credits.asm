@@ -22,7 +22,7 @@ Music_Credits_Ch1:
 	octave 4
 	note C_, 7
 	note D_, 8
-	callchannel Music_Credits_branch_1f483
+	sound_call Music_Credits_branch_1f483
 	note __, 4
 	octave 3
 	note B_, 2
@@ -53,10 +53,10 @@ Music_Credits_Ch1:
 	octave 3
 	note __, 1
 	volume_envelope 10, 7
-	callchannel Music_Credits_branch_1f483
-	callchannel Music_Credits_branch_1f4ed
+	sound_call Music_Credits_branch_1f483
+	sound_call Music_Credits_branch_1f4ed
 	volume_envelope 9, 7
-	callchannel Music_Credits_branch_1f4f8
+	sound_call Music_Credits_branch_1f4f8
 	octave 3
 	note B_, 2
 	octave 4
@@ -118,8 +118,8 @@ Music_Credits_Ch1:
 	note C_, 2
 	octave 3
 	note B_, 2
-	callchannel Music_Credits_branch_1f4f8
-	callchannel Music_Credits_branch_1f559
+	sound_call Music_Credits_branch_1f4f8
+	sound_call Music_Credits_branch_1f559
 	note B_, 1
 	octave 4
 	note C_, 7
@@ -143,10 +143,10 @@ Music_Credits_Ch1:
 	octave 3
 	note __, 1
 	transpose 0, 2
-	callchannel Music_Credits_branch_1f483
-	callchannel Music_Credits_branch_1f4ed
-	callchannel Music_Credits_branch_1f4f8
-	callchannel Music_Credits_branch_1f559
+	sound_call Music_Credits_branch_1f483
+	sound_call Music_Credits_branch_1f4ed
+	sound_call Music_Credits_branch_1f4f8
+	sound_call Music_Credits_branch_1f559
 	transpose 0, 0
 	octave 3
 	note A_, 12
@@ -154,7 +154,7 @@ Music_Credits_Ch1:
 	note D_, 1
 	note D_, 1
 	note D_, 1
-	callchannel Music_Credits_branch_1f582
+	sound_call Music_Credits_branch_1f582
 	octave 3
 	note B_, 6
 	note A_, 6
@@ -165,7 +165,7 @@ Music_Credits_Ch1:
 	note A_, 6
 	octave 4
 	note C#, 6
-	callchannel Music_Credits_branch_1f582
+	sound_call Music_Credits_branch_1f582
 	tempo 143
 	octave 4
 	note D_, 6
@@ -571,7 +571,7 @@ Music_Credits_Ch2:
 	note G_, 4
 	note F_, 4
 	note_type 6, 12, 7
-	callchannel Music_Credits_branch_1f6cb
+	sound_call Music_Credits_branch_1f6cb
 	octave 1
 	note G_, 2
 	note __, 2
@@ -597,9 +597,9 @@ Music_Credits_Ch2:
 	note D_, 1
 	note C#, 1
 	volume_envelope 12, 7
-	callchannel Music_Credits_branch_1f6cb
-	callchannel Music_Credits_branch_1f73f
-	callchannel Music_Credits_branch_1f748
+	sound_call Music_Credits_branch_1f6cb
+	sound_call Music_Credits_branch_1f73f
+	sound_call Music_Credits_branch_1f748
 	octave 4
 	note B_, 1
 	octave 5
@@ -627,7 +627,7 @@ Music_Credits_Ch2:
 	octave 4
 	note A_, 2
 	note E_, 2
-	callchannel Music_Credits_branch_1f748
+	sound_call Music_Credits_branch_1f748
 	octave 4
 	note B_, 1
 	octave 5
@@ -659,9 +659,9 @@ Music_Credits_Ch2:
 	note G_, 4
 	note_type 6, 12, 7
 	transpose 0, 2
-	callchannel Music_Credits_branch_1f6cb
-	callchannel Music_Credits_branch_1f73f
-	callchannel Music_Credits_branch_1f748
+	sound_call Music_Credits_branch_1f6cb
+	sound_call Music_Credits_branch_1f73f
+	sound_call Music_Credits_branch_1f748
 	transpose 0, 0
 	octave 5
 	note C#, 1
@@ -1018,7 +1018,7 @@ Music_Credits_Ch3:
 	note D#, 1
 	note E_, 7
 	note F_, 8
-	callchannel Music_Credits_branch_1f8aa
+	sound_call Music_Credits_branch_1f8aa
 	octave 4
 	note G_, 1
 	note __, 1
@@ -1038,10 +1038,10 @@ Music_Credits_Ch3:
 	note E_, 4
 	note __, 4
 	note F_, 4
-	callchannel Music_Credits_branch_1f8aa
-	callchannel Music_Credits_branch_1f8db
-	callchannel Music_Credits_branch_1f8e7
-	callchannel Music_Credits_branch_1f934
+	sound_call Music_Credits_branch_1f8aa
+	sound_call Music_Credits_branch_1f8db
+	sound_call Music_Credits_branch_1f8e7
+	sound_call Music_Credits_branch_1f934
 	octave 2
 	note G_, 4
 	note __, 2
@@ -1107,9 +1107,9 @@ Music_Credits_Ch3:
 	note F#, 4
 	octave 3
 	note E_, 4
-	callchannel Music_Credits_branch_1f8e7
-	callchannel Music_Credits_branch_1f934
-	callchannel Music_Credits_branch_1f94b
+	sound_call Music_Credits_branch_1f8e7
+	sound_call Music_Credits_branch_1f934
+	sound_call Music_Credits_branch_1f94b
 	octave 5
 	note D#, 1
 	note E_, 7
@@ -1130,13 +1130,13 @@ Music_Credits_Ch3:
 	note F#, 7
 	note G_, 8
 	transpose 0, 2
-	callchannel Music_Credits_branch_1f8aa
-	callchannel Music_Credits_branch_1f8db
+	sound_call Music_Credits_branch_1f8aa
+	sound_call Music_Credits_branch_1f8db
 	transpose 1, 2
-	callchannel Music_Credits_branch_1f8e7
+	sound_call Music_Credits_branch_1f8e7
 	transpose 0, 2
-	callchannel Music_Credits_branch_1f934
-	callchannel Music_Credits_branch_1f94b
+	sound_call Music_Credits_branch_1f934
+	sound_call Music_Credits_branch_1f94b
 	transpose 0, 0
 	octave 6
 	note C#, 2
@@ -1456,14 +1456,14 @@ Music_Credits_Ch4:
 	note G_, 1
 	note A#, 4
 	note A#, 4
-	callchannel Music_Credits_branch_1fa4d
-	callchannel Music_Credits_branch_1fa4d
-	callchannel Music_Credits_branch_1fa4d
-	callchannel Music_Credits_branch_1fa6d
-	callchannel Music_Credits_branch_1fa4d
-	callchannel Music_Credits_branch_1fa4d
-	callchannel Music_Credits_branch_1fa4d
-	callchannel Music_Credits_branch_1fa6d
+	sound_call Music_Credits_branch_1fa4d
+	sound_call Music_Credits_branch_1fa4d
+	sound_call Music_Credits_branch_1fa4d
+	sound_call Music_Credits_branch_1fa6d
+	sound_call Music_Credits_branch_1fa4d
+	sound_call Music_Credits_branch_1fa4d
+	sound_call Music_Credits_branch_1fa4d
+	sound_call Music_Credits_branch_1fa6d
 Music_Credits_branch_1f9a8:
 	note A#, 2
 	note G_, 1
@@ -1522,10 +1522,10 @@ Music_Credits_branch_1f9c6:
 	note B_, 2
 	note A#, 4
 	note A#, 4
-	callchannel Music_Credits_branch_1fa4d
-	callchannel Music_Credits_branch_1fa4d
-	callchannel Music_Credits_branch_1fa4d
-	callchannel Music_Credits_branch_1fa6d
+	sound_call Music_Credits_branch_1fa4d
+	sound_call Music_Credits_branch_1fa4d
+	sound_call Music_Credits_branch_1fa4d
+	sound_call Music_Credits_branch_1fa6d
 Music_Credits_branch_1f9f2:
 	note A#, 2
 	note G_, 1

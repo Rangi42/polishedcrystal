@@ -13,15 +13,15 @@ Music_DragonsDen_Ch1:
 	stereo_panning TRUE, FALSE
 	note_type 12, 8, 0
 Music_DragonsDen_branch_eed03:
-	callchannel Music_DragonsDen_branch_eed1e
+	sound_call Music_DragonsDen_branch_eed1e
 	note __, 16
-	callchannel Music_DragonsDen_branch_eed2d
+	sound_call Music_DragonsDen_branch_eed2d
 	note __, 2
-	callchannel Music_DragonsDen_branch_eed2d
+	sound_call Music_DragonsDen_branch_eed2d
 	note __, 2
-	callchannel Music_DragonsDen_branch_eed2d
+	sound_call Music_DragonsDen_branch_eed2d
 	note __, 2
-	callchannel Music_DragonsDen_branch_eed2d
+	sound_call Music_DragonsDen_branch_eed2d
 	note __, 10
 	note_type 12, 11, 7
 	sound_jump Music_DragonsDen_branch_eed03
@@ -65,12 +65,12 @@ Music_DragonsDen_Ch2:
 	stereo_panning FALSE, TRUE
 	note_type 12, 9, 0
 Music_DragonsDen_branch_eed46:
-	callchannel Music_DragonsDen_branch_eed5e
+	sound_call Music_DragonsDen_branch_eed5e
 	note __, 16
-	callchannel Music_DragonsDen_branch_eed6b
-	callchannel Music_DragonsDen_branch_eed6b
-	callchannel Music_DragonsDen_branch_eed6b
-	callchannel Music_DragonsDen_branch_eed6b
+	sound_call Music_DragonsDen_branch_eed6b
+	sound_call Music_DragonsDen_branch_eed6b
+	sound_call Music_DragonsDen_branch_eed6b
+	sound_call Music_DragonsDen_branch_eed6b
 	note __, 16
 	note_type 12, 12, 7
 	sound_jump Music_DragonsDen_branch_eed46

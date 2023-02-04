@@ -210,14 +210,14 @@ Music_Route1_Ch2:
 	octave 4
 	note F#, 1
 	note G_, 1
-	callchannel Music_Route1_branch_ec198
+	sound_call Music_Route1_branch_ec198
 	octave 3
 	note A_, 2
 	note A_, 2
 	octave 4
 	note F#, 1
 	note G_, 1
-	callchannel Music_Route1_branch_ec1aa
+	sound_call Music_Route1_branch_ec1aa
 	note C#, 2
 	note E_, 2
 	note D_, 2
@@ -231,7 +231,7 @@ Music_Route1_Ch2:
 	duty_cycle 2
 Music_Route1_branch_ec112:
 	volume_envelope 8, 2
-	callchannel Music_Route1_branch_ec188
+	sound_call Music_Route1_branch_ec188
 	volume_envelope 8, 1
 	octave 3
 	note A_, 2
@@ -261,7 +261,7 @@ Music_Route1_branch_ec112:
 	note F#, 2
 	note D_, 1
 	note E_, 1
-	callchannel Music_Route1_branch_ec188
+	sound_call Music_Route1_branch_ec188
 	volume_envelope 8, 1
 	note A_, 2
 	note A_, 2
@@ -297,11 +297,11 @@ Music_Route1_branch_ec112:
 	octave 4
 	note F#, 1
 	note G_, 1
-	callchannel Music_Route1_branch_ec198
+	sound_call Music_Route1_branch_ec198
 	note __, 4
 	note F#, 1
 	note G_, 1
-	callchannel Music_Route1_branch_ec1aa
+	sound_call Music_Route1_branch_ec1aa
 	note_type 8, 9, 2
 	note C#, 1
 	note D_, 1

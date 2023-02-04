@@ -195,17 +195,17 @@ Music_TitleScreen_Ch1:
 	tempo 136
 	note C#, 6
 	tempo 134
-	callchannel Music_TitleScreen_branch_eb96d
+	sound_call Music_TitleScreen_branch_eb96d
 	octave 4
 	note C_, 4
 	note C_, 4
 	note C#, 4
-	callchannel Music_TitleScreen_branch_eb96d
+	sound_call Music_TitleScreen_branch_eb96d
 	octave 4
 	note C_, 4
 	note C_, 4
 	note C#, 4
-	callchannel Music_TitleScreen_branch_eb96d
+	sound_call Music_TitleScreen_branch_eb96d
 	octave 3
 	note E_, 4
 	note E_, 4
@@ -480,11 +480,11 @@ Music_TitleScreen_Ch2:
 	note C#, 4
 	pitch_offset 1
 	stereo_panning FALSE, TRUE
-	callchannel Music_TitleScreen_branch_ebae7
+	sound_call Music_TitleScreen_branch_ebae7
 	note C#, 4
-	callchannel Music_TitleScreen_branch_ebae7
+	sound_call Music_TitleScreen_branch_ebae7
 	note C#, 4
-	callchannel Music_TitleScreen_branch_ebae7
+	sound_call Music_TitleScreen_branch_ebae7
 	octave 4
 	note A_, 4
 	stereo_panning TRUE, TRUE
@@ -948,9 +948,9 @@ Music_TitleScreen_Ch4:
 	note C_, 1
 	note C_, 1
 	note_type 12
-	callchannel Music_TitleScreen_branch_ebd77
-	callchannel Music_TitleScreen_branch_ebd81
-	callchannel Music_TitleScreen_branch_ebd81
+	sound_call Music_TitleScreen_branch_ebd77
+	sound_call Music_TitleScreen_branch_ebd81
+	sound_call Music_TitleScreen_branch_ebd81
 	note C_, 2
 	note D#, 2
 	note C_, 2
@@ -965,7 +965,7 @@ Music_TitleScreen_Ch4:
 	note C_, 1
 	note C_, 1
 	note_type 12
-	callchannel Music_TitleScreen_branch_ebd77
+	sound_call Music_TitleScreen_branch_ebd77
 	note C_, 2
 	note D#, 2
 	note C_, 2
@@ -975,7 +975,7 @@ Music_TitleScreen_Ch4:
 	note C_, 1
 	note C_, 2
 	note C_, 2
-	callchannel Music_TitleScreen_branch_ebd81
+	sound_call Music_TitleScreen_branch_ebd81
 	note C_, 2
 	note D#, 2
 	note C_, 2
@@ -986,9 +986,9 @@ Music_TitleScreen_Ch4:
 	note C_, 2
 	note C_, 1
 	note C_, 1
-	callchannel Music_TitleScreen_branch_ebd77
-	callchannel Music_TitleScreen_branch_ebd81
-	callchannel Music_TitleScreen_branch_ebd81
+	sound_call Music_TitleScreen_branch_ebd77
+	sound_call Music_TitleScreen_branch_ebd81
+	sound_call Music_TitleScreen_branch_ebd81
 	note C_, 2
 	note D#, 2
 	note C_, 2
@@ -1003,8 +1003,8 @@ Music_TitleScreen_Ch4:
 	note D_, 1
 	note C#, 1
 	note_type 12
-	callchannel Music_TitleScreen_branch_ebd77
-	callchannel Music_TitleScreen_branch_ebd81
+	sound_call Music_TitleScreen_branch_ebd77
+	sound_call Music_TitleScreen_branch_ebd81
 	note C_, 2
 	note D#, 2
 	note C_, 2
@@ -1054,22 +1054,22 @@ Music_TitleScreen_Ch4:
 	note C#, 1
 	note C_, 1
 	note C_, 1
-	callchannel Music_TitleScreen_branch_ebd8b
-	callchannel Music_TitleScreen_branch_ebd93
+	sound_call Music_TitleScreen_branch_ebd8b
+	sound_call Music_TitleScreen_branch_ebd93
 	note C#, 1
 	note D_, 1
 	note D_, 1
 	note C#, 1
 	note_type 12
-	callchannel Music_TitleScreen_branch_ebd8b
-	callchannel Music_TitleScreen_branch_ebd93
+	sound_call Music_TitleScreen_branch_ebd8b
+	sound_call Music_TitleScreen_branch_ebd93
 	note D_, 1
 	note D_, 1
 	note C#, 1
 	note C#, 1
 	note_type 12
-	callchannel Music_TitleScreen_branch_ebd8b
-	callchannel Music_TitleScreen_branch_ebd93
+	sound_call Music_TitleScreen_branch_ebd8b
+	sound_call Music_TitleScreen_branch_ebd93
 	note C#, 1
 	note C#, 1
 	note C#, 1

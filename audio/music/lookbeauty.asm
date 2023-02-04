@@ -300,10 +300,10 @@ Music_LookBeauty_Ch4:
 	note __, 16
 	note __, 16
 Music_LookBeauty_branch_eef91:
-	callchannel Music_LookBeauty_branch_eefa1
-	callchannel Music_LookBeauty_branch_eefa1
-	callchannel Music_LookBeauty_branch_eefa1
-	callchannel Music_LookBeauty_branch_eefa1
+	sound_call Music_LookBeauty_branch_eefa1
+	sound_call Music_LookBeauty_branch_eefa1
+	sound_call Music_LookBeauty_branch_eefa1
+	sound_call Music_LookBeauty_branch_eefa1
 	sound_jump Music_LookBeauty_branch_eef91
 
 Music_LookBeauty_branch_eefa1:

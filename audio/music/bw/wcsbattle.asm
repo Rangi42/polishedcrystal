@@ -1076,11 +1076,11 @@ Music_WCSBattleBW_Ch3_L3:
 	note A#, 2
 	octave 3
 	note C#, 2
-	callchannel Music_WCSBattleBW_Ch3_P1
+	sound_call Music_WCSBattleBW_Ch3_P1
 	note __, 4
-	callchannel Music_WCSBattleBW_Ch3_P1
+	sound_call Music_WCSBattleBW_Ch3_P1
 	note __, 4
-	callchannel Music_WCSBattleBW_Ch3_P1
+	sound_call Music_WCSBattleBW_Ch3_P1
 	note __, 4
 	octave 3
 	note C_, 1
@@ -1088,11 +1088,11 @@ Music_WCSBattleBW_Ch3_L3:
 	octave 2
 	note G_, 4
 	note A#, 2
-	callchannel Music_WCSBattleBW_Ch3_P1
+	sound_call Music_WCSBattleBW_Ch3_P1
 	note F#, 4
-	callchannel Music_WCSBattleBW_Ch3_P1
+	sound_call Music_WCSBattleBW_Ch3_P1
 	note G_, 4
-	callchannel Music_WCSBattleBW_Ch3_P1
+	sound_call Music_WCSBattleBW_Ch3_P1
 	note F#, 4
 	octave 3
 	note C_, 1

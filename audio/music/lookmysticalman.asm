@@ -61,7 +61,7 @@ Music_LookMysticalMan_branch_178458:
 	note __, 4
 	note C#, 4
 	duty_cycle 2
-	callchannel Music_LookMysticalMan_branch_1784f9
+	sound_call Music_LookMysticalMan_branch_1784f9
 	octave 4
 	note C#, 2
 	note __, 2
@@ -76,7 +76,7 @@ Music_LookMysticalMan_branch_178458:
 	note F#, 4
 	note __, 4
 	note E_, 4
-	callchannel Music_LookMysticalMan_branch_1784f9
+	sound_call Music_LookMysticalMan_branch_1784f9
 	octave 4
 	note C#, 2
 	note __, 2
@@ -253,22 +253,22 @@ Music_LookMysticalMan_branch_178523:
 	note F#, 4
 	note __, 4
 	note E_, 4
-	callchannel Music_LookMysticalMan_branch_17859a
+	sound_call Music_LookMysticalMan_branch_17859a
 	note F#, 2
 	note __, 2
 	note E_, 2
 	note __, 2
 	note D_, 2
 	note E_, 6
-	callchannel Music_LookMysticalMan_branch_1785c8
-	callchannel Music_LookMysticalMan_branch_17859a
+	sound_call Music_LookMysticalMan_branch_1785c8
+	sound_call Music_LookMysticalMan_branch_17859a
 	note F#, 2
 	note __, 2
 	note F#, 2
 	note __, 2
 	note E_, 2
 	note D_, 6
-	callchannel Music_LookMysticalMan_branch_1785c8
+	sound_call Music_LookMysticalMan_branch_1785c8
 	note_type 12, 11, 7
 	note B_, 2
 	note __, 2
@@ -542,14 +542,14 @@ Music_LookMysticalMan_Ch4:
 	note D_, 1
 	note D_, 1
 Music_LookMysticalMan_branch_178697:
-	callchannel Music_LookMysticalMan_branch_1786d3
-	callchannel Music_LookMysticalMan_branch_1786d9
-	callchannel Music_LookMysticalMan_branch_1786d3
-	callchannel Music_LookMysticalMan_branch_1786df
+	sound_call Music_LookMysticalMan_branch_1786d3
+	sound_call Music_LookMysticalMan_branch_1786d9
+	sound_call Music_LookMysticalMan_branch_1786d3
+	sound_call Music_LookMysticalMan_branch_1786df
 	sound_loop 2, Music_LookMysticalMan_branch_178697
-	callchannel Music_LookMysticalMan_branch_1786d3
-	callchannel Music_LookMysticalMan_branch_1786d9
-	callchannel Music_LookMysticalMan_branch_1786d3
+	sound_call Music_LookMysticalMan_branch_1786d3
+	sound_call Music_LookMysticalMan_branch_1786d9
+	sound_call Music_LookMysticalMan_branch_1786d3
 	note D_, 2
 	note D#, 2
 	note D_, 2

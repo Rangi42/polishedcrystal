@@ -18,25 +18,25 @@ Music_RocketTheme_Ch1:
 Music_RocketTheme_branch_f768b:
 	duty_cycle 3
 	note_type 12, 10, 8
-	callchannel Music_RocketTheme_branch_f74e6
+	sound_call Music_RocketTheme_branch_f74e6
 	duty_cycle 1
 	volume_envelope 10, 8
-	callchannel Music_RocketTheme_branch_f74f7
-	callchannel Music_RocketTheme_branch_f758a
+	sound_call Music_RocketTheme_branch_f74f7
+	sound_call Music_RocketTheme_branch_f758a
 	octave 4
 	note F#, 1
 	note __, 1
 	volume_envelope 5, 3
-	callchannel Music_RocketTheme_branch_f750c
+	sound_call Music_RocketTheme_branch_f750c
 	volume_envelope 12, 3
-	callchannel Music_RocketTheme_branch_f750c
+	sound_call Music_RocketTheme_branch_f750c
 	volume_envelope 14, 3
-	callchannel Music_RocketTheme_branch_f750c
+	sound_call Music_RocketTheme_branch_f750c
 	note __, 16
 	duty_cycle 0
 	note_type 6, 11, 3
 	vibrato $6, $64
-	callchannel Music_RocketTheme_branch_f7727
+	sound_call Music_RocketTheme_branch_f7727
 	octave 4
 	note F_, 1
 	note F#, 3
@@ -61,7 +61,7 @@ Music_RocketTheme_branch_f768b:
 	note __, 4
 	note D#, 2
 	note F#, 2
-	callchannel Music_RocketTheme_branch_f7727
+	sound_call Music_RocketTheme_branch_f7727
 	octave 3
 	note F#, 1
 	note G_, 3
@@ -164,22 +164,22 @@ Music_RocketTheme_Ch2:
 	note D_, 1
 Music_RocketTheme_branch_f774b:
 	note_type 12, 11, 7
-	callchannel Music_RocketTheme_branch_f7547
+	sound_call Music_RocketTheme_branch_f7547
 	volume_envelope 11, 7
-	callchannel Music_RocketTheme_branch_f758a
+	sound_call Music_RocketTheme_branch_f758a
 	octave 5
 	note C_, 1
 	note __, 1
-	callchannel Music_RocketTheme_branch_f7554
+	sound_call Music_RocketTheme_branch_f7554
 	volume_envelope 5, 3
-	callchannel Music_RocketTheme_branch_f7568
+	sound_call Music_RocketTheme_branch_f7568
 	volume_envelope 12, 3
-	callchannel Music_RocketTheme_branch_f7568
+	sound_call Music_RocketTheme_branch_f7568
 	volume_envelope 14, 3
-	callchannel Music_RocketTheme_branch_f7568
-	callchannel Music_RocketTheme_branch_f756f
+	sound_call Music_RocketTheme_branch_f7568
+	sound_call Music_RocketTheme_branch_f756f
 	vibrato $6, $64
-	callchannel Music_RocketTheme_branch_f7800
+	sound_call Music_RocketTheme_branch_f7800
 	octave 4
 	note A_, 1
 	vibrato $0, $0
@@ -195,7 +195,7 @@ Music_RocketTheme_branch_f774b:
 	octave 5
 	note C_, 1
 	note D_, 1
-	callchannel Music_RocketTheme_branch_f7800
+	sound_call Music_RocketTheme_branch_f7800
 	note B_, 1
 	vibrato $0, $0
 	volume_envelope 11, 8
@@ -213,7 +213,7 @@ Music_RocketTheme_branch_f774b:
 	note G#, 1
 	note G_, 1
 	note_type 6, 11, 7
-	callchannel Music_RocketTheme_branch_f781c
+	sound_call Music_RocketTheme_branch_f781c
 	octave 4
 	note D_, 1
 	note D#, 9
@@ -224,7 +224,7 @@ Music_RocketTheme_branch_f774b:
 	note __, 2
 	note F#, 2
 	note __, 2
-	callchannel Music_RocketTheme_branch_f781c
+	sound_call Music_RocketTheme_branch_f781c
 	octave 3
 	note B_, 2
 	note __, 2
@@ -337,23 +337,23 @@ Music_RocketTheme_Ch3:
 	note __, 2
 Music_RocketTheme_branch_f782f:
 	note_type 12, 1, 4
-	callchannel Music_RocketTheme_branch_f75bf
-	callchannel Music_RocketTheme_branch_f75fe
-	callchannel Music_RocketTheme_branch_f75fe
+	sound_call Music_RocketTheme_branch_f75bf
+	sound_call Music_RocketTheme_branch_f75fe
+	sound_call Music_RocketTheme_branch_f75fe
 	volume_envelope 2, 4
-	callchannel Music_RocketTheme_branch_f7623
+	sound_call Music_RocketTheme_branch_f7623
 	volume_envelope 1, 4
-	callchannel Music_RocketTheme_branch_f75cc
-	callchannel Music_RocketTheme_branch_f7623
-	callchannel Music_RocketTheme_branch_f75e1
-	callchannel Music_RocketTheme_branch_f75fe
-	callchannel Music_RocketTheme_branch_f75fe
-	callchannel Music_RocketTheme_branch_f75fe
-	callchannel Music_RocketTheme_branch_f75fe
-	callchannel Music_RocketTheme_branch_f7623
-	callchannel Music_RocketTheme_branch_f75cc
-	callchannel Music_RocketTheme_branch_f7623
-	callchannel Music_RocketTheme_branch_f75cc
+	sound_call Music_RocketTheme_branch_f75cc
+	sound_call Music_RocketTheme_branch_f7623
+	sound_call Music_RocketTheme_branch_f75e1
+	sound_call Music_RocketTheme_branch_f75fe
+	sound_call Music_RocketTheme_branch_f75fe
+	sound_call Music_RocketTheme_branch_f75fe
+	sound_call Music_RocketTheme_branch_f75fe
+	sound_call Music_RocketTheme_branch_f7623
+	sound_call Music_RocketTheme_branch_f75cc
+	sound_call Music_RocketTheme_branch_f7623
+	sound_call Music_RocketTheme_branch_f75cc
 	octave 3
 	note C_, 1
 	note __, 1
@@ -448,15 +448,15 @@ Music_RocketTheme_Ch4:
 	note_type 12
 	note __, 2
 Music_RocketTheme_branch_f78c3:
-	callchannel Music_RocketTheme_branch_f765c
-	callchannel Music_RocketTheme_branch_f7664
-	callchannel Music_RocketTheme_branch_f7664
-	callchannel Music_RocketTheme_branch_f7664
-	callchannel Music_RocketTheme_branch_f7664
-	callchannel Music_RocketTheme_branch_f7664
-	callchannel Music_RocketTheme_branch_f7664
-	callchannel Music_RocketTheme_branch_f7664
-	callchannel Music_RocketTheme_branch_f765c
+	sound_call Music_RocketTheme_branch_f765c
+	sound_call Music_RocketTheme_branch_f7664
+	sound_call Music_RocketTheme_branch_f7664
+	sound_call Music_RocketTheme_branch_f7664
+	sound_call Music_RocketTheme_branch_f7664
+	sound_call Music_RocketTheme_branch_f7664
+	sound_call Music_RocketTheme_branch_f7664
+	sound_call Music_RocketTheme_branch_f7664
+	sound_call Music_RocketTheme_branch_f765c
 Music_RocketTheme_branch_f78de:
 	note A#, 2
 	note F#, 2
@@ -467,9 +467,9 @@ Music_RocketTheme_branch_f78de:
 	note D_, 2
 	note F#, 2
 	sound_loop 11, Music_RocketTheme_branch_f78de
-	callchannel Music_RocketTheme_branch_f7664
-	callchannel Music_RocketTheme_branch_f7664
-	callchannel Music_RocketTheme_branch_f7664
-	callchannel Music_RocketTheme_branch_f765c
-	callchannel Music_RocketTheme_branch_f765c
+	sound_call Music_RocketTheme_branch_f7664
+	sound_call Music_RocketTheme_branch_f7664
+	sound_call Music_RocketTheme_branch_f7664
+	sound_call Music_RocketTheme_branch_f765c
+	sound_call Music_RocketTheme_branch_f765c
 	sound_jump Music_RocketTheme_branch_f78c3

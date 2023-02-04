@@ -942,7 +942,7 @@ Music_MarineTubeB2W2_Ch4_loop_1:
 	note D#, 2
 	note D_, 2
 	sound_loop 8, Music_MarineTubeB2W2_Ch4_loop_1
-	callchannel Music_MarineTubeB2W2_Ch4_branch_1
+	sound_call Music_MarineTubeB2W2_Ch4_branch_1
 	note D#, 2
 	note D_, 2
 	note B_, 4
@@ -985,7 +985,7 @@ Music_MarineTubeB2W2_Ch4_loop_1:
 	note G_, 2
 	note D_, 1
 	note C_, 1
-	callchannel Music_MarineTubeB2W2_Ch4_branch_1
+	sound_call Music_MarineTubeB2W2_Ch4_branch_1
 	note D#, 2
 	note D_, 2
 	note D_, 2

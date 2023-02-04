@@ -16,17 +16,17 @@ Music_Route4BW_Ch1:
 	duty_cycle 3
 	pitch_offset 2
 	vibrato $10, $22
-	callchannel Music_Route4BW_Ch1_branch_1
+	sound_call Music_Route4BW_Ch1_branch_1
 Music_Route4BW_Ch1_loop:
-	callchannel Music_Route4BW_Ch1_branch_1
-	callchannel Music_Route4BW_Ch1_branch_1
+	sound_call Music_Route4BW_Ch1_branch_1
+	sound_call Music_Route4BW_Ch1_branch_1
 	duty_cycle 0
 	volume_envelope 8, 0
-	callchannel Music_Route4BW_Ch1_branch_2
-	callchannel Music_Route4BW_Ch1_branch_3
-	callchannel Music_Route4BW_Ch1_branch_2
-	callchannel Music_Route4BW_Ch1_branch_4
-	callchannel Music_Route4BW_Ch1_branch_2
+	sound_call Music_Route4BW_Ch1_branch_2
+	sound_call Music_Route4BW_Ch1_branch_3
+	sound_call Music_Route4BW_Ch1_branch_2
+	sound_call Music_Route4BW_Ch1_branch_4
+	sound_call Music_Route4BW_Ch1_branch_2
 	note_type 8, 11, 0
 	octave 2
 	note A_, 4
@@ -486,13 +486,13 @@ Music_Route4BW_Ch3:
 	note A_, 1
 	volume_envelope 1, 4
 	octave 5
-	callchannel Music_Route4BW_Ch3_branch_1
+	sound_call Music_Route4BW_Ch3_branch_1
 	note A_, 8
 	octave 4
 	note B_, 1
 	octave 5
 	note C#, 1
-	callchannel Music_Route4BW_Ch3_branch_1
+	sound_call Music_Route4BW_Ch3_branch_1
 	note A_, 10
 	note F#, 5
 	note_type 6, 1, 4
@@ -534,12 +534,12 @@ Music_Route4BW_Ch4:
 	toggle_noise 0
 Music_Route4BW_Ch4_branch_1:
 	note_type 12
-	callchannel Music_Route4BW_Ch4_branch_2
+	sound_call Music_Route4BW_Ch4_branch_2
 	note D_, 1
 	note D#, 1
 	note D#, 1
 	note D_, 1
-	callchannel Music_Route4BW_Ch4_branch_2
+	sound_call Music_Route4BW_Ch4_branch_2
 	note_type 6
 	note D#, 1
 	note D#, 1
@@ -550,8 +550,8 @@ Music_Route4BW_Ch4_branch_1:
 	note D_, 1
 	note D_, 1
 	sound_loop 6, Music_Route4BW_Ch4_branch_1
-	callchannel Music_Route4BW_Ch4_branch_3
-	callchannel Music_Route4BW_Ch4_branch_3
+	sound_call Music_Route4BW_Ch4_branch_3
+	sound_call Music_Route4BW_Ch4_branch_3
 	note_type 12
 	note D_, 10
 	note D#, 1

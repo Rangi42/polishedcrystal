@@ -14,7 +14,7 @@ Music_WallyBattleORAS_Ch1:
 	tempo 192
 	volume 7, 7
 	duty_cycle 3
-	callchannel Music_WallyBattleORAS_Ch1_branch_1
+	sound_call Music_WallyBattleORAS_Ch1_branch_1
 	octave 2
 	note A_, 5
 	volume_envelope 8, 4
@@ -30,7 +30,7 @@ Music_WallyBattleORAS_Ch1:
 	note B_, 1
 	note B_, 1
 	note __, 1
-	callchannel Music_WallyBattleORAS_Ch1_branch_1
+	sound_call Music_WallyBattleORAS_Ch1_branch_1
 	octave 2
 	note A_, 5
 	volume_envelope 8, 3
@@ -178,7 +178,7 @@ Music_WallyBattleORAS_Ch1_branch_1:
 
 Music_WallyBattleORAS_Ch2:
 	duty_cycle 0
-	callchannel Music_WallyBattleORAS_Ch2_branch_1
+	sound_call Music_WallyBattleORAS_Ch2_branch_1
 	note F#, 5
 	volume_envelope 12, 3
 	note E_, 2
@@ -187,7 +187,7 @@ Music_WallyBattleORAS_Ch2:
 	note G_, 4
 	volume_envelope 12, 7
 	note G_, 9
-	callchannel Music_WallyBattleORAS_Ch2_branch_1
+	sound_call Music_WallyBattleORAS_Ch2_branch_1
 	note_type 6, 12, 7
 	note F#, 9
 	note A#, 1
@@ -310,7 +310,7 @@ Music_WallyBattleORAS_Ch3:
 	vibrato $12, $15
 	note __, 6
 Music_WallyBattleORAS_Ch3_loop_main:
-	callchannel Music_WallyBattleORAS_Ch3_branch_1
+	sound_call Music_WallyBattleORAS_Ch3_branch_1
 	octave 1
 	note E_, 1
 	note __, 1
@@ -332,7 +332,7 @@ Music_WallyBattleORAS_Ch3_loop_main:
 	note G#, 1
 	note A_, 3
 	note G_, 4
-	callchannel Music_WallyBattleORAS_Ch3_branch_1
+	sound_call Music_WallyBattleORAS_Ch3_branch_1
 	octave 1
 	note E_, 1
 	note __, 1
@@ -445,7 +445,7 @@ Music_WallyBattleORAS_Ch3_loop_1:
 	note __, 1
 	note E_, 2
 	note __, 2
-	callchannel Music_WallyBattleORAS_Ch3_branch_2
+	sound_call Music_WallyBattleORAS_Ch3_branch_2
 	octave 1
 	note E_, 2
 	octave 2
@@ -471,7 +471,7 @@ Music_WallyBattleORAS_Ch3_loop_1:
 	note __, 2
 	note D#, 2
 	note __, 2
-	callchannel Music_WallyBattleORAS_Ch3_branch_2
+	sound_call Music_WallyBattleORAS_Ch3_branch_2
 	octave 1
 	note E_, 1
 	note __, 1
@@ -566,20 +566,20 @@ Music_WallyBattleORAS_Ch4:
 	note_type 12
 	note __, 3
 Music_WallyBattleORAS_Ch4_loop_main:
-	callchannel Music_WallyBattleORAS_Ch4_branch_1
-	callchannel Music_WallyBattleORAS_Ch4_branch_2
-	callchannel Music_WallyBattleORAS_Ch4_branch_2
-	callchannel Music_WallyBattleORAS_Ch4_branch_3
-	callchannel Music_WallyBattleORAS_Ch4_branch_1
-	callchannel Music_WallyBattleORAS_Ch4_branch_2
-	callchannel Music_WallyBattleORAS_Ch4_branch_4
+	sound_call Music_WallyBattleORAS_Ch4_branch_1
+	sound_call Music_WallyBattleORAS_Ch4_branch_2
+	sound_call Music_WallyBattleORAS_Ch4_branch_2
+	sound_call Music_WallyBattleORAS_Ch4_branch_3
+	sound_call Music_WallyBattleORAS_Ch4_branch_1
+	sound_call Music_WallyBattleORAS_Ch4_branch_2
+	sound_call Music_WallyBattleORAS_Ch4_branch_4
 	note E_, 1
 	note C#, 1
 	note E_, 1
 	note C#, 1
-	callchannel Music_WallyBattleORAS_Ch4_branch_1
-	callchannel Music_WallyBattleORAS_Ch4_branch_2
-	callchannel Music_WallyBattleORAS_Ch4_branch_2
+	sound_call Music_WallyBattleORAS_Ch4_branch_1
+	sound_call Music_WallyBattleORAS_Ch4_branch_2
+	sound_call Music_WallyBattleORAS_Ch4_branch_2
 	note C#, 1
 	note D#, 1
 	note D#, 1
@@ -588,17 +588,17 @@ Music_WallyBattleORAS_Ch4_loop_main:
 	note D#, 1
 	note E_, 1
 	note C#, 1
-	callchannel Music_WallyBattleORAS_Ch4_branch_1
-	callchannel Music_WallyBattleORAS_Ch4_branch_2
-	callchannel Music_WallyBattleORAS_Ch4_branch_6
+	sound_call Music_WallyBattleORAS_Ch4_branch_1
+	sound_call Music_WallyBattleORAS_Ch4_branch_2
+	sound_call Music_WallyBattleORAS_Ch4_branch_6
 	note E_, 1
 	note C#, 1
 	note D#, 1
 	note C#, 1
 Music_WallyBattleORAS_Ch4_loop_1:
-	callchannel Music_WallyBattleORAS_Ch4_branch_1
-	callchannel Music_WallyBattleORAS_Ch4_branch_5
-	callchannel Music_WallyBattleORAS_Ch4_branch_2
+	sound_call Music_WallyBattleORAS_Ch4_branch_1
+	sound_call Music_WallyBattleORAS_Ch4_branch_5
+	sound_call Music_WallyBattleORAS_Ch4_branch_2
 	note A#, 1
 	note D_, 1
 	note A#, 1
@@ -607,9 +607,9 @@ Music_WallyBattleORAS_Ch4_loop_1:
 	note B_, 2
 	note D#, 1
 	sound_loop 2, Music_WallyBattleORAS_Ch4_loop_1
-	callchannel Music_WallyBattleORAS_Ch4_branch_1
-	callchannel Music_WallyBattleORAS_Ch4_branch_5
-	callchannel Music_WallyBattleORAS_Ch4_branch_2
+	sound_call Music_WallyBattleORAS_Ch4_branch_1
+	sound_call Music_WallyBattleORAS_Ch4_branch_5
+	sound_call Music_WallyBattleORAS_Ch4_branch_2
 	note E_, 1
 	note D_, 1
 	note D#, 1
@@ -618,9 +618,9 @@ Music_WallyBattleORAS_Ch4_loop_1:
 	note D#, 1
 	note E_, 1
 	note D#, 1
-	callchannel Music_WallyBattleORAS_Ch4_branch_1
-	callchannel Music_WallyBattleORAS_Ch4_branch_5
-	callchannel Music_WallyBattleORAS_Ch4_branch_6
+	sound_call Music_WallyBattleORAS_Ch4_branch_1
+	sound_call Music_WallyBattleORAS_Ch4_branch_5
+	sound_call Music_WallyBattleORAS_Ch4_branch_6
 	note E_, 1
 	note E_, 1
 	note D#, 1

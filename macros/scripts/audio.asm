@@ -293,9 +293,9 @@ MACRO sound_loop
 	dw \2 ; address
 ENDM
 
-	const callchannel_cmd
-MACRO callchannel
-	db callchannel_cmd
+	const sound_call_cmd ; $fe
+MACRO sound_call
+	db sound_call_cmd
 	dw \1 ; address
 ENDM
 

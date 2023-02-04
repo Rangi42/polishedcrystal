@@ -43,12 +43,12 @@ Music_ViridianCity_Ch1:
 	note G_, 8
 	note __, 4
 Music_ViridianCity_branch_f4039:
-	callchannel Music_ViridianCity_branch_f40c5
+	sound_call Music_ViridianCity_branch_f40c5
 	note __, 4
-	callchannel Music_ViridianCity_branch_f40c5
+	sound_call Music_ViridianCity_branch_f40c5
 	octave 4
 	note C_, 4
-	callchannel Music_ViridianCity_branch_f410f
+	sound_call Music_ViridianCity_branch_f410f
 	octave 4
 	note B_, 2
 	note G_, 2
@@ -118,7 +118,7 @@ Music_ViridianCity_branch_f4039:
 	octave 3
 	note B_, 2
 	note A_, 2
-	callchannel Music_ViridianCity_branch_f410f
+	sound_call Music_ViridianCity_branch_f410f
 	octave 4
 	note A_, 2
 	note G_, 2
@@ -306,12 +306,12 @@ Music_ViridianCity_Ch2:
 	note E_, 8
 	note __, 4
 Music_ViridianCity_branch_f414c:
-	callchannel Music_ViridianCity_branch_f41c0
+	sound_call Music_ViridianCity_branch_f41c0
 	note __, 4
-	callchannel Music_ViridianCity_branch_f41c0
+	sound_call Music_ViridianCity_branch_f41c0
 	octave 2
 	note F#, 4
-	callchannel Music_ViridianCity_branch_f4201
+	sound_call Music_ViridianCity_branch_f4201
 	note G_, 4
 	note __, 2
 	octave 3
@@ -324,7 +324,7 @@ Music_ViridianCity_branch_f414c:
 	note D_, 4
 	octave 2
 	note B_, 2
-	callchannel Music_ViridianCity_branch_f420b
+	sound_call Music_ViridianCity_branch_f420b
 	note __, 2
 	note F#, 2
 	note __, 2
@@ -333,7 +333,7 @@ Music_ViridianCity_branch_f414c:
 	note __, 1
 	note C#, 4
 	note C_, 4
-	callchannel Music_ViridianCity_branch_f4215
+	sound_call Music_ViridianCity_branch_f4215
 	note E_, 4
 	note __, 2
 	note B_, 1
@@ -360,7 +360,7 @@ Music_ViridianCity_branch_f414c:
 	octave 2
 	note A_, 2
 	note F#, 2
-	callchannel Music_ViridianCity_branch_f4201
+	sound_call Music_ViridianCity_branch_f4201
 	note G_, 4
 	note __, 2
 	note B_, 1
@@ -369,7 +369,7 @@ Music_ViridianCity_branch_f414c:
 	note __, 1
 	note B_, 4
 	note G_, 2
-	callchannel Music_ViridianCity_branch_f420b
+	sound_call Music_ViridianCity_branch_f420b
 	note __, 2
 	note F#, 2
 	note __, 2
@@ -380,7 +380,7 @@ Music_ViridianCity_branch_f414c:
 	note __, 2
 	octave 2
 	note D#, 2
-	callchannel Music_ViridianCity_branch_f4215
+	sound_call Music_ViridianCity_branch_f4215
 	note E_, 4
 	note __, 2
 	note A#, 1
@@ -544,11 +544,11 @@ Music_ViridianCity_Ch3:
 	note G_, 2
 Music_ViridianCity_branch_f4246:
 	volume_envelope 1, 3
-	callchannel Music_ViridianCity_branch_f42a2
+	sound_call Music_ViridianCity_branch_f42a2
 	octave 5
 	note F#, 2
 	note G_, 2
-	callchannel Music_ViridianCity_branch_f42a2
+	sound_call Music_ViridianCity_branch_f42a2
 	note E_, 4
 	vibrato $18, $25
 	volume_envelope 2, 5
@@ -691,25 +691,25 @@ Music_ViridianCity_branch_f42a2:
 Music_ViridianCity_Ch4:
 	toggle_noise 3
 	note_type 12
-	callchannel Music_ViridianCity_branch_f431d
-	callchannel Music_ViridianCity_branch_f432c
+	sound_call Music_ViridianCity_branch_f431d
+	sound_call Music_ViridianCity_branch_f432c
 Music_ViridianCity_branch_f42e9:
-	callchannel Music_ViridianCity_branch_f431d
-	callchannel Music_ViridianCity_branch_f431d
-	callchannel Music_ViridianCity_branch_f431d
-	callchannel Music_ViridianCity_branch_f432c
-	callchannel Music_ViridianCity_branch_f431d
-	callchannel Music_ViridianCity_branch_f431d
-	callchannel Music_ViridianCity_branch_f431d
-	callchannel Music_ViridianCity_branch_f432c
-	callchannel Music_ViridianCity_branch_f433b
-	callchannel Music_ViridianCity_branch_f434b
-	callchannel Music_ViridianCity_branch_f433b
-	callchannel Music_ViridianCity_branch_f433b
-	callchannel Music_ViridianCity_branch_f433b
-	callchannel Music_ViridianCity_branch_f434b
-	callchannel Music_ViridianCity_branch_f433b
-	callchannel Music_ViridianCity_branch_f433b
+	sound_call Music_ViridianCity_branch_f431d
+	sound_call Music_ViridianCity_branch_f431d
+	sound_call Music_ViridianCity_branch_f431d
+	sound_call Music_ViridianCity_branch_f432c
+	sound_call Music_ViridianCity_branch_f431d
+	sound_call Music_ViridianCity_branch_f431d
+	sound_call Music_ViridianCity_branch_f431d
+	sound_call Music_ViridianCity_branch_f432c
+	sound_call Music_ViridianCity_branch_f433b
+	sound_call Music_ViridianCity_branch_f434b
+	sound_call Music_ViridianCity_branch_f433b
+	sound_call Music_ViridianCity_branch_f433b
+	sound_call Music_ViridianCity_branch_f433b
+	sound_call Music_ViridianCity_branch_f434b
+	sound_call Music_ViridianCity_branch_f433b
+	sound_call Music_ViridianCity_branch_f433b
 	sound_jump Music_ViridianCity_branch_f42e9
 
 Music_ViridianCity_branch_f431d:

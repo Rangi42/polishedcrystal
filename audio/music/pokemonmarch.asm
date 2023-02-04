@@ -22,52 +22,52 @@ Music_PokemonMarch_Ch1:
 	note D_, 4
 	note_type 8, 10, 2
 Music_PokemonMarch_branch_f6e4c:
-	callchannel Music_PokemonMarch_branch_f6eae
+	sound_call Music_PokemonMarch_branch_f6eae
 	note D#, 2
 	note C_, 2
 	note D#, 2
 	note C_, 2
-	callchannel Music_PokemonMarch_branch_f6eae
+	sound_call Music_PokemonMarch_branch_f6eae
 	note D#, 2
 	note C_, 2
 	note D#, 2
 	note G_, 2
-	callchannel Music_PokemonMarch_branch_f6eae
+	sound_call Music_PokemonMarch_branch_f6eae
 	note C_, 2
 	note C_, 2
 	note D#, 2
 	note C_, 2
-	callchannel Music_PokemonMarch_branch_f6eae
+	sound_call Music_PokemonMarch_branch_f6eae
 	note D#, 2
 	note C_, 2
 	note C#, 2
 	note D#, 2
-	callchannel Music_PokemonMarch_branch_f6eb8
+	sound_call Music_PokemonMarch_branch_f6eb8
 	note F_, 2
 	note D_, 2
 	note F_, 2
 	note D_, 2
-	callchannel Music_PokemonMarch_branch_f6eb8
+	sound_call Music_PokemonMarch_branch_f6eb8
 	note F_, 2
 	note D_, 2
 	note F_, 2
 	note A_, 2
-	callchannel Music_PokemonMarch_branch_f6eb8
+	sound_call Music_PokemonMarch_branch_f6eb8
 	note D_, 2
 	note D_, 2
 	note F_, 2
 	note D_, 2
-	callchannel Music_PokemonMarch_branch_f6eb8
+	sound_call Music_PokemonMarch_branch_f6eb8
 	note F_, 2
 	note D_, 2
 	note F_, 2
 	note G_, 2
-	callchannel Music_PokemonMarch_branch_f6eb8
+	sound_call Music_PokemonMarch_branch_f6eb8
 	note F_, 2
 	note D_, 2
 	note F_, 2
 	note D_, 2
-	callchannel Music_PokemonMarch_branch_f6eae
+	sound_call Music_PokemonMarch_branch_f6eae
 	note D#, 2
 	note C_, 2
 	note D#, 2
@@ -238,15 +238,15 @@ Music_PokemonMarch_Ch3:
 	note __, 16
 	note_type 8, 1, 6
 Music_PokemonMarch_branch_f6f56:
-	callchannel Music_PokemonMarch_branch_f6fe8
+	sound_call Music_PokemonMarch_branch_f6fe8
 	note __, 2
 	octave 4
 	note D#, 2
-	callchannel Music_PokemonMarch_branch_f6fe8
+	sound_call Music_PokemonMarch_branch_f6fe8
 	octave 4
 	note G#, 2
 	note D#, 2
-	callchannel Music_PokemonMarch_branch_f6fe8
+	sound_call Music_PokemonMarch_branch_f6fe8
 	note __, 2
 	octave 4
 	note D#, 2
@@ -398,9 +398,9 @@ Music_PokemonMarch_Ch4:
 	stereo_panning TRUE, FALSE
 	toggle_noise 5
 	note_type 8
-	callchannel Music_PokemonMarch_branch_f704c
+	sound_call Music_PokemonMarch_branch_f704c
 Music_PokemonMarch_branch_f7003:
-	callchannel Music_PokemonMarch_branch_f7042
+	sound_call Music_PokemonMarch_branch_f7042
 	note C_, 4
 	note C_, 2
 	note C_, 4
@@ -413,14 +413,14 @@ Music_PokemonMarch_branch_f7003:
 	note C#, 1
 	note C#, 1
 	note_type 8
-	callchannel Music_PokemonMarch_branch_f7042
-	callchannel Music_PokemonMarch_branch_f704c
-	callchannel Music_PokemonMarch_branch_f7042
-	callchannel Music_PokemonMarch_branch_f704c
-	callchannel Music_PokemonMarch_branch_f7042
-	callchannel Music_PokemonMarch_branch_f704c
-	callchannel Music_PokemonMarch_branch_f7042
-	callchannel Music_PokemonMarch_branch_f704c
+	sound_call Music_PokemonMarch_branch_f7042
+	sound_call Music_PokemonMarch_branch_f704c
+	sound_call Music_PokemonMarch_branch_f7042
+	sound_call Music_PokemonMarch_branch_f704c
+	sound_call Music_PokemonMarch_branch_f7042
+	sound_call Music_PokemonMarch_branch_f704c
+	sound_call Music_PokemonMarch_branch_f7042
+	sound_call Music_PokemonMarch_branch_f704c
 	note C#, 4
 	note C#, 2
 	note C#, 4
@@ -433,7 +433,7 @@ Music_PokemonMarch_branch_f7003:
 	note D_, 1
 	note D_, 1
 	note_type 8
-	callchannel Music_PokemonMarch_branch_f704c
+	sound_call Music_PokemonMarch_branch_f704c
 	sound_jump Music_PokemonMarch_branch_f7003
 
 Music_PokemonMarch_branch_f7042:

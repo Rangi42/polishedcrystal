@@ -19,21 +19,21 @@ Music_ChampionBattle_Ch1:
 	volume_envelope 11, 7
 	note B_, 4
 Music_ChampionBattle_branch_ea9e2:
-	callchannel Music_ChampionBattle_branch_eaaee
+	sound_call Music_ChampionBattle_branch_eaaee
 	octave 3
 	note D#, 4
 	sound_loop 2, Music_ChampionBattle_branch_ea9e2
-	callchannel Music_ChampionBattle_branch_eaaee
+	sound_call Music_ChampionBattle_branch_eaaee
 	octave 3
 	note E_, 4
 Music_ChampionBattle_branch_ea9f0:
-	callchannel Music_ChampionBattle_branch_eaafc
+	sound_call Music_ChampionBattle_branch_eaafc
 	sound_loop 3, Music_ChampionBattle_branch_ea9f0
-	callchannel Music_ChampionBattle_branch_eab06
+	sound_call Music_ChampionBattle_branch_eab06
 Music_ChampionBattle_branch_ea9fa:
-	callchannel Music_ChampionBattle_branch_eaafc
+	sound_call Music_ChampionBattle_branch_eaafc
 	sound_loop 7, Music_ChampionBattle_branch_ea9fa
-	callchannel Music_ChampionBattle_branch_eab06
+	sound_call Music_ChampionBattle_branch_eab06
 	volume_envelope 11, 2
 	note A#, 2
 	note A#, 2
@@ -74,7 +74,7 @@ Music_ChampionBattle_branch_ea9fa:
 	note C_, 1
 	note C#, 1
 Music_ChampionBattle_branch_eaa35:
-	callchannel Music_ChampionBattle_branch_eab0f
+	sound_call Music_ChampionBattle_branch_eab0f
 	note E_, 2
 	note E_, 2
 	volume_envelope 11, 7
@@ -91,7 +91,7 @@ Music_ChampionBattle_branch_eaa3d:
 	note E_, 2
 	volume_envelope 11, 7
 	note B_, 4
-	callchannel Music_ChampionBattle_branch_eab0f
+	sound_call Music_ChampionBattle_branch_eab0f
 	note E_, 2
 	note E_, 2
 	volume_envelope 11, 7
@@ -112,10 +112,10 @@ Music_ChampionBattle_branch_eaa3d:
 	volume_envelope 11, 7
 	octave 4
 	note E_, 4
-	callchannel Music_ChampionBattle_branch_eab24
+	sound_call Music_ChampionBattle_branch_eab24
 	note B_, 4
 	note G#, 4
-	callchannel Music_ChampionBattle_branch_eab24
+	sound_call Music_ChampionBattle_branch_eab24
 	octave 4
 	note D_, 4
 	note D_, 4
@@ -193,13 +193,13 @@ Music_ChampionBattle_branch_eaabe:
 	note C_, 2
 	volume_envelope 11, 7
 	note G#, 4
-	callchannel Music_ChampionBattle_branch_eab31
+	sound_call Music_ChampionBattle_branch_eab31
 	octave 3
 	note D#, 2
 	note D#, 2
 	volume_envelope 11, 7
 	note B_, 4
-	callchannel Music_ChampionBattle_branch_eab31
+	sound_call Music_ChampionBattle_branch_eab31
 	octave 3
 	note D#, 2
 	note D#, 2
@@ -307,18 +307,18 @@ Music_ChampionBattle_Ch2:
 	note D#, 4
 	volume_envelope 12, 7
 	note D_, 4
-	callchannel Music_ChampionBattle_branch_eac4f
+	sound_call Music_ChampionBattle_branch_eac4f
 	note A#, 4
-	callchannel Music_ChampionBattle_branch_eac4f
+	sound_call Music_ChampionBattle_branch_eac4f
 	note B_, 4
-	callchannel Music_ChampionBattle_branch_eac4f
+	sound_call Music_ChampionBattle_branch_eac4f
 	octave 4
 	note C#, 4
-	callchannel Music_ChampionBattle_branch_eac5c
+	sound_call Music_ChampionBattle_branch_eac5c
 	note D_, 4
-	callchannel Music_ChampionBattle_branch_eac5c
+	sound_call Music_ChampionBattle_branch_eac5c
 	note F_, 4
-	callchannel Music_ChampionBattle_branch_eac5c
+	sound_call Music_ChampionBattle_branch_eac5c
 	note D_, 4
 	volume_envelope 12, 2
 	note D#, 2
@@ -398,10 +398,10 @@ Music_ChampionBattle_branch_eab9d:
 	note G#, 8
 	note E_, 8
 	note B_, 8
-	callchannel Music_ChampionBattle_branch_eac79
+	sound_call Music_ChampionBattle_branch_eac79
 	note E_, 4
 	note E_, 4
-	callchannel Music_ChampionBattle_branch_eac79
+	sound_call Music_ChampionBattle_branch_eac79
 	note F#, 4
 	note F#, 4
 	volume_envelope 12, 7
@@ -550,14 +550,14 @@ Music_ChampionBattle_branch_eac88:
 	note D#, 1
 	note __, 3
 	note E_, 4
-	callchannel Music_ChampionBattle_branch_ead61
-	callchannel Music_ChampionBattle_branch_ead61
-	callchannel Music_ChampionBattle_branch_ead61
-	callchannel Music_ChampionBattle_branch_ead6f
+	sound_call Music_ChampionBattle_branch_ead61
+	sound_call Music_ChampionBattle_branch_ead61
+	sound_call Music_ChampionBattle_branch_ead61
+	sound_call Music_ChampionBattle_branch_ead6f
 	note D_, 4
-	callchannel Music_ChampionBattle_branch_ead6f
+	sound_call Music_ChampionBattle_branch_ead6f
 	note A_, 4
-	callchannel Music_ChampionBattle_branch_ead6f
+	sound_call Music_ChampionBattle_branch_ead6f
 	note D_, 4
 	note D#, 1
 	note __, 1
@@ -614,7 +614,7 @@ Music_ChampionBattle_branch_eace0:
 	note E_, 2
 	note B_, 2
 	sound_loop 8, Music_ChampionBattle_branch_eace0
-	callchannel Music_ChampionBattle_branch_ead83
+	sound_call Music_ChampionBattle_branch_ead83
 	octave 3
 	note D#, 2
 	note E_, 2
@@ -625,7 +625,7 @@ Music_ChampionBattle_branch_eace0:
 	note D_, 2
 	note C#, 2
 	note C_, 2
-	callchannel Music_ChampionBattle_branch_ead83
+	sound_call Music_ChampionBattle_branch_ead83
 	octave 3
 	note D#, 2
 	note A#, 2
@@ -645,7 +645,7 @@ Music_ChampionBattle_branch_ead05:
 	note D#, 2
 	note F#, 2
 	sound_loop 16, Music_ChampionBattle_branch_ead05
-	callchannel Music_ChampionBattle_branch_ead8e
+	sound_call Music_ChampionBattle_branch_ead8e
 	octave 3
 	note E_, 2
 	note B_, 2
@@ -658,7 +658,7 @@ Music_ChampionBattle_branch_ead05:
 	octave 4
 	note D#, 2
 	note E_, 2
-	callchannel Music_ChampionBattle_branch_ead8e
+	sound_call Music_ChampionBattle_branch_ead8e
 Music_ChampionBattle_branch_ead1d:
 	octave 3
 	note E_, 2

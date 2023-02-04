@@ -17,19 +17,19 @@ Music_GameCorner_branch_edd84:
 	note __, 16
 	note __, 16
 	note __, 16
-	callchannel Music_GameCorner_branch_ede03
-	callchannel Music_GameCorner_branch_ede03
-	callchannel Music_GameCorner_branch_ede03
-	callchannel Music_GameCorner_branch_ede13
+	sound_call Music_GameCorner_branch_ede03
+	sound_call Music_GameCorner_branch_ede03
+	sound_call Music_GameCorner_branch_ede03
+	sound_call Music_GameCorner_branch_ede13
 	note __, 16
 	note __, 16
 	note __, 16
 	note __, 16
 	note __, 16
-	callchannel Music_GameCorner_branch_ede03
-	callchannel Music_GameCorner_branch_ede03
-	callchannel Music_GameCorner_branch_ede03
-	callchannel Music_GameCorner_branch_ede13
+	sound_call Music_GameCorner_branch_ede03
+	sound_call Music_GameCorner_branch_ede03
+	sound_call Music_GameCorner_branch_ede03
+	sound_call Music_GameCorner_branch_ede13
 	octave 3
 	note __, 2
 	note G#, 3
@@ -142,7 +142,7 @@ Music_GameCorner_Ch2:
 Music_GameCorner_branch_ede25:
 	volume_envelope 9, 2
 	duty_cycle 1
-	callchannel Music_GameCorner_branch_ede75
+	sound_call Music_GameCorner_branch_ede75
 	octave 1
 	note F_, 2
 	octave 3
@@ -158,7 +158,7 @@ Music_GameCorner_branch_ede25:
 	note A#, 1
 	octave 4
 	note C_, 3
-	callchannel Music_GameCorner_branch_ede75
+	sound_call Music_GameCorner_branch_ede75
 	octave 4
 	note F_, 2
 	note D#, 2
@@ -323,25 +323,25 @@ Music_GameCorner_Ch3:
 Music_GameCorner_branch_edeef:
 	stereo_panning TRUE, TRUE
 	note_type 12, 1, 4
-	callchannel Music_GameCorner_branch_edfdd
-	callchannel Music_GameCorner_branch_edff8
+	sound_call Music_GameCorner_branch_edfdd
+	sound_call Music_GameCorner_branch_edff8
 	octave 4
 	note G_, 1
 	note A_, 3
-	callchannel Music_GameCorner_branch_edfdd
-	callchannel Music_GameCorner_branch_edff8
+	sound_call Music_GameCorner_branch_edfdd
+	sound_call Music_GameCorner_branch_edff8
 	octave 4
 	note A#, 1
 	octave 5
 	note C_, 3
 	stereo_panning TRUE, FALSE
-	callchannel Music_GameCorner_branch_edfdd
-	callchannel Music_GameCorner_branch_ee00c
-	callchannel Music_GameCorner_branch_edfdd
-	callchannel Music_GameCorner_branch_ee024
-	callchannel Music_GameCorner_branch_edfdd
-	callchannel Music_GameCorner_branch_ee00c
-	callchannel Music_GameCorner_branch_edfdd
+	sound_call Music_GameCorner_branch_edfdd
+	sound_call Music_GameCorner_branch_ee00c
+	sound_call Music_GameCorner_branch_edfdd
+	sound_call Music_GameCorner_branch_ee024
+	sound_call Music_GameCorner_branch_edfdd
+	sound_call Music_GameCorner_branch_ee00c
+	sound_call Music_GameCorner_branch_edfdd
 	stereo_panning TRUE, TRUE
 	octave 2
 	note F_, 1
@@ -364,25 +364,25 @@ Music_GameCorner_branch_edeef:
 	note D#, 1
 	note F_, 1
 	note __, 2
-	callchannel Music_GameCorner_branch_edfdd
-	callchannel Music_GameCorner_branch_edff8
+	sound_call Music_GameCorner_branch_edfdd
+	sound_call Music_GameCorner_branch_edff8
 	octave 4
 	note G_, 1
 	note A_, 3
-	callchannel Music_GameCorner_branch_edfdd
-	callchannel Music_GameCorner_branch_edff8
+	sound_call Music_GameCorner_branch_edfdd
+	sound_call Music_GameCorner_branch_edff8
 	octave 4
 	note A#, 1
 	octave 5
 	note C_, 3
 	stereo_panning TRUE, FALSE
-	callchannel Music_GameCorner_branch_edfdd
-	callchannel Music_GameCorner_branch_ee00c
-	callchannel Music_GameCorner_branch_edfdd
-	callchannel Music_GameCorner_branch_ee024
-	callchannel Music_GameCorner_branch_edfdd
-	callchannel Music_GameCorner_branch_ee00c
-	callchannel Music_GameCorner_branch_edfdd
+	sound_call Music_GameCorner_branch_edfdd
+	sound_call Music_GameCorner_branch_ee00c
+	sound_call Music_GameCorner_branch_edfdd
+	sound_call Music_GameCorner_branch_ee024
+	sound_call Music_GameCorner_branch_edfdd
+	sound_call Music_GameCorner_branch_ee00c
+	sound_call Music_GameCorner_branch_edfdd
 	octave 2
 	note F_, 1
 	octave 3
@@ -410,7 +410,7 @@ Music_GameCorner_branch_edeef:
 	note A#, 1
 	note __, 1
 	volume_envelope 1, 5
-	callchannel Music_GameCorner_branch_ee03f
+	sound_call Music_GameCorner_branch_ee03f
 	octave 2
 	note C_, 2
 	note __, 1
@@ -455,7 +455,7 @@ Music_GameCorner_branch_edeef:
 	note __, 1
 	octave 3
 	note F_, 1
-	callchannel Music_GameCorner_branch_ee03f
+	sound_call Music_GameCorner_branch_ee03f
 	octave 2
 	note G_, 2
 	note __, 1
@@ -670,7 +670,7 @@ Music_GameCorner_Ch4:
 	note D_, 1
 	note D_, 1
 Music_GameCorner_branch_ee07f:
-	callchannel Music_GameCorner_branch_ee106
+	sound_call Music_GameCorner_branch_ee106
 Music_GameCorner_branch_ee082:
 	note A#, 2
 	note F#, 2
@@ -681,7 +681,7 @@ Music_GameCorner_branch_ee082:
 	note D_, 2
 	note F#, 2
 	sound_loop 6, Music_GameCorner_branch_ee082
-	callchannel Music_GameCorner_branch_ee10f
+	sound_call Music_GameCorner_branch_ee10f
 Music_GameCorner_branch_ee091:
 	note A#, 2
 	note F#, 2
@@ -696,7 +696,7 @@ Music_GameCorner_branch_ee091:
 	note D_, 1
 	note D_, 1
 	note F#, 2
-	callchannel Music_GameCorner_branch_ee106
+	sound_call Music_GameCorner_branch_ee106
 Music_GameCorner_branch_ee0a4:
 	note A#, 2
 	note F#, 2
@@ -707,7 +707,7 @@ Music_GameCorner_branch_ee0a4:
 	note D_, 2
 	note F#, 2
 	sound_loop 6, Music_GameCorner_branch_ee0a4
-	callchannel Music_GameCorner_branch_ee10f
+	sound_call Music_GameCorner_branch_ee10f
 Music_GameCorner_branch_ee0b3:
 	note A#, 2
 	note F#, 2

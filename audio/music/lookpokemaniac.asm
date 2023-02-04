@@ -92,9 +92,9 @@ Music_LookPokemaniac_Ch3:
 	note C_, 4
 	volume_envelope 1, 0
 Music_LookPokemaniac_branch_ebe62:
-	callchannel Music_LookPokemaniac_branch_ebe70
+	sound_call Music_LookPokemaniac_branch_ebe70
 	volume_envelope 1, 4
-	callchannel Music_LookPokemaniac_branch_ebe70
+	sound_call Music_LookPokemaniac_branch_ebe70
 	volume_envelope 1, 0
 	sound_jump Music_LookPokemaniac_branch_ebe62
 

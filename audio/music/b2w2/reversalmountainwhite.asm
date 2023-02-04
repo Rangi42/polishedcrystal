@@ -18,11 +18,11 @@ Music_ReversalMountainWhite2_Ch1:
 	vibrato $10, $22
 	note_type 12, 6, 2
 	note __, 1
-	callchannel Music_ReversalMountainWhite2_Ch1_branch_1
+	sound_call Music_ReversalMountainWhite2_Ch1_branch_1
 Music_ReversalMountainWhite2_Ch1_loop:
 	octave 4
 	note C_, 2
-	callchannel Music_ReversalMountainWhite2_Ch1_branch_1
+	sound_call Music_ReversalMountainWhite2_Ch1_branch_1
 	duty_cycle 0
 	note_type 6, 9, 4
 	octave 3
@@ -289,11 +289,11 @@ Music_ReversalMountainWhite2_Ch2:
 	duty_cycle 3
 	vibrato $1c, $12
 	note_type 12, 6, 2
-	callchannel Music_ReversalMountainWhite2_Ch1_branch_1
+	sound_call Music_ReversalMountainWhite2_Ch1_branch_1
 Music_ReversalMountainWhite2_Ch2_loop:
 	octave 4
 	note C_, 2
-	callchannel Music_ReversalMountainWhite2_Ch1_branch_1
+	sound_call Music_ReversalMountainWhite2_Ch1_branch_1
 	octave 4
 	note C_, 1
 	duty_cycle 0
@@ -974,42 +974,42 @@ Music_ReversalMountainWhite2_Ch4:
 	note __, 16
 	note __, 15
 Music_ReversalMountainWhite2_Ch4_loop:
-	callchannel Music_ReversalMountainWhite2_Ch4_branch_1
-	callchannel Music_ReversalMountainWhite2_Ch4_branch_1
-	callchannel Music_ReversalMountainWhite2_Ch4_branch_1
-	callchannel Music_ReversalMountainWhite2_Ch4_branch_2
-	callchannel Music_ReversalMountainWhite2_Ch4_branch_1
-	callchannel Music_ReversalMountainWhite2_Ch4_branch_1
-	callchannel Music_ReversalMountainWhite2_Ch4_branch_1
-	callchannel Music_ReversalMountainWhite2_Ch4_branch_2
-	callchannel Music_ReversalMountainWhite2_Ch4_branch_2
-	callchannel Music_ReversalMountainWhite2_Ch4_branch_1
-	callchannel Music_ReversalMountainWhite2_Ch4_branch_2
-	callchannel Music_ReversalMountainWhite2_Ch4_branch_1
-	callchannel Music_ReversalMountainWhite2_Ch4_branch_1
-	callchannel Music_ReversalMountainWhite2_Ch4_branch_1
-	callchannel Music_ReversalMountainWhite2_Ch4_branch_1
-	callchannel Music_ReversalMountainWhite2_Ch4_branch_2
+	sound_call Music_ReversalMountainWhite2_Ch4_branch_1
+	sound_call Music_ReversalMountainWhite2_Ch4_branch_1
+	sound_call Music_ReversalMountainWhite2_Ch4_branch_1
+	sound_call Music_ReversalMountainWhite2_Ch4_branch_2
+	sound_call Music_ReversalMountainWhite2_Ch4_branch_1
+	sound_call Music_ReversalMountainWhite2_Ch4_branch_1
+	sound_call Music_ReversalMountainWhite2_Ch4_branch_1
+	sound_call Music_ReversalMountainWhite2_Ch4_branch_2
+	sound_call Music_ReversalMountainWhite2_Ch4_branch_2
+	sound_call Music_ReversalMountainWhite2_Ch4_branch_1
+	sound_call Music_ReversalMountainWhite2_Ch4_branch_2
+	sound_call Music_ReversalMountainWhite2_Ch4_branch_1
+	sound_call Music_ReversalMountainWhite2_Ch4_branch_1
+	sound_call Music_ReversalMountainWhite2_Ch4_branch_1
+	sound_call Music_ReversalMountainWhite2_Ch4_branch_1
+	sound_call Music_ReversalMountainWhite2_Ch4_branch_2
 	note __, 16
 	note __, 16
 	note __, 16
 	note __, 16
-	callchannel Music_ReversalMountainWhite2_Ch4_branch_2
-	callchannel Music_ReversalMountainWhite2_Ch4_branch_1
-	callchannel Music_ReversalMountainWhite2_Ch4_branch_2
-	callchannel Music_ReversalMountainWhite2_Ch4_branch_1
-	callchannel Music_ReversalMountainWhite2_Ch4_branch_2
-	callchannel Music_ReversalMountainWhite2_Ch4_branch_1
-	callchannel Music_ReversalMountainWhite2_Ch4_branch_1
-	callchannel Music_ReversalMountainWhite2_Ch4_branch_1
-	callchannel Music_ReversalMountainWhite2_Ch4_branch_2
-	callchannel Music_ReversalMountainWhite2_Ch4_branch_1
-	callchannel Music_ReversalMountainWhite2_Ch4_branch_2
-	callchannel Music_ReversalMountainWhite2_Ch4_branch_1
-	callchannel Music_ReversalMountainWhite2_Ch4_branch_2
-	callchannel Music_ReversalMountainWhite2_Ch4_branch_1
-	callchannel Music_ReversalMountainWhite2_Ch4_branch_1
-	callchannel Music_ReversalMountainWhite2_Ch4_branch_1
+	sound_call Music_ReversalMountainWhite2_Ch4_branch_2
+	sound_call Music_ReversalMountainWhite2_Ch4_branch_1
+	sound_call Music_ReversalMountainWhite2_Ch4_branch_2
+	sound_call Music_ReversalMountainWhite2_Ch4_branch_1
+	sound_call Music_ReversalMountainWhite2_Ch4_branch_2
+	sound_call Music_ReversalMountainWhite2_Ch4_branch_1
+	sound_call Music_ReversalMountainWhite2_Ch4_branch_1
+	sound_call Music_ReversalMountainWhite2_Ch4_branch_1
+	sound_call Music_ReversalMountainWhite2_Ch4_branch_2
+	sound_call Music_ReversalMountainWhite2_Ch4_branch_1
+	sound_call Music_ReversalMountainWhite2_Ch4_branch_2
+	sound_call Music_ReversalMountainWhite2_Ch4_branch_1
+	sound_call Music_ReversalMountainWhite2_Ch4_branch_2
+	sound_call Music_ReversalMountainWhite2_Ch4_branch_1
+	sound_call Music_ReversalMountainWhite2_Ch4_branch_1
+	sound_call Music_ReversalMountainWhite2_Ch4_branch_1
 	note D#, 3
 	note D#, 2
 	note __, 11

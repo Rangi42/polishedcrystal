@@ -11,7 +11,7 @@ Music_LookSage_Ch1:
 	note_type 12, 11, 3
 	note __, 2
 	note __, 16
-	callchannel Music_LookSage_branch_ee3fa
+	sound_call Music_LookSage_branch_ee3fa
 	volume_envelope 11, 3
 	octave 3
 	note D_, 2
@@ -99,7 +99,7 @@ Music_LookSage_branch_ee38e:
 	note B_, 2
 	volume_envelope 9, 3
 	note B_, 2
-	callchannel Music_LookSage_branch_ee3fa
+	sound_call Music_LookSage_branch_ee3fa
 	sound_jump Music_LookSage_branch_ee38e
 
 Music_LookSage_branch_ee3fa:

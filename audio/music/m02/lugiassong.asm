@@ -290,14 +290,14 @@ Music_LugiasSong2000_Ch2_loop_main:
 Music_LugiasSong2000_Ch3:
 	note_type 12, 2, 3
 	vibrato $8, $16
-	callchannel Music_LugiasSong2000_Ch3_branch_1
+	sound_call Music_LugiasSong2000_Ch3_branch_1
 	note B_, 8
-	callchannel Music_LugiasSong2000_Ch3_branch_2
+	sound_call Music_LugiasSong2000_Ch3_branch_2
 Music_LugiasSong2000_Ch3_loop:
 	vibrato $8, $16
 	note_type 12, 1, 3
-	callchannel Music_LugiasSong2000_Ch3_branch_1
-	callchannel Music_LugiasSong2000_Ch3_branch_2
+	sound_call Music_LugiasSong2000_Ch3_branch_1
+	sound_call Music_LugiasSong2000_Ch3_branch_2
 	note E_, 8
 	note G_, 8
 	note F#, 12
@@ -324,7 +324,7 @@ Music_LugiasSong2000_Ch3_loop:
 	note_type 12, 1, 3
 	note B_, 12
 	note B_, 12
-	callchannel Music_LugiasSong2000_Ch3_branch_2
+	sound_call Music_LugiasSong2000_Ch3_branch_2
 	sound_jump Music_LugiasSong2000_Ch3_loop
 
 Music_LugiasSong2000_Ch3_branch_1:

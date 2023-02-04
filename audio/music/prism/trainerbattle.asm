@@ -49,15 +49,15 @@ Music_TrainerBattlePrism_Ch1:
 	note A_, 1
 	note A#, 1
 	note B_, 1
-	callchannel Music_TrainerBattlePrism_P1
+	sound_call Music_TrainerBattlePrism_P1
 	note C#, 4
-	callchannel Music_TrainerBattlePrism_P1
+	sound_call Music_TrainerBattlePrism_P1
 	note C#, 4
 	octave 4
-	callchannel Music_TrainerBattlePrism_P1
+	sound_call Music_TrainerBattlePrism_P1
 	note C#, 4
 	octave 5
-	callchannel Music_TrainerBattlePrism_P1
+	sound_call Music_TrainerBattlePrism_P1
 	octave 4
 	note G_, 4
 Music_TrainerBattlePrism_L1:
@@ -219,8 +219,8 @@ Music_TrainerBattlePrism_L1:
 	note D_, 4
 	volume_envelope 12, 4
 	vibrato $11, $12
-	callchannel Music_TrainerBattlePrism_P2
-	callchannel Music_TrainerBattlePrism_P3
+	sound_call Music_TrainerBattlePrism_P2
+	sound_call Music_TrainerBattlePrism_P3
 	note D_, 2
 	note D_, 2
 	note D_, 2
@@ -228,10 +228,10 @@ Music_TrainerBattlePrism_L1:
 	note D_, 2
 	note D_, 2
 	note D_, 2
-	callchannel Music_TrainerBattlePrism_P3
+	sound_call Music_TrainerBattlePrism_P3
 	octave 5
-	callchannel Music_TrainerBattlePrism_P2
-	callchannel Music_TrainerBattlePrism_P3
+	sound_call Music_TrainerBattlePrism_P2
+	sound_call Music_TrainerBattlePrism_P3
 	note G_, 2
 	note G_, 2
 	note G_, 2
@@ -239,7 +239,7 @@ Music_TrainerBattlePrism_L1:
 	note G_, 2
 	note G_, 2
 	note G_, 2
-	callchannel Music_TrainerBattlePrism_P2
+	sound_call Music_TrainerBattlePrism_P2
 	volume_envelope 12, 7
 	vibrato $0, $0
 	octave 4
@@ -367,28 +367,28 @@ Music_TrainerBattlePrism_Ch2:
 	note F_, 2
 	octave 2
 	note A#, 2
-	callchannel Music_TrainerBattlePrism_P4
+	sound_call Music_TrainerBattlePrism_P4
 	octave 3
-	callchannel Music_TrainerBattlePrism_P4
-	callchannel Music_TrainerBattlePrism_P5
+	sound_call Music_TrainerBattlePrism_P4
+	sound_call Music_TrainerBattlePrism_P5
 	note C_, 2
 	note G_, 2
 	note C#, 2
 	note F_, 2
-	callchannel Music_TrainerBattlePrism_P5
+	sound_call Music_TrainerBattlePrism_P5
 	note F_, 2
 	octave 4
 	note C_, 2
 	note C#, 4
 Music_TrainerBattlePrism_L2:
 	octave 3
-	callchannel Music_TrainerBattlePrism_P6
+	sound_call Music_TrainerBattlePrism_P6
 	note G#, 12
 	note G#, 2
 	note G_, 2
 	note F_, 8
 	note A#, 8
-	callchannel Music_TrainerBattlePrism_P6
+	sound_call Music_TrainerBattlePrism_P6
 	octave 4
 	note C#, 12
 	note C#, 2
@@ -444,10 +444,10 @@ Music_TrainerBattlePrism_L2:
 	volume_envelope 8, 4
 	vibrato $0, $0
 Music_TrainerBattlePrism_L3:
-	callchannel Music_TrainerBattlePrism_P7
-	callchannel Music_TrainerBattlePrism_P7
-	callchannel Music_TrainerBattlePrism_P8
-	callchannel Music_TrainerBattlePrism_P8
+	sound_call Music_TrainerBattlePrism_P7
+	sound_call Music_TrainerBattlePrism_P7
+	sound_call Music_TrainerBattlePrism_P8
+	sound_call Music_TrainerBattlePrism_P8
 	sound_loop 2, Music_TrainerBattlePrism_L3
 	duty_cycle 3
 	volume_envelope 11, 4
@@ -597,7 +597,7 @@ Music_TrainerBattlePrism_L6:
 	note C_, 4
 	note D#, 2
 	note G_, 2
-	callchannel Music_TrainerBattlePrism_P9
+	sound_call Music_TrainerBattlePrism_P9
 	note C_, 2
 	note G_, 2
 	note F_, 2
@@ -612,8 +612,8 @@ Music_TrainerBattlePrism_L7:
 	note G#, 2
 	note G_, 2
 	note G#, 2
-	callchannel Music_TrainerBattlePrism_P9
-	callchannel Music_TrainerBattlePrism_P9
+	sound_call Music_TrainerBattlePrism_P9
+	sound_call Music_TrainerBattlePrism_P9
 Music_TrainerBattlePrism_L8:
 	octave 2
 	note A#, 2
@@ -640,8 +640,8 @@ Music_TrainerBattlePrism_L9:
 	octave 3
 	note D_, 2
 	sound_loop 4, Music_TrainerBattlePrism_L9
-	callchannel Music_TrainerBattlePrism_P10
-	callchannel Music_TrainerBattlePrism_P10
+	sound_call Music_TrainerBattlePrism_P10
+	sound_call Music_TrainerBattlePrism_P10
 	octave 2
 	note A_, 3
 	note __, 1
@@ -724,9 +724,9 @@ Music_TrainerBattlePrism_L9:
 	note E_, 2
 	note F_, 2
 	note D_, 2
-	callchannel Music_TrainerBattlePrism_P11
-	callchannel Music_TrainerBattlePrism_P12
-	callchannel Music_TrainerBattlePrism_P11
+	sound_call Music_TrainerBattlePrism_P11
+	sound_call Music_TrainerBattlePrism_P12
+	sound_call Music_TrainerBattlePrism_P11
 Music_TrainerBattlePrism_L11:
 	octave 2
 	note A_, 2
@@ -737,7 +737,7 @@ Music_TrainerBattlePrism_L12:
 	note C_, 2
 	note F_, 2
 	sound_loop 4, Music_TrainerBattlePrism_L12
-	callchannel Music_TrainerBattlePrism_P12
+	sound_call Music_TrainerBattlePrism_P12
 Music_TrainerBattlePrism_L13:
 	note D_, 2
 	note G_, 2

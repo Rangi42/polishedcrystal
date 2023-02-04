@@ -72,7 +72,7 @@ Music_TitleScreenXY_Ch1_b3:
 	note C_, 2
 	note D#, 2
 	note_type 8, 11, 7
-	callchannel Music_TitleScreenXY_Ch1_b5
+	sound_call Music_TitleScreenXY_Ch1_b5
 	octave 4
 	note F#, 8 ; measure 11.3
 	note F_, 2
@@ -137,7 +137,7 @@ Music_TitleScreenXY_Ch1_b3:
 	note __, 2
 	note D_, 4
 	note __, 2
-	callchannel Music_TitleScreenXY_Ch1_b5
+	sound_call Music_TitleScreenXY_Ch1_b5
 	note F#, 8
 	note F_, 2
 	note E_, 2
@@ -157,7 +157,7 @@ Music_TitleScreenXY_Ch1_b3:
 	octave 2
 	note D_, 4
 	note __, 2
-	callchannel Music_TitleScreenXY_Ch1_b5
+	sound_call Music_TitleScreenXY_Ch1_b5
 	octave 4
 	note_type 8, 11, 7
 	note F#, 8
@@ -606,9 +606,9 @@ Music_TitleScreenXY_Ch3_b0:
 	note G_, 1
 	note __, 1
 Music_TitleScreenXY_Ch3_b1:
-	callchannel Music_TitleScreenXY_Ch3_b2
-	callchannel Music_TitleScreenXY_Ch3_b3
-	callchannel Music_TitleScreenXY_Ch3_b2
+	sound_call Music_TitleScreenXY_Ch3_b2
+	sound_call Music_TitleScreenXY_Ch3_b3
+	sound_call Music_TitleScreenXY_Ch3_b2
 	octave 2
 	note G#, 2
 	note __, 4
@@ -619,8 +619,8 @@ Music_TitleScreenXY_Ch3_b1:
 	note A#, 4
 	note __, 2
 	sound_loop 2, Music_TitleScreenXY_Ch3_b1
-	callchannel Music_TitleScreenXY_Ch3_b2
-	callchannel Music_TitleScreenXY_Ch3_b3
+	sound_call Music_TitleScreenXY_Ch3_b2
+	sound_call Music_TitleScreenXY_Ch3_b3
 	octave 2
 	note E_, 2
 	note G#, 2
@@ -646,9 +646,9 @@ Music_TitleScreenXY_Ch3_b1:
 	note __, 2
 	note A_, 4
 	note __, 2
-	callchannel Music_TitleScreenXY_Ch3_b2
-	callchannel Music_TitleScreenXY_Ch3_b3
-	callchannel Music_TitleScreenXY_Ch3_b2
+	sound_call Music_TitleScreenXY_Ch3_b2
+	sound_call Music_TitleScreenXY_Ch3_b3
+	sound_call Music_TitleScreenXY_Ch3_b2
 	octave 2
 	note A#, 2
 	octave 3
@@ -902,9 +902,9 @@ Music_TitleScreenXY_Ch4_b0:
 	note SNARE, 4
 	note SNARE, 4
 Music_TitleScreenXY_Ch4_b1:
-	callchannel Music_TitleScreenXY_Ch4_b2
-	callchannel Music_TitleScreenXY_Ch4_b2
-	callchannel Music_TitleScreenXY_Ch4_b2
+	sound_call Music_TitleScreenXY_Ch4_b2
+	sound_call Music_TitleScreenXY_Ch4_b2
+	sound_call Music_TitleScreenXY_Ch4_b2
 	note SNARE2, 8
 	note SNARE2, 12
 	note SNARE2, 4
@@ -921,9 +921,9 @@ Music_TitleScreenXY_Ch4_b1:
 	note 12, 16
 	note 12, 8
 	note_type 4
-	callchannel Music_TitleScreenXY_Ch4_b2
-	callchannel Music_TitleScreenXY_Ch4_b2
-	callchannel Music_TitleScreenXY_Ch4_b2
+	sound_call Music_TitleScreenXY_Ch4_b2
+	sound_call Music_TitleScreenXY_Ch4_b2
+	sound_call Music_TitleScreenXY_Ch4_b2
 	note SNARE2, 8
 	note SNARE2, 12
 	note SNARE2, 4

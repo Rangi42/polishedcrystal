@@ -278,7 +278,7 @@ Music_BattleFactoryRSE_Ch1_loop:
 	note __, 16
 	duty_cycle 3
 	volume_envelope 4, 2
-	callchannel Music_BattleFactoryRSE_Ch2_branch_1
+	sound_call Music_BattleFactoryRSE_Ch2_branch_1
 	note G_, 2
 	octave 2
 	note B_, 2
@@ -755,7 +755,7 @@ Music_BattleFactoryRSE_Ch2_loop:
 	note E_, 2
 	duty_cycle 3
 	octave 3
-	callchannel Music_BattleFactoryRSE_Ch2_branch_1
+	sound_call Music_BattleFactoryRSE_Ch2_branch_1
 	note G_, 2
 	octave 2
 	note B_, 2
@@ -937,8 +937,8 @@ Music_BattleFactoryRSE_Ch2_loop:
 	duty_cycle 3
 	octave 3
 	volume_envelope 4, 2
-	callchannel Music_BattleFactoryRSE_Ch2_branch_1
-	callchannel Music_BattleFactoryRSE_Ch2_branch_1
+	sound_call Music_BattleFactoryRSE_Ch2_branch_1
+	sound_call Music_BattleFactoryRSE_Ch2_branch_1
 	octave 4
 	note D_, 2
 	note D_, 2
@@ -1097,42 +1097,42 @@ Music_BattleFactoryRSE_Ch3_loop:
 	octave 3
 	note E_, 1
 	note __, 1
-	callchannel Music_BattleFactoryRSE_Ch3_branch_1
+	sound_call Music_BattleFactoryRSE_Ch3_branch_1
 
-	callchannel Music_BattleFactoryRSE_Ch3_branch_1
-	callchannel Music_BattleFactoryRSE_Ch3_branch_1
-	callchannel Music_BattleFactoryRSE_Ch3_branch_1
-	callchannel Music_BattleFactoryRSE_Ch3_branch_1
+	sound_call Music_BattleFactoryRSE_Ch3_branch_1
+	sound_call Music_BattleFactoryRSE_Ch3_branch_1
+	sound_call Music_BattleFactoryRSE_Ch3_branch_1
+	sound_call Music_BattleFactoryRSE_Ch3_branch_1
 
-	callchannel Music_BattleFactoryRSE_Ch3_branch_1
-	callchannel Music_BattleFactoryRSE_Ch3_branch_1
-	callchannel Music_BattleFactoryRSE_Ch3_branch_1
-	callchannel Music_BattleFactoryRSE_Ch3_branch_1
+	sound_call Music_BattleFactoryRSE_Ch3_branch_1
+	sound_call Music_BattleFactoryRSE_Ch3_branch_1
+	sound_call Music_BattleFactoryRSE_Ch3_branch_1
+	sound_call Music_BattleFactoryRSE_Ch3_branch_1
 
-	callchannel Music_BattleFactoryRSE_Ch3_branch_1
-	callchannel Music_BattleFactoryRSE_Ch3_branch_1
-	callchannel Music_BattleFactoryRSE_Ch3_branch_1
-	callchannel Music_BattleFactoryRSE_Ch3_branch_1
+	sound_call Music_BattleFactoryRSE_Ch3_branch_1
+	sound_call Music_BattleFactoryRSE_Ch3_branch_1
+	sound_call Music_BattleFactoryRSE_Ch3_branch_1
+	sound_call Music_BattleFactoryRSE_Ch3_branch_1
 
-	callchannel Music_BattleFactoryRSE_Ch3_branch_1
-	callchannel Music_BattleFactoryRSE_Ch3_branch_1
-	callchannel Music_BattleFactoryRSE_Ch3_branch_1
-	callchannel Music_BattleFactoryRSE_Ch3_branch_1
+	sound_call Music_BattleFactoryRSE_Ch3_branch_1
+	sound_call Music_BattleFactoryRSE_Ch3_branch_1
+	sound_call Music_BattleFactoryRSE_Ch3_branch_1
+	sound_call Music_BattleFactoryRSE_Ch3_branch_1
 
-	callchannel Music_BattleFactoryRSE_Ch3_branch_1
-	callchannel Music_BattleFactoryRSE_Ch3_branch_1
-	callchannel Music_BattleFactoryRSE_Ch3_branch_1
-	callchannel Music_BattleFactoryRSE_Ch3_branch_1
+	sound_call Music_BattleFactoryRSE_Ch3_branch_1
+	sound_call Music_BattleFactoryRSE_Ch3_branch_1
+	sound_call Music_BattleFactoryRSE_Ch3_branch_1
+	sound_call Music_BattleFactoryRSE_Ch3_branch_1
 
-	callchannel Music_BattleFactoryRSE_Ch3_branch_1
-	callchannel Music_BattleFactoryRSE_Ch3_branch_1
-	callchannel Music_BattleFactoryRSE_Ch3_branch_1
-	callchannel Music_BattleFactoryRSE_Ch3_branch_1
+	sound_call Music_BattleFactoryRSE_Ch3_branch_1
+	sound_call Music_BattleFactoryRSE_Ch3_branch_1
+	sound_call Music_BattleFactoryRSE_Ch3_branch_1
+	sound_call Music_BattleFactoryRSE_Ch3_branch_1
 
-	callchannel Music_BattleFactoryRSE_Ch3_branch_2
-	callchannel Music_BattleFactoryRSE_Ch3_branch_1
-	callchannel Music_BattleFactoryRSE_Ch3_branch_1
-	callchannel Music_BattleFactoryRSE_Ch3_branch_1
+	sound_call Music_BattleFactoryRSE_Ch3_branch_2
+	sound_call Music_BattleFactoryRSE_Ch3_branch_1
+	sound_call Music_BattleFactoryRSE_Ch3_branch_1
+	sound_call Music_BattleFactoryRSE_Ch3_branch_1
 
 	volume_envelope 1, 8
 	octave 4
@@ -1157,13 +1157,13 @@ Music_BattleFactoryRSE_Ch3_loop:
 	note D_, 2
 	note F#, 2
 	note G_, 2
-	callchannel Music_BattleFactoryRSE_Ch3_branch_1
-	callchannel Music_BattleFactoryRSE_Ch3_branch_1
-	callchannel Music_BattleFactoryRSE_Ch3_branch_1
+	sound_call Music_BattleFactoryRSE_Ch3_branch_1
+	sound_call Music_BattleFactoryRSE_Ch3_branch_1
+	sound_call Music_BattleFactoryRSE_Ch3_branch_1
 
-	callchannel Music_BattleFactoryRSE_Ch3_branch_1
-	callchannel Music_BattleFactoryRSE_Ch3_branch_3
-	callchannel Music_BattleFactoryRSE_Ch3_branch_1
+	sound_call Music_BattleFactoryRSE_Ch3_branch_1
+	sound_call Music_BattleFactoryRSE_Ch3_branch_3
+	sound_call Music_BattleFactoryRSE_Ch3_branch_1
 	sound_jump Music_BattleFactoryRSE_Ch3_loop
 
 Music_BattleFactoryRSE_Ch3_branch_1:

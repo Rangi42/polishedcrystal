@@ -73,7 +73,7 @@ Music_EcruteakCity_branch_ef2e5:
 	note G_, 4
 	note __, 8
 	volume_envelope 5, 2
-	callchannel Music_EcruteakCity_branch_ef37f
+	sound_call Music_EcruteakCity_branch_ef37f
 	note D_, 2
 	octave 4
 	note B_, 2
@@ -95,7 +95,7 @@ Music_EcruteakCity_branch_ef2e5:
 	note B_, 2
 	note A_, 2
 	note B_, 2
-	callchannel Music_EcruteakCity_branch_ef391
+	sound_call Music_EcruteakCity_branch_ef391
 	volume_envelope 5, 2
 	note A#, 2
 	note G_, 2
@@ -116,7 +116,7 @@ Music_EcruteakCity_branch_ef2e5:
 	note G_, 2
 	note E_, 2
 	note C#, 2
-	callchannel Music_EcruteakCity_branch_ef37f
+	sound_call Music_EcruteakCity_branch_ef37f
 	note D_, 2
 	note C_, 2
 	octave 4
@@ -143,7 +143,7 @@ Music_EcruteakCity_branch_ef2e5:
 	note G#, 2
 	octave 5
 	note C_, 2
-	callchannel Music_EcruteakCity_branch_ef391
+	sound_call Music_EcruteakCity_branch_ef391
 	sound_jump Music_EcruteakCity_branch_ef2e5
 
 Music_EcruteakCity_branch_ef37f:
@@ -575,7 +575,7 @@ Music_EcruteakCity_branch_ef4e3:
 	note B_, 2
 	octave 4
 	note D_, 2
-	callchannel Music_EcruteakCity_branch_ef569
+	sound_call Music_EcruteakCity_branch_ef569
 	octave 4
 	note C_, 8
 	note E_, 8
@@ -586,7 +586,7 @@ Music_EcruteakCity_branch_ef4e3:
 	note E_, 8
 	note C#, 8
 	note_type 12, 2, 5
-	callchannel Music_EcruteakCity_branch_ef569
+	sound_call Music_EcruteakCity_branch_ef569
 	octave 4
 	note C_, 8
 	octave 3

@@ -16,7 +16,7 @@ Music_JohtoWildBattleNight_Ch2:
 	duty_cycle 3
 	vibrato $20, $36
 	pitch_offset 1
-	callchannel Music_JohtoWildBattleNight_branch_f5f5d
+	sound_call Music_JohtoWildBattleNight_branch_f5f5d
 	note_type 12, 12, 2
 	octave 4
 	note G_, 6

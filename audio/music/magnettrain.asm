@@ -240,8 +240,8 @@ Music_MagnetTrain_Ch4:
 	note A#, 4
 	note D_, 2
 	note D_, 2
-	callchannel Music_MagnetTrain_branch_ef71e
-	callchannel Music_MagnetTrain_branch_ef71e
+	sound_call Music_MagnetTrain_branch_ef71e
+	sound_call Music_MagnetTrain_branch_ef71e
 	note_type 12
 	note B_, 16
 	endchannel

@@ -105,10 +105,10 @@ Music_MountPyreRSE_Ch2:
 	note __, 1
 Music_MountPyreRSE_Ch2_loop_main:
 	duty_cycle 2
-	callchannel Music_MountPyreRSE_Ch2_branch_1
-	callchannel Music_MountPyreRSE_Ch2_branch_1
-	callchannel Music_MountPyreRSE_Ch2_branch_2
-	callchannel Music_MountPyreRSE_Ch2_branch_2
+	sound_call Music_MountPyreRSE_Ch2_branch_1
+	sound_call Music_MountPyreRSE_Ch2_branch_1
+	sound_call Music_MountPyreRSE_Ch2_branch_2
+	sound_call Music_MountPyreRSE_Ch2_branch_2
 	note_type 6, 10, 3
 	note __, 10
 Music_MountPyreRSE_Ch2_loop_1:
@@ -382,16 +382,16 @@ Music_MountPyreRSE_Ch4:
 ;	note B_, 8
 Music_MountPyreRSE_Ch4_loop_main:
 Music_MountPyreRSE_Ch4_loop_1:
-	callchannel Music_MountPyreRSE_Ch4_branch_1
+	sound_call Music_MountPyreRSE_Ch4_branch_1
 	sound_loop 4, Music_MountPyreRSE_Ch4_loop_1
 Music_MountPyreRSE_Ch4_loop_2:
-	callchannel Music_MountPyreRSE_Ch4_branch_2
+	sound_call Music_MountPyreRSE_Ch4_branch_2
 	sound_loop 8, Music_MountPyreRSE_Ch4_loop_2
 Music_MountPyreRSE_Ch4_loop_3:
-	callchannel Music_MountPyreRSE_Ch4_branch_1
+	sound_call Music_MountPyreRSE_Ch4_branch_1
 	sound_loop 4, Music_MountPyreRSE_Ch4_loop_3
 Music_MountPyreRSE_Ch4_loop_4:
-	callchannel Music_MountPyreRSE_Ch4_branch_2
+	sound_call Music_MountPyreRSE_Ch4_branch_2
 	sound_loop 8, Music_MountPyreRSE_Ch4_loop_4
 	note __, 16
 	note __, 16

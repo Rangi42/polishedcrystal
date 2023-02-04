@@ -507,20 +507,20 @@ BicycleXY_Ch4::
 	note __, 6
 
 BicycleXY_Ch4_0:
-	callchannel BicycleXY_Ch4_sub_0
-	callchannel BicycleXY_Ch4_sub_0
-	callchannel BicycleXY_Ch4_sub_0
-	callchannel BicycleXY_Ch4_sub_0
-	callchannel BicycleXY_Ch4_sub_0
-	callchannel BicycleXY_Ch4_sub_0
-	callchannel BicycleXY_Ch4_sub_0
-	callchannel BicycleXY_Ch4_sub_0
-	callchannel BicycleXY_Ch4_sub_1
-	callchannel BicycleXY_Ch4_sub_1
-	callchannel BicycleXY_Ch4_sub_1
-	callchannel BicycleXY_Ch4_sub_1
-	callchannel BicycleXY_Ch4_sub_1
-	callchannel BicycleXY_Ch4_sub_1
+	sound_call BicycleXY_Ch4_sub_0
+	sound_call BicycleXY_Ch4_sub_0
+	sound_call BicycleXY_Ch4_sub_0
+	sound_call BicycleXY_Ch4_sub_0
+	sound_call BicycleXY_Ch4_sub_0
+	sound_call BicycleXY_Ch4_sub_0
+	sound_call BicycleXY_Ch4_sub_0
+	sound_call BicycleXY_Ch4_sub_0
+	sound_call BicycleXY_Ch4_sub_1
+	sound_call BicycleXY_Ch4_sub_1
+	sound_call BicycleXY_Ch4_sub_1
+	sound_call BicycleXY_Ch4_sub_1
+	sound_call BicycleXY_Ch4_sub_1
+	sound_call BicycleXY_Ch4_sub_1
 	note __, 4
 	note A#, 4
 	note B_, 8

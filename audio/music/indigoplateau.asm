@@ -12,16 +12,16 @@ Music_IndigoPlateau_Ch1:
 	pitch_offset 2
 	stereo_panning FALSE, TRUE
 Music_IndigoPlateau_branch_ee86a:
-	callchannel Music_IndigoPlateau_branch_ee881
+	sound_call Music_IndigoPlateau_branch_ee881
 	octave 3
 	note D_, 4
-	callchannel Music_IndigoPlateau_branch_ee881
+	sound_call Music_IndigoPlateau_branch_ee881
 	octave 3
 	note D#, 4
-	callchannel Music_IndigoPlateau_branch_ee881
+	sound_call Music_IndigoPlateau_branch_ee881
 	octave 3
 	note D#, 4
-	callchannel Music_IndigoPlateau_branch_ee881
+	sound_call Music_IndigoPlateau_branch_ee881
 	note A#, 4
 	sound_jump Music_IndigoPlateau_branch_ee86a
 
@@ -45,13 +45,13 @@ Music_IndigoPlateau_Ch2:
 	vibrato $10, $22
 	stereo_panning TRUE, FALSE
 Music_IndigoPlateau_branch_ee899:
-	callchannel Music_IndigoPlateau_branch_ee8e9
+	sound_call Music_IndigoPlateau_branch_ee8e9
 	note A_, 4
-	callchannel Music_IndigoPlateau_branch_ee8e9
+	sound_call Music_IndigoPlateau_branch_ee8e9
 	note A#, 4
-	callchannel Music_IndigoPlateau_branch_ee8e9
+	sound_call Music_IndigoPlateau_branch_ee8e9
 	note A_, 4
-	callchannel Music_IndigoPlateau_branch_ee8e9
+	sound_call Music_IndigoPlateau_branch_ee8e9
 	note C#, 4
 	volume_envelope 12, 7
 	note A_, 6
@@ -61,7 +61,7 @@ Music_IndigoPlateau_branch_ee899:
 	note A_, 8
 	volume_envelope 11, 0
 	note A_, 4
-	callchannel Music_IndigoPlateau_branch_ee8e9
+	sound_call Music_IndigoPlateau_branch_ee8e9
 	note A#, 4
 	volume_envelope 12, 7
 	octave 4
@@ -72,7 +72,7 @@ Music_IndigoPlateau_branch_ee899:
 	volume_envelope 11, 0
 	octave 3
 	note A_, 4
-	callchannel Music_IndigoPlateau_branch_ee8e9
+	sound_call Music_IndigoPlateau_branch_ee8e9
 	note C#, 4
 	volume_envelope 12, 7
 	octave 4
@@ -84,7 +84,7 @@ Music_IndigoPlateau_branch_ee899:
 	note F#, 8
 	volume_envelope 11, 0
 	note A_, 4
-	callchannel Music_IndigoPlateau_branch_ee8e9
+	sound_call Music_IndigoPlateau_branch_ee8e9
 	note A#, 4
 	volume_envelope 12, 7
 	octave 4
@@ -95,7 +95,7 @@ Music_IndigoPlateau_branch_ee899:
 	volume_envelope 11, 0
 	octave 3
 	note A_, 4
-	callchannel Music_IndigoPlateau_branch_ee8e9
+	sound_call Music_IndigoPlateau_branch_ee8e9
 	note C#, 4
 	sound_jump Music_IndigoPlateau_branch_ee899
 
@@ -117,16 +117,16 @@ Music_IndigoPlateau_branch_ee8e9:
 Music_IndigoPlateau_Ch3:
 	note_type 12, 1, -1
 Music_IndigoPlateau_branch_ee8fd:
-	callchannel Music_IndigoPlateau_branch_ee915
+	sound_call Music_IndigoPlateau_branch_ee915
 	octave 3
 	note A_, 4
-	callchannel Music_IndigoPlateau_branch_ee915
+	sound_call Music_IndigoPlateau_branch_ee915
 	octave 3
 	note A_, 4
-	callchannel Music_IndigoPlateau_branch_ee915
+	sound_call Music_IndigoPlateau_branch_ee915
 	octave 3
 	note A_, 4
-	callchannel Music_IndigoPlateau_branch_ee915
+	sound_call Music_IndigoPlateau_branch_ee915
 	octave 3
 	note F#, 4
 	sound_jump Music_IndigoPlateau_branch_ee8fd

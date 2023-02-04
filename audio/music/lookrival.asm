@@ -229,7 +229,7 @@ Music_LookRival_Ch3:
 	note F#, 2
 Music_AfterTheRivalFight_branch_f509d:
 Music_LookRival_branch_f509d:
-	callchannel Music_LookRival_branch_f50ef
+	sound_call Music_LookRival_branch_f50ef
 	sound_loop 3, Music_LookRival_branch_f509d
 	note F_, 4
 	note C_, 2
@@ -237,7 +237,7 @@ Music_LookRival_branch_f509d:
 	note G#, 2
 	note G_, 2
 	note F#, 2
-	callchannel Music_LookRival_branch_f50f7
+	sound_call Music_LookRival_branch_f50f7
 	note A#, 2
 	note F_, 2
 	note G_, 2
@@ -246,7 +246,7 @@ Music_LookRival_branch_f509d:
 	note G_, 2
 	note G#, 1
 	note A_, 1
-	callchannel Music_LookRival_branch_f50ff
+	sound_call Music_LookRival_branch_f50ff
 	note A#, 2
 	note F_, 2
 	note G_, 2
@@ -271,10 +271,10 @@ Music_LookRival_branch_f509d:
 	note A_, 2
 	note A#, 1
 	note A_, 1
-	callchannel Music_LookRival_branch_f50f7
-	callchannel Music_LookRival_branch_f50ff
-	callchannel Music_LookRival_branch_f50ef
-	callchannel Music_LookRival_branch_f50ef
+	sound_call Music_LookRival_branch_f50f7
+	sound_call Music_LookRival_branch_f50ff
+	sound_call Music_LookRival_branch_f50ef
+	sound_call Music_LookRival_branch_f50ef
 	note F_, 2
 	note C_, 2
 	note D_, 2

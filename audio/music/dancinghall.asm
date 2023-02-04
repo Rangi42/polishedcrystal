@@ -13,9 +13,9 @@ Music_DancingHall_Ch1:
 	duty_cycle 0
 Music_DancingHall_branch_ef9d3:
 	note_type 12, 11, 7
-	callchannel Music_DancingHall_branch_efa17
+	sound_call Music_DancingHall_branch_efa17
 	note __, 16
-	callchannel Music_DancingHall_branch_efa17
+	sound_call Music_DancingHall_branch_efa17
 	note __, 16
 	note __, 16
 	note __, 16
@@ -94,8 +94,8 @@ Music_DancingHall_Ch2:
 	note __, 3
 Music_DancingHall_branch_efa37:
 	note_type 6, 10, 2
-	callchannel Music_DancingHall_branch_efa7a
-	callchannel Music_DancingHall_branch_efa7a
+	sound_call Music_DancingHall_branch_efa7a
+	sound_call Music_DancingHall_branch_efa7a
 	volume_envelope 10, 7
 	octave 2
 	note D_, 16

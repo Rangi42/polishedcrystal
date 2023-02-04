@@ -17,8 +17,8 @@ Music_RoadToReversalMountainB2W2_Ch1:
 	pitch_offset 2
 	vibrato $10, $22
 	note_type 12, 6, 0
-	callchannel Music_RoadToReversalMountainB2W2_Ch1_branch_1
-	callchannel Music_RoadToReversalMountainB2W2_Ch1_branch_1
+	sound_call Music_RoadToReversalMountainB2W2_Ch1_branch_1
+	sound_call Music_RoadToReversalMountainB2W2_Ch1_branch_1
 	octave 3
 	note A_, 15
 	volume_envelope 6, 7
@@ -26,8 +26,8 @@ Music_RoadToReversalMountainB2W2_Ch1:
 	volume_envelope 6, 0
 	note A_, 12
 	note A#, 6
-	callchannel Music_RoadToReversalMountainB2W2_Ch1_branch_1
-	callchannel Music_RoadToReversalMountainB2W2_Ch1_branch_1
+	sound_call Music_RoadToReversalMountainB2W2_Ch1_branch_1
+	sound_call Music_RoadToReversalMountainB2W2_Ch1_branch_1
 	note D_, 15
 	volume_envelope 6, 7
 	note D_, 3
@@ -189,13 +189,13 @@ Music_RoadToReversalMountainB2W2_Ch2:
 Music_RoadToReversalMountainB2W2_Ch3:
 	note_type 12, 2, 5
 	octave 2
-	callchannel Music_RoadToReversalMountainB2W2_Ch3_branch_1
+	sound_call Music_RoadToReversalMountainB2W2_Ch3_branch_1
 	note D_, 2
 	note G_, 1
 	note __, 1
 	note G_, 1
 	note __, 1
-	callchannel Music_RoadToReversalMountainB2W2_Ch3_branch_1
+	sound_call Music_RoadToReversalMountainB2W2_Ch3_branch_1
 	note C_, 2
 	note G_, 1
 	note __, 1

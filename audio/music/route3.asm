@@ -47,7 +47,7 @@ Music_Route3_Ch1:
 	note F#, 1
 	note G#, 1
 Music_Route3_branch_ec307:
-	callchannel Music_Route3_branch_ec3a4
+	sound_call Music_Route3_branch_ec3a4
 	note G_, 1
 	note D_, 1
 	octave 2
@@ -266,7 +266,7 @@ Music_Route3_Ch2:
 	note G#, 1
 Music_Route3_branch_ec3f5:
 	volume_envelope 7, -5
-	callchannel Music_Route3_branch_ec443
+	sound_call Music_Route3_branch_ec443
 	note G_, 1
 	note B_, 10
 	volume_envelope 11, 7
@@ -275,7 +275,7 @@ Music_Route3_branch_ec3f5:
 	note __, 4
 	duty_cycle 3
 	note G#, 4
-	callchannel Music_Route3_branch_ec443
+	sound_call Music_Route3_branch_ec443
 	note B_, 1
 	volume_envelope 7, -5
 	octave 5
@@ -379,15 +379,15 @@ Music_Route3_Ch3:
 	note A_, 1
 	note __, 1
 	note G#, 2
-	callchannel Music_Route3_branch_ec4bd
+	sound_call Music_Route3_branch_ec4bd
 Music_Route3_branch_ec47f:
 	volume_envelope 1, 4
-	callchannel Music_Route3_branch_ec4bd
-	callchannel Music_Route3_branch_ec4bd
-	callchannel Music_Route3_branch_ec4ce
-	callchannel Music_Route3_branch_ec4bd
-	callchannel Music_Route3_branch_ec4bd
-	callchannel Music_Route3_branch_ec4ce
+	sound_call Music_Route3_branch_ec4bd
+	sound_call Music_Route3_branch_ec4bd
+	sound_call Music_Route3_branch_ec4ce
+	sound_call Music_Route3_branch_ec4bd
+	sound_call Music_Route3_branch_ec4bd
+	sound_call Music_Route3_branch_ec4ce
 	note A_, 2
 	octave 3
 	note C#, 2
