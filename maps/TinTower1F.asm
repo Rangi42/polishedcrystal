@@ -482,16 +482,15 @@ TinTowerEusineHoOhText:
 	para "to become a famous"
 	line "#Maniac!"
 
-	para "If you are ever"
-	line "back in Celadon."
+	para "If you're ever in"
+	line "Celadon City,"
 
-	para "Feel free to stop"
-	line "by and check on my"
-	cont "Gramps!"
+	para "will you say hi to"
+	line "my grandpa?"
 
-	para "He would like"
-	line "the company while"
-	cont "i'm away."
+	para "I'm sure he would"
+	line "like the company"
+	cont "while I'm away."
 
 	para "Later, <PLAYER>!"
 	done

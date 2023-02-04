@@ -211,16 +211,16 @@ EusinesHouseGrampsThankYouGiftText:
 	text "My grandson Eusine"
 	line "called."
 
-	para "He is doing well,"
+	para "He's doing well."
 	line "I'm happy for him!"
 
 	para "Thank you for"
-	line "checking on me"
+	line "checking on me,"
 	cont "<PLAYER>!"
 
 	para "Please take this"
 	line "to show my"
-	cont "appreciation"
+	cont "appreciation."
 	done
 
 EusinesHouseGrampsEusineTravelingWorldText:
