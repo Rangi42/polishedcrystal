@@ -2696,9 +2696,9 @@ RhyhornEvosAttacks:
 	db 21, BULLDOZE
 	db 25, ANCIENTPOWER ; Chip Away → HGSS tutor move
 	db 29, ROCK_BLAST
-	db 33, DOUBLE_EDGE ; Drill Run → event move
-	db 37, TAKE_DOWN
-	db 41, STONE_EDGE
+	db 33, TAKE_DOWN ; Drill Run → Take Down
+	db 37, STONE_EDGE ; Take Down → Stone Edge
+	db 41, DOUBLE_EDGE ; Double Edge → event move
 	db 45, EARTHQUAKE
 	db 49, CLOSE_COMBAT ; Megahorn → new move
 	db 53, MEGAHORN ; Horn Drill → Megahorn
@@ -2719,9 +2719,9 @@ RhydonEvosAttacks:
 	db 21, BULLDOZE
 	db 25, ANCIENTPOWER ; Chip Away → HGSS tutor move
 	db 29, ROCK_BLAST
-	db 33, DOUBLE_EDGE ; Drill Run → event move
-	db 37, TAKE_DOWN
-	db 41, STONE_EDGE
+	db 33, TAKE_DOWN ; Drill Run → Take Down
+	db 37, STONE_EDGE ; Take Down → Stone Edge
+	db 41, DOUBLE_EDGE ; Double Edge → event move
 	db 48, EARTHQUAKE
 	db 55, CLOSE_COMBAT ; Megahorn → new move
 	db 62, MEGAHORN ; Horn Drill → Megahorn
@@ -6033,9 +6033,9 @@ RhyperiorEvosAttacks:
 	db 21, BULLDOZE
 	db 25, ANCIENTPOWER ; Chip Away → HGSS tutor move
 	db 29, ROCK_BLAST
-	db 33, DOUBLE_EDGE ; Drill Run → event move
-	db 37, TAKE_DOWN
-	db 41, STONE_EDGE
+	db 33, TAKE_DOWN ; Drill Run → Take Down
+	db 37, STONE_EDGE ; Take Down → Stone Edge
+	db 41, DOUBLE_EDGE ; Double Edge → event move
 	db 48, EARTHQUAKE
 	db 55, CLOSE_COMBAT ; Megahorn → new move
 	db 62, MEGAHORN ; Horn Drill → Megahorn
