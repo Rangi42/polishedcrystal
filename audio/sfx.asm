@@ -11,7 +11,7 @@ Sfx_PokeballsPlacedOnTable:
 	pitch_sweep 2, 2
 	square_note 8, 14, 2, 512
 	pitch_sweep 0, 8
-	endchannel
+	sound_ret
 
 
 SECTION "Sfx_BallWiggle", ROMX
@@ -27,7 +27,7 @@ Sfx_BallWiggle:
 	pitch_sweep 2, 2
 	square_note 8, 14, 2, 1024
 	pitch_sweep 0, 8
-	endchannel
+	sound_ret
 
 
 SECTION "Sfx_Potion", ROMX
@@ -42,7 +42,7 @@ Sfx_Potion:
 	square_note 15, 15, 0, 1264
 	square_note 15, 15, 2, 1616
 	pitch_sweep 0, 8
-	endchannel
+	sound_ret
 
 
 SECTION "Sfx_FullHeal", ROMX
@@ -59,7 +59,7 @@ Sfx_FullHeal:
 	pitch_sweep 1, 7
 	square_note 15, 15, 2, 1536
 	pitch_sweep 0, 8
-	endchannel
+	sound_ret
 
 
 SECTION "Sfx_Menu", ROMX
@@ -71,7 +71,7 @@ Sfx_Menu:
 .Ch8:
 	noise_note 1, 14, 2, 51
 	noise_note 8, 14, 1, 34
-	endchannel
+	sound_ret
 
 
 SECTION "Sfx_ReadText", ROMX
@@ -87,7 +87,7 @@ Sfx_ReadText2:
 	square_note 0, 8, 1, 2000
 	square_note 0, 9, 1, 1984
 	square_note 12, 10, 1, 2000
-	endchannel
+	sound_ret
 
 
 SECTION "Sfx_Poison", ROMX
@@ -104,7 +104,7 @@ Sfx_Poison:
 	sound_loop 4, .loop
 	square_note 15, 15, 3, 1536
 	pitch_sweep 0, 8
-	endchannel
+	sound_ret
 
 
 SECTION "Sfx_GotSafariBalls", ROMX
@@ -119,7 +119,7 @@ Sfx_GotSafariBalls:
 	square_note 15, 15, 0, 1264
 	square_note 15, 15, 2, 1616
 	pitch_sweep 0, 8
-	endchannel
+	sound_ret
 
 
 SECTION "Sfx_BootPc", ROMX
@@ -140,7 +140,7 @@ Sfx_BootPc:
 	square_note 3, 10, 1, 1792
 	square_note 3, 10, 1, 1984
 	square_note 8, 10, 1, 1792
-	endchannel
+	sound_ret
 
 
 SECTION "Sfx_ShutDownPc", ROMX
@@ -155,7 +155,7 @@ Sfx_ShutDownPc:
 	square_note 4, 15, 0, 1024
 	square_note 4, 15, 0, 512
 	square_note 1, 0, 0, 0
-	endchannel
+	sound_ret
 
 
 SECTION "Sfx_ChoosePcOption", ROMX
@@ -170,7 +170,7 @@ Sfx_ChoosePcOption:
 	square_note 4, 0, 0, 0
 	square_note 6, 15, 0, 1792
 	square_note 1, 0, 0, 0
-	endchannel
+	sound_ret
 
 
 SECTION "Sfx_EscapeRope", ROMX
@@ -188,7 +188,7 @@ Sfx_EscapeRope:
 	square_note 15, 4, 7, 1152
 	square_note 15, 1, 7, 1024
 	pitch_sweep 0, 8
-	endchannel
+	sound_ret
 
 
 SECTION "Sfx_PushButton", ROMX
@@ -204,7 +204,7 @@ Sfx_PushButton:
 	square_note 1, 0, 0, 0
 	square_note 4, 15, 1, 1920
 	square_note 4, 0, 0, 0
-	endchannel
+	sound_ret
 
 
 SECTION "Sfx_SecondPartOfItemfinder", ROMX
@@ -221,7 +221,7 @@ Sfx_SecondPartOfItemfinder:
 	square_note 2, 15, 1, 1280
 	pitch_sweep 0, 8
 	square_note 1, 0, 0, 0
-	endchannel
+	sound_ret
 
 
 SECTION "Sfx_WarpTo", ROMX
@@ -239,7 +239,7 @@ Sfx_WarpTo:
 	square_note 15, 4, 7, 1664
 	square_note 15, 1, 7, 1792
 	pitch_sweep 0, 8
-	endchannel
+	sound_ret
 
 
 SECTION "Sfx_WarpFrom", ROMX
@@ -257,7 +257,7 @@ Sfx_WarpFrom:
 	square_note 15, 4, 7, 1408
 	square_note 15, 1, 7, 1280
 	pitch_sweep 0, 8
-	endchannel
+	sound_ret
 
 
 SECTION "Sfx_ChangeDexMode", ROMX
@@ -271,7 +271,7 @@ Sfx_ChangeDexMode:
 	pitch_sweep 1, 6
 	square_note 15, 13, 2, 1280
 	pitch_sweep 0, 8
-	endchannel
+	sound_ret
 
 
 SECTION "Sfx_JumpOverLedge", ROMX
@@ -285,7 +285,7 @@ Sfx_JumpOverLedge:
 	pitch_sweep 9, 5
 	square_note 15, 15, 2, 1024
 	pitch_sweep 0, 8
-	endchannel
+	sound_ret
 
 
 SECTION "Sfx_GrassRustle", ROMX
@@ -299,7 +299,7 @@ Sfx_GrassRustle:
 	noise_note 2, 0, 0, 0
 	noise_note 2, 15, 1, 34
 	noise_note 1, 0, 0, 0
-	endchannel
+	sound_ret
 
 
 SECTION "Sfx_Fly", ROMX
@@ -325,7 +325,7 @@ Sfx_Fly:
 	noise_note 2, 0, 0, 0
 	noise_note 2, 4, 1, 18
 	noise_note 2, 0, 0, 0
-	endchannel
+	sound_ret
 
 
 SECTION "Sfx_Wrong", ROMX
@@ -343,7 +343,7 @@ Sfx_Wrong:
 	square_note 4, 0, 0, 0
 	square_note 15, 15, 0, 1280
 	square_note 1, 0, 0, 0
-	endchannel
+	sound_ret
 
 .Ch6:
 	duty_cycle 3
@@ -351,7 +351,7 @@ Sfx_Wrong:
 	square_note 4, 0, 0, 0
 	square_note 15, 15, 0, 1025
 	square_note 1, 0, 0, 0
-	endchannel
+	sound_ret
 
 
 SECTION "Sfx_Squeak", ROMX
@@ -365,7 +365,7 @@ Sfx_Squeak:
 	pitch_sweep 1, 7
 	square_note 15, 13, 2, 1792
 	pitch_sweep 0, 8
-	endchannel
+	sound_ret
 
 
 SECTION "Sfx_Strength", ROMX
@@ -383,7 +383,7 @@ Sfx_Strength:
 	noise_note 4, 15, 7, 68
 	noise_note 8, 15, 4, 85
 	noise_note 8, 15, 1, 68
-	endchannel
+	sound_ret
 
 
 SECTION "Sfx_Boat", ROMX
@@ -402,7 +402,7 @@ Sfx_Boat:
 	square_note 15, 15, 0, 1280
 	square_note 15, 15, 0, 1280
 	square_note 15, 15, 2, 1280
-	endchannel
+	sound_ret
 
 .Ch6:
 	duty_cycle 3
@@ -413,7 +413,7 @@ Sfx_Boat:
 	square_note 15, 15, 0, 1154
 	square_note 15, 15, 0, 1154
 	square_note 15, 15, 2, 1154
-	endchannel
+	sound_ret
 
 
 SECTION "Sfx_WallOpen", ROMX
@@ -433,7 +433,7 @@ Sfx_WallOpen:
 	pitch_sweep 2, 2
 	square_note 15, 14, 2, 1792
 	pitch_sweep 0, 8
-	endchannel
+	sound_ret
 
 
 SECTION "Sfx_PlacePuzzlePieceDown", ROMX
@@ -448,7 +448,7 @@ Sfx_PlacePuzzlePieceDown:
 	noise_note 4, 15, 7, 68
 	noise_note 8, 15, 4, 85
 	noise_note 8, 15, 1, 68
-	endchannel
+	sound_ret
 
 
 SECTION "Sfx_EnterDoor", ROMX
@@ -460,7 +460,7 @@ Sfx_EnterDoor:
 .Ch8:
 	noise_note 9, 15, 1, 68
 	noise_note 8, 13, 1, 67
-	endchannel
+	sound_ret
 
 
 SECTION "Sfx_SwitchPokemon", ROMX
@@ -473,13 +473,13 @@ Sfx_SwitchPokemon:
 .Ch5:
 	duty_cycle 2
 	square_note 8, 14, 1, 1856
-	endchannel
+	sound_ret
 
 .Ch6:
 	duty_cycle 2
 	square_note 2, 0, 8, 0
 	square_note 8, 11, 1, 1857
-	endchannel
+	sound_ret
 
 
 SECTION "Sfx_Tally", ROMX
@@ -492,13 +492,13 @@ Sfx_Tally:
 .Ch5:
 	duty_cycle 2
 	square_note 4, 15, 1, 1920
-	endchannel
+	sound_ret
 
 .Ch6:
 	duty_cycle 2
 	square_note 1, 0, 8, 0
 	square_note 4, 10, 1, 1889
-	endchannel
+	sound_ret
 
 
 SECTION "Sfx_Transaction", ROMX
@@ -512,14 +512,14 @@ Sfx_Transaction:
 	duty_cycle 2
 	square_note 4, 14, 1, 1792
 	square_note 24, 15, 2, 2016
-	endchannel
+	sound_ret
 
 .Ch6:
 	duty_cycle 2
 	square_note 1, 0, 8, 0
 	square_note 4, 9, 1, 1729
 	square_note 24, 10, 2, 1953
-	endchannel
+	sound_ret
 
 
 SECTION "Sfx_Bump", ROMX
@@ -533,7 +533,7 @@ Sfx_Bump:
 	pitch_sweep 5, -2
 	square_note 15, 15, 1, 768
 	pitch_sweep 0, 8
-	endchannel
+	sound_ret
 
 
 SECTION "Sfx_ExitBuilding", ROMX
@@ -548,7 +548,7 @@ Sfx_ExitBuilding:
 	noise_note 2, 11, 1, 84
 	noise_note 12, 6, 1, 35
 	noise_note 6, 4, 1, 84
-	endchannel
+	sound_ret
 
 
 SECTION "Sfx_Save", ROMX
@@ -567,7 +567,7 @@ Sfx_Save:
 	square_note 2, 14, 1, 1792
 	square_note 2, 14, 1, 1984
 	square_note 15, 15, 2, 2016
-	endchannel
+	sound_ret
 
 .Ch6:
 	duty_cycle 2
@@ -579,7 +579,7 @@ Sfx_Save:
 	square_note 2, 9, 1, 1793
 	square_note 2, 9, 1, 1985
 	square_note 15, 13, 2, 2017
-	endchannel
+	sound_ret
 
 
 SECTION "Sfx_Pokeflute", ROMX
@@ -611,7 +611,7 @@ Sfx_Pokeflute:
 	note F_, 2
 	note G_, 8
 	note __, 12
-	endchannel
+	sound_ret
 
 
 SECTION "Sfx_ElevatorEnd", ROMX
@@ -628,7 +628,7 @@ Sfx_ElevatorEnd:
 	square_note 15, 7, 4, 1792
 	square_note 15, 4, 4, 1792
 	square_note 15, 2, 4, 1792
-	endchannel
+	sound_ret
 
 
 SECTION "Sfx_ThrowBall", ROMX
@@ -642,12 +642,12 @@ Sfx_ThrowBall:
 	duty_cycle 2
 	pitch_sweep 2, -7
 	square_note 15, 15, 2, 1920
-	endchannel
+	sound_ret
 
 .Ch6:
 	duty_cycle 2
 	square_note 15, 12, 2, 1922
-	endchannel
+	sound_ret
 
 
 SECTION "Sfx_BallPoof", ROMX
@@ -662,11 +662,11 @@ Sfx_BallPoof:
 	pitch_sweep 1, 6
 	square_note 15, 15, 2, 1024
 	pitch_sweep 0, 8
-	endchannel
+	sound_ret
 
 .Ch8:
 	noise_note 15, 10, 2, 34
-	endchannel
+	sound_ret
 
 
 SECTION "Sfx_Faint", ROMX
@@ -679,13 +679,13 @@ Sfx_Faint:
 .Ch5:
 	square_note 15, 13, 1, 512
 	pitch_sweep 0, 8
-	endchannel
+	sound_ret
 
 .Ch8:
 	noise_note 4, 15, 5, 51
 	noise_note 8, 15, 4, 34
 	noise_note 15, 15, 2, 33
-	endchannel
+	sound_ret
 
 
 SECTION "Sfx_Run", ROMX
@@ -706,7 +706,7 @@ Sfx_Run:
 	noise_note 2, 8, 1, 51
 	noise_note 2, 3, 1, 17
 	noise_note 8, 4, 1, 51
-	endchannel
+	sound_ret
 
 
 SECTION "Sfx_SlotMachineStart", ROMX
@@ -723,13 +723,13 @@ Sfx_SlotMachineStart:
 	pitch_sweep 1, 7
 	square_note 15, 15, 2, 1616
 	pitch_sweep 0, 8
-	endchannel
+	sound_ret
 
 .Ch6:
 	duty_cycle 2
 	square_note 15, 9, 2, 1536
 	square_note 15, 9, 2, 1922
-	endchannel
+	sound_ret
 
 
 SECTION "Sfx_Call", ROMX
@@ -747,7 +747,7 @@ Sfx_Call:
 	square_note 4, 15, 7, 1952
 	pitch_sweep 0, 8
 	square_note 4, 0, 0, 0
-	endchannel
+	sound_ret
 
 
 SECTION "Sfx_Unknown60", ROMX
@@ -765,7 +765,7 @@ Sfx_Unknown60:
 	noise_note 8, 13, 7, 66
 	noise_note 15, 14, 7, 67
 	noise_note 15, 15, 2, 67
-	endchannel
+	sound_ret
 
 
 SECTION "Sfx_Unknown61", ROMX
@@ -776,7 +776,7 @@ Sfx_Unknown61:
 
 .Ch8:
 	noise_note 4, 13, 1, 65
-	endchannel
+	sound_ret
 
 
 SECTION "Sfx_SwitchPockets", ROMX
@@ -787,7 +787,7 @@ Sfx_SwitchPockets:
 
 .Ch8:
 	noise_note 4, 12, 1, 66
-	endchannel
+	sound_ret
 
 
 SECTION "Sfx_Unknown63", ROMX
@@ -800,7 +800,7 @@ Sfx_Unknown63:
 	noise_note 2, 6, -7, 33
 	noise_note 2, 10, -7, 49
 	noise_note 15, 15, 2, 65
-	endchannel
+	sound_ret
 
 
 SECTION "Sfx_Burn", ROMX
@@ -812,7 +812,7 @@ Sfx_Burn:
 .Ch8:
 	noise_note 2, 13, 2, 50
 	noise_note 15, 15, 2, 67
-	endchannel
+	sound_ret
 
 
 SECTION "Sfx_TitleScreenEntrance", ROMX
@@ -828,7 +828,7 @@ Sfx_TitleScreenEntrance:
 	noise_note 2, 10, 0, 37
 	noise_note 2, 11, 0, 38
 	noise_note 15, 12, 2, 38
-	endchannel
+	sound_ret
 
 
 SECTION "Sfx_Unknown66", ROMX
@@ -842,7 +842,7 @@ Sfx_Unknown66:
 	square_note 1, 15, 2, 1696
 	square_note 1, 15, 2, 1760
 	square_note 8, 15, 1, 1792
-	endchannel
+	sound_ret
 
 
 SECTION "Sfx_GetCoinFromSlots", ROMX
@@ -855,7 +855,7 @@ Sfx_GetCoinFromSlots:
 	duty_cycle 2
 	square_note 2, 15, 1, 1792
 	square_note 8, 8, 1, 2016
-	endchannel
+	sound_ret
 
 
 SECTION "Sfx_PayDay", ROMX
@@ -870,14 +870,14 @@ Sfx_PayDay:
 	square_note 5, 14, 1, 1792
 	square_note 2, 14, 1, 1920
 	square_note 15, 15, 1, 1984
-	endchannel
+	sound_ret
 
 .Ch6:
 	duty_cycle 2
 	square_note 4, 12, 1, 1729
 	square_note 2, 12, 1, 1857
 	square_note 15, 13, 1, 1921
-	endchannel
+	sound_ret
 
 
 SECTION "Sfx_Metronome", ROMX
@@ -899,7 +899,7 @@ Sfx_Metronome:
 	square_note 8, 3, 0, 2016
 	square_note 15, 1, 2, 2016
 	pitch_sweep 0, 8
-	endchannel
+	sound_ret
 
 
 SECTION "Sfx_Peck", ROMX
@@ -910,7 +910,7 @@ Sfx_Peck:
 
 .Ch8:
 	noise_note 2, 10, 1, 18
-	endchannel
+	sound_ret
 
 
 SECTION "Sfx_Kinesis", ROMX
@@ -924,7 +924,7 @@ Sfx_Kinesis:
 	pitch_sweep 10, -7
 	square_note 15, 15, 2, 1920
 	pitch_sweep 0, 8
-	endchannel
+	sound_ret
 
 
 SECTION "Sfx_Lick", ROMX
@@ -938,7 +938,7 @@ Sfx_Lick:
 	pitch_sweep 9, 7
 	square_note 15, 15, 2, 1280
 	pitch_sweep 0, 8
-	endchannel
+	sound_ret
 
 
 SECTION "Sfx_Pound", ROMX
@@ -949,7 +949,7 @@ Sfx_Pound:
 
 .Ch8:
 	noise_note 2, 10, 1, 34
-	endchannel
+	sound_ret
 
 
 SECTION "Sfx_MovePuzzlePiece", ROMX
@@ -960,7 +960,7 @@ Sfx_MovePuzzlePiece:
 
 .Ch8:
 	noise_note 8, 15, 1, 84
-	endchannel
+	sound_ret
 
 
 SECTION "Sfx_CometPunch", ROMX
@@ -973,7 +973,7 @@ Sfx_CometPunch:
 	noise_note 15, 8, -7, 17
 	noise_note 4, 15, -7, 18
 	noise_note 10, 15, 1, 85
-	endchannel
+	sound_ret
 
 
 SECTION "Sfx_MegaPunch", ROMX
@@ -986,7 +986,7 @@ Sfx_MegaPunch:
 	noise_note 15, 8, -7, 52
 	noise_note 8, 15, 2, 53
 	noise_note 10, 15, 1, 85
-	endchannel
+	sound_ret
 
 
 SECTION "Sfx_Scratch", ROMX
@@ -998,7 +998,7 @@ Sfx_Scratch:
 .Ch8:
 	noise_note 15, 9, -7, 35
 	noise_note 8, 15, 1, 33
-	endchannel
+	sound_ret
 
 
 SECTION "Sfx_Vicegrip", ROMX
@@ -1012,7 +1012,7 @@ Sfx_Vicegrip:
 	noise_note 10, 15, 1, 68
 	noise_note 2, 14, 1, 58
 	noise_note 6, 15, 1, 52
-	endchannel
+	sound_ret
 
 
 SECTION "Sfx_RazorWind", ROMX
@@ -1025,7 +1025,7 @@ Sfx_RazorWind:
 	noise_note 2, 15, 4, 68
 	noise_note 2, 15, 4, 20
 	noise_note 15, 15, 1, 50
-	endchannel
+	sound_ret
 
 
 SECTION "Sfx_Cut", ROMX
@@ -1039,7 +1039,7 @@ Sfx_Cut:
 	noise_note 2, 15, 4, 68
 	noise_note 8, 15, 4, 34
 	noise_note 15, 15, 2, 33
-	endchannel
+	sound_ret
 
 
 SECTION "Sfx_WingAttack", ROMX
@@ -1054,7 +1054,7 @@ Sfx_WingAttack:
 	noise_note 4, 12, 4, 34
 	noise_note 6, 15, 2, 35
 	sound_loop 4, .branch8
-	endchannel
+	sound_ret
 
 
 SECTION "Sfx_Whirlwind", ROMX
@@ -1068,7 +1068,7 @@ Sfx_Whirlwind:
 	noise_note 4, 12, 4, 34
 	noise_note 6, 15, 2, 35
 	noise_note 15, 15, 2, 34
-	endchannel
+	sound_ret
 
 
 SECTION "Sfx_Bind", ROMX
@@ -1082,7 +1082,7 @@ Sfx_Bind:
 	noise_note 8, 15, 4, 67
 	noise_note 8, 15, 2, 84
 	noise_note 8, 15, 1, 101
-	endchannel
+	sound_ret
 
 
 SECTION "Sfx_VineWhip", ROMX
@@ -1100,7 +1100,7 @@ Sfx_VineWhip:
 	noise_note 1, 11, 2, 49
 	noise_note 12, 9, 1, 16
 	noise_note 8, 15, 2, 65
-	endchannel
+	sound_ret
 
 
 SECTION "Sfx_DoubleKick", ROMX
@@ -1113,7 +1113,7 @@ Sfx_DoubleKick:
 	noise_note 1, 9, 4, 35
 	noise_note 1, 11, 4, 34
 	noise_note 8, 15, 1, 68
-	endchannel
+	sound_ret
 
 
 SECTION "Sfx_MegaKick", ROMX
@@ -1127,7 +1127,7 @@ Sfx_MegaKick:
 	noise_note 4, 11, 4, 34
 	noise_note 4, 15, 1, 68
 	noise_note 8, 15, 1, 85
-	endchannel
+	sound_ret
 
 
 SECTION "Sfx_Headbutt", ROMX
@@ -1139,7 +1139,7 @@ Sfx_Headbutt:
 .Ch8:
 	noise_note 4, 15, -7, 85
 	noise_note 8, 15, 1, 101
-	endchannel
+	sound_ret
 
 
 SECTION "Sfx_HornAttack", ROMX
@@ -1152,7 +1152,7 @@ Sfx_HornAttack:
 	noise_note 2, 8, 4, 67
 	noise_note 2, 12, 4, 34
 	noise_note 8, 15, 2, 52
-	endchannel
+	sound_ret
 
 
 SECTION "Sfx_Tackle", ROMX
@@ -1164,7 +1164,7 @@ Sfx_Tackle:
 .Ch8:
 	noise_note 4, 15, 1, 52
 	noise_note 15, 15, 2, 100
-	endchannel
+	sound_ret
 
 
 SECTION "Sfx_PoisonSting", ROMX
@@ -1176,7 +1176,7 @@ Sfx_PoisonSting:
 .Ch8:
 	noise_note 2, 15, 1, 34
 	noise_note 15, 15, 2, 18
-	endchannel
+	sound_ret
 
 
 SECTION "Sfx_Powder", ROMX
@@ -1189,7 +1189,7 @@ Sfx_Powder:
 	noise_note 2, 12, 2, 1
 	noise_note 15, 15, 4, 1
 	noise_note 15, 15, 2, 1
-	endchannel
+	sound_ret
 
 
 SECTION "Sfx_DoubleSlap", ROMX
@@ -1201,7 +1201,7 @@ Sfx_DoubleSlap:
 .Ch8:
 	noise_note 8, 15, 1, 50
 	noise_note 8, 15, 1, 51
-	endchannel
+	sound_ret
 
 
 SECTION "Sfx_Bite", ROMX
@@ -1218,14 +1218,14 @@ Sfx_Bite:
 	pitch_sweep 2, 2
 	square_note 8, 14, 2, 512
 	pitch_sweep 0, 8
-	endchannel
+	sound_ret
 
 .Ch8:
 	noise_note 0, 13, 1, 66
 	noise_note 4, 10, 1, 50
 	noise_note 0, 13, 1, 34
 	noise_note 6, 10, 1, 50
-	endchannel
+	sound_ret
 
 
 SECTION "Sfx_JumpKick", ROMX
@@ -1239,7 +1239,7 @@ Sfx_JumpKick:
 	noise_note 3, 11, 2, 50
 	noise_note 3, 12, 2, 51
 	noise_note 8, 15, 1, 84
-	endchannel
+	sound_ret
 
 
 SECTION "Sfx_Stomp", ROMX
@@ -1251,7 +1251,7 @@ Sfx_Stomp:
 .Ch8:
 	noise_note 12, 15, 1, 84
 	noise_note 8, 15, 1, 100
-	endchannel
+	sound_ret
 
 
 SECTION "Sfx_TailWhip", ROMX
@@ -1266,7 +1266,7 @@ Sfx_TailWhip:
 	noise_note 2, 10, 1, 49
 	noise_note 15, 8, 2, 50
 	noise_note 8, 15, 1, 52
-	endchannel
+	sound_ret
 
 
 SECTION "Sfx_KarateChop", ROMX
@@ -1278,7 +1278,7 @@ Sfx_KarateChop:
 .Ch8:
 	noise_note 2, 13, 2, 50
 	noise_note 15, 15, 2, 67
-	endchannel
+	sound_ret
 
 
 SECTION "Sfx_Submission", ROMX
@@ -1293,7 +1293,7 @@ Sfx_Submission:
 	noise_note 9, 8, 6, 49
 	noise_note 7, 6, 4, 0
 	noise_note 15, 15, 2, 85
-	endchannel
+	sound_ret
 
 
 SECTION "Sfx_WaterGun", ROMX
@@ -1308,12 +1308,12 @@ Sfx_WaterGun:
 	pitch_sweep 9, 7
 	square_note 15, 15, 2, 1792
 	pitch_sweep 0, 8
-	endchannel
+	sound_ret
 
 .Ch8:
 	noise_note 15, 3, -7, 34
 	noise_note 15, 15, 2, 33
-	endchannel
+	sound_ret
 
 
 SECTION "Sfx_SwordsDance", ROMX
@@ -1328,7 +1328,7 @@ Sfx_SwordsDance:
 	noise_note 8, 12, -7, 65
 	noise_note 8, 15, 2, 66
 	noise_note 15, 15, 2, 65
-	endchannel
+	sound_ret
 
 
 SECTION "Sfx_Thunder", ROMX
@@ -1345,7 +1345,7 @@ Sfx_Thunder:
 	noise_note 6, 15, -7, 83
 	noise_note 8, 15, -7, 84
 	noise_note 15, 15, 2, 84
-	endchannel
+	sound_ret
 
 
 SECTION "Sfx_Supersonic", ROMX
@@ -1363,7 +1363,7 @@ Sfx_Supersonic:
 	square_note 15, 13, -7, 1984
 	sound_loop 4, .branch5
 	square_note 15, 13, 1, 1984
-	endchannel
+	sound_ret
 
 .Ch6:
 	duty_cycle_pattern 2, 3, 0, 3
@@ -1372,14 +1372,14 @@ Sfx_Supersonic:
 	square_note 15, 12, -7, 1991
 	sound_loop 4, .branch6
 	square_note 15, 12, 1, 1992
-	endchannel
+	sound_ret
 
 .Ch8:
 .branch8:
 	noise_note 3, 9, 7, 18
 	noise_note 3, 10, 1, 17
 	sound_loop 10, .branch8
-	endchannel
+	sound_ret
 
 
 SECTION "Sfx_Leer", ROMX
@@ -1396,7 +1396,7 @@ Sfx_Leer:
 	square_note 0, 15, 1, 1984
 	square_note 0, 15, 1, 1792
 	sound_loop 12, .branch5
-	endchannel
+	sound_ret
 
 .Ch6:
 .branch6:
@@ -1404,14 +1404,14 @@ Sfx_Leer:
 	square_note 0, 14, 1, 1985
 	square_note 0, 14, 1, 1793
 	sound_loop 12, .branch6
-	endchannel
+	sound_ret
 
 .Ch8:
 .branch8:
 	noise_note 1, 13, 1, 73
 	noise_note 1, 13, 1, 41
 	sound_loop 6, .branch8
-	endchannel
+	sound_ret
 
 
 SECTION "Sfx_Ember", ROMX
@@ -1429,7 +1429,7 @@ Sfx_Ember:
 	sound_loop 5, .branch5
 	square_note 8, 14, 3, 304
 	square_note 15, 12, 2, 272
-	endchannel
+	sound_ret
 
 .Ch8:
 .branch8:
@@ -1439,7 +1439,7 @@ Sfx_Ember:
 	noise_note 12, 15, 4, 188
 	noise_note 12, 15, 5, 156
 	noise_note 15, 15, 4, 172
-	endchannel
+	sound_ret
 
 
 SECTION "Sfx_BubbleBeam", ROMX
@@ -1459,7 +1459,7 @@ Sfx_BubbleBeam:
 	square_note 13, 14, 2, 1728
 	sound_loop 3, .branch5
 	square_note 8, 13, 1, 1536
-	endchannel
+	sound_ret
 
 .Ch6:
 .branch6:
@@ -1469,7 +1469,7 @@ Sfx_BubbleBeam:
 	square_note 6, 10, 5, 1512
 	square_note 14, 13, 1, 1696
 	sound_loop 3, .branch6
-	endchannel
+	sound_ret
 
 .Ch8:
 .branch8:
@@ -1478,7 +1478,7 @@ Sfx_BubbleBeam:
 	noise_note 10, 11, 5, 51
 	noise_note 15, 12, 3, 50
 	sound_loop 2, .branch8
-	endchannel
+	sound_ret
 
 
 SECTION "Sfx_HydroPump", ROMX
@@ -1498,7 +1498,7 @@ Sfx_HydroPump:
 	square_note 3, 7, 1, 768
 	sound_loop 5, .branch5
 	square_note 8, 8, 1, 1024
-	endchannel
+	sound_ret
 
 .Ch8:
 .branch8:
@@ -1509,7 +1509,7 @@ Sfx_HydroPump:
 	noise_note 3, 5, 2, 18
 	sound_loop 5, .branch8
 	noise_note 8, 8, 1, 18
-	endchannel
+	sound_ret
 
 
 SECTION "Sfx_Surf", ROMX
@@ -1527,7 +1527,7 @@ Sfx_Surf:
 	square_note 15, 12, 4, 1024
 	square_note 15, 14, 2, 1472
 	sound_loop 3, .branch5
-	endchannel
+	sound_ret
 
 .Ch6:
 .branch6:
@@ -1536,7 +1536,7 @@ Sfx_Surf:
 	square_note 15, 11, 4, 816
 	square_note 15, 10, 2, 1080
 	sound_loop 4, .branch6
-	endchannel
+	sound_ret
 
 .Ch8:
 .branch8:
@@ -1545,7 +1545,7 @@ Sfx_Surf:
 	noise_note 15, 15, 4, 66
 	noise_note 15, 15, 4, 65
 	sound_loop 3, .branch8
-	endchannel
+	sound_ret
 
 
 SECTION "Sfx_Psybeam", ROMX
@@ -1564,7 +1564,7 @@ Sfx_Psybeam:
 	square_note 10, 15, 2, 1568
 	sound_loop 4, .branch5
 	square_note 10, 15, 1, 1600
-	endchannel
+	sound_ret
 
 .Ch6:
 .branch6:
@@ -1574,14 +1574,14 @@ Sfx_Psybeam:
 	square_note 10, 15, 1, 1361
 	sound_loop 4, .branch6
 	square_note 10, 15, 1, 1393
-	endchannel
+	sound_ret
 
 .Ch8:
 .branch8:
 	noise_note 2, 13, 1, 74
 	noise_note 2, 13, 2, 42
 	sound_loop 21, .branch8
-	endchannel
+	sound_ret
 
 
 SECTION "Sfx_Charge", ROMX
@@ -1600,7 +1600,7 @@ Sfx_Charge:
 	square_note 4, 15, 1, 1280
 	square_note 5, 15, 1, 2032
 	sound_loop 8, .branch5
-	endchannel
+	sound_ret
 
 .Ch6:
 .branch6:
@@ -1610,7 +1610,7 @@ Sfx_Charge:
 	square_note 4, 14, 1, 1538
 	square_note 5, 14, 1, 1794
 	sound_loop 8, .branch6
-	endchannel
+	sound_ret
 
 .Ch8:
 .branch8:
@@ -1619,7 +1619,7 @@ Sfx_Charge:
 	noise_note 2, 13, 2, 16
 	noise_note 5, 13, 2, 18
 	sound_loop 9, .branch8
-	endchannel
+	sound_ret
 
 
 SECTION "Sfx_Thundershock", ROMX
@@ -1636,7 +1636,7 @@ Sfx_Thundershock:
 	square_note 3, 15, 1, 2032
 	square_note 4, 15, 2, 512
 	sound_loop 8, .branch5
-	endchannel
+	sound_ret
 
 .Ch6:
 .branch6:
@@ -1644,14 +1644,14 @@ Sfx_Thundershock:
 	square_note 4, 14, 2, 514
 	square_note 4, 14, 1, 2018
 	sound_loop 9, .branch6
-	endchannel
+	sound_ret
 
 .Ch8:
 .branch8:
 	noise_note 4, 15, -7, 67
 	noise_note 4, 15, 2, 68
 	sound_loop 9, .branch8
-	endchannel
+	sound_ret
 
 
 SECTION "Sfx_Psychic", ROMX
@@ -1672,7 +1672,7 @@ Sfx_Psychic:
 	square_note 15, 12, 4, 1985
 	square_note 15, 15, 2, 1984
 	pitch_sweep 0, 8
-	endchannel
+	sound_ret
 
 .Ch6:
 	duty_cycle 2
@@ -1682,7 +1682,7 @@ Sfx_Psychic:
 	square_note 8, 12, 4, 1891
 	square_note 15, 12, 4, 1892
 	square_note 15, 15, 2, 1892
-	endchannel
+	sound_ret
 
 .Ch8:
 	noise_note 15, 3, -7, 20
@@ -1691,7 +1691,7 @@ Sfx_Psychic:
 	noise_note 15, 12, -7, 17
 	noise_note 15, 12, -7, 16
 	noise_note 15, 12, 2, 16
-	endchannel
+	sound_ret
 
 
 SECTION "Sfx_Screech", ROMX
@@ -1708,7 +1708,7 @@ Sfx_Screech:
 	square_note 15, 15, -7, 2016
 	square_note 15, 15, -7, 2016
 	square_note 15, 15, 2, 2016
-	endchannel
+	sound_ret
 
 .Ch6:
 	duty_cycle 3
@@ -1717,7 +1717,7 @@ Sfx_Screech:
 	square_note 15, 15, -7, 2018
 	square_note 15, 15, -7, 2017
 	square_note 15, 15, 2, 2018
-	endchannel
+	sound_ret
 
 
 SECTION "Sfx_BoneClub", ROMX
@@ -1732,12 +1732,12 @@ Sfx_BoneClub:
 	pitch_sweep 10, -7
 	square_note 8, 15, 1, 1792
 	pitch_sweep 0, 8
-	endchannel
+	sound_ret
 
 .Ch6:
 	duty_cycle 3
 	square_note 8, 15, 1, 1793
-	endchannel
+	sound_ret
 
 
 SECTION "Sfx_Sharpen", ROMX
@@ -1754,7 +1754,7 @@ Sfx_Sharpen:
 	square_note 6, 15, 1, 1536
 	square_note 6, 15, 1, 1664
 	square_note 8, 15, 1, 1792
-	endchannel
+	sound_ret
 
 .Ch6:
 	duty_cycle 3
@@ -1763,7 +1763,7 @@ Sfx_Sharpen:
 	square_note 6, 14, 1, 1552
 	square_note 6, 14, 1, 1680
 	square_note 8, 14, 1, 1808
-	endchannel
+	sound_ret
 
 
 SECTION "Sfx_EggBomb", ROMX
@@ -1779,21 +1779,21 @@ Sfx_EggBomb:
 	square_note 8, 15, -7, 1016
 	square_note 15, 15, -7, 1024
 	square_note 15, 15, 3, 1024
-	endchannel
+	sound_ret
 
 .Ch6:
 	duty_cycle_pattern 2, 3, 1, 0
 	square_note 8, 14, -7, 960
 	square_note 15, 14, -7, 960
 	square_note 15, 14, 3, 960
-	endchannel
+	sound_ret
 
 .Ch8:
 	noise_note 4, 15, -7, 81
 	noise_note 8, 15, -7, 84
 	noise_note 15, 15, -7, 85
 	noise_note 15, 15, 3, 86
-	endchannel
+	sound_ret
 
 
 SECTION "Sfx_Sing", ROMX
@@ -1815,7 +1815,7 @@ Sfx_Sing:
 	note D#, 4
 	octave 5
 	note G_, 8
-	endchannel
+	sound_ret
 
 .Ch6:
 	toggle_sfx
@@ -1830,7 +1830,7 @@ Sfx_Sing:
 	note D#, 4
 	octave 5
 	note G_, 8
-	endchannel
+	sound_ret
 
 
 SECTION "Sfx_HyperBeam", ROMX
@@ -1859,7 +1859,7 @@ Sfx_HyperBeam:
 	square_note 2, 15, 1, 2016
 	sound_loop 12, .branch5
 	square_note 15, 15, 1, 1792
-	endchannel
+	sound_ret
 
 .Ch6:
 	duty_cycle_pattern 2, 3, 0, 3
@@ -1879,14 +1879,14 @@ Sfx_HyperBeam:
 	square_note 2, 15, 1, 2017
 	sound_loop 12, .branch6
 	square_note 15, 15, 1, 1793
-	endchannel
+	sound_ret
 
 .Ch8:
 .branch8:
 	noise_note 1, 13, 1, 73
 	noise_note 1, 13, 1, 41
 	sound_loop 26, .branch8
-	endchannel
+	sound_ret
 
 
 SECTION "Sfx_Shine", ROMX
@@ -1903,7 +1903,7 @@ Sfx_Shine:
 	square_note 0, 13, 2, 1984
 	square_note 10, 14, 1, 2016
 	square_note 1, 0, 0, 0
-	endchannel
+	sound_ret
 
 
 SECTION "Sfx_Unknown5F", ROMX
@@ -1921,14 +1921,14 @@ Sfx_Unknown5F_Ch5:
 	square_note 2, 15, 7, 1537
 	square_note 2, 15, 7, 1793
 	sound_loop 8, .branch5
-	endchannel
+	sound_ret
 
 Sfx_Unknown5F_Ch6:
 	square_note 1, 15, 7, 65535
 	square_note 2, 15, 7, 1538
 	square_note 2, 15, 7, 1794
 	sound_loop 8, Sfx_Unknown5F_Ch5.branch5
-	endchannel
+	sound_ret
 
 Sfx_Sandstorm_Ch8:
 .branch8:
@@ -1938,7 +1938,7 @@ Sfx_Sandstorm_Ch8:
 	noise_note 3, 5, -1, 22
 	noise_note 2, 0, 0, 0
 	sound_loop 3, .branch8
-	endchannel
+	sound_ret
 
 
 SECTION "Sfx_HangUp", ROMX
@@ -1962,7 +1962,7 @@ Sfx_NoSignal_Ch5:
 	square_note 20, 14, 8, 1803
 	square_note 28, 0, 0, 0
 	sound_loop 3, .branch5
-	endchannel
+	sound_ret
 
 
 SECTION "Sfx_Elevator", ROMX
@@ -1988,18 +1988,18 @@ Sfx_Elevator:
 	square_note 15, 7, 4, 1792
 	square_note 15, 4, 4, 1792
 	square_note 15, 2, 4, 1792
-	endchannel
+	sound_ret
 
 .Ch6:
 .Ch7:
 	square_note 96, 0, 0, 0
 	square_note 83, 0, 0, 0
-	endchannel
+	sound_ret
 
 .Ch8:
 	noise_note 96, 0, 0, 0
 	noise_note 83, 0, 0, 0
-	endchannel
+	sound_ret
 
 
 SECTION "Sfx_LevelUp", ROMX
@@ -2025,7 +2025,7 @@ Sfx_DexFanfare5079:
 	volume_envelope 11, 3
 	octave 4
 	note G#, 12
-	endchannel
+	sound_ret
 
 .Ch6:
 	toggle_sfx
@@ -2037,7 +2037,7 @@ Sfx_DexFanfare5079:
 	note E_, 2
 	volume_envelope 12, 3
 	note B_, 12
-	endchannel
+	sound_ret
 
 .Ch7:
 	toggle_sfx
@@ -2054,14 +2054,14 @@ Sfx_DexFanfare5079:
 	volume_envelope 3, 5
 	note E_, 3
 	note __, 4
-	endchannel
+	sound_ret
 
 .Ch8:
 	toggle_sfx
 	sfx_toggle_noise 4
 	note_type 12
 	note C_, 12
-	endchannel
+	sound_ret
 
 
 SECTION "Sfx_KeyItem", ROMX
@@ -2088,7 +2088,7 @@ Sfx_KeyItem:
 	note E_, 4
 	volume_envelope 11, 3
 	note G#, 16
-	endchannel
+	sound_ret
 
 .Ch6:
 	toggle_sfx
@@ -2102,7 +2102,7 @@ Sfx_KeyItem:
 	note G#, 4
 	volume_envelope 12, 3
 	note B_, 16
-	endchannel
+	sound_ret
 
 .Ch7:
 	toggle_sfx
@@ -2123,14 +2123,14 @@ Sfx_KeyItem:
 	volume_envelope 3, 5
 	note E_, 4
 	note __, 4
-	endchannel
+	sound_ret
 
 .Ch8:
 	toggle_sfx
 	sfx_toggle_noise 4
 	note_type 12
 	note C_, 16
-	endchannel
+	sound_ret
 
 
 SECTION "Sfx_DexFanfare2049", ROMX
@@ -2165,7 +2165,7 @@ Sfx_DexFanfare2049:
 	note __, 2
 	note A_, 2
 	note __, 6
-	endchannel
+	sound_ret
 
 .Ch6:
 	toggle_sfx
@@ -2185,7 +2185,7 @@ Sfx_DexFanfare2049:
 	note F_, 4
 	note G_, 4
 	note F_, 8
-	endchannel
+	sound_ret
 
 .Ch7:
 	toggle_sfx
@@ -2205,7 +2205,7 @@ Sfx_DexFanfare2049:
 	note __, 2
 	note F_, 2
 	note __, 6
-	endchannel
+	sound_ret
 
 .Ch8:
 	toggle_sfx
@@ -2213,7 +2213,7 @@ Sfx_DexFanfare2049:
 	note_type 12
 	note C_, 16
 	note __, 16
-	endchannel
+	sound_ret
 
 
 SECTION "Sfx_Item", ROMX
@@ -2242,7 +2242,7 @@ Sfx_Item:
 	note G_, 4
 	note F_, 12
 	note __, 12
-	endchannel
+	sound_ret
 
 .Ch6:
 	toggle_sfx
@@ -2259,7 +2259,7 @@ Sfx_Item:
 	note A#, 4
 	note A_, 12
 	note __, 12
-	endchannel
+	sound_ret
 
 .Ch7:
 	toggle_sfx
@@ -2283,7 +2283,7 @@ Sfx_Item:
 	volume_envelope 3, 5
 	note F_, 4
 	note __, 14
-	endchannel
+	sound_ret
 
 .Ch8:
 	toggle_sfx
@@ -2291,7 +2291,7 @@ Sfx_Item:
 	note_type 12
 	note C_, 16
 	note __, 16
-	endchannel
+	sound_ret
 
 
 SECTION "Sfx_CaughtMon", ROMX
@@ -2325,7 +2325,7 @@ Sfx_CaughtMon:
 	note G_, 2
 	volume_envelope 11, 3
 	note F_, 12
-	endchannel
+	sound_ret
 
 .Ch6:
 	toggle_sfx
@@ -2345,7 +2345,7 @@ Sfx_CaughtMon:
 	note A#, 2
 	volume_envelope 12, 3
 	note A_, 12
-	endchannel
+	sound_ret
 
 .Ch7:
 	toggle_sfx
@@ -2364,7 +2364,7 @@ Sfx_CaughtMon:
 	volume_envelope 3, 5
 	note A_, 3
 	note __, 3
-	endchannel
+	sound_ret
 
 .Ch8:
 	toggle_sfx
@@ -2372,7 +2372,7 @@ Sfx_CaughtMon:
 	note_type 12
 	note C_, 16
 	note __, 16
-	endchannel
+	sound_ret
 
 
 SECTION "Sfx_DexFanfare80109", ROMX
@@ -2408,7 +2408,7 @@ Sfx_DexFanfare80109:
 	note F_, 1
 	volume_envelope 10, 5
 	note A#, 16
-	endchannel
+	sound_ret
 
 .Ch6:
 	toggle_sfx
@@ -2431,7 +2431,7 @@ Sfx_DexFanfare80109:
 	volume_envelope 11, 5
 	octave 5
 	note D#, 16
-	endchannel
+	sound_ret
 
 .Ch7:
 	toggle_sfx
@@ -2458,7 +2458,7 @@ Sfx_DexFanfare80109:
 	volume_envelope 3, 5
 	note D#, 3
 	note __, 9
-	endchannel
+	sound_ret
 
 .Ch8:
 	toggle_sfx
@@ -2466,7 +2466,7 @@ Sfx_DexFanfare80109:
 	note_type 12
 	note C_, 16
 	note __, 16
-	endchannel
+	sound_ret
 
 
 SECTION "Sfx_Fanfare2", ROMX
@@ -2500,7 +2500,7 @@ Sfx_Fanfare2:
 	note_type 4, 11, 6
 	note C#, 12
 	sfx_priority_off
-	endchannel
+	sound_ret
 
 .Ch6:
 	toggle_sfx
@@ -2520,7 +2520,7 @@ Sfx_Fanfare2:
 	note E_, 2
 	note_type 4, 12, 6
 	note F_, 12
-	endchannel
+	sound_ret
 
 .Ch8:
 	toggle_sfx
@@ -2540,7 +2540,7 @@ Sfx_Fanfare2:
 	note __, 2
 	note F_, 2
 	note G#, 6
-	endchannel
+	sound_ret
 
 
 SECTION "UnknownSfx", ROMX
@@ -2574,7 +2574,7 @@ UnknownSfx:
 	note E_, 1
 	volume_envelope 10, 5
 	note F_, 16
-	endchannel
+	sound_ret
 
 .Ch6:
 	toggle_sfx
@@ -2598,7 +2598,7 @@ UnknownSfx:
 	note A#, 1
 	volume_envelope 11, 5
 	note A_, 16
-	endchannel
+	sound_ret
 
 .Ch7:
 	toggle_sfx
@@ -2613,7 +2613,7 @@ UnknownSfx:
 	volume_envelope 3, 5
 	note A_, 3
 	note __, 9
-	endchannel
+	sound_ret
 
 .Ch8:
 	toggle_sfx
@@ -2621,7 +2621,7 @@ UnknownSfx:
 	note_type 12
 	note C_, 16
 	note __, 16
-	endchannel
+	sound_ret
 
 
 SECTION "Sfx_Fanfare", ROMX
@@ -2660,7 +2660,7 @@ Sfx_Fanfare:
 	note_type 4, 11, 6
 	note C#, 12
 	sfx_priority_off
-	endchannel
+	sound_ret
 
 .Ch6:
 	toggle_sfx
@@ -2696,7 +2696,7 @@ Sfx_Fanfare:
 	note G#, 4
 	note_type 4, 12, 6
 	note F#, 12
-	endchannel
+	sound_ret
 
 .Ch8:
 	toggle_sfx
@@ -2721,7 +2721,7 @@ Sfx_Fanfare:
 	note G#, 4
 	note F_, 4
 	note F#, 6
-	endchannel
+	sound_ret
 
 
 SECTION "Sfx_RegisterPhoneNumber", ROMX
@@ -2755,7 +2755,7 @@ Sfx_RegisterPhoneNumber:
 	note C#, 3
 	note C_, 2
 	note __, 8
-	endchannel
+	sound_ret
 
 .Ch6:
 	toggle_sfx
@@ -2777,7 +2777,7 @@ Sfx_RegisterPhoneNumber:
 	note G_, 3
 	note G#, 2
 	note __, 8
-	endchannel
+	sound_ret
 
 .Ch7:
 	toggle_sfx
@@ -2796,7 +2796,7 @@ Sfx_RegisterPhoneNumber:
 	note A#, 3
 	note G#, 2
 	note __, 8
-	endchannel
+	sound_ret
 
 .Ch8:
 	toggle_sfx
@@ -2805,7 +2805,7 @@ Sfx_RegisterPhoneNumber:
 	note C_, 2
 	note __, 16
 	note __, 16
-	endchannel
+	sound_ret
 
 
 SECTION "Sfx_3RdPlace", ROMX
@@ -2831,7 +2831,7 @@ Sfx_3RdPlace:
 	note __, 1
 	note C_, 1
 	note D_, 6
-	endchannel
+	sound_ret
 
 .Ch6:
 	toggle_sfx
@@ -2846,7 +2846,7 @@ Sfx_3RdPlace:
 	note __, 1
 	note F_, 1
 	note G_, 6
-	endchannel
+	sound_ret
 
 .Ch7:
 	toggle_sfx
@@ -2861,7 +2861,7 @@ Sfx_3RdPlace:
 	octave 3
 	note A_, 1
 	note B_, 6
-	endchannel
+	sound_ret
 
 
 SECTION "Sfx_GetEggFromDayCareLady", ROMX
@@ -2902,7 +2902,7 @@ Sfx_GetEggFromDayCareMan:
 	volume_envelope 10, 4
 	note F_, 9
 	note __, 9
-	endchannel
+	sound_ret
 
 .Ch6:
 	toggle_sfx
@@ -2929,7 +2929,7 @@ Sfx_GetEggFromDayCareMan:
 	volume_envelope 12, 4
 	note A_, 9
 	note __, 9
-	endchannel
+	sound_ret
 
 .Ch7:
 	toggle_sfx
@@ -2946,7 +2946,7 @@ Sfx_GetEggFromDayCareMan:
 	note A#, 6
 	note A_, 9
 	note __, 9
-	endchannel
+	sound_ret
 
 .Ch8:
 	toggle_sfx
@@ -2956,7 +2956,7 @@ Sfx_GetEggFromDayCareMan:
 	note_type 12
 	note __, 16
 	note __, 12
-	endchannel
+	sound_ret
 
 
 SECTION "Sfx_MoveDeleted", ROMX
@@ -2994,7 +2994,7 @@ Sfx_MoveDeleted:
 	octave 3
 	note D_, 10
 	note __, 6
-	endchannel
+	sound_ret
 
 .Ch6:
 	toggle_sfx
@@ -3028,7 +3028,7 @@ Sfx_MoveDeleted:
 	volume_envelope 11, 6
 	note F_, 16
 	note __, 6
-	endchannel
+	sound_ret
 
 .Ch7:
 	toggle_sfx
@@ -3053,7 +3053,7 @@ Sfx_MoveDeleted:
 	note_type 12, 2, 0
 	note B_, 16
 	note __, 6
-	endchannel
+	sound_ret
 
 .Ch8:
 	toggle_sfx
@@ -3063,7 +3063,7 @@ Sfx_MoveDeleted:
 	note __, 16
 	note __, 16
 	note __, 6
-	endchannel
+	sound_ret
 
 
 SECTION "Sfx_2ndPlace", ROMX
@@ -3105,7 +3105,7 @@ Sfx_2ndPlace:
 	volume_envelope 10, 7
 	note B_, 12
 	note __, 6
-	endchannel
+	sound_ret
 
 .Ch6:
 	toggle_sfx
@@ -3127,7 +3127,7 @@ Sfx_2ndPlace:
 	volume_envelope 11, 7
 	note D_, 12
 	note __, 6
-	endchannel
+	sound_ret
 
 .Ch7:
 	toggle_sfx
@@ -3163,7 +3163,7 @@ Sfx_2ndPlace:
 	octave 2
 	note G_, 12
 	note __, 6
-	endchannel
+	sound_ret
 
 .Ch8:
 	toggle_sfx
@@ -3176,7 +3176,7 @@ Sfx_2ndPlace:
 	note B_, 12
 	note B_, 12
 	note __, 6
-	endchannel
+	sound_ret
 
 
 SECTION "Sfx_1stPlace", ROMX
@@ -3225,7 +3225,7 @@ Sfx_1stPlace:
 	volume_envelope 10, 7
 	note A_, 10
 	note __, 6
-	endchannel
+	sound_ret
 
 .Ch6:
 	toggle_sfx
@@ -3247,7 +3247,7 @@ Sfx_1stPlace:
 	volume_envelope 11, 7
 	note D_, 10
 	note __, 6
-	endchannel
+	sound_ret
 
 .Ch7:
 	toggle_sfx
@@ -3269,7 +3269,7 @@ Sfx_1stPlace:
 	note __, 1
 	note D_, 10
 	note __, 6
-	endchannel
+	sound_ret
 
 .Ch8:
 	toggle_sfx
@@ -3288,7 +3288,7 @@ Sfx_1stPlace:
 	note_type 12
 	note B_, 10
 	note __, 6
-	endchannel
+	sound_ret
 
 
 SECTION "Sfx_ChooseACard", ROMX
@@ -3342,7 +3342,7 @@ Sfx_ChooseACard:
 	volume_envelope 10, 4
 	note E_, 4
 	note __, 12
-	endchannel
+	sound_ret
 
 .Ch6:
 	toggle_sfx
@@ -3372,7 +3372,7 @@ Sfx_ChooseACard:
 	note G#, 8
 	note A_, 4
 	note __, 12
-	endchannel
+	sound_ret
 
 .Ch7:
 	toggle_sfx
@@ -3406,7 +3406,7 @@ Sfx_ChooseACard:
 	note G#, 2
 	note A_, 4
 	note __, 12
-	endchannel
+	sound_ret
 
 .Ch8:
 	toggle_sfx
@@ -3429,7 +3429,7 @@ Sfx_ChooseACard:
 	note C#, 2
 	note D_, 2
 	note B_, 16
-	endchannel
+	sound_ret
 
 
 SECTION "Sfx_GetTm", ROMX
@@ -3463,7 +3463,7 @@ Sfx_GetTm:
 	volume_envelope 10, 5
 	note F#, 8
 	note __, 6
-	endchannel
+	sound_ret
 
 .Ch6:
 	toggle_sfx
@@ -3484,7 +3484,7 @@ Sfx_GetTm:
 	volume_envelope 11, 5
 	note D_, 8
 	note __, 6
-	endchannel
+	sound_ret
 
 .Ch7:
 	toggle_sfx
@@ -3513,7 +3513,7 @@ Sfx_GetTm:
 	octave 2
 	note A_, 16
 	note __, 6
-	endchannel
+	sound_ret
 
 .Ch8:
 	toggle_sfx
@@ -3531,7 +3531,7 @@ Sfx_GetTm:
 	note D_, 2
 	note B_, 16
 	note __, 6
-	endchannel
+	sound_ret
 
 
 SECTION "Sfx_GetBadge", ROMX
@@ -3560,7 +3560,7 @@ Sfx_GetBadge:
 	volume_envelope 10, 7
 	note A_, 16
 	note __, 6
-	endchannel
+	sound_ret
 
 .branch5:
 	note __, 5
@@ -3582,7 +3582,7 @@ Sfx_GetBadge:
 	octave 4
 	note C#, 2
 	note F_, 2
-	endchannel
+	sound_ret
 
 .Ch6:
 	toggle_sfx
@@ -3629,7 +3629,7 @@ Sfx_GetBadge:
 	note D#, 8
 	note F_, 16
 	note __, 6
-	endchannel
+	sound_ret
 
 .Ch7:
 	toggle_sfx
@@ -3666,7 +3666,7 @@ Sfx_GetBadge:
 	note D#, 2
 	note F_, 16
 	note __, 6
-	endchannel
+	sound_ret
 
 .Ch8:
 	toggle_sfx
@@ -3690,7 +3690,7 @@ Sfx_GetBadge:
 	sound_loop 2, .branch8
 	note B_, 16
 	note __, 6
-	endchannel
+	sound_ret
 
 
 SECTION "Sfx_QuitSlots", ROMX
@@ -3730,7 +3730,7 @@ Sfx_QuitSlots:
 	volume_envelope 9, 7
 	note G#, 14
 	note __, 6
-	endchannel
+	sound_ret
 
 .Ch6:
 	toggle_sfx
@@ -3755,7 +3755,7 @@ Sfx_QuitSlots:
 	volume_envelope 11, 7
 	note F_, 14
 	note __, 6
-	endchannel
+	sound_ret
 
 .Ch7:
 	toggle_sfx
@@ -3784,7 +3784,7 @@ Sfx_QuitSlots:
 	note __, 2
 	note C#, 14
 	note __, 6
-	endchannel
+	sound_ret
 
 .Ch8:
 	toggle_sfx
@@ -3802,7 +3802,7 @@ Sfx_QuitSlots:
 	note D_, 4
 	note B_, 14
 	note __, 6
-	endchannel
+	sound_ret
 
 
 SECTION "Sfx_Protect", ROMX
@@ -3846,7 +3846,7 @@ Sfx_Protect:
 	octave 6
 	note C#, 5
 	note E_, 5
-	endchannel
+	sound_ret
 
 .Ch8:
 .branch8:
@@ -3855,7 +3855,7 @@ Sfx_Protect:
 	sound_loop 6, .branch8
 	noise_note 9, 10, 7, 0
 	noise_note 16, 7, 5, 17
-	endchannel
+	sound_ret
 
 
 SECTION "Sfx_Sketch", ROMX
@@ -3874,7 +3874,7 @@ Sfx_Sketch:
 	square_note 9, 15, 4, 1816
 	sound_loop 3, .branch5
 	pitch_sweep 0, 8
-	endchannel
+	sound_ret
 
 
 SECTION "Sfx_RainDance", ROMX
@@ -3894,7 +3894,7 @@ Sfx_RainDance:
 	noise_note 5, 5, -5, 79
 	noise_note 5, 4, -7, 71
 	noise_note 10, 3, 2, 70
-	endchannel
+	sound_ret
 
 
 SECTION "Sfx_Aeroblast", ROMX
@@ -3909,14 +3909,14 @@ Sfx_Aeroblast:
 	pitch_sweep 15, 5
 	square_note 28, 15, 8, 1408
 	pitch_sweep 0, 8
-	endchannel
+	sound_ret
 
 .Ch8:
 	noise_note 4, 15, 8, 108
 	noise_note 4, 12, 8, 92
 	noise_note 4, 7, 8, 91
 	noise_note 16, 3, 1, 90
-	endchannel
+	sound_ret
 
 
 SECTION "Sfx_Spark", ROMX
@@ -3930,7 +3930,7 @@ Sfx_Spark:
 	noise_note 4, 15, 8, 93
 	noise_note 4, 13, 8, 111
 	sound_loop 2, .branch8
-	endchannel
+	sound_ret
 
 
 SECTION "Sfx_Curse", ROMX
@@ -3946,11 +3946,11 @@ Sfx_Curse:
 	square_note 4, 15, 2, 1297
 	square_note 4, 15, 2, 1417
 	square_note 4, 15, 2, 1517
-	endchannel
+	sound_ret
 
 .Ch8:
 	noise_note 20, 9, -2, 9
-	endchannel
+	sound_ret
 
 
 SECTION "Sfx_Rage", ROMX
@@ -3965,13 +3965,13 @@ Sfx_Rage:
 	square_note 3, 13, 1, 1968
 	square_note 3, 13, 1, 1986
 	square_note 24, 13, 2, 2005
-	endchannel
+	sound_ret
 
 .Ch8:
 	noise_note 3, 15, 4, 26
 	noise_note 3, 15, 4, 25
 	noise_note 24, 15, 2, 24
-	endchannel
+	sound_ret
 
 
 SECTION "Sfx_Thief", ROMX
@@ -3987,7 +3987,7 @@ Sfx_Thief:
 	noise_note 0, 0, 0, 0
 	noise_note 2, 11, 1, 34
 	sound_loop 2, .branch8
-	endchannel
+	sound_ret
 
 
 SECTION "Sfx_Thief2", ROMX
@@ -4013,7 +4013,7 @@ Sfx_Thief2:
 	note C_, 3
 	note A_, 3
 	toggle_sfx
-	endchannel
+	sound_ret
 
 
 SECTION "Sfx_SpiderWeb", ROMX
@@ -4034,11 +4034,11 @@ Sfx_SpiderWeb:
 	square_note 4, 7, 3, 1584
 	square_note 4, 5, 1, 1600
 	pitch_sweep 0, 8
-	endchannel
+	sound_ret
 
 .Ch8:
 	noise_note 32, 14, -7, 0
-	endchannel
+	sound_ret
 
 
 SECTION "Sfx_MindReader", ROMX
@@ -4065,12 +4065,12 @@ Sfx_MindReader:
 	volume_envelope 4, 1
 	note D_, 3
 	toggle_sfx
-	endchannel
+	sound_ret
 
 .Ch8:
 	noise_note 17, 10, -7, 25
 	noise_note 18, 10, -7, 24
-	endchannel
+	sound_ret
 
 
 SECTION "Sfx_Nightmare", ROMX
@@ -4095,7 +4095,7 @@ Sfx_Nightmare:
 	square_note 2, 0, 0, 0
 	sound_loop 2, .branch5
 	pitch_sweep 0, 8
-	endchannel
+	sound_ret
 
 
 SECTION "Sfx_Snore", ROMX
@@ -4111,7 +4111,7 @@ Sfx_Snore:
 	noise_note 4, 14, -6, 71
 	noise_note 4, 14, -6, 70
 	noise_note 4, 14, -6, 69
-	endchannel
+	sound_ret
 
 
 SECTION "Sfx_SweetKiss", ROMX
@@ -4127,7 +4127,7 @@ Sfx_SweetKiss:
 	square_note 2, 13, 1, 2010
 	sound_loop 2, .branch5
 	square_note 26, 15, 1, 2018
-	endchannel
+	sound_ret
 
 
 SECTION "Sfx_SweetKiss2", ROMX
@@ -4147,7 +4147,7 @@ Sfx_SweetKiss2:
 	square_note 4, 0, 0, 0
 	square_note 2, 10, 1, 1906
 	pitch_sweep 0, 8
-	endchannel
+	sound_ret
 
 
 SECTION "Sfx_BellyDrum", ROMX
@@ -4162,11 +4162,11 @@ Sfx_BellyDrum:
 	pitch_sweep 10, -4
 	square_note 12, 15, 1, 1443
 	pitch_sweep 0, 8
-	endchannel
+	sound_ret
 
 .Ch8:
 	noise_note 12, 11, 1, 108
-	endchannel
+	sound_ret
 
 
 SECTION "Sfx_Toxic", ROMX
@@ -4182,7 +4182,7 @@ Sfx_Toxic:
 	square_note 5, 15, 8, 1123
 	square_note 4, 13, 1, 1347
 	pitch_sweep 0, 8
-	endchannel
+	sound_ret
 
 
 SECTION "Sfx_SludgeBomb", ROMX
@@ -4200,13 +4200,13 @@ Sfx_SludgeBomb:
 	pitch_sweep 12, -3
 	square_note 16, 15, 2, 1489
 	pitch_sweep 0, 8
-	endchannel
+	sound_ret
 
 .Ch8:
 	noise_note 3, 14, 2, 110
 	noise_note 1, 0, 0, 0
 	noise_note 16, 14, 2, 109
-	endchannel
+	sound_ret
 
 
 SECTION "Sfx_Foresight", ROMX
@@ -4223,7 +4223,7 @@ Sfx_Foresight:
 	square_note 8, 12, 1, 2010
 	square_note 2, 0, 0, 0
 	square_note 8, 9, 1, 2010
-	endchannel
+	sound_ret
 
 
 SECTION "Sfx_Spite", ROMX
@@ -4256,7 +4256,7 @@ Sfx_Spite:
 	note G#, 3
 	pitch_sweep 0, 8
 	toggle_sfx
-	endchannel
+	sound_ret
 
 
 SECTION "Sfx_Outrage", ROMX
@@ -4271,7 +4271,7 @@ Sfx_Outrage:
 	noise_note 11, 14, -2, 106
 	noise_note 11, 14, -2, 105
 	noise_note 11, 14, 1, 89
-	endchannel
+	sound_ret
 
 
 SECTION "Sfx_PerishSong", ROMX
@@ -4290,7 +4290,7 @@ Sfx_PerishSong:
 	note A_, 9
 	note G#, 9
 	toggle_sfx
-	endchannel
+	sound_ret
 
 .Ch6:
 	toggle_sfx
@@ -4302,7 +4302,7 @@ Sfx_PerishSong:
 	octave 3
 	note B_, 9
 	toggle_sfx
-	endchannel
+	sound_ret
 
 
 SECTION "Sfx_GigaDrain", ROMX
@@ -4325,7 +4325,7 @@ Sfx_GigaDrain:
 	square_note 20, 10, 8, 1313
 	square_note 20, 8, 8, 1297
 	pitch_sweep 0, 8
-	endchannel
+	sound_ret
 
 .Ch8:
 	noise_note 4, 12, 8, 68
@@ -4334,7 +4334,7 @@ Sfx_GigaDrain:
 	noise_note 20, 12, 8, 84
 	noise_note 20, 12, 8, 86
 	noise_note 64, 12, 7, 87
-	endchannel
+	sound_ret
 
 
 SECTION "Sfx_Attract", ROMX
@@ -4351,7 +4351,7 @@ Sfx_Attract:
 	pitch_sweep 7, -7
 	square_note 8, 15, 1, 1856
 	pitch_sweep 0, 8
-	endchannel
+	sound_ret
 
 
 SECTION "Sfx_Kinesis2", ROMX
@@ -4365,7 +4365,7 @@ Sfx_Kinesis2:
 	square_note 2, 15, 3, 1942
 	square_note 2, 2, 3, 1942
 	square_note 20, 15, 1, 1988
-	endchannel
+	sound_ret
 
 
 SECTION "Sfx_ZapCannon", ROMX
@@ -4380,7 +4380,7 @@ Sfx_ZapCannon:
 	noise_note 0, 0, 0, 0
 	sound_loop 8, .branch8
 	noise_note 8, 14, 1, 73
-	endchannel
+	sound_ret
 
 
 SECTION "Sfx_MeanLook", ROMX
@@ -4404,7 +4404,7 @@ Sfx_MeanLook:
 	square_note 12, 4, 8, 1792
 	square_note 12, 2, 8, 1824
 	pitch_sweep 0, 8
-	endchannel
+	sound_ret
 
 
 SECTION "Sfx_HealBell", ROMX
@@ -4419,7 +4419,7 @@ Sfx_HealBell:
 	square_note 1, 13, 1, 2009
 	square_note 1, 15, 1, 2010
 	square_note 8, 13, 1, 2011
-	endchannel
+	sound_ret
 
 
 SECTION "Sfx_Return", ROMX
@@ -4438,7 +4438,7 @@ Sfx_Return:
 	square_note 16, 0, 0, 0
 	sound_loop 2, .branch5
 	pitch_sweep 0, 8
-	endchannel
+	sound_ret
 
 
 SECTION "Sfx_ExpBar", ROMX
@@ -4460,7 +4460,7 @@ Sfx_ExpBar:
 	square_note 8, 9, 8, 1880
 	square_note 16, 10, 8, 1904
 	pitch_sweep 0, 8
-	endchannel
+	sound_ret
 
 
 SECTION "Sfx_MilkDrink", ROMX
@@ -4480,7 +4480,7 @@ Sfx_MilkDrink:
 	square_note 2, 0, 0, 0
 	sound_loop 6, .branch5
 	pitch_sweep 0, 8
-	endchannel
+	sound_ret
 
 
 SECTION "Sfx_Present", ROMX
@@ -4498,7 +4498,7 @@ Sfx_Present:
 	sound_loop 3, .branch5
 	square_note 16, 15, 1, 1920
 	pitch_sweep 0, 8
-	endchannel
+	sound_ret
 
 
 SECTION "Sfx_MorningSun", ROMX
@@ -4518,7 +4518,7 @@ Sfx_MorningSun:
 	square_note 8, 12, 2, 2023
 	square_note 1, 0, 0, 0
 	square_note 8, 8, 2, 2023
-	endchannel
+	sound_ret
 
 
 SECTION "Sfx_Moonlight", ROMX
@@ -4536,7 +4536,7 @@ Sfx_Moonlight:
 	square_note 16, 15, 1, 2016
 	square_note 16, 13, 1, 2016
 	square_note 16, 8, 1, 2016
-	endchannel
+	sound_ret
 
 
 SECTION "Sfx_Encore", ROMX
@@ -4555,12 +4555,12 @@ Sfx_Encore:
 	square_note 36, 0, 0, 0
 	sound_loop 2, .branch5
 	pitch_sweep 0, 8
-	endchannel
+	sound_ret
 
 .Ch8:
 	noise_note 48, 1, -7, 54
 	noise_note 48, 7, 6, 54
-	endchannel
+	sound_ret
 
 
 SECTION "Sfx_BeatUp", ROMX
@@ -4575,7 +4575,7 @@ Sfx_BeatUp:
 	noise_note 2, 14, 8, 108
 	noise_note 4, 12, 8, 70
 	noise_note 6, 13, 1, 36
-	endchannel
+	sound_ret
 
 
 SECTION "Sfx_SweetScent", ROMX
@@ -4592,7 +4592,7 @@ Sfx_SweetScent:
 	pitch_sweep 13, -7
 	square_note 22, 15, 1, 1840
 	pitch_sweep 0, 8
-	endchannel
+	sound_ret
 
 
 SECTION "Sfx_BatonPass", ROMX
@@ -4612,11 +4612,11 @@ Sfx_BatonPass:
 	square_note 26, 0, 0, 0
 	square_note 1, 15, 1, 1888
 	pitch_sweep 0, 8
-	endchannel
+	sound_ret
 
 .Ch8:
 	noise_note 32, 15, 2, 32
-	endchannel
+	sound_ret
 
 
 SECTION "Sfx_EggCrack", ROMX
@@ -4634,7 +4634,7 @@ Sfx_EggCrack:
 	note C_, 1
 	note __, 1
 	note F#, 1
-	endchannel
+	sound_ret
 
 
 SECTION "Sfx_Evolved", ROMX
@@ -4661,7 +4661,7 @@ Sfx_Evolved:
 	note B_, 3
 	octave 7
 	note C_, 16
-	endchannel
+	sound_ret
 
 
 SECTION "Sfx_MasterBall", ROMX
@@ -4698,7 +4698,7 @@ Sfx_MasterBall:
 	note D_, 2
 	note C#, 2
 	note C_, 2
-	endchannel
+	sound_ret
 
 
 SECTION "Sfx_EggHatch", ROMX
@@ -4723,7 +4723,7 @@ Sfx_EggHatch:
 	note B_, 7
 	volume_envelope 4, 2
 	note B_, 7
-	endchannel
+	sound_ret
 
 
 SECTION "Sfx_GsIntroCharizardFireball", ROMX
@@ -4745,7 +4745,7 @@ Sfx_GsIntroCharizardFireball:
 	noise_note 4, 13, 8, 95
 	noise_note 12, 13, 8, 92
 	noise_note 40, 13, 3, 79
-	endchannel
+	sound_ret
 
 
 SECTION "Sfx_GsIntroPokemonAppears", ROMX
@@ -4762,7 +4762,7 @@ Sfx_GsIntroPokemonAppears:
 	noise_note 0, 15, 8, 39
 	noise_note 1, 15, 8, 79
 	noise_note 8, 15, 1, 0
-	endchannel
+	sound_ret
 
 
 SECTION "Sfx_Flash", ROMX
@@ -4784,7 +4784,7 @@ Sfx_Flash:
 	square_note 9, 3, 0, 2024
 	square_note 15, 1, 2, 2024
 	pitch_sweep 0, 8
-	endchannel
+	sound_ret
 
 
 SECTION "Sfx_GameFreakLogoGs", ROMX
@@ -4807,7 +4807,7 @@ Sfx_GameFreakLogoGs:
 	square_note 10, 3, 4, 2018
 	square_note 10, 1, 5, 2018
 	pitch_sweep 0, 8
-	endchannel
+	sound_ret
 
 
 SECTION "Sfx_DexFanfareLessThan20", ROMX
@@ -4836,7 +4836,7 @@ Sfx_DexFanfareLessThan20:
 	note E_, 2
 	note E_, 2
 	note D_, 6
-	endchannel
+	sound_ret
 
 .Ch6:
 	toggle_sfx
@@ -4853,7 +4853,7 @@ Sfx_DexFanfareLessThan20:
 	note A_, 2
 	note G_, 2
 	note F#, 6
-	endchannel
+	sound_ret
 
 .Ch7:
 	toggle_sfx
@@ -4879,7 +4879,7 @@ Sfx_DexFanfareLessThan20:
 	note __, 1
 	note A_, 2
 	note __, 6
-	endchannel
+	sound_ret
 
 .Ch8:
 	toggle_sfx
@@ -4888,7 +4888,7 @@ Sfx_DexFanfareLessThan20:
 	note C#, 6
 	note __, 16
 	note __, 12
-	endchannel
+	sound_ret
 
 
 SECTION "Sfx_DexFanfare140169", ROMX
@@ -4925,7 +4925,7 @@ Sfx_DexFanfare140169:
 	octave 2
 	note B_, 8
 	note __, 8
-	endchannel
+	sound_ret
 
 .Ch6:
 	toggle_sfx
@@ -4949,7 +4949,7 @@ Sfx_DexFanfare140169:
 	note B_, 16
 	note G_, 8
 	note __, 8
-	endchannel
+	sound_ret
 
 .Ch7:
 	toggle_sfx
@@ -4981,7 +4981,7 @@ Sfx_DexFanfare140169:
 	note __, 1
 	note G_, 4
 	note __, 4
-	endchannel
+	sound_ret
 
 .Ch8:
 	toggle_sfx
@@ -4996,7 +4996,7 @@ Sfx_DexFanfare140169:
 	note C#, 1
 	sound_loop 3, .branch8
 	note D_, 8
-	endchannel
+	sound_ret
 
 
 SECTION "Sfx_DexFanfare170199", ROMX
@@ -5033,7 +5033,7 @@ Sfx_DexFanfare170199:
 	note_type 12, 10, 8
 	note A#, 12
 	note __, 4
-	endchannel
+	sound_ret
 
 .Ch6:
 	toggle_sfx
@@ -5059,7 +5059,7 @@ Sfx_DexFanfare170199:
 	note_type 12, 11, 8
 	note D_, 12
 	note __, 4
-	endchannel
+	sound_ret
 
 .Ch7:
 	toggle_sfx
@@ -5085,7 +5085,7 @@ Sfx_DexFanfare170199:
 	octave 2
 	note A#, 12
 	note __, 4
-	endchannel
+	sound_ret
 
 .Ch8:
 	toggle_sfx
@@ -5105,7 +5105,7 @@ Sfx_DexFanfare170199:
 	note C#, 1
 	note_type 12
 	note B_, 16
-	endchannel
+	sound_ret
 
 	db $fd
 
@@ -5142,7 +5142,7 @@ Sfx_DexFanfare200229:
 	note_type 12, 10, 8
 	note F#, 12
 	note __, 4
-	endchannel
+	sound_ret
 
 .Ch6:
 	toggle_sfx
@@ -5163,7 +5163,7 @@ Sfx_DexFanfare200229:
 	note_type 12, 11, 8
 	note A_, 12
 	note __, 4
-	endchannel
+	sound_ret
 
 .Ch7:
 	toggle_sfx
@@ -5205,7 +5205,7 @@ Sfx_DexFanfare200229:
 	octave 3
 	note D_, 6
 	note __, 6
-	endchannel
+	sound_ret
 
 .Ch8:
 	toggle_sfx
@@ -5232,7 +5232,7 @@ Sfx_DexFanfare200229:
 	note D_, 2
 	note D_, 2
 	note B_, 12
-	endchannel
+	sound_ret
 
 
 SECTION "Sfx_DexFanfare230Plus", ROMX
@@ -5288,7 +5288,7 @@ Sfx_DexFanfare230Plus:
 	note_type 12, 10, 8
 	note A_, 14
 	note __, 2
-	endchannel
+	sound_ret
 
 .Ch6:
 	toggle_sfx
@@ -5321,7 +5321,7 @@ Sfx_DexFanfare230Plus:
 	note_type 12, 11, 8
 	note F#, 14
 	note __, 2
-	endchannel
+	sound_ret
 
 .Ch7:
 	toggle_sfx
@@ -5368,7 +5368,7 @@ Sfx_DexFanfare230Plus:
 	note_type 12, 2, 5
 	note D_, 14
 	note __, 2
-	endchannel
+	sound_ret
 
 .Ch8:
 	toggle_sfx
@@ -5402,7 +5402,7 @@ Sfx_DexFanfare230Plus:
 	note C#, 1
 	sound_loop 18, .branch8_2
 	note D_, 6
-	endchannel
+	sound_ret
 
 
 SECTION "Sfx_NotVeryEffective", ROMX
@@ -5415,7 +5415,7 @@ Sfx_NotVeryEffective:
 	noise_note 4, 15, 1, 95
 	noise_note 1, 10, 0, 66
 	noise_note 16, 15, 1, 83
-	endchannel
+	sound_ret
 
 
 SECTION "Sfx_Damage", ROMX
@@ -5429,7 +5429,7 @@ Sfx_Damage:
 	noise_note 1, 10, 0, 18
 	noise_note 4, 15, 0, 50
 	noise_note 16, 15, 1, 68
-	endchannel
+	sound_ret
 
 
 SECTION "Sfx_SuperEffective", ROMX
@@ -5444,7 +5444,7 @@ Sfx_SuperEffective:
 	noise_note 2, 15, 8, 63
 	noise_note 3, 13, 0, 21
 	noise_note 32, 15, 2, 53
-	endchannel
+	sound_ret
 
 
 SECTION "Sfx_BallBounce", ROMX
@@ -5464,7 +5464,7 @@ Sfx_BallBounce:
 	square_note 23, 0, 0, 0
 	square_note 8, 5, 1, 1856
 	square_note 23, 0, 0, 0
-	endchannel
+	sound_ret
 
 .Ch6:
 	duty_cycle 2
@@ -5477,7 +5477,7 @@ Sfx_BallBounce:
 	square_note 23, 0, 0, 0
 	square_note 8, 2, 1, 1857
 	square_note 23, 0, 0, 0
-	endchannel
+	sound_ret
 
 
 SECTION "Sfx_SweetScent2", ROMX
@@ -5494,7 +5494,7 @@ Sfx_SweetScent2:
 	square_note 2, 15, 1, 1568
 	square_note 16, 15, 1, 1616
 	pitch_sweep 0, 8
-	endchannel
+	sound_ret
 
 .Ch8:
 	noise_note 2, 14, 8, 34
@@ -5508,7 +5508,7 @@ Sfx_SweetScent2:
 	noise_note 10, 6, 1, 0
 	noise_note 6, 5, -1, 0
 	noise_note 2, 2, 1, 7
-	endchannel
+	sound_ret
 
 
 SECTION "Sfx_HitEndOfExpBar", ROMX
@@ -5523,14 +5523,14 @@ Sfx_HitEndOfExpBar:
 	square_note 1, 14, 1, 1929
 	square_note 1, 14, 1, 1954
 	square_note 16, 14, 1, 1969
-	endchannel
+	sound_ret
 
 .Ch6:
 	duty_cycle 2
 	square_note 1, 14, 1, 1954
 	square_note 1, 14, 1, 1969
 	square_note 16, 14, 1, 1988
-	endchannel
+	sound_ret
 
 
 SECTION "Sfx_GiveTrademon", ROMX
@@ -5552,7 +5552,7 @@ Sfx_GiveTrademon:
 	square_note 27, 3, 4, 1872
 	square_note 27, 1, 4, 1872
 	pitch_sweep 0, 8
-	endchannel
+	sound_ret
 
 
 SECTION "Sfx_GetTrademon", ROMX
@@ -5574,7 +5574,7 @@ Sfx_GetTrademon:
 	square_note 27, 13, 4, 1980
 	square_note 27, 15, 4, 1980
 	pitch_sweep 0, 8
-	endchannel
+	sound_ret
 
 
 SECTION "Sfx_TrainArrived", ROMX
@@ -5597,7 +5597,7 @@ Sfx_TrainArrived:
 	square_note 4, 6, 8, 1710
 	square_note 16, 6, -7, 1707
 	square_note 104, 6, 5, 1704
-	endchannel
+	sound_ret
 
 .Ch8:
 	noise_note 5, 10, -7, 16
@@ -5608,7 +5608,7 @@ Sfx_TrainArrived:
 	noise_note 4, 9, -7, 32
 	noise_note 4, 9, -7, 16
 	noise_note 104, 10, 3, 0
-	endchannel
+	sound_ret
 
 
 SECTION "Sfx_2Boops", ROMX
@@ -5627,7 +5627,7 @@ Sfx_2Boops:
 	square_note 16, 15, 8, 1485
 	sound_loop 2, .branch5
 	pitch_sweep 0, 8
-	endchannel
+	sound_ret
 
 
 SECTION "Sfx_TitleScreenIntro", ROMX
@@ -5646,7 +5646,7 @@ Sfx_TitleScreenIntro:
 	noise_note 4, 7, 0, 34
 	noise_note 8, 8, 0, 34
 	noise_note 15, 9, 4, 34
-	endchannel
+	sound_ret
 
 
 SECTION "Sfx_StopSlot", ROMX
@@ -5659,7 +5659,7 @@ Sfx_StopSlot:
 	duty_cycle 2
 	square_note 1, 15, 8, 1888
 	square_note 4, 8, 2, 1888
-	endchannel
+	sound_ret
 
 
 SECTION "Sfx_GlassTing", ROMX
@@ -5671,7 +5671,7 @@ Sfx_GlassTing:
 .Ch5:
 	duty_cycle 2
 	square_note 32, 13, 1, 2012
-	endchannel
+	sound_ret
 
 
 SECTION "Sfx_GlassTing2", ROMX
@@ -5684,12 +5684,12 @@ Sfx_GlassTing2:
 .Ch5:
 	duty_cycle 2
 	square_note 16, 15, 1, 2012
-	endchannel
+	sound_ret
 
 .Ch6:
 	duty_cycle 2
 	square_note 16, 13, 1, 2013
-	endchannel
+	sound_ret
 
 
 SECTION "Sfx_IntroUnown1", ROMX
@@ -5703,7 +5703,7 @@ Sfx_IntroUnown1:
 	duty_cycle 2
 	square_note 8, 3, -1, 1797
 	square_note 32, 14, 2, 1797
-	endchannel
+	sound_ret
 
 
 SECTION "Sfx_IntroUnown2", ROMX
@@ -5717,7 +5717,7 @@ Sfx_IntroUnown2:
 	duty_cycle 2
 	square_note 8, 3, -1, 1880
 	square_note 32, 14, 2, 1880
-	endchannel
+	sound_ret
 
 
 SECTION "Sfx_IntroUnown3", ROMX
@@ -5734,7 +5734,7 @@ Sfx_IntroUnown3:
 	square_note 16, 1, 2, 1986
 	square_note 6, 2, 2, 1986
 	square_note 6, 3, 2, 1986
-	endchannel
+	sound_ret
 
 
 SECTION "Sfx_DittoPopUp", ROMX
@@ -5751,7 +5751,7 @@ Sfx_DittoPopUp:
 	pitch_sweep 1, 6
 	square_note 4, 11, 1, 1600
 	square_note 16, 3, 1, 1601
-	endchannel
+	sound_ret
 
 
 SECTION "Sfx_DittoTransform", ROMX
@@ -5767,7 +5767,7 @@ Sfx_DittoTransform:
 	square_note 4, 9, 7, 1216
 	square_note 4, 6, 7, 1217
 	square_note 4, 4, 2, 1218
-	endchannel
+	sound_ret
 
 
 SECTION "Sfx_IntroSuicune1", ROMX
@@ -5779,7 +5779,7 @@ Sfx_IntroSuicune1:
 .Ch8:
 	noise_note 1, 5, 8, 89
 	noise_note 2, 9, 1, 35
-	endchannel
+	sound_ret
 
 
 SECTION "Sfx_IntroPichu", ROMX
@@ -5795,7 +5795,7 @@ Sfx_IntroPichu:
 	square_note 3, 0, 0, 0
 	pitch_sweep 1, 7
 	square_note 2, 8, 8, 1910
-	endchannel
+	sound_ret
 
 
 SECTION "Sfx_IntroSuicune2", ROMX
@@ -5821,7 +5821,7 @@ Sfx_IntroSuicune2:
 	noise_note 1, 3, 3, 16
 	noise_note 1, 2, 3, 0
 	noise_note 1, 1, 3, 16
-	endchannel
+	sound_ret
 
 
 SECTION "Sfx_IntroSuicune3", ROMX
@@ -5836,7 +5836,7 @@ Sfx_IntroSuicune3:
 	noise_note 4, 10, 4, 16
 	noise_note 4, 4, 4, 16
 	noise_note 4, 2, 4, 16
-	endchannel
+	sound_ret
 
 
 SECTION "Sfx_DittoBounce", ROMX
@@ -5852,7 +5852,7 @@ Sfx_DittoBounce:
 	square_note 0, 3, 1, 1200
 	pitch_sweep 3, 4
 	square_note 16, 11, 1, 1056
-	endchannel
+	sound_ret
 
 
 SECTION "Sfx_IntroSuicune4", ROMX
@@ -5873,7 +5873,7 @@ Sfx_IntroSuicune4:
 	noise_note 4, 9, 2, 1
 	noise_note 0, 0, 0, 0
 	noise_note 32, 7, 2, 0
-	endchannel
+	sound_ret
 
 
 SECTION "Sfx_GameFreakPresents", ROMX
@@ -5902,7 +5902,7 @@ Sfx_GameFreakPresents:
 	note G_, 3
 	volume_envelope 3, 1
 	note G_, 3
-	endchannel
+	sound_ret
 
 
 SECTION "Sfx_Tingle", ROMX
@@ -5928,7 +5928,7 @@ Sfx_Tingle:
 	note C_, 2
 	volume_envelope 10, 1
 	note G_, 13
-	endchannel
+	sound_ret
 
 
 SECTION "Sfx_TwoPcBeeps", ROMX
@@ -5943,7 +5943,7 @@ Sfx_TwoPcBeeps:
 	square_note 2, 2, 8, 1986
 	square_note 2, 14, 8, 1986
 	square_note 2, 2, 8, 1986
-	endchannel
+	sound_ret
 
 
 SECTION "Sfx_4NoteDitty", ROMX
@@ -5977,21 +5977,21 @@ Sfx_4NoteDitty:
 	note C_, 2
 	volume_envelope 4, 3
 	note C_, 16
-	endchannel
+	sound_ret
 
 .Ch6:
 	toggle_sfx
 	note_type 2, 11, 8
 	note __, 9
 	note __, 16
-	endchannel
+	sound_ret
 
 .Ch7:
 	toggle_sfx
 	note_type 2, 11, 8
 	note __, 9
 	note __, 16
-	endchannel
+	sound_ret
 
 
 SECTION "Sfx_Twinkle", ROMX
@@ -6023,7 +6023,7 @@ Sfx_Twinkle:
 	volume_envelope 14, 1
 	octave 5
 	note G_, 6
-	endchannel
+	sound_ret
 
 
 SECTION "Sfx_Puddle", ROMX
@@ -6037,7 +6037,7 @@ Sfx_Puddle:
 	pitch_sweep 9, 7
 	square_note 15, 9, 8, 1792
 	pitch_sweep 0, 8
-	endchannel
+	sound_ret
 
 
 SECTION "Sfx_AbilitySlideout", ROMX
@@ -6052,4 +6052,4 @@ Sfx_AbilitySlideout:
 	square_note 3, 14, 8, 2047
 	square_note 23, 14, 8, 2016
 	pitch_sweep 0, 8
-	endchannel
+	sound_ret

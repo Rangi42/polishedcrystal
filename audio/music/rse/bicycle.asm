@@ -693,7 +693,7 @@ Music_BicycleRSE_Ch2_branch_1:
 	note A_, 2
 	note F#, 2
 	note A_, 2
-	endchannel
+	sound_ret
 
 Music_BicycleRSE_Ch2_branch_2:
 	octave 4
@@ -706,7 +706,7 @@ Music_BicycleRSE_Ch2_branch_2:
 	note A_, 2
 	note F#, 2
 	note A_, 2
-	endchannel
+	sound_ret
 
 Music_BicycleRSE_Ch3:
 	note_type 12, 1, 3

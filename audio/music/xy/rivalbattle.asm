@@ -169,19 +169,19 @@ Music_RivalBattleXY_Ch1_branch_1:
 	note E_, 4
 	note F_, 4
 	note G_, 4
-	endchannel
+	sound_ret
 
 Music_RivalBattleXY_Ch1_branch_2:
 	note C#, 2
 	note D#, 2
 	note C#, 2
-	endchannel
+	sound_ret
 
 Music_RivalBattleXY_Ch1_branch_3:
 	note D#, 2
 	note F_, 2
 	note D#, 2
-	endchannel
+	sound_ret
 
 Music_RivalBattleXY_Ch2:
 	duty_cycle 3
@@ -341,7 +341,7 @@ Music_RivalBattleXY_Ch2_branch_1:
 	note D_, 1
 	note __, 1
 	volume_envelope 11, 7
-	endchannel
+	sound_ret
 
 Music_RivalBattleXY_Ch2_branch_2:
 	volume_envelope 11, 3
@@ -364,7 +364,7 @@ Music_RivalBattleXY_Ch2_branch_2:
 	note A_, 4
 	note F_, 4
 	note F_, 2
-	endchannel
+	sound_ret
 
 Music_RivalBattleXY_Ch3:
 	note_type 12, 1, -1
@@ -439,7 +439,7 @@ Music_RivalBattleXY_Ch3_branch_1:
 	note C_, 1
 	note __, 1
 	sound_loop 8, Music_RivalBattleXY_Ch3_branch_1
-	endchannel
+	sound_ret
 
 Music_RivalBattleXY_Ch3_branch_2:
 	octave 2
@@ -449,7 +449,7 @@ Music_RivalBattleXY_Ch3_branch_2:
 	note D#, 1
 	note __, 1
 	sound_loop 8, Music_RivalBattleXY_Ch3_branch_2
-	endchannel
+	sound_ret
 
 Music_RivalBattleXY_Ch3_branch_3:
 	octave 2
@@ -462,7 +462,7 @@ Music_RivalBattleXY_Ch3_branch_3:
 	octave 2
 	note C#, 2
 	note D_, 2
-	endchannel
+	sound_ret
 
 Music_RivalBattleXY_Ch3_branch_4:
 	octave 2
@@ -482,7 +482,7 @@ Music_RivalBattleXY_Ch3_branch_4:
 	note G_, 2
 	note F_, 2
 	note D#, 2
-	endchannel
+	sound_ret
 
 Music_RivalBattleXY_Ch3_branch_5:
 	octave 3
@@ -513,7 +513,7 @@ Music_RivalBattleXY_Ch3_branch_5:
 	note __, 2
 	note F_, 1
 	note __, 1
-	endchannel
+	sound_ret
 
 Music_RivalBattleXY_Ch4:
 	toggle_noise 3

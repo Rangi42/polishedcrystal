@@ -250,7 +250,7 @@ Music_KantoGymBattle_branch_ec832:
 	note E_, 2
 	note D#, 2
 	note C#, 2
-	endchannel
+	sound_ret
 
 Music_KantoGymBattle_Ch2:
 	duty_cycle 3
@@ -433,7 +433,7 @@ Music_KantoGymBattle_branch_ec907:
 	note A#, 2
 	duty_cycle 3
 	volume_envelope 11, 0
-	endchannel
+	sound_ret
 
 Music_KantoGymBattle_Ch3:
 	note_type 12, 1, -1

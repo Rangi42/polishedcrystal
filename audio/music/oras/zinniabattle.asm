@@ -276,7 +276,7 @@ Music_ZinniaBattleORAS_Ch1_branch_1:
 	note F#, 2
 	note G#, 2
 	note E_, 2
-	endchannel
+	sound_ret
 
 Music_ZinniaBattleORAS_Ch1_branch_2:
 	note F#, 2
@@ -303,7 +303,7 @@ Music_ZinniaBattleORAS_Ch1_branch_2:
 	note __, 2
 	note B_, 2
 	note __, 2
-	endchannel
+	sound_ret
 
 Music_ZinniaBattleORAS_Ch1_branch_3:
 	note B_, 2
@@ -318,7 +318,7 @@ Music_ZinniaBattleORAS_Ch1_branch_3:
 	note __, 2
 	note B_, 2
 	note __, 2
-	endchannel
+	sound_ret
 
 Music_ZinniaBattleORAS_Ch2:
 	duty_cycle 3
@@ -1061,7 +1061,7 @@ Music_ZinniaBattleORAS_Ch3_branch_1:
 	note __, 2
 	note E_, 2
 	note __, 2
-	endchannel
+	sound_ret
 
 Music_ZinniaBattleORAS_Ch3_branch_2:
 	note F#, 2
@@ -1076,7 +1076,7 @@ Music_ZinniaBattleORAS_Ch3_branch_2:
 	note __, 2
 	note F#, 2
 	note __, 2
-	endchannel
+	sound_ret
 
 Music_ZinniaBattleORAS_Ch4:
 	toggle_noise 3
@@ -1177,7 +1177,7 @@ Music_ZinniaBattleORAS_Ch4_branch_1:
 	note D_, 1
 	note C_, 1
 	note D_, 1
-	endchannel
+	sound_ret
 
 Music_ZinniaBattleORAS_Ch4_branch_2:
 	note_type 3
@@ -1194,4 +1194,4 @@ Music_ZinniaBattleORAS_Ch4_branch_2:
 	note D_, 1
 	note D_, 1
 	note_type 12
-	endchannel
+	sound_ret

@@ -41,7 +41,7 @@ Music_DragonsDen_branch_eed1e:
 	note D_, 4
 	octave 3
 	note G#, 16
-	endchannel
+	sound_ret
 
 Music_DragonsDen_branch_eed2d:
 	volume_envelope 11, 1
@@ -57,7 +57,7 @@ Music_DragonsDen_branch_eed2d:
 	note C#, 4
 	note C#, 2
 	note C#, 2
-	endchannel
+	sound_ret
 
 Music_DragonsDen_Ch2:
 	duty_cycle 0
@@ -88,7 +88,7 @@ Music_DragonsDen_branch_eed5e:
 	note G#, 12
 	note G_, 4
 	note C#, 16
-	endchannel
+	sound_ret
 
 Music_DragonsDen_branch_eed6b:
 	volume_envelope 12, 1
@@ -100,7 +100,7 @@ Music_DragonsDen_branch_eed6d:
 	note G#, 4
 	note G#, 4
 	sound_loop 2, Music_DragonsDen_branch_eed6d
-	endchannel
+	sound_ret
 
 Music_DragonsDen_Ch3:
 Music_DragonsDen_branch_eed78:

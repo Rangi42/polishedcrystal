@@ -61,7 +61,7 @@ Music_VictoryRoad_branch_f6cb9:
 	note G_, 1
 	octave 3
 	note F#, 3
-	endchannel
+	sound_ret
 
 Music_VictoryRoad_Ch2:
 	duty_cycle 3
@@ -132,7 +132,7 @@ Music_VictoryRoad_branch_f6d1e:
 	note __, 2
 	note A_, 1
 	note A_, 1
-	endchannel
+	sound_ret
 
 Music_VictoryRoad_Ch3:
 	stereo_panning TRUE, FALSE
@@ -171,7 +171,7 @@ Music_VictoryRoad_branch_f6d52:
 	note __, 2
 	note C_, 1
 	note A_, 3
-	endchannel
+	sound_ret
 
 Music_VictoryRoad_Ch4:
 	toggle_noise 0

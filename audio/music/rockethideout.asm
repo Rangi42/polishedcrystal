@@ -305,4 +305,4 @@ Music_RocketHideout_branch_eecdb:
 	note D#, 1
 	stereo_panning TRUE, FALSE
 	note A_, 4
-	endchannel
+	sound_ret

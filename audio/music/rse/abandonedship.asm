@@ -445,7 +445,7 @@ Music_AbandonedShipRSE_Ch2_branch_1:
 	note F_, 2
 	note F#, 2
 	note F_, 2
-	endchannel
+	sound_ret
 
 Music_AbandonedShipRSE_Ch3:
 	stereo_panning TRUE, FALSE
@@ -688,4 +688,4 @@ Music_AbandonedShipRSE_branch_eeb6b:
 	note D_, 2
 	note C#, 1
 	note C#, 1
-	endchannel
+	sound_ret

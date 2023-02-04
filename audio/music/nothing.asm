@@ -9,4 +9,4 @@ Music_Nothing_Ch1:
 Music_Nothing_Ch2:
 Music_Nothing_Ch3:
 Music_Nothing_Ch4:
-	endchannel
+	sound_ret

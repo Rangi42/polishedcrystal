@@ -38,7 +38,7 @@ Music_IndigoPlateau_branch_ee881:
 	note A_, 2
 	note A_, 2
 	volume_envelope 10, 0
-	endchannel
+	sound_ret
 
 Music_IndigoPlateau_Ch2:
 	duty_cycle 3
@@ -112,7 +112,7 @@ Music_IndigoPlateau_branch_ee8e9:
 	note D_, 2
 	note D_, 2
 	volume_envelope 11, 0
-	endchannel
+	sound_ret
 
 Music_IndigoPlateau_Ch3:
 	note_type 12, 1, -1
@@ -146,7 +146,7 @@ Music_IndigoPlateau_branch_ee915:
 	octave 2
 	note A_, 1
 	note __, 3
-	endchannel
+	sound_ret
 
 Music_IndigoPlateau_Ch4:
 	stereo_panning TRUE, FALSE

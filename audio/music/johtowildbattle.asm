@@ -414,7 +414,7 @@ Music_JohtoWildBattle_branch_f5f5d:
 	note G_, 1
 	octave 5
 	note G_, 1
-	endchannel
+	sound_ret
 
 Music_JohtoWildBattle_Ch3:
 	note_type 12, 1, 4
@@ -582,4 +582,4 @@ Music_JohtoWildBattle_branch_f6055:
 	note D#, 2
 	note G#, 2
 	sound_loop 4, Music_JohtoWildBattle_branch_f6055
-	endchannel
+	sound_ret

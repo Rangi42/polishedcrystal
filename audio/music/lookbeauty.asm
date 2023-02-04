@@ -323,4 +323,4 @@ Music_LookBeauty_branch_eefa1:
 	note G_, 2
 	note D_, 2
 	note G_, 2
-	endchannel
+	sound_ret

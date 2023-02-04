@@ -126,7 +126,7 @@ Music_WildBattleGo_Ch1_ditty1:
 	note D_, 2
 	note D_, 2
 	note D_, 2
-	endchannel
+	sound_ret
 
 Music_WildBattleGo_Ch1_ditty2:
 	note C_, 4
@@ -141,7 +141,7 @@ Music_WildBattleGo_Ch1_ditty2:
 	note C_, 2
 	note C_, 2
 	note C_, 2
-	endchannel
+	sound_ret
 
 Music_WildBattleGo_Ch2:
 	note_type 12, 0, 0
@@ -294,7 +294,7 @@ Music_WildBattleGo_Ch2_ditty1:
 	note F#, 2
 	note G_, 4
 	note F#, 4
-	endchannel
+	sound_ret
 
 Music_WildBattleGo_Ch2_ditty2:
 	note D_, 1
@@ -307,7 +307,7 @@ Music_WildBattleGo_Ch2_ditty2:
 	note __, 5
 	note D_, 1
 	note __, 5
-	endchannel
+	sound_ret
 
 Music_WildBattleGo_Ch3:
 	duty_cycle 6
@@ -496,7 +496,7 @@ Music_WildBattleGo_Ch4_ditty1:
 	note __, 1
 	note C#, 1
 	note C#, 1
-	endchannel
+	sound_ret
 
 Music_WildBattleGo_Ch4_ditty2:
 	note D_, 1
@@ -507,7 +507,7 @@ Music_WildBattleGo_Ch4_ditty2:
 	note __, 1
 	note C#, 1
 	note __, 1
-	endchannel
+	sound_ret
 
 Music_WildBattleGo_Ch4_ditty3:
 	note D_, 1
@@ -518,4 +518,4 @@ Music_WildBattleGo_Ch4_ditty3:
 	note __, 1
 	note C#, 1
 	note G_, 1
-	endchannel
+	sound_ret

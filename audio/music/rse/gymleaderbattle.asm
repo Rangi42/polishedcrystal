@@ -664,7 +664,7 @@ Music_GymLeaderBattleRSE_Ch2_branch_1:
 	note G_, 2
 	octave 4
 	note C_, 2
-	endchannel
+	sound_ret
 
 Music_GymLeaderBattleRSE_Ch2_branch_2:
 	duty_cycle 1
@@ -680,7 +680,7 @@ Music_GymLeaderBattleRSE_Ch2_branch_2:
 	note G_, 2
 	octave 4
 	note C_, 2
-	endchannel
+	sound_ret
 
 Music_GymLeaderBattleRSE_Ch2_branch_3:
 	duty_cycle 0
@@ -696,7 +696,7 @@ Music_GymLeaderBattleRSE_Ch2_branch_3:
 	note G#, 2
 	octave 4
 	note C#, 2
-	endchannel
+	sound_ret
 
 Music_GymLeaderBattleRSE_Ch3:
 	stereo_panning TRUE, TRUE
@@ -850,14 +850,14 @@ Music_GymLeaderBattleRSE_Ch3_branch_1:
 	note D#, 1
 	note __, 1
 	note D#, 2
-	endchannel
+	sound_ret
 
 Music_GymLeaderBattleRSE_Ch3_branch_2:
 	note C_, 2
 	note G_, 2
 	note C_, 2
 	note G_, 2
-	endchannel
+	sound_ret
 
 Music_GymLeaderBattleRSE_Ch3_branch_3:
 	octave 1
@@ -868,21 +868,21 @@ Music_GymLeaderBattleRSE_Ch3_branch_3:
 	note A#, 2
 	octave 2
 	note F_, 2
-	endchannel
+	sound_ret
 
 Music_GymLeaderBattleRSE_Ch3_branch_4:
 	note C#, 2
 	note G#, 2
 	note C#, 2
 	note G#, 2
-	endchannel
+	sound_ret
 
 Music_GymLeaderBattleRSE_Ch3_branch_5:
 	note D#, 2
 	note A#, 2
 	note D#, 2
 	note A#, 2
-	endchannel
+	sound_ret
 
 Music_GymLeaderBattleRSE_Ch4:
 	toggle_noise 3
@@ -928,17 +928,17 @@ Music_GymLeaderBattleRSE_Ch4_loop_4:
 Music_GymLeaderBattleRSE_Ch4_branch_1:
 	note C_, 6
 	note C_, 10
-	endchannel
+	sound_ret
 
 Music_GymLeaderBattleRSE_Ch4_branch_2:
 	note C_, 6
 	note C_, 8
 	note D#, 2
-	endchannel
+	sound_ret
 
 Music_GymLeaderBattleRSE_Ch4_branch_3:
 	note C_, 8
 	note C_, 2
 	note C_, 4
 	note C_, 2
-	endchannel
+	sound_ret

@@ -160,7 +160,7 @@ Music_BuenasPassword_branch_178204:
 	note C_, 1
 	note __, 1
 	note_type 12, 8, 4
-	endchannel
+	sound_ret
 
 Music_BuenasPassword_branch_178222:
 	octave 3
@@ -177,7 +177,7 @@ Music_BuenasPassword_branch_178222:
 	octave 3
 	note D#, 1
 	note __, 2
-	endchannel
+	sound_ret
 
 Music_BuenasPassword_Ch2:
 	vibrato $12, $34
@@ -303,7 +303,7 @@ Music_BuenasPassword_branch_1782a4:
 	note F_, 1
 	note __, 1
 	note_type 12, 10, 5
-	endchannel
+	sound_ret
 
 Music_BuenasPassword_branch_1782cc:
 	octave 4
@@ -324,7 +324,7 @@ Music_BuenasPassword_branch_1782cc:
 	note __, 1
 	note D#, 2
 	note __, 2
-	endchannel
+	sound_ret
 
 Music_BuenasPassword_branch_1782df:
 	octave 3
@@ -376,7 +376,7 @@ Music_BuenasPassword_branch_1782df:
 	octave 2
 	note B_, 1
 	note G#, 3
-	endchannel
+	sound_ret
 
 Music_BuenasPassword_Ch3:
 	note_type 12, 1, 4
@@ -534,7 +534,7 @@ Music_BuenasPassword_branch_1783a7:
 	note C#, 1
 	note F_, 2
 	note C#, 1
-	endchannel
+	sound_ret
 
 Music_BuenasPassword_branch_1783bc:
 	octave 2
@@ -556,7 +556,7 @@ Music_BuenasPassword_branch_1783bc:
 	note __, 1
 	octave 2
 	note G#, 2
-	endchannel
+	sound_ret
 
 Music_BuenasPassword_Ch4:
 	toggle_noise 3
@@ -610,7 +610,7 @@ Music_BuenasPassword_branch_17840c:
 	note D_, 2
 	stereo_panning FALSE, TRUE
 	note G_, 2
-	endchannel
+	sound_ret
 
 Music_BuenasPassword_branch_178424:
 	stereo_panning TRUE, TRUE
@@ -629,4 +629,4 @@ Music_BuenasPassword_branch_178424:
 	note D_, 2
 	note D_, 1
 	note D_, 1
-	endchannel
+	sound_ret

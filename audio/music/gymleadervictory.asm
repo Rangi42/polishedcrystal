@@ -82,7 +82,7 @@ Music_GymLeaderVictory_branch_f4689:
 	note B_, 2
 	note G_, 1
 	note D_, 1
-	endchannel
+	sound_ret
 
 Music_GymLeaderVictory_branch_f46a0:
 	volume_envelope 8, 7
@@ -112,7 +112,7 @@ Music_GymLeaderVictory_branch_f46a0:
 	octave 4
 	note C#, 1
 	note E_, 8
-	endchannel
+	sound_ret
 
 Music_GymLeaderVictory_Ch2:
 	vibrato $12, $34
@@ -188,7 +188,7 @@ Music_GymLeaderVictory_branch_f4711:
 	note A_, 2
 	note G_, 2
 	note F#, 2
-	endchannel
+	sound_ret
 
 Music_GymLeaderVictory_branch_f4720:
 	volume_envelope 9, 8
@@ -212,7 +212,7 @@ Music_GymLeaderVictory_branch_f4720:
 	octave 5
 	note C#, 8
 	note C#, 8
-	endchannel
+	sound_ret
 
 Music_GymLeaderVictory_Ch3:
 	note_type 12, 2, 5
@@ -378,7 +378,7 @@ Music_GymLeaderVictory_branch_f479e:
 	note C#, 2
 	octave 2
 	note A_, 2
-	endchannel
+	sound_ret
 
 Music_GymLeaderVictory_Ch4:
 	toggle_noise 4
@@ -417,4 +417,4 @@ Music_GymLeaderVictory_branch_f480b:
 	note D_, 2
 	note D#, 2
 	sound_loop 3, Music_GymLeaderVictory_branch_f480b
-	endchannel
+	sound_ret

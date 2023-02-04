@@ -210,7 +210,7 @@ Music_Surf_branch_f5233:
 	note F_, 8
 	note C#, 4
 	note D_, 4
-	endchannel
+	sound_ret
 
 Music_Surf_branch_f5293:
 	octave 4
@@ -276,7 +276,7 @@ Music_Surf_branch_f5293:
 	note C_, 2
 	octave 3
 	note G_, 2
-	endchannel
+	sound_ret
 
 Music_Surf_branch_f52d9:
 	octave 3
@@ -335,7 +335,7 @@ Music_Surf_branch_f52d9:
 	note D#, 8
 	octave 2
 	note B_, 8
-	endchannel
+	sound_ret
 
 Music_Surf_Ch2:
 Music_Surf_branch_f5317:
@@ -479,7 +479,7 @@ Music_Surf_branch_f53b2:
 	octave 3
 	note F_, 4
 	note G_, 4
-	endchannel
+	sound_ret
 
 Music_Surf_branch_f53d6:
 	octave 4
@@ -498,7 +498,7 @@ Music_Surf_branch_f53d6:
 	octave 3
 	note B_, 1
 	note A_, 1
-	endchannel
+	sound_ret
 
 Music_Surf_branch_f53e8:
 	note A#, 7
@@ -511,7 +511,7 @@ Music_Surf_branch_f53e8:
 	octave 4
 	note C_, 16
 	note G_, 8
-	endchannel
+	sound_ret
 
 Music_Surf_branch_f53f3:
 	note F#, 1
@@ -529,7 +529,7 @@ Music_Surf_branch_f53f3:
 	note C#, 1
 	octave 3
 	note B_, 1
-	endchannel
+	sound_ret
 
 Music_Surf_branch_f5404:
 	octave 4
@@ -539,7 +539,7 @@ Music_Surf_branch_f5404:
 	note A#, 8
 	note G#, 8
 	note D#, 8
-	endchannel
+	sound_ret
 
 Music_Surf_Ch3:
 Music_Surf_branch_f540c:
@@ -718,4 +718,4 @@ Music_Surf_branch_f54c8:
 	note __, 3
 	note G#, 1
 	note __, 3
-	endchannel
+	sound_ret

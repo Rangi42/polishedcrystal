@@ -279,7 +279,7 @@ Music_TitleScreenXY_Ch1_b5:
 	note A#, 1
 	octave 5
 	note C#, 1
-	endchannel
+	sound_ret
 
 Music_TitleScreenXY_Ch2:
 	vibrato $10, $33
@@ -836,7 +836,7 @@ Music_TitleScreenXY_Ch3_b2:
 	note G#, 2
 	note D#, 2
 	note C_, 2
-	endchannel
+	sound_ret
 
 Music_TitleScreenXY_Ch3_b3:
 	octave 2
@@ -856,7 +856,7 @@ Music_TitleScreenXY_Ch3_b3:
 	note C#, 2
 	octave 2
 	note A#, 2
-	endchannel
+	sound_ret
 
 DEF SNARE EQU 3
 DEF SNARE2 EQU 3
@@ -969,4 +969,4 @@ Music_TitleScreenXY_Ch4_b2:
 	note SNARE2, 4
 	note SNARE2, 8
 	note SNARE2, 4
-	endchannel
+	sound_ret

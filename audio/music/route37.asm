@@ -111,7 +111,7 @@ Music_Route37_branch_ee9da:
 	note A_, 1
 	note A_, 2
 	volume_envelope 11, 7
-	endchannel
+	sound_ret
 
 Music_Route37_branch_ee9e9:
 	volume_envelope 12, 2
@@ -126,7 +126,7 @@ Music_Route37_branch_ee9e9:
 	note B_, 1
 	note B_, 2
 	volume_envelope 11, 7
-	endchannel
+	sound_ret
 
 Music_Route37_Ch2:
 	duty_cycle 3
@@ -284,7 +284,7 @@ Music_Route37_branch_eeab7:
 	note F#, 2
 	note F#, 2
 	note B_, 2
-	endchannel
+	sound_ret
 
 Music_Route37_Ch3:
 	stereo_panning TRUE, FALSE
@@ -372,7 +372,7 @@ Music_Route37_branch_eeb32:
 	note B_, 2
 	note F#, 2
 	note B_, 2
-	endchannel
+	sound_ret
 
 Music_Route37_branch_eeb3c:
 	octave 2
@@ -391,7 +391,7 @@ Music_Route37_branch_eeb3c:
 	note B_, 2
 	octave 3
 	note D#, 2
-	endchannel
+	sound_ret
 
 Music_Route37_Ch4:
 	stereo_panning FALSE, TRUE
@@ -425,4 +425,4 @@ Music_Route37_branch_eeb6b:
 	note D_, 2
 	note D#, 1
 	note D#, 1
-	endchannel
+	sound_ret

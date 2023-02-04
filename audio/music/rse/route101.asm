@@ -151,7 +151,7 @@ Music_Route101RSE_Ch1_branch_1:
 	note E_, 2
 	octave 2
 	note A_, 2
-	endchannel
+	sound_ret
 
 Music_Route101RSE_Ch1_branch_2:
 	octave 4
@@ -208,7 +208,7 @@ Music_Route101RSE_Ch1_branch_2:
 	octave 5
 	note D_, 1
 	note F#, 1
-	endchannel
+	sound_ret
 
 Music_Route101RSE_Ch1_branch_3:
 	octave 4
@@ -218,7 +218,7 @@ Music_Route101RSE_Ch1_branch_3:
 	note B_, 1
 	octave 4
 	note E_, 1
-	endchannel
+	sound_ret
 
 Music_Route101RSE_Ch2:
 	duty_cycle 2
@@ -320,7 +320,7 @@ Music_Route101RSE_Ch2_branch_1:
 	note __, 1
 	octave 1
 	note A_, 2
-	endchannel
+	sound_ret
 
 Music_Route101RSE_Ch2_branch_2:
 	note G_, 2
@@ -344,7 +344,7 @@ Music_Route101RSE_Ch2_branch_2:
 	octave 1
 	note D_, 1
 	note E_, 1
-	endchannel
+	sound_ret
 
 Music_Route101RSE_Ch3:
 	stereo_panning TRUE, FALSE
@@ -459,7 +459,7 @@ Music_Route101RSE_Ch3_branch_1:
 	note F#, 1
 	note E_, 1
 	note __, 5
-	endchannel
+	sound_ret
 
 Music_Route101RSE_Ch3_branch_2:
 	note A_, 1
@@ -472,7 +472,7 @@ Music_Route101RSE_Ch3_branch_2:
 	note B_, 1
 	note A_, 6
 	note __, 2
-	endchannel
+	sound_ret
 
 Music_Route101RSE_Ch4:
 	stereo_panning FALSE, TRUE
@@ -543,7 +543,7 @@ Music_Route101RSE_Ch4_branch_1:
 	note F_, 1
 	note F_, 1
 	note F_, 2
-	endchannel
+	sound_ret
 
 Music_Route101RSE_Ch4_branch_2:
 	note D_, 1
@@ -554,4 +554,4 @@ Music_Route101RSE_Ch4_branch_2:
 	note B_, 1
 	note D_, 1
 	note B_, 1
-	endchannel
+	sound_ret

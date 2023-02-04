@@ -1129,4 +1129,4 @@ Music_WildBattleSM_Ch4_branch_1:
 	note D#, 4
 	note D#, 2
 	note C_, 2
-	endchannel
+	sound_ret

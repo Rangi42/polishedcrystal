@@ -609,7 +609,7 @@ Music_Route30_branch_efeb8:
 	note D_, 2
 	note D_, 2
 	note D_, 4
-	endchannel
+	sound_ret
 
 Music_Route30_branch_efec1:
 	note D_, 2
@@ -623,7 +623,7 @@ Music_Route30_branch_efec1:
 	note D_, 1
 	note D_, 1
 	note D_, 1
-	endchannel
+	sound_ret
 
 Music_Route30_branch_efecd:
 	note D_, 2
@@ -635,7 +635,7 @@ Music_Route30_branch_efecd:
 	note D_, 2
 	note D_, 2
 	note D_, 2
-	endchannel
+	sound_ret
 
 Music_Route30_branch_efed7:
 	note D_, 2
@@ -647,7 +647,7 @@ Music_Route30_branch_efed7:
 	note F#, 2
 	note D_, 2
 	note D_, 2
-	endchannel
+	sound_ret
 
 Music_Route30_branch_efee1:
 	note D_, 2
@@ -667,4 +667,4 @@ Music_Route30_branch_efee1:
 	note D_, 1
 	note D_, 1
 	note_type 12
-	endchannel
+	sound_ret

@@ -233,7 +233,7 @@ Music_Route3_branch_ec3bd:
 	note B_, 1
 	octave 3
 	note D_, 1
-	endchannel
+	sound_ret
 
 Music_Route3_Ch2:
 	stereo_panning TRUE, FALSE
@@ -349,7 +349,7 @@ Music_Route3_branch_ec443:
 	note A_, 2
 	note G_, 6
 	note D_, 1
-	endchannel
+	sound_ret
 
 Music_Route3_Ch3:
 	stereo_panning TRUE, TRUE
@@ -445,7 +445,7 @@ Music_Route3_branch_ec4bd:
 	note A_, 2
 	octave 2
 	note G#, 2
-	endchannel
+	sound_ret
 
 Music_Route3_branch_ec4ce:
 	octave 3
@@ -476,7 +476,7 @@ Music_Route3_branch_ec4ce:
 	note __, 1
 	note G#, 2
 	note B_, 2
-	endchannel
+	sound_ret
 
 Music_Route3_Ch4:
 	toggle_noise 4

@@ -351,7 +351,7 @@ Music_Route26_branch_ef14e:
 	note A#, 2
 	octave 1
 	note A#, 2
-	endchannel
+	sound_ret
 
 Music_Route26_Ch3:
 	stereo_panning TRUE, TRUE
@@ -545,7 +545,7 @@ Music_Route26_branch_ef22f:
 	note F#, 4
 	note C#, 4
 	note D#, 4
-	endchannel
+	sound_ret
 
 Music_Route26_Ch4:
 	toggle_noise 4
@@ -621,7 +621,7 @@ Music_Route26_branch_ef29a:
 	note C#, 1
 	note C#, 1
 	note C#, 1
-	endchannel
+	sound_ret
 
 Music_Route26_branch_ef2a8:
 	note E_, 12
@@ -631,7 +631,7 @@ Music_Route26_branch_ef2a8:
 	note D_, 4
 	note E_, 4
 	note D_, 4
-	endchannel
+	sound_ret
 
 Music_Route26_branch_ef2b0:
 	note_type 6
@@ -663,4 +663,4 @@ Music_Route26_branch_ef2b0:
 	note D_, 2
 	note D_, 2
 	note E_, 2
-	endchannel
+	sound_ret

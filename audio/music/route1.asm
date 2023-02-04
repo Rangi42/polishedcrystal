@@ -337,7 +337,7 @@ Music_Route1_branch_ec188:
 	note G_, 3
 	note F#, 1
 	note E_, 2
-	endchannel
+	sound_ret
 
 Music_Route1_branch_ec198:
 	note A_, 2
@@ -357,7 +357,7 @@ Music_Route1_branch_ec198:
 	note D_, 3
 	note F#, 1
 	note E_, 2
-	endchannel
+	sound_ret
 
 Music_Route1_branch_ec1aa:
 	note A_, 2
@@ -373,7 +373,7 @@ Music_Route1_branch_ec1aa:
 	note A_, 2
 	octave 5
 	note D_, 2
-	endchannel
+	sound_ret
 
 Music_Route1_Ch3:
 	stereo_panning TRUE, TRUE

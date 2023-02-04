@@ -288,7 +288,7 @@ Music_ZinniaEncounterORAS_Ch2_branch_1:
 	note B_, 3
 	octave 4
 	note C#, 2
-	endchannel
+	sound_ret
 
 Music_ZinniaEncounterORAS_Ch3:
 	note_type 12, 1, 4
@@ -390,7 +390,7 @@ Music_ZinniaEncounterORAS_Ch3_branch_1:
 	octave 2
 	note E_, 2
 	note __, 2
-	endchannel
+	sound_ret
 
 Music_ZinniaEncounterORAS_Ch3_branch_2:
 	note D_, 2
@@ -425,7 +425,7 @@ Music_ZinniaEncounterORAS_Ch3_branch_2:
 	note G#, 2
 	octave 2
 	note C#, 2
-	endchannel
+	sound_ret
 
 Music_ZinniaEncounterORAS_Ch4:
 	toggle_noise 3

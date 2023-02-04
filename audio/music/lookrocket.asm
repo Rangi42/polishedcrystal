@@ -52,7 +52,7 @@ Music_RocketTheme_branch_f74e6:
 	note D_, 1
 	note F_, 1
 	note G#, 1
-	endchannel
+	sound_ret
 
 Music_LookRocket_branch_f74f7:
 Music_RocketTheme_branch_f74f7:
@@ -76,7 +76,7 @@ Music_RocketTheme_branch_f74f7:
 	octave 4
 	note F#, 1
 	note __, 1
-	endchannel
+	sound_ret
 
 Music_LookRocket_branch_f750c:
 Music_RocketTheme_branch_f750c:
@@ -87,7 +87,7 @@ Music_RocketTheme_branch_f750c:
 	octave 3
 	note C_, 1
 	note __, 5
-	endchannel
+	sound_ret
 
 Music_LookRocket_Ch2:
 	transpose 0, 2
@@ -128,7 +128,7 @@ Music_RocketTheme_branch_f7547:
 	octave 3
 	note B_, 6
 	duty_cycle 0
-	endchannel
+	sound_ret
 
 Music_LookRocket_branch_f7554:
 Music_RocketTheme_branch_f7554:
@@ -151,7 +151,7 @@ Music_RocketTheme_branch_f7554:
 	octave 5
 	note D#, 1
 	note __, 1
-	endchannel
+	sound_ret
 
 Music_LookRocket_branch_f7568:
 Music_RocketTheme_branch_f7568:
@@ -161,7 +161,7 @@ Music_RocketTheme_branch_f7568:
 	note __, 7
 	note F#, 1
 	note __, 5
-	endchannel
+	sound_ret
 
 Music_LookRocket_branch_f756f:
 Music_RocketTheme_branch_f756f:
@@ -187,7 +187,7 @@ Music_RocketTheme_branch_f756f:
 	note G#, 1
 	note F_, 1
 	note D_, 1
-	endchannel
+	sound_ret
 
 Music_LookRocket_branch_f758a:
 Music_RocketTheme_branch_f758a:
@@ -203,7 +203,7 @@ Music_RocketTheme_branch_f758a:
 	note __, 1
 	note A_, 1
 	note __, 1
-	endchannel
+	sound_ret
 
 Music_LookRocket_Ch3:
 	transpose 0, 2
@@ -237,7 +237,7 @@ Music_RocketTheme_branch_f75bf:
 	note __, 3
 	octave 3
 	note D_, 6
-	endchannel
+	sound_ret
 
 Music_LookRocket_branch_f75cc:
 Music_RocketTheme_branch_f75cc:
@@ -261,7 +261,7 @@ Music_RocketTheme_branch_f75cc:
 	note __, 1
 	note F#, 1
 	note __, 1
-	endchannel
+	sound_ret
 
 Music_LookRocket_branch_f75e1:
 Music_RocketTheme_branch_f75e1:
@@ -291,7 +291,7 @@ Music_RocketTheme_branch_f75e1:
 	octave 3
 	note G#, 1
 	note __, 1
-	endchannel
+	sound_ret
 
 Music_LookRocket_branch_f75fe:
 Music_RocketTheme_branch_f75fe:
@@ -331,7 +331,7 @@ Music_RocketTheme_branch_f75fe:
 	note __, 1
 	note A_, 1
 	note __, 1
-	endchannel
+	sound_ret
 
 Music_LookRocket_branch_f7623:
 Music_RocketTheme_branch_f7623:
@@ -355,7 +355,7 @@ Music_RocketTheme_branch_f7623:
 	note F#, 1
 	note D#, 1
 	note C_, 1
-	endchannel
+	sound_ret
 
 Music_LookRocket_Ch4:
 	toggle_noise 3
@@ -382,7 +382,7 @@ Music_RocketTheme_branch_f765c:
 	note C#, 1
 	note D_, 1
 	note D_, 1
-	endchannel
+	sound_ret
 
 Music_LookRocket_branch_f7664:
 Music_RocketTheme_branch_f7664:
@@ -394,4 +394,4 @@ Music_RocketTheme_branch_f7664:
 	note F#, 2
 	note D_, 2
 	note F#, 2
-	endchannel
+	sound_ret

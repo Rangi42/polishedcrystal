@@ -127,7 +127,7 @@ Music_SpikyEaredPichuHGSS_Ch1_branch_1:
 	note C_, 2
 	octave 3
 	note E_, 4
-	endchannel
+	sound_ret
 
 Music_SpikyEaredPichuHGSS_Ch2:
 	volume 7, 7

@@ -93,7 +93,7 @@ Music_LookOfficer_branch_ed89e:
 	note A_, 2
 	octave 2
 	note C#, 2
-	endchannel
+	sound_ret
 
 Music_LookOfficer_Ch3:
 	vibrato $14, $14

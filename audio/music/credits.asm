@@ -279,7 +279,7 @@ Music_Credits_branch_1f407:
 	note __, 16
 	note __, 16
 	note __, 16
-	endchannel
+	sound_ret
 
 Music_Credits_branch_1f483:
 	note C_, 16
@@ -387,7 +387,7 @@ Music_Credits_branch_1f483:
 	octave 6
 	note C_, 1
 	note __, 1
-	endchannel
+	sound_ret
 
 Music_Credits_branch_1f4ed:
 	octave 4
@@ -400,7 +400,7 @@ Music_Credits_branch_1f4ed:
 	note D_, 4
 	note C_, 4
 	note D#, 4
-	endchannel
+	sound_ret
 
 Music_Credits_branch_1f4f8:
 	octave 3
@@ -499,7 +499,7 @@ Music_Credits_branch_1f4f8:
 	note F_, 2
 	note C_, 2
 	note F_, 2
-	endchannel
+	sound_ret
 
 Music_Credits_branch_1f559:
 	octave 3
@@ -542,7 +542,7 @@ Music_Credits_branch_1f559:
 	note B_, 12
 	note A#, 2
 	note A_, 2
-	endchannel
+	sound_ret
 
 Music_Credits_branch_1f582:
 	note __, 6
@@ -555,7 +555,7 @@ Music_Credits_branch_1f582:
 	octave 4
 	note F#, 6
 	note C#, 6
-	endchannel
+	sound_ret
 
 Music_Credits_Ch2:
 	duty_cycle 1
@@ -811,7 +811,7 @@ Music_Credits_branch_1f657:
 	note __, 16
 	note __, 16
 	note __, 16
-	endchannel
+	sound_ret
 
 Music_Credits_branch_1f6cb:
 	octave 2
@@ -923,7 +923,7 @@ Music_Credits_branch_1f6cb:
 	note A_, 2
 	octave 3
 	note C_, 2
-	endchannel
+	sound_ret
 
 Music_Credits_branch_1f73f:
 	octave 1
@@ -934,7 +934,7 @@ Music_Credits_branch_1f73f:
 	octave 2
 	note G_, 12
 	note F#, 8
-	endchannel
+	sound_ret
 
 Music_Credits_branch_1f748:
 	octave 4
@@ -970,7 +970,7 @@ Music_Credits_branch_1f748:
 	note B_, 4
 	octave 5
 	note C_, 4
-	endchannel
+	sound_ret
 
 Music_Credits_Ch3:
 	vibrato $16, $23
@@ -1227,7 +1227,7 @@ Music_Credits_Ch3:
 	note __, 16
 	note __, 16
 	note __, 16
-	endchannel
+	sound_ret
 
 Music_Credits_branch_1f8aa:
 	note G_, 16
@@ -1268,7 +1268,7 @@ Music_Credits_branch_1f8aa:
 	note A_, 8
 	note_type 12, 1, 4
 	note D_, 16
-	endchannel
+	sound_ret
 
 Music_Credits_branch_1f8db:
 	note_type 6, 1, 4
@@ -1280,7 +1280,7 @@ Music_Credits_branch_1f8db:
 	note D_, 4
 	note G_, 12
 	note G#, 8
-	endchannel
+	sound_ret
 
 Music_Credits_branch_1f8e7:
 	octave 3
@@ -1359,7 +1359,7 @@ Music_Credits_branch_1f8e7:
 	note C_, 2
 	octave 3
 	note G#, 2
-	endchannel
+	sound_ret
 
 Music_Credits_branch_1f934:
 	octave 2
@@ -1384,7 +1384,7 @@ Music_Credits_branch_1f934:
 	note C_, 2
 	note E_, 2
 	note F_, 2
-	endchannel
+	sound_ret
 
 Music_Credits_branch_1f94b:
 	octave 2
@@ -1426,7 +1426,7 @@ Music_Credits_branch_1f94b:
 	note B_, 2
 	note G_, 2
 	note D_, 2
-	endchannel
+	sound_ret
 
 Music_Credits_Ch4:
 	toggle_noise 3
@@ -1604,7 +1604,7 @@ Music_Credits_branch_1f9f2:
 	note __, 16
 	note __, 16
 	note __, 16
-	endchannel
+	sound_ret
 
 Music_Credits_branch_1fa4d:
 	note G#, 1
@@ -1638,7 +1638,7 @@ Music_Credits_branch_1fa4d:
 	note D_, 1
 	note G_, 1
 	note F#, 2
-	endchannel
+	sound_ret
 
 Music_Credits_branch_1fa6d:
 	note G#, 1
@@ -1672,4 +1672,4 @@ Music_Credits_branch_1fa6d:
 	note D_, 1
 	note A#, 1
 	note D_, 1
-	endchannel
+	sound_ret

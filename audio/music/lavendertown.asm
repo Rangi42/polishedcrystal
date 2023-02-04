@@ -238,7 +238,7 @@ Music_LavenderTown_branch_ef7fd:
 	note F_, 2
 	volume_envelope 4, 3
 	note F_, 2
-	endchannel
+	sound_ret
 
 Music_LavenderTown_branch_ef87f:
 	volume_envelope 9, 3
@@ -258,7 +258,7 @@ Music_LavenderTown_branch_ef87f:
 	note G_, 2
 	volume_envelope 4, 3
 	note G_, 2
-	endchannel
+	sound_ret
 
 Music_LavenderTown_Ch2:
 	duty_cycle 1
@@ -383,7 +383,7 @@ Music_LavenderTown_branch_ef915:
 	note C_, 4
 	note A_, 4
 	note C_, 4
-	endchannel
+	sound_ret
 
 Music_LavenderTown_Ch3:
 	vibrato $12, $24

@@ -369,7 +369,7 @@ Music_BugCatchingContest_branch_f7d8e:
 	octave 3
 	note G_, 1
 	note __, 1
-	endchannel
+	sound_ret
 
 Music_BugCatchingContest_Ch3:
 	stereo_panning TRUE, TRUE
@@ -665,4 +665,4 @@ Music_BugCatchingContest_branch_f7ee2:
 	note B_, 8
 	note D_, 2
 	note D_, 2
-	endchannel
+	sound_ret

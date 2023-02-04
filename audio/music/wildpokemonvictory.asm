@@ -66,7 +66,7 @@ Music_WildPokemonVictory_branch_f455c:
 	note E_, 2
 	note E_, 2
 	note A_, 2
-	endchannel
+	sound_ret
 
 Music_WildPokemonVictory_Ch2:
 	vibrato $12, $24
@@ -128,7 +128,7 @@ Music_WildPokemonVictory_branch_f45b5:
 	note C#, 2
 	note C#, 2
 	note C#, 4
-	endchannel
+	sound_ret
 
 Music_WildPokemonVictory_Ch3:
 	note_type 12, 2, 0
@@ -180,4 +180,4 @@ Music_WildPokemonVictory_branch_f45f4:
 	note C#, 2
 	note __, 4
 	note C#, 2
-	endchannel
+	sound_ret

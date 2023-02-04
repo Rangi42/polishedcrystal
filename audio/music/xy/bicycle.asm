@@ -539,7 +539,7 @@ BicycleXY_Ch4_sub_0:
 	note C#, 2
 	note D_, 2
 	note D_, 4
-	endchannel
+	sound_ret
 
 BicycleXY_Ch4_sub_1:
 	note C#, 2
@@ -550,4 +550,4 @@ BicycleXY_Ch4_sub_1:
 	note D_, 2
 	note C#, 2
 	note D_, 2
-	endchannel
+	sound_ret

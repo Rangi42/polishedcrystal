@@ -152,7 +152,7 @@ Music_RocketTheme_branch_f7727:
 	note __, 2
 	note A#, 2
 	note __, 10
-	endchannel
+	sound_ret
 
 Music_RocketTheme_Ch2:
 	stereo_panning TRUE, TRUE
@@ -316,7 +316,7 @@ Music_RocketTheme_branch_f7800:
 	note __, 2
 	note D#, 2
 	note __, 2
-	endchannel
+	sound_ret
 
 Music_RocketTheme_branch_f781c:
 	octave 3
@@ -328,7 +328,7 @@ Music_RocketTheme_branch_f781c:
 	note F#, 8
 	note F_, 8
 	note C_, 4
-	endchannel
+	sound_ret
 
 Music_RocketTheme_Ch3:
 	stereo_panning TRUE, FALSE

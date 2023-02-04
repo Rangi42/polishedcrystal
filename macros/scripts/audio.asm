@@ -299,7 +299,7 @@ MACRO sound_call
 	dw \1 ; address
 ENDM
 
-	const endchannel_cmd
-MACRO endchannel
-	db endchannel_cmd
+	const sound_ret_cmd ; $ff
+MACRO sound_ret
+	db sound_ret_cmd
 ENDM

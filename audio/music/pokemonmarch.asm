@@ -108,7 +108,7 @@ Music_PokemonMarch_branch_f6eae:
 	note D#, 2
 	note D#, 2
 	note __, 2
-	endchannel
+	sound_ret
 
 Music_PokemonMarch_branch_f6eb8:
 	note __, 4
@@ -119,7 +119,7 @@ Music_PokemonMarch_branch_f6eb8:
 	note F_, 2
 	note F_, 2
 	note __, 2
-	endchannel
+	sound_ret
 
 Music_PokemonMarch_Ch2:
 	duty_cycle 2
@@ -392,7 +392,7 @@ Music_PokemonMarch_branch_f6fe8:
 	note D#, 2
 	octave 3
 	note G_, 2
-	endchannel
+	sound_ret
 
 Music_PokemonMarch_Ch4:
 	stereo_panning TRUE, FALSE
@@ -446,7 +446,7 @@ Music_PokemonMarch_branch_f7042:
 	note D_, 2
 	note C#, 2
 	note C#, 2
-	endchannel
+	sound_ret
 
 Music_PokemonMarch_branch_f704c:
 	note C_, 4
@@ -457,4 +457,4 @@ Music_PokemonMarch_branch_f704c:
 	note C#, 2
 	note D_, 2
 	note C#, 2
-	endchannel
+	sound_ret

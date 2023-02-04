@@ -120,7 +120,7 @@ Music_LookSage_branch_ee3fa:
 	note A_, 2
 	volume_envelope 9, 3
 	note A_, 2
-	endchannel
+	sound_ret
 
 Music_LookSage_Ch3:
 	stereo_panning TRUE, FALSE

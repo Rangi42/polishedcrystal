@@ -1064,4 +1064,4 @@ Music_MarineTubeB2W2_Ch4_branch_1:
 	note D#, 2
 	note G_, 2
 	note D#, 2
-	endchannel
+	sound_ret

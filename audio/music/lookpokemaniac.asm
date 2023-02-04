@@ -157,4 +157,4 @@ Music_LookPokemaniac_branch_ebe70:
 	note __, 1
 	note C_, 1
 	note __, 1
-	endchannel
+	sound_ret

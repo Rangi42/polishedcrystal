@@ -283,7 +283,7 @@ Music_Bicycle_branch_ee263:
 	note E_, 6
 	note G_, 6
 	note E_, 4
-	endchannel
+	sound_ret
 
 Music_Bicycle_Ch3:
 	note_type 12, 1, 4
@@ -493,7 +493,7 @@ Music_Bicycle_branch_ee333:
 	note __, 1
 	note B_, 1
 	note __, 1
-	endchannel
+	sound_ret
 
 Music_Bicycle_Ch4:
 	toggle_noise 0

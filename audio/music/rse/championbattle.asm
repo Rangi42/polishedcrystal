@@ -340,7 +340,7 @@ Music_ChampionBattleRSE_Ch1_branch_1:
 	note D#, 1
 	note F_, 3
 	note F#, 2
-	endchannel
+	sound_ret
 
 Music_ChampionBattleRSE_Ch2:
 	duty_cycle 3
@@ -638,7 +638,7 @@ Music_ChampionBattleRSE_Ch2_branch_1:
 	note C_, 1
 	note C#, 3
 	note D#, 2
-	endchannel
+	sound_ret
 
 Music_ChampionBattleRSE_Ch3:
 	note_type 12, 1, -1
@@ -818,7 +818,7 @@ Music_ChampionBattleRSE_Ch3_loop_5:
 	sound_call Music_ChampionBattleRSE_Ch3_branch_6
 	sound_call Music_ChampionBattleRSE_Ch3_branch_7
 	sound_jump Music_ChampionBattleRSE_Ch3_loop_main
-	endchannel
+	sound_ret
 
 Music_ChampionBattleRSE_Ch3_branch_1:
 	octave 2
@@ -835,7 +835,7 @@ Music_ChampionBattleRSE_Ch3_branch_1:
 	note F_, 1
 	note D#, 1
 	note C_, 1
-	endchannel
+	sound_ret
 
 Music_ChampionBattleRSE_Ch3_branch_2:
 	note C_, 1
@@ -850,7 +850,7 @@ Music_ChampionBattleRSE_Ch3_branch_2:
 	octave 2
 	note C_, 1
 	note G_, 1
-	endchannel
+	sound_ret
 
 Music_ChampionBattleRSE_Ch3_branch_3:
 	octave 2
@@ -875,7 +875,7 @@ Music_ChampionBattleRSE_Ch3_branch_3:
 	note G_, 1
 	note G_, 1
 	note G_, 1
-	endchannel
+	sound_ret
 
 Music_ChampionBattleRSE_Ch3_branch_4:
 	octave 2
@@ -900,7 +900,7 @@ Music_ChampionBattleRSE_Ch3_branch_4:
 	note C#, 1
 	octave 3
 	note D_, 1
-	endchannel
+	sound_ret
 
 Music_ChampionBattleRSE_Ch3_branch_5:
 	octave 2
@@ -931,7 +931,7 @@ Music_ChampionBattleRSE_Ch3_branch_5:
 	note E_, 1
 	octave 3
 	note F_, 1
-	endchannel
+	sound_ret
 
 Music_ChampionBattleRSE_Ch3_branch_6:
 	note C_, 1
@@ -950,7 +950,7 @@ Music_ChampionBattleRSE_Ch3_branch_6:
 	note G_, 1
 	note C_, 1
 	note G_, 1
-	endchannel
+	sound_ret
 
 Music_ChampionBattleRSE_Ch3_branch_7:
 	note C#, 1
@@ -969,7 +969,7 @@ Music_ChampionBattleRSE_Ch3_branch_7:
 	note G#, 1
 	note C#, 1
 	note G#, 1
-	endchannel
+	sound_ret
 
 Music_ChampionBattleRSE_Ch4:
 	toggle_noise 3
@@ -1135,7 +1135,7 @@ Music_ChampionBattleRSE_Ch4_branch_1:
 	note D#, 2
 	note C_, 2
 	note D#, 2
-	endchannel
+	sound_ret
 
 Music_ChampionBattleRSE_Ch4_branch_2:
 	note D#, 2
@@ -1152,7 +1152,7 @@ Music_ChampionBattleRSE_Ch4_branch_2:
 	note D#, 2
 	note C_, 2
 	note D#, 2
-	endchannel
+	sound_ret
 
 Music_ChampionBattleRSE_Ch4_branch_3:
 	note D#, 4
@@ -1165,4 +1165,4 @@ Music_ChampionBattleRSE_Ch4_branch_3:
 	note D#, 4
 	note D#, 2
 	note C_, 4
-	endchannel
+	sound_ret

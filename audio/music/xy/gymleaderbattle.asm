@@ -708,7 +708,7 @@ Music_GymLeaderBattleXY_Ch1_loop:
 	note __, 1
 	note A#, 4
 	sound_jump Music_GymLeaderBattleXY_Ch1_loop
-	endchannel
+	sound_ret
 
 Music_GymLeaderBattleXY_Ch2:
 	duty_cycle 2
@@ -1176,7 +1176,7 @@ Music_GymLeaderBattleXY_Ch2_loop:
 	note __, 1
 	note A#, 4
 	sound_jump Music_GymLeaderBattleXY_Ch2_loop
-	endchannel
+	sound_ret
 
 Music_GymLeaderBattleXY_Ch3:
 	note_type 3, 1, 6
@@ -2189,7 +2189,7 @@ Music_GymLeaderBattleXY_Ch3_loop:
 	note __, 16
 	note __, 16
 	sound_jump Music_GymLeaderBattleXY_Ch3_loop
-	endchannel
+	sound_ret
 
 Music_GymLeaderBattleXY_Ch4:
 	note_type 12
@@ -2959,4 +2959,4 @@ Music_GymLeaderBattleXY_Ch4_loop:
 	note C_, 1
 	note B_, 2
 	sound_jump Music_GymLeaderBattleXY_Ch4_loop
-	endchannel
+	sound_ret

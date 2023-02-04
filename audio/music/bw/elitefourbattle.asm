@@ -820,7 +820,7 @@ Music_EliteFourBattleBW_Ch2_branch_1:
 	note D_, 1
 	note G_, 1
 	note B_, 1
-	endchannel
+	sound_ret
 
 Music_EliteFourBattleBW_Ch3:
 	note_type 6, 1, -1
@@ -1011,7 +1011,7 @@ Music_EliteFourBattleBW_Ch3_branch_1:
 	note F#, 2
 	octave 2
 	note E_, 2
-	endchannel
+	sound_ret
 
 Music_EliteFourBattleBW_Ch3_branch_2:
 	octave 1
@@ -1111,7 +1111,7 @@ Music_EliteFourBattleBW_Ch3_branch_2:
 	note F#, 2
 	octave 2
 	note E_, 2
-	endchannel
+	sound_ret
 
 Music_EliteFourBattleBW_Ch3_branch_3:
 	octave 1
@@ -1153,7 +1153,7 @@ Music_EliteFourBattleBW_Ch3_branch_3:
 	note G#, 2
 	octave 1
 	note G#, 2
-	endchannel
+	sound_ret
 
 Music_EliteFourBattleBW_Ch4:
 	toggle_noise 3
@@ -1279,4 +1279,4 @@ Music_EliteFourBattleBW_Ch4_branch_1:
 	note D_, 1
 	note C_, 2
 	note C_, 2
-	endchannel
+	sound_ret

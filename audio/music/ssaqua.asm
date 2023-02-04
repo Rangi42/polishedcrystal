@@ -465,7 +465,7 @@ Music_SSAqua_branch_eaf88:
 	note G_, 4
 	note E_, 2
 	note F#, 2
-	endchannel
+	sound_ret
 
 Music_SSAqua_branch_eafd5:
 	note_type 12, 11, 7
@@ -476,7 +476,7 @@ Music_SSAqua_branch_eafd5:
 	note __, 1
 	note F#, 1
 	note __, 1
-	endchannel
+	sound_ret
 
 Music_SSAqua_branch_eafe0:
 	octave 3
@@ -499,7 +499,7 @@ Music_SSAqua_branch_eafe0:
 	note __, 3
 	note A_, 1
 	note __, 1
-	endchannel
+	sound_ret
 
 Music_SSAqua_branch_eaff5:
 	octave 5
@@ -574,7 +574,7 @@ Music_SSAqua_branch_eaff5:
 	octave 4
 	note A_, 1
 	note G_, 1
-	endchannel
+	sound_ret
 
 Music_SSAqua_branch_eb03e:
 	octave 5
@@ -600,7 +600,7 @@ Music_SSAqua_branch_eb03e:
 	note C#, 1
 	octave 3
 	note G_, 1
-	endchannel
+	sound_ret
 
 Music_SSAqua_Ch3:
 	stereo_panning TRUE, TRUE
@@ -859,7 +859,7 @@ Music_SSAqua_branch_eb14d:
 	note __, 4
 	note G_, 1
 	note __, 1
-	endchannel
+	sound_ret
 
 Music_SSAqua_branch_eb172:
 	octave 2
@@ -1051,7 +1051,7 @@ Music_SSAqua_branch_eb172:
 	octave 4
 	note F#, 1
 	note __, 3
-	endchannel
+	sound_ret
 
 Music_SSAqua_branch_eb230:
 	octave 2
@@ -1078,7 +1078,7 @@ Music_SSAqua_branch_eb230:
 	octave 4
 	note D#, 1
 	note __, 3
-	endchannel
+	sound_ret
 
 Music_SSAqua_Ch4:
 	toggle_noise 3
@@ -1141,7 +1141,7 @@ Music_SSAqua_branch_eb2ae:
 	note D_, 2
 	note G_, 1
 	note G_, 1
-	endchannel
+	sound_ret
 
 Music_SSAqua_branch_eb2bb:
 	note A#, 2
@@ -1155,7 +1155,7 @@ Music_SSAqua_branch_eb2bb:
 	note G_, 1
 	note D_, 2
 	note F#, 2
-	endchannel
+	sound_ret
 
 Music_SSAqua_branch_eb2c7:
 	note A#, 2
@@ -1169,4 +1169,4 @@ Music_SSAqua_branch_eb2c7:
 	note D_, 2
 	note D_, 2
 	note C_, 2
-	endchannel
+	sound_ret

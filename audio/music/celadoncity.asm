@@ -103,7 +103,7 @@ Music_CeladonCity_branch_f43cc:
 	note D_, 1
 	octave 3
 	note A_, 1
-	endchannel
+	sound_ret
 
 Music_CeladonCity_branch_f43e1:
 	octave 2
@@ -131,14 +131,14 @@ Music_CeladonCity_branch_f43e1:
 	note D_, 1
 	octave 3
 	note B_, 1
-	endchannel
+	sound_ret
 
 Music_CeladonCity_branch_f43fe:
 	note D_, 2
 	note F#, 1
 	note A_, 1
 	sound_loop 4, Music_CeladonCity_branch_f43fe
-	endchannel
+	sound_ret
 
 Music_CeladonCity_Ch2:
 	vibrato $12, $34
@@ -231,7 +231,7 @@ Music_CeladonCity_branch_f4463:
 	octave 4
 	note B_, 2
 	note A_, 8
-	endchannel
+	sound_ret
 
 Music_CeladonCity_branch_f4474:
 	note G_, 3
@@ -263,7 +263,7 @@ Music_CeladonCity_branch_f4474:
 	octave 2
 	note D_, 2
 	note F#, 4
-	endchannel
+	sound_ret
 
 Music_CeladonCity_Ch3:
 	vibrato $12, $24
@@ -373,7 +373,7 @@ Music_CeladonCity_branch_f44fd:
 	note F#, 3
 	octave 2
 	note G#, 1
-	endchannel
+	sound_ret
 
 Music_CeladonCity_branch_f4510:
 	octave 5
@@ -383,4 +383,4 @@ Music_CeladonCity_branch_f4510:
 	note B_, 2
 	note A_, 2
 	note B_, 2
-	endchannel
+	sound_ret

@@ -46,7 +46,7 @@ Music_LugiasSong2000_Ch1_loop_1:
 	note C_, 4
 Music_LugiasSong2000_Ch1_loop_main:
 	tempo 156
-	endchannel
+	sound_ret
 
 Music_LugiasSong2000_Ch2:
 	duty_cycle 0
@@ -348,7 +348,7 @@ Music_LugiasSong2000_Ch3_branch_1:
 	note G_, 4
 	note B_, 12
 	note B_, 12
-	endchannel
+	sound_ret
 
 Music_LugiasSong2000_Ch3_branch_2:
 	note_type 6, 1, 3
@@ -386,7 +386,7 @@ Music_LugiasSong2000_Ch3_branch_2:
 	volume_envelope 2, 3
 	note E_, 6
 	volume_envelope 1, 3
-	endchannel
+	sound_ret
 
 Music_LugiasSong2000_Ch4:
 	toggle_noise 3
@@ -415,4 +415,4 @@ Music_LugiasSong2000_Ch4_loop_1:
 	note C_, 8
 	note C_, 8
 	note B_, 16
-	endchannel
+	sound_ret

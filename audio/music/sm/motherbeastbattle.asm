@@ -706,7 +706,7 @@ Music_MotherBeastBattleSM_Ch2_branch_1:
 	note E_, 1
 	note C_, 1
 	note D_, 1
-	endchannel
+	sound_ret
 
 Music_MotherBeastBattleSM_Ch2_branch_2:
 	note D_, 1
@@ -721,7 +721,7 @@ Music_MotherBeastBattleSM_Ch2_branch_2:
 	note G_, 1
 	note E_, 1
 	note F_, 1
-	endchannel
+	sound_ret
 
 Music_MotherBeastBattleSM_Ch2_branch_3:
 	octave 4
@@ -742,7 +742,7 @@ Music_MotherBeastBattleSM_Ch2_branch_3:
 	note B_, 1
 	note D#, 1
 	note A_, 1
-	endchannel
+	sound_ret
 
 Music_MotherBeastBattleSM_Ch3:
 	note_type 12, 1, -1
@@ -977,7 +977,7 @@ Music_MotherBeastBattleSM_Ch4_branch_1:
 	note E_, 1
 	note C_, 2
 	note D#, 2
-	endchannel
+	sound_ret
 
 Music_MotherBeastBattleSM_Ch4_branch_2:
 	note C_, 2
@@ -1006,7 +1006,7 @@ Music_MotherBeastBattleSM_Ch4_branch_2:
 	note D#, 2
 	note C_, 2
 	note D#, 2
-	endchannel
+	sound_ret
 
 Music_MotherBeastBattleSM_Ch4_branch_3:
 	note C_, 6
@@ -1034,7 +1034,7 @@ Music_MotherBeastBattleSM_Ch4_branch_3:
 	note C_, 2
 	note C_, 1
 	note E_, 3
-	endchannel
+	sound_ret
 
 Music_MotherBeastBattleSM_Ch4_buildup:
 	note_type 3
@@ -1055,4 +1055,4 @@ Music_MotherBeastBattleSM_Ch4_buildup:
 	note F#, 1
 	note F#, 1
 	note_type 6
-	endchannel
+	sound_ret

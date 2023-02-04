@@ -638,7 +638,7 @@ Music_KantoLegendBattleXY_Ch2_P_C:
 	octave 1
 	note G_, 2
 	note F_, 2
-	endchannel
+	sound_ret
 
 Music_KantoLegendBattleXY_Ch2_P_C2:
 	octave 1
@@ -666,7 +666,7 @@ Music_KantoLegendBattleXY_Ch2_P_C2:
 	octave 1
 	note G_, 2
 	note F#, 2
-	endchannel
+	sound_ret
 
 Music_KantoLegendBattleXY_Ch2_P_C#:
 	note C#, 2
@@ -693,7 +693,7 @@ Music_KantoLegendBattleXY_Ch2_P_C#:
 	octave 1
 	note G#, 2
 	note F#, 2
-	endchannel
+	sound_ret
 
 Music_KantoLegendBattleXY_Ch2_P_Dm:
 	octave 1
@@ -721,7 +721,7 @@ Music_KantoLegendBattleXY_Ch2_P_Dm:
 	octave 1
 	note A_, 2
 	note G_, 2
-	endchannel
+	sound_ret
 
 Music_KantoLegendBattleXY_Ch2_P_Em:
 	octave 1
@@ -773,7 +773,7 @@ Music_KantoLegendBattleXY_Ch2_P_Em:
 	octave 1
 	note B_, 2
 	note A_, 2
-	endchannel
+	sound_ret
 
 Music_KantoLegendBattleXY_Ch3:
 	note_type 12, 1, 4
@@ -1390,4 +1390,4 @@ Music_KantoLegendBattleXY_Ch3_P1:
 	octave 4
 	note E_, 1
 	note __, 1
-	endchannel
+	sound_ret

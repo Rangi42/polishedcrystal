@@ -584,7 +584,7 @@ Music_CelestialTowerBW_NoIntro_Ch4_branch_1:
 	note D#, 2
 	note D#, 2
 	note __, 16
-	endchannel
+	sound_ret
 
 Music_CelestialTowerBW_NoIntro_Ch4_branch_2:
 	note C#, 1
@@ -606,4 +606,4 @@ Music_CelestialTowerBW_NoIntro_Ch4_branch_2:
 	note D#, 1
 	note D#, 1
 	note D#, 1
-	endchannel
+	sound_ret

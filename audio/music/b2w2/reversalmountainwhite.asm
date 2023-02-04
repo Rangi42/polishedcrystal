@@ -283,7 +283,7 @@ Music_ReversalMountainWhite2_Ch1_branch_1:
 	note C_, 2
 	octave 3
 	note A_, 2
-	endchannel
+	sound_ret
 
 Music_ReversalMountainWhite2_Ch2:
 	duty_cycle 3
@@ -1023,15 +1023,15 @@ Music_ReversalMountainWhite2_Ch4_branch_1:
 	note D#, 1
 	note D#, 2
 	note C_, 3
-	endchannel
+	sound_ret
 
 Music_ReversalMountainWhite2_Ch4_branch_2:
 	note D#, 3
 	note D#, 2
 	note C_, 3
-	endchannel
+	sound_ret
 
 Music_ReversalMountainWhite2_Ch4_branch_3:
 	note D#, 4
 	note C_, 4
-	endchannel
+	sound_ret

@@ -189,7 +189,7 @@ Music_CeruleanCaveRBY_branch_7dfaa:
 	note G#, 1
 	note __, 1
 	note A#, 1
-	endchannel
+	sound_ret
 
 Music_CeruleanCaveRBY_branch_7dfbb:
 	octave 2
@@ -201,7 +201,7 @@ Music_CeruleanCaveRBY_branch_7dfbb:
 	octave 2
 	note G_, 2
 	note A#, 2
-	endchannel
+	sound_ret
 
 Music_CeruleanCaveRBY_branch_7dfc5:
 	octave 3
@@ -219,7 +219,7 @@ Music_CeruleanCaveRBY_branch_7dfc5:
 	note E_, 1
 	octave 4
 	note C_, 1
-	endchannel
+	sound_ret
 
 Music_CeruleanCaveRBY_branch_7dfd5:
 	note E_, 1
@@ -230,7 +230,7 @@ Music_CeruleanCaveRBY_branch_7dfd5:
 	note __, 3
 	note E_, 1
 	note __, 1
-	endchannel
+	sound_ret
 
 Music_CeruleanCaveRBY_Ch2:
 	vibrato 11, 21
@@ -385,7 +385,7 @@ Music_CeruleanCaveRBY_branch_7e097:
 	note C_, 1
 	octave 2
 	note B_, 1
-	endchannel
+	sound_ret
 
 Music_CeruleanCaveRBY_branch_7e0ab:
 	octave 2
@@ -397,14 +397,14 @@ Music_CeruleanCaveRBY_branch_7e0ab:
 	note __, 3
 	note E_, 1
 	note __, 3
-	endchannel
+	sound_ret
 
 Music_CeruleanCaveRBY_branch_7e0b5:
 	octave 2
 	note E_, 1
 	note E_, 1
 	note __, 10
-	endchannel
+	sound_ret
 
 Music_CeruleanCaveRBY_branch_7e0ba:
 	octave 1
@@ -412,7 +412,7 @@ Music_CeruleanCaveRBY_branch_7e0ba:
 	note G_, 1
 	note E_, 1
 	note D#, 1
-	endchannel
+	sound_ret
 
 Music_CeruleanCaveRBY_branch_7e0c0:
 	octave 2
@@ -427,7 +427,7 @@ Music_CeruleanCaveRBY_branch_7e0c0:
 	note __, 1
 	note C#, 1
 	note C_, 1
-	endchannel
+	sound_ret
 
 Music_CeruleanCaveRBY_branch_7e0cd:
 	octave 3
@@ -444,7 +444,7 @@ Music_CeruleanCaveRBY_branch_7e0cd:
 	note F#, 4
 	note E_, 6
 	note F#, 6
-	endchannel
+	sound_ret
 
 Music_CeruleanCaveRBY_Ch3:
 	note_type 12, 1, 1
@@ -536,7 +536,7 @@ Music_CeruleanCaveRBY_branch_7e140:
 	note E_, 4
 	note F#, 4
 	note D#, 4
-	endchannel
+	sound_ret
 
 Music_CeruleanCaveRBY_branch_7e154:
 	octave 6
@@ -548,7 +548,7 @@ Music_CeruleanCaveRBY_branch_7e154:
 	note __, 3
 	note E_, 1
 	note __, 1
-	endchannel
+	sound_ret
 
 Music_CeruleanCaveRBY_branch_7e15e:
 	octave 3
@@ -556,7 +556,7 @@ Music_CeruleanCaveRBY_branch_7e15e:
 	note G_, 1
 	note E_, 1
 	note D#, 1
-	endchannel
+	sound_ret
 
 Music_CeruleanCaveRBY_branch_7e164:
 	note E_, 4
@@ -577,7 +577,7 @@ Music_CeruleanCaveRBY_branch_7e164:
 	note E_, 4
 	note F#, 4
 	note D#, 4
-	endchannel
+	sound_ret
 
 Music_CeruleanCaveRBY_branch_7e177:
 	octave 4
@@ -598,7 +598,7 @@ Music_CeruleanCaveRBY_branch_7e177:
 	note E_, 1
 	note E_, 1
 	note A#, 4
-	endchannel
+	sound_ret
 
 Music_CeruleanCaveRBY_Ch4:
 	note_type 12
@@ -663,18 +663,18 @@ Music_CeruleanCaveRBY_branch_7e1f1:
 	note E_, 4
 	note F_, 4
 	note E_, 4
-	endchannel
+	sound_ret
 
 Music_CeruleanCaveRBY_branch_7e1fa:
 	note E_, 1
 	note E_, 1
 	note __, 10
 	note F#, 4
-	endchannel
+	sound_ret
 
 Music_CeruleanCaveRBY_branch_7e202:
 	note C#, 4
 	note D_, 4
 	note D_, 4
 	note D#, 4
-	endchannel
+	sound_ret

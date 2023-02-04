@@ -418,7 +418,7 @@ Music_Megalovania_Ch1_ditty_1:
 	note D_, 1
 	note F_, 1
 	note G_, 1
-	endchannel
+	sound_ret
 
 Music_Megalovania_Ch1_ditty_2:
 	octave 5
@@ -436,7 +436,7 @@ Music_Megalovania_Ch1_ditty_2:
 	note D_, 1
 	note F_, 1
 	note G_, 1
-	endchannel
+	sound_ret
 
 Music_Megalovania_Ch1_ditty_3:
 	octave 2
@@ -487,7 +487,7 @@ Music_Megalovania_Ch1_ditty_3:
 	note C#, 1
 	note E_, 1
 	note C#, 1
-	endchannel
+	sound_ret
 
 Music_Megalovania_Ch1_ditty_4:
 	note D_, 1
@@ -532,7 +532,7 @@ Music_Megalovania_Ch1_ditty_4:
 	note D_, 1
 	note D_, 1
 	note D_, 1
-	endchannel
+	sound_ret
 
 Music_Megalovania_Ch1_ditty_5:
 	volume_envelope 3, -7
@@ -550,7 +550,7 @@ Music_Megalovania_Ch1_ditty_5:
 	note D_, 4
 	volume_envelope 8, 8
 	note D_, 4
-	endchannel
+	sound_ret
 
 Music_Megalovania_Ch1_ditty_6:
 	octave 4
@@ -561,7 +561,7 @@ Music_Megalovania_Ch1_ditty_6:
 	octave 3
 	note A_, 2
 	note __, 2
-	endchannel
+	sound_ret
 
 Music_Megalovania_Ch1_ditty_7:
 	note F_, 2
@@ -573,7 +573,7 @@ Music_Megalovania_Ch1_ditty_7:
 	note D_, 2
 	octave 3
 	note A_, 2
-	endchannel
+	sound_ret
 
 Music_Megalovania_Ch1Ch2_ditty_1:
 	duty_cycle_pattern 0, 0, 0, 0
@@ -660,7 +660,7 @@ Music_Megalovania_Ch1Ch2_ditty_1a:
 	volume_envelope 15, 4
 	note C#, 16
 	note D_, 16
-	endchannel
+	sound_ret
 
 Music_Megalovania_Ch1Ch3_ditty_1:
 	octave 4
@@ -677,7 +677,7 @@ Music_Megalovania_Ch1Ch3_ditty_1:
 	note D_, 1
 	note F_, 1
 	note G_, 1
-	endchannel
+	sound_ret
 
 Music_Megalovania_Ch1Ch3_ditty_2:
 	octave 2
@@ -734,7 +734,7 @@ Music_Megalovania_Ch1Ch3_ditty_2:
 	note C_, 1
 	note C_, 1
 	note C_, 1
-	endchannel
+	sound_ret
 
 Music_Megalovania_Ch2:
 	vibrato $00, $22
@@ -1034,7 +1034,7 @@ Music_Megalovania_Ch2_ditty1:
 	note D_, 1
 	note F_, 1
 	note G_, 1
-	endchannel
+	sound_ret
 
 Music_Megalovania_Ch2_ditty2:
 	octave 5
@@ -1054,7 +1054,7 @@ Music_Megalovania_Ch2_ditty2:
 	note D_, 2
 	note_type 12, 13, 7
 	note C_, 9
-	endchannel
+	sound_ret
 
 Music_Megalovania_Ch2_ditty3:
 	duty_cycle_pattern 1, 1, 2, 2
@@ -1138,7 +1138,7 @@ Music_Megalovania_Ch2_ditty3:
 	octave 4
 	note_type 15, 10, 7
 	note C_, 12
-	endchannel
+	sound_ret
 
 Music_Megalovania_Ch3:
 Music_Megalovania_Ch3_loop:
@@ -1374,7 +1374,7 @@ Music_Megalovania_Ch3_ditty_2:
 	octave 3
 	note C_, 1
 	note C_, 1
-	endchannel
+	sound_ret
 
 Music_Megalovania_Ch3_ditty_3:
 	octave 1
@@ -1432,7 +1432,7 @@ Music_Megalovania_Ch3_ditty_3:
 	octave 2
 	note B_, 1
 	note B_, 1
-	endchannel
+	sound_ret
 
 Music_Megalovania_Ch3_ditty_4:
 	octave 6
@@ -1449,7 +1449,7 @@ Music_Megalovania_Ch3_ditty_4:
 	note D_, 1
 	note F_, 1
 	note G_, 1
-	endchannel
+	sound_ret
 
 Music_Megalovania_Ch3_ditty_5:
 	note F_, 1
@@ -1468,7 +1468,7 @@ Music_Megalovania_Ch3_ditty_5:
 	octave 6
 	note C_, 1
 	note __, 2
-	endchannel
+	sound_ret
 
 Music_Megalovania_Ch4:
 	note_type 12
@@ -1957,7 +1957,7 @@ Music_Megalovania_Ch4_ditty1:
 	note D#, 1
 	note A_, 1
 	note D#, 1
-	endchannel
+	sound_ret
 
 Music_Megalovania_Ch4_ditty2:
 	noisesampleset 5
@@ -1978,7 +1978,7 @@ Music_Megalovania_Ch4_ditty2:
 	noisesampleset 0
 	note A#, 1
 	note __, 1
-	endchannel
+	sound_ret
 
 Music_Megalovania_Ch4_ditty3:
 	note E_, 1
@@ -2005,7 +2005,7 @@ Music_Megalovania_Ch4_ditty3:
 	note __, 1
 	noisesampleset 5
 	note B_, 1
-	endchannel
+	sound_ret
 
 Music_Megalovania_Ch4_ditty4:
 	note F_, 1
@@ -2025,4 +2025,4 @@ Music_Megalovania_Ch4_ditty4:
 	note B_, 1
 	note E_, 1
 	noisesampleset 0
-	endchannel
+	sound_ret

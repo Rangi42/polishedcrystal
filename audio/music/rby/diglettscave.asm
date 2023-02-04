@@ -293,7 +293,7 @@ Music_DiglettsCaveRBY_branch_7e958:
 	note A#, 2
 	note G_, 2
 	note __, 2
-	endchannel
+	sound_ret
 
 Music_DiglettsCaveRBY_branch_7e9d1:
 	octave 4
@@ -306,7 +306,7 @@ Music_DiglettsCaveRBY_branch_7e9d1:
 	note __, 1
 	octave 4
 	note F#, 4
-	endchannel
+	sound_ret
 
 Music_DiglettsCaveRBY_Ch4:
 	note_type 12

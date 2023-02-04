@@ -389,12 +389,12 @@ Music_MountChimneyRSE_Ch1_branch_1:
 	note D#, 16
 	note __, 16
 	note __, 16
-	endchannel
+	sound_ret
 
 Music_MountChimneyRSE_blank:
 	note __, 16
 	sound_loop 8, Music_MountChimneyRSE_blank
-	endchannel
+	sound_ret
 
 Music_MountChimneyRSE_Ch2:
 	duty_cycle 3
@@ -781,7 +781,7 @@ Music_MountChimneyRSE_Ch2_branch_1:
 	octave 4
 	volume_envelope 9, 0
 	note C#, 8
-	endchannel
+	sound_ret
 
 Music_MountChimneyRSE_Ch3:
 	note_type 6, 2, 5
@@ -1121,7 +1121,7 @@ Music_MountChimneyRSE_Ch3_branch_1:
 	note A#, 1
 	octave 3
 	note C#, 1
-	endchannel
+	sound_ret
 
 Music_MountChimneyRSE_Ch3_branch_2:
 	octave 2
@@ -1150,7 +1150,7 @@ Music_MountChimneyRSE_Ch3_branch_2:
 	note E_, 1
 	note F_, 1
 	note F_, 1
-	endchannel
+	sound_ret
 
 Music_MountChimneyRSE_Ch4:
 	toggle_noise 4
@@ -1486,4 +1486,4 @@ Music_MountChimneyRSE_Ch4_branch_1:
 	note A_, 2
 	note D_, 2
 	note E_, 2
-	endchannel
+	sound_ret

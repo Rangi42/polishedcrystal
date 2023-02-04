@@ -308,4 +308,4 @@ Music_LookJessieJames_branch_83235:
 	note E_, 1
 	note __, 1
 	sound_jump Music_LookJessieJames_branch_83235
-	endchannel
+	sound_ret

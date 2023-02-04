@@ -146,7 +146,7 @@ Music_CianwoodCityHGSS_branch_ef37f:
 	note A#, 2
 	note F#, 2
 	sound_loop 2, Music_CianwoodCityHGSS_branch_ef37f
-	endchannel
+	sound_ret
 
 Music_CianwoodCityHGSS_branch_ef391:
 	note G#, 2
@@ -215,7 +215,7 @@ Music_CianwoodCityHGSS_branch_ef3d0:
 	octave 5
 	note C#, 16
 	duty_cycle 2
-	endchannel
+	sound_ret
 
 Music_CianwoodCityHGSS_Ch2:
 	vibrato $12, $25
@@ -634,4 +634,4 @@ Music_CianwoodCityHGSS_branch_ef569:
 	note_type 6, 2, 5
 	note __, 1
 	note F_, 1
-	endchannel
+	sound_ret

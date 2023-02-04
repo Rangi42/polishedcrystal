@@ -704,7 +704,7 @@ Music_VioletCity_branch_f0311:
 	note E_, 4
 	octave 2
 	note A_, 4
-	endchannel
+	sound_ret
 
 Music_VioletCity_Ch4:
 	toggle_noise 3
@@ -758,7 +758,7 @@ Music_VioletCity_branch_f036c:
 	note G_, 1
 	note G_, 1
 	note G_, 1
-	endchannel
+	sound_ret
 
 Music_VioletCity_branch_f037a:
 	note D#, 2
@@ -772,4 +772,4 @@ Music_VioletCity_branch_f037a:
 	note D#, 2
 	note D_, 2
 	note D#, 2
-	endchannel
+	sound_ret

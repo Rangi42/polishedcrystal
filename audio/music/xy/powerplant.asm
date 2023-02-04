@@ -66,7 +66,7 @@ Music_PowerPlantXY_Ch1_branch_1:
 	note __, 1
 	note G_, 2
 	note __, 1
-	endchannel
+	sound_ret
 
 Music_PowerPlantXY_Ch1_branch_2:
 	note_type 12, 12, 2
@@ -104,7 +104,7 @@ Music_PowerPlantXY_Ch1_branch_2:
 	note __, 2
 	note_type 12, 12, 8
 	note F#, 3
-	endchannel
+	sound_ret
 
 Music_PowerPlantXY_Ch1_branch_3:
 	note_type 12, 6, -2
@@ -126,7 +126,7 @@ Music_PowerPlantXY_Ch1_branch_3:
 	note B_, 8
 	octave 4
 	note D#, 8
-	endchannel
+	sound_ret
 
 Music_PowerPlantXY_Ch1_branch_4:
 	vibrato $12, $35
@@ -153,7 +153,7 @@ Music_PowerPlantXY_Ch1_branch_4:
 	note E_, 2
 	note D#, 2
 	note __, 1
-	endchannel
+	sound_ret
 
 Music_PowerPlantXY_Ch2:
 	stereo_panning TRUE, TRUE
@@ -228,7 +228,7 @@ Music_PowerPlantXY_Ch2_branch_1:
 	note A_, 2
 	note E_, 2
 	note A_, 2
-	endchannel
+	sound_ret
 
 Music_PowerPlantXY_Ch2_branch_2:
 	vibrato $12, $23
@@ -273,7 +273,7 @@ Music_PowerPlantXY_Ch2_branch_2:
 	note __, 2
 	note_type 12, 12, 8
 	note D#, 3
-	endchannel
+	sound_ret
 
 Music_PowerPlantXY_Ch2_branch_3:
 	note_type 12, 6, -2
@@ -291,7 +291,7 @@ Music_PowerPlantXY_Ch2_branch_3:
 	note G#, 16
 	note F#, 8
 	note B_, 8
-	endchannel
+	sound_ret
 
 Music_PowerPlantXY_Ch2_branch_4:
 	vibrato $12, $35
@@ -321,7 +321,7 @@ Music_PowerPlantXY_Ch2_branch_4:
 	note E_, 2
 	note D#, 2
 	note __, 2
-	endchannel
+	sound_ret
 
 Music_PowerPlantXY_Ch3:
 	stereo_panning TRUE, TRUE
@@ -389,7 +389,7 @@ Music_PowerPlantXY_Ch3_branch_1:
 	note __, 1
 	note E_, 2
 	note __, 1
-	endchannel
+	sound_ret
 
 Music_PowerPlantXY_Ch3_branch_2:
 	note_type 12, 1, 4
@@ -416,7 +416,7 @@ Music_PowerPlantXY_Ch3_branch_2:
 	note G#, 1
 	note __, 2
 	note G#, 3
-	endchannel
+	sound_ret
 
 Music_PowerPlantXY_Ch3_branch_3:
 	octave 2
@@ -491,7 +491,7 @@ Music_PowerPlantXY_Ch3_branch_3:
 	note B_, 2
 	octave 3
 	note D#, 2
-	endchannel
+	sound_ret
 
 Music_PowerPlantXY_Ch3_branch_4:
 	note_type 12, 1, 1
@@ -499,7 +499,7 @@ Music_PowerPlantXY_Ch3_branch_4:
 	note C#, 16
 	note C#, 13
 	note __, 3
-	endchannel
+	sound_ret
 
 Music_PowerPlantXY_Ch4:
 	note_type 12

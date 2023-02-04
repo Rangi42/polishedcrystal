@@ -121,7 +121,7 @@ Music_GameCorner_branch_ede03:
 	note A#, 2
 	note G#, 1
 	note A#, 3
-	endchannel
+	sound_ret
 
 Music_GameCorner_branch_ede13:
 	note __, 2
@@ -132,7 +132,7 @@ Music_GameCorner_branch_ede13:
 	octave 3
 	note F_, 3
 	note F_, 2
-	endchannel
+	sound_ret
 
 Music_GameCorner_Ch2:
 	stereo_panning TRUE, TRUE
@@ -314,7 +314,7 @@ Music_GameCorner_branch_ede75:
 	note C_, 2
 	note D_, 2
 	note D#, 2
-	endchannel
+	sound_ret
 
 Music_GameCorner_Ch3:
 	vibrato $8, $22
@@ -527,7 +527,7 @@ Music_GameCorner_branch_edfdd:
 	note C_, 1
 	octave 4
 	note A_, 2
-	endchannel
+	sound_ret
 
 Music_GameCorner_branch_edff8:
 	octave 2
@@ -549,7 +549,7 @@ Music_GameCorner_branch_edff8:
 	note __, 1
 	note A_, 1
 	note __, 1
-	endchannel
+	sound_ret
 
 Music_GameCorner_branch_ee00c:
 	octave 2
@@ -575,7 +575,7 @@ Music_GameCorner_branch_ee00c:
 	note __, 1
 	note C_, 1
 	note D_, 3
-	endchannel
+	sound_ret
 
 Music_GameCorner_branch_ee024:
 	octave 2
@@ -604,7 +604,7 @@ Music_GameCorner_branch_ee024:
 	octave 3
 	note F_, 1
 	note __, 1
-	endchannel
+	sound_ret
 
 Music_GameCorner_branch_ee03f:
 	octave 2
@@ -654,7 +654,7 @@ Music_GameCorner_branch_ee03f:
 	note D_, 1
 	octave 3
 	note D_, 1
-	endchannel
+	sound_ret
 
 Music_GameCorner_Ch4:
 	toggle_noise 3
@@ -792,7 +792,7 @@ Music_GameCorner_branch_ee106:
 	note F#, 2
 	note D_, 2
 	note F#, 2
-	endchannel
+	sound_ret
 
 Music_GameCorner_branch_ee10f:
 	note A#, 2
@@ -804,4 +804,4 @@ Music_GameCorner_branch_ee10f:
 	note D_, 1
 	note D_, 1
 	note F#, 2
-	endchannel
+	sound_ret

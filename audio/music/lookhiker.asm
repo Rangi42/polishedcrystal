@@ -100,7 +100,7 @@ Music_LookHiker_branch_f748a:
 	note __, 2
 	note B_, 2
 	note __, 6
-	endchannel
+	sound_ret
 
 Music_LookHiker_Ch4:
 	toggle_noise 3

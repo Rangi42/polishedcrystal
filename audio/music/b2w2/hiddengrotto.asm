@@ -58,7 +58,7 @@ Music_HiddenGrottoB2W2_Ch1_branch_1:
 	octave 4
 	note C_, 16
 	note __, 4
-	endchannel
+	sound_ret
 
 Music_HiddenGrottoB2W2_Ch2:
 	duty_cycle 2

@@ -67,7 +67,7 @@ Music_MagnetTrain_Ch1:
 	note __, 1
 	note_type 12, 11, 7
 	note D_, 16
-	endchannel
+	sound_ret
 
 Music_MagnetTrain_Ch2:
 	vibrato $14, $23
@@ -105,7 +105,7 @@ Music_MagnetTrain_Ch2:
 	note __, 1
 	note_type 12, 13, 7
 	note A_, 16
-	endchannel
+	sound_ret
 
 Music_MagnetTrain_Ch3:
 	stereo_panning TRUE, TRUE
@@ -221,7 +221,7 @@ Music_MagnetTrain_Ch3:
 	note D_, 1
 	octave 2
 	note D_, 16
-	endchannel
+	sound_ret
 
 Music_MagnetTrain_Ch4:
 	toggle_noise 3
@@ -244,7 +244,7 @@ Music_MagnetTrain_Ch4:
 	sound_call Music_MagnetTrain_branch_ef71e
 	note_type 12
 	note B_, 16
-	endchannel
+	sound_ret
 
 Music_MagnetTrain_branch_ef71e:
 	note G#, 2
@@ -263,4 +263,4 @@ Music_MagnetTrain_branch_ef71e:
 	note G_, 2
 	note G_, 2
 	note G_, 2
-	endchannel
+	sound_ret

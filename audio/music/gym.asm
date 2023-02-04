@@ -330,7 +330,7 @@ Music_Gym_branch_f49e9:
 	note C_, 1
 	note C_, 1
 	note C_, 2
-	endchannel
+	sound_ret
 
 Music_Gym_branch_f4a15:
 	octave 2
@@ -366,7 +366,7 @@ Music_Gym_branch_f4a15:
 	note B_, 2
 	note F#, 1
 	note F#, 1
-	endchannel
+	sound_ret
 
 Music_Gym_Ch3:
 	vibrato $14, $23
@@ -500,7 +500,7 @@ Music_Gym_branch_f4ab3:
 	note F#, 1
 	note G_, 1
 	note A_, 4
-	endchannel
+	sound_ret
 
 Music_Gym_Ch4:
 	toggle_noise 4

@@ -73,7 +73,7 @@ Music_PokemonChannel_Ch1:
 	note __, 6
 	note D_, 2
 	note __, 6
-	endchannel
+	sound_ret
 
 Music_PokemonChannel_Ch2:
 	duty_cycle 1
@@ -143,7 +143,7 @@ Music_PokemonChannel_Ch2:
 	octave 3
 	note G_, 2
 	note __, 6
-	endchannel
+	sound_ret
 
 Music_PokemonChannel_Ch3:
 	vibrato $8, $38
@@ -199,7 +199,7 @@ Music_PokemonChannel_Ch3:
 	note __, 3
 	note G_, 1
 	note __, 3
-	endchannel
+	sound_ret
 
 Music_PokemonChannel_Ch4:
 	toggle_noise 3
@@ -229,4 +229,4 @@ Music_PokemonChannel_branch_ee54d:
 	note D_, 4
 	note A#, 4
 	note A#, 4
-	endchannel
+	sound_ret

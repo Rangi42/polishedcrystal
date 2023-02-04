@@ -190,7 +190,7 @@ Music_BurnedTower_branch_f6b8e:
 	note F_, 4
 	note D_, 4
 	note E_, 16
-	endchannel
+	sound_ret
 
 Music_BurnedTower_Ch3:
 	stereo_panning FALSE, TRUE

@@ -271,7 +271,7 @@ Music_TitleScreen_Ch1:
 	octave 1
 	note G_, 1
 	note __, 11
-	endchannel
+	sound_ret
 
 Music_TitleScreen_branch_eb96d:
 	note_type 12, 12, 3
@@ -290,7 +290,7 @@ Music_TitleScreen_branch_eb971:
 	octave 1
 	note A_, 1
 	note_type 8, 11, 7
-	endchannel
+	sound_ret
 
 Music_TitleScreen_Ch2:
 	duty_cycle 3
@@ -553,7 +553,7 @@ Music_TitleScreen_Ch2:
 	octave 2
 	note G_, 1
 	note __, 11
-	endchannel
+	sound_ret
 
 Music_TitleScreen_branch_ebae7:
 	note_type 12, 11, 2
@@ -575,7 +575,7 @@ Music_TitleScreen_branch_ebaeb:
 	octave 5
 	note C_, 4
 	note C_, 4
-	endchannel
+	sound_ret
 
 Music_TitleScreen_Ch3:
 	stereo_panning FALSE, TRUE
@@ -891,7 +891,7 @@ Music_TitleScreen_Ch3:
 	octave 1
 	note G_, 1
 	note __, 11
-	endchannel
+	sound_ret
 
 Music_TitleScreen_Ch4:
 	toggle_noise 5
@@ -1123,7 +1123,7 @@ Music_TitleScreen_branch_ebd40:
 	note_type 12
 	note C_, 4
 	note B_, 4
-	endchannel
+	sound_ret
 
 Music_TitleScreen_branch_ebd77:
 	note C_, 2
@@ -1135,7 +1135,7 @@ Music_TitleScreen_branch_ebd77:
 	note C_, 1
 	note C_, 2
 	note D#, 2
-	endchannel
+	sound_ret
 
 Music_TitleScreen_branch_ebd81:
 	note C_, 2
@@ -1147,14 +1147,14 @@ Music_TitleScreen_branch_ebd81:
 	note C_, 1
 	note C_, 2
 	note D#, 2
-	endchannel
+	sound_ret
 
 Music_TitleScreen_branch_ebd8b:
 	note C_, 2
 	note C_, 1
 	note C_, 1
 	sound_loop 4, Music_TitleScreen_branch_ebd8b
-	endchannel
+	sound_ret
 
 Music_TitleScreen_branch_ebd93:
 	note C_, 2
@@ -1166,4 +1166,4 @@ Music_TitleScreen_branch_ebd93:
 	note_type 8
 	note C_, 4
 	note C_, 4
-	endchannel
+	sound_ret

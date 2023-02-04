@@ -565,7 +565,7 @@ Music_Route47HGSS_Ch1_branch_1:
 	volume_envelope 2, 2
 	octave 3
 	note C_, 1
-	endchannel
+	sound_ret
 
 Music_Route47HGSS_Ch1_branch_2:
 	duty_cycle 0
@@ -575,7 +575,7 @@ Music_Route47HGSS_Ch1_branch_2:
 	note C_, 1
 	duty_cycle 2
 	volume_envelope 9, 3
-	endchannel
+	sound_ret
 
 Music_Route47HGSS_Ch2:
 	duty_cycle 2
@@ -1158,7 +1158,7 @@ Music_Route47HGSS_Ch4_branch_1:
 	note C#, 1
 	note C#, 1
 	note_type 12
-	endchannel
+	sound_ret
 
 Music_Route47HGSS_Ch4_branch_2:
 	note C_, 1
@@ -1171,7 +1171,7 @@ Music_Route47HGSS_Ch4_branch_2:
 	note C_, 1
 	note C#, 1
 	note C#, 2
-	endchannel
+	sound_ret
 
 Music_Route47HGSS_Ch4_branch_3:
 	note C#, 1
@@ -1180,11 +1180,11 @@ Music_Route47HGSS_Ch4_branch_3:
 	note C#, 2
 	note C#, 1
 	note C#, 9
-	endchannel
+	sound_ret
 
 Music_Route47HGSS_Ch4_branch_4:
 	note C#, 2
 	note C#, 1
 	note C#, 2
 	note C#, 3
-	endchannel
+	sound_ret

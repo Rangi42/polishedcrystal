@@ -802,7 +802,7 @@ Music_MartHGSS_Branch:
 	note __, 1
 	note F#, 1
 	note __, 1
-	endchannel
+	sound_ret
 
 Music_MartHGSS_Ch4:
 	note_type 12

@@ -84,7 +84,7 @@ Music_DancingHall_branch_efa17:
 	octave 4
 	note D_, 1
 	note __, 1
-	endchannel
+	sound_ret
 
 Music_DancingHall_Ch2:
 	stereo_panning TRUE, FALSE
@@ -216,7 +216,7 @@ Music_DancingHall_branch_efa7a:
 	note A_, 1
 	octave 4
 	note D_, 1
-	endchannel
+	sound_ret
 
 Music_DancingHall_Ch3:
 	stereo_panning TRUE, TRUE

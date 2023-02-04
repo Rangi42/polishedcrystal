@@ -1213,4 +1213,4 @@ Music_WCSBattleBW_Ch3_P1:
 	note C_, 1
 	note __, 2
 	octave 2
-	endchannel
+	sound_ret

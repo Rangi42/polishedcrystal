@@ -60,7 +60,7 @@ Music_ShowMeAround_branch_edc15:
 	note __, 1
 	note E_, 1
 	note __, 3
-	endchannel
+	sound_ret
 
 Music_ShowMeAround_Ch2:
 	stereo_panning TRUE, TRUE
@@ -145,7 +145,7 @@ Music_ShowMeAround_branch_edc86:
 	note E_, 4
 	note D_, 2
 	note F#, 2
-	endchannel
+	sound_ret
 
 Music_ShowMeAround_branch_edc8e:
 	octave 5
@@ -157,7 +157,7 @@ Music_ShowMeAround_branch_edc8e:
 	note F#, 2
 	octave 4
 	note A_, 2
-	endchannel
+	sound_ret
 
 Music_ShowMeAround_branch_edc98:
 	note __, 4
@@ -176,7 +176,7 @@ Music_ShowMeAround_branch_edc98:
 	note A#, 2
 	note B_, 1
 	note __, 1
-	endchannel
+	sound_ret
 
 Music_ShowMeAround_Ch3:
 	stereo_panning TRUE, FALSE
@@ -261,7 +261,7 @@ Music_ShowMeAround_branch_edcef:
 	note C#, 4
 	note D_, 2
 	note __, 2
-	endchannel
+	sound_ret
 
 Music_ShowMeAround_branch_edd0f:
 	octave 2
@@ -296,7 +296,7 @@ Music_ShowMeAround_branch_edd0f:
 	octave 2
 	note A_, 2
 	note __, 6
-	endchannel
+	sound_ret
 
 Music_ShowMeAround_Ch4:
 	toggle_noise 3
@@ -330,7 +330,7 @@ Music_ShowMeAround_branch_edd4f:
 	note G_, 2
 	note D_, 2
 	note D#, 2
-	endchannel
+	sound_ret
 
 Music_ShowMeAround_branch_edd5e:
 	note D#, 2
@@ -347,4 +347,4 @@ Music_ShowMeAround_branch_edd5e:
 	note D_, 2
 	note D_, 2
 	note F#, 2
-	endchannel
+	sound_ret

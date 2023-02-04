@@ -50,7 +50,7 @@ Music_Evolution_branch_f0737:
 	note C_, 4
 	note G_, 4
 	note C_, 4
-	endchannel
+	sound_ret
 
 Music_Evolution_branch_f0743:
 	note_type 12, 10, 2
@@ -62,7 +62,7 @@ Music_Evolution_branch_f0743:
 	note D_, 4
 	note A_, 4
 	note D_, 4
-	endchannel
+	sound_ret
 
 Music_Evolution_Ch2:
 	duty_cycle 2
@@ -104,7 +104,7 @@ Music_Evolution_branch_f0787:
 	note G_, 4
 	note D_, 4
 	note G_, 4
-	endchannel
+	sound_ret
 
 Music_Evolution_branch_f0793:
 	note_type 12, 11, 2
@@ -116,7 +116,7 @@ Music_Evolution_branch_f0793:
 	note A_, 4
 	note E_, 4
 	note A_, 4
-	endchannel
+	sound_ret
 
 Music_Evolution_Ch3:
 	note_type 12, 1, 6
@@ -159,7 +159,7 @@ Music_Evolution_branch_f07bf:
 	octave 2
 	note A_, 2
 	note __, 2
-	endchannel
+	sound_ret
 
 Music_Evolution_branch_f07d5:
 	octave 2
@@ -183,7 +183,7 @@ Music_Evolution_branch_f07d5:
 	octave 2
 	note A_, 2
 	note __, 2
-	endchannel
+	sound_ret
 
 Music_Evolution_Ch4:
 	toggle_noise 5

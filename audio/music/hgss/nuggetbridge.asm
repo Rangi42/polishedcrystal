@@ -429,7 +429,7 @@ Music_NuggetBridgeHGSS_Bar7:
 	octave 4
 	note D_, 1
 	volume_envelope 1, 5
-	endchannel
+	sound_ret
 Music_NuggetBridgeHGSS_Bar8:
 	octave 2
 	note E_, 1
@@ -440,7 +440,7 @@ Music_NuggetBridgeHGSS_Bar8:
 	octave 4
 	note E_, 1
 	volume_envelope 1, 5
-	endchannel
+	sound_ret
 Music_NuggetBridgeHGSS_Bar9:
 	octave 1
 	note B_, 1
@@ -451,7 +451,7 @@ Music_NuggetBridgeHGSS_Bar9:
 	octave 4
 	note F#, 1
 	volume_envelope 1, 5
-	endchannel
+	sound_ret
 Music_NuggetBridgeHGSS_Bar10:
 	octave 2
 	note E_, 1
@@ -462,7 +462,7 @@ Music_NuggetBridgeHGSS_Bar10:
 	octave 4
 	note B_, 1
 	volume_envelope 1, 5
-	endchannel
+	sound_ret
 Music_NuggetBridgeHGSS_Bar11:
 	octave 1
 	note B_, 1
@@ -474,7 +474,7 @@ Music_NuggetBridgeHGSS_Bar11:
 	octave 5
 	note D_, 1
 	volume_envelope 1, 5
-	endchannel
+	sound_ret
 Music_NuggetBridgeHGSS_Bar12:
 	octave 2
 	note E_, 1
@@ -486,7 +486,7 @@ Music_NuggetBridgeHGSS_Bar12:
 	octave 5
 	note E_, 1
 	volume_envelope 1, 5
-	endchannel
+	sound_ret
 
 Music_NuggetBridgeHGSS_Ch4:
 	note_type 4

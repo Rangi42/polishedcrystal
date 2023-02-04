@@ -496,7 +496,7 @@ Music_Route36_branch_e9734:
 	note A#, 1
 	note A_, 2
 	note A#, 2
-	endchannel
+	sound_ret
 
 Music_Route36_branch_e973b:
 	note A_, 4
@@ -504,7 +504,7 @@ Music_Route36_branch_e973b:
 	note B_, 1
 	note A#, 1
 	note A_, 4
-	endchannel
+	sound_ret
 
 Music_Route36_branch_e9741:
 	note A_, 4
@@ -518,4 +518,4 @@ Music_Route36_branch_e9741:
 	note A_, 1
 	note A_, 1
 	note_type 12
-	endchannel
+	sound_ret

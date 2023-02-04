@@ -69,7 +69,7 @@ Music_ViridianForest_branch_ed931:
 	octave 3
 	note B_, 4
 	volume_envelope 11, 1
-	endchannel
+	sound_ret
 
 Music_ViridianForest_branch_ed940:
 	octave 2
@@ -118,7 +118,7 @@ Music_ViridianForest_branch_ed940:
 	octave 3
 	note G_, 2
 	volume_envelope 11, 1
-	endchannel
+	sound_ret
 
 Music_ViridianForest_branch_ed971:
 	note B_, 2
@@ -157,7 +157,7 @@ Music_ViridianForest_branch_ed971:
 	note C_, 2
 	octave 3
 	note A_, 2
-	endchannel
+	sound_ret
 
 Music_ViridianForest_Ch2:
 	stereo_panning TRUE, TRUE
@@ -207,7 +207,7 @@ Music_ViridianForest_branch_ed9ba:
 	note G#, 4
 	note G_, 4
 	volume_envelope 11, 2
-	endchannel
+	sound_ret
 
 Music_ViridianForest_branch_ed9dc:
 	octave 2
@@ -247,7 +247,7 @@ Music_ViridianForest_branch_ed9dc:
 	note __, 1
 	note F_, 4
 	note D_, 4
-	endchannel
+	sound_ret
 
 Music_ViridianForest_branch_eda02:
 	octave 2
@@ -291,7 +291,7 @@ Music_ViridianForest_branch_eda02:
 	note __, 2
 	note G_, 1
 	note __, 1
-	endchannel
+	sound_ret
 
 Music_ViridianForest_Ch3:
 	stereo_panning TRUE, FALSE
@@ -401,7 +401,7 @@ Music_ViridianForest_branch_eda9e:
 	note F_, 1
 	note __, 1
 	note F_, 4
-	endchannel
+	sound_ret
 
 Music_ViridianForest_branch_edaaf:
 	octave 6
@@ -429,7 +429,7 @@ Music_ViridianForest_branch_edaaf:
 	note D_, 4
 	note C_, 4
 	note D_, 4
-	endchannel
+	sound_ret
 
 Music_ViridianForest_branch_edacb:
 	octave 5
@@ -448,7 +448,7 @@ Music_ViridianForest_branch_edacb:
 	note __, 4
 	note E_, 4
 	note F_, 16
-	endchannel
+	sound_ret
 
 Music_ViridianForest_Ch4:
 	toggle_noise 5

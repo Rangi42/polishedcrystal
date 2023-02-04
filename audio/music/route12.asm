@@ -146,7 +146,7 @@ Music_Route12_branch_ec5b1:
 	note D#, 1
 	note E_, 4
 	note G#, 4
-	endchannel
+	sound_ret
 
 Music_Route12_branch_ec5bf:
 	note A_, 1
@@ -159,7 +159,7 @@ Music_Route12_branch_ec5bf:
 	note G#, 1
 	note A_, 4
 	note F#, 4
-	endchannel
+	sound_ret
 
 Music_Route12_Ch2:
 	duty_cycle 3
@@ -276,7 +276,7 @@ Music_Route12_branch_ec647:
 	note A_, 4
 	note G#, 4
 	note F#, 4
-	endchannel
+	sound_ret
 
 Music_Route12_Ch3:
 	vibrato $12, $54
@@ -387,7 +387,7 @@ Music_Route12_branch_ec6b4:
 	note F#, 1
 	note G#, 4
 	note E_, 4
-	endchannel
+	sound_ret
 
 Music_Route12_Ch4:
 	toggle_noise 4
@@ -448,4 +448,4 @@ Music_Route12_branch_ec717:
 	note C#, 1
 	note C#, 1
 	note C#, 1
-	endchannel
+	sound_ret

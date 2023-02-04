@@ -268,7 +268,7 @@ Music_NationalPark_branch_f554a:
 	note D_, 2
 	octave 3
 	note A#, 2
-	endchannel
+	sound_ret
 
 Music_NationalPark_branch_f563a:
 	note __, 16
@@ -294,7 +294,7 @@ Music_NationalPark_branch_f563a:
 	note __, 1
 	note A_, 2
 	note __, 4
-	endchannel
+	sound_ret
 
 Music_NationalPark_Ch2:
 	vibrato $14, $24
@@ -432,7 +432,7 @@ Music_NationalPark_branch_f56b8:
 	note A#, 6
 	octave 2
 	note F_, 2
-	endchannel
+	sound_ret
 
 Music_NationalPark_branch_f56f5:
 	octave 4
@@ -476,7 +476,7 @@ Music_NationalPark_branch_f56f5:
 	octave 4
 	note D_, 2
 	note C#, 2
-	endchannel
+	sound_ret
 
 Music_NationalPark_Ch3:
 	vibrato $16, $24
@@ -571,7 +571,7 @@ Music_NationalPark_branch_f5756:
 	note A#, 4
 	octave 6
 	note C_, 2
-	endchannel
+	sound_ret
 
 Music_NationalPark_branch_f578f:
 	octave 2
@@ -614,7 +614,7 @@ Music_NationalPark_branch_f578f:
 	octave 3
 	note F_, 1
 	note __, 1
-	endchannel
+	sound_ret
 
 Music_NationalPark_Ch4:
 	toggle_noise 3

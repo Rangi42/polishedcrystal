@@ -250,7 +250,7 @@ Music_BlackCityBW_Ch1_branch_1:
 	note G_, 2
 	volume_envelope 11, 1
 	note G_, 2
-	endchannel
+	sound_ret
 
 Music_BlackCityBW_Ch2:
 	duty_cycle 2
@@ -509,4 +509,4 @@ Music_BlackCityBW_Ch4_branch_1:
 	note C_, 4
 	note D#, 2
 	note D#, 2
-	endchannel
+	sound_ret

@@ -43,7 +43,7 @@ Music_RoadToReversalMountainB2W2_Ch1_branch_1:
 	note A#, 6
 	note A_, 12
 	note G_, 6
-	endchannel
+	sound_ret
 
 Music_RoadToReversalMountainB2W2_Ch2:
 	duty_cycle 0
@@ -210,7 +210,7 @@ Music_RoadToReversalMountainB2W2_Ch3_branch_1:
 	note __, 2
 	note A_, 2
 	note __, 2
-	endchannel
+	sound_ret
 
 Music_RoadToReversalMountainB2W2_Ch4:
 	stereo_panning FALSE, TRUE

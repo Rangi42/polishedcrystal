@@ -134,7 +134,7 @@ Music_DarkCave_branch_ea333:
 	note C_, 2
 	octave 3
 	note A#, 2
-	endchannel
+	sound_ret
 
 Music_DarkCave_Ch2:
 	duty_cycle 1
@@ -412,7 +412,7 @@ Music_DarkCave_branch_ea4a7:
 	note C#, 2
 	note C_, 2
 	note C#, 4
-	endchannel
+	sound_ret
 
 Music_DarkCave_branch_ea4c3:
 	octave 3
@@ -425,7 +425,7 @@ Music_DarkCave_branch_ea4c3:
 	note __, 2
 	octave 2
 	note A#, 12
-	endchannel
+	sound_ret
 
 Music_DarkCave_branch_ea4ce:
 	octave 2
@@ -455,7 +455,7 @@ Music_DarkCave_branch_ea4ce:
 	note C#, 2
 	note C_, 2
 	note C#, 4
-	endchannel
+	sound_ret
 
 Music_DarkCave_Ch4:
 	toggle_noise 3

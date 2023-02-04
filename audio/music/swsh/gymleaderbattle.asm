@@ -703,7 +703,7 @@ Music_GymLeaderBattleSwSh_Ch2_ditty1:
 	note __, 1
 	note D_, 2
 	note D#, 1
-	endchannel
+	sound_ret
 
 Music_GymLeaderBattleSwSh_Ch2_ditty2:
 	note G_, 3
@@ -763,7 +763,7 @@ Music_GymLeaderBattleSwSh_Ch2_ditty2:
 	note __, 1
 	note A#, 1
 	note __, 1
-	endchannel
+	sound_ret
 
 Music_GymLeaderBattleSwSh_Ch2_ditty3:
 	note G_, 1
@@ -798,7 +798,7 @@ Music_GymLeaderBattleSwSh_Ch2_ditty3:
 	note __, 3
 	note A#, 1
 	note __, 1
-	endchannel
+	sound_ret
 
 Music_GymLeaderBattleSwSh_Ch2_ditty4:
 	note G_, 1
@@ -833,7 +833,7 @@ Music_GymLeaderBattleSwSh_Ch2_ditty4:
 	note __, 3
 	note A#, 1
 	note __, 1
-	endchannel
+	sound_ret
 
 Music_GymLeaderBattleSwSh_Ch2_ditty5:
 	note A#, 1
@@ -882,7 +882,7 @@ Music_GymLeaderBattleSwSh_Ch2_ditty5:
 	stereo_panning FALSE, TRUE
 	note G_, 1
 	note G_, 1
-	endchannel
+	sound_ret
 
 Music_GymLeaderBattleSwSh_Ch2_ditty6:
 	note D_, 3
@@ -932,7 +932,7 @@ Music_GymLeaderBattleSwSh_Ch2_ditty6:
 	octave 3
 	note A_, 2
 	note __, 1
-	endchannel
+	sound_ret
 
 Music_GymLeaderBattleSwSh_Ch2_ditty7:
 	note G_, 1
@@ -966,7 +966,7 @@ Music_GymLeaderBattleSwSh_Ch2_ditty7:
 	note B_, 1
 	note __, 3
 	note B_, 1
-	endchannel
+	sound_ret
 
 Music_GymLeaderBattleSwSh_Ch2_ditty8:
 	octave 4
@@ -1017,7 +1017,7 @@ Music_GymLeaderBattleSwSh_Ch2_ditty8:
 	note __, 3
 	note B_, 1
 	note __, 1
-	endchannel
+	sound_ret
 
 Music_GymLeaderBattleSwSh_Ch2_ditty9:
 	octave 5
@@ -1042,7 +1042,7 @@ Music_GymLeaderBattleSwSh_Ch2_ditty9:
 	note G_, 2
 	note A_, 2
 	note G_, 2
-	endchannel
+	sound_ret
 
 Music_GymLeaderBattleSwSh_Ch2_ditty10:
 	note G_, 2
@@ -1069,7 +1069,7 @@ Music_GymLeaderBattleSwSh_Ch2_ditty10:
 	note __, 2
 	note G_, 2
 	note __, 2
-	endchannel
+	sound_ret
 
 Music_GymLeaderBattleSwSh_Ch2_ditty11:
 	note D_, 1
@@ -1087,7 +1087,7 @@ Music_GymLeaderBattleSwSh_Ch2_ditty11:
 	note F_, 1
 	note __, 3
 	note F_, 1
-	endchannel
+	sound_ret
 
 Music_GymLeaderBattleSwSh_Ch2_ditty12:
 	note __, 3
@@ -1105,7 +1105,7 @@ Music_GymLeaderBattleSwSh_Ch2_ditty12:
 	note __, 3
 	volume_envelope 0, -7
 	note F_, 6
-	endchannel
+	sound_ret
 
 Music_GymLeaderBattleSwSh_Ch1_ditty1:
 	note D_, 1
@@ -1188,7 +1188,7 @@ Music_GymLeaderBattleSwSh_Ch1_ditty1:
 	note D_, 1
 	note G_, 1
 	note G#, 1
-	endchannel
+	sound_ret
 
 Music_GymLeaderBattleSwSh_Ch1_ditty2:
 	stereo_panning FALSE, TRUE
@@ -1244,7 +1244,7 @@ Music_GymLeaderBattleSwSh_Ch1_ditty2:
 	note F_, 2
 	note __, 1
 	note F_, 1
-	endchannel
+	sound_ret
 
 Music_GymLeaderBattleSwSh_Ch1_ditty3:
 	note D_, 1
@@ -1279,7 +1279,7 @@ Music_GymLeaderBattleSwSh_Ch1_ditty3:
 	note __, 3
 	note F_, 1
 	note __, 1
-	endchannel
+	sound_ret
 
 Music_GymLeaderBattleSwSh_Ch1_ditty4:
 	note G_, 3
@@ -1326,7 +1326,7 @@ Music_GymLeaderBattleSwSh_Ch1_ditty4:
 	note D_, 2
 	note __, 1
 	note G_, 2
-	endchannel
+	sound_ret
 
 Music_GymLeaderBattleSwSh_Ch1_ditty5:
 	note G_, 3
@@ -1373,7 +1373,7 @@ Music_GymLeaderBattleSwSh_Ch1_ditty5:
 	note D_, 2
 	note __, 1
 	note G_, 2
-	endchannel
+	sound_ret
 
 Music_GymLeaderBattleSwSh_Ch1_ditty6:
 	note D_, 1
@@ -1407,7 +1407,7 @@ Music_GymLeaderBattleSwSh_Ch1_ditty6:
 	note G_, 1
 	note __, 3
 	note G_, 1
-	endchannel
+	sound_ret
 
 Music_GymLeaderBattleSwSh_Ch1_ditty7:
 	octave 4
@@ -1458,7 +1458,7 @@ Music_GymLeaderBattleSwSh_Ch1_ditty7:
 	note __, 3
 	note G_, 1
 	note __, 1
-	endchannel
+	sound_ret
 
 Music_GymLeaderBattleSwSh_Ch1_ditty8:
 	note G_, 3
@@ -1495,7 +1495,7 @@ Music_GymLeaderBattleSwSh_Ch1_ditty8:
 	note G_, 1
 	note D_, 4
 	note __, 4
-	endchannel
+	sound_ret
 
 Music_GymLeaderBattleSwSh_Ch1_ditty9:
 	note G_, 2
@@ -1548,7 +1548,7 @@ Music_GymLeaderBattleSwSh_Ch1_ditty9:
 	note G_, 1
 	note D_, 4
 	note __, 4
-	endchannel
+	sound_ret
 
 Music_GymLeaderBattleSwSh_Ch1_ditty10:
 	note G_, 2
@@ -1611,7 +1611,7 @@ Music_GymLeaderBattleSwSh_Ch1_ditty10:
 	note __, 1
 	note A_, 2
 	note B_, 2
-	endchannel
+	sound_ret
 
 Music_GymLeaderBattleSwSh_Ch1_ditty11:
 	note G_, 1
@@ -1629,7 +1629,7 @@ Music_GymLeaderBattleSwSh_Ch1_ditty11:
 	note A#, 1
 	note __, 3
 	note A#, 1
-	endchannel
+	sound_ret
 
 Music_GymLeaderBattleSwSh_Ch1_ditty12:
 	note __, 3
@@ -1648,7 +1648,7 @@ Music_GymLeaderBattleSwSh_Ch1_ditty12:
 	octave 2
 	volume_envelope 0, -7
 	note F_, 6
-	endchannel
+	sound_ret
 
 Music_GymLeaderBattleSwSh_Ch3_ditty1:
 	octave 1
@@ -1731,7 +1731,7 @@ Music_GymLeaderBattleSwSh_Ch3_ditty1:
 	octave 2
 	note G_, 1
 	note __, 1
-	endchannel
+	sound_ret
 
 Music_GymLeaderBattleSwSh_Ch3_ditty2:
 	note G_, 3
@@ -1768,7 +1768,7 @@ Music_GymLeaderBattleSwSh_Ch3_ditty2:
 	note __, 1
 	note F_, 1
 	note __, 1
-	endchannel
+	sound_ret
 
 Music_GymLeaderBattleSwSh_Ch3_ditty3:
 	volume_envelope 1, 0
@@ -1822,7 +1822,7 @@ Music_GymLeaderBattleSwSh_Ch3_ditty3:
 	note A#, 1
 	note __, 1
 	volume_envelope 1, 1
-	endchannel
+	sound_ret
 
 Music_GymLeaderBattleSwSh_Ch3_ditty4:
 	note G_, 3
@@ -1856,7 +1856,7 @@ Music_GymLeaderBattleSwSh_Ch3_ditty4:
 	note D_, 2
 	note __, 1
 	note D_, 2
-	endchannel
+	sound_ret
 
 Music_GymLeaderBattleSwSh_Ch3_ditty5:
 	volume_envelope 1, 1
@@ -1932,7 +1932,7 @@ Music_GymLeaderBattleSwSh_Ch3_ditty5:
 	note __, 1
 	note D_, 1
 	volume_envelope 1, 1
-	endchannel
+	sound_ret
 
 Music_GymLeaderBattleSwSh_Ch3_ditty6:
 	note G_, 7
@@ -1956,7 +1956,7 @@ Music_GymLeaderBattleSwSh_Ch3_ditty6:
 	note G_, 2
 	note __, 2
 	note G_, 8
-	endchannel
+	sound_ret
 
 Music_GymLeaderBattleSwSh_Ch3_ditty7:
 	note G_, 7
@@ -1980,7 +1980,7 @@ Music_GymLeaderBattleSwSh_Ch3_ditty7:
 	note G_, 3
 	note __, 1
 	note G_, 8
-	endchannel
+	sound_ret
 
 Music_GymLeaderBattleSwSh_Ch3_ditty8:
 	octave 1
@@ -1991,7 +1991,7 @@ Music_GymLeaderBattleSwSh_Ch3_ditty8:
 	note G_, 2
 	octave 2
 	note G_, 2
-	endchannel
+	sound_ret
 
 Music_GymLeaderBattleSwSh_Ch3_ditty9:
 	octave 2
@@ -2002,7 +2002,7 @@ Music_GymLeaderBattleSwSh_Ch3_ditty9:
 	note D_, 2
 	octave 3
 	note D_, 2
-	endchannel
+	sound_ret
 
 Music_GymLeaderBattleSwSh_Ch3_ditty10:
 	octave 1
@@ -2013,7 +2013,7 @@ Music_GymLeaderBattleSwSh_Ch3_ditty10:
 	note A#, 2
 	octave 2
 	note A#, 2
-	endchannel
+	sound_ret
 
 Music_GymLeaderBattleSwSh_Ch4_ditty1:
 	note D#, 1
@@ -2062,7 +2062,7 @@ Music_GymLeaderBattleSwSh_Ch4_ditty1:
 	note D#, 3
 	note C#, 1
 	note D#, 3
-	endchannel
+	sound_ret
 
 Music_GymLeaderBattleSwSh_Ch4_ditty2:
 	note E_, 4
@@ -2099,7 +2099,7 @@ Music_GymLeaderBattleSwSh_Ch4_ditty2:
 	note __, 2
 	note D#, 1
 	note __, 1
-	endchannel
+	sound_ret
 
 Music_GymLeaderBattleSwSh_Ch4_ditty3:
 	note D#, 2
@@ -2142,7 +2142,7 @@ Music_GymLeaderBattleSwSh_Ch4_ditty3:
 	note C#, 2
 	note A_, 1
 	note A_, 1
-	endchannel
+	sound_ret
 
 Music_GymLeaderBattleSwSh_Ch4_ditty4:
 	note C#, 1
@@ -2154,7 +2154,7 @@ Music_GymLeaderBattleSwSh_Ch4_ditty4:
 	note D#, 16
 	note D#, 16
 	note D#, 16
-	endchannel
+	sound_ret
 
 Music_GymLeaderBattleSwSh_Ch4_ditty5:
 	noisesampleset 5
@@ -2188,7 +2188,7 @@ Music_GymLeaderBattleSwSh_Ch4_ditty5:
 	note C#, 1
 	note G#, 16
 	noisesampleset 4
-	endchannel
+	sound_ret
 
 Music_GymLeaderBattleSwSh_Ch4_ditty6:
 	note E_, 12
@@ -2210,7 +2210,7 @@ Music_GymLeaderBattleSwSh_Ch4_ditty6:
 	note __, 2
 	note D#, 1
 	note __, 1
-	endchannel
+	sound_ret
 
 Music_GymLeaderBattleSwSh_Ch4_ditty7:
 	note D#, 2
@@ -2249,7 +2249,7 @@ Music_GymLeaderBattleSwSh_Ch4_ditty7:
 	note A_, 2
 	note C#, 2
 	note A_, 2
-	endchannel
+	sound_ret
 
 Music_GymLeaderBattleSwSh_Ch4_ditty8:
 	note A#, 2
@@ -2260,4 +2260,4 @@ Music_GymLeaderBattleSwSh_Ch4_ditty8:
 	note G_, 2
 	note G_, 2
 	note A#, 2
-	endchannel
+	sound_ret

@@ -200,7 +200,7 @@ Music_BattleTowerTheme_branch_17895e:
 	note F_, 4
 	note __, 4
 	note A_, 4
-	endchannel
+	sound_ret
 
 Music_BattleTowerTheme_Ch2:
 	vibrato $12, $34
@@ -355,7 +355,7 @@ Music_BattleTowerTheme_branch_178a15:
 	octave 4
 	note A#, 4
 	note A_, 4
-	endchannel
+	sound_ret
 
 Music_BattleTowerTheme_Ch3:
 	vibrato $12, $34
@@ -581,7 +581,7 @@ Music_BattleTowerTheme_branch_178afe:
 	note __, 4
 	note C_, 2
 	note __, 2
-	endchannel
+	sound_ret
 
 Music_BattleTowerTheme_Ch4:
 	toggle_noise 3
@@ -645,7 +645,7 @@ Music_BattleTowerTheme_branch_178b58:
 	note D_, 4
 	note D_, 1
 	note D_, 1
-	endchannel
+	sound_ret
 
 Music_BattleTowerTheme_branch_178b61:
 	note D_, 2
@@ -658,7 +658,7 @@ Music_BattleTowerTheme_branch_178b61:
 	note C#, 1
 	note D_, 1
 	note C#, 1
-	endchannel
+	sound_ret
 
 Music_BattleTowerTheme_branch_178b6c:
 	note D_, 2
@@ -670,7 +670,7 @@ Music_BattleTowerTheme_branch_178b6c:
 	note D_, 2
 	note D_, 1
 	note D_, 1
-	endchannel
+	sound_ret
 
 Music_BattleTowerTheme_branch_178b76:
 	note D_, 2
@@ -683,4 +683,4 @@ Music_BattleTowerTheme_branch_178b76:
 	note D_, 2
 	note D_, 1
 	note C#, 1
-	endchannel
+	sound_ret

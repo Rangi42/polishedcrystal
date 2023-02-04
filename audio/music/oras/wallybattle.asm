@@ -174,7 +174,7 @@ Music_WallyBattleORAS_Ch1_branch_1:
 	note B_, 4
 	octave 3
 	note C_, 1
-	endchannel
+	sound_ret
 
 Music_WallyBattleORAS_Ch2:
 	duty_cycle 0
@@ -303,7 +303,7 @@ Music_WallyBattleORAS_Ch2_branch_1:
 	volume_envelope 11, 7
 	note G_, 4
 	note A_, 1
-	endchannel
+	sound_ret
 
 Music_WallyBattleORAS_Ch3:
 	note_type 6, 1, -1
@@ -546,7 +546,7 @@ Music_WallyBattleORAS_Ch3_branch_1:
 	note B_, 3
 	octave 3
 	note E_, 4
-	endchannel
+	sound_ret
 
 Music_WallyBattleORAS_Ch3_branch_2:
 	octave 1
@@ -559,7 +559,7 @@ Music_WallyBattleORAS_Ch3_branch_2:
 	note __, 1
 	note E_, 2
 	note __, 2
-	endchannel
+	sound_ret
 
 Music_WallyBattleORAS_Ch4:
 	toggle_noise 4
@@ -626,7 +626,7 @@ Music_WallyBattleORAS_Ch4_loop_1:
 	note D#, 1
 	note D#, 1
 	sound_jump Music_WallyBattleORAS_Ch4_loop_main
-	endchannel
+	sound_ret
 
 Music_WallyBattleORAS_Ch4_branch_1:
 	note B_, 2
@@ -636,7 +636,7 @@ Music_WallyBattleORAS_Ch4_branch_1:
 	note C#, 1
 	note D#, 1
 	note D#, 1
-	endchannel
+	sound_ret
 
 Music_WallyBattleORAS_Ch4_branch_2:
 	note D_, 1
@@ -647,7 +647,7 @@ Music_WallyBattleORAS_Ch4_branch_2:
 	note C#, 1
 	note D#, 1
 	note D#, 1
-	endchannel
+	sound_ret
 
 Music_WallyBattleORAS_Ch4_branch_3:
 	note D_, 1
@@ -658,7 +658,7 @@ Music_WallyBattleORAS_Ch4_branch_3:
 	note D#, 1
 	note E_, 1
 	note C#, 1
-	endchannel
+	sound_ret
 
 Music_WallyBattleORAS_Ch4_branch_4:
 	note E_, 1
@@ -673,7 +673,7 @@ Music_WallyBattleORAS_Ch4_branch_4:
 	note D#, 1
 	note D#, 1
 	note C#, 1
-	endchannel
+	sound_ret
 
 Music_WallyBattleORAS_Ch4_branch_5:
 	note D_, 1
@@ -684,7 +684,7 @@ Music_WallyBattleORAS_Ch4_branch_5:
 	note C#, 1
 	note E_, 1
 	note D#, 1
-	endchannel
+	sound_ret
 
 Music_WallyBattleORAS_Ch4_branch_6:
 	note B_, 1
@@ -699,4 +699,4 @@ Music_WallyBattleORAS_Ch4_branch_6:
 	note D#, 1
 	note D#, 1
 	note C#, 1
-	endchannel
+	sound_ret

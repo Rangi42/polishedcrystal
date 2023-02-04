@@ -120,7 +120,7 @@ Music_CrystalOpening_Ch1:
 	note_type 12, 11, 2
 	octave 2
 	note D_, 16
-	endchannel
+	sound_ret
 
 Music_CrystalOpening_Ch2:
 	note_type 12, 10, 2
@@ -175,7 +175,7 @@ Music_CrystalOpening_Ch2:
 	note_type 12, 12, 2
 	octave 3
 	note D_, 16
-	endchannel
+	sound_ret
 
 Music_CrystalOpening_Ch3:
 	note_type 12, 1, 6
@@ -239,7 +239,7 @@ Music_CrystalOpening_Ch3:
 	octave 2
 	note D_, 1
 	note __, 15
-	endchannel
+	sound_ret
 
 Music_CrystalOpening_Ch4:
 	stereo_panning FALSE, TRUE
@@ -357,4 +357,4 @@ Music_CrystalOpening_Ch4:
 	note __, 6
 	note __, 16
 	note __, 16
-	endchannel
+	sound_ret

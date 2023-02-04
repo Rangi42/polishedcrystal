@@ -466,7 +466,7 @@ Music_WhiteTreehollowWhite2_Ch1_branch_1:
 	octave 4
 	note A#, 8
 	volume_envelope 4, 2
-	endchannel
+	sound_ret
 
 Music_WhiteTreehollowWhite2_Ch2:
 	duty_cycle 2
@@ -733,7 +733,7 @@ Music_WhiteTreehollowWhite2_Ch2_branch_1:
 	note C_, 1
 	octave 3
 	note C_, 1
-	endchannel
+	sound_ret
 
 Music_WhiteTreehollowWhite2_Ch3:
 	note_type 12, 1, 0

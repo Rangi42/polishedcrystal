@@ -190,7 +190,7 @@ Music_LookMysticalMan_branch_1784f9:
 	octave 3
 	note B_, 2
 	note A_, 6
-	endchannel
+	sound_ret
 
 Music_LookMysticalMan_Ch2:
 	duty_cycle 3
@@ -339,7 +339,7 @@ Music_LookMysticalMan_branch_17859a:
 	note __, 2
 	note F#, 2
 	note E_, 6
-	endchannel
+	sound_ret
 
 Music_LookMysticalMan_branch_1785c8:
 	note C#, 8
@@ -356,7 +356,7 @@ Music_LookMysticalMan_branch_1785c8:
 	note C#, 1
 	note __, 1
 	volume_envelope 11, 8
-	endchannel
+	sound_ret
 
 Music_LookMysticalMan_Ch3:
 	note_type 6, 1, 6
@@ -587,7 +587,7 @@ Music_LookMysticalMan_branch_1786d3:
 	note D#, 3
 	note D#, 2
 	note D_, 4
-	endchannel
+	sound_ret
 
 Music_LookMysticalMan_branch_1786d9:
 	note D#, 4
@@ -595,7 +595,7 @@ Music_LookMysticalMan_branch_1786d9:
 	note D_, 3
 	note D#, 2
 	note D_, 4
-	endchannel
+	sound_ret
 
 Music_LookMysticalMan_branch_1786df:
 	note D#, 4
@@ -606,4 +606,4 @@ Music_LookMysticalMan_branch_1786df:
 	note D#, 2
 	note D_, 1
 	note D_, 1
-	endchannel
+	sound_ret

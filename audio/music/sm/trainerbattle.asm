@@ -609,7 +609,7 @@ Music_TrainerBattleSM_Ch2_branch_1:
 	note G_, 1
 	octave 4
 	note G_, 1
-	endchannel
+	sound_ret
 
 Music_TrainerBattleSM_Ch2_branch_2:
 	octave 3
@@ -631,7 +631,7 @@ Music_TrainerBattleSM_Ch2_branch_2:
 	note C_, 8
 	note D_, 8
 	note E_, 6
-	endchannel
+	sound_ret
 
 Music_TrainerBattleSM_Ch3:
 	note_type 6, 1, -1

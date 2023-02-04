@@ -676,7 +676,7 @@ Music_BikeRiding_branch_7dea7:
 	note G#, 2
 	note __, 2
 	note G#, 2
-	endchannel
+	sound_ret
 Music_BikeRiding_branch_7deb4:
 	note __, 2
 	note G#, 2
@@ -686,7 +686,7 @@ Music_BikeRiding_branch_7deb4:
 	note G#, 2
 	note G#, 2
 	note G#, 2
-	endchannel
+	sound_ret
 Music_BikeRiding_branch_7dec2:
 	note __, 2
 	note G#, 2
@@ -697,4 +697,4 @@ Music_BikeRiding_branch_7dec2:
 	note __, 2
 	note G#, 1
 	note G#, 1
-	endchannel
+	sound_ret

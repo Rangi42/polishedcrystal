@@ -93,7 +93,7 @@ Music_IndigoPlateauRBY_branch_a659:
 	note A_, 4
 	note A_, 4
 	note A_, 4
-	endchannel
+	sound_ret
 
 Music_IndigoPlateauRBY_Ch2:
 	duty_cycle 3
@@ -153,7 +153,7 @@ Music_IndigoPlateauRBY_branch_a6af:
 	note D_, 4
 	note D_, 4
 	note D_, 4
-	endchannel
+	sound_ret
 
 Music_IndigoPlateauRBY_Ch3:
 	note_type 12, 1, 0
@@ -230,7 +230,7 @@ Music_IndigoPlateauRBY_branch_a6fe:
 	note D_, 2
 	note __, 2
 	note A_, 4
-	endchannel
+	sound_ret
 
 Music_IndigoPlateauRBY_Ch4:
 	note_type 6
@@ -295,7 +295,7 @@ Music_IndigoPlateauRBY_branch_a77e:
 	note B_, 4
 	note B_, 2
 	note A#, 2
-	endchannel
+	sound_ret
 
 Music_IndigoPlateauRBY_branch_a791:
 	note A_, 4
@@ -309,7 +309,7 @@ Music_IndigoPlateauRBY_branch_a791:
 	note B_, 1
 	note A#, 1
 	note A#, 1
-	endchannel
+	sound_ret
 
 Music_IndigoPlateauRBY_branch_a7a8:
 	note A_, 4
@@ -326,4 +326,4 @@ Music_IndigoPlateauRBY_branch_a7a8:
 	note A#, 1
 	note A#, 1
 	note A#, 1
-	endchannel
+	sound_ret

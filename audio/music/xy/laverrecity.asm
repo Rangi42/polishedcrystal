@@ -622,10 +622,10 @@ Music_LaverreCityXY_Ch4_branch_1:
 	note __, 4
 	note C#, 4
 	note C#, 4
-	endchannel
+	sound_ret
 
 Music_LaverreCityXY_Ch4_branch_2:
 	note_type 12
 	note __, 12
 	note __, 12
-	endchannel
+	sound_ret

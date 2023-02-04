@@ -217,7 +217,7 @@ Music_AzaleaTown_branch_f588c:
 	note C#, 2
 	volume_envelope 6, 1
 	note C#, 2
-	endchannel
+	sound_ret
 
 Music_AzaleaTown_branch_f5912:
 	volume_envelope 6, 1
@@ -227,7 +227,7 @@ Music_AzaleaTown_branch_f5912:
 	note A_, 8
 	volume_envelope 10, 1
 	note A_, 8
-	endchannel
+	sound_ret
 
 Music_AzaleaTown_Ch2:
 	vibrato $12, $23
@@ -415,7 +415,7 @@ Music_AzaleaTown_branch_f59c7:
 	note_type 12, 11, 7
 	note D#, 12
 	volume_envelope 11, 4
-	endchannel
+	sound_ret
 
 Music_AzaleaTown_Ch3:
 	stereo_panning TRUE, TRUE
@@ -601,7 +601,7 @@ Music_AzaleaTown_branch_f5a86:
 	note __, 1
 	note C_, 1
 	note __, 1
-	endchannel
+	sound_ret
 
 Music_AzaleaTown_branch_f5acf:
 	volume_envelope 3, 5
@@ -623,7 +623,7 @@ Music_AzaleaTown_branch_f5acf:
 	note __, 1
 	note F_, 1
 	note __, 1
-	endchannel
+	sound_ret
 
 Music_AzaleaTown_Ch4:
 	toggle_noise 3

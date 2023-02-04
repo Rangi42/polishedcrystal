@@ -683,7 +683,7 @@ GymLeaderBattleBWChannel1_Loop:
 	note G_, 8
 	octave 5
 	sound_jump GymLeaderBattleBWChannel1_Loop
-	endchannel
+	sound_ret
 
 GymLeaderBattleBW_Channel2:
 	duty_cycle 1
@@ -1143,7 +1143,7 @@ GymLeaderBattleBWChannel2_Loop:
 	note __, 16
 	note __, 16
 	sound_jump GymLeaderBattleBWChannel2_Loop
-	endchannel
+	sound_ret
 
 GymLeaderBattleBW_Channel3:
 	note_type 12, 1, 5
@@ -2167,7 +2167,7 @@ GymLeaderBattleBWChannel3_Loop:
 	octave 3
 	note C_, 4
 	sound_jump GymLeaderBattleBWChannel3_Loop
-	endchannel
+	sound_ret
 
 GymLeaderBattleBW_Channel4:
 	note_type 12
@@ -2552,4 +2552,4 @@ GymLeaderBattleBWChannel4_Loop:
 	note C_, 4
 	note C#, 8
 	sound_jump GymLeaderBattleBWChannel4_Loop
-	endchannel
+	sound_ret

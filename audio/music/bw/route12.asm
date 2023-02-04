@@ -89,7 +89,7 @@ Music_Route12BW_Ch1_branch_1:
 	note B_, 1
 	volume_envelope 2, 3
 	note F#, 1
-	endchannel
+	sound_ret
 
 Music_Route12BW_Ch1_branch_2:
 	octave 3
@@ -112,7 +112,7 @@ Music_Route12BW_Ch1_branch_2:
 	note F#, 6
 	note G#, 6
 	note F#, 6
-	endchannel
+	sound_ret
 
 Music_Route12BW_Ch1_branch_3:
 	volume_envelope 11, 4
@@ -122,7 +122,7 @@ Music_Route12BW_Ch1_branch_3:
 	note E_, 2
 	note F#, 6
 	note B_, 6
-	endchannel
+	sound_ret
 
 Music_Route12BW_Ch2:
 	note_type 8, 11, 0
@@ -308,7 +308,7 @@ Music_Route12BW_Ch2_branch_1:
 	volume_envelope 11, 7
 	note C#, 4
 	octave 3
-	endchannel
+	sound_ret
 
 Music_Route12BW_Ch3:
 	note_type 8, 1, 4
@@ -369,7 +369,7 @@ Music_Route12BW_Ch3_branch_1:
 	octave 2
 	note E_, 12
 	note F#, 6
-	endchannel
+	sound_ret
 
 Music_Route12BW_Ch4:
 	stereo_panning FALSE, TRUE
@@ -393,13 +393,13 @@ Music_Route12BW_Ch4_branch_1:
 	note D#, 1
 	note D#, 1
 	note D_, 4
-	endchannel
+	sound_ret
 
 Music_Route12BW_Ch4_branch_2:
 	note D_, 4
 	note D_, 4
 	note D_, 4
-	endchannel
+	sound_ret
 
 Music_Route12BW_Ch4_branch_3:
 	note D_, 1
@@ -409,7 +409,7 @@ Music_Route12BW_Ch4_branch_3:
 	note D_, 2
 	note D#, 2
 	note D_, 4
-	endchannel
+	sound_ret
 
 Music_Route12BW_Ch4_branch_4:
 	note D_, 2
@@ -420,14 +420,14 @@ Music_Route12BW_Ch4_branch_4:
 	note D#, 1
 	note D#, 1
 	note D#, 1
-	endchannel
+	sound_ret
 
 Music_Route12BW_Ch4_branch_5:
 	note D_, 4
 	note D_, 2
 	note D#, 2
 	note D_, 4
-	endchannel
+	sound_ret
 
 Music_Route12BW_Ch4_branch_6:
 	note D_, 4
@@ -435,7 +435,7 @@ Music_Route12BW_Ch4_branch_6:
 	note D#, 2
 	note D_, 2
 	note D#, 2
-	endchannel
+	sound_ret
 
 Music_Route12BW_Ch4_branch_7:
 	note D_, 1
@@ -444,4 +444,4 @@ Music_Route12BW_Ch4_branch_7:
 	note D#, 1
 	note D_, 4
 	note D_, 4
-	endchannel
+	sound_ret

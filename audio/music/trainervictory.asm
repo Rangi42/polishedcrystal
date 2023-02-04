@@ -82,7 +82,7 @@ Music_TrainerVictory_branch_ebf11:
 	note __, 2
 	note E_, 2
 	note G_, 6
-	endchannel
+	sound_ret
 
 Music_TrainerVictory_Ch2:
 	vibrato $12, $34
@@ -139,7 +139,7 @@ Music_TrainerVictory_branch_ebf56:
 	note B_, 2
 	octave 4
 	note E_, 6
-	endchannel
+	sound_ret
 
 Music_TrainerVictory_Ch3:
 	note_type 8, 2, 5
@@ -227,4 +227,4 @@ Music_TrainerVictory_branch_ebfb1:
 	note E_, 2
 	octave 2
 	note B_, 2
-	endchannel
+	sound_ret

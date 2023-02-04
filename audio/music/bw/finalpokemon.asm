@@ -370,7 +370,7 @@ Music_FinalPokemonBW_Ch1_branch_1:
 	note G_, 1
 	note F#, 1
 	note G_, 1
-	endchannel
+	sound_ret
 
 Music_FinalPokemonBW_Ch1_branch_2:
 	note F#, 1
@@ -385,7 +385,7 @@ Music_FinalPokemonBW_Ch1_branch_2:
 	note E_, 1
 	note F#, 2
 	note A_, 2
-	endchannel
+	sound_ret
 
 Music_FinalPokemonBW_Ch2:
 	duty_cycle 0
@@ -639,7 +639,7 @@ Music_FinalPokemonBW_Ch2_branch_1:
 	note C_, 1
 	note C_, 1
 	note C_, 2
-	endchannel
+	sound_ret
 
 Music_FinalPokemonBW_Ch2_branch_2:
 	note_type 6, 13, 7
@@ -653,7 +653,7 @@ Music_FinalPokemonBW_Ch2_branch_2:
 	note D_, 6
 	volume_envelope 13, 7
 	note D_, 10
-	endchannel
+	sound_ret
 
 Music_FinalPokemonBW_Ch3:
 	vibrato $12, $25
@@ -843,7 +843,7 @@ Music_FinalPokemonBW_Ch3_branch_1:
 	note __, 1
 	note D_, 2
 	note __, 2
-	endchannel
+	sound_ret
 
 Music_FinalPokemonBW_Ch3_branch_2:
 	note G_, 4
@@ -862,7 +862,7 @@ Music_FinalPokemonBW_Ch3_branch_2:
 	note __, 4
 	note C_, 4
 	note F_, 4
-	endchannel
+	sound_ret
 
 Music_FinalPokemonBW_Ch3_branch_3:
 	octave 3
@@ -901,7 +901,7 @@ Music_FinalPokemonBW_Ch3_branch_3:
 	note F#, 4
 	note B_, 4
 	note F#, 4
-	endchannel
+	sound_ret
 
 Music_FinalPokemonBW_Ch4:
 	toggle_noise 3
@@ -1029,7 +1029,7 @@ Music_FinalPokemonBW_Ch4_branch_1:
 	note D_, 2
 	note D_, 2
 	note D_, 4
-	endchannel
+	sound_ret
 
 Music_FinalPokemonBW_Ch4_branch_2:
 	note D_, 4
@@ -1045,7 +1045,7 @@ Music_FinalPokemonBW_Ch4_branch_2:
 	note D_, 2
 	note D_, 2
 	note D_, 2
-	endchannel
+	sound_ret
 
 Music_FinalPokemonBW_Ch4_branch_3:
 	note D_, 4
@@ -1062,7 +1062,7 @@ Music_FinalPokemonBW_Ch4_branch_3:
 	note D_, 2
 	note D_, 2
 	note_type 3
-	endchannel
+	sound_ret
 
 Music_FinalPokemonBW_Ch4_branch_4:
 	note D_, 2
@@ -1081,7 +1081,7 @@ Music_FinalPokemonBW_Ch4_branch_4:
 	note D_, 2
 	note D_, 2
 	note D_, 2
-	endchannel
+	sound_ret
 
 Music_FinalPokemonBW_Ch4_branch_5:
 	note D_, 4
@@ -1099,4 +1099,4 @@ Music_FinalPokemonBW_Ch4_branch_5:
 	note D_, 2
 	note D_, 2
 	note D_, 2
-	endchannel
+	sound_ret

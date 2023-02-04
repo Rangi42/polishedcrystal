@@ -97,7 +97,7 @@ Music_GoldenrodCity_branch_eb4a9:
 	note G#, 2
 	octave 4
 	note C#, 2
-	endchannel
+	sound_ret
 
 Music_GoldenrodCity_branch_eb4d1:
 	octave 4
@@ -171,7 +171,7 @@ Music_GoldenrodCity_branch_eb4d1:
 	note C_, 1
 	note D#, 1
 	note F#, 1
-	endchannel
+	sound_ret
 
 Music_GoldenrodCity_Ch2:
 	stereo_panning TRUE, FALSE
@@ -242,7 +242,7 @@ Music_GoldenrodCity_branch_eb555:
 	note G#, 2
 	note F#, 2
 	duty_cycle 1
-	endchannel
+	sound_ret
 
 Music_GoldenrodCity_branch_eb572:
 	note C#, 6
@@ -262,7 +262,7 @@ Music_GoldenrodCity_branch_eb572:
 	octave 5
 	note C_, 4
 	note D#, 2
-	endchannel
+	sound_ret
 
 Music_GoldenrodCity_Ch3:
 	stereo_panning TRUE, TRUE
@@ -329,7 +329,7 @@ Music_GoldenrodCity_branch_eb5aa:
 	octave 3
 	note G#, 1
 	note __, 1
-	endchannel
+	sound_ret
 
 Music_GoldenrodCity_branch_eb5d2:
 	note C#, 1
@@ -383,7 +383,7 @@ Music_GoldenrodCity_branch_eb5d2:
 	note G#, 1
 	note __, 2
 	note G#, 1
-	endchannel
+	sound_ret
 
 Music_GoldenrodCity_Ch4:
 	toggle_noise 3
@@ -461,7 +461,7 @@ Music_GoldenrodCity_branch_eb663:
 	note D_, 1
 	note D_, 1
 	note F#, 2
-	endchannel
+	sound_ret
 
 Music_GoldenrodCity_branch_eb66d:
 	note D#, 2
@@ -472,4 +472,4 @@ Music_GoldenrodCity_branch_eb66d:
 	note G_, 1
 	note G_, 1
 	note G_, 1
-	endchannel
+	sound_ret

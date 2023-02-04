@@ -330,7 +330,7 @@ Music_Route29_branch_f04de:
 	note D_, 2
 	note E_, 2
 	note C_, 2
-	endchannel
+	sound_ret
 
 Music_Route29_Ch3:
 	stereo_panning TRUE, FALSE

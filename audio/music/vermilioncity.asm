@@ -98,7 +98,7 @@ Music_VermilionCity_branch_eb6f9:
 	note A_, 2
 	note E_, 2
 	note G#, 2
-	endchannel
+	sound_ret
 
 Music_VermilionCity_branch_eb701:
 	note D_, 2
@@ -111,7 +111,7 @@ Music_VermilionCity_branch_eb701:
 	octave 3
 	note A_, 2
 	note E_, 2
-	endchannel
+	sound_ret
 
 Music_VermilionCity_branch_eb70c:
 	note __, 2
@@ -134,7 +134,7 @@ Music_VermilionCity_branch_eb70c:
 	note G#, 2
 	note B_, 2
 	note G#, 2
-	endchannel
+	sound_ret
 
 Music_VermilionCity_Ch2:
 	stereo_panning TRUE, TRUE
@@ -208,7 +208,7 @@ Music_VermilionCity_branch_eb768:
 	note E_, 2
 	octave 1
 	note A_, 2
-	endchannel
+	sound_ret
 
 Music_VermilionCity_branch_eb77e:
 	note F#, 8
@@ -217,7 +217,7 @@ Music_VermilionCity_branch_eb77e:
 	note G#, 4
 	note F#, 4
 	note E_, 4
-	endchannel
+	sound_ret
 
 Music_VermilionCity_Ch3:
 	stereo_panning TRUE, FALSE
@@ -312,7 +312,7 @@ Music_VermilionCity_branch_eb7de:
 	note C#, 1
 	octave 5
 	note B_, 1
-	endchannel
+	sound_ret
 
 Music_VermilionCity_branch_eb7f5:
 	note A_, 1
@@ -333,4 +333,4 @@ Music_VermilionCity_branch_eb7f5:
 	note B_, 1
 	octave 4
 	note C#, 1
-	endchannel
+	sound_ret

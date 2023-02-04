@@ -53,7 +53,7 @@ Music_ProfOak_branch_f4e42:
 	note E_, 2
 	note G#, 2
 	note E_, 2
-	endchannel
+	sound_ret
 
 Music_ProfOak_branch_f4e4d:
 	octave 2
@@ -66,7 +66,7 @@ Music_ProfOak_branch_f4e4d:
 	note D#, 2
 	note F#, 2
 	note D#, 2
-	endchannel
+	sound_ret
 
 Music_ProfOak_branch_f4e58:
 	octave 2
@@ -84,7 +84,7 @@ Music_ProfOak_branch_f4e58:
 	volume_envelope 9, 2
 	note E_, 2
 	volume_envelope 9, 1
-	endchannel
+	sound_ret
 
 Music_ProfOak_branch_f4e6c:
 	octave 2
@@ -100,7 +100,7 @@ Music_ProfOak_branch_f4e6c:
 	volume_envelope 9, 2
 	note B_, 4
 	volume_envelope 9, 1
-	endchannel
+	sound_ret
 
 Music_ProfOak_Ch2:
 	vibrato $12, $34
@@ -258,7 +258,7 @@ Music_ProfOak_branch_f4f3d:
 	note B_, 1
 	note __, 1
 	note E_, 2
-	endchannel
+	sound_ret
 
 Music_ProfOak_branch_f4f4c:
 	octave 2
@@ -274,7 +274,7 @@ Music_ProfOak_branch_f4f4c:
 	note B_, 1
 	note __, 1
 	note D#, 2
-	endchannel
+	sound_ret
 
 Music_ProfOak_branch_f4f5a:
 	octave 2
@@ -291,7 +291,7 @@ Music_ProfOak_branch_f4f5a:
 	note A_, 1
 	note __, 1
 	note C#, 2
-	endchannel
+	sound_ret
 
 Music_ProfOak_branch_f4f69:
 	octave 2
@@ -309,4 +309,4 @@ Music_ProfOak_branch_f4f69:
 	note __, 1
 	octave 2
 	note B_, 2
-	endchannel
+	sound_ret

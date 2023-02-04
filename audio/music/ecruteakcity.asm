@@ -161,7 +161,7 @@ Music_EcruteakCity_branch_ef37f:
 	note E_, 2
 	note C_, 2
 	sound_loop 2, Music_EcruteakCity_branch_ef37f
-	endchannel
+	sound_ret
 
 Music_EcruteakCity_branch_ef391:
 	octave 5
@@ -246,7 +246,7 @@ Music_EcruteakCity_branch_ef3d0:
 	note E_, 16
 	note G_, 16
 	duty_cycle 2
-	endchannel
+	sound_ret
 
 Music_EcruteakCity_Ch2:
 	vibrato $12, $25
@@ -665,4 +665,4 @@ Music_EcruteakCity_branch_ef569:
 	note_type 6, 2, 5
 	note __, 1
 	note B_, 1
-	endchannel
+	sound_ret

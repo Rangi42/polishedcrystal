@@ -33,7 +33,7 @@ Music_RuinsOfAlphRadio_branch_eee01:
 	note G_, 1
 	note F#, 1
 	note C_, 8
-	endchannel
+	sound_ret
 
 Music_RuinsOfAlphRadio_branch_eee08:
 	octave 4
@@ -45,7 +45,7 @@ Music_RuinsOfAlphRadio_branch_eee08:
 	note G_, 1
 	octave 5
 	note C_, 8
-	endchannel
+	sound_ret
 
 Music_RuinsOfAlphRadio_Ch2:
 	duty_cycle 1

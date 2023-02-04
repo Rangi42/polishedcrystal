@@ -263,7 +263,7 @@ Music_KantoWildBattle_branch_ed18a:
 	octave 3
 	note B_, 1
 	note __, 3
-	endchannel
+	sound_ret
 
 Music_KantoWildBattle_Ch2:
 	duty_cycle 1
@@ -543,7 +543,7 @@ Music_KantoWildBattle_branch_ed2c6:
 	note __, 1
 	octave 1
 	note G_, 2
-	endchannel
+	sound_ret
 
 Music_KantoWildBattle_branch_ed307:
 	octave 2
@@ -565,7 +565,7 @@ Music_KantoWildBattle_branch_ed307:
 	note __, 2
 	octave 2
 	note C_, 4
-	endchannel
+	sound_ret
 
 Music_KantoWildBattle_branch_ed31b:
 	octave 2
@@ -604,7 +604,7 @@ Music_KantoWildBattle_branch_ed31b:
 	note B_, 2
 	octave 3
 	note C_, 2
-	endchannel
+	sound_ret
 
 Music_KantoWildBattle_branch_ed340:
 	octave 3
@@ -626,7 +626,7 @@ Music_KantoWildBattle_branch_ed340:
 	octave 2
 	note C_, 2
 	note __, 2
-	endchannel
+	sound_ret
 
 Music_KantoWildBattle_branch_ed354:
 	note C_, 2
@@ -648,7 +648,7 @@ Music_KantoWildBattle_branch_ed354:
 	octave 2
 	note C_, 2
 	note __, 2
-	endchannel
+	sound_ret
 
 Music_KantoWildBattle_Ch3:
 	vibrato $14, $23
@@ -887,7 +887,7 @@ Music_KantoWildBattle_Ch3Intro:
 	note G_, 1
 	octave 4
 	note G_, 1
-	endchannel
+	sound_ret
 
 Music_KantoWildBattle_Type1:
 	octave 5
@@ -905,7 +905,7 @@ Music_KantoWildBattle_Type1:
 	octave 5
 	note G_, 1
 	note __, 2
-	endchannel
+	sound_ret
 
 Music_KantoWildBattle_Type2:
 	note C_, 1
@@ -915,7 +915,7 @@ Music_KantoWildBattle_Type2:
 	note C_, 1
 	octave 4
 	note G_, 1
-	endchannel
+	sound_ret
 
 Music_KantoWildBattle_Type3:
 	octave 4
@@ -923,7 +923,7 @@ Music_KantoWildBattle_Type3:
 	note G_, 1
 	note E_, 1
 	note G_, 1
-	endchannel
+	sound_ret
 
 Music_KantoWildBattle_Type4:
 	octave 4
@@ -934,13 +934,13 @@ Music_KantoWildBattle_Type4:
 	note G_, 1
 	octave 5
 	note C_, 1
-	endchannel
+	sound_ret
 
 Music_KantoWildBattle_Type5:
 	note G#, 1
 	note __, 1
 	sound_loop 4, Music_KantoWildBattle_Type5
-	endchannel
+	sound_ret
 
 Music_KantoWildBattle_Type6:
 	note C_, 1
@@ -954,7 +954,7 @@ Music_KantoWildBattle_Type6:
 	note C_, 2
 	note __, 2
 	note C_, 2
-	endchannel
+	sound_ret
 
 Music_KantoWildBattle_Ch3_Part3:
 	octave 4
@@ -1000,7 +1000,7 @@ Music_KantoWildBattle_Ch3_Part3:
 	note D_, 1
 	octave 4
 	note B_, 1
-	endchannel
+	sound_ret
 
 Music_KantoWildBattle_Ch3_Part4:
 	octave 4
@@ -1036,7 +1036,7 @@ Music_KantoWildBattle_Ch3_Part4:
 	note F_, 7
 	note F#, 1
 	note G_, 2
-	endchannel
+	sound_ret
 
 Music_KantoWildBattle_Ch3_Part1:
 	note G#, 16
@@ -1117,7 +1117,7 @@ Music_KantoWildBattle_Ch3_Part1:
 	note G_, 1
 	note __, 5
 	note F_, 8
-	endchannel
+	sound_ret
 
 Music_KantoWildBattle_Ch3_Part2:
 	note G_, 6
@@ -1163,4 +1163,4 @@ Music_KantoWildBattle_Ch3_Part2:
 	note G#, 16
 	note G_, 16
 	note G_, 16
-	endchannel
+	sound_ret

@@ -120,7 +120,7 @@ Music_Clair_branch_1fb12:
 	note F_, 1
 	note C#, 1
 	note __, 1
-	endchannel
+	sound_ret
 
 Music_Clair_branch_1fb2e:
 	octave 4
@@ -141,7 +141,7 @@ Music_Clair_branch_1fb2e:
 	note __, 1
 	note D#, 1
 	note F#, 1
-	endchannel
+	sound_ret
 
 Music_Clair_Ch2:
 	duty_cycle 3
@@ -245,7 +245,7 @@ Music_Clair_branch_1fba6:
 	octave 4
 	note D#, 16
 	note __, 4
-	endchannel
+	sound_ret
 
 Music_Clair_Ch3:
 	note_type 12, 1, 4
@@ -386,7 +386,7 @@ Music_Clair_branch_1fc3c:
 	note D#, 2
 	octave 1
 	note G#, 2
-	endchannel
+	sound_ret
 
 Music_Clair_Ch4:
 	toggle_noise 3
@@ -431,4 +431,4 @@ Music_Clair_branch_1fc6e:
 	note D_, 2
 	stereo_panning TRUE, FALSE
 	note G_, 1
-	endchannel
+	sound_ret

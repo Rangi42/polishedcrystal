@@ -233,7 +233,7 @@ Music_PokemonCenter_branch_ed6d1:
 	note F#, 2
 	note E_, 2
 	note C#, 6
-	endchannel
+	sound_ret
 
 Music_PokemonCenter_branch_ed6e4:
 	note_type 12, 12, 2
@@ -247,7 +247,7 @@ Music_PokemonCenter_branch_ed6e4:
 	note F#, 4
 	note E_, 4
 	note C#, 2
-	endchannel
+	sound_ret
 
 Music_PokemonCenter_Ch3:
 	note_type 12, 2, 8
@@ -366,7 +366,7 @@ Music_PokemonCenter_branch_ed76f:
 	note __, 3
 	note A_, 1
 	note __, 1
-	endchannel
+	sound_ret
 
 Music_PokemonCenter_branch_ed778:
 	note E_, 1
@@ -379,7 +379,7 @@ Music_PokemonCenter_branch_ed778:
 	note __, 1
 	note A_, 1
 	note __, 1
-	endchannel
+	sound_ret
 
 Music_PokemonCenter_branch_ed783:
 	note F#, 1
@@ -390,7 +390,7 @@ Music_PokemonCenter_branch_ed783:
 	note __, 3
 	note A_, 1
 	note __, 1
-	endchannel
+	sound_ret
 
 Music_PokemonCenter_Ch4:
 	toggle_noise 3

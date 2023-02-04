@@ -300,7 +300,7 @@ Music_LookRival_branch_f50ef:
 	note C_, 2
 	note D_, 2
 	note D#, 2
-	endchannel
+	sound_ret
 
 Music_LookRival_branch_f50f7:
 	note A#, 2
@@ -310,7 +310,7 @@ Music_LookRival_branch_f50f7:
 	note F_, 2
 	note G_, 2
 	note G#, 2
-	endchannel
+	sound_ret
 
 Music_LookRival_branch_f50ff:
 	note A#, 4
@@ -319,7 +319,7 @@ Music_LookRival_branch_f50ff:
 	note F_, 2
 	note G_, 2
 	note G#, 2
-	endchannel
+	sound_ret
 
 Music_LookRival_Ch4:
 	stereo_panning TRUE, FALSE

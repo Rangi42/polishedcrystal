@@ -239,7 +239,7 @@ Music_MountPyreRSE_Ch2_branch_1:
 	note G#, 2
 	volume_envelope 6, 3
 	note G#, 2
-	endchannel
+	sound_ret
 
 Music_MountPyreRSE_Ch2_branch_2:
 	octave 3
@@ -309,7 +309,7 @@ Music_MountPyreRSE_Ch2_branch_2:
 	note B_, 2
 	volume_envelope 6, 3
 	note B_, 2
-	endchannel
+	sound_ret
 
 Music_MountPyreRSE_Ch3:
 	note_type 6, 2, 4
@@ -411,7 +411,7 @@ Music_MountPyreRSE_Ch4_branch_1:
 	note F#, 2
 	note G#, 2
 	note F#, 2
-	endchannel
+	sound_ret
 
 Music_MountPyreRSE_Ch4_branch_2:
 	stereo_panning TRUE, FALSE
@@ -424,4 +424,4 @@ Music_MountPyreRSE_Ch4_branch_2:
 	note F#, 1
 	note G#, 1
 	note G_, 1
-	endchannel
+	sound_ret

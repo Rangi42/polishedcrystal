@@ -73,7 +73,7 @@ Music_LookKimonoGirl_branch_f7a13:
 	volume_envelope 7, 4
 	octave 4
 	note D_, 1
-	endchannel
+	sound_ret
 
 Music_LookKimonoGirl_branch_f7a34:
 	volume_envelope 11, 4
@@ -100,7 +100,7 @@ Music_LookKimonoGirl_branch_f7a34:
 	volume_envelope 7, 4
 	octave 4
 	note D_, 1
-	endchannel
+	sound_ret
 
 Music_LookKimonoGirl_Ch2:
 	duty_cycle 0
@@ -172,7 +172,7 @@ Music_LookKimonoGirl_branch_f7a94:
 	octave 3
 	note B_, 1
 	note E_, 1
-	endchannel
+	sound_ret
 
 Music_LookKimonoGirl_branch_f7aa8:
 	octave 4
@@ -207,7 +207,7 @@ Music_LookKimonoGirl_branch_f7aa8:
 	note_type 8, 11, 1
 	note E_, 1
 	note E_, 1
-	endchannel
+	sound_ret
 
 Music_LookKimonoGirl_Ch3:
 	stereo_panning TRUE, TRUE

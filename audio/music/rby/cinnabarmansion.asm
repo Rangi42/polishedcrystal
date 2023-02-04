@@ -101,7 +101,7 @@ Music_CinnabarMansionRBY_branch_7ed6c:
 	note G#, 4
 	note __, 4
 	note A#, 4
-	endchannel
+	sound_ret
 
 Music_CinnabarMansionRBY_Ch3:
 	note_type 12, 1, 1

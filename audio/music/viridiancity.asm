@@ -245,7 +245,7 @@ Music_ViridianCity_branch_f40c5:
 	note __, 1
 	note __, 4
 	note G_, 8
-	endchannel
+	sound_ret
 
 Music_ViridianCity_branch_f410f:
 	octave 3
@@ -269,7 +269,7 @@ Music_ViridianCity_branch_f410f:
 	note __, 1
 	note G_, 1
 	note __, 1
-	endchannel
+	sound_ret
 
 Music_ViridianCity_Ch2:
 	vibrato $10, $46
@@ -469,7 +469,7 @@ Music_ViridianCity_branch_f41c0:
 	note __, 1
 	note __, 4
 	note E_, 8
-	endchannel
+	sound_ret
 
 Music_ViridianCity_branch_f4201:
 	note G_, 4
@@ -481,7 +481,7 @@ Music_ViridianCity_branch_f4201:
 	octave 2
 	note F_, 2
 	note F#, 2
-	endchannel
+	sound_ret
 
 Music_ViridianCity_branch_f420b:
 	note F#, 4
@@ -493,7 +493,7 @@ Music_ViridianCity_branch_f420b:
 	octave 2
 	note E_, 2
 	note F_, 2
-	endchannel
+	sound_ret
 
 Music_ViridianCity_branch_f4215:
 	octave 2
@@ -504,7 +504,7 @@ Music_ViridianCity_branch_f4215:
 	note B_, 4
 	note D_, 2
 	note D#, 2
-	endchannel
+	sound_ret
 
 Music_ViridianCity_Ch3:
 	vibrato $12, $24
@@ -686,7 +686,7 @@ Music_ViridianCity_branch_f42a2:
 	note __, 1
 	note __, 4
 	note D_, 8
-	endchannel
+	sound_ret
 
 Music_ViridianCity_Ch4:
 	toggle_noise 3
@@ -727,7 +727,7 @@ Music_ViridianCity_branch_f431d:
 	note D_, 2
 	note E_, 2
 	note F#, 2
-	endchannel
+	sound_ret
 
 Music_ViridianCity_branch_f432c:
 	note E_, 2
@@ -744,7 +744,7 @@ Music_ViridianCity_branch_f432c:
 	note D_, 2
 	note A#, 2
 	note A#, 2
-	endchannel
+	sound_ret
 
 Music_ViridianCity_branch_f433b:
 	note D#, 2
@@ -762,7 +762,7 @@ Music_ViridianCity_branch_f433b:
 	note F#, 2
 	note D_, 2
 	note D#, 2
-	endchannel
+	sound_ret
 
 Music_ViridianCity_branch_f434b:
 	note D#, 2
@@ -780,4 +780,4 @@ Music_ViridianCity_branch_f434b:
 	note D_, 2
 	note D_, 2
 	note F#, 2
-	endchannel
+	sound_ret

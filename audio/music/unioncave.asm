@@ -71,7 +71,7 @@ Music_UnionCave_branch_f5ccf:
 	octave 3
 	note C#, 2
 	note E_, 12
-	endchannel
+	sound_ret
 
 Music_UnionCave_Ch2:
 	duty_cycle 3
@@ -164,7 +164,7 @@ Music_UnionCave_branch_f5d34:
 	note C_, 8
 	note C#, 4
 	note C_, 4
-	endchannel
+	sound_ret
 
 Music_UnionCave_branch_f5d52:
 	octave 2
@@ -172,7 +172,7 @@ Music_UnionCave_branch_f5d52:
 	octave 3
 	note C#, 2
 	note E_, 12
-	endchannel
+	sound_ret
 
 Music_UnionCave_Ch3:
 	note_type 12, 1, 6

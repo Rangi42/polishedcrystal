@@ -135,7 +135,7 @@ Music_NewBarkTown_branch_eb349:
 	octave 2
 	note B_, 1
 	note __, 1
-	endchannel
+	sound_ret
 
 Music_NewBarkTown_branch_eb37c:
 	octave 2
@@ -154,7 +154,7 @@ Music_NewBarkTown_branch_eb37c:
 	note G_, 4
 	note A_, 4
 	note E_, 2
-	endchannel
+	sound_ret
 
 Music_NewBarkTown_Ch2:
 	stereo_panning TRUE, TRUE
@@ -237,7 +237,7 @@ Music_NewBarkTown_branch_eb3bf:
 	note A_, 8
 	octave 2
 	note C#, 4
-	endchannel
+	sound_ret
 
 Music_NewBarkTown_branch_eb3f2:
 	note_type 6, 9, 7
@@ -248,7 +248,7 @@ Music_NewBarkTown_branch_eb3f2:
 	note G_, 8
 	note_type 12, 9, 7
 	note E_, 16
-	endchannel
+	sound_ret
 
 Music_NewBarkTown_Ch3:
 	stereo_panning TRUE, FALSE

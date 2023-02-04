@@ -1012,7 +1012,7 @@ Music_BattleFactoryRSE_Ch2_branch_1:
 	note C#, 2
 	octave 3
 	note B_, 2
-	endchannel
+	sound_ret
 
 Music_BattleFactoryRSE_Ch3:
 	vibrato $14, $23
@@ -1198,7 +1198,7 @@ Music_BattleFactoryRSE_Ch3_branch_1:
 	octave 1
 	note E_, 1
 	note __, 1
-	endchannel
+	sound_ret
 
 Music_BattleFactoryRSE_Ch3_branch_2:
 	octave 1
@@ -1231,7 +1231,7 @@ Music_BattleFactoryRSE_Ch3_branch_2:
 	note G_, 2
 	octave 3
 	note D_, 2
-	endchannel
+	sound_ret
 
 Music_BattleFactoryRSE_Ch3_branch_3:
 	note E_, 1
@@ -1245,7 +1245,7 @@ Music_BattleFactoryRSE_Ch3_branch_3:
 	note E_, 1
 	note __, 1
 	sound_loop 4, Music_BattleFactoryRSE_Ch3_branch_3
-	endchannel
+	sound_ret
 
 Music_BattleFactoryRSE_Ch4:
 	toggle_noise 4
@@ -1260,4 +1260,4 @@ Music_BattleFactoryRSE_Ch4_branch_1:
 	note D#, 4
 	note F#, 4
 	sound_loop 6, Music_BattleFactoryRSE_Ch4_branch_1
-	endchannel
+	sound_ret

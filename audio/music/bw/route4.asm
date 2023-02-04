@@ -98,7 +98,7 @@ Music_Route4BW_Ch1_branch_1:
 	note C#, 2
 	note C#, 4
 	note C#, 2
-	endchannel
+	sound_ret
 
 Music_Route4BW_Ch1_branch_2:
 	octave 3
@@ -115,7 +115,7 @@ Music_Route4BW_Ch1_branch_2:
 	note B_, 2
 	octave 3
 	note D#, 2
-	endchannel
+	sound_ret
 
 Music_Route4BW_Ch1_branch_3:
 	note E_, 2
@@ -125,7 +125,7 @@ Music_Route4BW_Ch1_branch_3:
 	note E_, 2
 	note C#, 2
 	note E_, 2
-	endchannel
+	sound_ret
 
 Music_Route4BW_Ch1_branch_4:
 	octave 3
@@ -142,7 +142,7 @@ Music_Route4BW_Ch1_branch_4:
 	note A_, 2
 	octave 3
 	note C#, 2
-	endchannel
+	sound_ret
 
 Music_Route4BW_Ch2:
 	duty_cycle 3
@@ -527,7 +527,7 @@ Music_Route4BW_Ch3_branch_1:
 	note F#, 1
 	note G#, 1
 	note_type 12, 1, 4
-	endchannel
+	sound_ret
 
 Music_Route4BW_Ch4:
 	stereo_panning FALSE, TRUE
@@ -580,7 +580,7 @@ Music_Route4BW_Ch4_branch_2:
 	note D_, 2
 	note D#, 1
 	note D#, 1
-	endchannel
+	sound_ret
 
 Music_Route4BW_Ch4_branch_3:
 	note_type 12
@@ -595,4 +595,4 @@ Music_Route4BW_Ch4_branch_3:
 	note D_, 1
 	note D_, 1
 	note D_, 1
-	endchannel
+	sound_ret
