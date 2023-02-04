@@ -271,9 +271,9 @@ MACRO set_condition
 	db \1 ; condition
 ENDM
 
-	const jumpif_cmd
-MACRO jumpif
-	db jumpif_cmd
+	const sound_jump_if_cmd ; $fb
+MACRO sound_jump_if
+	db sound_jump_if_cmd
 	db \1 ; condition
 	dw \2 ; address
 ENDM
